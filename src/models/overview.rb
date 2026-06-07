@@ -250,7 +250,7 @@ end
   # Walkway Near bracket 1 arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 1 arm"
-  face = grp.entities.add_face([694.mm,0.mm,55.mm], [702.mm,0.mm,55.mm], [702.mm,300.mm,55.mm], [694.mm,300.mm,55.mm])
+  face = grp.entities.add_face([694.mm,8.mm,55.mm], [702.mm,8.mm,55.mm], [702.mm,300.mm,55.mm], [694.mm,300.mm,55.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -262,8 +262,8 @@ end
   grp = ents.add_group
   grp.name = "Walkway Near bracket 1 gusset"
   ge = grp.entities
-  f = ge.add_face([694.mm,0.mm,0.mm], [694.mm,0.mm,55.mm], [694.mm,70.mm,55.mm])
-  f.pushpull(8.mm)
+  f = ge.add_face([694.mm,8.mm,0.mm], [694.mm,8.mm,55.mm], [694.mm,70.mm,55.mm])
+  f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -335,7 +335,7 @@ end
   # Walkway Near bracket 2 (widened) arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 2 (widened) arm"
-  face = grp.entities.add_face([1150.mm,0.mm,53.mm], [1160.mm,0.mm,53.mm], [1160.mm,500.mm,53.mm], [1150.mm,500.mm,53.mm])
+  face = grp.entities.add_face([1150.mm,10.mm,53.mm], [1160.mm,10.mm,53.mm], [1160.mm,500.mm,53.mm], [1150.mm,500.mm,53.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -347,8 +347,8 @@ end
   grp = ents.add_group
   grp.name = "Walkway Near bracket 2 (widened) gusset"
   ge = grp.entities
-  f = ge.add_face([1150.mm,0.mm,0.mm], [1150.mm,0.mm,53.mm], [1150.mm,70.mm,53.mm])
-  f.pushpull(10.mm)
+  f = ge.add_face([1150.mm,10.mm,0.mm], [1150.mm,10.mm,53.mm], [1150.mm,70.mm,53.mm])
+  f.pushpull(-10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -420,7 +420,7 @@ end
   # Walkway Near bracket 3 (widened) arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 3 (widened) arm"
-  face = grp.entities.add_face([1607.mm,0.mm,53.mm], [1617.mm,0.mm,53.mm], [1617.mm,500.mm,53.mm], [1607.mm,500.mm,53.mm])
+  face = grp.entities.add_face([1607.mm,10.mm,53.mm], [1617.mm,10.mm,53.mm], [1617.mm,500.mm,53.mm], [1607.mm,500.mm,53.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -432,8 +432,8 @@ end
   grp = ents.add_group
   grp.name = "Walkway Near bracket 3 (widened) gusset"
   ge = grp.entities
-  f = ge.add_face([1607.mm,0.mm,0.mm], [1607.mm,0.mm,53.mm], [1607.mm,70.mm,53.mm])
-  f.pushpull(10.mm)
+  f = ge.add_face([1607.mm,10.mm,0.mm], [1607.mm,10.mm,53.mm], [1607.mm,70.mm,53.mm])
+  f.pushpull(-10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -505,7 +505,7 @@ end
   # Walkway Near bracket 4 (widened) arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 4 (widened) arm"
-  face = grp.entities.add_face([2064.mm,0.mm,53.mm], [2074.mm,0.mm,53.mm], [2074.mm,500.mm,53.mm], [2064.mm,500.mm,53.mm])
+  face = grp.entities.add_face([2064.mm,10.mm,53.mm], [2074.mm,10.mm,53.mm], [2074.mm,500.mm,53.mm], [2064.mm,500.mm,53.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -517,8 +517,8 @@ end
   grp = ents.add_group
   grp.name = "Walkway Near bracket 4 (widened) gusset"
   ge = grp.entities
-  f = ge.add_face([2064.mm,0.mm,0.mm], [2064.mm,0.mm,53.mm], [2064.mm,70.mm,53.mm])
-  f.pushpull(10.mm)
+  f = ge.add_face([2064.mm,10.mm,0.mm], [2064.mm,10.mm,53.mm], [2064.mm,70.mm,53.mm])
+  f.pushpull(-10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -590,7 +590,7 @@ end
   # Walkway Near bracket 5 (widened) arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 5 (widened) arm"
-  face = grp.entities.add_face([2521.mm,0.mm,53.mm], [2531.mm,0.mm,53.mm], [2531.mm,500.mm,53.mm], [2521.mm,500.mm,53.mm])
+  face = grp.entities.add_face([2521.mm,10.mm,53.mm], [2531.mm,10.mm,53.mm], [2531.mm,500.mm,53.mm], [2521.mm,500.mm,53.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -602,8 +602,8 @@ end
   grp = ents.add_group
   grp.name = "Walkway Near bracket 5 (widened) gusset"
   ge = grp.entities
-  f = ge.add_face([2521.mm,0.mm,0.mm], [2521.mm,0.mm,53.mm], [2521.mm,70.mm,53.mm])
-  f.pushpull(10.mm)
+  f = ge.add_face([2521.mm,10.mm,0.mm], [2521.mm,10.mm,53.mm], [2521.mm,70.mm,53.mm])
+  f.pushpull(-10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -662,7 +662,7 @@ end
   # Walkway Near bracket 6 arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 6 arm"
-  face = grp.entities.add_face([2979.mm,0.mm,55.mm], [2987.mm,0.mm,55.mm], [2987.mm,300.mm,55.mm], [2979.mm,300.mm,55.mm])
+  face = grp.entities.add_face([2979.mm,8.mm,55.mm], [2987.mm,8.mm,55.mm], [2987.mm,300.mm,55.mm], [2979.mm,300.mm,55.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -674,8 +674,8 @@ end
   grp = ents.add_group
   grp.name = "Walkway Near bracket 6 gusset"
   ge = grp.entities
-  f = ge.add_face([2979.mm,0.mm,0.mm], [2979.mm,0.mm,55.mm], [2979.mm,70.mm,55.mm])
-  f.pushpull(8.mm)
+  f = ge.add_face([2979.mm,8.mm,0.mm], [2979.mm,8.mm,55.mm], [2979.mm,70.mm,55.mm])
+  f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -734,7 +734,7 @@ end
   # Walkway Near bracket 7 arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 7 arm"
-  face = grp.entities.add_face([3436.mm,0.mm,55.mm], [3444.mm,0.mm,55.mm], [3444.mm,300.mm,55.mm], [3436.mm,300.mm,55.mm])
+  face = grp.entities.add_face([3436.mm,8.mm,55.mm], [3444.mm,8.mm,55.mm], [3444.mm,300.mm,55.mm], [3436.mm,300.mm,55.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -746,8 +746,8 @@ end
   grp = ents.add_group
   grp.name = "Walkway Near bracket 7 gusset"
   ge = grp.entities
-  f = ge.add_face([3436.mm,0.mm,0.mm], [3436.mm,0.mm,55.mm], [3436.mm,70.mm,55.mm])
-  f.pushpull(8.mm)
+  f = ge.add_face([3436.mm,8.mm,0.mm], [3436.mm,8.mm,55.mm], [3436.mm,70.mm,55.mm])
+  f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -806,7 +806,7 @@ end
   # Walkway Near bracket 8 arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 8 arm"
-  face = grp.entities.add_face([3893.mm,0.mm,55.mm], [3901.mm,0.mm,55.mm], [3901.mm,300.mm,55.mm], [3893.mm,300.mm,55.mm])
+  face = grp.entities.add_face([3893.mm,8.mm,55.mm], [3901.mm,8.mm,55.mm], [3901.mm,300.mm,55.mm], [3893.mm,300.mm,55.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -818,8 +818,8 @@ end
   grp = ents.add_group
   grp.name = "Walkway Near bracket 8 gusset"
   ge = grp.entities
-  f = ge.add_face([3893.mm,0.mm,0.mm], [3893.mm,0.mm,55.mm], [3893.mm,70.mm,55.mm])
-  f.pushpull(8.mm)
+  f = ge.add_face([3893.mm,8.mm,0.mm], [3893.mm,8.mm,55.mm], [3893.mm,70.mm,55.mm])
+  f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -878,7 +878,7 @@ end
   # Walkway Far bracket 1 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 1 arm"
-  face = grp.entities.add_face([694.mm,2062.mm,55.mm], [702.mm,2062.mm,55.mm], [702.mm,2362.mm,55.mm], [694.mm,2362.mm,55.mm])
+  face = grp.entities.add_face([694.mm,2062.mm,55.mm], [702.mm,2062.mm,55.mm], [702.mm,2354.mm,55.mm], [694.mm,2354.mm,55.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -890,8 +890,8 @@ end
   grp = ents.add_group
   grp.name = "Walkway Far bracket 1 gusset"
   ge = grp.entities
-  f = ge.add_face([694.mm,2362.mm,0.mm], [694.mm,2362.mm,55.mm], [694.mm,2292.mm,55.mm])
-  f.pushpull(8.mm)
+  f = ge.add_face([694.mm,2354.mm,0.mm], [694.mm,2354.mm,55.mm], [694.mm,2292.mm,55.mm])
+  f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -950,7 +950,7 @@ end
   # Walkway Far bracket 2 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 2 arm"
-  face = grp.entities.add_face([1151.mm,2062.mm,55.mm], [1159.mm,2062.mm,55.mm], [1159.mm,2362.mm,55.mm], [1151.mm,2362.mm,55.mm])
+  face = grp.entities.add_face([1151.mm,2062.mm,55.mm], [1159.mm,2062.mm,55.mm], [1159.mm,2354.mm,55.mm], [1151.mm,2354.mm,55.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -962,8 +962,8 @@ end
   grp = ents.add_group
   grp.name = "Walkway Far bracket 2 gusset"
   ge = grp.entities
-  f = ge.add_face([1151.mm,2362.mm,0.mm], [1151.mm,2362.mm,55.mm], [1151.mm,2292.mm,55.mm])
-  f.pushpull(8.mm)
+  f = ge.add_face([1151.mm,2354.mm,0.mm], [1151.mm,2354.mm,55.mm], [1151.mm,2292.mm,55.mm])
+  f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -1022,7 +1022,7 @@ end
   # Walkway Far bracket 3 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 3 arm"
-  face = grp.entities.add_face([1608.mm,2062.mm,55.mm], [1616.mm,2062.mm,55.mm], [1616.mm,2362.mm,55.mm], [1608.mm,2362.mm,55.mm])
+  face = grp.entities.add_face([1608.mm,2062.mm,55.mm], [1616.mm,2062.mm,55.mm], [1616.mm,2354.mm,55.mm], [1608.mm,2354.mm,55.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -1034,8 +1034,8 @@ end
   grp = ents.add_group
   grp.name = "Walkway Far bracket 3 gusset"
   ge = grp.entities
-  f = ge.add_face([1608.mm,2362.mm,0.mm], [1608.mm,2362.mm,55.mm], [1608.mm,2292.mm,55.mm])
-  f.pushpull(8.mm)
+  f = ge.add_face([1608.mm,2354.mm,0.mm], [1608.mm,2354.mm,55.mm], [1608.mm,2292.mm,55.mm])
+  f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -1094,7 +1094,7 @@ end
   # Walkway Far bracket 4 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 4 arm"
-  face = grp.entities.add_face([2065.mm,2062.mm,55.mm], [2073.mm,2062.mm,55.mm], [2073.mm,2362.mm,55.mm], [2065.mm,2362.mm,55.mm])
+  face = grp.entities.add_face([2065.mm,2062.mm,55.mm], [2073.mm,2062.mm,55.mm], [2073.mm,2354.mm,55.mm], [2065.mm,2354.mm,55.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -1106,8 +1106,8 @@ end
   grp = ents.add_group
   grp.name = "Walkway Far bracket 4 gusset"
   ge = grp.entities
-  f = ge.add_face([2065.mm,2362.mm,0.mm], [2065.mm,2362.mm,55.mm], [2065.mm,2292.mm,55.mm])
-  f.pushpull(8.mm)
+  f = ge.add_face([2065.mm,2354.mm,0.mm], [2065.mm,2354.mm,55.mm], [2065.mm,2292.mm,55.mm])
+  f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -1166,7 +1166,7 @@ end
   # Walkway Far bracket 5 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 5 arm"
-  face = grp.entities.add_face([2522.mm,2062.mm,55.mm], [2530.mm,2062.mm,55.mm], [2530.mm,2362.mm,55.mm], [2522.mm,2362.mm,55.mm])
+  face = grp.entities.add_face([2522.mm,2062.mm,55.mm], [2530.mm,2062.mm,55.mm], [2530.mm,2354.mm,55.mm], [2522.mm,2354.mm,55.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -1178,8 +1178,8 @@ end
   grp = ents.add_group
   grp.name = "Walkway Far bracket 5 gusset"
   ge = grp.entities
-  f = ge.add_face([2522.mm,2362.mm,0.mm], [2522.mm,2362.mm,55.mm], [2522.mm,2292.mm,55.mm])
-  f.pushpull(8.mm)
+  f = ge.add_face([2522.mm,2354.mm,0.mm], [2522.mm,2354.mm,55.mm], [2522.mm,2292.mm,55.mm])
+  f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -1238,7 +1238,7 @@ end
   # Walkway Far bracket 6 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 6 arm"
-  face = grp.entities.add_face([2979.mm,2062.mm,55.mm], [2987.mm,2062.mm,55.mm], [2987.mm,2362.mm,55.mm], [2979.mm,2362.mm,55.mm])
+  face = grp.entities.add_face([2979.mm,2062.mm,55.mm], [2987.mm,2062.mm,55.mm], [2987.mm,2354.mm,55.mm], [2979.mm,2354.mm,55.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -1250,8 +1250,8 @@ end
   grp = ents.add_group
   grp.name = "Walkway Far bracket 6 gusset"
   ge = grp.entities
-  f = ge.add_face([2979.mm,2362.mm,0.mm], [2979.mm,2362.mm,55.mm], [2979.mm,2292.mm,55.mm])
-  f.pushpull(8.mm)
+  f = ge.add_face([2979.mm,2354.mm,0.mm], [2979.mm,2354.mm,55.mm], [2979.mm,2292.mm,55.mm])
+  f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -1310,7 +1310,7 @@ end
   # Walkway Far bracket 7 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 7 arm"
-  face = grp.entities.add_face([3436.mm,2062.mm,55.mm], [3444.mm,2062.mm,55.mm], [3444.mm,2362.mm,55.mm], [3436.mm,2362.mm,55.mm])
+  face = grp.entities.add_face([3436.mm,2062.mm,55.mm], [3444.mm,2062.mm,55.mm], [3444.mm,2354.mm,55.mm], [3436.mm,2354.mm,55.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -1322,8 +1322,8 @@ end
   grp = ents.add_group
   grp.name = "Walkway Far bracket 7 gusset"
   ge = grp.entities
-  f = ge.add_face([3436.mm,2362.mm,0.mm], [3436.mm,2362.mm,55.mm], [3436.mm,2292.mm,55.mm])
-  f.pushpull(8.mm)
+  f = ge.add_face([3436.mm,2354.mm,0.mm], [3436.mm,2354.mm,55.mm], [3436.mm,2292.mm,55.mm])
+  f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -1382,7 +1382,7 @@ end
   # Walkway Far bracket 8 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 8 arm"
-  face = grp.entities.add_face([3893.mm,2062.mm,55.mm], [3901.mm,2062.mm,55.mm], [3901.mm,2362.mm,55.mm], [3893.mm,2362.mm,55.mm])
+  face = grp.entities.add_face([3893.mm,2062.mm,55.mm], [3901.mm,2062.mm,55.mm], [3901.mm,2354.mm,55.mm], [3893.mm,2354.mm,55.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -1394,8 +1394,8 @@ end
   grp = ents.add_group
   grp.name = "Walkway Far bracket 8 gusset"
   ge = grp.entities
-  f = ge.add_face([3893.mm,2362.mm,0.mm], [3893.mm,2362.mm,55.mm], [3893.mm,2292.mm,55.mm])
-  f.pushpull(8.mm)
+  f = ge.add_face([3893.mm,2354.mm,0.mm], [3893.mm,2354.mm,55.mm], [3893.mm,2292.mm,55.mm])
+  f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0

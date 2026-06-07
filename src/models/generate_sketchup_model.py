@@ -542,18 +542,21 @@ def walkway_brackets():
                 parts.append(ruby_cylinder(f"{nm} bolt M12",
                               x + dx, y_plate - 6, bz, 6, b + 12,
                               color="#505058", axis="y"))
-            # 3. horizontal cantilever arm at grate level (deck rests on it)
-            y_arm = wall_yd if sign > 0 else wall_yd - rch
+            # 3. horizontal cantilever arm at grate level (deck rests on it) — its
+            #    back end butts the plate face so the arm→plate joint draws an edge
+            y_arm = (wall_yd + b) if sign > 0 else (wall_yd - rch)
             parts.append(ruby_box(f"{nm} arm", x - b / 2, y_arm, arm_bot,
-                                  b, rch, arm_d, color=C_STEEL))
-            # 4. gusset triangle bracing the arm from below (wall→70mm out)
+                                  b, rch - b, arm_d, color=C_STEEL))
+            # 4. gusset triangle bracing the arm from below — directly UNDER the arm
+            #    (push −b), back edge butted to the plate face for a clean joint
             xg = x - b / 2
+            y_back = wall_yd + sign * b
             y_far = wall_yd + sign * gusset_reach
             parts.append(ruby_tri(f"{nm} gusset",
-                                  (xg, wall_yd, 0),
-                                  (xg, wall_yd, arm_bot),
+                                  (xg, y_back, 0),
+                                  (xg, y_back, arm_bot),
                                   (xg, y_far, arm_bot),
-                                  b, color=C_STEEL))
+                                  -b, color=C_STEEL))
     return '\n'.join(parts)
 
 

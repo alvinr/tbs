@@ -265,9 +265,9 @@ model.definitions.purge_unused
   # Cantilever 1 arm (to X470, ~50mm deep)
   grp = ents.add_group
   grp.name = "Cantilever 1 arm (to X470, ~50mm deep)"
-  face = grp.entities.add_face([165.mm,177.mm,65.mm], [470.mm,177.mm,65.mm], [470.mm,217.mm,65.mm], [165.mm,217.mm,65.mm])
+  face = grp.entities.add_face([165.mm,177.mm,75.mm], [470.mm,177.mm,75.mm], [470.mm,217.mm,75.mm], [165.mm,217.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(40.mm)
   mat = model.materials["Cantilever 1 post (50x50 SHS)"] || model.materials.add("Cantilever 1 post (50x50 SHS)")
   mat.color = Sketchup::Color.new(200, 120, 30)
   mat.alpha = 1.0
@@ -298,9 +298,9 @@ model.definitions.purge_unused
   # Cantilever 2 arm (to X470, ~50mm deep)
   grp = ents.add_group
   grp.name = "Cantilever 2 arm (to X470, ~50mm deep)"
-  face = grp.entities.add_face([165.mm,570.mm,65.mm], [470.mm,570.mm,65.mm], [470.mm,610.mm,65.mm], [165.mm,610.mm,65.mm])
+  face = grp.entities.add_face([165.mm,570.mm,75.mm], [470.mm,570.mm,75.mm], [470.mm,610.mm,75.mm], [165.mm,610.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(40.mm)
   mat = model.materials["Cantilever 1 post (50x50 SHS)"] || model.materials.add("Cantilever 1 post (50x50 SHS)")
   mat.color = Sketchup::Color.new(200, 120, 30)
   mat.alpha = 1.0
@@ -331,9 +331,9 @@ model.definitions.purge_unused
   # Cantilever 3 arm (to X470, ~50mm deep)
   grp = ents.add_group
   grp.name = "Cantilever 3 arm (to X470, ~50mm deep)"
-  face = grp.entities.add_face([165.mm,964.mm,65.mm], [470.mm,964.mm,65.mm], [470.mm,1004.mm,65.mm], [165.mm,1004.mm,65.mm])
+  face = grp.entities.add_face([165.mm,964.mm,75.mm], [470.mm,964.mm,75.mm], [470.mm,1004.mm,75.mm], [165.mm,1004.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(40.mm)
   mat = model.materials["Cantilever 1 post (50x50 SHS)"] || model.materials.add("Cantilever 1 post (50x50 SHS)")
   mat.color = Sketchup::Color.new(200, 120, 30)
   mat.alpha = 1.0
@@ -364,9 +364,9 @@ model.definitions.purge_unused
   # Cantilever 4 arm (to X470, ~50mm deep)
   grp = ents.add_group
   grp.name = "Cantilever 4 arm (to X470, ~50mm deep)"
-  face = grp.entities.add_face([165.mm,1358.mm,65.mm], [470.mm,1358.mm,65.mm], [470.mm,1398.mm,65.mm], [165.mm,1398.mm,65.mm])
+  face = grp.entities.add_face([165.mm,1358.mm,75.mm], [470.mm,1358.mm,75.mm], [470.mm,1398.mm,75.mm], [165.mm,1398.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(40.mm)
   mat = model.materials["Cantilever 1 post (50x50 SHS)"] || model.materials.add("Cantilever 1 post (50x50 SHS)")
   mat.color = Sketchup::Color.new(200, 120, 30)
   mat.alpha = 1.0
@@ -397,9 +397,9 @@ model.definitions.purge_unused
   # Cantilever 5 arm (to X470, ~50mm deep)
   grp = ents.add_group
   grp.name = "Cantilever 5 arm (to X470, ~50mm deep)"
-  face = grp.entities.add_face([165.mm,1752.mm,65.mm], [470.mm,1752.mm,65.mm], [470.mm,1792.mm,65.mm], [165.mm,1792.mm,65.mm])
+  face = grp.entities.add_face([165.mm,1752.mm,75.mm], [470.mm,1752.mm,75.mm], [470.mm,1792.mm,75.mm], [165.mm,1792.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(40.mm)
   mat = model.materials["Cantilever 1 post (50x50 SHS)"] || model.materials.add("Cantilever 1 post (50x50 SHS)")
   mat.color = Sketchup::Color.new(200, 120, 30)
   mat.alpha = 1.0
@@ -430,9 +430,9 @@ model.definitions.purge_unused
   # Cantilever 6 arm (to X470, ~50mm deep)
   grp = ents.add_group
   grp.name = "Cantilever 6 arm (to X470, ~50mm deep)"
-  face = grp.entities.add_face([165.mm,2145.mm,65.mm], [470.mm,2145.mm,65.mm], [470.mm,2185.mm,65.mm], [165.mm,2185.mm,65.mm])
+  face = grp.entities.add_face([165.mm,2145.mm,75.mm], [470.mm,2145.mm,75.mm], [470.mm,2185.mm,75.mm], [165.mm,2185.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(40.mm)
   mat = model.materials["Cantilever 1 post (50x50 SHS)"] || model.materials.add("Cantilever 1 post (50x50 SHS)")
   mat.color = Sketchup::Color.new(200, 120, 30)
   mat.alpha = 1.0
@@ -562,9 +562,9 @@ txt = entities.add_text("FLOOR-LEG CANTILEVER
 bolted to bare floor (X<170,
 outside tray) — replaces edge beam", anc, Geom::Vector3d.new(-700.mm, -700.mm, 500.mm))
 txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(470.mm, 984.mm, 65.mm)
-txt = entities.add_text("ARM now ~50mm deep (was 13)
-bottom Z65 clears spray bar (Z60)", anc, Geom::Vector3d.new(520.mm, -650.mm, 320.mm))
+anc = Geom::Point3d.new(470.mm, 984.mm, 75.mm)
+txt = entities.add_text("ARM 40mm deep (was 13)
+bottom Z75 clears spray bar (Z60) by 15mm", anc, Geom::Vector3d.new(520.mm, -650.mm, 320.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(770.mm, 1180.mm, 115.mm)
 txt = entities.add_text("PUNCH-OUT cantilevers 300mm;

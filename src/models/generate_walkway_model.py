@@ -263,8 +263,9 @@ def cantilevers():
     return '\n'.join(parts)
 
 
-# Near-wall X positions for the isolated type-catalog ("Cantilevers" scene).
-CT_STD_X, CT_WIDE_X, CT_SEAT_X = 2400, 3400, 4400
+# Near-wall X positions for the isolated type-catalog ("Cantilevers" scene),
+# ordered left→right: edge-beam seat, standard, widened.
+CT_SEAT_X, CT_STD_X, CT_WIDE_X = 2400, 3400, 4400
 
 
 def _seat_type_parts():
@@ -318,16 +319,16 @@ def cantilever_types():
 def cantilever_type_labels():
     """Ruby: a callout naming each unique bracket type, on the 'Cantilever Types'
     tag so they show only in the 'Cantilevers' scene."""
-    labels = [
-        (CT_STD_X, 0, BRK_H,
-         "STANDARD CANTILEVER\n8mm plate / 150 leg / 300 arm\n3x M12 (triangular)",
-         -200, -300, 720),
-        (CT_WIDE_X, 0, k.WALKWAY_WIDE_BRACKET_H,
-         "WIDENED CANTILEVER (EP / battery zone)\n10mm plate / 200 leg / 500 arm\n4x M12 (rectangular)",
-         0, -300, 850),
+    labels = [  # left→right: edge-beam seat, standard, widened
         (CT_SEAT_X, 0, k.LEFT_WK_BEAM_Z1,
          "EDGE-BEAM SEAT (left removable walkway)\n40x40x3 SHS edge beam on bolt-through wall seat\nsimply supported, not a cantilever",
-         200, -300, 800),
+         -200, -300, 800),
+        (CT_STD_X, 0, BRK_H,
+         "STANDARD CANTILEVER\n8mm plate / 150 leg / 300 arm\n3x M12 (triangular)",
+         0, -300, 720),
+        (CT_WIDE_X, 0, k.WALKWAY_WIDE_BRACKET_H,
+         "WIDENED CANTILEVER (EP / battery zone)\n10mm plate / 200 leg / 500 arm\n4x M12 (rectangular)",
+         200, -300, 850),
     ]
     rows = []
     for x, y, z, text, dx, dy, dz in labels:

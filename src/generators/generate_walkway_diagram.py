@@ -2085,12 +2085,13 @@ def sheet5():
 # the IBC platform-beam wall seats. Two views.
 #
 # VIEW A — Section along the beam axis (Yd-Z plane at X=470):
-#   Wall at Yd=0 (exterior to the left). Interior seat plate forms a pocket; the
-#   beam end drops onto its Z52 ledge. 3x M12 bolts run through the wall to an
-#   exterior backing plate (heads outside). Grating bears on the Z65 ledge.
+#   Wall at Yd=0 (exterior to the left). A drop-in pocket (floor + triangular gusset
+#   sides) on an interior mounting plate cradles the beam end. 4x M12 bolts at the
+#   plate corners run through the wall to a matching exterior plate (heads outside,
+#   clear of the pocket). Grating bears on the Z65 ledge.
 #
 # VIEW B — Exterior elevation of the backing plate (X-Z plane, from outside):
-#   100x180x6mm plate with the 3x M12 bolts in a triangular pattern.
+#   100x135x6mm plate with the 4x M12 bolts at the corners (clear of the pocket).
 #
 # Scale ~4:1 for clarity.
 # ===============================================================================
@@ -2102,11 +2103,11 @@ def sheet6():
     WALL_T = 1.6
     CORR_DEPTH = 38
     SEAT_T = LEFT_WK_SEAT_PLATE[2]      # 6mm seat / backing plate
-    PLATE_W, PLATE_H, PLATE_T = LEFT_WK_SEAT_PLATE   # 100 x 180 x 6
+    PLATE_W, PLATE_H, PLATE_T = LEFT_WK_SEAT_PLATE   # 100 x 135 x 6
     BEAM_SZ = LEFT_WK_BEARER_SIZE        # 40mm
     BEAM_T  = LEFT_WK_BEARER_T           # 3mm
     BOLT_D  = LEFT_WK_SEAT_BOLT_D        # 12mm
-    NB      = LEFT_WK_SEAT_BOLT_N        # 3 bolts
+    NB      = LEFT_WK_SEAT_BOLT_N        # 4 bolts
 
     # Beam vertical envelope (matches sheets 4/5)
     grate_bot = WALKWAY_H - WALKWAY_GRATE_T   # 65 (ledge)
@@ -2147,22 +2148,32 @@ def sheet6():
 
     # Exterior backing plate (edge-on): 6mm bar outside the wall
     ext_x = -CORR_DEPTH - SEAT_T
-    plate_zc = beam_bot + PLATE_H/2 - 30
+    plate_zc = (beam_bot + beam_top) / 2          # centre the plate on the beam (matches the 3D)
     axA.add_patch(Rectangle((ext_x, plate_zc - PLATE_H/2), SEAT_T, PLATE_H,
                             fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=5))
     leader(axA, ext_x, plate_zc + PLATE_H/2 - 8, ext_x - 18, plate_zc + PLATE_H/2 + 16,
            f"EXTERIOR BACKING\nPLATE {PLATE_W}x{PLATE_H}x{PLATE_T}mm\n(SEE VIEW B)",
            color=C_OUT, fs=5.5, ha="center", va="bottom",
            arrow_style="-|>", font=FONT)
+    # Interior mounting plate (the pocket floor + gussets weld to its container face)
+    axA.add_patch(Rectangle((0, plate_zc - PLATE_H/2), SEAT_T, PLATE_H,
+                            fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))
+    leader(axA, SEAT_T, plate_zc - PLATE_H/2 + 8, SEAT_T + 26, plate_zc - PLATE_H/2 - 14,
+           f"INTERIOR MOUNTING\nPLATE {PLATE_W}x{PLATE_H}x{PLATE_T}mm",
+           color=C_OUT, fs=5.5, ha="center", va="top",
+           arrow_style="-|>", font=FONT)
 
-    # Interior seat plate — L pocket: bottom ledge at Z=beam_bot + back stop
-    seat_reach = 72
-    axA.add_patch(Rectangle((0, beam_bot - SEAT_T), seat_reach, SEAT_T,
-                            fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))   # ledge
-    axA.add_patch(Rectangle((seat_reach - SEAT_T, beam_bot - SEAT_T), SEAT_T, 30,
-                            fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))   # front lip
-    leader(axA, seat_reach - SEAT_T/2, beam_bot + 20, seat_reach + 22, beam_bot + 40,
-           "INTERIOR SEAT PLATE\n(POCKET — DROP-IN)\n6mm STEEL",
+    # Drop-in pocket: a FLOOR piece (beam drops onto it) + a triangular GUSSET side
+    # at each pocket edge (shown light — it sits in the X-edge planes, beside the
+    # beam). Both 6mm, welded to the interior mounting plate at Yd=SEAT_T.
+    seat_reach = 80
+    axA.add_patch(Rectangle((SEAT_T, beam_bot - SEAT_T), seat_reach - SEAT_T, SEAT_T,
+                            fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))   # floor piece
+    axA.add_patch(Polygon([(SEAT_T, beam_bot), (SEAT_T, beam_top),
+                           (seat_reach, beam_bot)], closed=True,
+                          fc=C_STEEL, ec=C_OUT, lw=0.9, alpha=0.45, zorder=4))  # gusset side
+    leader(axA, SEAT_T + 4, beam_bot - SEAT_T/2, seat_reach + 22, beam_bot - 14,
+           "FLOOR PIECE 6mm\n+ TRIANGULAR GUSSET\nSIDES (x2, 6mm)",
            color=C_OUT, fs=5.5, ha="left", va="center",
            arrow_style="-|>", font=FONT)
 
@@ -2183,16 +2194,17 @@ def sheet6():
              ha="left", va="center", fontsize=4.5, color=C_OUT,
              fontfamily="monospace", zorder=12)
 
-    # 3x M12 through-bolts (run horizontally along Yd through wall + plates)
-    bolt_zs = [beam_bot + 8, beam_bot + 8, beam_bot + 30]   # triangular pattern projected
+    # 4x M12 through-bolts at the plate corners → 2 levels in this section, both
+    # CLEAR of the pocket (above the beam / below the floor) so the nuts are reachable
+    bolt_zs = [plate_zc - 42, plate_zc + 42]
     for k, bz in enumerate(sorted(set(bolt_zs))):
-        axA.plot([ext_x - 6, seat_reach - 6], [bz, bz], color=C_BOLT,
+        axA.plot([ext_x - 6, SEAT_T + 4], [bz, bz], color=C_BOLT,
                  lw=2.2, zorder=10, solid_capstyle="butt")
         # head outside
         axA.add_patch(Rectangle((ext_x - 6, bz - 4), 6, 8, fc=C_BOLT,
                                 ec=C_OUT, lw=0.8, zorder=11))
-        # nut inside
-        axA.add_patch(Rectangle((seat_reach - 6, bz - 4), 6, 8, fc=C_BOLT,
+        # nut inside (on the interior mounting plate)
+        axA.add_patch(Rectangle((SEAT_T - 2, bz - 4), 6, 8, fc=C_BOLT,
                                 ec=C_OUT, lw=0.8, zorder=11))
     leader(axA, ext_x - 3, sorted(set(bolt_zs))[0], ext_x - 30, beam_bot - 6,
            f"{NB}x M{BOLT_D} THROUGH-BOLT\nHEAD OUTSIDE / NUT INSIDE",
@@ -2219,8 +2231,8 @@ def sheet6():
     pcz = 70
     axB.add_patch(Rectangle((-PLATE_W/2, pcz - PLATE_H/2), PLATE_W, PLATE_H,
                             fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=5))
-    # 3 bolts, triangular (matches model offsets)
-    offs = [(0, 22), (-28, -16), (28, -16)]
+    # 4 bolts at the plate corners (matches model offsets — clear of the central pocket)
+    offs = [(-32, -42), (32, -42), (-32, 42), (32, 42)]
     for ox, oz in offs:
         cx, cz = ox, pcz + oz
         axB.add_patch(Circle((cx, cz), BOLT_D/2 + 2, fc=C_BOLT, ec=C_OUT,
@@ -2229,8 +2241,13 @@ def sheet6():
                              lw=0.6, zorder=9))
         axB.plot([cx - 4, cx + 4], [cz, cz], color=C_BOLT, lw=0.6, zorder=10)
         axB.plot([cx, cx], [cz - 4, cz + 4], color=C_BOLT, lw=0.6, zorder=10)
-    leader(axB, -28, pcz - 16, -PLATE_W/2 - 22, pcz - 44,
-           f"{NB}x M{BOLT_D} BOLTS\nTRIANGULAR PATTERN",
+    # dashed footprint of the central pocket the bolts must clear
+    axB.add_patch(Rectangle((-26, pcz - 23), 52, 46, fill=False, ec="#888",
+                            lw=0.8, ls=(0, (4, 3)), zorder=6))
+    axB.text(0, pcz, "POCKET", ha="center", va="center", fontsize=5,
+             color="#888", fontfamily="monospace", zorder=7)
+    leader(axB, -32, pcz - 42, -PLATE_W/2 - 22, pcz - 60,
+           f"{NB}x M{BOLT_D} BOLTS\nAT CORNERS (CLEAR OF POCKET)",
            color=C_BOLT, fs=6, ha="center", va="top",
            arrow_style="-|>", font=FONT)
     draw_dim_h(axB, -PLATE_W/2, PLATE_W/2, pcz - PLATE_H/2 - 12,
@@ -2242,10 +2259,10 @@ def sheet6():
     notes = [
         "WALL-SEAT BRACKET (x2, one per wall):",
         f"1. Edge beam SIMPLY SUPPORTED wall-to-wall — end reaction ~0.5 kN each.",
-        f"2. Interior seat plate (6mm) forms a drop-in pocket; beam lifts straight out.",
-        f"3. {NB}x M{BOLT_D} bolts THROUGH the corrugated wall to a {PLATE_W}x{PLATE_H}x{PLATE_T}mm exterior backing plate (heads outside).",
+        f"2. DROP-IN POCKET — 6mm floor piece + 2 triangular gusset sides at the pocket edges — welded to an interior mounting plate; beam drops in, lifts straight out.",
+        f"3. {NB}x M{BOLT_D} bolts at the plate CORNERS (clear of the pocket, so the nuts are reachable) THROUGH the corrugated wall to a MATCHING {PLATE_W}x{PLATE_H}x{PLATE_T}mm exterior plate (heads outside).",
         f"4. Same load path as the IBC platform-beam wall seats.",
-        f"5. DEMOUNTABLE: beam + interior seat plates come off for transport; bolts + backing plate stay on the wall.",
+        f"5. DEMOUNTABLE: beam + interior pocket/mounting plate come off for transport; bolts + exterior plate stay on the wall.",
     ]
     draw_notes(axA, notes, sx(-88), sy(-4), spacing=sy(7), fs=6.5,
                ha="left", width=sx(250), font=FONT)

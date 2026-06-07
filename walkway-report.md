@@ -228,7 +228,7 @@ seats** — the same load path as the IBC platform beams, not a cantilever.
 | Component | Specification | Position |
 |-----------|--------------|----------|
 | Inner-edge edge beam | 40×40×3mm **steel** SHS, full width 2362mm | X=470mm, spans wall-to-wall (Yd 0→2362), Z52–92 (top at Z≈92mm) |
-| Wall-seat bracket (×2) | 6mm steel seat plate + exterior backing plate (100×180×6mm) + 3× M12 through-bolts, each end | Near (Yd≈0) and far (Yd≈2362) container walls at X=470mm |
+| Wall-seat bracket (×2) | 6mm **drop-in pocket** (floor piece + 2 triangular gusset sides) on an interior mounting plate + matching exterior plate (both 100×135×6mm) + **4× M12 through-bolts at the plate corners** (clear of the pocket), each end | Near (Yd≈0) and far (Yd≈2362) container walls at X=470mm |
 | Floor-standing support legs | 25×25×3mm aluminum SHS, 3 legs | X=140mm (on bare floor outside tray), 440mm spacing |
 | Foot plates | 60×60×3mm aluminum with rubber pad | At base of each floor leg |
 | Bearing strip | 15mm aluminum flat bar | On processing tray rim at X=170mm (removable) |
@@ -245,14 +245,16 @@ kerb**. The grating's inner edge rests on a Z65 ledge along the beam and is loca
 laterally by the proud kerb (no fasteners, so it lifts straight out).
 
 The edge beam is **simply supported wall-to-wall** on a seat bracket bolted through
-the corrugated container wall at each end — an interior seat plate, an exterior
-backing plate, and 3× M12 through-bolts, mirroring the IBC wall-seat brackets and
-the walkway-cantilever reinforcing plates. An operator's load travels grating →
+the corrugated container wall at each end — a 6mm **drop-in pocket** (floor piece +
+two triangular gusset sides) welded to an interior mounting plate, a **matching
+exterior plate**, and **4× M12 through-bolts at the plate corners** (clear of the
+pocket so the nuts are reachable — the beam end drops into the pocket where the old
+3-bolt pattern would have blocked the nuts), mirroring the IBC wall-seat brackets. An operator's load travels grating →
 edge beam → wall as a clean end reaction, **not** a cantilever moment dumped on a
 bracket-arm tip. Because the seats sit at X=470mm — inside the panel's transport-
-slide path — the **edge beam and interior seat plates are demountable** (a few
-bolts) and lift out with the walkway before the panel slides; the through-bolts and
-exterior backing plates stay on the wall. The full-width beam also picks up the
+slide path — the **edge beam and the interior pocket/mounting plates are demountable**
+(a few bolts) and lift out with the walkway before the panel slides; the through-bolts
+and exterior plates stay on the wall. The full-width beam also picks up the
 near/far walkways' door-end grate edges at X=470mm, so no separate X=470mm
 cantilever bracket is needed.
 
@@ -321,9 +323,9 @@ pocket — no separate anti-slip restraint is needed.
 
 | Component | Specification |
 |-----------|--------------|
-| Interior seat plate | 6mm steel, formed seat pocket, drops the beam end ~50mm onto a horizontal ledge |
-| Exterior backing plate | 100×180×6mm steel — spreads the bolt reaction across the corrugated wall |
-| Through-bolts | 3× M12×80mm grade 8.8, triangular pattern, into the wall rib |
+| Interior mounting plate + pocket | 100×135×6mm steel plate carrying a **drop-in pocket** — a floor piece + two triangular gusset sides (all 6mm) — the beam end drops onto the floor between the gussets |
+| Exterior backing plate | **100×135×6mm** steel (matches the interior plate) — spreads the bolt reaction across the corrugated wall |
+| Through-bolts | **4× M12×80mm** grade 8.8 at the **plate corners** — clear of the pocket so the nuts are reachable, into the wall rib |
 | End reaction | ≈0.5kN per seat (1kN operator at midspan) |
 
 The beam end drops into the seat-plate pocket — located in X and Z, free to lift
@@ -467,8 +469,8 @@ distributes load across multiple rods.
 | 10 | M10 bolt kit (ceiling) | Through-bolt + nut + washer (ceiling attachment) | 20 (2 per plate) | $20–$35 |
 | 11 | M10 nut + washer set (bearer) | Nut + washer above and below bearer flange, per rod | 20 sets | $15–$25 |
 | 12 | Edge beam (left walkway inner edge) | 40×40×3mm **steel** SHS, 2362mm long (full width) | 1 | $35–$60 |
-| 12a | Wall-seat bracket (left edge beam) | 6mm steel seat plate + 100×180×6mm exterior backing plate, each end | 2 | $30–$55 |
-| 12b | M12×80mm through-bolt kit (wall seats) | Hex bolt + 2× washers + nut, grade 8.8 | 6 (3 per seat) | $9–$15 |
+| 12a | Wall-seat bracket (left edge beam) | 6mm drop-in pocket (floor + 2 triangular gussets) on a 100×135×6mm interior mounting plate + matching 100×135×6mm exterior plate, each end | 2 | $30–$55 |
+| 12b | M12×80mm through-bolt kit (wall seats) | Hex bolt + 2× washers + nut, grade 8.8 | 8 (4 per seat) | $9–$15 |
 | 13 | Floor support leg | 25×25×3mm aluminum SHS, 65mm tall | 3 | $10–$20 |
 | 14 | Foot plate | 60×60×3mm aluminum + 2mm rubber pad | 3 | $10–$15 |
 | 15 | Bearing strip | 15mm aluminum flat bar, ~2362mm long | 1 | $15–$25 |

@@ -210,16 +210,20 @@ def _cantilever_parts(nm, x, wall_yd, sign, reach, wide):
     y_plate = wall_yd if sign > 0 else wall_yd - b
     parts.append(ruby_box(f"{nm} plate", x - plate_w / 2, y_plate, 0,
                           plate_w, b, v, color=C_STEEL))
-    # horizontal cantilever arm at grate level (deck rests on it)
-    y_arm = wall_yd if sign > 0 else wall_yd - rch
+    # horizontal cantilever arm at grate level (deck rests on it) — its back end
+    # butts the plate's container-facing face so the arm→plate joint draws an edge
+    y_arm = (wall_yd + b) if sign > 0 else (wall_yd - rch)   # plate front .. outboard
     parts.append(ruby_box(f"{nm} arm", x - b / 2, y_arm, arm_bot,
-                          b, rch, arm_d, color=C_STEEL))
-    # gusset triangle bracing the arm from below
+                          b, rch - b, arm_d, color=C_STEEL))
+    # gusset triangle bracing the arm from below — same X as the arm (directly under
+    # it, push −b), and its back edge butts the plate's container-facing face so the
+    # gusset→plate joint reads as a clean edge (not passing through the plate)
     xg = x - b / 2
+    y_back = wall_yd + sign * b           # plate's container-facing face
     y_far = wall_yd + sign * gusset_reach
     parts.append(ruby_tri(f"{nm} gusset",
-                          (xg, wall_yd, 0), (xg, wall_yd, arm_bot),
-                          (xg, y_far, arm_bot), b, color=C_STEEL))
+                          (xg, y_back, 0), (xg, y_back, arm_bot),
+                          (xg, y_far, arm_bot), -b, color=C_STEEL))
     # EXTERIOR reinforcing plate on the outside wall face
     reinf_y0 = (-WALL_T - REINF_T) if sign > 0 else (C_WID + WALL_T)
     parts.append(ruby_box(f"{nm} ext reinf plate", x - rw / 2, reinf_y0,
@@ -269,39 +273,52 @@ CT_SEAT_X, CT_STD_X, CT_WIDE_X = 2400, 3400, 4400
 
 
 def _wall_seat_parts(nm, lxr, wall_yd, sign, beam_w, bz0, bz1):
-    """One IBC-style wall seat for the edge-beam end, per walkway Sheet 6 / Detail D:
-    a 6mm DROP-IN POCKET (bottom ledge + two side cleats the beam drops onto), a
-    100x180x6 EXTERIOR backing plate, and 3x M12 through-bolts (heads outside / nuts
-    inside). The bolt loads are taken by the BACKING PLATE — which is amply sized for
-    the triangular pattern — so the pocket is just a light cradle (this is the fix:
-    the bolts no longer have to fit a tiny interior plate). `sign`=+1 near wall
-    (pocket reaches +Yd), -1 far wall."""
-    st = 6                                              # 6mm seat steel (Sheet 6)
-    reach = 72                                          # pocket depth into container (Yd)
-    cradle_h = 30                                       # cleat height above the ledge
-    pw_x, ph_x, pt_x = k.LEFT_WK_SEAT_PLATE             # 100 x 180 x 6 exterior plate
+    """Drop-in pocket wall seat for the edge-beam end (redesign per Sheet 6 / Detail
+    D): a cradle = a FLOOR piece + two TRIANGULAR GUSSET sides (parallel to the beam,
+    triangular in side view, tapering down to the floor outboard) welded to an
+    INTERIOR mounting plate. That plate is bolted THROUGH the wall with **4x M12 at
+    the plate CORNERS — clear of the pocket** so the nuts are reachable — to a
+    MATCHING exterior backing plate. `sign`=+1 near wall (+Yd) / -1 far wall (-Yd)."""
+    st = k.LEFT_WK_SEAT_POCKET_T                        # 6mm pocket steel
+    reach = 80                                          # pocket depth into container (Yd)
+    pw, ph, pt = k.LEFT_WK_SEAT_PLATE                   # 100 x 135 x 6 plate (interior + exterior)
+    pz0 = 5                                             # mounting-plate Z start (straddles the pocket)
     cxm = lxr + beam_w / 2
-    zc = (bz0 + bz1) / 2
-    yled = wall_yd if sign > 0 else wall_yd - reach     # ledge Yd start
-    px0, pw = lxr - st, beam_w + 2 * st                 # pocket X span (beam + cleats)
+    s = 1 if sign > 0 else -1
+    floorz = bz0 - st                                   # floor: top at bz0
+    yw = wall_yd                                        # pocket wall (Yd=0) end
+    yb = wall_yd + s * pt                               # interior plate's container face (gusset butts here)
+    yo = wall_yd + s * reach                            # pocket outboard end
+    fy = min(yb, yo)                                    # floor Yd start (butts plate front)
+    iy = wall_yd if s > 0 else wall_yd - pt             # interior plate Yd
+    ey = (wall_yd - WALL_T - pt) if s > 0 else (wall_yd + WALL_T)   # exterior plate Yd
     parts = [
-        # bottom ledge — the beam end drops onto it (ledge top at Z=bz0)
-        ruby_box(f"{nm} pocket ledge", px0, yled, bz0 - st, pw, reach, st, color=C_STEEL),
-        # two side cleats cradling the beam in X (open top + inboard end → drop-in)
-        ruby_box(f"{nm} pocket cleat L", px0, yled, bz0 - st, st, reach, cradle_h + st, color=C_STEEL),
-        ruby_box(f"{nm} pocket cleat R", lxr + beam_w, yled, bz0 - st, st, reach, cradle_h + st, color=C_STEEL),
-        # exterior backing plate (100x180x6) carrying the bolt pattern, on the outside wall face
-        ruby_box(f"{nm} ext backing plate", cxm - pw_x / 2,
-                 (-WALL_T - pt_x) if sign > 0 else (C_WID + WALL_T),
-                 zc - ph_x / 2, pw_x, pt_x, ph_x, color=C_STEEL),
+        # interior mounting plate + matching exterior backing plate (bolted through wall)
+        ruby_box(f"{nm} interior plate", cxm - pw / 2, iy, pz0, pw, pt, ph, color=C_STEEL),
+        ruby_box(f"{nm} exterior plate", cxm - pw / 2, ey, pz0, pw, pt, ph, color=C_STEEL),
+        # floor piece — the beam end drops onto it (floor top at Z=bz0); its back
+        # edge butts the plate front too (length reach−pt)
+        ruby_box(f"{nm} pocket floor", cxm - (beam_w / 2 + st), fy, floorz,
+                 beam_w + 2 * st, reach - pt, st, color=C_STEEL),
     ]
-    shank_y0 = (-WALL_T - pt_x) if sign > 0 else (wall_yd - st)
-    shank_len = WALL_T + pt_x + st
-    for dx, dz in [(0, 22), (-28, -16), (28, -16)]:                 # triangular M12 pattern
-        bx = cxm + dx
-        parts.append(ruby_cylinder(f"{nm} bolt M12", bx, shank_y0, zc + dz, 6, shank_len, color=C_BOLT, axis="y"))
-        hy = (-WALL_T - pt_x - 6) if sign > 0 else (C_WID + WALL_T + pt_x)
-        parts.append(ruby_box(f"{nm} bolt head", bx - 9, hy, zc + dz - 9, 18, 6, 18, color=C_HEX))
+    # two triangular gusset sides — in the 6mm gaps at the POCKET'S OUTER EDGES
+    # (flush with the floor's outer edges, beside the beam — not overlapping it),
+    # tapering from full height at the wall down to the floor outboard; their back
+    # edge butts the interior plate's face (yb) so the gusset→plate joint reads clean
+    for gx, push in ((lxr, st), (lxr + beam_w, -st)):
+        parts.append(ruby_tri(f"{nm} pocket gusset",
+                              (gx, yb, floorz), (gx, yb, bz1), (gx, yo, floorz),
+                              push, color=C_STEEL))
+    # 4x M12 through-bolts at the plate corners (clear of the pocket) + hex heads
+    ext_outer = (wall_yd - WALL_T - pt) if s > 0 else (wall_yd + WALL_T + pt)
+    int_inner = (wall_yd + pt) if s > 0 else (wall_yd - pt)
+    shank_y0 = min(ext_outer, int_inner)
+    shank_len = WALL_T + 2 * pt
+    for bx in (cxm - 32, cxm + 32):
+        for bz in (pz0 + 25, pz0 + ph - 25):
+            parts.append(ruby_cylinder(f"{nm} bolt M12", bx, shank_y0, bz, 6, shank_len, color=C_BOLT, axis="y"))
+            hy = (ext_outer - 6) if s > 0 else ext_outer
+            parts.append(ruby_box(f"{nm} bolt head", bx - 9, hy, bz - 9, 18, 6, 18, color=C_HEX))
     return parts
 
 
@@ -312,10 +329,12 @@ def _seat_type_parts():
     lxr = CT_SEAT_X
     beam_w = L_BEARER
     bz0, bz1 = k.LEFT_WK_BEAM_Z0, k.LEFT_WK_BEAM_Z1
+    pt = k.LEFT_WK_SEAT_PLATE[2]            # 6mm plate; the beam end butts its front face
     parts = [
-        # edge-beam stub dropped into the pocket, running +Y along the wall
-        ruby_box("Type Seat edge beam (40x40x3 SHS)", lxr, -50, bz0,
-                 beam_w, 500, bz1 - bz0, color=C_STEEL),
+        # edge-beam stub in the pocket; its end butts the interior plate's front
+        # face (Yd=pt) so the beam→plate joint draws an edge
+        ruby_box("Type Seat edge beam (40x40x3 SHS)", lxr, pt, bz0,
+                 beam_w, 450, bz1 - bz0, color=C_STEEL),
     ]
     parts += _wall_seat_parts("Type Seat", lxr, 0, +1, beam_w, bz0, bz1)
     return parts
@@ -411,10 +430,12 @@ def left_support():
     beam_w = L_BEARER                          # 40 — section
 
     parts = []
-    # Full-width STEEL edge beam (kerb), simply supported wall-to-wall.
-    # 40x40 (not 50) + raised to Z52 so it clears the near/far tray rims it crosses.
+    # STEEL edge beam (kerb), simply supported wall-to-wall — its ends butt the
+    # seat plates' container-facing faces (Yd=pt..C_WID-pt) so each beam→plate joint
+    # draws an edge.  40x40 + raised to Z52 to clear the near/far tray rims it crosses.
+    pt = k.LEFT_WK_SEAT_PLATE[2]
     parts.append(ruby_box("Left edge beam (40x40x3 steel SHS, full width)",
-                          lxr, 0, bz0, beam_w, C_WID, bz1 - bz0, color=C_STEEL))
+                          lxr, pt, bz0, beam_w, C_WID - 2 * pt, bz1 - bz0, color=C_STEEL))
 
     # IBC-style wall seats — drop-in pocket + 100x180x6 backing plate + 3x M12,
     # one at each wall end (Sheet 6 / Detail D).

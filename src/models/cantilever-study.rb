@@ -199,7 +199,7 @@ model.definitions.purge_unused
   # Spray Bar beam (40x40, Z20-60)
   grp = ents.add_group
   grp.name = "Spray Bar beam (40x40, Z20-60)"
-  face = grp.entities.add_face([170.mm,1160.mm,20.mm], [4629.mm,1160.mm,20.mm], [4629.mm,1200.mm,20.mm], [170.mm,1200.mm,20.mm])
+  face = grp.entities.add_face([197.mm,1160.mm,20.mm], [4602.mm,1160.mm,20.mm], [4602.mm,1200.mm,20.mm], [197.mm,1200.mm,20.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Spray Bar beam (40x40, Z20-60)"] || model.materials.add("Spray Bar beam (40x40, Z20-60)")
@@ -207,28 +207,28 @@ model.definitions.purge_unused
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray Bar wheel (left, on rim)
+  # Spray Bar wheel (left)
   grp = ents.add_group
-  grp.name = "Spray Bar wheel (left, on rim)"
+  grp.name = "Spray Bar wheel (left)"
   ge = grp.entities
-  circle = ge.add_circle([174.mm,1150.mm,27.mm], [0,1,0], 25.mm, 24)
+  circle = ge.add_circle([197.mm,1150.mm,27.mm], [0,1,0], 25.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["Spray Bar wheel (left, on rim)"] || model.materials.add("Spray Bar wheel (left, on rim)")
+  mat = model.materials["Spray Bar wheel (left)"] || model.materials.add("Spray Bar wheel (left)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray Bar wheel (right, on rim)
+  # Spray Bar wheel (right)
   grp = ents.add_group
-  grp.name = "Spray Bar wheel (right, on rim)"
+  grp.name = "Spray Bar wheel (right)"
   ge = grp.entities
-  circle = ge.add_circle([4605.mm,1150.mm,27.mm], [0,1,0], 25.mm, 24)
+  circle = ge.add_circle([4602.mm,1150.mm,27.mm], [0,1,0], 25.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["Spray Bar wheel (left, on rim)"] || model.materials.add("Spray Bar wheel (left, on rim)")
+  mat = model.materials["Spray Bar wheel (left)"] || model.materials.add("Spray Bar wheel (left)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -243,10 +243,10 @@ model.definitions.purge_unused
   # Cantilever 1 foot plate
   grp = ents.add_group
   grp.name = "Cantilever 1 foot plate"
-  face = grp.entities.add_face([38.mm,167.mm,0.mm], [166.mm,167.mm,0.mm], [166.mm,227.mm,0.mm], [38.mm,227.mm,0.mm])
+  face = grp.entities.add_face([38.mm,220.mm,0.mm], [166.mm,220.mm,0.mm], [166.mm,280.mm,0.mm], [38.mm,280.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Spray Bar wheel (left, on rim)"] || model.materials.add("Spray Bar wheel (left, on rim)")
+  mat = model.materials["Spray Bar wheel (left)"] || model.materials.add("Spray Bar wheel (left)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -254,7 +254,7 @@ model.definitions.purge_unused
   # Cantilever 1 post (50x50 SHS)
   grp = ents.add_group
   grp.name = "Cantilever 1 post (50x50 SHS)"
-  face = grp.entities.add_face([115.mm,167.mm,0.mm], [165.mm,167.mm,0.mm], [165.mm,227.mm,0.mm], [115.mm,227.mm,0.mm])
+  face = grp.entities.add_face([115.mm,220.mm,0.mm], [165.mm,220.mm,0.mm], [165.mm,280.mm,0.mm], [115.mm,280.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["Cantilever 1 post (50x50 SHS)"] || model.materials.add("Cantilever 1 post (50x50 SHS)")
@@ -262,10 +262,10 @@ model.definitions.purge_unused
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cantilever 1 arm (to X470, ~50mm deep)
+  # Cantilever 1 arm (to X470)
   grp = ents.add_group
-  grp.name = "Cantilever 1 arm (to X470, ~50mm deep)"
-  face = grp.entities.add_face([165.mm,177.mm,75.mm], [470.mm,177.mm,75.mm], [470.mm,217.mm,75.mm], [165.mm,217.mm,75.mm])
+  grp.name = "Cantilever 1 arm (to X470)"
+  face = grp.entities.add_face([165.mm,230.mm,75.mm], [470.mm,230.mm,75.mm], [470.mm,270.mm,75.mm], [165.mm,270.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Cantilever 1 post (50x50 SHS)"] || model.materials.add("Cantilever 1 post (50x50 SHS)")
@@ -276,10 +276,10 @@ model.definitions.purge_unused
   # Cantilever 2 foot plate
   grp = ents.add_group
   grp.name = "Cantilever 2 foot plate"
-  face = grp.entities.add_face([38.mm,560.mm,0.mm], [166.mm,560.mm,0.mm], [166.mm,620.mm,0.mm], [38.mm,620.mm,0.mm])
+  face = grp.entities.add_face([38.mm,770.mm,0.mm], [166.mm,770.mm,0.mm], [166.mm,830.mm,0.mm], [38.mm,830.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Spray Bar wheel (left, on rim)"] || model.materials.add("Spray Bar wheel (left, on rim)")
+  mat = model.materials["Spray Bar wheel (left)"] || model.materials.add("Spray Bar wheel (left)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -287,7 +287,7 @@ model.definitions.purge_unused
   # Cantilever 2 post (50x50 SHS)
   grp = ents.add_group
   grp.name = "Cantilever 2 post (50x50 SHS)"
-  face = grp.entities.add_face([115.mm,560.mm,0.mm], [165.mm,560.mm,0.mm], [165.mm,620.mm,0.mm], [115.mm,620.mm,0.mm])
+  face = grp.entities.add_face([115.mm,770.mm,0.mm], [165.mm,770.mm,0.mm], [165.mm,830.mm,0.mm], [115.mm,830.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["Cantilever 1 post (50x50 SHS)"] || model.materials.add("Cantilever 1 post (50x50 SHS)")
@@ -295,10 +295,10 @@ model.definitions.purge_unused
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cantilever 2 arm (to X470, ~50mm deep)
+  # Cantilever 2 arm (to X770 WIDENED)
   grp = ents.add_group
-  grp.name = "Cantilever 2 arm (to X470, ~50mm deep)"
-  face = grp.entities.add_face([165.mm,570.mm,75.mm], [470.mm,570.mm,75.mm], [470.mm,610.mm,75.mm], [165.mm,610.mm,75.mm])
+  grp.name = "Cantilever 2 arm (to X770 WIDENED)"
+  face = grp.entities.add_face([165.mm,770.mm,75.mm], [770.mm,770.mm,75.mm], [770.mm,830.mm,75.mm], [165.mm,830.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Cantilever 1 post (50x50 SHS)"] || model.materials.add("Cantilever 1 post (50x50 SHS)")
@@ -309,10 +309,10 @@ model.definitions.purge_unused
   # Cantilever 3 foot plate
   grp = ents.add_group
   grp.name = "Cantilever 3 foot plate"
-  face = grp.entities.add_face([38.mm,954.mm,0.mm], [166.mm,954.mm,0.mm], [166.mm,1014.mm,0.mm], [38.mm,1014.mm,0.mm])
+  face = grp.entities.add_face([38.mm,1150.mm,0.mm], [166.mm,1150.mm,0.mm], [166.mm,1210.mm,0.mm], [38.mm,1210.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Spray Bar wheel (left, on rim)"] || model.materials.add("Spray Bar wheel (left, on rim)")
+  mat = model.materials["Spray Bar wheel (left)"] || model.materials.add("Spray Bar wheel (left)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -320,7 +320,7 @@ model.definitions.purge_unused
   # Cantilever 3 post (50x50 SHS)
   grp = ents.add_group
   grp.name = "Cantilever 3 post (50x50 SHS)"
-  face = grp.entities.add_face([115.mm,954.mm,0.mm], [165.mm,954.mm,0.mm], [165.mm,1014.mm,0.mm], [115.mm,1014.mm,0.mm])
+  face = grp.entities.add_face([115.mm,1150.mm,0.mm], [165.mm,1150.mm,0.mm], [165.mm,1210.mm,0.mm], [115.mm,1210.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["Cantilever 1 post (50x50 SHS)"] || model.materials.add("Cantilever 1 post (50x50 SHS)")
@@ -328,10 +328,10 @@ model.definitions.purge_unused
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cantilever 3 arm (to X470, ~50mm deep)
+  # Cantilever 3 arm (to X770 WIDENED)
   grp = ents.add_group
-  grp.name = "Cantilever 3 arm (to X470, ~50mm deep)"
-  face = grp.entities.add_face([165.mm,964.mm,75.mm], [470.mm,964.mm,75.mm], [470.mm,1004.mm,75.mm], [165.mm,1004.mm,75.mm])
+  grp.name = "Cantilever 3 arm (to X770 WIDENED)"
+  face = grp.entities.add_face([165.mm,1150.mm,75.mm], [770.mm,1150.mm,75.mm], [770.mm,1210.mm,75.mm], [165.mm,1210.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Cantilever 1 post (50x50 SHS)"] || model.materials.add("Cantilever 1 post (50x50 SHS)")
@@ -342,10 +342,10 @@ model.definitions.purge_unused
   # Cantilever 4 foot plate
   grp = ents.add_group
   grp.name = "Cantilever 4 foot plate"
-  face = grp.entities.add_face([38.mm,1348.mm,0.mm], [166.mm,1348.mm,0.mm], [166.mm,1408.mm,0.mm], [38.mm,1408.mm,0.mm])
+  face = grp.entities.add_face([38.mm,1530.mm,0.mm], [166.mm,1530.mm,0.mm], [166.mm,1590.mm,0.mm], [38.mm,1590.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Spray Bar wheel (left, on rim)"] || model.materials.add("Spray Bar wheel (left, on rim)")
+  mat = model.materials["Spray Bar wheel (left)"] || model.materials.add("Spray Bar wheel (left)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -353,7 +353,7 @@ model.definitions.purge_unused
   # Cantilever 4 post (50x50 SHS)
   grp = ents.add_group
   grp.name = "Cantilever 4 post (50x50 SHS)"
-  face = grp.entities.add_face([115.mm,1348.mm,0.mm], [165.mm,1348.mm,0.mm], [165.mm,1408.mm,0.mm], [115.mm,1408.mm,0.mm])
+  face = grp.entities.add_face([115.mm,1530.mm,0.mm], [165.mm,1530.mm,0.mm], [165.mm,1590.mm,0.mm], [115.mm,1590.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["Cantilever 1 post (50x50 SHS)"] || model.materials.add("Cantilever 1 post (50x50 SHS)")
@@ -361,10 +361,10 @@ model.definitions.purge_unused
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cantilever 4 arm (to X470, ~50mm deep)
+  # Cantilever 4 arm (to X770 WIDENED)
   grp = ents.add_group
-  grp.name = "Cantilever 4 arm (to X470, ~50mm deep)"
-  face = grp.entities.add_face([165.mm,1358.mm,75.mm], [470.mm,1358.mm,75.mm], [470.mm,1398.mm,75.mm], [165.mm,1398.mm,75.mm])
+  grp.name = "Cantilever 4 arm (to X770 WIDENED)"
+  face = grp.entities.add_face([165.mm,1530.mm,75.mm], [770.mm,1530.mm,75.mm], [770.mm,1590.mm,75.mm], [165.mm,1590.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Cantilever 1 post (50x50 SHS)"] || model.materials.add("Cantilever 1 post (50x50 SHS)")
@@ -375,10 +375,10 @@ model.definitions.purge_unused
   # Cantilever 5 foot plate
   grp = ents.add_group
   grp.name = "Cantilever 5 foot plate"
-  face = grp.entities.add_face([38.mm,1742.mm,0.mm], [166.mm,1742.mm,0.mm], [166.mm,1802.mm,0.mm], [38.mm,1802.mm,0.mm])
+  face = grp.entities.add_face([38.mm,2080.mm,0.mm], [166.mm,2080.mm,0.mm], [166.mm,2140.mm,0.mm], [38.mm,2140.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Spray Bar wheel (left, on rim)"] || model.materials.add("Spray Bar wheel (left, on rim)")
+  mat = model.materials["Spray Bar wheel (left)"] || model.materials.add("Spray Bar wheel (left)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -386,7 +386,7 @@ model.definitions.purge_unused
   # Cantilever 5 post (50x50 SHS)
   grp = ents.add_group
   grp.name = "Cantilever 5 post (50x50 SHS)"
-  face = grp.entities.add_face([115.mm,1742.mm,0.mm], [165.mm,1742.mm,0.mm], [165.mm,1802.mm,0.mm], [115.mm,1802.mm,0.mm])
+  face = grp.entities.add_face([115.mm,2080.mm,0.mm], [165.mm,2080.mm,0.mm], [165.mm,2140.mm,0.mm], [115.mm,2140.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["Cantilever 1 post (50x50 SHS)"] || model.materials.add("Cantilever 1 post (50x50 SHS)")
@@ -394,43 +394,10 @@ model.definitions.purge_unused
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cantilever 5 arm (to X470, ~50mm deep)
+  # Cantilever 5 arm (to X470)
   grp = ents.add_group
-  grp.name = "Cantilever 5 arm (to X470, ~50mm deep)"
-  face = grp.entities.add_face([165.mm,1752.mm,75.mm], [470.mm,1752.mm,75.mm], [470.mm,1792.mm,75.mm], [165.mm,1792.mm,75.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Cantilever 1 post (50x50 SHS)"] || model.materials.add("Cantilever 1 post (50x50 SHS)")
-  mat.color = Sketchup::Color.new(200, 120, 30)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cantilever 6 foot plate
-  grp = ents.add_group
-  grp.name = "Cantilever 6 foot plate"
-  face = grp.entities.add_face([38.mm,2135.mm,0.mm], [166.mm,2135.mm,0.mm], [166.mm,2195.mm,0.mm], [38.mm,2195.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
-  mat = model.materials["Spray Bar wheel (left, on rim)"] || model.materials.add("Spray Bar wheel (left, on rim)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cantilever 6 post (50x50 SHS)
-  grp = ents.add_group
-  grp.name = "Cantilever 6 post (50x50 SHS)"
-  face = grp.entities.add_face([115.mm,2135.mm,0.mm], [165.mm,2135.mm,0.mm], [165.mm,2195.mm,0.mm], [115.mm,2195.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(115.mm)
-  mat = model.materials["Cantilever 1 post (50x50 SHS)"] || model.materials.add("Cantilever 1 post (50x50 SHS)")
-  mat.color = Sketchup::Color.new(200, 120, 30)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cantilever 6 arm (to X470, ~50mm deep)
-  grp = ents.add_group
-  grp.name = "Cantilever 6 arm (to X470, ~50mm deep)"
-  face = grp.entities.add_face([165.mm,2145.mm,75.mm], [470.mm,2145.mm,75.mm], [470.mm,2185.mm,75.mm], [165.mm,2185.mm,75.mm])
+  grp.name = "Cantilever 5 arm (to X470)"
+  face = grp.entities.add_face([165.mm,2090.mm,75.mm], [470.mm,2090.mm,75.mm], [470.mm,2130.mm,75.mm], [165.mm,2130.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Cantilever 1 post (50x50 SHS)"] || model.materials.add("Cantilever 1 post (50x50 SHS)")
@@ -456,9 +423,9 @@ model.definitions.purge_unused
   mat.alpha = 1.0
   grp.material = mat
 
-  # Walkway Left punch-out (cantilevered)
+  # Walkway Left punch-out (on extended arms)
   grp = ents.add_group
-  grp.name = "Walkway Left punch-out (cantilevered)"
+  grp.name = "Walkway Left punch-out (on extended arms)"
   face = grp.entities.add_face([470.mm,800.mm,115.mm], [770.mm,800.mm,115.mm], [770.mm,1560.mm,115.mm], [470.mm,1560.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
@@ -546,7 +513,7 @@ model.definitions.purge_unused
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
-  mat = model.materials["Spray Bar wheel (left, on rim)"] || model.materials.add("Spray Bar wheel (left, on rim)")
+  mat = model.materials["Spray Bar wheel (left)"] || model.materials.add("Spray Bar wheel (left)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -567,9 +534,9 @@ txt = entities.add_text("ARM 40mm deep (was 13)
 bottom Z75 clears spray bar (Z60) by 15mm", anc, Geom::Vector3d.new(520.mm, -650.mm, 320.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(770.mm, 1180.mm, 115.mm)
-txt = entities.add_text("PUNCH-OUT cantilevers 300mm;
-grate underside Z115 now clears
-spray bar (Z60) by 55mm", anc, Geom::Vector3d.new(650.mm, -300.mm, 450.mm))
+txt = entities.add_text("PUNCH-OUT now SUPPORTED:
+extended arm to X770 (Z75-115)
+over the spray bar (15mm clear)", anc, Geom::Vector3d.new(650.mm, -300.mm, 450.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(470.mm, 1180.mm, 60.mm)
 txt = entities.add_text("SPRAY BAR fixed at Z20-60

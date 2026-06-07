@@ -1731,11 +1731,15 @@ def water_plumbing():
     pipe("Fill Trunk", [(C_LEN, EXT_FILL_YD, overZ), (fillTeeX, cc, overZ)], C_BLUE)
     parts.append(ruby_tee("Fill Tee", (fillTeeX, cc, overZ),
                           (0, 1, 0), (1, 0, 0), pr, color=C_BLUE))
+    # Drop ENDS BELOW the stack top (topZ=2*IBC_H_600) so the pipe penetrates the
+    # tote's top cap and reads as connected — ending at topZ+20 left it hovering
+    # ~40mm above the bottle, looking disconnected from Blue #1/#2.
+    fill_in_z = topZ - 170                 # ~1850 — penetrates the Blue tote's top cap
     pipe("Fill → Blue #1",
-         [(fillTeeX, cc, overZ), (fillTeeX, nY, overZ), (fillTeeX, nY, topZ + 20)],
+         [(fillTeeX, cc, overZ), (fillTeeX, nY, overZ), (fillTeeX, nY, fill_in_z)],
          C_BLUE)
     pipe("Fill → Blue #2",
-         [(fillTeeX, cc, overZ), (fillTeeX, fY, overZ), (fillTeeX, fY, topZ + 20)],
+         [(fillTeeX, cc, overZ), (fillTeeX, fY, overZ), (fillTeeX, fY, fill_in_z)],
          C_BLUE)
 
     # Exterior DRAIN PORTS X3/X4 are fed from the DRAIN PUMPS (not straight off the

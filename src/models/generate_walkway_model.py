@@ -264,26 +264,54 @@ def cantilevers():
 
 
 # Near-wall X positions for the isolated type-catalog ("Cantilevers" scene).
-CT_STD_X, CT_WIDE_X, CT_BEARER_X = 2400, 3400, 4400
+CT_STD_X, CT_WIDE_X, CT_SEAT_X = 2400, 3400, 4400
+
+
+def _seat_type_parts():
+    """The LEFT removable walkway's BEARER SUPPORT — the IBC-style wall-seat bracket
+    (seat plate + exterior reinforcing plate + 3 M12 through-bolts) carrying a stub
+    of the 40x40x3 SHS edge beam. SIMPLY SUPPORTED, not a cantilever; mirrors the
+    near/far seat built in left_support()."""
+    lxr = CT_SEAT_X
+    beam_w = L_BEARER                                  # 40 — SHS section
+    bt = 8                                             # seat plate thickness
+    bz0, bz1 = k.LEFT_WK_BEAM_Z0, k.LEFT_WK_BEAM_Z1    # 52..92
+    cxm = lxr + beam_w / 2
+    zc = (bz0 + bz1) / 2
+    shank_y0 = -WALL_T - REINF_T
+    shank_len = WALL_T + REINF_T + bt
+    parts = [
+        # edge-beam stub (the "bearer") resting on the seat, running +Y along the wall
+        ruby_box("Type Seat edge beam (40x40x3 SHS)", lxr, -50, bz0,
+                 beam_w, 500, bz1 - bz0, color=C_STEEL),
+        # interior wall-seat plate
+        ruby_box("Type Seat plate", lxr - 10, 0, 30, beam_w + 20, bt, bz1 - 30,
+                 color=C_STEEL),
+        # exterior reinforcing plate
+        ruby_box("Type Seat ext plate", cxm - REINF_W / 2, -WALL_T - REINF_T,
+                 zc - REINF_H / 2, REINF_W, REINF_T, REINF_H, color=C_STEEL),
+    ]
+    for dx, dz in [(0, 22), (-28, -16), (28, -16)]:
+        bx = cxm + dx
+        parts.append(ruby_cylinder("Type Seat bolt M12", bx, shank_y0, zc + dz,
+                                   6, shank_len, color=C_BOLT, axis="y"))
+        parts.append(ruby_box("Type Seat bolt head", bx - 9, -WALL_T - REINF_T - 6,
+                              zc + dz - 9, 18, 6, 18, color=C_HEX))
+    return parts
 
 
 def cantilever_types():
-    """ONE of each UNIQUE bracket type, isolated side-by-side for the "Cantilevers"
-    scene. Same geometry as the in-situ brackets, placed on the near wall in clear
-    positions:
-      • STANDARD — 8mm/150/300, 3× M12 (the typical near/far deck bracket);
-      • WIDENED  — 10mm/200/500, 4× M12 (the four EP/battery-zone brackets);
-      • BEARER-SUPPORT — a standard bracket carrying a stub of the right-walkway
-        25×25×5 L-angle bearer (the IBC-end butt joints at X=4329/4629, where the
-        ceiling-hung right deck's bearer bears on the near/far bracket arm)."""
+    """ONE of each unique wall-support bracket, isolated side-by-side for the
+    "Cantilevers" scene:
+      • STANDARD cantilever — 8mm/150/300, 3× M12 (typical near/far deck bracket);
+      • WIDENED  cantilever — 10mm/200/500, 4× M12 (the four EP/battery-zone brackets);
+      • EDGE-BEAM SEAT — the LEFT removable walkway's bearer support: a bolt-through
+        wall seat carrying the 40x40x3 SHS edge beam (simply supported, not a
+        cantilever — the IBC end is ceiling-hung and has no bearer bracket)."""
     parts = []
     parts += _cantilever_parts("Type Standard", CT_STD_X, 0, +1, WK_W, False)
     parts += _cantilever_parts("Type Widened", CT_WIDE_X, 0, +1, WK_NEAR_WIDE_W, True)
-    parts += _cantilever_parts("Type Bearer", CT_BEARER_X, 0, +1, WK_W, False)
-    # a 450mm stub of the L-angle bearer resting along the bracket arm (+Y)
-    parts.append(ruby_box("Type Bearer L-angle bearer",
-                          CT_BEARER_X - R_BEARER / 2, -50, GRATE_Z - R_BEARER,
-                          R_BEARER, 500, R_BEARER, color=C_STEEL))
+    parts += _seat_type_parts()
     return '\n'.join(parts)
 
 
@@ -297,9 +325,9 @@ def cantilever_type_labels():
         (CT_WIDE_X, 0, k.WALKWAY_WIDE_BRACKET_H,
          "WIDENED CANTILEVER (EP / battery zone)\n10mm plate / 200 leg / 500 arm\n4x M12 (rectangular)",
          0, -300, 850),
-        (CT_BEARER_X, 0, BRK_H,
-         "BEARER-SUPPORT CANTILEVER\nstandard bracket carrying the right-walkway\n25x25x5 L-angle bearer (butt joint, X=4329/4629)",
-         200, -300, 700),
+        (CT_SEAT_X, 0, k.LEFT_WK_BEAM_Z1,
+         "EDGE-BEAM SEAT (left removable walkway)\n40x40x3 SHS edge beam on bolt-through wall seat\nsimply supported, not a cantilever",
+         200, -300, 800),
     ]
     rows = []
     for x, y, z, text, dx, dy, dz in labels:

@@ -2460,43 +2460,32 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Type Bearer plate
+  # Type Seat edge beam (40x40x3 SHS)
   grp = ents.add_group
-  grp.name = "Type Bearer plate"
-  face = grp.entities.add_face([4340.mm,0.mm,0.mm], [4460.mm,0.mm,0.mm], [4460.mm,8.mm,0.mm], [4340.mm,8.mm,0.mm])
+  grp.name = "Type Seat edge beam (40x40x3 SHS)"
+  face = grp.entities.add_face([4400.mm,-50.mm,52.mm], [4440.mm,-50.mm,52.mm], [4440.mm,450.mm,52.mm], [4400.mm,450.mm,52.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
+  face.pushpull(40.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Type Bearer arm
+  # Type Seat plate
   grp = ents.add_group
-  grp.name = "Type Bearer arm"
-  face = grp.entities.add_face([4396.mm,0.mm,55.mm], [4404.mm,0.mm,55.mm], [4404.mm,300.mm,55.mm], [4396.mm,300.mm,55.mm])
+  grp.name = "Type Seat plate"
+  face = grp.entities.add_face([4390.mm,0.mm,30.mm], [4450.mm,0.mm,30.mm], [4450.mm,8.mm,30.mm], [4390.mm,8.mm,30.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
+  face.pushpull(62.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Type Bearer gusset
+  # Type Seat ext plate
   grp = ents.add_group
-  grp.name = "Type Bearer gusset"
-  ge = grp.entities
-  f = ge.add_face([4396.mm,0.mm,0.mm], [4396.mm,0.mm,55.mm], [4396.mm,70.mm,55.mm])
-  f.pushpull(8.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Type Bearer ext reinf plate
-  grp = ents.add_group
-  grp.name = "Type Bearer ext reinf plate"
-  face = grp.entities.add_face([4350.mm,-46.mm,0.mm], [4450.mm,-46.mm,0.mm], [4450.mm,-40.mm,0.mm], [4350.mm,-40.mm,0.mm])
+  grp.name = "Type Seat ext plate"
+  face = grp.entities.add_face([4370.mm,-46.mm,-18.mm], [4470.mm,-46.mm,-18.mm], [4470.mm,-40.mm,-18.mm], [4370.mm,-40.mm,-18.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(180.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -2504,11 +2493,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Type Bearer bolt M12
+  # Type Seat bolt M12
   grp = ents.add_group
-  grp.name = "Type Bearer bolt M12"
+  grp.name = "Type Seat bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4400.mm,-46.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4420.mm,-46.mm,94.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -2517,10 +2506,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Type Bearer bolt head
+  # Type Seat bolt head
   grp = ents.add_group
-  grp.name = "Type Bearer bolt head"
-  face = grp.entities.add_face([4391.mm,-52.mm,111.mm], [4409.mm,-52.mm,111.mm], [4409.mm,-46.mm,111.mm], [4391.mm,-46.mm,111.mm])
+  grp.name = "Type Seat bolt head"
+  face = grp.entities.add_face([4411.mm,-52.mm,85.mm], [4429.mm,-52.mm,85.mm], [4429.mm,-46.mm,85.mm], [4411.mm,-46.mm,85.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -2528,11 +2517,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Type Bearer bolt M12
+  # Type Seat bolt M12
   grp = ents.add_group
-  grp.name = "Type Bearer bolt M12"
+  grp.name = "Type Seat bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4368.mm,-46.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4392.mm,-46.mm,56.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -2541,10 +2530,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Type Bearer bolt head
+  # Type Seat bolt head
   grp = ents.add_group
-  grp.name = "Type Bearer bolt head"
-  face = grp.entities.add_face([4359.mm,-52.mm,33.mm], [4377.mm,-52.mm,33.mm], [4377.mm,-46.mm,33.mm], [4359.mm,-46.mm,33.mm])
+  grp.name = "Type Seat bolt head"
+  face = grp.entities.add_face([4383.mm,-52.mm,47.mm], [4401.mm,-52.mm,47.mm], [4401.mm,-46.mm,47.mm], [4383.mm,-46.mm,47.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -2552,11 +2541,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Type Bearer bolt M12
+  # Type Seat bolt M12
   grp = ents.add_group
-  grp.name = "Type Bearer bolt M12"
+  grp.name = "Type Seat bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4432.mm,-46.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4448.mm,-46.mm,56.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -2565,25 +2554,14 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Type Bearer bolt head
+  # Type Seat bolt head
   grp = ents.add_group
-  grp.name = "Type Bearer bolt head"
-  face = grp.entities.add_face([4423.mm,-52.mm,33.mm], [4441.mm,-52.mm,33.mm], [4441.mm,-46.mm,33.mm], [4423.mm,-46.mm,33.mm])
+  grp.name = "Type Seat bolt head"
+  face = grp.entities.add_face([4439.mm,-52.mm,47.mm], [4457.mm,-52.mm,47.mm], [4457.mm,-46.mm,47.mm], [4439.mm,-46.mm,47.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
   mat.color = Sketchup::Color.new(60, 60, 68)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Type Bearer L-angle bearer
-  grp = ents.add_group
-  grp.name = "Type Bearer L-angle bearer"
-  face = grp.entities.add_face([4387.5.mm,-50.mm,40.mm], [4412.5.mm,-50.mm,40.mm], [4412.5.mm,450.mm,40.mm], [4387.5.mm,450.mm,40.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(25.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -3221,10 +3199,10 @@ txt = entities.add_text("WIDENED CANTILEVER (EP / battery zone)
 10mm plate / 200 leg / 500 arm
 4x M12 (rectangular)", anc, Geom::Vector3d.new(0.mm, -300.mm, 850.mm))
 txt.layer = model.layers["Cantilever Types"] rescue nil
-anc = Geom::Point3d.new(4400.mm, 0.mm, 150.mm)
-txt = entities.add_text("BEARER-SUPPORT CANTILEVER
-standard bracket carrying the right-walkway
-25x25x5 L-angle bearer (butt joint, X=4329/4629)", anc, Geom::Vector3d.new(200.mm, -300.mm, 700.mm))
+anc = Geom::Point3d.new(4400.mm, 0.mm, 92.mm)
+txt = entities.add_text("EDGE-BEAM SEAT (left removable walkway)
+40x40x3 SHS edge beam on bolt-through wall seat
+simply supported, not a cantilever", anc, Geom::Vector3d.new(200.mm, -300.mm, 800.mm))
 txt.layer = model.layers["Cantilever Types"] rescue nil
 
 model.definitions.purge_unused

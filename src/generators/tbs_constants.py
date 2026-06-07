@@ -227,13 +227,13 @@ EVAP_H     = 800     # cooler height (mm)
 # Transport stowage — on near walkway grating, in widened 500mm section
 EVAP_STOW_X    = 1200    # stowage left edge X (mm) — in 500mm wide zone
 EVAP_STOW_YD   = 0       # against pinhole wall (Yd=0)
-EVAP_STOW_Z    = 100     # sits on grating surface (Z=100mm, same as WALKWAY_H)
+EVAP_STOW_Z    = 150     # sits on raised grating surface (WALKWAY_H 130 + 20mm pad) [+50 raise]
 
 # ── External power panel (pinhole wall exterior, near EP) ─────────────────────
 PWR_PANEL_X = 1250   # power panel left edge X (mm) — just left of EP
 PWR_PANEL_W = 340    # face plate width (mm)
 PWR_PANEL_H = 240    # face plate height (mm)
-PWR_PANEL_Z = 1780   # face plate bottom Z (mm) — centered with interior EP
+PWR_PANEL_Z = 1830   # face plate bottom Z (mm) — stays centered with interior EP [+50 raise; was 1780]
 PWR_PANEL_D = 3      # face plate thickness (mm) — flush-mount, no protrusion
 PWR_PANEL_CUTOUT_W = 280   # wall cutout width (mm) — 30mm overlap each side
 PWR_PANEL_CUTOUT_H = 180   # wall cutout height (mm)
@@ -241,13 +241,13 @@ PWR_PANEL_CUTOUT_H = 180   # wall cutout height (mm)
 # ── Pinhole wall face (Y = 0, shadow-free) ────────────────────────────────────
 EP_X       = 1600    # electrical panel left edge X (mm)  [rev6b: moved left, away from pinhole]
 EP_W       = 300     # electrical panel width (mm)
-EP_H_LO    = 1600    # electrical panel bottom Z (mm) [rev7: raised from 900 for walkway clearance]
-EP_H_HI    = 2200    # electrical panel top Z (mm)   [rev7: raised from 1500]
+EP_H_LO    = 1650    # electrical panel bottom Z (mm) [+50 walkway raise; was 1600 / 900 pre-rev7]
+EP_H_HI    = 2250    # electrical panel top Z (mm)   [+50 walkway raise; was 2200]
 
 BA_X       = 1810    # battery bank left edge X (mm)  [rev6: was 2050; shifted left to clear cone]
 BA_W       = 500     # battery bank width (mm)  → right edge 2310, clears cone left (2319)
-BA_H_LO    = 100     # battery bank bottom Z (mm) — matches RAIL_OFF floor offset
-BA_H_HI    = 600     # battery bank top Z (mm)
+BA_H_LO    = 150     # battery bank bottom Z (mm) — sits ON the raised grate [+50 walkway raise; was 100]
+BA_H_HI    = 650     # battery bank top Z (mm) [+50 walkway raise; was 600]
 BA_D       = 120     # battery bank depth from wall (mm) [rev7: slim-profile LiFePO4]
 
 # ── Equipment panel — IBC plumbing corridor (rev 7: walkway reorg) ───────
@@ -260,8 +260,8 @@ BA_D       = 120     # battery bank depth from wall (mm) [rev7: slim-profile LiF
 # Filters at bottom of panel (Z=200–1280), pumps at top (Z=1320–2220).
 EQPANEL_X       = 5240    # panel face X (mm) — ply X=5240–5258, butts the film-plane (-X) face of the middle corridor frame station (X≈5258); equipment hangs toward -X
 EQPANEL_T       = 18      # panel thickness in X (mm) — ply extends toward sealed end (X=5240–5258)
-EQPANEL_Z_LO    = 200     # panel bottom Z (mm) — 100mm above walkway deck
-EQPANEL_Z_HI    = 2260    # panel top Z (mm) — above IBC stack (2020), below ceiling (2388)
+EQPANEL_Z_LO    = 250     # panel bottom Z (mm) — keeps ~120mm above the raised walkway deck [+50 raise; was 200]
+EQPANEL_Z_HI    = 2310    # panel top Z (mm) — above IBC stack (2020), below ceiling (2388) [+50 raise; was 2260]
 EQPANEL_H       = EQPANEL_Z_HI - EQPANEL_Z_LO   # = 2060mm
 
 # IBC plumbing corridor dimensions (derived from IBC layout: Yd=30+1016=1046 to 1316)
@@ -283,8 +283,8 @@ PUMP_D       = 100     # pump protrusion from panel face in -X direction (mm) �
 PUMP_YD_SPAN = 127     # pump body width in Yd direction (mm) — Shurflo 2088 width
 PUMP_X       = EQPANEL_X - PUMP_D   # = 4900 — pump zone left edge X for elevation views
 PUMP_W       = PUMP_D               # = 100 — pump zone width in X for elevation views
-PUMP_H_LO    = 1320    # pump zone bottom Z (mm) — above filter stack + 40mm gap
-PUMP_H_HI    = 2220    # pump zone top Z (mm) — includes ACC-01 top
+PUMP_H_LO    = 1370    # pump zone bottom Z (mm) — above filter stack + 40mm gap [+50 walkway raise; was 1320]
+PUMP_H_HI    = 2270    # pump zone top Z (mm) — includes ACC-01 top [+50 walkway raise; was 2220]
 PUMP_YD      = CORRIDOR_YD_NEAR  # pump zone near edge Yd (mm) — near side of corridor
 # P-01 (Blue supply), P-02 (Brown recycle), P-04 (Tray drain) on equipment panel.
 # P-03 (waste evacuation) on X4 drain run in IBC plumbing corridor.
@@ -304,14 +304,14 @@ SHELF_W        = 600     # shelf width in X direction (mm) — long axis along w
 SHELF_YD_NEAR  = 300     # shelf near edge Yd (mm) — at near walkway outer edge
 SHELF_YD_FAR   = 600     # shelf far edge Yd (mm)
 SHELF_DEPTH    = 300     # shelf depth in Yd direction (mm) — short axis into tray
-SHELF_H        = 1025    # work surface height AFF (mm) — 925mm above walkway deck
+SHELF_H        = 1075    # work surface height AFF (mm) — holds operator working height above the raised deck [+50 raise; was 1025] (ceiling-hung rods auto-shorten 50mm)
 SHELF_T        = 22      # shelf total thickness (mm) — 18mm ply + 4mm frame
 SHELF_HANGER_D = 10      # hanger threaded rod diameter (mm) — M10 (matches right walkway)
 SHELF_HANGER_N = 4       # number of hanger rods (4 corners)
 
 # ── Chemistry prep tap (pinhole wall, tees off blue supply line) ─────────────
 TAP_X          = 3729    # tap X position (mm) — at shelf left edge
-TAP_Z          = 1150    # tap spout height AFF (mm) — 125mm above shelf surface
+TAP_Z          = 1200    # tap spout height AFF (mm) — 125mm above shelf surface [+50 walkway raise; was 1150]
 TAP_PIPE_OD    = 25      # branch pipe OD (mm) — 3/4" HDPE
 TAP_WALL_T     = 3       # branch pipe wall thickness (mm) — reserved (spec; not yet drawn)
 
@@ -445,7 +445,7 @@ PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at near rim (low point of Y
 
 BV02_X             = PH_X         # BV-02 X on pinhole wall — at pinhole centerline, arm's reach from operator during wash pass
 BV02_YD            = 0           # BV-02 on pinhole wall (Yd=0) — reserved (spec; not yet drawn)
-BV02_Z             = 900         # BV-02 height on pinhole wall (mm AFF) — waist height from walkway deck
+BV02_Z             = 950         # BV-02 height on pinhole wall (mm AFF) — waist height from the raised walkway deck [+50 raise; was 900]
 PROC_TRAY_SUMP_W   = 150        # sump well width in X (mm)
 PROC_TRAY_SUMP_D   = 100        # sump well depth in Yd (mm)
 PROC_TRAY_SUMP_Z   = 20         # sump well depth below tray floor (mm)
@@ -486,11 +486,12 @@ PROC_TRAY_SUMP_Z   = 20         # sump well depth below tray floor (mm)
 #       Zero processing tray contact — all supports outside or above tray.
 #       Right corners use standard 45° miters (no panel conflict).
 WALKWAY_W       = 300    # walkway width (mm) — bracket arm cantilever distance
-WALKWAY_H       = 80     # deck height above floor (mm) — LOWERED for film-plane clearance:
-#       15mm grate with its bottom at Z=65; the cantilever bracket arm (below the grate)
-#       sits at Z=55–65, clearing the 50mm tray rim by 5mm where it overhangs the tray.
-#       Deck top Z=80 clears the Z=100 film-frame bottom by 20mm, so the film plane
-#       travels above the in-place walkway. (Was 65mm — arm collided with the tray rim.)
+WALKWAY_H       = 130    # deck height above floor (mm) — RAISED +50 (was 80) for buildable
+#       clearances: 15mm grate, bottom at Z=115. The floor-leg cantilever arm (Z=75–115,
+#       40mm deep) clears the 50mm tray rim AND the Z=60 spray-bar top by 15mm. The tray,
+#       bath and spray bar do NOT rise (they stay at floor level — that is what opens the
+#       gap); only the walkway + walkway-relative gear rise +50. Costs ~50mm of film-plane
+#       bottom (≈2.3% image). (History: 65→80 lowered for film clearance, then +50 raised.)
 WALKWAY_GRATE_T = 15     # grating thickness (mm) — thin grate (was 25) for film-plane clearance
 WALKWAY_H_PREV  = 100    # original deck height (pre-lowering) — reserved (history; kept for reference)
 # Container structural rib spacing (ISO standard 20ft container)

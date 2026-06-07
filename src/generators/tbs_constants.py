@@ -341,12 +341,12 @@ FSKID_YD       = CORRIDOR_YD_NEAR + PUMP_YD_SPAN + 13  # = 1186 — filter near 
 
 # Filter Z positions — 3 housings stacked vertically, 30mm gaps between.
 # Filters at BOTTOM of panel (easy cartridge access), pumps above.
-FSKID_Z_LO     = EQPANEL_Z_LO  # = 200 — filter zone bottom Z (mm) — F1 sump bottom
+FSKID_Z_LO     = EQPANEL_Z_LO  # = 250 — filter zone bottom Z (mm) — F1 sump bottom (tracks panel, +50 raise)
 FSKID_Z_HI     = FSKID_Z_LO + 3 * BB_H + 2 * 30  # = 1280 — F3 head top
 FSKID_H        = FSKID_Z_HI - FSKID_Z_LO  # = 1080mm
-F1_Z           = 200     # F1 sump bottom Z (mm) — 50μ sediment (lowest, most accessible)
-F2_Z           = 570     # F2 sump bottom Z (mm) — 5μ sediment
-F3_Z           = 940     # F3 sump bottom Z (mm) — GAC carbon (highest filter)
+F1_Z           = FSKID_Z_LO  # = 250 — F1 sump bottom Z (mm) — 50μ sediment (lowest); tracks the equipment panel
+F2_Z           = F1_Z + BB_H + 30  # = 620 — F2 sump bottom Z (mm) — 5μ sediment
+F3_Z           = F2_Z + BB_H + 30  # = 990 — F3 sump bottom Z (mm) — GAC carbon (highest)
 FILT_HEAD_Z    = F3_Z + BB_H  # = 1280 — top of highest filter head
 FILT_SUMP_Z    = F1_Z         # = 200 — bottom of lowest filter sump
 

@@ -68,7 +68,10 @@ BRACE_ZB, BRACE_ZT = ov.BRACE_Z_BOT, ov.BRACE_Z_TOP   # 100, 2288
 # ── Study extents + cantilever-bracket dimensions (STUDY values; cascade later if approved) ──
 PARTIAL_X = ov.PROC_TRAY_X_R   # 4629 — full tray length (= far rim); spray bar spans lip-to-lip
 LEG_X = WK_LX - 30         # 140 — floor leg centreline (bare floor, outside tray X=170)
-N_BRACKETS = 6             # brackets spread along Yd 0..2362
+# Leg layout (Yd): 3 land on the punch-out (800/1180/1560) to support the widened
+# section via EXTENDED arms; the 2 outers give ~550mm max clear span for the grate.
+LEG_YDS = [250, 800, 1180, 1560, 2110]
+SB_END_GAP = 25            # carriage-to-tray-lip clearance (beam stops short of the rim wall)
 POST = 50                  # 50×50 SHS leg/post section (mm)
 BW = 60                    # bracket Yd width (mm)
 FOOT_X0, FOOT_X1, FOOT_T = 38, 166, 8   # foot plate X span (all < 170) + thickness
@@ -151,34 +154,38 @@ def grate():
     return '\n'.join([
         ov.ruby_box("Walkway Left (removable)", WK_LX, 0, GZ,
                     WK_W, C_WID, GRATE_T, color=ov.C_REMOVABLE),
-        ov.ruby_box("Walkway Left punch-out (cantilevered)", INNER_X, WIDE_YL, GZ,
+        ov.ruby_box("Walkway Left punch-out (on extended arms)", INNER_X, WIDE_YL, GZ,
                     PUNCH_X - INNER_X, WIDE_YR - WIDE_YL, GRATE_T, color=ov.C_REMOVABLE),
     ])
 
 
-def _bracket(i, y):
+def _bracket(i, y, reach):
     """One floor-rooted cantilever bracket at Yd=y: foot plate (bare floor) + post
-    (X≈140, Z0→raised grate bottom) + arm reaching to the grate inner edge (X=470).
-    With the raise the arm bottom sits at Z75 — 15mm clear ABOVE the spray bar (Z60)
-    that passes under it — and the arm is 40mm deep instead of 13mm."""
+    (X≈140, Z0→raised grate bottom) + arm (Z75–115, 40mm deep, 15mm above the spray
+    bar) reaching to `reach`. Standard arms stop at the grate inner edge (X=470);
+    punch-out arms EXTEND to X=770 (the widened section) — possible only because the
+    raise lifted the arm clear of the spray bar, so it can pass over the open tray."""
+    wide = reach > INNER_X
+    aw = 60 if wide else 40          # widened arm runs a bit beefier in Yd
+    arm_x0 = LEG_X + POST / 2
     return '\n'.join([
         ov.ruby_box(f"Cantilever {i} foot plate", FOOT_X0, y - BW / 2, 0,
                     FOOT_X1 - FOOT_X0, BW, FOOT_T, color=ov.C_STEEL),
         ov.ruby_box(f"Cantilever {i} post (50x50 SHS)", LEG_X - POST / 2, y - BW / 2, 0,
                     POST, BW, GZ, color=C_CANT),
-        ov.ruby_box(f"Cantilever {i} arm (to X470, ~50mm deep)", LEG_X + POST / 2, y - 40 / 2,
-                    ARM_ZB2, INNER_X - (LEG_X + POST / 2), 40, GZ - ARM_ZB2, color=C_CANT),
+        ov.ruby_box(f"Cantilever {i} arm (to X{int(reach)}{' WIDENED' if wide else ''})",
+                    arm_x0, y - aw / 2, ARM_ZB2, reach - arm_x0, aw, GZ - ARM_ZB2, color=C_CANT),
     ])
 
 
 def cantilevers():
-    """N floor-rooted cantilever brackets spread along Yd. The grate inner edge rests
-    on the arm tips (X=470); the punch-out grate cantilevers a further 300mm with NO
-    support below (spray bar sweeps that zone)."""
+    """Floor-rooted cantilever brackets at LEG_YDS. Standard brackets carry the grate
+    inner edge (X=470); brackets landing on the punch-out (Yd 800–1560) get EXTENDED
+    arms to X=770 so the widened section is supported, not cantilevered."""
     parts = []
-    for i in range(N_BRACKETS):
-        y = round(C_WID * (i + 0.5) / N_BRACKETS)
-        parts.append(_bracket(i + 1, y))
+    for i, y in enumerate(LEG_YDS, 1):
+        reach = PUNCH_X if WIDE_YL <= y <= WIDE_YR else INNER_X
+        parts.append(_bracket(i, y, reach))
     return '\n'.join(parts)
 
 
@@ -188,12 +195,14 @@ def spray_bar():
     tray rim) — passing UNDER the left walkway to wash the full film width. Z20–60, with a
     wheel riding each rim rail."""
     y = (WIDE_YL + WIDE_YR) // 2   # 1180 ~ drum centre
+    x0 = TRAY_XL + 2 + SB_END_GAP            # carriage stops SB_END_GAP short of the rim wall
+    x1 = (PARTIAL_X - 2) - SB_END_GAP
     return '\n'.join([
-        ov.ruby_box("Spray Bar beam (40x40, Z20-60)", TRAY_XL, y - SB_BEAM / 2, SB_ZB,
-                    PARTIAL_X - TRAY_XL, SB_BEAM, SB_BEAM, color=ov.C_ALUM),
-        ov.ruby_cylinder("Spray Bar wheel (left, on rim)", TRAY_XL + 4, y - SB_BEAM / 2 - 10,
+        ov.ruby_box("Spray Bar beam (40x40, Z20-60)", x0, y - SB_BEAM / 2, SB_ZB,
+                    x1 - x0, SB_BEAM, SB_BEAM, color=ov.C_ALUM),
+        ov.ruby_cylinder("Spray Bar wheel (left)", x0, y - SB_BEAM / 2 - 10,
                          SB_AXLE, SB_WHEEL / 2, 20, axis="y", color=ov.C_STEEL),
-        ov.ruby_cylinder("Spray Bar wheel (right, on rim)", PARTIAL_X - 24, y - SB_BEAM / 2 - 10,
+        ov.ruby_cylinder("Spray Bar wheel (right)", x1, y - SB_BEAM / 2 - 10,
                          SB_AXLE, SB_WHEEL / 2, 20, axis="y", color=ov.C_STEEL),
     ])
 
@@ -235,7 +244,7 @@ POINT_LABELS = [
      -700, -700, 500),
     (INNER_X, 984, ARM_ZB2, "ARM 40mm deep (was 13)\nbottom Z75 clears spray bar (Z60) by 15mm",
      520, -650, 320),
-    (PUNCH_X, 1180, GZ, "PUNCH-OUT cantilevers 300mm;\ngrate underside Z%d now clears\nspray bar (Z60) by %dmm" % (GZ, GZ - SB_ZT),
+    (PUNCH_X, 1180, GZ, "PUNCH-OUT now SUPPORTED:\nextended arm to X770 (Z75-115)\nover the spray bar (15mm clear)",
      650, -300, 450),
     (OPEN_XL, 1180, SB_ZT, "SPRAY BAR fixed at Z20-60\n(does NOT rise) — gap opens up",
      -300, 600, -250),

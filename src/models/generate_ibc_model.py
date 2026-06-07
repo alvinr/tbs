@@ -34,21 +34,33 @@ TAGS = ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel", "Labels"]
 IBC_LABELS = [
     ("IBC Frame", "IBC FRAME\n(50x50 RHS rack)", -250, 750, 650),
 ]
-# Point-anchored callouts on specific geometry (totes, drain ports, pipe runs).
+# Point-anchored callouts on specific geometry (totes, drain ports, panel kit).
 IBC_POINT_LABELS = [
-    # The four totes (2x2: near column Brown + Blue #1, far column Waste + Blue #2).
-    (5284,  538,  579, "BROWN IBC\n(developer)",     -1500, -1250, -550),  # near, lower
-    (5284,  538, 1589, "BLUE IBC #1\n(fresh water)", -1500, -1250,  500),  # near, upper
-    (5284, 1824,  579, "WASTE IBC",                   1550,  -250, -550),  # far, lower
-    (5284, 1824, 1589, "BLUE IBC #2\n(fresh water)",  1550,  -250,  250),  # far, upper
-    # Exterior drain ports on the sealed end wall (X = C_LEN).
-    (5893, 1181,  400, "X3 (Brown drain-out)",         950, -600,  350),
-    (5893, 1181,  200, "X4 (Waste drain-out)",         700, -750, -250),
-    # Processing-tray sump pickup riser + the Blue spray-bar feed run.
-    (4550,   80,   20, "SUMP PICKUP\n(tray drain)",   -700, -850,  800),
-    (4649,   12,   40, "TO SPRAY BAR",               -1250, -650, -150),
-    # Pump / filter panel (in the corridor behind the totes).
-    (5285, 1046, 1500, "EQUIPMENT PANEL\n(pumps / filters)", 2050, -350, 1450),
+    # ── IBC totes — all called out on the CONTAINER side (front / door end), NOT
+    #    the sealed end wall (2x2: near col Brown + Blue #1, far col Waste + Blue #2).
+    (5284,  538,  579, "BROWN IBC\n(developer)",     -1550,  -900, -500),
+    (5284,  538, 1589, "BLUE IBC #1\n(fresh water)", -1550,  -900,  550),
+    (5284, 1824,  579, "WASTE IBC",                   -500, -2000,  300),
+    (5284, 1824, 1589, "BLUE IBC #2\n(fresh water)",  -500, -2000,  450),
+    # ── Tray sump pickup + Blue spray-bar feed (container side, low front) ──
+    (4550,   80,   20, "SUMP PICKUP\n(tray drain)",   -650,  -900,  950),
+    (4649,   12,   40, "TO SPRAY BAR",               -1250,  -650, -150),
+    # ── Sealed-end wall: exterior bulkhead ports + the wet-end panel kit, fanned
+    #    into a right-side column.  Exterior ports (X = C_LEN): ──
+    (5893, 1181, 2250, "X1 (fresh fill)",            1007, -400,  450),
+    (5893, 1181,  400, "X3 (Brown drain-out)",       1007, -500,  -50),
+    (5893, 1181,  200, "X4 (Waste drain-out)",       1007, -500, -100),
+    # ── Wet-end equipment on the panel (face X≈5190, corridor Yd 1109/1253) —
+    #    pumps, filters, accumulator only (no pipes/valves): ──
+    (5190, 1253, 2055, "P-05 (Brown drain pump)",    1710, -300,  395),
+    (5177, 1109, 2021, "ACC-01 (accumulator)",       1723, -300,  229),
+    (5190, 1253, 1687, "P-03 (Waste-evac pump)",     1710, -300,  363),
+    (5190, 1109, 1687, "P-04 (Tray-drain pump)",     1710, -300,  163),
+    (5190, 1253, 1429, "P-02 (Brown pump)",          1710, -300,  221),
+    (5190, 1109, 1429, "P-01 (Blue-feed pump)",      1710, -300,   21),
+    (5175, 1181, 1110, "F3 (GAC filter)",            1725, -300,   40),
+    (5175, 1181,  740, "F2 (5um filter)",            1725, -300,  110),
+    (5175, 1181,  370, "F1 (50um filter)",           1725, -300,  180),
 ]
 
 

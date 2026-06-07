@@ -2425,35 +2425,61 @@ if inst
 end
 anc = Geom::Point3d.new(5284.mm, 538.mm, 579.mm)
 txt = entities.add_text("BROWN IBC
-(developer)", anc, Geom::Vector3d.new(-1500.mm, -1250.mm, -550.mm))
+(developer)", anc, Geom::Vector3d.new(-1550.mm, -900.mm, -500.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(5284.mm, 538.mm, 1589.mm)
 txt = entities.add_text("BLUE IBC #1
-(fresh water)", anc, Geom::Vector3d.new(-1500.mm, -1250.mm, 500.mm))
+(fresh water)", anc, Geom::Vector3d.new(-1550.mm, -900.mm, 550.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(5284.mm, 1824.mm, 579.mm)
-txt = entities.add_text("WASTE IBC", anc, Geom::Vector3d.new(1550.mm, -250.mm, -550.mm))
+txt = entities.add_text("WASTE IBC", anc, Geom::Vector3d.new(-500.mm, -2000.mm, 300.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(5284.mm, 1824.mm, 1589.mm)
 txt = entities.add_text("BLUE IBC #2
-(fresh water)", anc, Geom::Vector3d.new(1550.mm, -250.mm, 250.mm))
-txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(5893.mm, 1181.mm, 400.mm)
-txt = entities.add_text("X3 (Brown drain-out)", anc, Geom::Vector3d.new(950.mm, -600.mm, 350.mm))
-txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(5893.mm, 1181.mm, 200.mm)
-txt = entities.add_text("X4 (Waste drain-out)", anc, Geom::Vector3d.new(700.mm, -750.mm, -250.mm))
+(fresh water)", anc, Geom::Vector3d.new(-500.mm, -2000.mm, 450.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(4550.mm, 80.mm, 20.mm)
 txt = entities.add_text("SUMP PICKUP
-(tray drain)", anc, Geom::Vector3d.new(-700.mm, -850.mm, 800.mm))
+(tray drain)", anc, Geom::Vector3d.new(-650.mm, -900.mm, 950.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(4649.mm, 12.mm, 40.mm)
 txt = entities.add_text("TO SPRAY BAR", anc, Geom::Vector3d.new(-1250.mm, -650.mm, -150.mm))
 txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(5285.mm, 1046.mm, 1500.mm)
-txt = entities.add_text("EQUIPMENT PANEL
-(pumps / filters)", anc, Geom::Vector3d.new(2050.mm, -350.mm, 1450.mm))
+anc = Geom::Point3d.new(5893.mm, 1181.mm, 2250.mm)
+txt = entities.add_text("X1 (fresh fill)", anc, Geom::Vector3d.new(1007.mm, -400.mm, 450.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(5893.mm, 1181.mm, 400.mm)
+txt = entities.add_text("X3 (Brown drain-out)", anc, Geom::Vector3d.new(1007.mm, -500.mm, -50.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(5893.mm, 1181.mm, 200.mm)
+txt = entities.add_text("X4 (Waste drain-out)", anc, Geom::Vector3d.new(1007.mm, -500.mm, -100.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(5190.mm, 1253.mm, 2055.mm)
+txt = entities.add_text("P-05 (Brown drain pump)", anc, Geom::Vector3d.new(1710.mm, -300.mm, 395.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(5177.mm, 1109.mm, 2021.mm)
+txt = entities.add_text("ACC-01 (accumulator)", anc, Geom::Vector3d.new(1723.mm, -300.mm, 229.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(5190.mm, 1253.mm, 1687.mm)
+txt = entities.add_text("P-03 (Waste-evac pump)", anc, Geom::Vector3d.new(1710.mm, -300.mm, 363.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(5190.mm, 1109.mm, 1687.mm)
+txt = entities.add_text("P-04 (Tray-drain pump)", anc, Geom::Vector3d.new(1710.mm, -300.mm, 163.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(5190.mm, 1253.mm, 1429.mm)
+txt = entities.add_text("P-02 (Brown pump)", anc, Geom::Vector3d.new(1710.mm, -300.mm, 221.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(5190.mm, 1109.mm, 1429.mm)
+txt = entities.add_text("P-01 (Blue-feed pump)", anc, Geom::Vector3d.new(1710.mm, -300.mm, 21.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(5175.mm, 1181.mm, 1110.mm)
+txt = entities.add_text("F3 (GAC filter)", anc, Geom::Vector3d.new(1725.mm, -300.mm, 40.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(5175.mm, 1181.mm, 740.mm)
+txt = entities.add_text("F2 (5um filter)", anc, Geom::Vector3d.new(1725.mm, -300.mm, 110.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(5175.mm, 1181.mm, 370.mm)
+txt = entities.add_text("F1 (50um filter)", anc, Geom::Vector3d.new(1725.mm, -300.mm, 180.mm))
 txt.layer = model.layers["Labels"] rescue nil
 
 model.definitions.purge_unused

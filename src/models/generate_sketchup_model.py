@@ -48,6 +48,7 @@ from tbs_constants import (
     WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H,
     WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R,
     WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R,
+    LEFT_WK_BEARER_SIZE,
     C_WALL, C_PROC_ZONE,
     PH_X, PH_H, PH_D,
     FP_X_L, FP_X_R, FP_W, FP_H, FP_Y, FP_Y_MIN,
@@ -438,6 +439,10 @@ def walkways():
 
     near_x_l = WALKWAY_LEFT_X + WALKWAY_W
     near_x_r = WALKWAY_RIGHT_X
+    # The near/far grates run along the side walls FROM the inner face of the
+    # left-walkway edge beam (X=near_x_l+beam) — they're cut around the full-width
+    # kerb beam rather than running over it.
+    near_x_l = near_x_l + LEFT_WK_BEARER_SIZE
     near_len = near_x_r - near_x_l
 
     parts = []

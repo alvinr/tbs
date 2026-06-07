@@ -143,7 +143,10 @@ def walkway_decks():
     'gates'. Geometry mirrors the overview's walkways() (minus the brackets,
     which are their own tag here)."""
     t = GRATE_T
-    near_x_l = WK_LEFT_X + WK_W
+    # Start the near/far grates at the INNER face of the left-walkway edge beam
+    # (X = WK_LEFT_X+WK_W + L_BEARER) so they're cut around the full-width kerb beam
+    # rather than running over it.
+    near_x_l = WK_LEFT_X + WK_W + L_BEARER
     near_x_r = WK_RIGHT_X
     parts = []
 

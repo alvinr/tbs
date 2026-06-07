@@ -44,8 +44,9 @@ from tbs_constants import (
     WALKWAY_RIGHT_HANGER_D, WALKWAY_RIGHT_HANGER_N, WALKWAY_RIGHT_HANGER_L,
     WALKWAY_RIGHT_X, WALKWAY_LEFT_X, WALKWAY_LEFT_SPAN,
     WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R,
-    LEFT_WK_BEARER_SIZE, LEFT_WK_BEARER_T, LEFT_WK_LEG_N,
-    LEFT_WK_SEAT_BOLT_N, LEFT_WK_SEAT_PLATE,
+    LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_T,
+    LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_BOLT_N,
+    LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH,
     EP_X, EP_W, BA_X, BA_W, PUMP_X, PUMP_W,
     PUMP_D, PUMP_H_LO, PUMP_H_HI, CORRIDOR_YD_NEAR,
     PANEL_CORNER_T, PANEL_CENTER_T, PANEL_CENTER_W, PANEL_FLOOR_GAP,
@@ -223,36 +224,33 @@ def _walkway_right_weight():
 
 
 def _walkway_left_weight():
-    """Left walkway (removable lift-out): grating + STEEL edge beam on wall seats
-    + legs + strip + drum-exit punch-out (rev 2026-06-05 — edge beam, not Al bearer)."""
-    # Grating: 300mm × 2362mm
+    """Left walkway (removable lift-out): grating + drum-exit punch-out grating + 5
+    FLOOR-LEG CANTILEVER brackets (post + foot plate + arm; the 3 punch-out brackets get
+    extended arms) (rev 2026-06-07 — floor-leg cantilevers replace the edge beam)."""
+    # Grating: 300mm × 2362mm + punch-out extension (300mm × 760mm).
     grate_area = (WALKWAY_W / 1000) * (C_WID / 1000)
-    grate_kg = grate_area * GRATING_KG_PER_M2
-    # Inner-edge STEEL edge beam: 40×40×3mm SHS, FULL WIDTH (wall-to-wall).
-    S, T = LEFT_WK_BEARER_SIZE, LEFT_WK_BEARER_T
-    beam_perim_area = (4 * S * T - 4 * T * T) * 1e-6  # m²
-    beam_kg = beam_perim_area * (C_WID / 1000) * RHO_STEEL
-    # 2 IBC-style wall-seat brackets: interior seat plate (~100×100×6) + exterior
-    # backing plate (LEFT_WK_SEAT_PLATE) + 3× M12 through-bolts, each end.
-    seat_plate_kg = (0.10 * 0.10 * LEFT_WK_SEAT_PLATE[2] / 1000) * RHO_STEEL
-    backing_kg = (LEFT_WK_SEAT_PLATE[0] / 1000 * LEFT_WK_SEAT_PLATE[1] / 1000
-                  * LEFT_WK_SEAT_PLATE[2] / 1000) * RHO_STEEL
-    bolts_kg = LEFT_WK_SEAT_BOLT_N * 0.07  # M12×80 ≈ 70 g each
-    wall_seats_kg = 2 * (seat_plate_kg + backing_kg + bolts_kg)
-    # 3 support legs: 25×25×3mm Al SHS, ~75mm tall each + base plates
-    leg_area = (4 * 25 * 3 - 4 * 3 * 3) * 1e-6
-    leg_kg = LEFT_WK_LEG_N * leg_area * 0.075 * RHO_ALUM
-    # Bearing strip: 15mm Al flat bar (15×3 section), ~2362mm
-    strip_kg = (15 * 3) * 1e-6 * (C_WID / 1000) * RHO_ALUM
-    # Drum-exit punch-out (rev 8): deepens 300→600mm over Yd 800–1560.
-    # Extra grating + an Al 50×50×3 cantilever sub-frame bearer + 1 leg.
-    subframe_perim_area = (2 * (50 + 50) * 3 - 4 * 3 * 3) * 1e-6  # 50×50×3 Al RHS
     punch_len = (WALKWAY_LEFT_WIDE_YD_R - WALKWAY_LEFT_WIDE_YD_L) / 1000.0
-    extra_grate_kg = ((WALKWAY_LEFT_WIDE_W - WALKWAY_W) / 1000.0) * punch_len * GRATING_KG_PER_M2
-    extra_bearer_kg = subframe_perim_area * punch_len * RHO_ALUM
-    extra_leg_kg = 1 * leg_area * 0.075 * RHO_ALUM
-    return (grate_kg + beam_kg + wall_seats_kg + leg_kg + strip_kg
-            + extra_grate_kg + extra_bearer_kg + extra_leg_kg)
+    punch_grate_area = ((WALKWAY_LEFT_WIDE_W - WALKWAY_W) / 1000.0) * punch_len
+    grate_kg = (grate_area + punch_grate_area) * GRATING_KG_PER_M2
+    # 5 steel floor-leg cantilever brackets.
+    n_brk = len(LEFT_WK_CANT_LEG_YDS)
+    P, PT = LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_T
+    post_area = (4 * P * PT - 4 * PT * PT) * 1e-6          # 50×50×3 SHS section, m²
+    post_h = (WALKWAY_H - WALKWAY_GRATE_T) / 1000.0        # 0.115 m — floor to grate bottom
+    post_kg = n_brk * post_area * post_h * RHO_STEEL
+    fl, fw, ft = LEFT_WK_CANT_FOOT                          # 128×60×8 plate
+    foot_kg = n_brk * (fl / 1000 * fw / 1000 * ft / 1000) * RHO_STEEL
+    # Arms (40×40×3 SHS): 2 standard (reach to X470) + 3 punch-out (extended to X770).
+    arm_x0 = LEFT_WK_CANT_LEG_X + P / 2
+    std_reach = (LEFT_WK_CANT_STD_REACH - arm_x0) / 1000.0
+    wide_reach = (LEFT_WK_CANT_WIDE_REACH - arm_x0) / 1000.0
+    n_wide = sum(1 for y in LEFT_WK_CANT_LEG_YDS
+                 if WALKWAY_LEFT_WIDE_YD_L <= y <= WALKWAY_LEFT_WIDE_YD_R)
+    n_std = n_brk - n_wide
+    arm_area = (4 * 40 * 3 - 4 * 9) * 1e-6                 # 40×40×3 SHS arm, m²
+    arm_kg = arm_area * (n_std * std_reach + n_wide * wide_reach) * RHO_STEEL
+    anchors_kg = n_brk * LEFT_WK_CANT_FOOT_BOLT_N * 0.05   # 4× M10 ≈ 50 g each per foot
+    return grate_kg + post_kg + foot_kg + arm_kg + anchors_kg
 
 
 def _film_plane_carriage_weight():

@@ -75,7 +75,6 @@ SB_END_GAP = 25            # carriage-to-tray-lip clearance (beam stops short of
 POST = 50                  # 50×50 SHS leg/post section (mm)
 BW = 60                    # bracket Yd width (mm)
 FOOT_X0, FOOT_X1, FOOT_T = 38, 166, 8   # foot plate X span (all < 170) + thickness
-ARM_ZB = k.LEFT_WK_BEAM_Z0              # 52 — arm bottom (clears tray rim Z50, spray bar Z60-ish)
 
 C_CANT = "#C8781E"         # cantilever brackets — distinct accent
 C_SWEEP = "#3070C0"        # panel swept-path envelope (faded blue)

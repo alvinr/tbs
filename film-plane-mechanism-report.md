@@ -11,6 +11,15 @@ The floor plan below shows the film plane rail positions (at Y=2262mm, X=150–4
 
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 
+**Interactive 3D model** — the fixed-size rigid film plane on its four floating-corner cross-slide carriages (Option A), posed in an example tilt + swing, with the processing tray and a ghost of the container. Drag to orbit, scroll to zoom; the per-corner detail scenes show each HGR20 rail, carriage, leadscrew, and X/Z cross-slides.
+
+<div class="sketchfab-embed-wrapper">
+  <div style="position:relative;width:100%;padding-bottom:56.25%;">
+    <iframe title="TBS-001 Film Plane Model" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/bb5394a8983a491fa541088b901c24f8/embed" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
+  </div>
+  <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"><a href="https://sketchfab.com/3d-models/tbs-001-film-plane-model-bb5394a8983a491fa541088b901c24f8?utm_medium=embed&utm_campaign=share-popup&utm_content=bb5394a8983a491fa541088b901c24f8" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">TBS-001 Film Plane Model</a> by <a href="https://sketchfab.com/alvin91403?utm_medium=embed&utm_campaign=share-popup&utm_content=bb5394a8983a491fa541088b901c24f8" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">alvin91403</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=bb5394a8983a491fa541088b901c24f8" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p>
+</div>
+
 ---
 
 ## 2. Container Reference Geometry

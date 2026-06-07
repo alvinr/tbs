@@ -123,7 +123,7 @@ end
   # Walkway Near (left section)
   grp = ents.add_group
   grp.name = "Walkway Near (left section)"
-  face = grp.entities.add_face([510.mm,0.mm,65.mm], [1155.mm,0.mm,65.mm], [1155.mm,300.mm,65.mm], [510.mm,300.mm,65.mm])
+  face = grp.entities.add_face([470.mm,0.mm,115.mm], [1155.mm,0.mm,115.mm], [1155.mm,300.mm,115.mm], [470.mm,300.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
@@ -134,7 +134,7 @@ end
   # Walkway Near (widened)
   grp = ents.add_group
   grp.name = "Walkway Near (widened)"
-  face = grp.entities.add_face([1155.mm,0.mm,65.mm], [2629.mm,0.mm,65.mm], [2629.mm,500.mm,65.mm], [1155.mm,500.mm,65.mm])
+  face = grp.entities.add_face([1155.mm,0.mm,115.mm], [2629.mm,0.mm,115.mm], [2629.mm,500.mm,115.mm], [1155.mm,500.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
@@ -145,7 +145,7 @@ end
   # Walkway Near (right section)
   grp = ents.add_group
   grp.name = "Walkway Near (right section)"
-  face = grp.entities.add_face([2629.mm,0.mm,65.mm], [4329.mm,0.mm,65.mm], [4329.mm,300.mm,65.mm], [2629.mm,300.mm,65.mm])
+  face = grp.entities.add_face([2629.mm,0.mm,115.mm], [4329.mm,0.mm,115.mm], [4329.mm,300.mm,115.mm], [2629.mm,300.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
@@ -156,7 +156,7 @@ end
   # Walkway Far
   grp = ents.add_group
   grp.name = "Walkway Far"
-  face = grp.entities.add_face([510.mm,2062.mm,65.mm], [4329.mm,2062.mm,65.mm], [4329.mm,2362.mm,65.mm], [510.mm,2362.mm,65.mm])
+  face = grp.entities.add_face([470.mm,2062.mm,115.mm], [4329.mm,2062.mm,115.mm], [4329.mm,2362.mm,115.mm], [470.mm,2362.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
@@ -167,7 +167,7 @@ end
   # Walkway Right (IBC end)
   grp = ents.add_group
   grp.name = "Walkway Right (IBC end)"
-  face = grp.entities.add_face([4329.mm,0.mm,65.mm], [4629.mm,0.mm,65.mm], [4629.mm,2362.mm,65.mm], [4329.mm,2362.mm,65.mm])
+  face = grp.entities.add_face([4329.mm,0.mm,115.mm], [4629.mm,0.mm,115.mm], [4629.mm,2362.mm,115.mm], [4329.mm,2362.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
@@ -178,7 +178,7 @@ end
   # Walkway Left (REMOVABLE — transport)
   grp = ents.add_group
   grp.name = "Walkway Left (REMOVABLE — transport)"
-  face = grp.entities.add_face([170.mm,0.mm,65.mm], [470.mm,0.mm,65.mm], [470.mm,2362.mm,65.mm], [170.mm,2362.mm,65.mm])
+  face = grp.entities.add_face([170.mm,0.mm,115.mm], [470.mm,0.mm,115.mm], [470.mm,2362.mm,115.mm], [170.mm,2362.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Walkway Left (REMOVABLE — transport)"] || model.materials.add("Walkway Left (REMOVABLE — transport)")
@@ -189,7 +189,7 @@ end
   # Walkway Left punch-out (drum exit)
   grp = ents.add_group
   grp.name = "Walkway Left punch-out (drum exit)"
-  face = grp.entities.add_face([470.mm,800.mm,65.mm], [770.mm,800.mm,65.mm], [770.mm,1560.mm,65.mm], [470.mm,1560.mm,65.mm])
+  face = grp.entities.add_face([470.mm,800.mm,115.mm], [770.mm,800.mm,115.mm], [770.mm,1560.mm,115.mm], [470.mm,1560.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Walkway Left (REMOVABLE — transport)"] || model.materials.add("Walkway Left (REMOVABLE — transport)")
@@ -250,7 +250,7 @@ end
   # Walkway Near bracket 1 arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 1 arm"
-  face = grp.entities.add_face([694.mm,8.mm,55.mm], [702.mm,8.mm,55.mm], [702.mm,300.mm,55.mm], [694.mm,300.mm,55.mm])
+  face = grp.entities.add_face([694.mm,8.mm,105.mm], [702.mm,8.mm,105.mm], [702.mm,300.mm,105.mm], [694.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -262,7 +262,7 @@ end
   grp = ents.add_group
   grp.name = "Walkway Near bracket 1 gusset"
   ge = grp.entities
-  f = ge.add_face([694.mm,8.mm,0.mm], [694.mm,8.mm,55.mm], [694.mm,70.mm,55.mm])
+  f = ge.add_face([694.mm,8.mm,0.mm], [694.mm,8.mm,105.mm], [694.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -335,7 +335,7 @@ end
   # Walkway Near bracket 2 (widened) arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 2 (widened) arm"
-  face = grp.entities.add_face([1150.mm,10.mm,53.mm], [1160.mm,10.mm,53.mm], [1160.mm,500.mm,53.mm], [1150.mm,500.mm,53.mm])
+  face = grp.entities.add_face([1150.mm,10.mm,103.mm], [1160.mm,10.mm,103.mm], [1160.mm,500.mm,103.mm], [1150.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -347,7 +347,7 @@ end
   grp = ents.add_group
   grp.name = "Walkway Near bracket 2 (widened) gusset"
   ge = grp.entities
-  f = ge.add_face([1150.mm,10.mm,0.mm], [1150.mm,10.mm,53.mm], [1150.mm,70.mm,53.mm])
+  f = ge.add_face([1150.mm,10.mm,0.mm], [1150.mm,10.mm,103.mm], [1150.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -420,7 +420,7 @@ end
   # Walkway Near bracket 3 (widened) arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 3 (widened) arm"
-  face = grp.entities.add_face([1607.mm,10.mm,53.mm], [1617.mm,10.mm,53.mm], [1617.mm,500.mm,53.mm], [1607.mm,500.mm,53.mm])
+  face = grp.entities.add_face([1607.mm,10.mm,103.mm], [1617.mm,10.mm,103.mm], [1617.mm,500.mm,103.mm], [1607.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -432,7 +432,7 @@ end
   grp = ents.add_group
   grp.name = "Walkway Near bracket 3 (widened) gusset"
   ge = grp.entities
-  f = ge.add_face([1607.mm,10.mm,0.mm], [1607.mm,10.mm,53.mm], [1607.mm,70.mm,53.mm])
+  f = ge.add_face([1607.mm,10.mm,0.mm], [1607.mm,10.mm,103.mm], [1607.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -505,7 +505,7 @@ end
   # Walkway Near bracket 4 (widened) arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 4 (widened) arm"
-  face = grp.entities.add_face([2064.mm,10.mm,53.mm], [2074.mm,10.mm,53.mm], [2074.mm,500.mm,53.mm], [2064.mm,500.mm,53.mm])
+  face = grp.entities.add_face([2064.mm,10.mm,103.mm], [2074.mm,10.mm,103.mm], [2074.mm,500.mm,103.mm], [2064.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -517,7 +517,7 @@ end
   grp = ents.add_group
   grp.name = "Walkway Near bracket 4 (widened) gusset"
   ge = grp.entities
-  f = ge.add_face([2064.mm,10.mm,0.mm], [2064.mm,10.mm,53.mm], [2064.mm,70.mm,53.mm])
+  f = ge.add_face([2064.mm,10.mm,0.mm], [2064.mm,10.mm,103.mm], [2064.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -590,7 +590,7 @@ end
   # Walkway Near bracket 5 (widened) arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 5 (widened) arm"
-  face = grp.entities.add_face([2521.mm,10.mm,53.mm], [2531.mm,10.mm,53.mm], [2531.mm,500.mm,53.mm], [2521.mm,500.mm,53.mm])
+  face = grp.entities.add_face([2521.mm,10.mm,103.mm], [2531.mm,10.mm,103.mm], [2531.mm,500.mm,103.mm], [2521.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -602,7 +602,7 @@ end
   grp = ents.add_group
   grp.name = "Walkway Near bracket 5 (widened) gusset"
   ge = grp.entities
-  f = ge.add_face([2521.mm,10.mm,0.mm], [2521.mm,10.mm,53.mm], [2521.mm,70.mm,53.mm])
+  f = ge.add_face([2521.mm,10.mm,0.mm], [2521.mm,10.mm,103.mm], [2521.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -662,7 +662,7 @@ end
   # Walkway Near bracket 6 arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 6 arm"
-  face = grp.entities.add_face([2979.mm,8.mm,55.mm], [2987.mm,8.mm,55.mm], [2987.mm,300.mm,55.mm], [2979.mm,300.mm,55.mm])
+  face = grp.entities.add_face([2979.mm,8.mm,105.mm], [2987.mm,8.mm,105.mm], [2987.mm,300.mm,105.mm], [2979.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -674,7 +674,7 @@ end
   grp = ents.add_group
   grp.name = "Walkway Near bracket 6 gusset"
   ge = grp.entities
-  f = ge.add_face([2979.mm,8.mm,0.mm], [2979.mm,8.mm,55.mm], [2979.mm,70.mm,55.mm])
+  f = ge.add_face([2979.mm,8.mm,0.mm], [2979.mm,8.mm,105.mm], [2979.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -734,7 +734,7 @@ end
   # Walkway Near bracket 7 arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 7 arm"
-  face = grp.entities.add_face([3436.mm,8.mm,55.mm], [3444.mm,8.mm,55.mm], [3444.mm,300.mm,55.mm], [3436.mm,300.mm,55.mm])
+  face = grp.entities.add_face([3436.mm,8.mm,105.mm], [3444.mm,8.mm,105.mm], [3444.mm,300.mm,105.mm], [3436.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -746,7 +746,7 @@ end
   grp = ents.add_group
   grp.name = "Walkway Near bracket 7 gusset"
   ge = grp.entities
-  f = ge.add_face([3436.mm,8.mm,0.mm], [3436.mm,8.mm,55.mm], [3436.mm,70.mm,55.mm])
+  f = ge.add_face([3436.mm,8.mm,0.mm], [3436.mm,8.mm,105.mm], [3436.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -806,7 +806,7 @@ end
   # Walkway Near bracket 8 arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 8 arm"
-  face = grp.entities.add_face([3893.mm,8.mm,55.mm], [3901.mm,8.mm,55.mm], [3901.mm,300.mm,55.mm], [3893.mm,300.mm,55.mm])
+  face = grp.entities.add_face([3893.mm,8.mm,105.mm], [3901.mm,8.mm,105.mm], [3901.mm,300.mm,105.mm], [3893.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -818,7 +818,7 @@ end
   grp = ents.add_group
   grp.name = "Walkway Near bracket 8 gusset"
   ge = grp.entities
-  f = ge.add_face([3893.mm,8.mm,0.mm], [3893.mm,8.mm,55.mm], [3893.mm,70.mm,55.mm])
+  f = ge.add_face([3893.mm,8.mm,0.mm], [3893.mm,8.mm,105.mm], [3893.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -878,7 +878,7 @@ end
   # Walkway Far bracket 1 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 1 arm"
-  face = grp.entities.add_face([694.mm,2062.mm,55.mm], [702.mm,2062.mm,55.mm], [702.mm,2354.mm,55.mm], [694.mm,2354.mm,55.mm])
+  face = grp.entities.add_face([694.mm,2062.mm,105.mm], [702.mm,2062.mm,105.mm], [702.mm,2354.mm,105.mm], [694.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -890,7 +890,7 @@ end
   grp = ents.add_group
   grp.name = "Walkway Far bracket 1 gusset"
   ge = grp.entities
-  f = ge.add_face([694.mm,2354.mm,0.mm], [694.mm,2354.mm,55.mm], [694.mm,2292.mm,55.mm])
+  f = ge.add_face([694.mm,2354.mm,0.mm], [694.mm,2354.mm,105.mm], [694.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -950,7 +950,7 @@ end
   # Walkway Far bracket 2 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 2 arm"
-  face = grp.entities.add_face([1151.mm,2062.mm,55.mm], [1159.mm,2062.mm,55.mm], [1159.mm,2354.mm,55.mm], [1151.mm,2354.mm,55.mm])
+  face = grp.entities.add_face([1151.mm,2062.mm,105.mm], [1159.mm,2062.mm,105.mm], [1159.mm,2354.mm,105.mm], [1151.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -962,7 +962,7 @@ end
   grp = ents.add_group
   grp.name = "Walkway Far bracket 2 gusset"
   ge = grp.entities
-  f = ge.add_face([1151.mm,2354.mm,0.mm], [1151.mm,2354.mm,55.mm], [1151.mm,2292.mm,55.mm])
+  f = ge.add_face([1151.mm,2354.mm,0.mm], [1151.mm,2354.mm,105.mm], [1151.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -1022,7 +1022,7 @@ end
   # Walkway Far bracket 3 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 3 arm"
-  face = grp.entities.add_face([1608.mm,2062.mm,55.mm], [1616.mm,2062.mm,55.mm], [1616.mm,2354.mm,55.mm], [1608.mm,2354.mm,55.mm])
+  face = grp.entities.add_face([1608.mm,2062.mm,105.mm], [1616.mm,2062.mm,105.mm], [1616.mm,2354.mm,105.mm], [1608.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -1034,7 +1034,7 @@ end
   grp = ents.add_group
   grp.name = "Walkway Far bracket 3 gusset"
   ge = grp.entities
-  f = ge.add_face([1608.mm,2354.mm,0.mm], [1608.mm,2354.mm,55.mm], [1608.mm,2292.mm,55.mm])
+  f = ge.add_face([1608.mm,2354.mm,0.mm], [1608.mm,2354.mm,105.mm], [1608.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -1094,7 +1094,7 @@ end
   # Walkway Far bracket 4 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 4 arm"
-  face = grp.entities.add_face([2065.mm,2062.mm,55.mm], [2073.mm,2062.mm,55.mm], [2073.mm,2354.mm,55.mm], [2065.mm,2354.mm,55.mm])
+  face = grp.entities.add_face([2065.mm,2062.mm,105.mm], [2073.mm,2062.mm,105.mm], [2073.mm,2354.mm,105.mm], [2065.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -1106,7 +1106,7 @@ end
   grp = ents.add_group
   grp.name = "Walkway Far bracket 4 gusset"
   ge = grp.entities
-  f = ge.add_face([2065.mm,2354.mm,0.mm], [2065.mm,2354.mm,55.mm], [2065.mm,2292.mm,55.mm])
+  f = ge.add_face([2065.mm,2354.mm,0.mm], [2065.mm,2354.mm,105.mm], [2065.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -1166,7 +1166,7 @@ end
   # Walkway Far bracket 5 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 5 arm"
-  face = grp.entities.add_face([2522.mm,2062.mm,55.mm], [2530.mm,2062.mm,55.mm], [2530.mm,2354.mm,55.mm], [2522.mm,2354.mm,55.mm])
+  face = grp.entities.add_face([2522.mm,2062.mm,105.mm], [2530.mm,2062.mm,105.mm], [2530.mm,2354.mm,105.mm], [2522.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -1178,7 +1178,7 @@ end
   grp = ents.add_group
   grp.name = "Walkway Far bracket 5 gusset"
   ge = grp.entities
-  f = ge.add_face([2522.mm,2354.mm,0.mm], [2522.mm,2354.mm,55.mm], [2522.mm,2292.mm,55.mm])
+  f = ge.add_face([2522.mm,2354.mm,0.mm], [2522.mm,2354.mm,105.mm], [2522.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -1238,7 +1238,7 @@ end
   # Walkway Far bracket 6 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 6 arm"
-  face = grp.entities.add_face([2979.mm,2062.mm,55.mm], [2987.mm,2062.mm,55.mm], [2987.mm,2354.mm,55.mm], [2979.mm,2354.mm,55.mm])
+  face = grp.entities.add_face([2979.mm,2062.mm,105.mm], [2987.mm,2062.mm,105.mm], [2987.mm,2354.mm,105.mm], [2979.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -1250,7 +1250,7 @@ end
   grp = ents.add_group
   grp.name = "Walkway Far bracket 6 gusset"
   ge = grp.entities
-  f = ge.add_face([2979.mm,2354.mm,0.mm], [2979.mm,2354.mm,55.mm], [2979.mm,2292.mm,55.mm])
+  f = ge.add_face([2979.mm,2354.mm,0.mm], [2979.mm,2354.mm,105.mm], [2979.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -1310,7 +1310,7 @@ end
   # Walkway Far bracket 7 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 7 arm"
-  face = grp.entities.add_face([3436.mm,2062.mm,55.mm], [3444.mm,2062.mm,55.mm], [3444.mm,2354.mm,55.mm], [3436.mm,2354.mm,55.mm])
+  face = grp.entities.add_face([3436.mm,2062.mm,105.mm], [3444.mm,2062.mm,105.mm], [3444.mm,2354.mm,105.mm], [3436.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -1322,7 +1322,7 @@ end
   grp = ents.add_group
   grp.name = "Walkway Far bracket 7 gusset"
   ge = grp.entities
-  f = ge.add_face([3436.mm,2354.mm,0.mm], [3436.mm,2354.mm,55.mm], [3436.mm,2292.mm,55.mm])
+  f = ge.add_face([3436.mm,2354.mm,0.mm], [3436.mm,2354.mm,105.mm], [3436.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -1382,7 +1382,7 @@ end
   # Walkway Far bracket 8 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 8 arm"
-  face = grp.entities.add_face([3893.mm,2062.mm,55.mm], [3901.mm,2062.mm,55.mm], [3901.mm,2354.mm,55.mm], [3893.mm,2354.mm,55.mm])
+  face = grp.entities.add_face([3893.mm,2062.mm,105.mm], [3901.mm,2062.mm,105.mm], [3901.mm,2354.mm,105.mm], [3893.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -1394,17 +1394,39 @@ end
   grp = ents.add_group
   grp.name = "Walkway Far bracket 8 gusset"
   ge = grp.entities
-  f = ge.add_face([3893.mm,2354.mm,0.mm], [3893.mm,2354.mm,55.mm], [3893.mm,2292.mm,55.mm])
+  f = ge.add_face([3893.mm,2354.mm,0.mm], [3893.mm,2354.mm,105.mm], [3893.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left edge beam (40x40x3 steel SHS, full width)
+  # Left cantilever 1 foot plate
   grp = ents.add_group
-  grp.name = "Left edge beam (40x40x3 steel SHS, full width)"
-  face = grp.entities.add_face([470.mm,6.mm,52.mm], [510.mm,6.mm,52.mm], [510.mm,2356.mm,52.mm], [470.mm,2356.mm,52.mm])
+  grp.name = "Left cantilever 1 foot plate"
+  face = grp.entities.add_face([38.mm,220.mm,0.mm], [166.mm,220.mm,0.mm], [166.mm,280.mm,0.mm], [38.mm,280.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left cantilever 1 post (50x50x3 SHS)
+  grp = ents.add_group
+  grp.name = "Left cantilever 1 post (50x50x3 SHS)"
+  face = grp.entities.add_face([115.mm,220.mm,0.mm], [165.mm,220.mm,0.mm], [165.mm,280.mm,0.mm], [115.mm,280.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(115.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left cantilever 1 arm (to X470)
+  grp = ents.add_group
+  grp.name = "Left cantilever 1 arm (to X470)"
+  face = grp.entities.add_face([165.mm,230.mm,75.mm], [470.mm,230.mm,75.mm], [470.mm,270.mm,75.mm], [165.mm,270.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -1412,305 +1434,135 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left wall-seat near interior plate
+  # Left cantilever 2 foot plate
   grp = ents.add_group
-  grp.name = "Left wall-seat near interior plate"
-  face = grp.entities.add_face([440.mm,0.mm,5.mm], [540.mm,0.mm,5.mm], [540.mm,6.mm,5.mm], [440.mm,6.mm,5.mm])
+  grp.name = "Left cantilever 2 foot plate"
+  face = grp.entities.add_face([38.mm,770.mm,0.mm], [166.mm,770.mm,0.mm], [166.mm,830.mm,0.mm], [38.mm,830.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(135.mm)
+  face.pushpull(8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left wall-seat near exterior plate
+  # Left cantilever 2 post (50x50x3 SHS)
   grp = ents.add_group
-  grp.name = "Left wall-seat near exterior plate"
-  face = grp.entities.add_face([440.mm,-46.mm,5.mm], [540.mm,-46.mm,5.mm], [540.mm,-40.mm,5.mm], [440.mm,-40.mm,5.mm])
+  grp.name = "Left cantilever 2 post (50x50x3 SHS)"
+  face = grp.entities.add_face([115.mm,770.mm,0.mm], [165.mm,770.mm,0.mm], [165.mm,830.mm,0.mm], [115.mm,830.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(135.mm)
+  face.pushpull(115.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left wall-seat near pocket floor
+  # Left cantilever 2 arm (to X770)
   grp = ents.add_group
-  grp.name = "Left wall-seat near pocket floor"
-  face = grp.entities.add_face([464.mm,6.mm,46.mm], [516.mm,6.mm,46.mm], [516.mm,80.mm,46.mm], [464.mm,80.mm,46.mm])
+  grp.name = "Left cantilever 2 arm (to X770)"
+  face = grp.entities.add_face([165.mm,770.mm,75.mm], [770.mm,770.mm,75.mm], [770.mm,830.mm,75.mm], [165.mm,830.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
+  face.pushpull(40.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left wall-seat near pocket gusset
+  # Left cantilever 3 foot plate
   grp = ents.add_group
-  grp.name = "Left wall-seat near pocket gusset"
-  ge = grp.entities
-  f = ge.add_face([470.mm,6.mm,46.mm], [470.mm,6.mm,92.mm], [470.mm,80.mm,46.mm])
-  f.pushpull(6.mm)
+  grp.name = "Left cantilever 3 foot plate"
+  face = grp.entities.add_face([38.mm,1150.mm,0.mm], [166.mm,1150.mm,0.mm], [166.mm,1210.mm,0.mm], [38.mm,1210.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left wall-seat near pocket gusset
+  # Left cantilever 3 post (50x50x3 SHS)
   grp = ents.add_group
-  grp.name = "Left wall-seat near pocket gusset"
-  ge = grp.entities
-  f = ge.add_face([510.mm,6.mm,46.mm], [510.mm,6.mm,92.mm], [510.mm,80.mm,46.mm])
-  f.pushpull(-6.mm)
+  grp.name = "Left cantilever 3 post (50x50x3 SHS)"
+  face = grp.entities.add_face([115.mm,1150.mm,0.mm], [165.mm,1150.mm,0.mm], [165.mm,1210.mm,0.mm], [115.mm,1210.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(115.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left wall-seat near bolt M12
+  # Left cantilever 3 arm (to X770)
   grp = ents.add_group
-  grp.name = "Left wall-seat near bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([458.mm,-46.mm,30.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(52.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left wall-seat near bolt head
-  grp = ents.add_group
-  grp.name = "Left wall-seat near bolt head"
-  face = grp.entities.add_face([449.mm,-52.mm,21.mm], [467.mm,-52.mm,21.mm], [467.mm,-46.mm,21.mm], [449.mm,-46.mm,21.mm])
+  grp.name = "Left cantilever 3 arm (to X770)"
+  face = grp.entities.add_face([165.mm,1150.mm,75.mm], [770.mm,1150.mm,75.mm], [770.mm,1210.mm,75.mm], [165.mm,1210.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(18.mm)
-  mat = model.materials["Left wall-seat near bolt head"] || model.materials.add("Left wall-seat near bolt head")
-  mat.color = Sketchup::Color.new(60, 60, 68)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left wall-seat near bolt M12
-  grp = ents.add_group
-  grp.name = "Left wall-seat near bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([458.mm,-46.mm,115.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(52.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left wall-seat near bolt head
-  grp = ents.add_group
-  grp.name = "Left wall-seat near bolt head"
-  face = grp.entities.add_face([449.mm,-52.mm,106.mm], [467.mm,-52.mm,106.mm], [467.mm,-46.mm,106.mm], [449.mm,-46.mm,106.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(18.mm)
-  mat = model.materials["Left wall-seat near bolt head"] || model.materials.add("Left wall-seat near bolt head")
-  mat.color = Sketchup::Color.new(60, 60, 68)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left wall-seat near bolt M12
-  grp = ents.add_group
-  grp.name = "Left wall-seat near bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([522.mm,-46.mm,30.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(52.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left wall-seat near bolt head
-  grp = ents.add_group
-  grp.name = "Left wall-seat near bolt head"
-  face = grp.entities.add_face([513.mm,-52.mm,21.mm], [531.mm,-52.mm,21.mm], [531.mm,-46.mm,21.mm], [513.mm,-46.mm,21.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(18.mm)
-  mat = model.materials["Left wall-seat near bolt head"] || model.materials.add("Left wall-seat near bolt head")
-  mat.color = Sketchup::Color.new(60, 60, 68)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left wall-seat near bolt M12
-  grp = ents.add_group
-  grp.name = "Left wall-seat near bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([522.mm,-46.mm,115.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(52.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left wall-seat near bolt head
-  grp = ents.add_group
-  grp.name = "Left wall-seat near bolt head"
-  face = grp.entities.add_face([513.mm,-52.mm,106.mm], [531.mm,-52.mm,106.mm], [531.mm,-46.mm,106.mm], [513.mm,-46.mm,106.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(18.mm)
-  mat = model.materials["Left wall-seat near bolt head"] || model.materials.add("Left wall-seat near bolt head")
-  mat.color = Sketchup::Color.new(60, 60, 68)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left wall-seat far interior plate
-  grp = ents.add_group
-  grp.name = "Left wall-seat far interior plate"
-  face = grp.entities.add_face([440.mm,2356.mm,5.mm], [540.mm,2356.mm,5.mm], [540.mm,2362.mm,5.mm], [440.mm,2362.mm,5.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(135.mm)
+  face.pushpull(40.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left wall-seat far exterior plate
+  # Left cantilever 4 foot plate
   grp = ents.add_group
-  grp.name = "Left wall-seat far exterior plate"
-  face = grp.entities.add_face([440.mm,2402.mm,5.mm], [540.mm,2402.mm,5.mm], [540.mm,2408.mm,5.mm], [440.mm,2408.mm,5.mm])
+  grp.name = "Left cantilever 4 foot plate"
+  face = grp.entities.add_face([38.mm,1530.mm,0.mm], [166.mm,1530.mm,0.mm], [166.mm,1590.mm,0.mm], [38.mm,1590.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(135.mm)
+  face.pushpull(8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left wall-seat far pocket floor
+  # Left cantilever 4 post (50x50x3 SHS)
   grp = ents.add_group
-  grp.name = "Left wall-seat far pocket floor"
-  face = grp.entities.add_face([464.mm,2282.mm,46.mm], [516.mm,2282.mm,46.mm], [516.mm,2356.mm,46.mm], [464.mm,2356.mm,46.mm])
+  grp.name = "Left cantilever 4 post (50x50x3 SHS)"
+  face = grp.entities.add_face([115.mm,1530.mm,0.mm], [165.mm,1530.mm,0.mm], [165.mm,1590.mm,0.mm], [115.mm,1590.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
+  face.pushpull(115.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left wall-seat far pocket gusset
+  # Left cantilever 4 arm (to X770)
   grp = ents.add_group
-  grp.name = "Left wall-seat far pocket gusset"
-  ge = grp.entities
-  f = ge.add_face([470.mm,2356.mm,46.mm], [470.mm,2356.mm,92.mm], [470.mm,2282.mm,46.mm])
-  f.pushpull(6.mm)
+  grp.name = "Left cantilever 4 arm (to X770)"
+  face = grp.entities.add_face([165.mm,1530.mm,75.mm], [770.mm,1530.mm,75.mm], [770.mm,1590.mm,75.mm], [165.mm,1590.mm,75.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left wall-seat far pocket gusset
+  # Left cantilever 5 foot plate
   grp = ents.add_group
-  grp.name = "Left wall-seat far pocket gusset"
-  ge = grp.entities
-  f = ge.add_face([510.mm,2356.mm,46.mm], [510.mm,2356.mm,92.mm], [510.mm,2282.mm,46.mm])
-  f.pushpull(-6.mm)
+  grp.name = "Left cantilever 5 foot plate"
+  face = grp.entities.add_face([38.mm,2080.mm,0.mm], [166.mm,2080.mm,0.mm], [166.mm,2140.mm,0.mm], [38.mm,2140.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left wall-seat far bolt M12
+  # Left cantilever 5 post (50x50x3 SHS)
   grp = ents.add_group
-  grp.name = "Left wall-seat far bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([458.mm,2356.mm,30.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(52.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left wall-seat far bolt head
-  grp = ents.add_group
-  grp.name = "Left wall-seat far bolt head"
-  face = grp.entities.add_face([449.mm,2408.mm,21.mm], [467.mm,2408.mm,21.mm], [467.mm,2414.mm,21.mm], [449.mm,2414.mm,21.mm])
+  grp.name = "Left cantilever 5 post (50x50x3 SHS)"
+  face = grp.entities.add_face([115.mm,2080.mm,0.mm], [165.mm,2080.mm,0.mm], [165.mm,2140.mm,0.mm], [115.mm,2140.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(18.mm)
-  mat = model.materials["Left wall-seat near bolt head"] || model.materials.add("Left wall-seat near bolt head")
-  mat.color = Sketchup::Color.new(60, 60, 68)
+  face.pushpull(115.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left wall-seat far bolt M12
+  # Left cantilever 5 arm (to X470)
   grp = ents.add_group
-  grp.name = "Left wall-seat far bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([458.mm,2356.mm,115.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(52.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left wall-seat far bolt head
-  grp = ents.add_group
-  grp.name = "Left wall-seat far bolt head"
-  face = grp.entities.add_face([449.mm,2408.mm,106.mm], [467.mm,2408.mm,106.mm], [467.mm,2414.mm,106.mm], [449.mm,2414.mm,106.mm])
+  grp.name = "Left cantilever 5 arm (to X470)"
+  face = grp.entities.add_face([165.mm,2090.mm,75.mm], [470.mm,2090.mm,75.mm], [470.mm,2130.mm,75.mm], [165.mm,2130.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(18.mm)
-  mat = model.materials["Left wall-seat near bolt head"] || model.materials.add("Left wall-seat near bolt head")
-  mat.color = Sketchup::Color.new(60, 60, 68)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left wall-seat far bolt M12
-  grp = ents.add_group
-  grp.name = "Left wall-seat far bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([522.mm,2356.mm,30.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(52.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left wall-seat far bolt head
-  grp = ents.add_group
-  grp.name = "Left wall-seat far bolt head"
-  face = grp.entities.add_face([513.mm,2408.mm,21.mm], [531.mm,2408.mm,21.mm], [531.mm,2414.mm,21.mm], [513.mm,2414.mm,21.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(18.mm)
-  mat = model.materials["Left wall-seat near bolt head"] || model.materials.add("Left wall-seat near bolt head")
-  mat.color = Sketchup::Color.new(60, 60, 68)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left wall-seat far bolt M12
-  grp = ents.add_group
-  grp.name = "Left wall-seat far bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([522.mm,2356.mm,115.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(52.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left wall-seat far bolt head
-  grp = ents.add_group
-  grp.name = "Left wall-seat far bolt head"
-  face = grp.entities.add_face([513.mm,2408.mm,106.mm], [531.mm,2408.mm,106.mm], [531.mm,2414.mm,106.mm], [513.mm,2414.mm,106.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(18.mm)
-  mat = model.materials["Left wall-seat near bolt head"] || model.materials.add("Left wall-seat near bolt head")
-  mat.color = Sketchup::Color.new(60, 60, 68)
+  face.pushpull(40.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2204,9 +2056,9 @@ end
   # Cargo Door Panel
   grp = ents.add_group
   grp.name = "Cargo Door Panel"
-  face = grp.entities.add_face([0.mm,0.mm,80.mm], [120.mm,0.mm,80.mm], [120.mm,2362.mm,80.mm], [0.mm,2362.mm,80.mm])
+  face = grp.entities.add_face([0.mm,0.mm,130.mm], [120.mm,0.mm,130.mm], [120.mm,2362.mm,130.mm], [0.mm,2362.mm,130.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2210.mm)
+  face.pushpull(2160.mm)
   mat = model.materials["Cargo Door Panel"] || model.materials.add("Cargo Door Panel")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 0.6
@@ -5761,7 +5613,7 @@ end
   # Equipment Panel (ply)
   grp = ents.add_group
   grp.name = "Equipment Panel (ply)"
-  face = grp.entities.add_face([5240.mm,1046.mm,200.mm], [5258.mm,1046.mm,200.mm], [5258.mm,1316.mm,200.mm], [5240.mm,1316.mm,200.mm])
+  face = grp.entities.add_face([5240.mm,1046.mm,250.mm], [5258.mm,1046.mm,250.mm], [5258.mm,1316.mm,250.mm], [5240.mm,1316.mm,250.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2060.mm)
   mat = model.materials["Equipment Panel (ply)"] || model.materials.add("Equipment Panel (ply)")
@@ -5772,7 +5624,7 @@ end
   # Pump P-01 (Blue)
   grp = ents.add_group
   grp.name = "Pump P-01 (Blue)"
-  face = grp.entities.add_face([5140.mm,1045.5.mm,1320.mm], [5240.mm,1045.5.mm,1320.mm], [5240.mm,1172.5.mm,1320.mm], [5140.mm,1172.5.mm,1320.mm])
+  face = grp.entities.add_face([5140.mm,1045.5.mm,1370.mm], [5240.mm,1045.5.mm,1370.mm], [5240.mm,1172.5.mm,1370.mm], [5140.mm,1172.5.mm,1370.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(218.mm)
   mat = model.materials["Pump P-01 (Blue)"] || model.materials.add("Pump P-01 (Blue)")
@@ -5783,7 +5635,7 @@ end
   # Pump P-02 (Brown)
   grp = ents.add_group
   grp.name = "Pump P-02 (Brown)"
-  face = grp.entities.add_face([5140.mm,1189.5.mm,1320.mm], [5240.mm,1189.5.mm,1320.mm], [5240.mm,1316.5.mm,1320.mm], [5140.mm,1316.5.mm,1320.mm])
+  face = grp.entities.add_face([5140.mm,1189.5.mm,1370.mm], [5240.mm,1189.5.mm,1370.mm], [5240.mm,1316.5.mm,1370.mm], [5140.mm,1316.5.mm,1370.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(218.mm)
   mat = model.materials["Pump P-01 (Blue)"] || model.materials.add("Pump P-01 (Blue)")
@@ -5794,7 +5646,7 @@ end
   # Pump P-04 (Tray drain)
   grp = ents.add_group
   grp.name = "Pump P-04 (Tray drain)"
-  face = grp.entities.add_face([5140.mm,1045.5.mm,1578.mm], [5240.mm,1045.5.mm,1578.mm], [5240.mm,1172.5.mm,1578.mm], [5140.mm,1172.5.mm,1578.mm])
+  face = grp.entities.add_face([5140.mm,1045.5.mm,1628.mm], [5240.mm,1045.5.mm,1628.mm], [5240.mm,1172.5.mm,1628.mm], [5140.mm,1172.5.mm,1628.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(218.mm)
   mat = model.materials["Pump P-01 (Blue)"] || model.materials.add("Pump P-01 (Blue)")
@@ -5805,7 +5657,7 @@ end
   # Pump P-03 (Waste evac)
   grp = ents.add_group
   grp.name = "Pump P-03 (Waste evac)"
-  face = grp.entities.add_face([5140.mm,1189.5.mm,1578.mm], [5240.mm,1189.5.mm,1578.mm], [5240.mm,1316.5.mm,1578.mm], [5140.mm,1316.5.mm,1578.mm])
+  face = grp.entities.add_face([5140.mm,1189.5.mm,1628.mm], [5240.mm,1189.5.mm,1628.mm], [5240.mm,1316.5.mm,1628.mm], [5140.mm,1316.5.mm,1628.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(218.mm)
   mat = model.materials["Pump P-01 (Blue)"] || model.materials.add("Pump P-01 (Blue)")
@@ -5816,7 +5668,7 @@ end
   # Pump P-05 (Brown drain)
   grp = ents.add_group
   grp.name = "Pump P-05 (Brown drain)"
-  face = grp.entities.add_face([5140.mm,1189.5.mm,1946.mm], [5240.mm,1189.5.mm,1946.mm], [5240.mm,1316.5.mm,1946.mm], [5140.mm,1316.5.mm,1946.mm])
+  face = grp.entities.add_face([5140.mm,1189.5.mm,1996.mm], [5240.mm,1189.5.mm,1996.mm], [5240.mm,1316.5.mm,1996.mm], [5140.mm,1316.5.mm,1996.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(218.mm)
   mat = model.materials["Pump P-01 (Blue)"] || model.materials.add("Pump P-01 (Blue)")
@@ -5828,7 +5680,7 @@ end
   grp = ents.add_group
   grp.name = "ACC-01 Accumulator"
   ge = grp.entities
-  circle = ge.add_circle([5177.mm,1109.mm,1946.mm], [0,0,1], 63.5.mm, 24)
+  circle = ge.add_circle([5177.mm,1109.mm,1996.mm], [0,0,1], 63.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(150.mm)
@@ -5879,9 +5731,9 @@ end
   # Drain-riser spine (ply)
   grp = ents.add_group
   grp.name = "Drain-riser spine (ply)"
-  face = grp.entities.add_face([5240.mm,1223.mm,200.mm], [5420.mm,1223.mm,200.mm], [5420.mm,1241.mm,200.mm], [5240.mm,1241.mm,200.mm])
+  face = grp.entities.add_face([5240.mm,1223.mm,250.mm], [5420.mm,1223.mm,250.mm], [5420.mm,1241.mm,250.mm], [5240.mm,1241.mm,250.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2020.mm)
+  face.pushpull(1970.mm)
   mat = model.materials["Equipment Panel (ply)"] || model.materials.add("Equipment Panel (ply)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
@@ -5890,9 +5742,9 @@ end
   # Drain-riser spine flange (ply)
   grp = ents.add_group
   grp.name = "Drain-riser spine flange (ply)"
-  face = grp.entities.add_face([5402.mm,1226.mm,200.mm], [5420.mm,1226.mm,200.mm], [5420.mm,1280.mm,200.mm], [5402.mm,1280.mm,200.mm])
+  face = grp.entities.add_face([5402.mm,1226.mm,250.mm], [5420.mm,1226.mm,250.mm], [5420.mm,1280.mm,250.mm], [5402.mm,1280.mm,250.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2020.mm)
+  face.pushpull(1970.mm)
   mat = model.materials["Equipment Panel (ply)"] || model.materials.add("Equipment Panel (ply)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
@@ -6225,7 +6077,7 @@ end
   grp.name = "Panel Frame Upright"
   face = grp.entities.add_face([5258.5.mm,1046.mm,1010.mm], [5308.5.mm,1046.mm,1010.mm], [5308.5.mm,1096.mm,1010.mm], [5258.5.mm,1096.mm,1010.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(1250.mm)
+  face.pushpull(1300.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -6236,7 +6088,7 @@ end
   grp.name = "Panel Frame Upright"
   face = grp.entities.add_face([5258.5.mm,1266.mm,1010.mm], [5308.5.mm,1266.mm,1010.mm], [5308.5.mm,1316.mm,1010.mm], [5258.5.mm,1316.mm,1010.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(1250.mm)
+  face.pushpull(1300.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -6245,7 +6097,7 @@ end
   # Panel Frame Top Rail
   grp = ents.add_group
   grp.name = "Panel Frame Top Rail"
-  face = grp.entities.add_face([5258.5.mm,1046.mm,2210.mm], [5308.5.mm,1046.mm,2210.mm], [5308.5.mm,1316.mm,2210.mm], [5258.5.mm,1316.mm,2210.mm])
+  face = grp.entities.add_face([5258.5.mm,1046.mm,2260.mm], [5308.5.mm,1046.mm,2260.mm], [5308.5.mm,1316.mm,2260.mm], [5258.5.mm,1316.mm,2260.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -7163,7 +7015,7 @@ end
   grp = ents.add_group
   grp.name = "LT Housing arc (near Yd)"
   ge = grp.entities
-  face = ge.add_face([[-55.28.mm,1470.25.mm,80.mm], [-66.02.mm,1482.59.mm,80.mm], [-77.21.mm,1494.54.mm,80.mm], [-88.82.mm,1506.06.mm,80.mm], [-100.84.mm,1517.16.mm,80.mm], [-113.26.mm,1527.81.mm,80.mm], [-126.06.mm,1538.01.mm,80.mm], [-139.22.mm,1547.73.mm,80.mm], [-152.72.mm,1556.97.mm,80.mm], [-166.55.mm,1565.71.mm,80.mm], [-180.69.mm,1573.94.mm,80.mm], [-195.12.mm,1581.66.mm,80.mm], [-209.82.mm,1588.84.mm,80.mm], [-224.77.mm,1595.48.mm,80.mm], [-239.96.mm,1601.58.mm,80.mm], [-255.35.mm,1607.12.mm,80.mm], [-270.94.mm,1612.1.mm,80.mm], [-286.7.mm,1616.5.mm,80.mm], [-302.6.mm,1620.33.mm,80.mm], [-318.64.mm,1623.58.mm,80.mm], [-334.78.mm,1626.25.mm,80.mm], [-351.01.mm,1628.33.mm,80.mm], [-367.3.mm,1629.81.mm,80.mm], [-383.64.mm,1630.7.mm,80.mm], [-400.mm,1631.mm,80.mm], [-416.36.mm,1630.7.mm,80.mm], [-432.7.mm,1629.81.mm,80.mm], [-448.99.mm,1628.33.mm,80.mm], [-465.22.mm,1626.25.mm,80.mm], [-481.36.mm,1623.58.mm,80.mm], [-497.4.mm,1620.33.mm,80.mm], [-513.3.mm,1616.5.mm,80.mm], [-529.06.mm,1612.1.mm,80.mm], [-544.65.mm,1607.12.mm,80.mm], [-560.04.mm,1601.58.mm,80.mm], [-575.23.mm,1595.48.mm,80.mm], [-590.18.mm,1588.84.mm,80.mm], [-604.88.mm,1581.66.mm,80.mm], [-619.31.mm,1573.94.mm,80.mm], [-633.45.mm,1565.71.mm,80.mm], [-647.28.mm,1556.97.mm,80.mm], [-660.78.mm,1547.73.mm,80.mm], [-673.94.mm,1538.01.mm,80.mm], [-686.74.mm,1527.81.mm,80.mm], [-699.16.mm,1517.16.mm,80.mm], [-711.18.mm,1506.06.mm,80.mm], [-722.79.mm,1494.54.mm,80.mm], [-733.98.mm,1482.59.mm,80.mm], [-744.72.mm,1470.25.mm,80.mm], [-740.89.mm,1467.04.mm,80.mm], [-730.27.mm,1479.24.mm,80.mm], [-719.21.mm,1491.05.mm,80.mm], [-707.72.mm,1502.45.mm,80.mm], [-695.83.mm,1513.43.mm,80.mm], [-683.55.mm,1523.96.mm,80.mm], [-670.9.mm,1534.04.mm,80.mm], [-657.89.mm,1543.66.mm,80.mm], [-644.53.mm,1552.79.mm,80.mm], [-630.85.mm,1561.44.mm,80.mm], [-616.87.mm,1569.58.mm,80.mm], [-602.6.mm,1577.2.mm,80.mm], [-588.07.mm,1584.31.mm,80.mm], [-573.28.mm,1590.88.mm,80.mm], [-558.26.mm,1596.91.mm,80.mm], [-543.04.mm,1602.38.mm,80.mm], [-527.63.mm,1607.31.mm,80.mm], [-512.05.mm,1611.66.mm,80.mm], [-496.32.mm,1615.45.mm,80.mm], [-480.46.mm,1618.67.mm,80.mm], [-464.49.mm,1621.3.mm,80.mm], [-448.45.mm,1623.36.mm,80.mm], [-432.33.mm,1624.82.mm,80.mm], [-416.18.mm,1625.71.mm,80.mm], [-400.mm,1626.mm,80.mm], [-383.82.mm,1625.71.mm,80.mm], [-367.67.mm,1624.82.mm,80.mm], [-351.55.mm,1623.36.mm,80.mm], [-335.51.mm,1621.3.mm,80.mm], [-319.54.mm,1618.67.mm,80.mm], [-303.68.mm,1615.45.mm,80.mm], [-287.95.mm,1611.66.mm,80.mm], [-272.37.mm,1607.31.mm,80.mm], [-256.96.mm,1602.38.mm,80.mm], [-241.74.mm,1596.91.mm,80.mm], [-226.72.mm,1590.88.mm,80.mm], [-211.93.mm,1584.31.mm,80.mm], [-197.4.mm,1577.2.mm,80.mm], [-183.13.mm,1569.58.mm,80.mm], [-169.15.mm,1561.44.mm,80.mm], [-155.47.mm,1552.79.mm,80.mm], [-142.11.mm,1543.66.mm,80.mm], [-129.1.mm,1534.04.mm,80.mm], [-116.45.mm,1523.96.mm,80.mm], [-104.17.mm,1513.43.mm,80.mm], [-92.28.mm,1502.45.mm,80.mm], [-80.79.mm,1491.05.mm,80.mm], [-69.73.mm,1479.24.mm,80.mm], [-59.11.mm,1467.04.mm,80.mm]])
+  face = ge.add_face([[-55.28.mm,1470.25.mm,130.mm], [-66.02.mm,1482.59.mm,130.mm], [-77.21.mm,1494.54.mm,130.mm], [-88.82.mm,1506.06.mm,130.mm], [-100.84.mm,1517.16.mm,130.mm], [-113.26.mm,1527.81.mm,130.mm], [-126.06.mm,1538.01.mm,130.mm], [-139.22.mm,1547.73.mm,130.mm], [-152.72.mm,1556.97.mm,130.mm], [-166.55.mm,1565.71.mm,130.mm], [-180.69.mm,1573.94.mm,130.mm], [-195.12.mm,1581.66.mm,130.mm], [-209.82.mm,1588.84.mm,130.mm], [-224.77.mm,1595.48.mm,130.mm], [-239.96.mm,1601.58.mm,130.mm], [-255.35.mm,1607.12.mm,130.mm], [-270.94.mm,1612.1.mm,130.mm], [-286.7.mm,1616.5.mm,130.mm], [-302.6.mm,1620.33.mm,130.mm], [-318.64.mm,1623.58.mm,130.mm], [-334.78.mm,1626.25.mm,130.mm], [-351.01.mm,1628.33.mm,130.mm], [-367.3.mm,1629.81.mm,130.mm], [-383.64.mm,1630.7.mm,130.mm], [-400.mm,1631.mm,130.mm], [-416.36.mm,1630.7.mm,130.mm], [-432.7.mm,1629.81.mm,130.mm], [-448.99.mm,1628.33.mm,130.mm], [-465.22.mm,1626.25.mm,130.mm], [-481.36.mm,1623.58.mm,130.mm], [-497.4.mm,1620.33.mm,130.mm], [-513.3.mm,1616.5.mm,130.mm], [-529.06.mm,1612.1.mm,130.mm], [-544.65.mm,1607.12.mm,130.mm], [-560.04.mm,1601.58.mm,130.mm], [-575.23.mm,1595.48.mm,130.mm], [-590.18.mm,1588.84.mm,130.mm], [-604.88.mm,1581.66.mm,130.mm], [-619.31.mm,1573.94.mm,130.mm], [-633.45.mm,1565.71.mm,130.mm], [-647.28.mm,1556.97.mm,130.mm], [-660.78.mm,1547.73.mm,130.mm], [-673.94.mm,1538.01.mm,130.mm], [-686.74.mm,1527.81.mm,130.mm], [-699.16.mm,1517.16.mm,130.mm], [-711.18.mm,1506.06.mm,130.mm], [-722.79.mm,1494.54.mm,130.mm], [-733.98.mm,1482.59.mm,130.mm], [-744.72.mm,1470.25.mm,130.mm], [-740.89.mm,1467.04.mm,130.mm], [-730.27.mm,1479.24.mm,130.mm], [-719.21.mm,1491.05.mm,130.mm], [-707.72.mm,1502.45.mm,130.mm], [-695.83.mm,1513.43.mm,130.mm], [-683.55.mm,1523.96.mm,130.mm], [-670.9.mm,1534.04.mm,130.mm], [-657.89.mm,1543.66.mm,130.mm], [-644.53.mm,1552.79.mm,130.mm], [-630.85.mm,1561.44.mm,130.mm], [-616.87.mm,1569.58.mm,130.mm], [-602.6.mm,1577.2.mm,130.mm], [-588.07.mm,1584.31.mm,130.mm], [-573.28.mm,1590.88.mm,130.mm], [-558.26.mm,1596.91.mm,130.mm], [-543.04.mm,1602.38.mm,130.mm], [-527.63.mm,1607.31.mm,130.mm], [-512.05.mm,1611.66.mm,130.mm], [-496.32.mm,1615.45.mm,130.mm], [-480.46.mm,1618.67.mm,130.mm], [-464.49.mm,1621.3.mm,130.mm], [-448.45.mm,1623.36.mm,130.mm], [-432.33.mm,1624.82.mm,130.mm], [-416.18.mm,1625.71.mm,130.mm], [-400.mm,1626.mm,130.mm], [-383.82.mm,1625.71.mm,130.mm], [-367.67.mm,1624.82.mm,130.mm], [-351.55.mm,1623.36.mm,130.mm], [-335.51.mm,1621.3.mm,130.mm], [-319.54.mm,1618.67.mm,130.mm], [-303.68.mm,1615.45.mm,130.mm], [-287.95.mm,1611.66.mm,130.mm], [-272.37.mm,1607.31.mm,130.mm], [-256.96.mm,1602.38.mm,130.mm], [-241.74.mm,1596.91.mm,130.mm], [-226.72.mm,1590.88.mm,130.mm], [-211.93.mm,1584.31.mm,130.mm], [-197.4.mm,1577.2.mm,130.mm], [-183.13.mm,1569.58.mm,130.mm], [-169.15.mm,1561.44.mm,130.mm], [-155.47.mm,1552.79.mm,130.mm], [-142.11.mm,1543.66.mm,130.mm], [-129.1.mm,1534.04.mm,130.mm], [-116.45.mm,1523.96.mm,130.mm], [-104.17.mm,1513.43.mm,130.mm], [-92.28.mm,1502.45.mm,130.mm], [-80.79.mm,1491.05.mm,130.mm], [-69.73.mm,1479.24.mm,130.mm], [-59.11.mm,1467.04.mm,130.mm]])
   face.reverse! if face.normal.z < 0
   face.pushpull(2120.mm)
   mat = model.materials["LT Housing arc (near Yd)"] || model.materials.add("LT Housing arc (near Yd)")
@@ -7175,7 +7027,7 @@ end
   grp = ents.add_group
   grp.name = "LT Housing arc (far Yd)"
   ge = grp.entities
-  face = ge.add_face([[-744.72.mm,891.75.mm,80.mm], [-733.98.mm,879.41.mm,80.mm], [-722.79.mm,867.46.mm,80.mm], [-711.18.mm,855.94.mm,80.mm], [-699.16.mm,844.84.mm,80.mm], [-686.74.mm,834.19.mm,80.mm], [-673.94.mm,823.99.mm,80.mm], [-660.78.mm,814.27.mm,80.mm], [-647.28.mm,805.03.mm,80.mm], [-633.45.mm,796.29.mm,80.mm], [-619.31.mm,788.06.mm,80.mm], [-604.88.mm,780.34.mm,80.mm], [-590.18.mm,773.16.mm,80.mm], [-575.23.mm,766.52.mm,80.mm], [-560.04.mm,760.42.mm,80.mm], [-544.65.mm,754.88.mm,80.mm], [-529.06.mm,749.9.mm,80.mm], [-513.3.mm,745.5.mm,80.mm], [-497.4.mm,741.67.mm,80.mm], [-481.36.mm,738.42.mm,80.mm], [-465.22.mm,735.75.mm,80.mm], [-448.99.mm,733.67.mm,80.mm], [-432.7.mm,732.19.mm,80.mm], [-416.36.mm,731.3.mm,80.mm], [-400.mm,731.mm,80.mm], [-383.64.mm,731.3.mm,80.mm], [-367.3.mm,732.19.mm,80.mm], [-351.01.mm,733.67.mm,80.mm], [-334.78.mm,735.75.mm,80.mm], [-318.64.mm,738.42.mm,80.mm], [-302.6.mm,741.67.mm,80.mm], [-286.7.mm,745.5.mm,80.mm], [-270.94.mm,749.9.mm,80.mm], [-255.35.mm,754.88.mm,80.mm], [-239.96.mm,760.42.mm,80.mm], [-224.77.mm,766.52.mm,80.mm], [-209.82.mm,773.16.mm,80.mm], [-195.12.mm,780.34.mm,80.mm], [-180.69.mm,788.06.mm,80.mm], [-166.55.mm,796.29.mm,80.mm], [-152.72.mm,805.03.mm,80.mm], [-139.22.mm,814.27.mm,80.mm], [-126.06.mm,823.99.mm,80.mm], [-113.26.mm,834.19.mm,80.mm], [-100.84.mm,844.84.mm,80.mm], [-88.82.mm,855.94.mm,80.mm], [-77.21.mm,867.46.mm,80.mm], [-66.02.mm,879.41.mm,80.mm], [-55.28.mm,891.75.mm,80.mm], [-59.11.mm,894.96.mm,80.mm], [-69.73.mm,882.76.mm,80.mm], [-80.79.mm,870.95.mm,80.mm], [-92.28.mm,859.55.mm,80.mm], [-104.17.mm,848.57.mm,80.mm], [-116.45.mm,838.04.mm,80.mm], [-129.1.mm,827.96.mm,80.mm], [-142.11.mm,818.34.mm,80.mm], [-155.47.mm,809.21.mm,80.mm], [-169.15.mm,800.56.mm,80.mm], [-183.13.mm,792.42.mm,80.mm], [-197.4.mm,784.8.mm,80.mm], [-211.93.mm,777.69.mm,80.mm], [-226.72.mm,771.12.mm,80.mm], [-241.74.mm,765.09.mm,80.mm], [-256.96.mm,759.62.mm,80.mm], [-272.37.mm,754.69.mm,80.mm], [-287.95.mm,750.34.mm,80.mm], [-303.68.mm,746.55.mm,80.mm], [-319.54.mm,743.33.mm,80.mm], [-335.51.mm,740.7.mm,80.mm], [-351.55.mm,738.64.mm,80.mm], [-367.67.mm,737.18.mm,80.mm], [-383.82.mm,736.29.mm,80.mm], [-400.mm,736.mm,80.mm], [-416.18.mm,736.29.mm,80.mm], [-432.33.mm,737.18.mm,80.mm], [-448.45.mm,738.64.mm,80.mm], [-464.49.mm,740.7.mm,80.mm], [-480.46.mm,743.33.mm,80.mm], [-496.32.mm,746.55.mm,80.mm], [-512.05.mm,750.34.mm,80.mm], [-527.63.mm,754.69.mm,80.mm], [-543.04.mm,759.62.mm,80.mm], [-558.26.mm,765.09.mm,80.mm], [-573.28.mm,771.12.mm,80.mm], [-588.07.mm,777.69.mm,80.mm], [-602.6.mm,784.8.mm,80.mm], [-616.87.mm,792.42.mm,80.mm], [-630.85.mm,800.56.mm,80.mm], [-644.53.mm,809.21.mm,80.mm], [-657.89.mm,818.34.mm,80.mm], [-670.9.mm,827.96.mm,80.mm], [-683.55.mm,838.04.mm,80.mm], [-695.83.mm,848.57.mm,80.mm], [-707.72.mm,859.55.mm,80.mm], [-719.21.mm,870.95.mm,80.mm], [-730.27.mm,882.76.mm,80.mm], [-740.89.mm,894.96.mm,80.mm]])
+  face = ge.add_face([[-744.72.mm,891.75.mm,130.mm], [-733.98.mm,879.41.mm,130.mm], [-722.79.mm,867.46.mm,130.mm], [-711.18.mm,855.94.mm,130.mm], [-699.16.mm,844.84.mm,130.mm], [-686.74.mm,834.19.mm,130.mm], [-673.94.mm,823.99.mm,130.mm], [-660.78.mm,814.27.mm,130.mm], [-647.28.mm,805.03.mm,130.mm], [-633.45.mm,796.29.mm,130.mm], [-619.31.mm,788.06.mm,130.mm], [-604.88.mm,780.34.mm,130.mm], [-590.18.mm,773.16.mm,130.mm], [-575.23.mm,766.52.mm,130.mm], [-560.04.mm,760.42.mm,130.mm], [-544.65.mm,754.88.mm,130.mm], [-529.06.mm,749.9.mm,130.mm], [-513.3.mm,745.5.mm,130.mm], [-497.4.mm,741.67.mm,130.mm], [-481.36.mm,738.42.mm,130.mm], [-465.22.mm,735.75.mm,130.mm], [-448.99.mm,733.67.mm,130.mm], [-432.7.mm,732.19.mm,130.mm], [-416.36.mm,731.3.mm,130.mm], [-400.mm,731.mm,130.mm], [-383.64.mm,731.3.mm,130.mm], [-367.3.mm,732.19.mm,130.mm], [-351.01.mm,733.67.mm,130.mm], [-334.78.mm,735.75.mm,130.mm], [-318.64.mm,738.42.mm,130.mm], [-302.6.mm,741.67.mm,130.mm], [-286.7.mm,745.5.mm,130.mm], [-270.94.mm,749.9.mm,130.mm], [-255.35.mm,754.88.mm,130.mm], [-239.96.mm,760.42.mm,130.mm], [-224.77.mm,766.52.mm,130.mm], [-209.82.mm,773.16.mm,130.mm], [-195.12.mm,780.34.mm,130.mm], [-180.69.mm,788.06.mm,130.mm], [-166.55.mm,796.29.mm,130.mm], [-152.72.mm,805.03.mm,130.mm], [-139.22.mm,814.27.mm,130.mm], [-126.06.mm,823.99.mm,130.mm], [-113.26.mm,834.19.mm,130.mm], [-100.84.mm,844.84.mm,130.mm], [-88.82.mm,855.94.mm,130.mm], [-77.21.mm,867.46.mm,130.mm], [-66.02.mm,879.41.mm,130.mm], [-55.28.mm,891.75.mm,130.mm], [-59.11.mm,894.96.mm,130.mm], [-69.73.mm,882.76.mm,130.mm], [-80.79.mm,870.95.mm,130.mm], [-92.28.mm,859.55.mm,130.mm], [-104.17.mm,848.57.mm,130.mm], [-116.45.mm,838.04.mm,130.mm], [-129.1.mm,827.96.mm,130.mm], [-142.11.mm,818.34.mm,130.mm], [-155.47.mm,809.21.mm,130.mm], [-169.15.mm,800.56.mm,130.mm], [-183.13.mm,792.42.mm,130.mm], [-197.4.mm,784.8.mm,130.mm], [-211.93.mm,777.69.mm,130.mm], [-226.72.mm,771.12.mm,130.mm], [-241.74.mm,765.09.mm,130.mm], [-256.96.mm,759.62.mm,130.mm], [-272.37.mm,754.69.mm,130.mm], [-287.95.mm,750.34.mm,130.mm], [-303.68.mm,746.55.mm,130.mm], [-319.54.mm,743.33.mm,130.mm], [-335.51.mm,740.7.mm,130.mm], [-351.55.mm,738.64.mm,130.mm], [-367.67.mm,737.18.mm,130.mm], [-383.82.mm,736.29.mm,130.mm], [-400.mm,736.mm,130.mm], [-416.18.mm,736.29.mm,130.mm], [-432.33.mm,737.18.mm,130.mm], [-448.45.mm,738.64.mm,130.mm], [-464.49.mm,740.7.mm,130.mm], [-480.46.mm,743.33.mm,130.mm], [-496.32.mm,746.55.mm,130.mm], [-512.05.mm,750.34.mm,130.mm], [-527.63.mm,754.69.mm,130.mm], [-543.04.mm,759.62.mm,130.mm], [-558.26.mm,765.09.mm,130.mm], [-573.28.mm,771.12.mm,130.mm], [-588.07.mm,777.69.mm,130.mm], [-602.6.mm,784.8.mm,130.mm], [-616.87.mm,792.42.mm,130.mm], [-630.85.mm,800.56.mm,130.mm], [-644.53.mm,809.21.mm,130.mm], [-657.89.mm,818.34.mm,130.mm], [-670.9.mm,827.96.mm,130.mm], [-683.55.mm,838.04.mm,130.mm], [-695.83.mm,848.57.mm,130.mm], [-707.72.mm,859.55.mm,130.mm], [-719.21.mm,870.95.mm,130.mm], [-730.27.mm,882.76.mm,130.mm], [-740.89.mm,894.96.mm,130.mm]])
   face.reverse! if face.normal.z < 0
   face.pushpull(2120.mm)
   mat = model.materials["LT Housing arc (near Yd)"] || model.materials.add("LT Housing arc (near Yd)")
@@ -7187,7 +7039,7 @@ end
   grp = ents.add_group
   grp.name = "LT Upper bearing (SKF 6215)"
   ge = grp.entities
-  circle = ge.add_circle([-400.mm,1181.mm,2200.mm], [0,0,1], 65.mm, 24)
+  circle = ge.add_circle([-400.mm,1181.mm,2250.mm], [0,0,1], 65.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(45.mm)
@@ -7200,7 +7052,7 @@ end
   grp = ents.add_group
   grp.name = "LT Drum C-shell"
   ge = grp.entities
-  face = ge.add_face([[-730.93.mm,903.32.mm,80.mm], [-701.mm,871.12.mm,80.mm], [-667.94.mm,842.13.mm,80.mm], [-632.11.mm,816.65.mm,80.mm], [-593.88.mm,794.95.mm,80.mm], [-553.64.mm,777.24.mm,80.mm], [-511.81.mm,763.72.mm,80.mm], [-468.82.mm,754.52.mm,80.mm], [-425.12.mm,749.73.mm,80.mm], [-381.16.mm,749.41.mm,80.mm], [-337.39.mm,753.56.mm,80.mm], [-294.27.mm,762.14.mm,80.mm], [-252.25.mm,775.05.mm,80.mm], [-211.75.mm,792.17.mm,80.mm], [-173.21.mm,813.32.mm,80.mm], [-137.02.mm,838.27.mm,80.mm], [-103.54.mm,866.77.mm,80.mm], [-73.14.mm,898.53.mm,80.mm], [-46.13.mm,933.21.mm,80.mm], [-22.78.mm,970.46.mm,80.mm], [-3.33.mm,1009.89.mm,80.mm], [12.01.mm,1051.1.mm,80.mm], [23.08.mm,1093.64.mm,80.mm], [29.76.mm,1137.09.mm,80.mm], [32.mm,1181.mm,80.mm], [29.76.mm,1224.91.mm,80.mm], [23.08.mm,1268.36.mm,80.mm], [12.01.mm,1310.9.mm,80.mm], [-3.33.mm,1352.11.mm,80.mm], [-22.78.mm,1391.54.mm,80.mm], [-46.13.mm,1428.79.mm,80.mm], [-73.14.mm,1463.47.mm,80.mm], [-103.54.mm,1495.23.mm,80.mm], [-137.02.mm,1523.73.mm,80.mm], [-173.21.mm,1548.68.mm,80.mm], [-211.75.mm,1569.83.mm,80.mm], [-252.25.mm,1586.95.mm,80.mm], [-294.27.mm,1599.86.mm,80.mm], [-337.39.mm,1608.44.mm,80.mm], [-381.16.mm,1612.59.mm,80.mm], [-425.12.mm,1612.27.mm,80.mm], [-468.82.mm,1607.48.mm,80.mm], [-511.81.mm,1598.28.mm,80.mm], [-553.64.mm,1584.76.mm,80.mm], [-593.88.mm,1567.05.mm,80.mm], [-632.11.mm,1545.35.mm,80.mm], [-667.94.mm,1519.87.mm,80.mm], [-701.mm,1490.88.mm,80.mm], [-730.93.mm,1458.68.mm,80.mm], [-727.87.mm,1456.11.mm,80.mm], [-698.21.mm,1488.01.mm,80.mm], [-665.46.mm,1516.73.mm,80.mm], [-629.96.mm,1541.97.mm,80.mm], [-592.09.mm,1563.47.mm,80.mm], [-552.22.mm,1581.02.mm,80.mm], [-510.77.mm,1594.42.mm,80.mm], [-468.18.mm,1603.53.mm,80.mm], [-424.89.mm,1608.28.mm,80.mm], [-381.33.mm,1608.59.mm,80.mm], [-337.97.mm,1604.48.mm,80.mm], [-295.25.mm,1595.98.mm,80.mm], [-253.62.mm,1583.19.mm,80.mm], [-213.5.mm,1566.23.mm,80.mm], [-175.31.mm,1545.28.mm,80.mm], [-139.45.mm,1520.56.mm,80.mm], [-106.29.mm,1492.32.mm,80.mm], [-76.17.mm,1460.85.mm,80.mm], [-49.4.mm,1426.49.mm,80.mm], [-26.27.mm,1389.59.mm,80.mm], [-7.mm,1350.52.mm,80.mm], [8.19.mm,1309.7.mm,80.mm], [19.16.mm,1267.55.mm,80.mm], [25.78.mm,1224.5.mm,80.mm], [28.mm,1181.mm,80.mm], [25.78.mm,1137.5.mm,80.mm], [19.16.mm,1094.45.mm,80.mm], [8.19.mm,1052.3.mm,80.mm], [-7.mm,1011.48.mm,80.mm], [-26.27.mm,972.41.mm,80.mm], [-49.4.mm,935.51.mm,80.mm], [-76.17.mm,901.15.mm,80.mm], [-106.29.mm,869.68.mm,80.mm], [-139.45.mm,841.44.mm,80.mm], [-175.31.mm,816.72.mm,80.mm], [-213.5.mm,795.77.mm,80.mm], [-253.62.mm,778.81.mm,80.mm], [-295.25.mm,766.02.mm,80.mm], [-337.97.mm,757.52.mm,80.mm], [-381.33.mm,753.41.mm,80.mm], [-424.89.mm,753.72.mm,80.mm], [-468.18.mm,758.47.mm,80.mm], [-510.77.mm,767.58.mm,80.mm], [-552.22.mm,780.98.mm,80.mm], [-592.09.mm,798.53.mm,80.mm], [-629.96.mm,820.03.mm,80.mm], [-665.46.mm,845.27.mm,80.mm], [-698.21.mm,873.99.mm,80.mm], [-727.87.mm,905.89.mm,80.mm]])
+  face = ge.add_face([[-730.93.mm,903.32.mm,130.mm], [-701.mm,871.12.mm,130.mm], [-667.94.mm,842.13.mm,130.mm], [-632.11.mm,816.65.mm,130.mm], [-593.88.mm,794.95.mm,130.mm], [-553.64.mm,777.24.mm,130.mm], [-511.81.mm,763.72.mm,130.mm], [-468.82.mm,754.52.mm,130.mm], [-425.12.mm,749.73.mm,130.mm], [-381.16.mm,749.41.mm,130.mm], [-337.39.mm,753.56.mm,130.mm], [-294.27.mm,762.14.mm,130.mm], [-252.25.mm,775.05.mm,130.mm], [-211.75.mm,792.17.mm,130.mm], [-173.21.mm,813.32.mm,130.mm], [-137.02.mm,838.27.mm,130.mm], [-103.54.mm,866.77.mm,130.mm], [-73.14.mm,898.53.mm,130.mm], [-46.13.mm,933.21.mm,130.mm], [-22.78.mm,970.46.mm,130.mm], [-3.33.mm,1009.89.mm,130.mm], [12.01.mm,1051.1.mm,130.mm], [23.08.mm,1093.64.mm,130.mm], [29.76.mm,1137.09.mm,130.mm], [32.mm,1181.mm,130.mm], [29.76.mm,1224.91.mm,130.mm], [23.08.mm,1268.36.mm,130.mm], [12.01.mm,1310.9.mm,130.mm], [-3.33.mm,1352.11.mm,130.mm], [-22.78.mm,1391.54.mm,130.mm], [-46.13.mm,1428.79.mm,130.mm], [-73.14.mm,1463.47.mm,130.mm], [-103.54.mm,1495.23.mm,130.mm], [-137.02.mm,1523.73.mm,130.mm], [-173.21.mm,1548.68.mm,130.mm], [-211.75.mm,1569.83.mm,130.mm], [-252.25.mm,1586.95.mm,130.mm], [-294.27.mm,1599.86.mm,130.mm], [-337.39.mm,1608.44.mm,130.mm], [-381.16.mm,1612.59.mm,130.mm], [-425.12.mm,1612.27.mm,130.mm], [-468.82.mm,1607.48.mm,130.mm], [-511.81.mm,1598.28.mm,130.mm], [-553.64.mm,1584.76.mm,130.mm], [-593.88.mm,1567.05.mm,130.mm], [-632.11.mm,1545.35.mm,130.mm], [-667.94.mm,1519.87.mm,130.mm], [-701.mm,1490.88.mm,130.mm], [-730.93.mm,1458.68.mm,130.mm], [-727.87.mm,1456.11.mm,130.mm], [-698.21.mm,1488.01.mm,130.mm], [-665.46.mm,1516.73.mm,130.mm], [-629.96.mm,1541.97.mm,130.mm], [-592.09.mm,1563.47.mm,130.mm], [-552.22.mm,1581.02.mm,130.mm], [-510.77.mm,1594.42.mm,130.mm], [-468.18.mm,1603.53.mm,130.mm], [-424.89.mm,1608.28.mm,130.mm], [-381.33.mm,1608.59.mm,130.mm], [-337.97.mm,1604.48.mm,130.mm], [-295.25.mm,1595.98.mm,130.mm], [-253.62.mm,1583.19.mm,130.mm], [-213.5.mm,1566.23.mm,130.mm], [-175.31.mm,1545.28.mm,130.mm], [-139.45.mm,1520.56.mm,130.mm], [-106.29.mm,1492.32.mm,130.mm], [-76.17.mm,1460.85.mm,130.mm], [-49.4.mm,1426.49.mm,130.mm], [-26.27.mm,1389.59.mm,130.mm], [-7.mm,1350.52.mm,130.mm], [8.19.mm,1309.7.mm,130.mm], [19.16.mm,1267.55.mm,130.mm], [25.78.mm,1224.5.mm,130.mm], [28.mm,1181.mm,130.mm], [25.78.mm,1137.5.mm,130.mm], [19.16.mm,1094.45.mm,130.mm], [8.19.mm,1052.3.mm,130.mm], [-7.mm,1011.48.mm,130.mm], [-26.27.mm,972.41.mm,130.mm], [-49.4.mm,935.51.mm,130.mm], [-76.17.mm,901.15.mm,130.mm], [-106.29.mm,869.68.mm,130.mm], [-139.45.mm,841.44.mm,130.mm], [-175.31.mm,816.72.mm,130.mm], [-213.5.mm,795.77.mm,130.mm], [-253.62.mm,778.81.mm,130.mm], [-295.25.mm,766.02.mm,130.mm], [-337.97.mm,757.52.mm,130.mm], [-381.33.mm,753.41.mm,130.mm], [-424.89.mm,753.72.mm,130.mm], [-468.18.mm,758.47.mm,130.mm], [-510.77.mm,767.58.mm,130.mm], [-552.22.mm,780.98.mm,130.mm], [-592.09.mm,798.53.mm,130.mm], [-629.96.mm,820.03.mm,130.mm], [-665.46.mm,845.27.mm,130.mm], [-698.21.mm,873.99.mm,130.mm], [-727.87.mm,905.89.mm,130.mm]])
   face.reverse! if face.normal.z < 0
   face.pushpull(2120.mm)
   mat = model.materials["LT Drum C-shell"] || model.materials.add("LT Drum C-shell")
@@ -7212,7 +7064,7 @@ end
   grp = ents.add_group
   grp.name = "LT Drum top cap"
   ge = grp.entities
-  circle = ge.add_circle([-400.mm,1181.mm,2195.mm], [0,0,1], 432.mm, 24)
+  circle = ge.add_circle([-400.mm,1181.mm,2245.mm], [0,0,1], 432.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(5.mm)
@@ -7225,7 +7077,7 @@ end
   grp = ents.add_group
   grp.name = "LT Drum bottom cap"
   ge = grp.entities
-  circle = ge.add_circle([-400.mm,1181.mm,80.mm], [0,0,1], 432.mm, 24)
+  circle = ge.add_circle([-400.mm,1181.mm,130.mm], [0,0,1], 432.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(5.mm)
@@ -7238,7 +7090,7 @@ end
   grp = ents.add_group
   grp.name = "LT Drum top shaft"
   ge = grp.entities
-  circle = ge.add_circle([-400.mm,1181.mm,2200.mm], [0,0,1], 37.5.mm, 24)
+  circle = ge.add_circle([-400.mm,1181.mm,2250.mm], [0,0,1], 37.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(65.mm)
@@ -7286,7 +7138,7 @@ end
   grp = ents.add_group
   grp.name = "LT Drum opening brush seal"
   ge = grp.entities
-  circle = ge.add_circle([-735.9104883076718.mm,1462.8623668475475.mm,80.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([-735.9104883076718.mm,1462.8623668475475.mm,130.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2120.mm)
@@ -7299,7 +7151,7 @@ end
   grp = ents.add_group
   grp.name = "LT Drum opening brush seal"
   ge = grp.entities
-  circle = ge.add_circle([-735.9104883076719.mm,899.1376331524525.mm,80.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([-735.9104883076719.mm,899.1376331524525.mm,130.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2120.mm)
@@ -7318,9 +7170,9 @@ end
   # Bay wall near (Yd)
   grp = ents.add_group
   grp.name = "Bay wall near (Yd)"
-  face = grp.entities.add_face([-890.mm,653.mm,80.mm], [0.mm,653.mm,80.mm], [0.mm,659.mm,80.mm], [-890.mm,659.mm,80.mm])
+  face = grp.entities.add_face([-890.mm,653.mm,130.mm], [0.mm,653.mm,130.mm], [0.mm,659.mm,130.mm], [-890.mm,659.mm,130.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2220.mm)
+  face.pushpull(2170.mm)
   mat = model.materials["Equipment Panel (ply)"] || model.materials.add("Equipment Panel (ply)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
@@ -7329,9 +7181,9 @@ end
   # Bay wall far (Yd)
   grp = ents.add_group
   grp.name = "Bay wall far (Yd)"
-  face = grp.entities.add_face([-890.mm,1703.mm,80.mm], [0.mm,1703.mm,80.mm], [0.mm,1709.mm,80.mm], [-890.mm,1709.mm,80.mm])
+  face = grp.entities.add_face([-890.mm,1703.mm,130.mm], [0.mm,1703.mm,130.mm], [0.mm,1709.mm,130.mm], [-890.mm,1709.mm,130.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2220.mm)
+  face.pushpull(2170.mm)
   mat = model.materials["Equipment Panel (ply)"] || model.materials.add("Equipment Panel (ply)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
@@ -7351,7 +7203,7 @@ end
   # Bay wall bottom
   grp = ents.add_group
   grp.name = "Bay wall bottom"
-  face = grp.entities.add_face([-890.mm,653.mm,80.mm], [0.mm,653.mm,80.mm], [0.mm,1709.mm,80.mm], [-890.mm,1709.mm,80.mm])
+  face = grp.entities.add_face([-890.mm,653.mm,130.mm], [0.mm,653.mm,130.mm], [0.mm,1709.mm,130.mm], [-890.mm,1709.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
   mat = model.materials["Equipment Panel (ply)"] || model.materials.add("Equipment Panel (ply)")
@@ -7369,7 +7221,7 @@ end
   # Electrical Panel (EP)
   grp = ents.add_group
   grp.name = "Electrical Panel (EP)"
-  face = grp.entities.add_face([1600.mm,0.mm,1600.mm], [1900.mm,0.mm,1600.mm], [1900.mm,160.mm,1600.mm], [1600.mm,160.mm,1600.mm])
+  face = grp.entities.add_face([1600.mm,0.mm,1650.mm], [1900.mm,0.mm,1650.mm], [1900.mm,160.mm,1650.mm], [1600.mm,160.mm,1650.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(600.mm)
   mat = model.materials["Electrical Panel (EP)"] || model.materials.add("Electrical Panel (EP)")
@@ -7380,7 +7232,7 @@ end
   # Battery 1 (12V 100Ah LiFePO4)
   grp = ents.add_group
   grp.name = "Battery 1 (12V 100Ah LiFePO4)"
-  face = grp.entities.add_face([1810.mm,0.mm,100.mm], [2050.mm,0.mm,100.mm], [2050.mm,120.mm,100.mm], [1810.mm,120.mm,100.mm])
+  face = grp.entities.add_face([1810.mm,0.mm,150.mm], [2050.mm,0.mm,150.mm], [2050.mm,120.mm,150.mm], [1810.mm,120.mm,150.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(500.mm)
   mat = model.materials["Battery 1 (12V 100Ah LiFePO4)"] || model.materials.add("Battery 1 (12V 100Ah LiFePO4)")
@@ -7391,7 +7243,7 @@ end
   # Battery 2 (12V 100Ah LiFePO4)
   grp = ents.add_group
   grp.name = "Battery 2 (12V 100Ah LiFePO4)"
-  face = grp.entities.add_face([2070.mm,0.mm,100.mm], [2310.mm,0.mm,100.mm], [2310.mm,120.mm,100.mm], [2070.mm,120.mm,100.mm])
+  face = grp.entities.add_face([2070.mm,0.mm,150.mm], [2310.mm,0.mm,150.mm], [2310.mm,120.mm,150.mm], [2070.mm,120.mm,150.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(500.mm)
   mat = model.materials["Battery 1 (12V 100Ah LiFePO4)"] || model.materials.add("Battery 1 (12V 100Ah LiFePO4)")
@@ -7402,7 +7254,7 @@ end
   # Ext. Power Panel (exterior)
   grp = ents.add_group
   grp.name = "Ext. Power Panel (exterior)"
-  face = grp.entities.add_face([1250.mm,-65.mm,1780.mm], [1590.mm,-65.mm,1780.mm], [1590.mm,-40.mm,1780.mm], [1250.mm,-40.mm,1780.mm])
+  face = grp.entities.add_face([1250.mm,-65.mm,1830.mm], [1590.mm,-65.mm,1830.mm], [1590.mm,-40.mm,1830.mm], [1250.mm,-40.mm,1830.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(240.mm)
   mat = model.materials["Ext. Power Panel (exterior)"] || model.materials.add("Ext. Power Panel (exterior)")
@@ -7413,7 +7265,7 @@ end
   # Ext. Power Panel (interior face)
   grp = ents.add_group
   grp.name = "Ext. Power Panel (interior face)"
-  face = grp.entities.add_face([1250.mm,0.mm,1780.mm], [1590.mm,0.mm,1780.mm], [1590.mm,20.mm,1780.mm], [1250.mm,20.mm,1780.mm])
+  face = grp.entities.add_face([1250.mm,0.mm,1830.mm], [1590.mm,0.mm,1830.mm], [1590.mm,20.mm,1830.mm], [1250.mm,20.mm,1830.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(240.mm)
   mat = model.materials["Electrical Panel (EP)"] || model.materials.add("Electrical Panel (EP)")
@@ -7431,7 +7283,7 @@ end
   # Chem Shelf
   grp = ents.add_group
   grp.name = "Chem Shelf"
-  face = grp.entities.add_face([3729.mm,300.mm,1003.mm], [4329.mm,300.mm,1003.mm], [4329.mm,600.mm,1003.mm], [3729.mm,600.mm,1003.mm])
+  face = grp.entities.add_face([3729.mm,300.mm,1053.mm], [4329.mm,300.mm,1053.mm], [4329.mm,600.mm,1053.mm], [3729.mm,600.mm,1053.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Chem Shelf"] || model.materials.add("Chem Shelf")
@@ -7443,10 +7295,10 @@ end
   grp = ents.add_group
   grp.name = "Shelf Hanger Rod"
   ge = grp.entities
-  circle = ge.add_circle([3749.mm,320.mm,1025.mm], [0,0,1], 5.mm, 12)
+  circle = ge.add_circle([3749.mm,320.mm,1075.mm], [0,0,1], 5.mm, 12)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(1363.mm)
+  cface.pushpull(1313.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -7456,10 +7308,10 @@ end
   grp = ents.add_group
   grp.name = "Shelf Hanger Rod"
   ge = grp.entities
-  circle = ge.add_circle([3749.mm,580.mm,1025.mm], [0,0,1], 5.mm, 12)
+  circle = ge.add_circle([3749.mm,580.mm,1075.mm], [0,0,1], 5.mm, 12)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(1363.mm)
+  cface.pushpull(1313.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -7469,10 +7321,10 @@ end
   grp = ents.add_group
   grp.name = "Shelf Hanger Rod"
   ge = grp.entities
-  circle = ge.add_circle([4309.mm,320.mm,1025.mm], [0,0,1], 5.mm, 12)
+  circle = ge.add_circle([4309.mm,320.mm,1075.mm], [0,0,1], 5.mm, 12)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(1363.mm)
+  cface.pushpull(1313.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -7482,10 +7334,10 @@ end
   grp = ents.add_group
   grp.name = "Shelf Hanger Rod"
   ge = grp.entities
-  circle = ge.add_circle([4309.mm,580.mm,1025.mm], [0,0,1], 5.mm, 12)
+  circle = ge.add_circle([4309.mm,580.mm,1075.mm], [0,0,1], 5.mm, 12)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(1363.mm)
+  cface.pushpull(1313.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -7567,7 +7419,7 @@ end
   # Housing surround seal bottom
   grp = ents.add_group
   grp.name = "Housing surround seal bottom"
-  face = grp.entities.add_face([-20.mm,713.mm,80.mm], [0.mm,713.mm,80.mm], [0.mm,1649.mm,80.mm], [-20.mm,1649.mm,80.mm])
+  face = grp.entities.add_face([-20.mm,713.mm,130.mm], [0.mm,713.mm,130.mm], [0.mm,1649.mm,130.mm], [-20.mm,1649.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
@@ -7578,7 +7430,7 @@ end
   # Housing surround seal top
   grp = ents.add_group
   grp.name = "Housing surround seal top"
-  face = grp.entities.add_face([-20.mm,713.mm,2160.mm], [0.mm,713.mm,2160.mm], [0.mm,1649.mm,2160.mm], [-20.mm,1649.mm,2160.mm])
+  face = grp.entities.add_face([-20.mm,713.mm,2210.mm], [0.mm,713.mm,2210.mm], [0.mm,1649.mm,2210.mm], [-20.mm,1649.mm,2210.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
@@ -7589,7 +7441,7 @@ end
   # Housing surround seal left
   grp = ents.add_group
   grp.name = "Housing surround seal left"
-  face = grp.entities.add_face([-20.mm,713.mm,80.mm], [0.mm,713.mm,80.mm], [0.mm,753.mm,80.mm], [-20.mm,753.mm,80.mm])
+  face = grp.entities.add_face([-20.mm,713.mm,130.mm], [0.mm,713.mm,130.mm], [0.mm,753.mm,130.mm], [-20.mm,753.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2120.mm)
   mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
@@ -7600,7 +7452,7 @@ end
   # Housing surround seal right
   grp = ents.add_group
   grp.name = "Housing surround seal right"
-  face = grp.entities.add_face([-20.mm,1609.mm,80.mm], [0.mm,1609.mm,80.mm], [0.mm,1649.mm,80.mm], [-20.mm,1649.mm,80.mm])
+  face = grp.entities.add_face([-20.mm,1609.mm,130.mm], [0.mm,1609.mm,130.mm], [0.mm,1649.mm,130.mm], [-20.mm,1649.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2120.mm)
   mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
@@ -7618,7 +7470,7 @@ end
   # EPDM Seal Bottom
   grp = ents.add_group
   grp.name = "EPDM Seal Bottom"
-  face = grp.entities.add_face([-20.mm,0.mm,80.mm], [0.mm,0.mm,80.mm], [0.mm,2362.mm,80.mm], [-20.mm,2362.mm,80.mm])
+  face = grp.entities.add_face([-20.mm,0.mm,130.mm], [0.mm,0.mm,130.mm], [0.mm,2362.mm,130.mm], [-20.mm,2362.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
@@ -7640,9 +7492,9 @@ end
   # EPDM Seal Left
   grp = ents.add_group
   grp.name = "EPDM Seal Left"
-  face = grp.entities.add_face([-20.mm,0.mm,80.mm], [0.mm,0.mm,80.mm], [0.mm,40.mm,80.mm], [-20.mm,40.mm,80.mm])
+  face = grp.entities.add_face([-20.mm,0.mm,130.mm], [0.mm,0.mm,130.mm], [0.mm,40.mm,130.mm], [-20.mm,40.mm,130.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2308.mm)
+  face.pushpull(2258.mm)
   mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
   mat.color = Sketchup::Color.new(90, 48, 32)
   mat.alpha = 1.0
@@ -7651,9 +7503,9 @@ end
   # EPDM Seal Right
   grp = ents.add_group
   grp.name = "EPDM Seal Right"
-  face = grp.entities.add_face([-20.mm,2322.mm,80.mm], [0.mm,2322.mm,80.mm], [0.mm,2362.mm,80.mm], [-20.mm,2362.mm,80.mm])
+  face = grp.entities.add_face([-20.mm,2322.mm,130.mm], [0.mm,2322.mm,130.mm], [0.mm,2362.mm,130.mm], [-20.mm,2362.mm,130.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2308.mm)
+  face.pushpull(2258.mm)
   mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
   mat.color = Sketchup::Color.new(90, 48, 32)
   mat.alpha = 1.0
@@ -9812,9 +9664,9 @@ end
   # Conduit Drop to Pumps (Cct C)
   grp = ents.add_group
   grp.name = "Conduit Drop to Pumps (Cct C)"
-  face = grp.entities.add_face([5235.mm,1176.mm,2220.mm], [5245.mm,1176.mm,2220.mm], [5245.mm,1186.mm,2220.mm], [5235.mm,1186.mm,2220.mm])
+  face = grp.entities.add_face([5235.mm,1176.mm,2270.mm], [5245.mm,1176.mm,2270.mm], [5245.mm,1186.mm,2270.mm], [5235.mm,1186.mm,2270.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(143.mm)
+  face.pushpull(93.mm)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
   mat.color = Sketchup::Color.new(154, 160, 160)
   mat.alpha = 1.0
@@ -10857,7 +10709,7 @@ end
   circle = ge.add_circle([2399.mm,12.mm,40.mm], [0,0,1], 10.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(860.mm)
+  cface.pushpull(910.mm)
   mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -10866,7 +10718,7 @@ end
   # BV-02 (ball valve)
   grp = ents.add_group
   grp.name = "BV-02 (ball valve)"
-  face = grp.entities.add_face([2374.mm,-13.mm,875.mm], [2424.mm,-13.mm,875.mm], [2424.mm,37.mm,875.mm], [2374.mm,37.mm,875.mm])
+  face = grp.entities.add_face([2374.mm,-13.mm,925.mm], [2424.mm,-13.mm,925.mm], [2424.mm,37.mm,925.mm], [2374.mm,37.mm,925.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["BV-02 (ball valve)"] || model.materials.add("BV-02 (ball valve)")
@@ -10881,7 +10733,7 @@ end
   circle = ge.add_circle([3729.mm,12.mm,40.mm], [0,0,1], 12.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(1110.mm)
+  cface.pushpull(1160.mm)
   mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -10890,7 +10742,7 @@ end
   # TAP-01 (chem tap)
   grp = ents.add_group
   grp.name = "TAP-01 (chem tap)"
-  face = grp.entities.add_face([3714.mm,12.mm,1150.mm], [3744.mm,12.mm,1150.mm], [3744.mm,142.mm,1150.mm], [3714.mm,142.mm,1150.mm])
+  face = grp.entities.add_face([3714.mm,12.mm,1200.mm], [3744.mm,12.mm,1200.mm], [3744.mm,142.mm,1200.mm], [3714.mm,142.mm,1200.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["BV-02 (ball valve)"] || model.materials.add("BV-02 (ball valve)")
@@ -11034,7 +10886,7 @@ end
   grp.name = "P-05 → X3 (Brown drain-out)"
   ge = grp.entities
   vec = Geom::Vector3d.new(156.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([5220.mm,1253.mm,1946.mm], vec, 12.mm, 16)
+  circle = ge.add_circle([5220.mm,1253.mm,1996.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11047,8 +10899,8 @@ end
   grp = ents.add_group
   grp.name = "P-05 → X3 (Brown drain-out) elbow"
   ge = grp.entities
-  arc = ge.add_arc([5376.mm,1253.mm,1922.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([5376.mm,1253.mm,1946.mm], [1.000000,0.000000,0.000000], 12.mm, 16)
+  arc = ge.add_arc([5376.mm,1253.mm,1972.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5376.mm,1253.mm,1996.mm], [1.000000,0.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
@@ -11060,8 +10912,8 @@ end
   grp = ents.add_group
   grp.name = "P-05 → X3 (Brown drain-out)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1498.mm)
-  circle = ge.add_circle([5400.mm,1253.mm,1922.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1548.mm)
+  circle = ge.add_circle([5400.mm,1253.mm,1972.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11129,7 +10981,7 @@ end
   grp.name = "P-03 → X4 (Waste drain-out)"
   ge = grp.entities
   vec = Geom::Vector3d.new(96.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([5220.mm,1253.mm,1578.mm], vec, 12.mm, 16)
+  circle = ge.add_circle([5220.mm,1253.mm,1628.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11142,8 +10994,8 @@ end
   grp = ents.add_group
   grp.name = "P-03 → X4 (Waste drain-out) elbow"
   ge = grp.entities
-  arc = ge.add_arc([5316.mm,1253.mm,1554.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([5316.mm,1253.mm,1578.mm], [1.000000,0.000000,0.000000], 12.mm, 16)
+  arc = ge.add_arc([5316.mm,1253.mm,1604.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5316.mm,1253.mm,1628.mm], [1.000000,0.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
@@ -11155,8 +11007,8 @@ end
   grp = ents.add_group
   grp.name = "P-03 → X4 (Waste drain-out)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1330.mm)
-  circle = ge.add_circle([5340.mm,1253.mm,1554.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1380.mm)
+  circle = ge.add_circle([5340.mm,1253.mm,1604.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11319,7 +11171,7 @@ end
   grp = ents.add_group
   grp.name = "Manifold → P-01"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 101.48000000000002.mm)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 151.48000000000002.mm)
   circle = ge.add_circle([5180.mm,1109.mm,1218.52.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -11387,7 +11239,7 @@ end
   grp = ents.add_group
   grp.name = "Brown → P-02"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 1111.mm)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 1161.mm)
   circle = ge.add_circle([5180.mm,1253.mm,209.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -11455,7 +11307,7 @@ end
   grp = ents.add_group
   grp.name = "Waste → P-03"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 1373.8899999999999.mm)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 1423.8899999999999.mm)
   circle = ge.add_circle([5220.mm,1253.mm,204.11.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -11469,7 +11321,7 @@ end
   grp = ents.add_group
   grp.name = "Tray Sump → P-04"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 101.mm)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 151.mm)
   circle = ge.add_circle([4550.mm,80.mm,20.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -11483,8 +11335,8 @@ end
   grp = ents.add_group
   grp.name = "Tray Sump → P-04 elbow"
   ge = grp.entities
-  arc = ge.add_arc([4574.mm,80.mm,121.mm], [-1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4550.mm,80.mm,121.mm], [0.000000,0.000000,1.000000], 12.mm, 16)
+  arc = ge.add_arc([4574.mm,80.mm,171.mm], [-1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4550.mm,80.mm,171.mm], [0.000000,0.000000,1.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
@@ -11497,7 +11349,7 @@ end
   grp.name = "Tray Sump → P-04"
   ge = grp.entities
   vec = Geom::Vector3d.new(23.460000000000036.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4574.mm,80.mm,145.mm], vec, 12.mm, 16)
+  circle = ge.add_circle([4574.mm,80.mm,195.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11510,8 +11362,8 @@ end
   grp = ents.add_group
   grp.name = "Tray Sump → P-04 elbow"
   ge = grp.entities
-  arc = ge.add_arc([4597.46.mm,80.mm,122.46.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 22.540000000000003.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4597.46.mm,80.mm,145.mm], [1.000000,0.000000,0.000000], 12.mm, 16)
+  arc = ge.add_arc([4597.46.mm,80.mm,172.46.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 22.540000000000003.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4597.46.mm,80.mm,195.mm], [1.000000,0.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
@@ -11523,8 +11375,8 @@ end
   grp = ents.add_group
   grp.name = "Tray Sump → P-04"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -77.025.mm)
-  circle = ge.add_circle([4620.mm,80.mm,122.46000000000001.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -127.025.mm)
+  circle = ge.add_circle([4620.mm,80.mm,172.46.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11658,7 +11510,7 @@ end
   grp = ents.add_group
   grp.name = "Tray Sump → P-04"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 1524.48.mm)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 1574.48.mm)
   circle = ge.add_circle([5220.mm,1109.mm,53.519999999999996.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -11672,8 +11524,8 @@ end
   grp = ents.add_group
   grp.name = "Pump → Filters"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -620.mm)
-  circle = ge.add_circle([5190.mm,1181.mm,1320.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -670.mm)
+  circle = ge.add_circle([5190.mm,1181.mm,1370.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

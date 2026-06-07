@@ -29,7 +29,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Spray Beam 40x40x3 Al SHS
   grp = ents.add_group
   grp.name = "Spray Beam 40x40x3 Al SHS"
-  face = grp.entities.add_face([470.mm,1160.mm,20.mm], [4329.mm,1160.mm,20.mm], [4329.mm,1200.mm,20.mm], [470.mm,1200.mm,20.mm])
+  face = grp.entities.add_face([200.mm,1160.mm,20.mm], [4599.mm,1160.mm,20.mm], [4599.mm,1200.mm,20.mm], [200.mm,1200.mm,20.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Spray Beam 40x40x3 Al SHS"] || model.materials.add("Spray Beam 40x40x3 Al SHS")
@@ -40,7 +40,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Beam End Cap (feed)
   grp = ents.add_group
   grp.name = "Beam End Cap (feed)"
-  face = grp.entities.add_face([466.mm,1160.mm,20.mm], [470.mm,1160.mm,20.mm], [470.mm,1200.mm,20.mm], [466.mm,1200.mm,20.mm])
+  face = grp.entities.add_face([196.mm,1160.mm,20.mm], [200.mm,1160.mm,20.mm], [200.mm,1200.mm,20.mm], [196.mm,1200.mm,20.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
@@ -51,7 +51,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Beam End Cap
   grp = ents.add_group
   grp.name = "Beam End Cap"
-  face = grp.entities.add_face([4329.mm,1160.mm,20.mm], [4333.mm,1160.mm,20.mm], [4333.mm,1200.mm,20.mm], [4329.mm,1200.mm,20.mm])
+  face = grp.entities.add_face([4599.mm,1160.mm,20.mm], [4603.mm,1160.mm,20.mm], [4603.mm,1200.mm,20.mm], [4599.mm,1200.mm,20.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
@@ -63,10 +63,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Irrigation Poly Pipe (3/4 LDPE)"
   ge = grp.entities
-  circle = ge.add_circle([470.mm,1180.mm,40.mm], [1,0,0], 12.5.mm, 24)
+  circle = ge.add_circle([200.mm,1180.mm,40.mm], [1,0,0], 12.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(3859.mm)
+  cface.pushpull(4399.mm)
   mat = model.materials["Irrigation Poly Pipe (3/4 LDPE)"] || model.materials.add("Irrigation Poly Pipe (3/4 LDPE)")
   mat.color = Sketchup::Color.new(42, 42, 42)
   mat.alpha = 1.0
@@ -76,10 +76,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Water in Pipe"
   ge = grp.entities
-  circle = ge.add_circle([470.mm,1180.mm,40.mm], [1,0,0], 9.5.mm, 24)
+  circle = ge.add_circle([200.mm,1180.mm,40.mm], [1,0,0], 9.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(3859.mm)
+  cface.pushpull(4399.mm)
   mat = model.materials["Water in Pipe"] || model.materials.add("Water in Pipe")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 0.55
@@ -771,7 +771,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Carriage Plate L L
   grp = ents.add_group
   grp.name = "Carriage Plate L L"
-  face = grp.entities.add_face([470.mm,1062.mm,29.mm], [510.mm,1062.mm,29.mm], [510.mm,1160.mm,29.mm], [470.mm,1160.mm,29.mm])
+  face = grp.entities.add_face([200.mm,1062.mm,29.mm], [240.mm,1062.mm,29.mm], [240.mm,1160.mm,29.mm], [200.mm,1160.mm,29.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
@@ -782,7 +782,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Carriage Plate R L
   grp = ents.add_group
   grp.name = "Carriage Plate R L"
-  face = grp.entities.add_face([470.mm,1200.mm,29.mm], [510.mm,1200.mm,29.mm], [510.mm,1298.mm,29.mm], [470.mm,1298.mm,29.mm])
+  face = grp.entities.add_face([200.mm,1200.mm,29.mm], [240.mm,1200.mm,29.mm], [240.mm,1298.mm,29.mm], [200.mm,1298.mm,29.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
@@ -794,7 +794,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Wheel L"
   ge = grp.entities
-  circle = ge.add_circle([480.mm,1080.mm,27.mm], [1,0,0], 25.mm, 24)
+  circle = ge.add_circle([210.mm,1080.mm,27.mm], [1,0,0], 25.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(20.mm)
@@ -807,7 +807,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Pin 10mm L"
   ge = grp.entities
-  circle = ge.add_circle([466.mm,1080.mm,27.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([196.mm,1080.mm,27.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(48.mm)
@@ -820,7 +820,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Saddle L"
   ge = grp.entities
-  face = ge.add_face([[471.mm,1072.mm,27.mm], [471.mm,1072.07.mm,25.96.mm], [471.mm,1072.27.mm,24.93.mm], [471.mm,1072.61.mm,23.94.mm], [471.mm,1073.07.mm,23.mm], [471.mm,1073.65.mm,22.13.mm], [471.mm,1074.34.mm,21.34.mm], [471.mm,1075.13.mm,20.65.mm], [471.mm,1076.mm,20.07.mm], [471.mm,1076.94.mm,19.61.mm], [471.mm,1077.93.mm,19.27.mm], [471.mm,1078.96.mm,19.07.mm], [471.mm,1080.mm,19.mm], [471.mm,1081.04.mm,19.07.mm], [471.mm,1082.07.mm,19.27.mm], [471.mm,1083.06.mm,19.61.mm], [471.mm,1084.mm,20.07.mm], [471.mm,1084.87.mm,20.65.mm], [471.mm,1085.66.mm,21.34.mm], [471.mm,1086.35.mm,22.13.mm], [471.mm,1086.93.mm,23.mm], [471.mm,1087.39.mm,23.94.mm], [471.mm,1087.73.mm,24.93.mm], [471.mm,1087.93.mm,25.96.mm], [471.mm,1088.mm,27.mm], [471.mm,1086.mm,27.mm], [471.mm,1085.95.mm,26.22.mm], [471.mm,1085.8.mm,25.45.mm], [471.mm,1085.54.mm,24.7.mm], [471.mm,1085.2.mm,24.mm], [471.mm,1084.76.mm,23.35.mm], [471.mm,1084.24.mm,22.76.mm], [471.mm,1083.65.mm,22.24.mm], [471.mm,1083.mm,21.8.mm], [471.mm,1082.3.mm,21.46.mm], [471.mm,1081.55.mm,21.2.mm], [471.mm,1080.78.mm,21.05.mm], [471.mm,1080.mm,21.mm], [471.mm,1079.22.mm,21.05.mm], [471.mm,1078.45.mm,21.2.mm], [471.mm,1077.7.mm,21.46.mm], [471.mm,1077.mm,21.8.mm], [471.mm,1076.35.mm,22.24.mm], [471.mm,1075.76.mm,22.76.mm], [471.mm,1075.24.mm,23.35.mm], [471.mm,1074.8.mm,24.mm], [471.mm,1074.46.mm,24.7.mm], [471.mm,1074.2.mm,25.45.mm], [471.mm,1074.05.mm,26.22.mm], [471.mm,1074.mm,27.mm]])
+  face = ge.add_face([[201.mm,1072.mm,27.mm], [201.mm,1072.07.mm,25.96.mm], [201.mm,1072.27.mm,24.93.mm], [201.mm,1072.61.mm,23.94.mm], [201.mm,1073.07.mm,23.mm], [201.mm,1073.65.mm,22.13.mm], [201.mm,1074.34.mm,21.34.mm], [201.mm,1075.13.mm,20.65.mm], [201.mm,1076.mm,20.07.mm], [201.mm,1076.94.mm,19.61.mm], [201.mm,1077.93.mm,19.27.mm], [201.mm,1078.96.mm,19.07.mm], [201.mm,1080.mm,19.mm], [201.mm,1081.04.mm,19.07.mm], [201.mm,1082.07.mm,19.27.mm], [201.mm,1083.06.mm,19.61.mm], [201.mm,1084.mm,20.07.mm], [201.mm,1084.87.mm,20.65.mm], [201.mm,1085.66.mm,21.34.mm], [201.mm,1086.35.mm,22.13.mm], [201.mm,1086.93.mm,23.mm], [201.mm,1087.39.mm,23.94.mm], [201.mm,1087.73.mm,24.93.mm], [201.mm,1087.93.mm,25.96.mm], [201.mm,1088.mm,27.mm], [201.mm,1086.mm,27.mm], [201.mm,1085.95.mm,26.22.mm], [201.mm,1085.8.mm,25.45.mm], [201.mm,1085.54.mm,24.7.mm], [201.mm,1085.2.mm,24.mm], [201.mm,1084.76.mm,23.35.mm], [201.mm,1084.24.mm,22.76.mm], [201.mm,1083.65.mm,22.24.mm], [201.mm,1083.mm,21.8.mm], [201.mm,1082.3.mm,21.46.mm], [201.mm,1081.55.mm,21.2.mm], [201.mm,1080.78.mm,21.05.mm], [201.mm,1080.mm,21.mm], [201.mm,1079.22.mm,21.05.mm], [201.mm,1078.45.mm,21.2.mm], [201.mm,1077.7.mm,21.46.mm], [201.mm,1077.mm,21.8.mm], [201.mm,1076.35.mm,22.24.mm], [201.mm,1075.76.mm,22.76.mm], [201.mm,1075.24.mm,23.35.mm], [201.mm,1074.8.mm,24.mm], [201.mm,1074.46.mm,24.7.mm], [201.mm,1074.2.mm,25.45.mm], [201.mm,1074.05.mm,26.22.mm], [201.mm,1074.mm,27.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -831,7 +831,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([471.mm,1064.mm,27.mm], [477.mm,1064.mm,27.mm], [477.mm,1074.mm,27.mm], [471.mm,1074.mm,27.mm])
+  face = grp.entities.add_face([201.mm,1064.mm,27.mm], [207.mm,1064.mm,27.mm], [207.mm,1074.mm,27.mm], [201.mm,1074.mm,27.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -843,7 +843,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([474.mm,1069.mm,25.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([204.mm,1069.mm,25.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -855,7 +855,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([471.mm,1086.mm,27.mm], [477.mm,1086.mm,27.mm], [477.mm,1096.mm,27.mm], [471.mm,1096.mm,27.mm])
+  face = grp.entities.add_face([201.mm,1086.mm,27.mm], [207.mm,1086.mm,27.mm], [207.mm,1096.mm,27.mm], [201.mm,1096.mm,27.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -867,7 +867,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([474.mm,1091.mm,25.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([204.mm,1091.mm,25.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -880,7 +880,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Saddle L"
   ge = grp.entities
-  face = ge.add_face([[503.mm,1072.mm,27.mm], [503.mm,1072.07.mm,25.96.mm], [503.mm,1072.27.mm,24.93.mm], [503.mm,1072.61.mm,23.94.mm], [503.mm,1073.07.mm,23.mm], [503.mm,1073.65.mm,22.13.mm], [503.mm,1074.34.mm,21.34.mm], [503.mm,1075.13.mm,20.65.mm], [503.mm,1076.mm,20.07.mm], [503.mm,1076.94.mm,19.61.mm], [503.mm,1077.93.mm,19.27.mm], [503.mm,1078.96.mm,19.07.mm], [503.mm,1080.mm,19.mm], [503.mm,1081.04.mm,19.07.mm], [503.mm,1082.07.mm,19.27.mm], [503.mm,1083.06.mm,19.61.mm], [503.mm,1084.mm,20.07.mm], [503.mm,1084.87.mm,20.65.mm], [503.mm,1085.66.mm,21.34.mm], [503.mm,1086.35.mm,22.13.mm], [503.mm,1086.93.mm,23.mm], [503.mm,1087.39.mm,23.94.mm], [503.mm,1087.73.mm,24.93.mm], [503.mm,1087.93.mm,25.96.mm], [503.mm,1088.mm,27.mm], [503.mm,1086.mm,27.mm], [503.mm,1085.95.mm,26.22.mm], [503.mm,1085.8.mm,25.45.mm], [503.mm,1085.54.mm,24.7.mm], [503.mm,1085.2.mm,24.mm], [503.mm,1084.76.mm,23.35.mm], [503.mm,1084.24.mm,22.76.mm], [503.mm,1083.65.mm,22.24.mm], [503.mm,1083.mm,21.8.mm], [503.mm,1082.3.mm,21.46.mm], [503.mm,1081.55.mm,21.2.mm], [503.mm,1080.78.mm,21.05.mm], [503.mm,1080.mm,21.mm], [503.mm,1079.22.mm,21.05.mm], [503.mm,1078.45.mm,21.2.mm], [503.mm,1077.7.mm,21.46.mm], [503.mm,1077.mm,21.8.mm], [503.mm,1076.35.mm,22.24.mm], [503.mm,1075.76.mm,22.76.mm], [503.mm,1075.24.mm,23.35.mm], [503.mm,1074.8.mm,24.mm], [503.mm,1074.46.mm,24.7.mm], [503.mm,1074.2.mm,25.45.mm], [503.mm,1074.05.mm,26.22.mm], [503.mm,1074.mm,27.mm]])
+  face = ge.add_face([[233.mm,1072.mm,27.mm], [233.mm,1072.07.mm,25.96.mm], [233.mm,1072.27.mm,24.93.mm], [233.mm,1072.61.mm,23.94.mm], [233.mm,1073.07.mm,23.mm], [233.mm,1073.65.mm,22.13.mm], [233.mm,1074.34.mm,21.34.mm], [233.mm,1075.13.mm,20.65.mm], [233.mm,1076.mm,20.07.mm], [233.mm,1076.94.mm,19.61.mm], [233.mm,1077.93.mm,19.27.mm], [233.mm,1078.96.mm,19.07.mm], [233.mm,1080.mm,19.mm], [233.mm,1081.04.mm,19.07.mm], [233.mm,1082.07.mm,19.27.mm], [233.mm,1083.06.mm,19.61.mm], [233.mm,1084.mm,20.07.mm], [233.mm,1084.87.mm,20.65.mm], [233.mm,1085.66.mm,21.34.mm], [233.mm,1086.35.mm,22.13.mm], [233.mm,1086.93.mm,23.mm], [233.mm,1087.39.mm,23.94.mm], [233.mm,1087.73.mm,24.93.mm], [233.mm,1087.93.mm,25.96.mm], [233.mm,1088.mm,27.mm], [233.mm,1086.mm,27.mm], [233.mm,1085.95.mm,26.22.mm], [233.mm,1085.8.mm,25.45.mm], [233.mm,1085.54.mm,24.7.mm], [233.mm,1085.2.mm,24.mm], [233.mm,1084.76.mm,23.35.mm], [233.mm,1084.24.mm,22.76.mm], [233.mm,1083.65.mm,22.24.mm], [233.mm,1083.mm,21.8.mm], [233.mm,1082.3.mm,21.46.mm], [233.mm,1081.55.mm,21.2.mm], [233.mm,1080.78.mm,21.05.mm], [233.mm,1080.mm,21.mm], [233.mm,1079.22.mm,21.05.mm], [233.mm,1078.45.mm,21.2.mm], [233.mm,1077.7.mm,21.46.mm], [233.mm,1077.mm,21.8.mm], [233.mm,1076.35.mm,22.24.mm], [233.mm,1075.76.mm,22.76.mm], [233.mm,1075.24.mm,23.35.mm], [233.mm,1074.8.mm,24.mm], [233.mm,1074.46.mm,24.7.mm], [233.mm,1074.2.mm,25.45.mm], [233.mm,1074.05.mm,26.22.mm], [233.mm,1074.mm,27.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -891,7 +891,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([503.mm,1064.mm,27.mm], [509.mm,1064.mm,27.mm], [509.mm,1074.mm,27.mm], [503.mm,1074.mm,27.mm])
+  face = grp.entities.add_face([233.mm,1064.mm,27.mm], [239.mm,1064.mm,27.mm], [239.mm,1074.mm,27.mm], [233.mm,1074.mm,27.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -903,7 +903,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([506.mm,1069.mm,25.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([236.mm,1069.mm,25.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -915,7 +915,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([503.mm,1086.mm,27.mm], [509.mm,1086.mm,27.mm], [509.mm,1096.mm,27.mm], [503.mm,1096.mm,27.mm])
+  face = grp.entities.add_face([233.mm,1086.mm,27.mm], [239.mm,1086.mm,27.mm], [239.mm,1096.mm,27.mm], [233.mm,1096.mm,27.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -927,7 +927,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([506.mm,1091.mm,25.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([236.mm,1091.mm,25.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -940,7 +940,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Wheel L"
   ge = grp.entities
-  circle = ge.add_circle([480.mm,1280.mm,27.mm], [1,0,0], 25.mm, 24)
+  circle = ge.add_circle([210.mm,1280.mm,27.mm], [1,0,0], 25.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(20.mm)
@@ -953,7 +953,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Pin 10mm L"
   ge = grp.entities
-  circle = ge.add_circle([466.mm,1280.mm,27.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([196.mm,1280.mm,27.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(48.mm)
@@ -966,7 +966,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Saddle L"
   ge = grp.entities
-  face = ge.add_face([[471.mm,1272.mm,27.mm], [471.mm,1272.07.mm,25.96.mm], [471.mm,1272.27.mm,24.93.mm], [471.mm,1272.61.mm,23.94.mm], [471.mm,1273.07.mm,23.mm], [471.mm,1273.65.mm,22.13.mm], [471.mm,1274.34.mm,21.34.mm], [471.mm,1275.13.mm,20.65.mm], [471.mm,1276.mm,20.07.mm], [471.mm,1276.94.mm,19.61.mm], [471.mm,1277.93.mm,19.27.mm], [471.mm,1278.96.mm,19.07.mm], [471.mm,1280.mm,19.mm], [471.mm,1281.04.mm,19.07.mm], [471.mm,1282.07.mm,19.27.mm], [471.mm,1283.06.mm,19.61.mm], [471.mm,1284.mm,20.07.mm], [471.mm,1284.87.mm,20.65.mm], [471.mm,1285.66.mm,21.34.mm], [471.mm,1286.35.mm,22.13.mm], [471.mm,1286.93.mm,23.mm], [471.mm,1287.39.mm,23.94.mm], [471.mm,1287.73.mm,24.93.mm], [471.mm,1287.93.mm,25.96.mm], [471.mm,1288.mm,27.mm], [471.mm,1286.mm,27.mm], [471.mm,1285.95.mm,26.22.mm], [471.mm,1285.8.mm,25.45.mm], [471.mm,1285.54.mm,24.7.mm], [471.mm,1285.2.mm,24.mm], [471.mm,1284.76.mm,23.35.mm], [471.mm,1284.24.mm,22.76.mm], [471.mm,1283.65.mm,22.24.mm], [471.mm,1283.mm,21.8.mm], [471.mm,1282.3.mm,21.46.mm], [471.mm,1281.55.mm,21.2.mm], [471.mm,1280.78.mm,21.05.mm], [471.mm,1280.mm,21.mm], [471.mm,1279.22.mm,21.05.mm], [471.mm,1278.45.mm,21.2.mm], [471.mm,1277.7.mm,21.46.mm], [471.mm,1277.mm,21.8.mm], [471.mm,1276.35.mm,22.24.mm], [471.mm,1275.76.mm,22.76.mm], [471.mm,1275.24.mm,23.35.mm], [471.mm,1274.8.mm,24.mm], [471.mm,1274.46.mm,24.7.mm], [471.mm,1274.2.mm,25.45.mm], [471.mm,1274.05.mm,26.22.mm], [471.mm,1274.mm,27.mm]])
+  face = ge.add_face([[201.mm,1272.mm,27.mm], [201.mm,1272.07.mm,25.96.mm], [201.mm,1272.27.mm,24.93.mm], [201.mm,1272.61.mm,23.94.mm], [201.mm,1273.07.mm,23.mm], [201.mm,1273.65.mm,22.13.mm], [201.mm,1274.34.mm,21.34.mm], [201.mm,1275.13.mm,20.65.mm], [201.mm,1276.mm,20.07.mm], [201.mm,1276.94.mm,19.61.mm], [201.mm,1277.93.mm,19.27.mm], [201.mm,1278.96.mm,19.07.mm], [201.mm,1280.mm,19.mm], [201.mm,1281.04.mm,19.07.mm], [201.mm,1282.07.mm,19.27.mm], [201.mm,1283.06.mm,19.61.mm], [201.mm,1284.mm,20.07.mm], [201.mm,1284.87.mm,20.65.mm], [201.mm,1285.66.mm,21.34.mm], [201.mm,1286.35.mm,22.13.mm], [201.mm,1286.93.mm,23.mm], [201.mm,1287.39.mm,23.94.mm], [201.mm,1287.73.mm,24.93.mm], [201.mm,1287.93.mm,25.96.mm], [201.mm,1288.mm,27.mm], [201.mm,1286.mm,27.mm], [201.mm,1285.95.mm,26.22.mm], [201.mm,1285.8.mm,25.45.mm], [201.mm,1285.54.mm,24.7.mm], [201.mm,1285.2.mm,24.mm], [201.mm,1284.76.mm,23.35.mm], [201.mm,1284.24.mm,22.76.mm], [201.mm,1283.65.mm,22.24.mm], [201.mm,1283.mm,21.8.mm], [201.mm,1282.3.mm,21.46.mm], [201.mm,1281.55.mm,21.2.mm], [201.mm,1280.78.mm,21.05.mm], [201.mm,1280.mm,21.mm], [201.mm,1279.22.mm,21.05.mm], [201.mm,1278.45.mm,21.2.mm], [201.mm,1277.7.mm,21.46.mm], [201.mm,1277.mm,21.8.mm], [201.mm,1276.35.mm,22.24.mm], [201.mm,1275.76.mm,22.76.mm], [201.mm,1275.24.mm,23.35.mm], [201.mm,1274.8.mm,24.mm], [201.mm,1274.46.mm,24.7.mm], [201.mm,1274.2.mm,25.45.mm], [201.mm,1274.05.mm,26.22.mm], [201.mm,1274.mm,27.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -977,7 +977,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([471.mm,1264.mm,27.mm], [477.mm,1264.mm,27.mm], [477.mm,1274.mm,27.mm], [471.mm,1274.mm,27.mm])
+  face = grp.entities.add_face([201.mm,1264.mm,27.mm], [207.mm,1264.mm,27.mm], [207.mm,1274.mm,27.mm], [201.mm,1274.mm,27.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -989,7 +989,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([474.mm,1269.mm,25.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([204.mm,1269.mm,25.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -1001,7 +1001,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([471.mm,1286.mm,27.mm], [477.mm,1286.mm,27.mm], [477.mm,1296.mm,27.mm], [471.mm,1296.mm,27.mm])
+  face = grp.entities.add_face([201.mm,1286.mm,27.mm], [207.mm,1286.mm,27.mm], [207.mm,1296.mm,27.mm], [201.mm,1296.mm,27.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -1013,7 +1013,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([474.mm,1291.mm,25.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([204.mm,1291.mm,25.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -1026,7 +1026,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Saddle L"
   ge = grp.entities
-  face = ge.add_face([[503.mm,1272.mm,27.mm], [503.mm,1272.07.mm,25.96.mm], [503.mm,1272.27.mm,24.93.mm], [503.mm,1272.61.mm,23.94.mm], [503.mm,1273.07.mm,23.mm], [503.mm,1273.65.mm,22.13.mm], [503.mm,1274.34.mm,21.34.mm], [503.mm,1275.13.mm,20.65.mm], [503.mm,1276.mm,20.07.mm], [503.mm,1276.94.mm,19.61.mm], [503.mm,1277.93.mm,19.27.mm], [503.mm,1278.96.mm,19.07.mm], [503.mm,1280.mm,19.mm], [503.mm,1281.04.mm,19.07.mm], [503.mm,1282.07.mm,19.27.mm], [503.mm,1283.06.mm,19.61.mm], [503.mm,1284.mm,20.07.mm], [503.mm,1284.87.mm,20.65.mm], [503.mm,1285.66.mm,21.34.mm], [503.mm,1286.35.mm,22.13.mm], [503.mm,1286.93.mm,23.mm], [503.mm,1287.39.mm,23.94.mm], [503.mm,1287.73.mm,24.93.mm], [503.mm,1287.93.mm,25.96.mm], [503.mm,1288.mm,27.mm], [503.mm,1286.mm,27.mm], [503.mm,1285.95.mm,26.22.mm], [503.mm,1285.8.mm,25.45.mm], [503.mm,1285.54.mm,24.7.mm], [503.mm,1285.2.mm,24.mm], [503.mm,1284.76.mm,23.35.mm], [503.mm,1284.24.mm,22.76.mm], [503.mm,1283.65.mm,22.24.mm], [503.mm,1283.mm,21.8.mm], [503.mm,1282.3.mm,21.46.mm], [503.mm,1281.55.mm,21.2.mm], [503.mm,1280.78.mm,21.05.mm], [503.mm,1280.mm,21.mm], [503.mm,1279.22.mm,21.05.mm], [503.mm,1278.45.mm,21.2.mm], [503.mm,1277.7.mm,21.46.mm], [503.mm,1277.mm,21.8.mm], [503.mm,1276.35.mm,22.24.mm], [503.mm,1275.76.mm,22.76.mm], [503.mm,1275.24.mm,23.35.mm], [503.mm,1274.8.mm,24.mm], [503.mm,1274.46.mm,24.7.mm], [503.mm,1274.2.mm,25.45.mm], [503.mm,1274.05.mm,26.22.mm], [503.mm,1274.mm,27.mm]])
+  face = ge.add_face([[233.mm,1272.mm,27.mm], [233.mm,1272.07.mm,25.96.mm], [233.mm,1272.27.mm,24.93.mm], [233.mm,1272.61.mm,23.94.mm], [233.mm,1273.07.mm,23.mm], [233.mm,1273.65.mm,22.13.mm], [233.mm,1274.34.mm,21.34.mm], [233.mm,1275.13.mm,20.65.mm], [233.mm,1276.mm,20.07.mm], [233.mm,1276.94.mm,19.61.mm], [233.mm,1277.93.mm,19.27.mm], [233.mm,1278.96.mm,19.07.mm], [233.mm,1280.mm,19.mm], [233.mm,1281.04.mm,19.07.mm], [233.mm,1282.07.mm,19.27.mm], [233.mm,1283.06.mm,19.61.mm], [233.mm,1284.mm,20.07.mm], [233.mm,1284.87.mm,20.65.mm], [233.mm,1285.66.mm,21.34.mm], [233.mm,1286.35.mm,22.13.mm], [233.mm,1286.93.mm,23.mm], [233.mm,1287.39.mm,23.94.mm], [233.mm,1287.73.mm,24.93.mm], [233.mm,1287.93.mm,25.96.mm], [233.mm,1288.mm,27.mm], [233.mm,1286.mm,27.mm], [233.mm,1285.95.mm,26.22.mm], [233.mm,1285.8.mm,25.45.mm], [233.mm,1285.54.mm,24.7.mm], [233.mm,1285.2.mm,24.mm], [233.mm,1284.76.mm,23.35.mm], [233.mm,1284.24.mm,22.76.mm], [233.mm,1283.65.mm,22.24.mm], [233.mm,1283.mm,21.8.mm], [233.mm,1282.3.mm,21.46.mm], [233.mm,1281.55.mm,21.2.mm], [233.mm,1280.78.mm,21.05.mm], [233.mm,1280.mm,21.mm], [233.mm,1279.22.mm,21.05.mm], [233.mm,1278.45.mm,21.2.mm], [233.mm,1277.7.mm,21.46.mm], [233.mm,1277.mm,21.8.mm], [233.mm,1276.35.mm,22.24.mm], [233.mm,1275.76.mm,22.76.mm], [233.mm,1275.24.mm,23.35.mm], [233.mm,1274.8.mm,24.mm], [233.mm,1274.46.mm,24.7.mm], [233.mm,1274.2.mm,25.45.mm], [233.mm,1274.05.mm,26.22.mm], [233.mm,1274.mm,27.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -1037,7 +1037,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([503.mm,1264.mm,27.mm], [509.mm,1264.mm,27.mm], [509.mm,1274.mm,27.mm], [503.mm,1274.mm,27.mm])
+  face = grp.entities.add_face([233.mm,1264.mm,27.mm], [239.mm,1264.mm,27.mm], [239.mm,1274.mm,27.mm], [233.mm,1274.mm,27.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -1049,7 +1049,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([506.mm,1269.mm,25.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([236.mm,1269.mm,25.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -1061,7 +1061,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([503.mm,1286.mm,27.mm], [509.mm,1286.mm,27.mm], [509.mm,1296.mm,27.mm], [503.mm,1296.mm,27.mm])
+  face = grp.entities.add_face([233.mm,1286.mm,27.mm], [239.mm,1286.mm,27.mm], [239.mm,1296.mm,27.mm], [233.mm,1296.mm,27.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -1073,7 +1073,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([506.mm,1291.mm,25.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([236.mm,1291.mm,25.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -1085,7 +1085,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Bottom Clamp L
   grp = ents.add_group
   grp.name = "Bottom Clamp L"
-  face = grp.entities.add_face([470.mm,1148.mm,17.mm], [510.mm,1148.mm,17.mm], [510.mm,1212.mm,17.mm], [470.mm,1212.mm,17.mm])
+  face = grp.entities.add_face([200.mm,1148.mm,17.mm], [240.mm,1148.mm,17.mm], [240.mm,1212.mm,17.mm], [200.mm,1212.mm,17.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -1096,7 +1096,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Top Clamp L
   grp = ents.add_group
   grp.name = "Top Clamp L"
-  face = grp.entities.add_face([470.mm,1148.mm,60.mm], [510.mm,1148.mm,60.mm], [510.mm,1212.mm,60.mm], [470.mm,1212.mm,60.mm])
+  face = grp.entities.add_face([200.mm,1148.mm,60.mm], [240.mm,1148.mm,60.mm], [240.mm,1212.mm,60.mm], [200.mm,1212.mm,60.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -1107,7 +1107,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Clamp Spacer L
   grp = ents.add_group
   grp.name = "Clamp Spacer L"
-  face = grp.entities.add_face([474.mm,1152.mm,20.mm], [506.mm,1152.mm,20.mm], [506.mm,1160.mm,20.mm], [474.mm,1160.mm,20.mm])
+  face = grp.entities.add_face([204.mm,1152.mm,20.mm], [236.mm,1152.mm,20.mm], [236.mm,1160.mm,20.mm], [204.mm,1160.mm,20.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
@@ -1119,7 +1119,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Clamp Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([479.mm,1156.mm,13.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([209.mm,1156.mm,13.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(54.mm)
@@ -1132,7 +1132,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Clamp Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([501.mm,1156.mm,13.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([231.mm,1156.mm,13.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(54.mm)
@@ -1144,7 +1144,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Clamp Spacer L
   grp = ents.add_group
   grp.name = "Clamp Spacer L"
-  face = grp.entities.add_face([474.mm,1200.mm,20.mm], [506.mm,1200.mm,20.mm], [506.mm,1208.mm,20.mm], [474.mm,1208.mm,20.mm])
+  face = grp.entities.add_face([204.mm,1200.mm,20.mm], [236.mm,1200.mm,20.mm], [236.mm,1208.mm,20.mm], [204.mm,1208.mm,20.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
@@ -1156,7 +1156,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Clamp Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([479.mm,1204.mm,13.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([209.mm,1204.mm,13.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(54.mm)
@@ -1169,7 +1169,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Clamp Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([501.mm,1204.mm,13.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([231.mm,1204.mm,13.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(54.mm)
@@ -1188,7 +1188,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Carriage Plate L R
   grp = ents.add_group
   grp.name = "Carriage Plate L R"
-  face = grp.entities.add_face([4289.mm,1062.mm,29.mm], [4329.mm,1062.mm,29.mm], [4329.mm,1160.mm,29.mm], [4289.mm,1160.mm,29.mm])
+  face = grp.entities.add_face([4559.mm,1062.mm,29.mm], [4599.mm,1062.mm,29.mm], [4599.mm,1160.mm,29.mm], [4559.mm,1160.mm,29.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
@@ -1199,7 +1199,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Carriage Plate R R
   grp = ents.add_group
   grp.name = "Carriage Plate R R"
-  face = grp.entities.add_face([4289.mm,1200.mm,29.mm], [4329.mm,1200.mm,29.mm], [4329.mm,1298.mm,29.mm], [4289.mm,1298.mm,29.mm])
+  face = grp.entities.add_face([4559.mm,1200.mm,29.mm], [4599.mm,1200.mm,29.mm], [4599.mm,1298.mm,29.mm], [4559.mm,1298.mm,29.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
@@ -1211,7 +1211,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Wheel R"
   ge = grp.entities
-  circle = ge.add_circle([4299.mm,1080.mm,27.mm], [1,0,0], 25.mm, 24)
+  circle = ge.add_circle([4569.mm,1080.mm,27.mm], [1,0,0], 25.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(20.mm)
@@ -1224,7 +1224,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Pin 10mm R"
   ge = grp.entities
-  circle = ge.add_circle([4285.mm,1080.mm,27.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([4555.mm,1080.mm,27.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(48.mm)
@@ -1237,7 +1237,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Saddle R"
   ge = grp.entities
-  face = ge.add_face([[4290.mm,1072.mm,27.mm], [4290.mm,1072.07.mm,25.96.mm], [4290.mm,1072.27.mm,24.93.mm], [4290.mm,1072.61.mm,23.94.mm], [4290.mm,1073.07.mm,23.mm], [4290.mm,1073.65.mm,22.13.mm], [4290.mm,1074.34.mm,21.34.mm], [4290.mm,1075.13.mm,20.65.mm], [4290.mm,1076.mm,20.07.mm], [4290.mm,1076.94.mm,19.61.mm], [4290.mm,1077.93.mm,19.27.mm], [4290.mm,1078.96.mm,19.07.mm], [4290.mm,1080.mm,19.mm], [4290.mm,1081.04.mm,19.07.mm], [4290.mm,1082.07.mm,19.27.mm], [4290.mm,1083.06.mm,19.61.mm], [4290.mm,1084.mm,20.07.mm], [4290.mm,1084.87.mm,20.65.mm], [4290.mm,1085.66.mm,21.34.mm], [4290.mm,1086.35.mm,22.13.mm], [4290.mm,1086.93.mm,23.mm], [4290.mm,1087.39.mm,23.94.mm], [4290.mm,1087.73.mm,24.93.mm], [4290.mm,1087.93.mm,25.96.mm], [4290.mm,1088.mm,27.mm], [4290.mm,1086.mm,27.mm], [4290.mm,1085.95.mm,26.22.mm], [4290.mm,1085.8.mm,25.45.mm], [4290.mm,1085.54.mm,24.7.mm], [4290.mm,1085.2.mm,24.mm], [4290.mm,1084.76.mm,23.35.mm], [4290.mm,1084.24.mm,22.76.mm], [4290.mm,1083.65.mm,22.24.mm], [4290.mm,1083.mm,21.8.mm], [4290.mm,1082.3.mm,21.46.mm], [4290.mm,1081.55.mm,21.2.mm], [4290.mm,1080.78.mm,21.05.mm], [4290.mm,1080.mm,21.mm], [4290.mm,1079.22.mm,21.05.mm], [4290.mm,1078.45.mm,21.2.mm], [4290.mm,1077.7.mm,21.46.mm], [4290.mm,1077.mm,21.8.mm], [4290.mm,1076.35.mm,22.24.mm], [4290.mm,1075.76.mm,22.76.mm], [4290.mm,1075.24.mm,23.35.mm], [4290.mm,1074.8.mm,24.mm], [4290.mm,1074.46.mm,24.7.mm], [4290.mm,1074.2.mm,25.45.mm], [4290.mm,1074.05.mm,26.22.mm], [4290.mm,1074.mm,27.mm]])
+  face = ge.add_face([[4560.mm,1072.mm,27.mm], [4560.mm,1072.07.mm,25.96.mm], [4560.mm,1072.27.mm,24.93.mm], [4560.mm,1072.61.mm,23.94.mm], [4560.mm,1073.07.mm,23.mm], [4560.mm,1073.65.mm,22.13.mm], [4560.mm,1074.34.mm,21.34.mm], [4560.mm,1075.13.mm,20.65.mm], [4560.mm,1076.mm,20.07.mm], [4560.mm,1076.94.mm,19.61.mm], [4560.mm,1077.93.mm,19.27.mm], [4560.mm,1078.96.mm,19.07.mm], [4560.mm,1080.mm,19.mm], [4560.mm,1081.04.mm,19.07.mm], [4560.mm,1082.07.mm,19.27.mm], [4560.mm,1083.06.mm,19.61.mm], [4560.mm,1084.mm,20.07.mm], [4560.mm,1084.87.mm,20.65.mm], [4560.mm,1085.66.mm,21.34.mm], [4560.mm,1086.35.mm,22.13.mm], [4560.mm,1086.93.mm,23.mm], [4560.mm,1087.39.mm,23.94.mm], [4560.mm,1087.73.mm,24.93.mm], [4560.mm,1087.93.mm,25.96.mm], [4560.mm,1088.mm,27.mm], [4560.mm,1086.mm,27.mm], [4560.mm,1085.95.mm,26.22.mm], [4560.mm,1085.8.mm,25.45.mm], [4560.mm,1085.54.mm,24.7.mm], [4560.mm,1085.2.mm,24.mm], [4560.mm,1084.76.mm,23.35.mm], [4560.mm,1084.24.mm,22.76.mm], [4560.mm,1083.65.mm,22.24.mm], [4560.mm,1083.mm,21.8.mm], [4560.mm,1082.3.mm,21.46.mm], [4560.mm,1081.55.mm,21.2.mm], [4560.mm,1080.78.mm,21.05.mm], [4560.mm,1080.mm,21.mm], [4560.mm,1079.22.mm,21.05.mm], [4560.mm,1078.45.mm,21.2.mm], [4560.mm,1077.7.mm,21.46.mm], [4560.mm,1077.mm,21.8.mm], [4560.mm,1076.35.mm,22.24.mm], [4560.mm,1075.76.mm,22.76.mm], [4560.mm,1075.24.mm,23.35.mm], [4560.mm,1074.8.mm,24.mm], [4560.mm,1074.46.mm,24.7.mm], [4560.mm,1074.2.mm,25.45.mm], [4560.mm,1074.05.mm,26.22.mm], [4560.mm,1074.mm,27.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -1248,7 +1248,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Axle Saddle Foot R
   grp = ents.add_group
   grp.name = "Axle Saddle Foot R"
-  face = grp.entities.add_face([4290.mm,1064.mm,27.mm], [4296.mm,1064.mm,27.mm], [4296.mm,1074.mm,27.mm], [4290.mm,1074.mm,27.mm])
+  face = grp.entities.add_face([4560.mm,1064.mm,27.mm], [4566.mm,1064.mm,27.mm], [4566.mm,1074.mm,27.mm], [4560.mm,1074.mm,27.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -1260,7 +1260,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Bolt R"
   ge = grp.entities
-  circle = ge.add_circle([4293.mm,1069.mm,25.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4563.mm,1069.mm,25.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -1272,7 +1272,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Axle Saddle Foot R
   grp = ents.add_group
   grp.name = "Axle Saddle Foot R"
-  face = grp.entities.add_face([4290.mm,1086.mm,27.mm], [4296.mm,1086.mm,27.mm], [4296.mm,1096.mm,27.mm], [4290.mm,1096.mm,27.mm])
+  face = grp.entities.add_face([4560.mm,1086.mm,27.mm], [4566.mm,1086.mm,27.mm], [4566.mm,1096.mm,27.mm], [4560.mm,1096.mm,27.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -1284,7 +1284,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Bolt R"
   ge = grp.entities
-  circle = ge.add_circle([4293.mm,1091.mm,25.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4563.mm,1091.mm,25.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -1297,7 +1297,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Saddle R"
   ge = grp.entities
-  face = ge.add_face([[4322.mm,1072.mm,27.mm], [4322.mm,1072.07.mm,25.96.mm], [4322.mm,1072.27.mm,24.93.mm], [4322.mm,1072.61.mm,23.94.mm], [4322.mm,1073.07.mm,23.mm], [4322.mm,1073.65.mm,22.13.mm], [4322.mm,1074.34.mm,21.34.mm], [4322.mm,1075.13.mm,20.65.mm], [4322.mm,1076.mm,20.07.mm], [4322.mm,1076.94.mm,19.61.mm], [4322.mm,1077.93.mm,19.27.mm], [4322.mm,1078.96.mm,19.07.mm], [4322.mm,1080.mm,19.mm], [4322.mm,1081.04.mm,19.07.mm], [4322.mm,1082.07.mm,19.27.mm], [4322.mm,1083.06.mm,19.61.mm], [4322.mm,1084.mm,20.07.mm], [4322.mm,1084.87.mm,20.65.mm], [4322.mm,1085.66.mm,21.34.mm], [4322.mm,1086.35.mm,22.13.mm], [4322.mm,1086.93.mm,23.mm], [4322.mm,1087.39.mm,23.94.mm], [4322.mm,1087.73.mm,24.93.mm], [4322.mm,1087.93.mm,25.96.mm], [4322.mm,1088.mm,27.mm], [4322.mm,1086.mm,27.mm], [4322.mm,1085.95.mm,26.22.mm], [4322.mm,1085.8.mm,25.45.mm], [4322.mm,1085.54.mm,24.7.mm], [4322.mm,1085.2.mm,24.mm], [4322.mm,1084.76.mm,23.35.mm], [4322.mm,1084.24.mm,22.76.mm], [4322.mm,1083.65.mm,22.24.mm], [4322.mm,1083.mm,21.8.mm], [4322.mm,1082.3.mm,21.46.mm], [4322.mm,1081.55.mm,21.2.mm], [4322.mm,1080.78.mm,21.05.mm], [4322.mm,1080.mm,21.mm], [4322.mm,1079.22.mm,21.05.mm], [4322.mm,1078.45.mm,21.2.mm], [4322.mm,1077.7.mm,21.46.mm], [4322.mm,1077.mm,21.8.mm], [4322.mm,1076.35.mm,22.24.mm], [4322.mm,1075.76.mm,22.76.mm], [4322.mm,1075.24.mm,23.35.mm], [4322.mm,1074.8.mm,24.mm], [4322.mm,1074.46.mm,24.7.mm], [4322.mm,1074.2.mm,25.45.mm], [4322.mm,1074.05.mm,26.22.mm], [4322.mm,1074.mm,27.mm]])
+  face = ge.add_face([[4592.mm,1072.mm,27.mm], [4592.mm,1072.07.mm,25.96.mm], [4592.mm,1072.27.mm,24.93.mm], [4592.mm,1072.61.mm,23.94.mm], [4592.mm,1073.07.mm,23.mm], [4592.mm,1073.65.mm,22.13.mm], [4592.mm,1074.34.mm,21.34.mm], [4592.mm,1075.13.mm,20.65.mm], [4592.mm,1076.mm,20.07.mm], [4592.mm,1076.94.mm,19.61.mm], [4592.mm,1077.93.mm,19.27.mm], [4592.mm,1078.96.mm,19.07.mm], [4592.mm,1080.mm,19.mm], [4592.mm,1081.04.mm,19.07.mm], [4592.mm,1082.07.mm,19.27.mm], [4592.mm,1083.06.mm,19.61.mm], [4592.mm,1084.mm,20.07.mm], [4592.mm,1084.87.mm,20.65.mm], [4592.mm,1085.66.mm,21.34.mm], [4592.mm,1086.35.mm,22.13.mm], [4592.mm,1086.93.mm,23.mm], [4592.mm,1087.39.mm,23.94.mm], [4592.mm,1087.73.mm,24.93.mm], [4592.mm,1087.93.mm,25.96.mm], [4592.mm,1088.mm,27.mm], [4592.mm,1086.mm,27.mm], [4592.mm,1085.95.mm,26.22.mm], [4592.mm,1085.8.mm,25.45.mm], [4592.mm,1085.54.mm,24.7.mm], [4592.mm,1085.2.mm,24.mm], [4592.mm,1084.76.mm,23.35.mm], [4592.mm,1084.24.mm,22.76.mm], [4592.mm,1083.65.mm,22.24.mm], [4592.mm,1083.mm,21.8.mm], [4592.mm,1082.3.mm,21.46.mm], [4592.mm,1081.55.mm,21.2.mm], [4592.mm,1080.78.mm,21.05.mm], [4592.mm,1080.mm,21.mm], [4592.mm,1079.22.mm,21.05.mm], [4592.mm,1078.45.mm,21.2.mm], [4592.mm,1077.7.mm,21.46.mm], [4592.mm,1077.mm,21.8.mm], [4592.mm,1076.35.mm,22.24.mm], [4592.mm,1075.76.mm,22.76.mm], [4592.mm,1075.24.mm,23.35.mm], [4592.mm,1074.8.mm,24.mm], [4592.mm,1074.46.mm,24.7.mm], [4592.mm,1074.2.mm,25.45.mm], [4592.mm,1074.05.mm,26.22.mm], [4592.mm,1074.mm,27.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -1308,7 +1308,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Axle Saddle Foot R
   grp = ents.add_group
   grp.name = "Axle Saddle Foot R"
-  face = grp.entities.add_face([4322.mm,1064.mm,27.mm], [4328.mm,1064.mm,27.mm], [4328.mm,1074.mm,27.mm], [4322.mm,1074.mm,27.mm])
+  face = grp.entities.add_face([4592.mm,1064.mm,27.mm], [4598.mm,1064.mm,27.mm], [4598.mm,1074.mm,27.mm], [4592.mm,1074.mm,27.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -1320,7 +1320,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Bolt R"
   ge = grp.entities
-  circle = ge.add_circle([4325.mm,1069.mm,25.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4595.mm,1069.mm,25.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -1332,7 +1332,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Axle Saddle Foot R
   grp = ents.add_group
   grp.name = "Axle Saddle Foot R"
-  face = grp.entities.add_face([4322.mm,1086.mm,27.mm], [4328.mm,1086.mm,27.mm], [4328.mm,1096.mm,27.mm], [4322.mm,1096.mm,27.mm])
+  face = grp.entities.add_face([4592.mm,1086.mm,27.mm], [4598.mm,1086.mm,27.mm], [4598.mm,1096.mm,27.mm], [4592.mm,1096.mm,27.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -1344,7 +1344,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Bolt R"
   ge = grp.entities
-  circle = ge.add_circle([4325.mm,1091.mm,25.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4595.mm,1091.mm,25.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -1357,7 +1357,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Wheel R"
   ge = grp.entities
-  circle = ge.add_circle([4299.mm,1280.mm,27.mm], [1,0,0], 25.mm, 24)
+  circle = ge.add_circle([4569.mm,1280.mm,27.mm], [1,0,0], 25.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(20.mm)
@@ -1370,7 +1370,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Pin 10mm R"
   ge = grp.entities
-  circle = ge.add_circle([4285.mm,1280.mm,27.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([4555.mm,1280.mm,27.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(48.mm)
@@ -1383,7 +1383,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Saddle R"
   ge = grp.entities
-  face = ge.add_face([[4290.mm,1272.mm,27.mm], [4290.mm,1272.07.mm,25.96.mm], [4290.mm,1272.27.mm,24.93.mm], [4290.mm,1272.61.mm,23.94.mm], [4290.mm,1273.07.mm,23.mm], [4290.mm,1273.65.mm,22.13.mm], [4290.mm,1274.34.mm,21.34.mm], [4290.mm,1275.13.mm,20.65.mm], [4290.mm,1276.mm,20.07.mm], [4290.mm,1276.94.mm,19.61.mm], [4290.mm,1277.93.mm,19.27.mm], [4290.mm,1278.96.mm,19.07.mm], [4290.mm,1280.mm,19.mm], [4290.mm,1281.04.mm,19.07.mm], [4290.mm,1282.07.mm,19.27.mm], [4290.mm,1283.06.mm,19.61.mm], [4290.mm,1284.mm,20.07.mm], [4290.mm,1284.87.mm,20.65.mm], [4290.mm,1285.66.mm,21.34.mm], [4290.mm,1286.35.mm,22.13.mm], [4290.mm,1286.93.mm,23.mm], [4290.mm,1287.39.mm,23.94.mm], [4290.mm,1287.73.mm,24.93.mm], [4290.mm,1287.93.mm,25.96.mm], [4290.mm,1288.mm,27.mm], [4290.mm,1286.mm,27.mm], [4290.mm,1285.95.mm,26.22.mm], [4290.mm,1285.8.mm,25.45.mm], [4290.mm,1285.54.mm,24.7.mm], [4290.mm,1285.2.mm,24.mm], [4290.mm,1284.76.mm,23.35.mm], [4290.mm,1284.24.mm,22.76.mm], [4290.mm,1283.65.mm,22.24.mm], [4290.mm,1283.mm,21.8.mm], [4290.mm,1282.3.mm,21.46.mm], [4290.mm,1281.55.mm,21.2.mm], [4290.mm,1280.78.mm,21.05.mm], [4290.mm,1280.mm,21.mm], [4290.mm,1279.22.mm,21.05.mm], [4290.mm,1278.45.mm,21.2.mm], [4290.mm,1277.7.mm,21.46.mm], [4290.mm,1277.mm,21.8.mm], [4290.mm,1276.35.mm,22.24.mm], [4290.mm,1275.76.mm,22.76.mm], [4290.mm,1275.24.mm,23.35.mm], [4290.mm,1274.8.mm,24.mm], [4290.mm,1274.46.mm,24.7.mm], [4290.mm,1274.2.mm,25.45.mm], [4290.mm,1274.05.mm,26.22.mm], [4290.mm,1274.mm,27.mm]])
+  face = ge.add_face([[4560.mm,1272.mm,27.mm], [4560.mm,1272.07.mm,25.96.mm], [4560.mm,1272.27.mm,24.93.mm], [4560.mm,1272.61.mm,23.94.mm], [4560.mm,1273.07.mm,23.mm], [4560.mm,1273.65.mm,22.13.mm], [4560.mm,1274.34.mm,21.34.mm], [4560.mm,1275.13.mm,20.65.mm], [4560.mm,1276.mm,20.07.mm], [4560.mm,1276.94.mm,19.61.mm], [4560.mm,1277.93.mm,19.27.mm], [4560.mm,1278.96.mm,19.07.mm], [4560.mm,1280.mm,19.mm], [4560.mm,1281.04.mm,19.07.mm], [4560.mm,1282.07.mm,19.27.mm], [4560.mm,1283.06.mm,19.61.mm], [4560.mm,1284.mm,20.07.mm], [4560.mm,1284.87.mm,20.65.mm], [4560.mm,1285.66.mm,21.34.mm], [4560.mm,1286.35.mm,22.13.mm], [4560.mm,1286.93.mm,23.mm], [4560.mm,1287.39.mm,23.94.mm], [4560.mm,1287.73.mm,24.93.mm], [4560.mm,1287.93.mm,25.96.mm], [4560.mm,1288.mm,27.mm], [4560.mm,1286.mm,27.mm], [4560.mm,1285.95.mm,26.22.mm], [4560.mm,1285.8.mm,25.45.mm], [4560.mm,1285.54.mm,24.7.mm], [4560.mm,1285.2.mm,24.mm], [4560.mm,1284.76.mm,23.35.mm], [4560.mm,1284.24.mm,22.76.mm], [4560.mm,1283.65.mm,22.24.mm], [4560.mm,1283.mm,21.8.mm], [4560.mm,1282.3.mm,21.46.mm], [4560.mm,1281.55.mm,21.2.mm], [4560.mm,1280.78.mm,21.05.mm], [4560.mm,1280.mm,21.mm], [4560.mm,1279.22.mm,21.05.mm], [4560.mm,1278.45.mm,21.2.mm], [4560.mm,1277.7.mm,21.46.mm], [4560.mm,1277.mm,21.8.mm], [4560.mm,1276.35.mm,22.24.mm], [4560.mm,1275.76.mm,22.76.mm], [4560.mm,1275.24.mm,23.35.mm], [4560.mm,1274.8.mm,24.mm], [4560.mm,1274.46.mm,24.7.mm], [4560.mm,1274.2.mm,25.45.mm], [4560.mm,1274.05.mm,26.22.mm], [4560.mm,1274.mm,27.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -1394,7 +1394,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Axle Saddle Foot R
   grp = ents.add_group
   grp.name = "Axle Saddle Foot R"
-  face = grp.entities.add_face([4290.mm,1264.mm,27.mm], [4296.mm,1264.mm,27.mm], [4296.mm,1274.mm,27.mm], [4290.mm,1274.mm,27.mm])
+  face = grp.entities.add_face([4560.mm,1264.mm,27.mm], [4566.mm,1264.mm,27.mm], [4566.mm,1274.mm,27.mm], [4560.mm,1274.mm,27.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -1406,7 +1406,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Bolt R"
   ge = grp.entities
-  circle = ge.add_circle([4293.mm,1269.mm,25.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4563.mm,1269.mm,25.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -1418,7 +1418,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Axle Saddle Foot R
   grp = ents.add_group
   grp.name = "Axle Saddle Foot R"
-  face = grp.entities.add_face([4290.mm,1286.mm,27.mm], [4296.mm,1286.mm,27.mm], [4296.mm,1296.mm,27.mm], [4290.mm,1296.mm,27.mm])
+  face = grp.entities.add_face([4560.mm,1286.mm,27.mm], [4566.mm,1286.mm,27.mm], [4566.mm,1296.mm,27.mm], [4560.mm,1296.mm,27.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -1430,7 +1430,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Bolt R"
   ge = grp.entities
-  circle = ge.add_circle([4293.mm,1291.mm,25.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4563.mm,1291.mm,25.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -1443,7 +1443,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Saddle R"
   ge = grp.entities
-  face = ge.add_face([[4322.mm,1272.mm,27.mm], [4322.mm,1272.07.mm,25.96.mm], [4322.mm,1272.27.mm,24.93.mm], [4322.mm,1272.61.mm,23.94.mm], [4322.mm,1273.07.mm,23.mm], [4322.mm,1273.65.mm,22.13.mm], [4322.mm,1274.34.mm,21.34.mm], [4322.mm,1275.13.mm,20.65.mm], [4322.mm,1276.mm,20.07.mm], [4322.mm,1276.94.mm,19.61.mm], [4322.mm,1277.93.mm,19.27.mm], [4322.mm,1278.96.mm,19.07.mm], [4322.mm,1280.mm,19.mm], [4322.mm,1281.04.mm,19.07.mm], [4322.mm,1282.07.mm,19.27.mm], [4322.mm,1283.06.mm,19.61.mm], [4322.mm,1284.mm,20.07.mm], [4322.mm,1284.87.mm,20.65.mm], [4322.mm,1285.66.mm,21.34.mm], [4322.mm,1286.35.mm,22.13.mm], [4322.mm,1286.93.mm,23.mm], [4322.mm,1287.39.mm,23.94.mm], [4322.mm,1287.73.mm,24.93.mm], [4322.mm,1287.93.mm,25.96.mm], [4322.mm,1288.mm,27.mm], [4322.mm,1286.mm,27.mm], [4322.mm,1285.95.mm,26.22.mm], [4322.mm,1285.8.mm,25.45.mm], [4322.mm,1285.54.mm,24.7.mm], [4322.mm,1285.2.mm,24.mm], [4322.mm,1284.76.mm,23.35.mm], [4322.mm,1284.24.mm,22.76.mm], [4322.mm,1283.65.mm,22.24.mm], [4322.mm,1283.mm,21.8.mm], [4322.mm,1282.3.mm,21.46.mm], [4322.mm,1281.55.mm,21.2.mm], [4322.mm,1280.78.mm,21.05.mm], [4322.mm,1280.mm,21.mm], [4322.mm,1279.22.mm,21.05.mm], [4322.mm,1278.45.mm,21.2.mm], [4322.mm,1277.7.mm,21.46.mm], [4322.mm,1277.mm,21.8.mm], [4322.mm,1276.35.mm,22.24.mm], [4322.mm,1275.76.mm,22.76.mm], [4322.mm,1275.24.mm,23.35.mm], [4322.mm,1274.8.mm,24.mm], [4322.mm,1274.46.mm,24.7.mm], [4322.mm,1274.2.mm,25.45.mm], [4322.mm,1274.05.mm,26.22.mm], [4322.mm,1274.mm,27.mm]])
+  face = ge.add_face([[4592.mm,1272.mm,27.mm], [4592.mm,1272.07.mm,25.96.mm], [4592.mm,1272.27.mm,24.93.mm], [4592.mm,1272.61.mm,23.94.mm], [4592.mm,1273.07.mm,23.mm], [4592.mm,1273.65.mm,22.13.mm], [4592.mm,1274.34.mm,21.34.mm], [4592.mm,1275.13.mm,20.65.mm], [4592.mm,1276.mm,20.07.mm], [4592.mm,1276.94.mm,19.61.mm], [4592.mm,1277.93.mm,19.27.mm], [4592.mm,1278.96.mm,19.07.mm], [4592.mm,1280.mm,19.mm], [4592.mm,1281.04.mm,19.07.mm], [4592.mm,1282.07.mm,19.27.mm], [4592.mm,1283.06.mm,19.61.mm], [4592.mm,1284.mm,20.07.mm], [4592.mm,1284.87.mm,20.65.mm], [4592.mm,1285.66.mm,21.34.mm], [4592.mm,1286.35.mm,22.13.mm], [4592.mm,1286.93.mm,23.mm], [4592.mm,1287.39.mm,23.94.mm], [4592.mm,1287.73.mm,24.93.mm], [4592.mm,1287.93.mm,25.96.mm], [4592.mm,1288.mm,27.mm], [4592.mm,1286.mm,27.mm], [4592.mm,1285.95.mm,26.22.mm], [4592.mm,1285.8.mm,25.45.mm], [4592.mm,1285.54.mm,24.7.mm], [4592.mm,1285.2.mm,24.mm], [4592.mm,1284.76.mm,23.35.mm], [4592.mm,1284.24.mm,22.76.mm], [4592.mm,1283.65.mm,22.24.mm], [4592.mm,1283.mm,21.8.mm], [4592.mm,1282.3.mm,21.46.mm], [4592.mm,1281.55.mm,21.2.mm], [4592.mm,1280.78.mm,21.05.mm], [4592.mm,1280.mm,21.mm], [4592.mm,1279.22.mm,21.05.mm], [4592.mm,1278.45.mm,21.2.mm], [4592.mm,1277.7.mm,21.46.mm], [4592.mm,1277.mm,21.8.mm], [4592.mm,1276.35.mm,22.24.mm], [4592.mm,1275.76.mm,22.76.mm], [4592.mm,1275.24.mm,23.35.mm], [4592.mm,1274.8.mm,24.mm], [4592.mm,1274.46.mm,24.7.mm], [4592.mm,1274.2.mm,25.45.mm], [4592.mm,1274.05.mm,26.22.mm], [4592.mm,1274.mm,27.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -1454,7 +1454,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Axle Saddle Foot R
   grp = ents.add_group
   grp.name = "Axle Saddle Foot R"
-  face = grp.entities.add_face([4322.mm,1264.mm,27.mm], [4328.mm,1264.mm,27.mm], [4328.mm,1274.mm,27.mm], [4322.mm,1274.mm,27.mm])
+  face = grp.entities.add_face([4592.mm,1264.mm,27.mm], [4598.mm,1264.mm,27.mm], [4598.mm,1274.mm,27.mm], [4592.mm,1274.mm,27.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -1466,7 +1466,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Bolt R"
   ge = grp.entities
-  circle = ge.add_circle([4325.mm,1269.mm,25.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4595.mm,1269.mm,25.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -1478,7 +1478,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Axle Saddle Foot R
   grp = ents.add_group
   grp.name = "Axle Saddle Foot R"
-  face = grp.entities.add_face([4322.mm,1286.mm,27.mm], [4328.mm,1286.mm,27.mm], [4328.mm,1296.mm,27.mm], [4322.mm,1296.mm,27.mm])
+  face = grp.entities.add_face([4592.mm,1286.mm,27.mm], [4598.mm,1286.mm,27.mm], [4598.mm,1296.mm,27.mm], [4592.mm,1296.mm,27.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -1490,7 +1490,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle Bolt R"
   ge = grp.entities
-  circle = ge.add_circle([4325.mm,1291.mm,25.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4595.mm,1291.mm,25.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -1502,7 +1502,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Bottom Clamp R
   grp = ents.add_group
   grp.name = "Bottom Clamp R"
-  face = grp.entities.add_face([4289.mm,1148.mm,17.mm], [4329.mm,1148.mm,17.mm], [4329.mm,1212.mm,17.mm], [4289.mm,1212.mm,17.mm])
+  face = grp.entities.add_face([4559.mm,1148.mm,17.mm], [4599.mm,1148.mm,17.mm], [4599.mm,1212.mm,17.mm], [4559.mm,1212.mm,17.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -1513,7 +1513,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Top Clamp R
   grp = ents.add_group
   grp.name = "Top Clamp R"
-  face = grp.entities.add_face([4289.mm,1148.mm,60.mm], [4329.mm,1148.mm,60.mm], [4329.mm,1212.mm,60.mm], [4289.mm,1212.mm,60.mm])
+  face = grp.entities.add_face([4559.mm,1148.mm,60.mm], [4599.mm,1148.mm,60.mm], [4599.mm,1212.mm,60.mm], [4559.mm,1212.mm,60.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
@@ -1524,7 +1524,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Clamp Spacer R
   grp = ents.add_group
   grp.name = "Clamp Spacer R"
-  face = grp.entities.add_face([4293.mm,1152.mm,20.mm], [4325.mm,1152.mm,20.mm], [4325.mm,1160.mm,20.mm], [4293.mm,1160.mm,20.mm])
+  face = grp.entities.add_face([4563.mm,1152.mm,20.mm], [4595.mm,1152.mm,20.mm], [4595.mm,1160.mm,20.mm], [4563.mm,1160.mm,20.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
@@ -1536,7 +1536,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Clamp Bolt R"
   ge = grp.entities
-  circle = ge.add_circle([4298.mm,1156.mm,13.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4568.mm,1156.mm,13.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(54.mm)
@@ -1549,7 +1549,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Clamp Bolt R"
   ge = grp.entities
-  circle = ge.add_circle([4320.mm,1156.mm,13.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4590.mm,1156.mm,13.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(54.mm)
@@ -1561,7 +1561,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Clamp Spacer R
   grp = ents.add_group
   grp.name = "Clamp Spacer R"
-  face = grp.entities.add_face([4293.mm,1200.mm,20.mm], [4325.mm,1200.mm,20.mm], [4325.mm,1208.mm,20.mm], [4293.mm,1208.mm,20.mm])
+  face = grp.entities.add_face([4563.mm,1200.mm,20.mm], [4595.mm,1200.mm,20.mm], [4595.mm,1208.mm,20.mm], [4563.mm,1208.mm,20.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
@@ -1573,7 +1573,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Clamp Bolt R"
   ge = grp.entities
-  circle = ge.add_circle([4298.mm,1204.mm,13.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4568.mm,1204.mm,13.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(54.mm)
@@ -1586,7 +1586,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Clamp Bolt R"
   ge = grp.entities
-  circle = ge.add_circle([4320.mm,1204.mm,13.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4590.mm,1204.mm,13.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(54.mm)
@@ -1605,7 +1605,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Tray Floor (ref)
   grp = ents.add_group
   grp.name = "Tray Floor (ref)"
-  face = grp.entities.add_face([410.mm,1020.mm,0.mm], [4389.mm,1020.mm,0.mm], [4389.mm,1340.mm,0.mm], [410.mm,1340.mm,0.mm])
+  face = grp.entities.add_face([140.mm,1020.mm,0.mm], [4659.mm,1020.mm,0.mm], [4659.mm,1340.mm,0.mm], [140.mm,1340.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
   mat = model.materials["Tray Floor (ref)"] || model.materials.add("Tray Floor (ref)")
@@ -3088,7 +3088,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Tube"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-1681.857142857143.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(-1913.2857142857142.mm, 0.mm, 0.mm)
   circle = ge.add_circle([2432.5.mm,1210.mm,73.mm], vec, 3.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -3102,8 +3102,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Tube elbow"
   ge = grp.entities
-  arc = ge.add_arc([750.6428571428571.mm,1205.mm,73.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([750.6428571428571.mm,1210.mm,73.mm], [-1.000000,0.000000,0.000000], 3.mm, 16)
+  arc = ge.add_arc([519.2142857142858.mm,1205.mm,73.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 5.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([519.2142857142858.mm,1210.mm,73.mm], [-1.000000,0.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
@@ -3116,7 +3116,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Feed Tube"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -21.569999999999936.mm, 0.mm)
-  circle = ge.add_circle([745.6428571428571.mm,1205.mm,73.mm], vec, 3.mm, 16)
+  circle = ge.add_circle([514.2142857142858.mm,1205.mm,73.mm], vec, 3.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3129,8 +3129,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Tube elbow"
   ge = grp.entities
-  arc = ge.add_arc([745.6428571428571.mm,1183.43.mm,69.57.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 3.43.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([745.6428571428571.mm,1183.43.mm,73.mm], [0.000000,-1.000000,0.000000], 3.mm, 16)
+  arc = ge.add_arc([514.2142857142858.mm,1183.43.mm,69.57.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 3.43.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([514.2142857142858.mm,1183.43.mm,73.mm], [0.000000,-1.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
@@ -3143,7 +3143,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Feed Tube"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -3.569999999999993.mm)
-  circle = ge.add_circle([745.6428571428571.mm,1180.mm,69.57.mm], vec, 3.mm, 16)
+  circle = ge.add_circle([514.2142857142858.mm,1180.mm,69.57.mm], vec, 3.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3156,7 +3156,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Barb Fitting"
   ge = grp.entities
-  circle = ge.add_circle([745.6428571428571.mm,1180.mm,38.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([514.2142857142858.mm,1180.mm,38.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(28.mm)
@@ -3196,7 +3196,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Tube"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-1130.5714285714287.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(-1284.857142857143.mm, 0.mm, 0.mm)
   circle = ge.add_circle([2432.5.mm,1210.mm,73.mm], vec, 3.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -3210,8 +3210,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Tube elbow"
   ge = grp.entities
-  arc = ge.add_arc([1301.9285714285713.mm,1205.mm,73.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1301.9285714285713.mm,1210.mm,73.mm], [-1.000000,0.000000,0.000000], 3.mm, 16)
+  arc = ge.add_arc([1147.642857142857.mm,1205.mm,73.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 5.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1147.642857142857.mm,1210.mm,73.mm], [-1.000000,0.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
@@ -3224,7 +3224,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Feed Tube"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -21.569999999999936.mm, 0.mm)
-  circle = ge.add_circle([1296.9285714285713.mm,1205.mm,73.mm], vec, 3.mm, 16)
+  circle = ge.add_circle([1142.642857142857.mm,1205.mm,73.mm], vec, 3.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3237,8 +3237,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Tube elbow"
   ge = grp.entities
-  arc = ge.add_arc([1296.9285714285713.mm,1183.43.mm,69.57.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 3.43.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1296.9285714285713.mm,1183.43.mm,73.mm], [0.000000,-1.000000,0.000000], 3.mm, 16)
+  arc = ge.add_arc([1142.642857142857.mm,1183.43.mm,69.57.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 3.43.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1142.642857142857.mm,1183.43.mm,73.mm], [0.000000,-1.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
@@ -3251,7 +3251,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Feed Tube"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -3.569999999999993.mm)
-  circle = ge.add_circle([1296.9285714285713.mm,1180.mm,69.57.mm], vec, 3.mm, 16)
+  circle = ge.add_circle([1142.642857142857.mm,1180.mm,69.57.mm], vec, 3.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3264,7 +3264,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Barb Fitting"
   ge = grp.entities
-  circle = ge.add_circle([1296.9285714285713.mm,1180.mm,38.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1142.642857142857.mm,1180.mm,38.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(28.mm)
@@ -3304,7 +3304,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Tube"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-579.2857142857142.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(-656.4285714285713.mm, 0.mm, 0.mm)
   circle = ge.add_circle([2432.5.mm,1210.mm,73.mm], vec, 3.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -3318,8 +3318,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Tube elbow"
   ge = grp.entities
-  arc = ge.add_arc([1853.2142857142858.mm,1205.mm,73.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1853.2142857142858.mm,1210.mm,73.mm], [-1.000000,0.000000,0.000000], 3.mm, 16)
+  arc = ge.add_arc([1776.0714285714287.mm,1205.mm,73.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 5.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1776.0714285714287.mm,1210.mm,73.mm], [-1.000000,0.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
@@ -3332,7 +3332,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Feed Tube"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -21.569999999999936.mm, 0.mm)
-  circle = ge.add_circle([1848.2142857142858.mm,1205.mm,73.mm], vec, 3.mm, 16)
+  circle = ge.add_circle([1771.0714285714287.mm,1205.mm,73.mm], vec, 3.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3345,8 +3345,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Tube elbow"
   ge = grp.entities
-  arc = ge.add_arc([1848.2142857142858.mm,1183.43.mm,69.57.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 3.43.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1848.2142857142858.mm,1183.43.mm,73.mm], [0.000000,-1.000000,0.000000], 3.mm, 16)
+  arc = ge.add_arc([1771.0714285714287.mm,1183.43.mm,69.57.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 3.43.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1771.0714285714287.mm,1183.43.mm,73.mm], [0.000000,-1.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
@@ -3359,7 +3359,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Feed Tube"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -3.569999999999993.mm)
-  circle = ge.add_circle([1848.2142857142858.mm,1180.mm,69.57.mm], vec, 3.mm, 16)
+  circle = ge.add_circle([1771.0714285714287.mm,1180.mm,69.57.mm], vec, 3.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3372,7 +3372,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Barb Fitting"
   ge = grp.entities
-  circle = ge.add_circle([1848.2142857142858.mm,1180.mm,38.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1771.0714285714287.mm,1180.mm,38.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(28.mm)
@@ -3439,7 +3439,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Tube"
   ge = grp.entities
-  vec = Geom::Vector3d.new(495.85571428571484.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(572.9985714285717.mm, 0.mm, 0.mm)
   circle = ge.add_circle([2451.5.mm,1180.mm,73.mm], vec, 3.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -3453,8 +3453,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Tube elbow"
   ge = grp.entities
-  arc = ge.add_arc([2947.355714285715.mm,1180.mm,69.57.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 3.43.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2947.355714285715.mm,1180.mm,73.mm], [1.000000,0.000000,0.000000], 3.mm, 16)
+  arc = ge.add_arc([3024.4985714285717.mm,1180.mm,69.57.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 3.43.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([3024.4985714285717.mm,1180.mm,73.mm], [1.000000,0.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
@@ -3467,7 +3467,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Feed Tube"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -3.569999999999993.mm)
-  circle = ge.add_circle([2950.7857142857147.mm,1180.mm,69.57.mm], vec, 3.mm, 16)
+  circle = ge.add_circle([3027.9285714285716.mm,1180.mm,69.57.mm], vec, 3.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3480,7 +3480,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Barb Fitting"
   ge = grp.entities
-  circle = ge.add_circle([2950.7857142857147.mm,1180.mm,38.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3027.9285714285716.mm,1180.mm,38.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(28.mm)
@@ -3493,7 +3493,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Tube"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1047.1414285714286.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(1201.4271428571428.mm, 0.mm, 0.mm)
   circle = ge.add_circle([2451.5.mm,1180.mm,73.mm], vec, 3.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -3507,8 +3507,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Tube elbow"
   ge = grp.entities
-  arc = ge.add_arc([3498.6414285714286.mm,1180.mm,69.57.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 3.43.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([3498.6414285714286.mm,1180.mm,73.mm], [1.000000,0.000000,0.000000], 3.mm, 16)
+  arc = ge.add_arc([3652.927142857143.mm,1180.mm,69.57.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 3.43.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([3652.927142857143.mm,1180.mm,73.mm], [1.000000,0.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
@@ -3521,7 +3521,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Feed Tube"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -3.569999999999993.mm)
-  circle = ge.add_circle([3502.0714285714284.mm,1180.mm,69.57.mm], vec, 3.mm, 16)
+  circle = ge.add_circle([3656.3571428571427.mm,1180.mm,69.57.mm], vec, 3.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3534,7 +3534,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Barb Fitting"
   ge = grp.entities
-  circle = ge.add_circle([3502.0714285714284.mm,1180.mm,38.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3656.3571428571427.mm,1180.mm,38.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(28.mm)
@@ -3547,7 +3547,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Tube"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1598.4271428571433.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(1829.8557142857135.mm, 0.mm, 0.mm)
   circle = ge.add_circle([2451.5.mm,1180.mm,73.mm], vec, 3.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -3561,8 +3561,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Tube elbow"
   ge = grp.entities
-  arc = ge.add_arc([4049.9271428571433.mm,1180.mm,69.57.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 3.43.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4049.9271428571433.mm,1180.mm,73.mm], [1.000000,0.000000,0.000000], 3.mm, 16)
+  arc = ge.add_arc([4281.3557142857135.mm,1180.mm,69.57.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 3.43.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4281.3557142857135.mm,1180.mm,73.mm], [1.000000,0.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
@@ -3575,7 +3575,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Feed Tube"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -3.569999999999993.mm)
-  circle = ge.add_circle([4053.357142857143.mm,1180.mm,69.57.mm], vec, 3.mm, 16)
+  circle = ge.add_circle([4284.785714285714.mm,1180.mm,69.57.mm], vec, 3.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3588,7 +3588,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Barb Fitting"
   ge = grp.entities
-  circle = ge.add_circle([4053.357142857143.mm,1180.mm,38.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([4284.785714285714.mm,1180.mm,38.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(28.mm)
@@ -3687,7 +3687,7 @@ anc = Geom::Point3d.new(1400.mm, 1180.mm, 60.mm)
 txt = entities.add_text("SPRAY BEAM
 (40 RHS + 3/4-in LDPE bore)", anc, Geom::Vector3d.new(0.mm, -900.mm, 650.mm))
 txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(470.mm, 1180.mm, 60.mm)
+anc = Geom::Point3d.new(200.mm, 1180.mm, 60.mm)
 txt = entities.add_text("WHEEL CARRIAGE
 (saddle clamp + 2 wheels)", anc, Geom::Vector3d.new(-750.mm, -350.mm, 600.mm))
 txt.layer = model.layers["Labels"] rescue nil
@@ -3715,7 +3715,7 @@ model.layers.to_a.each { |l|
 
 dir = Geom::Vector3d.new(0.5, -0.78, 0.38); dir.normalize!
 
-[["Beam", ["Beam"], nil], ["Carriage Assembly", ["Beam", "Carriage L", "Carriage R", "Tray Ref"], nil], ["One Carriage", ["Carriage L"], [470.mm, 1180.mm, 55.mm, 480.mm]], ["Pole & Ball Joint", ["Beam", "Feed & Pole"], nil], ["Processing Tray", ["Tray", "Beam", "Carriage L", "Carriage R"], nil], ["Combined", ["Beam", "Carriage L", "Carriage R", "Feed & Pole", "Tray"], nil], ["Labeled", ["Beam", "Carriage L", "Carriage R", "Feed & Pole", "Tray", "Labels"], nil]].each { |name, tags, tgt|
+[["Beam", ["Beam"], nil], ["Carriage Assembly", ["Beam", "Carriage L", "Carriage R", "Tray Ref"], nil], ["One Carriage", ["Carriage L"], [200.mm, 1180.mm, 55.mm, 480.mm]], ["Pole & Ball Joint", ["Beam", "Feed & Pole"], nil], ["Processing Tray", ["Tray", "Beam", "Carriage L", "Carriage R"], nil], ["Combined", ["Beam", "Carriage L", "Carriage R", "Feed & Pole", "Tray"], nil], ["Labeled", ["Beam", "Carriage L", "Carriage R", "Feed & Pole", "Tray", "Labels"], nil]].each { |name, tags, tgt|
   model.layers.each { |l| l.visible = (l == default_layer || tags.include?(l.name)) }
   if tgt
     # close-up: aim at the target with a tight standoff (no zoom_extents); use a

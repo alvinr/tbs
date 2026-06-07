@@ -39,7 +39,7 @@ TILT = math.radians(TILT_DEG)
 SWING = math.radians(SWING_DEG)
 
 W = ov.FP_W                                  # 4499 — plane width (X)
-RZ_BOT = ov.RAIL_OFF                         # 100  — bottom rail Z (clears tray rim 50)
+RZ_BOT = ov.RAIL_OFF_BOT                     # 150  — bottom rail RAISED +50 (clears the Z130 walkway)
 RZ_TOP = ov.C_HGT - ov.RAIL_OFF              # 2288 — top rail Z (under ceiling)
 HF = RZ_TOP - RZ_BOT                         # 2188 — frame height, rail-to-rail
 CX = (ov.FP_X_L + ov.FP_X_R) / 2             # 2399.5 — plane centre X

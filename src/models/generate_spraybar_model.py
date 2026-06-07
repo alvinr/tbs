@@ -49,7 +49,12 @@ C_NOZZLE = "#3B7A3B"   # flat-fan spray nozzles
 C_CLAMP  = "#C0C0C8"   # saddle / U-clamps
 C_BOLT   = "#80808A"   # axle + bolts
 
-XL, XR = PROC_OPEN_X_L, PROC_OPEN_X_R
+# Beam / carriages / poly-pipe span the FULL TRAY width (matching the 2D diagram,
+# generate_spray_bar_diagram.py — PROC_TRAY_X±30), so the wheels reach the tray
+# edges. The NOZZLES stay in the print OPEN zone (PROC_OPEN_X). (Bugfix 2026-06-06:
+# the 3D beam previously used PROC_OPEN_X and fell 300mm short of the tray each side.)
+XL, XR = PROC_TRAY_X_L + 30, PROC_TRAY_X_R - 30          # beam span = tray width (200..4599)
+NXL, NXR = PROC_OPEN_X_L, PROC_OPEN_X_R                  # nozzle span = print open zone
 S = SPRAY_BAR_BEAM                                       # 40
 ZB, ZT = SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP               # 20 .. 60
 
@@ -112,9 +117,9 @@ def build_beam():
     # flat-fan nozzles barbed into the poly pipe, spraying down through the beam
     # (true 150mm pitch, centerd on the span)
     sp = 150
-    margin = ((XR - XL) - (SPRAY_BAR_N_NOZZLES - 1) * sp) / 2
+    margin = ((NXR - NXL) - (SPRAY_BAR_N_NOZZLES - 1) * sp) / 2
     for i in range(SPRAY_BAR_N_NOZZLES):
-        nx = XL + margin + i * sp
+        nx = NXL + margin + i * sp
         # threaded body: barbs UP from the beam bottom through the poly pipe BOTTOM
         # wall, tip ending inside the bore (one wall only — not through the top wall)
         parts.append(ov.ruby_cylinder("Nozzle Body", nx, GY, ZB, 4,
@@ -239,7 +244,7 @@ SPRAYBAR_LABELS = [   # (instance name, text, leader Δx,Δy,Δz mm)
 ]
 SPRAYBAR_POINT_LABELS = [   # (x,y,z,text,Δx,Δy,Δz)
     (1400, 1180,  60, "SPRAY BEAM\n(40 RHS + 3/4-in LDPE bore)", 0, -900,  650),
-    ( 470, 1180,  60, "WHEEL CARRIAGE\n(saddle clamp + 2 wheels)", -750, -350, 600),
+    (  XL, 1180,  60, "WHEEL CARRIAGE\n(saddle clamp + 2 wheels)", -750, -350, 600),
     ( 950, 1180,  18, "SPRAY NOZZLES\n(26 flat-fan @ 150mm)",   250, -950,  380),
     (2399, 1180, 360, "FEED POLE + BALL JOINT",                 650, -300,  450),
     (2399, 1320, 110, "DISTRIBUTION MANIFOLD\n(7 feed tubes)", -550, -750,  650),

@@ -1141,7 +1141,7 @@ def sheet3():
     CEIL_T       = 2
     CEIL_CORR_H  = 30
 
-    BEARER_S = WALKWAY_RIGHT_BEARER_SIZE   # 50mm leg
+    BEARER_S = WALKWAY_RIGHT_BEARER_SIZE   # 25mm leg
     BEARER_T = WALKWAY_RIGHT_BEARER_T      # 5mm
     HANGER_D = WALKWAY_RIGHT_HANGER_D      # M10
     HANGER_R = HANGER_D / 2
@@ -2103,7 +2103,7 @@ def sheet6():
     CORR_DEPTH = 38
     SEAT_T = LEFT_WK_SEAT_PLATE[2]      # 6mm seat / backing plate
     PLATE_W, PLATE_H, PLATE_T = LEFT_WK_SEAT_PLATE   # 100 x 180 x 6
-    BEAM_SZ = LEFT_WK_BEARER_SIZE        # 50mm
+    BEAM_SZ = LEFT_WK_BEARER_SIZE        # 40mm
     BEAM_T  = LEFT_WK_BEARER_T           # 3mm
     BOLT_D  = LEFT_WK_SEAT_BOLT_D        # 12mm
     NB      = LEFT_WK_SEAT_BOLT_N        # 3 bolts
@@ -3013,7 +3013,7 @@ def sheet9():
     OUTER_X = WALKWAY_LEFT_X + WALKWAY_LEFT_WIDE_W    # 770 — outer trim bearer
     yL = WALKWAY_LEFT_WIDE_YD_L                       # 800
     yR = WALKWAY_LEFT_WIDE_YD_R                       # 1560
-    BSZ = LEFT_WK_BEARER_SIZE                         # 50
+    BSZ = LEFT_WK_BEARER_SIZE                         # 40
     C_SUPPORT = "#D08020"
     C_WK = "#D0C8B8"
 

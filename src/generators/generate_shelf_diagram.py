@@ -44,7 +44,7 @@ from tbs_constants import (
     IBC_COL_X, IBC_W, IBC_D, IBC_H_600, IBC_H_STK,
     BLUE_IBC_Y, IBC_FAR_Y,
     SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_YD_NEAR, SHELF_YD_FAR,
-    SHELF_DEPTH, SHELF_H, SHELF_T, SHELF_HANGER_D, SHELF_HANGER_N,
+    SHELF_DEPTH, SHELF_H, SHELF_T, SHELF_HANGER_D, SHELF_HANGER_N, TAP_Z,
     ZONE_R_START, cone_right,
     C_OUT, C_DIM, C_STEEL, C_ALUM, C_CL,
     DIAGRAMS_DIR,
@@ -64,7 +64,7 @@ C_ZONE   = "#E8F4E8"    # shadow-free zone fill
 # ── Derived constants ────────────────────────────────────────────────────────
 SHELF_CX = (SHELF_X_L + SHELF_X_R) / 2   # shelf center X = 4029mm
 SHELF_CY = (SHELF_YD_NEAR + SHELF_YD_FAR) / 2  # shelf center Yd = 600mm
-HANGER_ROD_L = C_HGT - SHELF_H            # rod length: 2388 - 1025 = 1363mm
+HANGER_ROD_L = C_HGT - SHELF_H            # rod length: 2388 - 1075 = 1313mm
 # Hanger positions: 4 corners, inset 30mm from shelf edges
 HANGER_INSET = 30
 HANGER_POSITIONS = [
@@ -413,8 +413,8 @@ def sheet2():
            f"M{SHELF_HANGER_D} THREADED\nROD HANGER",
            fs=5, ha="left")
 
-    # ── Chemistry prep tap (on pinhole wall, Z=1150mm) ──
-    tap_z = 1150   # TAP_Z from constants
+    # ── Chemistry prep tap (on pinhole wall, Z=1200mm) ──
+    tap_z = TAP_Z   # 1200 — from constants
     tap_yd = 0     # on pinhole wall face
     # Pipe stub from wall
     ax.add_patch(Rectangle((px(tap_yd), pz(tap_z - 12)),
@@ -435,7 +435,7 @@ def sheet2():
             color="#2979B8", lw=2.5, zorder=10)
     leader(ax, px(80), pz(tap_z),
            px(180), pz(tap_z + 80),
-           "TAP-01  3/4\" BALL VALVE\nBLUE SUPPLY (BV-06)\nH=1150mm AFF",
+           "TAP-01  3/4\" BALL VALVE\nBLUE SUPPLY (BV-06)\nH=1200mm AFF",
            fs=5.5, ha="left")
 
     # ── Section cut label ──

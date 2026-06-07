@@ -1251,7 +1251,7 @@ def sheet4():
                             px(IBC_FRAME_RHS), py(far_col_l - near_col_r),
                             fc=C_FRAME, ec=C_OUT, lw=1.0, alpha=0.55, zorder=7))
     ax.text(px(PANEL_FRAME_X + IBC_FRAME_RHS + 15), py(near_col_r - 22),
-            "PANEL SUPPORT FRAME\n(uprights to Z=2260\n+ top rail + floor beam)",
+            "PANEL SUPPORT FRAME\n(uprights to Z=2310\n+ top rail + floor beam)",
             ha="left", va="top", fontsize=5, color=C_FRAME,
             fontweight="bold", **FONT, zorder=10)
 

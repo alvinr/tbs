@@ -199,7 +199,7 @@ model.definitions.purge_unused
   # Spray Bar beam (40x40, Z20-60)
   grp = ents.add_group
   grp.name = "Spray Bar beam (40x40, Z20-60)"
-  face = grp.entities.add_face([470.mm,1160.mm,20.mm], [4329.mm,1160.mm,20.mm], [4329.mm,1200.mm,20.mm], [470.mm,1200.mm,20.mm])
+  face = grp.entities.add_face([170.mm,1160.mm,20.mm], [4629.mm,1160.mm,20.mm], [4629.mm,1200.mm,20.mm], [170.mm,1200.mm,20.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Spray Bar beam (40x40, Z20-60)"] || model.materials.add("Spray Bar beam (40x40, Z20-60)")
@@ -207,28 +207,28 @@ model.definitions.purge_unused
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray Bar wheel (left end)
+  # Spray Bar wheel (left, on rim)
   grp = ents.add_group
-  grp.name = "Spray Bar wheel (left end)"
+  grp.name = "Spray Bar wheel (left, on rim)"
   ge = grp.entities
-  circle = ge.add_circle([470.mm,1150.mm,27.mm], [0,1,0], 25.mm, 24)
+  circle = ge.add_circle([174.mm,1150.mm,27.mm], [0,1,0], 25.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["Spray Bar wheel (left end)"] || model.materials.add("Spray Bar wheel (left end)")
+  mat = model.materials["Spray Bar wheel (left, on rim)"] || model.materials.add("Spray Bar wheel (left, on rim)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray Bar wheel (right end)
+  # Spray Bar wheel (right, on rim)
   grp = ents.add_group
-  grp.name = "Spray Bar wheel (right end)"
+  grp.name = "Spray Bar wheel (right, on rim)"
   ge = grp.entities
-  circle = ge.add_circle([4329.mm,1150.mm,27.mm], [0,1,0], 25.mm, 24)
+  circle = ge.add_circle([4605.mm,1150.mm,27.mm], [0,1,0], 25.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["Spray Bar wheel (left end)"] || model.materials.add("Spray Bar wheel (left end)")
+  mat = model.materials["Spray Bar wheel (left, on rim)"] || model.materials.add("Spray Bar wheel (left, on rim)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -246,7 +246,7 @@ model.definitions.purge_unused
   face = grp.entities.add_face([38.mm,167.mm,0.mm], [166.mm,167.mm,0.mm], [166.mm,227.mm,0.mm], [38.mm,227.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Spray Bar wheel (left end)"] || model.materials.add("Spray Bar wheel (left end)")
+  mat = model.materials["Spray Bar wheel (left, on rim)"] || model.materials.add("Spray Bar wheel (left, on rim)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -279,7 +279,7 @@ model.definitions.purge_unused
   face = grp.entities.add_face([38.mm,560.mm,0.mm], [166.mm,560.mm,0.mm], [166.mm,620.mm,0.mm], [38.mm,620.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Spray Bar wheel (left end)"] || model.materials.add("Spray Bar wheel (left end)")
+  mat = model.materials["Spray Bar wheel (left, on rim)"] || model.materials.add("Spray Bar wheel (left, on rim)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -312,7 +312,7 @@ model.definitions.purge_unused
   face = grp.entities.add_face([38.mm,954.mm,0.mm], [166.mm,954.mm,0.mm], [166.mm,1014.mm,0.mm], [38.mm,1014.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Spray Bar wheel (left end)"] || model.materials.add("Spray Bar wheel (left end)")
+  mat = model.materials["Spray Bar wheel (left, on rim)"] || model.materials.add("Spray Bar wheel (left, on rim)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -345,7 +345,7 @@ model.definitions.purge_unused
   face = grp.entities.add_face([38.mm,1348.mm,0.mm], [166.mm,1348.mm,0.mm], [166.mm,1408.mm,0.mm], [38.mm,1408.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Spray Bar wheel (left end)"] || model.materials.add("Spray Bar wheel (left end)")
+  mat = model.materials["Spray Bar wheel (left, on rim)"] || model.materials.add("Spray Bar wheel (left, on rim)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -378,7 +378,7 @@ model.definitions.purge_unused
   face = grp.entities.add_face([38.mm,1742.mm,0.mm], [166.mm,1742.mm,0.mm], [166.mm,1802.mm,0.mm], [38.mm,1802.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Spray Bar wheel (left end)"] || model.materials.add("Spray Bar wheel (left end)")
+  mat = model.materials["Spray Bar wheel (left, on rim)"] || model.materials.add("Spray Bar wheel (left, on rim)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -411,7 +411,7 @@ model.definitions.purge_unused
   face = grp.entities.add_face([38.mm,2135.mm,0.mm], [166.mm,2135.mm,0.mm], [166.mm,2195.mm,0.mm], [38.mm,2195.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Spray Bar wheel (left end)"] || model.materials.add("Spray Bar wheel (left end)")
+  mat = model.materials["Spray Bar wheel (left, on rim)"] || model.materials.add("Spray Bar wheel (left, on rim)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -546,7 +546,7 @@ model.definitions.purge_unused
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
-  mat = model.materials["Spray Bar wheel (left end)"] || model.materials.add("Spray Bar wheel (left end)")
+  mat = model.materials["Spray Bar wheel (left, on rim)"] || model.materials.add("Spray Bar wheel (left, on rim)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat

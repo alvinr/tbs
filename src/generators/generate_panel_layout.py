@@ -39,7 +39,7 @@ WALKWAY_Z    = 100   # walkway grating top (mm AFF)
 
 # Panel face dimensions (new orientation: spans corridor)
 PANEL_W  = 270   # face width (mm, Yd span: 1046–1316)
-PANEL_H  = EQPANEL_H  # face height (mm, =2060; Z span: 200–2260)
+PANEL_H  = EQPANEL_H  # face height (mm, =2060; Z span: 250–2310)
 PANEL_Z_AFF = 200  # panel bottom Z above finished floor
 
 # ── Shurflo 2088 pump dimensions ─────────────────────────────────────────

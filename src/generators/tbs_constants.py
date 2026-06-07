@@ -115,7 +115,10 @@ RAIL_X_L  = FP_X_L   # left rail X  (mm)   [rev6: 150mm; was 625]
 RAIL_X_R  = FP_X_R   # right rail X (mm)   [was 4019 → now 4649]
 RAIL_SPAN = RAIL_X_R - RAIL_X_L   # = 4499mm  [rev6: was 4024]
 RAIL_LEN  = 2200      # rail length  (mm)   [unchanged — same Y travel]
-RAIL_OFF  = 100       # floor/ceiling offset (mm)  [unchanged]
+RAIL_OFF  = 100       # ceiling (TOP) offset (mm)  [unchanged]
+RAIL_OFF_BOT = 150    # floor (BOTTOM) offset (mm) — RAISED +50 (was 100) so the film-plane
+                      # bottom edge clears the raised Z130 walkway by 20mm as it travels in Yd.
+                      # Costs ~50mm of muslin height (~2.3% of the captured image).
 
 # ── Movement ranges (OPTION A: fixed-size rigid plane on floating-corner slides) ──
 # rev7 / Option A (2026-06-06): the film plane is a FIXED-SIZE rigid rectangle that
@@ -209,8 +212,8 @@ BAY_WALL_T  = 6                        # bay box wall thickness (mm)
 # ── Film-plane demountable brace cage (rev: rigidity + drum + walkway) ────────
 BRACE_RHS   = 50                     # brace member section 50×50×3mm RHS (mm)
 BRACE_T     = 3                      # RHS wall thickness (mm)
-BRACE_Z_BOT = RAIL_OFF               # 100mm — bottom cross-beam Z (above tray rim)
-BRACE_Z_TOP = C_HGT - RAIL_OFF       # 2288mm — top cross-beam Z
+BRACE_Z_BOT = RAIL_OFF_BOT           # 150mm — bottom cross-beam Z (raised +50 to clear the Z130 walkway)
+BRACE_Z_TOP = C_HGT - RAIL_OFF       # 2288mm — top cross-beam Z (unchanged)
 # End portals sit at the rail travel limits (already defined): FP_Y_MIN, FP_Y.
 
 DRUM_CY     = C_WID // 2             # 1181mm — light-lock center in Yd (= container width center)

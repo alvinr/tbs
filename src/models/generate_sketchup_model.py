@@ -51,7 +51,7 @@ from tbs_constants import (
     C_WALL, C_PROC_ZONE,
     PH_X, PH_H, PH_D,
     FP_X_L, FP_X_R, FP_W, FP_H, FP_Y, FP_Y_MIN,
-    RAIL_X_L, RAIL_X_R, RAIL_LEN, RAIL_OFF, FP_ANGLE_LEG,
+    RAIL_X_L, RAIL_X_R, RAIL_LEN, RAIL_OFF, RAIL_OFF_BOT, FP_ANGLE_LEG,
     BRACE_RHS, BRACE_Z_BOT, BRACE_Z_TOP,
     BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T,
     PANEL_CENTER_T, PANEL_FLOOR_GAP, PANEL_SLIDE,
@@ -952,7 +952,7 @@ def film_plane_mechanism():
     """
     parts = []
     rail = 40                       # 40×40mm rail tube
-    z_bot = RAIL_OFF                # 100mm off the floor
+    z_bot = RAIL_OFF_BOT            # 150mm off the floor (raised +50 to clear the Z130 walkway)
     z_top = C_HGT - RAIL_OFF - rail # 100mm off the ceiling
     x_left = RAIL_X_L               # 150
     x_right = RAIL_X_R - rail       # 4609

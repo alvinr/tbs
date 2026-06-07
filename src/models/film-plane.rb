@@ -206,7 +206,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # HGR20 Rail BL
   grp = ents.add_group
   grp.name = "HGR20 Rail BL"
-  face = grp.entities.add_face([138.mm,100.mm,92.mm], [162.mm,100.mm,92.mm], [162.mm,2300.mm,92.mm], [138.mm,2300.mm,92.mm])
+  face = grp.entities.add_face([138.mm,100.mm,142.mm], [162.mm,100.mm,142.mm], [162.mm,2300.mm,142.mm], [138.mm,2300.mm,142.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
@@ -219,7 +219,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Leadscrew BL"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 2200.mm, 0.mm)
-  circle = ge.add_circle([184.mm,100.mm,100.mm], vec, 7.mm, 16)
+  circle = ge.add_circle([184.mm,100.mm,150.mm], vec, 7.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -231,7 +231,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # HGR20 Rail BR
   grp = ents.add_group
   grp.name = "HGR20 Rail BR"
-  face = grp.entities.add_face([4637.mm,100.mm,92.mm], [4661.mm,100.mm,92.mm], [4661.mm,2300.mm,92.mm], [4637.mm,2300.mm,92.mm])
+  face = grp.entities.add_face([4637.mm,100.mm,142.mm], [4661.mm,100.mm,142.mm], [4661.mm,2300.mm,142.mm], [4637.mm,2300.mm,142.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
@@ -244,7 +244,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Leadscrew BR"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 2200.mm, 0.mm)
-  circle = ge.add_circle([4683.mm,100.mm,100.mm], vec, 7.mm, 16)
+  circle = ge.add_circle([4683.mm,100.mm,150.mm], vec, 7.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -288,7 +288,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Detail Carriage TR
   grp = ents.add_group
   grp.name = "Detail Carriage TR"
-  face = grp.entities.add_face([4623.mm,1369.792939991129.mm,2270.mm], [4675.mm,1369.792939991129.mm,2270.mm], [4675.mm,1433.792939991129.mm,2270.mm], [4623.mm,1433.792939991129.mm,2270.mm])
+  face = grp.entities.add_face([4623.mm,1378.0520922298629.mm,2270.mm], [4675.mm,1378.0520922298629.mm,2270.mm], [4675.mm,1442.0520922298629.mm,2270.mm], [4623.mm,1442.0520922298629.mm,2270.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
@@ -299,7 +299,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Detail Drive Nut TR
   grp = ents.add_group
   grp.name = "Detail Drive Nut TR"
-  face = grp.entities.add_face([4669.mm,1387.792939991129.mm,2276.mm], [4697.mm,1387.792939991129.mm,2276.mm], [4697.mm,1415.792939991129.mm,2276.mm], [4669.mm,1415.792939991129.mm,2276.mm])
+  face = grp.entities.add_face([4669.mm,1396.0520922298629.mm,2276.mm], [4697.mm,1396.0520922298629.mm,2276.mm], [4697.mm,1424.0520922298629.mm,2276.mm], [4669.mm,1424.0520922298629.mm,2276.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(26.mm)
   mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
@@ -310,7 +310,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Detail X cross-slide TR (SWING)
   grp = ents.add_group
   grp.name = "Detail X cross-slide TR (SWING)"
-  face = grp.entities.add_face([4633.mm,1385.792939991129.mm,2294.mm], [4685.192477867366.mm,1385.792939991129.mm,2294.mm], [4685.192477867366.mm,1417.792939991129.mm,2294.mm], [4633.mm,1417.792939991129.mm,2294.mm])
+  face = grp.entities.add_face([4633.mm,1394.0520922298629.mm,2294.mm], [4682.979444694831.mm,1394.0520922298629.mm,2294.mm], [4682.979444694831.mm,1426.0520922298629.mm,2294.mm], [4633.mm,1426.0520922298629.mm,2294.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Detail X cross-slide TR (SWING)"] || model.materials.add("Detail X cross-slide TR (SWING)")
@@ -321,7 +321,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Detail X slider TR
   grp = ents.add_group
   grp.name = "Detail X slider TR"
-  face = grp.entities.add_face([4653.192477867366.mm,1381.792939991129.mm,2292.mm], [4685.192477867366.mm,1381.792939991129.mm,2292.mm], [4685.192477867366.mm,1421.792939991129.mm,2292.mm], [4653.192477867366.mm,1421.792939991129.mm,2292.mm])
+  face = grp.entities.add_face([4650.979444694831.mm,1390.0520922298629.mm,2292.mm], [4682.979444694831.mm,1390.0520922298629.mm,2292.mm], [4682.979444694831.mm,1430.0520922298629.mm,2292.mm], [4650.979444694831.mm,1430.0520922298629.mm,2292.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
   mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
@@ -332,9 +332,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Detail Z cross-slide TR (TILT)
   grp = ents.add_group
   grp.name = "Detail Z cross-slide TR (TILT)"
-  face = grp.entities.add_face([4660.192477867366.mm,1386.792939991129.mm,2206.0237271397837.mm], [4678.192477867366.mm,1386.792939991129.mm,2206.0237271397837.mm], [4678.192477867366.mm,1416.792939991129.mm,2206.0237271397837.mm], [4660.192477867366.mm,1416.792939991129.mm,2206.0237271397837.mm])
+  face = grp.entities.add_face([4657.979444694831.mm,1395.0520922298629.mm,2207.531411620136.mm], [4675.979444694831.mm,1395.0520922298629.mm,2207.531411620136.mm], [4675.979444694831.mm,1425.0520922298629.mm,2207.531411620136.mm], [4657.979444694831.mm,1425.0520922298629.mm,2207.531411620136.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(97.97627286021634.mm)
+  face.pushpull(96.46858837986383.mm)
   mat = model.materials["Detail Z cross-slide TR (TILT)"] || model.materials.add("Detail Z cross-slide TR (TILT)")
   mat.color = Sketchup::Color.new(44, 160, 44)
   mat.alpha = 1.0
@@ -343,7 +343,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Detail Z slider TR
   grp = ents.add_group
   grp.name = "Detail Z slider TR"
-  face = grp.entities.add_face([4656.192477867366.mm,1383.792939991129.mm,2206.0237271397837.mm], [4682.192477867366.mm,1383.792939991129.mm,2206.0237271397837.mm], [4682.192477867366.mm,1419.792939991129.mm,2206.0237271397837.mm], [4656.192477867366.mm,1419.792939991129.mm,2206.0237271397837.mm])
+  face = grp.entities.add_face([4653.979444694831.mm,1392.0520922298629.mm,2207.531411620136.mm], [4679.979444694831.mm,1392.0520922298629.mm,2207.531411620136.mm], [4679.979444694831.mm,1428.0520922298629.mm,2207.531411620136.mm], [4653.979444694831.mm,1428.0520922298629.mm,2207.531411620136.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(32.mm)
   mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
@@ -354,7 +354,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Detail Rod-End TR
   grp = ents.add_group
   grp.name = "Detail Rod-End TR"
-  face = grp.entities.add_face([4652.192477867366.mm,1384.792939991129.mm,2205.0237271397837.mm], [4686.192477867366.mm,1384.792939991129.mm,2205.0237271397837.mm], [4686.192477867366.mm,1418.792939991129.mm,2205.0237271397837.mm], [4652.192477867366.mm,1418.792939991129.mm,2205.0237271397837.mm])
+  face = grp.entities.add_face([4649.979444694831.mm,1393.0520922298629.mm,2206.531411620136.mm], [4683.979444694831.mm,1393.0520922298629.mm,2206.531411620136.mm], [4683.979444694831.mm,1427.0520922298629.mm,2206.531411620136.mm], [4649.979444694831.mm,1427.0520922298629.mm,2206.531411620136.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(34.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
@@ -365,7 +365,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Detail Flat-corner ghost TR
   grp = ents.add_group
   grp.name = "Detail Flat-corner ghost TR"
-  face = grp.entities.add_face([4636.mm,1388.792939991129.mm,2275.mm], [4662.mm,1388.792939991129.mm,2275.mm], [4662.mm,1414.792939991129.mm,2275.mm], [4636.mm,1414.792939991129.mm,2275.mm])
+  face = grp.entities.add_face([4636.mm,1397.0520922298629.mm,2275.mm], [4662.mm,1397.0520922298629.mm,2275.mm], [4662.mm,1423.0520922298629.mm,2275.mm], [4636.mm,1423.0520922298629.mm,2275.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(26.mm)
   mat = model.materials["Detail Flat-corner ghost TR"] || model.materials.add("Detail Flat-corner ghost TR")
@@ -386,9 +386,9 @@ ents = fp_defn.entities
   # Film Plane Screen (muslin)
   grp = ents.add_group
   grp.name = "Film Plane Screen (muslin)"
-  face = grp.entities.add_face([-2249.5.mm,-6.mm,-1094.mm], [2249.5.mm,-6.mm,-1094.mm], [2249.5.mm,6.mm,-1094.mm], [-2249.5.mm,6.mm,-1094.mm])
+  face = grp.entities.add_face([-2249.5.mm,-6.mm,-1069.mm], [2249.5.mm,-6.mm,-1069.mm], [2249.5.mm,6.mm,-1069.mm], [-2249.5.mm,6.mm,-1069.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2188.mm)
+  face.pushpull(2138.mm)
   mat = model.materials["Film Plane Screen (muslin)"] || model.materials.add("Film Plane Screen (muslin)")
   mat.color = Sketchup::Color.new(32, 96, 160)
   mat.alpha = 0.3
@@ -399,7 +399,7 @@ ents = fp_defn.entities
   grp.name = "FP Frame Top"
   ge = grp.entities
   vec = Geom::Vector3d.new(4499.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([-2249.5.mm,0.mm,1094.mm], vec, 25.4.mm, 16)
+  circle = ge.add_circle([-2249.5.mm,0.mm,1069.mm], vec, 25.4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -413,7 +413,7 @@ ents = fp_defn.entities
   grp.name = "FP Frame Bottom"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4499.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2249.5.mm,0.mm,-1094.mm], vec, 25.4.mm, 16)
+  circle = ge.add_circle([2249.5.mm,0.mm,-1069.mm], vec, 25.4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -426,8 +426,8 @@ ents = fp_defn.entities
   grp = ents.add_group
   grp.name = "FP Frame Left"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -2188.mm)
-  circle = ge.add_circle([-2249.5.mm,0.mm,1094.mm], vec, 25.4.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -2138.mm)
+  circle = ge.add_circle([-2249.5.mm,0.mm,1069.mm], vec, 25.4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -440,8 +440,8 @@ ents = fp_defn.entities
   grp = ents.add_group
   grp.name = "FP Frame Right"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -2188.mm)
-  circle = ge.add_circle([2249.5.mm,0.mm,1094.mm], vec, 25.4.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -2138.mm)
+  circle = ge.add_circle([2249.5.mm,0.mm,1069.mm], vec, 25.4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -453,7 +453,7 @@ ents = fp_defn.entities
   # Carriage TL (HGH20CA)
   grp = ents.add_group
   grp.name = "Carriage TL (HGH20CA)"
-  face = grp.entities.add_face([-2275.5.mm,-32.mm,1082.mm], [-2223.5.mm,-32.mm,1082.mm], [-2223.5.mm,32.mm,1082.mm], [-2275.5.mm,32.mm,1082.mm])
+  face = grp.entities.add_face([-2275.5.mm,-32.mm,1057.mm], [-2223.5.mm,-32.mm,1057.mm], [-2223.5.mm,32.mm,1057.mm], [-2275.5.mm,32.mm,1057.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
@@ -464,7 +464,7 @@ ents = fp_defn.entities
   # Drive Nut TL
   grp = ents.add_group
   grp.name = "Drive Nut TL"
-  face = grp.entities.add_face([-2229.5.mm,-14.mm,1081.mm], [-2201.5.mm,-14.mm,1081.mm], [-2201.5.mm,14.mm,1081.mm], [-2229.5.mm,14.mm,1081.mm])
+  face = grp.entities.add_face([-2229.5.mm,-14.mm,1056.mm], [-2201.5.mm,-14.mm,1056.mm], [-2201.5.mm,14.mm,1056.mm], [-2229.5.mm,14.mm,1056.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(26.mm)
   mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
@@ -475,7 +475,7 @@ ents = fp_defn.entities
   # Rod-End TL
   grp = ents.add_group
   grp.name = "Rod-End TL"
-  face = grp.entities.add_face([-2265.5.mm,-16.mm,1078.mm], [-2233.5.mm,-16.mm,1078.mm], [-2233.5.mm,16.mm,1078.mm], [-2265.5.mm,16.mm,1078.mm])
+  face = grp.entities.add_face([-2265.5.mm,-16.mm,1053.mm], [-2233.5.mm,-16.mm,1053.mm], [-2233.5.mm,16.mm,1053.mm], [-2265.5.mm,16.mm,1053.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(32.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
@@ -486,7 +486,7 @@ ents = fp_defn.entities
   # Carriage TR (HGH20CA)
   grp = ents.add_group
   grp.name = "Carriage TR (HGH20CA)"
-  face = grp.entities.add_face([2223.5.mm,-32.mm,1082.mm], [2275.5.mm,-32.mm,1082.mm], [2275.5.mm,32.mm,1082.mm], [2223.5.mm,32.mm,1082.mm])
+  face = grp.entities.add_face([2223.5.mm,-32.mm,1057.mm], [2275.5.mm,-32.mm,1057.mm], [2275.5.mm,32.mm,1057.mm], [2223.5.mm,32.mm,1057.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
@@ -497,7 +497,7 @@ ents = fp_defn.entities
   # Drive Nut TR
   grp = ents.add_group
   grp.name = "Drive Nut TR"
-  face = grp.entities.add_face([2269.5.mm,-14.mm,1081.mm], [2297.5.mm,-14.mm,1081.mm], [2297.5.mm,14.mm,1081.mm], [2269.5.mm,14.mm,1081.mm])
+  face = grp.entities.add_face([2269.5.mm,-14.mm,1056.mm], [2297.5.mm,-14.mm,1056.mm], [2297.5.mm,14.mm,1056.mm], [2269.5.mm,14.mm,1056.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(26.mm)
   mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
@@ -508,7 +508,7 @@ ents = fp_defn.entities
   # Rod-End TR
   grp = ents.add_group
   grp.name = "Rod-End TR"
-  face = grp.entities.add_face([2233.5.mm,-16.mm,1078.mm], [2265.5.mm,-16.mm,1078.mm], [2265.5.mm,16.mm,1078.mm], [2233.5.mm,16.mm,1078.mm])
+  face = grp.entities.add_face([2233.5.mm,-16.mm,1053.mm], [2265.5.mm,-16.mm,1053.mm], [2265.5.mm,16.mm,1053.mm], [2233.5.mm,16.mm,1053.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(32.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
@@ -519,7 +519,7 @@ ents = fp_defn.entities
   # Carriage BL (HGH20CA)
   grp = ents.add_group
   grp.name = "Carriage BL (HGH20CA)"
-  face = grp.entities.add_face([-2275.5.mm,-32.mm,-1106.mm], [-2223.5.mm,-32.mm,-1106.mm], [-2223.5.mm,32.mm,-1106.mm], [-2275.5.mm,32.mm,-1106.mm])
+  face = grp.entities.add_face([-2275.5.mm,-32.mm,-1081.mm], [-2223.5.mm,-32.mm,-1081.mm], [-2223.5.mm,32.mm,-1081.mm], [-2275.5.mm,32.mm,-1081.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
@@ -530,7 +530,7 @@ ents = fp_defn.entities
   # Drive Nut BL
   grp = ents.add_group
   grp.name = "Drive Nut BL"
-  face = grp.entities.add_face([-2229.5.mm,-14.mm,-1107.mm], [-2201.5.mm,-14.mm,-1107.mm], [-2201.5.mm,14.mm,-1107.mm], [-2229.5.mm,14.mm,-1107.mm])
+  face = grp.entities.add_face([-2229.5.mm,-14.mm,-1082.mm], [-2201.5.mm,-14.mm,-1082.mm], [-2201.5.mm,14.mm,-1082.mm], [-2229.5.mm,14.mm,-1082.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(26.mm)
   mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
@@ -541,7 +541,7 @@ ents = fp_defn.entities
   # Rod-End BL
   grp = ents.add_group
   grp.name = "Rod-End BL"
-  face = grp.entities.add_face([-2265.5.mm,-16.mm,-1110.mm], [-2233.5.mm,-16.mm,-1110.mm], [-2233.5.mm,16.mm,-1110.mm], [-2265.5.mm,16.mm,-1110.mm])
+  face = grp.entities.add_face([-2265.5.mm,-16.mm,-1085.mm], [-2233.5.mm,-16.mm,-1085.mm], [-2233.5.mm,16.mm,-1085.mm], [-2265.5.mm,16.mm,-1085.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(32.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
@@ -552,7 +552,7 @@ ents = fp_defn.entities
   # Carriage BR (HGH20CA)
   grp = ents.add_group
   grp.name = "Carriage BR (HGH20CA)"
-  face = grp.entities.add_face([2223.5.mm,-32.mm,-1106.mm], [2275.5.mm,-32.mm,-1106.mm], [2275.5.mm,32.mm,-1106.mm], [2223.5.mm,32.mm,-1106.mm])
+  face = grp.entities.add_face([2223.5.mm,-32.mm,-1081.mm], [2275.5.mm,-32.mm,-1081.mm], [2275.5.mm,32.mm,-1081.mm], [2223.5.mm,32.mm,-1081.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
@@ -563,7 +563,7 @@ ents = fp_defn.entities
   # Drive Nut BR
   grp = ents.add_group
   grp.name = "Drive Nut BR"
-  face = grp.entities.add_face([2269.5.mm,-14.mm,-1107.mm], [2297.5.mm,-14.mm,-1107.mm], [2297.5.mm,14.mm,-1107.mm], [2269.5.mm,14.mm,-1107.mm])
+  face = grp.entities.add_face([2269.5.mm,-14.mm,-1082.mm], [2297.5.mm,-14.mm,-1082.mm], [2297.5.mm,14.mm,-1082.mm], [2269.5.mm,14.mm,-1082.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(26.mm)
   mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
@@ -574,7 +574,7 @@ ents = fp_defn.entities
   # Rod-End BR
   grp = ents.add_group
   grp.name = "Rod-End BR"
-  face = grp.entities.add_face([2233.5.mm,-16.mm,-1110.mm], [2265.5.mm,-16.mm,-1110.mm], [2265.5.mm,16.mm,-1110.mm], [2233.5.mm,16.mm,-1110.mm])
+  face = grp.entities.add_face([2233.5.mm,-16.mm,-1085.mm], [2265.5.mm,-16.mm,-1085.mm], [2265.5.mm,16.mm,-1085.mm], [2233.5.mm,16.mm,-1085.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(32.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
@@ -582,7 +582,7 @@ ents = fp_defn.entities
   mat.alpha = 1.0
   grp.material = mat
 
-fp_inst = entities.add_instance(fp_defn, Geom::Transformation.translation([2399.5.mm, 1181.mm, 1194.mm]))
+fp_inst = entities.add_instance(fp_defn, Geom::Transformation.translation([2399.5.mm, 1181.mm, 1219.mm]))
 fp_inst.name = "Film Plane"
 fp_inst.layer = model.layers["Film Plane"]
 fda = "dynamic_attributes"
@@ -602,13 +602,13 @@ fp_inst.set_attribute(fda, "_onclick_access", "NONE")
 
 
 # ── Corner-detail callouts (Labels tag — shown only in the corner-detail scene) ──
-t=entities.add_text("HGR20 rail - FIXED (depth guide)", Geom::Point3d.new(4649.mm,1151.792939991129.mm,2288.mm), Geom::Vector3d.new(10,0,11.0)); t.layer=model.layers["Labels"] rescue nil
-t=entities.add_text("Leadscrew - DEPTH / focus drive", Geom::Point3d.new(4683.mm,701.7929399911291.mm,2288.mm), Geom::Vector3d.new(4.0,0,19.0)); t.layer=model.layers["Labels"] rescue nil
-t=entities.add_text("Carriage + drive nut", Geom::Point3d.new(4629.mm,1401.792939991129.mm,2276.mm), Geom::Vector3d.new(-10.0,0,-15.0)); t.layer=model.layers["Labels"] rescue nil
-t=entities.add_text("X cross-slide = SWING float (blue)", Geom::Point3d.new(4659.096238933683.mm,1401.792939991129.mm,2302.mm), Geom::Vector3d.new(-12.0,0,4.0)); t.layer=model.layers["Labels"] rescue nil
-t=entities.add_text("Z cross-slide = TILT float (green)", Geom::Point3d.new(4669.192477867366.mm,1401.792939991129.mm,2255.011863569892.mm), Geom::Vector3d.new(17.0,0,-12.0)); t.layer=model.layers["Labels"] rescue nil
-t=entities.add_text("Rod-end -> rigid frame corner", Geom::Point3d.new(4669.192477867366.mm,1401.792939991129.mm,2222.0237271397837.mm), Geom::Vector3d.new(17.0,0,5.0)); t.layer=model.layers["Labels"] rescue nil
-t=entities.add_text("ghost = corner if it stayed on rail", Geom::Point3d.new(4649.mm,1401.792939991129.mm,2288.mm), Geom::Vector3d.new(-17.0,0,13.0)); t.layer=model.layers["Labels"] rescue nil
+t=entities.add_text("HGR20 rail - FIXED (depth guide)", Geom::Point3d.new(4649.mm,1160.0520922298629.mm,2288.mm), Geom::Vector3d.new(10,0,11.0)); t.layer=model.layers["Labels"] rescue nil
+t=entities.add_text("Leadscrew - DEPTH / focus drive", Geom::Point3d.new(4683.mm,710.0520922298629.mm,2288.mm), Geom::Vector3d.new(4.0,0,19.0)); t.layer=model.layers["Labels"] rescue nil
+t=entities.add_text("Carriage + drive nut", Geom::Point3d.new(4629.mm,1410.0520922298629.mm,2276.mm), Geom::Vector3d.new(-10.0,0,-15.0)); t.layer=model.layers["Labels"] rescue nil
+t=entities.add_text("X cross-slide = SWING float (blue)", Geom::Point3d.new(4657.989722347415.mm,1410.0520922298629.mm,2302.mm), Geom::Vector3d.new(-12.0,0,4.0)); t.layer=model.layers["Labels"] rescue nil
+t=entities.add_text("Z cross-slide = TILT float (green)", Geom::Point3d.new(4666.979444694831.mm,1410.0520922298629.mm,2255.765705810068.mm), Geom::Vector3d.new(17.0,0,-12.0)); t.layer=model.layers["Labels"] rescue nil
+t=entities.add_text("Rod-end -> rigid frame corner", Geom::Point3d.new(4666.979444694831.mm,1410.0520922298629.mm,2223.531411620136.mm), Geom::Vector3d.new(17.0,0,5.0)); t.layer=model.layers["Labels"] rescue nil
+t=entities.add_text("ghost = corner if it stayed on rail", Geom::Point3d.new(4649.mm,1410.0520922298629.mm,2288.mm), Geom::Vector3d.new(-17.0,0,13.0)); t.layer=model.layers["Labels"] rescue nil
 
 model.definitions.purge_unused
 model.materials.purge_unused
@@ -622,7 +622,7 @@ eye = ctr.offset(dir, bb.diagonal * 1.4)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
-[["Combined", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray"], nil, 0], ["No Container", ["Film Plane", "Corner Mechanism", "Processing Tray"], nil, 0], ["Corner detail (TR)", ["Corner Detail", "Labels"], [4669.192477867366.mm, 1401.792939991129.mm, 2222.0237271397837.mm], 95]].each { |name, tags, tgt, so|
+[["Combined", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray"], nil, 0], ["No Container", ["Film Plane", "Corner Mechanism", "Processing Tray"], nil, 0], ["Corner detail (TR)", ["Corner Detail", "Labels"], [4666.979444694831.mm, 1410.0520922298629.mm, 2223.531411620136.mm], 95]].each { |name, tags, tgt, so|
   model.layers.each { |l| l.visible = (l == dl || tags.include?(l.name)) }
   if tgt
     t = Geom::Point3d.new(tgt[0], tgt[1], tgt[2])

@@ -26,7 +26,42 @@ import sys
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov   # helpers + component builders (Overview)
 
-TAGS = ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel"]
+TAGS = ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel", "Labels"]
+
+
+# ── "Labeled" scene callouts (project rule: every .skp gets a Labeled scene) ──
+# (instance name, text, leader Δx,Δy,Δz mm). Δy pulls toward the viewer (−Y).
+IBC_LABELS = [
+    ("IBC Tanks",           "IBC WATER TANKS\n(4x 1000L tote)",   -1100, -400,  650),
+    ("IBC Frame",           "IBC FRAME\n(steel rack)",             -250,  650,  900),
+    ("Equipment Panel",     "EQUIPMENT PANEL\n(pump / filter)",     650, -150,  700),
+    ("Water/Waste Hookups", "WATER / WASTE HOOKUPS\n(exterior wall)", 450, -350, 450),
+]
+# Point-anchored — the plumbing spans a wide area, so anchor on a pipe run.
+IBC_POINT_LABELS = [
+    (4800, 918, 1700, "WATER PLUMBING\n(pump feed + returns)", -600, -650, 600),
+]
+
+
+def ibc_labels():
+    """Ruby that adds an in-model text callout (with leader) for each major part on
+    the 'Labels' tag — instance-anchored at bounds top-centre + point-anchored."""
+    rows = []
+    for name, text, dx, dy, dz in IBC_LABELS:
+        rows.append(
+            f'inst = entities.grep(Sketchup::ComponentInstance).find {{ |i| i.name == "{name}" }}\n'
+            f'if inst\n'
+            f'  bb = inst.bounds\n'
+            f'  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)\n'
+            f'  txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'  txt.layer = model.layers["Labels"] rescue nil\n'
+            f'end')
+    for x, y, z, text, dx, dy, dz in IBC_POINT_LABELS:
+        rows.append(
+            f'anc = Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)})\n'
+            f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'txt.layer = model.layers["Labels"] rescue nil')
+    return '\n'.join(rows)
 
 
 def context():
@@ -67,12 +102,14 @@ def generate_ruby():
         f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
     keep_tags_ruby = '[' + ', '.join(f'"{t}"' for t in TAGS) + ']'
 
-    # Four scenes — focused subsystems, then a combined view (per request).
+    # Focused subsystems, a combined view, then a fully-labeled view (per rule).
+    comp_tags = [t for t in TAGS if t != "Labels"]
     scenes = [
         ("IBC Tanks", ["IBC Tanks"]),
         ("IBC Frame", ["IBC Frame"]),
         ("Plumbing & Panel", ["Plumbing & Panel"]),
-        ("Combined", TAGS),
+        ("Combined", comp_tags),
+        ("Labeled", TAGS),  # all components + the Labels tag
     ]
     scenes_ruby = '[' + ', '.join(
         '["%s", [%s]]' % (n, ', '.join(f'"{t}"' for t in tags))
@@ -91,7 +128,7 @@ opts["LengthPrecision"] = 1
 # ── Idempotent rebuild: erase all prior groups/instances (incl. any template
 # scale figure) so this focused model frames tightly on the IBC assembly. ──
 to_erase = entities.to_a.select {{ |e|
-  e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance)
+  e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance) || e.is_a?(Sketchup::Text)
 }}
 entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
@@ -102,6 +139,9 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 
 # ── Subsystems (each a component on its tag) ──
 {body}
+
+# ── In-model labels (on the 'Labels' tag; visible only in the "Labeled" scene) ──
+{ibc_labels()}
 
 model.definitions.purge_unused
 model.materials.purge_unused
@@ -115,7 +155,8 @@ model.layers.to_a.each {{ |l|
 }}
 
 # ── Scenes ── one consistent iso camera, shared by every scene.
-model.layers.each {{ |l| l.visible = true }}
+# Frame on geometry only — hide the Labels tag so Text bounds don't skew extents.
+model.layers.each {{ |l| l.visible = (l.name != "Labels") }}
 bb = model.bounds
 ctr = bb.center
 dir = Geom::Vector3d.new(0.72, -0.7, 0.5); dir.normalize!

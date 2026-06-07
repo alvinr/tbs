@@ -407,6 +407,23 @@ def right_hangers():
 
 # ── Left walkway: removable lift-out support (bearer beam + legs + strip) ────
 
+def left_edge_beam_and_seats():
+    """The left walkway's INNER-edge BEARER support: the full-width 40x40x3 SHS edge
+    beam (ends butted to the seat plates) + the two IBC-style wall seats (drop-in
+    pocket + 4-corner bolts, `_wall_seat_parts`). Returns a list of ruby parts.
+    SHARED by `left_support()` and the overview model so the two never diverge."""
+    lxr = WK_LEFT_X + WK_W                     # 470 — inner deck edge
+    bz0, bz1 = k.LEFT_WK_BEAM_Z0, k.LEFT_WK_BEAM_Z1
+    beam_w = L_BEARER                          # 40 — section
+    pt = k.LEFT_WK_SEAT_PLATE[2]               # 6 — beam ends butt the seat plate faces
+    parts = [ruby_box("Left edge beam (40x40x3 steel SHS, full width)",
+                      lxr, pt, bz0, beam_w, C_WID - 2 * pt, bz1 - bz0, color=C_STEEL)]
+    for label, wall_yd, sign in [("near", 0, +1), ("far", C_WID, -1)]:
+        parts += _wall_seat_parts(f"Left wall-seat {label}", lxr, wall_yd, sign,
+                                  beam_w, bz0, bz1)
+    return parts
+
+
 def left_support():
     """The LEFT walkway is a removable lift-out. Its INNER edge is carried by a
     full-width STEEL 40×40×3 SHS EDGE BEAM at X≈470 that stands in the bath→
@@ -425,23 +442,9 @@ def left_support():
     nyi, fy = WK_W, WK_FAR_YD
     span_legs = fy - nyi
     leg_yds = [round(nyi + span_legs / (L_LEG_N + 1) * (i + 1)) for i in range(L_LEG_N)]
-    bath_top = k.PROC_TRAY_RIM - 8             # 42
-    bz0, bz1 = k.LEFT_WK_BEAM_Z0, k.LEFT_WK_BEAM_Z1   # 52..92 — 40mm deep; bottom clears tray rim (Z50) by 2mm, top clears film frame (Z100) by 8mm
-    beam_w = L_BEARER                          # 40 — section
-
-    parts = []
-    # STEEL edge beam (kerb), simply supported wall-to-wall — its ends butt the
-    # seat plates' container-facing faces (Yd=pt..C_WID-pt) so each beam→plate joint
-    # draws an edge.  40x40 + raised to Z52 to clear the near/far tray rims it crosses.
-    pt = k.LEFT_WK_SEAT_PLATE[2]
-    parts.append(ruby_box("Left edge beam (40x40x3 steel SHS, full width)",
-                          lxr, pt, bz0, beam_w, C_WID - 2 * pt, bz1 - bz0, color=C_STEEL))
-
-    # IBC-style wall seats — drop-in pocket + 100x180x6 backing plate + 3x M12,
-    # one at each wall end (Sheet 6 / Detail D).
-    for label, wall_yd, sign in [("near", 0, +1), ("far", C_WID, -1)]:
-        parts += _wall_seat_parts(f"Left wall-seat {label}", lxr, wall_yd, sign,
-                                  beam_w, bz0, bz1)
+    # Bearer beam (full-width edge beam) + the two IBC-style wall seats — shared
+    # with the overview via left_edge_beam_and_seats().
+    parts = list(left_edge_beam_and_seats())
 
     # Outer edge: bearing strip on the tray rim + 3 floor legs on bare floor.
     parts.append(ruby_box("Left bearing strip (Al)",

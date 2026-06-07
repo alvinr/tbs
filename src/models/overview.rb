@@ -1401,6 +1401,319 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # Left edge beam (40x40x3 steel SHS, full width)
+  grp = ents.add_group
+  grp.name = "Left edge beam (40x40x3 steel SHS, full width)"
+  face = grp.entities.add_face([470.mm,6.mm,52.mm], [510.mm,6.mm,52.mm], [510.mm,2356.mm,52.mm], [470.mm,2356.mm,52.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat near interior plate
+  grp = ents.add_group
+  grp.name = "Left wall-seat near interior plate"
+  face = grp.entities.add_face([440.mm,0.mm,5.mm], [540.mm,0.mm,5.mm], [540.mm,6.mm,5.mm], [440.mm,6.mm,5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(135.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat near exterior plate
+  grp = ents.add_group
+  grp.name = "Left wall-seat near exterior plate"
+  face = grp.entities.add_face([440.mm,-46.mm,5.mm], [540.mm,-46.mm,5.mm], [540.mm,-40.mm,5.mm], [440.mm,-40.mm,5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(135.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat near pocket floor
+  grp = ents.add_group
+  grp.name = "Left wall-seat near pocket floor"
+  face = grp.entities.add_face([464.mm,6.mm,46.mm], [516.mm,6.mm,46.mm], [516.mm,80.mm,46.mm], [464.mm,80.mm,46.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat near pocket gusset
+  grp = ents.add_group
+  grp.name = "Left wall-seat near pocket gusset"
+  ge = grp.entities
+  f = ge.add_face([470.mm,6.mm,46.mm], [470.mm,6.mm,92.mm], [470.mm,80.mm,46.mm])
+  f.pushpull(6.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat near pocket gusset
+  grp = ents.add_group
+  grp.name = "Left wall-seat near pocket gusset"
+  ge = grp.entities
+  f = ge.add_face([510.mm,6.mm,46.mm], [510.mm,6.mm,92.mm], [510.mm,80.mm,46.mm])
+  f.pushpull(-6.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat near bolt M12
+  grp = ents.add_group
+  grp.name = "Left wall-seat near bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([458.mm,-46.mm,30.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(52.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat near bolt head
+  grp = ents.add_group
+  grp.name = "Left wall-seat near bolt head"
+  face = grp.entities.add_face([449.mm,-52.mm,21.mm], [467.mm,-52.mm,21.mm], [467.mm,-46.mm,21.mm], [449.mm,-46.mm,21.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(18.mm)
+  mat = model.materials["Left wall-seat near bolt head"] || model.materials.add("Left wall-seat near bolt head")
+  mat.color = Sketchup::Color.new(60, 60, 68)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat near bolt M12
+  grp = ents.add_group
+  grp.name = "Left wall-seat near bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([458.mm,-46.mm,115.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(52.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat near bolt head
+  grp = ents.add_group
+  grp.name = "Left wall-seat near bolt head"
+  face = grp.entities.add_face([449.mm,-52.mm,106.mm], [467.mm,-52.mm,106.mm], [467.mm,-46.mm,106.mm], [449.mm,-46.mm,106.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(18.mm)
+  mat = model.materials["Left wall-seat near bolt head"] || model.materials.add("Left wall-seat near bolt head")
+  mat.color = Sketchup::Color.new(60, 60, 68)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat near bolt M12
+  grp = ents.add_group
+  grp.name = "Left wall-seat near bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([522.mm,-46.mm,30.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(52.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat near bolt head
+  grp = ents.add_group
+  grp.name = "Left wall-seat near bolt head"
+  face = grp.entities.add_face([513.mm,-52.mm,21.mm], [531.mm,-52.mm,21.mm], [531.mm,-46.mm,21.mm], [513.mm,-46.mm,21.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(18.mm)
+  mat = model.materials["Left wall-seat near bolt head"] || model.materials.add("Left wall-seat near bolt head")
+  mat.color = Sketchup::Color.new(60, 60, 68)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat near bolt M12
+  grp = ents.add_group
+  grp.name = "Left wall-seat near bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([522.mm,-46.mm,115.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(52.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat near bolt head
+  grp = ents.add_group
+  grp.name = "Left wall-seat near bolt head"
+  face = grp.entities.add_face([513.mm,-52.mm,106.mm], [531.mm,-52.mm,106.mm], [531.mm,-46.mm,106.mm], [513.mm,-46.mm,106.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(18.mm)
+  mat = model.materials["Left wall-seat near bolt head"] || model.materials.add("Left wall-seat near bolt head")
+  mat.color = Sketchup::Color.new(60, 60, 68)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat far interior plate
+  grp = ents.add_group
+  grp.name = "Left wall-seat far interior plate"
+  face = grp.entities.add_face([440.mm,2356.mm,5.mm], [540.mm,2356.mm,5.mm], [540.mm,2362.mm,5.mm], [440.mm,2362.mm,5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(135.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat far exterior plate
+  grp = ents.add_group
+  grp.name = "Left wall-seat far exterior plate"
+  face = grp.entities.add_face([440.mm,2402.mm,5.mm], [540.mm,2402.mm,5.mm], [540.mm,2408.mm,5.mm], [440.mm,2408.mm,5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(135.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat far pocket floor
+  grp = ents.add_group
+  grp.name = "Left wall-seat far pocket floor"
+  face = grp.entities.add_face([464.mm,2282.mm,46.mm], [516.mm,2282.mm,46.mm], [516.mm,2356.mm,46.mm], [464.mm,2356.mm,46.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat far pocket gusset
+  grp = ents.add_group
+  grp.name = "Left wall-seat far pocket gusset"
+  ge = grp.entities
+  f = ge.add_face([470.mm,2356.mm,46.mm], [470.mm,2356.mm,92.mm], [470.mm,2282.mm,46.mm])
+  f.pushpull(6.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat far pocket gusset
+  grp = ents.add_group
+  grp.name = "Left wall-seat far pocket gusset"
+  ge = grp.entities
+  f = ge.add_face([510.mm,2356.mm,46.mm], [510.mm,2356.mm,92.mm], [510.mm,2282.mm,46.mm])
+  f.pushpull(-6.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat far bolt M12
+  grp = ents.add_group
+  grp.name = "Left wall-seat far bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([458.mm,2356.mm,30.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(52.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat far bolt head
+  grp = ents.add_group
+  grp.name = "Left wall-seat far bolt head"
+  face = grp.entities.add_face([449.mm,2408.mm,21.mm], [467.mm,2408.mm,21.mm], [467.mm,2414.mm,21.mm], [449.mm,2414.mm,21.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(18.mm)
+  mat = model.materials["Left wall-seat near bolt head"] || model.materials.add("Left wall-seat near bolt head")
+  mat.color = Sketchup::Color.new(60, 60, 68)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat far bolt M12
+  grp = ents.add_group
+  grp.name = "Left wall-seat far bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([458.mm,2356.mm,115.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(52.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat far bolt head
+  grp = ents.add_group
+  grp.name = "Left wall-seat far bolt head"
+  face = grp.entities.add_face([449.mm,2408.mm,106.mm], [467.mm,2408.mm,106.mm], [467.mm,2414.mm,106.mm], [449.mm,2414.mm,106.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(18.mm)
+  mat = model.materials["Left wall-seat near bolt head"] || model.materials.add("Left wall-seat near bolt head")
+  mat.color = Sketchup::Color.new(60, 60, 68)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat far bolt M12
+  grp = ents.add_group
+  grp.name = "Left wall-seat far bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([522.mm,2356.mm,30.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(52.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat far bolt head
+  grp = ents.add_group
+  grp.name = "Left wall-seat far bolt head"
+  face = grp.entities.add_face([513.mm,2408.mm,21.mm], [531.mm,2408.mm,21.mm], [531.mm,2414.mm,21.mm], [513.mm,2414.mm,21.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(18.mm)
+  mat = model.materials["Left wall-seat near bolt head"] || model.materials.add("Left wall-seat near bolt head")
+  mat.color = Sketchup::Color.new(60, 60, 68)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat far bolt M12
+  grp = ents.add_group
+  grp.name = "Left wall-seat far bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([522.mm,2356.mm,115.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(52.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left wall-seat far bolt head
+  grp = ents.add_group
+  grp.name = "Left wall-seat far bolt head"
+  face = grp.entities.add_face([513.mm,2408.mm,106.mm], [531.mm,2408.mm,106.mm], [531.mm,2414.mm,106.mm], [513.mm,2414.mm,106.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(18.mm)
+  mat = model.materials["Left wall-seat near bolt head"] || model.materials.add("Left wall-seat near bolt head")
+  mat.color = Sketchup::Color.new(60, 60, 68)
+  mat.alpha = 1.0
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Walkways"
   inst.layer = model.layers["Walkways"]

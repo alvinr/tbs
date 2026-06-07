@@ -77,6 +77,11 @@ from tbs_constants import (
     LEFT_WK_LEG_N, LEFT_WK_LEG_SIZE, LEFT_WK_LEG_T, LEFT_WK_LEG_BASE,
     LEFT_WK_BEARING_STRIP,
     LEFT_WK_SEAT_BOLT_N, LEFT_WK_SEAT_BOLT_D, LEFT_WK_SEAT_PLATE,
+    LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_T,
+    LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N,
+    LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE,
+    LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH,
+    SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP,
     WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R,
     WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R,
     WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H,
@@ -2096,180 +2101,120 @@ def sheet5():
 # Scale ~4:1 for clarity.
 # ===============================================================================
 def sheet6():
-    def sx(mm): return mm
-    def sy(mm): return mm
-
+    """Sheet 6 — Detail D: Left walkway FLOOR-LEG CANTILEVER bracket.
+    VIEW A — section through one bracket (X-Z, looking along Yd): foot plate on bare
+    floor outside the tray + 50x50 post + arm reaching IN over the (floor-level) spray
+    bar to the grate inner edge. VIEW B — foot-plate plan with the 4x M10 floor anchors."""
     C_BOLT = "#505058"
-    WALL_T = 1.6
-    CORR_DEPTH = 38
-    SEAT_T = LEFT_WK_SEAT_PLATE[2]      # 6mm seat / backing plate
-    PLATE_W, PLATE_H, PLATE_T = LEFT_WK_SEAT_PLATE   # 100 x 135 x 6
-    BEAM_SZ = LEFT_WK_BEARER_SIZE        # 40mm
-    BEAM_T  = LEFT_WK_BEARER_T           # 3mm
-    BOLT_D  = LEFT_WK_SEAT_BOLT_D        # 12mm
-    NB      = LEFT_WK_SEAT_BOLT_N        # 4 bolts
-
-    # Beam vertical envelope (matches sheets 4/5)
-    grate_bot = WALKWAY_H - WALKWAY_GRATE_T   # 65 (ledge)
-    grate_top = WALKWAY_H                       # 80 (deck)
-    beam_bot = LEFT_WK_BEAM_Z0                   # 52
-    beam_top = LEFT_WK_BEAM_Z1                   # 92 (kerb top)
+    C_SB = "#C8D8E8"                          # spray bar (aluminum)
+    legx = LEFT_WK_CANT_LEG_X                # 140
+    post = LEFT_WK_CANT_POST                 # 50
+    fl, fw, ft = LEFT_WK_CANT_FOOT           # 128, 60, 8
+    fx0 = LEFT_WK_CANT_FOOT_X0               # 38
+    arm_z0 = LEFT_WK_CANT_ARM_Z0             # 75
+    grate_bot = WALKWAY_H - WALKWAY_GRATE_T  # 115
+    grate_top = WALKWAY_H                    # 130
+    std_reach = LEFT_WK_CANT_STD_REACH       # 470
+    arm_x0 = legx + post / 2                 # 165
+    rim = PROC_TRAY_RIM                      # 50
+    sb0, sb1 = SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP   # 20, 60
+    nb = LEFT_WK_CANT_FOOT_BOLT_N            # 4
 
     fig, (axA, axB) = plt.subplots(1, 2, figsize=(18, 10),
-                                   gridspec_kw={"width_ratios": [1.5, 1.0]})
+                                   gridspec_kw={"width_ratios": [1.7, 1.0]})
     for ax in (axA, axB):
         fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
         ax.set_aspect("equal"); ax.axis("off")
 
-    # ===================== VIEW A — section along beam axis =====================
-    axA.set_xlim(-90, 170)
-    axA.set_ylim(-25, 175)
-    axA.text(40, 168, "VIEW A — SECTION THROUGH WALL SEAT (along beam axis)",
-             ha="center", va="bottom", fontsize=8, color=C_OUT,
-             fontweight="bold", **FONT)
-
-    # Container floor
-    axA.add_patch(Rectangle((-90, -12), 260, 12, fc=C_FLOOR, ec=C_OUT,
-                            lw=1.0, hatch="///", zorder=2))
-    # Corrugated wall at Yd=0 (section) — exterior to the left
-    wall_z = 165
-    axA.add_patch(Rectangle((-WALL_T, 0), WALL_T, wall_z, fc=C_STEEL,
-                            ec=C_OUT, lw=1.0, zorder=4))
-    axA.add_patch(Rectangle((-CORR_DEPTH, 0), WALL_T, wall_z, fc=C_STEEL,
-                            ec=C_OUT, lw=1.0, zorder=3))
-    for zz in range(10, wall_z, 26):
-        axA.add_patch(Polygon([(-WALL_T, zz), (-CORR_DEPTH, zz+6),
-                               (-CORR_DEPTH, zz+13), (-WALL_T, zz+7)],
-                              closed=True, fc=C_STEEL, ec=C_OUT, lw=0.4,
-                              alpha=0.5, zorder=3))
-    leader(axA, -CORR_DEPTH/2, wall_z-20, -CORR_DEPTH/2 - 8, wall_z+2,
-           "CONTAINER WALL\n(CORRUGATED)", color=C_OUT, fs=5.5,
-           ha="center", va="bottom", arrow_style="-|>", font=FONT)
-
-    # Exterior backing plate (edge-on): 6mm bar outside the wall
-    ext_x = -CORR_DEPTH - SEAT_T
-    plate_zc = (beam_bot + beam_top) / 2          # centre the plate on the beam (matches the 3D)
-    axA.add_patch(Rectangle((ext_x, plate_zc - PLATE_H/2), SEAT_T, PLATE_H,
-                            fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=5))
-    leader(axA, ext_x, plate_zc + PLATE_H/2 - 8, ext_x - 18, plate_zc + PLATE_H/2 + 16,
-           f"EXTERIOR BACKING\nPLATE {PLATE_W}x{PLATE_H}x{PLATE_T}mm\n(SEE VIEW B)",
-           color=C_OUT, fs=5.5, ha="center", va="bottom",
-           arrow_style="-|>", font=FONT)
-    # Interior mounting plate (the pocket floor + gussets weld to its container face)
-    axA.add_patch(Rectangle((0, plate_zc - PLATE_H/2), SEAT_T, PLATE_H,
-                            fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))
-    leader(axA, SEAT_T, plate_zc - PLATE_H/2 + 8, SEAT_T + 26, plate_zc - PLATE_H/2 - 14,
-           f"INTERIOR MOUNTING\nPLATE {PLATE_W}x{PLATE_H}x{PLATE_T}mm",
-           color=C_OUT, fs=5.5, ha="center", va="top",
-           arrow_style="-|>", font=FONT)
-
-    # Drop-in pocket: a FLOOR piece (beam drops onto it) + a triangular GUSSET side
-    # at each pocket edge (shown light — it sits in the X-edge planes, beside the
-    # beam). Both 6mm, welded to the interior mounting plate at Yd=SEAT_T.
-    seat_reach = 80
-    axA.add_patch(Rectangle((SEAT_T, beam_bot - SEAT_T), seat_reach - SEAT_T, SEAT_T,
-                            fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))   # floor piece
-    axA.add_patch(Polygon([(SEAT_T, beam_bot), (SEAT_T, beam_top),
-                           (seat_reach, beam_bot)], closed=True,
-                          fc=C_STEEL, ec=C_OUT, lw=0.9, alpha=0.45, zorder=4))  # gusset side
-    leader(axA, SEAT_T + 4, beam_bot - SEAT_T/2, seat_reach + 22, beam_bot - 14,
-           "FLOOR PIECE 6mm\n+ TRIANGULAR GUSSET\nSIDES (x2, 6mm)",
-           color=C_OUT, fs=5.5, ha="left", va="center",
-           arrow_style="-|>", font=FONT)
-
-    # Beam end cross-section (50x50 SHS) sitting in the pocket
-    axA.add_patch(Rectangle((2, beam_bot), BEAM_SZ, BEAM_SZ, fc=C_STEEL,
-                            ec=C_OUT, lw=1.5, zorder=8))
-    axA.add_patch(Rectangle((2 + BEAM_T, beam_bot + BEAM_T),
-                            BEAM_SZ - 2*BEAM_T, BEAM_SZ - 2*BEAM_T,
-                            fc=BG, ec=C_OUT, lw=0.5, zorder=9))
-    leader(axA, 2 + BEAM_SZ/2, beam_top - 4, 2 + BEAM_SZ + 40, beam_top + 18,
-           f"STEEL EDGE BEAM END\n{BEAM_SZ}x{BEAM_SZ}x{BEAM_T}mm SHS\nDROPS INTO POCKET",
-           color="#404048", fs=5.5, ha="left", va="bottom",
-           arrow_style="-|>", font=FONT)
-    # Grating-bearing ledge at Z65 (on the interior face)
-    axA.add_patch(Rectangle((2 + BEAM_SZ, grate_bot - 3), 22, 3,
-                            fc=C_STEEL, ec=C_OUT, lw=0.8, zorder=9))
-    axA.text(2 + BEAM_SZ + 24, grate_bot - 1, "GRATING\nLEDGE Z65",
-             ha="left", va="center", fontsize=4.5, color=C_OUT,
-             fontfamily="monospace", zorder=12)
-
-    # 4x M12 through-bolts at the plate corners → 2 levels in this section, both
-    # CLEAR of the pocket (above the beam / below the floor) so the nuts are reachable
-    bolt_zs = [plate_zc - 42, plate_zc + 42]
-    for k, bz in enumerate(sorted(set(bolt_zs))):
-        axA.plot([ext_x - 6, SEAT_T + 4], [bz, bz], color=C_BOLT,
-                 lw=2.2, zorder=10, solid_capstyle="butt")
-        # head outside
-        axA.add_patch(Rectangle((ext_x - 6, bz - 4), 6, 8, fc=C_BOLT,
-                                ec=C_OUT, lw=0.8, zorder=11))
-        # nut inside (on the interior mounting plate)
-        axA.add_patch(Rectangle((SEAT_T - 2, bz - 4), 6, 8, fc=C_BOLT,
-                                ec=C_OUT, lw=0.8, zorder=11))
-    leader(axA, ext_x - 3, sorted(set(bolt_zs))[0], ext_x - 30, beam_bot - 6,
-           f"{NB}x M{BOLT_D} THROUGH-BOLT\nHEAD OUTSIDE / NUT INSIDE",
-           color=C_BOLT, fs=5.5, ha="center", va="top",
-           arrow_style="-|>", font=FONT)
-
-    # End-reaction arrow
-    axA.annotate("", xy=(2 + BEAM_SZ/2, beam_bot - 14),
-                 xytext=(2 + BEAM_SZ/2, beam_bot + 6),
+    # ===================== VIEW A — bracket section (X-Z) =====================
+    axA.set_xlim(0, 560)
+    axA.set_ylim(-95, 205)
+    axA.text(280, 196, "VIEW A — FLOOR-LEG CANTILEVER BRACKET (section, looking along Yd)",
+             ha="center", va="bottom", fontsize=8, color=C_OUT, fontweight="bold", **FONT)
+    # Container floor (hatched)
+    axA.add_patch(Rectangle((0, -14), 560, 14, fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="///", zorder=2))
+    # Processing tray — near rim wall at X=170 (Z0-50), floor + bath to its right
+    axA.add_patch(Rectangle((170, 0), 4, rim, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=4))
+    axA.add_patch(Rectangle((174, 0), 560 - 174, 2, fc=C_STEEL, ec=C_OUT, lw=0.6, zorder=3))
+    axA.add_patch(Rectangle((174, 2), 560 - 174, rim - 2 - 8, fc="#BFE0F0", ec="none", alpha=0.45, zorder=2))
+    leader(axA, 172, rim, 240, rim + 34, "PROCESSING TRAY RIM\n(Z0-50, STAYS at floor level)",
+           color=C_OUT, fs=5.5, ha="center", va="bottom", arrow_style="-|>", font=FONT)
+    # Foot plate (on bare floor, outboard of the tray)
+    axA.add_patch(Rectangle((fx0, 0), fl, ft, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))
+    # Post 50x50 (floor to grate bottom)
+    axA.add_patch(Rectangle((legx - post / 2, 0), post, grate_bot, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=6))
+    leader(axA, legx, grate_bot * 0.55, legx - 86, grate_bot * 0.55 + 20,
+           "50x50x3 STEEL\nSHS POST\n(bare floor,\noutside tray)",
+           color=C_OUT, fs=5.5, ha="center", va="center", arrow_style="-|>", font=FONT)
+    # Cantilever arm (Z75-115) reaching to the grate inner edge (X470)
+    axA.add_patch(Rectangle((arm_x0, arm_z0), std_reach - arm_x0, grate_bot - arm_z0,
+                            fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=7))
+    leader(axA, 245, arm_z0 + 6, 200, arm_z0 + 52,
+           f"CANTILEVER ARM 40mm DEEP\n(Z{arm_z0}-{grate_bot}); EXTENDED\nto X770 on the punch-out",
+           color=C_OUT, fs=5.5, ha="center", va="bottom", arrow_style="-|>", font=FONT)
+    # Grate (sits on the arm/post tops)
+    axA.add_patch(Rectangle((170, grate_bot), std_reach - 170, grate_top - grate_bot,
+                            fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="xx", alpha=0.85, zorder=8))
+    leader(axA, 430, grate_top, 445, grate_top + 30, "15mm GRATE (lift-out)",
+           color=C_OUT, fs=5.5, ha="center", va="bottom", arrow_style="-|>", font=FONT)
+    # Spray bar (passes UNDER the arm tip — at X470, Z20-60, stays at floor level)
+    axA.add_patch(Rectangle((std_reach, sb0), 40, sb1 - sb0, fc=C_SB, ec=C_OUT, lw=1.2, zorder=5))
+    leader(axA, std_reach + 20, sb1, std_reach + 60, sb1 + 30,
+           "SPRAY BAR Z20-60\n(stays at floor level)",
+           color=C_OUT, fs=5.5, ha="left", va="bottom", arrow_style="-|>", font=FONT)
+    # The key clearance: arm underside (Z75) over the spray-bar top (Z60) = 15mm
+    draw_dim_v(axA, std_reach - 18, sb1, arm_z0, "15", offset=5, fs=6, right=False, font=FONT)
+    axA.text(std_reach - 52, (sb1 + arm_z0) / 2, "SPRAY-BAR\nCLEARANCE", ha="right", va="center",
+             fontsize=5, color="#208020", fontweight="bold", **FONT)
+    # Floor anchors (4x M10 through the foot plate; 2 visible in this section).
+    # Labelled in VIEW B + the notes, so no leader here (keeps clear of the notes block).
+    for ax_ in (fx0 + 18, fx0 + fl - 18):
+        axA.add_patch(Rectangle((ax_ - 3, -14), 6, 14 + ft, fc=C_BOLT, ec=C_OUT, lw=0.7, zorder=7))
+    # Load arrow at the arm tip
+    axA.annotate("", xy=(std_reach - 6, grate_bot + 4), xytext=(std_reach - 6, grate_bot + 30),
                  arrowprops=dict(arrowstyle="-|>", color="#208020", lw=2.0))
-    axA.text(2 + BEAM_SZ/2, beam_bot - 16, "END REACTION\n~0.5 kN",
-             ha="center", va="top", fontsize=5.5, color="#208020",
-             fontweight="bold", **FONT)
+    # Key vertical dims
+    draw_dim_v(axA, 95, 0, grate_bot, f"{grate_bot}", offset=6, fs=6, right=False, font=FONT)
+    draw_dim_h(axA, arm_x0, std_reach, arm_z0 - 16, f"{int(std_reach - arm_x0)}mm reach",
+               offset=4, fs=6, above=False, font=FONT)
 
-    draw_dim_v(axA, 150, sy(beam_bot), sy(beam_top),
-               f"{BEAM_SZ}mm", offset=6, fs=5.5, right=True, font=FONT)
-
-    # ===================== VIEW B — exterior plate elevation ====================
+    # ===================== VIEW B — foot-plate plan =====================
     axB.set_xlim(-90, 90)
-    axB.set_ylim(-25, 175)
-    axB.text(0, 168, "VIEW B — EXTERIOR BACKING PLATE\n(looking at the wall from outside)",
-             ha="center", va="bottom", fontsize=8, color=C_OUT,
-             fontweight="bold", **FONT)
-    pcz = 70
-    axB.add_patch(Rectangle((-PLATE_W/2, pcz - PLATE_H/2), PLATE_W, PLATE_H,
-                            fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=5))
-    # 4 bolts at the plate corners (matches model offsets — clear of the central pocket)
-    offs = [(-32, -42), (32, -42), (-32, 42), (32, 42)]
-    for ox, oz in offs:
-        cx, cz = ox, pcz + oz
-        axB.add_patch(Circle((cx, cz), BOLT_D/2 + 2, fc=C_BOLT, ec=C_OUT,
-                             lw=0.8, zorder=8))
-        axB.add_patch(Circle((cx, cz), BOLT_D/2, fc=BG, ec=C_BOLT,
-                             lw=0.6, zorder=9))
-        axB.plot([cx - 4, cx + 4], [cz, cz], color=C_BOLT, lw=0.6, zorder=10)
-        axB.plot([cx, cx], [cz - 4, cz + 4], color=C_BOLT, lw=0.6, zorder=10)
-    # dashed footprint of the central pocket the bolts must clear
-    axB.add_patch(Rectangle((-26, pcz - 23), 52, 46, fill=False, ec="#888",
-                            lw=0.8, ls=(0, (4, 3)), zorder=6))
-    axB.text(0, pcz, "POCKET", ha="center", va="center", fontsize=5,
+    axB.set_ylim(-70, 110)
+    axB.text(0, 100, "VIEW B — FOOT PLATE (plan, looking down)",
+             ha="center", va="bottom", fontsize=8, color=C_OUT, fontweight="bold", **FONT)
+    # plate fl x fw centred
+    axB.add_patch(Rectangle((-fl / 2, -fw / 2), fl, fw, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=5))
+    # post footprint (50x50) — offset toward the inboard (tray) edge as in the bracket
+    axB.add_patch(Rectangle((fl / 2 - post - 4, -post / 2), post, post, fill=False,
+                            ec="#888", lw=0.8, ls=(0, (4, 3)), zorder=6))
+    axB.text(fl / 2 - post / 2 - 4, 0, "POST", ha="center", va="center", fontsize=5,
              color="#888", fontfamily="monospace", zorder=7)
-    leader(axB, -32, pcz - 42, -PLATE_W/2 - 22, pcz - 60,
-           f"{NB}x M{BOLT_D} BOLTS\nAT CORNERS (CLEAR OF POCKET)",
-           color=C_BOLT, fs=6, ha="center", va="top",
+    # 4 M10 anchors at the corners
+    for ox in (-fl / 2 + 14, fl / 2 - 14):
+        for oy in (-fw / 2 + 13, fw / 2 - 13):
+            axB.add_patch(Circle((ox, oy), 7, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=8))
+            axB.add_patch(Circle((ox, oy), 5, fc=BG, ec=C_BOLT, lw=0.6, zorder=9))
+    leader(axB, -fl / 2 + 14, fw / 2 - 13, -fl / 2 - 18, fw / 2 + 24,
+           f"{nb}x M10 FLOOR ANCHORS", color=C_BOLT, fs=6, ha="center", va="bottom",
            arrow_style="-|>", font=FONT)
-    draw_dim_h(axB, -PLATE_W/2, PLATE_W/2, pcz - PLATE_H/2 - 12,
-               f"{PLATE_W}mm", offset=4, fs=6, above=False, font=FONT)
-    draw_dim_v(axB, PLATE_W/2 + 14, pcz - PLATE_H/2, pcz + PLATE_H/2,
-               f"{PLATE_H}mm", offset=6, fs=6, right=True, font=FONT)
+    draw_dim_h(axB, -fl / 2, fl / 2, -fw / 2 - 12, f"{fl}mm", offset=4, fs=6, above=False, font=FONT)
+    draw_dim_v(axB, fl / 2 + 14, -fw / 2, fw / 2, f"{fw}mm", offset=6, fs=6, right=True, font=FONT)
 
     # ── Notes ──
     notes = [
-        "WALL-SEAT BRACKET (x2, one per wall):",
-        f"1. Edge beam SIMPLY SUPPORTED wall-to-wall — end reaction ~0.5 kN each.",
-        f"2. DROP-IN POCKET — 6mm floor piece + 2 triangular gusset sides at the pocket edges — welded to an interior mounting plate; beam drops in, lifts straight out.",
-        f"3. {NB}x M{BOLT_D} bolts at the plate CORNERS (clear of the pocket, so the nuts are reachable) THROUGH the corrugated wall to a MATCHING {PLATE_W}x{PLATE_H}x{PLATE_T}mm exterior plate (heads outside).",
-        f"4. Same load path as the IBC platform-beam wall seats.",
-        f"5. DEMOUNTABLE: beam + interior pocket/mounting plate come off for transport; bolts + exterior plate stay on the wall.",
+        "FLOOR-LEG CANTILEVER BRACKET (x5, at Yd 250/800/1180/1560/2110):",
+        "1. Bolted to BARE FLOOR outboard of the tray (X<170) — ZERO tray contact, ZERO wall fixings.",
+        f"2. 50x50x3 steel SHS post (floor to grate bottom Z{grate_bot}) + {nb}x M10 floor anchors per foot.",
+        f"3. Arm Z{arm_z0}-{grate_bot} (40mm deep) reaches in to carry the grate inner edge (X470); the 3 punch-out brackets EXTEND to X770.",
+        "4. The arm passes 15mm OVER the floor-level spray bar (Z60) — only possible after the +50mm walkway raise.",
+        "5. The grate lifts out for transport; the brackets stay bolted (permanent). Replaces the former edge-beam-on-wall-seats.",
     ]
-    draw_notes(axA, notes, sx(-88), sy(-4), spacing=sy(7), fs=6.5,
-               ha="left", width=sx(250), font=FONT)
+    draw_notes(axA, notes, 4, -58, spacing=7, fs=6.5, ha="left", width=552, font=FONT)
 
     title_block(axB, "SHEET 6 OF 9",
                 drawing_title="PERIMETER WALKWAY",
-                subtitle="DETAIL D — LEFT EDGE-BEAM WALL-SEAT BRACKET",
+                subtitle="DETAIL D — LEFT FLOOR-LEG CANTILEVER BRACKET",
                 scale_note="Axes in mm · VIEWS A/B",
                 height=0.07)
 

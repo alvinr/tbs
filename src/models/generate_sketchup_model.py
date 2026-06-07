@@ -48,7 +48,6 @@ from tbs_constants import (
     WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H,
     WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R,
     WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R,
-    LEFT_WK_BEARER_SIZE,
     C_WALL, C_PROC_ZONE,
     PH_X, PH_H, PH_D,
     FP_X_L, FP_X_R, FP_W, FP_H, FP_Y, FP_Y_MIN,
@@ -434,15 +433,13 @@ def walkways():
     door side) is a removable lift-out (shown in a distinct color) — taken out
     for transport so the light-trap can slide back.
     """
-    grate_z = WALKWAY_H - WALKWAY_GRATE_T   # 50mm — grate bottom at the tray rim
+    grate_z = WALKWAY_H - WALKWAY_GRATE_T   # 115mm — grate bottom (raised +50)
     t = WALKWAY_GRATE_T                      # 15mm — thin grate
 
     near_x_l = WALKWAY_LEFT_X + WALKWAY_W
     near_x_r = WALKWAY_RIGHT_X
-    # The near/far grates run along the side walls FROM the inner face of the
-    # left-walkway edge beam (X=near_x_l+beam) — they're cut around the full-width
-    # kerb beam rather than running over it.
-    near_x_l = near_x_l + LEFT_WK_BEARER_SIZE
+    # The near/far grates run along the side walls from the left-walkway inner edge
+    # (X=near_x_l). The floor-leg cantilever redesign has no kerb beam to cut around.
     near_len = near_x_r - near_x_l
 
     parts = []
@@ -486,11 +483,10 @@ def walkways():
     # Wall-cantilevered gusset brackets that actually hold the near & far decks up.
     parts.append(walkway_brackets())
 
-    # Left walkway BEARER support: the full-width edge beam + its two IBC-style wall
-    # seats (drop-in pocket + 4-corner bolts). Reuse the walkway model's shared
-    # builder so the seat design can't drift between the two models.
+    # Left walkway support: floor-leg cantilever brackets. Reuse the walkway model's
+    # shared builder so the support design can't drift between the two models.
     import generate_walkway_model as wm
-    parts.append('\n'.join(wm.left_edge_beam_and_seats()))
+    parts.append('\n'.join(wm.left_floor_cantilevers()))
 
     return '\n'.join(parts)
 

@@ -68,9 +68,11 @@ C_STEEL, C_TRAY, C_SHELL = ov.C_STEEL, ov.C_TRAY, ov.C_SHELL
 C_WALKWAY, C_REMOVABLE, C_ALUM = ov.C_WALKWAY, ov.C_REMOVABLE, ov.C_ALUM
 C_BOLT, C_HEX = "#505058", "#3C3C44"
 
-# Left lift-out support dimensions (40×40×3 steel SHS edge beam + 25×25×3 Al SHS legs).
-L_BEARER, L_LEG, L_LEG_BASE = k.LEFT_WK_BEARER_SIZE, k.LEFT_WK_LEG_SIZE, k.LEFT_WK_LEG_BASE
-L_LEG_N, L_STRIP = k.LEFT_WK_LEG_N, k.LEFT_WK_BEARING_STRIP
+# Left lift-out support — FLOOR-LEG CANTILEVER brackets (replaces the edge beam + wall seats).
+LC_LEGX, LC_POST, LC_PW = k.LEFT_WK_CANT_LEG_X, k.LEFT_WK_CANT_POST, k.LEFT_WK_CANT_POST_W
+LC_FOOT, LC_FX0 = k.LEFT_WK_CANT_FOOT, k.LEFT_WK_CANT_FOOT_X0
+LC_ARM_Z0, LC_ARM_W, LC_ARM_WW = k.LEFT_WK_CANT_ARM_Z0, k.LEFT_WK_CANT_ARM_W, k.LEFT_WK_CANT_ARM_W_WIDE
+LC_STD, LC_WIDE, LC_YDS = k.LEFT_WK_CANT_STD_REACH, k.LEFT_WK_CANT_WIDE_REACH, k.LEFT_WK_CANT_LEG_YDS
 
 GRATE_Z = WK_H - GRATE_T          # 65 — grate underside / arm top
 
@@ -92,7 +94,7 @@ WALKWAY_POINT_LABELS = [
     ( 320, 1181,   73, "LEFT WALKWAY\n(removable)",    -800, -300,  800),
     (2298,   30,  150, "NEAR/FAR CANTILEVERS",         -300, -1000, 450),
     (4479,  400, 2100, "RIGHT HANGERS\n(ceiling-hung)", 800, -200,  350),
-    ( 170, 1181,   72, "LEFT SUPPORT\n(edge beam+legs)", -850, -200, 600),
+    ( 140, 1181,  100, "LEFT SUPPORT\n(floor-leg cantilevers)", -850, -200, 600),
 ]
 
 
@@ -143,10 +145,9 @@ def walkway_decks():
     'gates'. Geometry mirrors the overview's walkways() (minus the brackets,
     which are their own tag here)."""
     t = GRATE_T
-    # Start the near/far grates at the INNER face of the left-walkway edge beam
-    # (X = WK_LEFT_X+WK_W + L_BEARER) so they're cut around the full-width kerb beam
-    # rather than running over it.
-    near_x_l = WK_LEFT_X + WK_W + L_BEARER
+    # Near/far grates start at the left-walkway inner edge (X = WK_LEFT_X+WK_W). With the
+    # floor-leg cantilever redesign there is no full-width kerb beam to cut around.
+    near_x_l = WK_LEFT_X + WK_W
     near_x_r = WK_RIGHT_X
     parts = []
 
@@ -271,7 +272,7 @@ def cantilevers():
 
 
 # Near-wall X positions for the isolated type-catalog ("Cantilevers" scene),
-# ordered left→right: edge-beam seat, standard, widened.
+# ordered left→right: floor-leg cantilever (left walkway), standard, widened.
 CT_SEAT_X, CT_STD_X, CT_WIDE_X = 2400, 3400, 4400
 
 
@@ -325,36 +326,36 @@ def _wall_seat_parts(nm, lxr, wall_yd, sign, beam_w, bz0, bz1):
     return parts
 
 
-def _seat_type_parts():
-    """The LEFT removable walkway's BEARER SUPPORT for the type-catalog — the
-    IBC-style wall seat (`_wall_seat_parts`) carrying a stub of the 40x40x3 SHS edge
-    beam. Simply supported, NOT a cantilever; matches walkway Sheet 6 / Detail D."""
-    lxr = CT_SEAT_X
-    beam_w = L_BEARER
-    bz0, bz1 = k.LEFT_WK_BEAM_Z0, k.LEFT_WK_BEAM_Z1
-    pt = k.LEFT_WK_SEAT_PLATE[2]            # 6mm plate; the beam end butts its front face
-    parts = [
-        # edge-beam stub in the pocket; its end butts the interior plate's front
-        # face (Yd=pt) so the beam→plate joint draws an edge
-        ruby_box("Type Seat edge beam (40x40x3 SHS)", lxr, pt, bz0,
-                 beam_w, 450, bz1 - bz0, color=C_STEEL),
+def _floor_cant_type_parts():
+    """The LEFT removable walkway's FLOOR-LEG CANTILEVER bracket for the type-catalog —
+    one standard bracket (foot plate + 50x50 post to the grate bottom + arm at Z75-115
+    reaching to the grate inner edge) isolated at the catalog X station, near wall."""
+    x0 = CT_SEAT_X
+    foot_l, foot_w, foot_t = LC_FOOT
+    az0, az1 = LC_ARM_Z0, GRATE_Z
+    reach = 300                                    # representative standard arm reach (mm)
+    return [
+        ruby_box("Type FloorCant foot plate", x0 - foot_l / 2, 0, 0,
+                 foot_l, foot_w, foot_t, color=C_STEEL),
+        ruby_box("Type FloorCant post (50x50x3 SHS)", x0 - LC_POST / 2, 0, 0,
+                 LC_POST, LC_PW, az1, color=C_STEEL),
+        ruby_box("Type FloorCant arm (to grate inner edge)", x0 + LC_POST / 2, 0, az0,
+                 reach, LC_ARM_W, az1 - az0, color=C_STEEL),
     ]
-    parts += _wall_seat_parts("Type Seat", lxr, 0, +1, beam_w, bz0, bz1)
-    return parts
 
 
 def cantilever_types():
-    """ONE of each unique wall-support bracket, isolated side-by-side for the
+    """ONE of each unique walkway-support bracket, isolated side-by-side for the
     "Cantilevers" scene:
-      • STANDARD cantilever — 8mm/150/300, 3× M12 (typical near/far deck bracket);
-      • WIDENED  cantilever — 10mm/200/500, 4× M12 (the four EP/battery-zone brackets);
-      • EDGE-BEAM SEAT — the LEFT removable walkway's bearer support: a bolt-through
-        wall seat carrying the 40x40x3 SHS edge beam (simply supported, not a
-        cantilever — the IBC end is ceiling-hung and has no bearer bracket)."""
+      • STANDARD wall cantilever — 8mm/150/300, 3× M12 (typical near/far deck bracket);
+      • WIDENED  wall cantilever — 10mm/200/500, 4× M12 (the four EP/battery-zone brackets);
+      • FLOOR-LEG CANTILEVER — the LEFT removable walkway's support: a 50x50 post on bare
+        floor + an arm to the grate inner edge (extended to X=770 on the drum-exit
+        punch-out). The IBC end is ceiling-hung and has no bearer bracket."""
     parts = []
     parts += _cantilever_parts("Type Standard", CT_STD_X, 0, +1, WK_W, False)
     parts += _cantilever_parts("Type Widened", CT_WIDE_X, 0, +1, WK_NEAR_WIDE_W, True)
-    parts += _seat_type_parts()
+    parts += _floor_cant_type_parts()
     return '\n'.join(parts)
 
 
@@ -362,8 +363,8 @@ def cantilever_type_labels():
     """Ruby: a callout naming each unique bracket type, on the 'Cantilever Types'
     tag so they show only in the 'Cantilevers' scene."""
     labels = [  # left→right: edge-beam seat, standard, widened
-        (CT_SEAT_X, 0, k.LEFT_WK_BEAM_Z1,
-         "EDGE-BEAM SEAT (left removable walkway)\n40x40x3 SHS edge beam on bolt-through wall seat\nsimply supported, not a cantilever",
+        (CT_SEAT_X, 0, GRATE_Z,
+         "FLOOR-LEG CANTILEVER (left removable walkway)\n50x50 post on bare floor + arm to grate inner edge\n(extended to X=770 on the drum-exit punch-out)",
          -200, -300, 800),
         (CT_STD_X, 0, BRK_H,
          "STANDARD CANTILEVER\n8mm plate / 150 leg / 300 arm\n3x M12 (triangular)",
@@ -408,60 +409,43 @@ def right_hangers():
     return '\n'.join(parts)
 
 
-# ── Left walkway: removable lift-out support (bearer beam + legs + strip) ────
+# ── Left walkway: removable lift-out support (floor-leg cantilever brackets) ────
 
-def left_edge_beam_and_seats():
-    """The left walkway's INNER-edge BEARER support: the full-width 40x40x3 SHS edge
-    beam (ends butted to the seat plates) + the two IBC-style wall seats (drop-in
-    pocket + 4-corner bolts, `_wall_seat_parts`). Returns a list of ruby parts.
-    SHARED by `left_support()` and the overview model so the two never diverge."""
-    lxr = WK_LEFT_X + WK_W                     # 470 — inner deck edge
-    bz0, bz1 = k.LEFT_WK_BEAM_Z0, k.LEFT_WK_BEAM_Z1
-    beam_w = L_BEARER                          # 40 — section
-    pt = k.LEFT_WK_SEAT_PLATE[2]               # 6 — beam ends butt the seat plate faces
-    parts = [ruby_box("Left edge beam (40x40x3 steel SHS, full width)",
-                      lxr, pt, bz0, beam_w, C_WID - 2 * pt, bz1 - bz0, color=C_STEEL)]
-    for label, wall_yd, sign in [("near", 0, +1), ("far", C_WID, -1)]:
-        parts += _wall_seat_parts(f"Left wall-seat {label}", lxr, wall_yd, sign,
-                                  beam_w, bz0, bz1)
+def left_floor_cantilevers():
+    """The left walkway's removable lift-out support: a row of FLOOR-LEG CANTILEVER
+    brackets bolted to bare floor OUTSIDE the tray (X<170). Each = foot plate + 50x50
+    post (to the grate bottom) + an arm (Z75-115, 40mm deep, ABOVE the floor-level
+    spray bar) reaching IN to carry the grate inner edge (X=470). Brackets on the
+    drum-exit punch-out (Yd 800-1560) get EXTENDED arms (to X=770) so the widened
+    section is supported, not cantilevered. Zero tray contact. Returns a list of ruby
+    parts — SHARED by left_support() and the overview so the two never diverge."""
+    foot_l, foot_w, foot_t = LC_FOOT           # 128 x 60 x 8
+    az0, az1 = LC_ARM_Z0, GRATE_Z              # 75 .. 115 (grate bottom)
+    arm_x0 = LC_LEGX + LC_POST / 2             # 165 — arm starts at the post inner face
+    parts = []
+    for i, y in enumerate(LC_YDS, 1):
+        wide = WK_LEFT_WIDE_YL <= y <= WK_LEFT_WIDE_YR
+        reach = LC_WIDE if wide else LC_STD     # 770 (punch-out) / 470 (standard)
+        aw = LC_ARM_WW if wide else LC_ARM_W    # 60 / 40
+        parts.append(ruby_box(f"Left cantilever {i} foot plate", LC_FX0, y - foot_w / 2, 0,
+                              foot_l, foot_w, foot_t, color=C_STEEL))
+        parts.append(ruby_box(f"Left cantilever {i} post (50x50x3 SHS)",
+                              LC_LEGX - LC_POST / 2, y - LC_PW / 2, 0,
+                              LC_POST, LC_PW, az1, color=C_STEEL))
+        parts.append(ruby_box(f"Left cantilever {i} arm (to X{int(reach)})", arm_x0,
+                              y - aw / 2, az0, reach - arm_x0, aw, az1 - az0, color=C_STEEL))
     return parts
 
 
 def left_support():
-    """The LEFT walkway is a removable lift-out. Its INNER edge is carried by a
-    full-width STEEL 40×40×3 SHS EDGE BEAM at X≈470 that stands in the bath→
-    film-frame envelope (Z≈52..92, ~12mm proud of the deck as a toe-board/kerb) so
-    it clears the chemistry bath (top Z≈42), the film-frame bottom (Z=100), AND the
-    near/far tray rims (Z50) it crosses at Yd≈80/2280 — the 40mm section sits 2mm
-    above the rim (a 50mm beam at Z45 fouled it).
-    It is SIMPLY SUPPORTED wall-to-wall on IBC-style seat brackets BOLTED THROUGH
-    the corrugated wall at each end (not cantilevered) — demountable for transport
-    (the through-bolt + exterior plate can stay; the interior seat lifts off). The
-    OUTER edge rests on a 15mm Al bearing strip on the tray rim + three floor legs
-    at X=140 on bare floor outside the tray."""
-    lxr = WK_LEFT_X + WK_W                     # 470 — inner deck edge
-    lx = WK_LEFT_X                             # 170 — tray rim (bearing strip)
-    leg_x = lx - 30                            # 140 — floor legs (outside tray)
-    nyi, fy = WK_W, WK_FAR_YD
-    span_legs = fy - nyi
-    leg_yds = [round(nyi + span_legs / (L_LEG_N + 1) * (i + 1)) for i in range(L_LEG_N)]
-    # Bearer beam (full-width edge beam) + the two IBC-style wall seats — shared
-    # with the overview via left_edge_beam_and_seats().
-    parts = list(left_edge_beam_and_seats())
-
-    # Outer edge: bearing strip on the tray rim + 3 floor legs on bare floor.
-    parts.append(ruby_box("Left bearing strip (Al)",
-                          lx, nyi, GRATE_Z - L_STRIP, L_LEG, span_legs, L_STRIP, color=C_ALUM))
-    for i, yd in enumerate(leg_yds, 1):
-        parts.append(ruby_box(f"Left leg {i} (25x25x3 SHS)",
-                              leg_x - L_LEG / 2, yd - L_LEG / 2, 0, L_LEG, L_LEG, GRATE_Z, color=C_ALUM))
-        parts.append(ruby_box(f"Left leg {i} foot plate",
-                              leg_x - L_LEG_BASE / 2, yd - L_LEG_BASE / 2, 0,
-                              L_LEG_BASE, L_LEG_BASE, 3, color=C_ALUM))
-        parts.append(ruby_box(f"Left leg {i} arm",
-                              leg_x, yd - L_LEG / 2, GRATE_Z - 10,
-                              (lx + 20) - leg_x, L_LEG, 10, color=C_ALUM))
-    return '\n'.join(parts)
+    """The LEFT walkway is a removable lift-out, carried by a row of FLOOR-LEG
+    CANTILEVER brackets (see left_floor_cantilevers) — bolted to bare floor outside the
+    tray, arms reaching in over the floor-level spray bar to the grate inner edge (and
+    extended to X=770 on the drum-exit punch-out). Replaces the former edge-beam-on-
+    wall-seats: the +50 walkway raise lifted the grate clear of the spray bar, so a
+    floor-rooted arm can pass over the open tray. Zero tray contact; brackets + grate
+    lift out for transport."""
+    return '\n'.join(left_floor_cantilevers())
 
 
 # ── Assemble the Ruby script ─────────────────────────────────────────────────

@@ -75,7 +75,7 @@ L_LEG_N, L_STRIP = k.LEFT_WK_LEG_N, k.LEFT_WK_BEARING_STRIP
 GRATE_Z = WK_H - GRATE_T          # 65 — grate underside / arm top
 
 TAGS = ["Container", "Processing Tray", "Walkways", "Walkway Right", "Cantilevers",
-        "Right Hangers", "Left Support", "Labels"]
+        "Cantilever Types", "Right Hangers", "Left Support", "Labels"]
 
 
 # ── "Labeled" scene callouts (project rule: every .skp gets a Labeled scene) ──
@@ -181,19 +181,67 @@ def walkway_right_deck():
 
 # ── Wall cantilever brackets, with the EXTERIOR brace + bolt-throughs ────────
 
-def cantilevers():
-    """Near + far wall-cantilevered gusset brackets, each shown with its full
-    through-wall detail: interior mounting plate + arm + gusset, an EXTERIOR
-    reinforcing plate, and the through-bolts (hex heads outside) — all visible
-    through the ghosted side walls. STANDARD brackets are 8mm plate / 150mm leg /
-    300mm arm with 3× M12 in a triangular pattern; the four WIDENED brackets in
-    the near EP/battery zone (X 1155–2629) are 10mm plate / 200mm leg / 500mm arm
-    with 4× M12 in a rectangular pattern (matching walkway Sheet 7)."""
+def _cantilever_parts(nm, x, wall_yd, sign, reach, wide):
+    """Geometry for ONE wall-cantilever bracket: interior mounting plate + arm +
+    under-gusset, an EXTERIOR reinforcing plate, and the M12 through-bolts (hex
+    heads outside). `wide` selects the widened EP/battery-zone spec."""
     bt, vh = BRK_T, BRK_H                                   # standard 8mm / 150mm
     btw, vhw = k.WALKWAY_WIDE_BRACKET_T, k.WALKWAY_WIDE_BRACKET_H   # widened 10mm / 200mm
     plate_w = 120
     gusset_reach = 70
+    # Bolt patterns (X offset, Z): standard 3 (triangular); widened 4 (rectangular,
+    # per Sheet 7: lower pair Z=35, upper pair Z=160, both ±32mm from CL).
+    bolt_pat_std  = [(0, vh - 30), (-32, 42), (32, 42)]
+    bolt_pat_wide = [(-32, 35), (32, 35), (-32, 160), (32, 160)]
 
+    b   = btw if wide else bt                       # plate/arm/gusset thickness
+    v   = vhw if wide else vh                        # vertical leg height
+    arm_d = b + 2
+    arm_bot = GRATE_Z - arm_d
+    rch = WK_NEAR_WIDE_W if wide else reach         # arm reach (500mm widened deck)
+    rw  = 120 if wide else REINF_W                  # exterior reinf plate W
+    rh  = 220 if wide else REINF_H                  #                       H
+    bolt_pat = bolt_pat_wide if wide else bolt_pat_std
+    shank_len = WALL_T + REINF_T + b
+    reinf_z0 = max(0, (v - rh) // 2)
+
+    parts = []
+    # interior mounting plate, flat on the wall inner face
+    y_plate = wall_yd if sign > 0 else wall_yd - b
+    parts.append(ruby_box(f"{nm} plate", x - plate_w / 2, y_plate, 0,
+                          plate_w, b, v, color=C_STEEL))
+    # horizontal cantilever arm at grate level (deck rests on it)
+    y_arm = wall_yd if sign > 0 else wall_yd - rch
+    parts.append(ruby_box(f"{nm} arm", x - b / 2, y_arm, arm_bot,
+                          b, rch, arm_d, color=C_STEEL))
+    # gusset triangle bracing the arm from below
+    xg = x - b / 2
+    y_far = wall_yd + sign * gusset_reach
+    parts.append(ruby_tri(f"{nm} gusset",
+                          (xg, wall_yd, 0), (xg, wall_yd, arm_bot),
+                          (xg, y_far, arm_bot), b, color=C_STEEL))
+    # EXTERIOR reinforcing plate on the outside wall face
+    reinf_y0 = (-WALL_T - REINF_T) if sign > 0 else (C_WID + WALL_T)
+    parts.append(ruby_box(f"{nm} ext reinf plate", x - rw / 2, reinf_y0,
+                          reinf_z0, rw, REINF_T, rh, color=C_STEEL))
+    # M12 through-bolts (3× std / 4× widened) + exterior hex heads
+    for dx, bz in bolt_pat:
+        bx = x + dx
+        shank_y0 = (-WALL_T - REINF_T) if sign > 0 else (wall_yd - b)
+        parts.append(ruby_cylinder(f"{nm} bolt M12", bx, shank_y0, bz,
+                                   6, shank_len, color=C_BOLT, axis="y"))
+        hy = (-WALL_T - REINF_T - 6) if sign > 0 else (C_WID + WALL_T + REINF_T)
+        parts.append(ruby_box(f"{nm} bolt head", bx - 9, hy, bz - 9,
+                              18, 6, 18, color=C_HEX))
+    return parts
+
+
+def cantilevers():
+    """Near + far wall-cantilevered gusset brackets IN SITU, each shown with its
+    full through-wall detail through the ghosted side walls. STANDARD brackets are
+    8mm plate / 150mm leg / 300mm arm with 3× M12 (triangular); the four WIDENED
+    brackets in the near EP/battery zone (X 1155–2629) are 10mm plate / 200mm leg /
+    500mm arm with 4× M12 (rectangular, matching walkway Sheet 7)."""
     near_x_l = WK_LEFT_X + WK_W
     near_x_r = WK_RIGHT_X
     stations = []
@@ -206,54 +254,47 @@ def cantilevers():
     sides = [("Near", 0, +1, WK_W),
              ("Far", C_WID, -1, C_WID - WK_FAR_YD)]
 
-    # Bolt patterns (X offset, Z): standard 3 (triangular); widened 4 (rectangular,
-    # per Sheet 7: lower pair Z=35, upper pair Z=160, both ±32mm from CL).
-    bolt_pat_std  = [(0, vh - 30), (-32, 42), (32, 42)]
-    bolt_pat_wide = [(-32, 35), (32, 35), (-32, 160), (32, 160)]
-
     parts = []
     for label, wall_yd, sign, reach in sides:
         for i, x in enumerate(stations, 1):
             wide = (label == "Near" and WK_NEAR_WIDE_XL <= x <= WK_NEAR_WIDE_XR)
-            b   = btw if wide else bt                       # plate/arm/gusset thickness
-            v   = vhw if wide else vh                       # vertical leg height
-            arm_d = b + 2
-            arm_bot = GRATE_Z - arm_d
-            rch = WK_NEAR_WIDE_W if wide else reach         # arm reach (500mm widened deck)
-            rw  = 120 if wide else REINF_W                  # exterior reinf plate W
-            rh  = 220 if wide else REINF_H                  #                       H
-            bolt_pat = bolt_pat_wide if wide else bolt_pat_std
-            shank_len = WALL_T + REINF_T + b
-            reinf_z0 = max(0, (v - rh) // 2)
             nm = f"Cantilever {label} {i}" + (" (widened)" if wide else "")
-            # interior mounting plate, flat on the wall inner face
-            y_plate = wall_yd if sign > 0 else wall_yd - b
-            parts.append(ruby_box(f"{nm} plate", x - plate_w / 2, y_plate, 0,
-                                  plate_w, b, v, color=C_STEEL))
-            # horizontal cantilever arm at grate level (deck rests on it)
-            y_arm = wall_yd if sign > 0 else wall_yd - rch
-            parts.append(ruby_box(f"{nm} arm", x - b / 2, y_arm, arm_bot,
-                                  b, rch, arm_d, color=C_STEEL))
-            # gusset triangle bracing the arm from below
-            xg = x - b / 2
-            y_far = wall_yd + sign * gusset_reach
-            parts.append(ruby_tri(f"{nm} gusset",
-                                  (xg, wall_yd, 0), (xg, wall_yd, arm_bot),
-                                  (xg, y_far, arm_bot), b, color=C_STEEL))
-            # EXTERIOR reinforcing plate on the outside wall face
-            reinf_y0 = (-WALL_T - REINF_T) if sign > 0 else (C_WID + WALL_T)
-            parts.append(ruby_box(f"{nm} ext reinf plate", x - rw / 2, reinf_y0,
-                                  reinf_z0, rw, REINF_T, rh, color=C_STEEL))
-            # M12 through-bolts (3× std / 4× widened) + exterior hex heads
-            for dx, bz in bolt_pat:
-                bx = x + dx
-                shank_y0 = (-WALL_T - REINF_T) if sign > 0 else (wall_yd - b)
-                parts.append(ruby_cylinder(f"{nm} bolt M12", bx, shank_y0, bz,
-                                           6, shank_len, color=C_BOLT, axis="y"))
-                hy = (-WALL_T - REINF_T - 6) if sign > 0 else (C_WID + WALL_T + REINF_T)
-                parts.append(ruby_box(f"{nm} bolt head", bx - 9, hy, bz - 9,
-                                      18, 6, 18, color=C_HEX))
+            parts += _cantilever_parts(nm, x, wall_yd, sign, reach, wide)
     return '\n'.join(parts)
+
+
+# Near-wall X positions for the isolated type-catalog ("Cantilevers" scene).
+CT_STD_X, CT_WIDE_X = 2700, 3600
+
+
+def cantilever_types():
+    """ONE of each UNIQUE bracket type, isolated side-by-side for the "Cantilevers"
+    scene — the STANDARD bracket and the WIDENED EP/battery-zone bracket. Same
+    geometry as the in-situ brackets, placed on the near wall in clear positions."""
+    parts = []
+    parts += _cantilever_parts("Type Standard", CT_STD_X, 0, +1, WK_W, False)
+    parts += _cantilever_parts("Type Widened", CT_WIDE_X, 0, +1, WK_NEAR_WIDE_W, True)
+    return '\n'.join(parts)
+
+
+def cantilever_type_labels():
+    """Ruby: a callout naming each unique bracket type, on the 'Cantilever Types'
+    tag so they show only in the 'Cantilevers' scene."""
+    labels = [
+        (CT_STD_X, 0, BRK_H,
+         "STANDARD CANTILEVER\n8mm plate / 150 leg / 300 arm\n3x M12 (triangular)",
+         -150, -300, 700),
+        (CT_WIDE_X, 0, k.WALKWAY_WIDE_BRACKET_H,
+         "WIDENED CANTILEVER (EP / battery zone)\n10mm plate / 200 leg / 500 arm\n4x M12 (rectangular)",
+         150, -300, 700),
+    ]
+    rows = []
+    for x, y, z, text, dx, dy, dz in labels:
+        rows.append(
+            f'anc = Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)})\n'
+            f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'txt.layer = model.layers["Cantilever Types"] rescue nil')
+    return '\n'.join(rows)
 
 
 # ── Right walkway: ceiling-hung bearers + rod hangers + ceiling plates ───────
@@ -359,6 +400,7 @@ def generate_ruby():
         component("Walkway Decks (near/far/left)", "Walkways", walkway_decks()),
         component("Walkway Right (IBC end)", "Walkway Right", walkway_right_deck()),
         component("Wall Cantilevers", "Cantilevers", cantilevers()),
+        component("Cantilever Types", "Cantilever Types", cantilever_types()),
         component("Right Walkway Hangers", "Right Hangers", right_hangers()),
         component("Left Walkway Support", "Left Support", left_support()),
     ]
@@ -406,6 +448,9 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 # ── "Labeled" scene callouts (Labels tag — shown only in the "Labeled" scene) ──
 {walkway_labels()}
 
+# ── Type callouts for the "Cantilevers" scene (on the Cantilever Types tag) ──
+{cantilever_type_labels()}
+
 model.definitions.purge_unused
 model.materials.purge_unused
 
@@ -420,6 +465,7 @@ model.layers.to_a.each {{ |l|
 # ── Scenes — one shared iso camera; scenes only toggle visibility ──
 model.layers.each {{ |l| l.visible = true }}
 model.layers["Labels"].visible = false if model.layers["Labels"]  # frame geometry, not labels
+model.layers["Cantilever Types"].visible = false if model.layers["Cantilever Types"]  # catalog shows only in its own scene
 bb = model.bounds
 ctr = bb.center
 dir = Geom::Vector3d.new(-0.55, -0.7, 0.45); dir.normalize!
@@ -428,10 +474,11 @@ model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 model.active_view.zoom(0.72)   # pull back so callouts have margin (and read larger)
 
-# Combined — all subsystems, Labels OFF.
+# Combined — all subsystems, Labels + type-catalog OFF.
 model.pages.add("Combined")
 # Labeled — same view + callouts on the major parts.
 model.layers.each {{ |l| l.visible = true }}
+model.layers["Cantilever Types"].visible = false if model.layers["Cantilever Types"]
 model.pages.add("Labeled")
 model.layers["Labels"].visible = false if model.layers["Labels"]
 {scene_groups_ruby}.each {{ |name, tags|
@@ -439,7 +486,23 @@ model.layers["Labels"].visible = false if model.layers["Labels"]
   page = model.pages.add(name)
   page.use_camera = true
 }}
+
+# ── "Cantilevers" — one of each UNIQUE bracket type, isolated side-by-side with a
+#    close-up camera (the only scene showing the Cantilever Types catalog tag; the
+#    wall is hidden so the full bracket — plate, arm, gusset, bolts — reads) ──
+model.layers.each {{ |l| l.visible = (l.name == "Cantilever Types") }}
+ct_tgt = Geom::Point3d.new({ov.mm(3150)}, {ov.mm(-150)}, {ov.mm(450)})
+ct_dir = Geom::Vector3d.new(-0.26, -0.80, 0.42); ct_dir.normalize!
+ct_eye = ct_tgt.offset(ct_dir, {ov.mm(3000)})
+ct_cam = Sketchup::Camera.new(ct_eye, ct_tgt, Z_AXIS)
+ct_cam.perspective = true
+ct_cam.fov = 35
+model.active_view.camera = ct_cam
+ctp = model.pages.add("Cantilevers")
+ctp.use_camera = true
+
 model.layers.each {{ |l| l.visible = true }}
+model.layers["Cantilever Types"].visible = false if model.layers["Cantilever Types"]
 
 model.commit_operation
 {{ success: true, model: "Walkway + Cantilevers",

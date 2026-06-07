@@ -268,36 +268,56 @@ def cantilevers():
 CT_SEAT_X, CT_STD_X, CT_WIDE_X = 2400, 3400, 4400
 
 
-def _seat_type_parts():
-    """The LEFT removable walkway's BEARER SUPPORT — the IBC-style wall-seat bracket
-    (seat plate + exterior reinforcing plate + 3 M12 through-bolts) carrying a stub
-    of the 40x40x3 SHS edge beam. SIMPLY SUPPORTED, not a cantilever; mirrors the
-    near/far seat built in left_support()."""
-    lxr = CT_SEAT_X
-    beam_w = L_BEARER                                  # 40 — SHS section
-    bt = 8                                             # seat plate thickness
-    bz0, bz1 = k.LEFT_WK_BEAM_Z0, k.LEFT_WK_BEAM_Z1    # 52..92
+def _wall_seat_parts(nm, lxr, wall_yd, sign, beam_w, bz0, bz1):
+    """One IBC-style wall seat for the edge-beam end, per walkway Sheet 6 / Detail D:
+    a 6mm DROP-IN POCKET (bottom ledge + two side cleats the beam drops onto), a
+    100x180x6 EXTERIOR backing plate, and 3x M12 through-bolts (heads outside / nuts
+    inside). The bolt loads are taken by the BACKING PLATE — which is amply sized for
+    the triangular pattern — so the pocket is just a light cradle (this is the fix:
+    the bolts no longer have to fit a tiny interior plate). `sign`=+1 near wall
+    (pocket reaches +Yd), -1 far wall."""
+    st = 6                                              # 6mm seat steel (Sheet 6)
+    reach = 72                                          # pocket depth into container (Yd)
+    cradle_h = 30                                       # cleat height above the ledge
+    pw_x, ph_x, pt_x = k.LEFT_WK_SEAT_PLATE             # 100 x 180 x 6 exterior plate
     cxm = lxr + beam_w / 2
     zc = (bz0 + bz1) / 2
-    shank_y0 = -WALL_T - REINF_T
-    shank_len = WALL_T + REINF_T + bt
+    yled = wall_yd if sign > 0 else wall_yd - reach     # ledge Yd start
+    px0, pw = lxr - st, beam_w + 2 * st                 # pocket X span (beam + cleats)
     parts = [
-        # edge-beam stub (the "bearer") resting on the seat, running +Y along the wall
+        # bottom ledge — the beam end drops onto it (ledge top at Z=bz0)
+        ruby_box(f"{nm} pocket ledge", px0, yled, bz0 - st, pw, reach, st, color=C_STEEL),
+        # two side cleats cradling the beam in X (open top + inboard end → drop-in)
+        ruby_box(f"{nm} pocket cleat L", px0, yled, bz0 - st, st, reach, cradle_h + st, color=C_STEEL),
+        ruby_box(f"{nm} pocket cleat R", lxr + beam_w, yled, bz0 - st, st, reach, cradle_h + st, color=C_STEEL),
+        # exterior backing plate (100x180x6) carrying the bolt pattern, on the outside wall face
+        ruby_box(f"{nm} ext backing plate", cxm - pw_x / 2,
+                 (-WALL_T - pt_x) if sign > 0 else (C_WID + WALL_T),
+                 zc - ph_x / 2, pw_x, pt_x, ph_x, color=C_STEEL),
+    ]
+    shank_y0 = (-WALL_T - pt_x) if sign > 0 else (wall_yd - st)
+    shank_len = WALL_T + pt_x + st
+    for dx, dz in [(0, 22), (-28, -16), (28, -16)]:                 # triangular M12 pattern
+        bx = cxm + dx
+        parts.append(ruby_cylinder(f"{nm} bolt M12", bx, shank_y0, zc + dz, 6, shank_len, color=C_BOLT, axis="y"))
+        hy = (-WALL_T - pt_x - 6) if sign > 0 else (C_WID + WALL_T + pt_x)
+        parts.append(ruby_box(f"{nm} bolt head", bx - 9, hy, zc + dz - 9, 18, 6, 18, color=C_HEX))
+    return parts
+
+
+def _seat_type_parts():
+    """The LEFT removable walkway's BEARER SUPPORT for the type-catalog — the
+    IBC-style wall seat (`_wall_seat_parts`) carrying a stub of the 40x40x3 SHS edge
+    beam. Simply supported, NOT a cantilever; matches walkway Sheet 6 / Detail D."""
+    lxr = CT_SEAT_X
+    beam_w = L_BEARER
+    bz0, bz1 = k.LEFT_WK_BEAM_Z0, k.LEFT_WK_BEAM_Z1
+    parts = [
+        # edge-beam stub dropped into the pocket, running +Y along the wall
         ruby_box("Type Seat edge beam (40x40x3 SHS)", lxr, -50, bz0,
                  beam_w, 500, bz1 - bz0, color=C_STEEL),
-        # interior wall-seat plate
-        ruby_box("Type Seat plate", lxr - 10, 0, 30, beam_w + 20, bt, bz1 - 30,
-                 color=C_STEEL),
-        # exterior reinforcing plate
-        ruby_box("Type Seat ext plate", cxm - REINF_W / 2, -WALL_T - REINF_T,
-                 zc - REINF_H / 2, REINF_W, REINF_T, REINF_H, color=C_STEEL),
     ]
-    for dx, dz in [(0, 22), (-28, -16), (28, -16)]:
-        bx = cxm + dx
-        parts.append(ruby_cylinder("Type Seat bolt M12", bx, shank_y0, zc + dz,
-                                   6, shank_len, color=C_BOLT, axis="y"))
-        parts.append(ruby_box("Type Seat bolt head", bx - 9, -WALL_T - REINF_T - 6,
-                              zc + dz - 9, 18, 6, 18, color=C_HEX))
+    parts += _wall_seat_parts("Type Seat", lxr, 0, +1, beam_w, bz0, bz1)
     return parts
 
 
@@ -389,7 +409,6 @@ def left_support():
     bath_top = k.PROC_TRAY_RIM - 8             # 42
     bz0, bz1 = k.LEFT_WK_BEAM_Z0, k.LEFT_WK_BEAM_Z1   # 52..92 — 40mm deep; bottom clears tray rim (Z50) by 2mm, top clears film frame (Z100) by 8mm
     beam_w = L_BEARER                          # 40 — section
-    bt = 8                                     # seat plate thickness
 
     parts = []
     # Full-width STEEL edge beam (kerb), simply supported wall-to-wall.
@@ -397,26 +416,11 @@ def left_support():
     parts.append(ruby_box("Left edge beam (40x40x3 steel SHS, full width)",
                           lxr, 0, bz0, beam_w, C_WID, bz1 - bz0, color=C_STEEL))
 
-    # IBC-style wall-seat brackets (bolt-through), one at each wall end.
+    # IBC-style wall seats — drop-in pocket + 100x180x6 backing plate + 3x M12,
+    # one at each wall end (Sheet 6 / Detail D).
     for label, wall_yd, sign in [("near", 0, +1), ("far", C_WID, -1)]:
-        cxm = lxr + beam_w / 2
-        y_plate = wall_yd if sign > 0 else wall_yd - bt
-        parts.append(ruby_box(f"Left wall-seat plate {label}",
-                              lxr - 10, y_plate, 30, beam_w + 20, bt, bz1 - 30, color=C_STEEL))
-        reinf_y0 = (-WALL_T - REINF_T) if sign > 0 else (C_WID + WALL_T)
-        parts.append(ruby_box(f"Left wall-seat ext plate {label}",
-                              cxm - REINF_W / 2, reinf_y0, (bz0 + bz1) / 2 - REINF_H / 2,
-                              REINF_W, REINF_T, REINF_H, color=C_STEEL))
-        shank_y0 = (-WALL_T - REINF_T) if sign > 0 else (wall_yd - bt)
-        shank_len = WALL_T + REINF_T + bt
-        zc = (bz0 + bz1) / 2
-        for dx, dz in [(0, 22), (-28, -16), (28, -16)]:
-            bx = cxm + dx
-            parts.append(ruby_cylinder(f"Left wall-seat bolt {label}",
-                                       bx, shank_y0, zc + dz, 6, shank_len, color=C_BOLT, axis="y"))
-            hy = (-WALL_T - REINF_T - 6) if sign > 0 else (C_WID + WALL_T + REINF_T)
-            parts.append(ruby_box(f"Left wall-seat head {label}",
-                                  bx - 9, hy, zc + dz - 9, 18, 6, 18, color=C_HEX))
+        parts += _wall_seat_parts(f"Left wall-seat {label}", lxr, wall_yd, sign,
+                                  beam_w, bz0, bz1)
 
     # Outer edge: bearing strip on the tray rim + 3 floor legs on bare floor.
     parts.append(ruby_box("Left bearing strip (Al)",

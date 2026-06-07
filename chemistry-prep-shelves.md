@@ -14,7 +14,7 @@ Cyanotype processing requires a clean, stable work surface for:
 
 The shelf must not obstruct walkway navigation (the operator walks the full length of the near walkway during film loading and coating). A ceiling-suspended platform in the right corner — on the tray side of the near walkway — provides 0.18 m² of counter-height workspace while leaving the walkway completely clear.
 
-A dedicated water tap (TAP-01) on the pinhole wall at X=3729mm, Z=1150mm provides filtered water from the blue supply line for chemistry mixing and wash-down. Ball valve BV-06, mounted inline on the 3/4" branch pipe at X=3600mm (129mm to the left of the shelf edge), gives the operator easy shut-off control from the prep position.
+A dedicated water tap (TAP-01) on the pinhole wall at X=3729mm, Z=1200mm provides filtered water from the blue supply line for chemistry mixing and wash-down. Ball valve BV-06, mounted inline on the 3/4" branch pipe at X=3600mm (129mm to the left of the shelf edge), gives the operator easy shut-off control from the prep position.
 
 ---
 
@@ -44,7 +44,7 @@ The shelf left edge (X=3729mm) is 708mm outside the optical cone. The shelf cann
 | Shelf X range | X=3729–4329mm (600mm) |
 | Shelf Yd range | Yd=300–600mm (300mm) |
 | Near walkway | Yd=0–300mm — shelf starts at walkway outer edge |
-| Processing tray | Floor level (rim H=50mm) — well below shelf at H=1025mm |
+| Processing tray | Floor level (rim H=50mm) — well below shelf at H=1075mm |
 | Right walkway | X=4329–4629mm, ceiling-hung (adjacent, Yd=0–300mm) |
 | Ceiling height | H=2388mm (container interior) |
 | Cable trunking | H=1800mm (40×25mm PVC, horizontal full length) |
@@ -69,7 +69,7 @@ Single ceiling-suspended platform:
 | Position | X=3729–4329mm, Yd=300–600mm |
 | Width (X direction) | 600mm |
 | Depth (Yd direction) | 300mm |
-| Work surface height | H=1025mm above floor (925mm above walkway deck) |
+| Work surface height | H=1075mm above floor (945mm above the raised walkway deck) |
 | Shelf thickness | 22mm (18mm ply + 4mm perimeter frame) |
 | Work surface area | 600 × 300 = 180000mm² (0.18 m²) |
 | Hanger rod length | 1363mm (ceiling to shelf top) |
@@ -92,7 +92,7 @@ The hanger system replicates the right walkway ceiling attachment:
 
 ### Sheet 2 — Section Elevation
 
-Cross-section at X=4029mm (shelf midpoint) looking along the X-axis. Shows the ceiling-hung hanger rods (1363mm), shelf platform at H=1025mm, operator silhouette on the near walkway, and the processing tray at floor level below.
+Cross-section at X=4029mm (shelf midpoint) looking along the X-axis. Shows the ceiling-hung hanger rods (1313mm), shelf platform at H=1075mm, operator silhouette on the near walkway, and the processing tray at floor level below.
 
 ![Chemistry Prep Shelf — Sheet 2: Section Elevation](assets/shelf-sheet2.png)
 
@@ -127,7 +127,7 @@ The shelf is permanently installed — it does not fold or detach for transport.
 | Check | Status |
 |-------|--------|
 | Walkway clearance | Shelf is on the tray side (Yd=300–900) — near walkway (Yd=0–300) completely unobstructed ✓ |
-| Overhead clearance | Shelf top at H=1025mm — 775mm below cable trunking (H=1800mm) ✓ |
+| Overhead clearance | Shelf top at H=1075mm — 725mm below cable trunking (H=1800mm) ✓ |
 | Items on shelf | Spill guard lip + transport lashing point (welded D-ring on frame) retains items ✓ |
 | Hanger rod vibration | M10 rod at 1363mm span: fundamental frequency ~45 Hz — well above road excitation (1–15 Hz). No resonance concern ✓ |
 | ISO 668 transport loads | 25 kg shelf load × 2g lateral acceleration = 500 N. Distributed across 4× M10 rods = 125 N shear per rod (rod shear capacity ~15 kN) ✓ |
@@ -136,7 +136,7 @@ The shelf is permanently installed — it does not fold or detach for transport.
 
 ## 5. Operator Access
 
-The operator stands on the near walkway (deck at H=80mm) at approximately X=4029mm (shelf midpoint in X), turned 90° to face the processing tray side. The shelf work surface is at H=1025mm (945mm above the walkway deck) — ergonomic counter height for standing prep work.
+The operator stands on the near walkway (deck at H=130mm) at approximately X=4029mm (shelf midpoint in X), turned 90° to face the processing tray side. The shelf work surface is at H=1075mm (945mm above the walkway deck) — ergonomic counter height for standing prep work.
 
 The shelf near edge (Yd=300mm) aligns with the near walkway outer edge, so the operator can reach the full 300mm shelf depth from the walkway without leaning. Items used most frequently (scale, graduated cylinders) are staged at the near edge; bulk storage (bottles, wash trays) at the far edge.
 

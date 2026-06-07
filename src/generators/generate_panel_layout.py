@@ -1124,7 +1124,7 @@ axb.text(5010, C_HGT + 25, f"CEILING (Z={int(C_HGT)})", fontsize=6, color="#777"
 # ── Equipment panel (edge-on) + pumps on the front (-X) ──────────────────
 _rect(PANX, EQPANEL_Z_LO, EQPANEL_T, EQPANEL_Z_HI - EQPANEL_Z_LO, C_PLYB, lw=1.3, z0=6)
 leader(axb, PANX + EQPANEL_T / 2, 700, 5150, 560,
-       "EQUIPMENT PANEL\n18mm ply (edge-on)\nZ=200–2260", color=C_OUT, fs=6,
+       f"EQUIPMENT PANEL\n18mm ply (edge-on)\nZ={EQPANEL_Z_LO}–{EQPANEL_Z_HI}", color=C_OUT, fs=6,
        ha="center", va="top", arrow_style="-|>", font=FB)
 for zr, lbl, hot in [(Z_BOT, "P-01 /\nP-02", False),
                      (Z_MID, "P-03 /\nP-04", True),

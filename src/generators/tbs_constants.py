@@ -553,7 +553,7 @@ WALKWAY_LEFT_WIDE_YD_R = 1560   # punch-out Yd end
 # floor-level spray bar (possible only after the +50 walkway raise lifted the grate). Standard
 # brackets carry the grate inner edge (X=470); brackets on the drum-exit punch-out (Yd 800-1560)
 # get EXTENDED arms to X=770 so the widened section is supported, not cantilevered. Zero tray
-# contact; grate + brackets lift out for transport. Validated in cantilever-study.skp.
+# contact; grate + brackets lift out for transport. Validated in the cantilever-study exploration (retired 2026-06-07).
 LEFT_WK_CANT_LEG_X    = WALKWAY_LEFT_X - 30           # = 140 — leg centreline (bare floor, outside tray X=170)
 LEFT_WK_CANT_LEG_YDS  = (250, 800, 1180, 1560, 2110)  # 5 brackets; 3 land on the punch-out (800/1180/1560)
 LEFT_WK_CANT_POST     = 50    # post section (mm) — 50×50×3 steel SHS

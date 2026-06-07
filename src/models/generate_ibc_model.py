@@ -32,14 +32,23 @@ TAGS = ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel", "Labels"]
 # ── "Labeled" scene callouts (project rule: every .skp gets a Labeled scene) ──
 # (instance name, text, leader Δx,Δy,Δz mm). Δy pulls toward the viewer (−Y).
 IBC_LABELS = [
-    ("IBC Tanks",           "IBC WATER TANKS\n(4x 1000L tote)",   -1100, -400,  650),
-    ("IBC Frame",           "IBC FRAME\n(steel rack)",             -250,  650,  900),
-    ("Equipment Panel",     "EQUIPMENT PANEL\n(pump / filter)",     650, -150,  700),
-    ("Water/Waste Hookups", "WATER / WASTE HOOKUPS\n(exterior wall)", 450, -350, 450),
+    ("IBC Frame", "IBC FRAME\n(50x50 RHS rack)", -250, 750, 650),
 ]
-# Point-anchored — the plumbing spans a wide area, so anchor on a pipe run.
+# Point-anchored callouts on specific geometry (totes, drain ports, pipe runs).
 IBC_POINT_LABELS = [
-    (4800, 918, 1700, "WATER PLUMBING\n(pump feed + returns)", -600, -650, 600),
+    # The four totes (2x2: near column Brown + Blue #1, far column Waste + Blue #2).
+    (5284,  538,  579, "BROWN IBC\n(developer)",     -1500, -1250, -550),  # near, lower
+    (5284,  538, 1589, "BLUE IBC #1\n(fresh water)", -1500, -1250,  500),  # near, upper
+    (5284, 1824,  579, "WASTE IBC",                   1550,  -250, -550),  # far, lower
+    (5284, 1824, 1589, "BLUE IBC #2\n(fresh water)",  1550,  -250,  250),  # far, upper
+    # Exterior drain ports on the sealed end wall (X = C_LEN).
+    (5893, 1181,  400, "X3 (Brown drain-out)",         950, -600,  350),
+    (5893, 1181,  200, "X4 (Waste drain-out)",         700, -750, -250),
+    # Processing-tray sump pickup riser + the Blue spray-bar feed run.
+    (4550,   80,   20, "SUMP PICKUP\n(tray drain)",   -700, -850,  800),
+    (4649,   12,   40, "TO SPRAY BAR",               -1250, -650, -150),
+    # Pump / filter panel (in the corridor behind the totes).
+    (5285, 1046, 1500, "EQUIPMENT PANEL\n(pumps / filters)", 2050, -350, 1450),
 ]
 
 

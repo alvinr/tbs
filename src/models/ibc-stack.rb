@@ -2415,41 +2415,45 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
 
 
 # ── In-model labels (on the 'Labels' tag; visible only in the "Labeled" scene) ──
-inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "IBC Tanks" }
-if inst
-  bb = inst.bounds
-  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
-  txt = entities.add_text("IBC WATER TANKS
-(4x 1000L tote)", anc, Geom::Vector3d.new(-1100.mm, -400.mm, 650.mm))
-  txt.layer = model.layers["Labels"] rescue nil
-end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "IBC Frame" }
 if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
   txt = entities.add_text("IBC FRAME
-(steel rack)", anc, Geom::Vector3d.new(-250.mm, 650.mm, 900.mm))
+(50x50 RHS rack)", anc, Geom::Vector3d.new(-250.mm, 750.mm, 650.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
-inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Equipment Panel" }
-if inst
-  bb = inst.bounds
-  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
-  txt = entities.add_text("EQUIPMENT PANEL
-(pump / filter)", anc, Geom::Vector3d.new(650.mm, -150.mm, 700.mm))
-  txt.layer = model.layers["Labels"] rescue nil
-end
-inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Water/Waste Hookups" }
-if inst
-  bb = inst.bounds
-  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
-  txt = entities.add_text("WATER / WASTE HOOKUPS
-(exterior wall)", anc, Geom::Vector3d.new(450.mm, -350.mm, 450.mm))
-  txt.layer = model.layers["Labels"] rescue nil
-end
-anc = Geom::Point3d.new(4800.mm, 918.mm, 1700.mm)
-txt = entities.add_text("WATER PLUMBING
-(pump feed + returns)", anc, Geom::Vector3d.new(-600.mm, -650.mm, 600.mm))
+anc = Geom::Point3d.new(5284.mm, 538.mm, 579.mm)
+txt = entities.add_text("BROWN IBC
+(developer)", anc, Geom::Vector3d.new(-1500.mm, -1250.mm, -550.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(5284.mm, 538.mm, 1589.mm)
+txt = entities.add_text("BLUE IBC #1
+(fresh water)", anc, Geom::Vector3d.new(-1500.mm, -1250.mm, 500.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(5284.mm, 1824.mm, 579.mm)
+txt = entities.add_text("WASTE IBC", anc, Geom::Vector3d.new(1550.mm, -250.mm, -550.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(5284.mm, 1824.mm, 1589.mm)
+txt = entities.add_text("BLUE IBC #2
+(fresh water)", anc, Geom::Vector3d.new(1550.mm, -250.mm, 250.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(5893.mm, 1181.mm, 400.mm)
+txt = entities.add_text("X3 (Brown drain-out)", anc, Geom::Vector3d.new(950.mm, -600.mm, 350.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(5893.mm, 1181.mm, 200.mm)
+txt = entities.add_text("X4 (Waste drain-out)", anc, Geom::Vector3d.new(700.mm, -750.mm, -250.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(4550.mm, 80.mm, 20.mm)
+txt = entities.add_text("SUMP PICKUP
+(tray drain)", anc, Geom::Vector3d.new(-700.mm, -850.mm, 800.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(4649.mm, 12.mm, 40.mm)
+txt = entities.add_text("TO SPRAY BAR", anc, Geom::Vector3d.new(-1250.mm, -650.mm, -150.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(5285.mm, 1046.mm, 1500.mm)
+txt = entities.add_text("EQUIPMENT PANEL
+(pumps / filters)", anc, Geom::Vector3d.new(2050.mm, -350.mm, 1450.mm))
 txt.layer = model.layers["Labels"] rescue nil
 
 model.definitions.purge_unused

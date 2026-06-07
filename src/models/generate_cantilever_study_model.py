@@ -80,7 +80,7 @@ C_SWEEP = "#3070C0"        # panel swept-path envelope (faded blue)
 # ── WALKWAY RAISE under evaluation — lift the whole walkway + brackets + panel + drum ──
 RAISE = 50                          # mm — walkway lift being studied
 GZ = GRATE_Z + RAISE                # 115 — raised grate bottom (= bracket-arm top)
-ARM_ZB2 = SB_ZT + 5                 # 65 — arm bottom: 5mm above the (un-raised) spray bar top
+ARM_ZB2 = SB_ZT + 15                # 75 — arm bottom: 15mm above the spray bar top (comfortable clearance)
 PANEL_Z0R = PANEL_GAP + RAISE       # 130 — panel floor gap, lifted with the walkway
 PANEL_Z1R = PANEL_ZTOP + RAISE      # 2350 — panel top (lifted → panel height preserved)
 FILM_B2 = BRACE_ZB + RAISE          # 150 — film bottom, lifted to keep its 20mm walkway margin
@@ -159,8 +159,8 @@ def grate():
 def _bracket(i, y):
     """One floor-rooted cantilever bracket at Yd=y: foot plate (bare floor) + post
     (X≈140, Z0→raised grate bottom) + arm reaching to the grate inner edge (X=470).
-    With the raise the arm bottom rises to Z65 — clear ABOVE the spray bar (Z60) —
-    and the arm is now ~50mm deep instead of 13mm."""
+    With the raise the arm bottom sits at Z75 — 15mm clear ABOVE the spray bar (Z60)
+    that passes under it — and the arm is 40mm deep instead of 13mm."""
     return '\n'.join([
         ov.ruby_box(f"Cantilever {i} foot plate", FOOT_X0, y - BW / 2, 0,
                     FOOT_X1 - FOOT_X0, BW, FOOT_T, color=ov.C_STEEL),
@@ -233,7 +233,7 @@ def drum():
 POINT_LABELS = [
     (LEG_X, 197, GZ, "FLOOR-LEG CANTILEVER\nbolted to bare floor (X<170,\noutside tray) — replaces edge beam",
      -700, -700, 500),
-    (INNER_X, 984, ARM_ZB2, "ARM now ~50mm deep (was 13)\nbottom Z65 clears spray bar (Z60)",
+    (INNER_X, 984, ARM_ZB2, "ARM 40mm deep (was 13)\nbottom Z75 clears spray bar (Z60) by 15mm",
      520, -650, 320),
     (PUNCH_X, 1180, GZ, "PUNCH-OUT cantilevers 300mm;\ngrate underside Z%d now clears\nspray bar (Z60) by %dmm" % (GZ, GZ - SB_ZT),
      650, -300, 450),

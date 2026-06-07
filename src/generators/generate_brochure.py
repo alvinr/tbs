@@ -47,6 +47,10 @@ ASSETS_DIR   = os.path.join(PROJECT_ROOT, "assets")
 # index.md in mkdocs nav is sourced from project-summary.md
 NAV_SOURCE_OVERRIDE = {"index.md": "project-summary.md"}
 
+# Pages that appear in the site nav but are intentionally omitted from the
+# brochure PDF (developer reference, not part of the printed engineering set).
+BROCHURE_EXCLUDE = {"component-dependency-map.md"}
+
 # Unicode font path (macOS system font with broad Unicode coverage)
 # fpdf2 needs a TTF font for characters outside Latin-1
 _UNICODE_FONT_PATHS = [
@@ -272,6 +276,8 @@ def parse_nav(mkdocs_yml_path):
             if isinstance(item, dict):
                 for key, val in item.items():
                     if isinstance(val, str):
+                        if val in BROCHURE_EXCLUDE:
+                            continue
                         src_md   = NAV_SOURCE_OVERRIDE.get(val, val)
                         src_path = os.path.join(PROJECT_ROOT, src_md)
                         if src_md not in seen:
@@ -315,12 +321,29 @@ def resolve_image(name):
     return None
 
 
+def strip_embeds(html):
+    """Remove interactive 3D-model (Sketchfab) embeds — they can't render in a
+    static PDF, and their iframe `src=".../embed"` otherwise trips the image
+    resolver ('[warn] image not found: embed'). Drops the whole embed wrapper,
+    any stray iframes, and the 'Interactive 3D model — …' lead-in line."""
+    html = re.sub(r'<div class="sketchfab-embed-wrapper">.*?Sketchfab</a></p>\s*</div>',
+                  "", html, flags=re.DOTALL | re.IGNORECASE)
+    html = re.sub(r'<iframe\b.*?</iframe>', "", html,
+                  flags=re.DOTALL | re.IGNORECASE)
+    html = re.sub(r'<p>\s*<strong>Interactive 3D model</strong>.*?</p>', "",
+                  html, flags=re.DOTALL | re.IGNORECASE)
+    return html
+
+
 def rewrite_image_srcs(html):
     """
     Rewrite src="assets/<name>" to absolute file paths.
     Removes width/height attrs (fpdf2 scales images itself).
-    Strips MathJax/script blocks, LaTeX delimiters, admonition divs.
+    Strips MathJax/script blocks, LaTeX delimiters, admonition divs, and
+    interactive 3D-model embeds.
     """
+    html = strip_embeds(html)
+
     def _replace(m):
         src  = m.group(1)
         name = re.sub(r"[?#].*$", "", src)   # strip query/fragment

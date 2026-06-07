@@ -66,8 +66,7 @@ RAIL_XL = ov.RAIL_X_L                                  # 150
 BRACE_ZB, BRACE_ZT = ov.BRACE_Z_BOT, ov.BRACE_Z_TOP   # 100, 2288
 
 # ── Study extents + cantilever-bracket dimensions (STUDY values; cascade later if approved) ──
-PARTIAL_X = ov.PROC_TRAY_X_R   # 4629 — full tray length so the spray bar reads at its true span
-OPEN_XR = k.PROC_OPEN_X_R      # 4329 — spray-bar far end: 300mm short of the far tray rim (X4629)
+PARTIAL_X = ov.PROC_TRAY_X_R   # 4629 — full tray length (= far rim); spray bar spans lip-to-lip
 LEG_X = WK_LX - 30         # 140 — floor leg centreline (bare floor, outside tray X=170)
 N_BRACKETS = 6             # brackets spread along Yd 0..2362
 POST = 50                  # 50×50 SHS leg/post section (mm)
@@ -184,17 +183,17 @@ def cantilevers():
 
 
 def spray_bar():
-    """Spray-bar beam at a representative Yd (drum centre, in the punch-out), spanning
-    its TRUE extent — X470→4329 (PROC_OPEN_X_L..R), i.e. 300mm short of each tray rim
-    (X170 / X4629). Z20–60, with a wheel riding each end rail. Shows it sweeps under the
-    punch-out and the full open tray."""
+    """Spray-bar beam at a representative Yd (drum centre, in the punch-out). The carriage
+    wheels ride the tray RIM rails, so the beam spans LIP-to-LIP — X170→4629 (tray rim to
+    tray rim) — passing UNDER the left walkway to wash the full film width. Z20–60, with a
+    wheel riding each rim rail."""
     y = (WIDE_YL + WIDE_YR) // 2   # 1180 ~ drum centre
     return '\n'.join([
-        ov.ruby_box("Spray Bar beam (40x40, Z20-60)", OPEN_XL, y - SB_BEAM / 2, SB_ZB,
-                    OPEN_XR - OPEN_XL, SB_BEAM, SB_BEAM, color=ov.C_ALUM),
-        ov.ruby_cylinder("Spray Bar wheel (left end)", OPEN_XL, y - SB_BEAM / 2 - 10,
+        ov.ruby_box("Spray Bar beam (40x40, Z20-60)", TRAY_XL, y - SB_BEAM / 2, SB_ZB,
+                    PARTIAL_X - TRAY_XL, SB_BEAM, SB_BEAM, color=ov.C_ALUM),
+        ov.ruby_cylinder("Spray Bar wheel (left, on rim)", TRAY_XL + 4, y - SB_BEAM / 2 - 10,
                          SB_AXLE, SB_WHEEL / 2, 20, axis="y", color=ov.C_STEEL),
-        ov.ruby_cylinder("Spray Bar wheel (right end)", OPEN_XR, y - SB_BEAM / 2 - 10,
+        ov.ruby_cylinder("Spray Bar wheel (right, on rim)", PARTIAL_X - 24, y - SB_BEAM / 2 - 10,
                          SB_AXLE, SB_WHEEL / 2, 20, axis="y", color=ov.C_STEEL),
     ])
 

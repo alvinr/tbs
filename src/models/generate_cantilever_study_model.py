@@ -77,19 +77,36 @@ ARM_ZB = k.LEFT_WK_BEAM_Z0              # 52 — arm bottom (clears tray rim Z50
 C_CANT = "#C8781E"         # cantilever brackets — distinct accent
 C_SWEEP = "#3070C0"        # panel swept-path envelope (faded blue)
 
+# ── WALKWAY RAISE under evaluation — lift the whole walkway + brackets + panel + drum ──
+RAISE = 50                          # mm — walkway lift being studied
+GZ = GRATE_Z + RAISE                # 115 — raised grate bottom (= bracket-arm top)
+ARM_ZB2 = SB_ZT + 5                 # 65 — arm bottom: 5mm above the (un-raised) spray bar top
+PANEL_Z0R = PANEL_GAP + RAISE       # 130 — panel floor gap, lifted with the walkway
+PANEL_Z1R = PANEL_ZTOP + RAISE      # 2350 — panel top (lifted → panel height preserved)
+FILM_B2 = BRACE_ZB + RAISE          # 150 — film bottom, lifted to keep its 20mm walkway margin
+# Light-trap drum — LIFTED by RAISE so its interior height is preserved (not reduced).
+DRUM_CX, DRUM_CY, DRUM_R = ov.DRUM_CX, ov.DRUM_CY, ov.DRUM_R  # -400, 1181, 450
+BAY_X0 = ov.BAY_FRONT_X             # -890 — bay outer face (so the drum reads under the ceiling)
+DRUM_Z0 = PANEL_GAP + RAISE         # 130 — drum bottom (lifted)
+DRUM_Z1 = ov.DRUM_H_LT + RAISE      # 2250 — drum top (lifted; door-aperture top = C_HGT 2388)
+
 TAGS = ["Context", "Processing Tray", "Film Plane Rails", "Spray Bar",
-        "Cantilevers", "Grate (lift-out)", "Hinge Panel (transport)", "Labels"]
+        "Cantilevers", "Grate (lift-out)", "Hinge Panel (transport)",
+        "Light-trap Drum", "Labels"]
 
 
 # ── Geometry builders ────────────────────────────────────────────────────────
 
 def context():
-    """Low-alpha container stub at the cargo-door end (X 0..PARTIAL_X)."""
+    """Low-alpha container stub at the cargo-door end. Floor + ceiling extend out
+    over the bay (X BAY_X0..PARTIAL_X) so the lifted drum reads under the door-
+    aperture-height ceiling (showing the spare to Z=C_HGT)."""
     t = ov.WALL_T
+    xl = PARTIAL_X - BAY_X0
     return '\n'.join([
-        ov.ruby_box("Floor (context)", 0, 0, -t, PARTIAL_X, C_WID, t,
+        ov.ruby_box("Floor (context)", BAY_X0, 0, -t, xl, C_WID, t,
                     color=ov.C_SHELL, alpha=0.25),
-        ov.ruby_box("Ceiling (context)", 0, 0, ov.C_HGT, PARTIAL_X, C_WID, t,
+        ov.ruby_box("Ceiling / aperture top (context)", BAY_X0, 0, ov.C_HGT, xl, C_WID, t,
                     color=ov.C_SHELL, alpha=0.08),
         ov.ruby_box("Side Wall near (context)", 0, -t, 0, PARTIAL_X, t, ov.C_HGT,
                     color=ov.C_SHELL, alpha=0.14),
@@ -116,13 +133,14 @@ def tray_partial():
 
 
 def film_rails():
-    """The film-plane LEFT rail + a ghost of the travelling left edge — to show the
-    film plane is all Z>=100 and clears the cantilevers (top Z65) by 35mm."""
+    """The film-plane LEFT rail + a ghost of the travelling left edge. With the raise
+    the film bottom lifts to FILM_B2 (keeping its 20mm walkway margin) — the cost in
+    image height the lift buys."""
     return '\n'.join([
-        ov.ruby_box("Film rail left (bottom, Yd-run)", RAIL_XL, TRAY_YN, BRACE_ZB,
+        ov.ruby_box("Film rail left (bottom, Yd-run)", RAIL_XL, TRAY_YN, FILM_B2,
                     40, TRAY_YF - TRAY_YN, 40, color=ov.C_RAIL),
-        ov.ruby_box("Film plane left edge (ghost)", RAIL_XL, 600, BRACE_ZB,
-                    12, 1162, BRACE_ZT - BRACE_ZB, color=ov.C_RAIL, alpha=0.18),
+        ov.ruby_box("Film plane left edge (ghost)", RAIL_XL, 600, FILM_B2,
+                    12, 1162, BRACE_ZT - FILM_B2, color=ov.C_RAIL, alpha=0.18),
     ])
 
 
@@ -130,23 +148,25 @@ def grate():
     """Left removable walkway grate (X170–470, full Yd) + drum-exit punch-out
     (X470–770, Yd 800–1560) — the lift-out, removed for transport."""
     return '\n'.join([
-        ov.ruby_box("Walkway Left (removable)", WK_LX, 0, GRATE_Z,
+        ov.ruby_box("Walkway Left (removable)", WK_LX, 0, GZ,
                     WK_W, C_WID, GRATE_T, color=ov.C_REMOVABLE),
-        ov.ruby_box("Walkway Left punch-out (cantilevered)", INNER_X, WIDE_YL, GRATE_Z,
+        ov.ruby_box("Walkway Left punch-out (cantilevered)", INNER_X, WIDE_YL, GZ,
                     PUNCH_X - INNER_X, WIDE_YR - WIDE_YL, GRATE_T, color=ov.C_REMOVABLE),
     ])
 
 
 def _bracket(i, y):
     """One floor-rooted cantilever bracket at Yd=y: foot plate (bare floor) + post
-    (X≈140, Z0–65) + arm (Z52–65) reaching to the grate inner edge (X=470)."""
+    (X≈140, Z0→raised grate bottom) + arm reaching to the grate inner edge (X=470).
+    With the raise the arm bottom rises to Z65 — clear ABOVE the spray bar (Z60) —
+    and the arm is now ~50mm deep instead of 13mm."""
     return '\n'.join([
         ov.ruby_box(f"Cantilever {i} foot plate", FOOT_X0, y - BW / 2, 0,
                     FOOT_X1 - FOOT_X0, BW, FOOT_T, color=ov.C_STEEL),
         ov.ruby_box(f"Cantilever {i} post (50x50 SHS)", LEG_X - POST / 2, y - BW / 2, 0,
-                    POST, BW, GRATE_Z, color=C_CANT),
-        ov.ruby_box(f"Cantilever {i} arm (to X470)", LEG_X + POST / 2, y - 40 / 2, ARM_ZB,
-                    INNER_X - (LEG_X + POST / 2), 40, GRATE_Z - ARM_ZB, color=C_CANT),
+                    POST, BW, GZ, color=C_CANT),
+        ov.ruby_box(f"Cantilever {i} arm (to X470, ~50mm deep)", LEG_X + POST / 2, y - 40 / 2,
+                    ARM_ZB2, INNER_X - (LEG_X + POST / 2), 40, GZ - ARM_ZB2, color=C_CANT),
     ])
 
 
@@ -175,10 +195,11 @@ def spray_bar():
 
 
 def panel_transport():
-    """The stepped hinge panel at its TRANSPORT position (slid +SLIDE, riding Z80).
-    Corner zones 40mm thick, centre zone 120mm (protrudes inboard). Plus a faded
-    swept-path box showing the panel's travel clears every bracket (tops Z65)."""
-    z0, h = PANEL_GAP, PANEL_ZTOP - PANEL_GAP
+    """The stepped hinge panel at its TRANSPORT position (slid +SLIDE). Lifted with
+    the walkway (rides PANEL_Z0R = floor-gap+RAISE) so it still clears the raised
+    bracket tops by the same 15mm. Corner zones 40mm, centre 120mm. Faded swept-path
+    band shows the clearance strip."""
+    z0, h = PANEL_Z0R, PANEL_Z1R - PANEL_Z0R
     return '\n'.join([
         ov.ruby_box("Panel corner near (40mm)", SLIDE, 0, z0,
                     PANEL_CT, PANEL_YL, h, color=ov.C_PLY),
@@ -186,25 +207,38 @@ def panel_transport():
                     PANEL_KT, PANEL_YR - PANEL_YL, h, color=ov.C_PLY),
         ov.ruby_box("Panel corner far (40mm)", SLIDE, PANEL_YR, z0,
                     PANEL_CT, C_WID - PANEL_YR, h, color=ov.C_PLY),
-        # Swept path: door plane (X0) to transport (X SLIDE+120), at panel bottom band
-        # Z80..Z140 — the critical strip that must clear the Z65 bracket tops.
-        ov.ruby_box("Panel swept path (Z80 clearance band)", 0, 0, z0,
+        ov.ruby_box("Panel swept path (clearance band)", 0, 0, z0,
                     SLIDE + PANEL_KT, C_WID, 60, color=C_SWEEP, alpha=0.12),
     ])
 
 
-# ── "Labeled" scene callouts (project rule) ──
+def drum():
+    """Light-trap drum LIFTED by RAISE (top Z2250) so its interior standing height is
+    PRESERVED (not reduced). Shown under the door-aperture-height ceiling (C_HGT 2388)
+    so the remaining spare (~138mm) reads. Translucent cylinder + a base disc."""
+    return '\n'.join([
+        ov.ruby_cylinder("Light-trap drum (lifted +%dmm)" % RAISE,
+                         DRUM_CX, DRUM_CY, DRUM_Z0, DRUM_R, DRUM_Z1 - DRUM_Z0,
+                         axis="z", color=ov.C_DRUM, alpha=0.30),
+        ov.ruby_cylinder("Drum base disc", DRUM_CX, DRUM_CY, DRUM_Z0, DRUM_R, 12,
+                         axis="z", color=ov.C_STEEL),
+    ])
+
+
+# ── "Labeled" scene callouts (project rule) — reflect the +RAISE state ──
 POINT_LABELS = [
-    (LEG_X, 197, GRATE_Z, "FLOOR-LEG CANTILEVER\nbolted to bare floor (X<170,\noutside tray) — replaces edge beam",
+    (LEG_X, 197, GZ, "FLOOR-LEG CANTILEVER\nbolted to bare floor (X<170,\noutside tray) — replaces edge beam",
      -700, -700, 500),
-    (INNER_X, 984, ARM_ZB, "ARM depth limited Z52-65\n(spray bar below / grate above)",
-     500, -650, 350),
-    (PUNCH_X, 1180, GRATE_Z, "PUNCH-OUT cantilevers 300mm\nover spray bar — NO support below\n(open issue: stiffness)",
+    (INNER_X, 984, ARM_ZB2, "ARM now ~50mm deep (was 13)\nbottom Z65 clears spray bar (Z60)",
+     520, -650, 320),
+    (PUNCH_X, 1180, GZ, "PUNCH-OUT cantilevers 300mm;\ngrate underside Z%d now clears\nspray bar (Z60) by %dmm" % (GZ, GZ - SB_ZT),
      650, -300, 450),
-    (OPEN_XL, 1180, SB_ZT, "SPRAY BAR Z20-60\nsweeps under the punch-out",
+    (OPEN_XL, 1180, SB_ZT, "SPRAY BAR fixed at Z20-60\n(does NOT rise) — gap opens up",
      -300, 600, -250),
-    (SLIDE + PANEL_KT, 1180, PANEL_GAP, "PANEL transport: rides Z80\nclears bracket tops Z65 by 15mm",
+    (SLIDE + PANEL_KT, 1180, PANEL_Z0R, "PANEL lifted +%dmm (rides Z%d)\nstill clears brackets by 15mm" % (RAISE, PANEL_Z0R),
      500, -500, 700),
+    (DRUM_CX, DRUM_CY, DRUM_Z1, "DRUM LIFTED +%dmm -> top Z%d\ninterior height PRESERVED;\n%dmm spare to aperture top" % (RAISE, DRUM_Z1, ov.C_HGT - DRUM_Z1),
+     -300, -250, 250),
 ]
 
 
@@ -227,6 +261,7 @@ def generate_ruby():
         ov.component("Cantilever Brackets", "Cantilevers", cantilevers()),
         ov.component("Grate (lift-out)", "Grate (lift-out)", grate()),
         ov.component("Hinge Panel (transport)", "Hinge Panel (transport)", panel_transport()),
+        ov.component("Light-trap Drum (lifted)", "Light-trap Drum", drum()),
     ]
     body = '\n'.join(comps)
 
@@ -236,15 +271,18 @@ def generate_ruby():
 
     comp_tags = [t for t in TAGS if t != "Labels"]
     scenes = [
-        # Operating: walkway in place on the cantilevers, spray bar + film rails; panel out.
+        # Operating: walkway raised on the cantilevers, spray bar + film rails; panel out.
         ("Operating", ["Processing Tray", "Film Plane Rails", "Spray Bar",
                        "Cantilevers", "Grate (lift-out)"]),
-        # Transport: grate lifted out, panel slid in — show it clears the brackets.
+        # Transport: grate lifted out, panel + drum lifted — show clearances hold.
         ("Transport clearance", ["Processing Tray", "Film Plane Rails",
-                                 "Cantilevers", "Hinge Panel (transport)"]),
-        # Punch-out vs spray bar — the open issue.
-        ("Punch-out + spray bar", ["Processing Tray", "Spray Bar",
-                                   "Cantilevers", "Grate (lift-out)"]),
+                                 "Cantilevers", "Hinge Panel (transport)", "Light-trap Drum"]),
+        # Spray-bar clearance — the gap the raise opens up under the grate.
+        ("Spray-bar clearance", ["Processing Tray", "Spray Bar",
+                                 "Cantilevers", "Grate (lift-out)"]),
+        # Drum lift — interior height preserved, spare to the aperture top.
+        ("Drum lift", ["Processing Tray", "Cantilevers", "Hinge Panel (transport)",
+                       "Light-trap Drum"]),
         ("Combined", comp_tags),
         ("Labeled", TAGS),
     ]

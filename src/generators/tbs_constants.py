@@ -566,6 +566,27 @@ LEFT_WK_SEAT_POCKET_T = 6   # pocket floor + gusset plate thickness (mm)
 WALKWAY_LEFT_WIDE_W    = 600    # deepened walkway width here (mm) vs 300 normal
 WALKWAY_LEFT_WIDE_YD_L = 800    # punch-out Yd start (near the drum opening)
 WALKWAY_LEFT_WIDE_YD_R = 1560   # punch-out Yd end
+
+# ── Left walkway support — FLOOR-LEG CANTILEVERS (rev 2026-06-07: supersedes the edge beam) ──
+# A row of brackets bolted to the bare floor OUTSIDE the tray (X<170): each = foot plate +
+# vertical post (to the grate bottom) + a cantilever arm reaching IN under the grate, ABOVE the
+# floor-level spray bar (possible only after the +50 walkway raise lifted the grate). Standard
+# brackets carry the grate inner edge (X=470); brackets on the drum-exit punch-out (Yd 800-1560)
+# get EXTENDED arms to X=770 so the widened section is supported, not cantilevered. Zero tray
+# contact; grate + brackets lift out for transport. Validated in cantilever-study.skp.
+LEFT_WK_CANT_LEG_X    = WALKWAY_LEFT_X - 30           # = 140 — leg centreline (bare floor, outside tray X=170)
+LEFT_WK_CANT_LEG_YDS  = (250, 800, 1180, 1560, 2110)  # 5 brackets; 3 land on the punch-out (800/1180/1560)
+LEFT_WK_CANT_POST     = 50    # post section (mm) — 50×50×3 steel SHS
+LEFT_WK_CANT_POST_T   = 3     # post wall thickness (mm)
+LEFT_WK_CANT_POST_W   = 60    # bracket width in Yd (mm)
+LEFT_WK_CANT_FOOT     = (128, 60, 8)  # foot plate L(X)×W(Yd)×T (mm) — spans X≈38..166 (outboard of tray rim)
+LEFT_WK_CANT_FOOT_X0  = 38    # foot plate left edge X (mm) — all < 170 (bare floor)
+LEFT_WK_CANT_FOOT_BOLT_N = 4  # M10 floor anchors per foot (sealed penetrations)
+LEFT_WK_CANT_ARM_Z0   = 75    # arm underside Z (mm) — 15mm above spray-bar top (Z60); top = grate bottom (115) => 40mm deep
+LEFT_WK_CANT_ARM_W    = 40    # standard arm width in Yd (mm)
+LEFT_WK_CANT_ARM_W_WIDE = 60  # widened (punch-out) arm width in Yd (mm)
+LEFT_WK_CANT_STD_REACH  = WALKWAY_LEFT_X + WALKWAY_W            # = 470 — standard arm tip (grate inner edge)
+LEFT_WK_CANT_WIDE_REACH = WALKWAY_LEFT_X + WALKWAY_LEFT_WIDE_W  # = 770 — widened arm tip (punch-out inner edge)
 # Right walkway (IBC end): ceiling-hung, same 300mm width as near/far
 WALKWAY_RIGHT_X = PROC_TRAY_X_R - WALKWAY_RIGHT_W  # = 4329mm (grating inner edge)
 # Near walkway widened section (rev 7: EP raised + slim batteries free walkway)

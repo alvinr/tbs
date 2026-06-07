@@ -975,7 +975,7 @@ def sheet4():
         "   both rails continuous — no demountable segment, no drum interlock.",
         f"DRUM: offset out via the hinge-panel punch-out bay (center X={DRUM_CX}mm),",
         "   so the Ø900 housing clears the X=150 left rail entirely.",
-        "WALKWAY: frame bottom at Z=100mm (RAIL_OFF); active image = inter-rail span.",
+        "WALKWAY: frame bottom RAISED to Z=150mm (RAIL_OFF_BOT) to clear the Z130 walkway; active image = inter-rail span.",
         "   Clears the lowered walkway deck (Z=65mm) by 35mm — film plane travels above the in-place walkway.",
     ]
     line_h = 0.030

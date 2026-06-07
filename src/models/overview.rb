@@ -1744,7 +1744,7 @@ end
   # FP Rail BR
   grp = ents.add_group
   grp.name = "FP Rail BR"
-  face = grp.entities.add_face([4609.mm,100.mm,100.mm], [4649.mm,100.mm,100.mm], [4649.mm,2300.mm,100.mm], [4609.mm,2300.mm,100.mm])
+  face = grp.entities.add_face([4609.mm,100.mm,150.mm], [4649.mm,100.mm,150.mm], [4649.mm,2300.mm,150.mm], [4609.mm,2300.mm,150.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -1766,7 +1766,7 @@ end
   # FP Rail BL
   grp = ents.add_group
   grp.name = "FP Rail BL"
-  face = grp.entities.add_face([150.mm,100.mm,100.mm], [190.mm,100.mm,100.mm], [190.mm,2300.mm,100.mm], [150.mm,2300.mm,100.mm])
+  face = grp.entities.add_face([150.mm,100.mm,150.mm], [190.mm,100.mm,150.mm], [190.mm,2300.mm,150.mm], [150.mm,2300.mm,150.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -1788,9 +1788,9 @@ end
   # FP Brace Vert L (pinhole)
   grp = ents.add_group
   grp.name = "FP Brace Vert L (pinhole)"
-  face = grp.entities.add_face([150.mm,100.mm,100.mm], [200.mm,100.mm,100.mm], [200.mm,150.mm,100.mm], [150.mm,150.mm,100.mm])
+  face = grp.entities.add_face([150.mm,100.mm,150.mm], [200.mm,100.mm,150.mm], [200.mm,150.mm,150.mm], [150.mm,150.mm,150.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2188.mm)
+  face.pushpull(2138.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -1799,9 +1799,9 @@ end
   # FP Brace Vert R (pinhole)
   grp = ents.add_group
   grp.name = "FP Brace Vert R (pinhole)"
-  face = grp.entities.add_face([4599.mm,100.mm,100.mm], [4649.mm,100.mm,100.mm], [4649.mm,150.mm,100.mm], [4599.mm,150.mm,100.mm])
+  face = grp.entities.add_face([4599.mm,100.mm,150.mm], [4649.mm,100.mm,150.mm], [4649.mm,150.mm,150.mm], [4599.mm,150.mm,150.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2188.mm)
+  face.pushpull(2138.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -1810,7 +1810,7 @@ end
   # FP Brace Beam Bottom (pinhole)
   grp = ents.add_group
   grp.name = "FP Brace Beam Bottom (pinhole)"
-  face = grp.entities.add_face([150.mm,100.mm,100.mm], [4649.mm,100.mm,100.mm], [4649.mm,150.mm,100.mm], [150.mm,150.mm,100.mm])
+  face = grp.entities.add_face([150.mm,100.mm,150.mm], [4649.mm,100.mm,150.mm], [4649.mm,150.mm,150.mm], [150.mm,150.mm,150.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -1832,9 +1832,9 @@ end
   # FP Brace Vert L (film)
   grp = ents.add_group
   grp.name = "FP Brace Vert L (film)"
-  face = grp.entities.add_face([150.mm,2262.mm,100.mm], [200.mm,2262.mm,100.mm], [200.mm,2312.mm,100.mm], [150.mm,2312.mm,100.mm])
+  face = grp.entities.add_face([150.mm,2262.mm,150.mm], [200.mm,2262.mm,150.mm], [200.mm,2312.mm,150.mm], [150.mm,2312.mm,150.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2188.mm)
+  face.pushpull(2138.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -1843,9 +1843,9 @@ end
   # FP Brace Vert R (film)
   grp = ents.add_group
   grp.name = "FP Brace Vert R (film)"
-  face = grp.entities.add_face([4599.mm,2262.mm,100.mm], [4649.mm,2262.mm,100.mm], [4649.mm,2312.mm,100.mm], [4599.mm,2312.mm,100.mm])
+  face = grp.entities.add_face([4599.mm,2262.mm,150.mm], [4649.mm,2262.mm,150.mm], [4649.mm,2312.mm,150.mm], [4599.mm,2312.mm,150.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2188.mm)
+  face.pushpull(2138.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -1854,7 +1854,7 @@ end
   # FP Brace Beam Bottom (film)
   grp = ents.add_group
   grp.name = "FP Brace Beam Bottom (film)"
-  face = grp.entities.add_face([150.mm,2262.mm,100.mm], [4649.mm,2262.mm,100.mm], [4649.mm,2312.mm,100.mm], [150.mm,2312.mm,100.mm])
+  face = grp.entities.add_face([150.mm,2262.mm,150.mm], [4649.mm,2262.mm,150.mm], [4649.mm,2312.mm,150.mm], [150.mm,2312.mm,150.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")

@@ -65,8 +65,9 @@ SLIDE = ov.PANEL_SLIDE                                 # 880 — transport slide
 RAIL_XL = ov.RAIL_X_L                                  # 150
 BRACE_ZB, BRACE_ZT = ov.BRACE_Z_BOT, ov.BRACE_Z_TOP   # 100, 2288
 
-# ── Study crop + cantilever-bracket dimensions (STUDY values; cascade later if approved) ──
-PARTIAL_X = 1750            # crop the ghost/tray to the cargo-door end
+# ── Study extents + cantilever-bracket dimensions (STUDY values; cascade later if approved) ──
+PARTIAL_X = ov.PROC_TRAY_X_R   # 4629 — full tray length so the spray bar reads at its true span
+OPEN_XR = k.PROC_OPEN_X_R      # 4329 — spray-bar far end: 300mm short of the far tray rim (X4629)
 LEG_X = WK_LX - 30         # 140 — floor leg centreline (bare floor, outside tray X=170)
 N_BRACKETS = 6             # brackets spread along Yd 0..2362
 POST = 50                  # 50×50 SHS leg/post section (mm)
@@ -127,6 +128,7 @@ def tray_partial():
         ov.ruby_box("Tray Rim Near", TRAY_XL, TRAY_YN, s, w, s, RIM - s, color=ov.C_TRAY),
         ov.ruby_box("Tray Rim Far", TRAY_XL, TRAY_YF - s, s, w, s, RIM - s, color=ov.C_TRAY),
         ov.ruby_box("Tray Rim Left", TRAY_XL, TRAY_YN, s, s, d, RIM - s, color=ov.C_TRAY),
+        ov.ruby_box("Tray Rim Right", PARTIAL_X - s, TRAY_YN, s, s, d, RIM - s, color=ov.C_TRAY),
         ov.ruby_box("Chemistry Bath", TRAY_XL + s, TRAY_YN + s, s,
                     w - 2 * s, d - 2 * s, RIM - s - 8, color=ov.C_BATH, alpha=0.40),
     ])
@@ -182,14 +184,17 @@ def cantilevers():
 
 
 def spray_bar():
-    """Spray-bar beam at a representative Yd (drum centre, in the punch-out) — Z20–60,
-    running in X from the open-tray edge. Shows it sweeps directly UNDER the punch-out
-    grate and through any would-be sub-support zone."""
+    """Spray-bar beam at a representative Yd (drum centre, in the punch-out), spanning
+    its TRUE extent — X470→4329 (PROC_OPEN_X_L..R), i.e. 300mm short of each tray rim
+    (X170 / X4629). Z20–60, with a wheel riding each end rail. Shows it sweeps under the
+    punch-out and the full open tray."""
     y = (WIDE_YL + WIDE_YR) // 2   # 1180 ~ drum centre
     return '\n'.join([
         ov.ruby_box("Spray Bar beam (40x40, Z20-60)", OPEN_XL, y - SB_BEAM / 2, SB_ZB,
-                    PARTIAL_X - OPEN_XL, SB_BEAM, SB_BEAM, color=ov.C_ALUM),
+                    OPEN_XR - OPEN_XL, SB_BEAM, SB_BEAM, color=ov.C_ALUM),
         ov.ruby_cylinder("Spray Bar wheel (left end)", OPEN_XL, y - SB_BEAM / 2 - 10,
+                         SB_AXLE, SB_WHEEL / 2, 20, axis="y", color=ov.C_STEEL),
+        ov.ruby_cylinder("Spray Bar wheel (right end)", OPEN_XR, y - SB_BEAM / 2 - 10,
                          SB_AXLE, SB_WHEEL / 2, 20, axis="y", color=ov.C_STEEL),
     ])
 
@@ -328,14 +333,14 @@ model.layers.to_a.each {{ |l|
   model.layers.remove(l, true) rescue nil
 }}
 
-# ── Scenes — shared iso camera, framed on geometry (Labels hidden for extents) ──
+# ── Scenes — shared iso camera framed on the CARGO-DOOR END (the study focus). The
+# tray + spray bar now run the full length toward the IBC end, so a bounds/zoom_extents
+# camera would shrink the detail; use a fixed cargo-door-end framing instead. ──
 model.layers.each {{ |l| l.visible = (l.name != "Labels") }}
-bb = model.bounds
-ctr = bb.center
-dir = Geom::Vector3d.new(0.62, -0.78, 0.45); dir.normalize!
-eye = ctr.offset(dir, bb.diagonal * 1.3)
+ctr = Geom::Point3d.new(700.mm, 1100.mm, 500.mm)
+dir = Geom::Vector3d.new(0.58, -0.80, 0.48); dir.normalize!
+eye = ctr.offset(dir, 4600.mm)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
-model.active_view.zoom_extents
 
 {scenes_ruby}.each {{ |name, tags|
   model.layers.each {{ |l| l.visible = (l == default_layer || l.name == "Context" || tags.include?(l.name)) }}

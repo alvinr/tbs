@@ -35,7 +35,7 @@ model.definitions.purge_unused
   # Floor (context)
   grp = ents.add_group
   grp.name = "Floor (context)"
-  face = grp.entities.add_face([-890.mm,0.mm,-40.mm], [1750.mm,0.mm,-40.mm], [1750.mm,2362.mm,-40.mm], [-890.mm,2362.mm,-40.mm])
+  face = grp.entities.add_face([-890.mm,0.mm,-40.mm], [4629.mm,0.mm,-40.mm], [4629.mm,2362.mm,-40.mm], [-890.mm,2362.mm,-40.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Floor (context)"] || model.materials.add("Floor (context)")
@@ -46,7 +46,7 @@ model.definitions.purge_unused
   # Ceiling / aperture top (context)
   grp = ents.add_group
   grp.name = "Ceiling / aperture top (context)"
-  face = grp.entities.add_face([-890.mm,0.mm,2388.mm], [1750.mm,0.mm,2388.mm], [1750.mm,2362.mm,2388.mm], [-890.mm,2362.mm,2388.mm])
+  face = grp.entities.add_face([-890.mm,0.mm,2388.mm], [4629.mm,0.mm,2388.mm], [4629.mm,2362.mm,2388.mm], [-890.mm,2362.mm,2388.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Ceiling / aperture top (context)"] || model.materials.add("Ceiling / aperture top (context)")
@@ -57,7 +57,7 @@ model.definitions.purge_unused
   # Side Wall near (context)
   grp = ents.add_group
   grp.name = "Side Wall near (context)"
-  face = grp.entities.add_face([0.mm,-40.mm,0.mm], [1750.mm,-40.mm,0.mm], [1750.mm,0.mm,0.mm], [0.mm,0.mm,0.mm])
+  face = grp.entities.add_face([0.mm,-40.mm,0.mm], [4629.mm,-40.mm,0.mm], [4629.mm,0.mm,0.mm], [0.mm,0.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
   mat = model.materials["Side Wall near (context)"] || model.materials.add("Side Wall near (context)")
@@ -68,7 +68,7 @@ model.definitions.purge_unused
   # Side Wall far (context)
   grp = ents.add_group
   grp.name = "Side Wall far (context)"
-  face = grp.entities.add_face([0.mm,2362.mm,0.mm], [1750.mm,2362.mm,0.mm], [1750.mm,2402.mm,0.mm], [0.mm,2402.mm,0.mm])
+  face = grp.entities.add_face([0.mm,2362.mm,0.mm], [4629.mm,2362.mm,0.mm], [4629.mm,2402.mm,0.mm], [0.mm,2402.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
   mat = model.materials["Side Wall near (context)"] || model.materials.add("Side Wall near (context)")
@@ -97,7 +97,7 @@ model.definitions.purge_unused
   # Processing Tray Floor
   grp = ents.add_group
   grp.name = "Processing Tray Floor"
-  face = grp.entities.add_face([170.mm,80.mm,0.mm], [1750.mm,80.mm,0.mm], [1750.mm,2280.mm,0.mm], [170.mm,2280.mm,0.mm])
+  face = grp.entities.add_face([170.mm,80.mm,0.mm], [4629.mm,80.mm,0.mm], [4629.mm,2280.mm,0.mm], [170.mm,2280.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
   mat = model.materials["Processing Tray Floor"] || model.materials.add("Processing Tray Floor")
@@ -108,7 +108,7 @@ model.definitions.purge_unused
   # Tray Rim Near
   grp = ents.add_group
   grp.name = "Tray Rim Near"
-  face = grp.entities.add_face([170.mm,80.mm,2.mm], [1750.mm,80.mm,2.mm], [1750.mm,82.mm,2.mm], [170.mm,82.mm,2.mm])
+  face = grp.entities.add_face([170.mm,80.mm,2.mm], [4629.mm,80.mm,2.mm], [4629.mm,82.mm,2.mm], [170.mm,82.mm,2.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
   mat = model.materials["Processing Tray Floor"] || model.materials.add("Processing Tray Floor")
@@ -119,7 +119,7 @@ model.definitions.purge_unused
   # Tray Rim Far
   grp = ents.add_group
   grp.name = "Tray Rim Far"
-  face = grp.entities.add_face([170.mm,2278.mm,2.mm], [1750.mm,2278.mm,2.mm], [1750.mm,2280.mm,2.mm], [170.mm,2280.mm,2.mm])
+  face = grp.entities.add_face([170.mm,2278.mm,2.mm], [4629.mm,2278.mm,2.mm], [4629.mm,2280.mm,2.mm], [170.mm,2280.mm,2.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
   mat = model.materials["Processing Tray Floor"] || model.materials.add("Processing Tray Floor")
@@ -138,10 +138,21 @@ model.definitions.purge_unused
   mat.alpha = 1.0
   grp.material = mat
 
+  # Tray Rim Right
+  grp = ents.add_group
+  grp.name = "Tray Rim Right"
+  face = grp.entities.add_face([4627.mm,80.mm,2.mm], [4629.mm,80.mm,2.mm], [4629.mm,2280.mm,2.mm], [4627.mm,2280.mm,2.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(48.mm)
+  mat = model.materials["Processing Tray Floor"] || model.materials.add("Processing Tray Floor")
+  mat.color = Sketchup::Color.new(159, 184, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Chemistry Bath
   grp = ents.add_group
   grp.name = "Chemistry Bath"
-  face = grp.entities.add_face([172.mm,82.mm,2.mm], [1748.mm,82.mm,2.mm], [1748.mm,2278.mm,2.mm], [172.mm,2278.mm,2.mm])
+  face = grp.entities.add_face([172.mm,82.mm,2.mm], [4627.mm,82.mm,2.mm], [4627.mm,2278.mm,2.mm], [172.mm,2278.mm,2.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Chemistry Bath"] || model.materials.add("Chemistry Bath")
@@ -188,7 +199,7 @@ model.definitions.purge_unused
   # Spray Bar beam (40x40, Z20-60)
   grp = ents.add_group
   grp.name = "Spray Bar beam (40x40, Z20-60)"
-  face = grp.entities.add_face([470.mm,1160.mm,20.mm], [1750.mm,1160.mm,20.mm], [1750.mm,1200.mm,20.mm], [470.mm,1200.mm,20.mm])
+  face = grp.entities.add_face([470.mm,1160.mm,20.mm], [4329.mm,1160.mm,20.mm], [4329.mm,1200.mm,20.mm], [470.mm,1200.mm,20.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Spray Bar beam (40x40, Z20-60)"] || model.materials.add("Spray Bar beam (40x40, Z20-60)")
@@ -201,6 +212,19 @@ model.definitions.purge_unused
   grp.name = "Spray Bar wheel (left end)"
   ge = grp.entities
   circle = ge.add_circle([470.mm,1150.mm,27.mm], [0,1,0], 25.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Spray Bar wheel (left end)"] || model.materials.add("Spray Bar wheel (left end)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar wheel (right end)
+  grp = ents.add_group
+  grp.name = "Spray Bar wheel (right end)"
+  ge = grp.entities
+  circle = ge.add_circle([4329.mm,1150.mm,27.mm], [0,1,0], 25.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -571,14 +595,14 @@ model.layers.to_a.each { |l|
   model.layers.remove(l, true) rescue nil
 }
 
-# ── Scenes — shared iso camera, framed on geometry (Labels hidden for extents) ──
+# ── Scenes — shared iso camera framed on the CARGO-DOOR END (the study focus). The
+# tray + spray bar now run the full length toward the IBC end, so a bounds/zoom_extents
+# camera would shrink the detail; use a fixed cargo-door-end framing instead. ──
 model.layers.each { |l| l.visible = (l.name != "Labels") }
-bb = model.bounds
-ctr = bb.center
-dir = Geom::Vector3d.new(0.62, -0.78, 0.45); dir.normalize!
-eye = ctr.offset(dir, bb.diagonal * 1.3)
+ctr = Geom::Point3d.new(700.mm, 1100.mm, 500.mm)
+dir = Geom::Vector3d.new(0.58, -0.80, 0.48); dir.normalize!
+eye = ctr.offset(dir, 4600.mm)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
-model.active_view.zoom_extents
 
 [["Operating", ["Processing Tray", "Film Plane Rails", "Spray Bar", "Cantilevers", "Grate (lift-out)"]], ["Transport clearance", ["Processing Tray", "Film Plane Rails", "Cantilevers", "Hinge Panel (transport)", "Light-trap Drum"]], ["Spray-bar clearance", ["Processing Tray", "Spray Bar", "Cantilevers", "Grate (lift-out)"]], ["Drum lift", ["Processing Tray", "Cantilevers", "Hinge Panel (transport)", "Light-trap Drum"]], ["Combined", ["Context", "Processing Tray", "Film Plane Rails", "Spray Bar", "Cantilevers", "Grate (lift-out)", "Hinge Panel (transport)", "Light-trap Drum"]], ["Labeled", ["Context", "Processing Tray", "Film Plane Rails", "Spray Bar", "Cantilevers", "Grate (lift-out)", "Hinge Panel (transport)", "Light-trap Drum", "Labels"]]].each { |name, tags|
   model.layers.each { |l| l.visible = (l == default_layer || l.name == "Context" || tags.include?(l.name)) }

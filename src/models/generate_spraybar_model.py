@@ -245,9 +245,11 @@ SPRAYBAR_LABELS = [   # (instance name, text, leader Δx,Δy,Δz mm)
 SPRAYBAR_POINT_LABELS = [   # (x,y,z,text,Δx,Δy,Δz)
     (1400, 1180,  60, "SPRAY BEAM\n(40 RHS + 3/4-in LDPE bore)", 0, -900,  650),
     (  XL, 1180,  60, "WHEEL CARRIAGE\n(saddle clamp + 2 wheels)", -750, -350, 600),
+    (  XR, 1180,  60, "WHEEL CARRIAGE",                          700, -350,  600),  # 2nd (right) carriage
     ( 950, 1180,  18, "SPRAY NOZZLES\n(26 flat-fan @ 150mm)",   250, -950,  380),
-    (2399, 1180, 360, "FEED POLE + BALL JOINT",                 650, -300,  450),
-    (2399, 1320, 110, "DISTRIBUTION MANIFOLD\n(7 feed tubes)", -550, -750,  650),
+    (2399, 1180,  90, "FEED POLE + BALL JOINT",                 700, -250,  800),  # anchor on the ball-joint socket
+    (2437, 1180,  75, "DISTRIBUTION MANIFOLD\n(7 feed tubes)", -600, -700,  650),  # anchor on the Feed Manifold box
+    (4550,   80,   0, "DRAIN SUMP",                             200, -600,  450),  # tray drain sump (near-right corner)
 ]
 
 

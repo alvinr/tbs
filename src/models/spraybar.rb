@@ -3691,16 +3691,22 @@ anc = Geom::Point3d.new(200.mm, 1180.mm, 60.mm)
 txt = entities.add_text("WHEEL CARRIAGE
 (saddle clamp + 2 wheels)", anc, Geom::Vector3d.new(-750.mm, -350.mm, 600.mm))
 txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(4599.mm, 1180.mm, 60.mm)
+txt = entities.add_text("WHEEL CARRIAGE", anc, Geom::Vector3d.new(700.mm, -350.mm, 600.mm))
+txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(950.mm, 1180.mm, 18.mm)
 txt = entities.add_text("SPRAY NOZZLES
 (26 flat-fan @ 150mm)", anc, Geom::Vector3d.new(250.mm, -950.mm, 380.mm))
 txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(2399.mm, 1180.mm, 360.mm)
-txt = entities.add_text("FEED POLE + BALL JOINT", anc, Geom::Vector3d.new(650.mm, -300.mm, 450.mm))
+anc = Geom::Point3d.new(2399.mm, 1180.mm, 90.mm)
+txt = entities.add_text("FEED POLE + BALL JOINT", anc, Geom::Vector3d.new(700.mm, -250.mm, 800.mm))
 txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(2399.mm, 1320.mm, 110.mm)
+anc = Geom::Point3d.new(2437.mm, 1180.mm, 75.mm)
 txt = entities.add_text("DISTRIBUTION MANIFOLD
-(7 feed tubes)", anc, Geom::Vector3d.new(-550.mm, -750.mm, 650.mm))
+(7 feed tubes)", anc, Geom::Vector3d.new(-600.mm, -700.mm, 650.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(4550.mm, 80.mm, 0.mm)
+txt = entities.add_text("DRAIN SUMP", anc, Geom::Vector3d.new(200.mm, -600.mm, 450.mm))
 txt.layer = model.layers["Labels"] rescue nil
 
 model.definitions.purge_unused

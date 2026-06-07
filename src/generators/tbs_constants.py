@@ -171,8 +171,9 @@ WALL_T            = 40    # container end-wall steel thickness (mm)
 # doors to close. Panel is suspended from ceiling — bottom edge clears the tray.
 PANEL_SLIDE       = 880   # panel slide travel for transport (mm) [rev9 B2: 550→880,
                           # bay housing ext. face -890 → ~+30 clears the door plane]
-PANEL_FLOOR_GAP   = 80    # gap between panel bottom edge and floor (mm)
-                          # Must exceed PROC_TRAY_RIM (50mm) for transport clearance
+PANEL_FLOOR_GAP   = 130   # gap between panel bottom edge and floor (mm) [+50 walkway raise; was 80]
+                          # = WALKWAY_H (130): the panel rides at the grate-top level, clearing
+                          # the Z115 floor-leg bracket tops by 15mm as it slides to transport.
 
 # ── Left end zone — housed revolving-door light lock (rev 8) ─────────────────
 # Personnel light lock in the hinge-panel center zone: a FIXED Ø900 housing with
@@ -188,7 +189,10 @@ DRUM_D     = 900     # fixed housing OUTER diameter (mm) [rev8: was Ø750 drum]
                      # rev8: reviewed & KEPT — ~555mm passage (sideways entry), accepted
                      # for occasional single-operator field use; larger Ø deferred
 DRUM_R     = DRUM_D // 2                      # 450 — housing radius (visible footprint)
-DRUM_H_LT  = 2200    # light-lock height (mm) — 330mm headroom at 1780mm operator
+DRUM_H_LT  = 2250    # light-lock TOP Z (mm) — LIFTED +50 with the walkway (was 2200) so the
+                     # interior height (DRUM_H_LT − PANEL_FLOOR_GAP = 2120) is PRESERVED: 340mm
+                     # headroom over a 1780mm operator standing on the raised (Z130) walkway;
+                     # top clears the ceiling (2388) by 138mm.
 LT_HOUSING_R   = DRUM_R   # 450 — fixed housing radius
 LT_HOUSING_T   = 5        # housing wall (mm) [rev9 B2: 3mm Al → 5mm UV-HDPE plastic skin]
 LT_DRUM_OR     = 432      # rotating drum outer radius (Ø864) — 15mm running gap

@@ -481,6 +481,12 @@ def walkways():
     # Wall-cantilevered gusset brackets that actually hold the near & far decks up.
     parts.append(walkway_brackets())
 
+    # Left walkway BEARER support: the full-width edge beam + its two IBC-style wall
+    # seats (drop-in pocket + 4-corner bolts). Reuse the walkway model's shared
+    # builder so the seat design can't drift between the two models.
+    import generate_walkway_model as wm
+    parts.append('\n'.join(wm.left_edge_beam_and_seats()))
+
     return '\n'.join(parts)
 
 

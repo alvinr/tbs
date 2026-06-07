@@ -11,7 +11,7 @@ opts["LengthPrecision"] = 1
 # ── Idempotent rebuild: erase all prior groups/instances (incl. any template
 # scale figure) so this focused model frames tightly on the IBC assembly. ──
 to_erase = entities.to_a.select { |e|
-  e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance)
+  e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance) || e.is_a?(Sketchup::Text)
 }
 entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
@@ -22,6 +22,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("IBC Tanks") unless model.layers["IBC Tanks"]
   model.layers.add("IBC Frame") unless model.layers["IBC Frame"]
   model.layers.add("Plumbing & Panel") unless model.layers["Plumbing & Panel"]
+  model.layers.add("Labels") unless model.layers["Labels"]
 
 # ── Subsystems (each a component on its tag) ──
   # ═══ Container (ghost) ═══
@@ -2413,11 +2414,49 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.layer = model.layers["Plumbing & Panel"]
 
 
+# ── In-model labels (on the 'Labels' tag; visible only in the "Labeled" scene) ──
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "IBC Tanks" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("IBC WATER TANKS
+(4x 1000L tote)", anc, Geom::Vector3d.new(-1100.mm, -400.mm, 650.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "IBC Frame" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("IBC FRAME
+(steel rack)", anc, Geom::Vector3d.new(-250.mm, 650.mm, 900.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Equipment Panel" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("EQUIPMENT PANEL
+(pump / filter)", anc, Geom::Vector3d.new(650.mm, -150.mm, 700.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Water/Waste Hookups" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("WATER / WASTE HOOKUPS
+(exterior wall)", anc, Geom::Vector3d.new(450.mm, -350.mm, 450.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+anc = Geom::Point3d.new(4800.mm, 918.mm, 1700.mm)
+txt = entities.add_text("WATER PLUMBING
+(pump feed + returns)", anc, Geom::Vector3d.new(-600.mm, -650.mm, 600.mm))
+txt.layer = model.layers["Labels"] rescue nil
+
 model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier versions ──
-keep_tags = ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel"]
+keep_tags = ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel", "Labels"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -2425,7 +2464,8 @@ model.layers.to_a.each { |l|
 }
 
 # ── Scenes ── one consistent iso camera, shared by every scene.
-model.layers.each { |l| l.visible = true }
+# Frame on geometry only — hide the Labels tag so Text bounds don't skew extents.
+model.layers.each { |l| l.visible = (l.name != "Labels") }
 bb = model.bounds
 ctr = bb.center
 dir = Geom::Vector3d.new(0.72, -0.7, 0.5); dir.normalize!
@@ -2433,7 +2473,7 @@ eye = ctr.offset(dir, bb.diagonal * 1.5)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
-[["IBC Tanks", ["IBC Tanks"]], ["IBC Frame", ["IBC Frame"]], ["Plumbing & Panel", ["Plumbing & Panel"]], ["Combined", ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel"]]].each { |name, tags|
+[["IBC Tanks", ["IBC Tanks"]], ["IBC Frame", ["IBC Frame"]], ["Plumbing & Panel", ["Plumbing & Panel"]], ["Combined", ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel"]], ["Labeled", ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel", "Labels"]]].each { |name, tags|
   model.layers.each { |l| l.visible = (l == default_layer || l.name == "Context" || tags.include?(l.name)) }
   page = model.pages.add(name)
   page.use_camera = true

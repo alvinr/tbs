@@ -707,7 +707,7 @@ def equipment_panel():
     pump_d, pump_face, pump_h, gap = PUMP_W, PUMP_YD_SPAN, 218, 40
     col_l = EQPANEL_YD + 63               # PUMP_COL — left column Yd center
     col_r = EQPANEL_YD + (EQPANEL_YD_SPAN - 63)  # right column Yd center
-    z_bot = PUMP_H_LO                     # 1320 — bottom pump row
+    z_bot = PUMP_H_LO                     # 1370 — bottom pump row
     z_mid = z_bot + pump_h + gap          # 1578 — upper pump row
     z_top = z_mid + pump_h + 150          # 1946 — ACC-01 / P-05 row
 
@@ -1715,14 +1715,14 @@ def water_plumbing():
     fY = IBC_FAR_Y + IBC_D / 2            # 1824 — far col center (Blue #2 fill)
     topZ = 2 * IBC_H_600                   # 2020 — IBC stack top
     overZ = topZ + 230                     # 2250 — clear height over the totes
-    pumpZ = PUMP_H_LO                      # 1320 — pump inlet bottom
+    pumpZ = PUMP_H_LO                      # 1370 — pump inlet bottom
     pumpX = EQPANEL_X - 50                  # pump inlet X — tracks panel
     cc = 1181                              # corridor centerline Y
     floor = 60                             # floor-run height
     upVZ = IBC_H_600 + IBC_VALVE_Z         # 1195 — upper-tier valve Z
     loVZ = IBC_VALVE_Z                     # 185  — lower-tier valve Z
     # Pump inlets (per equipment_panel): left col Y=1109 → P-01/P-04, right col
-    # Y=1253 → P-02/P-03; rows Z=1320 (bottom) / 1578 (upper). Two riser X-lanes
+    # Y=1253 → P-02/P-03; rows Z=1370 (bottom) / 1628 (upper). Two riser X-lanes
     # per column (rxA/rxB) so the four suction risers never overlap.
     manX = EQPANEL_X + 100                 # Blue manifold header X (corridor) — tracks panel
     pyL, pyR = 1109, 1253                  # left / right pump-column Y

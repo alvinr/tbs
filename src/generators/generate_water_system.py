@@ -1422,7 +1422,7 @@ def draw_sheet4():
                   alpha=0.7))
 
     # ── Equipment panel destination (schematic, within view range) ───────────────
-    # The equipment panel is at Yd=1046, Z=1320–2220 — far above this view's
+    # The equipment panel is at Yd=1046, Z=1370–2270 — far above this view's
     # Z range (0–620).  Show a compact representation at the top of the view
     # with the plywood strip truncated and a destination leader.
     EP_Z_TOP = 580   # truncated top within view

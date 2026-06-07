@@ -5693,7 +5693,7 @@ end
   grp = ents.add_group
   grp.name = "Filter F1 (50µ)"
   ge = grp.entities
-  circle = ge.add_circle([5175.mm,1181.mm,200.mm], [0,0,1], 65.mm, 24)
+  circle = ge.add_circle([5175.mm,1181.mm,250.mm], [0,0,1], 65.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(340.mm)
@@ -5706,7 +5706,7 @@ end
   grp = ents.add_group
   grp.name = "Filter F2 (5µ)"
   ge = grp.entities
-  circle = ge.add_circle([5175.mm,1181.mm,570.mm], [0,0,1], 65.mm, 24)
+  circle = ge.add_circle([5175.mm,1181.mm,620.mm], [0,0,1], 65.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(340.mm)
@@ -5719,7 +5719,7 @@ end
   grp = ents.add_group
   grp.name = "Filter F3 (GAC)"
   ge = grp.entities
-  circle = ge.add_circle([5175.mm,1181.mm,940.mm], [0,0,1], 65.mm, 24)
+  circle = ge.add_circle([5175.mm,1181.mm,990.mm], [0,0,1], 65.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(340.mm)

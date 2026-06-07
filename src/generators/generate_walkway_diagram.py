@@ -993,59 +993,25 @@ def sheet1():
             ha="center", va="center", fontsize=7, color="#208020",
             **FONT, zorder=5, alpha=0.6)
 
-    # ── Left walkway support — steel edge beam + floor legs + bearing strip ──
+    # ── Left walkway support — FLOOR-LEG CANTILEVER brackets (plan) ──
     C_SUPPORT = "#D08020"   # orange for support elements
-
-    # Steel edge beam along Yd at X=470 (processing tray side), FULL WIDTH
-    # Simply supported wall-to-wall on a bolt-through wall seat at each end.
-    C_EDGEBM = "#707078"   # grey for the steel edge beam
-    beam_x = LXR   # = 470mm
-    ax.plot([beam_x, beam_x], [0, C_WID],
-            color=C_EDGEBM, lw=4.5, zorder=8, solid_capstyle="butt")
-    ax.text(beam_x + 24, C_WID * 0.5,
-            f"STEEL EDGE BEAM\n{LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_SIZE}"
-            f"\u00d7{LEFT_WK_BEARER_T}mm STEEL SHS\nFULL WIDTH (REMOVABLE)",
-            ha="left", va="center", fontsize=4.5, color=C_EDGEBM,
-            fontweight="bold", **FONT, zorder=15, rotation=90)
-    # Wall-seat brackets at each end (bolt-through wall, IBC-style)
-    for wy in (0, C_WID):
-        ax.add_patch(Rectangle((beam_x - 10, (wy - 22) if wy else wy),
-                     20, 22, fc=C_EDGEBM, ec=C_OUT, lw=0.8, zorder=9))
-    leader(ax, beam_x, C_WID - 6, beam_x + 240, C_WID + 120,
-           "WALL SEAT (\u00d72)\nBOLT-THROUGH WALL\n3\u00d7 M12 + EXT PLATE\n(SEE SHEET 6)",
-           color=C_EDGEBM, fs=5, ha="center", va="center",
-           arrow_style="-|>", font=FONT)
-
-    # Bearing strip on tray rim (X=170, continuous along Yd)
-    strip_yd_start = NYI   # start at near walkway inner edge (Yd=300)
-    strip_yd_end   = FY    # end at far walkway inner edge (Yd=1962)
-    ax.plot([LX, LX], [strip_yd_start, strip_yd_end],
-            color=C_SUPPORT, lw=3.0, zorder=8, solid_capstyle="butt")
-    ax.text(LX - 20, (strip_yd_start + strip_yd_end) * 0.6,
-            f"BEARING\nSTRIP\n(15mm Al)",
-            ha="right", va="center", fontsize=4.5, color=C_SUPPORT,
-            fontweight="bold", **FONT, zorder=15, rotation=90)
-
-    # Floor-standing support legs (cargo door side, X < tray rim)
-    leg_spacing = WALKWAY_LEFT_SPAN / (LEFT_WK_LEG_N + 1)
-    leg_x = LX - 30  # X=140 (on bare floor, outside tray)
-    leg_sz = 18
-    for i in range(LEFT_WK_LEG_N):
-        cy = NYI + leg_spacing * (i + 1)  # Yd position
-        # Leg marker (small square)
-        ax.add_patch(Rectangle((leg_x - leg_sz / 2, cy - leg_sz / 2),
-                     leg_sz, leg_sz,
+    leg_x = LEFT_WK_CANT_LEG_X                 # 140 (bare floor, outside tray)
+    arm_x0 = leg_x + LEFT_WK_CANT_POST / 2     # 165
+    leg_sz = 24
+    for cy in LEFT_WK_CANT_LEG_YDS:
+        wide_b = WALKWAY_LEFT_WIDE_YD_L <= cy <= WALKWAY_LEFT_WIDE_YD_R
+        reach = LEFT_WK_CANT_WIDE_REACH if wide_b else LEFT_WK_CANT_STD_REACH
+        aw = 16 if wide_b else 10
+        # cantilever arm to the grate inner edge (X470) / punch-out (X770)
+        ax.add_patch(Rectangle((arm_x0, cy - aw / 2), reach - arm_x0, aw,
+                     fc=C_SUPPORT, ec=C_OUT, lw=0.6, alpha=0.7, zorder=8))
+        # foot/post marker on the floor
+        ax.add_patch(Rectangle((leg_x - leg_sz / 2, cy - leg_sz / 2), leg_sz, leg_sz,
                      fc=C_SUPPORT, ec=C_OUT, lw=0.8, zorder=9))
-        # Cantilever arm to walkway edge
-        ax.plot([leg_x, LX + 20], [cy, cy],
-                color=C_SUPPORT, lw=1.5, zorder=8)
-    # Label first leg
-    c1_yd = NYI + leg_spacing
-    leader(ax, leg_x, c1_yd + leg_sz / 2 + 5,
-           leg_x - 300, c1_yd + leg_sz / 2 + 180,
-           f"FLOOR LEG (\u00d7{LEFT_WK_LEG_N})\n{int(leg_spacing)}mm SPACING\nON BARE FLOOR\n(OUTSIDE TRAY)",
-           color=C_SUPPORT, fs=5.5,
-           ha="center", va="center", arrow_style="-|>", font=FONT)
+    leader(ax, leg_x, LEFT_WK_CANT_LEG_YDS[0] + leg_sz / 2 + 5,
+           leg_x - 300, LEFT_WK_CANT_LEG_YDS[0] + 180,
+           "FLOOR-LEG CANTILEVER\nBRACKETS (x5) on BARE FLOOR (X140)\narms reach to X470 (3 extend to X770)",
+           color=C_SUPPORT, fs=5.5, ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Dimension lines ──────────────────────────────────────────────────────
     # Walkway width dimension (near walkway)
@@ -1067,7 +1033,7 @@ def sheet1():
         ("#E8F0FF",    0.3,      None,  "Processing tray"),
         (C_BRKT,     1.0,      None,  f"Wall bracket ({WALKWAY_BRACKET_T}mm std)"),
         ("#CC6644",  1.0,      None,  f"Widened bracket ({WALKWAY_WIDE_BRACKET_T}mm, 500mm arm)"),
-        (C_SUPPORT,  0.8,      None,  f"Support cradle / bearing strip (removable)"),
+        (C_SUPPORT,  0.8,      None,  f"Floor-leg cantilever bracket (x5, removable grate)"),
         ("#3DAA96",  0.35,     None,  f"Evap cooler transport stowage ({EVAP_W}×{EVAP_D}mm)"),
         ("#FF4444",  0.6,      None,  f"Spray bar slit ({SPRAY_BAR_SLIT_W}mm, near + far)"),
         ("#FF0000",  0.06,     None,  "Panel transport envelope"),
@@ -1086,8 +1052,8 @@ def sheet1():
         f"3. Near/far: wall-cantilevered brackets ({WALKWAY_BRACKET_T}mm gussets) at {WALKWAY_BRACKET_SPACING}mm centers.",
         f"   Start at X={LXR} (butt joint). B2: panel transport envelope now reaches X\u22481000.",
         f"4. Right: CEILING-HUNG \u2014 {WALKWAY_RIGHT_HANGER_N} pairs M{WALKWAY_RIGHT_HANGER_D} rod hangers.",
-        f"5. Left: REMOVABLE LIFT-OUT \u2014 full-width steel edge beam ({LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_T}mm steel SHS) on wall seats at X={LXR},",
-        f"   spans full width ({C_WID}mm) wall-to-wall. {LEFT_WK_LEG_N} floor legs + bearing strip on the outer edge.",
+        f"5. Left: REMOVABLE LIFT-OUT \u2014 5 FLOOR-LEG CANTILEVER brackets on bare floor (X140, outside tray),",
+        f"   arms reach the grate inner edge (X={LXR}); 3 extend to X770 on the drum-exit punch-out. See sheets 5/6.",
         f"6. ZERO tray contact \u2014 all supports outside or above tray. Open area: {PROC_OPEN_AREA:.1f} m\u00b2.",
         f"7. ~{n_brackets_total} wall brackets (near + far). Each grating section lifts off for tray access.",
         f"8. SPRAY BAR SLIT: {SPRAY_BAR_SLIT_W}mm slot at beam center X={int((PROC_OPEN_X_L + PROC_OPEN_X_R) / 2)} in near + far walkway",
@@ -2768,67 +2734,42 @@ def sheet9():
             ha="center", va="center", fontsize=7.5, color="#206020",
             fontweight="bold", **FONT, zorder=12)
 
-    # Bearing strip on tray rim (X=170)
-    ax.add_patch(Rectangle((LX - 7, yL - 380), 14, (yR + 380) - (yL - 380),
-                           fc=C_SUPPORT, ec=C_OUT, lw=1.0, zorder=6))
-    # Main bearer (X=470)
-    ax.add_patch(Rectangle((BEARER_X - BSZ / 2, yL - 380), BSZ,
-                           (yR + 380) - (yL - 380),
-                           fc=C_SUPPORT, ec=C_OUT, lw=1.4, zorder=7))
-    # Outer trim bearer (X=770) across the punch-out span only
-    ax.add_patch(Rectangle((OUTER_X - BSZ / 2, yL), BSZ, yR - yL,
-                           fc=C_SUPPORT, ec=C_OUT, lw=1.4, zorder=7))
-    # Two cantilever arms (Yd=800 & 1560) from main bearer out to trim bearer
-    for cy in (yL, yR):
-        ax.add_patch(Rectangle((BEARER_X, cy - 9), OUTER_X - BEARER_X, 18,
-                               fc=C_SUPPORT, ec=C_OUT, lw=1.2, zorder=8))
-        for bx in (BEARER_X + 12, BEARER_X + 30):   # bolt marks to main bearer
-            ax.add_patch(Circle((bx, cy), 5, fc="white", ec=C_OUT, lw=0.8,
-                                zorder=9))
-
-    # Floor legs (X=140) outside the tray — ghost markers
-    leg_x = LX - 30
-    for cy in (yL - 150, (yL + yR) / 2, yR + 150):
-        ax.add_patch(Rectangle((leg_x - 12, cy - 12), 24, 24, fc="none",
-                               ec=C_SUPPORT, lw=1.0, ls=(0, (3, 2)), zorder=6))
+    # ── 3 EXTENDED floor-leg cantilever arms support the punch-out ──
+    arm_x0 = LEFT_WK_CANT_LEG_X + LEFT_WK_CANT_POST / 2   # 165
+    leg_x = LEFT_WK_CANT_LEG_X                            # 140
+    punch_yds = [cy for cy in LEFT_WK_CANT_LEG_YDS if yL <= cy <= yR]   # 800,1180,1560
+    # Spray-bar travel zone (X>=470) under the deck
+    ax.add_patch(Rectangle((BEARER_X, yL - 60), (OUTER_X + 150) - BEARER_X, (yR + 60) - (yL - 60),
+                           fc="#EAF2FA", ec="none", zorder=1))
+    ax.text(OUTER_X + 40, (yL + yR) / 2, "SPRAY BAR travels here\n(under the deck, Z20-60)",
+            ha="left", va="center", fontsize=5.5, color="#3A7AB0", style="italic", zorder=2)
+    for cy in punch_yds:
+        ax.add_patch(Rectangle((arm_x0, cy - 16), OUTER_X - arm_x0, 32,
+                               fc=C_SUPPORT, ec=C_OUT, lw=1.2, zorder=8))    # extended arm to X770
+        ax.add_patch(Rectangle((leg_x - 14, cy - 14), 28, 28, fc=C_SUPPORT, ec=C_OUT, lw=0.9, zorder=9))  # foot/post
 
     # ── Leaders ──────────────────────────────────────────────────────────────
-    leader(ax, BEARER_X, yL - 250, BEARER_X - 250, yL - 360,
-           f"STEEL EDGE BEAM  X={BEARER_X}mm\n{BSZ}×{BSZ}×{LEFT_WK_BEARER_T}mm steel SHS\non bolt-through wall seats",
-           color=C_SUPPORT, fs=5.5, ha="center", va="top",
-           arrow_style="-|>", font=FONT)
-    leader(ax, OUTER_X, (yL + yR) / 2, OUTER_X + 170, (yL + yR) / 2 + 230,
-           f"OUTER TRIM BEARER\nX={OUTER_X}mm ({BSZ}×{BSZ}×{LEFT_WK_BEARER_T} Al RHS)",
-           color=C_SUPPORT, fs=5.5, ha="center", va="bottom",
-           arrow_style="-|>", font=FONT)
-    leader(ax, (BEARER_X + OUTER_X) / 2, yR, (BEARER_X + OUTER_X) / 2 + 60, yR + 230,
-           "CANTILEVER ARMS ×2\nbolted to main bearer — carry the\n300mm overhang, NO tray contact",
-           color=C_SUPPORT, fs=5.5, ha="center", va="bottom",
-           arrow_style="-|>", font=FONT)
-    leader(ax, LX, (yL + yR) / 2, LX - 50, (yL + yR) / 2 - 260,
-           f"BEARING STRIP on tray rim\nX={LX}mm (25×25×3 Al angle)",
-           color=C_SUPPORT, fs=5.5, ha="center", va="top",
-           arrow_style="-|>", font=FONT)
-    leader(ax, leg_x, yR + 150, leg_x - 30, yR + 300,
-           f"FLOOR LEGS ×{LEFT_WK_LEG_N}\nX=140mm (bare floor, outside tray)",
-           color=C_SUPPORT, fs=5, ha="center", va="bottom",
-           arrow_style="-|>", font=FONT)
+    leader(ax, (arm_x0 + OUTER_X) / 2, yR + 16, (arm_x0 + OUTER_X) / 2 + 80, yR + 250,
+           "EXTENDED CANTILEVER ARMS x3\n(floor-leg brackets at Yd 800/1180/1560\nreach to X770, OVER the spray bar)",
+           color=C_SUPPORT, fs=5.5, ha="center", va="bottom", arrow_style="-|>", font=FONT)
+    leader(ax, leg_x, yL - 14, leg_x - 60, yL - 230,
+           "FLOOR LEG (X140) on bare\nfloor, outside the tray",
+           color=C_SUPPORT, fs=5.5, ha="center", va="top", arrow_style="-|>", font=FONT)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
     draw_dim_h(ax, LX, OUTER_X, yL - 200,
                f"{WALKWAY_LEFT_WIDE_W}mm PUNCH-OUT DEPTH", offset=5, fs=6.5,
                above=False, font=FONT)
-    draw_dim_h(ax, BEARER_X, OUTER_X, yR + 90,
-               f"{OUTER_X - BEARER_X}mm OVERHANG (cantilever)", offset=4,
-               fs=5.5, font=FONT)
+    draw_dim_h(ax, arm_x0, OUTER_X, yR + 90,
+               f"{int(OUTER_X - arm_x0)}mm ARM REACH (X140->770)", offset=4, fs=5.5, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
-        "DRUM-EXIT PUNCH-OUT — ATTACHMENT & SUPPORT:",
-        f"1. Deck deepened to {WALKWAY_LEFT_WIDE_W}mm (X={LX}-{OUTER_X}) over Yd {yL}-{yR} — landing in front of the light-lock exit.",
-        f"2. The {OUTER_X - BEARER_X}mm overhang past the main X={BEARER_X}mm bearer is carried by 2 cantilever arms bolted to that bearer + an outer trim bearer at X={OUTER_X}mm.",
-        "3. The sub-frame cantilevers OVER the tray — zero tray contact (no floor leg over the basin).",
-        "4. Lifts out with the left-walkway grating before panel transport.",
+        "DRUM-EXIT PUNCH-OUT - SUPPORT:",
+        f"1. Deck deepened to {WALKWAY_LEFT_WIDE_W}mm (X={LX}-{OUTER_X}) over Yd {yL}-{yR} - landing at the light-lock exit.",
+        "2. SUPPORTED by 3 floor-leg cantilever brackets (Yd 800/1180/1560) whose arms EXTEND to X770.",
+        "3. The arms pass 15mm OVER the floor-level spray bar (Z60) - enabled by the +50mm raise; ZERO tray contact.",
+        "4. Lifts out with the left-walkway grating before panel transport; brackets stay floor-bolted.",
     ]
     draw_notes(ax, notes, 850, yL + 430, spacing=58, fs=7, ha="left",
                width=690, font=FONT)

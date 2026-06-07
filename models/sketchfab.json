@@ -33,5 +33,12 @@
     "embed_files": [
       "walkway-report.md"
     ]
+  },
+  "film-plane": {
+    "name": "TBS-001 Film Plane Model",
+    "uid": "bb5394a8983a491fa541088b901c24f8",
+    "embed_files": [
+      "film-plane-mechanism-report.md"
+    ]
   }
 }

@@ -16,6 +16,28 @@ Posed STATICALLY at the transport rest (slide = PANEL_SLIDE): drum at X480 — i
 A side-elevation scene (camera along −Y) shows the Z-bands stacked so the threading
 is unambiguous.
 
+================================================================================
+TODO — REVISIT THE HINGE-PANEL DESIGN. The study has worked the geometry far enough
+to expose that the hinge panel is NOT yet a resolved design. Before any cascade,
+these MUST be resolved together (they interact):
+
+  1. CLEARANCE for the panel to slide — leaves narrowed to thread between the verts,
+     drum trimmed, TL rail removable. Confirmed in this study, but it depends on
+     every dimension above; re-confirm once 2 & 3 are settled.
+  2. SUPPORT of the panel during the slide — balanced 4-hanger ceiling suspension
+     (fore+aft each side) on the lengthened rails. Load path is vertical; verify
+     against the real assembly mass/CG (drum is light plastic, leaves+steel frame
+     dominate) so the fore/aft split is actually balanced.
+  3. HOW THE PANEL ATTACHES TO THE FRAME so the HINGE panel can still OPEN — the
+     panel is both a hinge (swings open) AND a slider (retracts for transport); the
+     attachment/hardware that allows both is undesigned.
+
+KNOWN ISSUE flagged here: the "Leaf backbone (60x60 SHS)" at the near-wall edge
+(Yd~30) is a vestigial holdover from the earlier hinge-side design — asymmetric
+(no far-side equivalent) and no longer in the load path. Resolve under #3 (likely
+replace with symmetric outer edge stiles, Yd0 + Yd2362).
+================================================================================
+
     python3 src/models/generate_transport_study_model.py --send          # push to SketchUp
     python3 src/models/generate_transport_study_model.py --send --skp     # + save .skp
 """
@@ -95,9 +117,8 @@ CARR_Z0, CARR_Z1 = RAIL_BZ0 - 28, RAIL_BZ0  # 2330 .. 2358 — HGH20CA block
 BRK_W = 60                                 # suspension bracket footprint (X)
 RAIL_BX0, RAIL_BLEN = -30, PANEL_SLIDE + 220   # ceiling rail span (X-30 .. 1070)
 
-TAGS = ["Context", "Film Rails", "Brace verts", "Fixed Frame", "Bearing Rail",
-        "Walkway Supports", "Walkway Grate",
-        "Floor Guide",
+TAGS = ["Context", "Film Rails", "TL Rail (removable)", "Brace verts", "Fixed Frame",
+        "Bearing Rail", "Walkway Supports", "Walkway Grate",
         "Drum (transport)", "Leaf (transport)", "Slide hanger (transport)",
         "Drum (camera)", "Leaf (camera)", "Slide hanger (camera)",
         "Drum (camera ghost)", "Crossing ghost", "Labels"]
@@ -114,17 +135,27 @@ def context():
 
 
 def film_rails():
-    """The two left rails (the obstacles) + the brace beams. Verts are separate."""
+    """The PERMANENT left film structure the assembly threads: BL rail + brace
+    beams. (The TL rail is now a separate REMOVABLE part — see tl_rail_removable.)"""
     L = RAIL_Y1 - RAIL_Y0
     return '\n'.join([
         ruby_box("FP Rail BL (lower-left)", RAIL_X, RAIL_Y0, BL_Z0, RAIL, L, RAIL, color=C_STEEL),
-        ruby_box("FP Rail TL (upper-left)", RAIL_X, RAIL_Y0, TL_Z0, RAIL, L, RAIL, color=C_STEEL),
-        # brace cross-beams (front portion only) at each portal depth
+        # brace cross-beams (front portion only) at each portal depth (Yd100/2262 —
+        # clear of the centre-Yd assembly and the Yd683/1679 hangers)
         ruby_box("FP Brace beam bottom (pinhole)", RAIL_X, RAIL_Y0, BZ0, 1450, BR, BR, color=C_STEEL),
         ruby_box("FP Brace beam bottom (film)", RAIL_X, RAIL_Y1, BZ0, 1450, BR, BR, color=C_STEEL),
         ruby_box("FP Brace beam top (pinhole)", RAIL_X, RAIL_Y0, BZ1 - BR, 1450, BR, BR, color=C_STEEL),
         ruby_box("FP Brace beam top (film)", RAIL_X, RAIL_Y1, BZ1 - BR, 1450, BR, BR, color=C_STEEL),
     ])
+
+
+def tl_rail_removable():
+    """The TOP-LEFT film rail — now REMOVABLE: lifted out for transport so the
+    ceiling-suspended assembly (hangers vertical over the frame, balanced) can slide
+    straight through its plane. Shown INSTALLED in the camera scene, hidden (removed)
+    in the transport scenes."""
+    L = RAIL_Y1 - RAIL_Y0
+    return ruby_box("FP Rail TL (REMOVABLE)", RAIL_X, RAIL_Y0, TL_Z0, RAIL, L, RAIL, color="#C8741E")
 
 
 def brace_verts():
@@ -253,21 +284,22 @@ def _post_centers():
     return [(y0 + y1) / 2.0 for (y0, y1) in FRAME_POST_YD]   # 683, 1679
 
 
-# Forward offset of the hang point from the drum frame so it NEVER reaches the
-# X150 rail during the slide: at camera the drum frame is at X-400, so the hang
-# point at -400+640 = 240 stays inboard of the rail (150-190). No crossing → nothing
-# demountable.
-HANGER_OFFSET = 640
-HX_CAM = ov.DRUM_CX + HANGER_OFFSET          # 240
-HX_TRN = None                                # set below once DRUM_TX known
-ARM_Z0, ARM_Z1 = WIN_Z1 - 36, WIN_Z1 - 8     # 2212..2240 — top arm, 8mm UNDER the TL rail
+# Two hangers per side, spaced fore/aft so they straddle the assembly and
+# distribute the weight (balanced, no tipping). Fore hanger over the drum-frame
+# post (cx); aft hanger over the leaf jamb (cx + HANGER_SPAN).
+HANGER_SPAN = -ov.DRUM_CX                     # 400 — fore→aft spacing (drum post to leaf)
+
+
+def _hanger_xs(cx):
+    return [("fore", cx), ("aft", cx + HANGER_SPAN)]
 
 
 def ceiling_rails():
-    """Fixed HGR20 ceiling rails — span the (forward-offset) hang-point travel, at
-    the drum-frame post depths."""
-    x0 = HX_CAM - 60
-    span = (DRUM_TX + HANGER_OFFSET + 90) - x0
+    """Fixed HGR20 ceiling rails at the drum-frame post depths — LENGTHENED to span
+    both fore & aft hangers across the full slide: fore travels X-400..480, aft
+    travels X0..880, so the rail runs from the fore-camera end to the aft-transport end."""
+    x0 = ov.DRUM_CX - 70                                      # -470 (fore @ camera)
+    span = (DRUM_TX + HANGER_SPAN + 110) - x0                 # to ~990 (aft @ transport)
     p = []
     for yc in _post_centers():
         p.append(ruby_box(f"HGR20 ceiling rail (Yd{int(yc)})", x0, yc - 10, RAIL_BZ0,
@@ -276,43 +308,17 @@ def ceiling_rails():
 
 
 def ceiling_hanger(cx, alpha=1.0, sfx=""):
-    """FORWARD-OFFSET ceiling hang. A top arm runs inboard from the drum frame at
-    Z2212-2240 (8mm UNDER the TL rail — it threads the window), to a hang point
-    offset +HANGER_OFFSET, where a vertical riser rises to the carriage. The hang
-    point stays inboard of the X150 rail throughout the slide, so NOTHING crosses
-    the rail and nothing is demountable."""
-    hx = cx + HANGER_OFFSET
+    """TWO vertical hangers per side (fore over the drum-frame post, aft over the
+    leaf jamb), each Yd line — they straddle the assembly so the weight is
+    distributed and balanced (no tipping). All vertical (load straight down). They
+    cross the X150 plane during the slide, where the TL rail is REMOVED for transport."""
     p = []
     for yc in _post_centers():
-        p.append(ruby_box(f"Top arm — UNDER TL rail{sfx}", cx, yc - 25, ARM_Z0,
-                          HANGER_OFFSET, 50, ARM_Z1 - ARM_Z0, color=C_STEEL, alpha=alpha))
-        p.append(ruby_box(f"Vertical riser (inboard of rail){sfx}", hx - 25, yc - 25, ARM_Z1,
-                          50, 50, CARR_Z0 - ARM_Z1, color="#B03030", alpha=alpha))
-        p.append(ruby_box(f"Slide carriage (HGH20CA){sfx}", hx - 22, yc - 22, CARR_Z0,
-                          44, 44, CARR_Z1 - CARR_Z0, color="#B03030", alpha=alpha))
-    return '\n'.join(p)
-
-
-def bottom_guide(cx, alpha=1.0, sfx=""):
-    """Bottom guide rollers on the assembly — run in the fixed floor channel and
-    react the forward-offset tipping/lateral load (so the load path is still sound
-    without a vertical hanger over the CG)."""
-    p = []
-    for yc in _post_centers():
-        p.append(ruby_cylinder(f"Bottom guide roller{sfx}", cx, yc, WIN_Z0, 28, ARM_Z1 - ARM_Z0,
-                               color="#B03030", alpha=alpha, axis="z"))
-    return '\n'.join(p)
-
-
-def floor_guide():
-    """FIXED floor guide channel at sill level (Z190..218) spanning the assembly
-    travel — the bottom rollers run in it. Threads OVER the BL rail (150-190)."""
-    x0 = ov.DRUM_CX - 60
-    span = (DRUM_TX + 120) - x0
-    p = []
-    for yc in _post_centers():
-        p.append(ruby_box(f"Floor guide channel (Yd{int(yc)})", x0, yc - 38, WIN_Z0,
-                          span, 76, 28, color=C_STEEL))
+        for nm, hx in _hanger_xs(cx):
+            p.append(ruby_box(f"Slide carriage {nm} (HGH20CA){sfx}", hx - 22, yc - 22, CARR_Z0,
+                              44, 44, CARR_Z1 - CARR_Z0, color="#B03030", alpha=alpha))
+            p.append(ruby_box(f"Vertical hanger {nm}{sfx}", hx - 25, yc - 25, WIN_Z1,
+                              50, 50, CARR_Z0 - WIN_Z1, color="#B03030", alpha=alpha))
     return '\n'.join(p)
 
 
@@ -324,7 +330,7 @@ def leaf_backbone(x, alpha=1.0, suffix=""):
 
 
 POINT_LABELS = [
-    (RAIL_X, 1181, TL_Z1, "FILM RAILS (left)\nthe obstacle", 1500, 0, 120),
+    (RAIL_X, 1181, BL_Z1, "PERMANENT film structure\n(BL rail + verts + brace) —\nassembly threads this", 1500, 0, 900),
     (DRUM_TX, DRUM_CY, DRUM_Z1, "DRUM in STEEL FRAME\ntop+bottom bearings\nframe threads window\n(body 218-2220)",
      -650, -300, 260),
     (RAIL_X, VERT_NEAR_Y0, 1600, "BRACE VERT (upright)\nPERMANENT — leaf\nthreads between", -900, -500, 250),
@@ -333,8 +339,8 @@ POINT_LABELS = [
     (LEAF_X, 360, 1400, "SIDE LEAVES\nmounted to drum frame —\nONE rigid assembly,\nthread Yd158-2254 x Z205-2233", 600, -520, 250),
     (DRUM_TX + 200, DRUM_CY - DRUM_R, 1000, "DRUM SIDE LIGHT-SEALS\n90° to panel, butt the\ndrum housing (close the\nflat-panel-to-round-drum gap)", -200, -650, 400),
     (ov.WALKWAY_LEFT_X - 30, 800, 200, "WALKWAY SUPPORTS\n(floor-leg cantilevers)", -500, -650, 700),
-    (DRUM_TX + HANGER_OFFSET, 683, RAIL_BZ1, "FORWARD-OFFSET HANGER\nhang point inboard of rail —\ntop arm threads UNDER TL rail,\nNOTHING demountable", 200, -380, 170),
-    (DRUM_TX, 683, 800, "BOTTOM GUIDE ROLLER\nin fixed floor channel —\nreacts the offset tipping\n(threads over BL rail)", 350, -550, 250),
+    (DRUM_TX + HANGER_SPAN // 2, 683, RAIL_BZ1, "TWO HANGERS PER SIDE (fore+aft)\nstraddle the assembly — weight\ndistributed, balanced, vertical\n(cross X150 where TL rail removed)", 250, -360, 200),
+    (RAIL_X, RAIL_Y0 + 400, TL_Z1, "TL RAIL — REMOVABLE\nlifted out for transport so the\nsuspended assembly slides through\n(installed in camera scene)", 1400, 0, 150),
 ]
 
 
@@ -352,11 +358,11 @@ def generate_ruby():
     comps = '\n'.join([
         # ── fixed (present in every scene) ──
         component("Context", "Context", context()),
-        component("Film Rails (left)", "Film Rails", film_rails()),
+        component("Film Rails (permanent: BL + brace)", "Film Rails", film_rails()),
+        component("FP Rail TL (removable)", "TL Rail (removable)", tl_rail_removable()),
         component("Brace verts (permanent)", "Brace verts", brace_verts()),
         component("Fixed Frame (header/sill/jambs)", "Fixed Frame", fixed_header_sill()),
         component("HGR20 Ceiling Rails (fixed)", "Bearing Rail", ceiling_rails()),
-        component("Floor Guide Channel (fixed)", "Floor Guide", floor_guide()),
         component("Walkway Supports", "Walkway Supports", walkway_supports()),
         component("Walkway Grate (installed)", "Walkway Grate", walkway_grate()),
         # ── ONE rigid moving assembly @ TRANSPORT: drum frame + side leaves slide
@@ -365,15 +371,13 @@ def generate_ruby():
                   sliding_leaf(LEAF_X) + "\n" + leaf_backbone(LEAF_X)
                   + "\n" + drum_side_seals(LEAF_X)),
         component("Drum + frame — transport", "Drum (transport)", drum_assembly(DRUM_TX, LEAF_X)),
-        component("Slide hanger — transport", "Slide hanger (transport)",
-                  ceiling_hanger(DRUM_TX) + "\n" + bottom_guide(DRUM_TX)),
+        component("Slide hanger — transport", "Slide hanger (transport)", ceiling_hanger(DRUM_TX)),
         # ── same rigid assembly @ CAMERA / operating (leaf X0, drum X-400) ──
         component("Side leaves — camera", "Leaf (camera)",
                   sliding_leaf(0) + "\n" + leaf_backbone(0)
                   + "\n" + drum_side_seals(0)),
         component("Drum + frame — camera", "Drum (camera)", drum_assembly(ov.DRUM_CX, 0)),
-        component("Slide hanger — camera", "Slide hanger (camera)",
-                  ceiling_hanger(ov.DRUM_CX) + "\n" + bottom_guide(ov.DRUM_CX)),
+        component("Slide hanger — camera", "Slide hanger (camera)", ceiling_hanger(ov.DRUM_CX)),
         # ── ghosts ──
         component("Drum camera-position ghost", "Drum (camera ghost)", drum_ghost(ov.DRUM_CX)),
         # ghost of the assembly with the DRUM FRAME at the rail plane (X150): the
@@ -382,8 +386,7 @@ def generate_ruby():
         component("Assembly rail-crossing ghost", "Crossing ghost",
                   drum_assembly(RAIL_X, RAIL_X + 400, alpha=0.20, sfx=" (x)") + "\n"
                   + sliding_leaf(RAIL_X + 400, alpha=0.18, suffix=" (x)") + "\n"
-                  + ceiling_hanger(RAIL_X, alpha=0.30, sfx=" (x)") + "\n"
-                  + bottom_guide(RAIL_X, alpha=0.30, sfx=" (x)")),
+                  + ceiling_hanger(RAIL_X, alpha=0.30, sfx=" (x)")),
     ])
     tags_ruby = '\n'.join(
         f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
@@ -433,13 +436,14 @@ def isocam(model, dir, cx, cy, cz, zoom)
   model.active_view.zoom(zoom)
 end
 
-# 1) clearance iso — transport solids + crossing/camera ghosts, hide camera solids + grate
-show_only.call(CAM + ["Walkway Grate"])
+# 1) clearance iso — transport solids + crossing/camera ghosts, hide camera solids,
+#    grate, AND the removable TL rail (removed for transport)
+show_only.call(CAM + ["Walkway Grate", "TL Rail (removable)"])
 isocam(model, iso_dir, 760, 1181, 1200, 0.80)
 p1 = model.pages.add("Transport — iso (labeled)"); p1.use_camera = true
 
 # 2) side elevation along −Y (Z-bands stack) — same vis, labels off
-show_only.call(CAM + ["Walkway Grate"])
+show_only.call(CAM + ["Walkway Grate", "TL Rail (removable)"])
 model.layers["Labels"].visible = false if model.layers["Labels"]
 eye2 = Geom::Point3d.new(900.mm, -5500.mm, 1240.mm)
 ctr2 = Geom::Point3d.new(900.mm, 1181.mm, 1240.mm)
@@ -450,7 +454,7 @@ model.active_view.zoom(0.85)
 p2 = model.pages.add("Transport — side elevation (Z clearances)"); p2.use_camera = true
 
 # 3) panel assembly only (transport) — just panel frame + leaf + drum + bearing
-show_only.call(CAM + GHOSTS + ["Walkway Grate", "Context", "Film Rails", "Brace verts", "Walkway Supports"])
+show_only.call(CAM + GHOSTS + ["Walkway Grate", "TL Rail (removable)", "Context", "Film Rails", "Brace verts", "Walkway Supports"])
 isocam(model, iso_dir, 470, 1181, 1220, 0.90)
 p3 = model.pages.add("Panel assembly only"); p3.use_camera = true
 
@@ -459,8 +463,8 @@ show_only.call(TRN + GHOSTS)
 isocam(model, iso_dir, 50, 1181, 1200, 0.74)
 p4 = model.pages.add("System — camera position"); p4.use_camera = true
 
-# 5) FULL SYSTEM — transport position (leaf X880, drum X480, grate removed, camera ghost)
-show_only.call(CAM + ["Walkway Grate", "Crossing ghost"])
+# 5) FULL SYSTEM — transport position (leaf X880, drum X480, grate + TL rail removed)
+show_only.call(CAM + ["Walkway Grate", "Crossing ghost", "TL Rail (removable)"])
 isocam(model, iso_dir, 470, 1181, 1200, 0.78)
 p5 = model.pages.add("System — transport position"); p5.use_camera = true
 

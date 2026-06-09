@@ -46,6 +46,7 @@ from tbs_constants import (
     IBC_COL_X, IBC_W, IBC_H_STK, IBC_H_600,
     IBC_FAR_Y,
     PANEL_CORNER_T, PANEL_CENTER_T,
+    PIVOT_X, PIVOT_YD, SWING_LOCK_DEG,
     RAIL_X_L, RAIL_X_R,
     FAN_A_H, FAN_B_H, FAN_A_YD, FAN_B_YD, FAN_DIAM, DUCT_HEIGHT,
     DIAGRAMS_DIR, 
@@ -182,14 +183,19 @@ def sheet1():
             ha="center", va="center", fontsize=FS_SM-1.5, color=C_OUT,
             style="italic", zorder=6)
 
-    # Revolving drum — transport position ghost (panel slid 300mm inward)
-    DRUM_TRANSPORT_CX = DRUM_CX + 300
+    # Revolving drum — transport position ghost (SWUNG ~56° about the Ø89 pivot post).
+    # rev10: the panel + drum REVOLVE about the pivot (PIVOT_X, PIVOT_YD), not slide.
+    # The swing is a horizontal rotation (X-Yd plane) foreshortened in this long-section,
+    # so we show the drum at its swung X. See hinged-panel Sheet 4 for the true plan.
+    _t = math.radians(SWING_LOCK_DEG)
+    DRUM_TRANSPORT_CX = (PIVOT_X + (DRUM_CX - PIVOT_X) * math.cos(_t)
+                         - (DRUM_CY - PIVOT_YD) * math.sin(_t))
     ax.add_patch(mpatches.Rectangle(
         (DRUM_TRANSPORT_CX - DRUM_R, RAIL_OFF), DRUM_D, DRUM_H_ELV,
         facecolor="none", edgecolor=C_OUT, linewidth=1.0,
         ls=(0, (5, 3)), alpha=0.35, zorder=4))
     ax.text(DRUM_TRANSPORT_CX, RAIL_OFF + DRUM_H_ELV / 2,
-            "DRUM\n(TRANSPORT)",
+            "DRUM\n(SWUNG 56°,\nTRANSPORT)",
             ha="center", va="center", fontsize=FS_SM - 2,
             color=C_DIM, style="italic", alpha=0.5, zorder=5)
 

@@ -119,8 +119,14 @@ container so the cargo doors close. Decisions and rationale:
    **bottom-L** (re-added after the near-corner erase) + surviving bottom-R/right strips. All
    on the Panel-skin tag. *(Open detail: the cut-seal bulb profile + the moving panel's seat
    against the door-frame top/bottom lips when shut — refine with the latch design.)*
-3. **Film-plane left-rail removal** mechanism — demount, re-seat, and alignment back to the
-   film-plane datum after transport.
+3. ~~**Film-plane left-rail removal** mechanism — demount, re-seat, and alignment back to the
+   film-plane datum after transport.~~ **RESOLVED** — each left rail (TL/BL) drops into a
+   **U-saddle** at both ends (shelf + X-side cheeks), located by a **tapered dowel** back to
+   the film datum and held by a **removable clamp bar**; the rail lifts straight up for
+   transport, no threading. The far-end saddle bolts to the **Ø89 pivot post**, sat clear of
+   the rotating hub band. In the model (rails ghosted = struck; saddles fixed). Also extended
+   the film-cage **brace beams to the cargo-door edge (X0)**. *(Open detail: rail stowage
+   clips + a weight/2-person handling check on the ~2.2 m rails.)*
 4. **Fan B** — confirm intake/duct routing still works on the swinging part.
 5. **Drum bearings** — top central (top-suspended) + bottom; confirm the bottom cross-member
    bearing reads as a floor-gap threshold (no trip), per the agreed "cross-members top+bottom"

@@ -198,27 +198,11 @@ def sheet1():
     leader(ax, (hx_handle + HW / 2, HY), (DX + DRUM_D + 300, HY + 300),
            "100mm PULL HANDLE\n(INTERIOR FACE — HIDDEN)\nWelded bracket\nno through-hole")
 
-    # ── Hinges (3 × left edge from exterior view) ────────────────────────────
+    # ── (rev10: the left-edge barrel hinges are RETIRED — the panel pivots on the
+    #    Ø89 post at the FAR edge, not on left-edge hinges. The HINGE_* values are kept
+    #    only as left-edge layout references for the swing note + dimension positions.) ──
     HINGE_YS = [220, 1190, PH - 230]
     HINGE_W = 85; HINGE_L = 220
-    for hy in HINGE_YS:
-        # Hinge leaf (exterior face)
-        ax.add_patch(Rectangle((-HINGE_W, hy - HINGE_L // 2), HINGE_W, HINGE_L,
-                                fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=6))
-        ax.add_patch(Circle((-HINGE_W / 2, hy), 22, fc=C_OUT, ec=BG, lw=0.8, zorder=7))
-        # Extension line to hinge pin axis
-        ax.plot([-HINGE_W / 2, -HINGE_W / 2], [hy - 8, hy + 8],
-                color=BG, lw=1.5, zorder=8)
-
-    # Hinge pin axis line
-    ax.plot([-HINGE_W / 2, -HINGE_W / 2], [-60, PH + 80],
-            color=C_CL, lw=0.9, ls="--", zorder=4)
-    ax.text(-HINGE_W / 2, PH + 100, "HINGE PIN AXIS — 180° SWING",
-            color=C_CL, fontsize=6.5, ha="center", va="bottom", **FONT, zorder=15)
-
-    leader(ax, (-HINGE_W / 2, HINGE_YS[1]),
-           (-HINGE_W - 280, HINGE_YS[1] + 300),
-           "HEAVY-DUTY WELD-ON BARREL HINGES\n(sized for the bay leaf + tipping\ncouple — STRUCTURAL SIGN-OFF)")
 
     # ── Sliding carriage system ─────────────────────────────────────────────
     # The entire panel slides 300mm in the X direction (into the container)
@@ -315,14 +299,7 @@ def sheet1():
     dim_v(ax, DX - 200, DY_BOT, DY_TOP, f"{DRUM_H}mm\nCLEAR HEIGHT", offset=25)
     # Drum center from left
     dim_h(ax, 0, DRUM_CX, DY_BOT - 180, f"{int(DRUM_CX)}mm  (PANEL CL — CENTERED)", offset=-50)
-    # Hinge positions from floor
-    for hy in HINGE_YS:
-        ax.plot([-HINGE_W - 10, -HINGE_W - 80], [hy, hy],
-                color=C_DIM, lw=0.6, ls="--", zorder=3)
-        ax.text(-HINGE_W - 90, hy, f"{hy}", color=C_DIM, fontsize=6,
-                ha="right", va="center", **FONT, zorder=15)
-    hinge_2_flr = round(HINGE_YS[0] - HINGE_L/2)
-    dim_v(ax, -HINGE_W - 100, hinge_2_flr, HINGE_YS[0] - HINGE_L, f"HINGE CL HEIGHT\nFROM FLOOR {hinge_2_flr}mm", offset=-320)
+    # (hinge-position dims retired with the barrel hinges — the panel pivots on the post.)
 
 #     ax.text(-HINGE_W - 80, 90, "HINGE CL HEIGHT\nFROM FLOOR (mm)",
 #             color=C_DIM, fontsize=6, ha="right", va="top", **FONT, zorder=15)
@@ -555,15 +532,15 @@ def sheet2():
 
     leader(ax, (rail_left_x + RAIL_W / 2, Y0_W + WALL_T / 2),
            (rail_left_x - 200, Y_LO + 160),
-           "HGR20 RAIL\n(FLOOR/CEILING)\n500mm X-TRAVEL", col=C_RAIL, fs=6)
+           "NEAR EDGE — swings free\n(rev10: no slide rail;\npanel pivots at the far edge)", col=C_DIM, fs=6)
     leader(ax, (rail_left_x + CBEAM / 2, Y0_PL + CORNER_T / 2),
            (rail_left_x - 200, Y_HI - 80),
            "CARRIAGE BEAM\n60×60mm SHS\n+ BRUSH SEAL", col=C_CARR, fs=6)
 
-    # RIGHT SIDE — guide rail + carriage blocks (no separate beam)
+    # RIGHT (far) edge — the vertical PIVOT POST (rev10: replaces the slide guide rail)
     rail_right_x = PW + 60
     ax.add_patch(Rectangle((rail_right_x, -20), RAIL_W, WALL_T + PT + 40,
-                            fc=C_RAIL, ec=C_OUT, lw=0.8, alpha=0.6, zorder=5))
+                            fc="#5A5AA0", ec=C_OUT, lw=0.8, alpha=0.85, zorder=5))
     # Brush seal strip (right slot)
     ax.add_patch(Rectangle((PW - brush_w, Y0_W), brush_w, Y1_PL2 - Y0_W,
                             fc="#806040", ec=C_OUT, lw=0.5, zorder=6, alpha=0.8))
@@ -572,7 +549,7 @@ def sheet2():
 
     leader(ax, (rail_right_x + RAIL_W / 2, Y0_W + WALL_T / 2),
            (rail_right_x + 200, Y_LO + 160),
-           "HGR20 RAIL\n(FLOOR/CEILING)\n500mm X-TRAVEL", col=C_RAIL, fs=6)
+           "PIVOT POST Ø89 CHS\n(vertical swing axis —\nno slide rail)", col="#5A5AA0", fs=6)
     leader(ax, (PW + brush_w / 2, Y0_PL + PT / 2),
            (rail_right_x + 200, Y_HI - 80),
            "GUIDE SLOT\n+ BRUSH SEAL\n(DOUBLED NYLON)", col=C_CARR, fs=6)
@@ -942,24 +919,18 @@ def sheet3():
                                 RAIL_BLOCK_L, RAIL_BLOCK_H,
                                 fc=C_RAIL_S3, ec=C_OUT, lw=0.6, alpha=0.4, zorder=4))
 
-    # Rail labels — placed well clear of dimension lines below
+    # Rail labels (rev10: the floor/ceiling HGR20 slide rails are RETIRED — the panel
+    # pivots on the Ø89 post; the rail profiles above are shown faint as the old route).
     leader(ax, (RAIL_FLOOR_X + RAIL_PROF_L, RAIL_FLOOR_Y + RAIL_PROF_H / 2),
            (RAIL_FLOOR_X + RAIL_PROF_L + 200, RAIL_FLOOR_Y - 130),
-           "HGR20 FLOOR RAIL\n(BOTH WALLS, 500mm)",
-           col=C_RAIL_S3, fs=5.5)
-    leader(ax, (RAIL_FLOOR_X + RAIL_PROF_L, H_CEILING - RAIL_PROF_H / 2),
-           (RAIL_FLOOR_X + RAIL_PROF_L + 130, H_CEILING + 50),
-           "HGR20 CEILING RAIL\n(BOTH WALLS, 500mm)",
-           col=C_RAIL_S3, fs=5.5)
+           "(former HGR20 slide rails —\nRETIRED; panel now SWINGS\nabout the Ø89 pivot post)",
+           col=C_DIM, fs=5.5)
 
-    # Slide travel arrow (below overhang dimensions, clear of title block)
+    # Swing note (replaces the old slide-travel arrow)
     ARROW_Y = RAIL_FLOOR_Y - 160
-    ax.annotate("", xy=(Y0_W, ARROW_Y), xytext=(Y0_W + SLIDE_TRAVEL, ARROW_Y),
-                arrowprops=dict(arrowstyle="<->", color=C_RAIL_S3, lw=1.0,
-                                mutation_scale=8), zorder=9)
-    ax.text(Y0_W + SLIDE_TRAVEL / 2, ARROW_Y - 15,
-            f"{SLIDE_TRAVEL}mm SLIDE TRAVEL", ha="center", va="top",
-            fontsize=5.5, color=C_RAIL_S3, **FONT, zorder=15)
+    ax.text(Y0_W + 300, ARROW_Y - 15, "PANEL SWINGS 56° ABOUT THE PIVOT (no slide) — see Sheet 4",
+            ha="center", va="top", fontsize=5.5, color="#1763C8",
+            fontweight="bold", **FONT, zorder=15)
 
     # ── Lower bearing housing ─────────────────────────────────────────────────
     ax.add_patch(plt.Rectangle((D_DEPTH_L - 35, H_BRG_BOT),
@@ -1186,7 +1157,7 @@ def sheet3():
                     arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8,
                                     shrinkA=1, shrinkB=1), zorder=24)
         ax.text(tx, ty, text, fontsize=6.0, color=C_DIM, ha="left", va="center", **FONT)
-    dlbl((DX(20), DY(165)), DY(172), "Cam latch compresses panel\nonto seal (release to slide)")
+    dlbl((DX(20), DY(165)), DY(172), "Cam latch compresses panel\nonto seal (release to swing)")
     dlbl((DX(20), DY(120)), DY(138), "Panel bottom edge\n(40 mm corner zone)")
     dlbl((DX(-10), DY(100)), DY(108), "20 mm EPDM — panel\nrecedes into / seals on lip")
     dlbl((DX(-26), DY(64)), DY(74), "Frame seal lip — steel upstand\nfrom threshold (notched at drum)")
@@ -1251,7 +1222,7 @@ def sheet3():
                     arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8,
                                     shrinkA=1, shrinkB=1), zorder=24)
         ax.text(tx, ty, text, fontsize=6.0, color=C_DIM, ha="left", va="center", **FONT)
-    clbl((CX(30), CY(55)), CY(96), "Panel hangs below the ceiling\nrails — this gap is the light path")
+    clbl((CX(30), CY(55)), CY(96), "Panel top gap is the light path\n(carried by the pivot post — not ceiling-hung)")
     clbl((CX(-40), CY(64)), CY(62), "Frame top rail (50×50 RHS)")
     clbl((CX(-26), CY(30)), CY(28), "Top seal lip — steel downstand,\nfull width (continuous, meets at center)")
     clbl((CX(-10), CY(-20)), CY(-10), "20 mm EPDM — panel top\nedge seals on lip")

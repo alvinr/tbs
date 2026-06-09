@@ -111,11 +111,56 @@ def axle():
     ])
 
 
+def _rail_saddle(ys, z):
+    """Drop-in U-saddle cradling a 40x40 rail end (#3): a shelf + two X-side cheeks the
+    rail drops into, a tapered locating dowel that sets the rail back to the film datum
+    on re-fit, and a removable clamp bar pulling it down. Fixed to the post — the rail
+    lifts straight up out of it for transport."""
+    c, cclamp, cdowel = ov.C_STEEL, "#7A7A82", "#9A9AA2"
+    return '\n'.join([
+        ov.ruby_box("Rail saddle shelf", 133, ys, z - 14, 74, 80, 14, color=c),
+        ov.ruby_box("Rail saddle cheek -X", 133, ys, z, 12, 80, 44, color=c),
+        ov.ruby_box("Rail saddle cheek +X", 195, ys, z, 12, 80, 44, color=c),
+        ov.ruby_box("Rail clamp bar (removable)", 133, ys + 22, z + 40, 74, 36, 14, color=cclamp),
+        ov.ruby_cylinder("Rail locating dowel (taper)", 170, ys + 40, z - 14, 5, 22, color=cdowel, axis="z"),
+    ])
+
+
+def film_plane_left_ext():
+    """Study variant of lt.film_plane_left(): (a) the X-running brace beams are extended
+    back to the cargo-door container edge (X0) instead of starting at the rail line (X150),
+    tying the film-plane cage to the door-end structure; (b) adds the #3 removable-rail
+    drop-in saddles at all four rail ends. The two left RAILS (TL/BL) are ghosted (lifted
+    out for transport) by the post-build step; the saddles stay solid (fixed to the posts).
+    The far brace post is still erased post-build (the Ø89 pivot replaces it; that saddle
+    bolts to the pivot post, sat clear of the rotating hub band)."""
+    rail = 40
+    s = ov.BRACE_RHS                            # 50
+    xL = ov.RAIL_X_L                            # 150
+    z_bot = ov.RAIL_OFF                         # 100
+    z_top = ov.C_HGT - ov.RAIL_OFF - rail       # 2248
+    yN, yF = ov.FP_Y_MIN, ov.FP_Y               # 100, 2262
+    blen = lt.PARTIAL_X                          # beams now run X0..PARTIAL_X (door edge → crop)
+    C = ov.C_STEEL
+    parts = [
+        ov.ruby_box("FP Rail BL (lower left)", xL, yN, z_bot, rail, yF - yN, rail, color=C),
+        ov.ruby_box("FP Rail TL (upper left)", xL, yN, z_top, rail, yF - yN, rail, color=C),
+    ]
+    for py, pn in [(yN, "near wall"), (yF, "far wall")]:
+        parts.append(ov.ruby_box(f"FP Brace Beam Lower ({pn})", 0, py, z_bot, blen, s, s, color=C))
+        parts.append(ov.ruby_box(f"FP Brace Beam Upper ({pn})", 0, py, z_top, blen, s, s, color=C))
+        parts.append(ov.ruby_box(f"FP Brace Post L ({pn})", xL, py, z_bot, s, s, z_top - z_bot, color=C))
+    for ys in (yN, yF - 80):                     # saddles just inside each rail end
+        parts.append(_rail_saddle(ys, z_bot))    # BL ends
+        parts.append(_rail_saddle(ys, z_top))    # TL ends
+    return '\n'.join(parts)
+
+
 def fixed_components():
     return '\n'.join([
         component("Context (ghost)", "Context", lt.context(x_far=WALL_FAR)),
         component("Fixed Door Frame", "Door Frame", lt.door_frame(include_seal=False)),
-        component("Film-Plane Rails (left — removable)", "Film Plane Rails", lt.film_plane_left()),
+        component("Film-Plane Rails (left — removable)", "Film Plane Rails", film_plane_left_ext()),
         component("Pivot bearings", "Pivot Axle", axle()),
         component("Fixed left panel", "Near Leaf", near_leaf()),
         component("Walkways (near + far)", "Walkways", walkways()),
@@ -297,7 +342,7 @@ if fpdef
   }}
 end
 ganc = Geom::Point3d.new(150.mm, 600.mm, 1700.mm)
-gtxt = entities.add_text("LEFT top+bottom film beams\nGHOSTED = removable for transport", ganc,
+gtxt = entities.add_text("LEFT rails TL+BL GHOSTED = removable:\ndrop-in U-saddles + taper dowels (datum)\n+ clamp bar; lift straight up for transport.\nBrace beams now run to the door edge (X0).", ganc,
                          Geom::Vector3d.new((-700).mm, (-200).mm, 250.mm))
 gtxt.layer = model.layers["Labels"] rescue nil
 

@@ -1558,10 +1558,12 @@ def sheet4():
              "TEARDOWN:  strike the left rails → lift the left\n"
              "walkway + near-deck section → unlatch → swing 56°\n"
              "→ engage top+bottom wall stays → close doors.")
-    ax.add_patch(FancyBboxPatch((1440, 360), 880, 2150,
+    # notes box raised into the upper-right so it clears the swung panel's near-end
+    # (which sweeps to ~X1824/Yd964) — rule 35: never sit text on drawing geometry.
+    ax.add_patch(FancyBboxPatch((1430, 1370), 900, 1170,
                                 boxstyle="round,pad=8,rounding_size=16",
-                                fc="#FBFBFD", ec=C_DIM, lw=1.0, zorder=2))
-    ax.text(1470, 2440, notes, fontsize=8.6, color="#26323a", **FONT, va="top", zorder=12)
+                                fc="#FBFBFD", ec=C_DIM, lw=1.0, zorder=20))
+    ax.text(1460, 2500, notes, fontsize=8.6, color="#26323a", **FONT, va="top", zorder=21)
 
     title_block(ax, "SHEET 4 OF 5",
                 drawing_title="HINGED LIGHT-TRAP PANEL",

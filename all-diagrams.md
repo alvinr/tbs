@@ -116,7 +116,7 @@
 
 ![TBS-001 Hinged Panel — Sheet 3: Drum Vertical Section](assets/hingepanel-sheet3.png)
 
-![TBS-001 Hinged Panel — Sheet 4: Sliding Rail Transport System](assets/hingepanel-sheet4.png)
+![TBS-001 Hinged Panel — Sheet 4: Rotating Transport + Swing Clearance](assets/hingepanel-sheet4.png)
 
 ---
 

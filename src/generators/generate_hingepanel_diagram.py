@@ -353,7 +353,7 @@ def sheet1():
             color=C_CL, fontsize=6.5, ha="center", va="bottom", **FONT, alpha=0.8, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 6",
+    title_block(ax, "SHEET 1 OF 5",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FRONT ELEVATION — EXTERIOR VIEW",
                 scale_note="SCALE 1:20",
@@ -742,7 +742,7 @@ def sheet2():
             fontweight="bold", **FONT, zorder=15)
 
     # ── Title block ────────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 6",
+    title_block(ax, "SHEET 2 OF 5",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="PLAN CROSS-SECTION (SECTION A-A AT H=1000mm) — HOUSED REVOLVING DOOR (HOUSING + C-SHELL DRUM, NO FINS)",
                 scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
@@ -1275,7 +1275,7 @@ def sheet3():
     clbl((CX(20), CY(-95)), CY(-92), "Panel top edge")
 
     # ── Title block (portrait sheet — taller box, smaller fonts, clipped) ──────
-    title_block(ax, "SHEET 3 OF 6",
+    title_block(ax, "SHEET 3 OF 5",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="DRUM ELEVATION — SECTION A-A: VERTICAL DRUM, WALKING HEIGHT",
                 scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
@@ -1287,247 +1287,6 @@ def sheet3():
     print("  diagrams/hingepanel-sheet3.png saved")
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 4  —  Sliding Rail Transport System (plan view at floor level)
-#
-# Shows: panel slide rails (HGR20), drum dolly tracks (V-groove), fixed door
-# frame, and both operational / transport positions.
-#
-# Horizontal axis = X (container long axis, 0 = wall inner face at cargo door)
-# Vertical axis   = Yd (container width, 0 = pinhole wall)
-# ═══════════════════════════════════════════════════════════════════════════════
-def sheet4():
-    import matplotlib.patches as mpatches
-    from tbs_constants import (C_WID, PANEL_CORNER_T, PANEL_CENTER_T,
-                               PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
-                               PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD,
-                               FAR_STRIP_YD0, PIVOT_POST_OD, BAY_FRONT_X,
-                               ZONE_L_END, WALL_T as C_WALL_T)
-
-    # ── Layout constants ─────────────────────────────────────────────────────
-    # Plan view:  horizontal = Yd (container width, 0 → C_WID)
-    #             vertical   = X  (depth from wall inner face, positive inward)
-    # This matches the Sheet 2 convention and the floorplan left-end detail.
-    PANEL_CT = PANEL_CORNER_T   # = 40mm
-    PANEL_CC = PANEL_CENTER_T   # = 120mm
-    DR       = DRUM_R           # = 450mm (light trap drum)
-    HX, HY = PIVOT_X, PIVOT_YD            # pivot: X-depth=175, Yd=2287
-    CUT, FAR0, LOCK = PANEL_CUT_YD, FAR_STRIP_YD0, SWING_LOCK_DEG
-    DCX = -400                            # drum center X (stepped OUT via the bay)
-
-    # ── Figure — landscape, Yd horizontal, X vertical ────────────────────────
-    # Yd range is ~3100mm but X range is only ~840mm. Increase vertical padding
-    # so the diagram fills the figure and text is readable.
-    PAD_L = 350     # left of Yd=0 — room for dims + slide labels
-    PAD_R = 380     # right of Yd=C_WID — room for legend + callouts
-    PAD_B = 550     # below wall exterior — room for notes + title block
-    PAD_T = 300     # headroom above the swung assembly
-
-    YD_LO = -PAD_L
-    YD_HI = C_WID + PAD_R
-    X_LO  = -C_WALL_T - PAD_B
-    # The swing carries the drum/bay deep inboard (~X1838 + drum radius), so the X range
-    # must reach well past the slide's old shallow extent.
-    X_HI  = 2700 + PAD_T
-
-    fig, ax = plt.subplots(figsize=(15, 14))
-    fig.patch.set_facecolor(BG)
-    ax.set_facecolor(BG)
-    ax.set_xlim(YD_LO, YD_HI)
-    ax.set_ylim(X_LO, X_HI)
-    ax.set_aspect("equal")
-    ax.axis("off")
-
-    # ── Axis labels ──────────────────────────────────────────────────────────
-    ax.text(C_WID / 2, X_LO + 15, "Yd  (container width)  →",
-            ha="center", va="bottom", fontsize=7, color=C_DIM,
-            **FONT, zorder=15, style="italic")
-    ax.text(YD_LO + 15, ZONE_L_END / 2,
-            "X  (depth from wall)  →",
-            ha="left", va="center", fontsize=7, color=C_DIM,
-            **FONT, zorder=15, style="italic", rotation=90)
-
-    # ── Background zone tints ────────────────────────────────────────────────
-    # Exterior zone (below wall)
-    ax.add_patch(Rectangle((YD_LO, X_LO), YD_HI - YD_LO, C_WALL_T + PAD_B,
-                            fc="#F0EDE8", ec="none", zorder=1))
-    ax.text(C_WID / 2, X_LO + 70,
-            "EXTERIOR", color="#806050", fontsize=8, ha="center", va="bottom",
-            fontweight="bold", **FONT, zorder=2, alpha=0.5)
-    # Interior zone (above wall)
-    ax.add_patch(Rectangle((YD_LO, 0), YD_HI - YD_LO, X_HI,
-                            fc="#F8FAF8", ec="none", zorder=1))
-
-    # ── Container wall (X = -C_WALL_T to 0) — horizontal band ───────────────
-    ax.add_patch(Rectangle((0, -C_WALL_T), C_WID, C_WALL_T,
-                            fc=C_STEEL, ec=C_OUT, lw=1.5, hatch="///", zorder=3))
-    ax.text(-60, -C_WALL_T / 2, f"{int(C_WALL_T)}mm WALL",
-            ha="right", va="center", fontsize=6, color=C_DIM,
-            fontweight="bold", **FONT, zorder=15)
-
-    # ── Door closure plane (exterior face of wall at X = -C_WALL_T) ──────────
-    ax.plot([YD_LO + 60, YD_HI - 60], [-C_WALL_T, -C_WALL_T],
-            color="#804020", lw=1.2, ls=":", zorder=4, alpha=0.7)
-    ax.text(C_WID + 80, -C_WALL_T + 20, "DOOR CLOSURE PLANE",
-            ha="left", va="center", fontsize=6, color="#804020",
-            fontweight="bold", **FONT, zorder=15)
-
-    # ── Fixed door frame (at X=0, 50mm RHS) ─────────────────────────────────
-    FRAME_W = 50
-    ax.add_patch(Rectangle((0, 0), C_WID, FRAME_W,
-                            fc="none", ec="#806010", lw=2.0, ls="--", zorder=5))
-    leader(ax, (C_WID - 100, FRAME_W / 2), (C_WID + 175, 25),
-           "FIXED DOOR FRAME\n50×50mm RHS · SEAL LANDING", col="#806010", fs=6)
-
-    # ── ZONE_L_END boundary ──────────────────────────────────────────────────
-    ax.plot([YD_LO + 60, YD_HI - 60], [ZONE_L_END, ZONE_L_END],
-            color="#20A020", lw=1.5, ls=(0, (8, 4)), zorder=4, alpha=0.7)
-    ax.text(C_WID + 80, ZONE_L_END + 20,
-            f"ZONE_L_END = {ZONE_L_END}mm",
-            ha="left", va="center", fontsize=6.5, color="#20A020",
-            fontweight="bold", **FONT, zorder=15)
-    ax.text(C_WID + 80, ZONE_L_END - 35,
-            "(FILM PLANE LEFT EDGE)",
-            ha="left", va="center", fontsize=5.5, color="#20A020",
-            **FONT, zorder=15)
-
-    # ── Swing helpers (rotate about the vertical pivot at X=HX, Yd=HY) ───────
-    def rp(X, Yd, deg):
-        """Rotate (X-depth, Yd) about the pivot; return PLOT coords (Yd, X)."""
-        t = np.radians(deg); c, s = np.cos(t), np.sin(t)
-        Xr = HX + (X - HX) * c - (Yd - HY) * s
-        Ydr = HY + (X - HX) * s + (Yd - HY) * c
-        return (Ydr, Xr)
-
-    def spoly(pts_xyd, deg, **kw):
-        ax.add_patch(mpatches.Polygon([rp(X, Yd, deg) for (X, Yd) in pts_xyd],
-                                       closed=True, **kw))
-
-    # FIXED left panel (Yd0..CUT) + FIXED far strip (FAR0..C_WID) — do NOT swing
-    for (y0, y1, lbl) in [(0, CUT, "FIXED LEFT"), (FAR0, C_WID, "FIXED FAR")]:
-        ax.add_patch(Rectangle((y0, 0), y1 - y0, PANEL_CT, fc="#C8A060", ec=C_OUT,
-                               lw=1.4, zorder=8))
-        ax.text((y0 + y1) / 2, PANEL_CT + 35, lbl, ha="center", va="bottom",
-                fontsize=5.5, color="#6a4010", fontweight="bold", **FONT, zorder=15)
-
-    def draw_swinging(deg, alpha, lw, ec, tag):
-        """The SWINGING part (panel Yd CUT..FAR0 + bay + drum) rotated `deg`."""
-        zones = [(CUT, PANEL_CORNER_YD_L, PANEL_CT),
-                 (PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CC),
-                 (PANEL_CORNER_YD_R, FAR0, PANEL_CT)]
-        for (ya, yb, th) in zones:
-            fc = C_STEEL if th == PANEL_CC else C_ALUM
-            spoly([(0, ya), (th, ya), (th, yb), (0, yb)], deg,
-                  fc=fc, ec=ec, lw=lw, alpha=alpha, zorder=6)
-        # bay (center-zone box protruding out to BAY_FRONT_X) + light-trap drum
-        spoly([(BAY_FRONT_X, PANEL_CORNER_YD_L), (0, PANEL_CORNER_YD_L),
-               (0, PANEL_CORNER_YD_R), (BAY_FRONT_X, PANEL_CORNER_YD_R)], deg,
-              fc="none", ec=ec, lw=lw * 0.8, ls="--", alpha=alpha, zorder=6)
-        dctr = rp(DCX, C_WID / 2, deg)
-        ax.add_patch(Circle(dctr, DR, fc=C_LT_DRUM, ec=ec, lw=lw, alpha=alpha * 0.75, zorder=7))
-        ax.text(dctr[0], dctr[1], tag, ha="center", va="center", fontsize=6.5,
-                color=C_OUT, fontweight="bold", alpha=min(alpha + 0.35, 1.0), **FONT, zorder=15)
-
-    # CAMERA / operating (shut at the door, solid) + TRANSPORT (swung 56°, ghost)
-    draw_swinging(0,    0.9,  1.4, C_OUT,     "CAMERA")
-    draw_swinging(LOCK, 0.28, 1.1, "#1763C8", f"SWUNG {int(LOCK)}°")
-
-    # ── Pivot post (the swing axis = the film far-left upright) ───────────────
-    piv_plot = (HY, HX)
-    ax.add_patch(Circle(piv_plot, PIVOT_POST_OD / 2, fc="#5A5AA0", ec=C_OUT, lw=1.2, zorder=10))
-    leader(ax, piv_plot, (HY - 260, HX + 230),
-           f"PIVOT POST Ø{PIVOT_POST_OD}\n(= film far-left upright)", col="#5A5AA0", fs=6)
-
-    # ── Swing arc indicator (panel near edge sweeping CUT → swung) ───────────
-    arc_pts = [rp(0, CUT, d) for d in np.linspace(0, LOCK, 40)]
-    ax.plot([p[0] for p in arc_pts], [p[1] for p in arc_pts],
-            color="#1763C8", lw=1.4, ls=(0, (4, 2)), zorder=14)
-    mid = rp(0, CUT, LOCK * 0.6)
-    ax.annotate("", xy=arc_pts[-1], xytext=arc_pts[-3],
-                arrowprops=dict(arrowstyle="-|>", color="#1763C8", lw=2.0,
-                                mutation_scale=14), zorder=15)
-    ax.text(mid[0] - 40, mid[1] + 90, f"PANEL SWING\n{int(LOCK)}° about pivot",
-            ha="center", va="center", fontsize=7, color="#1763C8",
-            fontweight="bold", **FONT, zorder=15,
-            bbox=dict(boxstyle="round,pad=0.3", fc=BG, ec="#1763C8", lw=0.8, alpha=0.9))
-
-    # ── Removable left film rails (struck for transport so the cage transitions) ──
-    ax.plot([CUT, CUT], [-20, ZONE_L_END * 0.6], color="#C06000", lw=2.5,
-            ls=(0, (5, 3)), zorder=4, alpha=0.8)
-    leader(ax, (CUT, ZONE_L_END * 0.45), (CUT - 280, ZONE_L_END * 0.62),
-           "LEFT FILM RAILS (TL+BL)\nREMOVABLE — lift out for transport\n(drop-in saddles, re-seat to datum)",
-           col="#C06000", fs=6)
-
-    # ── Transport lock — top+bottom WALL STAYS (frame hook → near-wall eye) ──
-    sock = rp(20, 350, LOCK)        # the frame stay-hook, swung to its locked position
-    ax.plot([sock[0], C_WID], [sock[1], sock[1]], color="#C04010", lw=1.0, ls="--", zorder=4)
-    leader(ax, sock, (sock[0] + 120, sock[1] + 220),
-           "TRANSPORT STAYS (top+bottom)\nframe hook → near-wall eye\n(bolted plate anchor)",
-           col="#C04010", fs=6)
-
-    # ── Dimension lines ──────────────────────────────────────────────────────
-    # Panel thickness dims — use leaders into the panel zones for clarity
-    # Corner zone thickness
-    leader(ax, (PANEL_CORNER_YD_L / 2, PANEL_CT / 2),
-           (YD_LO + 160, PANEL_CT + 60),
-           f"{PANEL_CT}mm CORNER ZONE", col=C_DIM, fs=6)
-
-    # Center zone thickness
-    leader(ax, (C_WID / 2, PANEL_CC - 10),
-           (C_WID / 2 + 350, PANEL_CC + 60),
-           f"{PANEL_CC}mm CENTER ZONE", col=C_DIM, fs=6)
-
-    # (waste drum dimensions removed — drums eliminated in rev 5)
-
-    # Step transition Yd widths (top edge, well above ZONE_L_END)
-    _dim_top = ZONE_L_END + 60
-    dim_h(ax, 0, PANEL_CORNER_YD_L, _dim_top,
-          f"{PANEL_CORNER_YD_L}mm", offset=15, fs=6)
-    dim_h(ax, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, _dim_top,
-          f"{PANEL_CORNER_YD_R - PANEL_CORNER_YD_L}mm (CENTER)", offset=15, fs=6)
-    dim_h(ax, PANEL_CORNER_YD_R, C_WID, _dim_top,
-          f"{C_WID - PANEL_CORNER_YD_R}mm", offset=15, fs=6)
-
-    # ── Notes (left-justified, bottom left) ─────────────────────────────────
-    from tbs_constants import PANEL_FLOOR_GAP, PROC_TRAY_RIM
-    notes = [
-        f"TRANSPORT MODE — ROTATION",
-        f"1. Strike the left film rails (TL+BL) + lift out the left walkway + door-end near-deck section.",
-        f"2. Unlatch the swinging panel; SWING it {int(LOCK)}° about the pivot — the protruding drum/bay",
-        f"   pulls inboard of the door plane (true min X +59mm), so the cargo doors can close.",
-        f"3. The panel is split: FIXED left (Yd0-{CUT}) + SWINGING ({CUT}-{FAR0}) + FIXED far ({FAR0}-{C_WID}).",
-        f"4. Lock with top+bottom WALL STAYS (frame hook → bolted near-wall eye). 2-person / assisted swing.",
-        f"5. Carried by the pivot post (Ø{PIVOT_POST_OD} CHS) on thrust + top/bottom hub bearings — no ceiling rails.",
-        f"6. See models/lighttrap.skp (interactive swing) + the rotation design spec.",
-    ]
-    notes_x = YD_LO + 50
-    notes_y_top = X_LO + 150 + (len(notes) - 1) * 26
-    draw_notes(ax, notes, notes_x, notes_y_top, spacing=33,
-               fs=7, title_fs=7, color=C_DIM, title_color=C_DIM,
-               width=1070, font=FONT)
-
-    # ── Legend (right side, stacked vertically) ─────────────────────────────
-    legend_top = X_LO + 122 + len(notes) * 26 + 10 + 4 * 30 + 50
-    draw_legend(ax, [
-        ("#C8A060", 0.9,  "Fixed left / far panel"),
-        (C_STEEL,  0.9,  "Swinging part (camera)"),
-        (C_LT_DRUM, 0.7,  "Light trap drum"),
-        ("#5A5AA0", 0.9, "Pivot post"),
-        (C_STEEL,  0.28, "Swung 56° (ghost)"),
-    ], C_WID + 70, legend_top, row_h=30, swatch_w=20, swatch_h=14,
-       col_w=300, fs=5.5, font=FONT)
-
-    # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 4 OF 6",
-                drawing_title="HINGED LIGHT-TRAP PANEL",
-                subtitle="ROTATING TRANSPORT SYSTEM — PLAN VIEW AT FLOOR LEVEL",
-                scale_note="EQUAL ASPECT  \u00b7  ALL DIMS IN mm  \u00b7  SOLID = OPERATIONAL, GHOST = TRANSPORT",
-                doc_id="TBS-001 \u00b7 Hinged Light-Trap Panel",
-                height=0.06)
-
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet4.png"), dpi=130, bbox_inches="tight", facecolor=BG)
-    plt.close(fig)
-    print("  diagrams/hingepanel-sheet4.png saved")
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -1647,7 +1406,7 @@ def sheet5():
     ]):
         ax.text(-78, -130 - i * 38, line, ha="left", va="center", fontsize=8.4, color="#16361f", **FONT)
 
-    title_block(ax, "SHEET 5 OF 6",
+    title_block(ax, "SHEET 5 OF 5",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="REVOLVING-DOOR LIGHT LOCK (rev 8) — ACCESS & LIGHT-TIGHTNESS VERIFICATION (BOTH PASS)",
                 scale_note="PLAN VIEWS · NOT TO SCALE · ALL DIMS IN mm",
@@ -1661,8 +1420,8 @@ def sheet5():
 
 
 
-def sheet6():
-    """Swing clearance vs the film-plane left mechanism (plan, looking down)."""
+def sheet4():
+    """COMBINED rotation transport + swing-clearance plan (X horizontal)."""
     import matplotlib.patches as mpatches
     from tbs_constants import (PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD,
                                FAR_STRIP_YD0, PIVOT_POST_OD)
@@ -1758,15 +1517,15 @@ def sheet6():
                                 fc="#FBFBFD", ec=C_DIM, lw=1.0, zorder=2))
     ax.text(1470, 2440, notes, fontsize=8.6, color="#26323a", **FONT, va="top", zorder=12)
 
-    title_block(ax, "SHEET 6 OF 6",
+    title_block(ax, "SHEET 4 OF 5",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
-                subtitle="SWING CLEARANCE vs FILM-PLANE LEFT MECHANISM — STRIKE LEFT RAILS BEFORE SWINGING",
+                subtitle="ROTATING TRANSPORT + SWING CLEARANCE vs FILM-PLANE LEFT MECHANISM (PLAN)",
                 scale_note="PLAN VIEW · NOT TO SCALE · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet6.png"), dpi=130,
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet4.png"), dpi=130,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/hingepanel-sheet6.png saved")
+    print("  diagrams/hingepanel-sheet4.png saved")
 
 # ─────────────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
@@ -1776,5 +1535,4 @@ if __name__ == "__main__":
     sheet3()
     sheet4()
     sheet5()
-    sheet6()
     print("Done.")

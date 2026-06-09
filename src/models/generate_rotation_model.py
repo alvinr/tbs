@@ -109,6 +109,29 @@ def pivot_link():
     return '\n'.join(p)
 
 
+def drum_frame():
+    """Steel support CAGE for the lighttrap drum — top + bottom rectangles (4 rails
+    each) + 4 corner posts (50x50 RHS), attached to the panel. The drum's top/bottom
+    bearings mount on the rectangles; the cage carries the drum and rotates with it."""
+    s = 50
+    x0, x1 = ov.BAY_FRONT_X, 50              # -890 .. 50 (bay front to just past the panel)
+    y0, y1 = 700, 1662                       # just outside the Ø900 drum (731..1631)
+    zb, zt = ov.PANEL_FLOOR_GAP, 2250        # 130 .. 2250 (drum height)
+    c = ov.C_STEEL
+    p = []
+    for z in (zb, zt - s):                   # bottom + top rectangles
+        p += [
+            ov.ruby_box("Drum frame rail (X near)", x0, y0, z, x1 - x0, s, s, color=c),
+            ov.ruby_box("Drum frame rail (X far)", x0, y1 - s, z, x1 - x0, s, s, color=c),
+            ov.ruby_box("Drum frame rail (Yd front)", x0, y0, z, s, y1 - y0, s, color=c),
+            ov.ruby_box("Drum frame rail (Yd back)", x1 - s, y0, z, s, y1 - y0, s, color=c),
+        ]
+    for px in (x0, x1 - s):                   # 4 corner posts
+        for py in (y0, y1 - s):
+            p.append(ov.ruby_box("Drum frame post", px, py, zb, s, s, zt - zb, color=c))
+    return '\n'.join(p)
+
+
 def moving_frame_body():
     """The rigid swinging frame: full panel (its near corner Yd0-653 is ERASED
     post-build) + the swinging remainder of that corner (Yd CUT..653) + bay + drum +
@@ -122,6 +145,7 @@ def moving_frame_body():
         lt.bay(),
         lt.drum_housing(DRUM_CX, DRUM_CY),
         lt.drum_rotor(DRUM_CX, DRUM_CY),
+        drum_frame(),
         lt.fan_b(),
         pivot_link(),
     ])

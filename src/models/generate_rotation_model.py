@@ -69,14 +69,28 @@ def fixed_components():
     ])
 
 
+def pivot_link():
+    """The structural connection between the frame and the axle: a hub/collar that
+    rides the (fixed) axle + hinge brackets tying it to the panel's far-corner edge.
+    Part of the moving frame (the hub sits on the rotation axis, so it stays put while
+    the brackets + panel swing — a rigid hinge)."""
+    p = [ov.ruby_cylinder("Pivot hub (frame collar)", HX, HY, 110, 48, ov.C_HGT - 220,
+                          color=ov.C_STEEL, axis="z")]
+    for z in (250, 1180, 2120):                       # hinge brackets at 3 heights
+        p.append(ov.ruby_box("Hinge bracket (panel→axle)", 55, HY - 35, z, 140, 70, 110,
+                             color=ov.C_STEEL))
+    return '\n'.join(p)
+
+
 def moving_frame_body():
-    """The rigid frame (panel + bay + drum), reused from lighttrap, at slide=0 coords."""
+    """The rigid frame (panel + bay + drum + pivot link), reused from lighttrap."""
     return '\n'.join([
         lt.hinge_panel(),
         lt.bay(),
         lt.drum_housing(DRUM_CX, DRUM_CY),
         lt.drum_rotor(DRUM_CX, DRUM_CY),
         lt.fan_b(),
+        pivot_link(),
     ])
 
 

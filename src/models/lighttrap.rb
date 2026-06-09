@@ -952,7 +952,10 @@ fpdef = model.definitions.to_a.find { |d| d.name =~ /Film-Plane Rails/ }
 fpdef.entities.grep(Sketchup::Group).each { |g| g.erase! if g.name =~ /FP Brace Post L .far wall./ } if fpdef
 
 # ═══ Panel Swing — DYNAMIC COMPONENT (the swinging assembly) ═══
-# Interact tool → click to ANIMATE the panel 0→56° about the vertical pivot.
+# Interact tool → click to ANIMATE the panel 0→56° about the vertical pivot. The whole
+# assembly (panel + bay + housing + drum rotor + cage + Fan B + hub) is STATIC geometry in
+# this def — it all swings rigidly as one. (The old nested drum-revolve DC reset its own
+# position on redraw, so the rotor is now baked into the swing assembly at the correct place.)
 defn = model.definitions.add("Panel Swing")
 ents = defn.entities
   # Panel near corner (40mm)
@@ -1278,6 +1281,118 @@ ents = defn.entities
   mat.alpha = 1.0
   grp.material = mat
 
+  # LT Drum C-shell
+  grp = ents.add_group
+  grp.name = "LT Drum C-shell"
+  ge = grp.entities
+  face = ge.add_face([[-730.93.mm,903.32.mm,130.mm], [-701.mm,871.12.mm,130.mm], [-667.94.mm,842.13.mm,130.mm], [-632.11.mm,816.65.mm,130.mm], [-593.88.mm,794.95.mm,130.mm], [-553.64.mm,777.24.mm,130.mm], [-511.81.mm,763.72.mm,130.mm], [-468.82.mm,754.52.mm,130.mm], [-425.12.mm,749.73.mm,130.mm], [-381.16.mm,749.41.mm,130.mm], [-337.39.mm,753.56.mm,130.mm], [-294.27.mm,762.14.mm,130.mm], [-252.25.mm,775.05.mm,130.mm], [-211.75.mm,792.17.mm,130.mm], [-173.21.mm,813.32.mm,130.mm], [-137.02.mm,838.27.mm,130.mm], [-103.54.mm,866.77.mm,130.mm], [-73.14.mm,898.53.mm,130.mm], [-46.13.mm,933.21.mm,130.mm], [-22.78.mm,970.46.mm,130.mm], [-3.33.mm,1009.89.mm,130.mm], [12.01.mm,1051.1.mm,130.mm], [23.08.mm,1093.64.mm,130.mm], [29.76.mm,1137.09.mm,130.mm], [32.mm,1181.mm,130.mm], [29.76.mm,1224.91.mm,130.mm], [23.08.mm,1268.36.mm,130.mm], [12.01.mm,1310.9.mm,130.mm], [-3.33.mm,1352.11.mm,130.mm], [-22.78.mm,1391.54.mm,130.mm], [-46.13.mm,1428.79.mm,130.mm], [-73.14.mm,1463.47.mm,130.mm], [-103.54.mm,1495.23.mm,130.mm], [-137.02.mm,1523.73.mm,130.mm], [-173.21.mm,1548.68.mm,130.mm], [-211.75.mm,1569.83.mm,130.mm], [-252.25.mm,1586.95.mm,130.mm], [-294.27.mm,1599.86.mm,130.mm], [-337.39.mm,1608.44.mm,130.mm], [-381.16.mm,1612.59.mm,130.mm], [-425.12.mm,1612.27.mm,130.mm], [-468.82.mm,1607.48.mm,130.mm], [-511.81.mm,1598.28.mm,130.mm], [-553.64.mm,1584.76.mm,130.mm], [-593.88.mm,1567.05.mm,130.mm], [-632.11.mm,1545.35.mm,130.mm], [-667.94.mm,1519.87.mm,130.mm], [-701.mm,1490.88.mm,130.mm], [-730.93.mm,1458.68.mm,130.mm], [-727.87.mm,1456.11.mm,130.mm], [-698.21.mm,1488.01.mm,130.mm], [-665.46.mm,1516.73.mm,130.mm], [-629.96.mm,1541.97.mm,130.mm], [-592.09.mm,1563.47.mm,130.mm], [-552.22.mm,1581.02.mm,130.mm], [-510.77.mm,1594.42.mm,130.mm], [-468.18.mm,1603.53.mm,130.mm], [-424.89.mm,1608.28.mm,130.mm], [-381.33.mm,1608.59.mm,130.mm], [-337.97.mm,1604.48.mm,130.mm], [-295.25.mm,1595.98.mm,130.mm], [-253.62.mm,1583.19.mm,130.mm], [-213.5.mm,1566.23.mm,130.mm], [-175.31.mm,1545.28.mm,130.mm], [-139.45.mm,1520.56.mm,130.mm], [-106.29.mm,1492.32.mm,130.mm], [-76.17.mm,1460.85.mm,130.mm], [-49.4.mm,1426.49.mm,130.mm], [-26.27.mm,1389.59.mm,130.mm], [-7.mm,1350.52.mm,130.mm], [8.19.mm,1309.7.mm,130.mm], [19.16.mm,1267.55.mm,130.mm], [25.78.mm,1224.5.mm,130.mm], [28.mm,1181.mm,130.mm], [25.78.mm,1137.5.mm,130.mm], [19.16.mm,1094.45.mm,130.mm], [8.19.mm,1052.3.mm,130.mm], [-7.mm,1011.48.mm,130.mm], [-26.27.mm,972.41.mm,130.mm], [-49.4.mm,935.51.mm,130.mm], [-76.17.mm,901.15.mm,130.mm], [-106.29.mm,869.68.mm,130.mm], [-139.45.mm,841.44.mm,130.mm], [-175.31.mm,816.72.mm,130.mm], [-213.5.mm,795.77.mm,130.mm], [-253.62.mm,778.81.mm,130.mm], [-295.25.mm,766.02.mm,130.mm], [-337.97.mm,757.52.mm,130.mm], [-381.33.mm,753.41.mm,130.mm], [-424.89.mm,753.72.mm,130.mm], [-468.18.mm,758.47.mm,130.mm], [-510.77.mm,767.58.mm,130.mm], [-552.22.mm,780.98.mm,130.mm], [-592.09.mm,798.53.mm,130.mm], [-629.96.mm,820.03.mm,130.mm], [-665.46.mm,845.27.mm,130.mm], [-698.21.mm,873.99.mm,130.mm], [-727.87.mm,905.89.mm,130.mm]])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2120.mm)
+  mat = model.materials["LT Drum C-shell"] || model.materials.add("LT Drum C-shell")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.85
+  grp.material = mat
+
+  # LT Drum top cap
+  grp = ents.add_group
+  grp.name = "LT Drum top cap"
+  ge = grp.entities
+  circle = ge.add_circle([-400.mm,1181.mm,2245.mm], [0,0,1], 432.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(5.mm)
+  mat = model.materials["LT Drum top cap"] || model.materials.add("LT Drum top cap")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # LT Drum bottom cap
+  grp = ents.add_group
+  grp.name = "LT Drum bottom cap"
+  ge = grp.entities
+  circle = ge.add_circle([-400.mm,1181.mm,130.mm], [0,0,1], 432.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(5.mm)
+  mat = model.materials["LT Drum top cap"] || model.materials.add("LT Drum top cap")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # LT Drum top shaft
+  grp = ents.add_group
+  grp.name = "LT Drum top shaft"
+  ge = grp.entities
+  circle = ge.add_circle([-400.mm,1181.mm,2250.mm], [0,0,1], 37.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(65.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # LT Grab rail
+  grp = ents.add_group
+  grp.name = "LT Grab rail"
+  ge = grp.entities
+  circle = ge.add_circle([-43.mm,1181.mm,700.mm], [0,0,1], 15.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(400.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # LT Grab rail standoff
+  grp = ents.add_group
+  grp.name = "LT Grab rail standoff"
+  face = grp.entities.add_face([-43.mm,1175.mm,720.mm], [28.mm,1175.mm,720.mm], [28.mm,1187.mm,720.mm], [-43.mm,1187.mm,720.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # LT Grab rail standoff
+  grp = ents.add_group
+  grp.name = "LT Grab rail standoff"
+  face = grp.entities.add_face([-43.mm,1175.mm,1080.mm], [28.mm,1175.mm,1080.mm], [28.mm,1187.mm,1080.mm], [-43.mm,1187.mm,1080.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # LT Drum opening brush seal
+  grp = ents.add_group
+  grp.name = "LT Drum opening brush seal"
+  ge = grp.entities
+  circle = ge.add_circle([-735.9104883076718.mm,1462.8623668475475.mm,130.mm], [0,0,1], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(2120.mm)
+  mat = model.materials["LT Drum opening brush seal"] || model.materials.add("LT Drum opening brush seal")
+  mat.color = Sketchup::Color.new(126, 126, 118)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # LT Drum opening brush seal
+  grp = ents.add_group
+  grp.name = "LT Drum opening brush seal"
+  ge = grp.entities
+  circle = ge.add_circle([-735.9104883076719.mm,899.1376331524525.mm,130.mm], [0,0,1], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(2120.mm)
+  mat = model.materials["LT Drum opening brush seal"] || model.materials.add("LT Drum opening brush seal")
+  mat.color = Sketchup::Color.new(126, 126, 118)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Drum frame rail (X near)
   grp = ents.add_group
   grp.name = "Drum frame rail (X near)"
@@ -1578,7 +1693,7 @@ ents = defn.entities
   face = grp.entities.add_face([272.5.mm,350.mm,619.5.mm], [278.5.mm,350.mm,619.5.mm], [278.5.mm,380.mm,619.5.mm], [272.5.mm,380.mm,619.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(46.5.mm)
-  mat = model.materials["Fan B (intake) fan blade up"] || model.materials.add("Fan B (intake) fan blade up")
+  mat = model.materials["LT Drum top cap"] || model.materials.add("LT Drum top cap")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -1589,7 +1704,7 @@ ents = defn.entities
   face = grp.entities.add_face([272.5.mm,350.mm,534.mm], [278.5.mm,350.mm,534.mm], [278.5.mm,380.mm,534.mm], [272.5.mm,380.mm,534.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(46.5.mm)
-  mat = model.materials["Fan B (intake) fan blade up"] || model.materials.add("Fan B (intake) fan blade up")
+  mat = model.materials["LT Drum top cap"] || model.materials.add("LT Drum top cap")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -1600,7 +1715,7 @@ ents = defn.entities
   face = grp.entities.add_face([272.5.mm,299.mm,585.mm], [278.5.mm,299.mm,585.mm], [278.5.mm,345.5.mm,585.mm], [272.5.mm,345.5.mm,585.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
-  mat = model.materials["Fan B (intake) fan blade up"] || model.materials.add("Fan B (intake) fan blade up")
+  mat = model.materials["LT Drum top cap"] || model.materials.add("LT Drum top cap")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -1611,7 +1726,7 @@ ents = defn.entities
   face = grp.entities.add_face([272.5.mm,384.5.mm,585.mm], [278.5.mm,384.5.mm,585.mm], [278.5.mm,431.mm,585.mm], [272.5.mm,431.mm,585.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
-  mat = model.materials["Fan B (intake) fan blade up"] || model.materials.add("Fan B (intake) fan blade up")
+  mat = model.materials["LT Drum top cap"] || model.materials.add("LT Drum top cap")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -1856,125 +1971,6 @@ ents = defn.entities
 # (the fixed left/far leaves + the trimmed swing seals provide the rest).
 defn.entities.grep(Sketchup::Group).select { |g| g.name =~ /Panel near corner|Panel far corner .40mm.|EPDM seal left|EPDM seal right|EPDM seal bottom L$|EPDM seal bottom R$|EPDM seal top$|Piano hinge/ }.each { |g| g.erase! }
 
-# Drum Rotor — nested so it swings with the cage, with its OWN revolve attribute
-# (operational person-access), independent of the transport swing.
-rotor_defn = model.definitions.add("Drum Rotor")
-rents = rotor_defn.entities
-  # LT Drum C-shell
-  grp = ents.add_group
-  grp.name = "LT Drum C-shell"
-  ge = grp.entities
-  face = ge.add_face([[-330.93.mm,-277.68.mm,130.mm], [-301.mm,-309.88.mm,130.mm], [-267.94.mm,-338.87.mm,130.mm], [-232.11.mm,-364.35.mm,130.mm], [-193.88.mm,-386.05.mm,130.mm], [-153.64.mm,-403.76.mm,130.mm], [-111.81.mm,-417.28.mm,130.mm], [-68.82.mm,-426.48.mm,130.mm], [-25.12.mm,-431.27.mm,130.mm], [18.84.mm,-431.59.mm,130.mm], [62.61.mm,-427.44.mm,130.mm], [105.73.mm,-418.86.mm,130.mm], [147.75.mm,-405.95.mm,130.mm], [188.25.mm,-388.83.mm,130.mm], [226.79.mm,-367.68.mm,130.mm], [262.98.mm,-342.73.mm,130.mm], [296.46.mm,-314.23.mm,130.mm], [326.86.mm,-282.47.mm,130.mm], [353.87.mm,-247.79.mm,130.mm], [377.22.mm,-210.54.mm,130.mm], [396.67.mm,-171.11.mm,130.mm], [412.01.mm,-129.9.mm,130.mm], [423.08.mm,-87.36.mm,130.mm], [429.76.mm,-43.91.mm,130.mm], [432.mm,0.mm,130.mm], [429.76.mm,43.91.mm,130.mm], [423.08.mm,87.36.mm,130.mm], [412.01.mm,129.9.mm,130.mm], [396.67.mm,171.11.mm,130.mm], [377.22.mm,210.54.mm,130.mm], [353.87.mm,247.79.mm,130.mm], [326.86.mm,282.47.mm,130.mm], [296.46.mm,314.23.mm,130.mm], [262.98.mm,342.73.mm,130.mm], [226.79.mm,367.68.mm,130.mm], [188.25.mm,388.83.mm,130.mm], [147.75.mm,405.95.mm,130.mm], [105.73.mm,418.86.mm,130.mm], [62.61.mm,427.44.mm,130.mm], [18.84.mm,431.59.mm,130.mm], [-25.12.mm,431.27.mm,130.mm], [-68.82.mm,426.48.mm,130.mm], [-111.81.mm,417.28.mm,130.mm], [-153.64.mm,403.76.mm,130.mm], [-193.88.mm,386.05.mm,130.mm], [-232.11.mm,364.35.mm,130.mm], [-267.94.mm,338.87.mm,130.mm], [-301.mm,309.88.mm,130.mm], [-330.93.mm,277.68.mm,130.mm], [-327.87.mm,275.11.mm,130.mm], [-298.21.mm,307.01.mm,130.mm], [-265.46.mm,335.73.mm,130.mm], [-229.96.mm,360.97.mm,130.mm], [-192.09.mm,382.47.mm,130.mm], [-152.22.mm,400.02.mm,130.mm], [-110.77.mm,413.42.mm,130.mm], [-68.18.mm,422.53.mm,130.mm], [-24.89.mm,427.28.mm,130.mm], [18.67.mm,427.59.mm,130.mm], [62.03.mm,423.48.mm,130.mm], [104.75.mm,414.98.mm,130.mm], [146.38.mm,402.19.mm,130.mm], [186.5.mm,385.23.mm,130.mm], [224.69.mm,364.28.mm,130.mm], [260.55.mm,339.56.mm,130.mm], [293.71.mm,311.32.mm,130.mm], [323.83.mm,279.85.mm,130.mm], [350.6.mm,245.49.mm,130.mm], [373.73.mm,208.59.mm,130.mm], [393.mm,169.52.mm,130.mm], [408.19.mm,128.7.mm,130.mm], [419.16.mm,86.55.mm,130.mm], [425.78.mm,43.5.mm,130.mm], [428.mm,0.mm,130.mm], [425.78.mm,-43.5.mm,130.mm], [419.16.mm,-86.55.mm,130.mm], [408.19.mm,-128.7.mm,130.mm], [393.mm,-169.52.mm,130.mm], [373.73.mm,-208.59.mm,130.mm], [350.6.mm,-245.49.mm,130.mm], [323.83.mm,-279.85.mm,130.mm], [293.71.mm,-311.32.mm,130.mm], [260.55.mm,-339.56.mm,130.mm], [224.69.mm,-364.28.mm,130.mm], [186.5.mm,-385.23.mm,130.mm], [146.38.mm,-402.19.mm,130.mm], [104.75.mm,-414.98.mm,130.mm], [62.03.mm,-423.48.mm,130.mm], [18.67.mm,-427.59.mm,130.mm], [-24.89.mm,-427.28.mm,130.mm], [-68.18.mm,-422.53.mm,130.mm], [-110.77.mm,-413.42.mm,130.mm], [-152.22.mm,-400.02.mm,130.mm], [-192.09.mm,-382.47.mm,130.mm], [-229.96.mm,-360.97.mm,130.mm], [-265.46.mm,-335.73.mm,130.mm], [-298.21.mm,-307.01.mm,130.mm], [-327.87.mm,-275.11.mm,130.mm]])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(2120.mm)
-  mat = model.materials["LT Drum C-shell"] || model.materials.add("LT Drum C-shell")
-  mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 0.85
-  grp.material = mat
-
-  # LT Drum top cap
-  grp = ents.add_group
-  grp.name = "LT Drum top cap"
-  ge = grp.entities
-  circle = ge.add_circle([0.mm,0.mm,2245.mm], [0,0,1], 432.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(5.mm)
-  mat = model.materials["Fan B (intake) fan blade up"] || model.materials.add("Fan B (intake) fan blade up")
-  mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # LT Drum bottom cap
-  grp = ents.add_group
-  grp.name = "LT Drum bottom cap"
-  ge = grp.entities
-  circle = ge.add_circle([0.mm,0.mm,130.mm], [0,0,1], 432.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(5.mm)
-  mat = model.materials["Fan B (intake) fan blade up"] || model.materials.add("Fan B (intake) fan blade up")
-  mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # LT Drum top shaft
-  grp = ents.add_group
-  grp.name = "LT Drum top shaft"
-  ge = grp.entities
-  circle = ge.add_circle([0.mm,0.mm,2250.mm], [0,0,1], 37.5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(65.mm)
-  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # LT Grab rail
-  grp = ents.add_group
-  grp.name = "LT Grab rail"
-  ge = grp.entities
-  circle = ge.add_circle([357.mm,0.mm,700.mm], [0,0,1], 15.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(400.mm)
-  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # LT Grab rail standoff
-  grp = ents.add_group
-  grp.name = "LT Grab rail standoff"
-  face = grp.entities.add_face([357.mm,-6.mm,720.mm], [428.mm,-6.mm,720.mm], [428.mm,6.mm,720.mm], [357.mm,6.mm,720.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # LT Grab rail standoff
-  grp = ents.add_group
-  grp.name = "LT Grab rail standoff"
-  face = grp.entities.add_face([357.mm,-6.mm,1080.mm], [428.mm,-6.mm,1080.mm], [428.mm,6.mm,1080.mm], [357.mm,6.mm,1080.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # LT Drum opening brush seal
-  grp = ents.add_group
-  grp.name = "LT Drum opening brush seal"
-  ge = grp.entities
-  circle = ge.add_circle([-335.9104883076718.mm,281.86236684754755.mm,130.mm], [0,0,1], 7.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(2120.mm)
-  mat = model.materials["LT Drum opening brush seal"] || model.materials.add("LT Drum opening brush seal")
-  mat.color = Sketchup::Color.new(126, 126, 118)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # LT Drum opening brush seal
-  grp = ents.add_group
-  grp.name = "LT Drum opening brush seal"
-  ge = grp.entities
-  circle = ge.add_circle([-335.9104883076719.mm,-281.86236684754743.mm,130.mm], [0,0,1], 7.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(2120.mm)
-  mat = model.materials["LT Drum opening brush seal"] || model.materials.add("LT Drum opening brush seal")
-  mat.color = Sketchup::Color.new(126, 126, 118)
-  mat.alpha = 1.0
-  grp.material = mat
-
-rotor_inst = defn.entities.add_instance(rotor_defn, Geom::Transformation.translation([-400.mm, 1181.mm, 0]))
-rotor_inst.name = "Drum Rotor"
-
 # Shift the moving def by -pivot so the def origin sits at the pivot — then the instance's
 # RotZ swings the assembly about the pivot (same origin-at-rotation-point pattern the
 # cargo-door leaves use).
@@ -1997,17 +1993,6 @@ inst.set_attribute(da, "_rotz_formula", "56*swing")
 inst.set_attribute(da, "onclick", 'ANIMATE("swing", 0, 1)')
 inst.set_attribute(da, "_onclick_access", "NONE")
 dc_inst = inst
-
-# Drum Rotor revolve DC — click the drum to revolve it 0→180° (person access).
-rotor_inst.set_attribute(da, "_name", "DrumRotor")
-rotor_inst.set_attribute(da, "_lengthunits", "MILLIMETERS")
-rotor_inst.set_attribute(da, "revolve", 0.0)
-rotor_inst.set_attribute(da, "_revolve_access", "VIEW")
-rotor_inst.set_attribute(da, "_revolve_label", "Revolve")
-rotor_inst.set_attribute(da, "rotz", 0.0)
-rotor_inst.set_attribute(da, "_rotz_formula", "180*revolve")
-rotor_inst.set_attribute(da, "onclick", 'ANIMATE("revolve", 0, 1)')
-rotor_inst.set_attribute(da, "_onclick_access", "NONE")
 
 # ═══ Cargo Doors — DYNAMIC COMPONENT (click to close) ═══
 # Parent "Cargo Doors" holds two leaf children whose RotZ is driven by the
@@ -2156,7 +2141,7 @@ dc_ready = false
 if defined?($dc_observers) && $dc_observers.respond_to?(:get_latest_class)
   cls = $dc_observers.get_latest_class
   if cls
-    [dc_inst, rotor_inst, doors_inst].each { |di| cls.redraw_with_undo(di) rescue nil }
+    [dc_inst, doors_inst].each { |di| cls.redraw_with_undo(di) rescue nil }
     dc_ready = true
   end
 end

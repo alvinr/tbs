@@ -679,13 +679,13 @@ def generate_ruby():
         ruby_box("EPDM seal bottom R (trimmed)", -20, DRUM_CY + HOUSING_R + 15, PANEL_Z_BOT, 20,
                  PIVOT_YD - (DRUM_CY + HOUSING_R + 15), 40, color=C_GASKT),
         bay(),
-        drum_housing(DRUM_CX, DRUM_CY),   # fixed housing (the rotor is a nested revolve DC)
+        drum_housing(DRUM_CX, DRUM_CY),   # housing + rotor are static geometry in the swing
+        drum_rotor(DRUM_CX, DRUM_CY),     # def, so they swing rigidly at the correct position
         drum_frame(),
         fan_b(),
         pivot_link(),
         frame_hooks(),
     ])
-    rotor_body = drum_rotor(0, 0)         # local-origin geometry for the revolve DC
 
     # Cargo-door leaves (local-origin geometry for the swing DC). NB renamed to avoid
     # colliding with the near_leaf()/far_leaf() PANEL builders above.
@@ -725,21 +725,16 @@ fpdef = model.definitions.to_a.find {{ |d| d.name =~ /Film-Plane Rails/ }}
 fpdef.entities.grep(Sketchup::Group).each {{ |g| g.erase! if g.name =~ /FP Brace Post L .far wall./ }} if fpdef
 
 # ═══ Panel Swing — DYNAMIC COMPONENT (the swinging assembly) ═══
-# Interact tool → click to ANIMATE the panel 0→{LOCK}° about the vertical pivot.
+# Interact tool → click to ANIMATE the panel 0→{LOCK}° about the vertical pivot. The whole
+# assembly (panel + bay + housing + drum rotor + cage + Fan B + hub) is STATIC geometry in
+# this def — it all swings rigidly as one. (The old nested drum-revolve DC reset its own
+# position on redraw, so the rotor is now baked into the swing assembly at the correct place.)
 defn = model.definitions.add("Panel Swing")
 ents = defn.entities
 {dc_body}
 # Trim to the 3-zone split: erase the un-split corners + full-width seals + piano hinges
 # (the fixed left/far leaves + the trimmed swing seals provide the rest).
 defn.entities.grep(Sketchup::Group).select {{ |g| g.name =~ /Panel near corner|Panel far corner .40mm.|EPDM seal left|EPDM seal right|EPDM seal bottom L$|EPDM seal bottom R$|EPDM seal top$|Piano hinge/ }}.each {{ |g| g.erase! }}
-
-# Drum Rotor — nested so it swings with the cage, with its OWN revolve attribute
-# (operational person-access), independent of the transport swing.
-rotor_defn = model.definitions.add("Drum Rotor")
-rents = rotor_defn.entities
-{rotor_body}
-rotor_inst = defn.entities.add_instance(rotor_defn, Geom::Transformation.translation([{DRUM_CX}.mm, {DRUM_CY}.mm, 0]))
-rotor_inst.name = "Drum Rotor"
 
 # Shift the moving def by -pivot so the def origin sits at the pivot — then the instance's
 # RotZ swings the assembly about the pivot (same origin-at-rotation-point pattern the
@@ -763,17 +758,6 @@ inst.set_attribute(da, "_rotz_formula", "{LOCK}*swing")
 inst.set_attribute(da, "onclick", 'ANIMATE("swing", 0, 1)')
 inst.set_attribute(da, "_onclick_access", "NONE")
 dc_inst = inst
-
-# Drum Rotor revolve DC — click the drum to revolve it 0→180° (person access).
-rotor_inst.set_attribute(da, "_name", "DrumRotor")
-rotor_inst.set_attribute(da, "_lengthunits", "MILLIMETERS")
-rotor_inst.set_attribute(da, "revolve", 0.0)
-rotor_inst.set_attribute(da, "_revolve_access", "VIEW")
-rotor_inst.set_attribute(da, "_revolve_label", "Revolve")
-rotor_inst.set_attribute(da, "rotz", 0.0)
-rotor_inst.set_attribute(da, "_rotz_formula", "180*revolve")
-rotor_inst.set_attribute(da, "onclick", 'ANIMATE("revolve", 0, 1)')
-rotor_inst.set_attribute(da, "_onclick_access", "NONE")
 
 # ═══ Cargo Doors — DYNAMIC COMPONENT (click to close) ═══
 # Parent "Cargo Doors" holds two leaf children whose RotZ is driven by the
@@ -852,7 +836,7 @@ dc_ready = false
 if defined?($dc_observers) && $dc_observers.respond_to?(:get_latest_class)
   cls = $dc_observers.get_latest_class
   if cls
-    [dc_inst, rotor_inst, doors_inst].each {{ |di| cls.redraw_with_undo(di) rescue nil }}
+    [dc_inst, doors_inst].each {{ |di| cls.redraw_with_undo(di) rescue nil }}
     dc_ready = true
   end
 end

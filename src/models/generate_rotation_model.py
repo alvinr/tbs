@@ -106,7 +106,7 @@ def fixed_components():
         component("Pivot bearings", "Pivot Axle", axle()),
         component("Fixed left panel", "Near Leaf", near_leaf()),
         component("Walkways (near + far)", "Walkways", walkways()),
-        component("Transport lock socket", "Lock", lock_socket()),
+        component("Wall stays (top+bottom)", "Lock", wall_stays()),
     ])
 
 
@@ -128,22 +128,32 @@ def pivot_link():
     return '\n'.join(p)
 
 
-def lock_bolt():
-    """Transport drop-bolt on the assembly (panel bottom) — drops into the fixed
-    floor socket at the 56deg lock. Reacts transit-induced rotation about the
-    vertical pivot (gravity gives no torque about a vertical axis, so this is light
-    duty: ~100-200 kg tangential from road shocks)."""
+STAY_Z = (200, 2050)                        # bottom + top stay heights
+
+
+def frame_hooks():
+    """Hook brackets on the swinging frame (top + bottom) that the wall stays engage.
+    Off the floor — the floor is the angled processing-tray basin."""
     bx, by = LOCK_BOLT
-    return '\n'.join([
-        ov.ruby_cylinder("Transport lock bolt (Ø30)", bx, by, -30, 15, 260, color=ov.C_STEEL, axis="z"),
-        ov.ruby_box("Lock bolt guide", bx - 35, by - 35, 175, 70, 70, 40, color=ov.C_STEEL),
-    ])
+    return '\n'.join(
+        ov.ruby_box("Stay hook (frame)", bx - 30, by - 30, z - 35, 60, 60, 70, color=ov.C_STEEL)
+        for z in STAY_Z)
 
 
-def lock_socket():
-    """Fixed floor socket the transport drop-bolt lands in at 56deg."""
-    sx, sy = SOCKET
-    return ov.ruby_cylinder("Transport lock floor socket", sx, sy, -60, 32, 85, color=ov.C_STEEL, axis="z")
+def wall_stays():
+    """Fixed wall stays (eye + turnbuckle rod) on the NEAR wall, top + bottom, that
+    tie the swung frame to the wall at transport — resisting transit-induced rotation
+    about the vertical pivot (gravity gives no torque about a vertical axis). Two
+    stays form a couple that also resists twist/rattle. Drawn engaged at 56deg."""
+    hx, hy = SOCKET                          # transport position of the frame hook
+    p = []
+    for z in STAY_Z:
+        p += [
+            ov.ruby_box("Stay wall eye", hx - 22, 0, z - 32, 44, 60, 64, color=ov.C_STEEL),
+            ov.ruby_box("Stay rod", hx - 8, 60, z - 8, 16, hy - 60, 16, color=ov.C_STEEL),
+            ov.ruby_box("Stay turnbuckle", hx - 24, hy / 2.0 - 55, z - 24, 48, 110, 48, color="#B03030"),
+        ]
+    return '\n'.join(p)
 
 
 def drum_frame():
@@ -189,7 +199,7 @@ def moving_frame_body():
         drum_frame(),
         lt.fan_b(),
         pivot_link(),
-        lock_bolt(),
+        frame_hooks(),
     ])
 
 
@@ -293,7 +303,7 @@ txt3 = entities.add_text("FIXED LEFT PANEL (Yd0-{CUT})\ncut vertically; does NOT
                          Geom::Vector3d.new(500.mm, (-350).mm, 250.mm))
 txt3.layer = model.layers["Labels"] rescue nil
 anc4 = Geom::Point3d.new({SOCKET[0]:.0f}.mm, {SOCKET[1]:.0f}.mm, 200.mm)
-txt4 = entities.add_text("TRANSPORT LOCK\ndrop-bolt -> floor socket @ 56deg\n(holds vs transit, not gravity)", anc4,
+txt4 = entities.add_text("TRANSPORT STAYS (top+bottom)\neye+turnbuckle frame -> NEAR wall\n(holds vs transit, not gravity)", anc4,
                          Geom::Vector3d.new(300.mm, (-300).mm, 250.mm))
 txt4.layer = model.layers["Labels"] rescue nil
 
@@ -322,7 +332,7 @@ def isocam(model, cx, cy, cz, zoom)
 end
 
 model.layers["Labels"].visible = false if model.layers["Labels"]
-show.call(["Frame (transport)"])
+show.call(["Frame (transport)", "Lock"])   # stays disengaged when deployed
 isocam(model, 300, 1181, 1200, 0.85)
 model.pages.add("Camera (frame shut)").use_camera = true
 

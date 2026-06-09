@@ -316,18 +316,6 @@ any section. 4 removable sections.*
 
 *Diagrams: walkway sheet 1 cross-section (WK), walkway sheet 2 plan view (WK), container floor plan (FP).*
 
-### 1.18 Ceiling Rail Suspension
-
-| Parameter | Value | Constant |
-|-----------|-------|----------|
-| Panel floor gap | 80mm | `PANEL_FLOOR_GAP` |
-
-*Components: HGR20 ceiling-mounted linear rails (×2, 500mm), HGH20CA carriage blocks (×4),
-ceiling mounting brackets, drop rods / hanging brackets. Suspends hinged panel with 80mm
-floor gap to clear processing tray rim (50mm) during transport slide.*
-
-*Diagrams: ceiling rail sheet 1 side elevation (CR), ceiling rail sheet 2 detail (CR), hinged panel sheet 4 (HP).*
-
 ---
 
 ## 2. Script and Diagram Index
@@ -350,7 +338,6 @@ Every generator script, its output PNGs, and the subsystems it renders.
 | **TSD** | `generate_tilt_swing_distortion.py` | `diagrams/tilt-swing-combined-c0.png` – `c8.png`<br>`diagrams/tilt-swing-combined-summary.png` | 3, 4 (optical simulation) |
 | **PD** | `generate_plate_drawing.py` | `diagrams/plate-drawing-sheet1.png`<br>`diagrams/plate-drawing-sheet2.png` | 1, 2 |
 | **WK** | `generate_walkway_diagram.py` | `diagrams/walkway-sheet1.png`<br>`diagrams/walkway-sheet2.png`<br>`diagrams/walkway-sheet3.png`<br>`diagrams/walkway-sheet4.png`<br>`diagrams/walkway-sheet5.png`<br>`diagrams/walkway-sheet6.png` | 1, 16, 17 |
-| **CR** | `generate_ceiling_rail_diagram.py` | `diagrams/ceiling-rail-sheet1.png`<br>`diagrams/ceiling-rail-sheet2.png` | 1, 6, 15, 16, 17, 18 |
 | **SC** | `generate_schematic.py`<br>`generate_portrait_viz.py` | `diagrams/portrait-camera-schematic.png`<br>`diagrams/portrait-optimal-3m.png`<br>`diagrams/portrait-scale-comparison.png` | 1, 2 (optical visualization) |
 
 > **FPM / FPD redrawn for Option A (2026-06-06):** the film-plane mechanism sheets and optical-distortion renders now show the **fixed-size rigid plane on floating-corner cross-slides** — **axis tilt/swing** about the plane centre (foreshortening, not growth), tilt ±40° / swing ±28°, single rigid ACM backing, cross-slides at each corner, and the compound twist dropped (FPD now C0–C5). `generate_film_plane_mechanism.py` uses `rigid_corners3d`/`tilt_edge`/`swing_edge` (asin, not atan) and reads `MAX_TILT_DEG`/`MAX_SWING_DEG` from `tbs_constants.py`. Consistent with `film-plane-mechanism-report.md`, `master-shopping-list.md`, `project-cost-breakdown.md`, and `models/film-plane.skp`.
@@ -361,26 +348,25 @@ Every generator script, its output PNGs, and the subsystems it renders.
 
 ✓ = this subsystem is drawn in this diagram group. Re-run all ✓ scripts when the subsystem changes.
 
-| Subsystem | FP | LOS | AO | AF | FPM | FPD | ES | WS | HP | LT | TSB | TSD | PD | SC | WK | CR |
-|-----------|:--:|:---:|:--:|:--:|:---:|:---:|:--:|:--:|:--:|:--:|:---:|:---:|:--:|:--:|:--:|:--:|
-| **1** Container | ✓ | ✓ | ✓ | ✓ | ✓ | | ✓ | ✓ | ✓ | ✓ | | | ✓ | ✓ | ✓ | ✓ |
-| **2** Optical Aperture | ✓ | ✓ | ✓ | ✓ | ✓ | | | | | | ✓ | | ✓ | ✓ | | |
-| **3** Film Plane Mech | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | | | | | | ✓ | | | | |
-| **4** Tilt-Swing Board | | | | | | | | | | | ✓ | ✓ | | | | |
-| **5** Light Trap Drum | ✓ | ✓ | ✓ | ✓ | | | | | ✓ | ✓ | | | | | | |
-| **6** Hinged Panel | | | ✓ | ✓ | | | | | ✓ | ✓ | | | | | | ✓ |
-| **7** Ventilation | ✓ | | ✓ | | | | ✓ | | | ✓ | | | | | | |
-| **8** Evap Cooler | ✓ | ✓ | ✓ | ✓ | | | ✓ | | | ✓ | | | | | | |
-| **9** Electrical | ✓ | ✓ | ✓ | ✓ | | | ✓ | | | | | | | | | |
-| **10** Pump Manifold | ✓ | ✓ | ✓ | ✓ | | | ✓ | ✓ | | | | | | | | |
-| **11** Blue Water (IBCs) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | | | |
-| **12** Brown Water (IBC) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | | | |
-| **13** Black Water (waste IBC) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | | | |
-| **14** Zones / Layout | ✓ | ✓ | ✓ | | | | | | | | | | | | | |
-| **15** Panel Slide Carriage | ✓ | | ✓ | | | | | | ✓ | | | | | | | ✓ |
-| **16** Processing Tray | ✓ | | ✓ | | | | | | | | | | | | ✓ | ✓ |
-| **17** Perimeter Walkway | | | | | | | | | ✓ | | | | | | ✓ | ✓ |
-| **18** Ceiling Rail Susp. | | | | | | | | | | | | | | | | ✓ |
+| Subsystem | FP | LOS | AO | AF | FPM | FPD | ES | WS | HP | LT | TSB | TSD | PD | SC | WK |
+|-----------|:--:|:---:|:--:|:--:|:---:|:---:|:--:|:--:|:--:|:--:|:---:|:---:|:--:|:--:|:--:|
+| **1** Container | ✓ | ✓ | ✓ | ✓ | ✓ | | ✓ | ✓ | ✓ | ✓ | | | ✓ | ✓ | ✓ |
+| **2** Optical Aperture | ✓ | ✓ | ✓ | ✓ | ✓ | | | | | | ✓ | | ✓ | ✓ | |
+| **3** Film Plane Mech | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | | | | | | ✓ | | | |
+| **4** Tilt-Swing Board | | | | | | | | | | | ✓ | ✓ | | | |
+| **5** Light Trap Drum | ✓ | ✓ | ✓ | ✓ | | | | | ✓ | ✓ | | | | | |
+| **6** Hinged Panel | | | ✓ | ✓ | | | | | ✓ | ✓ | | | | | |
+| **7** Ventilation | ✓ | | ✓ | | | | ✓ | | | ✓ | | | | | |
+| **8** Evap Cooler | ✓ | ✓ | ✓ | ✓ | | | ✓ | | | ✓ | | | | | |
+| **9** Electrical | ✓ | ✓ | ✓ | ✓ | | | ✓ | | | | | | | | |
+| **10** Pump Manifold | ✓ | ✓ | ✓ | ✓ | | | ✓ | ✓ | | | | | | | |
+| **11** Blue Water (IBCs) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | | |
+| **12** Brown Water (IBC) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | | |
+| **13** Black Water (waste IBC) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | | |
+| **14** Zones / Layout | ✓ | ✓ | ✓ | | | | | | | | | | | | |
+| **15** Panel Slide Carriage | ✓ | | ✓ | | | | | | ✓ | | | | | | |
+| **16** Processing Tray | ✓ | | ✓ | | | | | | | | | | | | ✓ |
+| **17** Perimeter Walkway | | | | | | | | | ✓ | | | | | | ✓ |
 
 ---
 
@@ -432,11 +418,11 @@ Then commit the updated PNGs and `*.skp`/`*.rb` alongside the constant change.
 | `ZONE_L_END`, `ZONE_R_START` | FP, LOS, AO, ES | Zone boundaries — these are derived from `FP_X_L`/`FP_X_R`, so change those instead |
 | `FAN_A_H`, `FAN_B_H`, `FAN_DIAM`, `FAN_BODY_D` | LT, ES | Ventilation fan height or size |
 | `DUCT_DEPTH`, `DUCT_HEIGHT` | LT | Baffle duct only — lighttrap sheets |
-| `WALKWAY_W`, `WALKWAY_H`, `WALKWAY_GRATE_T` | WK, CR, HP | Walkway deck dimensions — affects clearance annotations in CR |
-| `WALKWAY_BRACKET_H`, `WALKWAY_BRACKET_T`, `WALKWAY_BRACKET_SPACING` | WK, CR, HP | Bracket geometry |
+| `WALKWAY_W`, `WALKWAY_H`, `WALKWAY_GRATE_T` | WK, HP | Walkway deck dimensions — affects clearance annotations |
+| `WALKWAY_BRACKET_H`, `WALKWAY_BRACKET_T`, `WALKWAY_BRACKET_SPACING` | WK, HP | Bracket geometry |
 | `WALKWAY_ANGLE_IRON`, `WALKWAY_ANGLE_IRON_T` | WK | Right walkway angle iron mounting (flat end wall only) |
-| `PROC_TRAY_X_L`, `PROC_TRAY_X_R`, `PROC_TRAY_RIM` | FP, AO, WK, CR | Processing tray position and rim — walkway alignment and panel clearance |
-| `PANEL_FLOOR_GAP` | CR, HP | Panel bottom clearance — must exceed `PROC_TRAY_RIM` |
+| `PROC_TRAY_X_L`, `PROC_TRAY_X_R`, `PROC_TRAY_RIM` | FP, AO, WK | Processing tray position and rim — walkway alignment and panel clearance |
+| `PANEL_FLOOR_GAP` | HP | Panel bottom clearance — must exceed `PROC_TRAY_RIM` |
 
 ### Workflow
 

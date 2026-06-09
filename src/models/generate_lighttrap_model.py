@@ -16,7 +16,7 @@ A detailed, report-accurate model of the cargo-door end assembly only:
   - Fan B (intake) mounted on the swinging panel — reused from the Overview's
     shared fan_duct() builder so it stays in sync.
 
-Geometry comes from hinged-panel-report.md, ceiling-rail-report.md and
+Geometry comes from hinged-panel-report.md and
 light-trap-selection.md. Helpers, materials and spatial constants are imported
 from generate_sketchup_model (`ov`) — single source of truth.
 
@@ -52,7 +52,7 @@ C_DRUM, C_GASKT, C_RAIL, C_CARR = ov.C_DRUM, ov.C_GASKT, ov.C_RAIL, ov.C_CARR
 C_SHELL, C_VALVE = ov.C_SHELL, ov.C_VALVE
 
 PANEL_Z_BOT = PANEL_FLOOR_GAP                 # 80 — bottom edge (floor gap)
-PANEL_Z_TOP = 2300                            # hung from ceiling rail (rail above)
+PANEL_Z_TOP = 2300                            # panel top edge (swings about the Ø89 pivot post)
 
 # ── Option A — housed revolving-door light lock (Ø900 balanced) ───────────────
 # Fixed housing with two opposed 80° openings (exterior + interior-onto-walkway,

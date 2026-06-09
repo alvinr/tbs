@@ -180,7 +180,8 @@ WALL_T            = 40    # container end-wall steel thickness (mm)
 # See docs/superpowers/specs/2026-06-08-cargo-door-rotating-panel-design.md.
 # RETIRED with the slide: PANEL_SLIDE, HGR20 carriage rails, Destaco locks, the ceiling-
 # rail suspension, the barrel hinges + swing-support caster.
-SWING_LOCK_DEG = 56     # transport swing angle, locked (clears the door plane — true min X +72mm)
+SWING_LOCK_DEG = 56     # transport swing angle, locked (clears the door plane — true min X +59mm,
+                        # computed 58.6mm at the bay front-right corner, BAY_FRONT_X×PANEL_CORNER_YD_R)
 PANEL_CUT_YD   = 180    # fixed-left-panel width / swing cut (mm) — 160 min to clear the near
                         # upright at Yd100, 180 for margin. Swinging part runs PANEL_CUT_YD→PIVOT_YD.
 PIVOT_POST_OD  = 89     # Ø89×8 CHS pivot post (mm) — carries the ~3.6kN·m swing cantilever, SF~3.7 (S355)

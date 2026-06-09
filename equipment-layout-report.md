@@ -357,6 +357,5 @@ The light trap drum (900mm dia, center ~1181mm from hinge axis) sweeps through e
 4. [Hinged Panel Report](hinged-panel-report.md) — Stepped panel construction and sliding carriage specification.
 5. [Water System Report](water-system-report.md) — IBC layout, plumbing manifold, and pump positions.
 6. [Walkway System Report](walkway-report.md) — Perimeter walkway dimensions and cantilever bracket design.
-7. [Ceiling Rail Report](ceiling-rail-report.md) — Panel sliding carriage and HGR20 rail specification.
 
 *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

@@ -29,7 +29,9 @@ import generate_lighttrap_model as lt
 component = ov.component
 
 # ── pivot + swing geometry (matches the 2D study) ──
-HX, HY = ov.RAIL_X_L, ov.FP_Y                       # 150, 2262 — film-plane far upright
+# The pivot REUSES the film-plane far upright (no separate axle post). Centre of that
+# 50x50 upright (X150-200, Yd2262-2312) is the rotation axis.
+HX, HY = ov.RAIL_X_L + ov.BRACE_RHS // 2, ov.FP_Y + ov.BRACE_RHS // 2   # 175, 2287
 DRUM_CX, DRUM_CY, DRUM_R = lt.DRUM_CX, lt.DRUM_CY, ov.DRUM_R
 BAY_X0, APER_L, APER_R = ov.BAY_FRONT_X, lt.APER_L, lt.APER_R
 
@@ -51,10 +53,10 @@ TAGS = ["Context", "Door Frame", "Film Plane Rails", "Pivot Axle",
 
 
 def axle():
-    """Vertical pivot post at the far upright + floor thrust + top guide bearing."""
+    """NO separate post — the film-plane far upright IS the pivot. Just the fixed
+    floor thrust + top guide bearings that the upright turns in."""
     cbear = "#5A5AA0"
     return '\n'.join([
-        ov.ruby_cylinder("Pivot axle (Ø60 post)", HX, HY, 0, 30, ov.C_HGT, color=ov.C_STEEL, axis="z"),
         ov.ruby_cylinder("Floor thrust bearing", HX, HY, 0, 95, 45, color=cbear, axis="z"),
         ov.ruby_cylinder("Top guide bearing", HX, HY, ov.C_HGT - 45, 95, 45, color=cbear, axis="z"),
     ])
@@ -75,7 +77,7 @@ def pivot_link():
     Part of the moving frame (the hub sits on the rotation axis, so it stays put while
     the brackets + panel swing — a rigid hinge)."""
     p = [ov.ruby_cylinder("Pivot hub (frame collar)", HX, HY, 110, 48, ov.C_HGT - 220,
-                          color=ov.C_STEEL, axis="z")]
+                          color=ov.C_STEEL, alpha=0.45, axis="z")]
     for z in (250, 1180, 2120):                       # hinge brackets at 3 heights
         p.append(ov.ruby_box("Hinge bracket (panel→axle)", 55, HY - 35, z, 140, 70, 110,
                              color=ov.C_STEEL))
@@ -123,12 +125,18 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 ghost_mat = model.materials["FP removable ghost"] || model.materials.add("FP removable ghost")
 ghost_mat.color = Sketchup::Color.new(176, 176, 184)
 ghost_mat.alpha = 0.20
+pivot_mat = model.materials["Pivot upright"] || model.materials.add("Pivot upright")
+pivot_mat.color = Sketchup::Color.new(90, 90, 160)
 fpdef = model.definitions.to_a.find {{ |d| d.name =~ /Film-Plane Rails/ }}
 if fpdef
   fpdef.entities.grep(Sketchup::Group).each {{ |g|
-    next unless g.name =~ /FP Rail (TL|BL)/
-    g.material = ghost_mat
-    g.entities.grep(Sketchup::Face).each {{ |f| f.material = ghost_mat; f.back_material = ghost_mat }}
+    if g.name =~ /FP Rail (TL|BL)/                          # the two removable left rails
+      g.material = ghost_mat
+      g.entities.grep(Sketchup::Face).each {{ |f| f.material = ghost_mat; f.back_material = ghost_mat }}
+    elsif g.name =~ /Brace Post L .far wall./              # the far upright = the PIVOT
+      g.material = pivot_mat
+      g.entities.grep(Sketchup::Face).each {{ |f| f.material = pivot_mat }}
+    end
   }}
 end
 ganc = Geom::Point3d.new(150.mm, 600.mm, 1700.mm)
@@ -153,7 +161,7 @@ it.layer = model.layers["Frame (transport)"]
 
 # ── keep the poke-out noted: label the swung far flap ──
 anc = Geom::Point3d.new((-25).mm, 2204.mm, 1200.mm)
-txt = entities.add_text("POKE-OUT: panel flap beyond\npivot (swung @ {round(LOCK)}deg) —\nbay now clears; keep noted", anc,
+txt = entities.add_text("Frame FULLY CLEARS door plane\nat {round(LOCK)}deg (true min X +4mm) —\nno poke-out at this pivot", anc,
                         Geom::Vector3d.new((-600).mm, (-300).mm, 300.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc2 = Geom::Point3d.new({HX}.mm, {HY}.mm, 1600.mm)

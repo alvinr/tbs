@@ -384,10 +384,12 @@ Butt joints are used rather than miters for two reasons:
 ## 7. Evaporative Cooler Transport Stowage
 
 During transport, the evaporative cooler (600×350mm, ~20kg dry) is stowed on the
-near walkway grating at X=500–1100mm, Yd=0–350mm. The cooler sits on a 12mm
-plywood base plate that distributes load across the grating and prevents the
-housing from catching in grate openings. Two 25mm ratchet straps loop over the
-cooler and hook to near walkway cantilever bracket arms at X≈457mm and X≈914mm.
+near walkway grating at X=1450–2050mm, Yd=0–350mm — in the widened section, moved
+deeper (rev10) so it clears the panel swing sweep (which reaches X≈1395 in this
+near-walkway zone). The cooler sits on a 12mm plywood base plate that distributes
+load across the grating and prevents the housing from catching in grate openings.
+Two 25mm ratchet straps loop over the cooler and hook to near walkway cantilever
+bracket arms at X≈1550mm and X≈1950mm.
 
 The 350mm cooler depth slightly exceeds the 300mm walkway width — the cooler
 overhangs 50mm into the processing tray zone. This is acceptable because the

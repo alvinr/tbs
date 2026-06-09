@@ -266,8 +266,11 @@ EVAP_DUCT_D  = 200     # duct outer diameter (mm)
 EVAP_W     = 600     # cooler width along X (mm)
 EVAP_D     = 350     # cooler depth along Yd (mm)
 EVAP_H     = 800     # cooler height (mm)
-# Transport stowage — on near walkway grating, in widened 500mm section
-EVAP_STOW_X    = 1200    # stowage left edge X (mm) — in 500mm wide zone
+# Transport stowage — on near walkway grating, in the widened section.
+# rev10: moved deeper (was 1200) to clear the panel SWING sweep, which reaches
+# X≈1395 in the near-walkway Yd band; 1450 gives ~55mm margin (cooler X1450–2050,
+# inside the wide section X1155–2629).
+EVAP_STOW_X    = 1450    # stowage left edge X (mm)
 EVAP_STOW_YD   = 0       # against pinhole wall (Yd=0)
 EVAP_STOW_Z    = 150     # sits on raised grating surface (WALKWAY_H 130 + 20mm pad) [+50 raise]
 

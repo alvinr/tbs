@@ -77,7 +77,7 @@ Fan A is flush-mounted in a wall penetration at the far end wall (X=5893mm), hig
 
 Fan B is mounted low on the sliding hinged panel, which moves with the panel during mode conversion (880mm slide travel + 180° swing). The fan and baffle duct are interior-mounted (same as Fan A); a weatherproof louvre grille on the panel exterior face is the only external component. During operation, the cargo doors are open (personnel access is via the revolving light trap drum), so fresh outside air is drawn in through the grille near floor level.
 
-**Wiring:** Fan B's wire run routes from the fuse block along the ceiling cable trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin weatherproof connectors at each end. The coiled cable accommodates 880mm of panel slide travel (rev 9 / B2) plus 180° panel swing without binding. The fixed end anchors to the door frame top rail; the panel end anchors to the carriage beam. The service loop hangs in the ceiling zone above Z=2200mm; the wire drops down the panel to the low fan.
+**Wiring:** Fan B's wire run routes from the fuse block along the ceiling cable trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin weatherproof connectors at each end. The coiled cable accommodates the ~56° transport swing about the pivot (with slack) without binding. The fixed end anchors to the door frame top rail; the panel end anchors to the swinging frame near the pivot. The service loop hangs in the ceiling zone above Z=2200mm; the wire drops down the panel to the low fan.
 
 ### 4.4 Light-Safe Baffle Ducts
 
@@ -138,10 +138,10 @@ From the walkway design, the location of the cooler (green rectangle) can be see
 
 | Parameter | Value |
 |-----------|-------|
-| Stowage zone | Near walkway wide section, X=1200–1800mm, Yd=0–500mm |
+| Stowage zone | Near walkway wide section, X=1450–2050mm, Yd=0–350mm |
 | Base plate | 12mm plywood, 600 × 350mm (load distribution) |
 | Securing | 2 × 25mm ratchet straps to cantilever bracket arms |
-| Clearance to panel transport envelope | 780mm (panel max X=420mm, cooler starts X=1200mm) |
+| Clearance to panel swing sweep | ~55mm (the swing reaches X≈1,395; the cooler starts at X=1,450, moved deeper from X=1,200 in rev10 to clear the deeper swing) |
 
 ---
 

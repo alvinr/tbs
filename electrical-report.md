@@ -216,7 +216,7 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 **Connectors:**
 - Interior connections: Anderson Powerpole 30A (red/black) — tool-free, industry standard for 12V DC
 - Exterior penetrations (fans, cooler intake, shore inlet): Deutsch DT series 2-pin weatherproof connectors — IP67 rated
-- **Circuit B flex connector (panel-mounted intake fan):** Fan B is mounted low on the sliding hinged panel. The wire run from the fuse block routes along the ceiling trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin connectors at each end. The coiled cable must accommodate ~880mm of panel slide travel (rev 9 / B2) plus 180° panel swing without binding. Anchor the fixed end to the door frame top rail; anchor the panel end to the carriage beam. The service loop hangs in the ceiling zone above H=2200mm and the wire drops down the panel to the low fan.
+- **Circuit B flex connector (panel-mounted intake fan):** Fan B is mounted low on the swinging hinged panel. The wire run from the fuse block routes along the ceiling trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin connectors at each end. The coiled cable must accommodate the ~56° transport swing about the pivot (with slack) without binding. Anchor the fixed end to the door frame top rail; anchor the panel end to the swinging frame near the pivot. The service loop hangs in the ceiling zone above H=2200mm and the wire drops down the panel to the low fan.
 - **Circuit E exterior connector (evaporative cooler):** The evaporative cooler operates outside the container during sessions. Circuit E (14 AWG) routes from the fuse block along the ceiling trunking, down the pinhole wall to the external power panel interior face, and terminates at a Deutsch DT 2-pin bulkhead connector mounted in the panel face plate. On the exterior, a 1.5m 14 AWG 2-conductor cable with Deutsch DT 2-pin plugs at each end connects the panel to the cooler. The cable is disconnected and stowed inside the container for transport.
 
 **Grounding:** Bond the container steel body to the battery negative busbar using 4 AWG green/yellow wire at the main enclosure. Drive an 8-foot copper ground stake at the container foundation and connect to the main enclosure earth terminal.
@@ -295,7 +295,7 @@ All US/SoCal sources. Prices approximate as of 2026.
 3. [Blue Sea 5026 ST Blade Fuse Block](https://www.bluesea.com/products/5026/ST_Blade_Fuse_Block_-_12_Circuits_with_Negative_Bus_and_Cover) — 12-circuit fuse block specifications.
 4. [Battle Born 100Ah LiFePO4](https://battlebornbatteries.com/product/100ah-12v-lifepo4-deep-cycle-battery/) — LiFePO4 battery specifications.
 5. [Light Trap Selection Report](light-trap-selection.md) — Revolving drum specification and commercial options evaluation.
-6. [Hinged Panel Report](hinged-panel-report.md) — Panel construction, hinge, latch, and sliding carriage specification.
+6. [Hinged Panel Report](hinged-panel-report.md) — Panel construction, pivot, latch, and swing-mechanism specification.
 7. [Water System Report](water-system-report.md) — Pump circuits and water system electrical integration.
 8. [Equipment Layout Report](equipment-layout-report.md) — Component positions and shadow-free zone verification.
 

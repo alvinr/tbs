@@ -26,7 +26,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$20,701** | **~$28,580** |
+| **TOTAL (base build + 50-print run)** | **~$20,776** | **~$28,690** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -417,14 +417,15 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Transition bearing plate, 40×500×5mm flat bar | Welded to bracket arm top at width transitions (X≈1,156 and X≈2,526). Both grating widths land on plate. | 2 | Metal Supermarkets | ~$5–$10 |
 | Steel angle bearer, 25×25×5mm L-angle | Hot-dip galvanized. 2× 2362mm lengths (right walkway). | 2 | Metal Supermarkets | ~$20–$35 |
 | M10 threaded rod, galvanized | 2313mm long, grade 8.8. 10 rods (5 hanger pairs). | 10 | McMaster-Carr | ~$40–$60 |
-| Ceiling bracket plates, 100×60×6mm steel | Galvanized. 10 plates (1 per hanger). | 10 | Local fab | ~$20–$35 |
+| Ceiling anchor plates, 120×90×6mm steel | Galvanized. 20 plates — an INSIDE plate (the rod hangs from it) + an OUTSIDE roof-exterior reinforcing plate per hanger (10 hangers), sandwiching the roof skin. | 20 | Local fab | ~$45–$70 |
+| M12×40mm hex through-bolts, nuts, flat + lock washers | Grade 8.8, galvanized. 4 per hanger (40 total) — draw the inside/outside ceiling plates together through the roof (same 4-bolt anchor pattern as the wall stays / cantilever brackets). Sealed penetrations. | 40 | McMaster-Carr | ~$40–$60 |
 | M10 nuts, flat washers, lock washers | Galvanized. 4 per hanger rod. | 40+40 | McMaster-Carr | ~$20–$30 |
 | [M saddle clips + TEK screws](https://www.mcnichols.com/products/grating/accessories/) | M saddle clips straddle 2 bearing bars, TEK screw through bracket arm or L-angle. Near/far/right walkways. | ~20 | [McNichols](https://www.mcnichols.com) | ~$15–$25 |
 | Left floor-leg cantilever brackets (×5) | Each = 50×50×3mm steel SHS post (~115mm, floor to grate bottom) + 40×40×3mm SHS arm (2× standard reach to X470, 3× extended to X770 on the drum-exit punch-out) + 128×60×8mm foot plate. Bolted to bare floor outside the tray (X<170); arms pass 15mm over the spray bar. Hot-dip galvanized. | 5 | Metal Supermarkets / local fab | ~$55–$95 |
 | [M10 wedge anchors + nuts/washers](https://www.mcmaster.com/) | Galvanized. 4 per foot plate (20 total) — sealed penetrations into the container floor. | 20 | McMaster-Carr | ~$25–$45 |
 | Drum-exit punch-out — extra grating (~0.23 m²) | Deeper landing (600mm) at the light-lock exit; carried by the 3 extended bracket arms (to X770) — no separate bearer/leg. | 1 lot | McNichols | ~$20 |
-| Fabrication + installation | Cut/weld/galvanize 14 std + 4 widened wall brackets, reinforcing plates, drill wall ribs, hang right walkway bearers, fit 5 left floor-leg cantilever brackets + drill/seal floor anchors, install | 1 job | Local fab / metal shop | ~$280–$440 |
-**Walkway subtotal: ~$1,070–$1,650**
+| Fabrication + installation | Cut/weld/galvanize 14 std + 4 widened wall brackets, reinforcing plates, drill wall ribs, hang right walkway bearers, drill/seal 40 roof penetrations for the right-walkway hanger anchor plates, fit 5 left floor-leg cantilever brackets + drill/seal floor anchors, install | 1 job | Local fab / metal shop | ~$290–$455 |
+**Walkway subtotal: ~$1,145–$1,760**
 
 *Near/far grating secured with M saddle clips + TEK screws to bracket arms. Right walkway grating secured with M saddle clips + TEK screws to L-angle bearer horizontal leg. Left walkway uses gravity retention — the grating rests on the floor-leg cantilever arms (5 brackets on bare floor at X=140, arms reaching X=470, three extended to X=770 on the punch-out); lift straight up to remove (no fasteners, no kerb). The brackets are bolted to the floor (permanent); only the grating lifts out for transport. No edge beam, no bearing strip, no tray contact (the +50mm walkway raise lifts the arms clear of the floor-level spray bar). Near walkway widens to 500mm at EP/battery/slit zone (X≈1,155–2,629) with heavier 10mm brackets (see Sheet 7). Slits cut to tray lip only (near: 420mm, far: 218mm), not full walkway depth. Transition bearing plates at width change brackets (X≈1,156 and X≈2,526). Butt joints at all corners. No floor contact on any section — entire tray interior clear.*
 

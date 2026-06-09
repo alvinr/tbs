@@ -19,7 +19,7 @@
 | **4. Film plane mechanism (4-corner Option A, incl. brace cage + cross-slides)** | $3,100 | $3,650 | $4,200 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $4,958 | $6,175 | $7,391 |
 | **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $1,465 | $1,802 | $2,160 |
-| **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $1,053 | $1,355 | $1,647 |
+| **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $1,093 | $1,410 | $1,717 |
 | **6b. Ceiling rail suspension (B2 longer rails)** | $255 | $302 | $350 |
 | **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
@@ -299,13 +299,13 @@ Four removable grated walkway sections around all 4 sides of the processing tray
 | M12×60mm hex bolts + nuts + washers (×58) | $57 | $72 | $87 | 3 per std bracket (42) + 4 per widened (16) |
 | Transition bearing plates, 40×500×5mm flat bar (×2) | $5 | $8 | $10 | Welded to arm top at width transitions |
 | Steel angle bearers, 25×25×5mm L-angle (×2) | $20 | $30 | $35 | Right walkway: 2× 2362mm ceiling-hung bearers |
-| M10 threaded rod + ceiling plates + hardware | $80 | $105 | $125 | 10 rods (5 hanger pairs) + 10 ceiling plates + nuts/washers |
+| M10 threaded rod + ceiling anchor plates + hardware | $120 | $160 | $195 | 10 rods (5 hanger pairs) + 20 ceiling anchor plates (inside + outside, 120×90×6mm, sandwich the roof) + 40× M12 through-bolts + nuts/washers |
 | M saddle clips + TEK screws (×20) | $15 | $20 | $25 | Near/far/right walkway grating retention |
 | Drum-exit punch-out — extra grating (~0.23 m²) | $20 | $25 | $30 | 600mm-deep landing at the light-lock exit; carried by the 3 extended bracket arms (no separate bearer/leg) |
 | Left floor-leg cantilever brackets (×5) | $55 | $75 | $95 | 50×50×3 SHS posts (~115mm) + 40×40×3 SHS arms (2 std to X470, 3 extended to X770) + 128×60×8 foot plates; bolted to bare floor outside the tray, arms 15mm over the spray bar |
 | M10 wedge floor anchors (×20) | $25 | $35 | $45 | 4 per foot plate; sealed penetrations into the container floor |
 | Fabrication (brackets, ceiling hangers, install) | $280 | $360 | $440 | 14 std + 4 widened wall brackets, fit 5 left floor-leg cantilever brackets + drill/seal floor anchors, install |
-| **Perimeter walkway total** | **$1,053** | **$1,355** | **$1,647** | |
+| **Perimeter walkway total** | **$1,093** | **$1,410** | **$1,717** | |
 
 ---
 
@@ -485,12 +485,12 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Film plane mechanism (manual Option A, incl. brace cage + cross-slides) | $3,100 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $4,900 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,465 |
-| Perimeter walkway (4 sections, removable) | $1,002 |
+| Perimeter walkway (4 sections, removable) | $1,042 |
 | Ceiling rail suspension (B2 longer rails) | $255 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$16,859** |
+| **Scenario A total** | **~$16,899** |
 
 ### Scenario B — Recommended build, regional deployment
 
@@ -502,13 +502,13 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Film plane mechanism (manual Option A + brace cage + cross-slides + electric actuation) | $4,097 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,084 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,800 |
-| Perimeter walkway (4 sections, removable) | $1,291 |
+| Perimeter walkway (4 sections, removable) | $1,346 |
 | Ceiling rail suspension (B2 longer rails) | $302 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Rodenstock Apo-Ronar 1200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$22,856** |
+| **Scenario B total (excl. CDL)** | **~$22,911** |
 
 ### Scenario C — Full production, own transport, CDL
 

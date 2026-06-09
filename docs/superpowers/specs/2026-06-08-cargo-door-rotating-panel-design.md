@@ -106,7 +106,11 @@ container so the cargo doors close. Decisions and rationale:
 
 ## 4. Open items (punch-list — resolve before / with the cascade)
 
-1. **Lock mechanism** at the 56° transport angle.
+1. ~~**Lock mechanism** at the 56° transport angle.~~ **RESOLVED** — top + bottom **wall
+   stays** (hook on the frame ↔ eye on the near wall, with turnbuckle), forming a couple
+   that resists transit twist/rattle. The eye reacts into a **bolted plate anchor** (inside
+   + outside plates, 4× M16 through the wall) — no welding to the container skin, and off
+   the floor (the floor is the angled processing-tray basin). In the model.
 2. **Seals:** the vertical cut seal (fixed panel ↔ swinging part); the fixed-panel perimeter
    seal; the swinging panel's perimeter seal against the door frame.
 3. **Film-plane left-rail removal** mechanism — demount, re-seat, and alignment back to the
@@ -115,7 +119,10 @@ container so the cargo doors close. Decisions and rationale:
 5. **Drum bearings** — top central (top-suspended) + bottom; confirm the bottom cross-member
    bearing reads as a floor-gap threshold (no trip), per the agreed "cross-members top+bottom"
    (not a perimeter guide). Size the bearings.
-6. **Axle + floor thrust bearing sizing** for ~330 kg + dynamic.
+6. ~~**Axle + floor thrust bearing sizing** for ~330 kg + dynamic.~~ **RESOLVED** — **Ø89×8
+   CHS** post (σ ~95 MPa, SF ~3.7 on S355 against the ~3.6 kN·m swing cantilever), floor +
+   roof mount plates, a thrust collar carrying the ~330 kg, and a top + bottom radial hub
+   bearing pair reacting the overturning couple. In the model.
 7. **Operating sequence** (deploy ↔ transport), including film-plane parking/de-rig.
 8. **Walkway-grate tangent** — a few-mm gap (drop grate locally or lift the frame).
 9. **Mass reduction** if ~330 kg is too heavy (lighter panel skins / slimmer cage).

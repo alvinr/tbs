@@ -124,8 +124,9 @@ container so the cargo doors close. Decisions and rationale:
    **U-saddle** at both ends (shelf + X-side cheeks), located by a **tapered dowel** back to
    the film datum and held by a **removable clamp bar**; the rail lifts straight up for
    transport, no threading. The far-end saddle bolts to the **Ø89 pivot post**, sat clear of
-   the rotating hub band. In the model (rails ghosted = struck; saddles fixed). Also extended
-   the film-cage **brace beams to the cargo-door edge (X0)**. *(Open detail: rail stowage
+   the rotating hub band. In the model (rails ghosted = struck; saddles fixed). Also ran the
+   film-cage **brace beams out to the container/walkway far extent** (drawing consistency).
+   *(Open detail: rail stowage
    clips + a weight/2-person handling check on the ~2.2 m rails.)*
 4. **Fan B** — confirm intake/duct routing still works on the swinging part.
 5. **Drum bearings** — top central (top-suspended) + bottom; confirm the bottom cross-member

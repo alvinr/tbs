@@ -38,7 +38,7 @@ from tbs_constants import (
     PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,         # widened center-zone step lines
     LT_DRUM_OR, LT_OPENING_DEG,
     RAIL_X_L,                                    # film-plane left rail (now continuous, B2)
-    FP_Y_MIN, FP_Y, PANEL_SLIDE, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_WALL_T,
+    FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_WALL_T,
 )
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v,
@@ -238,15 +238,11 @@ def sheet1():
     HINGE_YS = [220, 1190, PH - 230]
     HINGE_W = 85; HINGE_L = 220
 
-    # ── Sliding carriage system ─────────────────────────────────────────────
-    # The entire panel slides 300mm in the X direction (into the container)
-    # on HGR20 linear rails mounted to both container walls at floor and
-    # ceiling level. Rails run parallel to the container long walls.
-    #
-    # LEFT (hinge) side: carriage beam (60×60mm SHS) rides on rails,
-    #   panel hinges mount to this beam.
-    # RIGHT (latch) side: panel frame rides on rails via carriage blocks,
-    #   no separate beam needed — the panel RHS frame provides rigidity.
+    # ── Former HGR20 slide rails (rev10: RETIRED) ────────────────────────────
+    # The old transport scheme slid the panel on HGR20 linear rails along the
+    # container walls. rev10 supersedes it: the panel + drum SWING ~56° about the
+    # Ø89 pivot post. The rail profiles below are drawn faint, labeled as the
+    # retired route (see Sheet 4 for the rotation plan).
     C_RAIL = "#CC4422"   # red, matching assembly overview
     C_CARR = "#C04010"   # carriage beam color
     RAIL_H = 20          # rail cross-section height (visible in elevation)

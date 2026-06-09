@@ -133,13 +133,13 @@ def sheet1():
                 ls=(0, (6, 3)), zorder=4, alpha=0.8)
     # Zone labels (positioned between step lines and panel edges)
     ax.text(STEP_YD_L / 2, PH - 120,
-            "40mm\nCORNER\nZONE", color="#C04010", fontsize=6,
+            "40mm CORNER ZONE", color="#C04010", fontsize=6,
             ha="center", va="top", fontweight="bold", **FONT, zorder=15, alpha=0.7)
     ax.text((STEP_YD_L + STEP_YD_R) / 2, PH - 220,
-            "120mm\nCENTER ZONE\n(DRUM HOUSING)", color="#C04010", fontsize=6,
+            "120mm CENTER ZONE\n(DRUM HOUSING)", color="#C04010", fontsize=6,
             ha="center", va="top", fontweight="bold", **FONT, zorder=15, alpha=0.7)
     ax.text((STEP_YD_R + PW) / 2, PH - 120,
-            "40mm\nCORNER\nZONE", color="#C04010", fontsize=6,
+            "40mm CORNER ZONE", color="#C04010", fontsize=6,
             ha="center", va="top", fontweight="bold", **FONT, zorder=15, alpha=0.7)
     # Step dimension
     dim_h(ax, STEP_YD_L, STEP_YD_R, -210,
@@ -156,10 +156,10 @@ def sheet1():
         ax.plot([cx, cx], [0, PH], color="#A000A0", lw=2.6, ls=(0, (5, 2)), zorder=11)
         ax.text(cx, PH + 35, f"CUT @ Yd{cx}\n(fixed ↔ swing)", color="#A000A0", fontsize=6,
                 ha="center", va="bottom", fontweight="bold", **FONT, zorder=15)
-    leader(ax, (_FAR + (PW - _FAR) / 2, PH / 2 - 250), (PW + 230, PH / 2 - 250),
-           "FIXED FAR STRIP\n(Yd2287–2362) — does NOT\nswing; seals the strip\nbeyond the pivot", col="#6a4010", fs=6)
-    leader(ax, (_CUT / 2, FR + 250), (-300, FR + 250),
-           "FIXED LEFT PANEL\n(Yd0–180) — does NOT\nswing (clears near upright)", col="#6a4010", fs=6)
+    leader(ax, (_FAR + (PW - _FAR) / 2, PH / 2 - 250), (PW + 180, PH / 2 - 250),
+           "FIXED FAR STRIP (Yd2287–2362)\nbolted to the door frame —\ndoes NOT swing", col="#6a4010", fs=6)
+    leader(ax, (_CUT / 2, FR + 250), (-220, FR + 250),
+           "FIXED LEFT PANEL (Yd0–180)\nbolted to the door frame —\ndoes NOT swing", col="#6a4010", fs=6)
     ax.text(PW / 2, FR + 70, "SWINGING PANEL  (Yd180 → 2287, pivots 56°)", color="#1763C8",
             fontsize=7, ha="center", va="bottom", fontweight="bold", **FONT, zorder=15, alpha=0.8)
 
@@ -171,8 +171,8 @@ def sheet1():
     for i in range(1, 5):
         yy = _FBH - fb_h / 2 + i * fb_h / 5
         ax.plot([_FBY - fb_w / 2, _FBY + fb_w / 2], [yy, yy], color=C_OUT, lw=0.6, zorder=7)
-    leader(ax, (_FBY, _FBH - fb_h / 2), (_FBY + 320, _FBH - 320),
-           "FAN B (intake) OUTLET\nweatherproof louvre on the\npanel exterior (swings with\nthe panel; camera mode only)", col="#506070", fs=6)
+    leader(ax, (_FBY, _FBH - fb_h / 2), (_FBY + 200, _FBH - 200),
+           "FAN B (intake) louvre\n(panel exterior — camera mode;\nswings with the panel)", col="#506070", fs=6)
 
     # ── Revolving drum ────────────────────────────────────────────────────────
     DX = DRUM_CX - DRUM_R   # drum left edge in panel
@@ -229,8 +229,8 @@ def sheet1():
     hx_handle = DX + DRUM_D - HW - 20
     ax.add_patch(Rectangle((hx_handle, HY - HH / 2), HW, HH,
                             fc="none", ec=C_OUT, lw=1.2, ls=(0, (4, 3)), zorder=7))
-    leader(ax, (hx_handle + HW / 2, HY), (DX + DRUM_D + 300, HY + 300),
-           "100mm PULL HANDLE\n(INTERIOR FACE — HIDDEN)\nWelded bracket\nno through-hole")
+    leader(ax, (hx_handle + HW / 2, HY), (DX + DRUM_D + 130, HY + 200),
+           "100mm PULL HANDLE\n(interior face — hidden;\nwelded, no through-hole)")
 
     # ── (rev10: the left-edge barrel hinges are RETIRED — the panel pivots on the
     #    Ø89 post at the FAR edge, not on left-edge hinges. The HINGE_* values are kept

@@ -264,10 +264,10 @@ def draw_sheet1():
             ha="center", va="center", fontsize=7.0, color="#2D6A2D",
             fontweight="bold", rotation=90)
 
-    # ── Film left-rail demountable segment — drum-mode clearance note ─────────
+    # ── Film left-rail removal — swing-out clearance note ─────────────────────
     # The film-plane LEFT RAIL (X=150mm in container coords) passes through the
-    # drum volume (Yd 731–1631mm). That rail segment is demountable so the drum
-    # can rotate in "drum mode"; the carriage parks at Yd=2262 during drum mode.
+    # drum volume (Yd 731–1631mm). That rail (TL+BL) lifts out of its saddles so the
+    # cargo panel + drum can SWING ~56° about the pivot post for transport.
     # In this schematic longitudinal section the left rail is not drawn (it runs
     # perpendicular to this view), but we add a callout note above the drum box
     # so the relationship is documented on this sheet.
@@ -287,9 +287,9 @@ def draw_sheet1():
         boxstyle="round,pad=0.06", fc="#FFFBE6", ec="#C07030", lw=1.0,
         zorder=11))
     ax.text(NOTE_CX, NOTE_CY,
-            "B2: DRUM OFFSET OUT VIA THE PANEL BAY\n"
-            "Film LEFT RAIL is CONTINUOUS (full travel)\n"
-            "no demountable segment · drum clears the X=150 rail",
+            "SWING-OUT (rev10): CARGO PANEL + DRUM REVOLVE\n"
+            "~56° ABOUT THE PIVOT POST FOR TRANSPORT\n"
+            "LEFT film rail (TL+BL) lifts out to clear the X=150 plane",
             ha="center", va="center", fontsize=6.5, color="#7A3A00",
             fontweight="bold", zorder=12)
     # Leader arrow from note bottom to drum box top-center
@@ -299,11 +299,11 @@ def draw_sheet1():
                 arrowprops=dict(arrowstyle="->", color="#C07030", lw=1.0),
                 zorder=12)
 
-    # ── Transport / walkway note — drum slide-back requires left walkway removal ─
-    # The walkway is LOWERED (deck Z=65mm, stays in place during camera operation;
-    # film plane travels above it).  LEFT WALKWAY (X 170–470mm) is a removable
-    # lift-out section — for transport it is taken out so the cargo panel + drum
-    # can slide back to rest position at X≈300mm.
+    # ── Transport / walkway note — the swing needs the left rails + left walkway out ─
+    # (rev10) The cargo panel + drum SWING ~56° about the pivot post for transport (no
+    # slide). The LEFT film rails (TL+BL) lift out of their saddles + the LEFT WALKWAY
+    # (X 170–470mm) lifts out so the swinging cage can transition the X=150 rail plane.
+    # The walkway is LOWERED (deck Z=130) and stays in place during camera operation.
     TN_W  = 3.70
     TN_H  = 0.95
     TN_RX = 23.90
@@ -315,9 +315,9 @@ def draw_sheet1():
         boxstyle="round,pad=0.06", fc="#E8F4FD", ec="#1565C0", lw=1.0,
         zorder=11))
     ax.text(TN_CX, TN_CY,
-            "TRANSPORT: strike film plane + left rails + door-end\n"
-            "brackets → cargo panel + bay slide back ~880mm\n"
-            "(walkway LOWERED, not removed, for operation)",
+            "TRANSPORT (rev10): strike the LEFT film rails + lift out\n"
+            "the left walkway → cargo panel + drum SWING ~56° about\n"
+            "the pivot post, clearing the door (true min X +59mm)",
             ha="center", va="center", fontsize=6.2, color="#0D47A1",
             fontweight="bold", zorder=12)
     # Leader arrow from note top to drum box bottom-center

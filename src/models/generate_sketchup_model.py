@@ -131,7 +131,7 @@ C_BATH = "#2E6FA0"      # processing chemistry (translucent bath)
 # Subsystem → tag map (also drives tag creation order).
 TAGS = ["Shell", "Walkways", "Processing Tray",
         "Pinhole", "Optical Cone", "Film Plane",
-        "Ceiling Rail", "Spray Bar", "Equipment Panel",
+        "Pivot Axle", "Spray Bar", "Equipment Panel",
         "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf",
         "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans",
         "Water Plumbing", "Labels"]
@@ -164,10 +164,10 @@ OVERVIEW_POINT_LABELS = [
     (5618, 1996, 2250, "FAN A\n(exhaust, IBC end)",  400,    0,  450),
     (275,   365,  680, "FAN B\n(intake, door end)", -350,    0, 1250),
     (2060,   60,  600, "BATTERY BANK\n(LiFePO4)",    -300, -600,  900),
-    # Walkways + Ceiling Rail span paired/perimeter parts, so their bounds-centre
-    # would land in the empty middle — anchor on the actual NEAR member instead.
+    # Walkways span paired/perimeter parts, so their bounds-centre would land in the
+    # empty middle — anchor on the actual NEAR member instead.
     (2400,  150,   65, "WALKWAYS",                   -200, -850,  750),  # near walkway strip
-    ( 225,  653, 2370, "CEILING RAIL\n(panel suspension)", 200, -400, 800),  # near ceiling rail
+    ( 175, 2287, 1700, "PIVOT POST Ø89\n(panel swing axis)", 500, -200, 600),  # the swing pivot
 ]
 
 
@@ -435,7 +435,7 @@ def walkways():
     tray-rim level), so the grating sits below the film-frame bottom (Z=100) and
     the film plane travels above the in-place walkway. The LEFT walkway (cargo-
     door side) is a removable lift-out (shown in a distinct color) — taken out
-    for transport so the light-trap can slide back.
+    for transport before the panel + drum swing inboard.
     """
     grate_z = WALKWAY_H - WALKWAY_GRATE_T   # 115mm — grate bottom (raised +50)
     t = WALKWAY_GRATE_T                      # 15mm — thin grate
@@ -629,48 +629,25 @@ def optical_cone():
     return ruby_cone_wire("Optical Cone", apex, base, "Optical Cone")
 
 
-# ── Ceiling rail (cargo-door panel suspension) ───────────────────────────────
+# ── Cargo-door panel + swing pivot (rev10 — supersedes the ceiling-rail slide) ─
 
-def ceiling_rail():
-    """HGR20 ceiling rails + HGH20CA carriages + brackets + suspended panel.
+def panel_pivot():
+    """Cargo-door panel + its vertical SWING pivot.
 
-    Two rails run in X near the cargo-door end (X=0) at the carriage depths
-    Yd=653/1709, carrying the movable end panel in its operational position.
+    The panel + drum assembly rotates ~56° about a Ø89 CHS post (the film-plane
+    far-left upright, REUSED — geometry single-sourced from the light-trap model,
+    lt.axle()) to clear the cargo doors for transport. The old HGR20 ceiling-rail
+    suspension + HGH20CA carriages are retired. Shown here shut at X=0 (operating);
+    the detailed swing mechanism (3-zone split, hub bearings, wall stays, removable
+    rails) lives in models/lighttrap.skp.
     """
-    parts = []
-    rail_x0, rail_len = -30, 510          # rail spans X=-30..480
-    rail_h, rail_w_yd = 30, 20
-    rail_z = C_HGT - rail_h               # 2358 — hung from ceiling
-    carr_w, carr_d, carr_h = 44, 44, 28
-    carr_x = PANEL_CENTER_T / 2 - carr_w / 2   # 38 — centered on panel
-    carr_z = rail_z - carr_h              # 2330
-    brk_w, brk_d, brk_h = 60, 40, 40
-    brk_x = PANEL_CENTER_T / 2 - brk_w / 2     # 30
-    brk_z = carr_z - brk_h                # 2290 — panel hangs from here
-
-    for yd, nm in [(PANEL_CORNER_YD_L, "L"), (PANEL_CORNER_YD_R, "R")]:
-        parts.append(ruby_box(f"HGR20 Rail {nm}",
-                              rail_x0, yd - rail_w_yd / 2, rail_z,
-                              rail_len, rail_w_yd, rail_h, color=C_RAIL))
-        parts.append(ruby_box(f"Carriage {nm} (HGH20CA)",
-                              carr_x, yd - carr_d / 2, carr_z,
-                              carr_w, carr_d, carr_h, color=C_CARR))
-        parts.append(ruby_box(f"Suspension Bracket {nm}",
-                              brk_x, yd - brk_d / 2, brk_z,
-                              brk_w, brk_d, brk_h, color=C_STEEL))
-        # Ø12 suspension rods — hangers up to the ceiling at each carriage.
-        for rx in (20, PANEL_CENTER_T - 20):
-            parts.append(ruby_cylinder(f"Suspension Rod {nm} (X{rx})",
-                                       rx, yd, brk_z, 6, C_HGT - brk_z,
-                                       color=C_STEEL, axis="z"))
-
-    # Suspended cargo-door panel, operational position (X=0), floor gap 80mm.
-    # Ply sandwich — match the bay + hinge-panel ply color (was C_ALUM blue).
+    import generate_lighttrap_model as lt
+    parts = [lt.axle()]
+    # Cargo-door panel, operational position (X=0). Ply sandwich (bay/hinge-panel color).
     parts.append(ruby_box("Cargo Door Panel",
                           0, 0, PANEL_FLOOR_GAP,
-                          PANEL_CENTER_T, C_WID, brk_z - PANEL_FLOOR_GAP,
+                          PANEL_CENTER_T, C_WID, 2300 - PANEL_FLOOR_GAP,
                           color=C_PLY, alpha=0.6))
-
     return '\n'.join(parts)
 
 
@@ -1180,8 +1157,8 @@ def light_seal():
     center) light-seals against the container opening. The EPDM gasket runs as
     a frame around the opening perimeter on the panel's EXTERIOR face,
     SANDWICHED against the fixed door frame (interface 1 — hinge panel → frame,
-    compressed by the cam latches); matches the light-trap model. The hinges
-    are on one vertical edge (Yd=0).
+    compressed by the cam latches); matches the light-trap model. (rev10: the
+    panel pivots on the Ø89 post — no left-edge barrel hinges.)
     """
     parts = []
     gw, gt = 40, 20                    # gasket face width, thickness in X
@@ -1202,11 +1179,9 @@ def light_seal():
                           x0, yd_max - gw, z_bot, gt, gw, z_top - z_bot,
                           color=C_GASKT))
 
-    # Hinges on the left vertical edge (Yd=0), straddling the panel exterior.
-    hw, hh, hd = 30, 120, 60
-    for hz in (300, 1184, 2050):
-        parts.append(ruby_box("Hinge",
-                              -hd / 2, 0, hz, hd, hw, hh, color=C_STEEL))
+    # (rev10: the left-edge barrel hinges + swing-support caster are retired — the panel
+    # now pivots on the Ø89 post at the far-left upright, see panel_pivot(). Only the
+    # cam-latch-compressed EPDM perimeter seal remains here.)
 
     return '\n'.join(parts)
 
@@ -1322,11 +1297,10 @@ def lighting_wiring():
     # → Fan B (intake, Cct B): now in the NEAR corner by the pinhole wall (rev9/B2
     #   swap), so the rigid conduit RUNS ALONG THE PINHOLE WALL (Yd≈20) to the door
     #   end and then hops a short distance in +Yd to a fixed anchor on the
-    #   door-frame top rail — staying in the near corner zone (Yd<653), so it never
-    #   crosses the ceiling suspension rails (Yd=653/1709). A 1m coiled flex whip
-    #   (electrical-report §Circuit B, Deutsch DT connectors — NOT modeled) drops
-    #   from the anchor down the moving panel to the low fan, taking up the
-    #   transport slide + 180° swing.
+    #   door-frame top rail — staying in the near corner zone (Yd<653). A 1m coiled
+    #   flex whip (electrical-report §Circuit B, Deutsch DT connectors — NOT modeled)
+    #   drops from the anchor down the swinging panel to the low fan, taking up the
+    #   ~56° transport swing.
     fb_anchor = (60, FAN_B_YD, czr)                  # fixed end on the door-frame top rail
     parts.append(ruby_pipe_run("Conduit to Fan B (intake, Cct B)",
                                [(300, 20, czr),
@@ -1833,7 +1807,7 @@ def generate_ruby():
         component("Pinhole Assembly", "Pinhole", pinhole_assembly()),
         component("Optical Cone", "Optical Cone", optical_cone()),
         component("Film Plane Mechanism", "Film Plane", film_plane_mechanism()),
-        component("Ceiling Rail", "Ceiling Rail", ceiling_rail()),
+        component("Panel & Pivot Axle", "Pivot Axle", panel_pivot()),
         component("Spray Bar", "Spray Bar", spray_bar()),
         component("Equipment Panel", "Equipment Panel", equipment_panel()),
         component("IBC Stack", "IBC Stack", ibc_stack()),
@@ -1865,7 +1839,7 @@ def generate_ruby():
                            "IBC Stack", "IBC Rack", "Shelf", "Water Hookups",
                            "Water Plumbing"]),
         ("Electrical Systems", ["Electrical", "Lighting"]),
-        ("Hinge Panel & Drum", ["Light Trap", "Light Seal", "Ceiling Rail"]),
+        ("Hinge Panel & Drum", ["Light Trap", "Light Seal", "Pivot Axle"]),
         ("Ventilation", ["Evap Cooler", "Fans"]),
         ("Walkways", ["Walkways"]),
     ]
@@ -1906,6 +1880,11 @@ end
 
 # ── Subsystems (each a component on its tag) ──
 {body}
+
+# rev10: the Ø89 swing pivot post (panel_pivot) reuses the film-plane far-left upright,
+# so strike the original 50×50 "FP Brace Vert L (film)" post to avoid a duplicate.
+fpdef = model.definitions.to_a.find {{ |d| d.name =~ /Film Plane Mechanism/ }}
+fpdef.entities.grep(Sketchup::Group).each {{ |g| g.erase! if g.name == "FP Brace Vert L (film)" }} if fpdef
 
 # ── Major-component callouts (Labels tag — shown only in the "Labeled" scene) ──
 {overview_labels()}

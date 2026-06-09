@@ -26,7 +26,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Pinhole") unless model.layers["Pinhole"]
   model.layers.add("Optical Cone") unless model.layers["Optical Cone"]
   model.layers.add("Film Plane") unless model.layers["Film Plane"]
-  model.layers.add("Ceiling Rail") unless model.layers["Ceiling Rail"]
+  model.layers.add("Pivot Axle") unless model.layers["Pivot Axle"]
   model.layers.add("Spray Bar") unless model.layers["Spray Bar"]
   model.layers.add("Equipment Panel") unless model.layers["Equipment Panel"]
   model.layers.add("IBC Stack") unless model.layers["IBC Stack"]
@@ -1407,7 +1407,7 @@ end
   face = grp.entities.add_face([38.mm,220.mm,0.mm], [166.mm,220.mm,0.mm], [166.mm,280.mm,0.mm], [38.mm,280.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1418,7 +1418,7 @@ end
   face = grp.entities.add_face([115.mm,220.mm,0.mm], [165.mm,220.mm,0.mm], [165.mm,280.mm,0.mm], [115.mm,280.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1429,7 +1429,7 @@ end
   face = grp.entities.add_face([165.mm,230.mm,75.mm], [470.mm,230.mm,75.mm], [470.mm,270.mm,75.mm], [165.mm,270.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1440,7 +1440,7 @@ end
   face = grp.entities.add_face([38.mm,770.mm,0.mm], [166.mm,770.mm,0.mm], [166.mm,830.mm,0.mm], [38.mm,830.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1451,7 +1451,7 @@ end
   face = grp.entities.add_face([115.mm,770.mm,0.mm], [165.mm,770.mm,0.mm], [165.mm,830.mm,0.mm], [115.mm,830.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1462,7 +1462,7 @@ end
   face = grp.entities.add_face([165.mm,770.mm,75.mm], [770.mm,770.mm,75.mm], [770.mm,830.mm,75.mm], [165.mm,830.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1473,7 +1473,7 @@ end
   face = grp.entities.add_face([38.mm,1150.mm,0.mm], [166.mm,1150.mm,0.mm], [166.mm,1210.mm,0.mm], [38.mm,1210.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1484,7 +1484,7 @@ end
   face = grp.entities.add_face([115.mm,1150.mm,0.mm], [165.mm,1150.mm,0.mm], [165.mm,1210.mm,0.mm], [115.mm,1210.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1495,7 +1495,7 @@ end
   face = grp.entities.add_face([165.mm,1150.mm,75.mm], [770.mm,1150.mm,75.mm], [770.mm,1210.mm,75.mm], [165.mm,1210.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1506,7 +1506,7 @@ end
   face = grp.entities.add_face([38.mm,1530.mm,0.mm], [166.mm,1530.mm,0.mm], [166.mm,1590.mm,0.mm], [38.mm,1590.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1517,7 +1517,7 @@ end
   face = grp.entities.add_face([115.mm,1530.mm,0.mm], [165.mm,1530.mm,0.mm], [165.mm,1590.mm,0.mm], [115.mm,1590.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1528,7 +1528,7 @@ end
   face = grp.entities.add_face([165.mm,1530.mm,75.mm], [770.mm,1530.mm,75.mm], [770.mm,1590.mm,75.mm], [165.mm,1590.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1539,7 +1539,7 @@ end
   face = grp.entities.add_face([38.mm,2080.mm,0.mm], [166.mm,2080.mm,0.mm], [166.mm,2140.mm,0.mm], [38.mm,2140.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1550,7 +1550,7 @@ end
   face = grp.entities.add_face([115.mm,2080.mm,0.mm], [165.mm,2080.mm,0.mm], [165.mm,2140.mm,0.mm], [115.mm,2140.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1561,7 +1561,7 @@ end
   face = grp.entities.add_face([165.mm,2090.mm,75.mm], [470.mm,2090.mm,75.mm], [470.mm,2130.mm,75.mm], [165.mm,2130.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1932,123 +1932,57 @@ end
   inst.name = "Film Plane Mechanism"
   inst.layer = model.layers["Film Plane"]
 
-  # ═══ Ceiling Rail ═══
-  defn = model.definitions.add("Ceiling Rail")
+  # ═══ Panel & Pivot Axle ═══
+  defn = model.definitions.add("Panel & Pivot Axle")
   ents = defn.entities
-  # HGR20 Rail L
+  # Pivot post (Ø89 CHS)
   grp = ents.add_group
-  grp.name = "HGR20 Rail L"
-  face = grp.entities.add_face([-30.mm,643.mm,2358.mm], [480.mm,643.mm,2358.mm], [480.mm,663.mm,2358.mm], [-30.mm,663.mm,2358.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(30.mm)
-  mat = model.materials["HGR20 Rail L"] || model.materials.add("HGR20 Rail L")
-  mat.color = Sketchup::Color.new(96, 96, 104)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Carriage L (HGH20CA)
-  grp = ents.add_group
-  grp.name = "Carriage L (HGH20CA)"
-  face = grp.entities.add_face([38.mm,631.mm,2330.mm], [82.mm,631.mm,2330.mm], [82.mm,675.mm,2330.mm], [38.mm,675.mm,2330.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(28.mm)
-  mat = model.materials["Carriage L (HGH20CA)"] || model.materials.add("Carriage L (HGH20CA)")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Suspension Bracket L
-  grp = ents.add_group
-  grp.name = "Suspension Bracket L"
-  face = grp.entities.add_face([30.mm,633.mm,2290.mm], [90.mm,633.mm,2290.mm], [90.mm,673.mm,2290.mm], [30.mm,673.mm,2290.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Suspension Rod L (X20)
-  grp = ents.add_group
-  grp.name = "Suspension Rod L (X20)"
+  grp.name = "Pivot post (Ø89 CHS)"
   ge = grp.entities
-  circle = ge.add_circle([20.mm,653.mm,2290.mm], [0,0,1], 6.mm, 24)
+  circle = ge.add_circle([175.mm,2287.mm,0.mm], [0,0,1], 44.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(98.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  cface.pushpull(2388.mm)
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Suspension Rod L (X100)
+  # Pivot floor mount plate
   grp = ents.add_group
-  grp.name = "Suspension Rod L (X100)"
+  grp.name = "Pivot floor mount plate"
   ge = grp.entities
-  circle = ge.add_circle([100.mm,653.mm,2290.mm], [0,0,1], 6.mm, 24)
+  circle = ge.add_circle([175.mm,2287.mm,0.mm], [0,0,1], 110.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(98.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  cface.pushpull(20.mm)
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # HGR20 Rail R
+  # Pivot roof mount plate
   grp = ents.add_group
-  grp.name = "HGR20 Rail R"
-  face = grp.entities.add_face([-30.mm,1699.mm,2358.mm], [480.mm,1699.mm,2358.mm], [480.mm,1719.mm,2358.mm], [-30.mm,1719.mm,2358.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(30.mm)
-  mat = model.materials["HGR20 Rail L"] || model.materials.add("HGR20 Rail L")
-  mat.color = Sketchup::Color.new(96, 96, 104)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Carriage R (HGH20CA)
-  grp = ents.add_group
-  grp.name = "Carriage R (HGH20CA)"
-  face = grp.entities.add_face([38.mm,1687.mm,2330.mm], [82.mm,1687.mm,2330.mm], [82.mm,1731.mm,2330.mm], [38.mm,1731.mm,2330.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(28.mm)
-  mat = model.materials["Carriage L (HGH20CA)"] || model.materials.add("Carriage L (HGH20CA)")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Suspension Bracket R
-  grp = ents.add_group
-  grp.name = "Suspension Bracket R"
-  face = grp.entities.add_face([30.mm,1689.mm,2290.mm], [90.mm,1689.mm,2290.mm], [90.mm,1729.mm,2290.mm], [30.mm,1729.mm,2290.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Suspension Rod R (X20)
-  grp = ents.add_group
-  grp.name = "Suspension Rod R (X20)"
+  grp.name = "Pivot roof mount plate"
   ge = grp.entities
-  circle = ge.add_circle([20.mm,1709.mm,2290.mm], [0,0,1], 6.mm, 24)
+  circle = ge.add_circle([175.mm,2287.mm,2368.mm], [0,0,1], 110.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(98.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  cface.pushpull(20.mm)
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Suspension Rod R (X100)
+  # Pivot thrust collar
   grp = ents.add_group
-  grp.name = "Suspension Rod R (X100)"
+  grp.name = "Pivot thrust collar"
   ge = grp.entities
-  circle = ge.add_circle([100.mm,1709.mm,2290.mm], [0,0,1], 6.mm, 24)
+  circle = ge.add_circle([175.mm,2287.mm,130.mm], [0,0,1], 75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(98.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  cface.pushpull(25.mm)
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2058,15 +1992,15 @@ end
   grp.name = "Cargo Door Panel"
   face = grp.entities.add_face([0.mm,0.mm,130.mm], [120.mm,0.mm,130.mm], [120.mm,2362.mm,130.mm], [0.mm,2362.mm,130.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2160.mm)
+  face.pushpull(2170.mm)
   mat = model.materials["Cargo Door Panel"] || model.materials.add("Cargo Door Panel")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 0.6
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
-  inst.name = "Ceiling Rail"
-  inst.layer = model.layers["Ceiling Rail"]
+  inst.name = "Panel & Pivot Axle"
+  inst.layer = model.layers["Pivot Axle"]
 
   # ═══ Spray Bar ═══
   defn = model.definitions.add("Spray Bar")
@@ -2088,7 +2022,7 @@ end
   face = grp.entities.add_face([196.mm,1160.mm,20.mm], [200.mm,1160.mm,20.mm], [200.mm,1200.mm,20.mm], [196.mm,1200.mm,20.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -2099,7 +2033,7 @@ end
   face = grp.entities.add_face([4599.mm,1160.mm,20.mm], [4603.mm,1160.mm,20.mm], [4603.mm,1200.mm,20.mm], [4599.mm,1200.mm,20.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -2812,7 +2746,7 @@ end
   face = grp.entities.add_face([200.mm,1062.mm,29.mm], [240.mm,1062.mm,29.mm], [240.mm,1160.mm,29.mm], [200.mm,1160.mm,29.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
-  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -2823,7 +2757,7 @@ end
   face = grp.entities.add_face([200.mm,1200.mm,29.mm], [240.mm,1200.mm,29.mm], [240.mm,1298.mm,29.mm], [200.mm,1298.mm,29.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
-  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -3148,7 +3082,7 @@ end
   face = grp.entities.add_face([204.mm,1152.mm,20.mm], [236.mm,1152.mm,20.mm], [236.mm,1160.mm,20.mm], [204.mm,1160.mm,20.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -3185,7 +3119,7 @@ end
   face = grp.entities.add_face([204.mm,1200.mm,20.mm], [236.mm,1200.mm,20.mm], [236.mm,1208.mm,20.mm], [204.mm,1208.mm,20.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -3222,7 +3156,7 @@ end
   face = grp.entities.add_face([4559.mm,1062.mm,29.mm], [4599.mm,1062.mm,29.mm], [4599.mm,1160.mm,29.mm], [4559.mm,1160.mm,29.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
-  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -3233,7 +3167,7 @@ end
   face = grp.entities.add_face([4559.mm,1200.mm,29.mm], [4599.mm,1200.mm,29.mm], [4599.mm,1298.mm,29.mm], [4559.mm,1298.mm,29.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
-  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -3558,7 +3492,7 @@ end
   face = grp.entities.add_face([4563.mm,1152.mm,20.mm], [4595.mm,1152.mm,20.mm], [4595.mm,1160.mm,20.mm], [4563.mm,1160.mm,20.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -3595,7 +3529,7 @@ end
   face = grp.entities.add_face([4563.mm,1200.mm,20.mm], [4595.mm,1200.mm,20.mm], [4595.mm,1208.mm,20.mm], [4563.mm,1208.mm,20.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -3632,7 +3566,7 @@ end
   face = grp.entities.add_face([2377.5.mm,1158.mm,60.mm], [2421.5.mm,1158.mm,60.mm], [2421.5.mm,1202.mm,60.mm], [2377.5.mm,1202.mm,60.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3777,7 +3711,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -3804,7 +3738,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -3817,7 +3751,7 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(180.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -7043,7 +6977,7 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(45.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -7068,7 +7002,7 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(5.mm)
-  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -7081,7 +7015,7 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(5.mm)
-  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat = model.materials["Beam End Cap (feed)"] || model.materials.add("Beam End Cap (feed)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -7094,7 +7028,7 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(65.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -7107,7 +7041,7 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(400.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -7118,7 +7052,7 @@ end
   face = grp.entities.add_face([-43.mm,1175.mm,720.mm], [28.mm,1175.mm,720.mm], [28.mm,1187.mm,720.mm], [-43.mm,1187.mm,720.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -7129,7 +7063,7 @@ end
   face = grp.entities.add_face([-43.mm,1175.mm,1080.mm], [28.mm,1175.mm,1080.mm], [28.mm,1187.mm,1080.mm], [-43.mm,1187.mm,1080.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -7173,7 +7107,7 @@ end
   face = grp.entities.add_face([-890.mm,653.mm,130.mm], [0.mm,653.mm,130.mm], [0.mm,659.mm,130.mm], [-890.mm,659.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2170.mm)
-  mat = model.materials["Equipment Panel (ply)"] || model.materials.add("Equipment Panel (ply)")
+  mat = model.materials["Bay wall near (Yd)"] || model.materials.add("Bay wall near (Yd)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
   grp.material = mat
@@ -7184,7 +7118,7 @@ end
   face = grp.entities.add_face([-890.mm,1703.mm,130.mm], [0.mm,1703.mm,130.mm], [0.mm,1709.mm,130.mm], [-890.mm,1709.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2170.mm)
-  mat = model.materials["Equipment Panel (ply)"] || model.materials.add("Equipment Panel (ply)")
+  mat = model.materials["Bay wall near (Yd)"] || model.materials.add("Bay wall near (Yd)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
   grp.material = mat
@@ -7195,7 +7129,7 @@ end
   face = grp.entities.add_face([-890.mm,653.mm,2294.mm], [0.mm,653.mm,2294.mm], [0.mm,1709.mm,2294.mm], [-890.mm,1709.mm,2294.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
-  mat = model.materials["Equipment Panel (ply)"] || model.materials.add("Equipment Panel (ply)")
+  mat = model.materials["Bay wall near (Yd)"] || model.materials.add("Bay wall near (Yd)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
   grp.material = mat
@@ -7206,7 +7140,7 @@ end
   face = grp.entities.add_face([-890.mm,653.mm,130.mm], [0.mm,653.mm,130.mm], [0.mm,1709.mm,130.mm], [-890.mm,1709.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
-  mat = model.materials["Equipment Panel (ply)"] || model.materials.add("Equipment Panel (ply)")
+  mat = model.materials["Bay wall near (Yd)"] || model.materials.add("Bay wall near (Yd)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
   grp.material = mat
@@ -7356,7 +7290,7 @@ end
   face = grp.entities.add_face([-50.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["HGR20 Rail L"] || model.materials.add("HGR20 Rail L")
+  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat
@@ -7367,7 +7301,7 @@ end
   face = grp.entities.add_face([-50.mm,0.mm,2338.mm], [0.mm,0.mm,2338.mm], [0.mm,2362.mm,2338.mm], [-50.mm,2362.mm,2338.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["HGR20 Rail L"] || model.materials.add("HGR20 Rail L")
+  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat
@@ -7378,7 +7312,7 @@ end
   face = grp.entities.add_face([-50.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,50.mm,0.mm], [-50.mm,50.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
-  mat = model.materials["HGR20 Rail L"] || model.materials.add("HGR20 Rail L")
+  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat
@@ -7389,7 +7323,7 @@ end
   face = grp.entities.add_face([-50.mm,2312.mm,0.mm], [0.mm,2312.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
-  mat = model.materials["HGR20 Rail L"] || model.materials.add("HGR20 Rail L")
+  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat
@@ -7400,7 +7334,7 @@ end
   face = grp.entities.add_face([-32.mm,0.mm,0.mm], [-20.mm,0.mm,0.mm], [-20.mm,2362.mm,0.mm], [-32.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(110.mm)
-  mat = model.materials["HGR20 Rail L"] || model.materials.add("HGR20 Rail L")
+  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat
@@ -7411,7 +7345,7 @@ end
   face = grp.entities.add_face([-32.mm,0.mm,2270.mm], [-20.mm,0.mm,2270.mm], [-20.mm,2362.mm,2270.mm], [-32.mm,2362.mm,2270.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(118.mm)
-  mat = model.materials["HGR20 Rail L"] || model.materials.add("HGR20 Rail L")
+  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat
@@ -7473,7 +7407,7 @@ end
   face = grp.entities.add_face([-20.mm,0.mm,130.mm], [0.mm,0.mm,130.mm], [0.mm,2362.mm,130.mm], [-20.mm,2362.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
+  mat = model.materials["EPDM Seal Bottom"] || model.materials.add("EPDM Seal Bottom")
   mat.color = Sketchup::Color.new(90, 48, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -7484,7 +7418,7 @@ end
   face = grp.entities.add_face([-20.mm,0.mm,2348.mm], [0.mm,0.mm,2348.mm], [0.mm,2362.mm,2348.mm], [-20.mm,2362.mm,2348.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
+  mat = model.materials["EPDM Seal Bottom"] || model.materials.add("EPDM Seal Bottom")
   mat.color = Sketchup::Color.new(90, 48, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -7495,7 +7429,7 @@ end
   face = grp.entities.add_face([-20.mm,0.mm,130.mm], [0.mm,0.mm,130.mm], [0.mm,40.mm,130.mm], [-20.mm,40.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2258.mm)
-  mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
+  mat = model.materials["EPDM Seal Bottom"] || model.materials.add("EPDM Seal Bottom")
   mat.color = Sketchup::Color.new(90, 48, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -7506,41 +7440,8 @@ end
   face = grp.entities.add_face([-20.mm,2322.mm,130.mm], [0.mm,2322.mm,130.mm], [0.mm,2362.mm,130.mm], [-20.mm,2362.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2258.mm)
-  mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
+  mat = model.materials["EPDM Seal Bottom"] || model.materials.add("EPDM Seal Bottom")
   mat.color = Sketchup::Color.new(90, 48, 32)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Hinge
-  grp = ents.add_group
-  grp.name = "Hinge"
-  face = grp.entities.add_face([-30.mm,0.mm,300.mm], [30.mm,0.mm,300.mm], [30.mm,30.mm,300.mm], [-30.mm,30.mm,300.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(120.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Hinge
-  grp = ents.add_group
-  grp.name = "Hinge"
-  face = grp.entities.add_face([-30.mm,0.mm,1184.mm], [30.mm,0.mm,1184.mm], [30.mm,30.mm,1184.mm], [-30.mm,30.mm,1184.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(120.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Hinge
-  grp = ents.add_group
-  grp.name = "Hinge"
-  face = grp.entities.add_face([-30.mm,0.mm,2050.mm], [30.mm,0.mm,2050.mm], [30.mm,30.mm,2050.mm], [-30.mm,30.mm,2050.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(120.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -11634,6 +11535,11 @@ end
   inst.layer = model.layers["Water Plumbing"]
 
 
+# rev10: the Ø89 swing pivot post (panel_pivot) reuses the film-plane far-left upright,
+# so strike the original 50×50 "FP Brace Vert L (film)" post to avoid a duplicate.
+fpdef = model.definitions.to_a.find { |d| d.name =~ /Film Plane Mechanism/ }
+fpdef.entities.grep(Sketchup::Group).each { |g| g.erase! if g.name == "FP Brace Vert L (film)" } if fpdef
+
 # ── Major-component callouts (Labels tag — shown only in the "Labeled" scene) ──
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Pinhole Assembly" }
 if inst
@@ -11724,16 +11630,16 @@ txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(2400.mm, 150.mm, 65.mm)
 txt = entities.add_text("WALKWAYS", anc, Geom::Vector3d.new(-200.mm, -850.mm, 750.mm))
 txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(225.mm, 653.mm, 2370.mm)
-txt = entities.add_text("CEILING RAIL
-(panel suspension)", anc, Geom::Vector3d.new(200.mm, -400.mm, 800.mm))
+anc = Geom::Point3d.new(175.mm, 2287.mm, 1700.mm)
+txt = entities.add_text("PIVOT POST Ø89
+(panel swing axis)", anc, Geom::Vector3d.new(500.mm, -200.mm, 600.mm))
 txt.layer = model.layers["Labels"] rescue nil
 
 model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans", "Water Plumbing", "Labels"]
+keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Pivot Axle", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans", "Water Plumbing", "Labels"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -11761,7 +11667,7 @@ olp = model.pages.add("Labeled"); olp.use_camera = true
 model.layers["Labels"].visible = false if model.layers["Labels"]
 
 # Grouped scenes — translucent Shell (context) + the group's subsystems.
-[["Film Plane & Pinhole", ["Pinhole", "Optical Cone", "Film Plane"]], ["Water Systems", ["Processing Tray", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Shelf", "Water Hookups", "Water Plumbing"]], ["Electrical Systems", ["Electrical", "Lighting"]], ["Hinge Panel & Drum", ["Light Trap", "Light Seal", "Ceiling Rail"]], ["Ventilation", ["Evap Cooler", "Fans"]], ["Walkways", ["Walkways"]]].each { |name, tags|
+[["Film Plane & Pinhole", ["Pinhole", "Optical Cone", "Film Plane"]], ["Water Systems", ["Processing Tray", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Shelf", "Water Hookups", "Water Plumbing"]], ["Electrical Systems", ["Electrical", "Lighting"]], ["Hinge Panel & Drum", ["Light Trap", "Light Seal", "Pivot Axle"]], ["Ventilation", ["Evap Cooler", "Fans"]], ["Walkways", ["Walkways"]]].each { |name, tags|
   model.layers.each { |l| l.visible = (l == default_layer || l.name == "Shell" || tags.include?(l.name)) }
   page = model.pages.add(name)
   page.use_camera = true

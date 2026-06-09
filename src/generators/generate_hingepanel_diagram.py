@@ -140,6 +140,33 @@ def sheet1():
     dim_h(ax, STEP_YD_L, STEP_YD_R, -210,
           f"{STEP_YD_R - STEP_YD_L}mm CENTER ZONE (DRUM Ø{DRUM_D} + 50mm CLEARANCE EACH SIDE)", offset=20)
 
+    # ── Swing split (rev10): vertical CUT lines + fixed-left / swinging / fixed-far ──
+    from tbs_constants import PANEL_CUT_YD as _CUT, FAR_STRIP_YD0 as _FAR
+    for (y0, y1, lbl) in [(0, _CUT, "FIXED LEFT"), (_FAR, PW, "FIXED FAR")]:
+        ax.add_patch(Rectangle((y0, FR), y1 - y0, PH - 2 * FR, fc="#C8A060",
+                               ec="none", alpha=0.40, zorder=4))
+    for cx, lbl in [(_CUT, f"CUT\nYd{_CUT}"), (_FAR, f"CUT\nYd{_FAR}")]:
+        ax.plot([cx, cx], [0, PH], color="#A000A0", lw=2.0, ls=(0, (5, 3)), zorder=6)
+        ax.text(cx, PH + 35, lbl, color="#A000A0", fontsize=6, ha="center", va="bottom",
+                fontweight="bold", **FONT, zorder=15)
+    leader(ax, (_FAR + (PW - _FAR) / 2, PH / 2 - 250), (PW + 230, PH / 2 - 250),
+           "FIXED FAR STRIP\n(Yd2287–2362) — does NOT\nswing; seals the strip\nbeyond the pivot", col="#6a4010", fs=6)
+    leader(ax, (_CUT / 2, FR + 250), (-300, FR + 250),
+           "FIXED LEFT PANEL\n(Yd0–180) — does NOT\nswing (clears near upright)", col="#6a4010", fs=6)
+    ax.text(PW / 2, FR + 70, "SWINGING PANEL  (Yd180 → 2287, pivots 56°)", color="#1763C8",
+            fontsize=7, ha="center", va="bottom", fontweight="bold", **FONT, zorder=15, alpha=0.8)
+
+    # ── Fan B intake — weatherproof louvre on the panel exterior (near corner) ──
+    from tbs_constants import FAN_B_YD as _FBY, FAN_B_H as _FBH
+    fb_w, fb_h = 200, 200
+    ax.add_patch(Rectangle((_FBY - fb_w / 2, _FBH - fb_h / 2), fb_w, fb_h,
+                           fc="#8090A0", ec=C_OUT, lw=1.3, zorder=6))
+    for i in range(1, 5):
+        yy = _FBH - fb_h / 2 + i * fb_h / 5
+        ax.plot([_FBY - fb_w / 2, _FBY + fb_w / 2], [yy, yy], color=C_OUT, lw=0.6, zorder=7)
+    leader(ax, (_FBY, _FBH - fb_h / 2), (_FBY + 320, _FBH - 320),
+           "FAN B (intake) OUTLET\nweatherproof louvre on the\npanel exterior (swings with\nthe panel; camera mode only)", col="#506070", fs=6)
+
     # ── Revolving drum ────────────────────────────────────────────────────────
     DX = DRUM_CX - DRUM_R   # drum left edge in panel
     DY_BOT = 100             # drum bottom clearance from panel bottom edge
@@ -575,6 +602,17 @@ def sheet2():
     ax.add_patch(Circle((D_CX, D_CY), LT_DRUM_OR, fc="#F8F4EC", ec="none", zorder=8))
     _arc(D_CX, D_CY, DR, [(90, OD), (270, OD)], 4.0, C_ALUM, z=9)      # fixed Al housing
     _arc(D_CX, D_CY, LT_DRUM_OR, [(270, OD)], 3.0, "#9C7B4D", z=10)      # C-shell drum (ENTER)
+
+    # ── Drum support CAGE cross-beam (across the drum) carrying the central revolve
+    #    bearing — top + bottom (rev10). Shown as a bar spanning the cage width. ──
+    from tbs_constants import DRUM_CAGE_YD_L as _CGL, DRUM_CAGE_YD_R as _CGR
+    cb_t = 50
+    ax.add_patch(Rectangle((_CGL, D_CY - cb_t / 2), _CGR - _CGL, cb_t,
+                           fc=C_STEEL, ec=C_OUT, lw=1.1, alpha=0.55, zorder=11))
+    ax.add_patch(Circle((D_CX, D_CY), 70, fc="#5A5AA0", ec=C_OUT, lw=1.3,
+                        alpha=0.65, zorder=12))
+    leader(ax, (_CGL + 40, D_CY - cb_t / 2), (D_XL - 150, D_CY - DR * 0.4),
+           "DRUM CAGE CROSS-BEAM\n(top + bottom) carrying the\ncentral Ø220/Ø120 revolve\nbearing", col=C_STEEL, fs=6)
     # daylight ray at ENTER: enters bore from exterior, blocked at interior by drum
     ax.annotate("", xy=(D_CX, D_CY + LT_DRUM_OR * 0.9), xytext=(D_CX, D_YB - 70),
                 arrowprops=dict(arrowstyle="-|>", color="#D08000", lw=1.8), zorder=12)
@@ -857,7 +895,9 @@ def sheet3():
     # In this Section A-A view (looking along Yd), the near and far walkways
     # project to the same position. They cantilever from the container side
     # walls, running along X. Show as cross-section on the interior side.
-    C_WALKWAY = "#707078"
+    # rev10: at the door end the walkway is REMOVABLE (left walkway + door-end near-deck
+    # section lift out for the swing) — shown in AMBER to flag it carries no swing interference.
+    C_WALKWAY = "#C8902A"          # amber — removable
     BRKT_ARM_Z = WALKWAY_H - WALKWAY_GRATE_T  # = 75mm (top of bracket arm)
     WK_START = Y1_PL2 + 80   # start showing walkway past drum overhang
     WK_END   = D_DEPTH_R + 120  # extend into interior
@@ -866,10 +906,10 @@ def sheet3():
     ax.add_patch(plt.Rectangle((WK_START, BRKT_ARM_Z - WALKWAY_BRACKET_T),
                                 WK_END - WK_START, WALKWAY_BRACKET_T,
                                 fc=C_WALKWAY, ec=C_OUT, lw=0.6, zorder=4))
-    # Grate (25mm thick at Z=75-100mm)
+    # Grate (amber, removable)
     ax.add_patch(plt.Rectangle((WK_START, BRKT_ARM_Z),
                                 WK_END - WK_START, WALKWAY_GRATE_T,
-                                fc="#D0D0D4", ec=C_OUT, lw=0.6, hatch="--", zorder=4))
+                                fc="#E8B860", ec=C_OUT, lw=0.6, hatch="xx", zorder=4))
 
     # Break lines at right end (walkway continues)
     for z_off in [-5, 5, 15]:
@@ -879,7 +919,7 @@ def sheet3():
 
     leader(ax, (WK_START + (WK_END - WK_START) / 2, WALKWAY_H + 5),
            (WK_START + (WK_END - WK_START) / 2 + 300, WALKWAY_H + 200),
-           f"WALKWAY DECK\n{WALKWAY_GRATE_T}mm GRATE AT\nZ={WALKWAY_H}mm\n(NEAR + FAR WALLS)",
+           f"WALKWAY DECK — REMOVABLE\n(lifts out for transport;\nno swing interference)\n{WALKWAY_GRATE_T}mm grate at Z={WALKWAY_H}mm",
            col=C_WALKWAY, fs=5.5)
 
     # Walkway deck height dimension

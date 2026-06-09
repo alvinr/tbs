@@ -127,9 +127,9 @@ def _rail_saddle(ys, z):
 
 
 def film_plane_left_ext():
-    """Study variant of lt.film_plane_left(): (a) the X-running brace beams are extended
-    back to the cargo-door container edge (X0) instead of starting at the rail line (X150),
-    tying the film-plane cage to the door-end structure; (b) adds the #3 removable-rail
+    """Study variant of lt.film_plane_left(): (a) the X-running brace beams run out to the
+    same far extent as the ghost container + walkways (WALL_FAR) instead of stopping short at
+    the lt PARTIAL_X crop, so the drawing reads consistently; (b) adds the #3 removable-rail
     drop-in saddles at all four rail ends. The two left RAILS (TL/BL) are ghosted (lifted
     out for transport) by the post-build step; the saddles stay solid (fixed to the posts).
     The far brace post is still erased post-build (the Ø89 pivot replaces it; that saddle
@@ -140,15 +140,15 @@ def film_plane_left_ext():
     z_bot = ov.RAIL_OFF                         # 100
     z_top = ov.C_HGT - ov.RAIL_OFF - rail       # 2248
     yN, yF = ov.FP_Y_MIN, ov.FP_Y               # 100, 2262
-    blen = lt.PARTIAL_X                          # beams now run X0..PARTIAL_X (door edge → crop)
+    blen = WALL_FAR - xL                         # beams run X150..WALL_FAR (match container/walkway extent)
     C = ov.C_STEEL
     parts = [
         ov.ruby_box("FP Rail BL (lower left)", xL, yN, z_bot, rail, yF - yN, rail, color=C),
         ov.ruby_box("FP Rail TL (upper left)", xL, yN, z_top, rail, yF - yN, rail, color=C),
     ]
     for py, pn in [(yN, "near wall"), (yF, "far wall")]:
-        parts.append(ov.ruby_box(f"FP Brace Beam Lower ({pn})", 0, py, z_bot, blen, s, s, color=C))
-        parts.append(ov.ruby_box(f"FP Brace Beam Upper ({pn})", 0, py, z_top, blen, s, s, color=C))
+        parts.append(ov.ruby_box(f"FP Brace Beam Lower ({pn})", xL, py, z_bot, blen, s, s, color=C))
+        parts.append(ov.ruby_box(f"FP Brace Beam Upper ({pn})", xL, py, z_top, blen, s, s, color=C))
         parts.append(ov.ruby_box(f"FP Brace Post L ({pn})", xL, py, z_bot, s, s, z_top - z_bot, color=C))
     for ys in (yN, yF - 80):                     # saddles just inside each rail end
         parts.append(_rail_saddle(ys, z_bot))    # BL ends
@@ -342,7 +342,7 @@ if fpdef
   }}
 end
 ganc = Geom::Point3d.new(150.mm, 600.mm, 1700.mm)
-gtxt = entities.add_text("LEFT rails TL+BL GHOSTED = removable:\ndrop-in U-saddles + taper dowels (datum)\n+ clamp bar; lift straight up for transport.\nBrace beams now run to the door edge (X0).", ganc,
+gtxt = entities.add_text("LEFT rails TL+BL GHOSTED = removable:\ndrop-in U-saddles + taper dowels (datum)\n+ clamp bar; lift straight up for transport.", ganc,
                          Geom::Vector3d.new((-700).mm, (-200).mm, 250.mm))
 gtxt.layer = model.layers["Labels"] rescue nil
 

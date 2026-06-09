@@ -129,6 +129,10 @@ def drum_frame():
     for px in (x0, x1 - s):                   # 4 corner posts
         for py in (y0, y1 - s):
             p.append(ov.ruby_box("Drum frame post", px, py, zb, s, s, zt - zb, color=c))
+    # cross members carrying the central drum bearings (top + bottom)
+    for z in (zb, zt - s):
+        p.append(ov.ruby_box("Drum bearing cross-beam", DRUM_CX - s // 2, y0, z, s, y1 - y0, s, color=c))
+        p.append(ov.ruby_cylinder("Drum bearing (roller)", DRUM_CX, DRUM_CY, z, 70, s, color="#5A5AA0", axis="z"))
     return '\n'.join(p)
 
 

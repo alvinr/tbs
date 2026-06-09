@@ -151,7 +151,8 @@ container so the cargo doors close. Decisions and rationale:
    CHS** post (σ ~95 MPa, SF ~3.7 on S355 against the ~3.6 kN·m swing cantilever), floor +
    roof mount plates, a thrust collar carrying the ~330 kg, and a top + bottom radial hub
    bearing pair reacting the overturning couple. In the model.
-7. **Operating sequence** (deploy ↔ transport), including film-plane parking/de-rig.
+7. ~~**Operating sequence** (deploy ↔ transport), including film-plane parking/de-rig.~~
+   **RESOLVED** — full step-by-step in **§5** below; ordering conflicts surfaced and resolved.
 8. **Walkway-grate tangent** — a few-mm gap (drop grate locally or lift the frame).
 9. **Mass reduction** if ~330 kg is too heavy (lighter panel skins / slimmer cage).
 10. Confirm the residual flap/poke-out is fully resolved by the pivot-at-upright-centre move.
@@ -162,7 +163,60 @@ container so the cargo doors close. Decisions and rationale:
 
 ---
 
-## 5. Cascade impact (when we proceed)
+## 5. Operating sequence (deploy ↔ transport)
+
+The sequence is driven by one hard rule: **the swing path through the X150 rail plane must be
+clear before the frame rotates** — so the removable rails and the left walkway come out first,
+and the wall stays go on last (they only reach at 56°).
+
+### 5.1 Camera → Transport (stow)
+1. **End camera use.** Power off **Fan B**; finish any darkroom access.
+2. **Park the drum.** Rotate the revolving drum to its closed/aligned position and **pin its
+   rotation** (detent) so it can't flop during the move.
+3. **Lift out the removable LEFT walkway** — it sits inside the swing arc.
+4. **Strike the two left film rails (TL + BL).** Release each clamp bar, lift the rail straight
+   up out of its saddles, and **stow** (clipped to the near wall). *Required before the swing —
+   otherwise the drum cage fouls the X150 rail plane.*
+5. **Unlatch the swinging panel** from the door frame (Southco cam latches) — releases the
+   perimeter + cut seals.
+6. **Swing the frame ~56° inboard** (toward the far wall), assisted (~330 kg). The vertical
+   pivot gives **no gravity torque** (the assembly is balanced at any angle) — effort is only
+   overcoming inertia + bearing friction and **controlling momentum** at the stops.
+7. **Engage the transport lock** — connect the **top + bottom wall stays** (hook the rods from
+   the frame hooks to the near-wall eyes, tension the turnbuckles).
+8. **Close + secure the cargo doors.** They close **outboard of the fixed left panel** (Yd0–180,
+   which stays at the door plane); the swung frame clears the door plane (true min X +4 mm).
+
+### 5.2 Transport → Camera (deploy) — the reverse
+1. **Open the cargo doors.**
+2. **Release the wall stays** (slack the turnbuckles, unhook top + bottom).
+3. **Swing the frame back** to the door plane (camera position).
+4. **Latch the panel** to the door frame (Southco cam latches) — compress the perimeter + cut
+   seals.
+5. **Re-fit the two left film rails** — drop TL + BL into their saddles; the **tapered dowels set
+   the film datum**; clamp down.
+6. **Re-fit the left walkway.**
+7. **Verify film-plane alignment** — confirm the re-seated rails return the plane square/planar to
+   datum before shooting.
+8. **Un-pin the drum** (ready for access); **power up Fan B.**
+
+### 5.3 Ordering conflicts surfaced (and how they're resolved)
+- **Rails vs swing:** rails must be **out before** any swing and **back in after** the swing-back
+  (the cage sweeps the X150 plane). Sequenced at 5.1-4 / 5.2-5.
+- **Left walkway vs swing arc:** out before the swing (5.1-3), back after (5.2-6).
+- **Stays only reach at 56°:** engage **after** the swing, release **before** the swing-back
+  (5.1-7 / 5.2-2).
+- **Panel latches:** release before the swing, re-engage after the swing-back (so the seals aren't
+  dragged) (5.1-5 / 5.2-4).
+- **Drum flop:** pinned before the move, un-pinned on deploy (5.1-2 / 5.2-8).
+- **Near-wall congestion:** rail + walkway **stowage must not clash with the stay anchors** (both
+  live on the near wall) — allocate separate stow positions. *(Open detail for the cascade.)*
+- **Alignment recovery:** the removable rails return to datum via the dowels, but a **post-deploy
+  film-plane alignment check** is mandatory before use (5.2-7).
+
+---
+
+## 6. Cascade impact (when we proceed)
 
 This replaces the slide in the production model + docs — a significant change:
 
@@ -178,7 +232,7 @@ This replaces the slide in the production model + docs — a significant change:
 
 ---
 
-## 6. Study artifacts (reference)
+## 7. Study artifacts (reference)
 
 - **2D plan:** `src/generators/generate_rotation_study.py` → `diagrams/rotation-study.png`
 - **3D model:** `src/models/generate_rotation_model.py` → `models/rotation-study.skp`

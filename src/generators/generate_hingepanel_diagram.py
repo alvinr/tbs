@@ -1103,7 +1103,7 @@ def sheet3():
             ha="left", va="bottom", fontsize=7, color="#20A060", **FONT, zorder=15)
 
     ax.text(D_CX_DEPTH /2 - 150, H_FLOOR + DRUM_H * 0.2,
-            "DRUM ROTATES\nARROUND VERTICAL\nAXIS — PUSH WALL\nTO ENTER/EXIT",
+            "DRUM REVOLVES ABOUT\nTHE VERTICAL AXIS —\nPUSH WALL TO ENTER/EXIT",
             ha="center", va="center", fontsize=6.5, color=C_DIM,
             **FONT, alpha=0.75, zorder=15)
 

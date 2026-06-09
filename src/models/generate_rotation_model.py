@@ -67,10 +67,16 @@ TAGS = ["Context", "Door Frame", "Film Plane Rails", "Pivot Axle", "Near Leaf",
         "Frame (camera)", "Frame (transport)", "Labels"]
 
 
+SWING_CLEAR = 12                            # #8: drop the swept grates this far below the
+                                            # frame underside (Z130) so the swing arc clears
+
+
 def walkways():
-    """Near + far walkway grates (Z115-130), cropped to the door-end context."""
-    gz = ov.WALKWAY_H - ov.WALKWAY_GRATE_T
+    """Near + far walkway grates, set SWING_CLEAR below the swinging frame underside (Z130)
+    so the arc clears them (#8: the panel underside otherwise sweeps both grates — near at
+    4-25deg, far at 36.5-56deg — tangent at Z130). 12mm is ergonomically negligible."""
     t = ov.WALKWAY_GRATE_T
+    gz = ov.WALKWAY_H - t - SWING_CLEAR      # grate top now at Z(130-12)=118
     x0 = ov.WALKWAY_LEFT_X
     xlen = WALL_FAR - x0
     return '\n'.join([
@@ -422,6 +428,10 @@ anc6 = Geom::Point3d.new({DRUM_CX}.mm, {DRUM_CY}.mm, 160.mm)
 txt6 = entities.add_text("DRUM BEARINGS: bottom = Ø220 flush thrust\nslew pad, recessed to the Z130 sill (step-over,\nno trip); top = Ø120 radial guide journal.\nDrum revolves for access — separate from swing", anc6,
                          Geom::Vector3d.new((-650).mm, (-250).mm, 400.mm))
 txt6.layer = model.layers["Labels"] rescue nil
+anc7 = Geom::Point3d.new(1100.mm, {ov.WALKWAY_FAR_YD}.mm, 118.mm)
+txt7 = entities.add_text("NEAR+FAR walkway grates set 12mm low\n(top Z118) — clears the swing arc\n(panel underside Z130 swept both, tangent)", anc7,
+                         Geom::Vector3d.new(300.mm, 250.mm, 350.mm))
+txt7.layer = model.layers["Labels"] rescue nil
 
 model.definitions.purge_unused
 model.materials.purge_unused

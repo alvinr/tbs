@@ -98,7 +98,7 @@ container so the cargo doors close. Decisions and rationale:
 | Far film-plane upright | it **is** the pivot |
 | Drum/bay through the gap | clears once the two left rails are removed |
 | Swing arc vs processing tray (rim Z50) | frame underside at Z130 clears by **80 mm** |
-| vs near/far walkway grates (Z130) | **tangent** — needs a few-mm gap (open item) |
+| vs near/far walkway grates | **RESOLVED** — grates dropped to Z118 (12 mm below the Z130 frame underside); panel swept the near grate @4–25° + far @36.5–56° |
 | Left walkway (in the arc) | the removable lift-out — out for transport |
 | Bearings vs far wall | Ø120 clears by 15 mm |
 
@@ -153,9 +153,16 @@ container so the cargo doors close. Decisions and rationale:
    bearing pair reacting the overturning couple. In the model.
 7. ~~**Operating sequence** (deploy ↔ transport), including film-plane parking/de-rig.~~
    **RESOLVED** — full step-by-step in **§5** below; ordering conflicts surfaced and resolved.
-8. **Walkway-grate tangent** — a few-mm gap (drop grate locally or lift the frame).
+8. ~~**Walkway-grate tangent** — a few-mm gap (drop grate locally or lift the frame).~~
+   **RESOLVED** — chose **drop the grate** (keeps the panel floor-seal gap + drum threshold at
+   Z130): the near + far walkway grates are set **12 mm low (top Z118)**, clearing the swinging
+   frame underside (Z130). Verified the panel underside otherwise sweeps the near grate @4–25°
+   and the far grate @36.5–56°. In the model. (The left walkway is lifted out anyway.)
 9. **Mass reduction** if ~330 kg is too heavy (lighter panel skins / slimmer cage).
-10. Confirm the residual flap/poke-out is fully resolved by the pivot-at-upright-centre move.
+10. ~~Confirm the residual flap/poke-out is fully resolved by the pivot-at-upright-centre move.~~
+    **RESOLVED** — confirmed across **all** swept exterior geometry (panel/EPDM face, drum, bay,
+    Fan B louvre) at 56°: **true min X = +5.4 mm** (the governing point is the EPDM at the far
+    panel flap, Yd2360). No poke-out — the cargo doors close.
 11. **POST-MERGE / deferred:** the **lower film-plane brace beam sits at the same Z level as the
     walkway grate** (lower rail/beam at Z≈100–150 vs walkway grate Z≈115–130) — a physical
     clash. Flagged for resolution **after the merge** (drop the beam, step the walkway locally,

@@ -50,7 +50,8 @@ from tbs_constants import (
     EP_X, EP_W, BA_X, BA_W, PUMP_X, PUMP_W,
     PUMP_D, PUMP_H_LO, PUMP_H_HI, CORRIDOR_YD_NEAR,
     PANEL_CORNER_T, PANEL_CENTER_T, PANEL_CENTER_W, PANEL_FLOOR_GAP,
-    PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_SLIDE,
+    PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
+    PIVOT_X, PIVOT_YD, SWING_LOCK_DEG,
     DRUM_D, DRUM_R, DRUM_H_LT,
     LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG,
     FAN_DIAM, FAN_A_YD, FAN_B_YD,
@@ -118,6 +119,17 @@ class Component:
     @property
     def area_m2(self):
         return (self.x_max - self.x_min) * (self.yd_max - self.yd_min) / 1e6
+
+
+def swing_bbox(x0, x1, y0, y1, deg=SWING_LOCK_DEG):
+    """Axis-aligned bounding box of an (X, Yd) footprint after the cargo panel
+    swings `deg` about the Ø89 pivot post (PIVOT_X, PIVOT_YD). Used to place the
+    transport-state panel/drum at their SWUNG position (rev10 — no slide)."""
+    t = np.radians(deg); c, s = np.cos(t), np.sin(t)
+    pts = [(x0, y0), (x1, y0), (x1, y1), (x0, y1)]
+    xs = [PIVOT_X + (px - PIVOT_X) * c - (py - PIVOT_YD) * s for px, py in pts]
+    ys = [PIVOT_YD + (px - PIVOT_X) * s + (py - PIVOT_YD) * c for px, py in pts]
+    return min(xs), max(xs), min(ys), max(ys)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -276,13 +288,14 @@ def _processing_tray_water_kg():
     return vol_m3 * RHO_WATER  # ≈ 59 kg
 
 
-def _ceiling_rail_weight():
-    """2× HGR20 rails full container length + 8 carriage blocks."""
-    # HGR20: ~3.7 kg/m
-    rail_kg = 2 * (C_LEN / 1000) * 3.7
-    # 8× HGH20CA blocks: ~0.5 kg each
-    block_kg = 8 * 0.5
-    return rail_kg + block_kg
+def _swing_hardware_weight():
+    """rev10 rotation transport hardware — replaces the retired HGR20 ceiling-rail
+    slide (the pivot reuses the film far-left Ø89 upright, so no new post). Estimate;
+    refine against the Stage-4 rotation-hardware BOM.
+      thrust + journal bearings ~8 kg, pivot collar/hub ~5 kg, drum support cage
+      (steel) ~15 kg, top+bottom wall stays (rod + turnbuckle + hooks/eyes) ~6 kg,
+      4× drop-in rail saddles ~4 kg."""
+    return 8 + 5 + 15 + 6 + 4   # ≈ 38 kg, concentrated at the cargo-door end
 
 
 def _ibc_stacking_frame_weight():
@@ -363,18 +376,18 @@ def build_components():
                   calc_note="ISO door leaf ~140 kg, open against far wall"),
 
         # ── Structure ────────────────────────────────────────────────────
-        # Panel + drum: transport position (slid PANEL_SLIDE inward) for dry/exhausted
+        # Panel + drum: transport position — SWUNG ~56° about the pivot (rev10, no slide).
+        # swing_bbox() rotates the deployed footprint, biasing the mass toward the far side.
         Component("Hinged panel", "structure", panel_kg,
-                  PANEL_SLIDE, PANEL_SLIDE + 80, 0, C_WID, 0, C_HGT,
+                  *swing_bbox(0, 80, 0, C_WID), 0, C_HGT,
                   color=C_HINGE_PANEL,
                   states=("dry", "exhausted", "loaded_transport"),
-                  calc_note="Sandwich: ply + 3mm-Al corners, steel RHS center + 5mm-HDPE Ø900 housing + B2 bay/hinges/caster"),
+                  calc_note="Sandwich: ply + 3mm-Al corners, steel RHS center + 5mm-HDPE Ø900 housing + B2 bay/hinges/caster. Transport: swung 56° about the pivot"),
         Component("Light trap drum", "structure", drum_kg,
-                  PANEL_SLIDE, PANEL_SLIDE + 40,
-                  PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
+                  *swing_bbox(0, 40, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R),
                   PANEL_FLOOR_GAP, DRUM_H_LT, color=C_LT_DRUM,
                   states=("dry", "exhausted", "loaded_transport"),
-                  calc_note="4mm PP C-shell drum (Ø864, no baffles) + steel shaft/bearings"),
+                  calc_note="4mm PP C-shell drum (Ø864, no baffles) + steel shaft/bearings. Transport: swung 56° about the pivot"),
         # Panel + drum: deployed position (at cargo door end) for camera ready
         Component("Hinged panel", "structure", panel_kg,
                   0, 80, 0, C_WID, 0, C_HGT, color=C_HINGE_PANEL,
@@ -406,10 +419,10 @@ def build_components():
                   WALKWAY_LEFT_X, WALKWAY_LEFT_X + WALKWAY_W,
                   0, C_WID, 0, WALKWAY_H, color="#80C080",
                   calc_note="Removable lift-out: grating + bearer + legs + drum-exit punch-out"),
-        Component("Ceiling rails", "structure", _ceiling_rail_weight(),
-                  0, C_LEN, 30, C_WID - 30,
-                  C_HGT - 30, C_HGT, color=C_ALUM,
-                  calc_note="2× HGR20 @ 3.7 kg/m + 8 carriages"),
+        Component("Swing pivot + cage hardware", "structure", _swing_hardware_weight(),
+                  0, 400, 700, 2287,
+                  0, C_HGT, color=C_ALUM,
+                  calc_note="rev10 rotation transport hardware (replaces retired HGR20 ceiling rails): pivot bearings + collar + drum cage + wall stays + rail saddles, at the cargo-door end. Estimate — refine vs Stage-4 BOM"),
         Component("Container mods", "structure", 65.0,
                   0, C_LEN, 0, C_WID, 0, C_HGT, color=C_WALL,
                   calc_note="Light seal foam + reinforcement plates (estimate)"),
@@ -788,15 +801,27 @@ def _draw_state_diagram(ax, components, state, state_label):
     drum = [c for c in non_container
             if c.category != "liquid" and c.name == "Light trap drum"]
     for c in panel:
-        _draw_component(ax, c, alpha=0.5, show_label=False)
+        if state in ("dry", "exhausted"):
+            # transport: draw the SWUNG panel band (polygon), not the swung-bbox rectangle
+            t = np.radians(SWING_LOCK_DEG); cs, sn = np.cos(t), np.sin(t)
+            def _sw(x, y):
+                return (PIVOT_X + (x - PIVOT_X) * cs - (y - PIVOT_YD) * sn,
+                        PIVOT_YD + (x - PIVOT_X) * sn + (y - PIVOT_YD) * cs)
+            poly = [_sw(0, 0), _sw(80, 0), _sw(80, C_WID), _sw(0, C_WID)]
+            ax.add_patch(mpatches.Polygon(poly, closed=True, fc=c.color,
+                         ec=C_OUT, lw=1.0, alpha=0.5, zorder=6))
+        else:
+            _draw_component(ax, c, alpha=0.5, show_label=False)
     for c in drum:
         # Draw drum as circle (plan view of Ø900 housing)
-        # Position: panel face + half center-zone thickness
+        # Position: panel face + half center-zone thickness (swung for transport)
         if state in ("dry", "exhausted"):
-            cx = PANEL_SLIDE + PANEL_CENTER_T / 2  # transport
+            t = np.radians(SWING_LOCK_DEG); cs, sn = np.cos(t), np.sin(t)
+            dx, dy = PANEL_CENTER_T / 2, C_WID / 2
+            cx = PIVOT_X + (dx - PIVOT_X) * cs - (dy - PIVOT_YD) * sn
+            cy = PIVOT_YD + (dx - PIVOT_X) * sn + (dy - PIVOT_YD) * cs
         else:
-            cx = PANEL_CENTER_T / 2  # deployed
-        cy = C_WID / 2
+            cx, cy = PANEL_CENTER_T / 2, C_WID / 2  # deployed
         ax.add_patch(Circle((cx, cy), DRUM_R,
                      fc=C_LT_DRUM, ec=C_OUT, lw=1.2, alpha=0.7, zorder=7))
     for c in others:
@@ -1005,24 +1030,33 @@ def sheet_summary(components):
                 ax.add_patch(Rectangle((c.x_min, c.yd_min), w, h,
                              fc=c.color, ec="none", alpha=0.2, zorder=3))
 
-        # Draw panel
+        # Draw panel — swung band for transport states, box when deployed
+        _swung = state in ("dry", "exhausted", "loaded_transport")
+        _t = np.radians(SWING_LOCK_DEG); _cs, _sn = np.cos(_t), np.sin(_t)
+        def _swpt(x, y):
+            return (PIVOT_X + (x - PIVOT_X) * _cs - (y - PIVOT_YD) * _sn,
+                    PIVOT_YD + (x - PIVOT_X) * _sn + (y - PIVOT_YD) * _cs)
         for c in non_cont:
             if c.name == "Hinged panel":
-                w = c.x_max - c.x_min
-                h = c.yd_max - c.yd_min
-                if w > 0 and h > 0:
-                    ax.add_patch(Rectangle((c.x_min, c.yd_min), w, h,
-                                 fc=c.color, ec=C_OUT, alpha=0.4, lw=0.6,
-                                 zorder=4))
+                if _swung:
+                    poly = [_swpt(0, 0), _swpt(80, 0), _swpt(80, C_WID), _swpt(0, C_WID)]
+                    ax.add_patch(mpatches.Polygon(poly, closed=True, fc=c.color,
+                                 ec=C_OUT, alpha=0.4, lw=0.6, zorder=4))
+                else:
+                    w = c.x_max - c.x_min
+                    h = c.yd_max - c.yd_min
+                    if w > 0 and h > 0:
+                        ax.add_patch(Rectangle((c.x_min, c.yd_min), w, h,
+                                     fc=c.color, ec=C_OUT, alpha=0.4, lw=0.6,
+                                     zorder=4))
 
-        # Draw drum as circle
+        # Draw drum as circle (swung center for transport)
         for c in non_cont:
             if c.name == "Light trap drum":
-                if state in ("dry", "exhausted", "loaded_transport"):
-                    cx = PANEL_SLIDE + PANEL_CENTER_T / 2
+                if _swung:
+                    cx, cy = _swpt(PANEL_CENTER_T / 2, C_WID / 2)
                 else:
-                    cx = PANEL_CENTER_T / 2
-                cy = C_WID / 2
+                    cx, cy = PANEL_CENTER_T / 2, C_WID / 2
                 ax.add_patch(Circle((cx, cy), DRUM_R,
                              fc=C_LT_DRUM, ec=C_OUT, lw=1.2, alpha=0.7,
                              zorder=5))

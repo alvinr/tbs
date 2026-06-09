@@ -51,8 +51,17 @@ def _min_x(deg):
 LOCK_MIN = next(t for t in [i * 0.5 for i in range(0, 190)] if _min_x(t) >= 0)
 LOCK = 56.0
 
+
+def _rot_pt(x, y, deg):
+    t = math.radians(deg); c, s = math.cos(t), math.sin(t)
+    return HX + (x - HX) * c - (y - HY) * s, HY + (x - HX) * s + (y - HY) * c
+
+
+LOCK_BOLT = (20, 350)                       # drop-bolt on the assembly (panel bottom, good lever arm)
+SOCKET = _rot_pt(LOCK_BOLT[0], LOCK_BOLT[1], LOCK)   # floor-socket position at the 56deg lock
+
 TAGS = ["Context", "Door Frame", "Film Plane Rails", "Pivot Axle", "Near Leaf",
-        "Walkways", "Panel skin",
+        "Walkways", "Panel skin", "Lock",
         "Frame (camera)", "Frame (transport)", "Labels"]
 
 
@@ -97,6 +106,7 @@ def fixed_components():
         component("Pivot bearings", "Pivot Axle", axle()),
         component("Fixed left panel", "Near Leaf", near_leaf()),
         component("Walkways (near + far)", "Walkways", walkways()),
+        component("Transport lock socket", "Lock", lock_socket()),
     ])
 
 
@@ -116,6 +126,24 @@ def pivot_link():
         p.append(ov.ruby_box("Hinge bracket (panel→hub)", 55, HY - 35, z, 140, 70, 110,
                              color=ov.C_STEEL))
     return '\n'.join(p)
+
+
+def lock_bolt():
+    """Transport drop-bolt on the assembly (panel bottom) — drops into the fixed
+    floor socket at the 56deg lock. Reacts transit-induced rotation about the
+    vertical pivot (gravity gives no torque about a vertical axis, so this is light
+    duty: ~100-200 kg tangential from road shocks)."""
+    bx, by = LOCK_BOLT
+    return '\n'.join([
+        ov.ruby_cylinder("Transport lock bolt (Ø30)", bx, by, -30, 15, 260, color=ov.C_STEEL, axis="z"),
+        ov.ruby_box("Lock bolt guide", bx - 35, by - 35, 175, 70, 70, 40, color=ov.C_STEEL),
+    ])
+
+
+def lock_socket():
+    """Fixed floor socket the transport drop-bolt lands in at 56deg."""
+    sx, sy = SOCKET
+    return ov.ruby_cylinder("Transport lock floor socket", sx, sy, -60, 32, 85, color=ov.C_STEEL, axis="z")
 
 
 def drum_frame():
@@ -161,6 +189,7 @@ def moving_frame_body():
         drum_frame(),
         lt.fan_b(),
         pivot_link(),
+        lock_bolt(),
     ])
 
 
@@ -263,6 +292,10 @@ anc3 = Geom::Point3d.new(40.mm, {CUT}.mm, 1100.mm)
 txt3 = entities.add_text("FIXED LEFT PANEL (Yd0-{CUT})\ncut vertically; does NOT swing —\nrotating part clears the near upright", anc3,
                          Geom::Vector3d.new(500.mm, (-350).mm, 250.mm))
 txt3.layer = model.layers["Labels"] rescue nil
+anc4 = Geom::Point3d.new({SOCKET[0]:.0f}.mm, {SOCKET[1]:.0f}.mm, 200.mm)
+txt4 = entities.add_text("TRANSPORT LOCK\ndrop-bolt -> floor socket @ 56deg\n(holds vs transit, not gravity)", anc4,
+                         Geom::Vector3d.new(300.mm, (-300).mm, 250.mm))
+txt4.layer = model.layers["Labels"] rescue nil
 
 model.definitions.purge_unused
 model.materials.purge_unused

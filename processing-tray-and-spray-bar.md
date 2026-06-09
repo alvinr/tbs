@@ -114,7 +114,7 @@ operational and transport modes. The two panels are positioned between the film 
 rails, bolted together at the center flange. The P-04 suction pickup tube sits in the
 sump well permanently. The 50mm rim height is below all transport-mode clearance
 envelopes, so no removal is required for mode conversion. This eliminates the former
-15–20 minute tray install/remove step; mode conversion now requires only the panel slide
+15–20 minute tray install/remove step; mode conversion now requires only the panel swing
 (~5 minutes).
 
 ---

@@ -218,9 +218,9 @@ The ceiling-hung design achieves three goals:
 ## 5. Left Walkway — Removable Lift-Out
 
 The left walkway at the cargo door end (X=170–470mm) cannot use wall-cantilevered
-brackets because the hinged light-trap panel occupies the end wall and slides
-~880mm inward for transport mode. Its **inner edge (X=470mm) sits over the
-processing tray**, so it cannot be supported from below either. The left walkway
+brackets because the hinged light-trap panel occupies the end wall and swings ~56°
+about the pivot for transport (its sweep passes over this zone). Its **inner edge
+(X=470mm) sits over the processing tray**, so it cannot be supported from below either. The left walkway
 is therefore a removable lift-out section whose inner edge is carried by a
 **full-width steel edge beam simply supported wall-to-wall on bolt-through wall
 seats** — the same load path as the IBC platform beams, not a cantilever.
@@ -256,8 +256,8 @@ pocket so the nuts are reachable — the beam end drops into the pocket where th
 3-bolt pattern would have blocked the nuts), mirroring the IBC wall-seat brackets. An operator's load travels grating →
 edge beam → wall as a clean end reaction, **not** a cantilever moment dumped on a
 bracket-arm tip. Because the seats sit at X=470mm — inside the panel's transport-
-slide path — the **edge beam and the interior pocket/mounting plates are demountable**
-(a few bolts) and lift out with the walkway before the panel slides; the through-bolts
+swing sweep — the **edge beam and the interior pocket/mounting plates are demountable**
+(a few bolts) and lift out with the walkway before the panel swings; the through-bolts
 and exterior plates stay on the wall. The full-width beam also picks up the
 near/far walkways' door-end grate edges at X=470mm, so no separate X=470mm
 cantilever bracket is needed.
@@ -334,28 +334,28 @@ pocket — no separate anti-slip restraint is needed.
 
 The beam end drops into the seat-plate pocket — located in X and Z, free to lift
 straight out. **Demountable for transport:** the seat plate is on a few bolts and
-comes off with the beam before the panel slides; the through-bolts and exterior
+comes off with the beam before the panel swings; the through-bolts and exterior
 backing plate remain on the wall. No tools beyond a wrench for the 3 bolts.
 
 ### 5.4 Panel Transport Clearance
 
 | Parameter | Value |
 |-----------|-------|
-| Panel slide travel (B2) | 880mm |
-| Panel front face when slid | X≈1000mm |
+| Panel transport motion | SWING ~56° about the Ø89 pivot (rev10 — supersedes the 880mm slide) |
+| Swing sweep reach (near-walkway zone) | X≈1395mm |
 | Butt joint / edge beam / near-far walkway start | X=470mm |
-| Panel reach past butt joint | ≈530mm (into the vacated left-walkway zone) |
-| Panel bottom edge | Z=80mm (above the 50mm tray rim) |
+| Panel / cage bottom edge | Z=130mm (grate-top level) |
 
 ![TBS-001 Walkway — Sheet 4: Lift-Out at Butt Joint](assets/walkway-sheet4.png)
 
-The left walkway grating, **edge beam, interior seat plates**, support legs, and
-bearing strip must all be removed before the hinged panel can slide to transport
-position (the exterior backing plates and through-bolts stay on the wall). The
-panel slides 880mm — its front face reaches X≈1000mm, **sweeping ≈530mm past the
-X=470mm butt joint through the zone the removable left walkway has vacated**. The
-relevant standing clearance is vertical: the panel bottom edge (Z=80mm) rides above
-the tray rim (Z=50mm).
+The left walkway grating (X170–470), its **edge beam, interior seat plates**, support
+legs, and bearing strip — together with the door-end near-deck lift-out section — must
+be removed before the panel can swing (the exterior backing plates and through-bolts
+stay on the wall). As the panel + drum swing ~56° about the pivot, the cage sweeps past
+the X=470mm butt joint into the vacated zone, **riding the Z=130mm floor gap over the
+Z115 door-end brackets** — so no walkway bracket is struck (the swing clears them at Z).
+The relevant standing clearance is vertical: the panel/cage bottom edge sits at the
+grate-top level (Z=130mm), clearing the tray rim and the bracket tops.
 
 ---
 
@@ -373,9 +373,9 @@ intersections.
 
 Butt joints are used rather than miters for two reasons:
 
-1. **Panel clearance** — near/far walkways start at X=470mm, entirely past the
-   panel transport envelope (X ≤ 420mm), so only the left walkway needs removal
-   for transport mode.
+1. **Panel clearance** — near/far walkways start at X=470mm, clear of the door-end
+   panel swing sweep, so only the left walkway + the door-end near-deck section need
+   removal for transport mode.
 2. **Simplicity** — each grating section lifts off independently without
    affecting adjacent sections.
 
@@ -516,8 +516,8 @@ distributes load across multiple rods.
    and access requirements.
 6. [Processing Tray & Spray Bar Report](processing-tray-and-spray-bar.md) — Tray
    dimensions, rim height, spray bar slit requirements.
-7. [Hinged Panel Report](hinged-panel-report.md) — Panel transport envelope,
-   slide travel, floor gap.
+7. [Hinged Panel Report](hinged-panel-report.md) — Panel swing sweep, transport
+   swing, floor gap.
 8. [Light Trap Selection Report](light-trap-selection.md) — Panel and drum
    dimensions at cargo door end.
 9. [IBC Stacking Report](ibc-stacking-report.md) — IBC stack dimensions and

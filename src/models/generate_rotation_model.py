@@ -37,6 +37,7 @@ CUT = 180                               # fixed left-panel width (Yd) — 150mm 
 NEAR_CORNER_YD = ov.PANEL_CORNER_YD_L   # 653 — near-corner zone extent (the swing remainder runs CUT..653)
 DRUM_CX, DRUM_CY, DRUM_R = lt.DRUM_CX, lt.DRUM_CY, ov.DRUM_R
 BAY_X0, APER_L, APER_R = ov.BAY_FRONT_X, lt.APER_L, lt.APER_R
+FAN_B_YD, FAN_B_H = ov.FAN_B_YD, ov.FAN_B_H
 
 
 def _min_x(deg):
@@ -402,6 +403,10 @@ anc4 = Geom::Point3d.new({SOCKET[0]:.0f}.mm, {SOCKET[1]:.0f}.mm, 200.mm)
 txt4 = entities.add_text("TRANSPORT STAYS (top+bottom)\neye+turnbuckle frame -> NEAR wall\n(holds vs transit, not gravity)", anc4,
                          Geom::Vector3d.new(300.mm, (-300).mm, 250.mm))
 txt4.layer = model.layers["Labels"] rescue nil
+anc5 = Geom::Point3d.new(150.mm, {FAN_B_YD}.mm, {FAN_B_H}.mm)
+txt5 = entities.add_text("FAN B (intake) — self-contained wall fan\n(louvre+baffle+fan in the panel); swings\nwith the frame. Runs in camera mode only\n(outside air via open doors); off in transit", anc5,
+                         Geom::Vector3d.new(600.mm, (-250).mm, 350.mm))
+txt5.layer = model.layers["Labels"] rescue nil
 
 model.definitions.purge_unused
 model.materials.purge_unused

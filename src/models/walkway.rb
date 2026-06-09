@@ -154,10 +154,21 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # ═══ Walkway Decks (near/far/left) ═══
   defn = model.definitions.add("Walkway Decks (near/far/left)")
   ents = defn.entities
+  # Walkway Near (door-end, removable)
+  grp = ents.add_group
+  grp.name = "Walkway Near (door-end, removable)"
+  face = grp.entities.add_face([470.mm,0.mm,115.mm], [900.mm,0.mm,115.mm], [900.mm,300.mm,115.mm], [470.mm,300.mm,115.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Walkway Near (door-end, removable)"] || model.materials.add("Walkway Near (door-end, removable)")
+  mat.color = Sketchup::Color.new(192, 96, 0)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Walkway Near (left)
   grp = ents.add_group
   grp.name = "Walkway Near (left)"
-  face = grp.entities.add_face([470.mm,0.mm,115.mm], [1155.mm,0.mm,115.mm], [1155.mm,300.mm,115.mm], [470.mm,300.mm,115.mm])
+  face = grp.entities.add_face([900.mm,0.mm,115.mm], [1155.mm,0.mm,115.mm], [1155.mm,300.mm,115.mm], [900.mm,300.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Walkway Near (left)"] || model.materials.add("Walkway Near (left)")
@@ -204,7 +215,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([170.mm,0.mm,115.mm], [470.mm,0.mm,115.mm], [470.mm,2362.mm,115.mm], [170.mm,2362.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
-  mat = model.materials["Walkway Left (removable)"] || model.materials.add("Walkway Left (removable)")
+  mat = model.materials["Walkway Near (door-end, removable)"] || model.materials.add("Walkway Near (door-end, removable)")
   mat.color = Sketchup::Color.new(192, 96, 0)
   mat.alpha = 1.0
   grp.material = mat
@@ -215,7 +226,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([470.mm,800.mm,115.mm], [770.mm,800.mm,115.mm], [770.mm,1560.mm,115.mm], [470.mm,1560.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
-  mat = model.materials["Walkway Left (removable)"] || model.materials.add("Walkway Left (removable)")
+  mat = model.materials["Walkway Near (door-end, removable)"] || model.materials.add("Walkway Near (door-end, removable)")
   mat.color = Sketchup::Color.new(192, 96, 0)
   mat.alpha = 1.0
   grp.material = mat

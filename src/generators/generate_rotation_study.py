@@ -7,12 +7,14 @@ Yd180 — the minimum that lets the swinging part clear the near upright (150mm 
 at ~3deg; 160mm is the geometric minimum; 180mm chosen for margin — matches the 3D
 model generate_rotation_model.py):
 
-  SWINGING  Yd180..2362 (+ drum + Fan B) → rotates with the frame about the pivot;
-                                           every point is farther out than the cut, so
-                                           it clears the near upright
-  FIXED     Yd0..180                     → the thin fixed left panel at the door; does
+  SWINGING  Yd180..2287 (+ drum + Fan B) → rotates with the frame about the pivot; runs
+                                           cut → pivot, so it clears the near upright and
+                                           nothing extends past the pivot
+  FIXED L   Yd0..180                     → the thin fixed left panel at the door; does
                                            NOT swing, covers the near-wall strip past
                                            the near upright
+  FIXED FAR Yd2287..2362                 → the ~75mm beyond the pivot; a fixed strip so
+                                           nothing swings outboard of the door plane (#10)
 
 Also overlays the tray + walkways (Z note: frame underside hangs at Z130 — clears the
 tray rim Z50, tangent to the walkway grates Z130; the left walkway lifts out).
@@ -41,8 +43,8 @@ def rot(pts, deg):
 
 
 def draw_swing(ax, deg, color, alpha, lw=2.0):
-    """The rotating SWINGING panel section (Yd180..2362) + drum + Fan B (all rigid)."""
-    panel = [(0, CUT), (PANEL_T, CUT), (PANEL_T, C_WID), (0, C_WID)]
+    """The rotating SWINGING panel section (Yd180..2287, cut→pivot) + drum + Fan B (rigid)."""
+    panel = [(0, CUT), (PANEL_T, CUT), (PANEL_T, HY), (0, HY)]
     p = rot(panel, deg)
     d = rot([(DRUM_CX, DRUM_CY)], deg)[0]
     fb = rot([(60, FAN_YD)], deg)[0]
@@ -94,6 +96,14 @@ ax.annotate("FIXED left panel\n(Yd0-180, does NOT swing)", xy=(PANEL_T, CUT / 2)
 ax.plot([-30, 200], [CUT, CUT], color="#a000a0", lw=2.5, ls=(0, (4, 2)))
 ax.text(230, CUT + 60, f"CUT @ Yd{CUT}\n(min to clear near upright)", color="#a000a0", fontsize=8, va="center")
 
+# ── fixed FAR strip (Yd HY..2362) — ends the swing panel AT the pivot so nothing swings
+#    outboard of the door plane (#10) ──
+ax.add_patch(Polygon([(0, HY), (PANEL_T, HY), (PANEL_T, C_WID), (0, C_WID)], closed=True,
+                     fill=True, fc="#C8A060", ec="#8a6020", alpha=0.7, lw=1.5))
+ax.annotate(f"FIXED far strip (Yd{HY}-{C_WID})\nends panel AT pivot — no poke-out",
+            xy=(PANEL_T, (HY + C_WID) / 2), xytext=(650, 2600), fontsize=8, color="#6a4010",
+            va="center", arrowprops=dict(arrowstyle="->", color="#8a6020", lw=1.0))
+
 ax.text(-150, 1900, "CAMERA (0°)", color="#159A3C", fontsize=8.5)
 d_lock = rot([(DRUM_CX, DRUM_CY)], SWING)[0]
 ax.text(d_lock[0], d_lock[1] - DRUM_R - 80, f"LOCKED {SWING}°", color="#1763C8", fontsize=9, ha="center")
@@ -103,7 +113,7 @@ ax.set_ylim(-320, 2750)
 ax.set_aspect("equal")
 ax.set_xlabel("X — into container (mm)")
 ax.set_ylabel("Yd — width (mm)")
-ax.set_title(f"Split panel: swinging section (Yd{CUT}..2362 + drum + Fan B) rotates, fixed left panel (Yd0-{CUT}) stays", fontsize=11)
+ax.set_title(f"Split panel: swinging section (Yd{CUT}..{HY}, cut→pivot, + drum + Fan B) rotates; fixed left (Yd0-{CUT}) + fixed far (Yd{HY}-{C_WID}) stay", fontsize=10.5)
 ax.grid(True, alpha=0.2)
 plt.tight_layout()
 import os

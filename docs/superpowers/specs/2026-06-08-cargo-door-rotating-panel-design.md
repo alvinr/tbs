@@ -53,15 +53,20 @@ container so the cargo doors close. Decisions and rationale:
   stowed state.
 - The cargo doors are **open during the swing**; they close after lock.
 
-### 2.3 The panel — split into fixed + swinging
-- The panel is cut vertically into a **FIXED LEFT PANEL (Yd0–180)** and the **SWINGING part
-  (Yd180–2362)**.
+### 2.3 The panel — split into fixed + swinging + fixed
+- The panel is cut vertically into **three** zones: a **FIXED LEFT PANEL (Yd0–180)**, the
+  **SWINGING part (Yd180–2287)**, and a **FIXED FAR STRIP (Yd2287–2362)**. The swinging part
+  runs exactly **cut → pivot**.
 - **Fixed left panel (180 mm):** fixed to the door frame, does **not** swing — it covers the
   near-wall strip past the **NEAR film-plane upright** (Yd100–150). (150 mm clips the upright
   at 3° into the swing; 160 mm is the minimum that clears; **180 mm** chosen for margin.)
 - **Swinging part:** rotates with the frame; trimmed to span **just the panel** (the vestigial
   Yd0 left-hinge hardware — piano hinges + full-width top EPDM — removed; top seal re-added
   trimmed to the panel).
+- **Fixed far strip (~75 mm, Yd2287–2362):** mirror of the fixed left panel at the pivot/far-wall
+  side — it ends the swinging panel **at the pivot line** so nothing swings outboard of the door
+  plane (see §4-#10). Carries its own perimeter EPDM + the vertical cut seal the swinging panel
+  butts against.
 - **Fan B** is on the swinging part.
 
 ### 2.4 Removable film beams
@@ -93,7 +98,7 @@ container so the cargo doors close. Decisions and rationale:
 
 | Check | Result |
 |---|---|
-| Door clearance at 56° | clears (true min X +4 mm) |
+| Door clearance at 56° | clears (true min X **+72 mm** after the panel is ended at the pivot — #10) |
 | Near film-plane upright | cleared by the 180 mm fixed panel + split |
 | Far film-plane upright | it **is** the pivot |
 | Drum/bay through the gap | clears once the two left rails are removed |
@@ -160,9 +165,11 @@ container so the cargo doors close. Decisions and rationale:
    and the far grate @36.5–56°. In the model. (The left walkway is lifted out anyway.)
 9. **Mass reduction** if ~330 kg is too heavy (lighter panel skins / slimmer cage).
 10. ~~Confirm the residual flap/poke-out is fully resolved by the pivot-at-upright-centre move.~~
-    **RESOLVED** — confirmed across **all** swept exterior geometry (panel/EPDM face, drum, bay,
-    Fan B louvre) at 56°: **true min X = +5.4 mm** (the governing point is the EPDM at the far
-    panel flap, Yd2360). No poke-out — the cargo doors close.
+    **RESOLVED (properly, not by tolerance).** The pivot-at-upright move alone left only **+5.4 mm**
+    — the compressible EPDM lip skating the door plane, not a real clearance. Fixed at the root:
+    **end the swinging panel at the pivot line (Yd2287)** and cover the residual ~75 mm with a
+    **FIXED FAR STRIP (Yd2287–2362)**, mirror of the fixed left panel (§2.3). Now **no** swing
+    panel/EPDM geometry extends past the pivot (verified), and the true min X at 56° is **+72 mm**.
 11. **POST-MERGE / deferred:** the **lower film-plane brace beam sits at the same Z level as the
     walkway grate** (lower rail/beam at Z≈100–150 vs walkway grate Z≈115–130) — a physical
     clash. Flagged for resolution **after the merge** (drop the beam, step the walkway locally,

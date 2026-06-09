@@ -1617,10 +1617,19 @@ def sheet5():
 
 
 def sheet6():
-    """Transport-slide clearance vs the film-plane left mechanism (plan)."""
-    RED, GREEN = "#C0202A", "#2E8B57"
-    RX, SL, PT_ = RAIL_X_L, PANEL_SLIDE, PANEL_CENTER_T     # 150, 880, 120
+    """Swing clearance vs the film-plane left mechanism (plan, looking down)."""
+    import matplotlib.patches as mpatches
+    from tbs_constants import (PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD,
+                               FAR_STRIP_YD0, PIVOT_POST_OD)
+    RED, GREEN, BLUE = "#C0202A", "#2E8B57", "#1763C8"
+    RX, PT_ = RAIL_X_L, PANEL_CENTER_T                     # 150, 120
+    HX, HY, LOCK = PIVOT_X, PIVOT_YD, SWING_LOCK_DEG
+    CUT, FAR0 = PANEL_CUT_YD, FAR_STRIP_YD0
     cyd = PW / 2                                            # 1181 light-lock Yd center
+
+    def rot(x, y, deg):
+        t = np.radians(deg); c, s = np.cos(t), np.sin(t)
+        return (HX + (x - HX) * c - (y - HY) * s, HY + (x - HX) * s + (y - HY) * c)
 
     fig, ax = plt.subplots(figsize=(17, 12))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
@@ -1635,72 +1644,70 @@ def sheet6():
     ax.plot([0, 0], [0, PW], color=C_CL, lw=1.4, ls=(0, (6, 4)), zorder=3)
     ax.text(10, PW + 95, "door plane X=0", fontsize=8, color=C_CL, **FONT)
 
-    # film-plane left rail at X=150 — CONTINUOUS (drum offset out via the bay, B2);
-    # the whole left rail is struck for transport (panel slides past it).
+    # film-plane LEFT rails (X=150) — REMOVABLE: struck for transport so the swinging
+    # cage can transition the X=150 rail plane, then re-seated to datum.
     ax.add_patch(Rectangle((RX - 13, FP_Y_MIN), 26, (FP_Y + 38) - FP_Y_MIN,
-                           fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))
-    ax.text(RX, DRUM_CY, "left rail X=150\nCONTINUOUS\n(struck for transport)",
-            fontsize=6, color="#8a5a10", **FONT, ha="center", va="center", zorder=12)
-    # brace-cage beams (run X 150->4649) at Yd 100 & 2262
-    for yy in (FP_Y_MIN, FP_Y):
+                           fc="#C06000", ec=C_OUT, lw=1, ls=(0, (4, 2)), alpha=0.55, zorder=6))
+    ax.text(RX - 55, DRUM_CY, "left rails X=150\nREMOVABLE\n(struck for transport —\ndrop-in saddles)",
+            fontsize=6, color="#8a5a10", **FONT, ha="right", va="center", zorder=12)
+    for yy in (FP_Y_MIN, FP_Y):                              # brace-cage beams (run X 150→far)
         ax.add_patch(Rectangle((RX, yy - 17), 1340 - RX, 34, fc=C_STEEL, ec=C_OUT,
                                lw=0.7, alpha=0.85, zorder=5))
-    ax.text(1320, FP_Y_MIN - 60, "brace-cage beam (X 150→4649) →", fontsize=7, color=C_DIM, **FONT, ha="right")
-    ax.text(1320, FP_Y + 52, "brace beam + muslin screen (Yd≈2262) →", fontsize=7, color=C_DIM, **FONT, ha="right")
-    for yy in (FP_Y_MIN, FP_Y):                              # corner posts at X=150
-        ax.add_patch(Rectangle((RX - 27, yy - 27), 54, 54, fc="#5A5A62", ec=C_OUT, lw=1, zorder=7))
+    ax.text(1320, FP_Y_MIN - 60, "brace-cage beam →", fontsize=7, color=C_DIM, **FONT, ha="right")
+    ax.add_patch(Rectangle((RX - 27, FP_Y_MIN - 27), 54, 54, fc="#5A5A62", ec=C_OUT, lw=1, zorder=7))  # near post
+    # the FAR-left film post IS the Ø89 swing pivot
+    ax.add_patch(Circle((HX, HY), PIVOT_POST_OD / 2 + 6, fc="#5A5AA0", ec=C_OUT, lw=1.2, zorder=9))
+    ax.text(HX + 75, HY, "PIVOT POST Ø89\n(= film far-left post)", fontsize=6.5,
+            color="#5A5AA0", **FONT, va="center", zorder=12)
 
-    # hinged panel side zones — deployed + transport ghost
-    ax.add_patch(Rectangle((0, 0), PT_, PW, fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=8))
-    ax.text(PT_ / 2, -140, "panel\ndeployed", fontsize=7, color=C_DIM, **FONT, ha="center", va="top")
-    ax.add_patch(Rectangle((SL, 0), PT_, PW, fc=C_ALUM, ec=RED, lw=1.6, ls=(0, (5, 3)),
-                           alpha=0.30, zorder=9))
-    # B2 punch-out bay — center zone protrudes forward to BAY_FRONT_X (deployed),
-    # and retracts +PANEL_SLIDE for transport (ghost) so the cargo doors close.
-    bw = -BAY_FRONT_X        # 890 — bay depth past the door plane
-    ax.add_patch(Rectangle((BAY_FRONT_X, PANEL_CORNER_YD_L), bw,
-                           PANEL_CORNER_YD_R - PANEL_CORNER_YD_L,
-                           fc="#C8D8E8", ec=C_OUT, lw=1.2, hatch="////", zorder=8))
-    ax.text(BAY_FRONT_X + bw / 2, cyd, "PUNCH-OUT BAY\n(Ø900 housing)",
-            fontsize=6.5, color=C_DIM, **FONT, ha="center", va="center", zorder=12)
-    ax.add_patch(Rectangle((BAY_FRONT_X + SL, PANEL_CORNER_YD_L), bw,
-                           PANEL_CORNER_YD_R - PANEL_CORNER_YD_L,
-                           fc="#C8D8E8", ec=RED, lw=1.4, ls=(0, (5, 3)), alpha=0.30, zorder=9))
-    ax.text(SL + PT_ / 2, -140, f"panel TRANSPORT\n(slid +{int(SL)})", fontsize=7.5,
-            color=RED, **FONT, ha="center", va="top", fontweight="bold")
-    ax.add_patch(Circle((0, cyd), DRUM_R, fc=C_ALUM, ec="#7a5a20", lw=1.0, alpha=0.45, zorder=8))
-    ax.add_patch(Circle((SL, cyd), DRUM_R, fc=C_ALUM, ec=RED, lw=1.0, ls=(0, (4, 3)), alpha=0.16, zorder=9))
-    ax.text(SL, cyd, "housing slid in\n(left rail struck\nfor transport)", fontsize=6.4,
-            color=GREEN, **FONT, ha="center", va="center", zorder=12)
-    ax.annotate("", xy=(SL - 8, 1181), xytext=(PT_ + 20, 1181),
-                arrowprops=dict(arrowstyle="-|>", color=RED, lw=2.0), zorder=11)
-    ax.text((PT_ + SL) / 2, 1240, f"{int(SL)}mm slide", fontsize=7.5, color=RED, **FONT, ha="center")
+    # fixed left + far panel strips (do NOT swing)
+    for (y0, y1) in [(0, CUT), (FAR0, PW)]:
+        ax.add_patch(Rectangle((0, y0), 40, y1 - y0, fc="#C8A060", ec=C_OUT, lw=1.2, zorder=8))
 
-    # numbered collision markers
-    def mark(x, y, n):
-        ax.add_patch(Circle((x, y), 58, fc="white", ec=RED, lw=2.2, zorder=14))
-        ax.text(x, y, str(n), fontsize=12, color=RED, **FONT, fontweight="bold",
+    # swinging assembly (panel CUT..FAR0 + bay + drum): CAMERA (deployed) + SWUNG 56°
+    def draw_moving(deg, ec, alpha, ls, hatch):
+        pts = [rot(0, CUT, deg), rot(PT_, CUT, deg), rot(PT_, FAR0, deg), rot(0, FAR0, deg)]
+        ax.add_patch(mpatches.Polygon(pts, closed=True, fc=C_ALUM, ec=ec, lw=1.4, ls=ls, alpha=alpha, zorder=9))
+        bpts = [rot(BAY_FRONT_X, PANEL_CORNER_YD_L, deg), rot(0, PANEL_CORNER_YD_L, deg),
+                rot(0, PANEL_CORNER_YD_R, deg), rot(BAY_FRONT_X, PANEL_CORNER_YD_R, deg)]
+        ax.add_patch(mpatches.Polygon(bpts, closed=True, fc="#C8D8E8", ec=ec, lw=1.2, ls=ls,
+                                       alpha=alpha * 0.9, zorder=9, hatch=hatch))
+        dctr = rot(-400, cyd, deg)
+        ax.add_patch(Circle(dctr, DRUM_R, fc=C_ALUM, ec=ec, lw=1.0, alpha=alpha * 0.5, ls=ls, zorder=9))
+        return dctr
+    draw_moving(0, "#7a5a20", 0.55, "-", "////")
+    ax.text(BAY_FRONT_X / 2, -150, "CAMERA\n(deployed)", fontsize=7.5, color=C_DIM, **FONT, ha="center", va="top")
+    d1 = draw_moving(LOCK, BLUE, 0.30, (0, (5, 3)), None)
+    ax.text(d1[0], d1[1], f"SWUNG {int(LOCK)}°\n(door clears +59mm)", fontsize=7, color=BLUE, **FONT,
+            ha="center", va="center", fontweight="bold", zorder=15)
+    arc = [rot(0, CUT, dd) for dd in np.linspace(0, LOCK, 36)]
+    ax.plot([p[0] for p in arc], [p[1] for p in arc], color=BLUE, lw=1.3, ls=(0, (4, 2)), zorder=11)
+
+    # numbered markers
+    def mark(x, y, n, col=BLUE):
+        ax.add_patch(Circle((x, y), 58, fc="white", ec=col, lw=2.2, zorder=14))
+        ax.text(x, y, str(n), fontsize=12, color=col, **FONT, fontweight="bold",
                 ha="center", va="center", zorder=15)
-    mark(RX, 430, 1); mark(RX, 1940, 1)
-    mark(SL + PT_ / 2, FP_Y_MIN, 2); mark(SL + PT_ / 2, FP_Y, 2)
+    mark(RX, 430, 1); mark(RX, 1940, 1)       # left rails struck so the cage transitions
+    mark(40, cyd, 2)                          # swing clears the door plane (+59mm)
 
-    ax.text(-280, 2640, "TRANSPORT SLIDE vs FILM-PLANE LEFT MECHANISM  (plan, looking down)",
+    ax.text(-280, 2640, "SWING CLEARANCE vs FILM-PLANE LEFT MECHANISM  (plan, looking down)",
             fontsize=13, fontweight="bold", color=C_OUT, **FONT)
-    notes = ("B2 TRANSPORT (rev9) — the bay slides ~880mm inward so the\n"
-             "punch-out bay retracts behind the door plane and the\n"
-             "cargo doors close.\n\n"
-             "①  The panel sweeps past X=150, so the WHOLE left rail\n"
-             "    (top + bottom) is struck for transport. It is\n"
-             "    CONTINUOUS in operating — the drum is offset clear of\n"
-             "    the rail via the bay (no demountable segment).\n\n"
-             "②  The deeper slide also reaches the brace-cage beams and\n"
-             "    the door-end walkway brackets (X≈698, 1155) — both are\n"
-             "    struck / demountable for transport.\n\n"
+    notes = ("ROTATION TRANSPORT (rev10) — the panel + drum SWING ~56°\n"
+             "about the vertical pivot (the film far-left post), pulling\n"
+             "the punch-out bay inboard of the door plane so the cargo\n"
+             "doors close (true min X +59mm).\n\n"
+             "①  The swinging cage transitions the X=150 rail plane, so\n"
+             "    the two LEFT film rails (TL+BL) are REMOVABLE — lifted\n"
+             "    out (drop-in saddles) for the swing, re-seated to the\n"
+             "    datum after. The far-left film post IS the Ø89 pivot.\n\n"
+             "②  The swing clears the door-end walkway brackets at Z\n"
+             "    (panel/cage underside Z130 over the Z115 bracket tops);\n"
+             "    the left walkway + door-end near-deck section lift out.\n\n"
              "Operating: full symmetric film-plane travel is restored.\n\n"
-             "TEARDOWN (Hinged Panel Report §5) — strike the film plane\n"
-             "first: remove muslin → knock down brace cage → remove the\n"
-             "full left rail → strike the door-end brackets → lift the\n"
-             "left walkway → release latches → slide ~880mm → lock.")
+             "TEARDOWN — strike the left rails → lift the left walkway +\n"
+             "near-deck section → unlatch → swing 56° → engage top+bottom\n"
+             "wall stays → close doors.")
     ax.add_patch(FancyBboxPatch((1440, 360), 880, 2150,
                                 boxstyle="round,pad=8,rounding_size=16",
                                 fc="#FBFBFD", ec=C_DIM, lw=1.0, zorder=2))
@@ -1708,7 +1715,7 @@ def sheet6():
 
     title_block(ax, "SHEET 6 OF 6",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
-                subtitle="TRANSPORT-SLIDE CLEARANCE vs FILM-PLANE LEFT MECHANISM — STRIKE FILM PLANE BEFORE SLIDING",
+                subtitle="SWING CLEARANCE vs FILM-PLANE LEFT MECHANISM — STRIKE LEFT RAILS BEFORE SWINGING",
                 scale_note="PLAN VIEW · NOT TO SCALE · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet6.png"), dpi=130,

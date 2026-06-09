@@ -60,7 +60,7 @@ Overall floorplan can be seen below. Its essentially split into three areas, lef
 
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
-| Hinged panel (stepped) | 0–40 (corner) / 0–120 (center) | 0–2,362 | 0–2,388 | Stepped profile: 40mm corners, 120mm center (drum housing). On sliding carriage (880mm travel for transport). |
+| Hinged panel (stepped) | 0–40 (corner) / 0–120 (center) | 0–2,362 | 0–2,388 | Stepped profile: 40mm corners, 120mm center (drum housing). Swings ~56° about the Ø89 pivot for transport. |
 | Light trap drum | −375–375 | 806–1,556 (centered at CW/2=1181mm) | 0–2,200 | Centered at X=0 (spans container wall); integrated into panel center zone; rotary drum entry |
 
 ### 2.2 Pinhole Wall Face — Y=0 surface (shadow-free)
@@ -182,44 +182,42 @@ The left end zone contains only the light trap drum and the hinged panel — no
 floor-mounted equipment, no dolly tracks, no bridge sections, providing
 unobstructed egress at the cargo door end.
 
-### 6.1 Stepped Panel and Sliding Carriage (Transport Mode)
+### 6.1 Stepped Panel and Swing Pivot (Transport Mode)
 
 The hinged panel has a stepped profile: 40mm thick at the corner zones and 120mm thick at the center zone
-where the light trap drum is mounted. The entire panel slides 880mm in the X direction on
-HGR20 linear rails mounted to both container walls at
-floor and ceiling level — 4 rails total, 8 HGH20CA carriage blocks. The left
-(hinge) side rides via a vertical carriage beam (60×60×3mm SHS, 2400mm tall);
-the right (latch) side rides directly on carriage blocks attached to the panel
-frame.
+where the light trap drum is mounted. For transport the panel + drum SWING ~56° about a
+vertical Ø89×8mm CHS pivot post (the reused film-plane far-left upright at X=175, Yd=2287),
+carrying the punch-out bay inboard of the door plane. Two narrow strips stay fixed at the
+door plane (near Yd0–180, far Yd2287–2362, which carries the pivot); the cargo doors close
+outboard of the fixed near strip. The earlier "slide 880mm on HGR20 rails" scheme is retired.
 
-| Position | Panel corner inner face X | Drum exterior edge X | Doors clear? |
-|----------|--------------------------|---------------------|-------------|
-| Operational | 40mm | −335mm | No (drum protrudes 295mm beyond exterior) |
-| Transport | 340mm | −35mm | Yes (5mm behind exterior face) |
+| Position | Description | Doors clear? |
+|----------|-------------|-------------|
+| Operational (0°) | Panel closed at the door plane; the B2 punch-out bay protrudes ~890mm outside | No — the doors stay open during camera operation |
+| Transport (swung 56°) | Panel + drum revolved about the pivot, swept inboard | Yes — true minimum clearance to the closed door is +59mm |
 
-A fixed welded door frame (50×50×3mm RHS) provides the EPDM seal landing.
-The panel seals against this frame using the existing Southco C2-33 cam latch and
-20mm EPDM gasket design — the sliding mechanism is transparent to the seal.
+A fixed welded door frame (50×50×3mm RHS) provides the EPDM seal landing. The panel seals
+against this frame with the Southco C2-33 cam latches and 20mm EPDM gaskets in the closed
+(latched) position; the latches release to free the seals before the swing.
 
-#### 6.1.1 Sliding Panel Light Seal Design
+#### 6.1.1 Swinging Panel Light Seal Design
 
-The sliding mechanism introduces five potential light ingress paths that must be
-sealed when the panel is in the operational (camera-ready) position.
+The swinging panel seals against the fixed door frame in its operational (camera-ready,
+closed) position. Five light ingress paths are sealed:
 
 | # | Light path | Seal method |
 |---|-----------|-------------|
-| 1 | **Panel perimeter → door frame** | Existing: 20mm EPDM gasket in aluminum channel, compressed by 4× Southco C2-33 cam latches against fixed door frame at X=0. Unchanged from original design. |
-| 2 | **Left carriage beam slot** | The fixed door frame has a vertical slot (~70×2400mm) for the carriage beam. Sealed by doubled nylon brush strip (bristles inward from both sides) bonded to the frame slot edges. The brush strip wipes against the beam during sliding and provides a light-tight seal in the locked position. No straight-line path through doubled bristles. |
-| 3 | **Right guide slot** | Matching vertical slot (~70×2400mm) on the latch side for the right-side carriage blocks and panel frame edge. Same doubled nylon brush strip treatment as the left slot. |
-| 4 | **Rail channels at floor/ceiling (×4)** | Each HGR20 rail passes through the fixed door frame at floor or ceiling level. A 10mm closed-cell neoprene compression pad (50×30mm) is bonded to the frame face around each rail penetration. When the panel is locked at X=0, the carriage block housing compresses against this pad, closing the rail channel. In transport position, the pads are uncompressed (light seal not required). |
-| 5 | **Panel edge-to-wall clearance gaps** | The panel requires ~10mm clearance to each container wall for sliding. Two vertical strips of 15mm closed-cell EPDM (self-adhesive, full panel height) are bonded to the fixed door frame inner face at each side, positioned to compress against the panel edge when the cam latches engage. These strips deflect during sliding and spring back to seal in the locked position. |
+| 1 | **Panel perimeter → door frame** | 20mm EPDM gasket in an aluminum channel, compressed by the 4× Southco C2-33 cam latches against the fixed door frame at X=0. |
+| 2 | **Swing cuts → fixed strips** | The swinging center+corners separate from the two fixed strips along vertical cuts at Yd=180 and Yd=2287. A 20mm EPDM cut seal runs the full panel height down each cut, compressed by the cam latches when the panel is latched at the door plane. (Replaces the old sliding-carriage beam/guide-slot brush seals.) |
+| 3 | **Panel bottom → 130mm floor gap** | Fixed-frame bottom seal lip — a continuous steel threshold upstand, full panel-bottom width (no notch; the drum rides at Z=130). A 20mm EPDM strip on the panel bottom edge compresses against it, latched by the lower cam latches; releases before the swing. |
+| 4 | **Panel top → frame gap** | Fixed-frame top seal lip — a steel downstand from the frame top rail, full panel-top width, continuous across the center. A 20mm EPDM strip on the panel top edge compresses against it, latched by the upper cam latches. |
+| 5 | **Housing surround → door frame** | A second 20mm EPDM gasket rings the Ø900 housing aperture, concentric inboard of the perimeter seal, sealing the housing surround to the frame in the closed position. |
 
 **Light seal verification:** After mode conversion to operational position, the
-operator performs a dark-adaptation check (5 minutes in darkened container with
+operator performs a dark-adaptation check (5 minutes in a darkened container with
 all seals engaged). Any visible light points are marked with gaffer tape for
-re-sealing. The doubled brush strips at the carriage beam slots are the most
-critical — they must be inspected for wear every 20 mode conversions and
-replaced annually.
+re-sealing. The cut seals at the swing boundaries and the bottom/top lips are the
+critical compression seals.
 
 ### 6.2 Evaporative Cooler Transport Stowage
 
@@ -231,13 +229,13 @@ The evaporative cooler (Portacool Jetstream 110 or equivalent, ~600×350×800mm,
 
 | Parameter | Value |
 |-----------|-------|
-| Stowage zone | X=1200–1800mm, Yd=0–500mm (near walkway wide section) |
+| Stowage zone | X=1450–2050mm, Yd=0–350mm (near walkway wide section) |
 | Cooler footprint | 600×350mm (long axis along X) |
 | Cooler height on grating | 800mm (top at Z=900mm) |
 | Weight (dry) | ~20 kg |
 | Securing | 2× ratchet straps to bracket arms |
 | Base plate | 12mm ply, 600×350mm |
-| Clearance to panel transport envelope | 780mm (panel max X=420, cooler starts X=1,200) |
+| Clearance to panel swing sweep | ~55mm (the swing reaches X≈1,395 in the near-walkway zone; the cooler starts at X=1,450 — moved deeper from X=1,200 in rev10 to clear the deeper swing) |
 
 See [Walkway Diagram — Sheet 1](engineering-diagrams.md) for stowage position in plan view.
 
@@ -313,7 +311,7 @@ The panel swings 180° outward (exterior, negative X). All interior equipment is
 |-----------|----------|---------------|
 | Light trap drum | Panel-mounted (center zone) | Moves with panel |
 | Fan B intake duct | Panel-mounted, Yd=365, H=600 (rev9/B2 swap — near pinhole wall) | Moves with panel |
-| Fan B cable | 1m coiled cable, ceiling service loop | Accommodates 880mm slide + 180° swing |
+| Fan B cable | 1m coiled cable, ceiling service loop | Accommodates the ~56° panel swing (with slack) |
 | Evap cooler duct stub | X=1,000, Yd=0 (wall penetration) | No — flush with wall |
 | Electrical panel | X=2,050–2,350 | No — 1430mm inboard |
 | Battery bank | X=2,050–2,550 | No — 1430mm inboard |
@@ -354,7 +352,7 @@ The light trap drum (900mm dia, center ~1181mm from hinge axis) sweeps through e
 1. [ISO 668:2020](https://www.iso.org/standard/76912.html) — Series 1 freight containers: Classification, dimensions and ratings.
 2. [Schutz Ecobulk MX 600L](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — IBC tote specifications and cage dimensions.
 3. [Light Trap Selection Report](light-trap-selection.md) — Revolving drum specification and panel integration.
-4. [Hinged Panel Report](hinged-panel-report.md) — Stepped panel construction and sliding carriage specification.
+4. [Hinged Panel Report](hinged-panel-report.md) — Stepped panel construction and swing-pivot specification.
 5. [Water System Report](water-system-report.md) — IBC layout, plumbing manifold, and pump positions.
 6. [Walkway System Report](walkway-report.md) — Perimeter walkway dimensions and cantilever bracket design.
 

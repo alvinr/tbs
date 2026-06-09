@@ -79,9 +79,10 @@ def axle():
     """NO separate post — the film-plane far upright IS the pivot. Just the fixed
     floor thrust + top guide bearings that the upright turns in."""
     cbear = "#5A5AA0"
-    return '\n'.join([
-        ov.ruby_cylinder("Floor thrust bearing", HX, HY, 0, 95, 45, color=cbear, axis="z"),
-        ov.ruby_cylinder("Top guide bearing", HX, HY, ov.C_HGT - 45, 95, 45, color=cbear, axis="z"),
+    r = 60                                   # Ø120 — wraps the 50x50 upright, fits inside the far wall
+    return '\n'.join([                       # (pivot Yd2287, wall Yd2362: 2287+60=2347 clears by 15mm)
+        ov.ruby_cylinder("Floor thrust bearing", HX, HY, 0, r, 45, color=cbear, axis="z"),
+        ov.ruby_cylinder("Top guide bearing", HX, HY, ov.C_HGT - 45, r, 45, color=cbear, axis="z"),
     ])
 
 

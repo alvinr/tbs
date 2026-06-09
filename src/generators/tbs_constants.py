@@ -550,10 +550,9 @@ CONTAINER_RIB_SPACING = 457   # mm (18 inches) — vertical corrugation flanges
 WALKWAY_BRACKET_H = 150  # bracket vertical leg height on wall (mm)
 WALKWAY_BRACKET_T = 8    # bracket plate thickness (mm)
 WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway (mm)
-# B2 (rev9): the panel slides to ~X=1000 for transport (deeper than the old ~670),
-# so the first near/far door-end brackets must be DEMOUNTABLE for transport — struck
-# with the film plane + left rails so the panel clears them.
-WALKWAY_BRACKET_DEMOUNT_X = (698, 1155)   # bracket X-stations struck for transport
+# rev10: the panel + drum SWING ~56° about the pivot for transport and the swinging cage
+# rides the Z130 floor gap — its underside passes OVER the Z115 door-end bracket tops, so
+# NO walkway bracket is struck for transport (the old WALKWAY_BRACKET_DEMOUNT_X is retired).
 # Right walkway (IBC end) — ceiling-hung design.
 # No floor contact, no box beam.  Two longitudinal steel angle bearers
 # (25×25×5mm) running full container width along Yd, suspended from ceiling

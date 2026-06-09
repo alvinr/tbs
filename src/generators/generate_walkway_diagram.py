@@ -8,7 +8,7 @@ Sheet 1 — Plan view of walkway layout:
   Top-down view showing all 4 walkway sections with bracket positions.
   Left walkway shown as removable lift-out (no brackets — panel conflict).
   Right walkway brackets on angle iron welded to flat end wall.
-  Panel transport envelope shown as dashed red zone.
+  Panel swing sweep (~56° about the pivot) shown as dashed red sector.
 
 Sheet 2 — Cross-section + bolt pattern (near walkway bracket):
   View A: Detail cross-section (~5:1) showing grated deck, wall-cantilevered
@@ -30,9 +30,10 @@ Sheet 4 — Detail B: Left walkway butt joint and panel clearance:
   View looking along Yd (near wall toward far wall), X horizontal, Z vertical.
   Shows left walkway grating (X=170-470, removable lift-out) meeting the
   full-width steel edge beam at the butt joint (X=470); both grating edges bear
-  on its Z65 ledges (no X=470 bracket). Panel transport envelope (X=0-1000)
-  shown as ghost — the panel sweeps ~530mm past the butt joint through the
-  vacated left-walkway zone. Bearing strip and floor leg shown in cross-section.
+  on its Z65 ledges (no X=470 bracket). The swinging cage (panel + drum) is
+  shown as ghost — it sweeps past the butt joint through the vacated left-walkway
+  zone, riding the Z130 floor gap over the brackets. Bearing strip and floor leg
+  shown in cross-section.
 
 Sheet 5 — Detail C: Left walkway support system (floor-leg cantilevers, plan):
   Elevation showing all support elements: floor-standing leg (X=140, on bare
@@ -62,7 +63,7 @@ from tbs_constants import (
     PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM,
     WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_RIGHT_W,
     WALKWAY_BRACKET_H, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING,
-    WALKWAY_BRACKET_DEMOUNT_X,
+    PIVOT_X, PIVOT_YD, SWING_LOCK_DEG,
     WALKWAY_RIGHT_BEARER_SIZE, WALKWAY_RIGHT_BEARER_T,
     WALKWAY_RIGHT_HANGER_D, WALKWAY_RIGHT_HANGER_N, WALKWAY_RIGHT_HANGER_Y1, WALKWAY_RIGHT_HANGER_L,
     WALKWAY_RIGHT_CEIL_PLATE, WALKWAY_RIGHT_CEIL_BOLT_D,
@@ -71,7 +72,7 @@ from tbs_constants import (
     WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X,
     PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F,
     PROC_OPEN_AREA,
-    PANEL_SLIDE, PANEL_CENTER_T, PANEL_FLOOR_GAP,
+    PANEL_FLOOR_GAP,
     LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_T,
     LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N,
     LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE,
@@ -711,7 +712,7 @@ def sheet1():
 
     # ── Draw walkway sections ────────────────────────────────────────────────
     # Left corners: BUTT JOINT — near/far walkways start at X=LXR (470)
-    # so they clear the panel transport envelope (max X=420).
+    # so they clear the panel swing sweep at the door end.
     # Right corners: BUTT JOINT — right walkway is ceiling-hung (same 300mm width).
     C_WK = "#D0C8B8"
     WK_ALPHA = 0.6
@@ -828,18 +829,18 @@ def sheet1():
 
     # ── Left walkway — removable section marking ──────────────────────────────
     # The left walkway (X 170–470, full Yd depth) is a LIFT-OUT section so the
-    # light-trap (cargo panel + drum) can slide back to ~X=300 for transport.
+    # light-trap (cargo panel + drum) can swing ~56° about the pivot for transport.
     # It stays installed for camera operation.
     # Mark it with a dashed orange outline to indicate removable status.
     C_REMOVABLE = "#C06000"   # orange for removable section
     ax.add_patch(Rectangle((LX, NY), W, FYO - NY,
                             fc="none", ec=C_REMOVABLE, lw=2.0, ls=(0, (8, 4)),
                             zorder=13))
-    # Leader from left walkway center pointing left (clear of panel transport zone)
+    # Leader from left walkway center pointing left (clear of panel swing sweep)
     leader(ax, LX + W / 2, (NY + FYO) / 2,
            LX - 380, (NY + FYO) / 2 + 300,
            f"LEFT WALKWAY — LIFT-OUT SECTION\n"
-           f"REMOVE FOR TRANSPORT\n(light-trap slide-back to X≈300)",
+           f"REMOVE FOR TRANSPORT\n(panel + drum swing 56° about the pivot)",
            color=C_REMOVABLE, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -961,19 +962,30 @@ def sheet1():
             ha="left", va="center", fontsize=4.5, color="#CC6600",
             **FONT, zorder=8)
 
-    # ── Panel transport envelope (dashed red) ────────────────────────────────
-    # Show the zone swept by the panel when sliding to transport position.
-    # Left walkway must be removed before panel slides.
-    panel_transport_x = PANEL_SLIDE + 120  # panel center zone inner face in transport
-    ax.add_patch(Rectangle((0, 0), panel_transport_x, C_WID,
-                            fc="#FF0000", ec="#CC0000", lw=1.5, ls=(0, (4, 3)),
-                            alpha=0.06, zorder=3))
-    ax.plot([panel_transport_x, panel_transport_x], [0, C_WID],
+    # ── Panel swing sweep (dashed red) ───────────────────────────────────────
+    # rev10: the cargo panel + drum SWING ~56° about the Ø89 pivot (PIVOT_X, PIVOT_YD),
+    # they no longer slide. The left walkway must lift out before the swing so the
+    # swinging cage can transition the X=150 rail line / near-door deck. Shade the
+    # sector swept by the panel free edge — the keep-clear transport zone.
+    def _sw(x, y, deg):
+        t = np.radians(deg); c, s = np.cos(t), np.sin(t)
+        return (PIVOT_X + (x - PIVOT_X) * c - (y - PIVOT_YD) * s,
+                PIVOT_YD + (x - PIVOT_X) * s + (y - PIVOT_YD) * c)
+    sweep_arc = [_sw(0, 0, d) for d in np.linspace(0, SWING_LOCK_DEG, 28)]
+    ax.add_patch(Polygon([(PIVOT_X, PIVOT_YD)] + sweep_arc, closed=True,
+                         fc="#FF0000", ec="#CC0000", lw=1.2, ls=(0, (4, 3)),
+                         alpha=0.06, zorder=3))
+    ax.plot([p[0] for p in sweep_arc], [p[1] for p in sweep_arc],
             color="#CC0000", lw=1.2, ls=(0, (4, 3)), zorder=5)
-    ax.text(panel_transport_x / 2, C_WID / 2 + 450,
-            f"PANEL TRANSPORT\nENVELOPE\n(X=0\u2013{panel_transport_x}mm)",
+    ax.add_patch(Circle((PIVOT_X, PIVOT_YD), 48, fc="#CC0000", ec=C_OUT,
+                        lw=1.0, zorder=6))
+    ax.text(PIVOT_X + 90, PIVOT_YD, "\u00d889 PIVOT", ha="left", va="center",
+            fontsize=5.5, color="#CC0000", **FONT, zorder=8)
+    _mid = sweep_arc[int(len(sweep_arc) * 0.55)]
+    ax.text(_mid[0], _mid[1],
+            f"PANEL SWING SWEEP {int(SWING_LOCK_DEG)}\u00b0\n(keep clear \u2014 left walkway lifts out)",
             ha="center", va="center", fontsize=6, color="#CC0000",
-            fontweight="bold", **FONT, zorder=15, alpha=0.8,
+            fontweight="bold", **FONT, zorder=15, alpha=0.85,
             backgroundcolor="#FFFFFF")
 
     # ── Open processing area outline ─────────────────────────────────────────
@@ -1031,7 +1043,7 @@ def sheet1():
         (C_SUPPORT,  0.8,      None,  f"Floor-leg cantilever bracket (x5, removable grate)"),
         ("#3DAA96",  0.35,     None,  f"Evap cooler transport stowage ({EVAP_W}×{EVAP_D}mm)"),
         ("#FF4444",  0.6,      None,  f"Spray bar slit ({SPRAY_BAR_SLIT_W}mm, near + far)"),
-        ("#FF0000",  0.06,     None,  "Panel transport envelope"),
+        ("#FF0000",  0.06,     None,  "Panel swing sweep (transport keep-clear)"),
         ("#CC6600",  0.7,      None,  "Ratchet strap (transport securing)"),
     ], C_LEN - 1225, C_WID + PAD_Y_TOP - 2850, pad=25, col_w=1100, font=FONT)
 
@@ -1045,7 +1057,7 @@ def sheet1():
         f"2. Near walkway WIDENED to {WALKWAY_NEAR_WIDE_W}mm at X={WXL}\u2013{WXR} (clears EP + battery bank).",
         f"   Deeper cantilever brackets ({WALKWAY_NEAR_WIDE_W}mm arm) with heavier gussets in bump-out zone.",
         f"3. Near/far: wall-cantilevered brackets ({WALKWAY_BRACKET_T}mm gussets) at {WALKWAY_BRACKET_SPACING}mm centers.",
-        f"   Start at X={LXR} (butt joint). B2: panel transport envelope now reaches X\u22481000.",
+        f"   Start at X={LXR} (butt joint), clear of the door-end panel swing sweep.",
         f"4. Right: CEILING-HUNG \u2014 {WALKWAY_RIGHT_HANGER_N} pairs M{WALKWAY_RIGHT_HANGER_D} rod hangers.",
         f"5. Left: REMOVABLE LIFT-OUT \u2014 5 FLOOR-LEG CANTILEVER brackets on bare floor (X140, outside tray),",
         f"   arms reach the grate inner edge (X={LXR}); 3 extend to X770 on the drum-exit punch-out. See sheets 5/6.",
@@ -1060,10 +1072,10 @@ def sheet1():
         f"11. LOWERED DECK: deck top at Z={WALKWAY_H}mm; {WALKWAY_GRATE_T}mm grate bottom at Z=65, bracket arm",
         f"    clears the {PROC_TRAY_RIM}mm tray rim by 5mm. Film-plane frame bottom at Z=100mm gives {100 - WALKWAY_H}mm clearance.",
         f"    Walkway stays installed during camera operation.",
-        f"12. LEFT WALKWAY — LIFT-OUT: remove before sliding the light-trap (panel + bay) back",
-        f"    ~{PANEL_SLIDE}mm for transport. Reinstall for operation. See Sheet 4 for support detail.",
-        f"13. B2 DOOR-END BRACKETS DEMOUNTABLE: near + far brackets at X≈{WALKWAY_BRACKET_DEMOUNT_X[0]},",
-        f"    {WALKWAY_BRACKET_DEMOUNT_X[1]} are struck for transport — the deeper slide sweeps past them.",
+        f"12. LEFT WALKWAY — LIFT-OUT: remove before the light-trap (panel + drum) swings",
+        f"    ~{SWING_LOCK_DEG}° about the pivot for transport. Reinstall for operation. See Sheet 4.",
+        f"13. DOOR-END BRACKETS STAY BOLTED: the swing rides Z{PANEL_FLOOR_GAP} — the cage underside",
+        f"    passes OVER the Z115 bracket tops, so no bracket is struck for transport (rev10).",
     ]
     draw_notes(ax, notes, 1500,
                -PAD_Y_BOT + 350 + (len(notes) - 1) * 44,
@@ -1475,8 +1487,9 @@ def sheet4():
     # X positions (horizontal axis in this view — looking along Yd)
     LEFT_WK_L = WALKWAY_LEFT_X                    # = 170mm (left walkway left edge)
     LEFT_WK_R = WALKWAY_LEFT_X + WALKWAY_W        # = 470mm (butt joint / near walkway start)
-    PANEL_INNER = PANEL_SLIDE + PANEL_CENTER_T    # = 1000mm (panel front face when slid; B2: PANEL_SLIDE=880 + 120 center)
-    SLIDE_OVER = PANEL_INNER - LEFT_WK_R          # = 530mm panel reaches past the X=470 butt joint into the vacated zone
+    PANEL_INNER = 1000   # representative swept X-reach of the cage at the door end (rev10: the
+                         # panel + drum swing about the pivot, the cage sweeping roughly to here)
+    SWEEP_OVER = PANEL_INNER - LEFT_WK_R          # = 530mm the cage sweeps past the X=470 butt joint into the vacated zone
     NEAR_WK_SHOW = 200   # show 200mm of near walkway past butt joint
 
     grate_bot = BRKT_ARM_Z   # = 65mm
@@ -1547,8 +1560,8 @@ def sheet4():
     ax.add_patch(Rectangle((sx(LEFT_WK_R), sy(SPRAY_BAR_Z_BOT)), sx(40),
                             sy(SPRAY_BAR_Z_TOP - SPRAY_BAR_Z_BOT), fc="#C8D8E8", ec=C_OUT, lw=1.0, zorder=4))
 
-    # ── Panel transport envelope (ghost) ─────────────────────────────────────
-    # Panel sweeps X=0 to X=420, bottom at Z=80mm (PANEL_FLOOR_GAP)
+    # ── Panel swing sweep (ghost) ────────────────────────────────────────────
+    # The swinging cage sweeps X=0 to X=PANEL_INNER, bottom at Z=PANEL_FLOOR_GAP
     PANEL_Z_TOP = 250   # show enough of panel to be visible (not full height)
     ax.add_patch(Rectangle((sx(0), sy(PANEL_FLOOR_GAP)),
                             sx(PANEL_INNER), sy(PANEL_Z_TOP - PANEL_FLOOR_GAP),
@@ -1562,7 +1575,7 @@ def sheet4():
     ax.plot([sx(0), sx(PANEL_INNER)], [sy(PANEL_FLOOR_GAP), sy(PANEL_FLOOR_GAP)],
             color="#CC4422", lw=2.0, ls="--", alpha=0.6, zorder=8)
     ax.text(sx(PANEL_INNER / 2), sy(PANEL_Z_TOP - 10),
-            f"PANEL TRANSPORT\nENVELOPE\n(X=0\u2013{PANEL_INNER}mm)\nBOTTOM AT Z={PANEL_FLOOR_GAP}mm",
+            f"PANEL SWING\nSWEEP\n(rides Z={PANEL_FLOOR_GAP}mm over\nthe Z115 brackets)",
             ha="center", va="top", fontsize=6, color="#CC4422",
             fontweight="bold", **FONT, alpha=0.7, zorder=15)
 
@@ -1637,12 +1650,12 @@ def sheet4():
             ha="center", va="top", fontsize=6, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
 
-    # ── Panel slide reach past the butt joint (left walkway removed first) ────
-    # B2: the panel slides 880mm, its front face reaching X=PANEL_INNER (~1000),
-    # sweeping SLIDE_OVER (~530mm) PAST the X=470 butt joint — through the zone
-    # the removable left walkway + edge beam have vacated.
+    # ── Panel swing reach past the butt joint (left walkway removed first) ────
+    # rev10: the panel + drum swing ~56° about the pivot; the cage sweeps roughly to
+    # X=PANEL_INNER (~1000), ~SWEEP_OVER (~530mm) PAST the X=470 butt joint — through
+    # the zone the removable left walkway + edge beam have vacated, riding the Z130 gap.
     draw_dim_h(ax, sx(LEFT_WK_R), sx(PANEL_INNER), sy(grate_top + 45),
-               f"{SLIDE_OVER}mm PANEL SWEEPS PAST X={LEFT_WK_R}\n(LEFT WALKWAY REMOVED FIRST)",
+               f"{SWEEP_OVER}mm CAGE SWEEPS PAST X={LEFT_WK_R}\n(LEFT WALKWAY REMOVED FIRST)",
                offset=sy(5), fs=6.5, color="#CC4422", font=FONT)
     # Vertical guide line at the panel front face
     ax.plot([sx(PANEL_INNER), sx(PANEL_INNER)], [sy(0), sy(grate_top + 55)],
@@ -1680,8 +1693,8 @@ def sheet4():
         f"2. Inner edge (X={LEFT_WK_R}): carried by FLOOR-LEG CANTILEVER arms (5 brackets; 3 extend to X770 on the punch-out). See sheets 5/6.",
         f"3. Brackets bolted to BARE FLOOR outboard of the tray (X<{LEFT_WK_L}) \u2014 zero tray/wall contact.",
         f"4. The arms pass 15mm OVER the floor-level spray bar (Z60); the +50mm walkway raise enables it.",
-        f"5. Panel slides {PANEL_SLIDE}mm; front face reaches X={PANEL_INNER} \u2014 sweeps {SLIDE_OVER}mm past the X={LEFT_WK_R} butt joint (rides Z{PANEL_FLOOR_GAP}, clears the Z115 brackets).",
-        f"6. The grate lifts out before the panel slides; the floor brackets stay bolted (permanent). No kerb.",
+        f"5. Panel + drum swing {SWING_LOCK_DEG}\u00b0 about the pivot; the cage sweeps ~{SWEEP_OVER}mm past the X={LEFT_WK_R} butt joint (rides Z{PANEL_FLOOR_GAP}, clears the Z115 brackets).",
+        f"6. The grate lifts out before the swing; the floor brackets stay bolted (permanent). No kerb.",
     ]
     draw_notes(ax, notes, notes_x, notes_top, spacing=sy(8), fs=7, width=sx(400), font=FONT)
 

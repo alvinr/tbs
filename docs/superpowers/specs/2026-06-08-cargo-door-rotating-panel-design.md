@@ -103,7 +103,7 @@ container so the cargo doors close. Decisions and rationale:
 | Far film-plane upright | it **is** the pivot |
 | Drum/bay through the gap | clears once the two left rails are removed |
 | Swing arc vs processing tray (rim Z50) | frame underside at Z130 clears by **80 mm** |
-| vs near/far walkway grates | **RESOLVED** — grates dropped to Z118 (12 mm below the Z130 frame underside); panel swept the near grate @4–25° + far @36.5–56° |
+| vs near/far walkway grates | **RESOLVED** — walkway LEVEL (Z130); the swept near-deck door-end band (X470–900) is a removable lift-out; far deck not swept |
 | Left walkway (in the arc) | the removable lift-out — out for transport |
 | Bearings vs far wall | Ø120 clears by 15 mm |
 
@@ -159,10 +159,12 @@ container so the cargo doors close. Decisions and rationale:
 7. ~~**Operating sequence** (deploy ↔ transport), including film-plane parking/de-rig.~~
    **RESOLVED** — full step-by-step in **§5** below; ordering conflicts surfaced and resolved.
 8. ~~**Walkway-grate tangent** — a few-mm gap (drop grate locally or lift the frame).~~
-   **RESOLVED** — chose **drop the grate** (keeps the panel floor-seal gap + drum threshold at
-   Z130): the near + far walkway grates are set **12 mm low (top Z118)**, clearing the swinging
-   frame underside (Z130). Verified the panel underside otherwise sweeps the near grate @4–25°
-   and the far grate @36.5–56°. In the model. (The left walkway is lifted out anyway.)
+   **RESOLVED — walkway stays LEVEL.** Checked against the real deck extents: only the **near**
+   deck's door-end band (X≈470–900, Yd0–300) is swept (the FAR deck isn't — swept points stay
+   short of its X470 start; the left walkway lifts out anyway). Rather than step the grate, that
+   **door-end near-deck band is a REMOVABLE lift-out** (with the left walkway) — the walkway is
+   level at Z130 when installed and that section comes out for the swing. `WALKWAY_NEAR_LIFTOUT_X_R
+   = 900`. In lighttrap + walkway models.
 9. **Mass reduction** if ~330 kg is too heavy (lighter panel skins / slimmer cage).
 10. ~~Confirm the residual flap/poke-out is fully resolved by the pivot-at-upright-centre move.~~
     **RESOLVED (properly, not by tolerance).** The pivot-at-upright move alone left only **+5.4 mm**
@@ -193,7 +195,8 @@ and the wall stays go on last (they only reach at 56°).
 1. **End camera use.** Power off **Fan B**; finish any darkroom access.
 2. **Park the drum.** Rotate the revolving drum to its closed/aligned position and **pin its
    rotation** (detent) so it can't flop during the move.
-3. **Lift out the removable LEFT walkway** — it sits inside the swing arc.
+3. **Lift out the removable LEFT walkway** + the **door-end near-deck section** (X470–900) —
+   both sit inside the swing arc (the walkway is otherwise level, no grate step).
 4. **Strike the two left film rails (TL + BL).** Release each clamp bar, lift the rail straight
    up out of its saddles, and **stow** (clipped to the near wall). *Required before the swing —
    otherwise the drum cage fouls the X150 rail plane.*

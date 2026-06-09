@@ -151,10 +151,17 @@ def walkway_decks():
     near_x_r = WK_RIGHT_X
     parts = []
 
-    # Near deck — left run, widened zone, right run (Yd 0..width).
+    # Near deck — left run, widened zone, right run (Yd 0..width). The walkway stays LEVEL
+    # (Z130); the door-end band of the left run (near_x_l..~X900) is a REMOVABLE lift-out for
+    # transport (distinct color) — the panel/cage underside sweeps the near deck there, so it
+    # lifts out with the left walkway rather than dropping the grate (#8). The rest is fixed.
     if WK_NEAR_WIDE_XL > near_x_l:
-        parts.append(ruby_box("Walkway Near (left)", near_x_l, 0, GRATE_Z,
-                              WK_NEAR_WIDE_XL - near_x_l, WK_W, t, color=C_WALKWAY))
+        liftout_x = min(ov.WALKWAY_NEAR_LIFTOUT_X_R, WK_NEAR_WIDE_XL)   # ~X900 swept extent
+        parts.append(ruby_box("Walkway Near (door-end, removable)", near_x_l, 0, GRATE_Z,
+                              liftout_x - near_x_l, WK_W, t, color=C_REMOVABLE))
+        if WK_NEAR_WIDE_XL > liftout_x:
+            parts.append(ruby_box("Walkway Near (left)", liftout_x, 0, GRATE_Z,
+                                  WK_NEAR_WIDE_XL - liftout_x, WK_W, t, color=C_WALKWAY))
     parts.append(ruby_box("Walkway Near (widened)", WK_NEAR_WIDE_XL, 0, GRATE_Z,
                           WK_NEAR_WIDE_XR - WK_NEAR_WIDE_XL, WK_NEAR_WIDE_W, t, color=C_WALKWAY))
     if WK_NEAR_WIDE_XR < near_x_r:
@@ -394,7 +401,7 @@ def left_support():
     extended to X=770 on the drum-exit punch-out). Replaces the former edge-beam-on-
     wall-seats: the +50 walkway raise lifted the grate clear of the spray bar, so a
     floor-rooted arm can pass over the open tray. Zero tray contact; brackets + grate
-    lift out for transport."""
+    lift out for transport (before the panel + drum swing inboard — see lighttrap.skp)."""
     return '\n'.join(left_floor_cantilevers())
 
 

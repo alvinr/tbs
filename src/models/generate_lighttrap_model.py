@@ -574,23 +574,20 @@ def processing_tray_partial():
 
 
 def walkways_partial():
-    """The NEAR (pinhole-wall side, Yd 0) and FAR walkway decks, cropped to the
-    cargo-door-end zone. (The left walkway is the removable lift-out — omitted for
-    transport.) The NEAR deck's door-end band (X 470..900) is dropped WALKWAY_SWING_CLEAR
-    (12mm) below the panel underside so the transport swing arc clears it; the FAR deck is
-    not swept, so it stays at full height."""
+    """The NEAR (pinhole-wall side, Yd 0) and FAR walkway decks, cropped to the cargo-door-end
+    zone — all LEVEL (Z130). The near deck's door-end band (X 470..WALKWAY_NEAR_LIFTOUT_X_R) is
+    a REMOVABLE lift-out for transport (the swing sweeps it) — shown installed here (operating)
+    in a distinct color. The FAR deck is not swept; the left walkway also lifts out (omitted)."""
     t = ov.WALKWAY_GRATE_T
-    full_z = ov.WALKWAY_H - t                    # grate-bottom Z at full height
-    drop_z = full_z - ov.WALKWAY_SWING_CLEAR     # 12mm lower over the swept near-deck band
+    full_z = ov.WALKWAY_H - t                    # grate-bottom Z (level, Z130 top)
     x0 = ov.WALKWAY_LEFT_X + ov.WALKWAY_W        # = 470 — where the long decks begin
-    swept_x1 = 900                                # end of the swing-swept near-deck band
+    liftout_x = ov.WALKWAY_NEAR_LIFTOUT_X_R      # ~900 — swept door-end band end
     w = PARTIAL_X - x0
     return '\n'.join([
-        # near deck: swept band (X470..900) lowered, then the rest at full height
-        ruby_box("Walkway Near (swept, dropped)", x0, 0, drop_z,
-                 swept_x1 - x0, ov.WALKWAY_W, t, color=ov.C_WALKWAY),
-        ruby_box("Walkway Near (partial)", swept_x1, 0, full_z,
-                 PARTIAL_X - swept_x1, ov.WALKWAY_W, t, color=ov.C_WALKWAY),
+        ruby_box("Walkway Near (door-end, removable)", x0, 0, full_z,
+                 liftout_x - x0, ov.WALKWAY_W, t, color=ov.C_REMOVABLE),
+        ruby_box("Walkway Near (partial)", liftout_x, 0, full_z,
+                 PARTIAL_X - liftout_x, ov.WALKWAY_W, t, color=ov.C_WALKWAY),
         ruby_box("Walkway Far (partial)", x0, ov.WALKWAY_FAR_YD, full_z,
                  w, ov.WALKWAY_W, t, color=ov.C_WALKWAY),
     ])

@@ -79,10 +79,22 @@ def walkways():
 
 
 def near_leaf():
-    """The FIXED left panel (Yd0..CUT, 150mm) — fixed to the door frame, does NOT
-    swing. Just wide enough that the swinging part clears the near upright."""
+    """The FIXED left panel (Yd0..CUT) — fixed to the door frame, does NOT swing. Just
+    wide enough that the swinging part clears the near upright. Carries its own perimeter
+    EPDM (top, bottom, near-wall left edge) against the door frame, plus the VERTICAL CUT
+    seal at Yd{CUT} that the swinging panel compresses against when shut."""
     z0, z1 = ov.PANEL_FLOOR_GAP, 2300
-    return ov.ruby_box(f"Fixed left panel (Yd0-{CUT})", 0, 0, z0, 40, CUT, z1 - z0, color="#C8A060")
+    gw, gt = 40, 20                          # EPDM strip: 40 wide, 20 proud (lt convention)
+    return '\n'.join([
+        ov.ruby_box(f"Fixed left panel (Yd0-{CUT})", 0, 0, z0, 40, CUT, z1 - z0, color="#C8A060"),
+        # perimeter against the door frame (exterior face X-20..0)
+        ov.ruby_box("EPDM fixed-panel top", -gt, 0, z1 - gw, gt, CUT, gw, color=lt.C_GASKT),
+        ov.ruby_box("EPDM fixed-panel bottom", -gt, 0, z0, gt, CUT, gw, color=lt.C_GASKT),
+        ov.ruby_box("EPDM fixed-panel left", -gt, 0, z0, gt, gw, z1 - z0, color=lt.C_GASKT),
+        # vertical CUT seal at Yd{CUT}: bulb in the butt joint, full height — the swinging
+        # panel's near edge compresses it when the frame is shut
+        ov.ruby_box("EPDM cut seal (fixed-swing joint)", 0, CUT - 6, z0, 40, 12, z1 - z0, color=lt.C_GASKT),
+    ])
 
 
 def axle():
@@ -227,6 +239,11 @@ def moving_frame_body():
         ov.ruby_box(f"Panel near (swing, Yd{CUT}-{NEAR_CORNER_YD})", 0, CUT, z0, 40,
                     NEAR_CORNER_YD - CUT, z1 - z0, color=lt.C_PLY),
         ov.ruby_box("EPDM seal top (trimmed)", -20, CUT, z1 - 40, 20, ov.C_WID - CUT, 40, color=lt.C_GASKT),
+        # swing-panel bottom seal: the original full bottom-L (Yd0..aperture) was erased
+        # with the near corner; re-add it trimmed to start at the cut (Yd{CUT}..aperture).
+        # (bottom-R, far-right, and trimmed-top seals survive from lt.hinge_panel.)
+        ov.ruby_box("EPDM seal bottom L (trimmed)", -20, CUT, lt.PANEL_Z_BOT, 20,
+                    (lt.DRUM_CY - lt.HOUSING_R - 15) - CUT, 40, color=lt.C_GASKT),
         lt.bay(),
         lt.drum_housing(DRUM_CX, DRUM_CY),
         lt.drum_rotor(DRUM_CX, DRUM_CY),

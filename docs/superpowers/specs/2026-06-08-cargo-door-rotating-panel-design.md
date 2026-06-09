@@ -48,7 +48,8 @@ container so the cargo doors close. Decisions and rationale:
 ### 2.2 The swing
 - **Partial swing to ~56°** — just enough to pull the protruding drum/bay inboard of the door
   plane (X0), then **LOCK** at that angle. Not 90°.
-- At 56° the frame **fully clears the door plane** (true min X = +4 mm).
+- At 56° the frame **fully clears the door plane** (true min X = +59 mm, computed 58.6 mm at the
+  bay front-right corner — the governing swept point).
 - It **stows toward the FAR wall**, keeping the **near-wall equipment accessible** in the
   stowed state.
 - The cargo doors are **open during the swing**; they close after lock.
@@ -208,7 +209,7 @@ and the wall stays go on last (they only reach at 56°).
 7. **Engage the transport lock** — connect the **top + bottom wall stays** (hook the rods from
    the frame hooks to the near-wall eyes, tension the turnbuckles).
 8. **Close + secure the cargo doors.** They close **outboard of the fixed left panel** (Yd0–180,
-   which stays at the door plane); the swung frame clears the door plane (true min X +4 mm).
+   which stays at the door plane); the swung frame clears the door plane (true min X +59 mm).
 
 ### 5.2 Transport → Camera (deploy) — the reverse
 1. **Open the cargo doors.**

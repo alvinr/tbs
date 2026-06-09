@@ -120,15 +120,7 @@
 
 ---
 
-## 13. Ceiling Rail Suspension
-
-![TBS-001 Ceiling Rail — Sheet 1: Side Elevation](assets/ceiling-rail-sheet1.png)
-
-![TBS-001 Ceiling Rail — Sheet 2: Rail/Carriage/Bracket Detail](assets/ceiling-rail-sheet2.png)
-
----
-
-## 14. Perimeter Walkway
+## 13. Perimeter Walkway
 
 ![TBS-001 Walkway — Sheet 1: Plan View](assets/walkway-sheet1.png)
 
@@ -148,7 +140,7 @@
 
 ---
 
-## 15. Equipment Panel & Plumbing
+## 14. Equipment Panel & Plumbing
 
 ![TBS-001 — Equipment Panel Layout](assets/panel-layout.png)
 
@@ -158,7 +150,7 @@
 
 ---
 
-## 16. IBC Stacking & Securing
+## 15. IBC Stacking & Securing
 
 ![TBS-001 IBC Stacking — Sheet 1: Cross-Section Elevation](assets/ibc-stacking-sheet1.png)
 
@@ -172,7 +164,7 @@
 
 ---
 
-## 17. IBC Support Frame Fabrication
+## 16. IBC Support Frame Fabrication
 
 ![TBS-001 IBC Frame — Sheet 1: Front Elevation](assets/ibc-frame-sheet1.png)
 
@@ -182,7 +174,7 @@
 
 ---
 
-## 18. Chemistry Prep Shelves
+## 17. Chemistry Prep Shelves
 
 ![Chemistry Prep Shelf — Sheet 1: Plan View](assets/shelf-sheet1.png)
 
@@ -192,7 +184,7 @@
 
 ---
 
-## 19. Processing Tray & Spray Bar
+## 18. Processing Tray & Spray Bar
 
 ![TBS-001 — Spray Bar Gantry Elevation](assets/spray-bar-sheet1.png)
 
@@ -210,7 +202,7 @@
 
 ---
 
-## 20. Weight Distribution Analysis
+## 19. Weight Distribution Analysis
 
 ![TBS-001 — Weight Analysis: Summary Comparison](assets/weight-analysis-sheet1.png)
 
@@ -222,7 +214,7 @@
 
 ---
 
-## 21. Film Plane Distortion Renders
+## 20. Film Plane Distortion Renders
 
 ![Film Plane Distortion — Configuration 0](assets/film-plane-distortion-c0.png)
 
@@ -240,7 +232,7 @@
 
 ---
 
-## 22. Tilt-Swing Combined Distortion Renders
+## 21. Tilt-Swing Combined Distortion Renders
 
 ![Tilt-Swing Combined — Configuration 0](assets/tilt-swing-combined-c0.png)
 
@@ -284,7 +276,7 @@
 
 ---
 
-## 23. Optics Visualization
+## 22. Optics Visualization
 
 ![TBS-001 — Portrait Camera Schematic](assets/portrait-camera-schematic.png)
 
@@ -294,7 +286,7 @@
 
 ---
 
-## 24. TBS-002 Proof of Concept
+## 23. TBS-002 Proof of Concept
 
 ![Mini-TBS — Two-Box Design](assets/mini-tbs-sheet1.png)
 

@@ -231,33 +231,39 @@ interior equipment.
 
 ---
 
-## 5. Sliding Carriage System
+## 5. Rotating Transport System
 
-The entire panel (including the bay, housing + drum) slides ~880mm in the X direction on linear
-rails for transport mode conversion. This slide retracts the B2 punch-out bay's exterior
-overhang behind the container door closure plane.
+For transport the entire swinging assembly — the panel center section (Yd 180–2287), the B2
+punch-out bay, and the housing + revolving drum — **revolves ~56° about a vertical Ø89mm CHS
+pivot post** (the reused film-plane far-left upright, at X=175mm / Yd=2287mm). The swing carries
+the bay's ~890mm exterior overhang from outside the cargo-door plane to inboard of it, so the ISO
+doors close. The earlier "slide ~880mm on ceiling rails" scheme is **retired** — there is no
+linear carriage.
 
-**Sheet 1 — Side elevation cross-section: Panel suspended from ceiling rail, operational and transport positions, processing tray clearance**
-![TBS-001 Ceiling Rail — Sheet 1: Side Elevation](assets/ceiling-rail-sheet1.png)
+Two narrow strips stay fixed at the door plane and do **not** swing: the near strip (Yd 0–180)
+and the far strip (Yd 2287–2362, which carries the pivot). The cargo doors close outboard of the
+fixed near strip.
 
-See [Ceiling Rail Design](ceiling-rail-report.md) for full details.
+To let the swinging cage cross the X=150mm film-plane rail line, the **two left film rails
+(top-left + bottom-left) lift out of their drop-in saddles** and the **left walkway + door-end
+near-deck section lift out** before the swing; all are re-seated to datum afterward.
 
 ### 5.1 Panel Positions
 
 **Sheet 4 — Rotating transport + swing clearance: panel swings 56° about the pivot (camera vs swung), removable left rails**
 ![TBS-001 Hinged Panel — Sheet 4: Rotating Transport + Swing Clearance](assets/hingepanel-sheet4.png)
 
-| Position | Panel corner inner face X | Drum exterior edge X | Container doors clear? |
-|----------|--------------------------|---------------------|----------------------|
-| Operational | 40mm | −850mm (bay front −890mm) | No — the B2 punch-out bay protrudes ~890mm; the cargo doors stay open during operation |
-| Transport (slid +880mm) | — | +30mm | Yes — the bay retracts behind the door plane by ~30mm |
+| Position | Bay front-right corner X | Container doors clear? |
+|----------|-------------------------|----------------------|
+| Operational (0°) | −890mm (bay protrudes ~890mm outside the door plane) | No — the cargo doors stay open during operation |
+| Transport (swung 56°) | +59mm (true min X over the whole swept assembly — computed 58.6mm at this corner) | Yes — the swept frame is fully inboard of the closed door |
 
 ### 5.2 Locking
 
-| Lock position | Method |
-|--------------|--------|
-| Operational (X=0) | 2 × Destaco 207-U toggle clamps |
-| Transport (X≈870) | 2 × Destaco 207-U toggle clamps |
+| State | Method |
+|-------|--------|
+| Operational (0°) | 4 × interior cam latches (§4) compress the EPDM perimeter + cut seals against the door frame |
+| Transport (swung 56°) | Top + bottom **wall stays** — hook on the frame ↔ eye on the near wall, tensioned by turnbuckle, forming a couple. Engaged after the swing, released before swing-back. |
 
 ### 5.3 Floor Gap
 
@@ -328,7 +334,7 @@ sealed when the panel is in the operational position.
 | 4 | Rail channels at floor/ceiling (×4) | 10mm closed-cell neoprene compression pad (50 × 30mm) bonded to frame face around each rail penetration |
 | 5 | Panel edge-to-wall clearance gaps | 15mm closed-cell EPDM strips (self-adhesive, full panel height) bonded to fixed door frame inner face at each side |
 | 6 | Panel bottom → 80mm floor gap | Fixed-frame **bottom seal lip** — a continuous steel upstand welded to the threshold, rising ~110mm (above the panel bottom edge at Z=80) across the **full panel-bottom width, continuous (no notch)** — the housing/drum is **suspended at Z=80** and no longer reaches the floor, so the floor gap is uniform and the lip closes it as a solid wall; a 20mm EPDM strip on the panel bottom edge **recedes into / sandwiches against the lip** and is compressed by the lower pair of Southco cam latches in the operational ("camera") position. The clamps are released to lift the seal and slide the panel to transport. (Sheet 3, Detail B.) |
-| 7 | Panel top → frame gap (panel hangs below the ceiling rails) | Fixed-frame **top seal lip** — the mirror of #6: a steel downstand from the frame top rail reaching ~30mm below the panel top edge. The drum does not reach the top (its stub shaft stops below the lip), so unlike the bottom lip this one runs as **one continuous member across the full panel-top width — no notch — meeting across the center**. A 20mm EPDM strip on the panel top edge sandwiches against it, compressed by the upper pair of cam latches in the operational position; released to slide to transport. (Sheet 3, Detail C.) |
+| 7 | Panel top → frame gap (gap between the panel top edge and the frame top rail) | Fixed-frame **top seal lip** — the mirror of #6: a steel downstand from the frame top rail reaching ~30mm below the panel top edge. The drum does not reach the top (its stub shaft stops below the lip), so unlike the bottom lip this one runs as **one continuous member across the full panel-top width — no notch — meeting across the center**. A 20mm EPDM strip on the panel top edge sandwiches against it, compressed by the upper pair of cam latches in the operational position; released to slide to transport. (Sheet 3, Detail C.) |
 | 8 | Fixed housing surround → door frame | The Ø900 light-trap housing is **fixed** (only the drum rotates inside it). A **second 20mm EPDM gasket** runs as a **ring around the housing aperture** (Yd 713–1649, floor-gap up to the housing top at Z=2200), concentric **inboard** of the panel-perimeter seal (#1), in the exterior door plane (X=0). It seals the fixed surround to the frame all the way around the opening the housing passes through — light-tight independent of the moving panel. (3D: the `door_frame()` "Housing surround seal", in both the light-trap and overview models.) |
 
 **Seal verification:** After mode conversion, the operator performs a 5-minute

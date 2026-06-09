@@ -195,7 +195,7 @@ The near walkway remains completely clear for transit in both directions — no 
 | Before each session | Wipe shelf surface clean; inspect spill guard lip for chemical residue |
 | Monthly | Inspect M10 hanger rod threads and nuts for corrosion |
 | Monthly | Check ceiling plate bolts for tightness |
-| Before transport | Verify shelf does not interfere with panel slide travel |
+| Before transport | Verify shelf does not interfere with the panel swing sweep |
 | After transport | Re-check level and tighten any loosened nuts |
 
 ---

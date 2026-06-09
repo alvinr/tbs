@@ -182,7 +182,7 @@ All items ship within the United States. Local Southern California pickup noted 
 
 Two rectangular end portals of 50×50×3mm RHS mild steel brace the four-corner rail assembly, giving lateral rigidity while remaining fully demountable for transport. Joints use saddle clamps tightened by M8 thumbscrews.
 
-**Transport mode.** The film-plane left rail is now **continuous** — there is no demountable center segment. Under rev 9 / B2 the light lock (Ø900 housing + drum) is offset (`DRUM_CX = −400`) and exits through the hinge-panel punch-out bay rather than rotating within the rail span, so the rail no longer has to part for drum operation. For *transport*, the hinged panel slides **~880mm** inward and sweeps through X=150, so the **entire film-plane left rail, the brace cage, and the muslin screen are struck first** — see [Hinged Panel Report](hinged-panel-report.md) §5.4 for the conversion sequence.
+**Transport mode.** The film-plane left rail is now **continuous** — there is no demountable center segment. Under rev 9 / B2 the light lock (Ø900 housing + drum) is offset (`DRUM_CX = −400`) and exits through the hinge-panel punch-out bay rather than rotating within the rail span, so the rail no longer has to part for drum operation. For *transport*, the panel + drum **SWING ~56°** about the pivot and the drum cage transitions X=150, so the **two left film rails (TL + BL), the brace cage, and the muslin screen are struck first** (the left rails re-seat to the film datum on re-deployment) — see [Hinged Panel Report](hinged-panel-report.md) §5.4 for the conversion sequence.
 
 | Item | ICP # | Spec | Qty | Source A | Source B | Est. Unit |
 |------|-------|------|-----|---------|---------|-----------|

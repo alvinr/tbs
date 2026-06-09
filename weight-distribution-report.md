@@ -49,7 +49,7 @@ marine plywood 600 kg/m³, water 1,000 kg/m³.
 
 | Component | Weight (kg) | X Range (mm) | Yd Range (mm) | Calculation Basis |
 |-----------|------------|-------------|---------------|-------------------|
-| Hinged panel (incl. Ø900 housing, B2 bay/hinges/caster) | 241 | 0–80 (deployed); swung ~56° about the pivot (transport) | 0–2,362 | Stepped sandwich (ply + 3mm aluminum corners + steel RHS center frame) ≈ 187 kg + bolted 5mm-HDPE Ø900 housing ≈ 22 kg + B2 punch-out bay + heavy barrel hinges/post + swing caster ≈ 32 kg. First-principles, no scaling pin |
+| Hinged panel (incl. Ø900 housing, B2 bay/hinges/caster) | 241 | 0–80 (deployed); swung ~56° about the pivot (transport) | 0–2,362 | Stepped sandwich (ply + 3mm aluminum corners + steel RHS center frame) ≈ 187 kg + bolted 5mm-HDPE Ø900 housing ≈ 22 kg + B2 punch-out bay + Ø89 pivot post / bearings ≈ 32 kg. First-principles, no scaling pin |
 | Light-trap drum (rotating) | 38 | 0–40 (deployed); swung ~56° about the pivot (transport) | 653–1,709 | Ø864 C-shell, 4mm PP plastic skin (rev 9 / B2), no fins (suspended with panel) + PP end caps + steel Ø75 stub shafts + 2× SKF 6215 bearings |
 | Processing tray | 116 | 170–4,629 | 80–2,280 | 304 SS 1.5mm, 2 panels × 58 kg ([Water System Report](water-system-report.md) §4) |
 | Near walkway | 56 | 470–4,629 | 0–300 | 10 brackets @ ~2.7 kg + 26 kg/m² grating |

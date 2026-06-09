@@ -57,11 +57,12 @@ def _rot_pt(x, y, deg):
     return HX + (x - HX) * c - (y - HY) * s, HY + (x - HX) * s + (y - HY) * c
 
 
-LOCK_BOLT = (20, 350)                       # drop-bolt on the assembly (panel bottom, good lever arm)
-SOCKET = _rot_pt(LOCK_BOLT[0], LOCK_BOLT[1], LOCK)   # floor-socket position at the 56deg lock
+LOCK_BOLT = (20, 350)                       # stay hook on the assembly (panel bottom, good lever arm)
+SOCKET = _rot_pt(LOCK_BOLT[0], LOCK_BOLT[1], LOCK)   # transport position of that hook (1694, 1075)
+WALL_FAR = 2000                             # context length — long enough to show the stay wall anchor (X1694)
 
 TAGS = ["Context", "Door Frame", "Film Plane Rails", "Pivot Axle", "Near Leaf",
-        "Walkways", "Panel skin", "Lock",
+        "Walkways", "Panel skin", "Lock anchor", "Lock",
         "Frame (camera)", "Frame (transport)", "Labels"]
 
 
@@ -70,7 +71,7 @@ def walkways():
     gz = ov.WALKWAY_H - ov.WALKWAY_GRATE_T
     t = ov.WALKWAY_GRATE_T
     x0 = ov.WALKWAY_LEFT_X
-    xlen = lt.PARTIAL_X - x0
+    xlen = WALL_FAR - x0
     return '\n'.join([
         ov.ruby_box("Walkway near", x0, 0, gz, xlen, ov.WALKWAY_W, t, color="#8A8E99"),
         ov.ruby_box("Walkway far", x0, ov.WALKWAY_FAR_YD, gz, xlen, ov.WALKWAY_W, t, color="#8A8E99"),
@@ -100,13 +101,14 @@ def axle():
 
 def fixed_components():
     return '\n'.join([
-        component("Context (ghost)", "Context", lt.context(x_far=lt.PARTIAL_X)),
+        component("Context (ghost)", "Context", lt.context(x_far=WALL_FAR)),
         component("Fixed Door Frame", "Door Frame", lt.door_frame(include_seal=False)),
         component("Film-Plane Rails (left — removable)", "Film Plane Rails", lt.film_plane_left()),
         component("Pivot bearings", "Pivot Axle", axle()),
         component("Fixed left panel", "Near Leaf", near_leaf()),
         component("Walkways (near + far)", "Walkways", walkways()),
-        component("Wall stays (top+bottom)", "Lock", wall_stays()),
+        component("Stay wall anchors (top+bottom)", "Lock anchor", wall_anchors()),
+        component("Stay rods (top+bottom)", "Lock", wall_stay_rods()),
     ])
 
 
@@ -140,17 +142,49 @@ def frame_hooks():
         for z in STAY_Z)
 
 
-def wall_stays():
-    """Fixed wall stays (eye + turnbuckle rod) on the NEAR wall, top + bottom, that
-    tie the swung frame to the wall at transport — resisting transit-induced rotation
-    about the vertical pivot (gravity gives no torque about a vertical axis). Two
-    stays form a couple that also resists twist/rattle. Drawn engaged at 56deg."""
+PLATE_HW = 100                              # anchor plate half-width (200x200 plate)
+PLATE_T = 12                                # plate thickness
+BOLT_OFF = 70                               # 4-bolt pattern offset (±70 in X and Z)
+BOLT_D = 16                                 # M16 bolts
+
+
+def wall_anchors():
+    """PERMANENT bolted wall anchors for the transport stays (top + bottom). The near
+    wall can't be welded to (corrugated container skin), so each stay reacts into a
+    sandwiched plate pair bolted THROUGH the wall in a 4-bolt pattern: an INSIDE plate
+    carrying the eye + an OUTSIDE securing plate, drawn together by 4x M16. Stays put
+    even when the rod is removed, so this rides its own 'Lock anchor' tag (shown in
+    both scenes)."""
+    hx = SOCKET[0]                           # X of the stay (1694)
+    wt = ov.WALL_T                           # near wall spans Yd -wt .. 0
+    p = []
+    for z in STAY_Z:
+        p += [
+            ov.ruby_box("Stay inside plate", hx - PLATE_HW, 0, z - PLATE_HW,
+                        2 * PLATE_HW, PLATE_T, 2 * PLATE_HW, color=ov.C_STEEL),
+            ov.ruby_box("Stay outside plate", hx - PLATE_HW, -wt - PLATE_T, z - PLATE_HW,
+                        2 * PLATE_HW, PLATE_T, 2 * PLATE_HW, color=ov.C_STEEL),
+            ov.ruby_box("Stay eye", hx - 15, PLATE_T, z - 15, 30, 55, 30, color=ov.C_STEEL),
+        ]
+        for dx in (-BOLT_OFF, BOLT_OFF):     # 4-bolt pattern through both plates + wall
+            for dz in (-BOLT_OFF, BOLT_OFF):
+                p.append(ov.ruby_box(
+                    "Stay bolt M16", hx + dx - BOLT_D // 2, -wt - PLATE_T - 6, z + dz - BOLT_D // 2,
+                    BOLT_D, wt + 2 * PLATE_T + 12, BOLT_D, color=ov.C_STEEL))
+    return '\n'.join(p)
+
+
+def wall_stay_rods():
+    """The REMOVABLE stay rod + turnbuckle (top + bottom), tying the swung frame's hooks
+    back to the wall eyes at transport — resisting transit-induced rotation about the
+    vertical pivot (gravity gives no torque about a vertical axis). Two rods form a
+    couple that also resists twist/rattle. Drawn engaged at 56deg; off in the camera
+    scene (the 'Lock' tag is hidden there)."""
     hx, hy = SOCKET                          # transport position of the frame hook
     p = []
     for z in STAY_Z:
         p += [
-            ov.ruby_box("Stay wall eye", hx - 22, 0, z - 32, 44, 60, 64, color=ov.C_STEEL),
-            ov.ruby_box("Stay rod", hx - 8, 60, z - 8, 16, hy - 60, 16, color=ov.C_STEEL),
+            ov.ruby_box("Stay rod", hx - 8, PLATE_T + 50, z - 8, 16, hy - (PLATE_T + 50), 16, color=ov.C_STEEL),
             ov.ruby_box("Stay turnbuckle", hx - 24, hy / 2.0 - 55, z - 24, 48, 110, 48, color="#B03030"),
         ]
     return '\n'.join(p)

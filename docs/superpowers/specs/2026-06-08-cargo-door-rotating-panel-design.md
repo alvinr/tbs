@@ -174,6 +174,12 @@ container so the cargo doors close. Decisions and rationale:
     walkway grate** (lower rail/beam at Z≈100–150 vs walkway grate Z≈115–130) — a physical
     clash. Flagged for resolution **after the merge** (drop the beam, step the walkway locally,
     or re-level one of them); not blocking the rotation study.
+12. **FOLLOW-UP (3D interactivity, post-cascade):** re-add the **click-to-revolve drum** in
+    `lighttrap.skp`. It was dropped in cascade Stage 1a — a nested Drum-Rotor DC reset its own
+    position to the parent origin on redraw (no position attribute), so the rotor is now static
+    geometry baked into the swing assembly (correct position, no revolve animation). Re-add as a
+    nested DC with explicit `x/y/z` position attributes (mind the DC length-unit handling), tested
+    in-app. Not blocking — the drum reads correctly in its parked pose and swings with the cage.
 
 ---
 

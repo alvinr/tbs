@@ -48,7 +48,7 @@ from tbs_constants import (
     BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y,
     PANEL_CORNER_T, PANEL_CENTER_T,
     PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W,
-    PANEL_SLIDE,
+    PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0,
     RAIL_X_L, RAIL_X_R, RAIL_SPAN,
     FAN_A_H, FAN_B_H, FAN_DIAM, DUCT_HEIGHT,
     DIAGRAMS_DIR, 
@@ -748,26 +748,26 @@ print(f"Saved: {out2}")
 #
 # Top-down plan view of the cargo door end (X=0 end), showing two side-by-side
 # views:
-#   LEFT:  Transport mode  — panel slid inward 300mm, drums slid inward 305mm,
+#   LEFT:  Transport mode  — panel + drum SWUNG ~56° about the Ø89 pivot post,
 #          ISO container doors can close.
-#   RIGHT: Operational mode — panel at X=0, drums at operational positions,
-#          panel can swing open 180° for loading.
+#   RIGHT: Operational mode — panel at X=0 (closed against the door frame),
+#          drum extends out the open doors.
 #
 # Axes: X (vertical, up = into container) vs Yd (horizontal, 0=near wall).
 # ═══════════════════════════════════════════════════════════════════════════════
 
 # ── Palette for plan view ────────────────────────────────────────────────────
 C_PANEL_C = "#A8B8A8"    # panel center zone (slightly different)
-C_RAIL3   = "#CC4422"    # HGR20 panel slide rail color
+C_RAIL3   = "#CC4422"    # film-rail / pivot-post accent color
 C_CONT_DR = "#9CA0A8"    # container door fill
 C_GHOST   = "#D0D0D8"    # ghost position fill
 
 # ── Geometry ─────────────────────────────────────────────────────────────────
-# Operational positions
-OP_PANEL_X  = 0                               # panel outer face at X=0
-
-# Transport positions (panel slide only — drums eliminated rev 5)
-TR_PANEL_X  = PANEL_SLIDE                     # = 300mm (slid inward)
+# Operational position: panel outer face at X=0 (closed against the door frame)
+OP_PANEL_X  = 0
+# Transport: the panel + drum REVOLVE SWING_LOCK_DEG (~56°) about the Ø89 pivot
+# post at (PIVOT_X, PIVOT_YD) — no slide (rev10, supersedes the HGR20 slide).
+TR_SWING_DEG = SWING_LOCK_DEG
 
 # Container exterior face and door thickness
 CONT_WALL = 40   # container wall thickness (schematic)
@@ -776,8 +776,9 @@ DOOR_T    = 60   # ISO door leaf thickness (schematic)
 # Light trap drum center in Yd
 LT_DRUM_YD_CENTER = (PANEL_CORNER_YD_L + PANEL_CORNER_YD_R) / 2  # = 1181mm
 
-# How much of the X axis to show (cargo door end detail)
-PLAN_X_MAX = 1200  # show X=0 to ~1200mm into container
+# How much of the X axis to show — the swing sweeps the panel free edge to
+# X≈1970mm into the container, so show enough depth for the full transport swing.
+PLAN_X_MAX = 2100  # show X=0 to ~2100mm into container
 
 # ── Figure: two subplots side by side ────────────────────────────────────────
 FIG3_W = 24.0
@@ -830,45 +831,45 @@ def draw_container_walls(ax):
             style="italic", zorder=5)
 
 
-def draw_stepped_panel(ax, panel_x_outer, alpha=0.85):
-    """
-    Draw the stepped panel in plan view.
-    panel_x_outer = X position of the panel's exterior face.
-    """
-    # Corner zone near (Yd=0 to PANEL_CORNER_YD_L): 40mm thick
-    ax.add_patch(mpatches.Rectangle(
-        (0, panel_x_outer), PANEL_CORNER_YD_L, PANEL_CORNER_T,
-        facecolor=C_HINGE_PANEL, edgecolor=C_OUT, linewidth=1.0,
-        alpha=alpha, zorder=5))
-    # Center zone (Yd=PANEL_CORNER_YD_L to _R): 120mm thick
-    ax.add_patch(mpatches.Rectangle(
-        (PANEL_CORNER_YD_L, panel_x_outer), PANEL_CENTER_W, PANEL_CENTER_T,
-        facecolor=C_PANEL_C, edgecolor=C_OUT, linewidth=1.0,
-        alpha=alpha, zorder=5))
-    # Corner zone far (Yd=PANEL_CORNER_YD_R to C_WID): 40mm thick
-    ax.add_patch(mpatches.Rectangle(
-        (PANEL_CORNER_YD_R, panel_x_outer), C_WID - PANEL_CORNER_YD_R, PANEL_CORNER_T,
-        facecolor=C_HINGE_PANEL, edgecolor=C_OUT, linewidth=1.0,
-        alpha=alpha, zorder=5))
-    # Step lines
-    for yd_step in [PANEL_CORNER_YD_L, PANEL_CORNER_YD_R]:
-        ax.plot([yd_step, yd_step],
-                [panel_x_outer + PANEL_CORNER_T, panel_x_outer + PANEL_CENTER_T],
-                color=C_OUT, lw=1.0, zorder=6)
+def _swing(X, Yd, deg):
+    """Rotate a physical (X, Yd) point by `deg` about the \u00D889 pivot post; return
+    DRAW coords (horizontal = Yd', vertical = X'). deg=0 is the identity."""
+    t = math.radians(deg); c, s = math.cos(t), math.sin(t)
+    Xr  = PIVOT_X  + (X - PIVOT_X) * c - (Yd - PIVOT_YD) * s
+    Ydr = PIVOT_YD + (X - PIVOT_X) * s + (Yd - PIVOT_YD) * c
+    return (Ydr, Xr)
 
 
-def draw_light_trap_drum(ax, panel_x_outer):
-    """Draw the revolving light trap drum circle in the panel center zone."""
+def draw_stepped_panel(ax, panel_x_outer, alpha=0.85, swing_deg=0):
+    """Draw the stepped panel in plan view, optionally swung `swing_deg` about
+    the pivot. panel_x_outer = X of the panel's exterior face (0 = operational).
+    Each zone is a polygon through its 4 rotated corners (deg=0 \u21D2 rectangles)."""
+    zones = [
+        (0, PANEL_CORNER_YD_L, PANEL_CORNER_T, C_HINGE_PANEL),              # near corner (40mm)
+        (PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_T, C_PANEL_C),  # center (120mm)
+        (PANEL_CORNER_YD_R, C_WID, PANEL_CORNER_T, C_HINGE_PANEL),          # far corner (40mm)
+    ]
+    for yd0, yd1, t, fc in zones:
+        x0, x1 = panel_x_outer, panel_x_outer + t
+        pts = [_swing(x0, yd0, swing_deg), _swing(x1, yd0, swing_deg),
+               _swing(x1, yd1, swing_deg), _swing(x0, yd1, swing_deg)]
+        ax.add_patch(mpatches.Polygon(pts, closed=True, facecolor=fc,
+                     edgecolor=C_OUT, linewidth=1.0, alpha=alpha, zorder=5))
+
+
+def draw_light_trap_drum(ax, panel_x_outer, swing_deg=0):
+    """Draw the revolving light trap drum circle in the panel center zone,
+    optionally swung `swing_deg` about the pivot."""
     drum_x_center = panel_x_outer + PANEL_CENTER_T / 2  # centered in 120mm zone
-    ax.add_patch(plt.Circle(
-        (LT_DRUM_YD_CENTER, drum_x_center), DRUM_R,
+    cdraw = _swing(drum_x_center, LT_DRUM_YD_CENTER, swing_deg)  # (Yd', X')
+    ax.add_patch(plt.Circle(cdraw, DRUM_R,
         facecolor=C_LT_DRUM, edgecolor=C_OUT, linewidth=1.0, zorder=6))
     # Center cross
-    ax.plot([LT_DRUM_YD_CENTER - 40, LT_DRUM_YD_CENTER + 40],
-            [drum_x_center, drum_x_center], color=C_CL, lw=0.7, zorder=7)
-    ax.plot([LT_DRUM_YD_CENTER, LT_DRUM_YD_CENTER],
-            [drum_x_center - 40, drum_x_center + 40], color=C_CL, lw=0.7, zorder=7)
-    ax.text(LT_DRUM_YD_CENTER, drum_x_center + DRUM_R + 30,
+    ax.plot([cdraw[0] - 40, cdraw[0] + 40], [cdraw[1], cdraw[1]],
+            color=C_CL, lw=0.7, zorder=7)
+    ax.plot([cdraw[0], cdraw[0]], [cdraw[1] - 40, cdraw[1] + 40],
+            color=C_CL, lw=0.7, zorder=7)
+    ax.text(cdraw[0], cdraw[1] + DRUM_R + 30,
             f"Light trap\n\u00D8{DRUM_D}mm",
             ha="center", va="bottom", fontsize=FS_SM - 0.5, color=C_OUT, zorder=7)
 
@@ -876,14 +877,14 @@ def draw_light_trap_drum(ax, panel_x_outer):
 # (draw_waste_drums removed — drums eliminated in rev 5)
 
 
-def draw_hgr20_rails(ax):
-    """Draw the HGR20 panel slide rails (floor level, X direction)."""
-    rail_len = PANEL_SLIDE + 100  # show slightly longer than travel
-    for yd_pos in [100, C_WID - 100]:  # near and far wall
-        ax.add_patch(mpatches.Rectangle(
-            (yd_pos - 10, -20), 20, rail_len + 40,
-            facecolor=C_RAIL3, edgecolor=C_OUT, linewidth=0.5,
-            alpha=0.6, zorder=4))
+def draw_pivot_post(ax):
+    """Draw the Ø89 vertical pivot post (the reused film far-left upright) about
+    which the panel + drum swing for transport."""
+    ax.add_patch(plt.Circle((PIVOT_YD, PIVOT_X), 55,
+                 facecolor=C_RAIL3, edgecolor=C_OUT, linewidth=1.2, zorder=7))
+    ax.text(PIVOT_YD - 90, PIVOT_X, "Ø89 PIVOT POST",
+            ha="right", va="center", fontsize=FS_SM - 1, color=C_OUT,
+            fontweight="bold", zorder=8)
 
 
 # (draw_vgroove_tracks removed — dolly tracks eliminated in rev 5)
@@ -926,13 +927,12 @@ def draw_container_doors(ax, closed=True):
 
 # ── LEFT PANEL: Transport mode ──────────────────────────────────────────────
 plan_setup(ax_tr, "TRANSPORT MODE",
-           f"Panel retracted {PANEL_SLIDE}mm  |  Doors closed")
+           f"Panel + drum swung {TR_SWING_DEG}° about the pivot  |  Doors closed")
 draw_container_walls(ax_tr)
 draw_container_doors(ax_tr, closed=True)
-draw_hgr20_rails(ax_tr)
+draw_pivot_post(ax_tr)
 
-# Ghost: operational positions (dashed outlines)
-# Ghost panel
+# Ghost: operational (0°) panel position (dashed outline)
 for yd0, w, t in [(0, PANEL_CORNER_YD_L, PANEL_CORNER_T),
                    (PANEL_CORNER_YD_L, PANEL_CENTER_W, PANEL_CENTER_T),
                    (PANEL_CORNER_YD_R, C_WID - PANEL_CORNER_YD_R, PANEL_CORNER_T)]:
@@ -941,9 +941,17 @@ for yd0, w, t in [(0, PANEL_CORNER_YD_L, PANEL_CORNER_T),
         facecolor="none", edgecolor=C_GHOST, linewidth=0.8,
         ls=(0, (4, 3)), alpha=0.6, zorder=2))
 
-# Solid: transport positions
-draw_stepped_panel(ax_tr, TR_PANEL_X)
-draw_light_trap_drum(ax_tr, TR_PANEL_X)
+# Solid: swung (transport) position — panel + drum revolved about the pivot
+draw_stepped_panel(ax_tr, OP_PANEL_X, swing_deg=TR_SWING_DEG)
+draw_light_trap_drum(ax_tr, OP_PANEL_X, swing_deg=TR_SWING_DEG)
+
+# Fixed strips (Yd 0..PANEL_CUT_YD near, FAR_STRIP_YD0..C_WID far) do NOT swing —
+# the cargo doors close outboard of the fixed near strip.
+for (y0, y1) in [(0, PANEL_CUT_YD), (FAR_STRIP_YD0, C_WID)]:
+    ax_tr.add_patch(mpatches.Rectangle(
+        (y0, OP_PANEL_X), y1 - y0, PANEL_CORNER_T,
+        facecolor=C_HINGE_PANEL, edgecolor=C_OUT, linewidth=1.0,
+        alpha=0.95, zorder=6))
 
 # Door closure plane line
 ax_tr.plot([0, C_WID], [-CONT_WALL, -CONT_WALL], color="#CC2020", lw=1.2,
@@ -951,28 +959,16 @@ ax_tr.plot([0, C_WID], [-CONT_WALL, -CONT_WALL], color="#CC2020", lw=1.2,
 ax_tr.text(C_WID + 250, -CONT_WALL, "Door closure\nplane",
            ha="left", va="center", fontsize=FS_SM - 1, color="#CC2020", zorder=8)
 
-# Slide arrows
-# Panel slide arrow
-panel_mid_yd = C_WID / 2
-ax_tr.annotate("", xy=(panel_mid_yd, TR_PANEL_X + PANEL_CORNER_T / 2),
-               xytext=(panel_mid_yd, OP_PANEL_X + PANEL_CORNER_T / 2),
-               arrowprops=dict(arrowstyle="-|>", color="#2060A0", lw=1.5,
-                               connectionstyle="arc3,rad=0.15"), zorder=8)
-ax_tr.text(panel_mid_yd + 120, (OP_PANEL_X + TR_PANEL_X) / 2 + PANEL_CORNER_T / 2,
-           f"Panel slide\n{PANEL_SLIDE}mm",
-           ha="left", va="center", fontsize=FS_SM - 0.5, color="#2060A0", zorder=8)
-
-# (drum slide arrows removed — drums eliminated in rev 5)
-
-# Dimensions
-dim3_y_bot = -CONT_WALL - DOOR_T - 100
-# Panel thickness dims
-draw_dim_v(ax_tr, PANEL_CORNER_YD_L / 2, TR_PANEL_X,
-           TR_PANEL_X + PANEL_CORNER_T, f"{PANEL_CORNER_T}mm",
-           offset=60, fs=FS_SM - 1)
-draw_dim_v(ax_tr, LT_DRUM_YD_CENTER, TR_PANEL_X,
-           TR_PANEL_X + PANEL_CENTER_T, f"{PANEL_CENTER_T}mm",
-           offset=60, fs=FS_SM - 1, right=True)
+# Swing arc — traced by the panel free edge (Yd=0) from 0° to the lock angle
+arc_pts = [_swing(OP_PANEL_X, 0, dd) for dd in range(0, TR_SWING_DEG + 1, 3)]
+ax_tr.plot([p[0] for p in arc_pts], [p[1] for p in arc_pts],
+           color="#2060A0", lw=1.5, ls=(0, (5, 3)), zorder=8)
+arc_mid = arc_pts[int(len(arc_pts) * 0.6)]
+ax_tr.annotate(f"SWING {TR_SWING_DEG}°",
+               xy=arc_mid, xytext=(arc_mid[0] + 280, arc_mid[1] + 120),
+               fontsize=FS_SM + 1, color="#2060A0", fontweight="bold",
+               arrowprops=dict(arrowstyle="-|>", color="#2060A0", lw=1.3),
+               zorder=9)
 
 
 # ── RIGHT PANEL: Operational mode ────────────────────────────────────────────
@@ -980,7 +976,7 @@ plan_setup(ax_op, "OPERATIONAL MODE",
            "Panel at X=0  |  Doors open")
 draw_container_walls(ax_op)
 draw_container_doors(ax_op, closed=False)
-draw_hgr20_rails(ax_op)
+draw_pivot_post(ax_op)
 
 # Solid: operational positions
 draw_stepped_panel(ax_op, OP_PANEL_X)

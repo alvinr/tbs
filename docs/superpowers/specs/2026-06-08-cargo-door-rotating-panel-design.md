@@ -148,6 +148,10 @@ container so the cargo doors close. Decisions and rationale:
 8. **Walkway-grate tangent** — a few-mm gap (drop grate locally or lift the frame).
 9. **Mass reduction** if ~330 kg is too heavy (lighter panel skins / slimmer cage).
 10. Confirm the residual flap/poke-out is fully resolved by the pivot-at-upright-centre move.
+11. **POST-MERGE / deferred:** the **lower film-plane brace beam sits at the same Z level as the
+    walkway grate** (lower rail/beam at Z≈100–150 vs walkway grate Z≈115–130) — a physical
+    clash. Flagged for resolution **after the merge** (drop the beam, step the walkway locally,
+    or re-level one of them); not blocking the rotation study.
 
 ---
 

@@ -96,10 +96,15 @@ def sheet1():
     ax.set_facecolor(BG)
 
     PAD_L = 550; PAD_R = 650; PAD_B = 500; PAD_T = 450
-    ax.set_xlim(-PAD_L, PW + PAD_R)
+    # EXTERIOR view (looking at the door from outside, +X): the near wall (Yd=0) is on the
+    # RIGHT and the far wall (Yd=2362) on the LEFT — so the x-axis is REVERSED. This puts
+    # Fan B (near corner) on the right and the far-left pivot post on the left.
+    ax.set_xlim(PW + PAD_R, -PAD_L)
     ax.set_ylim(-PAD_B, PH + PAD_T)
     ax.set_aspect("equal")
     ax.axis("off")
+    ax.text(PW / 2, -PAD_B + 60, "EXTERIOR VIEW — near wall (Yd 0) at RIGHT, far wall at LEFT",
+            ha="center", va="bottom", fontsize=7, color=C_DIM, **FONT, style="italic", zorder=20)
 
     # ── Panel body ────────────────────────────────────────────────────────────
     # Outer steel frame (50mm wide)

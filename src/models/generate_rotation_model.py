@@ -118,6 +118,7 @@ def moving_frame_body():
         lt.hinge_panel(),
         ov.ruby_box(f"Panel near (swing, Yd{CUT}-{NEAR_CORNER_YD})", 0, CUT, z0, 40,
                     NEAR_CORNER_YD - CUT, z1 - z0, color=lt.C_PLY),
+        ov.ruby_box("EPDM seal top (trimmed)", -20, CUT, z1 - 40, 20, ov.C_WID - CUT, 40, color=lt.C_GASKT),
         lt.bay(),
         lt.drum_housing(DRUM_CX, DRUM_CY),
         lt.drum_rotor(DRUM_CX, DRUM_CY),
@@ -180,7 +181,7 @@ ents = defn.entities
 {moving_frame_body()}
 # CUT @ Yd{CUT}: drop the near corner from the rotating frame (the fixed Near Leaf
 # provides it) so the rotating part never sweeps the near upright.
-defn.entities.grep(Sketchup::Group).select {{ |g| g.name =~ /Panel near corner|EPDM seal left|EPDM seal bottom L/ }}.each {{ |g| g.erase! }}
+defn.entities.grep(Sketchup::Group).select {{ |g| g.name =~ /Panel near corner|EPDM seal left|EPDM seal bottom L|EPDM seal top$|Piano hinge/ }}.each {{ |g| g.erase! }}
 
 # tag the panel SKINS (ply + seals) so the 'Structure' scene can hide them, leaving
 # the frame/bay/drum/pivot structure
@@ -191,6 +192,16 @@ skin_layer = model.layers["Panel skin"] || model.layers.add("Panel skin")
   dd.entities.grep(Sketchup::Group).each {{ |g|
     g.layer = skin_layer if g.name =~ /Panel|EPDM|Piano|Southco|latch|Fixed left/
   }}
+}}
+
+# ghost the bay punch-out panels + the drum so the underlying frame structure reads
+bd_ghost = model.materials["Bay/drum ghost"] || model.materials.add("Bay/drum ghost")
+bd_ghost.color = Sketchup::Color.new(200, 210, 225)
+bd_ghost.alpha = 0.22
+defn.entities.grep(Sketchup::Group).each {{ |g|
+  next unless g.name =~ /^LT |^Bay/
+  g.material = bd_ghost
+  g.entities.grep(Sketchup::Face).each {{ |f| f.material = bd_ghost; f.back_material = bd_ghost }}
 }}
 
 ic = entities.add_instance(defn, Geom::Transformation.new)

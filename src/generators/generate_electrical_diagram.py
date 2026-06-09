@@ -572,45 +572,47 @@ def draw_sheet2():
     equip(0, C_WID//2 - DRUM_R, DRUM_R, DRUM_D, "LT DRUM\n(partial)", C_LT_DRUM,
           f"Ø{DRUM_D}mm vertical axis  Yd={C_WID//2 - DRUM_R}–{C_WID//2 + DRUM_R}mm")
 
-    # ── Ghost: hinged panel + drum in TRANSPORT position ────────────────────
-    # Panel retracted 300mm inward (X=300–380 corner / 300–420 center)
-    # Drum center at X=300, Yd centered at C_WID/2
+    # ── Ghost: hinged panel + drum in TRANSPORT position (SWUNG ~56°) ────────
+    # rev10: the panel + drum REVOLVE ~56° about the Ø89 pivot (PIVOT_X, PIVOT_YD)
+    # for transport — they no longer slide. Drawn as a faint swung ghost.
+    import numpy as _np
     from tbs_constants import (
-        PANEL_SLIDE, PANEL_CORNER_T, PANEL_CENTER_T,
+        PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CORNER_T, PANEL_CENTER_T,
         PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
     )
     GHOST_ALPHA = 0.18
     GHOST_EC = "#808080"
     GHOST_LS = (0, (4, 3))   # dashed
 
-    # Panel — stepped profile: corners thinner, center thicker
-    # Near corner: Yd=0 to PANEL_CORNER_YD_L, thickness=PANEL_CORNER_T
+    def _sw(X, Yd):
+        t = _np.radians(SWING_LOCK_DEG); c, s = _np.cos(t), _np.sin(t)
+        return (PIVOT_X + (X - PIVOT_X) * c - (Yd - PIVOT_YD) * s,
+                PIVOT_YD + (X - PIVOT_X) * s + (Yd - PIVOT_YD) * c)
+    def _pt(X, Yd):                      # physical (X, Yd) -> draw pixel
+        Xs, Yds = _sw(X, Yd)
+        return (ix(Xs), OY + wt + Yds * S_yd)
+
+    # Panel — stepped profile rotated about the pivot (each zone a swung polygon)
     for (yd_lo, yd_hi, thick) in [
         (0, PANEL_CORNER_YD_L, PANEL_CORNER_T),
         (PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_T),
         (PANEL_CORNER_YD_R, C_WID, PANEL_CORNER_T),
     ]:
-        gp_x = ix(PANEL_SLIDE)
-        gp_w = thick * S_xi
-        gp_y = OY + wt + yd_lo * S_yd
-        gp_h = (yd_hi - yd_lo) * S_yd
-        ax.add_patch(mpatches.Rectangle((gp_x, gp_y), gp_w, gp_h,
+        poly = [_pt(0, yd_lo), _pt(thick, yd_lo), _pt(thick, yd_hi), _pt(0, yd_hi)]
+        ax.add_patch(mpatches.Polygon(poly, closed=True,
                      fc="#B0A090", ec=GHOST_EC, lw=1.0, ls=GHOST_LS,
                      alpha=GHOST_ALPHA, zorder=4))
 
-    # Drum — circle at X=PANEL_SLIDE (center moves with panel)
-    gd_cx = ix(PANEL_SLIDE)   # drum center X in transport
-    gd_cy = OY + wt + (C_WID / 2) * S_yd
+    # Drum — swung center
+    gd_cx, gd_cy = _pt(PANEL_CENTER_T / 2, C_WID / 2)
     gd_r = DRUM_R * S_xi
     ax.add_patch(plt.Circle((gd_cx, gd_cy), gd_r,
                  fc=C_LT_DRUM, ec=GHOST_EC, lw=1.0, ls=GHOST_LS,
                  alpha=GHOST_ALPHA, zorder=4))
 
     # Label
-    ax.text(ix(PANEL_SLIDE + PANEL_CENTER_T - 250),
-            OY + wt + C_WID * 0.08 * S_yd,
-            "Panel + drum\n(transport position)",
-            ha="left", va="bottom", fontsize=6.0, color="#808080",
+    ax.text(gd_cx, gd_cy, "Panel + drum\n(swung 56°, transport)",
+            ha="center", va="center", fontsize=6.0, color="#808080",
             style="italic", zorder=5)
 
     # PINHOLE WALL — duct penetration (evap cooler now external)

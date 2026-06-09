@@ -244,8 +244,8 @@ See [Ceiling Rail Design](ceiling-rail-report.md) for full details.
 
 ### 5.1 Panel Positions
 
-**Sheet 4 — Sliding rail transport system: HGR20 rails, operational vs. transport positions**
-![TBS-001 Hinged Panel — Sheet 4: Transport System](assets/hingepanel-sheet4.png)
+**Sheet 4 — Rotating transport + swing clearance: panel swings 56° about the pivot (camera vs swung), removable left rails**
+![TBS-001 Hinged Panel — Sheet 4: Rotating Transport + Swing Clearance](assets/hingepanel-sheet4.png)
 
 | Position | Panel corner inner face X | Drum exterior edge X | Container doors clear? |
 |----------|--------------------------|---------------------|----------------------|
@@ -283,8 +283,10 @@ clear the moment the clamps are released for transport.
 
 ### 5.4 Transport Conversion Sequence
 
-**Sheet 6 — Transport-slide clearance vs the film-plane left mechanism (plan)**
-![TBS-001 Hinged Panel — Sheet 6: Transport Clearance](assets/hingepanel-sheet6.png)
+The rotation transport + swing clearance vs the film-plane left mechanism is shown in
+**Sheet 4** (above): the panel + drum swing ~56° about the pivot, pulling the bay inboard of
+the door plane (true min X +59 mm); the two left film rails are struck (removable) so the
+swinging cage transitions the X=150 rail plane, then re-seat to the film datum.
 
 The inward slide carries the panel to **X 880–1000**, so it sweeps through **X=150**,
 where the film-plane mechanism's left edge sits. The film-plane left rail (running in

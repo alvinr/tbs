@@ -365,14 +365,14 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame perimeter + internal members | 4 | $120–$160 |
 | 18mm exterior-grade plywood (1220 × 2440mm sheets) | Panel skins (both faces) | 6 | $180–$300 |
 | 3mm aluminum plate (1220 × 2440mm) | Corner zone core plates | 2 | $360–$460 |
-| 20mm EPDM gasket (per meter, closed-cell) | Perimeter seal (~10 m) + housing-surround ring (~6 m) | 16 m | $64–$96 |
+| 20mm EPDM gasket (per meter, closed-cell) | Perimeter seal (~10 m) + housing-surround ring (~6 m) + 2× vertical **cut seals** at Yd180/2287 (~5 m) | 21 m | $84–$126 |
 | Aluminum U-channel (per meter) | Gasket retainer — perimeter + housing-surround ring | 16 m | $48–$80 |
-| Heavy-duty weld-on barrel hinge + steel hinge post | Left-edge hinges — carry bay + housing + drum swing moment (**structural sign-off**) | 3 | $180–$300 |
-| Retractable heavy-duty swivel caster | Free-edge swing support through the 180° arc | 1 | $40–$80 |
-| Southco C2-33 cam compression latch | Interior-mounted corner latches | 4 | $60–$100 |
+| Southco C2-33 cam compression latch | Interior-mounted corner latches (compress the perimeter + cut + lip seals) | 4 | $60–$100 |
 | 6mm exterior plywood + EPDM lip | B2 punch-out bay — 4-wall light-tight tube (~890mm deep) around the housing | 1 lot | $60–$120 |
 | Flat black paint (RAL 9005) | Interior face + bay interior | 2 qt | $20–$30 |
-| **Panel subtotal** | | | **$1,090–$1,660** |
+| **Panel subtotal** | | | **$890–$1,310** |
+
+*The panel pivot post + bearings + drum cage + wall stays are itemized in §8.3.*
 
 ### 8.2 Housed Revolving Door (housing + drum)
 
@@ -390,25 +390,24 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Plastic fabrication (roll 2 cylinders, hot-air / extrusion weld, fit, bearings) | 16–22 hrs labor | 1 | $800–$1,150 |
 | **Housing + drum subtotal** | | | **$1,385–$2,070** |
 
-### 8.3 Sliding Carriage
+### 8.3 Swing Pivot Hardware
 
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
-| HGR20 linear guide rail (1200mm) | Floor/ceiling rails, both walls — span the ~880mm transport slide + carriage | 4 | $180–$280 |
-| HGH20CA carriage block | 2 per rail | 8 | $120–$200 |
-| 60 × 60 × 3mm SHS mild steel (2400mm) | Left-side carriage beam | 1 | $25–$40 |
-| Destaco 207-U toggle clamp | Operational + transport locks | 4 | $60–$100 |
-| Nylon brush strip (doubled, per meter) | Carriage beam slot seals — ~5 m each side | 10 m | $40–$60 |
-| 10mm closed-cell neoprene pad (50 × 30mm) | Rail channel seals | 4 | $10–$15 |
-| 15mm EPDM strip (self-adhesive, per meter) | Panel edge-to-wall clearance seals — ~5 m each side | 10 m | $30–$50 |
-| **Carriage subtotal** | | | **$465–$745** |
+| Ø89×8mm CHS pivot post + machined hub / thrust collar | Upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever (**structural sign-off**) | 1 | $180–$300 |
+| Turntable / slewing thrust bearing (~Ø220) | Carries the ~330 kg swinging-assembly vertical load at the post base | 1 | $80–$140 |
+| Flanged sleeve (journal) bearing, Ø90 bore | Top + bottom radial location of the post / hub | 2 | $60–$110 |
+| Drum support cage, 40 × 40 × 3mm SHS | Steel frame carrying the Ø900 housing + drum on the swinging leaf | 1 | $70–$120 |
+| Top + bottom wall stays + 4-bolt anchor plates | Transport lock — M16 turnbuckle + eye/hook rods + inside/outside wall plates | 2 | $90–$160 |
+| Drop-in rail saddles + tapered dowels | For the 2 removable left film rails (TL + BL); dowels set the film datum on re-seat | 4 | $80–$130 |
+| **Swing pivot subtotal** | | | **$560–$960** |
 
 ### 8.4 Fixed Door Frame
 
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame members | 3 | $90–$120 |
-| 3mm steel plate/angle (~110mm × ~4 m) | Top + bottom seal lips — threshold upstand (bottom, notched around drum) + frame-top downstand (top, continuous full width); light paths #6–#7 | 1 | $45–$80 |
+| 3mm steel plate/angle (~110mm × ~4 m) | Top + bottom seal lips — threshold upstand (bottom, full width, no notch — drum rides at Z130) + frame-top downstand (top, continuous full width); seal paths #3–#4 | 1 | $45–$80 |
 | Welding / fabrication | Frame assembly + wall attachment | 1 | $200–$350 |
 | **Door frame subtotal** | | | **$335–$550** |
 
@@ -416,11 +415,11 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Panel structure (incl. B2 bay) | $1,090 | $1,660 |
+| Panel structure (incl. B2 bay) | $890 | $1,310 |
 | Housing + drum (plastic skin) | $1,385 | $2,070 |
-| Sliding carriage | $465 | $745 |
+| Swing pivot hardware | $560 | $960 |
 | Fixed door frame | $335 | $550 |
-| **Total** | **$3,275** | **$5,025** |
+| **Total** | **$3,170** | **$4,890** |
 
 ---
 
@@ -429,13 +428,13 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Interval | Task |
 |----------|------|
 | Every use | Dark-adaptation light seal check (5 min) — mark any light points with gaffer tape |
-| Every 20 mode conversions | Inspect doubled nylon brush strips at carriage beam slots for wear |
+| Every 20 mode conversions | Inspect the EPDM cut seals at the swing boundaries (Yd180/2287) for wear |
 | Every 6 months | Inspect EPDM perimeter gasket compression; replace if permanently deformed |
 | Every 6 months | Inspect neoprene drum seals (top/bottom) for wear and adhesion |
-| Annually | Replace brush strips (all carriage/guide slots) |
-| Annually | Lubricate HGR20 rails and carriage blocks per manufacturer spec |
+| Annually | Inspect the wall-stay turnbuckles, hooks, and eye anchors; verify tension at the locked angle |
+| Annually | Grease the pivot thrust + journal bearings; check the post for free, smooth rotation |
 | Annually | Check SKF 6215 bearings for roughness — sealed for life, replace only if failed |
-| Annually | Inspect Destaco toggle clamps for latch engagement and spring tension |
+| Annually | Check the drop-in rail saddles + tapered dowels seat the left film rails square to datum |
 | Annually | Inspect Southco cam latches for compression force; adjust or replace striker |
 | Every 2 years | Re-seal drum top/bottom neoprene wiper strips and silicone bead |
 | As needed | Re-apply flat black interior paint where scuffed or worn |
@@ -448,8 +447,8 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 |------|--------|
 | SKF 6215-2RS1 bearing specification | [SKF Product Catalog](https://www.skf.com/group/products/rolling-bearings/ball-bearings/deep-groove-ball-bearings/productid-6215-2RS1) — radial load 52.7 kN static, sealed, C3 clearance |
 | Southco C2-33 cam latch | [Southco catalog](https://southco.com/en_us_int/c2-33-11) — flush-mount cam compression latch |
-| Destaco 207-U toggle clamp | [Destaco catalog](https://www.destaco.com/207-u.html) — horizontal hold-down clamp, 375 lb capacity |
-| HGR20 / HGH20CA linear guide | [HIWIN equivalent](https://hiwin.com/products/linear-guideways/) — generic 20mm profile linear rail system |
+| Turnbuckle + eye/hook (wall stays) | [McMaster-Carr turnbuckles](https://www.mcmaster.com/turnbuckles/) — drop-forged jaw/eye turnbuckles for the transport lock |
+| Turntable / slewing thrust bearing | [VXB Bearings — turntable bearings](https://www.vxb.com/Turntable-Bearings-s/1869.htm) — heavy-duty flat thrust/turntable bearing for the pivot base |
 | EPDM gasket material | [McMaster-Carr](https://www.mcmaster.com/epdm-rubber-sheets) — closed-cell EPDM, UV-stable |
 | Neoprene wiper strip | [McMaster-Carr #93855K6](https://www.mcmaster.com/93855K6) — closed-cell, pressure-sensitive adhesive |
 | Revolving drum light trap design | See [Light Trap Selection](light-trap-selection.md) for full commercial comparison and custom specification |

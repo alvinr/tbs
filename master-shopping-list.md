@@ -19,14 +19,13 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 5. Print washing — water system (incl. IBC stacking frame) | $4,929 | $7,438 |
 | 6. Electrical — power, circuits, wiring | $1,785 | $1,890 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,450 | $2,100 |
-| 7a. Panel sliding carriage (B2 — longer rails + barrel hinges + swing caster) | $1,428 | $1,428 |
+| 7a. Panel swing pivot (Ø89 pivot post + bearings + cage + wall stays + rail saddles) | $1,232 | $1,232 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,070 | $1,650 |
-| 7c. Ceiling rail suspension (B2 longer rails) | $254 | $254 |
 | 8. Cooling & ventilation | $370 | $450 |
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$20,776** | **~$28,690** |
+| **TOTAL (base build + 50-print run)** | **~$20,251** | **~$28,130** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -365,41 +364,36 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 *Note: This is for the drum body only. The hinged panel that the drum mounts into (50×50mm RHS frame, 18mm ply skins, EPDM perimeter gasket) is covered in § 2 (Interior Conversion) above. See [light-trap-selection.md](light-trap-selection.md) for full specification and supplier notes.*
 
-## 7a. Panel Sliding Carriage
-*Source: `equipment-layout-report.md` § 6.1. Enables transport mode: panel slides inward ~880mm (rev 9 / B2 — retracts the punch-out bay behind the cargo doors), clearing container doors for closure. Single-person operation (~5 min; strike film plane + door-end walkway brackets first, then slide).*
+## 7a. Panel Swing Pivot
+*Source: `equipment-layout-report.md` § 6.1, `hinged-panel-report.md` § 4–5. Enables transport mode: the panel + drum SWING ~56° about a vertical Ø89×8mm CHS pivot post (rev10 — supersedes the B2 slide), carrying the punch-out bay inboard of the door plane (true min X +59mm) so the cargo doors close. Single-person operation (~5 min, swing assisted; strike the two left film rails + the left walkway first, then swing).*
 
-### Panel slide system
+### Swing pivot system
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [HGR20 linear rail, 1200mm](https://www.amazon.com/s?k=HGR20+linear+rail+1200mm) | Both walls, floor + ceiling, X-direction — span the ~880mm B2 transport slide + carriage | 4 | Amazon / Automation Overstock | ~$180 |
-| [HGH20CA carriage blocks](https://www.amazon.com/s?k=HGH20CA+carriage+block) | Flanged, 2 per rail | 8 | Amazon / Automation Overstock | ~$144 |
-| Carriage beam, 60×60×3mm SHS | 2400mm tall, mild steel | 1 | Metal Supermarkets | ~$35 |
-| Hinge mounting plates, 6mm steel | 220×80mm | 3 | Local fab | ~$30 |
-| [Heavy-duty weld-on barrel hinge](https://www.mcmaster.com/weld-on-hinges/) | B2 panel swing hinge — carries bay + housing + drum moment (**structural sign-off**) | 3 | McMaster-Carr / local fab | ~$240 |
-| Rail mounting brackets, 8mm angle | Both walls, floor + ceiling | 8 | Local fab | ~$64 |
-| [Destaco 207-U toggle clamps](https://www.amazon.com/s?k=Destaco+207-U+toggle+clamp) | 2 per position × 2 positions | 4 | Amazon / McMaster-Carr | ~$100 |
-| Strike pins, 16mm hardened dowel | Pressed into carriage base | 4 | McMaster-Carr | ~$12 |
-| Retractable heavy-duty swivel caster | Free-edge swing support through the 180° arc (B2 — carries leaf weight while open) | 1 | McMaster-Carr / Grainger | ~$60 |
-**Panel slide subtotal: ~$865**
+| [Ø89×8mm CHS pivot post, ~2300mm](https://www.onlinemetals.com/en/buy/carbon-steel/carbon-steel-round-tube-dom) | S355 — upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever (**structural sign-off**) | 1 | Metal Supermarkets / [Online Metals](https://www.onlinemetals.com) | ~$90 |
+| [Turntable / slewing thrust bearing, ~Ø220](https://www.vxb.com/Turntable-Bearings-s/1869.htm) | Flush at the post base — carries the ~330 kg swinging-assembly vertical load | 1 | [VXB Bearings](https://www.vxb.com) / McMaster-Carr | ~$120 |
+| [Flanged sleeve (journal) bearing, Ø90 bore](https://www.mcmaster.com/sleeve-bearings/) | Top + bottom radial location of the post / hub | 2 | McMaster-Carr / Grainger | ~$90 |
+| Pivot hub + thrust collar, machined steel | Couples the swinging frame to the post; seats the thrust bearing | 1 | Local fab | ~$130 |
+| Drum support cage, 40×40×3mm SHS | Steel frame carrying the Ø900 housing + drum on the swinging leaf | 1 | Metal Supermarkets / local fab | ~$90 |
+| Top + bottom **wall stays** | M16 turnbuckle + eye bolt + hook rod, each (the transport lock) | 2 | [McMaster-Carr](https://www.mcmaster.com/turnbuckles/) / Grainger | ~$90 |
+| Wall-stay anchor plates + M16 bolts | Inside + outside 4-bolt plates per stay eye, sandwiching the side wall (same pattern as the walkway anchors) | 2 sets | Local fab / McMaster-Carr | ~$50 |
+| Drop-in rail saddles + tapered dowels + clamp bars | Drop-in saddles for the 2 removable left film rails (TL + BL) — the dowels set the film datum on re-seat | 4 | Local fab / McMaster-Carr | ~$110 |
+**Swing pivot subtotal: ~$770**
 
 ### Fixed door frame + seals
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | 50×50×3mm RHS welded frame | Full door perimeter ~9.5m | 1 | Metal Supermarkets | ~$120 |
-| 3mm steel plate/angle, ~110mm × ~4m | Top + bottom seal lips — frame-top downstand (top, continuous full width) + threshold upstand (bottom, notched around drum); light paths #6–#7 | 1 | Metal Supermarkets | ~$60 |
-| Seal landing machining | Mill flat on all frame faces | 1 | Local fab | ~$80 |
-| [Brush seal strip (doubled nylon bristle)](https://www.mcmaster.com/brush-seal-strip) | Left carriage beam slot, 2400mm × 2 layers | 2 | McMaster-Carr | ~$50 |
-| [Brush seal strip (doubled nylon bristle)](https://www.mcmaster.com/brush-seal-strip) | Right guide slot, 2400mm × 2 layers | 2 | McMaster-Carr | ~$50 |
-| [EPDM gasket 20×15mm](https://www.mcmaster.com/8635K31) | ~9.5m | 1 | McMaster-Carr #8635K31 | ~$45 |
+| 3mm steel plate/angle, ~110mm × ~4m | Top + bottom seal lips — frame-top downstand (top, continuous full width) + threshold upstand (bottom, full width, no notch — drum rides at Z130); seal paths #3–#4 | 1 | Metal Supermarkets | ~$60 |
+| Seal landing machining | Mill flat on all frame faces + the 2 vertical cut-seal landings | 1 | Local fab | ~$80 |
+| [EPDM gasket 20×15mm](https://www.mcmaster.com/8635K31) | Perimeter (~9.5m) + 2× vertical **cut seals** at Yd180/2287 (~4.8m) + top/bottom lip strips | 1 | McMaster-Carr #8635K31 | ~$70 |
 | Neoprene backup strip, 10×10mm | Self-adhesive, ~9.5m | 1 | McMaster-Carr | ~$22 |
-| Neoprene rail channel pads, 10mm | 50×30mm, closed-cell, 4 rail penetrations | 4 | McMaster-Carr | ~$8 |
-| EPDM edge strips, 15mm | Self-adhesive, 2400mm × 2 sides | 2 | McMaster-Carr | ~$18 |
 | Fasteners, misc | M10/M12 stainless, assorted | 1 lot | McMaster-Carr | ~$60 |
 | Flat black paint | Touch-up, 1 qt | 1 | Home Depot | ~$15 |
-| Fan B flex cable (coiled, 16AWG 2-cond, silicone) | 1m coiled, Deutsch DT 2-pin connectors each end | 1 | Waytek Wire / McMaster-Carr | ~$35 |
-**Door frame subtotal: ~$563**
+| Fan B flex cable (coiled, 16AWG 2-cond, silicone) | 1m coiled, Deutsch DT 2-pin connectors each end — accommodates the ~56° swing | 1 | Waytek Wire / McMaster-Carr | ~$35 |
+**Door frame subtotal: ~$462**
 
-**Section total (materials): ~$976**
+**Section total (materials): ~$1,232**
 **Fabrication labor: ~12–16 hrs × $80–$100/hr = $960–$1,600**
 
 ## 7b. Perimeter Walkway
@@ -428,20 +422,6 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 **Walkway subtotal: ~$1,145–$1,760**
 
 *Near/far grating secured with M saddle clips + TEK screws to bracket arms. Right walkway grating secured with M saddle clips + TEK screws to L-angle bearer horizontal leg. Left walkway uses gravity retention — the grating rests on the floor-leg cantilever arms (5 brackets on bare floor at X=140, arms reaching X=470, three extended to X=770 on the punch-out); lift straight up to remove (no fasteners, no kerb). The brackets are bolted to the floor (permanent); only the grating lifts out for transport. No edge beam, no bearing strip, no tray contact (the +50mm walkway raise lifts the arms clear of the floor-level spray bar). Near walkway widens to 500mm at EP/battery/slit zone (X≈1,155–2,629) with heavier 10mm brackets (see Sheet 7). Slits cut to tray lip only (near: 420mm, far: 218mm), not full walkway depth. Transition bearing plates at width change brackets (X≈1,156 and X≈2,526). Butt joints at all corners. No floor contact on any section — entire tray interior clear.*
-
-## 7c. Ceiling Rail Suspension
-*Source: `generate_ceiling_rail_diagram.py`, `engineering-diagrams.md` §13. HGR20 ceiling-mounted linear rails suspend the hinged panel with 80mm floor gap, clearing the 50mm processing tray rim during transport slide.*
-
-| Item | Spec | Qty | Supplier | Est. cost |
-|------|------|-----|----------|-----------|
-| [HGR20 linear rail, 1200mm](https://www.amazon.com/s?k=HGR20+linear+rail+1200mm) | Ceiling-mounted, both walls, X-direction — span the ~880mm B2 transport slide | 2 | Amazon / Automation Overstock | ~$90 |
-| [HGH20CA carriage blocks](https://www.amazon.com/s?k=HGH20CA+carriage+block) | Flanged, 2 per rail | 4 | Amazon / Automation Overstock | ~$72 |
-| Ceiling mounting brackets, 8mm angle | Welded to container ceiling ribs | 4 | Local fab | ~$32 |
-| Drop rod / hanging bracket, 6mm steel | Connects carriage block to panel top rail | 4 | Local fab | ~$40 |
-| Fasteners, misc | M10 stainless | 1 lot | McMaster-Carr | ~$20 |
-**Ceiling rail subtotal: ~$254**
-
-*Note: The panel sliding carriage (§7a) uses 4 rails at floor + ceiling on both walls. This section covers the 2 additional ceiling rails that provide panel suspension and floor gap clearance.*
 
 ## 8. Cooling & Ventilation
 *Source: `electrical-report.md`*

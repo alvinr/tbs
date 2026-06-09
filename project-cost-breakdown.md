@@ -20,11 +20,11 @@
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $4,958 | $6,175 | $7,391 |
 | **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $1,465 | $1,802 | $2,160 |
 | **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $1,093 | $1,410 | $1,717 |
-| **6b. Ceiling rail suspension (B2 longer rails)** | $255 | $302 | $350 |
+| **6b. Panel swing pivot (Ø89 pivot post + bearings + cage + wall stays + rail saddles)** | $650 | $770 | $910 |
 | **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$17,215** | **$22,129** | **$28,488** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$17,636** | **$22,629** | **$29,088** |
 
 *Optional additions that may apply — see individual sections:*
 
@@ -309,18 +309,20 @@ Four removable grated walkway sections around all 4 sides of the processing tray
 
 ---
 
-## 6b. Ceiling Rail Suspension
+## 6b. Panel Swing Pivot
 
-**Source documents:** `engineering-diagrams.md` §13, `generate_ceiling_rail_diagram.py`
+**Source documents:** `equipment-layout-report.md` §6.1, `hinged-panel-report.md` §4–5
 
-HGR20 ceiling-mounted linear rails suspend the hinged panel with 80mm floor gap, clearing the 50mm processing tray rim during transport slide. Two additional ceiling rails supplement the 4 wall-mounted rails in §7a.
+The panel + drum SWING ~56° about a vertical Ø89×8mm CHS pivot post (rev10 — supersedes the HGR20 slide + ceiling-rail suspension), carrying the punch-out bay inboard of the door plane (true min X +59mm) so the cargo doors close. See the rotation-hardware detail in [master-shopping-list.md](master-shopping-list.md) §7a.
 
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
-| HGR20 linear rail, 1200mm (×2) + HGH20CA carriage blocks (×4) | $180 | $210 | $240 | Span the ~880mm B2 transport slide; Automation Overstock, Gardena CA |
-| Ceiling mounting brackets + drop rods, 6–8mm steel | $60 | $72 | $85 | Local fab |
-| Fasteners, misc | $15 | $20 | $25 | McMaster-Carr / Fastenal |
-| **Ceiling rail total** | **$255** | **$302** | **$350** | |
+| Ø89×8 CHS pivot post (upgrades the reused film upright) + machined hub / thrust collar | $180 | $220 | $260 | Structural sign-off; Metal Supermarkets / local fab |
+| Thrust + journal bearings (Ø220 turntable + 2× Ø90 sleeve) | $180 | $210 | $250 | VXB Bearings / McMaster-Carr |
+| Drum support cage, 40×40×3mm SHS | $80 | $90 | $110 | Local fab |
+| Top + bottom wall stays + 4-bolt anchor plates | $120 | $140 | $160 | Turnbuckles + eye/hook rods + plates; McMaster-Carr / local fab |
+| Drop-in rail saddles + tapered dowels (×4, removable left film rails) | $90 | $110 | $130 | Local fab / McMaster-Carr |
+| **Panel swing pivot total** | **$650** | **$770** | **$910** | |
 
 ---
 
@@ -486,11 +488,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $4,900 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,465 |
 | Perimeter walkway (4 sections, removable) | $1,042 |
-| Ceiling rail suspension (B2 longer rails) | $255 |
+| Panel swing pivot (Ø89 pivot + bearings + cage + wall stays + saddles) | $650 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$16,899** |
+| **Scenario A total** | **~$17,294** |
 
 ### Scenario B — Recommended build, regional deployment
 
@@ -503,22 +505,22 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,084 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,800 |
 | Perimeter walkway (4 sections, removable) | $1,346 |
-| Ceiling rail suspension (B2 longer rails) | $302 |
+| Panel swing pivot (Ø89 pivot + bearings + cage + wall stays + saddles) | $770 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Rodenstock Apo-Ronar 1200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$22,911** |
+| **Scenario B total (excl. CDL)** | **~$23,379** |
 
 ### Scenario C — Full production, own transport, CDL
 
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $21,976 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $22,479 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$111,476–$141,476** |
+| **Scenario C total** | **~$111,979–$141,979** |
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*
 

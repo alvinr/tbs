@@ -1350,7 +1350,7 @@ def sheet5():
 
     fig, ax = plt.subplots(figsize=(20, 13.6))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
-    ax.set_xlim(-130, 2130); ax.set_ylim(-260, 1380)
+    ax.set_xlim(-130, 2130); ax.set_ylim(-260, 1460)
     ax.set_aspect("equal"); ax.axis("off")
 
     def arc(cx, cy, r, gaps, lw, color, z=5):
@@ -1374,9 +1374,9 @@ def sheet5():
             ax.plot([x + s * 1.2 * np.cos(r), x + s * 1.7 * np.cos(r)],
                     [y + s * 1.2 * np.sin(r), y + s * 1.7 * np.sin(r)], color=AMBER, lw=1.3, zorder=8)
 
-    ax.text(1000, 1335, "REVOLVING-DOOR LIGHT LOCK (rev 8) — PASSES BOTH TESTS",
+    ax.text(1000, 1415, "REVOLVING-DOOR LIGHT LOCK (rev 8) — PASSES BOTH TESTS",
             ha="center", fontsize=15, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(1000, 1298, "Fixed Ø900 housing (two 80° openings, 180° apart) + single-opening C-shell drum, NO fins",
+    ax.text(1000, 1378, "Fixed Ø900 housing (two 80° openings, 180° apart) + single-opening C-shell drum, NO fins",
             ha="center", fontsize=9, color=GREEN, **FONT)
     ax.plot([-130, 2130], [660, 660], color=C_DIM, lw=1.0, ls=(0, (6, 4)), zorder=3)
 

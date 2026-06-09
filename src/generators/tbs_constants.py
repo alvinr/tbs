@@ -538,6 +538,11 @@ WALKWAY_H       = 130    # deck height above floor (mm) — RAISED +50 (was 80) 
 #       bottom (≈2.3% image). (History: 65→80 lowered for film clearance, then +50 raised.)
 WALKWAY_GRATE_T = 15     # grating thickness (mm) — thin grate (was 25) for film-plane clearance
 WALKWAY_H_PREV  = 100    # original deck height (pre-lowering) — reserved (history; kept for reference)
+WALKWAY_SWING_CLEAR = 12 # NEAR deck only, door-end band (X≈470–900): grate top dropped this far
+                         # below the panel underside (Z130→Z118) so the transport swing arc clears
+                         # it (the panel/cage underside sweeps the near deck at ~12–25° of the swing).
+                         # The FAR deck is NOT swept (swept points there stay short of the X470 deck
+                         # start) and the left walkway lifts out — so neither needs the drop.
 # Container structural rib spacing (ISO standard 20ft container)
 CONTAINER_RIB_SPACING = 457   # mm (18 inches) — vertical corrugation flanges
 # Wall-mounted cantilever brackets

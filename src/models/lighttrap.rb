@@ -1,5 +1,5 @@
 model = Sketchup.active_model
-model.start_operation("TBS-001 Light Trap (dynamic slide)", true)
+model.start_operation("TBS-001 Light Trap (dynamic swing)", true)
 entities = model.active_entities
 
 opts = model.options["UnitsOptions"]
@@ -18,11 +18,15 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
 # ── Tags (layers) ──
   model.layers.add("Context") unless model.layers["Context"]
   model.layers.add("Door Frame") unless model.layers["Door Frame"]
-  model.layers.add("Carriage Rails") unless model.layers["Carriage Rails"]
+  model.layers.add("Pivot Axle") unless model.layers["Pivot Axle"]
   model.layers.add("Processing Tray") unless model.layers["Processing Tray"]
   model.layers.add("Walkways") unless model.layers["Walkways"]
   model.layers.add("Film Plane Rails") unless model.layers["Film Plane Rails"]
-  model.layers.add("Sliding Assembly") unless model.layers["Sliding Assembly"]
+  model.layers.add("Near Leaf") unless model.layers["Near Leaf"]
+  model.layers.add("Far Leaf") unless model.layers["Far Leaf"]
+  model.layers.add("Lock anchor") unless model.layers["Lock anchor"]
+  model.layers.add("Panel skin") unless model.layers["Panel skin"]
+  model.layers.add("Panel Swing") unless model.layers["Panel Swing"]
   model.layers.add("Cargo Doors") unless model.layers["Cargo Doors"]
   model.layers.add("Labels") unless model.layers["Labels"]
 
@@ -33,7 +37,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Floor (context)
   grp = ents.add_group
   grp.name = "Floor (context)"
-  face = grp.entities.add_face([0.mm,0.mm,-40.mm], [1600.mm,0.mm,-40.mm], [1600.mm,2362.mm,-40.mm], [0.mm,2362.mm,-40.mm])
+  face = grp.entities.add_face([0.mm,0.mm,-40.mm], [2000.mm,0.mm,-40.mm], [2000.mm,2362.mm,-40.mm], [0.mm,2362.mm,-40.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Floor (context)"] || model.materials.add("Floor (context)")
@@ -44,7 +48,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Ceiling (context)
   grp = ents.add_group
   grp.name = "Ceiling (context)"
-  face = grp.entities.add_face([0.mm,0.mm,2388.mm], [1600.mm,0.mm,2388.mm], [1600.mm,2362.mm,2388.mm], [0.mm,2362.mm,2388.mm])
+  face = grp.entities.add_face([0.mm,0.mm,2388.mm], [2000.mm,0.mm,2388.mm], [2000.mm,2362.mm,2388.mm], [0.mm,2362.mm,2388.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Ceiling (context)"] || model.materials.add("Ceiling (context)")
@@ -55,7 +59,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Side Wall near (context)
   grp = ents.add_group
   grp.name = "Side Wall near (context)"
-  face = grp.entities.add_face([0.mm,-40.mm,0.mm], [1600.mm,-40.mm,0.mm], [1600.mm,0.mm,0.mm], [0.mm,0.mm,0.mm])
+  face = grp.entities.add_face([0.mm,-40.mm,0.mm], [2000.mm,-40.mm,0.mm], [2000.mm,0.mm,0.mm], [0.mm,0.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
   mat = model.materials["Side Wall near (context)"] || model.materials.add("Side Wall near (context)")
@@ -66,7 +70,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Side Wall far (context)
   grp = ents.add_group
   grp.name = "Side Wall far (context)"
-  face = grp.entities.add_face([0.mm,2362.mm,0.mm], [1600.mm,2362.mm,0.mm], [1600.mm,2402.mm,0.mm], [0.mm,2402.mm,0.mm])
+  face = grp.entities.add_face([0.mm,2362.mm,0.mm], [2000.mm,2362.mm,0.mm], [2000.mm,2402.mm,0.mm], [0.mm,2402.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
   mat = model.materials["Side Wall near (context)"] || model.materials.add("Side Wall near (context)")
@@ -173,122 +177,188 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.name = "Fixed Door Frame"
   inst.layer = model.layers["Door Frame"]
 
-  # ═══ Carriage Rails + Locks ═══
-  defn = model.definitions.add("Carriage Rails + Locks")
+  # ═══ Pivot Axle (Ø89 post + bearings) ═══
+  defn = model.definitions.add("Pivot Axle (Ø89 post + bearings)")
   ents = defn.entities
-  # HGR20 rail L
+  # Pivot post (Ø89 CHS)
   grp = ents.add_group
-  grp.name = "HGR20 rail L"
-  face = grp.entities.add_face([-30.mm,643.mm,2358.mm], [1070.mm,643.mm,2358.mm], [1070.mm,663.mm,2358.mm], [-30.mm,663.mm,2358.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(30.mm)
-  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
-  mat.color = Sketchup::Color.new(96, 96, 104)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # HGR20 rail R
-  grp = ents.add_group
-  grp.name = "HGR20 rail R"
-  face = grp.entities.add_face([-30.mm,1699.mm,2358.mm], [1070.mm,1699.mm,2358.mm], [1070.mm,1719.mm,2358.mm], [-30.mm,1719.mm,2358.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(30.mm)
-  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
-  mat.color = Sketchup::Color.new(96, 96, 104)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Destaco clamp (operational) base
-  grp = ents.add_group
-  grp.name = "Destaco clamp (operational) base"
-  face = grp.entities.add_face([-10.mm,635.mm,2288.mm], [50.mm,635.mm,2288.mm], [50.mm,671.mm,2288.mm], [-10.mm,671.mm,2288.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(24.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  grp.name = "Pivot post (Ø89 CHS)"
+  ge = grp.entities
+  circle = ge.add_circle([175.mm,2287.mm,0.mm], [0,0,1], 44.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(2388.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Destaco clamp (operational) handle
+  # Pivot floor mount plate
   grp = ents.add_group
-  grp.name = "Destaco clamp (operational) handle"
-  face = grp.entities.add_face([0.mm,647.mm,2312.mm], [70.mm,647.mm,2312.mm], [70.mm,659.mm,2312.mm], [0.mm,659.mm,2312.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Destaco clamp (operational) handle"] || model.materials.add("Destaco clamp (operational) handle")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Destaco clamp (operational) base
-  grp = ents.add_group
-  grp.name = "Destaco clamp (operational) base"
-  face = grp.entities.add_face([-10.mm,1691.mm,2288.mm], [50.mm,1691.mm,2288.mm], [50.mm,1727.mm,2288.mm], [-10.mm,1727.mm,2288.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(24.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  grp.name = "Pivot floor mount plate"
+  ge = grp.entities
+  circle = ge.add_circle([175.mm,2287.mm,0.mm], [0,0,1], 110.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Destaco clamp (operational) handle
+  # Pivot roof mount plate
   grp = ents.add_group
-  grp.name = "Destaco clamp (operational) handle"
-  face = grp.entities.add_face([0.mm,1703.mm,2312.mm], [70.mm,1703.mm,2312.mm], [70.mm,1715.mm,2312.mm], [0.mm,1715.mm,2312.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Destaco clamp (operational) handle"] || model.materials.add("Destaco clamp (operational) handle")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Destaco clamp (transport) base
-  grp = ents.add_group
-  grp.name = "Destaco clamp (transport) base"
-  face = grp.entities.add_face([870.mm,635.mm,2288.mm], [930.mm,635.mm,2288.mm], [930.mm,671.mm,2288.mm], [870.mm,671.mm,2288.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(24.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  grp.name = "Pivot roof mount plate"
+  ge = grp.entities
+  circle = ge.add_circle([175.mm,2287.mm,2368.mm], [0,0,1], 110.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Destaco clamp (transport) handle
+  # Pivot thrust collar
   grp = ents.add_group
-  grp.name = "Destaco clamp (transport) handle"
-  face = grp.entities.add_face([880.mm,647.mm,2312.mm], [950.mm,647.mm,2312.mm], [950.mm,659.mm,2312.mm], [880.mm,659.mm,2312.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Destaco clamp (operational) handle"] || model.materials.add("Destaco clamp (operational) handle")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Destaco clamp (transport) base
-  grp = ents.add_group
-  grp.name = "Destaco clamp (transport) base"
-  face = grp.entities.add_face([870.mm,1691.mm,2288.mm], [930.mm,1691.mm,2288.mm], [930.mm,1727.mm,2288.mm], [870.mm,1727.mm,2288.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(24.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  grp.name = "Pivot thrust collar"
+  ge = grp.entities
+  circle = ge.add_circle([175.mm,2287.mm,130.mm], [0,0,1], 75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(25.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Destaco clamp (transport) handle
-  grp = ents.add_group
-  grp.name = "Destaco clamp (transport) handle"
-  face = grp.entities.add_face([880.mm,1703.mm,2312.mm], [950.mm,1703.mm,2312.mm], [950.mm,1715.mm,2312.mm], [880.mm,1715.mm,2312.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Destaco clamp (operational) handle"] || model.materials.add("Destaco clamp (operational) handle")
-  mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
-  inst.name = "Carriage Rails + Locks"
-  inst.layer = model.layers["Carriage Rails"]
+  inst.name = "Pivot Axle (Ø89 post + bearings)"
+  inst.layer = model.layers["Pivot Axle"]
+
+  # ═══ Fixed left panel ═══
+  defn = model.definitions.add("Fixed left panel")
+  ents = defn.entities
+  # Fixed left panel (Yd0-180)
+  grp = ents.add_group
+  grp.name = "Fixed left panel (Yd0-180)"
+  face = grp.entities.add_face([0.mm,0.mm,130.mm], [40.mm,0.mm,130.mm], [40.mm,180.mm,130.mm], [0.mm,180.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2170.mm)
+  mat = model.materials["Fixed left panel (Yd0-180)"] || model.materials.add("Fixed left panel (Yd0-180)")
+  mat.color = Sketchup::Color.new(200, 160, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # EPDM fixed-panel top
+  grp = ents.add_group
+  grp.name = "EPDM fixed-panel top"
+  face = grp.entities.add_face([-20.mm,0.mm,2260.mm], [0.mm,0.mm,2260.mm], [0.mm,180.mm,2260.mm], [-20.mm,180.mm,2260.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # EPDM fixed-panel bottom
+  grp = ents.add_group
+  grp.name = "EPDM fixed-panel bottom"
+  face = grp.entities.add_face([-20.mm,0.mm,130.mm], [0.mm,0.mm,130.mm], [0.mm,180.mm,130.mm], [-20.mm,180.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # EPDM fixed-panel left
+  grp = ents.add_group
+  grp.name = "EPDM fixed-panel left"
+  face = grp.entities.add_face([-20.mm,0.mm,130.mm], [0.mm,0.mm,130.mm], [0.mm,40.mm,130.mm], [-20.mm,40.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2170.mm)
+  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # EPDM cut seal (fixed-swing joint)
+  grp = ents.add_group
+  grp.name = "EPDM cut seal (fixed-swing joint)"
+  face = grp.entities.add_face([0.mm,174.mm,130.mm], [40.mm,174.mm,130.mm], [40.mm,186.mm,130.mm], [0.mm,186.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2170.mm)
+  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Fixed left panel"
+  inst.layer = model.layers["Near Leaf"]
+
+  # ═══ Fixed far strip ═══
+  defn = model.definitions.add("Fixed far strip")
+  ents = defn.entities
+  # Fixed far panel strip (Yd2287-2362)
+  grp = ents.add_group
+  grp.name = "Fixed far panel strip (Yd2287-2362)"
+  face = grp.entities.add_face([0.mm,2287.mm,130.mm], [40.mm,2287.mm,130.mm], [40.mm,2362.mm,130.mm], [0.mm,2362.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2170.mm)
+  mat = model.materials["Fixed left panel (Yd0-180)"] || model.materials.add("Fixed left panel (Yd0-180)")
+  mat.color = Sketchup::Color.new(200, 160, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # EPDM fixed-far top
+  grp = ents.add_group
+  grp.name = "EPDM fixed-far top"
+  face = grp.entities.add_face([-20.mm,2287.mm,2260.mm], [0.mm,2287.mm,2260.mm], [0.mm,2362.mm,2260.mm], [-20.mm,2362.mm,2260.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # EPDM fixed-far bottom
+  grp = ents.add_group
+  grp.name = "EPDM fixed-far bottom"
+  face = grp.entities.add_face([-20.mm,2287.mm,130.mm], [0.mm,2287.mm,130.mm], [0.mm,2362.mm,130.mm], [-20.mm,2362.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # EPDM fixed-far right (far wall)
+  grp = ents.add_group
+  grp.name = "EPDM fixed-far right (far wall)"
+  face = grp.entities.add_face([-20.mm,2322.mm,130.mm], [0.mm,2322.mm,130.mm], [0.mm,2362.mm,130.mm], [-20.mm,2362.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2170.mm)
+  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # EPDM far cut seal (swing-fixed joint)
+  grp = ents.add_group
+  grp.name = "EPDM far cut seal (swing-fixed joint)"
+  face = grp.entities.add_face([0.mm,2281.mm,130.mm], [40.mm,2281.mm,130.mm], [40.mm,2293.mm,130.mm], [0.mm,2293.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2170.mm)
+  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Fixed far strip"
+  inst.layer = model.layers["Far Leaf"]
 
   # ═══ Processing Tray (partial) ═══
   defn = model.definitions.add("Processing Tray (partial)")
@@ -355,13 +425,24 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # ═══ Walkways (near + far, partial) ═══
   defn = model.definitions.add("Walkways (near + far, partial)")
   ents = defn.entities
+  # Walkway Near (swept, dropped)
+  grp = ents.add_group
+  grp.name = "Walkway Near (swept, dropped)"
+  face = grp.entities.add_face([470.mm,0.mm,103.mm], [900.mm,0.mm,103.mm], [900.mm,300.mm,103.mm], [470.mm,300.mm,103.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Walkway Near (swept, dropped)"] || model.materials.add("Walkway Near (swept, dropped)")
+  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Walkway Near (partial)
   grp = ents.add_group
   grp.name = "Walkway Near (partial)"
-  face = grp.entities.add_face([470.mm,0.mm,115.mm], [1600.mm,0.mm,115.mm], [1600.mm,300.mm,115.mm], [470.mm,300.mm,115.mm])
+  face = grp.entities.add_face([900.mm,0.mm,115.mm], [1600.mm,0.mm,115.mm], [1600.mm,300.mm,115.mm], [900.mm,300.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
-  mat = model.materials["Walkway Near (partial)"] || model.materials.add("Walkway Near (partial)")
+  mat = model.materials["Walkway Near (swept, dropped)"] || model.materials.add("Walkway Near (swept, dropped)")
   mat.color = Sketchup::Color.new(128, 128, 128)
   mat.alpha = 1.0
   grp.material = mat
@@ -372,7 +453,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([470.mm,2062.mm,115.mm], [1600.mm,2062.mm,115.mm], [1600.mm,2362.mm,115.mm], [470.mm,2362.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
-  mat = model.materials["Walkway Near (partial)"] || model.materials.add("Walkway Near (partial)")
+  mat = model.materials["Walkway Near (swept, dropped)"] || model.materials.add("Walkway Near (swept, dropped)")
   mat.color = Sketchup::Color.new(128, 128, 128)
   mat.alpha = 1.0
   grp.material = mat
@@ -381,8 +462,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.name = "Walkways (near + far, partial)"
   inst.layer = model.layers["Walkways"]
 
-  # ═══ Film-Plane Rails (left, partial) ═══
-  defn = model.definitions.add("Film-Plane Rails (left, partial)")
+  # ═══ Film-Plane Rails (left, removable) ═══
+  defn = model.definitions.add("Film-Plane Rails (left, removable)")
   ents = defn.entities
   # FP Rail BL (lower left)
   grp = ents.add_group
@@ -390,7 +471,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([150.mm,100.mm,100.mm], [190.mm,100.mm,100.mm], [190.mm,2262.mm,100.mm], [150.mm,2262.mm,100.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -401,7 +482,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([150.mm,100.mm,2248.mm], [190.mm,100.mm,2248.mm], [190.mm,2262.mm,2248.mm], [150.mm,2262.mm,2248.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -409,10 +490,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # FP Brace Beam Lower (near wall)
   grp = ents.add_group
   grp.name = "FP Brace Beam Lower (near wall)"
-  face = grp.entities.add_face([150.mm,100.mm,100.mm], [1600.mm,100.mm,100.mm], [1600.mm,150.mm,100.mm], [150.mm,150.mm,100.mm])
+  face = grp.entities.add_face([150.mm,100.mm,100.mm], [2000.mm,100.mm,100.mm], [2000.mm,150.mm,100.mm], [150.mm,150.mm,100.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -420,10 +501,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # FP Brace Beam Upper (near wall)
   grp = ents.add_group
   grp.name = "FP Brace Beam Upper (near wall)"
-  face = grp.entities.add_face([150.mm,100.mm,2248.mm], [1600.mm,100.mm,2248.mm], [1600.mm,150.mm,2248.mm], [150.mm,150.mm,2248.mm])
+  face = grp.entities.add_face([150.mm,100.mm,2248.mm], [2000.mm,100.mm,2248.mm], [2000.mm,150.mm,2248.mm], [150.mm,150.mm,2248.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -434,7 +515,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([150.mm,100.mm,100.mm], [200.mm,100.mm,100.mm], [200.mm,150.mm,100.mm], [150.mm,150.mm,100.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2148.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -442,10 +523,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # FP Brace Beam Lower (far wall)
   grp = ents.add_group
   grp.name = "FP Brace Beam Lower (far wall)"
-  face = grp.entities.add_face([150.mm,2262.mm,100.mm], [1600.mm,2262.mm,100.mm], [1600.mm,2312.mm,100.mm], [150.mm,2312.mm,100.mm])
+  face = grp.entities.add_face([150.mm,2262.mm,100.mm], [2000.mm,2262.mm,100.mm], [2000.mm,2312.mm,100.mm], [150.mm,2312.mm,100.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -453,10 +534,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # FP Brace Beam Upper (far wall)
   grp = ents.add_group
   grp.name = "FP Brace Beam Upper (far wall)"
-  face = grp.entities.add_face([150.mm,2262.mm,2248.mm], [1600.mm,2262.mm,2248.mm], [1600.mm,2312.mm,2248.mm], [150.mm,2312.mm,2248.mm])
+  face = grp.entities.add_face([150.mm,2262.mm,2248.mm], [2000.mm,2262.mm,2248.mm], [2000.mm,2312.mm,2248.mm], [150.mm,2312.mm,2248.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -467,20 +548,412 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([150.mm,2262.mm,100.mm], [200.mm,2262.mm,100.mm], [200.mm,2312.mm,100.mm], [150.mm,2312.mm,100.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2148.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail saddle shelf
+  grp = ents.add_group
+  grp.name = "Rail saddle shelf"
+  face = grp.entities.add_face([133.mm,100.mm,86.mm], [207.mm,100.mm,86.mm], [207.mm,180.mm,86.mm], [133.mm,180.mm,86.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail saddle cheek -X
+  grp = ents.add_group
+  grp.name = "Rail saddle cheek -X"
+  face = grp.entities.add_face([133.mm,100.mm,100.mm], [145.mm,100.mm,100.mm], [145.mm,180.mm,100.mm], [133.mm,180.mm,100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(44.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail saddle cheek +X
+  grp = ents.add_group
+  grp.name = "Rail saddle cheek +X"
+  face = grp.entities.add_face([195.mm,100.mm,100.mm], [207.mm,100.mm,100.mm], [207.mm,180.mm,100.mm], [195.mm,180.mm,100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(44.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail clamp bar (removable)
+  grp = ents.add_group
+  grp.name = "Rail clamp bar (removable)"
+  face = grp.entities.add_face([133.mm,122.mm,140.mm], [207.mm,122.mm,140.mm], [207.mm,158.mm,140.mm], [133.mm,158.mm,140.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Rail clamp bar (removable)"] || model.materials.add("Rail clamp bar (removable)")
+  mat.color = Sketchup::Color.new(122, 122, 130)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail locating dowel (taper)
+  grp = ents.add_group
+  grp.name = "Rail locating dowel (taper)"
+  ge = grp.entities
+  circle = ge.add_circle([170.mm,140.mm,86.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Rail locating dowel (taper)"] || model.materials.add("Rail locating dowel (taper)")
+  mat.color = Sketchup::Color.new(154, 154, 162)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail saddle shelf
+  grp = ents.add_group
+  grp.name = "Rail saddle shelf"
+  face = grp.entities.add_face([133.mm,100.mm,2234.mm], [207.mm,100.mm,2234.mm], [207.mm,180.mm,2234.mm], [133.mm,180.mm,2234.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail saddle cheek -X
+  grp = ents.add_group
+  grp.name = "Rail saddle cheek -X"
+  face = grp.entities.add_face([133.mm,100.mm,2248.mm], [145.mm,100.mm,2248.mm], [145.mm,180.mm,2248.mm], [133.mm,180.mm,2248.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(44.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail saddle cheek +X
+  grp = ents.add_group
+  grp.name = "Rail saddle cheek +X"
+  face = grp.entities.add_face([195.mm,100.mm,2248.mm], [207.mm,100.mm,2248.mm], [207.mm,180.mm,2248.mm], [195.mm,180.mm,2248.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(44.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail clamp bar (removable)
+  grp = ents.add_group
+  grp.name = "Rail clamp bar (removable)"
+  face = grp.entities.add_face([133.mm,122.mm,2288.mm], [207.mm,122.mm,2288.mm], [207.mm,158.mm,2288.mm], [133.mm,158.mm,2288.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Rail clamp bar (removable)"] || model.materials.add("Rail clamp bar (removable)")
+  mat.color = Sketchup::Color.new(122, 122, 130)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail locating dowel (taper)
+  grp = ents.add_group
+  grp.name = "Rail locating dowel (taper)"
+  ge = grp.entities
+  circle = ge.add_circle([170.mm,140.mm,2234.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Rail locating dowel (taper)"] || model.materials.add("Rail locating dowel (taper)")
+  mat.color = Sketchup::Color.new(154, 154, 162)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail saddle shelf
+  grp = ents.add_group
+  grp.name = "Rail saddle shelf"
+  face = grp.entities.add_face([133.mm,2182.mm,86.mm], [207.mm,2182.mm,86.mm], [207.mm,2262.mm,86.mm], [133.mm,2262.mm,86.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail saddle cheek -X
+  grp = ents.add_group
+  grp.name = "Rail saddle cheek -X"
+  face = grp.entities.add_face([133.mm,2182.mm,100.mm], [145.mm,2182.mm,100.mm], [145.mm,2262.mm,100.mm], [133.mm,2262.mm,100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(44.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail saddle cheek +X
+  grp = ents.add_group
+  grp.name = "Rail saddle cheek +X"
+  face = grp.entities.add_face([195.mm,2182.mm,100.mm], [207.mm,2182.mm,100.mm], [207.mm,2262.mm,100.mm], [195.mm,2262.mm,100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(44.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail clamp bar (removable)
+  grp = ents.add_group
+  grp.name = "Rail clamp bar (removable)"
+  face = grp.entities.add_face([133.mm,2204.mm,140.mm], [207.mm,2204.mm,140.mm], [207.mm,2240.mm,140.mm], [133.mm,2240.mm,140.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Rail clamp bar (removable)"] || model.materials.add("Rail clamp bar (removable)")
+  mat.color = Sketchup::Color.new(122, 122, 130)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail locating dowel (taper)
+  grp = ents.add_group
+  grp.name = "Rail locating dowel (taper)"
+  ge = grp.entities
+  circle = ge.add_circle([170.mm,2222.mm,86.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Rail locating dowel (taper)"] || model.materials.add("Rail locating dowel (taper)")
+  mat.color = Sketchup::Color.new(154, 154, 162)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail saddle shelf
+  grp = ents.add_group
+  grp.name = "Rail saddle shelf"
+  face = grp.entities.add_face([133.mm,2182.mm,2234.mm], [207.mm,2182.mm,2234.mm], [207.mm,2262.mm,2234.mm], [133.mm,2262.mm,2234.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail saddle cheek -X
+  grp = ents.add_group
+  grp.name = "Rail saddle cheek -X"
+  face = grp.entities.add_face([133.mm,2182.mm,2248.mm], [145.mm,2182.mm,2248.mm], [145.mm,2262.mm,2248.mm], [133.mm,2262.mm,2248.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(44.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail saddle cheek +X
+  grp = ents.add_group
+  grp.name = "Rail saddle cheek +X"
+  face = grp.entities.add_face([195.mm,2182.mm,2248.mm], [207.mm,2182.mm,2248.mm], [207.mm,2262.mm,2248.mm], [195.mm,2262.mm,2248.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(44.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail clamp bar (removable)
+  grp = ents.add_group
+  grp.name = "Rail clamp bar (removable)"
+  face = grp.entities.add_face([133.mm,2204.mm,2288.mm], [207.mm,2204.mm,2288.mm], [207.mm,2240.mm,2288.mm], [133.mm,2240.mm,2288.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Rail clamp bar (removable)"] || model.materials.add("Rail clamp bar (removable)")
+  mat.color = Sketchup::Color.new(122, 122, 130)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail locating dowel (taper)
+  grp = ents.add_group
+  grp.name = "Rail locating dowel (taper)"
+  ge = grp.entities
+  circle = ge.add_circle([170.mm,2222.mm,2234.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Rail locating dowel (taper)"] || model.materials.add("Rail locating dowel (taper)")
+  mat.color = Sketchup::Color.new(154, 154, 162)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Film-Plane Rails (left, removable)"
+  inst.layer = model.layers["Film Plane Rails"]
+
+  # ═══ Transport stay wall anchors ═══
+  defn = model.definitions.add("Transport stay wall anchors")
+  ents = defn.entities
+  # Stay inside plate
+  grp = ents.add_group
+  grp.name = "Stay inside plate"
+  face = grp.entities.add_face([1594.17087800115.mm,0.mm,100.mm], [1794.17087800115.mm,0.mm,100.mm], [1794.17087800115.mm,12.mm,100.mm], [1594.17087800115.mm,12.mm,100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay outside plate
+  grp = ents.add_group
+  grp.name = "Stay outside plate"
+  face = grp.entities.add_face([1594.17087800115.mm,-52.mm,100.mm], [1794.17087800115.mm,-52.mm,100.mm], [1794.17087800115.mm,-40.mm,100.mm], [1594.17087800115.mm,-40.mm,100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay eye
+  grp = ents.add_group
+  grp.name = "Stay eye"
+  face = grp.entities.add_face([1679.17087800115.mm,12.mm,185.mm], [1709.17087800115.mm,12.mm,185.mm], [1709.17087800115.mm,67.mm,185.mm], [1679.17087800115.mm,67.mm,185.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(30.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay bolt M16
+  grp = ents.add_group
+  grp.name = "Stay bolt M16"
+  face = grp.entities.add_face([1616.17087800115.mm,-58.mm,122.mm], [1632.17087800115.mm,-58.mm,122.mm], [1632.17087800115.mm,18.mm,122.mm], [1616.17087800115.mm,18.mm,122.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay bolt M16
+  grp = ents.add_group
+  grp.name = "Stay bolt M16"
+  face = grp.entities.add_face([1616.17087800115.mm,-58.mm,262.mm], [1632.17087800115.mm,-58.mm,262.mm], [1632.17087800115.mm,18.mm,262.mm], [1616.17087800115.mm,18.mm,262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay bolt M16
+  grp = ents.add_group
+  grp.name = "Stay bolt M16"
+  face = grp.entities.add_face([1756.17087800115.mm,-58.mm,122.mm], [1772.17087800115.mm,-58.mm,122.mm], [1772.17087800115.mm,18.mm,122.mm], [1756.17087800115.mm,18.mm,122.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay bolt M16
+  grp = ents.add_group
+  grp.name = "Stay bolt M16"
+  face = grp.entities.add_face([1756.17087800115.mm,-58.mm,262.mm], [1772.17087800115.mm,-58.mm,262.mm], [1772.17087800115.mm,18.mm,262.mm], [1756.17087800115.mm,18.mm,262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay inside plate
+  grp = ents.add_group
+  grp.name = "Stay inside plate"
+  face = grp.entities.add_face([1594.17087800115.mm,0.mm,1950.mm], [1794.17087800115.mm,0.mm,1950.mm], [1794.17087800115.mm,12.mm,1950.mm], [1594.17087800115.mm,12.mm,1950.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay outside plate
+  grp = ents.add_group
+  grp.name = "Stay outside plate"
+  face = grp.entities.add_face([1594.17087800115.mm,-52.mm,1950.mm], [1794.17087800115.mm,-52.mm,1950.mm], [1794.17087800115.mm,-40.mm,1950.mm], [1594.17087800115.mm,-40.mm,1950.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay eye
+  grp = ents.add_group
+  grp.name = "Stay eye"
+  face = grp.entities.add_face([1679.17087800115.mm,12.mm,2035.mm], [1709.17087800115.mm,12.mm,2035.mm], [1709.17087800115.mm,67.mm,2035.mm], [1679.17087800115.mm,67.mm,2035.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(30.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay bolt M16
+  grp = ents.add_group
+  grp.name = "Stay bolt M16"
+  face = grp.entities.add_face([1616.17087800115.mm,-58.mm,1972.mm], [1632.17087800115.mm,-58.mm,1972.mm], [1632.17087800115.mm,18.mm,1972.mm], [1616.17087800115.mm,18.mm,1972.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay bolt M16
+  grp = ents.add_group
+  grp.name = "Stay bolt M16"
+  face = grp.entities.add_face([1616.17087800115.mm,-58.mm,2112.mm], [1632.17087800115.mm,-58.mm,2112.mm], [1632.17087800115.mm,18.mm,2112.mm], [1616.17087800115.mm,18.mm,2112.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay bolt M16
+  grp = ents.add_group
+  grp.name = "Stay bolt M16"
+  face = grp.entities.add_face([1756.17087800115.mm,-58.mm,1972.mm], [1772.17087800115.mm,-58.mm,1972.mm], [1772.17087800115.mm,18.mm,1972.mm], [1756.17087800115.mm,18.mm,1972.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay bolt M16
+  grp = ents.add_group
+  grp.name = "Stay bolt M16"
+  face = grp.entities.add_face([1756.17087800115.mm,-58.mm,2112.mm], [1772.17087800115.mm,-58.mm,2112.mm], [1772.17087800115.mm,18.mm,2112.mm], [1756.17087800115.mm,18.mm,2112.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
-  inst.name = "Film-Plane Rails (left, partial)"
-  inst.layer = model.layers["Film Plane Rails"]
+  inst.name = "Transport stay wall anchors"
+  inst.layer = model.layers["Lock anchor"]
 
 
-# ═══ Panel Slide — DYNAMIC COMPONENT (the moving assembly) ═══
-# Interact tool → click to ANIMATE the panel between operating (0) and
-# transport (880mm).
-defn = model.definitions.add("Panel Slide")
+# Strike the original 50×50 far brace post — the Ø89 pivot post replaces it.
+fpdef = model.definitions.to_a.find { |d| d.name =~ /Film-Plane Rails/ }
+fpdef.entities.grep(Sketchup::Group).each { |g| g.erase! if g.name =~ /FP Brace Post L .far wall./ } if fpdef
+
+# ═══ Panel Swing — DYNAMIC COMPONENT (the swinging assembly) ═══
+# Interact tool → click to ANIMATE the panel 0→56° about the vertical pivot.
+defn = model.definitions.add("Panel Swing")
 ents = defn.entities
   # Panel near corner (40mm)
   grp = ents.add_group
@@ -543,7 +1016,7 @@ ents = defn.entities
   face = grp.entities.add_face([-20.mm,0.mm,130.mm], [0.mm,0.mm,130.mm], [0.mm,716.mm,130.mm], [-20.mm,716.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["EPDM seal bottom L"] || model.materials.add("EPDM seal bottom L")
+  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
   mat.color = Sketchup::Color.new(90, 48, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -554,7 +1027,7 @@ ents = defn.entities
   face = grp.entities.add_face([-20.mm,1646.mm,130.mm], [0.mm,1646.mm,130.mm], [0.mm,2362.mm,130.mm], [-20.mm,2362.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["EPDM seal bottom L"] || model.materials.add("EPDM seal bottom L")
+  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
   mat.color = Sketchup::Color.new(90, 48, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -565,7 +1038,7 @@ ents = defn.entities
   face = grp.entities.add_face([-20.mm,0.mm,2260.mm], [0.mm,0.mm,2260.mm], [0.mm,2362.mm,2260.mm], [-20.mm,2362.mm,2260.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["EPDM seal bottom L"] || model.materials.add("EPDM seal bottom L")
+  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
   mat.color = Sketchup::Color.new(90, 48, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -576,7 +1049,7 @@ ents = defn.entities
   face = grp.entities.add_face([-20.mm,0.mm,130.mm], [0.mm,0.mm,130.mm], [0.mm,40.mm,130.mm], [-20.mm,40.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2170.mm)
-  mat = model.materials["EPDM seal bottom L"] || model.materials.add("EPDM seal bottom L")
+  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
   mat.color = Sketchup::Color.new(90, 48, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -587,7 +1060,7 @@ ents = defn.entities
   face = grp.entities.add_face([-20.mm,2322.mm,130.mm], [0.mm,2322.mm,130.mm], [0.mm,2362.mm,130.mm], [-20.mm,2362.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2170.mm)
-  mat = model.materials["EPDM seal bottom L"] || model.materials.add("EPDM seal bottom L")
+  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
   mat.color = Sketchup::Color.new(90, 48, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -598,7 +1071,7 @@ ents = defn.entities
   face = grp.entities.add_face([-30.mm,0.mm,220.mm], [30.mm,0.mm,220.mm], [30.mm,30.mm,220.mm], [-30.mm,30.mm,220.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -609,7 +1082,7 @@ ents = defn.entities
   face = grp.entities.add_face([-30.mm,0.mm,1190.mm], [30.mm,0.mm,1190.mm], [30.mm,30.mm,1190.mm], [-30.mm,30.mm,1190.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -620,7 +1093,7 @@ ents = defn.entities
   face = grp.entities.add_face([-30.mm,0.mm,2158.mm], [30.mm,0.mm,2158.mm], [30.mm,30.mm,2158.mm], [-30.mm,30.mm,2158.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -666,6 +1139,61 @@ ents = defn.entities
   face.pushpull(50.mm)
   mat = model.materials["Southco cam latch"] || model.materials.add("Southco cam latch")
   mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Panel near (swing, Yd180-653)
+  grp = ents.add_group
+  grp.name = "Panel near (swing, Yd180-653)"
+  face = grp.entities.add_face([0.mm,180.mm,130.mm], [40.mm,180.mm,130.mm], [40.mm,653.mm,130.mm], [0.mm,653.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2170.mm)
+  mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
+  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # EPDM seal top (trimmed)
+  grp = ents.add_group
+  grp.name = "EPDM seal top (trimmed)"
+  face = grp.entities.add_face([-20.mm,180.mm,2260.mm], [0.mm,180.mm,2260.mm], [0.mm,2287.mm,2260.mm], [-20.mm,2287.mm,2260.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # EPDM seal bottom L (trimmed)
+  grp = ents.add_group
+  grp.name = "EPDM seal bottom L (trimmed)"
+  face = grp.entities.add_face([-20.mm,180.mm,130.mm], [0.mm,180.mm,130.mm], [0.mm,716.mm,130.mm], [-20.mm,716.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Panel far corner (trimmed)
+  grp = ents.add_group
+  grp.name = "Panel far corner (trimmed)"
+  face = grp.entities.add_face([0.mm,1709.mm,130.mm], [40.mm,1709.mm,130.mm], [40.mm,2287.mm,130.mm], [0.mm,2287.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2170.mm)
+  mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
+  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # EPDM seal bottom R (trimmed)
+  grp = ents.add_group
+  grp.name = "EPDM seal bottom R (trimmed)"
+  face = grp.entities.add_face([-20.mm,1646.mm,130.mm], [0.mm,1646.mm,130.mm], [0.mm,2287.mm,130.mm], [-20.mm,2287.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
+  mat.color = Sketchup::Color.new(90, 48, 32)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -745,8 +1273,212 @@ ents = defn.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(45.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drum frame rail (X near)
+  grp = ents.add_group
+  grp.name = "Drum frame rail (X near)"
+  face = grp.entities.add_face([-890.mm,700.mm,130.mm], [50.mm,700.mm,130.mm], [50.mm,750.mm,130.mm], [-890.mm,750.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drum frame rail (X far)
+  grp = ents.add_group
+  grp.name = "Drum frame rail (X far)"
+  face = grp.entities.add_face([-890.mm,1612.mm,130.mm], [50.mm,1612.mm,130.mm], [50.mm,1662.mm,130.mm], [-890.mm,1662.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drum frame rail (Yd front)
+  grp = ents.add_group
+  grp.name = "Drum frame rail (Yd front)"
+  face = grp.entities.add_face([-890.mm,700.mm,130.mm], [-840.mm,700.mm,130.mm], [-840.mm,1662.mm,130.mm], [-890.mm,1662.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drum frame rail (Yd back)
+  grp = ents.add_group
+  grp.name = "Drum frame rail (Yd back)"
+  face = grp.entities.add_face([0.mm,700.mm,130.mm], [50.mm,700.mm,130.mm], [50.mm,1662.mm,130.mm], [0.mm,1662.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drum frame rail (X near)
+  grp = ents.add_group
+  grp.name = "Drum frame rail (X near)"
+  face = grp.entities.add_face([-890.mm,700.mm,2200.mm], [50.mm,700.mm,2200.mm], [50.mm,750.mm,2200.mm], [-890.mm,750.mm,2200.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drum frame rail (X far)
+  grp = ents.add_group
+  grp.name = "Drum frame rail (X far)"
+  face = grp.entities.add_face([-890.mm,1612.mm,2200.mm], [50.mm,1612.mm,2200.mm], [50.mm,1662.mm,2200.mm], [-890.mm,1662.mm,2200.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drum frame rail (Yd front)
+  grp = ents.add_group
+  grp.name = "Drum frame rail (Yd front)"
+  face = grp.entities.add_face([-890.mm,700.mm,2200.mm], [-840.mm,700.mm,2200.mm], [-840.mm,1662.mm,2200.mm], [-890.mm,1662.mm,2200.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drum frame rail (Yd back)
+  grp = ents.add_group
+  grp.name = "Drum frame rail (Yd back)"
+  face = grp.entities.add_face([0.mm,700.mm,2200.mm], [50.mm,700.mm,2200.mm], [50.mm,1662.mm,2200.mm], [0.mm,1662.mm,2200.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drum frame post
+  grp = ents.add_group
+  grp.name = "Drum frame post"
+  face = grp.entities.add_face([-890.mm,700.mm,130.mm], [-840.mm,700.mm,130.mm], [-840.mm,750.mm,130.mm], [-890.mm,750.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2120.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drum frame post
+  grp = ents.add_group
+  grp.name = "Drum frame post"
+  face = grp.entities.add_face([-890.mm,1612.mm,130.mm], [-840.mm,1612.mm,130.mm], [-840.mm,1662.mm,130.mm], [-890.mm,1662.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2120.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drum frame post
+  grp = ents.add_group
+  grp.name = "Drum frame post"
+  face = grp.entities.add_face([0.mm,700.mm,130.mm], [50.mm,700.mm,130.mm], [50.mm,750.mm,130.mm], [0.mm,750.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2120.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drum frame post
+  grp = ents.add_group
+  grp.name = "Drum frame post"
+  face = grp.entities.add_face([0.mm,1612.mm,130.mm], [50.mm,1612.mm,130.mm], [50.mm,1662.mm,130.mm], [0.mm,1662.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2120.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drum bearing cross-beam (top)
+  grp = ents.add_group
+  grp.name = "Drum bearing cross-beam (top)"
+  face = grp.entities.add_face([-425.mm,700.mm,2200.mm], [-375.mm,700.mm,2200.mm], [-375.mm,1662.mm,2200.mm], [-425.mm,1662.mm,2200.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drum top radial journal (Ø120 guide)
+  grp = ents.add_group
+  grp.name = "Drum top radial journal (Ø120 guide)"
+  ge = grp.entities
+  circle = ge.add_circle([-400.mm,1181.mm,2200.mm], [0,0,1], 60.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(50.mm)
+  mat = model.materials["Drum top radial journal (Ø120 guide)"] || model.materials.add("Drum top radial journal (Ø120 guide)")
+  mat.color = Sketchup::Color.new(90, 90, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drum top pivot pin
+  grp = ents.add_group
+  grp.name = "Drum top pivot pin"
+  ge = grp.entities
+  circle = ge.add_circle([-400.mm,1181.mm,2130.mm], [0,0,1], 22.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(80.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drum bearing cross-beam (bottom, recessed)
+  grp = ents.add_group
+  grp.name = "Drum bearing cross-beam (bottom, recessed)"
+  face = grp.entities.add_face([-425.mm,700.mm,80.mm], [-375.mm,700.mm,80.mm], [-375.mm,1662.mm,80.mm], [-425.mm,1662.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drum bottom thrust bearing (Ø220 flush slew pad)
+  grp = ents.add_group
+  grp.name = "Drum bottom thrust bearing (Ø220 flush slew pad)"
+  ge = grp.entities
+  circle = ge.add_circle([-400.mm,1181.mm,108.mm], [0,0,1], 110.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Drum top radial journal (Ø120 guide)"] || model.materials.add("Drum top radial journal (Ø120 guide)")
+  mat.color = Sketchup::Color.new(90, 90, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drum threshold sill (flush, chamfered step-over)
+  grp = ents.add_group
+  grp.name = "Drum threshold sill (flush, chamfered step-over)"
+  face = grp.entities.add_face([-640.mm,861.mm,122.mm], [-390.mm,861.mm,122.mm], [-390.mm,1501.mm,122.mm], [-640.mm,1501.mm,122.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Rail clamp bar (removable)"] || model.materials.add("Rail clamp bar (removable)")
+  mat.color = Sketchup::Color.new(122, 122, 130)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -835,7 +1567,7 @@ ents = defn.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(50.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -890,7 +1622,7 @@ ents = defn.entities
   face = grp.entities.add_face([0.mm,235.mm,470.mm], [5.mm,235.mm,470.mm], [5.mm,495.mm,470.mm], [0.mm,495.mm,470.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(260.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -964,7 +1696,7 @@ ents = defn.entities
   face = grp.entities.add_face([-38.mm,269.mm,546.5.mm], [-2.mm,269.mm,546.5.mm], [-2.mm,461.mm,546.5.mm], [-38.mm,461.mm,546.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -975,7 +1707,7 @@ ents = defn.entities
   face = grp.entities.add_face([-38.mm,269.mm,572.5.mm], [-2.mm,269.mm,572.5.mm], [-2.mm,461.mm,572.5.mm], [-38.mm,461.mm,572.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -986,7 +1718,7 @@ ents = defn.entities
   face = grp.entities.add_face([-38.mm,269.mm,598.5.mm], [-2.mm,269.mm,598.5.mm], [-2.mm,461.mm,598.5.mm], [-38.mm,461.mm,598.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -997,7 +1729,7 @@ ents = defn.entities
   face = grp.entities.add_face([-38.mm,269.mm,624.5.mm], [-2.mm,269.mm,624.5.mm], [-2.mm,461.mm,624.5.mm], [-38.mm,461.mm,624.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1008,70 +1740,126 @@ ents = defn.entities
   face = grp.entities.add_face([-38.mm,269.mm,650.5.mm], [-2.mm,269.mm,650.5.mm], [-2.mm,461.mm,650.5.mm], [-38.mm,461.mm,650.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # HGH20CA carriage L
+  # Hub tube
   grp = ents.add_group
-  grp.name = "HGH20CA carriage L"
-  face = grp.entities.add_face([18.mm,631.mm,2330.mm], [62.mm,631.mm,2330.mm], [62.mm,675.mm,2330.mm], [18.mm,675.mm,2330.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(28.mm)
-  mat = model.materials["Destaco clamp (operational) handle"] || model.materials.add("Destaco clamp (operational) handle")
-  mat.color = Sketchup::Color.new(192, 64, 16)
+  grp.name = "Hub tube"
+  ge = grp.entities
+  circle = ge.add_circle([175.mm,2287.mm,180.mm], [0,0,1], 58.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(1870.mm)
+  mat = model.materials["Hub tube"] || model.materials.add("Hub tube")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 0.4
+  grp.material = mat
+
+  # Hub thrust bearing
+  grp = ents.add_group
+  grp.name = "Hub thrust bearing"
+  ge = grp.entities
+  circle = ge.add_circle([175.mm,2287.mm,155.mm], [0,0,1], 70.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(25.mm)
+  mat = model.materials["Drum top radial journal (Ø120 guide)"] || model.materials.add("Drum top radial journal (Ø120 guide)")
+  mat.color = Sketchup::Color.new(90, 90, 160)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Suspension bracket L
+  # Hub radial bearing (bottom)
   grp = ents.add_group
-  grp.name = "Suspension bracket L"
-  face = grp.entities.add_face([15.mm,633.mm,2300.mm], [75.mm,633.mm,2300.mm], [75.mm,673.mm,2300.mm], [15.mm,673.mm,2300.mm])
+  grp.name = "Hub radial bearing (bottom)"
+  ge = grp.entities
+  circle = ge.add_circle([175.mm,2287.mm,220.mm], [0,0,1], 60.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(55.mm)
+  mat = model.materials["Drum top radial journal (Ø120 guide)"] || model.materials.add("Drum top radial journal (Ø120 guide)")
+  mat.color = Sketchup::Color.new(90, 90, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Hub radial bearing (top)
+  grp = ents.add_group
+  grp.name = "Hub radial bearing (top)"
+  ge = grp.entities
+  circle = ge.add_circle([175.mm,2287.mm,2050.mm], [0,0,1], 60.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(55.mm)
+  mat = model.materials["Drum top radial journal (Ø120 guide)"] || model.materials.add("Drum top radial journal (Ø120 guide)")
+  mat.color = Sketchup::Color.new(90, 90, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Hinge bracket (panel→hub)
+  grp = ents.add_group
+  grp.name = "Hinge bracket (panel→hub)"
+  face = grp.entities.add_face([55.mm,2252.mm,300.mm], [195.mm,2252.mm,300.mm], [195.mm,2322.mm,300.mm], [55.mm,2322.mm,300.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(30.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  face.pushpull(110.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # HGH20CA carriage R
+  # Hinge bracket (panel→hub)
   grp = ents.add_group
-  grp.name = "HGH20CA carriage R"
-  face = grp.entities.add_face([18.mm,1687.mm,2330.mm], [62.mm,1687.mm,2330.mm], [62.mm,1731.mm,2330.mm], [18.mm,1731.mm,2330.mm])
+  grp.name = "Hinge bracket (panel→hub)"
+  face = grp.entities.add_face([55.mm,2252.mm,1180.mm], [195.mm,2252.mm,1180.mm], [195.mm,2322.mm,1180.mm], [55.mm,2322.mm,1180.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(28.mm)
-  mat = model.materials["Destaco clamp (operational) handle"] || model.materials.add("Destaco clamp (operational) handle")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Suspension bracket R
-  grp = ents.add_group
-  grp.name = "Suspension bracket R"
-  face = grp.entities.add_face([15.mm,1689.mm,2300.mm], [75.mm,1689.mm,2300.mm], [75.mm,1729.mm,2300.mm], [15.mm,1729.mm,2300.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(30.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  face.pushpull(110.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left carriage beam (60×60 SHS)
+  # Hinge bracket (panel→hub)
   grp = ents.add_group
-  grp.name = "Left carriage beam (60×60 SHS)"
-  face = grp.entities.add_face([0.mm,0.mm,130.mm], [60.mm,0.mm,130.mm], [60.mm,60.mm,130.mm], [0.mm,60.mm,130.mm])
+  grp.name = "Hinge bracket (panel→hub)"
+  face = grp.entities.add_face([55.mm,2252.mm,2000.mm], [195.mm,2252.mm,2000.mm], [195.mm,2322.mm,2000.mm], [55.mm,2322.mm,2000.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2170.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  face.pushpull(110.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
+  # Stay hook (frame)
+  grp = ents.add_group
+  grp.name = "Stay hook (frame)"
+  face = grp.entities.add_face([-10.mm,320.mm,165.mm], [50.mm,320.mm,165.mm], [50.mm,380.mm,165.mm], [-10.mm,380.mm,165.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
 
-# Drum Rotor geometry nested INSIDE Panel Slide so it travels with the slide.
+  # Stay hook (frame)
+  grp = ents.add_group
+  grp.name = "Stay hook (frame)"
+  face = grp.entities.add_face([-10.mm,320.mm,2015.mm], [50.mm,320.mm,2015.mm], [50.mm,380.mm,2015.mm], [-10.mm,380.mm,2015.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+# Trim to the 3-zone split: erase the un-split corners + full-width seals + piano hinges
+# (the fixed left/far leaves + the trimmed swing seals provide the rest).
+defn.entities.grep(Sketchup::Group).select { |g| g.name =~ /Panel near corner|Panel far corner .40mm.|EPDM seal left|EPDM seal right|EPDM seal bottom L$|EPDM seal bottom R$|EPDM seal top$|Piano hinge/ }.each { |g| g.erase! }
+
+# Drum Rotor — nested so it swings with the cage, with its OWN revolve attribute
+# (operational person-access), independent of the transport swing.
 rotor_defn = model.definitions.add("Drum Rotor")
-ents = rotor_defn.entities
+rents = rotor_defn.entities
   # LT Drum C-shell
   grp = ents.add_group
   grp.name = "LT Drum C-shell"
@@ -1118,7 +1906,7 @@ ents = rotor_defn.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(65.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1131,7 +1919,7 @@ ents = rotor_defn.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(400.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1142,7 +1930,7 @@ ents = rotor_defn.entities
   face = grp.entities.add_face([357.mm,-6.mm,720.mm], [428.mm,-6.mm,720.mm], [428.mm,6.mm,720.mm], [357.mm,6.mm,720.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1153,7 +1941,7 @@ ents = rotor_defn.entities
   face = grp.entities.add_face([357.mm,-6.mm,1080.mm], [428.mm,-6.mm,1080.mm], [428.mm,6.mm,1080.mm], [357.mm,6.mm,1080.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Destaco clamp (operational) base"] || model.materials.add("Destaco clamp (operational) base")
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1186,33 +1974,40 @@ ents = rotor_defn.entities
 
 rotor_inst = defn.entities.add_instance(rotor_defn, Geom::Transformation.translation([-400.mm, 1181.mm, 0]))
 rotor_inst.name = "Drum Rotor"
-rotor_inst.layer = model.layers["Sliding Assembly"]
 
-inst = entities.add_instance(defn, Geom::Transformation.new)
-inst.name = "Panel Slide"
-inst.layer = model.layers["Sliding Assembly"]
+# Shift the moving def by -pivot so the def origin sits at the pivot — then the instance's
+# RotZ swings the assembly about the pivot (same origin-at-rotation-point pattern the
+# cargo-door leaves use).
+shift = Geom::Transformation.translation([(-175).mm, (-2287).mm, 0])
+defn.entities.transform_entities(shift, defn.entities.to_a)
+
+inst = entities.add_instance(defn, Geom::Transformation.translation([175.mm, 2287.mm, 0]))
+inst.name = "Panel Swing"
+inst.layer = model.layers["Panel Swing"]
 da = "dynamic_attributes"
 [defn, inst].each do |e|
-  e.set_attribute(da, "_name", "PanelSlide")
+  e.set_attribute(da, "_name", "PanelSwing")
   e.set_attribute(da, "_lengthunits", "MILLIMETERS")
-  e.set_attribute(da, "x", 0.0)
+  e.set_attribute(da, "swing", 0.0)
 end
-inst.set_attribute(da, "_x_access", "VIEW")
-inst.set_attribute(da, "_x_label", "Slide")
-inst.set_attribute(da, "onclick", 'ANIMATE("x", 0, 880)')
+inst.set_attribute(da, "_swing_access", "VIEW")
+inst.set_attribute(da, "_swing_label", "Swing")
+inst.set_attribute(da, "rotz", 0.0)
+inst.set_attribute(da, "_rotz_formula", "56*swing")
+inst.set_attribute(da, "onclick", 'ANIMATE("swing", 0, 1)')
 inst.set_attribute(da, "_onclick_access", "NONE")
 dc_inst = inst
 
-# Drum Rotor — nested, so it travels with the slide. Its RotZ is DRIVEN by the
-# slide via a formula on the parent's x (the same child-reads-parent pattern the
-# cargo doors use, which DOES update during the parent's animation): as the panel
-# slides 0→880mm the drum revolves 0→180° so the opening swings from
-# the exterior round to face the INTERIOR (open on the inside in transport). No
-# onclick on the drum, so clicking it still cleanly slides the panel.
+# Drum Rotor revolve DC — click the drum to revolve it 0→180° (person access).
 rotor_inst.set_attribute(da, "_name", "DrumRotor")
 rotor_inst.set_attribute(da, "_lengthunits", "MILLIMETERS")
+rotor_inst.set_attribute(da, "revolve", 0.0)
+rotor_inst.set_attribute(da, "_revolve_access", "VIEW")
+rotor_inst.set_attribute(da, "_revolve_label", "Revolve")
 rotor_inst.set_attribute(da, "rotz", 0.0)
-rotor_inst.set_attribute(da, "_rotz_formula", "180*PanelSlide!x/880")
+rotor_inst.set_attribute(da, "_rotz_formula", "180*revolve")
+rotor_inst.set_attribute(da, "onclick", 'ANIMATE("revolve", 0, 1)')
+rotor_inst.set_attribute(da, "_onclick_access", "NONE")
 
 # ═══ Cargo Doors — DYNAMIC COMPONENT (click to close) ═══
 # Parent "Cargo Doors" holds two leaf children whose RotZ is driven by the
@@ -1279,12 +2074,12 @@ if inst
   txt = entities.add_text("DOOR FRAME", anc, Geom::Vector3d.new(-500.mm, -200.mm, 800.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
-inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Panel Slide" }
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Panel Swing" }
 if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
   txt = entities.add_text("HINGE PANEL
-(slides for transport)", anc, Geom::Vector3d.new(550.mm, -100.mm, 1250.mm))
+(swings 56° for transport)", anc, Geom::Vector3d.new(550.mm, -100.mm, 1250.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Cargo Doors" }
@@ -1308,29 +2103,34 @@ txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(150.mm, 365.mm, 700.mm)
 txt = entities.add_text("FAN B (intake)", anc, Geom::Vector3d.new(-200.mm, -650.mm, 1000.mm))
 txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(520.mm, 653.mm, 2373.mm)
-txt = entities.add_text("CARRIAGE RAILS
-+ Destaco locks", anc, Geom::Vector3d.new(100.mm, -450.mm, 850.mm))
+anc = Geom::Point3d.new(175.mm, 2287.mm, 1600.mm)
+txt = entities.add_text("PIVOT POST Ø89 CHS
+(= film far-left post)", anc, Geom::Vector3d.new(550.mm, -200.mm, 700.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(1035.mm, 150.mm, 73.mm)
 txt = entities.add_text("WALKWAYS", anc, Geom::Vector3d.new(250.mm, -750.mm, 900.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(170.mm, 1181.mm, 2268.mm)
-txt = entities.add_text("FILM-PLANE RAILS", anc, Geom::Vector3d.new(1400.mm, 0.mm, 300.mm))
+txt = entities.add_text("FILM-PLANE RAILS
+(left pair removable)", anc, Geom::Vector3d.new(1400.mm, 0.mm, 300.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(1694.17087800115.mm, 0.mm, 1075.mm)
+txt = entities.add_text("TRANSPORT STAY anchor
+(bolted plates; rod→wall when swung)", anc, Geom::Vector3d.new(300.mm, -300.mm, 700.mm))
 txt.layer = model.layers["Labels"] rescue nil
 
 model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Context", "Door Frame", "Carriage Rails", "Processing Tray", "Walkways", "Film Plane Rails", "Sliding Assembly", "Cargo Doors", "Labels"]
+keep_tags = ["Context", "Door Frame", "Pivot Axle", "Processing Tray", "Walkways", "Film Plane Rails", "Near Leaf", "Far Leaf", "Lock anchor", "Panel skin", "Panel Swing", "Cargo Doors", "Labels"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
   model.layers.remove(l, true) rescue nil
 }
 
-# ── Camera + scenes (the slide is interactive; plus a "Labeled" callout scene) ──
+# ── Camera + scenes (the swing is interactive; plus a "Labeled" callout scene) ──
 model.layers.each { |l| l.visible = true }
 model.layers["Labels"].visible = false if model.layers["Labels"]  # frame geometry, not labels
 bb = model.bounds
@@ -1341,7 +2141,7 @@ model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 model.active_view.zoom(0.62)   # pull back so callouts have margin (and read larger)
 # Main interactive scene — Labels OFF.
-page = model.pages.add("Light Trap — click panel to slide")
+page = model.pages.add("Light Trap — click panel to swing")
 page.use_camera = true
 # Labeled — same view + component callouts.
 model.layers["Labels"].visible = true if model.layers["Labels"]
@@ -1350,18 +2150,18 @@ model.layers["Labels"].visible = false if model.layers["Labels"]
 
 model.commit_operation
 
-# Register the DC attributes with the Dynamic Components engine so the Interact
-# tool drives the slide (skipped if the extension isn't loaded).
+# Register the DC attributes with the Dynamic Components engine so the Interact tool
+# drives the swing (skipped if the extension isn't loaded).
 dc_ready = false
 if defined?($dc_observers) && $dc_observers.respond_to?(:get_latest_class)
   cls = $dc_observers.get_latest_class
   if cls
-    [dc_inst, doors_inst].each { |di| cls.redraw_with_undo(di) rescue nil }
+    [dc_inst, rotor_inst, doors_inst].each { |di| cls.redraw_with_undo(di) rescue nil }
     dc_ready = true
   end
 end
 
-{ success: true, model: "Light Trap (dynamic slide)",
+{ success: true, model: "Light Trap (dynamic swing)",
    components: model.entities.grep(Sketchup::ComponentInstance).length,
-   dynamic_engine: dc_ready, slide_mm: 880,
+   dynamic_engine: dc_ready, swing_deg: 56,
    tags: model.layers.count, scenes: model.pages.count }.to_json

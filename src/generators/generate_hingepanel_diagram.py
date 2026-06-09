@@ -1140,7 +1140,7 @@ def sheet3():
 
     # ══════════════════════════════════════════════════════════════════════════
     # DETAIL B — Panel bottom light seal (enlarged), section at a corner zone
-    # (away from the drum). The 80mm floor gap is closed in the operational
+    # (away from the drum). The 130mm floor gap (PANEL_FLOOR_GAP, +50 raise) is closed in operational
     # ("camera") position by a fixed-frame seal lip the panel bottom edge recedes
     # into; a 20mm EPDM strip is compressed against it by the lower cam latches.
     # ══════════════════════════════════════════════════════════════════════════
@@ -1194,7 +1194,8 @@ def sheet3():
     # floor-gap dimension (interior side, clear lane)
     ax.annotate("", xy=(DX(52), DY(0)), xytext=(DX(52), DY(80)),
                 arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=1.0), zorder=25)
-    ax.text(DX(56), DY(40), "80 mm\nfloor gap", fontsize=5.8, color=C_DIM,
+    from tbs_constants import PANEL_FLOOR_GAP as _PFG, PROC_TRAY_RIM as _TRIM
+    ax.text(DX(56), DY(40), f"{_PFG} mm\nfloor gap", fontsize=5.8, color=C_DIM,
             ha="left", va="center", **FONT)
 
     # callout labels (right side, leaders pointing into the detail)
@@ -1209,7 +1210,7 @@ def sheet3():
     dlbl((DX(-10), DY(100)), DY(108), "20 mm EPDM — panel\nrecedes into / seals on lip")
     dlbl((DX(-26), DY(64)), DY(74), "Frame seal lip — steel upstand\nfrom threshold (notched at drum)")
     dlbl((DX(-40), DY(22)), DY(34), "Fixed door-frame\nthreshold (50×50 RHS)")
-    dlbl((DX(74), DY(28)), DY(6), "50 mm tray rim —\n30 mm clearance")
+    dlbl((DX(74), DY(28)), DY(6), f"{_TRIM} mm tray rim —\n{_PFG - _TRIM} mm clearance")
 
     # ══════════════════════════════════════════════════════════════════════════
     # DETAIL C — Panel top light seal (enlarged), the mirror of Detail B.

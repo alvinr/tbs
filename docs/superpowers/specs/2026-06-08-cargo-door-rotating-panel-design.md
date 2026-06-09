@@ -128,7 +128,15 @@ container so the cargo doors close. Decisions and rationale:
    film-cage **brace beams out to the container/walkway far extent** (drawing consistency).
    *(Open detail: rail stowage
    clips + a weight/2-person handling check on the ~2.2 m rails.)*
-4. **Fan B** — confirm intake/duct routing still works on the swinging part.
+4. ~~**Fan B** — confirm intake/duct routing still works on the swinging part.~~ **RESOLVED** —
+   Fan B (Yd365, outboard of the Yd180 cut) is on the **swinging part** and is a **self-contained
+   wall fan** (exterior louvre + light baffle + fan + flange all in the panel) — there is no fixed
+   duct to disconnect, so the swing carries the whole intake path intact. It runs in **camera mode
+   only** (panel shut at the door, drawing outside air through the open cargo doors); in transit it
+   swings to **X≈1838** (deep inboard, off). Verified through the full 0→56° sweep: never overlaps
+   the near upright, and clears the door plane at the locked angle. *(Note: the 2D study
+   `generate_rotation_study.py` still uses the older Yd653 cut and labels Fan B on the FIXED
+   section — a 2D↔3D drift to reconcile to the 3D's Yd180 cut.)*
 5. **Drum bearings** — top central (top-suspended) + bottom; confirm the bottom cross-member
    bearing reads as a floor-gap threshold (no trip), per the agreed "cross-members top+bottom"
    (not a perimeter guide). Size the bearings.

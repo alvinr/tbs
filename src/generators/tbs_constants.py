@@ -168,15 +168,33 @@ PANEL_CORNER_YD_R = 1709  # center-to-corner transition, far side (mm)  [rev8: w
 PANEL_CENTER_W    = PANEL_CORNER_YD_R - PANEL_CORNER_YD_L  # = 1056mm center zone width
 WALL_T            = 40    # container end-wall steel thickness (mm)
 
-# ── Sliding rail system — transport mode (rev 8) ────────────────────────────
-# Panel slides inward ~500mm on HGR20 ceiling-mounted linear rails so the deeper
-# Ø900 light-trap housing clears the container exterior face, allowing ISO cargo
-# doors to close. Panel is suspended from ceiling — bottom edge clears the tray.
-PANEL_SLIDE       = 880   # panel slide travel for transport (mm) [rev9 B2: 550→880,
-                          # bay housing ext. face -890 → ~+30 clears the door plane]
+# ── Rotating cargo-door panel — transport mode (rev 10: supersedes the B2 slide) ──
+# The panel + drum + drum-cage assembly ROTATES ~56° about a VERTICAL pivot — the
+# film-plane far-left upright, reused as a Ø89 CHS post — swinging the protruding Ø900
+# light-trap bay inboard of the door plane so the ISO cargo doors can close. The panel
+# is split into THREE zones: a FIXED LEFT strip (Yd0–PANEL_CUT_YD) + the SWINGING part
+# (PANEL_CUT_YD→PIVOT_YD) + a FIXED FAR strip (PIVOT_YD→C_WID). The two LEFT film rails
+# are removable (drop-in saddles) and the left walkway lifts out before the swing; a
+# top+bottom wall-stay locks the swung assembly. Carried by the pivot post on a thrust
+# collar + top/bottom hub bearings (no ceiling suspension, no slide).
+# See docs/superpowers/specs/2026-06-08-cargo-door-rotating-panel-design.md.
+# RETIRED with the slide: PANEL_SLIDE, HGR20 carriage rails, Destaco locks, the ceiling-
+# rail suspension, the barrel hinges + swing-support caster.
+SWING_LOCK_DEG = 56     # transport swing angle, locked (clears the door plane — true min X +72mm)
+PANEL_CUT_YD   = 180    # fixed-left-panel width / swing cut (mm) — 160 min to clear the near
+                        # upright at Yd100, 180 for margin. Swinging part runs PANEL_CUT_YD→PIVOT_YD.
+PIVOT_POST_OD  = 89     # Ø89×8 CHS pivot post (mm) — carries the ~3.6kN·m swing cantilever, SF~3.7 (S355)
+PIVOT_POST_T   = 8      # pivot post wall thickness (mm)
 PANEL_FLOOR_GAP   = 130   # gap between panel bottom edge and floor (mm) [+50 walkway raise; was 80]
-                          # = WALKWAY_H (130): the panel rides at the grate-top level, clearing
-                          # the Z115 floor-leg bracket tops by 15mm as it slides to transport.
+                          # = WALKWAY_H (130): the panel rides at the grate-top level. Doubles as the
+                          # drum-revolve threshold sill and the swing-arc floor datum.
+# (Derived swing geometry — PIVOT_X/PIVOT_YD/FAR_STRIP_YD0/DRUM_CAGE_* — is defined just
+#  below, after the brace/drum/bay constants it reads from.)
+# ── TEMPORARY cascade shim ──────────────────────────────────────────────────
+# PANEL_SLIDE is retired with the slide scheme, but 8 generators + 3 models still import
+# it. Kept as a deprecated alias so they import while each is migrated to the swing; this
+# line is REMOVED in the final cascade step once no consumer references it.
+PANEL_SLIDE = 880   # DEPRECATED (rev10) — do not use; see SWING_LOCK_DEG / PIVOT_* / PANEL_CUT_YD
 
 # ── Left end zone — housed revolving-door light lock (rev 8) ─────────────────
 # Personnel light lock in the hinge-panel center zone: a FIXED Ø900 housing with
@@ -217,9 +235,28 @@ BRACE_Z_TOP = C_HGT - RAIL_OFF       # 2288mm — top cross-beam Z (unchanged)
 # End portals sit at the rail travel limits (already defined): FP_Y_MIN, FP_Y.
 
 DRUM_CY     = C_WID // 2             # 1181mm — light-lock center in Yd (= container width center)
-# B2 (rev9): the drum is offset clear of the X=150 rail (via the punch-out bay), so
-# the left film-plane rail is CONTINUOUS — the old demountable-segment constants
-# (BRACE_LEFT_DEMOUNT_Y0/Y1, CARRIAGE_PARK_Y) are removed.
+# B2 (rev9): the drum is offset clear of the X=150 rail (via the punch-out bay), so the
+# left film-plane rail is CONTINUOUS (one piece, no demountable mid-segment). rev10: that
+# whole left rail pair (TL+BL) is REMOVABLE for transport — it lifts straight up out of
+# drop-in saddles so the swinging drum cage can transition the X=150 rail plane, then
+# re-seats to the film datum on tapered dowels.
+
+# ── Rotating-panel swing geometry (derived — reads brace/drum/bay above) ─────
+# The transport-mode policy constants (SWING_LOCK_DEG, PANEL_CUT_YD, PIVOT_POST_*) are up
+# in the hinged-panel block; these are the derived positions.
+PIVOT_X        = RAIL_X_L + BRACE_RHS // 2   # 175 — swing axis X (center of the film far-left upright)
+PIVOT_YD       = FP_Y + BRACE_RHS // 2       # 2287 — swing axis Yd
+FAR_STRIP_YD0  = PIVOT_YD                     # 2287 — fixed FAR strip spans PIVOT_YD..C_WID (~75mm);
+                                             # ends the swinging panel AT the pivot so nothing swings
+                                             # outboard of the door plane (#10)
+# Drum support CAGE — steel box around the Ø900 drum; swings with the assembly and carries
+# the drum revolve bearings. Full depth (Z PANEL_FLOOR_GAP..DRUM_H_LT) to react the drum
+# overturning moment. Fine hardware (bearing Ø, stay plates/bolts, saddle/dowel dims) lives
+# in the lighttrap builder, cited from the design spec.
+DRUM_CAGE_X0   = BAY_FRONT_X            # -890 — cage outer face (= bay front)
+DRUM_CAGE_X1   = 50                     # cage inner face (just past the panel)
+DRUM_CAGE_YD_L = DRUM_CY - DRUM_R - 31  # 700 — cage side ~30mm clear of the Ø900 housing
+DRUM_CAGE_YD_R = DRUM_CY + DRUM_R + 31  # 1662
 
 # Evaporative cooler — external mount (rev 7: was interior on pinhole wall)
 # Cooler ground-placed outside container, connected via 200mm flex duct
@@ -641,12 +678,13 @@ EXT_DRAIN_YD = EXT_PANEL_YD
 #         stack top (2020mm) so its baffle duct clears the totes (the low corner
 #         is occupied by the near IBC column flush to the end wall).
 #         Baffle duct extends 300mm into container interior from X=C_LEN wall.
-# Fan B: intake, mounted on hinged panel (far corner zone), LOW position.
-#         Baffle duct protrudes 300mm from panel EXTERIOR face.
-#         Moves with panel on sliding carriage. In operational mode (panel at
-#         X=0) duct extends into open doorway (X=0 to -300). In transport mode
-#         (panel at X=300) duct occupies X=0 to 300 — inside container, clears
-#         ISO doors. Wiring via flexible cable loop from fixed door frame.
+# Fan B: intake, mounted on the swinging panel (near corner zone, Yd=365 — outboard of
+#         the PANEL_CUT_YD swing cut, so it rides the swinging part), LOW position.
+#         Baffle duct protrudes 300mm from the panel EXTERIOR face. Self-contained wall fan
+#         (louvre+baffle+fan in the panel) — nothing to disconnect when the panel swings.
+#         Operational mode (panel shut at the door): duct draws outside air through the open
+#         cargo doorway. Transport mode: swings ~56° inboard with the panel (X≈1838, fan off).
+#         Wiring via a flexible cable loop from the fixed door frame.
 FAN_DIAM    = 150    # fan / duct diameter (mm)
 FAN_BODY_D  =  50    # panel fan body depth (mm)
 FAN_A_H     = 2200   # fan A center height AFF (mm — HIGH; clears IBC stack top 2020mm)
@@ -719,7 +757,8 @@ if __name__ == "__main__":
     print(f"  Cone at Y=FP_Y: X={cone_left(FP_Y):.0f} – {cone_right(FP_Y):.0f}")
     print(f"  Hinge panel:    corner={PANEL_CORNER_T}mm  center={PANEL_CENTER_T}mm  step={PANEL_STEP}mm")
     print(f"  Panel zones:    corners Yd=0–{PANEL_CORNER_YD_L} / {PANEL_CORNER_YD_R}–{C_WID}  center Yd={PANEL_CORNER_YD_L}–{PANEL_CORNER_YD_R}")
-    print(f"  Panel slide:    {PANEL_SLIDE}mm travel  floor gap={PANEL_FLOOR_GAP}mm (tray rim={PROC_TRAY_RIM}mm)")
+    print(f"  Panel swing:    {SWING_LOCK_DEG}° about pivot (X={PIVOT_X}, Yd={PIVOT_YD})  cut Yd={PANEL_CUT_YD}  far strip Yd={FAR_STRIP_YD0}-{C_WID}")
+    print(f"  Panel floor gap:{PANEL_FLOOR_GAP}mm (tray rim={PROC_TRAY_RIM}mm)  pivot post=Ø{PIVOT_POST_OD}×{PIVOT_POST_T}  drum cage Yd={DRUM_CAGE_YD_L}-{DRUM_CAGE_YD_R}")
     print(f"  IBC 2x2 stack:  X={IBC_COL_X}–{IBC_COL_X+IBC_W}  near Yd={BLUE_IBC_Y}  far Yd={IBC_FAR_Y}")
     print(f"  IBC corridor:   Yd={CORRIDOR_YD_NEAR}–{CORRIDOR_YD_FAR}  width={CORRIDOR_W}mm")
     print(f"  IBC stack H:    {IBC_H_STK}mm  (ceiling {C_HGT}mm → headroom {C_HGT - IBC_H_STK}mm)")
@@ -731,7 +770,7 @@ if __name__ == "__main__":
     print(f"  Tray sump:      X={PROC_TRAY_DRAIN_X}  Yd={PROC_TRAY_DRAIN_YD}")
     print(f"  Walkway:        std={WALKWAY_W}mm  wide={WALKWAY_NEAR_WIDE_W}mm (X={WALKWAY_NEAR_WIDE_X_L}–{WALKWAY_NEAR_WIDE_X_R})")
     print(f"  Right walkway:  CEILING-HUNG  {WALKWAY_RIGHT_HANGER_N} hanger pairs  M{WALKWAY_RIGHT_HANGER_D} rod")
-    print(f"  Left walkway:   REMOVABLE LIFT-OUT  span={WALKWAY_LEFT_SPAN}mm  (bearer beam + {LEFT_WK_LEG_N} floor legs)")
+    print(f"  Left walkway:   REMOVABLE LIFT-OUT  span={WALKWAY_LEFT_SPAN}mm  ({len(LEFT_WK_CANT_LEG_YDS)} floor-leg cantilevers)")
     print(f"  Walkway open:   X={PROC_OPEN_X_L}–{PROC_OPEN_X_R}  Yd={PROC_OPEN_YD_N}–{PROC_OPEN_YD_F}  area={PROC_OPEN_AREA:.2f} m²")
     print(f"  Evap cooler:    EXTERNAL — duct Ø{EVAP_DUCT_D}mm at X={EVAP_DUCT_X} Z={EVAP_DUCT_Z}")
     print(f"  EP:             X={EP_X}–{EP_X+EP_W}  Z={EP_H_LO}–{EP_H_HI} [rev7: raised]")

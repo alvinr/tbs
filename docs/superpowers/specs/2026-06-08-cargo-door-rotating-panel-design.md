@@ -137,9 +137,16 @@ container so the cargo doors close. Decisions and rationale:
    the near upright, and clears the door plane at the locked angle. *(Note: the 2D study
    `generate_rotation_study.py` still uses the older Yd653 cut and labels Fan B on the FIXED
    section — a 2D↔3D drift to reconcile to the 3D's Yd180 cut.)*
-5. **Drum bearings** — top central (top-suspended) + bottom; confirm the bottom cross-member
+5. ~~**Drum bearings** — top central (top-suspended) + bottom; confirm the bottom cross-member
    bearing reads as a floor-gap threshold (no trip), per the agreed "cross-members top+bottom"
-   (not a perimeter guide). Size the bearings.
+   (not a perimeter guide). Size the bearings.~~ **RESOLVED** — the drum revolves about its own
+   vertical axis (person access, separate from the assembly swing) on **central** bearings on the
+   cage cross-members: **bottom = a Ø220 low-profile thrust/slew pad recessed into the under-drum
+   gap so its top is FLUSH with the Z130 threshold sill** (a step-over door sill — verified Z108–130,
+   no trip beam), plus a flush chamfered sill plate; **top = a Ø120 radial guide journal** that only
+   steadies the tall drum. Sized for a light-skin drum (~50 kg) + transient lean (~100 kg) ⇒ ~1.5 kN
+   axial bottom / ~0.5 kN lateral top — ample for a flat thrust race + sleeve journal. In the model.
+   *(Open detail: confirm the drum build mass at the cascade; firm part numbers with the shopping list.)*
 6. ~~**Axle + floor thrust bearing sizing** for ~330 kg + dynamic.~~ **RESOLVED** — **Ø89×8
    CHS** post (σ ~95 MPa, SF ~3.7 on S355 against the ~3.6 kN·m swing cantilever), floor +
    roof mount plates, a thrust collar carrying the ~330 kg, and a top + bottom radial hub

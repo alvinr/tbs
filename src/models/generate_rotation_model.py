@@ -268,10 +268,21 @@ def drum_frame():
     for px in (x0, x1 - s):                   # 4 corner posts
         for py in (y0, y1 - s):
             p.append(ov.ruby_box("Drum frame post", px, py, zb, s, s, zt - zb, color=c))
-    # cross members carrying the central drum bearings (top + bottom)
-    for z in (zb, zt - s):
-        p.append(ov.ruby_box("Drum bearing cross-beam", DRUM_CX - s // 2, y0, z, s, y1 - y0, s, color=c))
-        p.append(ov.ruby_cylinder("Drum bearing (roller)", DRUM_CX, DRUM_CY, z, 70, s, color="#5A5AA0", axis="z"))
+    # ── central drum pivot bearings — the drum REVOLVES about its own vertical axis for
+    #    person access (separate from the assembly swing). Sized for a light skin drum
+    #    (~50 kg) + transient lean/push (~100 kg) ⇒ ~1.5 kN axial on the bottom thrust;
+    #    the top journal only steadies the tall drum (~0.5 kN lateral). ──
+    cb = "#5A5AA0"
+    sill = ov.PANEL_FLOOR_GAP                  # 130 — the step-over threshold under the drum
+    # TOP: radial guide journal on the top cross-beam (carries no weight, steadies the top)
+    p.append(ov.ruby_box("Drum bearing cross-beam (top)", DRUM_CX - s // 2, y0, zt - s, s, y1 - y0, s, color=c))
+    p.append(ov.ruby_cylinder("Drum top radial journal (Ø120 guide)", DRUM_CX, DRUM_CY, zt - s, 60, s, color=cb, axis="z"))
+    p.append(ov.ruby_cylinder("Drum top pivot pin", DRUM_CX, DRUM_CY, zt - s - 70, 22, 80, color=c, axis="z"))
+    # BOTTOM: low-profile THRUST bearing recessed into the under-drum gap so its top is
+    #    FLUSH with the threshold sill (Z=130) — a step-over door sill, NOT a trip beam.
+    p.append(ov.ruby_box("Drum bearing cross-beam (bottom, recessed)", DRUM_CX - s // 2, y0, sill - s, s, y1 - y0, s, color=c))
+    p.append(ov.ruby_cylinder("Drum bottom thrust bearing (Ø220 flush slew pad)", DRUM_CX, DRUM_CY, sill - 22, 110, 22, color=cb, axis="z"))
+    p.append(ov.ruby_box("Drum threshold sill (flush, chamfered step-over)", DRUM_CX - 240, DRUM_CY - 320, sill - 8, 250, 640, 8, color="#7A7A82"))
     return '\n'.join(p)
 
 
@@ -407,6 +418,10 @@ anc5 = Geom::Point3d.new(150.mm, {FAN_B_YD}.mm, {FAN_B_H}.mm)
 txt5 = entities.add_text("FAN B (intake) — self-contained wall fan\n(louvre+baffle+fan in the panel); swings\nwith the frame. Runs in camera mode only\n(outside air via open doors); off in transit", anc5,
                          Geom::Vector3d.new(600.mm, (-250).mm, 350.mm))
 txt5.layer = model.layers["Labels"] rescue nil
+anc6 = Geom::Point3d.new({DRUM_CX}.mm, {DRUM_CY}.mm, 160.mm)
+txt6 = entities.add_text("DRUM BEARINGS: bottom = Ø220 flush thrust\nslew pad, recessed to the Z130 sill (step-over,\nno trip); top = Ø120 radial guide journal.\nDrum revolves for access — separate from swing", anc6,
+                         Geom::Vector3d.new((-650).mm, (-250).mm, 400.mm))
+txt6.layer = model.layers["Labels"] rescue nil
 
 model.definitions.purge_unused
 model.materials.purge_unused

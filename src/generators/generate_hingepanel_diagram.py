@@ -929,10 +929,11 @@ def sheet3():
     dim_v(ax, WK_END + 30, H_FLOOR, WALKWAY_H,
           f"{WALKWAY_H}mm\nDECK", offset=30, fs=6)
 
-    # ── HGR20 sliding rails (floor + ceiling, both container walls) ──────────
-    # Rails run in the X (depth) direction, mounted on both side walls.
+    # ── Former HGR20 rails (rev10 RETIRED — drawn faint for reference) ───────
+    # The old slide rails ran in the X (depth) direction on both side walls.
     # In this Section A-A view (looking along Yd), the rails on both walls
-    # project to the same position.  Shown as side-profile rectangles.
+    # project to the same position. Shown faint as side-profile rectangles,
+    # labeled retired below (the panel now SWINGS about the Ø89 pivot).
     C_RAIL_S3 = "#CC4422"     # red, consistent with Sheet 1
     RAIL_PROF_H = 20          # rail profile height (mm)
     RAIL_PROF_L = 500         # rail length (mm) — 500mm HGR20 rail

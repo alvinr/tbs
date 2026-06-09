@@ -935,7 +935,7 @@ def sheet_loaded_transport(components):
     """Sheet 5: Loaded Transport — camera-ready water load in transport config.
 
     Heaviest top-tier case while configured for the road: full Blue IBCs
-    (1,200 kg) with the panel slid in and the cargo doors closed.
+    (1,200 kg) with the panel swung in and the cargo doors closed.
     """
     fig, ax = plt.subplots(figsize=(18, 8))
     total_lt, x_lt, yd_lt, z_lt = _draw_state_diagram(
@@ -946,7 +946,7 @@ def sheet_loaded_transport(components):
     exh_comps = filter_state(components, "exhausted")
     _, _, _, z_exh = compute_cg(exh_comps)
     note = (f"Full Blue IBCs (1,200 kg, TOP tier) in\n"
-            f"transport config (panel slid in, doors closed).\n"
+            f"transport config (panel swung in, doors closed).\n"
             f"Highest-CG transport case — governs\n"
             f"road-transport stability.\n"
             f"ΔZ vs Materials Exhausted = {z_lt - z_exh:+.0f}mm\n"

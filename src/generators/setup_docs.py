@@ -349,7 +349,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Weight Distribution](weight-distribution-report.md) | Container weight analysis — dry, camera ready, materials exhausted — CG positions and ISO compliance |
 | [Chemistry Prep Shelves](chemistry-prep-shelves.md) | Two fold-down shelves on pinhole wall for cyanotype chemistry mixing and materials staging |
 | [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) | 304 SS processing tray and telescoping spray bar gantry — construction, operation, and parts list |
-| [Hinged Light-Trap Panel](hinged-panel-report.md) | Stepped cargo-door panel with revolving drum light trap, sliding carriage, and light seal design |
+| [Hinged Light-Trap Panel](hinged-panel-report.md) | Stepped cargo-door panel with revolving drum light trap, ~56° transport swing about the pivot, and light seal design |
 | [IBC Stacking System](ibc-stacking-report.md) | 2×2 IBC stack with welded stacking frame, external plumbing panel, and internal pipe routing |
 | [Perimeter Walkway](walkway-report.md) | 4-section removable walkway system — wall-cantilevered, ceiling-hung, and lift-out designs with zero tray contact |
 | [Equipment Panel & Plumbing](equipment-panel-report.md) | Equipment panel in IBC corridor with 5 pumps, 3-stage filter skid, accumulator, valves, and pipe routing |

@@ -28,9 +28,9 @@ Redesign basis (2026-05-03 rev 4):
   steel plate + 18mm ply) flanking 120mm center zone (unchanged RHS frame
   construction housing the light trap drum).  Step transitions at Yd=756mm
   and Yd=1606mm (drum 750mm + 50mm clearance each side).
-  Panel slides on HGR20 linear rails (300mm travel) so light trap drum clears
-  the container exterior face by 5mm, allowing standard ISO cargo doors to close.
-  Fixed door frame with EPDM compression seal at X=0.
+  Panel + drum SWING ~56° about the Ø89 pivot post for transport (rev10,
+  supersedes the HGR20 slide) so the assembly clears the container exterior face,
+  allowing standard ISO cargo doors to close. Fixed door frame with EPDM seal at X=0.
 
 Redesign basis (2026-05-06 rev 5):
   Waste drums (2x 55-gal) eliminated.  Replaced by a 4th IBC (waste, 600L)
@@ -191,11 +191,8 @@ PANEL_FLOOR_GAP   = 130   # gap between panel bottom edge and floor (mm) [+50 wa
                           # drum-revolve threshold sill and the swing-arc floor datum.
 # (Derived swing geometry — PIVOT_X/PIVOT_YD/FAR_STRIP_YD0/DRUM_CAGE_* — is defined just
 #  below, after the brace/drum/bay constants it reads from.)
-# ── TEMPORARY cascade shim ──────────────────────────────────────────────────
-# PANEL_SLIDE is retired with the slide scheme, but 8 generators + 3 models still import
-# it. Kept as a deprecated alias so they import while each is migrated to the swing; this
-# line is REMOVED in the final cascade step once no consumer references it.
-PANEL_SLIDE = 880   # DEPRECATED (rev10) — do not use; see SWING_LOCK_DEG / PIVOT_* / PANEL_CUT_YD
+# PANEL_SLIDE (the old 880mm slide travel) is fully retired (rev10) — all generators and
+# models have migrated to the swing; no consumer remains.
 
 # ── Left end zone — housed revolving-door light lock (rev 8) ─────────────────
 # Personnel light lock in the hinge-panel center zone: a FIXED Ø900 housing with
@@ -516,10 +513,10 @@ PROC_TRAY_SUMP_Z   = 20         # sump well depth below tray floor (mm)
 #       over tray rim to support walkway.  34mm clearance to IBC stack.
 #       Zero tray contact — posts on bare floor outside tray.
 #   Left walkway (cargo door end):  REMOVABLE LIFT-OUT — no wall brackets.
-#       Panel (hinged door) occupies the end wall at X=0 and slides inward
-#       300mm for transport.  Left walkway must be removed before panel slides.
+#       Panel (hinged door) occupies the end wall at X=0 and SWINGS ~56° about
+#       the pivot for transport.  Left walkway must be removed before the swing.
 #       Left corners use butt joints (no miter) so near/far walkways start at
-#       X=470 — entirely past the panel transport envelope (max X=420).
+#       X=470 — clear of the door-end panel swing sweep.
 #       Only the left walkway (X=170–470) needs removal for transport.
 #       Supported at ends by near/far walkway bracket arms at butt joints.
 #       Processing tray side (X=470): removable bearer beam (50×50×3mm Al RHS)
@@ -579,7 +576,7 @@ WALKWAY_NEAR_YD = 0                          # near edge against pinhole wall
 # Far walkway (film plane side): X=tray_L to tray_R, Yd=C_WID-WALKWAY_W to C_WID
 WALKWAY_FAR_YD  = C_WID - WALKWAY_W         # = 1962mm
 # Left walkway (cargo door end): X=tray_L to tray_L+WALKWAY_W, Yd=0 to C_WID
-# REMOVABLE — must be lifted out before sliding panel to transport position.
+# REMOVABLE — must be lifted out before the panel swings to its transport position.
 # Supported by FLOOR-LEG CANTILEVER brackets on the cargo-door side (rev 2026-06-07,
 # replaces the edge-beam-on-wall-seats): see the LEFT_WK_CANT_* block below + Sheet 5/6.
 # Zero processing tray contact — all supports outside or above the tray/bath.
@@ -703,9 +700,9 @@ FAN_B_H     = 600    # fan B center height AFF (mm — LOW; intake near floor)
 # Yd (width) positions — cross-ventilation diagonal: low intake (cargo-door
 # panel) to high exhaust (far end wall), diagonally across the volume.
 # rev 9 / B2: Fan A and Fan B SWAP sides (mirror about the centerline) so the
-# intake fan (Fan B, on the sliding panel) sits in the NEAR corner by the pinhole
-# wall — its conduit then runs along that wall and never crosses the ceiling
-# suspension rails (Yd=653/1709); only a flex whip bridges to the moving panel.
+# intake fan (Fan B, on the swinging panel) sits in the NEAR corner by the pinhole
+# wall — its conduit then runs along that wall; only a flex whip (with swing slack)
+# bridges to the swinging panel so it follows the ~56° transport rotation.
 FAN_A_YD    = (C_WID // 2 + DRUM_R + C_WID) // 2  # = 1996mm — far side, off the corner of the X=C_LEN end wall (moved from the pinhole side)
 FAN_B_YD    = (C_WID // 2 - DRUM_R) // 2          # = 365mm — near the pinhole wall, in the near corner zone clear of the drum (near edge Yd≈731)
 

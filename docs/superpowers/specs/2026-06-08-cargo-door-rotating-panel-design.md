@@ -111,8 +111,14 @@ container so the cargo doors close. Decisions and rationale:
    that resists transit twist/rattle. The eye reacts into a **bolted plate anchor** (inside
    + outside plates, 4× M16 through the wall) — no welding to the container skin, and off
    the floor (the floor is the angled processing-tray basin). In the model.
-2. **Seals:** the vertical cut seal (fixed panel ↔ swinging part); the fixed-panel perimeter
-   seal; the swinging panel's perimeter seal against the door frame.
+2. ~~**Seals:** the vertical cut seal (fixed panel ↔ swinging part); the fixed-panel perimeter
+   seal; the swinging panel's perimeter seal against the door frame.~~ **RESOLVED** — all three
+   in the model as EPDM (lt's 40×20 convention): (a) a full-height **vertical cut bulb** at
+   Yd180 the swinging panel compresses against; (b) the **fixed left-panel perimeter** (top,
+   bottom, near-wall left edge); (c) the swinging panel's perimeter — trimmed **top** +
+   **bottom-L** (re-added after the near-corner erase) + surviving bottom-R/right strips. All
+   on the Panel-skin tag. *(Open detail: the cut-seal bulb profile + the moving panel's seat
+   against the door-frame top/bottom lips when shut — refine with the latch design.)*
 3. **Film-plane left-rail removal** mechanism — demount, re-seat, and alignment back to the
    film-plane datum after transport.
 4. **Fan B** — confirm intake/duct routing still works on the swinging part.

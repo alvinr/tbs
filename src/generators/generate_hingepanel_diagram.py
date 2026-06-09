@@ -145,15 +145,17 @@ def sheet1():
     dim_h(ax, STEP_YD_L, STEP_YD_R, -210,
           f"{STEP_YD_R - STEP_YD_L}mm CENTER ZONE (DRUM Ø{DRUM_D} + 50mm CLEARANCE EACH SIDE)", offset=20)
 
-    # ── Swing split (rev10): vertical CUT lines + fixed-left / swinging / fixed-far ──
+    # ── Swing split (rev10): fixed-left / swinging / fixed-far + the vertical CUT lines ──
+    # The fixed strips are bolted to the door FRAME (hatched); the swinging panel butts them
+    # at the cut lines. Cut lines drawn bold and on top so they read at both panel edges.
     from tbs_constants import PANEL_CUT_YD as _CUT, FAR_STRIP_YD0 as _FAR
-    for (y0, y1, lbl) in [(0, _CUT, "FIXED LEFT"), (_FAR, PW, "FIXED FAR")]:
+    for (y0, y1) in [(0, _CUT), (_FAR, PW)]:
         ax.add_patch(Rectangle((y0, FR), y1 - y0, PH - 2 * FR, fc="#C8A060",
-                               ec="none", alpha=0.40, zorder=4))
-    for cx, lbl in [(_CUT, f"CUT\nYd{_CUT}"), (_FAR, f"CUT\nYd{_FAR}")]:
-        ax.plot([cx, cx], [0, PH], color="#A000A0", lw=2.0, ls=(0, (5, 3)), zorder=6)
-        ax.text(cx, PH + 35, lbl, color="#A000A0", fontsize=6, ha="center", va="bottom",
-                fontweight="bold", **FONT, zorder=15)
+                               ec="none", alpha=0.45, hatch="\\\\\\", zorder=4))
+    for cx in [_CUT, _FAR]:
+        ax.plot([cx, cx], [0, PH], color="#A000A0", lw=2.6, ls=(0, (5, 2)), zorder=11)
+        ax.text(cx, PH + 35, f"CUT @ Yd{cx}\n(fixed ↔ swing)", color="#A000A0", fontsize=6,
+                ha="center", va="bottom", fontweight="bold", **FONT, zorder=15)
     leader(ax, (_FAR + (PW - _FAR) / 2, PH / 2 - 250), (PW + 230, PH / 2 - 250),
            "FIXED FAR STRIP\n(Yd2287–2362) — does NOT\nswing; seals the strip\nbeyond the pivot", col="#6a4010", fs=6)
     leader(ax, (_CUT / 2, FR + 250), (-300, FR + 250),
@@ -1497,21 +1499,25 @@ def sheet4():
 
     ax.text(-280, 2640, "SWING CLEARANCE vs FILM-PLANE LEFT MECHANISM  (plan, looking down)",
             fontsize=13, fontweight="bold", color=C_OUT, **FONT)
-    notes = ("ROTATION TRANSPORT (rev10) — the panel + drum SWING ~56°\n"
-             "about the vertical pivot (the film far-left post), pulling\n"
-             "the punch-out bay inboard of the door plane so the cargo\n"
+    notes = ("ROTATION TRANSPORT (rev10):\n"
+             "The panel + drum SWING ~56° about the vertical\n"
+             "pivot (the film far-left post), pulling the punch-\n"
+             "out bay inboard of the door plane so the cargo\n"
              "doors close (true min X +59mm).\n\n"
-             "①  The swinging cage transitions the X=150 rail plane, so\n"
-             "    the two LEFT film rails (TL+BL) are REMOVABLE — lifted\n"
-             "    out (drop-in saddles) for the swing, re-seated to the\n"
-             "    datum after. The far-left film post IS the Ø89 pivot.\n\n"
-             "②  The swing clears the door-end walkway brackets at Z\n"
-             "    (panel/cage underside Z130 over the Z115 bracket tops);\n"
-             "    the left walkway + door-end near-deck section lift out.\n\n"
-             "Operating: full symmetric film-plane travel is restored.\n\n"
-             "TEARDOWN — strike the left rails → lift the left walkway +\n"
-             "near-deck section → unlatch → swing 56° → engage top+bottom\n"
-             "wall stays → close doors.")
+             "1.  The swinging cage transitions the X=150 rail\n"
+             "    plane, so the two LEFT film rails (TL+BL) are\n"
+             "    REMOVABLE — lifted out (drop-in saddles) for\n"
+             "    the swing, re-seated to datum after. The far-\n"
+             "    left film post IS the Ø89 pivot.\n\n"
+             "2.  The swing clears the door-end walkway brackets\n"
+             "    at Z (panel/cage underside Z130 over the Z115\n"
+             "    bracket tops); the left walkway + door-end\n"
+             "    near-deck section lift out.\n\n"
+             "OPERATING:  full symmetric film-plane travel is\n"
+             "restored.\n\n"
+             "TEARDOWN:  strike the left rails → lift the left\n"
+             "walkway + near-deck section → unlatch → swing 56°\n"
+             "→ engage top+bottom wall stays → close doors.")
     ax.add_patch(FancyBboxPatch((1440, 360), 880, 2150,
                                 boxstyle="round,pad=8,rounding_size=16",
                                 fc="#FBFBFD", ec=C_DIM, lw=1.0, zorder=2))

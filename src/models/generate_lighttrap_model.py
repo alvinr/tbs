@@ -7,13 +7,14 @@ focus model (models/lighttrap.skp).
 
 A detailed, report-accurate model of the cargo-door end assembly only:
   - the revolving light-trap DRUM (caps, stub shafts, SKF bearings, grab rail),
-  - the hinged stepped PANEL (3 zones + drum aperture + EPDM seal + hinges +
-    cam latches),
-  - the SLIDING carriage system (HGR20 ceiling rails, HGH20CA blocks,
-    suspension brackets, left carriage beam, Destaco toggle clamps, fixed RHS
-    door frame),
-  - Fan B (intake) mounted on the panel — reused from the Overview's shared
-    fan_duct() builder so it stays in sync.
+  - the hinged stepped PANEL (3 zones + drum aperture + EPDM seal + latches),
+  - the ROTATION transport system (rev10 — supersedes the slide): the panel+drum
+    +drum-cage assembly SWINGS 56° about a vertical Ø89 CHS pivot post (the film
+    far-left upright) to clear the cargo doors; split panel (fixed left + swinging
+    + fixed far), removable left film rails, top/bottom hub bearings, a wall-stay
+    lock, and the fixed RHS door frame,
+  - Fan B (intake) mounted on the swinging panel — reused from the Overview's
+    shared fan_duct() builder so it stays in sync.
 
 Geometry comes from hinged-panel-report.md, ceiling-rail-report.md and
 light-trap-selection.md. Helpers, materials and spatial constants are imported
@@ -42,7 +43,7 @@ C_WID, C_HGT, WALL_T = ov.C_WID, ov.C_HGT, ov.WALL_T
 DRUM_CX, DRUM_CY, DRUM_R, DRUM_H = ov.DRUM_CX, ov.DRUM_CY, ov.DRUM_R, ov.DRUM_H_LT
 PANEL_CENTER_T = ov.PANEL_CENTER_T            # 120 — center-zone thickness (X)
 PANEL_CORNER_T = 40                           # corner-zone thickness (report §2.1)
-PANEL_FLOOR_GAP = ov.PANEL_FLOOR_GAP          # 80
+PANEL_FLOOR_GAP = ov.PANEL_FLOOR_GAP          # 130 (rev: +50 walkway raise)
 YD_L, YD_R = ov.PANEL_CORNER_YD_L, ov.PANEL_CORNER_YD_R   # 653, 1709 step lines
 FAN_B_YD, FAN_B_H = ov.FAN_B_YD, ov.FAN_B_H
 
@@ -69,9 +70,27 @@ NEW_YD_R = YD_R                       # 1709  (PANEL_CORNER_YD_L/R from constant
 APER_L = DRUM_CY - APERTURE_R         # 713 — aperture edge (near)
 APER_R = DRUM_CY + APERTURE_R         # 1649 — aperture edge (far)
 
-TAGS = ["Context", "Door Frame", "Carriage Rails",
+# ── Rotation transport geometry (rev10 — supersedes the slide) ───────────────
+PIVOT_X, PIVOT_YD = ov.PIVOT_X, ov.PIVOT_YD       # 175, 2287 — vertical swing axis
+LOCK = ov.SWING_LOCK_DEG                           # 56 — transport swing angle
+CUT = ov.PANEL_CUT_YD                              # 180 — fixed-left / swing cut
+FAR0 = ov.FAR_STRIP_YD0                            # 2287 — fixed-far strip start (= pivot)
+WALL_FAR = 2000                                    # context far extent — reaches the stay wall anchor
+STAY_Z = (200, 2050)                               # bottom + top transport-stay heights
+LOCK_BOLT = (20, 350)                              # stay hook on the swinging frame (good lever arm)
+
+
+def _rot_pt(x, y, deg):
+    t = math.radians(deg); c, s = math.cos(t), math.sin(t)
+    return PIVOT_X + (x - PIVOT_X) * c - (y - PIVOT_YD) * s, PIVOT_YD + (x - PIVOT_X) * s + (y - PIVOT_YD) * c
+
+
+SOCKET = _rot_pt(LOCK_BOLT[0], LOCK_BOLT[1], LOCK)  # transport position of the frame hook (1694, 1075)
+
+TAGS = ["Context", "Door Frame", "Pivot Axle",
         "Processing Tray", "Walkways", "Film Plane Rails",
-        "Sliding Assembly",   # dynamic-component moving group (panel slide)
+        "Near Leaf", "Far Leaf", "Lock anchor", "Panel skin",
+        "Panel Swing",        # dynamic-component moving group (the swinging assembly)
         "Cargo Doors",        # dynamic-component swing doors (click to close)
         "Labels"]             # add_text callouts — shown only in the "Labeled" scene
 
@@ -81,19 +100,20 @@ TAGS = ["Context", "Door Frame", "Carriage Rails",
 # callout OUT toward the viewer (camera looks from −X/−Y); keep Δz modest.
 LIGHTTRAP_LABELS = [
     ("Fixed Door Frame",                "DOOR FRAME",                    -500, -200,  800),
-    ("Panel Slide",                     "HINGE PANEL\n(slides for transport)", 550, -100, 1250),
+    ("Panel Swing",                     "HINGE PANEL\n(swings 56° for transport)", 550, -100, 1250),
     ("Cargo Doors",                     "CARGO DOORS",                   -100, -1600,  150),
     ("Processing Tray (partial)",       "PROCESSING TRAY",                950,  500,  300),
 ]
 # Point-anchored (x,y,z,text,Δx,Δy,Δz). Used for parts nested in a DC (drum, Fan B)
-# AND for components whose bounds-CENTRE lands between paired parts (carriage rails,
-# walkways) or off the rail (film-plane rails) — anchor on the actual near member.
+# AND for components whose bounds-CENTRE lands between paired parts (walkways) or off
+# the rail (film-plane rails) — anchor on the actual near member.
 LIGHTTRAP_POINT_LABELS = [
     (-400, 1181, 1700, "LIGHT-TRAP DRUM\n(revolving door)", -750,    0,  650),
     ( 150,  365,  700, "FAN B (intake)",                    -200, -650, 1000),
-    ( 520,  653, 2373, "CARRIAGE RAILS\n+ Destaco locks",    100, -450,  850),   # near HGR20 rail
+    ( 175, 2287, 1600, "PIVOT POST Ø89 CHS\n(= film far-left post)", 550, -200, 700),  # the swing axis
     (1035,  150,   73, "WALKWAYS",                           250, -750,  900),    # near walkway strip
-    ( 170, 1181, 2268, "FILM-PLANE RAILS",                  1400,    0,  300),    # top-left FP rail
+    ( 170, 1181, 2268, "FILM-PLANE RAILS\n(left pair removable)", 1400, 0, 300),  # top-left FP rail
+    (SOCKET[0], 0, 1075, "TRANSPORT STAY anchor\n(bolted plates; rod→wall when swung)", 300, -300, 700),
 ]
 
 
@@ -365,60 +385,143 @@ def drum():
     return drum_housing(DRUM_CX, DRUM_CY) + "\n" + drum_rotor(DRUM_CX, DRUM_CY)
 
 
-# ── Sliding carriage system (transport-mode slide) ──────────────────────────
-# Slide travel LENGTHENED to ~500mm so the deeper Ø900 housing (exterior overhang
-# ~450mm) fully retracts behind the door closure plane for transport. Rails at the
-# widened center-zone step lines (NEW_YD_L/R). NB: the longer retraction carries
-# the housing into the left-walkway / near-tray zone — tray-end clearance during
-# transport is an open detail to confirm.
-TRANSPORT_SLIDE = ov.PANEL_SLIDE        # 880 — from constants (rev 9 / B2)
+# ── Rotation transport system (rev10 — supersedes the slide carriage) ────────
+# The pivot AXLE is fixed; the hub + panel + cage swing about it. Geometry ported
+# from the proven rotation study (rotation-study.skp) and parameterised on the
+# tbs_constants swing values via `ov`.
 
-def carriage_fixed():
-    """FIXED part of the sliding carriage: the two HGR20 ceiling rails + both
-    Destaco toggle-clamp lock points (operational X≈0 + transport X≈TRANSPORT_SLIDE).
-    These do NOT travel with the panel, so they live outside the dynamic-component
-    moving group."""
-    parts = []
-    rail_x0, rail_len = -30, TRANSPORT_SLIDE + 220  # spans the full B2 transport slide
-    rail_w, rail_h = 20, 30
-    rail_z = C_HGT - rail_h                          # 2358 — hung from ceiling
-    for yd, nm in [(NEW_YD_L, "L"), (NEW_YD_R, "R")]:
-        parts.append(ruby_box(f"HGR20 rail {nm}", rail_x0, yd - rail_w / 2, rail_z,
-                              rail_len, rail_w, rail_h, color=C_RAIL))
-    # Destaco 207-U toggle clamps — operational lock (X≈0) + transport lock (X≈TRANSPORT_SLIDE).
-    for cx, lock in [(-10, "operational"), (TRANSPORT_SLIDE - 10, "transport")]:
-        for yd in (NEW_YD_L, NEW_YD_R):
-            parts.append(ruby_box(f"Destaco clamp ({lock}) base", cx, yd - 18,
-                                  rail_z - 70, 60, 36, 24, color=C_STEEL))
-            parts.append(ruby_box(f"Destaco clamp ({lock}) handle", cx + 10, yd - 6,
-                                  rail_z - 46, 70, 12, 12, color=C_CARR))
-    return '\n'.join(parts)
+def axle():
+    """FIXED pivot: a Ø89×8 CHS post (the film far-left upright reused), floor-to-roof,
+    bolted at both ends + a thrust collar the assembly rests on. Carries the swing
+    cantilever (σ~95 MPa, SF~3.7 on S355)."""
+    c = C_STEEL
+    r = ov.PIVOT_POST_OD / 2.0                       # 44.5
+    return '\n'.join([
+        ruby_cylinder("Pivot post (Ø89 CHS)", PIVOT_X, PIVOT_YD, 0, r, C_HGT, color=c, axis="z"),
+        ruby_cylinder("Pivot floor mount plate", PIVOT_X, PIVOT_YD, 0, 110, 20, color=c, axis="z"),
+        ruby_cylinder("Pivot roof mount plate", PIVOT_X, PIVOT_YD, C_HGT - 20, 110, 20, color=c, axis="z"),
+        ruby_cylinder("Pivot thrust collar", PIVOT_X, PIVOT_YD, 130, 75, 25, color=c, axis="z"),
+    ])
 
 
-def carriage_moving(slide=0):
-    """MOVING part of the sliding carriage: the HGH20CA blocks + suspension
-    brackets + left 60×60 SHS carriage beam. These travel with the hinge panel,
-    so in the dynamic-component model they go INSIDE the moving group (slide=0,
-    the DC handles the translation)."""
-    parts = []
-    rail_h = 30
-    rail_z = C_HGT - rail_h
-    carr_w, carr_d, carr_h = 44, 44, 28
-    brk_w, brk_d, brk_h = 60, 40, 30
-    for yd, nm in [(NEW_YD_L, "L"), (NEW_YD_R, "R")]:
-        parts.append(ruby_box(f"HGH20CA carriage {nm}", 18 + slide, yd - carr_d / 2,
-                              rail_z - carr_h, carr_w, carr_d, carr_h, color=C_CARR))
-        parts.append(ruby_box(f"Suspension bracket {nm}", 15 + slide, yd - brk_d / 2,
-                              PANEL_Z_TOP, brk_w, brk_d, rail_z - carr_h - PANEL_Z_TOP,
-                              color=C_STEEL))
-    parts.append(ruby_box("Left carriage beam (60×60 SHS)", 0 + slide, 0, PANEL_Z_BOT,
-                          60, 60, PANEL_Z_TOP - PANEL_Z_BOT, color=C_STEEL))
-    return '\n'.join(parts)
+def pivot_link():
+    """MOVING hub riding the fixed post: thrust bearing (assembly weight ~330 kg) +
+    top/bottom radial bearings (react the overturning couple) + 3 hinge brackets tying
+    the hub to the panel. Swings with the frame."""
+    cbear = "#5A5AA0"
+    p = [
+        ruby_cylinder("Hub tube", PIVOT_X, PIVOT_YD, 180, 58, 2050 - 180, color=C_STEEL, alpha=0.4, axis="z"),
+        ruby_cylinder("Hub thrust bearing", PIVOT_X, PIVOT_YD, 155, 70, 25, color=cbear, axis="z"),
+        ruby_cylinder("Hub radial bearing (bottom)", PIVOT_X, PIVOT_YD, 220, 60, 55, color=cbear, axis="z"),
+        ruby_cylinder("Hub radial bearing (top)", PIVOT_X, PIVOT_YD, 2050, 60, 55, color=cbear, axis="z"),
+    ]
+    for z in (300, 1180, 2000):
+        p.append(ruby_box("Hinge bracket (panel→hub)", 55, PIVOT_YD - 35, z, 140, 70, 110, color=C_STEEL))
+    return '\n'.join(p)
 
 
-def sliding_carriage(slide=0):
-    """Full carriage = fixed rails/clamps + moving blocks/brackets/beam."""
-    return carriage_fixed() + "\n" + carriage_moving(slide)
+def near_leaf():
+    """FIXED LEFT panel (Yd0..CUT) — does NOT swing; covers the near-wall strip past the
+    near upright. Own perimeter EPDM + the vertical cut seal the swinging panel butts."""
+    z0, z1 = PANEL_FLOOR_GAP, PANEL_Z_TOP
+    gw, gt = 40, 20
+    return '\n'.join([
+        ruby_box(f"Fixed left panel (Yd0-{CUT})", 0, 0, z0, 40, CUT, z1 - z0, color="#C8A060"),
+        ruby_box("EPDM fixed-panel top", -gt, 0, z1 - gw, gt, CUT, gw, color=C_GASKT),
+        ruby_box("EPDM fixed-panel bottom", -gt, 0, z0, gt, CUT, gw, color=C_GASKT),
+        ruby_box("EPDM fixed-panel left", -gt, 0, z0, gt, gw, z1 - z0, color=C_GASKT),
+        ruby_box("EPDM cut seal (fixed-swing joint)", 0, CUT - 6, z0, 40, 12, z1 - z0, color=C_GASKT),
+    ])
+
+
+def far_leaf():
+    """FIXED FAR strip (Yd FAR0..C_WID, ~75mm) at the pivot side — ends the swinging panel
+    AT the pivot so nothing swings outboard of the door plane (#10). Own perimeter EPDM +
+    the vertical cut seal at the pivot line."""
+    z0, z1 = PANEL_FLOOR_GAP, PANEL_Z_TOP
+    w = C_WID - FAR0
+    gw, gt = 40, 20
+    return '\n'.join([
+        ruby_box(f"Fixed far panel strip (Yd{FAR0}-{C_WID})", 0, FAR0, z0, 40, w, z1 - z0, color="#C8A060"),
+        ruby_box("EPDM fixed-far top", -gt, FAR0, z1 - gw, gt, w, gw, color=C_GASKT),
+        ruby_box("EPDM fixed-far bottom", -gt, FAR0, z0, gt, w, gw, color=C_GASKT),
+        ruby_box("EPDM fixed-far right (far wall)", -gt, C_WID - gw, z0, gt, gw, z1 - z0, color=C_GASKT),
+        ruby_box("EPDM far cut seal (swing-fixed joint)", 0, FAR0 - 6, z0, 40, 12, z1 - z0, color=C_GASKT),
+    ])
+
+
+def drum_frame():
+    """Steel support CAGE around the Ø900 drum (top+bottom rectangles + 4 posts, full
+    depth Z130..DRUM_H) carrying the central drum REVOLVE bearings: bottom = Ø220 flush
+    thrust slew pad recessed to the Z130 sill (step-over, no trip); top = Ø120 radial
+    guide journal. Swings with the assembly."""
+    s = 50
+    x0, x1 = ov.DRUM_CAGE_X0, ov.DRUM_CAGE_X1
+    y0, y1 = ov.DRUM_CAGE_YD_L, ov.DRUM_CAGE_YD_R
+    zb, zt = PANEL_FLOOR_GAP, DRUM_H
+    c, cb = C_STEEL, "#5A5AA0"
+    p = []
+    for z in (zb, zt - s):
+        p += [
+            ruby_box("Drum frame rail (X near)", x0, y0, z, x1 - x0, s, s, color=c),
+            ruby_box("Drum frame rail (X far)", x0, y1 - s, z, x1 - x0, s, s, color=c),
+            ruby_box("Drum frame rail (Yd front)", x0, y0, z, s, y1 - y0, s, color=c),
+            ruby_box("Drum frame rail (Yd back)", x1 - s, y0, z, s, y1 - y0, s, color=c),
+        ]
+    for px in (x0, x1 - s):
+        for py in (y0, y1 - s):
+            p.append(ruby_box("Drum frame post", px, py, zb, s, s, zt - zb, color=c))
+    p.append(ruby_box("Drum bearing cross-beam (top)", DRUM_CX - s // 2, y0, zt - s, s, y1 - y0, s, color=c))
+    p.append(ruby_cylinder("Drum top radial journal (Ø120 guide)", DRUM_CX, DRUM_CY, zt - s, 60, s, color=cb, axis="z"))
+    p.append(ruby_cylinder("Drum top pivot pin", DRUM_CX, DRUM_CY, zt - s - 70, 22, 80, color=c, axis="z"))
+    p.append(ruby_box("Drum bearing cross-beam (bottom, recessed)", DRUM_CX - s // 2, y0, zb - s, s, y1 - y0, s, color=c))
+    p.append(ruby_cylinder("Drum bottom thrust bearing (Ø220 flush slew pad)", DRUM_CX, DRUM_CY, zb - 22, 110, 22, color=cb, axis="z"))
+    p.append(ruby_box("Drum threshold sill (flush, chamfered step-over)", DRUM_CX - 240, DRUM_CY - 320, zb - 8, 250, 640, 8, color="#7A7A82"))
+    return '\n'.join(p)
+
+
+def frame_hooks():
+    """Hook brackets on the swinging frame (top + bottom) that the wall stays engage."""
+    bx, by = LOCK_BOLT
+    return '\n'.join(
+        ruby_box("Stay hook (frame)", bx - 30, by - 30, z - 35, 60, 60, 70, color=C_STEEL)
+        for z in STAY_Z)
+
+
+# Permanent bolted wall anchors for the transport stays (top+bottom): the near wall can't
+# be welded to, so the stay eye reacts into an inside + outside plate pair bolted through
+# the wall (4× M16). Stays put even when the rod is removed.
+PLATE_HW, PLATE_T, BOLT_OFF, BOLT_D = 100, 12, 70, 16
+
+
+def wall_anchors():
+    hx = SOCKET[0]                                   # 1694
+    wt = WALL_T
+    p = []
+    for z in STAY_Z:
+        p += [
+            ruby_box("Stay inside plate", hx - PLATE_HW, 0, z - PLATE_HW, 2 * PLATE_HW, PLATE_T, 2 * PLATE_HW, color=C_STEEL),
+            ruby_box("Stay outside plate", hx - PLATE_HW, -wt - PLATE_T, z - PLATE_HW, 2 * PLATE_HW, PLATE_T, 2 * PLATE_HW, color=C_STEEL),
+            ruby_box("Stay eye", hx - 15, PLATE_T, z - 15, 30, 55, 30, color=C_STEEL),
+        ]
+        for dx in (-BOLT_OFF, BOLT_OFF):
+            for dz in (-BOLT_OFF, BOLT_OFF):
+                p.append(ruby_box("Stay bolt M16", hx + dx - BOLT_D // 2, -wt - PLATE_T - 6, z + dz - BOLT_D // 2,
+                                  BOLT_D, wt + 2 * PLATE_T + 12, BOLT_D, color=C_STEEL))
+    return '\n'.join(p)
+
+
+def _rail_saddle(ys, z):
+    """Drop-in U-saddle cradling a removable 40×40 rail end: shelf + X-side cheeks +
+    tapered locating dowel (to the film datum) + a removable clamp bar."""
+    c, cclamp, cdowel = C_STEEL, "#7A7A82", "#9A9AA2"
+    return '\n'.join([
+        ruby_box("Rail saddle shelf", 133, ys, z - 14, 74, 80, 14, color=c),
+        ruby_box("Rail saddle cheek -X", 133, ys, z, 12, 80, 44, color=c),
+        ruby_box("Rail saddle cheek +X", 195, ys, z, 12, 80, 44, color=c),
+        ruby_box("Rail clamp bar (removable)", 133, ys + 22, z + 40, 74, 36, 14, color=cclamp),
+        ruby_cylinder("Rail locating dowel (taper)", 170, ys + 40, z - 14, 5, 22, color=cdowel, axis="z"),
+    ])
 
 
 # Cargo-door hinge X (vertical hinge axis, at the leaf-thickness centerline just
@@ -471,45 +574,53 @@ def processing_tray_partial():
 
 def walkways_partial():
     """The NEAR (pinhole-wall side, Yd 0) and FAR walkway decks, cropped to the
-    cargo-door-end zone. (The left walkway is the removable lift-out — shown as a
-    ghost in the operating context, omitted entirely for transport.)"""
-    grate_z = ov.WALKWAY_H - ov.WALKWAY_GRATE_T
+    cargo-door-end zone. (The left walkway is the removable lift-out — omitted for
+    transport.) The NEAR deck's door-end band (X 470..900) is dropped WALKWAY_SWING_CLEAR
+    (12mm) below the panel underside so the transport swing arc clears it; the FAR deck is
+    not swept, so it stays at full height."""
     t = ov.WALKWAY_GRATE_T
-    x0 = ov.WALKWAY_LEFT_X + ov.WALKWAY_W       # = 470 — where the long decks begin
+    full_z = ov.WALKWAY_H - t                    # grate-bottom Z at full height
+    drop_z = full_z - ov.WALKWAY_SWING_CLEAR     # 12mm lower over the swept near-deck band
+    x0 = ov.WALKWAY_LEFT_X + ov.WALKWAY_W        # = 470 — where the long decks begin
+    swept_x1 = 900                                # end of the swing-swept near-deck band
     w = PARTIAL_X - x0
     return '\n'.join([
-        ruby_box("Walkway Near (partial)", x0, 0, grate_z,
-                 w, ov.WALKWAY_W, t, color=ov.C_WALKWAY),
-        ruby_box("Walkway Far (partial)", x0, ov.WALKWAY_FAR_YD, grate_z,
+        # near deck: swept band (X470..900) lowered, then the rest at full height
+        ruby_box("Walkway Near (swept, dropped)", x0, 0, drop_z,
+                 swept_x1 - x0, ov.WALKWAY_W, t, color=ov.C_WALKWAY),
+        ruby_box("Walkway Near (partial)", swept_x1, 0, full_z,
+                 PARTIAL_X - swept_x1, ov.WALKWAY_W, t, color=ov.C_WALKWAY),
+        ruby_box("Walkway Far (partial)", x0, ov.WALKWAY_FAR_YD, full_z,
                  w, ov.WALKWAY_W, t, color=ov.C_WALKWAY),
     ])
 
 
 def film_plane_left():
-    """Partial of the film-plane rail mechanism at the LEFT (cargo-door) end.
-
-    The film plane rides 4 corner rails running in Yd (depth). This shows the LEFT
-    pair — upper (TL) and lower (BL) at X=RAIL_X_L, now CONTINUOUS (rev9 B2: the
-    drum is offset clear of the X=150 rail via the panel bay, so there is no
-    demountable segment) — plus the brace-cage beams (upper + lower) + corner posts
-    tying them at the near-wall (Yd≈100) and far-wall (Yd≈2262) ends. Fixed (no
-    slide); the whole left rails are struck for transport (transport model)."""
+    """LEFT (cargo-door) end of the film-plane rail mechanism. The left RAIL PAIR (TL+BL,
+    X=RAIL_X_L) is REMOVABLE for transport — it lifts straight up out of drop-in U-saddles
+    (shelf + cheeks + tapered datum dowel + clamp bar) at each end so the swinging drum cage
+    can transition the X=150 rail plane, then re-seats to the film datum. The brace-cage
+    beams (upper+lower, run to the container/walkway far extent) + the near-wall corner post
+    stay; the FAR post is the Ø89 pivot (the original 50×50 far post is struck post-build)."""
     rail = 40
-    s = ov.BRACE_RHS                            # 50 — brace RHS
-    xL = ov.RAIL_X_L                            # 150 — left rail X
-    z_bot = ov.RAIL_OFF                         # 100 — lower rail Z
-    z_top = ov.C_HGT - ov.RAIL_OFF - rail       # 2248 — upper rail Z
-    yN, yF = ov.FP_Y_MIN, ov.FP_Y               # 100 (near-wall end), 2262 (far-wall end)
-    bx = PARTIAL_X - xL                          # brace-beam length (cropped)
+    s = ov.BRACE_RHS                            # 50
+    xL = ov.RAIL_X_L                            # 150
+    z_bot = ov.RAIL_OFF                         # 100
+    z_top = ov.C_HGT - ov.RAIL_OFF - rail       # 2248
+    yN, yF = ov.FP_Y_MIN, ov.FP_Y               # 100, 2262
+    blen = WALL_FAR - xL                         # beams run X150..WALL_FAR (match container/walkway)
     C = ov.C_STEEL
     parts = [
         ruby_box("FP Rail BL (lower left)", xL, yN, z_bot, rail, yF - yN, rail, color=C),
         ruby_box("FP Rail TL (upper left)", xL, yN, z_top, rail, yF - yN, rail, color=C),
     ]
     for py, pn in [(yN, "near wall"), (yF, "far wall")]:
-        parts.append(ruby_box(f"FP Brace Beam Lower ({pn})", xL, py, z_bot, bx, s, s, color=C))
-        parts.append(ruby_box(f"FP Brace Beam Upper ({pn})", xL, py, z_top, bx, s, s, color=C))
+        parts.append(ruby_box(f"FP Brace Beam Lower ({pn})", xL, py, z_bot, blen, s, s, color=C))
+        parts.append(ruby_box(f"FP Brace Beam Upper ({pn})", xL, py, z_top, blen, s, s, color=C))
         parts.append(ruby_box(f"FP Brace Post L ({pn})", xL, py, z_bot, s, s, z_top - z_bot, color=C))
+    for ys in (yN, yF - 80):                     # drop-in saddles just inside each rail end
+        parts.append(_rail_saddle(ys, z_bot))
+        parts.append(_rail_saddle(ys, z_top))
     return '\n'.join(parts)
 
 
@@ -535,47 +646,58 @@ def bay():
 # ── Assemble the Ruby script ─────────────────────────────────────────────────
 
 def generate_ruby():
-    # Fixed subsystems (do not travel with the panel).
+    # Fixed subsystems (do NOT swing). Context reaches WALL_FAR so the near wall carries
+    # the transport-stay anchor (X≈1694, beyond the PARTIAL_X tray/walkway crop).
     static_comps = [
-        component("Context", "Context", context(x_far=PARTIAL_X)),
-        # include_seal=False — the housing-surround EPDM ring is bonded to the
-        # moving housing (built in the DC below via housing_surround_seal()), so it
-        # must NOT also be drawn on the fixed frame or a copy is left behind on slide.
+        component("Context", "Context", context(x_far=WALL_FAR)),
+        # include_seal=False — the housing-surround EPDM ring is bonded to the moving
+        # housing, so it must NOT also be drawn on the fixed frame.
         component("Fixed Door Frame", "Door Frame", door_frame(include_seal=False)),
-        component("Carriage Rails + Locks", "Carriage Rails", carriage_fixed()),
+        component("Pivot Axle (Ø89 post + bearings)", "Pivot Axle", axle()),
+        component("Fixed left panel", "Near Leaf", near_leaf()),
+        component("Fixed far strip", "Far Leaf", far_leaf()),
         component("Processing Tray (partial)", "Processing Tray", processing_tray_partial()),
         component("Walkways (near + far, partial)", "Walkways", walkways_partial()),
-        component("Film-Plane Rails (left, partial)", "Film Plane Rails", film_plane_left()),
+        component("Film-Plane Rails (left, removable)", "Film Plane Rails", film_plane_left()),
+        component("Transport stay wall anchors", "Lock anchor", wall_anchors()),
     ]
     static_body = '\n'.join(static_comps)
 
-    # Moving assembly → the Dynamic Component. Click it with the Interact tool to
-    # slide between operating (X=0) and transport (X=TRANSPORT_SLIDE). Everything
-    # that travels with the panel lives here: panel + bay + drum + housing seal +
-    # Fan B + the carriage blocks/brackets/beam (all at slide=0; the DC translates).
+    # Moving assembly → the Panel Swing DC. Everything that swings lives here: the SPLIT
+    # panel (trimmed to PANEL_CUT..PIVOT, the corners/full seals erased below) + bay +
+    # housing + drum cage + Fan B + the moving hub + stay hooks.
     dc_body = '\n'.join([
         hinge_panel(),
+        ruby_box(f"Panel near (swing, Yd{CUT}-{NEW_YD_L})", 0, CUT, PANEL_Z_BOT, 40,
+                 NEW_YD_L - CUT, PANEL_Z_TOP - PANEL_Z_BOT, color=C_PLY),
+        ruby_box("EPDM seal top (trimmed)", -20, CUT, PANEL_Z_TOP - 40, 20, PIVOT_YD - CUT, 40, color=C_GASKT),
+        ruby_box("EPDM seal bottom L (trimmed)", -20, CUT, PANEL_Z_BOT, 20,
+                 (DRUM_CY - HOUSING_R - 15) - CUT, 40, color=C_GASKT),
+        ruby_box("Panel far corner (trimmed)", 0, NEW_YD_R, PANEL_Z_BOT, 40,
+                 PIVOT_YD - NEW_YD_R, PANEL_Z_TOP - PANEL_Z_BOT, color=C_PLY),
+        ruby_box("EPDM seal bottom R (trimmed)", -20, DRUM_CY + HOUSING_R + 15, PANEL_Z_BOT, 20,
+                 PIVOT_YD - (DRUM_CY + HOUSING_R + 15), 40, color=C_GASKT),
         bay(),
-        drum_housing(DRUM_CX, DRUM_CY),   # fixed housing (the rotor is a nested DC, below)
-        # housing_surround_seal() omitted — the interface-2 EPDM ring read as a
-        # distracting band flanking the drum opening; not needed in this view.
+        drum_housing(DRUM_CX, DRUM_CY),   # fixed housing (the rotor is a nested revolve DC)
+        drum_frame(),
         fan_b(),
-        carriage_moving(),
+        pivot_link(),
+        frame_hooks(),
     ])
     rotor_body = drum_rotor(0, 0)         # local-origin geometry for the revolve DC
 
-    # Cargo-door leaves (local-origin geometry for the swing DC).
-    near_leaf = door_leaf_local("near")
-    far_leaf = door_leaf_local("far")
+    # Cargo-door leaves (local-origin geometry for the swing DC). NB renamed to avoid
+    # colliding with the near_leaf()/far_leaf() PANEL builders above.
+    door_near = door_leaf_local("near")
+    door_far = door_leaf_local("far")
     cwid = ov.C_WID
-    drum_cx, drum_cy = DRUM_CX, DRUM_CY
 
     tags_ruby = '\n'.join(
         f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
     keep_tags_ruby = '[' + ', '.join(f'"{t}"' for t in TAGS) + ']'
 
     return f'''model = Sketchup.active_model
-model.start_operation("TBS-001 Light Trap (dynamic slide)", true)
+model.start_operation("TBS-001 Light Trap (dynamic swing)", true)
 entities = model.active_entities
 
 opts = model.options["UnitsOptions"]
@@ -597,46 +719,60 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 # ── Fixed subsystems ──
 {static_body}
 
-# ═══ Panel Slide — DYNAMIC COMPONENT (the moving assembly) ═══
-# Interact tool → click to ANIMATE the panel between operating (0) and
-# transport ({TRANSPORT_SLIDE}mm).
-defn = model.definitions.add("Panel Slide")
+# Strike the original 50×50 far brace post — the Ø89 pivot post replaces it.
+fpdef = model.definitions.to_a.find {{ |d| d.name =~ /Film-Plane Rails/ }}
+fpdef.entities.grep(Sketchup::Group).each {{ |g| g.erase! if g.name =~ /FP Brace Post L .far wall./ }} if fpdef
+
+# ═══ Panel Swing — DYNAMIC COMPONENT (the swinging assembly) ═══
+# Interact tool → click to ANIMATE the panel 0→{LOCK}° about the vertical pivot.
+defn = model.definitions.add("Panel Swing")
 ents = defn.entities
 {dc_body}
+# Trim to the 3-zone split: erase the un-split corners + full-width seals + piano hinges
+# (the fixed left/far leaves + the trimmed swing seals provide the rest).
+defn.entities.grep(Sketchup::Group).select {{ |g| g.name =~ /Panel near corner|Panel far corner .40mm.|EPDM seal left|EPDM seal right|EPDM seal bottom L$|EPDM seal bottom R$|EPDM seal top$|Piano hinge/ }}.each {{ |g| g.erase! }}
 
-# Drum Rotor geometry nested INSIDE Panel Slide so it travels with the slide.
+# Drum Rotor — nested so it swings with the cage, with its OWN revolve attribute
+# (operational person-access), independent of the transport swing.
 rotor_defn = model.definitions.add("Drum Rotor")
-ents = rotor_defn.entities
+rents = rotor_defn.entities
 {rotor_body}
-rotor_inst = defn.entities.add_instance(rotor_defn, Geom::Transformation.translation([{drum_cx}.mm, {drum_cy}.mm, 0]))
+rotor_inst = defn.entities.add_instance(rotor_defn, Geom::Transformation.translation([{DRUM_CX}.mm, {DRUM_CY}.mm, 0]))
 rotor_inst.name = "Drum Rotor"
-rotor_inst.layer = model.layers["Sliding Assembly"]
 
-inst = entities.add_instance(defn, Geom::Transformation.new)
-inst.name = "Panel Slide"
-inst.layer = model.layers["Sliding Assembly"]
+# Shift the moving def by -pivot so the def origin sits at the pivot — then the instance's
+# RotZ swings the assembly about the pivot (same origin-at-rotation-point pattern the
+# cargo-door leaves use).
+shift = Geom::Transformation.translation([(-{PIVOT_X}).mm, (-{PIVOT_YD}).mm, 0])
+defn.entities.transform_entities(shift, defn.entities.to_a)
+
+inst = entities.add_instance(defn, Geom::Transformation.translation([{PIVOT_X}.mm, {PIVOT_YD}.mm, 0]))
+inst.name = "Panel Swing"
+inst.layer = model.layers["Panel Swing"]
 da = "dynamic_attributes"
 [defn, inst].each do |e|
-  e.set_attribute(da, "_name", "PanelSlide")
+  e.set_attribute(da, "_name", "PanelSwing")
   e.set_attribute(da, "_lengthunits", "MILLIMETERS")
-  e.set_attribute(da, "x", 0.0)
+  e.set_attribute(da, "swing", 0.0)
 end
-inst.set_attribute(da, "_x_access", "VIEW")
-inst.set_attribute(da, "_x_label", "Slide")
-inst.set_attribute(da, "onclick", 'ANIMATE("x", 0, {TRANSPORT_SLIDE})')
+inst.set_attribute(da, "_swing_access", "VIEW")
+inst.set_attribute(da, "_swing_label", "Swing")
+inst.set_attribute(da, "rotz", 0.0)
+inst.set_attribute(da, "_rotz_formula", "{LOCK}*swing")
+inst.set_attribute(da, "onclick", 'ANIMATE("swing", 0, 1)')
 inst.set_attribute(da, "_onclick_access", "NONE")
 dc_inst = inst
 
-# Drum Rotor — nested, so it travels with the slide. Its RotZ is DRIVEN by the
-# slide via a formula on the parent's x (the same child-reads-parent pattern the
-# cargo doors use, which DOES update during the parent's animation): as the panel
-# slides 0→{TRANSPORT_SLIDE}mm the drum revolves 0→180° so the opening swings from
-# the exterior round to face the INTERIOR (open on the inside in transport). No
-# onclick on the drum, so clicking it still cleanly slides the panel.
+# Drum Rotor revolve DC — click the drum to revolve it 0→180° (person access).
 rotor_inst.set_attribute(da, "_name", "DrumRotor")
 rotor_inst.set_attribute(da, "_lengthunits", "MILLIMETERS")
+rotor_inst.set_attribute(da, "revolve", 0.0)
+rotor_inst.set_attribute(da, "_revolve_access", "VIEW")
+rotor_inst.set_attribute(da, "_revolve_label", "Revolve")
 rotor_inst.set_attribute(da, "rotz", 0.0)
-rotor_inst.set_attribute(da, "_rotz_formula", "180*PanelSlide!x/{TRANSPORT_SLIDE}")
+rotor_inst.set_attribute(da, "_rotz_formula", "180*revolve")
+rotor_inst.set_attribute(da, "onclick", 'ANIMATE("revolve", 0, 1)')
+rotor_inst.set_attribute(da, "_onclick_access", "NONE")
 
 # ═══ Cargo Doors — DYNAMIC COMPONENT (click to close) ═══
 # Parent "Cargo Doors" holds two leaf children whose RotZ is driven by the
@@ -647,13 +783,13 @@ doors_ents = doors_defn.entities
 
 near_defn = model.definitions.add("Cargo Door Leaf Near")
 ents = near_defn.entities
-{near_leaf}
+{door_near}
 near_inst = doors_ents.add_instance(near_defn, Geom::Transformation.translation([{DOOR_HINGE_X}.mm, 0, 0]))
 near_inst.name = "Leaf Near"
 
 far_defn = model.definitions.add("Cargo Door Leaf Far")
 ents = far_defn.entities
-{far_leaf}
+{door_far}
 far_inst = doors_ents.add_instance(far_defn, Geom::Transformation.translation([{DOOR_HINGE_X}.mm, {cwid}.mm, 0]))
 far_inst.name = "Leaf Far"
 
@@ -689,7 +825,7 @@ model.layers.to_a.each {{ |l|
   model.layers.remove(l, true) rescue nil
 }}
 
-# ── Camera + scenes (the slide is interactive; plus a "Labeled" callout scene) ──
+# ── Camera + scenes (the swing is interactive; plus a "Labeled" callout scene) ──
 model.layers.each {{ |l| l.visible = true }}
 model.layers["Labels"].visible = false if model.layers["Labels"]  # frame geometry, not labels
 bb = model.bounds
@@ -700,7 +836,7 @@ model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 model.active_view.zoom(0.62)   # pull back so callouts have margin (and read larger)
 # Main interactive scene — Labels OFF.
-page = model.pages.add("Light Trap — click panel to slide")
+page = model.pages.add("Light Trap — click panel to swing")
 page.use_camera = true
 # Labeled — same view + component callouts.
 model.layers["Labels"].visible = true if model.layers["Labels"]
@@ -709,20 +845,20 @@ model.layers["Labels"].visible = false if model.layers["Labels"]
 
 model.commit_operation
 
-# Register the DC attributes with the Dynamic Components engine so the Interact
-# tool drives the slide (skipped if the extension isn't loaded).
+# Register the DC attributes with the Dynamic Components engine so the Interact tool
+# drives the swing (skipped if the extension isn't loaded).
 dc_ready = false
 if defined?($dc_observers) && $dc_observers.respond_to?(:get_latest_class)
   cls = $dc_observers.get_latest_class
   if cls
-    [dc_inst, doors_inst].each {{ |di| cls.redraw_with_undo(di) rescue nil }}
+    [dc_inst, rotor_inst, doors_inst].each {{ |di| cls.redraw_with_undo(di) rescue nil }}
     dc_ready = true
   end
 end
 
-{{ success: true, model: "Light Trap (dynamic slide)",
+{{ success: true, model: "Light Trap (dynamic swing)",
    components: model.entities.grep(Sketchup::ComponentInstance).length,
-   dynamic_engine: dc_ready, slide_mm: {TRANSPORT_SLIDE},
+   dynamic_engine: dc_ready, swing_deg: {LOCK},
    tags: model.layers.count, scenes: model.pages.count }}.to_json
 '''
 

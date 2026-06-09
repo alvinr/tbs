@@ -307,7 +307,7 @@ ents = defn.entities
 {moving_frame_body()}
 # CUT @ Yd{CUT}: drop the near corner from the rotating frame (the fixed Near Leaf
 # provides it) so the rotating part never sweeps the near upright.
-defn.entities.grep(Sketchup::Group).select {{ |g| g.name =~ /Panel near corner|EPDM seal left|EPDM seal bottom L|EPDM seal top$|Piano hinge/ }}.each {{ |g| g.erase! }}
+defn.entities.grep(Sketchup::Group).select {{ |g| g.name =~ /Panel near corner|EPDM seal left|EPDM seal bottom L$|EPDM seal top$|Piano hinge/ }}.each {{ |g| g.erase! }}
 
 # tag the panel SKINS (ply + seals) so the 'Structure' scene can hide them, leaving
 # the frame/bay/drum/pivot structure

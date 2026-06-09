@@ -4,8 +4,8 @@
 Top-down. The film plane has TWO left uprights: the FAR one (Yd2262) is the pivot;
 the NEAR one (Yd100) is in the path of the panel's near edge. So the panel is CUT at
 Yd180 — the minimum that lets the swinging part clear the near upright (150mm clips it
-at ~3deg; 160mm is the geometric minimum; 180mm chosen for margin — matches the 3D
-model generate_rotation_model.py):
+at ~3deg; 160mm is the geometric minimum; 180mm chosen for margin — = PANEL_CUT_YD, and
+the 3D swing now lives in the production light-trap model, generate_lighttrap_model.py):
 
   SWINGING  Yd180..2287 (+ drum + Fan B) → rotates with the frame about the pivot; runs
                                            cut → pivot, so it clears the near upright and

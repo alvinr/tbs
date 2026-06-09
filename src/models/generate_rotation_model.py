@@ -8,9 +8,10 @@ builders (lt.*) and places the rigid frame at TWO positions:
                 upright (X150, Yd2262) — just enough to pull the drum/bay inboard of
                 the door plane (X0) so the cargo doors can close, then locked.
 
-NOTE (kept on the model): in the swung/transport position the ~100mm of panel BEYOND
-the inset pivot (Yd2262→2362) pokes ~20-30mm back out past the door plane — a small
-flap to absorb in the seal tolerance (or end the panel at the pivot + seal that strip).
+NOTE (#10, RESOLVED): the swinging panel now ENDS at the pivot line (Yd2287) — the ~75mm
+of panel beyond the pivot (which would swing outboard of the door plane) is a separate
+FIXED far strip (far_leaf, Yd2287→2362), mirror of the fixed left panel. So nothing on the
+swinging frame projects past the door plane (no flap, no EPDM-tolerance gamble).
 
 The slide-based suspension is gone here; the weight is carried by the axle (floor
 thrust bearing). No ceiling carriage.
@@ -104,6 +105,24 @@ def near_leaf():
     ])
 
 
+def far_leaf():
+    """FIXED far strip (Yd{HY}..C_WID, ~75mm) at the pivot/far-wall side — covers the panel
+    BEYOND the pivot so nothing swings outboard of the door plane (#10: resolves the flap/
+    poke-out at the root instead of relying on EPDM tolerance). Mirror of the fixed left panel:
+    does NOT swing; carries its own perimeter EPDM (top, bottom, far-wall edge) + the vertical
+    cut seal at the pivot line that the swinging panel butts against when shut."""
+    z0, z1 = ov.PANEL_FLOOR_GAP, 2300
+    w = ov.C_WID - HY                          # ~75mm
+    gw, gt = 40, 20
+    return '\n'.join([
+        ov.ruby_box(f"Fixed far panel strip (Yd{HY}-{ov.C_WID})", 0, HY, z0, 40, w, z1 - z0, color="#C8A060"),
+        ov.ruby_box("EPDM fixed-far top", -gt, HY, z1 - gw, gt, w, gw, color=lt.C_GASKT),
+        ov.ruby_box("EPDM fixed-far bottom", -gt, HY, z0, gt, w, gw, color=lt.C_GASKT),
+        ov.ruby_box("EPDM fixed-far right (far wall)", -gt, ov.C_WID - gw, z0, gt, gw, z1 - z0, color=lt.C_GASKT),
+        ov.ruby_box("EPDM far cut seal (swing-fixed joint)", 0, HY - 6, z0, 40, 12, z1 - z0, color=lt.C_GASKT),
+    ])
+
+
 def axle():
     """FIXED pivot: a Ø89x8 CHS post sized for the ~3.6 kN·m swing cantilever
     (sigma ~95 MPa, SF ~3.7 on S355), floor-to-roof, bolted at both ends + a thrust
@@ -170,6 +189,7 @@ def fixed_components():
         component("Film-Plane Rails (left — removable)", "Film Plane Rails", film_plane_left_ext()),
         component("Pivot bearings", "Pivot Axle", axle()),
         component("Fixed left panel", "Near Leaf", near_leaf()),
+        component("Fixed far strip", "Near Leaf", far_leaf()),
         component("Walkways (near + far)", "Walkways", walkways()),
         component("Stay wall anchors (top+bottom)", "Lock anchor", wall_anchors()),
         component("Stay rods (top+bottom)", "Lock", wall_stay_rods()),
@@ -301,12 +321,19 @@ def moving_frame_body():
         lt.hinge_panel(),
         ov.ruby_box(f"Panel near (swing, Yd{CUT}-{NEAR_CORNER_YD})", 0, CUT, z0, 40,
                     NEAR_CORNER_YD - CUT, z1 - z0, color=lt.C_PLY),
-        ov.ruby_box("EPDM seal top (trimmed)", -20, CUT, z1 - 40, 20, ov.C_WID - CUT, 40, color=lt.C_GASKT),
-        # swing-panel bottom seal: the original full bottom-L (Yd0..aperture) was erased
+        # top seal trimmed to span the SWINGING panel only: cut (Yd{CUT}) → pivot (Yd{HY})
+        ov.ruby_box("EPDM seal top (trimmed)", -20, CUT, z1 - 40, 20, HY - CUT, 40, color=lt.C_GASKT),
+        # swing-panel bottom-L seal: the original full bottom-L (Yd0..aperture) was erased
         # with the near corner; re-add it trimmed to start at the cut (Yd{CUT}..aperture).
-        # (bottom-R, far-right, and trimmed-top seals survive from lt.hinge_panel.)
         ov.ruby_box("EPDM seal bottom L (trimmed)", -20, CUT, lt.PANEL_Z_BOT, 20,
                     (lt.DRUM_CY - lt.HOUSING_R - 15) - CUT, 40, color=lt.C_GASKT),
+        # #10: END the swinging panel AT the pivot line (Yd{HY}). The lt far corner + far
+        # bottom-R seal ran to C_WID (Yd2362) — 75mm of panel BEYOND the pivot that swings
+        # OUTBOARD of the door plane. Re-add them trimmed to HY; the originals are erased
+        # post-build, and the FIXED far strip (far_leaf) seals Yd{HY}..C_WID.
+        ov.ruby_box("Panel far corner (trimmed)", 0, lt.NEW_YD_R, z0, 40, HY - lt.NEW_YD_R, z1 - z0, color=lt.C_PLY),
+        ov.ruby_box("EPDM seal bottom R (trimmed)", -20, lt.DRUM_CY + lt.HOUSING_R + 15, z0, 20,
+                    HY - (lt.DRUM_CY + lt.HOUSING_R + 15), 40, color=lt.C_GASKT),
         lt.bay(),
         lt.drum_housing(DRUM_CX, DRUM_CY),
         lt.drum_rotor(DRUM_CX, DRUM_CY),
@@ -370,16 +397,16 @@ ents = defn.entities
 {moving_frame_body()}
 # CUT @ Yd{CUT}: drop the near corner from the rotating frame (the fixed Near Leaf
 # provides it) so the rotating part never sweeps the near upright.
-defn.entities.grep(Sketchup::Group).select {{ |g| g.name =~ /Panel near corner|EPDM seal left|EPDM seal bottom L$|EPDM seal top$|Piano hinge/ }}.each {{ |g| g.erase! }}
+defn.entities.grep(Sketchup::Group).select {{ |g| g.name =~ /Panel near corner|Panel far corner .40mm.|EPDM seal left|EPDM seal right|EPDM seal bottom L$|EPDM seal bottom R$|EPDM seal top$|Piano hinge/ }}.each {{ |g| g.erase! }}
 
 # tag the panel SKINS (ply + seals) so the 'Structure' scene can hide them, leaving
 # the frame/bay/drum/pivot structure
 skin_layer = model.layers["Panel skin"] || model.layers.add("Panel skin")
-["Swing Frame", "Fixed left panel"].each {{ |dn|
+["Swing Frame", "Fixed left panel", "Fixed far strip"].each {{ |dn|
   dd = model.definitions[dn]
   next unless dd
   dd.entities.grep(Sketchup::Group).each {{ |g|
-    g.layer = skin_layer if g.name =~ /Panel|EPDM|Piano|Southco|latch|Fixed left/
+    g.layer = skin_layer if g.name =~ /Panel|EPDM|Piano|Southco|latch|Fixed left|Fixed far/
   }}
 }}
 
@@ -405,7 +432,7 @@ it.layer = model.layers["Frame (transport)"]
 
 # ── keep the poke-out noted: label the swung far flap ──
 anc = Geom::Point3d.new((-25).mm, 2204.mm, 1200.mm)
-txt = entities.add_text("Frame FULLY CLEARS door plane\nat {round(LOCK)}deg (true min X +4mm) —\nno poke-out at this pivot", anc,
+txt = entities.add_text("NO poke-out: swinging panel ENDS at the\npivot line (Yd{HY}); the fixed far strip\n(Yd{HY}-{ov.C_WID}) seals the rest. Nothing\nswings outboard of the door plane.", anc,
                         Geom::Vector3d.new((-600).mm, (-300).mm, 300.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc2 = Geom::Point3d.new({HX}.mm, {HY}.mm, 1600.mm)

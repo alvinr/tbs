@@ -1220,7 +1220,7 @@ def sheet3():
     # cam latches. The drum does not reach the top, so the lip runs the full
     # width as one continuous member (meets across the center).
     # ══════════════════════════════════════════════════════════════════════════
-    ox2, oy2 = 980, 1760
+    ox2, oy2 = 980, 1935   # raised so Details C / D / B clear each other vertically
     def CX(d): return ox2 + k * d         # depth (mm) → sheet x  (exterior negative)
     def CY(hh): return oy2 + k * hh       # height about panel-top edge (h=0) → sheet y
 
@@ -1283,7 +1283,7 @@ def sheet3():
     # fixed strip's edge: the joint seals when shut (camera mode) and opens as the
     # panel swings. Plan section: depth X horizontal, Yd vertical (cut at yr=0).
     # ══════════════════════════════════════════════════════════════════════════
-    odx, ody = 1090, 1150
+    odx, ody = 1090, 1240   # centred in the gap between Details C (above) and B (below)
     def DDX(x): return odx + k * x          # panel depth (mm) → sheet x (exterior negative)
     def DDY(yr): return ody + k * yr        # Yd about the cut (yr=0) → sheet y
     dbx0, dbx1 = DDX(-26), DDX(60)

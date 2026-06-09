@@ -32,6 +32,7 @@ component = ov.component
 # The pivot REUSES the film-plane far upright (no separate axle post). Centre of that
 # 50x50 upright (X150-200, Yd2262-2312) is the rotation axis.
 HX, HY = ov.RAIL_X_L + ov.BRACE_RHS // 2, ov.FP_Y + ov.BRACE_RHS // 2   # 175, 2287
+CUT = ov.PANEL_CORNER_YD_L              # 653 — panel cut (between Fan B @365 and drum aperture @713)
 DRUM_CX, DRUM_CY, DRUM_R = lt.DRUM_CX, lt.DRUM_CY, ov.DRUM_R
 BAY_X0, APER_L, APER_R = ov.BAY_FRONT_X, lt.APER_L, lt.APER_R
 
@@ -48,8 +49,16 @@ def _min_x(deg):
 LOCK_MIN = next(t for t in [i * 0.5 for i in range(0, 190)] if _min_x(t) >= 0)
 LOCK = 56.0
 
-TAGS = ["Context", "Door Frame", "Film Plane Rails", "Pivot Axle",
+TAGS = ["Context", "Door Frame", "Film Plane Rails", "Pivot Axle", "Near Leaf",
         "Frame (camera)", "Frame (transport)", "Labels"]
+
+
+def near_leaf():
+    """The NEAR panel section (Yd0..CUT) + Fan B — CUT off from the rotating frame so
+    it never sweeps the near upright. Stays fixed at the door."""
+    z0, z1 = ov.PANEL_FLOOR_GAP, 2300
+    return (ov.ruby_box(f"Near leaf panel (Yd0-{CUT})", 0, 0, z0, 40, CUT, z1 - z0, color="#C8A060")
+            + "\n" + lt.fan_b())
 
 
 def axle():
@@ -67,7 +76,8 @@ def fixed_components():
         component("Context (ghost)", "Context", lt.context(x_far=lt.PARTIAL_X)),
         component("Fixed Door Frame", "Door Frame", lt.door_frame(include_seal=False)),
         component("Film-Plane Rails (left — removable)", "Film Plane Rails", lt.film_plane_left()),
-        component("Pivot Axle", "Pivot Axle", axle()),
+        component("Pivot bearings", "Pivot Axle", axle()),
+        component("Near Leaf (fixed) + Fan B", "Near Leaf", near_leaf()),
     ])
 
 
@@ -85,13 +95,13 @@ def pivot_link():
 
 
 def moving_frame_body():
-    """The rigid frame (panel + bay + drum + pivot link), reused from lighttrap."""
+    """The rigid frame: panel (near corner CUT off post-build) + bay + drum + pivot
+    link. Fan B + the near corner live in the fixed Near Leaf instead."""
     return '\n'.join([
         lt.hinge_panel(),
         lt.bay(),
         lt.drum_housing(DRUM_CX, DRUM_CY),
         lt.drum_rotor(DRUM_CX, DRUM_CY),
-        lt.fan_b(),
         pivot_link(),
     ])
 
@@ -148,6 +158,9 @@ gtxt.layer = model.layers["Labels"] rescue nil
 defn = model.definitions.add("Swing Frame")
 ents = defn.entities
 {moving_frame_body()}
+# CUT @ Yd{CUT}: drop the near corner from the rotating frame (the fixed Near Leaf
+# provides it) so the rotating part never sweeps the near upright.
+defn.entities.grep(Sketchup::Group).select {{ |g| g.name =~ /Panel near corner/ }}.each {{ |g| g.erase! }}
 
 ic = entities.add_instance(defn, Geom::Transformation.new)
 ic.name = "Frame (camera)"
@@ -168,6 +181,10 @@ anc2 = Geom::Point3d.new({HX}.mm, {HY}.mm, 1600.mm)
 txt2 = entities.add_text("PIVOT AXLE (x)\n@ film-plane far upright\n(150,2262) + floor bearing", anc2,
                          Geom::Vector3d.new(500.mm, (-200).mm, 300.mm))
 txt2.layer = model.layers["Labels"] rescue nil
+anc3 = Geom::Point3d.new(40.mm, {CUT}.mm, 1100.mm)
+txt3 = entities.add_text("CUT @ Yd{CUT}\nNEAR LEAF (Yd0-{CUT} + Fan B) fixed —\nrotating frame clears the near upright", anc3,
+                         Geom::Vector3d.new(500.mm, (-350).mm, 250.mm))
+txt3.layer = model.layers["Labels"] rescue nil
 
 model.definitions.purge_unused
 model.materials.purge_unused

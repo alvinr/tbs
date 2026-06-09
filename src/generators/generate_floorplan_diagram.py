@@ -253,48 +253,49 @@ def floor_plan():
     # Fan B — INTAKE: cargo door panel (X=0), near pinhole wall / near corner zone (Yd=FAN_B_YD=365mm, rev9/B2 swap), LOW (H=600mm)
     penetration(ax, 0, FAN_B_YD, r=55, col=C_DIM, label="FAN\nIN", label_offset=(-130, -30))
 
-    # ── Hinged panel — transport position (ghost, slid 300mm into container) ──
-    # Panel slides inward along pinhole wall (Yd=0) on HGR20 ceiling rails.
-    # Ghost outline at X=PANEL_SLIDE shows transport position.
-    TR_X = PANEL_SLIDE  # = 300mm
+    # ── Hinged panel — transport position (ghost, SWUNG ~56° about the pivot) ──
+    # rev10: the panel + punch-out bay + drum REVOLVE about the vertical Ø89 pivot
+    # post (PIVOT_X, PIVOT_YD = the film far-left upright) to clear the cargo doors.
+    # The old "slide 300mm on HGR20 ceiling rails" ghost is retired. The fixed strips
+    # (Yd 0–PANEL_CUT_YD near, FAR_STRIP_YD0–C_WID far) do NOT swing. Drawn faint so
+    # the swept footprint reads against the operational equipment (swing-clearance check).
     GHOST_LS = (0, (6, 4))
-    GHOST_A  = 0.35
-    # Corner zones (Yd=0-653 and Yd=1709-2362)
-    ax.add_patch(Rectangle((TR_X, 0), PANEL_CORNER_T, PANEL_CORNER_YD_L,
-                            fc="none", ec=C_DIM, lw=1.0, ls=GHOST_LS,
-                            zorder=4, alpha=GHOST_A))
-    ax.add_patch(Rectangle((TR_X, PANEL_CORNER_YD_R), PANEL_CORNER_T,
-                            C_WID - PANEL_CORNER_YD_R,
-                            fc="none", ec=C_DIM, lw=1.0, ls=GHOST_LS,
-                            zorder=4, alpha=GHOST_A))
-    # Center zone (Yd=653-1709)
-    ax.add_patch(Rectangle((TR_X, PANEL_CORNER_YD_L), PANEL_CENTER_T,
-                            PANEL_CORNER_YD_R - PANEL_CORNER_YD_L,
-                            fc="none", ec=C_DIM, lw=1.0, ls=GHOST_LS,
-                            zorder=4, alpha=GHOST_A))
-    ax.text(TR_X + PANEL_CENTER_T / 2, C_WID / 2,
-            "PANEL\n(TRANSPORT)",
-            color=C_DIM, fontsize=5.5, ha="center", va="center",
-            **FONT, rotation=90, alpha=0.4, zorder=5)
-    # Ghost drum in transport position (slides with panel)
-    DRUM_TR_CX = TR_X + PANEL_CENTER_T / 2  # drum center follows panel center zone
-    DRUM_TR_CY = C_WID / 2
-    ax.add_patch(Circle((DRUM_TR_CX, DRUM_TR_CY), DRUM_R,
-                         fc="none", ec=C_DIM, lw=1.0, ls=GHOST_LS,
-                         zorder=4, alpha=GHOST_A))
-    ax.plot([DRUM_TR_CX - 20, DRUM_TR_CX + 20], [DRUM_TR_CY, DRUM_TR_CY],
-            color=C_DIM, lw=0.5, alpha=GHOST_A, zorder=4)
-    ax.plot([DRUM_TR_CX, DRUM_TR_CX], [DRUM_TR_CY - 20, DRUM_TR_CY + 20],
-            color=C_DIM, lw=0.5, alpha=GHOST_A, zorder=4)
-    # Slide arrow: operational (X=0) → transport (X=300)
-    arr_yd = -60
-    ax.annotate("", xy=(TR_X + PANEL_CENTER_T / 2, arr_yd),
-                xytext=(PANEL_CENTER_T / 2, arr_yd),
-                arrowprops=dict(arrowstyle="->", color=C_DIM, lw=0.8),
-                zorder=5)
-    ax.text((PANEL_CENTER_T / 2 + TR_X + PANEL_CENTER_T / 2) / 2, arr_yd - 30,
-            f"{PANEL_SLIDE}mm SLIDE", ha="center", va="top",
-            color=C_DIM, fontsize=5, **FONT, alpha=0.5, zorder=5)
+    GHOST_A  = 0.30
+
+    def _rot(x, y, deg):
+        t = np.radians(deg); c, s = np.cos(t), np.sin(t)
+        return (PIVOT_X + (x - PIVOT_X) * c - (y - PIVOT_YD) * s,
+                PIVOT_YD + (x - PIVOT_X) * s + (y - PIVOT_YD) * c)
+    _L = SWING_LOCK_DEG
+    # swung panel center section (Yd PANEL_CUT_YD..FAR_STRIP_YD0)
+    _panel = [_rot(0, PANEL_CUT_YD, _L), _rot(PANEL_CENTER_T, PANEL_CUT_YD, _L),
+              _rot(PANEL_CENTER_T, FAR_STRIP_YD0, _L), _rot(0, FAR_STRIP_YD0, _L)]
+    ax.add_patch(matplotlib.patches.Polygon(_panel, closed=True, fc="none",
+                 ec=C_DIM, lw=1.0, ls=GHOST_LS, zorder=4, alpha=GHOST_A))
+    # swung punch-out bay (Yd PANEL_CORNER_YD_L..R, front face at BAY_FRONT_X)
+    _bay = [_rot(BAY_FRONT_X, PANEL_CORNER_YD_L, _L), _rot(0, PANEL_CORNER_YD_L, _L),
+            _rot(0, PANEL_CORNER_YD_R, _L), _rot(BAY_FRONT_X, PANEL_CORNER_YD_R, _L)]
+    ax.add_patch(matplotlib.patches.Polygon(_bay, closed=True, fc="none",
+                 ec=C_DIM, lw=1.0, ls=GHOST_LS, zorder=4, alpha=GHOST_A))
+    # swung drum (center in the bay, ~X=-400)
+    _dctr = _rot(-400, C_WID / 2, _L)
+    ax.add_patch(Circle(_dctr, DRUM_R, fc="none", ec=C_DIM, lw=1.0,
+                        ls=GHOST_LS, zorder=4, alpha=GHOST_A))
+    ax.text(_dctr[0], _dctr[1], "PANEL + DRUM\n(SWUNG 56°,\nTRANSPORT)",
+            color=C_DIM, fontsize=5.5, ha="center", va="center", **FONT,
+            alpha=0.5, zorder=5)
+    # pivot post marker
+    ax.add_patch(Circle((PIVOT_X, PIVOT_YD), 45, fc="none", ec=C_DIM, lw=1.2,
+                        zorder=5, alpha=0.7))
+    ax.text(PIVOT_X + 75, PIVOT_YD, "PIVOT Ø89", color=C_DIM, fontsize=5,
+            ha="left", va="center", **FONT, alpha=0.55, zorder=5)
+    # rotation arc traced by the bay front-right corner (operational 0° → transport 56°)
+    _arc = [_rot(BAY_FRONT_X, PANEL_CORNER_YD_R, dd) for dd in np.linspace(0, _L, 24)]
+    ax.plot([p[0] for p in _arc], [p[1] for p in _arc], color=C_DIM, lw=0.7,
+            ls=GHOST_LS, alpha=0.5, zorder=4)
+    _mid = _arc[len(_arc) // 2]
+    ax.text(_mid[0] - 30, _mid[1], f"SWING {int(_L)}°", ha="right", va="center",
+            color=C_DIM, fontsize=5, **FONT, alpha=0.55, zorder=5)
 
     # ── Processing tray (interior — optical zone floor) ─────────────────────
     ax.add_patch(Rectangle((PROC_TRAY_X_L, PROC_TRAY_YD_NEAR),
@@ -487,7 +488,7 @@ def floor_plan():
     # ── Left walkway — removable lift-out overlay + label ─────────────────────
     # The LEFT walkway (X WALKWAY_LEFT_X–470, full Yd span) is a removable
     # lift-out panel — removed only for transport so the light-trap cargo panel
-    # + drum can slide back to ~X=300.  Highlight with a dashed green border.
+    # + drum can swing ~56° about the pivot.  Highlight with a dashed green border.
     ax.add_patch(Rectangle((LX, NY), W, FYO - NY,
                             fc="none", ec="#408040", lw=2.0, ls=(0, (6, 3)),
                             zorder=13, alpha=0.85))
@@ -512,7 +513,7 @@ def floor_plan():
     ax.text(LW_NOTE_X + 505, LW_MID_Y + 80,
             f"LEFT WALKWAY — REMOVABLE LIFT-OUT\n"
             f"X={WALKWAY_LEFT_X}–{int(LXR)}mm\n"
-            "Remove for transport / light-trap slide-back",
+            "Remove for transport (panel+drum swing 56°)",
             ha="right", va="bottom", fontsize=6.0, color="#204820",
             fontweight="bold", **FONT, zorder=14,
             bbox=dict(boxstyle="round,pad=0.3", fc="#F0FFF0", ec="#408040", lw=0.9))

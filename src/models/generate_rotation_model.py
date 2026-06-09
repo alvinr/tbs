@@ -76,13 +76,16 @@ def near_leaf():
 
 
 def axle():
-    """NO separate post — the film-plane far upright IS the pivot. Just the fixed
-    floor thrust + top guide bearings that the upright turns in."""
-    cbear = "#5A5AA0"
-    r = 60                                   # Ø120 — wraps the 50x50 upright, fits inside the far wall
-    return '\n'.join([                       # (pivot Yd2287, wall Yd2362: 2287+60=2347 clears by 15mm)
-        ov.ruby_cylinder("Floor thrust bearing", HX, HY, 0, r, 45, color=cbear, axis="z"),
-        ov.ruby_cylinder("Top guide bearing", HX, HY, ov.C_HGT - 45, r, 45, color=cbear, axis="z"),
+    """FIXED pivot: a Ø89x8 CHS post sized for the ~3.6 kN·m swing cantilever
+    (sigma ~95 MPa, SF ~3.7 on S355), floor-to-roof, bolted at both ends + a thrust
+    collar the assembly rests on. This REPLACES the 50x50 film upright — the post now
+    doubles as the film-plane far-left brace post."""
+    c = ov.C_STEEL
+    return '\n'.join([
+        ov.ruby_cylinder("Pivot post (Ø89 CHS)", HX, HY, 0, 44.5, ov.C_HGT, color=c, axis="z"),
+        ov.ruby_cylinder("Pivot floor mount plate", HX, HY, 0, 110, 20, color=c, axis="z"),
+        ov.ruby_cylinder("Pivot roof mount plate", HX, HY, ov.C_HGT - 20, 110, 20, color=c, axis="z"),
+        ov.ruby_cylinder("Pivot thrust collar", HX, HY, 130, 75, 25, color=c, axis="z"),
     ])
 
 
@@ -98,14 +101,19 @@ def fixed_components():
 
 
 def pivot_link():
-    """The structural connection between the frame and the axle: a hub/collar that
-    rides the (fixed) axle + hinge brackets tying it to the panel's far-corner edge.
-    Part of the moving frame (the hub sits on the rotation axis, so it stays put while
-    the brackets + panel swing — a rigid hinge)."""
-    p = [ov.ruby_cylinder("Pivot hub (frame collar)", HX, HY, 110, 48, ov.C_HGT - 220,
-                          color=ov.C_STEEL, alpha=0.45, axis="z")]
-    for z in (250, 1180, 2120):                       # hinge brackets at 3 heights
-        p.append(ov.ruby_box("Hinge bracket (panel→axle)", 55, HY - 35, z, 140, 70, 110,
+    """Moving hub on the assembly, riding the fixed Ø89 post: TWO radial bearings
+    (top + bottom, ~1.9m apart — react the overturning couple, ~200 kg each) + a
+    thrust bearing (the assembly weight rests on the post collar, ~330 kg) + hinge
+    brackets tying the hub to the panel. Rotates with the frame about the post."""
+    cbear = "#5A5AA0"
+    p = [
+        ov.ruby_cylinder("Hub tube", HX, HY, 180, 58, 2050 - 180, color=ov.C_STEEL, alpha=0.4, axis="z"),
+        ov.ruby_cylinder("Hub thrust bearing", HX, HY, 155, 70, 25, color=cbear, axis="z"),
+        ov.ruby_cylinder("Hub radial bearing (bottom)", HX, HY, 220, 60, 55, color=cbear, axis="z"),
+        ov.ruby_cylinder("Hub radial bearing (top)", HX, HY, 2050, 60, 55, color=cbear, axis="z"),
+    ]
+    for z in (300, 1180, 2000):                       # hinge brackets at 3 heights
+        p.append(ov.ruby_box("Hinge bracket (panel→hub)", 55, HY - 35, z, 140, 70, 110,
                              color=ov.C_STEEL))
     return '\n'.join(p)
 
@@ -193,9 +201,8 @@ if fpdef
     if g.name =~ /FP Rail (TL|BL)/                          # the two removable left rails
       g.material = ghost_mat
       g.entities.grep(Sketchup::Face).each {{ |f| f.material = ghost_mat; f.back_material = ghost_mat }}
-    elsif g.name =~ /Brace Post L .far wall./              # the far upright = the PIVOT
-      g.material = pivot_mat
-      g.entities.grep(Sketchup::Face).each {{ |f| f.material = pivot_mat }}
+    elsif g.name =~ /Brace Post L .far wall./              # 50x50 upright -> replaced by Ø89 pivot post
+      g.erase!
     end
   }}
 end
@@ -249,7 +256,7 @@ txt = entities.add_text("Frame FULLY CLEARS door plane\nat {round(LOCK)}deg (tru
                         Geom::Vector3d.new((-600).mm, (-300).mm, 300.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc2 = Geom::Point3d.new({HX}.mm, {HY}.mm, 1600.mm)
-txt2 = entities.add_text("PIVOT AXLE (x)\n@ film-plane far upright\n(150,2262) + floor bearing", anc2,
+txt2 = entities.add_text("PIVOT POST Ø89 CHS (fixed)\n= film far-left post; hub rides it\non 2 radial + thrust bearings", anc2,
                          Geom::Vector3d.new(500.mm, (-200).mm, 300.mm))
 txt2.layer = model.layers["Labels"] rescue nil
 anc3 = Geom::Point3d.new(40.mm, {CUT}.mm, 1100.mm)

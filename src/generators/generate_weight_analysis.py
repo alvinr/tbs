@@ -213,8 +213,11 @@ def _walkway_right_weight():
     # Hangers: M10 threaded rod, 2313mm long, 5 pairs = 10 rods
     rod_area = 3.14159 * (WALKWAY_RIGHT_HANGER_D / 2000) ** 2  # m²
     hangers_kg = WALKWAY_RIGHT_HANGER_N * 2 * rod_area * (WALKWAY_RIGHT_HANGER_L / 1000) * RHO_STEEL
-    # Ceiling plates: 100×60×6mm, 10 plates (1 per hanger)
-    plate_kg = WALKWAY_RIGHT_HANGER_N * 2 * (0.100 * 0.060 * 0.006) * RHO_STEEL
+    # Ceiling anchor plates: 120×90×6mm, INSIDE + OUTSIDE per hanger (20 plates) + 4× M12
+    # through-bolts per hanger (40 bolts, ~60mm long)
+    plate_kg = WALKWAY_RIGHT_HANGER_N * 2 * 2 * (0.120 * 0.090 * 0.006) * RHO_STEEL
+    bolt_kg = WALKWAY_RIGHT_HANGER_N * 2 * 4 * (3.14159 * (0.012 / 2) ** 2 * 0.060) * RHO_STEEL
+    plate_kg += bolt_kg
     # Grating (300mm wide)
     grate_area = (WALKWAY_RIGHT_W / 1000) * (C_WID / 1000)
     grate_kg = grate_area * GRATING_KG_PER_M2

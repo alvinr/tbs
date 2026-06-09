@@ -65,7 +65,7 @@ from tbs_constants import (
     WALKWAY_BRACKET_DEMOUNT_X,
     WALKWAY_RIGHT_BEARER_SIZE, WALKWAY_RIGHT_BEARER_T,
     WALKWAY_RIGHT_HANGER_D, WALKWAY_RIGHT_HANGER_N, WALKWAY_RIGHT_HANGER_Y1, WALKWAY_RIGHT_HANGER_L,
-    WALKWAY_RIGHT_CEIL_PLATE,
+    WALKWAY_RIGHT_CEIL_PLATE, WALKWAY_RIGHT_CEIL_BOLT_D,
     WALKWAY_LEFT_SPAN, IBC_COL_X, IBC_W, IBC_H_600,
     CONTAINER_RIB_SPACING,
     WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X,
@@ -1115,7 +1115,7 @@ def sheet3():
     BEARER_TOP = DECK_H - WALKWAY_GRATE_T  # 65mm
     BEARER_BOT = BEARER_TOP - BEARER_S     # 25mm
 
-    BOLT_D   = 10
+    BOLT_D   = WALKWAY_RIGHT_CEIL_BOLT_D   # M12 roof through-bolt
     BOLT_R   = BOLT_D / 2
     WASHER_T = 3
     NUT_H    = 10
@@ -1386,31 +1386,40 @@ def sheet3():
                             sx(X_HI - X_LO), sy(CEIL_CORR_H),
                             fc="#C0C0C8", ec=C_OUT, lw=0.8, zorder=2, hatch=".."))
 
-    # Ceiling bracket plates + bolts
+    # Ceiling anchor plates (INSIDE under the roof + OUTSIDE on the roof exterior) + bolts.
+    # Roof in this detail spans C_HGT .. C_HGT+CEIL_T+CEIL_CORR_H; the two plates sandwich it.
     C_BOLT = "#505058"
+    roof_top = C_HGT + CEIL_T + CEIL_CORR_H
     for br_x in [BR_IN_X + BEARER_S / 2, BR_OUT_X + BEARER_S / 2]:
         plate_left = br_x - CP_L / 2
+        # INSIDE plate \u2014 just below the roof (rod hangs from it)
         ax.add_patch(Rectangle((sx(plate_left), sy(zy_top(C_HGT - CP_T))),
                                 sx(CP_L), sy(CP_T),
-                                fc=C_BRKT, ec=C_OUT, lw=1.0, zorder=6, alpha=0.85))
-        for boff in [-CP_L * 0.25, CP_L * 0.25]:
+                                fc=C_BRKT, ec=C_OUT, lw=1.0, zorder=6, alpha=0.9))
+        # OUTSIDE reinforcing plate \u2014 on top of the roof exterior
+        ax.add_patch(Rectangle((sx(plate_left), sy(zy_top(roof_top))),
+                                sx(CP_L), sy(CP_T),
+                                fc=C_BRKT, ec=C_OUT, lw=1.0, zorder=6, alpha=0.9))
+        # through-bolts (2 shown in section of the 2\u00d72 pattern): inside plate \u2192 outside plate
+        for boff in [-CP_L * 0.30, CP_L * 0.30]:
             bx = br_x + boff
-            ax.add_patch(Rectangle((sx(bx - HANGER_R * 0.4), sy(zy_top(C_HGT - CP_T))),
-                                    sx(HANGER_R * 0.8), sy(CP_T + CEIL_T + 8),
+            ax.add_patch(Rectangle((sx(bx - BOLT_R), sy(zy_top(C_HGT - CP_T))),
+                                    sx(BOLT_D), sy((roof_top + CP_T) - (C_HGT - CP_T)),
                                     fc=C_BOLT, ec=C_OUT, lw=0.5, zorder=7))
-            ax.add_patch(Rectangle((sx(bx - BOLT_R), sy(zy_top(C_HGT + CEIL_T))),
-                                    sx(BOLT_D), sy(NUT_H),
+            # bolt head on top of the outside plate
+            ax.add_patch(Rectangle((sx(bx - BOLT_R * 1.4), sy(zy_top(roof_top + CP_T))),
+                                    sx(BOLT_D * 1.4), sy(NUT_H),
                                     fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=7))
 
-        # Rod stub down from ceiling plate into break zone
+        # Rod stub down from the INSIDE plate into the break zone
         ax.add_patch(Rectangle((sx(br_x - rod_hw), sy(zy_top(TOP_Z_LO))),
                                 sx(rod_hw * 2), sy(C_HGT - CP_T - TOP_Z_LO),
                                 fc=C_ROD, ec=C_OUT, lw=0.8, zorder=5))
 
     leader(ax, sx(BR_IN_X + BEARER_S / 2 - CP_L / 2 - 2), sy(zy_top(C_HGT - CP_T / 2)),
            sx(BR_IN_X - 55), sy(zy_top(C_HGT - 60)),
-           f"CEILING BRACKET PLATE\n{CP_L}\u00d7{CP_W}\u00d7{CP_T}mm STEEL\n"
-           f"2\u00d7 M{BOLT_D} THROUGH CEILING",
+           f"CEILING ANCHOR PLATES \u2014 INSIDE + OUTSIDE\n{CP_L}\u00d7{CP_W}\u00d7{CP_T}mm STEEL (sandwich the roof)\n"
+           f"4\u00d7 M{BOLT_D} THROUGH-BOLTS (2\u00d72)",
            color=C_BRKT, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 

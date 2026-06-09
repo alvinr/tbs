@@ -343,9 +343,13 @@ def cantilever_type_labels():
 
 def right_hangers():
     """The ceiling-hung right walkway support: two bearer angles (X=4329/4629)
-    running the full width at deck level, and 5 rod-pairs of M10 threaded rod up
-    to ceiling plates (the deck rests on the bearers; no floor contact)."""
-    pw, pl, pth = R_CEIL_PLATE                  # 100 × 60 × 6
+    running the full width at deck level, and 5 rod-pairs of M10 threaded rod up to
+    the ceiling. Each rod is anchored through the roof with a SANDWICHED plate pair —
+    an INSIDE plate the rod hangs from + an OUTSIDE (roof-exterior) reinforcing plate,
+    drawn together by 4× M12 through-bolts (the same anchor pattern used elsewhere)."""
+    pw, pl, pth = R_CEIL_PLATE                  # 120 × 90 × 6 (inside & outside)
+    bd = k.WALKWAY_RIGHT_CEIL_BOLT_D            # M12 through-bolt
+    box, boy = k.WALKWAY_RIGHT_CEIL_BOLT_OFF    # 2×2 pattern half-spacing
     bearer_xs = (R_X, R_X + R_W)                # 4329, 4629
     # 5 hanger pairs: 1st at HANGER_Y1, rest on rib centers (matches the 2D diagram).
     hanger_yds = [R_HANGER_Y1] + list(range(RIB, C_WID, RIB))
@@ -360,9 +364,20 @@ def right_hangers():
             parts.append(ruby_cylinder(f"Right hanger rod M10 X{bx} Y{yd}",
                                        bx, yd, GRATE_Z, R_HANGER_D / 2,
                                        C_HGT - GRATE_Z, color=C_STEEL, axis="z"))
-            parts.append(ruby_box(f"Right ceiling plate X{bx} Y{yd}",
+            # inside plate (rod hangs from it, just under the roof)
+            parts.append(ruby_box(f"Right ceiling plate (inside) X{bx} Y{yd}",
                                   bx - pw / 2, yd - pl / 2, C_HGT - pth,
                                   pw, pl, pth, color=C_STEEL))
+            # outside reinforcing plate ON TOP of the roof exterior (roof = C_HGT..C_HGT+WALL_T)
+            parts.append(ruby_box(f"Right ceiling plate (outside) X{bx} Y{yd}",
+                                  bx - pw / 2, yd - pl / 2, C_HGT + WALL_T,
+                                  pw, pl, pth, color=C_STEEL))
+            # 4× M12 through-bolts (2×2 pattern) sandwiching both plates + the roof skin
+            for dx in (-box, box):
+                for dy in (-boy, boy):
+                    parts.append(ruby_cylinder(f"Right ceiling bolt M{bd} X{bx} Y{yd}",
+                                               bx + dx, yd + dy, C_HGT - pth - 4,
+                                               bd / 2, WALL_T + 2 * pth + 8, color=C_STEEL, axis="z"))
     return '\n'.join(parts)
 
 

@@ -192,13 +192,17 @@ arm structures at the butt joints.
 | First pair position | Yd=320mm |
 | Remaining pairs spacing | 457mm centers |
 | All hangers at | Yd ≤ 2057mm (clear of optical cone) |
-| Ceiling bracket plate | 100×60×6mm steel |
-| Ceiling attachment | 2× M10 through-bolts per plate, through ceiling corrugation |
+| Ceiling anchor plates | 120×90×6mm steel — an INSIDE plate (rod hangs from it) + an OUTSIDE roof-exterior reinforcing plate, sandwiching the roof |
+| Ceiling attachment | 4× M12 through-bolts per hanger (2×2 pattern), drawing the inside/outside plates together through the roof — same 4-bolt anchor as the wall stays / cantilever brackets; sealed penetrations |
 
 Each hanger pair consists of two M10 rods — one at each bearer (X=4329mm and
 X=4629mm). The rod passes through the horizontal flange of the L-angle bearer
-with a nut and washer above and below the flange, then extends up to a ceiling
-bracket plate bolted through the ceiling corrugation.
+with a nut and washer above and below the flange, then extends up to the **inside
+ceiling anchor plate**. Each hanger is anchored through the roof with a sandwiched
+plate pair — the inside plate plus an **outside roof-exterior reinforcing plate** —
+drawn together by **4× M12 through-bolts** (the same 4-bolt anchor pattern used for
+the wall stays and the wall-cantilever brackets), so the hanger load reacts into the
+roof through a plate on each side rather than a single interior plate.
 
 ### 4.3 Design Rationale
 

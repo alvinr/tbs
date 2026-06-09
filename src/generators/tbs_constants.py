@@ -567,7 +567,13 @@ WALKWAY_RIGHT_HANGER_N   = 5    # number of hanger pairs along Yd
 WALKWAY_RIGHT_HANGER_Y1  = 320  # first pair Yd (mm) — shifted 20% toward film plane
                                 # to clear shelf hanger zone (was 228.5mm = half-spacing)
 WALKWAY_RIGHT_HANGER_L   = C_HGT - (WALKWAY_H - WALKWAY_GRATE_T)  # 2388 - 75 = 2313mm rod length
-WALKWAY_RIGHT_CEIL_PLATE  = (100, 60, 6)  # ceiling bracket plate (L×W×T mm)
+# Each ceiling hanger is anchored through the roof with a SANDWICHED plate pair (the same
+# inside+outside plate + 4-bolt pattern used for the wall-stay anchors / cantilever brackets):
+# an INSIDE plate the rod hangs from + an OUTSIDE (roof-exterior) reinforcing plate, drawn
+# together by 4× M12 through-bolts. (Plate enlarged 100×60 → 120×90 to seat the bolt pattern.)
+WALKWAY_RIGHT_CEIL_PLATE  = (120, 90, 6)  # ceiling anchor plate L(X)×W(Yd)×T (mm) — inside & outside
+WALKWAY_RIGHT_CEIL_BOLT_D = 12            # roof through-bolt diameter (mm) — M12, 4 per hanger
+WALKWAY_RIGHT_CEIL_BOLT_OFF = (42, 28)    # 2×2 bolt-pattern half-spacing (X, Yd) from the rod
 # Near walkway (pinhole side): X=tray_L to tray_R, Yd=0 to WALKWAY_W
 WALKWAY_NEAR_YD = 0                          # near edge against pinhole wall
 # Far walkway (film plane side): X=tray_L to tray_R, Yd=C_WID-WALKWAY_W to C_WID

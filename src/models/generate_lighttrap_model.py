@@ -386,9 +386,10 @@ def drum():
 
 
 # ── Rotation transport system (rev10 — supersedes the slide carriage) ────────
-# The pivot AXLE is fixed; the hub + panel + cage swing about it. Geometry ported
-# from the proven rotation study (rotation-study.skp) and parameterised on the
-# tbs_constants swing values via `ov`.
+# The pivot AXLE is fixed; the hub + panel + cage swing about it. Geometry came from the
+# rotation design study (now folded in here — this model IS the production version) and is
+# parameterised on the tbs_constants swing values via `ov`. Design spec:
+# docs/superpowers/specs/2026-06-08-cargo-door-rotating-panel-design.md
 
 def axle():
     """FIXED pivot: a Ø89×8 CHS post (the film far-left upright reused), floor-to-roof,

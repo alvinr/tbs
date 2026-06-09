@@ -248,9 +248,12 @@ This replaces the slide in the production model + docs — a significant change:
 
 ## 7. Study artifacts (reference)
 
-- **2D plan:** `src/generators/generate_rotation_study.py` → `diagrams/rotation-study.png`
-- **3D model:** `src/models/generate_rotation_model.py` → `models/rotation-study.skp`
-  (scenes: Camera / Transport (swung 56°) / Structure (no panel skins))
-- **Faithful lighttrap baseline:** `src/models/generate_transport_study_model.py` →
-  `models/transport-study.skp`
+- **2D plan (kept):** `src/generators/generate_rotation_study.py` → `diagrams/rotation-study.png`
+  — kept as the explanatory hinged-panel figure.
+- **3D model — PRODUCTION (cascade Stage 1a, 2026-06-08):** the rotation swing is now the
+  production light-trap model, `src/models/generate_lighttrap_model.py` → `models/lighttrap.skp`
+  (interactive **Panel Swing** DC 0→56° about the pivot + nested drum-revolve DC + Cargo Doors DC).
+- **Retired (folded in):** the standalone 3D studies `generate_rotation_model.py` /
+  `rotation-study.skp` and `generate_transport_study_model.py` / `transport-study.skp` were
+  removed once their builders were promoted into the light-trap model (history preserved in git).
 - **Slide exploration (superseded):** git tag `transport-study-explore`

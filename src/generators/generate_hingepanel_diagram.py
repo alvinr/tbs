@@ -616,8 +616,8 @@ def sheet2():
     cb_t = 50
     ax.add_patch(Rectangle((_CGL, D_CY - cb_t / 2), _CGR - _CGL, cb_t,
                            fc=C_STEEL, ec=C_OUT, lw=1.1, alpha=0.45, zorder=11))
-    # small bearing marker offset off the bore centre so it doesn't sit on the bore label
-    ax.add_patch(Circle((D_CX - DR * 0.42, D_CY), 55, fc="#5A5AA0", ec=C_OUT, lw=1.2, zorder=12))
+    # revolve bearing — CENTERED on the drum axis (the bore label is offset below it instead)
+    ax.add_patch(Circle((D_CX, D_CY), 60, fc="#5A5AA0", ec=C_OUT, lw=1.3, zorder=12))
     leader(ax, (_CGL + 40, D_CY - cb_t / 2), (D_XL - 120, D_CY - DR * 0.4),
            "DRUM CAGE CROSS-BEAM (top +\nbottom) carrying the central\nØ220/Ø120 revolve bearing", col=C_STEEL, fs=6)
     # daylight ray at ENTER: enters bore from exterior, blocked at interior by drum
@@ -625,7 +625,7 @@ def sheet2():
                 arrowprops=dict(arrowstyle="-|>", color="#D08000", lw=1.8), zorder=12)
     ax.plot([D_CX], [D_CY + LT_DRUM_OR], marker="x", ms=10, mew=2.4,
             color="#2E8B57", zorder=13)
-    ax.text(D_CX, D_CY, f"Ø{int(2 * BORE_R)} bore\n~555mm passage", color=C_DIM,
+    ax.text(D_CX, D_CY - DR * 0.45, f"Ø{int(2 * BORE_R)} bore\n~555mm passage", color=C_DIM,
             fontsize=6.2, ha="center", va="center", **FONT, zorder=15)
 
     # Opening labels + component leaders

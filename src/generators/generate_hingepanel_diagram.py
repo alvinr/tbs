@@ -1277,6 +1277,45 @@ def sheet3():
     clbl((CX(20), CY(-70)), CY(-58), "Upper cam latch compresses\npanel onto seal")
     clbl((CX(20), CY(-95)), CY(-92), "Panel top edge")
 
+    # ══════════════════════════════════════════════════════════════════════════
+    # DETAIL D — Vertical CUT seal (plan section at the fixed↔swinging joint, Yd180
+    # & Yd2287). The swinging panel's vertical edge butts an EPDM bulb bonded to the
+    # fixed strip's edge: the joint seals when shut (camera mode) and opens as the
+    # panel swings. Plan section: depth X horizontal, Yd vertical (cut at yr=0).
+    # ══════════════════════════════════════════════════════════════════════════
+    odx, ody = 1090, 1150
+    def DDX(x): return odx + k * x          # panel depth (mm) → sheet x (exterior negative)
+    def DDY(yr): return ody + k * yr        # Yd about the cut (yr=0) → sheet y
+    dbx0, dbx1 = DDX(-26), DDX(60)
+    dby0, dby1 = DDY(-54), DDY(54)
+    ax.add_patch(Rectangle((dbx0, dby0), dbx1 - dbx0, dby1 - dby0,
+                           fc="#FBFBFD", ec=C_DIM, lw=1.0, ls=(0, (5, 3)), zorder=2))
+    ax.text((dbx0 + dbx1) / 2, dby1 + 30, "DETAIL D — VERTICAL CUT SEAL",
+            ha="center", va="bottom", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+    ax.text((dbx0 + dbx1) / 2, dby1 + 8,
+            "plan section at the fixed↔swing joint (Yd180 / Yd2287)  ·  enlarged ~3.3:1",
+            ha="center", va="bottom", fontsize=6.4, color=C_DIM, **FONT)
+    ax.text(DDX(-20), DDY(48), "EXTERIOR", fontsize=6, color="#5060A0",
+            ha="left", va="center", fontweight="bold", **FONT)
+    ax.text(DDX(52), DDY(48), "INTERIOR", fontsize=6, color="#407040",
+            ha="right", va="center", fontweight="bold", **FONT)
+    # fixed strip edge (lower) + EPDM cut bulb (centre) + swinging panel edge (upper)
+    ax.add_patch(Rectangle((DDX(0), DDY(-50)), k * 40, k * 43, fc="#C8A060", ec=C_OUT,
+                           lw=1.3, hatch="\\\\\\", zorder=22))                 # fixed strip
+    ax.add_patch(Rectangle((DDX(0), DDY(7)), k * 40, k * 43, fc=C_ALUM, ec=C_OUT,
+                           lw=1.3, zorder=22))                                  # swinging panel
+    ax.add_patch(Rectangle((DDX(-3), DDY(-7)), k * 43, k * 14, fc=C_GASKT, ec=C_OUT,
+                           lw=1.0, zorder=24))                                  # EPDM cut seal
+    ax.plot([DDX(0), DDX(0)], [DDY(-52), DDY(52)], color=C_CL, lw=0.8, ls=(0, (6, 4)), zorder=20)
+    def ddlbl(target, ty, text):
+        tx = DDX(70)
+        ax.annotate("", xy=target, xytext=(tx - 6, ty),
+                    arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8, shrinkA=1, shrinkB=1), zorder=24)
+        ax.text(tx, ty, text, fontsize=6.0, color=C_DIM, ha="left", va="center", **FONT)
+    ddlbl((DDX(20), DDY(-30)), DDY(-40), "FIXED strip edge\n(bolted to the door frame)")
+    ddlbl((DDX(8), DDY(0)), DDY(2), "EPDM cut-seal bulb — bonded to\nthe fixed edge; the swinging panel\nbutts + compresses it when shut")
+    ddlbl((DDX(20), DDY(30)), DDY(42), "SWINGING panel edge\n(joint opens as it swings)")
+
     # ── Title block (portrait sheet — taller box, smaller fonts, clipped) ──────
     title_block(ax, "SHEET 3 OF 5",
                 drawing_title="HINGED LIGHT-TRAP PANEL",

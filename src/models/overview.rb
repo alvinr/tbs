@@ -8233,7 +8233,7 @@ end
   # Electrical Panel (EP)
   grp = ents.add_group
   grp.name = "Electrical Panel (EP)"
-  face = grp.entities.add_face([1910.mm,0.mm,1650.mm], [2210.mm,0.mm,1650.mm], [2210.mm,160.mm,1650.mm], [1910.mm,160.mm,1650.mm])
+  face = grp.entities.add_face([1910.mm,0.mm,1500.mm], [2210.mm,0.mm,1500.mm], [2210.mm,160.mm,1500.mm], [1910.mm,160.mm,1500.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(600.mm)
   mat = model.materials["Electrical Panel (EP)"] || model.materials.add("Electrical Panel (EP)")

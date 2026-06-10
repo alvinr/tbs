@@ -203,7 +203,7 @@ def floor_plan():
     # (waste drums and dolly tracks eliminated in rev 5 — left zone now light trap only)
 
     # ── PINHOLE WALL (Y=0 face) — wall-mounted items ──────────────────────────
-    # Electrical panel (thin strip at Y=0) — raised to Z=1600–2200
+    # Electrical panel (thin strip at Y=0) — Z=1500–2100 (rev11: dropped 150 for brace-beam clearance)
     equip_rect(ax, EP_X, 0, EP_W, 80, C_ELEC,
                "ELEC\nPANEL", zorder=7, alpha=0.95)
     # Battery bank (slim profile, 120mm depth)

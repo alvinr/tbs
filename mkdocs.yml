@@ -73,6 +73,7 @@ nav:
     - Misc:
       - "Container": container-report.md
       - "Walkway": walkway-report.md
+      - "Right Walkway Cantilever Study": right-walkway-cantilever-study.md
       - "Hinged Light-Trap Panel": hinged-panel-report.md
       - "Chemistry Prep Shelves": chemistry-prep-shelves.md
     - "Component Dependency Map": component-dependency-map.md

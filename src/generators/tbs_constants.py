@@ -567,27 +567,17 @@ WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway
 # rev10: the panel + drum SWING ~56° about the pivot for transport and the swinging cage
 # rides the Z130 floor gap — its underside passes OVER the Z115 door-end bracket tops, so
 # NO walkway bracket is struck for transport (the old WALKWAY_BRACKET_DEMOUNT_X is retired).
-# Right walkway (IBC end) — ceiling-hung design.
-# No floor contact, no box beam.  Two longitudinal steel angle bearers
-# (25×25×5mm) running full container width along Yd, suspended from ceiling
-# corrugations by M10 threaded rod hangers at 457mm centers.  Grating spans
-# 300mm between bearers.  Near/far ends bear on adjacent walkway brackets.
-# All hangers placed at Yd < 2025mm — clear of optical cone.
+# Right walkway (IBC end) — CANTILEVER RECTANGLE (rev 12).
+# A closed 40×40×3mm SHS frame (2 long beams at X=4329/4629 + 2 end beams) picked
+# up at mid-span by 2 arms cantilevering off the IBC corridor uprights (half-lapped
+# where the long beams cross), on wall cleats at the left corners and combined
+# corner plates (shared with the bottom film rail BR) at the right corners.  The
+# geometry is single-sourced in src/models/generate_sketchup_model.py
+# (right_walkway_cantilever() / fp_combined_corner_plate(), RWK_* constants) and the
+# 2D plan in generate_walkway_diagram.py sheet3().  No floor contact, no roof
+# penetrations.  The prior ceiling-hung bearer/hanger/ceiling-plate constants
+# (WALKWAY_RIGHT_BEARER_*, _HANGER_*, _CEIL_*) are RETIRED.
 WALKWAY_RIGHT_W = WALKWAY_W  # 300mm — same width as near/far
-WALKWAY_RIGHT_BEARER_SIZE = 25   # bearer angle leg (mm) — 25×25×5mm steel L-angle
-WALKWAY_RIGHT_BEARER_T   = 5    # bearer angle thickness (mm)
-WALKWAY_RIGHT_HANGER_D   = 10   # hanger threaded rod diameter (mm) — M10
-WALKWAY_RIGHT_HANGER_N   = 5    # number of hanger pairs along Yd
-WALKWAY_RIGHT_HANGER_Y1  = 320  # first pair Yd (mm) — shifted 20% toward film plane
-                                # to clear shelf hanger zone (was 228.5mm = half-spacing)
-WALKWAY_RIGHT_HANGER_L   = C_HGT - (WALKWAY_H - WALKWAY_GRATE_T)  # 2388 - 75 = 2313mm rod length
-# Each ceiling hanger is anchored through the roof with a SANDWICHED plate pair (the same
-# inside+outside plate + 4-bolt pattern used for the wall-stay anchors / cantilever brackets):
-# an INSIDE plate the rod hangs from + an OUTSIDE (roof-exterior) reinforcing plate, drawn
-# together by 4× M12 through-bolts. (Plate enlarged 100×60 → 120×90 to seat the bolt pattern.)
-WALKWAY_RIGHT_CEIL_PLATE  = (120, 90, 6)  # ceiling anchor plate L(X)×W(Yd)×T (mm) — inside & outside
-WALKWAY_RIGHT_CEIL_BOLT_D = 12            # roof through-bolt diameter (mm) — M12, 4 per hanger
-WALKWAY_RIGHT_CEIL_BOLT_OFF = (42, 28)    # 2×2 bolt-pattern half-spacing (X, Yd) from the rod
 # Near walkway (pinhole side): X=tray_L to tray_R, Yd=0 to WALKWAY_W
 WALKWAY_NEAR_YD = 0                          # near edge against pinhole wall
 # Far walkway (film plane side): X=tray_L to tray_R, Yd=C_WID-WALKWAY_W to C_WID
@@ -796,7 +786,7 @@ if __name__ == "__main__":
     print(f"  Proc tray:      X={PROC_TRAY_X_L}–{PROC_TRAY_X_R}  Yd={PROC_TRAY_YD_NEAR}–{PROC_TRAY_YD_FAR}  rim={PROC_TRAY_RIM}mm")
     print(f"  Tray sump:      X={PROC_TRAY_DRAIN_X}  Yd={PROC_TRAY_DRAIN_YD}")
     print(f"  Walkway:        std={WALKWAY_W}mm  wide={WALKWAY_NEAR_WIDE_W}mm (X={WALKWAY_NEAR_WIDE_X_L}–{WALKWAY_NEAR_WIDE_X_R})")
-    print(f"  Right walkway:  CEILING-HUNG  {WALKWAY_RIGHT_HANGER_N} hanger pairs  M{WALKWAY_RIGHT_HANGER_D} rod")
+    print(f"  Right walkway:  CANTILEVER RECTANGLE  (40×40 SHS frame + 2 IBC-upright arms + combined corner plates)")
     print(f"  Left walkway:   REMOVABLE LIFT-OUT  span={WALKWAY_LEFT_SPAN}mm  ({len(LEFT_WK_CANT_LEG_YDS)} floor-leg cantilevers)")
     print(f"  Walkway open:   X={PROC_OPEN_X_L}–{PROC_OPEN_X_R}  Yd={PROC_OPEN_YD_N}–{PROC_OPEN_YD_F}  area={PROC_OPEN_AREA:.2f} m²")
     print(f"  Evap cooler:    EXTERNAL — duct Ø{EVAP_DUCT_D}mm at X={EVAP_DUCT_X} Z={EVAP_DUCT_Z}")

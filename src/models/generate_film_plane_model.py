@@ -243,7 +243,7 @@ def generate_ruby():
         ov.component("Processing Tray", "Processing Tray", ov.processing_tray()),
         ov.component("Corner Mechanism", "Corner Mechanism",
                      static_rails() + "\n" + brace_cage()),
-        ov.component("Walkways", "Walkways", ov.walkways()),
+        ov.component("Walkways", "Walkways", ov.walkways(include_right=False)),
         ov.component("Corner Detail (TR)", "Corner Detail", detail),
     ]
     body = '\n'.join(comps)

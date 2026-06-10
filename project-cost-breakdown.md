@@ -16,7 +16,7 @@
 | **1. Container purchase & delivery** | $2,300 | $3,150 | $4,300 |
 | **2. Interior conversion** | $970 | $1,140 | $1,310 |
 | **3. Optics — pinhole plate** | $80 | $150 | $280 |
-| **4. Film plane mechanism (4-corner Option A, incl. brace cage + cross-slides)** | $3,100 | $3,650 | $4,200 |
+| **4. Film plane mechanism (4-corner Option A, incl. wall-seat saddles + cross-slides)** | $3,100 | $3,650 | $4,200 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $4,958 | $6,175 | $7,391 |
 | **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $1,465 | $1,802 | $2,160 |
 | **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $1,093 | $1,410 | $1,717 |
@@ -202,19 +202,19 @@ View-camera-style moveable film plane (Option A — a **fixed-size rigid** plane
 | M5×16 SS bolts + Nylock nuts | Clamp mounting (2 per clamp) | 184+184 | — | $55 |
 | Neoprene strip 60A | Jaw pads, 35mm×6mm, 10m roll | 1 | $15† | $15 |
 
-### 4.3 Demountable brace cage
+### 4.3 Wall-seat saddles (rev 11 — replaces the brace cage)
 
-Two rectangular end portals (50×50×3mm RHS) provide lateral rigidity; demountable saddle-clamp joints for transport. Left-rail segment retains with quick-release ball-lock pins for drum-mode clearance.
+The demountable brace cage is retired. Each of the 8 rail ends instead anchors to the container with an **IBC-style wall-seat saddle** (back-plate + seat + gusset, dims reused from the IBC frame wall seats), **through-bolted with a 4-bolt pattern to an exterior wall plate** — the container shell carries the rigidity. The **right** rails are permanently bolted; the **left** rails drop into their saddles on knurled thumb screws so they lift out for the drum swing.
 
 | Item | ICP # | Spec | Qty | Unit | Total |
 |------|-------|------|-----|------|-------|
-| Mild steel RHS sq. tube 50×50×3mm | ICP-11 | 4 verticals @ 2188mm + 4 cross-beams @ 4499mm = 26.75 m net; order 30 m | 30 m | ~$7/ft est. | ~$230 |
-| Square tube saddle clamp 50mm | ICP-12 | 4 corners per portal × 2 clamps per corner × 2 portals = 16 | 16 | ~$10 est. | ~$160 |
-| M8×20mm knurled thumbscrew DIN 464 SS | ICP-13 | 2 per clamp × 16 = 32 working + 8 spares | 40 | ~$3 est. | ~$120 |
-| Quick-release ball-lock pin Ø10mm SS | ICP-14 | Left-rail demount: 4 working + 4 spares | 8 | ~$8 est. | ~$65 |
-| **Brace cage subtotal** | | | | | **~$575** |
+| 8mm steel plate — back-plate + exterior plate + seat + gusset, laser/plasma cut + welded | ICP-11 | 8 saddles (~28 kg total) | 8 saddles | ~$53 est. | ~$425 |
+| M12×90mm through-bolt + nut + washers, SS | ICP-12 | 4 per saddle × 8 = 32 + 4 spare | 36 | ~$2.50 est. | ~$90 |
+| M8×25mm knurled thumbscrew DIN 464 SS | ICP-13 | left-rail drop-in: 2 × 4 saddles = 8 + 4 spare | 12 | ~$3 est. | ~$36 |
+| M8 rail fixing bolt + nut, SS | ICP-14 | right-rail fixing: 2 × 4 saddles = 8 + spare | 12 | ~$2 est. | ~$24 |
+| **Wall-seat saddle subtotal** | | | | | **~$575** |
 
-*All brace-cage costs are estimates — pricing to be confirmed at time of procurement (Metal Supermarkets, McMaster-Carr, Amazon).*
+*Roughly cost-neutral with the retired brace cage (~$575). All costs are estimates — confirm at procurement (Metal Supermarkets, McMaster-Carr, Amazon).*
 
 ### 4.4 Optional electric actuation
 
@@ -230,8 +230,8 @@ Two rectangular end portals (50×50×3mm RHS) provide lateral rigidity; demounta
 |----------|-------|
 | Structural & rails (incl. Option A cross-slides +$356) | $1,616 |
 | Film frame & backing (incl. clamps; folding hinge removed –$56) | $1,394–1,854 |
-| Demountable brace cage (ICP-11–14) | ~$575 |
-| **Film plane mechanism (manual, incl. brace cage + cross-slides)** | **~$3,585–4,045** |
+| Wall-seat saddles (ICP-11–14) | ~$575 |
+| **Film plane mechanism (manual, incl. wall-seat saddles + cross-slides)** | **~$3,585–4,045** |
 | Electric actuation (optional add-on) | +$827 |
 
 *Includes $330–790 for muslin clamp system (92 cam-lever clamps). Range reflects generic vs Destaco-equivalent quality.*
@@ -484,7 +484,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Container (WWT) + delivery | $1,800 |
 | Interior conversion (minimal) | $950 |
 | Pinhole plate | $95 |
-| Film plane mechanism (manual Option A, incl. brace cage + cross-slides) | $3,100 |
+| Film plane mechanism (manual Option A, incl. wall-seat saddles + cross-slides) | $3,100 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $4,900 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,465 |
 | Perimeter walkway (4 sections, removable) | $1,042 |
@@ -501,7 +501,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Container (CW) + delivery | $3,150 |
 | Interior conversion (full) | $1,140 |
 | Pinhole plate | $150 |
-| Film plane mechanism (manual Option A + brace cage + cross-slides + electric actuation) | $4,097 |
+| Film plane mechanism (manual Option A + wall-seat saddles + cross-slides + electric actuation) | $4,097 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,084 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,800 |
 | Perimeter walkway (4 sections, removable) | $1,346 |
@@ -532,7 +532,7 @@ The following costs are not covered by existing research documents and should be
 
 | Item | Status | Action |
 |------|--------|--------|
-| Brace cage RHS steel (ICP-11) | Estimated ~$7/ft | Confirm at Metal Supermarkets SoCal (walk-in) or Online Metals for 50×50×3mm metric; ~30 m (≈98 ft) needed |
+| Wall-seat saddle plate steel (ICP-11) | Estimated ~$3–5/kg | Confirm at Metal Supermarkets SoCal (walk-in) or Online Metals for 8mm mild-steel plate; ~28 kg needed (8 saddles, laser/plasma cut) |
 | Saddle clamps for 50mm RHS (ICP-12) | Estimated ~$10 ea. | Confirm at McMaster-Carr (steel tube clamps category) — verify fit for 50×50mm square section |
 | M8 thumbscrews DIN 464 SS (ICP-13) | Estimated ~$2–5 ea. | Amazon multi-packs typical; Maedler NA PN 65499225 confirmed at ~$15–17 ea. (May 2026) |
 | Ball-lock pins Ø10mm SS (ICP-14) | Estimated ~$6–10 ea. | Confirm at McMaster-Carr ball lock pins category; verify 50mm usable length fits joint |

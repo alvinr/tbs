@@ -33,6 +33,8 @@ from tbs_constants import (
     CLAMP_OPEN_GAP, CLAMP_SPRING_F,
     CLAMP_N_HORIZ, CLAMP_N_VERT, CLAMP_N_TOTAL,
     BRACE_RHS, BRACE_T, BRACE_Z_BOT, BRACE_Z_TOP,
+    C_WID, WALL_T,
+    IBC_WBKT_PLATE_W, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T,
     DRUM_CY, DRUM_R, DRUM_CX, DRUM_D,
 )
 from tbs_title_block import title_block
@@ -126,30 +128,33 @@ def rigid_corners3d(tilt_deg, swing_deg, d_c=D_CTR):
     return out
 
 
-# ── Brace cage drawing helpers ────────────────────────────────────────────────
+# ── Wall-seat saddle drawing helpers (rev11 — replaces the retired brace cage) ──
+# Each of the 8 rail ends sits on an IBC-style wall-seat saddle (back-plate + seat +
+# gusset, 4-bolt through-wall + exterior plate). The container shell carries rigidity.
 def draw_brace_portal(ax, color, *, lw=1.4, alpha=0.9, z=6):
-    """Rectangular brace portal in an X-Z axes: verticals at the rail X's,
-    top/bottom cross-beams. Members are BRACE_RHS square in section."""
-    s = BRACE_RHS
+    """Front elevation (X-Z): a wall-seat saddle back-plate at each of the 4 rail-end
+    corners (near + far walls project to the same X-Z here)."""
+    pw = IBC_WBKT_PLATE_W
     for xv in (RAIL_X_L, RAIL_X_R):
-        ax.add_patch(Rectangle((xv, BRACE_Z_BOT), s, BRACE_Z_TOP - BRACE_Z_BOT,
-                               fc=color, ec=WHITE, lw=lw, alpha=alpha, zorder=z))
-    for zb in (BRACE_Z_BOT, BRACE_Z_TOP - s):
-        ax.add_patch(Rectangle((RAIL_X_L, zb), RAIL_X_R - RAIL_X_L, s,
-                               fc=color, ec=WHITE, lw=lw, alpha=alpha, zorder=z))
+        for zc in (BRACE_Z_BOT, BRACE_Z_TOP):
+            ax.add_patch(Rectangle((xv - pw / 2, zc - pw / 2), pw, pw,
+                                   fc=color, ec=WHITE, lw=lw, alpha=alpha, zorder=z))
 
 
 def draw_brace_portal_yd_z(ax, color, *, lw=1.4, alpha=0.9, z=6):
-    """Rectangular brace portal in a Yd-Z axes (side elevation): verticals at
-    Yd=D_NEAR and Yd=D_FAR, top/bottom cross-beams at BRACE_Z_BOT and BRACE_Z_TOP.
-    X-axis of ax = optical depth (Yd), Y-axis of ax = height (Z)."""
-    s = BRACE_RHS
-    for yd in (D_NEAR, D_FAR):
-        ax.add_patch(Rectangle((yd, BRACE_Z_BOT), s, BRACE_Z_TOP - BRACE_Z_BOT,
-                               fc=color, ec=WHITE, lw=lw, alpha=alpha, zorder=z))
-    for zb in (BRACE_Z_BOT, BRACE_Z_TOP - s):
-        ax.add_patch(Rectangle((D_NEAR, zb), D_FAR - D_NEAR, s,
-                               fc=color, ec=WHITE, lw=lw, alpha=alpha, zorder=z))
+    """Side elevation (Yd-Z): a wall-seat saddle at each wall (Yd 0 + Yd C_WID) at both
+    rail heights — a back-plate on the wall + a seat projecting into the container the
+    rail end rests on. X-axis of ax = optical depth (Yd), Y-axis = height (Z)."""
+    proj, st = IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T
+    pw = IBC_WBKT_PLATE_W
+    for wall_yd, din in ((0, 1), (C_WID, -1)):
+        for zc in (BRACE_Z_BOT, BRACE_Z_TOP):
+            px = wall_yd if din > 0 else wall_yd - 8
+            ax.add_patch(Rectangle((px, zc - pw / 2), 8, pw,           # back-plate
+                                   fc=color, ec=WHITE, lw=lw, alpha=alpha, zorder=z))
+            sy = min(wall_yd, wall_yd + din * proj)
+            ax.add_patch(Rectangle((sy, zc - st), proj, st,           # seat (rail rests on it)
+                                   fc=color, ec=WHITE, lw=lw, alpha=alpha, zorder=z + 1))
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -205,11 +210,11 @@ def sheet1():
     for (rx, label_side) in [(RAIL_X_L, "LEFT"), (RAIL_X_R, "RIGHT")]:
         # Ceiling rail (slightly inward)
         rx_ceil = rx - RAIL_W//2 - 5
-        ax.add_patch(Rectangle((rx_ceil, D_NEAR), RAIL_W*0.8, D_FAR-D_NEAR,
+        ax.add_patch(Rectangle((rx_ceil, 0), RAIL_W*0.8, C_WID,   # rev11: span wall-to-wall
                                fc=RAIL, ec=WHITE, lw=1.0, zorder=5, alpha=0.85))
         # Floor rail (slightly outward)
         rx_floor = rx + 5
-        ax.add_patch(Rectangle((rx_floor, D_NEAR), RAIL_W*0.8, D_FAR-D_NEAR,
+        ax.add_patch(Rectangle((rx_floor, 0), RAIL_W*0.8, C_WID,
                                fc=RAIL, ec=WHITE, lw=1.0, zorder=5, alpha=0.65))
         # Labels — 45° leaders outward from rail midpoint
         rail_mid_y = D_NEAR + (D_FAR - D_NEAR) * 0.8
@@ -248,17 +253,18 @@ def sheet1():
                 ax.add_patch(Rectangle((rx_-15, ry-12), RAIL_W*0.8+30, 24,
                                        fc=WHITE, ec=WHITE, lw=0.5, zorder=6))
 
-    # ── BRACE CAGE END PORTALS — shown as RHS-width cross-beam bands in plan ──
-    # Each portal cross-beam spans RAIL_X_L→RAIL_X_R at Yd=D_NEAR and Yd=D_FAR.
-    # In plan view the vertical members are hidden; only the top/bottom cross-beams
-    # (BRACE_RHS wide in Yd) are visible as bands.
-    for yd_pos in (D_NEAR, D_FAR):
-        ax.add_patch(Rectangle((RAIL_X_L, yd_pos), RAIL_X_R - RAIL_X_L, BRACE_RHS,
-                               fc=STRUCT, ec=WHITE, lw=1.2, alpha=0.75, zorder=5))
-    # Label the near portal band
-    leader(ax, (RAIL_X_L + RAIL_X_R) / 2, D_NEAR + BRACE_RHS / 2,
-           (RAIL_X_L + RAIL_X_R) / 2, D_NEAR - 260,
-           "END PORTAL (typ. 2) / 50×50×3 RHS",
+    # ── WALL-SEAT SADDLES (rev11 — replaces the brace cage) — plan view ──
+    # Each rail end lands on an IBC-style wall-seat saddle at the near (Yd0) + far
+    # (Yd C_WID) walls; the seat projects IBC_WBKT_SEAT_PROJ into the container.
+    pw, proj = IBC_WBKT_PLATE_W, IBC_WBKT_SEAT_PROJ
+    for rx in (RAIL_X_L, RAIL_X_R):
+        for wall_yd, din in ((0, 1), (C_WID, -1)):
+            sy = min(wall_yd, wall_yd + din * proj)
+            ax.add_patch(Rectangle((rx - pw / 2, sy), pw, proj,
+                                   fc=STRUCT, ec=WHITE, lw=1.2, alpha=0.8, zorder=6))
+    leader(ax, RAIL_X_L, proj,
+           RAIL_X_L - 320, proj - 240,
+           "WALL-SEAT SADDLE (typ. 8)\nIBC-style: 4-bolt + exterior plate\nLEFT thumb-screw / RIGHT bolted",
            color=STRUCT, ha="center", fs=6.5, font=FONT)
 
     # Travel dim
@@ -435,25 +441,24 @@ def sheet2():
             color=DIM, fontsize=6.5, ha="center", va="center",
             rotation=90, **FONT, zorder=5)
 
-    # Rails
+    # Rails — span wall-to-wall (saddle-to-saddle), rev11
     RAIL_H = 28
-    ax.add_patch(Rectangle((D_NEAR, 0), D_FAR-D_NEAR, RAIL_H,
+    ax.add_patch(Rectangle((0, 0), C_WID, RAIL_H,
                            fc=RAIL, ec=WHITE, lw=0.8, zorder=5, alpha=0.9))
     ax.text(W/2, RAIL_H/2, "FLOOR RAIL  HGR20  ×2  (BL  +  BR — independent leadscrews)",
             color=BG, fontsize=5.5, ha="center", va="center", **FONT, zorder=6)
-    ax.add_patch(Rectangle((D_NEAR, H-RAIL_H), D_FAR-D_NEAR, RAIL_H,
+    ax.add_patch(Rectangle((0, H-RAIL_H), C_WID, RAIL_H,
                            fc=RAIL, ec=WHITE, lw=0.8, zorder=5, alpha=0.9))
     ax.text(W/2, H-RAIL_H/2, "CEILING RAIL  HGR20  ×2  (TL  +  TR — independent leadscrews)",
             color=BG, fontsize=5.5, ha="center", va="center", **FONT, zorder=6)
 
-    # ── BRACE CAGE PORTALS — side elevation (Yd on X-axis, Z on Y-axis) ─────
-    # Both end portals coincide in this projection (same Yd extent, same Z extent).
-    # Draw as one portal: vertical members at Yd=D_NEAR and Yd=D_FAR,
-    # top/bottom cross-beams spanning D_NEAR→D_FAR.
+    # ── WALL-SEAT SADDLES — side elevation (Yd on X-axis, Z on Y-axis), rev11 ─────
+    # A saddle at each wall (Yd0 + Yd C_WID) at both rail heights: back-plate on the
+    # wall + a seat projecting in that the rail end rests on (replaces the brace cage).
     draw_brace_portal_yd_z(ax_tilt, STRUCT, lw=1.2, alpha=0.65, z=4)
-    leader(ax_tilt, (D_NEAR + D_FAR) / 2, BRACE_Z_TOP,
-           (D_NEAR + D_FAR) / 2 - 180, BRACE_Z_TOP + 130,
-           "BRACE PORTAL (both ends)\n50×50×3 RHS",
+    leader(ax_tilt, IBC_WBKT_SEAT_PROJ / 2, BRACE_Z_TOP,
+           IBC_WBKT_SEAT_PROJ / 2 - 180, BRACE_Z_TOP + 130,
+           "WALL-SEAT SADDLE (both walls)\nIBC-style, 4-bolt + ext. plate",
            color=STRUCT, ha="right", fs=6.5, font=FONT)
 
     CARRIAGE_W = 80
@@ -1749,14 +1754,13 @@ def sheet6():
         ax.add_patch(Rectangle(rect_args[:2], rect_args[2], rect_args[3],
                                 fc=STRUCT2, ec="none", lw=0, zorder=7, alpha=0.5))
 
-    # ── Demountable brace cage portal (front elevation) ───────────────────────
-    # The front portal sits at Yd=D_NEAR (near end, pinhole side).
-    # In this X-Z front elevation both end portals project to the same position,
-    # so we draw one representative portal using draw_brace_portal.
+    # ── Wall-seat saddles (front elevation), rev11 ────────────────────────────
+    # A saddle back-plate at each of the 4 rail-end corners (near + far walls project
+    # to the same X-Z here). Replaces the retired demountable brace cage.
     draw_brace_portal(ax, STRUCT, lw=1.4, alpha=0.55, z=4)
-    leader(ax, RAIL_X_L + BRACE_RHS / 2, (BRACE_Z_BOT + BRACE_Z_TOP) / 2,
+    leader(ax, RAIL_X_L, BRACE_Z_TOP,
            RAIL_X_L - 550, (BRACE_Z_BOT + BRACE_Z_TOP) / 2 + 150,
-           "DEMOUNTABLE BRACE CAGE\n50×50×3 RHS\nsaddle + thumbscrew joints",
+           "WALL-SEAT SADDLES (8)\nIBC-style: 4-bolt + ext. plate\nLEFT thumb-screw / RIGHT bolted",
            color=STRUCT, ha="right", fs=6.5, font=FONT)
 
     # ── Rod-end bearings at each corner of the frame ──────────────────────────

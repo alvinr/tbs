@@ -223,12 +223,14 @@ def near_wall_ghost():
 
 def static_rails():
     """The FIXED guides: 4 HGR20 rails + leadscrews along depth (Yd). The carriages
-    (in the DC) run along these."""
+    (in the DC) run along these. The RAILS now span the full width saddle-to-saddle
+    (Yd 0 → C_WID) so each end lands on its wall-seat saddle with no gap; the leadscrew
+    (the drive) stays within the carriage-travel band (FP_Y_MIN..+RAIL_LEN)."""
     parts = []
-    y0, rlen = ov.FP_Y_MIN, ov.RAIL_LEN
+    y0, rlen = ov.FP_Y_MIN, ov.RAIL_LEN              # leadscrew / carriage travel band
     for cid, (cxr, czr) in RAILS.items():
         parts.append(ov.ruby_box(f"HGR20 Rail {cid}",
-                     cxr - 12, y0, czr - 8, 24, rlen, 16, color=ov.C_RAIL))
+                     cxr - 12, 0, czr - 8, 24, ov.C_WID, 16, color=ov.C_RAIL))  # saddle→saddle
         parts.append(ov.ruby_pipe(f"Leadscrew {cid}",
                      (cxr + 34, y0, czr), (cxr + 34, y0 + rlen, czr), 7,
                      color=ov.C_STEEL))

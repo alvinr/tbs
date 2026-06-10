@@ -208,7 +208,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # HGR20 Rail TL
   grp = ents.add_group
   grp.name = "HGR20 Rail TL"
-  face = grp.entities.add_face([138.mm,100.mm,2280.mm], [162.mm,100.mm,2280.mm], [162.mm,2300.mm,2280.mm], [138.mm,2300.mm,2280.mm])
+  face = grp.entities.add_face([138.mm,0.mm,2280.mm], [162.mm,0.mm,2280.mm], [162.mm,2362.mm,2280.mm], [138.mm,2362.mm,2280.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
@@ -233,7 +233,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # HGR20 Rail TR
   grp = ents.add_group
   grp.name = "HGR20 Rail TR"
-  face = grp.entities.add_face([4637.mm,100.mm,2280.mm], [4661.mm,100.mm,2280.mm], [4661.mm,2300.mm,2280.mm], [4637.mm,2300.mm,2280.mm])
+  face = grp.entities.add_face([4637.mm,0.mm,2280.mm], [4661.mm,0.mm,2280.mm], [4661.mm,2362.mm,2280.mm], [4637.mm,2362.mm,2280.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
@@ -258,7 +258,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # HGR20 Rail BL
   grp = ents.add_group
   grp.name = "HGR20 Rail BL"
-  face = grp.entities.add_face([138.mm,100.mm,142.mm], [162.mm,100.mm,142.mm], [162.mm,2300.mm,142.mm], [138.mm,2300.mm,142.mm])
+  face = grp.entities.add_face([138.mm,0.mm,142.mm], [162.mm,0.mm,142.mm], [162.mm,2362.mm,142.mm], [138.mm,2362.mm,142.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
@@ -283,7 +283,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # HGR20 Rail BR
   grp = ents.add_group
   grp.name = "HGR20 Rail BR"
-  face = grp.entities.add_face([4637.mm,100.mm,142.mm], [4661.mm,100.mm,142.mm], [4661.mm,2300.mm,142.mm], [4637.mm,2300.mm,142.mm])
+  face = grp.entities.add_face([4637.mm,0.mm,142.mm], [4661.mm,0.mm,142.mm], [4661.mm,2362.mm,142.mm], [4637.mm,2362.mm,142.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")

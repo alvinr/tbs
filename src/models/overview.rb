@@ -3237,7 +3237,7 @@ end
   # Stay inside plate
   grp = ents.add_group
   grp.name = "Stay inside plate"
-  face = grp.entities.add_face([1594.1708780011502.mm,0.mm,250.mm], [1794.1708780011502.mm,0.mm,250.mm], [1794.1708780011502.mm,12.mm,250.mm], [1594.1708780011502.mm,12.mm,250.mm])
+  face = grp.entities.add_face([1594.17087800115.mm,0.mm,250.mm], [1794.17087800115.mm,0.mm,250.mm], [1794.17087800115.mm,12.mm,250.mm], [1594.17087800115.mm,12.mm,250.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
@@ -3248,7 +3248,7 @@ end
   # Stay outside plate
   grp = ents.add_group
   grp.name = "Stay outside plate"
-  face = grp.entities.add_face([1594.1708780011502.mm,-52.mm,250.mm], [1794.1708780011502.mm,-52.mm,250.mm], [1794.1708780011502.mm,-40.mm,250.mm], [1594.1708780011502.mm,-40.mm,250.mm])
+  face = grp.entities.add_face([1594.17087800115.mm,-52.mm,250.mm], [1794.17087800115.mm,-52.mm,250.mm], [1794.17087800115.mm,-40.mm,250.mm], [1594.17087800115.mm,-40.mm,250.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
@@ -3259,7 +3259,7 @@ end
   # Stay eye
   grp = ents.add_group
   grp.name = "Stay eye"
-  face = grp.entities.add_face([1679.1708780011502.mm,12.mm,335.mm], [1709.1708780011502.mm,12.mm,335.mm], [1709.1708780011502.mm,67.mm,335.mm], [1679.1708780011502.mm,67.mm,335.mm])
+  face = grp.entities.add_face([1679.17087800115.mm,12.mm,335.mm], [1709.17087800115.mm,12.mm,335.mm], [1709.17087800115.mm,67.mm,335.mm], [1679.17087800115.mm,67.mm,335.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
   mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
@@ -3270,7 +3270,7 @@ end
   # Stay bolt M16
   grp = ents.add_group
   grp.name = "Stay bolt M16"
-  face = grp.entities.add_face([1616.1708780011502.mm,-58.mm,272.mm], [1632.1708780011502.mm,-58.mm,272.mm], [1632.1708780011502.mm,18.mm,272.mm], [1616.1708780011502.mm,18.mm,272.mm])
+  face = grp.entities.add_face([1616.17087800115.mm,-58.mm,272.mm], [1632.17087800115.mm,-58.mm,272.mm], [1632.17087800115.mm,18.mm,272.mm], [1616.17087800115.mm,18.mm,272.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
@@ -3281,7 +3281,7 @@ end
   # Stay bolt M16
   grp = ents.add_group
   grp.name = "Stay bolt M16"
-  face = grp.entities.add_face([1616.1708780011502.mm,-58.mm,412.mm], [1632.1708780011502.mm,-58.mm,412.mm], [1632.1708780011502.mm,18.mm,412.mm], [1616.1708780011502.mm,18.mm,412.mm])
+  face = grp.entities.add_face([1616.17087800115.mm,-58.mm,412.mm], [1632.17087800115.mm,-58.mm,412.mm], [1632.17087800115.mm,18.mm,412.mm], [1616.17087800115.mm,18.mm,412.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
@@ -3292,7 +3292,7 @@ end
   # Stay bolt M16
   grp = ents.add_group
   grp.name = "Stay bolt M16"
-  face = grp.entities.add_face([1756.1708780011502.mm,-58.mm,272.mm], [1772.1708780011502.mm,-58.mm,272.mm], [1772.1708780011502.mm,18.mm,272.mm], [1756.1708780011502.mm,18.mm,272.mm])
+  face = grp.entities.add_face([1756.17087800115.mm,-58.mm,272.mm], [1772.17087800115.mm,-58.mm,272.mm], [1772.17087800115.mm,18.mm,272.mm], [1756.17087800115.mm,18.mm,272.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
@@ -3303,7 +3303,7 @@ end
   # Stay bolt M16
   grp = ents.add_group
   grp.name = "Stay bolt M16"
-  face = grp.entities.add_face([1756.1708780011502.mm,-58.mm,412.mm], [1772.1708780011502.mm,-58.mm,412.mm], [1772.1708780011502.mm,18.mm,412.mm], [1756.1708780011502.mm,18.mm,412.mm])
+  face = grp.entities.add_face([1756.17087800115.mm,-58.mm,412.mm], [1772.17087800115.mm,-58.mm,412.mm], [1772.17087800115.mm,18.mm,412.mm], [1756.17087800115.mm,18.mm,412.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
@@ -3314,7 +3314,7 @@ end
   # Stay inside plate
   grp = ents.add_group
   grp.name = "Stay inside plate"
-  face = grp.entities.add_face([1594.1708780011502.mm,0.mm,1950.mm], [1794.1708780011502.mm,0.mm,1950.mm], [1794.1708780011502.mm,12.mm,1950.mm], [1594.1708780011502.mm,12.mm,1950.mm])
+  face = grp.entities.add_face([1594.17087800115.mm,0.mm,1950.mm], [1794.17087800115.mm,0.mm,1950.mm], [1794.17087800115.mm,12.mm,1950.mm], [1594.17087800115.mm,12.mm,1950.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
@@ -3325,7 +3325,7 @@ end
   # Stay outside plate
   grp = ents.add_group
   grp.name = "Stay outside plate"
-  face = grp.entities.add_face([1594.1708780011502.mm,-52.mm,1950.mm], [1794.1708780011502.mm,-52.mm,1950.mm], [1794.1708780011502.mm,-40.mm,1950.mm], [1594.1708780011502.mm,-40.mm,1950.mm])
+  face = grp.entities.add_face([1594.17087800115.mm,-52.mm,1950.mm], [1794.17087800115.mm,-52.mm,1950.mm], [1794.17087800115.mm,-40.mm,1950.mm], [1594.17087800115.mm,-40.mm,1950.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
@@ -3336,7 +3336,7 @@ end
   # Stay eye
   grp = ents.add_group
   grp.name = "Stay eye"
-  face = grp.entities.add_face([1679.1708780011502.mm,12.mm,2035.mm], [1709.1708780011502.mm,12.mm,2035.mm], [1709.1708780011502.mm,67.mm,2035.mm], [1679.1708780011502.mm,67.mm,2035.mm])
+  face = grp.entities.add_face([1679.17087800115.mm,12.mm,2035.mm], [1709.17087800115.mm,12.mm,2035.mm], [1709.17087800115.mm,67.mm,2035.mm], [1679.17087800115.mm,67.mm,2035.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
   mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
@@ -3347,7 +3347,7 @@ end
   # Stay bolt M16
   grp = ents.add_group
   grp.name = "Stay bolt M16"
-  face = grp.entities.add_face([1616.1708780011502.mm,-58.mm,1972.mm], [1632.1708780011502.mm,-58.mm,1972.mm], [1632.1708780011502.mm,18.mm,1972.mm], [1616.1708780011502.mm,18.mm,1972.mm])
+  face = grp.entities.add_face([1616.17087800115.mm,-58.mm,1972.mm], [1632.17087800115.mm,-58.mm,1972.mm], [1632.17087800115.mm,18.mm,1972.mm], [1616.17087800115.mm,18.mm,1972.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
@@ -3358,7 +3358,7 @@ end
   # Stay bolt M16
   grp = ents.add_group
   grp.name = "Stay bolt M16"
-  face = grp.entities.add_face([1616.1708780011502.mm,-58.mm,2112.mm], [1632.1708780011502.mm,-58.mm,2112.mm], [1632.1708780011502.mm,18.mm,2112.mm], [1616.1708780011502.mm,18.mm,2112.mm])
+  face = grp.entities.add_face([1616.17087800115.mm,-58.mm,2112.mm], [1632.17087800115.mm,-58.mm,2112.mm], [1632.17087800115.mm,18.mm,2112.mm], [1616.17087800115.mm,18.mm,2112.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
@@ -3369,7 +3369,7 @@ end
   # Stay bolt M16
   grp = ents.add_group
   grp.name = "Stay bolt M16"
-  face = grp.entities.add_face([1756.1708780011502.mm,-58.mm,1972.mm], [1772.1708780011502.mm,-58.mm,1972.mm], [1772.1708780011502.mm,18.mm,1972.mm], [1756.1708780011502.mm,18.mm,1972.mm])
+  face = grp.entities.add_face([1756.17087800115.mm,-58.mm,1972.mm], [1772.17087800115.mm,-58.mm,1972.mm], [1772.17087800115.mm,18.mm,1972.mm], [1756.17087800115.mm,18.mm,1972.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
@@ -3380,7 +3380,7 @@ end
   # Stay bolt M16
   grp = ents.add_group
   grp.name = "Stay bolt M16"
-  face = grp.entities.add_face([1756.1708780011502.mm,-58.mm,2112.mm], [1772.1708780011502.mm,-58.mm,2112.mm], [1772.1708780011502.mm,18.mm,2112.mm], [1756.1708780011502.mm,18.mm,2112.mm])
+  face = grp.entities.add_face([1756.17087800115.mm,-58.mm,2112.mm], [1772.17087800115.mm,-58.mm,2112.mm], [1772.17087800115.mm,18.mm,2112.mm], [1756.17087800115.mm,18.mm,2112.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
@@ -8497,7 +8497,7 @@ end
   grp = ents.add_group
   grp.name = "LT Drum opening brush seal"
   ge = grp.entities
-  circle = ge.add_circle([-735.9104883076718.mm,899.1376331524525.mm,130.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([-735.9104883076719.mm,899.1376331524525.mm,130.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2120.mm)

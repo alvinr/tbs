@@ -15,7 +15,7 @@ access functions:
 - **Left walkway** (cargo door end) — access to hinged light-trap panel latches
   and revolving drum. Removable for panel transport.
 - **Right walkway** (IBC end) — access to IBC valves, filter skid, and pump
-  manifold. Ceiling-hung to clear the IBC stack below.
+  manifold. Carried on a cantilever rectangle off the IBC frame to clear the IBC stack below.
 
 All four sections share a common 80mm deck height (65mm bracket arm, L-angle, or
 edge-beam ledge + 15mm grating) and 300mm standard width, creating a level perimeter walking
@@ -25,11 +25,11 @@ by 20mm. The cantilever bracket arm (Z=55–65mm) clears the 50mm processing-tra
 rim by 5mm where it overhangs the tray.
 
 The design enforces **zero processing tray contact** — all walkway supports are
-either wall-mounted, ceiling-hung, or placed outside the tray footprint. This
+either wall-mounted, carried on the cantilever rectangle off the IBC frame, or placed outside the tray footprint. This
 prevents chemical contamination of walkway structures and avoids disrupting the
 tray's watertight seal.
 
-**Interactive 3D model** — the four removable grated sections, the wall-cantilevered near/far brackets (with exterior reinforcing plates + M12 through-bolts), the ceiling-hung right walkway on threaded-rod hangers, the removable left lift-out carried by the full-width steel edge beam on bolt-through wall seats, and the processing tray, inside a ghost of the container. Drag to orbit, scroll to zoom.
+**Interactive 3D model** — the four removable grated sections, the wall-cantilevered near/far brackets (with exterior reinforcing plates + M12 through-bolts), the right walkway on its cantilever rectangle (closed 40×40 SHS frame on 2 center arms off the IBC frame, with combined corner plates shared with the bottom film rail), the removable left lift-out carried by the full-width steel edge beam on bolt-through wall seats, and the processing tray, inside a ghost of the container. Drag to orbit, scroll to zoom.
 
 <div class="sketchfab-embed-wrapper">
   <div style="position:relative;width:100%;padding-bottom:56.25%;">
@@ -167,51 +167,63 @@ assembly details.
 
 ---
 
-## 4. Right Walkway — Ceiling-Hung
+## 4. Right Walkway — Cantilever Rectangle (rev12)
 
 The right walkway at the IBC end (X=4329–4629mm) cannot use wall-cantilevered
-brackets because the IBC stack (X=4674–5893mm) occupies the floor below. Instead,
-the walkway is suspended from the container ceiling by threaded rod hangers.
+brackets because the IBC stack (X=4674–5893mm) occupies the floor below. The
+earlier scheme suspended it from the roof on threaded-rod hangers; **rev12 replaces
+the ceiling hangers with a self-supporting cantilever rectangle** that ties into
+two structures already present at the IBC end — the IBC corridor frame and the
+bottom film rail — and so needs **no roof penetrations**.
 
-![TBS-001 Walkway — Sheet 3: Ceiling-Hung Support](assets/walkway-sheet3.png)
+![TBS-001 Walkway — Sheet 3: Cantilever Support](assets/walkway-sheet3.png)
 
-### 4.1 Bearer Angles
+### 4.1 The Cantilever Rectangle
 
-Two 25×25×5mm steel L-angle bearers run the full container width (2362mm along
-Yd) at X=4329mm and X=4629mm. The 300mm grating spans between these bearers.
-Near and far ends of the bearers bear on the adjacent near/far walkway bracket
-arm structures at the butt joints.
+A closed rectangular frame of **40×40×3mm SHS** sits directly under the deck:
 
-### 4.2 Ceiling Hangers
+- **Two long beams** run the full container width (2362mm along Yd) at X=4329mm
+  and X=4629mm. The 300mm grating spans between them.
+- **Two short end beams** (≈300mm) close the near and far ends, joining the long
+  beams into a torsionally stiff closed rectangle (no free bearer ends to droop).
 
-| Parameter | Value |
-|-----------|-------|
-| Hanger rod | M10 threaded rod |
-| Rod length | 2313mm (ceiling to bearer top) |
-| Number of hanger pairs | 5 |
-| First pair position | Yd=320mm |
-| Remaining pairs spacing | 457mm centers |
-| All hangers at | Yd ≤ 2057mm (clear of optical cone) |
-| Ceiling anchor plates | 120×90×6mm steel — an INSIDE plate (rod hangs from it) + an OUTSIDE roof-exterior reinforcing plate, sandwiching the roof |
-| Ceiling attachment | 4× M12 through-bolts per hanger (2×2 pattern), drawing the inside/outside plates together through the roof — same 4-bolt anchor as the wall stays / cantilever brackets; sealed penetrations |
+### 4.2 Center Cantilever Arms
 
-Each hanger pair consists of two M10 rods — one at each bearer (X=4329mm and
-X=4629mm). The rod passes through the horizontal flange of the L-angle bearer
-with a nut and washer above and below the flange, then extends up to the **inside
-ceiling anchor plate**. Each hanger is anchored through the roof with a sandwiched
-plate pair — the inside plate plus an **outside roof-exterior reinforcing plate** —
-drawn together by **4× M12 through-bolts** (the same 4-bolt anchor pattern used for
-the wall stays and the wall-cantilever brackets), so the hanger load reacts into the
-roof through a plate on each side rather than a single interior plate.
+Two **40×40×3mm SHS arms** cantilever inward off the **IBC corridor uprights**
+(at Yd=1046mm and Yd=1266mm, station X≈4734mm) and pick the rectangle up at
+mid-span. Each arm is **half-lapped (cross-halved)** where the long beams cross
+it, so the beams seat down into the arm and the two members share a flush top
+face. The arms carry the central span that the corner supports alone would leave
+to sag; the rectangle bounces well under the design footfall (≈0.35 kN·m peak
+moment at the arm root — see the [cantilever study](right-walkway-cantilever-study.md)).
 
-### 4.3 Design Rationale
+### 4.3 Corner Supports
 
-The ceiling-hung design achieves three goals:
+| Corner | Support | Fixing |
+|--------|---------|--------|
+| Left (X=4329mm), near + far | **Wall cleat** — 8mm steel back-plate + exterior reinforcing plate + a shelf the long beam lands on | M12 through-bolts (sandwich the wall, sealed) |
+| Right (X=4629mm), near + far | **Combined corner plate** — a single 10mm plate that carries BOTH the walkway right beam AND the bottom film rail (BR/TR) | 4× M12, permanently bolted (interior + exterior plate sandwich the wall) |
 
-1. **Zero floor contact** — clears the IBC stack entirely; no legs or supports
-   on the container floor in the IBC zone.
-2. **Zero tray contact** — the walkway floats above the processing tray.
-3. **Level deck** — 80mm deck height matches all four walkway sections.
+The **combined corner plate** is the key coupling: the walkway's right long beam
+and the film plane's bottom (and top) rail terminate at the same X=4649mm wall
+station, so a single plate seats both — the walkway beam on a 70mm seat, the film
+rail on a 150mm seat. This **replaces the film-plane BR rail saddle** (the
+film-plane model now skips the BR saddle and draws this combined plate instead).
+The plate is single-sourced in the overview generator (`fp_combined_corner_plate`)
+and reused by both the walkway and film-plane models so the two subsystems stay in
+register.
+
+### 4.4 Design Rationale
+
+The cantilever rectangle achieves four goals:
+
+1. **Zero floor contact** — clears the IBC stack entirely; no legs on the floor in
+   the IBC zone.
+2. **Zero tray contact** — the rectangle floats above the processing tray.
+3. **No roof penetrations** — loads react into the IBC frame and the side walls,
+   not the roof skin (the hanger scheme needed 40 sealed roof bolts).
+4. **Consolidated film-rail anchor** — the combined corner plate does double duty,
+   removing a separate BR saddle.
 
 ---
 
@@ -450,12 +462,15 @@ widened brackets (X≈1,156, 1,612, 2,070, 2,526) use 10mm plate with 4x M12
 rectangular bolt patterns and 200mm vertical legs for the increased moment
 demand of the 500mm cantilever arm.
 
-The ceiling-hung right walkway is the most compliant section. Five pairs of M10
-threaded rod hangers (2313mm free length) support the two bearer angles and
-grating. Rod deflection under load is proportional to length — the 2.3m rods
-will deflect more than the short cantilever brackets. However, the 300mm
-walkway width limits the moment arm, and the 5-pair hanger arrangement
-distributes load across multiple rods.
+The right walkway is now a **cantilever rectangle** rather than the earlier
+hanger scheme. A closed 40×40×3mm SHS frame is picked up at mid-span by two arms
+cantilevering off the IBC corridor uprights and at its four corners by wall
+cleats (left) and the combined corner plates (right). The governing case is the
+arm root, where the design footfall produces a peak moment of only ≈0.35 kN·m —
+comfortably within the ≈1.6 kN·m elastic capacity of 40×40×3 SHS (see the
+[cantilever study](right-walkway-cantilever-study.md)). The closed rectangle
+resists twist far better than the previous free-ended bearer angles, so the deck
+bounces noticeably less than the rod-hung version it replaces.
 
 ---
 
@@ -469,11 +484,10 @@ distributes load across multiple rods.
 | 4 | M12×80mm through-bolt kit | Hex bolt + 2× washers + nut, grade 8.8 | 58 (3 per std bracket + 4 per widened) | $87–$145 |
 | 5 | Reinforcing plate (exterior) | 6mm steel: 100×180mm std (×14) + 120×220mm widened (×4) | 18 | $75–$130 |
 | 6 | Transition bearing plate | 40×500×5mm flat bar, welded to bracket arm top at width transitions | 2 | $5–$10 |
-| 7 | Bearer angle (right walkway) | 25×25×5mm steel L-angle, 2362mm long | 2 | $40–$70 |
-| 8 | M10 threaded rod | 2313mm length (ceiling to bearer) | 10 (5 pairs) | $50–$80 |
-| 9 | Ceiling bracket plate | 100×60×6mm steel | 10 | $30–$50 |
-| 10 | M10 bolt kit (ceiling) | Through-bolt + nut + washer (ceiling attachment) | 20 (2 per plate) | $20–$35 |
-| 11 | M10 nut + washer set (bearer) | Nut + washer above and below bearer flange, per rod | 20 sets | $15–$25 |
+| 7 | Right walkway cantilever frame | 40×40×3mm SHS — 2 long beams (2362mm) + 2 end beams (300mm) + 2 center arms (405mm) | ~8 m | $28–$40 |
+| 8 | Wall cleat (left corners) | 8mm steel: back-plate + exterior plate + shelf, through-bolted to the wall | 2 | $20–$35 |
+| 9 | Combined corner plate (right corners) | 10mm steel, 150mm wide — carries the walkway right beam AND the bottom film rail (replaces the BR rail saddle) | 2 | $50–$80 |
+| 10 | M12 through-bolt kit (right walkway) | Wall cleats + combined plates + 2 center-arm U-clamps to the IBC uprights | ~24 | $30–$50 |
 | 12 | Edge beam (left walkway inner edge) | 40×40×3mm **steel** SHS, 2362mm long (full width) | 1 | $35–$60 |
 | 12a | Wall-seat bracket (left edge beam) | 6mm drop-in pocket (floor + 2 triangular gussets) on a 100×135×6mm interior mounting plate + matching 100×135×6mm exterior plate, each end | 2 | $30–$55 |
 | 12b | M12×80mm through-bolt kit (wall seats) | Hex bolt + 2× washers + nut, grade 8.8 | 8 (4 per seat) | $9–$15 |
@@ -483,7 +497,7 @@ distributes load across multiple rods.
 | 17 | Grating clips | Removable spring clips, stainless | ~30 | $30–$50 |
 | 18 | Plywood base plate (evap cooler stowage) | 12mm plywood, 600×350mm | 1 | $5–$10 |
 | 19 | Ratchet strap (evap cooler) | 25mm×3m, 500kg WLL | 2 | $15–$25 |
-| | **Total** | | | **$1,460–$2,425** |
+| | **Total** | | | **$1,433–$2,370** |
 
 ---
 
@@ -494,10 +508,10 @@ distributes load across multiple rods.
 | Before each session | Inspect all grating clips are seated; test left walkway lift-out for freedom of movement |
 | Before each session | Check edge-beam wall-seat bolts are tight; beam seated fully in both pockets |
 | Monthly | Inspect cantilever bracket bolts for tightness (3× M12 std, 4× M12 widened) |
-| Monthly | Check ceiling hanger nuts — ensure double-nut lock on bearer flange side |
+| Monthly | Check right walkway cantilever-arm U-clamps to the IBC uprights and the combined-plate bolts for tightness |
 | Monthly | Inspect grating for corrosion, damaged bearing bars, or bent cross bars |
 | Quarterly | Inspect reinforcing plates (exterior) for corrosion — touch up paint if needed |
-| Quarterly | Check right walkway hanger rods for straightness and thread condition |
+| Quarterly | Inspect the right walkway cantilever-rectangle welds + wall cleats for corrosion and bolt tightness |
 | Before transport | Remove left walkway: lift grating, remove bearing strip and floor legs, unbolt edge beam + interior seat plates (backing plates stay on wall) |
 | Before transport | Verify evap cooler ratchet straps to bracket arms; check anti-slide cleats |
 | After transport | Reinstall left walkway in reverse order; check all sections for level deck |

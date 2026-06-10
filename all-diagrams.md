@@ -126,7 +126,7 @@
 
 ![TBS-001 Walkway — Sheet 2: Cross-Section with Bracket Detail](assets/walkway-sheet2.png)
 
-![TBS-001 Walkway — Sheet 3: Ceiling-Hung Support](assets/walkway-sheet3.png)
+![TBS-001 Walkway — Sheet 3: Cantilever Support](assets/walkway-sheet3.png)
 
 ![TBS-001 Walkway — Sheet 4: Lift-Out at Butt Joint](assets/walkway-sheet4.png)
 

@@ -94,7 +94,7 @@ provide a bearing surface for the bolt heads and washers. See View B for the bol
 The near walkway widens from 300mm to 500mm between X≈1155mm and X≈2629mm
 (1474mm length), extending past the spray bar slit to the next rib position.
 This widened section provides additional standing room in front of the
-electrical panel (EP, X=1600–1900mm), battery bank (X=1810–2310mm), and
+electrical panel (EP, X=1910–2210mm), battery bank (X=1810–2310mm), and
 through the spray bar slit zone (X≈2400mm). These wall-mounted equipment
 items require front access for operation and maintenance, and the wider
 platform gives the operator full-width standing room during spray bar passes.

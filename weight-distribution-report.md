@@ -131,10 +131,10 @@ Brown/Waste IBCs.
 
 | State | Total (kg) | X_cg (mm) | Yd_cg (mm) | Z_cg (mm) | Front/Rear | Near/Far |
 |-------|-----------|-----------|------------|-----------|------------|----------|
-| Dry (Transport) | 3,387 | 2,701 | 1,202 | 1,058 | 55.1/44.9% | 48.0/52.0% |
-| Loaded Transport (Blue full) | 4,587 | 3,377 | 1,196 | 1,178 | 40.7/59.3% | 48.5/51.5% |
-| Camera Ready (Deployed) | 4,587 | 3,359 | 1,174 | 1,177 | 40.7/59.3% | 50.3/49.7% |
-| Materials Exhausted (Transport) | 4,587 | 3,377 | 1,196 | 913 | 40.7/59.3% | 48.5/51.5% |
+| Dry (Transport) | 3,387 | 2,703 | 1,202 | 1,058 | 55.1/44.9% | 48.0/52.0% |
+| Loaded Transport (Blue full) | 4,587 | 3,378 | 1,196 | 1,178 | 40.7/59.3% | 48.5/51.5% |
+| Camera Ready (Deployed) | 4,587 | 3,360 | 1,174 | 1,177 | 40.7/59.3% | 50.3/49.7% |
+| Materials Exhausted (Transport) | 4,587 | 3,378 | 1,196 | 913 | 40.7/59.3% | 48.5/51.5% |
 
 **Loaded Transport** is the camera-ready water load (full top-tier Blue IBCs,
 1,200 kg) carried in the *transport* configuration — panel swung in, cargo doors
@@ -168,7 +168,7 @@ is the densest zone.
 
 Weight distribution with full Blue IBCs (top tier) and hinged panel
 deployed to its operational position at the cargo door end (X=0–80).
-CG marker shows the loaded center of gravity at X=3,359, Yd=1,174.
+CG marker shows the loaded center of gravity at X=3,360, Yd=1,174.
 Quadrant weights show the rear-heavy bias from the IBC stack.
 
 ![TBS-001 — Weight Analysis: Camera Ready](assets/weight-analysis-sheet3.png)
@@ -224,13 +224,13 @@ the far side but is offset by the tilt-swing board on the near side.
 ### 6.3 Front-Rear Balance
 
 The dry/transport state has a front-biased split (55.1/44.9%), with CG at
-X=2,701mm. This front bias comes from the cargo doors (280 kg total) being
+X=2,703mm. This front bias comes from the cargo doors (280 kg total) being
 in their closed position at X≈−70mm, pulling the CG toward the cargo door
 end. The hinged panel is also swung ~56° about the pivot, keeping its mass
 in the front (door-end) half.
 
 When liquids are added and the panel and doors are deployed (camera ready),
-the CG shifts rearward to X=3,359mm (658mm past the dry CG). The doors
+the CG shifts rearward to X=3,360mm (657mm past the dry CG). The doors
 swing open flat against the side walls (X=0–1221mm), redistributing
 280 kg from X≈−70 to X≈610, while 1,200 kg of water loads in the IBC stack
 zone (X=4674–5893mm). This creates a 40.7/59.3% front/rear split.

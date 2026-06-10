@@ -9,11 +9,10 @@ opts["LengthUnit"] = 2
 opts["LengthFormat"] = 0
 opts["LengthPrecision"] = 1
 
-# ── Idempotent rebuild: erase prior generated instances (keep 'Sree'), then
-# purge their now-unused definitions so names don't collide on re-add.
+# ── Idempotent rebuild: erase ALL prior instances (incl. any 'Sree' scale figure —
+# the person is no longer kept), then purge unused definitions so names don't collide.
 to_erase = entities.to_a.select { |e|
-  (e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance) || e.is_a?(Sketchup::Text)) &&
-  !(e.is_a?(Sketchup::ComponentInstance) && e.definition.name == "Sree")
+  e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance) || e.is_a?(Sketchup::Text)
 }
 entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
@@ -2893,7 +2892,7 @@ end
   # Stay inside plate
   grp = ents.add_group
   grp.name = "Stay inside plate"
-  face = grp.entities.add_face([1594.17087800115.mm,0.mm,100.mm], [1794.17087800115.mm,0.mm,100.mm], [1794.17087800115.mm,12.mm,100.mm], [1594.17087800115.mm,12.mm,100.mm])
+  face = grp.entities.add_face([1594.17087800115.mm,0.mm,250.mm], [1794.17087800115.mm,0.mm,250.mm], [1794.17087800115.mm,12.mm,250.mm], [1594.17087800115.mm,12.mm,250.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
@@ -2904,7 +2903,7 @@ end
   # Stay outside plate
   grp = ents.add_group
   grp.name = "Stay outside plate"
-  face = grp.entities.add_face([1594.17087800115.mm,-52.mm,100.mm], [1794.17087800115.mm,-52.mm,100.mm], [1794.17087800115.mm,-40.mm,100.mm], [1594.17087800115.mm,-40.mm,100.mm])
+  face = grp.entities.add_face([1594.17087800115.mm,-52.mm,250.mm], [1794.17087800115.mm,-52.mm,250.mm], [1794.17087800115.mm,-40.mm,250.mm], [1594.17087800115.mm,-40.mm,250.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
@@ -2915,7 +2914,7 @@ end
   # Stay eye
   grp = ents.add_group
   grp.name = "Stay eye"
-  face = grp.entities.add_face([1679.17087800115.mm,12.mm,185.mm], [1709.17087800115.mm,12.mm,185.mm], [1709.17087800115.mm,67.mm,185.mm], [1679.17087800115.mm,67.mm,185.mm])
+  face = grp.entities.add_face([1679.17087800115.mm,12.mm,335.mm], [1709.17087800115.mm,12.mm,335.mm], [1709.17087800115.mm,67.mm,335.mm], [1679.17087800115.mm,67.mm,335.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
   mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
@@ -2926,7 +2925,7 @@ end
   # Stay bolt M16
   grp = ents.add_group
   grp.name = "Stay bolt M16"
-  face = grp.entities.add_face([1616.17087800115.mm,-58.mm,122.mm], [1632.17087800115.mm,-58.mm,122.mm], [1632.17087800115.mm,18.mm,122.mm], [1616.17087800115.mm,18.mm,122.mm])
+  face = grp.entities.add_face([1616.17087800115.mm,-58.mm,272.mm], [1632.17087800115.mm,-58.mm,272.mm], [1632.17087800115.mm,18.mm,272.mm], [1616.17087800115.mm,18.mm,272.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
@@ -2937,7 +2936,7 @@ end
   # Stay bolt M16
   grp = ents.add_group
   grp.name = "Stay bolt M16"
-  face = grp.entities.add_face([1616.17087800115.mm,-58.mm,262.mm], [1632.17087800115.mm,-58.mm,262.mm], [1632.17087800115.mm,18.mm,262.mm], [1616.17087800115.mm,18.mm,262.mm])
+  face = grp.entities.add_face([1616.17087800115.mm,-58.mm,412.mm], [1632.17087800115.mm,-58.mm,412.mm], [1632.17087800115.mm,18.mm,412.mm], [1616.17087800115.mm,18.mm,412.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
@@ -2948,7 +2947,7 @@ end
   # Stay bolt M16
   grp = ents.add_group
   grp.name = "Stay bolt M16"
-  face = grp.entities.add_face([1756.17087800115.mm,-58.mm,122.mm], [1772.17087800115.mm,-58.mm,122.mm], [1772.17087800115.mm,18.mm,122.mm], [1756.17087800115.mm,18.mm,122.mm])
+  face = grp.entities.add_face([1756.17087800115.mm,-58.mm,272.mm], [1772.17087800115.mm,-58.mm,272.mm], [1772.17087800115.mm,18.mm,272.mm], [1756.17087800115.mm,18.mm,272.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
@@ -2959,7 +2958,7 @@ end
   # Stay bolt M16
   grp = ents.add_group
   grp.name = "Stay bolt M16"
-  face = grp.entities.add_face([1756.17087800115.mm,-58.mm,262.mm], [1772.17087800115.mm,-58.mm,262.mm], [1772.17087800115.mm,18.mm,262.mm], [1756.17087800115.mm,18.mm,262.mm])
+  face = grp.entities.add_face([1756.17087800115.mm,-58.mm,412.mm], [1772.17087800115.mm,-58.mm,412.mm], [1772.17087800115.mm,18.mm,412.mm], [1756.17087800115.mm,18.mm,412.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
@@ -3047,7 +3046,7 @@ end
   # Stay hook (frame)
   grp = ents.add_group
   grp.name = "Stay hook (frame)"
-  face = grp.entities.add_face([-10.mm,320.mm,165.mm], [50.mm,320.mm,165.mm], [50.mm,380.mm,165.mm], [-10.mm,380.mm,165.mm])
+  face = grp.entities.add_face([-10.mm,320.mm,315.mm], [50.mm,320.mm,315.mm], [50.mm,380.mm,315.mm], [-10.mm,380.mm,315.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(70.mm)
   mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
@@ -8223,7 +8222,7 @@ end
   # Electrical Panel (EP)
   grp = ents.add_group
   grp.name = "Electrical Panel (EP)"
-  face = grp.entities.add_face([1600.mm,0.mm,1650.mm], [1900.mm,0.mm,1650.mm], [1900.mm,160.mm,1650.mm], [1600.mm,160.mm,1650.mm])
+  face = grp.entities.add_face([1910.mm,0.mm,1650.mm], [2210.mm,0.mm,1650.mm], [2210.mm,160.mm,1650.mm], [1910.mm,160.mm,1650.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(600.mm)
   mat = model.materials["Electrical Panel (EP)"] || model.materials.add("Electrical Panel (EP)")
@@ -12817,13 +12816,6 @@ if inst
   txt = entities.add_text("ELECTRICAL PANEL", anc, Geom::Vector3d.new(500.mm, 0.mm, 560.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
-inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Chemistry Shelf" }
-if inst
-  bb = inst.bounds
-  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
-  txt = entities.add_text("CHEMISTRY SHELF", anc, Geom::Vector3d.new(-350.mm, 0.mm, 1550.mm))
-  txt.layer = model.layers["Labels"] rescue nil
-end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Evap Cooler & Duct" }
 if inst
   bb = inst.bounds
@@ -12849,6 +12841,9 @@ txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(175.mm, 2287.mm, 1700.mm)
 txt = entities.add_text("PIVOT POST Ø89
 (panel swing axis)", anc, Geom::Vector3d.new(500.mm, -200.mm, 600.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(4029.mm, 450.mm, 1075.mm)
+txt = entities.add_text("CHEMISTRY SHELF", anc, Geom::Vector3d.new(-200.mm, -850.mm, 700.mm))
 txt.layer = model.layers["Labels"] rescue nil
 
 model.definitions.purge_unused

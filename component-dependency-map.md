@@ -168,7 +168,7 @@ water reservoir, Circuit E. Ground-placed outside the container; cooled air ente
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Electrical panel left edge X | 1600mm | `EP_X` |
+| Electrical panel left edge X | 1910mm | `EP_X` |
 | Panel width | 300mm | `EP_W` |
 | Panel height range | 900–1500mm | `EP_H_LO`, `EP_H_HI` |
 | Battery bank left edge X | 1810mm | `BA_X` |

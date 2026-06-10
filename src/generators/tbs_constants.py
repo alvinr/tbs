@@ -284,7 +284,9 @@ PWR_PANEL_CUTOUT_W = 280   # wall cutout width (mm) — 30mm overlap each side
 PWR_PANEL_CUTOUT_H = 180   # wall cutout height (mm)
 
 # ── Pinhole wall face (Y = 0, shadow-free) ────────────────────────────────────
-EP_X       = 1600    # electrical panel left edge X (mm)  [rev6b: moved left, away from pinhole]
+EP_X       = 1910    # electrical panel left edge X (mm) — stacked above the battery bank
+                     # (X1810–2310), centered over it; clears the upper transport-stay anchor
+                     # (X1594–1794) and the pinhole (X2399). [rev10: moved right off the stay anchor]
 EP_W       = 300     # electrical panel width (mm)
 EP_H_LO    = 1650    # electrical panel bottom Z (mm) [+50 walkway raise; was 1600 / 900 pre-rev7]
 EP_H_HI    = 2250    # electrical panel top Z (mm)   [+50 walkway raise; was 2200]

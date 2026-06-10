@@ -425,14 +425,14 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # ═══ Walkways (near + far, partial) ═══
   defn = model.definitions.add("Walkways (near + far, partial)")
   ents = defn.entities
-  # Walkway Near (swept, dropped)
+  # Walkway Near (door-end, removable)
   grp = ents.add_group
-  grp.name = "Walkway Near (swept, dropped)"
-  face = grp.entities.add_face([470.mm,0.mm,103.mm], [900.mm,0.mm,103.mm], [900.mm,300.mm,103.mm], [470.mm,300.mm,103.mm])
+  grp.name = "Walkway Near (door-end, removable)"
+  face = grp.entities.add_face([470.mm,0.mm,115.mm], [900.mm,0.mm,115.mm], [900.mm,300.mm,115.mm], [470.mm,300.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
-  mat = model.materials["Walkway Near (swept, dropped)"] || model.materials.add("Walkway Near (swept, dropped)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat = model.materials["Walkway Near (door-end, removable)"] || model.materials.add("Walkway Near (door-end, removable)")
+  mat.color = Sketchup::Color.new(192, 96, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -442,7 +442,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([900.mm,0.mm,115.mm], [1600.mm,0.mm,115.mm], [1600.mm,300.mm,115.mm], [900.mm,300.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
-  mat = model.materials["Walkway Near (swept, dropped)"] || model.materials.add("Walkway Near (swept, dropped)")
+  mat = model.materials["Walkway Near (partial)"] || model.materials.add("Walkway Near (partial)")
   mat.color = Sketchup::Color.new(128, 128, 128)
   mat.alpha = 1.0
   grp.material = mat
@@ -453,7 +453,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([470.mm,2062.mm,115.mm], [1600.mm,2062.mm,115.mm], [1600.mm,2362.mm,115.mm], [470.mm,2362.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
-  mat = model.materials["Walkway Near (swept, dropped)"] || model.materials.add("Walkway Near (swept, dropped)")
+  mat = model.materials["Walkway Near (partial)"] || model.materials.add("Walkway Near (partial)")
   mat.color = Sketchup::Color.new(128, 128, 128)
   mat.alpha = 1.0
   grp.material = mat
@@ -791,7 +791,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Stay inside plate
   grp = ents.add_group
   grp.name = "Stay inside plate"
-  face = grp.entities.add_face([1594.17087800115.mm,0.mm,100.mm], [1794.17087800115.mm,0.mm,100.mm], [1794.17087800115.mm,12.mm,100.mm], [1594.17087800115.mm,12.mm,100.mm])
+  face = grp.entities.add_face([1594.17087800115.mm,0.mm,250.mm], [1794.17087800115.mm,0.mm,250.mm], [1794.17087800115.mm,12.mm,250.mm], [1594.17087800115.mm,12.mm,250.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -802,7 +802,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Stay outside plate
   grp = ents.add_group
   grp.name = "Stay outside plate"
-  face = grp.entities.add_face([1594.17087800115.mm,-52.mm,100.mm], [1794.17087800115.mm,-52.mm,100.mm], [1794.17087800115.mm,-40.mm,100.mm], [1594.17087800115.mm,-40.mm,100.mm])
+  face = grp.entities.add_face([1594.17087800115.mm,-52.mm,250.mm], [1794.17087800115.mm,-52.mm,250.mm], [1794.17087800115.mm,-40.mm,250.mm], [1594.17087800115.mm,-40.mm,250.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -813,7 +813,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Stay eye
   grp = ents.add_group
   grp.name = "Stay eye"
-  face = grp.entities.add_face([1679.17087800115.mm,12.mm,185.mm], [1709.17087800115.mm,12.mm,185.mm], [1709.17087800115.mm,67.mm,185.mm], [1679.17087800115.mm,67.mm,185.mm])
+  face = grp.entities.add_face([1679.17087800115.mm,12.mm,335.mm], [1709.17087800115.mm,12.mm,335.mm], [1709.17087800115.mm,67.mm,335.mm], [1679.17087800115.mm,67.mm,335.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -824,7 +824,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Stay bolt M16
   grp = ents.add_group
   grp.name = "Stay bolt M16"
-  face = grp.entities.add_face([1616.17087800115.mm,-58.mm,122.mm], [1632.17087800115.mm,-58.mm,122.mm], [1632.17087800115.mm,18.mm,122.mm], [1616.17087800115.mm,18.mm,122.mm])
+  face = grp.entities.add_face([1616.17087800115.mm,-58.mm,272.mm], [1632.17087800115.mm,-58.mm,272.mm], [1632.17087800115.mm,18.mm,272.mm], [1616.17087800115.mm,18.mm,272.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -835,7 +835,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Stay bolt M16
   grp = ents.add_group
   grp.name = "Stay bolt M16"
-  face = grp.entities.add_face([1616.17087800115.mm,-58.mm,262.mm], [1632.17087800115.mm,-58.mm,262.mm], [1632.17087800115.mm,18.mm,262.mm], [1616.17087800115.mm,18.mm,262.mm])
+  face = grp.entities.add_face([1616.17087800115.mm,-58.mm,412.mm], [1632.17087800115.mm,-58.mm,412.mm], [1632.17087800115.mm,18.mm,412.mm], [1616.17087800115.mm,18.mm,412.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -846,7 +846,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Stay bolt M16
   grp = ents.add_group
   grp.name = "Stay bolt M16"
-  face = grp.entities.add_face([1756.17087800115.mm,-58.mm,122.mm], [1772.17087800115.mm,-58.mm,122.mm], [1772.17087800115.mm,18.mm,122.mm], [1756.17087800115.mm,18.mm,122.mm])
+  face = grp.entities.add_face([1756.17087800115.mm,-58.mm,272.mm], [1772.17087800115.mm,-58.mm,272.mm], [1772.17087800115.mm,18.mm,272.mm], [1756.17087800115.mm,18.mm,272.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -857,7 +857,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Stay bolt M16
   grp = ents.add_group
   grp.name = "Stay bolt M16"
-  face = grp.entities.add_face([1756.17087800115.mm,-58.mm,262.mm], [1772.17087800115.mm,-58.mm,262.mm], [1772.17087800115.mm,18.mm,262.mm], [1756.17087800115.mm,18.mm,262.mm])
+  face = grp.entities.add_face([1756.17087800115.mm,-58.mm,412.mm], [1772.17087800115.mm,-58.mm,412.mm], [1772.17087800115.mm,18.mm,412.mm], [1756.17087800115.mm,18.mm,412.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -1948,7 +1948,7 @@ ents = defn.entities
   # Stay hook (frame)
   grp = ents.add_group
   grp.name = "Stay hook (frame)"
-  face = grp.entities.add_face([-10.mm,320.mm,165.mm], [50.mm,320.mm,165.mm], [50.mm,380.mm,165.mm], [-10.mm,380.mm,165.mm])
+  face = grp.entities.add_face([-10.mm,320.mm,315.mm], [50.mm,320.mm,315.mm], [50.mm,380.mm,315.mm], [-10.mm,380.mm,315.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(70.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")

@@ -12,9 +12,9 @@ Organization (chosen build convention):
   - Each subsystem is a **ComponentDefinition** placed as one instance.
   - Each instance lives on its own **Tag** (layer) for show/hide.
   - **Scenes** (pages) capture useful visibility states.
-  - Re-runs are **idempotent**: prior generated instances are erased and their
-    definitions purged before rebuilding. The 'Sree' scale figure (and anything
-    not generated here) is preserved.
+  - Re-runs are **idempotent**: ALL prior instances (groups, components, text) are
+    erased and their definitions purged before rebuilding — including any manually
+    placed 'Sree' scale figure (the person is no longer preserved).
 
 Subsystems / tags:
   Container Shell      → Shell            (ceiling ghosted)
@@ -151,7 +151,6 @@ OVERVIEW_LABELS = [
     ("IBC Stack",             "IBC WATER STORAGE\n4x tote",        600,     0, 1300),
     ("Light-Trap Drum",       "LIGHT-TRAP DRUM\n(entry)",         -650,     0, 1050),
     ("Electrical",            "ELECTRICAL PANEL",                  500,     0,  560),
-    ("Chemistry Shelf",       "CHEMISTRY SHELF",                  -350,     0, 1550),
     ("Evap Cooler & Duct",    "EVAP COOLER",                       300,     0, 1700),
 ]
 
@@ -168,6 +167,9 @@ OVERVIEW_POINT_LABELS = [
     # empty middle — anchor on the actual NEAR member instead.
     (2400,  150,   65, "WALKWAYS",                   -200, -850,  750),  # near walkway strip
     ( 175, 2287, 1700, "PIVOT POST Ø89\n(panel swing axis)", 500, -200, 600),  # the swing pivot
+    # The shelf component's hanger rods reach the ceiling, so a bounds-top anchor would
+    # land at the roof — anchor on the shelf BOARD itself instead.
+    (4029,  450, 1075, "CHEMISTRY SHELF",            -200, -850,  700),  # shelf board top-centre
 ]
 
 
@@ -1250,7 +1252,7 @@ def lighting_wiring():
 
     # Pull-cord switches (D, G) — CEILING-mounted, in the ~80mm clear band ahead
     # of the pinhole wall (film carriage starts at Yd=100) and left of the EP
-    # (X<1600) so they clear the electrical panel + batteries.
+    # (X<1910) + the transport-stay anchor (X1594–1794) so they clear both.
     sw_yd = 45                         # off the wall, past the trunking, clear of carriage
     for swx in (1450, 1530):
         parts.append(ruby_box("Pull Switch (ceiling)",
@@ -1883,11 +1885,10 @@ opts["LengthUnit"] = 2
 opts["LengthFormat"] = 0
 opts["LengthPrecision"] = 1
 
-# ── Idempotent rebuild: erase prior generated instances (keep 'Sree'), then
-# purge their now-unused definitions so names don't collide on re-add.
+# ── Idempotent rebuild: erase ALL prior instances (incl. any 'Sree' scale figure —
+# the person is no longer kept), then purge unused definitions so names don't collide.
 to_erase = entities.to_a.select {{ |e|
-  (e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance) || e.is_a?(Sketchup::Text)) &&
-  !(e.is_a?(Sketchup::ComponentInstance) && e.definition.name == "Sree")
+  e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance) || e.is_a?(Sketchup::Text)
 }}
 entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused

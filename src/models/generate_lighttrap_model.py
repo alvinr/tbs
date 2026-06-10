@@ -76,7 +76,9 @@ LOCK = ov.SWING_LOCK_DEG                           # 56 — transport swing angl
 CUT = ov.PANEL_CUT_YD                              # 180 — fixed-left / swing cut
 FAR0 = ov.FAR_STRIP_YD0                            # 2287 — fixed-far strip start (= pivot)
 WALL_FAR = 2000                                    # context far extent — reaches the stay wall anchor
-STAY_Z = (200, 2050)                               # bottom + top transport-stay heights
+STAY_Z = (350, 2050)                               # bottom + top transport-stay heights
+# (bottom raised 200→350 so its anchor plate, Z250–450, clears the walkway deck (Z130)
+#  + the wall-cantilever brackets (vertical leg to Z150 std / Z200 widened) it sits over)
 LOCK_BOLT = (20, 350)                              # stay hook on the swinging frame (good lever arm)
 
 

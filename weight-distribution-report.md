@@ -55,7 +55,7 @@ UV-HDPE 950 kg/m³, water 1,000 kg/m³.
 | Processing tray | 116 | 170–4,629 | 80–2,280 | 304 SS 1.5mm, 2 panels × 58 kg ([Water System Report](water-system-report.md) §4) |
 | Near walkway | 56 | 470–4,629 | 0–300 | 10 brackets @ ~2.7 kg + 26 kg/m² grating |
 | Far walkway | 56 | 470–4,629 | 2,062–2,362 | Same as near walkway |
-| Right walkway | 46 | 4,329–4,629 | 0–2,362 | Ceiling-hung: 2× 25×25×5 bearers + M10 hangers + grating |
+| Right walkway | 55 | 4,329–4,629 | 0–2,362 | rev12 cantilever-rectangle: closed frame (2 long + 2 end beams) + 2 center cantilever arms off the IBC uprights (40×40×3 SHS) + wall cleats + combined corner plates (shared with the BR film rail) + grating. Replaces the ceiling hangers; dry total unchanged |
 | Left walkway | 37 | 170–470 | 0–2,362 | Removable lift-out: grating + 40×40×3 steel edge beam (full width) on 2 bolt-through wall seats + 3 legs + bearing strip + drum-exit punch-out (deeper grating + Al sub-frame + leg) |
 | Swing pivot + cage hardware | 38 | 0–400 | 700–2,287 | rev10 rotation transport hardware (replaces the retired HGR20 ceiling rails): pivot bearings + collar + drum cage + wall stays + rail saddles, at the cargo-door end. Estimate — refine vs the rotation-hardware BOM |
 | Container mods | 65 | Distributed | Distributed | Light seal foam + reinforcement plates (estimate) |

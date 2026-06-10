@@ -224,27 +224,22 @@ def _walkway_near_far_weight():
 
 
 def _walkway_right_weight():
-    """Right walkway (IBC end): ceiling-hung — bearers + hangers + grating."""
-    BS = WALKWAY_RIGHT_BEARER_SIZE
-    BT = WALKWAY_RIGHT_BEARER_T
-    # 2× steel angle bearers (25×25×5mm), each spanning 2362mm
-    # L-angle cross-section area: 2*BS*BT - BT*BT
-    angle_area = (2 * BS * BT - BT * BT) * 1e-6  # m²
-    bearers_kg = 2 * angle_area * (C_WID / 1000) * RHO_STEEL
-    # Hangers: M10 threaded rod, 2313mm long, 5 pairs = 10 rods
-    rod_area = 3.14159 * (WALKWAY_RIGHT_HANGER_D / 2000) ** 2  # m²
-    hangers_kg = WALKWAY_RIGHT_HANGER_N * 2 * rod_area * (WALKWAY_RIGHT_HANGER_L / 1000) * RHO_STEEL
-    # Ceiling anchor plates: 120×90×6mm, INSIDE + OUTSIDE per hanger (20 plates) + 4× M12
-    # through-bolts per hanger (40 bolts, ~60mm long)
-    plate_kg = WALKWAY_RIGHT_HANGER_N * 2 * 2 * (0.120 * 0.090 * 0.006) * RHO_STEEL
-    bolt_kg = WALKWAY_RIGHT_HANGER_N * 2 * 4 * (3.14159 * (0.012 / 2) ** 2 * 0.060) * RHO_STEEL
-    plate_kg += bolt_kg
-    # Grating (300mm wide)
+    """Right walkway (IBC end): rev12 CANTILEVER-rectangle support (replaces the ceiling
+    hangers). A closed rectangle (2 long + 2 end beams) + 2 center cantilever arms off the
+    IBC uprights, all 40×40×3 SHS; wall cleats (left corners) + COMBINED corner plates
+    (right corners, shared with the bottom film rail); grating."""
+    shs_kg_m = (40 ** 2 - 34 ** 2) * 1e-6 * RHO_STEEL          # 40×40×3 SHS ≈ 3.48 kg/m
+    # rectangle: 2 long beams (full width) + 2 end beams (300mm) + 2 center arms (405mm)
+    frame_len = 2 * (C_WID / 1000) + 2 * (WALKWAY_RIGHT_W / 1000) + 2 * 0.405
+    frame_kg = frame_len * shs_kg_m
+    # 2 wall cleats (left corners): back-plate + ext plate + shelf, 8-10mm
+    cleat_kg = 2 * (2 * (0.090 * 0.065 * 0.008) + 0.090 * 0.055 * 0.010) * RHO_STEEL
+    # 2 combined corner plates (right): interior + exterior 150×150×10 + 2 seats each
+    plate_kg = 2 * (2 * (0.150 * 0.167 * 0.010) + 2 * (0.150 * 0.055 * 0.012)) * RHO_STEEL
+    bolt_kg = 2.0                                              # M12 through-bolts + clamps
     grate_area = (WALKWAY_RIGHT_W / 1000) * (C_WID / 1000)
     grate_kg = grate_area * GRATING_KG_PER_M2
-    # Hardware (nuts, washers, clips) estimate
-    hardware_kg = 2.0
-    return bearers_kg + hangers_kg + plate_kg + grate_kg + hardware_kg
+    return frame_kg + cleat_kg + plate_kg + bolt_kg + grate_kg
 
 
 def _walkway_left_weight():

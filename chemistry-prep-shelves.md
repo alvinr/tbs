@@ -45,7 +45,7 @@ The shelf left edge (X=3729mm) is 708mm outside the optical cone. The shelf cann
 | Shelf Yd range | Yd=300–600mm (300mm) |
 | Near walkway | Yd=0–300mm — shelf starts at walkway outer edge |
 | Processing tray | Floor level (rim H=50mm) — well below shelf at H=1075mm |
-| Right walkway | X=4329–4629mm, ceiling-hung (adjacent, Yd=0–300mm) |
+| Right walkway | X=4329–4629mm, cantilever rectangle off the IBC frame (adjacent, Yd=0–300mm) |
 | Ceiling height | H=2388mm (container interior) |
 | Cable trunking | H=1800mm (40×25mm PVC, horizontal full length) |
 
@@ -88,7 +88,7 @@ Single ceiling-suspended platform:
 
 ### 3.3 Ceiling Mounting
 
-The hanger system replicates the right walkway ceiling attachment:
+The shelf hangs from the container ceiling on four corner rods (the ceiling-plate detail below is independent of the right walkway, which is now a floor-clearing cantilever rectangle rather than a ceiling-hung deck):
 
 ### Sheet 2 — Section Elevation
 
@@ -112,7 +112,7 @@ Cross-section at X=4029mm (shelf midpoint) looking along the X-axis. Shows the c
 | Ceiling plate bolt shear | 2× M8 per plate = ~24 kN capacity (far exceeds) |
 | Safety factor | >40× on rod tension; >70× on bolt shear |
 
-25 kg accommodates: a full 1L bottle of chemistry (~1.1 kg), graduated cylinders, roller tray with solution, digital scale, and staging materials — with ample margin. The ceiling-hung system is massively over-engineered for this load (same M10 hardware supports the 4.5m right walkway).
+25 kg accommodates: a full 1L bottle of chemistry (~1.1 kg), graduated cylinders, roller tray with solution, digital scale, and staging materials — with ample margin. The ceiling-hung shelf system is massively over-engineered for this load.
 
 ### 3.5 Leveling
 

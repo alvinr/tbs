@@ -19,12 +19,12 @@
 | **4. Film plane mechanism (4-corner Option A, incl. wall-seat saddles + cross-slides)** | $3,100 | $3,650 | $4,200 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $4,958 | $6,175 | $7,391 |
 | **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $1,465 | $1,802 | $2,160 |
-| **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $1,093 | $1,410 | $1,717 |
+| **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $1,081 | $1,387 | $1,692 |
 | **6b. Panel swing pivot (Ø89 pivot post + bearings + cage + wall stays + rail saddles)** | $650 | $770 | $910 |
 | **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$17,636** | **$22,629** | **$29,088** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$17,624** | **$22,606** | **$29,063** |
 
 *Optional additions that may apply — see individual sections:*
 
@@ -204,7 +204,7 @@ View-camera-style moveable film plane (Option A — a **fixed-size rigid** plane
 
 ### 4.3 Wall-seat saddles (rev 11 — replaces the brace cage)
 
-The demountable brace cage is retired. Each of the 8 rail ends instead anchors to the container with an **IBC-style wall-seat saddle** (back-plate + seat + gusset, dims reused from the IBC frame wall seats), **through-bolted with a 4-bolt pattern to an exterior wall plate** — the container shell carries the rigidity. The **right** rails are permanently bolted; the **left** rails drop into their saddles on knurled thumb screws so they lift out for the drum swing.
+The demountable brace cage is retired. Each of the 8 rail ends instead anchors to the container — **6 with a standalone IBC-style wall-seat saddle** (back-plate + seat + gusset, dims reused from the IBC frame wall seats), **through-bolted with a 4-bolt pattern to an exterior wall plate** — the container shell carries the rigidity. The **2 bottom-right (BR) ends share a combined corner plate with the right walkway** (rev 12 — costed in §6a / the walkway BoM, not here). The **right** rails are permanently bolted; the **left** rails drop into their saddles on knurled thumb screws so they lift out for the drum swing.
 
 | Item | ICP # | Spec | Qty | Unit | Total |
 |------|-------|------|-----|------|-------|
@@ -288,7 +288,7 @@ Personnel access during operation is via a **Ø900 fixed housing + single-openin
 
 **Source documents:** `engineering-diagrams.md` §14, `generate_walkway_diagram.py`
 
-Four removable grated walkway sections around all 4 sides of the processing tray. Near walkway widens to 500mm at EP/battery/slit zone (X≈1,155–2,629). 130mm deck height (raised +50mm so the support clears the floor-level spray bar; 15mm grate). No tray contact on any section — entire tray interior completely clear for film loading. Near/far walkways: wall-cantilevered brackets bolted to corrugated wall ribs (14 standard 8mm + 4 widened 10mm). Right walkway: ceiling-hung from M10 threaded rod hangers. Left walkway: removable lift-out grate on 5 floor-leg cantilever brackets bolted to bare floor outside the tray (arms reach X=470, three extended to X=770 on the punch-out, passing 15mm over the spray bar; brackets stay, grate lifts out for transport). Butt joints at all corners.
+Four removable grated walkway sections around all 4 sides of the processing tray. Near walkway widens to 500mm at EP/battery/slit zone (X≈1,155–2,629). 130mm deck height (raised +50mm so the support clears the floor-level spray bar; 15mm grate). No tray contact on any section — entire tray interior completely clear for film loading. Near/far walkways: wall-cantilevered brackets bolted to corrugated wall ribs (14 standard 8mm + 4 widened 10mm). Right walkway (rev12): cantilever rectangle — a closed 40×40 SHS frame on 2 center arms off the IBC corridor uprights, left corners on wall cleats, right corners on combined corner plates shared with the bottom film rail. Left walkway: removable lift-out grate on 5 floor-leg cantilever brackets bolted to bare floor outside the tray (arms reach X=470, three extended to X=770 on the punch-out, passing 15mm over the spray bar; brackets stay, grate lifts out for transport). Butt joints at all corners.
 
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
@@ -298,14 +298,16 @@ Four removable grated walkway sections around all 4 sides of the processing tray
 | Reinforcing plates, std 100×180×6mm (×14) + wide 120×220×6mm (×4) | $47 | $60 | $73 | Welded to wall exterior behind each bracket |
 | M12×60mm hex bolts + nuts + washers (×58) | $57 | $72 | $87 | 3 per std bracket (42) + 4 per widened (16) |
 | Transition bearing plates, 40×500×5mm flat bar (×2) | $5 | $8 | $10 | Welded to arm top at width transitions |
-| Steel angle bearers, 25×25×5mm L-angle (×2) | $20 | $30 | $35 | Right walkway: 2× 2362mm ceiling-hung bearers |
-| M10 threaded rod + ceiling anchor plates + hardware | $120 | $160 | $195 | 10 rods (5 hanger pairs) + 20 ceiling anchor plates (inside + outside, 120×90×6mm, sandwich the roof) + 40× M12 through-bolts + nuts/washers |
+| Right walkway cantilever frame, 40×40×3mm SHS (8m) | $28 | $34 | $40 | rev12: closed rectangle (2× 2362mm long + 2× 300mm end beams) + 2× 405mm center arms |
+| Right walkway wall cleats, 8mm steel (×2) | $20 | $28 | $35 | Left corners — back-plate + exterior plate + shelf, through-bolted to the wall |
+| Combined corner plates, 10mm steel (×2) | $50 | $65 | $80 | Right corners — shared with the bottom film rail (replaces the BR rail saddle); interior + exterior plate + 2 seats |
+| M12 through-bolts + nuts/washers (~24) | $30 | $40 | $50 | Wall cleats + combined plates + 2 center-arm U-clamps to the IBC uprights |
 | M saddle clips + TEK screws (×20) | $15 | $20 | $25 | Near/far/right walkway grating retention |
 | Drum-exit punch-out — extra grating (~0.23 m²) | $20 | $25 | $30 | 600mm-deep landing at the light-lock exit; carried by the 3 extended bracket arms (no separate bearer/leg) |
 | Left floor-leg cantilever brackets (×5) | $55 | $75 | $95 | 50×50×3 SHS posts (~115mm) + 40×40×3 SHS arms (2 std to X470, 3 extended to X770) + 128×60×8 foot plates; bolted to bare floor outside the tray, arms 15mm over the spray bar |
 | M10 wedge floor anchors (×20) | $25 | $35 | $45 | 4 per foot plate; sealed penetrations into the container floor |
-| Fabrication (brackets, ceiling hangers, install) | $280 | $360 | $440 | 14 std + 4 widened wall brackets, fit 5 left floor-leg cantilever brackets + drill/seal floor anchors, install |
-| **Perimeter walkway total** | **$1,093** | **$1,410** | **$1,717** | |
+| Fabrication (brackets, cantilever frame, install) | $280 | $360 | $440 | 14 std + 4 widened wall brackets, fabricate + fit the right walkway cantilever frame (clamp arms to IBC uprights, bolt cleats + combined plates), fit 5 left floor-leg cantilever brackets + drill/seal floor anchors, install |
+| **Perimeter walkway total** | **$1,081** | **$1,387** | **$1,692** | |
 
 ---
 
@@ -487,12 +489,12 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Film plane mechanism (manual Option A, incl. wall-seat saddles + cross-slides) | $3,100 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $4,900 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,465 |
-| Perimeter walkway (4 sections, removable) | $1,042 |
+| Perimeter walkway (4 sections, removable) | $1,030 |
 | Panel swing pivot (Ø89 pivot + bearings + cage + wall stays + saddles) | $650 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$17,294** |
+| **Scenario A total** | **~$17,282** |
 
 ### Scenario B — Recommended build, regional deployment
 
@@ -504,23 +506,23 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Film plane mechanism (manual Option A + wall-seat saddles + cross-slides + electric actuation) | $4,097 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,084 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,800 |
-| Perimeter walkway (4 sections, removable) | $1,346 |
+| Perimeter walkway (4 sections, removable) | $1,323 |
 | Panel swing pivot (Ø89 pivot + bearings + cage + wall stays + saddles) | $770 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Rodenstock Apo-Ronar 1200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$23,379** |
+| **Scenario B total (excl. CDL)** | **~$23,356** |
 
 ### Scenario C — Full production, own transport, CDL
 
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $22,479 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $22,456 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$111,979–$141,979** |
+| **Scenario C total** | **~$111,956–$141,956** |
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*
 

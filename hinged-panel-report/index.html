@@ -1375,10 +1375,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#25-weight-reduction-alternatives" class="md-nav__link">
+  <a href="#25-weight-reduction-adopted-residual" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.5 Weight-Reduction Alternatives
+        2.5 Weight-Reduction — Adopted + Residual
       
     </span>
   </a>
@@ -2610,21 +2610,21 @@ while keeping the corners flush with the container walls.</p>
 <td>0–653</td>
 <td>653</td>
 <td>40</td>
-<td>18mm ply + 3mm aluminum plate + 18mm ply</td>
+<td>4mm PP skin + 3mm Al core + 4mm PP skin (40mm framed); <strong>18mm-ply Fan-B mount band</strong> bottom→1125mm</td>
 </tr>
 <tr>
 <td>Center</td>
 <td>653–1,709</td>
 <td>1,056</td>
 <td>120</td>
-<td>18mm ply + 84mm RHS frame + 18mm ply</td>
+<td>4mm PP skin + 84mm RHS frame + 4mm PP skin</td>
 </tr>
 <tr>
 <td>Far corner</td>
 <td>1,709–2,362</td>
 <td>653</td>
 <td>40</td>
-<td>18mm ply + 3mm aluminum plate + 18mm ply</td>
+<td>4mm PP skin + 3mm Al core + 4mm PP skin (40mm framed)</td>
 </tr>
 </tbody>
 </table>
@@ -2651,19 +2651,19 @@ flush-faced panels that seal against the fixed door frame.</p>
 </tr>
 <tr>
 <td>Skin (each face)</td>
-<td>18mm exterior-grade plywood</td>
+<td><strong>4mm PP plastic sheet</strong> (rev11; same material as the drum/housing), set in U-channels — black-pigmented, light-tight, moisture/chemical-proof. <strong>Exception:</strong> an 18mm exterior-grade plywood band on the Fan B corner (bottom up to 1125mm) for rigid fan/duct mounting + screw retention</td>
 </tr>
 <tr>
 <td>Interior finish</td>
-<td>Flat black (RAL 9005) — optically dead at visible wavelengths</td>
+<td>Black-pigmented sheet (PP) + flat-black touch-in — optically dead at visible wavelengths</td>
 </tr>
 <tr>
 <td>Frame perimeter</td>
 <td>Welded corners, mitered joints</td>
 </tr>
 <tr>
-<td>Panel weight (full panel: sandwich + Ø900 housing + B2 bay, excl. drum)</td>
-<td>~243 kg (first-principles: 196 kg sandwich + 22 kg housing + 25 kg B2 bay). See §2.4 for the movable swing-zone breakdown</td>
+<td>Panel weight (full panel: skins + Ø900 housing + B2 bay, excl. drum)</td>
+<td>~171 kg (first-principles: 125 kg framed skins + 22 kg housing + 25 kg B2 bay). The 4mm-PP-skin swap cut ~72 kg vs the 18mm-ply build. See §2.4–2.5 for the movable breakdown + trade study</td>
 </tr>
 </tbody>
 </table>
@@ -2697,10 +2697,16 @@ is slightly lower than the whole-panel figure carried in the
 </thead>
 <tbody>
 <tr>
-<td><strong>A · Sandwich</strong></td>
-<td>Corner ply skins</td>
-<td>2×18mm ply, 1.05m × 2.39m</td>
-<td style="text-align: right;">54.2</td>
+<td><strong>A · Skins + frame</strong></td>
+<td>Fan B mount band</td>
+<td>18mm ply, 0.47m × 0.99m, 2 faces</td>
+<td style="text-align: right;">10.2</td>
+</tr>
+<tr>
+<td></td>
+<td>PP corner skins</td>
+<td>4mm PP (near above band + far)</td>
+<td style="text-align: right;">14.8</td>
 </tr>
 <tr>
 <td></td>
@@ -2716,15 +2722,15 @@ is slightly lower than the whole-panel figure carried in the
 </tr>
 <tr>
 <td></td>
-<td>Center ply skins</td>
-<td>2×18mm ply, Ø900 aperture deducted</td>
-<td style="text-align: right;">40.7</td>
+<td>PP center skins</td>
+<td>4mm PP, Ø900 aperture deducted</td>
+<td style="text-align: right;">13.7</td>
 </tr>
 <tr>
 <td></td>
 <td><strong>A subtotal</strong></td>
 <td></td>
-<td style="text-align: right;"><strong>164.5</strong></td>
+<td style="text-align: right;"><strong>108.1</strong></td>
 </tr>
 <tr>
 <td><strong>B · Housing</strong></td>
@@ -2741,8 +2747,8 @@ is slightly lower than the whole-panel figure carried in the
 <tr>
 <td><strong>D · Bay</strong></td>
 <td>B2 punch-out bay walls</td>
-<td>6mm ply, 4-wall tube 0.89m deep</td>
-<td style="text-align: right;">24.8</td>
+<td>4mm PP, 4-wall tube 0.89m deep</td>
+<td style="text-align: right;">24.9</td>
 </tr>
 <tr>
 <td><strong>E · Cage</strong></td>
@@ -2772,7 +2778,7 @@ is slightly lower than the whole-panel figure carried in the
 <td></td>
 <td><strong>MOVABLE TOTAL (carried-rotating)</strong></td>
 <td></td>
-<td style="text-align: right;"><strong>≈283</strong></td>
+<td style="text-align: right;"><strong>≈226</strong></td>
 </tr>
 <tr>
 <td></td>
@@ -2782,89 +2788,36 @@ is slightly lower than the whole-panel figure carried in the
 </tr>
 </tbody>
 </table>
-<p><strong>By material:</strong> plywood 120 kg (42%), steel 103 kg (37%), PP 21 kg, aluminum 20 kg,
-HDPE 16 kg, EPDM/other 3 kg.</p>
-<p><strong>Findings.</strong> The mass is dominated by two items — <strong>plywood (120 kg)</strong> and the
-<strong>steel center frame (49 kg)</strong> — which together are 60% of the assembly. The
-optical hardware (drum + housing) is only ~60 kg and is already plastic-skinned
-(rev 9), so it offers little further saving. Any meaningful reduction must come from
-the sandwich skins and the center frame (§2.5). Because the swing axis is
-<strong>vertical</strong>, this mass produces <strong>no gravity overturning torque</strong> at any swing
-angle; it matters for the thrust-bearing/pivot-post sizing, for handling during
-assembly (beyond a two-person lift — an engine crane or gantry hoist is required),
-and for total container payload.</p>
-<h3 id="25-weight-reduction-alternatives">2.5 Weight-Reduction Alternatives<a class="headerlink" href="#25-weight-reduction-alternatives" title="Permanent link">&para;</a></h3>
-<p>A trade study of the high-leverage targets. Savings are first-order estimates against
-the ≈283 kg baseline; <strong>none are adopted yet</strong> — each needs a design decision before
-the geometry constants change. Stiffness and light-tightness, not strength, govern
-the sandwich, so the options below are evaluated on those terms.</p>
-<table>
-<thead>
-<tr>
-<th>#</th>
-<th>Change</th>
-<th style="text-align: right;">Est. saving</th>
-<th>Cost</th>
-<th>Risk</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A</td>
-<td>Center frame: steel RHS → <strong>aluminum RHS</strong> (up-size to 60×60×4 for stiffness)</td>
-<td style="text-align: right;">~22–28 kg</td>
-<td>↑ $/kg, TIG weld</td>
-<td>Med</td>
-<td>Frame is the structural spine carrying the drum; Al's lower E needs a larger section, eating ~⅓ of the naive 32 kg saving</td>
-</tr>
-<tr>
-<td>B</td>
-<td>Corner zones: <strong>18mm → 12mm ply</strong> skins (corners are light-seal infill, non-structural)</td>
-<td style="text-align: right;">~18 kg</td>
-<td>↓</td>
-<td>Low</td>
-<td>Simplest, lowest-risk cut; corners carry no drum load</td>
-</tr>
-<tr>
-<td>C</td>
-<td>Corners: replace 40mm ply/Al/ply with <strong>25mm aluminum-honeycomb panel</strong> (~7 kg/m²)</td>
-<td style="text-align: right;">~55 kg</td>
-<td>↑↑</td>
-<td>Med</td>
-<td>Big win on the 75 kg of corner sandwich; needs edge sealing + a light-tight black facing</td>
-</tr>
-<tr>
-<td>D</td>
-<td>B2 bay: <strong>6mm → 4mm ply</strong> (or 3mm composite)</td>
-<td style="text-align: right;">~8 kg</td>
-<td>≈</td>
-<td>Low</td>
-<td>Low leverage; the bay is a non-structural light enclosure</td>
-</tr>
-<tr>
-<td>E</td>
-<td><strong>Whole-panel honeycomb redesign</strong> — Al-honeycomb panels on a minimal Al frame</td>
-<td style="text-align: right;">~70–90 kg</td>
-<td>↑↑↑</td>
-<td>High</td>
-<td>Largest cut (target ~190–210 kg) but a full structural + light-seal redevelopment</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Recommendation.</strong> Two coherent paths:</p>
-<ul>
-<li><strong>Low-risk incremental (B + D + A):</strong> thinner corner/bay skins plus an aluminum
-  center frame → <strong>~45–55 kg</strong> off (to ~230 kg) with conventional construction and
-  modest cost. Best near-term value.</li>
-<li><strong>Aggressive (C, or escalating to E):</strong> honeycomb corners (or a full honeycomb
-  panel) → <strong>~55–90 kg</strong> off (to ~195–225 kg), at materially higher cost and a
-  light-tightness/edge-sealing development task.</li>
-</ul>
-<p>Either path leaves the drum + housing untouched (already optimized) and does not
-affect the swing kinematics. The next step is a decision on which path to cost out
-against the <a href="../project-cost-breakdown/">project cost breakdown</a> before any
-<code>tbs_constants.py</code> change.</p>
+<p><strong>By material:</strong> steel 103 kg (46%), PP 74 kg (33%), aluminum 20 kg (9%),
+HDPE 16 kg (7%), plywood 10 kg (4%, Fan B band only), EPDM/other 3 kg.</p>
+<p><strong>Findings.</strong> rev11 replaced the 18mm plywood skins with 4mm PP plastic sheet (the
+same material as the drum/housing), set in U-channels — cutting <strong>~72 kg</strong> off the
+panel (movable assembly 283 → 226 kg; whole panel 243 → 171 kg). Plywood is now only
+the 10 kg Fan B mount band. The largest remaining single item is the <strong>steel center
+RHS frame (49 kg)</strong> — the structural spine carrying the drum — which is the only
+meaningful target left (§2.5). Because the swing axis is <strong>vertical</strong>, this mass
+produces <strong>no gravity overturning torque</strong> at any swing angle; it matters for the
+thrust-bearing/pivot-post sizing, for handling during assembly (still beyond a
+two-person lift — an engine crane or gantry hoist is required), and for total
+container payload.</p>
+<h3 id="25-weight-reduction-adopted-residual">2.5 Weight-Reduction — Adopted + Residual<a class="headerlink" href="#25-weight-reduction-adopted-residual" title="Permanent link">&para;</a></h3>
+<p><strong>Adopted (rev11): 4mm PP plastic skins.</strong> The 18mm exterior-grade plywood skins were
+replaced with <strong>4mm polypropylene sheet</strong> — the same material as the drum and housing —
+set in <strong>U-channels</strong> on the existing frame faces (the 40mm corner / 120mm center
+<strong>envelope is unchanged</strong>; only the skin material/thickness changed). Black-pigmented PP
+is light-tight (proven on the drum), moisture- and chemical-proof in the wet darkroom,
+and floats in its channel to absorb its higher thermal expansion. A tighter stiffener-
+channel grid (~400–450mm centers) keeps the floppier 4mm sheet flat at the EPDM seal
+line. <strong>One exception:</strong> the Fan B corner keeps an <strong>18mm plywood band</strong> (bottom up to
+1125mm) for rigid fan/duct mounting + screw retention. Net: <strong>~72 kg off</strong> the panel
+(243 → 171 kg), at roughly comparable material cost (PP sheet + U-channel ≈ ply +
+adhesive/fasteners; panel BOM rises ~$100, see §8.1).</p>
+<p><strong>Residual option (not adopted): aluminum center frame.</strong> The 49 kg steel RHS center
+frame could go to <strong>aluminum RHS</strong> (up-sized, e.g. 60×60×4, for stiffness) for a further
+~22–28 kg — at higher $/kg + TIG welding, and it carries the drum, so it is a
+structural change deferred pending need. Honeycomb-panel routes (the earlier aggressive
+option) are now moot: the PP swap already captured most of the available saving at far
+lower cost and risk.</p>
 <hr />
 <h2 id="3-housed-revolving-door-light-lock">3. Housed Revolving-Door Light Lock<a class="headerlink" href="#3-housed-revolving-door-light-lock" title="Permanent link">&para;</a></h2>
 <blockquote>
@@ -3346,10 +3299,16 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 <td>$120–$160</td>
 </tr>
 <tr>
-<td>18mm exterior-grade plywood (1220 × 2440mm sheets)</td>
-<td>Panel skins (both faces)</td>
-<td>6</td>
-<td>$180–$300</td>
+<td>4mm black PP plastic sheet (1220 × 2440mm)</td>
+<td>Panel skins, both faces (~12 m²) — rev11, replaces 18mm ply</td>
+<td>4</td>
+<td>$260–$420</td>
+</tr>
+<tr>
+<td>18mm exterior-grade plywood</td>
+<td>Fan B mount band only (one corner, bottom→1125mm)</td>
+<td>0.5 sheet</td>
+<td>$30–$50</td>
 </tr>
 <tr>
 <td>3mm aluminum plate (1220 × 2440mm)</td>
@@ -3365,9 +3324,9 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 </tr>
 <tr>
 <td>Aluminum U-channel (per meter)</td>
-<td>Gasket retainer — perimeter + housing-surround ring</td>
-<td>16 m</td>
-<td>$48–$80</td>
+<td>Gasket retainer + <strong>PP-skin retention</strong> (perimeter + housing-surround + stiffener grid)</td>
+<td>40 m</td>
+<td>$120–$200</td>
 </tr>
 <tr>
 <td>Southco C2-33 cam compression latch</td>
@@ -3376,22 +3335,22 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 <td>$60–$100</td>
 </tr>
 <tr>
-<td>6mm exterior plywood + EPDM lip</td>
-<td>B2 punch-out bay — 4-wall light-tight tube (~890mm deep) around the housing</td>
+<td>4mm black PP sheet + EPDM lip</td>
+<td>B2 punch-out bay — 4-wall light-tight tube (~890mm deep) around the housing (rev11; was 6mm ply)</td>
 <td>1 lot</td>
 <td>$60–$120</td>
 </tr>
 <tr>
 <td>Flat black paint (RAL 9005)</td>
-<td>Interior face + bay interior</td>
-<td>2 qt</td>
-<td>$20–$30</td>
+<td>Bay/weld touch-in (PP skins are pre-pigmented black)</td>
+<td>1 qt</td>
+<td>$10–$20</td>
 </tr>
 <tr>
 <td><strong>Panel subtotal</strong></td>
 <td></td>
 <td></td>
-<td><strong>$890–$1,310</strong></td>
+<td><strong>$985–$1,495</strong></td>
 </tr>
 </tbody>
 </table>

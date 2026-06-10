@@ -89,6 +89,7 @@ WALKWAY_LABELS = [
 # parts whose bounds-centre lands in the empty middle, so anchor on a real member.
 WALKWAY_POINT_LABELS = [
     (2400,  150,   73, "NEAR WALKWAY",                    0, -900,  550),
+    ( 710,  150,  140, "NEAR LIFT-OUT\n(removable for transport)", -350, -800, 700),  # amber door-end band
     (2400, 2212,   73, "FAR WALKWAY",                   300,  500,  900),
     (4479, 1181,   73, "RIGHT WALKWAY",                 750, -200,  650),
     ( 320, 1181,   73, "LEFT WALKWAY\n(removable)",    -800, -300,  800),

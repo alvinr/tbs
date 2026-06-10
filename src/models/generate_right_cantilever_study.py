@@ -70,9 +70,13 @@ def film_rail_saddle():
     clearance the old ceiling rods violated. Reuses the shared saddle builder."""
     parts = []
     rz_bot, rz_top = k.RAIL_OFF_BOT, k.C_HGT - k.RAIL_OFF      # 150, 2288
+    RW = 40                                                    # rail section
+    # Draw the rail CENTERED on (RAIL_X_R, rz) so the beam lines up with the saddle plate
+    # (which is also centered there) — fixes the off-center near plate.
     for nm, rz in (("TR", rz_top), ("BR", rz_bot)):
         parts.append(ruby_box(f"FP Rail {nm} (X{k.RAIL_X_R})",
-                              k.RAIL_X_R, 0, rz, 40, k.C_WID, 40, color=ov.C_STEEL, alpha=0.85))
+                              k.RAIL_X_R - RW // 2, 0, rz - RW // 2, RW, k.C_WID, RW,
+                              color=ov.C_STEEL, alpha=0.85))
     # right-corner saddles only (TR/BR), shared builder
     parts.append(ov.film_plane_saddles({"TR": (k.RAIL_X_R, rz_top),
                                          "BR": (k.RAIL_X_R, rz_bot)}))

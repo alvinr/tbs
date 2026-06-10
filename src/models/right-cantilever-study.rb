@@ -1161,7 +1161,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # FP Rail TR (X4649)
   grp = ents.add_group
   grp.name = "FP Rail TR (X4649)"
-  face = grp.entities.add_face([4649.mm,0.mm,2288.mm], [4689.mm,0.mm,2288.mm], [4689.mm,2362.mm,2288.mm], [4649.mm,2362.mm,2288.mm])
+  face = grp.entities.add_face([4629.mm,0.mm,2268.mm], [4669.mm,0.mm,2268.mm], [4669.mm,2362.mm,2268.mm], [4629.mm,2362.mm,2268.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["FP Rail TR (X4649)"] || model.materials.add("FP Rail TR (X4649)")
@@ -1172,7 +1172,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # FP Rail BR (X4649)
   grp = ents.add_group
   grp.name = "FP Rail BR (X4649)"
-  face = grp.entities.add_face([4649.mm,0.mm,150.mm], [4689.mm,0.mm,150.mm], [4689.mm,2362.mm,150.mm], [4649.mm,2362.mm,150.mm])
+  face = grp.entities.add_face([4629.mm,0.mm,130.mm], [4669.mm,0.mm,130.mm], [4669.mm,2362.mm,130.mm], [4629.mm,2362.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["FP Rail TR (X4649)"] || model.materials.add("FP Rail TR (X4649)")

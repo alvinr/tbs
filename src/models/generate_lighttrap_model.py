@@ -48,6 +48,7 @@ YD_L, YD_R = ov.PANEL_CORNER_YD_L, ov.PANEL_CORNER_YD_R   # 653, 1709 step lines
 FAN_B_YD, FAN_B_H = ov.FAN_B_YD, ov.FAN_B_H
 
 C_STEEL, C_ALUM, C_PLY = ov.C_STEEL, ov.C_ALUM, ov.C_PLY
+C_PLASTIC = ov.C_PLASTIC                       # 4mm PP panel skins + bay (rev11; C_PLY now = wood fan band only)
 C_DRUM, C_GASKT, C_RAIL, C_CARR = ov.C_DRUM, ov.C_GASKT, ov.C_RAIL, ov.C_CARR
 C_SHELL, C_VALVE = ov.C_SHELL, ov.C_VALVE
 
@@ -272,18 +273,18 @@ def hinge_panel():
     # Near corner (hinge side) and far corner (Fan B side) — flush 40mm zones.
     # The center zone is WIDENED (step lines at NEW_YD_L/R) to frame the Ø900 housing.
     parts.append(ruby_box("Panel near corner (40mm)",
-                          0, 0, PANEL_Z_BOT, tc, NEW_YD_L, h, color=C_PLY))
+                          0, 0, PANEL_Z_BOT, tc, NEW_YD_L, h, color=C_PLASTIC))
     parts.append(ruby_box("Panel far corner (40mm)",
-                          0, NEW_YD_R, PANEL_Z_BOT, tc, C_WID - NEW_YD_R, h, color=C_PLY))
+                          0, NEW_YD_R, PANEL_Z_BOT, tc, C_WID - NEW_YD_R, h, color=C_PLASTIC))
 
     # Center zone (120mm) framed around the housing aperture: two jambs + header.
     parts.append(ruby_box("Panel center jamb L (120mm)",
-                          0, NEW_YD_L, PANEL_Z_BOT, tk, APER_L - NEW_YD_L, h, color=C_PLY))
+                          0, NEW_YD_L, PANEL_Z_BOT, tk, APER_L - NEW_YD_L, h, color=C_PLASTIC))
     parts.append(ruby_box("Panel center jamb R (120mm)",
-                          0, APER_R, PANEL_Z_BOT, tk, NEW_YD_R - APER_R, h, color=C_PLY))
+                          0, APER_R, PANEL_Z_BOT, tk, NEW_YD_R - APER_R, h, color=C_PLASTIC))
     parts.append(ruby_box("Panel header over housing (120mm)",
                           0, NEW_YD_L, DRUM_H, tk, NEW_YD_R - NEW_YD_L,
-                          PANEL_Z_TOP - DRUM_H, color=C_PLY))
+                          PANEL_Z_TOP - DRUM_H, color=C_PLASTIC))
 
     # (Housing-aperture neoprene lining strips omitted in this model — they read
     # as distracting brown bands flanking the drum opening.)
@@ -638,10 +639,10 @@ def bay():
     depth = ov.BAY_BACK_X - xf                             # 890 — bay X span
     h = z1 - z0
     return '\n'.join([
-        ruby_box("Bay wall near (Yd)", xf, yL, z0, depth, t, h, color=C_PLY),
-        ruby_box("Bay wall far (Yd)", xf, yR - t, z0, depth, t, h, color=C_PLY),
-        ruby_box("Bay wall top", xf, yL, z1 - t, depth, yR - yL, t, color=C_PLY),
-        ruby_box("Bay wall bottom", xf, yL, z0, depth, yR - yL, t, color=C_PLY),
+        ruby_box("Bay wall near (Yd)", xf, yL, z0, depth, t, h, color=C_PLASTIC),
+        ruby_box("Bay wall far (Yd)", xf, yR - t, z0, depth, t, h, color=C_PLASTIC),
+        ruby_box("Bay wall top", xf, yL, z1 - t, depth, yR - yL, t, color=C_PLASTIC),
+        ruby_box("Bay wall bottom", xf, yL, z0, depth, yR - yL, t, color=C_PLASTIC),
     ])
 
 
@@ -670,13 +671,17 @@ def generate_ruby():
     # housing + drum cage + Fan B + the moving hub + stay hooks.
     dc_body = '\n'.join([
         hinge_panel(),
-        ruby_box(f"Panel near (swing, Yd{CUT}-{NEW_YD_L})", 0, CUT, PANEL_Z_BOT, 40,
-                 NEW_YD_L - CUT, PANEL_Z_TOP - PANEL_Z_BOT, color=C_PLY),
+        # Fan B corner: 18mm PLYWOOD mount band (bottom up to PANEL_FAN_BAND_Z) for
+        # rigid fan/duct mounting; 4mm PP skin above. (rev11 material differentiation.)
+        ruby_box("Fan B mount band (18mm ply)", 0, CUT, PANEL_Z_BOT, 40,
+                 NEW_YD_L - CUT, ov.PANEL_FAN_BAND_Z - PANEL_Z_BOT, color=C_PLY),
+        ruby_box(f"Panel near (swing, Yd{CUT}-{NEW_YD_L})", 0, CUT, ov.PANEL_FAN_BAND_Z, 40,
+                 NEW_YD_L - CUT, PANEL_Z_TOP - ov.PANEL_FAN_BAND_Z, color=C_PLASTIC),
         ruby_box("EPDM seal top (trimmed)", -20, CUT, PANEL_Z_TOP - 40, 20, PIVOT_YD - CUT, 40, color=C_GASKT),
         ruby_box("EPDM seal bottom L (trimmed)", -20, CUT, PANEL_Z_BOT, 20,
                  (DRUM_CY - HOUSING_R - 15) - CUT, 40, color=C_GASKT),
         ruby_box("Panel far corner (trimmed)", 0, NEW_YD_R, PANEL_Z_BOT, 40,
-                 PIVOT_YD - NEW_YD_R, PANEL_Z_TOP - PANEL_Z_BOT, color=C_PLY),
+                 PIVOT_YD - NEW_YD_R, PANEL_Z_TOP - PANEL_Z_BOT, color=C_PLASTIC),
         ruby_box("EPDM seal bottom R (trimmed)", -20, DRUM_CY + HOUSING_R + 15, PANEL_Z_BOT, 20,
                  PIVOT_YD - (DRUM_CY + HOUSING_R + 15), 40, color=C_GASKT),
         bay(),

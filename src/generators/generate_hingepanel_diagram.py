@@ -38,7 +38,7 @@ from tbs_constants import (
     PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,         # widened center-zone step lines
     LT_DRUM_OR, LT_OPENING_DEG,
     RAIL_X_L,                                    # film-plane left rail (now continuous, B2)
-    FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_WALL_T,
+    FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_WALL_T, PANEL_SKIN_T,
 )
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v,
@@ -50,9 +50,12 @@ BG      = "#FFFFFF"   # white background
 C_OUT   = "#1A1A1A"   # outlines
 C_CL    = "#2060A0"   # center lines (blue, dashed)
 C_DIM   = "#404040"   # dimensions / annotation text
-C_ALUM  = "#C8D8E8"   # aluminum / ply fill
+C_ALUM  = "#C8D8E8"   # aluminum (3mm corner core plate)
 C_STEEL = "#B0B0B8"   # steel section fill
 C_GASKT = "#5A3020"   # EPDM gasket fill
+C_WOOD    = "#C9A36B"  # plywood — Fan B mount band (rev11 material legend)
+C_PLASTIC = "#6E8CA0"  # 4mm PP plastic sheet — panel skins + B2 bay (rev11)
+C_HOLLOW  = "#EEEEE8"  # framed hollow core between the PP skins (rev11)
 C_LIGHT = "#FFE0A0"   # light-path indication (amber)
 FONT    = {"fontfamily": "monospace"}
 
@@ -109,13 +112,20 @@ def sheet1():
     # ── Panel body ────────────────────────────────────────────────────────────
     # Outer steel frame (50mm wide)
     ax.add_patch(Rectangle((0, 0), PW, PH, fc=C_STEEL, ec=C_OUT, lw=2.5, zorder=2))
-    # Ply skin area (inset of frame, shown slightly lighter)
+    # Skin area (inset of frame): rev11 — 4mm PP plastic sheet (C_PLASTIC)
     FR = 55  # visible frame width at face
     ax.add_patch(Rectangle((FR, FR), PW - 2 * FR, PH - 2 * FR,
-                            fc=C_ALUM, ec=C_OUT, lw=0.8, zorder=3))
-    ax.text(PW / 4 - 275, PH / 2,
-            "18mm EXT-GRADE PLY\nFLAT BLACK INTERIOR",
-            color=C_DIM, fontsize=6.5, ha="center", va="center", **FONT, zorder=15, alpha=0.7)
+                            fc=C_PLASTIC, ec=C_OUT, lw=0.8, zorder=3))
+    ax.text(PW / 4 - 275, PH * 0.62,
+            "4mm PP PLASTIC SKIN\n(U-channel set; flat-black interior)",
+            color=C_DIM, fontsize=6.5, ha="center", va="center", **FONT, zorder=15, alpha=0.8)
+    # Fan B corner keeps an 18mm PLYWOOD mount band (bottom up to PANEL_FAN_BAND_Z)
+    from tbs_constants import PANEL_FAN_BAND_Z as _PFBZ
+    ax.add_patch(Rectangle((FR, FR), PANEL_CORNER_YD_L - FR, _PFBZ - FR,
+                            fc=C_WOOD, ec=C_OUT, lw=0.8, zorder=3.2))
+    ax.text(PANEL_CORNER_YD_L / 2, (_PFBZ + FR) / 2,
+            "18mm PLY\nFAN-MOUNT BAND", color="#6a4010", fontsize=6,
+            ha="center", va="center", fontweight="bold", **FONT, zorder=15, alpha=0.85)
 
     # ── EPDM perimeter seal (dashed inner contour) ────────────────────────────
     S = 30  # seal inset
@@ -466,40 +476,47 @@ def sheet2():
     # housing. Side walls run the bay depth; a front face closes the exterior end.
     for x, w in [(STEP_YD_L, D_XL - STEP_YD_L), (D_XR, STEP_YD_R - D_XR)]:
         ax.add_patch(Rectangle((x, BAY_FRONT_X), w, Y_INT - BAY_FRONT_X,
-                                fc=C_ALUM, ec=C_OUT, lw=1.0, hatch="\\\\",
-                                zorder=3, alpha=0.85))
+                                fc=C_PLASTIC, ec=C_OUT, lw=1.0, hatch="\\\\",
+                                zorder=3, alpha=0.85))  # rev11: 4mm PP bay walls
     ax.add_patch(Rectangle((STEP_YD_L, BAY_FRONT_X), STEP_YD_R - STEP_YD_L, BAY_WALL_T,
                             fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="///", zorder=4))
     ax.text((STEP_YD_L + STEP_YD_R) / 2, BAY_FRONT_X - 110, "PUNCH-OUT BAY (rev9)",
             color=C_OUT, fontsize=8.5, ha="center", va="top", **FONT,
             fontweight="bold", zorder=15)
 
-    # ── CORNER ZONES (40mm thick, Yd=0→653 and Yd=1709→2362) ─────────────────
-    # Corner zones: 18mm ply + 3mm aluminum plate + 18mm ply (40mm envelope)
-    CORN_PLY   = 18
-    CORN_PLATE = 3
-    CORN_Y0_PL  = Y1_W                          # outer ply starts at wall inner face
-    CORN_Y1_PL  = CORN_Y0_PL + CORN_PLY          # = 58
-    CORN_Y0_ST  = CORN_Y1_PL                     # steel plate
-    CORN_Y1_ST  = CORN_Y0_ST + CORN_PLATE         # = 62
-    CORN_Y0_PL2 = CORN_Y1_ST                     # inner ply
-    CORN_Y1_PL2 = CORN_Y0_PL2 + CORN_PLY          # = 80
+    # ── CORNER ZONES (40mm envelope, Yd=0→653 and Yd=1709→2362) ──────────────
+    # rev11: 4mm PP skin + framed HOLLOW core (3mm Al stiffener mid) + 4mm PP skin.
+    # The 40mm envelope is unchanged (frame depth); only the skins changed material.
+    CORN_SKIN  = PANEL_SKIN_T                     # 4mm PP skin each face
+    CORN_PLATE = 3                               # 3mm Al core stiffener
+    CORN_Y_OUT = Y1_W                            # 40 — outer face (= wall inner face)
+    CORN_Y_IN  = Y1_W + CORNER_T                  # 80 — inner face (40mm envelope)
+    al_mid = CORN_Y_OUT + CORNER_T / 2 - CORN_PLATE / 2
 
-    for x0, x1 in [(0, STEP_YD_L), (STEP_YD_R, PW)]:
+    # This section is cut at H=1000mm — BELOW the Fan B ply-band top (1125mm), so the
+    # NEAR corner (Yd 0→653, the fan side) is cut through the 18mm PLYWOOD band, while
+    # the FAR corner is the 4mm PP skin. Both keep the 40mm envelope + 3mm Al core.
+    for x0, x1, skin_c, skin_t in [(0, STEP_YD_L, C_WOOD, 18),
+                                    (STEP_YD_R, PW, C_PLASTIC, CORN_SKIN)]:
         w = x1 - x0
-        ax.add_patch(Rectangle((x0, CORN_Y0_PL), w, CORN_PLY,
-                                fc=C_ALUM, ec=C_OUT, lw=0.8, zorder=3))
-        ax.add_patch(Rectangle((x0, CORN_Y0_ST), w, CORN_PLATE,
-                                fc=C_ALUM, ec=C_OUT, lw=0.6, hatch="xx", zorder=3))
-        ax.add_patch(Rectangle((x0, CORN_Y0_PL2), w, CORN_PLY,
-                                fc=C_ALUM, ec=C_OUT, lw=0.8, zorder=3))
+        # framed hollow core between the skins
+        ax.add_patch(Rectangle((x0, CORN_Y_OUT), w, CORNER_T,
+                                fc=C_HOLLOW, ec=C_OUT, lw=0.6, zorder=3))
+        # outer + inner skins (wood at the fan corner, PP at the far corner)
+        ax.add_patch(Rectangle((x0, CORN_Y_OUT), w, skin_t,
+                                fc=skin_c, ec=C_OUT, lw=0.8, zorder=3.1))
+        ax.add_patch(Rectangle((x0, CORN_Y_IN - skin_t), w, skin_t,
+                                fc=skin_c, ec=C_OUT, lw=0.8, zorder=3.1))
+        # 3mm Al core stiffener (mid)
+        ax.add_patch(Rectangle((x0, al_mid), w, CORN_PLATE,
+                                fc=C_ALUM, ec=C_OUT, lw=0.6, hatch="xx", zorder=3.2))
 
     # ── Step transition lines ─────────────────────────────────────────────────
     for sx in [STEP_YD_L, STEP_YD_R]:
         # Vertical step face at transition
         ax.plot([sx, sx], [Y0_PL, Y1_PL2], color=C_OUT, lw=1.5, zorder=5)
         # Horizontal shelf connecting 40mm→120mm
-        ax.plot([sx, sx], [CORN_Y1_PL2, Y1_PL2], color=C_OUT, lw=1.0,
+        ax.plot([sx, sx], [CORN_Y_IN, Y1_PL2], color=C_OUT, lw=1.0,
                 ls=(0, (4, 2)), zorder=4, alpha=0.7)
 
     # ── Layer labels (leaders from center zone) ───────────────────────────────
@@ -692,17 +709,17 @@ def sheet2():
           f"{PW - STEP_YD_R}mm", fs=6, offset=-20)
 
     # Corner zone thickness dimension
-    dim_v(ax, STEP_YD_L / 2 - 100, Y1_W, CORN_Y1_PL2,
+    dim_v(ax, STEP_YD_L / 2 - 100, Y1_W, CORN_Y_IN,
           f"{CORNER_T}mm", offset=15, fs=6)
 
     # ── Zone labels ─────────────────────────────────────────────────────────────
-    ax.text(STEP_YD_L / 2, CORN_Y1_PL2 + 25,
+    ax.text(STEP_YD_L / 2, CORN_Y_IN + 25,
             f"40mm\nCORNER", color="#C04010", fontsize=6, ha="center", va="bottom",
             fontweight="bold", **FONT, zorder=15, alpha=0.7)
     ax.text((STEP_YD_L + STEP_YD_R) / 2, Y1_PL2 + 25,
             f"120mm CENTER", color="#C04010", fontsize=6, ha="center", va="bottom",
             fontweight="bold", **FONT, zorder=15, alpha=0.7)
-    ax.text((STEP_YD_R + PW) / 2, CORN_Y1_PL2 + 25,
+    ax.text((STEP_YD_R + PW) / 2, CORN_Y_IN + 25,
             f"40mm\nCORNER", color="#C04010", fontsize=6, ha="center", va="bottom",
             fontweight="bold", **FONT, zorder=15, alpha=0.7)
 
@@ -739,6 +756,15 @@ def sheet2():
             ha="center", va="top", fontsize=6, color="#C04010",
             fontweight="bold", **FONT, zorder=15)
 
+    # ── Material legend (rev11 wood/plastic differentiation) ──────────────────
+    draw_legend(ax, [
+        (C_PLASTIC, "4mm PP skin + B2 bay"),
+        (C_WOOD, "18mm ply — Fan B mount band"),
+        (C_ALUM, "3mm Al corner core"),
+        (C_STEEL, "steel RHS frame / wall"),
+        (C_GASKT, "20mm EPDM seal"),
+    ], X_LO + 20, (Y_LO + Y_HI) / 2 + 160, title="MATERIALS", fs=6, col_w=420)
+
     # ── Title block ────────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 5",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
@@ -765,9 +791,9 @@ def sheet2():
 def sheet3():
     # ── Key dimensions (re-use Sheet 2 depth constants) ──────────────────────
     WALL_T  = 40    # container end-wall steel thickness
-    PLY_T   = 18    # ply skin thickness each face
-    PT      = 120   # panel overall thickness
-    FRAME_T = PT - 2 * PLY_T   # = 84mm
+    PLY_T   = PANEL_SKIN_T   # rev11: 4mm PP skin each face (was 18mm ply); envelope kept via FRAME_T
+    PT      = 120   # panel overall thickness (envelope unchanged)
+    FRAME_T = PT - 2 * PLY_T   # = 112mm framed core
 
     # Depth positions (horizontal axis in this view)
     Y0_W   = 0           # exterior face of container wall
@@ -837,7 +863,7 @@ def sheet3():
 
     # ── Panel outer ply (depth 40→58) ────────────────────────────────────────
     ax.add_patch(plt.Rectangle((Y0_PL, H_FLOOR), PLY_T, H_BRG_TOP + 80,
-                                fc=C_ALUM, ec=C_OUT, lw=0.6, zorder=3))
+                                fc=C_PLASTIC, ec=C_OUT, lw=0.6, zorder=3))
 
     # ── Panel RHS frame (depth 58→142) ────────────────────────────────────────
     ax.add_patch(plt.Rectangle((Y0_FR, H_FLOOR), FRAME_T, H_BRG_TOP + 80,
@@ -845,7 +871,7 @@ def sheet3():
 
     # ── Panel inner ply (depth 142→160) ───────────────────────────────────────
     ax.add_patch(plt.Rectangle((Y0_PL2, H_FLOOR), PLY_T, H_BRG_TOP + 80,
-                                fc=C_ALUM, ec=C_OUT, lw=0.6, zorder=3))
+                                fc=C_PLASTIC, ec=C_OUT, lw=0.6, zorder=3))
 
     # ── Layer thickness leaders (top) ─────────────────────────────────────────
     LDR_TOP = H_BRG_TOP + 100    # leader origin height (above bearings)
@@ -857,7 +883,7 @@ def sheet3():
     # Outer ply
     leader(ax, ((Y0_PL + Y1_PL) / 2 - 5, LDR_TOP - 80),
            ((Y0_PL + Y1_PL) / 2 + 100, LDR_TOP_TGT + 10),
-           f"{PLY_T}mm\nPLY", col=C_DIM, fs=5.5)
+           f"{PLY_T}mm\nPP", col=C_DIM, fs=5.5)
     # RHS frame
     leader(ax, ((Y0_FR + Y1_FR) / 2, LDR_TOP - 50),
            ((Y0_FR + Y1_FR) / 2 + 120, LDR_TOP_TGT + 50),
@@ -865,7 +891,7 @@ def sheet3():
     # Inner ply
     leader(ax, ((Y0_PL2 + Y1_PL2) / 2 - 5, LDR_TOP - 60),
            ((Y0_PL2 + Y1_PL2) / 2 + 120, LDR_TOP_TGT + 10),
-           f"{PLY_T}mm\nPLY", col=C_DIM, fs=5.5)
+           f"{PLY_T}mm\nPP", col=C_DIM, fs=5.5)
 
     # ── Layer thickness leaders (bottom) ──────────────────────────────────────
     LDR_BOT = H_FLOOR + 60       # leader origin height (just above floor)
@@ -877,7 +903,7 @@ def sheet3():
     # Outer ply
     leader(ax, ((Y0_PL + Y1_PL) / 2 - 5, LDR_BOT + 20),
            ((Y0_PL + Y1_PL) / 2 + 100, LDR_BOT_TGT - 50),
-           f"{PLY_T}mm\nPLY", col=C_DIM, fs=5.5)
+           f"{PLY_T}mm\nPP", col=C_DIM, fs=5.5)
     # RHS frame
     leader(ax, ((Y0_FR + Y1_FR) / 2, LDR_BOT),
            ((Y0_FR + Y1_FR) / 2 + 120, LDR_BOT_TGT - 100),
@@ -885,7 +911,7 @@ def sheet3():
     # Inner ply
     leader(ax, ((Y0_PL2 + Y1_PL2) / 2 - 5, LDR_BOT + 20),
            ((Y0_PL2 + Y1_PL2) / 2 + 120, LDR_BOT_TGT - 50),
-           f"{PLY_T}mm\nPLY", col=C_DIM, fs=5.5)
+           f"{PLY_T}mm\nPP", col=C_DIM, fs=5.5)
 
     # ── Floor (ground plane) ──────────────────────────────────────────────────
     ax.add_patch(plt.Rectangle((X_LO, H_FLOOR - PAD_B), X_HI - X_LO, PAD_B,

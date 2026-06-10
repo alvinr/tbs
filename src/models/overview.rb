@@ -2885,6 +2885,17 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(2170.mm)
   mat = model.materials["Cargo Door Panel"] || model.materials.add("Cargo Door Panel")
+  mat.color = Sketchup::Color.new(110, 140, 160)
+  mat.alpha = 0.6
+  grp.material = mat
+
+  # Fan B mount band (18mm ply)
+  grp = ents.add_group
+  grp.name = "Fan B mount band (18mm ply)"
+  face = grp.entities.add_face([0.mm,0.mm,130.mm], [120.mm,0.mm,130.mm], [120.mm,653.mm,130.mm], [0.mm,653.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(995.mm)
+  mat = model.materials["Fan B mount band (18mm ply)"] || model.materials.add("Fan B mount band (18mm ply)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 0.6
   grp.material = mat
@@ -8175,7 +8186,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(2170.mm)
   mat = model.materials["Bay wall near (Yd)"] || model.materials.add("Bay wall near (Yd)")
-  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.color = Sketchup::Color.new(110, 140, 160)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8186,7 +8197,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(2170.mm)
   mat = model.materials["Bay wall near (Yd)"] || model.materials.add("Bay wall near (Yd)")
-  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.color = Sketchup::Color.new(110, 140, 160)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8197,7 +8208,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
   mat = model.materials["Bay wall near (Yd)"] || model.materials.add("Bay wall near (Yd)")
-  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.color = Sketchup::Color.new(110, 140, 160)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8208,7 +8219,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
   mat = model.materials["Bay wall near (Yd)"] || model.materials.add("Bay wall near (Yd)")
-  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.color = Sketchup::Color.new(110, 140, 160)
   mat.alpha = 1.0
   grp.material = mat
 

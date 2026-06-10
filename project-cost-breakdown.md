@@ -280,7 +280,7 @@ Personnel access during operation is via a **Ø900 fixed housing + single-openin
 | Plastic fabrication — roll 2 cylinders (housing + drum), hot-air / extrusion weld, cap/shaft + bearing fit (16–22 hrs) | $800 | $975 | $1,150 | Local plastic fab shop — get 2–3 quotes |
 | **Housing + drum total** | **$1,465** | **$1,802** | **$2,160** | |
 
-*Note: the hinged panel that the housing mounts into (50×50mm RHS frame, 18mm ply skins, EPDM perimeter gasket) is part of the interior conversion covered in Section 2. Still below the $2,500–$4,500 commercial darkroom-door range, and weatherproof + transport-rated.*
+*Note: the hinged panel that the housing mounts into (50×50mm RHS frame, 4mm PP plastic skins (18mm-ply Fan-B mount band), EPDM perimeter gasket) is part of the interior conversion covered in Section 2. Still below the $2,500–$4,500 commercial darkroom-door range, and weatherproof + transport-rated.*
 
 ---
 

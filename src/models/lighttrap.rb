@@ -965,7 +965,7 @@ ents = defn.entities
   face.reverse! if face.normal.z < 0
   face.pushpull(2170.mm)
   mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
-  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.color = Sketchup::Color.new(110, 140, 160)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -976,7 +976,7 @@ ents = defn.entities
   face.reverse! if face.normal.z < 0
   face.pushpull(2170.mm)
   mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
-  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.color = Sketchup::Color.new(110, 140, 160)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -987,7 +987,7 @@ ents = defn.entities
   face.reverse! if face.normal.z < 0
   face.pushpull(2170.mm)
   mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
-  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.color = Sketchup::Color.new(110, 140, 160)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -998,7 +998,7 @@ ents = defn.entities
   face.reverse! if face.normal.z < 0
   face.pushpull(2170.mm)
   mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
-  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.color = Sketchup::Color.new(110, 140, 160)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1009,7 +1009,7 @@ ents = defn.entities
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
-  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.color = Sketchup::Color.new(110, 140, 160)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1145,14 +1145,25 @@ ents = defn.entities
   mat.alpha = 1.0
   grp.material = mat
 
+  # Fan B mount band (18mm ply)
+  grp = ents.add_group
+  grp.name = "Fan B mount band (18mm ply)"
+  face = grp.entities.add_face([0.mm,180.mm,130.mm], [40.mm,180.mm,130.mm], [40.mm,653.mm,130.mm], [0.mm,653.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(995.mm)
+  mat = model.materials["Fan B mount band (18mm ply)"] || model.materials.add("Fan B mount band (18mm ply)")
+  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Panel near (swing, Yd180-653)
   grp = ents.add_group
   grp.name = "Panel near (swing, Yd180-653)"
-  face = grp.entities.add_face([0.mm,180.mm,130.mm], [40.mm,180.mm,130.mm], [40.mm,653.mm,130.mm], [0.mm,653.mm,130.mm])
+  face = grp.entities.add_face([0.mm,180.mm,1125.mm], [40.mm,180.mm,1125.mm], [40.mm,653.mm,1125.mm], [0.mm,653.mm,1125.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2170.mm)
+  face.pushpull(1175.mm)
   mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
-  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.color = Sketchup::Color.new(110, 140, 160)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1185,7 +1196,7 @@ ents = defn.entities
   face.reverse! if face.normal.z < 0
   face.pushpull(2170.mm)
   mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
-  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.color = Sketchup::Color.new(110, 140, 160)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1207,7 +1218,7 @@ ents = defn.entities
   face.reverse! if face.normal.z < 0
   face.pushpull(2170.mm)
   mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
-  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.color = Sketchup::Color.new(110, 140, 160)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1218,7 +1229,7 @@ ents = defn.entities
   face.reverse! if face.normal.z < 0
   face.pushpull(2170.mm)
   mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
-  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.color = Sketchup::Color.new(110, 140, 160)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1229,7 +1240,7 @@ ents = defn.entities
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
   mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
-  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.color = Sketchup::Color.new(110, 140, 160)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1240,7 +1251,7 @@ ents = defn.entities
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
   mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
-  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.color = Sketchup::Color.new(110, 140, 160)
   mat.alpha = 1.0
   grp.material = mat
 

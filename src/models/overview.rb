@@ -12846,6 +12846,13 @@ anc = Geom::Point3d.new(4029.mm, 450.mm, 1075.mm)
 txt = entities.add_text("CHEMISTRY SHELF", anc, Geom::Vector3d.new(-200.mm, -850.mm, 700.mm))
 txt.layer = model.layers["Labels"] rescue nil
 
+# ── In-model © + license credit (default layer → shown in every scene) ──
+lbb = model.bounds
+lanc = Geom::Point3d.new(lbb.min.x, lbb.min.y - 400.mm, lbb.min.z)
+entities.add_text("© 2026 Alvin Richards
+Licensed under GNU AGPLv3
+alvinr.github.io/tbs", lanc)
+
 model.definitions.purge_unused
 model.materials.purge_unused
 

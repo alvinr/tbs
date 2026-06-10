@@ -465,6 +465,8 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 # ── "Labeled" scene callouts (Labels tag — shown only in the "Labeled" scene) ──
 {spraybar_labels()}
 
+{ov.license_note()}
+
 model.definitions.purge_unused
 model.materials.purge_unused
 

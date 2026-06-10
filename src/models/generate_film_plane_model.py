@@ -262,6 +262,8 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 # ── Corner-detail callouts (Labels tag — shown only in the corner-detail scene) ──
 {labels}
 
+{ov.license_note()}
+
 model.definitions.purge_unused
 model.materials.purge_unused
 keep_tags = {keep}; dl = model.layers[0]

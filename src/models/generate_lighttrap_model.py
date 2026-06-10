@@ -800,6 +800,8 @@ far_inst.set_attribute(dda, "_rotz_formula", "-180*(1-CargoDoors!shut)")
 # ── "Labeled" scene callouts (Labels tag — shown only in the "Labeled" scene) ──
 {lighttrap_labels()}
 
+{ov.license_note()}
+
 model.definitions.purge_unused
 model.materials.purge_unused
 

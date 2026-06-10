@@ -484,6 +484,8 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 # ── "Labeled" scene callouts (Labels tag — shown only in the "Labeled" scene) ──
 {walkway_labels()}
 
+{ov.license_note()}
+
 # ── Type callouts for the "Cantilevers" scene (on the Cantilever Types tag) ──
 {cantilever_type_labels()}
 

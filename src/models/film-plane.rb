@@ -610,6 +610,13 @@ t=entities.add_text("Z cross-slide = TILT float (green)", Geom::Point3d.new(4666
 t=entities.add_text("Rod-end -> rigid frame corner", Geom::Point3d.new(4666.979444694831.mm,1410.0520922298629.mm,2223.531411620136.mm), Geom::Vector3d.new(17.0,0,5.0)); t.layer=model.layers["Labels"] rescue nil
 t=entities.add_text("ghost = corner if it stayed on rail", Geom::Point3d.new(4649.mm,1410.0520922298629.mm,2288.mm), Geom::Vector3d.new(-17.0,0,13.0)); t.layer=model.layers["Labels"] rescue nil
 
+# ── In-model © + license credit (default layer → shown in every scene) ──
+lbb = model.bounds
+lanc = Geom::Point3d.new(lbb.min.x, lbb.min.y - 400.mm, lbb.min.z)
+entities.add_text("© 2026 Alvin Richards
+Licensed under GNU AGPLv3
+alvinr.github.io/tbs", lanc)
+
 model.definitions.purge_unused
 model.materials.purge_unused
 keep_tags = ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Corner Detail", "Labels"]; dl = model.layers[0]

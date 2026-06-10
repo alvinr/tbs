@@ -30,7 +30,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov
 
 TAGS = ["Context", "Film Plane", "Corner Mechanism", "Processing Tray",
-        "Corner Detail", "Labels"]
+        "Walkways", "Corner Detail", "Labels"]
 
 # ── Geometry of the fixed-size rigid plane ───────────────────────────────────
 TILT_DEG = 20.0
@@ -243,6 +243,7 @@ def generate_ruby():
         ov.component("Processing Tray", "Processing Tray", ov.processing_tray()),
         ov.component("Corner Mechanism", "Corner Mechanism",
                      static_rails() + "\n" + brace_cage()),
+        ov.component("Walkways", "Walkways", ov.walkways()),
         ov.component("Corner Detail (TR)", "Corner Detail", detail),
     ]
     body = '\n'.join(comps)
@@ -251,8 +252,8 @@ def generate_ruby():
     keep = '[' + ', '.join(f'"{t}"' for t in TAGS) + ']'
 
     # scenes: name, visible tags, target point (mm) or None, standoff(inches) or 0=extents
-    main = ["Context", "Film Plane", "Corner Mechanism", "Processing Tray"]
-    noghost = ["Film Plane", "Corner Mechanism", "Processing Tray"]
+    main = ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways"]
+    noghost = ["Film Plane", "Corner Mechanism", "Processing Tray", "Walkways"]
     scenes = [("Combined", main, None, 0),
               ("No Container", noghost, None, 0),
               ("Corner detail (TR)", ["Corner Detail", "Labels"], tr_world, 95)]

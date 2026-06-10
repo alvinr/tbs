@@ -342,6 +342,358 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # FP wall-tie strut X600 Z150
+  grp = ents.add_group
+  grp.name = "FP wall-tie strut X600 Z150"
+  face = grp.entities.add_face([578.mm,0.mm,150.mm], [622.mm,0.mm,150.mm], [622.mm,100.mm,150.mm], [578.mm,100.mm,150.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall plate X600 Z150
+  grp = ents.add_group
+  grp.name = "FP wall plate X600 Z150"
+  face = grp.entities.add_face([550.mm,0.mm,130.mm], [650.mm,0.mm,130.mm], [650.mm,8.mm,130.mm], [550.mm,8.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(90.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall-tie strut X600 Z2238
+  grp = ents.add_group
+  grp.name = "FP wall-tie strut X600 Z2238"
+  face = grp.entities.add_face([578.mm,0.mm,2238.mm], [622.mm,0.mm,2238.mm], [622.mm,100.mm,2238.mm], [578.mm,100.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall plate X600 Z2238
+  grp = ents.add_group
+  grp.name = "FP wall plate X600 Z2238"
+  face = grp.entities.add_face([550.mm,0.mm,2218.mm], [650.mm,0.mm,2218.mm], [650.mm,8.mm,2218.mm], [550.mm,8.mm,2218.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(90.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall-tie strut X1300 Z150
+  grp = ents.add_group
+  grp.name = "FP wall-tie strut X1300 Z150"
+  face = grp.entities.add_face([1278.mm,0.mm,150.mm], [1322.mm,0.mm,150.mm], [1322.mm,100.mm,150.mm], [1278.mm,100.mm,150.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall plate X1300 Z150
+  grp = ents.add_group
+  grp.name = "FP wall plate X1300 Z150"
+  face = grp.entities.add_face([1250.mm,0.mm,130.mm], [1350.mm,0.mm,130.mm], [1350.mm,8.mm,130.mm], [1250.mm,8.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(90.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall-tie strut X1300 Z2238
+  grp = ents.add_group
+  grp.name = "FP wall-tie strut X1300 Z2238"
+  face = grp.entities.add_face([1278.mm,0.mm,2238.mm], [1322.mm,0.mm,2238.mm], [1322.mm,100.mm,2238.mm], [1278.mm,100.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall plate X1300 Z2238
+  grp = ents.add_group
+  grp.name = "FP wall plate X1300 Z2238"
+  face = grp.entities.add_face([1250.mm,0.mm,2218.mm], [1350.mm,0.mm,2218.mm], [1350.mm,8.mm,2218.mm], [1250.mm,8.mm,2218.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(90.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall-tie strut X3100 Z150
+  grp = ents.add_group
+  grp.name = "FP wall-tie strut X3100 Z150"
+  face = grp.entities.add_face([3078.mm,0.mm,150.mm], [3122.mm,0.mm,150.mm], [3122.mm,100.mm,150.mm], [3078.mm,100.mm,150.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall plate X3100 Z150
+  grp = ents.add_group
+  grp.name = "FP wall plate X3100 Z150"
+  face = grp.entities.add_face([3050.mm,0.mm,130.mm], [3150.mm,0.mm,130.mm], [3150.mm,8.mm,130.mm], [3050.mm,8.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(90.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall-tie strut X3100 Z2238
+  grp = ents.add_group
+  grp.name = "FP wall-tie strut X3100 Z2238"
+  face = grp.entities.add_face([3078.mm,0.mm,2238.mm], [3122.mm,0.mm,2238.mm], [3122.mm,100.mm,2238.mm], [3078.mm,100.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall plate X3100 Z2238
+  grp = ents.add_group
+  grp.name = "FP wall plate X3100 Z2238"
+  face = grp.entities.add_face([3050.mm,0.mm,2218.mm], [3150.mm,0.mm,2218.mm], [3150.mm,8.mm,2218.mm], [3050.mm,8.mm,2218.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(90.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall-tie strut X4200 Z150
+  grp = ents.add_group
+  grp.name = "FP wall-tie strut X4200 Z150"
+  face = grp.entities.add_face([4178.mm,0.mm,150.mm], [4222.mm,0.mm,150.mm], [4222.mm,100.mm,150.mm], [4178.mm,100.mm,150.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall plate X4200 Z150
+  grp = ents.add_group
+  grp.name = "FP wall plate X4200 Z150"
+  face = grp.entities.add_face([4150.mm,0.mm,130.mm], [4250.mm,0.mm,130.mm], [4250.mm,8.mm,130.mm], [4150.mm,8.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(90.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall-tie strut X4200 Z2238
+  grp = ents.add_group
+  grp.name = "FP wall-tie strut X4200 Z2238"
+  face = grp.entities.add_face([4178.mm,0.mm,2238.mm], [4222.mm,0.mm,2238.mm], [4222.mm,100.mm,2238.mm], [4178.mm,100.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall plate X4200 Z2238
+  grp = ents.add_group
+  grp.name = "FP wall plate X4200 Z2238"
+  face = grp.entities.add_face([4150.mm,0.mm,2218.mm], [4250.mm,0.mm,2218.mm], [4250.mm,8.mm,2218.mm], [4150.mm,8.mm,2218.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(90.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall-tie strut X600 Z150
+  grp = ents.add_group
+  grp.name = "FP wall-tie strut X600 Z150"
+  face = grp.entities.add_face([578.mm,2262.mm,150.mm], [622.mm,2262.mm,150.mm], [622.mm,2362.mm,150.mm], [578.mm,2362.mm,150.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall plate X600 Z150
+  grp = ents.add_group
+  grp.name = "FP wall plate X600 Z150"
+  face = grp.entities.add_face([550.mm,2354.mm,130.mm], [650.mm,2354.mm,130.mm], [650.mm,2362.mm,130.mm], [550.mm,2362.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(90.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall-tie strut X600 Z2238
+  grp = ents.add_group
+  grp.name = "FP wall-tie strut X600 Z2238"
+  face = grp.entities.add_face([578.mm,2262.mm,2238.mm], [622.mm,2262.mm,2238.mm], [622.mm,2362.mm,2238.mm], [578.mm,2362.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall plate X600 Z2238
+  grp = ents.add_group
+  grp.name = "FP wall plate X600 Z2238"
+  face = grp.entities.add_face([550.mm,2354.mm,2218.mm], [650.mm,2354.mm,2218.mm], [650.mm,2362.mm,2218.mm], [550.mm,2362.mm,2218.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(90.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall-tie strut X1700 Z150
+  grp = ents.add_group
+  grp.name = "FP wall-tie strut X1700 Z150"
+  face = grp.entities.add_face([1678.mm,2262.mm,150.mm], [1722.mm,2262.mm,150.mm], [1722.mm,2362.mm,150.mm], [1678.mm,2362.mm,150.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall plate X1700 Z150
+  grp = ents.add_group
+  grp.name = "FP wall plate X1700 Z150"
+  face = grp.entities.add_face([1650.mm,2354.mm,130.mm], [1750.mm,2354.mm,130.mm], [1750.mm,2362.mm,130.mm], [1650.mm,2362.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(90.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall-tie strut X1700 Z2238
+  grp = ents.add_group
+  grp.name = "FP wall-tie strut X1700 Z2238"
+  face = grp.entities.add_face([1678.mm,2262.mm,2238.mm], [1722.mm,2262.mm,2238.mm], [1722.mm,2362.mm,2238.mm], [1678.mm,2362.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall plate X1700 Z2238
+  grp = ents.add_group
+  grp.name = "FP wall plate X1700 Z2238"
+  face = grp.entities.add_face([1650.mm,2354.mm,2218.mm], [1750.mm,2354.mm,2218.mm], [1750.mm,2362.mm,2218.mm], [1650.mm,2362.mm,2218.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(90.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall-tie strut X2800 Z150
+  grp = ents.add_group
+  grp.name = "FP wall-tie strut X2800 Z150"
+  face = grp.entities.add_face([2778.mm,2262.mm,150.mm], [2822.mm,2262.mm,150.mm], [2822.mm,2362.mm,150.mm], [2778.mm,2362.mm,150.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall plate X2800 Z150
+  grp = ents.add_group
+  grp.name = "FP wall plate X2800 Z150"
+  face = grp.entities.add_face([2750.mm,2354.mm,130.mm], [2850.mm,2354.mm,130.mm], [2850.mm,2362.mm,130.mm], [2750.mm,2362.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(90.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall-tie strut X2800 Z2238
+  grp = ents.add_group
+  grp.name = "FP wall-tie strut X2800 Z2238"
+  face = grp.entities.add_face([2778.mm,2262.mm,2238.mm], [2822.mm,2262.mm,2238.mm], [2822.mm,2362.mm,2238.mm], [2778.mm,2362.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall plate X2800 Z2238
+  grp = ents.add_group
+  grp.name = "FP wall plate X2800 Z2238"
+  face = grp.entities.add_face([2750.mm,2354.mm,2218.mm], [2850.mm,2354.mm,2218.mm], [2850.mm,2362.mm,2218.mm], [2750.mm,2362.mm,2218.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(90.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall-tie strut X4200 Z150
+  grp = ents.add_group
+  grp.name = "FP wall-tie strut X4200 Z150"
+  face = grp.entities.add_face([4178.mm,2262.mm,150.mm], [4222.mm,2262.mm,150.mm], [4222.mm,2362.mm,150.mm], [4178.mm,2362.mm,150.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall plate X4200 Z150
+  grp = ents.add_group
+  grp.name = "FP wall plate X4200 Z150"
+  face = grp.entities.add_face([4150.mm,2354.mm,130.mm], [4250.mm,2354.mm,130.mm], [4250.mm,2362.mm,130.mm], [4150.mm,2362.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(90.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall-tie strut X4200 Z2238
+  grp = ents.add_group
+  grp.name = "FP wall-tie strut X4200 Z2238"
+  face = grp.entities.add_face([4178.mm,2262.mm,2238.mm], [4222.mm,2262.mm,2238.mm], [4222.mm,2362.mm,2238.mm], [4178.mm,2362.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP wall plate X4200 Z2238
+  grp = ents.add_group
+  grp.name = "FP wall plate X4200 Z2238"
+  face = grp.entities.add_face([4150.mm,2354.mm,2218.mm], [4250.mm,2354.mm,2218.mm], [4250.mm,2362.mm,2218.mm], [4150.mm,2362.mm,2218.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(90.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Corner Mechanism"
   inst.layer = model.layers["Corner Mechanism"]

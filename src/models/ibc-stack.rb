@@ -22,6 +22,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("IBC Tanks") unless model.layers["IBC Tanks"]
   model.layers.add("IBC Frame") unless model.layers["IBC Frame"]
   model.layers.add("Plumbing & Panel") unless model.layers["Plumbing & Panel"]
+  model.layers.add("Walkway Cantilever") unless model.layers["Walkway Cantilever"]
   model.layers.add("Labels") unless model.layers["Labels"]
 
 # ── Subsystems (each a component on its tag) ──
@@ -2413,6 +2414,175 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.name = "Water/Waste Hookups"
   inst.layer = model.layers["Plumbing & Panel"]
 
+  # ═══ Walkway Cantilever Arms ═══
+  defn = model.definitions.add("Walkway Cantilever Arms")
+  ents = defn.entities
+  # RWk center cantilever Yd1046 lower
+  grp = ents.add_group
+  grp.name = "RWk center cantilever Yd1046 lower"
+  face = grp.entities.add_face([4329.mm,1046.mm,70.mm], [4734.mm,1046.mm,70.mm], [4734.mm,1086.mm,70.mm], [4329.mm,1086.mm,70.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(25.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk center cantilever Yd1046 upper
+  grp = ents.add_group
+  grp.name = "RWk center cantilever Yd1046 upper"
+  face = grp.entities.add_face([4369.mm,1046.mm,95.mm], [4589.mm,1046.mm,95.mm], [4589.mm,1086.mm,95.mm], [4369.mm,1086.mm,95.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(20.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk center cantilever Yd1046 upper
+  grp = ents.add_group
+  grp.name = "RWk center cantilever Yd1046 upper"
+  face = grp.entities.add_face([4629.mm,1046.mm,95.mm], [4734.mm,1046.mm,95.mm], [4734.mm,1086.mm,95.mm], [4629.mm,1086.mm,95.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(20.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk upright clamp Yd1046 Y1038
+  grp = ents.add_group
+  grp.name = "RWk upright clamp Yd1046 Y1038"
+  face = grp.entities.add_face([4730.mm,1038.mm,45.mm], [4788.mm,1038.mm,45.mm], [4788.mm,1046.mm,45.mm], [4730.mm,1046.mm,45.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk upright clamp Yd1046 Y1086
+  grp = ents.add_group
+  grp.name = "RWk upright clamp Yd1046 Y1086"
+  face = grp.entities.add_face([4730.mm,1086.mm,45.mm], [4788.mm,1086.mm,45.mm], [4788.mm,1094.mm,45.mm], [4730.mm,1094.mm,45.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk upright bolt M12 Yd1046 Z76
+  grp = ents.add_group
+  grp.name = "RWk upright bolt M12 Yd1046 Z76"
+  ge = grp.entities
+  circle = ge.add_circle([4759.mm,1034.mm,76.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(64.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk upright bolt M12 Yd1046 Z133
+  grp = ents.add_group
+  grp.name = "RWk upright bolt M12 Yd1046 Z133"
+  ge = grp.entities
+  circle = ge.add_circle([4759.mm,1034.mm,133.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(64.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk center cantilever Yd1266 lower
+  grp = ents.add_group
+  grp.name = "RWk center cantilever Yd1266 lower"
+  face = grp.entities.add_face([4329.mm,1266.mm,70.mm], [4734.mm,1266.mm,70.mm], [4734.mm,1306.mm,70.mm], [4329.mm,1306.mm,70.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(25.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk center cantilever Yd1266 upper
+  grp = ents.add_group
+  grp.name = "RWk center cantilever Yd1266 upper"
+  face = grp.entities.add_face([4369.mm,1266.mm,95.mm], [4589.mm,1266.mm,95.mm], [4589.mm,1306.mm,95.mm], [4369.mm,1306.mm,95.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(20.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk center cantilever Yd1266 upper
+  grp = ents.add_group
+  grp.name = "RWk center cantilever Yd1266 upper"
+  face = grp.entities.add_face([4629.mm,1266.mm,95.mm], [4734.mm,1266.mm,95.mm], [4734.mm,1306.mm,95.mm], [4629.mm,1306.mm,95.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(20.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk upright clamp Yd1266 Y1258
+  grp = ents.add_group
+  grp.name = "RWk upright clamp Yd1266 Y1258"
+  face = grp.entities.add_face([4730.mm,1258.mm,45.mm], [4788.mm,1258.mm,45.mm], [4788.mm,1266.mm,45.mm], [4730.mm,1266.mm,45.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk upright clamp Yd1266 Y1306
+  grp = ents.add_group
+  grp.name = "RWk upright clamp Yd1266 Y1306"
+  face = grp.entities.add_face([4730.mm,1306.mm,45.mm], [4788.mm,1306.mm,45.mm], [4788.mm,1314.mm,45.mm], [4730.mm,1314.mm,45.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk upright bolt M12 Yd1266 Z76
+  grp = ents.add_group
+  grp.name = "RWk upright bolt M12 Yd1266 Z76"
+  ge = grp.entities
+  circle = ge.add_circle([4759.mm,1254.mm,76.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(64.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk upright bolt M12 Yd1266 Z133
+  grp = ents.add_group
+  grp.name = "RWk upright bolt M12 Yd1266 Z133"
+  ge = grp.entities
+  circle = ge.add_circle([4759.mm,1254.mm,133.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(64.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Walkway Cantilever Arms"
+  inst.layer = model.layers["Walkway Cantilever"]
+
 
 # ── In-model labels (on the 'Labels' tag; visible only in the "Labeled" scene) ──
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "IBC Frame" }
@@ -2421,6 +2591,16 @@ if inst
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
   txt = entities.add_text("IBC FRAME
 (50x50 RHS rack)", anc, Geom::Vector3d.new(-250.mm, 750.mm, 650.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Walkway Cantilever Arms" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("RIGHT-WALKWAY
+CANTILEVER ARMS
+(off the IBC corridor
+uprights — rev12)", anc, Geom::Vector3d.new(-350.mm, -900.mm, 700.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 anc = Geom::Point3d.new(5284.mm, 538.mm, 579.mm)
@@ -2493,7 +2673,7 @@ model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier versions ──
-keep_tags = ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel", "Labels"]
+keep_tags = ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel", "Walkway Cantilever", "Labels"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -2510,7 +2690,7 @@ eye = ctr.offset(dir, bb.diagonal * 1.5)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
-[["IBC Tanks", ["IBC Tanks"]], ["IBC Frame", ["IBC Frame"]], ["Plumbing & Panel", ["Plumbing & Panel"]], ["Combined", ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel"]], ["Labeled", ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel", "Labels"]]].each { |name, tags|
+[["IBC Tanks", ["IBC Tanks"]], ["IBC Frame", ["IBC Frame"]], ["Plumbing & Panel", ["Plumbing & Panel"]], ["Walkway Cantilever", ["IBC Frame", "Walkway Cantilever"]], ["Combined", ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel", "Walkway Cantilever"]], ["Labeled", ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel", "Walkway Cantilever", "Labels"]]].each { |name, tags|
   model.layers.each { |l| l.visible = (l == default_layer || l.name == "Context" || tags.include?(l.name)) }
   page = model.pages.add(name)
   page.use_camera = true

@@ -26,6 +26,12 @@ Frame concept (rev 10 — simple-span retrofit):
   panel top (Z=2260) and close into a rectangle (top rail + floor-level beam)
   that the equipment panel butts and bolts to.  No X-end posts — IBCs are
   loaded from above.
+
+  rev 12: the right walkway's 2 support arms cantilever off the corridor uprights
+  (at Yd 1046/1266) and project off the FRONT of the frame toward the walkway —
+  drawn here (Sheets 2 + 3) as the walkway-support brackets that attach to this
+  frame.  Geometry single-sourced with the 3D models via the RWK_* constants
+  (ibc_cantilever_arms() in generate_sketchup_model.py).
 """
 
 import os
@@ -47,6 +53,8 @@ from tbs_constants import (
     IBC_WBKT_PLATE_W, IBC_WBKT_PLATE_T, IBC_WBKT_SEAT_PROJ,
     IBC_WBKT_SEAT_T, IBC_WBKT_GUSSET_H, IBC_WBKT_BOLT_D, IBC_WBKT_BOLT_N,
     PANEL_FRAME_TOP_Z,
+    WALKWAY_RIGHT_X, WALKWAY_H, WALKWAY_GRATE_T,
+    CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS,
     DIAGRAMS_DIR,
 )
 from tbs_title_block import title_block
@@ -114,6 +122,19 @@ BRACKET_GUSSET_H = IBC_WBKT_GUSSET_H  # gusset web depth (200mm)
 BRACKET_PLATE_W  = IBC_WBKT_PLATE_W   # back-plate width along X (150mm)
 BRACKET_BOLT_D = IBC_WBKT_BOLT_D      # M12 wall anchor bolts
 BRACKET_BOLT_N = IBC_WBKT_BOLT_N      # 4 per bracket
+
+# ── Right-walkway cantilever arm (rev12) ──────────────────────────────────────
+# The right walkway is carried by 2 arms that cantilever off the corridor uprights
+# (at Yd = POST_NEAR_YD / POST_FAR_YD) and reach inward to the walkway long beams.
+# Drawn here as the walkway-support brackets that ATTACH TO this frame.
+FRAME_X0_GLOBAL = IBC_COL_X - 65          # frame-local X=0 maps to this global X (4609)
+ARM_X_UP_L  = (IBC_COL_X + 60) - FRAME_X0_GLOBAL   # arm root at the upright (frame-local X ≈ 125)
+ARM_X_TIP_L = WALKWAY_RIGHT_X - FRAME_X0_GLOBAL    # arm tip reaches the walkway left beam (≈ -280)
+ARM_Z0      = 70                                   # arm bottom Z
+ARM_Z1      = WALKWAY_H - WALKWAY_GRATE_T           # arm top Z (= grate bottom, 115)
+ARM_W       = 40                                   # 40×40×3 SHS
+ARM_YDS     = (CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR - IBC_FRAME_RHS)  # 1046, 1266 (= POST_NEAR/FAR_YD)
+C_ARM       = "#9098A0"                            # walkway-steel (distinct from frame)
 
 # Floor flange foot (under each corridor upright)
 FOOT_PLATE   = IBC_FOOT_PLATE     # 150mm square
@@ -882,6 +903,23 @@ def sheet2():
         for bz in [FRAME_RHS, PLATFORM_Z + FRAME_RHS]:
             _weld_tick(ax, fx + FRAME_RHS + 3, bz, sx, sy, side='right')
 
+    # ── Right-walkway cantilever arm (rev12) — attaches to the front corridor
+    # upright and projects off the front of the frame toward the walkway.  In side
+    # elevation (along Yd) the 2 arms (Yd 1046/1266) overlap into one bar. ──
+    _rhs_rect(ax, ARM_X_TIP_L, ARM_Z0, FRAME_RHS - ARM_X_TIP_L, ARM_Z1 - ARM_Z0,
+              sx, sy, fc=C_ARM, alpha=0.9, zo=7)
+    # upright clamp wrapping the front corridor upright + 2 M12 bolts
+    _rhs_rect(ax, FX_FRONT - 4, ARM_Z0 - 25, FRAME_RHS + 8, (ARM_Z1 - ARM_Z0) + 55,
+              sx, sy, fc=C_ARM, alpha=0.45, zo=6)
+    for bz in (ARM_Z0 + 6, ARM_Z1 + 14):
+        ax.add_patch(Circle((sx(FX_FRONT + FRAME_RHS / 2), sy(bz)), sx(6),
+                            fc=C_OUT, ec=C_OUT, lw=0.5, zorder=9))
+    leader(ax, sx(ARM_X_TIP_L + 40), sy(ARM_Z1),
+           sx(ARM_X_TIP_L), sy(ARM_Z1 + 360),
+           "RIGHT-WALKWAY CANTILEVER ARM (×2)\n40×40×3 SHS off the corridor uprights\n"
+           "(Yd 1046/1266) — carries the right walkway",
+           color=C_ARM, fs=5.5, ha="left", va="bottom", arrow_style="-|>", font=FONT)
+
     # ── Dimensions ──────────────────────────────────────────────────────────
     # Overall depth
     draw_dim_h(ax, sx(FX_FRONT), sx(FX_BACK + FRAME_RHS), sy(-60),
@@ -937,6 +975,7 @@ def sheet2():
         "6. Behind: second corridor upright row (identical) at 270mm offset toward far wall.",
         "7. Each upright base: 150×150×12mm floor flange plate, 4× M12 anchors into container floor.",
         f"8. Panel support frame: mid-bay corridor uprights extend to Z={PANEL_FRAME_TOP_Z}mm + top rail + floor-level beam (rectangle). Wet-end equipment panel butts the film-plane face and bolts to it.",
+        f"9. RIGHT-WALKWAY CANTILEVER ARMS (rev12): 2× 40×40×3 SHS clamp to the corridor uprights (Yd 1046/1266) and project off the front (Z{ARM_Z0}-{ARM_Z1}) to carry the right walkway.",
     ]
     draw_notes(ax, notes, sx(X_LO + 50), sy(Z_LO + 300), spacing=sy(23),
                fs=7, font=FONT, width=sx(1150))
@@ -1071,6 +1110,18 @@ def sheet3():
             f"CORRIDOR OPENING\n{CORRIDOR_W - 2 * FRAME_RHS}mm CLEAR",
             ha="center", va="center", fontsize=6, color=C_CL,
             fontweight="bold", **FONT, zorder=10)
+
+    # ── Right-walkway cantilever arms (rev12) — off the corridor uprights ──────
+    # Each arm cantilevers off a corridor upright (Yd 1046/1266) toward -X (off the
+    # front of the frame) to carry the right walkway's left long beam.
+    for post_yd in [POST_NEAR_YD, POST_FAR_YD]:
+        _rhs_rect(ax, ARM_X_TIP_L, post_yd, (FX_FRONT + FRAME_RHS) - ARM_X_TIP_L, ARM_W,
+                  px, py, fc=C_ARM, alpha=0.9, zo=7)
+    leader(ax, px(ARM_X_TIP_L + 60), py(POST_NEAR_YD + ARM_W / 2),
+           px(ARM_X_TIP_L), py(POST_NEAR_YD - 320),
+           "RIGHT-WALKWAY CANTILEVER ARMS (×2)\n40×40×3 SHS off the corridor uprights\n"
+           "(Yd 1046/1266) → right walkway (off-frame, −X)",
+           color=C_ARM, fs=5.5, ha="left", va="top", arrow_style="-|>", font=FONT)
 
     # ── Panel support frame (mid bay): top rail + floor beam span the corridor
     # at the middle station — projected (above/below the platform cut). ──
@@ -1260,6 +1311,8 @@ def sheet3():
         f"tubes ({IBC_CAGE_TUBE_D}mm Ø, gray circles).",
         "8. Pallet runners (2 per IBC) shown as brown lines — orient perpendicular to fork",
         "access direction.",
+        "9. RIGHT-WALKWAY CANTILEVER ARMS (rev12): 2× 40×40×3 SHS off the corridor uprights",
+        "(Yd 1046/1266), projecting off the front (−X) to carry the right walkway.",
     ]
     draw_notes(ax, notes, px(X_HI * 0.32), py(YD_LO + 510), spacing=py(20),
                fs=7, font=FONT, width=px(1040))

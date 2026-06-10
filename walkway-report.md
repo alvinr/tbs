@@ -341,7 +341,7 @@ backing plate remain on the wall. No tools beyond a wrench for the 3 bolts.
 
 | Parameter | Value |
 |-----------|-------|
-| Panel transport motion | SWING ~56° about the Ø89 pivot (rev10 — supersedes the 880mm slide) |
+| Panel transport motion | SWING ~56° about the Ø89 pivot (rev10 — supersedes the linear slide) |
 | Swing sweep reach (near-walkway zone) | X≈1395mm |
 | Butt joint / edge beam / near-far walkway start | X=470mm |
 | Panel / cage bottom edge | Z=130mm (grate-top level) |

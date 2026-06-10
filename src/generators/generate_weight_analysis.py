@@ -54,6 +54,7 @@ from tbs_constants import (
     PIVOT_X, PIVOT_YD, SWING_LOCK_DEG,
     DRUM_D, DRUM_R, DRUM_H_LT,
     LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG,
+    BAY_FRONT_X, BAY_BACK_X, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R,
     FAN_DIAM, FAN_A_YD, FAN_B_YD,
     C_OUT, C_DIM, C_STEEL, C_ALUM,
     C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC,
@@ -152,8 +153,10 @@ def _panel_weight():
     alum_vol_corner = (corner_w_near + corner_w_far) * panel_h * 3e-9  # 3mm Al
     corner_ply_kg = ply_vol_corner * RHO_PLY
     corner_plate_kg = alum_vol_corner * RHO_ALUM
-    # Center zone: steel RHS frame perimeter + cross members
-    rhs_kg_per_m = 4 * (50 * 3 - 4 * 3 * 3) * 1e-6 * RHO_STEEL
+    # Center zone: steel RHS frame perimeter + cross members.
+    # 50×50×3 SHS section area = 50² − 44² = 564 mm² → 4.43 kg/m (EN 10219
+    # table 4.35; first-principles used here). [was an approx 456 mm²/3.58 kg/m]
+    rhs_kg_per_m = (50**2 - 44**2) * 1e-6 * RHO_STEEL
     cw = PANEL_CENTER_W / 1000.0                   # = 1.056 m
     center_frame_length = 2 * (cw + 2.388) + 4 * cw
     frame_kg = center_frame_length * rhs_kg_per_m
@@ -288,6 +291,19 @@ def _processing_tray_water_kg():
     return vol_m3 * RHO_WATER  # ≈ 59 kg
 
 
+def _bay_weight():
+    """B2 punch-out bay carried on the swinging leaf: a 6mm marine-ply 4-wall
+    tube (2 sides + top + bottom) plus the exterior front face (Ø900 housing
+    opening deducted), enclosing the offset light-trap housing. First-principles
+    from the bay/cage footprint constants — supersedes the old 12 kg placeholder."""
+    depth = (BAY_BACK_X - BAY_FRONT_X) / 1000.0          # ≈ 0.890 m (X protrusion)
+    width = (DRUM_CAGE_YD_R - DRUM_CAGE_YD_L) / 1000.0   # ≈ 0.962 m (Yd)
+    height = (DRUM_H_LT - PANEL_FLOOR_GAP) / 1000.0      # ≈ 2.12 m
+    aperture = np.pi * (LT_HOUSING_R / 1000.0) ** 2      # Ø900 opening in front face
+    area = 2 * (depth * height) + 2 * (depth * width) + max(width * height - aperture, 0)
+    return area * 0.006 * RHO_PLY                        # 6mm ply → ≈ 25 kg
+
+
 def _swing_hardware_weight():
     """rev10 rotation transport hardware — replaces the retired HGR20 ceiling-rail
     slide (the pivot reuses the film far-left Ø89 upright, so no new post). Estimate;
@@ -333,10 +349,12 @@ def build_components():
     # welded into the panel center zone, so its mass is carried by the panel;
     # only the C-shell drum rotates.
     drum_kg, housing_kg = _lighttrap_weight()
-    # rev 9 / B2 panel hardware carried on the swinging leaf: the punch-out bay
-    # (6mm ply 4-wall tube, ~890mm deep), the 3 heavy-duty barrel hinges + steel
-    # hinge post, and the retractable swing-support caster.
-    b2_hardware_kg = 12.0 + 9.0 + 8.0 + 3.0   # bay + hinges + post + caster ≈ 32 kg
+    # rev 10: the only B2 hardware still carried on the swinging leaf is the
+    # punch-out bay (first-principles below). The barrel hinges (9 kg), steel
+    # hinge post (8 kg) and retractable swing caster (3 kg) were RETIRED with the
+    # slide — the leaf now rotates on the Ø89 pivot post + bearings + wall stays,
+    # which are accounted in _swing_hardware_weight(), not here. [was 12+9+8+3=32]
+    b2_hardware_kg = _bay_weight()            # ≈ 25 kg (bay only)
     panel_kg = _panel_weight() + housing_kg + b2_hardware_kg
 
     near_far_wk = _walkway_near_far_weight()
@@ -382,7 +400,7 @@ def build_components():
                   *swing_bbox(0, 80, 0, C_WID), 0, C_HGT,
                   color=C_HINGE_PANEL,
                   states=("dry", "exhausted", "loaded_transport"),
-                  calc_note="Sandwich: ply + 3mm-Al corners, steel RHS center + 5mm-HDPE Ø900 housing + B2 bay/hinges/caster. Transport: swung 56° about the pivot"),
+                  calc_note="Sandwich: ply + 3mm-Al corners, steel RHS center + 5mm-HDPE Ø900 housing + B2 punch-out bay. Transport: swung 56° about the pivot"),
         Component("Light trap drum", "structure", drum_kg,
                   *swing_bbox(0, 40, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R),
                   PANEL_FLOOR_GAP, DRUM_H_LT, color=C_LT_DRUM,
@@ -392,7 +410,7 @@ def build_components():
         Component("Hinged panel", "structure", panel_kg,
                   0, 80, 0, C_WID, 0, C_HGT, color=C_HINGE_PANEL,
                   states=("ready",),
-                  calc_note="Sandwich: ply + 3mm-Al corners, steel RHS center + 5mm-HDPE Ø900 housing + B2 bay/hinges/caster"),
+                  calc_note="Sandwich: ply + 3mm-Al corners, steel RHS center + 5mm-HDPE Ø900 housing + B2 punch-out bay"),
         Component("Light trap drum", "structure", drum_kg,
                   0, 40, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
                   0, DRUM_H_LT, color=C_LT_DRUM,

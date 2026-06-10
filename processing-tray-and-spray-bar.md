@@ -74,7 +74,7 @@ no penetration of the tray floor or the container floor.
 | Parameter | Value |
 |-----------|-------|
 | Sump dimensions | 150mm (X) × 100mm (Yd) × 20mm deep |
-| Sump location | X=2,399 (tray center), Yd=80 (near rim, low point) |
+| Sump location | X=4,550 (IBC-end corner), Yd=80 (near rim, low point) |
 | Forming | Pressed/stamped into tray panel during fabrication |
 | Pickup tube | 1" HDPE dip tube, stainless foot valve with strainer screen |
 | Pickup height | Tube bottom 5mm above sump floor (leaves ~0.75 L residual) |

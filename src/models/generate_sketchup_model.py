@@ -1477,8 +1477,13 @@ def lighting_wiring():
     # Conduit runs along the ceiling from the trunking out to each fixture.
     cr, czc = 7, cz - 38
     for lx in (1000, 2900):    # → white LED panels (Cct G)
+        cond_x = lx + led_w / 2
+        if lx == 2900:
+            # shift the MIDDLE panel's conduit +150 toward the IBC stack so it clears
+            # the chem-shelf hanger rods (now at X3159 after the rev12 shelf move)
+            cond_x += 150
         parts.append(ruby_cylinder("Conduit to LED Panel (Cct G)",
-                                   lx + led_w / 2, 40, czc, cr, led_yd - 40,
+                                   cond_x, 40, czc, cr, led_yd - 40,
                                    color=C_TRUNK, axis="y"))
     # → rotated right-hand LED panel: conduit to its near Yd edge (no longer
     #   running alongside the equipment-panel / Circuit C conduits)

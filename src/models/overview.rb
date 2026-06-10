@@ -11048,7 +11048,7 @@ end
   grp = ents.add_group
   grp.name = "Conduit to LED Panel (Cct G)"
   ge = grp.entities
-  circle = ge.add_circle([3200.mm,40.mm,2350.mm], [0,1,0], 7.mm, 24)
+  circle = ge.add_circle([3350.mm,40.mm,2350.mm], [0,1,0], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(991.mm)

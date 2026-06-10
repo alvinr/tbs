@@ -305,969 +305,977 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP Brace Vert L (near/pinhole)
+  # Saddle back-plate TL near
   grp = ents.add_group
-  grp.name = "FP Brace Vert L (near/pinhole)"
-  face = grp.entities.add_face([150.mm,100.mm,150.mm], [200.mm,100.mm,150.mm], [200.mm,150.mm,150.mm], [150.mm,150.mm,150.mm])
+  grp.name = "Saddle back-plate TL near"
+  face = grp.entities.add_face([75.mm,0.mm,2213.mm], [225.mm,0.mm,2213.mm], [225.mm,8.mm,2213.mm], [75.mm,8.mm,2213.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2138.mm)
+  face.pushpull(150.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP Brace Vert R (near/pinhole)
+  # Saddle OUTSIDE plate TL near
   grp = ents.add_group
-  grp.name = "FP Brace Vert R (near/pinhole)"
-  face = grp.entities.add_face([4599.mm,100.mm,150.mm], [4649.mm,100.mm,150.mm], [4649.mm,150.mm,150.mm], [4599.mm,150.mm,150.mm])
+  grp.name = "Saddle OUTSIDE plate TL near"
+  face = grp.entities.add_face([75.mm,-48.mm,2213.mm], [225.mm,-48.mm,2213.mm], [225.mm,-40.mm,2213.mm], [75.mm,-40.mm,2213.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2138.mm)
+  face.pushpull(150.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP Brace Beam Bottom (near/pinhole)
+  # Saddle seat TL near
   grp = ents.add_group
-  grp.name = "FP Brace Beam Bottom (near/pinhole)"
-  face = grp.entities.add_face([150.mm,100.mm,150.mm], [4649.mm,100.mm,150.mm], [4649.mm,150.mm,150.mm], [150.mm,150.mm,150.mm])
+  grp.name = "Saddle seat TL near"
+  face = grp.entities.add_face([126.mm,0.mm,2278.mm], [174.mm,0.mm,2278.mm], [174.mm,110.mm,2278.mm], [126.mm,110.mm,2278.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(10.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP Brace Beam Top (near/pinhole)
+  # Saddle gusset TL near
   grp = ents.add_group
-  grp.name = "FP Brace Beam Top (near/pinhole)"
-  face = grp.entities.add_face([150.mm,100.mm,2238.mm], [4649.mm,100.mm,2238.mm], [4649.mm,150.mm,2238.mm], [150.mm,150.mm,2238.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP Brace Vert L (far/film)
-  grp = ents.add_group
-  grp.name = "FP Brace Vert L (far/film)"
-  face = grp.entities.add_face([150.mm,2262.mm,150.mm], [200.mm,2262.mm,150.mm], [200.mm,2312.mm,150.mm], [150.mm,2312.mm,150.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(2138.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP Brace Vert R (far/film)
-  grp = ents.add_group
-  grp.name = "FP Brace Vert R (far/film)"
-  face = grp.entities.add_face([4599.mm,2262.mm,150.mm], [4649.mm,2262.mm,150.mm], [4649.mm,2312.mm,150.mm], [4599.mm,2312.mm,150.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(2138.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP Brace Beam Bottom (far/film)
-  grp = ents.add_group
-  grp.name = "FP Brace Beam Bottom (far/film)"
-  face = grp.entities.add_face([150.mm,2262.mm,150.mm], [4649.mm,2262.mm,150.mm], [4649.mm,2312.mm,150.mm], [150.mm,2312.mm,150.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP Brace Beam Top (far/film)
-  grp = ents.add_group
-  grp.name = "FP Brace Beam Top (far/film)"
-  face = grp.entities.add_face([150.mm,2262.mm,2238.mm], [4649.mm,2262.mm,2238.mm], [4649.mm,2312.mm,2238.mm], [150.mm,2312.mm,2238.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP wall-tie strut X600 Z150 near
-  grp = ents.add_group
-  grp.name = "FP wall-tie strut X600 Z150 near"
-  face = grp.entities.add_face([578.mm,0.mm,150.mm], [622.mm,0.mm,150.mm], [622.mm,100.mm,150.mm], [578.mm,100.mm,150.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP inside plate X600 Z150 near
-  grp = ents.add_group
-  grp.name = "FP inside plate X600 Z150 near"
-  face = grp.entities.add_face([550.mm,0.mm,130.mm], [650.mm,0.mm,130.mm], [650.mm,8.mm,130.mm], [550.mm,8.mm,130.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP OUTSIDE plate X600 Z150 near
-  grp = ents.add_group
-  grp.name = "FP OUTSIDE plate X600 Z150 near"
-  face = grp.entities.add_face([550.mm,-48.mm,130.mm], [650.mm,-48.mm,130.mm], [650.mm,-40.mm,130.mm], [550.mm,-40.mm,130.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP wall bolt X570 Z150 near
-  grp = ents.add_group
-  grp.name = "FP wall bolt X570 Z150 near"
-  face = grp.entities.add_face([564.mm,-48.mm,169.mm], [576.mm,-48.mm,169.mm], [576.mm,8.mm,169.mm], [564.mm,8.mm,169.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Saddle gusset TL near"
+  ge = grp.entities
+  f = ge.add_face([150.mm,110.mm,2278.mm], [150.mm,0.mm,2278.mm], [150.mm,0.mm,2158.mm])
+  f.pushpull(8.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X630 Z150 near
+  # Saddle wall bolt M12 TL near
   grp = ents.add_group
-  grp.name = "FP wall bolt X630 Z150 near"
-  face = grp.entities.add_face([624.mm,-48.mm,169.mm], [636.mm,-48.mm,169.mm], [636.mm,8.mm,169.mm], [624.mm,8.mm,169.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Saddle wall bolt M12 TL near"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,-48.mm,2238.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall-tie strut X600 Z2238 near
+  # Saddle wall bolt M12 TL near
   grp = ents.add_group
-  grp.name = "FP wall-tie strut X600 Z2238 near"
-  face = grp.entities.add_face([578.mm,0.mm,2238.mm], [622.mm,0.mm,2238.mm], [622.mm,100.mm,2238.mm], [578.mm,100.mm,2238.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  grp.name = "Saddle wall bolt M12 TL near"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,-48.mm,2338.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP inside plate X600 Z2238 near
+  # Saddle wall bolt M12 TL near
   grp = ents.add_group
-  grp.name = "FP inside plate X600 Z2238 near"
-  face = grp.entities.add_face([550.mm,0.mm,2218.mm], [650.mm,0.mm,2218.mm], [650.mm,8.mm,2218.mm], [550.mm,8.mm,2218.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  grp.name = "Saddle wall bolt M12 TL near"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,-48.mm,2238.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP OUTSIDE plate X600 Z2238 near
+  # Saddle wall bolt M12 TL near
   grp = ents.add_group
-  grp.name = "FP OUTSIDE plate X600 Z2238 near"
-  face = grp.entities.add_face([550.mm,-48.mm,2218.mm], [650.mm,-48.mm,2218.mm], [650.mm,-40.mm,2218.mm], [550.mm,-40.mm,2218.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  grp.name = "Saddle wall bolt M12 TL near"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,-48.mm,2338.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X570 Z2238 near
+  # Thumb screw TL near
   grp = ents.add_group
-  grp.name = "FP wall bolt X570 Z2238 near"
-  face = grp.entities.add_face([564.mm,-48.mm,2257.mm], [576.mm,-48.mm,2257.mm], [576.mm,8.mm,2257.mm], [564.mm,8.mm,2257.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.name = "Thumb screw TL near"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,25.mm,2288.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
+  mat.color = Sketchup::Color.new(184, 184, 64)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X630 Z2238 near
+  # Thumb screw TL near
   grp = ents.add_group
-  grp.name = "FP wall bolt X630 Z2238 near"
-  face = grp.entities.add_face([624.mm,-48.mm,2257.mm], [636.mm,-48.mm,2257.mm], [636.mm,8.mm,2257.mm], [624.mm,8.mm,2257.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.name = "Thumb screw TL near"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,85.mm,2288.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
+  mat.color = Sketchup::Color.new(184, 184, 64)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall-tie strut X1300 Z150 near
+  # Saddle back-plate TL far
   grp = ents.add_group
-  grp.name = "FP wall-tie strut X1300 Z150 near"
-  face = grp.entities.add_face([1278.mm,0.mm,150.mm], [1322.mm,0.mm,150.mm], [1322.mm,100.mm,150.mm], [1278.mm,100.mm,150.mm])
+  grp.name = "Saddle back-plate TL far"
+  face = grp.entities.add_face([75.mm,2354.mm,2213.mm], [225.mm,2354.mm,2213.mm], [225.mm,2362.mm,2213.mm], [75.mm,2362.mm,2213.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(150.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP inside plate X1300 Z150 near
+  # Saddle OUTSIDE plate TL far
   grp = ents.add_group
-  grp.name = "FP inside plate X1300 Z150 near"
-  face = grp.entities.add_face([1250.mm,0.mm,130.mm], [1350.mm,0.mm,130.mm], [1350.mm,8.mm,130.mm], [1250.mm,8.mm,130.mm])
+  grp.name = "Saddle OUTSIDE plate TL far"
+  face = grp.entities.add_face([75.mm,2402.mm,2213.mm], [225.mm,2402.mm,2213.mm], [225.mm,2410.mm,2213.mm], [75.mm,2410.mm,2213.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  face.pushpull(150.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP OUTSIDE plate X1300 Z150 near
+  # Saddle seat TL far
   grp = ents.add_group
-  grp.name = "FP OUTSIDE plate X1300 Z150 near"
-  face = grp.entities.add_face([1250.mm,-48.mm,130.mm], [1350.mm,-48.mm,130.mm], [1350.mm,-40.mm,130.mm], [1250.mm,-40.mm,130.mm])
+  grp.name = "Saddle seat TL far"
+  face = grp.entities.add_face([126.mm,2252.mm,2278.mm], [174.mm,2252.mm,2278.mm], [174.mm,2362.mm,2278.mm], [126.mm,2362.mm,2278.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  face.pushpull(10.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X1270 Z150 near
+  # Saddle gusset TL far
   grp = ents.add_group
-  grp.name = "FP wall bolt X1270 Z150 near"
-  face = grp.entities.add_face([1264.mm,-48.mm,169.mm], [1276.mm,-48.mm,169.mm], [1276.mm,8.mm,169.mm], [1264.mm,8.mm,169.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Saddle gusset TL far"
+  ge = grp.entities
+  f = ge.add_face([150.mm,2252.mm,2278.mm], [150.mm,2362.mm,2278.mm], [150.mm,2362.mm,2158.mm])
+  f.pushpull(8.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X1330 Z150 near
+  # Saddle wall bolt M12 TL far
   grp = ents.add_group
-  grp.name = "FP wall bolt X1330 Z150 near"
-  face = grp.entities.add_face([1324.mm,-48.mm,169.mm], [1336.mm,-48.mm,169.mm], [1336.mm,8.mm,169.mm], [1324.mm,8.mm,169.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Saddle wall bolt M12 TL far"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,2354.mm,2238.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall-tie strut X1300 Z2238 near
+  # Saddle wall bolt M12 TL far
   grp = ents.add_group
-  grp.name = "FP wall-tie strut X1300 Z2238 near"
-  face = grp.entities.add_face([1278.mm,0.mm,2238.mm], [1322.mm,0.mm,2238.mm], [1322.mm,100.mm,2238.mm], [1278.mm,100.mm,2238.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  grp.name = "Saddle wall bolt M12 TL far"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,2354.mm,2338.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP inside plate X1300 Z2238 near
+  # Saddle wall bolt M12 TL far
   grp = ents.add_group
-  grp.name = "FP inside plate X1300 Z2238 near"
-  face = grp.entities.add_face([1250.mm,0.mm,2218.mm], [1350.mm,0.mm,2218.mm], [1350.mm,8.mm,2218.mm], [1250.mm,8.mm,2218.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  grp.name = "Saddle wall bolt M12 TL far"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,2354.mm,2238.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP OUTSIDE plate X1300 Z2238 near
+  # Saddle wall bolt M12 TL far
   grp = ents.add_group
-  grp.name = "FP OUTSIDE plate X1300 Z2238 near"
-  face = grp.entities.add_face([1250.mm,-48.mm,2218.mm], [1350.mm,-48.mm,2218.mm], [1350.mm,-40.mm,2218.mm], [1250.mm,-40.mm,2218.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  grp.name = "Saddle wall bolt M12 TL far"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,2354.mm,2338.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X1270 Z2238 near
+  # Thumb screw TL far
   grp = ents.add_group
-  grp.name = "FP wall bolt X1270 Z2238 near"
-  face = grp.entities.add_face([1264.mm,-48.mm,2257.mm], [1276.mm,-48.mm,2257.mm], [1276.mm,8.mm,2257.mm], [1264.mm,8.mm,2257.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.name = "Thumb screw TL far"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,2277.mm,2288.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
+  mat.color = Sketchup::Color.new(184, 184, 64)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X1330 Z2238 near
+  # Thumb screw TL far
   grp = ents.add_group
-  grp.name = "FP wall bolt X1330 Z2238 near"
-  face = grp.entities.add_face([1324.mm,-48.mm,2257.mm], [1336.mm,-48.mm,2257.mm], [1336.mm,8.mm,2257.mm], [1324.mm,8.mm,2257.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.name = "Thumb screw TL far"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,2337.mm,2288.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
+  mat.color = Sketchup::Color.new(184, 184, 64)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall-tie strut X3100 Z150 near
+  # Saddle back-plate TR near
   grp = ents.add_group
-  grp.name = "FP wall-tie strut X3100 Z150 near"
-  face = grp.entities.add_face([3078.mm,0.mm,150.mm], [3122.mm,0.mm,150.mm], [3122.mm,100.mm,150.mm], [3078.mm,100.mm,150.mm])
+  grp.name = "Saddle back-plate TR near"
+  face = grp.entities.add_face([4574.mm,0.mm,2213.mm], [4724.mm,0.mm,2213.mm], [4724.mm,8.mm,2213.mm], [4574.mm,8.mm,2213.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(150.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP inside plate X3100 Z150 near
+  # Saddle OUTSIDE plate TR near
   grp = ents.add_group
-  grp.name = "FP inside plate X3100 Z150 near"
-  face = grp.entities.add_face([3050.mm,0.mm,130.mm], [3150.mm,0.mm,130.mm], [3150.mm,8.mm,130.mm], [3050.mm,8.mm,130.mm])
+  grp.name = "Saddle OUTSIDE plate TR near"
+  face = grp.entities.add_face([4574.mm,-48.mm,2213.mm], [4724.mm,-48.mm,2213.mm], [4724.mm,-40.mm,2213.mm], [4574.mm,-40.mm,2213.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  face.pushpull(150.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP OUTSIDE plate X3100 Z150 near
+  # Saddle seat TR near
   grp = ents.add_group
-  grp.name = "FP OUTSIDE plate X3100 Z150 near"
-  face = grp.entities.add_face([3050.mm,-48.mm,130.mm], [3150.mm,-48.mm,130.mm], [3150.mm,-40.mm,130.mm], [3050.mm,-40.mm,130.mm])
+  grp.name = "Saddle seat TR near"
+  face = grp.entities.add_face([4625.mm,0.mm,2278.mm], [4673.mm,0.mm,2278.mm], [4673.mm,110.mm,2278.mm], [4625.mm,110.mm,2278.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  face.pushpull(10.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X3070 Z150 near
+  # Saddle gusset TR near
   grp = ents.add_group
-  grp.name = "FP wall bolt X3070 Z150 near"
-  face = grp.entities.add_face([3064.mm,-48.mm,169.mm], [3076.mm,-48.mm,169.mm], [3076.mm,8.mm,169.mm], [3064.mm,8.mm,169.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Saddle gusset TR near"
+  ge = grp.entities
+  f = ge.add_face([4649.mm,110.mm,2278.mm], [4649.mm,0.mm,2278.mm], [4649.mm,0.mm,2158.mm])
+  f.pushpull(8.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X3130 Z150 near
+  # Saddle wall bolt M12 TR near
   grp = ents.add_group
-  grp.name = "FP wall bolt X3130 Z150 near"
-  face = grp.entities.add_face([3124.mm,-48.mm,169.mm], [3136.mm,-48.mm,169.mm], [3136.mm,8.mm,169.mm], [3124.mm,8.mm,169.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Saddle wall bolt M12 TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4599.mm,-48.mm,2238.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall-tie strut X3100 Z2238 near
+  # Saddle wall bolt M12 TR near
   grp = ents.add_group
-  grp.name = "FP wall-tie strut X3100 Z2238 near"
-  face = grp.entities.add_face([3078.mm,0.mm,2238.mm], [3122.mm,0.mm,2238.mm], [3122.mm,100.mm,2238.mm], [3078.mm,100.mm,2238.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  grp.name = "Saddle wall bolt M12 TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4599.mm,-48.mm,2338.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP inside plate X3100 Z2238 near
+  # Saddle wall bolt M12 TR near
   grp = ents.add_group
-  grp.name = "FP inside plate X3100 Z2238 near"
-  face = grp.entities.add_face([3050.mm,0.mm,2218.mm], [3150.mm,0.mm,2218.mm], [3150.mm,8.mm,2218.mm], [3050.mm,8.mm,2218.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  grp.name = "Saddle wall bolt M12 TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4699.mm,-48.mm,2238.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP OUTSIDE plate X3100 Z2238 near
+  # Saddle wall bolt M12 TR near
   grp = ents.add_group
-  grp.name = "FP OUTSIDE plate X3100 Z2238 near"
-  face = grp.entities.add_face([3050.mm,-48.mm,2218.mm], [3150.mm,-48.mm,2218.mm], [3150.mm,-40.mm,2218.mm], [3050.mm,-40.mm,2218.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  grp.name = "Saddle wall bolt M12 TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4699.mm,-48.mm,2338.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X3070 Z2238 near
+  # Rail fixing bolt TR near
   grp = ents.add_group
-  grp.name = "FP wall bolt X3070 Z2238 near"
-  face = grp.entities.add_face([3064.mm,-48.mm,2257.mm], [3076.mm,-48.mm,2257.mm], [3076.mm,8.mm,2257.mm], [3064.mm,8.mm,2257.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Rail fixing bolt TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4649.mm,25.mm,2288.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X3130 Z2238 near
+  # Rail fixing bolt TR near
   grp = ents.add_group
-  grp.name = "FP wall bolt X3130 Z2238 near"
-  face = grp.entities.add_face([3124.mm,-48.mm,2257.mm], [3136.mm,-48.mm,2257.mm], [3136.mm,8.mm,2257.mm], [3124.mm,8.mm,2257.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Rail fixing bolt TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4649.mm,85.mm,2288.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall-tie strut X4200 Z150 near
+  # Saddle back-plate TR far
   grp = ents.add_group
-  grp.name = "FP wall-tie strut X4200 Z150 near"
-  face = grp.entities.add_face([4178.mm,0.mm,150.mm], [4222.mm,0.mm,150.mm], [4222.mm,100.mm,150.mm], [4178.mm,100.mm,150.mm])
+  grp.name = "Saddle back-plate TR far"
+  face = grp.entities.add_face([4574.mm,2354.mm,2213.mm], [4724.mm,2354.mm,2213.mm], [4724.mm,2362.mm,2213.mm], [4574.mm,2362.mm,2213.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(150.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP inside plate X4200 Z150 near
+  # Saddle OUTSIDE plate TR far
   grp = ents.add_group
-  grp.name = "FP inside plate X4200 Z150 near"
-  face = grp.entities.add_face([4150.mm,0.mm,130.mm], [4250.mm,0.mm,130.mm], [4250.mm,8.mm,130.mm], [4150.mm,8.mm,130.mm])
+  grp.name = "Saddle OUTSIDE plate TR far"
+  face = grp.entities.add_face([4574.mm,2402.mm,2213.mm], [4724.mm,2402.mm,2213.mm], [4724.mm,2410.mm,2213.mm], [4574.mm,2410.mm,2213.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  face.pushpull(150.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP OUTSIDE plate X4200 Z150 near
+  # Saddle seat TR far
   grp = ents.add_group
-  grp.name = "FP OUTSIDE plate X4200 Z150 near"
-  face = grp.entities.add_face([4150.mm,-48.mm,130.mm], [4250.mm,-48.mm,130.mm], [4250.mm,-40.mm,130.mm], [4150.mm,-40.mm,130.mm])
+  grp.name = "Saddle seat TR far"
+  face = grp.entities.add_face([4625.mm,2252.mm,2278.mm], [4673.mm,2252.mm,2278.mm], [4673.mm,2362.mm,2278.mm], [4625.mm,2362.mm,2278.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  face.pushpull(10.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X4170 Z150 near
+  # Saddle gusset TR far
   grp = ents.add_group
-  grp.name = "FP wall bolt X4170 Z150 near"
-  face = grp.entities.add_face([4164.mm,-48.mm,169.mm], [4176.mm,-48.mm,169.mm], [4176.mm,8.mm,169.mm], [4164.mm,8.mm,169.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Saddle gusset TR far"
+  ge = grp.entities
+  f = ge.add_face([4649.mm,2252.mm,2278.mm], [4649.mm,2362.mm,2278.mm], [4649.mm,2362.mm,2158.mm])
+  f.pushpull(8.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X4230 Z150 near
+  # Saddle wall bolt M12 TR far
   grp = ents.add_group
-  grp.name = "FP wall bolt X4230 Z150 near"
-  face = grp.entities.add_face([4224.mm,-48.mm,169.mm], [4236.mm,-48.mm,169.mm], [4236.mm,8.mm,169.mm], [4224.mm,8.mm,169.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Saddle wall bolt M12 TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4599.mm,2354.mm,2238.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall-tie strut X4200 Z2238 near
+  # Saddle wall bolt M12 TR far
   grp = ents.add_group
-  grp.name = "FP wall-tie strut X4200 Z2238 near"
-  face = grp.entities.add_face([4178.mm,0.mm,2238.mm], [4222.mm,0.mm,2238.mm], [4222.mm,100.mm,2238.mm], [4178.mm,100.mm,2238.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  grp.name = "Saddle wall bolt M12 TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4599.mm,2354.mm,2338.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP inside plate X4200 Z2238 near
+  # Saddle wall bolt M12 TR far
   grp = ents.add_group
-  grp.name = "FP inside plate X4200 Z2238 near"
-  face = grp.entities.add_face([4150.mm,0.mm,2218.mm], [4250.mm,0.mm,2218.mm], [4250.mm,8.mm,2218.mm], [4150.mm,8.mm,2218.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  grp.name = "Saddle wall bolt M12 TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4699.mm,2354.mm,2238.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP OUTSIDE plate X4200 Z2238 near
+  # Saddle wall bolt M12 TR far
   grp = ents.add_group
-  grp.name = "FP OUTSIDE plate X4200 Z2238 near"
-  face = grp.entities.add_face([4150.mm,-48.mm,2218.mm], [4250.mm,-48.mm,2218.mm], [4250.mm,-40.mm,2218.mm], [4150.mm,-40.mm,2218.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  grp.name = "Saddle wall bolt M12 TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4699.mm,2354.mm,2338.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X4170 Z2238 near
+  # Rail fixing bolt TR far
   grp = ents.add_group
-  grp.name = "FP wall bolt X4170 Z2238 near"
-  face = grp.entities.add_face([4164.mm,-48.mm,2257.mm], [4176.mm,-48.mm,2257.mm], [4176.mm,8.mm,2257.mm], [4164.mm,8.mm,2257.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Rail fixing bolt TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4649.mm,2277.mm,2288.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X4230 Z2238 near
+  # Rail fixing bolt TR far
   grp = ents.add_group
-  grp.name = "FP wall bolt X4230 Z2238 near"
-  face = grp.entities.add_face([4224.mm,-48.mm,2257.mm], [4236.mm,-48.mm,2257.mm], [4236.mm,8.mm,2257.mm], [4224.mm,8.mm,2257.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Rail fixing bolt TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4649.mm,2337.mm,2288.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall-tie strut X600 Z150 far
+  # Saddle back-plate BL near
   grp = ents.add_group
-  grp.name = "FP wall-tie strut X600 Z150 far"
-  face = grp.entities.add_face([578.mm,2262.mm,150.mm], [622.mm,2262.mm,150.mm], [622.mm,2362.mm,150.mm], [578.mm,2362.mm,150.mm])
+  grp.name = "Saddle back-plate BL near"
+  face = grp.entities.add_face([75.mm,0.mm,75.mm], [225.mm,0.mm,75.mm], [225.mm,8.mm,75.mm], [75.mm,8.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(150.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP inside plate X600 Z150 far
+  # Saddle OUTSIDE plate BL near
   grp = ents.add_group
-  grp.name = "FP inside plate X600 Z150 far"
-  face = grp.entities.add_face([550.mm,2354.mm,130.mm], [650.mm,2354.mm,130.mm], [650.mm,2362.mm,130.mm], [550.mm,2362.mm,130.mm])
+  grp.name = "Saddle OUTSIDE plate BL near"
+  face = grp.entities.add_face([75.mm,-48.mm,75.mm], [225.mm,-48.mm,75.mm], [225.mm,-40.mm,75.mm], [75.mm,-40.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  face.pushpull(150.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP OUTSIDE plate X600 Z150 far
+  # Saddle seat BL near
   grp = ents.add_group
-  grp.name = "FP OUTSIDE plate X600 Z150 far"
-  face = grp.entities.add_face([550.mm,2402.mm,130.mm], [650.mm,2402.mm,130.mm], [650.mm,2410.mm,130.mm], [550.mm,2410.mm,130.mm])
+  grp.name = "Saddle seat BL near"
+  face = grp.entities.add_face([126.mm,0.mm,140.mm], [174.mm,0.mm,140.mm], [174.mm,110.mm,140.mm], [126.mm,110.mm,140.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  face.pushpull(10.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X570 Z150 far
+  # Saddle gusset BL near
   grp = ents.add_group
-  grp.name = "FP wall bolt X570 Z150 far"
-  face = grp.entities.add_face([564.mm,2354.mm,169.mm], [576.mm,2354.mm,169.mm], [576.mm,2410.mm,169.mm], [564.mm,2410.mm,169.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Saddle gusset BL near"
+  ge = grp.entities
+  f = ge.add_face([150.mm,110.mm,140.mm], [150.mm,0.mm,140.mm], [150.mm,0.mm,20.mm])
+  f.pushpull(8.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X630 Z150 far
+  # Saddle wall bolt M12 BL near
   grp = ents.add_group
-  grp.name = "FP wall bolt X630 Z150 far"
-  face = grp.entities.add_face([624.mm,2354.mm,169.mm], [636.mm,2354.mm,169.mm], [636.mm,2410.mm,169.mm], [624.mm,2410.mm,169.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Saddle wall bolt M12 BL near"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,-48.mm,100.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall-tie strut X600 Z2238 far
+  # Saddle wall bolt M12 BL near
   grp = ents.add_group
-  grp.name = "FP wall-tie strut X600 Z2238 far"
-  face = grp.entities.add_face([578.mm,2262.mm,2238.mm], [622.mm,2262.mm,2238.mm], [622.mm,2362.mm,2238.mm], [578.mm,2362.mm,2238.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  grp.name = "Saddle wall bolt M12 BL near"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,-48.mm,200.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP inside plate X600 Z2238 far
+  # Saddle wall bolt M12 BL near
   grp = ents.add_group
-  grp.name = "FP inside plate X600 Z2238 far"
-  face = grp.entities.add_face([550.mm,2354.mm,2218.mm], [650.mm,2354.mm,2218.mm], [650.mm,2362.mm,2218.mm], [550.mm,2362.mm,2218.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  grp.name = "Saddle wall bolt M12 BL near"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,-48.mm,100.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP OUTSIDE plate X600 Z2238 far
+  # Saddle wall bolt M12 BL near
   grp = ents.add_group
-  grp.name = "FP OUTSIDE plate X600 Z2238 far"
-  face = grp.entities.add_face([550.mm,2402.mm,2218.mm], [650.mm,2402.mm,2218.mm], [650.mm,2410.mm,2218.mm], [550.mm,2410.mm,2218.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  grp.name = "Saddle wall bolt M12 BL near"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,-48.mm,200.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X570 Z2238 far
+  # Thumb screw BL near
   grp = ents.add_group
-  grp.name = "FP wall bolt X570 Z2238 far"
-  face = grp.entities.add_face([564.mm,2354.mm,2257.mm], [576.mm,2354.mm,2257.mm], [576.mm,2410.mm,2257.mm], [564.mm,2410.mm,2257.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.name = "Thumb screw BL near"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,25.mm,150.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
+  mat.color = Sketchup::Color.new(184, 184, 64)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X630 Z2238 far
+  # Thumb screw BL near
   grp = ents.add_group
-  grp.name = "FP wall bolt X630 Z2238 far"
-  face = grp.entities.add_face([624.mm,2354.mm,2257.mm], [636.mm,2354.mm,2257.mm], [636.mm,2410.mm,2257.mm], [624.mm,2410.mm,2257.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.name = "Thumb screw BL near"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,85.mm,150.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
+  mat.color = Sketchup::Color.new(184, 184, 64)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall-tie strut X1700 Z150 far
+  # Saddle back-plate BL far
   grp = ents.add_group
-  grp.name = "FP wall-tie strut X1700 Z150 far"
-  face = grp.entities.add_face([1678.mm,2262.mm,150.mm], [1722.mm,2262.mm,150.mm], [1722.mm,2362.mm,150.mm], [1678.mm,2362.mm,150.mm])
+  grp.name = "Saddle back-plate BL far"
+  face = grp.entities.add_face([75.mm,2354.mm,75.mm], [225.mm,2354.mm,75.mm], [225.mm,2362.mm,75.mm], [75.mm,2362.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(150.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP inside plate X1700 Z150 far
+  # Saddle OUTSIDE plate BL far
   grp = ents.add_group
-  grp.name = "FP inside plate X1700 Z150 far"
-  face = grp.entities.add_face([1650.mm,2354.mm,130.mm], [1750.mm,2354.mm,130.mm], [1750.mm,2362.mm,130.mm], [1650.mm,2362.mm,130.mm])
+  grp.name = "Saddle OUTSIDE plate BL far"
+  face = grp.entities.add_face([75.mm,2402.mm,75.mm], [225.mm,2402.mm,75.mm], [225.mm,2410.mm,75.mm], [75.mm,2410.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  face.pushpull(150.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP OUTSIDE plate X1700 Z150 far
+  # Saddle seat BL far
   grp = ents.add_group
-  grp.name = "FP OUTSIDE plate X1700 Z150 far"
-  face = grp.entities.add_face([1650.mm,2402.mm,130.mm], [1750.mm,2402.mm,130.mm], [1750.mm,2410.mm,130.mm], [1650.mm,2410.mm,130.mm])
+  grp.name = "Saddle seat BL far"
+  face = grp.entities.add_face([126.mm,2252.mm,140.mm], [174.mm,2252.mm,140.mm], [174.mm,2362.mm,140.mm], [126.mm,2362.mm,140.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  face.pushpull(10.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X1670 Z150 far
+  # Saddle gusset BL far
   grp = ents.add_group
-  grp.name = "FP wall bolt X1670 Z150 far"
-  face = grp.entities.add_face([1664.mm,2354.mm,169.mm], [1676.mm,2354.mm,169.mm], [1676.mm,2410.mm,169.mm], [1664.mm,2410.mm,169.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Saddle gusset BL far"
+  ge = grp.entities
+  f = ge.add_face([150.mm,2252.mm,140.mm], [150.mm,2362.mm,140.mm], [150.mm,2362.mm,20.mm])
+  f.pushpull(8.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X1730 Z150 far
+  # Saddle wall bolt M12 BL far
   grp = ents.add_group
-  grp.name = "FP wall bolt X1730 Z150 far"
-  face = grp.entities.add_face([1724.mm,2354.mm,169.mm], [1736.mm,2354.mm,169.mm], [1736.mm,2410.mm,169.mm], [1724.mm,2410.mm,169.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Saddle wall bolt M12 BL far"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,2354.mm,100.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall-tie strut X1700 Z2238 far
+  # Saddle wall bolt M12 BL far
   grp = ents.add_group
-  grp.name = "FP wall-tie strut X1700 Z2238 far"
-  face = grp.entities.add_face([1678.mm,2262.mm,2238.mm], [1722.mm,2262.mm,2238.mm], [1722.mm,2362.mm,2238.mm], [1678.mm,2362.mm,2238.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  grp.name = "Saddle wall bolt M12 BL far"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,2354.mm,200.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP inside plate X1700 Z2238 far
+  # Saddle wall bolt M12 BL far
   grp = ents.add_group
-  grp.name = "FP inside plate X1700 Z2238 far"
-  face = grp.entities.add_face([1650.mm,2354.mm,2218.mm], [1750.mm,2354.mm,2218.mm], [1750.mm,2362.mm,2218.mm], [1650.mm,2362.mm,2218.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  grp.name = "Saddle wall bolt M12 BL far"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,2354.mm,100.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP OUTSIDE plate X1700 Z2238 far
+  # Saddle wall bolt M12 BL far
   grp = ents.add_group
-  grp.name = "FP OUTSIDE plate X1700 Z2238 far"
-  face = grp.entities.add_face([1650.mm,2402.mm,2218.mm], [1750.mm,2402.mm,2218.mm], [1750.mm,2410.mm,2218.mm], [1650.mm,2410.mm,2218.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  grp.name = "Saddle wall bolt M12 BL far"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,2354.mm,200.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X1670 Z2238 far
+  # Thumb screw BL far
   grp = ents.add_group
-  grp.name = "FP wall bolt X1670 Z2238 far"
-  face = grp.entities.add_face([1664.mm,2354.mm,2257.mm], [1676.mm,2354.mm,2257.mm], [1676.mm,2410.mm,2257.mm], [1664.mm,2410.mm,2257.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.name = "Thumb screw BL far"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,2277.mm,150.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
+  mat.color = Sketchup::Color.new(184, 184, 64)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X1730 Z2238 far
+  # Thumb screw BL far
   grp = ents.add_group
-  grp.name = "FP wall bolt X1730 Z2238 far"
-  face = grp.entities.add_face([1724.mm,2354.mm,2257.mm], [1736.mm,2354.mm,2257.mm], [1736.mm,2410.mm,2257.mm], [1724.mm,2410.mm,2257.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.name = "Thumb screw BL far"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,2337.mm,150.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
+  mat.color = Sketchup::Color.new(184, 184, 64)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall-tie strut X2800 Z150 far
+  # Saddle back-plate BR near
   grp = ents.add_group
-  grp.name = "FP wall-tie strut X2800 Z150 far"
-  face = grp.entities.add_face([2778.mm,2262.mm,150.mm], [2822.mm,2262.mm,150.mm], [2822.mm,2362.mm,150.mm], [2778.mm,2362.mm,150.mm])
+  grp.name = "Saddle back-plate BR near"
+  face = grp.entities.add_face([4574.mm,0.mm,75.mm], [4724.mm,0.mm,75.mm], [4724.mm,8.mm,75.mm], [4574.mm,8.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(150.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP inside plate X2800 Z150 far
+  # Saddle OUTSIDE plate BR near
   grp = ents.add_group
-  grp.name = "FP inside plate X2800 Z150 far"
-  face = grp.entities.add_face([2750.mm,2354.mm,130.mm], [2850.mm,2354.mm,130.mm], [2850.mm,2362.mm,130.mm], [2750.mm,2362.mm,130.mm])
+  grp.name = "Saddle OUTSIDE plate BR near"
+  face = grp.entities.add_face([4574.mm,-48.mm,75.mm], [4724.mm,-48.mm,75.mm], [4724.mm,-40.mm,75.mm], [4574.mm,-40.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  face.pushpull(150.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP OUTSIDE plate X2800 Z150 far
+  # Saddle seat BR near
   grp = ents.add_group
-  grp.name = "FP OUTSIDE plate X2800 Z150 far"
-  face = grp.entities.add_face([2750.mm,2402.mm,130.mm], [2850.mm,2402.mm,130.mm], [2850.mm,2410.mm,130.mm], [2750.mm,2410.mm,130.mm])
+  grp.name = "Saddle seat BR near"
+  face = grp.entities.add_face([4625.mm,0.mm,140.mm], [4673.mm,0.mm,140.mm], [4673.mm,110.mm,140.mm], [4625.mm,110.mm,140.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  face.pushpull(10.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X2770 Z150 far
+  # Saddle gusset BR near
   grp = ents.add_group
-  grp.name = "FP wall bolt X2770 Z150 far"
-  face = grp.entities.add_face([2764.mm,2354.mm,169.mm], [2776.mm,2354.mm,169.mm], [2776.mm,2410.mm,169.mm], [2764.mm,2410.mm,169.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Saddle gusset BR near"
+  ge = grp.entities
+  f = ge.add_face([4649.mm,110.mm,140.mm], [4649.mm,0.mm,140.mm], [4649.mm,0.mm,20.mm])
+  f.pushpull(8.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X2830 Z150 far
+  # Saddle wall bolt M12 BR near
   grp = ents.add_group
-  grp.name = "FP wall bolt X2830 Z150 far"
-  face = grp.entities.add_face([2824.mm,2354.mm,169.mm], [2836.mm,2354.mm,169.mm], [2836.mm,2410.mm,169.mm], [2824.mm,2410.mm,169.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Saddle wall bolt M12 BR near"
+  ge = grp.entities
+  circle = ge.add_circle([4599.mm,-48.mm,100.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall-tie strut X2800 Z2238 far
+  # Saddle wall bolt M12 BR near
   grp = ents.add_group
-  grp.name = "FP wall-tie strut X2800 Z2238 far"
-  face = grp.entities.add_face([2778.mm,2262.mm,2238.mm], [2822.mm,2262.mm,2238.mm], [2822.mm,2362.mm,2238.mm], [2778.mm,2362.mm,2238.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  grp.name = "Saddle wall bolt M12 BR near"
+  ge = grp.entities
+  circle = ge.add_circle([4599.mm,-48.mm,200.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP inside plate X2800 Z2238 far
+  # Saddle wall bolt M12 BR near
   grp = ents.add_group
-  grp.name = "FP inside plate X2800 Z2238 far"
-  face = grp.entities.add_face([2750.mm,2354.mm,2218.mm], [2850.mm,2354.mm,2218.mm], [2850.mm,2362.mm,2218.mm], [2750.mm,2362.mm,2218.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  grp.name = "Saddle wall bolt M12 BR near"
+  ge = grp.entities
+  circle = ge.add_circle([4699.mm,-48.mm,100.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP OUTSIDE plate X2800 Z2238 far
+  # Saddle wall bolt M12 BR near
   grp = ents.add_group
-  grp.name = "FP OUTSIDE plate X2800 Z2238 far"
-  face = grp.entities.add_face([2750.mm,2402.mm,2218.mm], [2850.mm,2402.mm,2218.mm], [2850.mm,2410.mm,2218.mm], [2750.mm,2410.mm,2218.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  grp.name = "Saddle wall bolt M12 BR near"
+  ge = grp.entities
+  circle = ge.add_circle([4699.mm,-48.mm,200.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X2770 Z2238 far
+  # Rail fixing bolt BR near
   grp = ents.add_group
-  grp.name = "FP wall bolt X2770 Z2238 far"
-  face = grp.entities.add_face([2764.mm,2354.mm,2257.mm], [2776.mm,2354.mm,2257.mm], [2776.mm,2410.mm,2257.mm], [2764.mm,2410.mm,2257.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Rail fixing bolt BR near"
+  ge = grp.entities
+  circle = ge.add_circle([4649.mm,25.mm,150.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X2830 Z2238 far
+  # Rail fixing bolt BR near
   grp = ents.add_group
-  grp.name = "FP wall bolt X2830 Z2238 far"
-  face = grp.entities.add_face([2824.mm,2354.mm,2257.mm], [2836.mm,2354.mm,2257.mm], [2836.mm,2410.mm,2257.mm], [2824.mm,2410.mm,2257.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Rail fixing bolt BR near"
+  ge = grp.entities
+  circle = ge.add_circle([4649.mm,85.mm,150.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall-tie strut X4200 Z150 far
+  # Saddle back-plate BR far
   grp = ents.add_group
-  grp.name = "FP wall-tie strut X4200 Z150 far"
-  face = grp.entities.add_face([4178.mm,2262.mm,150.mm], [4222.mm,2262.mm,150.mm], [4222.mm,2362.mm,150.mm], [4178.mm,2362.mm,150.mm])
+  grp.name = "Saddle back-plate BR far"
+  face = grp.entities.add_face([4574.mm,2354.mm,75.mm], [4724.mm,2354.mm,75.mm], [4724.mm,2362.mm,75.mm], [4574.mm,2362.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(150.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP inside plate X4200 Z150 far
+  # Saddle OUTSIDE plate BR far
   grp = ents.add_group
-  grp.name = "FP inside plate X4200 Z150 far"
-  face = grp.entities.add_face([4150.mm,2354.mm,130.mm], [4250.mm,2354.mm,130.mm], [4250.mm,2362.mm,130.mm], [4150.mm,2362.mm,130.mm])
+  grp.name = "Saddle OUTSIDE plate BR far"
+  face = grp.entities.add_face([4574.mm,2402.mm,75.mm], [4724.mm,2402.mm,75.mm], [4724.mm,2410.mm,75.mm], [4574.mm,2410.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  face.pushpull(150.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP OUTSIDE plate X4200 Z150 far
+  # Saddle seat BR far
   grp = ents.add_group
-  grp.name = "FP OUTSIDE plate X4200 Z150 far"
-  face = grp.entities.add_face([4150.mm,2402.mm,130.mm], [4250.mm,2402.mm,130.mm], [4250.mm,2410.mm,130.mm], [4150.mm,2410.mm,130.mm])
+  grp.name = "Saddle seat BR far"
+  face = grp.entities.add_face([4625.mm,2252.mm,140.mm], [4673.mm,2252.mm,140.mm], [4673.mm,2362.mm,140.mm], [4625.mm,2362.mm,140.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  face.pushpull(10.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X4170 Z150 far
+  # Saddle gusset BR far
   grp = ents.add_group
-  grp.name = "FP wall bolt X4170 Z150 far"
-  face = grp.entities.add_face([4164.mm,2354.mm,169.mm], [4176.mm,2354.mm,169.mm], [4176.mm,2410.mm,169.mm], [4164.mm,2410.mm,169.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Saddle gusset BR far"
+  ge = grp.entities
+  f = ge.add_face([4649.mm,2252.mm,140.mm], [4649.mm,2362.mm,140.mm], [4649.mm,2362.mm,20.mm])
+  f.pushpull(8.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X4230 Z150 far
+  # Saddle wall bolt M12 BR far
   grp = ents.add_group
-  grp.name = "FP wall bolt X4230 Z150 far"
-  face = grp.entities.add_face([4224.mm,2354.mm,169.mm], [4236.mm,2354.mm,169.mm], [4236.mm,2410.mm,169.mm], [4224.mm,2410.mm,169.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Saddle wall bolt M12 BR far"
+  ge = grp.entities
+  circle = ge.add_circle([4599.mm,2354.mm,100.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall-tie strut X4200 Z2238 far
+  # Saddle wall bolt M12 BR far
   grp = ents.add_group
-  grp.name = "FP wall-tie strut X4200 Z2238 far"
-  face = grp.entities.add_face([4178.mm,2262.mm,2238.mm], [4222.mm,2262.mm,2238.mm], [4222.mm,2362.mm,2238.mm], [4178.mm,2362.mm,2238.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  grp.name = "Saddle wall bolt M12 BR far"
+  ge = grp.entities
+  circle = ge.add_circle([4599.mm,2354.mm,200.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP inside plate X4200 Z2238 far
+  # Saddle wall bolt M12 BR far
   grp = ents.add_group
-  grp.name = "FP inside plate X4200 Z2238 far"
-  face = grp.entities.add_face([4150.mm,2354.mm,2218.mm], [4250.mm,2354.mm,2218.mm], [4250.mm,2362.mm,2218.mm], [4150.mm,2362.mm,2218.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  grp.name = "Saddle wall bolt M12 BR far"
+  ge = grp.entities
+  circle = ge.add_circle([4699.mm,2354.mm,100.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP OUTSIDE plate X4200 Z2238 far
+  # Saddle wall bolt M12 BR far
   grp = ents.add_group
-  grp.name = "FP OUTSIDE plate X4200 Z2238 far"
-  face = grp.entities.add_face([4150.mm,2402.mm,2218.mm], [4250.mm,2402.mm,2218.mm], [4250.mm,2410.mm,2218.mm], [4150.mm,2410.mm,2218.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
+  grp.name = "Saddle wall bolt M12 BR far"
+  ge = grp.entities
+  circle = ge.add_circle([4699.mm,2354.mm,200.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X4170 Z2238 far
+  # Rail fixing bolt BR far
   grp = ents.add_group
-  grp.name = "FP wall bolt X4170 Z2238 far"
-  face = grp.entities.add_face([4164.mm,2354.mm,2257.mm], [4176.mm,2354.mm,2257.mm], [4176.mm,2410.mm,2257.mm], [4164.mm,2410.mm,2257.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Rail fixing bolt BR far"
+  ge = grp.entities
+  circle = ge.add_circle([4649.mm,2277.mm,150.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP wall bolt X4230 Z2238 far
+  # Rail fixing bolt BR far
   grp = ents.add_group
-  grp.name = "FP wall bolt X4230 Z2238 far"
-  face = grp.entities.add_face([4224.mm,2354.mm,2257.mm], [4236.mm,2354.mm,2257.mm], [4236.mm,2410.mm,2257.mm], [4224.mm,2410.mm,2257.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  grp.name = "Rail fixing bolt BR far"
+  ge = grp.entities
+  circle = ge.add_circle([4649.mm,2337.mm,150.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0

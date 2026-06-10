@@ -151,24 +151,53 @@ fp_inst.set_attribute(fda, "_onclick_access", "NONE")
 '''
 
 
-def brace_cage():
-    """The demountable 50×50 RHS brace cage that ties the four corner rails into a
-    rigid knock-down box — a rectangular portal at each end (near/pinhole + far/film):
-    left + right VERTICALS and TOP + BOTTOM horizontal cross-beams. Geometry
-    single-sourced from the overview's film_plane_mechanism() (BRACE_* constants)."""
-    s = ov.BRACE_RHS
-    xl, xr = ov.RAIL_X_L, ov.RAIL_X_R
-    zb, zt = ov.BRACE_Z_BOT, ov.BRACE_Z_TOP
+def saddles():
+    """Replace the brace-cage end portals: anchor each of the 8 rail ends to the
+    container with an IBC-style WALL-SEAT saddle (4 corners × near/far wall). Each
+    saddle = interior back-plate + horizontal seat (the rail rests on it) + triangular
+    gusset, THROUGH-BOLTED to an EXTERIOR plate with a 4-bolt pattern — dims reused
+    from the IBC frame wall seats (IBC_WBKT_*). The container shell provides the
+    rigidity, so the rails need no cross-cage. RIGHT rails (X4649) are permanently
+    bolted; LEFT rails (X150) drop in on thumb screws (lift out for the drum swing).
+    Costs a little carriage travel at each end (~110mm) — immaterial to the design."""
+    pw, pt = ov.IBC_WBKT_PLATE_W, ov.IBC_WBKT_PLATE_T        # 150 plate, 8 thick
+    proj, st = ov.IBC_WBKT_SEAT_PROJ, ov.IBC_WBKT_SEAT_T     # 110 seat projection, 10 thick
+    gh, wt, sw = 120, ov.WALL_T, 24 + 24                     # gusset, wall, seat width (rail+margin)
     parts = []
-    for py, pn in [(ov.FP_Y_MIN, "near/pinhole"), (ov.FP_Y, "far/film")]:
-        parts.append(ov.ruby_box(f"FP Brace Vert L ({pn})",
-                     xl, py, zb, s, s, zt - zb, color=ov.C_STEEL))
-        parts.append(ov.ruby_box(f"FP Brace Vert R ({pn})",
-                     xr - s, py, zb, s, s, zt - zb, color=ov.C_STEEL))
-        parts.append(ov.ruby_box(f"FP Brace Beam Bottom ({pn})",
-                     xl, py, zb, xr - xl, s, s, color=ov.C_STEEL))
-        parts.append(ov.ruby_box(f"FP Brace Beam Top ({pn})",
-                     xl, py, zt - s, xr - xl, s, s, color=ov.C_STEEL))
+    for cid, (x, z) in RAILS.items():
+        left = (x == ov.RAIL_X_L)
+        for wall_yd in (0, ov.C_WID):
+            near = (wall_yd == 0)
+            din = 1 if near else -1
+            tag = f"{cid} {'near' if near else 'far'}"
+            by_in = 0 if near else ov.C_WID - pt            # interior plate face
+            by_out = -wt - pt if near else ov.C_WID + wt    # exterior plate face
+            sy0 = min(wall_yd, wall_yd + din * proj)        # seat span start
+            yt = wall_yd + din * proj                       # seat tip (into container)
+            # interior + EXTERIOR sandwich plates (square, 4-bolt)
+            parts.append(ov.ruby_box(f"Saddle back-plate {tag}",
+                         x - pw / 2, by_in, z - pw / 2, pw, pt, pw, color=ov.C_STEEL))
+            parts.append(ov.ruby_box(f"Saddle OUTSIDE plate {tag}",
+                         x - pw / 2, by_out, z - pw / 2, pw, pt, pw, color=ov.C_STEEL))
+            # seat the rail end rests on
+            parts.append(ov.ruby_box(f"Saddle seat {tag}",
+                         x - sw / 2, sy0, z - st, sw, proj, st, color=ov.C_STEEL))
+            # triangular gusset (Yd–Z) under the seat
+            parts.append(ov.ruby_tri(f"Saddle gusset {tag}",
+                         (x, yt, z - st), (x, wall_yd, z - st), (x, wall_yd, z - st - gh),
+                         8, color=ov.C_STEEL))
+            # 4-bolt pattern through the wall (Yd), at the plate corners
+            blo, bhi = min(by_in, by_out), max(by_in, by_out) + pt
+            for bx in (x - 50, x + 50):
+                for bz in (z - 50, z + 50):
+                    parts.append(ov.ruby_cylinder(f"Saddle wall bolt M12 {tag}",
+                                 bx, blo, bz, 6, bhi - blo, color=ov.C_STEEL, axis="y"))
+            # rail hold-down: thumb screws (LEFT, removable) or fixing bolts (RIGHT)
+            hold_c = ov.C_VALVE if left else ov.C_STEEL
+            hold_nm = "Thumb screw" if left else "Rail fixing bolt"
+            for hy in (sy0 + 25, sy0 + proj - 25):
+                parts.append(ov.ruby_cylinder(f"{hold_nm} {tag}",
+                             x, hy, z, 5, 36, color=hold_c, axis="z"))
     return '\n'.join(parts)
 
 
@@ -189,52 +218,6 @@ def near_wall_ghost():
     parts.append(ov.ruby_box("Power panel (interior face) [ghost]",
                  ov.PWR_PANEL_X, 0, ov.PWR_PANEL_Z, ov.PWR_PANEL_W, 20, ov.PWR_PANEL_H,
                  color=ov.C_ELEC, alpha=a))
-    return '\n'.join(parts)
-
-
-def wall_fastening():
-    """Fasten the frame to the container SIDE WALLS. The left/right verticals are the
-    slide rails (FP can't be fixed there), so the near + far brace portals tie to the
-    near (Yd0) and far (Yd C_WID) walls via gusset struts on the TOP and BOTTOM beams.
-    Each tie is a THROUGH-BOLTED SANDWICH: an interior plate + an EXTERIOR (outside-wall)
-    plate, joined by a TWO-BOLT pattern through the container wall. On the NEAR wall the
-    ties sit ONLY in the two equipment-free X-gaps (X150–1700 + X2710–4649) — clear of
-    the EP/battery/solar/tilt-swing cluster (X1700–2710) + the central walkway; the FAR
-    wall is clear so ties spread evenly."""
-    s = ov.BRACE_RHS
-    z_bot, z_top = ov.BRACE_Z_BOT, ov.BRACE_Z_TOP - s   # 150 (bottom beam), 2238 (top beam)
-    wt = ov.WALL_T                                       # 40 — container wall thickness
-    parts = []
-
-    def tie(x, z, side):
-        if side == "near":                              # wall interior face Yd0, exterior −wt
-            y_beam, strut0, strut1 = ov.FP_Y_MIN, 0, ov.FP_Y_MIN
-            yi_plate, yo_plate = 0, -wt - 8             # inside 0..8, outside −48..−40
-        else:                                           # far wall: interior C_WID, exterior +wt
-            y_beam, strut0, strut1 = ov.FP_Y, ov.FP_Y, ov.C_WID
-            yi_plate, yo_plate = ov.C_WID - 8, ov.C_WID + wt
-        p = []
-        # gusset strut: beam → interior wall face
-        p.append(ov.ruby_box(f"FP wall-tie strut X{int(x)} Z{int(z)} {side}",
-                 x - 22, strut0, z, 44, strut1 - strut0, s, color=ov.C_STEEL))
-        # interior + exterior (outside-wall) sandwich plates
-        p.append(ov.ruby_box(f"FP inside plate X{int(x)} Z{int(z)} {side}",
-                 x - 50, yi_plate, z - 20, 100, 8, s + 40, color=ov.C_STEEL))
-        p.append(ov.ruby_box(f"FP OUTSIDE plate X{int(x)} Z{int(z)} {side}",
-                 x - 50, yo_plate, z - 20, 100, 8, s + 40, color=ov.C_STEEL))
-        # TWO-BOLT pattern through the wall (Yd, outside plate → inside plate)
-        by0, by1 = min(yi_plate, yo_plate), max(yi_plate, yo_plate) + 8
-        for bx in (x - 30, x + 30):
-            p.append(ov.ruby_box(f"FP wall bolt X{int(bx)} Z{int(z)} {side}",
-                     bx - 6, by0, z + s // 2 - 6, 12, by1 - by0, 12, color=ov.C_STEEL))
-        return '\n'.join(p)
-
-    for x in (600, 1300, 3100, 4200):           # NEAR wall — equipment-free gaps only
-        for z in (z_bot, z_top):
-            parts.append(tie(x, z, "near"))
-    for x in (600, 1700, 2800, 4200):           # FAR wall — clear, evenly spread
-        for z in (z_bot, z_top):
-            parts.append(tie(x, z, "far"))
     return '\n'.join(parts)
 
 
@@ -309,7 +292,7 @@ def generate_ruby():
         ov.component("Near-wall equipment (ghost)", "Context", near_wall_ghost()),
         ov.component("Processing Tray", "Processing Tray", ov.processing_tray()),
         ov.component("Corner Mechanism", "Corner Mechanism",
-                     static_rails() + "\n" + brace_cage() + "\n" + wall_fastening()),
+                     static_rails() + "\n" + saddles()),
         ov.component("Walkways", "Walkways",
                      ov.walkways(include_right=True, include_right_hangers=False)),
         ov.component("Corner Detail (TR)", "Corner Detail", detail),

@@ -112,7 +112,7 @@ neoprene compression strip. Replaces the failed Ø750 4-fin drum.*
 | Panel height | 2388mm | `C_HGT` |
 | Panel thickness | 120mm | — (hardcoded in scripts) |
 
-*Components: 50×50mm RHS steel frame, 18mm plywood skins (both faces), 20mm EPDM compression
+*Components: 50×50mm RHS steel frame, 4mm PP plastic skins (both faces; 18mm-ply Fan-B mount band), 20mm EPDM compression
 gasket in machined channel + 2× vertical cut seals (Yd180/2287), vertical **Ø89×8mm CHS pivot
 post** (rev10 — the reused film far-left upright, on a thrust collar + top/bottom hub bearings;
 structural sign-off) carrying the ~56° transport swing, 4× Southco C2-33 cam compression latches,

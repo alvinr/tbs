@@ -48,16 +48,20 @@ def _rows():
     w_far  = (k.PIVOT_YD - k.PANEL_CORNER_YD_R) / 1000.0        # 1709→2287
     aperture = math.pi * (k.LT_HOUSING_R / 1000.0) ** 2         # Ø900 opening
 
-    # ── A. Stepped sandwich (swing zone only) ──
-    add("A Sandwich", "Corner ply skins", f"2×18mm ply, {w_near+w_far:.3f}m × {H:.2f}m",
-        2 * (w_near + w_far) * H * 0.018 * RHO_PLY)
+    # ── A. Stepped framed panel (swing zone only) — rev11: 4mm PP skins + Fan ply band ──
+    ts = k.PANEL_SKIN_T / 1000.0                                # 0.004 m PP skin
+    band = (k.PANEL_FAN_BAND_Z - k.PANEL_FLOOR_GAP) / 1000.0    # ply band height ≈ 0.995 m
+    add("A Sandwich", "Fan ply band (18mm)", f"Fan B corner, {w_near:.3f}m × {band:.2f}m, 2 faces",
+        2 * (w_near * band) * 0.018 * RHO_PLY)
+    add("A Sandwich", "PP corner skins (4mm)", f"near above band + far, 2 faces",
+        2 * (w_near * (H - band) + w_far * H) * ts * RHO_PP)
     add("A Sandwich", "Corner Al core plates", f"3mm 5052, {w_near+w_far:.3f}m × {H:.2f}m",
         (w_near + w_far) * H * 0.003 * RHO_ALUM)
     frame_len = 2 * (w_ctr + H) + 4 * w_ctr
     add("A Sandwich", "Center RHS frame", f"50×50×3 SHS, {frame_len:.1f}m total",
         frame_len * RHS_KG_PER_M)
-    add("A Sandwich", "Center ply skins", "2×18mm ply, Ø900 aperture deducted",
-        2 * (w_ctr * H - aperture) * 0.018 * RHO_PLY)
+    add("A Sandwich", "PP center skins (4mm)", "2×4mm PP, Ø900 aperture deducted",
+        2 * (w_ctr * H - aperture) * ts * RHO_PP)
 
     # ── B. Fixed Ø900 housing (bolts into panel, swings with it) ──
     open_frac = k.LT_OPENING_DEG / 360.0
@@ -85,8 +89,8 @@ def _rows():
     bay_w = (k.DRUM_CAGE_YD_R - k.DRUM_CAGE_YD_L) / 1000.0
     bay_area = (2 * bay_depth * Hd + 2 * bay_depth * bay_w
                 + max(bay_w * Hd - aperture, 0))
-    add("D Bay", "Punch-out bay walls", f"6mm ply, {bay_area:.2f}m² ({bay_depth:.2f}m deep)",
-        bay_area * 0.006 * RHO_PLY)
+    add("D Bay", "Punch-out bay walls", f"4mm PP, {bay_area:.2f}m² ({bay_depth:.2f}m deep)",
+        bay_area * ts * RHO_PP)
 
     # ── E. Drum support cage (light steel box frame) ──
     cage_depth = (k.DRUM_CAGE_X1 - k.DRUM_CAGE_X0) / 1000.0
@@ -112,10 +116,10 @@ def _rows():
 
 def _material_of(item):
     s = item.lower()
-    if "ply" in s or "bay" in s: return "Plywood"
+    if "ply" in s: return "Plywood"               # fan ply band only
     if "al core" in s or "aluminum" in s: return "Aluminum"
     if "hdpe" in s: return "HDPE"
-    if item.startswith("PP "): return "PP"
+    if item.startswith("PP ") or "bay" in s: return "PP"   # PP skins + PP bay
     if "epdm" in s or "wiper" in s: return "EPDM/other"
     return "Steel"
 

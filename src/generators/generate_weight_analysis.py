@@ -50,7 +50,7 @@ from tbs_constants import (
     EP_X, EP_W, BA_X, BA_W, PUMP_X, PUMP_W,
     PUMP_D, PUMP_H_LO, PUMP_H_HI, CORRIDOR_YD_NEAR,
     PANEL_CORNER_T, PANEL_CENTER_T, PANEL_CENTER_W, PANEL_FLOOR_GAP,
-    PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
+    PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_SKIN_T, PANEL_FAN_BAND_Z,
     PIVOT_X, PIVOT_YD, SWING_LOCK_DEG,
     DRUM_D, DRUM_R, DRUM_H_LT,
     LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG,
@@ -138,21 +138,27 @@ def swing_bbox(x0, x1, y0, y1, deg=SWING_LOCK_DEG):
 # ═══════════════════════════════════════════════════════════════════════════
 
 def _panel_weight():
-    """Hinged panel: stepped sandwich construction (rev 8.1 geometry).
-    Corner zones (2×): 18mm ply + 3mm ALUMINUM + 18mm ply (40mm envelope).
-    Center zone: 50×50mm steel RHS frame + 18mm ply skins, PANEL_CENTER_W wide.
+    """Hinged panel: stepped framed construction (rev 11 skins).
+    Corner zones (2×): 4mm PP skin + 3mm ALUMINUM core + 4mm PP skin (40mm
+    framed envelope). The Fan B corner keeps an 18mm PLYWOOD band (panel bottom
+    up to PANEL_FAN_BAND_Z) for rigid fan/duct mounting; the rest is PP.
+    Center zone: 50×50mm steel RHS frame + 4mm PP skins, PANEL_CENTER_W wide.
     First-principles only — no scaling pin (the fixed Ø900 housing is added
     separately in build_components, since it bolts into the panel center).
     """
     panel_h = C_HGT  # 2388mm
+    ts = PANEL_SKIN_T * 1e-9                       # 4mm PP skin factor (mm²→m³)
     # Corner zones (near + far are symmetric at PANEL_CORNER_YD_L each)
     corner_w_near = PANEL_CORNER_YD_L              # = 653mm
     corner_w_far = C_WID - PANEL_CORNER_YD_R       # = 653mm
-    # Each corner: 2 ply skins + 1 aluminum plate, near + far corners
-    ply_vol_corner = 2 * ((corner_w_near + corner_w_far) * panel_h * 18e-9)
-    alum_vol_corner = (corner_w_near + corner_w_far) * panel_h * 3e-9  # 3mm Al
-    corner_ply_kg = ply_vol_corner * RHO_PLY
+    corner_area = (corner_w_near + corner_w_far) * panel_h          # mm²
+    # Fan B corner keeps an 18mm ply band over the near-corner width, bottom→band-top
+    fan_band_area = corner_w_near * (PANEL_FAN_BAND_Z - PANEL_FLOOR_GAP)
+    corner_band_kg = 2 * fan_band_area * 18e-9 * RHO_PLY           # 2× 18mm ply faces
+    corner_skin_kg = 2 * (corner_area - fan_band_area) * ts * RHO_PP  # 2× 4mm PP faces
+    alum_vol_corner = corner_area * 3e-9            # 3mm Al core (unchanged)
     corner_plate_kg = alum_vol_corner * RHO_ALUM
+    corner_ply_kg = corner_band_kg + corner_skin_kg  # (mixed ply band + PP skin)
     # Center zone: steel RHS frame perimeter + cross members.
     # 50×50×3 SHS section area = 50² − 44² = 564 mm² → 4.43 kg/m (EN 10219
     # table 4.35; first-principles used here). [was an approx 456 mm²/3.58 kg/m]
@@ -160,8 +166,8 @@ def _panel_weight():
     cw = PANEL_CENTER_W / 1000.0                   # = 1.056 m
     center_frame_length = 2 * (cw + 2.388) + 4 * cw
     frame_kg = center_frame_length * rhs_kg_per_m
-    # Center ply skins: 2 × center_w × 2388 × 18mm
-    center_ply_kg = 2 * (cw * 2.388 * 0.018) * RHO_PLY
+    # Center skins: 2 × center_w × 2388 × 4mm PP (rev11; was 18mm ply)
+    center_ply_kg = 2 * (cw * 2.388 * (PANEL_SKIN_T / 1000.0)) * RHO_PP
     return corner_ply_kg + corner_plate_kg + frame_kg + center_ply_kg
 
 
@@ -301,7 +307,7 @@ def _bay_weight():
     height = (DRUM_H_LT - PANEL_FLOOR_GAP) / 1000.0      # ≈ 2.12 m
     aperture = np.pi * (LT_HOUSING_R / 1000.0) ** 2      # Ø900 opening in front face
     area = 2 * (depth * height) + 2 * (depth * width) + max(width * height - aperture, 0)
-    return area * 0.006 * RHO_PLY                        # 6mm ply → ≈ 25 kg
+    return area * (PANEL_SKIN_T / 1000.0) * RHO_PP        # rev11: 4mm PP (was 6mm ply); ≈ 25 kg, weight-neutral
 
 
 def _swing_hardware_weight():
@@ -400,7 +406,7 @@ def build_components():
                   *swing_bbox(0, 80, 0, C_WID), 0, C_HGT,
                   color=C_HINGE_PANEL,
                   states=("dry", "exhausted", "loaded_transport"),
-                  calc_note="Sandwich: ply + 3mm-Al corners, steel RHS center + 5mm-HDPE Ø900 housing + B2 punch-out bay. Transport: swung 56° about the pivot"),
+                  calc_note="Framed panel: 4mm-PP skins (18mm-ply Fan-B mount band) + 3mm-Al corner cores, steel RHS center + 5mm-HDPE Ø900 housing + 4mm-PP B2 bay. Transport: swung 56° about the pivot"),
         Component("Light trap drum", "structure", drum_kg,
                   *swing_bbox(0, 40, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R),
                   PANEL_FLOOR_GAP, DRUM_H_LT, color=C_LT_DRUM,
@@ -410,7 +416,7 @@ def build_components():
         Component("Hinged panel", "structure", panel_kg,
                   0, 80, 0, C_WID, 0, C_HGT, color=C_HINGE_PANEL,
                   states=("ready",),
-                  calc_note="Sandwich: ply + 3mm-Al corners, steel RHS center + 5mm-HDPE Ø900 housing + B2 punch-out bay"),
+                  calc_note="Framed panel: 4mm-PP skins (18mm-ply Fan-B mount band) + 3mm-Al corner cores, steel RHS center + 5mm-HDPE Ø900 housing + 4mm-PP B2 bay"),
         Component("Light trap drum", "structure", drum_kg,
                   0, 40, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
                   0, DRUM_H_LT, color=C_LT_DRUM,

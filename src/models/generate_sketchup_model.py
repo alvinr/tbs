@@ -54,7 +54,7 @@ from tbs_constants import (
     RAIL_X_L, RAIL_X_R, RAIL_LEN, RAIL_OFF, RAIL_OFF_BOT, FP_ANGLE_LEG,
     BRACE_RHS, BRACE_Z_BOT, BRACE_Z_TOP,
     BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T,
-    PANEL_CENTER_T, PANEL_FLOOR_GAP,
+    PANEL_CENTER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z,
     PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
     PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0,
     PIVOT_POST_OD, PIVOT_POST_T,
@@ -97,7 +97,8 @@ C_PINHOLE = "#CC6600"   # pinhole aperture + optical cone
 C_RAIL = "#606068"      # HGR20 linear rail
 C_CARR = "#C04010"      # HGH20CA carriage block
 C_ALUM = "#C8D8E8"      # aluminum (cargo door panel, spray bar beam)
-C_PLY = "#9C7B4D"       # marine ply (equipment panel)
+C_PLY = "#9C7B4D"       # marine ply (equipment panel + hinge-panel Fan B mount band)
+C_PLASTIC = "#6E8CA0"   # 4mm PP plastic sheet (rev11 hinge-panel skins + B2 bay; differentiates from wood C_PLY)
 C_PUMP = "#454552"      # pump bodies (Shurflo 2088)
 C_ACC = "#5A9ACC"       # ACC-01 accumulator
 C_FILTER = "#3A6EA5"    # Big Blue filter housings
@@ -669,10 +670,15 @@ def panel_pivot():
     """
     import generate_lighttrap_model as lt
     parts = [lt.axle()]
-    # Cargo-door panel, operational position (X=0). Ply sandwich (bay/hinge-panel color).
+    # Cargo-door panel, operational position (X=0). rev11: 4mm PP plastic skins
+    # (C_PLASTIC), with an 18mm PLYWOOD (C_PLY) mount band on the Fan B corner.
     parts.append(ruby_box("Cargo Door Panel",
                           0, 0, PANEL_FLOOR_GAP,
                           PANEL_CENTER_T, C_WID, 2300 - PANEL_FLOOR_GAP,
+                          color=C_PLASTIC, alpha=0.6))
+    parts.append(ruby_box("Fan B mount band (18mm ply)",
+                          0, 0, PANEL_FLOOR_GAP,
+                          PANEL_CENTER_T, PANEL_CORNER_YD_L, PANEL_FAN_BAND_Z - PANEL_FLOOR_GAP,
                           color=C_PLY, alpha=0.6))
     # Transport-lock support brackets (top + bottom): the near-wall stay anchors
     # (sandwiched inside/outside plates + eye + 4× M16) and the frame-side stay hooks.

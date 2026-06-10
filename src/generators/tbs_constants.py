@@ -157,12 +157,20 @@ def cone_right(y):
 # rev 8.1: drum, housing, and corner core plates switched from steel to 3mm
 # 5052-H32 ALUMINUM to roughly halve the panel+drum mass (~488 → ~286 kg).
 # Steel retained for the center RHS frame, seal lips, and bearing stub shafts.
-# Geometry is unchanged (3mm walls, Ø900/Ø864, 40mm corner envelope).
-# Corner zones (Yd=0–653 and Yd=1709–2362): thin sandwich panel.
+# rev 11: the panel SKINS switched from 18mm marine plywood to 4mm PP plastic
+# sheet (same material as the drum/housing), set in U-channels on the frame faces.
+# The frame ENVELOPE is unchanged (40mm corner / 120mm center); only the skin
+# material + thickness change, dropping ~44 kg (see hinged-panel-report §2.4–2.5).
+# EXCEPTION: an 18mm plywood band stays on the Fan B corner (bottom up to
+# PANEL_FAN_BAND_Z) for rigid fan/duct mounting + screw retention.
+# Corner zones (Yd=0–653 and Yd=1709–2362): thin framed panel, 4mm PP skins.
 # Center zone (Yd=653–1709): full RHS frame housing the Ø900 light-trap housing.
-PANEL_CORNER_T    = 40    # corner zone thickness (mm) — 18mm ply + 3mm Al plate + 18mm ply
-PANEL_CENTER_T    = 120   # center zone thickness (mm) — 18mm ply + 84mm RHS + 18mm ply
+PANEL_CORNER_T    = 40    # corner zone ENVELOPE thickness (mm) — 4mm PP + 3mm Al core + 4mm PP on a 40mm frame
+PANEL_CENTER_T    = 120   # center zone ENVELOPE thickness (mm) — 4mm PP + 84mm RHS frame + 4mm PP
 PANEL_STEP        = PANEL_CENTER_T - PANEL_CORNER_T  # = 80mm step depth
+PANEL_SKIN_T      = 4     # panel skin thickness (mm) — 4mm PP plastic sheet (rev11; was 18mm ply), U-channel set
+PANEL_FAN_PLY_T   = 18    # plywood fan-mount band thickness (mm) — local to the Fan B corner only
+PANEL_FAN_BAND_Z  = 1125  # ply band top Z (AFF) = FAN_B_H(600) + FAN_DIAM/2(75) + 450; literal — fan consts defined below
 PANEL_CORNER_YD_L = 653   # corner-to-center transition, near side (mm) [rev8: widened]
 PANEL_CORNER_YD_R = 1709  # center-to-corner transition, far side (mm)  [rev8: widened]
 PANEL_CENTER_W    = PANEL_CORNER_YD_R - PANEL_CORNER_YD_L  # = 1056mm center zone width
@@ -750,7 +758,9 @@ C_ELEC         = "#F5C518"   # electrical panel
 C_BATT         = "#6A5ACD"   # battery bank
 C_PUMP         = "#E8884A"   # pump manifold
 C_WALL         = "#B0B0B8"   # container walls / structural steel
-C_HINGE_PANEL  = "#C8C8C0"   # hinge panel body
+C_HINGE_PANEL  = "#C8C8C0"   # hinge panel body (generic / schematic block)
+C_WOOD         = "#C9A36B"   # plywood — fan-mount band + equipment panel (rev11 material legend)
+C_PLASTIC      = "#6E8CA0"   # 4mm PP panel skins + B2 bay (rev11; differentiates plastic from wood)
 C_FILM         = "#2060A0"   # film plane / muslin
 C_PINHOLE_EQ   = "#CC6600"   # pinhole aperture
 C_FAN          = "#A0A0A8"   # fans (A and B)

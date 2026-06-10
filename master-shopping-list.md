@@ -362,7 +362,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Plastic fabrication — roll 2 cylinders (housing + drum), hot-air / extrusion weld, cap/shaft fit, bearing fit | 16–22 hrs at local plastic fab shop | 1 job | Local plastic fabrication shop (SoCal) — get 2–3 quotes | ~$800–$1,150 |
 **Section total: ~$1,450–$2,100**
 
-*Note: This is for the drum body only. The hinged panel that the drum mounts into (50×50mm RHS frame, 18mm ply skins, EPDM perimeter gasket) is covered in § 2 (Interior Conversion) above. See [light-trap-selection.md](light-trap-selection.md) for full specification and supplier notes.*
+*Note: This is for the drum body only. The hinged panel that the drum mounts into (50×50mm RHS frame, 4mm PP plastic skins (18mm-ply Fan-B mount band), EPDM perimeter gasket) is covered in § 2 (Interior Conversion) above. See [light-trap-selection.md](light-trap-selection.md) for full specification and supplier notes.*
 
 ## 7a. Panel Swing Pivot
 *Source: `equipment-layout-report.md` § 6.1, `hinged-panel-report.md` § 4–5. Enables transport mode: the panel + drum SWING ~56° about a vertical Ø89×8mm CHS pivot post (rev10 — supersedes the B2 slide), carrying the punch-out bay inboard of the door plane (true min X +59mm) so the cargo doors close. Single-person operation (~5 min, swing assisted; strike the two left film rails + the left walkway first, then swing).*

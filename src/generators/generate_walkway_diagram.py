@@ -63,7 +63,7 @@ from tbs_constants import (
     PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM,
     WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_RIGHT_W,
     WALKWAY_BRACKET_H, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING,
-    PIVOT_X, PIVOT_YD, SWING_LOCK_DEG,
+    PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD,
     WALKWAY_RIGHT_BEARER_SIZE, WALKWAY_RIGHT_BEARER_T,
     WALKWAY_RIGHT_HANGER_D, WALKWAY_RIGHT_HANGER_N, WALKWAY_RIGHT_HANGER_Y1, WALKWAY_RIGHT_HANGER_L,
     WALKWAY_RIGHT_CEIL_PLATE, WALKWAY_RIGHT_CEIL_BOLT_D,
@@ -966,12 +966,13 @@ def sheet1():
     # rev10: the cargo panel + drum SWING ~56° about the Ø89 pivot (PIVOT_X, PIVOT_YD),
     # they no longer slide. The left walkway must lift out before the swing so the
     # swinging cage can transition the X=150 rail line / near-door deck. Shade the
-    # sector swept by the panel free edge — the keep-clear transport zone.
+    # sector swept by the SWINGING part's free edge (Yd=PANEL_CUT_YD — the fixed near
+    # strip Yd0..180 does NOT swing) — the keep-clear transport zone.
     def _sw(x, y, deg):
         t = np.radians(deg); c, s = np.cos(t), np.sin(t)
         return (PIVOT_X + (x - PIVOT_X) * c - (y - PIVOT_YD) * s,
                 PIVOT_YD + (x - PIVOT_X) * s + (y - PIVOT_YD) * c)
-    sweep_arc = [_sw(0, 0, d) for d in np.linspace(0, SWING_LOCK_DEG, 28)]
+    sweep_arc = [_sw(0, PANEL_CUT_YD, d) for d in np.linspace(0, SWING_LOCK_DEG, 28)]
     ax.add_patch(Polygon([(PIVOT_X, PIVOT_YD)] + sweep_arc, closed=True,
                          fc="#FF0000", ec="#CC0000", lw=1.2, ls=(0, (4, 3)),
                          alpha=0.06, zorder=3))

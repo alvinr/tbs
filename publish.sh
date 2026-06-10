@@ -74,6 +74,7 @@ MD_FILES=(
     "processing-tray-and-spray-bar.md"
     "hinged-panel-report.md"
     "walkway-report.md"
+    "right-walkway-cantilever-study.md"
     "equipment-panel-report.md"
     "ibc-stacking-report.md"
     "ventilation-report.md"

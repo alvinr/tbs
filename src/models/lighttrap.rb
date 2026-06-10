@@ -428,7 +428,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Walkway Near (door-end, removable)
   grp = ents.add_group
   grp.name = "Walkway Near (door-end, removable)"
-  face = grp.entities.add_face([470.mm,0.mm,115.mm], [900.mm,0.mm,115.mm], [900.mm,300.mm,115.mm], [470.mm,300.mm,115.mm])
+  face = grp.entities.add_face([470.mm,0.mm,115.mm], [950.mm,0.mm,115.mm], [950.mm,300.mm,115.mm], [470.mm,300.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Walkway Near (door-end, removable)"] || model.materials.add("Walkway Near (door-end, removable)")
@@ -439,7 +439,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Walkway Near (partial)
   grp = ents.add_group
   grp.name = "Walkway Near (partial)"
-  face = grp.entities.add_face([900.mm,0.mm,115.mm], [1600.mm,0.mm,115.mm], [1600.mm,300.mm,115.mm], [900.mm,300.mm,115.mm])
+  face = grp.entities.add_face([950.mm,0.mm,115.mm], [1600.mm,0.mm,115.mm], [1600.mm,300.mm,115.mm], [950.mm,300.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Walkway Near (partial)"] || model.materials.add("Walkway Near (partial)")

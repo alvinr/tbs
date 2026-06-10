@@ -541,9 +541,10 @@ WALKWAY_H       = 130    # deck height above floor (mm) — RAISED +50 (was 80) 
 #       bottom (≈2.3% image). (History: 65→80 lowered for film clearance, then +50 raised.)
 WALKWAY_GRATE_T = 15     # grating thickness (mm) — thin grate (was 25) for film-plane clearance
 WALKWAY_H_PREV  = 100    # original deck height (pre-lowering) — reserved (history; kept for reference)
-WALKWAY_NEAR_LIFTOUT_X_R = 900  # the NEAR deck's door-end band (X≈470–900, Yd0–300) is a
-                         # REMOVABLE lift-out for transport — the panel/cage underside sweeps this
-                         # band at ~12–25° of the swing, so it lifts out (with the left walkway)
+WALKWAY_NEAR_LIFTOUT_X_R = 950  # the NEAR deck's door-end band (X≈470–950, Yd0–300) is a
+                         # REMOVABLE lift-out for transport — the swing sweeps this band to X≈896
+                         # (over Yd0–300), so the lift-out runs to 950 for a ~50mm margin; it lifts
+                         # out (with the left walkway)
                          # rather than dropping the grate (the walkway stays LEVEL at Z130). The FAR
                          # deck is NOT swept (swept points stay short of the X470 deck start).
 # Container structural rib spacing (ISO standard 20ft container)

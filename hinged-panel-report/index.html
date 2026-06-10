@@ -16,7 +16,7 @@
         <link rel="prev" href="../walkway-report/">
       
       
-        <link rel="next" href="../ceiling-rail-report/">
+        <link rel="next" href="../chemistry-prep-shelves/">
       
       
         
@@ -1491,15 +1491,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-sliding-carriage-system" class="md-nav__link">
+  <a href="#5-rotating-transport-system" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Sliding Carriage System
+        5. Rotating Transport System
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5. Sliding Carriage System">
+    <nav class="md-nav" aria-label="5. Rotating Transport System">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1608,10 +1608,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#83-sliding-carriage" class="md-nav__link">
+  <a href="#83-swing-pivot-hardware" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.3 Sliding Carriage
+        8.3 Swing Pivot Hardware
       
     </span>
   </a>
@@ -1671,34 +1671,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ceiling-rail-report/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Ceiling Rail Suspension
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -2580,12 +2552,12 @@ time without opening the panel or breaking the light seal. In case of emergency,
 <li>100% light exclusion — no straight-line optical path from exterior to interior</li>
 <li>Single-operator personnel access at any time during exposure</li>
 <li>180° outward swing for full-width loading access (IBC totes, equipment)</li>
-<li>~880mm inward slide for transport mode — retracts the B2 punch-out bay behind the ISO container doors + hardware</li>
+<li>~56° transport swing about the Ø89 pivot post — carries the B2 punch-out bay inboard of the ISO container doors (true min X +59mm) + hardware</li>
 <li>Emergency egress operable from inside without tools</li>
 <li>Weatherproof for outdoor field deployment (IP44 rated seals)</li>
 <li>Single-person mode conversion (~5 minutes)</li>
 </ul>
-<p><strong>Interactive 3D model</strong> — the revolving light-trap drum, hinged stepped panel, sliding carriage, fixed door frame (with the bottom seal lip), and Fan B. Drag to orbit, scroll to zoom.</p>
+<p><strong>Interactive 3D model</strong> — the revolving light-trap drum, hinged stepped panel, Ø89 swing pivot, fixed door frame (with the bottom seal lip), and Fan B. Drag to orbit, scroll to zoom.</p>
 <div class="sketchfab-embed-wrapper">
   <div style="position:relative;width:100%;padding-bottom:56.25%;">
     <iframe title="TBS-001 Lighttrap Model" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/6a794d0d2ff44a4e975e021012c69666/embed" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
@@ -2729,7 +2701,7 @@ commercial-darkroom-door arrangement — sized for a single operator.</p>
 </tr>
 <tr>
 <td>Mounting</td>
-<td><strong>Suspended with the panel</strong> — bottom hangs at Z=80 on the panel bottom rail (80mm floor gap → clears the 50mm tray rim during the transport slide). Operator steps up ~80mm over the threshold to enter; exits level onto the walkway deck (also Z=80).</td>
+<td><strong>Carried with the panel</strong> — rides at Z=130 on the panel bottom rail (130mm floor gap → clears the tray rim, and the swinging cage passes over the Z115 walkway brackets). Operator steps up ~130mm over the threshold to enter; exits level onto the walkway deck (also Z=130).</td>
 </tr>
 <tr>
 <td>Wall thickness</td>
@@ -2893,36 +2865,37 @@ standard commercial-darkroom-door arrangement, here custom-built to the panel.</
 <tbody>
 <tr>
 <td>Type</td>
-<td>Heavy-duty weld-on barrel hinges — <strong>STRUCTURAL SIGN-OFF REQUIRED</strong></td>
+<td>Vertical <strong>Ø89×8 CHS pivot post</strong> (the reused film-plane far-left upright) on a thrust collar + top/bottom hub bearings — <strong>STRUCTURAL SIGN-OFF REQUIRED</strong></td>
 </tr>
 <tr>
 <td>Quantity</td>
-<td>3</td>
+<td>1 post (carries the full bay + housing + drum swing cantilever, ~3.6 kN·m, SF ~3.7 in S355)</td>
 </tr>
 <tr>
-<td>Positions (from floor)</td>
-<td>220mm, 1190mm, 2158mm</td>
+<td>Position</td>
+<td>Far-left panel edge — X=175mm, Yd=2287mm</td>
 </tr>
 <tr>
 <td>Mounting</td>
-<td>Left edge of panel (exterior view), welded to a steel hinge post</td>
+<td>Post fixed top + bottom to the container end structure; the swinging frame rotates on the hub bearings (vertical axis ⇒ balanced at any angle, no gravity torque)</td>
 </tr>
 <tr>
 <td>Swing</td>
-<td>180° outward — clears full door opening and all interior equipment</td>
+<td>~56° inboard to the transport position (locked by the top + bottom wall stays); swings clear of the door plane for personnel/equipment access</td>
 </tr>
 </tbody>
 </table>
 <p>Under rev 9 (B2) the panel no longer carries just plywood skins: the punch-out bay,
-the fixed Ø900 housing, and the revolving drum all hang off the swinging leaf,
-roughly tripling the cantilevered swing-out moment about the hinge line. A 200mm
-ball-bearing piano hinge is no longer adequate; the leaf is hung on three heavy-duty
-weld-on barrel hinges on a welded steel post. The plastic-skinned drum/housing
-(LT_DRUM_T = 4mm PP, LT_HOUSING_T = 5mm UV-HDPE) keeps that added mass modest — the
-core is light — but the moment arm is long, so the <strong>hinge post, barrel hinges, and
-their weld pattern require a structural engineer's sign-off</strong> before fabrication. A
-<strong>retractable swing-support caster</strong> at the free (latch) edge carries the leaf weight
-through its 180° arc so the load is not borne by the hinges alone while open.</p>
+the fixed Ø900 housing, and the revolving drum all hang off the swinging leaf, roughly
+tripling the cantilevered swing moment. rev10 carries that load on a vertical <strong>Ø89×8
+CHS pivot post</strong> (the reused film-plane far-left upright) rather than barrel hinges —
+the post takes the ~3.6 kN·m swing cantilever on a thrust collar + top/bottom hub
+bearings (SF ~3.7 in S355). The plastic-skinned drum/housing (LT_DRUM_T = 4mm PP,
+LT_HOUSING_T = 5mm UV-HDPE) keeps the added mass modest. Because the pivot axis is
+<strong>vertical</strong>, the assembly is balanced at any swing angle — no gravity torque and no
+free-edge sag, so no swing-support caster is needed (the old B2 barrel-hinge + caster
+scheme is retired). The <strong>pivot post and its bearing + weld pattern require a structural
+engineer's sign-off</strong> before fabrication.</p>
 <h3 id="42-cam-latches">4.2 Cam Latches<a class="headerlink" href="#42-cam-latches" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2959,37 +2932,40 @@ operator inside the container can release all four interior-mounted cam latches
 independently and push the panel open outward. The panel swings 180° clear of all
 interior equipment.</p>
 <hr />
-<h2 id="5-sliding-carriage-system">5. Sliding Carriage System<a class="headerlink" href="#5-sliding-carriage-system" title="Permanent link">&para;</a></h2>
-<p>The entire panel (including the bay, housing + drum) slides ~880mm in the X direction on linear
-rails for transport mode conversion. This slide retracts the B2 punch-out bay's exterior
-overhang behind the container door closure plane.</p>
-<p><strong>Sheet 1 — Side elevation cross-section: Panel suspended from ceiling rail, operational and transport positions, processing tray clearance</strong>
-<img alt="TBS-001 Ceiling Rail — Sheet 1: Side Elevation" src="../assets/ceiling-rail-sheet1.png" /></p>
-<p>See <a href="../ceiling-rail-report/">Ceiling Rail Design</a> for full details.</p>
+<h2 id="5-rotating-transport-system">5. Rotating Transport System<a class="headerlink" href="#5-rotating-transport-system" title="Permanent link">&para;</a></h2>
+<p>For transport the entire swinging assembly — the panel center section (Yd 180–2287), the B2
+punch-out bay, and the housing + revolving drum — <strong>revolves ~56° about a vertical Ø89mm CHS
+pivot post</strong> (the reused film-plane far-left upright, at X=175mm / Yd=2287mm). The swing carries
+the bay's ~890mm exterior overhang from outside the cargo-door plane to inboard of it, so the ISO
+doors close. The earlier "slide ~880mm on ceiling rails" scheme is <strong>retired</strong> — there is no
+linear carriage.</p>
+<p>Two narrow strips stay fixed at the door plane and do <strong>not</strong> swing: the near strip (Yd 0–180)
+and the far strip (Yd 2287–2362, which carries the pivot). The cargo doors close outboard of the
+fixed near strip.</p>
+<p>To let the swinging cage cross the X=150mm film-plane rail line, the <strong>two left film rails
+(top-left + bottom-left) lift out of their drop-in saddles</strong> and the <strong>left walkway + door-end
+near-deck section lift out</strong> before the swing; all are re-seated to datum afterward.</p>
 <h3 id="51-panel-positions">5.1 Panel Positions<a class="headerlink" href="#51-panel-positions" title="Permanent link">&para;</a></h3>
-<p><strong>Sheet 4 — Sliding rail transport system: HGR20 rails, operational vs. transport positions</strong>
-<img alt="TBS-001 Hinged Panel — Sheet 4: Transport System" src="../assets/hingepanel-sheet4.png" /></p>
+<p><strong>Sheet 4 — Rotating transport + swing clearance: panel swings 56° about the pivot (camera vs swung), removable left rails</strong>
+<img alt="TBS-001 Hinged Panel — Sheet 4: Rotating Transport + Swing Clearance" src="../assets/hingepanel-sheet4.png" /></p>
 <table>
 <thead>
 <tr>
 <th>Position</th>
-<th>Panel corner inner face X</th>
-<th>Drum exterior edge X</th>
+<th>Bay front-right corner X</th>
 <th>Container doors clear?</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Operational</td>
-<td>40mm</td>
-<td>−850mm (bay front −890mm)</td>
-<td>No — the B2 punch-out bay protrudes ~890mm; the cargo doors stay open during operation</td>
+<td>Operational (0°)</td>
+<td>−890mm (bay protrudes ~890mm outside the door plane)</td>
+<td>No — the cargo doors stay open during operation</td>
 </tr>
 <tr>
-<td>Transport (slid +880mm)</td>
-<td>—</td>
-<td>+30mm</td>
-<td>Yes — the bay retracts behind the door plane by ~30mm</td>
+<td>Transport (swung 56°)</td>
+<td>+59mm (true min X over the whole swept assembly — computed 58.6mm at this corner)</td>
+<td>Yes — the swept frame is fully inboard of the closed door</td>
 </tr>
 </tbody>
 </table>
@@ -2997,69 +2973,69 @@ overhang behind the container door closure plane.</p>
 <table>
 <thead>
 <tr>
-<th>Lock position</th>
+<th>State</th>
 <th>Method</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Operational (X=0)</td>
-<td>2 × Destaco 207-U toggle clamps</td>
+<td>Operational (0°)</td>
+<td>4 × interior cam latches (§4) compress the EPDM perimeter + cut seals against the door frame</td>
 </tr>
 <tr>
-<td>Transport (X≈870)</td>
-<td>2 × Destaco 207-U toggle clamps</td>
+<td>Transport (swung 56°)</td>
+<td>Top + bottom <strong>wall stays</strong> — hook on the frame ↔ eye on the near wall, tensioned by turnbuckle, forming a couple. Engaged after the swing, released before swing-back.</td>
 </tr>
 </tbody>
 </table>
 <h3 id="53-floor-gap">5.3 Floor Gap<a class="headerlink" href="#53-floor-gap" title="Permanent link">&para;</a></h3>
-<p>The panel is suspended from the ceiling HGR20 rails with an 80mm gap between the
-panel bottom edge and the container floor. This gap clears the 50mm processing tray
-rim with 30mm margin, allowing the panel to slide freely in both directions without
-contacting the tray.</p>
-<p><strong>The housing + drum hang at the same Z=80</strong> (lower bearing on the panel bottom
-rail), so they too clear the tray rim by 30mm. This matters in transport: the ~880mm
-inward slide carries the Ø900 housing into the near-tray zone (its interior edge
-reaches ~X=930), but because the whole assembly is suspended it passes over the tray
-basin rather than colliding with it. A floor-mounted housing would have fouled the
-tray; suspension is what makes the deeper-housing transport slide feasible. The 80mm
-floor gap is closed by the now-continuous bottom seal lip (§6 path #6).</p>
-<p>The 80mm gap would otherwise be a straight light path, so it is light-sealed in the
-operational position by the fixed-frame bottom seal lip described in §6 (path #6) —
-a threshold upstand the panel bottom edge recedes into, with an EPDM strip compressed
-by the lower cam latches. Because the seal is a non-floor compression seal against a
-frame lip (not a contact seal to the floor), it never fouls the tray rim and lifts
-clear the moment the clamps are released for transport.</p>
+<p>The panel + drum cage ride at a <strong>130mm floor gap</strong> (Z=130 — the grate-top level set
+by the +50mm walkway raise), carried by the pivot post on its thrust collar + hub
+bearings. The gap clears the processing tray rim with margin; it is also the threshold
+the drum revolves over and the floor datum the swing arc sweeps at.</p>
+<p><strong>The housing + drum ride at the same Z=130</strong>, so the swinging cage passes over the
+tray basin — and over the Z115 door-end walkway brackets — rather than colliding with
+them. The swing (about a vertical pivot, so the bottom edge stays at Z=130 throughout)
+is what makes the deep Ø900 housing transport-feasible without a slide; a floor-mounted
+housing would have fouled the tray. The 130mm floor gap is closed in the operational
+position by the continuous bottom seal lip (§6).</p>
+<p>The 130mm gap would otherwise be a straight light path, so it is light-sealed in the
+operational position by the fixed-frame bottom seal lip described in §6 — a threshold
+upstand the panel bottom edge recedes into, with an EPDM strip compressed by the lower
+cam latches. Because the seal is a non-floor compression seal against a frame lip (not
+a contact seal to the floor), it never fouls the tray rim and lifts clear the moment
+the latches are released for the swing.</p>
 <h3 id="54-transport-conversion-sequence">5.4 Transport Conversion Sequence<a class="headerlink" href="#54-transport-conversion-sequence" title="Permanent link">&para;</a></h3>
-<p><strong>Sheet 6 — Transport-slide clearance vs the film-plane left mechanism (plan)</strong>
-<img alt="TBS-001 Hinged Panel — Sheet 6: Transport Clearance" src="../assets/hingepanel-sheet6.png" /></p>
-<p>The inward slide carries the panel to <strong>X 880–1000</strong>, so it sweeps through <strong>X=150</strong>,
-where the film-plane mechanism's left edge sits. The film-plane left rail (running in
-Yd at X=150, floor + ceiling) — <strong>now continuous in operation</strong>, since the B2 punch-out
-bay offsets the drum clear of it — plus the lengthwise brace-cage beams (X 150→4649)
-and the muslin screen are all in the slide path; the deeper slide also reaches the
-<strong>door-end walkway brackets (X≈698, 1155)</strong>. <strong>The film plane and those door-end
-brackets must therefore be struck before the panel is slid.</strong> Striking the film plane
-is required regardless: the fragile muslin screen cannot travel mounted.</p>
-<p>Order of operations (single person, ~10 min):</p>
+<p>The rotation transport + swing clearance vs the film-plane left mechanism is shown in
+<strong>Sheet 4</strong> (above): the panel + drum swing ~56° about the pivot, pulling the bay inboard of
+the door plane (true min X +59 mm); the two left film rails are struck (removable) so the
+swinging cage transitions the X=150 rail plane, then re-seat to the film datum.</p>
+<p>The swing carries the drum cage through <strong>X=150</strong>, where the film-plane mechanism's
+left edge sits, so the <strong>two left film rails (TL + BL) must be struck before the swing</strong>
+and re-seated after (the tapered dowels return the film datum). The muslin screen must
+be struck regardless — the fragile screen cannot travel mounted. The swing <strong>clears the
+door-end walkway brackets at Z</strong>: the cage underside at Z=130 passes over the Z=115
+bracket tops, so <strong>no walkway bracket is demounted</strong> (superseding the old slide, which
+swept past them at floor level and required striking them).</p>
+<p>Order of operations (single person, ~10 min) — see the <a href="../operating-manual/">Operating Manual</a> §5.5:</p>
 <ol>
-<li>Remove the muslin screen from its frame and stow it (rolled).</li>
-<li>Knock down the brace cage (saddle/thumbscrew portals — it is a demountable box).</li>
-<li><strong>Remove the full film-plane left rail</strong> (floor + ceiling — continuous in operation,
-   lifted out whole for transport). Park the film-plane carriage clear.</li>
-<li><strong>Strike the door-end near/far walkway brackets</strong> (X≈698, 1155) — the deeper slide
-   sweeps past them.</li>
-<li>Lift out the left walkway.</li>
-<li>Release the four cam latches and the two operational toggle clamps.</li>
-<li>Slide the panel inward ~880mm; engage the transport toggle clamps.</li>
-<li>Close the ISO cargo doors.</li>
+<li>Park the revolving drum and pin its rotation.</li>
+<li>Remove the muslin screen from its frame and stow it (rolled); knock down the
+   demountable brace cage (saddle/thumbscrew portals).</li>
+<li>Lift out the left walkway + door-end near-deck section.</li>
+<li><strong>Strike the two left film rails (TL + BL)</strong> — release each clamp bar, lift the rail
+   out of its saddles, and stow.</li>
+<li>Release the four Southco cam latches (releases the perimeter + cut seals).</li>
+<li><strong>Swing the frame ~56° inboard</strong> about the pivot, assisted (balanced about the
+   vertical axis — no gravity torque; control momentum at the stop).</li>
+<li>Engage the top + bottom wall stays (the transport lock).</li>
+<li>Close the ISO cargo doors (they clear the swung frame by +59 mm).</li>
 </ol>
-<p>Re-deployment reverses the sequence. (rev 9 / B2 offsets the drum out via the punch-out
-bay so the left rail is continuous in operation, and deepens the slide to ~880mm.)</p>
+<p>Re-deployment reverses the sequence.</p>
 <hr />
 <h2 id="6-light-seal-design">6. Light Seal Design<a class="headerlink" href="#6-light-seal-design" title="Permanent link">&para;</a></h2>
-<p>The sliding mechanism introduces seven potential light ingress paths that must be
-sealed when the panel is in the operational position.</p>
+<p>The swinging panel seals against the fixed door frame in its operational (closed)
+position. Five light ingress paths are sealed:</p>
 <table>
 <thead>
 <tr>
@@ -3072,42 +3048,27 @@ sealed when the panel is in the operational position.</p>
 <tr>
 <td>1</td>
 <td>Panel perimeter → door frame</td>
-<td>20mm EPDM gasket in aluminum channel, compressed by 4 × Southco C2-33 cam latches against fixed door frame at X=0</td>
+<td>20mm EPDM gasket in an aluminum channel, compressed by the 4 × Southco C2-33 cam latches against the fixed door frame at X=0</td>
 </tr>
 <tr>
 <td>2</td>
-<td>Left carriage beam slot</td>
-<td>Doubled nylon brush strip (~70 × 2400mm slot), bristles inward from both sides, bonded to frame slot edges</td>
+<td>Swing cuts → fixed strips</td>
+<td>The swinging center+corners separate from the two FIXED strips (near Yd0–180, far Yd2287–2362, which carries the pivot) along vertical cuts at Yd=180 and Yd=2287. A 20mm EPDM <strong>cut seal</strong> runs the full panel height down each cut, compressed by the cam latches when the panel is latched at the door plane. Replaces the old sliding-carriage beam/guide-slot brush seals. (Sheet 3, Detail D.)</td>
 </tr>
 <tr>
 <td>3</td>
-<td>Right guide slot</td>
-<td>Matching doubled nylon brush strip (~70 × 2400mm slot), same treatment as left slot</td>
+<td>Panel bottom → 130mm floor gap</td>
+<td>Fixed-frame <strong>bottom seal lip</strong> — a continuous steel upstand welded to the threshold, rising above the panel bottom edge (Z=130) across the <strong>full panel-bottom width, continuous (no notch)</strong> — the housing/drum ride at Z=130 and never reach the floor, so the gap is uniform and the lip closes it as a solid wall; a 20mm EPDM strip on the panel bottom edge <strong>recedes into / sandwiches against the lip</strong>, compressed by the lower pair of Southco cam latches in the operational ("camera") position. The latches release to lift the seal before the swing. (Sheet 3, Detail B.)</td>
 </tr>
 <tr>
 <td>4</td>
-<td>Rail channels at floor/ceiling (×4)</td>
-<td>10mm closed-cell neoprene compression pad (50 × 30mm) bonded to frame face around each rail penetration</td>
+<td>Panel top → frame gap</td>
+<td>Fixed-frame <strong>top seal lip</strong> — the mirror of #3: a steel downstand from the frame top rail reaching ~30mm below the panel top edge. The drum stub shaft stops below the lip, so this lip runs as <strong>one continuous member across the full panel-top width — no notch — meeting across the center</strong>. A 20mm EPDM strip on the panel top edge sandwiches against it, compressed by the upper pair of cam latches in the operational position; released before the swing. (Sheet 3, Detail C.)</td>
 </tr>
 <tr>
 <td>5</td>
-<td>Panel edge-to-wall clearance gaps</td>
-<td>15mm closed-cell EPDM strips (self-adhesive, full panel height) bonded to fixed door frame inner face at each side</td>
-</tr>
-<tr>
-<td>6</td>
-<td>Panel bottom → 80mm floor gap</td>
-<td>Fixed-frame <strong>bottom seal lip</strong> — a continuous steel upstand welded to the threshold, rising ~110mm (above the panel bottom edge at Z=80) across the <strong>full panel-bottom width, continuous (no notch)</strong> — the housing/drum is <strong>suspended at Z=80</strong> and no longer reaches the floor, so the floor gap is uniform and the lip closes it as a solid wall; a 20mm EPDM strip on the panel bottom edge <strong>recedes into / sandwiches against the lip</strong> and is compressed by the lower pair of Southco cam latches in the operational ("camera") position. The clamps are released to lift the seal and slide the panel to transport. (Sheet 3, Detail B.)</td>
-</tr>
-<tr>
-<td>7</td>
-<td>Panel top → frame gap (panel hangs below the ceiling rails)</td>
-<td>Fixed-frame <strong>top seal lip</strong> — the mirror of #6: a steel downstand from the frame top rail reaching ~30mm below the panel top edge. The drum does not reach the top (its stub shaft stops below the lip), so unlike the bottom lip this one runs as <strong>one continuous member across the full panel-top width — no notch — meeting across the center</strong>. A 20mm EPDM strip on the panel top edge sandwiches against it, compressed by the upper pair of cam latches in the operational position; released to slide to transport. (Sheet 3, Detail C.)</td>
-</tr>
-<tr>
-<td>8</td>
-<td>Fixed housing surround → door frame</td>
-<td>The Ø900 light-trap housing is <strong>fixed</strong> (only the drum rotates inside it). A <strong>second 20mm EPDM gasket</strong> runs as a <strong>ring around the housing aperture</strong> (Yd 713–1649, floor-gap up to the housing top at Z=2200), concentric <strong>inboard</strong> of the panel-perimeter seal (#1), in the exterior door plane (X=0). It seals the fixed surround to the frame all the way around the opening the housing passes through — light-tight independent of the moving panel. (3D: the <code>door_frame()</code> "Housing surround seal", in both the light-trap and overview models.)</td>
+<td>Housing surround → door frame</td>
+<td>The Ø900 light-trap housing carries the revolving drum and swings with the panel. A <strong>second 20mm EPDM gasket</strong> rings the housing aperture (Yd 713–1649, floor gap up to the housing top at Z=2200), concentric <strong>inboard</strong> of the panel-perimeter seal (#1), seated in the door plane (X=0). In the closed position it seals the housing surround to the frame all the way around the opening — light-tight. (3D: the <code>door_frame()</code> "Housing surround seal", in both the light-trap and overview models.)</td>
 </tr>
 </tbody>
 </table>
@@ -3116,8 +3077,8 @@ dark-adaptation check inside the container with all seals engaged. Any visible l
 points are marked with gaffer tape for re-sealing.</p>
 <hr />
 <h2 id="7-fixed-door-frame">7. Fixed Door Frame<a class="headerlink" href="#7-fixed-door-frame" title="Permanent link">&para;</a></h2>
-<p>A fixed welded door frame provides the seal landing surface and structural anchor
-for the sliding carriage.</p>
+<p>A fixed welded door frame provides the seal landing surface (perimeter, cut, and lip
+seals) for the swinging panel, and the structural anchor for the wall-stay eyes.</p>
 <table>
 <thead>
 <tr>
@@ -3136,27 +3097,23 @@ for the sliding carriage.</p>
 </tr>
 <tr>
 <td>Function</td>
-<td>EPDM seal landing, carriage beam slot housing, rail mounting</td>
+<td>EPDM seal landing for the swinging panel perimeter + cut seals + housing surround</td>
 </tr>
 <tr>
 <td>Attachment</td>
 <td>Welded to container end wall structural members</td>
 </tr>
 <tr>
-<td>Slots</td>
-<td>2 × vertical (~70 × 2400mm) for carriage beam and right-side guide</td>
-</tr>
-<tr>
-<td>Rail penetrations</td>
-<td>4 × (floor and ceiling, both walls) sealed by neoprene pads</td>
+<td>Cut-seal landings</td>
+<td>2 × vertical EPDM landings at Yd=180 and Yd=2287 (the swing cuts between the swinging panel and the fixed strips)</td>
 </tr>
 <tr>
 <td>Bottom seal lip</td>
-<td>Continuous 3mm steel upstand welded to the threshold, ~110mm tall, <strong>full panel-bottom width (no notch — drum suspended at Z=80)</strong> — the EPDM bottom seal compresses against it (see §6 path #6)</td>
+<td>Continuous 3mm steel upstand welded to the threshold, <strong>full panel-bottom width (no notch — drum rides at Z=130)</strong> — the EPDM bottom seal compresses against it (see §6 path #3)</td>
 </tr>
 <tr>
 <td>Top seal lip</td>
-<td>Mirror of the bottom: continuous 3mm steel downstand from the frame top rail, reaching ~30mm below the panel top edge, full panel-top width and <strong>continuous across the center</strong> (the drum does not reach the top, so no notch) — the EPDM top seal compresses against it (see §6 path #7)</td>
+<td>Mirror of the bottom: continuous 3mm steel downstand from the frame top rail, reaching ~30mm below the panel top edge, full panel-top width and <strong>continuous across the center</strong> (the drum does not reach the top, so no notch) — the EPDM top seal compresses against it (see §6 path #4)</td>
 </tr>
 </tbody>
 </table>
@@ -3193,9 +3150,9 @@ for the sliding carriage.</p>
 </tr>
 <tr>
 <td>20mm EPDM gasket (per meter, closed-cell)</td>
-<td>Perimeter seal (~10 m) + housing-surround ring (~6 m)</td>
-<td>16 m</td>
-<td>$64–$96</td>
+<td>Perimeter seal (~10 m) + housing-surround ring (~6 m) + 2× vertical <strong>cut seals</strong> at Yd180/2287 (~5 m)</td>
+<td>21 m</td>
+<td>$84–$126</td>
 </tr>
 <tr>
 <td>Aluminum U-channel (per meter)</td>
@@ -3204,20 +3161,8 @@ for the sliding carriage.</p>
 <td>$48–$80</td>
 </tr>
 <tr>
-<td>Heavy-duty weld-on barrel hinge + steel hinge post</td>
-<td>Left-edge hinges — carry bay + housing + drum swing moment (<strong>structural sign-off</strong>)</td>
-<td>3</td>
-<td>$180–$300</td>
-</tr>
-<tr>
-<td>Retractable heavy-duty swivel caster</td>
-<td>Free-edge swing support through the 180° arc</td>
-<td>1</td>
-<td>$40–$80</td>
-</tr>
-<tr>
 <td>Southco C2-33 cam compression latch</td>
-<td>Interior-mounted corner latches</td>
+<td>Interior-mounted corner latches (compress the perimeter + cut + lip seals)</td>
 <td>4</td>
 <td>$60–$100</td>
 </tr>
@@ -3237,10 +3182,11 @@ for the sliding carriage.</p>
 <td><strong>Panel subtotal</strong></td>
 <td></td>
 <td></td>
-<td><strong>$1,090–$1,660</strong></td>
+<td><strong>$890–$1,310</strong></td>
 </tr>
 </tbody>
 </table>
+<p><em>The panel pivot post + bearings + drum cage + wall stays are itemized in §8.3.</em></p>
 <h3 id="82-housed-revolving-door-housing-drum">8.2 Housed Revolving Door (housing + drum)<a class="headerlink" href="#82-housed-revolving-door-housing-drum" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3320,7 +3266,7 @@ for the sliding carriage.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="83-sliding-carriage">8.3 Sliding Carriage<a class="headerlink" href="#83-sliding-carriage" title="Permanent link">&para;</a></h3>
+<h3 id="83-swing-pivot-hardware">8.3 Swing Pivot Hardware<a class="headerlink" href="#83-swing-pivot-hardware" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -3332,52 +3278,46 @@ for the sliding carriage.</p>
 </thead>
 <tbody>
 <tr>
-<td>HGR20 linear guide rail (1200mm)</td>
-<td>Floor/ceiling rails, both walls — span the ~880mm transport slide + carriage</td>
-<td>4</td>
-<td>$180–$280</td>
-</tr>
-<tr>
-<td>HGH20CA carriage block</td>
-<td>2 per rail</td>
-<td>8</td>
-<td>$120–$200</td>
-</tr>
-<tr>
-<td>60 × 60 × 3mm SHS mild steel (2400mm)</td>
-<td>Left-side carriage beam</td>
+<td>Ø89×8mm CHS pivot post + machined hub / thrust collar</td>
+<td>Upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever (<strong>structural sign-off</strong>)</td>
 <td>1</td>
-<td>$25–$40</td>
+<td>$180–$300</td>
 </tr>
 <tr>
-<td>Destaco 207-U toggle clamp</td>
-<td>Operational + transport locks</td>
+<td>Turntable / slewing thrust bearing (~Ø220)</td>
+<td>Carries the ~330 kg swinging-assembly vertical load at the post base</td>
+<td>1</td>
+<td>$80–$140</td>
+</tr>
+<tr>
+<td>Flanged sleeve (journal) bearing, Ø90 bore</td>
+<td>Top + bottom radial location of the post / hub</td>
+<td>2</td>
+<td>$60–$110</td>
+</tr>
+<tr>
+<td>Drum support cage, 40 × 40 × 3mm SHS</td>
+<td>Steel frame carrying the Ø900 housing + drum on the swinging leaf</td>
+<td>1</td>
+<td>$70–$120</td>
+</tr>
+<tr>
+<td>Top + bottom wall stays + 4-bolt anchor plates</td>
+<td>Transport lock — M16 turnbuckle + eye/hook rods + inside/outside wall plates</td>
+<td>2</td>
+<td>$90–$160</td>
+</tr>
+<tr>
+<td>Drop-in rail saddles + tapered dowels</td>
+<td>For the 2 removable left film rails (TL + BL); dowels set the film datum on re-seat</td>
 <td>4</td>
-<td>$60–$100</td>
+<td>$80–$130</td>
 </tr>
 <tr>
-<td>Nylon brush strip (doubled, per meter)</td>
-<td>Carriage beam slot seals — ~5 m each side</td>
-<td>10 m</td>
-<td>$40–$60</td>
-</tr>
-<tr>
-<td>10mm closed-cell neoprene pad (50 × 30mm)</td>
-<td>Rail channel seals</td>
-<td>4</td>
-<td>$10–$15</td>
-</tr>
-<tr>
-<td>15mm EPDM strip (self-adhesive, per meter)</td>
-<td>Panel edge-to-wall clearance seals — ~5 m each side</td>
-<td>10 m</td>
-<td>$30–$50</td>
-</tr>
-<tr>
-<td><strong>Carriage subtotal</strong></td>
+<td><strong>Swing pivot subtotal</strong></td>
 <td></td>
 <td></td>
-<td><strong>$465–$745</strong></td>
+<td><strong>$560–$960</strong></td>
 </tr>
 </tbody>
 </table>
@@ -3400,7 +3340,7 @@ for the sliding carriage.</p>
 </tr>
 <tr>
 <td>3mm steel plate/angle (~110mm × ~4 m)</td>
-<td>Top + bottom seal lips — threshold upstand (bottom, notched around drum) + frame-top downstand (top, continuous full width); light paths #6–#7</td>
+<td>Top + bottom seal lips — threshold upstand (bottom, full width, no notch — drum rides at Z130) + frame-top downstand (top, continuous full width); seal paths #3–#4</td>
 <td>1</td>
 <td>$45–$80</td>
 </tr>
@@ -3430,8 +3370,8 @@ for the sliding carriage.</p>
 <tbody>
 <tr>
 <td>Panel structure (incl. B2 bay)</td>
-<td>$1,090</td>
-<td>$1,660</td>
+<td>$890</td>
+<td>$1,310</td>
 </tr>
 <tr>
 <td>Housing + drum (plastic skin)</td>
@@ -3439,9 +3379,9 @@ for the sliding carriage.</p>
 <td>$2,070</td>
 </tr>
 <tr>
-<td>Sliding carriage</td>
-<td>$465</td>
-<td>$745</td>
+<td>Swing pivot hardware</td>
+<td>$560</td>
+<td>$960</td>
 </tr>
 <tr>
 <td>Fixed door frame</td>
@@ -3450,8 +3390,8 @@ for the sliding carriage.</p>
 </tr>
 <tr>
 <td><strong>Total</strong></td>
-<td><strong>$3,275</strong></td>
-<td><strong>$5,025</strong></td>
+<td><strong>$3,170</strong></td>
+<td><strong>$4,890</strong></td>
 </tr>
 </tbody>
 </table>
@@ -3471,7 +3411,7 @@ for the sliding carriage.</p>
 </tr>
 <tr>
 <td>Every 20 mode conversions</td>
-<td>Inspect doubled nylon brush strips at carriage beam slots for wear</td>
+<td>Inspect the EPDM cut seals at the swing boundaries (Yd180/2287) for wear</td>
 </tr>
 <tr>
 <td>Every 6 months</td>
@@ -3483,11 +3423,11 @@ for the sliding carriage.</p>
 </tr>
 <tr>
 <td>Annually</td>
-<td>Replace brush strips (all carriage/guide slots)</td>
+<td>Inspect the wall-stay turnbuckles, hooks, and eye anchors; verify tension at the locked angle</td>
 </tr>
 <tr>
 <td>Annually</td>
-<td>Lubricate HGR20 rails and carriage blocks per manufacturer spec</td>
+<td>Grease the pivot thrust + journal bearings; check the post for free, smooth rotation</td>
 </tr>
 <tr>
 <td>Annually</td>
@@ -3495,7 +3435,7 @@ for the sliding carriage.</p>
 </tr>
 <tr>
 <td>Annually</td>
-<td>Inspect Destaco toggle clamps for latch engagement and spring tension</td>
+<td>Check the drop-in rail saddles + tapered dowels seat the left film rails square to datum</td>
 </tr>
 <tr>
 <td>Annually</td>
@@ -3530,12 +3470,12 @@ for the sliding carriage.</p>
 <td><a href="https://southco.com/en_us_int/c2-33-11">Southco catalog</a> — flush-mount cam compression latch</td>
 </tr>
 <tr>
-<td>Destaco 207-U toggle clamp</td>
-<td><a href="https://www.destaco.com/207-u.html">Destaco catalog</a> — horizontal hold-down clamp, 375 lb capacity</td>
+<td>Turnbuckle + eye/hook (wall stays)</td>
+<td><a href="https://www.mcmaster.com/turnbuckles/">McMaster-Carr turnbuckles</a> — drop-forged jaw/eye turnbuckles for the transport lock</td>
 </tr>
 <tr>
-<td>HGR20 / HGH20CA linear guide</td>
-<td><a href="https://hiwin.com/products/linear-guideways/">HIWIN equivalent</a> — generic 20mm profile linear rail system</td>
+<td>Turntable / slewing thrust bearing</td>
+<td><a href="https://www.vxb.com/Turntable-Bearings-s/1869.htm">VXB Bearings — turntable bearings</a> — heavy-duty flat thrust/turntable bearing for the pivot base</td>
 </tr>
 <tr>
 <td>EPDM gasket material</td>
@@ -3550,7 +3490,7 @@ for the sliding carriage.</p>
 <td>See <a href="../light-trap-selection/">Light Trap Selection</a> for full commercial comparison and custom specification</td>
 </tr>
 <tr>
-<td>Sliding carriage specification</td>
+<td>Swing mechanism specification</td>
 <td>See <a href="../equipment-layout-report/">Equipment Layout Report</a> §6 for clearance analysis and light seal design</td>
 </tr>
 <tr>

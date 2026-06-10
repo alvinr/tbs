@@ -56,10 +56,8 @@ WK_LEFT_WIDE_W, WK_LEFT_WIDE_YL, WK_LEFT_WIDE_YR = (
     ov.WALKWAY_LEFT_WIDE_W, ov.WALKWAY_LEFT_WIDE_YD_L, ov.WALKWAY_LEFT_WIDE_YD_R)
 BRK_T, BRK_H = ov.WALKWAY_BRACKET_T, ov.WALKWAY_BRACKET_H
 R_X, R_W = ov.WALKWAY_RIGHT_X, k.WALKWAY_RIGHT_W
-R_BEARER, R_BEARER_T = k.WALKWAY_RIGHT_BEARER_SIZE, k.WALKWAY_RIGHT_BEARER_T
-R_HANGER_D = k.WALKWAY_RIGHT_HANGER_D
-R_HANGER_Y1, R_HANGER_N = k.WALKWAY_RIGHT_HANGER_Y1, k.WALKWAY_RIGHT_HANGER_N
-R_CEIL_PLATE = k.WALKWAY_RIGHT_CEIL_PLATE          # (100, 60, 6)
+# (rev12: the ceiling-hung bearer/hanger/ceiling-plate constants are retired —
+#  the right walkway is now ov.right_walkway_cantilever().)
 
 # Exterior reinforcing plate (from generate_walkway_diagram.py View C).
 REINF_W, REINF_H, REINF_T = 100, 180, 6
@@ -361,46 +359,11 @@ def cantilever_type_labels():
     return '\n'.join(rows)
 
 
-# ── Right walkway: ceiling-hung bearers + rod hangers + ceiling plates ───────
-
-def right_hangers():
-    """The ceiling-hung right walkway support: two bearer angles (X=4329/4629)
-    running the full width at deck level, and 5 rod-pairs of M10 threaded rod up to
-    the ceiling. Each rod is anchored through the roof with a SANDWICHED plate pair —
-    an INSIDE plate the rod hangs from + an OUTSIDE (roof-exterior) reinforcing plate,
-    drawn together by 4× M12 through-bolts (the same anchor pattern used elsewhere)."""
-    pw, pl, pth = R_CEIL_PLATE                  # 120 × 90 × 6 (inside & outside)
-    bd = k.WALKWAY_RIGHT_CEIL_BOLT_D            # M12 through-bolt
-    box, boy = k.WALKWAY_RIGHT_CEIL_BOLT_OFF    # 2×2 pattern half-spacing
-    bearer_xs = (R_X, R_X + R_W)                # 4329, 4629
-    # 5 hanger pairs: 1st at HANGER_Y1, rest on rib centers (matches the 2D diagram).
-    hanger_yds = [R_HANGER_Y1] + list(range(RIB, C_WID, RIB))
-    hanger_yds = hanger_yds[:R_HANGER_N]   # [320, 457, 914, 1371, 1828]
-
-    parts = []
-    for bx in bearer_xs:
-        parts.append(ruby_box(f"Right bearer (25x25x5 L) X{bx}",
-                              bx - R_BEARER / 2, 0, GRATE_Z - R_BEARER,
-                              R_BEARER, C_WID, R_BEARER, color=C_STEEL))
-        for yd in hanger_yds:
-            parts.append(ruby_cylinder(f"Right hanger rod M10 X{bx} Y{yd}",
-                                       bx, yd, GRATE_Z, R_HANGER_D / 2,
-                                       C_HGT - GRATE_Z, color=C_STEEL, axis="z"))
-            # inside plate (rod hangs from it, just under the roof)
-            parts.append(ruby_box(f"Right ceiling plate (inside) X{bx} Y{yd}",
-                                  bx - pw / 2, yd - pl / 2, C_HGT - pth,
-                                  pw, pl, pth, color=C_STEEL))
-            # outside reinforcing plate ON TOP of the roof exterior (roof = C_HGT..C_HGT+WALL_T)
-            parts.append(ruby_box(f"Right ceiling plate (outside) X{bx} Y{yd}",
-                                  bx - pw / 2, yd - pl / 2, C_HGT + WALL_T,
-                                  pw, pl, pth, color=C_STEEL))
-            # 4× M12 through-bolts (2×2 pattern) sandwiching both plates + the roof skin
-            for dx in (-box, box):
-                for dy in (-boy, boy):
-                    parts.append(ruby_cylinder(f"Right ceiling bolt M{bd} X{bx} Y{yd}",
-                                               bx + dx, yd + dy, C_HGT - pth - 4,
-                                               bd / 2, WALL_T + 2 * pth + 8, color=C_STEEL, axis="z"))
-    return '\n'.join(parts)
+# ── Right walkway: cantilever rectangle (rev12) ──────────────────────────────
+# The ceiling-hung right_hangers() support is retired; the right walkway is now a
+# self-supporting cantilever rectangle built by ov.right_walkway_cantilever()
+# (single-sourced in the overview), assembled as the "Right Cantilever" component
+# in generate_ruby() below.
 
 
 # ── Left walkway: removable lift-out support (floor-leg cantilever brackets) ────

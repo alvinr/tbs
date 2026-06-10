@@ -76,8 +76,22 @@ LC_STD, LC_WIDE, LC_YDS = k.LEFT_WK_CANT_STD_REACH, k.LEFT_WK_CANT_WIDE_REACH, k
 
 GRATE_Z = WK_H - GRATE_T          # 65 — grate underside / arm top
 
-TAGS = ["Container", "Processing Tray", "Walkways", "Walkway Right", "Cantilevers",
-        "Cantilever Types", "Right Hangers", "Left Support", "Labels"]
+TAGS = ["Container", "Processing Tray", "Walkways", "Cantilevers",
+        "Cantilever Types", "Right Cantilever", "Left Support", "Labels"]
+
+
+def right_anchor_context():
+    """Ghost stubs the right walkway cantilever anchors to — the IBC corridor uprights
+    (X4734, Yd1046/1266) + the bottom film rail (BR, X4649) — so the cantilever reads in
+    this focused model (the full frame + film plane live in the overview)."""
+    x_up = ov.IBC_COL_X + 60
+    parts = []
+    for yd in (ov.CORRIDOR_YD_NEAR, ov.CORRIDOR_YD_FAR - ov.IBC_FRAME_RHS):
+        parts.append(ruby_box("IBC corridor upright (ghost)", x_up, yd, 0,
+                              ov.IBC_FRAME_RHS, ov.IBC_FRAME_RHS, 1010, color=C_STEEL, alpha=0.3))
+    parts.append(ruby_box("Film rail BR (ghost)", ov.RAIL_X_R - 20, 0, ov.RAIL_OFF_BOT - 20,
+                          40, ov.C_WID, 40, color=C_STEEL, alpha=0.3))
+    return '\n'.join(parts)
 
 
 # ── "Labeled" scene callouts (project rule: every .skp gets a Labeled scene) ──
@@ -435,10 +449,10 @@ def generate_ruby():
         component("Container (ghost)", "Container", container_ghost()),
         component("Processing Tray", "Processing Tray", ov.processing_tray()),
         component("Walkway Decks (near/far/left)", "Walkways", walkway_decks()),
-        component("Walkway Right (IBC end)", "Walkway Right", walkway_right_deck()),
         component("Wall Cantilevers", "Cantilevers", cantilevers()),
         component("Cantilever Types", "Cantilever Types", cantilever_types()),
-        component("Right Walkway Hangers", "Right Hangers", right_hangers()),
+        component("Right Walkway (cantilever rectangle)", "Right Cantilever",
+                  ov.right_walkway_cantilever() + "\n" + right_anchor_context()),
         component("Left Walkway Support", "Left Support", left_support()),
     ]
     body = '\n'.join(comps)
@@ -449,10 +463,10 @@ def generate_ruby():
 
     # Scenes — Container stays on as context; scenes toggle the rest.
     scene_groups = [
-        ("Walkway", ["Walkways", "Walkway Right", "Processing Tray"]),
+        ("Walkway", ["Walkways", "Right Cantilever", "Processing Tray"]),
         ("Near/Far Cantilevers", ["Cantilevers", "Processing Tray"]),
-        # Right Hangers — only the RIGHT deck (near/far/left "Walkways" tag off).
-        ("Right Hangers", ["Right Hangers", "Walkway Right", "Processing Tray"]),
+        # Right Cantilever — the cantilever-rectangle support + combined corner plate.
+        ("Right Cantilever", ["Right Cantilever", "Processing Tray"]),
         ("Left Support", ["Left Support", "Processing Tray"]),
     ]
     scene_groups_ruby = '[' + ', '.join(

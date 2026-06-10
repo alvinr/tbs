@@ -48,6 +48,7 @@ from tbs_constants import (
     WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H,
     WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R,
     WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R,
+    CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR,
     C_WALL, C_PROC_ZONE,
     PH_X, PH_H, PH_D,
     FP_X_L, FP_X_R, FP_W, FP_H, FP_Y, FP_Y_MIN,
@@ -450,6 +451,122 @@ def processing_tray():
 
 # ── Walkways ─────────────────────────────────────────────────────────────────
 
+# ── Right walkway — CANTILEVER-RECTANGLE support (rev12; replaces the ceiling hangers) ──
+# A closed rectangle (2 long beams + 2 end beams) under the deck, supported at mid-span by 2
+# CENTER cantilever arms off the IBC corridor uprights (half-lapped where the long beams cross).
+# LEFT corners on wall cleats; RIGHT corners on a COMBINED plate shared with the bottom film
+# rail. Single-sourced here; the focused walkway + film-plane study models reuse these.
+RWK_X_L = WALKWAY_RIGHT_X                              # 4329 — deck left edge
+RWK_X_R = WALKWAY_RIGHT_X + WALKWAY_RIGHT_W            # 4629 — deck right edge
+RWK_GRATE_Z = WALKWAY_H - WALKWAY_GRATE_T              # 115 — grate bottom
+RWK_ARM_BOT, RWK_ARM_TOP = 70, RWK_GRATE_Z            # arm/beam Z70..115 (above spray bar 60, below film frame 150)
+RWK_AH = RWK_ARM_TOP - RWK_ARM_BOT                     # 45
+RWK_ARM_W = 40
+RWK_HL = 95                                           # half-lap line
+RWK_BEARER_W = 40
+RWK_BEARER_XS = (RWK_X_L, RWK_X_R - RWK_BEARER_W)      # 4329, 4589 — long-beam left edges
+RWK_BEARER_Z0 = RWK_ARM_TOP - 35                       # 80 — beam bottom
+RWK_X_UP = IBC_COL_X + 60                              # 4734 — IBC corridor upright X station
+RWK_UP_YDS = (CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR - IBC_FRAME_RHS)   # 1046, 1266
+
+
+def _rwk_xbeam(name, yd, x0, x1):
+    """X-beam (arm) half-lapped at each long beam it crosses: continuous LOWER half + UPPER
+    half cut away where a long beam (40 wide) drops in."""
+    out = [ruby_box(f"{name} lower", x0, yd, RWK_ARM_BOT, x1 - x0, RWK_ARM_W, RWK_HL - RWK_ARM_BOT, color=C_STEEL)]
+    xs, segs = x0, []
+    for bx in sorted(b for b in RWK_BEARER_XS if x0 - 1 < b < x1):
+        if bx > xs:
+            segs.append((xs, bx))
+        xs = bx + RWK_BEARER_W
+    if xs < x1:
+        segs.append((xs, x1))
+    for s0, s1 in segs:
+        out.append(ruby_box(f"{name} upper", s0, yd, RWK_HL, s1 - s0, RWK_ARM_W, RWK_ARM_TOP - RWK_HL, color=C_STEEL))
+    return out
+
+
+def _rwk_long_beam(x, cross_ranges):
+    """Yd long beam half-lapped at the arms it crosses: continuous UPPER half + LOWER half cut
+    away at each crossing (cross_ranges = (yd0, w))."""
+    out = [ruby_box(f"RWk Long beam X{int(x)} upper", x, 0, RWK_HL, RWK_BEARER_W, C_WID, RWK_ARM_TOP - RWK_HL, color=C_STEEL)]
+    ys, segs = 0, []
+    for cy0, cw in sorted(cross_ranges):
+        if cy0 > ys:
+            segs.append((ys, cy0))
+        ys = cy0 + cw
+    if ys < C_WID:
+        segs.append((ys, C_WID))
+    for s0, s1 in segs:
+        out.append(ruby_box(f"RWk Long beam X{int(x)} lower", x, s0, RWK_BEARER_Z0, RWK_BEARER_W, s1 - s0, RWK_HL - RWK_BEARER_Z0, color=C_STEEL))
+    return out
+
+
+def _rwk_wall_cleat(tag, x, wall_yd, din):
+    """L-cleat the LEFT long beam seats on: back-plate through-bolted to the wall (interior +
+    exterior plate, 2 bolts) + a horizontal shelf the beam lands on/welds to."""
+    piy = wall_yd if din > 0 else wall_yd - 8
+    poy = -WALL_T - 8 if din > 0 else C_WID + WALL_T
+    shelf_y = wall_yd if din > 0 else wall_yd - 55
+    out = [
+        ruby_box(f"RWk wall cleat plate ({tag})", x - 45, piy, RWK_ARM_BOT - 10, 90, 8, RWK_AH + 20, color=C_STEEL),
+        ruby_box(f"RWk wall cleat ext plate ({tag})", x - 45, poy, RWK_ARM_BOT - 10, 90, 8, RWK_AH + 20, color=C_STEEL),
+        ruby_box(f"RWk wall cleat shelf ({tag})", x - 45, shelf_y, RWK_ARM_BOT - 10, 90, 55, 10, color=C_STEEL),
+    ]
+    blo, bhi = min(piy, poy), max(piy, poy) + 8
+    for bz in (RWK_ARM_BOT + 6, RWK_ARM_TOP - 6):
+        out.append(ruby_cylinder(f"RWk wall bolt ({tag}) Z{int(bz)}", x, blo, bz, 5, bhi - blo, color=C_STEEL, axis="y"))
+    return out
+
+
+def fp_combined_corner_plate(wall_yd, din):
+    """ONE plate at the near/far-RIGHT corner securing BOTH the bottom film rail (BR) and the
+    walkway's right beam — through-bolted to the wall (interior + exterior plate). Spans Z58..225:
+    the right beam lands on it at Z70-115, the BR rail seats on it at Z150. 150mm wide."""
+    pw, cx, rz = IBC_WBKT_PLATE_W, RAIL_X_R, RAIL_OFF_BOT   # 150, 4649, 150
+    tag = "near" if wall_yd == 0 else "far"
+    piy = wall_yd if din > 0 else wall_yd - 10
+    poy = -WALL_T - 10 if din > 0 else C_WID + WALL_T
+    sy = wall_yd if din > 0 else wall_yd - 55
+    z0, z1 = RWK_ARM_BOT - 12, rz + 75
+    out = [
+        ruby_box(f"FP combined corner plate ({tag})", cx - pw / 2, piy, z0, pw, 10, z1 - z0, color=C_STEEL),
+        ruby_box(f"FP combined corner ext plate ({tag})", cx - pw / 2, poy, z0, pw, 10, z1 - z0, color=C_STEEL),
+        ruby_box(f"FP combined right-beam seat ({tag})", cx - pw / 2, sy, RWK_ARM_BOT - 12, pw, 55, 12, color=C_STEEL),
+        ruby_box(f"FP combined BR rail seat ({tag})", cx - 30, sy, rz - 12, 60, 55, 12, color=C_STEEL),
+    ]
+    blo, bhi = min(piy, poy), max(piy, poy) + 10
+    for bx in (cx - 50, cx + 50):
+        for bz in (RWK_ARM_BOT + 14, rz + 28):
+            out.append(ruby_cylinder(f"FP combined bolt M12 ({tag}) X{int(bx)} Z{int(bz)}", bx, blo, bz, 6, bhi - blo, color=C_STEEL, axis="y"))
+    return out
+
+
+def right_walkway_cantilever():
+    """The right walkway support: a CLOSED rectangle (left+right long beams + 2 end beams) +
+    2 center cantilever arms off the IBC corridor uprights (half-lapped at the long beams).
+    LEFT corners on wall cleats; RIGHT corners on the COMBINED plate (rail + right beam)."""
+    parts = []
+    lx, rx = RWK_X_L, RWK_X_R - RWK_BEARER_W
+    arm_ranges = [(yd, RWK_ARM_W) for yd in RWK_UP_YDS]
+    parts += _rwk_long_beam(lx, arm_ranges)
+    parts += _rwk_long_beam(rx, arm_ranges)
+    for ey in (0, C_WID - RWK_BEARER_W):
+        parts.append(ruby_box(f"RWk end beam Yd{int(ey)}", lx, ey, RWK_BEARER_Z0, (rx + RWK_BEARER_W) - lx, RWK_BEARER_W, RWK_ARM_TOP - RWK_BEARER_Z0, color=C_STEEL))
+    for yd in RWK_UP_YDS:
+        parts += _rwk_xbeam(f"RWk center cantilever Yd{yd}", yd, RWK_X_L, RWK_X_UP)
+        for pf in (yd - 8, yd + RWK_ARM_W):
+            parts.append(ruby_box(f"RWk upright clamp Yd{yd} Y{int(pf)}", RWK_X_UP - 4, pf, RWK_ARM_BOT - 25, IBC_FRAME_RHS + 8, 8, RWK_AH + 55, color=C_STEEL))
+        for bz in (RWK_ARM_BOT + 6, RWK_ARM_TOP + 18):
+            parts.append(ruby_cylinder(f"RWk upright bolt M12 Yd{yd} Z{int(bz)}", RWK_X_UP + IBC_FRAME_RHS / 2, yd - 12, bz, 6, RWK_ARM_W + 24, color=C_STEEL, axis="y"))
+    for wall_yd, din, tag in ((0, 1, "near"), (C_WID, -1, "far")):
+        parts += _rwk_wall_cleat(tag, lx + RWK_BEARER_W // 2, wall_yd, din)
+        parts += fp_combined_corner_plate(wall_yd, din)
+    # grate
+    parts.append(ruby_box("Right walkway grate (cantilevered)", RWK_X_L, 0, RWK_GRATE_Z, WALKWAY_RIGHT_W, C_WID, WALKWAY_GRATE_T, color=C_WALKWAY))
+    return '\n'.join(parts)
+
+
 def walkways(include_right=True, include_right_hangers=None):
     """Perimeter walkway sections — LOWERED deck, in place for operation.
 
@@ -498,9 +615,13 @@ def walkways(include_right=True, include_right_hangers=None):
                           near_len, WALKWAY_W, t, color=C_WALKWAY))
 
     if include_right:
-        parts.append(ruby_box("Walkway Right (IBC end)",
-                              WALKWAY_RIGHT_X, 0, grate_z,
-                              WALKWAY_RIGHT_W, C_WID, t, color=C_WALKWAY))
+        if include_right_hangers:
+            # rev12: full CANTILEVER-rectangle support (+ grate), replaces the ceiling hangers
+            parts.append(right_walkway_cantilever())
+        else:
+            parts.append(ruby_box("Walkway Right (IBC end)",
+                                  WALKWAY_RIGHT_X, 0, grate_z,
+                                  WALKWAY_RIGHT_W, C_WID, t, color=C_WALKWAY))
 
     # Left walkway — removable lift-out for transport (distinct color).
     parts.append(ruby_box("Walkway Left (REMOVABLE — transport)",
@@ -521,11 +642,8 @@ def walkways(include_right=True, include_right_hangers=None):
     import generate_walkway_model as wm
     parts.append('\n'.join(wm.left_floor_cantilevers()))
 
-    # Right walkway: ceiling-hung support — 2 bearer angles + 5 rod-pairs of M10 to the
-    # ceiling, each rod anchored through the roof with the sandwiched inside/outside plate
-    # pair + 4× M12 bolts. Reuse the walkway model's builder so the two models stay in sync.
-    if include_right_hangers:
-        parts.append(wm.right_hangers())
+    # Right walkway support is now the cantilever rectangle (right_walkway_cantilever, above),
+    # built with the grate when include_right_hangers — the ceiling hangers are retired (rev12).
 
     return '\n'.join(parts)
 
@@ -967,20 +1085,20 @@ def ibc_rack():
 
 # ── Film plane mechanism ─────────────────────────────────────────────────────
 
-def film_plane_saddles(corners):
-    """IBC-style wall-seat saddle at each of the 8 film-plane rail ends (the 4
-    `corners` {id:(x,z)} × near/far wall). Each = interior back-plate + horizontal
-    seat (the rail rests on it) + triangular gusset, THROUGH-BOLTED to an EXTERIOR
-    plate with a 4-bolt pattern — dims reuse the IBC frame wall seats (IBC_WBKT_*).
-    The container shell carries the rigidity, replacing the retired brace cage.
-    RIGHT rails (X4649) permanently bolted; LEFT rails (X150) thumb-screw drop-in
-    (lift out for the drum swing). Single-sourced — also called by the film-plane
-    focus model so the two stay in sync."""
+def film_plane_saddles(corners, skip=()):
+    """IBC-style wall-seat saddle at each of the film-plane rail ends (the `corners`
+    {id:(x,z)} × near/far wall). Each = interior back-plate + horizontal seat + triangular
+    gusset, THROUGH-BOLTED to an EXTERIOR plate (4-bolt) — dims from the IBC wall seats.
+    RIGHT rails permanently bolted; LEFT rails thumb-screw drop-in. `skip` omits corner ids
+    (rev12: BR is skipped — its corner is the COMBINED plate shared with the right walkway,
+    fp_combined_corner_plate). Single-sourced — the film-plane focus model reuses it."""
     pw, pt = IBC_WBKT_PLATE_W, IBC_WBKT_PLATE_T          # 150 plate, 8 thick
     proj, st = IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T       # 110 seat projection, 10 thick
     gh, wt, sw = 120, WALL_T, 24 + 24                    # gusset, wall, seat width
     parts = []
     for cid, (x, z) in corners.items():
+        if cid in skip:
+            continue
         left = (x == RAIL_X_L)
         for wall_yd in (0, C_WID):
             near = (wall_yd == 0)
@@ -1039,7 +1157,9 @@ def film_plane_mechanism():
     # container shell carries the rigidity). Right rails bolted, left thumb-screw.
     corners = {"TL": (x_left, z_top), "TR": (x_right, z_top),
                "BL": (x_left, z_bot), "BR": (x_right, z_bot)}
-    parts.append(film_plane_saddles(corners))
+    # rev12: BR corner is the COMBINED plate (built by the right walkway, fp_combined_corner_plate),
+    # so skip it here to avoid a duplicate saddle.
+    parts.append(film_plane_saddles(corners, skip={"BR"}))
 
     # Muslin screen — translucent panel at the nominal film-plane depth.
     board_t = 20

@@ -388,7 +388,7 @@ The stepped hinged panel + drum SWING ~56° inboard about the Ø89mm vertical pi
 - [ ] 5.5.2 — Park the revolving drum in its closed/aligned position and pin its rotation (detent) so it cannot flop during the move.
 - [ ] 5.5.3 — Disconnect the flex duct from the wall stub collar (release hose clamp). Replace the weatherproof cap on the wall stub. Drain the cooler reservoir completely.
 - [ ] 5.5.4 — Carry the cooler in through the door opening (~20 kg, one person). Place on a ply base plate on the near-walkway wide section at X=1450–2050mm (clear of the panel swing sweep). Secure with 2× ratchet straps to the wall brackets. Stow the flex duct alongside.
-- [ ] 5.5.5 — Lift out the removable left walkway + door-end near-deck section (X470–900) — both sit inside the swing arc.
+- [ ] 5.5.5 — Lift out the removable left walkway + door-end near-deck section (X470–950) — both sit inside the swing arc.
 - [ ] 5.5.6 — Strike the two left film rails (TL + BL): release each clamp bar, lift the rail straight up out of its saddles, and stow (clipped to the near wall). *Required before the swing — otherwise the drum cage fouls the X=150 rail plane.*
 - [ ] 5.5.7 — Release all 4 Southco cam latches — releases the perimeter + cut seals.
 - [ ] 5.5.8 — Swing the frame ~56° inboard (toward the far wall), assisted. Balanced about the vertical pivot (no gravity torque); control momentum at the stop.

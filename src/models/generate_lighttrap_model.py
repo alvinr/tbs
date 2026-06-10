@@ -585,7 +585,7 @@ def walkways_partial():
     t = ov.WALKWAY_GRATE_T
     full_z = ov.WALKWAY_H - t                    # grate-bottom Z (level, Z130 top)
     x0 = ov.WALKWAY_LEFT_X + ov.WALKWAY_W        # = 470 — where the long decks begin
-    liftout_x = ov.WALKWAY_NEAR_LIFTOUT_X_R      # ~900 — swept door-end band end
+    liftout_x = ov.WALKWAY_NEAR_LIFTOUT_X_R      # 950 — door-end band end (sweep X≈896 + 50mm)
     w = PARTIAL_X - x0
     return '\n'.join([
         ruby_box("Walkway Near (door-end, removable)", x0, 0, full_z,

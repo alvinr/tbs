@@ -104,7 +104,7 @@ container so the cargo doors close. Decisions and rationale:
 | Far film-plane upright | it **is** the pivot |
 | Drum/bay through the gap | clears once the two left rails are removed |
 | Swing arc vs processing tray (rim Z50) | frame underside at Z130 clears by **80 mm** |
-| vs near/far walkway grates | **RESOLVED** — walkway LEVEL (Z130); the swept near-deck door-end band (X470–900) is a removable lift-out; far deck not swept |
+| vs near/far walkway grates | **RESOLVED** — walkway LEVEL (Z130); the swept near-deck door-end band (X470–950 — sweep reaches X≈896, +50mm margin) is a removable lift-out; far deck not swept |
 | Left walkway (in the arc) | the removable lift-out — out for transport |
 | Bearings vs far wall | Ø120 clears by 15 mm |
 
@@ -161,7 +161,7 @@ container so the cargo doors close. Decisions and rationale:
    **RESOLVED** — full step-by-step in **§5** below; ordering conflicts surfaced and resolved.
 8. ~~**Walkway-grate tangent** — a few-mm gap (drop grate locally or lift the frame).~~
    **RESOLVED — walkway stays LEVEL.** Checked against the real deck extents: only the **near**
-   deck's door-end band (X≈470–900, Yd0–300) is swept (the FAR deck isn't — swept points stay
+   deck's door-end band (X≈470–950, Yd0–300; sweep reaches X≈896 + 50mm margin) is swept (the FAR deck isn't — swept points stay
    short of its X470 start; the left walkway lifts out anyway). Rather than step the grate, that
    **door-end near-deck band is a REMOVABLE lift-out** (with the left walkway) — the walkway is
    level at Z130 when installed and that section comes out for the swing. `WALKWAY_NEAR_LIFTOUT_X_R
@@ -196,7 +196,7 @@ and the wall stays go on last (they only reach at 56°).
 1. **End camera use.** Power off **Fan B**; finish any darkroom access.
 2. **Park the drum.** Rotate the revolving drum to its closed/aligned position and **pin its
    rotation** (detent) so it can't flop during the move.
-3. **Lift out the removable LEFT walkway** + the **door-end near-deck section** (X470–900) —
+3. **Lift out the removable LEFT walkway** + the **door-end near-deck section** (X470–950) —
    both sit inside the swing arc (the walkway is otherwise level, no grate step).
 4. **Strike the two left film rails (TL + BL).** Release each clamp bar, lift the rail straight
    up out of its saddles, and **stow** (clipped to the near wall). *Required before the swing —

@@ -156,7 +156,7 @@ def walkway_decks():
     # transport (distinct color) — the panel/cage underside sweeps the near deck there, so it
     # lifts out with the left walkway rather than dropping the grate (#8). The rest is fixed.
     if WK_NEAR_WIDE_XL > near_x_l:
-        liftout_x = min(ov.WALKWAY_NEAR_LIFTOUT_X_R, WK_NEAR_WIDE_XL)   # ~X900 swept extent
+        liftout_x = min(ov.WALKWAY_NEAR_LIFTOUT_X_R, WK_NEAR_WIDE_XL)   # X950 (sweep X≈896 +50mm)
         parts.append(ruby_box("Walkway Near (door-end, removable)", near_x_l, 0, GRATE_Z,
                               liftout_x - near_x_l, WK_W, t, color=C_REMOVABLE))
         if WK_NEAR_WIDE_XL > liftout_x:

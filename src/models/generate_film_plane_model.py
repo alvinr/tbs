@@ -243,7 +243,8 @@ def generate_ruby():
         ov.component("Processing Tray", "Processing Tray", ov.processing_tray()),
         ov.component("Corner Mechanism", "Corner Mechanism",
                      static_rails() + "\n" + brace_cage()),
-        ov.component("Walkways", "Walkways", ov.walkways(include_right=False)),
+        ov.component("Walkways", "Walkways",
+                     ov.walkways(include_right=True, include_right_hangers=False)),
         ov.component("Corner Detail (TR)", "Corner Detail", detail),
     ]
     body = '\n'.join(comps)
@@ -253,7 +254,7 @@ def generate_ruby():
 
     # scenes: name, visible tags, target point (mm) or None, standoff(inches) or 0=extents
     main = ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways"]
-    noghost = ["Film Plane", "Corner Mechanism", "Processing Tray", "Walkways"]
+    noghost = ["Film Plane", "Corner Mechanism", "Processing Tray"]
     scenes = [("Combined", main, None, 0),
               ("No Container", noghost, None, 0),
               ("Corner detail (TR)", ["Corner Detail", "Labels"], tr_world, 95)]

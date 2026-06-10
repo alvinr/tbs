@@ -450,11 +450,12 @@ def processing_tray():
 
 # ── Walkways ─────────────────────────────────────────────────────────────────
 
-def walkways(include_right=True):
+def walkways(include_right=True, include_right_hangers=None):
     """Perimeter walkway sections — LOWERED deck, in place for operation.
 
-    include_right=False omits the right (IBC-end) ceiling-hung deck + its hangers
-    (used by the focused film-plane model, which doesn't want the right hanger).
+    include_right=False omits the right (IBC-end) deck grate. include_right_hangers
+    (defaults to include_right) independently controls the ceiling hangers — the
+    focused film-plane model shows the right grate but NOT the hangers.
 
     The deck height comes from WALKWAY_H (lowered to 65mm: a 15mm grate at the
     tray-rim level), so the grating sits below the film-frame bottom (Z=100) and
@@ -462,6 +463,8 @@ def walkways(include_right=True):
     door side) is a removable lift-out (shown in a distinct color) — taken out
     for transport before the panel + drum swing inboard.
     """
+    if include_right_hangers is None:
+        include_right_hangers = include_right
     grate_z = WALKWAY_H - WALKWAY_GRATE_T   # 115mm — grate bottom (raised +50)
     t = WALKWAY_GRATE_T                      # 15mm — thin grate
 
@@ -521,7 +524,7 @@ def walkways(include_right=True):
     # Right walkway: ceiling-hung support — 2 bearer angles + 5 rod-pairs of M10 to the
     # ceiling, each rod anchored through the roof with the sandwiched inside/outside plate
     # pair + 4× M12 bolts. Reuse the walkway model's builder so the two models stay in sync.
-    if include_right:
+    if include_right_hangers:
         parts.append(wm.right_hangers())
 
     return '\n'.join(parts)

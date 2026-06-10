@@ -78,26 +78,26 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 0.16
   grp.material = mat
 
-  # Left walkway (ghost)
+  # Left walkway (removable)
   grp = ents.add_group
-  grp.name = "Left walkway (ghost)"
+  grp.name = "Left walkway (removable)"
   face = grp.entities.add_face([170.mm,0.mm,115.mm], [470.mm,0.mm,115.mm], [470.mm,2362.mm,115.mm], [170.mm,2362.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
-  mat = model.materials["Left walkway (ghost)"] || model.materials.add("Left walkway (ghost)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
-  mat.alpha = 0.28
+  mat = model.materials["Left walkway (removable)"] || model.materials.add("Left walkway (removable)")
+  mat.color = Sketchup::Color.new(192, 96, 0)
+  mat.alpha = 0.45
   grp.material = mat
 
-  # Left walkway punch-out (ghost)
+  # Left walkway punch-out (removable)
   grp = ents.add_group
-  grp.name = "Left walkway punch-out (ghost)"
+  grp.name = "Left walkway punch-out (removable)"
   face = grp.entities.add_face([470.mm,800.mm,115.mm], [770.mm,800.mm,115.mm], [770.mm,1560.mm,115.mm], [470.mm,1560.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
-  mat = model.materials["Left walkway punch-out (ghost)"] || model.materials.add("Left walkway punch-out (ghost)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
-  mat.alpha = 0.34
+  mat = model.materials["Left walkway (removable)"] || model.materials.add("Left walkway (removable)")
+  mat.color = Sketchup::Color.new(192, 96, 0)
+  mat.alpha = 0.45
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)

@@ -169,21 +169,23 @@ def context(left_walkway=True, x_far=None):
                  color=C_SHELL, alpha=0.16),
     ]
     if left_walkway:
-        # Ghosted left walkway (the surface the operator steps onto from the
-        # drum's interior opening): grating deck at X 170–470, Z 65–80, spanning
-        # the full container width to match the ghost-container footprint.
-        parts.append(ruby_box("Left walkway (ghost)", ov.WALKWAY_LEFT_X,
+        # Left walkway (the surface the operator steps onto from the drum's interior
+        # opening): grating deck at X 170–470, Z130, spanning the full container width.
+        # It is a REMOVABLE lift-out (taken out for the transport swing), so it's drawn
+        # amber (C_REMOVABLE) like the door-end near-deck lift-out band.
+        parts.append(ruby_box("Left walkway (removable)", ov.WALKWAY_LEFT_X,
                      0, ov.WALKWAY_H - ov.WALKWAY_GRATE_T,
                      ov.WALKWAY_W, C_WID, ov.WALKWAY_GRATE_T,
-                     color="#808080", alpha=0.28))
+                     color=ov.C_REMOVABLE, alpha=0.45))
         # Drum-exit PUNCH-OUT — deepened landing in front of the drum opening so
         # the operator has somewhere to step out (the 300mm deck leaves only 20mm).
-        parts.append(ruby_box("Left walkway punch-out (ghost)",
+        # Part of the removable left lift-out → also amber.
+        parts.append(ruby_box("Left walkway punch-out (removable)",
                      ov.WALKWAY_LEFT_X + ov.WALKWAY_W, ov.WALKWAY_LEFT_WIDE_YD_L,
                      ov.WALKWAY_H - ov.WALKWAY_GRATE_T,
                      ov.WALKWAY_LEFT_WIDE_W - ov.WALKWAY_W,
                      ov.WALKWAY_LEFT_WIDE_YD_R - ov.WALKWAY_LEFT_WIDE_YD_L,
-                     ov.WALKWAY_GRATE_T, color="#808080", alpha=0.34))
+                     ov.WALKWAY_GRATE_T, color=ov.C_REMOVABLE, alpha=0.45))
     return '\n'.join(parts)
 
 

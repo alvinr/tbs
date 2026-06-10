@@ -253,6 +253,94 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # FP Brace Vert L (near/pinhole)
+  grp = ents.add_group
+  grp.name = "FP Brace Vert L (near/pinhole)"
+  face = grp.entities.add_face([150.mm,100.mm,150.mm], [200.mm,100.mm,150.mm], [200.mm,150.mm,150.mm], [150.mm,150.mm,150.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2138.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP Brace Vert R (near/pinhole)
+  grp = ents.add_group
+  grp.name = "FP Brace Vert R (near/pinhole)"
+  face = grp.entities.add_face([4599.mm,100.mm,150.mm], [4649.mm,100.mm,150.mm], [4649.mm,150.mm,150.mm], [4599.mm,150.mm,150.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2138.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP Brace Beam Bottom (near/pinhole)
+  grp = ents.add_group
+  grp.name = "FP Brace Beam Bottom (near/pinhole)"
+  face = grp.entities.add_face([150.mm,100.mm,150.mm], [4649.mm,100.mm,150.mm], [4649.mm,150.mm,150.mm], [150.mm,150.mm,150.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP Brace Beam Top (near/pinhole)
+  grp = ents.add_group
+  grp.name = "FP Brace Beam Top (near/pinhole)"
+  face = grp.entities.add_face([150.mm,100.mm,2238.mm], [4649.mm,100.mm,2238.mm], [4649.mm,150.mm,2238.mm], [150.mm,150.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP Brace Vert L (far/film)
+  grp = ents.add_group
+  grp.name = "FP Brace Vert L (far/film)"
+  face = grp.entities.add_face([150.mm,2262.mm,150.mm], [200.mm,2262.mm,150.mm], [200.mm,2312.mm,150.mm], [150.mm,2312.mm,150.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2138.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP Brace Vert R (far/film)
+  grp = ents.add_group
+  grp.name = "FP Brace Vert R (far/film)"
+  face = grp.entities.add_face([4599.mm,2262.mm,150.mm], [4649.mm,2262.mm,150.mm], [4649.mm,2312.mm,150.mm], [4599.mm,2312.mm,150.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2138.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP Brace Beam Bottom (far/film)
+  grp = ents.add_group
+  grp.name = "FP Brace Beam Bottom (far/film)"
+  face = grp.entities.add_face([150.mm,2262.mm,150.mm], [4649.mm,2262.mm,150.mm], [4649.mm,2312.mm,150.mm], [150.mm,2312.mm,150.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP Brace Beam Top (far/film)
+  grp = ents.add_group
+  grp.name = "FP Brace Beam Top (far/film)"
+  face = grp.entities.add_face([150.mm,2262.mm,2238.mm], [4649.mm,2262.mm,2238.mm], [4649.mm,2312.mm,2238.mm], [150.mm,2312.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Corner Mechanism"
   inst.layer = model.layers["Corner Mechanism"]

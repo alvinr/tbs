@@ -151,6 +151,27 @@ fp_inst.set_attribute(fda, "_onclick_access", "NONE")
 '''
 
 
+def brace_cage():
+    """The demountable 50×50 RHS brace cage that ties the four corner rails into a
+    rigid knock-down box — a rectangular portal at each end (near/pinhole + far/film):
+    left + right VERTICALS and TOP + BOTTOM horizontal cross-beams. Geometry
+    single-sourced from the overview's film_plane_mechanism() (BRACE_* constants)."""
+    s = ov.BRACE_RHS
+    xl, xr = ov.RAIL_X_L, ov.RAIL_X_R
+    zb, zt = ov.BRACE_Z_BOT, ov.BRACE_Z_TOP
+    parts = []
+    for py, pn in [(ov.FP_Y_MIN, "near/pinhole"), (ov.FP_Y, "far/film")]:
+        parts.append(ov.ruby_box(f"FP Brace Vert L ({pn})",
+                     xl, py, zb, s, s, zt - zb, color=ov.C_STEEL))
+        parts.append(ov.ruby_box(f"FP Brace Vert R ({pn})",
+                     xr - s, py, zb, s, s, zt - zb, color=ov.C_STEEL))
+        parts.append(ov.ruby_box(f"FP Brace Beam Bottom ({pn})",
+                     xl, py, zb, xr - xl, s, s, color=ov.C_STEEL))
+        parts.append(ov.ruby_box(f"FP Brace Beam Top ({pn})",
+                     xl, py, zt - s, xr - xl, s, s, color=ov.C_STEEL))
+    return '\n'.join(parts)
+
+
 def static_rails():
     """The FIXED guides: 4 HGR20 rails + leadscrews along depth (Yd). The carriages
     (in the DC) run along these."""
@@ -220,7 +241,8 @@ def generate_ruby():
     comps = [
         ov.component("Container (ghost)", "Context", context()),
         ov.component("Processing Tray", "Processing Tray", ov.processing_tray()),
-        ov.component("Corner Mechanism", "Corner Mechanism", static_rails()),
+        ov.component("Corner Mechanism", "Corner Mechanism",
+                     static_rails() + "\n" + brace_cage()),
         ov.component("Corner Detail (TR)", "Corner Detail", detail),
     ]
     body = '\n'.join(comps)

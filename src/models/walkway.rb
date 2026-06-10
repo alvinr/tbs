@@ -3624,6 +3624,10 @@ end
 anc = Geom::Point3d.new(2400.mm, 150.mm, 73.mm)
 txt = entities.add_text("NEAR WALKWAY", anc, Geom::Vector3d.new(0.mm, -900.mm, 550.mm))
 txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(710.mm, 150.mm, 140.mm)
+txt = entities.add_text("NEAR LIFT-OUT
+(removable for transport)", anc, Geom::Vector3d.new(-350.mm, -800.mm, 700.mm))
+txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(2400.mm, 2212.mm, 73.mm)
 txt = entities.add_text("FAR WALKWAY", anc, Geom::Vector3d.new(300.mm, 500.mm, 900.mm))
 txt.layer = model.layers["Labels"] rescue nil

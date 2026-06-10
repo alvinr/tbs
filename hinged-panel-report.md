@@ -65,7 +65,7 @@ flush-faced panels that seal against the fixed door frame.
 | Skin (each face) | 18mm exterior-grade plywood |
 | Interior finish | Flat black (RAL 9005) — optically dead at visible wavelengths |
 | Frame perimeter | Welded corners, mitered joints |
-| Panel weight (sandwich + Ø900 housing, excl. drum) | ~223 kg (first-principles: 187 kg sandwich + 36 kg housing) |
+| Panel weight (full panel: sandwich + Ø900 housing + B2 bay, excl. drum) | ~243 kg (first-principles: 196 kg sandwich + 22 kg housing + 25 kg B2 bay). See §2.4 for the movable swing-zone breakdown |
 
 ### 2.3 EPDM Perimeter Seal
 
@@ -80,6 +80,75 @@ rotates inside it), this gasket seals the fixed surround to the frame independen
 the moving panel, all the way around the opening the housing passes through. It sits in
 the same exterior door plane (X=0), concentric inboard of the panel-perimeter seal (see
 §6, light-path #8).
+
+### 2.4 Movable-Panel Weight Breakdown
+
+The transport scheme swings the panel + drum ~56° about the vertical Ø89 pivot, so
+the **movable assembly** is everything that rotates about that pivot. The breakdown
+below is first-principles from the geometry constants (reproducible via
+`src/generators/generate_movable_panel_weight.py`); it isolates the swing zone
+(Yd 180–2287mm) and deducts the Ø900 housing aperture from the center skins, so it
+is slightly lower than the whole-panel figure carried in the
+[Weight Distribution Report §3.2](weight-distribution-report.md).
+
+| Group | Component | Construction | kg |
+|-------|-----------|-------------|---:|
+| **A · Sandwich** | Corner ply skins | 2×18mm ply, 1.05m × 2.39m | 54.2 |
+| | Corner Al core plates | 3mm 5052 | 20.3 |
+| | Center RHS frame | 50×50×3 steel SHS, 11.1m | 49.2 |
+| | Center ply skins | 2×18mm ply, Ø900 aperture deducted | 40.7 |
+| | **A subtotal** | | **164.5** |
+| **B · Housing** | HDPE shell + steel flange/hub | Ø900×5mm, two 80° openings | 21.8 |
+| **C · Drum** | PP C-shell + caps + Ø75 shafts + 2× SKF 6215 + stiffeners + grab rail | Ø864×4mm | 37.8 |
+| **D · Bay** | B2 punch-out bay walls | 6mm ply, 4-wall tube 0.89m deep | 24.8 |
+| **E · Cage** | Drum support cage frame | ~25×25×3 angle, 16.1m box | 16.1 |
+| **F · Seals** | Perimeter + housing EPDM + drum wipers | 20mm foam + felt/brush | 2.7 |
+| **G · Latches** | Cam latches (4) | ~0.5 kg each | 2.0 |
+| **H · Pivot (rotating)** | Thrust/journal bearings + collar/hub | carries leaf at pivot | 13.0 |
+| | **MOVABLE TOTAL (carried-rotating)** | | **≈283** |
+| | *+ transport-only locks (stays + 4 saddles)* | engaged only when swung | +10 |
+
+**By material:** plywood 120 kg (42%), steel 103 kg (37%), PP 21 kg, aluminum 20 kg,
+HDPE 16 kg, EPDM/other 3 kg.
+
+**Findings.** The mass is dominated by two items — **plywood (120 kg)** and the
+**steel center frame (49 kg)** — which together are 60% of the assembly. The
+optical hardware (drum + housing) is only ~60 kg and is already plastic-skinned
+(rev 9), so it offers little further saving. Any meaningful reduction must come from
+the sandwich skins and the center frame (§2.5). Because the swing axis is
+**vertical**, this mass produces **no gravity overturning torque** at any swing
+angle; it matters for the thrust-bearing/pivot-post sizing, for handling during
+assembly (beyond a two-person lift — an engine crane or gantry hoist is required),
+and for total container payload.
+
+### 2.5 Weight-Reduction Alternatives
+
+A trade study of the high-leverage targets. Savings are first-order estimates against
+the ≈283 kg baseline; **none are adopted yet** — each needs a design decision before
+the geometry constants change. Stiffness and light-tightness, not strength, govern
+the sandwich, so the options below are evaluated on those terms.
+
+| # | Change | Est. saving | Cost | Risk | Notes |
+|---|--------|------------:|------|------|-------|
+| A | Center frame: steel RHS → **aluminum RHS** (up-size to 60×60×4 for stiffness) | ~22–28 kg | ↑ $/kg, TIG weld | Med | Frame is the structural spine carrying the drum; Al's lower E needs a larger section, eating ~⅓ of the naive 32 kg saving |
+| B | Corner zones: **18mm → 12mm ply** skins (corners are light-seal infill, non-structural) | ~18 kg | ↓ | Low | Simplest, lowest-risk cut; corners carry no drum load |
+| C | Corners: replace 40mm ply/Al/ply with **25mm aluminum-honeycomb panel** (~7 kg/m²) | ~55 kg | ↑↑ | Med | Big win on the 75 kg of corner sandwich; needs edge sealing + a light-tight black facing |
+| D | B2 bay: **6mm → 4mm ply** (or 3mm composite) | ~8 kg | ≈ | Low | Low leverage; the bay is a non-structural light enclosure |
+| E | **Whole-panel honeycomb redesign** — Al-honeycomb panels on a minimal Al frame | ~70–90 kg | ↑↑↑ | High | Largest cut (target ~190–210 kg) but a full structural + light-seal redevelopment |
+
+**Recommendation.** Two coherent paths:
+
+- **Low-risk incremental (B + D + A):** thinner corner/bay skins plus an aluminum
+  center frame → **~45–55 kg** off (to ~230 kg) with conventional construction and
+  modest cost. Best near-term value.
+- **Aggressive (C, or escalating to E):** honeycomb corners (or a full honeycomb
+  panel) → **~55–90 kg** off (to ~195–225 kg), at materially higher cost and a
+  light-tightness/edge-sealing development task.
+
+Either path leaves the drum + housing untouched (already optimized) and does not
+affect the swing kinematics. The next step is a decision on which path to cost out
+against the [project cost breakdown](project-cost-breakdown.md) before any
+`tbs_constants.py` change.
 
 ---
 

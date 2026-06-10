@@ -84,7 +84,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Electrical Panel (EP) [ghost]
   grp = ents.add_group
   grp.name = "Electrical Panel (EP) [ghost]"
-  face = grp.entities.add_face([1910.mm,0.mm,1650.mm], [2210.mm,0.mm,1650.mm], [2210.mm,160.mm,1650.mm], [1910.mm,160.mm,1650.mm])
+  face = grp.entities.add_face([1910.mm,0.mm,1500.mm], [2210.mm,0.mm,1500.mm], [2210.mm,160.mm,1500.mm], [1910.mm,160.mm,1500.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(600.mm)
   mat = model.materials["Electrical Panel (EP) [ghost]"] || model.materials.add("Electrical Panel (EP) [ghost]")

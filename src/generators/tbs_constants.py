@@ -286,7 +286,8 @@ EVAP_STOW_Z    = 150     # sits on raised grating surface (WALKWAY_H 130 + 20mm 
 PWR_PANEL_X = 1250   # power panel left edge X (mm) — just left of EP
 PWR_PANEL_W = 340    # face plate width (mm)
 PWR_PANEL_H = 240    # face plate height (mm)
-PWR_PANEL_Z = 1830   # face plate bottom Z (mm) — stays centered with interior EP [+50 raise; was 1780]
+PWR_PANEL_Z = 1830   # face plate bottom Z (mm) — exterior; kept here (no beam clash). NOTE: the interior
+                     # EP DROPPED 150 in rev11 for brace-beam clearance, so it's no longer co-centered.
 PWR_PANEL_D = 3      # face plate thickness (mm) — flush-mount, no protrusion
 PWR_PANEL_CUTOUT_W = 280   # wall cutout width (mm) — 30mm overlap each side
 PWR_PANEL_CUTOUT_H = 180   # wall cutout height (mm)
@@ -296,8 +297,9 @@ EP_X       = 1910    # electrical panel left edge X (mm) — stacked above the b
                      # (X1810–2310), centered over it; clears the upper transport-stay anchor
                      # (X1594–1794) and the pinhole (X2399). [rev10: moved right off the stay anchor]
 EP_W       = 300     # electrical panel width (mm)
-EP_H_LO    = 1650    # electrical panel bottom Z (mm) [+50 walkway raise; was 1600 / 900 pre-rev7]
-EP_H_HI    = 2250    # electrical panel top Z (mm)   [+50 walkway raise; was 2200]
+EP_H_LO    = 1500    # electrical panel bottom Z (mm) [rev11: DROPPED 150 (1650→1500) so the EP top
+                     # clears the film-plane brace top beam (Z2238); was 1650 +50 walkway / 1600 / 900]
+EP_H_HI    = 2100    # electrical panel top Z (mm)   [rev11: 2250→2100, 138mm below the brace top beam]
 
 BA_X       = 1810    # battery bank left edge X (mm)  [rev6: was 2050; shifted left to clear cone]
 BA_W       = 500     # battery bank width (mm)  → right edge 2310, clears cone left (2319)

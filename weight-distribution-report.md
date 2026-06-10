@@ -132,16 +132,16 @@ Brown/Waste IBCs.
 
 | State | Total (kg) | X_cg (mm) | Yd_cg (mm) | Z_cg (mm) | Front/Rear | Near/Far |
 |-------|-----------|-----------|------------|-----------|------------|----------|
-| Dry (Transport) | 3,318 | 2,738 | 1,194 | 1,055 | 54.1/45.9% | 48.5/51.5% |
-| Loaded Transport (Blue full) | 4,518 | 3,414 | 1,191 | 1,177 | 39.7/60.3% | 48.9/51.1% |
-| Camera Ready (Deployed) | 4,518 | 3,411 | 1,173 | 1,177 | 39.7/60.3% | 50.3/49.7% |
-| Materials Exhausted (Transport) | 4,518 | 3,414 | 1,191 | 909 | 39.7/60.3% | 48.9/51.1% |
+| Dry (Transport) | 3,318 | 2,738 | 1,194 | 1,058 | 54.1/45.9% | 48.5/51.5% |
+| Loaded Transport (Blue full) | 4,518 | 3,414 | 1,191 | 1,179 | 39.7/60.3% | 48.9/51.1% |
+| Camera Ready (Deployed) | 4,518 | 3,411 | 1,173 | 1,179 | 39.7/60.3% | 50.3/49.7% |
+| Materials Exhausted (Transport) | 4,518 | 3,414 | 1,191 | 911 | 39.7/60.3% | 48.9/51.1% |
 
 **Loaded Transport** is the camera-ready water load (full top-tier Blue IBCs,
 1,200 kg) carried in the *transport* configuration — panel swung in, cargo doors
 closed. It shares the Materials Exhausted footprint (same X/Yd, same 40.7/59.3
 front/rear) but the water sits in the **top** tier, so its vertical CG is
-**Z=1,177mm — 268mm higher** than the exhausted state (909mm). It is therefore
+**Z=1,179mm — 268mm higher** than the exhausted state (911mm). It is therefore
 the **highest-CG transport case** and governs road-transport stability (tie-down
 and cornering), even though total mass and axle split are unchanged.
 
@@ -179,7 +179,7 @@ Quadrant weights show the rear-heavy bias from the IBC stack.
 Water has migrated from top-tier Blue IBCs to bottom-tier Brown/Waste
 IBCs. The hinged panel is swung ~56° about the pivot to its transport position.
 Total weight is unchanged (closed water system). The vertical
-CG drops by 268mm (Z: 1,177 → 909mm) as water moves to bottom tier.
+CG drops by 268mm (Z: 1,179 → 911mm) as water moves to bottom tier.
 
 ![TBS-001 — Weight Analysis: Materials Exhausted](assets/weight-analysis-sheet4.png)
 
@@ -188,7 +188,7 @@ CG drops by 268mm (Z: 1,177 → 909mm) as water moves to bottom tier.
 The camera-ready water load (1,200 kg in the top-tier Blue IBCs) carried in
 transport configuration — panel swung in, cargo doors closed. Same
 plan footprint and 40.7/59.3 front/rear split as Materials Exhausted, but the
-water is in the **top** tier, raising the vertical CG to **Z=1,177mm** (+268mm
+water is in the **top** tier, raising the vertical CG to **Z=1,179mm** (+268mm
 vs the exhausted state). This is the worst-case transport vertical CG.
 
 ![TBS-001 — Weight Analysis: Loaded Transport](assets/weight-analysis-sheet5.png)
@@ -246,8 +246,8 @@ axle(s) to balance the load.
 
 The most significant finding is the **vertical CG migration** between states:
 
-- **Camera Ready:** Z_cg = 1,177mm (1,200 kg of water in top-tier IBCs)
-- **Materials Exhausted:** Z_cg = 909mm (1,200 kg of water in bottom-tier IBCs)
+- **Camera Ready:** Z_cg = 1,179mm (1,200 kg of water in top-tier IBCs)
+- **Materials Exhausted:** Z_cg = 911mm (1,200 kg of water in bottom-tier IBCs)
 - **ΔZ = −264mm** (CG drops ~264mm during a session)
 
 This is an inherent self-stabilizing feature of the 2×2 IBC stack design.

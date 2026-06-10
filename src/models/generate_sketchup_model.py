@@ -2000,15 +2000,20 @@ def water_plumbing():
     # Processing-tray sump (per water-system Detail A): pickup riser UP through
     # the cantilevered near-walkway grate to the valve above deck, back DOWN
     # through the grate, then routed UNDERNEATH at floor level (Z=30 — below the
-    # 50mm grate AND the Z=100 film-plane rails) through the tray–IBC gap into
-    # the corridor and up to the pump. Keeps the film-plane structure clear.
+    # cantilever beams (Z80-115) AND the bottom film rail (Z150)) through the
+    # tray–IBC gap into the corridor and up to the pump.
+    # rev12: the return riser drops in the GRATE GAP between the two walkway long
+    # beams (X<4589) — the old X+70 drop (X4620) fell on the right long beam
+    # (X4589-4629). The Z30 floor run then clears the beam + bottom film rail.
     gapX = (PROC_TRAY_X_R + IBC_COL_X) / 2     # 4651.5 — centered in the 45mm gap
-    valveZ = WALKWAY_H + 65                     # 130 — valve body above the deck
+    valveZ = WALKWAY_H + 65                     # 195 — valve body above the deck
+    dropX = PROC_TRAY_DRAIN_X - 50              # 4500 — return riser in the grate gap,
+                                                # clear left of the right long beam (X4589)
     pipe("Tray Sump → P-04",
          [(PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z),
           (PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, valveZ),
-          (PROC_TRAY_DRAIN_X + 70, PROC_TRAY_DRAIN_YD, valveZ),
-          (PROC_TRAY_DRAIN_X + 70, PROC_TRAY_DRAIN_YD, 30),
+          (dropX, PROC_TRAY_DRAIN_YD, valveZ),
+          (dropX, PROC_TRAY_DRAIN_YD, 30),
           (gapX, PROC_TRAY_DRAIN_YD, 30),
           (gapX, cc, 30), (rxB, cc, 30), (rxB, pyL, 30), (rxB, pyL, pZ2)],
          C_IBC_WASTE)

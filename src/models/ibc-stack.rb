@@ -2070,7 +2070,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Tray Sump → P-04 elbow"
   ge = grp.entities
-  arc = ge.add_arc([4574.mm,80.mm,171.mm], [-1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  arc = ge.add_arc([4526.mm,80.mm,171.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
   circle = ge.add_circle([4550.mm,80.mm,171.mm], [0.000000,0.000000,1.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
@@ -2083,8 +2083,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Tray Sump → P-04"
   ge = grp.entities
-  vec = Geom::Vector3d.new(23.460000000000036.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4574.mm,80.mm,195.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(-13.260000000000218.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4526.mm,80.mm,195.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2097,8 +2097,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Tray Sump → P-04 elbow"
   ge = grp.entities
-  arc = ge.add_arc([4597.46.mm,80.mm,172.46.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 22.540000000000003.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4597.46.mm,80.mm,195.mm], [1.000000,0.000000,0.000000], 12.mm, 16)
+  arc = ge.add_arc([4512.74.mm,80.mm,182.26.mm], [0.000000,0.000000,1.000000], [-0.000000,-1.000000,-0.000000], 12.740000000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4512.74.mm,80.mm,195.mm], [-1.000000,0.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
@@ -2110,8 +2110,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Tray Sump → P-04"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -127.025.mm)
-  circle = ge.add_circle([4620.mm,80.mm,172.46.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -128.26.mm)
+  circle = ge.add_circle([4500.mm,80.mm,182.26.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2124,8 +2124,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Tray Sump → P-04 elbow"
   ge = grp.entities
-  arc = ge.add_arc([4635.435.mm,80.mm,45.435.mm], [-1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 15.435000000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4620.mm,80.mm,45.435.mm], [0.000000,0.000000,-1.000000], 12.mm, 16)
+  arc = ge.add_arc([4524.mm,80.mm,54.mm], [-1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4500.mm,80.mm,54.mm], [0.000000,0.000000,-1.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
@@ -2137,8 +2137,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Tray Sump → P-04"
   ge = grp.entities
-  vec = Geom::Vector3d.new(8.19315000000006.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4635.435.mm,80.mm,30.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(103.5.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4524.mm,80.mm,30.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2151,8 +2151,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Tray Sump → P-04 elbow"
   ge = grp.entities
-  arc = ge.add_arc([4643.6281500000005.mm,87.87184999999981.mm,30.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 7.871849999999805.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4643.6281500000005.mm,80.mm,30.mm], [1.000000,0.000000,0.000000], 12.mm, 16)
+  arc = ge.add_arc([4627.5.mm,104.mm,30.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4627.5.mm,80.mm,30.mm], [1.000000,0.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
@@ -2164,8 +2164,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Tray Sump → P-04"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 1069.1281500000002.mm, 0.mm)
-  circle = ge.add_circle([4651.5.mm,87.87184999999981.mm,30.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 1053.mm, 0.mm)
+  circle = ge.add_circle([4651.5.mm,104.mm,30.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

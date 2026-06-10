@@ -12,6 +12,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Tray + Spray") unless model.layers["Tray + Spray"]
   model.layers.add("Film Rail + Saddle") unless model.layers["Film Rail + Saddle"]
   model.layers.add("Cantilever Walkway") unless model.layers["Cantilever Walkway"]
+  model.layers.add("Grate") unless model.layers["Grate"]
   model.layers.add("Labels") unless model.layers["Labels"]
 
   # ═══ Container (ghost) ═══
@@ -2061,6 +2062,13 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Cantilever Right Walkway"
+  inst.layer = model.layers["Cantilever Walkway"]
+
+  # ═══ Walkway Grate ═══
+  defn = model.definitions.add("Walkway Grate")
+  ents = defn.entities
   # Right walkway grate (cantilevered — NO ceiling rods)
   grp = ents.add_group
   grp.name = "Right walkway grate (cantilevered — NO ceiling rods)"
@@ -2073,8 +2081,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
-  inst.name = "Cantilever Right Walkway"
-  inst.layer = model.layers["Cantilever Walkway"]
+  inst.name = "Walkway Grate"
+  inst.layer = model.layers["Grate"]
 
 
 anc = Geom::Point3d.new(4734.mm, 1046.mm, 900.mm)
@@ -2118,7 +2126,7 @@ alvinr.github.io/tbs", lanc)
 
 model.definitions.purge_unused
 model.materials.purge_unused
-keep_tags = ["Context", "IBC Frame", "Tray + Spray", "Film Rail + Saddle", "Cantilever Walkway", "Labels"]
+keep_tags = ["Context", "IBC Frame", "Tray + Spray", "Film Rail + Saddle", "Cantilever Walkway", "Grate", "Labels"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l| model.layers.remove(l, true) rescue nil unless l == default_layer || keep_tags.include?(l.name) }
 
@@ -2128,7 +2136,7 @@ dir = Geom::Vector3d.new(-0.6, -0.7, 0.45); dir.normalize!
 eye = ctr.offset(dir, bb.diagonal * 1.4)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
-[["Combined", ["Context", "IBC Frame", "Tray + Spray", "Film Rail + Saddle", "Cantilever Walkway"]], ["Anchors (frame + walls)", ["Cantilever Walkway", "IBC Frame", "Context"]], ["Clearance (film + spray)", ["Cantilever Walkway", "Film Rail + Saddle", "Tray + Spray"]], ["Labeled", ["Context", "IBC Frame", "Tray + Spray", "Film Rail + Saddle", "Cantilever Walkway", "Labels"]]].each { |name, tags|
+[["Combined", ["Context", "IBC Frame", "Tray + Spray", "Film Rail + Saddle", "Cantilever Walkway", "Grate"]], ["Anchors (frame + walls)", ["Cantilever Walkway", "IBC Frame", "Context"]], ["Clearance (film + spray)", ["Cantilever Walkway", "Film Rail + Saddle", "Tray + Spray"]], ["Labeled", ["Context", "IBC Frame", "Tray + Spray", "Film Rail + Saddle", "Cantilever Walkway", "Grate", "Labels"]]].each { |name, tags|
   model.layers.each { |l| l.visible = (l == default_layer || tags.include?(l.name)) }
   page = model.pages.add(name); page.use_camera = true
 }

@@ -19,10 +19,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Container") unless model.layers["Container"]
   model.layers.add("Processing Tray") unless model.layers["Processing Tray"]
   model.layers.add("Walkways") unless model.layers["Walkways"]
-  model.layers.add("Walkway Right") unless model.layers["Walkway Right"]
   model.layers.add("Cantilevers") unless model.layers["Cantilevers"]
   model.layers.add("Cantilever Types") unless model.layers["Cantilever Types"]
-  model.layers.add("Right Hangers") unless model.layers["Right Hangers"]
+  model.layers.add("Right Cantilever") unless model.layers["Right Cantilever"]
   model.layers.add("Left Support") unless model.layers["Left Support"]
   model.layers.add("Labels") unless model.layers["Labels"]
 
@@ -234,24 +233,6 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Walkway Decks (near/far/left)"
   inst.layer = model.layers["Walkways"]
-
-  # ═══ Walkway Right (IBC end) ═══
-  defn = model.definitions.add("Walkway Right (IBC end)")
-  ents = defn.entities
-  # Walkway Right (IBC end)
-  grp = ents.add_group
-  grp.name = "Walkway Right (IBC end)"
-  face = grp.entities.add_face([4329.mm,0.mm,115.mm], [4629.mm,0.mm,115.mm], [4629.mm,2362.mm,115.mm], [4329.mm,2362.mm,115.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(15.mm)
-  mat = model.materials["Walkway Near (left)"] || model.materials.add("Walkway Near (left)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  inst = entities.add_instance(defn, Geom::Transformation.new)
-  inst.name = "Walkway Right (IBC end)"
-  inst.layer = model.layers["Walkway Right"]
 
   # ═══ Wall Cantilevers ═══
   defn = model.definitions.add("Wall Cantilevers")
@@ -2541,13 +2522,123 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.name = "Cantilever Types"
   inst.layer = model.layers["Cantilever Types"]
 
-  # ═══ Right Walkway Hangers ═══
-  defn = model.definitions.add("Right Walkway Hangers")
+  # ═══ Right Walkway (cantilever rectangle) ═══
+  defn = model.definitions.add("Right Walkway (cantilever rectangle)")
   ents = defn.entities
-  # Right bearer (25x25x5 L) X4329
+  # RWk Long beam X4329 upper
   grp = ents.add_group
-  grp.name = "Right bearer (25x25x5 L) X4329"
-  face = grp.entities.add_face([4316.5.mm,0.mm,90.mm], [4341.5.mm,0.mm,90.mm], [4341.5.mm,2362.mm,90.mm], [4316.5.mm,2362.mm,90.mm])
+  grp.name = "RWk Long beam X4329 upper"
+  face = grp.entities.add_face([4329.mm,0.mm,95.mm], [4369.mm,0.mm,95.mm], [4369.mm,2362.mm,95.mm], [4329.mm,2362.mm,95.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(20.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk Long beam X4329 lower
+  grp = ents.add_group
+  grp.name = "RWk Long beam X4329 lower"
+  face = grp.entities.add_face([4329.mm,0.mm,80.mm], [4369.mm,0.mm,80.mm], [4369.mm,1046.mm,80.mm], [4329.mm,1046.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk Long beam X4329 lower
+  grp = ents.add_group
+  grp.name = "RWk Long beam X4329 lower"
+  face = grp.entities.add_face([4329.mm,1086.mm,80.mm], [4369.mm,1086.mm,80.mm], [4369.mm,1266.mm,80.mm], [4329.mm,1266.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk Long beam X4329 lower
+  grp = ents.add_group
+  grp.name = "RWk Long beam X4329 lower"
+  face = grp.entities.add_face([4329.mm,1306.mm,80.mm], [4369.mm,1306.mm,80.mm], [4369.mm,2362.mm,80.mm], [4329.mm,2362.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk Long beam X4589 upper
+  grp = ents.add_group
+  grp.name = "RWk Long beam X4589 upper"
+  face = grp.entities.add_face([4589.mm,0.mm,95.mm], [4629.mm,0.mm,95.mm], [4629.mm,2362.mm,95.mm], [4589.mm,2362.mm,95.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(20.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk Long beam X4589 lower
+  grp = ents.add_group
+  grp.name = "RWk Long beam X4589 lower"
+  face = grp.entities.add_face([4589.mm,0.mm,80.mm], [4629.mm,0.mm,80.mm], [4629.mm,1046.mm,80.mm], [4589.mm,1046.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk Long beam X4589 lower
+  grp = ents.add_group
+  grp.name = "RWk Long beam X4589 lower"
+  face = grp.entities.add_face([4589.mm,1086.mm,80.mm], [4629.mm,1086.mm,80.mm], [4629.mm,1266.mm,80.mm], [4589.mm,1266.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk Long beam X4589 lower
+  grp = ents.add_group
+  grp.name = "RWk Long beam X4589 lower"
+  face = grp.entities.add_face([4589.mm,1306.mm,80.mm], [4629.mm,1306.mm,80.mm], [4629.mm,2362.mm,80.mm], [4589.mm,2362.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk end beam Yd0
+  grp = ents.add_group
+  grp.name = "RWk end beam Yd0"
+  face = grp.entities.add_face([4329.mm,0.mm,80.mm], [4629.mm,0.mm,80.mm], [4629.mm,40.mm,80.mm], [4329.mm,40.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(35.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk end beam Yd2322
+  grp = ents.add_group
+  grp.name = "RWk end beam Yd2322"
+  face = grp.entities.add_face([4329.mm,2322.mm,80.mm], [4629.mm,2322.mm,80.mm], [4629.mm,2362.mm,80.mm], [4329.mm,2362.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(35.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk center cantilever Yd1046 lower
+  grp = ents.add_group
+  grp.name = "RWk center cantilever Yd1046 lower"
+  face = grp.entities.add_face([4329.mm,1046.mm,70.mm], [4734.mm,1046.mm,70.mm], [4734.mm,1086.mm,70.mm], [4329.mm,1086.mm,70.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -2555,445 +2646,80 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right hanger rod M10 X4329 Y320
+  # RWk center cantilever Yd1046 upper
   grp = ents.add_group
-  grp.name = "Right hanger rod M10 X4329 Y320"
-  ge = grp.entities
-  circle = ge.add_circle([4329.mm,320.mm,115.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(2273.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling plate (inside) X4329 Y320
-  grp = ents.add_group
-  grp.name = "Right ceiling plate (inside) X4329 Y320"
-  face = grp.entities.add_face([4269.mm,275.mm,2382.mm], [4389.mm,275.mm,2382.mm], [4389.mm,365.mm,2382.mm], [4269.mm,365.mm,2382.mm])
+  grp.name = "RWk center cantilever Yd1046 upper"
+  face = grp.entities.add_face([4369.mm,1046.mm,95.mm], [4589.mm,1046.mm,95.mm], [4589.mm,1086.mm,95.mm], [4369.mm,1086.mm,95.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
+  face.pushpull(20.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right ceiling plate (outside) X4329 Y320
+  # RWk center cantilever Yd1046 upper
   grp = ents.add_group
-  grp.name = "Right ceiling plate (outside) X4329 Y320"
-  face = grp.entities.add_face([4269.mm,275.mm,2428.mm], [4389.mm,275.mm,2428.mm], [4389.mm,365.mm,2428.mm], [4269.mm,365.mm,2428.mm])
+  grp.name = "RWk center cantilever Yd1046 upper"
+  face = grp.entities.add_face([4629.mm,1046.mm,95.mm], [4734.mm,1046.mm,95.mm], [4734.mm,1086.mm,95.mm], [4629.mm,1086.mm,95.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
+  face.pushpull(20.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right ceiling bolt M12 X4329 Y320
+  # RWk upright clamp Yd1046 Y1038
   grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4329 Y320"
-  ge = grp.entities
-  circle = ge.add_circle([4287.mm,292.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4329 Y320
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4329 Y320"
-  ge = grp.entities
-  circle = ge.add_circle([4287.mm,348.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4329 Y320
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4329 Y320"
-  ge = grp.entities
-  circle = ge.add_circle([4371.mm,292.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4329 Y320
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4329 Y320"
-  ge = grp.entities
-  circle = ge.add_circle([4371.mm,348.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right hanger rod M10 X4329 Y457
-  grp = ents.add_group
-  grp.name = "Right hanger rod M10 X4329 Y457"
-  ge = grp.entities
-  circle = ge.add_circle([4329.mm,457.mm,115.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(2273.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling plate (inside) X4329 Y457
-  grp = ents.add_group
-  grp.name = "Right ceiling plate (inside) X4329 Y457"
-  face = grp.entities.add_face([4269.mm,412.mm,2382.mm], [4389.mm,412.mm,2382.mm], [4389.mm,502.mm,2382.mm], [4269.mm,502.mm,2382.mm])
+  grp.name = "RWk upright clamp Yd1046 Y1038"
+  face = grp.entities.add_face([4730.mm,1038.mm,45.mm], [4788.mm,1038.mm,45.mm], [4788.mm,1046.mm,45.mm], [4730.mm,1046.mm,45.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
+  face.pushpull(100.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right ceiling plate (outside) X4329 Y457
+  # RWk upright clamp Yd1046 Y1086
   grp = ents.add_group
-  grp.name = "Right ceiling plate (outside) X4329 Y457"
-  face = grp.entities.add_face([4269.mm,412.mm,2428.mm], [4389.mm,412.mm,2428.mm], [4389.mm,502.mm,2428.mm], [4269.mm,502.mm,2428.mm])
+  grp.name = "RWk upright clamp Yd1046 Y1086"
+  face = grp.entities.add_face([4730.mm,1086.mm,45.mm], [4788.mm,1086.mm,45.mm], [4788.mm,1094.mm,45.mm], [4730.mm,1094.mm,45.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
+  face.pushpull(100.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right ceiling bolt M12 X4329 Y457
+  # RWk upright bolt M12 Yd1046 Z76
   grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4329 Y457"
+  grp.name = "RWk upright bolt M12 Yd1046 Z76"
   ge = grp.entities
-  circle = ge.add_circle([4287.mm,429.mm,2378.mm], [0,0,1], 6.mm, 24)
+  circle = ge.add_circle([4759.mm,1034.mm,76.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(64.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right ceiling bolt M12 X4329 Y457
+  # RWk upright bolt M12 Yd1046 Z133
   grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4329 Y457"
+  grp.name = "RWk upright bolt M12 Yd1046 Z133"
   ge = grp.entities
-  circle = ge.add_circle([4287.mm,485.mm,2378.mm], [0,0,1], 6.mm, 24)
+  circle = ge.add_circle([4759.mm,1034.mm,133.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(64.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right ceiling bolt M12 X4329 Y457
+  # RWk center cantilever Yd1266 lower
   grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4329 Y457"
-  ge = grp.entities
-  circle = ge.add_circle([4371.mm,429.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4329 Y457
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4329 Y457"
-  ge = grp.entities
-  circle = ge.add_circle([4371.mm,485.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right hanger rod M10 X4329 Y914
-  grp = ents.add_group
-  grp.name = "Right hanger rod M10 X4329 Y914"
-  ge = grp.entities
-  circle = ge.add_circle([4329.mm,914.mm,115.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(2273.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling plate (inside) X4329 Y914
-  grp = ents.add_group
-  grp.name = "Right ceiling plate (inside) X4329 Y914"
-  face = grp.entities.add_face([4269.mm,869.mm,2382.mm], [4389.mm,869.mm,2382.mm], [4389.mm,959.mm,2382.mm], [4269.mm,959.mm,2382.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling plate (outside) X4329 Y914
-  grp = ents.add_group
-  grp.name = "Right ceiling plate (outside) X4329 Y914"
-  face = grp.entities.add_face([4269.mm,869.mm,2428.mm], [4389.mm,869.mm,2428.mm], [4389.mm,959.mm,2428.mm], [4269.mm,959.mm,2428.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4329 Y914
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4329 Y914"
-  ge = grp.entities
-  circle = ge.add_circle([4287.mm,886.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4329 Y914
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4329 Y914"
-  ge = grp.entities
-  circle = ge.add_circle([4287.mm,942.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4329 Y914
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4329 Y914"
-  ge = grp.entities
-  circle = ge.add_circle([4371.mm,886.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4329 Y914
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4329 Y914"
-  ge = grp.entities
-  circle = ge.add_circle([4371.mm,942.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right hanger rod M10 X4329 Y1371
-  grp = ents.add_group
-  grp.name = "Right hanger rod M10 X4329 Y1371"
-  ge = grp.entities
-  circle = ge.add_circle([4329.mm,1371.mm,115.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(2273.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling plate (inside) X4329 Y1371
-  grp = ents.add_group
-  grp.name = "Right ceiling plate (inside) X4329 Y1371"
-  face = grp.entities.add_face([4269.mm,1326.mm,2382.mm], [4389.mm,1326.mm,2382.mm], [4389.mm,1416.mm,2382.mm], [4269.mm,1416.mm,2382.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling plate (outside) X4329 Y1371
-  grp = ents.add_group
-  grp.name = "Right ceiling plate (outside) X4329 Y1371"
-  face = grp.entities.add_face([4269.mm,1326.mm,2428.mm], [4389.mm,1326.mm,2428.mm], [4389.mm,1416.mm,2428.mm], [4269.mm,1416.mm,2428.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4329 Y1371
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4329 Y1371"
-  ge = grp.entities
-  circle = ge.add_circle([4287.mm,1343.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4329 Y1371
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4329 Y1371"
-  ge = grp.entities
-  circle = ge.add_circle([4287.mm,1399.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4329 Y1371
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4329 Y1371"
-  ge = grp.entities
-  circle = ge.add_circle([4371.mm,1343.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4329 Y1371
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4329 Y1371"
-  ge = grp.entities
-  circle = ge.add_circle([4371.mm,1399.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right hanger rod M10 X4329 Y1828
-  grp = ents.add_group
-  grp.name = "Right hanger rod M10 X4329 Y1828"
-  ge = grp.entities
-  circle = ge.add_circle([4329.mm,1828.mm,115.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(2273.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling plate (inside) X4329 Y1828
-  grp = ents.add_group
-  grp.name = "Right ceiling plate (inside) X4329 Y1828"
-  face = grp.entities.add_face([4269.mm,1783.mm,2382.mm], [4389.mm,1783.mm,2382.mm], [4389.mm,1873.mm,2382.mm], [4269.mm,1873.mm,2382.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling plate (outside) X4329 Y1828
-  grp = ents.add_group
-  grp.name = "Right ceiling plate (outside) X4329 Y1828"
-  face = grp.entities.add_face([4269.mm,1783.mm,2428.mm], [4389.mm,1783.mm,2428.mm], [4389.mm,1873.mm,2428.mm], [4269.mm,1873.mm,2428.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4329 Y1828
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4329 Y1828"
-  ge = grp.entities
-  circle = ge.add_circle([4287.mm,1800.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4329 Y1828
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4329 Y1828"
-  ge = grp.entities
-  circle = ge.add_circle([4287.mm,1856.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4329 Y1828
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4329 Y1828"
-  ge = grp.entities
-  circle = ge.add_circle([4371.mm,1800.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4329 Y1828
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4329 Y1828"
-  ge = grp.entities
-  circle = ge.add_circle([4371.mm,1856.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right bearer (25x25x5 L) X4629
-  grp = ents.add_group
-  grp.name = "Right bearer (25x25x5 L) X4629"
-  face = grp.entities.add_face([4616.5.mm,0.mm,90.mm], [4641.5.mm,0.mm,90.mm], [4641.5.mm,2362.mm,90.mm], [4616.5.mm,2362.mm,90.mm])
+  grp.name = "RWk center cantilever Yd1266 lower"
+  face = grp.entities.add_face([4329.mm,1266.mm,70.mm], [4734.mm,1266.mm,70.mm], [4734.mm,1306.mm,70.mm], [4329.mm,1306.mm,70.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -3001,444 +2727,433 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right hanger rod M10 X4629 Y320
+  # RWk center cantilever Yd1266 upper
   grp = ents.add_group
-  grp.name = "Right hanger rod M10 X4629 Y320"
-  ge = grp.entities
-  circle = ge.add_circle([4629.mm,320.mm,115.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(2273.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling plate (inside) X4629 Y320
-  grp = ents.add_group
-  grp.name = "Right ceiling plate (inside) X4629 Y320"
-  face = grp.entities.add_face([4569.mm,275.mm,2382.mm], [4689.mm,275.mm,2382.mm], [4689.mm,365.mm,2382.mm], [4569.mm,365.mm,2382.mm])
+  grp.name = "RWk center cantilever Yd1266 upper"
+  face = grp.entities.add_face([4369.mm,1266.mm,95.mm], [4589.mm,1266.mm,95.mm], [4589.mm,1306.mm,95.mm], [4369.mm,1306.mm,95.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
+  face.pushpull(20.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right ceiling plate (outside) X4629 Y320
+  # RWk center cantilever Yd1266 upper
   grp = ents.add_group
-  grp.name = "Right ceiling plate (outside) X4629 Y320"
-  face = grp.entities.add_face([4569.mm,275.mm,2428.mm], [4689.mm,275.mm,2428.mm], [4689.mm,365.mm,2428.mm], [4569.mm,365.mm,2428.mm])
+  grp.name = "RWk center cantilever Yd1266 upper"
+  face = grp.entities.add_face([4629.mm,1266.mm,95.mm], [4734.mm,1266.mm,95.mm], [4734.mm,1306.mm,95.mm], [4629.mm,1306.mm,95.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
+  face.pushpull(20.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right ceiling bolt M12 X4629 Y320
+  # RWk upright clamp Yd1266 Y1258
   grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4629 Y320"
-  ge = grp.entities
-  circle = ge.add_circle([4587.mm,292.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4629 Y320
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4629 Y320"
-  ge = grp.entities
-  circle = ge.add_circle([4587.mm,348.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4629 Y320
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4629 Y320"
-  ge = grp.entities
-  circle = ge.add_circle([4671.mm,292.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4629 Y320
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4629 Y320"
-  ge = grp.entities
-  circle = ge.add_circle([4671.mm,348.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right hanger rod M10 X4629 Y457
-  grp = ents.add_group
-  grp.name = "Right hanger rod M10 X4629 Y457"
-  ge = grp.entities
-  circle = ge.add_circle([4629.mm,457.mm,115.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(2273.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling plate (inside) X4629 Y457
-  grp = ents.add_group
-  grp.name = "Right ceiling plate (inside) X4629 Y457"
-  face = grp.entities.add_face([4569.mm,412.mm,2382.mm], [4689.mm,412.mm,2382.mm], [4689.mm,502.mm,2382.mm], [4569.mm,502.mm,2382.mm])
+  grp.name = "RWk upright clamp Yd1266 Y1258"
+  face = grp.entities.add_face([4730.mm,1258.mm,45.mm], [4788.mm,1258.mm,45.mm], [4788.mm,1266.mm,45.mm], [4730.mm,1266.mm,45.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
+  face.pushpull(100.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right ceiling plate (outside) X4629 Y457
+  # RWk upright clamp Yd1266 Y1306
   grp = ents.add_group
-  grp.name = "Right ceiling plate (outside) X4629 Y457"
-  face = grp.entities.add_face([4569.mm,412.mm,2428.mm], [4689.mm,412.mm,2428.mm], [4689.mm,502.mm,2428.mm], [4569.mm,502.mm,2428.mm])
+  grp.name = "RWk upright clamp Yd1266 Y1306"
+  face = grp.entities.add_face([4730.mm,1306.mm,45.mm], [4788.mm,1306.mm,45.mm], [4788.mm,1314.mm,45.mm], [4730.mm,1314.mm,45.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
+  face.pushpull(100.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right ceiling bolt M12 X4629 Y457
+  # RWk upright bolt M12 Yd1266 Z76
   grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4629 Y457"
+  grp.name = "RWk upright bolt M12 Yd1266 Z76"
   ge = grp.entities
-  circle = ge.add_circle([4587.mm,429.mm,2378.mm], [0,0,1], 6.mm, 24)
+  circle = ge.add_circle([4759.mm,1254.mm,76.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(64.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right ceiling bolt M12 X4629 Y457
+  # RWk upright bolt M12 Yd1266 Z133
   grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4629 Y457"
+  grp.name = "RWk upright bolt M12 Yd1266 Z133"
   ge = grp.entities
-  circle = ge.add_circle([4587.mm,485.mm,2378.mm], [0,0,1], 6.mm, 24)
+  circle = ge.add_circle([4759.mm,1254.mm,133.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(64.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right ceiling bolt M12 X4629 Y457
+  # RWk wall cleat plate (near)
   grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4629 Y457"
-  ge = grp.entities
-  circle = ge.add_circle([4671.mm,429.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4629 Y457
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4629 Y457"
-  ge = grp.entities
-  circle = ge.add_circle([4671.mm,485.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right hanger rod M10 X4629 Y914
-  grp = ents.add_group
-  grp.name = "Right hanger rod M10 X4629 Y914"
-  ge = grp.entities
-  circle = ge.add_circle([4629.mm,914.mm,115.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(2273.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling plate (inside) X4629 Y914
-  grp = ents.add_group
-  grp.name = "Right ceiling plate (inside) X4629 Y914"
-  face = grp.entities.add_face([4569.mm,869.mm,2382.mm], [4689.mm,869.mm,2382.mm], [4689.mm,959.mm,2382.mm], [4569.mm,959.mm,2382.mm])
+  grp.name = "RWk wall cleat plate (near)"
+  face = grp.entities.add_face([4304.mm,0.mm,60.mm], [4394.mm,0.mm,60.mm], [4394.mm,8.mm,60.mm], [4304.mm,8.mm,60.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
+  face.pushpull(65.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right ceiling plate (outside) X4629 Y914
+  # RWk wall cleat ext plate (near)
   grp = ents.add_group
-  grp.name = "Right ceiling plate (outside) X4629 Y914"
-  face = grp.entities.add_face([4569.mm,869.mm,2428.mm], [4689.mm,869.mm,2428.mm], [4689.mm,959.mm,2428.mm], [4569.mm,959.mm,2428.mm])
+  grp.name = "RWk wall cleat ext plate (near)"
+  face = grp.entities.add_face([4304.mm,-48.mm,60.mm], [4394.mm,-48.mm,60.mm], [4394.mm,-40.mm,60.mm], [4304.mm,-40.mm,60.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
+  face.pushpull(65.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right ceiling bolt M12 X4629 Y914
+  # RWk wall cleat shelf (near)
   grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4629 Y914"
-  ge = grp.entities
-  circle = ge.add_circle([4587.mm,886.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4629 Y914
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4629 Y914"
-  ge = grp.entities
-  circle = ge.add_circle([4587.mm,942.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4629 Y914
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4629 Y914"
-  ge = grp.entities
-  circle = ge.add_circle([4671.mm,886.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4629 Y914
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4629 Y914"
-  ge = grp.entities
-  circle = ge.add_circle([4671.mm,942.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right hanger rod M10 X4629 Y1371
-  grp = ents.add_group
-  grp.name = "Right hanger rod M10 X4629 Y1371"
-  ge = grp.entities
-  circle = ge.add_circle([4629.mm,1371.mm,115.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(2273.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling plate (inside) X4629 Y1371
-  grp = ents.add_group
-  grp.name = "Right ceiling plate (inside) X4629 Y1371"
-  face = grp.entities.add_face([4569.mm,1326.mm,2382.mm], [4689.mm,1326.mm,2382.mm], [4689.mm,1416.mm,2382.mm], [4569.mm,1416.mm,2382.mm])
+  grp.name = "RWk wall cleat shelf (near)"
+  face = grp.entities.add_face([4304.mm,0.mm,60.mm], [4394.mm,0.mm,60.mm], [4394.mm,55.mm,60.mm], [4304.mm,55.mm,60.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
+  face.pushpull(10.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right ceiling plate (outside) X4629 Y1371
+  # RWk wall bolt (near) Z76
   grp = ents.add_group
-  grp.name = "Right ceiling plate (outside) X4629 Y1371"
-  face = grp.entities.add_face([4569.mm,1326.mm,2428.mm], [4689.mm,1326.mm,2428.mm], [4689.mm,1416.mm,2428.mm], [4569.mm,1416.mm,2428.mm])
+  grp.name = "RWk wall bolt (near) Z76"
+  ge = grp.entities
+  circle = ge.add_circle([4349.mm,-48.mm,76.mm], [0,1,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk wall bolt (near) Z109
+  grp = ents.add_group
+  grp.name = "RWk wall bolt (near) Z109"
+  ge = grp.entities
+  circle = ge.add_circle([4349.mm,-48.mm,109.mm], [0,1,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined corner plate (near)
+  grp = ents.add_group
+  grp.name = "FP combined corner plate (near)"
+  face = grp.entities.add_face([4574.mm,0.mm,58.mm], [4724.mm,0.mm,58.mm], [4724.mm,10.mm,58.mm], [4574.mm,10.mm,58.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
+  face.pushpull(167.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right ceiling bolt M12 X4629 Y1371
+  # FP combined corner ext plate (near)
   grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4629 Y1371"
-  ge = grp.entities
-  circle = ge.add_circle([4587.mm,1343.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4629 Y1371
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4629 Y1371"
-  ge = grp.entities
-  circle = ge.add_circle([4587.mm,1399.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4629 Y1371
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4629 Y1371"
-  ge = grp.entities
-  circle = ge.add_circle([4671.mm,1343.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling bolt M12 X4629 Y1371
-  grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4629 Y1371"
-  ge = grp.entities
-  circle = ge.add_circle([4671.mm,1399.mm,2378.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right hanger rod M10 X4629 Y1828
-  grp = ents.add_group
-  grp.name = "Right hanger rod M10 X4629 Y1828"
-  ge = grp.entities
-  circle = ge.add_circle([4629.mm,1828.mm,115.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(2273.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right ceiling plate (inside) X4629 Y1828
-  grp = ents.add_group
-  grp.name = "Right ceiling plate (inside) X4629 Y1828"
-  face = grp.entities.add_face([4569.mm,1783.mm,2382.mm], [4689.mm,1783.mm,2382.mm], [4689.mm,1873.mm,2382.mm], [4569.mm,1873.mm,2382.mm])
+  grp.name = "FP combined corner ext plate (near)"
+  face = grp.entities.add_face([4574.mm,-50.mm,58.mm], [4724.mm,-50.mm,58.mm], [4724.mm,-40.mm,58.mm], [4574.mm,-40.mm,58.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
+  face.pushpull(167.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right ceiling plate (outside) X4629 Y1828
+  # FP combined right-beam seat (near)
   grp = ents.add_group
-  grp.name = "Right ceiling plate (outside) X4629 Y1828"
-  face = grp.entities.add_face([4569.mm,1783.mm,2428.mm], [4689.mm,1783.mm,2428.mm], [4689.mm,1873.mm,2428.mm], [4569.mm,1873.mm,2428.mm])
+  grp.name = "FP combined right-beam seat (near)"
+  face = grp.entities.add_face([4574.mm,0.mm,58.mm], [4724.mm,0.mm,58.mm], [4724.mm,55.mm,58.mm], [4574.mm,55.mm,58.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
+  face.pushpull(12.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right ceiling bolt M12 X4629 Y1828
+  # FP combined BR rail seat (near)
   grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4629 Y1828"
+  grp.name = "FP combined BR rail seat (near)"
+  face = grp.entities.add_face([4619.mm,0.mm,138.mm], [4679.mm,0.mm,138.mm], [4679.mm,55.mm,138.mm], [4619.mm,55.mm,138.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined bolt M12 (near) X4599 Z84
+  grp = ents.add_group
+  grp.name = "FP combined bolt M12 (near) X4599 Z84"
   ge = grp.entities
-  circle = ge.add_circle([4587.mm,1800.mm,2378.mm], [0,0,1], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,-50.mm,84.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
+  cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right ceiling bolt M12 X4629 Y1828
+  # FP combined bolt M12 (near) X4599 Z178
   grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4629 Y1828"
+  grp.name = "FP combined bolt M12 (near) X4599 Z178"
   ge = grp.entities
-  circle = ge.add_circle([4587.mm,1856.mm,2378.mm], [0,0,1], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,-50.mm,178.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
+  cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right ceiling bolt M12 X4629 Y1828
+  # FP combined bolt M12 (near) X4699 Z84
   grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4629 Y1828"
+  grp.name = "FP combined bolt M12 (near) X4699 Z84"
   ge = grp.entities
-  circle = ge.add_circle([4671.mm,1800.mm,2378.mm], [0,0,1], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,-50.mm,84.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
+  cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right ceiling bolt M12 X4629 Y1828
+  # FP combined bolt M12 (near) X4699 Z178
   grp = ents.add_group
-  grp.name = "Right ceiling bolt M12 X4629 Y1828"
+  grp.name = "FP combined bolt M12 (near) X4699 Z178"
   ge = grp.entities
-  circle = ge.add_circle([4671.mm,1856.mm,2378.mm], [0,0,1], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,-50.mm,178.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
+  cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk wall cleat plate (far)
+  grp = ents.add_group
+  grp.name = "RWk wall cleat plate (far)"
+  face = grp.entities.add_face([4304.mm,2354.mm,60.mm], [4394.mm,2354.mm,60.mm], [4394.mm,2362.mm,60.mm], [4304.mm,2362.mm,60.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(65.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk wall cleat ext plate (far)
+  grp = ents.add_group
+  grp.name = "RWk wall cleat ext plate (far)"
+  face = grp.entities.add_face([4304.mm,2402.mm,60.mm], [4394.mm,2402.mm,60.mm], [4394.mm,2410.mm,60.mm], [4304.mm,2410.mm,60.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(65.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk wall cleat shelf (far)
+  grp = ents.add_group
+  grp.name = "RWk wall cleat shelf (far)"
+  face = grp.entities.add_face([4304.mm,2307.mm,60.mm], [4394.mm,2307.mm,60.mm], [4394.mm,2362.mm,60.mm], [4304.mm,2362.mm,60.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk wall bolt (far) Z76
+  grp = ents.add_group
+  grp.name = "RWk wall bolt (far) Z76"
+  ge = grp.entities
+  circle = ge.add_circle([4349.mm,2354.mm,76.mm], [0,1,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk wall bolt (far) Z109
+  grp = ents.add_group
+  grp.name = "RWk wall bolt (far) Z109"
+  ge = grp.entities
+  circle = ge.add_circle([4349.mm,2354.mm,109.mm], [0,1,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined corner plate (far)
+  grp = ents.add_group
+  grp.name = "FP combined corner plate (far)"
+  face = grp.entities.add_face([4574.mm,2352.mm,58.mm], [4724.mm,2352.mm,58.mm], [4724.mm,2362.mm,58.mm], [4574.mm,2362.mm,58.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(167.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined corner ext plate (far)
+  grp = ents.add_group
+  grp.name = "FP combined corner ext plate (far)"
+  face = grp.entities.add_face([4574.mm,2402.mm,58.mm], [4724.mm,2402.mm,58.mm], [4724.mm,2412.mm,58.mm], [4574.mm,2412.mm,58.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(167.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined right-beam seat (far)
+  grp = ents.add_group
+  grp.name = "FP combined right-beam seat (far)"
+  face = grp.entities.add_face([4574.mm,2307.mm,58.mm], [4724.mm,2307.mm,58.mm], [4724.mm,2362.mm,58.mm], [4574.mm,2362.mm,58.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined BR rail seat (far)
+  grp = ents.add_group
+  grp.name = "FP combined BR rail seat (far)"
+  face = grp.entities.add_face([4619.mm,2307.mm,138.mm], [4679.mm,2307.mm,138.mm], [4679.mm,2362.mm,138.mm], [4619.mm,2362.mm,138.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined bolt M12 (far) X4599 Z84
+  grp = ents.add_group
+  grp.name = "FP combined bolt M12 (far) X4599 Z84"
+  ge = grp.entities
+  circle = ge.add_circle([4599.mm,2352.mm,84.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined bolt M12 (far) X4599 Z178
+  grp = ents.add_group
+  grp.name = "FP combined bolt M12 (far) X4599 Z178"
+  ge = grp.entities
+  circle = ge.add_circle([4599.mm,2352.mm,178.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined bolt M12 (far) X4699 Z84
+  grp = ents.add_group
+  grp.name = "FP combined bolt M12 (far) X4699 Z84"
+  ge = grp.entities
+  circle = ge.add_circle([4699.mm,2352.mm,84.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined bolt M12 (far) X4699 Z178
+  grp = ents.add_group
+  grp.name = "FP combined bolt M12 (far) X4699 Z178"
+  ge = grp.entities
+  circle = ge.add_circle([4699.mm,2352.mm,178.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right walkway grate (cantilevered)
+  grp = ents.add_group
+  grp.name = "Right walkway grate (cantilevered)"
+  face = grp.entities.add_face([4329.mm,0.mm,115.mm], [4629.mm,0.mm,115.mm], [4629.mm,2362.mm,115.mm], [4329.mm,2362.mm,115.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Walkway Near (left)"] || model.materials.add("Walkway Near (left)")
+  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC corridor upright (ghost)
+  grp = ents.add_group
+  grp.name = "IBC corridor upright (ghost)"
+  face = grp.entities.add_face([4734.mm,1046.mm,0.mm], [4784.mm,1046.mm,0.mm], [4784.mm,1096.mm,0.mm], [4734.mm,1096.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(1010.mm)
+  mat = model.materials["IBC corridor upright (ghost)"] || model.materials.add("IBC corridor upright (ghost)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # IBC corridor upright (ghost)
+  grp = ents.add_group
+  grp.name = "IBC corridor upright (ghost)"
+  face = grp.entities.add_face([4734.mm,1266.mm,0.mm], [4784.mm,1266.mm,0.mm], [4784.mm,1316.mm,0.mm], [4734.mm,1316.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(1010.mm)
+  mat = model.materials["IBC corridor upright (ghost)"] || model.materials.add("IBC corridor upright (ghost)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # Film rail BR (ghost)
+  grp = ents.add_group
+  grp.name = "Film rail BR (ghost)"
+  face = grp.entities.add_face([4629.mm,0.mm,130.mm], [4669.mm,0.mm,130.mm], [4669.mm,2362.mm,130.mm], [4629.mm,2362.mm,130.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["IBC corridor upright (ghost)"] || model.materials.add("IBC corridor upright (ghost)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 0.3
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
-  inst.name = "Right Walkway Hangers"
-  inst.layer = model.layers["Right Hangers"]
+  inst.name = "Right Walkway (cantilever rectangle)"
+  inst.layer = model.layers["Right Cantilever"]
 
   # ═══ Left Walkway Support ═══
   defn = model.definitions.add("Left Walkway Support")
@@ -3683,7 +3398,7 @@ model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Container", "Processing Tray", "Walkways", "Walkway Right", "Cantilevers", "Cantilever Types", "Right Hangers", "Left Support", "Labels"]
+keep_tags = ["Container", "Processing Tray", "Walkways", "Cantilevers", "Cantilever Types", "Right Cantilever", "Left Support", "Labels"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -3709,7 +3424,7 @@ model.layers.each { |l| l.visible = true }
 model.layers["Cantilever Types"].visible = false if model.layers["Cantilever Types"]
 model.pages.add("Labeled")
 model.layers["Labels"].visible = false if model.layers["Labels"]
-[["Walkway", ["Walkways", "Walkway Right", "Processing Tray"]], ["Near/Far Cantilevers", ["Cantilevers", "Processing Tray"]], ["Right Hangers", ["Right Hangers", "Walkway Right", "Processing Tray"]], ["Left Support", ["Left Support", "Processing Tray"]]].each { |name, tags|
+[["Walkway", ["Walkways", "Right Cantilever", "Processing Tray"]], ["Near/Far Cantilevers", ["Cantilevers", "Processing Tray"]], ["Right Cantilever", ["Right Cantilever", "Processing Tray"]], ["Left Support", ["Left Support", "Processing Tray"]]].each { |name, tags|
   model.layers.each { |l| l.visible = (l == default_layer || l.name == "Container" || tags.include?(l.name)) }
   page = model.pages.add(name)
   page.use_camera = true

@@ -152,9 +152,14 @@ fp_inst.set_attribute(fda, "_onclick_access", "NONE")
 
 
 def saddles():
-    """8 IBC-style wall-seat saddles at the rail ends — single-sourced from the overview
-    (ov.film_plane_saddles) so the two models can't drift. See that docstring for detail."""
-    return ov.film_plane_saddles(RAILS)
+    """Wall-seat saddles at the rail ends — single-sourced from the overview so the models
+    can't drift. rev12: the bottom-RIGHT (BR) corner is the COMBINED plate shared with the
+    right walkway (fp_combined_corner_plate), so BR is skipped here and the combined plate is
+    drawn at the near + far walls."""
+    parts = [ov.film_plane_saddles(RAILS, skip={"BR"}),
+             '\n'.join(ov.fp_combined_corner_plate(0, 1)),
+             '\n'.join(ov.fp_combined_corner_plate(ov.C_WID, -1))]
+    return '\n'.join(parts)
 
 
 def near_wall_ghost():

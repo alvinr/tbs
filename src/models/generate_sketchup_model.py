@@ -492,6 +492,11 @@ def walkways():
     import generate_walkway_model as wm
     parts.append('\n'.join(wm.left_floor_cantilevers()))
 
+    # Right walkway: ceiling-hung support — 2 bearer angles + 5 rod-pairs of M10 to the
+    # ceiling, each rod anchored through the roof with the sandwiched inside/outside plate
+    # pair + 4× M12 bolts. Reuse the walkway model's builder so the two models stay in sync.
+    parts.append(wm.right_hangers())
+
     return '\n'.join(parts)
 
 
@@ -648,6 +653,11 @@ def panel_pivot():
                           0, 0, PANEL_FLOOR_GAP,
                           PANEL_CENTER_T, C_WID, 2300 - PANEL_FLOOR_GAP,
                           color=C_PLY, alpha=0.6))
+    # Transport-lock support brackets (top + bottom): the near-wall stay anchors
+    # (sandwiched inside/outside plates + eye + 4× M16) and the frame-side stay hooks.
+    # The stay ROD/turnbuckle itself is left out — only the permanent brackets are shown.
+    parts.append(lt.wall_anchors())
+    parts.append(lt.frame_hooks())
     return '\n'.join(parts)
 
 
@@ -1139,11 +1149,23 @@ def shelf():
     rr = SHELF_HANGER_D / 2.0
     rod_h = C_HGT - SHELF_H
     inset = 20
+    # Ceiling anchor plate at each rod top — 100×60×6mm steel plate bolted to the ceiling
+    # rib with 2× M10 (per the shelf 2D diagram, generate_shelf_diagram.py).
+    cpw, cpd, cpt, cbolt = 100, 60, 6, 10
     for hx in (SHELF_X_L + inset, SHELF_X_R - inset):
         for hy in (SHELF_YD_NEAR + inset, SHELF_YD_FAR - inset):
             parts.append(ruby_cylinder("Shelf Hanger Rod",
                                        hx, hy, SHELF_H, rr, rod_h,
                                        color=C_STEEL, n=12))
+            # ceiling plate (its top flush with the ceiling underside at Z=C_HGT)
+            parts.append(ruby_box("Shelf ceiling plate (to rib)",
+                                  hx - cpw / 2, hy - cpd / 2, C_HGT - cpt,
+                                  cpw, cpd, cpt, color=C_STEEL))
+            # 2× M10 bolts up through the plate into the ceiling rib
+            for bdx in (-cpw / 2 + 18, cpw / 2 - 18):
+                parts.append(ruby_cylinder("Shelf ceiling bolt M10",
+                                           hx + bdx, hy, C_HGT - cpt,
+                                           cbolt / 2, cpt + WALL_T, color=C_STEEL, axis="z"))
 
     return '\n'.join(parts)
 
@@ -1479,8 +1501,11 @@ def spray_bar_plumbing():
     fz = SPRAY_BAR_FEED_Z            # 30 — supply trunk height
     pr = PUMP_PIPE_OD / 2            # ½" HDPE
 
-    # Blue supply trunk — horizontal along the pinhole wall.
-    x_l, x_r = PROC_TRAY_X_L + 300, RAIL_X_R
+    # Blue supply trunk — horizontal along the pinhole wall. It enters at RAIL_X_R
+    # (riser from the filters) and runs to BV-02, the spray-bar isolation valve at the
+    # pinhole centerline — it does NOT continue past BV-02 down the rest of the wall
+    # (nothing is fed there).
+    x_l, x_r = BV02_X, RAIL_X_R
     parts.append(ruby_cylinder("Blue Supply Trunk (1/2in HDPE)",
                                x_l, yd, fz, pr, x_r - x_l, color=C_BLUE, axis="x"))
 

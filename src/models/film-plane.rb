@@ -13,6 +13,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Corner Mechanism") unless model.layers["Corner Mechanism"]
   model.layers.add("Processing Tray") unless model.layers["Processing Tray"]
   model.layers.add("Walkways") unless model.layers["Walkways"]
+  model.layers.add("IBC Cantilever") unless model.layers["IBC Cantilever"]
   model.layers.add("Corner Detail") unless model.layers["Corner Detail"]
   model.layers.add("Labels") unless model.layers["Labels"]
 
@@ -2686,6 +2687,175 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.name = "Walkways"
   inst.layer = model.layers["Walkways"]
 
+  # ═══ IBC Cantilever Arms ═══
+  defn = model.definitions.add("IBC Cantilever Arms")
+  ents = defn.entities
+  # RWk center cantilever Yd1046 lower
+  grp = ents.add_group
+  grp.name = "RWk center cantilever Yd1046 lower"
+  face = grp.entities.add_face([4329.mm,1046.mm,70.mm], [4734.mm,1046.mm,70.mm], [4734.mm,1086.mm,70.mm], [4329.mm,1086.mm,70.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(25.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk center cantilever Yd1046 upper
+  grp = ents.add_group
+  grp.name = "RWk center cantilever Yd1046 upper"
+  face = grp.entities.add_face([4369.mm,1046.mm,95.mm], [4589.mm,1046.mm,95.mm], [4589.mm,1086.mm,95.mm], [4369.mm,1086.mm,95.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(20.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk center cantilever Yd1046 upper
+  grp = ents.add_group
+  grp.name = "RWk center cantilever Yd1046 upper"
+  face = grp.entities.add_face([4629.mm,1046.mm,95.mm], [4734.mm,1046.mm,95.mm], [4734.mm,1086.mm,95.mm], [4629.mm,1086.mm,95.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(20.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk upright clamp Yd1046 Y1038
+  grp = ents.add_group
+  grp.name = "RWk upright clamp Yd1046 Y1038"
+  face = grp.entities.add_face([4730.mm,1038.mm,45.mm], [4788.mm,1038.mm,45.mm], [4788.mm,1046.mm,45.mm], [4730.mm,1046.mm,45.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk upright clamp Yd1046 Y1086
+  grp = ents.add_group
+  grp.name = "RWk upright clamp Yd1046 Y1086"
+  face = grp.entities.add_face([4730.mm,1086.mm,45.mm], [4788.mm,1086.mm,45.mm], [4788.mm,1094.mm,45.mm], [4730.mm,1094.mm,45.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk upright bolt M12 Yd1046 Z76
+  grp = ents.add_group
+  grp.name = "RWk upright bolt M12 Yd1046 Z76"
+  ge = grp.entities
+  circle = ge.add_circle([4759.mm,1034.mm,76.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(64.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk upright bolt M12 Yd1046 Z133
+  grp = ents.add_group
+  grp.name = "RWk upright bolt M12 Yd1046 Z133"
+  ge = grp.entities
+  circle = ge.add_circle([4759.mm,1034.mm,133.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(64.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk center cantilever Yd1266 lower
+  grp = ents.add_group
+  grp.name = "RWk center cantilever Yd1266 lower"
+  face = grp.entities.add_face([4329.mm,1266.mm,70.mm], [4734.mm,1266.mm,70.mm], [4734.mm,1306.mm,70.mm], [4329.mm,1306.mm,70.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(25.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk center cantilever Yd1266 upper
+  grp = ents.add_group
+  grp.name = "RWk center cantilever Yd1266 upper"
+  face = grp.entities.add_face([4369.mm,1266.mm,95.mm], [4589.mm,1266.mm,95.mm], [4589.mm,1306.mm,95.mm], [4369.mm,1306.mm,95.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(20.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk center cantilever Yd1266 upper
+  grp = ents.add_group
+  grp.name = "RWk center cantilever Yd1266 upper"
+  face = grp.entities.add_face([4629.mm,1266.mm,95.mm], [4734.mm,1266.mm,95.mm], [4734.mm,1306.mm,95.mm], [4629.mm,1306.mm,95.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(20.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk upright clamp Yd1266 Y1258
+  grp = ents.add_group
+  grp.name = "RWk upright clamp Yd1266 Y1258"
+  face = grp.entities.add_face([4730.mm,1258.mm,45.mm], [4788.mm,1258.mm,45.mm], [4788.mm,1266.mm,45.mm], [4730.mm,1266.mm,45.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk upright clamp Yd1266 Y1306
+  grp = ents.add_group
+  grp.name = "RWk upright clamp Yd1266 Y1306"
+  face = grp.entities.add_face([4730.mm,1306.mm,45.mm], [4788.mm,1306.mm,45.mm], [4788.mm,1314.mm,45.mm], [4730.mm,1314.mm,45.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk upright bolt M12 Yd1266 Z76
+  grp = ents.add_group
+  grp.name = "RWk upright bolt M12 Yd1266 Z76"
+  ge = grp.entities
+  circle = ge.add_circle([4759.mm,1254.mm,76.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(64.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk upright bolt M12 Yd1266 Z133
+  grp = ents.add_group
+  grp.name = "RWk upright bolt M12 Yd1266 Z133"
+  ge = grp.entities
+  circle = ge.add_circle([4759.mm,1254.mm,133.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(64.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "IBC Cantilever Arms"
+  inst.layer = model.layers["IBC Cantilever"]
+
   # ═══ Corner Detail (TR) ═══
   defn = model.definitions.add("Corner Detail (TR)")
   ents = defn.entities
@@ -3039,6 +3209,9 @@ t=entities.add_text("Z cross-slide = TILT float (green)", Geom::Point3d.new(4666
 t=entities.add_text("Rod-end -> rigid frame corner", Geom::Point3d.new(4666.979444694831.mm,1410.0520922298629.mm,2223.531411620136.mm), Geom::Vector3d.new(17.0,0,5.0)); t.layer=model.layers["Labels"] rescue nil
 t=entities.add_text("ghost = corner if it stayed on rail", Geom::Point3d.new(4649.mm,1410.0520922298629.mm,2288.mm), Geom::Vector3d.new(-17.0,0,13.0)); t.layer=model.layers["Labels"] rescue nil
 
+# ── IBC cantilever-arm callout (IBC Cantilever tag — shown in the Combined view) ──
+t=entities.add_text("RIGHT-WALKWAY CANTILEVER ARMS\n(off the IBC corridor uprights -\nshare the BR combined corner plate)", Geom::Point3d.new(4531.5.mm,1046.mm,115.mm), Geom::Vector3d.new(-18, -16, 22)); t.layer=model.layers["IBC Cantilever"] rescue nil
+
 # ── In-model © + license credit (default layer → shown in every scene) ──
 lbb = model.bounds
 lanc = Geom::Point3d.new(lbb.min.x, lbb.min.y - 400.mm, lbb.min.z)
@@ -3048,7 +3221,7 @@ alvinr.github.io/tbs", lanc)
 
 model.definitions.purge_unused
 model.materials.purge_unused
-keep_tags = ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "Corner Detail", "Labels"]; dl = model.layers[0]
+keep_tags = ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "IBC Cantilever", "Corner Detail", "Labels"]; dl = model.layers[0]
 model.layers.to_a.each { |l| next if l==dl||keep_tags.include?(l.name); model.layers.remove(l,true) rescue nil }
 
 model.layers.each { |l| l.visible = true }
@@ -3058,7 +3231,7 @@ eye = ctr.offset(dir, bb.diagonal * 1.4)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
-[["Combined", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways"], nil, 0], ["No Container", ["Film Plane", "Corner Mechanism", "Processing Tray"], nil, 0], ["Corner detail (TR)", ["Corner Detail", "Labels"], [4666.979444694831.mm, 1410.0520922298629.mm, 2223.531411620136.mm], 95]].each { |name, tags, tgt, so|
+[["Combined", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "IBC Cantilever"], nil, 0], ["No Container", ["Film Plane", "Corner Mechanism", "Processing Tray"], nil, 0], ["Corner detail (TR)", ["Corner Detail", "Labels"], [4666.979444694831.mm, 1410.0520922298629.mm, 2223.531411620136.mm], 95]].each { |name, tags, tgt, so|
   model.layers.each { |l| l.visible = (l == dl || tags.include?(l.name)) }
   if tgt
     t = Geom::Point3d.new(tgt[0], tgt[1], tgt[2])

@@ -30,7 +30,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov
 
 TAGS = ["Context", "Film Plane", "Corner Mechanism", "Processing Tray",
-        "Walkways", "Corner Detail", "Labels"]
+        "Walkways", "IBC Cantilever", "Corner Detail", "Labels"]
 
 # ── Geometry of the fixed-size rigid plane ───────────────────────────────────
 TILT_DEG = 20.0
@@ -227,6 +227,23 @@ def corner_detail():
     return '\n'.join(p), (px, py, pz), (fx, fz)
 
 
+def cantilever_label_ruby():
+    """A callout for the IBC-attached right-walkway cantilever arms, placed on the
+    'IBC Cantilever' tag so it shows wherever the arms show (the Combined view).
+    The arms (ov.ibc_cantilever_arms) come off the IBC corridor uprights and share
+    the combined corner plate with the film plane's bottom-right (BR) rail."""
+    ax_ = (ov.RWK_X_L + ov.RWK_X_UP) / 2     # mid-arm X
+    ay_ = ov.RWK_UP_YDS[0]                    # near arm Yd
+    az_ = ov.RWK_ARM_TOP                      # arm top Z
+    anc = f'Geom::Point3d.new({ov.mm(ax_)},{ov.mm(ay_)},{ov.mm(az_)})'
+    txt = ("RIGHT-WALKWAY CANTILEVER ARMS\\n"
+           "(off the IBC corridor uprights -\\n"
+           "share the BR combined corner plate)")
+    return (f't=entities.add_text("{txt}", {anc}, '
+            f'Geom::Vector3d.new(-18, -16, 22)); '
+            f't.layer=model.layers["IBC Cantilever"] rescue nil')
+
+
 def labels_ruby(tr_world, flat_xz):
     px, py, pz = tr_world
     fx, fz = flat_xz
@@ -258,15 +275,18 @@ def generate_ruby():
                      static_rails() + "\n" + saddles()),
         ov.component("Walkways", "Walkways",
                      ov.walkways(include_right=True, include_right_hangers=False)),
+        ov.component("IBC Cantilever Arms", "IBC Cantilever",
+                     '\n'.join(ov.ibc_cantilever_arms())),
         ov.component("Corner Detail (TR)", "Corner Detail", detail),
     ]
     body = '\n'.join(comps)
     labels = labels_ruby(tr_world, flat_xz)
+    cant_label = cantilever_label_ruby()
     tags_ruby = '\n'.join(f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
     keep = '[' + ', '.join(f'"{t}"' for t in TAGS) + ']'
 
     # scenes: name, visible tags, target point (mm) or None, standoff(inches) or 0=extents
-    main = ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways"]
+    main = ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "IBC Cantilever"]
     noghost = ["Film Plane", "Corner Mechanism", "Processing Tray"]
     scenes = [("Combined", main, None, 0),
               ("No Container", noghost, None, 0),
@@ -298,6 +318,9 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 
 # ── Corner-detail callouts (Labels tag — shown only in the corner-detail scene) ──
 {labels}
+
+# ── IBC cantilever-arm callout (IBC Cantilever tag — shown in the Combined view) ──
+{cant_label}
 
 {ov.license_note()}
 

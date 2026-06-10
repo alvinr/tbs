@@ -278,25 +278,26 @@ def cantilevers():
     return '\n'.join(parts)
 
 
-# Near-wall X positions for the isolated type-catalog ("Cantilevers" scene),
-# ordered left→right: floor-leg cantilever (left walkway), standard, widened.
-CT_SEAT_X, CT_STD_X, CT_WIDE_X = 2400, 3400, 4400
+# Near-wall X positions for the isolated type-catalog ("Cantilevers" scene), ordered
+# left→right: floor-leg cantilever SHORT (to X470), floor-leg LONG (to X770, punch-out),
+# standard wall cantilever, widened wall cantilever.
+CT_SEAT_X, CT_SEAT_LONG_X, CT_STD_X, CT_WIDE_X = 2000, 3000, 4000, 5000
 
 
-def _floor_cant_type_parts():
-    """The LEFT removable walkway's FLOOR-LEG CANTILEVER bracket for the type-catalog —
-    one standard bracket (foot plate + 50x50 post to the grate bottom + arm at Z75-115
-    reaching to the grate inner edge) isolated at the catalog X station, near wall."""
-    x0 = CT_SEAT_X
+def _floor_cant_type_parts(x0, reach, suffix, target_x):
+    """ONE LEFT-walkway FLOOR-LEG CANTILEVER bracket for the type-catalog — foot plate +
+    50x50 post to the grate bottom + arm at Z75-115 reaching `reach` mm in — isolated at
+    catalog X station `x0`, near wall. Built twice: the STANDARD reach (arm to the grate
+    inner edge, X470) and the EXTENDED reach (X770, the 3 brackets on the drum-exit
+    punch-out)."""
     foot_l, foot_w, foot_t = LC_FOOT
     az0, az1 = LC_ARM_Z0, GRATE_Z
-    reach = 300                                    # representative standard arm reach (mm)
     return [
-        ruby_box("Type FloorCant foot plate", x0 - foot_l / 2, 0, 0,
+        ruby_box(f"Type FloorCant {suffix} foot plate", x0 - foot_l / 2, 0, 0,
                  foot_l, foot_w, foot_t, color=C_STEEL),
-        ruby_box("Type FloorCant post (50x50x3 SHS)", x0 - LC_POST / 2, 0, 0,
+        ruby_box(f"Type FloorCant {suffix} post (50x50x3 SHS)", x0 - LC_POST / 2, 0, 0,
                  LC_POST, LC_PW, az1, color=C_STEEL),
-        ruby_box("Type FloorCant arm (to grate inner edge)", x0 + LC_POST / 2, 0, az0,
+        ruby_box(f"Type FloorCant {suffix} arm (to X{target_x})", x0 + LC_POST / 2, 0, az0,
                  reach, LC_ARM_W, az1 - az0, color=C_STEEL),
     ]
 
@@ -304,24 +305,30 @@ def _floor_cant_type_parts():
 def cantilever_types():
     """ONE of each unique walkway-support bracket, isolated side-by-side for the
     "Cantilevers" scene:
+      • FLOOR-LEG CANTILEVER, two reaches — the LEFT removable walkway's support (a 50x50
+        post on bare floor + arm): the STANDARD reach to the grate inner edge (X470) and
+        the EXTENDED reach (X770) on the 3 drum-exit punch-out brackets;
       • STANDARD wall cantilever — 8mm/150/300, 3× M12 (typical near/far deck bracket);
-      • WIDENED  wall cantilever — 10mm/200/500, 4× M12 (the four EP/battery-zone brackets);
-      • FLOOR-LEG CANTILEVER — the LEFT removable walkway's support: a 50x50 post on bare
-        floor + an arm to the grate inner edge (extended to X=770 on the drum-exit
-        punch-out). The IBC end is ceiling-hung and has no bearer bracket."""
+      • WIDENED  wall cantilever — 10mm/200/500, 4× M12 (the four EP/battery-zone brackets).
+      (The IBC end is ceiling-hung and has no bearer bracket.)"""
+    arm_x0 = LC_LEGX + LC_POST / 2                  # 165 — arm starts at the post inner face
     parts = []
+    parts += _floor_cant_type_parts(CT_SEAT_X, LC_STD - arm_x0, "short", int(LC_STD))
+    parts += _floor_cant_type_parts(CT_SEAT_LONG_X, LC_WIDE - arm_x0, "long", int(LC_WIDE))
     parts += _cantilever_parts("Type Standard", CT_STD_X, 0, +1, WK_W, False)
     parts += _cantilever_parts("Type Widened", CT_WIDE_X, 0, +1, WK_NEAR_WIDE_W, True)
-    parts += _floor_cant_type_parts()
     return '\n'.join(parts)
 
 
 def cantilever_type_labels():
     """Ruby: a callout naming each unique bracket type, on the 'Cantilever Types'
     tag so they show only in the 'Cantilevers' scene."""
-    labels = [  # left→right: edge-beam seat, standard, widened
+    labels = [  # left→right: floor-leg short, floor-leg long, standard, widened
         (CT_SEAT_X, 0, GRATE_Z,
-         "FLOOR-LEG CANTILEVER (left removable walkway)\n50x50 post on bare floor + arm to grate inner edge\n(extended to X=770 on the drum-exit punch-out)",
+         "FLOOR-LEG CANTILEVER — standard reach\n50x50 post on bare floor + arm to the\ngrate inner edge (X=470)",
+         -200, -300, 800),
+        (CT_SEAT_LONG_X, 0, GRATE_Z,
+         "FLOOR-LEG CANTILEVER — extended reach\n3 of the 5 brackets reach to X=770 on\nthe drum-exit punch-out (deeper landing)",
          -200, -300, 800),
         (CT_STD_X, 0, BRK_H,
          "STANDARD CANTILEVER\n8mm plate / 150 leg / 300 arm\n3x M12 (triangular)",
@@ -445,7 +452,7 @@ def generate_ruby():
         ("Near/Far Cantilevers", ["Cantilevers", "Processing Tray"]),
         # Right Hangers — only the RIGHT deck (near/far/left "Walkways" tag off).
         ("Right Hangers", ["Right Hangers", "Walkway Right", "Processing Tray"]),
-        ("Left Support", ["Left Support", "Cantilevers", "Processing Tray"]),
+        ("Left Support", ["Left Support", "Processing Tray"]),
     ]
     scene_groups_ruby = '[' + ', '.join(
         '["%s", [%s]]' % (n, ', '.join(f'"{t}"' for t in tags))
@@ -520,9 +527,9 @@ model.layers["Labels"].visible = false if model.layers["Labels"]
 #    close-up camera (the only scene showing the Cantilever Types catalog tag; the
 #    wall is hidden so the full bracket — plate, arm, gusset, bolts — reads) ──
 model.layers.each {{ |l| l.visible = (l.name == "Cantilever Types") }}
-ct_tgt = Geom::Point3d.new({ov.mm(3400)}, {ov.mm(-100)}, {ov.mm(450)})
+ct_tgt = Geom::Point3d.new({ov.mm(3500)}, {ov.mm(-100)}, {ov.mm(450)})
 ct_dir = Geom::Vector3d.new(-0.22, -0.82, 0.40); ct_dir.normalize!
-ct_eye = ct_tgt.offset(ct_dir, {ov.mm(3900)})
+ct_eye = ct_tgt.offset(ct_dir, {ov.mm(5000)})
 ct_cam = Sketchup::Camera.new(ct_eye, ct_tgt, Z_AXIS)
 ct_cam.perspective = true
 ct_cam.fov = 40

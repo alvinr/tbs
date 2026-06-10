@@ -1363,6 +1363,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#24-movable-panel-weight-breakdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Movable-Panel Weight Breakdown
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-weight-reduction-alternatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Weight-Reduction Alternatives
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2640,8 +2662,8 @@ flush-faced panels that seal against the fixed door frame.</p>
 <td>Welded corners, mitered joints</td>
 </tr>
 <tr>
-<td>Panel weight (sandwich + Ø900 housing, excl. drum)</td>
-<td>~223 kg (first-principles: 187 kg sandwich + 36 kg housing)</td>
+<td>Panel weight (full panel: sandwich + Ø900 housing + B2 bay, excl. drum)</td>
+<td>~243 kg (first-principles: 196 kg sandwich + 22 kg housing + 25 kg B2 bay). See §2.4 for the movable swing-zone breakdown</td>
 </tr>
 </tbody>
 </table>
@@ -2656,6 +2678,193 @@ rotates inside it), this gasket seals the fixed surround to the frame independen
 the moving panel, all the way around the opening the housing passes through. It sits in
 the same exterior door plane (X=0), concentric inboard of the panel-perimeter seal (see
 §6, light-path #8).</p>
+<h3 id="24-movable-panel-weight-breakdown">2.4 Movable-Panel Weight Breakdown<a class="headerlink" href="#24-movable-panel-weight-breakdown" title="Permanent link">&para;</a></h3>
+<p>The transport scheme swings the panel + drum ~56° about the vertical Ø89 pivot, so
+the <strong>movable assembly</strong> is everything that rotates about that pivot. The breakdown
+below is first-principles from the geometry constants (reproducible via
+<code>src/generators/generate_movable_panel_weight.py</code>); it isolates the swing zone
+(Yd 180–2287mm) and deducts the Ø900 housing aperture from the center skins, so it
+is slightly lower than the whole-panel figure carried in the
+<a href="../weight-distribution-report/">Weight Distribution Report §3.2</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Component</th>
+<th>Construction</th>
+<th style="text-align: right;">kg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A · Sandwich</strong></td>
+<td>Corner ply skins</td>
+<td>2×18mm ply, 1.05m × 2.39m</td>
+<td style="text-align: right;">54.2</td>
+</tr>
+<tr>
+<td></td>
+<td>Corner Al core plates</td>
+<td>3mm 5052</td>
+<td style="text-align: right;">20.3</td>
+</tr>
+<tr>
+<td></td>
+<td>Center RHS frame</td>
+<td>50×50×3 steel SHS, 11.1m</td>
+<td style="text-align: right;">49.2</td>
+</tr>
+<tr>
+<td></td>
+<td>Center ply skins</td>
+<td>2×18mm ply, Ø900 aperture deducted</td>
+<td style="text-align: right;">40.7</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>A subtotal</strong></td>
+<td></td>
+<td style="text-align: right;"><strong>164.5</strong></td>
+</tr>
+<tr>
+<td><strong>B · Housing</strong></td>
+<td>HDPE shell + steel flange/hub</td>
+<td>Ø900×5mm, two 80° openings</td>
+<td style="text-align: right;">21.8</td>
+</tr>
+<tr>
+<td><strong>C · Drum</strong></td>
+<td>PP C-shell + caps + Ø75 shafts + 2× SKF 6215 + stiffeners + grab rail</td>
+<td>Ø864×4mm</td>
+<td style="text-align: right;">37.8</td>
+</tr>
+<tr>
+<td><strong>D · Bay</strong></td>
+<td>B2 punch-out bay walls</td>
+<td>6mm ply, 4-wall tube 0.89m deep</td>
+<td style="text-align: right;">24.8</td>
+</tr>
+<tr>
+<td><strong>E · Cage</strong></td>
+<td>Drum support cage frame</td>
+<td>~25×25×3 angle, 16.1m box</td>
+<td style="text-align: right;">16.1</td>
+</tr>
+<tr>
+<td><strong>F · Seals</strong></td>
+<td>Perimeter + housing EPDM + drum wipers</td>
+<td>20mm foam + felt/brush</td>
+<td style="text-align: right;">2.7</td>
+</tr>
+<tr>
+<td><strong>G · Latches</strong></td>
+<td>Cam latches (4)</td>
+<td>~0.5 kg each</td>
+<td style="text-align: right;">2.0</td>
+</tr>
+<tr>
+<td><strong>H · Pivot (rotating)</strong></td>
+<td>Thrust/journal bearings + collar/hub</td>
+<td>carries leaf at pivot</td>
+<td style="text-align: right;">13.0</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>MOVABLE TOTAL (carried-rotating)</strong></td>
+<td></td>
+<td style="text-align: right;"><strong>≈283</strong></td>
+</tr>
+<tr>
+<td></td>
+<td><em>+ transport-only locks (stays + 4 saddles)</em></td>
+<td>engaged only when swung</td>
+<td style="text-align: right;">+10</td>
+</tr>
+</tbody>
+</table>
+<p><strong>By material:</strong> plywood 120 kg (42%), steel 103 kg (37%), PP 21 kg, aluminum 20 kg,
+HDPE 16 kg, EPDM/other 3 kg.</p>
+<p><strong>Findings.</strong> The mass is dominated by two items — <strong>plywood (120 kg)</strong> and the
+<strong>steel center frame (49 kg)</strong> — which together are 60% of the assembly. The
+optical hardware (drum + housing) is only ~60 kg and is already plastic-skinned
+(rev 9), so it offers little further saving. Any meaningful reduction must come from
+the sandwich skins and the center frame (§2.5). Because the swing axis is
+<strong>vertical</strong>, this mass produces <strong>no gravity overturning torque</strong> at any swing
+angle; it matters for the thrust-bearing/pivot-post sizing, for handling during
+assembly (beyond a two-person lift — an engine crane or gantry hoist is required),
+and for total container payload.</p>
+<h3 id="25-weight-reduction-alternatives">2.5 Weight-Reduction Alternatives<a class="headerlink" href="#25-weight-reduction-alternatives" title="Permanent link">&para;</a></h3>
+<p>A trade study of the high-leverage targets. Savings are first-order estimates against
+the ≈283 kg baseline; <strong>none are adopted yet</strong> — each needs a design decision before
+the geometry constants change. Stiffness and light-tightness, not strength, govern
+the sandwich, so the options below are evaluated on those terms.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Change</th>
+<th style="text-align: right;">Est. saving</th>
+<th>Cost</th>
+<th>Risk</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>Center frame: steel RHS → <strong>aluminum RHS</strong> (up-size to 60×60×4 for stiffness)</td>
+<td style="text-align: right;">~22–28 kg</td>
+<td>↑ $/kg, TIG weld</td>
+<td>Med</td>
+<td>Frame is the structural spine carrying the drum; Al's lower E needs a larger section, eating ~⅓ of the naive 32 kg saving</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Corner zones: <strong>18mm → 12mm ply</strong> skins (corners are light-seal infill, non-structural)</td>
+<td style="text-align: right;">~18 kg</td>
+<td>↓</td>
+<td>Low</td>
+<td>Simplest, lowest-risk cut; corners carry no drum load</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Corners: replace 40mm ply/Al/ply with <strong>25mm aluminum-honeycomb panel</strong> (~7 kg/m²)</td>
+<td style="text-align: right;">~55 kg</td>
+<td>↑↑</td>
+<td>Med</td>
+<td>Big win on the 75 kg of corner sandwich; needs edge sealing + a light-tight black facing</td>
+</tr>
+<tr>
+<td>D</td>
+<td>B2 bay: <strong>6mm → 4mm ply</strong> (or 3mm composite)</td>
+<td style="text-align: right;">~8 kg</td>
+<td>≈</td>
+<td>Low</td>
+<td>Low leverage; the bay is a non-structural light enclosure</td>
+</tr>
+<tr>
+<td>E</td>
+<td><strong>Whole-panel honeycomb redesign</strong> — Al-honeycomb panels on a minimal Al frame</td>
+<td style="text-align: right;">~70–90 kg</td>
+<td>↑↑↑</td>
+<td>High</td>
+<td>Largest cut (target ~190–210 kg) but a full structural + light-seal redevelopment</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recommendation.</strong> Two coherent paths:</p>
+<ul>
+<li><strong>Low-risk incremental (B + D + A):</strong> thinner corner/bay skins plus an aluminum
+  center frame → <strong>~45–55 kg</strong> off (to ~230 kg) with conventional construction and
+  modest cost. Best near-term value.</li>
+<li><strong>Aggressive (C, or escalating to E):</strong> honeycomb corners (or a full honeycomb
+  panel) → <strong>~55–90 kg</strong> off (to ~195–225 kg), at materially higher cost and a
+  light-tightness/edge-sealing development task.</li>
+</ul>
+<p>Either path leaves the drum + housing untouched (already optimized) and does not
+affect the swing kinematics. The next step is a decision on which path to cost out
+against the <a href="../project-cost-breakdown/">project cost breakdown</a> before any
+<code>tbs_constants.py</code> change.</p>
 <hr />
 <h2 id="3-housed-revolving-door-light-lock">3. Housed Revolving-Door Light Lock<a class="headerlink" href="#3-housed-revolving-door-light-lock" title="Permanent link">&para;</a></h2>
 <blockquote>

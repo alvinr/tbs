@@ -470,7 +470,7 @@ The operator controls the spray bar position from the near walkway using a teles
 aluminum pool pole (1.2–2.4 m). The pole passes through a 30mm wide slit cut into the
 walkway grating at the beam centerline X=2500mm. A matching slit is cut into the far
 walkway grating at the same X position. The slit positions are shown on the
-[walkway plan view](engineering-diagrams.md#14-perimeter-walkway).
+[walkway plan view](all-diagrams.md#13-perimeter-walkway).
 
 ![Sheet 3 — Plan View: Walkways & Slit Positions](assets/spray-bar-sheet3.png)
 
@@ -524,7 +524,7 @@ Seven detail sheets cover the spray bar assembly and processing tray:
 ![Sheet 7 — Detail B: Manifold Feed & Nozzle Connections](assets/spray-bar-sheet7.png)
 
 Additional processing tray drainage detail is shown in the
-[water system drawings](engineering-diagrams.md#9-processing-water-system) (sheets 3–4:
+[water system drawings](all-diagrams.md#9-processing-water-system) (sheets 3–4:
 tray drainage plan and sump cross-section).
 
 ---

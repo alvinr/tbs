@@ -264,8 +264,14 @@ def sheet1():
                                    fc=STRUCT, ec=WHITE, lw=1.2, alpha=0.8, zorder=6))
     leader(ax, RAIL_X_L, proj,
            RAIL_X_L - 320, proj - 240,
-           "WALL-SEAT SADDLE (typ. 8)\nIBC-style: 4-bolt + exterior plate\nLEFT thumb-screw / RIGHT bolted",
+           "WALL-SEAT SADDLE (6) + COMBINED PLATE (2)\nIBC-style: 4-bolt + exterior plate\nLEFT thumb-screw / RIGHT bolted",
            color=STRUCT, ha="center", fs=6.5, font=FONT)
+    # rev12: the bottom-right (BR) rail ends share a combined corner plate with
+    # the right walkway right beam (replaces the 2 BR saddles).
+    leader(ax, RAIL_X_R, proj,
+           RAIL_X_R + 300, proj - 210,
+           "BR ENDS → COMBINED CORNER PLATE (×2)\nshared with the right walkway right beam\n(rev12 — replaces the BR saddles)",
+           color=STRUCT, ha="center", fs=6, font=FONT)
 
     # Travel dim
     tr_x = RAIL_X_L - RAIL_W - 50
@@ -452,13 +458,15 @@ def sheet2():
     ax.text(W/2, H-RAIL_H/2, "CEILING RAIL  HGR20  ×2  (TL  +  TR — independent leadscrews)",
             color=BG, fontsize=5.5, ha="center", va="center", **FONT, zorder=6)
 
-    # ── WALL-SEAT SADDLES — side elevation (Yd on X-axis, Z on Y-axis), rev11 ─────
+    # ── WALL-SEAT SADDLES — side elevation (Yd on X-axis, Z on Y-axis), rev11/12 ──
     # A saddle at each wall (Yd0 + Yd C_WID) at both rail heights: back-plate on the
     # wall + a seat projecting in that the rail end rests on (replaces the brace cage).
+    # rev12: the bottom-right (BR) ends sit on the combined corner plate shared with
+    # the right walkway (not a standalone saddle).
     draw_brace_portal_yd_z(ax_tilt, STRUCT, lw=1.2, alpha=0.65, z=4)
     leader(ax_tilt, IBC_WBKT_SEAT_PROJ / 2, BRACE_Z_TOP,
            IBC_WBKT_SEAT_PROJ / 2 - 180, BRACE_Z_TOP + 130,
-           "WALL-SEAT SADDLE (both walls)\nIBC-style, 4-bolt + ext. plate",
+           "WALL-SEAT SADDLE (both walls)\nIBC-style, 4-bolt + ext. plate\n(BR ends = combined plate, shared w/ walkway)",
            color=STRUCT, ha="right", fs=6.5, font=FONT)
 
     CARRIAGE_W = 80

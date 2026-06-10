@@ -17,14 +17,14 @@ Sheet 2 — Cross-section + bolt pattern (near walkway bracket):
   ribs — no legs, no beam, no floor contact.  Entire tray clear for film.
   View B: Plate face showing triangular 3× M12 bolt pattern.
 
-Sheet 3 — Detail A: Right walkway ceiling-hung support (IBC end):
-  300mm wide, same as near/far.  No floor contact — suspended from ceiling
-  corrugations by M10 threaded rod hangers at 457mm centers.  Two 50×50×5mm
-  steel angle bearers run full container width along Yd at X=4329 and
-  X=4629.  Grating spans 300mm between bearers at Z=65mm (deck 80mm).
-  5 hanger pairs, all at Yd < 2025mm — clear of optical cone.  Near/far
-  ends bear on adjacent walkway brackets.  Zero tray contact, zero floor
-  contact.
+Sheet 3 — Detail A: Right walkway cantilever support (IBC end)  [rev 12]:
+  300mm wide, same as near/far.  Plan view of the closed 40×40×3 SHS
+  rectangle (2 long beams at X=4329/4629 running the full container width +
+  2 short end beams), picked up at mid-span by 2 arms cantilevering off the
+  IBC corridor uprights (half-lapped where the long beams cross), on wall
+  cleats at the left corners and combined corner plates (shared with the
+  bottom film rail) at the right corners.  Replaces the ceiling-hung
+  hangers.  Zero tray contact, zero floor contact, zero roof penetrations.
 
 Sheet 4 — Detail B: Left walkway butt joint and panel clearance:
   View looking along Yd (near wall toward far wall), X horizontal, Z vertical.
@@ -68,6 +68,7 @@ from tbs_constants import (
     WALKWAY_RIGHT_HANGER_D, WALKWAY_RIGHT_HANGER_N, WALKWAY_RIGHT_HANGER_Y1, WALKWAY_RIGHT_HANGER_L,
     WALKWAY_RIGHT_CEIL_PLATE, WALKWAY_RIGHT_CEIL_BOLT_D,
     WALKWAY_LEFT_SPAN, IBC_COL_X, IBC_W, IBC_H_600,
+    CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_R,
     CONTAINER_RIB_SPACING,
     WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X,
     PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F,
@@ -507,8 +508,8 @@ def sheet2():
         f"   for film loading. Zero tray contact.",
         f"7. M saddle clips + TEK screws to bracket",
          "   arms.",
-        f"8. Right walkway: CEILING-HUNG from M{WALKWAY_RIGHT_HANGER_D}",
-        f"   threaded rod hangers. See Sheet 3.",
+        f"8. Right walkway: CANTILEVER RECTANGLE off the",
+        f"   IBC frame + combined corner plates. See Sheet 3.",
         f"9. Left walkway: REMOVABLE LIFT-OUT —",
         f"   no brackets (panel conflict). Rests on",
         f"   near/far butt joints. {WALKWAY_GRATE_T}mm grating.",
@@ -713,7 +714,7 @@ def sheet1():
     # ── Draw walkway sections ────────────────────────────────────────────────
     # Left corners: BUTT JOINT — near/far walkways start at X=LXR (470)
     # so they clear the panel swing sweep at the door end.
-    # Right corners: BUTT JOINT — right walkway is ceiling-hung (same 300mm width).
+    # Right corners: BUTT JOINT — right walkway is the cantilever rectangle (same 300mm width).
     C_WK = "#D0C8B8"
     WK_ALPHA = 0.6
     W = WALKWAY_W
@@ -777,20 +778,19 @@ def sheet1():
                                  BRKT_MARK_W, BRKT_MARK_D,
                                  fc=bfc, ec=C_OUT, lw=blw, zorder=6))
         elif name == "RIGHT":
-            # Right walkway: ceiling-hung — show hanger positions as + marks
-            hanger_yds = np.array([WALKWAY_RIGHT_HANGER_Y1] + list(
-                np.arange(WALKWAY_BRACKET_SPACING / 2 + WALKWAY_BRACKET_SPACING,
-                           C_WID, WALKWAY_BRACKET_SPACING)))[:WALKWAY_RIGHT_HANGER_N]
-            hgr_sz = 12  # half-size of + mark
-            for by in hanger_yds:
-                # Inner bearer hanger (X = RX)
-                for hx in [RX + 15, RXR - 15]:
-                    ax.plot([hx - hgr_sz, hx + hgr_sz], [by, by],
-                            color="#606068", lw=1.2, zorder=8)
-                    ax.plot([hx, hx], [by - hgr_sz, by + hgr_sz],
-                            color="#606068", lw=1.2, zorder=8)
-                    ax.add_patch(Circle((hx, by), WALKWAY_RIGHT_HANGER_D / 2 * 1.5,
-                                 fc="none", ec="#606068", lw=0.8, zorder=8))
+            # Right walkway: cantilever rectangle (rev 12) — show the 2 center
+            # arms cantilevering off the IBC corridor uprights toward the long
+            # beams, with half-lap marks where they cross.
+            arm_w = 40
+            arm_yds = [CORRIDOR_YD_NEAR + IBC_FRAME_RHS / 2,
+                       CORRIDOR_YD_FAR - IBC_FRAME_RHS / 2]
+            for ay in arm_yds:
+                ax.add_patch(Rectangle((RX, ay - arm_w / 2),
+                             (RXR - RX) + 70, arm_w,
+                             fc="#9098A0", ec=C_OUT, lw=0.8, zorder=8, alpha=0.85))
+                for bx in [RX, RXR - arm_w]:
+                    ax.add_patch(Rectangle((bx, ay - arm_w / 2), arm_w, arm_w,
+                                 fc="none", ec=C_OUT, lw=0.7, ls=(0, (2, 1.5)), zorder=9))
         # LEFT walkway: NO brackets — removable lift-out section
 
         # Section label
@@ -801,7 +801,7 @@ def sheet1():
         if name == "LEFT":
             lbl = f"LEFT WALKWAY\n{int(length)}\u00d7{WALKWAY_W}mm\nREMOVABLE LIFT-OUT"
         elif name == "RIGHT":
-            lbl = f"RIGHT WALKWAY\n{int(length)}\u00d7{WALKWAY_W}mm\nCEILING-HUNG"
+            lbl = f"RIGHT WALKWAY\n{int(length)}\u00d7{WALKWAY_W}mm\nCANTILEVER"
         elif name == "NEAR":
             lbl = f"NEAR WALKWAY\n{int(length)}\u00d7{WALKWAY_W}mm\n(WIDENED TO {WALKWAY_NEAR_WIDE_W}mm\nAT EP/BATT ZONE)"
         else:
@@ -884,12 +884,12 @@ def sheet1():
            color=C_OUT, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
-    # Label right walkway hanger detail
+    # Label right walkway cantilever detail
     hanger_lbl_x = RX + W / 2
     leader(ax, hanger_lbl_x + 120, W / 2 + 90,
            hanger_lbl_x + 450, W / 2 + 350,
-           f"CEILING HANGERS\nM{WALKWAY_RIGHT_HANGER_D} THREADED ROD\n"
-           f"({WALKWAY_RIGHT_HANGER_N} PAIRS — 1st AT {WALKWAY_RIGHT_HANGER_Y1}mm,\nREST AT {WALKWAY_BRACKET_SPACING}mm CTR)",
+           "CANTILEVER RECTANGLE\n(2 arms off the IBC uprights +\n"
+           "combined corner plates — see Sheet 3)",
            color="#606068", fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -1059,7 +1059,7 @@ def sheet1():
         f"   Deeper cantilever brackets ({WALKWAY_NEAR_WIDE_W}mm arm) with heavier gussets in bump-out zone.",
         f"3. Near/far: wall-cantilevered brackets ({WALKWAY_BRACKET_T}mm gussets) at {WALKWAY_BRACKET_SPACING}mm centers.",
         f"   Start at X={LXR} (butt joint), clear of the door-end panel swing sweep.",
-        f"4. Right: CEILING-HUNG \u2014 {WALKWAY_RIGHT_HANGER_N} pairs M{WALKWAY_RIGHT_HANGER_D} rod hangers.",
+        f"4. Right: CANTILEVER RECTANGLE \u2014 closed 40\u00d740 SHS frame on 2 arms off the IBC uprights + combined corner plates.",
         f"5. Left: REMOVABLE LIFT-OUT \u2014 5 FLOOR-LEG CANTILEVER brackets on bare floor (X140, outside tray),",
         f"   arms reach the grate inner edge (X={LXR}); 3 extend to X770 on the drum-exit punch-out. See sheets 5/6.",
         f"6. ZERO tray contact \u2014 all supports outside or above tray. Open area: {PROC_OPEN_AREA:.1f} m\u00b2.",
@@ -1095,369 +1095,164 @@ def sheet1():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 3 — Detail A: Right Walkway Ceiling-Hung Support (IBC End)
+# SHEET 3 — Detail A: Right Walkway Cantilever Support (IBC End)  [rev 12]
 #
-# Elevation cross-section looking along the walkway (Yd axis).
-# The far end wall is flat 1.6mm steel — no corrugation ribs.
-# A 25×25×5mm angle iron is welded horizontally along the interior face
-# to provide a structural mounting surface for the cantilever brackets.
-# Scale ≈ 3:1 for clarity.
+# PLAN view (looking down): X horizontal, Yd vertical.  The right walkway is a
+# closed 40×40 SHS rectangle (2 long beams at X=4329/4629 running full width +
+# 2 short end beams) picked up at mid-span by 2 arms cantilevering off the IBC
+# corridor uprights, on wall cleats at the left corners and combined corner
+# plates (shared with the bottom film rail) at the right corners.  Replaces the
+# ceiling-hung hanger scheme.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet3():
-    """Right walkway — ceiling-hung hanger detail.
+    """Right walkway — cantilever-rectangle support (rev 12).
 
-    Split view: top detail (ceiling attachment) and bottom detail (bearer/grating)
-    with a break in between to cut out the featureless rod section.
-    Cross-section looking along Yd.  Horizontal = X, Vertical = Z.
+    PLAN view looking down.  Horizontal = X, Vertical = Yd.
     """
     def sx(mm): return mm
     def sy(mm): return mm
 
-    # ── Structural dimensions ────────────────────────────────────────────────
-    FLOOR_T      = 3
-    TRAY_WALL    = 3
-    TRAY_FLOOR_T = 2
-    CEIL_T       = 2
-    CEIL_CORR_H  = 30
+    # ── Geometry ─────────────────────────────────────────────────────────────
+    SHS       = 40                            # 40×40×3 SHS section
+    WK_L_X    = WALKWAY_RIGHT_X               # 4329 — left long beam
+    WK_R_X    = WALKWAY_RIGHT_X + WALKWAY_W   # 4629 — right long beam
+    WALL_X    = RAIL_X_R                      # 4649 — right side-wall station (film rail / combined plate)
+    UP_X0     = IBC_COL_X                     # 4674 — IBC corridor upright near X
+    ARM_X     = IBC_COL_X + 60                # 4734 — arm root station
+    UP_YDS    = [(CORRIDOR_YD_NEAR, CORRIDOR_YD_NEAR + IBC_FRAME_RHS),  # near upright 1046–1096
+                 (CORRIDOR_YD_FAR - IBC_FRAME_RHS, CORRIDOR_YD_FAR)]     # far  upright 1266–1316
+    ARM_YDS   = [yc + IBC_FRAME_RHS / 2 for (yc, _) in UP_YDS]           # arm centerlines
 
-    BEARER_S = WALKWAY_RIGHT_BEARER_SIZE   # 25mm leg
-    BEARER_T = WALKWAY_RIGHT_BEARER_T      # 5mm
-    HANGER_D = WALKWAY_RIGHT_HANGER_D      # M10
-    HANGER_R = HANGER_D / 2
-    DECK_H   = WALKWAY_H                   # 100mm
-    BEARER_TOP = DECK_H - WALKWAY_GRATE_T  # 65mm
-    BEARER_BOT = BEARER_TOP - BEARER_S     # 25mm
+    C_IBC   = "#B08040"
+    C_STEEL = C_BRKT
+    C_PLATE = "#8090A0"
 
-    BOLT_D   = WALKWAY_RIGHT_CEIL_BOLT_D   # M12 roof through-bolt
-    BOLT_R   = BOLT_D / 2
-    WASHER_T = 3
-    NUT_H    = 10
+    # ── View window (X 4250 → IBC stack, Yd 0 → C_WID) ───────────────────────
+    X_LO = WK_L_X - 360
+    X_HI = IBC_COL_X + IBC_W + 20
+    Y_LO = -150
+    Y_HI = C_WID + 120
 
-    # ── Right walkway geometry ───────────────────────────────────────────────
-    TRAY_RIM_X = PROC_TRAY_X_R
-    IBC_X      = IBC_COL_X
-    WK_LEFT_X  = WALKWAY_RIGHT_X
-    WK_RIGHT_X = WK_LEFT_X + WALKWAY_W
-
-    CP_L, CP_W, CP_T = WALKWAY_RIGHT_CEIL_PLATE
-
-    # ── Coordinate system ────────────────────────────────────────────────────
-    # Split view: bottom zone Z = -40 to 200, top zone Z = C_HGT-100 to C_HGT+60
-    # Mapped into drawing coordinates with a break gap between them.
-    BOT_Z_LO = -40
-    BOT_Z_HI = 200      # bottom detail range
-    TOP_Z_LO = C_HGT - 100   # top detail range
-    TOP_Z_HI = C_HGT + CEIL_CORR_H + 40
-    BREAK_GAP = 80       # visual gap for break lines (in drawing mm)
-
-    BOT_RANGE = BOT_Z_HI - BOT_Z_LO   # 240mm
-    TOP_RANGE = TOP_Z_HI - TOP_Z_LO   # ~170mm
-
-    def zy_bot(z):
-        """Map real Z in bottom zone to drawing Y."""
-        return z - BOT_Z_LO
-
-    def zy_top(z):
-        """Map real Z in top zone to drawing Y."""
-        return BOT_RANGE + BREAK_GAP + (z - TOP_Z_LO)
-
-    DRAW_H = BOT_RANGE + BREAK_GAP + TOP_RANGE
-
-    DRAW_CENTER_X = (WK_LEFT_X + WK_RIGHT_X) / 2
-    X_OFFSET = DRAW_CENTER_X - 250
-    def rx(real_x):
-        return real_x - X_OFFSET
-
-    WK_L  = rx(WK_LEFT_X)
-    WK_R  = rx(WK_RIGHT_X)
-    TRAY_DX = rx(TRAY_RIM_X)
-    IBC_DX  = rx(IBC_X)
-    BR_IN_X  = WK_L + 15
-    BR_OUT_X = WK_R - BEARER_S - 15
-
-    X_LO = WK_L - 100
-    X_HI = IBC_DX + 200
-
-    fig, ax = plt.subplots(figsize=(16, 10))
+    fig, ax = plt.subplots(figsize=(14, 10))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(sx(X_LO), sx(X_HI))
-    ax.set_ylim(sy(-10), sy(DRAW_H + 10))
+    ax.set_ylim(sy(Y_LO), sy(Y_HI))
     ax.set_aspect("equal")
     ax.axis("off")
 
-    # ════════════════════════════════════════════════════════════════════════
-    # BOTTOM DETAIL — floor, tray, bearers, grating (Z = -40 to 200)
-    # ════════════════════════════════════════════════════════════════════════
+    # ── Side walls (Yd=0 near, Yd=C_WID far) ─────────────────────────────────
+    for wy in [0, C_WID]:
+        ax.plot([sx(X_LO), sx(X_HI)], [sy(wy), sy(wy)],
+                color=C_OUT, lw=2.0, zorder=3)
+    ax.text(sx(WK_L_X - 80), sy(0 - 55), "NEAR WALL (Yd=0)", ha="left", va="center",
+            fontsize=6, color=C_OUT, **FONT)
+    ax.text(sx(WK_L_X - 80), sy(C_WID + 55), f"FAR WALL (Yd={C_WID})", ha="left", va="center",
+            fontsize=6, color=C_OUT, **FONT)
 
-    # Container floor
-    ax.add_patch(Rectangle((sx(X_LO), sy(zy_bot(-FLOOR_T))),
-                            sx(TRAY_DX - X_LO), sy(FLOOR_T),
-                            fc=C_FLOOR, ec=C_OUT, lw=1.0, zorder=3))
-    ax.add_patch(Rectangle((sx(TRAY_DX), sy(zy_bot(-FLOOR_T))),
-                            sx(X_HI - TRAY_DX), sy(FLOOR_T),
-                            fc="#D0C8B8", ec=C_OUT, lw=1.0, zorder=3))
-    ax.plot([sx(X_LO), sx(X_HI)], [sy(zy_bot(0)), sy(zy_bot(0))],
-            color=C_OUT, lw=1.5, zorder=4)
-    # Ground hatching
-    ax.add_patch(Rectangle((sx(X_LO), sy(zy_bot(-FLOOR_T - 15))),
-                            sx(X_HI - X_LO), sy(15),
-                            fc="#E0DDD8", ec=C_OUT, lw=0.5, hatch="///", zorder=2))
+    # ── IBC 2×2 stack ghost ──────────────────────────────────────────────────
+    ax.add_patch(Rectangle((sx(IBC_COL_X), sy(0)), sx(IBC_W), sy(C_WID),
+                            fc="#FFE8C0", ec=C_IBC, lw=1.0, ls="--", alpha=0.18, zorder=1))
+    ax.text(sx(IBC_COL_X + IBC_W / 2), sy(C_WID / 2), "IBC 2×2 STACK\n(GHOST)",
+            ha="center", va="center", fontsize=7, color=C_IBC, fontweight="bold",
+            **FONT, alpha=0.55, zorder=2)
 
-    leader(ax, sx((TRAY_DX + IBC_DX) / 2), sy(zy_bot(-FLOOR_T / 2)),
-           sx(IBC_DX + 60), sy(zy_bot(-25)),
-           "BARE FLOOR\n(NO CONTACT)",
-           color="#604020", fs=5.5,
-           ha="left", va="center", arrow_style="-|>", font=FONT)
+    # Left-margin label gutter (avoids overlap with the narrow rectangle)
+    GUT_X = X_LO + 15
 
-    # Processing tray rim
-    ax.add_patch(Rectangle((sx(TRAY_DX - TRAY_WALL), sy(zy_bot(0))),
-                            sx(TRAY_WALL), sy(PROC_TRAY_RIM),
-                            fc=C_TRAY, ec=C_OUT, lw=1.0, zorder=4))
-    tray_floor_left = X_LO + 15
-    ax.add_patch(Rectangle((sx(tray_floor_left), sy(zy_bot(0))),
-                            sx(TRAY_DX - TRAY_WALL - tray_floor_left), sy(TRAY_FLOOR_T),
-                            fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
-    bx_tray = sx(tray_floor_left)
-    zz_t = np.linspace(sy(zy_bot(0)), sy(zy_bot(TRAY_FLOOR_T)), 5)
-    ax.plot([bx_tray - 3, bx_tray + 3, bx_tray - 3, bx_tray + 3, bx_tray - 3],
-            zz_t, color=C_OUT, lw=1.0, zorder=5)
-    leader(ax, sx(TRAY_DX - TRAY_WALL / 2), sy(zy_bot(PROC_TRAY_RIM)),
-           sx(TRAY_DX - 55), sy(zy_bot(PROC_TRAY_RIM - 30)),
-           f"TRAY RIM\n{PROC_TRAY_RIM}mm",
-           color=C_TRAY, fs=6,
-           ha="center", va="center", arrow_style="-|>", font=FONT)
+    # ── Grated deck (hatched) over the rectangle ─────────────────────────────
+    ax.add_patch(Rectangle((sx(WK_L_X), sy(0)), sx(WK_R_X - WK_L_X), sy(C_WID),
+                            fc=C_GRATE, ec="none", alpha=0.30, zorder=4, hatch="++"))
 
-    # IBC ghost — 2×2 stack (bottom zone + through break + into top zone)
-    # Cross-section looking along Yd: horizontal = X, vertical = Z
-    # IBC inner face at IBC_DX, extends IBC_W = 1219mm to the right
-    IBC_SHOW_W = min(IBC_W, X_HI - IBC_DX - 10)  # clip to drawing width
-    C_IBC = "#B08040"
-    IBC_A = 0.20   # ghost alpha
+    # ── Closed SHS rectangle: 2 long beams + 2 end beams ─────────────────────
+    for bx in [WK_L_X, WK_R_X]:
+        ax.add_patch(Rectangle((sx(bx), sy(0)), sx(SHS), sy(C_WID),
+                                fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=8, alpha=0.9))
+    for ey in [0, C_WID - SHS]:
+        ax.add_patch(Rectangle((sx(WK_L_X), sy(ey)), sx((WK_R_X + SHS) - WK_L_X), sy(SHS),
+                                fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=8, alpha=0.9))
 
-    # Bottom IBC (Z=0 to IBC_H_600) — only bottom zone visible
-    ax.add_patch(Rectangle((sx(IBC_DX), sy(zy_bot(0))),
-                            sx(IBC_SHOW_W), sy(BOT_Z_HI - 10),
-                            fc="#FFE8C0", ec=C_IBC, lw=1.0, ls="--",
-                            zorder=2, alpha=IBC_A))
-    # IBC cage vertical posts at inner face
-    post_w = 8
-    ax.add_patch(Rectangle((sx(IBC_DX), sy(zy_bot(0))),
-                            sx(post_w), sy(BOT_Z_HI - 10),
-                            fc=C_IBC, ec=C_IBC, lw=0.5,
-                            zorder=2, alpha=IBC_A * 1.5))
-    # IBC cage bottom rail
-    ax.add_patch(Rectangle((sx(IBC_DX), sy(zy_bot(0))),
-                            sx(IBC_SHOW_W), sy(post_w),
-                            fc=C_IBC, ec=C_IBC, lw=0.5,
-                            zorder=2, alpha=IBC_A * 1.5))
+    leader(ax, sx(WK_L_X + SHS / 2), sy(C_WID * 0.80),
+           sx(GUT_X), sy(C_WID * 0.84),
+           f"LONG BEAM\n40×40×3 SHS\n(×2, X={WK_L_X}/{WK_R_X})",
+           color=C_STEEL, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
+    leader(ax, sx((WK_L_X + WK_R_X) / 2), sy(C_WID - SHS / 2),
+           sx((WK_L_X + WK_R_X) / 2 - 40), sy(C_WID + 70),
+           "END BEAM (×2)\ncloses the rectangle",
+           color=C_STEEL, fs=6, ha="center", va="bottom", arrow_style="-|>", font=FONT)
 
-    # Continuation through break zone (dashed vertical lines)
-    for edge_x in [IBC_DX, IBC_DX + IBC_SHOW_W]:
-        ax.plot([sx(edge_x), sx(edge_x)],
-                [sy(zy_bot(BOT_Z_HI - 10)), sy(zy_top(TOP_Z_LO + 10))],
-                color=C_IBC, lw=0.8, ls=(0, (4, 4)), alpha=0.3, zorder=1)
+    # ── Center cantilever arms off the IBC uprights ──────────────────────────
+    for (yc0, yc1), ay in zip(UP_YDS, ARM_YDS):
+        ax.add_patch(Rectangle((sx(UP_X0), sy(yc0)), sx(IBC_FRAME_RHS), sy(yc1 - yc0),
+                                fc=C_IBC, ec=C_OUT, lw=1.0, zorder=6, alpha=0.7))
+        ax.add_patch(Rectangle((sx(WK_L_X), sy(ay - SHS / 2)), sx(ARM_X - WK_L_X), sy(SHS),
+                                fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=7, alpha=0.95))
+        for bx in [WK_L_X, WK_R_X]:
+            ax.add_patch(Rectangle((sx(bx), sy(ay - SHS / 2)), sx(SHS), sy(SHS),
+                                    fc="none", ec=C_OUT, lw=0.9, ls=(0, (2, 1.5)), zorder=9))
+    leader(ax, sx(WK_L_X + SHS / 2), sy(ARM_YDS[0]),
+           sx(GUT_X), sy(C_WID * 0.52),
+           "CENTER CANTILEVER ARM (×2)\n40×40×3 SHS off the IBC\ncorridor uprights",
+           color=C_STEEL, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
+    leader(ax, sx(WK_R_X + SHS / 2), sy(ARM_YDS[1] + SHS / 2),
+           sx(WK_R_X + 130), sy(ARM_YDS[1] + 180),
+           "HALF-LAP JOINT\n(arm + long beam\ncross-halved, flush top)",
+           color=C_OUT, fs=5.5, ha="center", va="bottom", arrow_style="-|>", font=FONT)
 
-    # Stacking frame line (at Z = IBC_H_600 = 1010mm) — annotated in break
-    frame_label_y = (zy_bot(BOT_Z_HI) + zy_top(TOP_Z_LO)) / 2 + 10
-    ax.plot([sx(IBC_DX), sx(IBC_DX + IBC_SHOW_W)],
-            [sy(frame_label_y), sy(frame_label_y)],
-            color=C_IBC, lw=1.5, ls="--", alpha=0.5, zorder=1)
-    ax.text(sx(IBC_DX + IBC_SHOW_W / 2), sy(frame_label_y + 5),
-            f"STACKING FRAME\n(Z={IBC_H_600}mm)",
-            ha="center", va="bottom", fontsize=5, color=C_IBC,
-            **FONT, zorder=15, alpha=0.6)
+    # ── Corner supports ──────────────────────────────────────────────────────
+    # Left corners (X=WK_L_X) on wall cleats
+    for cy in [0, C_WID]:
+        cyb = cy if cy == 0 else cy - SHS
+        ax.add_patch(Rectangle((sx(WK_L_X - 12), sy(cyb - 9)), sx(SHS + 24), sy(SHS + 18),
+                                fc=C_PLATE, ec=C_OUT, lw=1.0, zorder=6, alpha=0.6))
+    leader(ax, sx(WK_L_X + SHS / 2), sy(SHS / 2),
+           sx(GUT_X), sy(C_WID * 0.24),
+           "WALL CLEAT (left corners)\nback-plate + ext. plate + shelf,\nM12 through-bolts",
+           color=C_PLATE, fs=5.5, ha="left", va="center", arrow_style="-|>", font=FONT)
 
-    # Labels
-    ax.text(sx(IBC_DX + IBC_SHOW_W / 2), sy(zy_bot(BOT_Z_HI - 20)),
-            f"BOTTOM IBC\n(GHOST)",
-            ha="center", va="top", fontsize=5.5, color=C_IBC,
-            fontweight="bold", **FONT, zorder=15, alpha=0.7)
-    ax.text(sx(IBC_DX + IBC_SHOW_W / 2), sy(frame_label_y + 30),
-            f"TOP IBC\n(GHOST)",
-            ha="center", va="bottom", fontsize=5.5, color=C_IBC,
-            fontweight="bold", **FONT, zorder=15, alpha=0.7)
-    # Stack annotation
-    ax.text(sx(IBC_DX + IBC_SHOW_W + 5), sy(zy_bot(BOT_Z_HI / 2)),
-            f"2\u00d72 IBC STACK\n{IBC_H_600}\u00d72 = {IBC_H_600*2}mm",
-            ha="left", va="center", fontsize=5, color=C_IBC,
-            **FONT, zorder=15, alpha=0.6)
+    # Right corners (X≈WALL_X) on combined corner plates — shared with BR film rail
+    for cy in [0, C_WID]:
+        cyb = cy if cy == 0 else cy - 70
+        ax.add_patch(Rectangle((sx(WK_R_X - 6), sy(cyb)), sx((WALL_X + 18) - (WK_R_X - 6)), sy(70),
+                                fc=C_PLATE, ec=C_OUT, lw=1.2, zorder=10, alpha=0.85))
+    ax.plot([sx(WALL_X), sx(WALL_X)], [sy(0), sy(C_WID)],
+            color=C_CL, lw=1.4, ls=(0, (6, 3)), zorder=5)
+    ax.text(sx(WALL_X + 12), sy(C_WID * 0.50), "BOTTOM FILM RAIL (BR) — X=4649",
+            ha="left", va="center", fontsize=5.5, color=C_CL, rotation=90, **FONT)
+    leader(ax, sx(WK_R_X + SHS / 2), sy(70),
+           sx(GUT_X), sy(C_WID * 0.06),
+           "COMBINED CORNER PLATE (right corners)\ncarries the walkway right beam (70mm seat)\n"
+           "+ the BR film rail (150mm seat) — replaces\nthe BR saddle; 10mm, 4× M12, permanently bolted",
+           color=C_PLATE, fs=5.5, ha="left", va="center", arrow_style="-|>", font=FONT)
 
-    # Bearer angles
-    for br_x in [BR_IN_X, BR_OUT_X]:
-        ax.add_patch(Rectangle((sx(br_x), sy(zy_bot(BEARER_BOT))),
-                                sx(BEARER_T), sy(BEARER_S),
-                                fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=8, alpha=0.85))
-        ax.add_patch(Rectangle((sx(br_x), sy(zy_bot(BEARER_TOP - BEARER_T))),
-                                sx(BEARER_S), sy(BEARER_T),
-                                fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=8, alpha=0.85))
-
-    leader(ax, sx(BR_IN_X + BEARER_S * 0.4), sy(zy_bot(BEARER_BOT + 5)),
-           sx(BR_IN_X + 35), sy(zy_bot(BEARER_BOT - 25)),
-           f"BEARER ANGLE\n{BEARER_S}\u00d7{BEARER_S}\u00d7{BEARER_T}mm\nSTEEL L-ANGLE\n"
-           f"(SPANS {C_WID}mm ALONG Yd)",
-           color=C_BRKT, fs=5.5,
-           ha="center", va="center", arrow_style="-|>", font=FONT)
-
-    # Grated deck
-    grate_bot = BEARER_TOP
-    grate_top = grate_bot + WALKWAY_GRATE_T
-    ax.add_patch(Rectangle((sx(WK_L), sy(zy_bot(grate_bot))),
-                            sx(WK_R - WK_L), sy(WALKWAY_GRATE_T),
-                            fc=C_GRATE, ec=C_OUT, lw=1.2, zorder=10))
-    bar_spacing = 34.2
-    bar_w = 3
-    for xb in np.arange(bar_w, WK_R - WK_L - bar_w, bar_spacing):
-        ax.add_patch(Rectangle((sx(WK_L + xb), sy(zy_bot(grate_bot))),
-                                sx(bar_w), sy(WALKWAY_GRATE_T),
-                                fc="#909098", ec=C_OUT, lw=0.3, zorder=11))
-
-    # Grating clips
-    for clip_x in [WK_L + 12, WK_R - 20]:
-        ax.add_patch(Rectangle((sx(clip_x), sy(zy_bot(grate_bot - 4))),
-                                sx(8), sy(WALKWAY_GRATE_T + 9),
-                                fc="#505058", ec=C_OUT, lw=0.8, zorder=12))
-    leader(ax, sx(WK_L + 16), sy(zy_bot(grate_top + 5)),
-           sx(WK_L - 25), sy(zy_bot(grate_top + 30)),
-           "M SADDLE CLIP", color="#505058", fs=5.5,
-           ha="center", va="center", arrow_style="-|>", font=FONT)
-
-    # Hanger rod stubs (extending up from bearer into break zone)
-    C_ROD = "#606068"
-    rod_hw = HANGER_R * 0.4
-    # Rod passes through the horizontal flange of the L-angle.
-    # Nut + washer below the horizontal flange, nut + washer above.
-    FLANGE_BOT = BEARER_TOP - BEARER_T   # bottom of horizontal flange
-    for br_x in [BR_IN_X + BEARER_S / 2, BR_OUT_X + BEARER_S / 2]:
-        # Bottom nut + washer (below horizontal flange)
-        ax.add_patch(Rectangle((sx(br_x - HANGER_R - 1), sy(zy_bot(FLANGE_BOT - WASHER_T))),
-                                sx(HANGER_D + 2), sy(WASHER_T),
-                                fc="#808080", ec=C_OUT, lw=0.5, zorder=7))
-        ax.add_patch(Rectangle((sx(br_x - HANGER_R), sy(zy_bot(FLANGE_BOT - WASHER_T - NUT_H))),
-                                sx(HANGER_D), sy(NUT_H),
-                                fc="#505058", ec=C_OUT, lw=0.8, zorder=7))
-        # Top nut + washer (above horizontal flange)
-        ax.add_patch(Rectangle((sx(br_x - HANGER_R - 1), sy(zy_bot(BEARER_TOP))),
-                                sx(HANGER_D + 2), sy(WASHER_T),
-                                fc="#808080", ec=C_OUT, lw=0.5, zorder=7))
-        ax.add_patch(Rectangle((sx(br_x - HANGER_R), sy(zy_bot(BEARER_TOP + WASHER_T))),
-                                sx(HANGER_D), sy(NUT_H),
-                                fc="#505058", ec=C_OUT, lw=0.8, zorder=7))
-        # Rod stub up to top of bottom zone
-        ax.add_patch(Rectangle((sx(br_x - rod_hw), sy(zy_bot(FLANGE_BOT - WASHER_T - NUT_H))),
-                                sx(rod_hw * 2), sy(BOT_Z_HI - FLANGE_BOT + WASHER_T + NUT_H),
-                                fc=C_ROD, ec=C_OUT, lw=0.8, zorder=5))
-
-    # Bottom detail dimensions
-    draw_dim_h(ax, sx(WK_L), sx(WK_R), sy(zy_bot(grate_top + 15)),
-               f"{WALKWAY_W}mm WALKWAY", offset=sy(8), fs=7, font=FONT)
-    draw_dim_v(ax, sx(WK_L - 15), sy(zy_bot(0)), sy(zy_bot(grate_top)),
-               f"{DECK_H}mm\nDECK", offset=sx(8), fs=6.5, right=False, font=FONT)
-    draw_dim_v(ax, sx(BR_IN_X - 10), sy(zy_bot(BEARER_BOT)), sy(zy_bot(BEARER_TOP)),
-               f"{BEARER_S}", offset=sx(6), fs=5.5, right=False, font=FONT)
-    draw_dim_h(ax, sx(WK_R), sx(IBC_DX), sy(zy_bot(PROC_TRAY_RIM + 15)),
-               f"{int(IBC_X - WK_RIGHT_X)}mm\nTO IBC", offset=sy(6), fs=6, font=FONT)
-
-    # ════════════════════════════════════════════════════════════════════════
-    # BREAK LINES (sawtooth between bottom and top details)
-    # ════════════════════════════════════════════════════════════════════════
-    break_y_bot = zy_bot(BOT_Z_HI)
-    break_y_top = break_y_bot + BREAK_GAP
-    for side_x in [X_LO, X_HI]:
-        pass  # no side break lines needed
-    # Sawtooth across full width
-    n_teeth = 12
-    xs = np.linspace(X_LO, X_HI, n_teeth * 2 + 1)
-    for break_y in [break_y_bot, break_y_top]:
-        teeth_y = [break_y + (8 if i % 2 == 1 else -8) for i in range(len(xs))]
-        ax.plot([sx(x) for x in xs], [sy(y) for y in teeth_y],
-                color=C_OUT, lw=1.2, zorder=15)
-
-    # Rod continuation through break (dashed)
-    for br_x in [BR_IN_X + BEARER_S / 2, BR_OUT_X + BEARER_S / 2]:
-        ax.plot([sx(br_x), sx(br_x)],
-                [sy(break_y_bot + 8), sy(break_y_top - 8)],
-                color=C_ROD, lw=1.5, ls=(0, (4, 3)), zorder=14)
-
-    # Break label
-    ax.text(sx((X_LO + X_HI) / 2), sy((break_y_bot + break_y_top) / 2),
-            f"M{HANGER_D} THREADED ROD \u2014 {WALKWAY_RIGHT_HANGER_L}mm\n"
-            f"({WALKWAY_RIGHT_HANGER_N} PAIRS — 1st AT Yd={WALKWAY_RIGHT_HANGER_Y1}mm, REST AT {WALKWAY_BRACKET_SPACING}mm CTR)",
-            ha="center", va="center", fontsize=7, color=C_ROD,
-            fontweight="bold", **FONT, zorder=16,
-            bbox=dict(boxstyle="round,pad=0.3", fc=BG, ec=C_ROD, lw=0.8, alpha=0.9))
-
-    # ════════════════════════════════════════════════════════════════════════
-    # TOP DETAIL — ceiling attachment (Z = C_HGT-100 to C_HGT+60)
-    # ════════════════════════════════════════════════════════════════════════
-
-    # Ceiling panel
-    ax.add_patch(Rectangle((sx(X_LO), sy(zy_top(C_HGT))),
-                            sx(X_HI - X_LO), sy(CEIL_T),
-                            fc="#B0B0B8", ec=C_OUT, lw=1.5, zorder=3))
-    ax.add_patch(Rectangle((sx(X_LO), sy(zy_top(C_HGT + CEIL_T))),
-                            sx(X_HI - X_LO), sy(CEIL_CORR_H),
-                            fc="#C0C0C8", ec=C_OUT, lw=0.8, zorder=2, hatch=".."))
-
-    # Ceiling anchor plates (INSIDE under the roof + OUTSIDE on the roof exterior) + bolts.
-    # Roof in this detail spans C_HGT .. C_HGT+CEIL_T+CEIL_CORR_H; the two plates sandwich it.
-    C_BOLT = "#505058"
-    roof_top = C_HGT + CEIL_T + CEIL_CORR_H
-    for br_x in [BR_IN_X + BEARER_S / 2, BR_OUT_X + BEARER_S / 2]:
-        plate_left = br_x - CP_L / 2
-        # INSIDE plate \u2014 just below the roof (rod hangs from it)
-        ax.add_patch(Rectangle((sx(plate_left), sy(zy_top(C_HGT - CP_T))),
-                                sx(CP_L), sy(CP_T),
-                                fc=C_BRKT, ec=C_OUT, lw=1.0, zorder=6, alpha=0.9))
-        # OUTSIDE reinforcing plate \u2014 on top of the roof exterior
-        ax.add_patch(Rectangle((sx(plate_left), sy(zy_top(roof_top))),
-                                sx(CP_L), sy(CP_T),
-                                fc=C_BRKT, ec=C_OUT, lw=1.0, zorder=6, alpha=0.9))
-        # through-bolts (2 shown in section of the 2\u00d72 pattern): inside plate \u2192 outside plate
-        for boff in [-CP_L * 0.30, CP_L * 0.30]:
-            bx = br_x + boff
-            ax.add_patch(Rectangle((sx(bx - BOLT_R), sy(zy_top(C_HGT - CP_T))),
-                                    sx(BOLT_D), sy((roof_top + CP_T) - (C_HGT - CP_T)),
-                                    fc=C_BOLT, ec=C_OUT, lw=0.5, zorder=7))
-            # bolt head on top of the outside plate
-            ax.add_patch(Rectangle((sx(bx - BOLT_R * 1.4), sy(zy_top(roof_top + CP_T))),
-                                    sx(BOLT_D * 1.4), sy(NUT_H),
-                                    fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=7))
-
-        # Rod stub down from the INSIDE plate into the break zone
-        ax.add_patch(Rectangle((sx(br_x - rod_hw), sy(zy_top(TOP_Z_LO))),
-                                sx(rod_hw * 2), sy(C_HGT - CP_T - TOP_Z_LO),
-                                fc=C_ROD, ec=C_OUT, lw=0.8, zorder=5))
-
-    leader(ax, sx(BR_IN_X + BEARER_S / 2 - CP_L / 2 - 2), sy(zy_top(C_HGT - CP_T / 2)),
-           sx(BR_IN_X - 55), sy(zy_top(C_HGT - 60)),
-           f"CEILING ANCHOR PLATES \u2014 INSIDE + OUTSIDE\n{CP_L}\u00d7{CP_W}\u00d7{CP_T}mm STEEL (sandwich the roof)\n"
-           f"4\u00d7 M{BOLT_D} THROUGH-BOLTS (2\u00d72)",
-           color=C_BRKT, fs=6,
-           ha="center", va="center", arrow_style="-|>", font=FONT)
+    # ── Dimensions ───────────────────────────────────────────────────────────
+    draw_dim_h(ax, sx(WK_L_X), sx(WK_R_X), sy(-70),
+               f"{WALKWAY_W}mm", offset=sy(6), fs=7, font=FONT)
+    draw_dim_v(ax, sx(X_HI - 30), sy(0), sy(C_WID),
+               f"{C_WID}mm\n(full width)", offset=sx(8), fs=6.5, right=True, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
-    notes_x = sx(X_HI - 210)
-    notes_top = sy(zy_top(C_HGT - CEIL_CORR_H + 20))
     notes = [
-        "RIGHT WALKWAY \u2014 CEILING-HUNG:",
-        f"1. 2\u00d7 {BEARER_S}\u00d7{BEARER_S}\u00d7{BEARER_T}mm steel angle bearers",
-        f"   span full container width ({C_WID}mm) along Yd.",
-        f"2. Suspended from ceiling corrugations by M{HANGER_D}",
-        f"   threaded rod (1st at Yd={WALKWAY_RIGHT_HANGER_Y1}mm, rest {WALKWAY_BRACKET_SPACING}mm ctr).",
-        f"3. {WALKWAY_RIGHT_HANGER_N} hanger pairs \u2014 all at Yd \u2264 2057mm",
-        f"   (clear of optical cone).",
-        f"4. Near/far ends bear on adjacent walkway brackets.",
-        f"5. Deck {DECK_H}mm \u2014 level with all 4 sides.",
-        f"6. ZERO floor contact \u2014 clears IBC stack entirely.",
+        "RIGHT WALKWAY — CANTILEVER RECTANGLE (rev 12):",
+        f"1. Closed 40×40×3 SHS frame: 2 long beams (X={WK_L_X}/{WK_R_X},",
+        f"   full {C_WID}mm width) + 2 end beams.",
+        "2. Picked up at mid-span by 2 arms cantilevering off the",
+        f"   IBC corridor uprights (Yd {CORRIDOR_YD_NEAR}–{CORRIDOR_YD_FAR});",
+        "   half-lapped where the long beams cross them.",
+        "3. LEFT corners on wall cleats; RIGHT corners on combined",
+        "   corner plates SHARED with the bottom film rail (BR).",
+        f"4. Deck {WALKWAY_H}mm; {WALKWAY_GRATE_T}mm grate spans the rectangle.",
+        "5. ZERO floor contact, ZERO roof penetrations —",
+        "   replaces the ceiling-hung hangers.",
     ]
-    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(8), fs=7, width=sx(200), font=FONT)
+    draw_notes(ax, notes, sx(IBC_COL_X + 40), sy(C_WID * 0.46),
+               spacing=sy(52), fs=6.5, width=sx(IBC_W - 60), font=FONT)
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 9",
                 drawing_title="PERIMETER WALKWAY",
-                subtitle="DETAIL A \u2014 RIGHT WALKWAY CEILING-HUNG SUPPORT (IBC END)",
-                scale_note=f"Axes in mm \u00b7 SECTION LOOKING ALONG Yd",
+                subtitle="DETAIL A — RIGHT WALKWAY CANTILEVER SUPPORT (IBC END)",
+                scale_note="Axes in mm · PLAN VIEW LOOKING DOWN",
                 height=0.07)
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet3.png"), dpi=130, bbox_inches="tight", facecolor=BG)
@@ -2809,7 +2604,7 @@ if __name__ == "__main__":
     print("Generating perimeter walkway diagrams...")
     sheet1()  # plan view → sheet1.png
     sheet2()  # cross-section → sheet2.png
-    sheet3()  # ceiling-hung → sheet3.png
+    sheet3()  # cantilever support → sheet3.png
     sheet4()  # butt joint → sheet4.png
     sheet5()  # left support (floor-leg plan) → sheet5.png
     sheet6()  # floor-leg bracket detail → sheet6.png

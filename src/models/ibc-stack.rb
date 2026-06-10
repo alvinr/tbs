@@ -2482,6 +2482,13 @@ anc = Geom::Point3d.new(5175.mm, 1181.mm, 370.mm)
 txt = entities.add_text("F1 (50um filter)", anc, Geom::Vector3d.new(5.mm, -1831.mm, 80.mm))
 txt.layer = model.layers["Labels"] rescue nil
 
+# ── In-model © + license credit (default layer → shown in every scene) ──
+lbb = model.bounds
+lanc = Geom::Point3d.new(lbb.min.x, lbb.min.y - 400.mm, lbb.min.z)
+entities.add_text("© 2026 Alvin Richards
+Licensed under GNU AGPLv3
+alvinr.github.io/tbs", lanc)
+
 model.definitions.purge_unused
 model.materials.purge_unused
 

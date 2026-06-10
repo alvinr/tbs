@@ -196,6 +196,25 @@ def overview_labels():
     return '\n'.join(rows)
 
 
+# In-model copyright + license credit — matches the 2D drawing/title-block footer and
+# the SPDX header. © 2026 Alvin Richards, GNU AGPLv3.
+LICENSE_TEXT = "© 2026 Alvin Richards\nLicensed under GNU AGPLv3\nalvinr.github.io/tbs"
+
+
+def license_note(out=400):
+    """Ruby: a leaderless © + license credit anchored at the model's front-bottom-left
+    (offset `out` mm outboard of the near wall, toward the viewer), left on the DEFAULT
+    layer so it shows in every scene. Emit AFTER all geometry (it reads model.bounds);
+    the idempotent rebuild erases prior Text, so it re-adds cleanly each run.
+    Shared via the `ov` module so every model gets the same credit."""
+    return '\n'.join([
+        '# ── In-model © + license credit (default layer → shown in every scene) ──',
+        'lbb = model.bounds',
+        f'lanc = Geom::Point3d.new(lbb.min.x, lbb.min.y - {mm(out)}, lbb.min.z)',
+        f'entities.add_text("{LICENSE_TEXT}", lanc)',
+    ])
+
+
 def mm(val):
     """Render a millimeter value as a Ruby literal carrying the `.mm` suffix.
 
@@ -1914,6 +1933,8 @@ fpdef.entities.grep(Sketchup::Group).each {{ |g| g.erase! if g.name == "FP Brace
 
 # ── Major-component callouts (Labels tag — shown only in the "Labeled" scene) ──
 {overview_labels()}
+
+{license_note()}
 
 model.definitions.purge_unused
 model.materials.purge_unused

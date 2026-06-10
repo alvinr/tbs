@@ -167,6 +167,8 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 # ── In-model labels (on the 'Labels' tag; visible only in the "Labeled" scene) ──
 {ibc_labels()}
 
+{ov.license_note()}
+
 model.definitions.purge_unused
 model.materials.purge_unused
 

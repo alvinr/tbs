@@ -3709,6 +3709,13 @@ anc = Geom::Point3d.new(4550.mm, 80.mm, 0.mm)
 txt = entities.add_text("DRAIN SUMP", anc, Geom::Vector3d.new(200.mm, -600.mm, 450.mm))
 txt.layer = model.layers["Labels"] rescue nil
 
+# ── In-model © + license credit (default layer → shown in every scene) ──
+lbb = model.bounds
+lanc = Geom::Point3d.new(lbb.min.x, lbb.min.y - 400.mm, lbb.min.z)
+entities.add_text("© 2026 Alvin Richards
+Licensed under GNU AGPLv3
+alvinr.github.io/tbs", lanc)
+
 model.definitions.purge_unused
 model.materials.purge_unused
 

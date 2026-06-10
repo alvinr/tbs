@@ -3646,6 +3646,13 @@ txt = entities.add_text("LEFT SUPPORT
 (floor-leg cantilevers)", anc, Geom::Vector3d.new(-850.mm, -200.mm, 600.mm))
 txt.layer = model.layers["Labels"] rescue nil
 
+# ── In-model © + license credit (default layer → shown in every scene) ──
+lbb = model.bounds
+lanc = Geom::Point3d.new(lbb.min.x, lbb.min.y - 400.mm, lbb.min.z)
+entities.add_text("© 2026 Alvin Richards
+Licensed under GNU AGPLv3
+alvinr.github.io/tbs", lanc)
+
 # ── Type callouts for the "Cantilevers" scene (on the Cantilever Types tag) ──
 anc = Geom::Point3d.new(2000.mm, 0.mm, 115.mm)
 txt = entities.add_text("FLOOR-LEG CANTILEVER — standard reach

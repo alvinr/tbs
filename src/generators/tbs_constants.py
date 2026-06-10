@@ -354,10 +354,14 @@ PUMP_YD      = CORRIDOR_YD_NEAR  # pump zone near edge Yd (mm) — near side of 
 # processing area corner, just inside the right walkway and near walkway.
 # Does not overlap any walkway — all walkways clear for passage.
 # Rotated 90°: long axis along X (parallel to walkway), short axis into tray.
-# Shadow-free: cone right boundary at Yd=450 is X=3021mm; shelf at
-# X=3729+ is >700mm outside cone.
-SHELF_X_L      = 3729    # shelf left edge X (mm) — 600mm left of right walkway
-SHELF_X_R      = 4329    # shelf right edge X (mm) — flush with right walkway inner edge
+# rev12: shelf MOVED LEFT of the tap (right edge at TAP_X=3729) to clear the
+# film-plane SWING envelope — at the old X4329 right edge the swung plane reached
+# the shelf at ~17°; at X3729 it clears the practical ±15° band by ~225mm (see
+# chemistry-prep-shelves.md §2.1). Yd unchanged (300-600).
+# Shadow-free: cone right boundary at Yd=600 is X=2996mm; shelf left edge at
+# X=3129 is ~133mm outside the cone (was ~708mm at X3729).
+SHELF_X_L      = 3129    # shelf left edge X (mm) — 600mm left of the tap (TAP_X)
+SHELF_X_R      = 3729    # shelf right edge X (mm) — at the tap (TAP_X)
 SHELF_W        = 600     # shelf width in X direction (mm) — long axis along walkway
 SHELF_YD_NEAR  = 300     # shelf near edge Yd (mm) — at near walkway outer edge
 SHELF_YD_FAR   = 600     # shelf far edge Yd (mm)
@@ -368,7 +372,7 @@ SHELF_HANGER_D = 10      # hanger threaded rod diameter (mm) — M10 (matches ri
 SHELF_HANGER_N = 4       # number of hanger rods (4 corners)
 
 # ── Chemistry prep tap (pinhole wall, tees off blue supply line) ─────────────
-TAP_X          = 3729    # tap X position (mm) — at shelf left edge
+TAP_X          = 3729    # tap X position (mm) — at shelf RIGHT edge (rev12; was left edge)
 TAP_Z          = 1200    # tap spout height AFF (mm) — 125mm above shelf surface [+50 walkway raise; was 1150]
 TAP_PIPE_OD    = 25      # branch pipe OD (mm) — 3/4" HDPE
 TAP_WALL_T     = 3       # branch pipe wall thickness (mm) — reserved (spec; not yet drawn)

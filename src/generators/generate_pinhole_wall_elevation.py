@@ -464,7 +464,7 @@ TAP_OD = 25     # 3/4" branch pipe
 TAP_WALL = 3
 TAP_BRANCH_Z = TAP_Z + 100   # 1250mm — horizontal run height
 TAP_TEE_X = 3400              # tee point on Blue supply trunk
-BV06_X = 3600                 # valve position — close to shelf left edge (3729)
+BV06_X = 3600                 # valve position — 129mm left of the tap / shelf right edge (TAP_X=3729)
 BV06_R = 25                   # valve body radius for symbol
 
 # Riser from supply pipe up to TAP_BRANCH_Z, horizontal to BV-06

@@ -77,9 +77,9 @@ def film_rail_saddle():
         parts.append(ruby_box(f"FP Rail {nm} (X{k.RAIL_X_R})",
                               k.RAIL_X_R - RW // 2, 0, rz - RW // 2, RW, k.C_WID, RW,
                               color=ov.C_STEEL, alpha=0.85))
-    # right-corner saddles only (TR/BR), shared builder
-    parts.append(ov.film_plane_saddles({"TR": (k.RAIL_X_R, rz_top),
-                                         "BR": (k.RAIL_X_R, rz_bot)}))
+    # TOP rail keeps a normal wall-seat saddle; the BOTTOM rail (BR) is secured by the
+    # COMBINED corner plate (shared with the walkway right beam) — see right_cantilever().
+    parts.append(ov.film_plane_saddles({"TR": (k.RAIL_X_R, rz_top)}))
     # ghost slab of the film plane at its right edge (Yd2262) so the sweep zone reads
     parts.append(ruby_box("Film plane (right edge, ghost)",
                           k.RAIL_X_R - 320, k.FP_Y, rz_bot, 320, 16, rz_top - rz_bot,
@@ -147,42 +147,65 @@ def _wall_cleat(tag, x, wall_yd, din):
     return out
 
 
+def combined_corner_plate(wall_yd, din):
+    """ONE plate at the near/far-RIGHT corner securing BOTH the bottom film rail (BR) and
+    the walkway's right beam — through-bolted to the wall (interior + exterior plate). It
+    spans from below the walkway beam (Z58) up past the rail (Z225): the right beam lands on
+    it at Z70-115, the BR rail seats on it at Z150. 150mm wide — the box section can use the
+    full available width."""
+    pw = k.IBC_WBKT_PLATE_W                       # 150 — plate width (X), centered on the rail
+    cx = k.RAIL_X_R                               # 4649
+    rz = k.RAIL_OFF_BOT                           # 150 — BR rail height
+    tag = "near" if wall_yd == 0 else "far"
+    piy = wall_yd if din > 0 else wall_yd - 10
+    poy = -k.WALL_T - 10 if din > 0 else k.C_WID + k.WALL_T
+    sy = wall_yd if din > 0 else wall_yd - 55     # seat projection start
+    z0, z1 = ARM_BOT - 12, rz + 75                # plate 58 .. 225
+    out = [
+        ruby_box(f"Combined corner plate ({tag})", cx - pw / 2, piy, z0, pw, 10, z1 - z0, color=ov.C_STEEL),
+        ruby_box(f"Combined corner ext. plate ({tag})", cx - pw / 2, poy, z0, pw, 10, z1 - z0, color=ov.C_STEEL),
+        ruby_box(f"Right-beam seat ({tag})", cx - pw / 2, sy, ARM_BOT - 12, pw, 55, 12, color=ov.C_STEEL),
+        ruby_box(f"BR rail seat ({tag})", cx - 30, sy, rz - 12, 60, 55, 12, color=ov.C_STEEL),
+    ]
+    blo, bhi = min(piy, poy), max(piy, poy) + 10
+    for bx in (cx - 50, cx + 50):
+        for bz in (ARM_BOT + 14, rz + 28):
+            out.append(ruby_cylinder(f"Combined bolt M12 ({tag}) X{int(bx)} Z{int(bz)}",
+                                     bx, blo, bz, 6, bhi - blo, color=ov.C_STEEL, axis="y"))
+    return out
+
+
 def right_cantilever():
-    """The proposed support — a HYBRID anchor (the IBC frame only has uprights at the
-    corridor, so the perimeter arms can't grab it):
-      • 2 INNER arms cantilever off the IBC corridor uprights (U-clamp + 2× M12), HALF-LAPPED
-        where the bearers cross.
-      • 2 OUTER wall ledgers seat on L-CLEATS (back-plate through-bolted to the wall + shelf),
-        butt the film-rail SADDLE at the right corner so the saddle becomes the shared corner
-        node joining the ledger + the IBC-side bearer.
-      • 2 longitudinal bearers HALF-LAPPED at every crossing; grate (separate tag) on top.
-    Everything at Z70-115 — above the spray bar (Z60), below the film frame (Z150)."""
+    """JOINED RECTANGLE under the walkway + center cantilever supports off the IBC frame:
+      • the deck frame is a CLOSED RECTANGLE — left + right long beams (run in Yd) + 2 end
+        beams (run in X), joined at the corners.
+      • the 2 CENTER cantilever arms (off the IBC corridor uprights) support it at mid-span,
+        HALF-LAPPED where the long beams cross.
+      • LEFT corners land on wall cleats; RIGHT corners share a COMBINED plate with the bottom
+        film rail. Everything Z70-115 (above the spray bar, below the film frame)."""
     parts = []
-    # ── 2 INNER cantilever arms off the IBC corridor uprights ──
+    lx, rx = R_X_L, R_X_R - BEARER_W              # 4329, 4589 — long-beam left edges
+    arm_ranges = [(yd, ARM_W) for yd in UP_YDS]   # center arms at Yd1046/1266
+    # ── rectangle: 2 long beams (half-lapped at the center arms) ──
+    parts += _bearer_notched(lx, arm_ranges)
+    parts += _bearer_notched(rx, arm_ranges)
+    # ── rectangle: 2 end beams joining the long beams into a closed frame ──
+    for ey in (0, k.C_WID - BEARER_W):
+        parts.append(ruby_box(f"End beam Yd{int(ey)}", lx, ey, BEARER_Z0,
+                              (rx + BEARER_W) - lx, BEARER_W, ARM_TOP - BEARER_Z0, color=ov.C_STEEL))
+    # ── 2 center cantilever arms off the IBC corridor uprights (half-lapped at the long beams) ──
     for yd in UP_YDS:
-        parts += _xbeam_notched(f"Cantilever arm (off IBC upright) Yd{yd}", yd, R_X_L, X_UP)
+        parts += _xbeam_notched(f"Center cantilever Yd{yd}", yd, R_X_L, X_UP)
         for pf in (yd - 8, yd + ARM_W):
             parts.append(ruby_box(f"Upright clamp plate Yd{yd} Y{int(pf)}",
                                   X_UP - 4, pf, ARM_BOT - 25, S + 8, 8, AH + 55, color=ov.C_STEEL))
         for bz in (ARM_BOT + 6, ARM_TOP + 18):
             parts.append(ruby_cylinder(f"Upright bolt M12 Yd{yd} Z{int(bz)}",
                                        X_UP + S / 2, yd - 12, bz, 6, ARM_W + 24, color=ov.C_STEEL, axis="y"))
-    # ── 2 OUTER wall ledgers on L-cleats; corner closed via the film-rail saddle ──
+    # ── corners: LEFT on wall cleats; RIGHT on the COMBINED plate (rail + right beam) ──
     for wall_yd, din, tag in ((0, 1, "near"), (k.C_WID, -1, "far")):
-        by = wall_yd if din > 0 else wall_yd - ARM_W
-        parts += _xbeam_notched(f"Wall ledger ({tag} wall)", by, R_X_L, LEDGE_XR)   # butts the saddle
-        for bx in (R_X_L + 70, LEDGE_XR - 70):
-            parts += _wall_cleat(tag, bx, wall_yd, din)
-        # RIGHT (IBC-side) bearer end: shelf bolted to the film-rail saddle — same corner node
-        shy = wall_yd if din > 0 else wall_yd - 70
-        parts.append(ruby_box(f"R-bearer saddle shelf ({tag})",
-                              R_X_R - BEARER_W - 10, shy, ARM_BOT, (k.RAIL_X_R + 10) - (R_X_R - BEARER_W - 10), 70, 12,
-                              color=ov.C_STEEL))
-    # ── 2 longitudinal bearers, half-lapped at every crossing ──
-    arm_ranges = [(yd, ARM_W) for yd in UP_YDS]                       # arms at Yd1046/1266
-    ledger_ranges = [(0, ARM_W), (k.C_WID - ARM_W, ARM_W)]            # ledgers at Yd0/2322
-    for bx in BEARER_XS:
-        parts += _bearer_notched(bx, arm_ranges + (ledger_ranges if bx < LEDGE_XR else []))
+        parts += _wall_cleat(tag, lx + BEARER_W // 2, wall_yd, din)
+        parts += combined_corner_plate(wall_yd, din)
     return '\n'.join(parts)
 
 
@@ -195,13 +218,13 @@ def right_grate():
 
 
 POINT_LABELS = [
-    (X_UP, k.CORRIDOR_YD_NEAR, 900, "IBC CORRIDOR UPRIGHT (X4734)\n← INNER arms U-clamp here (2× M12)", 400, -350, 600),
-    ((R_X_L + X_UP) / 2, k.CORRIDOR_YD_NEAR, GRATE_Z, "INNER CANTILEVER ARM ×2\noff the IBC corridor uprights", -300, -650, 650),
-    (R_X_L + 130, 40, ARM_TOP, "NEAR-WALL LEDGER (left bearer)\nplates centered; stops clear of saddle", -250, -650, 700),
-    (k.RAIL_X_R - 20, 40, ARM_TOP, "RIGHT bearer end → SHELF on the\nfilm-rail saddle (shared corner anchor)", 250, -600, 650),
-    (R_X_L + 130, k.C_WID - 40, ARM_TOP, "FAR-WALL LEDGER (left bearer)", -250, 650, 700),
-    (R_X_L + 150, 600, k.WALKWAY_H, "RIGHT WALKWAY GRATE\n(no ceiling rods)", -250, -700, 800),
-    (k.RAIL_X_R, 1700, 1200, "FILM-PLANE RIGHT RAIL + SADDLES\n(old rods used to clash here)", 400, -300, 500),
+    (X_UP, k.CORRIDOR_YD_NEAR, 900, "IBC CORRIDOR UPRIGHT (X4734)\n← CENTER arms U-clamp here (2× M12)", 400, -350, 600),
+    ((R_X_L + X_UP) / 2, k.CORRIDOR_YD_NEAR, GRATE_Z, "CENTER CANTILEVER ARM ×2\n(half-lapped where the long beams cross)", -300, -650, 650),
+    (R_X_L + 130, 600, ARM_TOP, "JOINED RECTANGLE under the deck\n(left + right + 2 end beams)", -260, -650, 720),
+    ((R_X_L + k.RAIL_X_R) / 2, 40, ARM_BOT, "LEFT corner → wall cleat", -260, -620, 640),
+    (k.RAIL_X_R, 40, k.RAIL_OFF_BOT, "COMBINED CORNER PLATE\nsecures BR rail + walkway right beam", 260, -560, 560),
+    (R_X_L + 150, 1200, k.WALKWAY_H, "RIGHT WALKWAY GRATE\n(no ceiling rods)", -250, -700, 820),
+    (k.RAIL_X_R, 1700, 1700, "FILM-PLANE RIGHT RAIL (TR + BR)\n(TR keeps a normal saddle)", 420, -300, 360),
     (4200, 1181, k.SPRAY_BAR_Z_TOP, "SPRAY BAR (Z20-60, low)\n55mm clear under the grate", -200, -750, 850),
 ]
 

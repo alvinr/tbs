@@ -111,22 +111,34 @@ def right_cantilever():
             parts.append(ruby_cylinder(f"Upright bolt M12 Yd{yd} Z{int(bz)}",
                                        X_UP + S / 2, yd - 12, bz, 6, ARM_W + 24,
                                        color=ov.C_STEEL, axis="y"))
-    # ── 2 OUTER wall-mounted ledgers on the near + far walls ──
-    for wall_yd, din, tag in ((0, 1, "near wall"), (k.C_WID, -1, "far wall")):
+    # ── 2 OUTER supports at the near + far walls ──
+    # The bottom film-rail saddle occupies the near/far-RIGHT corner (X4574-4724), so the
+    # wall ledger STOPS CLEAR of it (ends ~X4555) and supports the LEFT bearer; the RIGHT
+    # bearer end is carried by a short SHELF tied into that saddle (one shared corner anchor,
+    # no competing brackets). Wall plates are CENTERED on the ledger beam (Z70-115).
+    LEDGE_XR = k.RAIL_X_R - k.IBC_WBKT_PLATE_W // 2 - 20     # 4554 — clear of the saddle plate
+    for wall_yd, din, tag in ((0, 1, "near"), (k.C_WID, -1, "far")):
         by = wall_yd if din > 0 else wall_yd - ARM_W
-        parts.append(ruby_box(f"Wall ledger ({tag})",
-                              R_X_L, by, ARM_BOT, R_X_R - R_X_L, ARM_W, AH, color=ov.C_STEEL))
-        for bx in (R_X_L + 60, R_X_R - 60):
-            piy = wall_yd if din > 0 else wall_yd - 8                      # interior plate face
-            poy = -k.WALL_T - 8 if din > 0 else k.C_WID + k.WALL_T          # exterior plate face
-            parts.append(ruby_box(f"Wall bracket plate ({tag}) X{bx}",
-                                  bx - 40, piy, ARM_BOT - 18, 80, 8, AH + 36, color=ov.C_STEEL))
-            parts.append(ruby_box(f"Wall ext. plate ({tag}) X{bx}",
-                                  bx - 40, poy, ARM_BOT - 18, 80, 8, AH + 36, color=ov.C_STEEL))
+        piy = wall_yd if din > 0 else wall_yd - 8                          # interior plate face
+        poy = -k.WALL_T - 8 if din > 0 else k.C_WID + k.WALL_T              # exterior plate face
+        # wall ledger beam (stops clear of the saddle)
+        parts.append(ruby_box(f"Wall ledger ({tag} wall)",
+                              R_X_L, by, ARM_BOT, LEDGE_XR - R_X_L, ARM_W, AH, color=ov.C_STEEL))
+        # 2 wall brackets — plate CENTERED on the beam (Z62-123 ↔ beam Z70-115) + through-bolts
+        for bx in (R_X_L + 70, LEDGE_XR - 55):
+            parts.append(ruby_box(f"Wall bracket plate ({tag}) X{int(bx)}",
+                                  bx - 45, piy, ARM_BOT - 8, 90, 8, AH + 16, color=ov.C_STEEL))
+            parts.append(ruby_box(f"Wall ext. plate ({tag}) X{int(bx)}",
+                                  bx - 45, poy, ARM_BOT - 8, 90, 8, AH + 16, color=ov.C_STEEL))
             blo, bhi = min(piy, poy), max(piy, poy) + 8
-            for bz in (ARM_BOT, ARM_TOP + 8):
-                parts.append(ruby_cylinder(f"Wall bolt ({tag}) X{bx} Z{int(bz)}",
+            for bz in (ARM_BOT + 6, ARM_TOP - 6):
+                parts.append(ruby_cylinder(f"Wall bolt ({tag}) X{int(bx)} Z{int(bz)}",
                                            bx, blo, bz, 5, bhi - blo, color=ov.C_STEEL, axis="y"))
+        # RIGHT bearer end: shelf tied into the film-rail saddle (shared corner anchor)
+        shy = wall_yd if din > 0 else wall_yd - 70
+        parts.append(ruby_box(f"R-bearer saddle shelf ({tag})",
+                              R_X_R - 40, shy, ARM_TOP - 12, (k.RAIL_X_R + 10) - (R_X_R - 40), 70, 12,
+                              color=ov.C_STEEL))
     # ── 2 longitudinal bearers on the arms/ledgers + grate ──
     for bx in (R_X_L, R_X_R - 40):
         parts.append(ruby_box(f"Right bearer X{bx}",
@@ -140,8 +152,9 @@ def right_cantilever():
 POINT_LABELS = [
     (X_UP, k.CORRIDOR_YD_NEAR, 900, "IBC CORRIDOR UPRIGHT (X4734)\n← INNER arms U-clamp here (2× M12)", 400, -350, 600),
     ((R_X_L + X_UP) / 2, k.CORRIDOR_YD_NEAR, GRATE_Z, "INNER CANTILEVER ARM ×2\noff the IBC corridor uprights", -300, -650, 650),
-    (R_X_L + 120, 40, ARM_TOP, "NEAR-WALL LEDGER\nthrough-bolted to the wall (int+ext plate)", -250, -650, 700),
-    (R_X_L + 120, k.C_WID - 40, ARM_TOP, "FAR-WALL LEDGER\nthrough-bolted to the wall", -250, 650, 700),
+    (R_X_L + 130, 40, ARM_TOP, "NEAR-WALL LEDGER (left bearer)\nplates centered; stops clear of saddle", -250, -650, 700),
+    (k.RAIL_X_R - 20, 40, ARM_TOP, "RIGHT bearer end → SHELF on the\nfilm-rail saddle (shared corner anchor)", 250, -600, 650),
+    (R_X_L + 130, k.C_WID - 40, ARM_TOP, "FAR-WALL LEDGER (left bearer)", -250, 650, 700),
     (R_X_L + 150, 600, k.WALKWAY_H, "RIGHT WALKWAY GRATE\n(no ceiling rods)", -250, -700, 800),
     (k.RAIL_X_R, 1700, 1200, "FILM-PLANE RIGHT RAIL + SADDLES\n(old rods used to clash here)", 400, -300, 500),
     (4200, 1181, k.SPRAY_BAR_Z_TOP, "SPRAY BAR (Z20-60, low)\n55mm clear under the grate", -200, -750, 850),

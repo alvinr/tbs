@@ -1806,7 +1806,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Wall ledger (near wall)
   grp = ents.add_group
   grp.name = "Wall ledger (near wall)"
-  face = grp.entities.add_face([4329.mm,0.mm,70.mm], [4629.mm,0.mm,70.mm], [4629.mm,40.mm,70.mm], [4329.mm,40.mm,70.mm])
+  face = grp.entities.add_face([4329.mm,0.mm,70.mm], [4554.mm,0.mm,70.mm], [4554.mm,40.mm,70.mm], [4329.mm,40.mm,70.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(45.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
@@ -1814,33 +1814,33 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wall bracket plate (near wall) X4389
+  # Wall bracket plate (near) X4399
   grp = ents.add_group
-  grp.name = "Wall bracket plate (near wall) X4389"
-  face = grp.entities.add_face([4349.mm,0.mm,52.mm], [4429.mm,0.mm,52.mm], [4429.mm,8.mm,52.mm], [4349.mm,8.mm,52.mm])
+  grp.name = "Wall bracket plate (near) X4399"
+  face = grp.entities.add_face([4354.mm,0.mm,62.mm], [4444.mm,0.mm,62.mm], [4444.mm,8.mm,62.mm], [4354.mm,8.mm,62.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(81.mm)
+  face.pushpull(61.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wall ext. plate (near wall) X4389
+  # Wall ext. plate (near) X4399
   grp = ents.add_group
-  grp.name = "Wall ext. plate (near wall) X4389"
-  face = grp.entities.add_face([4349.mm,-48.mm,52.mm], [4429.mm,-48.mm,52.mm], [4429.mm,-40.mm,52.mm], [4349.mm,-40.mm,52.mm])
+  grp.name = "Wall ext. plate (near) X4399"
+  face = grp.entities.add_face([4354.mm,-48.mm,62.mm], [4444.mm,-48.mm,62.mm], [4444.mm,-40.mm,62.mm], [4354.mm,-40.mm,62.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(81.mm)
+  face.pushpull(61.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wall bolt (near wall) X4389 Z70
+  # Wall bolt (near) X4399 Z76
   grp = ents.add_group
-  grp.name = "Wall bolt (near wall) X4389 Z70"
+  grp.name = "Wall bolt (near) X4399 Z76"
   ge = grp.entities
-  circle = ge.add_circle([4389.mm,-48.mm,70.mm], [0,1,0], 5.mm, 24)
+  circle = ge.add_circle([4399.mm,-48.mm,76.mm], [0,1,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -1849,11 +1849,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wall bolt (near wall) X4389 Z123
+  # Wall bolt (near) X4399 Z109
   grp = ents.add_group
-  grp.name = "Wall bolt (near wall) X4389 Z123"
+  grp.name = "Wall bolt (near) X4399 Z109"
   ge = grp.entities
-  circle = ge.add_circle([4389.mm,-48.mm,123.mm], [0,1,0], 5.mm, 24)
+  circle = ge.add_circle([4399.mm,-48.mm,109.mm], [0,1,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -1862,33 +1862,33 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wall bracket plate (near wall) X4569
+  # Wall bracket plate (near) X4499
   grp = ents.add_group
-  grp.name = "Wall bracket plate (near wall) X4569"
-  face = grp.entities.add_face([4529.mm,0.mm,52.mm], [4609.mm,0.mm,52.mm], [4609.mm,8.mm,52.mm], [4529.mm,8.mm,52.mm])
+  grp.name = "Wall bracket plate (near) X4499"
+  face = grp.entities.add_face([4454.mm,0.mm,62.mm], [4544.mm,0.mm,62.mm], [4544.mm,8.mm,62.mm], [4454.mm,8.mm,62.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(81.mm)
+  face.pushpull(61.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wall ext. plate (near wall) X4569
+  # Wall ext. plate (near) X4499
   grp = ents.add_group
-  grp.name = "Wall ext. plate (near wall) X4569"
-  face = grp.entities.add_face([4529.mm,-48.mm,52.mm], [4609.mm,-48.mm,52.mm], [4609.mm,-40.mm,52.mm], [4529.mm,-40.mm,52.mm])
+  grp.name = "Wall ext. plate (near) X4499"
+  face = grp.entities.add_face([4454.mm,-48.mm,62.mm], [4544.mm,-48.mm,62.mm], [4544.mm,-40.mm,62.mm], [4454.mm,-40.mm,62.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(81.mm)
+  face.pushpull(61.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wall bolt (near wall) X4569 Z70
+  # Wall bolt (near) X4499 Z76
   grp = ents.add_group
-  grp.name = "Wall bolt (near wall) X4569 Z70"
+  grp.name = "Wall bolt (near) X4499 Z76"
   ge = grp.entities
-  circle = ge.add_circle([4569.mm,-48.mm,70.mm], [0,1,0], 5.mm, 24)
+  circle = ge.add_circle([4499.mm,-48.mm,76.mm], [0,1,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -1897,14 +1897,25 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wall bolt (near wall) X4569 Z123
+  # Wall bolt (near) X4499 Z109
   grp = ents.add_group
-  grp.name = "Wall bolt (near wall) X4569 Z123"
+  grp.name = "Wall bolt (near) X4499 Z109"
   ge = grp.entities
-  circle = ge.add_circle([4569.mm,-48.mm,123.mm], [0,1,0], 5.mm, 24)
+  circle = ge.add_circle([4499.mm,-48.mm,109.mm], [0,1,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # R-bearer saddle shelf (near)
+  grp = ents.add_group
+  grp.name = "R-bearer saddle shelf (near)"
+  face = grp.entities.add_face([4589.mm,0.mm,103.mm], [4659.mm,0.mm,103.mm], [4659.mm,70.mm,103.mm], [4589.mm,70.mm,103.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -1913,7 +1924,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Wall ledger (far wall)
   grp = ents.add_group
   grp.name = "Wall ledger (far wall)"
-  face = grp.entities.add_face([4329.mm,2322.mm,70.mm], [4629.mm,2322.mm,70.mm], [4629.mm,2362.mm,70.mm], [4329.mm,2362.mm,70.mm])
+  face = grp.entities.add_face([4329.mm,2322.mm,70.mm], [4554.mm,2322.mm,70.mm], [4554.mm,2362.mm,70.mm], [4329.mm,2362.mm,70.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(45.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
@@ -1921,33 +1932,33 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wall bracket plate (far wall) X4389
+  # Wall bracket plate (far) X4399
   grp = ents.add_group
-  grp.name = "Wall bracket plate (far wall) X4389"
-  face = grp.entities.add_face([4349.mm,2354.mm,52.mm], [4429.mm,2354.mm,52.mm], [4429.mm,2362.mm,52.mm], [4349.mm,2362.mm,52.mm])
+  grp.name = "Wall bracket plate (far) X4399"
+  face = grp.entities.add_face([4354.mm,2354.mm,62.mm], [4444.mm,2354.mm,62.mm], [4444.mm,2362.mm,62.mm], [4354.mm,2362.mm,62.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(81.mm)
+  face.pushpull(61.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wall ext. plate (far wall) X4389
+  # Wall ext. plate (far) X4399
   grp = ents.add_group
-  grp.name = "Wall ext. plate (far wall) X4389"
-  face = grp.entities.add_face([4349.mm,2402.mm,52.mm], [4429.mm,2402.mm,52.mm], [4429.mm,2410.mm,52.mm], [4349.mm,2410.mm,52.mm])
+  grp.name = "Wall ext. plate (far) X4399"
+  face = grp.entities.add_face([4354.mm,2402.mm,62.mm], [4444.mm,2402.mm,62.mm], [4444.mm,2410.mm,62.mm], [4354.mm,2410.mm,62.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(81.mm)
+  face.pushpull(61.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wall bolt (far wall) X4389 Z70
+  # Wall bolt (far) X4399 Z76
   grp = ents.add_group
-  grp.name = "Wall bolt (far wall) X4389 Z70"
+  grp.name = "Wall bolt (far) X4399 Z76"
   ge = grp.entities
-  circle = ge.add_circle([4389.mm,2354.mm,70.mm], [0,1,0], 5.mm, 24)
+  circle = ge.add_circle([4399.mm,2354.mm,76.mm], [0,1,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -1956,11 +1967,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wall bolt (far wall) X4389 Z123
+  # Wall bolt (far) X4399 Z109
   grp = ents.add_group
-  grp.name = "Wall bolt (far wall) X4389 Z123"
+  grp.name = "Wall bolt (far) X4399 Z109"
   ge = grp.entities
-  circle = ge.add_circle([4389.mm,2354.mm,123.mm], [0,1,0], 5.mm, 24)
+  circle = ge.add_circle([4399.mm,2354.mm,109.mm], [0,1,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -1969,33 +1980,33 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wall bracket plate (far wall) X4569
+  # Wall bracket plate (far) X4499
   grp = ents.add_group
-  grp.name = "Wall bracket plate (far wall) X4569"
-  face = grp.entities.add_face([4529.mm,2354.mm,52.mm], [4609.mm,2354.mm,52.mm], [4609.mm,2362.mm,52.mm], [4529.mm,2362.mm,52.mm])
+  grp.name = "Wall bracket plate (far) X4499"
+  face = grp.entities.add_face([4454.mm,2354.mm,62.mm], [4544.mm,2354.mm,62.mm], [4544.mm,2362.mm,62.mm], [4454.mm,2362.mm,62.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(81.mm)
+  face.pushpull(61.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wall ext. plate (far wall) X4569
+  # Wall ext. plate (far) X4499
   grp = ents.add_group
-  grp.name = "Wall ext. plate (far wall) X4569"
-  face = grp.entities.add_face([4529.mm,2402.mm,52.mm], [4609.mm,2402.mm,52.mm], [4609.mm,2410.mm,52.mm], [4529.mm,2410.mm,52.mm])
+  grp.name = "Wall ext. plate (far) X4499"
+  face = grp.entities.add_face([4454.mm,2402.mm,62.mm], [4544.mm,2402.mm,62.mm], [4544.mm,2410.mm,62.mm], [4454.mm,2410.mm,62.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(81.mm)
+  face.pushpull(61.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wall bolt (far wall) X4569 Z70
+  # Wall bolt (far) X4499 Z76
   grp = ents.add_group
-  grp.name = "Wall bolt (far wall) X4569 Z70"
+  grp.name = "Wall bolt (far) X4499 Z76"
   ge = grp.entities
-  circle = ge.add_circle([4569.mm,2354.mm,70.mm], [0,1,0], 5.mm, 24)
+  circle = ge.add_circle([4499.mm,2354.mm,76.mm], [0,1,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2004,14 +2015,25 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wall bolt (far wall) X4569 Z123
+  # Wall bolt (far) X4499 Z109
   grp = ents.add_group
-  grp.name = "Wall bolt (far wall) X4569 Z123"
+  grp.name = "Wall bolt (far) X4499 Z109"
   ge = grp.entities
-  circle = ge.add_circle([4569.mm,2354.mm,123.mm], [0,1,0], 5.mm, 24)
+  circle = ge.add_circle([4499.mm,2354.mm,109.mm], [0,1,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # R-bearer saddle shelf (far)
+  grp = ents.add_group
+  grp.name = "R-bearer saddle shelf (far)"
+  face = grp.entities.add_face([4589.mm,2292.mm,103.mm], [4659.mm,2292.mm,103.mm], [4659.mm,2362.mm,103.mm], [4589.mm,2362.mm,103.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -2063,13 +2085,16 @@ anc = Geom::Point3d.new(4531.5.mm, 1046.mm, 115.mm)
 txt = entities.add_text("INNER CANTILEVER ARM ×2
 off the IBC corridor uprights", anc, Geom::Vector3d.new(-300.mm, -650.mm, 650.mm))
 txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(4449.mm, 40.mm, 115.mm)
-txt = entities.add_text("NEAR-WALL LEDGER
-through-bolted to the wall (int+ext plate)", anc, Geom::Vector3d.new(-250.mm, -650.mm, 700.mm))
+anc = Geom::Point3d.new(4459.mm, 40.mm, 115.mm)
+txt = entities.add_text("NEAR-WALL LEDGER (left bearer)
+plates centered; stops clear of saddle", anc, Geom::Vector3d.new(-250.mm, -650.mm, 700.mm))
 txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(4449.mm, 2322.mm, 115.mm)
-txt = entities.add_text("FAR-WALL LEDGER
-through-bolted to the wall", anc, Geom::Vector3d.new(-250.mm, 650.mm, 700.mm))
+anc = Geom::Point3d.new(4629.mm, 40.mm, 115.mm)
+txt = entities.add_text("RIGHT bearer end → SHELF on the
+film-rail saddle (shared corner anchor)", anc, Geom::Vector3d.new(250.mm, -600.mm, 650.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(4459.mm, 2322.mm, 115.mm)
+txt = entities.add_text("FAR-WALL LEDGER (left bearer)", anc, Geom::Vector3d.new(-250.mm, 650.mm, 700.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(4479.mm, 600.mm, 130.mm)
 txt = entities.add_text("RIGHT WALKWAY GRATE

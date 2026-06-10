@@ -24,16 +24,16 @@ The earlier design went ceiling-hung because there was thought to be no room for
 
 Plus a **45mm gap (X4629–4674)** between the tray's right edge and the IBC frame face. So there's now both vertical and horizontal room the old layout lacked.
 
-## 3. Proposed design — cantilever off the IBC frame
+## 3. Proposed design — hybrid anchor (IBC frame + side walls)
 
-Carry the deck from the **IBC stacking-frame near face (X4674)** instead of the ceiling:
+The IBC stacking frame only has uprights at the **corridor (Yd 1046 / 1266, at X4734)** — there is **nothing at the perimeter (Yd0 / 2362)** to bolt to. So the support is split:
 
-- **4 cantilever arms** — 40×45 SHS, reaching **345mm** back from the frame face (X4674) to the deck's left edge (X4329), at the frame's existing upright lines **Yd 0 / 1046 / 1316 / 2362**. Arms sit at **Z70–115** — 10mm above the spray bar (Z60), below the film frame (Z150).
-- **Anchor** — each arm bolts to its IBC-frame upright with an 8mm gusset plate + 2× M12 (a moment connection).
-- **2 longitudinal bearers** (Yd-running, at X4329 + X4629) on the arm tops; the grate spans the ≤1046mm between arms.
-- **No ceiling rods. Nothing into the tray. Nothing in the optical band above the deck.**
+- **2 inner cantilever arms** — off the **IBC corridor uprights** (X4734). A U-clamp grips each upright with 2× M12; the arm (40×45 SHS) reaches ~405mm back to the deck's left edge (X4329).
+- **2 outer wall-mounted ledgers** — on the **near (Yd0) and far (Yd2362) container walls**, each **through-bolted** (interior + exterior plate, 2 bolts) at 2 X stations along the deck width. These carry the deck's ends, where the frame can't reach.
+- **2 longitudinal bearers** (Yd-running, at X4329 + X4629) ride the arms + ledgers; the grate spans the ≤1046mm between supports.
+- All members sit at **Z70–115** — 10mm above the spray bar (Z60), below the film frame (Z150). **No ceiling rods. Nothing into the tray. Nothing in the optical band above the deck.**
 
-3D study model: `src/models/generate_right_cantilever_study.py` (scenes: Combined / Cantilever only / Clearance / Labeled).
+3D study model: `src/models/generate_right_cantilever_study.py` (scenes: Combined / **Anchors (frame + walls)** / Clearance / Labeled — the Anchors scene shows both the upright U-clamps and the wall ledgers).
 
 ## 4. Load check (first-order — favorable)
 
@@ -62,8 +62,8 @@ The IBC frame already carries the 2×2 IBC stack and is anchored to floor + wall
 | Rods in film-plane sweep / optics | **yes** (the conflict) | **none** |
 | Forces film-size reduction? | (else yes) | **no** — full width, symmetric swing |
 | Tray / spray-bar intrusion | none | none (arms at Z70–115, above the gantry) |
-| Adds load to | roof ribs | IBC frame (minor; needs connection sign-off) |
-| Cost | 5 rod-pairs + 10 roof plates | 4 arms + 4 gussets + 8 bolts (≈ neutral) |
+| Adds load to | roof ribs | IBC frame (2 inner arms) + near/far walls (2 ledgers); minor — needs connection sign-off |
+| Cost | 5 rod-pairs + 10 roof plates | 2 arms + 2 wall ledgers + clamps/bolts (≈ neutral) |
 
 ## 7. If approved — next steps
 

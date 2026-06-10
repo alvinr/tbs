@@ -192,7 +192,7 @@ leader(ax, EVAP_DUCT_X + duct_r, EVAP_DUCT_Z + duct_r, 1300, 2500,
 
 # ── PINHOLE WALL EQUIPMENT — flush-mount on near long wall (Yd=0 face) ────────
 
-# Electrical panel: X=1600-1900, H=900-1500
+# Electrical panel: X=1910-2210 (stacked above the battery), Z=1650-2250
 equip_rect(ax, EP_X, EP_H_LO, EP_W, EP_H_HI - EP_H_LO, C_ELEC, ec=C_OUT, lw=1.0, zorder=4)
 ax.text(EP_X + EP_W/2, (EP_H_LO + EP_H_HI)/2,
         "Elec\npanel", ha="center", va="center",

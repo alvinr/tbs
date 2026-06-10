@@ -68,7 +68,7 @@ Overall floorplan can be seen below. Its essentially split into three areas, lef
 | Item | X (mm) | H (mm) | Notes |
 |------|--------|--------|-------|
 | Evaporative cooler | 700–1,300 | ground | 12V DC 80W; ground-placed outside, flex duct to wall stub at Z=1900mm |
-| Electrical panel | 1,600–1,900 | 900–1,500 | IP65, wall-mount (moved away from pinhole) |
+| Electrical panel | 1,910–2,210 | 1,650–2,250 | IP65, wall-mount (stacked above the battery bank; clears the upper transport-stay anchor) |
 | Battery bank (2× 100Ah LiFePO4) | 1,600–2,100 | 0–500 | Wall-bracket below panel |
 | Solar charge controller | Within panel | — | Mounted inside enclosure |
 | Pump manifold (3 pumps: P-01, P-02, P-04) | 2,400–2,700 | 200–600 | Wall-bracket |
@@ -305,17 +305,17 @@ zone provides completely unobstructed access to the cargo doors.
 
 ### 9.2 Hinge Door Swing Clearance
 
-The panel swings 180° outward (exterior, negative X). All interior equipment is clear of the swing arc:
+The panel + drum swing about the Ø89 pivot — ~56° inboard for transport (the swing sweep reaches X≈1,395 near the door end) and open about the pivot for loading/egress. All fixed interior equipment sits inboard of the door-end swing sweep:
 
 | Component | Position | In swing path? |
 |-----------|----------|---------------|
-| Light trap drum | Panel-mounted (center zone) | Moves with panel |
-| Fan B intake duct | Panel-mounted, Yd=365, H=600 (rev9/B2 swap — near pinhole wall) | Moves with panel |
+| Light trap drum | Panel-mounted (center zone) | Moves with the panel |
+| Fan B intake duct | Panel-mounted, Yd=365, H=600 (rev9/B2 swap — near pinhole wall) | Moves with the panel |
 | Fan B cable | 1m coiled cable, ceiling service loop | Accommodates the ~56° panel swing (with slack) |
 | Evap cooler duct stub | X=1,000, Yd=0 (wall penetration) | No — flush with wall |
-| Electrical panel | X=2,050–2,350 | No — 1430mm inboard |
-| Battery bank | X=2,050–2,550 | No — 1430mm inboard |
-| Pump manifold | X=2,600–2,900 | No — 1980mm inboard |
+| Electrical panel | X=1,910–2,210 | No — inboard of the X≈1,395 swing sweep |
+| Battery bank | X=1,810–2,310 | No — inboard of the swing sweep |
+| Pump manifold | X=5,140–5,240 (IBC corridor) | No — far inboard (IBC end) |
 | Water lines | Pinhole wall (Yd=0), X=2,400+ | No — far inboard |
 
 **Cargo door egress detail — panel open 180° outward:**

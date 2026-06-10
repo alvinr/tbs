@@ -4,12 +4,13 @@
 Focused on the IBC tote stack, its steel support frame, and the plumbing +
 equipment panel. REUSES the helpers and component builders from the Overview
 generator (generate_sketchup_model.py) — same component/tag/scene structure,
-shared iso camera, and material-sharing-by-color. Three subsystem tags grouped
-into four scenes:
+shared iso camera, and material-sharing-by-color. Subsystem tags grouped into scenes:
     1. IBC Tanks            (the four totes)
     2. IBC Frame            (the steel stacking frame/rack)
     3. Plumbing & Panel     (equipment panel + pumps/filters + water plumbing + hookups)
-    4. Combined             (all three)
+    4. Walkway Cantilever   (the 2 right-walkway cantilever arms that attach to the
+                             IBC corridor uprights — rev12; shown with the frame)
+    5. Combined             (all subsystems)
 
 Usage (build into a SketchUp document — see --send note):
     python3 src/models/generate_ibc_model.py --save        # write ibc-stack.rb
@@ -26,13 +27,15 @@ import sys
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov   # helpers + component builders (Overview)
 
-TAGS = ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel", "Labels"]
+TAGS = ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel",
+        "Walkway Cantilever", "Labels"]
 
 
 # ── "Labeled" scene callouts (project rule: every .skp gets a Labeled scene) ──
 # (instance name, text, leader Δx,Δy,Δz mm). Δy pulls toward the viewer (−Y).
 IBC_LABELS = [
     ("IBC Frame", "IBC FRAME\n(50x50 RHS rack)", -250, 750, 650),
+    ("Walkway Cantilever Arms", "RIGHT-WALKWAY\nCANTILEVER ARMS\n(off the IBC corridor\nuprights — rev12)", -350, -900, 700),
 ]
 # Point-anchored callouts on specific geometry (totes, drain ports, panel kit).
 IBC_POINT_LABELS = [
@@ -119,6 +122,8 @@ def generate_ruby():
         ov.component("Equipment Panel", "Plumbing & Panel", ov.equipment_panel()),
         ov.component("Water Plumbing", "Plumbing & Panel", ov.water_plumbing()),
         ov.component("Water/Waste Hookups", "Plumbing & Panel", ov.water_hookups()),
+        ov.component("Walkway Cantilever Arms", "Walkway Cantilever",
+                     '\n'.join(ov.ibc_cantilever_arms())),
     ]
     body = '\n'.join(comps)
 
@@ -132,6 +137,7 @@ def generate_ruby():
         ("IBC Tanks", ["IBC Tanks"]),
         ("IBC Frame", ["IBC Frame"]),
         ("Plumbing & Panel", ["Plumbing & Panel"]),
+        ("Walkway Cantilever", ["IBC Frame", "Walkway Cantilever"]),
         ("Combined", comp_tags),
         ("Labeled", TAGS),  # all components + the Labels tag
     ]

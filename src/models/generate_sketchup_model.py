@@ -542,6 +542,23 @@ def fp_combined_corner_plate(wall_yd, din):
     return out
 
 
+def ibc_cantilever_arms(x_to=None):
+    """The 2 walkway cantilever arms that ATTACH TO THE IBC corridor uprights (rev12):
+    each arm cantilevers off an upright (Yd 1046/1266, X≈4734) toward the walkway long
+    beams, with 2 upright clamps + 2 M12 through-bolts wrapping the upright. Single-
+    sourced so the overview/walkway models and the focused IBC model stay in register.
+    `x_to` is how far the arm reaches inward (default RWK_X_L — the left long beam)."""
+    x_to = RWK_X_L if x_to is None else x_to
+    parts = []
+    for yd in RWK_UP_YDS:
+        parts += _rwk_xbeam(f"RWk center cantilever Yd{yd}", yd, x_to, RWK_X_UP)
+        for pf in (yd - 8, yd + RWK_ARM_W):
+            parts.append(ruby_box(f"RWk upright clamp Yd{yd} Y{int(pf)}", RWK_X_UP - 4, pf, RWK_ARM_BOT - 25, IBC_FRAME_RHS + 8, 8, RWK_AH + 55, color=C_STEEL))
+        for bz in (RWK_ARM_BOT + 6, RWK_ARM_TOP + 18):
+            parts.append(ruby_cylinder(f"RWk upright bolt M12 Yd{yd} Z{int(bz)}", RWK_X_UP + IBC_FRAME_RHS / 2, yd - 12, bz, 6, RWK_ARM_W + 24, color=C_STEEL, axis="y"))
+    return parts
+
+
 def right_walkway_cantilever():
     """The right walkway support: a CLOSED rectangle (left+right long beams + 2 end beams) +
     2 center cantilever arms off the IBC corridor uprights (half-lapped at the long beams).
@@ -553,12 +570,7 @@ def right_walkway_cantilever():
     parts += _rwk_long_beam(rx, arm_ranges)
     for ey in (0, C_WID - RWK_BEARER_W):
         parts.append(ruby_box(f"RWk end beam Yd{int(ey)}", lx, ey, RWK_BEARER_Z0, (rx + RWK_BEARER_W) - lx, RWK_BEARER_W, RWK_ARM_TOP - RWK_BEARER_Z0, color=C_STEEL))
-    for yd in RWK_UP_YDS:
-        parts += _rwk_xbeam(f"RWk center cantilever Yd{yd}", yd, RWK_X_L, RWK_X_UP)
-        for pf in (yd - 8, yd + RWK_ARM_W):
-            parts.append(ruby_box(f"RWk upright clamp Yd{yd} Y{int(pf)}", RWK_X_UP - 4, pf, RWK_ARM_BOT - 25, IBC_FRAME_RHS + 8, 8, RWK_AH + 55, color=C_STEEL))
-        for bz in (RWK_ARM_BOT + 6, RWK_ARM_TOP + 18):
-            parts.append(ruby_cylinder(f"RWk upright bolt M12 Yd{yd} Z{int(bz)}", RWK_X_UP + IBC_FRAME_RHS / 2, yd - 12, bz, 6, RWK_ARM_W + 24, color=C_STEEL, axis="y"))
+    parts += ibc_cantilever_arms()
     for wall_yd, din, tag in ((0, 1, "near"), (C_WID, -1, "far")):
         parts += _rwk_wall_cleat(tag, lx + RWK_BEARER_W // 2, wall_yd, din)
         parts += fp_combined_corner_plate(wall_yd, din)

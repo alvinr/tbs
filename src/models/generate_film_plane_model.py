@@ -172,33 +172,69 @@ def brace_cage():
     return '\n'.join(parts)
 
 
+def near_wall_ghost():
+    """Low-alpha ghosts of the near (pinhole, Yd0) wall INTERIOR equipment, so the
+    wall-fastening clearance reads in the Combined view: the Electrical Panel (high,
+    Z1650–2250) + the battery bank (low, Z150–650) + the flush power-panel face. The
+    near-wall ties deliberately straddle this X1700–2710 cluster (gaps only)."""
+    a = 0.28
+    parts = [ov.ruby_box("Electrical Panel (EP) [ghost]",
+                         ov.EP_X, 0, ov.EP_H_LO, ov.EP_W, 160, ov.EP_H_HI - ov.EP_H_LO,
+                         color=ov.C_ELEC, alpha=a)]
+    bw = (ov.BA_W - 20) / 2
+    for i, bx in enumerate((ov.BA_X, ov.BA_X + bw + 20)):
+        parts.append(ov.ruby_box(f"Battery {i + 1} [ghost]",
+                     bx, 0, ov.BA_H_LO, bw, ov.BA_D, ov.BA_H_HI - ov.BA_H_LO,
+                     color=ov.C_BATT, alpha=a))
+    parts.append(ov.ruby_box("Power panel (interior face) [ghost]",
+                 ov.PWR_PANEL_X, 0, ov.PWR_PANEL_Z, ov.PWR_PANEL_W, 20, ov.PWR_PANEL_H,
+                 color=ov.C_ELEC, alpha=a))
+    return '\n'.join(parts)
+
+
 def wall_fastening():
     """Fasten the frame to the container SIDE WALLS. The left/right verticals are the
     slide rails (FP can't be fixed there), so the near + far brace portals tie to the
-    near (Yd0) and far (Yd C_WID) walls via gusset struts + bolted wall plates on the
-    TOP and BOTTOM beams. On the NEAR wall the ties sit ONLY in the two equipment-free
-    X-gaps (X150–1700 + X2710–4649) — clear of the EP/battery/solar/tilt-swing cluster
-    (X1700–2710) and the central walkway; the FAR wall is clear so ties spread evenly."""
+    near (Yd0) and far (Yd C_WID) walls via gusset struts on the TOP and BOTTOM beams.
+    Each tie is a THROUGH-BOLTED SANDWICH: an interior plate + an EXTERIOR (outside-wall)
+    plate, joined by a TWO-BOLT pattern through the container wall. On the NEAR wall the
+    ties sit ONLY in the two equipment-free X-gaps (X150–1700 + X2710–4649) — clear of
+    the EP/battery/solar/tilt-swing cluster (X1700–2710) + the central walkway; the FAR
+    wall is clear so ties spread evenly."""
     s = ov.BRACE_RHS
     z_bot, z_top = ov.BRACE_Z_BOT, ov.BRACE_Z_TOP - s   # 150 (bottom beam), 2238 (top beam)
+    wt = ov.WALL_T                                       # 40 — container wall thickness
     parts = []
 
-    def tie(x, z, y_beam, y_wall):
-        y0, y1 = sorted((y_beam, y_wall))
-        # gusset strut: beam face → wall
-        parts.append(ov.ruby_box(f"FP wall-tie strut X{int(x)} Z{int(z)}",
-                     x - 22, y0, z, 44, y1 - y0, s, color=ov.C_STEEL))
-        # bolted wall plate, flush on the wall face
-        plate_y = y_wall if y_wall < y_beam else y_wall - 8
-        parts.append(ov.ruby_box(f"FP wall plate X{int(x)} Z{int(z)}",
-                     x - 50, plate_y, z - 20, 100, 8, s + 40, color=ov.C_STEEL))
+    def tie(x, z, side):
+        if side == "near":                              # wall interior face Yd0, exterior −wt
+            y_beam, strut0, strut1 = ov.FP_Y_MIN, 0, ov.FP_Y_MIN
+            yi_plate, yo_plate = 0, -wt - 8             # inside 0..8, outside −48..−40
+        else:                                           # far wall: interior C_WID, exterior +wt
+            y_beam, strut0, strut1 = ov.FP_Y, ov.FP_Y, ov.C_WID
+            yi_plate, yo_plate = ov.C_WID - 8, ov.C_WID + wt
+        p = []
+        # gusset strut: beam → interior wall face
+        p.append(ov.ruby_box(f"FP wall-tie strut X{int(x)} Z{int(z)} {side}",
+                 x - 22, strut0, z, 44, strut1 - strut0, s, color=ov.C_STEEL))
+        # interior + exterior (outside-wall) sandwich plates
+        p.append(ov.ruby_box(f"FP inside plate X{int(x)} Z{int(z)} {side}",
+                 x - 50, yi_plate, z - 20, 100, 8, s + 40, color=ov.C_STEEL))
+        p.append(ov.ruby_box(f"FP OUTSIDE plate X{int(x)} Z{int(z)} {side}",
+                 x - 50, yo_plate, z - 20, 100, 8, s + 40, color=ov.C_STEEL))
+        # TWO-BOLT pattern through the wall (Yd, outside plate → inside plate)
+        by0, by1 = min(yi_plate, yo_plate), max(yi_plate, yo_plate) + 8
+        for bx in (x - 30, x + 30):
+            p.append(ov.ruby_box(f"FP wall bolt X{int(bx)} Z{int(z)} {side}",
+                     bx - 6, by0, z + s // 2 - 6, 12, by1 - by0, 12, color=ov.C_STEEL))
+        return '\n'.join(p)
 
     for x in (600, 1300, 3100, 4200):           # NEAR wall — equipment-free gaps only
         for z in (z_bot, z_top):
-            tie(x, z, ov.FP_Y_MIN, 0)
+            parts.append(tie(x, z, "near"))
     for x in (600, 1700, 2800, 4200):           # FAR wall — clear, evenly spread
         for z in (z_bot, z_top):
-            tie(x, z, ov.FP_Y, ov.C_WID)
+            parts.append(tie(x, z, "far"))
     return '\n'.join(parts)
 
 
@@ -270,6 +306,7 @@ def generate_ruby():
     detail, tr_world, flat_xz = corner_detail()
     comps = [
         ov.component("Container (ghost)", "Context", context()),
+        ov.component("Near-wall equipment (ghost)", "Context", near_wall_ghost()),
         ov.component("Processing Tray", "Processing Tray", ov.processing_tray()),
         ov.component("Corner Mechanism", "Corner Mechanism",
                      static_rails() + "\n" + brace_cage() + "\n" + wall_fastening()),

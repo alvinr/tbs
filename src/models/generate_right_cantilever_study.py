@@ -33,7 +33,7 @@ ARM_BOT, ARM_TOP = 70, GRATE_Z                   # arm Z70..115 (clears spray ba
 ARM_W = 40                                       # arm section width in Yd (40×45 SHS)
 
 TAGS = ["Context", "IBC Frame", "Tray + Spray", "Film Rail + Saddle",
-        "Cantilever Walkway", "Labels"]
+        "Cantilever Walkway", "Grate", "Labels"]
 
 
 def context():
@@ -139,14 +139,19 @@ def right_cantilever():
         parts.append(ruby_box(f"R-bearer saddle shelf ({tag})",
                               R_X_R - 40, shy, ARM_TOP - 12, (k.RAIL_X_R + 10) - (R_X_R - 40), 70, 12,
                               color=ov.C_STEEL))
-    # ── 2 longitudinal bearers on the arms/ledgers + grate ──
+    # ── 2 longitudinal bearers on the arms/ledgers (grate is a separate tag) ──
     for bx in (R_X_L, R_X_R - 40):
         parts.append(ruby_box(f"Right bearer X{bx}",
                               bx, 0, ARM_TOP - 35, 40, k.C_WID, 35, color=ov.C_STEEL))
-    parts.append(ruby_box("Right walkway grate (cantilevered — NO ceiling rods)",
-                          R_X_L, 0, GRATE_Z, k.WALKWAY_RIGHT_W, k.C_WID, k.WALKWAY_GRATE_T,
-                          color=ov.C_WALKWAY))
     return '\n'.join(parts)
+
+
+def right_grate():
+    """The walkway grate — its OWN tag so the Anchors scene can hide it and show the
+    support structure underneath."""
+    return ruby_box("Right walkway grate (cantilevered — NO ceiling rods)",
+                    R_X_L, 0, GRATE_Z, k.WALKWAY_RIGHT_W, k.C_WID, k.WALKWAY_GRATE_T,
+                    color=ov.C_WALKWAY)
 
 
 POINT_LABELS = [
@@ -178,6 +183,7 @@ def generate_ruby():
         ov.component("Tray + Spray bar", "Tray + Spray", tray_and_spray()),
         ov.component("Film Rail + Saddles", "Film Rail + Saddle", film_rail_saddle()),
         ov.component("Cantilever Right Walkway", "Cantilever Walkway", right_cantilever()),
+        ov.component("Walkway Grate", "Grate", right_grate()),
     ]
     body = '\n'.join(comps)
     tags_ruby = '\n'.join(f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)

@@ -1387,10 +1387,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-optical-cone-clearance" class="md-nav__link">
+  <a href="#21-film-plane-swing-and-optical-cone-clearance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1 Optical Cone Clearance
+        2.1 Film-Plane Swing and Optical Cone Clearance
       
     </span>
   </a>
@@ -2426,19 +2426,20 @@
 <li>Post-exposure citric acid wash preparation</li>
 </ul>
 <p>The shelf must not obstruct walkway navigation (the operator walks the full length of the near walkway during film loading and coating). A ceiling-suspended platform in the right corner — on the tray side of the near walkway — provides 0.18 m² of counter-height workspace while leaving the walkway completely clear.</p>
-<p>A dedicated water tap (TAP-01) on the pinhole wall at X=3729mm, Z=1200mm provides filtered water from the blue supply line for chemistry mixing and wash-down. Ball valve BV-06, mounted inline on the 3/4" branch pipe at X=3600mm (129mm to the left of the shelf edge), gives the operator easy shut-off control from the prep position.</p>
+<p>A dedicated water tap (TAP-01) on the pinhole wall at X=3729mm, Z=1200mm provides filtered water from the blue supply line for chemistry mixing and wash-down. The shelf sits <strong>immediately left of the tap</strong> (its right edge at X=3729mm). Ball valve BV-06, mounted inline on the 3/4" branch pipe at X=3600mm (129mm to the left of the tap), gives the operator easy shut-off control from the prep position.</p>
 <hr />
 <h2 id="2-location-and-spatial-constraints">2. Location and Spatial Constraints<a class="headerlink" href="#2-location-and-spatial-constraints" title="Permanent link">&para;</a></h2>
-<p>The shelf occupies the right corner of the processing area, just inside the walkway perimeter. It sits between the near walkway outer edge (Yd=300mm) and the processing tray far side (Yd=900mm), immediately left of the right walkway (X=3729–4329mm). The operator accesses the shelf from the near walkway by turning 90° to face the tray side. No walkway is obstructed.</p>
+<p>The shelf sits just inside the walkway perimeter on the tray side, between the near walkway outer edge (Yd=300mm) and Yd=600mm, <strong>left of the tap (X=3129–3729mm)</strong>. It was moved here (rev12) from its previous X=3729–4329mm position so it clears the film-plane swing envelope (§2.1). The operator accesses the shelf from the near walkway by turning 90° to face the tray side. No walkway is obstructed.</p>
 <p><img alt="Chemistry Prep Shelf — Sheet 1: Plan View" src="../assets/shelf-sheet1.png" /></p>
-<p>Top-down view showing the shelf position (X=3729–4329mm, Yd=300–600mm) relative to the near walkway, right walkway, processing tray, and optical cone boundary. The shelf is entirely outside the optical cone and inside the walkway perimeter — no walkway overlap.</p>
-<h3 id="21-optical-cone-clearance">2.1 Optical Cone Clearance<a class="headerlink" href="#21-optical-cone-clearance" title="Permanent link">&para;</a></h3>
-<p>At Yd=450mm (shelf centroid), the optical cone right boundary is:</p>
-<pre><code>cone_right(450) = PH_X + (FP_X_R − PH_X) × 450 / FP_Y
-                = 2,637 + (4,649 − 2,637) × 450 / 2,362
-                = 2,637 + 384 = 3021mm
+<p>Top-down view showing the shelf position (X=3129–3729mm, Yd=300–600mm) relative to the near walkway, right walkway, processing tray, and optical cone boundary. The shelf is entirely outside the optical cone and inside the walkway perimeter — no walkway overlap.</p>
+<h3 id="21-film-plane-swing-and-optical-cone-clearance">2.1 Film-Plane Swing and Optical Cone Clearance<a class="headerlink" href="#21-film-plane-swing-and-optical-cone-clearance" title="Permanent link">&para;</a></h3>
+<p><strong>Film-plane swing (rev12 — the reason for the move).</strong> The film plane swings about its centre (X=2399.5mm); its right side sweeps <em>forward</em> (toward the pinhole) and can reach the shelf zone. At the old right edge (X=4329mm) the swept plane reached Yd=600mm at only ~17° swing — i.e. it collided within the mechanical swing travel. Moving the shelf left so its right edge is at the tap (X=3729mm) cuts the swing reach: the plane now clears the <strong>practical ±15° envelope by ~225mm</strong> and stays clear up to <strong>~23.6°</strong> (the mechanical max is ±25.7°, where a residual ~59mm clip of the back-right corner remains — see note).</p>
+<p><strong>Optical cone.</strong> The binding point is the shelf far edge (Yd=600mm), where the cone is widest:</p>
+<pre><code>cone_right(600) = PH_X + (FP_X_R − PH_X) × 600 / FP_Y
+                = 2,399 + (4,649 − 2,399) × 600 / 2,262
+                = 2,399 + 597 = 2,996mm
 </code></pre>
-<p>The shelf left edge (X=3729mm) is 708mm outside the optical cone. The shelf cannot vignette the image at any film plane position.</p>
+<p>The shelf left edge (X=3129mm) is ~133mm outside the optical cone (was ~708mm at the old X=3729mm edge) — still entirely clear, no vignetting at any film-plane position.</p>
 <h3 id="22-spatial-constraints">2.2 Spatial Constraints<a class="headerlink" href="#22-spatial-constraints" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2450,7 +2451,7 @@
 <tbody>
 <tr>
 <td>Shelf X range</td>
-<td>X=3729–4329mm (600mm)</td>
+<td>X=3129–3729mm (600mm) — right edge at the tap (TAP_X)</td>
 </tr>
 <tr>
 <td>Shelf Yd range</td>
@@ -2466,7 +2467,7 @@
 </tr>
 <tr>
 <td>Right walkway</td>
-<td>X=4329–4629mm, cantilever rectangle off the IBC frame (adjacent, Yd=0–300mm)</td>
+<td>X=4329–4629mm, cantilever rectangle off the IBC frame — now 600mm right of the shelf</td>
 </tr>
 <tr>
 <td>Ceiling height</td>
@@ -2495,7 +2496,7 @@
 <tbody>
 <tr>
 <td>Position</td>
-<td>X=3729–4329mm, Yd=300–600mm</td>
+<td>X=3129–3729mm, Yd=300–600mm</td>
 </tr>
 <tr>
 <td>Width (X direction)</td>
@@ -2523,7 +2524,7 @@
 </tr>
 <tr>
 <td>Hanger rod diameter</td>
-<td>M10 (matches right walkway system)</td>
+<td>M10 threaded rod</td>
 </tr>
 <tr>
 <td>Number of hanger rods</td>
@@ -2539,7 +2540,7 @@
 <h3 id="33-ceiling-mounting">3.3 Ceiling Mounting<a class="headerlink" href="#33-ceiling-mounting" title="Permanent link">&para;</a></h3>
 <p>The shelf hangs from the container ceiling on four corner rods (the ceiling-plate detail below is independent of the right walkway, which is now a floor-clearing cantilever rectangle rather than a ceiling-hung deck):</p>
 <h3 id="sheet-2-section-elevation">Sheet 2 — Section Elevation<a class="headerlink" href="#sheet-2-section-elevation" title="Permanent link">&para;</a></h3>
-<p>Cross-section at X=4029mm (shelf midpoint) looking along the X-axis. Shows the ceiling-hung hanger rods (1313mm), shelf platform at H=1075mm, operator silhouette on the near walkway, and the processing tray at floor level below.</p>
+<p>Cross-section at X=3429mm (shelf midpoint) looking along the X-axis. Shows the ceiling-hung hanger rods (1313mm), shelf platform at H=1075mm, operator silhouette on the near walkway, and the processing tray at floor level below.</p>
 <p><img alt="Chemistry Prep Shelf — Sheet 2: Section Elevation" src="../assets/shelf-sheet2.png" /></p>
 <ul>
 <li><strong>Ceiling plates:</strong> 100×60×6mm mild steel plate, one per hanger rod. Each plate spans one ceiling corrugation rib.</li>
@@ -2616,7 +2617,7 @@
 </table>
 <hr />
 <h2 id="5-operator-access">5. Operator Access<a class="headerlink" href="#5-operator-access" title="Permanent link">&para;</a></h2>
-<p>The operator stands on the near walkway (deck at H=130mm) at approximately X=4029mm (shelf midpoint in X), turned 90° to face the processing tray side. The shelf work surface is at H=1075mm (945mm above the walkway deck) — ergonomic counter height for standing prep work.</p>
+<p>The operator stands on the near walkway (deck at H=130mm) at approximately X=3429mm (shelf midpoint in X), turned 90° to face the processing tray side. The shelf work surface is at H=1075mm (945mm above the walkway deck) — ergonomic counter height for standing prep work.</p>
 <p>The shelf near edge (Yd=300mm) aligns with the near walkway outer edge, so the operator can reach the full 300mm shelf depth from the walkway without leaning. Items used most frequently (scale, graduated cylinders) are staged at the near edge; bulk storage (bottles, wash trays) at the far edge.</p>
 <p>The near walkway remains completely clear for transit in both directions — no fold-down mechanism, no legs on the walkway, no obstruction at any time.</p>
 <hr />

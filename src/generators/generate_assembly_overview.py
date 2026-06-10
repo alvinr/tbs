@@ -843,16 +843,24 @@ def _swing(X, Yd, deg):
 def draw_stepped_panel(ax, panel_x_outer, alpha=0.85, swing_deg=0):
     """Draw the stepped panel in plan view, optionally swung `swing_deg` about
     the pivot. panel_x_outer = X of the panel's exterior face (0 = operational).
-    Each zone is a polygon through its 4 rotated corners (deg=0 \u21D2 rectangles)."""
+    Each zone is a polygon through its 4 rotated corners (deg=0 \u21D2 rectangles).
+    When swung, only the SWINGING part (Yd PANEL_CUT_YD..FAR_STRIP_YD0) rotates \u2014
+    the fixed near/far strips stay at the door plane (drawn separately), so the
+    swung panel is shorter than the full panel width."""
     zones = [
         (0, PANEL_CORNER_YD_L, PANEL_CORNER_T, C_HINGE_PANEL),              # near corner (40mm)
         (PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_T, C_PANEL_C),  # center (120mm)
         (PANEL_CORNER_YD_R, C_WID, PANEL_CORNER_T, C_HINGE_PANEL),          # far corner (40mm)
     ]
+    # clip to the swinging part when swung; full width when operational
+    yd_lo, yd_hi = (PANEL_CUT_YD, FAR_STRIP_YD0) if swing_deg else (0, C_WID)
     for yd0, yd1, t, fc in zones:
+        y0, y1 = max(yd0, yd_lo), min(yd1, yd_hi)
+        if y1 <= y0:
+            continue
         x0, x1 = panel_x_outer, panel_x_outer + t
-        pts = [_swing(x0, yd0, swing_deg), _swing(x1, yd0, swing_deg),
-               _swing(x1, yd1, swing_deg), _swing(x0, yd1, swing_deg)]
+        pts = [_swing(x0, y0, swing_deg), _swing(x1, y0, swing_deg),
+               _swing(x1, y1, swing_deg), _swing(x0, y1, swing_deg)]
         ax.add_patch(mpatches.Polygon(pts, closed=True, facecolor=fc,
                      edgecolor=C_OUT, linewidth=1.0, alpha=alpha, zorder=5))
 
@@ -959,8 +967,9 @@ ax_tr.plot([0, C_WID], [-CONT_WALL, -CONT_WALL], color="#CC2020", lw=1.2,
 ax_tr.text(C_WID + 250, -CONT_WALL, "Door closure\nplane",
            ha="left", va="center", fontsize=FS_SM - 1, color="#CC2020", zorder=8)
 
-# Swing arc — traced by the panel free edge (Yd=0) from 0° to the lock angle
-arc_pts = [_swing(OP_PANEL_X, 0, dd) for dd in range(0, TR_SWING_DEG + 1, 3)]
+# Swing arc — from the fixed-panel edge (Yd=PANEL_CUT_YD) to the swung tip, tracing
+# the swinging part's free corner from 0° to the lock angle
+arc_pts = [_swing(OP_PANEL_X, PANEL_CUT_YD, dd) for dd in range(0, TR_SWING_DEG + 1, 3)]
 ax_tr.plot([p[0] for p in arc_pts], [p[1] for p in arc_pts],
            color="#2060A0", lw=1.5, ls=(0, (5, 3)), zorder=8)
 arc_mid = arc_pts[int(len(arc_pts) * 0.6)]

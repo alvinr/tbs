@@ -6,11 +6,10 @@ equipment panel. REUSES the helpers and component builders from the Overview
 generator (generate_sketchup_model.py) — same component/tag/scene structure,
 shared iso camera, and material-sharing-by-color. Subsystem tags grouped into scenes:
     1. IBC Tanks            (the four totes)
-    2. IBC Frame            (the steel stacking frame/rack)
+    2. IBC Frame            (the steel stacking frame/rack + the 2 right-walkway
+                             cantilever arms that attach to the corridor uprights, rev12)
     3. Plumbing & Panel     (equipment panel + pumps/filters + water plumbing + hookups)
-    4. Walkway Cantilever   (the 2 right-walkway cantilever arms that attach to the
-                             IBC corridor uprights — rev12; shown with the frame)
-    5. Combined             (all subsystems)
+    4. Combined             (all subsystems)
 
 Usage (build into a SketchUp document — see --send note):
     python3 src/models/generate_ibc_model.py --save        # write ibc-stack.rb
@@ -135,9 +134,8 @@ def generate_ruby():
     comp_tags = [t for t in TAGS if t != "Labels"]
     scenes = [
         ("IBC Tanks", ["IBC Tanks"]),
-        ("IBC Frame", ["IBC Frame"]),
+        ("IBC Frame", ["IBC Frame", "Walkway Cantilever"]),  # frame + the attached walkway cantilever arms
         ("Plumbing & Panel", ["Plumbing & Panel"]),
-        ("Walkway Cantilever", ["IBC Frame", "Walkway Cantilever"]),
         ("Combined", comp_tags),
         ("Labeled", TAGS),  # all components + the Labels tag
     ]

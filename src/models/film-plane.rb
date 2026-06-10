@@ -12,6 +12,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Film Plane") unless model.layers["Film Plane"]
   model.layers.add("Corner Mechanism") unless model.layers["Corner Mechanism"]
   model.layers.add("Processing Tray") unless model.layers["Processing Tray"]
+  model.layers.add("Walkways") unless model.layers["Walkways"]
   model.layers.add("Corner Detail") unless model.layers["Corner Detail"]
   model.layers.add("Labels") unless model.layers["Labels"]
 
@@ -344,6 +345,2351 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Corner Mechanism"
   inst.layer = model.layers["Corner Mechanism"]
+
+  # ═══ Walkways ═══
+  defn = model.definitions.add("Walkways")
+  ents = defn.entities
+  # Walkway Near (left section)
+  grp = ents.add_group
+  grp.name = "Walkway Near (left section)"
+  face = grp.entities.add_face([470.mm,0.mm,115.mm], [1155.mm,0.mm,115.mm], [1155.mm,300.mm,115.mm], [470.mm,300.mm,115.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
+  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near (widened)
+  grp = ents.add_group
+  grp.name = "Walkway Near (widened)"
+  face = grp.entities.add_face([1155.mm,0.mm,115.mm], [2629.mm,0.mm,115.mm], [2629.mm,500.mm,115.mm], [1155.mm,500.mm,115.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
+  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near (right section)
+  grp = ents.add_group
+  grp.name = "Walkway Near (right section)"
+  face = grp.entities.add_face([2629.mm,0.mm,115.mm], [4329.mm,0.mm,115.mm], [4329.mm,300.mm,115.mm], [2629.mm,300.mm,115.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
+  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far
+  grp = ents.add_group
+  grp.name = "Walkway Far"
+  face = grp.entities.add_face([470.mm,2062.mm,115.mm], [4329.mm,2062.mm,115.mm], [4329.mm,2362.mm,115.mm], [470.mm,2362.mm,115.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
+  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Right (IBC end)
+  grp = ents.add_group
+  grp.name = "Walkway Right (IBC end)"
+  face = grp.entities.add_face([4329.mm,0.mm,115.mm], [4629.mm,0.mm,115.mm], [4629.mm,2362.mm,115.mm], [4329.mm,2362.mm,115.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
+  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Left (REMOVABLE — transport)
+  grp = ents.add_group
+  grp.name = "Walkway Left (REMOVABLE — transport)"
+  face = grp.entities.add_face([170.mm,0.mm,115.mm], [470.mm,0.mm,115.mm], [470.mm,2362.mm,115.mm], [170.mm,2362.mm,115.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Walkway Left (REMOVABLE — transport)"] || model.materials.add("Walkway Left (REMOVABLE — transport)")
+  mat.color = Sketchup::Color.new(192, 96, 0)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Left punch-out (drum exit)
+  grp = ents.add_group
+  grp.name = "Walkway Left punch-out (drum exit)"
+  face = grp.entities.add_face([470.mm,800.mm,115.mm], [770.mm,800.mm,115.mm], [770.mm,1560.mm,115.mm], [470.mm,1560.mm,115.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Walkway Left (REMOVABLE — transport)"] || model.materials.add("Walkway Left (REMOVABLE — transport)")
+  mat.color = Sketchup::Color.new(192, 96, 0)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 1 plate
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 1 plate"
+  face = grp.entities.add_face([638.mm,0.mm,0.mm], [758.mm,0.mm,0.mm], [758.mm,8.mm,0.mm], [638.mm,8.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 1 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 1 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([698.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 1 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 1 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([663.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 1 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 1 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([733.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 1 arm
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 1 arm"
+  face = grp.entities.add_face([694.mm,8.mm,105.mm], [702.mm,8.mm,105.mm], [702.mm,300.mm,105.mm], [694.mm,300.mm,105.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 1 gusset
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 1 gusset"
+  ge = grp.entities
+  f = ge.add_face([694.mm,8.mm,0.mm], [694.mm,8.mm,105.mm], [694.mm,70.mm,105.mm])
+  f.pushpull(-8.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 2 (widened) plate
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 2 (widened) plate"
+  face = grp.entities.add_face([1095.mm,0.mm,0.mm], [1215.mm,0.mm,0.mm], [1215.mm,10.mm,0.mm], [1095.mm,10.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 2 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 2 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1120.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 2 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 2 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1190.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 2 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 2 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1120.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 2 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 2 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1190.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 2 (widened) arm
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 2 (widened) arm"
+  face = grp.entities.add_face([1150.mm,10.mm,103.mm], [1160.mm,10.mm,103.mm], [1160.mm,500.mm,103.mm], [1150.mm,500.mm,103.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 2 (widened) gusset
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 2 (widened) gusset"
+  ge = grp.entities
+  f = ge.add_face([1150.mm,10.mm,0.mm], [1150.mm,10.mm,103.mm], [1150.mm,70.mm,103.mm])
+  f.pushpull(-10.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 3 (widened) plate
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 3 (widened) plate"
+  face = grp.entities.add_face([1552.mm,0.mm,0.mm], [1672.mm,0.mm,0.mm], [1672.mm,10.mm,0.mm], [1552.mm,10.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 3 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 3 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1577.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 3 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 3 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1647.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 3 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 3 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1577.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 3 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 3 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1647.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 3 (widened) arm
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 3 (widened) arm"
+  face = grp.entities.add_face([1607.mm,10.mm,103.mm], [1617.mm,10.mm,103.mm], [1617.mm,500.mm,103.mm], [1607.mm,500.mm,103.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 3 (widened) gusset
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 3 (widened) gusset"
+  ge = grp.entities
+  f = ge.add_face([1607.mm,10.mm,0.mm], [1607.mm,10.mm,103.mm], [1607.mm,70.mm,103.mm])
+  f.pushpull(-10.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 4 (widened) plate
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 4 (widened) plate"
+  face = grp.entities.add_face([2009.mm,0.mm,0.mm], [2129.mm,0.mm,0.mm], [2129.mm,10.mm,0.mm], [2009.mm,10.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 4 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 4 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2034.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 4 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 4 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2104.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 4 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 4 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2034.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 4 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 4 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2104.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 4 (widened) arm
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 4 (widened) arm"
+  face = grp.entities.add_face([2064.mm,10.mm,103.mm], [2074.mm,10.mm,103.mm], [2074.mm,500.mm,103.mm], [2064.mm,500.mm,103.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 4 (widened) gusset
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 4 (widened) gusset"
+  ge = grp.entities
+  f = ge.add_face([2064.mm,10.mm,0.mm], [2064.mm,10.mm,103.mm], [2064.mm,70.mm,103.mm])
+  f.pushpull(-10.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 5 (widened) plate
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 5 (widened) plate"
+  face = grp.entities.add_face([2466.mm,0.mm,0.mm], [2586.mm,0.mm,0.mm], [2586.mm,10.mm,0.mm], [2466.mm,10.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 5 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 5 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2491.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 5 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 5 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2561.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 5 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 5 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2491.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 5 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 5 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2561.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 5 (widened) arm
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 5 (widened) arm"
+  face = grp.entities.add_face([2521.mm,10.mm,103.mm], [2531.mm,10.mm,103.mm], [2531.mm,500.mm,103.mm], [2521.mm,500.mm,103.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 5 (widened) gusset
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 5 (widened) gusset"
+  ge = grp.entities
+  f = ge.add_face([2521.mm,10.mm,0.mm], [2521.mm,10.mm,103.mm], [2521.mm,70.mm,103.mm])
+  f.pushpull(-10.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 6 plate
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 6 plate"
+  face = grp.entities.add_face([2923.mm,0.mm,0.mm], [3043.mm,0.mm,0.mm], [3043.mm,8.mm,0.mm], [2923.mm,8.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 6 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 6 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2983.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 6 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 6 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2948.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 6 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 6 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3018.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 6 arm
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 6 arm"
+  face = grp.entities.add_face([2979.mm,8.mm,105.mm], [2987.mm,8.mm,105.mm], [2987.mm,300.mm,105.mm], [2979.mm,300.mm,105.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 6 gusset
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 6 gusset"
+  ge = grp.entities
+  f = ge.add_face([2979.mm,8.mm,0.mm], [2979.mm,8.mm,105.mm], [2979.mm,70.mm,105.mm])
+  f.pushpull(-8.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 7 plate
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 7 plate"
+  face = grp.entities.add_face([3380.mm,0.mm,0.mm], [3500.mm,0.mm,0.mm], [3500.mm,8.mm,0.mm], [3380.mm,8.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 7 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 7 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3440.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 7 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 7 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3405.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 7 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 7 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3475.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 7 arm
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 7 arm"
+  face = grp.entities.add_face([3436.mm,8.mm,105.mm], [3444.mm,8.mm,105.mm], [3444.mm,300.mm,105.mm], [3436.mm,300.mm,105.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 7 gusset
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 7 gusset"
+  ge = grp.entities
+  f = ge.add_face([3436.mm,8.mm,0.mm], [3436.mm,8.mm,105.mm], [3436.mm,70.mm,105.mm])
+  f.pushpull(-8.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 8 plate
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 8 plate"
+  face = grp.entities.add_face([3837.mm,0.mm,0.mm], [3957.mm,0.mm,0.mm], [3957.mm,8.mm,0.mm], [3837.mm,8.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 8 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 8 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3897.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 8 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 8 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3862.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 8 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 8 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3932.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 8 arm
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 8 arm"
+  face = grp.entities.add_face([3893.mm,8.mm,105.mm], [3901.mm,8.mm,105.mm], [3901.mm,300.mm,105.mm], [3893.mm,300.mm,105.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 8 gusset
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 8 gusset"
+  ge = grp.entities
+  f = ge.add_face([3893.mm,8.mm,0.mm], [3893.mm,8.mm,105.mm], [3893.mm,70.mm,105.mm])
+  f.pushpull(-8.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 1 plate
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 1 plate"
+  face = grp.entities.add_face([638.mm,2354.mm,0.mm], [758.mm,2354.mm,0.mm], [758.mm,2362.mm,0.mm], [638.mm,2362.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 1 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 1 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([698.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 1 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 1 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([663.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 1 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 1 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([733.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 1 arm
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 1 arm"
+  face = grp.entities.add_face([694.mm,2062.mm,105.mm], [702.mm,2062.mm,105.mm], [702.mm,2354.mm,105.mm], [694.mm,2354.mm,105.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 1 gusset
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 1 gusset"
+  ge = grp.entities
+  f = ge.add_face([694.mm,2354.mm,0.mm], [694.mm,2354.mm,105.mm], [694.mm,2292.mm,105.mm])
+  f.pushpull(-8.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 2 plate
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 2 plate"
+  face = grp.entities.add_face([1095.mm,2354.mm,0.mm], [1215.mm,2354.mm,0.mm], [1215.mm,2362.mm,0.mm], [1095.mm,2362.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 2 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 2 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1155.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 2 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 2 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1120.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 2 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 2 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1190.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 2 arm
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 2 arm"
+  face = grp.entities.add_face([1151.mm,2062.mm,105.mm], [1159.mm,2062.mm,105.mm], [1159.mm,2354.mm,105.mm], [1151.mm,2354.mm,105.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 2 gusset
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 2 gusset"
+  ge = grp.entities
+  f = ge.add_face([1151.mm,2354.mm,0.mm], [1151.mm,2354.mm,105.mm], [1151.mm,2292.mm,105.mm])
+  f.pushpull(-8.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 3 plate
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 3 plate"
+  face = grp.entities.add_face([1552.mm,2354.mm,0.mm], [1672.mm,2354.mm,0.mm], [1672.mm,2362.mm,0.mm], [1552.mm,2362.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 3 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 3 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1612.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 3 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 3 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1577.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 3 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 3 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1647.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 3 arm
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 3 arm"
+  face = grp.entities.add_face([1608.mm,2062.mm,105.mm], [1616.mm,2062.mm,105.mm], [1616.mm,2354.mm,105.mm], [1608.mm,2354.mm,105.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 3 gusset
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 3 gusset"
+  ge = grp.entities
+  f = ge.add_face([1608.mm,2354.mm,0.mm], [1608.mm,2354.mm,105.mm], [1608.mm,2292.mm,105.mm])
+  f.pushpull(-8.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 4 plate
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 4 plate"
+  face = grp.entities.add_face([2009.mm,2354.mm,0.mm], [2129.mm,2354.mm,0.mm], [2129.mm,2362.mm,0.mm], [2009.mm,2362.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 4 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 4 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2069.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 4 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 4 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2034.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 4 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 4 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2104.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 4 arm
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 4 arm"
+  face = grp.entities.add_face([2065.mm,2062.mm,105.mm], [2073.mm,2062.mm,105.mm], [2073.mm,2354.mm,105.mm], [2065.mm,2354.mm,105.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 4 gusset
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 4 gusset"
+  ge = grp.entities
+  f = ge.add_face([2065.mm,2354.mm,0.mm], [2065.mm,2354.mm,105.mm], [2065.mm,2292.mm,105.mm])
+  f.pushpull(-8.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 5 plate
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 5 plate"
+  face = grp.entities.add_face([2466.mm,2354.mm,0.mm], [2586.mm,2354.mm,0.mm], [2586.mm,2362.mm,0.mm], [2466.mm,2362.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 5 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 5 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2526.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 5 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 5 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2491.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 5 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 5 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2561.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 5 arm
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 5 arm"
+  face = grp.entities.add_face([2522.mm,2062.mm,105.mm], [2530.mm,2062.mm,105.mm], [2530.mm,2354.mm,105.mm], [2522.mm,2354.mm,105.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 5 gusset
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 5 gusset"
+  ge = grp.entities
+  f = ge.add_face([2522.mm,2354.mm,0.mm], [2522.mm,2354.mm,105.mm], [2522.mm,2292.mm,105.mm])
+  f.pushpull(-8.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 6 plate
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 6 plate"
+  face = grp.entities.add_face([2923.mm,2354.mm,0.mm], [3043.mm,2354.mm,0.mm], [3043.mm,2362.mm,0.mm], [2923.mm,2362.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 6 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 6 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2983.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 6 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 6 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2948.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 6 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 6 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3018.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 6 arm
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 6 arm"
+  face = grp.entities.add_face([2979.mm,2062.mm,105.mm], [2987.mm,2062.mm,105.mm], [2987.mm,2354.mm,105.mm], [2979.mm,2354.mm,105.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 6 gusset
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 6 gusset"
+  ge = grp.entities
+  f = ge.add_face([2979.mm,2354.mm,0.mm], [2979.mm,2354.mm,105.mm], [2979.mm,2292.mm,105.mm])
+  f.pushpull(-8.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 7 plate
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 7 plate"
+  face = grp.entities.add_face([3380.mm,2354.mm,0.mm], [3500.mm,2354.mm,0.mm], [3500.mm,2362.mm,0.mm], [3380.mm,2362.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 7 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 7 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3440.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 7 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 7 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3405.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 7 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 7 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3475.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 7 arm
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 7 arm"
+  face = grp.entities.add_face([3436.mm,2062.mm,105.mm], [3444.mm,2062.mm,105.mm], [3444.mm,2354.mm,105.mm], [3436.mm,2354.mm,105.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 7 gusset
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 7 gusset"
+  ge = grp.entities
+  f = ge.add_face([3436.mm,2354.mm,0.mm], [3436.mm,2354.mm,105.mm], [3436.mm,2292.mm,105.mm])
+  f.pushpull(-8.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 8 plate
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 8 plate"
+  face = grp.entities.add_face([3837.mm,2354.mm,0.mm], [3957.mm,2354.mm,0.mm], [3957.mm,2362.mm,0.mm], [3837.mm,2362.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 8 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 8 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3897.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 8 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 8 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3862.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 8 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 8 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3932.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 8 arm
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 8 arm"
+  face = grp.entities.add_face([3893.mm,2062.mm,105.mm], [3901.mm,2062.mm,105.mm], [3901.mm,2354.mm,105.mm], [3893.mm,2354.mm,105.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 8 gusset
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 8 gusset"
+  ge = grp.entities
+  f = ge.add_face([3893.mm,2354.mm,0.mm], [3893.mm,2354.mm,105.mm], [3893.mm,2292.mm,105.mm])
+  f.pushpull(-8.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left cantilever 1 foot plate
+  grp = ents.add_group
+  grp.name = "Left cantilever 1 foot plate"
+  face = grp.entities.add_face([38.mm,220.mm,0.mm], [166.mm,220.mm,0.mm], [166.mm,280.mm,0.mm], [38.mm,280.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left cantilever 1 post (50x50x3 SHS)
+  grp = ents.add_group
+  grp.name = "Left cantilever 1 post (50x50x3 SHS)"
+  face = grp.entities.add_face([115.mm,220.mm,0.mm], [165.mm,220.mm,0.mm], [165.mm,280.mm,0.mm], [115.mm,280.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(115.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left cantilever 1 arm (to X470)
+  grp = ents.add_group
+  grp.name = "Left cantilever 1 arm (to X470)"
+  face = grp.entities.add_face([165.mm,230.mm,75.mm], [470.mm,230.mm,75.mm], [470.mm,270.mm,75.mm], [165.mm,270.mm,75.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left cantilever 2 foot plate
+  grp = ents.add_group
+  grp.name = "Left cantilever 2 foot plate"
+  face = grp.entities.add_face([38.mm,770.mm,0.mm], [166.mm,770.mm,0.mm], [166.mm,830.mm,0.mm], [38.mm,830.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left cantilever 2 post (50x50x3 SHS)
+  grp = ents.add_group
+  grp.name = "Left cantilever 2 post (50x50x3 SHS)"
+  face = grp.entities.add_face([115.mm,770.mm,0.mm], [165.mm,770.mm,0.mm], [165.mm,830.mm,0.mm], [115.mm,830.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(115.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left cantilever 2 arm (to X770)
+  grp = ents.add_group
+  grp.name = "Left cantilever 2 arm (to X770)"
+  face = grp.entities.add_face([165.mm,770.mm,75.mm], [770.mm,770.mm,75.mm], [770.mm,830.mm,75.mm], [165.mm,830.mm,75.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left cantilever 3 foot plate
+  grp = ents.add_group
+  grp.name = "Left cantilever 3 foot plate"
+  face = grp.entities.add_face([38.mm,1150.mm,0.mm], [166.mm,1150.mm,0.mm], [166.mm,1210.mm,0.mm], [38.mm,1210.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left cantilever 3 post (50x50x3 SHS)
+  grp = ents.add_group
+  grp.name = "Left cantilever 3 post (50x50x3 SHS)"
+  face = grp.entities.add_face([115.mm,1150.mm,0.mm], [165.mm,1150.mm,0.mm], [165.mm,1210.mm,0.mm], [115.mm,1210.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(115.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left cantilever 3 arm (to X770)
+  grp = ents.add_group
+  grp.name = "Left cantilever 3 arm (to X770)"
+  face = grp.entities.add_face([165.mm,1150.mm,75.mm], [770.mm,1150.mm,75.mm], [770.mm,1210.mm,75.mm], [165.mm,1210.mm,75.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left cantilever 4 foot plate
+  grp = ents.add_group
+  grp.name = "Left cantilever 4 foot plate"
+  face = grp.entities.add_face([38.mm,1530.mm,0.mm], [166.mm,1530.mm,0.mm], [166.mm,1590.mm,0.mm], [38.mm,1590.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left cantilever 4 post (50x50x3 SHS)
+  grp = ents.add_group
+  grp.name = "Left cantilever 4 post (50x50x3 SHS)"
+  face = grp.entities.add_face([115.mm,1530.mm,0.mm], [165.mm,1530.mm,0.mm], [165.mm,1590.mm,0.mm], [115.mm,1590.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(115.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left cantilever 4 arm (to X770)
+  grp = ents.add_group
+  grp.name = "Left cantilever 4 arm (to X770)"
+  face = grp.entities.add_face([165.mm,1530.mm,75.mm], [770.mm,1530.mm,75.mm], [770.mm,1590.mm,75.mm], [165.mm,1590.mm,75.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left cantilever 5 foot plate
+  grp = ents.add_group
+  grp.name = "Left cantilever 5 foot plate"
+  face = grp.entities.add_face([38.mm,2080.mm,0.mm], [166.mm,2080.mm,0.mm], [166.mm,2140.mm,0.mm], [38.mm,2140.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left cantilever 5 post (50x50x3 SHS)
+  grp = ents.add_group
+  grp.name = "Left cantilever 5 post (50x50x3 SHS)"
+  face = grp.entities.add_face([115.mm,2080.mm,0.mm], [165.mm,2080.mm,0.mm], [165.mm,2140.mm,0.mm], [115.mm,2140.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(115.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Left cantilever 5 arm (to X470)
+  grp = ents.add_group
+  grp.name = "Left cantilever 5 arm (to X470)"
+  face = grp.entities.add_face([165.mm,2090.mm,75.mm], [470.mm,2090.mm,75.mm], [470.mm,2130.mm,75.mm], [165.mm,2130.mm,75.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right bearer (25x25x5 L) X4329
+  grp = ents.add_group
+  grp.name = "Right bearer (25x25x5 L) X4329"
+  face = grp.entities.add_face([4316.5.mm,0.mm,90.mm], [4341.5.mm,0.mm,90.mm], [4341.5.mm,2362.mm,90.mm], [4316.5.mm,2362.mm,90.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(25.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right hanger rod M10 X4329 Y320
+  grp = ents.add_group
+  grp.name = "Right hanger rod M10 X4329 Y320"
+  ge = grp.entities
+  circle = ge.add_circle([4329.mm,320.mm,115.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(2273.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling plate (inside) X4329 Y320
+  grp = ents.add_group
+  grp.name = "Right ceiling plate (inside) X4329 Y320"
+  face = grp.entities.add_face([4269.mm,275.mm,2382.mm], [4389.mm,275.mm,2382.mm], [4389.mm,365.mm,2382.mm], [4269.mm,365.mm,2382.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling plate (outside) X4329 Y320
+  grp = ents.add_group
+  grp.name = "Right ceiling plate (outside) X4329 Y320"
+  face = grp.entities.add_face([4269.mm,275.mm,2428.mm], [4389.mm,275.mm,2428.mm], [4389.mm,365.mm,2428.mm], [4269.mm,365.mm,2428.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4329 Y320
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4329 Y320"
+  ge = grp.entities
+  circle = ge.add_circle([4287.mm,292.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4329 Y320
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4329 Y320"
+  ge = grp.entities
+  circle = ge.add_circle([4287.mm,348.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4329 Y320
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4329 Y320"
+  ge = grp.entities
+  circle = ge.add_circle([4371.mm,292.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4329 Y320
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4329 Y320"
+  ge = grp.entities
+  circle = ge.add_circle([4371.mm,348.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right hanger rod M10 X4329 Y457
+  grp = ents.add_group
+  grp.name = "Right hanger rod M10 X4329 Y457"
+  ge = grp.entities
+  circle = ge.add_circle([4329.mm,457.mm,115.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(2273.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling plate (inside) X4329 Y457
+  grp = ents.add_group
+  grp.name = "Right ceiling plate (inside) X4329 Y457"
+  face = grp.entities.add_face([4269.mm,412.mm,2382.mm], [4389.mm,412.mm,2382.mm], [4389.mm,502.mm,2382.mm], [4269.mm,502.mm,2382.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling plate (outside) X4329 Y457
+  grp = ents.add_group
+  grp.name = "Right ceiling plate (outside) X4329 Y457"
+  face = grp.entities.add_face([4269.mm,412.mm,2428.mm], [4389.mm,412.mm,2428.mm], [4389.mm,502.mm,2428.mm], [4269.mm,502.mm,2428.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4329 Y457
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4329 Y457"
+  ge = grp.entities
+  circle = ge.add_circle([4287.mm,429.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4329 Y457
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4329 Y457"
+  ge = grp.entities
+  circle = ge.add_circle([4287.mm,485.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4329 Y457
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4329 Y457"
+  ge = grp.entities
+  circle = ge.add_circle([4371.mm,429.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4329 Y457
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4329 Y457"
+  ge = grp.entities
+  circle = ge.add_circle([4371.mm,485.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right hanger rod M10 X4329 Y914
+  grp = ents.add_group
+  grp.name = "Right hanger rod M10 X4329 Y914"
+  ge = grp.entities
+  circle = ge.add_circle([4329.mm,914.mm,115.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(2273.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling plate (inside) X4329 Y914
+  grp = ents.add_group
+  grp.name = "Right ceiling plate (inside) X4329 Y914"
+  face = grp.entities.add_face([4269.mm,869.mm,2382.mm], [4389.mm,869.mm,2382.mm], [4389.mm,959.mm,2382.mm], [4269.mm,959.mm,2382.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling plate (outside) X4329 Y914
+  grp = ents.add_group
+  grp.name = "Right ceiling plate (outside) X4329 Y914"
+  face = grp.entities.add_face([4269.mm,869.mm,2428.mm], [4389.mm,869.mm,2428.mm], [4389.mm,959.mm,2428.mm], [4269.mm,959.mm,2428.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4329 Y914
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4329 Y914"
+  ge = grp.entities
+  circle = ge.add_circle([4287.mm,886.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4329 Y914
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4329 Y914"
+  ge = grp.entities
+  circle = ge.add_circle([4287.mm,942.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4329 Y914
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4329 Y914"
+  ge = grp.entities
+  circle = ge.add_circle([4371.mm,886.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4329 Y914
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4329 Y914"
+  ge = grp.entities
+  circle = ge.add_circle([4371.mm,942.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right hanger rod M10 X4329 Y1371
+  grp = ents.add_group
+  grp.name = "Right hanger rod M10 X4329 Y1371"
+  ge = grp.entities
+  circle = ge.add_circle([4329.mm,1371.mm,115.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(2273.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling plate (inside) X4329 Y1371
+  grp = ents.add_group
+  grp.name = "Right ceiling plate (inside) X4329 Y1371"
+  face = grp.entities.add_face([4269.mm,1326.mm,2382.mm], [4389.mm,1326.mm,2382.mm], [4389.mm,1416.mm,2382.mm], [4269.mm,1416.mm,2382.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling plate (outside) X4329 Y1371
+  grp = ents.add_group
+  grp.name = "Right ceiling plate (outside) X4329 Y1371"
+  face = grp.entities.add_face([4269.mm,1326.mm,2428.mm], [4389.mm,1326.mm,2428.mm], [4389.mm,1416.mm,2428.mm], [4269.mm,1416.mm,2428.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4329 Y1371
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4329 Y1371"
+  ge = grp.entities
+  circle = ge.add_circle([4287.mm,1343.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4329 Y1371
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4329 Y1371"
+  ge = grp.entities
+  circle = ge.add_circle([4287.mm,1399.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4329 Y1371
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4329 Y1371"
+  ge = grp.entities
+  circle = ge.add_circle([4371.mm,1343.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4329 Y1371
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4329 Y1371"
+  ge = grp.entities
+  circle = ge.add_circle([4371.mm,1399.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right hanger rod M10 X4329 Y1828
+  grp = ents.add_group
+  grp.name = "Right hanger rod M10 X4329 Y1828"
+  ge = grp.entities
+  circle = ge.add_circle([4329.mm,1828.mm,115.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(2273.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling plate (inside) X4329 Y1828
+  grp = ents.add_group
+  grp.name = "Right ceiling plate (inside) X4329 Y1828"
+  face = grp.entities.add_face([4269.mm,1783.mm,2382.mm], [4389.mm,1783.mm,2382.mm], [4389.mm,1873.mm,2382.mm], [4269.mm,1873.mm,2382.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling plate (outside) X4329 Y1828
+  grp = ents.add_group
+  grp.name = "Right ceiling plate (outside) X4329 Y1828"
+  face = grp.entities.add_face([4269.mm,1783.mm,2428.mm], [4389.mm,1783.mm,2428.mm], [4389.mm,1873.mm,2428.mm], [4269.mm,1873.mm,2428.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4329 Y1828
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4329 Y1828"
+  ge = grp.entities
+  circle = ge.add_circle([4287.mm,1800.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4329 Y1828
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4329 Y1828"
+  ge = grp.entities
+  circle = ge.add_circle([4287.mm,1856.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4329 Y1828
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4329 Y1828"
+  ge = grp.entities
+  circle = ge.add_circle([4371.mm,1800.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4329 Y1828
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4329 Y1828"
+  ge = grp.entities
+  circle = ge.add_circle([4371.mm,1856.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right bearer (25x25x5 L) X4629
+  grp = ents.add_group
+  grp.name = "Right bearer (25x25x5 L) X4629"
+  face = grp.entities.add_face([4616.5.mm,0.mm,90.mm], [4641.5.mm,0.mm,90.mm], [4641.5.mm,2362.mm,90.mm], [4616.5.mm,2362.mm,90.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(25.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right hanger rod M10 X4629 Y320
+  grp = ents.add_group
+  grp.name = "Right hanger rod M10 X4629 Y320"
+  ge = grp.entities
+  circle = ge.add_circle([4629.mm,320.mm,115.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(2273.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling plate (inside) X4629 Y320
+  grp = ents.add_group
+  grp.name = "Right ceiling plate (inside) X4629 Y320"
+  face = grp.entities.add_face([4569.mm,275.mm,2382.mm], [4689.mm,275.mm,2382.mm], [4689.mm,365.mm,2382.mm], [4569.mm,365.mm,2382.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling plate (outside) X4629 Y320
+  grp = ents.add_group
+  grp.name = "Right ceiling plate (outside) X4629 Y320"
+  face = grp.entities.add_face([4569.mm,275.mm,2428.mm], [4689.mm,275.mm,2428.mm], [4689.mm,365.mm,2428.mm], [4569.mm,365.mm,2428.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4629 Y320
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4629 Y320"
+  ge = grp.entities
+  circle = ge.add_circle([4587.mm,292.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4629 Y320
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4629 Y320"
+  ge = grp.entities
+  circle = ge.add_circle([4587.mm,348.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4629 Y320
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4629 Y320"
+  ge = grp.entities
+  circle = ge.add_circle([4671.mm,292.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4629 Y320
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4629 Y320"
+  ge = grp.entities
+  circle = ge.add_circle([4671.mm,348.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right hanger rod M10 X4629 Y457
+  grp = ents.add_group
+  grp.name = "Right hanger rod M10 X4629 Y457"
+  ge = grp.entities
+  circle = ge.add_circle([4629.mm,457.mm,115.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(2273.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling plate (inside) X4629 Y457
+  grp = ents.add_group
+  grp.name = "Right ceiling plate (inside) X4629 Y457"
+  face = grp.entities.add_face([4569.mm,412.mm,2382.mm], [4689.mm,412.mm,2382.mm], [4689.mm,502.mm,2382.mm], [4569.mm,502.mm,2382.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling plate (outside) X4629 Y457
+  grp = ents.add_group
+  grp.name = "Right ceiling plate (outside) X4629 Y457"
+  face = grp.entities.add_face([4569.mm,412.mm,2428.mm], [4689.mm,412.mm,2428.mm], [4689.mm,502.mm,2428.mm], [4569.mm,502.mm,2428.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4629 Y457
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4629 Y457"
+  ge = grp.entities
+  circle = ge.add_circle([4587.mm,429.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4629 Y457
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4629 Y457"
+  ge = grp.entities
+  circle = ge.add_circle([4587.mm,485.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4629 Y457
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4629 Y457"
+  ge = grp.entities
+  circle = ge.add_circle([4671.mm,429.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4629 Y457
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4629 Y457"
+  ge = grp.entities
+  circle = ge.add_circle([4671.mm,485.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right hanger rod M10 X4629 Y914
+  grp = ents.add_group
+  grp.name = "Right hanger rod M10 X4629 Y914"
+  ge = grp.entities
+  circle = ge.add_circle([4629.mm,914.mm,115.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(2273.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling plate (inside) X4629 Y914
+  grp = ents.add_group
+  grp.name = "Right ceiling plate (inside) X4629 Y914"
+  face = grp.entities.add_face([4569.mm,869.mm,2382.mm], [4689.mm,869.mm,2382.mm], [4689.mm,959.mm,2382.mm], [4569.mm,959.mm,2382.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling plate (outside) X4629 Y914
+  grp = ents.add_group
+  grp.name = "Right ceiling plate (outside) X4629 Y914"
+  face = grp.entities.add_face([4569.mm,869.mm,2428.mm], [4689.mm,869.mm,2428.mm], [4689.mm,959.mm,2428.mm], [4569.mm,959.mm,2428.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4629 Y914
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4629 Y914"
+  ge = grp.entities
+  circle = ge.add_circle([4587.mm,886.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4629 Y914
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4629 Y914"
+  ge = grp.entities
+  circle = ge.add_circle([4587.mm,942.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4629 Y914
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4629 Y914"
+  ge = grp.entities
+  circle = ge.add_circle([4671.mm,886.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4629 Y914
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4629 Y914"
+  ge = grp.entities
+  circle = ge.add_circle([4671.mm,942.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right hanger rod M10 X4629 Y1371
+  grp = ents.add_group
+  grp.name = "Right hanger rod M10 X4629 Y1371"
+  ge = grp.entities
+  circle = ge.add_circle([4629.mm,1371.mm,115.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(2273.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling plate (inside) X4629 Y1371
+  grp = ents.add_group
+  grp.name = "Right ceiling plate (inside) X4629 Y1371"
+  face = grp.entities.add_face([4569.mm,1326.mm,2382.mm], [4689.mm,1326.mm,2382.mm], [4689.mm,1416.mm,2382.mm], [4569.mm,1416.mm,2382.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling plate (outside) X4629 Y1371
+  grp = ents.add_group
+  grp.name = "Right ceiling plate (outside) X4629 Y1371"
+  face = grp.entities.add_face([4569.mm,1326.mm,2428.mm], [4689.mm,1326.mm,2428.mm], [4689.mm,1416.mm,2428.mm], [4569.mm,1416.mm,2428.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4629 Y1371
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4629 Y1371"
+  ge = grp.entities
+  circle = ge.add_circle([4587.mm,1343.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4629 Y1371
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4629 Y1371"
+  ge = grp.entities
+  circle = ge.add_circle([4587.mm,1399.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4629 Y1371
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4629 Y1371"
+  ge = grp.entities
+  circle = ge.add_circle([4671.mm,1343.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4629 Y1371
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4629 Y1371"
+  ge = grp.entities
+  circle = ge.add_circle([4671.mm,1399.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right hanger rod M10 X4629 Y1828
+  grp = ents.add_group
+  grp.name = "Right hanger rod M10 X4629 Y1828"
+  ge = grp.entities
+  circle = ge.add_circle([4629.mm,1828.mm,115.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(2273.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling plate (inside) X4629 Y1828
+  grp = ents.add_group
+  grp.name = "Right ceiling plate (inside) X4629 Y1828"
+  face = grp.entities.add_face([4569.mm,1783.mm,2382.mm], [4689.mm,1783.mm,2382.mm], [4689.mm,1873.mm,2382.mm], [4569.mm,1873.mm,2382.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling plate (outside) X4629 Y1828
+  grp = ents.add_group
+  grp.name = "Right ceiling plate (outside) X4629 Y1828"
+  face = grp.entities.add_face([4569.mm,1783.mm,2428.mm], [4689.mm,1783.mm,2428.mm], [4689.mm,1873.mm,2428.mm], [4569.mm,1873.mm,2428.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4629 Y1828
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4629 Y1828"
+  ge = grp.entities
+  circle = ge.add_circle([4587.mm,1800.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4629 Y1828
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4629 Y1828"
+  ge = grp.entities
+  circle = ge.add_circle([4587.mm,1856.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4629 Y1828
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4629 Y1828"
+  ge = grp.entities
+  circle = ge.add_circle([4671.mm,1800.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right ceiling bolt M12 X4629 Y1828
+  grp = ents.add_group
+  grp.name = "Right ceiling bolt M12 X4629 Y1828"
+  ge = grp.entities
+  circle = ge.add_circle([4671.mm,1856.mm,2378.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Walkways"
+  inst.layer = model.layers["Walkways"]
 
   # ═══ Corner Detail (TR) ═══
   defn = model.definitions.add("Corner Detail (TR)")
@@ -707,7 +3053,7 @@ alvinr.github.io/tbs", lanc)
 
 model.definitions.purge_unused
 model.materials.purge_unused
-keep_tags = ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Corner Detail", "Labels"]; dl = model.layers[0]
+keep_tags = ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "Corner Detail", "Labels"]; dl = model.layers[0]
 model.layers.to_a.each { |l| next if l==dl||keep_tags.include?(l.name); model.layers.remove(l,true) rescue nil }
 
 model.layers.each { |l| l.visible = true }
@@ -717,7 +3063,7 @@ eye = ctr.offset(dir, bb.diagonal * 1.4)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
-[["Combined", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray"], nil, 0], ["No Container", ["Film Plane", "Corner Mechanism", "Processing Tray"], nil, 0], ["Corner detail (TR)", ["Corner Detail", "Labels"], [4666.979444694831.mm, 1410.0520922298629.mm, 2223.531411620136.mm], 95]].each { |name, tags, tgt, so|
+[["Combined", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways"], nil, 0], ["No Container", ["Film Plane", "Corner Mechanism", "Processing Tray", "Walkways"], nil, 0], ["Corner detail (TR)", ["Corner Detail", "Labels"], [4666.979444694831.mm, 1410.0520922298629.mm, 2223.531411620136.mm], 95]].each { |name, tags, tgt, so|
   model.layers.each { |l| l.visible = (l == dl || tags.include?(l.name)) }
   if tgt
     t = Geom::Point3d.new(tgt[0], tgt[1], tgt[2])

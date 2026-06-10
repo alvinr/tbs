@@ -771,7 +771,7 @@ def draw_sheet2():
         (FB_X,               FB_Y - 110),
     ] + [(ix(sl_x + SL_STRIP_W / 2), OY + wt + 25) for sl_x in SL_POSITIONS] + [
         (ix(PS_X_MM),        OY + wt + PS_YD * S_yd),   # pull switches
-    ] + [(ix(lp + LED_W_MM/2), OY + wt + LED_YD * S_yd) for lp in LED_POSITIONS]:
+    ] + [(ix(lp + LED_W_MM/2 + (150 if lp == 2900 else 0)), OY + wt + LED_YD * S_yd) for lp in LED_POSITIONS]:
         ax.plot([ddx, ddx], [TK_Y, ddy],
                 color=C_PIPE, lw=1.0, ls=":", zorder=4)
 

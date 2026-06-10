@@ -29,7 +29,7 @@ Top-down view showing the shelf position (X=3129–3729mm, Yd=300–600mm) relat
 
 ### 2.1 Film-Plane Swing and Optical Cone Clearance
 
-**Film-plane swing (rev12 — the reason for the move).** The film plane swings about its centre (X=2399.5mm); its right side sweeps *forward* (toward the pinhole) and can reach the shelf zone. At the old right edge (X=4329mm) the swept plane reached Yd=600mm at only ~17° swing — i.e. it collided within the mechanical swing travel. Moving the shelf left so its right edge is at the tap (X=3729mm) cuts the swing reach: the plane now clears the **practical ±15° envelope by ~225mm** and stays clear up to **~23.6°** (the mechanical max is ±25.7°, where a residual ~59mm clip of the back-right corner remains — see note).
+**Film-plane swing (rev12 — the reason for the move).** The film plane swings about its centre (X=2399.5mm); its right side sweeps *forward* (toward the pinhole) and can reach the shelf zone. At the old right edge (X=4329mm) the swept plane reached Yd=600mm at only ~17° swing — i.e. it collided within the mechanical swing travel. Moving the shelf left so its right edge is at the tap (X=3729mm) cuts the swing reach: the plane now clears the **practical ±15° envelope by ~225mm** and stays clear up to **~23.6°**. The mechanical swing max is ±25.7°, where a residual ~59mm clip of the shelf's back-right corner remains; this is an **accepted operating limit** — swing is held to ≤~23° while the shelf is installed (the shelf is not relocated for the rare full-swing case).
 
 **Optical cone.** The binding point is the shelf far edge (Yd=600mm), where the cone is widest:
 

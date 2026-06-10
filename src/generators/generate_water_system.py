@@ -941,11 +941,12 @@ def draw_sheet3():
              "FAR\nWALKWAY\n(300mm)",
              ha="left", va="center", fontsize=6, color=WK_COLOR)
 
-    # ── Pipe run from drain ──────────────────────────────────────────────────────
-    # 1" suction hose exits sump, runs RIGHT along rim exterior to tray corner,
-    # then turns NORTH toward equipment panel (Yd=1046).
-    corner_local_x = PROC_TRAY_W + 15   # just past tray right edge
-    pipe_rim_yd = drain_local_yd - 60    # rim exterior (below near edge)
+    # ── Pipe run from drain (rev12 routing) ──────────────────────────────────────
+    # 1" suction hose exits the sump, drops in the grate gap in FRONT of the tray
+    # (Yd~50, clear of the rev12 right-walkway long beam), runs RIGHT to the tray–IBC
+    # gap, then turns NORTH up the gap to the equipment panel (corridor, Yd≈1046).
+    corner_local_x = PROC_TRAY_W + 15   # just past tray right edge (into the tray–IBC gap)
+    pipe_rim_yd = drain_local_yd - 30    # ~Yd50 — in front of the tray near rim (the twist depth)
     pipe_rim_dy = s3y(pipe_rim_yd)
 
     # Short drop from sump to rim exterior

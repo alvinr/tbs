@@ -172,6 +172,36 @@ def brace_cage():
     return '\n'.join(parts)
 
 
+def wall_fastening():
+    """Fasten the frame to the container SIDE WALLS. The left/right verticals are the
+    slide rails (FP can't be fixed there), so the near + far brace portals tie to the
+    near (Yd0) and far (Yd C_WID) walls via gusset struts + bolted wall plates on the
+    TOP and BOTTOM beams. On the NEAR wall the ties sit ONLY in the two equipment-free
+    X-gaps (X150–1700 + X2710–4649) — clear of the EP/battery/solar/tilt-swing cluster
+    (X1700–2710) and the central walkway; the FAR wall is clear so ties spread evenly."""
+    s = ov.BRACE_RHS
+    z_bot, z_top = ov.BRACE_Z_BOT, ov.BRACE_Z_TOP - s   # 150 (bottom beam), 2238 (top beam)
+    parts = []
+
+    def tie(x, z, y_beam, y_wall):
+        y0, y1 = sorted((y_beam, y_wall))
+        # gusset strut: beam face → wall
+        parts.append(ov.ruby_box(f"FP wall-tie strut X{int(x)} Z{int(z)}",
+                     x - 22, y0, z, 44, y1 - y0, s, color=ov.C_STEEL))
+        # bolted wall plate, flush on the wall face
+        plate_y = y_wall if y_wall < y_beam else y_wall - 8
+        parts.append(ov.ruby_box(f"FP wall plate X{int(x)} Z{int(z)}",
+                     x - 50, plate_y, z - 20, 100, 8, s + 40, color=ov.C_STEEL))
+
+    for x in (600, 1300, 3100, 4200):           # NEAR wall — equipment-free gaps only
+        for z in (z_bot, z_top):
+            tie(x, z, ov.FP_Y_MIN, 0)
+    for x in (600, 1700, 2800, 4200):           # FAR wall — clear, evenly spread
+        for z in (z_bot, z_top):
+            tie(x, z, ov.FP_Y, ov.C_WID)
+    return '\n'.join(parts)
+
+
 def static_rails():
     """The FIXED guides: 4 HGR20 rails + leadscrews along depth (Yd). The carriages
     (in the DC) run along these."""
@@ -242,7 +272,7 @@ def generate_ruby():
         ov.component("Container (ghost)", "Context", context()),
         ov.component("Processing Tray", "Processing Tray", ov.processing_tray()),
         ov.component("Corner Mechanism", "Corner Mechanism",
-                     static_rails() + "\n" + brace_cage()),
+                     static_rails() + "\n" + brace_cage() + "\n" + wall_fastening()),
         ov.component("Walkways", "Walkways",
                      ov.walkways(include_right=True, include_right_hangers=False)),
         ov.component("Corner Detail (TR)", "Corner Detail", detail),

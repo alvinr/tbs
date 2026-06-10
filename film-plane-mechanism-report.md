@@ -178,20 +178,22 @@ All items ship within the United States. Local Southern California pickup noted 
 | 6-mil black poly sheeting | 10 ft × 100 ft | 1 | Home Depot (local, all SoCal) | Uline | $65 |
 | 2" black Gorilla Tape | 35 yd rolls | 6 | Home Depot / Target (local) | Amazon | $12 |
 
-### Demountable Brace Cage
+### Wall-Seat Saddles (rev 11 — replaces the brace cage)
 
-Two rectangular end portals of 50×50×3mm RHS mild steel brace the four-corner rail assembly, giving lateral rigidity while remaining fully demountable for transport. Joints use saddle clamps tightened by M8 thumbscrews.
+The demountable brace cage is retired. Each of the **8 rail ends** instead anchors to the container with an **IBC-style wall-seat saddle** — a back-plate + horizontal seat (the rail end rests on it) + triangular gusset, dims reused from the IBC frame wall seats — **through-bolted with a 4-bolt pattern to an exterior wall plate**. The container shell carries the lateral rigidity, so no cross-cage is needed; this also frees the near/far Yd footprint and removes the near-wall equipment clash. Costs ~110mm of carriage travel at each end (immaterial to the design). The rails now run the full width **saddle-to-saddle** (Yd 0 → C_WID).
 
-**Transport mode.** The film-plane left rail is now **continuous** — there is no demountable center segment. Under rev 9 / B2 the light lock (Ø900 housing + drum) is offset (`DRUM_CX = −400`) and exits through the hinge-panel punch-out bay rather than rotating within the rail span, so the rail no longer has to part for drum operation. For *transport*, the panel + drum **SWING ~56°** about the pivot and the drum cage transitions X=150, so the **two left film rails (TL + BL), the brace cage, and the muslin screen are struck first** (the left rails re-seat to the film datum on re-deployment) — see [Hinged Panel Report](hinged-panel-report.md) §5.4 for the conversion sequence.
+**Right vs left.** The **right** rails (X 4649, TR + BR) are **permanently bolted** into their saddles. The **left** rails (X 150, TL + BL) drop into their saddles on **knurled thumb screws** so they lift out for transport.
+
+**Transport mode.** The film-plane left rail is **continuous** (no demountable center segment): the light lock (Ø900 housing + drum) is offset (`DRUM_CX = −400`) and exits through the hinge-panel punch-out bay rather than rotating within the rail span. For *transport*, the panel + drum **SWING ~56°** about the pivot and the drum cage transitions X=150, so the **two left film rails (TL + BL) and the muslin screen are struck first** — the left rails lift out of their thumb-screw saddles and re-seat to the film datum on re-deployment — see [Hinged Panel Report](hinged-panel-report.md) §5.4 for the conversion sequence.
 
 | Item | ICP # | Spec | Qty | Source A | Source B | Est. Unit |
 |------|-------|------|-----|---------|---------|-----------|
-| Mild steel RHS square tube | ICP-11 | 50×50×3mm, cut to length — 4 verticals @ 2188mm + 4 cross-beams @ 4499mm = 26.75 m net; order ~30 m to allow saw kerf + saddle-seat cuts | 30 m | [Metal Supermarkets SoCal](https://www.metalsupermarkets.com/product/mild-steel-square-tube-structural-welded/) | [Online Metals — 50mm×3mm sq. tube](https://www.onlinemetals.com/en/buy/carbon-steel/50mm-x-3mm-carbon-steel-square-tube-1018-metric-60-length/pid/22489) | ~$7/ft (~$23/m) est. |
-| Saddle clamp for 50mm RHS | ICP-12 | Two-piece bolt-together saddle — seats one tube over another at a joint; compatible with 50×50mm square tube | 16 | [McMaster-Carr — tube clamps](https://www.mcmaster.com/products/steel-tube-clamps/) | [Amazon — square tube clamps](https://www.amazon.com/2-square-tube-clamp/s?k=2%22+square+tube+clamp) | ~$8–12 est. |
-| M8 knurled thumbscrew DIN 464 | ICP-13 | M8×20mm, stainless steel 303, high-type knurled head — 2 per saddle clamp joint | 40 | [Amazon — DIN 464 M8 knurled SS](https://www.amazon.com/knurled-thumb-screws-din-464/s?k=knurled+thumb+screws+din+464) | [Maedler North America — DIN 464 M8×20 SS](https://maedlernorthamerica.com/partshop/knurled-thumb-screw-din-464-m8-x-20mm-long-stainless-steel-1-4305-pn-65499225/) | ~$2–5 est. |
-| Quick-release ball-lock pin | ICP-14 | Ø10mm, 50mm usable length, stainless steel — retains demountable left-rail segment (2 joints × 2 pins = 4 off, plus 4 spares) | 8 | [McMaster-Carr — ball lock pins](https://www.mcmaster.com/products/ball-lock-pins/) | [Amazon — quick-release ball lock pins](https://www.amazon.com/quick-release-ball-lock-pins/s?k=quick+release+ball+lock+pins) | ~$6–10 est. |
+| Mild steel plate 8mm (laser/plasma cut + welded) | ICP-11 | back-plate + exterior plate + seat + gusset per saddle; ~28 kg total over 8 saddles | 8 saddles | [Metal Supermarkets SoCal](https://www.metalsupermarkets.com/product/mild-steel-plate/) | [Online Metals — A36 steel plate](https://www.onlinemetals.com/en/buy/carbon-steel) | ~$53/saddle est. |
+| M12×90mm hex through-bolt + nut + washers, SS | ICP-12 | Wall sandwich through-bolt (interior↔exterior plate); 4 per saddle × 8 = 32 + 4 spare | 36 | [McMaster-Carr — A2 cap screws](https://www.mcmaster.com/products/screws/) | [Amazon — M12 stainless bolts](https://www.amazon.com/s?k=m12+stainless+bolt+90mm) | ~$2.50 est. |
+| M8×25mm knurled thumbscrew DIN 464 | ICP-13 | Left-rail drop-in hold-down (lifts out for drum swing); 2 per saddle × 4 left saddles = 8 + 4 spare | 12 | [Amazon — DIN 464 M8 knurled SS](https://www.amazon.com/knurled-thumb-screws-din-464/s?k=knurled+thumb+screws+din+464) | [Maedler North America — DIN 464 M8 SS](https://maedlernorthamerica.com/partshop/knurled-thumb-screw-din-464-m8-x-20mm-long-stainless-steel-1-4305-pn-65499225/) | ~$3 est. |
+| M8 hex fixing bolt + nut, SS | ICP-14 | Right-rail permanent fixing (rail bolted to seat); 2 per saddle × 4 right saddles = 8 + spare | 12 | [McMaster-Carr — A2 stainless](https://www.mcmaster.com/products/screws/) | [Amazon — M8 stainless bolts](https://www.amazon.com/s?k=m8+stainless+bolt) | ~$2 est. |
 
-*Quantities basis: 4 verticals (2× portals × 2 sides, 2188mm each, Z 100–2288mm) + 4 cross-beams (2× portals × top+bottom, 4499mm each, X 150–4649mm) = 26.75 m net RHS; 30 m ordered for waste. 16 saddle clamps: 4 corners per portal × 2 clamps per corner × 2 portals = 16. 40 thumbscrews: 2 per clamp × 16 clamps = 32, plus 8 spares. 8 ball-lock pins: 2 joints on demountable left-rail segment × 2 pins + 4 spares.*
+*Quantities basis: 8 saddles = 4 rail corners × near + far wall. Each saddle: 1 back-plate + 1 exterior plate + 1 seat + 1 gusset (8mm plate) + 4× M12 through-bolts. Hold-downs: 2 per saddle — thumb screws on the 4 left saddles (8), hex fixing bolts on the 4 right saddles (8). Subtotal ~$575 — roughly cost-neutral with the retired brace cage.*
 
 ### Muslin Clamp System
 
@@ -205,7 +207,7 @@ See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) f
 | 12V 30A power supply | Enclosed | 1 | Mouser | Digi-Key | $55 |
 | DPDT momentary rocker | Panel-mount, 20A | **4** | Mouser | Grainger | $8 |
 
-**Estimated materials total (manual actuation, incl. brace cage + Option A cross-slides): ~$3,200**  
+**Estimated materials total (manual actuation, incl. wall-seat saddles + Option A cross-slides): ~$3,200**  
 *Excludes fasteners, fabrication labour, and electric actuation option.*  
 *Option A net change vs the earlier four-corner design: added 8 cross-slide rails +$200, 8 cross-slide carriages +$96, 4 intermediate plates +$60 (= +$356); removed the folding-backing piano hinge –$56 → net +$300. The single rigid ACM backing replaces the hinged two-panel system.*
 

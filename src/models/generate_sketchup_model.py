@@ -967,14 +967,59 @@ def ibc_rack():
 
 # ── Film plane mechanism ─────────────────────────────────────────────────────
 
-def film_plane_mechanism():
-    """Four corner rails + demountable brace cage + framed muslin screen.
+def film_plane_saddles(corners):
+    """IBC-style wall-seat saddle at each of the 8 film-plane rail ends (the 4
+    `corners` {id:(x,z)} × near/far wall). Each = interior back-plate + horizontal
+    seat (the rail rests on it) + triangular gusset, THROUGH-BOLTED to an EXTERIOR
+    plate with a 4-bolt pattern — dims reuse the IBC frame wall seats (IBC_WBKT_*).
+    The container shell carries the rigidity, replacing the retired brace cage.
+    RIGHT rails (X4649) permanently bolted; LEFT rails (X150) thumb-screw drop-in
+    (lift out for the drum swing). Single-sourced — also called by the film-plane
+    focus model so the two stay in sync."""
+    pw, pt = IBC_WBKT_PLATE_W, IBC_WBKT_PLATE_T          # 150 plate, 8 thick
+    proj, st = IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T       # 110 seat projection, 10 thick
+    gh, wt, sw = 120, WALL_T, 24 + 24                    # gusset, wall, seat width
+    parts = []
+    for cid, (x, z) in corners.items():
+        left = (x == RAIL_X_L)
+        for wall_yd in (0, C_WID):
+            near = (wall_yd == 0)
+            din = 1 if near else -1
+            tag = f"{cid} {'near' if near else 'far'}"
+            by_in = 0 if near else C_WID - pt
+            by_out = -wt - pt if near else C_WID + wt
+            sy0 = min(wall_yd, wall_yd + din * proj)
+            yt = wall_yd + din * proj
+            parts.append(ruby_box(f"Saddle back-plate {tag}",
+                         x - pw / 2, by_in, z - pw / 2, pw, pt, pw, color=C_STEEL))
+            parts.append(ruby_box(f"Saddle OUTSIDE plate {tag}",
+                         x - pw / 2, by_out, z - pw / 2, pw, pt, pw, color=C_STEEL))
+            parts.append(ruby_box(f"Saddle seat {tag}",
+                         x - sw / 2, sy0, z - st, sw, proj, st, color=C_STEEL))
+            parts.append(ruby_tri(f"Saddle gusset {tag}",
+                         (x, yt, z - st), (x, wall_yd, z - st), (x, wall_yd, z - st - gh),
+                         8, color=C_STEEL))
+            blo, bhi = min(by_in, by_out), max(by_in, by_out) + pt
+            for bx in (x - 50, x + 50):
+                for bz in (z - 50, z + 50):
+                    parts.append(ruby_cylinder(f"Saddle wall bolt M12 {tag}",
+                                 bx, blo, bz, 6, bhi - blo, color=C_STEEL, axis="y"))
+            hold_c = C_VALVE if left else C_STEEL
+            hold_nm = "Thumb screw" if left else "Rail fixing bolt"
+            for hy in (sy0 + 25, sy0 + proj - 25):
+                parts.append(ruby_cylinder(f"{hold_nm} {tag}",
+                             x, hy, z, 5, 36, color=hold_c, axis="z"))
+    return '\n'.join(parts)
 
-    Rails run in +Y (depth) from the minimum carriage depth, at the four
-    corners. A rigid rectangular brace cage (saddle/thumbscrew portals at each
-    end) ties the rails into a knock-down box. The left rail's drum-zone
-    segment (Yd 731–1631) is demountable so the light-trap drum can rotate.
-    The muslin screen sits at the nominal depth FP_Y with a 2" angle frame.
+
+def film_plane_mechanism():
+    """Four corner rails + 8 wall-seat saddles + framed muslin screen.
+
+    Rails run in +Y (depth), now full-width saddle-to-saddle, at the four corners.
+    rev11: the demountable brace cage is RETIRED — each rail end anchors to the
+    container with an IBC-style wall-seat saddle (the shell carries the rigidity);
+    right rails bolted, left rails thumb-screw drop-in for the drum swing. The
+    muslin screen sits at the nominal depth FP_Y with a 2" angle frame.
     """
     parts = []
     rail = 40                       # 40×40mm rail tube
@@ -982,30 +1027,19 @@ def film_plane_mechanism():
     z_top = C_HGT - RAIL_OFF - rail # 100mm off the ceiling
     x_left = RAIL_X_L               # 150
     x_right = RAIL_X_R - rail       # 4609
-    y0 = FP_Y_MIN                   # rails start at min carriage depth
-    y_end = y0 + RAIL_LEN           # 2300
-    # All four corner rails CONTINUOUS, full length (rev9 B2: the drum is offset
-    # clear of the X=150 left rail via the panel bay — no demountable segment).
+    # All four corner rails CONTINUOUS, now spanning the full width SADDLE-TO-SADDLE
+    # (Yd 0 → C_WID) so each end lands on its wall-seat saddle with no gap (rev11).
     for rz, nm in [(z_bot, "BR"), (z_top, "TR"), (z_bot, "BL"), (z_top, "TL")]:
         x = x_right if nm.endswith("R") else x_left
         parts.append(ruby_box(f"FP Rail {nm}",
-                              x, y0, rz, rail, RAIL_LEN, rail, color=C_STEEL))
+                              x, 0, rz, rail, C_WID, rail, color=C_STEEL))
 
-    # Demountable brace cage — rectangular portal at each end (50×50 RHS).
-    s = BRACE_RHS
-    for py, pn in [(FP_Y_MIN, "pinhole"), (FP_Y, "film")]:
-        parts.append(ruby_box(f"FP Brace Vert L ({pn})",
-                              RAIL_X_L, py, BRACE_Z_BOT,
-                              s, s, BRACE_Z_TOP - BRACE_Z_BOT, color=C_STEEL))
-        parts.append(ruby_box(f"FP Brace Vert R ({pn})",
-                              RAIL_X_R - s, py, BRACE_Z_BOT,
-                              s, s, BRACE_Z_TOP - BRACE_Z_BOT, color=C_STEEL))
-        parts.append(ruby_box(f"FP Brace Beam Bottom ({pn})",
-                              RAIL_X_L, py, BRACE_Z_BOT,
-                              RAIL_X_R - RAIL_X_L, s, s, color=C_STEEL))
-        parts.append(ruby_box(f"FP Brace Beam Top ({pn})",
-                              RAIL_X_L, py, BRACE_Z_TOP - s,
-                              RAIL_X_R - RAIL_X_L, s, s, color=C_STEEL))
+    # rev11: the demountable brace cage is RETIRED — each of the 8 rail ends is
+    # anchored to the container with an IBC-style wall-seat saddle instead (the
+    # container shell carries the rigidity). Right rails bolted, left thumb-screw.
+    corners = {"TL": (x_left, z_top), "TR": (x_right, z_top),
+               "BL": (x_left, z_bot), "BR": (x_right, z_bot)}
+    parts.append(film_plane_saddles(corners))
 
     # Muslin screen — translucent panel at the nominal film-plane depth.
     board_t = 20
@@ -1940,10 +1974,8 @@ end
 # ── Subsystems (each a component on its tag) ──
 {body}
 
-# rev10: the Ø89 swing pivot post (panel_pivot) reuses the film-plane far-left upright,
-# so strike the original 50×50 "FP Brace Vert L (film)" post to avoid a duplicate.
-fpdef = model.definitions.to_a.find {{ |d| d.name =~ /Film Plane Mechanism/ }}
-fpdef.entities.grep(Sketchup::Group).each {{ |g| g.erase! if g.name == "FP Brace Vert L (film)" }} if fpdef
+# rev11: the brace cage is retired (rail ends now sit on wall-seat saddles), so the old
+# "FP Brace Vert L (film)" duplicate-strike for the Ø89 swing pivot post is no longer needed.
 
 # ── Major-component callouts (Labels tag — shown only in the "Labeled" scene) ──
 {overview_labels()}

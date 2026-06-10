@@ -152,53 +152,9 @@ fp_inst.set_attribute(fda, "_onclick_access", "NONE")
 
 
 def saddles():
-    """Replace the brace-cage end portals: anchor each of the 8 rail ends to the
-    container with an IBC-style WALL-SEAT saddle (4 corners × near/far wall). Each
-    saddle = interior back-plate + horizontal seat (the rail rests on it) + triangular
-    gusset, THROUGH-BOLTED to an EXTERIOR plate with a 4-bolt pattern — dims reused
-    from the IBC frame wall seats (IBC_WBKT_*). The container shell provides the
-    rigidity, so the rails need no cross-cage. RIGHT rails (X4649) are permanently
-    bolted; LEFT rails (X150) drop in on thumb screws (lift out for the drum swing).
-    Costs a little carriage travel at each end (~110mm) — immaterial to the design."""
-    pw, pt = ov.IBC_WBKT_PLATE_W, ov.IBC_WBKT_PLATE_T        # 150 plate, 8 thick
-    proj, st = ov.IBC_WBKT_SEAT_PROJ, ov.IBC_WBKT_SEAT_T     # 110 seat projection, 10 thick
-    gh, wt, sw = 120, ov.WALL_T, 24 + 24                     # gusset, wall, seat width (rail+margin)
-    parts = []
-    for cid, (x, z) in RAILS.items():
-        left = (x == ov.RAIL_X_L)
-        for wall_yd in (0, ov.C_WID):
-            near = (wall_yd == 0)
-            din = 1 if near else -1
-            tag = f"{cid} {'near' if near else 'far'}"
-            by_in = 0 if near else ov.C_WID - pt            # interior plate face
-            by_out = -wt - pt if near else ov.C_WID + wt    # exterior plate face
-            sy0 = min(wall_yd, wall_yd + din * proj)        # seat span start
-            yt = wall_yd + din * proj                       # seat tip (into container)
-            # interior + EXTERIOR sandwich plates (square, 4-bolt)
-            parts.append(ov.ruby_box(f"Saddle back-plate {tag}",
-                         x - pw / 2, by_in, z - pw / 2, pw, pt, pw, color=ov.C_STEEL))
-            parts.append(ov.ruby_box(f"Saddle OUTSIDE plate {tag}",
-                         x - pw / 2, by_out, z - pw / 2, pw, pt, pw, color=ov.C_STEEL))
-            # seat the rail end rests on
-            parts.append(ov.ruby_box(f"Saddle seat {tag}",
-                         x - sw / 2, sy0, z - st, sw, proj, st, color=ov.C_STEEL))
-            # triangular gusset (Yd–Z) under the seat
-            parts.append(ov.ruby_tri(f"Saddle gusset {tag}",
-                         (x, yt, z - st), (x, wall_yd, z - st), (x, wall_yd, z - st - gh),
-                         8, color=ov.C_STEEL))
-            # 4-bolt pattern through the wall (Yd), at the plate corners
-            blo, bhi = min(by_in, by_out), max(by_in, by_out) + pt
-            for bx in (x - 50, x + 50):
-                for bz in (z - 50, z + 50):
-                    parts.append(ov.ruby_cylinder(f"Saddle wall bolt M12 {tag}",
-                                 bx, blo, bz, 6, bhi - blo, color=ov.C_STEEL, axis="y"))
-            # rail hold-down: thumb screws (LEFT, removable) or fixing bolts (RIGHT)
-            hold_c = ov.C_VALVE if left else ov.C_STEEL
-            hold_nm = "Thumb screw" if left else "Rail fixing bolt"
-            for hy in (sy0 + 25, sy0 + proj - 25):
-                parts.append(ov.ruby_cylinder(f"{hold_nm} {tag}",
-                             x, hy, z, 5, 36, color=hold_c, axis="z"))
-    return '\n'.join(parts)
+    """8 IBC-style wall-seat saddles at the rail ends — single-sourced from the overview
+    (ov.film_plane_saddles) so the two models can't drift. See that docstring for detail."""
+    return ov.film_plane_saddles(RAILS)
 
 
 def near_wall_ghost():

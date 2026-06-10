@@ -15,7 +15,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
-| 4. Film plane mechanism (4-corner Option A, manual, incl. brace cage + cross-slides) | $3,100 | $3,600 |
+| 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,100 | $3,600 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $4,929 | $7,438 |
 | 6. Electrical — power, circuits, wiring | $1,785 | $1,890 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,450 | $2,100 |
@@ -126,25 +126,25 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | DPDT momentary rocker switch | Panel-mount, 20A | 4 | [Mouser](https://www.mouser.com) | $8 |
 **Electric actuation subtotal: ~$827 (optional)**
 
-### Demountable brace cage (ICP-11 through ICP-14)
-*Two rectangular end portals of 50×50×3mm RHS brace the four-corner rail assembly; demountable joints for transport.*
+### Wall-seat saddles (ICP-11 through ICP-14) — rev 11, replaces the brace cage
+*Each of the 8 film-plane rail ends anchors to the container with an IBC-style wall-seat saddle (back-plate + seat + gusset, dims reused from the IBC frame wall seats), through-bolted with a 4-bolt pattern to an exterior wall plate — the container shell carries the rigidity. Right rails permanently bolted; left rails thumb-screw drop-in (lift out for the drum swing).*
 
 | Item | ICP # | Spec | Qty | Supplier A | Supplier B | Est. unit | Est. total |
 |------|-------|------|-----|-----------|-----------|-----------|------------|
-| [Mild steel RHS square tube — structural welded](https://www.metalsupermarkets.com/product/mild-steel-square-tube-structural-welded/) | ICP-11 | 50×50×3mm; 4 verticals @ 2188mm + 4 cross-beams @ 4499mm = 26.75 m net; order 30 m to cover saw kerf + saddle-seat cuts (~98 ft) | 30 m | [Metal Supermarkets SoCal](https://www.metalsupermarkets.com/) (Anaheim / Van Nuys / San Diego — cut to length, walk-in) | [Online Metals — 50mm×3mm carbon steel sq. tube](https://www.onlinemetals.com/en/buy/carbon-steel/50mm-x-3mm-carbon-steel-square-tube-1018-metric-60-length/pid/22489) (ships; ~$47 per 20 ft stick) | ~$7/ft est. | ~$230 est. |
-| Square tube saddle clamp, 50mm | ICP-12 | Two-piece bolt-together saddle — seats one 50×50mm RHS member over another at a demountable joint | 16 | [McMaster-Carr — steel tube clamps](https://www.mcmaster.com/products/steel-tube-clamps/) | [Amazon — 2" square tube clamps](https://www.amazon.com/2-square-tube-clamp/s?k=2%22+square+tube+clamp) | ~$8–12 est. | ~$160 est. |
-| [M8×20mm knurled thumbscrew DIN 464, SS 303](https://www.amazon.com/knurled-thumb-screws-din-464/s?k=knurled+thumb+screws+din+464) | ICP-13 | High-type knurled head, fully threaded; 2 per saddle clamp joint; 32 working + 8 spares | 40 | [Amazon — DIN 464 M8 stainless (various sellers)](https://www.amazon.com/knurled-thumb-screws-din-464/s?k=knurled+thumb+screws+din+464) | [Maedler North America — PN 65499225](https://maedlernorthamerica.com/partshop/knurled-thumb-screw-din-464-m8-x-20mm-long-stainless-steel-1-4305-pn-65499225/) (~$15–17 ea. direct; Amazon cheaper in packs) | ~$3 est. | ~$120 est. |
-| [Quick-release ball-lock pin, Ø10mm SS](https://www.mcmaster.com/products/ball-lock-pins/) | ICP-14 | 50mm usable length, stainless steel; retains demountable left-rail segment for drum-mode (4 working + 4 spares) | 8 | [McMaster-Carr — ball lock pins](https://www.mcmaster.com/products/ball-lock-pins/) | [Amazon — quick-release ball lock pins](https://www.amazon.com/quick-release-ball-lock-pins/s?k=quick+release+ball+lock+pins) | ~$6–10 est. | ~$65 est. |
+| [Mild steel plate 8mm — laser/plasma cut](https://www.metalsupermarkets.com/product/mild-steel-plate/) | ICP-11 | back-plate + exterior plate + seat + gusset per saddle; ~28 kg total over 8 saddles, cut + welded | 8 saddles | [Metal Supermarkets SoCal](https://www.metalsupermarkets.com/) (Anaheim / Van Nuys / San Diego — cut to size, walk-in) | [Online Metals — A36 steel plate 8mm](https://www.onlinemetals.com/en/buy/carbon-steel) (ships; cut to size) | ~$53 est. | ~$425 est. |
+| [M12×90mm hex through-bolt + nut + washers, SS](https://www.mcmaster.com/products/screws/) | ICP-12 | Wall sandwich through-bolt (interior↔exterior plate); 4 per saddle × 8 = 32 + 4 spare | 36 | [McMaster-Carr — A2 stainless cap screws](https://www.mcmaster.com/products/screws/) | [Amazon — M12 stainless bolts](https://www.amazon.com/s?k=m12+stainless+bolt+90mm) | ~$2.50 est. | ~$90 est. |
+| [M8×25mm knurled thumbscrew DIN 464, SS 303](https://www.amazon.com/knurled-thumb-screws-din-464/s?k=knurled+thumb+screws+din+464) | ICP-13 | Left-rail drop-in hold-down (lifts out for drum swing); 2 per saddle × 4 left saddles = 8 + 4 spare | 12 | [Amazon — DIN 464 M8 stainless](https://www.amazon.com/knurled-thumb-screws-din-464/s?k=knurled+thumb+screws+din+464) | [Maedler North America — PN 65499225](https://maedlernorthamerica.com/partshop/knurled-thumb-screw-din-464-m8-x-20mm-long-stainless-steel-1-4305-pn-65499225/) (~$15–17 ea. direct; Amazon cheaper in packs) | ~$3 est. | ~$36 est. |
+| [M8 hex fixing bolt + nut, SS](https://www.mcmaster.com/products/screws/) | ICP-14 | Right-rail permanent fixing (rail bolted to seat); 2 per saddle × 4 right saddles = 8 + spare | 12 | [McMaster-Carr — A2 stainless](https://www.mcmaster.com/products/screws/) | [Amazon — M8 stainless bolts](https://www.amazon.com/s?k=m8+stainless+bolt) | ~$2 est. | ~$24 est. |
 
-**Brace cage subtotal: ~$575 est.**
+**Wall-seat saddle subtotal: ~$575 est.** *(roughly cost-neutral with the retired brace cage)*
 
-*All prices estimated — Metal Supermarkets and McMaster-Carr do not publish per-unit pricing online; call or add to cart for a current quote. Blue Sky Supplies (blueskysupplies.com) confirmed 2"×2"×⅛" × 20 ft at $47.43 (May 2026). M8 thumbscrew pricing confirmed at ~$15–17 each from Maedler North America (PN 65499225, May 2026); Amazon multi-packs from various sellers run ~$2–5 ea. depending on pack size.*
+*All prices estimated — Metal Supermarkets and McMaster-Carr do not publish per-unit pricing online; call or add to cart for a current quote. 8mm A36 plate runs ~$3–5/kg cut. M8 thumbscrew pricing confirmed at ~$15–17 each from Maedler North America (PN 65499225, May 2026); Amazon multi-packs run ~$2–5 ea. depending on pack size.*
 
-**Section total (manual, incl. brace cage + Option A cross-slides): ~$3,237**
+**Section total (manual, incl. wall-seat saddles + Option A cross-slides): ~$3,237**
 
 > **Option A delta (2026-06-06):** the film plane is now a **fixed-size rigid** rectangle posed by **8 corner cross-slides** (2-axis X-Z stage per corner) that absorb the rigid-rotation arc travel. Added 8 cross-slide rails +$200, 8 carriages +$96, 4 intermediate plates +$60 (= +$356); removed the folding-backing piano hinge –$56 → **net +$300**. Single rigid ACM backing replaces the hinged two-panel system; the achievable envelope is tilt ±40° / swing ±28° single-axis (combined limited; the old compound-twist config is dropped).
 >
-> **4-corner vs original 2-beam design delta:** Removed 2× 80/20 T-slot beams (5893mm) — saves $416. Added: 2× extra leadscrews +$190, 2× extra handwheels +$70, 4× rod-end spherical bearings +$88, 4× corner L-brackets +$80. Added brace cage (ICP-11–14): +$575. Excl. fabrication, fasteners, and optional electric actuation.
+> **4-corner vs original 2-beam design delta:** Removed 2× 80/20 T-slot beams (5893mm) — saves $416. Added: 2× extra leadscrews +$190, 2× extra handwheels +$70, 4× rod-end spherical bearings +$88, 4× corner L-brackets +$80. Added wall-seat saddles (ICP-11–14): +$575. Excl. fabrication, fasteners, and optional electric actuation.
 
 ---
 

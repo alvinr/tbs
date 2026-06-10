@@ -2635,7 +2635,7 @@ end
   # FP Rail BR
   grp = ents.add_group
   grp.name = "FP Rail BR"
-  face = grp.entities.add_face([4609.mm,100.mm,150.mm], [4649.mm,100.mm,150.mm], [4649.mm,2300.mm,150.mm], [4609.mm,2300.mm,150.mm])
+  face = grp.entities.add_face([4609.mm,0.mm,150.mm], [4649.mm,0.mm,150.mm], [4649.mm,2362.mm,150.mm], [4609.mm,2362.mm,150.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -2646,7 +2646,7 @@ end
   # FP Rail TR
   grp = ents.add_group
   grp.name = "FP Rail TR"
-  face = grp.entities.add_face([4609.mm,100.mm,2248.mm], [4649.mm,100.mm,2248.mm], [4649.mm,2300.mm,2248.mm], [4609.mm,2300.mm,2248.mm])
+  face = grp.entities.add_face([4609.mm,0.mm,2248.mm], [4649.mm,0.mm,2248.mm], [4649.mm,2362.mm,2248.mm], [4609.mm,2362.mm,2248.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -2657,7 +2657,7 @@ end
   # FP Rail BL
   grp = ents.add_group
   grp.name = "FP Rail BL"
-  face = grp.entities.add_face([150.mm,100.mm,150.mm], [190.mm,100.mm,150.mm], [190.mm,2300.mm,150.mm], [150.mm,2300.mm,150.mm])
+  face = grp.entities.add_face([150.mm,0.mm,150.mm], [190.mm,0.mm,150.mm], [190.mm,2362.mm,150.mm], [150.mm,2362.mm,150.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -2668,7 +2668,7 @@ end
   # FP Rail TL
   grp = ents.add_group
   grp.name = "FP Rail TL"
-  face = grp.entities.add_face([150.mm,100.mm,2248.mm], [190.mm,100.mm,2248.mm], [190.mm,2300.mm,2248.mm], [150.mm,2300.mm,2248.mm])
+  face = grp.entities.add_face([150.mm,0.mm,2248.mm], [190.mm,0.mm,2248.mm], [190.mm,2362.mm,2248.mm], [150.mm,2362.mm,2248.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -2676,89 +2676,977 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP Brace Vert L (pinhole)
+  # Saddle back-plate TL near
   grp = ents.add_group
-  grp.name = "FP Brace Vert L (pinhole)"
-  face = grp.entities.add_face([150.mm,100.mm,150.mm], [200.mm,100.mm,150.mm], [200.mm,150.mm,150.mm], [150.mm,150.mm,150.mm])
+  grp.name = "Saddle back-plate TL near"
+  face = grp.entities.add_face([75.mm,0.mm,2173.mm], [225.mm,0.mm,2173.mm], [225.mm,8.mm,2173.mm], [75.mm,8.mm,2173.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2138.mm)
+  face.pushpull(150.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP Brace Vert R (pinhole)
+  # Saddle OUTSIDE plate TL near
   grp = ents.add_group
-  grp.name = "FP Brace Vert R (pinhole)"
-  face = grp.entities.add_face([4599.mm,100.mm,150.mm], [4649.mm,100.mm,150.mm], [4649.mm,150.mm,150.mm], [4599.mm,150.mm,150.mm])
+  grp.name = "Saddle OUTSIDE plate TL near"
+  face = grp.entities.add_face([75.mm,-48.mm,2173.mm], [225.mm,-48.mm,2173.mm], [225.mm,-40.mm,2173.mm], [75.mm,-40.mm,2173.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2138.mm)
+  face.pushpull(150.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP Brace Beam Bottom (pinhole)
+  # Saddle seat TL near
   grp = ents.add_group
-  grp.name = "FP Brace Beam Bottom (pinhole)"
-  face = grp.entities.add_face([150.mm,100.mm,150.mm], [4649.mm,100.mm,150.mm], [4649.mm,150.mm,150.mm], [150.mm,150.mm,150.mm])
+  grp.name = "Saddle seat TL near"
+  face = grp.entities.add_face([126.mm,0.mm,2238.mm], [174.mm,0.mm,2238.mm], [174.mm,110.mm,2238.mm], [126.mm,110.mm,2238.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(10.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP Brace Beam Top (pinhole)
+  # Saddle gusset TL near
   grp = ents.add_group
-  grp.name = "FP Brace Beam Top (pinhole)"
-  face = grp.entities.add_face([150.mm,100.mm,2238.mm], [4649.mm,100.mm,2238.mm], [4649.mm,150.mm,2238.mm], [150.mm,150.mm,2238.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  grp.name = "Saddle gusset TL near"
+  ge = grp.entities
+  f = ge.add_face([150.mm,110.mm,2238.mm], [150.mm,0.mm,2238.mm], [150.mm,0.mm,2118.mm])
+  f.pushpull(8.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP Brace Vert L (film)
+  # Saddle wall bolt M12 TL near
   grp = ents.add_group
-  grp.name = "FP Brace Vert L (film)"
-  face = grp.entities.add_face([150.mm,2262.mm,150.mm], [200.mm,2262.mm,150.mm], [200.mm,2312.mm,150.mm], [150.mm,2312.mm,150.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(2138.mm)
+  grp.name = "Saddle wall bolt M12 TL near"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,-48.mm,2198.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP Brace Vert R (film)
+  # Saddle wall bolt M12 TL near
   grp = ents.add_group
-  grp.name = "FP Brace Vert R (film)"
-  face = grp.entities.add_face([4599.mm,2262.mm,150.mm], [4649.mm,2262.mm,150.mm], [4649.mm,2312.mm,150.mm], [4599.mm,2312.mm,150.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(2138.mm)
+  grp.name = "Saddle wall bolt M12 TL near"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,-48.mm,2298.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP Brace Beam Bottom (film)
+  # Saddle wall bolt M12 TL near
   grp = ents.add_group
-  grp.name = "FP Brace Beam Bottom (film)"
-  face = grp.entities.add_face([150.mm,2262.mm,150.mm], [4649.mm,2262.mm,150.mm], [4649.mm,2312.mm,150.mm], [150.mm,2312.mm,150.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  grp.name = "Saddle wall bolt M12 TL near"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,-48.mm,2198.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP Brace Beam Top (film)
+  # Saddle wall bolt M12 TL near
   grp = ents.add_group
-  grp.name = "FP Brace Beam Top (film)"
-  face = grp.entities.add_face([150.mm,2262.mm,2238.mm], [4649.mm,2262.mm,2238.mm], [4649.mm,2312.mm,2238.mm], [150.mm,2312.mm,2238.mm])
+  grp.name = "Saddle wall bolt M12 TL near"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,-48.mm,2298.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Thumb screw TL near
+  grp = ents.add_group
+  grp.name = "Thumb screw TL near"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,25.mm,2248.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Thumb screw TL near
+  grp = ents.add_group
+  grp.name = "Thumb screw TL near"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,85.mm,2248.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle back-plate TL far
+  grp = ents.add_group
+  grp.name = "Saddle back-plate TL far"
+  face = grp.entities.add_face([75.mm,2354.mm,2173.mm], [225.mm,2354.mm,2173.mm], [225.mm,2362.mm,2173.mm], [75.mm,2362.mm,2173.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(150.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle OUTSIDE plate TL far
+  grp = ents.add_group
+  grp.name = "Saddle OUTSIDE plate TL far"
+  face = grp.entities.add_face([75.mm,2402.mm,2173.mm], [225.mm,2402.mm,2173.mm], [225.mm,2410.mm,2173.mm], [75.mm,2410.mm,2173.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle seat TL far
+  grp = ents.add_group
+  grp.name = "Saddle seat TL far"
+  face = grp.entities.add_face([126.mm,2252.mm,2238.mm], [174.mm,2252.mm,2238.mm], [174.mm,2362.mm,2238.mm], [126.mm,2362.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle gusset TL far
+  grp = ents.add_group
+  grp.name = "Saddle gusset TL far"
+  ge = grp.entities
+  f = ge.add_face([150.mm,2252.mm,2238.mm], [150.mm,2362.mm,2238.mm], [150.mm,2362.mm,2118.mm])
+  f.pushpull(8.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TL far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TL far"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,2354.mm,2198.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TL far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TL far"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,2354.mm,2298.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TL far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TL far"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,2354.mm,2198.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TL far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TL far"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,2354.mm,2298.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Thumb screw TL far
+  grp = ents.add_group
+  grp.name = "Thumb screw TL far"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,2277.mm,2248.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Thumb screw TL far
+  grp = ents.add_group
+  grp.name = "Thumb screw TL far"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,2337.mm,2248.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle back-plate TR near
+  grp = ents.add_group
+  grp.name = "Saddle back-plate TR near"
+  face = grp.entities.add_face([4534.mm,0.mm,2173.mm], [4684.mm,0.mm,2173.mm], [4684.mm,8.mm,2173.mm], [4534.mm,8.mm,2173.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle OUTSIDE plate TR near
+  grp = ents.add_group
+  grp.name = "Saddle OUTSIDE plate TR near"
+  face = grp.entities.add_face([4534.mm,-48.mm,2173.mm], [4684.mm,-48.mm,2173.mm], [4684.mm,-40.mm,2173.mm], [4534.mm,-40.mm,2173.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle seat TR near
+  grp = ents.add_group
+  grp.name = "Saddle seat TR near"
+  face = grp.entities.add_face([4585.mm,0.mm,2238.mm], [4633.mm,0.mm,2238.mm], [4633.mm,110.mm,2238.mm], [4585.mm,110.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle gusset TR near
+  grp = ents.add_group
+  grp.name = "Saddle gusset TR near"
+  ge = grp.entities
+  f = ge.add_face([4609.mm,110.mm,2238.mm], [4609.mm,0.mm,2238.mm], [4609.mm,0.mm,2118.mm])
+  f.pushpull(8.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4559.mm,-48.mm,2198.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4559.mm,-48.mm,2298.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4659.mm,-48.mm,2198.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4659.mm,-48.mm,2298.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail fixing bolt TR near
+  grp = ents.add_group
+  grp.name = "Rail fixing bolt TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4609.mm,25.mm,2248.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail fixing bolt TR near
+  grp = ents.add_group
+  grp.name = "Rail fixing bolt TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4609.mm,85.mm,2248.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle back-plate TR far
+  grp = ents.add_group
+  grp.name = "Saddle back-plate TR far"
+  face = grp.entities.add_face([4534.mm,2354.mm,2173.mm], [4684.mm,2354.mm,2173.mm], [4684.mm,2362.mm,2173.mm], [4534.mm,2362.mm,2173.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle OUTSIDE plate TR far
+  grp = ents.add_group
+  grp.name = "Saddle OUTSIDE plate TR far"
+  face = grp.entities.add_face([4534.mm,2402.mm,2173.mm], [4684.mm,2402.mm,2173.mm], [4684.mm,2410.mm,2173.mm], [4534.mm,2410.mm,2173.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle seat TR far
+  grp = ents.add_group
+  grp.name = "Saddle seat TR far"
+  face = grp.entities.add_face([4585.mm,2252.mm,2238.mm], [4633.mm,2252.mm,2238.mm], [4633.mm,2362.mm,2238.mm], [4585.mm,2362.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle gusset TR far
+  grp = ents.add_group
+  grp.name = "Saddle gusset TR far"
+  ge = grp.entities
+  f = ge.add_face([4609.mm,2252.mm,2238.mm], [4609.mm,2362.mm,2238.mm], [4609.mm,2362.mm,2118.mm])
+  f.pushpull(8.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4559.mm,2354.mm,2198.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4559.mm,2354.mm,2298.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4659.mm,2354.mm,2198.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4659.mm,2354.mm,2298.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail fixing bolt TR far
+  grp = ents.add_group
+  grp.name = "Rail fixing bolt TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4609.mm,2277.mm,2248.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail fixing bolt TR far
+  grp = ents.add_group
+  grp.name = "Rail fixing bolt TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4609.mm,2337.mm,2248.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle back-plate BL near
+  grp = ents.add_group
+  grp.name = "Saddle back-plate BL near"
+  face = grp.entities.add_face([75.mm,0.mm,75.mm], [225.mm,0.mm,75.mm], [225.mm,8.mm,75.mm], [75.mm,8.mm,75.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle OUTSIDE plate BL near
+  grp = ents.add_group
+  grp.name = "Saddle OUTSIDE plate BL near"
+  face = grp.entities.add_face([75.mm,-48.mm,75.mm], [225.mm,-48.mm,75.mm], [225.mm,-40.mm,75.mm], [75.mm,-40.mm,75.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle seat BL near
+  grp = ents.add_group
+  grp.name = "Saddle seat BL near"
+  face = grp.entities.add_face([126.mm,0.mm,140.mm], [174.mm,0.mm,140.mm], [174.mm,110.mm,140.mm], [126.mm,110.mm,140.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle gusset BL near
+  grp = ents.add_group
+  grp.name = "Saddle gusset BL near"
+  ge = grp.entities
+  f = ge.add_face([150.mm,110.mm,140.mm], [150.mm,0.mm,140.mm], [150.mm,0.mm,20.mm])
+  f.pushpull(8.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BL near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BL near"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,-48.mm,100.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BL near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BL near"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,-48.mm,200.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BL near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BL near"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,-48.mm,100.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BL near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BL near"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,-48.mm,200.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Thumb screw BL near
+  grp = ents.add_group
+  grp.name = "Thumb screw BL near"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,25.mm,150.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Thumb screw BL near
+  grp = ents.add_group
+  grp.name = "Thumb screw BL near"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,85.mm,150.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle back-plate BL far
+  grp = ents.add_group
+  grp.name = "Saddle back-plate BL far"
+  face = grp.entities.add_face([75.mm,2354.mm,75.mm], [225.mm,2354.mm,75.mm], [225.mm,2362.mm,75.mm], [75.mm,2362.mm,75.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle OUTSIDE plate BL far
+  grp = ents.add_group
+  grp.name = "Saddle OUTSIDE plate BL far"
+  face = grp.entities.add_face([75.mm,2402.mm,75.mm], [225.mm,2402.mm,75.mm], [225.mm,2410.mm,75.mm], [75.mm,2410.mm,75.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle seat BL far
+  grp = ents.add_group
+  grp.name = "Saddle seat BL far"
+  face = grp.entities.add_face([126.mm,2252.mm,140.mm], [174.mm,2252.mm,140.mm], [174.mm,2362.mm,140.mm], [126.mm,2362.mm,140.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle gusset BL far
+  grp = ents.add_group
+  grp.name = "Saddle gusset BL far"
+  ge = grp.entities
+  f = ge.add_face([150.mm,2252.mm,140.mm], [150.mm,2362.mm,140.mm], [150.mm,2362.mm,20.mm])
+  f.pushpull(8.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BL far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BL far"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,2354.mm,100.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BL far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BL far"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,2354.mm,200.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BL far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BL far"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,2354.mm,100.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BL far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BL far"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,2354.mm,200.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Thumb screw BL far
+  grp = ents.add_group
+  grp.name = "Thumb screw BL far"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,2277.mm,150.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Thumb screw BL far
+  grp = ents.add_group
+  grp.name = "Thumb screw BL far"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,2337.mm,150.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle back-plate BR near
+  grp = ents.add_group
+  grp.name = "Saddle back-plate BR near"
+  face = grp.entities.add_face([4534.mm,0.mm,75.mm], [4684.mm,0.mm,75.mm], [4684.mm,8.mm,75.mm], [4534.mm,8.mm,75.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle OUTSIDE plate BR near
+  grp = ents.add_group
+  grp.name = "Saddle OUTSIDE plate BR near"
+  face = grp.entities.add_face([4534.mm,-48.mm,75.mm], [4684.mm,-48.mm,75.mm], [4684.mm,-40.mm,75.mm], [4534.mm,-40.mm,75.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle seat BR near
+  grp = ents.add_group
+  grp.name = "Saddle seat BR near"
+  face = grp.entities.add_face([4585.mm,0.mm,140.mm], [4633.mm,0.mm,140.mm], [4633.mm,110.mm,140.mm], [4585.mm,110.mm,140.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle gusset BR near
+  grp = ents.add_group
+  grp.name = "Saddle gusset BR near"
+  ge = grp.entities
+  f = ge.add_face([4609.mm,110.mm,140.mm], [4609.mm,0.mm,140.mm], [4609.mm,0.mm,20.mm])
+  f.pushpull(8.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BR near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BR near"
+  ge = grp.entities
+  circle = ge.add_circle([4559.mm,-48.mm,100.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BR near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BR near"
+  ge = grp.entities
+  circle = ge.add_circle([4559.mm,-48.mm,200.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BR near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BR near"
+  ge = grp.entities
+  circle = ge.add_circle([4659.mm,-48.mm,100.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BR near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BR near"
+  ge = grp.entities
+  circle = ge.add_circle([4659.mm,-48.mm,200.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail fixing bolt BR near
+  grp = ents.add_group
+  grp.name = "Rail fixing bolt BR near"
+  ge = grp.entities
+  circle = ge.add_circle([4609.mm,25.mm,150.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail fixing bolt BR near
+  grp = ents.add_group
+  grp.name = "Rail fixing bolt BR near"
+  ge = grp.entities
+  circle = ge.add_circle([4609.mm,85.mm,150.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle back-plate BR far
+  grp = ents.add_group
+  grp.name = "Saddle back-plate BR far"
+  face = grp.entities.add_face([4534.mm,2354.mm,75.mm], [4684.mm,2354.mm,75.mm], [4684.mm,2362.mm,75.mm], [4534.mm,2362.mm,75.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle OUTSIDE plate BR far
+  grp = ents.add_group
+  grp.name = "Saddle OUTSIDE plate BR far"
+  face = grp.entities.add_face([4534.mm,2402.mm,75.mm], [4684.mm,2402.mm,75.mm], [4684.mm,2410.mm,75.mm], [4534.mm,2410.mm,75.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle seat BR far
+  grp = ents.add_group
+  grp.name = "Saddle seat BR far"
+  face = grp.entities.add_face([4585.mm,2252.mm,140.mm], [4633.mm,2252.mm,140.mm], [4633.mm,2362.mm,140.mm], [4585.mm,2362.mm,140.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle gusset BR far
+  grp = ents.add_group
+  grp.name = "Saddle gusset BR far"
+  ge = grp.entities
+  f = ge.add_face([4609.mm,2252.mm,140.mm], [4609.mm,2362.mm,140.mm], [4609.mm,2362.mm,20.mm])
+  f.pushpull(8.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BR far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BR far"
+  ge = grp.entities
+  circle = ge.add_circle([4559.mm,2354.mm,100.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BR far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BR far"
+  ge = grp.entities
+  circle = ge.add_circle([4559.mm,2354.mm,200.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BR far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BR far"
+  ge = grp.entities
+  circle = ge.add_circle([4659.mm,2354.mm,100.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BR far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BR far"
+  ge = grp.entities
+  circle = ge.add_circle([4659.mm,2354.mm,200.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail fixing bolt BR far
+  grp = ents.add_group
+  grp.name = "Rail fixing bolt BR far"
+  ge = grp.entities
+  circle = ge.add_circle([4609.mm,2277.mm,150.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail fixing bolt BR far
+  grp = ents.add_group
+  grp.name = "Rail fixing bolt BR far"
+  ge = grp.entities
+  circle = ge.add_circle([4609.mm,2337.mm,150.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -11848,7 +12736,7 @@ end
   face = grp.entities.add_face([2374.mm,-13.mm,925.mm], [2424.mm,-13.mm,925.mm], [2424.mm,37.mm,925.mm], [2374.mm,37.mm,925.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["BV-02 (ball valve)"] || model.materials.add("BV-02 (ball valve)")
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
   mat.color = Sketchup::Color.new(184, 184, 64)
   mat.alpha = 1.0
   grp.material = mat
@@ -11872,7 +12760,7 @@ end
   face = grp.entities.add_face([3714.mm,12.mm,1200.mm], [3744.mm,12.mm,1200.mm], [3744.mm,142.mm,1200.mm], [3714.mm,142.mm,1200.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["BV-02 (ball valve)"] || model.materials.add("BV-02 (ball valve)")
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
   mat.color = Sketchup::Color.new(184, 184, 64)
   mat.alpha = 1.0
   grp.material = mat
@@ -12761,10 +13649,8 @@ end
   inst.layer = model.layers["Water Plumbing"]
 
 
-# rev10: the Ø89 swing pivot post (panel_pivot) reuses the film-plane far-left upright,
-# so strike the original 50×50 "FP Brace Vert L (film)" post to avoid a duplicate.
-fpdef = model.definitions.to_a.find { |d| d.name =~ /Film Plane Mechanism/ }
-fpdef.entities.grep(Sketchup::Group).each { |g| g.erase! if g.name == "FP Brace Vert L (film)" } if fpdef
+# rev11: the brace cage is retired (rail ends now sit on wall-seat saddles), so the old
+# "FP Brace Vert L (film)" duplicate-strike for the Ø89 swing pivot post is no longer needed.
 
 # ── Major-component callouts (Labels tag — shown only in the "Labeled" scene) ──
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Pinhole Assembly" }

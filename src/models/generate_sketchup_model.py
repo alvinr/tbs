@@ -2004,17 +2004,23 @@ def water_plumbing():
     # tray–IBC gap into the corridor and up to the pump.
     # rev12: the return riser drops in the GRATE GAP between the two walkway long
     # beams (X<4589) — the old X+70 drop (X4620) fell on the right long beam
-    # (X4589-4629). The Z30 floor run then clears the beam + bottom film rail.
+    # (X4589-4629). And it TWISTS in Yd at valve height so the return leg lands at a
+    # different depth than the pickup riser (they were both at Yd80 → stacked into one
+    # pipe). The return drops in the clear strip in FRONT of the tray (Yd past the
+    # Yd0-40 end beam, before the tray near edge Yd80), then the Z30 floor run heads
+    # to the gap — clearing the beam + bottom film rail.
     gapX = (PROC_TRAY_X_R + IBC_COL_X) / 2     # 4651.5 — centered in the 45mm gap
     valveZ = WALKWAY_H + 65                     # 195 — valve body above the deck
-    dropX = PROC_TRAY_DRAIN_X - 50              # 4500 — return riser in the grate gap,
-                                                # clear left of the right long beam (X4589)
+    dropX = PROC_TRAY_DRAIN_X - 70              # 4480 — return riser in the grate gap
+    dropY = RWK_BEARER_W + 10                   # 50 — offset depth: clear of the Yd0-40
+                                                # end beam, in front of the tray (Yd80)
     pipe("Tray Sump → P-04",
-         [(PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z),
-          (PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, valveZ),
-          (dropX, PROC_TRAY_DRAIN_YD, valveZ),
-          (dropX, PROC_TRAY_DRAIN_YD, 30),
-          (gapX, PROC_TRAY_DRAIN_YD, 30),
+         [(PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z),   # sump pickup
+          (PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, valveZ),             # up to the valve
+          (dropX, PROC_TRAY_DRAIN_YD, valveZ),                         # over in X (valve body)
+          (dropX, dropY, valveZ),                                      # TWIST: jog in Yd
+          (dropX, dropY, 30),                                          # return riser (offset)
+          (gapX, dropY, 30),                                           # floor run out to the gap
           (gapX, cc, 30), (rxB, cc, 30), (rxB, pyL, 30), (rxB, pyL, pZ2)],
          C_IBC_WASTE)
 

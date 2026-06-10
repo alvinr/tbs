@@ -1685,10 +1685,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # ═══ Cantilever Right Walkway ═══
   defn = model.definitions.add("Cantilever Right Walkway")
   ents = defn.entities
-  # Cantilever arm Yd0
+  # Cantilever arm (off IBC upright) Yd1046
   grp = ents.add_group
-  grp.name = "Cantilever arm Yd0"
-  face = grp.entities.add_face([4329.mm,0.mm,70.mm], [4674.mm,0.mm,70.mm], [4674.mm,40.mm,70.mm], [4329.mm,40.mm,70.mm])
+  grp.name = "Cantilever arm (off IBC upright) Yd1046"
+  face = grp.entities.add_face([4329.mm,1046.mm,70.mm], [4734.mm,1046.mm,70.mm], [4734.mm,1086.mm,70.mm], [4329.mm,1086.mm,70.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(45.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
@@ -1696,95 +1696,58 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame anchor gusset Yd0
+  # Upright clamp plate Yd1046 Y1038
   grp = ents.add_group
-  grp.name = "Frame anchor gusset Yd0"
-  face = grp.entities.add_face([4674.mm,-8.mm,45.mm], [4682.mm,-8.mm,45.mm], [4682.mm,48.mm,45.mm], [4674.mm,48.mm,45.mm])
+  grp.name = "Upright clamp plate Yd1046 Y1038"
+  face = grp.entities.add_face([4730.mm,1038.mm,45.mm], [4788.mm,1038.mm,45.mm], [4788.mm,1046.mm,45.mm], [4730.mm,1046.mm,45.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(105.mm)
+  face.pushpull(100.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame anchor bolt M12 Yd0 Z75
+  # Upright clamp plate Yd1046 Y1086
   grp = ents.add_group
-  grp.name = "Frame anchor bolt M12 Yd0 Z75"
-  ge = grp.entities
-  circle = ge.add_circle([4662.mm,20.mm,75.mm], [1,0,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(30.mm)
-  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Frame anchor bolt M12 Yd0 Z135
-  grp = ents.add_group
-  grp.name = "Frame anchor bolt M12 Yd0 Z135"
-  ge = grp.entities
-  circle = ge.add_circle([4662.mm,20.mm,135.mm], [1,0,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(30.mm)
-  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cantilever arm Yd1046
-  grp = ents.add_group
-  grp.name = "Cantilever arm Yd1046"
-  face = grp.entities.add_face([4329.mm,1026.mm,70.mm], [4674.mm,1026.mm,70.mm], [4674.mm,1066.mm,70.mm], [4329.mm,1066.mm,70.mm])
+  grp.name = "Upright clamp plate Yd1046 Y1086"
+  face = grp.entities.add_face([4730.mm,1086.mm,45.mm], [4788.mm,1086.mm,45.mm], [4788.mm,1094.mm,45.mm], [4730.mm,1094.mm,45.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(45.mm)
+  face.pushpull(100.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame anchor gusset Yd1046
+  # Upright bolt M12 Yd1046 Z76
   grp = ents.add_group
-  grp.name = "Frame anchor gusset Yd1046"
-  face = grp.entities.add_face([4674.mm,1018.mm,45.mm], [4682.mm,1018.mm,45.mm], [4682.mm,1074.mm,45.mm], [4674.mm,1074.mm,45.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(105.mm)
-  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Frame anchor bolt M12 Yd1046 Z75
-  grp = ents.add_group
-  grp.name = "Frame anchor bolt M12 Yd1046 Z75"
+  grp.name = "Upright bolt M12 Yd1046 Z76"
   ge = grp.entities
-  circle = ge.add_circle([4662.mm,1046.mm,75.mm], [1,0,0], 6.mm, 24)
+  circle = ge.add_circle([4759.mm,1034.mm,76.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(30.mm)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(64.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame anchor bolt M12 Yd1046 Z135
+  # Upright bolt M12 Yd1046 Z133
   grp = ents.add_group
-  grp.name = "Frame anchor bolt M12 Yd1046 Z135"
+  grp.name = "Upright bolt M12 Yd1046 Z133"
   ge = grp.entities
-  circle = ge.add_circle([4662.mm,1046.mm,135.mm], [1,0,0], 6.mm, 24)
+  circle = ge.add_circle([4759.mm,1034.mm,133.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(30.mm)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(64.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cantilever arm Yd1316
+  # Cantilever arm (off IBC upright) Yd1266
   grp = ents.add_group
-  grp.name = "Cantilever arm Yd1316"
-  face = grp.entities.add_face([4329.mm,1296.mm,70.mm], [4674.mm,1296.mm,70.mm], [4674.mm,1336.mm,70.mm], [4329.mm,1336.mm,70.mm])
+  grp.name = "Cantilever arm (off IBC upright) Yd1266"
+  face = grp.entities.add_face([4329.mm,1266.mm,70.mm], [4734.mm,1266.mm,70.mm], [4734.mm,1306.mm,70.mm], [4329.mm,1306.mm,70.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(45.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
@@ -1792,47 +1755,58 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame anchor gusset Yd1316
+  # Upright clamp plate Yd1266 Y1258
   grp = ents.add_group
-  grp.name = "Frame anchor gusset Yd1316"
-  face = grp.entities.add_face([4674.mm,1288.mm,45.mm], [4682.mm,1288.mm,45.mm], [4682.mm,1344.mm,45.mm], [4674.mm,1344.mm,45.mm])
+  grp.name = "Upright clamp plate Yd1266 Y1258"
+  face = grp.entities.add_face([4730.mm,1258.mm,45.mm], [4788.mm,1258.mm,45.mm], [4788.mm,1266.mm,45.mm], [4730.mm,1266.mm,45.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(105.mm)
+  face.pushpull(100.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame anchor bolt M12 Yd1316 Z75
+  # Upright clamp plate Yd1266 Y1306
   grp = ents.add_group
-  grp.name = "Frame anchor bolt M12 Yd1316 Z75"
+  grp.name = "Upright clamp plate Yd1266 Y1306"
+  face = grp.entities.add_face([4730.mm,1306.mm,45.mm], [4788.mm,1306.mm,45.mm], [4788.mm,1314.mm,45.mm], [4730.mm,1314.mm,45.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Upright bolt M12 Yd1266 Z76
+  grp = ents.add_group
+  grp.name = "Upright bolt M12 Yd1266 Z76"
   ge = grp.entities
-  circle = ge.add_circle([4662.mm,1316.mm,75.mm], [1,0,0], 6.mm, 24)
+  circle = ge.add_circle([4759.mm,1254.mm,76.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(30.mm)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(64.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame anchor bolt M12 Yd1316 Z135
+  # Upright bolt M12 Yd1266 Z133
   grp = ents.add_group
-  grp.name = "Frame anchor bolt M12 Yd1316 Z135"
+  grp.name = "Upright bolt M12 Yd1266 Z133"
   ge = grp.entities
-  circle = ge.add_circle([4662.mm,1316.mm,135.mm], [1,0,0], 6.mm, 24)
+  circle = ge.add_circle([4759.mm,1254.mm,133.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(30.mm)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(64.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cantilever arm Yd2362
+  # Wall ledger (near wall)
   grp = ents.add_group
-  grp.name = "Cantilever arm Yd2362"
-  face = grp.entities.add_face([4329.mm,2322.mm,70.mm], [4674.mm,2322.mm,70.mm], [4674.mm,2362.mm,70.mm], [4329.mm,2362.mm,70.mm])
+  grp.name = "Wall ledger (near wall)"
+  face = grp.entities.add_face([4329.mm,0.mm,70.mm], [4629.mm,0.mm,70.mm], [4629.mm,40.mm,70.mm], [4329.mm,40.mm,70.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(45.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
@@ -1840,46 +1814,212 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame anchor gusset Yd2362
+  # Wall bracket plate (near wall) X4389
   grp = ents.add_group
-  grp.name = "Frame anchor gusset Yd2362"
-  face = grp.entities.add_face([4674.mm,2314.mm,45.mm], [4682.mm,2314.mm,45.mm], [4682.mm,2370.mm,45.mm], [4674.mm,2370.mm,45.mm])
+  grp.name = "Wall bracket plate (near wall) X4389"
+  face = grp.entities.add_face([4349.mm,0.mm,52.mm], [4429.mm,0.mm,52.mm], [4429.mm,8.mm,52.mm], [4349.mm,8.mm,52.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(105.mm)
+  face.pushpull(81.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame anchor bolt M12 Yd2362 Z75
+  # Wall ext. plate (near wall) X4389
   grp = ents.add_group
-  grp.name = "Frame anchor bolt M12 Yd2362 Z75"
+  grp.name = "Wall ext. plate (near wall) X4389"
+  face = grp.entities.add_face([4349.mm,-48.mm,52.mm], [4429.mm,-48.mm,52.mm], [4429.mm,-40.mm,52.mm], [4349.mm,-40.mm,52.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(81.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wall bolt (near wall) X4389 Z70
+  grp = ents.add_group
+  grp.name = "Wall bolt (near wall) X4389 Z70"
   ge = grp.entities
-  circle = ge.add_circle([4662.mm,2342.mm,75.mm], [1,0,0], 6.mm, 24)
+  circle = ge.add_circle([4389.mm,-48.mm,70.mm], [0,1,0], 5.mm, 24)
   cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(30.mm)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame anchor bolt M12 Yd2362 Z135
+  # Wall bolt (near wall) X4389 Z123
   grp = ents.add_group
-  grp.name = "Frame anchor bolt M12 Yd2362 Z135"
+  grp.name = "Wall bolt (near wall) X4389 Z123"
   ge = grp.entities
-  circle = ge.add_circle([4662.mm,2342.mm,135.mm], [1,0,0], 6.mm, 24)
+  circle = ge.add_circle([4389.mm,-48.mm,123.mm], [0,1,0], 5.mm, 24)
   cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(30.mm)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right bearer X4329 (on arms)
+  # Wall bracket plate (near wall) X4569
   grp = ents.add_group
-  grp.name = "Right bearer X4329 (on arms)"
+  grp.name = "Wall bracket plate (near wall) X4569"
+  face = grp.entities.add_face([4529.mm,0.mm,52.mm], [4609.mm,0.mm,52.mm], [4609.mm,8.mm,52.mm], [4529.mm,8.mm,52.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(81.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wall ext. plate (near wall) X4569
+  grp = ents.add_group
+  grp.name = "Wall ext. plate (near wall) X4569"
+  face = grp.entities.add_face([4529.mm,-48.mm,52.mm], [4609.mm,-48.mm,52.mm], [4609.mm,-40.mm,52.mm], [4529.mm,-40.mm,52.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(81.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wall bolt (near wall) X4569 Z70
+  grp = ents.add_group
+  grp.name = "Wall bolt (near wall) X4569 Z70"
+  ge = grp.entities
+  circle = ge.add_circle([4569.mm,-48.mm,70.mm], [0,1,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wall bolt (near wall) X4569 Z123
+  grp = ents.add_group
+  grp.name = "Wall bolt (near wall) X4569 Z123"
+  ge = grp.entities
+  circle = ge.add_circle([4569.mm,-48.mm,123.mm], [0,1,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wall ledger (far wall)
+  grp = ents.add_group
+  grp.name = "Wall ledger (far wall)"
+  face = grp.entities.add_face([4329.mm,2322.mm,70.mm], [4629.mm,2322.mm,70.mm], [4629.mm,2362.mm,70.mm], [4329.mm,2362.mm,70.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(45.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wall bracket plate (far wall) X4389
+  grp = ents.add_group
+  grp.name = "Wall bracket plate (far wall) X4389"
+  face = grp.entities.add_face([4349.mm,2354.mm,52.mm], [4429.mm,2354.mm,52.mm], [4429.mm,2362.mm,52.mm], [4349.mm,2362.mm,52.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(81.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wall ext. plate (far wall) X4389
+  grp = ents.add_group
+  grp.name = "Wall ext. plate (far wall) X4389"
+  face = grp.entities.add_face([4349.mm,2402.mm,52.mm], [4429.mm,2402.mm,52.mm], [4429.mm,2410.mm,52.mm], [4349.mm,2410.mm,52.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(81.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wall bolt (far wall) X4389 Z70
+  grp = ents.add_group
+  grp.name = "Wall bolt (far wall) X4389 Z70"
+  ge = grp.entities
+  circle = ge.add_circle([4389.mm,2354.mm,70.mm], [0,1,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wall bolt (far wall) X4389 Z123
+  grp = ents.add_group
+  grp.name = "Wall bolt (far wall) X4389 Z123"
+  ge = grp.entities
+  circle = ge.add_circle([4389.mm,2354.mm,123.mm], [0,1,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wall bracket plate (far wall) X4569
+  grp = ents.add_group
+  grp.name = "Wall bracket plate (far wall) X4569"
+  face = grp.entities.add_face([4529.mm,2354.mm,52.mm], [4609.mm,2354.mm,52.mm], [4609.mm,2362.mm,52.mm], [4529.mm,2362.mm,52.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(81.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wall ext. plate (far wall) X4569
+  grp = ents.add_group
+  grp.name = "Wall ext. plate (far wall) X4569"
+  face = grp.entities.add_face([4529.mm,2402.mm,52.mm], [4609.mm,2402.mm,52.mm], [4609.mm,2410.mm,52.mm], [4529.mm,2410.mm,52.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(81.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wall bolt (far wall) X4569 Z70
+  grp = ents.add_group
+  grp.name = "Wall bolt (far wall) X4569 Z70"
+  ge = grp.entities
+  circle = ge.add_circle([4569.mm,2354.mm,70.mm], [0,1,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wall bolt (far wall) X4569 Z123
+  grp = ents.add_group
+  grp.name = "Wall bolt (far wall) X4569 Z123"
+  ge = grp.entities
+  circle = ge.add_circle([4569.mm,2354.mm,123.mm], [0,1,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Right bearer X4329
+  grp = ents.add_group
+  grp.name = "Right bearer X4329"
   face = grp.entities.add_face([4329.mm,0.mm,80.mm], [4369.mm,0.mm,80.mm], [4369.mm,2362.mm,80.mm], [4329.mm,2362.mm,80.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(35.mm)
@@ -1888,9 +2028,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Right bearer X4589 (on arms)
+  # Right bearer X4589
   grp = ents.add_group
-  grp.name = "Right bearer X4589 (on arms)"
+  grp.name = "Right bearer X4589"
   face = grp.entities.add_face([4589.mm,0.mm,80.mm], [4629.mm,0.mm,80.mm], [4629.mm,2362.mm,80.mm], [4589.mm,2362.mm,80.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(35.mm)
@@ -1915,17 +2055,25 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.layer = model.layers["Cantilever Walkway"]
 
 
-anc = Geom::Point3d.new(4674.mm, 0.mm, 1100.mm)
-txt = entities.add_text("IBC FRAME (anchor)
-X4674, 50×50 RHS uprights", anc, Geom::Vector3d.new(350.mm, -400.mm, 500.mm))
+anc = Geom::Point3d.new(4734.mm, 1046.mm, 900.mm)
+txt = entities.add_text("IBC CORRIDOR UPRIGHT (X4734)
+← INNER arms U-clamp here (2× M12)", anc, Geom::Vector3d.new(400.mm, -350.mm, 600.mm))
 txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(4501.5.mm, 1046.mm, 115.mm)
-txt = entities.add_text("CANTILEVER ARM ×4
-345mm reach @ Yd 0/1046/1316/2362", anc, Geom::Vector3d.new(-300.mm, -700.mm, 650.mm))
+anc = Geom::Point3d.new(4531.5.mm, 1046.mm, 115.mm)
+txt = entities.add_text("INNER CANTILEVER ARM ×2
+off the IBC corridor uprights", anc, Geom::Vector3d.new(-300.mm, -650.mm, 650.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(4449.mm, 40.mm, 115.mm)
+txt = entities.add_text("NEAR-WALL LEDGER
+through-bolted to the wall (int+ext plate)", anc, Geom::Vector3d.new(-250.mm, -650.mm, 700.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(4449.mm, 2322.mm, 115.mm)
+txt = entities.add_text("FAR-WALL LEDGER
+through-bolted to the wall", anc, Geom::Vector3d.new(-250.mm, 650.mm, 700.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(4479.mm, 600.mm, 130.mm)
 txt = entities.add_text("RIGHT WALKWAY GRATE
-(cantilevered — no ceiling rods)", anc, Geom::Vector3d.new(-250.mm, -700.mm, 700.mm))
+(no ceiling rods)", anc, Geom::Vector3d.new(-250.mm, -700.mm, 800.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(4649.mm, 1700.mm, 1200.mm)
 txt = entities.add_text("FILM-PLANE RIGHT RAIL + SADDLES
@@ -1955,7 +2103,7 @@ dir = Geom::Vector3d.new(-0.6, -0.7, 0.45); dir.normalize!
 eye = ctr.offset(dir, bb.diagonal * 1.4)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
-[["Combined", ["Context", "IBC Frame", "Tray + Spray", "Film Rail + Saddle", "Cantilever Walkway"]], ["Cantilever only", ["Cantilever Walkway", "IBC Frame"]], ["Clearance (film + spray)", ["Cantilever Walkway", "Film Rail + Saddle", "Tray + Spray"]], ["Labeled", ["Context", "IBC Frame", "Tray + Spray", "Film Rail + Saddle", "Cantilever Walkway", "Labels"]]].each { |name, tags|
+[["Combined", ["Context", "IBC Frame", "Tray + Spray", "Film Rail + Saddle", "Cantilever Walkway"]], ["Anchors (frame + walls)", ["Cantilever Walkway", "IBC Frame", "Context"]], ["Clearance (film + spray)", ["Cantilever Walkway", "Film Rail + Saddle", "Tray + Spray"]], ["Labeled", ["Context", "IBC Frame", "Tray + Spray", "Film Rail + Saddle", "Cantilever Walkway", "Labels"]]].each { |name, tags|
   model.layers.each { |l| l.visible = (l == default_layer || tags.include?(l.name)) }
   page = model.pages.add(name); page.use_camera = true
 }

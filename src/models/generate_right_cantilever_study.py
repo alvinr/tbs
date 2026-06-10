@@ -83,32 +83,54 @@ def film_rail_saddle():
     return '\n'.join(parts)
 
 
+X_UP = k.IBC_COL_X + 60                          # 4734 — IBC frame first corridor-upright X station
+S = k.IBC_FRAME_RHS                              # 50 — frame member size
+UP_YDS = (k.CORRIDOR_YD_NEAR, k.CORRIDOR_YD_FAR - S)   # 1046, 1266 — actual upright Yd lines
+AH = ARM_TOP - ARM_BOT                           # arm depth
+
+
 def right_cantilever():
-    """The proposed support: 4 cantilever arms off the IBC frame face (X4674) reaching
-    345mm back to X4329 at the frame uprights (Yd 0/1046/1316/2362), each bolted to the
-    upright with a gusset + 2× M12; 2 longitudinal bearers on the arms; grate on top.
-    Arms sit at Z70..115 — above the spray bar (Z60), below the film frame (Z150)."""
+    """The proposed support — a HYBRID anchor (the IBC frame only has uprights at the
+    corridor, so the perimeter arms can't grab it):
+      • 2 INNER arms cantilever off the IBC corridor uprights (X4734, Yd 1046 & 1266) —
+        a U-clamp grips the upright with 2× M12, arm reaches ~405mm to the deck.
+      • 2 OUTER beams are WALL-MOUNTED LEDGERS on the near (Yd0) + far (Yd C_WID) walls —
+        each through-bolted (interior + exterior plate, 2 bolts) at 2 X stations.
+    2 longitudinal bearers ride the arms/ledgers; grate on top. Everything at Z70-115 —
+    above the spray bar (Z60), below the film frame (Z150). No ceiling rods."""
     parts = []
-    reach = FRAME_X - R_X_L                       # 345
-    for yd in ARM_YDS:
-        ay = min(max(yd - ARM_W / 2, 0), k.C_WID - ARM_W)
-        # cantilever arm (X-beam) from frame face back to the deck left edge
-        parts.append(ruby_box(f"Cantilever arm Yd{yd}",
-                              R_X_L, ay, ARM_BOT, reach, ARM_W, ARM_TOP - ARM_BOT,
-                              color=ov.C_STEEL))
-        # gusset plate on the frame face + 2× M12 into the upright
-        parts.append(ruby_box(f"Frame anchor gusset Yd{yd}",
-                              FRAME_X, ay - 8, ARM_BOT - 25, 8, ARM_W + 16, (ARM_TOP - ARM_BOT) + 60,
-                              color=ov.C_STEEL))
-        for bz in (ARM_BOT + 5, ARM_TOP + 20):
-            parts.append(ruby_cylinder(f"Frame anchor bolt M12 Yd{yd} Z{int(bz)}",
-                                       FRAME_X - 12, ay + ARM_W / 2, bz, 6, 30,
-                                       color=ov.C_STEEL, axis="x"))
-    # 2 longitudinal bearers (Yd-running) on the arm tops, at the deck edges
+    # ── 2 INNER cantilever arms off the IBC corridor uprights ──
+    for yd in UP_YDS:
+        parts.append(ruby_box(f"Cantilever arm (off IBC upright) Yd{yd}",
+                              R_X_L, yd, ARM_BOT, X_UP - R_X_L, ARM_W, AH, color=ov.C_STEEL))
+        # U-clamp gripping the upright (plates on both Yd faces) + 2 through-bolts
+        for pf in (yd - 8, yd + ARM_W):
+            parts.append(ruby_box(f"Upright clamp plate Yd{yd} Y{int(pf)}",
+                                  X_UP - 4, pf, ARM_BOT - 25, S + 8, 8, AH + 55, color=ov.C_STEEL))
+        for bz in (ARM_BOT + 6, ARM_TOP + 18):
+            parts.append(ruby_cylinder(f"Upright bolt M12 Yd{yd} Z{int(bz)}",
+                                       X_UP + S / 2, yd - 12, bz, 6, ARM_W + 24,
+                                       color=ov.C_STEEL, axis="y"))
+    # ── 2 OUTER wall-mounted ledgers on the near + far walls ──
+    for wall_yd, din, tag in ((0, 1, "near wall"), (k.C_WID, -1, "far wall")):
+        by = wall_yd if din > 0 else wall_yd - ARM_W
+        parts.append(ruby_box(f"Wall ledger ({tag})",
+                              R_X_L, by, ARM_BOT, R_X_R - R_X_L, ARM_W, AH, color=ov.C_STEEL))
+        for bx in (R_X_L + 60, R_X_R - 60):
+            piy = wall_yd if din > 0 else wall_yd - 8                      # interior plate face
+            poy = -k.WALL_T - 8 if din > 0 else k.C_WID + k.WALL_T          # exterior plate face
+            parts.append(ruby_box(f"Wall bracket plate ({tag}) X{bx}",
+                                  bx - 40, piy, ARM_BOT - 18, 80, 8, AH + 36, color=ov.C_STEEL))
+            parts.append(ruby_box(f"Wall ext. plate ({tag}) X{bx}",
+                                  bx - 40, poy, ARM_BOT - 18, 80, 8, AH + 36, color=ov.C_STEEL))
+            blo, bhi = min(piy, poy), max(piy, poy) + 8
+            for bz in (ARM_BOT, ARM_TOP + 8):
+                parts.append(ruby_cylinder(f"Wall bolt ({tag}) X{bx} Z{int(bz)}",
+                                           bx, blo, bz, 5, bhi - blo, color=ov.C_STEEL, axis="y"))
+    # ── 2 longitudinal bearers on the arms/ledgers + grate ──
     for bx in (R_X_L, R_X_R - 40):
-        parts.append(ruby_box(f"Right bearer X{bx} (on arms)",
+        parts.append(ruby_box(f"Right bearer X{bx}",
                               bx, 0, ARM_TOP - 35, 40, k.C_WID, 35, color=ov.C_STEEL))
-    # grate
     parts.append(ruby_box("Right walkway grate (cantilevered — NO ceiling rods)",
                           R_X_L, 0, GRATE_Z, k.WALKWAY_RIGHT_W, k.C_WID, k.WALKWAY_GRATE_T,
                           color=ov.C_WALKWAY))
@@ -116,9 +138,11 @@ def right_cantilever():
 
 
 POINT_LABELS = [
-    (FRAME_X, 0, 1100, "IBC FRAME (anchor)\nX4674, 50×50 RHS uprights", 350, -400, 500),
-    ((R_X_L + FRAME_X) / 2, 1046, GRATE_Z, "CANTILEVER ARM ×4\n345mm reach @ Yd 0/1046/1316/2362", -300, -700, 650),
-    (R_X_L + 150, 600, k.WALKWAY_H, "RIGHT WALKWAY GRATE\n(cantilevered — no ceiling rods)", -250, -700, 700),
+    (X_UP, k.CORRIDOR_YD_NEAR, 900, "IBC CORRIDOR UPRIGHT (X4734)\n← INNER arms U-clamp here (2× M12)", 400, -350, 600),
+    ((R_X_L + X_UP) / 2, k.CORRIDOR_YD_NEAR, GRATE_Z, "INNER CANTILEVER ARM ×2\noff the IBC corridor uprights", -300, -650, 650),
+    (R_X_L + 120, 40, ARM_TOP, "NEAR-WALL LEDGER\nthrough-bolted to the wall (int+ext plate)", -250, -650, 700),
+    (R_X_L + 120, k.C_WID - 40, ARM_TOP, "FAR-WALL LEDGER\nthrough-bolted to the wall", -250, 650, 700),
+    (R_X_L + 150, 600, k.WALKWAY_H, "RIGHT WALKWAY GRATE\n(no ceiling rods)", -250, -700, 800),
     (k.RAIL_X_R, 1700, 1200, "FILM-PLANE RIGHT RAIL + SADDLES\n(old rods used to clash here)", 400, -300, 500),
     (4200, 1181, k.SPRAY_BAR_Z_TOP, "SPRAY BAR (Z20-60, low)\n55mm clear under the grate", -200, -750, 850),
 ]
@@ -146,7 +170,8 @@ def generate_ruby():
     tags_ruby = '\n'.join(f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
     keep = '[' + ', '.join(f'"{t}"' for t in TAGS) + ']'
     comp_tags = [t for t in TAGS if t != "Labels"]
-    scenes = [("Combined", comp_tags), ("Cantilever only", ["Cantilever Walkway", "IBC Frame"]),
+    scenes = [("Combined", comp_tags),
+              ("Anchors (frame + walls)", ["Cantilever Walkway", "IBC Frame", "Context"]),
               ("Clearance (film + spray)", ["Cantilever Walkway", "Film Rail + Saddle", "Tray + Spray"]),
               ("Labeled", TAGS)]
     scenes_ruby = '[' + ', '.join(

@@ -450,8 +450,11 @@ def processing_tray():
 
 # ── Walkways ─────────────────────────────────────────────────────────────────
 
-def walkways():
+def walkways(include_right=True):
     """Perimeter walkway sections — LOWERED deck, in place for operation.
+
+    include_right=False omits the right (IBC-end) ceiling-hung deck + its hangers
+    (used by the focused film-plane model, which doesn't want the right hanger).
 
     The deck height comes from WALKWAY_H (lowered to 65mm: a 15mm grate at the
     tray-rim level), so the grating sits below the film-frame bottom (Z=100) and
@@ -491,9 +494,10 @@ def walkways():
                           near_x_l, WALKWAY_FAR_YD, grate_z,
                           near_len, WALKWAY_W, t, color=C_WALKWAY))
 
-    parts.append(ruby_box("Walkway Right (IBC end)",
-                          WALKWAY_RIGHT_X, 0, grate_z,
-                          WALKWAY_RIGHT_W, C_WID, t, color=C_WALKWAY))
+    if include_right:
+        parts.append(ruby_box("Walkway Right (IBC end)",
+                              WALKWAY_RIGHT_X, 0, grate_z,
+                              WALKWAY_RIGHT_W, C_WID, t, color=C_WALKWAY))
 
     # Left walkway — removable lift-out for transport (distinct color).
     parts.append(ruby_box("Walkway Left (REMOVABLE — transport)",
@@ -517,7 +521,8 @@ def walkways():
     # Right walkway: ceiling-hung support — 2 bearer angles + 5 rod-pairs of M10 to the
     # ceiling, each rod anchored through the roof with the sandwiched inside/outside plate
     # pair + 4× M12 bolts. Reuse the walkway model's builder so the two models stay in sync.
-    parts.append(wm.right_hangers())
+    if include_right:
+        parts.append(wm.right_hangers())
 
     return '\n'.join(parts)
 

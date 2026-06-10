@@ -14,38 +14,40 @@ Cyanotype processing requires a clean, stable work surface for:
 
 The shelf must not obstruct walkway navigation (the operator walks the full length of the near walkway during film loading and coating). A ceiling-suspended platform in the right corner — on the tray side of the near walkway — provides 0.18 m² of counter-height workspace while leaving the walkway completely clear.
 
-A dedicated water tap (TAP-01) on the pinhole wall at X=3729mm, Z=1200mm provides filtered water from the blue supply line for chemistry mixing and wash-down. Ball valve BV-06, mounted inline on the 3/4" branch pipe at X=3600mm (129mm to the left of the shelf edge), gives the operator easy shut-off control from the prep position.
+A dedicated water tap (TAP-01) on the pinhole wall at X=3729mm, Z=1200mm provides filtered water from the blue supply line for chemistry mixing and wash-down. The shelf sits **immediately left of the tap** (its right edge at X=3729mm). Ball valve BV-06, mounted inline on the 3/4" branch pipe at X=3600mm (129mm to the left of the tap), gives the operator easy shut-off control from the prep position.
 
 ---
 
 ## 2. Location and Spatial Constraints
 
-The shelf occupies the right corner of the processing area, just inside the walkway perimeter. It sits between the near walkway outer edge (Yd=300mm) and the processing tray far side (Yd=900mm), immediately left of the right walkway (X=3729–4329mm). The operator accesses the shelf from the near walkway by turning 90° to face the tray side. No walkway is obstructed.
+The shelf sits just inside the walkway perimeter on the tray side, between the near walkway outer edge (Yd=300mm) and Yd=600mm, **left of the tap (X=3129–3729mm)**. It was moved here (rev12) from its previous X=3729–4329mm position so it clears the film-plane swing envelope (§2.1). The operator accesses the shelf from the near walkway by turning 90° to face the tray side. No walkway is obstructed.
 
 
 ![Chemistry Prep Shelf — Sheet 1: Plan View](assets/shelf-sheet1.png)
 
-Top-down view showing the shelf position (X=3729–4329mm, Yd=300–600mm) relative to the near walkway, right walkway, processing tray, and optical cone boundary. The shelf is entirely outside the optical cone and inside the walkway perimeter — no walkway overlap.
+Top-down view showing the shelf position (X=3129–3729mm, Yd=300–600mm) relative to the near walkway, right walkway, processing tray, and optical cone boundary. The shelf is entirely outside the optical cone and inside the walkway perimeter — no walkway overlap.
 
-### 2.1 Optical Cone Clearance
+### 2.1 Film-Plane Swing and Optical Cone Clearance
 
-At Yd=450mm (shelf centroid), the optical cone right boundary is:
+**Film-plane swing (rev12 — the reason for the move).** The film plane swings about its centre (X=2399.5mm); its right side sweeps *forward* (toward the pinhole) and can reach the shelf zone. At the old right edge (X=4329mm) the swept plane reached Yd=600mm at only ~17° swing — i.e. it collided within the mechanical swing travel. Moving the shelf left so its right edge is at the tap (X=3729mm) cuts the swing reach: the plane now clears the **practical ±15° envelope by ~225mm** and stays clear up to **~23.6°** (the mechanical max is ±25.7°, where a residual ~59mm clip of the back-right corner remains — see note).
 
-    cone_right(450) = PH_X + (FP_X_R − PH_X) × 450 / FP_Y
-                    = 2,637 + (4,649 − 2,637) × 450 / 2,362
-                    = 2,637 + 384 = 3021mm
+**Optical cone.** The binding point is the shelf far edge (Yd=600mm), where the cone is widest:
 
-The shelf left edge (X=3729mm) is 708mm outside the optical cone. The shelf cannot vignette the image at any film plane position.
+    cone_right(600) = PH_X + (FP_X_R − PH_X) × 600 / FP_Y
+                    = 2,399 + (4,649 − 2,399) × 600 / 2,262
+                    = 2,399 + 597 = 2,996mm
+
+The shelf left edge (X=3129mm) is ~133mm outside the optical cone (was ~708mm at the old X=3729mm edge) — still entirely clear, no vignetting at any film-plane position.
 
 ### 2.2 Spatial Constraints
 
 | Constraint | Value |
 |-----------|-------|
-| Shelf X range | X=3729–4329mm (600mm) |
+| Shelf X range | X=3129–3729mm (600mm) — right edge at the tap (TAP_X) |
 | Shelf Yd range | Yd=300–600mm (300mm) |
 | Near walkway | Yd=0–300mm — shelf starts at walkway outer edge |
 | Processing tray | Floor level (rim H=50mm) — well below shelf at H=1075mm |
-| Right walkway | X=4329–4629mm, cantilever rectangle off the IBC frame (adjacent, Yd=0–300mm) |
+| Right walkway | X=4329–4629mm, cantilever rectangle off the IBC frame — now 600mm right of the shelf |
 | Ceiling height | H=2388mm (container interior) |
 | Cable trunking | H=1800mm (40×25mm PVC, horizontal full length) |
 
@@ -66,14 +68,14 @@ Single ceiling-suspended platform:
 
 | Parameter | Value |
 |-----------|-------|
-| Position | X=3729–4329mm, Yd=300–600mm |
+| Position | X=3129–3729mm, Yd=300–600mm |
 | Width (X direction) | 600mm |
 | Depth (Yd direction) | 300mm |
 | Work surface height | H=1075mm above floor (945mm above the raised walkway deck) |
 | Shelf thickness | 22mm (18mm ply + 4mm perimeter frame) |
 | Work surface area | 600 × 300 = 180000mm² (0.18 m²) |
 | Hanger rod length | 1363mm (ceiling to shelf top) |
-| Hanger rod diameter | M10 (matches right walkway system) |
+| Hanger rod diameter | M10 threaded rod |
 | Number of hanger rods | 4 (one at each corner, inset 30mm) |
 
 ### 3.2 Construction
@@ -92,7 +94,7 @@ The shelf hangs from the container ceiling on four corner rods (the ceiling-plat
 
 ### Sheet 2 — Section Elevation
 
-Cross-section at X=4029mm (shelf midpoint) looking along the X-axis. Shows the ceiling-hung hanger rods (1313mm), shelf platform at H=1075mm, operator silhouette on the near walkway, and the processing tray at floor level below.
+Cross-section at X=3429mm (shelf midpoint) looking along the X-axis. Shows the ceiling-hung hanger rods (1313mm), shelf platform at H=1075mm, operator silhouette on the near walkway, and the processing tray at floor level below.
 
 ![Chemistry Prep Shelf — Sheet 2: Section Elevation](assets/shelf-sheet2.png)
 
@@ -136,7 +138,7 @@ The shelf is permanently installed — it does not fold or detach for transport.
 
 ## 5. Operator Access
 
-The operator stands on the near walkway (deck at H=130mm) at approximately X=4029mm (shelf midpoint in X), turned 90° to face the processing tray side. The shelf work surface is at H=1075mm (945mm above the walkway deck) — ergonomic counter height for standing prep work.
+The operator stands on the near walkway (deck at H=130mm) at approximately X=3429mm (shelf midpoint in X), turned 90° to face the processing tray side. The shelf work surface is at H=1075mm (945mm above the walkway deck) — ergonomic counter height for standing prep work.
 
 The shelf near edge (Yd=300mm) aligns with the near walkway outer edge, so the operator can reach the full 300mm shelf depth from the walkway without leaning. Items used most frequently (scale, graduated cylinders) are staged at the near edge; bulk storage (bottles, wash trays) at the far edge.
 

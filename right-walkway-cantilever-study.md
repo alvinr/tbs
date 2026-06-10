@@ -53,7 +53,7 @@ The IBC frame already carries the 2×2 IBC stack and is anchored to floor + wall
 
 **Resolved:** the film-plane ↔ walkway conflict (no rods in the sweep or optical band); film plane keeps **full width (X150–4649)** and the **same tilt/swing range on both sides**; ceiling de-cluttered on the right.
 
-**Still solved separately (parked, per direction):** the **chem prep shelf** (its own ceiling rods at X3729–4329 / Yd300–600 — clear of the film sweep, but a ceiling-crowding/optics item to revisit) and the **sump pickup + tray-drain plumbing** in the near-right corner.
+**Resolved as follow-ups (rev12):** the **chem prep shelf** was moved left of the tap (X3129–3729 / Yd300–600) to clear the film-plane swing envelope, and the **sump pickup + tray-drain plumbing** return riser was rerouted into the grate gap with a Yd twist to clear the new right-walkway beam.
 
 ## 6. Comparison
 

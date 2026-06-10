@@ -8629,7 +8629,7 @@ end
   # Chem Shelf
   grp = ents.add_group
   grp.name = "Chem Shelf"
-  face = grp.entities.add_face([3729.mm,300.mm,1053.mm], [4329.mm,300.mm,1053.mm], [4329.mm,600.mm,1053.mm], [3729.mm,600.mm,1053.mm])
+  face = grp.entities.add_face([3129.mm,300.mm,1053.mm], [3729.mm,300.mm,1053.mm], [3729.mm,600.mm,1053.mm], [3129.mm,600.mm,1053.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Chem Shelf"] || model.materials.add("Chem Shelf")
@@ -8641,7 +8641,7 @@ end
   grp = ents.add_group
   grp.name = "Shelf Hanger Rod"
   ge = grp.entities
-  circle = ge.add_circle([3749.mm,320.mm,1075.mm], [0,0,1], 5.mm, 12)
+  circle = ge.add_circle([3149.mm,320.mm,1075.mm], [0,0,1], 5.mm, 12)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(1313.mm)
@@ -8653,7 +8653,7 @@ end
   # Shelf ceiling plate (to rib)
   grp = ents.add_group
   grp.name = "Shelf ceiling plate (to rib)"
-  face = grp.entities.add_face([3699.mm,290.mm,2382.mm], [3799.mm,290.mm,2382.mm], [3799.mm,350.mm,2382.mm], [3699.mm,350.mm,2382.mm])
+  face = grp.entities.add_face([3099.mm,290.mm,2382.mm], [3199.mm,290.mm,2382.mm], [3199.mm,350.mm,2382.mm], [3099.mm,350.mm,2382.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -8665,7 +8665,7 @@ end
   grp = ents.add_group
   grp.name = "Shelf ceiling bolt M10"
   ge = grp.entities
-  circle = ge.add_circle([3717.mm,320.mm,2382.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([3117.mm,320.mm,2382.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(46.mm)
@@ -8678,7 +8678,7 @@ end
   grp = ents.add_group
   grp.name = "Shelf ceiling bolt M10"
   ge = grp.entities
-  circle = ge.add_circle([3781.mm,320.mm,2382.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([3181.mm,320.mm,2382.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(46.mm)
@@ -8691,7 +8691,7 @@ end
   grp = ents.add_group
   grp.name = "Shelf Hanger Rod"
   ge = grp.entities
-  circle = ge.add_circle([3749.mm,580.mm,1075.mm], [0,0,1], 5.mm, 12)
+  circle = ge.add_circle([3149.mm,580.mm,1075.mm], [0,0,1], 5.mm, 12)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(1313.mm)
@@ -8703,7 +8703,7 @@ end
   # Shelf ceiling plate (to rib)
   grp = ents.add_group
   grp.name = "Shelf ceiling plate (to rib)"
-  face = grp.entities.add_face([3699.mm,550.mm,2382.mm], [3799.mm,550.mm,2382.mm], [3799.mm,610.mm,2382.mm], [3699.mm,610.mm,2382.mm])
+  face = grp.entities.add_face([3099.mm,550.mm,2382.mm], [3199.mm,550.mm,2382.mm], [3199.mm,610.mm,2382.mm], [3099.mm,610.mm,2382.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -8715,7 +8715,7 @@ end
   grp = ents.add_group
   grp.name = "Shelf ceiling bolt M10"
   ge = grp.entities
-  circle = ge.add_circle([3717.mm,580.mm,2382.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([3117.mm,580.mm,2382.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(46.mm)
@@ -8728,7 +8728,7 @@ end
   grp = ents.add_group
   grp.name = "Shelf ceiling bolt M10"
   ge = grp.entities
-  circle = ge.add_circle([3781.mm,580.mm,2382.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([3181.mm,580.mm,2382.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(46.mm)
@@ -8741,7 +8741,7 @@ end
   grp = ents.add_group
   grp.name = "Shelf Hanger Rod"
   ge = grp.entities
-  circle = ge.add_circle([4309.mm,320.mm,1075.mm], [0,0,1], 5.mm, 12)
+  circle = ge.add_circle([3709.mm,320.mm,1075.mm], [0,0,1], 5.mm, 12)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(1313.mm)
@@ -8753,7 +8753,7 @@ end
   # Shelf ceiling plate (to rib)
   grp = ents.add_group
   grp.name = "Shelf ceiling plate (to rib)"
-  face = grp.entities.add_face([4259.mm,290.mm,2382.mm], [4359.mm,290.mm,2382.mm], [4359.mm,350.mm,2382.mm], [4259.mm,350.mm,2382.mm])
+  face = grp.entities.add_face([3659.mm,290.mm,2382.mm], [3759.mm,290.mm,2382.mm], [3759.mm,350.mm,2382.mm], [3659.mm,350.mm,2382.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -8765,7 +8765,7 @@ end
   grp = ents.add_group
   grp.name = "Shelf ceiling bolt M10"
   ge = grp.entities
-  circle = ge.add_circle([4277.mm,320.mm,2382.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([3677.mm,320.mm,2382.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(46.mm)
@@ -8778,7 +8778,7 @@ end
   grp = ents.add_group
   grp.name = "Shelf ceiling bolt M10"
   ge = grp.entities
-  circle = ge.add_circle([4341.mm,320.mm,2382.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([3741.mm,320.mm,2382.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(46.mm)
@@ -8791,7 +8791,7 @@ end
   grp = ents.add_group
   grp.name = "Shelf Hanger Rod"
   ge = grp.entities
-  circle = ge.add_circle([4309.mm,580.mm,1075.mm], [0,0,1], 5.mm, 12)
+  circle = ge.add_circle([3709.mm,580.mm,1075.mm], [0,0,1], 5.mm, 12)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(1313.mm)
@@ -8803,7 +8803,7 @@ end
   # Shelf ceiling plate (to rib)
   grp = ents.add_group
   grp.name = "Shelf ceiling plate (to rib)"
-  face = grp.entities.add_face([4259.mm,550.mm,2382.mm], [4359.mm,550.mm,2382.mm], [4359.mm,610.mm,2382.mm], [4259.mm,610.mm,2382.mm])
+  face = grp.entities.add_face([3659.mm,550.mm,2382.mm], [3759.mm,550.mm,2382.mm], [3759.mm,610.mm,2382.mm], [3659.mm,610.mm,2382.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -8815,7 +8815,7 @@ end
   grp = ents.add_group
   grp.name = "Shelf ceiling bolt M10"
   ge = grp.entities
-  circle = ge.add_circle([4277.mm,580.mm,2382.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([3677.mm,580.mm,2382.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(46.mm)
@@ -8828,7 +8828,7 @@ end
   grp = ents.add_group
   grp.name = "Shelf ceiling bolt M10"
   ge = grp.entities
-  circle = ge.add_circle([4341.mm,580.mm,2382.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([3741.mm,580.mm,2382.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(46.mm)
@@ -13212,7 +13212,7 @@ anc = Geom::Point3d.new(175.mm, 2287.mm, 1700.mm)
 txt = entities.add_text("PIVOT POST Ø89
 (panel swing axis)", anc, Geom::Vector3d.new(500.mm, -200.mm, 600.mm))
 txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(4029.mm, 450.mm, 1075.mm)
+anc = Geom::Point3d.new(3429.mm, 450.mm, 1075.mm)
 txt = entities.add_text("CHEMISTRY SHELF", anc, Geom::Vector3d.new(-200.mm, -850.mm, 700.mm))
 txt.layer = model.layers["Labels"] rescue nil
 

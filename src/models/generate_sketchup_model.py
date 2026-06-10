@@ -171,7 +171,7 @@ OVERVIEW_POINT_LABELS = [
     ( 175, 2287, 1700, "PIVOT POST Ø89\n(panel swing axis)", 500, -200, 600),  # the swing pivot
     # The shelf component's hanger rods reach the ceiling, so a bounds-top anchor would
     # land at the roof — anchor on the shelf BOARD itself instead.
-    (4029,  450, 1075, "CHEMISTRY SHELF",            -200, -850,  700),  # shelf board top-centre
+    (3429,  450, 1075, "CHEMISTRY SHELF",            -200, -850,  700),  # shelf board top-centre (rev12: moved left of the tap)
 ]
 
 

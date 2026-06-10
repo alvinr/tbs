@@ -85,7 +85,7 @@ def sheet1():
     # Near walkway = horizontal band at bottom, right walkway = vertical
     # band on right, shelf in the L-shaped corner between them.
     # Tight crop centered on shelf with surrounding context.
-    X_LO, X_HI = 3400, 5100
+    X_LO, X_HI = SHELF_X_L - 850, 5100   # extend left to show the shelf + the optical-cone boundary
     YD_LO, YD_HI = -120, 1000
 
     def px(x): return x

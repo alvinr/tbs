@@ -569,12 +569,22 @@ def fp_combined_corner_plates():
     return '\n'.join(parts)
 
 
-def right_walkway_cantilever(include_combined=True):
+def right_walkway_grate():
+    """Just the right walkway grate deck (cantilevered). Factored out so it can be put on
+    the Walkways tag — letting the walkway-model 'Right Cantilever' scene show the bare
+    beams + brackets while the grate still reads with the other decks."""
+    return ruby_box("Right walkway grate (cantilevered)", RWK_X_L, 0, RWK_GRATE_Z,
+                    WALKWAY_RIGHT_W, C_WID, WALKWAY_GRATE_T, color=C_WALKWAY)
+
+
+def right_walkway_cantilever(include_combined=True, include_grate=True):
     """The right walkway support: a CLOSED rectangle (left+right long beams + 2 end beams) +
     2 center cantilever arms off the IBC corridor uprights (half-lapped at the long beams).
     LEFT corners on wall cleats; RIGHT corners on the COMBINED plate (rail + right beam).
     `include_combined=False` omits the combined plates (the overview draws them on their own
-    tag so they show in the Film-Plane scene too; walkway.skp keeps them inline)."""
+    tag so they show in the Film-Plane scene too; walkway.skp keeps them inline).
+    `include_grate=False` omits the grate (walkway.skp draws it on the Walkways tag so the
+    'Right Cantilever' scene shows the bare structure)."""
     parts = []
     lx, rx = RWK_X_L, RWK_X_R - RWK_BEARER_W
     arm_ranges = [(yd, RWK_ARM_W) for yd in RWK_UP_YDS]
@@ -587,8 +597,8 @@ def right_walkway_cantilever(include_combined=True):
         parts += _rwk_wall_cleat(tag, lx + RWK_BEARER_W // 2, wall_yd, din)
         if include_combined:
             parts += fp_combined_corner_plate(wall_yd, din)
-    # grate
-    parts.append(ruby_box("Right walkway grate (cantilevered)", RWK_X_L, 0, RWK_GRATE_Z, WALKWAY_RIGHT_W, C_WID, WALKWAY_GRATE_T, color=C_WALKWAY))
+    if include_grate:
+        parts.append(right_walkway_grate())
     return '\n'.join(parts)
 
 

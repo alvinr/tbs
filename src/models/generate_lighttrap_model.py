@@ -169,24 +169,9 @@ def context(left_walkway=True, x_far=None):
         ruby_box("Side Wall far (context)", x0, C_WID, 0, xlen, WALL_T, C_HGT,
                  color=C_SHELL, alpha=0.16),
     ]
-    if left_walkway:
-        # Left walkway (the surface the operator steps onto from the drum's interior
-        # opening): grating deck at X 170–470, Z130, spanning the full container width.
-        # It is a REMOVABLE lift-out (taken out for the transport swing), so it's drawn
-        # amber (C_REMOVABLE) like the door-end near-deck lift-out band.
-        parts.append(ruby_box("Left walkway (removable)", ov.WALKWAY_LEFT_X,
-                     0, ov.WALKWAY_H - ov.WALKWAY_GRATE_T,
-                     ov.WALKWAY_W, C_WID, ov.WALKWAY_GRATE_T,
-                     color=ov.C_REMOVABLE, alpha=0.22))
-        # Drum-exit PUNCH-OUT — deepened landing in front of the drum opening so
-        # the operator has somewhere to step out (the 300mm deck leaves only 20mm).
-        # Part of the removable left lift-out → also amber.
-        parts.append(ruby_box("Left walkway punch-out (removable)",
-                     ov.WALKWAY_LEFT_X + ov.WALKWAY_W, ov.WALKWAY_LEFT_WIDE_YD_L,
-                     ov.WALKWAY_H - ov.WALKWAY_GRATE_T,
-                     ov.WALKWAY_LEFT_WIDE_W - ov.WALKWAY_W,
-                     ov.WALKWAY_LEFT_WIDE_YD_R - ov.WALKWAY_LEFT_WIDE_YD_L,
-                     ov.WALKWAY_GRATE_T, color=ov.C_REMOVABLE, alpha=0.22))
+    # The left walkway + drum-exit punch-out (the amber lift-out decks) are now built by
+    # liftout_walkways() as a CHILD of the Panel Swing DC so they HIDE when the panel
+    # swings open (lifted out for transport). `left_walkway` is retained for the API.
     return '\n'.join(parts)
 
 
@@ -589,12 +574,33 @@ def walkways_partial():
     liftout_x = ov.WALKWAY_NEAR_LIFTOUT_X_R      # 950 — door-end band end (sweep X≈896 + 50mm)
     w = PARTIAL_X - x0
     return '\n'.join([
-        ruby_box("Walkway Near (door-end, removable)", x0, 0, full_z,
-                 liftout_x - x0, ov.WALKWAY_W, t, color=ov.C_REMOVABLE, alpha=0.22),
+        # (the door-end lift-out band moved to liftout_walkways() — a Panel Swing DC child
+        #  that hides on swing; only the FIXED partial decks stay here)
         ruby_box("Walkway Near (partial)", liftout_x, 0, full_z,
                  PARTIAL_X - liftout_x, ov.WALKWAY_W, t, color=ov.C_WALKWAY),
         ruby_box("Walkway Far (partial)", x0, ov.WALKWAY_FAR_YD, full_z,
                  w, ov.WALKWAY_W, t, color=ov.C_WALKWAY),
+    ])
+
+
+def liftout_walkways():
+    """The amber REMOVABLE lift-out decks — left walkway (full width) + drum-exit punch-out
+    + the near door-end band. Built at WORLD coords; placed as a CHILD of the Panel Swing
+    DC so they HIDE when the panel swings open (lifted out for the transport swing)."""
+    t = ov.WALKWAY_GRATE_T
+    full_z = ov.WALKWAY_H - t
+    x0 = ov.WALKWAY_LEFT_X + ov.WALKWAY_W          # 470 — long decks begin
+    liftout_x = ov.WALKWAY_NEAR_LIFTOUT_X_R        # 950 — door-end band end
+    return '\n'.join([
+        ruby_box("Left walkway (removable)", ov.WALKWAY_LEFT_X, 0, full_z,
+                 ov.WALKWAY_W, C_WID, t, color=ov.C_REMOVABLE, alpha=0.6),
+        ruby_box("Left walkway punch-out (removable)",
+                 ov.WALKWAY_LEFT_X + ov.WALKWAY_W, ov.WALKWAY_LEFT_WIDE_YD_L, full_z,
+                 ov.WALKWAY_LEFT_WIDE_W - ov.WALKWAY_W,
+                 ov.WALKWAY_LEFT_WIDE_YD_R - ov.WALKWAY_LEFT_WIDE_YD_L, t,
+                 color=ov.C_REMOVABLE, alpha=0.6),
+        ruby_box("Walkway Near (door-end, removable)", x0, 0, full_z,
+                 liftout_x - x0, ov.WALKWAY_W, t, color=ov.C_REMOVABLE, alpha=0.6),
     ])
 
 
@@ -741,6 +747,21 @@ ents = defn.entities
 # Trim to the 3-zone split: erase the un-split corners + full-width seals + piano hinges
 # (the fixed left/far leaves + the trimmed swing seals provide the rest).
 defn.entities.grep(Sketchup::Group).select {{ |g| g.name =~ /Panel near corner|Panel far corner .40mm.|EPDM seal left|EPDM seal right|EPDM seal bottom L$|EPDM seal bottom R$|EPDM seal top$|Piano hinge/ }}.each {{ |g| g.erase! }}
+
+# ── Lift-out walkways — a CHILD DC component inside the swing def: HIDDEN when the panel
+#    swings (lifted out for transport). Built at world coords, then shifted with the rest
+#    of the def below so the instance's +pivot translate restores the world position. The
+#    child's `_hidden_formula` reads the parent Panel Swing's `swing` attribute. ──
+lw_defn = model.definitions.add("Lift-out Walkways")
+ents = lw_defn.entities
+{liftout_walkways()}
+ents = defn.entities
+lw_inst = ents.add_instance(lw_defn, Geom::Transformation.new)
+lw_inst.name = "Lift-out Walkways"
+lw_inst.layer = model.layers["Walkways"]
+lw_inst.set_attribute("dynamic_attributes", "_name", "LiftoutWalkways")
+lw_inst.set_attribute("dynamic_attributes", "hidden", 0.0)
+lw_inst.set_attribute("dynamic_attributes", "_hidden_formula", "swing>0.5")
 
 # Shift the moving def by -pivot so the def origin sits at the pivot — then the instance's
 # RotZ swings the assembly about the pivot (same origin-at-rotation-point pattern the

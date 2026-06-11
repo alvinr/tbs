@@ -30,14 +30,6 @@ def save(fig, fname, dpi=150):
                 facecolor=fig.get_facecolor())
     plt.close(fig)
     print(f"  → {fname}")
-
-def outlined_text(ax, x, y, txt, fs, color, outline, **kw):
-    t = ax.text(x, y, txt, fontsize=fs, color=color, **kw)
-    t.set_path_effects([
-        pe.withStroke(linewidth=3.5, foreground=outline)
-    ])
-    return t
-
 # ═══════════════════════════════════════════════════════════════════════════════
 # OPTION 1 — SCIENTIFIC BLUEPRINT
 # ═══════════════════════════════════════════════════════════════════════════════

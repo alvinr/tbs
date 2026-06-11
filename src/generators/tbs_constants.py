@@ -386,27 +386,16 @@ TAP_WALL_T     = 3       # branch pipe wall thickness (mm) — reserved (spec; n
 # Big Blue 4.5"×10" housings (physical dimensions — 3× separate units)
 BB_OD          = 130     # housing outer diameter incl bracket (mm) — 4.5"=114mm + clamp
 BB_H           = 340     # housing total height (mm) — head + sump bowl (10" sump)
-BB_HEAD_H      = 70      # head height (mm) — where 1" NPT ports are
-BB_PORT_SEP    = 90      # center-to-center distance between IN/OUT ports (mm)
 
 FSKID_X        = EQPANEL_X - BB_OD  # = 4870 — filter zone left edge X for elevation views
-FSKID_W        = BB_OD              # = 130 — filter zone width in X (= housing OD protrusion)
 FSKID_YD       = CORRIDOR_YD_NEAR + PUMP_YD_SPAN + 13  # = 1186 — filter near edge Yd (13mm gap past pumps)
 
 # Filter Z positions — 3 housings stacked vertically, 30mm gaps between.
 # Filters at BOTTOM of panel (easy cartridge access), pumps above.
 FSKID_Z_LO     = EQPANEL_Z_LO  # = 250 — filter zone bottom Z (mm) — F1 sump bottom (tracks panel, +50 raise)
-FSKID_Z_HI     = FSKID_Z_LO + 3 * BB_H + 2 * 30  # = 1280 — F3 head top
-FSKID_H        = FSKID_Z_HI - FSKID_Z_LO  # = 1080mm
 F1_Z           = FSKID_Z_LO  # = 250 — F1 sump bottom Z (mm) — 50μ sediment (lowest); tracks the equipment panel
 F2_Z           = F1_Z + BB_H + 30  # = 620 — F2 sump bottom Z (mm) — 5μ sediment
 F3_Z           = F2_Z + BB_H + 30  # = 990 — F3 sump bottom Z (mm) — GAC carbon (highest)
-FILT_HEAD_Z    = F3_Z + BB_H  # = 1280 — top of highest filter head
-FILT_SUMP_Z    = F1_Z         # = 200 — bottom of lowest filter sump
-
-# Filter pipe (1" HDPE Sch40)
-FILT_PIPE_OD   = 33      # 1" nominal HDPE OD (mm)
-FILT_PIPE_WALL = 4       # pipe wall thickness (mm)
 
 # Pump manifold pipe (1/2" HDPE Sch40)
 PUMP_PIPE_OD   = 21      # 1/2" nominal HDPE OD (mm)

@@ -305,14 +305,6 @@ def _film_plane_carriage_weight():
     carriage_kg = 4 * 0.5
     return frame_kg + clamp_kg + carriage_kg
 
-
-def _processing_tray_water_kg():
-    """Water in processing tray at 6mm flood depth."""
-    area_m2 = (PROC_TRAY_W / 1000) * (PROC_TRAY_D / 1000)
-    vol_m3 = area_m2 * 0.006  # 6mm flood depth
-    return vol_m3 * RHO_WATER  # ≈ 59 kg
-
-
 def _bay_weight():
     """B2 punch-out bay carried on the swinging leaf: a 6mm marine-ply 4-wall
     tube (2 sides + top + bottom) plus the exterior front face (Ø900 housing

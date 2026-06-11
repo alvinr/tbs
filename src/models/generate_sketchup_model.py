@@ -1266,37 +1266,6 @@ def ruby_arc_wall(name, cx, cy, r, wall_t, height, gap_center_deg, gap_deg,
     lines.append('')
     return '\n'.join(lines)
 
-
-def ruby_panel_z(name, ax_, ay, bx, by, thickness, height, color=None, alpha=None):
-    """Thin vertical panel (wall) from point A to point B, extruded in +Z."""
-    dx, dy = bx - ax_, by - ay
-    length = math.hypot(dx, dy)
-    px, py = -dy / length, dx / length          # unit perpendicular
-    hw = thickness / 2.0
-    c = [(ax_ + px * hw, ay + py * hw), (bx + px * hw, by + py * hw),
-         (bx - px * hw, by - py * hw), (ax_ - px * hw, ay - py * hw)]
-    pts_ruby = ', '.join(f'[{mm(round(x, 2))},{mm(round(y, 2))},0]' for x, y in c)
-    lines = [
-        f'  # {name}',
-        f'  grp = ents.add_group',
-        f'  grp.name = "{name}"',
-        f'  ge = grp.entities',
-        f'  face = ge.add_face([{pts_ruby}])',
-        f'  face.reverse! if face.normal.z < 0',
-        f'  face.pushpull({mm(height)})',
-    ]
-    if color:
-        r_, g_, b_ = hex_to_rgb(color)
-        mat_nm = shared_mat_name(name, color, alpha)
-        lines.append(f'  mat = model.materials["{mat_nm}"] || '
-                     f'model.materials.add("{mat_nm}")')
-        lines.append(f'  mat.color = Sketchup::Color.new({r_}, {g_}, {b_})')
-        lines.append(f'  mat.alpha = {alpha if alpha is not None else 1.0}')
-        lines.append(f'  grp.material = mat')
-    lines.append('')
-    return '\n'.join(lines)
-
-
 def light_trap_drum():
     """Housed revolving-door light lock at the cargo-door end (rev 8).
 

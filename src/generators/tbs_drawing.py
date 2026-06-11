@@ -419,31 +419,6 @@ def hatch_rect(ax, x, y, w, h, *, color="#AAAAAA", hatch="///",
         facecolor=color, edgecolor=edgecolor,
         hatch=hatch, linewidth=lw, alpha=alpha, zorder=zorder))
 
-
-def hatch_lines(ax, patch, *, spacing=3, angle=45, color="#AAAAAA",
-                lw=0.5):
-    """Draw manual diagonal hatch lines clipped to an existing patch.
-
-    Useful when finer control over line spacing and angle is needed
-    than matplotlib's built-in hatch parameter provides.
-    """
-    px, py = patch.get_xy()
-    pw = patch.get_width()
-    ph = patch.get_height()
-    angle_r = np.radians(angle)
-    diag = np.sqrt(pw**2 + ph**2) + spacing
-    n = int(diag / spacing) + 2
-    cx_h, cy_h = px + pw / 2, py + ph / 2
-    for i in range(-n, n + 1):
-        off = i * spacing
-        dx = diag * np.cos(angle_r)
-        dy = diag * np.sin(angle_r)
-        px0 = cx_h + off * np.cos(angle_r + np.pi / 2) - dx / 2
-        py0 = cy_h + off * np.sin(angle_r + np.pi / 2) - dy / 2
-        ax.plot([px0, px0 + dx], [py0, py0 + dy],
-                color=color, lw=lw, clip_path=patch, clip_on=True)
-
-
 # ── Notes block ────────────────────────────────────────────────────────────
 
 def draw_notes(ax, notes, x, y_top, spacing, *, fs=7, title_fs=None,

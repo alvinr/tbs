@@ -154,6 +154,10 @@ OVERVIEW_LABELS = [
     ("Light-Trap Drum",       "LIGHT-TRAP DRUM\n(entry)",         -650,     0, 1050),
     ("Electrical",            "ELECTRICAL PANEL",                  500,     0,  560),
     ("Evap Cooler & Duct",    "EVAP COOLER",                       300,     0, 1700),
+    # rev13: the fold-down shelf lost its ceiling hanger rods, so a bounds-top anchor
+    # now lands on the shelf assembly (not the roof) — anchor on the component so the
+    # leader TRACKS the shelf wherever it's positioned (was a stale explicit point).
+    ("Chemistry Shelf",       "CHEMISTRY SHELF",                  -200,  -850,  700),
 ]
 
 # Labels anchored at an explicit point (mm) — for items NOT represented by a single
@@ -169,9 +173,6 @@ OVERVIEW_POINT_LABELS = [
     # empty middle — anchor on the actual NEAR member instead.
     (2400,  150,   65, "WALKWAYS",                   -200, -850,  750),  # near walkway strip
     ( 175, 2287, 1700, "PIVOT POST Ø89\n(panel swing axis)", 500, -200, 600),  # the swing pivot
-    # The shelf component's hanger rods reach the ceiling, so a bounds-top anchor would
-    # land at the roof — anchor on the shelf BOARD itself instead.
-    (3429,  450, 1075, "CHEMISTRY SHELF",            -200, -850,  700),  # shelf board top-centre (rev12: moved left of the tap)
 ]
 
 

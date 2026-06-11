@@ -761,7 +761,7 @@ lw_inst.name = "Lift-out Walkways"
 lw_inst.layer = model.layers["Walkways"]
 lw_inst.set_attribute("dynamic_attributes", "_name", "LiftoutWalkways")
 lw_inst.set_attribute("dynamic_attributes", "hidden", 0.0)
-lw_inst.set_attribute("dynamic_attributes", "_hidden_formula", "swing>0.5")
+lw_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swing>0.5")
 
 # Shift the moving def by -pivot so the def origin sits at the pivot — then the instance's
 # RotZ swings the assembly about the pivot (same origin-at-rotation-point pattern the

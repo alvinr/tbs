@@ -144,10 +144,6 @@
 
 ![TBS-001 — Equipment Panel Layout](assets/panel-layout.png)
 
-![TBS-001 — Pump Manifold Elevation](assets/pump-manifold-sheet1.png)
-
-![TBS-001 — Filter Skid Elevation](assets/filter-skid-sheet1.png)
-
 ---
 
 ## 15. IBC Stacking & Securing

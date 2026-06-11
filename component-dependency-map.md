@@ -222,7 +222,7 @@ frame (50×50×3mm RHS steel), 1" SDR-11 HDPE blue supply pipe, spray bar (¾" H
 
 *Components: 1× 600L food-grade HDPE IBC (Y-stacked behind Blue stack, right end zone),
 DN50 butterfly valve (S60×6) + S60×6-to-1" NPT adapter at drain outlet,
-filter skid with 3-stage Big Blue housing (50μm → 5μm → GAC carbon), Shurflo P-02,
+integrated 3-stage Big Blue filter unit (50μm → 5μm → GAC carbon, wall-mounted, no separate skid frame), Shurflo P-02,
 3-way diverter valves 3W-DV-01 and 3W-DV-02, pH test point.
 Filled via DN150 top fill cap from P-04 tray sump pickup pump.*
 

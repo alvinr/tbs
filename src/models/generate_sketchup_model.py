@@ -1498,8 +1498,12 @@ def lighting_wiring():
         parts.append(ruby_cylinder("Pull Cord Knob", cordx, cordy, z0 - 16,
                                    6, 16, color=C_CORD, axis="z", n=10))
 
-    # Conduit drops (10mm) from trunking down to EP and the battery bank.
-    for cxc, zbot in ((1750, 2200), (2060, 600)):
+    # Conduit drop (10mm) from trunking down to the stacked battery bank + EP, which
+    # are co-located at X≈1810–2310 (the EP sits above the battery). A single drop at
+    # X2060 runs down the EP center face (Z1500–2100) and continues to the battery top.
+    # (rev: the old second drop at X1750 was removed — the EP moved to X1910, leaving
+    #  that drop orphaned over the swing-panel transport-lock stay plate.)
+    for cxc, zbot in ((2060, 600),):
         parts.append(ruby_box("Conduit Drop (10mm)",
                               cxc, 8, zbot, 10, 10, (cz - 25) - zbot, color=C_TRUNK))
 
@@ -1548,21 +1552,23 @@ def lighting_wiring():
                                 (fa_x, FAN_A_YD, czr),
                                 (fa_x, FAN_A_YD, fa_top)],
                                fcr, color=C_TRUNK))
-    # → Fan B (intake, Cct B): now in the NEAR corner by the pinhole wall (rev9/B2
-    #   swap), so the rigid conduit RUNS ALONG THE PINHOLE WALL (Yd≈20) to the door
-    #   end and then hops a short distance in +Yd to a fixed anchor on the
-    #   door-frame top rail — staying in the near corner zone (Yd<653). A 1m coiled
-    #   flex whip (electrical-report §Circuit B, Deutsch DT connectors — NOT modeled)
-    #   drops from the anchor down the swinging panel to the low fan, taking up the
-    #   ~56° transport swing.
-    fb_anchor = (60, FAN_B_YD, czr)                  # fixed end on the door-frame top rail
+    # → Fan B (intake, Cct B): in the NEAR corner by the pinhole wall (rev9/B2 swap).
+    #   The rigid conduit taps the ceiling trunking and DROPS STRAIGHT DOWN THE PINHOLE
+    #   WALL (Yd≈18) at X≈300 (near the door end, by Fan B) to a wall-mounted electrical
+    #   box at the fan's height (FAN_B_H). Cct B terminates in that box — on the FIXED
+    #   wall, clear of the swing arc. A short FLEXIBLE CONNECTOR jumps from the box to
+    #   Fan B on the swing panel (electrical-report §Circuit B, Deutsch DT — NOT
+    #   modeled); it is UNPLUGGED before the panel swings ~56° for transport, so no
+    #   wiring crosses the moving joint.
+    fb_drop_x = 300                                  # near the door end, by Fan B
+    fb_wall_yd = 18                                  # conduit hugs the pinhole wall
+    fb_box_z = FAN_B_H                               # wall electrical box at the fan's height
     parts.append(ruby_pipe_run("Conduit to Fan B (intake, Cct B)",
-                               [(300, 20, czr),
-                                (60, 20, czr),
-                                fb_anchor],
+                               [(fb_drop_x, fb_wall_yd, czr),
+                                (fb_drop_x, fb_wall_yd, fb_box_z + 45)],
                                fcr, color=C_TRUNK))
-    parts.append(ruby_box("Fan B Flex Anchor (door-frame top rail — flex whip not shown)",
-                          40, FAN_B_YD - 25, czr - 25, 45, 50, 50, color=C_SWITCH))
+    parts.append(ruby_box("Fan B electrical box (Cct B — flex connector to fan, unplugged for swing)",
+                          fb_drop_x - 40, 0, fb_box_z - 45, 80, 60, 90, color=C_SWITCH))
 
     return '\n'.join(parts)
 

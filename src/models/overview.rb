@@ -10916,17 +10916,6 @@ end
   # Conduit Drop (10mm)
   grp = ents.add_group
   grp.name = "Conduit Drop (10mm)"
-  face = grp.entities.add_face([1750.mm,8.mm,2200.mm], [1760.mm,8.mm,2200.mm], [1760.mm,18.mm,2200.mm], [1750.mm,18.mm,2200.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(163.mm)
-  mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
-  mat.color = Sketchup::Color.new(154, 160, 160)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Conduit Drop (10mm)
-  grp = ents.add_group
-  grp.name = "Conduit Drop (10mm)"
   face = grp.entities.add_face([2060.mm,8.mm,600.mm], [2070.mm,8.mm,600.mm], [2070.mm,18.mm,600.mm], [2060.mm,18.mm,600.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(1763.mm)
@@ -11082,8 +11071,8 @@ end
   grp = ents.add_group
   grp.name = "Conduit to Fan B (intake, Cct B)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-226.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([300.mm,20.mm,2358.mm], vec, 7.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1713.mm)
+  circle = ge.add_circle([300.mm,18.mm,2358.mm], vec, 7.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11092,39 +11081,12 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Conduit to Fan B (intake, Cct B) elbow
+  # Fan B electrical box (Cct B — flex connector to fan, unplugged for swing)
   grp = ents.add_group
-  grp.name = "Conduit to Fan B (intake, Cct B) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([74.mm,34.mm,2358.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,-1.000000], 14.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([74.mm,20.mm,2358.mm], [-1.000000,0.000000,0.000000], 7.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
-  mat.color = Sketchup::Color.new(154, 160, 160)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Conduit to Fan B (intake, Cct B)
-  grp = ents.add_group
-  grp.name = "Conduit to Fan B (intake, Cct B)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 331.mm, 0.mm)
-  circle = ge.add_circle([60.mm,34.mm,2358.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
-  mat.color = Sketchup::Color.new(154, 160, 160)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan B Flex Anchor (door-frame top rail — flex whip not shown)
-  grp = ents.add_group
-  grp.name = "Fan B Flex Anchor (door-frame top rail — flex whip not shown)"
-  face = grp.entities.add_face([40.mm,340.mm,2333.mm], [85.mm,340.mm,2333.mm], [85.mm,390.mm,2333.mm], [40.mm,390.mm,2333.mm])
+  grp.name = "Fan B electrical box (Cct B — flex connector to fan, unplugged for swing)"
+  face = grp.entities.add_face([260.mm,0.mm,555.mm], [340.mm,0.mm,555.mm], [340.mm,60.mm,555.mm], [260.mm,60.mm,555.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(90.mm)
   mat = model.materials["Pull Switch (ceiling)"] || model.materials.add("Pull Switch (ceiling)")
   mat.color = Sketchup::Color.new(216, 216, 240)
   mat.alpha = 1.0

@@ -295,6 +295,22 @@ def cantilevers():
 # left→right: floor-leg cantilever SHORT (to X470), floor-leg LONG (to X770, punch-out),
 # standard wall cantilever, widened wall cantilever.
 CT_SEAT_X, CT_SEAT_LONG_X, CT_STD_X, CT_WIDE_X = 2000, 3000, 4000, 5000
+# rev12 right-walkway cantilever-rectangle support brackets (added to the catalog):
+CT_RWK_CLEAT_X, CT_RWK_PLATE_X, CT_RWK_ARM_X = 6000, 7000, 8000
+
+
+def _rwk_arm_type_parts(x0):
+    """ONE right-walkway CENTER CANTILEVER ARM for the catalog: an IBC-upright stub + the
+    40x40 SHS arm cantilevering off it (toward -X) + the upright clamp + an M12 bolt."""
+    armb, armt, aw = ov.RWK_ARM_BOT, ov.RWK_ARM_TOP, ov.RWK_ARM_W   # 70, 115, 40
+    s = ov.IBC_FRAME_RHS                                            # 50 upright RHS
+    reach = 405
+    return [
+        ov.ruby_box("Type RWk IBC upright (50x50 RHS)", x0, 0, 0, s, s, armt + 220, color=ov.C_STEEL),
+        ov.ruby_box("Type RWk cantilever arm (40x40 SHS)", x0 - reach, 0, armb, reach, aw, armt - armb, color=ov.C_STEEL),
+        ov.ruby_box("Type RWk upright clamp", x0 - 4, aw + 4, armb - 25, s + 8, 8, (armt - armb) + 55, color=ov.C_STEEL),
+        ov.ruby_cylinder("Type RWk upright bolt M12", x0 + s / 2, -12, armb + 6, 6, aw + 24, color=ov.C_STEEL, axis="y"),
+    ]
 
 
 def _floor_cant_type_parts(x0, reach, suffix, target_x):
@@ -322,14 +338,20 @@ def cantilever_types():
         post on bare floor + arm): the STANDARD reach to the grate inner edge (X470) and
         the EXTENDED reach (X770) on the 3 drum-exit punch-out brackets;
       • STANDARD wall cantilever — 8mm/150/300, 3× M12 (typical near/far deck bracket);
-      • WIDENED  wall cantilever — 10mm/200/500, 4× M12 (the four EP/battery-zone brackets).
-      (The IBC end is ceiling-hung and has no bearer bracket.)"""
+      • WIDENED  wall cantilever — 10mm/200/500, 4× M12 (the four EP/battery-zone brackets);
+      • the rev12 RIGHT-WALKWAY cantilever-rectangle supports — WALL CLEAT (left corners),
+        COMBINED CORNER PLATE (right corners, shared with the BR film rail), and the
+        CENTER CANTILEVER ARM off the IBC corridor uprights."""
     arm_x0 = LC_LEGX + LC_POST / 2                  # 165 — arm starts at the post inner face
     parts = []
     parts += _floor_cant_type_parts(CT_SEAT_X, LC_STD - arm_x0, "short", int(LC_STD))
     parts += _floor_cant_type_parts(CT_SEAT_LONG_X, LC_WIDE - arm_x0, "long", int(LC_WIDE))
     parts += _cantilever_parts("Type Standard", CT_STD_X, 0, +1, WK_W, False)
     parts += _cantilever_parts("Type Widened", CT_WIDE_X, 0, +1, WK_NEAR_WIDE_W, True)
+    # rev12 right-walkway support brackets (reuse the single-sourced overview builders):
+    parts += ov._rwk_wall_cleat("Type RWk Cleat", CT_RWK_CLEAT_X, 0, 1)
+    parts += ov.fp_combined_corner_plate(0, 1, cx=CT_RWK_PLATE_X)
+    parts += _rwk_arm_type_parts(CT_RWK_ARM_X)
     return '\n'.join(parts)
 
 
@@ -349,6 +371,15 @@ def cantilever_type_labels():
         (CT_WIDE_X, 0, k.WALKWAY_WIDE_BRACKET_H,
          "WIDENED CANTILEVER (EP / battery zone)\n10mm plate / 200 leg / 500 arm\n4x M12 (rectangular)",
          200, -300, 850),
+        (CT_RWK_CLEAT_X, 0, ov.RWK_ARM_TOP,
+         "RIGHT WALKWAY — WALL CLEAT (left corners)\n8mm back-plate + ext plate + shelf,\nthe long beam lands on it; M12 through-bolts",
+         -150, -300, 800),
+        (CT_RWK_PLATE_X, 0, k.RAIL_OFF_BOT,
+         "RIGHT WALKWAY — COMBINED CORNER PLATE (right corners)\n10mm, carries the walkway right beam (Z70 seat)\n+ the BR film rail (Z150 seat); 4x M12",
+         0, -300, 850),
+        (CT_RWK_ARM_X, 0, ov.RWK_ARM_TOP,
+         "RIGHT WALKWAY — CENTER CANTILEVER ARM\n40x40 SHS off an IBC corridor upright\n(half-lapped at the long beams); M12 clamp",
+         150, -300, 820),
     ]
     rows = []
     for x, y, z, text, dx, dy, dz in labels:
@@ -508,12 +539,12 @@ model.layers["Labels"].visible = false if model.layers["Labels"]
 #    close-up camera (the only scene showing the Cantilever Types catalog tag; the
 #    wall is hidden so the full bracket — plate, arm, gusset, bolts — reads) ──
 model.layers.each {{ |l| l.visible = (l.name == "Cantilever Types") }}
-ct_tgt = Geom::Point3d.new({ov.mm(3500)}, {ov.mm(-100)}, {ov.mm(450)})
-ct_dir = Geom::Vector3d.new(-0.22, -0.82, 0.40); ct_dir.normalize!
-ct_eye = ct_tgt.offset(ct_dir, {ov.mm(5000)})
+ct_tgt = Geom::Point3d.new({ov.mm(5000)}, {ov.mm(-100)}, {ov.mm(450)})
+ct_dir = Geom::Vector3d.new(-0.18, -0.84, 0.38); ct_dir.normalize!
+ct_eye = ct_tgt.offset(ct_dir, {ov.mm(8800)})
 ct_cam = Sketchup::Camera.new(ct_eye, ct_tgt, Z_AXIS)
 ct_cam.perspective = true
-ct_cam.fov = 40
+ct_cam.fov = 46
 model.active_view.camera = ct_cam
 ctp = model.pages.add("Cantilevers")
 ctp.use_camera = true

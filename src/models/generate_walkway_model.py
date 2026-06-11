@@ -411,11 +411,12 @@ def generate_ruby():
     comps = [
         component("Container (ghost)", "Container", container_ghost()),
         component("Processing Tray", "Processing Tray", ov.processing_tray()),
-        component("Walkway Decks (near/far/left)", "Walkways", walkway_decks()),
+        component("Walkway Decks (near/far/left + right grate)", "Walkways",
+                  walkway_decks() + "\n" + ov.right_walkway_grate()),
         component("Wall Cantilevers", "Cantilevers", cantilevers()),
         component("Cantilever Types", "Cantilever Types", cantilever_types()),
         component("Right Walkway (cantilever rectangle)", "Right Cantilever",
-                  ov.right_walkway_cantilever() + "\n" + right_anchor_context()),
+                  ov.right_walkway_cantilever(include_grate=False) + "\n" + right_anchor_context()),
         component("Left Walkway Support", "Left Support", left_support()),
     ]
     body = '\n'.join(comps)

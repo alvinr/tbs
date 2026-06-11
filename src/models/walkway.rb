@@ -150,8 +150,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.name = "Processing Tray"
   inst.layer = model.layers["Processing Tray"]
 
-  # ═══ Walkway Decks (near/far/left) ═══
-  defn = model.definitions.add("Walkway Decks (near/far/left)")
+  # ═══ Walkway Decks (near/far/left + right grate) ═══
+  defn = model.definitions.add("Walkway Decks (near/far/left + right grate)")
   ents = defn.entities
   # Walkway Near (door-end, removable)
   grp = ents.add_group
@@ -230,8 +230,19 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # Right walkway grate (cantilevered)
+  grp = ents.add_group
+  grp.name = "Right walkway grate (cantilevered)"
+  face = grp.entities.add_face([4329.mm,0.mm,115.mm], [4629.mm,0.mm,115.mm], [4629.mm,2362.mm,115.mm], [4329.mm,2362.mm,115.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Walkway Near (left)"] || model.materials.add("Walkway Near (left)")
+  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.alpha = 1.0
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
-  inst.name = "Walkway Decks (near/far/left)"
+  inst.name = "Walkway Decks (near/far/left + right grate)"
   inst.layer = model.layers["Walkways"]
 
   # ═══ Wall Cantilevers ═══
@@ -3104,17 +3115,6 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface.pushpull(60.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right walkway grate (cantilevered)
-  grp = ents.add_group
-  grp.name = "Right walkway grate (cantilevered)"
-  face = grp.entities.add_face([4329.mm,0.mm,115.mm], [4629.mm,0.mm,115.mm], [4629.mm,2362.mm,115.mm], [4329.mm,2362.mm,115.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(15.mm)
-  mat = model.materials["Walkway Near (left)"] || model.materials.add("Walkway Near (left)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
   mat.alpha = 1.0
   grp.material = mat
 

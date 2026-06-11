@@ -25,6 +25,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Pinhole") unless model.layers["Pinhole"]
   model.layers.add("Optical Cone") unless model.layers["Optical Cone"]
   model.layers.add("Film Plane") unless model.layers["Film Plane"]
+  model.layers.add("Combined Plate") unless model.layers["Combined Plate"]
   model.layers.add("Pivot Axle") unless model.layers["Pivot Axle"]
   model.layers.add("Spray Bar") unless model.layers["Spray Bar"]
   model.layers.add("Equipment Panel") unless model.layers["Equipment Panel"]
@@ -494,102 +495,6 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined corner plate (near)
-  grp = ents.add_group
-  grp.name = "FP combined corner plate (near)"
-  face = grp.entities.add_face([4574.mm,0.mm,58.mm], [4724.mm,0.mm,58.mm], [4724.mm,10.mm,58.mm], [4574.mm,10.mm,58.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(167.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined corner ext plate (near)
-  grp = ents.add_group
-  grp.name = "FP combined corner ext plate (near)"
-  face = grp.entities.add_face([4574.mm,-50.mm,58.mm], [4724.mm,-50.mm,58.mm], [4724.mm,-40.mm,58.mm], [4574.mm,-40.mm,58.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(167.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined right-beam seat (near)
-  grp = ents.add_group
-  grp.name = "FP combined right-beam seat (near)"
-  face = grp.entities.add_face([4574.mm,0.mm,58.mm], [4724.mm,0.mm,58.mm], [4724.mm,55.mm,58.mm], [4574.mm,55.mm,58.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined BR rail seat (near)
-  grp = ents.add_group
-  grp.name = "FP combined BR rail seat (near)"
-  face = grp.entities.add_face([4619.mm,0.mm,138.mm], [4679.mm,0.mm,138.mm], [4679.mm,55.mm,138.mm], [4619.mm,55.mm,138.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined bolt M12 (near) X4599 Z84
-  grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4599 Z84"
-  ge = grp.entities
-  circle = ge.add_circle([4599.mm,-50.mm,84.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined bolt M12 (near) X4599 Z178
-  grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4599 Z178"
-  ge = grp.entities
-  circle = ge.add_circle([4599.mm,-50.mm,178.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined bolt M12 (near) X4699 Z84
-  grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4699 Z84"
-  ge = grp.entities
-  circle = ge.add_circle([4699.mm,-50.mm,84.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined bolt M12 (near) X4699 Z178
-  grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4699 Z178"
-  ge = grp.entities
-  circle = ge.add_circle([4699.mm,-50.mm,178.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
   # RWk wall cleat plate (far)
   grp = ents.add_group
   grp.name = "RWk wall cleat plate (far)"
@@ -644,102 +549,6 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined corner plate (far)
-  grp = ents.add_group
-  grp.name = "FP combined corner plate (far)"
-  face = grp.entities.add_face([4574.mm,2352.mm,58.mm], [4724.mm,2352.mm,58.mm], [4724.mm,2362.mm,58.mm], [4574.mm,2362.mm,58.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(167.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined corner ext plate (far)
-  grp = ents.add_group
-  grp.name = "FP combined corner ext plate (far)"
-  face = grp.entities.add_face([4574.mm,2402.mm,58.mm], [4724.mm,2402.mm,58.mm], [4724.mm,2412.mm,58.mm], [4574.mm,2412.mm,58.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(167.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined right-beam seat (far)
-  grp = ents.add_group
-  grp.name = "FP combined right-beam seat (far)"
-  face = grp.entities.add_face([4574.mm,2307.mm,58.mm], [4724.mm,2307.mm,58.mm], [4724.mm,2362.mm,58.mm], [4574.mm,2362.mm,58.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined BR rail seat (far)
-  grp = ents.add_group
-  grp.name = "FP combined BR rail seat (far)"
-  face = grp.entities.add_face([4619.mm,2307.mm,138.mm], [4679.mm,2307.mm,138.mm], [4679.mm,2362.mm,138.mm], [4619.mm,2362.mm,138.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined bolt M12 (far) X4599 Z84
-  grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4599 Z84"
-  ge = grp.entities
-  circle = ge.add_circle([4599.mm,2352.mm,84.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined bolt M12 (far) X4599 Z178
-  grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4599 Z178"
-  ge = grp.entities
-  circle = ge.add_circle([4599.mm,2352.mm,178.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined bolt M12 (far) X4699 Z84
-  grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4699 Z84"
-  ge = grp.entities
-  circle = ge.add_circle([4699.mm,2352.mm,84.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined bolt M12 (far) X4699 Z178
-  grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4699 Z178"
-  ge = grp.entities
-  circle = ge.add_circle([4699.mm,2352.mm,178.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(60.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3156,6 +2965,205 @@ end
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Film Plane Mechanism"
   inst.layer = model.layers["Film Plane"]
+
+  # ═══ FP Combined Corner Plates ═══
+  defn = model.definitions.add("FP Combined Corner Plates")
+  ents = defn.entities
+  # FP combined corner plate (near)
+  grp = ents.add_group
+  grp.name = "FP combined corner plate (near)"
+  face = grp.entities.add_face([4574.mm,0.mm,58.mm], [4724.mm,0.mm,58.mm], [4724.mm,10.mm,58.mm], [4574.mm,10.mm,58.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(167.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined corner ext plate (near)
+  grp = ents.add_group
+  grp.name = "FP combined corner ext plate (near)"
+  face = grp.entities.add_face([4574.mm,-50.mm,58.mm], [4724.mm,-50.mm,58.mm], [4724.mm,-40.mm,58.mm], [4574.mm,-40.mm,58.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(167.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined right-beam seat (near)
+  grp = ents.add_group
+  grp.name = "FP combined right-beam seat (near)"
+  face = grp.entities.add_face([4574.mm,0.mm,58.mm], [4724.mm,0.mm,58.mm], [4724.mm,55.mm,58.mm], [4574.mm,55.mm,58.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined BR rail seat (near)
+  grp = ents.add_group
+  grp.name = "FP combined BR rail seat (near)"
+  face = grp.entities.add_face([4619.mm,0.mm,138.mm], [4679.mm,0.mm,138.mm], [4679.mm,55.mm,138.mm], [4619.mm,55.mm,138.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined bolt M12 (near) X4599 Z84
+  grp = ents.add_group
+  grp.name = "FP combined bolt M12 (near) X4599 Z84"
+  ge = grp.entities
+  circle = ge.add_circle([4599.mm,-50.mm,84.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined bolt M12 (near) X4599 Z178
+  grp = ents.add_group
+  grp.name = "FP combined bolt M12 (near) X4599 Z178"
+  ge = grp.entities
+  circle = ge.add_circle([4599.mm,-50.mm,178.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined bolt M12 (near) X4699 Z84
+  grp = ents.add_group
+  grp.name = "FP combined bolt M12 (near) X4699 Z84"
+  ge = grp.entities
+  circle = ge.add_circle([4699.mm,-50.mm,84.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined bolt M12 (near) X4699 Z178
+  grp = ents.add_group
+  grp.name = "FP combined bolt M12 (near) X4699 Z178"
+  ge = grp.entities
+  circle = ge.add_circle([4699.mm,-50.mm,178.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined corner plate (far)
+  grp = ents.add_group
+  grp.name = "FP combined corner plate (far)"
+  face = grp.entities.add_face([4574.mm,2352.mm,58.mm], [4724.mm,2352.mm,58.mm], [4724.mm,2362.mm,58.mm], [4574.mm,2362.mm,58.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(167.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined corner ext plate (far)
+  grp = ents.add_group
+  grp.name = "FP combined corner ext plate (far)"
+  face = grp.entities.add_face([4574.mm,2402.mm,58.mm], [4724.mm,2402.mm,58.mm], [4724.mm,2412.mm,58.mm], [4574.mm,2412.mm,58.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(167.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined right-beam seat (far)
+  grp = ents.add_group
+  grp.name = "FP combined right-beam seat (far)"
+  face = grp.entities.add_face([4574.mm,2307.mm,58.mm], [4724.mm,2307.mm,58.mm], [4724.mm,2362.mm,58.mm], [4574.mm,2362.mm,58.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined BR rail seat (far)
+  grp = ents.add_group
+  grp.name = "FP combined BR rail seat (far)"
+  face = grp.entities.add_face([4619.mm,2307.mm,138.mm], [4679.mm,2307.mm,138.mm], [4679.mm,2362.mm,138.mm], [4619.mm,2362.mm,138.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined bolt M12 (far) X4599 Z84
+  grp = ents.add_group
+  grp.name = "FP combined bolt M12 (far) X4599 Z84"
+  ge = grp.entities
+  circle = ge.add_circle([4599.mm,2352.mm,84.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined bolt M12 (far) X4599 Z178
+  grp = ents.add_group
+  grp.name = "FP combined bolt M12 (far) X4599 Z178"
+  ge = grp.entities
+  circle = ge.add_circle([4599.mm,2352.mm,178.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined bolt M12 (far) X4699 Z84
+  grp = ents.add_group
+  grp.name = "FP combined bolt M12 (far) X4699 Z84"
+  ge = grp.entities
+  circle = ge.add_circle([4699.mm,2352.mm,84.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined bolt M12 (far) X4699 Z178
+  grp = ents.add_group
+  grp.name = "FP combined bolt M12 (far) X4699 Z178"
+  ge = grp.entities
+  circle = ge.add_circle([4699.mm,2352.mm,178.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "FP Combined Corner Plates"
+  inst.layer = model.layers["Combined Plate"]
 
   # ═══ Panel & Pivot Axle ═══
   defn = model.definitions.add("Panel & Pivot Axle")
@@ -13151,7 +13159,7 @@ model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Pivot Axle", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans", "Water Plumbing", "Labels"]
+keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Combined Plate", "Pivot Axle", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans", "Water Plumbing", "Labels"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -13179,7 +13187,7 @@ olp = model.pages.add("Labeled"); olp.use_camera = true
 model.layers["Labels"].visible = false if model.layers["Labels"]
 
 # Grouped scenes — translucent Shell (context) + the group's subsystems.
-[["Film Plane & Pinhole", ["Pinhole", "Optical Cone", "Film Plane"]], ["Water Systems", ["Processing Tray", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Shelf", "Water Hookups", "Water Plumbing"]], ["Electrical Systems", ["Electrical", "Lighting"]], ["Hinge Panel & Drum", ["Light Trap", "Light Seal", "Pivot Axle"]], ["Ventilation", ["Evap Cooler", "Fans"]], ["Walkways", ["Walkways"]]].each { |name, tags|
+[["Film Plane & Pinhole", ["Pinhole", "Optical Cone", "Film Plane", "Combined Plate"]], ["Water Systems", ["Processing Tray", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Shelf", "Water Hookups", "Water Plumbing"]], ["Electrical Systems", ["Electrical", "Lighting"]], ["Hinge Panel & Drum", ["Light Trap", "Light Seal", "Pivot Axle"]], ["Ventilation", ["Evap Cooler", "Fans"]], ["Walkways", ["Walkways", "Combined Plate"]]].each { |name, tags|
   model.layers.each { |l| l.visible = (l == default_layer || l.name == "Shell" || tags.include?(l.name)) }
   page = model.pages.add(name)
   page.use_camera = true

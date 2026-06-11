@@ -13087,6 +13087,13 @@ if inst
   txt = entities.add_text("EVAP COOLER", anc, Geom::Vector3d.new(300.mm, 0.mm, 1700.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Chemistry Shelf" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("CHEMISTRY SHELF", anc, Geom::Vector3d.new(-200.mm, -850.mm, 700.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
 anc = Geom::Point3d.new(5618.mm, 1996.mm, 2250.mm)
 txt = entities.add_text("FAN A
 (exhaust, IBC end)", anc, Geom::Vector3d.new(400.mm, 0.mm, 450.mm))
@@ -13105,9 +13112,6 @@ txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(175.mm, 2287.mm, 1700.mm)
 txt = entities.add_text("PIVOT POST Ø89
 (panel swing axis)", anc, Geom::Vector3d.new(500.mm, -200.mm, 600.mm))
-txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(3429.mm, 450.mm, 1075.mm)
-txt = entities.add_text("CHEMISTRY SHELF", anc, Geom::Vector3d.new(-200.mm, -850.mm, 700.mm))
 txt.layer = model.layers["Labels"] rescue nil
 
 # ── In-model © + license credit (default layer → shown in every scene) ──

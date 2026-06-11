@@ -1125,7 +1125,7 @@ def sheet3():
     C_PLATE = "#8090A0"
 
     # ── View window (X 4250 → IBC stack, Yd 0 → C_WID) ───────────────────────
-    X_LO = WK_L_X - 360
+    X_LO = WK_L_X - 520     # wide left gutter so the cleat/plate callouts clear the beam
     X_HI = IBC_COL_X + IBC_W + 20
     Y_LO = -150
     Y_HI = C_WID + 120
@@ -1218,8 +1218,7 @@ def sheet3():
             ha="left", va="center", fontsize=5.5, color=C_CL, rotation=90, **FONT)
     leader(ax, sx(WK_R_X + SHS / 2), sy(70),
            sx(GUT_X), sy(C_WID * 0.06),
-           "COMBINED CORNER PLATE (right corners)\ncarries the walkway right beam (70mm seat)\n"
-           "+ the BR film rail (150mm seat) — replaces\nthe BR saddle; 10mm, 4× M12, permanently bolted",
+           "COMBINED CORNER PLATE (right corners)\nshared with the BR film rail — 10mm,\n4× M12, permanently bolted",
            color=C_PLATE, fs=5.5, ha="left", va="center", arrow_style="-|>", font=FONT)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
@@ -1585,13 +1584,13 @@ def sheet5():
     chain_x = -70
     pts = [0] + list(yds) + [C_WID]
     for a, b in zip(pts[:-1], pts[1:]):
-        draw_dim_h(ax, a, b, chain_x, f"{int(b - a)}", offset=6, fs=5.5, above=False, font=FONT)
+        draw_dim_h(ax, a, b, chain_x, f"{int(b - a)}mm", offset=6, fs=5.5, above=False, font=FONT)
     ax.text(1181, chain_x - 26, "BRACKET Yd SPACING (3 land on the punch-out edges 800/1560 + centre 1180)",
             ha="center", va="top", fontsize=6, color=C_OUT, **FONT)
 
     # Reach dims (left side)
-    draw_dim_v(ax, -55, arm_x0, std, f"{int(std - arm_x0)} std", offset=6, fs=5.5, right=False, font=FONT)
-    draw_dim_v(ax, -100, arm_x0, wide, f"{int(wide - arm_x0)} wide", offset=6, fs=5.5, right=False, font=FONT)
+    draw_dim_v(ax, -55, arm_x0, std, f"{int(std - arm_x0)}mm std", offset=6, fs=5.5, right=False, font=FONT)
+    draw_dim_v(ax, -100, arm_x0, wide, f"{int(wide - arm_x0)}mm wide", offset=6, fs=5.5, right=False, font=FONT)
     # Punch-out Yd extent
     draw_dim_h(ax, wyl, wyr, wide + 30, f"{wyr - wyl}mm punch-out", offset=5, fs=6, font=FONT)
 
@@ -1746,13 +1745,19 @@ def sheet6():
     ]
     draw_notes(axA, notes, 4, -58, spacing=7, fs=6.5, ha="left", width=552, font=FONT)
 
-    title_block(axB, "SHEET 6 OF 9",
+    # The two views share ONE title block. Drawing it on the narrow axB squeezed the
+    # three columns together (PROJECT|PERIMETER ran into each other); give it a
+    # full-width strip along the figure bottom instead.
+    fig.subplots_adjust(bottom=0.16)
+    axT = fig.add_axes([0.03, 0.005, 0.94, 0.13]); axT.axis("off")
+    axT.set_xlim(0, 1); axT.set_ylim(0, 1)
+    title_block(axT, "SHEET 6 OF 9",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL D — LEFT FLOOR-LEG CANTILEVER BRACKET",
                 scale_note="Axes in mm · VIEWS A/B",
-                height=0.07)
+                height=0.55)
 
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet6.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet6.png"), dpi=130, facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet6.png saved")
 

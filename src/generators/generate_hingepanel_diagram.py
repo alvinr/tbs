@@ -306,15 +306,6 @@ def sheet1():
            (PW + 275, PH * 0.36),
            "OPENS OUTWARD\n(180° SWING —\nCLEAR OF INTERIOR\nEQUIPMENT)",
            col="#204080", fw="bold")
-#     ax.annotate("",
-#                 xy=(PW + 55, PH * 0.36),
-#                 xytext=(PW, PH * 0.36),
-#                 arrowprops=dict(arrowstyle="-|>", color="#204080", lw=1.3,
-#                                 mutation_scale=9))
-#     ax.text(PW + 175, PH * 0.36 -55,
-#             "OPENS OUTWARD\n(180° SWING —\nCLEAR OF INTERIOR\nEQUIPMENT)",
-#             color="#204080", fontsize=6.5, ha="left", va="bottom",
-#             fontweight="bold", **FONT, zorder=15)
 
     # ── Emergency egress safety note ──────────────────────────────────────────
     ax.text(PW / 2, -280,
@@ -686,15 +677,8 @@ def sheet2():
     ext_oh_mid = (D_YB + Y0_W) / 2
     dim_v(ax, D_XL - 150, D_YB, Y0_W, f"{int(Y0_W - D_YB)}mm EXT. OVERHANG", offset=15, fs=6)
 
-    # Interior drum overhang — 45° leader going north-left
-    int_oh_mid = (Y1_PL2 + D_YT) / 2
+    # Interior drum overhang dimension
     dim_v(ax, D_XL - 150, Y1_PL2, D_YT, f"{int(D_YT - Y1_PL2)}mm INT. OVERHANG", offset=15, fs=6)
-#     ax.annotate(f"{int(D_YT - Y1_PL2)}mm INT. OVERHANG",
-#                 xy=(D_XL - 180, int_oh_mid),
-#                 xytext=(D_XL - 180 - LBL_OFF * 1.5, int_oh_mid + LBL_OFF * 1.5),
-#                 fontsize=6, color=C_DIM, ha="right", va="bottom", **FONT,
-#                 arrowprops=dict(arrowstyle="->", linestyle=':', color=C_DIM, lw=0.8),
-#                 bbox=dict(fc="white", ec="none", pad=1.5), zorder=15)
 
     # Full panel width dimension
     dim_h(ax, 0, PW, Y_LO + 230, f"{PW}mm  (FULL PANEL WIDTH)", fs=7, offset=-25)

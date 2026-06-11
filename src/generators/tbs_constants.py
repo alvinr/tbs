@@ -134,11 +134,12 @@ RAIL_OFF_BOT = 150    # floor (BOTTOM) offset (mm) — RAISED +50 (was 100) so t
 MAX_TILT_DEG  = 40.0   # design max single-axis tilt (cross-slide-Z limited)
 MAX_SWING_DEG = 28.0   # design max single-axis swing (≈ rail-depth limit 28.7°)
 
-# Cross-slide strokes that absorb the rigid-rotation arc travel at the corners:
-XSLIDE_Z_TRAVEL = round((FP_H / 2) * (1 - math.cos(math.radians(MAX_TILT_DEG))))   # ≈ 280mm (tilt)
-XSLIDE_X_TRAVEL = round((FP_W / 2) * (1 - math.cos(math.radians(MAX_SWING_DEG))))  # ≈ 263mm (swing)
-XSLIDE_STROKE   = 300   # specified linear cross-slide travel (mm) — covers both, with margin
-XSLIDE_N        = 8     # 2 cross-slides (X + Z) per corner × 4 corners
+# Cross-slide strokes that absorb the rigid-rotation arc travel at the corners
+# (Option A spec; not yet drawn in the FPM sheets / 3D model):
+XSLIDE_Z_TRAVEL = round((FP_H / 2) * (1 - math.cos(math.radians(MAX_TILT_DEG))))   # ≈ 280mm (tilt) — reserved
+XSLIDE_X_TRAVEL = round((FP_W / 2) * (1 - math.cos(math.radians(MAX_SWING_DEG))))  # ≈ 263mm (swing) — reserved
+XSLIDE_STROKE   = 300   # specified linear cross-slide travel (mm) — covers both, with margin — reserved
+XSLIDE_N        = 8     # 2 cross-slides (X + Z) per corner × 4 corners — reserved
 
 # ── Equipment zones ───────────────────────────────────────────────────────────
 ZONE_L_END   = FP_X_L    # left zone right boundary X  (= 150mm)  [rev6: was 625]
@@ -169,7 +170,7 @@ PANEL_CORNER_T    = 40    # corner zone ENVELOPE thickness (mm) — 4mm PP + 3mm
 PANEL_CENTER_T    = 120   # center zone ENVELOPE thickness (mm) — 4mm PP + 84mm RHS frame + 4mm PP
 PANEL_STEP        = PANEL_CENTER_T - PANEL_CORNER_T  # = 80mm step depth
 PANEL_SKIN_T      = 4     # panel skin thickness (mm) — 4mm PP plastic sheet (rev11; was 18mm ply), U-channel set
-PANEL_FAN_PLY_T   = 18    # plywood fan-mount band thickness (mm) — local to the Fan B corner only
+PANEL_FAN_PLY_T   = 18    # plywood fan-mount band thickness (mm) — local to the Fan B corner only — reserved (spec; band drawn with a literal)
 PANEL_FAN_BAND_Z  = 1125  # ply band top Z (AFF) = FAN_B_H(600) + FAN_DIAM/2(75) + 450; literal — fan consts defined below
 PANEL_CORNER_YD_L = 653   # corner-to-center transition, near side (mm) [rev8: widened]
 PANEL_CORNER_YD_R = 1709  # center-to-corner transition, far side (mm)  [rev8: widened]

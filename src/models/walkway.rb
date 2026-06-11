@@ -2529,6 +2529,207 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # RWk wall cleat plate (Type RWk Cleat)
+  grp = ents.add_group
+  grp.name = "RWk wall cleat plate (Type RWk Cleat)"
+  face = grp.entities.add_face([5955.mm,0.mm,60.mm], [6045.mm,0.mm,60.mm], [6045.mm,8.mm,60.mm], [5955.mm,8.mm,60.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(65.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk wall cleat ext plate (Type RWk Cleat)
+  grp = ents.add_group
+  grp.name = "RWk wall cleat ext plate (Type RWk Cleat)"
+  face = grp.entities.add_face([5955.mm,-48.mm,60.mm], [6045.mm,-48.mm,60.mm], [6045.mm,-40.mm,60.mm], [5955.mm,-40.mm,60.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(65.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk wall cleat shelf (Type RWk Cleat)
+  grp = ents.add_group
+  grp.name = "RWk wall cleat shelf (Type RWk Cleat)"
+  face = grp.entities.add_face([5955.mm,0.mm,60.mm], [6045.mm,0.mm,60.mm], [6045.mm,55.mm,60.mm], [5955.mm,55.mm,60.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk wall bolt (Type RWk Cleat) Z76
+  grp = ents.add_group
+  grp.name = "RWk wall bolt (Type RWk Cleat) Z76"
+  ge = grp.entities
+  circle = ge.add_circle([6000.mm,-48.mm,76.mm], [0,1,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk wall bolt (Type RWk Cleat) Z109
+  grp = ents.add_group
+  grp.name = "RWk wall bolt (Type RWk Cleat) Z109"
+  ge = grp.entities
+  circle = ge.add_circle([6000.mm,-48.mm,109.mm], [0,1,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined corner plate (near)
+  grp = ents.add_group
+  grp.name = "FP combined corner plate (near)"
+  face = grp.entities.add_face([6925.mm,0.mm,58.mm], [7075.mm,0.mm,58.mm], [7075.mm,10.mm,58.mm], [6925.mm,10.mm,58.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(167.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined corner ext plate (near)
+  grp = ents.add_group
+  grp.name = "FP combined corner ext plate (near)"
+  face = grp.entities.add_face([6925.mm,-50.mm,58.mm], [7075.mm,-50.mm,58.mm], [7075.mm,-40.mm,58.mm], [6925.mm,-40.mm,58.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(167.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined right-beam seat (near)
+  grp = ents.add_group
+  grp.name = "FP combined right-beam seat (near)"
+  face = grp.entities.add_face([6925.mm,0.mm,58.mm], [7075.mm,0.mm,58.mm], [7075.mm,55.mm,58.mm], [6925.mm,55.mm,58.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined BR rail seat (near)
+  grp = ents.add_group
+  grp.name = "FP combined BR rail seat (near)"
+  face = grp.entities.add_face([6970.mm,0.mm,138.mm], [7030.mm,0.mm,138.mm], [7030.mm,55.mm,138.mm], [6970.mm,55.mm,138.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined bolt M12 (near) X6950 Z84
+  grp = ents.add_group
+  grp.name = "FP combined bolt M12 (near) X6950 Z84"
+  ge = grp.entities
+  circle = ge.add_circle([6950.mm,-50.mm,84.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined bolt M12 (near) X6950 Z178
+  grp = ents.add_group
+  grp.name = "FP combined bolt M12 (near) X6950 Z178"
+  ge = grp.entities
+  circle = ge.add_circle([6950.mm,-50.mm,178.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined bolt M12 (near) X7050 Z84
+  grp = ents.add_group
+  grp.name = "FP combined bolt M12 (near) X7050 Z84"
+  ge = grp.entities
+  circle = ge.add_circle([7050.mm,-50.mm,84.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP combined bolt M12 (near) X7050 Z178
+  grp = ents.add_group
+  grp.name = "FP combined bolt M12 (near) X7050 Z178"
+  ge = grp.entities
+  circle = ge.add_circle([7050.mm,-50.mm,178.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Type RWk IBC upright (50x50 RHS)
+  grp = ents.add_group
+  grp.name = "Type RWk IBC upright (50x50 RHS)"
+  face = grp.entities.add_face([8000.mm,0.mm,0.mm], [8050.mm,0.mm,0.mm], [8050.mm,50.mm,0.mm], [8000.mm,50.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(335.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Type RWk cantilever arm (40x40 SHS)
+  grp = ents.add_group
+  grp.name = "Type RWk cantilever arm (40x40 SHS)"
+  face = grp.entities.add_face([7595.mm,0.mm,70.mm], [8000.mm,0.mm,70.mm], [8000.mm,40.mm,70.mm], [7595.mm,40.mm,70.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(45.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Type RWk upright clamp
+  grp = ents.add_group
+  grp.name = "Type RWk upright clamp"
+  face = grp.entities.add_face([7996.mm,44.mm,45.mm], [8054.mm,44.mm,45.mm], [8054.mm,52.mm,45.mm], [7996.mm,52.mm,45.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Type RWk upright bolt M12
+  grp = ents.add_group
+  grp.name = "Type RWk upright bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([8025.mm,-12.mm,76.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(64.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Cantilever Types"
   inst.layer = model.layers["Cantilever Types"]
@@ -3393,6 +3594,21 @@ txt = entities.add_text("WIDENED CANTILEVER (EP / battery zone)
 10mm plate / 200 leg / 500 arm
 4x M12 (rectangular)", anc, Geom::Vector3d.new(200.mm, -300.mm, 850.mm))
 txt.layer = model.layers["Cantilever Types"] rescue nil
+anc = Geom::Point3d.new(6000.mm, 0.mm, 115.mm)
+txt = entities.add_text("RIGHT WALKWAY — WALL CLEAT (left corners)
+8mm back-plate + ext plate + shelf,
+the long beam lands on it; M12 through-bolts", anc, Geom::Vector3d.new(-150.mm, -300.mm, 800.mm))
+txt.layer = model.layers["Cantilever Types"] rescue nil
+anc = Geom::Point3d.new(7000.mm, 0.mm, 150.mm)
+txt = entities.add_text("RIGHT WALKWAY — COMBINED CORNER PLATE (right corners)
+10mm, carries the walkway right beam (Z70 seat)
++ the BR film rail (Z150 seat); 4x M12", anc, Geom::Vector3d.new(0.mm, -300.mm, 850.mm))
+txt.layer = model.layers["Cantilever Types"] rescue nil
+anc = Geom::Point3d.new(8000.mm, 0.mm, 115.mm)
+txt = entities.add_text("RIGHT WALKWAY — CENTER CANTILEVER ARM
+40x40 SHS off an IBC corridor upright
+(half-lapped at the long beams); M12 clamp", anc, Geom::Vector3d.new(150.mm, -300.mm, 820.mm))
+txt.layer = model.layers["Cantilever Types"] rescue nil
 
 model.definitions.purge_unused
 model.materials.purge_unused
@@ -3434,12 +3650,12 @@ model.layers["Labels"].visible = false if model.layers["Labels"]
 #    close-up camera (the only scene showing the Cantilever Types catalog tag; the
 #    wall is hidden so the full bracket — plate, arm, gusset, bolts — reads) ──
 model.layers.each { |l| l.visible = (l.name == "Cantilever Types") }
-ct_tgt = Geom::Point3d.new(3500.mm, -100.mm, 450.mm)
-ct_dir = Geom::Vector3d.new(-0.22, -0.82, 0.40); ct_dir.normalize!
-ct_eye = ct_tgt.offset(ct_dir, 5000.mm)
+ct_tgt = Geom::Point3d.new(5000.mm, -100.mm, 450.mm)
+ct_dir = Geom::Vector3d.new(-0.18, -0.84, 0.38); ct_dir.normalize!
+ct_eye = ct_tgt.offset(ct_dir, 8800.mm)
 ct_cam = Sketchup::Camera.new(ct_eye, ct_tgt, Z_AXIS)
 ct_cam.perspective = true
-ct_cam.fov = 40
+ct_cam.fov = 46
 model.active_view.camera = ct_cam
 ctp = model.pages.add("Cantilevers")
 ctp.use_camera = true

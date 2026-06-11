@@ -519,11 +519,14 @@ def _rwk_wall_cleat(tag, x, wall_yd, din):
     return out
 
 
-def fp_combined_corner_plate(wall_yd, din):
+def fp_combined_corner_plate(wall_yd, din, cx=None):
     """ONE plate at the near/far-RIGHT corner securing BOTH the bottom film rail (BR) and the
     walkway's right beam — through-bolted to the wall (interior + exterior plate). Spans Z58..225:
-    the right beam lands on it at Z70-115, the BR rail seats on it at Z150. 150mm wide."""
-    pw, cx, rz = IBC_WBKT_PLATE_W, RAIL_X_R, RAIL_OFF_BOT   # 150, 4649, 150
+    the right beam lands on it at Z70-115, the BR rail seats on it at Z150. 150mm wide.
+    `cx` overrides the X station (used to isolate it for the walkway bracket-type catalog)."""
+    pw, rz = IBC_WBKT_PLATE_W, RAIL_OFF_BOT                 # 150, 150
+    if cx is None:
+        cx = RAIL_X_R                                      # 4649 (real BR corner)
     tag = "near" if wall_yd == 0 else "far"
     piy = wall_yd if din > 0 else wall_yd - 10
     poy = -WALL_T - 10 if din > 0 else C_WID + WALL_T

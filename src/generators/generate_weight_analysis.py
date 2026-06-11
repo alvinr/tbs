@@ -328,12 +328,14 @@ def _bay_weight():
 
 def _swing_hardware_weight():
     """rev10 rotation transport hardware — replaces the retired HGR20 ceiling-rail
-    slide (the pivot reuses the film far-left Ø89 upright, so no new post). Estimate;
-    refine against the Stage-4 rotation-hardware BOM.
-      thrust + journal bearings ~8 kg, pivot collar/hub ~5 kg, drum support cage
-      (steel) ~15 kg, top+bottom wall stays (rod + turnbuckle + hooks/eyes) ~6 kg,
-      4× drop-in rail saddles ~4 kg."""
-    return 8 + 5 + 15 + 6 + 4   # ≈ 38 kg, concentrated at the cargo-door end
+    slide (the pivot reuses the film far-left Ø89 upright, so no new post). Reconciled
+    against the firmed Stage-4 BOM (master-shopping-list.md §7a, 2026-06-10):
+      bearings ~4 kg (12in turntable thrust ~2 + 2× 89mm bronze sleeve ~1),
+      pivot hub + thrust collar (machined steel block) ~10 kg, drum support cage
+      (40×40×3 SHS, ~4m) ~15 kg, top+bottom wall stays + 4-bolt anchor plates ~5 kg,
+      4× drop-in rail saddles ~4 kg. Sum ≈ 38 kg (unchanged from the prior estimate —
+      bearings lighter, machined hub heavier, net wash)."""
+    return 4 + 10 + 15 + 5 + 4   # ≈ 38 kg, concentrated at the cargo-door end
 
 
 def _ibc_stacking_frame_weight():

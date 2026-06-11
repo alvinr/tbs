@@ -319,8 +319,8 @@ The panel + drum SWING ~56° about a vertical Ø89×8mm CHS pivot post (rev10 �
 
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
-| Ø89×8 CHS pivot post (upgrades the reused film upright) + machined hub / thrust collar | $180 | $220 | $260 | Structural sign-off; Metal Supermarkets / local fab |
-| Thrust + journal bearings (Ø220 turntable + 2× Ø90 sleeve) | $180 | $210 | $250 | VXB Bearings / McMaster-Carr |
+| Ø89×8 CHS pivot post (upgrades the reused film upright) + machined hub / thrust collar | $180 | $220 | $260 | Member check DONE (SF 3.7, [§4.1](hinged-panel-report.md)); post-to-container weld/anchor connection sign-off pending. Metal Supermarkets / local fab |
+| Thrust + journal bearings (12″ turntable thrust + 2× 89mm bronze sleeve) | $180 | $210 | $250 | Firmed BOM in [master-shopping-list §7a](master-shopping-list.md); VXB lazy-susan 1000 lb + McMaster SAE 841 sleeves |
 | Drum support cage, 40×40×3mm SHS | $80 | $90 | $110 | Local fab |
 | Top + bottom wall stays + 4-bolt anchor plates | $120 | $140 | $160 | Turnbuckles + eye/hook rods + plates; McMaster-Carr / local fab |
 | Drop-in rail saddles + tapered dowels (×4, removable left film rails) | $90 | $110 | $130 | Local fab / McMaster-Carr |

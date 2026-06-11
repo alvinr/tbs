@@ -368,17 +368,25 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 *Source: `equipment-layout-report.md` § 6.1, `hinged-panel-report.md` § 4–5. Enables transport mode: the panel + drum SWING ~56° about a vertical Ø89×8mm CHS pivot post (rev10 — supersedes the B2 slide), carrying the punch-out bay inboard of the door plane (true min X +59mm) so the cargo doors close. Single-person operation (~5 min, swing assisted; strike the two left film rails + the left walkway first, then swing).*
 
 ### Swing pivot system
-| Item | Spec | Qty | Supplier | Est. cost |
-|------|------|-----|----------|-----------|
-| [Ø89×8mm CHS pivot post, ~2300mm](https://www.onlinemetals.com/en/buy/carbon-steel/carbon-steel-round-tube-dom) | S355 — upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever (**structural sign-off**) | 1 | Metal Supermarkets / [Online Metals](https://www.onlinemetals.com) | ~$90 |
-| [Turntable / slewing thrust bearing, ~Ø220](https://www.vxb.com/Turntable-Bearings-s/1869.htm) | Flush at the post base — carries the ~330 kg swinging-assembly vertical load | 1 | [VXB Bearings](https://www.vxb.com) / McMaster-Carr | ~$120 |
-| [Flanged sleeve (journal) bearing, Ø90 bore](https://www.mcmaster.com/sleeve-bearings/) | Top + bottom radial location of the post / hub | 2 | McMaster-Carr / Grainger | ~$90 |
-| Pivot hub + thrust collar, machined steel | Couples the swinging frame to the post; seats the thrust bearing | 1 | Local fab | ~$130 |
-| Drum support cage, 40×40×3mm SHS | Steel frame carrying the Ø900 housing + drum on the swinging leaf | 1 | Metal Supermarkets / local fab | ~$90 |
-| Top + bottom **wall stays** | M16 turnbuckle + eye bolt + hook rod, each (the transport lock) | 2 | [McMaster-Carr](https://www.mcmaster.com/turnbuckles/) / Grainger | ~$90 |
-| Wall-stay anchor plates + M16 bolts | Inside + outside 4-bolt plates per stay eye, sandwiching the side wall (same pattern as the walkway anchors) | 2 sets | Local fab / McMaster-Carr | ~$50 |
-| Drop-in rail saddles + tapered dowels + clamp bars | Drop-in saddles for the 2 removable left film rails (TL + BL) — the dowels set the film datum on re-seat | 4 | Local fab / McMaster-Carr | ~$110 |
-**Swing pivot subtotal: ~$770**
+
+*Firmed BOM (Stage 4, 2026-06-10). Structural member check DONE: the Ø89×8 post gives
+Z ≈ 37.9 cm³, so the ~3.6 kN·m swing cantilever puts σ ≈ 95 MPa on an S355 (355 MPa)
+section → **SF ≈ 3.7** (matches `hinged-panel-report.md` §4.1). The journal couple is
+H = M/h = 3.6 kN·m / 2.2 m ≈ 1.6 kN per bearing → sleeve bearing pressure ≈ 0.37 MPa «
+14 MPa allowable for SAE 841 bronze. **Remaining sign-off: the post-to-container
+top/bottom weld + anchor connection** (fabricator/PE review) — not the member itself.*
+
+| Item | Spec | Qty | Suppliers (A / B) + part # | Est. cost |
+|------|------|-----|----------------------------|-----------|
+| Pivot post — 3.5″ OD × 0.375″ wall DOM tube, ~2300mm | A513 DOM (≈Ø89×9.5, **exceeds** the Ø89×8 S355 spec); upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever (SF 3.7) | 1 | [Online Metals #12976](https://www.onlinemetals.com/en/buy/carbon-steel/3-5-od-x-0-375-wall-x-2-75-id-carbon-steel-round-tube-a513-type-5-dom/pid/12976) / [Metals Depot DOM](https://www.metalsdepot.com/steel-products/steel-round-tube-dom) · Metal Supermarkets SoCal (cut-to-size) | ~$110 |
+| Turntable thrust bearing — 12″ (Ø305), 1000 lb | Axial only at the post base — carries the ~330 kg (3.24 kN) vertical load; the overturning moment is taken by the journal couple, so a thrust-only turntable suffices | 1 | [VXB Lazy-Susan 1000 lb, USA](https://vxb.com/products/12inch-lazy-susan-5-16-thick-turntable-bearings-made-in-usa-1000-lbs-capacity) / [Shepherd 9549E](https://www.shepherdhardware.com/product/12-inch-lazy-susan-round-turntable-1000-lb-load-capacity) | ~$40 |
+| Flanged sleeve (journal) bearing — 3½″ (89mm) bore | SAE 841 bronze (oil-embedded); top + bottom radial location of hub on post; 1.6 kN radial each | 2 | [McMaster-Carr 6391K-series](https://www.mcmaster.com/sleeve-bearings/) / [Grainger](https://www.grainger.com/category/power-transmission/bearings/sleeve-bearings) | ~$100 |
+| Pivot hub + thrust collar, machined steel | Couples the swinging frame to the post; bores Ø89 for the sleeves + seats the turntable; includes machining the post bearing landings | 1 | Local fab (SoCal machine shop) | ~$160 |
+| Drum support cage — [40×40×3mm SHS](https://www.metalsupermarkets.com/product/square-tube/) (~4m) | Steel frame carrying the Ø900 housing + drum on the swinging leaf | 1 | Metal Supermarkets SoCal / local fab | ~$90 |
+| Top + bottom **wall stays** (transport lock) | [M16 turnbuckle](https://www.mcmaster.com/turnbuckles/) (eye-eye) + [eye bolt](https://www.mcmaster.com/eyebolts/) + hook rod, each | 2 | [McMaster-Carr 3411T-series](https://www.mcmaster.com/turnbuckles/) / [Grainger](https://www.grainger.com/category/material-handling/rigging/turnbuckles) | ~$90 |
+| Wall-stay anchor plates + M16 bolts | Inside + outside 4-bolt plates per stay eye, sandwiching the side wall (same pattern as the walkway anchors) | 2 sets | Local fab / [McMaster-Carr M16](https://www.mcmaster.com/bolts/) | ~$60 |
+| Drop-in rail saddles + tapered dowels + clamp bars | Drop-in saddles for the 2 removable left film rails (TL + BL) — the dowels set the film datum on re-seat | 4 | Local fab / McMaster-Carr | ~$120 |
+| **Swing pivot subtotal** | | | (firmed — was a ~$770 estimate, now priced line-by-line) | **~$770** |
 
 ### Fixed door frame + seals
 | Item | Spec | Qty | Supplier | Est. cost |

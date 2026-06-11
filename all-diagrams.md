@@ -74,6 +74,10 @@
 
 ![TBS-001 Tilt-Swing Board — Sheet 3: Mounting Interface and Stop Geometry](assets/tilt-swing-board-sheet3.png)
 
+![TBS-001 Tilt-Swing — Sheet 1: Front View](assets/tilt-swing-sheet1.png)
+
+![TBS-001 Tilt-Swing — Sheet 2: Section A-A](assets/tilt-swing-sheet2.png)
+
 ---
 
 ## 9. Processing (Water) System
@@ -118,6 +122,8 @@
 
 ![TBS-001 Hinged Panel — Sheet 4: Rotating Transport + Swing Clearance](assets/hingepanel-sheet4.png)
 
+![TBS-001 Hinged Panel — Sheet 5: Light-Lock Verification](assets/hingepanel-sheet5.png)
+
 ---
 
 ## 13. Perimeter Walkway
@@ -138,11 +144,15 @@
 
 ![TBS-001 Walkway — Sheet 8: Width Transition Detail](assets/walkway-sheet8.png)
 
+![TBS-001 Walkway — Sheet 9: Drum-Exit Punch-Out Support](assets/walkway-sheet9.png)
+
 ---
 
 ## 14. Equipment Panel & Plumbing
 
 ![TBS-001 — Equipment Panel Layout](assets/panel-layout.png)
+
+![TBS-001 — Equipment Panel Backside](assets/panel-layout-back.png)
 
 ---
 
@@ -207,6 +217,8 @@
 ![TBS-001 — Weight Analysis: Camera Ready](assets/weight-analysis-sheet3.png)
 
 ![TBS-001 — Weight Analysis: Materials Exhausted](assets/weight-analysis-sheet4.png)
+
+![TBS-001 — Weight Analysis: Loaded Transport](assets/weight-analysis-sheet5.png)
 
 ---
 

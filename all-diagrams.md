@@ -178,9 +178,9 @@
 
 ![Chemistry Prep Shelf — Sheet 1: Plan View](assets/shelf-sheet1.png)
 
-![Chemistry Prep Shelf — Sheet 2: Section Elevation](assets/shelf-sheet2.png)
+![Chemistry Prep Shelf — Sheet 2: Section (fold-down mechanism)](assets/shelf-sheet2.png)
 
-![Chemistry Prep Shelf — Sheet 3: Hanger Connection Detail](assets/shelf-sheet3.png)
+![Chemistry Prep Shelf — Sheet 3: Hinge + stay detail](assets/shelf-sheet3.png)
 
 ---
 

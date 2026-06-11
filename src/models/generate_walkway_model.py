@@ -15,14 +15,16 @@ up, so the structure reads clearly apart from the decks that sit on top:
     far decks, modeled with their EXTERIOR detail: a reinforcing plate on the
     outside wall face + 3× M12 through-bolts (hex heads outside), visible through
     the ghosted container.
-  • **Right Hangers** — the ceiling-hung right walkway: two bearer angles + 5
-    rod-pairs of M10 threaded rod up to ceiling plates.
+  • **Right Cantilever** — the IBC-end right walkway support: a cantilever
+    rectangle (2 long + 2 end 40×40×3 SHS beams) on center arms off the IBC
+    uprights + wall cleats + combined corner plates (rev12 — replaced the old
+    ceiling-hung bearer/rod hangers). Single-sourced via ov.right_walkway_cantilever().
   • **Processing Tray** — the SS basin the walkway surrounds (reuses the overview
     builder).
   • **Container** — a low-alpha ghost (floor, ceiling, both long walls) so the
     exterior braces + bolt-throughs show.
 
-Scenes separate the gates (decks) from the cantilevers, plus the right hangers.
+Scenes separate the gates (decks) from the cantilevers, plus the right cantilever.
 
 Usage
 -----
@@ -97,7 +99,7 @@ def right_anchor_context():
 WALKWAY_LABELS = [
     ("Processing Tray", "PROCESSING TRAY", 400, -700, 700),
 ]
-# Point-anchored — the decks, cantilevers, hangers and support are paired/perimeter
+# Point-anchored — the decks, cantilevers and supports are paired/perimeter
 # parts whose bounds-centre lands in the empty middle, so anchor on a real member.
 WALKWAY_POINT_LABELS = [
     (2400,  150,   73, "NEAR WALKWAY",                    0, -900,  550),
@@ -106,7 +108,9 @@ WALKWAY_POINT_LABELS = [
     (4479, 1181,   73, "RIGHT WALKWAY",                 750, -200,  650),
     ( 320, 1181,   73, "LEFT WALKWAY\n(removable)",    -800, -300,  800),
     (2298,   30,  150, "NEAR/FAR CANTILEVERS",         -300, -1000, 450),
-    (4479,  400, 2100, "RIGHT HANGERS\n(ceiling-hung)", 800, -200,  350),
+    # rev12: the ceiling-hung right hangers are RETIRED — the right walkway is now a
+    # cantilever rectangle (Z70–115). Anchor on the inner long beam, not the old ceiling.
+    (4629,  400,   90, "RIGHT CANTILEVER\n(IBC-end support)", 700, -300,  700),
     ( 140, 1181,  100, "LEFT SUPPORT\n(floor-leg cantilevers)", -850, -200, 600),
 ]
 
@@ -185,7 +189,8 @@ def walkway_decks():
     parts.append(ruby_box("Walkway Far", near_x_l, WK_FAR_YD, GRATE_Z,
                           near_x_r - near_x_l, WK_W, t, color=C_WALKWAY))
 
-    # (Right deck is its own component/tag — see walkway_right_deck().)
+    # (The right grate rides the Walkways tag via ov.right_walkway_grate() — see the
+    #  component list — so it shows with the decks but not in the bare Right-Cantilever scene.)
 
     # Left deck — removable lift-out (distinct color) + drum-exit punch-out.
     parts.append(ruby_box("Walkway Left (removable)", WK_LEFT_X, 0, GRATE_Z,
@@ -194,13 +199,6 @@ def walkway_decks():
                           GRATE_Z, WK_LEFT_WIDE_W - WK_W, WK_LEFT_WIDE_YR - WK_LEFT_WIDE_YL,
                           t, color=C_REMOVABLE))
     return '\n'.join(parts)
-
-
-def walkway_right_deck():
-    """The right (IBC-end) ceiling-hung deck — its own component/tag so the
-    'Right Hangers' scene can show it alone (near/far/left decks off)."""
-    return ruby_box("Walkway Right (IBC end)", WK_RIGHT_X, 0, GRATE_Z,
-                    R_W, C_WID, GRATE_T, color=C_WALKWAY)
 
 
 # ── Wall cantilever brackets, with the EXTERIOR brace + bolt-throughs ────────

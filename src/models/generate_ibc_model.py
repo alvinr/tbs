@@ -112,6 +112,17 @@ def context():
     ])
 
 
+def spray_wall_trunk():
+    """The blue spray-bar supply continuing LEFT along the pinhole wall (Yd≈0) from the
+    right film rail toward the spray bar — drawn to the IBC-view edge (X=4300) so the
+    feed doesn't appear to stop at the rail. (In the overview this run is the spray-bar
+    supply trunk; here it's added only for the IBC-end view.)"""
+    fz = ov.SPRAY_BAR_FEED_Z
+    return ov.ruby_pipe("Blue Supply Trunk (along pinhole wall)",
+                        (ov.RAIL_X_R, 12, fz), (4300, 12, fz),
+                        ov.PUMP_PIPE_OD / 2, color=ov.C_BLUE)
+
+
 def generate_ruby():
     """Build the Ruby script for the IBC Stack model, reusing Overview parts."""
     comps = [
@@ -119,7 +130,7 @@ def generate_ruby():
         ov.component("IBC Tanks", "IBC Tanks", ov.ibc_stack(alpha=0.25)),
         ov.component("IBC Frame", "IBC Frame", ov.ibc_rack()),
         ov.component("Equipment Panel", "Plumbing & Panel", ov.equipment_panel()),
-        ov.component("Water Plumbing", "Plumbing & Panel", ov.water_plumbing()),
+        ov.component("Water Plumbing", "Plumbing & Panel", ov.water_plumbing() + "\n" + spray_wall_trunk()),
         ov.component("Water/Waste Hookups", "Plumbing & Panel", ov.water_hookups()),
         ov.component("Walkway Cantilever Arms", "Walkway Cantilever",
                      '\n'.join(ov.ibc_cantilever_arms())),

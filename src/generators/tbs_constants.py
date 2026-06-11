@@ -404,12 +404,6 @@ F3_Z           = F2_Z + BB_H + 30  # = 990 — F3 sump bottom Z (mm) — GAC car
 FILT_HEAD_Z    = F3_Z + BB_H  # = 1280 — top of highest filter head
 FILT_SUMP_Z    = F1_Z         # = 200 — bottom of lowest filter sump
 
-# Deprecated — filters no longer spread along X (stacked vertically instead).
-# Kept for backward compat with retired generate_filter_skid_diagram.py.
-F1_X           = F1_Z    # DEPRECATED: use F1_Z
-F2_X           = F2_Z    # DEPRECATED: use F2_Z
-F3_X           = F3_Z    # DEPRECATED: use F3_Z
-
 # Filter pipe (1" HDPE Sch40)
 FILT_PIPE_OD   = 33      # 1" nominal HDPE OD (mm)
 FILT_PIPE_WALL = 4       # pipe wall thickness (mm)

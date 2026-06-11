@@ -945,14 +945,6 @@ def sheet4():
     ax.text(0.05, 0.694, "TABLE 2 — EXAMPLE TILT/SWING CONFIGURATION SPECS",
             transform=ax.transAxes, color=DIM, fontsize=8, fontweight="bold", **FONT)
 
-    def tilt_angle(d_a, d_b, span):
-        return np.degrees(np.arctan2(abs(d_a-d_b), span))
-
-    def film_len(d_a, d_b, span):
-        return round(np.sqrt((d_a-d_b)**2 + span**2))
-
-    eff_H = H - 120
-
     # Option A (rigid axis tilt/swing about the mid-rail centre). Corner depths are
     # DERIVED from the rotation; the plane stays a flat fixed-size rectangle, so no
     # compound TWIST and no growth. Combined tilt+swing is limited (corners on rails).

@@ -157,22 +157,6 @@ C_CAGE    = "#707070"    # galvanized cage wire
 # ═══════════════════════════════════════════════════════════════════════════════
 # Helper — draw a filled RHS cross-section (cut view)
 # ═══════════════════════════════════════════════════════════════════════════════
-def _rhs_section(ax, cx, cy, size, sx, sy, *, angle=0, zo=6):
-    """Draw a 50×50×3mm RHS cross-section at (cx, cy) in data coords.
-    Outer rectangle with inner void, hatched to indicate cut steel."""
-    s = size / 2
-    t = FRAME_T
-    # Outer rectangle
-    ax.add_patch(Rectangle((sx(cx - s), sy(cy - s)),
-                            sx(size), sy(size),
-                            fc=C_STEEL, ec=C_OUT, lw=1.8, zorder=zo,
-                            hatch="///", alpha=0.6))
-    # Inner void
-    ax.add_patch(Rectangle((sx(cx - s + t), sy(cy - s + t)),
-                            sx(size - 2 * t), sy(size - 2 * t),
-                            fc=BG, ec=C_OUT, lw=0.8, zorder=zo + 1))
-
-
 def _rhs_rect(ax, x, y, w, h, sx, sy, *, fc=C_FRAME, lw=1.5, zo=5,
               alpha=0.7, hatch=None):
     """Draw a filled rectangle representing an RHS member in elevation."""

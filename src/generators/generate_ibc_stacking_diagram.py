@@ -2314,34 +2314,6 @@ def _draw_pump_symbol(ax, sx, sy, yd, z, color, label):
                 ha="center", va="bottom", fontsize=5.5, color=color,
                 fontweight="bold", **FONT, zorder=13)
 
-
-def _draw_valve(ax, px, py, x, yd, color, label):
-    """Draw a ball valve symbol (bowtie in white circle) at position (x, yd) in data coords."""
-    valve_size = 18  # half-size in mm
-    cr = valve_size * 1.6  # circle radius in mm
-    # White circle background
-    circ = plt.Circle((px(x), py(yd)),
-                       abs(px(cr) - px(0)),  # radius in data coords
-                       fc="white", ec=color, lw=1.5, zorder=11)
-    ax.add_patch(circ)
-    # Upper triangle
-    tri1 = Polygon([(px(x - valve_size), py(yd - valve_size)),
-                     (px(x + valve_size), py(yd - valve_size)),
-                     (px(x), py(yd))], closed=True,
-                    fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=12)
-    ax.add_patch(tri1)
-    # Lower triangle
-    tri2 = Polygon([(px(x - valve_size), py(yd + valve_size)),
-                     (px(x + valve_size), py(yd + valve_size)),
-                     (px(x), py(yd))], closed=True,
-                    fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=12)
-    ax.add_patch(tri2)
-    if label:
-        ax.text(px(x), py(yd), label,
-                ha="center", va="center", fontsize=5, color="white",
-                fontweight="bold", **FONT, zorder=13)
-
-
 # ═══════════════════════════════════════════════════════════════════════════════
 # Main
 # ═══════════════════════════════════════════════════════════════════════════════

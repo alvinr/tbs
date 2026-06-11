@@ -348,32 +348,31 @@ PUMP_YD      = CORRIDOR_YD_NEAR  # pump zone near edge Yd (mm) — near side of 
 # P-03 (waste evacuation) on X4 drain run in IBC plumbing corridor.
 # ACC-01 accumulator mounted adjacent to P-01 on panel.
 
-# ── Chemistry prep shelf (ceiling-suspended, right corner) ────────────────────
-# Single ceiling-hung shelf for mixing cyanotype chemistry, coating muslin, and
-# materials staging.  Suspended from 4x M10 threaded rod hangers in the
-# processing area corner, just inside the right walkway and near walkway.
-# Does not overlap any walkway — all walkways clear for passage.
-# Rotated 90°: long axis along X (parallel to walkway), short axis into tray.
-# rev12: shelf MOVED LEFT of the tap (right edge at TAP_X=3729) to clear the
-# film-plane SWING envelope — at the old X4329 right edge the swung plane reached
-# the shelf at ~17°; at X3729 it clears the practical ±15° band by ~225mm (see
-# chemistry-prep-shelves.md §2.1). Yd unchanged (300-600).
-# Shadow-free: cone right boundary at Yd=600 is X=2996mm; shelf left edge at
-# X=3129 is ~133mm outside the cone (was ~708mm at X3729).
-SHELF_X_L      = 3129    # shelf left edge X (mm) — 600mm left of the tap (TAP_X)
-SHELF_X_R      = 3729    # shelf right edge X (mm) — at the tap (TAP_X)
-SHELF_W        = 600     # shelf width in X direction (mm) — long axis along walkway
-SHELF_YD_NEAR  = 300     # shelf near edge Yd (mm) — at near walkway outer edge
-SHELF_YD_FAR   = 600     # shelf far edge Yd (mm)
-SHELF_DEPTH    = 300     # shelf depth in Yd direction (mm) — short axis into tray
-SHELF_H        = 1075    # work surface height AFF (mm) — holds operator working height above the raised deck [+50 raise; was 1025] (ceiling-hung rods auto-shorten 50mm)
+# ── Chemistry prep shelf — WALL-HINGED FOLD-DOWN (rev13) ──────────────────────
+# Mixing-only shelf (cyanotype chemistry, BEFORE exposure), so it need not be
+# permanently deployed.  A PIANO HINGE along the BACK edge on the pinhole wall (Yd0)
+# carries it: IN USE it folds DOWN to horizontal at work height (Z=SHELF_H), held
+# level by a pair of STAYS from the wall above (they carry the shelf + chemistry
+# load).  For TRANSPORT / during exposure it folds UP flat against the wall (top at
+# SHELF_STOW_TOP_Z).  Because it is only deployed while mixing (film plane parked),
+# it is FULLY DECOUPLED from the film-plane swing — retiring the old ceiling-hung
+# shelf and its swing/optics constraints.  Located in the WIDENED near walkway,
+# LEFT of the battery bank (BA_X=1810); the evap cooler (stow top Z950) slides under
+# the deployed shelf (underside Z1050).
+SHELF_X_L      = 1180    # shelf left edge X (mm) — widened walkway, left of the batteries
+SHELF_X_R      = 1780    # shelf right edge X (mm)
+SHELF_W        = 600     # shelf width along X (mm)
+SHELF_YD_NEAR  = 0       # back edge — hinged on the pinhole wall (Yd0)
+SHELF_YD_FAR   = 300     # front edge when deployed (300mm into the walkway)
+SHELF_DEPTH    = 300     # shelf depth in Yd (deployed projection into the 500mm walkway)
+SHELF_H        = 1075    # deployed work-surface height AFF (mm) — 945mm above the walkway deck
 SHELF_T        = 22      # shelf total thickness (mm) — 18mm ply + 4mm frame
-SHELF_HANGER_D = 10      # hanger threaded rod diameter (mm) — M10 (matches right walkway)
-SHELF_HANGER_N = 4       # number of hanger rods (4 corners)
+SHELF_STAY_N   = 2       # support stays (wall-above to front corners; carry the load)
+SHELF_STOW_TOP_Z = SHELF_H + SHELF_DEPTH  # 1375 — folded-up (transport) top; the tap top aligns here
 
 # ── Chemistry prep tap (pinhole wall, tees off blue supply line) ─────────────
-TAP_X          = 3729    # tap X position (mm) — at shelf RIGHT edge (rev12; was left edge)
-TAP_Z          = 1200    # tap spout height AFF (mm) — 125mm above shelf surface [+50 walkway raise; was 1150]
+TAP_X          = 1130    # tap X (mm) — relocated LEFT of the shelf (battery bank is to the right) [rev13; was 3729]
+TAP_Z          = 1150    # spout outlet height AFF (mm) — ~75mm above the shelf; the riser tops at SHELF_STOW_TOP_Z (1375)
 TAP_PIPE_OD    = 25      # branch pipe OD (mm) — 3/4" HDPE
 TAP_WALL_T     = 3       # branch pipe wall thickness (mm) — reserved (spec; not yet drawn)
 

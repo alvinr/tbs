@@ -2,656 +2,251 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards
 """
-generate_shelf_diagram.py  —  TBS-001 Chemistry Prep Shelf
+generate_shelf_diagram.py  —  TBS-001 Chemistry Prep Shelf (WALL-HINGED FOLD-DOWN)
 
-Ceiling-suspended shelf in the bottom-right corner (where near walkway
-meets right walkway).  Hung from M10 threaded rods — same system as the
-right walkway.  On the tray side of the near walkway so the walkway
-stays clear for passage.
+rev13: the chem prep shelf is a wall-hinged FOLD-DOWN in the widened near walkway,
+LEFT of the battery bank.  Mixing-only (before exposure), so it folds away and is
+fully decoupled from the film-plane swing.
 
-Sheet 1 — Plan View (1:15):
-  Top-down view showing shelf position relative to walkways, tray,
-  IBC stack, and optical cone boundary.
-
-Sheet 2 — Section Elevation (1:10):
-  Cross-section looking along X axis (at shelf center X=4479mm).
-  Shows ceiling hangers, shelf platform, walkway below, and tray.
-
-Sheet 3 — Detail: Hanger & Frame (1:5):
-  Close-up of ceiling plate, threaded rod, shelf frame connection,
-  and work surface layup.
+Sheet 1 — Plan view: deployed footprint in the widened walkway, the relocated tap,
+          battery/EP context, and the navigation clearance.
+Sheet 2 — Section (Yd-Z): the fold-down mechanism — deployed + stowed positions,
+          piano hinge, stay, and the evap cooler sliding under.
+Sheet 3 — Detail: the piano hinge (wall mount) + the stay.
 """
-
 import os
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle, Polygon, Circle, FancyBboxPatch
-from matplotlib.lines import Line2D
+from matplotlib.patches import Rectangle, Circle
 
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
 from tbs_constants import (
-    C_LEN, C_WID, C_HGT,
-    PUMP_X, PUMP_W,
-    WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
-    WALKWAY_RIGHT_X, WALKWAY_RIGHT_W,
-    CONTAINER_RIB_SPACING,
-    PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR,
-    PROC_TRAY_RIM,
-    IBC_COL_X, IBC_W, IBC_D, IBC_H_600, IBC_H_STK,
-    BLUE_IBC_Y, IBC_FAR_Y,
+    C_WID, C_HGT,
+    WALKWAY_H, WALKWAY_GRATE_T,
+    WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_NEAR_WIDE_W,
     SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_YD_NEAR, SHELF_YD_FAR,
-    SHELF_DEPTH, SHELF_H, SHELF_T, SHELF_HANGER_D, SHELF_HANGER_N, TAP_Z,
-    ZONE_R_START, cone_right,
-    C_OUT, C_DIM, C_STEEL, C_ALUM, C_CL,
+    SHELF_DEPTH, SHELF_H, SHELF_T, SHELF_STOW_TOP_Z, SHELF_STAY_N,
+    TAP_X, TAP_Z,
+    BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D,
+    EP_X, EP_W, EP_H_LO, EP_H_HI,
+    EVAP_STOW_X, EVAP_W, EVAP_D, EVAP_H, EVAP_STOW_Z,
+    cone_left,
+    C_OUT, C_DIM, C_STEEL, C_CL,
     DIAGRAMS_DIR,
 )
 
-# ── Local palette ────────────────────────────────────────────────────────────
-BG       = "#FFFFFF"
-C_SHELF  = "#C8B06A"    # phenolic ply — warm tan
-C_FRAME  = C_STEEL      # steel frame
-C_HANGER = "#606870"    # threaded rod / hardware
-C_TRAY   = "#D0D8E0"    # processing tray
-C_WALKWAY = "#E8E8E8"   # walkway grating fill
-C_CONE   = "#FFE0E0"    # optical cone zone (faint red)
-C_IBC    = "#B0D0F0"    # IBC outline
-C_ZONE   = "#E8F4E8"    # shadow-free zone fill
+BG        = "#FFFFFF"
+C_SHELF   = "#C8B06A"    # phenolic ply — warm tan
+C_HINGE   = "#606870"    # steel hinge / stays
+C_WALK    = "#ECECEC"    # walkway grating fill
+C_BATT    = "#9BB36A"    # battery bank
+C_ELEC    = "#E0A050"    # electrical panel
+C_EVAP    = "#9AB0C0"    # evap cooler
+C_BLUE    = "#3070C0"    # blue supply / tap
+C_CONE    = "#E9534522"  # optical cone (faint)
+FONT      = {"fontfamily": "monospace"}
 
-# ── Derived constants ────────────────────────────────────────────────────────
-SHELF_CX = (SHELF_X_L + SHELF_X_R) / 2   # shelf center X = 4029mm
-SHELF_CY = (SHELF_YD_NEAR + SHELF_YD_FAR) / 2  # shelf center Yd = 600mm
-HANGER_ROD_L = C_HGT - SHELF_H            # rod length: 2388 - 1075 = 1313mm
-# Hanger positions: 4 corners, inset 30mm from shelf edges
-HANGER_INSET = 30
-HANGER_POSITIONS = [
-    (SHELF_X_L + HANGER_INSET, SHELF_YD_NEAR + HANGER_INSET),
-    (SHELF_X_R - HANGER_INSET, SHELF_YD_NEAR + HANGER_INSET),
-    (SHELF_X_L + HANGER_INSET, SHELF_YD_FAR - HANGER_INSET),
-    (SHELF_X_R - HANGER_INSET, SHELF_YD_FAR - HANGER_INSET),
-]
+SHELF_CX = (SHELF_X_L + SHELF_X_R) / 2
+DECK_Z   = WALKWAY_H
+STAY_Z   = SHELF_H + 230   # wall stay anchor, above the hinge
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 1 — PLAN VIEW
+# SHEET 1 — PLAN VIEW (looking down)
 # ═══════════════════════════════════════════════════════════════════════════════
-
 def sheet1():
-    """Plan view showing shelf position relative to walkways and optical cone."""
-    # View: looking down.  X horizontal (cargo door left, far end right).
-    # Yd vertical (pinhole wall at bottom, far wall at top).
-    # Near walkway = horizontal band at bottom, right walkway = vertical
-    # band on right, shelf in the L-shaped corner between them.
-    # Tight crop centered on shelf with surrounding context.
-    X_LO, X_HI = SHELF_X_L - 850, 5100   # extend left to show the shelf + the optical-cone boundary
-    YD_LO, YD_HI = -120, 1000
+    fig, ax = plt.subplots(figsize=(13, 7))
+    fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
+    X_LO, X_HI = 900, 2520
+    Y_LO, Y_HI = -160, 620
+    ax.set_xlim(X_LO, X_HI); ax.set_ylim(Y_LO, Y_HI)
+    ax.set_aspect("equal"); ax.axis("off")
 
-    def px(x): return x
-    def py(yd): return yd
+    # pinhole wall (Yd0)
+    ax.plot([X_LO, X_HI], [0, 0], color=C_OUT, lw=2.0, zorder=5)
+    ax.text(X_LO + 20, -70, "PINHOLE WALL (Yd=0)", fontsize=6, color=C_DIM, **FONT)
 
-    fig, ax = plt.subplots(figsize=(18, 12), facecolor=BG)
-    ax.set_facecolor(BG)
-    ax.set_xlim(X_LO, X_HI)
-    ax.set_ylim(YD_LO, YD_HI)
-    ax.set_aspect("equal")
-    ax.axis("off")
+    # widened near walkway (Yd0-500)
+    ax.add_patch(Rectangle((WALKWAY_NEAR_WIDE_X_L, 0),
+                           WALKWAY_NEAR_WIDE_X_R - WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_W,
+                           fc=C_WALK, ec=C_OUT, lw=0.7, alpha=0.5, zorder=2))
+    ax.text(2150, 470, f"WIDENED NEAR WALKWAY ({WALKWAY_NEAR_WIDE_W}mm)",
+            fontsize=6, color=C_DIM, ha="center", **FONT)
 
-    # ── Optical cone right boundary (at various Yd, as a shaded zone) ──
-    cone_yds = np.linspace(0, YD_HI, 50)
-    cone_xs = [cone_right(yd) for yd in cone_yds]
-    # Shade the cone zone (everything left of the boundary)
-    cone_poly_x = [px(max(x, X_LO)) for x in cone_xs] + [px(X_LO), px(X_LO)]
-    cone_poly_y = [py(yd) for yd in cone_yds] + [py(YD_HI), py(0)]
-    ax.fill(cone_poly_x, cone_poly_y, fc=C_CONE, alpha=0.15, zorder=1)
-    # Cone boundary line (only draw where it's in view)
-    vis = [(x, yd) for x, yd in zip(cone_xs, cone_yds) if x >= X_LO]
-    if vis:
-        ax.plot([px(x) for x, _ in vis], [py(yd) for _, yd in vis],
-                color="#CC4444", lw=1.2, ls="--", zorder=3)
-        mid_idx = len(vis) // 2
-        mx, myd = vis[mid_idx]
-        ax.text(px(mx + 40), py(myd), "OPTICAL CONE\nRIGHT BOUNDARY",
-                fontsize=6, color="#CC4444", ha="left", va="center", rotation=25)
+    # optical-cone left boundary (shelf must stay left of it)
+    cone_xs = [cone_left(y) for y in (0, Y_HI)]
+    ax.plot(cone_xs, [0, Y_HI], color="#CC4444", lw=1.1, ls="--", zorder=3)
+    ax.text(cone_xs[1] + 25, Y_HI - 30, "OPTICAL CONE\nLEFT BOUNDARY",
+            fontsize=5.5, color="#CC4444", rotation=64, ha="left", va="top", **FONT)
 
-    # ── Right end zone (shadow-free, green tint) ──
-    if ZONE_R_START < X_HI:
-        ax.add_patch(Rectangle((px(ZONE_R_START), py(YD_LO + 10)),
-                                px(X_HI) - px(ZONE_R_START),
-                                py(YD_HI - 10) - py(YD_LO + 10),
-                                fc=C_ZONE, ec="none", alpha=0.25, zorder=1))
-        ax.text(px(ZONE_R_START + 20), py(YD_HI - 40),
-                "RIGHT END ZONE (SHADOW-FREE)",
-                fontsize=5.5, color="#408040", ha="left", va="top")
-        ax.plot([px(ZONE_R_START), px(ZONE_R_START)],
-                [py(YD_LO + 10), py(YD_HI - 10)],
-                color="#408040", lw=0.8, ls=(0, (6, 3)), zorder=3)
+    # battery bank + EP (to the RIGHT of the shelf)
+    ax.add_patch(Rectangle((BA_X, 0), BA_W, BA_D, fc=C_BATT, ec=C_OUT, lw=0.8, alpha=0.7, zorder=4))
+    ax.text(BA_X + BA_W / 2, BA_D / 2, "BATTERY BANK", fontsize=5.5, color="#3a4a20",
+            ha="center", va="center", **FONT)
+    ax.add_patch(Rectangle((EP_X, 0), EP_W, 60, fc=C_ELEC, ec=C_OUT, lw=0.6, alpha=0.4, zorder=3))
+    ax.text(EP_X + EP_W / 2, 75, "EP (high)", fontsize=4.5, color="#8a5a10", ha="center", **FONT)
 
-    # ── Container walls ──
-    # Pinhole wall (Yd=0) — bottom
-    ax.plot([px(X_LO), px(X_HI)], [py(0), py(0)],
-            color=C_OUT, lw=2.0, zorder=5)
-    ax.text(px((X_LO + X_HI) / 2), py(-60), "PINHOLE WALL (Yd=0)",
-            fontsize=6, color=C_DIM, ha="center", va="top")
+    # evap cooler (transport stow) — slides under, ghost
+    ax.add_patch(Rectangle((EVAP_STOW_X, 0), EVAP_W, EVAP_D, fc=C_EVAP, ec=C_OUT, lw=0.6,
+                           ls="--", alpha=0.25, zorder=3))
+    ax.text(EVAP_STOW_X + EVAP_W / 2, EVAP_D - 30, "EVAP (stow,\nslides under)",
+            fontsize=4.5, color="#3a5060", ha="center", va="top", **FONT)
 
-    # ── Near walkway (Yd=0 to 300) — horizontal band at bottom ──
-    ax.add_patch(Rectangle((px(X_LO), py(0)),
-                            px(X_HI) - px(X_LO),
-                            py(WALKWAY_W) - py(0),
-                            fc=C_WALKWAY, ec=C_OUT, lw=0.6, alpha=0.4, zorder=2))
-    ax.text(px(3700), py(WALKWAY_W / 2), "NEAR WALKWAY  300mm",
-            fontsize=6, color=C_DIM, ha="center", va="center")
+    # the DEPLOYED shelf (X1180-1780, Yd0-300)
+    ax.add_patch(Rectangle((SHELF_X_L, SHELF_YD_NEAR), SHELF_W, SHELF_DEPTH,
+                           fc=C_SHELF, ec=C_OUT, lw=1.4, zorder=6))
+    ax.text(SHELF_CX, SHELF_DEPTH / 2, f"CHEM SHELF\n{SHELF_W}×{SHELF_DEPTH}mm\n(deployed)",
+            fontsize=6.5, color="#5a4a18", ha="center", va="center", fontweight="bold", **FONT)
+    # piano hinge along the back edge (on the wall)
+    ax.plot([SHELF_X_L, SHELF_X_R], [0, 0], color=C_HINGE, lw=3.2, zorder=7)
+    leader(ax, SHELF_CX, 0, SHELF_CX - 250, -110,
+           "PIANO HINGE on pinhole wall (back edge)", color=C_HINGE, fs=6, ha="center", font=FONT)
 
-    # ── Right walkway (X=4329 to 4629) — vertical band on right ──
-    rw_yd_top = min(C_WID, YD_HI)
-    ax.add_patch(Rectangle((px(WALKWAY_RIGHT_X), py(0)),
-                            px(WALKWAY_RIGHT_X + WALKWAY_RIGHT_W) - px(WALKWAY_RIGHT_X),
-                            py(rw_yd_top) - py(0),
-                            fc=C_WALKWAY, ec=C_OUT, lw=0.6, alpha=0.4, zorder=2))
-    ax.text(px(WALKWAY_RIGHT_X + WALKWAY_RIGHT_W / 2), py(min(800, rw_yd_top - 50)),
-            "RIGHT\nWALKWAY\n(CANTILEVER)",
-            fontsize=6, color=C_DIM, ha="center", va="center", rotation=90)
+    # relocated TAP-01 (left of the shelf)
+    ax.add_patch(Circle((TAP_X, 12), 14, fc=C_BLUE, ec=C_OUT, lw=0.8, zorder=8))
+    leader(ax, TAP_X, 12, TAP_X - 30, 180,
+           "TAP-01 (relocated)\nleft of the shelf", color=C_BLUE, fs=6, ha="center", font=FONT)
 
-    # rev12: the right walkway is carried by a cantilever rectangle whose 2 arms come
-    # off the IBC corridor uprights (Yd≈1046–1316) — beyond this view's Yd range, so
-    # no walkway support hardware falls within the shelf zone (Yd 300–600).
+    # navigation clearance behind the deployed shelf
+    draw_dim_v(ax, SHELF_X_R + 60, SHELF_DEPTH, WALKWAY_NEAR_WIDE_W,
+               f"{WALKWAY_NEAR_WIDE_W - SHELF_DEPTH}mm\npass (deployed)", offset=8, fs=6, right=True, font=FONT)
+    draw_dim_h(ax, SHELF_X_L, SHELF_X_R, -120, f"{SHELF_W}mm", offset=6, fs=7, font=FONT)
 
-    # ── Processing tray outline ──
-    tray_x_lo = max(PROC_TRAY_X_L, X_LO)
-    tray_x_hi = min(PROC_TRAY_X_R, X_HI)
-    tray_yd_lo = PROC_TRAY_YD_NEAR
-    tray_yd_hi = min(PROC_TRAY_YD_FAR, YD_HI)
-    ax.add_patch(Rectangle((px(tray_x_lo), py(tray_yd_lo)),
-                            px(tray_x_hi) - px(tray_x_lo),
-                            py(tray_yd_hi) - py(tray_yd_lo),
-                            fc="none", ec=C_TRAY, lw=0.8, ls=":", zorder=2))
-    ax.text(px(3900), py(700), "PROCESSING TRAY\n(BELOW, H=0–50mm)",
-            fontsize=5.5, color=C_TRAY, ha="center", va="center")
-
-    # ── IBC stack (right end zone — show near column only, clipped) ──
-    ibc_x_lo = max(IBC_COL_X, X_LO)
-    ibc_x_hi = min(IBC_COL_X + IBC_W, X_HI)
-    if ibc_x_lo < X_HI and BLUE_IBC_Y < YD_HI:
-        ibc_yd_hi = min(BLUE_IBC_Y + IBC_D, YD_HI)
-        ax.add_patch(Rectangle((px(ibc_x_lo), py(BLUE_IBC_Y)),
-                                px(ibc_x_hi) - px(ibc_x_lo),
-                                py(ibc_yd_hi) - py(BLUE_IBC_Y),
-                                fc=C_IBC, ec=C_OUT, lw=0.8, alpha=0.3, zorder=2))
-        ax.text(px((ibc_x_lo + ibc_x_hi) / 2), py((BLUE_IBC_Y + ibc_yd_hi) / 2),
-                "IBC", fontsize=6, color=C_DIM, ha="center", va="center")
-
-    # ── SHELF (main feature — bold) ──
-    ax.add_patch(Rectangle((px(SHELF_X_L), py(SHELF_YD_NEAR)),
-                            px(SHELF_X_R) - px(SHELF_X_L),
-                            py(SHELF_YD_FAR) - py(SHELF_YD_NEAR),
-                            fc=C_SHELF, ec=C_OUT, lw=2.5, zorder=8))
-    ax.text(px(SHELF_CX), py(SHELF_CY),
-            f"CHEMISTRY PREP SHELF\n{SHELF_W}×{SHELF_DEPTH}mm  H={SHELF_H}mm\n(CEILING-HUNG)",
-            fontsize=7, color=C_OUT, ha="center", va="center", fontweight="bold")
-
-    # Hanger positions (4 dots)
-    for hx, hy in HANGER_POSITIONS:
-        ax.plot(px(hx), py(hy), "o", color=C_HANGER, ms=7, zorder=10)
-    leader(ax, px(HANGER_POSITIONS[2][0]), py(HANGER_POSITIONS[2][1]),
-           px(HANGER_POSITIONS[2][0] - 80), py(HANGER_POSITIONS[2][1] + 60),
-           f"M{SHELF_HANGER_D} HANGER\nROD (×4)", fs=6, ha="right")
-
-    # ── Chemistry prep tap (on pinhole wall at X=3729) ──
-    tap_x = 3729   # TAP_X
-    ax.plot(px(tap_x), py(0), "v", color="#2979B8", ms=10, zorder=10)
-    ax.plot([px(tap_x), px(tap_x)], [py(0), py(-30)],
-            color="#2979B8", lw=2.0, zorder=9)
-    ax.text(px(tap_x), py(-70), "TAP-01", fontsize=6, color="#2979B8",
-            ha="center", va="top", fontweight="bold")
-
-    # ��─ Operator position annotation ──
-    op_yd = 150  # standing on near walkway
-    op_x = SHELF_CX  # at shelf center X
-    ax.plot(px(op_x), py(op_yd), "x", color="#2060A0", ms=12, mew=2, zorder=9)
-    ax.text(px(op_x - 60), py(op_yd), "OPERATOR\nSTANDS HERE",
-            fontsize=6, color="#2060A0", ha="right", va="center")
-
-    # ── Dimensions ──
-    # Shelf width (X direction) — horizontal
-    draw_dim_h(ax, px(SHELF_X_L), px(SHELF_X_R), py(SHELF_YD_FAR + 50),
-               f"{SHELF_W}mm", offset=40, fs=7)
-    # Shelf depth (Yd direction) — vertical
-    draw_dim_v(ax, px(SHELF_X_L - 50), py(SHELF_YD_NEAR), py(SHELF_YD_FAR),
-               f"{SHELF_DEPTH}mm", offset=40, fs=7)
-    # Distance from pinhole wall (Yd direction)
-    draw_dim_v(ax, px(SHELF_X_R + 50), py(0), py(SHELF_YD_NEAR),
-               f"{SHELF_YD_NEAR}mm FROM WALL", offset=40, fs=6, right=True)
-    # Near walkway width
-    draw_dim_v(ax, px(X_LO + 80), py(0), py(WALKWAY_W),
-               "300mm\nWALKWAY", offset=40, fs=6)
-    # Right walkway width
-    draw_dim_h(ax, px(WALKWAY_RIGHT_X), px(WALKWAY_RIGHT_X + WALKWAY_RIGHT_W),
-               py(-80), f"{WALKWAY_RIGHT_W}mm", offset=40, fs=6)
-
-    # ── Title block ──
-    title_block(ax, "SHEET 1 OF 3",
-                drawing_title="CHEMISTRY PREP SHELF",
-                subtitle="PLAN VIEW — CEILING-SUSPENDED, RIGHT CORNER",
-                scale_note="AXES IN mm",
-                doc_id="TBS-001 · Chem Prep")
-
-    out = os.path.join(DIAGRAMS_DIR, "shelf-sheet1.png")
-    fig.savefig(out, dpi=130, bbox_inches="tight", facecolor=BG)
-    plt.close(fig)
-    print(f"  [1/3] {out}")
-
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 2 — SECTION ELEVATION
-# ═══════════════════════════════════════════════════════════════════════════════
-
-def sheet2():
-    """Cross-section looking along X axis showing hangers and shelf."""
-    # View: looking along X (toward cargo door). Yd horizontal, Z vertical.
-    YD_LO, YD_HI = -100, 1100
-    Z_LO, Z_HI = -50, 2500
-
-    def px(yd): return yd
-    def pz(z): return z
-
-    fig, ax = plt.subplots(figsize=(12, 13.5), facecolor=BG)
-    ax.set_facecolor(BG)
-    ax.set_xlim(YD_LO, YD_HI)
-    ax.set_ylim(Z_LO, Z_HI)
-    ax.set_aspect("equal")
-    ax.axis("off")
-
-    # ── Container outline (section) ──
-    # Floor
-    ax.plot([px(YD_LO + 20), px(YD_HI - 20)], [pz(0), pz(0)],
-            color=C_OUT, lw=2.0, zorder=5)
-    # Ceiling
-    ax.plot([px(YD_LO + 20), px(YD_HI - 20)], [pz(C_HGT), pz(C_HGT)],
-            color=C_OUT, lw=2.0, zorder=5)
-    # Pinhole wall (left edge, Yd=0)
-    ax.plot([px(0), px(0)], [pz(0), pz(C_HGT)],
-            color=C_OUT, lw=2.0, zorder=5)
-    ax.text(px(-40), pz(C_HGT / 2), "PINHOLE\nWALL",
-            fontsize=5, color=C_DIM, ha="right", va="center", rotation=90)
-
-    # ── Processing tray (at floor level) ──
-    tray_yd_l = PROC_TRAY_YD_NEAR  # 80mm
-    tray_yd_r = min(PROC_TRAY_YD_FAR, YD_HI - 50)
-    ax.add_patch(Rectangle((px(tray_yd_l), pz(0)),
-                            px(tray_yd_r) - px(tray_yd_l),
-                            pz(PROC_TRAY_RIM) - pz(0),
-                            fc=C_TRAY, ec=C_OUT, lw=0.8, alpha=0.5, zorder=3))
-    ax.text(px((tray_yd_l + 400) / 2 + 100), pz(PROC_TRAY_RIM + 10),
-            "PROCESSING TRAY RIM (50mm)", fontsize=5, color=C_TRAY,
-            ha="center", va="bottom")
-
-    # ── Near walkway (Yd=0–300, deck at H=100) ──
-    # Grating
-    ax.add_patch(Rectangle((px(0), pz(WALKWAY_H - WALKWAY_GRATE_T)),
-                            px(WALKWAY_W) - px(0),
-                            pz(WALKWAY_H) - pz(WALKWAY_H - WALKWAY_GRATE_T),
-                            fc=C_WALKWAY, ec=C_OUT, lw=1.0, zorder=4))
-    ax.text(px(WALKWAY_W / 2), pz(WALKWAY_H + 15), "NEAR WALKWAY\nDECK H=100",
-            fontsize=5, color=C_DIM, ha="center", va="bottom")
-
-    # ── Ceiling hanger rods (4, but in this section view we see 2 — near and far) ──
-    nut_h_s2 = 8   # nut height in mm (visual, at 1:10 scale)
-    washer_w_s2 = 20  # washer width in mm
-    nut_w_s2 = 14     # nut width in mm
-    shelf_z_top_s2 = SHELF_H
-    shelf_z_bot_s2 = SHELF_H - SHELF_T
-    for yd in [SHELF_YD_NEAR + HANGER_INSET, SHELF_YD_FAR - HANGER_INSET]:
-        # Rod from ceiling down past shelf bottom (extends to lower nut)
-        ax.plot([px(yd), px(yd)], [pz(C_HGT), pz(shelf_z_bot_s2 - nut_h_s2 - 4)],
-                color=C_HANGER, lw=2.0, zorder=6)
-        # Ceiling plate
-        plate_w = 60
-        ax.add_patch(Rectangle((px(yd - plate_w / 2), pz(C_HGT - 6)),
-                                px(yd + plate_w / 2) - px(yd - plate_w / 2),
-                                pz(C_HGT) - pz(C_HGT - 6),
-                                fc=C_FRAME, ec=C_OUT, lw=0.8, zorder=7))
-        # Top lock nut (above shelf surface)
-        ax.add_patch(Rectangle((px(yd - nut_w_s2 / 2), pz(shelf_z_top_s2)),
-                                px(yd + nut_w_s2 / 2) - px(yd - nut_w_s2 / 2),
-                                pz(shelf_z_top_s2 + nut_h_s2) - pz(shelf_z_top_s2),
-                                fc=C_HANGER, ec=C_OUT, lw=0.6, zorder=9))
-        # Bottom nut (below shelf frame)
-        ax.add_patch(Rectangle((px(yd - nut_w_s2 / 2), pz(shelf_z_bot_s2 - nut_h_s2)),
-                                px(yd + nut_w_s2 / 2) - px(yd - nut_w_s2 / 2),
-                                pz(shelf_z_bot_s2) - pz(shelf_z_bot_s2 - nut_h_s2),
-                                fc=C_HANGER, ec=C_OUT, lw=0.6, zorder=9))
-        # Bottom washer
-        ax.add_patch(Rectangle((px(yd - washer_w_s2 / 2), pz(shelf_z_bot_s2 - nut_h_s2 - 3)),
-                                px(yd + washer_w_s2 / 2) - px(yd - washer_w_s2 / 2),
-                                pz(shelf_z_bot_s2 - nut_h_s2) - pz(shelf_z_bot_s2 - nut_h_s2 - 3),
-                                fc=C_HANGER, ec=C_OUT, lw=0.5, zorder=9))
-
-    # ── Shelf platform ──
-    shelf_z_top = SHELF_H
-    shelf_z_bot = SHELF_H - SHELF_T
-    ax.add_patch(Rectangle((px(SHELF_YD_NEAR), pz(shelf_z_bot)),
-                            px(SHELF_YD_FAR) - px(SHELF_YD_NEAR),
-                            pz(shelf_z_top) - pz(shelf_z_bot),
-                            fc=C_SHELF, ec=C_OUT, lw=1.5, zorder=7))
-    # Frame edges (SHS perimeter visible in section)
-    frame_t = 4
-    ax.add_patch(Rectangle((px(SHELF_YD_NEAR), pz(shelf_z_bot)),
-                            px(SHELF_YD_NEAR + 25) - px(SHELF_YD_NEAR),
-                            pz(shelf_z_top) - pz(shelf_z_bot),
-                            fc=C_FRAME, ec=C_OUT, lw=0.6, zorder=8))
-    ax.add_patch(Rectangle((px(SHELF_YD_FAR - 25), pz(shelf_z_bot)),
-                            px(SHELF_YD_FAR) - px(SHELF_YD_FAR - 25),
-                            pz(shelf_z_top) - pz(shelf_z_bot),
-                            fc=C_FRAME, ec=C_OUT, lw=0.6, zorder=8))
-
-    # ── Operator silhouette (simple rectangle) ──
-    op_yd = 150  # center of near walkway
-    op_w = 100   # shoulder half-width
-    op_h_bottom = WALKWAY_H  # feet on deck
-    op_h_top = WALKWAY_H + 1700  # ~1700mm tall
-    ax.add_patch(Rectangle((px(op_yd - op_w / 2), pz(op_h_bottom)),
-                            px(op_yd + op_w / 2) - px(op_yd - op_w / 2),
-                            pz(op_h_top) - pz(op_h_bottom),
-                            fc="#2060A0", ec="none", alpha=0.12, zorder=3))
-    ax.text(px(op_yd), pz(op_h_top + 20), "OPERATOR",
-            fontsize=5, color="#2060A0", ha="center", va="bottom")
-
-    # ── Dimensions ──
-    # Shelf height above floor
-    draw_dim_v(ax, px(SHELF_YD_FAR + 80), pz(0), pz(SHELF_H),
-               f"{SHELF_H}mm AFF", offset=50, fs=6, right=True)
-    # Shelf height above walkway deck
-    draw_dim_v(ax, px(SHELF_YD_NEAR - 50), pz(WALKWAY_H), pz(SHELF_H),
-               f"{SHELF_H - WALKWAY_H}mm\nABOVE DECK", offset=50, fs=5.5)
-    # Hanger rod length
-    draw_dim_v(ax, px(SHELF_YD_FAR + 140), pz(SHELF_H), pz(C_HGT),
-               f"{int(HANGER_ROD_L)}mm\nROD", offset=50, fs=5.5, right=True)
-    # Shelf depth (Yd)
-    draw_dim_h(ax, px(SHELF_YD_NEAR), px(SHELF_YD_FAR), pz(shelf_z_bot - 50),
-               f"{SHELF_DEPTH}mm DEPTH", offset=50, fs=6)
-    # Walkway width
-    draw_dim_h(ax, px(0), px(WALKWAY_W), pz(-30),
-               "300mm WALKWAY", offset=50, fs=5.5)
-    # Gap between walkway edge and shelf
-    draw_dim_h(ax, px(WALKWAY_W), px(SHELF_YD_NEAR), pz(SHELF_H + 40),
-               "0mm (FLUSH)", offset=50, fs=5)
-    # Shelf thickness
-    draw_dim_v(ax, px(SHELF_YD_NEAR - 20), pz(shelf_z_bot), pz(shelf_z_top),
-               "22mm", offset=50, fs=5, right=True)
-    # Container height
-    draw_dim_v(ax, px(YD_HI - 50), pz(0), pz(C_HGT),
-               f"{C_HGT}mm", offset=50, fs=5.5, right=True)
-
-    # ── Leader callouts ──
-    leader(ax, px(SHELF_CY), pz(shelf_z_top + 5),
-           px(SHELF_CY * 0.8), pz(shelf_z_top + 100),
-           "18mm PHENOLIC PLY\nON 25×25×3mm SHS FRAME",
-           fs=5.5, ha="left")
-    leader(ax, px(SHELF_YD_NEAR + HANGER_INSET), pz(C_HGT - 3),
-           px(SHELF_YD_NEAR + HANGER_INSET + 100), pz(C_HGT + 60),
-           f"CEILING PLATE\n100×60×6mm",
-           fs=5, ha="left")
-    leader(ax, px(SHELF_YD_FAR - HANGER_INSET), pz((SHELF_H + C_HGT) / 2),
-           px(SHELF_YD_FAR - HANGER_INSET + 50), pz((SHELF_H + C_HGT) / 2 + 50),
-           f"M{SHELF_HANGER_D} THREADED\nROD HANGER",
-           fs=5, ha="left")
-
-    # ── Chemistry prep tap (on pinhole wall, Z=1200mm) ──
-    tap_z = TAP_Z   # 1200 — from constants
-    tap_yd = 0     # on pinhole wall face
-    # Pipe stub from wall
-    ax.add_patch(Rectangle((px(tap_yd), pz(tap_z - 12)),
-                            px(60) - px(0),
-                            pz(tap_z + 12) - pz(tap_z - 12),
-                            fc=C_FRAME, ec=C_OUT, lw=0.8, zorder=8))
-    # Tap body (circle)
-    tap_body = Circle((px(60), pz(tap_z)), radius=(pz(20) - pz(0)),
-                      fc="#2979B8", ec=C_OUT, lw=1.0, zorder=9)
-    ax.add_patch(tap_body)
-    # Spout (pointing down)
-    ax.plot([px(60), px(60)], [pz(tap_z - 20), pz(tap_z - 50)],
-            color=C_OUT, lw=2.0, zorder=9)
-    ax.plot([px(50), px(70)], [pz(tap_z - 50), pz(tap_z - 50)],
-            color=C_OUT, lw=1.5, zorder=9)
-    # Valve handle (horizontal bar)
-    ax.plot([px(40), px(80)], [pz(tap_z + 20), pz(tap_z + 20)],
-            color="#2979B8", lw=2.5, zorder=10)
-    leader(ax, px(80), pz(tap_z),
-           px(180), pz(tap_z + 80),
-           "TAP-01  3/4\" BALL VALVE\nBLUE SUPPLY (BV-06)\nH=1200mm AFF",
-           fs=5.5, ha="left")
-
-    # ── Section cut label ──
-    ax.text(px(YD_HI - 50), pz(Z_HI - 50),
-            f"SECTION AT X={int(SHELF_CX)}mm\nLOOKING TOWARD CARGO DOOR",
-            fontsize=6, color=C_DIM, ha="right", va="top")
-
-    # ── Title block ──
-    title_block(ax, "SHEET 2 OF 3",
-                drawing_title="CHEMISTRY PREP SHELF",
-                subtitle="SECTION ELEVATION — CEILING-HUNG DETAIL",
-                scale_note="AXES IN mm",
-                doc_id="TBS-001 · Chem Prep")
-
-    out = os.path.join(DIAGRAMS_DIR, "shelf-sheet2.png")
-    fig.savefig(out, dpi=130, bbox_inches="tight", facecolor=BG)
-    plt.close(fig)
-    print(f"  [2/3] {out}")
-
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 3 — HANGER & FRAME DETAIL
-# ═══════════════════════════════════════════════════════════════════════════════
-
-def sheet3():
-    """Detail of ceiling hanger connection and shelf frame cross-section."""
-    # View: close-up cross-section at one hanger corner. Yd horizontal, Z vertical.
-    # Scale 1:5.  Wide enough for title block to render cleanly.
-    # Break in threaded rod to reduce diagram height
-    CUT_LO = 1150       # Z where break starts (above shelf detail)
-    CUT_HI = 2200        # Z where break ends (below ceiling detail)
-    CUT_GAP = CUT_HI - CUT_LO   # 1050mm removed from diagram
-    BREAK_VIS = 30       # visual gap for break lines (mm in display)
-
-    YD_LO, YD_HI = -120, 380
-
-    def px(yd): return yd
-    def pz(z):
-        if z <= CUT_LO:
-            return z
-        return z - CUT_GAP + BREAK_VIS
-
-    Z_LO = 860
-    Z_HI = pz(2450)
-
-    fig, ax = plt.subplots(figsize=(18, 10), facecolor=BG)
-    ax.set_facecolor(BG)
-    ax.set_xlim(YD_LO, YD_HI)
-    ax.set_ylim(Z_LO, Z_HI)
-    ax.set_aspect("equal")
-    ax.axis("off")
-
-    # Reference hanger at Yd=30 (HANGER_INSET from shelf near edge)
-    rod_yd = HANGER_INSET  # 30mm from shelf edge (Yd=0 in this detail = shelf near edge)
-
-    # ── Ceiling (top of view) ──
-    ax.plot([px(YD_LO + 10), px(YD_HI - 10)], [pz(C_HGT), pz(C_HGT)],
-            color=C_OUT, lw=2.5, zorder=5)
-    ax.text(px(YD_HI / 2), pz(C_HGT + 20), "CONTAINER CEILING (CORRUGATED STEEL)",
-            fontsize=6, color=C_DIM, ha="center", va="bottom")
-
-    # ── Ceiling corrugation rib (simplified) ──
-    rib_depth = 45  # rib protrusion below ceiling
-    rib_w = 60
-    ax.add_patch(Rectangle((px(rod_yd - rib_w / 2), pz(C_HGT - rib_depth)),
-                            px(rod_yd + rib_w / 2) - px(rod_yd - rib_w / 2),
-                            pz(C_HGT) - pz(C_HGT - rib_depth),
-                            fc="#D0D0D0", ec=C_OUT, lw=1.0, zorder=4))
-
-    # ── Ceiling plate (100×60×6mm, bolted to rib) ──
-    plate_w = 100
-    plate_t = 6
-    plate_z_top = C_HGT - rib_depth
-    plate_z_bot = plate_z_top - plate_t
-    ax.add_patch(Rectangle((px(rod_yd - plate_w / 2), pz(plate_z_bot)),
-                            px(rod_yd + plate_w / 2) - px(rod_yd - plate_w / 2),
-                            pz(plate_z_top) - pz(plate_z_bot),
-                            fc=C_FRAME, ec=C_OUT, lw=1.2, zorder=6))
-    # Through-bolts into rib
-    for bx in [rod_yd - 30, rod_yd + 30]:
-        ax.plot([px(bx), px(bx)], [pz(plate_z_bot), pz(C_HGT)],
-                color=C_OUT, lw=1.0, zorder=7)
-        ax.plot(px(bx), pz(plate_z_bot), "v", color=C_OUT, ms=3, zorder=8)
-
-    leader(ax, px(rod_yd + plate_w / 2), pz(plate_z_bot + plate_t / 2),
-           px(rod_yd + plate_w / 2 + 40), pz(plate_z_bot - 30),
-           "CEILING PLATE\n100×60×6mm STEEL\n2× M10 BOLTS TO RIB",
-           fs=5.5, ha="left")
-
-    # ── Threaded rod (M10, from ceiling plate down to shelf) ──
-    rod_z_top = plate_z_bot
-    rod_z_bot = SHELF_H
-    # Draw rod in two segments with break
-    ax.plot([px(rod_yd), px(rod_yd)], [pz(rod_z_bot), CUT_LO],
-            color=C_HANGER, lw=2.5, zorder=6)
-    ax.plot([px(rod_yd), px(rod_yd)], [CUT_LO + BREAK_VIS, pz(rod_z_top)],
-            color=C_HANGER, lw=2.5, zorder=6)
-
-    # ── Break lines (zigzag across full width) ──
-    n_pts = 25
-    brk_xs = np.linspace(px(YD_LO + 5), px(YD_HI - 5), n_pts)
-    brk_amp = 10
-    for bz in [CUT_LO, CUT_LO + BREAK_VIS]:
-        brk_zs = [bz + brk_amp * (1 if i % 2 else -1) for i in range(n_pts)]
-        ax.plot(brk_xs, brk_zs, color=C_OUT, lw=1.0, zorder=25)
-
-    # Rod passes through plate — nut + washer on top
-    nut_h = 10
-    washer_t = 3
-    ax.add_patch(Rectangle((px(rod_yd - 8), pz(rod_z_top - nut_h)),
-                            px(rod_yd + 8) - px(rod_yd - 8),
-                            pz(rod_z_top) - pz(rod_z_top - nut_h),
-                            fc=C_HANGER, ec=C_OUT, lw=0.8, zorder=7))
-
-    leader(ax, px(rod_yd - 3), pz(1120),
-           px(rod_yd - 60), pz(1120),
-           f"M{SHELF_HANGER_D} THREADED ROD\nL={int(HANGER_ROD_L)}mm\n(ZINC-PLATED)",
-           fs=5.5, ha="right")
-
-    # ── Shelf frame (at bottom of rod) ──
-    shelf_z_top = SHELF_H
-    shelf_z_bot = SHELF_H - SHELF_T
-    frame_size = 25  # 25×25×3mm SHS
-    frame_t = 3
-
-    # Full shelf cross-section (zoomed)
-    # Frame SHS at shelf edge (perimeter)
-    ax.add_patch(Rectangle((px(0), pz(shelf_z_bot)),
-                            px(frame_size) - px(0),
-                            pz(shelf_z_top) - pz(shelf_z_bot),
-                            fc=C_FRAME, ec=C_OUT, lw=1.2, zorder=7))
-    # SHS hollow interior
-    ax.add_patch(Rectangle((px(frame_t), pz(shelf_z_bot + frame_t)),
-                            px(frame_size - frame_t) - px(frame_t),
-                            pz(shelf_z_top - frame_t) - pz(shelf_z_bot + frame_t),
-                            fc=BG, ec=C_OUT, lw=0.5, zorder=8))
-
-    # Ply surface (on top of frame)
-    ply_t = 18
-    ax.add_patch(Rectangle((px(0), pz(shelf_z_top - ply_t)),
-                            px(200) - px(0),
-                            pz(shelf_z_top) - pz(shelf_z_top - ply_t),
-                            fc=C_SHELF, ec=C_OUT, lw=0.8, zorder=7))
-    # Frame bottom rail
-    ax.add_patch(Rectangle((px(0), pz(shelf_z_bot)),
-                            px(200) - px(0),
-                            pz(shelf_z_bot + frame_t) - pz(shelf_z_bot),
-                            fc=C_FRAME, ec=C_OUT, lw=0.6, zorder=7))
-
-    # Rod connection to frame: nut + washer below frame
-    ax.add_patch(Rectangle((px(rod_yd - 8), pz(shelf_z_bot - nut_h)),
-                            px(rod_yd + 8) - px(rod_yd - 8),
-                            pz(shelf_z_bot) - pz(shelf_z_bot - nut_h),
-                            fc=C_HANGER, ec=C_OUT, lw=0.8, zorder=8))
-    # Washer
-    ax.add_patch(Rectangle((px(rod_yd - 12), pz(shelf_z_bot - nut_h - washer_t)),
-                            px(rod_yd + 12) - px(rod_yd - 12),
-                            pz(shelf_z_bot - nut_h) - pz(shelf_z_bot - nut_h - washer_t),
-                            fc=C_HANGER, ec=C_OUT, lw=0.5, zorder=8))
-    # Top nut (locks position)
-    ax.add_patch(Rectangle((px(rod_yd - 8), pz(shelf_z_top)),
-                            px(rod_yd + 8) - px(rod_yd - 8),
-                            pz(shelf_z_top + nut_h) - pz(shelf_z_top),
-                            fc=C_HANGER, ec=C_OUT, lw=0.8, zorder=8))
-
-    leader(ax, px(rod_yd + 10), pz(shelf_z_bot - nut_h / 2),
-           px(rod_yd + 20), pz(shelf_z_bot + 50),
-           "M10 NUT + WASHER\n(DOUBLE-NUTTED\nFOR LEVEL ADJ.)",
-           fs=5, ha="left")
-
-    # ── Shelf surface label ──
-    leader(ax, px(100), pz(shelf_z_top - 5),
-           px(150), pz(shelf_z_top + 80),
-           "18mm PHENOLIC PLY\n(CHEMICAL RESISTANT)\nON 25×25×3mm SHS",
-           fs=5.5, ha="left")
-
-    # ── Lip / edge trim ──
-    lip_h = 15
-    ax.add_patch(Rectangle((px(-2), pz(shelf_z_top)),
-                            px(3) - px(-2),
-                            pz(shelf_z_top + lip_h) - pz(shelf_z_top),
-                            fc=C_FRAME, ec=C_OUT, lw=0.8, zorder=8))
-    leader(ax, px(0), pz(shelf_z_top + lip_h),
-           px(-30), pz(shelf_z_top + lip_h + 40),
-           "15mm RAISED LIP\n(SPILL GUARD)\nAL ANGLE 15×15×2",
-           fs=5, ha="right")
-
-    # ── Key dimensions ──
-    # Shelf thickness
-    draw_dim_v(ax, px(-30), pz(shelf_z_bot), pz(shelf_z_top),
-               "22mm", offset=25, fs=6)
-    # Ceiling to shelf (rod length)
-    draw_dim_v(ax, px(YD_HI - 30), pz(shelf_z_top), pz(C_HGT),
-               f"{int(HANGER_ROD_L)}mm", offset=25, fs=6, right=True)
-    # Ply thickness
-    draw_dim_v(ax, px(250), pz(shelf_z_top - ply_t), pz(shelf_z_top),
-               "18mm PLY", offset=25, fs=5, right=True)
-    # Frame height
-    draw_dim_v(ax, px(210), pz(shelf_z_bot), pz(shelf_z_bot + frame_size),
-               "25mm SHS", offset=25, fs=5, right=True)
-
-    # ── Assembly note ──
     notes = [
-        "NOTES",
-        "1. Double-nut lock on each rod allows ±10mm",
-        "   height adjustment for leveling.",
-        "2. Use spirit level across all 4 rods",
-        "   during installation.",
+        "CHEM SHELF — WALL-HINGED FOLD-DOWN (PLAN):",
+        f"1. Hinged on the pinhole wall (Yd0), deploys {SHELF_DEPTH}mm into the {WALKWAY_NEAR_WIDE_W}mm walkway.",
+        f"2. Left of the battery bank (X{BA_X}); ~{int(cone_left(SHELF_YD_FAR) - SHELF_X_R)}mm clear of the optical cone.",
+        "3. Deployed only while mixing (full walkway clear when folded up).",
+        "4. TAP-01 relocated LEFT of the shelf (battery bank is to the right).",
     ]
-    draw_notes(ax, notes, px(YD_HI - 250), pz(Z_LO + 120), spacing=7,
-               fs=5.5, width=200, font={"fontfamily": "monospace"})
-
-    # ── Title block ──
-    title_block(ax, "SHEET 3 OF 3",
-                drawing_title="CHEMISTRY PREP SHELF",
-                subtitle="HANGER & FRAME DETAIL",
-                scale_note="AXES IN mm",
-                doc_id="TBS-001 · Chem Prep",
-                portrait=True, height=0.06)
-
-    out = os.path.join(DIAGRAMS_DIR, "shelf-sheet3.png")
-    fig.savefig(out, dpi=130, bbox_inches="tight", facecolor=BG)
+    draw_notes(ax, notes, X_LO + 20, Y_HI - 20, spacing=26, fs=6.5, width=820, font=FONT)
+    title_block(ax, "SHEET 1 OF 3", drawing_title="CHEMISTRY PREP SHELF",
+                subtitle="PLAN — FOLD-DOWN, WIDENED WALKWAY (LEFT OF BATTERIES)",
+                scale_note="Axes in mm · PLAN VIEW", height=0.08)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet1.png"), dpi=130, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print(f"  [3/3] {out}")
+    print("  diagrams/shelf-sheet1.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 2 — SECTION (Yd-Z): the fold-down mechanism
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet2():
+    fig, ax = plt.subplots(figsize=(12, 8))
+    fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
+    Y_LO, Y_HI = -120, 1300
+    Z_LO, Z_HI = -80, 1520
+    ax.set_xlim(Y_LO, Y_HI); ax.set_ylim(Z_LO, Z_HI)
+    ax.set_aspect("equal"); ax.axis("off")
+
+    # pinhole wall (Yd0) + floor + deck
+    ax.add_patch(Rectangle((-40, 0), 40, Z_HI, fc="#E8E6DD", ec=C_OUT, lw=1.0, zorder=3))
+    ax.text(-20, Z_HI - 40, "PINHOLE\nWALL", fontsize=5.5, color=C_DIM, ha="center", va="top", rotation=90, **FONT)
+    ax.plot([Y_LO, Y_HI], [0, 0], color=C_OUT, lw=1.2, zorder=3)
+    ax.add_patch(Rectangle((0, DECK_Z - WALKWAY_GRATE_T), WALKWAY_NEAR_WIDE_W, WALKWAY_GRATE_T,
+                           fc=C_WALK, ec=C_OUT, lw=0.7, alpha=0.7, zorder=3))
+    ax.text(WALKWAY_NEAR_WIDE_W - 10, DECK_Z + 30, "walkway deck Z130", fontsize=5, color=C_DIM,
+            ha="right", **FONT)
+
+    # evap cooler ghost (slides under)
+    ax.add_patch(Rectangle((0, EVAP_STOW_Z), EVAP_D, EVAP_H, fc=C_EVAP, ec=C_OUT, lw=0.6,
+                           ls="--", alpha=0.25, zorder=2))
+    ax.text(EVAP_D / 2, EVAP_STOW_Z + EVAP_H - 40, "EVAP COOLER\n(slides under,\ntop Z950)",
+            fontsize=5, color="#3a5060", ha="center", va="top", **FONT)
+
+    # DEPLOYED shelf (horizontal at Z = SHELF_H)
+    ax.add_patch(Rectangle((0, SHELF_H - SHELF_T), SHELF_DEPTH, SHELF_T,
+                           fc=C_SHELF, ec=C_OUT, lw=1.4, zorder=6))
+    ax.add_patch(Rectangle((SHELF_DEPTH - 6, SHELF_H), 6, 15, fc=C_SHELF, ec=C_OUT, lw=0.8, zorder=6))  # front lip
+    ax.text(SHELF_DEPTH / 2, SHELF_H - SHELF_T - 20, "SHELF (deployed)", fontsize=6, color="#5a4a18",
+            ha="center", va="top", fontweight="bold", **FONT)
+    # piano hinge at the back
+    ax.add_patch(Circle((0, SHELF_H), 9, fc=C_HINGE, ec=C_OUT, lw=0.8, zorder=8))
+    leader(ax, 0, SHELF_H, -90, SHELF_H + 90, "PIANO HINGE", color=C_HINGE, fs=6, ha="center", font=FONT)
+    # stay (wall above -> front edge)
+    ax.plot([0, SHELF_DEPTH - 10], [STAY_Z, SHELF_H], color=C_HINGE, lw=2.4, zorder=7)
+    ax.add_patch(Rectangle((-6, STAY_Z - 8), 12, 16, fc=C_HINGE, ec=C_OUT, lw=0.6, zorder=7))
+    leader(ax, (SHELF_DEPTH - 10) / 2, (STAY_Z + SHELF_H) / 2, SHELF_DEPTH + 30, 1000,
+           f"STAY (×{SHELF_STAY_N})\ncarries the load,\nfolds flat when stowed", color=C_HINGE, fs=6,
+           ha="left", font=FONT)
+
+    # STOWED shelf ghost (folded up, vertical, Z SHELF_H..STOW_TOP)
+    ax.add_patch(Rectangle((0, SHELF_H), SHELF_T, SHELF_STOW_TOP_Z - SHELF_H,
+                           fc=C_SHELF, ec=C_OUT, lw=1.0, ls="--", alpha=0.35, zorder=4))
+    ax.text(SHELF_T + 12, SHELF_STOW_TOP_Z - 20, "SHELF (folded up\nfor transport)",
+            fontsize=5.5, color="#8a7a3a", ha="left", va="top", style="italic", **FONT)
+
+    # tap spout over the shelf
+    ax.plot([12, 12], [SHELF_H + 20, SHELF_STOW_TOP_Z], color=C_BLUE, lw=2.0, zorder=5)
+    ax.plot([12, 100, 100], [SHELF_STOW_TOP_Z, SHELF_STOW_TOP_Z, TAP_Z], color=C_BLUE, lw=2.0, zorder=5)
+    ax.text(110, TAP_Z, "TAP-01 spout", fontsize=5.5, color=C_BLUE, ha="left", va="center", **FONT)
+
+    # dimensions
+    draw_dim_v(ax, -70, 0, SHELF_H, f"{SHELF_H}mm AFF", offset=6, fs=6, right=False, font=FONT)
+    draw_dim_v(ax, 430, DECK_Z, SHELF_H, f"{SHELF_H - DECK_Z}mm\nabove deck", offset=6, fs=6, right=True, font=FONT)
+    draw_dim_h(ax, 0, SHELF_DEPTH, SHELF_H - SHELF_T - 70, f"{SHELF_DEPTH}mm deep", offset=6, fs=6, font=FONT)
+
+    notes = [
+        "FOLD-DOWN MECHANISM (SECTION):",
+        f"1. Piano hinge (back edge, Z{SHELF_H}) on the pinhole wall.",
+        f"2. In use: folds DOWN to horizontal, held level by {SHELF_STAY_N} stays from the wall above.",
+        f"3. Transport: folds UP flat against the wall (top Z{SHELF_STOW_TOP_Z}).",
+        "4. Evap cooler (top Z950) slides under the shelf underside (Z1050).",
+    ]
+    draw_notes(ax, notes, 560, 1480, spacing=64, fs=7, width=680, font=FONT)
+    title_block(ax, "SHEET 2 OF 3", drawing_title="CHEMISTRY PREP SHELF",
+                subtitle="SECTION — FOLD-DOWN MECHANISM (DEPLOYED + STOWED)",
+                scale_note="Axes in mm · SECTION LOOKING ALONG X", height=0.07)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet2.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/shelf-sheet2.png saved")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 3 — DETAIL: piano hinge (wall mount) + stay
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet3():
+    fig, ax = plt.subplots(figsize=(10, 7))
+    fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
+    ax.set_xlim(-60, 240); ax.set_ylim(SHELF_H - 80, STAY_Z + 80)
+    ax.set_aspect("equal"); ax.axis("off")
+
+    # wall
+    ax.add_patch(Rectangle((-50, SHELF_H - 80), 50, (STAY_Z + 80) - (SHELF_H - 80),
+                           fc="#E8E6DD", ec=C_OUT, lw=1.0, zorder=2))
+    ax.text(-25, STAY_Z + 40, "PINHOLE WALL", fontsize=5.5, color=C_DIM, ha="center", rotation=90, **FONT)
+
+    # hinge: wall leaf + knuckle + shelf leaf
+    ax.add_patch(Rectangle((0, SHELF_H - 4), 8, 60, fc=C_HINGE, ec=C_OUT, lw=1.0, zorder=4))   # wall leaf (up)
+    ax.add_patch(Circle((10, SHELF_H), 8, fc="#9098A0", ec=C_OUT, lw=1.0, zorder=6))            # knuckle
+    ax.add_patch(Rectangle((10, SHELF_H - SHELF_T), 70, SHELF_T, fc=C_SHELF, ec=C_OUT, lw=1.2, zorder=5))  # shelf board
+    leader(ax, 10, SHELF_H, 90, SHELF_H + 50, "PIANO HINGE\n(continuous, along the back edge)",
+           color=C_HINGE, fs=6.5, ha="left", font=FONT)
+    leader(ax, 45, SHELF_H - SHELF_T, 120, SHELF_H - SHELF_T - 60,
+           f"SHELF BOARD\n18mm ply + frame ({SHELF_T}mm)", color="#5a4a18", fs=6.5, ha="left", font=FONT)
+
+    # stay anchor + stay to the front
+    ax.add_patch(Rectangle((0, STAY_Z - 10), 16, 20, fc=C_HINGE, ec=C_OUT, lw=1.0, zorder=4))
+    ax.plot([8, 200], [STAY_Z, SHELF_H], color=C_HINGE, lw=3.0, zorder=5)
+    ax.add_patch(Circle((200, SHELF_H), 6, fc="#9098A0", ec=C_OUT, lw=0.8, zorder=6))
+    leader(ax, 8, STAY_Z, 70, STAY_Z + 40, "STAY WALL ANCHOR\n(above the hinge)", color=C_HINGE, fs=6.5,
+           ha="left", font=FONT)
+    leader(ax, 110, (STAY_Z + SHELF_H) / 2, 150, (STAY_Z + SHELF_H) / 2 + 60,
+           "STAY (chain or folding strut)\ncarries the deployed load;\nfolds flat when shelf folds up",
+           color=C_HINGE, fs=6.5, ha="left", font=FONT)
+
+    title_block(ax, "SHEET 3 OF 3", drawing_title="CHEMISTRY PREP SHELF",
+                subtitle="DETAIL — PIANO HINGE + STAY",
+                scale_note="Axes in mm · DETAIL", height=0.08)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet3.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/shelf-sheet3.png saved")
+
 
 if __name__ == "__main__":
-    os.makedirs(DIAGRAMS_DIR, exist_ok=True)
-    print("Generating chemistry prep shelf diagrams...")
-    sheet1()
-    sheet2()
-    sheet3()
+    print("Generating chemistry prep shelf diagrams (fold-down)...")
+    sheet1(); sheet2(); sheet3()
     print("Done.")

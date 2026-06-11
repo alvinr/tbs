@@ -80,7 +80,7 @@ from tbs_constants import (
     BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D,
     PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z,
     SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH,
-    SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_HANGER_D,
+    SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z,
     EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D,
     EXT_FILL_H, EXT_FILL_YD, EXT_DRAIN_H, EXT_DRAIN_3_H, EXT_DRAIN_YD,
     FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H,
@@ -1337,37 +1337,38 @@ def electrical():
 # ── Chemistry prep shelf (ceiling-hung) ──────────────────────────────────────
 
 def shelf():
-    """Chemistry prep shelf — ceiling-hung at Yd 300–600, suspended by 4 rods.
+    """Chemistry prep shelf — WALL-HINGED FOLD-DOWN, shown DEPLOYED (rev13).
 
-    A 600×300mm board at Z=1025 near the pinhole wall (behind the near walkway),
-    hung from the ceiling by four Ø10 rods at the corners.
+    A 600×300mm board hinged on the pinhole wall (Yd0) at work height Z=SHELF_H, in
+    the widened walkway LEFT of the batteries. A piano hinge along the back edge + 2
+    stays from the wall above hold it level (the stays carry the load). It folds UP
+    flat against the wall for transport (top Z=SHELF_STOW_TOP_Z); only deployed while
+    mixing (film plane parked), so it never meets the film-plane swing.
     """
     parts = []
-    parts.append(ruby_box("Chem Shelf",
-                          SHELF_X_L, SHELF_YD_NEAR, SHELF_H - SHELF_T,
+    z0 = SHELF_H - SHELF_T
+    parts.append(ruby_box("Chem Shelf (board, deployed)",
+                          SHELF_X_L, SHELF_YD_NEAR, z0,
                           SHELF_W, SHELF_DEPTH, SHELF_T, color=C_SHELF))
-
-    rr = SHELF_HANGER_D / 2.0
-    rod_h = C_HGT - SHELF_H
-    inset = 20
-    # Ceiling anchor plate at each rod top — 100×60×6mm steel plate bolted to the ceiling
-    # rib with 2× M10 (per the shelf 2D diagram, generate_shelf_diagram.py).
-    cpw, cpd, cpt, cbolt = 100, 60, 6, 10
-    for hx in (SHELF_X_L + inset, SHELF_X_R - inset):
-        for hy in (SHELF_YD_NEAR + inset, SHELF_YD_FAR - inset):
-            parts.append(ruby_cylinder("Shelf Hanger Rod",
-                                       hx, hy, SHELF_H, rr, rod_h,
-                                       color=C_STEEL, n=12))
-            # ceiling plate (its top flush with the ceiling underside at Z=C_HGT)
-            parts.append(ruby_box("Shelf ceiling plate (to rib)",
-                                  hx - cpw / 2, hy - cpd / 2, C_HGT - cpt,
-                                  cpw, cpd, cpt, color=C_STEEL))
-            # 2× M10 bolts up through the plate into the ceiling rib
-            for bdx in (-cpw / 2 + 18, cpw / 2 - 18):
-                parts.append(ruby_cylinder("Shelf ceiling bolt M10",
-                                           hx + bdx, hy, C_HGT - cpt,
-                                           cbolt / 2, cpt + WALL_T, color=C_STEEL, axis="z"))
-
+    # spill lip — front edge + two ends
+    lip = 15
+    parts.append(ruby_box("Chem Shelf lip (front)",
+                          SHELF_X_L, SHELF_YD_FAR - 6, SHELF_H, SHELF_W, 6, lip, color=C_SHELF))
+    for ex in (SHELF_X_L, SHELF_X_R - 6):
+        parts.append(ruby_box("Chem Shelf lip (end)",
+                              ex, SHELF_YD_NEAR, SHELF_H, 6, SHELF_DEPTH, lip, color=C_SHELF))
+    # piano hinge along the back edge on the pinhole wall
+    parts.append(ruby_cylinder("Chem Shelf piano hinge",
+                               SHELF_X_L, SHELF_YD_NEAR, SHELF_H - 6, 6, SHELF_W,
+                               color=C_STEEL, axis="x"))
+    # two stays from the wall above the hinge to the front corners — carry the load
+    stay_z = SHELF_H + 230
+    for sx in (SHELF_X_L + 25, SHELF_X_R - 25):
+        parts.append(ruby_pipe("Chem Shelf stay",
+                               (sx, SHELF_YD_NEAR, stay_z), (sx, SHELF_YD_FAR - 10, SHELF_H),
+                               6, color=C_STEEL))
+        parts.append(ruby_box("Chem Shelf stay anchor",
+                              sx - 12, SHELF_YD_NEAR, stay_z - 12, 24, 8, 24, color=C_STEEL))
     return '\n'.join(parts)
 
 
@@ -1477,13 +1478,10 @@ def lighting_wiring():
     # Conduit runs along the ceiling from the trunking out to each fixture.
     cr, czc = 7, cz - 38
     for lx in (1000, 2900):    # → white LED panels (Cct G)
-        cond_x = lx + led_w / 2
-        if lx == 2900:
-            # shift the MIDDLE panel's conduit +150 toward the IBC stack so it clears
-            # the chem-shelf hanger rods (now at X3159 after the rev12 shelf move)
-            cond_x += 150
+        # (rev13: the +150 middle-conduit shift is retired — the chem shelf is now a
+        #  WALL-HINGED fold-down with no ceiling hanger rods to clear.)
         parts.append(ruby_cylinder("Conduit to LED Panel (Cct G)",
-                                   cond_x, 40, czc, cr, led_yd - 40,
+                                   lx + led_w / 2, 40, czc, cr, led_yd - 40,
                                    color=C_TRUNK, axis="y"))
     # → rotated right-hand LED panel: conduit to its near Yd edge (no longer
     #   running alongside the equipment-panel / Circuit C conduits)
@@ -1708,10 +1706,10 @@ def spray_bar_plumbing():
     pr = PUMP_PIPE_OD / 2            # ½" HDPE
 
     # Blue supply trunk — horizontal along the pinhole wall. It enters at RAIL_X_R
-    # (riser from the filters) and runs to BV-02, the spray-bar isolation valve at the
-    # pinhole centerline — it does NOT continue past BV-02 down the rest of the wall
-    # (nothing is fed there).
-    x_l, x_r = BV02_X, RAIL_X_R
+    # (riser from the filters), feeds BV-02 (spray-bar isolation, at the pinhole
+    # centerline), and now CONTINUES LEFT to TAP-01 (the chem tap, relocated to
+    # X=TAP_X in the widened walkway, rev13).
+    x_l, x_r = TAP_X, RAIL_X_R
     parts.append(ruby_cylinder("Blue Supply Trunk (1/2in HDPE)",
                                x_l, yd, fz, pr, x_r - x_l, color=C_BLUE, axis="x"))
 
@@ -1722,12 +1720,18 @@ def spray_bar_plumbing():
                           BV02_X - 25, yd - 25, BV02_Z - 25, 50, 50, 50,
                           color=C_VALVE))
 
-    # TAP-01 chemistry tap branch (¾") + spout.
+    # TAP-01 chemistry tap branch (¾") — relocated LEFT of the chem shelf. The riser
+    # tops at the stowed-shelf height (SHELF_STOW_TOP_Z); the spout reaches out over
+    # the shelf and dispenses at TAP_Z. BV-06 isolates the branch.
     tr = TAP_PIPE_OD / 2
     parts.append(ruby_cylinder("TAP-01 Riser (3/4in)",
-                               TAP_X, yd, fz, tr, TAP_Z - fz, color=C_BLUE, axis="z"))
-    parts.append(ruby_box("TAP-01 (chem tap)",
-                          TAP_X - 15, yd, TAP_Z, 30, 130, 40, color=C_VALVE))
+                               TAP_X, yd, fz, tr, SHELF_STOW_TOP_Z - fz, color=C_BLUE, axis="z"))
+    parts.append(ruby_box("BV-06 (chem tap isolation)",
+                          TAP_X - 18, yd - 8, 1010, 36, 36, 40, color=C_VALVE))
+    parts.append(ruby_pipe("TAP-01 spout (out)",
+                           (TAP_X, yd, SHELF_STOW_TOP_Z), (TAP_X, yd + 100, SHELF_STOW_TOP_Z), tr, color=C_BLUE))
+    parts.append(ruby_pipe("TAP-01 spout (down)",
+                           (TAP_X, yd + 100, SHELF_STOW_TOP_Z), (TAP_X, yd + 100, TAP_Z), tr, color=C_BLUE))
 
     return '\n'.join(parts)
 

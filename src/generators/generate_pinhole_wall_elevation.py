@@ -28,7 +28,7 @@ from tbs_constants import (
     BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D,
     PUMP_PIPE_OD, PUMP_PIPE_WALL,
     TAP_X, TAP_Z,
-    SHELF_X_L, SHELF_X_R, SHELF_H, SHELF_T, SHELF_HANGER_N,
+    SHELF_X_L, SHELF_X_R, SHELF_H, SHELF_T, SHELF_STOW_TOP_Z,
     SHELF_YD_NEAR, SHELF_DEPTH,
     WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_W,
     WALKWAY_BRACKET_H, WALKWAY_BRACKET_T,
@@ -462,9 +462,9 @@ ax.text(sx(BV02_X - 80), sz(BV02_Z - 80),
 # Branch tee off the Blue supply trunk, rises to tap height.
 TAP_OD = 25     # 3/4" branch pipe
 TAP_WALL = 3
-TAP_BRANCH_Z = TAP_Z + 100   # 1250mm — horizontal run height
-TAP_TEE_X = 3400              # tee point on Blue supply trunk
-BV06_X = 3600                 # valve position — 129mm left of the tap / shelf right edge (TAP_X=3729)
+TAP_BRANCH_Z = SHELF_STOW_TOP_Z   # 1375 — branch/riser top, aligned with the stowed shelf
+TAP_TEE_X = TAP_X + 250           # tee point on the Blue supply trunk (extended to the tap, rev13)
+BV06_X = TAP_X + 100              # valve position — just right of the relocated tap (TAP_X=1130)
 BV06_R = 25                   # valve body radius for symbol
 
 # Riser from supply pipe up to TAP_BRANCH_Z, horizontal to BV-06
@@ -501,20 +501,23 @@ for psx, plabel in [(PS_X_D, "D"), (PS_X_G, "G")]:
     ax.plot([sx(psx), sx(psx)], [sz(PS_Z - sw_h / 2), sz(CORD_HANG_Z)],
             color=C_DIM, lw=0.4, ls=":", zorder=5)
 
-# ── Shelf hanger rods (ghost — shelf is at Yd=300, not on wall face) ─────
-# Show the 4 hanger rod positions as solid dark lines
-C_SHELF_DK = "#8A7A3A"   # darker gold for hangers/shelf — contrast with wall
-hanger_xs = [SHELF_X_L, SHELF_X_R]  # 2 pairs at shelf corners
-for hx in hanger_xs:
-    ax.plot([sx(hx), sx(hx)], [sz(SHELF_H), sz(TK_Z)],
-            color=C_SHELF_DK, lw=1.2, ls="--", zorder=4)
-
-# Shelf ghost outline (behind walkway plane at Yd=300, but drawn darker)
+# ── Chem shelf — WALL-HINGED FOLD-DOWN (rev13) ──────────────────────────
+C_SHELF_DK = "#8A7A3A"
+# deployed board (solid) at work height, hinged on this wall (Yd0)
 equip_block(SHELF_X_L, SHELF_H - SHELF_T, SHELF_X_R - SHELF_X_L, SHELF_T,
-            "", C_SHELF_DK, ls="--", alpha=0.6, lw=1.2, zorder=4)
-ax.text(sx((SHELF_X_L + SHELF_X_R) / 2), sz(SHELF_H - SHELF_T + 60),
-        "CHEM SHELF (Yd=300, BEHIND)", ha="center", va="top",
-        fontsize=4, color=C_SHELF_DK, style="italic", zorder=10, **FONT)
+            "", C_SHELF, alpha=0.85, lw=1.2, zorder=6)
+ax.text(sx((SHELF_X_L + SHELF_X_R) / 2), sz(SHELF_H - SHELF_T - 15),
+        "CHEM SHELF (fold-down, deployed)", ha="center", va="top",
+        fontsize=4, color=C_SHELF_DK, zorder=10, **FONT)
+# piano hinge on the wall at the back edge (a tick at each end)
+for hx in (SHELF_X_L, SHELF_X_R):
+    ax.plot([sx(hx)], [sz(SHELF_H)], marker="o", ms=2.2, color=C_SHELF_DK, zorder=7)
+# stowed (folded-up, transport) ghost — vertical against the wall, Z SHELF_H..STOW_TOP
+equip_block(SHELF_X_L, SHELF_H, SHELF_X_R - SHELF_X_L, SHELF_STOW_TOP_Z - SHELF_H,
+            "", C_SHELF_DK, ls="--", alpha=0.3, lw=1.0, zorder=4)
+ax.text(sx((SHELF_X_L + SHELF_X_R) / 2), sz(SHELF_STOW_TOP_Z + 25),
+        "(folds up for transport)", ha="center", va="bottom",
+        fontsize=3.5, color=C_SHELF_DK, style="italic", zorder=10, **FONT)
 
 # ═══════════════════════════════════════════════════════════════════════════
 # 5. DIMENSION LINES — key clearances and positions

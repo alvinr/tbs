@@ -1388,7 +1388,7 @@ def sheet5():
     ax.plot([-130, 2130], [660, 660], color=C_DIM, lw=1.0, ls=(0, (6, 4)), zorder=3)
 
     # ── PANEL A — person fit ──
-    ax.text(-110, 1230, "A.  PERSON FIT  —  open Ø850 bore, no fins", ha="left",
+    ax.text(-110, 1300, "A.  PERSON FIT  —  open Ø850 bore, no fins", ha="left",
             fontsize=12, fontweight="bold", color=C_OUT, **FONT)
     Acx, Acy, s = 470, 940, 0.78
     Rd, ORd = R * s, OR * s
@@ -1399,30 +1399,13 @@ def sheet5():
                          lw=1.3, alpha=0.40, zorder=7))
     ax.text(Acx, Acy, "operator\n~520×330\nfits the bore", fontsize=6.8, color="#16613a",
             **FONT, ha="center", va="center", zorder=8)
-    ax.text(Acx, Acy - Rd - 46, "EXTERIOR (enter)", fontsize=7.5, color=BLUE, **FONT,
-            fontweight="bold", ha="center")
     ax.text(Acx, Acy + Rd + 46, "INTERIOR / walkway (exit)", fontsize=7.5, color=GREEN,
             **FONT, fontweight="bold", ha="center")
-    axv0, ayv0, axv1, ayv1 = 905, 720, 2090, 1190
-    ax.add_patch(FancyBboxPatch((axv0, ayv0), axv1 - axv0, ayv1 - ayv0,
-                                boxstyle="round,pad=6,rounding_size=14",
-                                fc="#EAF6EE", ec=GREEN, lw=1.6, zorder=2))
-    ax.text(axv0 + 26, ayv1 - 34, "VERDICT  ✓  PASS — fits", ha="left", va="center",
-            fontsize=12, fontweight="bold", color=GREEN, **FONT)
-    for i, line in enumerate([
-        "• The four radial fins are GONE — the drum is a single-opening",
-        "  C-shell, so the whole ~Ø850 bore is clear standing space.",
-        f"• Passage ≈ 555mm (the {OD}° opening on the Ø900 housing); a single",
-        "  operator (~520 × 330mm in plan) enters and turns inside.",
-        "• Emergency egress is still the whole panel swinging open.",
-    ]):
-        ax.text(axv0 + 26, ayv1 - 84 - i * 52, line, ha="left", va="center",
-                fontsize=8.6, color="#16361f", **FONT)
 
     # ── PANEL B — light-tight at every rotation ──
     ax.text(-110, 588, "B.  LIGHT-TIGHT AT EVERY ROTATION", ha="left", fontsize=12,
             fontweight="bold", color=C_OUT, **FONT)
-    Bcy, bs = 350, 0.52
+    Bcy, bs = 340, 0.52
     Rd, ORd = R * bs, OR * bs
     for bx, (da, ttl, desc) in zip(
             [370, 1090, 1810],
@@ -1443,17 +1426,19 @@ def sheet5():
             ax.annotate("", xy=(bx, Bcy - ORd * 0.92), xytext=(bx, Bcy - Rd - 24),
                         arrowprops=dict(arrowstyle="-|>", color=AMBER, lw=2.0), zorder=9)
             ax.plot([bx], [Bcy - ORd], marker="x", ms=9, mew=2.4, color=GREEN, zorder=10)
-    ax.add_patch(FancyBboxPatch((-110, -250), 2220, 196,
+    v_x, v_y, v_w, v_h = 920, 950, 1200, 250
+    ax.add_patch(FancyBboxPatch((v_x, v_y), v_w, v_h,
                                 boxstyle="round,pad=6,rounding_size=12",
                                 fc="#EAF6EE", ec=GREEN, lw=1.6, zorder=2))
-    ax.text(-78, -86, "VERDICT  ✓  PASS — no daylight path at any rotation", ha="left",
+    ax.text(v_x + 5, v_y + v_h - 15, "VERDICT  ✓  PASS — no daylight path at any rotation", ha="left",
             va="center", fontsize=12.5, fontweight="bold", color=GREEN, **FONT)
     for i, line in enumerate([
         "The two housing openings are 80° wide and 180° apart, so the 80° drum opening can never reach both at once.",
         "The housing's solid wall always covers the opening the drum isn't aligned with — light enters the bore but",
-        "never exits to the interior. A fixed housing (the panel aperture is no longer relied on as the seal) does the work.",
+        "never exits to the interior. A fixed housing (the panel aperture is no longer relied on as the seal)",
+        "does the work.",
     ]):
-        ax.text(-78, -130 - i * 38, line, ha="left", va="center", fontsize=8.4, color="#16361f", **FONT)
+        ax.text(v_x + 5, v_y + v_h - 55 - i * 42, line, ha="left", va="center", fontsize=8, color="#16361f", **FONT)
 
     title_block(ax, "SHEET 5 OF 5",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
@@ -1546,31 +1531,34 @@ def sheet4():
 
     ax.text(-280, 2640, "SWING CLEARANCE vs FILM-PLANE LEFT MECHANISM  (plan, looking down)",
             fontsize=13, fontweight="bold", color=C_OUT, **FONT)
-    notes = ("ROTATION TRANSPORT (rev10):\n"
-             "The panel + drum SWING ~56° about the vertical\n"
-             "pivot (the film far-left post), pulling the punch-\n"
-             "out bay inboard of the door plane so the cargo\n"
-             "doors close (true min X +59mm).\n\n"
-             "1.  The swinging cage transitions the X=150 rail\n"
-             "    plane, so the two LEFT film rails (TL+BL) are\n"
-             "    REMOVABLE — lifted out (drop-in saddles) for\n"
-             "    the swing, re-seated to datum after. The far-\n"
-             "    left film post IS the Ø89 pivot.\n\n"
-             "2.  The swing clears the door-end walkway brackets\n"
-             "    at Z (panel/cage underside Z130 over the Z115\n"
-             "    bracket tops); the left walkway + door-end\n"
-             "    near-deck section lift out.\n\n"
-             "OPERATING:  full symmetric film-plane travel is\n"
-             "restored.\n\n"
-             "TEARDOWN:  strike the left rails → lift the left\n"
-             "walkway + near-deck section → unlatch → swing 56°\n"
-             "→ engage top+bottom wall stays → close doors.")
-    # notes box raised into the upper-right so it clears the swung panel's near-end
-    # (which sweeps to ~X1824/Yd964) — rule 35: never sit text on drawing geometry.
-    ax.add_patch(FancyBboxPatch((1430, 1370), 900, 1170,
-                                boxstyle="round,pad=8,rounding_size=16",
-                                fc="#FBFBFD", ec=C_DIM, lw=1.0, zorder=20))
-    ax.text(1460, 2500, notes, fontsize=8.6, color="#26323a", **FONT, va="top", zorder=21)
+    notes = [
+        "ROTATION TRANSPORT (rev10):",
+        "The panel + drum SWING ~56° about the vertical",
+        "pivot (the film far-left post), pulling the punch-",
+        "out bay inboard of the door plane so the cargo",
+        "doors close (true min X +59mm).",
+        "",
+        "1.  The swinging cage transitions the X=150 rail",
+        "    plane, so the two LEFT film rails (TL+BL) are",
+        "    REMOVABLE — lifted out (drop-in saddles) for",
+        "    the swing, re-seated to datum after. The far-",
+        "    left film post IS the Ø89 pivot.",
+        "",
+        "2.  The swing clears the door-end walkway brackets",
+        "    at Z (panel/cage underside Z130 over the Z115",
+        "    bracket tops); the left walkway + door-end",
+        "    near-deck section lift out.",
+        "",
+        "OPERATING:  full symmetric film-plane travel is",
+        "restored.",
+        "",
+        "TEARDOWN:  strike the left rails → lift the left",
+        "walkway + near-deck section → unlatch → swing 56°",
+        "→ engage top+bottom wall stays → close doors.",
+    ]
+    # Standard bordered notes block, raised into the upper-right so it clears the swung
+    # panel's near-end (which sweeps to ~X1824/Yd964) — rule 35: never sit text on geometry.
+    draw_notes(ax, notes, 1460, 2500, spacing=49, fs=8.0, width=830, font=FONT)
 
     title_block(ax, "SHEET 4 OF 5",
                 drawing_title="HINGED LIGHT-TRAP PANEL",

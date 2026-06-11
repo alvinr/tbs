@@ -3557,9 +3557,9 @@ txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(2298.mm, 30.mm, 150.mm)
 txt = entities.add_text("NEAR/FAR CANTILEVERS", anc, Geom::Vector3d.new(-300.mm, -1000.mm, 450.mm))
 txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(4479.mm, 400.mm, 2100.mm)
-txt = entities.add_text("RIGHT HANGERS
-(ceiling-hung)", anc, Geom::Vector3d.new(800.mm, -200.mm, 350.mm))
+anc = Geom::Point3d.new(4629.mm, 400.mm, 90.mm)
+txt = entities.add_text("RIGHT CANTILEVER
+(IBC-end support)", anc, Geom::Vector3d.new(700.mm, -300.mm, 700.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(140.mm, 1181.mm, 100.mm)
 txt = entities.add_text("LEFT SUPPORT

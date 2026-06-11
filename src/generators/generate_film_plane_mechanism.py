@@ -1766,10 +1766,13 @@ def sheet6():
     # A saddle back-plate at each of the 4 rail-end corners (near + far walls project
     # to the same X-Z here). Replaces the retired demountable brace cage.
     draw_brace_portal(ax, STRUCT, lw=1.4, alpha=0.55, z=4)
-    leader(ax, RAIL_X_L, BRACE_Z_TOP,
-           RAIL_X_L - 550, (BRACE_Z_BOT + BRACE_Z_TOP) / 2 + 150,
-           "WALL-SEAT SADDLES (8)\nIBC-style: 4-bolt + ext. plate\nLEFT thumb-screw / RIGHT bolted",
-           color=STRUCT, ha="right", fs=6.5, font=FONT)
+    # Point to the bottom-left saddle and place the text INSIDE the frame's open
+    # lower-left quadrant — the margins (left: INTERIOR HEIGHT dim, bottom: width
+    # dims + title block) are all crowded.
+    leader(ax, RAIL_X_L, BRACE_Z_BOT,
+           RAIL_X_L + 620, BRACE_Z_BOT + 520,
+           "WALL-SEAT SADDLES (8) — IBC-style: 4-bolt + ext. plate\nLEFT thumb-screw / RIGHT bolted",
+           color=STRUCT, ha="left", fs=6, font=FONT)
 
     # ── Rod-end bearings at each corner of the frame ──────────────────────────
     bearing_r = 22

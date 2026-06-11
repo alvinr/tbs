@@ -46,6 +46,8 @@ from tbs_constants import (
     LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_T,
     LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_BOLT_N,
     LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH,
+    SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_DEPTH, SHELF_H, SHELF_T,
+    SHELF_YD_NEAR, SHELF_STOW_TOP_Z,
     EP_X, EP_W, EP_H_LO, EP_H_HI, BA_X, BA_W, PUMP_X, PUMP_W,
     PUMP_D, PUMP_H_LO, PUMP_H_HI, CORRIDOR_YD_NEAR,
     PANEL_CORNER_T, PANEL_CENTER_T, PANEL_CENTER_W, PANEL_FLOOR_GAP,
@@ -271,6 +273,26 @@ def _walkway_left_weight():
     return grate_kg + post_kg + foot_kg + arm_kg + anchors_kg
 
 
+def _shelf_weight():
+    """Chemistry-prep fold-down shelf (rev13): 18mm phenolic-ply work surface in a
+    2" aluminum angle perimeter frame + 15mm spill lip, continuous steel piano hinge,
+    and 2 folding stays. Self-weight only — the ~25 kg deployed mixing load is a
+    transient prep case (film plane parked, container stationary), not a modeled
+    transport/exposure state, so it is not added to any state. Geometry from
+    chemistry-prep-shelves.md §3."""
+    w, d = SHELF_W / 1000.0, SHELF_DEPTH / 1000.0          # 0.600 × 0.300 m
+    ply_kg = w * d * 0.018 * RHO_PLY                        # 18mm phenolic ply
+    # 2"×2"×3mm Al angle around the 1800mm perimeter + 15mm×3mm spill lip on 3 free edges.
+    angle_area = (2 * 50 * 3 - 3 * 3) * 1e-6               # 50×50×3 angle section, m²
+    frame_kg = (2 * (w + d)) * angle_area * RHO_ALUM
+    lip_kg = (w + 2 * d) * (15 * 3 * 1e-6) * RHO_ALUM      # 15mm lip, 3 free edges
+    frame_kg += lip_kg + 0.3                               # + corner gussets
+    hinge_kg = 0.7                                         # continuous 600mm steel piano hinge
+    stay_kg = 2 * 1.0                                      # 2 folding stays/struts
+    hw_kg = 0.5                                            # M5 screws + wall anchors
+    return ply_kg + frame_kg + hinge_kg + stay_kg + hw_kg
+
+
 def _film_plane_carriage_weight():
     """Film plane carriage: Al angle frame + 92 cam-lever clamps + carriages."""
     # Perimeter frame: 2"×2"×3/16" Al angle (50.8×50.8×4.8mm)
@@ -444,6 +466,14 @@ def build_components():
         Component("Container mods", "structure", 65.0,
                   0, C_LEN, 0, C_WID, 0, C_HGT, color=C_WALL,
                   calc_note="Light seal foam + reinforcement plates (estimate)"),
+        # Chem-prep fold-down shelf (rev13): STOWED in every modeled state — folded up
+        # flat against the pinhole wall (Yd≈0, Z = SHELF_H..SHELF_STOW_TOP_Z). It is only
+        # deployed (horizontal, Yd0–300, +~25 kg chemistry) during the transient mixing
+        # prep with the film plane parked; that is not a transport/exposure state.
+        Component("Chem-prep shelf (stowed)", "structure", _shelf_weight(),
+                  SHELF_X_L, SHELF_X_R, SHELF_YD_NEAR, SHELF_YD_NEAR + SHELF_T,
+                  SHELF_H, SHELF_STOW_TOP_Z, color=C_ALUM,
+                  calc_note="Fold-down shelf: 18mm phenolic ply + 2\" Al angle frame + piano hinge + 2 stays. Stowed vertical vs pinhole wall; deployed-with-chemistry (+25 kg) is a transient prep case, not modeled"),
 
         # ── Equipment ────────────────────────────────────────────────────
         Component("Fan B (intake)", "equipment", 2.0,

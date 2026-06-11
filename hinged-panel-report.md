@@ -458,8 +458,8 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
-| Ø89×8mm CHS pivot post + machined hub / thrust collar | Upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever (**structural sign-off**) | 1 | $180–$300 |
-| Turntable / slewing thrust bearing (~Ø220) | Carries the ~330 kg swinging-assembly vertical load at the post base | 1 | $80–$140 |
+| Ø89×8mm CHS pivot post + machined hub / thrust collar | Upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever — member check DONE (σ ≈ 95 MPa, **SF 3.7** in S355); post-to-container weld/anchor connection still needs fabricator/PE sign-off | 1 | $180–$300 |
+| Turntable thrust bearing, 12″ (Ø305) 1000 lb | Carries the ~330 kg (3.24 kN) swinging-assembly vertical load at the post base; moment goes to the journal couple, so thrust-only suffices | 1 | $40–$60 |
 | Flanged sleeve (journal) bearing, Ø90 bore | Top + bottom radial location of the post / hub | 2 | $60–$110 |
 | Drum support cage, 40 × 40 × 3mm SHS | Steel frame carrying the Ø900 housing + drum on the swinging leaf | 1 | $70–$120 |
 | Top + bottom wall stays + 4-bolt anchor plates | Transport lock — M16 turnbuckle + eye/hook rods + inside/outside wall plates | 2 | $90–$160 |

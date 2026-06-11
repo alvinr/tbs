@@ -4636,79 +4636,85 @@
 <h2 id="7a-panel-swing-pivot">7a. Panel Swing Pivot<a class="headerlink" href="#7a-panel-swing-pivot" title="Permanent link">&para;</a></h2>
 <p><em>Source: <code>equipment-layout-report.md</code> § 6.1, <code>hinged-panel-report.md</code> § 4–5. Enables transport mode: the panel + drum SWING ~56° about a vertical Ø89×8mm CHS pivot post (rev10 — supersedes the B2 slide), carrying the punch-out bay inboard of the door plane (true min X +59mm) so the cargo doors close. Single-person operation (~5 min, swing assisted; strike the two left film rails + the left walkway first, then swing).</em></p>
 <h3 id="swing-pivot-system">Swing pivot system<a class="headerlink" href="#swing-pivot-system" title="Permanent link">&para;</a></h3>
+<p><em>Firmed BOM (Stage 4, 2026-06-10). Structural member check DONE: the Ø89×8 post gives
+Z ≈ 37.9 cm³, so the ~3.6 kN·m swing cantilever puts σ ≈ 95 MPa on an S355 (355 MPa)
+section → </em><em>SF ≈ 3.7</em><em> (matches <code>hinged-panel-report.md</code> §4.1). The journal couple is
+H = M/h = 3.6 kN·m / 2.2 m ≈ 1.6 kN per bearing → sleeve bearing pressure ≈ 0.37 MPa «
+14 MPa allowable for SAE 841 bronze. </em><em>Remaining sign-off: the post-to-container
+top/bottom weld + anchor connection</em><em> (fabricator/PE review) — not the member itself.</em></p>
 <table>
 <thead>
 <tr>
 <th>Item</th>
 <th>Spec</th>
 <th>Qty</th>
-<th>Supplier</th>
+<th>Suppliers (A / B) + part #</th>
 <th>Est. cost</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://www.onlinemetals.com/en/buy/carbon-steel/carbon-steel-round-tube-dom">Ø89×8mm CHS pivot post, ~2300mm</a></td>
-<td>S355 — upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever (<strong>structural sign-off</strong>)</td>
+<td>Pivot post — 3.5″ OD × 0.375″ wall DOM tube, ~2300mm</td>
+<td>A513 DOM (≈Ø89×9.5, <strong>exceeds</strong> the Ø89×8 S355 spec); upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever (SF 3.7)</td>
 <td>1</td>
-<td>Metal Supermarkets / <a href="https://www.onlinemetals.com">Online Metals</a></td>
-<td>~$90</td>
+<td><a href="https://www.onlinemetals.com/en/buy/carbon-steel/3-5-od-x-0-375-wall-x-2-75-id-carbon-steel-round-tube-a513-type-5-dom/pid/12976">Online Metals #12976</a> / <a href="https://www.metalsdepot.com/steel-products/steel-round-tube-dom">Metals Depot DOM</a> · Metal Supermarkets SoCal (cut-to-size)</td>
+<td>~$110</td>
 </tr>
 <tr>
-<td><a href="https://www.vxb.com/Turntable-Bearings-s/1869.htm">Turntable / slewing thrust bearing, ~Ø220</a></td>
-<td>Flush at the post base — carries the ~330 kg swinging-assembly vertical load</td>
+<td>Turntable thrust bearing — 12″ (Ø305), 1000 lb</td>
+<td>Axial only at the post base — carries the ~330 kg (3.24 kN) vertical load; the overturning moment is taken by the journal couple, so a thrust-only turntable suffices</td>
 <td>1</td>
-<td><a href="https://www.vxb.com">VXB Bearings</a> / McMaster-Carr</td>
-<td>~$120</td>
+<td><a href="https://vxb.com/products/12inch-lazy-susan-5-16-thick-turntable-bearings-made-in-usa-1000-lbs-capacity">VXB Lazy-Susan 1000 lb, USA</a> / <a href="https://www.shepherdhardware.com/product/12-inch-lazy-susan-round-turntable-1000-lb-load-capacity">Shepherd 9549E</a></td>
+<td>~$40</td>
 </tr>
 <tr>
-<td><a href="https://www.mcmaster.com/sleeve-bearings/">Flanged sleeve (journal) bearing, Ø90 bore</a></td>
-<td>Top + bottom radial location of the post / hub</td>
+<td>Flanged sleeve (journal) bearing — 3½″ (89mm) bore</td>
+<td>SAE 841 bronze (oil-embedded); top + bottom radial location of hub on post; 1.6 kN radial each</td>
 <td>2</td>
-<td>McMaster-Carr / Grainger</td>
-<td>~$90</td>
+<td><a href="https://www.mcmaster.com/sleeve-bearings/">McMaster-Carr 6391K-series</a> / <a href="https://www.grainger.com/category/power-transmission/bearings/sleeve-bearings">Grainger</a></td>
+<td>~$100</td>
 </tr>
 <tr>
 <td>Pivot hub + thrust collar, machined steel</td>
-<td>Couples the swinging frame to the post; seats the thrust bearing</td>
+<td>Couples the swinging frame to the post; bores Ø89 for the sleeves + seats the turntable; includes machining the post bearing landings</td>
 <td>1</td>
-<td>Local fab</td>
-<td>~$130</td>
+<td>Local fab (SoCal machine shop)</td>
+<td>~$160</td>
 </tr>
 <tr>
-<td>Drum support cage, 40×40×3mm SHS</td>
+<td>Drum support cage — <a href="https://www.metalsupermarkets.com/product/square-tube/">40×40×3mm SHS</a> (~4m)</td>
 <td>Steel frame carrying the Ø900 housing + drum on the swinging leaf</td>
 <td>1</td>
-<td>Metal Supermarkets / local fab</td>
+<td>Metal Supermarkets SoCal / local fab</td>
 <td>~$90</td>
 </tr>
 <tr>
-<td>Top + bottom <strong>wall stays</strong></td>
-<td>M16 turnbuckle + eye bolt + hook rod, each (the transport lock)</td>
+<td>Top + bottom <strong>wall stays</strong> (transport lock)</td>
+<td><a href="https://www.mcmaster.com/turnbuckles/">M16 turnbuckle</a> (eye-eye) + <a href="https://www.mcmaster.com/eyebolts/">eye bolt</a> + hook rod, each</td>
 <td>2</td>
-<td><a href="https://www.mcmaster.com/turnbuckles/">McMaster-Carr</a> / Grainger</td>
+<td><a href="https://www.mcmaster.com/turnbuckles/">McMaster-Carr 3411T-series</a> / <a href="https://www.grainger.com/category/material-handling/rigging/turnbuckles">Grainger</a></td>
 <td>~$90</td>
 </tr>
 <tr>
 <td>Wall-stay anchor plates + M16 bolts</td>
 <td>Inside + outside 4-bolt plates per stay eye, sandwiching the side wall (same pattern as the walkway anchors)</td>
 <td>2 sets</td>
-<td>Local fab / McMaster-Carr</td>
-<td>~$50</td>
+<td>Local fab / <a href="https://www.mcmaster.com/bolts/">McMaster-Carr M16</a></td>
+<td>~$60</td>
 </tr>
 <tr>
 <td>Drop-in rail saddles + tapered dowels + clamp bars</td>
 <td>Drop-in saddles for the 2 removable left film rails (TL + BL) — the dowels set the film datum on re-seat</td>
 <td>4</td>
 <td>Local fab / McMaster-Carr</td>
-<td>~$110</td>
+<td>~$120</td>
 </tr>
 <tr>
-<td><strong>Swing pivot subtotal: ~$770</strong></td>
+<td><strong>Swing pivot subtotal</strong></td>
 <td></td>
 <td></td>
-<td></td>
-<td></td>
+<td>(firmed — was a ~$770 estimate, now priced line-by-line)</td>
+<td><strong>~$770</strong></td>
 </tr>
 </tbody>
 </table>

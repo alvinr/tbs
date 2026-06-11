@@ -2391,6 +2391,20 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # Blue Supply Trunk (along pinhole wall)
+  grp = ents.add_group
+  grp.name = "Blue Supply Trunk (along pinhole wall)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-349.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4649.mm,12.mm,40.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fill Trunk"] || model.materials.add("Fill Trunk")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Water Plumbing"
   inst.layer = model.layers["Plumbing & Panel"]

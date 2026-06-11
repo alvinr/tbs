@@ -177,7 +177,7 @@ def context(left_walkway=True, x_far=None):
         parts.append(ruby_box("Left walkway (removable)", ov.WALKWAY_LEFT_X,
                      0, ov.WALKWAY_H - ov.WALKWAY_GRATE_T,
                      ov.WALKWAY_W, C_WID, ov.WALKWAY_GRATE_T,
-                     color=ov.C_REMOVABLE, alpha=0.45))
+                     color=ov.C_REMOVABLE, alpha=0.22))
         # Drum-exit PUNCH-OUT — deepened landing in front of the drum opening so
         # the operator has somewhere to step out (the 300mm deck leaves only 20mm).
         # Part of the removable left lift-out → also amber.
@@ -186,7 +186,7 @@ def context(left_walkway=True, x_far=None):
                      ov.WALKWAY_H - ov.WALKWAY_GRATE_T,
                      ov.WALKWAY_LEFT_WIDE_W - ov.WALKWAY_W,
                      ov.WALKWAY_LEFT_WIDE_YD_R - ov.WALKWAY_LEFT_WIDE_YD_L,
-                     ov.WALKWAY_GRATE_T, color=ov.C_REMOVABLE, alpha=0.45))
+                     ov.WALKWAY_GRATE_T, color=ov.C_REMOVABLE, alpha=0.22))
     return '\n'.join(parts)
 
 
@@ -590,7 +590,7 @@ def walkways_partial():
     w = PARTIAL_X - x0
     return '\n'.join([
         ruby_box("Walkway Near (door-end, removable)", x0, 0, full_z,
-                 liftout_x - x0, ov.WALKWAY_W, t, color=ov.C_REMOVABLE),
+                 liftout_x - x0, ov.WALKWAY_W, t, color=ov.C_REMOVABLE, alpha=0.22),
         ruby_box("Walkway Near (partial)", liftout_x, 0, full_z,
                  PARTIAL_X - liftout_x, ov.WALKWAY_W, t, color=ov.C_WALKWAY),
         ruby_box("Walkway Far (partial)", x0, ov.WALKWAY_FAR_YD, full_z,

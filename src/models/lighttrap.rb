@@ -86,7 +86,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face.pushpull(15.mm)
   mat = model.materials["Left walkway (removable)"] || model.materials.add("Left walkway (removable)")
   mat.color = Sketchup::Color.new(192, 96, 0)
-  mat.alpha = 0.45
+  mat.alpha = 0.22
   grp.material = mat
 
   # Left walkway punch-out (removable)
@@ -97,7 +97,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face.pushpull(15.mm)
   mat = model.materials["Left walkway (removable)"] || model.materials.add("Left walkway (removable)")
   mat.color = Sketchup::Color.new(192, 96, 0)
-  mat.alpha = 0.45
+  mat.alpha = 0.22
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
@@ -431,9 +431,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([470.mm,0.mm,115.mm], [950.mm,0.mm,115.mm], [950.mm,300.mm,115.mm], [470.mm,300.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
-  mat = model.materials["Walkway Near (door-end, removable)"] || model.materials.add("Walkway Near (door-end, removable)")
+  mat = model.materials["Left walkway (removable)"] || model.materials.add("Left walkway (removable)")
   mat.color = Sketchup::Color.new(192, 96, 0)
-  mat.alpha = 1.0
+  mat.alpha = 0.22
   grp.material = mat
 
   # Walkway Near (partial)

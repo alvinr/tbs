@@ -8626,212 +8626,108 @@ end
   # ═══ Chemistry Shelf ═══
   defn = model.definitions.add("Chemistry Shelf")
   ents = defn.entities
-  # Chem Shelf
+  # Chem Shelf (board, deployed)
   grp = ents.add_group
-  grp.name = "Chem Shelf"
-  face = grp.entities.add_face([3129.mm,300.mm,1053.mm], [3729.mm,300.mm,1053.mm], [3729.mm,600.mm,1053.mm], [3129.mm,600.mm,1053.mm])
+  grp.name = "Chem Shelf (board, deployed)"
+  face = grp.entities.add_face([1180.mm,0.mm,1053.mm], [1780.mm,0.mm,1053.mm], [1780.mm,300.mm,1053.mm], [1180.mm,300.mm,1053.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["Chem Shelf"] || model.materials.add("Chem Shelf")
+  mat = model.materials["Chem Shelf (board, deployed)"] || model.materials.add("Chem Shelf (board, deployed)")
   mat.color = Sketchup::Color.new(200, 176, 106)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Shelf Hanger Rod
+  # Chem Shelf lip (front)
   grp = ents.add_group
-  grp.name = "Shelf Hanger Rod"
-  ge = grp.entities
-  circle = ge.add_circle([3149.mm,320.mm,1075.mm], [0,0,1], 5.mm, 12)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(1313.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Shelf ceiling plate (to rib)
-  grp = ents.add_group
-  grp.name = "Shelf ceiling plate (to rib)"
-  face = grp.entities.add_face([3099.mm,290.mm,2382.mm], [3199.mm,290.mm,2382.mm], [3199.mm,350.mm,2382.mm], [3099.mm,350.mm,2382.mm])
+  grp.name = "Chem Shelf lip (front)"
+  face = grp.entities.add_face([1180.mm,294.mm,1075.mm], [1780.mm,294.mm,1075.mm], [1780.mm,300.mm,1075.mm], [1180.mm,300.mm,1075.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  face.pushpull(15.mm)
+  mat = model.materials["Chem Shelf (board, deployed)"] || model.materials.add("Chem Shelf (board, deployed)")
+  mat.color = Sketchup::Color.new(200, 176, 106)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Shelf ceiling bolt M10
+  # Chem Shelf lip (end)
   grp = ents.add_group
-  grp.name = "Shelf ceiling bolt M10"
-  ge = grp.entities
-  circle = ge.add_circle([3117.mm,320.mm,2382.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(46.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Shelf ceiling bolt M10
-  grp = ents.add_group
-  grp.name = "Shelf ceiling bolt M10"
-  ge = grp.entities
-  circle = ge.add_circle([3181.mm,320.mm,2382.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(46.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Shelf Hanger Rod
-  grp = ents.add_group
-  grp.name = "Shelf Hanger Rod"
-  ge = grp.entities
-  circle = ge.add_circle([3149.mm,580.mm,1075.mm], [0,0,1], 5.mm, 12)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(1313.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Shelf ceiling plate (to rib)
-  grp = ents.add_group
-  grp.name = "Shelf ceiling plate (to rib)"
-  face = grp.entities.add_face([3099.mm,550.mm,2382.mm], [3199.mm,550.mm,2382.mm], [3199.mm,610.mm,2382.mm], [3099.mm,610.mm,2382.mm])
+  grp.name = "Chem Shelf lip (end)"
+  face = grp.entities.add_face([1180.mm,0.mm,1075.mm], [1186.mm,0.mm,1075.mm], [1186.mm,300.mm,1075.mm], [1180.mm,300.mm,1075.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  face.pushpull(15.mm)
+  mat = model.materials["Chem Shelf (board, deployed)"] || model.materials.add("Chem Shelf (board, deployed)")
+  mat.color = Sketchup::Color.new(200, 176, 106)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Shelf ceiling bolt M10
+  # Chem Shelf lip (end)
   grp = ents.add_group
-  grp.name = "Shelf ceiling bolt M10"
-  ge = grp.entities
-  circle = ge.add_circle([3117.mm,580.mm,2382.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(46.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Shelf ceiling bolt M10
-  grp = ents.add_group
-  grp.name = "Shelf ceiling bolt M10"
-  ge = grp.entities
-  circle = ge.add_circle([3181.mm,580.mm,2382.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(46.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Shelf Hanger Rod
-  grp = ents.add_group
-  grp.name = "Shelf Hanger Rod"
-  ge = grp.entities
-  circle = ge.add_circle([3709.mm,320.mm,1075.mm], [0,0,1], 5.mm, 12)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(1313.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Shelf ceiling plate (to rib)
-  grp = ents.add_group
-  grp.name = "Shelf ceiling plate (to rib)"
-  face = grp.entities.add_face([3659.mm,290.mm,2382.mm], [3759.mm,290.mm,2382.mm], [3759.mm,350.mm,2382.mm], [3659.mm,350.mm,2382.mm])
+  grp.name = "Chem Shelf lip (end)"
+  face = grp.entities.add_face([1774.mm,0.mm,1075.mm], [1780.mm,0.mm,1075.mm], [1780.mm,300.mm,1075.mm], [1774.mm,300.mm,1075.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  face.pushpull(15.mm)
+  mat = model.materials["Chem Shelf (board, deployed)"] || model.materials.add("Chem Shelf (board, deployed)")
+  mat.color = Sketchup::Color.new(200, 176, 106)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Shelf ceiling bolt M10
+  # Chem Shelf piano hinge
   grp = ents.add_group
-  grp.name = "Shelf ceiling bolt M10"
+  grp.name = "Chem Shelf piano hinge"
   ge = grp.entities
-  circle = ge.add_circle([3677.mm,320.mm,2382.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([1180.mm,0.mm,1069.mm], [1,0,0], 6.mm, 24)
   cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(46.mm)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(600.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Shelf ceiling bolt M10
+  # Chem Shelf stay
   grp = ents.add_group
-  grp.name = "Shelf ceiling bolt M10"
+  grp.name = "Chem Shelf stay"
   ge = grp.entities
-  circle = ge.add_circle([3741.mm,320.mm,2382.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(46.mm)
+  vec = Geom::Vector3d.new(0.mm, 290.mm, -230.mm)
+  circle = ge.add_circle([1205.mm,0.mm,1305.mm], vec, 6.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Shelf Hanger Rod
+  # Chem Shelf stay anchor
   grp = ents.add_group
-  grp.name = "Shelf Hanger Rod"
-  ge = grp.entities
-  circle = ge.add_circle([3709.mm,580.mm,1075.mm], [0,0,1], 5.mm, 12)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(1313.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Shelf ceiling plate (to rib)
-  grp = ents.add_group
-  grp.name = "Shelf ceiling plate (to rib)"
-  face = grp.entities.add_face([3659.mm,550.mm,2382.mm], [3759.mm,550.mm,2382.mm], [3759.mm,610.mm,2382.mm], [3659.mm,610.mm,2382.mm])
+  grp.name = "Chem Shelf stay anchor"
+  face = grp.entities.add_face([1193.mm,0.mm,1293.mm], [1217.mm,0.mm,1293.mm], [1217.mm,8.mm,1293.mm], [1193.mm,8.mm,1293.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
+  face.pushpull(24.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Shelf ceiling bolt M10
+  # Chem Shelf stay
   grp = ents.add_group
-  grp.name = "Shelf ceiling bolt M10"
+  grp.name = "Chem Shelf stay"
   ge = grp.entities
-  circle = ge.add_circle([3677.mm,580.mm,2382.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(46.mm)
+  vec = Geom::Vector3d.new(0.mm, 290.mm, -230.mm)
+  circle = ge.add_circle([1755.mm,0.mm,1305.mm], vec, 6.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Shelf ceiling bolt M10
+  # Chem Shelf stay anchor
   grp = ents.add_group
-  grp.name = "Shelf ceiling bolt M10"
-  ge = grp.entities
-  circle = ge.add_circle([3741.mm,580.mm,2382.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(46.mm)
+  grp.name = "Chem Shelf stay anchor"
+  face = grp.entities.add_face([1743.mm,0.mm,1293.mm], [1767.mm,0.mm,1293.mm], [1767.mm,8.mm,1293.mm], [1743.mm,8.mm,1293.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -11048,7 +10944,7 @@ end
   grp = ents.add_group
   grp.name = "Conduit to LED Panel (Cct G)"
   ge = grp.entities
-  circle = ge.add_circle([3350.mm,40.mm,2350.mm], [0,1,0], 7.mm, 24)
+  circle = ge.add_circle([3200.mm,40.mm,2350.mm], [0,1,0], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(991.mm)
@@ -12154,10 +12050,10 @@ end
   grp = ents.add_group
   grp.name = "Blue Supply Trunk (1/2in HDPE)"
   ge = grp.entities
-  circle = ge.add_circle([2399.mm,12.mm,40.mm], [1,0,0], 10.5.mm, 24)
+  circle = ge.add_circle([1130.mm,12.mm,40.mm], [1,0,0], 10.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(2250.mm)
+  cface.pushpull(3519.mm)
   mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -12191,23 +12087,51 @@ end
   grp = ents.add_group
   grp.name = "TAP-01 Riser (3/4in)"
   ge = grp.entities
-  circle = ge.add_circle([3729.mm,12.mm,40.mm], [0,0,1], 12.5.mm, 24)
+  circle = ge.add_circle([1130.mm,12.mm,40.mm], [0,0,1], 12.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(1160.mm)
+  cface.pushpull(1335.mm)
   mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # TAP-01 (chem tap)
+  # BV-06 (chem tap isolation)
   grp = ents.add_group
-  grp.name = "TAP-01 (chem tap)"
-  face = grp.entities.add_face([3714.mm,12.mm,1200.mm], [3744.mm,12.mm,1200.mm], [3744.mm,142.mm,1200.mm], [3714.mm,142.mm,1200.mm])
+  grp.name = "BV-06 (chem tap isolation)"
+  face = grp.entities.add_face([1112.mm,4.mm,1010.mm], [1148.mm,4.mm,1010.mm], [1148.mm,40.mm,1010.mm], [1112.mm,40.mm,1010.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
   mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # TAP-01 spout (out)
+  grp = ents.add_group
+  grp.name = "TAP-01 spout (out)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 100.mm, 0.mm)
+  circle = ge.add_circle([1130.mm,12.mm,1375.mm], vec, 12.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # TAP-01 spout (down)
+  grp = ents.add_group
+  grp.name = "TAP-01 spout (down)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -225.mm)
+  circle = ge.add_circle([1130.mm,112.mm,1375.mm], vec, 12.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 

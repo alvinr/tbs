@@ -12,158 +12,157 @@ Cyanotype processing requires a clean, stable work surface for:
 - Staging materials (bottles, pH meter, gloves, timer)
 - Post-exposure citric acid wash preparation
 
-The shelf must not obstruct walkway navigation (the operator walks the full length of the near walkway during film loading and coating). A ceiling-suspended platform in the right corner — on the tray side of the near walkway — provides 0.18 m² of counter-height workspace while leaving the walkway completely clear.
+Chemistry is mixed **before exposure**, so the shelf does not need to be permanently
+deployed. It is a **wall-hinged fold-down** in the widened near walkway: folded DOWN to
+a counter-height work surface while mixing, and folded UP flat against the pinhole wall
+for transport and during exposure. Because it is only deployed while the film plane is
+parked, it is **fully decoupled from the film-plane swing** — replacing the previous
+ceiling-hung shelf and its swing/optics constraints.
 
-A dedicated water tap (TAP-01) on the pinhole wall at X=3729mm, Z=1200mm provides filtered water from the blue supply line for chemistry mixing and wash-down. The shelf sits **immediately left of the tap** (its right edge at X=3729mm). Ball valve BV-06, mounted inline on the 3/4" branch pipe at X=3600mm (129mm to the left of the tap), gives the operator easy shut-off control from the prep position.
+A dedicated water tap (TAP-01) on the pinhole wall provides filtered water from the blue
+supply line for chemistry mixing and wash-down. It is relocated to the **left of the
+shelf** (the battery bank is to the right); the branch riser tops at the stowed-shelf
+height (Z1375) and the spout reaches over the shelf to fill containers. Ball valve BV-06
+on the ¾" branch gives shut-off control from the prep position.
 
 ---
 
 ## 2. Location and Spatial Constraints
 
-The shelf sits just inside the walkway perimeter on the tray side, between the near walkway outer edge (Yd=300mm) and Yd=600mm, **left of the tap (X=3129–3729mm)**. It was moved here (rev12) from its previous X=3729–4329mm position so it clears the film-plane swing envelope (§2.1). The operator accesses the shelf from the near walkway by turning 90° to face the tray side. No walkway is obstructed.
-
+The shelf is in the **widened near walkway** (500 mm deep, X≈1155–2629), hinged on the
+pinhole wall (Yd=0) at **X=1180–1780 — left of the battery bank** (X=1810). Deployed, it
+projects 300 mm into the walkway. The operator stands on the widened walkway and works
+facing the wall. When folded up, the full walkway is clear.
 
 ![Chemistry Prep Shelf — Sheet 1: Plan View](assets/shelf-sheet1.png)
 
-Top-down view showing the shelf position (X=3129–3729mm, Yd=300–600mm) relative to the near walkway, right walkway, processing tray, and optical cone boundary. The shelf is entirely outside the optical cone and inside the walkway perimeter — no walkway overlap.
+### 2.1 Why fold-down (film-plane swing) + optical cone
 
-### 2.1 Film-Plane Swing and Optical Cone Clearance
+**Film-plane swing.** A permanently-deployed shelf in the optical zone collides with the
+film-plane swing (the plane sweeps forward as it swings). The fold-down removes the
+conflict entirely: the shelf is only deployed while mixing (film plane parked), and is
+folded flat against the wall whenever the plane tilts/swings during exposure. No swing
+restriction is imposed.
 
-**Film-plane swing (rev12 — the reason for the move).** The film plane swings about its centre (X=2399.5mm); its right side sweeps *forward* (toward the pinhole) and can reach the shelf zone. At the old right edge (X=4329mm) the swept plane reached Yd=600mm at only ~17° swing — i.e. it collided within the mechanical swing travel. Moving the shelf left so its right edge is at the tap (X=3729mm) cuts the swing reach: the plane now clears the **practical ±15° envelope by ~225mm** and stays clear up to **~23.6°**. The mechanical swing max is ±25.7°, where a residual ~59mm clip of the shelf's back-right corner remains; this is an **accepted operating limit** — swing is held to ≤~23° while the shelf is installed (the shelf is not relocated for the rare full-swing case).
+**Optical cone.** Even deployed, the shelf is clear of the optical cone. Its right edge
+(X=1780 mm) sits left of the cone's left boundary at the shelf's deepest point (Yd=300):
 
-**Optical cone.** The binding point is the shelf far edge (Yd=600mm), where the cone is widest:
+    cone_left(300) = PH_X + (FP_X_L − PH_X) × 300 / FP_Y
+                   = 2,399 + (150 − 2,399) × 300 / 2,262
+                   = 2,399 − 298 = 2,101 mm
 
-    cone_right(600) = PH_X + (FP_X_R − PH_X) × 600 / FP_Y
-                    = 2,399 + (4,649 − 2,399) × 600 / 2,262
-                    = 2,399 + 597 = 2,996mm
-
-The shelf left edge (X=3129mm) is ~133mm outside the optical cone (was ~708mm at the old X=3729mm edge) — still entirely clear, no vignetting at any film-plane position.
+→ the shelf right edge is ~**321 mm** outside (left of) the cone. No vignetting at any
+film-plane position.
 
 ### 2.2 Spatial Constraints
 
 | Constraint | Value |
 |-----------|-------|
-| Shelf X range | X=3129–3729mm (600mm) — right edge at the tap (TAP_X) |
-| Shelf Yd range | Yd=300–600mm (300mm) |
-| Near walkway | Yd=0–300mm — shelf starts at walkway outer edge |
-| Processing tray | Floor level (rim H=50mm) — well below shelf at H=1075mm |
-| Right walkway | X=4329–4629mm, cantilever rectangle off the IBC frame — now 600mm right of the shelf |
-| Ceiling height | H=2388mm (container interior) |
-| Cable trunking | H=1800mm (40×25mm PVC, horizontal full length) |
+| Shelf X range | X=1180–1780 mm (600 mm), left of the battery bank (X=1810) |
+| Deployed footprint | Yd=0–300 mm (hinged on the pinhole wall, projects 300 mm) |
+| Stowed (transport) | Vertical against the wall, Z=1075–1375 mm, ~25 mm proud |
+| Work surface height | H=1075 mm (945 mm above the 130 mm walkway deck) |
+| Walkway (widened) | 500 mm deep — ~200 mm pass when deployed, full clear when stowed |
+| Evap cooler (stow) | Slides under the deployed shelf (top Z950 < shelf underside Z1050) |
+| Optical cone | ~321 mm clear (shelf right edge X1780 vs cone-left X2101 at Yd300) |
 
 ---
 
 ## 3. Design Specification
 
-### 3.1 Shelf Dimensions
-
-### Sheet 3 — Hanger Connection Detail
-
-Detail of one hanger rod connection showing: ceiling corrugation rib, ceiling plate (100×60×6mm) with M8 through-bolts, M10 threaded rod with double-nut leveling, shelf SHS frame cross-section, and 15mm spill guard lip.
-
-![Chemistry Prep Shelf — Sheet 3: Hanger Connection Detail](assets/shelf-sheet3.png)
-
-
-Single ceiling-suspended platform:
+### 3.1 Shelf board
 
 | Parameter | Value |
 |-----------|-------|
-| Position | X=3129–3729mm, Yd=300–600mm |
-| Width (X direction) | 600mm |
-| Depth (Yd direction) | 300mm |
-| Work surface height | H=1075mm above floor (945mm above the raised walkway deck) |
-| Shelf thickness | 22mm (18mm ply + 4mm perimeter frame) |
-| Work surface area | 600 × 300 = 180000mm² (0.18 m²) |
-| Hanger rod length | 1363mm (ceiling to shelf top) |
-| Hanger rod diameter | M10 threaded rod |
-| Number of hanger rods | 4 (one at each corner, inset 30mm) |
+| Width (X) | 600 mm |
+| Depth (Yd, deployed) | 300 mm |
+| Work surface height | H=1075 mm AFF (945 mm above the walkway deck) |
+| Thickness | 22 mm (18 mm phenolic ply + 4 mm perimeter frame) |
+| Work surface area | 600 × 300 = 0.18 m² |
+| Stowed top | Z=1375 mm (= H + depth) |
 
-### 3.2 Construction
+**Work surface:** 18 mm phenolic-faced plywood (concrete form ply) — chemical-resistant
+to cyanotype solutions and pH 3–4 citric acid; smooth, non-absorbent, wipe-clean.
 
-**Work surface:** 18mm phenolic-faced plywood (concrete form ply). The phenolic resin face provides excellent chemical resistance to cyanotype solutions (ferric/ferricyanide salts, pH 3–4 citric acid). Surface is smooth, non-absorbent, and easily wiped clean. If damaged after extended use, the ply panel can be unbolted and replaced for ~$30.
+**Perimeter frame:** 25×25×3 mm mild steel SHS welded into a 600×300 mm rectangle with
+corner gussets; the ply sits flush inside it. A 15 mm spill-guard lip on the three free
+edges retains bottles/items. Flat black powder coat.
 
-**Perimeter frame:** 25×25×3mm mild steel SHS (square hollow section), welded into a rectangular perimeter frame (600×300mm outer). The ply panel sits inside the frame, flush with the top surface. Frame corners have gusset plates for rigidity. Finish: flat black powder coat.
+### 3.2 Fold-down mechanism
 
-**Spill guard:** 15mm-tall steel lip welded to the frame top edge on all four sides. Prevents chemistry bottles or solution from sliding off during road transport vibration. The lip doubles as a retainer for loose items.
+![Chemistry Prep Shelf — Sheet 2: Section (fold-down mechanism)](assets/shelf-sheet2.png)
 
-**Hanger rods:** 4× M10 threaded rod, 1363mm long, connecting the shelf frame to ceiling mounting plates. Each rod passes through the shelf frame corner (drilled hole in SHS top member), secured top and bottom with double nuts + flat washers for leveling adjustment.
+**Piano hinge:** a continuous steel piano hinge runs the full 600 mm back edge,
+bolted to a mounting cleat on the pinhole wall at Z=1075 mm. The shelf swings between
+horizontal (deployed) and vertical-up (stowed) about this hinge.
 
-### 3.3 Ceiling Mounting
+**Stays:** two stays run from wall anchors ~230 mm above the hinge to the shelf's front
+corners. Deployed, they hold the board level and carry the shelf + chemistry load; when
+the shelf folds up they fold flat against the wall. Either a pair of folding fold-flat
+shelf brackets or diagonal struts/chains may be used — both lock the board level.
 
-The shelf hangs from the container ceiling on four corner rods (the ceiling-plate detail below is independent of the right walkway, which is now a floor-clearing cantilever rectangle rather than a ceiling-hung deck):
+**Transport latch:** a simple over-centre latch (or barrel bolt) at the top secures the
+folded-up board against the wall.
 
-### Sheet 2 — Section Elevation
+![Chemistry Prep Shelf — Sheet 3: Hinge + stay detail](assets/shelf-sheet3.png)
 
-Cross-section at X=3429mm (shelf midpoint) looking along the X-axis. Shows the ceiling-hung hanger rods (1313mm), shelf platform at H=1075mm, operator silhouette on the near walkway, and the processing tray at floor level below.
-
-![Chemistry Prep Shelf — Sheet 2: Section Elevation](assets/shelf-sheet2.png)
-
-
-- **Ceiling plates:** 100×60×6mm mild steel plate, one per hanger rod. Each plate spans one ceiling corrugation rib.
-- **Attachment:** 2× M8×30mm hex bolts per plate, through-bolted to the ceiling corrugation rib with backing washers on the exterior (roof side).
-- **Rod connection:** M10 threaded rod passes through a centered Ø11mm hole in the ceiling plate, secured with M10 nut + washer above and below the plate for vertical adjustment.
-- **Rib spacing:** Container ceiling corrugations at 150mm pitch. Hanger positions (30mm inset from shelf corners) align with available ribs — minor X/Yd offset (<30mm) to nearest rib is acceptable.
-
-### 3.4 Load Rating
+### 3.3 Load Rating
 
 | Parameter | Value |
 |-----------|-------|
-| Design load | 25 kg (55 lbs) |
-| Load per hanger rod | 6.25 kg (including shelf self-weight ~8 kg → 8.25 kg per rod total) |
-| M10 rod tensile capacity | ~15 kN (far exceeds 330 N total load) |
-| Ceiling plate bolt shear | 2× M8 per plate = ~24 kN capacity (far exceeds) |
-| Safety factor | >40× on rod tension; >70× on bolt shear |
+| Design load | 25 kg (full bottle, cylinders, roller tray, scale, staging) |
+| Carried by | 2 stays + the piano hinge (hinge reacts the back edge) |
+| Load per stay | ~12.5 kg + shelf self-weight share — well within a folding bracket's rating (typ. 30–50 kg each) |
+| Hinge | Continuous piano hinge along 600 mm — distributes the back-edge reaction |
 
-25 kg accommodates: a full 1L bottle of chemistry (~1.1 kg), graduated cylinders, roller tray with solution, digital scale, and staging materials — with ample margin. The ceiling-hung shelf system is massively over-engineered for this load.
+The fold-down hardware is comfortably rated for the light mixing load.
 
-### 3.5 Leveling
+### 3.4 Leveling
 
-Double-nut arrangement on each hanger rod allows ±10mm vertical adjustment per corner. After initial installation, level the shelf with a spirit level by adjusting the lower nut positions, then lock with upper jam nuts. The rod length tolerance (±2mm from cutting) is absorbed by this adjustment range.
+Slotted holes in the stay wall anchors (or adjustable folding brackets) give ±5 mm at
+each front corner; level the board with a spirit level on first install, then lock.
 
 ---
 
 ## 4. Transport Mode
 
-The shelf is permanently installed — it does not fold or detach for transport. This is safe because:
+The shelf folds UP flat against the pinhole wall (top Z=1375 mm) and latches.
 
 | Check | Status |
 |-------|--------|
-| Walkway clearance | Shelf is on the tray side (Yd=300–900) — near walkway (Yd=0–300) completely unobstructed ✓ |
-| Overhead clearance | Shelf top at H=1075mm — 725mm below cable trunking (H=1800mm) ✓ |
-| Items on shelf | Spill guard lip + transport lashing point (welded D-ring on frame) retains items ✓ |
-| Hanger rod vibration | M10 rod at 1363mm span: fundamental frequency ~45 Hz — well above road excitation (1–15 Hz). No resonance concern ✓ |
-| ISO 668 transport loads | 25 kg shelf load × 2g lateral acceleration = 500 N. Distributed across 4× M10 rods = 125 N shear per rod (rod shear capacity ~15 kN) ✓ |
+| Walkway clearance | Folded up, ~25 mm proud of the wall — full walkway clear ✓ |
+| Film-plane clearance | Folded flat — never in the swing envelope ✓ |
+| Overhead clearance | Folded top Z1375 — well below the cable trunking (Z1800) ✓ |
+| Evap stow | Evap (top Z950) tucks below the folded board ✓ |
+| Vibration | Board latched flat against the wall; no loose span ✓ |
 
 ---
 
 ## 5. Operator Access
 
-The operator stands on the near walkway (deck at H=130mm) at approximately X=3429mm (shelf midpoint in X), turned 90° to face the processing tray side. The shelf work surface is at H=1075mm (945mm above the walkway deck) — ergonomic counter height for standing prep work.
+The operator stands on the widened near walkway (deck Z=130) at about X=1480 (shelf
+midpoint), facing the wall. The deployed surface at H=1075 mm (945 mm above the deck) is
+ergonomic counter height; the full 300 mm depth is reachable. The tap (left of the shelf)
+fills containers staged on the board.
 
-The shelf near edge (Yd=300mm) aligns with the near walkway outer edge, so the operator can reach the full 300mm shelf depth from the walkway without leaning. Items used most frequently (scale, graduated cylinders) are staged at the near edge; bulk storage (bottles, wash trays) at the far edge.
-
-The near walkway remains completely clear for transit in both directions — no fold-down mechanism, no legs on the walkway, no obstruction at any time.
+When deployed, the 300 mm board leaves ~200 mm of the 500 mm walkway behind it — enough
+for the operator to work but not for through-traffic; this is acceptable because the
+shelf is only down while mixing. Folded up, the walkway is fully clear in both directions.
 
 ---
 
 ## 6. Assembly Sequence
 
-1. Cut 4× M10 threaded rod to 1400mm (allows 37mm trim margin for leveling)
-2. Fabricate 4× ceiling plates (100×60×6mm, drill 2× Ø9mm + 1× Ø11mm per plate)
-3. Mark ceiling rib positions for 4 hanger locations (corners of 600×300mm rectangle, inset 30mm)
-4. Drill 2× Ø9mm holes per ceiling plate location through ceiling ribs
-5. Install ceiling plates with M8×30mm bolts + backing washers (torque to 20 N·m)
-6. Thread M10 rods through ceiling plates; secure with nut + washer above and below plate
-7. Fabricate shelf frame: weld 25×25×3mm SHS perimeter rectangle (300×600mm) with corner gussets
-8. Weld 15mm spill guard lip to frame top edge (all four sides)
-9. Weld transport D-ring to one long-side member
-10. Drill 4× Ø11mm holes in frame top member at corner positions (matching hanger spacing)
-11. Insert ply panel into frame; secure with M5 CSK screws through frame underside
-12. Lift shelf frame into position; thread hanger rods through frame corner holes
-13. Secure each rod below frame with M10 nut + flat washer
-14. Level shelf using a spirit level; adjust lower nuts until horizontal
-15. Lock all nuts with upper jam nuts (torque to 25 N·m)
-16. Verify: shelf level, spill guard intact, hanger rods vertical, no fouling with walkway or tray
+1. Fabricate the shelf frame: weld a 25×25×3 mm SHS 600×300 mm rectangle with corner gussets.
+2. Weld the 15 mm spill-guard lip to the three free edges; weld the transport-latch keeper.
+3. Insert the 18 mm phenolic ply panel; secure with M5 CSK screws from the frame underside.
+4. Bolt the wall mounting cleat to the pinhole wall at Z=1075 (X=1180–1780), into the ribs/backing.
+5. Bolt the continuous piano hinge to the cleat and to the shelf back edge.
+6. Fit the two stay wall anchors ~230 mm above the hinge (slotted for leveling).
+7. Fit the two stays (folding brackets or struts) to the anchors and the shelf front corners.
+8. Deploy, level with a spirit level, lock the stay adjustment.
+9. Fit the transport latch; verify the board folds up flat and latches clear of the wall equipment.
+10. Verify: deployed level + rigid under load; folded-up clear of the evap stow and walkway.
 
 ---
 
@@ -171,21 +170,21 @@ The near walkway remains completely clear for transit in both directions — no 
 
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Phenolic-faced plywood, 18mm | 1220×2440mm sheet (cut to 300×600) | 1 | Local lumber yard / Home Depot | ~$60 |
-| 25×25×3mm steel SHS | 6m length (frame + spill guard) | 1 | Pacific Coast Steel / Online Metals | ~$30 |
-| M10 threaded rod, 1m | Zinc-plated (join 2× for 1400mm) | 4 | McMaster-Carr #90322A130 / Home Depot | ~$20 |
-| M10 coupling nuts | Join rod sections | 4 | McMaster-Carr #90264A130 | ~$8 |
-| 100×60×6mm mild steel plate | Ceiling plates | 4 | Metal offcut / local fab | ~$15 |
-| M10 hex nuts, zinc | Rod attachment (3 per rod: ceiling lock + shelf top/bottom) | 12 | McMaster-Carr | ~$6 |
-| M10 flat washers, zinc | All nut positions | 12 | McMaster-Carr | ~$4 |
-| M8×30mm hex bolts, zinc | Ceiling plate attachment (2 per plate) | 8 | McMaster-Carr | ~$8 |
-| M8 flat washers (backing) | Roof-side backing | 8 | McMaster-Carr | ~$3 |
-| M8 nuts, zinc | Ceiling bolts | 8 | McMaster-Carr | ~$3 |
-| M5×16mm CSK screws | Ply panel attachment | 8 | McMaster-Carr | ~$4 |
-| Corner gusset plate, 3mm | 50×50mm triangular (weld to frame) | 4 | Steel offcut | ~$5 |
-| Flat black epoxy spray paint | Frame + plate finish | 1 can | Hardware store | ~$12 |
-| D-ring, welded (25mm) | Transport lashing point | 1 | Amazon / McMaster-Carr | ~$6 |
-| **Total** | | | | **~$184** |
+| Phenolic-faced plywood, 18 mm | cut to 300×600 mm | 1 | Home Depot / lumber yard | ~$60 |
+| 25×25×3 mm steel SHS | 6 m (frame + spill lip) | 1 | Online Metals / Metal Supermarkets | ~$30 |
+| Continuous (piano) hinge, 600 mm | stainless/steel, ~32 mm leaf | 1 | McMaster-Carr | ~$20 |
+| Folding shelf stays/brackets | fold-flat, ~30–50 kg rating | 2 | Amazon / McMaster-Carr | ~$24 |
+| Wall mounting cleat + anchors | 6 mm steel cleat + 2 stay anchors (slotted) | 1 set | Local fab / offcut | ~$18 |
+| M8 wall bolts + washers/nuts | hinge cleat + stay anchors into the wall ribs | ~12 | McMaster-Carr | ~$12 |
+| Transport latch (over-centre/barrel) | secures the folded board | 1 | Amazon | ~$8 |
+| M5×16 mm CSK screws | ply panel attachment | 8 | McMaster-Carr | ~$4 |
+| Corner gusset plate, 3 mm | 50×50 mm triangular | 4 | Steel offcut | ~$5 |
+| Flat black epoxy spray paint | frame + hardware finish | 1 can | Hardware store | ~$12 |
+| ½" HDPE pipe (tap relocation) | extend the blue supply trunk ~1.3 m left to TAP-01 | ~1.5 m | Irrigation supply | ~$10 |
+| **Total** | | | | **~$203** |
+
+*The relocated TAP-01 + BV-06 hardware itself is unchanged (carried in the water-system
+BOM); only the ~1.3 m trunk extension is added here.*
 
 ---
 
@@ -193,19 +192,18 @@ The near walkway remains completely clear for transit in both directions — no 
 
 | Interval | Task |
 |----------|------|
-| Before each session | Check shelf is level — adjust double-nut leveling if needed |
-| Before each session | Wipe shelf surface clean; inspect spill guard lip for chemical residue |
-| Monthly | Inspect M10 hanger rod threads and nuts for corrosion |
-| Monthly | Check ceiling plate bolts for tightness |
-| Before transport | Verify shelf does not interfere with the panel swing sweep |
-| After transport | Re-check level and tighten any loosened nuts |
+| Before each session | Deploy + check level; wipe the surface; inspect the spill lip for residue |
+| Before each session | Confirm the stays lock positively and the hinge swings freely |
+| Monthly | Inspect the hinge, stays, and wall bolts for corrosion/tightness |
+| Before transport | Fold up + latch; confirm clear of the evap stow and walkway |
+| After transport | Re-deploy and re-check level |
 
 ---
 
 ## 9. Source References
 
-1. [ISO 668:2020](https://www.iso.org/standard/76912.html) — Series 1 freight containers: Classification, dimensions and ratings. Ceiling corrugation rib spacing.
-2. [Walkway System Report](walkway-report.md) — Walkway deck height and clearance constraints.
-3. [Equipment Layout Report](equipment-layout-report.md) — Optical cone clearance verification and zone definitions.
+1. [ISO 668:2020](https://www.iso.org/standard/76912.html) — Series 1 freight containers: dimensions and ratings.
+2. [Walkway System Report](walkway-report.md) — Walkway deck height and the widened near-walkway section.
+3. [Equipment Layout Report](equipment-layout-report.md) — Optical cone clearance and pinhole-wall zone definitions.
 
 *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

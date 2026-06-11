@@ -132,7 +132,7 @@ C_BATH = "#2E6FA0"      # processing chemistry (translucent bath)
 
 # Subsystem → tag map (also drives tag creation order).
 TAGS = ["Shell", "Walkways", "Processing Tray",
-        "Pinhole", "Optical Cone", "Film Plane",
+        "Pinhole", "Optical Cone", "Film Plane", "Combined Plate",
         "Pivot Axle", "Spray Bar", "Equipment Panel",
         "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf",
         "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans",
@@ -559,10 +559,22 @@ def ibc_cantilever_arms(x_to=None):
     return parts
 
 
-def right_walkway_cantilever():
+def fp_combined_corner_plates():
+    """Both right-corner COMBINED plates (near + far) — the shared anchor for the film
+    plane's bottom-right (BR) rail AND the walkway right beam. Factored out so the
+    overview can put it on its own tag (visible in BOTH the Film-Plane and Walkway scenes)."""
+    parts = []
+    for wall_yd, din in ((0, 1), (C_WID, -1)):
+        parts += fp_combined_corner_plate(wall_yd, din)
+    return '\n'.join(parts)
+
+
+def right_walkway_cantilever(include_combined=True):
     """The right walkway support: a CLOSED rectangle (left+right long beams + 2 end beams) +
     2 center cantilever arms off the IBC corridor uprights (half-lapped at the long beams).
-    LEFT corners on wall cleats; RIGHT corners on the COMBINED plate (rail + right beam)."""
+    LEFT corners on wall cleats; RIGHT corners on the COMBINED plate (rail + right beam).
+    `include_combined=False` omits the combined plates (the overview draws them on their own
+    tag so they show in the Film-Plane scene too; walkway.skp keeps them inline)."""
     parts = []
     lx, rx = RWK_X_L, RWK_X_R - RWK_BEARER_W
     arm_ranges = [(yd, RWK_ARM_W) for yd in RWK_UP_YDS]
@@ -573,7 +585,8 @@ def right_walkway_cantilever():
     parts += ibc_cantilever_arms()
     for wall_yd, din, tag in ((0, 1, "near"), (C_WID, -1, "far")):
         parts += _rwk_wall_cleat(tag, lx + RWK_BEARER_W // 2, wall_yd, din)
-        parts += fp_combined_corner_plate(wall_yd, din)
+        if include_combined:
+            parts += fp_combined_corner_plate(wall_yd, din)
     # grate
     parts.append(ruby_box("Right walkway grate (cantilevered)", RWK_X_L, 0, RWK_GRATE_Z, WALKWAY_RIGHT_W, C_WID, WALKWAY_GRATE_T, color=C_WALKWAY))
     return '\n'.join(parts)
@@ -628,8 +641,10 @@ def walkways(include_right=True, include_right_hangers=None):
 
     if include_right:
         if include_right_hangers:
-            # rev12: full CANTILEVER-rectangle support (+ grate), replaces the ceiling hangers
-            parts.append(right_walkway_cantilever())
+            # rev12: full CANTILEVER-rectangle support (+ grate), replaces the ceiling hangers.
+            # The combined corner plates are drawn separately (own tag) so they also show in
+            # the Film-Plane scene, so omit them here.
+            parts.append(right_walkway_cantilever(include_combined=False))
         else:
             parts.append(ruby_box("Walkway Right (IBC end)",
                                   WALKWAY_RIGHT_X, 0, grate_z,
@@ -2053,6 +2068,7 @@ def generate_ruby():
         component("Pinhole Assembly", "Pinhole", pinhole_assembly()),
         component("Optical Cone", "Optical Cone", optical_cone()),
         component("Film Plane Mechanism", "Film Plane", film_plane_mechanism()),
+        component("FP Combined Corner Plates", "Combined Plate", fp_combined_corner_plates()),
         component("Panel & Pivot Axle", "Pivot Axle", panel_pivot()),
         component("Spray Bar", "Spray Bar", spray_bar()),
         component("Equipment Panel", "Equipment Panel", equipment_panel()),
@@ -2080,14 +2096,14 @@ def generate_ruby():
 
     # Grouped scenes — related subsystems together (Shell shown as context).
     scene_groups = [
-        ("Film Plane & Pinhole", ["Pinhole", "Optical Cone", "Film Plane"]),
+        ("Film Plane & Pinhole", ["Pinhole", "Optical Cone", "Film Plane", "Combined Plate"]),
         ("Water Systems", ["Processing Tray", "Spray Bar", "Equipment Panel",
                            "IBC Stack", "IBC Rack", "Shelf", "Water Hookups",
                            "Water Plumbing"]),
         ("Electrical Systems", ["Electrical", "Lighting"]),
         ("Hinge Panel & Drum", ["Light Trap", "Light Seal", "Pivot Axle"]),
         ("Ventilation", ["Evap Cooler", "Fans"]),
-        ("Walkways", ["Walkways"]),
+        ("Walkways", ["Walkways", "Combined Plate"]),
     ]
     scene_groups_ruby = '[' + ', '.join(
         '["%s", [%s]]' % (n, ', '.join(f'"{t}"' for t in tags))

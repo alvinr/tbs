@@ -331,7 +331,7 @@ def sheet1():
 
     # Corridor label
     corr_cx = (near_col_r + far_col_l) / 2
-    ax.text(sx(corr_cx), sy(platform_z / 2),
+    ax.text(sx(corr_cx), sy(platform_z / 2 + 30),
             f"PLUMBING\nCORRIDOR\n{IBC_GAP}mm",
             ha="center", va="center", fontsize=6.5, color=C_CL,
             fontweight="bold", **FONT, zorder=15)
@@ -1817,8 +1817,8 @@ def sheet5():
 
     # Corridor label
     corr_cx = (near_col_r + far_col_l) / 2
-    ax.text(sx(corr_cx), sy(C_HGT - 80),
-            f"PLUMBING\nCORRIDOR\n{CORRIDOR_W}mm",
+    ax.text(sx(corr_cx), sy(C_HGT - 60),
+            f"PLUMBING CORRIDOR",
             ha="center", va="top", fontsize=6, color=C_CL,
             fontweight="bold", **FONT, zorder=10)
 
@@ -2015,7 +2015,7 @@ def sheet5():
     _draw_valve_elev(ax, sx, sy, corr_cx, vb3_z + 15, C_PIPE_BLUE, "VB3")
     # Merged pipe stub (X-direction → P-01 → spray bar)
     pipe_stub_x(ax, corr_cx, vb3_z - 30, C_PIPE_BLUE,
-                "→ P-01 → SPRAY BAR", label_side="right")
+                "P-01 → SPRAY BAR", label_side="right")
 
     # ── Brown IBC-3 inlet ← tray sump (pumped via P-04) ──────────────────────
     # Water collects in sump well at tray low point. P-04 suction pickup
@@ -2023,7 +2023,7 @@ def sheet5():
     # Cannot gravity feed — fill cap is ~900mm above tray floor.
     brown_in_z = IBC_H_600 - 80  # near top of bottom-tier IBC
     pipe_stub_x(ax, near_ibc_cx, brown_in_z, C_PIPE_BROWN,
-                "← P-04 ← TRAY\nSUMP (PUMPED)", label_side="left")
+                "P-04 ← TRAY\nSUMP (PUMPED)", label_side="left")
     # P-04 tray drain transfer pump — on the brown inlet line
     p04_z = brown_in_z + 60
     _draw_pump_symbol(ax, sx, sy, near_ibc_cx - 80, p04_z, C_PIPE_BROWN, "P-04")
@@ -2042,7 +2042,7 @@ def sheet5():
     # Returns through top of IBC-2 (fill cap area)
     filter_ret_z = top_ibc_top - 80  # near top of top-tier far IBC
     pipe_stub_x(ax, far_ibc_cx, filter_ret_z, C_PIPE_FILTER,
-                "← FILTER\nRETURN", label_side="right")
+                "FILTER\nRETURN", label_side="right")
 
     # ── Waste IBC-4 inlet ← diverter/bypass (rejected filtrate) ─────────────
     # Enters through IBC-4 fill cap (DN150) on top. Filter skid reject/bypass
@@ -2050,11 +2050,11 @@ def sheet5():
     # drain out existing waste when opened).
     waste_in_z = IBC_H_600 - 80  # near top of bottom-tier far IBC
     pipe_stub_x(ax, far_ibc_cx, waste_in_z, C_PIPE_BLACK,
-                "← FILTER REJECT\nVIA FILL CAP (DN150)", label_side="right")
+                "FILTER REJECT\nVIA FILL CAP (DN150)", label_side="right")
 
     # ── Pipe labels for bulkhead connections ─────────────────────────────────
     leader(ax, sx(f1_fill_yd), sy(EXT_FILL_1_H),
-           sx(BLUE_IBC_Y + IBC_D * 0.7), sy(EXT_FILL_1_H - 80),
+           sx(BLUE_IBC_Y + IBC_D * 0.5), sy(EXT_FILL_1_H - 80),
            "X1 → IBC-1 FILL CAP\n(DN150, TOP NEAR)\n1\" HDPE",
            color=C_PIPE_BLUE, fs=5.5,
            ha="right", va="bottom", arrow_style="-|>", font=FONT)
@@ -2172,7 +2172,7 @@ def sheet5():
 
     # Container interior width
     draw_dim_h(ax, sx(0), sx(C_WID), sy(-80),
-               f"{C_WID}mm  INTERIOR WIDTH", offset=sy(5), fs=6, font=FONT)
+               f"{C_WID}mm  INTERIOR WIDTH", offset=sy(10), above=False, fs=6, font=FONT)
 
     # Corridor width
     draw_dim_h(ax, sx(near_col_r), sx(far_col_l), sy(C_HGT - 30),

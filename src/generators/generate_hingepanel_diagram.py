@@ -1486,8 +1486,9 @@ def sheet4():
     # cage can transition the X=150 rail plane, then re-seated to datum.
     ax.add_patch(Rectangle((RX - 13, FP_Y_MIN), 26, (FP_Y + 38) - FP_Y_MIN,
                            fc="#C06000", ec=C_OUT, lw=1, ls=(0, (4, 2)), alpha=0.55, zorder=6))
-    ax.text(RX - 55, DRUM_CY, "left rails X=150\nREMOVABLE\n(struck for transport —\ndrop-in saddles)",
-            fontsize=6, color="#8a5a10", **FONT, ha="right", va="center", zorder=12)
+    ax.text(RX - 225, DRUM_CY, "left rails X=150\nREMOVABLE\n(struck for transport —\ndrop-in saddles)",
+            fontsize=6, color="#8a5a10", **FONT, ha="right", va="center", zorder=12,
+            bbox=dict(facecolor="white", edgecolor="none", boxstyle="round,pad=0.3", alpha=0.88))
     for yy in (FP_Y_MIN, FP_Y):                              # brace-cage beams (run X 150→far)
         ax.add_patch(Rectangle((RX, yy - 17), 1340 - RX, 34, fc=C_STEEL, ec=C_OUT,
                                lw=0.7, alpha=0.85, zorder=5))
@@ -1514,7 +1515,7 @@ def sheet4():
         ax.add_patch(Circle(dctr, DRUM_R, fc=C_ALUM, ec=ec, lw=1.0, alpha=alpha * 0.5, ls=ls, zorder=9))
         return dctr
     draw_moving(0, "#7a5a20", 0.55, "-", "////")
-    ax.text(BAY_FRONT_X / 2, -150, "CAMERA\n(deployed)", fontsize=7.5, color=C_DIM, **FONT, ha="center", va="top")
+    ax.text(BAY_FRONT_X / 2, -100, "CAMERA\n(deployed)", fontsize=7.5, color=C_DIM, **FONT, ha="center", va="top")
     d1 = draw_moving(LOCK, BLUE, 0.30, (0, (5, 3)), None)
     ax.text(d1[0], d1[1], f"SWUNG {int(LOCK)}°\n(door clears +59mm)", fontsize=7, color=BLUE, **FONT,
             ha="center", va="center", fontweight="bold", zorder=15)
@@ -1558,7 +1559,7 @@ def sheet4():
     ]
     # Standard bordered notes block, raised into the upper-right so it clears the swung
     # panel's near-end (which sweeps to ~X1824/Yd964) — rule 35: never sit text on geometry.
-    draw_notes(ax, notes, 1460, 2500, spacing=49, fs=8.0, width=830, font=FONT)
+    draw_notes(ax, notes, 1325, 2500, spacing=40, fs=7.0, width=985, font=FONT)
 
     title_block(ax, "SHEET 4 OF 5",
                 drawing_title="HINGED LIGHT-TRAP PANEL",

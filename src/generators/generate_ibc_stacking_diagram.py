@@ -1020,7 +1020,7 @@ def sheet3():
                             fc=C_STEEL, ec=C_OUT, lw=1.5, alpha=0.3,
                             hatch="...", zorder=5))
     leader(ax, sx(plate_yd), sy(plate_z + plate_h / 2),
-           sx(plate_yd - 180), sy(plate_z + plate_h / 2 + 100),
+           sx(plate_yd - 300), sy(plate_z + plate_h / 2 + 100),
            f"REINFORCING PLATE\n6mm MILD STEEL\n{plate_w}x{plate_h}mm\nWELDED TO WALL",
            color=C_STEEL, fs=6,
            ha="right", va="bottom", arrow_style="-|>", font=FONT)
@@ -1053,7 +1053,7 @@ def sheet3():
                 fontweight="bold", **FONT, zorder=12)
 
         # Leader to the right
-        leader_x = cl_yd + plate_w / 2 + 40
+        leader_x = cl_yd + plate_w / 2 + 300
         leader(ax, sx(cl_yd + camlock_r + 5), sy(port_z),
                sx(leader_x), sy(port_z),
                f"{label}\n2\" CAMLOCK\nZ={port_z}mm",

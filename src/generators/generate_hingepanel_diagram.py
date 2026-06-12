@@ -109,14 +109,14 @@ def sheet1():
     FR = 55  # visible frame width at face
     ax.add_patch(Rectangle((FR, FR), PW - 2 * FR, PH - 2 * FR,
                             fc=C_PLASTIC, ec=C_OUT, lw=0.8, zorder=3))
-    ax.text(PW / 4 - 275, PH * 0.62,
-            "4mm PP PLASTIC SKIN\n(U-channel set; flat-black interior)",
+    ax.text(PW / 4 - 225, PH * 0.62,
+            "4mm PP PLASTIC SKIN\n(U-channel set\nflat-black interior)",
             color=C_DIM, fontsize=6.5, ha="center", va="center", **FONT, zorder=15, alpha=0.8)
     # Fan B corner keeps an 18mm PLYWOOD mount band (bottom up to PANEL_FAN_BAND_Z)
     from tbs_constants import PANEL_FAN_BAND_Z as _PFBZ
     ax.add_patch(Rectangle((FR, FR), PANEL_CORNER_YD_L - FR, _PFBZ - FR,
                             fc=C_WOOD, ec=C_OUT, lw=0.8, zorder=3.2))
-    ax.text(PANEL_CORNER_YD_L / 2, (_PFBZ + FR) / 2,
+    ax.text(PANEL_CORNER_YD_L / 2 + 50, (_PFBZ + FR) / 2 + 200,
             "18mm PLY\nFAN-MOUNT BAND", color="#6a4010", fontsize=6,
             ha="center", va="center", fontweight="bold", **FONT, zorder=15, alpha=0.85)
 
@@ -162,7 +162,7 @@ def sheet1():
            "FIXED FAR STRIP (Yd2287–2362)\nbolted to the door frame —\ndoes NOT swing", col="#6a4010", fs=6)
     leader(ax, (_CUT / 2, FR + 250), (-220, FR + 250),
            "FIXED LEFT PANEL (Yd0–180)\nbolted to the door frame —\ndoes NOT swing", col="#6a4010", fs=6)
-    ax.text(PW / 2, FR + 70, "SWINGING PANEL  (Yd180 → 2287, pivots 56°)", color="#1763C8",
+    ax.text(PW / 2, FR + 170, "SWINGING PANEL  (Yd180 → 2287, pivots 56°)", color="#1763C8",
             fontsize=7, ha="center", va="bottom", fontweight="bold", **FONT, zorder=15, alpha=0.8)
 
     # ── Fan B intake — weatherproof louvre on the panel exterior (near corner) ──
@@ -173,7 +173,7 @@ def sheet1():
     for i in range(1, 5):
         yy = _FBH - fb_h / 2 + i * fb_h / 5
         ax.plot([_FBY - fb_w / 2, _FBY + fb_w / 2], [yy, yy], color=C_OUT, lw=0.6, zorder=7)
-    leader(ax, (_FBY, _FBH - fb_h / 2), (_FBY + 200, _FBH - 200),
+    leader(ax, (_FBY, _FBH - fb_h / 2), (_FBY, _FBH - 200),
            "FAN B (intake) louvre\n(panel exterior — camera mode;\nswings with the panel)", col="#506070", fs=6)
 
     # ── Revolving drum ────────────────────────────────────────────────────────
@@ -217,8 +217,8 @@ def sheet1():
                     arrowprops=dict(arrowstyle="->", color=C_DIM, lw=0.9,
                                     connectionstyle="arc3,rad=0.5", mutation_scale=8))
 
-    ax.text(DRUM_CX + DRUM_R * 0.6 + 70,
-            drum_body_y0 + drum_body_h / 2,
+    ax.text(DRUM_CX + DRUM_R * 0.6 - 170,
+            drum_body_y0 + drum_body_h * 0.45,
             "DRUM\nROTATES", color=C_DIM, fontsize=6,
             ha="left", va="center", **FONT, zorder=15)
 
@@ -231,7 +231,7 @@ def sheet1():
     hx_handle = DX + DRUM_D - HW - 20
     ax.add_patch(Rectangle((hx_handle, HY - HH / 2), HW, HH,
                             fc="none", ec=C_OUT, lw=1.2, ls=(0, (4, 3)), zorder=7))
-    leader(ax, (hx_handle + HW / 2, HY), (DX + DRUM_D + 130, HY + 200),
+    leader(ax, (hx_handle + HW / 2, HY), (DX + DRUM_D - 230, HY + 200),
            "100mm PULL HANDLE\n(interior face — hidden;\nwelded, no through-hole)")
 
     # ── (rev10: the left-edge barrel hinges are RETIRED — the panel pivots on the
@@ -257,7 +257,7 @@ def sheet1():
     PIVOT_PX = PW + 35    # far-edge pivot post (just past the panel right edge)
     ax.add_patch(Rectangle((PIVOT_PX - 20, 0), 40, PH,
                             fc="#5A5AA0", ec=C_OUT, lw=1.2, zorder=3, alpha=0.85))
-    leader(ax, (PIVOT_PX + 20, PH * 0.55), (PIVOT_PX + 185, PH / 2),
+    leader(ax, (PIVOT_PX + 20, PH * 0.55), (PIVOT_PX + 225, PH / 2),
            "PIVOT POST\nØ89 CHS\n(vertical swing axis)",
            col="#5A5AA0", fs=6, fw="bold")
     # swing direction arc on the near (left) side
@@ -265,7 +265,7 @@ def sheet1():
     ax.annotate("", xy=(-HINGE_W - 40, arr_y + 80), xytext=(-HINGE_W - 40, arr_y),
                 arrowprops=dict(arrowstyle="-|>", color="#1763C8", lw=1.6,
                                 connectionstyle="arc3,rad=0.4", mutation_scale=11), zorder=15)
-    ax.text(-HINGE_W - 70, PH / 2,
+    ax.text(-HINGE_W - 425, PH / 2,
             "Panel + drum SWING 56°\nabout the far-edge pivot for\ntransport (no rails / no slide)\n— see Sheet 4",
             color=C_DIM, fontsize=6, ha="right", va="center", **FONT, zorder=15)
 
@@ -307,7 +307,7 @@ def sheet1():
             fontweight="bold", **FONT, zorder=15)
 
     # ── EPDM seal leader ─────────────────────────────────────────────────────
-    leader(ax, (PW - S, PH / 2),
+    leader(ax, (PW - S, PH / 2 + 200),
            (PW + 320, PH / 2 + 300),
            "20mm EPDM GASKET\nIN ALUMINUM CHANNEL\n(PERIMETER, ALL SIDES)")
 
@@ -317,8 +317,8 @@ def sheet1():
     # Panel height
     draw_dim_v(ax, PW + 75, 0, PH, f"{PH}mm", offset=-25, fs=7, right=True, font=FONT)
     # Drum diameter
-    draw_dim_h(ax, DX, DX + DRUM_D, DY_TOP + 170, f"Ø{DRUM_D}mm DRUM", offset=20, fs=7, font=FONT)    # Drum clear height
-    draw_dim_v(ax, DX - 200, DY_BOT, DY_TOP, f"{DRUM_H}mm\nCLEAR HEIGHT", offset=25, fs=7, right=True, font=FONT)
+    draw_dim_h(ax, DX, DX + DRUM_D, DY_TOP + 170, f"Ø{DRUM_D}mm DRUM", offset=30, fs=7, font=FONT)    # Drum clear height
+    draw_dim_v(ax, DX - 200, DY_BOT, DY_TOP, f"{DRUM_H}mm CLEAR HEIGHT", offset=45, fs=7, right=True, font=FONT)
     # Drum center from left
     draw_dim_h(ax, 0, DRUM_CX, DY_BOT - 180, f"{int(DRUM_CX)}mm  (PANEL CL — CENTERED)", offset=-50, fs=7, font=FONT)   # (hinge-position dims retired with the barrel hinges — the panel pivots on the post.)
 

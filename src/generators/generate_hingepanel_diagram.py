@@ -559,10 +559,10 @@ def sheet2():
                             fc="#806040", ec=C_OUT, lw=0.5, zorder=6, alpha=0.8))
 
     leader(ax, (rail_left_x + RAIL_W / 2, Y0_W + WALL_T / 2),
-           (rail_left_x - 200, Y_LO + 160),
+           (rail_left_x - 200, Y_HI - 460),
            "NEAR EDGE — swings free\n(rev10: no slide rail;\npanel pivots at the far edge)", col=C_DIM, fs=6)
     leader(ax, (rail_left_x + CBEAM / 2, Y0_PL + CORNER_T / 2),
-           (rail_left_x - 200, Y_HI - 80),
+           (rail_left_x - 200, Y_HI - 180),
            "CARRIAGE BEAM\n60×60mm SHS\n+ BRUSH SEAL", col=C_CARR, fs=6)
 
     # RIGHT (far) edge — the vertical PIVOT POST (rev10: replaces the slide guide rail)

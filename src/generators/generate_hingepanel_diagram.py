@@ -1092,11 +1092,11 @@ def sheet3():
     ax.text(X_LO + 20, EAR_Y + 500, "ENTER\n(from exterior)",
             ha="left", va="bottom", fontsize=7, color="#C06010", **FONT, zorder=15)
 
-    ax.annotate("", xy=(D_DEPTH_R + 220, EAR_Y + 450),
-                xytext=(D_DEPTH_R + 40, EAR_Y + 450),
+    ax.annotate("", xy=(D_DEPTH_R + 420, EAR_Y + 450),
+                xytext=(D_DEPTH_R + 150, EAR_Y + 450),
                 arrowprops=dict(arrowstyle="->", color="#20A060", lw=1.5,
                                 mutation_scale=10))
-    ax.text(D_DEPTH_R + 40, EAR_Y + 500, "EXIT\n(to interior /\ndarkroom)",
+    ax.text(D_DEPTH_R + 150, EAR_Y + 500, "EXIT\n(to interior /\ndarkroom)",
             ha="left", va="bottom", fontsize=7, color="#20A060", **FONT, zorder=15)
 
     ax.text(D_CX_DEPTH /2 - 150, H_FLOOR + DRUM_H * 0.2,
@@ -1105,7 +1105,7 @@ def sheet3():
             **FONT, alpha=0.75, zorder=15)
 
     # ── Dimension callouts ────────────────────────────────────────────────────
-    DIM_R = D_DEPTH_R + PAD_R * 0.55
+    DIM_R = D_DEPTH_R + PAD_R * 0.25
 
     # Drum height
     draw_dim_v(ax, DIM_R, H_DRUM_BOT, H_DRUM_TOP,
@@ -1188,11 +1188,9 @@ def sheet3():
                 arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=1.8), zorder=25)
 
     # floor-gap dimension (interior side, clear lane)
-    ax.annotate("", xy=(DX(52), DY(0)), xytext=(DX(52), DY(80)),
-                arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=1.0), zorder=25)
     from tbs_constants import PANEL_FLOOR_GAP as _PFG, PROC_TRAY_RIM as _TRIM
-    ax.text(DX(56), DY(40), f"{_PFG} mm\nfloor gap", fontsize=5.8, color=C_DIM,
-            ha="left", va="center", **FONT)
+    draw_dim_v(ax, DX(52), DY(0), DY(80), f"{_PFG} mm\nfloor gap",
+               offset=22, fs=5.8, right=True, perpendicular=True, color=C_DIM, font=FONT)
 
     # callout labels (right side, leaders pointing into the detail)
     def dlbl(target, ty, text):
@@ -1205,7 +1203,7 @@ def sheet3():
     dlbl((DX(20), DY(120)), DY(138), "Panel bottom edge\n(40 mm corner zone)")
     dlbl((DX(-10), DY(100)), DY(108), "20 mm EPDM — panel\nrecedes into / seals on lip")
     dlbl((DX(-26), DY(64)), DY(74), "Frame seal lip — steel upstand\nfrom threshold (notched at drum)")
-    dlbl((DX(-40), DY(22)), DY(34), "Fixed door-frame\nthreshold (50×50 RHS)")
+    dlbl((DX(-40), DY(22)), DY(45), "Fixed door-frame\nthreshold (50×50 RHS)")
     dlbl((DX(74), DY(28)), DY(12), f"{_TRIM} mm tray rim —\n{_PFG - _TRIM} mm clearance")
 
     # ══════════════════════════════════════════════════════════════════════════

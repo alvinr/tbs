@@ -257,9 +257,9 @@ def sheet1():
     PIVOT_PX = PW + 35    # far-edge pivot post (just past the panel right edge)
     ax.add_patch(Rectangle((PIVOT_PX - 20, 0), 40, PH,
                             fc="#5A5AA0", ec=C_OUT, lw=1.2, zorder=3, alpha=0.85))
-    ax.text(PIVOT_PX + 55, PH / 2, "PIVOT POST\nØ89 CHS\n(vertical swing axis)",
-            color="#5A5AA0", fontsize=6, ha="left", va="center",
-            fontweight="bold", **FONT, zorder=15)
+    leader(ax, (PIVOT_PX + 20, PH * 0.55), (PIVOT_PX + 185, PH / 2),
+           "PIVOT POST\nØ89 CHS\n(vertical swing axis)",
+           col="#5A5AA0", fs=6, fw="bold")
     # swing direction arc on the near (left) side
     arr_y = -80
     ax.annotate("", xy=(-HINGE_W - 40, arr_y + 80), xytext=(-HINGE_W - 40, arr_y),

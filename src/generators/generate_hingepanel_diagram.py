@@ -806,11 +806,12 @@ def sheet3():
     H_HANDLE   = H_BRG_BOT + DRUM_H * 0.45  # handle height = ~1000mm
 
     # ── Data range → figure size ──────────────────────────────────────────────
-    PAD_L, PAD_R = 300, 1380  # depth-axis margins (right margin holds Detail B)
+    PAD_L, PAD_R = 300, 2100  # depth-axis margins (right margin holds Details B/C + their
+                              # annotations, which run out to ~1935mm — widened so they fit)
     PAD_B, PAD_T = 500, 350   # height-axis margins (bottom includes title block + rail annotations)
 
-    X_LO = D_DEPTH_L - PAD_L   # = -595mm
-    X_HI = D_DEPTH_R + PAD_R   # = 1835mm  → width 2430mm
+    X_LO = D_DEPTH_L - PAD_L   # = -1150mm
+    X_HI = D_DEPTH_R + PAD_R   # = 2150mm
     Y_LO = H_FLOOR - PAD_B     # = -150mm
     Y_HI = H_BRG_TOP + PAD_T   # = 2450mm  → height 2600mm
 
@@ -1021,7 +1022,7 @@ def sheet3():
     # this elevation the bore reads as open space (light-tightness is by the
     # housing geometry — see Sheet 2 plan and Sheet 5).
     ax.text(D_CX_DEPTH / 2 - 150, H_DRUM_BOT + (H_DRUM_TOP - H_DRUM_BOT) * 0.5,
-            "NO INTERNAL FINS\nSingle-opening C-shell\n~Ø850 clear bore\nFlat black interior",
+            "Single-opening C-shell\n~Ø850 clear bore\nFlat black interior",
             ha="center", va="center", fontsize=6.5, color=C_DIM,
             **FONT, alpha=0.7, zorder=15)
 
@@ -1142,7 +1143,7 @@ def sheet3():
     # Vertical dimension arrow: container floor → handle bottom
     HANDLE_DIM_X = D_DEPTH_L - 100
     HANDLE_BOT = H_HANDLE - HH / 2   # bottom of handle bar
-    dim_v(ax, HANDLE_DIM_X/2 + DRUM_D, H_FLOOR, HANDLE_BOT,
+    dim_v(ax, HANDLE_DIM_X / 2 + DRUM_D, H_FLOOR, HANDLE_BOT,
           f"{int(HANDLE_BOT)}mm\nHANDLE HT", offset=-60, fs=6)
 
     # ══════════════════════════════════════════════════════════════════════════
@@ -1496,7 +1497,7 @@ def sheet4():
     ax.add_patch(Rectangle((RX - 27, FP_Y_MIN - 27), 54, 54, fc="#5A5A62", ec=C_OUT, lw=1, zorder=7))  # near post
     # the FAR-left film post IS the Ø89 swing pivot
     ax.add_patch(Circle((HX, HY), PIVOT_POST_OD / 2 + 6, fc="#5A5AA0", ec=C_OUT, lw=1.2, zorder=9))
-    ax.text(HX + 75, HY, "PIVOT POST Ø89\n(= film far-left post)", fontsize=6.5,
+    ax.text(HX + 75, HY + 25, "PIVOT POST Ø89\n(= film far-left post)", fontsize=6.5,
             color="#5A5AA0", **FONT, va="center", zorder=12)
 
     # fixed left + far panel strips (do NOT swing)

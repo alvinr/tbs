@@ -1911,7 +1911,7 @@ def sheet5():
                         flow_dir="left")
     # V1 on the near header run, in the corridor
     v1_yd = (cl_yd + near_col_r) / 2
-    _draw_valve_elev_h(ax, sx, sy, v1_yd, EXT_FILL_1_H, C_PIPE_BLUE, "V1")
+    _draw_valve_elev_h(ax, sx, sy, v1_yd, EXT_FILL_1_H, C_PIPE_BLUE, "V1", lup=False)
 
     # ── X3: IBC-3 (near, bottom) → Bulkhead — BROWN drain ───────────────────
     d3_yd = near_col_r  # corridor-facing edge of near IBC
@@ -1956,7 +1956,7 @@ def sheet5():
     # V4 on vertical run
     _draw_valve_elev(ax, sx, sy, d4_yd,
                      drain_conn_z + (EXT_DRAIN_4_H - drain_conn_z) * 0.45,
-                     C_PIPE_BLACK, "V4")
+                     C_PIPE_BLACK, "V4", lside="left")
     # CV4 check valve — prevents backflow from bulkhead into IBC-4
     cv4_yd = cl_yd - bh_outer_r - 50
     _draw_check_valve_h(ax, sx, sy, cv4_yd, EXT_DRAIN_4_H, C_PIPE_BLACK, "CV4",
@@ -2212,8 +2212,10 @@ def sheet5():
     print("  diagrams/ibc-stacking-sheet5.png saved")
 
 
-def _draw_valve_elev(ax, sx, sy, yd, z, color, label):
-    """Draw a ball valve symbol (bowtie in white circle) in elevation view at (yd, z)."""
+def _draw_valve_elev(ax, sx, sy, yd, z, color, label, lside="right"):
+    """Draw a ball valve symbol (bowtie in white circle) in elevation view at (yd, z).
+    On a VERTICAL pipe — so the label is leadered out to the SIDE (lside), not buried in
+    the symbol."""
     vs = 18  # half-size in mm
     cr = vs * 1.6  # circle radius in mm
     # White circle background
@@ -2233,14 +2235,20 @@ def _draw_valve_elev(ax, sx, sy, yd, z, color, label):
     ax.add_patch(tri1)
     ax.add_patch(tri2)
     if label:
-        ax.text(sx(yd), sy(z), label,
-                ha="center", va="center", fontsize=5, color="white",
-                fontweight="bold", **FONT, zorder=13)
+        # leader the label out to the side (inversion-aware), not white-on-symbol
+        inv = ax.get_xlim()[0] > ax.get_xlim()[1]
+        screen_right = (lside == "right")
+        ddir = (-1 if inv else 1) * (1 if screen_right else -1)
+        leader(ax, sx(yd + ddir * cr), sy(z),
+               sx(yd + ddir * (cr + 48)), sy(z), label,
+               fs=5, color=color, ha="left" if screen_right else "right",
+               va="center", font=FONT)
 
 
-def _draw_valve_elev_h(ax, sx, sy, yd, z, color, label):
+def _draw_valve_elev_h(ax, sx, sy, yd, z, color, label, lup=True):
     """Draw a ball valve symbol (bowtie in white circle) on a HORIZONTAL pipe in elevation.
-    Bowtie axis perpendicular to flow — oriented vertically."""
+    Bowtie axis perpendicular to flow — oriented vertically. The label is leadered ABOVE
+    (lup) or below the symbol instead of being buried white inside it."""
     vs = 18  # half-size in mm
     cr = vs * 1.6  # circle radius in mm
     # White circle background
@@ -2261,9 +2269,12 @@ def _draw_valve_elev_h(ax, sx, sy, yd, z, color, label):
     ax.add_patch(tri1)
     ax.add_patch(tri2)
     if label:
-        ax.text(sx(yd), sy(z), label,
-                ha="center", va="center", fontsize=5, color="white",
-                fontweight="bold", **FONT, zorder=13)
+        # leader the label above/below the symbol, not white-on-symbol
+        zdir = 1 if lup else -1
+        leader(ax, sx(yd), sy(z + zdir * cr),
+               sx(yd), sy(z + zdir * (cr + 42)), label,
+               fs=5, color=color, ha="center",
+               va="bottom" if lup else "top", font=FONT)
 
 
 def _draw_check_valve_h(ax, sx, sy, yd, z, color, label, flow_dir="right"):

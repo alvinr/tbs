@@ -1851,8 +1851,9 @@ def sheet5():
         ax.add_patch(Circle((sx(cl_yd), sy(port_z)),
                              sx(port_r), fc=color, ec=C_OUT,
                              lw=1.2, alpha=0.6, zorder=9))
-        ax.text(sx(cl_yd), sy(port_z), tag,
-                ha="center", va="center", fontsize=6.5, color=C_OUT,
+        # tag beside the union circle (above it, in the port colour) — not centered over it
+        ax.text(sx(cl_yd), sy(port_z + bh_outer_r + 14), tag,
+                ha="center", va="bottom", fontsize=6.5, color=color,
                 fontweight="bold", **FONT, zorder=12)
         # Flange at bulkhead
         draw_flange(ax, cl_yd, port_z, 'h', color, zo=8)
@@ -1883,18 +1884,14 @@ def sheet5():
     # cross-connect — both Blue totes are filled directly in parallel.
     f1_drop_yd = f1_fill_yd                      # near IBC-1 fill cap Yd
     far_fill_yd = IBC_FAR_Y + FILL_CAP_OFFSET    # far IBC-2 fill cap Yd
-    # header across both fill caps
+    # header + both drops as ONE ⊓-path so the 90° turns round into proper elbows
+    # (drawing the header and the drops as separate straight calls left sharp corners).
     draw_pipe_path(ax,
-                   [f1_drop_yd, far_fill_yd],
-                   [EXT_FILL_1_H, EXT_FILL_1_H],
+                   [f1_drop_yd, f1_drop_yd, far_fill_yd, far_fill_yd],
+                   [fill_conn_z, EXT_FILL_1_H, EXT_FILL_1_H, fill_conn_z],
                    PIPE_OD, PIPE_WALL, sx, sy,
                    fc=C_PIPE_BLUE, ec="#1A4A90", zorder=7)
-    # straight drop into each tote
     for dyd in (f1_drop_yd, far_fill_yd):
-        draw_pipe_path(ax,
-                       [dyd, dyd], [EXT_FILL_1_H, fill_conn_z],
-                       PIPE_OD, PIPE_WALL, sx, sy,
-                       fc=C_PIPE_BLUE, ec="#1A4A90", zorder=7)
         draw_flange(ax, dyd, top_ibc_top, 'v', C_PIPE_BLUE)
         ax.annotate("", xy=(sx(dyd), sy(fill_conn_z + 15)),
                     xytext=(sx(dyd), sy(fill_conn_z + 80)),

@@ -1051,12 +1051,8 @@ def sheet3():
     drum_body_h    = H_DRUM_TOP - H_DRUM_BOT
     headroom_1780  = drum_body_h - PERSON_H
     GAP_X = PERSON_X
-    ax.annotate("", xy=(GAP_X, H_DRUM_TOP), xytext=(GAP_X, P_HEAD + 2 * HEAD_R),
-                arrowprops=dict(arrowstyle="<->", color="#20A020", lw=1.0,
-                                mutation_scale=7), zorder=9)
-    ax.text(GAP_X - 125, (H_DRUM_TOP + P_HEAD + 2 * HEAD_R) / 2,
-            f"{headroom_1780}mm\nHEADROOM",
-            ha="left", va="center", fontsize=6, color="#20A020", fontweight="bold", **FONT, zorder=15)
+    draw_dim_v(ax, GAP_X, P_HEAD + 2 * HEAD_R, H_DRUM_TOP, f"{headroom_1780}mm\nHEADROOM",
+               offset=90, fs=6, right=False, perpendicular=True, color="#20A020", font=FONT)
 
     # Label alongside person
     ax.text(PERSON_X - HEAD_R - 15, P_FOOT + PERSON_H / 2,

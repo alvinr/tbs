@@ -158,7 +158,7 @@ def sheet1():
         ax.plot([cx, cx], [0, PH], color="#A000A0", lw=2.6, ls=(0, (5, 2)), zorder=11)
         ax.text(cx, PH + 35, f"CUT @ Yd{cx}\n(fixed ↔ swing)", color="#A000A0", fontsize=6,
                 ha="center", va="bottom", fontweight="bold", **FONT, zorder=15)
-    leader(ax, (_FAR + (PW - _FAR) / 2, PH / 2 - 250), (PW + 180, PH / 2 - 250),
+    leader(ax, (_FAR + (PW - _FAR) / 2, PH / 2 - 250), (PW + 325, PH / 2 - 250),
            "FIXED FAR STRIP (Yd2287–2362)\nbolted to the door frame —\ndoes NOT swing", col="#6a4010", fs=6)
     leader(ax, (_CUT / 2, FR + 250), (-220, FR + 250),
            "FIXED LEFT PANEL (Yd0–180)\nbolted to the door frame —\ndoes NOT swing", col="#6a4010", fs=6)
@@ -295,7 +295,7 @@ def sheet1():
     # Panel hinges on left (X=0); right edge is the free edge.
     # Opens outward — away from interior camera equipment.
     leader(ax, (PW, PH * 0.36),
-           (PW + 275, PH * 0.36),
+           (PW + 275, PH * 0.25),
            "OPENS OUTWARD\n(180° SWING —\nCLEAR OF INTERIOR\nEQUIPMENT)",
            col="#204080", fw="bold")
 
@@ -501,7 +501,7 @@ def sheet2():
                 ls=(0, (4, 2)), zorder=4, alpha=0.7)
 
     # ── Layer labels (leaders from center zone) ───────────────────────────────
-    LBL_OFF = 130
+    LBL_OFF = 70
     lbl_x_r = D_XR + 60
     for ly, lbl, off in [
         (Y0_W + WALL_T / 2,  f"CONTAINER END WALL ({WALL_T}mm STEEL)", 2 * LBL_OFF),
@@ -512,10 +512,10 @@ def sheet2():
                     fontsize=6.5, color=C_OUT, ha="left", va="top", **FONT,
                     arrowprops=dict(arrowstyle="->", linestyle=':', color=C_DIM, lw=0.8),
                     bbox=dict(fc="#EEF2F8", ec="none", pad=1.5), zorder=15)
-    lbl_x_l = D_XL - 60
+    lbl_x_l = D_XL - 50
     for ly, lbl, off in [
-        (Y0_FR + FRAME_T / 2, f"50×50mm RHS STEEL FRAME ({FRAME_T}mm)", 1.5 * LBL_OFF),
-        (Y0_PL2 + PLY_T / 2,  f"INNER PLY — FLAT BLACK ({PLY_T}mm)",    2 * LBL_OFF),
+        (Y0_FR - FRAME_T / 2, f"50×50mm RHS STEEL FRAME ({FRAME_T}mm)", 1.5 * LBL_OFF),
+        (Y0_PL2 - PLY_T / 2,  f"INNER PLY — FLAT BLACK ({PLY_T}mm)",    2 * LBL_OFF),
     ]:
         ax.annotate(lbl, xy=(lbl_x_l, ly),
                     xytext=(lbl_x_l - off, ly + off),
@@ -576,7 +576,7 @@ def sheet2():
                             fc="#806040", ec=C_OUT, lw=0.5, zorder=6, alpha=0.8))
 
     leader(ax, (rail_right_x + RAIL_W / 2, Y0_W + WALL_T / 2),
-           (rail_right_x + 200, Y_LO + 160),
+           (rail_right_x + 200, Y_HI - 460),
            "PIVOT POST Ø89 CHS\n(vertical swing axis —\nno slide rail)", col="#5A5AA0", fs=6)
     leader(ax, (PW + brush_w / 2, Y0_PL + PT / 2),
            (rail_right_x + 200, Y_HI - 80),
@@ -612,7 +612,7 @@ def sheet2():
                            fc=C_STEEL, ec=C_OUT, lw=1.1, alpha=0.45, zorder=11))
     # revolve bearing — CENTERED on the drum axis (the bore label is offset below it instead)
     ax.add_patch(Circle((D_CX, D_CY), 60, fc="#5A5AA0", ec=C_OUT, lw=1.3, zorder=12))
-    leader(ax, (_CGL + 40, D_CY - cb_t / 2), (D_XL - 120, D_CY - DR * 0.4),
+    leader(ax, (_CGL + 40, D_CY - cb_t / 2), (D_XL - 320, D_CY - DR * 0.4),
            "DRUM CAGE CROSS-BEAM (top +\nbottom) carrying the central\nØ220/Ø120 revolve bearing", col=C_STEEL, fs=6)
     # daylight ray at ENTER: enters bore from exterior, blocked at interior by drum
     ax.annotate("", xy=(D_CX, D_CY + LT_DRUM_OR * 0.9), xytext=(D_CX, D_YB - 70),
@@ -623,12 +623,12 @@ def sheet2():
             fontsize=6.2, ha="center", va="center", **FONT, zorder=15)
 
     # Opening labels + component leaders
-    ax.text(D_CX, D_YB - 95, "exterior opening (ENTER)", color="#A05000",
+    ax.text(D_CX, D_YB - 75, "exterior opening (ENTER)", color="#A05000",
             fontsize=6.5, ha="center", va="top", **FONT, zorder=15)
     ax.text(D_CX, D_YT + 60, "interior opening → onto walkway", color=C_OUT,
             fontsize=6.5, ha="center", va="bottom", **FONT, zorder=15)
     leader(ax, (D_CX + DR * 0.92, D_CY + DR * 0.30),
-           (D_XR + 150, D_CY + DR * 0.55),
+           (D_XR + 350, D_CY + DR * 0.25),
            f"FIXED HOUSING Ø{int(DRUM_D)} (2 × {OD}° openings)\n"
            f"+ C-SHELL DRUM, 1 opening, no fins\nlight-tight by geometry", fs=6.3)
 
@@ -642,7 +642,7 @@ def sheet2():
             color=C_CL, fontsize=7, ha="left", va="center", **FONT, zorder=15)
 
     # ── Light-tightness note ──────────────────────────────────────────────────
-    ax.text(D_XR - 25, D_CY - DR * 0.78,
+    ax.text(D_XR + 95, D_CY - DR * 0.78,
             f"Two {OD}° openings, 180° apart;\nthe housing's solid wall always\ncovers the opening the drum\n"
             "isn't aligned with → NO straight-\nline sight at any rotation.\nSee Sheet 5 (enter / transit / exit).",
             color="#2E8B57", fontsize=6.4, ha="left", va="center", **FONT, zorder=15)
@@ -652,7 +652,7 @@ def sheet2():
 
     # Drum diameter (horizontal)
     draw_dim_h(ax, D_XL, D_XR, D_YT + PAD_YT * 0.55,
-          f"Ø{DRUM_D}mm  DRUM DIAMETER", fs=7, offset=-25, font=FONT)
+          f"Ø{DRUM_D}mm  DRUM DIAMETER", fs=7, offset=-25, above=False, font=FONT)
     # Container wall thickness — arrow + inline label (no leader, avoids crossing
     # the nearby CONTAINER END WALL and OUTER PLY leader lines)
     draw_dim_v(ax, DIM_X_R, Y0_W, Y1_W,
@@ -670,31 +670,20 @@ def sheet2():
     draw_dim_v(ax, D_XL - 150, Y1_PL2, D_YT, f"{int(D_YT - Y1_PL2)}mm INT. OVERHANG", offset=15, fs=6, right=True, font=FONT)
 
     # Full panel width dimension
-    draw_dim_h(ax, 0, PW, Y_LO + 230, f"{PW}mm  (FULL PANEL WIDTH)", fs=7, offset=-25, font=FONT)
+    draw_dim_h(ax, 0, PW, Y_LO + 220, f"{PW}mm  (FULL PANEL WIDTH)", fs=7, offset=-15, font=FONT)
 
     # Zone width dimensions (above panel)
-    zone_dim_y = D_YT + PAD_YT * 0.85
+    zone_dim_y = D_YT + PAD_YT * 0.80
     draw_dim_h(ax, 0, STEP_YD_L, zone_dim_y-30,
-          f"{STEP_YD_L}mm", fs=6, offset=-20, font=FONT)
+          f"{STEP_YD_L}mm", fs=6, offset=-15, font=FONT)
     draw_dim_h(ax, STEP_YD_L, STEP_YD_R, zone_dim_y-30,
-          f"{STEP_YD_R - STEP_YD_L}mm CENTER", fs=6, offset=-20, font=FONT)
+          f"{STEP_YD_R - STEP_YD_L}mm CENTER", fs=6, offset=-15, font=FONT)
     draw_dim_h(ax, STEP_YD_R, PW, zone_dim_y-30,
-          f"{PW - STEP_YD_R}mm", fs=6, offset=-20, font=FONT)
+          f"{PW - STEP_YD_R}mm", fs=6, offset=-15, font=FONT)
 
     # Corner zone thickness dimension
     draw_dim_v(ax, STEP_YD_L / 2 - 100, Y1_W, CORN_Y_IN,
           f"{CORNER_T}mm", offset=15, fs=6, right=True, font=FONT)
-
-    # ── Zone labels ─────────────────────────────────────────────────────────────
-    ax.text(STEP_YD_L / 2, CORN_Y_IN + 25,
-            f"40mm\nCORNER", color="#C04010", fontsize=6, ha="center", va="bottom",
-            fontweight="bold", **FONT, zorder=15, alpha=0.7)
-    ax.text((STEP_YD_L + STEP_YD_R) / 2, Y1_PL2 + 25,
-            f"120mm CENTER", color="#C04010", fontsize=6, ha="center", va="bottom",
-            fontweight="bold", **FONT, zorder=15, alpha=0.7)
-    ax.text((STEP_YD_R + PW) / 2, CORN_Y_IN + 25,
-            f"40mm\nCORNER", color="#C04010", fontsize=6, ha="center", va="bottom",
-            fontweight="bold", **FONT, zorder=15, alpha=0.7)
 
     # ── Scale and note ────────────────────────────────────────────────────────
     ax.text(PW / 2, Y_HI - 20,
@@ -703,8 +692,8 @@ def sheet2():
             color=C_DIM, fontsize=6.5, ha="center", va="top", **FONT, zorder=15)
 
     # ── Orientation clarification note (standard draw_notes block, top-right) ──
-    OB_X = D_XR + 30
-    OB_Y = D_YT - 100
+    OB_X = D_XR + 330
+    OB_Y = D_YT - 600
     OB_W = 450   # retained: the latch note below positions itself off the note width
     draw_notes(ax, [
         "ORIENTATION NOTE",
@@ -1362,7 +1351,7 @@ def sheet5():
 
     ax.text(1000, 1415, "REVOLVING-DOOR LIGHT LOCK (rev 8) — PASSES BOTH TESTS",
             ha="center", fontsize=15, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(1000, 1378, "Fixed Ø900 housing (two 80° openings, 180° apart) + single-opening C-shell drum, NO fins",
+    ax.text(1000, 1378, "Fixed Ø900 housing (two 80° openings, 180° apart) + single-opening C-shell drum",
             ha="center", fontsize=9, color=GREEN, **FONT)
     ax.plot([-130, 2130], [660, 660], color=C_DIM, lw=1.0, ls=(0, (6, 4)), zorder=3)
 

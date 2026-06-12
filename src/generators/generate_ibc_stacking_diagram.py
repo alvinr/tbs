@@ -1837,13 +1837,15 @@ def sheet5():
     port_r = PORT_DIA / 2
     bh_outer_r = 38   # camlock/union outer visual radius
 
+    # tdir = leader direction for the tag: +1 above the circle, -1 below.
+    # X1 routes DOWN (the "PLUMBING CORRIDOR" label sits just above it); X3/X4 route up.
     ports = [
-        ("X1", EXT_FILL_1_H, C_BLUE_IBC,   "FILL → IBC-1 (BLUE, TOP NEAR)"),
-        ("X3", EXT_DRAIN_3_H, C_BROWN_IBC, "DRAIN ← IBC-3 (BROWN, BOTTOM NEAR)"),
-        ("X4", EXT_DRAIN_4_H, C_WASTE_IBC, "DRAIN ← IBC-4 (WASTE, BOTTOM FAR)"),
+        ("X1", EXT_FILL_1_H, C_BLUE_IBC,   "FILL → IBC-1 (BLUE, TOP NEAR)", -1),
+        ("X3", EXT_DRAIN_3_H, C_BROWN_IBC, "DRAIN ← IBC-3 (BROWN, BOTTOM NEAR)", +1),
+        ("X4", EXT_DRAIN_4_H, C_WASTE_IBC, "DRAIN ← IBC-4 (WASTE, BOTTOM FAR)", +1),
     ]
 
-    for tag, port_z, color, desc in ports:
+    for tag, port_z, color, desc, tdir in ports:
         # Bulkhead union (interior face — flanged circle)
         ax.add_patch(Circle((sx(cl_yd), sy(port_z)),
                              sx(bh_outer_r), fc="#D0D0D0", ec=C_OUT,
@@ -1851,10 +1853,12 @@ def sheet5():
         ax.add_patch(Circle((sx(cl_yd), sy(port_z)),
                              sx(port_r), fc=color, ec=C_OUT,
                              lw=1.2, alpha=0.6, zorder=9))
-        # tag beside the union circle (above it, in the port colour) — not centered over it
-        ax.text(sx(cl_yd), sy(port_z + bh_outer_r + 14), tag,
-                ha="center", va="bottom", fontsize=6.5, color=color,
-                fontweight="bold", **FONT, zorder=12)
+        # tag on a short leader off the union circle (arrow points back at it)
+        leader(ax, sx(cl_yd), sy(port_z + tdir * bh_outer_r),
+               sx(cl_yd), sy(port_z + tdir * (bh_outer_r + 55)), tag,
+               fs=6.5, color=color, ha="center",
+               va="bottom" if tdir > 0 else "top",
+               arrow_style="-|>", font=FONT)
         # Flange at bulkhead
         draw_flange(ax, cl_yd, port_z, 'h', color, zo=8)
 

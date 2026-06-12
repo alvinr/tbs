@@ -1687,10 +1687,11 @@ def sheet5():
                                     fc=color, ec=C_OUT, lw=1.5,
                                     alpha=0.4, zorder=zo))
 
-    def pipe_stub_x(ax, yd, z, color, label, label_side="right", zo=8, offset=55):
-        """Draw a pipe cross-section circle (pipe running in X direction,
-        i.e., into or out of the page). Shows as a circle with inner/outer
-        rings."""
+    def pipe_stub_x(ax, yd, z, color, label, label_side="right", zo=8, offset=95):
+        """Draw a pipe cross-section circle (pipe running in X, into/out of page) with its
+        label on a LEADER pointing back at the circle. This sheet's x-axis is INVERTED, so
+        a plain offset+ha label flowed back over the circle; route the label to the
+        requested SCREEN side and let the arrow carry the association instead."""
         r_out = PIPE_OD / 2
         r_in = r_out - PIPE_WALL
         ax.add_patch(Circle((sx(yd), sy(z)), sx(r_out),
@@ -1699,12 +1700,15 @@ def sheet5():
                              fc="white", ec=C_OUT, lw=0.8, alpha=0.7, zorder=zo + 1))
         # Dot at center
         ax.plot(sx(yd), sy(z), 'o', color=C_OUT, ms=2, zorder=zo + 2)
-        # Label
-        offset = 55 if label_side == "right" else -55
-        ax.text(sx(yd + offset), sy(z), label,
-                ha="left" if label_side == "right" else "right",
-                va="center", fontsize=5.5, color=color,
-                fontweight="bold", **FONT, zorder=zo + 3)
+        # Label on a leader. Screen-right ⟺ smaller data-yd on the inverted axis.
+        if label:
+            inv = ax.get_xlim()[0] > ax.get_xlim()[1]
+            screen_right = (label_side == "right")
+            ddir = (-1 if inv else 1) * (1 if screen_right else -1)
+            leader(ax, sx(yd + ddir * r_out), sy(z),
+                   sx(yd + ddir * offset), sy(z), label,
+                   fs=5.5, color=color, ha="left" if screen_right else "right",
+                   va="center", arrow_style="-|>", font=FONT)
 
     # ── Layout bounds ────────────────────────────────────────────────────────
     YD_LO = -200
@@ -1979,7 +1983,7 @@ def sheet5():
     # IBC-1 outlet (near column) — at corridor-facing drain valve
     b1_yd = near_col_r  # valve face points toward corridor
     pipe_stub_x(ax, b1_yd, blue_out_z, C_PIPE_BLUE,
-                "", label_side="left")
+                "IBC-1\nOUTLET", label_side="right")
     # Horizontal pipe from IBC-1 toward corridor center
     draw_pipe_path(ax, [b1_yd, corr_l + 10], [blue_out_z, blue_out_z],
                    PIPE_OD, PIPE_WALL, sx, sy,
@@ -1987,14 +1991,11 @@ def sheet5():
     # V-B1 on this horizontal run
     vb1_yd = (b1_yd + corr_l) / 2
     _draw_valve_elev_h(ax, sx, sy, vb1_yd, blue_out_z, C_PIPE_BLUE, "VB1")
-    ax.text(sx(b1_yd - 55), sy(blue_out_z), "IBC-1\nOUTLET",
-            ha="right", va="center", fontsize=5, color=C_PIPE_BLUE,
-            **FONT, zorder=10)
 
     # IBC-2 outlet (far column) — at corridor-facing drain valve
     b2_yd = far_col_l  # valve face points toward corridor
     pipe_stub_x(ax, b2_yd, blue_out_z, C_PIPE_BLUE,
-                "", label_side="right")
+                "IBC-2\nOUTLET", label_side="left")
     # Horizontal pipe from IBC-2 toward corridor center
     draw_pipe_path(ax, [corr_r - 10, b2_yd], [blue_out_z, blue_out_z],
                    PIPE_OD, PIPE_WALL, sx, sy,
@@ -2002,9 +2003,6 @@ def sheet5():
     # V-B2 on this horizontal run
     vb2_yd = (b2_yd + corr_r) / 2
     _draw_valve_elev_h(ax, sx, sy, vb2_yd, blue_out_z, C_PIPE_BLUE, "VB2")
-    ax.text(sx(b2_yd + 55), sy(blue_out_z), "IBC-2\nOUTLET",
-            ha="left", va="center", fontsize=5, color=C_PIPE_BLUE,
-            **FONT, zorder=10)
 
     # Tee fitting in corridor where both outlets merge
     draw_tee_fitting(ax, corr_cx, blue_out_z, C_PIPE_BLUE)
@@ -2017,11 +2015,7 @@ def sheet5():
     _draw_valve_elev(ax, sx, sy, corr_cx, vb3_z + 15, C_PIPE_BLUE, "VB3")
     # Merged pipe stub (X-direction → P-01 → spray bar)
     pipe_stub_x(ax, corr_cx, vb3_z - 30, C_PIPE_BLUE,
-                "", label_side="right")
-    ax.text(sx(corr_cx + 55), sy(vb3_z - 30),
-            "→ P-01 → SPRAY BAR",
-            ha="left", va="center", fontsize=5.5, color=C_PIPE_BLUE,
-            fontweight="bold", **FONT, zorder=10)
+                "→ P-01 → SPRAY BAR", label_side="right")
 
     # ── Brown IBC-3 inlet ← tray sump (pumped via P-04) ──────────────────────
     # Water collects in sump well at tray low point. P-04 suction pickup
@@ -2042,7 +2036,7 @@ def sheet5():
     # Offset below X3 horizontal run at Z=400 to avoid pipe crossing.
     brown_out_z = 250
     pipe_stub_x(ax, near_col_r, brown_out_z, C_PIPE_BROWN,
-                "TO P-02 →\nFILTER SKID", label_side="left")
+                "TO P-02 →\nFILTER SKID", label_side="right")
 
     # ── Filter skid return → IBC-2 (cleaned water returns to supply) ────────
     # Returns through top of IBC-2 (fill cap area)

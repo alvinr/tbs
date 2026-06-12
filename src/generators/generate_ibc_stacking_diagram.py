@@ -1143,7 +1143,8 @@ def sheet4():
 
     # Plan view of IBC zone + corridor
     X_LO = IBC_COL_X - 500
-    X_HI = C_LEN + 250
+    X_HI = C_LEN + 1350   # extra right margin holds the legend in free space
+    WALL_R = C_LEN + 250  # wall-hatch right edge — do NOT extend it with X_HI
     YD_LO = -350
     YD_HI = C_WID + 200
 
@@ -1159,11 +1160,11 @@ def sheet4():
     WALL_T = 25
     # Near wall
     ax.add_patch(Rectangle((px(X_LO), py(-WALL_T)),
-                            px(X_HI - X_LO), py(WALL_T),
+                            px(WALL_R - X_LO), py(WALL_T),
                             fc=C_WALL, ec=C_OUT, lw=1.5, hatch="///", zorder=2))
     # Far wall
     ax.add_patch(Rectangle((px(X_LO), py(C_WID)),
-                            px(X_HI - X_LO), py(WALL_T),
+                            px(WALL_R - X_LO), py(WALL_T),
                             fc=C_WALL, ec=C_OUT, lw=1.5, hatch="///", zorder=2))
     # End wall
     ax.add_patch(Rectangle((px(C_LEN), py(-WALL_T)),
@@ -1482,7 +1483,7 @@ def sheet4():
            fs=5.5, color=C_PIPE_BLUE, ha="left", font=FONT)
 
     # ── Legend ───────────────────────────────────────────────────────────────
-    leg_x = px(X_LO + 580)
+    leg_x = px(C_LEN + 380)        # right of the container, in the free margin
     leg_top = py(C_WID - 100)
     leg_sp = py(33)
     pipe_lw = 2.5
@@ -1547,7 +1548,7 @@ def sheet4():
                             fc=C_PUMP, ec=C_OUT, lw=0.5, alpha=0.25,
                             ls="--", zorder=15))
     ax.text(leg_x + px(70), y_ep,
-            "EQUIPMENT PANEL\nP-01/P-02/P-03/P-04 pumps\nACC-01 (18mm marine ply)",
+            "EQUIPMENT PANEL P-01/P-02/P-03/P-04 pumps ACC-01 (18mm marine ply)",
             ha="left", va="center", fontsize=5.5, color="#A09060",
             **FONT, zorder=15)
 

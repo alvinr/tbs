@@ -45,6 +45,7 @@ from tbs_constants import (
 )
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_notes,
+                         bolt_holes,
                          draw_pipe_path as _tbs_pipe_path,
                          draw_pipe_end as _tbs_pipe_end)
 
@@ -1354,6 +1355,28 @@ def sheet4():
                                     fc=color, ec=C_OUT, lw=1.5,
                                     alpha=0.4, zorder=zo))
 
+    def fill_drop(ax, x, yd, color, zo=10):
+        """Fill pipe turning 90° straight DOWN into a tote through a round
+        flange in the lid. In this plan (looking down) the vertical drop reads
+        as the pipe seen end-on inside a round, bolted fill flange; the elbow is
+        the corner where the horizontal Yd run meets the drop. Replaces the flat
+        bar flange so a top-fill connection isn't mistaken for a pass-through."""
+        flange_r = PIPE_OD * 1.6          # round fill-flange radius (~53mm)
+        # 90° elbow shoulder — a short stub on the corridor side of the flange so
+        # the down-turn corner is visible (pipe arrives in -/+Yd, turns down).
+        elbow_dir = -1 if yd > panel_yd else 1   # corridor side of this tote
+        ax.add_patch(Rectangle((px(x - PIPE_HW), py(yd)),
+                                px(PIPE_OD), py(elbow_dir * flange_r * 0.9),
+                                fc=color, ec="none", alpha=0.9, zorder=zo))
+        # round fill flange on the tote lid (with bolt circle)
+        ax.add_patch(Circle((px(x), py(yd)), px(flange_r),
+                            fc=color, ec=C_OUT, lw=1.2, alpha=0.30, zorder=zo + 1))
+        bolt_holes(ax, px(x), py(yd), px(flange_r * 0.72), 4, px(3.4),
+                   color=C_OUT, lw=0.6, zorder=zo + 2)
+        # pipe seen end-on — the vertical drop through the flange
+        draw_pipe_end(ax, px(x), py(yd), px(PIPE_HW), px(PIPE_WALL_T),
+                      fc=color, ec=C_OUT, bore_fc="white", zorder=zo + 3)
+
     def valve_plan(ax, x, yd, orientation, color, label, zo=11):
         """Ball valve bowtie in white circle, plan view. orientation: 'h' or 'v'."""
         vs = 18
@@ -1469,18 +1492,25 @@ def sheet4():
                    [panel_yd, panel_yd],
                    PIPE_OD, PIPE_WALL_T, px, py,
                    fc=C_PIPE_BLUE, ec="#1A4A90", zorder=9)
-    draw_pipe_path(ax,
-                   [fill_tee_x, fill_tee_x],
-                   [near_tote_c, far_tote_c],
-                   PIPE_OD, PIPE_WALL_T, px, py,
-                   fc=C_PIPE_BLUE, ec="#1A4A90", zorder=9)
+    # Two branches off the tee, each running over its tote and turning 90° DOWN
+    # through a round fill flange (drawn end-on as a round flange, not a flat
+    # bar). The branch stops at the flange so it reads as a drop, not a crossing.
+    fill_flange_r = PIPE_OD * 1.6
+    for tote_c in [near_tote_c, far_tote_c]:
+        edir = -1 if tote_c > panel_yd else 1
+        branch_end = tote_c + edir * fill_flange_r * 0.9
+        draw_pipe_path(ax,
+                       [fill_tee_x, fill_tee_x],
+                       [panel_yd, branch_end],
+                       PIPE_OD, PIPE_WALL_T, px, py,
+                       fc=C_PIPE_BLUE, ec="#1A4A90", zorder=9)
+        fill_drop(ax, fill_tee_x, tote_c, C_PIPE_BLUE)
     valve_plan(ax, fill_tee_x, (panel_yd + near_tote_c) / 2, 'v', C_PIPE_BLUE, "V1")
-    flange_plan(ax, fill_tee_x, near_tote_c, 'v', C_PIPE_BLUE)
-    flange_plan(ax, fill_tee_x, far_tote_c, 'v', C_PIPE_BLUE)
     leader(ax, px(fill_tee_x), py(far_tote_c),
-           px(fill_tee_x + 150), py(far_tote_c + 90),
-           "X1 → IBC-1 & IBC-2\n(FILL TEE, BLUE)\n1\" HDPE",
-           fs=5.5, color=C_PIPE_BLUE, ha="left", font=FONT)
+           px(fill_tee_x - 80), py(far_tote_c + 260),
+           "X1 FILL TEE → IBC-1 & IBC-2 (BLUE, 1\" HDPE)\n"
+           "90° elbow drops into each tote lid\nthrough a round fill flange",
+           fs=5.5, color=C_PIPE_BLUE, ha="right", font=FONT)
 
     # ── Legend ───────────────────────────────────────────────────────────────
     leg_x = px(C_LEN + 380)        # right of the container, in the free margin

@@ -72,13 +72,6 @@ DRUM_CX = PW / 2        # light-lock center X in panel (centerd horizontally)
 DRUM_CY = DRUM_H / 2   # light-lock center Y
 
 # ── Drawing helpers (wrappers around tbs_drawing shared functions) ────────────
-def dim_h(ax, x0, x1, y, label, offset=70, fs=7, col=C_DIM):
-    draw_dim_h(ax, x0, x1, y, label, offset=offset, fs=fs, color=col, font=FONT)
-
-def dim_v(ax, x, y0, y1, label, offset=70, fs=7, col=C_DIM):
-    draw_dim_v(ax, x, y0, y1, label, offset=offset, fs=fs, right=True,
-               color=col, font=FONT)
-
 def leader(ax, xy, xytext, text, col=C_DIM, fs=6.5, fw="normal"):
     font = dict(FONT)
     if fw != "normal":
@@ -152,9 +145,8 @@ def sheet1():
             "40mm CORNER ZONE", color="#C04010", fontsize=6,
             ha="center", va="top", fontweight="bold", **FONT, zorder=15, alpha=0.7)
     # Step dimension
-    dim_h(ax, STEP_YD_L, STEP_YD_R, -210,
-          f"{STEP_YD_R - STEP_YD_L}mm CENTER ZONE (DRUM Ø{DRUM_D} + 50mm CLEARANCE EACH SIDE)", offset=20)
-
+    draw_dim_h(ax, STEP_YD_L, STEP_YD_R, -210,
+          f"{STEP_YD_R - STEP_YD_L}mm CENTER ZONE (DRUM Ø{DRUM_D} + 50mm CLEARANCE EACH SIDE)", offset=20, fs=7, font=FONT)
     # ── Swing split (rev10): fixed-left / swinging / fixed-far + the vertical CUT lines ──
     # The fixed strips are bolted to the door FRAME (hatched); the swinging panel butts them
     # at the cut lines. Cut lines drawn bold and on top so they read at both panel edges.
@@ -321,16 +313,14 @@ def sheet1():
 
     # ── Dimension lines ───────────────────────────────────────────────────────
     # Panel width
-    dim_h(ax, 0, PW, PH + 200, f"{PW}mm  (CONTAINER INTERIOR WIDTH)", offset=20)
+    draw_dim_h(ax, 0, PW, PH + 200, f"{PW}mm  (CONTAINER INTERIOR WIDTH)", offset=20, fs=7, font=FONT)
     # Panel height
-    dim_v(ax, PW + 75, 0, PH, f"{PH}mm", offset=-25)
+    draw_dim_v(ax, PW + 75, 0, PH, f"{PH}mm", offset=-25, fs=7, right=True, font=FONT)
     # Drum diameter
-    dim_h(ax, DX, DX + DRUM_D, DY_TOP + 170, f"Ø{DRUM_D}mm DRUM", offset=20)
-    # Drum clear height
-    dim_v(ax, DX - 200, DY_BOT, DY_TOP, f"{DRUM_H}mm\nCLEAR HEIGHT", offset=25)
+    draw_dim_h(ax, DX, DX + DRUM_D, DY_TOP + 170, f"Ø{DRUM_D}mm DRUM", offset=20, fs=7, font=FONT)    # Drum clear height
+    draw_dim_v(ax, DX - 200, DY_BOT, DY_TOP, f"{DRUM_H}mm\nCLEAR HEIGHT", offset=25, fs=7, right=True, font=FONT)
     # Drum center from left
-    dim_h(ax, 0, DRUM_CX, DY_BOT - 180, f"{int(DRUM_CX)}mm  (PANEL CL — CENTERED)", offset=-50)
-    # (hinge-position dims retired with the barrel hinges — the panel pivots on the post.)
+    draw_dim_h(ax, 0, DRUM_CX, DY_BOT - 180, f"{int(DRUM_CX)}mm  (PANEL CL — CENTERED)", offset=-50, fs=7, font=FONT)   # (hinge-position dims retired with the barrel hinges — the panel pivots on the post.)
 
 #     ax.text(-HINGE_W - 80, 90, "HINGE CL HEIGHT\nFROM FLOOR (mm)",
 #             color=C_DIM, fontsize=6, ha="right", va="top", **FONT, zorder=15)
@@ -661,40 +651,39 @@ def sheet2():
     DIM_X_R = D_XR + PAD_X * 0.35   # right-side dim column
 
     # Drum diameter (horizontal)
-    dim_h(ax, D_XL, D_XR, D_YT + PAD_YT * 0.55,
-          f"Ø{DRUM_D}mm  DRUM DIAMETER", fs=7, offset=-25)
-
+    draw_dim_h(ax, D_XL, D_XR, D_YT + PAD_YT * 0.55,
+          f"Ø{DRUM_D}mm  DRUM DIAMETER", fs=7, offset=-25, font=FONT)
     # Container wall thickness — arrow + inline label (no leader, avoids crossing
     # the nearby CONTAINER END WALL and OUTER PLY leader lines)
-    dim_v(ax, DIM_X_R, Y0_W, Y1_W,
-          f"  {WALL_T}mm", offset=15, fs=6.5)
+    draw_dim_v(ax, DIM_X_R, Y0_W, Y1_W,
+          f"  {WALL_T}mm", offset=15, fs=6.5, right=True, font=FONT)
 
     # Panel overall thickness — arrow + inline label
-    dim_v(ax, DIM_X_R, Y1_W, Y1_PL2,
-          f"  {PT}mm", offset=15, fs=6.5)
+    draw_dim_v(ax, DIM_X_R, Y1_W, Y1_PL2,
+          f"  {PT}mm", offset=15, fs=6.5, right=True, font=FONT)
 
     # Exterior drum overhang — 45° leader going south-left
     ext_oh_mid = (D_YB + Y0_W) / 2
-    dim_v(ax, D_XL - 150, D_YB, Y0_W, f"{int(Y0_W - D_YB)}mm EXT. OVERHANG", offset=15, fs=6)
+    draw_dim_v(ax, D_XL - 150, D_YB, Y0_W, f"{int(Y0_W - D_YB)}mm EXT. OVERHANG", offset=15, fs=6, right=True, font=FONT)
 
     # Interior drum overhang dimension
-    dim_v(ax, D_XL - 150, Y1_PL2, D_YT, f"{int(D_YT - Y1_PL2)}mm INT. OVERHANG", offset=15, fs=6)
+    draw_dim_v(ax, D_XL - 150, Y1_PL2, D_YT, f"{int(D_YT - Y1_PL2)}mm INT. OVERHANG", offset=15, fs=6, right=True, font=FONT)
 
     # Full panel width dimension
-    dim_h(ax, 0, PW, Y_LO + 230, f"{PW}mm  (FULL PANEL WIDTH)", fs=7, offset=-25)
+    draw_dim_h(ax, 0, PW, Y_LO + 230, f"{PW}mm  (FULL PANEL WIDTH)", fs=7, offset=-25, font=FONT)
 
     # Zone width dimensions (above panel)
     zone_dim_y = D_YT + PAD_YT * 0.85
-    dim_h(ax, 0, STEP_YD_L, zone_dim_y-30,
-          f"{STEP_YD_L}mm", fs=6, offset=-20)
-    dim_h(ax, STEP_YD_L, STEP_YD_R, zone_dim_y-30,
-          f"{STEP_YD_R - STEP_YD_L}mm CENTER", fs=6, offset=-20)
-    dim_h(ax, STEP_YD_R, PW, zone_dim_y-30,
-          f"{PW - STEP_YD_R}mm", fs=6, offset=-20)
+    draw_dim_h(ax, 0, STEP_YD_L, zone_dim_y-30,
+          f"{STEP_YD_L}mm", fs=6, offset=-20, font=FONT)
+    draw_dim_h(ax, STEP_YD_L, STEP_YD_R, zone_dim_y-30,
+          f"{STEP_YD_R - STEP_YD_L}mm CENTER", fs=6, offset=-20, font=FONT)
+    draw_dim_h(ax, STEP_YD_R, PW, zone_dim_y-30,
+          f"{PW - STEP_YD_R}mm", fs=6, offset=-20, font=FONT)
 
     # Corner zone thickness dimension
-    dim_v(ax, STEP_YD_L / 2 - 100, Y1_W, CORN_Y_IN,
-          f"{CORNER_T}mm", offset=15, fs=6)
+    draw_dim_v(ax, STEP_YD_L / 2 - 100, Y1_W, CORN_Y_IN,
+          f"{CORNER_T}mm", offset=15, fs=6, right=True, font=FONT)
 
     # ── Zone labels ─────────────────────────────────────────────────────────────
     ax.text(STEP_YD_L / 2, CORN_Y_IN + 25,
@@ -937,8 +926,8 @@ def sheet3():
            col=C_WALKWAY, fs=5.5)
 
     # Walkway deck height dimension
-    dim_v(ax, WK_END + 30, H_FLOOR, WALKWAY_H,
-          f"{WALKWAY_H}mm\nDECK", offset=30, fs=6)
+    draw_dim_v(ax, WK_END + 30, H_FLOOR, WALKWAY_H,
+          f"{WALKWAY_H}mm\nDECK", offset=30, fs=6, right=True, font=FONT)
 
     # ── Former HGR20 rails (rev10 RETIRED — drawn faint for reference) ───────
     # The old slide rails ran in the X (depth) direction on both side walls.
@@ -1049,8 +1038,8 @@ def sheet3():
             color="#A06020", lw=0.8, ls="--", zorder=6, alpha=0.7)
     # Vertical dimension arrow: container floor → drum floor
     DRUM_FL_DIM_X = D_DEPTH_L - 180
-    dim_v(ax, DRUM_FL_DIM_X, H_FLOOR, H_DRUM_BOT,
-          f"{H_DRUM_BOT}mm\nDRUM\nFLOOR", offset=-100, fs=6)
+    draw_dim_v(ax, DRUM_FL_DIM_X, H_FLOOR, H_DRUM_BOT,
+          f"{H_DRUM_BOT}mm\nDRUM\nFLOOR", offset=-100, fs=6, right=True, font=FONT)
 
     # Person body (line) and head (circle) — blue tones
     ax.plot([PERSON_X, PERSON_X], [P_FOOT, P_HEAD],
@@ -1119,32 +1108,31 @@ def sheet3():
     DIM_R = D_DEPTH_R + PAD_R * 0.55
 
     # Drum height
-    dim_v(ax, DIM_R, H_DRUM_BOT, H_DRUM_TOP,
-          f"{DRUM_H}mm DRUM HEIGHT\n(CLEAR WALKING HEIGHT)", offset=30, fs=7)
+    draw_dim_v(ax, DIM_R, H_DRUM_BOT, H_DRUM_TOP,
+          f"{DRUM_H}mm DRUM HEIGHT\n(CLEAR WALKING HEIGHT)", offset=30, fs=7, right=True, font=FONT)
 
     # Drum diameter (horizontal) — placed below top bearing to avoid CL label clash
-    dim_h(ax, D_DEPTH_L, D_DEPTH_R, H_DRUM_TOP + 180,
-          f"Ø{DRUM_D}mm DRUM DIAMETER", offset=15, fs=7)
-
+    draw_dim_h(ax, D_DEPTH_L, D_DEPTH_R, H_DRUM_TOP + 180,
+          f"Ø{DRUM_D}mm DRUM DIAMETER", offset=15, fs=7, font=FONT)
     # Panel thickness (horizontal) — offset above bearing top
-    dim_h(ax, Y0_W, Y1_PL2, H_BRG_TOP + 295,
-          f"{PT}mm PANEL", offset=15, fs=6.5)
+    draw_dim_h(ax, Y0_W, Y1_PL2, H_BRG_TOP + 295,
+          f"{PT}mm PANEL", offset=15, fs=6.5, font=FONT)
 
     # (Wall thickness leaders are drawn above with the other layer leaders)
 
     # Exterior overhang (horizontal) — below floor rail
-    dim_h(ax, D_DEPTH_L, Y0_W, H_FLOOR + 40,
-          f"{abs(int(D_DEPTH_L))}mm EXT. OVERHANG", offset=15, fs=6)
+    draw_dim_h(ax, D_DEPTH_L, Y0_W, H_FLOOR + 40,
+          f"{abs(int(D_DEPTH_L))}mm EXT. OVERHANG", offset=15, fs=6, font=FONT)
 
     # Interior overhang (horizontal) — below floor rail
-    dim_h(ax, Y1_PL2, D_DEPTH_R, H_FLOOR + 40,
-          f"{int(D_DEPTH_R - Y1_PL2)}mm INT. OVERHANG", offset=15, fs=6)
+    draw_dim_h(ax, Y1_PL2, D_DEPTH_R, H_FLOOR + 40,
+          f"{int(D_DEPTH_R - Y1_PL2)}mm INT. OVERHANG", offset=15, fs=6, font=FONT)
 
     # Vertical dimension arrow: container floor → handle bottom
     HANDLE_DIM_X = D_DEPTH_L - 100
     HANDLE_BOT = H_HANDLE - HH / 2   # bottom of handle bar
-    dim_v(ax, HANDLE_DIM_X / 2 + DRUM_D, H_FLOOR, HANDLE_BOT,
-          f"{int(HANDLE_BOT)}mm\nHANDLE HT", offset=-60, fs=6)
+    draw_dim_v(ax, HANDLE_DIM_X / 2 + DRUM_D, H_FLOOR, HANDLE_BOT,
+          f"{int(HANDLE_BOT)}mm\nHANDLE HT", offset=-60, fs=6, right=True, font=FONT)
 
     # ══════════════════════════════════════════════════════════════════════════
     # DETAIL B — Panel bottom light seal (enlarged), section at a corner zone
@@ -1218,7 +1206,7 @@ def sheet3():
     dlbl((DX(-10), DY(100)), DY(108), "20 mm EPDM — panel\nrecedes into / seals on lip")
     dlbl((DX(-26), DY(64)), DY(74), "Frame seal lip — steel upstand\nfrom threshold (notched at drum)")
     dlbl((DX(-40), DY(22)), DY(34), "Fixed door-frame\nthreshold (50×50 RHS)")
-    dlbl((DX(74), DY(28)), DY(6), f"{_TRIM} mm tray rim —\n{_PFG - _TRIM} mm clearance")
+    dlbl((DX(74), DY(28)), DY(12), f"{_TRIM} mm tray rim —\n{_PFG - _TRIM} mm clearance")
 
     # ══════════════════════════════════════════════════════════════════════════
     # DETAIL C — Panel top light seal (enlarged), the mirror of Detail B.
@@ -1265,7 +1253,7 @@ def sheet3():
     ax.annotate("", xy=(CX(-33), CY(18)), xytext=(CX(-92), CY(18)),
                 arrowprops=dict(arrowstyle="-|>", color="#D08000", lw=1.6), zorder=25)
     ax.plot([CX(-30)], [CY(18)], marker="x", ms=7, mew=2.2, color="#C02020", zorder=26)
-    ax.text(CX(-92), CY(-6), "ext. light\nblocked by lip", fontsize=5.8,
+    ax.text(CX(-92), CY(-6), "ext. light\nblocked by\nlip", fontsize=5.8,
             color="#A05000", ha="left", va="center", **FONT)
 
     # upper cam-latch compression (panel pulled onto the seal)
@@ -1283,7 +1271,7 @@ def sheet3():
     clbl((CX(-26), CY(30)), CY(28), "Top seal lip — steel downstand,\nfull width (continuous, meets at center)")
     clbl((CX(-10), CY(-20)), CY(-10), "20 mm EPDM — panel top\nedge seals on lip")
     clbl((CX(20), CY(-70)), CY(-58), "Upper cam latch compresses\npanel onto seal")
-    clbl((CX(20), CY(-95)), CY(-92), "Panel top edge")
+    clbl((CX(20), CY(-95)), CY(-85), "Panel top edge")
 
     # ══════════════════════════════════════════════════════════════════════════
     # DETAIL D — Vertical CUT seal (plan section at the fixed↔swinging joint, Yd180

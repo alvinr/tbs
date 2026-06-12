@@ -1507,7 +1507,7 @@ def sheet4():
         fill_drop(ax, fill_tee_x, tote_c, C_PIPE_BLUE)
     valve_plan(ax, fill_tee_x, (panel_yd + near_tote_c) / 2, 'v', C_PIPE_BLUE, "V1")
     leader(ax, px(fill_tee_x), py(far_tote_c),
-           px(fill_tee_x - 80), py(far_tote_c + 260),
+           px(fill_tee_x - 40), py(far_tote_c + 160),
            "X1 FILL TEE → IBC-1 & IBC-2 (BLUE, 1\" HDPE)\n"
            "90° elbow drops into each tote lid\nthrough a round fill flange",
            fs=5.5, color=C_PIPE_BLUE, ha="right", font=FONT)

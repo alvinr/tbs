@@ -1251,7 +1251,7 @@ def sheet4():
     ax.add_patch(Rectangle((px(PANEL_FRAME_X), py(near_col_r)),
                             px(IBC_FRAME_RHS), py(far_col_l - near_col_r),
                             fc=C_FRAME, ec=C_OUT, lw=1.0, alpha=0.55, zorder=7))
-    ax.text(px(PANEL_FRAME_X + IBC_FRAME_RHS + 15), py(near_col_r - 22),
+    ax.text(px(PANEL_FRAME_X + IBC_FRAME_RHS + 150), py(near_col_r - 22),
             "PANEL SUPPORT FRAME\n(uprights to Z=2310\n+ top rail + floor beam)",
             ha="left", va="top", fontsize=5, color=C_FRAME,
             fontweight="bold", **FONT, zorder=10)
@@ -1458,7 +1458,7 @@ def sheet4():
     v3_yd = (near_ibc_conn_yd + panel_yd) / 2
     valve_plan(ax, drain_x, v3_yd, 'v', C_PIPE_BROWN, "V3")
     leader(ax, px(drain_x), py(near_ibc_conn_yd),
-           px(drain_x - 180), py(near_ibc_conn_yd - 80),
+           px(drain_x - 20), py(near_ibc_conn_yd - 80),
            "X3 ← IBC-3\n(DRAIN, BROWN)\n1\" HDPE",
            fs=5.5, color=C_PIPE_BROWN, ha="right", font=FONT)
     # ── X1: Bulkhead → fill tee (behind top rail) → BOTH Blue totes ───────
@@ -1608,7 +1608,7 @@ def sheet4():
         f"9. Portal frame: seat brackets + corridor uprights. ~{FRAME_WEIGHT}kg.",
     ]
     draw_notes(ax, notes, leg_x, leg_box_bot - py(55), spacing=py(18),
-               fs=7, font=FONT, width=800)
+               fs=7, font=FONT, width=775)
 
     # ── Title block ──────────────────────────────────────────────────────────
     title_block(ax, "SHEET 4 OF 5",

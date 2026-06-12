@@ -1588,19 +1588,16 @@ def sheet4():
     draw_dim_v(ax, px(frame_x_r + 225), py(0), py(C_WID),
                f"{C_WID}mm (WALL TO WALL)", offset=px(10), fs=6, right=True, font=FONT)
 
-    # ── Notes (two columns to fit above title block) ───────────────────────
-    notes_l = [
+    # ── Notes (single block, in the right margin directly under the legend) ──
+    notes = [
         "INTERNAL PLUMBING PLAN NOTES:",
-        f"1. 4× Schutz Ecobulk MX 600L IBCs in 2×2 stack.",
+        "1. 4× Schutz Ecobulk MX 600L IBCs in 2×2 stack.",
         "   Top tier visible; bottom tier shown dashed.",
         "2. All internal pipe 1\" HDPE SDR-11",
         "   (2\" NPT at bulkhead unions).",
         "3. IBC valve faces point toward corridor.",
         "   DN50 butterfly valve (S60×6 thread) at each IBC.",
         "4. S60×6 to 1\" NPT adapters at each IBC (8× total).",
-    ]
-    notes_r = [
-        "NOTES (CONTINUED):",
         "5. Ball valves (Banjo V100FP) at each IBC connection.",
         f"6. Pipes routed through {CORRIDOR_W}mm plumbing corridor,",
         "   behind the panel support frame (clear of uprights).",
@@ -1610,12 +1607,8 @@ def sheet4():
         "   butting the panel support frame: pumps + filters.",
         f"9. Portal frame: seat brackets + corridor uprights. ~{FRAME_WEIGHT}kg.",
     ]
-    notes_y = py(YD_LO + 280)
-    notes_sp = py(18)
-    draw_notes(ax, notes_l, px(X_LO + 20), notes_y, spacing=notes_sp,
-               fs=7, font=FONT, width=2300)
-    draw_notes(ax, notes_r, px(X_LO + 20) + 2400, notes_y, spacing=notes_sp,
-               fs=7, font=FONT, width=2300)
+    draw_notes(ax, notes, leg_x, leg_box_bot - py(55), spacing=py(18),
+               fs=7, font=FONT, width=800)
 
     # ── Title block ──────────────────────────────────────────────────────────
     title_block(ax, "SHEET 4 OF 5",

@@ -1870,7 +1870,7 @@ def sheet5():
     C_PIPE_BLUE   = "#2060C0"   # Blue circuit (clean supply)
     C_PIPE_BROWN  = "#8D6E63"   # Brown circuit (recycled)
     C_PIPE_BLACK  = "#505050"   # Black/waste
-    C_PIPE_FILTER = "#E65100"   # Filter skid circuit
+    C_PIPE_FILTER = "#E65100"   # Filter unit circuit
     pipe_lw = 2.5
 
     # ── IBC connection heights ───────────────────────────────────────────────
@@ -2031,21 +2031,21 @@ def sheet5():
             [sy(brown_in_z), sy(brown_in_z)],
             color=C_PIPE_BROWN, lw=1.5, ls="--", zorder=7)
 
-    # ── Brown IBC-3 outlet → P-02 pump → filter skid ────────────────────────
+    # ── Brown IBC-3 outlet → P-02 pump → filter unit ────────────────────────
     # Uses IBC-3's built-in DN50 butterfly valve at corridor-facing face.
     # Offset below X3 horizontal run at Z=400 to avoid pipe crossing.
     brown_out_z = 250
     pipe_stub_x(ax, near_col_r, brown_out_z, C_PIPE_BROWN,
-                "TO P-02 →\nFILTER SKID", label_side="right")
+                "TO P-02 →\nFILTER UNIT", label_side="right")
 
-    # ── Filter skid return → IBC-2 (cleaned water returns to supply) ────────
+    # ── Filter unit return → IBC-2 (cleaned water returns to supply) ────────
     # Returns through top of IBC-2 (fill cap area)
     filter_ret_z = top_ibc_top - 80  # near top of top-tier far IBC
     pipe_stub_x(ax, far_ibc_cx, filter_ret_z, C_PIPE_FILTER,
                 "FILTER\nRETURN", label_side="right")
 
     # ── Waste IBC-4 inlet ← diverter/bypass (rejected filtrate) ─────────────
-    # Enters through IBC-4 fill cap (DN150) on top. Filter skid reject/bypass
+    # Enters through IBC-4 fill cap (DN150) on top. Filter unit reject/bypass
     # line feeds into waste IBC via fill cap — cannot use drain valve (would
     # drain out existing waste when opened).
     waste_in_z = IBC_H_600 - 80  # near top of bottom-tier far IBC
@@ -2089,7 +2089,7 @@ def sheet5():
 
     legend_items = [
         (C_PIPE_BLUE,   "BLUE CIRCUIT — Clean supply (fill, VB1/VB2 → tee → VB3 → P-01 → spray bar)"),
-        (C_PIPE_BROWN,  "BROWN CIRCUIT — Recycled (P-04 ← tray sump → IBC-3, P-02 → filter skid, P-05 drain pump)"),
+        (C_PIPE_BROWN,  "BROWN CIRCUIT — Recycled (P-04 ← tray sump → IBC-3, P-02 → filter unit, P-05 drain pump)"),
         (C_PIPE_FILTER, "FILTER CIRCUIT — Filtered return to IBC-2"),
         (C_PIPE_BLACK,  "BLACK/WASTE — Rejected filtrate via fill cap → IBC-4, P-03 drain pump"),
     ]
@@ -2195,7 +2195,7 @@ def sheet5():
         "9. 90° elbows (Banjo LE100) at all bends. Flanges at all bulkhead and IBC connections.",
         "10. Check valves CV1/CV3/CV4 (1\" NPT spring check) on all three bulkhead lines — prevents backflow through bulkhead unions.",
         "11. IBC-3 (Brown) filled from top via fill cap (DN150). P-04 suction pickup draws from tray sump, pumps to IBC-3 fill cap (~900mm lift).",
-        "12. IBC-4 (Waste) filled from top via fill cap (DN150). Filter skid reject/bypass line feeds into waste IBC — cannot use drain valve.",
+        "12. IBC-4 (Waste) filled from top via fill cap (DN150). Filter unit reject/bypass line feeds into waste IBC — cannot use drain valve.",
     ]
     draw_notes(ax, notes, sx(YD_LO + 1530), sy(-180), spacing=sy(22),
                fs=7, font=FONT, width=1500)

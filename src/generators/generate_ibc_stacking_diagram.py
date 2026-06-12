@@ -2081,10 +2081,13 @@ def sheet5():
 
     # Legend background box
     n_leg_items = 8  # 4 pipes + cross-section + elbow + tee + check valve
-    leg_box_x = leg_x - sx(10)
+    # This sheet's x-axis is INVERTED, so the ha="left" legend text at leg_x+70 renders
+    # screen-rightward toward SMALLER data — the box must extend that way too. Anchor it
+    # just past the swatch and give it a negative width so it surrounds swatch + text.
+    leg_box_x = leg_x + sx(75)
     leg_box_top = leg_top + leg_spacing * 0.5
     leg_box_bot = leg_top - n_leg_items * leg_spacing + leg_spacing * 0.3
-    leg_box_w = sx(847)
+    leg_box_w = -sx(880)
     ax.add_patch(Rectangle((leg_box_x, leg_box_bot), leg_box_w,
                             leg_box_top - leg_box_bot,
                             fc="#F0F0F0", ec=C_OUT, lw=0.6, zorder=14))

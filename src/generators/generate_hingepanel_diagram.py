@@ -1173,10 +1173,10 @@ def sheet3():
                            fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=21))
 
     # exterior light ray blocked by the lip
-    ax.annotate("", xy=(DX(-33), DY(38)), xytext=(DX(-92), DY(38)),
+    ax.annotate("", xy=(DX(-33), DY(78)), xytext=(DX(-92), DY(78)),
                 arrowprops=dict(arrowstyle="-|>", color="#D08000", lw=1.6), zorder=25)
-    ax.plot([DX(-30)], [DY(38)], marker="x", ms=7, mew=2.2, color="#C02020", zorder=26)
-    ax.text(DX(-92), DY(62), "ext. light\nblocked by lip", fontsize=5.8,
+    ax.plot([DX(-30)], [DY(78)], marker="x", ms=7, mew=2.2, color="#C02020", zorder=26)
+    ax.text(DX(-92), DY(62), "ext. light\nblocked by\nlip", fontsize=5.8,
             color="#A05000", ha="left", va="center", **FONT)
 
     # cam-latch compression (panel pulled onto the seal)
@@ -1186,7 +1186,7 @@ def sheet3():
     # floor-gap dimension (interior side, clear lane)
     from tbs_constants import PANEL_FLOOR_GAP as _PFG, PROC_TRAY_RIM as _TRIM
     draw_dim_v(ax, DX(52), DY(0), DY(80), f"{_PFG} mm\nfloor gap",
-               offset=22, fs=5.8, right=True, perpendicular=True, color=C_DIM, font=FONT)
+               offset=22, fs=5.8, right=False, perpendicular=True, color=C_DIM, font=FONT)
 
     # callout labels (right side, leaders pointing into the detail)
     def dlbl(target, ty, text):
@@ -1259,9 +1259,9 @@ def sheet3():
         ax.annotate("", xy=target, xytext=(tx - 6, ty),
                     arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8,
                                     shrinkA=1, shrinkB=1), zorder=24)
-        ax.text(tx, ty, text, fontsize=6.0, color=C_DIM, ha="left", va="center", **FONT)
-    clbl((CX(30), CY(55)), CY(96), "Panel top gap is the light path\n(carried by the pivot post — not ceiling-hung)")
-    clbl((CX(-40), CY(64)), CY(62), "Frame top rail (50×50 RHS)")
+        ax.text(tx, ty, text, fontsize=6.0, color=C_DIM, ha="left", va="center", zorder=24, **FONT)
+    clbl((CX(-40), CY(64)), CY(82), "Frame top rail (50×50 RHS)")
+    clbl((CX(30), CY(55)), CY(68), "Panel top gap is the light path\n(carried by the pivot post — not ceiling-hung)")
     clbl((CX(-26), CY(30)), CY(28), "Top seal lip — steel downstand,\nfull width (continuous, meets at center)")
     clbl((CX(-10), CY(-20)), CY(-10), "20 mm EPDM — panel top\nedge seals on lip")
     clbl((CX(20), CY(-70)), CY(-58), "Upper cam latch compresses\npanel onto seal")

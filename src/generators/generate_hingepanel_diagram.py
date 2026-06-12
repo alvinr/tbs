@@ -702,24 +702,19 @@ def sheet2():
             "DRUM OVERHANGS PANEL ON BOTH FACES — SECURED BY BEARINGS AT TOP AND BOTTOM",
             color=C_DIM, fontsize=6.5, ha="center", va="top", **FONT, zorder=15)
 
-    # ── Orientation clarification box ─────────────────────────────────────────
-    # Small inset box top-right, making the viewing direction explicit
+    # ── Orientation clarification note (standard draw_notes block, top-right) ──
     OB_X = D_XR + 30
     OB_Y = D_YT - 100
-    OB_W = 450
-    OB_H = 190
-    import matplotlib.patches as mpatches
-    ax.add_patch(mpatches.FancyBboxPatch((OB_X, OB_Y), OB_W, OB_H,
-                 boxstyle="round,pad=3",
-                 facecolor="#FFFBF0", edgecolor="#806010", linewidth=1.0, zorder=12))
-    ax.text(OB_X + OB_W / 2, OB_Y + OB_H - 18,
-            "ORIENTATION NOTE",
-            ha="center", va="top", fontsize=6.5, color="#806010",
-            fontweight="bold", **FONT, zorder=15)
-    ax.text(OB_X + OB_W / 2, OB_Y + OB_H * 0.42,
-            "DRUM AXIS IS VERTICAL.\nPERSONNEL WALK THROUGH\nIN AN UPRIGHT POSITION.\nSee Sheet 3 for elevation view.",
-            ha="center", va="center", fontsize=6, color="#403000",
-            **FONT, zorder=15)
+    OB_W = 450   # retained: the latch note below positions itself off the note width
+    draw_notes(ax, [
+        "ORIENTATION NOTE",
+        "Drum axis is vertical.",
+        "Personnel walk through in",
+        "an upright position.",
+        "See Sheet 3 for the elevation view.",
+    ], OB_X + 32, OB_Y + 174, spacing=32, fs=6, title_fs=6.5,
+       color="#403000", title_color="#806010", width=400,
+       border_color="#806010", font=FONT)
 
     # ── Interior latch safety note ─────────────────────────────────────────────
     # Small note below orientation box (latches are outside the drum-zone crop

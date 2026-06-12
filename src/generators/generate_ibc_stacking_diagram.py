@@ -2212,10 +2212,11 @@ def sheet5():
     print("  diagrams/ibc-stacking-sheet5.png saved")
 
 
-def _draw_valve_elev(ax, sx, sy, yd, z, color, label, lside="right"):
+def _draw_valve_elev(ax, sx, sy, yd, z, color, label, lside="right", text_color=None):
     """Draw a ball valve symbol (bowtie in white circle) in elevation view at (yd, z).
     On a VERTICAL pipe — so the label is leadered out to the SIDE (lside), not buried in
-    the symbol."""
+    the symbol. text_color overrides the label colour (default = the pipe colour, which is
+    readable on the light background; pass e.g. 'white' if the label sits on a dark fill)."""
     vs = 18  # half-size in mm
     cr = vs * 1.6  # circle radius in mm
     # White circle background
@@ -2241,14 +2242,16 @@ def _draw_valve_elev(ax, sx, sy, yd, z, color, label, lside="right"):
         ddir = (-1 if inv else 1) * (1 if screen_right else -1)
         leader(ax, sx(yd + ddir * cr), sy(z),
                sx(yd + ddir * (cr + 48)), sy(z), label,
-               fs=5, color=color, ha="left" if screen_right else "right",
+               fs=5, color=text_color or color,
+               ha="left" if screen_right else "right",
                va="center", font=FONT)
 
 
-def _draw_valve_elev_h(ax, sx, sy, yd, z, color, label, lup=True):
+def _draw_valve_elev_h(ax, sx, sy, yd, z, color, label, lup=True, text_color=None):
     """Draw a ball valve symbol (bowtie in white circle) on a HORIZONTAL pipe in elevation.
     Bowtie axis perpendicular to flow — oriented vertically. The label is leadered ABOVE
-    (lup) or below the symbol instead of being buried white inside it."""
+    (lup) or below the symbol instead of being buried white inside it. text_color overrides
+    the label colour (default = the pipe colour)."""
     vs = 18  # half-size in mm
     cr = vs * 1.6  # circle radius in mm
     # White circle background
@@ -2273,7 +2276,7 @@ def _draw_valve_elev_h(ax, sx, sy, yd, z, color, label, lup=True):
         zdir = 1 if lup else -1
         leader(ax, sx(yd), sy(z + zdir * cr),
                sx(yd), sy(z + zdir * (cr + 42)), label,
-               fs=5, color=color, ha="center",
+               fs=5, color=text_color or color, ha="center",
                va="bottom" if lup else "top", font=FONT)
 
 

@@ -1687,7 +1687,7 @@ def sheet5():
                                     fc=color, ec=C_OUT, lw=1.5,
                                     alpha=0.4, zorder=zo))
 
-    def pipe_stub_x(ax, yd, z, color, label, label_side="right", zo=8):
+    def pipe_stub_x(ax, yd, z, color, label, label_side="right", zo=8, offset=55):
         """Draw a pipe cross-section circle (pipe running in X direction,
         i.e., into or out of the page). Shows as a circle with inner/outer
         rings."""
@@ -2075,7 +2075,7 @@ def sheet5():
            ha="left", va="top", arrow_style="-|>", font=FONT)
 
     # ── Legend ───────────────────────────────────────────────────────────────
-    leg_x = sx(YD_LO + 1720)
+    leg_x = sx(YD_HI - 200)
     leg_top = sy(-200)
     leg_spacing = sy(33)
 
@@ -2107,7 +2107,7 @@ def sheet5():
         draw_pipe_path(ax, [lx0, lx0 + 60], [ly0, ly0],
                         PIPE_OD * 0.6, PIPE_WALL, sx, sy,
                         fc=color, ec=ec_map6.get(color, C_OUT), zorder=15)
-        ax.text(leg_x + sx(70), y, desc,
+        ax.text(leg_x + sx(-10), y, desc,
                 ha="left", va="center", fontsize=5.5, color=color,
                 **FONT, zorder=15)
 
@@ -2117,7 +2117,7 @@ def sheet5():
     w_cs = PIPE_WALL / (sx(1))
     draw_pipe_end(ax, leg_x + sx(30), y_cs, sx(PIPE_OD / 2), sx(PIPE_WALL),
                   fc="#A0A0A0", ec=C_OUT, zorder=15)
-    ax.text(leg_x + sx(70), y_cs,
+    ax.text(leg_x + sx(-10), y_cs,
             "PIPE CROSS-SECTION (running in X direction, into page)",
             ha="left", va="center", fontsize=5.5, color=C_DIM,
             **FONT, zorder=15)
@@ -2132,7 +2132,7 @@ def sheet5():
                    [el_z0 - el_size / 2, el_z0 - el_size / 2, el_z0 + el_size / 2],
                    PIPE_OD * 0.6, PIPE_WALL, sx, sy,
                    fc="#A0A0A0", ec=C_OUT, zorder=15)
-    ax.text(leg_x + sx(70), y_el,
+    ax.text(leg_x + sx(-10), y_el,
             "90° ELBOW FITTING (1\" HDPE NPT — Banjo LE100 or equiv.)",
             ha="left", va="center", fontsize=5.5, color=C_DIM,
             **FONT, zorder=15)
@@ -2145,7 +2145,7 @@ def sheet5():
                             fc="#A0A0A0", ec=C_OUT, lw=1.2, alpha=0.35, zorder=15))
     ax.text(leg_x + sx(30), y_tee, "T", ha="center", va="center",
             fontsize=4.5, color="white", fontweight="bold", **FONT, zorder=16)
-    ax.text(leg_x + sx(70), y_tee,
+    ax.text(leg_x + sx(-10), y_tee,
             "TEE FITTING (1\" HDPE NPT — Banjo TEE100 or equiv.)",
             ha="left", va="center", fontsize=5.5, color=C_DIM,
             **FONT, zorder=15)
@@ -2161,7 +2161,7 @@ def sheet5():
     ax.plot([leg_x + sx(30 - cv_vs), leg_x + sx(30 - cv_vs)],
             [y_cv - sy(cv_vs + 3), y_cv + sy(cv_vs + 3)],
             color=C_OUT, lw=1.8, zorder=16)
-    ax.text(leg_x + sx(70), y_cv,
+    ax.text(leg_x + sx(-10), y_cv,
             "CHECK VALVE (1\" NPT spring — prevents backflow on all bulkhead lines)",
             ha="left", va="center", fontsize=5.5, color=C_DIM,
             **FONT, zorder=15)
@@ -2172,7 +2172,7 @@ def sheet5():
                            (EXT_DRAIN_3_H, f"X3: {EXT_DRAIN_3_H}mm"),
                            (EXT_DRAIN_4_H, f"X4: {EXT_DRAIN_4_H}mm")]:
         draw_dim_v(ax, sx(dim_yd), sy(0), sy(port_z),
-                   label, offset=sx(10), fs=5.5, right=True, font=FONT)
+                   label, offset=sx(30), fs=5.5, right=True, font=FONT)
         dim_yd += 50
 
     # Container interior width
@@ -2186,11 +2186,14 @@ def sheet5():
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
         "INTERNAL PLUMBING ELEVATION NOTES:",
-        "1. Sealed end wall internal plumbing, from inside looking +X (near/pinhole wall at right, far wall at left). All internal pipe 1\" HDPE SDR-11 (2\" NPT at bulkhead unions).",
+        "1. Sealed end wall internal plumbing, from inside looking +X (near/pinhole wall at right, far wall at left). All internal pipe 1\" ",
+        "   HDPE SDR-11 (2\" NPT at bulkhead unions).",
         "2. IBC valve faces point toward plumbing corridor. DN50 butterfly valve (S60×6 thread), ~185mm above floor.",
-        "3. X1 fill header tees to BOTH Blue totes (IBC-1 & IBC-2); each branch drops into the fill cap (DN150, offset ~250mm from valve face toward corridor). Filled in parallel — no cross-connect.",
+        "3. X1 fill header tees to BOTH Blue totes (IBC-1 & IBC-2); each branch drops into the fill cap (DN150, offset ~250mm from valve face",
+        "   toward corridor). Filled in parallel — no cross-connect.",
         "4. S60×6 to 1\" NPT adapters (e.g. IBC-S60-1NPT) at each IBC valve connection (8× total).",
-        "5. Fill tee + header set back behind the panel support frame top rail; drains routed behind the frame (clear of the uprights), matching the 3D model.",
+        "5. Fill tee + header set back behind the panel support frame top rail; drains routed behind the frame (clear of the uprights), matching",
+        "   the 3D model.",
         "6. Blue outflow: IBC-1 valve → VB1 → tee ← VB2 ← IBC-2 valve; after tee → VB3 → P-01 → spray bar.",
         "7. Ball valves: Banjo V100FP 1\" polypropylene full-port, quarter-turn. All hand-operated.",
         "8. X3 at Z=400mm / X4 at Z=200mm: P-05 and P-03 drain pumps evacuate IBCs through bulkhead ports at disposal.",
@@ -2199,8 +2202,8 @@ def sheet5():
         "11. IBC-3 (Brown) filled from top via fill cap (DN150). P-04 suction pickup draws from tray sump, pumps to IBC-3 fill cap (~900mm lift).",
         "12. IBC-4 (Waste) filled from top via fill cap (DN150). Filter skid reject/bypass line feeds into waste IBC — cannot use drain valve.",
     ]
-    draw_notes(ax, notes, sx(YD_LO + 30), sy(-180), spacing=sy(22),
-               fs=7, font=FONT, width=4200)
+    draw_notes(ax, notes, sx(YD_LO + 1530), sy(-180), spacing=sy(22),
+               fs=7, font=FONT, width=1500)
 
     # ── Title block ──────────────────────────────────────────────────────────
     title_block(ax, "SHEET 5 OF 5",

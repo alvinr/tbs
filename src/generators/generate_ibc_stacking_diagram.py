@@ -1860,7 +1860,7 @@ def sheet5():
         # tag on a short leader off the union circle (arrow points back at it)
         leader(ax, sx(cl_yd), sy(port_z + tdir * bh_outer_r),
                sx(cl_yd), sy(port_z + tdir * (bh_outer_r + 55)), tag,
-               fs=6.5, color=color, ha="center",
+               fs=6.5, color="#000000", ha="center",
                va="bottom" if tdir > 0 else "top",
                arrow_style="-|>", font=FONT)
         # Flange at bulkhead
@@ -1908,10 +1908,10 @@ def sheet5():
     draw_tee_fitting(ax, cl_yd, EXT_FILL_1_H, C_PIPE_BLUE)
     # CV1 check valve — prevents backflow toward the bulkhead
     _draw_check_valve_h(ax, sx, sy, cl_yd + 95, EXT_FILL_1_H, C_PIPE_BLUE, "CV1",
-                        flow_dir="left")
+                        text_color = "#000000", flow_dir="left")
     # V1 on the near header run, in the corridor
     v1_yd = (cl_yd + near_col_r) / 2
-    _draw_valve_elev_h(ax, sx, sy, v1_yd, EXT_FILL_1_H, C_PIPE_BLUE, "V1", lup=False)
+    _draw_valve_elev_h(ax, sx, sy, v1_yd, EXT_FILL_1_H, C_PIPE_BLUE, "V1", text_color="#000000", lup=False)
 
     # ── X3: IBC-3 (near, bottom) → Bulkhead — BROWN drain ───────────────────
     d3_yd = near_col_r  # corridor-facing edge of near IBC
@@ -1990,7 +1990,7 @@ def sheet5():
                    fc=C_PIPE_BLUE, ec="#1A4A90", zorder=7)
     # V-B1 on this horizontal run
     vb1_yd = (b1_yd + corr_l) / 2
-    _draw_valve_elev_h(ax, sx, sy, vb1_yd, blue_out_z, C_PIPE_BLUE, "VB1")
+    _draw_valve_elev_h(ax, sx, sy, vb1_yd, blue_out_z, C_PIPE_BLUE, "VB1", text_color="#000000")
 
     # IBC-2 outlet (far column) — at corridor-facing drain valve
     b2_yd = far_col_l  # valve face points toward corridor
@@ -2002,7 +2002,7 @@ def sheet5():
                    fc=C_PIPE_BLUE, ec="#1A4A90", zorder=7)
     # V-B2 on this horizontal run
     vb2_yd = (b2_yd + corr_r) / 2
-    _draw_valve_elev_h(ax, sx, sy, vb2_yd, blue_out_z, C_PIPE_BLUE, "VB2")
+    _draw_valve_elev_h(ax, sx, sy, vb2_yd, blue_out_z, C_PIPE_BLUE, "VB2", text_color="#000000")
 
     # Tee fitting in corridor where both outlets merge
     draw_tee_fitting(ax, corr_cx, blue_out_z, C_PIPE_BLUE)
@@ -2012,10 +2012,10 @@ def sheet5():
     draw_pipe_path(ax, [corr_cx, corr_cx], [vb3_z, blue_out_z],
                    PIPE_OD, PIPE_WALL, sx, sy,
                    fc=C_PIPE_BLUE, ec="#1A4A90", zorder=7)
-    _draw_valve_elev(ax, sx, sy, corr_cx, vb3_z + 15, C_PIPE_BLUE, "VB3")
+    _draw_valve_elev(ax, sx, sy, corr_cx, vb3_z + 15, C_PIPE_BLUE, "VB3", text_color="#000000")
     # Merged pipe stub (X-direction → P-01 → spray bar)
     pipe_stub_x(ax, corr_cx, vb3_z - 30, C_PIPE_BLUE,
-                "P-01 → SPRAY BAR", label_side="right")
+                "P-01 → SPRAY BAR", label_side="right", offset=225)
 
     # ── Brown IBC-3 inlet ← tray sump (pumped via P-04) ──────────────────────
     # Water collects in sump well at tray low point. P-04 suction pickup
@@ -2054,7 +2054,7 @@ def sheet5():
 
     # ── Pipe labels for bulkhead connections ─────────────────────────────────
     leader(ax, sx(f1_fill_yd), sy(EXT_FILL_1_H),
-           sx(BLUE_IBC_Y + IBC_D * 0.5), sy(EXT_FILL_1_H - 80),
+           sx(BLUE_IBC_Y + IBC_D * 0.5), sy(EXT_FILL_1_H + 25),
            "X1 → IBC-1 FILL CAP\n(DN150, TOP NEAR)\n1\" HDPE",
            color=C_PIPE_BLUE, fs=5.5,
            ha="right", va="bottom", arrow_style="-|>", font=FONT)
@@ -2162,10 +2162,10 @@ def sheet5():
             **FONT, zorder=15)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
-    dim_yd = cl_yd + plate_w / 2 + 40
-    for port_z, label in [(EXT_FILL_1_H, f"X1: {EXT_FILL_1_H}mm"),
+    dim_yd = cl_yd + plate_w / 2 + 100
+    for port_z, label in [ (EXT_DRAIN_4_H, f"X4: {EXT_DRAIN_4_H}mm"),
                            (EXT_DRAIN_3_H, f"X3: {EXT_DRAIN_3_H}mm"),
-                           (EXT_DRAIN_4_H, f"X4: {EXT_DRAIN_4_H}mm")]:
+                           (EXT_FILL_1_H, f"X1: {EXT_FILL_1_H}mm"),]:
         draw_dim_v(ax, sx(dim_yd), sy(0), sy(port_z),
                    label, offset=sx(30), fs=5.5, right=True, font=FONT)
         dim_yd += 50
@@ -2280,7 +2280,7 @@ def _draw_valve_elev_h(ax, sx, sy, yd, z, color, label, lup=True, text_color=Non
                va="bottom" if lup else "top", font=FONT)
 
 
-def _draw_check_valve_h(ax, sx, sy, yd, z, color, label, flow_dir="right"):
+def _draw_check_valve_h(ax, sx, sy, yd, z, color, label, text_color=None, flow_dir="right"):
     """Draw a check valve (non-return valve) on a HORIZONTAL pipe.
 
     Triangle pointing in flow direction with a perpendicular bar at the
@@ -2308,7 +2308,8 @@ def _draw_check_valve_h(ax, sx, sy, yd, z, color, label, flow_dir="right"):
     ax.add_patch(tri)
     if label:
         ax.text(sx(yd), sy(z + vs + 14), label,
-                ha="center", va="bottom", fontsize=4.5, color=color,
+                ha="center", va="bottom", fontsize=4.5,
+                color=color if text_color == None else text_color,
                 fontweight="bold", **FONT, zorder=13)
 
 

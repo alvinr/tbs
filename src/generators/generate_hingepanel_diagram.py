@@ -1291,7 +1291,8 @@ def sheet3():
     # fixed strip's edge: the joint seals when shut (camera mode) and opens as the
     # panel swings. Plan section: depth X horizontal, Yd vertical (cut at yr=0).
     # ══════════════════════════════════════════════════════════════════════════
-    odx, ody = 1090, 1240   # centred in the gap between Details C (above) and B (below)
+    odx, ody = 1369, 1240   # right border aligned with Details C/B (DDX(60)=1567≈bx1/cbx1);
+                            # ody keeps it vertically between Details C (above) and B (below)
     def DDX(x): return odx + k * x          # panel depth (mm) → sheet x (exterior negative)
     def DDY(yr): return ody + k * yr        # Yd about the cut (yr=0) → sheet y
     dbx0, dbx1 = DDX(-26), DDX(60)

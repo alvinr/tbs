@@ -46,7 +46,7 @@ tray's watertight seal.
 |-----------|-------|
 | Standard walkway width | 300mm |
 | Deck height (floor to grate top) | 80mm |
-| Grating thickness | 15mm press-locked galvanized steel (thin grate, lowered deck) |
+| Grating | 15mm molded GRP (fiberglass), vinyl-ester, grit top (thin grate, lowered deck; corrosion-proof in the chemistry zone) |
 | Grating bearing bars | 15×3mm at 34.2mm pitch |
 | Bracket arm height | 65mm above finished floor |
 | Bracket spacing (near/far) | 457mm (18") — aligned to container rib spacing |
@@ -139,7 +139,7 @@ narrow and wide grating sections rest on the same 500mm bracket arm. A
 40×500×5mm flat bearing plate is welded to the bracket arm top surface at each
 transition, providing a wider landing surface so both grating sections have
 adequate bearing. The narrow section occupies the inner 300mm of the plate;
-the wide section occupies the full 500mm. M saddle clips retain each grating
+the wide section occupies the full 500mm. Stainless hold-down clips retain each grating
 section independently on either side of the transition.
 
 ![TBS-001 Walkway — Sheet 8: Width Transition Detail](assets/walkway-sheet8.png)
@@ -415,29 +415,29 @@ All four walkway sections use the same grating:
 
 | Parameter | Value |
 |-----------|-------|
-| Type | Press-locked galvanized steel grating |
-| Thickness | 25mm |
-| Bearing bar size | 30×3mm |
-| Bearing bar pitch | 34.2mm |
-| Cross bar type | Twist-locked at mid-height |
-| Surface finish | Hot-dip galvanized |
+| Type | Molded GRP (fiberglass) grating |
+| Thickness | 15mm (5/8") — keeps the lowered deck + 15mm spray-bar clearance |
+| Resin | Vinyl-ester (resists both alkaline developer and acidic fixer splash) |
+| Mesh | ~38×38mm square, molded |
+| Open area | ~40% |
+| Surface finish | Grit top (slip-resistant) |
 
 ### 8.1 Grating Retention by Walkway Section
 
 | Walkway | Retention Method | Attachment Point | Removal |
 |---------|-----------------|------------------|---------|
-| Near (pinhole wall) | M saddle clips + TEK screws | Bracket arm top surface | Unscrew TEK screws, lift grating |
-| Far (film plane wall) | M saddle clips + TEK screws | Bracket arm top surface | Unscrew TEK screws, lift grating |
-| Right (IBC end) | M saddle clips + TEK screws | L-angle bearer horizontal leg | Unscrew TEK screws, lift grating |
-| Left (cargo door) | Gravity + proud kerb | Edge beam (X=470) + bearing strip (X=170) | Lift straight up — no fasteners |
+| Near (pinhole wall) | 316 SS hold-down clips | Bracket arm top surface | Release clips, lift grating |
+| Far (film plane wall) | 316 SS hold-down clips | Bracket arm top surface | Release clips, lift grating |
+| Right (IBC end) | 316 SS hold-down clips | L-angle bearer horizontal leg | Release clips, lift grating |
+| Left (cargo door) | Gravity (floor-leg arms) | Floor-leg cantilever arms (reach X=470) | Lift straight up — no fasteners |
 
-**Near and far walkways** use M saddle clips that straddle two grating bearing
-bars. Each clip is secured to the bracket arm with a self-drilling TEK screw
-through the clip's center hole. Clips are spaced at every other bracket
+**Near and far walkways** use 316 SS hold-down clips that clamp the GRP panel
+down onto the bracket arm (a stainless clamp clip — not a TEK screw driven into a
+steel bearing bar, since FRP isn't screwed through). Clips are spaced at every other bracket
 (~914mm centers).
 
-**Right walkway** uses the same M saddle clip design, but the TEK screws drive
-into the horizontal leg of the 25×25×5mm L-angle bearers rather than bracket
+**Right walkway** uses the same stainless hold-down clips, but they clamp to
+the horizontal leg of the 25×25×5mm L-angle bearers rather than the bracket
 arms.
 
 **Left walkway** uses gravity retention only. The grating sits on twin support
@@ -478,7 +478,7 @@ bounces noticeably less than the rod-hung version it replaces.
 
 | # | Item | Specification | Qty | Est. Cost |
 |---|------|--------------|-----|-----------|
-| 1 | Press-locked galvanized steel grating | 15mm thick, 15×3mm bearing bars at 34.2mm pitch | ~6.5 m² (4 sections) | $350–$550 |
+| 1 | Molded GRP (fiberglass) grating | 15mm, vinyl-ester resin, grit top, ~38mm mesh | ~4.5 m² (4 sections) | $970–$1,260 |
 | 2 | Cantilever bracket — standard (near/far) | 8mm steel plate: 150mm vert leg + 300mm arm + 70mm gusset, welded | 14 (5 near + 9 far at 457mm centers) | $420–$700 |
 | 3 | Cantilever bracket — widened (near) | 10mm steel plate: 200mm vert leg + 500mm arm + 70mm gusset, welded | 4 (EP/battery/slit zone) | $160–$280 |
 | 4 | M12×80mm through-bolt kit | Hex bolt + 2× washers + nut, grade 8.8 | 58 (3 per std bracket + 4 per widened) | $87–$145 |
@@ -497,7 +497,7 @@ bounces noticeably less than the rod-hung version it replaces.
 | 17 | Grating clips | Removable spring clips, stainless | ~30 | $30–$50 |
 | 18 | Plywood base plate (evap cooler stowage) | 12mm plywood, 600×350mm | 1 | $5–$10 |
 | 19 | Ratchet strap (evap cooler) | 25mm×3m, 500kg WLL | 2 | $15–$25 |
-| | **Total** | | | **$1,433–$2,370** |
+| | **Total** | | | **$2,053–$3,080** |
 
 ---
 
@@ -522,7 +522,7 @@ bounces noticeably less than the rod-hung version it replaces.
 
 1. [ISO 668:2020](https://www.iso.org/standard/76912.html) — Series 1 freight containers: Classification, dimensions and ratings.
    Container rib spacing 457mm (18").
-2. [ANSI/NAAMM MBG 531](https://www.naamm.org/division/publications/8) — Metal bar grating manual. Press-locked grating design.
+2. [Fibergrate — Molded Grating load/engineering data](https://www.fibergrate.com/products/molded-gratings/) — molded FRP grating load tables + chemical-resistance guide (vinyl-ester resin selection)
 3. [AS 1657-2018](https://www.standards.org.au/standards-catalogue/sa-snz/building/sf-013/as--1657-colon-2018) — Fixed platforms, walkways, stairways and ladders: Design,
    construction and installation. 300mm minimum clear width for walkways.
 4. [Shurflo 2088 Series datasheet](https://www.shurflo.com/products/2088-series) — Pump dimensions for manifold access clearance.

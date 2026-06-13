@@ -375,7 +375,7 @@ def sheet2():
 
     leader(ax, sx(WALKWAY_W / 4), sy((grate_bot + grate_top) / 2),
            sx(WALKWAY_W / 4 - 30), sy(grate_top + 35),
-           f"PRESS-LOCKED STEEL GRATING\n{WALKWAY_GRATE_T}mm THICK \u00b7 GALVANIZED",
+           f"MOLDED GRP (FIBERGLASS) GRATING\n{WALKWAY_GRATE_T}mm \u00b7 VINYL-ESTER \u00b7 GRIT TOP",
            color=C_OUT, fs=6, ha="center", va="center",
            arrow_style="-|>", font=FONT)
 
@@ -391,7 +391,7 @@ def sheet2():
                             fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
     leader(ax, sx(clip_yd + clip_w), sy(brkt_arm_z),
            sx(clip_yd + 30), sy(brkt_arm_z + 55),
-           "M SADDLE CLIP\n+ TEK SCREW", color="#505058", fs=5.5,
+           "316 SS HOLD-DOWN\nCLIP + BOLT", color="#505058", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Clear tray area annotation ───────────────────────────────────────────
@@ -486,9 +486,9 @@ def sheet2():
     notes = [
         "CONSTRUCTION NOTES:",
         "",
-        f"1. Grating: {WALKWAY_GRATE_T}mm press-locked galvanized",
-         "   steel, 30\u00d73mm bearing bars at 34.2mm",
-         "   pitch.",
+        f"1. Grating: {WALKWAY_GRATE_T}mm molded GRP (fiberglass),",
+         "   vinyl-ester resin, grit top. Corrosion-proof",
+         "   in the wet chemistry zone.",
         f"2. Cantilever brackets: {BRKT_T}mm steel plate",
         f"   gusset, bolted to wall ribs at {WALKWAY_BRACKET_SPACING}mm",
          "   centers.",
@@ -503,7 +503,7 @@ def sheet2():
         f"   {PROC_TRAY_YD_NEAR}mm.",
         f"6. NO legs, NO beam — entire tray floor clear",
         f"   for film loading. Zero tray contact.",
-        f"7. M saddle clips + TEK screws to bracket",
+        f"7. 316 SS hold-down clips + bolts to bracket",
          "   arms.",
         f"8. Right walkway: CANTILEVER RECTANGLE off the",
         f"   IBC frame + combined corner plates. See Sheet 3.",
@@ -1431,7 +1431,7 @@ def sheet4():
                             fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
     leader(ax, sx(clip_x + clip_w + 2), sy(grate_top),
            sx(clip_x + 50), sy(grate_top + 20),
-           "M SADDLE CLIP\n+ TEK SCREW", color="#505058", fs=5.5,
+           "316 SS HOLD-DOWN\nCLIP + BOLT", color="#505058", fs=5.5,
            ha="left", va="center", arrow_style="-|>", font=FONT)
 
     # ── Butt joint line at X=470 ─────────────────────────────────────────────
@@ -1992,7 +1992,7 @@ def sheet7():
 
     leader(ax, sx(W_ARM_W / 4), sy((grate_bot + grate_top) / 2),
            sx(W_ARM_W / 4 - 30), sy(grate_top + 40),
-           f"PRESS-LOCKED STEEL GRATING\n{WALKWAY_GRATE_T}mm THICK · GALVANIZED",
+           f"MOLDED GRP (FIBERGLASS) GRATING\n{WALKWAY_GRATE_T}mm · VINYL-ESTER · GRIT TOP",
            color=C_OUT, fs=6, ha="center", va="center",
            arrow_style="-|>", font=FONT)
 
@@ -2005,7 +2005,7 @@ def sheet7():
                             fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
     leader(ax, sx(clip_yd + 10), sy(brkt_arm_z),
            sx(clip_yd + 40), sy(brkt_arm_z + 55),
-           "M SADDLE CLIP\n+ TEK SCREW", color="#505058", fs=5.5,
+           "316 SS HOLD-DOWN\nCLIP + BOLT", color="#505058", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Clear tray annotation ────────────────────────────────────────────────
@@ -2426,7 +2426,7 @@ def sheet8():
     bbox = dict(fc="white", ec="none", pad=1.5, alpha=0.85)
     leader(ax, sx(clip_positions[0][0]), sy(clip_positions[0][1]),
            sx(80), sy(-72),
-           "M SADDLE CLIP\nTEK SCREW INTO\nBRACKET ARM BELOW\n(TYP. BOTH SIDES)",
+           "316 SS HOLD-DOWN CLIP\nBOLTED INTO\nBRACKET ARM BELOW\n(TYP. BOTH SIDES)",
            color=C_DIM, fs=5.5, ha="right", va="top",
            arrow_style="-|>", font=FONT, bbox=bbox)
 
@@ -2480,7 +2480,7 @@ def sheet8():
         f"1. TRANSITION BRACKET: {BRKT_T}mm ARM PLATE, {ARM_LEN}mm REACH (WIDENED DESIGN)",
         f"2. BEARING PLATE: {BEARING_PLATE_W}×{BEARING_PLATE_L}×5mm FLAT BAR WELDED TO ARM TOP",
         f"3. WIDENED GRATING (500mm) ENDS AT BRACKET — STANDARD (300mm) BEGINS",
-        f"4. M SADDLE CLIPS STRADDLE 2 BEARING BARS, RETAINED BY TEK SCREW",
+        f"4. 316 SS HOLD-DOWN CLIPS CLAMP THE GRP PANEL, RETAINED BY SS BOLT",
         f"5. GRATING SECTIONS BUTT AT BEARING PLATE — NO OVERLAP",
         f"6. OUTER 200mm OF BRACKET ARM EXPOSED ON STANDARD SIDE",
         f"7. TRANSITION BRACKETS AT X≈1156mm AND X≈2526mm",

@@ -53,14 +53,14 @@ UV-HDPE 950 kg/m³, water 1,000 kg/m³.
 | Hinged panel (incl. Ø900 housing + B2 punch-out bay) | 171 | 0–80 (deployed); swung ~56° about the pivot (transport) | 0–2,362 | rev11 framed panel: 4mm-PP plastic skins + 18mm-ply Fan-B mount band + 3mm-Al corner cores + 50×50×3 steel RHS center ≈ 125 kg + bolted 5mm-HDPE Ø900 housing ≈ 22 kg + 4mm-PP B2 punch-out bay ≈ 25 kg. First-principles, no scaling pin. The PP-skin swap cut ~72 kg vs the 18mm-ply build. The Ø89 pivot post + bearings + cage are counted under "Swing pivot + cage hardware". See [Hinged Panel Report §2.4–2.5](hinged-panel-report.md) for the movable-assembly breakdown + the skin trade study |
 | Light-trap drum (rotating) | 38 | 0–40 (deployed); swung ~56° about the pivot (transport) | 653–1,709 | Ø864 C-shell, 4mm PP plastic skin (rev 9 / B2), no fins (suspended with panel) + PP end caps + steel Ø75 stub shafts + 2× SKF 6215 bearings |
 | Processing tray | 116 | 170–4,629 | 80–2,280 | 304 SS 1.5mm, 2 panels × 58 kg ([Water System Report](water-system-report.md) §4) |
-| Near walkway | 56 | 470–4,629 | 0–300 | 10 brackets @ ~2.7 kg + 26 kg/m² grating |
-| Far walkway | 56 | 470–4,629 | 2,062–2,362 | Same as near walkway |
-| Right walkway | 55 | 4,329–4,629 | 0–2,362 | rev12 cantilever-rectangle: closed frame (2 long + 2 end beams) + 2 center cantilever arms off the IBC uprights (40×40×3 SHS) + wall cleats + combined corner plates (shared with the BR film rail) + grating. Replaces the ceiling hangers; dry total unchanged |
-| Left walkway | 37 | 170–470 | 0–2,362 | Removable lift-out: grating + 40×40×3 steel edge beam (full width) on 2 bolt-through wall seats + 3 legs + bearing strip + drum-exit punch-out (deeper grating + Al sub-frame + leg) |
+| Near walkway | 37 | 470–4,629 | 0–300 | 10 brackets @ ~2.7 kg + 11 kg/m² GRP grating |
+| Far walkway | 37 | 470–4,629 | 2,062–2,362 | Same as near walkway |
+| Right walkway | 44 | 4,329–4,629 | 0–2,362 | rev12 cantilever-rectangle: closed frame (2 long + 2 end beams) + 2 center cantilever arms off the IBC uprights (40×40×3 SHS) + wall cleats + combined corner plates (shared with the BR film rail) + GRP grating |
+| Left walkway | 25 | 170–470 | 0–2,362 | Removable lift-out: GRP grating + 5 floor-leg cantilever brackets (50×50 post + arm on bare floor outside the tray) + drum-exit punch-out (deeper grating) |
 | Swing pivot + cage hardware | 38 | 0–400 | 700–2,287 | rev10 rotation transport hardware (replaces the retired HGR20 ceiling rails): pivot bearings + collar + drum cage + wall stays + rail saddles, at the cargo-door end. Estimate — refine vs the rotation-hardware BOM |
 | Container mods | 65 | Distributed | Distributed | Light seal foam + reinforcement plates (estimate) |
 | Chem-prep shelf (fold-down, stowed) | 7 | 1,180–1,780 | 0–22 | rev13 wall-hinged fold-down: 18mm phenolic ply + 2" Al angle frame + spill lip + continuous piano hinge + 2 stays ≈ 7 kg. Modeled **stowed** (folded up vs the pinhole wall, Z=1,075–1,375) in all states; the ~25 kg deployed mixing load is a transient prep case (film plane parked) — see [Chemistry Prep Shelves §3](chemistry-prep-shelves.md) |
-| **Structure subtotal** | **641** | | | |
+| **Structure subtotal** | **578** | | | |
 
 ### 3.3 Equipment
 
@@ -85,15 +85,20 @@ UV-HDPE 950 kg/m³, water 1,000 kg/m³.
 
 | Category | Weight (kg) | % of Dry Total |
 |----------|------------|---------------|
-| Container (shell + doors) | 2,200 | 66.2% |
-| Structure | 641 | 19.3% |
-| Equipment | 484 | 14.6% |
-| **Total dry** | **3,325** | **100%** |
+| Container (shell + doors) | 2,200 | 67.4% |
+| Structure | 578 | 17.7% |
+| Equipment | 484 | 14.8% |
+| **Total dry** | **3,262** | **100%** |
 
-**Grating weight assumption:** 15mm press-locked galvanized steel bar grating
-at 34mm bearing bar pitch weighs approximately 26 kg/m² (McNICHOLS
-catalog). This is the dominant weight contributor to the walkway system and
-the single largest source of uncertainty in the structural weight.
+**Grating weight assumption:** 5/8" (15mm) molded GRP (fiberglass) grating,
+vinyl-ester resin with grit top, weighs approximately 11 kg/m² — vs ~26 kg/m²
+for the previously-specified 15mm galvanized steel grate. The GRP swap removes
+**~62 kg** from the dry build (4.14 m² of deck) and eliminates the steel grate's
+corrosion exposure in the wet photo-chemistry environment, at a cost premium of
+~$720–$890 (see [cost breakdown §6a](project-cost-breakdown.md)). The 15mm depth
+is retained so the lowered deck and the 15mm spray-bar clearance under the left
+cantilever arms are unchanged. Confirm the final product's kg/m² against its
+datasheet; a 1"/25mm GRP would weigh more and force a deck-height redesign.
 
 ---
 
@@ -111,7 +116,7 @@ during processing, not pre-loaded).
 | Blue IBC-2 water | 600 | 600 | X=4,674–5,893, Yd=1,316–2,332 | Top (Z=1,010–2,020) |
 | **Total liquid** | **1,200** | **1,200** | | |
 
-**Total loaded weight: 4,525 kg** (3,325 dry + 1,200 liquid)
+**Total loaded weight: 4,463 kg** (3,263 dry + 1,200 liquid)
 
 ### 4.2 Materials Exhausted (Ready for Resupply)
 
@@ -127,22 +132,22 @@ Brown/Waste IBCs.
 | Processing tray | — | 0 | Drained | — |
 | **Total liquid** | **1,200** | **1,200** | | |
 
-**Total loaded weight: 4,525 kg** (3,325 dry + 1,200 liquid)
+**Total loaded weight: 4,463 kg** (3,263 dry + 1,200 liquid)
 
 ### 4.3 State Comparison
 
 | State | Total (kg) | X_cg (mm) | Yd_cg (mm) | Z_cg (mm) | Front/Rear | Near/Far |
 |-------|-----------|-----------|------------|-----------|------------|----------|
-| Dry (Transport) | 3,325 | 2,735 | 1,192 | 1,058 | 54.2/45.8% | 48.6/51.4% |
-| Loaded Transport (Blue full) | 4,525 | 3,411 | 1,189 | 1,179 | 39.8/60.2% | 49.0/51.0% |
-| Camera Ready (Deployed) | 4,525 | 3,408 | 1,172 | 1,179 | 39.8/60.2% | 50.4/49.6% |
-| Materials Exhausted (Transport) | 4,525 | 3,411 | 1,189 | 912 | 39.8/60.2% | 49.0/51.0% |
+| Dry (Transport) | 3,263 | 2,742 | 1,192 | 1,077 | 54.1/45.9% | 48.6/51.4% |
+| Loaded Transport (Blue full) | 4,463 | 3,425 | 1,189 | 1,195 | 39.6/60.4% | 48.9/51.1% |
+| Camera Ready (Deployed) | 4,463 | 3,422 | 1,171 | 1,194 | 39.6/60.4% | 50.4/49.6% |
+| Materials Exhausted (Transport) | 4,463 | 3,425 | 1,189 | 923 | 39.6/60.4% | 48.9/51.1% |
 
 **Loaded Transport** is the camera-ready water load (full top-tier Blue IBCs,
 1,200 kg) carried in the *transport* configuration — panel swung in, cargo doors
-closed. It shares the Materials Exhausted footprint (same X/Yd, same 39.8/60.2
+closed. It shares the Materials Exhausted footprint (same X/Yd, same 39.6/60.4
 front/rear) but the water sits in the **top** tier, so its vertical CG is
-**Z=1,179mm — 267mm higher** than the exhausted state (912mm). It is therefore
+**Z=1,195mm — 272mm higher** than the exhausted state (923mm). It is therefore
 the **highest-CG transport case** and governs road-transport stability (tie-down
 and cornering), even though total mass and axle split are unchanged.
 
@@ -204,10 +209,10 @@ All four states are well within the ISO 24,000 kg maximum gross weight:
 
 | State | Total (kg) | Margin (kg) | Utilization |
 |-------|-----------|------------|-------------|
-| Dry | 3,325 | 20,675 | 13.9% |
-| Camera Ready | 4,525 | 19,475 | 18.9% |
-| Materials Exhausted | 4,525 | 19,475 | 18.9% |
-| Loaded Transport | 4,525 | 19,475 | 18.9% |
+| Dry | 3,263 | 20,737 | 13.6% |
+| Camera Ready | 4,463 | 19,537 | 18.6% |
+| Materials Exhausted | 4,463 | 19,537 | 18.6% |
+| Loaded Transport | 4,463 | 19,537 | 18.6% |
 
 The container operates at less than 20% of its rated capacity in all states.
 There is no structural concern from a gross weight perspective.
@@ -247,26 +252,28 @@ axle(s) to balance the load.
 
 The most significant finding is the **vertical CG migration** between states:
 
-- **Camera Ready:** Z_cg = 1,179mm (1,200 kg of water in top-tier IBCs)
-- **Materials Exhausted:** Z_cg = 912mm (1,200 kg of water in bottom-tier IBCs)
-- **ΔZ = −267mm** (CG drops ~267mm during a session)
+- **Camera Ready:** Z_cg = 1,194mm (1,200 kg of water in top-tier IBCs)
+- **Materials Exhausted:** Z_cg = 923mm (1,200 kg of water in bottom-tier IBCs)
+- **ΔZ = −271mm** (CG drops ~271mm during a session)
 
 This is an inherent self-stabilizing feature of the 2×2 IBC stack design.
 The water system is closed — 1,200 kg of water is loaded into the Blue IBCs
 and redistributed during processing. No water is added or lost; it simply
 migrates from top-tier Blue IBCs through the processing tray into bottom-tier
-Brown/Waste IBCs. Total mass remains constant at 4,586 kg throughout a
+Brown/Waste IBCs. Total mass remains constant at 4,463 kg throughout a
 session, but the vertical redistribution of 1,200 kg from top tier to
-bottom tier drops the center of gravity by 268mm, improving stability.
+bottom tier drops the center of gravity by 271mm, improving stability.
 
 ### 6.5 Walkway Weight Sensitivity
 
-The walkway system contributes 187 kg (5.5% of dry weight), making it the
-second-largest structural subsystem after the hinged panel. The weight is
-dominated by the grating — now a thin 15mm press-locked steel grate at ≈26 kg/m²
-(reduced from the original 25mm grate at 44 kg/m² when the deck was lowered to
-clear the film plane and tray rim). Galvanized steel grating is specified for
-durability and chemical resistance in the wet processing environment.
+The walkway system contributes 143 kg (4.4% of dry weight), making it the
+second-largest structural subsystem after the hinged panel. The deck grating —
+now 15mm molded GRP (fiberglass) at ≈11 kg/m² — is still the largest single line
+in the walkway, but the GRP swap (from 15mm galvanized steel at ≈26 kg/m²) removed
+**~62 kg** and, more importantly, eliminated the steel grate's corrosion exposure
+in the wet photo-chemistry environment. The GRP is vinyl-ester resin with a grit
+top for slip resistance; the 15mm depth is kept so the lowered deck and spray-bar
+clearance are unchanged.
 
 ---
 
@@ -274,7 +281,7 @@ durability and chemical resistance in the wet processing environment.
 
 1. [ISO 668:2020](https://www.iso.org/standard/76912.html) — Series 1 freight containers: Classification, dimensions and ratings
 2. [Hapag-Lloyd Container Specification](https://www.hapag-lloyd.com/en/products/fleet/container/20-foot-standard.html) — 20ft Standard Dry Container
-3. [McNICHOLS](https://www.mcnichols.com/products/bar-grating/press-locked) — Press-Locked Steel Bar Grating, 15mm depth, weight tables
+3. [McNICHOLS — Fiberglass Grating](https://www.mcnichols.com/fiberglass-grating) / [Grating Pacific — Molded FRP](https://gratingpacific.com/product/molded-fiberglass-grating/) — Molded GRP (fiberglass) grating, vinyl-ester, weight tables
 4. [Schutz Ecobulk MX 600L](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — IBC tote specifications
 5. [Water System Report](water-system-report.md) — Processing tray weight (§4), IBC layout (§5)
 6. [Light Trap Selection](light-trap-selection.md) — Panel + drum weight (§7)

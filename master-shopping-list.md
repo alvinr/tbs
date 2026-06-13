@@ -410,7 +410,7 @@ top/bottom weld + anchor connection** (fabricator/PE review) — not the member 
 ### Walkway sections (4 off)
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [Press-locked steel grating, 15mm](https://www.mcnichols.com/products/grating/bar-grating/) | Galvanized, 15×3mm bars, 34mm pitch. Cut to size: near 4459×300mm (with 1474×500mm bump-out), far 4459×300mm, right 2362×300mm, left 2362×300mm (removable) | ~4.5 m² | [McNichols](https://www.mcnichols.com) | ~$290–$430 |
+| [Molded GRP (fiberglass) grating, 15mm](https://www.mcnichols.com/fiberglass-grating) | 5/8" (15mm) molded FRP, **vinyl-ester resin, grit top** (corrosion-proof in the chemistry zone; 15mm depth keeps the lowered deck + spray-bar clearance). Cut to size: near 4459×300mm (with 1474×500mm bump-out), far 4459×300mm, right 2362×300mm, left 2362×300mm (removable) | ~4.5 m² | [McNichols](https://www.mcnichols.com) / [Grating Pacific](https://gratingpacific.com) (SoCal) | ~$970–$1,260 |
 | Standard wall brackets, 8mm steel plate | Triangular gusset: 150mm vert × 300mm arm, welded. Hot-dip galvanized. | 14 | Local fab / Metal Supermarkets | ~$112–$175 |
 | Widened wall brackets, 10mm steel plate | 200mm vert × 500mm arm, 70mm gusset, welded. Hot-dip galvanized. EP/battery/slit zone. | 4 | Local fab / Metal Supermarkets | ~$72–$112 |
 | Reinforcing plates, 100×180×6mm mild steel | Welded to exterior wall face behind each standard bracket | 14 | Metal Supermarkets | ~$31–$49 |
@@ -421,12 +421,12 @@ top/bottom weld + anchor connection** (fabricator/PE review) — not the member 
 | Right walkway wall cleats (left corners, ×2) | 8mm steel — back-plate + exterior plate + shelf the long beam lands on, through-bolted to the wall | 2 | Local fab | ~$20–$35 |
 | Combined corner plates (right corners, ×2) | 10mm steel, 150mm-wide — secures BOTH the bottom film rail (BR) AND the walkway right beam (interior + exterior plate + 2 seats). Shared with the film plane: REPLACES the BR rail saddle | 2 | Local fab | ~$50–$80 |
 | M12 through-bolts + nuts, flat + lock washers | Wall cleats + combined plates (through-wall) + the 2 center-arm U-clamps to the IBC corridor uprights. Galvanized, grade 8.8. | ~24 | McMaster-Carr | ~$30–$50 |
-| [M saddle clips + TEK screws](https://www.mcnichols.com/products/grating/accessories/) | M saddle clips straddle 2 bearing bars, TEK screw through bracket arm or L-angle. Near/far/right walkways. | ~20 | [McNichols](https://www.mcnichols.com) | ~$15–$25 |
+| [316 SS hold-down clips (M/G-clip, FRP)](https://www.mcnichols.com/fiberglass-grating/) | Stainless hold-down clips clamp the GRP panel to the bracket arm / L-angle (no TEK-into-bar — FRP uses a clamp clip). Near/far/right walkways. | ~20 | [McNichols](https://www.mcnichols.com) | ~$25–$40 |
 | Left floor-leg cantilever brackets (×5) | Each = 50×50×3mm steel SHS post (~115mm, floor to grate bottom) + 40×40×3mm SHS arm (2× standard reach to X470, 3× extended to X770 on the drum-exit punch-out) + 128×60×8mm foot plate. Bolted to bare floor outside the tray (X<170); arms pass 15mm over the spray bar. Hot-dip galvanized. | 5 | Metal Supermarkets / local fab | ~$55–$95 |
 | [M10 wedge anchors + nuts/washers](https://www.mcmaster.com/) | Galvanized. 4 per foot plate (20 total) — sealed penetrations into the container floor. | 20 | McMaster-Carr | ~$25–$45 |
-| Drum-exit punch-out — extra grating (~0.23 m²) | Deeper landing (600mm) at the light-lock exit; carried by the 3 extended bracket arms (to X770) — no separate bearer/leg. | 1 lot | McNichols | ~$20 |
+| Drum-exit punch-out — extra GRP grating (~0.23 m²) | Deeper landing (600mm) at the light-lock exit; carried by the 3 extended bracket arms (to X770) — no separate bearer/leg. | 1 lot | McNichols / Grating Pacific | ~$50–$65 |
 | Fabrication + installation | Cut/weld/galvanize 14 std + 4 widened wall brackets, reinforcing plates, drill wall ribs, fabricate + fit the right walkway cantilever frame (clamp 2 center arms to the IBC uprights, bolt wall cleats + combined corner plates), fit 5 left floor-leg cantilever brackets + drill/seal floor anchors, install | 1 job | Local fab / metal shop | ~$290–$455 |
-**Walkway subtotal: ~$1,145–$1,760**
+**Walkway subtotal: ~$1,865–$2,650**  *(GRP grating swap: +$720–$890 vs galvanized steel; buys −62 kg + corrosion immunity in the chemistry zone)*
 
 *Near/far grating secured with M saddle clips + TEK screws to bracket arms. Right walkway grating secured with M saddle clips + TEK screws to L-angle bearer horizontal leg. Left walkway uses gravity retention — the grating rests on the floor-leg cantilever arms (5 brackets on bare floor at X=140, arms reaching X=470, three extended to X=770 on the punch-out); lift straight up to remove (no fasteners, no kerb). The brackets are bolted to the floor (permanent); only the grating lifts out for transport. No edge beam, no bearing strip, no tray contact (the +50mm walkway raise lifts the arms clear of the floor-level spray bar). Near walkway widens to 500mm at EP/battery/slit zone (X≈1,155–2,629) with heavier 10mm brackets (see Sheet 7). Slits cut to tray lip only (near: 420mm, far: 218mm), not full walkway depth. Transition bearing plates at width change brackets (X≈1,156 and X≈2,526). Butt joints at all corners. No floor contact on any section — entire tray interior clear.*
 
@@ -551,7 +551,8 @@ top/bottom weld + anchor connection** (fabricator/PE review) — not the member 
 | **[Amazon](https://www.amazon.com)** | Pumps, filters, valves, fittings, electrical, consumables | Online |
 | **[McMaster-Carr](https://www.mcmaster.com)** | Fasteners, bearings, seals, neoprene, cable trunking | Online / Ships from LA |
 | **[Online Metals](https://www.onlinemetals.com)** | SS sheet, aluminum sheet/angle | Online |
-| **[McNichols](https://www.mcnichols.com)** | Press-locked steel grating, clips | Online / Multiple branches |
+| **[McNichols](https://www.mcnichols.com)** | Molded GRP (fiberglass) grating, FRP hold-down clips | Online / Multiple branches |
+| **[Grating Pacific](https://gratingpacific.com)** | Molded FRP grating (vinyl-ester, grit top) | Los Angeles CA (SoCal) |
 | **[Purcooflow](https://www.purcooflow.com)** | 3-stage combo filter units, replacement cartridges | Online |
 | **[Grainger](https://www.grainger.com)** | Industrial supply — local branches throughout SoCal | Multiple SoCal branches |
 | **[Lenox Laser](https://www.lenoxlaser.com)** | Custom precision laser-drilled pinholes | Glen Arm, MD |

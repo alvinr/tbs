@@ -833,8 +833,9 @@ def sheet2():
               fc=C_FRAME, alpha=0.9)
     _rhs_rect(ax, FX_MID - 10, PANEL_FRAME_TOP_Z - FRAME_RHS, FRAME_RHS + 20,
               FRAME_RHS, sx, sy, fc=C_FRAME, alpha=0.6)   # top rail (end-on)
-    leader(ax, sx(FX_MID + FRAME_RHS), sy((TOP_Z + PANEL_FRAME_TOP_Z) / 2),
-           sx(FX_MID + 260), sy(PANEL_FRAME_TOP_Z - 30),
+    # Short leader into the open sky just right of the extended upright (rule 67).
+    leader(ax, sx(FX_MID + FRAME_RHS), sy(PANEL_FRAME_TOP_Z - 120),
+           sx(FX_MID + 110), sy(PANEL_FRAME_TOP_Z - 90),
            f"PANEL SUPPORT FRAME\nMID-BAY UPRIGHTS EXTENDED TO\nPANEL TOP Z={PANEL_FRAME_TOP_Z}mm + TOP RAIL\n+ FLOOR BEAM (corridor, Z=0)",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
@@ -914,10 +915,11 @@ def sheet2():
     for bz in (ARM_Z0 + 6, ARM_Z1 + 14):
         ax.add_patch(Circle((sx(FX_FRONT + FRAME_RHS / 2), sy(bz)), sx(6),
                             fc=C_OUT, ec=C_OUT, lw=0.5, zorder=9))
+    # Rewrapped to narrow lines (rule 66) so the block stays in the left margin
+    # instead of spilling across the upright + X-brace; full text is in note 9.
     leader(ax, sx(ARM_X_TIP_L + 40), sy(ARM_Z1),
-           sx(ARM_X_TIP_L), sy(ARM_Z1 + 360),
-           "RIGHT-WALKWAY CANTILEVER ARM (×2)\n40×40×3 SHS off the corridor uprights\n"
-           "(Yd 1046/1266) — carries the right walkway",
+           sx(ARM_X_TIP_L - 10), sy(ARM_Z1 + 90),
+           "RIGHT-WALKWAY\nCANTILEVER ARM\n40×40×3 SHS (×2)\n(see note 9)",
            color=C_ARM, fs=5.5, ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
     # ── Dimensions ──────────────────────────────────────────────────────────
@@ -928,9 +930,9 @@ def sheet2():
 
     # Bay spacing
     draw_dim_h(ax, sx(FX_FRONT), sx(FX_MID), sy(-40),
-               f"{FX_MID}mm", offset=sy(5), fs=5.5, font=FONT)
+               f"{FX_MID}mm", offset=sy(8), fs=5.5, font=FONT)
     draw_dim_h(ax, sx(FX_MID + FRAME_RHS), sx(FX_BACK), sy(-40),
-               f"{FX_BACK - FX_MID}mm", offset=sy(5), fs=5.5, font=FONT)
+               f"{FX_BACK - FX_MID}mm", offset=sy(8), fs=5.5, font=FONT)
 
     # Heights (right side)
     dim_x = FRAME_FOOTPRINT_D + 80
@@ -944,14 +946,17 @@ def sheet2():
                right=True, font=FONT)
 
     # ── Member labels ───────────────────────────────────────────────────────
-    leader(ax, sx(FX_MID + FRAME_RHS / 2), sy(TOP_Z / 2),
-           sx(FX_MID + 200), sy(TOP_Z / 2 + 300),
+    # Short leader into the open upper-tier face just right of the post (rule 67).
+    leader(ax, sx(FX_MID + FRAME_RHS), sy(TOP_Z * 0.62),
+           sx(FX_MID + FRAME_RHS + 55), sy(TOP_Z * 0.62 + 25),
            "CORRIDOR UPRIGHT\n50×50×3 RHS\nFLOOR TO TOP",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
 
-    leader(ax, sx(FRAME_FOOTPRINT_D / 2), sy(PLATFORM_Z + FRAME_RHS / 2),
-           sx(FRAME_FOOTPRINT_D / 2 - 300), sy(PLATFORM_Z + 200),
+    # Drop the callout just above the beam (short leader, rule 67) rather than
+    # reaching 300mm across the upper face.
+    leader(ax, sx(FRAME_FOOTPRINT_D / 2 - 190), sy(PLATFORM_Z + FRAME_RHS / 2),
+           sx(FRAME_FOOTPRINT_D / 2 - 220), sy(PLATFORM_Z + FRAME_RHS + 60),
            "LONGITUDINAL BEAM\n50×50×3 RHS\n(3 LEVELS × 2 = 6 TOTAL)",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
@@ -1117,10 +1122,11 @@ def sheet3():
     for post_yd in [POST_NEAR_YD, POST_FAR_YD]:
         _rhs_rect(ax, ARM_X_TIP_L, post_yd, (FX_FRONT + FRAME_RHS) - ARM_X_TIP_L, ARM_W,
                   px, py, fc=C_ARM, alpha=0.9, zo=7)
+    # Rewrapped to narrow lines (rule 66) + short leader (rule 67) so the block
+    # stays in the left margin instead of spilling over the frame footprint.
     leader(ax, px(ARM_X_TIP_L + 60), py(POST_NEAR_YD + ARM_W / 2),
-           px(ARM_X_TIP_L), py(POST_NEAR_YD - 320),
-           "RIGHT-WALKWAY CANTILEVER ARMS (×2)\n40×40×3 SHS off the corridor uprights\n"
-           "(Yd 1046/1266) → right walkway (off-frame, −X)",
+           px(ARM_X_TIP_L - 10), py(POST_NEAR_YD - 110),
+           "RIGHT-WALKWAY\nCANTILEVER ARMS (×2)\n40×40×3 SHS\n(off-frame, toward −X)",
            color=C_ARM, fs=5.5, ha="left", va="top", arrow_style="-|>", font=FONT)
 
     # ── Panel support frame (mid bay): top rail + floor beam span the corridor
@@ -1163,7 +1169,7 @@ def sheet3():
 
     # Bay spacing
     draw_dim_h(ax, px(FX_FRONT), px(FX_MID), py(-60),
-               f"{FX_MID}mm", offset=py(7), fs=5.5, font=FONT)
+               f"{FX_MID}mm", offset=py(8), fs=5.5, font=FONT)
     draw_dim_h(ax, px(FX_MID + FRAME_RHS), px(FX_BACK), py(-60),
                f"{FX_BACK - FX_MID}mm", offset=py(8), fs=5.5, font=FONT)
 
@@ -1237,8 +1243,11 @@ def sheet3():
             color=C_WELD, lw=2.5, zorder=15)
     ax.plot([wx, wx + px(12)], [wy, wy - py(12)],
             color=C_WELD, lw=2.5, zorder=15)
-    ax.text(wx + px(30), wy, "FILLET WELD\n5mm LEG\nCONTINUOUS",
-            ha="left", va="center", fontsize=4.5, color=C_WELD,
+    # Lift the weld note off the hatched beam into the open space above it
+    # (rule 62); the red chevron already marks the weld location.
+    ax.text(beam_x + px(beam_l * 0.45), dcy + py(beam_h / 2 + 16),
+            "FILLET WELD\n5mm LEG\nCONTINUOUS",
+            ha="center", va="bottom", fontsize=4.5, color=C_WELD,
             **FONT, zorder=15)
 
     # Labels

@@ -757,11 +757,11 @@ def sheet1():
                fs=7, font=FONT, width=sx(1800))
 
     # ── Title block ─────────────────────────────────────────────────────────
-#     title_block(ax, "SHEET 1 OF 3",
-#                 drawing_title="IBC SUPPORT FRAME",
-#                 subtitle="FRONT ELEVATION — FRAME ASSEMBLY",
-#                 scale_note="Axes in mm — VIEW ALONG X",
-#                 height=0.04)
+    title_block(ax, "SHEET 1 OF 3",
+                drawing_title="IBC SUPPORT FRAME",
+                subtitle="FRONT ELEVATION — FRAME ASSEMBLY",
+                scale_note="Axes in mm — VIEW ALONG X",
+                height=0.04)
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet1.png"), dpi=130,
                 bbox_inches="tight", facecolor=BG)

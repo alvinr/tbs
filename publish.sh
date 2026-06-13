@@ -64,6 +64,7 @@ MD_FILES=(
     "operating-manual.md"
     "electrical-report.md"
     "electrical-safety-report.md"
+    "daily-energy-report.md"
     "master-shopping-list.md"
     "licensing.md"
     "light-trap-selection.md"

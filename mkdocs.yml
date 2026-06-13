@@ -66,6 +66,7 @@ nav:
     - Electrical Systems:
       - "Electrical": electrical-report.md
       - "Electrical Safety": electrical-safety-report.md
+      - "Daily Energy Use": daily-energy-report.md
       - "Ventilation & Cooling": ventilation-report.md
     - Film Plane & Pinhole:
       - "Pinhole Report": pinhole-report.md

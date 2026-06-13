@@ -220,6 +220,8 @@ The demountable brace cage is retired. Each of the 8 rail ends instead anchors t
 
 ### 4.4 Optional electric actuation
 
+*Not included in any standard build — Scenarios A–C are all **manual** handwheel actuation. This is a documented upgrade only (the [Cost Analysis](cost-analysis-report.md) drops it from the recommended build to save ~$827): it replaces the four handwheels with PA-14 actuators for entry-free repositioning. See the [Film Plane Mechanism Report §electric actuation](film-plane-mechanism-report.md).*
+
 | Item | Spec | Qty | Unit | Total |
 |------|------|-----|------|-------|
 | PA-14 linear actuator | 12V, 20" stroke, 150 lb | 4 | $185† | $740 |
@@ -507,7 +509,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Container (CW) + delivery | $3,150 |
 | Interior conversion (full) | $1,140 |
 | Pinhole plate | $150 |
-| Film plane mechanism (manual Option A + wall-seat saddles + cross-slides + electric actuation) | $4,097 |
+| Film plane mechanism (manual Option A + wall-seat saddles + cross-slides) | $3,270 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,084 |
 | Power & electrical system (solar · LiFePO4 · distribution · lighting · protection) | $2,390 |
 | Ventilation & cooling system (2 fans · evap cooler · light-safe baffle-duct fab · shade canopy) | $769 |
@@ -518,17 +520,17 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Rodenstock Apo-Ronar 1200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$27,314** |
+| **Scenario B total (excl. CDL)** | **~$26,487** |
 
 ### Scenario C — Full production, own transport, CDL
 
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $26,414 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $25,587 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$115,914–$145,914** |
+| **Scenario C total** | **~$115,087–$145,087** |
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*
 

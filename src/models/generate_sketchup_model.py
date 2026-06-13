@@ -1728,14 +1728,17 @@ def spray_bar_plumbing():
     # tops at the stowed-shelf height (SHELF_STOW_TOP_Z); the spout reaches out over
     # the shelf and dispenses at TAP_Z. BV-06 isolates the branch.
     tr = TAP_PIPE_OD / 2
-    parts.append(ruby_cylinder("TAP-01 Riser (3/4in)",
-                               TAP_X, yd, fz, tr, SHELF_STOW_TOP_Z - fz, color=C_BLUE, axis="z"))
+    # One orthogonal run — riser up, out over the shelf, then down to the spout —
+    # so BOTH 90° turns get a swept-torus elbow fitting (per skill_plumbing_drawing).
+    # Was a riser cylinder + two butt-jointed spout pipes with no elbows at the corners.
+    parts.append(ruby_pipe_run("TAP-01 Branch (3/4in)",
+                               [(TAP_X, yd, fz),
+                                (TAP_X, yd, SHELF_STOW_TOP_Z),
+                                (TAP_X, yd + 100, SHELF_STOW_TOP_Z),
+                                (TAP_X, yd + 100, TAP_Z)],
+                               tr, color=C_BLUE))
     parts.append(ruby_box("BV-06 (chem tap isolation)",
                           TAP_X - 18, yd - 8, 1010, 36, 36, 40, color=C_VALVE))
-    parts.append(ruby_pipe("TAP-01 spout (out)",
-                           (TAP_X, yd, SHELF_STOW_TOP_Z), (TAP_X, yd + 100, SHELF_STOW_TOP_Z), tr, color=C_BLUE))
-    parts.append(ruby_pipe("TAP-01 spout (down)",
-                           (TAP_X, yd + 100, SHELF_STOW_TOP_Z), (TAP_X, yd + 100, TAP_Z), tr, color=C_BLUE))
 
     return '\n'.join(parts)
 

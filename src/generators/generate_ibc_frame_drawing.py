@@ -654,12 +654,16 @@ def sheet1():
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
 
+    # Nearest pocket is the open bottom-tier face directly under the beam — drop
+    # the text straight down (rule 67) instead of reaching to the right margin.
     leader(ax, sx(BLUE_IBC_Y + IBC_D / 2), sy(PLATFORM_Z + FRAME_RHS / 2),
-           sx(BLUE_IBC_Y - 100), sy(PLATFORM_Z + 300),
+           sx(BLUE_IBC_Y + IBC_D / 2), sy(PLATFORM_Z - 105),
            "PLATFORM BEAM\n50×50×3 RHS\n(×6, 3 PER COLUMN)",
-           color=C_OUT, fs=5.5, ha="right", va="bottom",
+           color=C_OUT, fs=5.5, ha="center", va="top",
            arrow_style="-|>", font=FONT)
 
+    # (kept at +200: pulling it lower collides with the CAGE TOP RAIL callout
+    # just below — this edge bracket's nearest non-colliding pocket is here.)
     leader(ax, sx(0), sy(PLATFORM_Z - BRACKET_SEAT_T / 2),
            sx(-100), sy(PLATFORM_Z + 200),
            "WALL SEAT BRACKET (LOAD-BEARING)\n8mm BACK-PLATE + SEAT + GUSSET\n4× M12 TO WALL  (×6 BRACKETS)",
@@ -697,15 +701,17 @@ def sheet1():
 
     # ── IBC anatomy labels ──────────────────────────────────────────────────
     leader(ax, sx(BLUE_IBC_Y + IBC_D / 2), sy(IBC_PALLET_H / 2),
-           sx(BLUE_IBC_Y + IBC_D / 2 - 200), sy(IBC_PALLET_H + 100),
+           sx(BLUE_IBC_Y + IBC_D / 2 - 70), sy(IBC_PALLET_H + 60),
            "PALLET BASE\n168mm (STEEL/PLASTIC)\nFORK POCKETS",
-           color=C_PALLET, fs=5, ha="right", va="top",
+           color=C_PALLET, fs=5, ha="right", va="bottom",
            arrow_style="-|>", font=FONT)
 
+    # Pull the valve callout into the bottom-tier face just left of the valve
+    # (short leader, rule 67), clear above the PALLET BASE callout below it.
     leader(ax, sx(BLUE_IBC_Y + IBC_D - IBC_CAGE_INSET), sy(IBC_VALVE_Z),
-           sx(NEAR_COL_R - 400), sy(IBC_VALVE_Z + 160),
+           sx(BLUE_IBC_Y + IBC_D - 80), sy(IBC_VALVE_Z + 235),
            f"DN50 VALVE (S60×6)\nZ={IBC_VALVE_Z}mm\nCORRIDOR FACE",
-           color=C_CAGE, fs=5, ha="left", va="top",
+           color=C_CAGE, fs=5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
 
     leader(ax, sx(BLUE_IBC_Y + IBC_CAGE_INSET), sy(IBC_H_600 - 50),
@@ -717,9 +723,9 @@ def sheet1():
     leader(ax, sx(IBC_FAR_Y + IBC_D / 2),
            sy(plat_top + IBC_PALLET_H / 2),
            sx(IBC_FAR_Y + IBC_D * 0.5),
-           sy(plat_top + IBC_PALLET_H / 2 + 280),
+           sy(plat_top + IBC_PALLET_H / 2 + 140),
            "UPPER IBC PALLET\nBEARS ON PLATFORM\n+ 12mm RUBBER MAT",
-           color=C_PALLET, fs=5, ha="left", va="top",
+           color=C_PALLET, fs=5, ha="center", va="bottom",
            arrow_style="-|>", font=FONT)
 
     leader(ax, sx(POST_NEAR_YD + FRAME_RHS - LIP_T / 2),

@@ -11,6 +11,21 @@ Use `place_label()` from `tbs_drawing.py` (not raw `ax.text()`) for component la
 
 ---
 
+## Self-review FIRST — run this before you show or commit any diagram
+
+The dominant cost on this project is the round-trip: I draw → the user "Tidy labels" → I extract a rule. **Cut it by self-reviewing against the 12 principles before the diagram ever leaves your hands.** This gate is not optional.
+
+1. **Render it and crop-zoom every label cluster.** Never commit a diagram you have only reasoned about — look at the pixels (PIL crop at 2.5–3×). Most of my misses this week (floor-flange "keep it long," spray-bar anchor) came from reasoning instead of looking.
+2. **Leaders:** each one shortest into the *nearest* clear pocket (P1), tip on the specific material edge (P3), nothing sitting on geometry/hatch (P2/P9). Sweep the *opposite* side before accepting a long one.
+3. **Inverted axis?** (`ax.invert_xaxis()`) → hand-drawn boxes need a **negative** width and offset text needs a leader or a flipped sign+`ha` (P10). This bites every time and is invisible until you look.
+4. **Dimensions:** units on **every** one; `offset` ≥8 (≈32–50 in mm-first sheets); anything <30mm gets a leader not a dim; no value both dimensioned *and* restated as a label (P7).
+5. **Notes:** ALL-CAPS title + `:`, `ha="left"`, width hugs the longest line (hard-wrap to stay narrow), `fs≥7`, trailing comma on every string (P8).
+6. **3D model labels:** does each leader tip land **on the part**, not the bounds-centre / mid-air above an outrigger? (P3 — `overview_labels()` now auto-snaps egregious floats, but still eyeball it.)
+
+If a check fails, fix it *before* rendering the "final" — don't ship it expecting a tidy pass.
+
+---
+
 ## 1. Shortest leader into the nearest clear pocket  *(r4, r5, r13, r51, r56, r59, r67, r69)*
 
 The master rule for *where* a callout goes. Keep the tip on the feature; move only the text.

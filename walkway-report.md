@@ -17,19 +17,19 @@ access functions:
 - **Right walkway** (IBC end) — access to IBC valves, filter skid, and pump
   manifold. Carried on a cantilever rectangle off the IBC frame to clear the IBC stack below.
 
-All four sections share a common 80mm deck height (65mm bracket arm, L-angle, or
-edge-beam ledge + 15mm grating) and 300mm standard width, creating a level perimeter walking
-surface. The deck is lowered (from the original 100mm) so the film plane travels
-above the in-place walkway — deck top Z=80mm clears the Z=100mm film-frame bottom
-by 20mm. The cantilever bracket arm (Z=55–65mm) clears the 50mm processing-tray
-rim by 5mm where it overhangs the tray.
+All four sections share a common 130mm deck height (115mm bracket arm, L-angle, or
+floor-leg arm + 15mm grating) and 300mm standard width, creating a level perimeter walking
+surface. The deck was raised +50mm (from the previously-lowered 80mm) so the left
+walkway's floor-leg support arms clear the floor-level spray bar (beam top Z=60mm) by
+15mm where they cross it (arm bottom Z=75mm). The near/far cantilever bracket arm (top
+at Z=115mm) overhangs the 50mm processing-tray rim with clearance.
 
 The design enforces **zero processing tray contact** — all walkway supports are
 either wall-mounted, carried on the cantilever rectangle off the IBC frame, or placed outside the tray footprint. This
 prevents chemical contamination of walkway structures and avoids disrupting the
 tray's watertight seal.
 
-**Interactive 3D model** — the four removable grated sections, the wall-cantilevered near/far brackets (with exterior reinforcing plates + M12 through-bolts), the right walkway on its cantilever rectangle (closed 40×40 SHS frame on 2 center arms off the IBC frame, with combined corner plates shared with the bottom film rail), the removable left lift-out carried by the full-width steel edge beam on bolt-through wall seats, and the processing tray, inside a ghost of the container. Drag to orbit, scroll to zoom.
+**Interactive 3D model** — the four removable grated sections, the wall-cantilevered near/far brackets (with exterior reinforcing plates + M12 through-bolts), the right walkway on its cantilever rectangle (closed 40×40 SHS frame on 2 center arms off the IBC frame, with combined corner plates shared with the bottom film rail), the removable left lift-out grate on 5 floor-leg cantilever brackets (posts on bare floor outside the tray, arms cantilevering over it), and the processing tray, inside a ghost of the container. Drag to orbit, scroll to zoom.
 
 <div class="sketchfab-embed-wrapper">
   <div style="position:relative;width:100%;padding-bottom:56.25%;">
@@ -45,7 +45,7 @@ tray's watertight seal.
 | Parameter | Value |
 |-----------|-------|
 | Standard walkway width | 300mm |
-| Deck height (floor to grate top) | 80mm |
+| Deck height (floor to grate top) | 130mm (raised +50 to clear the floor-level spray bar) |
 | Grating | 15mm molded GRP (fiberglass), vinyl-ester, grit top (thin grate, lowered deck; corrosion-proof in the chemistry zone) |
 | Grating bearing bars | 15×3mm at 34.2mm pitch |
 | Bracket arm height | 65mm above finished floor |
@@ -71,7 +71,7 @@ Each bracket is a three-piece welded 8mm steel plate assembly:
 | Component | Dimensions | Function |
 |-----------|-----------|----------|
 | Vertical mounting plate | 8×150mm (height), flat against wall rib | Bolted to container corrugation rib interior face |
-| Horizontal arm | 8mm plate, 300mm cantilever (500mm in widened zone) | Supports grating — top surface at Z=65mm |
+| Horizontal arm | 8mm plate, 300mm cantilever (500mm in widened zone) | Supports grating — top surface at Z=115mm |
 | Triangular gusset | Right triangle, 70mm reach from wall | Braces arm from below; reach stops before tray rim at Yd=80mm |
 
 ![TBS-001 Walkway — Sheet 2: Cross-Section with Bracket Detail](assets/walkway-sheet2.png)
@@ -81,8 +81,9 @@ passing through the full wall assembly: hex head → reinforcing plate (6mm) →
 exterior panel (1.6mm Corten) → air gap → rib interior face (1.6mm) →
 bracket vertical plate (8mm) → nut. Two lower bolts at Z=35mm straddle
 the 8mm gusset plate at ±27mm from the plate centerline in X (centered
-between plate edge and gusset). One upper bolt at Z=120mm (above grating deck at Z=80,
-30mm from plate top) is centered on the gusset centerline. The container
+between plate edge and gusset). One upper bolt at Z=120mm (just above the bracket
+arm at Z=115mm, near the top of the mounting plate) is centered on the gusset
+centerline. The container
 corrugation ribs are hollow — each bolt bridges the air gap inside the rib.
 A 6mm reinforcing plate (100×180mm) is welded to the exterior panel face to
 provide a bearing surface for the bolt heads and washers. See View B for the bolt pattern detail.
@@ -126,8 +127,8 @@ passing through the full wall assembly: hex head → reinforcing plate (6mm) →
 exterior panel (1.6mm Corten) → air gap → rib interior face (1.6mm) →
 bracket vertical plate (10mm) → nut. Two lower bolts at Z=35mm straddle
 the 10mm gusset plate at ±32mm from the plate centerline in X (centered
-between plate edge and gusset). Two upper bolts at Z=160mm (above grating
-deck at Z=80, 60mm from plate top) at the same ±32mm X offset. The
+between plate edge and gusset). Two upper bolts at Z=160mm (30mm above the grating
+deck at Z=130mm) at the same ±32mm X offset. The
 container corrugation ribs are hollow — each bolt bridges the air gap inside
 the rib. A 6mm reinforcing plate (120×220mm) is welded to the exterior panel
 face to provide a bearing surface for the bolt heads and washers. See Sheet 7,
@@ -232,10 +233,11 @@ The cantilever rectangle achieves four goals:
 The left walkway at the cargo door end (X=170–470mm) cannot use wall-cantilevered
 brackets because the hinged light-trap panel occupies the end wall and swings ~56°
 about the pivot for transport (its sweep passes over this zone). Its **inner edge
-(X=470mm) sits over the processing tray**, so it cannot be supported from below either. The left walkway
-is therefore a removable lift-out section whose inner edge is carried by a
-**full-width steel edge beam simply supported wall-to-wall on bolt-through wall
-seats** — the same load path as the IBC platform beams, not a cantilever.
+(X=470mm) sits over the processing tray**, so it cannot be supported from below
+either. The left walkway is therefore a removable lift-out grate carried by **5
+floor-leg cantilever brackets** — each a post standing on the bare floor *outside*
+the tray (X=140mm) with an arm that cantilevers over the tray to the grate inner
+edge. The +50mm deck raise lifts these arms clear of the floor-level spray bar.
 
 ![TBS-001 Walkway — Sheet 4: Lift-Out at Butt Joint](assets/walkway-sheet5.png)
 
@@ -243,46 +245,29 @@ seats** — the same load path as the IBC platform beams, not a cantilever.
 
 | Component | Specification | Position |
 |-----------|--------------|----------|
-| Inner-edge edge beam | 40×40×3mm **steel** SHS, full width 2362mm | X=470mm, spans wall-to-wall (Yd 0→2362), Z52–92 (top at Z≈92mm) |
-| Wall-seat bracket (×2) | 6mm **drop-in pocket** (floor piece + 2 triangular gusset sides) on an interior mounting plate + matching exterior plate (both 100×135×6mm) + **4× M12 through-bolts at the plate corners** (clear of the pocket), each end | Near (Yd≈0) and far (Yd≈2362) container walls at X=470mm |
-| Floor-standing support legs | 25×25×3mm aluminum SHS, 3 legs | X=140mm (on bare floor outside tray), 440mm spacing |
-| Foot plates | 60×60×3mm aluminum with rubber pad | At base of each floor leg |
-| Bearing strip | 15mm aluminum flat bar | On processing tray rim at X=170mm (removable) |
+| Floor-leg cantilever bracket (×5) | 50×50×3mm steel SHS post (~115mm, floor to grate bottom) + 40×40×3mm SHS arm (Z75–115, 40mm deep) + 128×60×8mm foot plate | Posts on bare floor at X=140mm (outside the tray), at Yd 250 / 800 / 1180 / 1560 / 2110 |
+| Floor anchors | 4× M10 wedge anchors per foot plate (20 total) | Sealed penetrations into the container floor |
+| Standard arm reach | Arm reaches the grate inner edge at X=470mm | 2 brackets (Yd 250, 2110) |
+| Extended arm reach | Arm extends to X=770mm under the drum-exit punch-out | 3 brackets (Yd 800 / 1180 / 1560) |
 
-The inner edge at X=470mm is the load-critical line (it overhangs the tray). It is
-carried by a **steel 40×40×3mm SHS edge beam** standing in the envelope
-**Z≈52–92mm**. The 40mm section (not 50mm) and the Z52 underside are deliberate: the
-beam runs the full container width and **crosses the tray's near and far perimeter
-rims** (Z0–50, at Yd≈80 and 2280), so its bottom must sit above Z50 — Z52 clears the
-rim by 2mm, the bath (Z42) by 10mm, and the film-frame bottom (Z=100mm) by 8mm, and
-keeps all load on the wall seats (the thin SS tray rim carries nothing). The beam
-stands ~12mm proud of the Z=80mm deck, so it doubles as a **toe-board / safety
-kerb**. The grating's inner edge rests on a Z65 ledge along the beam and is located
-laterally by the proud kerb (no fasteners, so it lifts straight out).
+The grate rests on the cantilever arms and lifts straight out — no fasteners, no
+kerb. The operator load travels grating → 40×40×3 cantilever arm → 50×50×3 post →
+foot plate → floor anchor, with **zero tray contact**: the posts stand on bare
+floor outside the tray (X<170mm) and the arms cantilever over it. The arm bottom at
+Z=75mm clears the floor-level spray bar (beam top Z=60mm) by 15mm and the tray rim
+(Z=50mm) by 25mm — clearances created by the +50mm deck raise. Because the brackets
+stand entirely outside the panel's transport-swing footprint, the grate simply
+lifts out before the panel swings; the floor-bolted posts stay put.
 
-The edge beam is **simply supported wall-to-wall** on a seat bracket bolted through
-the corrugated container wall at each end — a 6mm **drop-in pocket** (floor piece +
-two triangular gusset sides) welded to an interior mounting plate, a **matching
-exterior plate**, and **4× M12 through-bolts at the plate corners** (clear of the
-pocket so the nuts are reachable — the beam end drops into the pocket where the old
-3-bolt pattern would have blocked the nuts), mirroring the IBC wall-seat brackets. An operator's load travels grating →
-edge beam → wall as a clean end reaction, **not** a cantilever moment dumped on a
-bracket-arm tip. Because the seats sit at X=470mm — inside the panel's transport-
-swing sweep — the **edge beam and the interior pocket/mounting plates are demountable**
-(a few bolts) and lift out with the walkway before the panel swings; the through-bolts
-and exterior plates stay on the wall. The full-width beam also picks up the
-near/far walkways' door-end grate edges at X=470mm, so no separate X=470mm
-cantilever bracket is needed.
-
-**Structural check** (≈1kN operator at midspan, span = full width 2362mm): for the
-40×40×3 SHS (I ≈ 1.02×10⁵mm⁴, Z ≈ 5.1×10³mm³) bending ≈116MPa vs ~250MPa yield →
-**FoS ≈2.2**; deflection ≈13mm = **L/175** (springy but serviceable for occasional
-single-person access — a midspan stiffener is the fallback if bounce is an issue);
-beam mass ≈8.2kg (liftable). Each wall reaction ≈0.5kN — the IBC-style
-wall seats carry ~50× that in the tote application. This is a hand-check, not a
-signed analysis. See the [edge-beam design spec](https://github.com/alvinr/tbs/blob/main/docs/superpowers/specs/2026-06-05-left-walkway-edge-beam-support.md)
-for the full rationale and the ruled-out alternatives (rod suspension fouls the
-film plane).
+**Load path / hand-check.** The longest cantilever is the X=770mm punch-out arm
+(~630mm reach from the X=140mm post). With a ~1kN footfall at the arm tip, the
+40×40×3 SHS arm and 50×50×3 SHS post carry the moment with margin and the foot
+plate's 4× M10 anchors react the overturning. This is a hand-check, not a signed
+analysis; the brackets bolt to the floor permanently and only the grate lifts out
+for transport. This floor-leg cantilever supersedes the earlier full-width
+edge-beam scheme — it is simpler and lighter and needs no through-wall seats, and
+the +50mm deck raise (which it relies on to clear the spray bar) is what made it
+viable.
 
 ### 5.2 Drum-Exit Punch-Out (rev 8)
 
@@ -297,7 +282,7 @@ drum-opening span (Yd 800–1560mm)** — a ~600 × 760mm landing centered on th
 |-----------|-------|----------|
 | Punch-out depth | 600mm (vs 300mm) | `WALKWAY_LEFT_WIDE_W` |
 | Punch-out Yd span | 800–1560mm | `WALKWAY_LEFT_WIDE_YD_L/_YD_R` |
-| Deck height | Z=65–80mm (grating, as elsewhere) | `WALKWAY_H` |
+| Deck height | Z=115–130mm (grating, as elsewhere) | `WALKWAY_H` |
 
 **Optical clearance.** The punch-out reaches X=770mm — inside the active image
 zone (X≥150mm) — so it was checked against the optical cone. At the drum-exit depth
@@ -307,47 +292,40 @@ every pinhole sight line through it lands at X≤37mm on the film plane, ~113mm 
 of the image edge. Confirmed by `generate_line_of_sight.py` (no equipment intersects
 the cone).
 
-**Support.** The 600mm section overhangs ~300mm past the X=470mm edge beam, out
-over the processing tray. Because a floor leg cannot stand in the tray basin, the
-overhang is carried by a small **cantilever sub-frame**: two 50×50×3mm aluminum RHS
-cantilever arms bolted to the edge beam at the punch-out's Yd ends (Yd=800 and
-1560mm), tied at their tips by an outer trim bearer at X≈770mm. The sub-frame
-cantilevers entirely over the tray with **zero tray contact**, and lifts out with
-the rest of the left walkway for transport. See **walkway Sheet 9 (Detail E)** for
-the attachment plan.
-
-On the cargo door side (X=170mm), the grating rests on a 15mm aluminum flat-bar
-bearing strip placed on top of the processing tray rim (rim top at Z=50mm, strip
-top at Z=65mm). Below the bearing strip, three floor-standing support legs at
-X=140mm provide vertical support. These legs stand on bare floor outside the
-processing tray footprint — zero tray contact.
+**Support.** The 600mm punch-out (X=170–770) is carried by the **3 middle
+floor-leg brackets** (Yd 800 / 1180 / 1560) — the same posts that carry the
+standard left walkway, but with their arms **extended to X=770mm** (vs 470mm for
+the two end brackets). Each arm cantilevers the full ~630mm over the tray from its
+X=140mm post on bare floor, with **zero tray contact**, and lifts out with the rest
+of the left walkway for transport. No separate sub-frame, edge beam, or bearing
+strip is needed.
 
 **Sheet 9 — Detail E: Drum-Exit Punch-Out Support (plan).** How the deeper
-landing attaches and is supported — the cantilever sub-frame off the
-X=470mm edge beam, the outer trim bearer at X=770mm, and the zero-tray-contact
-overhang.
+landing is supported — the 3 middle floor-leg brackets with arms extended to
+X=770mm, cantilevering over the tray with zero tray contact. See also **Sheet 6
+(Detail D)** for the floor-leg bracket itself.
 
 ![TBS-001 Walkway — Sheet 9: Drum-Exit Punch-Out Support](assets/walkway-sheet9.png)
 
-### 5.3 Wall-Seat Bracket Detail
+### 5.3 Floor-Leg Cantilever Bracket Detail
 
-The edge beam lands in a **seat bracket bolted through the container wall** at each
-end (the IBC wall-seat load path). The beam is located in X and Z by the seat
-pocket — no separate anti-slip restraint is needed.
+Each of the 5 brackets is a post standing on the bare floor outside the tray, with
+an arm cantilevering over the tray to carry the grate. No wall seats and no tray
+contact.
 
-![TBS-001 Walkway — Sheet 6: Wall-Seat Bracket Detail](assets/walkway-sheet6.png)
+![TBS-001 Walkway — Sheet 6: Floor-Leg Cantilever Bracket Detail](assets/walkway-sheet6.png)
 
 | Component | Specification |
 |-----------|--------------|
-| Interior mounting plate + pocket | 100×135×6mm steel plate carrying a **drop-in pocket** — a floor piece + two triangular gusset sides (all 6mm) — the beam end drops onto the floor between the gussets |
-| Exterior backing plate | **100×135×6mm** steel (matches the interior plate) — spreads the bolt reaction across the corrugated wall |
-| Through-bolts | **4× M12×80mm** grade 8.8 at the **plate corners** — clear of the pocket so the nuts are reachable, into the wall rib |
-| End reaction | ≈0.5kN per seat (1kN operator at midspan) |
+| Post | 50×50×3mm steel SHS, ~115mm tall (floor to grate bottom), on bare floor at X=140mm |
+| Foot plate | 128×60×8mm steel plate, with **4× M10 wedge anchors** into the container floor (sealed) |
+| Arm | 40×40×3mm steel SHS, Z75–115 (40mm deep), reaching X=470mm (2 brackets) or extended to X=770mm (3 brackets, under the punch-out) |
+| Overturning reaction | reacted by the foot-plate anchors; ~1kN footfall at the arm tip is the worst case |
 
-The beam end drops into the seat-plate pocket — located in X and Z, free to lift
-straight out. **Demountable for transport:** the seat plate is on a few bolts and
-comes off with the beam before the panel swings; the through-bolts and exterior
-backing plate remain on the wall. No tools beyond a wrench for the 3 bolts.
+The grate simply rests on the cantilever arms — located laterally by butting the
+near/far grate edges, free to lift straight out (no fasteners, no kerb).
+**Demountable for transport:** the grate lifts out before the panel swings; the
+floor-bolted posts stay in place. No through-wall hardware at all.
 
 ### 5.4 Panel Transport Clearance
 
@@ -355,15 +333,14 @@ backing plate remain on the wall. No tools beyond a wrench for the 3 bolts.
 |-----------|-------|
 | Panel transport motion | SWING ~56° about the Ø89 pivot (rev10 — supersedes the linear slide) |
 | Swing sweep reach (near-walkway zone) | X≈1395mm |
-| Butt joint / edge beam / near-far walkway start | X=470mm |
+| Butt joint / near-far walkway start | X=470mm |
 | Panel / cage bottom edge | Z=130mm (grate-top level) |
 
 ![TBS-001 Walkway — Sheet 4: Lift-Out at Butt Joint](assets/walkway-sheet4.png)
 
-The left walkway grating (X170–470), its **edge beam, interior seat plates**, support
-legs, and bearing strip — together with the door-end near-deck lift-out section — must
-be removed before the panel can swing (the exterior backing plates and through-bolts
-stay on the wall). As the panel + drum swing ~56° about the pivot, the cage sweeps past
+The left walkway grate (X170–470) — together with the door-end near-deck lift-out
+section — must be lifted out before the panel can swing (the 5 floor-leg posts stay
+bolted to the floor). As the panel + drum swing ~56° about the pivot, the cage sweeps past
 the X=470mm butt joint into the vacated zone, **riding the Z=130mm floor gap over the
 Z115 door-end brackets** — so no walkway bracket is struck (the swing clears them at Z).
 The relevant standing clearance is vertical: the panel/cage bottom edge sits at the
@@ -380,7 +357,7 @@ intersections.
 
 | Corner | Butt joint X | Design |
 |--------|-------------|--------|
-| Near-left / Far-left | X=470mm | Left walkway grating bolts to the full-width edge beam |
+| Near-left / Far-left | X=470mm | Left walkway grate rests on the floor-leg cantilever arms; butts the near/far grate |
 | Near-right / Far-right | X=4629mm | Right walkway grating abuts near/far grating |
 
 Butt joints are used rather than miters for two reasons:
@@ -440,12 +417,11 @@ steel bearing bar, since FRP isn't screwed through). Clips are spaced at every o
 the horizontal leg of the 25×25×5mm L-angle bearers rather than the bracket
 arms.
 
-**Left walkway** uses gravity retention only. The grating sits on twin support
-lines (edge beam at X=470mm and bearing strip at X=170mm) and is held in
-position laterally by the edge beam's **proud kerb**, which stands ~12mm above the
-deck and stops the grating sliding tray-ward. The twin support lines prevent
-rocking. No fasteners are used because the left walkway must be removed quickly
-for hinged panel transport mode — lift straight up and carry out.
+**Left walkway** uses gravity retention only. The grate rests on the 5 floor-leg
+cantilever arms (Yd 250/800/1180/1560/2110) and is located laterally by butting the
+near/far grate edges. No fasteners are used because the left walkway must be removed
+quickly for hinged panel transport mode — lift straight up and carry out; the
+floor-bolted posts stay put.
 
 ---
 
@@ -488,16 +464,12 @@ bounces noticeably less than the rod-hung version it replaces.
 | 8 | Wall cleat (left corners) | 8mm steel: back-plate + exterior plate + shelf, through-bolted to the wall | 2 | $20–$35 |
 | 9 | Combined corner plate (right corners) | 10mm steel, 150mm wide — carries the walkway right beam AND the bottom film rail (replaces the BR rail saddle) | 2 | $50–$80 |
 | 10 | M12 through-bolt kit (right walkway) | Wall cleats + combined plates + 2 center-arm U-clamps to the IBC uprights | ~24 | $30–$50 |
-| 12 | Edge beam (left walkway inner edge) | 40×40×3mm **steel** SHS, 2362mm long (full width) | 1 | $35–$60 |
-| 12a | Wall-seat bracket (left edge beam) | 6mm drop-in pocket (floor + 2 triangular gussets) on a 100×135×6mm interior mounting plate + matching 100×135×6mm exterior plate, each end | 2 | $30–$55 |
-| 12b | M12×80mm through-bolt kit (wall seats) | Hex bolt + 2× washers + nut, grade 8.8 | 8 (4 per seat) | $9–$15 |
-| 13 | Floor support leg | 25×25×3mm aluminum SHS, 65mm tall | 3 | $10–$20 |
-| 14 | Foot plate | 60×60×3mm aluminum + 2mm rubber pad | 3 | $10–$15 |
-| 15 | Bearing strip | 15mm aluminum flat bar, ~2362mm long | 1 | $15–$25 |
+| 12 | Floor-leg cantilever bracket (left walkway, ×5) | 50×50×3mm steel SHS post (~115mm) + 40×40×3mm SHS arm (2 reach X470, 3 extended to X770) + 128×60×8mm foot plate; bolted to bare floor outside the tray | 5 | $55–$95 |
+| 13 | M10 wedge floor anchors | 4 per foot plate (20 total), sealed into the container floor | 20 | $25–$45 |
 | 17 | Grating clips | Removable spring clips, stainless | ~30 | $30–$50 |
 | 18 | Plywood base plate (evap cooler stowage) | 12mm plywood, 600×350mm | 1 | $5–$10 |
 | 19 | Ratchet strap (evap cooler) | 25mm×3m, 500kg WLL | 2 | $15–$25 |
-| | **Total** | | | **$2,053–$3,080** |
+| | **Total** | | | **$2,024–$3,030** |
 
 ---
 
@@ -506,13 +478,13 @@ bounces noticeably less than the rod-hung version it replaces.
 | Interval | Task |
 |----------|------|
 | Before each session | Inspect all grating clips are seated; test left walkway lift-out for freedom of movement |
-| Before each session | Check edge-beam wall-seat bolts are tight; beam seated fully in both pockets |
+| Before each session | Check the 5 floor-leg foot-plate anchors are tight; posts standing square |
 | Monthly | Inspect cantilever bracket bolts for tightness (3× M12 std, 4× M12 widened) |
 | Monthly | Check right walkway cantilever-arm U-clamps to the IBC uprights and the combined-plate bolts for tightness |
-| Monthly | Inspect grating for corrosion, damaged bearing bars, or bent cross bars |
+| Monthly | Inspect GRP grating panels for cracks, delamination, or a worn grit top |
 | Quarterly | Inspect reinforcing plates (exterior) for corrosion — touch up paint if needed |
 | Quarterly | Inspect the right walkway cantilever-rectangle welds + wall cleats for corrosion and bolt tightness |
-| Before transport | Remove left walkway: lift grating, remove bearing strip and floor legs, unbolt edge beam + interior seat plates (backing plates stay on wall) |
+| Before transport | Remove left walkway: lift the grate straight out (the 5 floor-leg posts stay bolted to the floor) |
 | Before transport | Verify evap cooler ratchet straps to bracket arms; check anti-slide cleats |
 | After transport | Reinstall left walkway in reverse order; check all sections for level deck |
 

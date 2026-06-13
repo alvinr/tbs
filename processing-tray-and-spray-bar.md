@@ -257,8 +257,8 @@ wheels spaced 200mm apart in the Yd direction for stability against tipping.
 | Wheel top | 52 |
 | Beam top | 60 |
 | Top clamp plate (+ bolt nut) | 60–63 (66) |
-| Walkway grating bottom | 75 |
-| Walkway grating top (deck surface) | 100 |
+| Left-walkway support arm bottom (over spray bar) | 75 |
+| Walkway grating top (deck surface) | 130 |
 
 **Clearances:**
 

@@ -1380,6 +1380,28 @@ def electrical():
                                 (es_cx, 10, es_cz)],
                                5, color="#6A3DA8"))
 
+    # Remaining panel-face hardware — matches the 2D power-panel detail (View A):
+    # MC4 PV bulkheads (3 pairs, left), NEMA 5-15R inlet (top-right), Deutsch DT
+    # cooler bulkhead (bottom-right). Positions are panel-local fractions, protruding
+    # from the same exterior face as the E-stop.
+    def _px(uf): return PWR_PANEL_X + uf * PWR_PANEL_W
+    def _pz(vf): return PWR_PANEL_Z + vf * PWR_PANEL_H
+
+    for i, vf in enumerate((0.225, 0.5, 0.775)):
+        z = _pz(vf)
+        parts.append(ruby_cylinder(f"MC4 PV{i + 1} (+)", _px(0.192), face_y - 20, z,
+                                   8, 20, color="#2D7A2D", axis="y"))
+        parts.append(ruby_cylinder(f"MC4 PV{i + 1} (-)", _px(0.275), face_y - 20, z,
+                                   8, 20, color="#9AA0A6", axis="y"))
+
+    parts.append(ruby_box("NEMA 5-15R inlet (panel)",
+                          _px(0.742) - 30, face_y - 30, _pz(0.878) - 22,
+                          60, 30, 45, color="#FFF0CC"))
+
+    parts.append(ruby_cylinder("Deutsch DT 2-pin (Cct E cooler)",
+                               _px(0.767), face_y - 20, _pz(0.325),
+                               10, 20, color="#E8884A", axis="y"))
+
     return '\n'.join(parts)
 
 

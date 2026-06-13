@@ -61,7 +61,7 @@ Ranked by dollar potential and ease. Status is updated as levers are actioned.
 | # | Lever | System | Saves | Ease / risk | Status |
 |---|---|---|--:|---|---|
 | 1 | **Container grade CW → WWT** (wind-water-tight used vs cargo-worthy — fine for a stationary darkroom) | Container | ~$1,350 | Easy, low risk | Available |
-| 2 | **Drop film-plane electric actuation → manual** (the mechanism already supports manual tilt/swing) | Film plane | ~$827 | Easy, if manual is acceptable | Available |
+| 2 | **Drop film-plane electric actuation → manual** (the mechanism already supports manual tilt/swing) | Film plane | ~$827 | Easy, if manual is acceptable | **Actioned 2026-06-13** — manual is now the standard build; electric is a documented upgrade only ([Cost Breakdown §4.4](project-cost-breakdown.md)) |
 | 3 | **Processing tray: 304 SS → poly / thinner gauge** | Water | ~$600–1,000 | Medium — chem-compat + stiffness check | Available (win-win — also cuts weight) |
 | 4 | **Battery 200 Ah → 100 Ah** ([Water System Report](water-system-report.md): 1×100 Ah ≈ 25+ prints/charge) | Power | ~$350 | Easy, if fewer sessions/charge is OK | Available |
 | 5 | **Solar 3 → 2 panels** (if the power budget allows) | Power | ~$130 | Easy | Available |

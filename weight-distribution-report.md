@@ -67,7 +67,7 @@ UV-HDPE 950 kg/m³, water 1,000 kg/m³.
 | Component | Weight (kg) | X Range (mm) | Yd Range (mm) | Calculation Basis |
 |-----------|------------|-------------|---------------|-------------------|
 | Electrical panel | 15 | 1,600–1,900 | 0–150 | Wall-mount distribution panel |
-| Battery bank | 26 | 1,810–2,310 | 0–150 | 2× 100Ah LiFePO4 @ 13 kg each |
+| Battery bank | 13 | 1,810–2,310 | 0–150 | 1× 100Ah LiFePO4 @ 13 kg (standard build; +13 kg for the optional 2nd pack) |
 | Solar controller | 2 | 1,700–1,800 | 0–100 | MPPT charge controller |
 | Pump manifold | 5 | 4,800–5,580 | 1,046–1,173 | 4× 12V diaphragm pumps on equipment panel |
 | Film plane carriage | 33 | 150–4,649 | 2,212–2,312 | Al angle frame (50.8×50.8×4.8mm) + 92 cam-lever clamps + 4 HGH20CA carriages |
@@ -79,16 +79,16 @@ UV-HDPE 950 kg/m³, water 1,000 kg/m³.
 | Brown IBC-3 (tote) | 55 | 4,674–5,893 | 30–1,046 | 600L steel-cage IBC tare (bottom tier, near) |
 | Waste IBC-4 (tote) | 55 | 4,674–5,893 | 1,316–2,332 | 600L steel-cage IBC tare (bottom tier, far) |
 | IBC stacking frame | 144 | 4,674–5,893 | 0–2,362 | 50×50×3mm RHS frame + 6 floor flange feet + 6 welded wall seat brackets + mid-bay panel support frame; simply supported wall-to-wall ([Equipment Layout](equipment-layout-report.md) §5, [Stacking Frame §3.5](ibc-stacking-report.md)) |
-| **Equipment subtotal** | **484** | | | |
+| **Equipment subtotal** | **471** | | | |
 
 ### 3.4 Dry Weight Summary
 
 | Category | Weight (kg) | % of Dry Total |
 |----------|------------|---------------|
-| Container (shell + doors) | 2,200 | 67.4% |
-| Structure | 578 | 17.7% |
-| Equipment | 484 | 14.8% |
-| **Total dry** | **3,262** | **100%** |
+| Container (shell + doors) | 2,200 | 67.7% |
+| Structure | 579 | 17.8% |
+| Equipment | 471 | 14.5% |
+| **Total dry** | **3,250** | **100%** |
 
 **Grating weight assumption:** 5/8" (15mm) molded GRP (fiberglass) grating,
 vinyl-ester resin with grit top, weighs approximately 11 kg/m² — vs ~26 kg/m²
@@ -116,7 +116,7 @@ during processing, not pre-loaded).
 | Blue IBC-2 water | 600 | 600 | X=4,674–5,893, Yd=1,316–2,332 | Top (Z=1,010–2,020) |
 | **Total liquid** | **1,200** | **1,200** | | |
 
-**Total loaded weight: 4,463 kg** (3,263 dry + 1,200 liquid)
+**Total loaded weight: 4,450 kg** (3,250 dry + 1,200 liquid)
 
 ### 4.2 Materials Exhausted (Ready for Resupply)
 
@@ -132,22 +132,22 @@ Brown/Waste IBCs.
 | Processing tray | — | 0 | Drained | — |
 | **Total liquid** | **1,200** | **1,200** | | |
 
-**Total loaded weight: 4,463 kg** (3,263 dry + 1,200 liquid)
+**Total loaded weight: 4,450 kg** (3,250 dry + 1,200 liquid)
 
 ### 4.3 State Comparison
 
 | State | Total (kg) | X_cg (mm) | Yd_cg (mm) | Z_cg (mm) | Front/Rear | Near/Far |
 |-------|-----------|-----------|------------|-----------|------------|----------|
-| Dry (Transport) | 3,263 | 2,742 | 1,192 | 1,077 | 54.1/45.9% | 48.6/51.4% |
-| Loaded Transport (Blue full) | 4,463 | 3,425 | 1,189 | 1,195 | 39.6/60.4% | 48.9/51.1% |
-| Camera Ready (Deployed) | 4,463 | 3,422 | 1,171 | 1,194 | 39.6/60.4% | 50.4/49.6% |
-| Materials Exhausted (Transport) | 4,463 | 3,425 | 1,189 | 923 | 39.6/60.4% | 48.9/51.1% |
+| Dry (Transport) | 3,250 | 2,745 | 1,196 | 1,080 | 54.0/46.0% | 48.4/51.6% |
+| Loaded Transport (Blue full) | 4,450 | 3,429 | 1,192 | 1,197 | 39.4/60.6% | 48.8/51.2% |
+| Camera Ready (Deployed) | 4,450 | 3,426 | 1,175 | 1,197 | 39.4/60.6% | 50.3/49.7% |
+| Materials Exhausted (Transport) | 4,450 | 3,429 | 1,192 | 925 | 39.4/60.6% | 48.8/51.2% |
 
 **Loaded Transport** is the camera-ready water load (full top-tier Blue IBCs,
 1,200 kg) carried in the *transport* configuration — panel swung in, cargo doors
-closed. It shares the Materials Exhausted footprint (same X/Yd, same 39.6/60.4
+closed. It shares the Materials Exhausted footprint (same X/Yd, same 39.4/60.6
 front/rear) but the water sits in the **top** tier, so its vertical CG is
-**Z=1,195mm — 272mm higher** than the exhausted state (923mm). It is therefore
+**Z=1,197mm — 272mm higher** than the exhausted state (925mm). It is therefore
 the **highest-CG transport case** and governs road-transport stability (tie-down
 and cornering), even though total mass and axle split are unchanged.
 
@@ -209,10 +209,10 @@ All four states are well within the ISO 24,000 kg maximum gross weight:
 
 | State | Total (kg) | Margin (kg) | Utilization |
 |-------|-----------|------------|-------------|
-| Dry | 3,263 | 20,737 | 13.6% |
-| Camera Ready | 4,463 | 19,537 | 18.6% |
-| Materials Exhausted | 4,463 | 19,537 | 18.6% |
-| Loaded Transport | 4,463 | 19,537 | 18.6% |
+| Dry | 3,250 | 20,750 | 13.5% |
+| Camera Ready | 4,450 | 19,550 | 18.5% |
+| Materials Exhausted | 4,450 | 19,550 | 18.5% |
+| Loaded Transport | 4,450 | 19,550 | 18.5% |
 
 The container operates at less than 20% of its rated capacity in all states.
 There is no structural concern from a gross weight perspective.
@@ -252,17 +252,17 @@ axle(s) to balance the load.
 
 The most significant finding is the **vertical CG migration** between states:
 
-- **Camera Ready:** Z_cg = 1,194mm (1,200 kg of water in top-tier IBCs)
-- **Materials Exhausted:** Z_cg = 923mm (1,200 kg of water in bottom-tier IBCs)
-- **ΔZ = −271mm** (CG drops ~271mm during a session)
+- **Camera Ready:** Z_cg = 1,197mm (1,200 kg of water in top-tier IBCs)
+- **Materials Exhausted:** Z_cg = 925mm (1,200 kg of water in bottom-tier IBCs)
+- **ΔZ = −272mm** (CG drops ~272mm during a session)
 
 This is an inherent self-stabilizing feature of the 2×2 IBC stack design.
 The water system is closed — 1,200 kg of water is loaded into the Blue IBCs
 and redistributed during processing. No water is added or lost; it simply
 migrates from top-tier Blue IBCs through the processing tray into bottom-tier
-Brown/Waste IBCs. Total mass remains constant at 4,463 kg throughout a
+Brown/Waste IBCs. Total mass remains constant at 4,450 kg throughout a
 session, but the vertical redistribution of 1,200 kg from top tier to
-bottom tier drops the center of gravity by 271mm, improving stability.
+bottom tier drops the center of gravity by 272mm, improving stability.
 
 ### 6.5 Walkway Weight Sensitivity
 

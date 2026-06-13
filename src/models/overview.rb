@@ -12263,6 +12263,32 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # Fill Flange Blue #1
+  grp = ents.add_group
+  grp.name = "Fill Flange Blue #1"
+  ge = grp.entities
+  circle = ge.add_circle([5408.mm,538.mm,2012.mm], [0,0,1], 36.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fill Flange Blue #2
+  grp = ents.add_group
+  grp.name = "Fill Flange Blue #2"
+  ge = grp.entities
+  circle = ge.add_circle([5408.mm,1824.mm,2012.mm], [0,0,1], 36.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # P-05 → X3 (Brown drain-out)
   grp = ents.add_group
   grp.name = "P-05 → X3 (Brown drain-out)"
@@ -13051,7 +13077,7 @@ inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Pinhole 
 if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
-  txt = entities.add_text("PINHOLE  Ø2.17mm", anc, Geom::Vector3d.new(-200.mm, -1600.mm, 900.mm))
+  txt = entities.add_text("PINHOLE  Ø2.17mm", anc, Geom::Vector3d.new(-140.mm, -1120.mm, 630.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Film Plane Mechanism" }
@@ -13067,13 +13093,6 @@ if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
   txt = entities.add_text("PROCESSING TRAY", anc, Geom::Vector3d.new(-250.mm, 0.mm, 650.mm))
-  txt.layer = model.layers["Labels"] rescue nil
-end
-inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Spray Bar" }
-if inst
-  bb = inst.bounds
-  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
-  txt = entities.add_text("SPRAY BAR", anc, Geom::Vector3d.new(450.mm, -2700.mm, 1300.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Equipment Panel" }
@@ -13135,6 +13154,9 @@ txt = entities.add_text("BATTERY BANK
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(2400.mm, 150.mm, 65.mm)
 txt = entities.add_text("WALKWAYS", anc, Geom::Vector3d.new(-200.mm, -850.mm, 750.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(2400.mm, 1180.mm, 60.mm)
+txt = entities.add_text("SPRAY BAR", anc, Geom::Vector3d.new(315.mm, -1890.mm, 910.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(175.mm, 2287.mm, 1700.mm)
 txt = entities.add_text("PIVOT POST Ø89

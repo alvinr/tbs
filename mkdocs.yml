@@ -53,6 +53,7 @@ nav:
   - Home: index.md
   - Proposal: funding-proposal.md
   - "Costing": project-cost-breakdown.md
+  - "Cost Analysis": cost-analysis-report.md
   - "Operating Manual": operating-manual.md
   - Construction:
     - "Overview": engineering-diagrams.md

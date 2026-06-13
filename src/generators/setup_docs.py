@@ -43,6 +43,7 @@ SITE_URL = "https://alvinr.github.io/tbs"
 MD_FILES = [
     ("funding-proposal.md",              (".",           "Proposal")),
     ("project-cost-breakdown.md",        (".",           "Cost Breakdown")),
+    ("cost-analysis-report.md",          (".",           "Cost Analysis")),
     ("pinhole-optics-report.md",         (".",           "Optics Report")),
     ("pinhole-option-b-optics.md",       (".",           "Container Optics")),
     ("lens-vs-pinhole-exposure.md",      (".",           "Lens vs Pinhole")),
@@ -334,6 +335,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Construction Guide](pinhole-camera-construction.md) | Light-sealing, pinhole plate fabrication, image plane loading |
 | [Pinhole Report](pinhole-report.md) | Interchangeable plate system — wall frame, pinhole plate, lens plate |
 | [Cost Breakdown](project-cost-breakdown.md) | Full itemized build cost — three scenarios, all sources cited |
+| [Cost Analysis](cost-analysis-report.md) | Where the cost sits by system, capital vs consumable, and the ranked savings levers |
 | [Chem Shopping List](chemistry-shopping-list.md) | 50-print quantities with supplier URLs and confirmed prices |
 | [Transportation](container-transport-options.md) | Commercial hire vs. self-haul analysis |
 | [Operating Manual](operating-manual.md) | Single-operator step-by-step workflow — coating, exposure, development, cleanup |

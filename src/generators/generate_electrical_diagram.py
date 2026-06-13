@@ -136,21 +136,29 @@ def draw_sheet1():
             color=C_STEEL, lw=1.5, linestyle="--", zorder=3)
     wlabel(ax, nb_x + 0.12, 7.0, "NEG busbar  2/0 AWG", size=7.0)
 
-    # 4. 200A ANL main fuse  y=6.95–7.65
-    rbox(ax, LX + 1.2, 6.95, LW - 2.4, 0.70,
-         "200A ANL MAIN FUSE",
-         "Battery (+) → busbar  |  2/0 AWG",
+    # 4. MRBF terminal fuse — on the battery (+) post, ≤180mm  y=7.50–8.12
+    rbox(ax, LX + 1.2, 7.50, LW - 2.4, 0.62,
+         "200A MRBF TERMINAL FUSE",
+         "Terminal-mount on battery (+) post, ≤180mm (ABYC E-11)",
          fc=C_WARN, ts=9.0, ss=7.5)
-    varrow(ax, CX, 8.4, 7.65, col=C_OUT)
-    wlabel(ax, CX + 0.18, 8.05, "2/0 AWG  |  Battery positive")
+    varrow(ax, CX, 8.4, 8.12, col=C_OUT)
+    wlabel(ax, CX + 0.18, 8.26, "2/0 AWG  |  Battery positive")
+
+    # 4b. Main battery disconnect switch  y=6.60–7.22
+    rbox(ax, LX + 1.2, 6.60, LW - 2.4, 0.62,
+         "MAIN DISCONNECT SWITCH",
+         "Blue Sea m-Series 300A manual isolator  |  emergency / maintenance",
+         fc=C_WARN, ts=9.0, ss=7.5)
+    varrow(ax, CX, 7.50, 7.22, col=C_OUT)
+    wlabel(ax, CX + 0.18, 7.36, "2/0 AWG  |  Fused (+) → switch")
 
     # 5. Fuse block  y=5.4–6.55
     rbox(ax, LX, 5.4, LW, 1.15,
          "BLUE SEA 5026 FUSE BLOCK",
          "12-circuit ST-blade  |  Positive + negative busbars  |  In IP65 enclosure",
          fc=C_WARN, ts=10.0, ss=8.0)
-    varrow(ax, CX, 6.95, 6.55, col=C_OUT)
-    wlabel(ax, CX + 0.18, 6.75, "2/0 AWG  |  Fuse → busbar")
+    varrow(ax, CX, 6.60, 6.55, col=C_OUT)
+    wlabel(ax, CX + 0.18, 6.75, "2/0 AWG  |  Switch → fuse block")
 
     # Ground symbol below fuse block
     gx = LX + 0.7
@@ -229,12 +237,12 @@ def draw_sheet1():
     # NOTE: these values must match calculate_energy_budget.py and
     # electrical-report.md §3.1.  Update all three when specs change.
     summary = [
-        ("Battery capacity",    "200Ah × 12V = 2,400Wh  (LiFePO4, 100% DoD)"),
+        ("Battery capacity",    "100Ah × 12V = 1,200Wh  (standard, 1 pack; +2nd → 2,400Wh)"),
         ("Energy per session",  "728 Wh (0.73 kWh)  — 3.0h continuous + pumps"),
-        ("Sessions per charge", "3.3 full prints from a full charge"),
+        ("Sessions per charge", "1.6 standard  (3.3 with the 2nd pack)"),
         ("Solar yield",         "600W × 5.5h = 3,300 Wh/day  (Palm Springs)"),
         ("Solar sessions/day",  "4.5 prints/day from solar alone"),
-        ("Shore recharge",      "~14h from flat  (15A charger)"),
+        ("Shore recharge",      "~7h standard  (~14h with the 2nd pack)"),
         ("Peak load",           "~475W simultaneous  (all circuits on)"),
     ]
     for k, (param, val) in enumerate(summary):

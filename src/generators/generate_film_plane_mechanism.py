@@ -26,7 +26,7 @@ import matplotlib.patheffects as pe
 from tbs_constants import (
     FP_X_L, FP_X_R, FP_Y, FP_Y_MIN, FP_W, FP_H,
     PH_X as PH_X_C, PH_H as PH_H_C,
-    MAX_TILT_DEG, MAX_SWING_DEG, RAIL_SPAN, DIAGRAMS_DIR, 
+    MAX_TILT_DEG, MAX_SWING_DEG, RAIL_SPAN, DIAGRAMS_DIR,
     FP_ANGLE_LEG, FP_ANGLE_T,
     CLAMP_SPACING, CLAMP_BASE_W, CLAMP_BASE_H, CLAMP_BASE_T,
     CLAMP_LEVER_L, CLAMP_JAW_W, CLAMP_JAW_H, CLAMP_JAW_T,
@@ -228,8 +228,8 @@ def sheet1():
                         arrowprops=dict(arrowstyle="-", color=RAIL, lw=0.8),
                         zorder=15)
             ax.annotate(f"FLOOR RAIL  ({label_side})",
-                        xy=(rx_floor + RAIL_W * 0.4, rail_mid_y - 200),
-                        xytext=(rx_floor - ldr_off, rail_mid_y - 200 - ldr_off),
+                        xy=(rx_floor + RAIL_W * 0.2, rail_mid_y - 200),
+                        xytext=(rx_floor - ldr_off, rail_mid_y - ldr_off),
                         fontsize=6.5, color=RAIL, ha="right", va="top", **FONT,
                         arrowprops=dict(arrowstyle="-", color=RAIL, lw=0.8),
                         zorder=15)
@@ -242,8 +242,8 @@ def sheet1():
                         arrowprops=dict(arrowstyle="-", color=RAIL, lw=0.8),
                         zorder=15)
             ax.annotate(f"FLOOR RAIL  ({label_side})",
-                        xy=(rx_floor + RAIL_W * 0.4, rail_mid_y - 200),
-                        xytext=(rx_floor + ldr_off, rail_mid_y - 200 - ldr_off),
+                        xy=(rx_floor + RAIL_W * 0.2, rail_mid_y - 200),
+                        xytext=(rx_floor + ldr_off, rail_mid_y - ldr_off),
                         fontsize=6.5, color=RAIL, ha="left", va="top", **FONT,
                         arrowprops=dict(arrowstyle="-", color=RAIL, lw=0.8),
                         zorder=15)
@@ -263,15 +263,15 @@ def sheet1():
             ax.add_patch(Rectangle((rx - pw / 2, sy), pw, proj,
                                    fc=STRUCT, ec=WHITE, lw=1.2, alpha=0.8, zorder=6))
     leader(ax, RAIL_X_L, proj,
-           RAIL_X_L - 320, proj - 240,
+           RAIL_X_L + 920, proj + 200,
            "WALL-SEAT SADDLE (6) + COMBINED PLATE (2)\nIBC-style: 4-bolt + exterior plate\nLEFT thumb-screw / RIGHT bolted",
            color=STRUCT, ha="center", fs=6.5, font=FONT)
     # rev12: the bottom-right (BR) rail ends share a combined corner plate with
     # the right walkway right beam (replaces the 2 BR saddles).
     leader(ax, RAIL_X_R, proj,
-           RAIL_X_R + 300, proj - 210,
+           RAIL_X_R - 700, proj + 200,
            "BR ENDS → COMBINED CORNER PLATE (×2)\nshared with the right walkway right beam\n(rev12 — replaces the BR saddles)",
-           color=STRUCT, ha="center", fs=6, font=FONT)
+           color=STRUCT, ha="center", fs=6.5, font=FONT)
 
     # Travel dim
     tr_x = RAIL_X_L - RAIL_W - 50
@@ -361,15 +361,15 @@ def sheet1():
 
     # Dims
     draw_dim_h(ax, 0, L, W+150, f"INTERIOR LENGTH  {L}mm  (19 ft 4 in)",
-               offset=10, color=DIM, fs=7.5, font=FONT)
-    draw_dim_v(ax, L+750, 0, W, f"OPTICAL AXIS\n{W}mm  (7 ft 9 in)",
-               offset=20, color=DIM, right=True, font=FONT)
+               offset=35, color=DIM, fs=7.5, font=FONT)
+    draw_dim_v(ax, L+950, 0, W, f"OPTICAL AXIS {W}mm  (7 ft 9 in)",
+               offset=35, color=DIM, right=True, font=FONT)
     draw_dim_h(ax, 0, RAIL_X_L, -350, f"{RAIL_X_L}mm\n(left end zone)",
-               color=DIM, fs=6.5, above=False, font=FONT)
+               color=DIM, fs=6.5, above=False, offset=45, font=FONT)
     draw_dim_h(ax, RAIL_X_L, RAIL_X_R, -350, f"Rail span  {RAIL_X_R-RAIL_X_L}mm",
-               color=RAIL, fs=6.5, above=False, font=FONT)
+               color=RAIL, fs=6.5, above=False, offset=45, font=FONT)
     draw_dim_h(ax, RAIL_X_R, L, -350, f"{L-RAIL_X_R}mm\n(right end zone)",
-               color=DIM, fs=6.5, above=False, font=FONT)
+               color=DIM, fs=6.5, above=False, offset=45, font=FONT)
 
     ax.text(L/2, W+580, "SHEET 1 — PLAN VIEW  (TOP DOWN, LOOKING AT CONTAINER FLOOR)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
@@ -1828,27 +1828,27 @@ def sheet6():
     # ── Dimensions ────────────────────────────────────────────────────────────
     # Container width (outermost)
     draw_dim_h(ax, 0, FW, -180,
-               f"INTERIOR WIDTH  {L}mm", offset=10, color=DIM, fs=6,
-               above=False, font=FONT)
+               f"INTERIOR WIDTH  {L}mm", offset=14, color=DIM, fs=6,
+               above=True, font=FONT)
 
     # Rail span + end zones (inner row)
     draw_dim_h(ax, 0, RAIL_X_L, -300,
-               f"{RAIL_X_L}mm", offset=10, color=DIM, fs=6,
-               above=False, font=FONT)
+               f"{RAIL_X_L}mm", offset=14, color=DIM, fs=6,
+               above=True, font=FONT)
     draw_dim_h(ax, RAIL_X_L, RAIL_X_R, -300,
-               f"RAIL SPAN  {RAIL_X_R - RAIL_X_L}mm", offset=10, color=DIM, fs=6,
-               above=False, font=FONT)
+               f"RAIL SPAN  {RAIL_X_R - RAIL_X_L}mm", offset=14, color=DIM, fs=6,
+               above=True, font=FONT)
     draw_dim_h(ax, RAIL_X_R, FW, -300,
-               f"{FW - RAIL_X_R}mm", offset=10, color=DIM, fs=6,
-               above=False, font=FONT)
+               f"{FW - RAIL_X_R}mm", offset=14, color=DIM, fs=6,
+               above=True, font=FONT)
 
     # Container height (left side)
     draw_dim_v(ax, -250, 0, FH,
-               f"INTERIOR HEIGHT\n{H}mm", offset=150, color=DIM, fs=6.5, font=FONT)
+               f"INTERIOR HEIGHT {H}mm", offset=150, color=DIM, fs=6.5, font=FONT)
 
     # Frame height (right side)
     draw_dim_v(ax, FW + 250, fp_bot, fp_top,
-               f"FRAME HEIGHT\n{fp_top - fp_bot}mm", offset=30, color=C_FLAT,
+               f"FRAME HEIGHT {fp_top - fp_bot}mm", offset=30, color=C_FLAT,
                fs=6.5, right=True, font=FONT)
 
     # ── Title text ────────────────────────────────────────────────────────────

@@ -176,9 +176,11 @@ water reservoir, Circuit E. Ground-placed outside the container; cooled air ente
 | Battery bank height range | 100–600mm | `BA_H_LO`, `BA_H_HI` |
 
 *Components: 3× 200W monocrystalline solar panels (roof-mounted), Victron SmartSolar MPPT 100/50,
-2× 100Ah LiFePO4 batteries (200Ah / 2,400Wh), Victron Blue Smart IP65 shore charger,
-NEMA 5-15R weatherproof inlet, Blue Sea 5026 12-circuit fuse block, IP65 enclosure
-(300×200×130mm), 200A ANL main fuse, 4 AWG ground wire + 8ft copper stake.*
+1× 100Ah LiFePO4 battery (1,200Wh standard; 2nd pack ghosted = plug-in → 200Ah / 2,400Wh),
+Victron Blue Smart IP65 shore charger, NEMA 5-15R weatherproof inlet, Blue Sea 5026 12-circuit
+fuse block, IP65 enclosure (300×200×130mm). Battery protection chain: 200A MRBF terminal fuse →
+ML-RBS remote contactor → m-Series main disconnect; external emergency E-stop on the power-panel
+face trips the contactor (kills all DC from outside). 4 AWG ground wire + 8ft copper stake.*
 
 *Circuits: A — safelight strip (overhead red LED); B — film plane mechanism motors;
 C — water pumps P-01–P-04 (P-03 in IBC corridor); D — safelight vestibule; E — evaporative cooler; F — ventilation fans.*

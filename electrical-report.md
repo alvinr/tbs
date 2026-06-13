@@ -199,7 +199,7 @@ The switches are positioned near the electrical panel, accessible from the near 
 IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior pinhole wall face (Y=0, X≈2050–2350mm). Contains:
 - Victron MPPT controller (or external, hardwired)
 - Blue Sea 5026 12-circuit fuse block with busbars
-- Battery positive and negative busbars, fed from the battery through a terminal-mount **200A MRBF fuse** (on the battery + post, ≤180mm) and a **main disconnect switch** (Blue Sea m-Series 300A) — see §7.5
+- Battery positive and negative busbars, fed from the battery through a terminal-mount **200A MRBF fuse** (on the battery + post, ≤180mm), a **remote battery contactor** (Blue Sea ML-RBS, tripped by the external panel E-stop), and a **main disconnect switch** (Blue Sea m-Series 300A) — see §7.5
 - Shore charger output terminals
 
 **Sheet 2 — Container Wiring Layout**
@@ -251,8 +251,16 @@ electrical hazard is **DC short-circuit / arc / fire**, not shock — see the de
 [Electrical Safety Report](electrical-safety-report.md) for the full hazard assessment.
 The following protective measures are part of the build:
 
-- **Battery main disconnect switch** (Blue Sea m-Series 300 A) between the battery + and
-  the distribution busbar — a manual isolator for emergency and maintenance
+- **External emergency cut-off** — a magnetic-latch battery contactor (Blue Sea ML-RBS,
+  500 A) sits in the battery (+) feed, downstream of the MRBF fuse and upstream of the
+  internal disconnect. It is tripped by a **red weatherproof E-stop push-button (IP66) on
+  the external power-panel face**: pressing it opens the contactor and de-energizes the
+  entire DC system **from outside the container, without entry**. The magnetic latch holds
+  the contactor open at **zero standby current** (no parasitic drain on the off-grid
+  budget); reset is at the contactor's manual lever inside. Only a low-current 2 × 18 AWG
+  control loop penetrates the pinhole wall, through a sealed gland.
+- **Battery main disconnect switch** (Blue Sea m-Series 300 A) between the contactor and
+  the distribution busbar — a manual isolator for maintenance / service
   de-energization (the 200 A fuse is overcurrent protection, not a switch).
 - **Main fuse at the battery terminal** — a terminal-mount MRBF fuse on the battery + post
   (≤180 mm, per ABYC E-11) protects the main cable along its whole length.
@@ -281,7 +289,9 @@ All US/SoCal sources. Prices approximate as of 2026.
 | Shore backup charger | Victron Blue Smart IP65 12/15 | altE Store | ~$150 |
 | Fuse block | Blue Sea 5026 ST Blade 12-circuit | West Marine (Torrance CA) / Amazon | ~$55 |
 | 200A main fuse (terminal-mount) | Blue Sea MRBF on the battery + post (≤180mm, ABYC E-11) | Amazon | ~$25 |
-| Battery main disconnect switch | Blue Sea m-Series 300A — manual isolator, battery + to busbar | West Marine (Torrance CA) / Amazon | ~$40 |
+| Battery main disconnect switch | Blue Sea m-Series 300A — manual isolator, contactor to busbar | West Marine (Torrance CA) / Amazon | ~$40 |
+| Remote battery switch (contactor) | Blue Sea ML-RBS 500A magnetic-latch — in battery + feed, tripped by the external E-stop | West Marine (Torrance CA) / Amazon | ~$150 |
+| External emergency cut-off (E-stop) | Red mushroom push-button, IP66, panel-mount on the external power panel + 2× 18 AWG control loop | [AutomationDirect](https://www.automationdirect.com/) / Amazon | ~$30 |
 | Battery terminal covers (pair) | Insulating boots over + / − posts/busbar | Amazon | ~$10 |
 | Sealed wet-zone connectors | Deutsch DT / adhesive-lined heat-shrink, pump circuits | Waytek Wire | ~$25 |
 | Dielectric grease | Marine-grade — chemistry-vapor terminal protection | Amazon | ~$10 |
@@ -307,12 +317,12 @@ All US/SoCal sources. Prices approximate as of 2026.
 | 6" inline fans × 2 | 12V DC, ~200 CFM each | Amazon (AC Infinity S6) | ~$120 |
 | 12V LED flat panel, 300×600mm, 4000K | 20W, neutral white, ceiling-mount | Amazon / superbrightleds.com | ~$75 (×3) |
 | Pull-cord ceiling switch, 12V 6A SPST | Inline switch for lighting circuits D & G | Amazon / Lowe's | ~$16 (×2) |
-| **Electrical system total** | | | **~$2,040** |
+| **Electrical system total** | | | **~$2,220** |
 | **Shade canopy total** | | | **~$200** |
 | **Cooling (evap cooler)** | | | **~$280** |
-| **Systems grand total** | | | **~$2,520** |
+| **Systems grand total** | | | **~$2,700** |
 
-*Electrical system total is the **standard 1-pack build** and matches the consolidated [Master Shopping List §6](master-shopping-list.md) (Solar & battery $1,295 + Distribution & wiring $745 = $2,040, the authoritative electrical BOM). The optional 2nd battery pack adds +$350. It includes ~$145 of circuit-protection / wet-zone-sealing hardware added per the [Electrical Safety Report](electrical-safety-report.md) §5 (disconnect switch, terminal-mount fuse, sealed connectors, bonding, grommets).*
+*Electrical system total is the **standard 1-pack build** and matches the consolidated [Master Shopping List §6](master-shopping-list.md) (Solar & battery $1,295 + Distribution & wiring $925 = $2,220, the authoritative electrical BOM). The optional 2nd battery pack adds +$350. It includes ~$325 of circuit-protection / wet-zone-sealing hardware added per the [Electrical Safety Report](electrical-safety-report.md) §5 (external emergency cut-off + battery contactor, disconnect switch, terminal-mount fuse, sealed connectors, bonding, grommets).*
 
 ## 9. Maintenance
 

@@ -93,7 +93,8 @@ The following measures are now part of the design and BOM ([Electrical Report §
 
 | Measure | Detail | Closes |
 |---|---|---|
-| **Battery main disconnect switch** | A manual isolator (Blue Sea m-Series 300 A) between the battery + and the distribution busbar — emergency and maintenance de-energization (a fuse is not a switch) | #1, #3 |
+| **External emergency cut-off (E-stop)** | A red weatherproof E-stop (IP66) on the external power-panel face trips a magnetic-latch contactor (Blue Sea ML-RBS) in the battery + feed — kills all DC power **from outside the container, without entry**, at zero standby draw | #1 |
+| **Battery main disconnect switch** | A manual isolator (Blue Sea m-Series 300 A) between the contactor and the distribution busbar — maintenance / service de-energization (a fuse is not a switch) | #1, #3 |
 | **Fuse at the battery terminal** | Relocate the main fuse to within **≤180 mm of the battery + post** (ABYC E-11) — terminal-mount MRBF fuse — so the main cable is protected along its whole length | #1 |
 | **Battery terminal covers + tool rule** | Insulating boots over both posts/busbar; "insulated tools only at the busbar" maintenance note | #3 |
 | **Sealed wet-zone connections** | Replace the Anderson Powerpoles on the pump circuits with IP-rated connectors (Deutsch DT or adhesive-lined heat-shrink); **tinned marine-grade wire** on wet runs; **dielectric grease** on any terminal exposed to chemistry vapor | #2 |

@@ -76,6 +76,15 @@ DT_Y     = 65             # center Y — aligns with PV1 (65mm)
 DT_DEPTH = 30             # body protrusion behind plate (mm)
 C_DT     = "#E8884A"      # orange — matches pump/cooler circuit color
 
+# Emergency cut-off (E-stop) — external battery kill; trips the battery contactor
+ESTOP_X      = 150        # center X from panel left edge (open plate center)
+ESTOP_Y      = 100        # center Y — plate vertical center
+ESTOP_R      = 20         # red mushroom dome radius (≈40mm button)
+ESTOP_RING_R = 26         # safety-yellow collar radius
+ESTOP_DEPTH  = 55         # contact-block protrusion behind plate (mm)
+C_ESTOP      = "#C42B1C"  # emergency red
+C_ESTOP_RING = "#F2C200"  # safety yellow collar
+
 
 def draw_sheet1():
     fig = plt.figure(figsize=(22, 15))
@@ -164,6 +173,18 @@ def draw_sheet1():
     ax_a.text(sx(DT_X), sy(DT_Y), "E", ha="center", va="center",
               fontsize=7, fontweight="bold", color=C_DT, zorder=6)
 
+    # Emergency cut-off (E-stop) — red mushroom on safety-yellow collar
+    draw_circle(ax_a, sx(ESTOP_X), sy(ESTOP_Y), sx(ESTOP_RING_R),
+                 lw=1.5, color=C_OUT, fill=True, fc=C_ESTOP_RING, zorder=5)
+    draw_circle(ax_a, sx(ESTOP_X), sy(ESTOP_Y), sx(ESTOP_R),
+                 lw=1.5, color="#7A1810", fill=True, fc=C_ESTOP, zorder=6)
+    # raised-dome highlight (upper-left)
+    draw_circle(ax_a, sx(ESTOP_X - 5), sy(ESTOP_Y + 5), sx(ESTOP_R * 0.45),
+                 lw=0, color=C_ESTOP, fill=True, fc="#E05646", zorder=7)
+    ax_a.text(sx(ESTOP_X), sy(ESTOP_Y - ESTOP_RING_R - 5), "STOP",
+              ha="center", va="top", fontsize=6.5, fontweight="bold",
+              color="#7A1810", zorder=7, **FONT)
+
     # Title
     ax_a.text(sx(PLATE_W / 2), sy(PLATE_H + 55),
               "VIEW A — FRONT ELEVATION (EXTERIOR FACE)",
@@ -191,6 +212,11 @@ def draw_sheet1():
            sx(PLATE_W + 25), sy(DT_Y - 25),
            "DEUTSCH DT 2-PIN\nBULKHEAD (IP67)\nCIRCUIT E — COOLER",
            fs=6, color=C_DT, ha="left", arrow_style="-|>", font=FONT)
+
+    leader(ax_a, sx(ESTOP_X), sy(ESTOP_Y + ESTOP_RING_R + 3),
+           sx(ESTOP_X), sy(PLATE_H + 28),
+           "EMERGENCY CUT-OFF (E-STOP)\n40mm IP66 · TRIPS BATTERY CONTACTOR",
+           fs=6.5, color=C_ESTOP, ha="center", arrow_style="-|>", font=FONT)
 
     leader(ax_a, sx(PLATE_W - MOUNT_INSET + MOUNT_HOLE_D),
            sy(PLATE_H - MOUNT_INSET),
@@ -417,7 +443,7 @@ def draw_sheet1():
     ax_c.set_aspect("equal")
     ax_c.axis("off")
     ax_c.set_xlim(0, 22)
-    ax_c.set_ylim(-1.2, 4.5)
+    ax_c.set_ylim(-2.7, 4.5)
 
     ax_c.text(8.75, 4.6, "VIEW C — WIRING SCHEMATIC",
               ha="center", va="bottom", fontsize=9, fontweight="bold",
@@ -506,15 +532,42 @@ def draw_sheet1():
                   arrowprops=dict(arrowstyle="-|>", color=C_DT, lw=1.0,
                                   connectionstyle="arc3,rad=0"), zorder=2)
 
+    # Emergency cut-off control path (E-stop → contactor at the battery)
+    row_es = -1.7
+    C_CTRL = "#6A3DA8"
+
+    def carrow(ax, x1, y, x2, col=C_CTRL, lw=1.5):
+        ax.annotate("", xy=(x2, y), xytext=(x1, y),
+                    arrowprops=dict(arrowstyle="-|>", color=col, lw=lw,
+                                    linestyle=(0, (4, 2))), zorder=3)
+
+    sbox(ax_c, 0.5, row_es, 2.8, 0.9,
+         "EMERGENCY E-STOP", "red mushroom · IP66", fc="#F6D6D2", tc=C_ESTOP)
+    carrow(ax_c, 3.3, row_es + 0.45, 4.5)
+    sbox(ax_c, 4.5, row_es, 3.0, 0.9,
+         "FLUSH-MOUNT PANEL", "E-stop button", fc=C_ALUM)
+    carrow(ax_c, 7.5, row_es + 0.45, 10.0)
+    ax_c.text(8.75, row_es + 0.65, "control 2×18 AWG", fontsize=6, color=C_CTRL,
+              ha="center", **FONT)
+    sbox(ax_c, 10.0, row_es, 3.2, 0.9,
+         "BATTERY CONTACTOR", "ML-RBS · in battery + feed", fc="#F6D6D2", tc=C_ESTOP)
+    # contactor is in the main battery (+) feed — solid power link up to the bank
+    ax_c.plot([13.2, bat_cx + 0.3], [row_es + 0.45, row_es + 0.45],
+              color=C_OUT, lw=1.8, zorder=3)
+    ax_c.annotate("", xy=(bat_cx + 0.3, row_top - 0.3), xytext=(bat_cx + 0.3, row_es + 0.45),
+                  arrowprops=dict(arrowstyle="-|>", color=C_OUT, lw=1.4), zorder=2)
+    ax_c.text(bat_cx + 0.45, row_es + 0.9, "main +", fontsize=5.5, color=C_OUT,
+              ha="left", va="center", **FONT)
+
     # Container wall indicator — single line (flush mount, no gland)
     wall_x_sch = 7.45
     ax_c.plot([wall_x_sch, wall_x_sch],
-              [row_cool - 0.5, row_top + 1.0],
+              [row_es - 0.5, row_top + 1.0],
               color=C_WALL, lw=4, zorder=1)
-    ax_c.text(wall_x_sch, row_cool - 0.7, "CONTAINER\nWALL",
+    ax_c.text(wall_x_sch, row_es - 0.7, "CONTAINER\nWALL",
               ha="center", va="top", fontsize=6, color=C_WALL,
               fontweight="bold", **FONT)
-    ax_c.text(wall_x_sch + 0.15, row_cool - 0.45, "(flush-mount\n panel)",
+    ax_c.text(wall_x_sch + 0.15, row_es - 0.45, "(flush-mount\n panel)",
               ha="left", va="top", fontsize=5, color=C_DIM, **FONT)
 
     # Zone labels

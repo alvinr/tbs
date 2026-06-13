@@ -8732,6 +8732,108 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # MC4 PV1 (+)
+  grp = ents.add_group
+  grp.name = "MC4 PV1 (+)"
+  ge = grp.entities
+  circle = ge.add_circle([1315.28.mm,-85.mm,1884.mm], [0,1,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # MC4 PV1 (-)
+  grp = ents.add_group
+  grp.name = "MC4 PV1 (-)"
+  ge = grp.entities
+  circle = ge.add_circle([1343.5.mm,-85.mm,1884.mm], [0,1,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["MC4 PV1 (-)"] || model.materials.add("MC4 PV1 (-)")
+  mat.color = Sketchup::Color.new(154, 160, 166)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # MC4 PV2 (+)
+  grp = ents.add_group
+  grp.name = "MC4 PV2 (+)"
+  ge = grp.entities
+  circle = ge.add_circle([1315.28.mm,-85.mm,1950.mm], [0,1,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # MC4 PV2 (-)
+  grp = ents.add_group
+  grp.name = "MC4 PV2 (-)"
+  ge = grp.entities
+  circle = ge.add_circle([1343.5.mm,-85.mm,1950.mm], [0,1,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["MC4 PV1 (-)"] || model.materials.add("MC4 PV1 (-)")
+  mat.color = Sketchup::Color.new(154, 160, 166)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # MC4 PV3 (+)
+  grp = ents.add_group
+  grp.name = "MC4 PV3 (+)"
+  ge = grp.entities
+  circle = ge.add_circle([1315.28.mm,-85.mm,2016.mm], [0,1,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # MC4 PV3 (-)
+  grp = ents.add_group
+  grp.name = "MC4 PV3 (-)"
+  ge = grp.entities
+  circle = ge.add_circle([1343.5.mm,-85.mm,2016.mm], [0,1,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["MC4 PV1 (-)"] || model.materials.add("MC4 PV1 (-)")
+  mat.color = Sketchup::Color.new(154, 160, 166)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # NEMA 5-15R inlet (panel)
+  grp = ents.add_group
+  grp.name = "NEMA 5-15R inlet (panel)"
+  face = grp.entities.add_face([1472.28.mm,-95.mm,2018.72.mm], [1532.28.mm,-95.mm,2018.72.mm], [1532.28.mm,-65.mm,2018.72.mm], [1472.28.mm,-65.mm,2018.72.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(45.mm)
+  mat = model.materials["NEMA 5-15R inlet (panel)"] || model.materials.add("NEMA 5-15R inlet (panel)")
+  mat.color = Sketchup::Color.new(255, 240, 204)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Deutsch DT 2-pin (Cct E cooler)
+  grp = ents.add_group
+  grp.name = "Deutsch DT 2-pin (Cct E cooler)"
+  ge = grp.entities
+  circle = ge.add_circle([1510.78.mm,-85.mm,1908.mm], [0,1,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Deutsch DT 2-pin (Cct E cooler)"] || model.materials.add("Deutsch DT 2-pin (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Electrical"
   inst.layer = model.layers["Electrical"]

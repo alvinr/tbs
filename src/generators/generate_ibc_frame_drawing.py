@@ -645,11 +645,11 @@ def sheet1():
                offset=sx(9), fs=5, font=FONT)
 
     # ── Member labels ───────────────────────────────────────────────────────
-    # Inverted x-axis (Yd grows screen-LEFT): route the text into the open near-
-    # column IBC face (screen-right of the upright) with ha="left" so it reads
-    # away from the hatched post instead of flowing back across it (rule 65).
-    leader(ax, sx(NEAR_COL_R + FRAME_RHS / 2), sy(TOP_Z / 2),
-           sx(NEAR_COL_R - 280), sy(TOP_Z / 2 + 150),
+    # Inverted x-axis (Yd grows screen-LEFT): nearest open pocket is the near-
+    # column IBC face just right of the post, so anchor the text ~one line off the
+    # post edge (short leader, rule 67) reading away from the hatch (rule 65).
+    leader(ax, sx(NEAR_COL_R + FRAME_RHS / 2), sy(TOP_Z * 0.66),
+           sx(NEAR_COL_R - 70), sy(TOP_Z * 0.66 + 30),
            "CORRIDOR UPRIGHT\n50×50×3 RHS\n(×6 TOTAL, 3 PER SIDE)",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
@@ -672,13 +672,13 @@ def sheet1():
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
-    # Route into the open far-column face (screen-left, ha="right") so the text
-    # clears the central uprights it would otherwise overlap (rule 65).
+    # Nearest pocket is the near face just above the platform beam — short leader
+    # (rule 67), stacked below the CORRIDOR UPRIGHT callout so the two don't touch.
     leader(ax, sx(POST_NEAR_YD + FRAME_RHS - LIP_T / 2),
            sy(PLATFORM_Z + FRAME_RHS + LIP_H / 2),
-           sx(FAR_COL_L + FRAME_RHS + 60), sy(PLATFORM_Z + FRAME_RHS + LIP_H + 200),
+           sx(NEAR_COL_R - 70), sy(PLATFORM_Z + FRAME_RHS + LIP_H + 30),
            "ANTI-ROTATION LIP\n5mm PLATE × 40mm HIGH\nFILLET WELDED TO PLATFORM",
-           color=C_OUT, fs=5.5, ha="right", va="bottom",
+           color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
 
     # Keep the text fully screen-right of the near upright (Yd < 1046) so it sits

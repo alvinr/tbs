@@ -57,6 +57,30 @@ P02_BROWN_MIN   = 10    # recycled wash (if Brown stock available)
 P04_DRAIN_MIN   =  5    # tray sump drain between washes
 ACTUATOR_MIN    =  5    # brief positioning moves (optional)
 
+# ── Daily operating model ─────────────────────────────────────────────────────
+# A pinhole exposure uses one film plane at a time, so prints are sequential
+# (~3h cycle each). The container is cooled ONCE in the morning; fans + cooler
+# then run continuously. Standard build is manual (electric actuation dropped —
+# see cost-analysis-report.md), so Circuit F draws nothing by default.
+
+PRINTS_PER_DAY    = 3       # representative daylight field day (2 short / 4 pushed)
+INCLUDE_ACTUATORS = False   # manual build is standard; set True to add Circuit F
+
+# End-of-day Brown + Waste pump-out (P-05 Brown→X3, P-03 Waste→X4). Gravity-assisted:
+# each tote gravity-drains through its low Z=200mm port; the pump lifts only the
+# ~120L residual below the port (equipment-panel-report.md §4.3).
+PUMP_LPM          = 13.2    # 3.5 GPM Shurflo 2088
+DRAIN_RESIDUAL_L  = 120     # residual below the X3/X4 port, pumped per tote
+DRAIN_LIGHT_MIN   = 10      # white light during the ~20-min drain operation
+
+# ── Water supply (clean-water autonomy) ───────────────────────────────────────
+# The binding endurance constraint for a disconnected (solar-only) deployment is
+# usually the FRESH water supply, not power. From water-system-report.md §3-4.
+BLUE_SUPPLY_L       = 1200  # 2× 600L Blue (fresh) totes (= 316 US gal)
+FRESH_PER_PRINT_GAL = 32    # net Blue consumed per print WITH Brown recycling (wash 2 from Brown)
+WASTE_CAP_L         = 600   # 1× Black (waste) tote — parallel out-flow constraint
+GAL_TO_L            = 3.785
+
 # ── Phase-by-phase load matrix ────────────────────────────────────────────────
 # Each phase specifies which circuits are ON and for how long.
 # Pumps and actuators are itemized separately (they don't run for
@@ -188,6 +212,91 @@ def compute():
     return phase_rows, standalone_rows_out, total_wh, summary
 
 
+# ── Daily roll-up + disconnected-endurance (autonomy) model ───────────────────
+
+def _phase_wh(ph):
+    return sum(ph["loads"].values()) * ph["minutes"] / 60.0
+
+
+def warmup_wh():
+    """One-time-per-day cooling warmup (Phase 1.6)."""
+    return _phase_wh(phases[0])
+
+
+def per_print_wh(include_actuators=INCLUDE_ACTUATORS):
+    """Energy for one print cycle EXCLUDING the one-time morning warmup."""
+    cont = sum(_phase_wh(ph) for ph in phases[1:])            # dark-adapt … cleanup
+    pumps = sum(w * m / 60.0 for n, w, m in standalone_items
+                if not (("Actuator" in n) and not include_actuators))
+    return cont + pumps
+
+
+def end_of_day_drain_wh():
+    """End-of-day Brown (P-05→X3) + Waste (P-03→X4) pump-out — gravity-assisted residual."""
+    pump_min_per_tote = DRAIN_RESIDUAL_L / PUMP_LPM
+    pump_wh = 2 * PUMP_W * pump_min_per_tote / 60.0
+    light_wh = WHITE_LIGHT_W * DRAIN_LIGHT_MIN / 60.0
+    return pump_wh + light_wh
+
+
+def compute_daily(n=PRINTS_PER_DAY, include_actuators=INCLUDE_ACTUATORS):
+    """Energy for one full operating day of `n` sequential prints."""
+    w = warmup_wh()
+    pp = per_print_wh(include_actuators)
+    drain = end_of_day_drain_wh()
+    return {"n": n, "warmup_wh": w, "per_print_wh": pp, "drain_wh": drain,
+            "daily_wh": w + n * pp + drain}
+
+
+def compute_autonomy(battery_ah, prints_per_day=PRINTS_PER_DAY):
+    """Disconnected (no AC charge) endurance: power vs clean-water limited."""
+    daily = compute_daily(prints_per_day)["daily_wh"]
+    battery_wh = battery_ah * BATTERY_V * DOD
+    solar = SOLAR_W * PEAK_SUN_HOURS
+    fresh_l = FRESH_PER_PRINT_GAL * GAL_TO_L
+    prints_water = BLUE_SUPPLY_L / fresh_l
+    return {
+        "battery_ah": battery_ah, "battery_wh": battery_wh,
+        "prints_per_day": prints_per_day, "daily_wh": daily,
+        "battery_only_days": battery_wh / daily,        # no sun at all
+        "solar_wh_day": solar, "solar_net_wh": solar - daily,  # >0 ⇒ indefinite with sun
+        "prints_water": prints_water,                    # ← usual binding limit
+        "days_water": prints_water / prints_per_day,
+    }
+
+
+def print_daily_report():
+    d = compute_daily()
+    print("\n" + "=" * 72)
+    print(f"DAILY MODEL — {d['n']} sequential prints/day"
+          f" ({'manual' if not INCLUDE_ACTUATORS else 'with actuators'})")
+    print("=" * 72)
+    print(f"  Morning cooling warmup (once)   : {d['warmup_wh']:6.0f} Wh")
+    print(f"  Per print (cycle + wash/drain)  : {d['per_print_wh']:6.0f} Wh  × {d['n']}"
+          f" = {d['per_print_wh']*d['n']:6.0f} Wh")
+    print(f"  End-of-day Brown+Waste pump-out : {d['drain_wh']:6.0f} Wh")
+    print(f"  ── Daily total                  : {d['daily_wh']:6.0f} Wh")
+    print(f"\n  2 prints: {compute_daily(2)['daily_wh']:.0f} Wh   "
+          f"4 prints: {compute_daily(4)['daily_wh']:.0f} Wh")
+
+    print("\n" + "=" * 72)
+    print("DISCONNECTED ENDURANCE (no AC charge — solar top-up only)")
+    print("=" * 72)
+    fresh_l = FRESH_PER_PRINT_GAL * GAL_TO_L
+    print(f"  CLEAN WATER (Blue {BLUE_SUPPLY_L}L / {fresh_l:.0f}L net per print)"
+          f" → {BLUE_SUPPLY_L/fresh_l:.1f} prints"
+          f" ≈ {BLUE_SUPPLY_L/fresh_l/PRINTS_PER_DAY:.1f} days @ {PRINTS_PER_DAY}/day")
+    print(f"  WASTE OUT (Black {WASTE_CAP_L}L) — must be emptied at resupply (parallel limit)\n")
+    for ah, label in [(100, "1 pack (100Ah)"), (200, "2 packs (200Ah)")]:
+        a = compute_autonomy(ah)
+        sun = "INDEFINITE (solar-positive)" if a["solar_net_wh"] > 0 else "solar-negative"
+        print(f"  {label:18s}: battery {a['battery_wh']:.0f}Wh →"
+              f" {a['battery_only_days']:.1f} day no-sun reserve;"
+              f" with sun: {sun} (+{a['solar_net_wh']:.0f} Wh/day)")
+    print("\n  ⇒ Endurance is CLEAN-WATER limited, not power limited. Battery count sets the"
+          "\n    cloudy-day reserve + peak daily throughput, NOT the deployment length.")
+
+
 def print_report():
     phase_rows, standalone_rows, total_wh, s = compute()
 
@@ -273,6 +382,7 @@ def generate_markdown():
 
 if __name__ == "__main__":
     print_report()
+    print_daily_report()
     print("\n" + "=" * 72)
     print("MARKDOWN OUTPUT (for electrical-report.md §3.1):")
     print("=" * 72 + "\n")

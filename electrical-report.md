@@ -199,7 +199,7 @@ The switches are positioned near the electrical panel, accessible from the near 
 IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior pinhole wall face (Y=0, X≈2050–2350mm). Contains:
 - Victron MPPT controller (or external, hardwired)
 - Blue Sea 5026 12-circuit fuse block with busbars
-- Battery positive and negative busbars with 200A main fuse
+- Battery positive and negative busbars, fed from the battery through a terminal-mount **200A MRBF fuse** (on the battery + post, ≤180mm) and a **main disconnect switch** (Blue Sea m-Series 300A) — see §7.5
 - Shore charger output terminals
 
 **Sheet 2 — Container Wiring Layout**
@@ -312,7 +312,7 @@ All US/SoCal sources. Prices approximate as of 2026.
 | **Cooling (evap cooler)** | | | **~$280** |
 | **Systems grand total** | | | **~$2,520** |
 
-*Electrical system total is the **standard 1-pack build** and matches the consolidated [Master Shopping List §6](master-shopping-list.md) (Solar & battery $1,295 + Distribution & wiring $745 = $2,040, the authoritative electrical BOM). The optional 2nd battery pack adds +$350. It includes ~$145 of circuit-protection / wet-zone-sealing hardware added per the [Electrical Safety Report](electrical-safety-report.md) §5 (disconnect switch, terminal-mount fuse, sealed connectors, bonding, grommets). It includes ~$145 of circuit-protection / wet-zone-sealing hardware added per the [Electrical Safety Report](electrical-safety-report.md) §5 (disconnect switch, terminal-mount fuse, sealed connectors, bonding, grommets).*
+*Electrical system total is the **standard 1-pack build** and matches the consolidated [Master Shopping List §6](master-shopping-list.md) (Solar & battery $1,295 + Distribution & wiring $745 = $2,040, the authoritative electrical BOM). The optional 2nd battery pack adds +$350. It includes ~$145 of circuit-protection / wet-zone-sealing hardware added per the [Electrical Safety Report](electrical-safety-report.md) §5 (disconnect switch, terminal-mount fuse, sealed connectors, bonding, grommets).*
 
 ## 9. Maintenance
 

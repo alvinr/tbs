@@ -56,6 +56,7 @@ MD_FILES=(
     "film-plane-mechanism-report.md"
     "film-clamp-mechanism-report.md"
     "project-cost-breakdown.md"
+    "cost-analysis-report.md"
     "pinhole-report.md"
     "tilt-swing-board-report.md"
     "tilt-swing-board-analysis.md"

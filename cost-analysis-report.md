@@ -1,0 +1,106 @@
+# Cost Analysis Report
+
+## 1. Purpose & Scope
+
+A companion to the [Weight Distribution Report](weight-distribution-report.md): where the
+weight study asks *where is the mass and where can it be cut*, this asks **where is the
+cost and where can it be saved**. It breaks the build down by system, separates one-time
+capital from recurring/consumable spend, and ranks the realistic savings levers.
+
+All figures are the **mid-column** estimates from the
+[Cost Breakdown](project-cost-breakdown.md) (the itemized source of truth); the build
+mid-total is **~$26,564**.
+
+---
+
+## 2. Method — Capital vs Recurring
+
+Just as the weight study set aside the fixed container shell to find the *addressable*
+design, a cost study has to separate the one-time **capital build** from spend that
+recurs or is consumed — savings strategy is different for each.
+
+| Bucket | Mid | What it is |
+|---|--:|---|
+| **Capital build** (one-time hardware) | **$22,182** | The systems you build once — this is where build-savings live |
+| Consumable (per 50-print batch) | $2,842 | Cyanotype chemistry + substrate — recurs every batch |
+| Recurring (per deployment) | $750 | Commercial-hire transport |
+| Soft / regulatory | $790 | Licences & permits |
+
+Build-savings work on the **$22,182 capital**. The $2,842 consumable is attacked
+separately (bulk chemistry, cheaper substrate) because it repeats every batch and
+quickly dominates lifetime cost.
+
+---
+
+## 3. Where the Cost Is
+
+Capital systems ranked by mid cost:
+
+| System | Mid | % of capital | Notes |
+|---|--:|--:|---|
+| **Processing water system** | $6,175 | 28% | Tray (304 SS) + IBC frame dominate |
+| **Film-plane mechanism** | $3,650 | 16% | Carriages, cam-lever clamps, optional electric actuation |
+| **Container + delivery** | $3,150 | 14% | Grade-dependent (CW vs WWT) |
+| **Power & electrical** | $2,390 | 11% | Battery + solar + distribution + protection |
+| **Perimeter walkway** | $2,186 | 10% | GRP grating + steel cantilevers |
+| **Light lock** | $1,802 | 8% | Plastic-skin custom fabrication |
+| **Interior conversion** | $1,140 | 5% | Insulation, sealing, safelight |
+| **Swing pivot** | $770 | 3% | Pivot post + bearings + cage |
+| **Ventilation & cooling** | $769 | 3% | Fans + cooler + baffle-duct fab + canopy |
+| **Optics — pinhole** | $150 | 0.7% | Trivial (it is a pinhole) |
+
+The **water system is 28% of the capital build** and the **304 SS processing tray is its
+single biggest line** (~$1,177–1,857) — the same item that topped the weight study.
+
+---
+
+## 4. Savings Opportunities
+
+Ranked by dollar potential and ease. Status is updated as levers are actioned.
+
+| # | Lever | System | Saves | Ease / risk | Status |
+|---|---|---|--:|---|---|
+| 1 | **Container grade CW → WWT** (wind-water-tight used vs cargo-worthy — fine for a stationary darkroom) | Container | ~$1,350 | Easy, low risk | Available |
+| 2 | **Drop film-plane electric actuation → manual** (the mechanism already supports manual tilt/swing) | Film plane | ~$827 | Easy, if manual is acceptable | Available |
+| 3 | **Processing tray: 304 SS → poly / thinner gauge** | Water | ~$600–1,000 | Medium — chem-compat + stiffness check | Available (win-win — also cuts weight) |
+| 4 | **Battery 200 Ah → 100 Ah** ([Water System Report](water-system-report.md): 1×100 Ah ≈ 25+ prints/charge) | Power | ~$350 | Easy, if fewer sessions/charge is OK | Available |
+| 5 | **Solar 3 → 2 panels** (if the power budget allows) | Power | ~$130 | Easy | Available |
+| 6 | **Valves / fittings value-engineering** | Water | ~$100–200 | Medium | Available |
+
+Levers 1–5 together trim **~$3,250–3,650** off the ~$22k capital build (**~15%**) without
+touching the core optical or structural design.
+
+---
+
+## 5. The Cost–Weight Tension
+
+Cost and weight do not always move together — some weight savings *cost* money, and vice
+versa. Worth keeping in view when prioritizing:
+
+- The **GRP walkway grating** (specified for corrosion immunity in the chemistry zone)
+  *added* ~$720–890 to save 62 kg. If cost now outranks weight, **reverting GRP →
+  galvanized steel recovers ~$800** — at the cost of the corrosion immunity and the 62 kg.
+- The **processing tray** (lever #3) is the rare **win-win**: SS → poly cuts *both* cost
+  *and* weight, and is corrosion-proof. It is the highest-value single move across both
+  studies.
+
+---
+
+## 6. What Is Effectively Fixed
+
+- **Container shell** — already the cheapest large steel box; only the *grade* is a lever
+  (#1).
+- **Light lock** — already the cheap custom option (~$1,800 vs $2,500–4,500 for a
+  commercial darkroom door).
+- **Swing pivot, ventilation, optics** — small absolute spend; diminishing returns.
+- **IBC frame, pumps, filters** — load-bearing or commodity; little to cut safely.
+
+---
+
+## 7. Source References
+
+1. [Cost Breakdown](project-cost-breakdown.md) — itemized build cost, three scenarios, all sources cited (the figures this report summarizes).
+2. [Weight Distribution Report](weight-distribution-report.md) — the companion mass study; the tray is the shared top lever.
+3. [Film Plane Mechanism Report](film-plane-mechanism-report.md) — manual vs electric actuation (lever #2).
+4. [Water System Report](water-system-report.md) — processing tray (304 SS) and battery/pump sizing (levers #3, #4).
+5. [Electrical Report](electrical-report.md) — power-system sizing (levers #4, #5).

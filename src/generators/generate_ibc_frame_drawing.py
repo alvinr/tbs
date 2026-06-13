@@ -553,11 +553,14 @@ def sheet1():
             ax.plot(sx(gate_yd + gate_w / 2), sy(bz), 'o',
                     color=C_OUT, ms=4, mfc="white", mew=1.2, zorder=8)
 
-    # Label access gates
-    ax.text(sx(POST_NEAR_YD + FRAME_RHS + 90), sy(GATE_H / 2),
-            "ACCESS\nGATE\n(REMOVABLE)",
-            ha="left", va="center", fontsize=5.5, color=C_DIM,
-            **FONT, zorder=10)
+    # Label access gates — route into the open far-column face (screen-left, on
+    # an inverted axis); the 170mm corridor is too narrow to hold the text
+    # without it landing on the upright hatch.
+    leader(ax, sx(POST_FAR_YD), sy(GATE_H / 2),
+           sx(FAR_COL_L + FRAME_RHS + 40), sy(GATE_H / 2),
+           "ACCESS GATE\n(REMOVABLE)",
+           color=C_DIM, fs=5.5, ha="right", va="center",
+           arrow_style="-|>", font=FONT)
 
     # ── Weld symbols at key joints ──────────────────────────────────────────
     # Platform to upright joints
@@ -642,8 +645,11 @@ def sheet1():
                offset=sx(9), fs=5, font=FONT)
 
     # ── Member labels ───────────────────────────────────────────────────────
+    # Inverted x-axis (Yd grows screen-LEFT): route the text into the open near-
+    # column IBC face (screen-right of the upright) with ha="left" so it reads
+    # away from the hatched post instead of flowing back across it (rule 65).
     leader(ax, sx(NEAR_COL_R + FRAME_RHS / 2), sy(TOP_Z / 2),
-           sx(NEAR_COL_R + 300), sy(TOP_Z / 2 + 150),
+           sx(NEAR_COL_R - 280), sy(TOP_Z / 2 + 150),
            "CORRIDOR UPRIGHT\n50×50×3 RHS\n(×6 TOTAL, 3 PER SIDE)",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
@@ -666,17 +672,21 @@ def sheet1():
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
+    # Route into the open far-column face (screen-left, ha="right") so the text
+    # clears the central uprights it would otherwise overlap (rule 65).
     leader(ax, sx(POST_NEAR_YD + FRAME_RHS - LIP_T / 2),
            sy(PLATFORM_Z + FRAME_RHS + LIP_H / 2),
-           sx(POST_NEAR_YD + 300), sy(PLATFORM_Z + FRAME_RHS + LIP_H + 200),
+           sx(FAR_COL_L + FRAME_RHS + 60), sy(PLATFORM_Z + FRAME_RHS + LIP_H + 200),
            "ANTI-ROTATION LIP\n5mm PLATE × 40mm HIGH\nFILLET WELDED TO PLATFORM",
-           color=C_OUT, fs=5.5, ha="left", va="bottom",
+           color=C_OUT, fs=5.5, ha="right", va="bottom",
            arrow_style="-|>", font=FONT)
 
+    # Keep the text fully screen-right of the near upright (Yd < 1046) so it sits
+    # on the open near-column face instead of straddling both posts (rule 65).
     leader(ax, sx(POST_NEAR_YD), sy(DRING_STANDOFF + DRING_SIZE),
-           sx(POST_NEAR_YD - 180), sy(DRING_STANDOFF + DRING_SIZE + 100),
+           sx(POST_NEAR_YD - 30), sy(DRING_STANDOFF + DRING_SIZE + 100),
            "D-RING LASHING\n25mm, 1,100kg WLL\n6mm PLATE, WELDED\n(×8 TOTAL, 4 PER TIER)",
-           color=C_OUT, fs=5.5, ha="right", va="bottom",
+           color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
 
     leader(ax, sx(NEAR_COL_R + CORRIDOR_W / 2), sy(FRAME_RHS / 2),

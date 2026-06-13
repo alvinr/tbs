@@ -124,8 +124,8 @@ def draw_sheet1():
 
     # 3. Battery bank  y=8.4–9.5
     rbox(ax, LX, 8.4, LW, 1.1,
-         "BATTERY BANK — 200Ah / 2,400Wh",
-         "2 × 100Ah 12V LiFePO4 in parallel  |  100% DoD usable  |  Safe to 60 °C",
+         "BATTERY — 100Ah / 1,200Wh (standard, 1 pack)",
+         "1× 100Ah 12V LiFePO4  |  busbar wired for a 2nd pack (plug-in → 200Ah / 2,400Wh)  |  100% DoD",
          fc=C_BATT_TINT, ts=9.5, ss=8.0)
     varrow(ax, CX, 10.3, 9.5, col=C_CL)
     wlabel(ax, CX + 0.18, 9.9, "2 AWG  |  Charge positive")

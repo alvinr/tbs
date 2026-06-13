@@ -286,7 +286,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 |------|------|-----|----------|-----------|
 | [Solar panels, 200W monocrystalline](https://www.renogy.com/200-watt-12-volt-monocrystalline-solar-panel/) | 12V nominal | 3 | [Renogy](https://www.renogy.com) | ~$400 total |
 | [Victron SmartSolar MPPT 100/50](https://www.altestore.com) | MPPT charge controller | 1 | [altE Store](https://www.altestore.com) | ~$200 |
-| [LiFePO4 battery 100Ah 12V](https://www.renogy.com/12v-100ah-smart-lithium-iron-phosphate-battery/) | Renogy Smart Lithium or Battle Born | 2 | [Renogy](https://www.renogy.com) | ~$700 total |
+| [LiFePO4 battery 100Ah 12V](https://www.renogy.com/12v-100ah-smart-lithium-iron-phosphate-battery/) | Renogy Smart Lithium or Battle Born. **1 standard**; busbar provisioned for a 2nd in parallel (plug-in, no rewiring — see [Electrical Report §5.2](electrical-report.md)) | 1 | [Renogy](https://www.renogy.com) | ~$350 (+$350 optional 2nd) |
 | [Victron Blue Smart IP65 12/15](https://www.altestore.com) | Shore backup charger | 1 | [altE Store](https://www.altestore.com) | ~$150 |
 | NEMA 5-15R inlet (weatherproof) | Mounted in flush-mount power panel | 1 | Amazon | ~$25 |
 | [Solar panel ground mount frame](https://www.renogy.com) | Tilt frame, 30° | 1 | [Renogy](https://www.renogy.com) | ~$80 |
@@ -296,7 +296,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | M6 bolt + nut + washer set | Panel mounting hardware, SS | 4 | McMaster-Carr | ~$5 |
 | [MC4 bulkhead connector pairs](https://www.amazon.com/s?k=MC4+bulkhead+connector+panel+mount+IP67) | IP67 panel-mount | 3 pairs | Amazon | ~$25 |
 | Deutsch DT 2-pin bulkhead connector | Panel-mount, IP67, Circuit E cooler output | 1 | [Waytek Wire](https://www.waytekwire.com) | ~$5 |
-**Solar & battery subtotal: ~$1,645**
+**Solar & battery subtotal: ~$1,295**  *(1-pack standard; +$350 for the optional 2nd pack)*
 
 ### Distribution & wiring
 | Item | Spec | Qty | Supplier | Est. cost |
@@ -324,7 +324,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 4 AWG ground wire, green/yellow | 3m | 1 | Amazon | ~$15 |
 **Distribution & wiring subtotal: ~$745**  *(+$145 circuit-protection / wet-zone-sealing hardware — see [Electrical Safety Report](electrical-safety-report.md) §5)*
 
-**Section total: ~$2,390**  *(= Solar & battery $1,645 + Distribution & wiring $745)*
+**Section total: ~$2,040**  *(= Solar & battery $1,295 + Distribution & wiring $745; 1-pack standard, +$350 for the optional 2nd pack)*
 
 ## 7. Housed Revolving-Door Light Lock — Custom Fabrication
 *Source: `light-trap-selection.md` § 4 (rev 9 / B2). Custom-fabricated Ø900 fixed housing + single-opening C-shell drum (no fins) built into the hinged cargo-door panel — light-tight by geometry. **rev 9 switches the drum/housing from 3mm aluminum to a hybrid plastic skin (5mm UV-HDPE housing, 4mm PP drum)** — cutting the drum/housing mass (~99 kg → ~60 kg), removing galvanic concerns, and lowering fabrication cost. Replaces the failed Ø750 4-fin drum. Single-operator entry/exit at any time without admitting daylight.*

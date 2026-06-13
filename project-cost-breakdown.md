@@ -18,7 +18,7 @@
 | **3. Optics — pinhole plate** | $80 | $150 | $280 |
 | **4. Film plane mechanism (4-corner Option A, incl. wall-seat saddles + cross-slides)** | $3,100 | $3,650 | $4,200 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $4,958 | $6,175 | $7,391 |
-| **5a. Power & electrical system (solar · LiFePO4 · MPPT · distribution · lighting · protection)** | $2,150 | $2,390 | $2,700 |
+| **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection)** | $1,800 | $2,040 | $2,350 |
 | **5b. Ventilation & cooling system (2 fans · evap cooler · light-safe baffle-duct fab · shade canopy)** | $700 | $769 | $900 |
 | **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $1,465 | $1,802 | $2,160 |
 | **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $1,801 | $2,186 | $2,572 |
@@ -26,7 +26,7 @@
 | **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$21,194** | **$26,564** | **$33,543** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$20,844** | **$26,214** | **$33,193** |
 
 *Optional additions that may apply — see individual sections:*
 
@@ -492,7 +492,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Pinhole plate | $95 |
 | Film plane mechanism (manual Option A, incl. wall-seat saddles + cross-slides) | $3,100 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $4,900 |
-| Power & electrical system (solar · LiFePO4 · distribution · lighting · protection) | $2,150 |
+| Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection) | $1,800 |
 | Ventilation & cooling system (2 fans · evap cooler · light-safe baffle-duct fab · shade canopy) | $700 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,465 |
 | Perimeter walkway (4 sections, removable, GRP grating) | $1,750 |
@@ -500,7 +500,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$20,852** |
+| **Scenario A total** | **~$20,502** |
 
 ### Scenario B — Recommended build, regional deployment
 
@@ -511,7 +511,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Pinhole plate | $150 |
 | Film plane mechanism (manual Option A + wall-seat saddles + cross-slides) | $3,270 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,084 |
-| Power & electrical system (solar · LiFePO4 · distribution · lighting · protection) | $2,390 |
+| Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection) | $2,040 |
 | Ventilation & cooling system (2 fans · evap cooler · light-safe baffle-duct fab · shade canopy) | $769 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,800 |
 | Perimeter walkway (4 sections, removable, GRP grating) | $2,122 |
@@ -520,17 +520,17 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Rodenstock Apo-Ronar 1200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$26,487** |
+| **Scenario B total (excl. CDL)** | **~$26,137** |
 
 ### Scenario C — Full production, own transport, CDL
 
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $25,587 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $25,237 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$115,087–$145,087** |
+| **Scenario C total** | **~$114,737–$144,737** |
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*
 

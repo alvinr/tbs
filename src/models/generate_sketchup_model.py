@@ -168,6 +168,7 @@ OVERVIEW_POINT_LABELS = [
     (5618, 1996, 2250, "FAN A\n(exhaust, IBC end)",  400,    0,  450),
     (275,   365,  680, "FAN B\n(intake, door end)", -350,    0, 1250),
     (2060,   60,  600, "BATTERY 1× 100Ah\n(2nd pack ghosted = plug-in)",    -300, -600,  900),
+    (1420,  -90, 1950, "EMERGENCY E-STOP\n(external panel — kills all DC)", -550, -450,  350),
     # Walkways span paired/perimeter parts, so their bounds-centre would land in the
     # empty middle — anchor on the actual NEAR member instead.
     (2400,  150,   65, "WALKWAYS",                   -200, -850,  750),  # near walkway strip
@@ -1352,6 +1353,32 @@ def electrical():
     parts.append(ruby_box("Ext. Power Panel (interior face)",
                           PWR_PANEL_X, 0, PWR_PANEL_Z,
                           PWR_PANEL_W, 20, PWR_PANEL_H, color=C_ELEC))
+
+    # Battery contactor (Blue Sea ML-RBS) — magnetic-latch switch in the battery (+)
+    # feed, sitting on top of Battery 1. Tripped by the external E-stop below.
+    parts.append(ruby_box("Battery Contactor (ML-RBS, in + feed)",
+                          BA_X + 20, 15, BA_H_HI,
+                          120, 90, 100, color="#C42B1C"))
+
+    # External emergency cut-off (E-stop) — red mushroom on a yellow collar, on the
+    # exterior face of the power panel (Yd<0), so all DC can be killed from outside.
+    es_cx = PWR_PANEL_X + PWR_PANEL_W / 2
+    es_cz = PWR_PANEL_Z + PWR_PANEL_H / 2
+    face_y = -WALL_T - 25
+    parts.append(ruby_cylinder("E-stop collar (safety yellow)",
+                               es_cx, face_y - 12, es_cz, 35, 12,
+                               color="#F2C200", axis="y"))
+    parts.append(ruby_cylinder("E-stop button (red mushroom)",
+                               es_cx, face_y - 40, es_cz, 26, 28,
+                               color="#C42B1C", axis="y"))
+
+    # Low-current control loop: contactor → external E-stop (2× 18 AWG through a gland).
+    parts.append(ruby_pipe_run("E-stop control wire (2x 18 AWG)",
+                               [(BA_X + 80, 60, BA_H_HI + 100),
+                                (BA_X + 80, 60, es_cz),
+                                (es_cx, 60, es_cz),
+                                (es_cx, 10, es_cz)],
+                               5, color="#6A3DA8"))
 
     return '\n'.join(parts)
 

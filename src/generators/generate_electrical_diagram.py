@@ -136,29 +136,37 @@ def draw_sheet1():
             color=C_STEEL, lw=1.5, linestyle="--", zorder=3)
     wlabel(ax, nb_x + 0.12, 7.0, "NEG busbar  2/0 AWG", size=7.0)
 
-    # 4. MRBF terminal fuse — on the battery (+) post, ≤180mm  y=7.50–8.12
-    rbox(ax, LX + 1.2, 7.50, LW - 2.4, 0.62,
+    # 4. MRBF terminal fuse — on the battery (+) post, ≤180mm  y=7.82–8.29
+    bx = LX + 1.2
+    bw = LW - 2.4
+    rbox(ax, bx, 7.82, bw, 0.47,
          "200A MRBF TERMINAL FUSE",
          "Terminal-mount on battery (+) post, ≤180mm (ABYC E-11)",
-         fc=C_WARN, ts=9.0, ss=7.5)
-    varrow(ax, CX, 8.4, 8.12, col=C_OUT)
-    wlabel(ax, CX + 0.18, 8.26, "2/0 AWG  |  Battery positive")
+         fc=C_WARN, ts=9.0, ss=6.8)
+    varrow(ax, CX, 8.4, 8.29, col=C_OUT)
+    wlabel(ax, CX + 0.18, 8.36, "2/0 AWG  |  Battery positive")
 
-    # 4b. Main battery disconnect switch  y=6.60–7.22
-    rbox(ax, LX + 1.2, 6.60, LW - 2.4, 0.62,
-         "MAIN DISCONNECT SWITCH",
-         "Blue Sea m-Series 300A manual isolator  |  emergency / maintenance",
-         fc=C_WARN, ts=9.0, ss=7.5)
-    varrow(ax, CX, 7.50, 7.22, col=C_OUT)
-    wlabel(ax, CX + 0.18, 7.36, "2/0 AWG  |  Fused (+) → switch")
+    # 4b. Remote battery switch (contactor) — tripped by the external E-stop  y=7.24–7.71
+    rbox(ax, bx, 7.24, bw, 0.47,
+         "REMOTE BATTERY SWITCH  (contactor)",
+         "Blue Sea ML-RBS 500A magnetic-latch  |  trips OFF on external E-stop",
+         fc=C_WARN, ts=9.0, ss=6.8)
+    varrow(ax, CX, 7.82, 7.71, col=C_OUT)
+
+    # 4c. Internal main disconnect switch — maintenance/service  y=6.66–7.13
+    rbox(ax, bx, 6.66, bw, 0.47,
+         "MAIN DISCONNECT SWITCH  (internal)",
+         "Blue Sea m-Series 300A manual isolator  |  maintenance / service",
+         fc=C_WARN, ts=9.0, ss=6.8)
+    varrow(ax, CX, 7.24, 7.13, col=C_OUT)
 
     # 5. Fuse block  y=5.4–6.55
     rbox(ax, LX, 5.4, LW, 1.15,
          "BLUE SEA 5026 FUSE BLOCK",
          "12-circuit ST-blade  |  Positive + negative busbars  |  In IP65 enclosure",
          fc=C_WARN, ts=10.0, ss=8.0)
-    varrow(ax, CX, 6.60, 6.55, col=C_OUT)
-    wlabel(ax, CX + 0.18, 6.75, "2/0 AWG  |  Switch → fuse block")
+    varrow(ax, CX, 6.66, 6.55, col=C_OUT)
+    wlabel(ax, CX + 0.18, 6.605, "2/0 AWG", size=6.8)
 
     # Ground symbol below fuse block
     gx = LX + 0.7
@@ -195,6 +203,20 @@ def draw_sheet1():
          fc="white", ec=C_OUT, lw=1.0, ts=8.5, ss=7.5, bold=False)
     varrow(ax, SC_X + SC_W / 2, SC_Y - 0.55, SC_Y, col="#A07820")
     wlabel(ax, SC_X + SC_W / 2 + 0.15, SC_Y - 0.28, "Shore AC →", size=7.0)
+
+    # ── EXTERNAL EMERGENCY CUT-OFF (E-stop on the external power panel) ────────
+    # Sits above the distribution bus (y≈5.98) and below the NEMA inlet (y=7.05).
+    es_y, es_h = 6.32, 0.60
+    rbox(ax, SC_X, es_y, SC_W, es_h,
+         "EMERGENCY CUT-OFF  (E-STOP) — external panel",
+         "Red mushroom button on power-panel face  →  trips contactor OFF",
+         fc=C_WARN, ts=9.0, ss=7.0)
+    # low-current control loop: contactor (left chain) → external E-stop
+    ax.annotate("", xy=(SC_X, es_y + es_h / 2), xytext=(bx + bw, 7.47),
+                arrowprops=dict(arrowstyle="-|>", color="#6A3DA8",
+                                lw=1.6, linestyle=(0, (4, 2))), zorder=7)
+    wlabel(ax, (bx + bw + SC_X) / 2 - 0.1, 7.18,
+           "Control 2× 18 AWG  |  pinhole-wall gland", ha="center", size=7.0)
 
     # ── LEGEND ────────────────────────────────────────────────────────────────
     lx, ly = SC_X, 1.4

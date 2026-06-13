@@ -10,9 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://alvinr.github.io/tbs/distortion-renders/">
+        <link rel="canonical" href="https://alvinr.github.io/tbs/cost-analysis-report/">
       
       
+        <link rel="prev" href="../project-cost-breakdown/">
+      
+      
+        <link rel="next" href="../operating-manual/">
       
       
         
@@ -23,7 +27,7 @@
     
     
       
-        <title>Distortion renders - The Big Shoebox — Research & Build</title>
+        <title>Cost Analysis - The Big Shoebox — Research & Build</title>
       
     
     
@@ -74,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#distortion-renders-film-plane-tilt-swing" class="md-skip">
+        <a href="#cost-analysis-report" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Distortion renders
+              Cost Analysis
             
           </span>
         </div>
@@ -263,9 +267,11 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../cost-analysis-report/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
   
@@ -536,10 +542,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../cost-analysis-report/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Analysis
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -555,6 +588,103 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-purpose-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Purpose &amp; Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-method-capital-vs-recurring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Method — Capital vs Recurring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-where-the-cost-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Where the Cost Is
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-savings-opportunities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Savings Opportunities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-the-costweight-tension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. The Cost–Weight Tension
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-what-is-effectively-fixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. What Is Effectively Fixed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-source-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Source References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2205,115 +2335,229 @@
 
 
 
-<!-- SPDX-License-Identifier: AGPL-3.0-only -->
-<!-- © 2026 Alvin Richards -->
-<h1 id="distortion-renders-film-plane-tilt-swing">Distortion Renders — Film Plane &amp; Tilt-Swing<a class="headerlink" href="#distortion-renders-film-plane-tilt-swing" title="Permanent link">&para;</a></h1>
-<p>This page collects all ray-traced distortion renders for TBS-001. Two independent movement
-systems produce image projections — their compound effects interact non-linearly.</p>
-<p>Source reports: <a href="../film-plane-mechanism-report/">Film Plane Mechanism</a> and
-<a href="../tilt-swing-board-report/">Tilt-Swing Front Board</a>.</p>
+<h1 id="cost-analysis-report">Cost Analysis Report<a class="headerlink" href="#cost-analysis-report" title="Permanent link">&para;</a></h1>
+<h2 id="1-purpose-scope">1. Purpose &amp; Scope<a class="headerlink" href="#1-purpose-scope" title="Permanent link">&para;</a></h2>
+<p>A companion to the <a href="../weight-distribution-report/">Weight Distribution Report</a>: where the
+weight study asks <em>where is the mass and where can it be cut</em>, this asks <strong>where is the
+cost and where can it be saved</strong>. It breaks the build down by system, separates one-time
+capital from recurring/consumable spend, and ranks the realistic savings levers.</p>
+<p>All figures are the <strong>mid-column</strong> estimates from the
+<a href="../project-cost-breakdown/">Cost Breakdown</a> (the itemized source of truth); the build
+mid-total is <strong>~$26,564</strong>.</p>
 <hr />
-<h2 id="1-film-plane-distortion-renders">1. Film Plane Distortion Renders<a class="headerlink" href="#1-film-plane-distortion-renders" title="Permanent link">&para;</a></h2>
-<p>Four-corner independent actuation of the film plane (TBS-FM01). Each corner moves ±42° tilt
-and ±25.7° swing independently, producing Scheimpflug-equivalent projections at pinhole
-focal lengths. Seven configurations are shown.</p>
-<p><strong>Summary grid — all 7 configurations</strong>
-<img alt="Film Plane Distortion — Summary Grid" src="../assets/film-plane-distortion-summary.png" /></p>
-<p>Individual configurations:</p>
+<h2 id="2-method-capital-vs-recurring">2. Method — Capital vs Recurring<a class="headerlink" href="#2-method-capital-vs-recurring" title="Permanent link">&para;</a></h2>
+<p>Just as the weight study set aside the fixed container shell to find the <em>addressable</em>
+design, a cost study has to separate the one-time <strong>capital build</strong> from spend that
+recurs or is consumed — savings strategy is different for each.</p>
 <table>
 <thead>
 <tr>
-<th>Config</th>
-<th>Render</th>
+<th>Bucket</th>
+<th style="text-align: right;">Mid</th>
+<th>What it is</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>C0 — Flat</td>
-<td><img alt="C0" src="../assets/film-plane-distortion-c0.png" /></td>
+<td><strong>Capital build</strong> (one-time hardware)</td>
+<td style="text-align: right;"><strong>$22,182</strong></td>
+<td>The systems you build once — this is where build-savings live</td>
 </tr>
 <tr>
-<td>C1 — Tilt +42°</td>
-<td><img alt="C1" src="../assets/film-plane-distortion-c1.png" /></td>
+<td>Consumable (per 50-print batch)</td>
+<td style="text-align: right;">$2,842</td>
+<td>Cyanotype chemistry + substrate — recurs every batch</td>
 </tr>
 <tr>
-<td>C2 — Tilt −42°</td>
-<td><img alt="C2" src="../assets/film-plane-distortion-c2.png" /></td>
+<td>Recurring (per deployment)</td>
+<td style="text-align: right;">$750</td>
+<td>Commercial-hire transport</td>
 </tr>
 <tr>
-<td>C3 — Swing +20°</td>
-<td><img alt="C3" src="../assets/film-plane-distortion-c3.png" /></td>
-</tr>
-<tr>
-<td>C4 — Swing −20°</td>
-<td><img alt="C4" src="../assets/film-plane-distortion-c4.png" /></td>
-</tr>
-<tr>
-<td>C5 — Twisted (tilt+swing)</td>
-<td><img alt="C5" src="../assets/film-plane-distortion-c5.png" /></td>
-</tr>
-<tr>
-<td>C6 — Full compound</td>
-<td><img alt="C6" src="../assets/film-plane-distortion-c6.png" /></td>
+<td>Soft / regulatory</td>
+<td style="text-align: right;">$790</td>
+<td>Licences &amp; permits</td>
 </tr>
 </tbody>
 </table>
+<p>Build-savings work on the <strong>$22,182 capital</strong>. The $2,842 consumable is attacked
+separately (bulk chemistry, cheaper substrate) because it repeats every batch and
+quickly dominates lifetime cost.</p>
 <hr />
-<h2 id="2-combined-distortion-renders-film-plane-tilt-swing-board">2. Combined Distortion Renders (Film Plane + Tilt-Swing Board)<a class="headerlink" href="#2-combined-distortion-renders-film-plane-tilt-swing-board" title="Permanent link">&para;</a></h2>
-<p>Compound optical projections when both the film plane mechanism and the tilt-swing
-front board (TBS-TS01) are active simultaneously. Nine configurations are shown.
-The two systems interact non-linearly — their combined effects cannot be decomposed
-into a simple sum of the individual systems' projections.</p>
-<p><strong>Summary grid — all 9 configurations</strong>
-<img alt="Tilt-Swing Combined Distortion — Summary Grid" src="../assets/tilt-swing-combined-summary.png" /></p>
-<p>Individual configurations:</p>
+<h2 id="3-where-the-cost-is">3. Where the Cost Is<a class="headerlink" href="#3-where-the-cost-is" title="Permanent link">&para;</a></h2>
+<p>Capital systems ranked by mid cost:</p>
 <table>
 <thead>
 <tr>
-<th>Config</th>
-<th>Render</th>
+<th>System</th>
+<th style="text-align: right;">Mid</th>
+<th style="text-align: right;">% of capital</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>C0 — Both flat</td>
-<td><img alt="C0" src="../assets/tilt-swing-combined-c0.png" /></td>
+<td><strong>Processing water system</strong></td>
+<td style="text-align: right;">$6,175</td>
+<td style="text-align: right;">28%</td>
+<td>Tray (304 SS) + IBC frame dominate</td>
 </tr>
 <tr>
-<td>C1</td>
-<td><img alt="C1" src="../assets/tilt-swing-combined-c1.png" /></td>
+<td><strong>Film-plane mechanism</strong></td>
+<td style="text-align: right;">$3,650</td>
+<td style="text-align: right;">16%</td>
+<td>Carriages, cam-lever clamps, optional electric actuation</td>
 </tr>
 <tr>
-<td>C2</td>
-<td><img alt="C2" src="../assets/tilt-swing-combined-c2.png" /></td>
+<td><strong>Container + delivery</strong></td>
+<td style="text-align: right;">$3,150</td>
+<td style="text-align: right;">14%</td>
+<td>Grade-dependent (CW vs WWT)</td>
 </tr>
 <tr>
-<td>C3</td>
-<td><img alt="C3" src="../assets/tilt-swing-combined-c3.png" /></td>
+<td><strong>Power &amp; electrical</strong></td>
+<td style="text-align: right;">$2,390</td>
+<td style="text-align: right;">11%</td>
+<td>Battery + solar + distribution + protection</td>
 </tr>
 <tr>
-<td>C4</td>
-<td><img alt="C4" src="../assets/tilt-swing-combined-c4.png" /></td>
+<td><strong>Perimeter walkway</strong></td>
+<td style="text-align: right;">$2,186</td>
+<td style="text-align: right;">10%</td>
+<td>GRP grating + steel cantilevers</td>
 </tr>
 <tr>
-<td>C5</td>
-<td><img alt="C5" src="../assets/tilt-swing-combined-c5.png" /></td>
+<td><strong>Light lock</strong></td>
+<td style="text-align: right;">$1,802</td>
+<td style="text-align: right;">8%</td>
+<td>Plastic-skin custom fabrication</td>
 </tr>
 <tr>
-<td>C6</td>
-<td><img alt="C6" src="../assets/tilt-swing-combined-c6.png" /></td>
+<td><strong>Interior conversion</strong></td>
+<td style="text-align: right;">$1,140</td>
+<td style="text-align: right;">5%</td>
+<td>Insulation, sealing, safelight</td>
 </tr>
 <tr>
-<td>C7</td>
-<td><img alt="C7" src="../assets/tilt-swing-combined-c7.png" /></td>
+<td><strong>Swing pivot</strong></td>
+<td style="text-align: right;">$770</td>
+<td style="text-align: right;">3%</td>
+<td>Pivot post + bearings + cage</td>
 </tr>
 <tr>
-<td>C8 — Full compound</td>
-<td><img alt="C8" src="../assets/tilt-swing-combined-c8.png" /></td>
+<td><strong>Ventilation &amp; cooling</strong></td>
+<td style="text-align: right;">$769</td>
+<td style="text-align: right;">3%</td>
+<td>Fans + cooler + baffle-duct fab + canopy</td>
+</tr>
+<tr>
+<td><strong>Optics — pinhole</strong></td>
+<td style="text-align: right;">$150</td>
+<td style="text-align: right;">0.7%</td>
+<td>Trivial (it is a pinhole)</td>
 </tr>
 </tbody>
 </table>
-<p><em>© 2026 Alvin Richards — Released under <a href="../licensing/">GNU AGPLv3</a></em></p>
+<p>The <strong>water system is 28% of the capital build</strong> and the <strong>304 SS processing tray is its
+single biggest line</strong> (~$1,177–1,857) — the same item that topped the weight study.</p>
+<hr />
+<h2 id="4-savings-opportunities">4. Savings Opportunities<a class="headerlink" href="#4-savings-opportunities" title="Permanent link">&para;</a></h2>
+<p>Ranked by dollar potential and ease. Status is updated as levers are actioned.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Lever</th>
+<th>System</th>
+<th style="text-align: right;">Saves</th>
+<th>Ease / risk</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Container grade CW → WWT</strong> (wind-water-tight used vs cargo-worthy — fine for a stationary darkroom)</td>
+<td>Container</td>
+<td style="text-align: right;">~$1,350</td>
+<td>Easy, low risk</td>
+<td>Available</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Drop film-plane electric actuation → manual</strong> (the mechanism already supports manual tilt/swing)</td>
+<td>Film plane</td>
+<td style="text-align: right;">~$827</td>
+<td>Easy, if manual is acceptable</td>
+<td>Available</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Processing tray: 304 SS → poly / thinner gauge</strong></td>
+<td>Water</td>
+<td style="text-align: right;">~$600–1,000</td>
+<td>Medium — chem-compat + stiffness check</td>
+<td>Available (win-win — also cuts weight)</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Battery 200 Ah → 100 Ah</strong> (<a href="../water-system-report/">Water System Report</a>: 1×100 Ah ≈ 25+ prints/charge)</td>
+<td>Power</td>
+<td style="text-align: right;">~$350</td>
+<td>Easy, if fewer sessions/charge is OK</td>
+<td>Available</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Solar 3 → 2 panels</strong> (if the power budget allows)</td>
+<td>Power</td>
+<td style="text-align: right;">~$130</td>
+<td>Easy</td>
+<td>Available</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Valves / fittings value-engineering</strong></td>
+<td>Water</td>
+<td style="text-align: right;">~$100–200</td>
+<td>Medium</td>
+<td>Available</td>
+</tr>
+</tbody>
+</table>
+<p>Levers 1–5 together trim <strong>~$3,250–3,650</strong> off the ~$22k capital build (<strong>~15%</strong>) without
+touching the core optical or structural design.</p>
+<hr />
+<h2 id="5-the-costweight-tension">5. The Cost–Weight Tension<a class="headerlink" href="#5-the-costweight-tension" title="Permanent link">&para;</a></h2>
+<p>Cost and weight do not always move together — some weight savings <em>cost</em> money, and vice
+versa. Worth keeping in view when prioritizing:</p>
+<ul>
+<li>The <strong>GRP walkway grating</strong> (specified for corrosion immunity in the chemistry zone)
+  <em>added</em> ~$720–890 to save 62 kg. If cost now outranks weight, <strong>reverting GRP →
+  galvanized steel recovers ~$800</strong> — at the cost of the corrosion immunity and the 62 kg.</li>
+<li>The <strong>processing tray</strong> (lever #3) is the rare <strong>win-win</strong>: SS → poly cuts <em>both</em> cost
+  <em>and</em> weight, and is corrosion-proof. It is the highest-value single move across both
+  studies.</li>
+</ul>
+<hr />
+<h2 id="6-what-is-effectively-fixed">6. What Is Effectively Fixed<a class="headerlink" href="#6-what-is-effectively-fixed" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Container shell</strong> — already the cheapest large steel box; only the <em>grade</em> is a lever
+  (#1).</li>
+<li><strong>Light lock</strong> — already the cheap custom option (~$1,800 vs $2,500–4,500 for a
+  commercial darkroom door).</li>
+<li><strong>Swing pivot, ventilation, optics</strong> — small absolute spend; diminishing returns.</li>
+<li><strong>IBC frame, pumps, filters</strong> — load-bearing or commodity; little to cut safely.</li>
+</ul>
+<hr />
+<h2 id="7-source-references">7. Source References<a class="headerlink" href="#7-source-references" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="../project-cost-breakdown/">Cost Breakdown</a> — itemized build cost, three scenarios, all sources cited (the figures this report summarizes).</li>
+<li><a href="../weight-distribution-report/">Weight Distribution Report</a> — the companion mass study; the tray is the shared top lever.</li>
+<li><a href="../film-plane-mechanism-report/">Film Plane Mechanism Report</a> — manual vs electric actuation (lever #2).</li>
+<li><a href="../water-system-report/">Water System Report</a> — processing tray (304 SS) and battery/pump sizing (levers #3, #4).</li>
+<li><a href="../electrical-report/">Electrical Report</a> — power-system sizing (levers #4, #5).</li>
+</ol>
 
 
 

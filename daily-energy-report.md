@@ -1,0 +1,132 @@
+# Daily Electrical Consumption Report
+
+## 1. Purpose & Scope
+
+The [Electrical Report §3.1](electrical-report.md) budgets energy **per print session**.
+This report rolls that up into **one full day of daylight operation** — multiple prints,
+the continuous cooling/ventilation load, the print-wash pumping, and the **end-of-day
+pump-out of the Brown and Waste tanks** (a once-daily operation that is *not* in the
+per-session budget) — and checks it against the battery and the solar recharge.
+
+Per-session figures are from `calculate_energy_budget.py` (the source of truth); the
+daily roll-up and operational assumptions are derived here.
+
+---
+
+## 2. The Operating Day
+
+A pinhole exposure uses one film plane at a time, so prints are **sequential**: load →
+expose → develop & wash → cleanup, then the next. One cycle is ~182 min (~3 h), of which
+the **exposure is 37.5 min**. A realistic daylight field day is therefore **~3 prints**
+(≈ 9 h of cycles + setup/teardown); 4 is achievable when pushing, 2 on a short/poor-light
+day. The container is cooled **once** in the morning and the fans + evaporative cooler
+then run **continuously** through the operating day.
+
+> **Standard build is manual** (electric actuation was dropped — see [Cost Analysis](cost-analysis-report.md)),
+> so Circuit F draws nothing. Per-print energy is ~**720 Wh** (vs 728 Wh with the optional
+> actuators).
+
+---
+
+## 3. Per-Print Energy (from the session budget)
+
+| Phase / load | W | Min | Wh |
+|---|--:|--:|--:|
+| Dark adaptation (fans + cooler + safelight) | 215 | 20 | 72 |
+| Load image plane (fans + cooler + safelight) | 215 | 45 | 161 |
+| **Exposure** (fans + cooler) | 200 | 37.5 | 125 |
+| Development & **wash** (fans + cooler + white light) | 260 | 20 | 87 |
+| Cleanup (fans + cooler + white light) | 260 | 30 | 130 |
+| Wash pump P-01 (Blue, 3× fills) | 90 | 15 | 22.5 |
+| Wash pump P-02 (Brown recycled) | 90 | 10 | 15.0 |
+| Tray-drain pump P-04 (sump → IBC) | 90 | 5 | 7.5 |
+| **Per print (manual)** | | | **~620** *(excl. one-time morning warmup)* |
+
+The **continuous fans + evaporative cooler (200 W)** dominate — they are on the whole
+cycle, so most of the energy is *climate control*, not imaging or pumping.
+
+---
+
+## 4. Daily Roll-Up — Representative 3-Print Day
+
+| Item | Wh |
+|---|--:|
+| Morning cooling warmup (once: fans + cooler, 30 min) | 100 |
+| 3 prints × 620 Wh (cycle + wash/drain pumps) | 1,860 |
+| End-of-day Brown + Waste pump-out (§6) | ~37 |
+| **Daily total (3 prints)** | **~2,000 Wh** |
+
+| Day | Prints | Daily Wh |
+|---|--:|--:|
+| Short / poor light | 2 | ~1,380 |
+| **Representative** | **3** | **~2,000** |
+| Pushed | 4 | ~2,620 |
+
+---
+
+## 5. Print-Washing Load (called out)
+
+Each print is washed by **P-01 (Blue fresh, 15 min)** + **P-02 (Brown recycled, 10 min)**
+— 25 min of pumping at 90 W = **37.5 Wh of wash pumping per print** (P-04 adds 7.5 Wh of
+tray-sump drain). Over a 3-print day that is **~112 Wh of wash pumping** plus the white
+light during the wash/develop phase. Pumping is a **small fraction (~6%)** of the daily
+energy — the cooling load is the real consumer.
+
+---
+
+## 6. End-of-Day Brown & Waste Pump-Out (called out)
+
+At end of day the Brown (IBC-3) and Waste (IBC-4) totes are evacuated to the sealed
+end-wall ports — **Brown → X3 via P-05**, **Waste → X4 via P-03** ([Equipment Panel
+Report §4.3](equipment-panel-report.md), [Water System Report §6](water-system-report.md)).
+
+This is **gravity-assisted**: each tote gravity-drains through its low (Z = 200 mm) port,
+and the pump only lifts the **~120 L residual** below the port:
+
+| Pump | Tank | Volume pumped | Min @ 3.5 GPM | Wh @ 90 W |
+|---|---|--:|--:|--:|
+| P-05 | Brown IBC-3 → X3 | ~120 L residual | ~9 | ~14 |
+| P-03 | Waste IBC-4 → X4 | ~120 L residual | ~9 | ~14 |
+| | + white light for the ~20 min operation | | | ~10 |
+| **End-of-day drain total** | | | | **~37 Wh** |
+
+Because gravity does the bulk, the pump energy is **independent of how full the tanks
+got** and is **tiny (<2% of the day)**. *Worst case* — if a tote had to be pumped out
+entirely with no gravity assist (~600 L) — it would be ~45 min each, ~137 Wh for both;
+still minor against the daily total. (Brown is normally *recycled* through the filter
+back to Blue rather than dumped; this line covers the case where it is drained off.)
+
+---
+
+## 7. Solar Balance & Battery Autonomy
+
+| | Value |
+|---|--:|
+| Solar generation (600 W × 5.5 peak-sun-h, Palm Springs) | ~3,300 Wh/day |
+| Battery usable (200 Ah × 12 V LiFePO4, 100% DoD) | 2,400 Wh |
+
+| Day | Daily draw | Solar net | Within one battery charge? |
+|---|--:|--:|---|
+| 2 prints | ~1,380 | **+1,920** | Yes (with wide margin) |
+| 3 prints | ~2,000 | **+1,300** | Yes — full overnight autonomy |
+| 4 prints | ~2,620 | **+680** | Exceeds the 2,400 Wh battery by ~220 Wh → covered by **daytime solar** (which runs during the prints), not battery alone |
+
+**Conclusions:**
+- The system is **solar-positive at every realistic daily throughput** — even a 4-print
+  day generates more than it consumes, so it sustains indefinitely on sun.
+- A **3-print day fits within a single battery charge**, giving a full day of operation
+  on a dead-cloudy day from the battery alone.
+- A **4-print day relies on the panels topping up during the day** (the loads run in
+  daylight, so this is normally fine); on a fully overcast day, cap at ~3 prints.
+- The dominant load is **climate control (fans + evaporative cooler, ~1,900 Wh/day)**, not
+  imaging or pumping — the biggest lever on daily energy is *cooling runtime*, not the
+  print workflow.
+
+---
+
+## 8. Source References
+
+1. [Electrical Report §3](electrical-report.md) — power budget and the per-session itemized energy (`calculate_energy_budget.py`).
+2. [Water System Report §6](water-system-report.md) — pump runtimes, wash cycles, and the Brown/Waste drain-out path.
+3. [Equipment Panel Report §4.3](equipment-panel-report.md) — P-03 (Waste evac) and P-05 (Brown drain) duties; the ~120 L gravity-drain residual.
+4. [Cost Analysis](cost-analysis-report.md) — the manual-actuation decision (Circuit F unused in the standard build).

@@ -145,10 +145,9 @@ TAGS = ["Shell", "Walkways", "Processing Tray",
 # (component name, text, leader Δx, Δy, Δz mm). Δy pulls the label OUT of a wall
 # toward the viewer (the camera looks from the −Y / pinhole-wall side).
 OVERVIEW_LABELS = [
-    ("Pinhole Assembly",      "PINHOLE  Ø2.17mm",                 -200, -1600,  900),
+    ("Pinhole Assembly",      "PINHOLE  Ø2.17mm",                 -140, -1120,  630),
     ("Film Plane Mechanism",  "FILM PLANE\n4-corner tilt/swing",   400,     0, 1250),
     ("Processing Tray",       "PROCESSING TRAY",                  -250,     0,  650),
-    ("Spray Bar",             "SPRAY BAR",                         450, -2700, 1300),
     ("Equipment Panel",       "EQUIPMENT PANEL\npump / filter",    500,     0,  820),
     ("IBC Stack",             "IBC WATER STORAGE\n4x tote",        600,     0, 1300),
     ("Light-Trap Drum",       "LIGHT-TRAP DRUM\n(entry)",         -650,     0, 1050),
@@ -172,6 +171,11 @@ OVERVIEW_POINT_LABELS = [
     # Walkways span paired/perimeter parts, so their bounds-centre would land in the
     # empty middle — anchor on the actual NEAR member instead.
     (2400,  150,   65, "WALKWAYS",                   -200, -850,  750),  # near walkway strip
+    # Spray Bar: the push pole inflates the component bbox up to Z~970, so a bounds
+    # top-centre anchor floats the leader tip into mid-air above the beam (reads as the
+    # tray below). Anchor on the beam itself — top-centre at the print centre X=2400,
+    # gantry Yd=1180, beam top Z=60. Leader is 30% shorter than the prior version.
+    (2400, 1180,   60, "SPRAY BAR",                   315, -1890,  910),
     ( 175, 2287, 1700, "PIVOT POST Ø89\n(panel swing axis)", 500, -200, 600),  # the swing pivot
 ]
 
@@ -1971,6 +1975,13 @@ def water_plumbing():
     pipe("Fill → Blue #2",
          [(fillTeeX, cc, overZ), (fillTeeX, fY, overZ), (fillTeeX, fY, fill_in_z)],
          C_BLUE)
+    # Round fill flange on each Blue-tote lid where the drop enters — the 3D analog
+    # of the round flange drawn on ibc-stacking sheet 4 (a disc around the pipe at
+    # the tote top cap, topZ=2020).
+    flange_r, flange_h = 36, 16
+    for fl_nm, tY in (("Fill Flange Blue #1", nY), ("Fill Flange Blue #2", fY)):
+        parts.append(ruby_cylinder(fl_nm, fillTeeX, tY, topZ - flange_h / 2,
+                                   flange_r, flange_h, color=C_STEEL, axis="z"))
 
     # Exterior DRAIN PORTS X3/X4 are fed from the DRAIN PUMPS (not straight off the
     # totes): P-05 (Brown drain) → X3, P-03 (Waste evac) → X4.  Each run leaves the

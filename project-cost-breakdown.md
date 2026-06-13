@@ -19,13 +19,14 @@
 | **4. Film plane mechanism (4-corner Option A, incl. wall-seat saddles + cross-slides)** | $3,100 | $3,650 | $4,200 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $4,958 | $6,175 | $7,391 |
 | **5a. Power & electrical system (solar · LiFePO4 · MPPT · distribution · lighting · protection)** | $2,150 | $2,390 | $2,700 |
+| **5b. Ventilation & cooling system (2 fans · evap cooler · light-safe baffle-duct fab · shade canopy)** | $700 | $769 | $900 |
 | **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $1,465 | $1,802 | $2,160 |
 | **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $1,801 | $2,186 | $2,572 |
 | **6b. Panel swing pivot (Ø89 pivot post + bearings + cage + wall stays + rail saddles)** | $650 | $770 | $910 |
 | **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$20,494** | **$25,795** | **$32,643** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$21,194** | **$26,564** | **$33,543** |
 
 *Optional additions that may apply — see individual sections:*
 
@@ -490,13 +491,14 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Film plane mechanism (manual Option A, incl. wall-seat saddles + cross-slides) | $3,100 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $4,900 |
 | Power & electrical system (solar · LiFePO4 · distribution · lighting · protection) | $2,150 |
+| Ventilation & cooling system (2 fans · evap cooler · light-safe baffle-duct fab · shade canopy) | $700 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,465 |
 | Perimeter walkway (4 sections, removable, GRP grating) | $1,750 |
 | Panel swing pivot (Ø89 pivot + bearings + cage + wall stays + saddles) | $650 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$20,152** |
+| **Scenario A total** | **~$20,852** |
 
 ### Scenario B — Recommended build, regional deployment
 
@@ -508,6 +510,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Film plane mechanism (manual Option A + wall-seat saddles + cross-slides + electric actuation) | $4,097 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,084 |
 | Power & electrical system (solar · LiFePO4 · distribution · lighting · protection) | $2,390 |
+| Ventilation & cooling system (2 fans · evap cooler · light-safe baffle-duct fab · shade canopy) | $769 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,800 |
 | Perimeter walkway (4 sections, removable, GRP grating) | $2,122 |
 | Panel swing pivot (Ø89 pivot + bearings + cage + wall stays + saddles) | $770 |
@@ -515,17 +518,17 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Rodenstock Apo-Ronar 1200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$26,545** |
+| **Scenario B total (excl. CDL)** | **~$27,314** |
 
 ### Scenario C — Full production, own transport, CDL
 
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $25,645 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $26,414 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$115,145–$145,145** |
+| **Scenario C total** | **~$115,914–$145,914** |
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*
 

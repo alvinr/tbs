@@ -1091,13 +1091,13 @@ def sheet3():
                                 px(mat_w), py(IBC_D),
                                 fc=C_OUT, ec=C_DIM, lw=1.0, ls="--",
                                 alpha=0.1, zorder=6))
-        ax.text(px(mat_x + mat_w / 2), py(mat_yd + IBC_D / 2),
+        ax.text(px(mat_x + mat_w * 0.25), py(mat_yd + IBC_D / 2),
                 "12mm RUBBER MAT\n1016 × 1219mm",
                 ha="center", va="center", fontsize=5.5, color=C_DIM,
                 **FONT, zorder=10, alpha=0.7)
 
     # ── IBC footprint ghost outlines (with cage/pallet anatomy) ──────────────
-    ibc_x = (FRAME_FOOTPRINT_D - IBC_W) / 2 + FX_FRONT  # centered in frame
+    ibc_x = (FRAME_FOOTPRINT_D - IBC_W) / 2 + FX_FRONT + 250 # centered in frame
     _ghost_ibc_plan(ax, ibc_x, near_mat_yd, IBC_W, IBC_D, px, py,
                     label="IBC PALLET\nFOOTPRINT")
     _ghost_ibc_plan(ax, ibc_x, far_mat_yd, IBC_W, IBC_D, px, py,
@@ -1134,7 +1134,7 @@ def sheet3():
     ax.add_patch(Rectangle((px(FX_MID), py(POST_NEAR_YD)),
                             px(FRAME_RHS), py(POST_FAR_YD + FRAME_RHS - POST_NEAR_YD),
                             fc="none", ec=C_OUT, lw=1.3, ls="--", zorder=9))
-    ax.text(px(FX_MID + FRAME_RHS + 20), py((POST_NEAR_YD + POST_FAR_YD) / 2),
+    ax.text(px(FX_MID + FRAME_RHS + 75), py((POST_NEAR_YD + POST_FAR_YD) * 0.52),
             "PANEL SUPPORT FRAME\n(MID BAY): TOP RAIL\n+ FLOOR BEAM",
             ha="left", va="center", fontsize=5, color=C_OUT, **FONT, zorder=10)
 
@@ -1175,8 +1175,8 @@ def sheet3():
 
     # Overall width
     dim_x = FRAME_FOOTPRINT_D + 80
-    draw_dim_v(ax, px(dim_x), py(0), py(FRAME_FOOTPRINT_W),
-               f"{FRAME_FOOTPRINT_W}mm\nFRAME WIDTH",
+    draw_dim_v(ax, px(dim_x + 50), py(0), py(FRAME_FOOTPRINT_W),
+               f"{FRAME_FOOTPRINT_W}mm FRAME WIDTH",
                offset=px(8), fs=6, right=True, font=FONT)
 
     # Near column depth

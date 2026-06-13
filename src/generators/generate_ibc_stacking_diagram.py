@@ -155,10 +155,10 @@ def sheet1():
             ha="center", va="top", fontsize=6, color=C_DIM, **FONT)
     ax.text(sx(C_WID / 2), sy(C_HGT + 45), "CONTAINER CEILING (Z=2388mm)",
             ha="center", va="bottom", fontsize=6, color=C_DIM, **FONT)
-    ax.text(sx(-45), sy(C_HGT / 2), "NEAR\nWALL\n(Yd=0)",
+    ax.text(sx(-50), sy(C_HGT / 2), "NEAR WALL (Yd=0)",
             ha="center", va="center", fontsize=5.5, color=C_DIM, **FONT,
             rotation=90)
-    ax.text(sx(C_WID + 45), sy(C_HGT / 2), "FAR\nWALL\n(Yd=2362)",
+    ax.text(sx(C_WID + 45), sy(C_HGT / 2), "FAR WALL (Yd=2362)",
             ha="center", va="center", fontsize=5.5, color=C_DIM, **FONT,
             rotation=90)
 
@@ -258,8 +258,8 @@ def sheet1():
                                 fc=C_BOLT, ec=C_OUT, lw=0.6, zorder=9))
 
     # Annotate the wall seat bracket (near-wall instance; typical at both walls)
-    leader(ax, sx(45), sy(seat_bot - gh / 2), sx(-55), sy(720),
-           "WALL SEAT BRACKET (TYP. ×6)\nWelded knee: back-plate + seat +\ntriangular gusset web,\n4× M12 wall anchors",
+    leader(ax, sx(45), sy(seat_bot - gh / 2), sx(350), sy(800),
+           "WALL SEAT BRACKET (TYP. ×6)\nWelded knee: back-plate\n + seat + triangular gusset\nweb, 4× M12 wall anchors",
            color=C_FRAME, fs=6, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
@@ -282,7 +282,7 @@ def sheet1():
             ax.plot(sx(fcy + d), sy(IBC_FOOT_PLATE_T), 'o',
                     color=C_BOLT, ms=3.5, mew=0, zorder=9)
     leader(ax, sx(corridor_uprights[0] + IBC_FRAME_RHS / 2), sy(IBC_FOOT_PLATE_T),
-           sx((near_col_r + far_col_l) / 2), sy(320),
+           sx((near_col_r + far_col_l) * 0.37), sy(320),
            "FLOOR FLANGE FOOT (TYP. ×6)\n150×150×12 plate on floor,\n4× M12 floor anchors",
            color=C_FRAME, fs=6, ha="center", va="bottom",
            arrow_style="-|>", font=FONT)
@@ -368,7 +368,7 @@ def sheet1():
 
     # D-ring label (one leader for all)
     leader(ax, sx(near_col_r + FRAME_RHS + 20), sy(FRAME_RHS * 1.5),
-           sx(near_col_r + FRAME_RHS + CORRIDOR_W), sy(FRAME_RHS * 1.5 + 120),
+           sx(near_col_r + FRAME_RHS + CORRIDOR_W * 2), sy(FRAME_RHS * 1.5 + 120),
            f"D-RING LASHING POINT\n25mm, {DRING_WLL}kg WLL\n8x TOTAL (4 PER TIER)\nMcMaster #3641T29",
            color=dring_color, fs=6.5,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
@@ -394,14 +394,14 @@ def sheet1():
     # ── Labels ────────────────────────────────────────────────────────────────
     # Frame label
     leader(ax, sx(near_col_r + FRAME_RHS / 2), sy(IBC_H_600 / 2),
-           sx(near_col_r + FRAME_RHS + 20), sy(IBC_H_600 / 2 + 50),
+           sx(near_col_r + FRAME_RHS - 120), sy(IBC_H_600 / 2 + 50),
            f"STACKING FRAME\n50x50x3mm RHS\nMILD STEEL\n~{FRAME_WEIGHT}kg",
            color=C_FRAME, fs=6.5,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
     # Platform label
     leader(ax, sx(BLUE_IBC_Y + IBC_D / 2), sy(platform_z + FRAME_RHS / 2),
-           sx(BLUE_IBC_Y - 80), sy(platform_z + 180),
+           sx(BLUE_IBC_Y + 280), sy(platform_z + 180),
            f"PLATFORM BEAM\n50x50x3mm RHS\n+ {MAT_T}mm RUBBER MAT\n+ {FRAME_LIP_H}mm ANTI-ROTATION LIP",
            color=C_FRAME, fs=6,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
@@ -409,20 +409,20 @@ def sheet1():
     # ── Dimension lines ───────────────────────────────────────────────────────
     # IBC height (bottom tier)
     draw_dim_v(ax, sx(IBC_FAR_Y + IBC_D + 80), sy(0), sy(IBC_H_600),
-               f"{IBC_H_600}mm\nIBC HEIGHT", offset=sx(8), fs=6, right=True, font=FONT)
+               f"{IBC_H_600}mm IBC HEIGHT", offset=sx(22), fs=6, right=True, font=FONT)
 
     # Stack total height
-    draw_dim_v(ax, sx(IBC_FAR_Y + IBC_D + 160), sy(0), sy(IBC_H_STK + FRAME_RHS),
-               f"{IBC_H_STK + FRAME_RHS}mm\nSTACK + FRAME", offset=sx(8), fs=6,
+    draw_dim_v(ax, sx(IBC_FAR_Y + IBC_D + 120), sy(0), sy(IBC_H_STK + FRAME_RHS),
+               f"{IBC_H_STK + FRAME_RHS}mm STACK + FRAME", offset=sx(22), fs=6,
                right=True, font=FONT)
 
     # Ceiling clearance
-    draw_dim_v(ax, sx(IBC_FAR_Y + IBC_D + 160), sy(IBC_H_STK + FRAME_RHS), sy(C_HGT),
-               f"{CEIL_CLEAR - FRAME_RHS}mm\nCLEARANCE", offset=sx(8), fs=6,
+    draw_dim_v(ax, sx(IBC_FAR_Y + IBC_D + 120), sy(IBC_H_STK + FRAME_RHS), sy(C_HGT),
+               f"{CEIL_CLEAR - FRAME_RHS}mm CLEARANCE", offset=sx(22), fs=6,
                right=True, font=FONT)
 
     # Container interior width
-    draw_dim_h(ax, sx(0), sx(C_WID), sy(-60),
+    draw_dim_h(ax, sx(0), sx(C_WID), sy(-90),
                f"{C_WID}mm  INTERIOR WIDTH", offset=sy(5), fs=6.5, font=FONT)
 
     # Near column Yd position
@@ -457,8 +457,8 @@ def sheet1():
         f"7. 8x D-ring lashing points (4 per tier), {DRING_WLL}kg WLL each.",
         f"8. External plumbing panel on end wall centerline (see Sheets 3-4).",
     ]
-    draw_notes(ax, notes, sx(C_WID / 2), sy(Z_LO + 480), spacing=sy(22),
-               fs=7, ha="left", font=FONT, width=3800)
+    draw_notes(ax, notes, sx(C_WID), sy(Z_LO + 425), spacing=sy(22),
+               fs=7, ha="left", font=FONT, width=2200)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 5",

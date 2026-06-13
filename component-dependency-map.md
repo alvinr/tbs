@@ -299,7 +299,7 @@ Permanently installed — no removal for transport mode conversion.*
 | Parameter | Value | Constant |
 |-----------|-------|----------|
 | Walkway width | 300mm | `WALKWAY_W` |
-| Deck height | 80mm | `WALKWAY_H` |
+| Deck height | 130mm | `WALKWAY_H` |
 | Grate thickness (all sections) | 25mm | `WALKWAY_GRATE_T` |
 | Bracket vertical leg | 150mm | `WALKWAY_BRACKET_H` |
 | Bracket plate thickness | 8mm | `WALKWAY_BRACKET_T` |

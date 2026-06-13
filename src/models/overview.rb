@@ -13076,14 +13076,34 @@ end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Pinhole Assembly" }
 if inst
   bb = inst.bounds
-  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  cx = bb.center.x; cy = bb.center.y; mz = bb.max.z
+  anc = Geom::Point3d.new(cx, cy, mz)
+  # Guard the recurring "leader tip floats in empty space" bug: a thin tall
+  # outrigger (push pole, hanger rod) inflates the bbox so bb.max.z hovers
+  # well above the actual mass at the centre. Cast straight down from the
+  # bbox top; if THIS component's own geometry there sits far (>400mm) below,
+  # snap the anchor onto it. Small floats (e.g. a tray rim) stay put.
+  hit = model.raytest([Geom::Point3d.new(cx, cy, mz + 1.mm), Geom::Vector3d.new(0, 0, -1)])
+  if hit && hit[1] && hit[1].include?(inst) && (mz - hit[0].z) > 400.mm
+    anc = hit[0]
+  end
   txt = entities.add_text("PINHOLE  Ø2.17mm", anc, Geom::Vector3d.new(-140.mm, -1120.mm, 630.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Film Plane Mechanism" }
 if inst
   bb = inst.bounds
-  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  cx = bb.center.x; cy = bb.center.y; mz = bb.max.z
+  anc = Geom::Point3d.new(cx, cy, mz)
+  # Guard the recurring "leader tip floats in empty space" bug: a thin tall
+  # outrigger (push pole, hanger rod) inflates the bbox so bb.max.z hovers
+  # well above the actual mass at the centre. Cast straight down from the
+  # bbox top; if THIS component's own geometry there sits far (>400mm) below,
+  # snap the anchor onto it. Small floats (e.g. a tray rim) stay put.
+  hit = model.raytest([Geom::Point3d.new(cx, cy, mz + 1.mm), Geom::Vector3d.new(0, 0, -1)])
+  if hit && hit[1] && hit[1].include?(inst) && (mz - hit[0].z) > 400.mm
+    anc = hit[0]
+  end
   txt = entities.add_text("FILM PLANE
 4-corner tilt/swing", anc, Geom::Vector3d.new(400.mm, 0.mm, 1250.mm))
   txt.layer = model.layers["Labels"] rescue nil
@@ -13091,14 +13111,34 @@ end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Processing Tray" }
 if inst
   bb = inst.bounds
-  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  cx = bb.center.x; cy = bb.center.y; mz = bb.max.z
+  anc = Geom::Point3d.new(cx, cy, mz)
+  # Guard the recurring "leader tip floats in empty space" bug: a thin tall
+  # outrigger (push pole, hanger rod) inflates the bbox so bb.max.z hovers
+  # well above the actual mass at the centre. Cast straight down from the
+  # bbox top; if THIS component's own geometry there sits far (>400mm) below,
+  # snap the anchor onto it. Small floats (e.g. a tray rim) stay put.
+  hit = model.raytest([Geom::Point3d.new(cx, cy, mz + 1.mm), Geom::Vector3d.new(0, 0, -1)])
+  if hit && hit[1] && hit[1].include?(inst) && (mz - hit[0].z) > 400.mm
+    anc = hit[0]
+  end
   txt = entities.add_text("PROCESSING TRAY", anc, Geom::Vector3d.new(-250.mm, 0.mm, 650.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Equipment Panel" }
 if inst
   bb = inst.bounds
-  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  cx = bb.center.x; cy = bb.center.y; mz = bb.max.z
+  anc = Geom::Point3d.new(cx, cy, mz)
+  # Guard the recurring "leader tip floats in empty space" bug: a thin tall
+  # outrigger (push pole, hanger rod) inflates the bbox so bb.max.z hovers
+  # well above the actual mass at the centre. Cast straight down from the
+  # bbox top; if THIS component's own geometry there sits far (>400mm) below,
+  # snap the anchor onto it. Small floats (e.g. a tray rim) stay put.
+  hit = model.raytest([Geom::Point3d.new(cx, cy, mz + 1.mm), Geom::Vector3d.new(0, 0, -1)])
+  if hit && hit[1] && hit[1].include?(inst) && (mz - hit[0].z) > 400.mm
+    anc = hit[0]
+  end
   txt = entities.add_text("EQUIPMENT PANEL
 pump / filter", anc, Geom::Vector3d.new(500.mm, 0.mm, 820.mm))
   txt.layer = model.layers["Labels"] rescue nil
@@ -13106,7 +13146,17 @@ end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "IBC Stack" }
 if inst
   bb = inst.bounds
-  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  cx = bb.center.x; cy = bb.center.y; mz = bb.max.z
+  anc = Geom::Point3d.new(cx, cy, mz)
+  # Guard the recurring "leader tip floats in empty space" bug: a thin tall
+  # outrigger (push pole, hanger rod) inflates the bbox so bb.max.z hovers
+  # well above the actual mass at the centre. Cast straight down from the
+  # bbox top; if THIS component's own geometry there sits far (>400mm) below,
+  # snap the anchor onto it. Small floats (e.g. a tray rim) stay put.
+  hit = model.raytest([Geom::Point3d.new(cx, cy, mz + 1.mm), Geom::Vector3d.new(0, 0, -1)])
+  if hit && hit[1] && hit[1].include?(inst) && (mz - hit[0].z) > 400.mm
+    anc = hit[0]
+  end
   txt = entities.add_text("IBC WATER STORAGE
 4x tote", anc, Geom::Vector3d.new(600.mm, 0.mm, 1300.mm))
   txt.layer = model.layers["Labels"] rescue nil
@@ -13114,7 +13164,17 @@ end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Light-Trap Drum" }
 if inst
   bb = inst.bounds
-  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  cx = bb.center.x; cy = bb.center.y; mz = bb.max.z
+  anc = Geom::Point3d.new(cx, cy, mz)
+  # Guard the recurring "leader tip floats in empty space" bug: a thin tall
+  # outrigger (push pole, hanger rod) inflates the bbox so bb.max.z hovers
+  # well above the actual mass at the centre. Cast straight down from the
+  # bbox top; if THIS component's own geometry there sits far (>400mm) below,
+  # snap the anchor onto it. Small floats (e.g. a tray rim) stay put.
+  hit = model.raytest([Geom::Point3d.new(cx, cy, mz + 1.mm), Geom::Vector3d.new(0, 0, -1)])
+  if hit && hit[1] && hit[1].include?(inst) && (mz - hit[0].z) > 400.mm
+    anc = hit[0]
+  end
   txt = entities.add_text("LIGHT-TRAP DRUM
 (entry)", anc, Geom::Vector3d.new(-650.mm, 0.mm, 1050.mm))
   txt.layer = model.layers["Labels"] rescue nil
@@ -13122,21 +13182,51 @@ end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Electrical" }
 if inst
   bb = inst.bounds
-  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  cx = bb.center.x; cy = bb.center.y; mz = bb.max.z
+  anc = Geom::Point3d.new(cx, cy, mz)
+  # Guard the recurring "leader tip floats in empty space" bug: a thin tall
+  # outrigger (push pole, hanger rod) inflates the bbox so bb.max.z hovers
+  # well above the actual mass at the centre. Cast straight down from the
+  # bbox top; if THIS component's own geometry there sits far (>400mm) below,
+  # snap the anchor onto it. Small floats (e.g. a tray rim) stay put.
+  hit = model.raytest([Geom::Point3d.new(cx, cy, mz + 1.mm), Geom::Vector3d.new(0, 0, -1)])
+  if hit && hit[1] && hit[1].include?(inst) && (mz - hit[0].z) > 400.mm
+    anc = hit[0]
+  end
   txt = entities.add_text("ELECTRICAL PANEL", anc, Geom::Vector3d.new(500.mm, 0.mm, 560.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Evap Cooler & Duct" }
 if inst
   bb = inst.bounds
-  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  cx = bb.center.x; cy = bb.center.y; mz = bb.max.z
+  anc = Geom::Point3d.new(cx, cy, mz)
+  # Guard the recurring "leader tip floats in empty space" bug: a thin tall
+  # outrigger (push pole, hanger rod) inflates the bbox so bb.max.z hovers
+  # well above the actual mass at the centre. Cast straight down from the
+  # bbox top; if THIS component's own geometry there sits far (>400mm) below,
+  # snap the anchor onto it. Small floats (e.g. a tray rim) stay put.
+  hit = model.raytest([Geom::Point3d.new(cx, cy, mz + 1.mm), Geom::Vector3d.new(0, 0, -1)])
+  if hit && hit[1] && hit[1].include?(inst) && (mz - hit[0].z) > 400.mm
+    anc = hit[0]
+  end
   txt = entities.add_text("EVAP COOLER", anc, Geom::Vector3d.new(300.mm, 0.mm, 1700.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Chemistry Shelf" }
 if inst
   bb = inst.bounds
-  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  cx = bb.center.x; cy = bb.center.y; mz = bb.max.z
+  anc = Geom::Point3d.new(cx, cy, mz)
+  # Guard the recurring "leader tip floats in empty space" bug: a thin tall
+  # outrigger (push pole, hanger rod) inflates the bbox so bb.max.z hovers
+  # well above the actual mass at the centre. Cast straight down from the
+  # bbox top; if THIS component's own geometry there sits far (>400mm) below,
+  # snap the anchor onto it. Small floats (e.g. a tray rim) stay put.
+  hit = model.raytest([Geom::Point3d.new(cx, cy, mz + 1.mm), Geom::Vector3d.new(0, 0, -1)])
+  if hit && hit[1] && hit[1].include?(inst) && (mz - hit[0].z) > 400.mm
+    anc = hit[0]
+  end
   txt = entities.add_text("CHEMISTRY SHELF", anc, Geom::Vector3d.new(-200.mm, -850.mm, 700.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end

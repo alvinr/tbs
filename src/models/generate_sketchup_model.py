@@ -183,7 +183,12 @@ OVERVIEW_POINT_LABELS = [
 def overview_labels():
     """Ruby that adds an in-model text callout (with leader) for each major system
     component, on the 'Labels' tag. Component labels anchor at the instance's bounds
-    top-centre (tracking the geometry); point labels anchor at an explicit coordinate.
+    top-centre (tracking the geometry), but if a thin tall outrigger (push pole,
+    hanger rod) has inflated the bbox so that top-centre floats >400mm above the
+    component's actual geometry, a downward raytest snaps the anchor back onto the
+    real top surface (kills the recurring "tip floats in empty space" bug). Point
+    labels anchor at an explicit coordinate (for parts with no single representative
+    instance, e.g. paired/perimeter members where even the snap has nothing at centre).
     The leader (Δx,Δy,Δz) fans the text out above/clear of the model."""
     rows = []
     for name, text, dx, dy, dz in OVERVIEW_LABELS:
@@ -191,7 +196,17 @@ def overview_labels():
             f'inst = entities.grep(Sketchup::ComponentInstance).find {{ |i| i.name == "{name}" }}\n'
             f'if inst\n'
             f'  bb = inst.bounds\n'
-            f'  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)\n'
+            f'  cx = bb.center.x; cy = bb.center.y; mz = bb.max.z\n'
+            f'  anc = Geom::Point3d.new(cx, cy, mz)\n'
+            f'  # Guard the recurring "leader tip floats in empty space" bug: a thin tall\n'
+            f'  # outrigger (push pole, hanger rod) inflates the bbox so bb.max.z hovers\n'
+            f'  # well above the actual mass at the centre. Cast straight down from the\n'
+            f'  # bbox top; if THIS component\'s own geometry there sits far (>400mm) below,\n'
+            f'  # snap the anchor onto it. Small floats (e.g. a tray rim) stay put.\n'
+            f'  hit = model.raytest([Geom::Point3d.new(cx, cy, mz + 1.mm), Geom::Vector3d.new(0, 0, -1)])\n'
+            f'  if hit && hit[1] && hit[1].include?(inst) && (mz - hit[0].z) > 400.mm\n'
+            f'    anc = hit[0]\n'
+            f'  end\n'
             f'  txt = entities.add_text("{text}", anc, Geom::Vector3d.new({mm(dx)}, {mm(dy)}, {mm(dz)}))\n'
             f'  txt.layer = model.layers["Labels"] rescue nil\n'
             f'end')

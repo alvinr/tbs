@@ -12053,14 +12053,69 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # TAP-01 Riser (3/4in)
+  # TAP-01 Branch (3/4in)
   grp = ents.add_group
-  grp.name = "TAP-01 Riser (3/4in)"
+  grp.name = "TAP-01 Branch (3/4in)"
   ge = grp.entities
-  circle = ge.add_circle([1130.mm,12.mm,40.mm], [0,0,1], 12.5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(1335.mm)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 1310.mm)
+  circle = ge.add_circle([1130.mm,12.mm,40.mm], vec, 12.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # TAP-01 Branch (3/4in) elbow
+  grp = ents.add_group
+  grp.name = "TAP-01 Branch (3/4in) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1130.mm,37.mm,1350.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 25.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1130.mm,12.mm,1350.mm], [0.000000,0.000000,1.000000], 12.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # TAP-01 Branch (3/4in)
+  grp = ents.add_group
+  grp.name = "TAP-01 Branch (3/4in)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 50.mm, 0.mm)
+  circle = ge.add_circle([1130.mm,37.mm,1375.mm], vec, 12.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # TAP-01 Branch (3/4in) elbow
+  grp = ents.add_group
+  grp.name = "TAP-01 Branch (3/4in) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1130.mm,87.mm,1350.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 25.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1130.mm,87.mm,1375.mm], [0.000000,1.000000,0.000000], 12.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # TAP-01 Branch (3/4in)
+  grp = ents.add_group
+  grp.name = "TAP-01 Branch (3/4in)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -200.mm)
+  circle = ge.add_circle([1130.mm,112.mm,1350.mm], vec, 12.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
   mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -12074,34 +12129,6 @@ end
   face.pushpull(40.mm)
   mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
   mat.color = Sketchup::Color.new(184, 184, 64)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # TAP-01 spout (out)
-  grp = ents.add_group
-  grp.name = "TAP-01 spout (out)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 100.mm, 0.mm)
-  circle = ge.add_circle([1130.mm,12.mm,1375.mm], vec, 12.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
-  mat.color = Sketchup::Color.new(41, 121, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # TAP-01 spout (down)
-  grp = ents.add_group
-  grp.name = "TAP-01 spout (down)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -225.mm)
-  circle = ge.add_circle([1130.mm,112.mm,1375.mm], vec, 12.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
-  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 

@@ -458,7 +458,7 @@ def draw_sheet1():
          "MPPT CONTROLLER", "Victron 100/50", fc="#FFF3CC")
     sarrow(ax_c, 13.2, row_top + 0.45, 14.5, col=C_CL)
     sbox(ax_c, 14.5, row_top - 0.3, 3.0, 1.5,
-         "BATTERY BANK", "2×100Ah LiFePO4", fc="#E0E8F8")
+         "BATTERY 1×100Ah", "std · 2nd pack: plug-in", fc="#E0E8F8")
 
     # Shore power path (bottom row)
     sbox(ax_c, 0.5, row_bot, 2.8, 0.9,

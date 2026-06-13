@@ -24,7 +24,12 @@ WHITE_LIGHT_W   = 60    # Circuit G — 3× 20W LED panels
 
 # ── Battery bank ──────────────────────────────────────────────────────────────
 
-BATTERY_AH      = 200   # total Ah (2× 100Ah in parallel)
+# Standard build = 1× 100Ah pack (cost). The distribution busbar + fuse block are
+# provisioned for a 2nd 100Ah in parallel as a plug-in expansion (no rewiring) —
+# the autonomy model below reports both 1- and 2-pack reserves.
+BATTERY_AH_PER_PACK = 100
+STANDARD_PACKS      = 1     # fitted in the standard build (2nd is ghosted/optional)
+BATTERY_AH      = STANDARD_PACKS * BATTERY_AH_PER_PACK
 BATTERY_V       = 12    # nominal voltage
 DOD             = 1.0   # LiFePO4: 100% depth of discharge usable
 

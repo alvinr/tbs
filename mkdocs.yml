@@ -64,6 +64,7 @@ nav:
       - "Processing Tray & Spray Bar": processing-tray-and-spray-bar.md
     - Electrical Systems:
       - "Electrical": electrical-report.md
+      - "Electrical Safety": electrical-safety-report.md
       - "Ventilation & Cooling": ventilation-report.md
     - Film Plane & Pinhole:
       - "Pinhole Report": pinhole-report.md

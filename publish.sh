@@ -62,6 +62,7 @@ MD_FILES=(
     "funding-proposal.md"
     "operating-manual.md"
     "electrical-report.md"
+    "electrical-safety-report.md"
     "master-shopping-list.md"
     "licensing.md"
     "light-trap-selection.md"

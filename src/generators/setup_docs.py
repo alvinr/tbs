@@ -59,6 +59,7 @@ MD_FILES = [
     ("chemistry-shopping-list.md",       (".",           "Chem Shopping List")),
     ("operating-manual.md",             (".",           "Operating Manual")),
     ("electrical-report.md",            (".",           "Electrical & Systems")),
+    ("electrical-safety-report.md",     (".",           "Electrical Safety")),
     ("master-shopping-list.md",         (".",           "Master Shopping List")),
     ("licensing.md",                      (".",           "License")),
     ("light-trap-selection.md",           (".",           "Light Trap Selection")),
@@ -337,6 +338,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Transportation](container-transport-options.md) | Commercial hire vs. self-haul analysis |
 | [Operating Manual](operating-manual.md) | Single-operator step-by-step workflow — coating, exposure, development, cleanup |
 | [Electrical & Systems](electrical-report.md) | Power architecture, light trap vestibule, lighting, wiring diagrams |
+| [Electrical Safety](electrical-safety-report.md) | 12V DC hazard assessment — fire/arc/corrosion risks, existing controls, and the protective measures added |
 | [Ventilation & Cooling](ventilation-report.md) | Fan system, evaporative cooler, light-safe baffle ducts, shade canopy, and operating modes |
 | [Master Shopping List](master-shopping-list.md) | All components consolidated by build area — electrical, water, chemistry, vestibule, cooling |
 | [License](licensing.md) | GNU AGPLv3 — © 2026 Alvin Richards |

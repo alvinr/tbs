@@ -16,7 +16,7 @@
         <link rel="prev" href="../processing-tray-and-spray-bar/">
       
       
-        <link rel="next" href="../ventilation-report/">
+        <link rel="next" href="../electrical-safety-report/">
       
       
         
@@ -1185,6 +1185,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#75-circuit-protection-electrical-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 Circuit Protection &amp; Electrical Safety
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1227,6 +1238,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../electrical-safety-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Electrical Safety
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -3066,6 +3105,30 @@ Complete power flow from solar panels through controller, battery bank, fuse blo
 <p><strong>Sheet 3 — Pinhole Wall Interior Elevation</strong>
 Interior elevation of the pinhole wall face (Yd=0), looking from inside the container. Shows equipment mounting heights, cable trunking at the ceiling corner rail, drop conduits to each device, pull-cord switch positions with cord lengths, and ceiling-mounted LED panel locations.</p>
 <p><img alt="TBS-ELEC Sheet 3 — Pinhole Wall Interior Elevation" src="../assets/electrical-sheet3.png" /></p>
+<h3 id="75-circuit-protection-electrical-safety">7.5 Circuit Protection &amp; Electrical Safety<a class="headerlink" href="#75-circuit-protection-electrical-safety" title="Permanent link">&para;</a></h3>
+<p>This is a 12 V DC (extra-low-voltage) system with no interior mains AC, so the dominant
+electrical hazard is <strong>DC short-circuit / arc / fire</strong>, not shock — see the dedicated
+<a href="../electrical-safety-report/">Electrical Safety Report</a> for the full hazard assessment.
+The following protective measures are part of the build:</p>
+<ul>
+<li><strong>Battery main disconnect switch</strong> (Blue Sea m-Series 300 A) between the battery + and
+  the distribution busbar — a manual isolator for emergency and maintenance
+  de-energization (the 200 A fuse is overcurrent protection, not a switch).</li>
+<li><strong>Main fuse at the battery terminal</strong> — a terminal-mount MRBF fuse on the battery + post
+  (≤180 mm, per ABYC E-11) protects the main cable along its whole length.</li>
+<li><strong>Battery terminal covers</strong> over both posts/busbar; use insulated tools at the busbar.</li>
+<li><strong>Sealed wet-zone connections</strong> — pump circuits in the IBC corridor / tray end use
+  IP-rated connectors (Deutsch DT or adhesive-lined heat-shrink), tinned marine-grade wire,
+  and dielectric grease on terminals exposed to chemistry vapor. Anderson Powerpole is
+  reserved for dry interior circuits only.</li>
+<li><strong>Chafe protection</strong> — grommets / cable glands at every steel-shell penetration; + and −
+  conductors paired/sheathed.</li>
+<li><strong>Wet-zone wiring elevated</strong> above the spill line, with drip loops and no connectors at
+  the lowest points.</li>
+<li><strong>Equipotential bonding</strong> — the IBC frame, walkways, and tray-adjacent metal are bonded
+  to the battery-negative reference (6 AWG), in addition to the shell bond in §7.3, so any
+  positive-to-metal fault clears cleanly through a fuse.</li>
+</ul>
 <h2 id="8-parts-list">8. Parts List<a class="headerlink" href="#8-parts-list" title="Permanent link">&para;</a></h2>
 <p>All US/SoCal sources. Prices approximate as of 2026.</p>
 <table>
@@ -3109,10 +3172,52 @@ Interior elevation of the pinhole wall face (Yd=0), looking from inside the cont
 <td>~$55</td>
 </tr>
 <tr>
-<td>200A main fuse + holder</td>
-<td>Blue Sea ANL fuse block</td>
+<td>200A main fuse (terminal-mount)</td>
+<td>Blue Sea MRBF on the battery + post (≤180mm, ABYC E-11)</td>
 <td>Amazon</td>
+<td>~$25</td>
+</tr>
+<tr>
+<td>Battery main disconnect switch</td>
+<td>Blue Sea m-Series 300A — manual isolator, battery + to busbar</td>
+<td>West Marine (Torrance CA) / Amazon</td>
+<td>~$40</td>
+</tr>
+<tr>
+<td>Battery terminal covers (pair)</td>
+<td>Insulating boots over + / − posts/busbar</td>
+<td>Amazon</td>
+<td>~$10</td>
+</tr>
+<tr>
+<td>Sealed wet-zone connectors</td>
+<td>Deutsch DT / adhesive-lined heat-shrink, pump circuits</td>
+<td>Waytek Wire</td>
+<td>~$25</td>
+</tr>
+<tr>
+<td>Dielectric grease</td>
+<td>Marine-grade — chemistry-vapor terminal protection</td>
+<td>Amazon</td>
+<td>~$10</td>
+</tr>
+<tr>
+<td>Tinned marine wire (wet-zone runs)</td>
+<td>14/16 AWG tinned copper, ~25ft</td>
+<td>Waytek Wire</td>
 <td>~$30</td>
+</tr>
+<tr>
+<td>Cable grommets / glands</td>
+<td>Steel-shell penetrations (chafe protection)</td>
+<td>McMaster-Carr</td>
+<td>~$15</td>
+</tr>
+<tr>
+<td>Equipotential bonding kit</td>
+<td>6 AWG green/yellow + ring lugs — IBC frame / walkway / tray-metal to battery-negative</td>
+<td>Amazon</td>
+<td>~$20</td>
 </tr>
 <tr>
 <td>Wiring kit</td>
@@ -3226,7 +3331,7 @@ Interior elevation of the pinhole wall face (Yd=0), looking from inside the cont
 <td><strong>Electrical system total</strong></td>
 <td></td>
 <td></td>
-<td><strong>~$1,855</strong></td>
+<td><strong>~$2,000</strong></td>
 </tr>
 <tr>
 <td><strong>Shade canopy total</strong></td>
@@ -3244,10 +3349,11 @@ Interior elevation of the pinhole wall face (Yd=0), looking from inside the cont
 <td><strong>Systems grand total</strong></td>
 <td></td>
 <td></td>
-<td><strong>~$2,335</strong></td>
+<td><strong>~$2,480</strong></td>
 </tr>
 </tbody>
 </table>
+<p><em>Electrical total includes ~$145 of circuit-protection / wet-zone-sealing hardware added per the <a href="../electrical-safety-report/">Electrical Safety Report</a> §5 (disconnect switch, terminal-mount fuse, sealed connectors, bonding, grommets).</em></p>
 <h2 id="9-maintenance">9. Maintenance<a class="headerlink" href="#9-maintenance" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

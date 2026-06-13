@@ -234,6 +234,31 @@ Interior elevation of the pinhole wall face (Yd=0), looking from inside the cont
 
 ![TBS-ELEC Sheet 3 — Pinhole Wall Interior Elevation](assets/electrical-sheet3.png)
 
+### 7.5 Circuit Protection & Electrical Safety
+
+This is a 12 V DC (extra-low-voltage) system with no interior mains AC, so the dominant
+electrical hazard is **DC short-circuit / arc / fire**, not shock — see the dedicated
+[Electrical Safety Report](electrical-safety-report.md) for the full hazard assessment.
+The following protective measures are part of the build:
+
+- **Battery main disconnect switch** (Blue Sea m-Series 300 A) between the battery + and
+  the distribution busbar — a manual isolator for emergency and maintenance
+  de-energization (the 200 A fuse is overcurrent protection, not a switch).
+- **Main fuse at the battery terminal** — a terminal-mount MRBF fuse on the battery + post
+  (≤180 mm, per ABYC E-11) protects the main cable along its whole length.
+- **Battery terminal covers** over both posts/busbar; use insulated tools at the busbar.
+- **Sealed wet-zone connections** — pump circuits in the IBC corridor / tray end use
+  IP-rated connectors (Deutsch DT or adhesive-lined heat-shrink), tinned marine-grade wire,
+  and dielectric grease on terminals exposed to chemistry vapor. Anderson Powerpole is
+  reserved for dry interior circuits only.
+- **Chafe protection** — grommets / cable glands at every steel-shell penetration; + and −
+  conductors paired/sheathed.
+- **Wet-zone wiring elevated** above the spill line, with drip loops and no connectors at
+  the lowest points.
+- **Equipotential bonding** — the IBC frame, walkways, and tray-adjacent metal are bonded
+  to the battery-negative reference (6 AWG), in addition to the shell bond in §7.3, so any
+  positive-to-metal fault clears cleanly through a fuse.
+
 ## 8. Parts List
 All US/SoCal sources. Prices approximate as of 2026.
 
@@ -244,7 +269,14 @@ All US/SoCal sources. Prices approximate as of 2026.
 | LiFePO4 battery × 2 | 100Ah 12V (Battle Born or Renogy) | battleborncotteries.com / renogy.com | ~$700 |
 | Shore backup charger | Victron Blue Smart IP65 12/15 | altE Store | ~$150 |
 | Fuse block | Blue Sea 5026 ST Blade 12-circuit | West Marine (Torrance CA) / Amazon | ~$55 |
-| 200A main fuse + holder | Blue Sea ANL fuse block | Amazon | ~$30 |
+| 200A main fuse (terminal-mount) | Blue Sea MRBF on the battery + post (≤180mm, ABYC E-11) | Amazon | ~$25 |
+| Battery main disconnect switch | Blue Sea m-Series 300A — manual isolator, battery + to busbar | West Marine (Torrance CA) / Amazon | ~$40 |
+| Battery terminal covers (pair) | Insulating boots over + / − posts/busbar | Amazon | ~$10 |
+| Sealed wet-zone connectors | Deutsch DT / adhesive-lined heat-shrink, pump circuits | Waytek Wire | ~$25 |
+| Dielectric grease | Marine-grade — chemistry-vapor terminal protection | Amazon | ~$10 |
+| Tinned marine wire (wet-zone runs) | 14/16 AWG tinned copper, ~25ft | Waytek Wire | ~$30 |
+| Cable grommets / glands | Steel-shell penetrations (chafe protection) | McMaster-Carr | ~$15 |
+| Equipotential bonding kit | 6 AWG green/yellow + ring lugs — IBC frame / walkway / tray-metal to battery-negative | Amazon | ~$20 |
 | Wiring kit | 14/16/18 AWG, 50ft each color | Amazon / Waytek Wire (waytekwire.com) | ~$80 |
 | Anderson Powerpole connectors | 30A kit, 50 pairs | Powerwerx (powerwerx.com) | ~$40 |
 | Deutsch DT connectors | DT 2-pin, 10 sets | Waytek Wire | ~$30 |
@@ -263,10 +295,12 @@ All US/SoCal sources. Prices approximate as of 2026.
 | 6" inline fans × 2 | 12V DC, ~200 CFM each | Amazon (AC Infinity S6) | ~$120 |
 | 12V LED flat panel, 300×600mm, 4000K | 20W, neutral white, ceiling-mount | Amazon / superbrightleds.com | ~$75 (×3) |
 | Pull-cord ceiling switch, 12V 6A SPST | Inline switch for lighting circuits D & G | Amazon / Lowe's | ~$16 (×2) |
-| **Electrical system total** | | | **~$1,855** |
+| **Electrical system total** | | | **~$2,000** |
 | **Shade canopy total** | | | **~$200** |
 | **Cooling (evap cooler)** | | | **~$280** |
-| **Systems grand total** | | | **~$2,335** |
+| **Systems grand total** | | | **~$2,480** |
+
+*Electrical total includes ~$145 of circuit-protection / wet-zone-sealing hardware added per the [Electrical Safety Report](electrical-safety-report.md) §5 (disconnect switch, terminal-mount fuse, sealed connectors, bonding, grommets).*
 
 ## 9. Maintenance
 

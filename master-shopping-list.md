@@ -302,7 +302,14 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | [Blue Sea 5026 fuse block](https://www.amazon.com/s?k=Blue+Sea+5026+fuse+block) | 12-circuit ST-blade | 1 | Amazon / [West Marine](https://www.westmarine.com) | ~$55 |
-| [200A ANL main fuse + holder](https://www.amazon.com/s?k=200A+ANL+fuse+holder+Blue+Sea) | Blue Sea ANL fuse block | 1 | Amazon | ~$30 |
+| [200A main fuse — MRBF terminal-mount](https://www.amazon.com/s?k=Blue+Sea+MRBF+terminal+fuse) | On the battery + post (≤180mm from battery, ABYC E-11) | 1 | Amazon | ~$25 |
+| [Battery main disconnect switch](https://www.bluesea.com/products/category/8/2/Battery_Switches) | Blue Sea m-Series 300A — manual isolator, battery + to busbar | 1 | [West Marine](https://www.westmarine.com) / Amazon | ~$40 |
+| Battery terminal covers (pair) | Insulating boots over + / − posts | 1 | Amazon | ~$10 |
+| [Sealed wet-zone connectors](https://www.waytekwire.com) | Deutsch DT / adhesive-lined heat-shrink — pump circuits in the IBC corridor / tray end | 1 lot | [Waytek Wire](https://www.waytekwire.com) | ~$25 |
+| Dielectric grease | Marine-grade — chemistry-vapor terminal protection | 1 | Amazon | ~$10 |
+| Tinned marine wire (wet-zone runs) | 14/16 AWG tinned copper, ~25ft | 1 | [Waytek Wire](https://www.waytekwire.com) | ~$30 |
+| Cable grommets / glands | Steel-shell penetrations (chafe protection) | 1 lot | McMaster-Carr | ~$15 |
+| Equipotential bonding kit | 6 AWG green/yellow + ring lugs — IBC frame / walkway / tray-metal to battery-negative | 1 | Amazon | ~$20 |
 | [IP65 enclosure 300×200×130mm](https://www.amazon.com/s?k=IP65+enclosure+300x200+junction+box) | Houses fuse block + MPPT | 1 | Amazon | ~$60 |
 | Wiring kit — 12/14/16/18 AWG | 50ft each color, tinned copper | 1 kit | [Waytek Wire](https://www.waytekwire.com) / Amazon | ~$80 |
 | 2/0 AWG cable | Battery–fuse–busbar, 3ft | 1 lot | Amazon | ~$30 |
@@ -315,9 +322,9 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Pull-cord ceiling switch, 12V 6A SPST | Inline switch for lighting Ccts D & G | 2 | Amazon | ~$16 total |
 | Copper ground stake 8ft × ⅝" dia | Earth connection | 1 | Home Depot | ~$20 |
 | 4 AWG ground wire, green/yellow | 3m | 1 | Amazon | ~$15 |
-**Distribution & wiring subtotal: ~$600**
+**Distribution & wiring subtotal: ~$745**  *(+$145 circuit-protection / wet-zone-sealing hardware — see [Electrical Safety Report](electrical-safety-report.md) §5)*
 
-**Section total: ~$1,785–$1,890**
+**Section total: ~$1,930–$2,035**
 
 ## 7. Housed Revolving-Door Light Lock — Custom Fabrication
 *Source: `light-trap-selection.md` § 4 (rev 9 / B2). Custom-fabricated Ø900 fixed housing + single-opening C-shell drum (no fins) built into the hinged cargo-door panel — light-tight by geometry. **rev 9 switches the drum/housing from 3mm aluminum to a hybrid plastic skin (5mm UV-HDPE housing, 4mm PP drum)** — cutting the drum/housing mass (~99 kg → ~60 kg), removing galvanic concerns, and lowering fabrication cost. Replaces the failed Ø750 4-fin drum. Single-operator entry/exit at any time without admitting daylight.*

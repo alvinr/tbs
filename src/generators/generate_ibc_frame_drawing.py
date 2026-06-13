@@ -604,45 +604,45 @@ def sheet1():
     dim_yd = IBC_FAR_Y + IBC_D + FRAME_RHS + 80
     draw_dim_v(ax, sx(dim_yd), sy(0), sy(PLATFORM_Z),
                f"{PLATFORM_Z}mm BOTTOM TIER",
-               offset=sx(15), fs=5.5, right=True, font=FONT)
-    draw_dim_v(ax, sx(dim_yd + 80), sy(0), sy(PLATFORM_Z + FRAME_RHS),
+               offset=sx(32), fs=5.5, right=True, font=FONT)
+    draw_dim_v(ax, sx(dim_yd + 60), sy(0), sy(PLATFORM_Z + FRAME_RHS),
                f"{PLATFORM_Z + FRAME_RHS}mm PLATFORM TOP",
-               offset=sx(15), fs=5.5, right=True, font=FONT)
-    draw_dim_v(ax, sx(dim_yd + 160), sy(0), sy(TOP_Z),
+               offset=sx(32), fs=5.5, right=True, font=FONT)
+    draw_dim_v(ax, sx(dim_yd + 120), sy(0), sy(TOP_Z),
                f"{TOP_Z}mm FRAME TOP",
-               offset=sx(15), fs=5.5, right=True, font=FONT)
+               offset=sx(32), fs=5.5, right=True, font=FONT)
 
     # RHS member size
     draw_dim_h(ax, sx(POST_NEAR_YD), sx(POST_NEAR_YD + FRAME_RHS),
                sy(TOP_Z + 60),
-               f"{FRAME_RHS}mm", offset=sy(20), fs=5.5, font=FONT)
+               f"{FRAME_RHS}mm", offset=sy(32), fs=5.5, font=FONT)
 
     # Gate height
-    draw_dim_v(ax, sx(BLUE_IBC_Y - FRAME_RHS - 60), sy(0), sy(GATE_H),
+    draw_dim_v(ax, sx(BLUE_IBC_Y - FRAME_RHS - 30), sy(0), sy(GATE_H),
                f"{GATE_H}mm GATE",
-               offset=sx(9), fs=5.5, font=FONT)
+               offset=sx(32), fs=5.5, font=FONT)
 
     # Lip height
     draw_dim_v(ax, sx(POST_NEAR_YD - 30), sy(PLATFORM_Z + FRAME_RHS),
                sy(PLATFORM_Z + FRAME_RHS + LIP_H),
                f"{LIP_H}mm LIP",
-               offset=sx(9), fs=5.5, font=FONT)
+               offset=sx(32), fs=5.5, font=FONT)
 
     # IBC anatomy dimensions (left side of near column)
-    anat_yd = BLUE_IBC_Y - FRAME_RHS - 160
+    anat_yd = BLUE_IBC_Y - FRAME_RHS - 90
     draw_dim_v(ax, sx(anat_yd), sy(0), sy(IBC_PALLET_H),
                f"{IBC_PALLET_H}mm PALLET",
-               offset=sx(9), fs=5, font=FONT)
+               offset=sx(32), fs=5, font=FONT)
     draw_dim_v(ax, sx(anat_yd), sy(IBC_PALLET_H), sy(IBC_BOTTLE_TOP),
                f"{IBC_BOTTLE_TOP - IBC_PALLET_H}mm BOTTLE",
-               offset=sx(9), fs=5, font=FONT)
+               offset=sx(32), fs=5, font=FONT)
     draw_dim_v(ax, sx(anat_yd + 40), sy(IBC_BOTTLE_TOP), sy(IBC_H_600),
                f"{IBC_CAGE_RAIL_W}mm RAIL",
-               offset=sx(9), fs=5, font=FONT)
+               offset=sx(42), fs=5, font=FONT)
     # Valve height
     draw_dim_v(ax, sx(anat_yd - 60), sy(0), sy(IBC_VALVE_Z),
                f"{IBC_VALVE_Z}mm VALVE CL",
-               offset=sx(9), fs=5, font=FONT)
+               offset=sx(32), fs=5, font=FONT)
 
     # ── Member labels ───────────────────────────────────────────────────────
     # Inverted x-axis (Yd grows screen-LEFT): nearest open pocket is the near-
@@ -670,8 +670,8 @@ def sheet1():
            color=C_OUT, fs=5.5, ha="right", va="bottom",
            arrow_style="-|>", font=FONT)
 
-    leader(ax, sx(POST_NEAR_YD + FRAME_RHS / 2), sy(-FOOT_PLATE_T / 2),
-           sx(POST_NEAR_YD + 320), sy(-260),
+    leader(ax, sx(POST_NEAR_YD - FRAME_RHS * 0.3), sy(FOOT_PLATE_T / 2),
+           sx(POST_NEAR_YD - 220), sy(140),
            "FLOOR FLANGE FOOT\n150×150×12 PLATE\n4× M12 ANCHORS\n(×6, UNDER EACH UPRIGHT)",
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
@@ -680,7 +680,7 @@ def sheet1():
     # (rule 67), stacked below the CORRIDOR UPRIGHT callout so the two don't touch.
     leader(ax, sx(POST_NEAR_YD + FRAME_RHS - LIP_T / 2),
            sy(PLATFORM_Z + FRAME_RHS + LIP_H / 2),
-           sx(NEAR_COL_R - 70), sy(PLATFORM_Z + FRAME_RHS + LIP_H + 30),
+           sx(NEAR_COL_R - 70), sy(PLATFORM_Z + FRAME_RHS + LIP_H + 100),
            "ANTI-ROTATION LIP\n5mm PLATE × 40mm HIGH\nFILLET WELDED TO PLATFORM",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
@@ -688,7 +688,7 @@ def sheet1():
     # Keep the text fully screen-right of the near upright (Yd < 1046) so it sits
     # on the open near-column face instead of straddling both posts (rule 65).
     leader(ax, sx(POST_NEAR_YD), sy(DRING_STANDOFF + DRING_SIZE),
-           sx(POST_NEAR_YD - 30), sy(DRING_STANDOFF + DRING_SIZE + 100),
+           sx(POST_NEAR_YD - 90), sy(DRING_STANDOFF + DRING_SIZE + 100),
            "D-RING LASHING\n25mm, 1,100kg WLL\n6mm PLATE, WELDED\n(×8 TOTAL, 4 PER TIER)",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
@@ -709,13 +709,13 @@ def sheet1():
     # Pull the valve callout into the bottom-tier face just left of the valve
     # (short leader, rule 67), clear above the PALLET BASE callout below it.
     leader(ax, sx(BLUE_IBC_Y + IBC_D - IBC_CAGE_INSET), sy(IBC_VALVE_Z),
-           sx(BLUE_IBC_Y + IBC_D - 80), sy(IBC_VALVE_Z + 235),
+           sx(BLUE_IBC_Y + IBC_D - 80), sy(IBC_VALVE_Z + 75),
            f"DN50 VALVE (S60×6)\nZ={IBC_VALVE_Z}mm\nCORRIDOR FACE",
            color=C_CAGE, fs=5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
 
     leader(ax, sx(BLUE_IBC_Y + IBC_CAGE_INSET), sy(IBC_H_600 - 50),
-           sx(BLUE_IBC_Y - 150), sy(IBC_H_600 + 50),
+           sx(BLUE_IBC_Y + 75), sy(IBC_H_600 + 100),
            f"CAGE TOP RAIL\n{IBC_CAGE_TUBE_D}mm Ø TUBE\nLASHING STRAP BEARS HERE",
            color=C_CAGE, fs=5, ha="right", va="bottom",
            arrow_style="-|>", font=FONT)
@@ -753,15 +753,15 @@ def sheet1():
         f"13. IBC valve face (DN50, S60×6) points toward corridor. Valve CL at Z={IBC_VALVE_Z}mm above IBC base.",
         f"14. Total frame weight: ~130 kg (incl. feet + seat brackets).",
     ]
-    draw_notes(ax, notes, sx(YD_LO + 50), sy(TOP_Z + 650), spacing=sy(23),
-               fs=7, font=FONT, width=sx(1400))
+    draw_notes(ax, notes, sx(2500), sy(TOP_Z + 600), spacing=sy(23),
+               fs=7, font=FONT, width=sx(1800))
 
     # ── Title block ─────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 3",
-                drawing_title="IBC SUPPORT FRAME",
-                subtitle="FRONT ELEVATION — FRAME ASSEMBLY",
-                scale_note="Axes in mm — VIEW ALONG X",
-                height=0.04)
+#     title_block(ax, "SHEET 1 OF 3",
+#                 drawing_title="IBC SUPPORT FRAME",
+#                 subtitle="FRONT ELEVATION — FRAME ASSEMBLY",
+#                 scale_note="Axes in mm — VIEW ALONG X",
+#                 height=0.04)
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet1.png"), dpi=130,
                 bbox_inches="tight", facecolor=BG)

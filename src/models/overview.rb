@@ -8627,6 +8627,111 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # Battery Contactor (ML-RBS, in + feed)
+  grp = ents.add_group
+  grp.name = "Battery Contactor (ML-RBS, in + feed)"
+  face = grp.entities.add_face([1830.mm,15.mm,650.mm], [1950.mm,15.mm,650.mm], [1950.mm,105.mm,650.mm], [1830.mm,105.mm,650.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["Battery Contactor (ML-RBS, in + feed)"] || model.materials.add("Battery Contactor (ML-RBS, in + feed)")
+  mat.color = Sketchup::Color.new(196, 43, 28)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # E-stop collar (safety yellow)
+  grp = ents.add_group
+  grp.name = "E-stop collar (safety yellow)"
+  ge = grp.entities
+  circle = ge.add_circle([1420.mm,-77.mm,1950.mm], [0,1,0], 35.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["E-stop collar (safety yellow)"] || model.materials.add("E-stop collar (safety yellow)")
+  mat.color = Sketchup::Color.new(242, 194, 0)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # E-stop button (red mushroom)
+  grp = ents.add_group
+  grp.name = "E-stop button (red mushroom)"
+  ge = grp.entities
+  circle = ge.add_circle([1420.mm,-105.mm,1950.mm], [0,1,0], 26.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Battery Contactor (ML-RBS, in + feed)"] || model.materials.add("Battery Contactor (ML-RBS, in + feed)")
+  mat.color = Sketchup::Color.new(196, 43, 28)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # E-stop control wire (2x 18 AWG)
+  grp = ents.add_group
+  grp.name = "E-stop control wire (2x 18 AWG)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 1190.mm)
+  circle = ge.add_circle([1890.mm,60.mm,750.mm], vec, 5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["E-stop control wire (2x 18 AWG)"] || model.materials.add("E-stop control wire (2x 18 AWG)")
+  mat.color = Sketchup::Color.new(106, 61, 168)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # E-stop control wire (2x 18 AWG) elbow
+  grp = ents.add_group
+  grp.name = "E-stop control wire (2x 18 AWG) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1880.mm,60.mm,1940.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 10.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1890.mm,60.mm,1940.mm], [0.000000,0.000000,1.000000], 5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["E-stop control wire (2x 18 AWG)"] || model.materials.add("E-stop control wire (2x 18 AWG)")
+  mat.color = Sketchup::Color.new(106, 61, 168)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # E-stop control wire (2x 18 AWG)
+  grp = ents.add_group
+  grp.name = "E-stop control wire (2x 18 AWG)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-450.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1880.mm,60.mm,1950.mm], vec, 5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["E-stop control wire (2x 18 AWG)"] || model.materials.add("E-stop control wire (2x 18 AWG)")
+  mat.color = Sketchup::Color.new(106, 61, 168)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # E-stop control wire (2x 18 AWG) elbow
+  grp = ents.add_group
+  grp.name = "E-stop control wire (2x 18 AWG) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1430.mm,50.mm,1950.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 10.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1430.mm,60.mm,1950.mm], [-1.000000,0.000000,0.000000], 5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["E-stop control wire (2x 18 AWG)"] || model.materials.add("E-stop control wire (2x 18 AWG)")
+  mat.color = Sketchup::Color.new(106, 61, 168)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # E-stop control wire (2x 18 AWG)
+  grp = ents.add_group
+  grp.name = "E-stop control wire (2x 18 AWG)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -40.mm, 0.mm)
+  circle = ge.add_circle([1420.mm,50.mm,1950.mm], vec, 5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["E-stop control wire (2x 18 AWG)"] || model.materials.add("E-stop control wire (2x 18 AWG)")
+  mat.color = Sketchup::Color.new(106, 61, 168)
+  mat.alpha = 1.0
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Electrical"
   inst.layer = model.layers["Electrical"]
@@ -13241,6 +13346,10 @@ txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(2060.mm, 60.mm, 600.mm)
 txt = entities.add_text("BATTERY 1× 100Ah
 (2nd pack ghosted = plug-in)", anc, Geom::Vector3d.new(-300.mm, -600.mm, 900.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(1420.mm, -90.mm, 1950.mm)
+txt = entities.add_text("EMERGENCY E-STOP
+(external panel — kills all DC)", anc, Geom::Vector3d.new(-550.mm, -450.mm, 350.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(2400.mm, 150.mm, 65.mm)
 txt = entities.add_text("WALKWAYS", anc, Geom::Vector3d.new(-200.mm, -850.mm, 750.mm))

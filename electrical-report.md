@@ -289,18 +289,19 @@ All US/SoCal sources. Prices approximate as of 2026.
 | Cooler external power cable | 1.5m, 14 AWG 2-cond, DT 2-pin plugs each end | Waytek Wire / Amazon | ~$20 |
 | Copper ground stake | 8ft × 5/8" diameter | Home Depot | ~$20 |
 | 4 AWG ground wire | Green/yellow, 3m | AutoZone / Amazon | ~$15 |
+| Solar mount + PV cabling + power-panel | Ground tilt frame (30°), MC4 PV cable + bulkheads, flush-panel plate + gasket + bolts, 2/0 AWG battery cable | various | ~$195 |
 | Evaporative cooler | 12V DC, ~300 CFM | Portacool / Amazon | ~$280 |
 | Shade canopy | 80% shade cloth, 20 × 10ft | Amazon / Farm supply | ~$80 |
 | Canopy frame | 1.5" EMT conduit + fittings | Home Depot | ~$120 |
 | 6" inline fans × 2 | 12V DC, ~200 CFM each | Amazon (AC Infinity S6) | ~$120 |
 | 12V LED flat panel, 300×600mm, 4000K | 20W, neutral white, ceiling-mount | Amazon / superbrightleds.com | ~$75 (×3) |
 | Pull-cord ceiling switch, 12V 6A SPST | Inline switch for lighting circuits D & G | Amazon / Lowe's | ~$16 (×2) |
-| **Electrical system total** | | | **~$2,000** |
+| **Electrical system total** | | | **~$2,390** |
 | **Shade canopy total** | | | **~$200** |
 | **Cooling (evap cooler)** | | | **~$280** |
-| **Systems grand total** | | | **~$2,480** |
+| **Systems grand total** | | | **~$2,870** |
 
-*Electrical total includes ~$145 of circuit-protection / wet-zone-sealing hardware added per the [Electrical Safety Report](electrical-safety-report.md) §5 (disconnect switch, terminal-mount fuse, sealed connectors, bonding, grommets).*
+*Electrical system total matches the consolidated [Master Shopping List §6](master-shopping-list.md) (Solar & battery $1,645 + Distribution & wiring $745 = $2,390, the authoritative electrical BOM). It includes ~$145 of circuit-protection / wet-zone-sealing hardware added per the [Electrical Safety Report](electrical-safety-report.md) §5 (disconnect switch, terminal-mount fuse, sealed connectors, bonding, grommets).*
 
 ## 9. Maintenance
 

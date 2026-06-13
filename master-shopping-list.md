@@ -324,7 +324,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 4 AWG ground wire, green/yellow | 3m | 1 | Amazon | ~$15 |
 **Distribution & wiring subtotal: ~$745**  *(+$145 circuit-protection / wet-zone-sealing hardware — see [Electrical Safety Report](electrical-safety-report.md) §5)*
 
-**Section total: ~$1,930–$2,035**
+**Section total: ~$2,390**  *(= Solar & battery $1,645 + Distribution & wiring $745)*
 
 ## 7. Housed Revolving-Door Light Lock — Custom Fabrication
 *Source: `light-trap-selection.md` § 4 (rev 9 / B2). Custom-fabricated Ø900 fixed housing + single-opening C-shell drum (no fins) built into the hinged cargo-door panel — light-tight by geometry. **rev 9 switches the drum/housing from 3mm aluminum to a hybrid plastic skin (5mm UV-HDPE housing, 4mm PP drum)** — cutting the drum/housing mass (~99 kg → ~60 kg), removing galvanic concerns, and lowering fabrication cost. Replaces the failed Ø750 4-fin drum. Single-operator entry/exit at any time without admitting daylight.*

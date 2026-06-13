@@ -848,7 +848,7 @@ def sheet2():
 
     # Notes for Detail D
     dn_x = sx(DD_OX + 10)
-    dn_top = sy(DD_OY + 12)
+    dn_top = sy(DD_OY - 12)
     d_notes = [
         "NOTES:",
         "1. 25mm ratchet straps, 1,100kg WLL",
@@ -858,8 +858,8 @@ def sheet2():
         "5. Check strap tension after 50km",
     ]
 
-    draw_notes(ax, d_notes, dn_x, dn_top, spacing=22,
-               fs=7, font=FONT, width=425)
+    draw_notes(ax, d_notes, dn_x, dn_top, spacing=8,
+               fs=7, font=FONT, width=125)
 
     # Detail D border
     ax.add_patch(Rectangle((sx(DD_OX - 5), sy(DD_OY)),

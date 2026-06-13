@@ -167,7 +167,7 @@ OVERVIEW_LABELS = [
 OVERVIEW_POINT_LABELS = [
     (5618, 1996, 2250, "FAN A\n(exhaust, IBC end)",  400,    0,  450),
     (275,   365,  680, "FAN B\n(intake, door end)", -350,    0, 1250),
-    (2060,   60,  600, "BATTERY BANK\n(LiFePO4)",    -300, -600,  900),
+    (2060,   60,  600, "BATTERY 1× 100Ah\n(2nd pack ghosted = plug-in)",    -300, -600,  900),
     # Walkways span paired/perimeter parts, so their bounds-centre would land in the
     # empty middle — anchor on the actual NEAR member instead.
     (2400,  150,   65, "WALKWAYS",                   -200, -850,  750),  # near walkway strip
@@ -1332,12 +1332,17 @@ def electrical():
                           EP_X, 0, EP_H_LO,
                           EP_W, ep_d, EP_H_HI - EP_H_LO, color=C_ELEC))
 
-    # Battery bank — 2× LiFePO4 side by side.
+    # Battery bank — the standard build fits 1× LiFePO4 (cost). The 2nd position is
+    # provisioned (the busbar/conduit below already serve it) and shown GHOSTED as a
+    # plug-in expansion: drop a 2nd pack in and parallel it onto the busbar, no rewiring.
     bw = (BA_W - 20) / 2
-    for i, bx in enumerate((BA_X, BA_X + bw + 20)):
-        parts.append(ruby_box(f"Battery {i + 1} (12V 100Ah LiFePO4)",
-                              bx, 0, BA_H_LO,
-                              bw, BA_D, BA_H_HI - BA_H_LO, color=C_BATT))
+    bat_specs = [
+        (BA_X,            "Battery 1 (12V 100Ah LiFePO4)",                      1.0),
+        (BA_X + bw + 20,  "Battery 2 (optional 2nd pack — plug-in, ghosted)",   0.28),
+    ]
+    for bx, nm, al in bat_specs:
+        parts.append(ruby_box(nm, bx, 0, BA_H_LO,
+                              bw, BA_D, BA_H_HI - BA_H_LO, color=C_BATT, alpha=al))
 
     # External power panel — flush in the exterior face (Yd<0), shown ghosted.
     parts.append(ruby_box("Ext. Power Panel (exterior)",

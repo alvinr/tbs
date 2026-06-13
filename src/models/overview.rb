@@ -8594,15 +8594,15 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Battery 2 (12V 100Ah LiFePO4)
+  # Battery 2 (optional 2nd pack — plug-in, ghosted)
   grp = ents.add_group
-  grp.name = "Battery 2 (12V 100Ah LiFePO4)"
+  grp.name = "Battery 2 (optional 2nd pack — plug-in, ghosted)"
   face = grp.entities.add_face([2070.mm,0.mm,150.mm], [2310.mm,0.mm,150.mm], [2310.mm,120.mm,150.mm], [2070.mm,120.mm,150.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(500.mm)
-  mat = model.materials["Battery 1 (12V 100Ah LiFePO4)"] || model.materials.add("Battery 1 (12V 100Ah LiFePO4)")
+  mat = model.materials["Battery 2 (optional 2nd pack — plug-in, ghosted)"] || model.materials.add("Battery 2 (optional 2nd pack — plug-in, ghosted)")
   mat.color = Sketchup::Color.new(106, 90, 205)
-  mat.alpha = 1.0
+  mat.alpha = 0.28
   grp.material = mat
 
   # Ext. Power Panel (exterior)
@@ -13239,8 +13239,8 @@ txt = entities.add_text("FAN B
 (intake, door end)", anc, Geom::Vector3d.new(-350.mm, 0.mm, 1250.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(2060.mm, 60.mm, 600.mm)
-txt = entities.add_text("BATTERY BANK
-(LiFePO4)", anc, Geom::Vector3d.new(-300.mm, -600.mm, 900.mm))
+txt = entities.add_text("BATTERY 1× 100Ah
+(2nd pack ghosted = plug-in)", anc, Geom::Vector3d.new(-300.mm, -600.mm, 900.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(2400.mm, 150.mm, 65.mm)
 txt = entities.add_text("WALKWAYS", anc, Geom::Vector3d.new(-200.mm, -850.mm, 750.mm))

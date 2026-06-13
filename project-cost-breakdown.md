@@ -19,12 +19,12 @@
 | **4. Film plane mechanism (4-corner Option A, incl. wall-seat saddles + cross-slides)** | $3,100 | $3,650 | $4,200 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $4,958 | $6,175 | $7,391 |
 | **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $1,465 | $1,802 | $2,160 |
-| **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $1,081 | $1,387 | $1,692 |
+| **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $1,801 | $2,186 | $2,572 |
 | **6b. Panel swing pivot (Ø89 pivot post + bearings + cage + wall stays + rail saddles)** | $650 | $770 | $910 |
 | **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$17,624** | **$22,606** | **$29,063** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$18,344** | **$23,405** | **$29,943** |
 
 *Optional additions that may apply — see individual sections:*
 
@@ -292,7 +292,7 @@ Four removable grated walkway sections around all 4 sides of the processing tray
 
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
-| Press-locked steel grating, 15mm (15×3mm bars) | $290 | $360 | $430 | ~4.5 m² (incl. 1474×500mm near walkway bump-out); McNichols |
+| Molded GRP (fiberglass) grating, 15mm (vinyl-ester, grit top) | $970 | $1,115 | $1,260 | ~4.5 m² (incl. 1474×500mm near walkway bump-out); McNichols / Grating Pacific — corrosion-proof, −62 kg vs steel |
 | Standard wall brackets, 8mm steel plate (×14) | $112 | $143 | $175 | Near/far walls; 150mm vert × 300mm arm |
 | Widened wall brackets, 10mm steel plate (×4) | $72 | $90 | $112 | EP/battery/slit zone; 200mm vert × 500mm arm |
 | Reinforcing plates, std 100×180×6mm (×14) + wide 120×220×6mm (×4) | $47 | $60 | $73 | Welded to wall exterior behind each bracket |
@@ -302,12 +302,12 @@ Four removable grated walkway sections around all 4 sides of the processing tray
 | Right walkway wall cleats, 8mm steel (×2) | $20 | $28 | $35 | Left corners — back-plate + exterior plate + shelf, through-bolted to the wall |
 | Combined corner plates, 10mm steel (×2) | $50 | $65 | $80 | Right corners — shared with the bottom film rail (replaces the BR rail saddle); interior + exterior plate + 2 seats |
 | M12 through-bolts + nuts/washers (~24) | $30 | $40 | $50 | Wall cleats + combined plates + 2 center-arm U-clamps to the IBC uprights |
-| M saddle clips + TEK screws (×20) | $15 | $20 | $25 | Near/far/right walkway grating retention |
-| Drum-exit punch-out — extra grating (~0.23 m²) | $20 | $25 | $30 | 600mm-deep landing at the light-lock exit; carried by the 3 extended bracket arms (no separate bearer/leg) |
+| 316 SS hold-down clips (FRP M/G-clip, ×20) | $25 | $32 | $40 | Near/far/right walkway GRP grating retention |
+| Drum-exit punch-out — extra GRP grating (~0.23 m²) | $50 | $57 | $65 | 600mm-deep landing at the light-lock exit; carried by the 3 extended bracket arms (no separate bearer/leg) |
 | Left floor-leg cantilever brackets (×5) | $55 | $75 | $95 | 50×50×3 SHS posts (~115mm) + 40×40×3 SHS arms (2 std to X470, 3 extended to X770) + 128×60×8 foot plates; bolted to bare floor outside the tray, arms 15mm over the spray bar |
 | M10 wedge floor anchors (×20) | $25 | $35 | $45 | 4 per foot plate; sealed penetrations into the container floor |
 | Fabrication (brackets, cantilever frame, install) | $280 | $360 | $440 | 14 std + 4 widened wall brackets, fabricate + fit the right walkway cantilever frame (clamp arms to IBC uprights, bolt cleats + combined plates), fit 5 left floor-leg cantilever brackets + drill/seal floor anchors, install |
-| **Perimeter walkway total** | **$1,081** | **$1,387** | **$1,692** | |
+| **Perimeter walkway total** | **$1,801** | **$2,186** | **$2,572** | GRP grating swap: +$720/+$799/+$880 vs galvanized steel |
 
 ---
 
@@ -489,12 +489,12 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Film plane mechanism (manual Option A, incl. wall-seat saddles + cross-slides) | $3,100 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $4,900 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,465 |
-| Perimeter walkway (4 sections, removable) | $1,030 |
+| Perimeter walkway (4 sections, removable, GRP grating) | $1,750 |
 | Panel swing pivot (Ø89 pivot + bearings + cage + wall stays + saddles) | $650 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$17,282** |
+| **Scenario A total** | **~$18,002** |
 
 ### Scenario B — Recommended build, regional deployment
 
@@ -506,23 +506,23 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Film plane mechanism (manual Option A + wall-seat saddles + cross-slides + electric actuation) | $4,097 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,084 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,800 |
-| Perimeter walkway (4 sections, removable) | $1,323 |
+| Perimeter walkway (4 sections, removable, GRP grating) | $2,122 |
 | Panel swing pivot (Ø89 pivot + bearings + cage + wall stays + saddles) | $770 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Rodenstock Apo-Ronar 1200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$23,356** |
+| **Scenario B total (excl. CDL)** | **~$24,155** |
 
 ### Scenario C — Full production, own transport, CDL
 
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $22,456 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $23,255 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$111,956–$141,956** |
+| **Scenario C total** | **~$112,755–$142,755** |
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*
 

@@ -77,9 +77,11 @@ RHO_HDPE   = 950      # UV-stabilized HDPE sheet (light-trap housing skin, rev 9
 RHO_PP     = 905      # polypropylene sheet (light-trap drum skin, rev 9 / B2)
 
 # ── Grating weight ──────────────────────────────────────────────────────────
-# 25mm press-locked galvanized steel bar grating, 30×100mm bearing bar pitch.
-# Source: McNICHOLS catalog, standard industrial grating.
-GRATING_KG_PER_M2 = 26.0   # 15mm press-locked steel grating (was 44 for 25mm)
+# 5/8" (15mm) molded fiberglass (GRP) grating, vinyl-ester resin, grit top.
+# Corrosion-proof in the wet photo-chemistry environment; the 15mm depth is kept
+# so the lowered deck + spray-bar clearance are unchanged (a 1"/25mm GRP would
+# force a deck-height redesign). Source: McNICHOLS / Grating Pacific FRP catalogs.
+GRATING_KG_PER_M2 = 11.0   # molded GRP ~11 kg/m² (was 26 for 15mm galvanized steel)
 
 # ── IBC empty weight ────────────────────────────────────────────────────────
 # Schutz Ecobulk MX 600L steel-cage IBC: ~55 kg tare.

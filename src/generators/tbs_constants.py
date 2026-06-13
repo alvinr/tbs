@@ -506,8 +506,9 @@ PROC_TRAY_SUMP_Z   = 20         # sump well depth below tray floor (mm)
 # bolted to wall rib, 300mm horizontal arm projecting inward, diagonal brace
 # welded between.  Grating sits directly on bracket arms.  NO legs, NO beam,
 # NO floor contact.  Entire tray interior is completely clear for film loading.
-# Deck height 100mm (75mm bracket arm + 25mm grate) clears the 50mm tray rim.
-# Material: galvanized press-locked steel grating, 25mm thick (all 4 sections).
+# Deck height 130mm (115mm bracket arm + 15mm grate) clears the 50mm tray rim.
+# Material: molded GRP (fiberglass) grating, 15mm, vinyl-ester + grit top (all 4
+# sections) — corrosion-proof in the chemistry zone; 15mm depth keeps the deck.
 #
 # Mounting varies by wall type:
 #   Near/far walkways (long walls): brackets bolt to corrugated wall ribs.

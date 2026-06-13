@@ -802,7 +802,7 @@ def sheet2():
     ax.set_aspect("equal")
     ax.axis("off")
 
-    ax.text(sx(FRAME_FOOTPRINT_D / 2), sy(PANEL_FRAME_TOP_Z + 200),
+    ax.text(sx(FRAME_FOOTPRINT_D / 2), sy(PANEL_FRAME_TOP_Z + 300),
             "SIDE ELEVATION — LOOKING ALONG Yd FROM NEAR WALL",
             ha="center", va="bottom", fontsize=9, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
@@ -810,7 +810,7 @@ def sheet2():
     # ── Ghost IBC outlines (cage/pallet anatomy) ──────────────────────────────
     # In side elevation, IBC width = IBC_W = 1219mm along X.
     # IBC is centered in frame depth: offset = (FRAME_FOOTPRINT_D - IBC_W)/2
-    ibc_x_offset = (FRAME_FOOTPRINT_D - IBC_W) / 2  # ~32.5mm
+    ibc_x_offset = (FRAME_FOOTPRINT_D - IBC_W) / 2 + 200# ~32.5mm
     plat_top = PLATFORM_Z + FRAME_RHS + MAT_T
     # Bottom tier
     _ghost_ibc_elev(ax, ibc_x_offset, 0, IBC_W, sx, sy,
@@ -924,14 +924,14 @@ def sheet2():
 
     # ── Dimensions ──────────────────────────────────────────────────────────
     # Overall depth
-    draw_dim_h(ax, sx(FX_FRONT), sx(FX_BACK + FRAME_RHS), sy(-60),
+    draw_dim_h(ax, sx(FX_FRONT), sx(FX_BACK + FRAME_RHS), sy(-160),
                f"{FRAME_FOOTPRINT_D}mm  FRAME DEPTH",
                offset=sy(10), fs=6, font=FONT, above=False)
 
     # Bay spacing
-    draw_dim_h(ax, sx(FX_FRONT), sx(FX_MID), sy(-40),
+    draw_dim_h(ax, sx(FX_FRONT), sx(FX_MID), sy(-100),
                f"{FX_MID}mm", offset=sy(8), fs=5.5, font=FONT)
-    draw_dim_h(ax, sx(FX_MID + FRAME_RHS), sx(FX_BACK), sy(-40),
+    draw_dim_h(ax, sx(FX_MID + FRAME_RHS), sx(FX_BACK), sy(-100),
                f"{FX_BACK - FX_MID}mm", offset=sy(8), fs=5.5, font=FONT)
 
     # Heights (right side)
@@ -972,18 +972,30 @@ def sheet2():
     # ── Notes ───────────────────────────────────────────────────────────────
     notes = [
         "SIDE ELEVATION NOTES:",
-        "1. Three upright bays at 642mm centers. X-braces in bottom-tier bays for racking resistance.",
-        f"2. Platform at Z={PLATFORM_Z}mm supports upper-tier IBCs. 12mm rubber mat on top.",
-        f"3. Frame depth {FRAME_FOOTPRINT_D}mm: 65mm overhang on cargo-door side, flush to end wall.",
-        "4. D-ring lashing points at front and back uprights, both tiers (4 visible this side).",
-        f"5. Access gate (300mm × 916mm clear opening) at front bay, corridor face only.",
-        "6. Behind: second corridor upright row (identical) at 270mm offset toward far wall.",
-        "7. Each upright base: 150×150×12mm floor flange plate, 4× M12 anchors into container floor.",
-        f"8. Panel support frame: mid-bay corridor uprights extend to Z={PANEL_FRAME_TOP_Z}mm + top rail + floor-level beam (rectangle). Wet-end equipment panel butts the film-plane face and bolts to it.",
-        f"9. RIGHT-WALKWAY CANTILEVER ARMS (rev12): 2× 40×40×3 SHS clamp to the corridor uprights (Yd 1046/1266) and project off the front (Z{ARM_Z0}-{ARM_Z1}) to carry the right walkway.",
+         "1. Three upright bays at 642mm centers. X-braces in bottom-tier",
+         "   bays for racking resistance.",
+        f"2. Platform at Z={PLATFORM_Z}mm supports upper-tier IBCs. 12mm",
+         "   rubber mat on top.",
+        f"3. Frame depth {FRAME_FOOTPRINT_D}mm: 65mm overhang on cargo-door",
+         "   side, flush to end wall.",
+         "4. D-ring lashing points at front and back uprights, both tiers",
+         "   (4 visible this side).",
+        f"5. Access gate (300mm × 916mm clear opening) at front bay,",
+         "   corridor face only.",
+         "6. Behind: second corridor upright row (identical) at 270mm offset",
+         "   toward far wall.",
+         "7. Each upright base: 150×150×12mm floor flange plate, 4× M12 anchors",
+         "   into container floor.",
+        f"8. Panel support frame: mid-bay corridor uprights extend to",
+         "   Z={PANEL_FRAME_TOP_Z}mm + top rail + ",
+         "   floor-level beam (rectangle). Wet-end equipment panel butts the",
+         "   film-plane face and bolts to it.",
+        f"9. RIGHT-WALKWAY CANTILEVER ARMS (rev12): 2× 40×40×3 SHS clamp to",
+         "   the corridor uprights (Yd 1046/1266) and project off the front",
+         "   (Z{ARM_Z0}-{ARM_Z1}) to carry the right walkway.",
     ]
-    draw_notes(ax, notes, sx(X_LO + 50), sy(Z_LO + 300), spacing=sy(23),
-               fs=7, font=FONT, width=sx(1150))
+    draw_notes(ax, notes, sx(X_LO + 20), sy(Z_HI - 100), spacing=sy(20),
+               fs=6.5, font=FONT, width=sx(825))
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 3",

@@ -74,7 +74,7 @@ FRAME_PLATFORM_H  = 1060  # platform height (1010 + 50mm clearance plate)
 FRAME_PLATFORM_T  = FRAME_RHS  # platform beam depth = RHS size
 FRAME_LIP_H    = 40     # anti-rotation lip height above platform
 FRAME_LIP_T    = 5      # lip thickness (steel plate)
-FRAME_WEIGHT   = 144    # kg (frame + feet + seat brackets + panel support frame)
+FRAME_WEIGHT   = 170    # kg (restraint front portal: uprights + feet + front bars + hangers)
 
 # D-ring lashing
 DRING_SIZE     = 25     # D-ring strap width (mm)
@@ -173,12 +173,14 @@ def sheet1():
     # Near column: Yd = BLUE_IBC_Y to BLUE_IBC_Y + IBC_D
     # Far column:  Yd = IBC_FAR_Y  to IBC_FAR_Y + IBC_D
 
+    # v2 layout (unchanged): Brown/Waste bottom, Blue on top; DIRECT-STACK so the
+    # top tier sits at IBC_H_1000 (cage-on-cage, no platform deck).
     ibc_data = [
         ("IBC-3\nBROWN\n(recycled)", BLUE_IBC_Y, 0, IBC_D, IBC_H_1000, C_BROWN_IBC),
-        ("IBC-1\nBLUE\n(clean supply)", BLUE_IBC_Y, IBC_H_1000 + MAT_T + FRAME_RHS,
+        ("IBC-1\nBLUE\n(clean supply)", BLUE_IBC_Y, IBC_H_1000,
          IBC_D, IBC_H_1000, C_BLUE_IBC),
         ("IBC-4\nWASTE", IBC_FAR_Y, 0, IBC_D, IBC_H_1000, C_WASTE_IBC),
-        ("IBC-2\nBLUE\n(clean supply)", IBC_FAR_Y, IBC_H_1000 + MAT_T + FRAME_RHS,
+        ("IBC-2\nBLUE\n(clean supply)", IBC_FAR_Y, IBC_H_1000,
          IBC_D, IBC_H_1000, C_BLUE_IBC),
     ]
 
@@ -200,225 +202,72 @@ def sheet1():
                 ha="center", va="center", fontsize=7, color=C_OUT,
                 fontweight="bold", **FONT, zorder=10)
 
-    # ── Stacking frame (portal frame with open plumbing corridor) ───────────
-    # Wall-side restraint via brackets; corridor uprights at inner IBC edges.
-    # Platform and top beams span each column; cross-beams bridge the corridor.
-    near_col_r = BLUE_IBC_Y + IBC_D    # = 1046mm (near column right edge)
-    far_col_l  = IBC_FAR_Y             # = 1316mm (far column left edge)
-    platform_z = IBC_H_1000  # platform sits on top of bottom IBCs
-
-    # Corridor uprights (4 visible as 2 near-corridor + 2 far-corridor)
+    # ── Restraint frame (v2: single front portal — direct-stack, no platform) ──
+    near_col_r = BLUE_IBC_Y + IBC_D          # 1046 — near corridor edge
+    far_col_l  = IBC_FAR_Y                   # 1316 — far corridor edge
+    junction_z = IBC_H_1000                  # 1168 — direct-stack junction
+    top_z = IBC_H_STK_1000 - 40              # 2296 — restraint frame top
+    C_BOLT = "#3A3A42"
     corridor_uprights = [near_col_r, far_col_l - FRAME_RHS]
+
+    # Full-height corridor uprights (the front portal, seen edge-on in section).
     for uyd in corridor_uprights:
-        ax.add_patch(Rectangle((sx(uyd), sy(0)),
-                                sx(FRAME_RHS), sy(IBC_H_STK_1000 + FRAME_RHS),
-                                fc=C_FRAME, ec=C_OUT, lw=1.2, zorder=7,
-                                alpha=0.8))
-        ax.add_patch(Rectangle((sx(uyd + FRAME_T), sy(FRAME_T)),
-                                sx(FRAME_RHS - 2 * FRAME_T),
-                                sy(IBC_H_STK_1000 + FRAME_RHS - 2 * FRAME_T),
-                                fc=C_WALL, ec="none", lw=0, zorder=7,
-                                alpha=0.3))
+        ax.add_patch(Rectangle((sx(uyd), sy(0)), sx(FRAME_RHS), sy(top_z),
+                               fc=C_FRAME, ec=C_OUT, lw=1.2, zorder=7, alpha=0.85))
 
-    # ── Wall seat brackets: welded knee bracket (vertical back-plate + horizontal
-    # seat + triangular gusset web + M12 wall anchors) props each platform-beam
-    # OUTER end against the container wall, turning the cantilever into a simple
-    # span. Matches the 3D "Wall Bracket Plate / Seat / Gusset" fabrication
-    # (~110 kg each, one per X-station per wall). ──
-    C_BOLT    = "#3A3A42"
-    seat_top  = platform_z              # 1010 — platform-beam end lands here
-    proj      = IBC_WBKT_SEAT_PROJ      # seat projection into container (Yd)
-    seat_t    = IBC_WBKT_SEAT_T         # seat plate thickness
-    gh        = IBC_WBKT_GUSSET_H       # gusset web depth below the seat
-    plate_t   = IBC_WBKT_PLATE_T        # back-plate thickness (against wall)
-    seat_bot  = seat_top - seat_t
-    guss_bot  = seat_bot - gh
-    plate_top = seat_top + 10
-    for wyd, dir_in in [(0, 1), (C_WID, -1)]:
-        tip      = wyd + dir_in * proj
-        plate_x0 = wyd if dir_in > 0 else wyd - plate_t
-        seat_x0  = min(wyd, tip)
-        # vertical back-plate bolted to the wall
-        ax.add_patch(Rectangle((sx(plate_x0), sy(guss_bot)),
-                                sx(plate_t), sy(plate_top - guss_bot),
-                                fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))
-        # horizontal seat the platform-beam end rests on
-        ax.add_patch(Rectangle((sx(seat_x0), sy(seat_bot)),
-                                sx(proj), sy(seat_t),
-                                fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))
-        # triangular gusset web welded between back-plate and seat tip
-        ax.add_patch(Polygon([(sx(tip), sy(seat_bot)),
-                              (sx(wyd), sy(seat_bot)),
-                              (sx(wyd), sy(guss_bot))],
-                             closed=True, fc=C_STEEL, ec=C_OUT, lw=1.0,
-                             hatch="\\\\", zorder=8))
-        # 2× visible M12 wall anchor bolt heads on the back-plate
-        for bz in (guss_bot + 40, seat_bot - 25):
-            ax.add_patch(Circle((sx(wyd + dir_in * plate_t / 2), sy(bz)), sy(7),
-                                fc=C_BOLT, ec=C_OUT, lw=0.6, zorder=9))
-
-    # Annotate the wall seat bracket (near-wall instance; typical at both walls)
-    leader(ax, sx(45), sy(seat_bot - gh / 2), sx(350), sy(800),
-           "WALL SEAT BRACKET (TYP. ×6)\nWelded knee: back-plate\n + seat + triangular gusset\nweb, 4× M12 wall anchors",
-           color=C_FRAME, fs=6, ha="left", va="top",
-           arrow_style="-|>", font=FONT)
-
-    # ── Floor flange feet: a 150×150×12 plate fillet-welded to each corridor
-    # upright base, sitting ON the floor surface and bolted down with 4× M12
-    # anchors through the plate into the slab (uplift + lateral restraint).
-    # Matches the 3D "Foot Flange Plate / Foot Anchor Bolt" parts. ──
+    # Floor flange feet under each upright.
     foot_half = IBC_FOOT_PLATE / 2
     for uyd in corridor_uprights:
-        fcy = uyd + IBC_FRAME_RHS / 2               # foot centerd on the upright
-        # flange plate sits ON the floor surface (Z 0 .. t)
-        ax.add_patch(Rectangle((sx(fcy - foot_half), sy(0)),
-                                sx(IBC_FOOT_PLATE), sy(IBC_FOOT_PLATE_T),
-                                fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=8))
-        # 4× M12 anchors (2 visible) through the plate down into the floor slab
+        fcy = uyd + IBC_FRAME_RHS / 2
+        ax.add_patch(Rectangle((sx(fcy - foot_half), sy(0)), sx(IBC_FOOT_PLATE),
+                               sy(IBC_FOOT_PLATE_T), fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=8))
         for d in (-IBC_FOOT_BOLT_PCD / 2, IBC_FOOT_BOLT_PCD / 2):
-            ax.plot([sx(fcy + d), sx(fcy + d)],
-                    [sy(IBC_FOOT_PLATE_T), sy(-26)],
+            ax.plot([sx(fcy + d), sx(fcy + d)], [sy(IBC_FOOT_PLATE_T), sy(-26)],
                     color=C_BOLT, lw=1.8, zorder=9)
-            ax.plot(sx(fcy + d), sy(IBC_FOOT_PLATE_T), 'o',
-                    color=C_BOLT, ms=3.5, mew=0, zorder=9)
-    leader(ax, sx(corridor_uprights[0] + IBC_FRAME_RHS / 2), sy(IBC_FOOT_PLATE_T),
-           sx((near_col_r + far_col_l) * 0.37), sy(320),
-           "FLOOR FLANGE FOOT (TYP. ×6)\n150×150×12 plate on floor,\n4× M12 floor anchors",
-           color=C_FRAME, fs=6, ha="center", va="bottom",
-           arrow_style="-|>", font=FONT)
 
-    # Platform beams — one per column (not spanning corridor)
-    for col_l, col_r in [(BLUE_IBC_Y - 5, near_col_r + FRAME_RHS),
-                          (far_col_l - FRAME_RHS, IBC_FAR_Y + IBC_D + 5)]:
-        ax.add_patch(Rectangle((sx(col_l), sy(platform_z)),
-                                sx(col_r - col_l), sy(FRAME_RHS),
-                                fc=C_FRAME, ec=C_OUT, lw=1.5, zorder=7, alpha=0.85))
-        ax.add_patch(Rectangle((sx(col_l + FRAME_T), sy(platform_z + FRAME_T)),
-                                sx(col_r - col_l - 2 * FRAME_T),
-                                sy(FRAME_RHS - 2 * FRAME_T),
-                                fc="#D0D0D0", ec="none", zorder=7, alpha=0.4))
+    # Direct-stack junction line (totes bear cage-on-cage, no deck).
+    for col_l, col_r in [(BLUE_IBC_Y, near_col_r), (IBC_FAR_Y, IBC_FAR_Y + IBC_D)]:
+        ax.plot([sx(col_l), sx(col_r)], [sy(junction_z)] * 2, color=C_OUT, lw=2.2, zorder=8)
 
-    # Cross-beam across corridor (at platform and top levels)
-    corr_beam_l = near_col_r + FRAME_RHS
-    corr_beam_r = far_col_l - FRAME_RHS
-    for bz in [platform_z, IBC_H_STK_1000]:
-        ax.add_patch(Rectangle((sx(corr_beam_l), sy(bz)),
-                                sx(corr_beam_r - corr_beam_l), sy(FRAME_RHS),
-                                fc=C_FRAME, ec=C_OUT, lw=1.0, zorder=6, alpha=0.5))
+    # Front retaining bars (foreground, at the IBC front) + wall hangers + D-ring holders.
+    for bz in (560, 1760):
+        for y0, y1 in ((0, near_col_r + FRAME_RHS), (far_col_l - FRAME_RHS, C_WID)):
+            ax.add_patch(Rectangle((sx(y0), sy(bz)), sx(y1 - y0), sy(FRAME_RHS),
+                                   fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="xx", zorder=9, alpha=0.6))
+        for wyd, din in ((0, 1), (C_WID, -1)):
+            ax.add_patch(Rectangle((sx(min(wyd, wyd + din * 60)), sy(bz - 8)), sx(60),
+                                   sy(FRAME_RHS + 16), fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=10, alpha=0.9))
+    for ydh in (520, C_WID - 520):
+        for bz in (560, 1760):
+            ax.add_patch(Circle((sx(ydh), sy(bz + FRAME_RHS / 2)), sy(15),
+                                fc="none", ec=C_STEEL, lw=2.0, zorder=11))
 
-    # Anti-slip rubber mat on platform (one per column)
-    mat_z = platform_z + FRAME_RHS
-    for col_l, col_r in [(BLUE_IBC_Y, near_col_r),
-                          (IBC_FAR_Y, IBC_FAR_Y + IBC_D)]:
-        ax.add_patch(Rectangle((sx(col_l), sy(mat_z)),
-                                sx(col_r - col_l), sy(MAT_T),
-                                fc=C_RUBBER, ec=C_OUT, lw=0.8, zorder=8, alpha=0.7))
-
-    # Anti-rotation lip (corridor-side of each column)
-    lip_z = mat_z + MAT_T
-    for lip_yd in [near_col_r - FRAME_LIP_T,
-                   IBC_FAR_Y]:
-        ax.add_patch(Rectangle((sx(lip_yd), sy(lip_z - 5)),
-                                sx(FRAME_LIP_T), sy(FRAME_LIP_H),
-                                fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=9))
-
-    # Top rail — one per column
-    top_z = IBC_H_STK_1000
-    for col_l, col_r in [(BLUE_IBC_Y - 5, near_col_r + FRAME_RHS),
-                          (far_col_l - FRAME_RHS, IBC_FAR_Y + IBC_D + 5)]:
-        ax.add_patch(Rectangle((sx(col_l), sy(top_z)),
-                                sx(col_r - col_l), sy(FRAME_RHS),
-                                fc=C_FRAME, ec=C_OUT, lw=1.2, zorder=7, alpha=0.85))
-
-    # Corridor label
+    # Corridor label + restraint callouts (lighter).
     corr_cx = (near_col_r + far_col_l) / 2
-    ax.text(sx(corr_cx), sy(platform_z / 2 + 30),
-            f"PLUMBING\nCORRIDOR\n{IBC_GAP}mm",
-            ha="center", va="center", fontsize=6.5, color=C_CL,
-            fontweight="bold", **FONT, zorder=15)
-
-    # ── D-ring lashing points (4 per tier, showing 2 near-side) ───────────────
-    dring_color = "#D0A030"
-    # Bottom tier D-rings: near corners at Z ≈ FRAME_RHS/2
-    # Top tier D-rings: at Z ≈ platform_z + FRAME_RHS + IBC_H_1000/2
-    dring_positions = [
-        (near_col_r + FRAME_RHS + 5, FRAME_RHS * 1.5, "BOTTOM"),
-        (far_col_l - FRAME_RHS - 5, FRAME_RHS * 1.5, "BOTTOM"),
-        (near_col_r + FRAME_RHS + 5, platform_z + FRAME_RHS * 1.5, "TOP"),
-        (far_col_l - FRAME_RHS - 5, platform_z + FRAME_RHS * 1.5, "TOP"),
-    ]
-    for dyd, dz, tier in dring_positions:
-        # D-ring as a small D shape
-        ring_r = 18
-        # Mount plate
-        plate_w = 35
-        plate_h = 8
-        if dyd < C_WID / 2:
-            plate_x = dyd + 5
-        else:
-            plate_x = dyd - plate_w - 5
-        ax.add_patch(Rectangle((sx(plate_x), sy(dz - plate_h / 2)),
-                                sx(plate_w), sy(plate_h),
-                                fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=10))
-        # D-ring arc
-        ring_x = dyd - 10 if dyd < C_WID / 2 else dyd + 10
-        ax.add_patch(Circle((sx(ring_x), sy(dz)),
-                             sy(ring_r), fc="none", ec=dring_color,
-                             lw=2.5, zorder=11))
-
-    # D-ring label (one leader for all)
-    leader(ax, sx(near_col_r + FRAME_RHS + 20), sy(FRAME_RHS * 1.5),
-           sx(near_col_r + FRAME_RHS + CORRIDOR_W * 2), sy(FRAME_RHS * 1.5 + 120),
-           f"D-RING LASHING POINT\n25mm, {DRING_WLL}kg WLL\n8x TOTAL (4 PER TIER)\nMcMaster #3641T29",
-           color=dring_color, fs=6.5,
-           ha="left", va="bottom", arrow_style="-|>", font=FONT)
-
-    # ── Access gate (lower tier, shown on near column corridor side) ──────────
-    gate_yd = near_col_r
-    gate_w = IBC_D - 2 * FRAME_RHS
-    ax.add_patch(Rectangle((sx(BLUE_IBC_Y + FRAME_RHS), sy(0)),
-                            sx(gate_w), sy(GATE_H),
-                            fc="none", ec="#C04040", lw=2.0, ls="--", zorder=8))
-    # Bolt symbols at gate corners
-    for byd in [BLUE_IBC_Y + FRAME_RHS + 20, BLUE_IBC_Y + FRAME_RHS + gate_w - 20]:
-        for bz in [30, GATE_H - 30]:
-            ax.add_patch(Circle((sx(byd), sy(bz)), sy(6),
-                                 fc="#C04040", ec=C_OUT, lw=0.5, zorder=12))
-
-    leader(ax, sx(BLUE_IBC_Y + FRAME_RHS + gate_w / 2), sy(GATE_H),
-           sx(BLUE_IBC_Y + FRAME_RHS + gate_w / 2 - 50), sy(GATE_H + 50),
-           f"ACCESS GATE (x2)\nREMOVABLE PANEL\nH=0-{GATE_H}mm\n4x M{GATE_BOLT_D} BOLTS\n(DRAIN VALVE ACCESS)",
-           color="#C04040", fs=6,
-           ha="left", va="bottom", arrow_style="-|>", font=FONT)
-
-    # ── Labels ────────────────────────────────────────────────────────────────
-    # Frame label
-    leader(ax, sx(near_col_r + FRAME_RHS / 2), sy(IBC_H_1000 / 2),
-           sx(near_col_r + FRAME_RHS - 120), sy(IBC_H_1000 / 2 + 50),
-           f"STACKING FRAME\n50x50x3mm RHS\nMILD STEEL\n~{FRAME_WEIGHT}kg",
-           color=C_FRAME, fs=6.5,
-           ha="left", va="bottom", arrow_style="-|>", font=FONT)
-
-    # Platform label
-    leader(ax, sx(BLUE_IBC_Y + IBC_D / 2), sy(platform_z + FRAME_RHS / 2),
-           sx(BLUE_IBC_Y + 280), sy(platform_z + 180),
-           f"PLATFORM BEAM\n50x50x3mm RHS\n+ {MAT_T}mm RUBBER MAT\n+ {FRAME_LIP_H}mm ANTI-ROTATION LIP",
-           color=C_FRAME, fs=6,
-           ha="left", va="bottom", arrow_style="-|>", font=FONT)
+    ax.text(sx(corr_cx), sy(junction_z / 2), f"PLUMBING\nCORRIDOR\n{IBC_GAP}mm",
+            ha="center", va="center", fontsize=6.5, color=C_CL, fontweight="bold", **FONT, zorder=15)
+    leader(ax, sx(near_col_r + FRAME_RHS / 2), sy(top_z * 0.72),
+           sx(near_col_r - 90), sy(top_z * 0.72 + 40),
+           "FRONT PORTAL UPRIGHT\n50x50x3 RHS (x2, full height)\non floor flange feet",
+           color=C_FRAME, fs=6, ha="left", va="bottom", arrow_style="-|>", font=FONT)
+    leader(ax, sx(near_col_r + FRAME_RHS), sy(1760 + FRAME_RHS / 2),
+           sx(near_col_r - 90), sy(1980),
+           "FRONT RETAINING BARS (x4)\nZ560 + Z1760 — slide-stop +\nD-ring lashing; wall ends drop\ninto Simpson joist hangers",
+           color=C_STEEL, fs=6, ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
     # ── Dimension lines ───────────────────────────────────────────────────────
     # IBC height (bottom tier)
     draw_dim_v(ax, sx(IBC_FAR_Y + IBC_D + 80), sy(0), sy(IBC_H_1000),
                f"{IBC_H_1000}mm IBC HEIGHT", offset=sx(22), fs=6, right=True, font=FONT)
 
-    # Stack total height
-    draw_dim_v(ax, sx(IBC_FAR_Y + IBC_D + 120), sy(0), sy(IBC_H_STK_1000 + FRAME_RHS),
-               f"{IBC_H_STK_1000 + FRAME_RHS}mm STACK + FRAME", offset=sx(22), fs=6,
+    # Stack total height (direct-stack, no deck)
+    draw_dim_v(ax, sx(IBC_FAR_Y + IBC_D + 120), sy(0), sy(IBC_H_STK_1000),
+               f"{IBC_H_STK_1000}mm 2x STACK", offset=sx(22), fs=6,
                right=True, font=FONT)
 
-    # Ceiling clearance
-    draw_dim_v(ax, sx(IBC_FAR_Y + IBC_D + 120), sy(IBC_H_STK_1000 + FRAME_RHS), sy(C_HGT),
-               f"{CEIL_CLEAR - FRAME_RHS}mm CLEARANCE", offset=sx(22), fs=6,
+    # Ceiling clearance (tight — the critical dimension)
+    draw_dim_v(ax, sx(IBC_FAR_Y + IBC_D + 120), sy(IBC_H_STK_1000), sy(C_HGT),
+               f"{CEIL_CLEAR}mm CLEARANCE", offset=sx(22), fs=6,
                right=True, font=FONT)
 
     # Container interior width
@@ -449,13 +298,12 @@ def sheet1():
     notes = [
         "CROSS-SECTION NOTES:",
         "1. Section through IBC stack, looking +X toward sealed end (near/pinhole wall at right, far wall at left).",
-        f"2. 4x 600L IBCs (Schutz Ecobulk MX). Each: 55kg tare, {IBC_W}x{IBC_D}x{IBC_H_1000}mm.",
-        f"3. Portal frame: 50x50x3mm RHS mild steel, welded wall seat brackets (knee + gusset web, M12 anchors) + corridor uprights on {IBC_FOOT_PLATE}x{IBC_FOOT_PLATE}x{IBC_FOOT_PLATE_T} floor flange feet ({IBC_FOOT_BOLT_N}x M12 anchors each). ~{FRAME_WEIGHT}kg.",
+        f"2. 4x identical 275-gal (~1000 L) caged composite IBCs. Each: 65kg tare, {IBC_W}x{IBC_D}x{IBC_H_1000}mm. v2 layout: Brown/Waste bottom, Blue on top (clean supply, 1600 L total).",
+        f"3. RESTRAINT-ONLY frame: a SINGLE FRONT PORTAL (2 full-height 50x50x3 RHS uprights at the corridor edges) on {IBC_FOOT_PLATE}x{IBC_FOOT_PLATE}x{IBC_FOOT_PLATE_T} floor flange feet ({IBC_FOOT_BOLT_N}x M12 each). The totes DIRECT-STACK (no deck) so no platform/wall-seat brackets are needed. ~{FRAME_WEIGHT}kg.",
         f"4. {IBC_GAP}mm plumbing corridor between columns for internal pipe routing.",
-        f"5. Platform at Z={IBC_H_1000}mm + {MAT_T}mm rubber anti-slip mat.",
-        f"6. {FRAME_LIP_H}mm steel lip retains upper IBC cage against lateral movement.",
-        f"7. 8x D-ring lashing points (4 per tier), {DRING_WLL}kg WLL each.",
-        f"8. External plumbing panel on end wall centerline (see Sheets 3-4).",
+        "5. Front retaining bars (4x, Z560 + Z1760) at the IBC front stop the totes sliding out; wall ends drop into Simpson-style joist hangers.",
+        f"6. D-ring lashing holders on the front bars ({DRING_WLL}kg WLL); ratchet straps over each stack tie down to them.",
+        f"7. External plumbing panel moved forward to the corridor mouth for operator access (see Sheets 3-5).",
     ]
     draw_notes(ax, notes, sx(C_WID), sy(Z_LO + 425), spacing=sy(22),
                fs=7, ha="left", font=FONT, width=2200)
@@ -463,7 +311,7 @@ def sheet1():
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 5",
                 drawing_title="IBC STACKING & SECURING",
-                subtitle="CROSS-SECTION ELEVATION — 2x2 STACK IN RIGHT END ZONE",
+                subtitle="CROSS-SECTION — 2x2 DIRECT-STACK, RESTRAINT FRONT PORTAL",
                 scale_note="Axes in mm - SECTION LOOKING +X (PINHOLE WALL AT RIGHT)",
                 height=0.06)
 
@@ -488,389 +336,185 @@ def sheet2():
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(0, sx(600))
-    ax.set_ylim(sy(-100), sy(500))
+    ax.set_ylim(sy(-120), sy(520))
     ax.set_aspect("equal")
     ax.axis("off")
 
-    # ══════════════════════════════════════════════════════════════════════════
-    # DETAIL A — D-Ring Lashing Point (cross-section)
-    # Shows frame RHS member with welded D-ring plate and ring
-    # ══════════════════════════════════════════════════════════════════════════
-    DA_OX = 30
-    DA_OY = 280
+    C_BOLT = "#3A3A42"
+    C_STRAP = "#C08020"
 
-    ax.text(sx(DA_OX + 80), sy(DA_OY + 190),
-            "DETAIL A — D-RING LASHING POINT\n(CROSS-SECTION, WELDED TO FRAME)",
+    # ══════════════════════════════════════════════════════════════════════════
+    # DETAIL A — Front retaining bar -> corridor upright (bolted cleat + lash eye)
+    # The bar's inner end bolts to the front corridor upright via an angle cleat;
+    # a weld-on lashing eye on the bar takes the ratchet strap (Detail C).
+    # ══════════════════════════════════════════════════════════════════════════
+    ax.text(sx(150), sy(500),
+            "DETAIL A — FRONT RETAINING BAR -> CORRIDOR UPRIGHT\n(BOLTED CLEAT + WELD-ON LASH EYE)",
             ha="center", va="bottom", fontsize=8, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
 
-    # Frame RHS member (cross-section)
-    rhs_x = DA_OX + 40
-    rhs_y = DA_OY + 50
-    ax.add_patch(Rectangle((sx(rhs_x), sy(rhs_y)),
-                            sx(FRAME_RHS), sy(FRAME_RHS),
+    # Corridor upright (vertical 50x50 RHS, partial)
+    up_x, up_y = 120, 330
+    ax.add_patch(Rectangle((sx(up_x), sy(up_y)), sx(FRAME_RHS), sy(150),
                             fc=C_FRAME, ec=C_OUT, lw=2.0, zorder=5))
-    # Hollow
-    ax.add_patch(Rectangle((sx(rhs_x + FRAME_T), sy(rhs_y + FRAME_T)),
-                            sx(FRAME_RHS - 2 * FRAME_T), sy(FRAME_RHS - 2 * FRAME_T),
-                            fc="#D8D8D8", ec=C_OUT, lw=0.8, zorder=6))
-    ax.text(sx(rhs_x + FRAME_RHS / 2), sy(rhs_y + FRAME_RHS / 2),
-            f"{FRAME_RHS}x{FRAME_RHS}\nx{FRAME_T} RHS",
-            ha="center", va="center", fontsize=6, color=C_OUT, **FONT, zorder=10)
-
-    # Mounting plate (welded to frame face)
-    plate_t = 6
-    plate_h = 80
-    plate_x = rhs_x - plate_t
-    plate_y = rhs_y + (FRAME_RHS - plate_h) / 2
-    ax.add_patch(Rectangle((sx(plate_x), sy(plate_y)),
-                            sx(plate_t), sy(plate_h),
-                            fc=C_STEEL, ec=C_OUT, lw=1.5, hatch="///", zorder=7))
-
-    # Weld symbols (triangles at plate-frame junction)
-    for wy in [plate_y + 5, plate_y + plate_h - 5]:
-        weld_verts = [
-            (sx(rhs_x), sy(wy)),
-            (sx(rhs_x - 2), sy(wy + 5)),
-            (sx(rhs_x - 2), sy(wy - 5)),
-        ]
-        ax.add_patch(Polygon(weld_verts, closed=True,
-                             fc="#404040", ec=C_OUT, lw=0.5, zorder=8))
-
-    # D-ring (side view — D shape)
-    ring_cx = plate_x - 25
-    ring_cy = rhs_y + FRAME_RHS / 2
-    ring_r = 20
-    # Draw as a D: flat side against plate, curved side outward
-    theta = np.linspace(-np.pi / 2, np.pi / 2, 50)
-    ring_xs = [sx(ring_cx + ring_r * np.cos(t)) for t in theta]
-    ring_ys = [sy(ring_cy + ring_r * np.sin(t)) for t in theta]
-    # Close the D with straight side
-    ring_xs = [sx(plate_x - 2)] + ring_xs + [sx(plate_x - 2)]
-    ring_ys = [sy(ring_cy - ring_r)] + ring_ys + [sy(ring_cy + ring_r)]
-    ax.plot(ring_xs, ring_ys, color="#D0A030", lw=3.5, zorder=9,
-            solid_capstyle="round")
-
-    # D-ring pin through plate
-    pin_r = 4
-    ax.add_patch(Circle((sx(plate_x - 1), sy(ring_cy - ring_r + 3)),
-                         sx(pin_r), fc="#808080", ec=C_OUT, lw=1.0, zorder=10))
-    ax.add_patch(Circle((sx(plate_x - 1), sy(ring_cy + ring_r - 3)),
-                         sx(pin_r), fc="#808080", ec=C_OUT, lw=1.0, zorder=10))
-
-    # Labels
-    leader(ax, sx(ring_cx - ring_r), sy(ring_cy),
-           sx(ring_cx - 55), sy(ring_cy + 40),
-           f"25mm D-RING\n{DRING_WLL}kg WLL\nMcMaster #3641T29",
-           color="#D0A030", fs=6.5,
-           ha="left", va="bottom", arrow_style="-|>", font=FONT)
-
-    leader(ax, sx(plate_x + plate_t / 2), sy(plate_y + plate_h + 3),
-           sx(plate_x + 40), sy(plate_y + plate_h + 30),
-           f"MOUNTING PLATE\n{plate_t}mm STEEL\nFILLET WELDED",
-           color=C_STEEL, fs=6,
-           ha="left", va="bottom", arrow_style="-|>", font=FONT)
-
-    # Dimensions
-    draw_dim_h(ax, sx(plate_x), sx(plate_x + plate_t), sy(rhs_y - 15),
-               f"{plate_t}mm", offset=sy(3), fs=5.5, font=FONT)
-    draw_dim_v(ax, sx(rhs_x + FRAME_RHS + 10), sy(rhs_y), sy(rhs_y + FRAME_RHS),
-               f"{FRAME_RHS}mm", offset=sx(3), fs=5.5, right=True, font=FONT)
-
-    # Detail A border
-    ax.add_patch(Rectangle((sx(DA_OX - 5), sy(DA_OY)),
-                            sx(180), sy(190),
-                            fc="none", ec=C_DIM, lw=0.8, ls="--", zorder=1))
-
-    # ══════════════════════════════════════════════════════════════════════════
-    # DETAIL B — Anti-Rotation Lip (cross-section through platform edge)
-    # Shows platform beam, rubber mat, lip, and IBC cage foot
-    # ══════════════════════════════════════════════════════════════════════════
-    DB_OX = 240
-    DB_OY = 280
-
-    ax.text(sx(DB_OX + 100), sy(DB_OY + 190),
-            "DETAIL B — ANTI-ROTATION LIP\n(CROSS-SECTION THROUGH PLATFORM EDGE)",
-            ha="center", va="bottom", fontsize=8, color=C_OUT,
-            fontweight="bold", **FONT, zorder=15)
-
-    # Platform beam (cross-section)
-    beam_x = DB_OX + 20
-    beam_y = DB_OY + 30
-    beam_show_w = 140  # show wider to give context
-    ax.add_patch(Rectangle((sx(beam_x), sy(beam_y)),
-                            sx(beam_show_w), sy(FRAME_RHS),
-                            fc=C_FRAME, ec=C_OUT, lw=2.0, zorder=5))
-    # Hollow
-    ax.add_patch(Rectangle((sx(beam_x + FRAME_T), sy(beam_y + FRAME_T)),
-                            sx(beam_show_w - 2 * FRAME_T), sy(FRAME_RHS - 2 * FRAME_T),
-                            fc="#D8D8D8", ec=C_OUT, lw=0.8, zorder=6))
-    ax.text(sx(beam_x + beam_show_w / 2), sy(beam_y + FRAME_RHS / 2),
-            f"PLATFORM BEAM\n{FRAME_RHS}x{FRAME_RHS}x{FRAME_T} RHS",
+    ax.add_patch(Rectangle((sx(up_x + FRAME_T), sy(up_y)),
+                            sx(FRAME_RHS - 2 * FRAME_T), sy(150),
+                            fc="#D8D8D8", ec="none", zorder=6))
+    ax.text(sx(up_x + FRAME_RHS / 2), sy(up_y + 130), "CORRIDOR\nUPRIGHT",
             ha="center", va="center", fontsize=5.5, color=C_OUT, **FONT, zorder=10)
 
-    # Rubber mat on top of beam
-    mat_y = beam_y + FRAME_RHS
-    ax.add_patch(Rectangle((sx(beam_x + 5), sy(mat_y)),
-                            sx(beam_show_w - 10), sy(MAT_T),
-                            fc=C_RUBBER, ec=C_OUT, lw=1.0, zorder=7, alpha=0.8))
-    ax.text(sx(beam_x + beam_show_w / 2), sy(mat_y + MAT_T / 2),
-            f"{MAT_T}mm RUBBER MAT", ha="center", va="center",
-            fontsize=5, color="white", fontweight="bold", **FONT, zorder=10)
+    # Front retaining bar (horizontal 50x50 RHS) butting the upright
+    bar_y = 380
+    bar_x0 = up_x + FRAME_RHS
+    bar_len = 180
+    ax.add_patch(Rectangle((sx(bar_x0), sy(bar_y)), sx(bar_len), sy(FRAME_RHS),
+                            fc=C_STEEL, ec=C_OUT, lw=2.0, hatch="xx", zorder=5))
+    ax.text(sx(bar_x0 + bar_len * 0.62), sy(bar_y + FRAME_RHS / 2),
+            "FRONT RETAINING BAR\n50x50x3 RHS",
+            ha="center", va="center", fontsize=5.5, color=C_OUT, **FONT, zorder=10)
 
-    # Anti-rotation lip (left edge = near frame edge)
-    lip_x = beam_x
-    lip_y = mat_y
-    ax.add_patch(Rectangle((sx(lip_x), sy(lip_y)),
-                            sx(FRAME_LIP_T), sy(FRAME_LIP_H),
-                            fc=C_STEEL, ec=C_OUT, lw=1.5, hatch="///", zorder=8))
+    # Angle cleat joining bar to upright (L-plate) + 2 M12 bolts
+    cl_t = 6
+    ax.add_patch(Rectangle((sx(up_x + FRAME_RHS), sy(bar_y - cl_t)),
+                            sx(70), sy(cl_t), fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=7))
+    ax.add_patch(Rectangle((sx(up_x + FRAME_RHS), sy(bar_y - cl_t)),
+                            sx(cl_t), sy(FRAME_RHS + cl_t), fc=C_STEEL, ec=C_OUT,
+                            lw=1.2, zorder=7))
+    for bx in (bar_x0 + 30, bar_x0 + 60):
+        ax.add_patch(Circle((sx(bx), sy(bar_y - cl_t / 2)), sy(5),
+                            fc=C_BOLT, ec=C_OUT, lw=0.6, zorder=9))
+    leader(ax, sx(bar_x0 + 45), sy(bar_y - cl_t), sx(bar_x0 + 30), sy(bar_y - 55),
+           "ANGLE CLEAT +\n2x M12 BOLTS", color=C_FRAME, fs=6, ha="center",
+           va="top", arrow_style="-|>", font=FONT)
 
-    # Weld at lip base
-    weld_verts = [
-        (sx(lip_x + FRAME_LIP_T), sy(lip_y)),
-        (sx(lip_x + FRAME_LIP_T + 5), sy(lip_y + 5)),
-        (sx(lip_x + FRAME_LIP_T + 5), sy(lip_y - 3)),
-    ]
-    ax.add_patch(Polygon(weld_verts, closed=True,
-                         fc="#404040", ec=C_OUT, lw=0.5, zorder=9))
+    # Weld-on lashing eye on the bar (outer end)
+    eye_cx, eye_cy = bar_x0 + bar_len, bar_y + FRAME_RHS / 2
+    ax.add_patch(Circle((sx(eye_cx), sy(eye_cy)), sy(16), fc="none",
+                        ec=C_STRAP, lw=4.0, zorder=9))
+    ax.add_patch(Circle((sx(eye_cx), sy(eye_cy)), sy(7), fc=BG,
+                        ec=C_STRAP, lw=2.0, zorder=10))
+    leader(ax, sx(eye_cx + 16), sy(eye_cy), sx(eye_cx + 50), sy(eye_cy + 45),
+           "WELD-ON LASH EYE\n1100kg WLL\n(ratchet strap, Detail C)",
+           color=C_STRAP, fs=6, ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
-    # IBC cage foot (ghost — sitting on mat, restrained by lip)
-    cage_foot_x = lip_x + FRAME_LIP_T + 3
-    cage_foot_y = mat_y + MAT_T
-    cage_foot_w = 50
-    cage_foot_h = 30
-    ax.add_patch(Rectangle((sx(cage_foot_x), sy(cage_foot_y)),
-                            sx(cage_foot_w), sy(cage_foot_h),
-                            fc=C_BLUE_IBC, ec=C_OUT, lw=1.2, ls="--",
-                            alpha=0.3, zorder=7))
-    ax.text(sx(cage_foot_x + cage_foot_w / 2), sy(cage_foot_y + cage_foot_h / 2),
-            "IBC CAGE\nFOOT", ha="center", va="center",
-            fontsize=5, color=C_BLUE_IBC, **FONT, zorder=10)
-
-    # Arrow showing lip prevents lateral movement
-    arr_x = lip_x - 8
-    ax.annotate("", xy=(sx(lip_x + 1), sy(lip_y + FRAME_LIP_H / 2)),
-                xytext=(sx(lip_x - 25), sy(lip_y + FRAME_LIP_H / 2)),
-                arrowprops=dict(arrowstyle="->", color="#C04040", lw=2.0))
-    ax.text(sx(lip_x - 28), sy(lip_y + FRAME_LIP_H / 2),
-            "LATERAL\nRETAINED", ha="right", va="center",
-            fontsize=5.5, color="#C04040", fontweight="bold", **FONT, zorder=15)
-
-    # Labels
-    leader(ax, sx(lip_x + FRAME_LIP_T / 2), sy(lip_y + FRAME_LIP_H),
-           sx(lip_x + 50), sy(lip_y + FRAME_LIP_H + 35),
-           f"ANTI-ROTATION LIP\n{FRAME_LIP_T}mm STEEL x {FRAME_LIP_H}mm H\nFILLET WELDED TO PLATFORM\nFULL PERIMETER",
-           color=C_STEEL, fs=6,
-           ha="left", va="bottom", arrow_style="-|>", font=FONT)
-
-    # Dimensions
-    draw_dim_v(ax, sx(lip_x - 12), sy(lip_y), sy(lip_y + FRAME_LIP_H),
-               f"{FRAME_LIP_H}mm", offset=sx(3), fs=5.5, right=False, font=FONT)
-    draw_dim_v(ax, sx(beam_x - 12), sy(beam_y), sy(mat_y),
-               f"{FRAME_RHS}mm", offset=sx(3), fs=5.5, right=False, font=FONT)
-    draw_dim_v(ax, sx(beam_x + beam_show_w + 10), sy(mat_y), sy(mat_y + MAT_T),
-               f"{MAT_T}", offset=sx(3), fs=5, right=True, font=FONT)
-
-    # Detail B border
-    ax.add_patch(Rectangle((sx(DB_OX - 5), sy(DB_OY)),
-                            sx(220), sy(190),
+    ax.add_patch(Rectangle((sx(40), sy(300)), sx(520), sy(210),
                             fc="none", ec=C_DIM, lw=0.8, ls="--", zorder=1))
 
     # ══════════════════════════════════════════════════════════════════════════
-    # DETAIL C — Access Gate (front elevation)
-    # Shows removable panel at base of frame for lower IBC drain valve access
+    # DETAIL B — Wall joist hanger (Simpson-style U-pocket, face-mount to wall)
+    # The bar's outer (wall) end drops into a U-pocket face-bolted to the side wall.
     # ══════════════════════════════════════════════════════════════════════════
-    DC_OX = 30
-    DC_OY = 20
-
-    ax.text(sx(DC_OX + 170), sy(DC_OY + 230),
-            "DETAIL C — ACCESS GATE\n(FRONT ELEVATION — LOWER IBC DRAIN VALVE ACCESS)",
+    ax.text(sx(150), sy(270),
+            "DETAIL B — WALL JOIST HANGER\n(U-POCKET, FACE-BOLTED TO SIDE WALL)",
             ha="center", va="bottom", fontsize=8, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
 
-    # Frame uprights (two verticals)
-    upright_h = 200
-    upright_l_x = DC_OX + 30
-    upright_r_x = DC_OX + 30 + 250
-    for ux in [upright_l_x, upright_r_x]:
-        ax.add_patch(Rectangle((sx(ux), sy(DC_OY + 10)),
-                                sx(FRAME_RHS), sy(upright_h),
-                                fc=C_FRAME, ec=C_OUT, lw=1.5, zorder=5))
-        ax.add_patch(Rectangle((sx(ux + FRAME_T), sy(DC_OY + 10 + FRAME_T)),
-                                sx(FRAME_RHS - 2 * FRAME_T),
-                                sy(upright_h - 2 * FRAME_T),
-                                fc="#D8D8D8", ec=C_OUT, lw=0.5, zorder=6))
+    # Side wall (vertical, hatched)
+    wall_x = 70
+    ax.add_patch(Rectangle((sx(wall_x - 25), sy(120)), sx(25), sy(130),
+                            fc=C_WALL, ec=C_OUT, lw=1.5, hatch="///", zorder=4))
+    ax.plot([sx(wall_x), sx(wall_x)], [sy(120), sy(250)], color=C_OUT, lw=2.0, zorder=5)
+    ax.text(sx(wall_x - 12), sy(135), "SIDE\nWALL", ha="center", va="center",
+            fontsize=5.5, color=C_DIM, **FONT, rotation=90, zorder=10)
 
-    # Gate panel (removable, shown between uprights)
-    gate_x = upright_l_x + FRAME_RHS
-    gate_w = upright_r_x - gate_x
-    gate_y = DC_OY + 10
-    gate_panel_h = 120  # visual gate height at this scale
-    ax.add_patch(Rectangle((sx(gate_x), sy(gate_y)),
-                            sx(gate_w), sy(gate_panel_h),
-                            fc="#F0E0E0", ec="#C04040", lw=2.0, zorder=7))
-    # Cross pattern on gate (mesh/perforated)
-    for frac in np.arange(0.15, 1.0, 0.2):
-        ax.plot([sx(gate_x + gate_w * frac), sx(gate_x + gate_w * frac)],
-                [sy(gate_y + 5), sy(gate_y + gate_panel_h - 5)],
-                color="#C04040", lw=0.5, alpha=0.3, zorder=8)
-
-    ax.text(sx(gate_x + gate_w / 2), sy(gate_y + gate_panel_h / 2),
-            f"REMOVABLE GATE PANEL\nH=0-{GATE_H}mm\n(BOLTED — 4x M{GATE_BOLT_D})",
-            ha="center", va="center", fontsize=6, color="#C04040",
-            fontweight="bold", **FONT, zorder=10)
-
-    # Bolt positions (4 corners of gate)
-    bolt_inset = 15
-    for bx in [gate_x + bolt_inset, gate_x + gate_w - bolt_inset]:
-        for by in [gate_y + bolt_inset, gate_y + gate_panel_h - bolt_inset]:
-            ax.add_patch(Circle((sx(bx), sy(by)), sx(5),
-                                 fc="#808080", ec=C_OUT, lw=1.0, zorder=12))
-            # Hex nut symbol
-            ax.add_patch(Circle((sx(bx), sy(by)), sx(8),
-                                 fc="none", ec=C_OUT, lw=0.6, zorder=12))
-
-    # IBC valve behind gate (ghost)
-    valve_x = gate_x + gate_w / 2 - 20
-    valve_y = gate_y + 20
-    ax.add_patch(Rectangle((sx(valve_x), sy(valve_y)),
-                            sx(40), sy(25),
-                            fc=C_BLUE_IBC, ec=C_OUT, lw=1.0, ls="--",
-                            alpha=0.25, zorder=6))
-    ax.text(sx(valve_x + 20), sy(valve_y + 12),
-            "2\" BALL\nVALVE", ha="center", va="center",
-            fontsize=4.5, color=C_BLUE_IBC, **FONT, zorder=10)
-
-    # Labels
-    leader(ax, sx(gate_x + gate_w + 15), sy(gate_y + gate_panel_h / 2),
-           sx(gate_x + gate_w + 60), sy(gate_y + gate_panel_h + 30),
-           f"GATE REMOVED FOR\nDRAIN VALVE ACCESS\n(2x GATES — NEAR/FAR COLUMNS)",
-           color="#C04040", fs=6,
+    hb_y = 175           # pocket seat level
+    pocket_d = 90
+    # Back flange (on the wall)
+    ax.add_patch(Rectangle((sx(wall_x), sy(hb_y - 15)), sx(8), sy(FRAME_RHS + 30),
+                            fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=7))
+    # Bottom seat
+    ax.add_patch(Rectangle((sx(wall_x), sy(hb_y - 8)), sx(pocket_d), sy(8),
+                            fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=7))
+    # Side strap (near, front face shown)
+    ax.add_patch(Rectangle((sx(wall_x), sy(hb_y - 8)), sx(pocket_d), sy(6),
+                            fc="none", ec=C_STEEL, lw=2.5, zorder=8))
+    # Bar end dropped into the pocket
+    ax.add_patch(Rectangle((sx(wall_x + 8), sy(hb_y)), sx(pocket_d - 12), sy(FRAME_RHS),
+                            fc=C_STEEL, ec=C_OUT, lw=2.0, hatch="xx", zorder=8))
+    ax.text(sx(wall_x + pocket_d / 2 + 6), sy(hb_y + FRAME_RHS / 2), "BAR END",
+            ha="center", va="center", fontsize=5.5, color=C_OUT, **FONT, zorder=10)
+    # 2x M12 wall anchors through the back flange
+    for by in (hb_y + 6, hb_y + FRAME_RHS - 2):
+        ax.add_patch(Circle((sx(wall_x + 4), sy(by)), sy(4),
+                            fc=C_BOLT, ec=C_OUT, lw=0.6, zorder=10))
+    leader(ax, sx(wall_x + 4), sy(hb_y + FRAME_RHS), sx(wall_x + 70), sy(hb_y + 75),
+           "2x M12 WALL ANCHORS\n(face-mount flange)", color=C_FRAME, fs=6,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
+    leader(ax, sx(wall_x + pocket_d), sy(hb_y - 4), sx(wall_x + pocket_d + 35), sy(hb_y - 45),
+           "U-POCKET SEAT\n(bar drops in)", color=C_STEEL, fs=6, ha="left",
+           va="top", arrow_style="-|>", font=FONT)
 
-    leader(ax, sx(upright_l_x + FRAME_RHS / 2), sy(DC_OY + 10 + upright_h),
-           sx(upright_l_x - 30), sy(DC_OY + 10 + upright_h + 20),
-           f"FRAME UPRIGHT\n{FRAME_RHS}x{FRAME_RHS}x{FRAME_T} RHS",
-           color=C_FRAME, fs=6,
-           ha="right", va="bottom", arrow_style="-|>", font=FONT)
-
-    # Dimensions
-    draw_dim_v(ax, sx(upright_l_x - 15), sy(gate_y), sy(gate_y + gate_panel_h),
-               f"{GATE_H}mm\nGATE H", offset=sx(3), fs=5.5, right=False, font=FONT)
-    draw_dim_h(ax, sx(gate_x), sx(gate_x + gate_w), sy(gate_y - 15),
-               "GATE WIDTH", offset=sy(3), fs=5.5, font=FONT)
-
-    # Detail C border
-    ax.add_patch(Rectangle((sx(DC_OX - 5), sy(DC_OY)),
-                            sx(350), sy(230),
+    ax.add_patch(Rectangle((sx(40), sy(110)), sx(520), sy(170),
                             fc="none", ec=C_DIM, lw=0.8, ls="--", zorder=1))
 
     # ══════════════════════════════════════════════════════════════════════════
-    # DETAIL D — Lashing Arrangement (schematic top-down showing strap routing)
+    # DETAIL C — Lashing strap over the stack, ratcheted to the front bar
     # ══════════════════════════════════════════════════════════════════════════
-    DD_OX = 400
-    DD_OY = 20
-
-    ax.text(sx(DD_OX + 90), sy(DD_OY + 230),
-            "DETAIL D — TRANSPORT LASHING\n(SCHEMATIC — STRAP ROUTING)",
+    ax.text(sx(300), sy(80),
+            "DETAIL C — RATCHET LASHING (FRONT ELEVATION)\nSTRAP OVER STACK -> WELD-ON LASH EYE ON FRONT BAR",
             ha="center", va="bottom", fontsize=8, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
 
-    # Simplified side elevation showing IBC with ratchet strap
-    sch_x = DD_OX + 20
-    sch_y = DD_OY + 20
-    sch_w = 140  # IBC width representation
-    sch_h = 180  # full stack height representation
+    # Two stacked totes (front elevation, schematic)
+    t_x, t_w = 200, 200
+    base_z = -90
+    th = 65
+    for i, tcol in enumerate([C_WASTE_IBC, C_BLUE_IBC]):  # v2: brown/waste bottom, blue top
+        z0 = base_z + i * th
+        ax.add_patch(Rectangle((sx(t_x), sy(z0)), sx(t_w), sy(th),
+                                fc=tcol, ec=C_OUT, lw=1.5, alpha=0.4, zorder=5))
+    ax.text(sx(t_x + t_w / 2), sy(base_z + th), "IBC STACK\n(2 totes)",
+            ha="center", va="center", fontsize=6, color=C_OUT, **FONT, zorder=10)
 
-    # IBC stack (simplified)
-    ax.add_patch(Rectangle((sx(sch_x), sy(sch_y)),
-                            sx(sch_w), sy(sch_h / 2),
-                            fc=C_BROWN_IBC, ec=C_OUT, lw=1.2, alpha=0.3, zorder=5))
-    ax.add_patch(Rectangle((sx(sch_x), sy(sch_y + sch_h / 2 + 5)),
-                            sx(sch_w), sy(sch_h / 2),
-                            fc=C_BLUE_IBC, ec=C_OUT, lw=1.2, alpha=0.3, zorder=5))
-    ax.text(sx(sch_x + sch_w / 2), sy(sch_y + sch_h / 4),
-            "BOTTOM\nTIER", ha="center", va="center", fontsize=5.5,
-            color=C_OUT, **FONT, zorder=10)
-    ax.text(sx(sch_x + sch_w / 2), sy(sch_y + 3 * sch_h / 4 + 3),
-            "TOP\nTIER", ha="center", va="center", fontsize=5.5,
-            color=C_OUT, **FONT, zorder=10)
+    # Front retaining bars (small RHS squares) at the two bar heights, each side
+    for bx in (t_x - 14, t_x + t_w + 14 - FRAME_RHS / 2):
+        for bz in (base_z + 8, base_z + th + 8):
+            ax.add_patch(Rectangle((sx(bx), sy(bz)), sx(FRAME_RHS / 2), sy(FRAME_RHS / 2),
+                                    fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="xx", zorder=6))
 
-    # Platform line
-    ax.plot([sx(sch_x - 10), sx(sch_x + sch_w + 10)],
-            [sy(sch_y + sch_h / 2 + 2), sy(sch_y + sch_h / 2 + 2)],
-            color=C_FRAME, lw=2.0, zorder=6)
-    ax.text(sx(sch_x + sch_w + 15), sy(sch_y + sch_h / 2 + 2),
-            "PLATFORM", ha="left", va="center", fontsize=5,
-            color=C_FRAME, **FONT, zorder=10)
+    # Lash eyes on the lower front bars
+    eyeL = (t_x - 2, base_z + 8 + FRAME_RHS / 4)
+    eyeR = (t_x + t_w + 2, base_z + 8 + FRAME_RHS / 4)
+    for ex, ez in (eyeL, eyeR):
+        ax.add_patch(Circle((sx(ex), sy(ez)), sy(7), fc="none", ec=C_STRAP, lw=2.5, zorder=9))
 
-    # D-ring positions
-    dring_color = "#D0A030"
-    dring_positions_sch = [
-        (sch_x - 8, sch_y + 25, "1"),
-        (sch_x + sch_w + 8, sch_y + 25, "2"),
-        (sch_x - 8, sch_y + sch_h / 2 + 25, "3"),
-        (sch_x + sch_w + 8, sch_y + sch_h / 2 + 25, "4"),
-    ]
-    for dx, dy, dlabel in dring_positions_sch:
-        ax.add_patch(Circle((sx(dx), sy(dy)), sx(6),
-                             fc=dring_color, ec=C_OUT, lw=1.0, zorder=11))
-        ax.text(sx(dx), sy(dy), dlabel, ha="center", va="center",
-                fontsize=5, color=C_OUT, fontweight="bold", **FONT, zorder=12)
+    # Ratchet strap over the top of the stack, down both sides to the eyes
+    strap_x = [eyeL[0], t_x + 6, t_x + t_w - 6, eyeR[0]]
+    strap_z = [eyeL[1], base_z + 2 * th + 6, base_z + 2 * th + 6, eyeR[1]]
+    ax.plot(strap_x, strap_z, color=C_STRAP, lw=3.0, zorder=8, solid_capstyle="round")
+    # Ratchet buckle symbol on the right run
+    ax.add_patch(Rectangle((sx(eyeR[0] - 6), sy((eyeR[1] + base_z + 2 * th) / 2)),
+                            sx(14), sy(16), fc=C_STRAP, ec=C_OUT, lw=1.0, zorder=10))
 
-    # Ratchet strap lines (over top of IBC, D-ring to D-ring)
-    strap_color = "#2060A0"
-    # Bottom tier strap: 1->2 over the bottom IBC
-    strap_y_bot = sch_y + sch_h / 2 - 5
-    ax.plot([sx(sch_x - 8), sx(sch_x + sch_w / 2)],
-            [sy(sch_y + 25), sy(strap_y_bot)],
-            color=strap_color, lw=2.0, ls="-", zorder=8)
-    ax.plot([sx(sch_x + sch_w / 2), sx(sch_x + sch_w + 8)],
-            [sy(strap_y_bot), sy(sch_y + 25)],
-            color=strap_color, lw=2.0, ls="-", zorder=8)
+    leader(ax, sx((t_x + t_w / 2)), sy(base_z + 2 * th + 6), sx(t_x + t_w / 2 + 60),
+           sy(base_z + 2 * th + 55),
+           "25mm POLY RATCHET STRAP\n1100kg LC, over the stack",
+           color=C_STRAP, fs=6, ha="left", va="bottom", arrow_style="-|>", font=FONT)
+    leader(ax, sx(eyeR[0] + 1), sy((eyeR[1] + base_z + 2 * th) / 2 + 8),
+           sx(eyeR[0] + 45), sy(base_z - 10),
+           "RATCHET BUCKLE\n-> lash eye on front bar",
+           color=C_STRAP, fs=6, ha="left", va="top", arrow_style="-|>", font=FONT)
 
-    # Top tier strap: 3->4 over the top IBC
-    strap_y_top = sch_y + sch_h - 5
-    ax.plot([sx(sch_x - 8), sx(sch_x + sch_w / 2)],
-            [sy(sch_y + sch_h / 2 + 25), sy(strap_y_top)],
-            color=strap_color, lw=2.0, ls="-", zorder=8)
-    ax.plot([sx(sch_x + sch_w / 2), sx(sch_x + sch_w + 8)],
-            [sy(strap_y_top), sy(sch_y + sch_h / 2 + 25)],
-            color=strap_color, lw=2.0, ls="-", zorder=8)
-
-    # Strap labels
-    ax.text(sx(sch_x + sch_w / 2), sy(strap_y_bot + 8),
-            "RATCHET STRAP\n(BOTTOM TIER)", ha="center", va="bottom",
-            fontsize=5, color=strap_color, fontweight="bold", **FONT, zorder=15)
-    ax.text(sx(sch_x + sch_w / 2), sy(strap_y_top + 8),
-            "RATCHET STRAP\n(TOP TIER)", ha="center", va="bottom",
-            fontsize=5, color=strap_color, fontweight="bold", **FONT, zorder=15)
-
-    # Notes for Detail D
-    dn_x = sx(DD_OX + 10)
-    dn_top = sy(DD_OY - 12)
-    d_notes = [
-        "NOTES:",
-        "1. 25mm ratchet straps, 1,100kg WLL",
-        "2. D-ring to D-ring over IBC top",
-        "3. 1 strap per tier per side (4 total)",
-        "4. Tighten before transport",
-        "5. Check strap tension after 50km",
-    ]
-
-    draw_notes(ax, d_notes, dn_x, dn_top, spacing=8,
-               fs=7, font=FONT, width=125)
-
-    # Detail D border
-    ax.add_patch(Rectangle((sx(DD_OX - 5), sy(DD_OY)),
-                            sx(200), sy(230),
+    ax.add_patch(Rectangle((sx(150), sy(-110)), sx(300), sy(210),
                             fc="none", ec=C_DIM, lw=0.8, ls="--", zorder=1))
+
+    # ── Notes ─────────────────────────────────────────────────────────────────
+    notes = [
+        "FASTENING NOTES (RESTRAINT-ONLY FRAME):",
+        "1. Direct-stack totes are restrained, not deck-supported. Active restraint + lash points are at the OPEN container front (side/back walls leave a 30mm gap — no hand/hook access).",
+        "2. Detail A: each front retaining bar bolts to the front corridor upright via an angle cleat (2x M12); a weld-on lash eye takes the strap.",
+        "3. Detail B: the bar's wall end drops into a Simpson-style U-pocket joist hanger face-bolted to the side wall (2x M12).",
+        "4. Detail C: 25mm poly ratchet straps (1100kg LC) pass over each stack and ratchet down to the front-bar lash eyes.",
+        "5. Floor feet (150x150x12, 4x M12 each) anchor the corridor uprights to the slab — see Sheet 1.",
+    ]
+    draw_notes(ax, notes, sx(20), sy(-118), spacing=sy(16),
+               fs=7, ha="left", font=FONT, width=560)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 5",
                 drawing_title="IBC STACKING & SECURING",
-                subtitle="FASTENING DETAILS — D-RING - LIP - ACCESS GATE - LASHING",
-                scale_note="Axes in mm - DETAILS A-D",
+                subtitle="FASTENING DETAILS — FRONT BAR - WALL HANGER - RATCHET LASHING",
+                scale_note="Axes in mm - DETAILS A-C",
                 height=0.06)
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-stacking-sheet2.png"), dpi=130, bbox_inches="tight", facecolor=BG)
@@ -952,8 +596,8 @@ def sheet3():
     # ── Ghost IBC outlines and stacking frame (behind wall) ────────────────
     # yd_ext = C_WID - yd_internal; with invert_xaxis (above) this lands the
     # near/pinhole wall at LEFT, far wall at RIGHT (correct exterior orientation)
-    platform_z = IBC_H_1000                        # 1010mm
-    top_tier_z = platform_z + FRAME_RHS + MAT_T   # 1072mm
+    platform_z = IBC_H_1000                        # 1168 - direct-stack junction
+    top_tier_z = platform_z   # 1072mm
 
     # Near column (internal Yd 30–1046) → external Yd 1316–2332
     near_ext_l = C_WID - (BLUE_IBC_Y + IBC_D)     # 1316
@@ -1090,7 +734,7 @@ def sheet3():
         "1. 3x 2\" NPT bulkhead unions through sealed end wall on container centerline.",
         "2. 6mm mild steel reinforcing plate welded to wall interior before penetrations.",
         "3. Type DC camlock fittings (2\" aluminum) on exterior face — quick-connect for fill hose (X1) and drain hose (X3/X4).",
-        "4. X1 fill port at top tees to BOTH Blue totes (IBC-1 & IBC-2, parallel). Drain ports at bottom (gravity drain).",
+        "4. X1 fill tees to BOTH Blue totes via SIDE entries near the top (gravity-linked, ~800L each). X3/X4 drains are PUMP-driven (P-05->X3, P-03->X4).",
         "5. All penetrations sealed with neoprene gaskets — light-tight and watertight.",
         "6. Interior connections routed through plumbing corridor (see Sheet 4).",
     ]
@@ -1621,7 +1265,7 @@ def sheet4():
     # ── Notes (single block, in the right margin directly under the legend) ──
     notes = [
         "INTERNAL PLUMBING PLAN NOTES:",
-        "1. 4× Schutz Ecobulk MX 600L IBCs in 2×2 stack.",
+        "1. 4x 275-gal (1000L) caged composite IBCs in 2x2 direct-stack (Brown/Waste bottom, Blue top).",
         "   Top tier visible; bottom tier shown dashed.",
         "2. All internal pipe 1\" HDPE SDR-11",
         "   (2\" NPT at bulkhead unions).",
@@ -1795,14 +1439,14 @@ def sheet5():
     # ── IBCs (shown in elevation, flanking the corridor) ─────────────────────
     near_col_r = BLUE_IBC_Y + IBC_D   # 1046
     far_col_l  = IBC_FAR_Y            # 1316
-    platform_z = IBC_H_1000             # 1010
+    platform_z = IBC_H_1000             # 1168 - direct-stack junction
 
     ibc_data = [
         ("IBC-3\nBROWN\n(recycled)", BLUE_IBC_Y, 0, IBC_D, IBC_H_1000, C_BROWN_IBC),
-        ("IBC-1\nBLUE\n(clean supply)", BLUE_IBC_Y, platform_z + FRAME_RHS + MAT_T,
+        ("IBC-1\nBLUE\n(clean supply)", BLUE_IBC_Y, platform_z,
          IBC_D, IBC_H_1000, C_BLUE_IBC),
         ("IBC-4\nWASTE", IBC_FAR_Y, 0, IBC_D, IBC_H_1000, C_WASTE_IBC),
-        ("IBC-2\nBLUE\n(clean supply)", IBC_FAR_Y, platform_z + FRAME_RHS + MAT_T,
+        ("IBC-2\nBLUE\n(clean supply)", IBC_FAR_Y, platform_z,
          IBC_D, IBC_H_1000, C_BLUE_IBC),
     ]
 
@@ -1898,7 +1542,7 @@ def sheet5():
     pipe_lw = 2.5
 
     # ── IBC connection heights ───────────────────────────────────────────────
-    top_ibc_top = platform_z + FRAME_RHS + MAT_T + IBC_H_1000
+    top_ibc_top = platform_z + IBC_H_1000
     fill_conn_z = top_ibc_top - 80   # fill inlet near top of top-tier IBC
     drain_conn_z = 185   # IBC butterfly valve centerline ~175-200mm above floor
 
@@ -2001,7 +1645,7 @@ def sheet5():
     # in corridor, then V-B3 after tee → single pipe to P-01 → spray bar.
     # Blue IBCs use their built-in DN50 butterfly valve (S60×6 thread) on the
     # corridor-facing face, ~185mm above the platform they sit on.
-    top_tier_base = platform_z + FRAME_RHS + MAT_T  # floor of top-tier IBCs
+    top_tier_base = platform_z  # floor of top-tier IBCs
     blue_out_z = top_tier_base + drain_conn_z  # drain valve height on top-tier
 
     # IBC-1 outlet (near column) — at corridor-facing drain valve

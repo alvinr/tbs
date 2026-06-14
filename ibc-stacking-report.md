@@ -218,9 +218,10 @@ thread).
 
 | Pipe | Route | Notes |
 |------|-------|-------|
-| X1 fill (Blue) | End wall bulkhead → corridor → V1 ball valve → tee (behind frame top rail) → both IBC-1 & IBC-2 fill caps (DN150, from top) | Gravity feed from Z=2250mm; fills both Blue totes in parallel |
-| X3 drain (Brown) | IBC-3 DN50 valve → V3 ball valve → behind frame → corridor → end wall bulkhead | Gravity drain at Z=400mm |
-| X4 drain (Waste) | IBC-4 DN50 valve → V4 ball valve → behind frame → corridor → end wall bulkhead | Gravity drain at Z=200mm |
+| X1 fill (Blue) | End wall bulkhead → corridor → V1 ball valve → tee → **side-entry** into both IBC-1 & IBC-2 corridor faces near the top (Z=2156, 150mm + flange) | Gravity feed from Z=2250mm; fills both Blue totes in parallel. No top-cap access (~52mm headroom) |
+| X3 drain (Brown) | IBC-3 DN50 valve → V3 ball valve → **P-05 drain pump** → corridor → end wall bulkhead X3 | Pumped — port at Z=400mm, gravity head insufficient |
+| X4 drain (Waste) | IBC-4 DN50 valve → V4 ball valve → **P-03 drain pump** → corridor → end wall bulkhead X4 | Pumped — port at Z=200mm, evacuates residual below port |
+| Recycle returns | All tote-top returns (sump→IBC-3, filter→IBC-2, reject→IBC-4) enter via **side-entry near the top** | No top-cap access — DV-01/DV-02 recycle loop unchanged |
 
 ### 7.3 Equipment Panel
 

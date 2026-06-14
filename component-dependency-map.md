@@ -231,11 +231,11 @@ for the few generators not yet repointed (overview Blue-trunk shelf, walkway/wei
 | Brown IBC front depth | 30mm | `BROWN_IBC_Y` |
 | IBC dimensions | same as Blue | `IBC_W`, `IBC_D`, `IBC_H_600` |
 
-*Components: 1× 600L food-grade HDPE IBC (Y-stacked behind Blue stack, right end zone),
+*Components: 1× 1000L caged composite IBC (Y-stacked behind Blue stack, right end zone),
 DN50 butterfly valve (S60×6) + S60×6-to-1" NPT adapter at drain outlet,
 integrated 3-stage Big Blue filter unit (50μm → 5μm → GAC carbon, wall-mounted, no separate skid frame), Shurflo P-02,
 3-way diverter valves 3W-DV-01 and 3W-DV-02, pH test point.
-Filled via DN150 top fill cap from P-04 tray sump pickup pump.*
+Filled via side-entry near the top from the P-04 tray-sump pickup pump (no top-cap access — 52mm headroom).*
 
 ### 1.13 Water System — Black Circuit (Waste)
 
@@ -245,10 +245,10 @@ Filled via DN150 top fill cap from P-04 tray sump pickup pump.*
 | IBC far column start Y | 1316mm | `IBC_FAR_Y` |
 | Waste IBC color code | Black | `C_WASTE_IBC` |
 
-*Components: 1× 600L food-grade HDPE IBC tote (4th IBC in 2×2 stack, right end zone),
+*Components: 1× 1000L caged composite IBC tote (4th IBC in 2×2 stack, right end zone),
 DN50 butterfly valve (S60×6) + S60×6-to-1" NPT adapter at drain outlet,
 2" NPT bulkhead fittings for external drain/fill (X4), reinforcing plates for external ports,
-P-03 waste evacuation pump (mounted in IBC plumbing corridor on X4 drain run). Filled via DN150 top fill cap from filter reject line.*
+P-03 waste evacuation pump (mounted in IBC plumbing corridor on X4 drain run). Filled via side-entry near the top from the filter reject line (no top-cap access).*
 
 ### 1.14 Equipment Zones
 

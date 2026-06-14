@@ -24,9 +24,9 @@ The camera operates in remote locations with no mains water or drainage. This do
 
 | Circuit | Color code | Purpose | Storage |
 |---------|-------------|---------|---------|
-| **Blue** | Blue — clean | Fresh water supply for processing | 2× 600L IBC totes (≈316 gal total), Y-stacked in right end zone |
-| **Brown** | Brown — used | Collected wash water; filtered and recycled back to Blue | 1× 600L IBC tote, Y-stacked behind Blue IBCs |
-| **Black** | Black — waste | Heavily contaminated water; sealed IBC for off-site disposal | 1× 600L IBC tote (IBC-4, ~158 gal), Y-stacked in right end zone |
+| **Blue** | Blue — clean | Fresh water supply for processing | 2× 1000L IBC totes (~316 gal working fill total), Y-stacked in right end zone |
+| **Brown** | Brown — used | Collected wash water; filtered and recycled back to Blue | 1× 1000L IBC tote, Y-stacked behind Blue IBCs |
+| **Black** | Black — waste | Heavily contaminated water; sealed IBC for off-site disposal | 1× 1000L IBC tote (IBC-4, ~158 gal working fill), Y-stacked in right end zone |
 
 ![Water System — Sheet 1: System Schematic](assets/water-system-sheet1.png)
 
@@ -122,12 +122,12 @@ IBC-2 (600L) ──┘                                                      │
 ```
 Processing tray sump (P-04 suction pickup)
         │
-   P-04 (tray drain transfer pump — suction from sump, lifts ~900mm to IBC-3 fill cap)
+   P-04 (tray drain transfer pump — suction from sump, lifts ~900mm to IBC-3 side-entry)
         │
    3W-DV-02 ──────────────────────────────────────────→ (to IBC-4 waste if heavily loaded)
         │
         ↓
-   IBC-3 (600L buffer, filled via DN150 fill cap on top)
+   IBC-3 (600L buffer fill, side-entry near top — no top-cap access, 52mm headroom)
         │
        P-02
         │
@@ -270,7 +270,7 @@ See **Sheet 2 — Plan View** (`water-system-sheet2.png`) for the water-system-s
 **Container floor plan — all systems (top-down, 1:75):**
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 
-IBCs are arranged in a **2x2 stack** in the right end zone at X=4674mm, right-justified to the far end wall. Near column (Yd=30–1,046): IBC-1 Blue (top) + IBC-3 Brown (bottom). Far column (Yd=1,316–2,332): IBC-2 Blue (top) + IBC-4 Waste (bottom). A 270mm plumbing corridor between the two columns (Yd=1,046–1,316) carries all internal supply and return lines. Total capacity: 4x600L = 2,400L. All IBCs are loaded empty through the cargo doors and filled/drained remotely via 3x external 2" NPT bulkhead fittings (X1/X3/X4) through the container end wall. IBC wall clearance is 30mm (near wall to near column edge).
+IBCs are arranged in a **2x2 stack** in the right end zone at X=4674mm, right-justified to the far end wall. Near column (Yd=30–1,046): IBC-1 Blue (top) + IBC-3 Brown (bottom). Far column (Yd=1,316–2,332): IBC-2 Blue (top) + IBC-4 Waste (bottom). A 270mm plumbing corridor between the two columns (Yd=1,046–1,316) carries all internal supply and return lines. Total physical capacity: 4×1000L = 4,000L (totes are filled to working levels, not full). All IBCs are loaded empty through the cargo doors and filled/drained remotely via 3x external 2" NPT bulkhead fittings (X1/X3/X4) through the container end wall. IBC wall clearance is 30mm (near wall to near column edge).
 
 | Zone | Contents | X (mm) | Yd (mm) | H (mm) |
 |------|----------|--------|---------|--------|
@@ -296,7 +296,7 @@ All equipment clears the optical cone at every depth — shadow-free proof in [E
 | X3 — Drain Brown | Used water drain | 400 | IBC-3 (bottom, near column) |
 | X4 — Drain Waste | Waste water drain | 200 | IBC-4 (bottom, far column) |
 
-A single external fill port (X1) feeds an internal 1" tee set behind the panel-support-frame top rail, which splits the flow to BOTH Blue IBCs (each branch drops straight into its fill cap). The two top totes fill in parallel, so only one external hose is needed — without a separate cross-connect pipe. (This matches the 3D model routing.)
+A single external fill port (X1) feeds an internal 1" tee in the corridor, which splits the flow to BOTH Blue IBCs (each branch **side-enters** the tote's corridor face near the top, 150mm + flange — no top-cap access, only 52mm headroom). The two top totes fill in parallel, so only one external hose is needed — without a separate cross-connect pipe. (This matches the 3D model routing.)
 
 This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC-4 to disposal tanker) without opening the cargo doors or entering the container. Internal plumbing from each port routes through the 270mm central corridor between the two IBC columns to reach the respective tote. All ports are accessible from the container exterior.
 
@@ -308,7 +308,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
-| [IBC tote 600L, food-grade, used/rinsed](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) | HDPE cage tote, DN50 butterfly valve (S60×6 thread), fill cap DN150 | 4 | Container Exchanger | $80–$150 | **$320–$600** |
+| [IBC tote 1000L (275 gal), food-grade, used/rinsed](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) | Caged composite tote, DN50 butterfly valve (S60×6 thread); side-entry fittings near top | 4 | Container Exchanger | $80–$150 | **$320–$600** |
 | [2" NPT bulkhead fitting (304 SS)](https://www.mcmaster.com/4464K115) | External fill/drain port, welded through container wall | 3 | McMaster-Carr | $25–$40 | **$75–$120** |
 
 **Storage subtotal: ~$420–$760**
@@ -319,7 +319,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 |------|------|-----|---------|-----------|-------|
 | [Shurflo 2088-554-144 pump](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) (P-01, P-02) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 2 | Amazon | $55–$70 | **$110–$140** |
 | [Shurflo 2088-554-144 pump](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) (P-03 waste evacuation — *mounted in IBC plumbing corridor on X4 drain run*) | 12VDC, 3.5 GPM, 45 PSI. Empties IBC-4 residual below X4 gravity-drain height (Z=200mm, ~120L) | 1 | Amazon | $55–$70 | **$65** |
-| [Shurflo 2088-554-144 pump](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) (P-04 tray drain transfer) | 12VDC, 3.5 GPM, 45 PSI. Pumps used chemistry from tray drain to IBC-3 fill cap (~900mm lift) | 1 | Amazon | $55–$70 | **$65** |
+| [Shurflo 2088-554-144 pump](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) (P-04 tray drain transfer) | 12VDC, 3.5 GPM, 45 PSI. Pumps used chemistry from tray drain to IBC-3 side-entry near top (~900mm lift) | 1 | Amazon | $55–$70 | **$65** |
 | [SeaFlo pressure accumulator](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) | 0.75 L (23.5 oz), 125 PSI, 1/2" MNPT | 1 | Amazon | $25–$45 | **$35** |
 | [Shurflo pump mounting bracket](https://www.amazon.com/s?k=shurflo+2088+mounting+bracket+stainless) | Stainless, for 2088 series (3× manifold + 1× IBC corridor for P-03) | 4 | Amazon | $8–$12 | **$40** |
 

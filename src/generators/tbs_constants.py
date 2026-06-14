@@ -413,6 +413,16 @@ IBC_W       = 1219   # IBC overall width  (mm) — US 48" pallet format, include
 IBC_D       = 1016   # IBC overall depth  (mm) — US 40" pallet format, includes cage
 IBC_H_600   = 1010   # 640L IBC overall height (mm) — includes pallet base + cage + bottle
 IBC_H_STK   = 2020   # 2× stacked height (mm)
+# ibc-reconfig-v2 (2026-06): all four positions standardize on the 275-gal (≈1000 L)
+# caged composite — the only food-grade, 48×40-footprint tote our supplier (Container
+# Exchanger) stocks; a compatible 600 L tote does NOT exist, so "600 L"/"1000 L" are
+# FILL LEVELS, not tote sizes. Caged-composite 275-gal = 48×40×46" = 1219×1016×1168 mm
+# (NOT the taller 53.75-56" square-stackable poly line). The totes' own cage frames
+# DIRECT-STACK cage-on-cage to 2336 mm → only ~52 mm headroom under the 2388 mm ceiling
+# (so the support frame is RESTRAINT-ONLY — no load-bearing deck between tiers).
+# Layout is UNCHANGED from main: two Blue on top, Brown + Waste on the bottom.
+IBC_H_1000  = 1168   # 275-gal (≈1000 L) caged composite overall height (mm) = 46"
+IBC_H_STK_1000 = 2 * IBC_H_1000   # 2336 mm 2× stacked (ceiling headroom ~52 mm)
 
 # IBC cage/pallet anatomy (US 48"×40" composite tote)
 # Three parts: steel/plastic pallet base, HDPE blow-molded bottle, galvanized wire cage.

@@ -74,11 +74,11 @@ UV-HDPE 950 kg/m³, water 1,000 kg/m³.
 | Tilt-swing board | 30 | 2,089–2,709 | 0–100 | 620×620×45mm Al plate + spherical pivot + screws |
 | Fans (A+B) | 4 | End walls | Near corners | 2× 150mm axial panel fans |
 | Baffle ducts | 6 | Distributed | Distributed | 2× galvanized steel baffle ducts |
-| Blue IBC-1 (tote) | 55 | 4,674–5,893 | 30–1,046 | 600L steel-cage IBC tare (top tier, near) |
-| Blue IBC-2 (tote) | 55 | 4,674–5,893 | 1,316–2,332 | 600L steel-cage IBC tare (top tier, far) |
-| Brown IBC-3 (tote) | 55 | 4,674–5,893 | 30–1,046 | 600L steel-cage IBC tare (bottom tier, near) |
-| Waste IBC-4 (tote) | 55 | 4,674–5,893 | 1,316–2,332 | 600L steel-cage IBC tare (bottom tier, far) |
-| IBC stacking frame | 144 | 4,674–5,893 | 0–2,362 | 50×50×3mm RHS frame + 6 floor flange feet + 6 welded wall seat brackets + mid-bay panel support frame; simply supported wall-to-wall ([Equipment Layout](equipment-layout-report.md) §5, [Stacking Frame §3.5](ibc-stacking-report.md)) |
+| Blue IBC-1 (tote) | 65 | 4,674–5,893 | 30–1,046 | 1000L caged composite tare (top tier, near) |
+| Blue IBC-2 (tote) | 65 | 4,674–5,893 | 1,316–2,332 | 1000L caged composite tare (top tier, far) |
+| Brown IBC-3 (tote) | 65 | 4,674–5,893 | 30–1,046 | 1000L caged composite tare (bottom tier, near) |
+| Waste IBC-4 (tote) | 65 | 4,674–5,893 | 1,316–2,332 | 1000L caged composite tare (bottom tier, far) |
+| IBC restraint frame | 173 | 4,674–5,893 | 0–2,362 | 50×50×3mm RHS restraint-only frame (totes direct-stack cage-on-cage): full-height corridor + front-bay uprights + longitudinal ties + front retaining bars + 8 floor flange feet + 4 wall joist hangers + forward panel-mount frame ([Equipment Layout](equipment-layout-report.md) §5) |
 | **Equipment subtotal** | **471** | | | |
 
 ### 3.4 Dry Weight Summary
@@ -88,7 +88,7 @@ UV-HDPE 950 kg/m³, water 1,000 kg/m³.
 | Container (shell + doors) | 2,200 | 67.7% |
 | Structure | 579 | 17.8% |
 | Equipment | 471 | 14.5% |
-| **Total dry** | **3,250** | **100%** |
+| **Total dry** | **3,319** | **100%** |
 
 **Grating weight assumption:** 5/8" (15mm) molded GRP (fiberglass) grating,
 vinyl-ester resin with grit top, weighs approximately 11 kg/m² — vs ~26 kg/m²
@@ -112,11 +112,11 @@ during processing, not pre-loaded).
 
 | Liquid | Volume (L) | Weight (kg) | Position | Tier |
 |--------|-----------|------------|----------|------|
-| Blue IBC-1 water | 600 | 600 | X=4,674–5,893, Yd=30–1,046 | Top (Z=1,010–2,020) |
-| Blue IBC-2 water | 600 | 600 | X=4,674–5,893, Yd=1,316–2,332 | Top (Z=1,010–2,020) |
-| **Total liquid** | **1,200** | **1,200** | | |
+| Blue IBC-1 water | 800 | 800 | X=4,674–5,893, Yd=30–1,046 | Top (Z=1,336–2,136) |
+| Blue IBC-2 water | 800 | 800 | X=4,674–5,893, Yd=1,316–2,332 | Top (Z=1,336–2,136) |
+| **Total liquid** | **1,600** | **1,600** | | |
 
-**Total loaded weight: 4,450 kg** (3,250 dry + 1,200 liquid)
+**Total loaded weight: 4,919 kg** (3,319 dry + 1,600 liquid)
 
 ### 4.2 Materials Exhausted (Ready for Resupply)
 
@@ -127,29 +127,31 @@ Brown/Waste IBCs.
 
 | Liquid | Volume (L) | Weight (kg) | Position | Tier |
 |--------|-----------|------------|----------|------|
-| Brown IBC-3 water | 600 | 600 | X=4,674–5,893, Yd=30–1,046 | Bottom (Z=0–1,010) |
-| Waste IBC-4 water | 600 | 600 | X=4,674–5,893, Yd=1,316–2,332 | Bottom (Z=0–1,010) |
+| Brown IBC-3 water | 800 | 800 | X=4,674–5,893, Yd=30–1,046 | Bottom (Z=168–968) |
+| Waste IBC-4 water | 800 | 800 | X=4,674–5,893, Yd=1,316–2,332 | Bottom (Z=168–968) |
 | Processing tray | — | 0 | Drained | — |
-| **Total liquid** | **1,200** | **1,200** | | |
+| **Total liquid** | **1,600** | **1,600** | | |
 
-**Total loaded weight: 4,450 kg** (3,250 dry + 1,200 liquid)
+**Total loaded weight: 4,919 kg** (3,319 dry + 1,600 liquid)
 
 ### 4.3 State Comparison
 
 | State | Total (kg) | X_cg (mm) | Yd_cg (mm) | Z_cg (mm) | Front/Rear | Near/Far |
 |-------|-----------|-----------|------------|-----------|------------|----------|
-| Dry (Transport) | 3,250 | 2,745 | 1,196 | 1,080 | 54.0/46.0% | 48.4/51.6% |
-| Loaded Transport (Blue full) | 4,450 | 3,429 | 1,192 | 1,197 | 39.4/60.6% | 48.8/51.2% |
-| Camera Ready (Deployed) | 4,450 | 3,426 | 1,175 | 1,197 | 39.4/60.6% | 50.3/49.7% |
-| Materials Exhausted (Transport) | 4,450 | 3,429 | 1,192 | 925 | 39.4/60.6% | 48.8/51.2% |
+| Dry (Transport) | 3,319 | 2,798 | 1,196 | 1,099 | 52.8/47.2% | 48.4/51.6% |
+| Loaded Transport (Blue full) | 4,919 | 3,606 | 1,191 | 1,306 | 35.6/64.4% | 48.9/51.1% |
+| Camera Ready (Deployed) | 4,919 | 3,603 | 1,175 | 1,306 | 35.6/64.4% | 50.2/49.8% |
+| Materials Exhausted (Transport) | 4,919 | 3,606 | 1,191 | 927 | 35.6/64.4% | 48.9/51.1% |
 
 **Loaded Transport** is the camera-ready water load (full top-tier Blue IBCs,
-1,200 kg) carried in the *transport* configuration — panel swung in, cargo doors
-closed. It shares the Materials Exhausted footprint (same X/Yd, same 39.4/60.6
+1,600 kg) carried in the *transport* configuration — panel swung in, cargo doors
+closed. It shares the Materials Exhausted footprint (same X/Yd, same 35.6/64.4
 front/rear) but the water sits in the **top** tier, so its vertical CG is
-**Z=1,197mm — 272mm higher** than the exhausted state (925mm). It is therefore
+**Z=1,306mm — 379mm higher** than the exhausted state (927mm). It is therefore
 the **highest-CG transport case** and governs road-transport stability (tie-down
-and cornering), even though total mass and axle split are unchanged.
+and cornering), even though total mass and axle split are unchanged. Even here the
+static sideways tip threshold is **~42°** (½-width 1,181mm ÷ Z_cg 1,306mm), so the
+deliberate Blue-on-top layout stays comfortably stable.
 
 ---
 
@@ -158,7 +160,7 @@ and cornering), even though total mass and axle split are unchanged.
 ### 1 — Summary Comparison
 
 Three-state side-by-side comparison with CG positions and summary table.
-The dry state is nearly balanced; liquid states shift CG rearward by ~675mm.
+The dry state is nearly balanced; liquid states shift CG rearward by ~805mm.
 
 ![TBS-001 — Weight Analysis: Summary Comparison](assets/weight-analysis-sheet1.png)
 
@@ -175,7 +177,7 @@ is the densest zone.
 
 Weight distribution with full Blue IBCs (top tier) and hinged panel
 deployed to its operational position at the cargo door end (X=0–80).
-CG marker shows the loaded center of gravity at X=3,408, Yd=1,172.
+CG marker shows the loaded center of gravity at X=3,603, Yd=1,175.
 Quadrant weights show the rear-heavy bias from the IBC stack.
 
 ![TBS-001 — Weight Analysis: Camera Ready](assets/weight-analysis-sheet3.png)
@@ -185,16 +187,16 @@ Quadrant weights show the rear-heavy bias from the IBC stack.
 Water has migrated from top-tier Blue IBCs to bottom-tier Brown/Waste
 IBCs. The hinged panel is swung ~56° about the pivot to its transport position.
 Total weight is unchanged (closed water system). The vertical
-CG drops by 267mm (Z: 1,179 → 912mm) as water moves to bottom tier.
+CG drops by 379mm (Z: 1,306 → 927mm) as water moves to bottom tier.
 
 ![TBS-001 — Weight Analysis: Materials Exhausted](assets/weight-analysis-sheet4.png)
 
 ### 5 — Loaded Transport (Full Blue IBCs)
 
-The camera-ready water load (1,200 kg in the top-tier Blue IBCs) carried in
+The camera-ready water load (1,600 kg in the top-tier Blue IBCs) carried in
 transport configuration — panel swung in, cargo doors closed. Same
-plan footprint and 39.8/60.2 front/rear split as Materials Exhausted, but the
-water is in the **top** tier, raising the vertical CG to **Z=1,179mm** (+267mm
+plan footprint and 35.6/64.4 front/rear split as Materials Exhausted, but the
+water is in the **top** tier, raising the vertical CG to **Z=1,306mm** (+379mm
 vs the exhausted state). This is the worst-case transport vertical CG.
 
 ![TBS-001 — Weight Analysis: Loaded Transport](assets/weight-analysis-sheet5.png)
@@ -209,17 +211,17 @@ All four states are well within the ISO 24,000 kg maximum gross weight:
 
 | State | Total (kg) | Margin (kg) | Utilization |
 |-------|-----------|------------|-------------|
-| Dry | 3,250 | 20,750 | 13.5% |
-| Camera Ready | 4,450 | 19,550 | 18.5% |
-| Materials Exhausted | 4,450 | 19,550 | 18.5% |
-| Loaded Transport | 4,450 | 19,550 | 18.5% |
+| Dry | 3,319 | 20,681 | 13.8% |
+| Camera Ready | 4,919 | 19,081 | 20.5% |
+| Materials Exhausted | 4,919 | 19,081 | 20.5% |
+| Loaded Transport | 4,919 | 19,081 | 20.5% |
 
-The container operates at less than 20% of its rated capacity in all states.
+The container operates at about 20% of its rated capacity in all states.
 There is no structural concern from a gross weight perspective.
 
 ### 6.2 Left-Right Balance (Near/Far)
 
-The near/far split stays close to balanced in all states (48.6–50.4% near). The
+The near/far split stays close to balanced in all states (48.4–50.2% near). The
 transport states lean slightly far (52% far) because the swung panel + drum carry
 their mass toward the far/pivot side. This is by
 design: equipment on the pinhole wall (near side) is lightweight (electrical
@@ -230,20 +232,21 @@ the far side but is offset by the tilt-swing board on the near side.
 
 ### 6.3 Front-Rear Balance
 
-The dry/transport state has a front-biased split (54.2/45.8%), with CG at
-X=2,735mm. This front bias comes from the cargo doors (280 kg total) being
+The dry/transport state has a front-biased split (52.8/47.2%), with CG at
+X=2,798mm. This front bias comes from the cargo doors (280 kg total) being
 in their closed position at X≈−70mm, pulling the CG toward the cargo door
 end. The hinged panel is also swung ~56° about the pivot, keeping its mass
 in the front (door-end) half.
 
 When liquids are added and the panel and doors are deployed (camera ready),
-the CG shifts rearward to X=3,408mm (673mm past the dry CG). The doors
+the CG shifts rearward to X=3,603mm (805mm past the dry CG). The doors
 swing open flat against the side walls (X=0–1221mm), redistributing
-280 kg from X≈−70 to X≈610, while 1,200 kg of water loads in the IBC stack
-zone (X=4674–5893mm). This creates a 39.8/60.2% front/rear split.
+280 kg from X≈−70 to X≈610, while 1,600 kg of water loads in the IBC stack
+zone (X=4674–5893mm). This creates a 35.6/64.4% front/rear split — more
+rear-biased than the 600L design (the heavier 1000L totes sit at the sealed end).
 
 **Transport implication:** When loaded for transport (materials exhausted,
-doors closed), the container's CG is at 57.3% of the length from the cargo
+doors closed), the container's CG is at 61.2% of the length from the cargo
 door end. For trailer placement, the container
 should be positioned so the rear (sealed) end sits over or near the trailer
 axle(s) to balance the load.
@@ -252,17 +255,17 @@ axle(s) to balance the load.
 
 The most significant finding is the **vertical CG migration** between states:
 
-- **Camera Ready:** Z_cg = 1,197mm (1,200 kg of water in top-tier IBCs)
-- **Materials Exhausted:** Z_cg = 925mm (1,200 kg of water in bottom-tier IBCs)
-- **ΔZ = −272mm** (CG drops ~272mm during a session)
+- **Camera Ready:** Z_cg = 1,306mm (1,600 kg of water in top-tier IBCs)
+- **Materials Exhausted:** Z_cg = 927mm (1,600 kg of water in bottom-tier IBCs)
+- **ΔZ = −379mm** (CG drops ~379mm during a session)
 
 This is an inherent self-stabilizing feature of the 2×2 IBC stack design.
-The water system is closed — 1,200 kg of water is loaded into the Blue IBCs
+The water system is closed — 1,600 kg of water is loaded into the Blue IBCs
 and redistributed during processing. No water is added or lost; it simply
 migrates from top-tier Blue IBCs through the processing tray into bottom-tier
-Brown/Waste IBCs. Total mass remains constant at 4,450 kg throughout a
-session, but the vertical redistribution of 1,200 kg from top tier to
-bottom tier drops the center of gravity by 272mm, improving stability.
+Brown/Waste IBCs. Total mass remains constant at 4,919 kg throughout a
+session, but the vertical redistribution of 1,600 kg from top tier to
+bottom tier drops the center of gravity by 379mm, improving stability.
 
 ### 6.5 Walkway Weight Sensitivity
 
@@ -282,7 +285,7 @@ clearance are unchanged.
 1. [ISO 668:2020](https://www.iso.org/standard/76912.html) — Series 1 freight containers: Classification, dimensions and ratings
 2. [Hapag-Lloyd Container Specification](https://www.hapag-lloyd.com/en/products/fleet/container/20-foot-standard.html) — 20ft Standard Dry Container
 3. [McNICHOLS — Fiberglass Grating](https://www.mcnichols.com/fiberglass-grating) / [Grating Pacific — Molded FRP](https://gratingpacific.com/product/molded-fiberglass-grating/) — Molded GRP (fiberglass) grating, vinyl-ester, weight tables
-4. [Schutz Ecobulk MX 600L](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — IBC tote specifications
+4. [Schütz Ecobulk MX 1000L](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — 1000L caged composite IBC tote specifications (~65 kg tare; all four positions standardize on this size — a 600L caged tote does not exist)
 5. [Water System Report](water-system-report.md) — Processing tray weight (§4), IBC layout (§5)
 6. [Light Trap Selection](light-trap-selection.md) — Panel + drum weight (§7)
 

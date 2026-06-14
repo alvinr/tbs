@@ -44,7 +44,7 @@ from tbs_constants import (
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
     EQPANEL_X, EQPANEL_T, EQPANEL_Z_LO, EQPANEL_Z_HI,
     FSKID_X,
-    IBC_COL_X, IBC_W, IBC_D, IBC_H_STK, IBC_H_600,
+    IBC_COL_X, IBC_W, IBC_D, IBC_H_STK_1000, IBC_H_1000,
     BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y,
     PANEL_CORNER_T, PANEL_CENTER_T,
     PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W,
@@ -240,24 +240,24 @@ ax.text(PWR_PANEL_X + PWR_PANEL_W / 2, PP_CTR_H,
 # Near column: Blue #1 top + Brown bottom.  Far column: Blue #2 top + Waste bottom.
 
 # Far column (behind — dimmer): Waste bottom + Blue #2 top
-equip_rect(ax, IBC_COL_X, 0, IBC_W, IBC_H_600, C_WASTE_IBC, alpha=0.40, zorder=3)
-equip_rect(ax, IBC_COL_X, IBC_H_600, IBC_W, IBC_H_600, C_BLUE_IBC, alpha=0.40, zorder=3)
+equip_rect(ax, IBC_COL_X, 0, IBC_W, IBC_H_1000, C_WASTE_IBC, alpha=0.40, zorder=3)
+equip_rect(ax, IBC_COL_X, IBC_H_1000, IBC_W, IBC_H_1000, C_BLUE_IBC, alpha=0.40, zorder=3)
 
 # Near column (front): Brown bottom + Blue #1 top
-equip_rect(ax, IBC_COL_X, 0, IBC_W, IBC_H_600, C_BROWN_IBC, alpha=0.80, zorder=5)
-ax.text(IBC_COL_X + IBC_W/2, IBC_H_600/2,
+equip_rect(ax, IBC_COL_X, 0, IBC_W, IBC_H_1000, C_BROWN_IBC, alpha=0.80, zorder=5)
+ax.text(IBC_COL_X + IBC_W/2, IBC_H_1000/2,
         "IBC-3 Brown\n(bottom, front)",
         ha="center", va="center", fontsize=FS_SM - 1, color="#FFFFFF", zorder=6)
-equip_rect(ax, IBC_COL_X, IBC_H_600, IBC_W, IBC_H_600, C_BLUE_IBC, alpha=0.80, zorder=5)
-ax.text(IBC_COL_X + IBC_W/2, IBC_H_600 + IBC_H_600/2,
+equip_rect(ax, IBC_COL_X, IBC_H_1000, IBC_W, IBC_H_1000, C_BLUE_IBC, alpha=0.80, zorder=5)
+ax.text(IBC_COL_X + IBC_W/2, IBC_H_1000 + IBC_H_1000/2,
         "IBC-1 Blue\n(top, front)",
         ha="center", va="center", fontsize=FS_SM, color="#FFFFFF",
         fontweight="bold", zorder=6)
 # Stacking line
-ax.plot([IBC_COL_X, IBC_COL_X + IBC_W], [IBC_H_600, IBC_H_600],
+ax.plot([IBC_COL_X, IBC_COL_X + IBC_W], [IBC_H_1000, IBC_H_1000],
         color="#FFFFFF", lw=0.8, ls="--", alpha=0.7, zorder=7)
 
-leader(ax, IBC_COL_X + IBC_W/2, IBC_H_STK, 6000, 2750,
+leader(ax, IBC_COL_X + IBC_W/2, IBC_H_STK_1000, 6000, 2750,
        f"4× IBC 2×2 stack  X={IBC_COL_X}–{IBC_COL_X+IBC_W}mm\n"
        f"Near: Blue #1 top + Brown bottom\n"
        f"Far: Blue #2 top + Waste bottom (behind)",
@@ -593,23 +593,23 @@ ldr2(0, RAIL_OFF + DRUM_H_ELV * 0.3, -750, 900,
 
 # ── RIGHT END ZONE (appears on LEFT in this view) — 4× IBC 2×2 stack ────────
 # Near column (behind in this view): Brown bottom + Blue #1 top
-eq2(IBC_COL_X, 0, IBC_W, IBC_H_600, C_BROWN_IBC, alpha=0.40, zorder=4)
-eq2(IBC_COL_X, IBC_H_600, IBC_W, IBC_H_600, C_BLUE_IBC, alpha=0.40, zorder=4)
+eq2(IBC_COL_X, 0, IBC_W, IBC_H_1000, C_BROWN_IBC, alpha=0.40, zorder=4)
+eq2(IBC_COL_X, IBC_H_1000, IBC_W, IBC_H_1000, C_BLUE_IBC, alpha=0.40, zorder=4)
 
 # Far column (front in this view): Waste bottom + Blue #2 top
-eq2(IBC_COL_X, 0, IBC_W, IBC_H_600, C_WASTE_IBC, alpha=0.80, zorder=6)
-ax2.text(mx(IBC_COL_X + IBC_W/2), IBC_H_600/2,
+eq2(IBC_COL_X, 0, IBC_W, IBC_H_1000, C_WASTE_IBC, alpha=0.80, zorder=6)
+ax2.text(mx(IBC_COL_X + IBC_W/2), IBC_H_1000/2,
         "IBC-4 Waste\n(bottom, front)", ha="center", va="center",
         fontsize=FS_SM - 1, color="#FFFFFF", zorder=7)
-eq2(IBC_COL_X, IBC_H_600, IBC_W, IBC_H_600, C_BLUE_IBC, alpha=0.80, zorder=6)
-ax2.text(mx(IBC_COL_X + IBC_W/2), IBC_H_600 + IBC_H_600/2,
+eq2(IBC_COL_X, IBC_H_1000, IBC_W, IBC_H_1000, C_BLUE_IBC, alpha=0.80, zorder=6)
+ax2.text(mx(IBC_COL_X + IBC_W/2), IBC_H_1000 + IBC_H_1000/2,
         "IBC-2 Blue\n(top, front)", ha="center", va="center",
         fontsize=FS_SM, color="#FFFFFF", fontweight="bold", zorder=7)
 ax2.plot([mx(IBC_COL_X + IBC_W), mx(IBC_COL_X)],
-        [IBC_H_600, IBC_H_600],
+        [IBC_H_1000, IBC_H_1000],
         color="#FFFFFF", lw=0.8, ls="--", alpha=0.7, zorder=8)
 
-ldr2(IBC_COL_X + IBC_W/2 + 400, IBC_H_STK, C_LEN - 50, 2800,
+ldr2(IBC_COL_X + IBC_W/2 + 400, IBC_H_STK_1000, C_LEN - 50, 2800,
     f"4× IBC 2×2 stack  X={IBC_COL_X}–{IBC_COL_X+IBC_W}mm\n"
     f"(far end, left in this view)", ha="right", fs=FS_SM)
 
@@ -709,8 +709,8 @@ legend2 = [
     (C_CONE_L,   "Optical cone (shadow-free projection)"),
     (C_ALUM2,    "Film plane rail (floor & ceiling)"),
     (C_FILM_PLN, "Film plane carriage (symbolic)"),
-    (C_BLUE_IBC, "Blue IBC stack x2 (2×600L)"),
-    (C_BROWN_IBC,"Brown IBC x1 (600L)"),
+    (C_BLUE_IBC, "Blue IBC stack x2 (1000L, 1600L total)"),
+    (C_BROWN_IBC,"Brown IBC x1 (1000L)"),
     (C_LT_DRUM,  "Revolving light-trap drum"),
     (C_HINGE_PANEL,     "Hinged panel"),
     (C_FAN,      "Ventilation fan (IN / OUT)"),

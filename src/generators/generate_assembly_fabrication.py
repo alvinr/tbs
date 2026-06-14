@@ -43,7 +43,7 @@ from tbs_constants import (
     BA_X, BA_W, BA_H_LO, BA_H_HI,
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
     PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z,
-    IBC_COL_X, IBC_W, IBC_H_STK, IBC_H_600,
+    IBC_COL_X, IBC_W, IBC_H_STK_1000, IBC_H_1000,
     IBC_FAR_Y,
     PANEL_CORNER_T, PANEL_CENTER_T,
     PIVOT_X, PIVOT_YD, SWING_LOCK_DEG,
@@ -248,20 +248,20 @@ def sheet1():
 
     # ── RIGHT END ZONE — 4× IBC 2×2 stack ─────────────────────────────────────
     # Far column (behind — dimmer): Waste bottom + Blue #2 top
-    equip_blk(ax, IBC_COL_X, 0, IBC_W, IBC_H_600,
+    equip_blk(ax, IBC_COL_X, 0, IBC_W, IBC_H_1000,
               C_WASTE_IBC, alpha=0.40, zorder=3)
-    equip_blk(ax, IBC_COL_X, IBC_H_600, IBC_W, IBC_H_600,
+    equip_blk(ax, IBC_COL_X, IBC_H_1000, IBC_W, IBC_H_1000,
               C_BLUE_IBC, alpha=0.40, zorder=3)
     # Near column (front): Brown bottom + Blue #1 top
-    equip_blk(ax, IBC_COL_X, 0, IBC_W, IBC_H_600, C_BROWN_IBC, zorder=5)
-    equip_blk(ax, IBC_COL_X, IBC_H_600, IBC_W, IBC_H_600, C_BLUE_IBC, zorder=5)
+    equip_blk(ax, IBC_COL_X, 0, IBC_W, IBC_H_1000, C_BROWN_IBC, zorder=5)
+    equip_blk(ax, IBC_COL_X, IBC_H_1000, IBC_W, IBC_H_1000, C_BLUE_IBC, zorder=5)
     # Stacking interface line
-    ax.plot([IBC_COL_X, IBC_COL_X+IBC_W], [IBC_H_600, IBC_H_600],
+    ax.plot([IBC_COL_X, IBC_COL_X+IBC_W], [IBC_H_1000, IBC_H_1000],
             color="white", lw=0.8, ls="--", alpha=0.7, zorder=6)
-    ax.text(IBC_COL_X+IBC_W/2, IBC_H_600+IBC_H_600/2,
+    ax.text(IBC_COL_X+IBC_W/2, IBC_H_1000+IBC_H_1000/2,
             "IBC-1 BLUE\n(TOP, FRONT)",
             ha="center", va="center", fontsize=FS_SM-1.5, color="white", zorder=6)
-    ax.text(IBC_COL_X+IBC_W/2, IBC_H_600/2,
+    ax.text(IBC_COL_X+IBC_W/2, IBC_H_1000/2,
             "IBC-3 BROWN\n(BOTTOM, FRONT)",
             ha="center", va="center", fontsize=FS_SM-1.5, color="white", zorder=6)
 
@@ -295,7 +295,7 @@ def sheet1():
         (EVAP_DUCT_X,             EVAP_DUCT_Z,            "4"),  # Duct penetration
         (EP_X+EP_W/2,             (EP_H_LO+EP_H_HI)/2,   "5"),  # Electrical
         (DRUM_CX,                 RAIL_OFF+DRUM_H_ELV/2,  "6"),  # Drum + panel
-        (IBC_COL_X+IBC_W/2,      IBC_H_STK/2,            "7"),  # IBCs (4× 2×2 stack)
+        (IBC_COL_X+IBC_W/2,      IBC_H_STK_1000/2,            "7"),  # IBCs (4× 2×2 stack)
         (PUMP_X+PUMP_W/2,         (PUMP_H_LO+PUMP_H_HI)/2, "8"),  # Pump
         (-WALL_T/2, FAN_B_H,      "9"),  # Fan B intake (door panel, LOW)
         (C_LEN+WALL_T/2, FAN_A_H, "10"),  # Fan A exhaust (far end, HIGH)

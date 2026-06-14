@@ -232,19 +232,19 @@ def floor_plan():
     # ── RIGHT END ZONE — 4× IBC in 2×2 stack ────────────────────────────────
     # Near column (Yd=30–1046): Blue #1 on top, Brown on bottom
     equip_rect(ax, IBC_COL_X, BLUE_IBC_Y, IBC_W, IBC_D, C_BLUE_IBC,
-               f"IBC-1 BLUE\n600L (top)\nIBC-3 BROWN\n600L (bottom)\nYd={BLUE_IBC_Y}–{BLUE_IBC_Y+IBC_D}",
+               f"IBC-1 BLUE\n1000L (top, ~800L)\nIBC-3 BROWN\n1000L (bottom)\nYd={BLUE_IBC_Y}–{BLUE_IBC_Y+IBC_D}",
                zorder=6)
     ax.text(IBC_COL_X + IBC_W/2, BLUE_IBC_Y + IBC_D - 55,
-            "▲ 2020mm tall (2-high)", fontsize=5.5,
+            "▲ 2336mm tall (2-high)", fontsize=5.5,
             ha="center", va="bottom", **FONT, zorder=7)
 
     # Far column (Yd=1316–2332): Blue #2 on top, Waste on bottom — 270mm plumbing corridor between columns
     # Plan view sees top tier (Blue #2)
     equip_rect(ax, IBC_COL_X, IBC_FAR_Y, IBC_W, IBC_D, C_BLUE_IBC,
-               f"IBC-2 BLUE\n600L (top)\nIBC-4 WASTE\n600L (bottom)\nYd={IBC_FAR_Y}–{IBC_FAR_Y+IBC_D}",
+               f"IBC-2 BLUE\n1000L (top, ~800L)\nIBC-4 WASTE\n1000L (bottom)\nYd={IBC_FAR_Y}–{IBC_FAR_Y+IBC_D}",
                zorder=6)
     ax.text(IBC_COL_X + IBC_W/2, IBC_FAR_Y + IBC_D - 55,
-            "▲ 2020mm tall (2-high)", fontsize=5.5,
+            "▲ 2336mm tall (2-high)", fontsize=5.5,
             ha="center", va="bottom", **FONT, zorder=7)
 
     # ── Wall penetrations ─────────────────────────────────────────────────────

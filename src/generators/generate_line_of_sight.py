@@ -44,7 +44,7 @@ from tbs_constants import (
     BA_X, BA_W, BA_H_LO, BA_H_HI,
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI, PUMP_D,
     CORRIDOR_YD_NEAR,
-    IBC_COL_X, IBC_W, IBC_D, IBC_H_STK, IBC_H_600,
+    IBC_COL_X, IBC_W, IBC_D, IBC_H_STK_1000, IBC_H_1000,
     BLUE_IBC_Y, BROWN_IBC_Y,
     IBC_FAR_Y, WASTE_IBC_Y,
     DIAGRAMS_DIR, 
@@ -102,22 +102,22 @@ EQUIPMENT = [
     # RIGHT END ZONE — IBCs only, right-justified to end wall
     dict(name="Blue IBC #1 + Brown (near column)",
          x=IBC_COL_X, yd=BLUE_IBC_Y, w=IBC_W, d=IBC_D,
-         h_bot=0, h_top=IBC_H_STK,
+         h_bot=0, h_top=IBC_H_STK_1000,
          color=C_BLUE_IBC, zone="right"),
 
     dict(name="Brown IBC (bottom near)",
          x=IBC_COL_X, yd=BROWN_IBC_Y, w=IBC_W, d=IBC_D,
-         h_bot=0, h_top=IBC_H_600,
+         h_bot=0, h_top=IBC_H_1000,
          color=C_BROWN_IBC, zone="right"),
 
     dict(name="Waste IBC-4 (bottom far)",
          x=IBC_COL_X, yd=IBC_FAR_Y, w=IBC_W, d=IBC_D,
-         h_bot=0, h_top=IBC_H_600,
+         h_bot=0, h_top=IBC_H_1000,
          color=C_WASTE_IBC, zone="right"),
 
     dict(name="Blue IBC #2 (top far)",
          x=IBC_COL_X, yd=IBC_FAR_Y, w=IBC_W, d=IBC_D,
-         h_bot=IBC_H_600, h_top=IBC_H_STK,
+         h_bot=IBC_H_1000, h_top=IBC_H_STK_1000,
          color=C_BLUE_IBC, zone="right"),
 
     # OPTICAL ZONE — processing tray on floor

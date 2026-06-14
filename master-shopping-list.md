@@ -16,7 +16,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
 | 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,100 | $3,600 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $4,929 | $7,438 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $4,079 | $6,198 |
 | 6. Electrical — power, circuits, wiring | $1,785 | $1,890 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,450 | $2,100 |
 | 7a. Panel swing pivot (Ø89 pivot post + bearings + cage + wall stays + rail saddles) | $1,232 | $1,232 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$20,251** | **~$28,130** |
+| **TOTAL (base build + 50-print run)** | **~$19,401** | **~$26,890** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -127,7 +127,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 **Electric actuation subtotal: ~$827 (optional)**
 
 ### Wall-seat saddles (ICP-11 through ICP-14) — rev 11, replaces the brace cage
-*Each of the 8 film-plane rail ends anchors to the container with an IBC-style wall-seat saddle (back-plate + seat + gusset, dims reused from the IBC frame wall seats), through-bolted with a 4-bolt pattern to an exterior wall plate — the container shell carries the rigidity. Right rails permanently bolted; left rails thumb-screw drop-in (lift out for the drum swing).*
+*Each of the 8 film-plane rail ends anchors to the container with a wall-seat saddle (back-plate + seat + gusset), through-bolted with a 4-bolt pattern to an exterior wall plate — the container shell carries the rigidity. Right rails permanently bolted; left rails thumb-screw drop-in (lift out for the drum swing).*
 
 | Item | ICP # | Spec | Qty | Supplier A | Supplier B | Est. unit | Est. total |
 |------|-------|------|-----|-----------|-----------|-----------|------------|
@@ -160,24 +160,20 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 **Storage subtotal: ~$388–$698**
 
 ### IBC stacking frame
-*Source: `ibc-stacking-report.md` §3, §9.1. Welded 50×50×3mm RHS frame for the 2×2 IBC stack — platform beams simply supported wall-to-wall (corridor uprights + welded wall seat brackets), uprights anchored to the floor.*
+*Source: `ibc-stacking-report.md` §3, §9.1. Welded 50×50×3mm RHS **restraint-only** frame (single front portal) for the 2×2 direct-stack — the totes stack cage-on-cage, so there is no load-bearing platform; front retaining bars + Simpson-style wall joist hangers + D-ring lashing restrain them for transport.*
 
 | Item | Spec | Qty | Supplier | Est. unit | Total |
 |------|------|-----|----------|-----------|-------|
-| [Mild steel RHS 50×50×3mm, 6 m length](https://www.metalsupermarkets.com/product/mild-steel-square-tube-structural-welded/) | Uprights, beams, cross-members + mid-bay panel support frame (extended uprights, top rail, floor beam) (A500 Grade B) | 8 | [Metal Supermarkets SoCal](https://www.metalsupermarkets.com/) / [Online Metals](https://www.onlinemetals.com) | $30–$45 | $240–$360 |
-| [Steel plate 12mm, 150×150mm cut](https://www.onlinemetals.com/en/buy/carbon-steel) | Upright floor flange feet | 6 | Metal Supermarkets SoCal / Online Metals | $4–$8 | $25–$45 |
-| Steel plate 8mm (back-plates, seats, gussets) | 6 welded wall seat brackets (cut from ~0.3 m²) | 1 lot | Metal Supermarkets SoCal | $50–$80 | $50–$80 |
-| Steel flat bar 5mm (~8 m) | Anti-rotation lip on platform perimeter | 1 | Metal Supermarkets SoCal | $30–$50 | $30–$50 |
-| Closed-cell rubber mat, 12mm (1000×1200mm) | Anti-slip platform mats (one per column) | 2 | [McMaster-Carr](https://www.mcmaster.com/) / Amazon | $20–$30 | $40–$60 |
-| [Welded D-ring, 25mm, 1,100 kg WLL](https://www.mcmaster.com/3641T29) | Lashing points on 6mm mount plates | 8 | McMaster-Carr #3641T29 | $5–$8 | $40–$65 |
-| [Ratchet strap, 25mm, 1,100 kg WLL](https://www.amazon.com/s?k=25mm+ratchet+strap+1100kg) | Transport securing (2 per tier) | 4 | Amazon / Harbor Freight | $8–$13 | $30–$50 |
-| [M12×40 hex bolt, Grade 8.8 + nut/washer](https://www.mcmaster.com/91290A655) | Wall seat brackets, 4 each into wall ribs | 24 | McMaster-Carr / Fastenal | $1–$2 | $25–$45 |
-| [M12 wedge/sleeve floor anchor](https://www.mcmaster.com/concrete-anchors) | Upright flange feet, 4 each into container floor | 24 | McMaster-Carr / Home Depot | $2–$3 | $40–$70 |
-| Steel flat bar (X-bracing) | Bottom-tier racking resistance | 4 | Metal Supermarkets SoCal | $5–$9 | $20–$35 |
-| Access gate panel, 300mm steel | Removable drain-valve access, 4× M12 each | 2 | Local fab | $20–$30 | $40–$60 |
-| Welding / fabrication | ~26–36 hrs (incl. feet + seat brackets) | 1 | Local fab shop | $1,150–$1,650 | $1,150–$1,650 |
-| Primer + flat-black powder coat | Anti-corrosion finish | 1 | Local | $40–$60 | $40–$60 |
-**IBC stacking frame subtotal: ~$1,770–$2,630**
+| [Mild steel RHS 50×50×3mm, 6 m length](https://www.metalsupermarkets.com/product/mild-steel-square-tube-structural-welded/) | Front-portal uprights + front retaining bars + panel-mount rail (A500 Grade B) | 4 | [Metal Supermarkets SoCal](https://www.metalsupermarkets.com/) / [Online Metals](https://www.onlinemetals.com) | $30–$45 | $120–$180 |
+| [Steel plate 12mm, 150×150mm cut](https://www.onlinemetals.com/en/buy/carbon-steel) | Upright floor flange feet | 2 | Metal Supermarkets SoCal / Online Metals | $4–$8 | $10–$20 |
+| Steel folded plate 4mm | Simpson-style wall joist hangers | 4 | Metal Supermarkets SoCal / [Simpson Strong-Tie](https://www.strongtie.com/) | $7–$12 | $30–$50 |
+| [Welded D-ring, 25mm, 1,100 kg WLL](https://www.mcmaster.com/3641T29) | Lashing holders on the front bars, 6mm mount plates | 4 | McMaster-Carr #3641T29 | $5–$8 | $20–$35 |
+| [Ratchet strap, 25mm, 1,100 kg WLL](https://www.amazon.com/s?k=25mm+ratchet+strap+1100kg) | Transport securing, over each stack | 4 | Amazon / Harbor Freight | $8–$13 | $30–$50 |
+| [M12 wedge/sleeve floor anchor](https://www.mcmaster.com/concrete-anchors) | Upright flange feet, 4 each into container floor | 8 | McMaster-Carr / Home Depot | $2–$3 | $15–$30 |
+| [M12×40 hex bolt, Grade 8.8 + nut/washer](https://www.mcmaster.com/91290A655) | Wall hangers (2 each) + front-bar cleats | 12 | McMaster-Carr / Fastenal | $1–$2 | $12–$22 |
+| Welding / fabrication | ~14–20 hrs (single front portal — far less than the old load-bearing rack) | 1 | Local fab shop | $650–$950 | $650–$950 |
+| Primer + flat-black powder coat | Anti-corrosion finish | 1 | Local | $30–$50 | $30–$50 |
+**IBC stacking frame subtotal: ~$920–$1,390**
 
 ### Pumps
 | Item | Spec | Qty | Supplier | Est. unit | Total |

@@ -35,6 +35,7 @@ from tbs_constants import (
     PH_X, PH_H,
     RAIL_X_L, RAIL_X_R, RAIL_SPAN, RAIL_LEN,
     IBC_COL_X, IBC_W, IBC_D, IBC_H_600, IBC_H_STK,
+    IBC_H_1000, IBC_H_STK_1000, IBC_PALLET_H,
     BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y,
     PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D,
     PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM,
@@ -84,8 +85,12 @@ RHO_PP     = 905      # polypropylene sheet (light-trap drum skin, rev 9 / B2)
 GRATING_KG_PER_M2 = 11.0   # molded GRP ~11 kg/m² (was 26 for 15mm galvanized steel)
 
 # ── IBC empty weight ────────────────────────────────────────────────────────
-# Schutz Ecobulk MX 600L steel-cage IBC: ~55 kg tare.
-IBC_EMPTY_KG = 55.0
+# ibc-reconfig-v2: all four positions are 275-gal (≈1000 L) caged composite totes
+# (1219×1016×1168mm) — ~65 kg tare each (HDPE bottle + galvanized cage + steel pallet).
+IBC_EMPTY_KG = 65.0
+# Bottle fillable column: ≈1L per mm of height above the pallet base (a 1000L bottle
+# fills ~1000mm of the 1168mm tote above its 168mm pallet). Used to place water CG.
+IBC_BOTTLE_FILL_PER_L = 1.0   # mm of water column per liter (1000L → ~1000mm)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -333,27 +338,31 @@ def _swing_hardware_weight():
 
 
 def _ibc_stacking_frame_weight():
-    """Steel 50×50×3mm RHS frame for the 2×2 IBC stack (simple-span retrofit).
+    """Steel 50×50×3mm RHS RESTRAINT-ONLY frame for the direct-stacked 2×2 IBC
+    stack (ibc-reconfig-v2).
 
-    Base portal (uprights, beams, X-braces, lips, D-rings) ≈ 90 kg, PLUS the
-    structural-securing retrofit (ibc-stacking-report.md §3):
-      • 6 floor flange feet, 150×150×12mm  → ≈ 12.7 kg
-      • 6 welded wall seat brackets (8mm back-plate + 10mm seat + 8mm gusset)
-                                            → ≈ 23.0 kg
-      • 48× M12 anchor bolts (24 floor + 24 wall) → ≈ 4.8 kg
-    Total ≈ 130 kg.
+    The 1000L caged totes stack cage-on-cage (no room for a load-bearing deck —
+    ~52mm headroom), so the frame only RESTRAINS:
+      • full-height corridor uprights (6) + 2 front-bay uprights, ~2.30m, 50×50×3 RHS
+      • longitudinal ties (2 lines × 2 levels) along X
+      • front retaining bars (4: 2 columns × 2 heights) + short frame ties
+      • 8 floor flange feet, 150×150×12mm + ~40 M12 anchors
+      • 4 Simpson-style wall joist hangers (carry the front-bar wall ends)
+      • forward panel-mount frame (2 uprights + top rail + floor beam) — this frame
+        also carries the right walkway (replaces the old IBC-upright cantilever)
+    Total ≈ 170 kg.
     """
-    base_kg = 90.0
-    feet_kg = 6 * (0.150 * 0.150 * 0.012) * RHO_STEEL              # ≈ 12.7
-    seat_bracket_kg = 6 * (0.150 * 0.270 * 0.008                   # back-plate
-                           + 0.070 * 0.110 * 0.010                 # seat
-                           + 0.5 * 0.110 * 0.200 * 0.008) * RHO_STEEL  # gusset
-    anchors_kg = 48 * 0.10                                          # ≈ 4.8
-    # Panel support frame: mid-bay uprights extended 1010->2310mm (×2) + top
-    # rail + floor beam (each ~0.27m), 50x50x3 RHS at ~4.25 kg/m. ≈ 13 kg.
-    rhs_kg_per_m = 4.25
-    panel_frame_kg = (2 * 1.25 + 0.27 + 0.27) * rhs_kg_per_m       # ≈ 13.0
-    return base_kg + feet_kg + seat_bracket_kg + anchors_kg + panel_frame_kg
+    rhs = 4.25                                    # 50×50×3 RHS, kg/m
+    up_h = (IBC_H_STK_1000 - 40) / 1000.0         # 2.296 m full-height upright
+    uprights_kg = 8 * up_h * rhs                  # 6 corridor + 2 front
+    ties_kg = 4 * 1.28 * rhs                      # 2 lines × 2 levels, ~1.28m
+    front_bars_kg = 4 * 1.1 * rhs + 4 * 0.4 * rhs # 4 bars + short frame ties
+    feet_kg = 8 * (0.150 * 0.150 * 0.012) * RHO_STEEL
+    hangers_kg = 4 * 1.1                          # folded 4mm-plate joist hangers
+    anchors_kg = 40 * 0.10
+    panel_frame_kg = (2 * 2.30 + 0.27 + 0.27) * rhs
+    return (uprights_kg + ties_kg + front_bars_kg + feet_kg
+            + hangers_kg + anchors_kg + panel_frame_kg)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -511,60 +520,72 @@ def build_components():
                   400, 800, color=C_FAN,
                   calc_note="2× galvanized steel baffle ducts @ 3 kg"),
 
-        # ── IBC totes (empty) — Blue on top, Brown/Waste on bottom ──────
+        # ── IBC totes (empty) — Blue on top, Brown/Waste on bottom (v2: 1000L
+        #    caged composite, direct-stacked to 2336mm) ──────────────────
         Component("Blue IBC-1 (tote)", "equipment", IBC_EMPTY_KG,
                   IBC_COL_X, IBC_COL_X + IBC_W,
                   BLUE_IBC_Y, BLUE_IBC_Y + IBC_D,
-                  IBC_H_600, IBC_H_STK, color=C_BLUE_IBC,
-                  calc_note="600L steel-cage IBC tare (top tier)"),
+                  IBC_H_1000, IBC_H_STK_1000, color=C_BLUE_IBC,
+                  calc_note="1000L caged composite tare (top tier)"),
         Component("Blue IBC-2 (tote)", "equipment", IBC_EMPTY_KG,
                   IBC_COL_X, IBC_COL_X + IBC_W,
                   IBC_FAR_Y, IBC_FAR_Y + IBC_D,
-                  IBC_H_600, IBC_H_STK, color=C_BLUE_IBC,
-                  calc_note="600L steel-cage IBC tare (top tier)"),
+                  IBC_H_1000, IBC_H_STK_1000, color=C_BLUE_IBC,
+                  calc_note="1000L caged composite tare (top tier)"),
         Component("Brown IBC-3 (tote)", "equipment", IBC_EMPTY_KG,
                   IBC_COL_X, IBC_COL_X + IBC_W,
                   BROWN_IBC_Y, BROWN_IBC_Y + IBC_D,
-                  0, IBC_H_600, color=C_BROWN_IBC,
-                  calc_note="600L steel-cage IBC tare (bottom tier)"),
+                  0, IBC_H_1000, color=C_BROWN_IBC,
+                  calc_note="1000L caged composite tare (bottom tier)"),
         Component("Waste IBC-4 (tote)", "equipment", IBC_EMPTY_KG,
                   IBC_COL_X, IBC_COL_X + IBC_W,
                   WASTE_IBC_Y, WASTE_IBC_Y + IBC_D,
-                  0, IBC_H_600, color=C_WASTE_IBC,
-                  calc_note="600L steel-cage IBC tare (bottom tier)"),
-        Component("IBC stacking frame", "equipment",
+                  0, IBC_H_1000, color=C_WASTE_IBC,
+                  calc_note="1000L caged composite tare (bottom tier)"),
+        Component("IBC restraint frame", "equipment",
                   _ibc_stacking_frame_weight(),
                   IBC_COL_X, IBC_COL_X + IBC_W,
                   BLUE_IBC_Y, IBC_FAR_Y + IBC_D,
-                  IBC_H_600 - 50, IBC_H_600, color=C_STEEL,
-                  calc_note="50×50×3mm RHS + feet + wall seat brackets"),
+                  0, IBC_H_STK_1000 - 40, color=C_STEEL,
+                  calc_note="50×50×3mm RHS restraint frame: uprights + ties + "
+                            "feet + front bars + wall hangers + panel frame"),
 
         # ── Liquids — Camera Ready state (water in top-tier Blue IBCs) ───
-        Component("Blue IBC-1 water", "liquid", 600.0,
+        # v2: Blue holds 1600L TOTAL across the two top totes, by design neither
+        # full (~800L each). Water column sits in the lower ~800mm of the bottle
+        # (base = tote base + 168mm pallet) — this is the high-CG case.
+        Component("Blue IBC-1 water", "liquid", 800.0,
                   IBC_COL_X, IBC_COL_X + IBC_W,
                   BLUE_IBC_Y, BLUE_IBC_Y + IBC_D,
-                  IBC_H_600, IBC_H_STK, color=C_BLUE_IBC,
+                  IBC_H_1000 + IBC_PALLET_H,
+                  IBC_H_1000 + IBC_PALLET_H + 800 * IBC_BOTTLE_FILL_PER_L,
+                  color=C_BLUE_IBC,
                   states=("ready", "loaded_transport"),
-                  calc_note="600L clean wash water (top tier)"),
-        Component("Blue IBC-2 water", "liquid", 600.0,
+                  calc_note="800L clean wash water (top tier, 1600L Blue total)"),
+        Component("Blue IBC-2 water", "liquid", 800.0,
                   IBC_COL_X, IBC_COL_X + IBC_W,
                   IBC_FAR_Y, IBC_FAR_Y + IBC_D,
-                  IBC_H_600, IBC_H_STK, color=C_BLUE_IBC,
+                  IBC_H_1000 + IBC_PALLET_H,
+                  IBC_H_1000 + IBC_PALLET_H + 800 * IBC_BOTTLE_FILL_PER_L,
+                  color=C_BLUE_IBC,
                   states=("ready", "loaded_transport"),
-                  calc_note="600L clean wash water (top tier)"),
-        # ── Liquids — Materials Exhausted (water in bottom-tier IBCs) ────
-        Component("Brown IBC-3 water", "liquid", 600.0,
+                  calc_note="800L clean wash water (top tier, 1600L Blue total)"),
+        # ── Liquids — Materials Exhausted (the 1600L of Blue has been processed
+        #    down into the bottom-tier Brown (recycle) + Waste totes) ────
+        Component("Brown IBC-3 water", "liquid", 800.0,
                   IBC_COL_X, IBC_COL_X + IBC_W,
                   BROWN_IBC_Y, BROWN_IBC_Y + IBC_D,
-                  0, IBC_H_600, color=C_BROWN_IBC,
+                  IBC_PALLET_H, IBC_PALLET_H + 800 * IBC_BOTTLE_FILL_PER_L,
+                  color=C_BROWN_IBC,
                   states=("exhausted",),
-                  calc_note="600L recycled water (bottom tier)"),
-        Component("Waste IBC-4 water", "liquid", 600.0,
+                  calc_note="800L recycled water (bottom tier; 1600L recovered, split)"),
+        Component("Waste IBC-4 water", "liquid", 800.0,
                   IBC_COL_X, IBC_COL_X + IBC_W,
                   WASTE_IBC_Y, WASTE_IBC_Y + IBC_D,
-                  0, IBC_H_600, color=C_WASTE_IBC,
+                  IBC_PALLET_H, IBC_PALLET_H + 800 * IBC_BOTTLE_FILL_PER_L,
+                  color=C_WASTE_IBC,
                   states=("exhausted",),
-                  calc_note="600L waste water (bottom tier)"),
+                  calc_note="800L waste water (bottom tier; 1600L recovered, split)"),
         # Processing tray is empty in exhausted state — all water has been
         # processed and drained into Brown/Waste IBCs.
     ]

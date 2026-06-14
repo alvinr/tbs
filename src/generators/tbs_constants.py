@@ -472,7 +472,7 @@ IBC_WBKT_BOLT_N    = 4     # wall bolts per bracket
 # up to the panel top and closed into a rectangle (two corridor uprights + top
 # rail + floor-level beam) that the panel bolts to. Mirrors ibc_rack().
 PANEL_FRAME_X      = IBC_COL_X + IBC_W // 2 - IBC_FRAME_RHS // 2  # 5258 — middle corridor X-station (RHS -X edge)
-PANEL_FRAME_TOP_Z  = EQPANEL_Z_HI   # 2260 — extended uprights / top rail level
+PANEL_FRAME_TOP_Z  = EQPANEL_Z_HI   # 2310 — extended uprights / top rail level
 PANEL_FRAME_YD_N   = CORRIDOR_YD_NEAR  # 1046 — near corridor upright — reserved (alias; code uses CORRIDOR_YD_NEAR)
 PANEL_FRAME_YD_F   = CORRIDOR_YD_FAR   # 1316 — far corridor upright — reserved (alias; code uses CORRIDOR_YD_FAR)
 

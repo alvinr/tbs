@@ -225,10 +225,10 @@ thread).
 ### 7.3 Equipment Panel
 
 An 18mm marine plywood panel spans across the IBC plumbing corridor
-(Yd=1046–1316mm) at X=5240mm, where it butts the film-plane face of the
-mid-bay panel support frame (see [§3.2](#32-frame-specification)) and bolts to
-it. All pumps, filters, accumulator, and diverter valves mount on the
-film-plane face of this panel.
+(Yd=1046–1316mm) at X=4874mm — at the front (cargo-door) mouth of the corridor,
+where it bolts to the front-portal frame (see [§3.2](#32-frame-specification)).
+All pumps, filters, accumulator, and diverter valves mount on the cargo-door
+(-X) face of this panel.
 
 | Equipment | Specification |
 |-----------|--------------|

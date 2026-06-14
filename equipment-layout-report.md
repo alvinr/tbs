@@ -145,11 +145,12 @@ only restrains them for transport (front retaining bars + D-ring lashing).
 | Frame type | RESTRAINT-ONLY single **front portal** — the 1000L caged totes direct-stack cage-on-cage (no load-bearing deck), so the frame only restrains them |
 | Uprights | 2 full-height corridor uprights (Yd 1046/1266) at the IBC front (X≈4734) on 150×150×12mm floor flange feet (4× M12 each); define the 270mm plumbing corridor |
 | Front retaining bars | 4× 50×20×3 RHS at the IBC front (Z560 + Z1760), seated in the 25mm gap to the film rail — stop the totes sliding out the front; each bar's wall end drops into a Simpson-style joist hanger (×4) |
+| Wall attachment | each joist hanger is through-bolted (4× M12) to a 100×135×8mm **exterior** backing plate (×4, hex heads outside) that spreads the load into the thin corrugated side wall |
 | Lashing points | 25mm D-ring holders on the front bars (1,100kg WLL); ratchet straps pass over each stack and tie down to them |
 | Total stacked height | 2336mm (2× 1168mm direct-stack) — 52mm ceiling clearance |
 | Panel mount | the front portal also carries the (forward) wet-end equipment panel and the right-walkway cantilever arms |
 | Surface finish | Gray oxide primer + flat black powder coat (interior) |
-| Approx. weight | ~170kg (uprights + feet + front bars + hangers + panel mount) |
+| Approx. weight | ~178kg (uprights + feet + front bars + hangers + exterior wall plates + panel mount) |
 | Approx. cost | USD $500–$800 (local mild steel fabrication) |
 
 **Why 1000L caged composite (all four totes):**
@@ -173,8 +174,9 @@ Blue clean-supply totes on top, Brown + Waste on the bottom) is retained.
 |------|----------|-------|
 | 50×50×3mm RHS mild steel | Pacific Coast Steel, Santa Fe Springs CA | A500 Grade B; ~$4/linear foot |
 | D-ring lashing holders (×4) | McMaster-Carr #3641T29 | 1,100kg WLL per ring |
-| M12 bolts (wall hangers + front-bar cleats) | McMaster-Carr or local hardware | SS A2-70 |
-| Simpson-style wall joist hangers (×4) | Simpson Strong-Tie or local | folded 4mm plate, face-mount |
+| M12 bolts (wall-hanger through-bolts ×16 + front-bar cleats) | McMaster-Carr or local hardware | SS A2-70; M12×80 through-bolts for the exterior plates |
+| Simpson-style wall joist hangers (×4) | Simpson Strong-Tie or local | folded 4mm plate, through-bolted to exterior backing plate |
+| Exterior wall backing plates (×4) | Metal Supermarkets / local | 100×135×8mm steel, hex heads outside |
 
 ---
 

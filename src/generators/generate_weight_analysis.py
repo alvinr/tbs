@@ -347,10 +347,11 @@ def _ibc_stacking_frame_weight():
       • longitudinal ties (2 lines × 2 levels) along X
       • front retaining bars (4: 2 columns × 2 heights) + short frame ties
       • 8 floor flange feet, 150×150×12mm + ~40 M12 anchors
-      • 4 Simpson-style wall joist hangers (carry the front-bar wall ends)
+      • 4 Simpson-style wall joist hangers (carry the front-bar wall ends),
+        through-bolted to 4 exterior backing plates (100×135×8mm) + 16 M12 bolts
       • forward panel-mount frame (2 uprights + top rail + floor beam) — this frame
         also carries the right walkway (replaces the old IBC-upright cantilever)
-    Total ≈ 170 kg.
+    Total ≈ 175 kg.
     """
     rhs = 4.25                                    # 50×50×3 RHS, kg/m
     up_h = (IBC_H_STK_1000 - 40) / 1000.0         # 2.296 m full-height upright
@@ -359,10 +360,11 @@ def _ibc_stacking_frame_weight():
     front_bars_kg = 4 * 1.1 * rhs + 4 * 0.4 * rhs # 4 bars + short frame ties
     feet_kg = 8 * (0.150 * 0.150 * 0.012) * RHO_STEEL
     hangers_kg = 4 * 1.1                          # folded 4mm-plate joist hangers
-    anchors_kg = 40 * 0.10
+    ext_plates_kg = 4 * (0.100 * 0.135 * 0.008) * RHO_STEEL  # exterior wall backing plates
+    anchors_kg = (40 + 16) * 0.10                 # floor anchors + 16 M12 wall through-bolts
     panel_frame_kg = (2 * 2.30 + 0.27 + 0.27) * rhs
     return (uprights_kg + ties_kg + front_bars_kg + feet_kg
-            + hangers_kg + anchors_kg + panel_frame_kg)
+            + hangers_kg + ext_plates_kg + anchors_kg + panel_frame_kg)
 
 
 # ═══════════════════════════════════════════════════════════════════════════

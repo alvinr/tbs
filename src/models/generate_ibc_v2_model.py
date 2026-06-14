@@ -166,12 +166,26 @@ def ibc_totes():
 # ── Restraint frame (front bay also carries the right walkway) ────────────────
 def _wall_hanger(parts, y_wall, din, bz):
     """Simpson-style U-pocket joist hanger face-bolted to the side wall — the front
-    retaining bar's wall end drops into it."""
+    retaining bar's wall end drops into it — through-bolted to an EXTERIOR backing
+    plate (load-spreading, hex heads outside)."""
     ht, dep = 4, 70
     p_y = y_wall if din > 0 else y_wall - ht
     s_y = y_wall if din > 0 else y_wall - dep
     parts.append(ov.ruby_box("Wall Hanger Plate", FRONT_X - 8, p_y, bz - 30, S + 16, ht, S + 70, color=ov.C_STEEL))
     parts.append(ov.ruby_box("Wall Hanger Seat", FRONT_X - 4, s_y, bz - ht, S + 8, dep, ht, color=ov.C_STEEL))
+    # Exterior backing plate just outside the container wall + 4 M12 through-bolts.
+    ext_pt, ext_pw, ext_ph, c_bolt = 8, 100, 135, "#3A3A42"
+    ecx, ecz = FRONT_X - 8 + (S + 16) / 2, bz + S / 2
+    plate_y = (-WALL_T - ext_pt) if din > 0 else (C_WID + WALL_T)
+    bolt_cy = (-WALL_T - ext_pt) if din > 0 else (C_WID - 10)
+    parts.append(ov.ruby_box("IBC Wall Backing Plate (ext)",
+                             ecx - ext_pw / 2, plate_y, ecz - ext_ph / 2,
+                             ext_pw, ext_pt, ext_ph, color=ov.C_STEEL))
+    for dx in (-ext_pw / 2 + 18, ext_pw / 2 - 18):
+        for dz in (-ext_ph / 2 + 22, ext_ph / 2 - 22):
+            parts.append(ov.ruby_cylinder("IBC Wall Through-Bolt M12",
+                                          ecx + dx, bolt_cy, ecz + dz, 7, 58,
+                                          color=c_bolt, axis="y"))
 
 
 def ibc_frame():

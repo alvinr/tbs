@@ -7648,6 +7648,69 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # IBC Wall Backing Plate (ext)
+  grp = ents.add_group
+  grp.name = "IBC Wall Backing Plate (ext)"
+  face = grp.entities.add_face([4629.mm,-48.mm,517.5.mm], [4729.mm,-48.mm,517.5.mm], [4729.mm,-40.mm,517.5.mm], [4629.mm,-40.mm,517.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(135.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4647.mm,-48.mm,539.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4647.mm,-48.mm,630.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4711.mm,-48.mm,539.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4711.mm,-48.mm,630.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Wall Hanger Plate
   grp = ents.add_group
   grp.name = "Wall Hanger Plate"
@@ -7667,6 +7730,69 @@ end
   face.pushpull(4.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
   mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Backing Plate (ext)
+  grp = ents.add_group
+  grp.name = "IBC Wall Backing Plate (ext)"
+  face = grp.entities.add_face([4629.mm,-48.mm,1717.5.mm], [4729.mm,-48.mm,1717.5.mm], [4729.mm,-40.mm,1717.5.mm], [4629.mm,-40.mm,1717.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(135.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4647.mm,-48.mm,1739.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4647.mm,-48.mm,1830.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4711.mm,-48.mm,1739.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4711.mm,-48.mm,1830.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7692,6 +7818,69 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # IBC Wall Backing Plate (ext)
+  grp = ents.add_group
+  grp.name = "IBC Wall Backing Plate (ext)"
+  face = grp.entities.add_face([4629.mm,2402.mm,517.5.mm], [4729.mm,2402.mm,517.5.mm], [4729.mm,2410.mm,517.5.mm], [4629.mm,2410.mm,517.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(135.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4647.mm,2352.mm,539.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4647.mm,2352.mm,630.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4711.mm,2352.mm,539.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4711.mm,2352.mm,630.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Wall Hanger Plate
   grp = ents.add_group
   grp.name = "Wall Hanger Plate"
@@ -7711,6 +7900,69 @@ end
   face.pushpull(4.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
   mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Backing Plate (ext)
+  grp = ents.add_group
+  grp.name = "IBC Wall Backing Plate (ext)"
+  face = grp.entities.add_face([4629.mm,2402.mm,1717.5.mm], [4729.mm,2402.mm,1717.5.mm], [4729.mm,2410.mm,1717.5.mm], [4629.mm,2410.mm,1717.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(135.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4647.mm,2352.mm,1739.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4647.mm,2352.mm,1830.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4711.mm,2352.mm,1739.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4711.mm,2352.mm,1830.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -12476,12 +12728,12 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Pump → Filters
+  # P-01 → Spray Bar
   grp = ents.add_group
-  grp.name = "Pump → Filters"
+  grp.name = "P-01 → Spray Bar"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -670.mm)
-  circle = ge.add_circle([4824.mm,1181.mm,1370.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1286.mm)
+  circle = ge.add_circle([4814.mm,1109.mm,1370.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -12490,26 +12742,12 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Filters → Spray Trunk
+  # P-01 → Spray Bar elbow
   grp = ents.add_group
-  grp.name = "Filters → Spray Trunk"
+  grp.name = "P-01 → Spray Bar elbow"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -616.mm)
-  circle = ge.add_circle([4824.mm,1181.mm,700.mm], vec, 12.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
-  mat.color = Sketchup::Color.new(41, 121, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Filters → Spray Trunk elbow
-  grp = ents.add_group
-  grp.name = "Filters → Spray Trunk elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4800.mm,1181.mm,84.mm], [1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4824.mm,1181.mm,84.mm], [0.000000,0.000000,-1.000000], 12.mm, 16)
+  arc = ge.add_arc([4790.mm,1109.mm,84.mm], [1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4814.mm,1109.mm,84.mm], [0.000000,0.000000,-1.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
@@ -12517,12 +12755,12 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Filters → Spray Trunk
+  # P-01 → Spray Bar
   grp = ents.add_group
-  grp.name = "Filters → Spray Trunk"
+  grp.name = "P-01 → Spray Bar"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-127.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4800.mm,1181.mm,60.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(-117.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4790.mm,1109.mm,60.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -12531,12 +12769,12 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Filters → Spray Trunk elbow
+  # P-01 → Spray Bar elbow
   grp = ents.add_group
-  grp.name = "Filters → Spray Trunk elbow"
+  grp.name = "P-01 → Spray Bar elbow"
   ge = grp.entities
-  arc = ge.add_arc([4673.mm,1157.mm,60.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4673.mm,1181.mm,60.mm], [-1.000000,0.000000,0.000000], 12.mm, 16)
+  arc = ge.add_arc([4673.mm,1085.mm,60.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4673.mm,1109.mm,60.mm], [-1.000000,0.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
@@ -12544,12 +12782,12 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Filters → Spray Trunk
+  # P-01 → Spray Bar
   grp = ents.add_group
-  grp.name = "Filters → Spray Trunk"
+  grp.name = "P-01 → Spray Bar"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -1135.2.mm, 0.mm)
-  circle = ge.add_circle([4649.mm,1157.mm,60.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -1063.2.mm, 0.mm)
+  circle = ge.add_circle([4649.mm,1085.mm,60.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -12558,9 +12796,9 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Filters → Spray Trunk elbow
+  # P-01 → Spray Bar elbow
   grp = ents.add_group
-  grp.name = "Filters → Spray Trunk elbow"
+  grp.name = "P-01 → Spray Bar elbow"
   ge = grp.entities
   arc = ge.add_arc([4649.mm,21.8.mm,50.199999999999996.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 9.800000000000002.mm, 0.0, 1.570796, 8)
   circle = ge.add_circle([4649.mm,21.8.mm,60.mm], [0.000000,-1.000000,0.000000], 12.mm, 16)
@@ -12571,9 +12809,9 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Filters → Spray Trunk
+  # P-01 → Spray Bar
   grp = ents.add_group
-  grp.name = "Filters → Spray Trunk"
+  grp.name = "P-01 → Spray Bar"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -10.200000000000003.mm)
   circle = ge.add_circle([4649.mm,12.mm,50.2.mm], vec, 12.mm, 16)
@@ -12582,6 +12820,279 @@ end
   pf.pushpull(vec.length)
   mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
   mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 3W-DV-02 Diverter
+  grp = ents.add_group
+  grp.name = "3W-DV-02 Diverter"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -45.59999999999991.mm, 0.mm)
+  circle = ge.add_circle([4854.mm,1131.8.mm,1088.mm], vec, 16.200000000000003.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 3W-DV-02 Diverter
+  grp = ents.add_group
+  grp.name = "3W-DV-02 Diverter"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 22.799999999999955.mm)
+  circle = ge.add_circle([4854.mm,1109.mm,1088.mm], vec, 16.200000000000003.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-04 → DV-02
+  grp = ents.add_group
+  grp.name = "P-04 → DV-02"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -540.mm)
+  circle = ge.add_circle([4854.mm,1109.mm,1628.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-02 → IBC-3 side-entry
+  grp = ents.add_group
+  grp.name = "DV-02 → IBC-3 side-entry"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -213.mm, 0.mm)
+  circle = ge.add_circle([4854.mm,1109.mm,1088.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 Recycle Flange
+  grp = ents.add_group
+  grp.name = "IBC-3 Recycle Flange"
+  ge = grp.entities
+  circle = ge.add_circle([4854.mm,1037.mm,1088.mm], [0,1,0], 36.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(18.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 → Filters
+  grp = ents.add_group
+  grp.name = "P-02 → Filters"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-3.337337631720402.mm, -48.0576618967757.mm, 0.mm)
+  circle = ge.add_circle([4814.mm,1253.mm,1370.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 → Filters elbow
+  grp = ents.add_group
+  grp.name = "P-02 → Filters elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4810.66266236828.mm,1204.9423381032243.mm,1346.mm], [0.000000,0.000000,1.000000], [0.997597,-0.069278,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4810.66266236828.mm,1204.9423381032243.mm,1370.mm], [-0.069278,-0.997597,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 → Filters
+  grp = ents.add_group
+  grp.name = "P-02 → Filters"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1096.mm)
+  circle = ge.add_circle([4809.mm,1181.mm,1346.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 3W-DV-01 Diverter
+  grp = ents.add_group
+  grp.name = "3W-DV-01 Diverter"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 45.59999999999991.mm, 0.mm)
+  circle = ge.add_circle([4809.mm,1158.2.mm,2156.mm], vec, 16.200000000000003.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 3W-DV-01 Diverter
+  grp = ents.add_group
+  grp.name = "3W-DV-01 Diverter"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -22.800000000000182.mm)
+  circle = ge.add_circle([4809.mm,1181.mm,2156.mm], vec, 16.200000000000003.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filters → DV-01 → IBC-2 side-entry
+  grp = ents.add_group
+  grp.name = "Filters → DV-01 → IBC-2 side-entry"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 972.mm)
+  circle = ge.add_circle([4809.mm,1181.mm,1160.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Filter F1 (50µ)"] || model.materials.add("Filter F1 (50µ)")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filters → DV-01 → IBC-2 side-entry elbow
+  grp = ents.add_group
+  grp.name = "Filters → DV-01 → IBC-2 side-entry elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4809.mm,1205.mm,2132.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4809.mm,1181.mm,2132.mm], [0.000000,0.000000,1.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Filter F1 (50µ)"] || model.materials.add("Filter F1 (50µ)")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filters → DV-01 → IBC-2 side-entry
+  grp = ents.add_group
+  grp.name = "Filters → DV-01 → IBC-2 side-entry"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 261.mm, 0.mm)
+  circle = ge.add_circle([4809.mm,1205.mm,2156.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Filter F1 (50µ)"] || model.materials.add("Filter F1 (50µ)")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-2 Recycle Flange
+  grp = ents.add_group
+  grp.name = "IBC-2 Recycle Flange"
+  ge = grp.entities
+  circle = ge.add_circle([4809.mm,1307.mm,2156.mm], [0,1,0], 36.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(18.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-01 → IBC-4 reject
+  grp = ents.add_group
+  grp.name = "DV-01 → IBC-4 reject"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 171.mm, 0.mm)
+  circle = ge.add_circle([4809.mm,1181.mm,2156.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-01 → IBC-4 reject elbow
+  grp = ents.add_group
+  grp.name = "DV-01 → IBC-4 reject elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4809.mm,1352.mm,2132.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4809.mm,1352.mm,2156.mm], [0.000000,1.000000,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-01 → IBC-4 reject
+  grp = ents.add_group
+  grp.name = "DV-01 → IBC-4 reject"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1020.mm)
+  circle = ge.add_circle([4809.mm,1376.mm,2132.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-01 → IBC-4 reject elbow
+  grp = ents.add_group
+  grp.name = "DV-01 → IBC-4 reject elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4809.mm,1400.mm,1112.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4809.mm,1376.mm,1112.mm], [0.000000,0.000000,-1.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-01 → IBC-4 reject
+  grp = ents.add_group
+  grp.name = "DV-01 → IBC-4 reject"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 66.mm, 0.mm)
+  circle = ge.add_circle([4809.mm,1400.mm,1088.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-4 Reject Flange
+  grp = ents.add_group
+  grp.name = "IBC-4 Reject Flange"
+  ge = grp.entities
+  circle = ge.add_circle([4809.mm,1307.mm,1088.mm], [0,1,0], 36.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(18.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 

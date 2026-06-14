@@ -74,7 +74,7 @@ FRAME_PLATFORM_H  = 1060  # platform height (1010 + 50mm clearance plate)
 FRAME_PLATFORM_T  = FRAME_RHS  # platform beam depth = RHS size
 FRAME_LIP_H    = 40     # anti-rotation lip height above platform
 FRAME_LIP_T    = 5      # lip thickness (steel plate)
-FRAME_WEIGHT   = 170    # kg (restraint front portal: uprights + feet + front bars + hangers)
+FRAME_WEIGHT   = 178    # kg (restraint front portal: uprights + feet + front bars + hangers + exterior wall plates)
 
 # D-ring lashing
 DRING_SIZE     = 25     # D-ring strap width (mm)
@@ -405,7 +405,7 @@ def sheet2():
     # The bar's outer (wall) end drops into a U-pocket face-bolted to the side wall.
     # ══════════════════════════════════════════════════════════════════════════
     ax.text(sx(150), sy(270),
-            "DETAIL B — WALL JOIST HANGER\n(U-POCKET, FACE-BOLTED TO SIDE WALL)",
+            "DETAIL B — WALL JOIST HANGER\n(U-POCKET, THROUGH-BOLTED TO EXTERIOR BACKING PLATE)",
             ha="center", va="bottom", fontsize=8, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
 
@@ -433,18 +433,28 @@ def sheet2():
                             fc=C_STEEL, ec=C_OUT, lw=2.0, hatch="xx", zorder=8))
     ax.text(sx(wall_x + pocket_d / 2 + 6), sy(hb_y + FRAME_RHS / 2), "BAR END",
             ha="center", va="center", fontsize=5.5, color=C_OUT, **FONT, zorder=10)
-    # 2x M12 wall anchors through the back flange
+    # Exterior backing plate (load-spreading) on the OUTSIDE of the wall — the thin
+    # corrugated wall would pull through under the totes' transport thrust without it.
+    ext_face = wall_x - 25            # exterior wall face
+    ax.add_patch(Rectangle((sx(ext_face - 8), sy(hb_y - 30)), sx(8), sy(FRAME_RHS + 60),
+                            fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=7))
+    ax.text(sx(ext_face - 4), sy(hb_y + FRAME_RHS / 2), "EXT.\nPLATE", ha="center",
+            va="center", fontsize=4.3, color="white", fontweight="bold",
+            **FONT, rotation=90, zorder=12)
+    # M12 through-bolts: exterior plate → through wall → interior back flange (hex heads outside)
     for by in (hb_y + 6, hb_y + FRAME_RHS - 2):
-        ax.add_patch(Circle((sx(wall_x + 4), sy(by)), sy(4),
-                            fc=C_BOLT, ec=C_OUT, lw=0.6, zorder=10))
-    leader(ax, sx(wall_x + 4), sy(hb_y + FRAME_RHS), sx(wall_x + 70), sy(hb_y + 75),
-           "2x M12 WALL ANCHORS\n(face-mount flange)", color=C_FRAME, fs=6,
-           ha="left", va="bottom", arrow_style="-|>", font=FONT)
+        ax.plot([sx(ext_face - 8), sx(wall_x + 12)], [sy(by), sy(by)],
+                color=C_BOLT, lw=1.8, zorder=10)
+        ax.add_patch(Rectangle((sx(ext_face - 14), sy(by - 4)), sx(6), sy(8),
+                                fc=C_BOLT, ec=C_OUT, lw=0.6, zorder=11))   # hex head outside
+    leader(ax, sx(ext_face - 11), sy(hb_y - 8), sx(ext_face + 10), sy(hb_y - 55),
+           "EXTERIOR BACKING PLATE\n100x135x8 + 4x M12 THROUGH-BOLTS\n(hex heads outside, load-spread)",
+           color=C_FRAME, fs=6, ha="left", va="top", arrow_style="-|>", font=FONT)
     leader(ax, sx(wall_x + pocket_d), sy(hb_y - 4), sx(wall_x + pocket_d + 35), sy(hb_y - 45),
            "U-POCKET SEAT\n(bar drops in)", color=C_STEEL, fs=6, ha="left",
            va="top", arrow_style="-|>", font=FONT)
 
-    ax.add_patch(Rectangle((sx(40), sy(110)), sx(520), sy(170),
+    ax.add_patch(Rectangle((sx(10), sy(100)), sx(560), sy(185),
                             fc="none", ec=C_DIM, lw=0.8, ls="--", zorder=1))
 
     # ══════════════════════════════════════════════════════════════════════════
@@ -503,7 +513,7 @@ def sheet2():
         "FASTENING NOTES (RESTRAINT-ONLY FRAME):",
         "1. Direct-stack totes are restrained, not deck-supported. Active restraint + lash points are at the OPEN container front (side/back walls leave a 30mm gap — no hand/hook access).",
         "2. Detail A: each front retaining bar bolts to the front corridor upright via an angle cleat (2x M12); a weld-on lash eye takes the strap.",
-        "3. Detail B: the bar's wall end drops into a Simpson-style U-pocket joist hanger face-bolted to the side wall (2x M12).",
+        "3. Detail B: the bar's wall end drops into a Simpson-style U-pocket joist hanger, through-bolted (4x M12) to a 100x135x8 EXTERIOR backing plate (hex heads outside) that spreads the load into the thin corrugated wall.",
         "4. Detail C: 25mm poly ratchet straps (1100kg LC) pass over each stack and ratchet down to the front-bar lash eyes.",
         "5. Floor feet (150x150x12, 4x M12 each) anchor the corridor uprights to the slab — see Sheet 1.",
     ]

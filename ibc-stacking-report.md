@@ -104,10 +104,11 @@ mounts the (forward) wet-end equipment panel.
 | Front-portal uprights | 2 full-height (Z 0–2296mm) at the IBC front (X≈4734), Yd 1046/1266 |
 | Floor anchorage | 2 × 150 × 150 × 12mm flange-plate feet, 4 × M12 anchors each |
 | Front retaining bars | 4 × 50×20×3 RHS at the IBC front (Z560 + Z1760, seated in the 25mm gap to the film rail), wall → upright per column |
-| Wall joist hangers | 4 × Simpson-style U-pocket, face-bolted to the side walls (2 × M12 each), receive the front-bar wall ends |
+| Wall joist hangers | 4 × Simpson-style U-pocket receiving the front-bar wall ends, **through-bolted (4 × M12 each) to an exterior backing plate** |
+| Exterior backing plates | 4 × 100 × 135 × 8mm steel, on the **outside** of the container side walls (hex heads outside) — spread the totes' transport thrust into the thin corrugated wall so the bolts can't pull through |
 | D-ring lashing | holders on the front bars, 1,100 kg WLL |
 | Panel mount | the portal carries the forward wet-end panel + the right-walkway cantilever arms |
-| Frame weight | ~170 kg (uprights + feet + front bars + hangers + panel mount) |
+| Frame weight | ~178 kg (uprights + feet + front bars + hangers + exterior plates + panel mount) |
 | Joints | Welded (fillet weld throughout) |
 
 ### 3.3 Direct-Stack Junction
@@ -121,11 +122,14 @@ rated for a full upper tote.
 The frame carries **no vertical service load** (the totes stack on themselves), so there
 is no platform-beam bending case. The governing check is **transport restraint**: the
 front retaining bars + D-ring lashing must resist the totes' inertia under
-braking/cornering (loaded mass 4,919 kg, worst-case CG at Z=1,306mm — see the
+braking/cornering (loaded mass 4,924 kg, worst-case CG at Z=1,306mm — see the
 [weight-distribution report](weight-distribution-report.md)).
 
 - **Front retaining bars** (50×20×3 RHS) span wall→upright (~1,046mm) and take each tote's
   longitudinal (−X) thrust into the floor feet + wall hangers.
+- **Wall joist hangers** receive the bar wall ends and are **through-bolted (4 × M12) to a
+  100×135×8mm exterior backing plate** on the outside of each side wall — the plate spreads
+  the bolt load so the thin corrugated wall cannot pull through under the totes' thrust.
 - **D-ring lashing** (1,100 kg WLL each) over each stack provides vertical tie-down and
   supplements lateral restraint; the totes are otherwise wall-trapped.
 - **Floor feet** (150×150×12, 4 × M12 each) anchor the uprights against uplift and transfer

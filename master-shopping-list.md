@@ -16,7 +16,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
 | 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,100 | $3,600 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $4,079 | $6,198 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $4,114 | $6,263 |
 | 6. Electrical — power, circuits, wiring | $1,785 | $1,890 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,450 | $2,100 |
 | 7a. Panel swing pivot (Ø89 pivot post + bearings + cage + wall stays + rail saddles) | $1,232 | $1,232 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$19,401** | **~$26,890** |
+| **TOTAL (base build + 50-print run)** | **~$19,436** | **~$26,955** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -167,13 +167,15 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | [Mild steel RHS 50×50×3mm, 6 m length](https://www.metalsupermarkets.com/product/mild-steel-square-tube-structural-welded/) | Front-portal uprights + panel-mount rail (50×50×3) + front retaining bars (50×20×3) (A500 Grade B) | 4 | [Metal Supermarkets SoCal](https://www.metalsupermarkets.com/) / [Online Metals](https://www.onlinemetals.com) | $30–$45 | $120–$180 |
 | [Steel plate 12mm, 150×150mm cut](https://www.onlinemetals.com/en/buy/carbon-steel) | Upright floor flange feet | 2 | Metal Supermarkets SoCal / Online Metals | $4–$8 | $10–$20 |
 | Steel folded plate 4mm | Simpson-style wall joist hangers | 4 | Metal Supermarkets SoCal / [Simpson Strong-Tie](https://www.strongtie.com/) | $7–$12 | $30–$50 |
+| [Steel plate 8mm, 100×135mm cut](https://www.onlinemetals.com/en/buy/carbon-steel) | Exterior wall backing plates (load-spread, hex heads outside the container wall) | 4 | Metal Supermarkets SoCal / Online Metals | $4–$8 | $16–$32 |
 | [Welded D-ring, 25mm, 1,100 kg WLL](https://www.mcmaster.com/3641T29) | Lashing holders on the front bars, 6mm mount plates | 4 | McMaster-Carr #3641T29 | $5–$8 | $20–$35 |
 | [Ratchet strap, 25mm, 1,100 kg WLL](https://www.amazon.com/s?k=25mm+ratchet+strap+1100kg) | Transport securing, over each stack | 4 | Amazon / Harbor Freight | $8–$13 | $30–$50 |
 | [M12 wedge/sleeve floor anchor](https://www.mcmaster.com/concrete-anchors) | Upright flange feet, 4 each into container floor | 8 | McMaster-Carr / Home Depot | $2–$3 | $15–$30 |
-| [M12×40 hex bolt, Grade 8.8 + nut/washer](https://www.mcmaster.com/91290A655) | Wall hangers (2 each) + front-bar cleats | 12 | McMaster-Carr / Fastenal | $1–$2 | $12–$22 |
+| [M12×80 hex bolt, Grade 8.8 + washer + nut](https://www.mcmaster.com/91290A655) | Wall-hanger through-bolts to the exterior backing plates, 4 each × 4 hangers | 16 | McMaster-Carr / Fastenal | $1.50–$2.50 | $24–$40 |
+| [M12×40 hex bolt, Grade 8.8 + nut/washer](https://www.mcmaster.com/91290A655) | Front-bar-to-upright cleats | 8 | McMaster-Carr / Fastenal | $1–$2 | $8–$16 |
 | Welding / fabrication | ~14–20 hrs (single front portal — far less than the old load-bearing rack) | 1 | Local fab shop | $650–$950 | $650–$950 |
 | Primer + flat-black powder coat | Anti-corrosion finish | 1 | Local | $30–$50 | $30–$50 |
-**IBC stacking frame subtotal: ~$920–$1,390**
+**IBC stacking frame subtotal: ~$955–$1,455**
 
 ### Pumps
 | Item | Spec | Qty | Supplier | Est. unit | Total |

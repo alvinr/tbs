@@ -583,6 +583,69 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # IBC Wall Backing Plate (ext)
+  grp = ents.add_group
+  grp.name = "IBC Wall Backing Plate (ext)"
+  face = grp.entities.add_face([4649.mm,-48.mm,517.5.mm], [4749.mm,-48.mm,517.5.mm], [4749.mm,-40.mm,517.5.mm], [4649.mm,-40.mm,517.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(135.mm)
+  mat = model.materials["Front Portal Upright"] || model.materials.add("Front Portal Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4667.mm,-48.mm,539.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor M12"] || model.materials.add("Foot Anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4667.mm,-48.mm,630.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor M12"] || model.materials.add("Foot Anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4731.mm,-48.mm,539.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor M12"] || model.materials.add("Foot Anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4731.mm,-48.mm,630.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor M12"] || model.materials.add("Foot Anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Wall Hanger Plate
   grp = ents.add_group
   grp.name = "Wall Hanger Plate"
@@ -602,6 +665,69 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face.pushpull(4.mm)
   mat = model.materials["Front Portal Upright"] || model.materials.add("Front Portal Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Backing Plate (ext)
+  grp = ents.add_group
+  grp.name = "IBC Wall Backing Plate (ext)"
+  face = grp.entities.add_face([4649.mm,2402.mm,517.5.mm], [4749.mm,2402.mm,517.5.mm], [4749.mm,2410.mm,517.5.mm], [4649.mm,2410.mm,517.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(135.mm)
+  mat = model.materials["Front Portal Upright"] || model.materials.add("Front Portal Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4667.mm,2352.mm,539.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor M12"] || model.materials.add("Foot Anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4667.mm,2352.mm,630.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor M12"] || model.materials.add("Foot Anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4731.mm,2352.mm,539.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor M12"] || model.materials.add("Foot Anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4731.mm,2352.mm,630.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor M12"] || model.materials.add("Foot Anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -627,6 +753,69 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # IBC Wall Backing Plate (ext)
+  grp = ents.add_group
+  grp.name = "IBC Wall Backing Plate (ext)"
+  face = grp.entities.add_face([4649.mm,-48.mm,1717.5.mm], [4749.mm,-48.mm,1717.5.mm], [4749.mm,-40.mm,1717.5.mm], [4649.mm,-40.mm,1717.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(135.mm)
+  mat = model.materials["Front Portal Upright"] || model.materials.add("Front Portal Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4667.mm,-48.mm,1739.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor M12"] || model.materials.add("Foot Anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4667.mm,-48.mm,1830.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor M12"] || model.materials.add("Foot Anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4731.mm,-48.mm,1739.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor M12"] || model.materials.add("Foot Anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4731.mm,-48.mm,1830.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor M12"] || model.materials.add("Foot Anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Wall Hanger Plate
   grp = ents.add_group
   grp.name = "Wall Hanger Plate"
@@ -646,6 +835,69 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face.pushpull(4.mm)
   mat = model.materials["Front Portal Upright"] || model.materials.add("Front Portal Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Backing Plate (ext)
+  grp = ents.add_group
+  grp.name = "IBC Wall Backing Plate (ext)"
+  face = grp.entities.add_face([4649.mm,2402.mm,1717.5.mm], [4749.mm,2402.mm,1717.5.mm], [4749.mm,2410.mm,1717.5.mm], [4649.mm,2410.mm,1717.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(135.mm)
+  mat = model.materials["Front Portal Upright"] || model.materials.add("Front Portal Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4667.mm,2352.mm,1739.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor M12"] || model.materials.add("Foot Anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4667.mm,2352.mm,1830.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor M12"] || model.materials.add("Foot Anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4731.mm,2352.mm,1739.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor M12"] || model.materials.add("Foot Anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Wall Through-Bolt M12
+  grp = ents.add_group
+  grp.name = "IBC Wall Through-Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4731.mm,2352.mm,1830.5.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(58.mm)
+  mat = model.materials["Foot Anchor M12"] || model.materials.add("Foot Anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
   grp.material = mat
 

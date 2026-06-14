@@ -44,7 +44,7 @@ import matplotlib.patches as mpatches
 
 from tbs_constants import (
     C_LEN, C_WID, C_HGT,
-    IBC_COL_X, IBC_W, IBC_D, IBC_H_600, IBC_H_STK,
+    IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000,
     BLUE_IBC_Y, IBC_FAR_Y,
     IBC_PALLET_H, IBC_CAGE_TUBE_D, IBC_CAGE_RAIL_W,
     IBC_CAGE_INSET, IBC_BOTTLE_INSET, IBC_VALVE_Z,
@@ -87,17 +87,17 @@ CORRIDOR_W = FAR_COL_L - NEAR_COL_R   # 270mm
 POST_NEAR_YD = NEAR_COL_R             # 1046
 POST_FAR_YD  = FAR_COL_L - FRAME_RHS  # 1266
 
-# Heights
-PLATFORM_Z = IBC_H_600                # 1010mm
-TOP_Z      = IBC_H_STK + FRAME_RHS    # 2070mm
+# Heights (ibc-reconfig-v2: 1000L direct-stack, restraint-only frame)
+PLATFORM_Z = IBC_H_1000                # 1168 — direct-stack junction (cage-on-cage, no deck)
+STACK_Z    = IBC_H_STK_1000            # 2336 — stack top
+TOP_Z      = IBC_H_STK_1000 - 40       # 2296 — restraint frame top
 
-# Frame X positions (frame-local, 0 = front/cargo-door side)
-# Frame extends 65mm past IBC on cargo-door side, flush to end wall on back.
-# Three bays: front, mid, back uprights.
+# Frame X positions (frame-local, 0 = front/IBC face). ibc-reconfig-v2: a SINGLE
+# FRONT PORTAL (the deep mid/back stations of the old load-bearing rack are dropped).
 FX_FRONT = 0
-FX_MID   = FRAME_FOOTPRINT_D // 2     # 642mm
-FX_BACK  = FRAME_FOOTPRINT_D          # 1284mm
-FX_POSTS = [FX_FRONT, FX_MID, FX_BACK]
+FX_MID   = FRAME_FOOTPRINT_D // 2     # legacy alias (side/plan views)
+FX_BACK  = FRAME_FOOTPRINT_D          # legacy alias
+FX_POSTS = [FX_FRONT]
 
 # Anti-rotation lip
 LIP_H = 40    # height above platform
@@ -145,7 +145,7 @@ FOOT_BOLT_N  = IBC_FOOT_BOLT_N    # 4 per foot
 
 # ── IBC anatomy derived heights ─────────────────────────────────────────────
 # (base constants imported from tbs_constants.py)
-IBC_BOTTLE_TOP = IBC_H_600 - IBC_CAGE_RAIL_W    # bottle top (~985mm)
+IBC_BOTTLE_TOP = IBC_H_1000 - IBC_CAGE_RAIL_W    # bottle top (~985mm)
 IBC_BOTTLE_BASE = IBC_PALLET_H                   # bottle starts at pallet top
 
 # Ghost IBC colors
@@ -265,12 +265,12 @@ def _ghost_ibc_elev(ax, yd, z_base, width, sx, sy, *, label="", zo=2.5):
         ax.add_patch(Rectangle((sx(tube_yd - IBC_CAGE_TUBE_D / 2),
                                  sy(z_base + IBC_PALLET_H - 28)),
                                 sx(IBC_CAGE_TUBE_D),
-                                sy(IBC_H_600 - IBC_PALLET_H + 28),
+                                sy(IBC_H_1000 - IBC_PALLET_H + 28),
                                 fc=C_CAGE, ec=C_CAGE, lw=0.6, alpha=0.15,
                                 zorder=zo + 0.3))
 
     # Cage horizontal mid-rail (wire mesh represented by a single mid line)
-    mid_z = z_base + IBC_PALLET_H + (IBC_H_600 - IBC_PALLET_H) / 2
+    mid_z = z_base + IBC_PALLET_H + (IBC_H_1000 - IBC_PALLET_H) / 2
     ax.plot([sx(yd + ci), sx(yd + width - ci)],
             [sy(mid_z), sy(mid_z)],
             color=C_CAGE, lw=0.5, alpha=0.25, zorder=zo + 0.2)
@@ -285,7 +285,7 @@ def _ghost_ibc_elev(ax, yd, z_base, width, sx, sy, *, label="", zo=2.5):
 
     # Label
     if label:
-        ax.text(sx(yd + width / 2), sy(z_base + IBC_H_600 / 2), label,
+        ax.text(sx(yd + width / 2), sy(z_base + IBC_H_1000 / 2), label,
                 ha="center", va="center", fontsize=5.5, color=C_CAGE,
                 alpha=0.5, **FONT, zorder=zo + 0.5)
 
@@ -386,181 +386,46 @@ def sheet1():
             ha="center", va="bottom", fontsize=9, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
 
-    # ── Ghost IBC outlines (cage/pallet anatomy) ──────────────────────────────
-    # Bottom tier (Z=0)
-    plat_top = PLATFORM_Z + FRAME_RHS + MAT_T
+    # ── Ghost IBC outlines (cage/pallet anatomy) — v2 layout: Brown/Waste bottom,
+    #    Blue on top; DIRECT-STACK so the top tier sits at the junction (no deck). ──
+    plat_top = PLATFORM_Z                       # 1168 — top tier bears directly on the lower tote
     _ghost_ibc_elev(ax, BLUE_IBC_Y, 0, IBC_D, sx, sy,
-                    label="IBC-3\n(BOTTOM NEAR)")
+                    label="IBC-3\n(BROWN, BOT NEAR)")
     _ghost_ibc_elev_far(ax, IBC_FAR_Y, 0, IBC_D, sx, sy,
-                        label="IBC-4\n(BOTTOM FAR)")
-    # Top tier (on platform)
+                        label="IBC-4\n(WASTE, BOT FAR)")
+    # Top tier (direct-stack)
     _ghost_ibc_elev(ax, BLUE_IBC_Y, plat_top, IBC_D, sx, sy,
-                    label="IBC-1\n(TOP NEAR)")
+                    label="IBC-1\n(BLUE, TOP NEAR)")
     _ghost_ibc_elev_far(ax, IBC_FAR_Y, plat_top, IBC_D, sx, sy,
-                        label="IBC-2\n(TOP FAR)")
+                        label="IBC-2\n(BLUE, TOP FAR)")
 
-    # ── Base beams (Z=0, transverse — Yd direction) ─────────────────────────
-    # Near column base beam: from near wall bracket to corridor
-    _rhs_rect(ax, BLUE_IBC_Y - FRAME_RHS, 0,
-              NEAR_COL_R - BLUE_IBC_Y + 2 * FRAME_RHS, FRAME_RHS, sx, sy)
-    # Far column base beam: from corridor to far wall bracket
-    _rhs_rect(ax, POST_FAR_YD, 0,
-              IBC_FAR_Y + IBC_D - POST_FAR_YD + FRAME_RHS, FRAME_RHS, sx, sy)
-    # Corridor cross-beam at base
-    _rhs_rect(ax, NEAR_COL_R, 0,
-              FAR_COL_L - NEAR_COL_R, FRAME_RHS, sx, sy, alpha=0.5)
+    # ── Single FRONT PORTAL — two full-height corridor uprights (the deep
+    #    mid/back stations + load-bearing platform of the old rack are dropped). ──
+    for uyd in (POST_NEAR_YD, POST_FAR_YD):
+        _rhs_rect(ax, uyd, 0, FRAME_RHS, TOP_Z, sx, sy, alpha=0.85, hatch="///")
 
-    # ── Corridor uprights (front bay — shown as solid, cut section) ─────────
-    # Near corridor upright
-    _rhs_rect(ax, POST_NEAR_YD, 0, FRAME_RHS, TOP_Z, sx, sy,
-              alpha=0.8, hatch="///")
-    # Far corridor upright
-    _rhs_rect(ax, POST_FAR_YD, 0, FRAME_RHS, TOP_Z, sx, sy,
-              alpha=0.8, hatch="///")
-
-    # ── Floor flange feet under the two front-bay corridor uprights ──────────
-    for uyd in [POST_NEAR_YD, POST_FAR_YD]:
+    # Floor flange feet under the two uprights.
+    for uyd in (POST_NEAR_YD, POST_FAR_YD):
         _foot_elev(ax, uyd + FRAME_RHS / 2, sx, sy)
 
-    # ── Behind uprights (mid & back bays — shown lighter) ───────────────────
-    for uyd in [POST_NEAR_YD, POST_FAR_YD]:
-        for _ in range(2):  # mid and back bays
-            ax.add_patch(Rectangle((sx(uyd + 5), sy(5)),
-                                    sx(FRAME_RHS - 10), sy(TOP_Z - 10),
-                                    fc="none", ec=C_DIM, lw=0.5, ls="--",
-                                    zorder=4))
-
-    # ── Platform beams (Z=PLATFORM_Z, transverse) ───────────────────────────
-    # Near column platform beam
-    _rhs_rect(ax, BLUE_IBC_Y - FRAME_RHS, PLATFORM_Z,
-              NEAR_COL_R - BLUE_IBC_Y + 2 * FRAME_RHS, FRAME_RHS, sx, sy)
-    # Far column platform beam
-    _rhs_rect(ax, POST_FAR_YD, PLATFORM_Z,
-              IBC_FAR_Y + IBC_D - POST_FAR_YD + FRAME_RHS, FRAME_RHS, sx, sy)
-    # Corridor cross-beam at platform
-    _rhs_rect(ax, NEAR_COL_R, PLATFORM_Z,
-              FAR_COL_L - NEAR_COL_R, FRAME_RHS, sx, sy, alpha=0.5)
-
-    # ── Top beams (Z=TOP_Z - FRAME_RHS, transverse) ────────────────────────
-    top_beam_z = TOP_Z - FRAME_RHS
-    # Near column top beam
-    _rhs_rect(ax, BLUE_IBC_Y - FRAME_RHS, top_beam_z,
-              NEAR_COL_R - BLUE_IBC_Y + 2 * FRAME_RHS, FRAME_RHS, sx, sy)
-    # Far column top beam
-    _rhs_rect(ax, POST_FAR_YD, top_beam_z,
-              IBC_FAR_Y + IBC_D - POST_FAR_YD + FRAME_RHS, FRAME_RHS, sx, sy)
-    # Corridor cross-beam at top
-    _rhs_rect(ax, NEAR_COL_R, top_beam_z,
-              FAR_COL_L - NEAR_COL_R, FRAME_RHS, sx, sy, alpha=0.5)
-
-    # ── Anti-rotation lip on platform ───────────────────────────────────────
-    lip_z = PLATFORM_Z + FRAME_RHS
-    # Near column lip (corridor side)
-    _rhs_rect(ax, POST_NEAR_YD + FRAME_RHS - LIP_T, lip_z,
-              LIP_T, LIP_H, sx, sy, fc=C_WELD, alpha=0.5, lw=1.0)
-    # Near column lip (wall side)
-    _rhs_rect(ax, BLUE_IBC_Y - FRAME_RHS, lip_z,
-              LIP_T, LIP_H, sx, sy, fc=C_WELD, alpha=0.5, lw=1.0)
-    # Far column lip (corridor side)
-    _rhs_rect(ax, POST_FAR_YD, lip_z,
-              LIP_T, LIP_H, sx, sy, fc=C_WELD, alpha=0.5, lw=1.0)
-    # Far column lip (wall side)
-    _rhs_rect(ax, IBC_FAR_Y + IBC_D + FRAME_RHS - LIP_T, lip_z,
-              LIP_T, LIP_H, sx, sy, fc=C_WELD, alpha=0.5, lw=1.0)
-
-    # ── Rubber mat on platform ──────────────────────────────────────────────
-    mat_z = PLATFORM_Z + FRAME_RHS
-    # Near column mat
-    _rhs_rect(ax, BLUE_IBC_Y, mat_z,
-              IBC_D, MAT_T, sx, sy, fc=C_OUT, alpha=0.3, lw=0.8)
-    # Far column mat
-    _rhs_rect(ax, IBC_FAR_Y, mat_z,
-              IBC_D, MAT_T, sx, sy, fc=C_OUT, alpha=0.3, lw=0.8)
-
-    # ── Wall seat brackets (LOAD-BEARING) at platform-beam outer ends ────────
-    # Welded fabrication shown face-on: back-plate (bolted to wall) + horizontal
-    # seat the beam rests on + triangular gusset web. ~110 kg per bracket.
-    seat_top = PLATFORM_Z                      # beam bottom lands on the seat top
-    for wall_yd, dir_in in [(0, 1), (FRAME_FOOTPRINT_W, -1)]:
-        tip = wall_yd + dir_in * BRACKET_L     # seat outer tip
-        x0 = min(wall_yd, tip)
-        gz = seat_top - BRACKET_SEAT_T         # seat underside (gusset top edge)
-        # back-plate (edge-on thin vertical strip against the wall)
-        pz0 = gz - BRACKET_GUSSET_H
-        pl_x = wall_yd if dir_in > 0 else wall_yd - BRACKET_T
-        _rhs_rect(ax, pl_x, pz0, BRACKET_T, seat_top + 60 - pz0, sx, sy,
-                  fc=C_STEEL, alpha=0.6, lw=1.2)
-        # seat plate (horizontal — beam end rests on top)
-        _rhs_rect(ax, x0, gz, BRACKET_L, BRACKET_SEAT_T, sx, sy,
-                  fc=C_STEEL, alpha=0.6, lw=1.2)
-        # triangular gusset web (right triangle: seat proj × gusset depth)
-        tri = Polygon([
-            (sx(tip), sy(gz)),
-            (sx(wall_yd), sy(gz)),
-            (sx(wall_yd), sy(gz - BRACKET_GUSSET_H)),
-        ], closed=True, fc=C_STEEL, ec=C_OUT, lw=0.8, alpha=0.45, zorder=6)
-        ax.add_patch(tri)
-        # M12 wall bolts (4 total; the two X-columns overlap in this view)
-        bx = wall_yd + dir_in * 4
-        for bh in [seat_top + 25, pz0 + 30]:
-            ax.plot(sx(bx), sy(bh), 'x', color=C_OUT, ms=5, mew=1.5, zorder=8)
-
-    # ── Top lateral tie clips (restraint only) at top-beam outer ends ────────
-    for wall_yd, dir_in in [(0, 1), (FRAME_FOOTPRINT_W, -1)]:
-        clip_l = 60
-        x0 = min(wall_yd, wall_yd + dir_in * clip_l)
-        _rhs_rect(ax, x0, top_beam_z, clip_l, BRACKET_T, sx, sy,
-                  fc=C_STEEL, alpha=0.4, lw=1.0)
-        plx = wall_yd if dir_in > 0 else wall_yd - BRACKET_T
-        _rhs_rect(ax, plx, top_beam_z, BRACKET_T, FRAME_RHS, sx, sy,
-                  fc=C_STEEL, alpha=0.4, lw=1.0)
-        ax.plot(sx(wall_yd + dir_in * 4), sy(top_beam_z + FRAME_RHS / 2),
-                'x', color=C_OUT, ms=4, mew=1.2, zorder=8)
-
-    # ── D-ring lashing points ───────────────────────────────────────────────
-    dring_positions = []
-    for uyd in [POST_NEAR_YD, POST_FAR_YD + FRAME_RHS]:
-        for dz in [DRING_STANDOFF + DRING_SIZE,
-                    PLATFORM_Z + DRING_STANDOFF + DRING_SIZE]:
-            dring_positions.append((uyd, dz))
-
-    for dyd, dz in dring_positions:
-        # Mounting plate
-        plate_w = DRING_SIZE + 20
-        plate_h = DRING_SIZE + 20
-        _rhs_rect(ax, dyd - plate_w / 2, dz - plate_h / 2,
-                  plate_w, plate_h, sx, sy, fc=C_STEEL, alpha=0.4, lw=1.0)
-        # D-ring (half-circle + horizontal base)
-        r = DRING_SIZE / 2
-        theta = np.linspace(0, np.pi, 30)
-        ring_x = dyd + r * np.cos(theta)
-        ring_y = dz + r * np.sin(theta)
-        ax.plot([sx(v) for v in ring_x], [sy(v) for v in ring_y],
-                color=C_OUT, lw=2.0, zorder=8)
-        ax.plot([sx(dyd - r), sx(dyd + r)], [sy(dz), sy(dz)],
+    # Direct-stack junction line (totes bear cage-on-cage — no deck, 52mm headroom).
+    for col_l, col_r in [(BLUE_IBC_Y, NEAR_COL_R), (IBC_FAR_Y, IBC_FAR_Y + IBC_D)]:
+        ax.plot([sx(col_l), sx(col_r)], [sy(PLATFORM_Z)] * 2,
                 color=C_OUT, lw=2.0, zorder=8)
 
-    # ── Access gates (corridor face, H=0-300mm) ────────────────────────────
-    for gate_yd in [POST_NEAR_YD + FRAME_RHS, POST_FAR_YD]:
-        gate_w = -80 if gate_yd == POST_FAR_YD else 80
-        # Gate outline (dashed = removable)
-        ax.add_patch(Rectangle(
-            (sx(min(gate_yd, gate_yd + gate_w)), sy(FRAME_RHS)),
-            sx(abs(gate_w)), sy(GATE_H - FRAME_RHS),
-            fc="none", ec=C_DIM, lw=1.5, ls="--", zorder=7))
-        # Bolt positions
-        for bz in [FRAME_RHS + 30, GATE_H - 30]:
-            ax.plot(sx(gate_yd + gate_w / 2), sy(bz), 'o',
-                    color=C_OUT, ms=4, mfc="white", mew=1.2, zorder=8)
-
-    # Label access gates — route into the open far-column face (screen-left, on
-    # an inverted axis); the 170mm corridor is too narrow to hold the text
-    # without it landing on the upright hatch.
-    leader(ax, sx(POST_FAR_YD), sy(GATE_H / 2),
-           sx(FAR_COL_L + FRAME_RHS + 40), sy(GATE_H / 2),
-           "ACCESS GATE\n(REMOVABLE)",
-           color=C_DIM, fs=5.5, ha="right", va="center",
-           arrow_style="-|>", font=FONT)
+    # Front retaining bars (foreground, at the IBC front) + wall joist hangers +
+    # D-ring lashing holders. Two bars per column at the lower/upper tote mids.
+    for bz in (560, 1760):
+        for y0, y1 in ((0, NEAR_COL_R + FRAME_RHS), (FAR_COL_L - FRAME_RHS, C_WID)):
+            _rhs_rect(ax, y0, bz, y1 - y0, FRAME_RHS, sx, sy,
+                      fc=C_STEEL, alpha=0.55, lw=1.0, zo=9)
+        for wyd, din in ((0, 1), (C_WID, -1)):   # wall joist hangers (U-pocket)
+            _rhs_rect(ax, min(wyd, wyd + din * 60), bz - 8, 60, FRAME_RHS + 16, sx, sy,
+                      fc=C_STEEL, lw=1.0, zo=10)
+    for ydh in (520, C_WID - 520):               # D-ring lashing holders
+        for bz in (560, 1760):
+            ax.add_patch(Circle((sx(ydh), sy(bz + FRAME_RHS / 2)), sy(15),
+                                fc="none", ec=C_STEEL, lw=2.0, zorder=11))
 
     # ── Weld symbols at key joints ──────────────────────────────────────────
     # Platform to upright joints
@@ -600,33 +465,22 @@ def sheet1():
                f"{IBC_D}mm  IBC DEPTH",
                offset=sy(9), fs=5.5, font=FONT)
 
-    # Heights (right side)
+    # Heights (right side): direct-stack junction, 2x stack, ceiling clearance.
     dim_yd = IBC_FAR_Y + IBC_D + FRAME_RHS + 80
     draw_dim_v(ax, sx(dim_yd), sy(0), sy(PLATFORM_Z),
-               f"{PLATFORM_Z}mm BOTTOM TIER",
+               f"{PLATFORM_Z}mm JUNCTION",
                offset=sx(32), fs=5.5, right=True, font=FONT)
-    draw_dim_v(ax, sx(dim_yd + 60), sy(0), sy(PLATFORM_Z + FRAME_RHS),
-               f"{PLATFORM_Z + FRAME_RHS}mm PLATFORM TOP",
+    draw_dim_v(ax, sx(dim_yd + 60), sy(0), sy(STACK_Z),
+               f"{STACK_Z}mm 2x STACK",
                offset=sx(32), fs=5.5, right=True, font=FONT)
-    draw_dim_v(ax, sx(dim_yd + 120), sy(0), sy(TOP_Z),
-               f"{TOP_Z}mm FRAME TOP",
+    draw_dim_v(ax, sx(dim_yd + 120), sy(STACK_Z), sy(C_HGT),
+               f"{C_HGT - STACK_Z}mm CLEARANCE",
                offset=sx(32), fs=5.5, right=True, font=FONT)
 
     # RHS member size
     draw_dim_h(ax, sx(POST_NEAR_YD), sx(POST_NEAR_YD + FRAME_RHS),
                sy(TOP_Z + 60),
                f"{FRAME_RHS}mm", offset=sy(32), fs=5.5, font=FONT)
-
-    # Gate height
-    draw_dim_v(ax, sx(BLUE_IBC_Y - FRAME_RHS - 30), sy(0), sy(GATE_H),
-               f"{GATE_H}mm GATE",
-               offset=sx(32), fs=5.5, font=FONT)
-
-    # Lip height
-    draw_dim_v(ax, sx(POST_NEAR_YD - 30), sy(PLATFORM_Z + FRAME_RHS),
-               sy(PLATFORM_Z + FRAME_RHS + LIP_H),
-               f"{LIP_H}mm LIP",
-               offset=sx(32), fs=5.5, font=FONT)
 
     # IBC anatomy dimensions (left side of near column)
     anat_yd = BLUE_IBC_Y - FRAME_RHS - 90
@@ -636,7 +490,7 @@ def sheet1():
     draw_dim_v(ax, sx(anat_yd), sy(IBC_PALLET_H), sy(IBC_BOTTLE_TOP),
                f"{IBC_BOTTLE_TOP - IBC_PALLET_H}mm BOTTLE",
                offset=sx(32), fs=5, font=FONT)
-    draw_dim_v(ax, sx(anat_yd + 40), sy(IBC_BOTTLE_TOP), sy(IBC_H_600),
+    draw_dim_v(ax, sx(anat_yd + 40), sy(IBC_BOTTLE_TOP), sy(IBC_H_1000),
                f"{IBC_CAGE_RAIL_W}mm RAIL",
                offset=sx(42), fs=5, font=FONT)
     # Valve height
@@ -644,59 +498,29 @@ def sheet1():
                f"{IBC_VALVE_Z}mm VALVE CL",
                offset=sx(32), fs=5, font=FONT)
 
-    # ── Member labels ───────────────────────────────────────────────────────
-    # Inverted x-axis (Yd grows screen-LEFT): nearest open pocket is the near-
-    # column IBC face just right of the post, so anchor the text ~one line off the
-    # post edge (short leader, rule 67) reading away from the hatch (rule 65).
-    leader(ax, sx(NEAR_COL_R + FRAME_RHS / 2), sy(TOP_Z * 0.66),
-           sx(NEAR_COL_R - 70), sy(TOP_Z * 0.66 + 30),
-           "CORRIDOR UPRIGHT\n50×50×3 RHS\n(×6 TOTAL, 3 PER SIDE)",
+    # ── Member labels (restraint frame — lighter callouts) ──────────────────
+    leader(ax, sx(NEAR_COL_R + FRAME_RHS / 2), sy(TOP_Z * 0.7),
+           sx(NEAR_COL_R - 70), sy(TOP_Z * 0.7 + 30),
+           "FRONT PORTAL UPRIGHT\n50×50×3 RHS (×2,\nfull height, single station)",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
-           arrow_style="-|>", font=FONT)
-
-    # Nearest pocket is the open bottom-tier face directly under the beam — drop
-    # the text straight down (rule 67) instead of reaching to the right margin.
-    leader(ax, sx(BLUE_IBC_Y + IBC_D / 2), sy(PLATFORM_Z + FRAME_RHS / 2),
-           sx(BLUE_IBC_Y + IBC_D / 2), sy(PLATFORM_Z - 105),
-           "PLATFORM BEAM\n50×50×3 RHS\n(×6, 3 PER COLUMN)",
-           color=C_OUT, fs=5.5, ha="center", va="top",
-           arrow_style="-|>", font=FONT)
-
-    # (kept at +200: pulling it lower collides with the CAGE TOP RAIL callout
-    # just below — this edge bracket's nearest non-colliding pocket is here.)
-    leader(ax, sx(0), sy(PLATFORM_Z - BRACKET_SEAT_T / 2),
-           sx(-100), sy(PLATFORM_Z + 200),
-           "WALL SEAT BRACKET (LOAD-BEARING)\n8mm BACK-PLATE + SEAT + GUSSET\n4× M12 TO WALL  (×6 BRACKETS)",
-           color=C_OUT, fs=5.5, ha="right", va="bottom",
            arrow_style="-|>", font=FONT)
 
     leader(ax, sx(POST_NEAR_YD - FRAME_RHS * 0.3), sy(FOOT_PLATE_T / 2),
            sx(POST_NEAR_YD - 220), sy(140),
-           "FLOOR FLANGE FOOT\n150×150×12 PLATE\n4× M12 ANCHORS\n(×6, UNDER EACH UPRIGHT)",
+           "FLOOR FLANGE FOOT\n150×150×12, 4× M12\n(×2, under each upright)",
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
-    # Nearest pocket is the near face just above the platform beam — short leader
-    # (rule 67), stacked below the CORRIDOR UPRIGHT callout so the two don't touch.
-    leader(ax, sx(POST_NEAR_YD + FRAME_RHS - LIP_T / 2),
-           sy(PLATFORM_Z + FRAME_RHS + LIP_H / 2),
-           sx(NEAR_COL_R - 70), sy(PLATFORM_Z + FRAME_RHS + LIP_H + 100),
-           "ANTI-ROTATION LIP\n5mm PLATE × 40mm HIGH\nFILLET WELDED TO PLATFORM",
+    leader(ax, sx(NEAR_COL_R + FRAME_RHS), sy(1760 + FRAME_RHS / 2),
+           sx(NEAR_COL_R - 70), sy(1900),
+           "FRONT RETAINING BAR (×4)\n50×50×3 RHS at IBC front,\nZ560 + Z1760 — slide-stop\n+ D-ring lash points",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
 
-    # Keep the text fully screen-right of the near upright (Yd < 1046) so it sits
-    # on the open near-column face instead of straddling both posts (rule 65).
-    leader(ax, sx(POST_NEAR_YD), sy(DRING_STANDOFF + DRING_SIZE),
-           sx(POST_NEAR_YD - 90), sy(DRING_STANDOFF + DRING_SIZE + 100),
-           "D-RING LASHING\n25mm, 1,100kg WLL\n6mm PLATE, WELDED\n(×8 TOTAL, 4 PER TIER)",
-           color=C_OUT, fs=5.5, ha="left", va="bottom",
-           arrow_style="-|>", font=FONT)
-
-    leader(ax, sx(NEAR_COL_R + CORRIDOR_W / 2), sy(FRAME_RHS / 2),
-           sx(NEAR_COL_R + CORRIDOR_W / 2), sy(-180),
-           f"CORRIDOR CROSS-BEAM\n50×50×3 RHS\n(×9, 3 PER LEVEL)",
-           color=C_OUT, fs=5.5, ha="center", va="top",
+    leader(ax, sx(30), sy(1760 + FRAME_RHS / 2),
+           sx(330), sy(1500),
+           "WALL JOIST HANGER (×4)\nSimpson U-pocket,\nface-bolted to side wall",
+           color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
     # ── IBC anatomy labels ──────────────────────────────────────────────────
@@ -714,8 +538,8 @@ def sheet1():
            color=C_CAGE, fs=5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
 
-    leader(ax, sx(BLUE_IBC_Y + IBC_CAGE_INSET), sy(IBC_H_600 - 50),
-           sx(BLUE_IBC_Y + 75), sy(IBC_H_600 + 100),
+    leader(ax, sx(BLUE_IBC_Y + IBC_CAGE_INSET), sy(IBC_H_1000 - 50),
+           sx(BLUE_IBC_Y + 75), sy(IBC_H_1000 + 100),
            f"CAGE TOP RAIL\n{IBC_CAGE_TUBE_D}mm Ø TUBE\nLASHING STRAP BEARS HERE",
            color=C_CAGE, fs=5, ha="right", va="bottom",
            arrow_style="-|>", font=FONT)
@@ -724,34 +548,23 @@ def sheet1():
            sy(plat_top + IBC_PALLET_H / 2),
            sx(IBC_FAR_Y + IBC_D * 0.5),
            sy(plat_top + IBC_PALLET_H / 2 + 140),
-           "UPPER IBC PALLET\nBEARS ON PLATFORM\n+ 12mm RUBBER MAT",
+           "UPPER TOTE BEARS DIRECTLY\nON THE LOWER TOTE CAGE\n(direct stack, no deck)",
            color=C_PALLET, fs=5, ha="center", va="bottom",
-           arrow_style="-|>", font=FONT)
-
-    leader(ax, sx(POST_NEAR_YD + FRAME_RHS - LIP_T / 2),
-           sy(plat_top + 20),
-           sx(POST_NEAR_YD + 80), sy(plat_top - 70),
-           "LIP RETAINS\nPALLET PERIMETER",
-           color=C_WELD, fs=5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
     # ── Material note ───────────────────────────────────────────────────────
     notes = [
-        "MATERIAL & FABRICATION NOTES:",
-        f"1. All RHS members: 50×50×3mm mild steel, A500 Grade B.",
-        f"2. All joints fillet welded (5mm leg), continuous. Grind flush where noted.",
-        f"3. LOAD PATH: upper-tier platform beams are SIMPLY SUPPORTED (propped at corridor uprights AND wall seat brackets). Not cantilevered.",
-        f"4. Wall seat brackets (load-bearing, ×6): 8mm back-plate (4× M12 to wall ribs) + 10mm seat (beam end rests on it) + 8mm triangular gusset web, all fillet welded.",
-        f"5. Floor flange feet (×6): 150×150×12mm plate fillet welded to each upright base; 4× M12 anchors into container floor (uplift + lateral restraint).",
-        f"6. Anti-rotation lip: 5mm × 40mm flat plate, fillet welded to platform beam top face. Retains IBC pallet perimeter.",
-        f"7. D-ring mounting: 6mm plate fillet welded to upright face. D-ring 25mm, WLL 1,100 kg (McMaster #3641T29).",
-        f"8. Access gates: 300mm × 916mm clear, M12 bolts (×4 per gate). Two gates — one per column, corridor face.",
-        f"9. Surface finish: gray oxide primer + flat black powder coat.",
-        f"10. Anti-slip rubber mat: 12mm thick, 1016 × 1219mm (one per column on platform).",
-        f"11. IBC anatomy: US 48\"×40\" composite tote — {IBC_PALLET_H}mm pallet base + HDPE bottle + galvanized wire cage.",
-        f"12. Cage top rail ({IBC_CAGE_TUBE_D}mm Ø tube) is highest point. Lashing straps bear on cage rail, hook to D-rings.",
-        f"13. IBC valve face (DN50, S60×6) points toward corridor. Valve CL at Z={IBC_VALVE_Z}mm above IBC base.",
-        f"14. Total frame weight: ~130 kg (incl. feet + seat brackets).",
+        "MATERIAL & FABRICATION NOTES (RESTRAINT-ONLY FRAME):",
+        f"1. All RHS members: 50×50×3mm mild steel, A500 Grade B. Joints fillet welded (5mm leg), continuous.",
+        f"2. RESTRAINT, not load-bearing: the 1000L caged totes DIRECT-STACK cage-on-cage (52mm headroom — no deck between tiers). A SINGLE FRONT PORTAL (×2 full-height uprights) at the IBC front restrains them; the deep mid/back corridor stations are dropped.",
+        f"3. Floor flange feet (×2): 150×150×12mm plate fillet welded to each upright base; 4× M12 anchors into the floor (uplift + lateral restraint).",
+        f"4. Front retaining bars (×4, Z560 + Z1760): stop the totes sliding out the front; each bar's wall end drops into a Simpson-style wall joist hanger (×4).",
+        f"5. D-ring lashing holders on the front bars (1,100 kg WLL); ratchet straps over each stack tie down to them.",
+        f"6. Surface finish: gray oxide primer + flat black powder coat.",
+        f"7. IBC anatomy: US 48\"×40\" caged composite tote (1000L, 1168mm) — {IBC_PALLET_H}mm pallet base + HDPE bottle + galvanized wire cage. v2 layout: Brown/Waste bottom, Blue on top.",
+        f"8. Cage top rail ({IBC_CAGE_TUBE_D}mm Ø tube) is the highest point; lashing straps bear on it.",
+        f"9. IBC valve face (DN50, S60×6) points toward the corridor. Valve CL at Z={IBC_VALVE_Z}mm above each tote base.",
+        f"10. Total frame weight: ~170 kg (incl. feet + front bars + hangers + panel-mount).",
     ]
     draw_notes(ax, notes, sx(2500), sy(TOP_Z + 600), spacing=sy(23),
                fs=7, font=FONT, width=sx(1800))
@@ -827,77 +640,14 @@ def sheet2():
     for fx in FX_POSTS:
         _foot_elev(ax, fx + FRAME_RHS / 2, sx, sy)
 
-    # ── Equipment-panel support frame: the MIDDLE bay corridor uprights extend
-    # up to the panel top to carry the wet-end panel (ibc-stacking-report §3.6). ──
-    _rhs_rect(ax, FX_MID, TOP_Z, FRAME_RHS, PANEL_FRAME_TOP_Z - TOP_Z, sx, sy,
-              fc=C_FRAME, alpha=0.9)
-    _rhs_rect(ax, FX_MID - 10, PANEL_FRAME_TOP_Z - FRAME_RHS, FRAME_RHS + 20,
-              FRAME_RHS, sx, sy, fc=C_FRAME, alpha=0.6)   # top rail (end-on)
-    # Short leader into the open sky just right of the extended upright (rule 67).
-    leader(ax, sx(FX_MID + FRAME_RHS), sy(PANEL_FRAME_TOP_Z - 120),
-           sx(FX_MID + 110), sy(PANEL_FRAME_TOP_Z - 90),
-           f"PANEL SUPPORT FRAME\nMID-BAY UPRIGHTS EXTENDED TO\nPANEL TOP Z={PANEL_FRAME_TOP_Z}mm + TOP RAIL\n+ FLOOR BEAM (corridor, Z=0)",
-           color=C_OUT, fs=5.5, ha="left", va="bottom",
-           arrow_style="-|>", font=FONT)
+    # ── Direct-stack junction line (totes bear cage-on-cage — no deck) ──────
+    ax.plot([sx(ibc_x_offset), sx(ibc_x_offset + IBC_W)], [sy(PLATFORM_Z)] * 2,
+            color=C_OUT, lw=2.0, zorder=8)
 
-    # ── Longitudinal beams (connecting uprights at 3 levels) ────────────────
-    beam_levels = [0, PLATFORM_Z, TOP_Z - FRAME_RHS]
-    for bz in beam_levels:
-        _rhs_rect(ax, FX_FRONT, bz, FRAME_FOOTPRINT_D, FRAME_RHS, sx, sy,
-                  alpha=0.5)
-
-    # ── Diagonal X-braces (bottom tier, both bays) ──────────────────────────
-    for x1, x2 in [(FX_FRONT + FRAME_RHS, FX_MID),
-                    (FX_MID + FRAME_RHS, FX_BACK)]:
-        # Forward diagonal
-        ax.plot([sx(x1), sx(x2)], [sy(FRAME_RHS), sy(PLATFORM_Z)],
-                color=C_FRAME, lw=2.0, ls="-", alpha=0.5, zorder=4)
-        # Backward diagonal
-        ax.plot([sx(x1), sx(x2)], [sy(PLATFORM_Z), sy(FRAME_RHS)],
-                color=C_FRAME, lw=2.0, ls="-", alpha=0.5, zorder=4)
-
-    # ── Platform surface ────────────────────────────────────────────────────
-    plat_z = PLATFORM_Z + FRAME_RHS
-    # Rubber mat
-    _rhs_rect(ax, FRAME_RHS, plat_z,
-              FRAME_FOOTPRINT_D - 2 * FRAME_RHS, MAT_T, sx, sy,
-              fc=C_OUT, alpha=0.3, lw=0.8)
-
-    # ── Anti-rotation lip (front and back edges of platform) ────────────────
-    # Front lip
-    _rhs_rect(ax, FX_FRONT, plat_z, LIP_T, LIP_H, sx, sy,
-              fc=C_WELD, alpha=0.5, lw=1.0)
-    # Back lip
-    _rhs_rect(ax, FRAME_FOOTPRINT_D - LIP_T, plat_z, LIP_T, LIP_H, sx, sy,
-              fc=C_WELD, alpha=0.5, lw=1.0)
-
-    # ── D-ring lashing points (on corridor upright face) ────────────────────
-    for fx in [FX_FRONT, FX_BACK]:
-        for dz_base in [DRING_STANDOFF, PLATFORM_Z + DRING_STANDOFF]:
-            dz = dz_base + DRING_SIZE
-            dx = fx + FRAME_RHS / 2
-            # Mounting plate
-            pw = DRING_SIZE + 20
-            ph = DRING_SIZE + 20
-            _rhs_rect(ax, dx - pw / 2, dz - ph / 2, pw, ph, sx, sy,
-                      fc=C_STEEL, alpha=0.4, lw=1.0)
-            # D-ring
-            r = DRING_SIZE / 2
-            theta = np.linspace(0, np.pi, 30)
-            ring_x = dx + r * np.cos(theta)
-            ring_y = dz + r * np.sin(theta)
-            ax.plot([sx(v) for v in ring_x], [sy(v) for v in ring_y],
-                    color=C_OUT, lw=2.0, zorder=8)
-            ax.plot([sx(dx - r), sx(dx + r)], [sy(dz), sy(dz)],
-                    color=C_OUT, lw=2.0, zorder=8)
-
-    # ── Access gate outline (front bay, corridor face) ──────────────────────
-    ax.add_patch(Rectangle((sx(FX_FRONT), sy(FRAME_RHS)),
-                            sx(FRAME_RHS), sy(GATE_H - FRAME_RHS),
-                            fc="none", ec=C_DIM, lw=1.5, ls="--", zorder=7))
-    ax.text(sx(FX_FRONT + FRAME_RHS + 15), sy(GATE_H / 2),
-            "ACCESS GATE", ha="left", va="center", fontsize=5.5,
-            color=C_DIM, **FONT, zorder=10)
+    # ── Front retaining bars (end-on at the IBC front, both tiers) ──────────
+    for bz in (560, 1760):
+        _rhs_rect(ax, FX_FRONT, bz, FRAME_RHS, FRAME_RHS, sx, sy,
+                  fc=C_STEEL, alpha=0.6, lw=1.0, zo=8)
 
     # ── Weld symbols at upright/beam joints ─────────────────────────────────
     for fx in FX_POSTS:
@@ -928,11 +678,6 @@ def sheet2():
                f"{FRAME_FOOTPRINT_D}mm  FRAME DEPTH",
                offset=sy(10), fs=6, font=FONT, above=False)
 
-    # Bay spacing
-    draw_dim_h(ax, sx(FX_FRONT), sx(FX_MID), sy(-100),
-               f"{FX_MID}mm", offset=sy(8), fs=5.5, font=FONT)
-    draw_dim_h(ax, sx(FX_MID + FRAME_RHS), sx(FX_BACK), sy(-100),
-               f"{FX_BACK - FX_MID}mm", offset=sy(8), fs=5.5, font=FONT)
 
     # Heights (right side)
     dim_x = FRAME_FOOTPRINT_D + 80
@@ -947,52 +692,31 @@ def sheet2():
 
     # ── Member labels ───────────────────────────────────────────────────────
     # Short leader into the open upper-tier face just right of the post (rule 67).
-    leader(ax, sx(FX_MID + FRAME_RHS), sy(TOP_Z * 0.62),
-           sx(FX_MID + FRAME_RHS + 55), sy(TOP_Z * 0.62 + 25),
-           "CORRIDOR UPRIGHT\n50×50×3 RHS\nFLOOR TO TOP",
+    leader(ax, sx(FX_FRONT + FRAME_RHS), sy(TOP_Z * 0.62),
+           sx(FX_FRONT + FRAME_RHS + 55), sy(TOP_Z * 0.62 + 25),
+           "FRONT PORTAL UPRIGHT\n50×50×3 RHS, floor to top\n(single station, ×2 across Yd)",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
 
-    # Drop the callout just above the beam (short leader, rule 67) rather than
-    # reaching 300mm across the upper face.
-    leader(ax, sx(FRAME_FOOTPRINT_D / 2 - 190), sy(PLATFORM_Z + FRAME_RHS / 2),
-           sx(FRAME_FOOTPRINT_D / 2 - 220), sy(PLATFORM_Z + FRAME_RHS + 60),
-           "LONGITUDINAL BEAM\n50×50×3 RHS\n(3 LEVELS × 2 = 6 TOTAL)",
+    leader(ax, sx(FX_FRONT + FRAME_RHS), sy(1760),
+           sx(FX_FRONT + FRAME_RHS + 70), sy(1760 + 120),
+           "FRONT RETAINING BARS\n(end-on) — Z560 + Z1760,\nslide-stop + lashing",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
-           arrow_style="-|>", font=FONT)
-
-    brace_cx = (FX_FRONT + FRAME_RHS + FX_MID) / 2
-    brace_cz = (FRAME_RHS + PLATFORM_Z) / 2
-    leader(ax, sx(brace_cx), sy(brace_cz),
-           sx(brace_cx + 125), sy(brace_cz - 100),
-           "X-BRACE\n50×50×3 RHS\n(×4 TOTAL,\n2 PER BAY,\nBOTTOM TIER ONLY)",
-           color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
     # ── Notes ───────────────────────────────────────────────────────────────
     notes = [
-        "SIDE ELEVATION NOTES:",
-         "1. Three upright bays at 642mm centers. X-braces in bottom-tier",
-         "   bays for racking resistance.",
-        f"2. Platform at Z={PLATFORM_Z}mm supports upper-tier IBCs. 12mm",
-         "   rubber mat on top.",
-        f"3. Frame depth {FRAME_FOOTPRINT_D}mm: 65mm overhang on cargo-door",
-         "   side, flush to end wall.",
-         "4. D-ring lashing points at front and back uprights, both tiers",
-         "   (4 visible this side).",
-        f"5. Access gate (300mm × 916mm clear opening) at front bay,",
-         "   corridor face only.",
-         "6. Behind: second corridor upright row (identical) at 270mm offset",
-         "   toward far wall.",
-         "7. Each upright base: 150×150×12mm floor flange plate, 4× M12 anchors",
-         "   into container floor.",
-        f"8. Panel support frame: mid-bay corridor uprights extend to",
-         "   Z={PANEL_FRAME_TOP_Z}mm + top rail + ",
-         "   floor-level beam (rectangle). Wet-end equipment panel butts the",
-         "   film-plane face and bolts to it.",
-        f"9. RIGHT-WALKWAY CANTILEVER ARMS (rev12): 2× 40×40×3 SHS clamp to",
-         "   the corridor uprights (Yd 1046/1266) and project off the front",
-         "   (Z{ARM_Z0}-{ARM_Z1}) to carry the right walkway.",
+        "SIDE ELEVATION NOTES (RESTRAINT-ONLY FRAME):",
+         "1. SINGLE FRONT PORTAL at the IBC front (2 full-height uprights across",
+         "   Yd). The deep mid/back bays + X-braces of the old load-bearing rack",
+         "   are dropped — the direct-stacked totes need only restraint.",
+        f"2. Totes DIRECT-STACK cage-on-cage at Z={PLATFORM_Z}mm (no deck, 52mm",
+         "   headroom). Restraint = portal + front retaining bars + lashing.",
+         "3. Each upright base: 150×150×12mm floor flange plate, 4× M12 anchors.",
+         "4. Front retaining bars (Z560 + Z1760) stop the totes sliding out the",
+         "   front; wall ends drop into Simpson-style joist hangers.",
+        f"5. RIGHT-WALKWAY CANTILEVER ARMS (rev12): 2× 40×40×3 SHS clamp to the",
+         "   front-portal uprights and project off the front to carry the walkway.",
     ]
     draw_notes(ax, notes, sx(X_LO + 20), sy(Z_HI - 100), spacing=sy(20),
                fs=6.5, font=FONT, width=sx(825))
@@ -1000,7 +724,7 @@ def sheet2():
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 3",
                 drawing_title="IBC SUPPORT FRAME",
-                subtitle="SIDE ELEVATION — CORRIDOR STRUCTURE & X-BRACING",
+                subtitle="SIDE ELEVATION — SINGLE FRONT PORTAL (RESTRAINT)",
                 scale_note="Axes in mm — VIEW ALONG Yd",
                 height=0.04)
 
@@ -1036,77 +760,21 @@ def sheet3():
     ax.axis("off")
 
     ax.text(px(FRAME_FOOTPRINT_D / 2), py(FRAME_FOOTPRINT_W + 200),
-            "PLAN VIEW — LOOKING DOWN AT PLATFORM LEVEL (Z=1060mm)",
+            "PLAN VIEW — LOOKING DOWN (FRONT PORTAL + RETAINING BARS)",
             ha="center", va="bottom", fontsize=9, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
 
-    # ── Platform beams (cut at platform level) ──────────────────────────────
-    # Longitudinal beams along X at corridor edges
-    for post_yd in [POST_NEAR_YD, POST_FAR_YD]:
-        _rhs_rect(ax, FX_FRONT, post_yd, FRAME_FOOTPRINT_D, FRAME_RHS,
-                  px, py, alpha=0.7, hatch="///")
-
-    # Transverse beams at each upright position
-    for fx in FX_POSTS:
-        # Near column beam (wall bracket to corridor)
-        near_beam_start = BLUE_IBC_Y - FRAME_RHS
-        near_beam_end_yd = POST_NEAR_YD + FRAME_RHS
-        _rhs_rect(ax, fx, near_beam_start,
-                  FRAME_RHS, near_beam_end_yd - near_beam_start,
-                  px, py, alpha=0.6)
-
-        # Far column beam (corridor to wall bracket)
-        far_beam_start_yd = POST_FAR_YD
-        far_beam_end_yd = IBC_FAR_Y + IBC_D + FRAME_RHS
-        _rhs_rect(ax, fx, far_beam_start_yd,
-                  FRAME_RHS, far_beam_end_yd - far_beam_start_yd,
-                  px, py, alpha=0.6)
-
-        # Corridor cross-beam
-        _rhs_rect(ax, fx, POST_NEAR_YD + FRAME_RHS,
-                  FRAME_RHS, POST_FAR_YD - POST_NEAR_YD - FRAME_RHS,
-                  px, py, alpha=0.4)
-
-    # ── Anti-rotation lip outline (perimeter of each platform bay) ──────────
-    # Near column lip
-    near_lip_x1 = FX_FRONT
-    near_lip_x2 = FRAME_FOOTPRINT_D
-    near_lip_y1 = BLUE_IBC_Y - FRAME_RHS
-    near_lip_y2 = POST_NEAR_YD + FRAME_RHS
-    ax.add_patch(Rectangle((px(near_lip_x1), py(near_lip_y1)),
-                            px(near_lip_x2 - near_lip_x1),
-                            py(near_lip_y2 - near_lip_y1),
-                            fc="none", ec=C_WELD, lw=1.5, ls="-",
-                            zorder=8))
-    # Far column lip
-    far_lip_y1 = POST_FAR_YD
-    far_lip_y2 = IBC_FAR_Y + IBC_D + FRAME_RHS
-    ax.add_patch(Rectangle((px(near_lip_x1), py(far_lip_y1)),
-                            px(near_lip_x2 - near_lip_x1),
-                            py(far_lip_y2 - far_lip_y1),
-                            fc="none", ec=C_WELD, lw=1.5, ls="-",
-                            zorder=8))
-
-    # Label lips
-    ax.text(px(FRAME_FOOTPRINT_D / 2), py(near_lip_y1 - 15),
-            "ANTI-ROTATION LIP (5mm × 40mm PLATE, RED OUTLINE)",
-            ha="center", va="top", fontsize=5, color=C_WELD, **FONT, zorder=10)
-
-    # ── Rubber mats (dashed rectangles inside lip perimeter) ────────────────
-    # Near column mat: IBC footprint on platform
-    mat_x = FX_FRONT + FRAME_RHS  # inboard of front upright
-    mat_w = FRAME_FOOTPRINT_D - 2 * FRAME_RHS
+    # ── Single FRONT PORTAL (plan): 2 uprights at the front station + front
+    #    retaining bars. The load-bearing platform/lip/mats are dropped. ──
     near_mat_yd = BLUE_IBC_Y
     far_mat_yd = IBC_FAR_Y
-    for mat_yd in [near_mat_yd, far_mat_yd]:
-        ax.add_patch(Rectangle((px(mat_x), py(mat_yd)),
-                                px(mat_w), py(IBC_D),
-                                fc=C_OUT, ec=C_DIM, lw=1.0, ls="--",
-                                alpha=0.1, zorder=6))
-        ax.text(px(mat_x + mat_w * 0.25), py(mat_yd + IBC_D / 2),
-                "12mm RUBBER MAT\n1016 × 1219mm",
-                ha="center", va="center", fontsize=5.5, color=C_DIM,
-                **FONT, zorder=10, alpha=0.7)
+    for post_yd in (POST_NEAR_YD, POST_FAR_YD):
+        _rhs_rect(ax, FX_FRONT, post_yd, FRAME_RHS, FRAME_RHS, px, py,
+                  fc=C_FRAME, alpha=0.85, lw=1.4)
+    # Front retaining bars run in Yd at the IBC front (wall -> upright per column).
+    for y0, y1 in ((0, POST_NEAR_YD + FRAME_RHS), (POST_FAR_YD, FRAME_FOOTPRINT_W)):
+        _rhs_rect(ax, FX_FRONT, y0, FRAME_RHS, y1 - y0, px, py,
+                  fc=C_STEEL, alpha=0.55, lw=1.0)
 
     # ── IBC footprint ghost outlines (with cage/pallet anatomy) ──────────────
     ibc_x = (FRAME_FOOTPRINT_D - IBC_W) / 2 + FX_FRONT + 250 # centered in frame
@@ -1141,33 +809,6 @@ def sheet3():
            "RIGHT-WALKWAY\nCANTILEVER ARMS (×2)\n40×40×3 SHS\n(off-frame, toward −X)",
            color=C_ARM, fs=5.5, ha="left", va="top", arrow_style="-|>", font=FONT)
 
-    # ── Panel support frame (mid bay): top rail + floor beam span the corridor
-    # at the middle station — projected (above/below the platform cut). ──
-    ax.add_patch(Rectangle((px(FX_MID), py(POST_NEAR_YD)),
-                            px(FRAME_RHS), py(POST_FAR_YD + FRAME_RHS - POST_NEAR_YD),
-                            fc="none", ec=C_OUT, lw=1.3, ls="--", zorder=9))
-    ax.text(px(FX_MID + FRAME_RHS + 75), py((POST_NEAR_YD + POST_FAR_YD) * 0.52),
-            "PANEL SUPPORT FRAME\n(MID BAY): TOP RAIL\n+ FLOOR BEAM",
-            ha="left", va="center", fontsize=5, color=C_OUT, **FONT, zorder=10)
-
-    # ── Wall seat brackets (at near and far walls) ──────────────────────────
-    # Plan shows the seat (face-on, projecting into the container) + the wall
-    # back-plate (edge-on at the wall) + wall bolts.
-    for fx in FX_POSTS:
-        for wall_yd, dir_in in [(0, 1), (FRAME_FOOTPRINT_W, -1)]:
-            # back-plate (150 wide in X, thin in Yd, against the wall)
-            bp_y = wall_yd if dir_in > 0 else wall_yd - BRACKET_T
-            _rhs_rect(ax, fx - 50, bp_y, BRACKET_PLATE_W, BRACKET_T, px, py,
-                      fc=C_STEEL, alpha=0.6, lw=1.2)
-            # seat (beam width + 20 in X, projects BRACKET_L into container)
-            seat_y0 = min(wall_yd, wall_yd + dir_in * BRACKET_L)
-            _rhs_rect(ax, fx - 10, seat_y0, FRAME_RHS + 20, BRACKET_L, px, py,
-                      fc=C_STEEL, alpha=0.35, lw=1.0)
-            # wall bolts (2 X-columns visible; 2 Z-rows overlap in plan)
-            for bolt_x in [fx - 30, fx + 80]:
-                ax.plot(px(bolt_x), py(wall_yd + dir_in * 4), 'x',
-                        color=C_OUT, ms=5, mew=1.5, zorder=8)
-
     # ── Floor flange feet (projected, under the 6 corridor uprights) ─────────
     for fx in FX_POSTS:
         for post_yd in [POST_NEAR_YD, POST_FAR_YD]:
@@ -1178,12 +819,6 @@ def sheet3():
     draw_dim_h(ax, px(FX_FRONT), px(FRAME_FOOTPRINT_D), py(-120),
                f"{FRAME_FOOTPRINT_D}mm  FRAME DEPTH",
                offset=py(8), fs=6, font=FONT)
-
-    # Bay spacing
-    draw_dim_h(ax, px(FX_FRONT), px(FX_MID), py(-60),
-               f"{FX_MID}mm", offset=py(8), fs=5.5, font=FONT)
-    draw_dim_h(ax, px(FX_MID + FRAME_RHS), px(FX_BACK), py(-60),
-               f"{FX_BACK - FX_MID}mm", offset=py(8), fs=5.5, font=FONT)
 
     # Overall width
     dim_x = FRAME_FOOTPRINT_D + 80
@@ -1318,22 +953,17 @@ def sheet3():
 
     # ── Notes ───────────────────────────────────────────────────────────────
     notes = [
-        "PLAN VIEW NOTES:",
-        "1. Plan cut at platform level (Z=1060mm). All beams shown in cross-section (hatched).",
-        "2. Longitudinal beams (along X) at corridor edges are continuous — front to back.",
-        "3. Transverse beams (along Yd) at each upright bay: SIMPLY SUPPORTED — propped at the",
-        "corridor uprights AND the wall seat brackets (not cantilevered).",
-        "4. Wall seat brackets (×6) bolted to wall ribs — 4× M12 each. Floor flange feet (150×150×12,",
-        "dashed squares) under each of the 6 uprights, 4× M12 floor anchors each.",
-        "5. Anti-rotation lip (red outline): 5mm plate fillet welded to beam top face. Retains",
-        "IBC pallet perimeter.",
-        f"6. Rubber mat: 12mm anti-slip, trimmed to IBC pallet footprint ({IBC_D} × {IBC_W}mm).",
-        f"7. IBC ghost outline shows pallet footprint (brown), bottle inset (blue), cage corner",
-        f"tubes ({IBC_CAGE_TUBE_D}mm Ø, gray circles).",
-        "8. Pallet runners (2 per IBC) shown as brown lines — orient perpendicular to fork",
-        "access direction.",
-        "9. RIGHT-WALKWAY CANTILEVER ARMS (rev12): 2× 40×40×3 SHS off the corridor uprights",
-        "(Yd 1046/1266), projecting off the front (−X) to carry the right walkway.",
+        "PLAN VIEW NOTES (RESTRAINT-ONLY FRAME):",
+        "1. SINGLE FRONT PORTAL: 2 uprights at the IBC front (Yd 1046/1266) on 150×150×12",
+        "floor flange feet (4× M12 each). The deep mid/back stations + load-bearing platform",
+        "of the old rack are dropped — the direct-stacked totes need only restraint.",
+        "2. Front retaining bars run in Yd at the IBC front (wall -> upright per column) — they",
+        "stop the totes sliding out the front; wall ends drop into Simpson-style joist hangers.",
+        "3. 270mm plumbing corridor (Yd 1046-1316) stays clear between the IBC columns.",
+        f"4. IBC ghost outline shows pallet footprint (brown), bottle inset (blue), cage corner",
+        f"tubes ({IBC_CAGE_TUBE_D}mm Ø, gray circles). v2 layout: Brown/Waste bottom, Blue top.",
+        "5. RIGHT-WALKWAY CANTILEVER ARMS (rev12): 2× 40×40×3 SHS clamp to the front-portal",
+        "uprights (Yd 1046/1266), projecting off the front (−X) to carry the right walkway.",
     ]
     draw_notes(ax, notes, px(X_HI * 0.32), py(YD_LO + 510), spacing=py(20),
                fs=7, font=FONT, width=px(1040))
@@ -1341,7 +971,7 @@ def sheet3():
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 3",
                 drawing_title="IBC SUPPORT FRAME",
-                subtitle="PLAN VIEW — PLATFORM BEAM LAYOUT & DETAILS",
+                subtitle="PLAN VIEW — FRONT PORTAL + RETAINING BARS",
                 scale_note="Axes in mm — VIEW LOOKING DOWN",
                 height=0.04)
 

@@ -28,7 +28,7 @@ import matplotlib.patches as mpatches
 
 from tbs_constants import (
     C_LEN, C_WID, C_HGT,
-    IBC_COL_X, IBC_W, IBC_D, IBC_H_600, IBC_H_STK,
+    IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000,
     BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y,
     WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
     WALKWAY_RIGHT_X,
@@ -96,7 +96,7 @@ CAGE_POST_W    = 40     # visual representation of cage uprights
 IBC_GAP        = IBC_FAR_Y - (BLUE_IBC_Y + IBC_D)  # = 270mm (plumbing corridor)
 
 # Ceiling clearance
-CEIL_CLEAR     = C_HGT - IBC_H_STK  # = 368mm
+CEIL_CLEAR     = C_HGT - IBC_H_STK_1000  # = 368mm
 
 # Fill/drain port
 PORT_DIA       = 50     # 2" NPT visual diameter (mm)
@@ -174,12 +174,12 @@ def sheet1():
     # Far column:  Yd = IBC_FAR_Y  to IBC_FAR_Y + IBC_D
 
     ibc_data = [
-        ("IBC-3\nBROWN\n(recycled)", BLUE_IBC_Y, 0, IBC_D, IBC_H_600, C_BROWN_IBC),
-        ("IBC-1\nBLUE\n(clean supply)", BLUE_IBC_Y, IBC_H_600 + MAT_T + FRAME_RHS,
-         IBC_D, IBC_H_600, C_BLUE_IBC),
-        ("IBC-4\nWASTE", IBC_FAR_Y, 0, IBC_D, IBC_H_600, C_WASTE_IBC),
-        ("IBC-2\nBLUE\n(clean supply)", IBC_FAR_Y, IBC_H_600 + MAT_T + FRAME_RHS,
-         IBC_D, IBC_H_600, C_BLUE_IBC),
+        ("IBC-3\nBROWN\n(recycled)", BLUE_IBC_Y, 0, IBC_D, IBC_H_1000, C_BROWN_IBC),
+        ("IBC-1\nBLUE\n(clean supply)", BLUE_IBC_Y, IBC_H_1000 + MAT_T + FRAME_RHS,
+         IBC_D, IBC_H_1000, C_BLUE_IBC),
+        ("IBC-4\nWASTE", IBC_FAR_Y, 0, IBC_D, IBC_H_1000, C_WASTE_IBC),
+        ("IBC-2\nBLUE\n(clean supply)", IBC_FAR_Y, IBC_H_1000 + MAT_T + FRAME_RHS,
+         IBC_D, IBC_H_1000, C_BLUE_IBC),
     ]
 
     for label, yd, z, d, h, color in ibc_data:
@@ -205,18 +205,18 @@ def sheet1():
     # Platform and top beams span each column; cross-beams bridge the corridor.
     near_col_r = BLUE_IBC_Y + IBC_D    # = 1046mm (near column right edge)
     far_col_l  = IBC_FAR_Y             # = 1316mm (far column left edge)
-    platform_z = IBC_H_600  # platform sits on top of bottom IBCs
+    platform_z = IBC_H_1000  # platform sits on top of bottom IBCs
 
     # Corridor uprights (4 visible as 2 near-corridor + 2 far-corridor)
     corridor_uprights = [near_col_r, far_col_l - FRAME_RHS]
     for uyd in corridor_uprights:
         ax.add_patch(Rectangle((sx(uyd), sy(0)),
-                                sx(FRAME_RHS), sy(IBC_H_STK + FRAME_RHS),
+                                sx(FRAME_RHS), sy(IBC_H_STK_1000 + FRAME_RHS),
                                 fc=C_FRAME, ec=C_OUT, lw=1.2, zorder=7,
                                 alpha=0.8))
         ax.add_patch(Rectangle((sx(uyd + FRAME_T), sy(FRAME_T)),
                                 sx(FRAME_RHS - 2 * FRAME_T),
-                                sy(IBC_H_STK + FRAME_RHS - 2 * FRAME_T),
+                                sy(IBC_H_STK_1000 + FRAME_RHS - 2 * FRAME_T),
                                 fc=C_WALL, ec="none", lw=0, zorder=7,
                                 alpha=0.3))
 
@@ -301,7 +301,7 @@ def sheet1():
     # Cross-beam across corridor (at platform and top levels)
     corr_beam_l = near_col_r + FRAME_RHS
     corr_beam_r = far_col_l - FRAME_RHS
-    for bz in [platform_z, IBC_H_STK]:
+    for bz in [platform_z, IBC_H_STK_1000]:
         ax.add_patch(Rectangle((sx(corr_beam_l), sy(bz)),
                                 sx(corr_beam_r - corr_beam_l), sy(FRAME_RHS),
                                 fc=C_FRAME, ec=C_OUT, lw=1.0, zorder=6, alpha=0.5))
@@ -323,7 +323,7 @@ def sheet1():
                                 fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=9))
 
     # Top rail — one per column
-    top_z = IBC_H_STK
+    top_z = IBC_H_STK_1000
     for col_l, col_r in [(BLUE_IBC_Y - 5, near_col_r + FRAME_RHS),
                           (far_col_l - FRAME_RHS, IBC_FAR_Y + IBC_D + 5)]:
         ax.add_patch(Rectangle((sx(col_l), sy(top_z)),
@@ -340,7 +340,7 @@ def sheet1():
     # ── D-ring lashing points (4 per tier, showing 2 near-side) ───────────────
     dring_color = "#D0A030"
     # Bottom tier D-rings: near corners at Z ≈ FRAME_RHS/2
-    # Top tier D-rings: at Z ≈ platform_z + FRAME_RHS + IBC_H_600/2
+    # Top tier D-rings: at Z ≈ platform_z + FRAME_RHS + IBC_H_1000/2
     dring_positions = [
         (near_col_r + FRAME_RHS + 5, FRAME_RHS * 1.5, "BOTTOM"),
         (far_col_l - FRAME_RHS - 5, FRAME_RHS * 1.5, "BOTTOM"),
@@ -393,8 +393,8 @@ def sheet1():
 
     # ── Labels ────────────────────────────────────────────────────────────────
     # Frame label
-    leader(ax, sx(near_col_r + FRAME_RHS / 2), sy(IBC_H_600 / 2),
-           sx(near_col_r + FRAME_RHS - 120), sy(IBC_H_600 / 2 + 50),
+    leader(ax, sx(near_col_r + FRAME_RHS / 2), sy(IBC_H_1000 / 2),
+           sx(near_col_r + FRAME_RHS - 120), sy(IBC_H_1000 / 2 + 50),
            f"STACKING FRAME\n50x50x3mm RHS\nMILD STEEL\n~{FRAME_WEIGHT}kg",
            color=C_FRAME, fs=6.5,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
@@ -408,16 +408,16 @@ def sheet1():
 
     # ── Dimension lines ───────────────────────────────────────────────────────
     # IBC height (bottom tier)
-    draw_dim_v(ax, sx(IBC_FAR_Y + IBC_D + 80), sy(0), sy(IBC_H_600),
-               f"{IBC_H_600}mm IBC HEIGHT", offset=sx(22), fs=6, right=True, font=FONT)
+    draw_dim_v(ax, sx(IBC_FAR_Y + IBC_D + 80), sy(0), sy(IBC_H_1000),
+               f"{IBC_H_1000}mm IBC HEIGHT", offset=sx(22), fs=6, right=True, font=FONT)
 
     # Stack total height
-    draw_dim_v(ax, sx(IBC_FAR_Y + IBC_D + 120), sy(0), sy(IBC_H_STK + FRAME_RHS),
-               f"{IBC_H_STK + FRAME_RHS}mm STACK + FRAME", offset=sx(22), fs=6,
+    draw_dim_v(ax, sx(IBC_FAR_Y + IBC_D + 120), sy(0), sy(IBC_H_STK_1000 + FRAME_RHS),
+               f"{IBC_H_STK_1000 + FRAME_RHS}mm STACK + FRAME", offset=sx(22), fs=6,
                right=True, font=FONT)
 
     # Ceiling clearance
-    draw_dim_v(ax, sx(IBC_FAR_Y + IBC_D + 120), sy(IBC_H_STK + FRAME_RHS), sy(C_HGT),
+    draw_dim_v(ax, sx(IBC_FAR_Y + IBC_D + 120), sy(IBC_H_STK_1000 + FRAME_RHS), sy(C_HGT),
                f"{CEIL_CLEAR - FRAME_RHS}mm CLEARANCE", offset=sx(22), fs=6,
                right=True, font=FONT)
 
@@ -426,15 +426,15 @@ def sheet1():
                f"{C_WID}mm  INTERIOR WIDTH", offset=sy(5), fs=6.5, font=FONT)
 
     # Near column Yd position
-    draw_dim_h(ax, sx(0), sx(BLUE_IBC_Y), sy(IBC_H_600 + 80),
+    draw_dim_h(ax, sx(0), sx(BLUE_IBC_Y), sy(IBC_H_1000 + 80),
                f"{BLUE_IBC_Y}mm", offset=sy(5), fs=5.5, font=FONT)
 
     # IBC depth
-    draw_dim_h(ax, sx(BLUE_IBC_Y), sx(BLUE_IBC_Y + IBC_D), sy(IBC_H_600 + 80),
+    draw_dim_h(ax, sx(BLUE_IBC_Y), sx(BLUE_IBC_Y + IBC_D), sy(IBC_H_1000 + 80),
                f"{IBC_D}mm\nIBC DEPTH", offset=sy(5), fs=5.5, font=FONT)
 
     # Plumbing corridor between columns
-    draw_dim_h(ax, sx(BLUE_IBC_Y + IBC_D), sx(IBC_FAR_Y), sy(IBC_H_600 + 80),
+    draw_dim_h(ax, sx(BLUE_IBC_Y + IBC_D), sx(IBC_FAR_Y), sy(IBC_H_1000 + 80),
                f"{IBC_GAP}mm\nCORRIDOR", offset=sy(5), fs=5.5, font=FONT)
 
     # ── Right walkway (ghost, for context) ────────────────────────────────────
@@ -449,10 +449,10 @@ def sheet1():
     notes = [
         "CROSS-SECTION NOTES:",
         "1. Section through IBC stack, looking +X toward sealed end (near/pinhole wall at right, far wall at left).",
-        f"2. 4x 600L IBCs (Schutz Ecobulk MX). Each: 55kg tare, {IBC_W}x{IBC_D}x{IBC_H_600}mm.",
+        f"2. 4x 600L IBCs (Schutz Ecobulk MX). Each: 55kg tare, {IBC_W}x{IBC_D}x{IBC_H_1000}mm.",
         f"3. Portal frame: 50x50x3mm RHS mild steel, welded wall seat brackets (knee + gusset web, M12 anchors) + corridor uprights on {IBC_FOOT_PLATE}x{IBC_FOOT_PLATE}x{IBC_FOOT_PLATE_T} floor flange feet ({IBC_FOOT_BOLT_N}x M12 anchors each). ~{FRAME_WEIGHT}kg.",
         f"4. {IBC_GAP}mm plumbing corridor between columns for internal pipe routing.",
-        f"5. Platform at Z={IBC_H_600}mm + {MAT_T}mm rubber anti-slip mat.",
+        f"5. Platform at Z={IBC_H_1000}mm + {MAT_T}mm rubber anti-slip mat.",
         f"6. {FRAME_LIP_H}mm steel lip retains upper IBC cage against lateral movement.",
         f"7. 8x D-ring lashing points (4 per tier), {DRING_WLL}kg WLL each.",
         f"8. External plumbing panel on end wall centerline (see Sheets 3-4).",
@@ -952,7 +952,7 @@ def sheet3():
     # ── Ghost IBC outlines and stacking frame (behind wall) ────────────────
     # yd_ext = C_WID - yd_internal; with invert_xaxis (above) this lands the
     # near/pinhole wall at LEFT, far wall at RIGHT (correct exterior orientation)
-    platform_z = IBC_H_600                        # 1010mm
+    platform_z = IBC_H_1000                        # 1010mm
     top_tier_z = platform_z + FRAME_RHS + MAT_T   # 1072mm
 
     # Near column (internal Yd 30–1046) → external Yd 1316–2332
@@ -969,21 +969,21 @@ def sheet3():
     for label, yd_l, z_base, color in ghost_ibcs:
         # Light fill
         ax.add_patch(Rectangle((sx(yd_l), sy(z_base)),
-                                sx(IBC_D), sy(IBC_H_600),
+                                sx(IBC_D), sy(IBC_H_1000),
                                 fc=color, ec="none", lw=0,
                                 alpha=0.12, zorder=2.5))
         # Dashed cage outline
         ax.add_patch(Rectangle((sx(yd_l), sy(z_base)),
-                                sx(IBC_D), sy(IBC_H_600),
+                                sx(IBC_D), sy(IBC_H_1000),
                                 fc="none", ec=color, lw=1.8, ls=(0, (6, 3)),
                                 alpha=0.5, zorder=2.6))
         # Cage uprights (ghost)
         for post_yd in [yd_l + 15, yd_l + IBC_D - 15]:
             ax.add_patch(Rectangle((sx(post_yd - CAGE_POST_W / 2), sy(z_base)),
-                                    sx(CAGE_POST_W), sy(IBC_H_600),
+                                    sx(CAGE_POST_W), sy(IBC_H_1000),
                                     fc="none", ec=color, lw=0.5, ls=(0, (4, 3)),
                                     alpha=0.3, zorder=2.6))
-        ax.text(sx(yd_l + IBC_D / 2), sy(z_base + IBC_H_600 / 2), label,
+        ax.text(sx(yd_l + IBC_D / 2), sy(z_base + IBC_H_1000 / 2), label,
                 ha="center", va="center", fontsize=6, color=color,
                 alpha=0.55, fontweight="bold", **FONT, zorder=2.7)
 
@@ -1000,12 +1000,12 @@ def sheet3():
     for uyd in [C_WID - (BLUE_IBC_Y + IBC_D + FRAME_RHS),
                 C_WID - IBC_FAR_Y]:
         ax.add_patch(Rectangle((sx(uyd), sy(0)),
-                                sx(FRAME_RHS), sy(IBC_H_STK + FRAME_RHS),
+                                sx(FRAME_RHS), sy(IBC_H_STK_1000 + FRAME_RHS),
                                 fc=C_FRAME, ec=C_FRAME, lw=1.2, ls=(0, (6, 3)),
                                 alpha=0.18, zorder=2.5))
 
     # Ghost label
-    ax.text(sx(C_WID / 2), sy(IBC_H_STK + FRAME_RHS + 30),
+    ax.text(sx(C_WID / 2), sy(IBC_H_STK_1000 + FRAME_RHS + 30),
             "GHOST OUTLINE — IBCs & STACKING FRAME (BEHIND WALL)",
             ha="center", va="bottom", fontsize=5.5, color=C_FRAME,
             fontstyle="italic", **FONT, zorder=2.8)
@@ -1795,15 +1795,15 @@ def sheet5():
     # ── IBCs (shown in elevation, flanking the corridor) ─────────────────────
     near_col_r = BLUE_IBC_Y + IBC_D   # 1046
     far_col_l  = IBC_FAR_Y            # 1316
-    platform_z = IBC_H_600             # 1010
+    platform_z = IBC_H_1000             # 1010
 
     ibc_data = [
-        ("IBC-3\nBROWN\n(recycled)", BLUE_IBC_Y, 0, IBC_D, IBC_H_600, C_BROWN_IBC),
+        ("IBC-3\nBROWN\n(recycled)", BLUE_IBC_Y, 0, IBC_D, IBC_H_1000, C_BROWN_IBC),
         ("IBC-1\nBLUE\n(clean supply)", BLUE_IBC_Y, platform_z + FRAME_RHS + MAT_T,
-         IBC_D, IBC_H_600, C_BLUE_IBC),
-        ("IBC-4\nWASTE", IBC_FAR_Y, 0, IBC_D, IBC_H_600, C_WASTE_IBC),
+         IBC_D, IBC_H_1000, C_BLUE_IBC),
+        ("IBC-4\nWASTE", IBC_FAR_Y, 0, IBC_D, IBC_H_1000, C_WASTE_IBC),
         ("IBC-2\nBLUE\n(clean supply)", IBC_FAR_Y, platform_z + FRAME_RHS + MAT_T,
-         IBC_D, IBC_H_600, C_BLUE_IBC),
+         IBC_D, IBC_H_1000, C_BLUE_IBC),
     ]
 
     for label, yd, z, d, h, color in ibc_data:
@@ -1829,7 +1829,7 @@ def sheet5():
     # ── Corridor uprights ────────────────────────────────────────────────────
     for uyd in [near_col_r, far_col_l - FRAME_RHS]:
         ax.add_patch(Rectangle((sx(uyd), sy(0)),
-                                sx(FRAME_RHS), sy(IBC_H_STK + FRAME_RHS),
+                                sx(FRAME_RHS), sy(IBC_H_STK_1000 + FRAME_RHS),
                                 fc=C_FRAME, ec=C_OUT, lw=1.0, zorder=6, alpha=0.6))
 
     # ── Corridor shading ────────────────────────────────────────────────────
@@ -1898,7 +1898,7 @@ def sheet5():
     pipe_lw = 2.5
 
     # ── IBC connection heights ───────────────────────────────────────────────
-    top_ibc_top = platform_z + FRAME_RHS + MAT_T + IBC_H_600
+    top_ibc_top = platform_z + FRAME_RHS + MAT_T + IBC_H_1000
     fill_conn_z = top_ibc_top - 80   # fill inlet near top of top-tier IBC
     drain_conn_z = 185   # IBC butterfly valve centerline ~175-200mm above floor
 
@@ -2045,7 +2045,7 @@ def sheet5():
     # Water collects in sump well at tray low point. P-04 suction pickup
     # draws from sump, pumps up to IBC-3 fill cap (DN150) on top.
     # Cannot gravity feed — fill cap is ~900mm above tray floor.
-    brown_in_z = IBC_H_600 - 80  # near top of bottom-tier IBC
+    brown_in_z = IBC_H_1000 - 80  # near top of bottom-tier IBC
     pipe_stub_x(ax, near_ibc_cx, brown_in_z, C_PIPE_BROWN,
                 "P-04 ← TRAY\nSUMP (PUMPED)", label_side="left")
     # P-04 tray drain transfer pump — on the brown inlet line
@@ -2072,7 +2072,7 @@ def sheet5():
     # Enters through IBC-4 fill cap (DN150) on top. Filter unit reject/bypass
     # line feeds into waste IBC via fill cap — cannot use drain valve (would
     # drain out existing waste when opened).
-    waste_in_z = IBC_H_600 - 80  # near top of bottom-tier far IBC
+    waste_in_z = IBC_H_1000 - 80  # near top of bottom-tier far IBC
     pipe_stub_x(ax, far_ibc_cx, waste_in_z, C_PIPE_BLACK,
                 "FILTER REJECT\nVIA FILL CAP (DN150)", label_side="right")
 

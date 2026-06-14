@@ -370,7 +370,7 @@ def sheet2():
     ax.add_patch(Rectangle((sx(bar_x0), sy(bar_y)), sx(bar_len), sy(FRAME_RHS),
                             fc=C_STEEL, ec=C_OUT, lw=2.0, hatch="xx", zorder=5))
     ax.text(sx(bar_x0 + bar_len * 0.62), sy(bar_y + FRAME_RHS / 2),
-            "FRONT RETAINING BAR\n50x50x3 RHS",
+            "FRONT RETAINING BAR\n50x20x3 RHS",
             ha="center", va="center", fontsize=5.5, color=C_OUT, **FONT, zorder=10)
 
     # Angle cleat joining bar to upright (L-plate) + 2 M12 bolts

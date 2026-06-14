@@ -513,7 +513,7 @@ def sheet1():
 
     leader(ax, sx(NEAR_COL_R + FRAME_RHS), sy(1760 + FRAME_RHS / 2),
            sx(NEAR_COL_R - 70), sy(1900),
-           "FRONT RETAINING BAR (×4)\n50×50×3 RHS at IBC front,\nZ560 + Z1760 — slide-stop\n+ D-ring lash points",
+           "FRONT RETAINING BAR (×4)\n50×20×3 RHS at IBC front\n(25mm gap), Z560 + Z1760 — slide-stop\n+ D-ring lash points",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
 

@@ -164,7 +164,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 | Item | Spec | Qty | Supplier | Est. unit | Total |
 |------|------|-----|----------|-----------|-------|
-| [Mild steel RHS 50×50×3mm, 6 m length](https://www.metalsupermarkets.com/product/mild-steel-square-tube-structural-welded/) | Front-portal uprights + front retaining bars + panel-mount rail (A500 Grade B) | 4 | [Metal Supermarkets SoCal](https://www.metalsupermarkets.com/) / [Online Metals](https://www.onlinemetals.com) | $30–$45 | $120–$180 |
+| [Mild steel RHS 50×50×3mm, 6 m length](https://www.metalsupermarkets.com/product/mild-steel-square-tube-structural-welded/) | Front-portal uprights + panel-mount rail (50×50×3) + front retaining bars (50×20×3) (A500 Grade B) | 4 | [Metal Supermarkets SoCal](https://www.metalsupermarkets.com/) / [Online Metals](https://www.onlinemetals.com) | $30–$45 | $120–$180 |
 | [Steel plate 12mm, 150×150mm cut](https://www.onlinemetals.com/en/buy/carbon-steel) | Upright floor flange feet | 2 | Metal Supermarkets SoCal / Online Metals | $4–$8 | $10–$20 |
 | Steel folded plate 4mm | Simpson-style wall joist hangers | 4 | Metal Supermarkets SoCal / [Simpson Strong-Tie](https://www.strongtie.com/) | $7–$12 | $30–$50 |
 | [Welded D-ring, 25mm, 1,100 kg WLL](https://www.mcmaster.com/3641T29) | Lashing holders on the front bars, 6mm mount plates | 4 | McMaster-Carr #3641T29 | $5–$8 | $20–$35 |

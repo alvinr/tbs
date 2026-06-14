@@ -204,7 +204,7 @@ def ibc_frame():
     bar_zs = (560, 1760)
     for y0, y1 in ((0, YD_N + S), (YD_F - S, C_WID)):
         for bz in bar_zs:
-            parts.append(ov.ruby_box("Front Retaining Bar", FRONT_X, y0, bz, S, y1 - y0, S, color=ov.C_STEEL))
+            parts.append(ov.ruby_box("Front Retaining Bar", FRONT_X - 20, y0, bz, 20, y1 - y0, S, color=ov.C_STEEL))  # 50×20 in the 25mm gap, clear of the totes + film rail
     for yd in UP_YDS:
         for bz in bar_zs:
             parts.append(ov.ruby_box("Front Bar Stub", FRONT_X, yd, bz, fx - FRONT_X + S, S, S, color=ov.C_STEEL))

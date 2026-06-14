@@ -115,7 +115,7 @@ IBC-2 (600L) ──┘                                                      │
 - ACC-01: 0.75 L (23.5 oz) pressure accumulator — smooths pump cycling, maintains pressure when pump is off
 - Low-level float switch on IBC-2 alerts operator when Blue supply is low
 - Spray bar: gantry design — 40×40×3mm aluminum SHS beam spanning the open processing area (3859mm) between walkway inner edges, with wheel carriages rolling on the tray floor beneath walkway grating. Beam bore serves as spray pipe (no separate HDPE tube). See §3.5 for full mechanical design
-- Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline (Yd=1181mm) at Z=2250mm — positioned above IBC tops (Z=2082mm) for gravity feed, no pump required. Inside, an internal tee (behind the panel-support-frame top rail) splits X1 to BOTH Blue totes, filling them in parallel — one external hose. Remote resupply from water bowser or tanker (no cargo door access required)
+- Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline (Yd=1181mm) at Z=2250mm — gravity feed, no pump required. Inside, an internal tee (near X1) splits to a SIDE entry near the top of BOTH Blue totes (no top-cap access — 52mm headroom), filling them in parallel and gravity-linked — one external hose. Remote resupply from water bowser or tanker (no cargo door access required)
 
 ### 5.2 Brown System — Used Water Recycling
 
@@ -171,7 +171,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
    TRANSPORT to licensed liquid waste disposal facility
 ```
 
-- IBC-4 is a standard 600L HDPE cage tote with DN50 butterfly valve (S60×6 thread), identical frame to IBC-1 through IBC-3
+- IBC-4 is a 1000L caged composite tote with DN50 butterfly valve (S60×6 thread), identical to IBC-1 through IBC-3 (all four totes are the same size; "600 L"/"1000 L" are fill levels)
 - IBC-4 sits in the right end zone in a 2x2 stack: bottom-far position (Yd=1,316–2,332)
 - Cap sealed before transport; label contents, date, location, UN numbers for ferricyanide/iron compounds
 - Drained remotely via external 2" NPT bulkhead fitting with camlock on the container end wall centerline (Yd=1181mm, Z=200mm) — no need to open cargo doors

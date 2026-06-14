@@ -67,7 +67,7 @@ from tbs_constants import (
     FSKID_X, FSKID_YD, F1_Z, F2_Z, F3_Z,
     EQPANEL_X, EQPANEL_T, EQPANEL_Z_LO, EQPANEL_Z_HI,
     EQPANEL_YD, EQPANEL_YD_SPAN,
-    IBC_COL_X, IBC_W, IBC_D, IBC_H_600, IBC_PALLET_H, IBC_BOTTLE_INSET,
+    IBC_COL_X, IBC_W, IBC_D, IBC_H_600, IBC_H_1000, IBC_PALLET_H, IBC_BOTTLE_INSET,
     BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y,
     IBC_FRAME_RHS,
     IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD,
@@ -987,18 +987,19 @@ def ibc_stack(alpha=0.55):
 
     Near column (Yd=30): Brown developer below, Blue #1 on top.
     Far column (Yd=1316): Waste below, Blue #2 on top. X spans 4674–5893.
+    ibc-reconfig-v2: 1000L caged composite totes (1168mm), direct-stacked to 2336mm.
     `alpha` sets the bottle translucency (lower = more transparent).
     """
     parts = []
     pal = IBC_PALLET_H
     inset = IBC_BOTTLE_INSET
-    bottle_h = IBC_H_600 - pal - 20   # leave 20mm for the cage top
+    bottle_h = IBC_H_1000 - pal - 20   # leave 20mm for the cage top
 
     totes = [
         ("IBC Brown (developer)", BROWN_IBC_Y, 0, C_IBC_BROWN),
-        ("IBC Blue #1", BLUE_IBC_Y, IBC_H_600, C_IBC_BLUE),
+        ("IBC Blue #1", BLUE_IBC_Y, IBC_H_1000, C_IBC_BLUE),
         ("IBC Waste", WASTE_IBC_Y, 0, C_IBC_WASTE),
-        ("IBC Blue #2", IBC_FAR_Y, IBC_H_600, C_IBC_BLUE),
+        ("IBC Blue #2", IBC_FAR_Y, IBC_H_1000, C_IBC_BLUE),
     ]
     for nm, yd, z0, col in totes:
         parts.append(ruby_box(f"{nm} pallet",
@@ -1035,111 +1036,64 @@ def ruby_tri(name, p1, p2, p3, thick, color=None, alpha=None):
 
 
 def ibc_rack():
-    """Simplified 50×50 RHS portal rack supporting the upper IBC tier.
+    """ibc-reconfig-v2 RESTRAINT frame — a SINGLE FRONT PORTAL.
 
-    Corridor uprights (Yd 1046/1316) at three X stations, longitudinal spine
-    beams, and cantilever platform cross-beams under the top totes at Z≈1010.
+    The 1000L caged totes DIRECT-STACK (no load-bearing deck — 52mm headroom), are
+    non-removable, and are trapped by the side + sealed-end walls. So restraint is
+    the front portal + front retaining bars + D-ring lashing; the deep mid/back
+    corridor stations of the old load-bearing rack are dropped. The portal (at
+    RWK_X_UP=4734) also gives the right-walkway cantilever arms their clamp point
+    and mounts the (forward) wet-end panel.
     """
     parts = []
     s = IBC_FRAME_RHS                   # 50×50 RHS
-    plat_z = IBC_H_600                  # 1010 — top tier rests here
-    beam_z = plat_z - s                 # cross-beams top flush with 1010
+    top_z = 2 * IBC_H_1000 - 40         # 2296 — restraint reaches near the stack top
     yd_near, yd_far = 1046, 1316        # plumbing-corridor edges
-    x_stations = [IBC_COL_X + 60,
-                  IBC_COL_X + IBC_W / 2 - s / 2,
-                  IBC_COL_X + IBC_W - 60 - s]
-
-    # Uprights at the two corridor edges, three X stations.
-    for xs in x_stations:
-        for yd in (yd_near, yd_far - s):
-            parts.append(ruby_box("Rack Upright",
-                                  xs, yd, 0, s, s, plat_z, color=C_STEEL))
-
-    # Longitudinal spine beams tying the upright tops (along X).
-    spine_len = x_stations[-1] + s - x_stations[0]
-    for yd in (yd_near, yd_far - s):
-        parts.append(ruby_box("Rack Spine",
-                              x_stations[0], yd, beam_z, spine_len, s, s,
-                              color=C_STEEL))
-
-    # Platform cross-beams (along Yd) — now SIMPLY SUPPORTED: propped at the
-    # corridor uprights AND at the container walls (via the wall brackets below),
-    # so the upper totes are no longer cantilevered. Span wall-to-wall.
-    near_end, far_end = BLUE_IBC_Y, IBC_FAR_Y + IBC_D   # 30 .. 2332 (beam outer ends)
-    for xs in x_stations:
-        parts.append(ruby_box("Rack Platform Beam",
-                              xs, near_end, beam_z, s, far_end - near_end, s,
-                              color=C_STEEL))
-
-    # ── Equipment-panel support frame: extend the MIDDLE corridor station up to
-    # the panel top (EQPANEL_Z_HI) and close it into a rectangle the wet-end panel
-    # bolts to — two corridor uprights + top rail + floor-level beam. The panel
-    # butts the film-plane (-X) face of this station. ──
-    mid_xs = x_stations[1]
-    for yd in (yd_near, yd_far - s):
-        parts.append(ruby_box("Panel Frame Upright",
-                              mid_xs, yd, plat_z, s, s, EQPANEL_Z_HI - plat_z,
-                              color=C_STEEL))
-    parts.append(ruby_box("Panel Frame Top Rail",
-                          mid_xs, yd_near, EQPANEL_Z_HI - s, s, yd_far - yd_near, s,
-                          color=C_STEEL))
-    parts.append(ruby_box("Panel Frame Floor Beam",
-                          mid_xs, yd_near, 0, s, yd_far - yd_near, s,
-                          color=C_STEEL))
-
+    up_yds = (yd_near, yd_far - s)
+    fx = RWK_X_UP                       # 4734 — front portal uprights (walkway arms clamp here)
+    front_x = IBC_COL_X                 # 4674 — IBC front (retaining bars)
     c_bolt = "#3A3A42"
 
-    # ── Floor feet: 150×150×12 base flange plate ON the floor + 4 M12 anchor
-    # bolts through the plate into the slab under each corridor upright — fixes
-    # the frame down (vertical + uplift restraint). ──
-    fp, ft, bpc = IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD // 2
-    for xs in x_stations:
-        for yd in (yd_near, yd_far - s):
-            cx, cy = xs + s / 2, yd + s / 2
-            parts.append(ruby_box("Foot Flange Plate",
-                                  cx - fp / 2, cy - fp / 2, 0, fp, fp, ft,
-                                  color=C_STEEL))
-            for dx in (-bpc, bpc):
-                for dy in (-bpc, bpc):
-                    parts.append(ruby_cylinder("Foot Anchor Bolt M12",
-                                               cx + dx, cy + dy, 0, 7, ft + 4,
-                                               color=c_bolt, axis="z"))
+    # Front portal: two full-height uprights + top tie + floor beam.
+    for yd in up_yds:
+        parts.append(ruby_box("Front Portal Upright", fx, yd, 0, s, s, top_z, color=C_STEEL))
+    parts.append(ruby_box("Front Portal Top Tie", fx, yd_near, top_z - s, s, yd_far - yd_near, s, color=C_STEEL))
+    parts.append(ruby_box("Front Portal Floor Beam", fx, yd_near, 0, s, yd_far - yd_near, s, color=C_STEEL))
+    # Panel-mount rail tying the (forward) panel face back to the portal at the top.
+    parts.append(ruby_box("Panel Mount Rail", fx, yd_near, EQPANEL_Z_HI - s,
+                          (EQPANEL_X + EQPANEL_T) - fx, yd_far - yd_near, s, color=C_STEEL))
 
-    # ── Load-bearing wall seat brackets: a welded knee bracket props each
-    # platform-beam OUTER end at the near (Yd=0) and far (Yd=C_WID) walls,
-    # turning the cantilever into a simple span. Each bracket is ONE welded
-    # fabrication (Simpson-style shelf bracket): a vertical back-plate M12-bolted
-    # to the wall, a horizontal seat the beam end lands on, and a triangular
-    # gusset web welded between the two. ~110 kg per bracket. ──
-    wpw, wpt = IBC_WBKT_PLATE_W, IBC_WBKT_PLATE_T          # back-plate 150(X) × 8(thick)
-    proj, seat_t, gh = IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, IBC_WBKT_GUSSET_H  # seat projection, thickness, gusset depth
-    sw = s + 20                         # seat width in X (beam + 10 each side)
-    for xs in x_stations:
-        gx = xs + s / 2 - 4             # gusset web (8mm) centerd on the beam
-        for wall_yd, dir_in in ((0, 1), (C_WID, -1)):
-            tip = wall_yd + dir_in * proj            # seat outer tip, under the beam end
-            seat_y0 = min(wall_yd, tip)
-            plate_y0 = wall_yd if dir_in > 0 else wall_yd - wpt
-            # vertical back-plate bolted to the wall
-            parts.append(ruby_box("Wall Bracket Plate",
-                                  xs - 50, plate_y0, beam_z - gh - 10,
-                                  wpw, wpt, gh + seat_t + 60, color=C_STEEL))
-            # horizontal seat the beam end rests on
-            parts.append(ruby_box("Wall Bracket Seat",
-                                  xs - 10, seat_y0, beam_z - seat_t,
-                                  sw, proj, seat_t, color=C_STEEL))
-            # triangular gusset web welded between back-plate and seat tip
-            parts.append(ruby_tri("Wall Bracket Gusset",
-                                  (gx, tip, beam_z - seat_t),
-                                  (gx, wall_yd, beam_z - seat_t),
-                                  (gx, wall_yd, beam_z - seat_t - gh),
-                                  8, color=C_STEEL))
-            # 4× M12 wall anchor bolts through the back-plate (clear of the web)
-            for bx in (xs - 30, xs + 80):
-                for bz in (beam_z - gh + 30, beam_z - seat_t + 25):
-                    parts.append(ruby_cylinder("Bracket Anchor Bolt M12",
-                                               bx, plate_y0 - 10, bz, 7, wpt + 20,
-                                               color=c_bolt, axis="y"))
+    # Floor feet under the two front uprights (150×150×12 plate + 4× M12 anchors).
+    fp, ft, bpc = IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD // 2
+    for yd in up_yds:
+        cx, cy = fx + s / 2, yd + s / 2
+        parts.append(ruby_box("Foot Flange Plate", cx - fp / 2, cy - fp / 2, 0, fp, fp, ft, color=C_STEEL))
+        for dx in (-bpc, bpc):
+            for dy in (-bpc, bpc):
+                parts.append(ruby_cylinder("Foot Anchor Bolt M12", cx + dx, cy + dy, 0, 7, ft + 4, color=c_bolt, axis="z"))
+
+    # Front retaining bars at the IBC front face (both tiers), tied back to the portal.
+    bar_zs = (560, 1760)
+    for y0, y1 in ((0, yd_near + s), (yd_far - s, C_WID)):
+        for bz in bar_zs:
+            parts.append(ruby_box("Front Retaining Bar", front_x, y0, bz, s, y1 - y0, s, color=C_STEEL))
+    for yd in up_yds:
+        for bz in bar_zs:
+            parts.append(ruby_box("Front Bar Stub", front_x, yd, bz, fx - front_x + s, s, s, color=C_STEEL))
+
+    # D-ring lashing holders on the front bars.
+    for ydh in (520, C_WID - 520):
+        for bz in bar_zs:
+            parts.append(ruby_cylinder("D-Ring Holder", front_x - 6, ydh, bz + s / 2, 16, 10, color=C_STEEL, axis="x"))
+
+    # Wall joist hangers (Simpson U-pocket) at each front-bar wall end.
+    for wall_yd, din in ((0, 1), (C_WID, -1)):
+        for bz in bar_zs:
+            ht, dep = 4, 70
+            p_y = wall_yd if din > 0 else wall_yd - ht
+            s_y = wall_yd if din > 0 else wall_yd - dep
+            parts.append(ruby_box("Wall Hanger Plate", front_x - 8, p_y, bz - 30, s + 16, ht, s + 70, color=C_STEEL))
+            parts.append(ruby_box("Wall Hanger Seat", front_x - 4, s_y, bz - ht, s + 8, dep, ht, color=C_STEEL))
 
     return '\n'.join(parts)
 
@@ -1997,23 +1951,23 @@ def ruby_tee(name, node, run_dir, branch_dir, r, color=None, alpha=None, n=16):
 def water_plumbing():
     """Water/waste plumbing routed orthogonally with swept-torus elbow fittings
     at every bend (per skill_plumbing_drawing), kept clear of the IBC footprint
-    (X 4674-5893, Y 30-1046 & 1316-2332, Z 0-2020): fill runs over the tote tops
-    (Z>2020); drain/suction runs stay in the clear corridor (Y 1046-1316) in
-    separate lanes; the tray-pickup and spray runs drop to the floor and leave
-    the IBC zone (X<4674) before traversing. Blue=fresh/process, brown=developer,
-    gray=waste."""
+    (X 4674-5893, Y 30-1046 & 1316-2332, Z 0-2336): ALL runs stay in the clear
+    corridor (Y 1046-1316) — the direct-stack totes leave only 52mm headroom, so
+    the Blue fill enters the tote SIDES near the top (no over-the-top run) and the
+    drains/suctions run in separate corridor lanes; the tray-pickup and spray runs
+    drop to the floor and leave the IBC zone (X<4674) before traversing.
+    Blue=fresh/process, brown=developer, gray=waste."""
     pr = 12
     nearX = IBC_COL_X + IBC_W / 2           # 5283 — IBC column center X
     nY = BLUE_IBC_Y + IBC_D / 2            # 538  — near col center (Blue #1 fill)
     fY = IBC_FAR_Y + IBC_D / 2            # 1824 — far col center (Blue #2 fill)
-    topZ = 2 * IBC_H_600                   # 2020 — IBC stack top
-    overZ = topZ + 230                     # 2250 — clear height over the totes
+    topZ = 2 * IBC_H_1000                  # 2336 — IBC stack top (direct-stack, 52mm headroom)
     pumpZ = PUMP_H_LO                      # 1370 — pump inlet bottom
     pumpX = EQPANEL_X - 50                  # pump inlet X — tracks panel
     cc = 1181                              # corridor centerline Y
     floor = 60                             # floor-run height
-    upVZ = IBC_H_600 + IBC_VALVE_Z         # 1195 — upper-tier valve Z
-    loVZ = IBC_VALVE_Z                     # 185  — lower-tier valve Z
+    upVZ = IBC_H_1000 + IBC_VALVE_Z        # 1353 — upper-tier valve Z (Blue totes)
+    loVZ = IBC_VALVE_Z                     # 185  — lower-tier valve Z (Brown/Waste)
     # Pump inlets (per equipment_panel): left col Y=1109 → P-01/P-04, right col
     # Y=1253 → P-02/P-03; rows Z=1370 (bottom) / 1628 (upper). Two riser X-lanes
     # per column (rxA/rxB) so the four suction risers never overlap.
@@ -2025,32 +1979,31 @@ def water_plumbing():
     def pipe(nm, wp, col):
         parts.append(ruby_pipe_run(nm, wp, pr, color=col))
 
-    # Exterior FILL (blue): trunk runs in along the corridor centerline from the
-    # sealed wall to a tee set BACK behind the panel-frame top rail; the cross-arm
-    # runs in Yd directly over each Blue tote and drops STRAIGHT down into it.
-    # Moving the tee back clears the new top rail (X 5258-5308, Z 2210-2260) and
-    # removes the long forward over-the-top run on each side.
-    fillTeeX = PANEL_FRAME_X + 150         # 5408 — behind the top rail
-    pipe("Fill Trunk", [(C_LEN, EXT_FILL_YD, overZ), (fillTeeX, cc, overZ)], C_BLUE)
-    parts.append(ruby_tee("Fill Tee", (fillTeeX, cc, overZ),
-                          (0, 1, 0), (1, 0, 0), pr, color=C_BLUE))
-    # Drop ENDS BELOW the stack top (topZ=2*IBC_H_600) so the pipe penetrates the
-    # tote's top cap and reads as connected — ending at topZ+20 left it hovering
-    # ~40mm above the bottle, looking disconnected from Blue #1/#2.
-    fill_in_z = topZ - 170                 # ~1850 — penetrates the Blue tote's top cap
-    pipe("Fill → Blue #1",
-         [(fillTeeX, cc, overZ), (fillTeeX, nY, overZ), (fillTeeX, nY, fill_in_z)],
-         C_BLUE)
-    pipe("Fill → Blue #2",
-         [(fillTeeX, cc, overZ), (fillTeeX, fY, overZ), (fillTeeX, fY, fill_in_z)],
-         C_BLUE)
-    # Round fill flange on each Blue-tote lid where the drop enters — the 3D analog
-    # of the round flange drawn on ibc-stacking sheet 4 (a disc around the pipe at
-    # the tote top cap, topZ=2020).
+    # Exterior Blue FILL (gravity) — into the SIDES of the two Blue totes NEAR THE
+    # TOP, NOT the caps (only 52mm headroom — no top-cap access). The X1 trunk runs
+    # in the clear corridor to a tee placed NEAR X1, then a branch enters each Blue
+    # tote's corridor-facing side near the top; both are gravity-linked (fed from
+    # the same tee at the same height, so they equalize at ~800L each).
+    fillTeeX = C_LEN - 240                 # 5653 — tee near X1 (just in from the sealed wall)
+    entryZ   = topZ - 180                  # 2156 — side entry near the top of the Blue totes
+    pipe("X1 Blue Fill Trunk",
+         [(C_LEN, EXT_FILL_YD, EXT_FILL_H), (fillTeeX, cc, EXT_FILL_H)], C_BLUE)
+    parts.append(ruby_tee("Blue Fill Tee", (fillTeeX, cc, EXT_FILL_H),
+                          (0, 1, 0), (0, 0, -1), pr, color=C_BLUE))
+    # Branch into Blue #1 (near col, corridor face EQPANEL_YD) near the top.
+    pipe("Fill → Blue #1 side",
+         [(fillTeeX, cc, EXT_FILL_H), (fillTeeX, cc, entryZ),
+          (fillTeeX, EQPANEL_YD, entryZ), (fillTeeX, EQPANEL_YD - 60, entryZ)], C_BLUE)
+    # Branch into Blue #2 (far col, corridor face EQPANEL_YD_FAR) near the top.
+    pipe("Fill → Blue #2 side",
+         [(fillTeeX, cc, entryZ), (fillTeeX, EQPANEL_YD_FAR, entryZ),
+          (fillTeeX, EQPANEL_YD_FAR + 60, entryZ)], C_BLUE)
+    # Round fill flange on each Blue tote's corridor face where the branch enters.
     flange_r, flange_h = 36, 16
-    for fl_nm, tY in (("Fill Flange Blue #1", nY), ("Fill Flange Blue #2", fY)):
-        parts.append(ruby_cylinder(fl_nm, fillTeeX, tY, topZ - flange_h / 2,
-                                   flange_r, flange_h, color=C_STEEL, axis="z"))
+    parts.append(ruby_cylinder("Fill Flange Blue #1", fillTeeX, EQPANEL_YD - flange_h / 2,
+                               entryZ, flange_r, flange_h, color=C_STEEL, axis="y"))
+    parts.append(ruby_cylinder("Fill Flange Blue #2", fillTeeX, EQPANEL_YD_FAR - flange_h / 2,
+                               entryZ, flange_r, flange_h, color=C_STEEL, axis="y"))
 
     # Exterior DRAIN PORTS X3/X4 are fed from the DRAIN PUMPS (not straight off the
     # totes): P-05 (Brown drain) → X3, P-03 (Waste evac) → X4.  Each run leaves the

@@ -424,7 +424,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Front Retaining Bar
   grp = ents.add_group
   grp.name = "Front Retaining Bar"
-  face = grp.entities.add_face([4674.mm,0.mm,560.mm], [4724.mm,0.mm,560.mm], [4724.mm,1096.mm,560.mm], [4674.mm,1096.mm,560.mm])
+  face = grp.entities.add_face([4654.mm,0.mm,560.mm], [4674.mm,0.mm,560.mm], [4674.mm,1096.mm,560.mm], [4654.mm,1096.mm,560.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Front Portal Upright"] || model.materials.add("Front Portal Upright")
@@ -435,7 +435,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Front Retaining Bar
   grp = ents.add_group
   grp.name = "Front Retaining Bar"
-  face = grp.entities.add_face([4674.mm,0.mm,1760.mm], [4724.mm,0.mm,1760.mm], [4724.mm,1096.mm,1760.mm], [4674.mm,1096.mm,1760.mm])
+  face = grp.entities.add_face([4654.mm,0.mm,1760.mm], [4674.mm,0.mm,1760.mm], [4674.mm,1096.mm,1760.mm], [4654.mm,1096.mm,1760.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Front Portal Upright"] || model.materials.add("Front Portal Upright")
@@ -446,7 +446,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Front Retaining Bar
   grp = ents.add_group
   grp.name = "Front Retaining Bar"
-  face = grp.entities.add_face([4674.mm,1266.mm,560.mm], [4724.mm,1266.mm,560.mm], [4724.mm,2362.mm,560.mm], [4674.mm,2362.mm,560.mm])
+  face = grp.entities.add_face([4654.mm,1266.mm,560.mm], [4674.mm,1266.mm,560.mm], [4674.mm,2362.mm,560.mm], [4654.mm,2362.mm,560.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Front Portal Upright"] || model.materials.add("Front Portal Upright")
@@ -457,7 +457,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Front Retaining Bar
   grp = ents.add_group
   grp.name = "Front Retaining Bar"
-  face = grp.entities.add_face([4674.mm,1266.mm,1760.mm], [4724.mm,1266.mm,1760.mm], [4724.mm,2362.mm,1760.mm], [4674.mm,2362.mm,1760.mm])
+  face = grp.entities.add_face([4654.mm,1266.mm,1760.mm], [4674.mm,1266.mm,1760.mm], [4674.mm,2362.mm,1760.mm], [4654.mm,2362.mm,1760.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Front Portal Upright"] || model.materials.add("Front Portal Upright")
@@ -1259,7 +1259,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Equipment Panel (ply)
   grp = ents.add_group
   grp.name = "Equipment Panel (ply)"
-  face = grp.entities.add_face([5240.mm,1046.mm,250.mm], [5258.mm,1046.mm,250.mm], [5258.mm,1316.mm,250.mm], [5240.mm,1316.mm,250.mm])
+  face = grp.entities.add_face([4874.mm,1046.mm,250.mm], [4892.mm,1046.mm,250.mm], [4892.mm,1316.mm,250.mm], [4874.mm,1316.mm,250.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2060.mm)
   mat = model.materials["Equipment Panel (ply)"] || model.materials.add("Equipment Panel (ply)")
@@ -1270,7 +1270,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Pump P-01 (Blue)
   grp = ents.add_group
   grp.name = "Pump P-01 (Blue)"
-  face = grp.entities.add_face([5140.mm,1045.5.mm,1370.mm], [5240.mm,1045.5.mm,1370.mm], [5240.mm,1172.5.mm,1370.mm], [5140.mm,1172.5.mm,1370.mm])
+  face = grp.entities.add_face([4774.mm,1045.5.mm,1370.mm], [4874.mm,1045.5.mm,1370.mm], [4874.mm,1172.5.mm,1370.mm], [4774.mm,1172.5.mm,1370.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(218.mm)
   mat = model.materials["Pump P-01 (Blue)"] || model.materials.add("Pump P-01 (Blue)")
@@ -1281,7 +1281,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Pump P-02 (Brown)
   grp = ents.add_group
   grp.name = "Pump P-02 (Brown)"
-  face = grp.entities.add_face([5140.mm,1189.5.mm,1370.mm], [5240.mm,1189.5.mm,1370.mm], [5240.mm,1316.5.mm,1370.mm], [5140.mm,1316.5.mm,1370.mm])
+  face = grp.entities.add_face([4774.mm,1189.5.mm,1370.mm], [4874.mm,1189.5.mm,1370.mm], [4874.mm,1316.5.mm,1370.mm], [4774.mm,1316.5.mm,1370.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(218.mm)
   mat = model.materials["Pump P-01 (Blue)"] || model.materials.add("Pump P-01 (Blue)")
@@ -1292,7 +1292,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Pump P-04 (Tray drain)
   grp = ents.add_group
   grp.name = "Pump P-04 (Tray drain)"
-  face = grp.entities.add_face([5140.mm,1045.5.mm,1628.mm], [5240.mm,1045.5.mm,1628.mm], [5240.mm,1172.5.mm,1628.mm], [5140.mm,1172.5.mm,1628.mm])
+  face = grp.entities.add_face([4774.mm,1045.5.mm,1628.mm], [4874.mm,1045.5.mm,1628.mm], [4874.mm,1172.5.mm,1628.mm], [4774.mm,1172.5.mm,1628.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(218.mm)
   mat = model.materials["Pump P-01 (Blue)"] || model.materials.add("Pump P-01 (Blue)")
@@ -1303,7 +1303,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Pump P-03 (Waste evac)
   grp = ents.add_group
   grp.name = "Pump P-03 (Waste evac)"
-  face = grp.entities.add_face([5140.mm,1189.5.mm,1628.mm], [5240.mm,1189.5.mm,1628.mm], [5240.mm,1316.5.mm,1628.mm], [5140.mm,1316.5.mm,1628.mm])
+  face = grp.entities.add_face([4774.mm,1189.5.mm,1628.mm], [4874.mm,1189.5.mm,1628.mm], [4874.mm,1316.5.mm,1628.mm], [4774.mm,1316.5.mm,1628.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(218.mm)
   mat = model.materials["Pump P-01 (Blue)"] || model.materials.add("Pump P-01 (Blue)")
@@ -1314,7 +1314,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Pump P-05 (Brown drain)
   grp = ents.add_group
   grp.name = "Pump P-05 (Brown drain)"
-  face = grp.entities.add_face([5140.mm,1189.5.mm,1996.mm], [5240.mm,1189.5.mm,1996.mm], [5240.mm,1316.5.mm,1996.mm], [5140.mm,1316.5.mm,1996.mm])
+  face = grp.entities.add_face([4774.mm,1189.5.mm,1996.mm], [4874.mm,1189.5.mm,1996.mm], [4874.mm,1316.5.mm,1996.mm], [4774.mm,1316.5.mm,1996.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(218.mm)
   mat = model.materials["Pump P-01 (Blue)"] || model.materials.add("Pump P-01 (Blue)")
@@ -1326,7 +1326,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "ACC-01 Accumulator"
   ge = grp.entities
-  circle = ge.add_circle([5177.mm,1109.mm,1996.mm], [0,0,1], 63.5.mm, 24)
+  circle = ge.add_circle([4811.mm,1109.mm,1996.mm], [0,0,1], 63.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(150.mm)
@@ -1339,7 +1339,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Filter F1 (50µ)"
   ge = grp.entities
-  circle = ge.add_circle([5175.mm,1181.mm,250.mm], [0,0,1], 65.mm, 24)
+  circle = ge.add_circle([4809.mm,1181.mm,250.mm], [0,0,1], 65.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(340.mm)
@@ -1352,7 +1352,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Filter F2 (5µ)"
   ge = grp.entities
-  circle = ge.add_circle([5175.mm,1181.mm,620.mm], [0,0,1], 65.mm, 24)
+  circle = ge.add_circle([4809.mm,1181.mm,620.mm], [0,0,1], 65.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(340.mm)
@@ -1365,7 +1365,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Filter F3 (GAC)"
   ge = grp.entities
-  circle = ge.add_circle([5175.mm,1181.mm,990.mm], [0,0,1], 65.mm, 24)
+  circle = ge.add_circle([4809.mm,1181.mm,990.mm], [0,0,1], 65.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(340.mm)
@@ -1377,7 +1377,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Drain-riser spine (ply)
   grp = ents.add_group
   grp.name = "Drain-riser spine (ply)"
-  face = grp.entities.add_face([5240.mm,1223.mm,250.mm], [5420.mm,1223.mm,250.mm], [5420.mm,1241.mm,250.mm], [5240.mm,1241.mm,250.mm])
+  face = grp.entities.add_face([4874.mm,1223.mm,250.mm], [5420.mm,1223.mm,250.mm], [5420.mm,1241.mm,250.mm], [4874.mm,1241.mm,250.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(1970.mm)
   mat = model.materials["Equipment Panel (ply)"] || model.materials.add("Equipment Panel (ply)")
@@ -1399,7 +1399,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Drain-riser spine top shelf (ply)
   grp = ents.add_group
   grp.name = "Drain-riser spine top shelf (ply)"
-  face = grp.entities.add_face([5240.mm,1160.mm,2220.mm], [5460.mm,1160.mm,2220.mm], [5460.mm,1241.mm,2220.mm], [5240.mm,1241.mm,2220.mm])
+  face = grp.entities.add_face([4874.mm,1160.mm,2220.mm], [5460.mm,1160.mm,2220.mm], [5460.mm,1241.mm,2220.mm], [4874.mm,1241.mm,2220.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Equipment Panel (ply)"] || model.materials.add("Equipment Panel (ply)")
@@ -2056,7 +2056,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
 
 # ── Slide the existing equipment panel forward to the film-safe position ──
 pinst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Equipment Panel" }
-pinst.transform!(Geom::Transformation.translation([-366.mm,0,0])) if pinst
+pinst.transform!(Geom::Transformation.translation([0.mm,0,0])) if pinst
 
 # ── In-model labels (Labels tag; visible in the "Labeled" scene) ──
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Blue #1 contents" }

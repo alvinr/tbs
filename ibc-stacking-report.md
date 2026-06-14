@@ -103,7 +103,7 @@ mounts the (forward) wet-end equipment panel.
 | Material | 50 × 50 × 3mm RHS mild steel (A500 Grade B) |
 | Front-portal uprights | 2 full-height (Z 0–2296mm) at the IBC front (X≈4734), Yd 1046/1266 |
 | Floor anchorage | 2 × 150 × 150 × 12mm flange-plate feet, 4 × M12 anchors each |
-| Front retaining bars | 4 × 50×50×3 RHS at the IBC front (Z560 + Z1760), wall → upright per column |
+| Front retaining bars | 4 × 50×20×3 RHS at the IBC front (Z560 + Z1760, seated in the 25mm gap to the film rail), wall → upright per column |
 | Wall joist hangers | 4 × Simpson-style U-pocket, face-bolted to the side walls (2 × M12 each), receive the front-bar wall ends |
 | D-ring lashing | holders on the front bars, 1,100 kg WLL |
 | Panel mount | the portal carries the forward wet-end panel + the right-walkway cantilever arms |
@@ -124,7 +124,7 @@ front retaining bars + D-ring lashing must resist the totes' inertia under
 braking/cornering (loaded mass 4,919 kg, worst-case CG at Z=1,306mm — see the
 [weight-distribution report](weight-distribution-report.md)).
 
-- **Front retaining bars** (50×50×3 RHS) span wall→upright (~1,046mm) and take each tote's
+- **Front retaining bars** (50×20×3 RHS) span wall→upright (~1,046mm) and take each tote's
   longitudinal (−X) thrust into the floor feet + wall hangers.
 - **D-ring lashing** (1,100 kg WLL each) over each stack provides vertical tie-down and
   supplements lateral restraint; the totes are otherwise wall-trapped.

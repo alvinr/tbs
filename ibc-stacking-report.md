@@ -4,20 +4,18 @@
 
 ## 1. Purpose
 
-TBS-001's three-circuit water system requires four 600 L IBC totes arranged in a
+TBS-001's three-circuit water system requires four 1000 L caged composite totes arranged in a
 2×2 stack in the right end zone (X=4674–5893mm) of the container. Two Blue supply
 totes (IBC-1 and IBC-2) sit on top; one Brown recycle tote (IBC-3) and one Waste tote
-(IBC-4) sit on the bottom. A welded mild steel stacking frame supports the upper tier,
-restrains all four totes for transport, and maintains a 270mm plumbing corridor
+(IBC-4) sit on the bottom. A welded mild steel **restraint-only** frame restrains all four direct-stacked totes for transport, and maintains a 270mm plumbing corridor
 between the near and far columns for internal pipe routing, valves, and the equipment
 panel.
 
 **Design goals:**
 
-- Support 4× 600 L IBC totes in a 2×2 stack (2 columns × 2 tiers)
+- Restrain 4× 1000 L caged totes in a 2×2 direct-stack (2 columns × 2 tiers)
 - Restrain all totes for road transport with D-ring lashing points
 - Maintain a central plumbing corridor for pipe routing and valve access
-- Provide access gates for bottom-tier drain valves
 - Enable external fill and drain without opening cargo doors
 - Fit within the 2388mm container ceiling height with adequate clearance
 
@@ -38,18 +36,18 @@ panel.
 
 | Parameter | Value |
 |-----------|-------|
-| Model | Schutz Ecobulk MX 640 L (or equivalent US 48×40 composite tote) |
-| Capacity | 600 L (~158 US gal) usable per tote |
-| Overall dimensions | 1,219 × 1016 × 1010mm (W × D × H) |
+| Model | Schütz Ecobulk MX 1000L (or equivalent US 48×40 caged composite tote) |
+| Capacity | 1000 L (~264 US gal) per tote. **"600 L" / "1000 L" are fill levels, not tote sizes** — all four totes are identical (a 600 L *caged* tote does not exist) |
+| Overall dimensions | 1,219 × 1016 × 1168mm (W × D × H) |
 | Pallet format | US 48" × 40" composite |
 | Pallet base height | 168mm (includes feet/runners) |
 | Cage upright tube | Ø25mm |
 | Cage top rail | 25mm OD |
 | Drain valve | DN50 butterfly valve, S60×6 thread, at Z=185mm above IBC base |
-| Fill cap | DN150 screw cap on top |
-| Tare weight | ~55 kg per tote |
-| Full weight (600 L) | ~655 kg per tote |
-| Total system weight (4 totes full) | ~2,620 kg |
+| Fill | **side entry near the top** (no top-cap access — only 52mm headroom stacked) |
+| Tare weight | ~65 kg per tote |
+| Full weight (1000 L) | ~1,065 kg per tote |
+| Total tare (4 totes) | ~260 kg; water load see [weight-distribution report](weight-distribution-report.md) |
 
 ### 2.2 Tote Assignments
 
@@ -68,98 +66,70 @@ panel.
 | Far column Yd | 1316–2332mm (pushed to far wall, 30mm clearance) |
 | Column X range | 4674–5893mm (right-justified to sealed end wall) |
 | Plumbing corridor | Yd=1046–1316mm (270mm gap between columns) |
-| Single IBC height | 1010mm |
-| Stacked height (2 totes + frame + mat) | 2020mm (totes) + 50mm (frame beam) + 12mm (rubber mat) = 2082mm |
-| Ceiling clearance | 306mm (2388 − 2082mm) |
+| Single IBC height | 1168mm |
+| Stacked height (2 totes, direct-stack cage-on-cage) | 2336mm (2 × 1168mm — no deck/mat between tiers) |
+| Ceiling clearance | 52mm (2388 − 2336mm) — tight but transport-validated (see [weight report](weight-distribution-report.md)) |
 
 ---
 
-## 3. Stacking Frame
+## 3. Stacking Frame — Restraint-Only Front Portal
 
 ### 3.1 General Arrangement
 
-The frame is a portal spine structure running along the 270mm plumbing corridor.
-The platform cross-beams supporting the upper tier are **simply supported
-wall-to-wall** — propped at the two corridor uprights *and* at the container side
-walls by welded seat brackets. (This replaces the earlier cantilever scheme; see
-[§3.5](#35-structural-validation).) Three bays along X (front/mid/back uprights at
-642mm centers) provide the structural grid. Each of the six corridor uprights is
-anchored to the container floor by a flange-plate foot. The frame has no end posts
-in the X direction — IBCs are loaded from above via the corridor when the right
-walkway is removed.
+The 1000L caged totes **direct-stack cage-on-cage** — the upper tote's pallet base
+bears directly on the lower tote's cage top, leaving only 52mm of ceiling headroom.
+There is no room for (and no need for) a load-bearing platform deck between tiers, so
+the frame is **restraint-only**: it carries no vertical service load, it only keeps the
+totes from moving during transport.
+
+The frame is a **single front portal** at the IBC front: two full-height 50×50×3 RHS
+uprights at the corridor edges (Yd 1046/1266) on floor flange feet. The deep mid/back
+corridor stations, platform cross-beams, X-bracing and wall seat brackets of the
+earlier load-bearing rack are **dropped**. Transport restraint is provided by:
+
+- **front retaining bars** across each column at the IBC front (Z560 + Z1760) that stop
+  the totes sliding out the open front, their wall ends dropped into Simpson-style joist
+  hangers;
+- **D-ring lashing** holders on the front bars, with ratchet straps over each stack;
+- the totes are otherwise trapped by the container side walls (30mm gap) and sealed end wall.
+
+The front portal also gives the right-walkway cantilever arms their clamp point and
+mounts the (forward) wet-end equipment panel.
 
 ### 3.2 Frame Specification
 
 | Parameter | Value |
 |-----------|-------|
 | Material | 50 × 50 × 3mm RHS mild steel (A500 Grade B) |
-| Footprint (X × Yd) | 1284 × 2362mm (wall-to-wall, 3 bays along X) |
-| Total height | 2070mm (floor to top rail) |
-| Corridor uprights | 6 total (3 per side of corridor, at X=0/642/1284mm) |
-| Platform level | Z=1010mm (top of bottom-tier IBCs) |
-| Top rail level | Z=2070mm (top of stacked IBC cages + frame beam) |
-| Bay spacing | 642mm (3 bays: front, mid, back) |
-| Floor anchorage | 6 × 150 × 150 × 12mm flange-plate feet, 4 × M12 anchors each |
-| Wall seat brackets | 6 (one per platform-beam outer end) — welded 8mm back-plate + 10mm seat + 8mm triangular gusset web; load-bearing |
-| Bracket attachment | 4 × M12 to wall corrugation ribs per bracket; gusset web transfers the seat reaction into the back-plate |
-| Top lateral ties | Light clip at each top-beam wall end (restraint only) |
-| Panel support frame | Mid-bay (X=642mm) corridor uprights extended up to the wet-end panel top (Z=2260mm) + top rail + floor-level beam = a rectangle the equipment panel butts (film-plane face) and bolts to |
-| Frame weight | ~144 kg (incl. feet + seat brackets + panel support frame) |
-| Joints | Welded (fillet weld throughout, mitered corners) |
+| Front-portal uprights | 2 full-height (Z 0–2296mm) at the IBC front (X≈4734), Yd 1046/1266 |
+| Floor anchorage | 2 × 150 × 150 × 12mm flange-plate feet, 4 × M12 anchors each |
+| Front retaining bars | 4 × 50×50×3 RHS at the IBC front (Z560 + Z1760), wall → upright per column |
+| Wall joist hangers | 4 × Simpson-style U-pocket, face-bolted to the side walls (2 × M12 each), receive the front-bar wall ends |
+| D-ring lashing | holders on the front bars, 1,100 kg WLL |
+| Panel mount | the portal carries the forward wet-end panel + the right-walkway cantilever arms |
+| Frame weight | ~170 kg (uprights + feet + front bars + hangers + panel mount) |
+| Joints | Welded (fillet weld throughout) |
 
-### 3.3 Platform
+### 3.3 Direct-Stack Junction
 
-The platform sits at Z=1010mm and supports the upper-tier IBCs.
+The upper tote bears directly on the lower tote's galvanized cage top rail at Z=1168mm
+(no platform, mat or lip) — the totes' normal warehouse cage-on-cage stacking interface,
+rated for a full upper tote.
 
-| Parameter | Value |
-|-----------|-------|
-| Platform beams | 50 × 50 × 3mm RHS, spanning each column width |
-| Cross-beams | 50 × 50 × 3mm RHS bridging the plumbing corridor at platform and top rail levels |
-| Anti-slip mat | 12mm closed-cell rubber, one mat per column, placed on platform beams |
-| Anti-rotation lip | 5mm steel plate × 40mm height, fillet-welded to platform beam perimeter |
-| Lip function | Engages IBC cage foot to prevent lateral movement during transport |
+### 3.4 Structural Validation (restraint)
 
-### 3.4 X-Bracing
+The frame carries **no vertical service load** (the totes stack on themselves), so there
+is no platform-beam bending case. The governing check is **transport restraint**: the
+front retaining bars + D-ring lashing must resist the totes' inertia under
+braking/cornering (loaded mass 4,919 kg, worst-case CG at Z=1,306mm — see the
+[weight-distribution report](weight-distribution-report.md)).
 
-Bottom-tier bays include diagonal X-bracing (flat bar) for racking resistance during
-transport. The bracing runs between the front/mid and mid/back uprights on the
-corridor side of each column.
-
-### 3.5 Structural Validation
-
-**Section.** 50 × 50 × 3mm RHS, [A500 Grade B](https://www.astm.org/a0500_a0500m-23.html)
-(minimum yield F<sub>y</sub> = 315 MPa). Second moment of area I = 20.8 cm⁴,
-elastic section modulus Z = 8.34 cm³, E = 200 GPa
-([Atlas Steels — Square & Rectangular Hollow Sections, dimensions & properties](https://www.atlassteels.com.au/documents/Atlas_Technical_Handbook_rev_Aug_2013-web.pdf)).
-
-**Design load.** Worst case is the *camera-ready* state with the top tier holding
-two full Blue totes (water), 655 kg each. Each top tote is carried over the span
-from its container-wall seat bracket to the adjacent corridor upright (L ≈ 1046mm),
-shared across the three platform cross-beams — a governing patch of ≈ 218 kg per
-beam, modeled as a uniform load.
-
-**Cantilever vs. simple span.** Propping the beam end at the wall (rather than
-cantilevering it off the corridor spine) is what makes the section work
-([simply-supported beam](https://www.engineeringtoolbox.com/beams-support-loads-deflection-d_1311.html),
-[cantilever beam](https://www.engineeringtoolbox.com/cantilever-beams-d_1848.html)):
-
-| Load path | Max moment | Bending stress σ = M/Z | Safety factor F<sub>y</sub>/σ | Deflection | Verdict |
-|-----------|-----------|------------------------|-------------------------------|-----------|---------|
-| Cantilever (old) | 1.12 kN·m | 134 MPa | 2.3 | 7.4mm (L/141) | Marginal |
-| **Simple span (new)** | **0.28 kN·m** | **34 MPa** | **9.3** | **0.8mm (L/1300)** | **Ample** |
-
-Converting to a simple span cuts bending stress ~4× and deflection ~9×.
-
-**Reactions & securing.**
-
-- Each **wall seat bracket** carries the simple-span end reaction ≈ **110 kg
-  (1.1 kN)** vertical. The 8mm back-plate bolts to the wall ribs with 4 × M12; the
-  triangular gusset web transfers the seat reaction into the back-plate. At 110 kg
-  the M12 group (≈ 11 kN shear capacity each in Grade 8.8) is loaded to a small
-  fraction of capacity.
-- Each of the **6 corridor uprights** is anchored by a 150 × 150 × 12mm floor
-  flange plate with 4 × M12 anchors, restraining uplift and the lateral (transport)
-  loads carried into the bottom rail.
+- **Front retaining bars** (50×50×3 RHS) span wall→upright (~1,046mm) and take each tote's
+  longitudinal (−X) thrust into the floor feet + wall hangers.
+- **D-ring lashing** (1,100 kg WLL each) over each stack provides vertical tie-down and
+  supplements lateral restraint; the totes are otherwise wall-trapped.
+- **Floor feet** (150×150×12, 4 × M12 each) anchor the uprights against uplift and transfer
+  the lateral loads into the slab.
 
 ---
 
@@ -185,31 +155,21 @@ Converting to a simple span cuts bending stress ~4× and deflection ~9×.
 | Total straps | 4 (2 per tier) |
 | Pre-transport | Tighten all straps; re-check tension after 50 km |
 
-### 4.3 Anti-Rotation Lip
+### 4.3 Wall Trapping
 
-The 40mm steel lip welded around the platform perimeter engages the upper-tier IBC
-cage feet, preventing lateral sliding or rotation. Combined with the ratchet straps
-from above and the pallet sitting on the rubber mat, the upper-tier IBCs are
-positively restrained in all six degrees of freedom.
-
-Bottom-tier IBCs sit on the container floor with their cage feet constrained by the
-frame uprights on three sides (two uprights plus the wall bracket side). Ratchet
-straps provide vertical and lateral restraint.
+There is no anti-rotation lip (no platform). The direct-stacked totes are trapped
+laterally by the container side walls (30mm gap each side) and the sealed end wall;
+the front retaining bars + D-ring ratchet straps restrain the open (−X) front and
+provide vertical tie-down. Together these restrain both tiers in all six DOF.
 
 ---
 
-## 5. Access Gates
+## 5. Drain Valve Access
 
-Removable gate panels at the base of each column provide access to the bottom-tier
-IBC drain valves (DN50 butterfly, corridor-facing at Z=185mm).
-
-| Parameter | Value |
-|-----------|-------|
-| Quantity | 2 (one per column, corridor-facing) |
-| Gate height | 300mm (Z=0–300mm) |
-| Attachment | 4 × M12 hex bolts per gate |
-| Operation | Remove gate panel to access drain valve for maintenance; re-bolt after |
-| Normal operation | Drain pipes connect permanently through gate opening — gate stays installed except for valve maintenance |
+The bottom-tier drain valves (DN50 butterfly, corridor-facing at Z=185mm) are reached
+directly from the **open corridor front** — with the equipment panel moved forward and
+no load-bearing base frame, there are no removable access gates. The operator reaches in
+from the right walkway.
 
 ---
 
@@ -223,7 +183,7 @@ doors.
 
 | Port | Height (Z) | Circuit | Function |
 |------|-----------|---------|----------|
-| X1 | 2250mm | Blue | Fill — above IBC tops (2082mm) for gravity feed; an internal tee (behind the panel-support-frame top rail) splits X1 to BOTH Blue totes |
+| X1 | 2250mm | Blue | Fill — gravity feed; an internal tee (near X1) splits to a SIDE entry near the top of BOTH Blue totes (no top-cap access — 52mm headroom) |
 | X3 | 400mm | Brown | Drain IBC-3 — bottom tier, near column |
 | X4 | 200mm | Waste | Drain IBC-4 — bottom tier, far column |
 
@@ -285,10 +245,10 @@ Eight construction drawings cover the IBC system across two drawing sets:
 
 ### IBC Stacking & Securing (5 sheets)
 
-**Sheet 1 — Cross-section elevation: 2-tier stack, frame, D-rings, ceiling clearance**
+**Sheet 1 — Cross-section elevation: 2-tier direct-stack, restraint front portal, front retaining bars + wall hangers, direct-stack junction, 52mm clearance**
 ![TBS-001 IBC Stacking — Sheet 1](assets/ibc-stacking-sheet1.png)
 
-**Sheet 2 — Fastening details: D-ring lashing, anti-rotation lip, access gate, strap routing**
+**Sheet 2 — Fastening details: front-bar→upright cleat + lash eye, wall joist hanger, ratchet lashing over the stack**
 ![TBS-001 IBC Stacking — Sheet 2](assets/ibc-stacking-sheet2.png)
 
 **Sheet 3 — External plumbing panel: Sealed end wall elevation with 3× bulkhead ports**
@@ -302,13 +262,13 @@ Eight construction drawings cover the IBC system across two drawing sets:
 
 ### IBC Support Frame Fabrication (3 sheets)
 
-**Sheet 1 — Front elevation: Corridor uprights, beams, wall seat brackets, floor flange feet, D-rings, access gates**
+**Sheet 1 — Front elevation: front portal uprights, floor feet, front retaining bars + wall hangers + D-ring holders, direct-stack junction**
 ![TBS-001 IBC Frame — Sheet 1](assets/ibc-frame-sheet1.png)
 
-**Sheet 2 — Side elevation: Three-bay structure, X-bracing, longitudinal beams, floor flange feet**
+**Sheet 2 — Side elevation: single front portal + front bars (end-on) + walkway cantilever arm**
 ![TBS-001 IBC Frame — Sheet 2](assets/ibc-frame-sheet2.png)
 
-**Sheet 3 — Plan view at platform level: Beam layout, wall seat brackets, floor feet, lip perimeter, rubber mats**
+**Sheet 3 — Plan view: front portal + retaining bars + floor feet + IBC footprints + corridor + walkway arms**
 ![TBS-001 IBC Frame — Sheet 3](assets/ibc-frame-sheet3.png)
 
 Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §15
@@ -322,20 +282,16 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
-| 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame uprights, beams, cross-members + mid-bay panel support frame (extended uprights, top rail, floor beam) | 8 | $240–$360 |
-| 12mm steel plate, 150 × 150 cut | Upright floor flange feet | 6 | $25–$45 |
-| 8mm steel plate (back-plates, seats, gussets) | 6 welded wall seat brackets | 1 lot | $50–$80 |
-| 5mm steel plate (flat bar) | Anti-rotation lip (perimeter, ~8 m total) | 1 | $30–$50 |
-| 12mm closed-cell rubber mat (1000 × 1200mm) | Anti-slip platform mats | 2 | $40–$60 |
-| 25mm welded D-ring (McMaster #3641T29) | Lashing points with 6mm mount plates | 8 | $40–$65 |
-| 25mm ratchet strap, 1,100 kg WLL | Transport securing | 4 | $30–$50 |
-| M12 × 40 bolt, Grade 8.8 (into wall ribs) | Wall seat brackets, 4 each | 24 | $25–$45 |
-| M12 floor anchor (wedge/sleeve, container floor) | Upright flange feet, 4 each | 24 | $40–$70 |
-| Flat bar X-bracing | Bottom-tier racking resistance | 4 | $20–$35 |
-| Access gate panels (300mm high, steel) | Removable, 4 × M12 bolts each | 2 | $40–$60 |
-| Welding / fabrication (frame assembly) | ~26–36 hrs labor (incl. feet, seat brackets, panel support frame) | 1 | $1,150–$1,650 |
-| Primer + paint | Anti-corrosion coating | 1 | $40–$60 |
-| **Frame subtotal** | | | **$1,770–$2,630** |
+| 50 × 50 × 3mm RHS mild steel (6 m lengths) | Front-portal uprights + front retaining bars + panel-mount rail | 4 | $120–$180 |
+| 12mm steel plate, 150 × 150 cut | Upright floor flange feet | 2 | $10–$20 |
+| 4mm folded plate | Simpson-style wall joist hangers | 4 | $30–$50 |
+| 25mm welded D-ring (McMaster #3641T29) | Lashing holders on the front bars, 6mm mount plates | 4 | $20–$35 |
+| 25mm ratchet strap, 1,100 kg WLL | Transport securing, over each stack | 4 | $30–$50 |
+| M12 floor anchor (wedge/sleeve, container floor) | Upright flange feet, 4 each | 8 | $15–$30 |
+| M12 × 40 bolt, Grade 8.8 | Wall hangers (2 each) + front-bar cleats | 12 | $12–$22 |
+| Welding / fabrication (frame assembly) | ~14–20 hrs labor (single front portal — much less than the old load-bearing rack) | 1 | $650–$950 |
+| Primer + paint | Anti-corrosion coating | 1 | $30–$50 |
+| **Frame subtotal** | | | **$920–$1,390** |
 
 ### 9.2 External Plumbing Panel
 
@@ -362,18 +318,18 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
-| 600 L IBC tote (Schutz Ecobulk MX or equiv.) | New or reconditioned US 48×40 composite | 4 | $200–$600 |
-| **IBC subtotal** | | | **$200–$600** |
+| 1000 L caged composite IBC tote (Schütz Ecobulk MX 1000 or equiv.) | New or reconditioned US 48×40 caged composite (~65 kg) | 4 | $300–$900 |
+| **IBC subtotal** | | | **$300–$900** |
 
 ### 9.5 Cost Summary
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Stacking frame | $1,770 | $2,630 |
+| Stacking frame (restraint front portal) | $920 | $1,390 |
 | External plumbing panel | $125 | $200 |
 | Internal plumbing | $115 | $185 |
-| IBC totes (4×) | $200 | $600 |
-| **Total** | **$2,210** | **$3,615** |
+| IBC totes (4×) | $300 | $900 |
+| **Total** | **$1,460** | **$2,675** |
 
 ---
 
@@ -388,11 +344,10 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | Every 20 prints | Replace F-3 GAC carbon block cartridge |
 | Every 30 prints | Replace F-2 KDF-55 heavy metal cartridge |
 | Every 6 months | Inspect D-ring welds for cracking; load-test straps |
-| Every 6 months | Inspect rubber mats for compression set; replace if permanently deformed |
-| Every 6 months | Inspect anti-rotation lip welds; check lip height (40mm minimum) |
+| Every 6 months | Inspect D-ring holders + ratchet straps for wear; re-tension straps |
 | Annually | Inspect frame welds (all joints) for fatigue cracking |
 | Annually | Touch up paint on frame where chipped or rusted |
-| Annually | Inspect wall seat bracket bolts and upright floor-anchor bolts for loosening; re-torque to spec |
+| Annually | Inspect front-bar/wall-hanger bolts and upright floor-anchor bolts for loosening; re-torque to spec |
 | Annually | Flush all internal pipes with clean water; inspect for biofilm |
 | As needed | Replace camlock gaskets if leaking |
 | As needed | Clean IBC interiors between circuit changes (bleach rinse + water flush) |

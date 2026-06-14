@@ -134,44 +134,47 @@ separated by a 270mm plumbing corridor, with
 
 ## 5. IBC Stacking Frame — Design Specification
 
-A welded mild steel frame holds the 2×2 IBC stack (4× 600L IBCs total — two
-columns, two tiers each) as a single unit. The frame provides lashing points
-for transport and removable access panels for the lower IBC drain valves.
+A welded mild steel **restraint-only** frame holds the 2×2 IBC stack (4× 1000L
+caged composite totes — two columns, two tiers each, direct-stacked) as a single
+unit. The totes stack cage-on-cage, so the frame does not carry vertical load — it
+only restrains them for transport (front retaining bars + D-ring lashing).
 
 | Item | Specification |
 |------|--------------|
 | Frame material | 50×50×3mm RHS mild steel |
-| Platform height | 1060mm (lower IBC height 1010mm + 50mm clearance plate) |
-| Frame footprint | 2362mm × 1284mm portal frame — platform beams simply supported wall-to-wall (corridor uprights + welded wall seat brackets), 1284mm depth. Corridor uprights at inner IBC edges define the 270mm plumbing corridor between columns |
-| Total loaded height | 2020mm (IBC ×2) — 368mm ceiling clearance ✓ |
-| Lashing points | 25mm D-ring, 4× per tier (8× total), welded at frame corners |
-| Access gates | Bolted removable panels at H=0–300mm (lower IBC drain valve access, ×2) |
-| Anti-rotation | 40mm steel lip on platform perimeter retains upper IBC cage |
-| Center divider | 50×50×3mm RHS cross-member on platform between near/far columns |
-| Panel support frame | Mid-bay corridor uprights extended to Z=2260mm + top rail + floor beam — the wet-end equipment panel butts the film-plane face of this rectangle and bolts to it |
+| Frame type | RESTRAINT-ONLY single **front portal** — the 1000L caged totes direct-stack cage-on-cage (no load-bearing deck), so the frame only restrains them |
+| Uprights | 2 full-height corridor uprights (Yd 1046/1266) at the IBC front (X≈4734) on 150×150×12mm floor flange feet (4× M12 each); define the 270mm plumbing corridor |
+| Front retaining bars | 4× 50×50×3 RHS at the IBC front face (Z560 + Z1760) — stop the totes sliding out the front; each bar's wall end drops into a Simpson-style joist hanger (×4) |
+| Lashing points | 25mm D-ring holders on the front bars (1,100kg WLL); ratchet straps pass over each stack and tie down to them |
+| Total stacked height | 2336mm (2× 1168mm direct-stack) — 52mm ceiling clearance |
+| Panel mount | the front portal also carries the (forward) wet-end equipment panel and the right-walkway cantilever arms |
 | Surface finish | Gray oxide primer + flat black powder coat (interior) |
-| Approx. weight | ~144kg (frame incl. floor flange feet + wall seat brackets + panel support frame) |
+| Approx. weight | ~170kg (uprights + feet + front bars + hangers + panel mount) |
 | Approx. cost | USD $500–$800 (local mild steel fabrication) |
 
-**Why 600L IBCs, not 1,000L:**
+**Why 1000L caged composite (all four totes):**
 
-| IBC type | H (mm) | Stacked pair | Ceiling clearance | Transport safe? |
-|----------|--------|--------------|-------------------|----------------|
-| 1,000L standard | 1,163 | 2326mm | 62mm | NO |
-| **600L** | **1,010** | **2020mm** | **368mm** | **YES** |
-| 800L | 1,116 | 2232mm | 156mm | Marginal |
+All four positions use the 275-gal (≈1000 L) caged composite tote — the only
+food-grade, 48×40-footprint tote stocked. A 600 L *caged* tote does not exist;
+"600 L" / "1000 L" are **fill levels**, not tote sizes. Two cages direct-stack to 2336mm:
 
-**Stacking two 600L IBCs gives 2020mm height — 368mm ceiling clearance**, safe
-for road transport with full load.
+| IBC type | H (mm) | Stacked pair | Ceiling clearance |
+|----------|--------|--------------|-------------------|
+| **1000L caged composite** | **1,168** | **2336mm** | **52mm** |
+
+The 52mm headroom is tight but **transport-validated**: the loaded-transport CG sits at
+Z=1,306mm (static sideways tip threshold ≈42°, ≈20% of the ISO gross limit) — see the
+[weight-distribution report](weight-distribution-report.md). The Blue-on-top layout (two
+Blue clean-supply totes on top, Brown + Waste on the bottom) is retained.
 
 **Raw material suppliers:**
 
 | Item | Supplier | Notes |
 |------|----------|-------|
 | 50×50×3mm RHS mild steel | Pacific Coast Steel, Santa Fe Springs CA | A500 Grade B; ~$4/linear foot |
-| D-ring lashing points (×8) | McMaster-Carr #3641T29 | 1,100kg WLL per ring |
-| M12 bolts (access gate, ×8) | McMaster-Carr or local hardware | SS A2-70 |
-| Anti-slip platform mat | McMaster-Carr #6009K14 | 12mm rubber sheet, 1.2m × 1.0m |
+| D-ring lashing holders (×4) | McMaster-Carr #3641T29 | 1,100kg WLL per ring |
+| M12 bolts (wall hangers + front-bar cleats) | McMaster-Carr or local hardware | SS A2-70 |
+| Simpson-style wall joist hangers (×4) | Simpson Strong-Tie or local | folded 4mm plate, face-mount |
 
 ---
 
@@ -350,7 +353,7 @@ The light trap drum (900mm dia, center ~1181mm from hinge axis) sweeps through e
 ## 11. Source References
 
 1. [ISO 668:2020](https://www.iso.org/standard/76912.html) — Series 1 freight containers: Classification, dimensions and ratings.
-2. [Schutz Ecobulk MX 600L](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — IBC tote specifications and cage dimensions.
+2. [Schütz Ecobulk MX 1000L](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — 1000L caged composite IBC tote specifications and cage dimensions (~65 kg tare; a 600L caged tote does not exist).
 3. [Light Trap Selection Report](light-trap-selection.md) — Revolving drum specification and panel integration.
 4. [Hinged Panel Report](hinged-panel-report.md) — Stepped panel construction and swing-pivot specification.
 5. [Water System Report](water-system-report.md) — IBC layout, plumbing manifold, and pump positions.

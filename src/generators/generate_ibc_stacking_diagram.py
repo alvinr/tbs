@@ -1128,32 +1128,31 @@ def sheet4():
            px(drain_x - 20), py(near_ibc_conn_yd - 80),
            "X3 ← IBC-3\n(DRAIN, BROWN)\n1\" HDPE",
            fs=5.5, color=C_PIPE_BROWN, ha="right", font=FONT)
-    # ── X1: Bulkhead → fill tee (behind top rail) → BOTH Blue totes ───────
-    # Matches the 3D: a tee splits the fill to IBC-1 and IBC-2 (no cross-connect);
-    # each branch drops straight into its tote.
+    # ── X1: Bulkhead → fill tee → SIDE-ENTRY into BOTH Blue totes ─────────
+    # Matches the 3D: a corridor tee splits the fill to IBC-1 and IBC-2 (no
+    # cross-connect); each branch SIDE-ENTERS the tote's corridor face near the
+    # top — NO over-the-cap drop (the 1000L direct-stack leaves ~52mm headroom),
+    # penetrating 150mm past a flange.
     draw_pipe_path(ax,
                    [bh_x, fill_tee_x],
                    [panel_yd, panel_yd],
                    PIPE_OD, PIPE_WALL_T, px, py,
                    fc=C_PIPE_BLUE, ec="#1A4A90", zorder=9)
-    # Two branches off the tee, each running over its tote and turning 90° DOWN
-    # through a round fill flange (drawn end-on as a round flange, not a flat
-    # bar). The branch stops at the flange so it reads as a drop, not a crossing.
-    fill_flange_r = PIPE_OD * 1.6
-    for tote_c in [near_tote_c, far_tote_c]:
-        edir = -1 if tote_c > panel_yd else 1
-        branch_end = tote_c + edir * fill_flange_r * 0.9
+    fill_pen = 150
+    for face_yd in [near_col_r, far_col_l]:
+        edir = -1 if face_yd < panel_yd else 1   # penetrate into the tote, away from corridor
+        branch_end = face_yd + edir * fill_pen
         draw_pipe_path(ax,
                        [fill_tee_x, fill_tee_x],
                        [panel_yd, branch_end],
                        PIPE_OD, PIPE_WALL_T, px, py,
                        fc=C_PIPE_BLUE, ec="#1A4A90", zorder=9)
-        fill_drop(ax, fill_tee_x, tote_c, C_PIPE_BLUE)
-    valve_plan(ax, fill_tee_x, (panel_yd + near_tote_c) / 2, 'v', C_PIPE_BLUE, "V1")
-    leader(ax, px(fill_tee_x), py(far_tote_c),
-           px(fill_tee_x - 40), py(far_tote_c + 160),
+        flange_plan(ax, fill_tee_x, face_yd, 'v', C_PIPE_BLUE)
+    valve_plan(ax, fill_tee_x, (panel_yd + near_col_r) / 2, 'v', C_PIPE_BLUE, "V1")
+    leader(ax, px(fill_tee_x), py(far_col_l),
+           px(fill_tee_x - 40), py(far_col_l + 200),
            "X1 FILL TEE → IBC-1 & IBC-2 (BLUE, 1\" HDPE)\n"
-           "90° elbow drops into each tote lid\nthrough a round fill flange",
+           "SIDE-ENTRY at each tote's corridor face\nnear the top (150mm + flange)",
            fs=5.5, color=C_PIPE_BLUE, ha="right", font=FONT)
 
     # ── Legend ───────────────────────────────────────────────────────────────
@@ -1173,9 +1172,9 @@ def sheet4():
                             fc="#F0F0F0", ec=C_OUT, lw=0.6, zorder=14))
 
     legend_items = [
-        (C_PIPE_BLUE,  "BLUE CIRCUIT — Fill (1\" HDPE SDR-11)"),
-        (C_PIPE_BROWN, "BROWN CIRCUIT — Drain/recycle (1\" HDPE SDR-11)"),
-        (C_PIPE_BLACK, "BLACK/WASTE — Drain, P-03 drain pump (1\" HDPE SDR-11)"),
+        (C_PIPE_BLUE,  "BLUE CIRCUIT — Fill side-entry near top + supply (1\" HDPE SDR-11)"),
+        (C_PIPE_BROWN, "BROWN CIRCUIT — Recycle: P-04 sump → IBC-3, P-02 → filter; P-05 drain → X3 (1\" HDPE SDR-11)"),
+        (C_PIPE_BLACK, "BLACK/WASTE — IBC-4 → P-03 drain pump → X4 (1\" HDPE SDR-11)"),
     ]
     ec_map = {"#2060C0": "#1A4A90", "#8D6E63": "#5A3020", "#505050": "#333333"}
     for i, (color, desc) in enumerate(legend_items):
@@ -1275,8 +1274,8 @@ def sheet4():
         "5. Ball valves (Banjo V100FP) at each IBC connection.",
         f"6. Pipes routed through {CORRIDOR_W}mm plumbing corridor,",
         "   behind the panel support frame (clear of uprights).",
-        "7. X1 fill tees to BOTH Blue totes (IBC-1 & IBC-2),",
-        "   each branch dropping straight into its tote.",
+        "7. X1 fill tees to BOTH Blue totes (IBC-1 & IBC-2), each branch",
+        "   SIDE-ENTERING the tote's corridor face near the top (no cap drop).",
         f"8. Equipment panel (18mm marine ply) at X={EQPANEL_X},",
         "   butting the panel support frame: pumps + filters.",
         f"9. Portal frame: seat brackets + corridor uprights. ~{FRAME_WEIGHT}kg.",
@@ -1549,37 +1548,37 @@ def sheet5():
     near_ibc_cx = BLUE_IBC_Y + IBC_D / 2   # IBC-1/3 center Yd
     far_ibc_cx  = IBC_FAR_Y + IBC_D / 2    # IBC-2/4 center Yd
 
-    # IBC valve faces point toward corridor. Fill cap is on top, offset
-    # ~250mm from the valve face (front) toward the corridor side.
-    FILL_CAP_OFFSET = 250  # mm from valve face (corridor edge)
-    f1_fill_yd = BLUE_IBC_Y + IBC_D - FILL_CAP_OFFSET   # near IBC fill cap Yd
+    # Side-entry inlet height — near the top of the top-tier totes.  The 1000L
+    # direct-stack leaves only ~52mm headroom, so there is NO top-cap access:
+    # every tote-top connection penetrates the tote's corridor-facing SIDE
+    # ~150mm past a flange, near the top (Z=2156).
+    side_entry_z = IBC_H_STK_1000 - 180          # 2156 — side inlet near tote top
+    near_side_yd = near_col_r                      # 1046 — near-column corridor face
+    far_side_yd  = far_col_l                       # 1316 — far-column corridor face
+    side_pen = 150                                 # penetration past the flange
 
-    # ── X1: Bulkhead → tee → drop into BOTH Blue totes (matches 3D) ───────
-    # Fill header runs in Yd at Z=2250 over both top totes; a tee at the
-    # corridor centerline (fed by the bulkhead) drops into each fill cap. No
-    # cross-connect — both Blue totes are filled directly in parallel.
-    f1_drop_yd = f1_fill_yd                      # near IBC-1 fill cap Yd
-    far_fill_yd = IBC_FAR_Y + FILL_CAP_OFFSET    # far IBC-2 fill cap Yd
-    # header + both drops as ONE ⊓-path so the 90° turns round into proper elbows
-    # (drawing the header and the drops as separate straight calls left sharp corners).
-    draw_pipe_path(ax,
-                   [f1_drop_yd, f1_drop_yd, far_fill_yd, far_fill_yd],
-                   [fill_conn_z, EXT_FILL_1_H, EXT_FILL_1_H, fill_conn_z],
-                   PIPE_OD, PIPE_WALL, sx, sy,
-                   fc=C_PIPE_BLUE, ec="#1A4A90", zorder=7)
-    for dyd in (f1_drop_yd, far_fill_yd):
-        draw_flange(ax, dyd, top_ibc_top, 'v', C_PIPE_BLUE)
-        ax.annotate("", xy=(sx(dyd), sy(fill_conn_z + 15)),
-                    xytext=(sx(dyd), sy(fill_conn_z + 80)),
+    # ── X1: Bulkhead → corridor header → SIDE-ENTRY into BOTH Blue totes ───
+    # A tee at the corridor centerline (fed by the bulkhead) feeds two branches
+    # that side-enter each Blue tote near the top.  No cross-connect — both Blue
+    # totes fill in parallel and gravity-equalize.
+    draw_pipe_path(ax, [cl_yd, cl_yd], [EXT_FILL_1_H, side_entry_z],
+                   PIPE_OD, PIPE_WALL, sx, sy, fc=C_PIPE_BLUE, ec="#1A4A90", zorder=7)
+    draw_pipe_path(ax, [cl_yd, near_side_yd - side_pen], [side_entry_z, side_entry_z],
+                   PIPE_OD, PIPE_WALL, sx, sy, fc=C_PIPE_BLUE, ec="#1A4A90", zorder=7)
+    draw_pipe_path(ax, [cl_yd, far_side_yd + side_pen], [side_entry_z, side_entry_z],
+                   PIPE_OD, PIPE_WALL, sx, sy, fc=C_PIPE_BLUE, ec="#1A4A90", zorder=7)
+    draw_tee_fitting(ax, cl_yd, side_entry_z, C_PIPE_BLUE)
+    for syd, fdir in ((near_side_yd, -1), (far_side_yd, +1)):
+        draw_flange(ax, syd, side_entry_z, 'v', C_PIPE_BLUE)
+        ax.annotate("", xy=(sx(syd + fdir * (side_pen - 30)), sy(side_entry_z)),
+                    xytext=(sx(syd + fdir * 10), sy(side_entry_z)),
                     arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BLUE, lw=1.5))
-    # tee at the corridor centerline (bulkhead feed point)
-    draw_tee_fitting(ax, cl_yd, EXT_FILL_1_H, C_PIPE_BLUE)
-    # CV1 check valve — prevents backflow toward the bulkhead
-    _draw_check_valve_h(ax, sx, sy, cl_yd + 95, EXT_FILL_1_H, C_PIPE_BLUE, "CV1",
-                        text_color = "#000000", flow_dir="left")
-    # V1 on the near header run, in the corridor
-    v1_yd = (cl_yd + near_col_r) / 2
-    _draw_valve_elev_h(ax, sx, sy, v1_yd, EXT_FILL_1_H, C_PIPE_BLUE, "V1", text_color="#000000", lup=False)
+    # V1 fill isolation on the vertical drop
+    _draw_valve_elev(ax, sx, sy, cl_yd, (EXT_FILL_1_H + side_entry_z) / 2,
+                     C_PIPE_BLUE, "V1", text_color="#000000")
+    # CV1 check valve on the near branch — prevents tote backflow into the header
+    _draw_check_valve_h(ax, sx, sy, (cl_yd + near_side_yd) / 2, side_entry_z,
+                        C_PIPE_BLUE, "CV1", text_color="#000000", flow_dir="right")
 
     # ── X3: IBC-3 (near, bottom) → Bulkhead — BROWN drain ───────────────────
     d3_yd = near_col_r  # corridor-facing edge of near IBC
@@ -1685,17 +1684,18 @@ def sheet5():
     pipe_stub_x(ax, corr_cx, vb3_z - 30, C_PIPE_BLUE,
                 "P-01 → SPRAY BAR", label_side="right", offset=225)
 
-    # ── Brown IBC-3 inlet ← tray sump (pumped via P-04) ──────────────────────
-    # Water collects in sump well at tray low point. P-04 suction pickup
-    # draws from sump, pumps up to IBC-3 fill cap (DN150) on top.
-    # Cannot gravity feed — fill cap is ~900mm above tray floor.
-    brown_in_z = IBC_H_1000 - 80  # near top of bottom-tier IBC
-    pipe_stub_x(ax, near_ibc_cx, brown_in_z, C_PIPE_BROWN,
-                "P-04 ← TRAY\nSUMP (PUMPED)", label_side="left")
+    # ── Brown IBC-3 inlet ← tray sump (pumped via P-04 → 3W-DV-02) ───────────
+    # Water collects in the sump well at the tray low point. P-04 lifts it to
+    # IBC-3 via a SIDE-ENTRY near the tote top on its corridor face (no top-cap
+    # access — direct-stack leaves ~52mm headroom).
+    brown_in_z = IBC_H_1000 - 80  # near top of bottom-tier IBC-3
+    pipe_stub_x(ax, near_col_r, brown_in_z, C_PIPE_BROWN,
+                "P-04 ← TRAY SUMP\n→ IBC-3 SIDE-ENTRY", label_side="left")
+    draw_flange(ax, near_col_r, brown_in_z, 'v', C_PIPE_BROWN)
     # P-04 tray drain transfer pump — on the brown inlet line
     p04_z = brown_in_z + 60
-    _draw_pump_symbol(ax, sx, sy, near_ibc_cx - 80, p04_z, C_PIPE_BROWN, "P-04")
-    ax.plot([sx(near_ibc_cx - 80 + 22), sx(near_ibc_cx - PIPE_OD / 2)],
+    _draw_pump_symbol(ax, sx, sy, near_col_r - 80, p04_z, C_PIPE_BROWN, "P-04")
+    ax.plot([sx(near_col_r - 80 + 22), sx(near_col_r - PIPE_OD / 2)],
             [sy(brown_in_z), sy(brown_in_z)],
             color=C_PIPE_BROWN, lw=1.5, ls="--", zorder=7)
 
@@ -1704,26 +1704,27 @@ def sheet5():
     # Offset below X3 horizontal run at Z=400 to avoid pipe crossing.
     brown_out_z = 250
     pipe_stub_x(ax, near_col_r, brown_out_z, C_PIPE_BROWN,
-                "TO P-02 →\nFILTER UNIT", label_side="right")
+                "IBC-3 VALVE →\nP-02 → FILTER", label_side="right")
 
-    # ── Filter unit return → IBC-2 (cleaned water returns to supply) ────────
-    # Returns through top of IBC-2 (fill cap area)
-    filter_ret_z = top_ibc_top - 80  # near top of top-tier far IBC
-    pipe_stub_x(ax, far_ibc_cx, filter_ret_z, C_PIPE_FILTER,
-                "FILTER\nRETURN", label_side="right")
+    # ── Filter unit return → IBC-2 (cleaned water recycled to supply) ────────
+    # 3W-DV-01 routes pH-OK filtrate back to Blue IBC-2 via a SIDE-ENTRY near the
+    # top (no top-cap access).
+    pipe_stub_x(ax, far_col_l, side_entry_z, C_PIPE_FILTER,
+                "FILTER RETURN →\nIBC-2 SIDE-ENTRY\n(recycle to Blue)", label_side="right")
+    draw_flange(ax, far_col_l, side_entry_z, 'v', C_PIPE_FILTER)
 
     # ── Waste IBC-4 inlet ← diverter/bypass (rejected filtrate) ─────────────
-    # Enters through IBC-4 fill cap (DN150) on top. Filter unit reject/bypass
-    # line feeds into waste IBC via fill cap — cannot use drain valve (would
-    # drain out existing waste when opened).
-    waste_in_z = IBC_H_1000 - 80  # near top of bottom-tier far IBC
-    pipe_stub_x(ax, far_ibc_cx, waste_in_z, C_PIPE_BLACK,
-                "FILTER REJECT\nVIA FILL CAP (DN150)", label_side="right")
+    # 3W-DV-01 (pH out of range) / 3W-DV-02 route reject into IBC-4 via a
+    # SIDE-ENTRY near the top (no top-cap access).
+    waste_in_z = IBC_H_1000 - 80  # near top of bottom-tier IBC-4
+    pipe_stub_x(ax, far_col_l, waste_in_z, C_PIPE_BLACK,
+                "FILTER REJECT →\nIBC-4 SIDE-ENTRY", label_side="right")
+    draw_flange(ax, far_col_l, waste_in_z, 'v', C_PIPE_BLACK)
 
     # ── Pipe labels for bulkhead connections ─────────────────────────────────
-    leader(ax, sx(f1_fill_yd), sy(EXT_FILL_1_H),
-           sx(BLUE_IBC_Y + IBC_D * 0.5), sy(EXT_FILL_1_H + 25),
-           "X1 → IBC-1 FILL CAP\n(DN150, TOP NEAR)\n1\" HDPE",
+    leader(ax, sx(near_side_yd), sy(side_entry_z),
+           sx(BLUE_IBC_Y + IBC_D * 0.4), sy(side_entry_z + 130),
+           "X1 → BLUE SIDE-ENTRY\n(near top, Z=2156)\n150mm + flange · 1\" HDPE",
            color=C_PIPE_BLUE, fs=5.5,
            ha="right", va="bottom", arrow_style="-|>", font=FONT)
     leader(ax, sx(near_col_r), sy(drain_conn_z),
@@ -1756,10 +1757,10 @@ def sheet5():
                             fc="#F0F0F0", ec=C_OUT, lw=0.6, zorder=14))
 
     legend_items = [
-        (C_PIPE_BLUE,   "BLUE CIRCUIT — Clean supply (fill, VB1/VB2 → tee → VB3 → P-01 → spray bar)"),
-        (C_PIPE_BROWN,  "BROWN CIRCUIT — Recycled (P-04 ← tray sump → IBC-3, P-02 → filter unit, P-05 drain pump)"),
-        (C_PIPE_FILTER, "FILTER CIRCUIT — Filtered return to IBC-2"),
-        (C_PIPE_BLACK,  "BLACK/WASTE — Rejected filtrate via fill cap → IBC-4, P-03 drain pump"),
+        (C_PIPE_BLUE,   "BLUE CIRCUIT — Clean supply (fill side-entry near top, VB1/VB2 → tee → VB3 → P-01 → spray bar)"),
+        (C_PIPE_BROWN,  "BROWN CIRCUIT — Recycled (P-04 ← tray sump → IBC-3 side-entry, P-02 → filter unit, P-05 drain pump → X3)"),
+        (C_PIPE_FILTER, "FILTER CIRCUIT — DV-01 recycle: filtered return → IBC-2 side-entry"),
+        (C_PIPE_BLACK,  "BLACK/WASTE — Reject → IBC-4 side-entry; P-03 drain pump → X4"),
     ]
     ec_map6 = {"#2060C0": "#1A4A90", "#8D6E63": "#5A3020",
                "#E65100": "#B34000", "#505050": "#333333"}
@@ -1852,18 +1853,18 @@ def sheet5():
         "1. Sealed end wall internal plumbing, from inside looking +X (near/pinhole wall at right, far wall at left). All internal pipe 1\" ",
         "   HDPE SDR-11 (2\" NPT at bulkhead unions).",
         "2. IBC valve faces point toward plumbing corridor. DN50 butterfly valve (S60×6 thread), ~185mm above floor.",
-        "3. X1 fill header tees to BOTH Blue totes (IBC-1 & IBC-2); each branch drops into the fill cap (DN150, offset ~250mm from valve face",
-        "   toward corridor). Filled in parallel — no cross-connect.",
+        "3. X1 fill: a corridor header tees to BOTH Blue totes; each branch SIDE-ENTERS the tote's corridor face near the top (Z=2156), penetrating",
+        "   150mm past a flange. NO top-cap access — the 1000L direct-stack leaves ~52mm headroom. Filled in parallel — no cross-connect.",
         "4. S60×6 to 1\" NPT adapters (e.g. IBC-S60-1NPT) at each IBC valve connection (8× total).",
-        "5. Fill tee + header set back behind the panel support frame top rail; drains routed behind the frame (clear of the uprights), matching",
-        "   the 3D model.",
+        "5. Fill header + drains run in the clear corridor behind the panel support frame (clear of the uprights), matching the 3D model.",
         "6. Blue outflow: IBC-1 valve → VB1 → tee ← VB2 ← IBC-2 valve; after tee → VB3 → P-01 → spray bar.",
         "7. Ball valves: Banjo V100FP 1\" polypropylene full-port, quarter-turn. All hand-operated.",
-        "8. X3 at Z=400mm / X4 at Z=200mm: P-05 and P-03 drain pumps evacuate IBCs through bulkhead ports at disposal.",
+        "8. Drains are PUMPED: P-05 (Brown) → X3 (Z=400mm), P-03 (Waste) → X4 (Z=200mm) — gravity head is insufficient at these port heights.",
         "9. 90° elbows (Banjo LE100) at all bends. Flanges at all bulkhead and IBC connections.",
         "10. Check valves CV1/CV3/CV4 (1\" NPT spring check) on all three bulkhead lines — prevents backflow through bulkhead unions.",
-        "11. IBC-3 (Brown) filled from top via fill cap (DN150). P-04 suction pickup draws from tray sump, pumps to IBC-3 fill cap (~900mm lift).",
-        "12. IBC-4 (Waste) filled from top via fill cap (DN150). Filter unit reject/bypass line feeds into waste IBC — cannot use drain valve.",
+        "11. RECYCLE: P-04 draws from the tray sump and feeds IBC-3 (Brown) via a SIDE-ENTRY near the top (3W-DV-02 selects IBC-3 or IBC-4). Brown",
+        "    is then pumped (P-02) through the 3-stage filter; 3W-DV-01 recycles pH-OK filtrate to IBC-2 (Blue) via side-entry, else to IBC-4.",
+        "12. ALL tote-top connections are SIDE-ENTRY near the top (fill, recycle return, reject, sump) — no top-cap access anywhere (52mm headroom).",
     ]
     draw_notes(ax, notes, sx(YD_LO + 1530), sy(-180), spacing=sy(22),
                fs=7, font=FONT, width=1500)

@@ -26,7 +26,7 @@ from matplotlib.patches import FancyArrowPatch, FancyBboxPatch, Arc
 from matplotlib.lines import Line2D
 from matplotlib.gridspec import GridSpec
 from tbs_constants import (
-    C_LEN, C_WID, C_HGT, IBC_COL_X, IBC_W, IBC_D, IBC_H_600, IBC_H_STK,
+    C_LEN, C_WID, C_HGT, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000,
     ZONE_L_END, ZONE_R_START,
     FP_X_L, FP_X_R, PH_X,
     BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y,
@@ -243,10 +243,10 @@ def draw_sheet1():
     # ── BLUE SYSTEM ───────────────────────────────────────────────────────────────
     # IBC1 Clean water A
     tank(ax1, 1.5, 8.2, 1.4, 1.4, fc="#BBDEFB", ec=C_BLUE_IBC, lw=2,
-         label="IBC-1", sublabel="159 gal (600L)\nCLEAN A")
+         label="IBC-1", sublabel="264 gal (1000L)\nCLEAN A (~800L)")
     # IBC2 Clean water B
     tank(ax1, 3.3, 8.2, 1.4, 1.4, fc="#BBDEFB", ec=C_BLUE_IBC, lw=2,
-         label="IBC-2", sublabel="159 gal (600L)\nCLEAN B")
+         label="IBC-2", sublabel="264 gal (1000L)\nCLEAN B (~800L)")
 
     # X1 fill tees to BOTH Blue totes; both supply the pump via BV-01 — the two
     # totes are connected in parallel (no cross-connect), matching the 3D.
@@ -329,7 +329,7 @@ def draw_sheet1():
     # ── BROWN SYSTEM ──────────────────────────────────────────────────────────────
     # IBC3 — used water buffer
     tank(ax1, 6.4, 8.2, 1.4, 1.4, fc="#D7CCC8", ec=C_BROWN_IBC, lw=2,
-         label="IBC-3", sublabel="159 gal (600L)\nUSED BUFFER")
+         label="IBC-3", sublabel="264 gal (1000L)\nUSED BUFFER")
 
     # Inlet from processing floor drain
     pipe(ax1, 6.4, 7.48, 6.4, 7.0 + VR, C_BROWN)
@@ -433,7 +433,7 @@ def draw_sheet1():
 
     # ── BLACK SYSTEM ──────────────────────────────────────────────────────────────
     tank(ax1, W_X, W_Y, W_W, W_H, fc="#D5D5D0", ec=C_WASTE_IBC, lw=2,
-         label="IBC-4", sublabel="159 gal (600L)\nWASTE")
+         label="IBC-4", sublabel="264 gal (1000L)\nWASTE")
 
     # Waste IBC vertical — DV-01 feeds at Y=3.25, DV-02 black feeds at Y=2.6
     pipe(ax1, W_X, 2.6,       W_X, 3.8 - BR,  C_BLACK)   # DV-02 feed to blue crossing
@@ -637,12 +637,12 @@ def draw_sheet2():
     # Near column (Yd=30–1046mm): Blue #1 on top, Brown on bottom
     NEAR_IBC_DY = BLUE_IBC_Y * SY
     ibc_plan(ax2, IBC_COL_DX, NEAR_IBC_DY, "#BBDEFB", C_BLUE_IBC,
-             "IBC-1 BLUE / IBC-3 BROWN", "Top: 600L clean\nBottom: 600L recycle")
+             "IBC-1 BLUE / IBC-3 BROWN", "Top: Blue ~800L clean\nBottom: Brown recycle")
     # Far column (Yd=1316–2332mm): Blue #2 on top, Waste on bottom — 270mm plumbing corridor between columns
     # Plan view sees top tier (Blue #2)
     FAR_IBC_DY = IBC_FAR_Y * SY
     ibc_plan(ax2, IBC_COL_DX, FAR_IBC_DY, "#BBDEFB", C_BLUE_IBC,
-             "IBC-2 BLUE / IBC-4 WASTE", "Top: 600L clean\nBottom: 600L waste")
+             "IBC-2 BLUE / IBC-4 WASTE", "Top: Blue ~800L clean\nBottom: Waste")
 
     # Equipment panel in IBC plumbing corridor (between IBC columns)
     EP_X_DU = PUMP_X * SX             # ≈ 9.77

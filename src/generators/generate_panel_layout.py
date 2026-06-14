@@ -1076,8 +1076,8 @@ C_WASTEB = "#8A8A8A"   # waste/grey drain
 C_BLUEB  = "#3A78C0"   # blue fill
 C_WALLB  = "#C8C8C8"
 
-PANX  = EQPANEL_X                 # 5240 — panel face
-PANX1 = EQPANEL_X + EQPANEL_T     # 5258 — panel rear
+PANX  = EQPANEL_X                 # 4874 — panel face (ibc-reconfig-v2: moved forward)
+PANX1 = EQPANEL_X + EQPANEL_T     # 4892 — panel rear
 SPX1  = 5420                      # spine rear
 SHX1  = 5460                      # shelf rear
 WALLX = C_LEN                     # 5893 — sealed end wall

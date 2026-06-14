@@ -311,7 +311,7 @@ def draw_sheet1():
     ax1.text(TAP_SCH_X, tap_y - 0.7, "TAP-01\n(CHEM PREP)", ha="center",
              fontsize=6, color=C_BLUE)
 
-    # External fill ports (top of IBCs, via bulkhead fittings in end wall — gravity feed)
+    # External fill (X1) via end-wall bulkhead — gravity feed, side-entry near the top of the Blue totes (no top-cap access)
     pipe(ax1, 1.5, 8.9, 1.5, 9.5, C_BLUE)
     arrow_pipe(ax1, 1.5, 9.4, 1.5, 9.0, color=C_BLUE)               # downward fill flow
     ext_port(ax1, 1.5, 9.65, color=C_BLUE, label="X1")
@@ -412,7 +412,7 @@ def draw_sheet1():
     valve(ax1, 9.7, 3.25, color="#777777", size=0.075)
     ax1.text(9.7, 2.9, "3W-DV-01\nDIVERTER", ha="center", fontsize=6, color="#444")
 
-    # Path back to Blue IBC-2 — up at X=9.7, left at Y=9.2, down to IBC-2 fill cap
+    # Path back to Blue IBC-2 — up at X=9.7, left at Y=9.2, into IBC-2 side-entry near top
     RET_Y = 9.2   # return horizontal — below ext fill port at Y=9.65
     pipe(ax1, 9.7, 3.25 + DVR,  9.7, 3.8 - BR,  C_BLUE, style="--")   # below blue supply
     pipe(ax1, 9.7, 3.8 + BR,   9.7, 6.3 - BR,  C_BLUE, style="--")   # between crossings
@@ -421,9 +421,9 @@ def draw_sheet1():
     pipe(ax1, 9.7, RET_Y, 3.3, RET_Y, C_BLUE, style="--")            # left to IBC-2 top
     pipe_bridge(ax1, BD_X, RET_Y, color=C_BLUE, lw=LW_PIPE, bg=C_BROWN_L, style="--")  # over brown drain-out pipe
     arrow_pipe(ax1, 5.0, RET_Y, 4.7, RET_Y, color=C_BLUE)            # short leftward return arrow
-    pipe(ax1, 3.3, RET_Y, 3.3, 8.9, C_BLUE, style="--")              # down to IBC-2 fill cap
+    pipe(ax1, 3.3, RET_Y, 3.3, 8.9, C_BLUE, style="--")              # down to IBC-2 side-entry near top
     arrow_pipe(ax1, 3.3, 9.1, 3.3, 8.95, color=C_BLUE)               # downward return arrow
-    ax1.text(6.5, RET_Y + 0.15, "RECYCLED → IBC-2 FILL CAP (both Blue totes filled in parallel)",
+    ax1.text(6.5, RET_Y + 0.15, "RECYCLED → IBC-2 SIDE-ENTRY (both Blue totes filled in parallel)",
              ha="center", fontsize=6, color=C_BLUE, style="italic")
 
     # Path to Black system — right from DV-01 at Y=3.25, then up via W_X vertical
@@ -988,7 +988,7 @@ def draw_sheet3():
         "NOTES:",
         f"1. Dual-axis pitch 1:200 — water converges on sump at X={PROC_TRAY_DRAIN_X}, Yd={PROC_TRAY_DRAIN_YD}.",
         f"2. Maximum fall: {PROC_TRAY_PITCH}mm (Yd axis) + {x_fall:.1f}mm (X axis from far corner to sump).",
-        f"3. Sump well ({PROC_TRAY_SUMP_W}x{PROC_TRAY_SUMP_D}x{PROC_TRAY_SUMP_Z}mm) pressed into tray floor — P-04 suction pickup lifts to IBC-3.",
+        f"3. Sump well ({PROC_TRAY_SUMP_W}x{PROC_TRAY_SUMP_D}x{PROC_TRAY_SUMP_Z}mm) pressed into tray floor — P-04 suction pickup lifts to IBC-3 side-entry near top.",
         f"4. Tray: 304 SS, {PROC_TRAY_RIM}mm rim, on tapered HDPE shim strips. No tray floor penetration.",
         f"5. Wall-cantilevered walkway — no legs or structure on tray floor near sump.",
     ]
@@ -1618,7 +1618,7 @@ def draw_sheet4():
         "2. P-04 suction pickup draws from sump via foot valve",
         "3. 1\" hose along rim exterior to tray corner, then to equip panel",
         "4. P-04 discharge to 3W-DV-02 three-way diverter",
-        "5. Default: lifts to IBC-3 (Brown, ~900mm head)",
+        "5. Default: lifts to IBC-3 side-entry (Brown, ~900mm head)",
         "6. Alt: divert to IBC-4 (Waste) when selected",
     ]
     draw_notes(ax4_notes, flow_notes, 70, 9, spacing=1.1,

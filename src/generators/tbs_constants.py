@@ -317,10 +317,10 @@ BA_D       = 120     # battery bank depth from wall (mm) [rev7: slim-profile LiF
 # Contains pumps (P-01, P-02, P-04), ACC-01, and 3× Big Blue filter housings.
 # Pumps on near-wall side (Yd=1046–1173), filters on far-wall side (Yd=1186–1316).
 # Filters at bottom of panel (Z=200–1280), pumps at top (Z=1320–2220).
-EQPANEL_X       = 5240    # panel face X (mm) — ply X=5240–5258, butts the film-plane (-X) face of the middle corridor frame station (X≈5258); equipment hangs toward -X
-EQPANEL_T       = 18      # panel thickness in X (mm) — ply extends toward sealed end (X=5240–5258)
+EQPANEL_X       = 4874    # panel face X (mm) — ibc-reconfig-v2: moved FORWARD (was 5240) to the corridor front for walkway/operator reach-in access; ply X=4874–4892, equipment hangs toward -X (tip ~4744, clear of the film rail X=4649). Mounts on the front-portal frame (~X4734).
+EQPANEL_T       = 18      # panel thickness in X (mm) — ply extends toward sealed end (X=4874–4892)
 EQPANEL_Z_LO    = 250     # panel bottom Z (mm) — keeps ~120mm above the raised walkway deck [+50 raise; was 200]
-EQPANEL_Z_HI    = 2310    # panel top Z (mm) — above IBC stack (2020), below ceiling (2388) [+50 raise; was 2260]
+EQPANEL_Z_HI    = 2310    # panel top Z (mm) — in the plumbing corridor (no totes there), below ceiling (2388); IBC stack is 2336mm in the flanking columns
 EQPANEL_H       = EQPANEL_Z_HI - EQPANEL_Z_LO   # = 2060mm
 
 # IBC plumbing corridor dimensions (derived from IBC layout: Yd=30+1016=1046 to 1316)
@@ -676,7 +676,7 @@ SPRAY_BAR_SLIT_W     = 30          # walkway slit width for pole passage (mm)
 # External plumbing panel — 3 ports (X1/X3/X4) stacked vertically on end wall centerline
 # X1 fill tees internally to BOTH Blue totes (parallel fill, no X2 port, no cross-connect)
 EXT_PANEL_YD = C_WID // 2   # = 1181mm — panel centered on container width
-EXT_FILL_1_H = 2250    # X1: fill Blue IBC-1 port height (mm) — above top-tier IBC top (2082mm), gravity feed
+EXT_FILL_1_H = 2250    # X1: Blue fill port height (mm) — feeds the Blue side-entry T near the top of both top-tier totes (~Z2150), gravity feed; gravity-linked across the corridor
 EXT_DRAIN_3_H = 400    # X3: drain Brown IBC-3 port height (mm) — bottom tier near
 EXT_DRAIN_4_H = 200    # X4: drain Waste IBC-4 port height (mm) — bottom tier far
 # Legacy aliases for downstream code

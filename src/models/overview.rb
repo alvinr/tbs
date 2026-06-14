@@ -7489,7 +7489,7 @@ end
   # Front Retaining Bar
   grp = ents.add_group
   grp.name = "Front Retaining Bar"
-  face = grp.entities.add_face([4674.mm,0.mm,560.mm], [4724.mm,0.mm,560.mm], [4724.mm,1096.mm,560.mm], [4674.mm,1096.mm,560.mm])
+  face = grp.entities.add_face([4654.mm,0.mm,560.mm], [4674.mm,0.mm,560.mm], [4674.mm,1096.mm,560.mm], [4654.mm,1096.mm,560.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -7500,7 +7500,7 @@ end
   # Front Retaining Bar
   grp = ents.add_group
   grp.name = "Front Retaining Bar"
-  face = grp.entities.add_face([4674.mm,0.mm,1760.mm], [4724.mm,0.mm,1760.mm], [4724.mm,1096.mm,1760.mm], [4674.mm,1096.mm,1760.mm])
+  face = grp.entities.add_face([4654.mm,0.mm,1760.mm], [4674.mm,0.mm,1760.mm], [4674.mm,1096.mm,1760.mm], [4654.mm,1096.mm,1760.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -7511,7 +7511,7 @@ end
   # Front Retaining Bar
   grp = ents.add_group
   grp.name = "Front Retaining Bar"
-  face = grp.entities.add_face([4674.mm,1266.mm,560.mm], [4724.mm,1266.mm,560.mm], [4724.mm,2362.mm,560.mm], [4674.mm,2362.mm,560.mm])
+  face = grp.entities.add_face([4654.mm,1266.mm,560.mm], [4674.mm,1266.mm,560.mm], [4674.mm,2362.mm,560.mm], [4654.mm,2362.mm,560.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -7522,7 +7522,7 @@ end
   # Front Retaining Bar
   grp = ents.add_group
   grp.name = "Front Retaining Bar"
-  face = grp.entities.add_face([4674.mm,1266.mm,1760.mm], [4724.mm,1266.mm,1760.mm], [4724.mm,2362.mm,1760.mm], [4674.mm,2362.mm,1760.mm])
+  face = grp.entities.add_face([4654.mm,1266.mm,1760.mm], [4674.mm,1266.mm,1760.mm], [4674.mm,2362.mm,1760.mm], [4654.mm,2362.mm,1760.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -7533,7 +7533,7 @@ end
   # Front Bar Stub
   grp = ents.add_group
   grp.name = "Front Bar Stub"
-  face = grp.entities.add_face([4674.mm,1046.mm,560.mm], [4784.mm,1046.mm,560.mm], [4784.mm,1096.mm,560.mm], [4674.mm,1096.mm,560.mm])
+  face = grp.entities.add_face([4654.mm,1046.mm,560.mm], [4784.mm,1046.mm,560.mm], [4784.mm,1096.mm,560.mm], [4654.mm,1096.mm,560.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -7544,7 +7544,7 @@ end
   # Front Bar Stub
   grp = ents.add_group
   grp.name = "Front Bar Stub"
-  face = grp.entities.add_face([4674.mm,1046.mm,1760.mm], [4784.mm,1046.mm,1760.mm], [4784.mm,1096.mm,1760.mm], [4674.mm,1096.mm,1760.mm])
+  face = grp.entities.add_face([4654.mm,1046.mm,1760.mm], [4784.mm,1046.mm,1760.mm], [4784.mm,1096.mm,1760.mm], [4654.mm,1096.mm,1760.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -7555,7 +7555,7 @@ end
   # Front Bar Stub
   grp = ents.add_group
   grp.name = "Front Bar Stub"
-  face = grp.entities.add_face([4674.mm,1266.mm,560.mm], [4784.mm,1266.mm,560.mm], [4784.mm,1316.mm,560.mm], [4674.mm,1316.mm,560.mm])
+  face = grp.entities.add_face([4654.mm,1266.mm,560.mm], [4784.mm,1266.mm,560.mm], [4784.mm,1316.mm,560.mm], [4654.mm,1316.mm,560.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -7566,7 +7566,7 @@ end
   # Front Bar Stub
   grp = ents.add_group
   grp.name = "Front Bar Stub"
-  face = grp.entities.add_face([4674.mm,1266.mm,1760.mm], [4784.mm,1266.mm,1760.mm], [4784.mm,1316.mm,1760.mm], [4674.mm,1316.mm,1760.mm])
+  face = grp.entities.add_face([4654.mm,1266.mm,1760.mm], [4784.mm,1266.mm,1760.mm], [4784.mm,1316.mm,1760.mm], [4654.mm,1316.mm,1760.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -7578,7 +7578,7 @@ end
   grp = ents.add_group
   grp.name = "D-Ring Holder"
   ge = grp.entities
-  circle = ge.add_circle([4668.mm,520.mm,585.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4648.mm,520.mm,585.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
@@ -7591,7 +7591,7 @@ end
   grp = ents.add_group
   grp.name = "D-Ring Holder"
   ge = grp.entities
-  circle = ge.add_circle([4668.mm,520.mm,1785.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4648.mm,520.mm,1785.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
@@ -7604,7 +7604,7 @@ end
   grp = ents.add_group
   grp.name = "D-Ring Holder"
   ge = grp.entities
-  circle = ge.add_circle([4668.mm,1842.mm,585.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4648.mm,1842.mm,585.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
@@ -7617,7 +7617,7 @@ end
   grp = ents.add_group
   grp.name = "D-Ring Holder"
   ge = grp.entities
-  circle = ge.add_circle([4668.mm,1842.mm,1785.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4648.mm,1842.mm,1785.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
@@ -7629,7 +7629,7 @@ end
   # Wall Hanger Plate
   grp = ents.add_group
   grp.name = "Wall Hanger Plate"
-  face = grp.entities.add_face([4666.mm,0.mm,530.mm], [4732.mm,0.mm,530.mm], [4732.mm,4.mm,530.mm], [4666.mm,4.mm,530.mm])
+  face = grp.entities.add_face([4646.mm,0.mm,530.mm], [4712.mm,0.mm,530.mm], [4712.mm,4.mm,530.mm], [4646.mm,4.mm,530.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(120.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -7640,7 +7640,7 @@ end
   # Wall Hanger Seat
   grp = ents.add_group
   grp.name = "Wall Hanger Seat"
-  face = grp.entities.add_face([4670.mm,0.mm,556.mm], [4728.mm,0.mm,556.mm], [4728.mm,70.mm,556.mm], [4670.mm,70.mm,556.mm])
+  face = grp.entities.add_face([4650.mm,0.mm,556.mm], [4708.mm,0.mm,556.mm], [4708.mm,70.mm,556.mm], [4650.mm,70.mm,556.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(4.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -7651,7 +7651,7 @@ end
   # Wall Hanger Plate
   grp = ents.add_group
   grp.name = "Wall Hanger Plate"
-  face = grp.entities.add_face([4666.mm,0.mm,1730.mm], [4732.mm,0.mm,1730.mm], [4732.mm,4.mm,1730.mm], [4666.mm,4.mm,1730.mm])
+  face = grp.entities.add_face([4646.mm,0.mm,1730.mm], [4712.mm,0.mm,1730.mm], [4712.mm,4.mm,1730.mm], [4646.mm,4.mm,1730.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(120.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -7662,7 +7662,7 @@ end
   # Wall Hanger Seat
   grp = ents.add_group
   grp.name = "Wall Hanger Seat"
-  face = grp.entities.add_face([4670.mm,0.mm,1756.mm], [4728.mm,0.mm,1756.mm], [4728.mm,70.mm,1756.mm], [4670.mm,70.mm,1756.mm])
+  face = grp.entities.add_face([4650.mm,0.mm,1756.mm], [4708.mm,0.mm,1756.mm], [4708.mm,70.mm,1756.mm], [4650.mm,70.mm,1756.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(4.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -7673,7 +7673,7 @@ end
   # Wall Hanger Plate
   grp = ents.add_group
   grp.name = "Wall Hanger Plate"
-  face = grp.entities.add_face([4666.mm,2358.mm,530.mm], [4732.mm,2358.mm,530.mm], [4732.mm,2362.mm,530.mm], [4666.mm,2362.mm,530.mm])
+  face = grp.entities.add_face([4646.mm,2358.mm,530.mm], [4712.mm,2358.mm,530.mm], [4712.mm,2362.mm,530.mm], [4646.mm,2362.mm,530.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(120.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -7684,7 +7684,7 @@ end
   # Wall Hanger Seat
   grp = ents.add_group
   grp.name = "Wall Hanger Seat"
-  face = grp.entities.add_face([4670.mm,2292.mm,556.mm], [4728.mm,2292.mm,556.mm], [4728.mm,2362.mm,556.mm], [4670.mm,2362.mm,556.mm])
+  face = grp.entities.add_face([4650.mm,2292.mm,556.mm], [4708.mm,2292.mm,556.mm], [4708.mm,2362.mm,556.mm], [4650.mm,2362.mm,556.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(4.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -7695,7 +7695,7 @@ end
   # Wall Hanger Plate
   grp = ents.add_group
   grp.name = "Wall Hanger Plate"
-  face = grp.entities.add_face([4666.mm,2358.mm,1730.mm], [4732.mm,2358.mm,1730.mm], [4732.mm,2362.mm,1730.mm], [4666.mm,2362.mm,1730.mm])
+  face = grp.entities.add_face([4646.mm,2358.mm,1730.mm], [4712.mm,2358.mm,1730.mm], [4712.mm,2362.mm,1730.mm], [4646.mm,2362.mm,1730.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(120.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -7706,7 +7706,7 @@ end
   # Wall Hanger Seat
   grp = ents.add_group
   grp.name = "Wall Hanger Seat"
-  face = grp.entities.add_face([4670.mm,2292.mm,1756.mm], [4728.mm,2292.mm,1756.mm], [4728.mm,2362.mm,1756.mm], [4670.mm,2362.mm,1756.mm])
+  face = grp.entities.add_face([4650.mm,2292.mm,1756.mm], [4708.mm,2292.mm,1756.mm], [4708.mm,2362.mm,1756.mm], [4650.mm,2362.mm,1756.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(4.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")

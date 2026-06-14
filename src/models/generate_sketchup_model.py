@@ -1051,7 +1051,8 @@ def ibc_rack():
     yd_near, yd_far = 1046, 1316        # plumbing-corridor edges
     up_yds = (yd_near, yd_far - s)
     fx = RWK_X_UP                       # 4734 — front portal uprights (walkway arms clamp here)
-    front_x = IBC_COL_X                 # 4674 — IBC front (retaining bars)
+    front_x = IBC_COL_X - 20            # 4654 — front bars seated in the 25mm gap, just in front of the tote face (clear of the film rail at 4649)
+    bar_d = 20                          # bar depth in X (50×20×3 RHS — fits the gap; a full 50×50 would cut into the totes)
     c_bolt = "#3A3A42"
 
     # Front portal: two full-height uprights + top tie + floor beam.
@@ -1072,11 +1073,12 @@ def ibc_rack():
             for dy in (-bpc, bpc):
                 parts.append(ruby_cylinder("Foot Anchor Bolt M12", cx + dx, cy + dy, 0, 7, ft + 4, color=c_bolt, axis="z"))
 
-    # Front retaining bars at the IBC front face (both tiers), tied back to the portal.
+    # Front retaining bars (50×20×3 RHS) seated in the gap just in front of the tote
+    # face, both tiers, tied back to the portal.
     bar_zs = (560, 1760)
     for y0, y1 in ((0, yd_near + s), (yd_far - s, C_WID)):
         for bz in bar_zs:
-            parts.append(ruby_box("Front Retaining Bar", front_x, y0, bz, s, y1 - y0, s, color=C_STEEL))
+            parts.append(ruby_box("Front Retaining Bar", front_x, y0, bz, bar_d, y1 - y0, s, color=C_STEEL))
     for yd in up_yds:
         for bz in bar_zs:
             parts.append(ruby_box("Front Bar Stub", front_x, yd, bz, fx - front_x + s, s, s, color=C_STEEL))

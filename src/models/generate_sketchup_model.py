@@ -1990,14 +1990,15 @@ def water_plumbing():
          [(C_LEN, EXT_FILL_YD, EXT_FILL_H), (fillTeeX, cc, EXT_FILL_H)], C_BLUE)
     parts.append(ruby_tee("Blue Fill Tee", (fillTeeX, cc, EXT_FILL_H),
                           (0, 1, 0), (0, 0, -1), pr, color=C_BLUE))
-    # Branch into Blue #1 (near col, corridor face EQPANEL_YD) near the top.
+    # Branch into Blue #1 (near col, corridor face EQPANEL_YD) near the top — the
+    # pipe penetrates 150mm into the tote past the flange (note: 150mm + flange).
     pipe("Fill → Blue #1 side",
          [(fillTeeX, cc, EXT_FILL_H), (fillTeeX, cc, entryZ),
-          (fillTeeX, EQPANEL_YD, entryZ), (fillTeeX, EQPANEL_YD - 60, entryZ)], C_BLUE)
+          (fillTeeX, EQPANEL_YD, entryZ), (fillTeeX, EQPANEL_YD - 150, entryZ)], C_BLUE)
     # Branch into Blue #2 (far col, corridor face EQPANEL_YD_FAR) near the top.
     pipe("Fill → Blue #2 side",
          [(fillTeeX, cc, entryZ), (fillTeeX, EQPANEL_YD_FAR, entryZ),
-          (fillTeeX, EQPANEL_YD_FAR + 60, entryZ)], C_BLUE)
+          (fillTeeX, EQPANEL_YD_FAR + 150, entryZ)], C_BLUE)
     # Round fill flange on each Blue tote's corridor face where the branch enters.
     flange_r, flange_h = 36, 16
     parts.append(ruby_cylinder("Fill Flange Blue #1", fillTeeX, EQPANEL_YD - flange_h / 2,
@@ -2022,29 +2023,31 @@ def water_plumbing():
           (drnB, EXT_DRAIN_YD, EXT_DRAIN_H), (C_LEN, EXT_DRAIN_YD, EXT_DRAIN_H)],
          C_IBC_WASTE)
 
-    # IBC valves → their own pumps, so circuits never share a crossing path.
-    # The two Blue totes feed a PARALLEL suction manifold (Z=upVZ). The valve taps
-    # are set back 250mm toward the sealed wall — BEHIND the panel frame — so the
-    # straight header sits clear behind the uprights (no elbow in the frame); the
-    # center feed to P-01 passes forward through the clear gap between the uprights
-    # (Yd 1096-1266). Brown (P-02) and Waste (P-03) run low (Z=loVZ) and cross
-    # cleanly UNDER the Blue header before rising to the right column.
-    blueTapX = nearX + 250                  # 5533 — Blue valve tap behind the frame, nearer the sealed wall
-    tap_in = 80                             # extend each end into the tote to meet the IBC valve/body
-    pipe("Blue Suction Manifold",
-         [(blueTapX, EQPANEL_YD - tap_in, upVZ),
-          (blueTapX, EQPANEL_YD_FAR + tap_in, upVZ)], C_BLUE)
-    parts.append(ruby_tee("Blue Manifold Tee", (blueTapX, cc, upVZ),
-                          (0, 1, 0), (-1, 0, 0), pr, color=C_BLUE))
-    pipe("Manifold → P-01",
-         [(blueTapX, cc, upVZ), (rxA, cc, upVZ), (rxA, pyL, upVZ), (rxA, pyL, pZ1)],
-         C_BLUE)
+    # IBC valves → their own pumps. Each suction ENTERS its tote perpendicular at
+    # the panel X (penetrating 150mm past a flange — note 1), then turns once and
+    # rises to the pump — no long run along the tote side (reduced pipe lines).
+    def tote_flange(nm, x, y, z, col):
+        parts.append(ruby_cylinder(nm, x, y - 9, z, 36, 18, color=C_STEEL, axis="y"))
+
+    # Blue: tap BOTH top-tier Blue totes perpendicular at the panel, tee to P-01.
+    parts.append(ruby_tee("Blue Manifold Tee", (rxA, cc, upVZ), (0, 1, 0), (-1, 0, 0), pr, color=C_BLUE))
+    pipe("Blue #1 → manifold", [(rxA, EQPANEL_YD - 150, upVZ), (rxA, cc, upVZ)], C_BLUE)
+    pipe("Blue #2 → manifold", [(rxA, EQPANEL_YD_FAR + 150, upVZ), (rxA, cc, upVZ)], C_BLUE)
+    pipe("Manifold → P-01", [(rxA, cc, upVZ), (rxA, pyL, upVZ), (rxA, pyL, pZ1)], C_BLUE)
+    tote_flange("Blue #1 Suction Flange", rxA, EQPANEL_YD, upVZ, C_BLUE)
+    tote_flange("Blue #2 Suction Flange", rxA, EQPANEL_YD_FAR, upVZ, C_BLUE)
+
+    # Brown: enter IBC-3 (near corridor face) directly at the panel, 90° up to P-02.
     pipe("Brown → P-02",
-         [(nearX, EQPANEL_YD, loVZ), (rxA, EQPANEL_YD, loVZ),
+         [(rxA, EQPANEL_YD - 150, loVZ), (rxA, EQPANEL_YD, loVZ),
           (rxA, pyR, loVZ), (rxA, pyR, pZ1)], C_IBC_BROWN)
+    tote_flange("Brown Suction Flange", rxA, EQPANEL_YD, loVZ, C_IBC_BROWN)
+
+    # Waste: enter IBC-4 (far corridor face) directly at the panel, 90° up to P-03.
     pipe("Waste → P-03",
-         [(nearX, EQPANEL_YD_FAR, loVZ), (rxB, EQPANEL_YD_FAR, loVZ),
+         [(rxB, EQPANEL_YD_FAR + 150, loVZ), (rxB, EQPANEL_YD_FAR, loVZ),
           (rxB, pyR, loVZ), (rxB, pyR, pZ2)], C_IBC_WASTE)
+    tote_flange("Waste Suction Flange", rxB, EQPANEL_YD_FAR, loVZ, C_IBC_WASTE)
 
     # Processing-tray sump (per water-system Detail A): pickup riser UP through
     # the cantilevered near-walkway grate to the valve above deck, back DOWN
@@ -2061,15 +2064,15 @@ def water_plumbing():
     gapX = (PROC_TRAY_X_R + IBC_COL_X) / 2     # 4651.5 — centered in the 45mm gap
     valveZ = WALKWAY_H + 65                     # 195 — valve body above the deck
     dropX = PROC_TRAY_DRAIN_X - 70              # 4480 — return riser in the grate gap
-    dropY = RWK_BEARER_W + 10                   # 50 — offset depth: clear of the Yd0-40
-                                                # end beam, in front of the tray (Yd80)
+    dropY = RWK_BEARER_W + 10                   # 50 — offset depth: clear of the Yd0-40 end beam
+    sumpY = PROC_TRAY_DRAIN_YD + 75             # 155 — pickup moved 75mm off the pinhole wall (clear of the near rim wall)
     pipe("Tray Sump → P-04",
-         [(PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z),   # sump pickup
-          (PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, valveZ),             # up to the valve
-          (dropX, PROC_TRAY_DRAIN_YD, valveZ),                         # over in X (valve body)
-          (dropX, dropY, valveZ),                                      # TWIST: jog in Yd
-          (dropX, dropY, 30),                                          # return riser (offset)
-          (gapX, dropY, 30),                                           # floor run out to the gap
+         [(PROC_TRAY_DRAIN_X, sumpY, PROC_TRAY_SUMP_Z),   # sump pickup
+          (PROC_TRAY_DRAIN_X, sumpY, valveZ),             # up to the valve
+          (dropX, sumpY, valveZ),                         # over in X (valve body)
+          (dropX, dropY, valveZ),                         # TWIST: jog in Yd
+          (dropX, dropY, 30),                             # return riser (offset)
+          (gapX, dropY, 30),                              # floor run out to the gap
           (gapX, cc, 30), (rxB, cc, 30), (rxB, pyL, 30), (rxB, pyL, pZ2)],
          C_IBC_WASTE)
 

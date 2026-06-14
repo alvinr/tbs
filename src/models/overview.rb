@@ -11775,7 +11775,7 @@ end
   grp = ents.add_group
   grp.name = "Fill → Blue #1 side"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -171.mm, 0.mm)
+  vec = Geom::Vector3d.new(0.mm, -261.mm, 0.mm)
   circle = ge.add_circle([5653.mm,1157.mm,2156.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -11789,7 +11789,7 @@ end
   grp = ents.add_group
   grp.name = "Fill → Blue #2 side"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 195.mm, 0.mm)
+  vec = Geom::Vector3d.new(0.mm, 285.mm, 0.mm)
   circle = ge.add_circle([5653.mm,1181.mm,2156.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -12015,26 +12015,12 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Blue Suction Manifold
-  grp = ents.add_group
-  grp.name = "Blue Suction Manifold"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 430.mm, 0.mm)
-  circle = ge.add_circle([5533.5.mm,966.mm,1353.mm], vec, 12.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
-  mat.color = Sketchup::Color.new(41, 121, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
   # Blue Manifold Tee
   grp = ents.add_group
   grp.name = "Blue Manifold Tee"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 45.59999999999991.mm, 0.mm)
-  circle = ge.add_circle([5533.5.mm,1158.2.mm,1353.mm], vec, 16.200000000000003.mm, 16)
+  circle = ge.add_circle([4814.mm,1158.2.mm,1353.mm], vec, 16.200000000000003.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -12048,7 +12034,35 @@ end
   grp.name = "Blue Manifold Tee"
   ge = grp.entities
   vec = Geom::Vector3d.new(-22.800000000000182.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([5533.5.mm,1181.mm,1353.mm], vec, 16.200000000000003.mm, 16)
+  circle = ge.add_circle([4814.mm,1181.mm,1353.mm], vec, 16.200000000000003.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 → manifold
+  grp = ents.add_group
+  grp.name = "Blue #1 → manifold"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 285.mm, 0.mm)
+  circle = ge.add_circle([4814.mm,896.mm,1353.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #2 → manifold
+  grp = ents.add_group
+  grp.name = "Blue #2 → manifold"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -285.mm, 0.mm)
+  circle = ge.add_circle([4814.mm,1466.mm,1353.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -12061,35 +12075,8 @@ end
   grp = ents.add_group
   grp.name = "Manifold → P-01"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-695.5.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([5533.5.mm,1181.mm,1353.mm], vec, 12.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
-  mat.color = Sketchup::Color.new(41, 121, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Manifold → P-01 elbow
-  grp = ents.add_group
-  grp.name = "Manifold → P-01 elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4838.mm,1157.mm,1353.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4838.mm,1181.mm,1353.mm], [-1.000000,0.000000,0.000000], 12.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
-  mat.color = Sketchup::Color.new(41, 121, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Manifold → P-01
-  grp = ents.add_group
-  grp.name = "Manifold → P-01"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -39.67000000000007.mm, 0.mm)
-  circle = ge.add_circle([4814.mm,1157.mm,1353.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -63.67000000000007.mm, 0.mm)
+  circle = ge.add_circle([4814.mm,1181.mm,1353.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -12125,39 +12112,38 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # Blue #1 Suction Flange
+  grp = ents.add_group
+  grp.name = "Blue #1 Suction Flange"
+  ge = grp.entities
+  circle = ge.add_circle([4814.mm,1037.mm,1353.mm], [0,1,0], 36.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(18.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #2 Suction Flange
+  grp = ents.add_group
+  grp.name = "Blue #2 Suction Flange"
+  ge = grp.entities
+  circle = ge.add_circle([4814.mm,1307.mm,1353.mm], [0,1,0], 36.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(18.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Brown → P-02
   grp = ents.add_group
   grp.name = "Brown → P-02"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-445.5.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([5283.5.mm,1046.mm,185.mm], vec, 12.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Brown → P-02 elbow
-  grp = ents.add_group
-  grp.name = "Brown → P-02 elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4838.mm,1070.mm,185.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,-1.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4838.mm,1046.mm,185.mm], [-1.000000,0.000000,0.000000], 12.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Brown → P-02
-  grp = ents.add_group
-  grp.name = "Brown → P-02"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 159.mm, 0.mm)
-  circle = ge.add_circle([4814.mm,1070.mm,185.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 333.mm, 0.mm)
+  circle = ge.add_circle([4814.mm,896.mm,185.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -12193,12 +12179,25 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # Brown Suction Flange
+  grp = ents.add_group
+  grp.name = "Brown Suction Flange"
+  ge = grp.entities
+  circle = ge.add_circle([4814.mm,1037.mm,185.mm], [0,1,0], 36.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(18.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Waste → P-03
   grp = ents.add_group
   grp.name = "Waste → P-03"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-405.5.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([5283.5.mm,1316.mm,185.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -189.mm, 0.mm)
+  circle = ge.add_circle([4854.mm,1466.mm,185.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -12211,8 +12210,8 @@ end
   grp = ents.add_group
   grp.name = "Waste → P-03 elbow"
   ge = grp.entities
-  arc = ge.add_arc([4878.mm,1292.mm,185.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4878.mm,1316.mm,185.mm], [-1.000000,0.000000,0.000000], 12.mm, 16)
+  arc = ge.add_arc([4854.mm,1277.mm,209.mm], [0.000000,0.000000,-1.000000], [-1.000000,0.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4854.mm,1277.mm,185.mm], [0.000000,-1.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
@@ -12224,8 +12223,8 @@ end
   grp = ents.add_group
   grp.name = "Waste → P-03"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -19.8900000000001.mm, 0.mm)
-  circle = ge.add_circle([4854.mm,1292.mm,185.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 1419.mm)
+  circle = ge.add_circle([4854.mm,1253.mm,209.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -12234,30 +12233,16 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Waste → P-03 elbow
+  # Waste Suction Flange
   grp = ents.add_group
-  grp.name = "Waste → P-03 elbow"
+  grp.name = "Waste Suction Flange"
   ge = grp.entities
-  arc = ge.add_arc([4854.mm,1272.11.mm,204.11.mm], [0.000000,0.000000,-1.000000], [-1.000000,0.000000,0.000000], 19.110000000000003.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4854.mm,1272.11.mm,185.mm], [0.000000,-1.000000,0.000000], 12.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
-  mat.color = Sketchup::Color.new(119, 119, 119)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Waste → P-03
-  grp = ents.add_group
-  grp.name = "Waste → P-03"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 1423.8899999999999.mm)
-  circle = ge.add_circle([4854.mm,1253.mm,204.11.mm], vec, 12.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  circle = ge.add_circle([4854.mm,1307.mm,185.mm], [0,1,0], 36.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(18.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -12266,7 +12251,7 @@ end
   grp.name = "Tray Sump → P-04"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, 151.mm)
-  circle = ge.add_circle([4550.mm,80.mm,20.mm], vec, 12.mm, 16)
+  circle = ge.add_circle([4550.mm,155.mm,20.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -12279,8 +12264,8 @@ end
   grp = ents.add_group
   grp.name = "Tray Sump → P-04 elbow"
   ge = grp.entities
-  arc = ge.add_arc([4526.mm,80.mm,171.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4550.mm,80.mm,171.mm], [0.000000,0.000000,1.000000], 12.mm, 16)
+  arc = ge.add_arc([4526.mm,155.mm,171.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4550.mm,155.mm,171.mm], [0.000000,0.000000,1.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
@@ -12292,8 +12277,8 @@ end
   grp = ents.add_group
   grp.name = "Tray Sump → P-04"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-31.300000000000182.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4526.mm,80.mm,195.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(-23.460000000000036.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4526.mm,155.mm,195.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -12306,8 +12291,8 @@ end
   grp = ents.add_group
   grp.name = "Tray Sump → P-04 elbow"
   ge = grp.entities
-  arc = ge.add_arc([4494.7.mm,65.3.mm,195.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 14.700000000000001.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4494.7.mm,80.mm,195.mm], [-1.000000,0.000000,0.000000], 12.mm, 16)
+  arc = ge.add_arc([4502.54.mm,132.46.mm,195.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 22.540000000000003.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4502.54.mm,155.mm,195.mm], [-1.000000,0.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
@@ -12319,8 +12304,8 @@ end
   grp = ents.add_group
   grp.name = "Tray Sump → P-04"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -7.802999999999997.mm, 0.mm)
-  circle = ge.add_circle([4480.mm,65.3.mm,195.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -58.46000000000001.mm, 0.mm)
+  circle = ge.add_circle([4480.mm,132.46.mm,195.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -12333,8 +12318,8 @@ end
   grp = ents.add_group
   grp.name = "Tray Sump → P-04 elbow"
   ge = grp.entities
-  arc = ge.add_arc([4480.mm,57.497.mm,187.50300000000001.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 7.496999999999999.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4480.mm,57.497.mm,195.mm], [0.000000,-1.000000,0.000000], 12.mm, 16)
+  arc = ge.add_arc([4480.mm,74.mm,171.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4480.mm,74.mm,195.mm], [0.000000,-1.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
@@ -12346,8 +12331,8 @@ end
   grp = ents.add_group
   grp.name = "Tray Sump → P-04"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -133.50300000000001.mm)
-  circle = ge.add_circle([4480.mm,50.mm,187.50300000000001.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -117.mm)
+  circle = ge.add_circle([4480.mm,50.mm,171.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

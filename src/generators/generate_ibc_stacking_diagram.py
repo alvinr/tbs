@@ -950,10 +950,10 @@ def sheet4():
 
     # ── Equipment panel (backing board + equipment depth) ────────────────
     # Panel spans ACROSS corridor (Yd direction), perpendicular to sealed end wall.
-    # Panel face at X=EQPANEL_X (5240), ply extends toward sealed end.
+    # Panel face at X=EQPANEL_X (4874 — v2 corridor-mouth position), ply extends toward sealed end.
     # Equipment protrudes toward open end (lower X).
-    ep_face_x = EQPANEL_X                      # 5240 — equipment face
-    ep_back_x = ep_face_x + EQPANEL_T          # 5018 — plywood back face
+    ep_face_x = EQPANEL_X                      # 4874 — equipment face
+    ep_back_x = ep_face_x + EQPANEL_T          # 4892 — plywood back face
     ep_yd_near = EQPANEL_YD                    # 1046
     ep_yd_far  = EQPANEL_YD + CORRIDOR_W       # 1316
     ep_depth_x = ep_face_x - BB_OD             # 4870 — deepest protrusion (filters)

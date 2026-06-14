@@ -4,10 +4,12 @@
 
 ## 1. Purpose
 
-The equipment panel is an 18mm marine plywood board mounted vertically in the
-IBC plumbing corridor, perpendicular to the sealed end wall at X=5240mm. It
-spans the full 270mm corridor width (Yd=1046–1316mm) and 2060mm in height
-(Z=200–2260mm). All pumps, filters, the pressure accumulator, diverter valves,
+The equipment panel is an 18mm marine plywood board mounted vertically at the
+front (cargo-door-facing) mouth of the IBC plumbing corridor at X=4874mm —
+moved forward from the sealed end (`ibc-reconfig-v2`) for walkway reach-in
+access, mounting on the front-portal frame (~X4734). It spans the full 270mm
+corridor width (Yd=1046–1316mm) and 2060mm in height (Z=250–2310mm). All pumps,
+filters, the pressure accumulator, diverter valves,
 and isolation valves mount on this single panel, concentrating the entire
 water-handling system in one accessible location within the IBC zone.
 
@@ -32,11 +34,11 @@ The panel serves three functions:
 | Material | 18mm marine plywood (BS 1088 or equivalent) |
 | Face dimensions | 270mm wide (Yd) × 2060mm tall (Z) |
 | Orientation | Vertical, perpendicular to sealed end wall |
-| Panel face X position | 5240mm (equipment protrudes toward cargo door, -X) |
-| Bottom edge Z | 200mm (100mm above walkway deck) |
-| Top edge Z | 2260mm (128mm below ceiling at Z=2388mm) |
+| Panel face X position | 4874mm — corridor front mouth (equipment protrudes toward cargo door, -X; tip ~4744mm, clear of film rail X=4649) |
+| Bottom edge Z | 250mm (120mm above walkway deck) |
+| Top edge Z | 2310mm (78mm below ceiling at Z=2388mm) |
 | Corridor width | 270mm (Yd=1046–1316mm, between near and far IBC columns) |
-| Mounting | L-brackets to IBC stacking frame uprights, 4 points |
+| Mounting | L-brackets to the front-portal frame uprights (~X4734), 4 points |
 | Finish | Sealed with marine varnish or epoxy; white face for visibility |
 
 ---
@@ -238,9 +240,10 @@ below the gravity drain height to a disposal tanker.
 
 ### 7.1 Equipment Panel Mounting
 
-The plywood panel is secured to the IBC stacking frame corridor uprights at four
-points using L-brackets with M10 bolts. The frame provides rigid lateral
-restraint — the panel does not contact the container walls directly.
+The plywood panel is secured to the IBC restraint front-portal frame uprights
+(~X4734, at the corridor mouth) at four points using L-brackets with M10 bolts.
+The frame provides rigid lateral restraint — the panel does not contact the
+container walls directly.
 
 ### 7.2 Filter Skid Frame
 

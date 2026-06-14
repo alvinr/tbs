@@ -1474,7 +1474,7 @@ def draw_sheet4():
     SUMP_X = PROC_TRAY_DRAIN_X   # 4550mm
     TRAY_X_R = PROC_TRAY_X_R     # 4629mm
     IBC_X = IBC_COL_X             # 4674mm
-    EP_X = EQPANEL_X              # 5240mm — equipment panel face X
+    EP_X = EQPANEL_X              # 4874mm — equipment panel face X (v2 corridor mouth)
     EP_W = EQPANEL_W              # 148mm — total X footprint (panel + protrusion)
 
     X_VIEW_L = 4350

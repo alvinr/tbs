@@ -78,7 +78,7 @@ UV-HDPE 950 kg/m³, water 1,000 kg/m³.
 | Blue IBC-2 (tote) | 65 | 4,674–5,893 | 1,316–2,332 | 1000L caged composite tare (top tier, far) |
 | Brown IBC-3 (tote) | 65 | 4,674–5,893 | 30–1,046 | 1000L caged composite tare (bottom tier, near) |
 | Waste IBC-4 (tote) | 65 | 4,674–5,893 | 1,316–2,332 | 1000L caged composite tare (bottom tier, far) |
-| IBC restraint frame | 173 | 4,674–5,893 | 0–2,362 | 50×50×3mm RHS restraint-only frame (totes direct-stack cage-on-cage): full-height corridor + front-bay uprights + longitudinal ties + front retaining bars + 8 floor flange feet + 4 wall joist hangers + forward panel-mount frame ([Equipment Layout](equipment-layout-report.md) §5) |
+| IBC restraint frame | 178 | 4,674–5,893 | 0–2,362 | 50×50×3mm RHS restraint-only frame (totes direct-stack cage-on-cage): full-height corridor + front-bay uprights + longitudinal ties + front retaining bars + 8 floor flange feet + 4 wall joist hangers (through-bolted to 4 exterior backing plates) + forward panel-mount frame ([Equipment Layout](equipment-layout-report.md) §5) |
 | **Equipment subtotal** | **471** | | | |
 
 ### 3.4 Dry Weight Summary
@@ -88,7 +88,7 @@ UV-HDPE 950 kg/m³, water 1,000 kg/m³.
 | Container (shell + doors) | 2,200 | 67.7% |
 | Structure | 579 | 17.8% |
 | Equipment | 471 | 14.5% |
-| **Total dry** | **3,319** | **100%** |
+| **Total dry** | **3,324** | **100%** |
 
 **Grating weight assumption:** 5/8" (15mm) molded GRP (fiberglass) grating,
 vinyl-ester resin with grit top, weighs approximately 11 kg/m² — vs ~26 kg/m²
@@ -116,7 +116,7 @@ during processing, not pre-loaded).
 | Blue IBC-2 water | 800 | 800 | X=4,674–5,893, Yd=1,316–2,332 | Top (Z=1,336–2,136) |
 | **Total liquid** | **1,600** | **1,600** | | |
 
-**Total loaded weight: 4,919 kg** (3,319 dry + 1,600 liquid)
+**Total loaded weight: 4,924 kg** (3,324 dry + 1,600 liquid)
 
 ### 4.2 Materials Exhausted (Ready for Resupply)
 
@@ -132,16 +132,16 @@ Brown/Waste IBCs.
 | Processing tray | — | 0 | Drained | — |
 | **Total liquid** | **1,600** | **1,600** | | |
 
-**Total loaded weight: 4,919 kg** (3,319 dry + 1,600 liquid)
+**Total loaded weight: 4,924 kg** (3,324 dry + 1,600 liquid)
 
 ### 4.3 State Comparison
 
 | State | Total (kg) | X_cg (mm) | Yd_cg (mm) | Z_cg (mm) | Front/Rear | Near/Far |
 |-------|-----------|-----------|------------|-----------|------------|----------|
-| Dry (Transport) | 3,319 | 2,798 | 1,196 | 1,099 | 52.8/47.2% | 48.4/51.6% |
-| Loaded Transport (Blue full) | 4,919 | 3,606 | 1,191 | 1,306 | 35.6/64.4% | 48.9/51.1% |
-| Camera Ready (Deployed) | 4,919 | 3,603 | 1,175 | 1,306 | 35.6/64.4% | 50.2/49.8% |
-| Materials Exhausted (Transport) | 4,919 | 3,606 | 1,191 | 927 | 35.6/64.4% | 48.9/51.1% |
+| Dry (Transport) | 3,324 | 2,798 | 1,196 | 1,099 | 52.8/47.2% | 48.4/51.6% |
+| Loaded Transport (Blue full) | 4,924 | 3,606 | 1,191 | 1,306 | 35.6/64.4% | 48.9/51.1% |
+| Camera Ready (Deployed) | 4,924 | 3,603 | 1,175 | 1,306 | 35.6/64.4% | 50.2/49.8% |
+| Materials Exhausted (Transport) | 4,924 | 3,606 | 1,191 | 927 | 35.6/64.4% | 48.9/51.1% |
 
 **Loaded Transport** is the camera-ready water load (full top-tier Blue IBCs,
 1,600 kg) carried in the *transport* configuration — panel swung in, cargo doors
@@ -211,10 +211,10 @@ All four states are well within the ISO 24,000 kg maximum gross weight:
 
 | State | Total (kg) | Margin (kg) | Utilization |
 |-------|-----------|------------|-------------|
-| Dry | 3,319 | 20,681 | 13.8% |
-| Camera Ready | 4,919 | 19,081 | 20.5% |
-| Materials Exhausted | 4,919 | 19,081 | 20.5% |
-| Loaded Transport | 4,919 | 19,081 | 20.5% |
+| Dry | 3,324 | 20,681 | 13.8% |
+| Camera Ready | 4,924 | 19,081 | 20.5% |
+| Materials Exhausted | 4,924 | 19,081 | 20.5% |
+| Loaded Transport | 4,924 | 19,081 | 20.5% |
 
 The container operates at about 20% of its rated capacity in all states.
 There is no structural concern from a gross weight perspective.
@@ -263,7 +263,7 @@ This is an inherent self-stabilizing feature of the 2×2 IBC stack design.
 The water system is closed — 1,600 kg of water is loaded into the Blue IBCs
 and redistributed during processing. No water is added or lost; it simply
 migrates from top-tier Blue IBCs through the processing tray into bottom-tier
-Brown/Waste IBCs. Total mass remains constant at 4,919 kg throughout a
+Brown/Waste IBCs. Total mass remains constant at 4,924 kg throughout a
 session, but the vertical redistribution of 1,600 kg from top tier to
 bottom tier drops the center of gravity by 379mm, improving stability.
 

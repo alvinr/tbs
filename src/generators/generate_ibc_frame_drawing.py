@@ -519,7 +519,7 @@ def sheet1():
 
     leader(ax, sx(30), sy(1760 + FRAME_RHS / 2),
            sx(330), sy(1500),
-           "WALL JOIST HANGER (×4)\nSimpson U-pocket,\nface-bolted to side wall",
+           "WALL JOIST HANGER (×4)\nSimpson U-pocket, through-bolted\n(4× M12) to a 100×135×8 EXTERIOR\nbacking plate (hex heads outside)",
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
@@ -558,13 +558,13 @@ def sheet1():
         f"1. All RHS members: 50×50×3mm mild steel, A500 Grade B. Joints fillet welded (5mm leg), continuous.",
         f"2. RESTRAINT, not load-bearing: the 1000L caged totes DIRECT-STACK cage-on-cage (52mm headroom — no deck between tiers). A SINGLE FRONT PORTAL (×2 full-height uprights) at the IBC front restrains them; the deep mid/back corridor stations are dropped.",
         f"3. Floor flange feet (×2): 150×150×12mm plate fillet welded to each upright base; 4× M12 anchors into the floor (uplift + lateral restraint).",
-        f"4. Front retaining bars (×4, Z560 + Z1760): stop the totes sliding out the front; each bar's wall end drops into a Simpson-style wall joist hanger (×4).",
+        f"4. Front retaining bars (×4, Z560 + Z1760): stop the totes sliding out the front; each bar's wall end drops into a Simpson-style wall joist hanger (×4), through-bolted (4× M12) to a 100×135×8mm EXTERIOR backing plate (hex heads outside) that spreads the load into the thin corrugated wall.",
         f"5. D-ring lashing holders on the front bars (1,100 kg WLL); ratchet straps over each stack tie down to them.",
         f"6. Surface finish: gray oxide primer + flat black powder coat.",
         f"7. IBC anatomy: US 48\"×40\" caged composite tote (1000L, 1168mm) — {IBC_PALLET_H}mm pallet base + HDPE bottle + galvanized wire cage. v2 layout: Brown/Waste bottom, Blue on top.",
         f"8. Cage top rail ({IBC_CAGE_TUBE_D}mm Ø tube) is the highest point; lashing straps bear on it.",
         f"9. IBC valve face (DN50, S60×6) points toward the corridor. Valve CL at Z={IBC_VALVE_Z}mm above each tote base.",
-        f"10. Total frame weight: ~170 kg (incl. feet + front bars + hangers + panel-mount).",
+        f"10. Total frame weight: ~178 kg (incl. feet + front bars + hangers + exterior wall plates + panel-mount).",
     ]
     draw_notes(ax, notes, sx(2500), sy(TOP_Z + 600), spacing=sy(23),
                fs=7, font=FONT, width=sx(1800))

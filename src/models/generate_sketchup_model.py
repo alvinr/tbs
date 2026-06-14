@@ -1088,7 +1088,10 @@ def ibc_rack():
         for bz in bar_zs:
             parts.append(ruby_cylinder("D-Ring Holder", front_x - 6, ydh, bz + s / 2, 16, 10, color=C_STEEL, axis="x"))
 
-    # Wall joist hangers (Simpson U-pocket) at each front-bar wall end.
+    # Wall joist hangers (Simpson U-pocket) at each front-bar wall end, through-bolted
+    # to an EXTERIOR backing plate (load-spreading, hex heads outside — the thin
+    # corrugated wall would otherwise pull through under the totes' transport thrust).
+    ext_pt, ext_pw, ext_ph = 8, 100, 135        # exterior plate: 100(X) × 135(Z) × 8 thick
     for wall_yd, din in ((0, 1), (C_WID, -1)):
         for bz in bar_zs:
             ht, dep = 4, 70
@@ -1096,6 +1099,19 @@ def ibc_rack():
             s_y = wall_yd if din > 0 else wall_yd - dep
             parts.append(ruby_box("Wall Hanger Plate", front_x - 8, p_y, bz - 30, s + 16, ht, s + 70, color=C_STEEL))
             parts.append(ruby_box("Wall Hanger Seat", front_x - 4, s_y, bz - ht, s + 8, dep, ht, color=C_STEEL))
+            # Exterior backing plate just outside the container wall + 4 M12 through-bolts.
+            ecx = front_x - 8 + (s + 16) / 2     # plate center X (on the hanger)
+            ecz = bz + s / 2                      # plate center Z (on the bar)
+            plate_y = (-WALL_T - ext_pt) if din > 0 else (C_WID + WALL_T)
+            bolt_cy = (-WALL_T - ext_pt) if din > 0 else (C_WID - 10)
+            parts.append(ruby_box("IBC Wall Backing Plate (ext)",
+                                  ecx - ext_pw / 2, plate_y, ecz - ext_ph / 2,
+                                  ext_pw, ext_pt, ext_ph, color=C_STEEL))
+            for dx in (-ext_pw / 2 + 18, ext_pw / 2 - 18):
+                for dz in (-ext_ph / 2 + 22, ext_ph / 2 - 22):
+                    parts.append(ruby_cylinder("IBC Wall Through-Bolt M12",
+                                               ecx + dx, bolt_cy, ecz + dz, 7, 58,
+                                               color=c_bolt, axis="y"))
 
     return '\n'.join(parts)
 
@@ -1955,10 +1971,12 @@ def water_plumbing():
     at every bend (per skill_plumbing_drawing), kept clear of the IBC footprint
     (X 4674-5893, Y 30-1046 & 1316-2332, Z 0-2336): ALL runs stay in the clear
     corridor (Y 1046-1316) — the direct-stack totes leave only 52mm headroom, so
-    the Blue fill enters the tote SIDES near the top (no over-the-top run) and the
-    drains/suctions run in separate corridor lanes; the tray-pickup and spray runs
-    drop to the floor and leave the IBC zone (X<4674) before traversing.
-    Blue=fresh/process, brown=developer, gray=waste."""
+    EVERY tote-top connection (fill, recycle returns, reject) is SIDE-ENTRY near
+    the top; the drains/suctions run in separate corridor lanes; P-01 → spray bar
+    drops to the floor and leaves the IBC zone (X<4674) before traversing.
+    KEEPS the recycle loop (matches generate_panel_layout.py): tray sump → P-04 →
+    DV-02 → IBC-3 (Brown); IBC-3 → P-02 → filters → DV-01 → IBC-2 (Blue recycle);
+    off-spec → IBC-4 (Waste). Blue=fresh/process, brown=recycled, gray=waste."""
     pr = 12
     nearX = IBC_COL_X + IBC_W / 2           # 5283 — IBC column center X
     nY = BLUE_IBC_Y + IBC_D / 2            # 538  — near col center (Blue #1 fill)
@@ -2078,11 +2096,45 @@ def water_plumbing():
           (gapX, cc, 30), (rxB, cc, 30), (rxB, pyL, 30), (rxB, pyL, pZ2)],
          C_IBC_WASTE)
 
-    # Pump → filters → spray-bar Blue trunk.
-    pipe("Pump → Filters", [(pumpX, cc, pumpZ), (pumpX, cc, 700)], C_BLUE)
-    pipe("Filters → Spray Trunk",
-         [(pumpX, cc, 700), (pumpX, cc, floor), (RAIL_X_R, cc, floor),
+    # ── Recycle loop (matches generate_panel_layout.py — the canonical routing) ──
+    # KEEP the recycle loop: the tray sump feeds the Brown buffer (IBC-3), Brown is
+    # filtered and recycled back to Blue (IBC-2), and Blue feeds the spray bar.  All
+    # tote-top connections are SIDE-ENTRY near the top (no top-cap access, 52mm
+    # headroom).  3-way diverters DV-02 (after P-04) and DV-01 (after the filters)
+    # send off-spec water to the Waste tote (IBC-4) instead.
+    ibc3_in_z = IBC_H_1000 - 80                   # 1088 — IBC-3 (Brown) side-entry near top
+    ibc4_in_z = IBC_H_1000 - 80                   # 1088 — IBC-4 (Waste) side-entry near top
+    ibc2_in_z = 2 * IBC_H_1000 - 180              # 2156 — IBC-2 (Blue) side-entry near top
+    fcx = EQPANEL_X - BB_OD / 2                    # 4809 — filter column X (per equipment_panel)
+    f_out_z = F3_Z + BB_H / 2                      # filter-stack outlet (top of F3)
+
+    # (1) Blue supply → P-01 → spray bar (the wash/rinse feed).
+    pipe("P-01 → Spray Bar",
+         [(rxA, pyL, pZ1), (rxA, pyL, floor), (RAIL_X_R, pyL, floor),
           (RAIL_X_R, 12, floor), (RAIL_X_R, 12, SPRAY_BAR_FEED_Z)], C_BLUE)
+
+    # (2) Tray-sump recycle: P-04 → 3W-DV-02 → IBC-3 (Brown) side-entry near top.
+    parts.append(ruby_tee("3W-DV-02 Diverter", (rxB, pyL, ibc3_in_z), (0, -1, 0), (0, 0, 1), pr, color=C_VALVE))
+    pipe("P-04 → DV-02", [(rxB, pyL, pZ2), (rxB, pyL, ibc3_in_z)], C_IBC_BROWN)
+    pipe("DV-02 → IBC-3 side-entry",
+         [(rxB, pyL, ibc3_in_z), (rxB, EQPANEL_YD, ibc3_in_z),
+          (rxB, EQPANEL_YD - 150, ibc3_in_z)], C_IBC_BROWN)
+    tote_flange("IBC-3 Recycle Flange", rxB, EQPANEL_YD, ibc3_in_z, C_IBC_BROWN)
+
+    # (3) Brown recycle: P-02 → F1/F2/F3 → 3W-DV-01 → IBC-2 (Blue) side-entry.
+    pipe("P-02 → Filters", [(rxA, pyR, pZ1), (fcx, cc, pZ1), (fcx, cc, F1_Z)], C_IBC_BROWN)
+    parts.append(ruby_tee("3W-DV-01 Diverter", (fcx, cc, ibc2_in_z), (0, 1, 0), (0, 0, -1), pr, color=C_VALVE))
+    pipe("Filters → DV-01 → IBC-2 side-entry",
+         [(fcx, cc, f_out_z), (fcx, cc, ibc2_in_z),
+          (fcx, EQPANEL_YD_FAR, ibc2_in_z), (fcx, EQPANEL_YD_FAR + 150, ibc2_in_z)], C_FILTER)
+    tote_flange("IBC-2 Recycle Flange", fcx, EQPANEL_YD_FAR, ibc2_in_z, C_FILTER)
+
+    # (4) DV-01 reject (pH out of range) → IBC-4 (Waste) side-entry near top.
+    pipe("DV-01 → IBC-4 reject",
+         [(fcx, cc, ibc2_in_z), (fcx, EQPANEL_YD_FAR + 60, ibc2_in_z),
+          (fcx, EQPANEL_YD_FAR + 60, ibc4_in_z),
+          (fcx, EQPANEL_YD_FAR + 150, ibc4_in_z)], C_IBC_WASTE)
+    tote_flange("IBC-4 Reject Flange", fcx, EQPANEL_YD_FAR, ibc4_in_z, C_IBC_WASTE)
 
     return '\n'.join(parts)
 

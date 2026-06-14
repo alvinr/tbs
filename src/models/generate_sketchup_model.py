@@ -2093,7 +2093,9 @@ def water_plumbing():
           (dropX, dropY, valveZ),                         # TWIST: jog in Yd
           (dropX, dropY, 30),                             # return riser (offset)
           (gapX, dropY, 30),                              # floor run out to the gap
-          (gapX, cc, 30), (rxB, cc, 30), (rxB, pyL, 30), (rxB, pyL, pZ2)],
+          (gapX, cc, 30), (IBC_COL_X, cc, 30),            # along to the IBC front (clear of cantilevers X<4674)
+          (IBC_COL_X, cc, 90),                            # rise to clear the frame FLOOR BEAM (X4734-4784, Z0-50)
+          (rxB, cc, 90), (rxB, pyL, 90), (rxB, pyL, pZ2)],  # OVER the beam, then up to P-04
          C_IBC_WASTE)
 
     # ── Recycle loop (matches generate_panel_layout.py — the canonical routing) ──
@@ -2108,9 +2110,13 @@ def water_plumbing():
     fcx = EQPANEL_X - BB_OD / 2                    # 4809 — filter column X (per equipment_panel)
     f_out_z = F3_Z + BB_H / 2                      # filter-stack outlet (top of F3)
 
-    # (1) Blue supply → P-01 → spray bar (the wash/rinse feed).
+    # (1) Blue supply → P-01 → spray bar (the wash/rinse feed).  The drop stops at
+    # Z250 (clear ABOVE the Brown→P-02 suction at Z185), jogs in X OVER the frame
+    # floor beam, then drops to the floor on the gap side (X<4734) — so it neither
+    # crosses the brown suction nor passes through the frame.
     pipe("P-01 → Spray Bar",
-         [(rxA, pyL, pZ1), (rxA, pyL, floor), (RAIL_X_R, pyL, floor),
+         [(rxA, pyL, pZ1), (rxA, pyL, 250), (IBC_COL_X, pyL, 250),
+          (IBC_COL_X, pyL, floor), (RAIL_X_R, pyL, floor),
           (RAIL_X_R, 12, floor), (RAIL_X_R, 12, SPRAY_BAR_FEED_Z)], C_BLUE)
 
     # (2) Tray-sump recycle: P-04 → 3W-DV-02 → IBC-3 (Brown) side-entry near top.

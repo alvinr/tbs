@@ -26,13 +26,13 @@ Modeled dimensions are the `tbs_constants.py` value(s) the generators draw. mm.
 | # | Component | Real product (datasheet) | Modeled | Verdict |
 |---|-----------|--------------------------|---------|---------|
 | 1 | IBC tote (1000 L caged) | 1219×1016×1168 | 1219×1016×1168 (`IBC_W/IBC_D/IBC_H_1000`) | ✅ **FIXED** (v2) |
-| 2 | **Battery** (Renogy 100 Ah LiFePO4) | **330×172×214** | each ~240×120×**500** (`BA_*`) | ❌ **WRONG** — wrong proportions (modeled tall/narrow; real is long/short) |
-| 3 | **Pump** (Shurflo 2088-554-144) | **216×127×114** | Ø/box **100** (`PUMP_D`) | ❌ **UNDERSIZED** — real pump is ~2× the modeled footprint |
-| 4 | **Filter housing** (Big Blue 4.5"×20") | **Ø184 × 594 tall** (Pentek) | Ø130 × **340** (`BB_OD`/`BB_H`) | ❌ **WRONG** — modeled as a 10" housing; the 20" product is ~250 mm taller |
-| 5 | **Fan** (AC Infinity Cloudline S6) | **200×320×213, inline** (6"/152 duct) | 150 Ø × **50 deep** panel fan (`FAN_DIAM`/`FAN_BODY_D`) | ❌ **MISMATCH** — S6 is a 320 mm **inline duct fan**, not a thin panel fan; it can't "not protrude" and is **longer than the 300 mm baffle duct** (`DUCT_DEPTH`) |
-| 6 | **Evap cooler** ("Portacool Jetstream 110, 12 V DC") | **product does not exist** — Jetstreams are 220–270 and **120 V AC**, not 12 V DC | 600×350×800 (`EVAP_*`) | ❌ **INVALID PRODUCT** — needs a real 12 V DC cooler selected |
-| 7 | Accumulator (SeaFlo 0.75 L, SFAT-075-125-01) | 200×127×125 | Ø127 × 150 cyl | ⚠ **MINOR** — Ø127 matches; modeled 150 tall vs 125, length 200 not captured |
-| 8 | Spray-bar beam (aluminum SHS) | BoM "1½×1½×⅛" = **38.1×38.1×3.2** | spec text **40×40×3** | ⚠ **NAMING** — 1½" ≠ 40 mm; pick one (40×40 is metric SHS; 1½" is imperial) |
+| 2 | **Battery** (Renogy 100 Ah LiFePO4) | **330×172×214** | was 240×120×500 → now 2×330×172×214 side-by-side (`BA_*`) | ✅ **FIXED** — `BA_D` 120→172, `BA_H_HI` 650→364, `BA_W` 500→680, `BA_X` 1810→1540 (clears the cone; line-of-sight re-check passes) |
+| 3 | Pump (Shurflo 2088-554-144) | 216×127×114 | 100×127×218 (`PUMP_D`×`PUMP_YD_SPAN`×Z) | ✅ **FIXED (minor)** — width 127 + length 218 already matched the real pump; only protrusion `PUMP_D` 100→114 |
+| 4 | Filter housing (Big Blue) | switch to **4.5"×10"** = Ø184 × 333 (Pentek) | Ø130 → **184** × 340 (`BB_OD`/`BB_H`) | ✅ **FIXED** — `BB_OD` 130→184 (`BB_H`=340 ≈ 333 ✓); BoM switched to 4.5"×10" |
+| 5 | Fan | real 150×150×50 12 V DC axial fan | 150 Ø × 50 deep panel fan (`FAN_DIAM`/`FAN_BODY_D`) | ✅ **FIXED** — model was already correct; BoM product "AC Infinity S6" → real 150×150×50 axial panel fan |
+| 6 | **Evap cooler** ("Portacool Jetstream 110, 12 V DC") | **product does not exist** — Jetstreams are 220–270 and **120 V AC** | 600×350×800 (`EVAP_*`) | ⏸ **PARKED (follow-up)** — no clean 12 V DC ground-placed cooler on the market; revisit (TurboKool roof unit / AC + inverter / drop active cooling) |
+| 7 | Accumulator (SeaFlo 0.75 L, SFAT-075-125-01) | 200×127×125 | Ø127 × 200 cyl | ✅ **FIXED** — cylinder 150→200 (Ø127 already matched) |
+| 8 | Spray-bar beam (aluminum SHS) | model uses 40×40×3 | BoM said "1½×1½×⅛" | ⚠ **OPEN (naming)** — set the BoM to metric 40×40×3 to match the model + carriage saddle cut |
 
 **Excluded from the model but listed for BoM completeness:** Solar panel (Renogy 200 W
 rigid ≈ 1491×699×35, varies by model — mounted externally, no container clash).
@@ -98,10 +98,25 @@ listed for completeness; confirm the drawn size equals the catalog dimension:
 
 ---
 
-## 4. Status
+## 4. Resolved decisions (2026-06-15) + remediation
 
-- **Verified mismatches needing rework:** battery, pump, filter, fan, evap cooler (5).
-- **Two need a product/design decision first:** fan (panel vs inline) and evap cooler (pick a real 12 V DC unit).
-- **Once decided,** each fix cascades: `tbs_constants.py` → re-render the affected 2D diagrams → re-send the affected 3D models → re-check clearances → update the BoM spec + dimensions + cost.
+| Component | Decision | Real dim used | Model change | BoM change | Status |
+|-----------|----------|---------------|--------------|------------|--------|
+| **Fan** | keep the drawn 150 mm axial **panel** fan; swap the product | 150×150×50 | none (model already 150×50) | "AC Infinity S6" → 150×150×50 mm 12 V DC axial fan ([15050-12V](https://www.coolingfanfactory.com/product/DC-Fan-15050-12V-24V-48V-150mm.html)) | ✅ done |
+| **Filter** | switch the purchase to **4.5"×10"** | 333 × Ø184 | `BB_OD` 130 → 184 | spec 4.5×20 → 4.5×10; cost ~$470–652 → ~$282–445; cartridge intervals ~½ | ✅ done |
+| **Battery** | resize to real pack, **side-by-side** | 2× 330×172×214 | `BA_D`172/`BA_H_HI`364/`BA_W`680/`BA_X`1540 | dims added | ✅ done (line-of-sight passes) |
+| **Pump** | resize | 216×127×114 | `PUMP_D` 100→114 (W/L already matched) | dims added | ✅ done |
+| **Accumulator** | minor | 200×127×125 | cyl 150→200 | dims added | ✅ done |
+| **Spray beam** | metric | 40×40×3 | none | name "1½×1½×⅛" → 40×40×3 | ✅ done |
+| **Evap cooler** | **PARKED** — no clean 12 V DC ground unit | TBD | — | — | ⏸ follow-up |
+
+**3D re-sends still pending** (geometry changed): **overview**, **ibc-stack** (filter Ø + ACC),
+and **film-plane** (battery ghost) need `--send` + `.skp` re-save.
+
+**Cost re-sum HELD:** the fan (−~$70) and filter (−~$200) changes plus the parked evap cooler
+all hit categories 5 & 8 — the category-5/8 subtotals + the grand totals + Scenarios A/B/C
+will be re-summed in one pass **once the evap cooler is resolved** (avoids triple-summing).
+
+*This document is the source of truth for the purchased-part dimensional reconciliation.*
 
 *This document is the source of truth for the purchased-part dimensional reconciliation; update it as each component is resolved.*

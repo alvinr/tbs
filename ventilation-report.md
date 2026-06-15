@@ -63,7 +63,7 @@ Longitudinal section showing the cross-flow ventilation path: Fan B intake at th
 | Fan B (intake) | Hinged panel, near corner zone by the pinhole wall (Yd=365mm, Z=600mm — rev9/B2 swap) | Flush-mounted in 40mm corner zone panel | Fresh air intake — draws cooler air near floor level |
 | Fan A (exhaust) | Sealed end wall (X=5893mm), in the plumbing corridor below the X1 fill port (Yd=1181mm, Z=2000mm) | Flush-mounted in wall penetration | Exhaust warm, humid air during processing and drying |
 
-Both fans are 6" (150mm) diameter, 12V DC (AC Infinity S6 or equivalent). Fan bodies do not protrude beyond either panel face. Cross-flow ventilation runs diagonally: **low intake at the cargo door end → high exhaust at the sealed end** — fresh air enters near the floor, sweeps the working volume, and warm air discharges high.
+Both fans are 6" (150mm) diameter, 12V DC, **150×150×50mm axial panel fans** (e.g. GDSTIME/Wathai 15050-12V — the AC Infinity S6 was a mis-spec: it's a 320mm inline fan; see [component-dimension-audit.md](component-dimension-audit.md)). Fan bodies (50mm deep) do not protrude beyond either panel face. Cross-flow ventilation runs diagonally: **low intake at the cargo door end → high exhaust at the sealed end** — fresh air enters near the floor, sweeps the working volume, and warm air discharges high.
 
 > **Why this layout:** The intake sits on the cargo door panel (low) and the exhaust on the sealed end wall (high). With the v2 1000L direct-stack the totes now reach Z=2336mm against the end wall in both flanking columns, leaving only the **270mm plumbing corridor** (Yd=1046–1316) clear full-height. Fan A is therefore placed in that corridor, directly **below the X1 fill port** (Yd=1181, Z=2000) — the only channel where its 300mm baffle duct projects into clear space rather than into a tote — while preserving the diagonal low-in / high-out flow.
 
@@ -190,7 +190,7 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 
 | Item | Spec | Source | Est. cost |
 |------|------|--------|-----------|
-| 6" inline fans × 2 | 12V DC, ~200 CFM each | Amazon (AC Infinity S6) | ~$120 |
+| 150×150×50mm axial fans × 2 | 12V DC, ~150–200 CFM each | Amazon (GDSTIME/Wathai 15050) | ~$50 |
 | Evaporative cooler | 12V DC, ~300 CFM | Portacool / Amazon | ~$280 |
 | Shade canopy — 80% shade cloth | 20 × 10 ft | Amazon / Farm supply | ~$80 |
 | Canopy frame | 1.5" EMT conduit + fittings | Home Depot | ~$120 |
@@ -229,7 +229,7 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 
 ## 11. Source References
 
-1. [AC Infinity CLOUDLINE S6](https://acinfinity.com/cloudline-s6-quiet-inline-fan-6-with-speed-controller/) — 6" inline duct fan specifications.
+1. [150mm 12V DC axial fan 15050](https://www.coolingfanfactory.com/product/DC-Fan-15050-12V-24V-48V-150mm.html) — 150×150×50mm axial panel fan specifications.
 2. [Portacool Jetstream 110](https://www.portacool.com/) — 12V DC evaporative cooler specifications.
 3. [OSHA Heat Illness Prevention](https://www.osha.gov/heat-exposure) — Workplace heat exposure guidelines and permissible limits.
 4. [Electrical Report](electrical-report.md) — Circuit assignments (A, B, E), wiring specification, and fuse block layout.

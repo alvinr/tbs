@@ -192,7 +192,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | [MPP 5-micron sediment cartridge 4.5"×10"](https://www.amazon.com/s?k=4.5x10+melt+blown+polypropylene+sediment+filter+5+micron) | Melt-blown polypropylene depth filter (F-1 stage) | 3 + spares | Amazon | $6–$10 | $18–$30 |
 | [KDF-55 heavy metal cartridge 4.5"×10"](https://www.amazon.com/s?k=4.5x10+KDF+55+heavy+metal+water+filter) | KDF-55 media for dissolved iron removal (F-2 stage) | 2 + spares | Amazon | $20–$35 | $40–$70 |
 | [CTO carbon block cartridge 4.5"×10"](https://www.amazon.com/s?k=4.5x10+CTO+coconut+shell+carbon+block+filter) | Coconut shell activated carbon block (F-3 stage) | 3 + spares | Amazon | $8–$15 | $24–$45 |
-**Filter subtotal: ~$282–$445** *(was ~$470–$652 for 4.5"×20"; category-5 + grand totals re-summed when the parked evap cooler is resolved)*
+**Filter subtotal: ~$282–$445** *(was ~$470–$652 for 4.5"×20"; folded into the re-summed category-5 + grand totals with the evap-cooler resolution — see [cost breakdown](project-cost-breakdown.md))*
 
 ### Valves, fittings & pipe
 | Item | Spec | Qty | Supplier | Est. unit | Total |
@@ -293,7 +293,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Neoprene gasket 340×240×3mm | Weatherseal between plate and wall | 1 | McMaster-Carr | ~$6 |
 | M6 bolt + nut + washer set | Panel mounting hardware, SS | 4 | McMaster-Carr | ~$5 |
 | [MC4 bulkhead connector pairs](https://www.amazon.com/s?k=MC4+bulkhead+connector+panel+mount+IP67) | IP67 panel-mount | 3 pairs | Amazon | ~$25 |
-| Deutsch DT 2-pin bulkhead connector | Panel-mount, IP67, Circuit E cooler output | 1 | [Waytek Wire](https://www.waytekwire.com) | ~$5 |
+| Panel cooler output | 120V AC — now a **GFCI outlet** (Circuit E); counted in the Evaporative cooler section (was a DC Deutsch bulkhead) | — | — | (see cooling) |
 **Solar & battery subtotal: ~$1,295**  *(1-pack standard; +$350 for the optional 2nd pack)*
 
 ### Distribution & wiring
@@ -446,7 +446,7 @@ top/bottom weld + anchor connection** (fabricator/PE review) — not the member 
 | [150×150×50mm 12V DC axial panel fan](https://www.coolingfanfactory.com/product/DC-Fan-15050-12V-24V-48V-150mm.html) | **150×150×50mm**, 12V DC, ball-bearing, ~150–200 CFM (e.g. GDSTIME / Wathai 15050-12V). *Thin axial PANEL fan — fits flush + inside the 300mm baffle duct (NOT the 320mm-long AC Infinity S6 inline fan; see [dimension audit](component-dimension-audit.md))* | 2 | Amazon | ~$50 total |
 | 6" duct stub fittings | Wall penetration collars | 2 | Amazon | ~$20 |
 | Fan baffle plates (3mm mild steel) | 2 baffles per fan, offset S-path | 1 lot | Metal Supermarkets | ~$40 |
-**Ventilation subtotal: ~$110** *(fan corrected to a real 150×150×50 axial panel fan; category-8 + grand totals re-summed when the parked evap cooler is resolved)*
+**Ventilation subtotal: ~$110** *(fan corrected to a real 150×150×50 axial panel fan; folded into the re-summed grand totals with the evap-cooler resolution — see [cost breakdown](project-cost-breakdown.md))*
 
 ### Shade canopy
 | Item | Spec | Qty | Supplier | Est. cost |
@@ -455,23 +455,28 @@ top/bottom weld + anchor connection** (fabricator/PE review) — not the member 
 | Canopy frame | 1.5" EMT conduit + T-fittings | 1 lot | Home Depot | ~$120 |
 **Shade canopy subtotal: ~$200**
 
-### Evaporative cooler
+### Evaporative cooler (+ inverter)
+*Resolves the parked evap cooler ([dimension audit](component-dimension-audit.md)): a commodity 120V AC swamp cooler on a dedicated 12V→120V inverter, instead of the fictional "Portacool Jetstream 110 12V DC". AC isolation/GFCI/bonding per [Electrical Report §7.6](electrical-report.md#ac-safety).*
+
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [12V DC evaporative cooler](https://www.portacool.com) | ~80W, ~300 CFM (Portacool Jetstream 110 12V or equiv.) | 1 | [Portacool](https://www.portacool.com) / Amazon | ~$280 |
+| [Evaporative cooler — Hessaire MC18M](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) | 120V AC, 85W, 1300 CFM (run on **low** for the Ø200 duct), 16 lb, 559×305×711mm, 4.8 gal | 1 | [Hessaire](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) / Amazon | ~$130 |
+| [Cooler inverter — Victron Phoenix 12/375 GFCI](https://www.victronenergy.com/inverters/phoenix-inverter-vedirect-250va-800va) | 12V→120V pure-sine, **built-in GFCI**, factory bonded neutral, 0.9W idle (Circuit E) | 1 | [Victron](https://www.victronenergy.com/inverters/phoenix-inverter-vedirect-250va-800va) / Amazon | ~$210 |
+| Inverter DC protection | 40A ANL fuse + holder + DC disconnect switch (inverter feed) | 1 | Blue Sea / Amazon | ~$40 |
+| Panel GFCI AC outlet | Weatherproof NEMA 5-15R + in-use (bubble) cover (Circuit E panel outlet) | 1 | Leviton / Amazon | ~$25 |
 | Ø200mm insulated flex duct | ~1.2m, aluminum foil jacket, cooler to wall stub | 1 | [Home Depot](https://www.homedepot.com/s/8%20inch%20insulated%20flex%20duct) / McMaster-Carr | ~$22 |
 | Ø200mm (8") 90° duct elbow | Galvanized — vertical riser off cooler to horizontal wall entry | 1 | [Home Depot](https://www.homedepot.com/s/8%20inch%20duct%20elbow) | ~$14 |
 | Ø200mm duct collar + hose clamp | Galvanized, wall stub coupling | 1 | [Home Depot](https://www.homedepot.com/s/8%20inch%20duct%20collar) | ~$12 |
 | Ø200mm weatherproof duct cap | Removable, protects wall stub when cooler disconnected | 1 | [Home Depot](https://www.homedepot.com/s/8%20inch%20duct%20cap) | ~$8 |
 | 200mm baffle duct + plates | Light-safe baffled intake, 300mm stub, 2× offset baffles | 1 lot | McMaster-Carr / local fab | ~$20 |
-| Cooler external power cable | 1.5m, 14 AWG 2-cond, Deutsch DT 2-pin plugs each end | 1 | [Waytek Wire](https://www.waytekwire.com) / Amazon | ~$20 |
+| Cooler power cord | 1.5m outdoor SJOOW, NEMA 5-15P each end (panel outlet → cooler) | 1 | Amazon | ~$20 |
 | 25mm ratchet strap, 2m | Cooler transport stowage on near walkway | 2 | Amazon / Harbor Freight | ~$10 |
-| 12mm plywood base plate 600×350mm | Load distribution on walkway grating | 1 | Offcut / local | ~$5 |
+| 12mm plywood base plate 559×305mm | Load distribution on walkway grating | 1 | Offcut / local | ~$5 |
 | 25×25×3mm Al angle cleats, 100mm | Anti-slide cleats screwed to base plate | 2 | Metal Supermarkets / online | ~$4 |
-**Cooler subtotal: ~$395**
+**Cooler + inverter subtotal: ~$520**
 
-**Section total: ~$759**
-*Note: fans wired to Circuits A & B, cooler to Circuit E — all from main fuse block. Cooler power supplied via Deutsch DT bulkhead connector on external power panel.*
+**Section total: ~$830** *(ventilation $110 + shade $200 + cooler/inverter $520)*
+*Note: fans wired to Circuits A & B (DC); the cooler runs from the interior inverter (Circuit E) → GFCI panel outlet → outdoor cord. The cooler subsystem (cooler + inverter + DC protection + AC outlet) is the only 120V AC branch — see [Electrical Report §7.6](electrical-report.md#ac-safety).*
 
 ## 9. Printmaking Chemistry — Cyanotype (50 prints)
 *Source: `chemistry-shopping-list.md`*
@@ -563,7 +568,8 @@ top/bottom weld + anchor connection** (fabricator/PE review) — not the member 
 | **[Purcooflow](https://www.purcooflow.com)** | 3-stage combo filter units, replacement cartridges | Online |
 | **[Grainger](https://www.grainger.com)** | Industrial supply — local branches throughout SoCal | Multiple SoCal branches |
 | **[Lenox Laser](https://www.lenoxlaser.com)** | Custom precision laser-drilled pinholes | Glen Arm, MD |
-| **[Portacool](https://www.portacool.com)** | 12V DC evaporative coolers | Online |
+| **[Hessaire](https://hessaire.com)** | 120V AC evaporative (swamp) coolers | Online |
+| **[Victron / Amazon](https://www.victronenergy.com)** | Phoenix pure-sine inverters (Circuit E) | Online |
 | **[Progressive Automations](https://www.progressiveautomations.com)** | Linear actuators (PA-14 series) | Online |
 | **[Mouser Electronics](https://www.mouser.com)** | Power supplies, switches, electronic components | Online |
 

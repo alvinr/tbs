@@ -67,7 +67,8 @@ Overall floorplan can be seen below. Its essentially split into three areas, lef
 
 | Item | X (mm) | H (mm) | Notes |
 |------|--------|--------|-------|
-| Evaporative cooler | 700–1,300 | ground | 12V DC 80W; ground-placed outside, flex duct to wall stub at Z=1900mm |
+| Evaporative cooler | 700–1,300 | ground | Hessaire MC18M, 120V AC 85W (97W on 12V bus via inverter); ground-placed outside, flex duct to wall stub at Z=1900mm |
+| Cooler inverter (Cct E) | 1,910–2,030 | 1,180–1,415 | Victron Phoenix 12/375 GFCI, wall-mounted below the EP (12V→120V for the cooler) |
 | Electrical panel | 1,910–2,210 | 1,500–2,100 | IP65, wall-mount (stacked above the battery bank; clears the upper transport-stay anchor). rev11: dropped 150mm (was Z1,650–2,250) — originally to clear the film-plane brace top beam; that brace cage is now retired for wall-seat saddles, but the EP is kept at this height |
 | Battery bank (2× 100Ah LiFePO4, each 330×172×214mm) | 1,540–2,220 | 150–364 | Wall shelf below panel; side-by-side, clears the optical cone |
 | Solar charge controller | Within panel | — | Mounted inside enclosure |
@@ -226,20 +227,20 @@ critical compression seals.
 
 ### 6.2 Evaporative Cooler Transport Stowage
 
-The evaporative cooler (Portacool Jetstream 110 or equivalent, ~600×350×800mm, ~20 kg dry) sits on the ground outside the container during operation, connected to the wall penetration via Ø200mm flex duct. It must be stowed inside the container for transport.
+The evaporative cooler (**Hessaire MC18M**, 559×305×711mm, ~7.3 kg / 16 lb dry — replaces the fictional "Portacool Jetstream 110"; see [dimension audit](component-dimension-audit.md)) sits on the ground outside the container during operation, connected to the wall penetration via Ø200mm flex duct and powered from the interior inverter (Circuit E, 120V AC). It must be stowed inside the container for transport.
 
-**Stowage position:** On the near walkway grating in the wide section. The cooler sits on a 12mm plywood base plate (600×350mm) that distributes the load across the grating and prevents the housing from catching in the grate openings. The wide section (500mm) fully contains the 350mm cooler depth with 150mm clearance — no overhang into the processing tray zone.
+**Stowage position:** On the near walkway grating in the wide section. The cooler sits on a 12mm plywood base plate (559×305mm) that distributes the load across the grating and prevents the housing from catching in the grate openings. The wide section (500mm) fully contains the 305mm cooler depth with ~195mm clearance — no overhang into the processing tray zone. The lighter (16 lb) unit also eases the handling.
 
 **Securing:** Two 25mm ratchet straps loop over the cooler and hook to the nearest cantilever bracket arms. Two aluminum angle cleats (25×25×3mm, 100mm long) screwed to the base plate prevent lateral sliding.
 
 | Parameter | Value |
 |-----------|-------|
-| Stowage zone | X=1450–2050mm, Yd=0–350mm (near walkway wide section) |
-| Cooler footprint | 600×350mm (long axis along X) |
-| Cooler height on grating | 800mm (top at Z=900mm) |
-| Weight (dry) | ~20 kg |
+| Stowage zone | X=1450–2009mm, Yd=0–305mm (near walkway wide section) |
+| Cooler footprint | 559×305mm (long axis along X) |
+| Cooler height on grating | 711mm (top at Z=861mm) |
+| Weight (dry) | ~7.3 kg (16 lb) |
 | Securing | 2× ratchet straps to bracket arms |
-| Base plate | 12mm ply, 600×350mm |
+| Base plate | 12mm ply, 559×305mm |
 | Clearance to panel swing sweep | ~55mm (the swing reaches X≈1,395 in the near-walkway zone; the cooler starts at X=1,450 — moved deeper from X=1,200 in rev10 to clear the deeper swing) |
 
 See [Walkway Diagram — Sheet 1](engineering-diagrams.md) for stowage position in plan view.

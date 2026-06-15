@@ -194,7 +194,7 @@ def sheet2():
         f"1. Piano hinge (back edge, Z{SHELF_H}) on the pinhole wall.",
         f"2. In use: folds DOWN to horizontal, held level by {SHELF_STAY_N} stays from the wall above.",
         f"3. Transport: folds UP flat against the wall (top Z{SHELF_STOW_TOP_Z}).",
-        "4. Evap cooler (top Z950) slides under the shelf underside (Z1050).",
+        f"4. Evap cooler (top Z{EVAP_STOW_Z + EVAP_H}) slides under the shelf underside (Z1050).",
     ]
     draw_notes(ax, notes, 560, 1480, spacing=64, fs=7, width=680, font=FONT)
     title_block(ax, "SHEET 2 OF 3", drawing_title="CHEMISTRY PREP SHELF",

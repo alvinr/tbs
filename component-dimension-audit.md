@@ -30,7 +30,7 @@ Modeled dimensions are the `tbs_constants.py` value(s) the generators draw. mm.
 | 3 | Pump (Shurflo 2088-554-144) | 216×127×114 | 100×127×218 (`PUMP_D`×`PUMP_YD_SPAN`×Z) | ✅ **FIXED (minor)** — width 127 + length 218 already matched the real pump; only protrusion `PUMP_D` 100→114 |
 | 4 | Filter housing (Big Blue) | switch to **4.5"×10"** = Ø184 × 333 (Pentek) | Ø130 → **184** × 340 (`BB_OD`/`BB_H`) | ✅ **FIXED** — `BB_OD` 130→184 (`BB_H`=340 ≈ 333 ✓); BoM switched to 4.5"×10" |
 | 5 | Fan | real 150×150×50 12 V DC axial fan | 150 Ø × 50 deep panel fan (`FAN_DIAM`/`FAN_BODY_D`) | ✅ **FIXED** — model was already correct; BoM product "AC Infinity S6" → real 150×150×50 axial panel fan |
-| 6 | **Evap cooler** ("Portacool Jetstream 110, 12 V DC") | **product does not exist** — Jetstreams are 220–270 and **120 V AC** | 600×350×800 (`EVAP_*`) | ⏸ **PARKED (follow-up)** — no clean 12 V DC ground-placed cooler on the market; revisit (TurboKool roof unit / AC + inverter / drop active cooling) |
+| 6 | **Evap cooler** (was fictional "Portacool Jetstream 110, 12 V DC") | **Hessaire MC18M**, 120 V AC, 1300 CFM, 85 W, 16 lb, 559×305×711 | 600×350×800 → **559×305×711** (`EVAP_*`) | ✅ **RESOLVED** — no clean 12 V DC ground unit exists (only RV-roof or $1,100+ Solar Chill), so: commodity 120 V AC cooler on a dedicated 12V→120V inverter (Victron Phoenix 12/375 GFCI). Circuit E re-based to **97 W on the 12 V bus**; AC isolation/GFCI/bonding in [Electrical §7.6](electrical-report.md#ac-safety) |
 | 7 | Accumulator (SeaFlo 0.75 L, SFAT-075-125-01) | 200×127×125 | Ø127 × 200 cyl | ✅ **FIXED** — cylinder 150→200 (Ø127 already matched) |
 | 8 | Spray-bar beam (aluminum SHS) | model uses 40×40×3 | BoM said "1½×1½×⅛" | ⚠ **OPEN (naming)** — set the BoM to metric 40×40×3 to match the model + carriage saddle cut |
 
@@ -65,11 +65,11 @@ rigid ≈ 1491×699×35, varies by model — mounted externally, no container cl
 - **Problem:** the S6 is **320 mm long** — it won't sit flush ("fan bodies do not protrude beyond the panel face" is false for an S6) and it **exceeds the 300 mm baffle-duct depth**. The design intends a compact 150 mm axial **panel** fan; the S6 is a different form factor.
 - **Action (decision needed):** either (a) spec a thin 150 mm 12 V **axial panel fan** (matches the drawing) and drop "AC Infinity S6", or (b) keep an inline fan and redesign the baffle-duct housing to accept a ~320 mm inline body.
 
-### 6. Evaporative cooler — "Portacool Jetstream 110, 12 V DC" ❌
-- **Real:** **There is no Portacool Jetstream 110.** The Jetstream line is 220/230/240/250/260/270 and runs on **120 V AC**, not 12 V DC. [Portacool Jetstream series](https://www.portacool.com/legacy-evaporative-coolers/jetstream-series/)
-- **Modeled:** `EVAP_W`=600, `EVAP_D`=350, `EVAP_H`=800; Circuit E is 12 V DC, 80 W.
-- **Problem:** the specified product **does not exist** and the power basis (12 V DC, drawn into the 80 W Circuit-E budget) is wrong for any real Jetstream.
-- **Action (decision needed):** select a real **12 V DC** evaporative cooler (e.g., a 12 V swamp cooler in the ~300 CFM class) and re-dimension `EVAP_*` + re-check Circuit-E load, stowage zone, and duct.
+### 6. Evaporative cooler — "Portacool Jetstream 110, 12 V DC" ✅ RESOLVED
+- **Was:** **There is no Portacool Jetstream 110.** The Jetstream line is 220/230/240/250/260/270 and runs on **120 V AC**, not 12 V DC. [Portacool Jetstream series](https://www.portacool.com/legacy-evaporative-coolers/jetstream-series/)
+- **Market reality (researched):** there is **no good native-12 V DC ground-placed** evap cooler. The only 12 V options are RV-**roof** units (TurboKool 2B-0001, ~$300 — rejected: roof penetration, roof-coupled vibration, transport conflict), a too-weak personal spot cooler (Transcool E3), or the premium [Solar Chill](https://www.southwest-solar.com/stainless-steel-solar-chill-coolers) line (native 12 V, ground, but $1,100+ and sole-source).
+- **Decision:** a **commodity 120 V AC swamp cooler (Hessaire MC18M, ~$130)** on a **dedicated 12V→120V pure-sine inverter (Victron Phoenix 12/375 GFCI, ~$210)**. Keeps the cooler a swappable multi-vendor part; the inverter is general-purpose. Trade-off accepted: +inverter complexity and a 4-print day now needs solar (already within the published envelope).
+- **Done:** `EVAP_*` → 559×305×711 (real Hessaire MC18M); `INVERTER_*` constants added; Circuit E re-based **80 W → 97 W on the 12 V bus** (85 W AC ÷ 0.88) in `calculate_energy_budget.py`; energy/cost/shopping/ventilation/electrical reports re-summed; stow zone re-checked (cooler X1450–2009, clear); AC **isolation/GFCI/equipotential-bonding** design added in [Electrical §7.6](electrical-report.md#ac-safety).
 
 ### 7. Accumulator — SeaFlo 0.75 L (SFAT-075-125-01) ⚠
 - **Real:** ~200 × 127 × 125 mm. [Amazon B01MUYL8F8](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) · [environmentalmarine SFAT-075](https://environmentalmarine.com/seaflo/fresh-water-pumps-accumulators/seaflo-1-gallon-accumulator-tank-sfat-075-125-01/)
@@ -108,14 +108,18 @@ listed for completeness; confirm the drawn size equals the catalog dimension:
 | **Pump** | resize | 216×127×114 | `PUMP_D` 100→114 (W/L already matched) | dims added | ✅ done |
 | **Accumulator** | minor | 200×127×125 | cyl 150→200 | dims added | ✅ done |
 | **Spray beam** | metric | 40×40×3 | none | name "1½×1½×⅛" → 40×40×3 | ✅ done |
-| **Evap cooler** | **PARKED** — no clean 12 V DC ground unit | TBD | — | — | ⏸ follow-up |
+| **Evap cooler** | 120 V AC cooler + 12V→120V inverter (no good 12 V DC ground unit exists) | 559×305×711 (Hessaire MC18M) | `EVAP_*` 600×350×800→559×305×711; `INVERTER_*` added | Circuit E re-based 80→97 W; AC isolation/GFCI/bonding [Electrical §7.6](electrical-report.md#ac-safety) | ✅ done |
 
-**3D re-sends DONE (2026-06-15):** overview, ibc-stack (filter Ø + ACC), and film-plane
-(battery ghost) re-sent + `.skp` re-saved + committed. Sketchfab re-uploads are the manual step.
+**3D re-sends:** overview (filter Ø + ACC + **evap box re-dim + inverter**), ibc-stack, film-plane.
+The earlier audit batch (filter/ACC/battery) was sent 2026-06-15; the **evap/inverter re-send is
+pending** an interactive SketchUp session. Sketchfab re-uploads are the manual step.
 
-**Cost re-sum HELD:** the fan (−~$70) and filter (−~$200) changes plus the parked evap cooler
-all hit categories 5 & 8 — the category-5/8 subtotals + the grand totals + Scenarios A/B/C
-will be re-summed in one pass **once the evap cooler is resolved** (avoids triple-summing).
+**Cost re-sum CLOSED (2026-06-15):** the held bundle (fan −~$70, filter, evap cooler + inverter)
+is now re-summed. Cooler subsystem (cooler $130 + inverter $210 + DC protection $40 + AC outlet $25)
+lands in cost-breakdown **5b** ($769→$830 mid); the new fan ($50) is folded in; grand total
+$25,399→**$25,460** mid; Scenario A $19,882→**$19,952**, Scenario B $25,322→**$25,383**. (The
+cost-breakdown's water-system filter estimate already reflected a 10″-class figure, so no separate
+cat-5 filter adjustment was needed; the master-shopping-list BOM filter $282–445 is authoritative.)
 
 *This document is the source of truth for the purchased-part dimensional reconciliation.*
 

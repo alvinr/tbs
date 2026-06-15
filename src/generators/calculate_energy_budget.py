@@ -18,7 +18,8 @@ FAN_EXHAUST_W   = 60    # Circuit A — 6" exhaust fan, far end wall high (AC In
 FAN_INTAKE_W    = 60    # Circuit B — 6" intake fan, cargo door panel low (AC Infinity S6)
 PUMP_W          = 90    # Circuit C — Shurflo 2088: 7.5A × 12V = 90W (one pump at a time)
 SAFELIGHT_W     = 15    # Circuit D — red LED strips
-COOLER_W        = 80    # Circuit E — 12V DC evaporative cooler
+COOLER_W        = 97    # Circuit E — Hessaire MC18M 120V AC evap cooler (85W AC) on the
+                        # 12V bus via a 12V→120V pure-sine inverter: 85W ÷ 0.88 eff = 97W
 ACTUATOR_W      = 100   # Circuit F — film plane actuators (optional, peak)
 WHITE_LIGHT_W   = 60    # Circuit G — 3× 20W LED panels
 

@@ -268,20 +268,34 @@ DRUM_CAGE_YD_R = DRUM_CY + DRUM_R + 31  # 1662
 # Evaporative cooler — external mount (rev 7: was interior on pinhole wall)
 # Cooler ground-placed outside container, connected via 200mm flex duct
 # through pinhole wall, Z-centered with ext power panel, 150mm gap to its left.
+# PRODUCT (dimension-audit resolution): Hessaire MC18M, 120V AC 85W / 1300 CFM
+# (run on LOW to match the Ø200 duct), fed by an internal 12V→120V inverter on
+# Circuit E.  Replaces the fictional "Portacool Jetstream 110 12V DC". 559×305×711.
 EVAP_DUCT_X  = 1000    # duct penetration center X (mm) — 150mm left of ext power panel edge
 EVAP_DUCT_Z  = 1900    # duct penetration center Z (mm) — Z-centered with ext power panel
 EVAP_DUCT_D  = 200     # duct outer diameter (mm)
-# Physical dimensions (used for transport stowage sizing)
-EVAP_W     = 600     # cooler width along X (mm)
-EVAP_D     = 350     # cooler depth along Yd (mm)
-EVAP_H     = 800     # cooler height (mm)
+# Physical dimensions (used for transport stowage sizing) — real Hessaire MC18M
+EVAP_W     = 559     # cooler width along X (mm)  — 22 in
+EVAP_D     = 305     # cooler depth along Yd (mm) — 12 in
+EVAP_H     = 711     # cooler height (mm)         — 28 in
 # Transport stowage — on near walkway grating, in the widened section.
 # rev10: moved deeper (was 1200) to clear the panel SWING sweep, which reaches
-# X≈1395 in the near-walkway Yd band; 1450 gives ~55mm margin (cooler X1450–2050,
-# inside the wide section X1155–2629).
+# X≈1395 in the near-walkway Yd band; 1450 gives margin (cooler X1450–2009,
+# inside the wide section X1155–2629).  Lighter unit now (16 lb / Hessaire MC18M).
 EVAP_STOW_X    = 1450    # stowage left edge X (mm)
 EVAP_STOW_YD   = 0       # against pinhole wall (Yd=0)
 EVAP_STOW_Z    = 150     # sits on raised grating surface (WALKWAY_H 130 + 20mm pad) [+50 raise]
+
+# ── Inverter — Circuit E 12V→120V AC for the evaporative cooler ───────────────
+# Victron Phoenix 12/375 (GFCI version): 235×120×72mm, ~2.3kg.  Wall-mounted
+# INSIDE the container on the pinhole wall, below the electrical panel (EP) and
+# above the battery bank — short DC run to the battery, GFCI AC out to the
+# external power panel.  See electrical-report.md §AC isolation & safety.
+INVERTER_X   = 1910    # left edge X (mm) — under the EP (X1910–2210)
+INVERTER_Z   = 1180    # bottom Z (mm) — above battery top (364), below EP bottom (1500); 235 tall → top 1415
+INVERTER_W   = 120     # width along X (mm)
+INVERTER_H   = 235     # height (mm)
+INVERTER_D   = 72      # protrusion from pinhole wall (Yd, mm)
 
 # ── External power panel (pinhole wall exterior, near EP) ─────────────────────
 PWR_PANEL_X = 1250   # power panel left edge X (mm) — just left of EP

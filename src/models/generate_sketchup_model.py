@@ -1532,7 +1532,7 @@ def lighting_wiring():
     # Circuit C — feed to the pump/filter equipment panel (IBC corridor).
     # Branch off the ceiling trunking (Yd≈0) across to the panel center
     # (Yd≈1181), then drop to the top of the pump zone (Z=PUMP_H_HI) at the
-    # panel face (X=EQPANEL_X). Runs above the IBC stack (top Z=2020).
+    # panel face (X=EQPANEL_X). Runs at ceiling height (Z=2350), clearing the IBC stack top (Z=2336).
     pc_yd = EQPANEL_YD + EQPANEL_YD_SPAN / 2
     parts.append(ruby_cylinder("Conduit to Equipment Panel (Cct C)",
                                EQPANEL_X, 40, czc, cr, pc_yd - 40,

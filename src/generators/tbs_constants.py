@@ -443,7 +443,8 @@ IBC_FAR_Y   = 1316   # far column Yd start (mm) — pushed to far wall, 30mm cle
 WASTE_IBC_Y = IBC_FAR_Y   # Waste is directly below Blue #2 (same Y column)
 
 # IBC right edge: IBC_COL_X + IBC_W = 4674 + 1219 = 5893mm = C_LEN ✓
-# Stack height: 2 × 1010 = 2020mm  (ceiling 2388mm → 368mm headroom ✓)
+# Stack height (v2 1000L direct-stack): 2 × 1168 = 2336mm  (ceiling 2388mm → 52mm headroom ✓)
+# (legacy "600L" stack was 2 × 1010 = 2020mm — see IBC_H_600 / IBC_H_STK below)
 
 # ── IBC stacking-frame structural securing (rev 10: simple-span retrofit) ─────
 # The upper-tote platform cross-beams are SIMPLY SUPPORTED wall-to-wall: propped
@@ -687,10 +688,10 @@ EXT_DRAIN_YD = EXT_PANEL_YD
 
 # ── Ventilation fans (150mm compact axial panel fans, interior-mounted) ───────
 # Both fans are identical — one part number, same baffle duct assembly.
-# Fan A: exhaust, far end wall (X = C_LEN face), HIGH position — above the IBC
-#         stack top (2020mm) so its baffle duct clears the totes (the low corner
-#         is occupied by the near IBC column flush to the end wall).
-#         Baffle duct extends 300mm into container interior from X=C_LEN wall.
+# Fan A: exhaust, sealed end wall (X = C_LEN face), in the 270mm plumbing corridor
+#         directly BELOW the X1 fill port (Yd=1181, Z=2000) — the only full-height
+#         clear channel past the v2 1000L direct-stack (totes reach Z=2336 in both
+#         flanking columns). Baffle duct extends 300mm into the corridor from X=C_LEN.
 # Fan B: intake, mounted on the swinging panel (near corner zone, Yd=365 — outboard of
 #         the PANEL_CUT_YD swing cut, so it rides the swinging part), LOW position.
 #         Baffle duct protrudes 300mm from the panel EXTERIOR face. Self-contained wall fan

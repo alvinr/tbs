@@ -100,7 +100,7 @@ def draw_sheet1():
     PF_T  = 0.16   # panel fan body thickness in drawing units (~50mm, schematic)
     R_PF  = 0.38   # panel fan impeller radius (150mm dia, schematic)
     BD_W  = 0.80   # baffle duct schematic depth
-    FA_Y  = CY + CH - WT - CH * 0.18    # high position (above IBC stack)
+    FA_Y  = CY + CH - WT - CH * 0.18    # high position (sealed-end corridor, below X1)
 
     # Baffle duct box — between interior face of left wall and panel fan
     bd_a_x0 = CX + WT                      # right edge of left wall = duct left face

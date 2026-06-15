@@ -154,7 +154,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 ### Water storage
 | Item | Spec | Qty | Supplier | Est. unit | Total |
 |------|------|-----|----------|-----------|-------|
-| [IBC tote 275 gal, food-grade, used/rinsed](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) | HDPE cage, DN50 butterfly valve (S60×6) — Blue (×2), Brown (×1), Waste (×1) | 4 | Container Exchanger | $80–$150 | $320–$600 |
+| [IBC tote 275 gal, food-grade, used/rinsed](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) | **1219×1016×1168mm** caged composite, DN50 butterfly valve (S60×6) — Blue (×2), Brown (×1), Waste (×1) | 4 | Container Exchanger | $80–$150 | $320–$600 |
 | [2" NPT bulkhead fitting (304 SS)](https://www.mcmaster.com/4464K115) | External drain/fill port, welded through container wall (X1/X3/X4) | 3 | McMaster-Carr | $25–$40 | $75–$120 |
 | Reinforcing plate, 6mm A36 steel, 150×150mm | Backing plate for external bulkhead ports (one per fitting) | 3 | Metal Supermarkets SoCal | $8–$12 | $24–$36 |
 **Storage subtotal: ~$388–$698**
@@ -180,19 +180,19 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 ### Pumps
 | Item | Spec | Qty | Supplier | Est. unit | Total |
 |------|------|-----|----------|-----------|-------|
-| [Shurflo 2088-554-144 pump](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, ½" NPSM ports (P-01, P-02, P-04 manifold + P-03 IBC corridor) | 4 | Amazon | $55–$70 | $220–$280 |
-| [SeaFlo pressure accumulator](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) | 0.75 L (23.5 oz), 125 PSI, ½" MNPT | 1 | Amazon | $25–$45 | $35 |
+| [Shurflo 2088-554-144 pump](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | **216×127×114mm**, 12VDC, 3.5 GPM, 45 PSI, ½" NPSM ports (P-01, P-02, P-04 manifold + P-03 IBC corridor) | 4 | Amazon | $55–$70 | $220–$280 |
+| [SeaFlo pressure accumulator](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) | **~200×127×125mm**, 0.75 L (23.5 oz), 125 PSI, ½" MNPT | 1 | Amazon | $25–$45 | $35 |
 | [Shurflo pump mounting bracket](https://www.amazon.com/s?k=shurflo+2088+mounting+bracket+stainless) | Stainless, for 2088 series (3× manifold + 1× IBC corridor for P-03) | 4 | Amazon | $8–$12 | $32–$48 |
 **Pump subtotal: ~$167–$203**
 
 ### Filter unit
 | Item | Spec | Qty | Supplier | Est. unit | Total |
 |------|------|-----|----------|-----------|-------|
-| [3-stage Big Blue combo filter 4.5"×20"](https://www.purcooflow.com/products/whf2045b302-3-stage-kdf-heavy-metal-water-filter) | 1" NPT ports, integrated bracket, triple drain valves. Purcooflow WHF2045B302 or equiv. (iSpring WGB32B, Express Water) | 1 | Purcooflow / Amazon | $350–$450 | $350–$450 |
-| [MPP 5-micron sediment cartridge 4.5"×20"](https://www.amazon.com/s?k=4.5x20+melt+blown+polypropylene+sediment+filter+5+micron) | Melt-blown polypropylene depth filter (F-1 stage) | 3 + spares | Amazon | $8–$14 | $24–$42 |
-| [KDF-55 heavy metal cartridge 4.5"×20"](https://www.amazon.com/s?k=4.5x20+KDF+55+heavy+metal+water+filter) | KDF-55 media for dissolved iron removal (F-2 stage) | 2 + spares | Amazon | $30–$50 | $60–$100 |
-| [CTO carbon block cartridge 4.5"×20"](https://www.amazon.com/s?k=4.5x20+CTO+coconut+shell+carbon+block+filter) | Coconut shell activated carbon block (F-3 stage) | 3 + spares | Amazon | $12–$20 | $36–$60 |
-**Filter subtotal: ~$470–$652**
+| [3-stage Big Blue combo filter **4.5"×10"**](https://www.amazon.com/s?k=3+stage+10+inch+big+blue+whole+house+water+filter) | **Ø184 × 333mm per housing**, 1" NPT ports, integrated bracket (e.g. Express Water / Geekpure / iSpring 10" 3-stage). *Was 4.5"×20" — switched to 10" to match the modeled BB_OD=184/BB_H=340; see [dimension audit](component-dimension-audit.md). NB: 10" cartridges hold ~½ the media → ~½ the service interval vs 20"* | 1 | Amazon | $200–$300 | $200–$300 |
+| [MPP 5-micron sediment cartridge 4.5"×10"](https://www.amazon.com/s?k=4.5x10+melt+blown+polypropylene+sediment+filter+5+micron) | Melt-blown polypropylene depth filter (F-1 stage) | 3 + spares | Amazon | $6–$10 | $18–$30 |
+| [KDF-55 heavy metal cartridge 4.5"×10"](https://www.amazon.com/s?k=4.5x10+KDF+55+heavy+metal+water+filter) | KDF-55 media for dissolved iron removal (F-2 stage) | 2 + spares | Amazon | $20–$35 | $40–$70 |
+| [CTO carbon block cartridge 4.5"×10"](https://www.amazon.com/s?k=4.5x10+CTO+coconut+shell+carbon+block+filter) | Coconut shell activated carbon block (F-3 stage) | 3 + spares | Amazon | $8–$15 | $24–$45 |
+**Filter subtotal: ~$282–$445** *(was ~$470–$652 for 4.5"×20"; category-5 + grand totals re-summed when the parked evap cooler is resolved)*
 
 ### Valves, fittings & pipe
 | Item | Spec | Qty | Supplier | Est. unit | Total |
@@ -237,7 +237,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 ### Spray bar assembly (gantry design)
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [6061-T6 aluminum SHS 1½"×1½"×⅛"](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-tube) | 40×40×3mm structural beam, 8 ft lengths (2 joined with sleeve for 3859mm). 12mm holes drilled for nozzle fittings | 2 | Online Metals | $36–$56 |
+| [6061-T6 aluminum SHS **40×40×3mm**](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-tube) | 40×40×3mm structural beam (metric — matches the model + carriage saddle cut; was mislabeled "1½×1½×⅛"), 8 ft lengths (2 joined with sleeve for 3859mm). 12mm holes drilled for nozzle fittings | 2 | Online Metals | $36–$56 |
 | [3/4" LDPE irrigation poly pipe](https://www.amazon.com/s?k=3%2F4+inch+LDPE+irrigation+poly+pipe) | Internal spray pipe (OD 25mm, ID 19mm), 15 ft length | 1 | Home Depot / Amazon | $10 |
 | [Flat-fan irrigation spray nozzles, barbed](https://www.amazon.com/s?k=flat+fan+irrigation+spray+nozzle+barbed) | 180° fan pattern, barbed inlet through beam wall (26 @ 150mm pitch) | 26 | Amazon | $30–$50 |
 | [Distribution manifold, 1/2" → multi barb](https://www.amazon.com/s?k=irrigation+distribution+manifold+1%2F2+barb) | Mounted at ball joint, splits supply hose to 7 feed tubes | 1 | Amazon | $12 |
@@ -284,7 +284,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 |------|------|-----|----------|-----------|
 | [Solar panels, 200W monocrystalline](https://www.renogy.com/200-watt-12-volt-monocrystalline-solar-panel/) | 12V nominal | 3 | [Renogy](https://www.renogy.com) | ~$400 total |
 | [Victron SmartSolar MPPT 100/50](https://www.altestore.com) | MPPT charge controller | 1 | [altE Store](https://www.altestore.com) | ~$200 |
-| [LiFePO4 battery 100Ah 12V](https://www.renogy.com/12v-100ah-smart-lithium-iron-phosphate-battery/) | Renogy Smart Lithium or Battle Born. **1 standard**; busbar provisioned for a 2nd in parallel (plug-in, no rewiring — see [Electrical Report §5.2](electrical-report.md)) | 1 | [Renogy](https://www.renogy.com) | ~$350 (+$350 optional 2nd) |
+| [LiFePO4 battery 100Ah 12V](https://www.renogy.com/12v-100ah-smart-lithium-iron-phosphate-battery/) | Renogy Smart Lithium or Battle Born, **each 330×172×214mm**. **1 standard**; busbar provisioned for a 2nd in parallel (plug-in, no rewiring — see [Electrical Report §5.2](electrical-report.md)) | 1 | [Renogy](https://www.renogy.com) | ~$350 (+$350 optional 2nd) |
 | [Victron Blue Smart IP65 12/15](https://www.altestore.com) | Shore backup charger | 1 | [altE Store](https://www.altestore.com) | ~$150 |
 | NEMA 5-15R inlet (weatherproof) | Mounted in flush-mount power panel | 1 | Amazon | ~$25 |
 | [Solar panel ground mount frame](https://www.renogy.com) | Tilt frame, 30° | 1 | [Renogy](https://www.renogy.com) | ~$80 |
@@ -443,10 +443,10 @@ top/bottom weld + anchor connection** (fabricator/PE review) — not the member 
 ### Ventilation fans (upgrade from original 4" spec)
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [AC Infinity S6 inline DC fan](https://www.amazon.com/s?k=AC+Infinity+S6+inline+fan+6+inch) | 6" (150mm), 12V, ~200 CFM | 2 | Amazon | ~$120 total |
+| [150×150×50mm 12V DC axial panel fan](https://www.coolingfanfactory.com/product/DC-Fan-15050-12V-24V-48V-150mm.html) | **150×150×50mm**, 12V DC, ball-bearing, ~150–200 CFM (e.g. GDSTIME / Wathai 15050-12V). *Thin axial PANEL fan — fits flush + inside the 300mm baffle duct (NOT the 320mm-long AC Infinity S6 inline fan; see [dimension audit](component-dimension-audit.md))* | 2 | Amazon | ~$50 total |
 | 6" duct stub fittings | Wall penetration collars | 2 | Amazon | ~$20 |
 | Fan baffle plates (3mm mild steel) | 2 baffles per fan, offset S-path | 1 lot | Metal Supermarkets | ~$40 |
-**Ventilation subtotal: ~$180**
+**Ventilation subtotal: ~$110** *(fan corrected to a real 150×150×50 axial panel fan; category-8 + grand totals re-summed when the parked evap cooler is resolved)*
 
 ### Shade canopy
 | Item | Spec | Qty | Supplier | Est. cost |

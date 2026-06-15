@@ -146,15 +146,15 @@ Processing tray sump (P-04 suction pickup)
 
 **Filter train sizing:**
 
-The filter train uses a single 3-stage whole-house filter unit (e.g. [Purcooflow WHF2045B302](https://www.purcooflow.com/products/whf2045b302-3-stage-kdf-heavy-metal-water-filter) or equivalent) with 4.5"×20" Big Blue cartridges. This eliminates all inter-housing plumbing and the separate filter skid frame — the unit mounts directly to the pinhole wall with its integrated bracket. 1" NPT inlet/outlet; a single 1/2"→1" bushing reducer connects P-02 output to the unit inlet.
+The filter train uses a single 3-stage whole-house filter unit (a **4.5"×10"** Big Blue 3-stage; Express Water / Geekpure / iSpring 10") with **Ø184 × 333mm** housings. *(Switched from 4.5"×20" to match the modeled BB_OD=184/BB_H=340 — see [component-dimension-audit.md](component-dimension-audit.md).)* This eliminates all inter-housing plumbing and the separate filter skid frame — the unit mounts directly to the pinhole wall with its integrated bracket. 1" NPT inlet/outlet; a single 1/2"→1" bushing reducer connects P-02 output to the unit inlet.
 
-| Stage | Cartridge (4.5"×20") | Removes | Replace interval |
+| Stage | Cartridge (4.5"×10") | Removes | Replace interval |
 |-------|---------------------|---------|-----------------|
-| F-1 | MPP 5-micron melt-blown polypropylene sediment | Gross sediment, fiber lint, Prussian blue particles | Every 25 prints |
-| F-2 | KDF-55 heavy metal removal | Dissolved iron compounds from ferricyanide wash water | Every 30 prints |
-| F-3 | CTO coconut shell activated carbon block | Residual organics, color, taste | Every 20 prints |
+| F-1 | MPP 5-micron melt-blown polypropylene sediment | Gross sediment, fiber lint, Prussian blue particles | ~Every 13 prints |
+| F-2 | KDF-55 heavy metal removal | Dissolved iron compounds from ferricyanide wash water | ~Every 15 prints |
+| F-3 | CTO coconut shell activated carbon block | Residual organics, color, taste | ~Every 10 prints |
 
-The 20" cartridges hold roughly 2× the media volume of the previous 10" cartridges, extending service life proportionally. The unit includes triple drain valves for flushing individual stages without disassembly. Equivalent 3-stage Big Blue units are available from iSpring (WGB32B), Express Water, and other vendors — any unit accepting standard 4.5"×20" cartridges with 1" NPT ports will work.
+The 10" cartridges (~½ the media of a 20") were chosen to match the modeled housing size, so service intervals are correspondingly shorter (~½). The unit includes triple drain valves for flushing individual stages without disassembly. Equivalent 3-stage Big Blue units are available from Express Water, Geekpure, iSpring and others — any unit accepting standard 4.5"×10" cartridges with 1" NPT ports will work.
 
 **pH management:** If filtered water reads pH <6, do nothing — slightly acidic is preferred. If pH >7.5, add citric acid solution (10g citric acid in 1 liter water) via the dosing port in the IBC-3 outlet, stir, retest. Do not return water with pH >8 to the Blue system.
 
@@ -329,10 +329,10 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
-| [3-stage Big Blue combo filter unit 4.5"×20"](https://www.purcooflow.com/products/whf2045b302-3-stage-kdf-heavy-metal-water-filter) | 1" NPT ports, integrated bracket, triple drain valves. Purcooflow WHF2045B302 or equivalent (iSpring WGB32B, Express Water, etc.) | 1 | Purcooflow / Amazon | $350–$450 | **$350–$450** |
-| [MPP 5-micron sediment cartridge 4.5"×20"](https://www.amazon.com/s?k=4.5x20+melt+blown+polypropylene+sediment+filter+5+micron) | Melt-blown polypropylene depth filter (F-1 stage) | 3 + spares | Amazon | $8–$14 each | **$24–$42** |
-| [KDF-55 heavy metal cartridge 4.5"×20"](https://www.amazon.com/s?k=4.5x20+KDF+55+heavy+metal+water+filter) | KDF-55 media for dissolved iron/metal removal (F-2 stage) | 2 + spares | Amazon | $30–$50 each | **$60–$100** |
-| [CTO carbon block cartridge 4.5"×20"](https://www.amazon.com/s?k=4.5x20+CTO+coconut+shell+carbon+block+filter) | Coconut shell activated carbon block (F-3 stage) | 3 + spares | Amazon | $12–$20 each | **$36–$60** |
+| [3-stage Big Blue combo filter unit **4.5"×10"**](https://www.amazon.com/s?k=3+stage+10+inch+big+blue+whole+house+water+filter) | Ø184×333mm/housing, 1" NPT ports, integrated bracket (Express Water / Geekpure / iSpring 10") | 1 | Amazon | $200–$300 | **$200–$300** |
+| [MPP 5-micron sediment cartridge 4.5"×10"](https://www.amazon.com/s?k=4.5x10+melt+blown+polypropylene+sediment+filter+5+micron) | Melt-blown polypropylene depth filter (F-1 stage) | 3 + spares | Amazon | $6–$10 each | **$18–$30** |
+| [KDF-55 heavy metal cartridge 4.5"×10"](https://www.amazon.com/s?k=4.5x10+KDF+55+heavy+metal+water+filter) | KDF-55 media for dissolved iron/metal removal (F-2 stage) | 2 + spares | Amazon | $20–$35 each | **$40–$70** |
+| [CTO carbon block cartridge 4.5"×10"](https://www.amazon.com/s?k=4.5x10+CTO+coconut+shell+carbon+block+filter) | Coconut shell activated carbon block (F-3 stage) | 3 + spares | Amazon | $8–$15 each | **$24–$45** |
 
 **Filter subtotal: ~$470–$652**
 
@@ -454,7 +454,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 | Task | Frequency | Notes |
 |------|-----------|-------|
-| Replace F-1 (50-micron cartridge) | Every 20 prints | Visually inspect — replace sooner if heavily discolored |
+| Replace F-1 (50-micron cartridge) | ~Every 10 prints | Visually inspect — replace sooner if heavily discolored |
 | Replace F-2 (5-micron cartridge) | Every 10 prints | Replace sooner if flow rate drops |
 | Replace F-3 (GAC carbon) | Every 15 prints | Replace if taste/odour test fails |
 | Flush Brown IBC-3 | Every 5 prints | Rinse with clean water, inspect for sediment buildup |

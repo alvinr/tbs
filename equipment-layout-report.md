@@ -274,11 +274,11 @@ pinhole wall at X=2399mm (pinhole side), H=400mm.
 | Tank | Qty | Capacity | Role |
 |------|-----|---------|------|
 | Blue IBC, 800L fill (stacked ×2) | 2 | 1,600L | Clean wash water |
-| 600L Brown IBC | 1 | 600L | Recycled wash / fix |
-| 600L Waste IBC | 1 | 600L | Waste (sealed) |
-| **Total** | — | **2,400L** | — |
+| Brown IBC, 600L fill | 1 | 600L | Recycled wash / fix |
+| Waste IBC, 600L fill | 1 | 600L | Waste (sealed) |
+| **Total** | — | **2,800L** | — |
 
-2,400L supports **~10 prints per resupply** with 40% water recycling (16 gal per wash cycle, 32 gal Blue consumed per print with Brown recycling).
+The 1,600L Blue supply supports **~13 prints per resupply** with 40% water recycling (16 gal per wash cycle, 32 gal Blue consumed per print with Brown recycling).
 
 See [Processing System Report](water-system-report.md) for full water circuit design.
 

@@ -2717,19 +2717,19 @@
 <td><strong>Blue</strong></td>
 <td>Blue — clean</td>
 <td>Fresh water supply for processing</td>
-<td>2× 600L IBC totes (≈316 gal total), Y-stacked in right end zone</td>
+<td>2× 1000L IBC totes (~423 gal working fill total — 800L each), Y-stacked in right end zone</td>
 </tr>
 <tr>
 <td><strong>Brown</strong></td>
 <td>Brown — used</td>
 <td>Collected wash water; filtered and recycled back to Blue</td>
-<td>1× 600L IBC tote, Y-stacked behind Blue IBCs</td>
+<td>1× 1000L IBC tote, Y-stacked behind Blue IBCs</td>
 </tr>
 <tr>
 <td><strong>Black</strong></td>
 <td>Black — waste</td>
 <td>Heavily contaminated water; sealed IBC for off-site disposal</td>
-<td>1× 600L IBC tote (IBC-4, ~158 gal), Y-stacked in right end zone</td>
+<td>1× 1000L IBC tote (IBC-4, ~158 gal working fill), Y-stacked in right end zone</td>
 </tr>
 </tbody>
 </table>
@@ -2831,7 +2831,7 @@
 <tr>
 <th>Scenario</th>
 <th>Blue consumed per print</th>
-<th>Prints from 316 gal Blue</th>
+<th>Prints from 423 gal Blue</th>
 <th>Brown recycled</th>
 </tr>
 </thead>
@@ -2839,14 +2839,14 @@
 <tr>
 <td>No recycling</td>
 <td>48 gal (3 × 16)</td>
-<td>~6 prints</td>
+<td>~9 prints</td>
 <td>0</td>
 </tr>
 <tr>
 <td>With recycling (wash 2 from Brown)</td>
 <td>32 gal (2 × 16)</td>
-<td><strong>~10 prints</strong></td>
-<td>~160 gal reused</td>
+<td><strong>~13 prints</strong></td>
+<td>~208 gal reused</td>
 </tr>
 <tr>
 <td>Brown recycle limit (3 passes)</td>
@@ -2856,13 +2856,13 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Design target: 10 prints per resupply run</strong> — achievable with the 316-gallon (1,200L) Blue supply using Brown recycling for wash 2.</p>
+<p><strong>~13 prints per resupply run</strong> — the 423-gallon (1,600L) Blue supply (2× 800L) with Brown recycling for wash 2.</p>
 <hr />
 <h2 id="5-system-architecture">5. System Architecture<a class="headerlink" href="#5-system-architecture" title="Permanent link">&para;</a></h2>
 <h3 id="51-blue-system-clean-water-supply">5.1 Blue System — Clean Water Supply<a class="headerlink" href="#51-blue-system-clean-water-supply" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>IBC-1 (600L) ──┐
+<div class="highlight"><pre><span></span><code>IBC-1 (800L) ──┐
                 ├──→ Manifold → BV-01 → P-01 → ACC-01 → BV-02 → Distribution
-IBC-2 (600L) ──┘                                                      │
+IBC-2 (800L) ──┘                                                      │
                                                                           ↓
                                                               FLOOD/SPRAY BAR
                                                               ↓ (Processing tray)
@@ -2873,17 +2873,17 @@ IBC-2 (600L) ──┘                                                      │
 <li>ACC-01: 0.75 L (23.5 oz) pressure accumulator — smooths pump cycling, maintains pressure when pump is off</li>
 <li>Low-level float switch on IBC-2 alerts operator when Blue supply is low</li>
 <li>Spray bar: gantry design — 40×40×3mm aluminum SHS beam spanning the open processing area (3859mm) between walkway inner edges, with wheel carriages rolling on the tray floor beneath walkway grating. Beam bore serves as spray pipe (no separate HDPE tube). See §3.5 for full mechanical design</li>
-<li>Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline (Yd=1181mm) at Z=2250mm — positioned above IBC tops (Z=2082mm) for gravity feed, no pump required. Inside, an internal tee (behind the panel-support-frame top rail) splits X1 to BOTH Blue totes, filling them in parallel — one external hose. Remote resupply from water bowser or tanker (no cargo door access required)</li>
+<li>Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline (Yd=1181mm) at Z=2250mm — gravity feed, no pump required. Inside, an internal tee (near X1) splits to a SIDE entry near the top of BOTH Blue totes (no top-cap access — 52mm headroom), filling them in parallel and gravity-linked — one external hose. Remote resupply from water bowser or tanker (no cargo door access required)</li>
 </ul>
 <h3 id="52-brown-system-used-water-recycling">5.2 Brown System — Used Water Recycling<a class="headerlink" href="#52-brown-system-used-water-recycling" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>Processing tray sump (P-04 suction pickup)
         │
-   P-04 (tray drain transfer pump — suction from sump, lifts ~900mm to IBC-3 fill cap)
+   P-04 (tray drain transfer pump — suction from sump, lifts ~900mm to IBC-3 side-entry)
         │
    3W-DV-02 ──────────────────────────────────────────→ (to IBC-4 waste if heavily loaded)
         │
         ↓
-   IBC-3 (600L buffer, filled via DN150 fill cap on top)
+   IBC-3 (600L buffer fill, side-entry near top — no top-cap access, 52mm headroom)
         │
        P-02
         │
@@ -2944,7 +2944,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
    TRANSPORT to licensed liquid waste disposal facility
 </code></pre></div>
 <ul>
-<li>IBC-4 is a standard 600L HDPE cage tote with DN50 butterfly valve (S60×6 thread), identical frame to IBC-1 through IBC-3</li>
+<li>IBC-4 is a 1000L caged composite tote with DN50 butterfly valve (S60×6 thread), identical to IBC-1 through IBC-3 (all four totes are the same size; "600 L"/"1000 L" are fill levels)</li>
 <li>IBC-4 sits in the right end zone in a 2x2 stack: bottom-far position (Yd=1,316–2,332)</li>
 <li>Cap sealed before transport; label contents, date, location, UN numbers for ferricyanide/iron compounds</li>
 <li>Drained remotely via external 2" NPT bulkhead fitting with camlock on the container end wall centerline (Yd=1181mm, Z=200mm) — no need to open cargo doors</li>
@@ -3196,7 +3196,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <p>See <strong>Sheet 2 — Plan View</strong> (<code>water-system-sheet2.png</code>) for the water-system-specific P&amp;ID layout. All four IBCs are in the provably shadow-free <strong>right end zone</strong> (X=4649–5893mm), arranged in a 2x2 stack. The optical zone (X=150–4649mm) contains only the processing tray and perimeter walkways at floor level.</p>
 <p><strong>Container floor plan — all systems (top-down, 1:75):</strong>
 <img alt="TBS-001 Container Floor Plan — All Systems" src="../assets/container-floorplan.png" /></p>
-<p>IBCs are arranged in a <strong>2x2 stack</strong> in the right end zone at X=4674mm, right-justified to the far end wall. Near column (Yd=30–1,046): IBC-1 Blue (top) + IBC-3 Brown (bottom). Far column (Yd=1,316–2,332): IBC-2 Blue (top) + IBC-4 Waste (bottom). A 270mm plumbing corridor between the two columns (Yd=1,046–1,316) carries all internal supply and return lines. Total capacity: 4x600L = 2,400L. All IBCs are loaded empty through the cargo doors and filled/drained remotely via 3x external 2" NPT bulkhead fittings (X1/X3/X4) through the container end wall. IBC wall clearance is 30mm (near wall to near column edge).</p>
+<p>IBCs are arranged in a <strong>2x2 stack</strong> in the right end zone at X=4674mm, right-justified to the far end wall. Near column (Yd=30–1,046): IBC-1 Blue (top) + IBC-3 Brown (bottom). Far column (Yd=1,316–2,332): IBC-2 Blue (top) + IBC-4 Waste (bottom). A 270mm plumbing corridor between the two columns (Yd=1,046–1,316) carries all internal supply and return lines. Total physical capacity: 4×1000L = 4,000L (totes are filled to working levels, not full). All IBCs are loaded empty through the cargo doors and filled/drained remotely via 3x external 2" NPT bulkhead fittings (X1/X3/X4) through the container end wall. IBC wall clearance is 30mm (near wall to near column edge).</p>
 <table>
 <thead>
 <tr>
@@ -3213,7 +3213,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td>IBC-1 Blue (top, near column)</td>
 <td>4,674–5,893</td>
 <td>30–1,046</td>
-<td>1,010–2,020</td>
+<td>1,168–2,336</td>
 </tr>
 <tr>
 <td>Right end zone</td>
@@ -3234,7 +3234,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td>IBC-2 Blue (top, far column)</td>
 <td>4,674–5,893</td>
 <td>1,316–2,332</td>
-<td>1,010–2,020</td>
+<td>1,168–2,336</td>
 </tr>
 <tr>
 <td>Right end zone</td>
@@ -3306,7 +3306,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 </tbody>
 </table>
-<p>A single external fill port (X1) feeds an internal 1" tee set behind the panel-support-frame top rail, which splits the flow to BOTH Blue IBCs (each branch drops straight into its fill cap). The two top totes fill in parallel, so only one external hose is needed — without a separate cross-connect pipe. (This matches the 3D model routing.)</p>
+<p>A single external fill port (X1) feeds an internal 1" tee in the corridor, which splits the flow to BOTH Blue IBCs (each branch <strong>side-enters</strong> the tote's corridor face near the top, 150mm + flange — no top-cap access, only 52mm headroom). The two top totes fill in parallel, so only one external hose is needed — without a separate cross-connect pipe. (This matches the 3D model routing.)</p>
 <p>This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC-4 to disposal tanker) without opening the cargo doors or entering the container. Internal plumbing from each port routes through the 270mm central corridor between the two IBC columns to reach the respective tote. All ports are accessible from the container exterior.</p>
 <hr />
 <h2 id="9-parts-list">9. Parts List<a class="headerlink" href="#9-parts-list" title="Permanent link">&para;</a></h2>
@@ -3324,8 +3324,8 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </thead>
 <tbody>
 <tr>
-<td><a href="https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale">IBC tote 600L, food-grade, used/rinsed</a></td>
-<td>HDPE cage tote, DN50 butterfly valve (S60×6 thread), fill cap DN150</td>
+<td><a href="https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale">IBC tote 1000L (275 gal), food-grade, used/rinsed</a></td>
+<td>Caged composite tote, DN50 butterfly valve (S60×6 thread); side-entry fittings near top</td>
 <td>4</td>
 <td>Container Exchanger</td>
 <td>$80–$150</td>
@@ -3373,7 +3373,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td><a href="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C">Shurflo 2088-554-144 pump</a> (P-04 tray drain transfer)</td>
-<td>12VDC, 3.5 GPM, 45 PSI. Pumps used chemistry from tray drain to IBC-3 fill cap (~900mm lift)</td>
+<td>12VDC, 3.5 GPM, 45 PSI. Pumps used chemistry from tray drain to IBC-3 side-entry near top (~900mm lift)</td>
 <td>1</td>
 <td>Amazon</td>
 <td>$55–$70</td>

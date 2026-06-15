@@ -3183,8 +3183,8 @@ B2 punch-out bay.</em></p>
 <td><code>FAN_BODY_D</code></td>
 </tr>
 <tr>
-<td>Fan A center height AFF (high, above IBC)</td>
-<td>2200mm</td>
+<td>Fan A center height AFF (below X1, in corridor)</td>
+<td>2000mm</td>
 <td><code>FAN_A_H</code></td>
 </tr>
 <tr>
@@ -3193,8 +3193,8 @@ B2 punch-out bay.</em></p>
 <td><code>FAN_B_H</code></td>
 </tr>
 <tr>
-<td>Fan A Yd position (far side, off corner — rev9/B2 swap)</td>
-<td>1996mm</td>
+<td>Fan A Yd position (below the X1 fill port, plumbing corridor)</td>
+<td>1181mm</td>
 <td><code>FAN_A_YD</code></td>
 </tr>
 <tr>
@@ -3224,8 +3224,10 @@ B2 punch-out bay.</em></p>
 </tr>
 </tbody>
 </table>
-<p><em>Components: Fan A — 150mm compact axial panel fan, far end wall (X=C_LEN), exhaust, Circuit A,
-high position (Z=2200mm, above the 2020mm IBC stack so the baffle duct clears the totes). Fan B —
+<p><em>Components: Fan A — 150mm compact axial panel fan, sealed end wall (X=C_LEN), exhaust, Circuit A,
+in the 270mm plumbing corridor directly </em><em>below the X1 fill port</em><em> (Yd=1181, Z=2000mm) — the only
+full-height clear channel past the v2 1000L direct-stack (totes reach Z=2336mm in both flanking
+columns; the old high spot at Yd1996/Z2200 was buried — RESOLVED, see [[project-fan-a-ibc-clash]]). Fan B —
 identical fan, mounted on hinged panel (near corner zone by the pinhole wall, Yd=365mm — rev9/B2
 swap so its conduit runs along the pinhole wall near the pivot side), intake,
 Circuit B, low position. Fan A mounts on interior face of a 300mm deep light-safe baffle duct with 2 offset
@@ -3385,20 +3387,35 @@ Mounted on 18mm marine ply equipment panel at Yd=1,046 (near IBC column face), i
 <td><code>IBC_D</code></td>
 </tr>
 <tr>
-<td>Stacked height (2× Blue IBC)</td>
-<td>2020mm</td>
-<td><code>IBC_H_STK</code></td>
+<td>Single tote height (1000L caged)</td>
+<td>1168mm</td>
+<td><code>IBC_H_1000</code></td>
 </tr>
 <tr>
-<td>Blue stack front depth from pinhole wall</td>
+<td>Stacked height (2× 1000L, direct-stack)</td>
+<td>2336mm</td>
+<td><code>IBC_H_STK_1000</code></td>
+</tr>
+<tr>
+<td>Near-column front depth from pinhole wall</td>
 <td>30mm</td>
 <td><code>BLUE_IBC_Y</code></td>
 </tr>
+<tr>
+<td>Far-column front depth from pinhole wall</td>
+<td>1316mm</td>
+<td><code>IBC_FAR_Y</code></td>
+</tr>
 </tbody>
 </table>
-<p><em>Components: 2× 600L food-grade HDPE IBC totes (Y-stacked in right end zone), stacking
-frame (50×50×3mm RHS steel), 1" SDR-11 HDPE blue supply pipe, spray bar (¾" HDPE,
-600mm spacing), camlock fill inlet, low-level float switch.</em></p>
+<p><em>Components (<code>ibc-reconfig-v2</code>): </em><em>4× 1000L caged composite IBC totes</em><em> (1219×1016×1168), </em><em>direct-stacked</em><em>
+cage-on-cage in two columns (near: Brown developer + Blue #1; far: Waste + Blue #2) — Blue-on-top layout
+kept. Held by a </em><em>restraint FRONT PORTAL</em><em> at the corridor mouth (50×50×3 RHS uprights + 50×20×3 front
+retaining bars in the 25mm tote↔film-rail gap + Simpson wall joist-hangers + D-ring lashing + floor feet) —
+NOT a load-bearing platform; the totes carry their own stack load. 1" SDR-11 HDPE blue supply pipe, spray bar
+(¾" HDPE), Blue fill = gravity </em><em>side-entry near the top</em><em> (X1, shared T), Brown/Waste drains pumped (X3/X4).
+Legacy <code>IBC_H_600</code>=1010 / <code>IBC_H_STK</code>=2020 constants are the superseded "600L fill-level" values — kept only
+for the few generators not yet repointed (overview Blue-trunk shelf, walkway/weight context imports).</em></p>
 <h3 id="112-water-system-brown-circuit">1.12 Water System — Brown Circuit<a class="headerlink" href="#112-water-system-brown-circuit" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3421,11 +3438,11 @@ frame (50×50×3mm RHS steel), 1" SDR-11 HDPE blue supply pipe, spray bar (¾" H
 </tr>
 </tbody>
 </table>
-<p><em>Components: 1× 600L food-grade HDPE IBC (Y-stacked behind Blue stack, right end zone),
+<p><em>Components: 1× 1000L caged composite IBC (Y-stacked behind Blue stack, right end zone),
 DN50 butterfly valve (S60×6) + S60×6-to-1" NPT adapter at drain outlet,
 integrated 3-stage Big Blue filter unit (50μm → 5μm → GAC carbon, wall-mounted, no separate skid frame), Shurflo P-02,
 3-way diverter valves 3W-DV-01 and 3W-DV-02, pH test point.
-Filled via DN150 top fill cap from P-04 tray sump pickup pump.</em></p>
+Filled via side-entry near the top from the P-04 tray-sump pickup pump (no top-cap access — 52mm headroom).</em></p>
 <h3 id="113-water-system-black-circuit-waste">1.13 Water System — Black Circuit (Waste)<a class="headerlink" href="#113-water-system-black-circuit-waste" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3453,10 +3470,10 @@ Filled via DN150 top fill cap from P-04 tray sump pickup pump.</em></p>
 </tr>
 </tbody>
 </table>
-<p><em>Components: 1× 600L food-grade HDPE IBC tote (4th IBC in 2×2 stack, right end zone),
+<p><em>Components: 1× 1000L caged composite IBC tote (4th IBC in 2×2 stack, right end zone),
 DN50 butterfly valve (S60×6) + S60×6-to-1" NPT adapter at drain outlet,
 2" NPT bulkhead fittings for external drain/fill (X4), reinforcing plates for external ports,
-P-03 waste evacuation pump (mounted in IBC plumbing corridor on X4 drain run). Filled via DN150 top fill cap from filter reject line.</em></p>
+P-03 waste evacuation pump (mounted in IBC plumbing corridor on X4 drain run). Filled via side-entry near the top from the filter reject line (no top-cap access).</em></p>
 <h3 id="114-equipment-zones">1.14 Equipment Zones<a class="headerlink" href="#114-equipment-zones" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -4166,7 +4183,7 @@ scripts) so the 3D models stay in sync with the drawings — see the Workflow be
 <td><strong>ibc-stack</strong></td>
 <td><code>src/models/generate_ibc_model.py</code></td>
 <td><code>models/ibc-stack.skp</code> + <code>src/models/ibc-stack.rb</code></td>
-<td>IBC tote stacking arrangement at the IBC end. Reuses Overview builders: <code>ov.ibc_stack()</code> (4× 1000L totes), <code>ov.ibc_rack()</code> (steel frame), <code>ov.equipment_panel()</code> (pump/filter), <code>ov.water_plumbing()</code>, <code>ov.water_hookups()</code> (exterior wall). Container is a low-alpha ghost. 5 tags (Context / IBC Tanks / IBC Frame / Plumbing &amp; Panel / <strong>Walkway Cantilever</strong>) + a <code>Labels</code> tag. The <strong>Walkway Cantilever</strong> component (<code>ov.ibc_cantilever_arms()</code> — the 2 right-walkway support arms + upright clamps + M12 bolts that attach to the corridor uprights, rev12; single-sourced with the overview/walkway models). <strong>5 scenes:</strong> IBC Tanks, <strong>IBC Frame</strong> (the frame + the attached walkway cantilever arms — the <code>Walkway Cantilever</code> tag rides in this scene), Plumbing &amp; Panel, Combined, <strong>Labeled</strong> (<code>ibc_labels()</code> — <code>add_text</code> callouts on the <code>Labels</code> tag, shown only in this scene; 19 callouts split by side. <strong>Container/front side:</strong> the near-column totes (BROWN developer + BLUE #1), the <strong>SUMP PICKUP</strong> riser, the <strong>TO SPRAY BAR</strong> Blue feed, <strong>IBC FRAME</strong>, and the <strong>wet-end panel equipment</strong> pulled out the front laid out as the panel reads — two pump columns (left ACC-01/P-04/P-01, right P-05/P-03/P-02) + three filters F1/F2/F3 below (pumps/filters/accumulator only, no pipes/valves). <strong>Sealed-end side</strong> (right-hand column): the far-column totes (WASTE + BLUE #2) plus the exterior bulkhead ports <strong>X1</strong> (fresh fill), <strong>X3</strong> (Brown drain-out), <strong>X4</strong> (Waste drain-out). Per the project rule every .skp gets a Labeled scene — see [[feedback-3d-model-labels]]). Rebuild whenever those <code>ov</code> builders or the IBC/plumbing constants change.</td>
+<td><strong>v2 (<code>ibc-reconfig-v2</code>) — REBUILT 2026-06-14:</strong> this is <strong>THE canonical IBC 3D model</strong> (the Sketchfab embed in <code>ibc-stacking-report.md</code>). Because it reuses the <code>ov</code> builders it now carries the full v2 design — <code>ov.ibc_rack()</code> = restraint FRONT PORTAL + exterior wall backing plates (was a load-bearing platform), <code>ov.equipment_panel()</code> pulled <strong>forward</strong> to the corridor mouth (film-safe, X&gt;4649), and <code>ov.water_plumbing()</code> = Blue <strong>side-entry</strong> fill + the full recycle loop (sump→IBC-3, filter→IBC-2, reject→IBC-4, all side-entry near the top) + pumped X3/X4 drains. Re-sent + <strong><code>.skp</code> saved 2026-06-14</strong> (the <code>ibc_labels()</code> panel-equipment anchors were moved forward to X≈4814–4854 to track the panel; Sketchfab re-upload is the manual step). IBC tote stacking arrangement at the IBC end. Reuses Overview builders: <code>ov.ibc_stack()</code> (4× 1000L totes), <code>ov.ibc_rack()</code> (v2 restraint front portal), <code>ov.equipment_panel()</code> (pump/filter), <code>ov.water_plumbing()</code>, <code>ov.water_hookups()</code> (exterior wall). Container is a low-alpha ghost. 5 tags (Context / IBC Tanks / IBC Frame / Plumbing &amp; Panel / <strong>Walkway Cantilever</strong>) + a <code>Labels</code> tag. The <strong>Walkway Cantilever</strong> component (<code>ov.ibc_cantilever_arms()</code> — the 2 right-walkway support arms + upright clamps + M12 bolts that attach to the corridor uprights, rev12; single-sourced with the overview/walkway models). <strong>5 scenes:</strong> IBC Tanks, <strong>IBC Frame</strong> (the frame + the attached walkway cantilever arms — the <code>Walkway Cantilever</code> tag rides in this scene), Plumbing &amp; Panel, Combined, <strong>Labeled</strong> (<code>ibc_labels()</code> — <code>add_text</code> callouts on the <code>Labels</code> tag, shown only in this scene; 19 callouts split by side. <strong>Container/front side:</strong> the near-column totes (BROWN developer + BLUE #1), the <strong>SUMP PICKUP</strong> riser, the <strong>TO SPRAY BAR</strong> Blue feed, <strong>IBC FRAME</strong>, and the <strong>wet-end panel equipment</strong> pulled out the front laid out as the panel reads — two pump columns (left ACC-01/P-04/P-01, right P-05/P-03/P-02) + three filters F1/F2/F3 below (pumps/filters/accumulator only, no pipes/valves). <strong>Sealed-end side</strong> (right-hand column): the far-column totes (WASTE + BLUE #2) plus the exterior bulkhead ports <strong>X1</strong> (fresh fill), <strong>X3</strong> (Brown drain-out), <strong>X4</strong> (Waste drain-out). Per the project rule every .skp gets a Labeled scene — see [[feedback-3d-model-labels]]). Rebuild whenever those <code>ov</code> builders or the IBC/plumbing constants change.</td>
 </tr>
 <tr>
 <td><strong>walkway</strong></td>

@@ -169,6 +169,11 @@ OVERVIEW_POINT_LABELS = [
     (5618, 1181, 2000, "FAN A\n(exhaust, IBC end)",  400,    0,  450),
     (275,   365,  680, "FAN B\n(intake, door end)", -350,    0, 1250),
     (2060,   60,  600, "BATTERY 1× 100Ah\n(2nd pack ghosted = plug-in)",    -300, -600,  900),
+    # Cct-E inverter lives inside the "Evap Cooler & Duct" component (interior, on the
+    # pinhole wall below the EP), so it needs an explicit-point label. Anchor at its
+    # top-centre; fan up-left + pulled toward the viewer, clear of the battery/E-stop.
+    (INVERTER_X + INVERTER_W // 2, INVERTER_D // 2, INVERTER_Z + INVERTER_H,
+     "CCT-E INVERTER\n12->120V AC (cooler)", -430, -820, 480),
     (1420,  -90, 1950, "EMERGENCY E-STOP\n(external panel — kills all DC)", -550, -450,  350),
     # Walkways span paired/perimeter parts, so their bounds-centre would land in the
     # empty middle — anchor on the actual NEAR member instead.

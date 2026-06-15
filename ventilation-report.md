@@ -41,7 +41,7 @@ Combined (shade canopy + cooler + scheduling): interior temperature reaches 25�
 
 For operator comfort during processing in warm conditions, but also to ensure there is fresh air exchange within the space.
 
-Longitudinal section showing the cross-flow ventilation path: Fan B intake at the cargo door panel (low position), diagonal airflow up through the container volume, Fan A exhaust at the far end wall (high position, above the IBC stack). Evaporative cooler intake duct on the pinhole wall.
+Longitudinal section showing the cross-flow ventilation path: Fan B intake at the cargo door panel (low position), diagonal airflow up through the container volume, Fan A exhaust at the sealed end wall (high, in the plumbing corridor below the X1 fill port). Evaporative cooler intake duct on the pinhole wall.
 
 **Sheet 1 — Container Ventilation Section**
 ![TBS-001 Ventilation — Sheet 1: Container Longitudinal Section](assets/lighttrap-sheet1.png)
@@ -61,17 +61,17 @@ Longitudinal section showing the cross-flow ventilation path: Fan B intake at th
 | Fan | Position | Mounting | Function |
 |-----|----------|----------|----------|
 | Fan B (intake) | Hinged panel, near corner zone by the pinhole wall (Yd=365mm, Z=600mm — rev9/B2 swap) | Flush-mounted in 40mm corner zone panel | Fresh air intake — draws cooler air near floor level |
-| Fan A (exhaust) | Far end wall (X=5893mm), high position (Z=2200mm, above IBC stack) | Flush-mounted in wall penetration | Exhaust warm, humid air during processing and drying |
+| Fan A (exhaust) | Sealed end wall (X=5893mm), in the plumbing corridor below the X1 fill port (Yd=1181mm, Z=2000mm) | Flush-mounted in wall penetration | Exhaust warm, humid air during processing and drying |
 
-Both fans are 6" (150mm) diameter, 12V DC (AC Infinity S6 or equivalent). Fan bodies do not protrude beyond either panel face. Cross-flow ventilation runs diagonally: **low intake at the cargo door end → high exhaust at the far end** — fresh air enters near the floor, sweeps the working volume, and warm air discharges high.
+Both fans are 6" (150mm) diameter, 12V DC (AC Infinity S6 or equivalent). Fan bodies do not protrude beyond either panel face. Cross-flow ventilation runs diagonally: **low intake at the cargo door end → high exhaust at the sealed end** — fresh air enters near the floor, sweeps the working volume, and warm air discharges high.
 
-> **Why this layout:** The intake was relocated to the cargo door panel (low) and the exhaust to the far end wall (high) because the near IBC tote column sits flush against the far end wall up to Z=2020mm. A low fan there would drive its 300mm baffle duct straight into the tote; mounting the exhaust at Z=2200mm clears the stack top with room to spare while preserving the diagonal low-in / high-out flow.
+> **Why this layout:** The intake sits on the cargo door panel (low) and the exhaust on the sealed end wall (high). With the v2 1000L direct-stack the totes now reach Z=2336mm against the end wall in both flanking columns, leaving only the **270mm plumbing corridor** (Yd=1046–1316) clear full-height. Fan A is therefore placed in that corridor, directly **below the X1 fill port** (Yd=1181, Z=2000) — the only channel where its 300mm baffle duct projects into clear space rather than into a tote — while preserving the diagonal low-in / high-out flow.
 
-### 4.2 Fan A — Far End Wall Exhaust
+### 4.2 Fan A — Sealed End Wall Exhaust
 
-Fan A is flush-mounted in a wall penetration at the far end wall (X=5893mm), high position (Z=2200mm AFF, Yd=1996mm — far side, off the corner; rev9/B2 swapped it to the far side so Fan B's conduit can run along the pinhole wall) — above the 2020mm-tall IBC stack so its baffle duct projects into clear space above the totes. The fan body sits inside a light-safe baffle duct (see §4.4) bolted to the interior face of the wall. A weatherproof louvre grille on the exterior face protects the penetration from rain and debris. The fan, duct, and grille are permanently installed — no removal is required for mode conversion or transport.
+Fan A is flush-mounted in a wall penetration at the sealed end wall (X=5893mm), in the plumbing corridor directly below the X1 fill port (Z=2000mm AFF, Yd=1181mm — the 270mm corridor between the two 1000L tote columns is the only full-height clear channel at this end). Its 300mm baffle duct projects into the clear corridor, clearing the X1 fill trunk above (Z=2250mm). The fan body sits inside a light-safe baffle duct (see §4.4) bolted to the interior face of the wall. A weatherproof louvre grille on the exterior face protects the penetration from rain and debris. The fan, duct, and grille are permanently installed — no removal is required for mode conversion or transport.
 
-**Wiring:** Fan A's wire run routes from the fuse block along the ceiling cable trunking to the far end wall, then drops a short distance to the fan near the ceiling. The entire run is inside the container — no flex cable or weatherproof connectors are needed.
+**Wiring:** Fan A's wire run routes from the fuse block along the ceiling cable trunking to the sealed end wall, then drops down the plumbing corridor to the fan (Z=2000mm). The entire run is inside the container — no flex cable or weatherproof connectors are needed.
 
 ### 4.3 Fan B — Panel-Mounted Intake
 
@@ -178,7 +178,7 @@ The shade canopy is the most effective single mitigation — it eliminates direc
 
 | Circuit | Device | Fuse | Wire gauge | Run length |
 |---------|--------|------|-----------|-----------|
-| A | Ventilation fan — exhaust (6", far end wall, high) | 5A | 16 AWG | ~2.5m |
+| A | Ventilation fan — exhaust (6", sealed end wall, corridor below X1) | 5A | 16 AWG | ~2.5m |
 | B | Ventilation fan — intake (6", panel-mounted, low) | 5A | 16 AWG | ~8m + flex connector |
 | E | Evaporative cooler | 10A | 14 AWG | ~4m |
 

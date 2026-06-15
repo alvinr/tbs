@@ -700,7 +700,7 @@ EXT_DRAIN_YD = EXT_PANEL_YD
 #         Wiring via a flexible cable loop from the fixed door frame.
 FAN_DIAM    = 150    # fan / duct diameter (mm)
 FAN_BODY_D  =  50    # panel fan body depth (mm)
-FAN_A_H     = 2200   # fan A center height AFF (mm — HIGH; clears IBC stack top 2020mm)
+FAN_A_H     = 2000   # fan A center height AFF (mm) — below the X1 fill port (Z2250) on the sealed end wall, in the clear plumbing corridor (was 2200, which the taller 1000L stack would have buried)
 FAN_B_H     = 600    # fan B center height AFF (mm — LOW; intake near floor)
 # Yd (width) positions — cross-ventilation diagonal: low intake (cargo-door
 # panel) to high exhaust (far end wall), diagonally across the volume.
@@ -708,7 +708,7 @@ FAN_B_H     = 600    # fan B center height AFF (mm — LOW; intake near floor)
 # intake fan (Fan B, on the swinging panel) sits in the NEAR corner by the pinhole
 # wall — its conduit then runs along that wall; only a flex whip (with swing slack)
 # bridges to the swinging panel so it follows the ~56° transport rotation.
-FAN_A_YD    = (C_WID // 2 + DRUM_R + C_WID) // 2  # = 1996mm — far side, off the corner of the X=C_LEN end wall (moved from the pinhole side)
+FAN_A_YD    = EXT_FILL_YD  # = 1181mm — directly BELOW the X1 fill port, in the 270mm plumbing corridor (clear full-height of the 1000L stack; relocated from Yd1996, which the taller 1000L totes buried — see ibc-reconfig-v2)
 FAN_B_YD    = (C_WID // 2 - DRUM_R) // 2          # = 365mm — near the pinhole wall, in the near corner zone clear of the drum (near edge Yd≈731)
 
 # Baffle duct (one per fan, welded galvanized steel)

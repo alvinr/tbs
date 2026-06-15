@@ -165,7 +165,7 @@ OVERVIEW_LABELS = [
 # battery bank lives inside the "Electrical" component.
 # (x, y, z, text, leader Δx, Δy, Δz mm)
 OVERVIEW_POINT_LABELS = [
-    (5618, 1996, 2250, "FAN A\n(exhaust, IBC end)",  400,    0,  450),
+    (5618, 1181, 2000, "FAN A\n(exhaust, IBC end)",  400,    0,  450),
     (275,   365,  680, "FAN B\n(intake, door end)", -350,    0, 1250),
     (2060,   60,  600, "BATTERY 1× 100Ah\n(2nd pack ghosted = plug-in)",    -300, -600,  900),
     (1420,  -90, 1950, "EMERGENCY E-STOP\n(external panel — kills all DC)", -550, -450,  350),
@@ -1648,7 +1648,9 @@ def water_hookups():
 def fans():
     """Cross-ventilation fans + light-safe baffle ducts on OPPOSITE end walls,
     diagonal low-in / high-out:
-      Fan A (exhaust) — far/IBC end wall (X=C_LEN, right), high (Z=2200, above IBC stack).
+      Fan A (exhaust) — sealed/IBC end wall (X=C_LEN), in the plumbing corridor
+        directly BELOW the X1 fill port (Yd=1181, Z=2000) — the only full-height
+        clear channel past the 1000L direct-stack.
       Fan B (intake)  — cargo-door panel (X=0, left), low (Z=600).
 
     Each fan sits at the INTERIOR mouth of a box-section baffle duct bolted to

@@ -302,7 +302,7 @@ ax.text(PH_X, PH_H - 300, f"Optical axis (into page)\nFocal length {C_WID}mm",
 
 
 # ── Ventilation fans ──────────────────────────────────────────────────────────
-# Fan A — EXHAUST: far end wall (X=C_LEN), high position (H=FAN_A_H=2200mm, above IBC)
+# Fan A — EXHAUST: sealed end wall (X=C_LEN), Yd=FAN_A_YD=1181 (below X1, in corridor), H=FAN_A_H=2000mm
 # Fan B — INTAKE: cargo door panel (X=0), low position (H=FAN_B_H=600mm)
 FAN_HH = DUCT_HEIGHT  # duct opening height (200mm) — same as hatch block height
 ax.add_patch(mpatches.Rectangle((C_LEN - 60, FAN_A_H - FAN_HH // 2), 60, FAN_HH,

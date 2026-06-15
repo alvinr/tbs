@@ -281,7 +281,7 @@ def sheet1():
 
     # ── Fans — shown on their correct end walls at correct heights ───────────────
     # Fan B (intake):  cargo door panel (X=0),   LOW  H=FAN_B_H=600mm
-    # Fan A (exhaust): far end wall (X=C_LEN),   HIGH H=FAN_A_H=2200mm (above IBC)
+    # Fan A (exhaust): sealed end wall (X=C_LEN), Yd=FAN_A_YD (below X1, corridor), H=FAN_A_H
     FAN_HH = DUCT_HEIGHT   # hatch block height = duct opening height (200mm)
     hatch_rect(ax, -WALL_T, FAN_B_H - FAN_HH//2, WALL_T, FAN_HH, color=C_ALUM, hatch="xx", alpha=0.6)  # Fan B left wall
     hatch_rect(ax, C_LEN,   FAN_A_H - FAN_HH//2, WALL_T, FAN_HH, color=C_ALUM, hatch="xx", alpha=0.6)  # Fan A right wall

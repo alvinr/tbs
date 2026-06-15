@@ -125,19 +125,19 @@ B2 punch-out bay.*
 |-----------|-------|----------|
 | Fan diameter (both fans) | 150mm | `FAN_DIAM` |
 | Panel fan body depth | 50mm | `FAN_BODY_D` |
-| Fan A center height AFF (high, above IBC) | 2200mm | `FAN_A_H` |
+| Fan A center height AFF (below X1, in corridor) | 2000mm | `FAN_A_H` |
 | Fan B center height AFF (low) | 600mm | `FAN_B_H` |
-| Fan A Yd position (far side, off corner — rev9/B2 swap) | 1996mm | `FAN_A_YD` |
+| Fan A Yd position (below the X1 fill port, plumbing corridor) | 1181mm | `FAN_A_YD` |
 | Fan B Yd position (near pinhole wall, near corner — rev9/B2 swap) | 365mm | `FAN_B_YD` |
 | Baffle duct depth | 300mm | `DUCT_DEPTH` |
 | Baffle duct height | 200mm | `DUCT_HEIGHT` |
 | Fan A shadow margin (from cone) | 869mm | `FAN_A_MARGIN` |
 | Fan B shadow margin (from cone) | 40mm | `FAN_B_MARGIN` |
 
-*Components: Fan A — 150mm compact axial panel fan, far end wall (X=C_LEN), exhaust, Circuit A,
-high position (Z=2200mm — this cleared the OLD 2020mm "600L" IBC stack, but the v2 direct-stacked
-1000L totes reach Z=2336mm, so **Fan A now clashes with the far tote column at Yd1996** — OPEN/DEFERRED,
-likely relocate into the 270mm corridor gap; see [[project-fan-a-ibc-clash]]). Fan B —
+*Components: Fan A — 150mm compact axial panel fan, sealed end wall (X=C_LEN), exhaust, Circuit A,
+in the 270mm plumbing corridor directly **below the X1 fill port** (Yd=1181, Z=2000mm) — the only
+full-height clear channel past the v2 1000L direct-stack (totes reach Z=2336mm in both flanking
+columns; the old high spot at Yd1996/Z2200 was buried — RESOLVED, see [[project-fan-a-ibc-clash]]). Fan B —
 identical fan, mounted on hinged panel (near corner zone by the pinhole wall, Yd=365mm — rev9/B2
 swap so its conduit runs along the pinhole wall near the pivot side), intake,
 Circuit B, low position. Fan A mounts on interior face of a 300mm deep light-safe baffle duct with 2 offset

@@ -43,6 +43,7 @@ from tbs_constants import (
     BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H,
     CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H,
     EQPANEL_X, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H,
+    EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X,
 )
 
 TAGS = ["Context", "Solar Array", "Power Core", "Battery", "External Panel",
@@ -92,6 +93,8 @@ ELEC_POINT_LABELS = [
      "CCT-E INVERTER\n12->120V AC (cooler)", -430, -820, 480),
     (PWR_PANEL_X + PWR_PANEL_W / 2, -WALL - 40, PWR_PANEL_Z + PWR_PANEL_H + 20,
      "EXTERNAL PANEL\nMC4 PV / shore / GFCI cooler / E-STOP", 220, -520, 380),
+    (EVAP_DUCT_X, -WALL - EVAP_D / 2 - 120, EVAP_H,
+     "EVAP COOLER\n(Hessaire MC18M, Cct E)", -260, -520, 520),
 ]
 
 
@@ -129,6 +132,14 @@ def tilted_slab(name, x, y_near, z_base, w, length, t, tilt_deg, color, alpha=No
         '  grp.material = mat', ''])
 
 
+LED_XS = [1000, 2900, 4550]      # white LED panels (Cct G)
+SAFE_XS = [500, 2250, 4150]      # red safelight strips (Cct D)
+
+
+def _dedup(pts):
+    return [p for i, p in enumerate(pts) if i == 0 or p != pts[i - 1]]
+
+
 # ── Conductor run, ORTHOGONAL per skill_plumbing_drawing (matches the overview's
 # lighting_wiring conduit style): rise out of the enclosure, pull to the pinhole-wall
 # trunking line, run ALONG the ceiling, cross out to the load, drop perpendicular.
@@ -136,16 +147,36 @@ def tilted_slab(name, x, y_near, z_base, w, length, t, tilt_deg, color, alpha=No
 def _run(cct, load):
     lx, lyd, lz = load
     fx, fy, fz = FB
-    raw = [
+    pts = _dedup([
         (fx, fy, fz),               # fuse block (inside enclosure)
         (fx, fy, TRUNK_Z),          # rise to ceiling (Z) — exits the enclosure top
         (fx, TRUNK_YD, TRUNK_Z),    # pull to the pinhole-wall trunking line (Yd)
         (lx, TRUNK_YD, TRUNK_Z),    # run ALONG the ceiling to the load's X (X)
         (lx, lyd, TRUNK_Z),         # cross out toward the load (Yd)
         (lx, lyd, lz),              # drop perpendicular to the load (Z)
-    ]
-    pts = [p for i, p in enumerate(raw) if i == 0 or p != raw[i - 1]]  # drop zero-length legs
+    ])
     return ov.ruby_pipe_run(f"Circuit {cct} ({CCT[cct][1]})", pts, 8, color=CCT[cct][0])
+
+
+def _multi_run(cct, xs, yd, z):
+    """Circuit feeding MULTIPLE ceiling fixtures (LED / safelight): a fuse-block feed
+    onto the ceiling line, a ceiling spine spanning all fixture Xs, and a perpendicular
+    cross+drop at EACH fixture — all orthogonal (so every light is connected)."""
+    col, fx, fy, fz = CCT[cct][0], *FB
+    p = [
+        ov.ruby_pipe_run(f"Circuit {cct} feed ({CCT[cct][1]})",
+                         _dedup([(fx, fy, fz), (fx, fy, TRUNK_Z), (fx, TRUNK_YD, TRUNK_Z)]),
+                         8, color=col),
+        ov.ruby_pipe_run(f"Circuit {cct} ceiling spine ({CCT[cct][1]})",
+                         [(min(xs), TRUNK_YD, TRUNK_Z), (max(xs), TRUNK_YD, TRUNK_Z)],
+                         8, color=col),
+    ]
+    for x in xs:
+        br = _dedup([(x, TRUNK_YD, TRUNK_Z), (x, yd, TRUNK_Z), (x, yd, z)])
+        if len(br) > 1:
+            p.append(ov.ruby_pipe_run(f"Circuit {cct} drop X{x} ({CCT[cct][1]})",
+                                      br, 8, color=col))
+    return '\n'.join(p)
 
 
 def context():
@@ -251,6 +282,19 @@ def battery():
                          CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, color="#C42B1C"))
     p.append(ov.ruby_box("MRBF Main Fuse (on + post)", BA_X + CONTACTOR_W + 35, 20,
                          BA_H_HI, MRBF_D, MRBF_D, MRBF_H, color="#222222"))
+    # Main battery cables (2/0 AWG) up to the enclosure busbars — orthogonal
+    # (rise then over). + leaves via the MRBF fuse; − direct off the pack.
+    bus_x = EP_X + 20
+    p.append(ov.ruby_pipe_run("Battery + cable (2/0 AWG, via MRBF)",
+                              _dedup([(BA_X + CONTACTOR_W + 55, 45, BA_H_HI + MRBF_H),
+                                      (BA_X + CONTACTOR_W + 55, 45, EP_H_LO + 216),
+                                      (bus_x + 20, 45, EP_H_LO + 216)]),
+                              11, color="#8B1A1A"))
+    p.append(ov.ruby_pipe_run("Battery − cable (2/0 AWG)",
+                              _dedup([(BA_X + 60, 60, BA_H_HI),
+                                      (BA_X + 60, 60, EP_H_LO + 186),
+                                      (bus_x + 20, 60, EP_H_LO + 186)]),
+                              11, color="#202020"))
     return '\n'.join(p)
 
 
@@ -284,21 +328,56 @@ def external_panel():
                               es_cz, 35, 12, color="#F2C200", axis="y"))
     p.append(ov.ruby_cylinder("E-stop button (red mushroom)", es_cx, face_y - 40,
                               es_cz, 26, 28, color="#C42B1C", axis="y"))
+
+    # Evap cooler (Hessaire MC18M) — external, ground-placed off the pinhole wall — and
+    # its 120V AC cord from the panel GFCI outlet (Circuit E). The DC feed (fuse block ->
+    # inverter) and the inverter -> panel AC line are in their own components; this closes
+    # the Cct E chain: ... GFCI outlet -> cord -> cooler.
+    cw, cd, ch = EVAP_W, EVAP_D, EVAP_H
+    cx = EVAP_DUCT_X - cw / 2
+    cyd = -WALL - cd - 120
+    p.append(ov.ruby_box("Evap Cooler (Hessaire MC18M, external)", cx, cyd, 0,
+                         cw, cd, ch, color=ov.C_EVAP))
+    gfci_x = PWR_PANEL_X + 0.767 * PWR_PANEL_W
+    gfci_z = PWR_PANEL_Z + 0.325 * PWR_PANEL_H
+    cf = -WALL - 55                       # cord stand-off plane outside the wall
+    inx = cx + cw - 80                    # cooler-top inlet
+    p.append(ov.ruby_pipe_run("Cct E cooler cord (panel GFCI -> cooler)",
+                              _dedup([(gfci_x, face_y - 10, gfci_z),
+                                      (gfci_x, cf, gfci_z),
+                                      (gfci_x, cf, ch - 100),
+                                      (inx, cf, ch - 100),
+                                      (inx, cyd + cd / 2, ch - 100)]),
+                              8, color="#E8884A"))
     return '\n'.join(p)
 
 
 def inverter():
-    """Circuit-E 12->120V inverter on the pinhole wall, below the EP."""
-    return ov.ruby_box("Cct E Inverter (12->120V AC)", INVERTER_X, 0, INVERTER_Z,
-                       INVERTER_W, INVERTER_D, INVERTER_H, color="#404848")
+    """Circuit-E 12->120V inverter on the pinhole wall, below the EP, + its 120V AC
+    output line across to the external power panel's GFCI outlet (interior)."""
+    p = [ov.ruby_box("Cct E Inverter (12->120V AC)", INVERTER_X, 0, INVERTER_Z,
+                     INVERTER_W, INVERTER_D, INVERTER_H, color="#404848")]
+    gfci_x = PWR_PANEL_X + 0.767 * PWR_PANEL_W
+    gfci_z = PWR_PANEL_Z + 0.325 * PWR_PANEL_H
+    p.append(ov.ruby_pipe_run("Cct E AC line (inverter -> panel GFCI)",
+                              _dedup([(INVERTER_X + INVERTER_W / 2, 30, INVERTER_Z + INVERTER_H),
+                                      (INVERTER_X + INVERTER_W / 2, 30, gfci_z),
+                                      (gfci_x, 30, gfci_z),
+                                      (gfci_x, 18, gfci_z)]),
+                              7, color="#E8884A"))
+    return '\n'.join(p)
 
 
 def circuit_runs():
-    """Ceiling cable-trunking spine + the 7 color-coded circuits A-G to their loads."""
+    """Ceiling cable-trunking spine + the 7 color-coded circuits A-G to their loads.
+    Single-load circuits (A,B,C,E,F) trace fuse-block→load; the lighting circuits
+    (G white LED, D safelight) fan out to ALL three of their ceiling fixtures."""
     p = [ov.ruby_box("Cable Trunking (40x25 PVC)", 0, 0, ov.C_HGT - 25, ov.C_LEN, 40,
                      25, color=ov.C_TRUNK)]
-    for cct in ("A", "B", "C", "D", "E", "F", "G"):
+    for cct in ("A", "B", "C", "E", "F"):
         p.append(_run(cct, LOADS[cct]))
+    p.append(_multi_run("G", LED_XS, ov.C_WID / 2, ov.C_HGT - 40))   # 3× white LED
+    p.append(_multi_run("D", SAFE_XS, 120, ov.C_HGT - 25))            # 3× safelight
     return '\n'.join(p)
 
 

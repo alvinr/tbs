@@ -469,6 +469,88 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # Battery + cable (2/0 AWG, via MRBF)
+  grp = ents.add_group
+  grp.name = "Battery + cable (2/0 AWG, via MRBF)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 1292.mm)
+  circle = ge.add_circle([1715.mm,45.mm,402.mm], vec, 11.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Battery + cable (2/0 AWG, via MRBF)"] || model.materials.add("Battery + cable (2/0 AWG, via MRBF)")
+  mat.color = Sketchup::Color.new(139, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Battery + cable (2/0 AWG, via MRBF) elbow
+  grp = ents.add_group
+  grp.name = "Battery + cable (2/0 AWG, via MRBF) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1737.mm,45.mm,1694.mm], [-1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1715.mm,45.mm,1694.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Battery + cable (2/0 AWG, via MRBF)"] || model.materials.add("Battery + cable (2/0 AWG, via MRBF)")
+  mat.color = Sketchup::Color.new(139, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Battery + cable (2/0 AWG, via MRBF)
+  grp = ents.add_group
+  grp.name = "Battery + cable (2/0 AWG, via MRBF)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(213.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1737.mm,45.mm,1716.mm], vec, 11.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Battery + cable (2/0 AWG, via MRBF)"] || model.materials.add("Battery + cable (2/0 AWG, via MRBF)")
+  mat.color = Sketchup::Color.new(139, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Battery − cable (2/0 AWG)
+  grp = ents.add_group
+  grp.name = "Battery − cable (2/0 AWG)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 1300.mm)
+  circle = ge.add_circle([1600.mm,60.mm,364.mm], vec, 11.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Battery − cable (2/0 AWG)"] || model.materials.add("Battery − cable (2/0 AWG)")
+  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Battery − cable (2/0 AWG) elbow
+  grp = ents.add_group
+  grp.name = "Battery − cable (2/0 AWG) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1622.mm,60.mm,1664.mm], [-1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1600.mm,60.mm,1664.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Battery − cable (2/0 AWG)"] || model.materials.add("Battery − cable (2/0 AWG)")
+  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Battery − cable (2/0 AWG)
+  grp = ents.add_group
+  grp.name = "Battery − cable (2/0 AWG)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(328.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1622.mm,60.mm,1686.mm], vec, 11.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Battery − cable (2/0 AWG)"] || model.materials.add("Battery − cable (2/0 AWG)")
+  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Battery Bank"
   inst.layer = model.layers["Battery"]
@@ -626,6 +708,112 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # Evap Cooler (Hessaire MC18M, external)
+  grp = ents.add_group
+  grp.name = "Evap Cooler (Hessaire MC18M, external)"
+  face = grp.entities.add_face([720.5.mm,-465.mm,0.mm], [1279.5.mm,-465.mm,0.mm], [1279.5.mm,-160.mm,0.mm], [720.5.mm,-160.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(711.mm)
+  mat = model.materials["Evap Cooler (Hessaire MC18M, external)"] || model.materials.add("Evap Cooler (Hessaire MC18M, external)")
+  mat.color = Sketchup::Color.new(61, 170, 150)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -10.200000000000003.mm, 0.mm)
+  circle = ge.add_circle([1510.78.mm,-75.mm,1908.mm], vec, 8.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler) elbow
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1510.78.mm,-85.2.mm,1898.2.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 9.800000000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1510.78.mm,-85.2.mm,1908.mm], [0.000000,-1.000000,0.000000], 8.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1271.2.mm)
+  circle = ge.add_circle([1510.78.mm,-95.mm,1898.2.mm], vec, 8.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler) elbow
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1494.78.mm,-95.mm,627.mm], [1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 16.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1510.78.mm,-95.mm,627.mm], [0.000000,0.000000,-1.000000], 8.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-279.28.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1494.78.mm,-95.mm,611.mm], vec, 8.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler) elbow
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1215.5.mm,-111.mm,611.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 16.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1215.5.mm,-95.mm,611.mm], [-1.000000,0.000000,0.000000], 8.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -201.5.mm, 0.mm)
+  circle = ge.add_circle([1199.5.mm,-111.mm,611.mm], vec, 8.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "External Power Panel"
   inst.layer = model.layers["External Panel"]
@@ -641,6 +829,74 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face.pushpull(235.mm)
   mat = model.materials["Cct E Inverter (12->120V AC)"] || model.materials.add("Cct E Inverter (12->120V AC)")
   mat.color = Sketchup::Color.new(64, 72, 72)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E AC line (inverter -> panel GFCI)
+  grp = ents.add_group
+  grp.name = "Cct E AC line (inverter -> panel GFCI)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 479.mm)
+  circle = ge.add_circle([1970.mm,30.mm,1415.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E AC line (inverter -> panel GFCI) elbow
+  grp = ents.add_group
+  grp.name = "Cct E AC line (inverter -> panel GFCI) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1956.mm,30.mm,1894.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 14.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1970.mm,30.mm,1894.mm], [0.000000,0.000000,1.000000], 7.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E AC line (inverter -> panel GFCI)
+  grp = ents.add_group
+  grp.name = "Cct E AC line (inverter -> panel GFCI)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-439.3399999999999.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1956.mm,30.mm,1908.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E AC line (inverter -> panel GFCI) elbow
+  grp = ents.add_group
+  grp.name = "Cct E AC line (inverter -> panel GFCI) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1516.66.mm,24.119999999999997.mm,1908.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 5.880000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1516.66.mm,30.mm,1908.mm], [-1.000000,0.000000,0.000000], 7.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E AC line (inverter -> panel GFCI)
+  grp = ents.add_group
+  grp.name = "Cct E AC line (inverter -> panel GFCI)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -6.120000000000001.mm, 0.mm)
+  circle = ge.add_circle([1510.78.mm,24.12.mm,1908.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1028,128 +1284,6 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit D (safelight)
-  grp = ents.add_group
-  grp.name = "Circuit D (safelight)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 559.mm)
-  circle = ge.add_circle([2005.mm,175.mm,1800.mm], vec, 8.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Circuit D (safelight)"] || model.materials.add("Circuit D (safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Circuit D (safelight) elbow
-  grp = ents.add_group
-  grp.name = "Circuit D (safelight) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([2005.mm,159.mm,2359.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2005.mm,175.mm,2359.mm], [0.000000,0.000000,1.000000], 8.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Circuit D (safelight)"] || model.materials.add("Circuit D (safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Circuit D (safelight)
-  grp = ents.add_group
-  grp.name = "Circuit D (safelight)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -123.mm, 0.mm)
-  circle = ge.add_circle([2005.mm,159.mm,2375.mm], vec, 8.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Circuit D (safelight)"] || model.materials.add("Circuit D (safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Circuit D (safelight) elbow
-  grp = ents.add_group
-  grp.name = "Circuit D (safelight) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([1989.mm,36.mm,2375.mm], [1.000000,0.000000,0.000000], [-0.000000,-0.000000,-1.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2005.mm,36.mm,2375.mm], [0.000000,-1.000000,0.000000], 8.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Circuit D (safelight)"] || model.materials.add("Circuit D (safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Circuit D (safelight)
-  grp = ents.add_group
-  grp.name = "Circuit D (safelight)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-1473.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1989.mm,20.mm,2375.mm], vec, 8.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Circuit D (safelight)"] || model.materials.add("Circuit D (safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Circuit D (safelight) elbow
-  grp = ents.add_group
-  grp.name = "Circuit D (safelight) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([516.mm,36.mm,2375.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,-1.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([516.mm,20.mm,2375.mm], [-1.000000,0.000000,0.000000], 8.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Circuit D (safelight)"] || model.materials.add("Circuit D (safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Circuit D (safelight)
-  grp = ents.add_group
-  grp.name = "Circuit D (safelight)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 1136.67.mm, 0.mm)
-  circle = ge.add_circle([500.mm,36.mm,2375.mm], vec, 8.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Circuit D (safelight)"] || model.materials.add("Circuit D (safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Circuit D (safelight) elbow
-  grp = ents.add_group
-  grp.name = "Circuit D (safelight) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([500.mm,1172.67.mm,2366.67.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 8.330000000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([500.mm,1172.67.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Circuit D (safelight)"] || model.materials.add("Circuit D (safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Circuit D (safelight)
-  grp = ents.add_group
-  grp.name = "Circuit D (safelight)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -8.670000000000073.mm)
-  circle = ge.add_circle([500.mm,1181.mm,2366.67.mm], vec, 8.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Circuit D (safelight)"] || model.materials.add("Circuit D (safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
   # Circuit E (cooler / inverter)
   grp = ents.add_group
   grp.name = "Circuit E (cooler / inverter)"
@@ -1394,125 +1528,359 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G (white LED)
+  # Circuit G feed (white LED)
   grp = ents.add_group
-  grp.name = "Circuit G (white LED)"
+  grp.name = "Circuit G feed (white LED)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, 559.mm)
   circle = ge.add_circle([2005.mm,175.mm,1800.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit G (white LED)"] || model.materials.add("Circuit G (white LED)")
+  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G (white LED) elbow
+  # Circuit G feed (white LED) elbow
   grp = ents.add_group
-  grp.name = "Circuit G (white LED) elbow"
+  grp.name = "Circuit G feed (white LED) elbow"
   ge = grp.entities
   arc = ge.add_arc([2005.mm,159.mm,2359.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 16.mm, 0.0, 1.570796, 8)
   circle = ge.add_circle([2005.mm,175.mm,2359.mm], [0.000000,0.000000,1.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit G (white LED)"] || model.materials.add("Circuit G (white LED)")
+  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G (white LED)
+  # Circuit G feed (white LED)
   grp = ents.add_group
-  grp.name = "Circuit G (white LED)"
+  grp.name = "Circuit G feed (white LED)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -123.mm, 0.mm)
+  vec = Geom::Vector3d.new(0.mm, -139.mm, 0.mm)
   circle = ge.add_circle([2005.mm,159.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit G (white LED)"] || model.materials.add("Circuit G (white LED)")
+  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G (white LED) elbow
+  # Circuit G ceiling spine (white LED)
   grp = ents.add_group
-  grp.name = "Circuit G (white LED) elbow"
+  grp.name = "Circuit G ceiling spine (white LED)"
   ge = grp.entities
-  arc = ge.add_arc([1989.mm,36.mm,2375.mm], [1.000000,0.000000,0.000000], [-0.000000,-0.000000,-1.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2005.mm,36.mm,2375.mm], [0.000000,-1.000000,0.000000], 8.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Circuit G (white LED)"] || model.materials.add("Circuit G (white LED)")
-  mat.color = Sketchup::Color.new(241, 196, 15)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Circuit G (white LED)
-  grp = ents.add_group
-  grp.name = "Circuit G (white LED)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-973.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1989.mm,20.mm,2375.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(3550.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1000.mm,20.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit G (white LED)"] || model.materials.add("Circuit G (white LED)")
+  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G (white LED) elbow
+  # Circuit G drop X1000 (white LED)
   grp = ents.add_group
-  grp.name = "Circuit G (white LED) elbow"
+  grp.name = "Circuit G drop X1000 (white LED)"
   ge = grp.entities
-  arc = ge.add_arc([1016.mm,36.mm,2375.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,-1.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1016.mm,20.mm,2375.mm], [-1.000000,0.000000,0.000000], 8.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Circuit G (white LED)"] || model.materials.add("Circuit G (white LED)")
-  mat.color = Sketchup::Color.new(241, 196, 15)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Circuit G (white LED)
-  grp = ents.add_group
-  grp.name = "Circuit G (white LED)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 1131.77.mm, 0.mm)
-  circle = ge.add_circle([1000.mm,36.mm,2375.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 1147.77.mm, 0.mm)
+  circle = ge.add_circle([1000.mm,20.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit G (white LED)"] || model.materials.add("Circuit G (white LED)")
+  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G (white LED) elbow
+  # Circuit G drop X1000 (white LED) elbow
   grp = ents.add_group
-  grp.name = "Circuit G (white LED) elbow"
+  grp.name = "Circuit G drop X1000 (white LED) elbow"
   ge = grp.entities
   arc = ge.add_arc([1000.mm,1167.77.mm,2361.77.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 13.230000000000002.mm, 0.0, 1.570796, 8)
   circle = ge.add_circle([1000.mm,1167.77.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit G (white LED)"] || model.materials.add("Circuit G (white LED)")
+  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G (white LED)
+  # Circuit G drop X1000 (white LED)
   grp = ents.add_group
-  grp.name = "Circuit G (white LED)"
+  grp.name = "Circuit G drop X1000 (white LED)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -13.769999999999982.mm)
   circle = ge.add_circle([1000.mm,1181.mm,2361.77.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit G (white LED)"] || model.materials.add("Circuit G (white LED)")
+  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit G drop X2900 (white LED)
+  grp = ents.add_group
+  grp.name = "Circuit G drop X2900 (white LED)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 1147.77.mm, 0.mm)
+  circle = ge.add_circle([2900.mm,20.mm,2375.mm], vec, 8.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
+  mat.color = Sketchup::Color.new(241, 196, 15)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit G drop X2900 (white LED) elbow
+  grp = ents.add_group
+  grp.name = "Circuit G drop X2900 (white LED) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([2900.mm,1167.77.mm,2361.77.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 13.230000000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2900.mm,1167.77.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
+  mat.color = Sketchup::Color.new(241, 196, 15)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit G drop X2900 (white LED)
+  grp = ents.add_group
+  grp.name = "Circuit G drop X2900 (white LED)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -13.769999999999982.mm)
+  circle = ge.add_circle([2900.mm,1181.mm,2361.77.mm], vec, 8.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
+  mat.color = Sketchup::Color.new(241, 196, 15)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit G drop X4550 (white LED)
+  grp = ents.add_group
+  grp.name = "Circuit G drop X4550 (white LED)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 1147.77.mm, 0.mm)
+  circle = ge.add_circle([4550.mm,20.mm,2375.mm], vec, 8.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
+  mat.color = Sketchup::Color.new(241, 196, 15)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit G drop X4550 (white LED) elbow
+  grp = ents.add_group
+  grp.name = "Circuit G drop X4550 (white LED) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4550.mm,1167.77.mm,2361.77.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 13.230000000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4550.mm,1167.77.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
+  mat.color = Sketchup::Color.new(241, 196, 15)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit G drop X4550 (white LED)
+  grp = ents.add_group
+  grp.name = "Circuit G drop X4550 (white LED)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -13.769999999999982.mm)
+  circle = ge.add_circle([4550.mm,1181.mm,2361.77.mm], vec, 8.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
+  mat.color = Sketchup::Color.new(241, 196, 15)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit D feed (safelight)
+  grp = ents.add_group
+  grp.name = "Circuit D feed (safelight)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 559.mm)
+  circle = ge.add_circle([2005.mm,175.mm,1800.mm], vec, 8.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit D feed (safelight) elbow
+  grp = ents.add_group
+  grp.name = "Circuit D feed (safelight) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([2005.mm,159.mm,2359.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 16.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2005.mm,175.mm,2359.mm], [0.000000,0.000000,1.000000], 8.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit D feed (safelight)
+  grp = ents.add_group
+  grp.name = "Circuit D feed (safelight)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -139.mm, 0.mm)
+  circle = ge.add_circle([2005.mm,159.mm,2375.mm], vec, 8.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit D ceiling spine (safelight)
+  grp = ents.add_group
+  grp.name = "Circuit D ceiling spine (safelight)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3650.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([500.mm,20.mm,2375.mm], vec, 8.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit D drop X500 (safelight)
+  grp = ents.add_group
+  grp.name = "Circuit D drop X500 (safelight)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 94.12.mm, 0.mm)
+  circle = ge.add_circle([500.mm,20.mm,2375.mm], vec, 8.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit D drop X500 (safelight) elbow
+  grp = ents.add_group
+  grp.name = "Circuit D drop X500 (safelight) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([500.mm,114.12.mm,2369.12.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 5.880000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([500.mm,114.12.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit D drop X500 (safelight)
+  grp = ents.add_group
+  grp.name = "Circuit D drop X500 (safelight)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -6.119999999999891.mm)
+  circle = ge.add_circle([500.mm,120.mm,2369.12.mm], vec, 8.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit D drop X2250 (safelight)
+  grp = ents.add_group
+  grp.name = "Circuit D drop X2250 (safelight)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 94.12.mm, 0.mm)
+  circle = ge.add_circle([2250.mm,20.mm,2375.mm], vec, 8.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit D drop X2250 (safelight) elbow
+  grp = ents.add_group
+  grp.name = "Circuit D drop X2250 (safelight) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([2250.mm,114.12.mm,2369.12.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 5.880000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2250.mm,114.12.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit D drop X2250 (safelight)
+  grp = ents.add_group
+  grp.name = "Circuit D drop X2250 (safelight)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -6.119999999999891.mm)
+  circle = ge.add_circle([2250.mm,120.mm,2369.12.mm], vec, 8.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit D drop X4150 (safelight)
+  grp = ents.add_group
+  grp.name = "Circuit D drop X4150 (safelight)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 94.12.mm, 0.mm)
+  circle = ge.add_circle([4150.mm,20.mm,2375.mm], vec, 8.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit D drop X4150 (safelight) elbow
+  grp = ents.add_group
+  grp.name = "Circuit D drop X4150 (safelight) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4150.mm,114.12.mm,2369.12.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 5.880000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4150.mm,114.12.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit D drop X4150 (safelight)
+  grp = ents.add_group
+  grp.name = "Circuit D drop X4150 (safelight)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -6.119999999999891.mm)
+  circle = ge.add_circle([4150.mm,120.mm,2369.12.mm], vec, 8.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1554,6 +1922,10 @@ txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(1420.mm, -80.mm, 2090.mm)
 txt = entities.add_text("EXTERNAL PANEL
 MC4 PV / shore / GFCI cooler / E-STOP", anc, Geom::Vector3d.new(220.mm, -520.mm, 380.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(1000.mm, -312.5.mm, 711.mm)
+txt = entities.add_text("EVAP COOLER
+(Hessaire MC18M, Cct E)", anc, Geom::Vector3d.new(-260.mm, -520.mm, 520.mm))
 txt.layer = model.layers["Labels"] rescue nil
 
 # ── In-model © + license credit (default layer → shown in every scene) ──

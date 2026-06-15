@@ -12936,7 +12936,7 @@ end
   grp.name = "3W-DV-02 Diverter"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -45.59999999999991.mm, 0.mm)
-  circle = ge.add_circle([4854.mm,1131.8.mm,1088.mm], vec, 16.200000000000003.mm, 16)
+  circle = ge.add_circle([4854.mm,1081.8.mm,1088.mm], vec, 16.200000000000003.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -12950,7 +12950,7 @@ end
   grp.name = "3W-DV-02 Diverter"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, 22.799999999999955.mm)
-  circle = ge.add_circle([4854.mm,1109.mm,1088.mm], vec, 16.200000000000003.mm, 16)
+  circle = ge.add_circle([4854.mm,1059.mm,1088.mm], vec, 16.200000000000003.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -12963,8 +12963,35 @@ end
   grp = ents.add_group
   grp.name = "P-04 → DV-02"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -540.mm)
+  vec = Geom::Vector3d.new(0.mm, -26.mm, 0.mm)
   circle = ge.add_circle([4854.mm,1109.mm,1628.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-04 → DV-02 elbow
+  grp = ents.add_group
+  grp.name = "P-04 → DV-02 elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4854.mm,1083.mm,1604.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4854.mm,1083.mm,1628.mm], [0.000000,-1.000000,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-04 → DV-02
+  grp = ents.add_group
+  grp.name = "P-04 → DV-02"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -516.mm)
+  circle = ge.add_circle([4854.mm,1059.mm,1604.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -12977,8 +13004,8 @@ end
   grp = ents.add_group
   grp.name = "DV-02 → IBC-3 side-entry"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -213.mm, 0.mm)
-  circle = ge.add_circle([4854.mm,1109.mm,1088.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -163.mm, 0.mm)
+  circle = ge.add_circle([4854.mm,1059.mm,1088.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -13127,7 +13154,7 @@ end
   grp = ents.add_group
   grp.name = "DV-01 → IBC-4 reject"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 171.mm, 0.mm)
+  vec = Geom::Vector3d.new(17.850000000000364.mm, 0.mm, 0.mm)
   circle = ge.add_circle([4809.mm,1181.mm,2156.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -13141,8 +13168,8 @@ end
   grp = ents.add_group
   grp.name = "DV-01 → IBC-4 reject elbow"
   ge = grp.entities
-  arc = ge.add_arc([4809.mm,1352.mm,2132.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4809.mm,1352.mm,2156.mm], [0.000000,1.000000,0.000000], 12.mm, 16)
+  arc = ge.add_arc([4826.85.mm,1181.mm,2138.85.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 17.150000000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4826.85.mm,1181.mm,2156.mm], [1.000000,0.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
@@ -13154,8 +13181,8 @@ end
   grp = ents.add_group
   grp.name = "DV-01 → IBC-4 reject"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1020.mm)
-  circle = ge.add_circle([4809.mm,1376.mm,2132.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1026.85.mm)
+  circle = ge.add_circle([4844.mm,1181.mm,2138.85.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -13168,8 +13195,8 @@ end
   grp = ents.add_group
   grp.name = "DV-01 → IBC-4 reject elbow"
   ge = grp.entities
-  arc = ge.add_arc([4809.mm,1400.mm,1112.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4809.mm,1376.mm,1112.mm], [0.000000,0.000000,-1.000000], 12.mm, 16)
+  arc = ge.add_arc([4844.mm,1205.mm,1112.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4844.mm,1181.mm,1112.mm], [0.000000,0.000000,-1.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
@@ -13181,8 +13208,8 @@ end
   grp = ents.add_group
   grp.name = "DV-01 → IBC-4 reject"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 66.mm, 0.mm)
-  circle = ge.add_circle([4809.mm,1400.mm,1088.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 261.mm, 0.mm)
+  circle = ge.add_circle([4844.mm,1205.mm,1088.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -13195,7 +13222,7 @@ end
   grp = ents.add_group
   grp.name = "IBC-4 Reject Flange"
   ge = grp.entities
-  circle = ge.add_circle([4809.mm,1307.mm,1088.mm], [0,1,0], 36.mm, 24)
+  circle = ge.add_circle([4844.mm,1307.mm,1088.mm], [0,1,0], 36.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)

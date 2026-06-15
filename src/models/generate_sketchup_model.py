@@ -2120,10 +2120,13 @@ def water_plumbing():
           (RAIL_X_R, 12, floor), (RAIL_X_R, 12, SPRAY_BAR_FEED_Z)], C_BLUE)
 
     # (2) Tray-sump recycle: P-04 → 3W-DV-02 → IBC-3 (Brown) side-entry near top.
-    parts.append(ruby_tee("3W-DV-02 Diverter", (rxB, pyL, ibc3_in_z), (0, -1, 0), (0, 0, 1), pr, color=C_VALVE))
-    pipe("P-04 → DV-02", [(rxB, pyL, pZ2), (rxB, pyL, ibc3_in_z)], C_IBC_BROWN)
+    # The discharge leaves P-04 on its OWN Yd-lane (dvY) so it doesn't run back down
+    # collinear with the sump riser that feeds the pump.
+    dvY = pyL - 50
+    parts.append(ruby_tee("3W-DV-02 Diverter", (rxB, dvY, ibc3_in_z), (0, -1, 0), (0, 0, 1), pr, color=C_VALVE))
+    pipe("P-04 → DV-02", [(rxB, pyL, pZ2), (rxB, dvY, pZ2), (rxB, dvY, ibc3_in_z)], C_IBC_BROWN)
     pipe("DV-02 → IBC-3 side-entry",
-         [(rxB, pyL, ibc3_in_z), (rxB, EQPANEL_YD, ibc3_in_z),
+         [(rxB, dvY, ibc3_in_z), (rxB, EQPANEL_YD, ibc3_in_z),
           (rxB, EQPANEL_YD - 150, ibc3_in_z)], C_IBC_BROWN)
     tote_flange("IBC-3 Recycle Flange", rxB, EQPANEL_YD, ibc3_in_z, C_IBC_BROWN)
 
@@ -2135,12 +2138,16 @@ def water_plumbing():
           (fcx, EQPANEL_YD_FAR, ibc2_in_z), (fcx, EQPANEL_YD_FAR + 150, ibc2_in_z)], C_FILTER)
     tote_flange("IBC-2 Recycle Flange", fcx, EQPANEL_YD_FAR, ibc2_in_z, C_FILTER)
 
-    # (4) DV-01 reject (pH out of range) → IBC-4 (Waste) side-entry near top.
+    # (4) DV-01 reject (pH out of range) → IBC-4 (Waste) side-entry near top.  It
+    # jogs onto its OWN X-lane (rejX) at the DV-01 junction, drops in the CORRIDOR
+    # to below the Blue tote, then enters IBC-4 from the side — NOT up-and-through
+    # the Blue tote (IBC-2) that sits directly above IBC-4.
+    rejX = fcx + 35
     pipe("DV-01 → IBC-4 reject",
-         [(fcx, cc, ibc2_in_z), (fcx, EQPANEL_YD_FAR + 60, ibc2_in_z),
-          (fcx, EQPANEL_YD_FAR + 60, ibc4_in_z),
-          (fcx, EQPANEL_YD_FAR + 150, ibc4_in_z)], C_IBC_WASTE)
-    tote_flange("IBC-4 Reject Flange", fcx, EQPANEL_YD_FAR, ibc4_in_z, C_IBC_WASTE)
+         [(fcx, cc, ibc2_in_z), (rejX, cc, ibc2_in_z), (rejX, cc, ibc4_in_z),
+          (rejX, EQPANEL_YD_FAR, ibc4_in_z), (rejX, EQPANEL_YD_FAR + 150, ibc4_in_z)],
+         C_IBC_WASTE)
+    tote_flange("IBC-4 Reject Flange", rejX, EQPANEL_YD_FAR, ibc4_in_z, C_IBC_WASTE)
 
     return '\n'.join(parts)
 

@@ -72,6 +72,7 @@ MD_FILES=(
     "complete-distortion-renders.md"
     "equipment-layout-report.md"
     "component-dependency-map.md"
+    "component-dimension-audit.md"
     "weight-distribution-report.md"
     "chemistry-prep-shelves.md"
     "processing-tray-and-spray-bar.md"

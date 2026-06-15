@@ -80,6 +80,7 @@ nav:
       - "Hinged Light-Trap Panel": hinged-panel-report.md
       - "Chemistry Prep Shelves": chemistry-prep-shelves.md
     - "Component Dependency Map": component-dependency-map.md
+    - "Component Dimension Audit": component-dimension-audit.md
     - "All Diagrams": all-diagrams.md
   - Shopping:
     - "Master Shopping List": master-shopping-list.md
@@ -102,6 +103,7 @@ nav:
   - Appendix:
     - License: licensing.md
     - Dependencies: component-dependency-map.md
+    - Dimension Audit: component-dimension-audit.md
 
 extra:
   social:

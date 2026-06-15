@@ -33,7 +33,7 @@ TAGS = ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel",
 # ── "Labeled" scene callouts (project rule: every .skp gets a Labeled scene) ──
 # (instance name, text, leader Δx,Δy,Δz mm). Δy pulls toward the viewer (−Y).
 IBC_LABELS = [
-    ("IBC Frame", "IBC FRAME\n(50x50 RHS rack)", -250, 750, 650),
+    ("IBC Frame", "IBC FRAME\n(restraint front portal)", -250, 750, 650),
     ("Walkway Cantilever Arms", "RIGHT-WALKWAY\nCANTILEVER ARMS\n(off the IBC corridor\nuprights — rev12)", -350, -900, 700),
 ]
 # Point-anchored callouts on specific geometry (totes, drain ports, panel kit).
@@ -46,26 +46,26 @@ IBC_POINT_LABELS = [
     (5284, 1824,  579, "WASTE IBC",                   1550,  -250,  250),
     (5284, 1824, 1589, "BLUE IBC #2\n(fresh water)",  1550,  -250,  400),
     # ── Tray sump pickup + Blue spray-bar feed (container side, low front) ──
-    (4550,   80,   20, "SUMP PICKUP\n(tray drain)",   -650,  -900,  950),
+    (4550,  155,   20, "SUMP PICKUP\n(tray drain)",   -650,  -900,  950),
     (4649,   12,   40, "TO SPRAY BAR",               -1250,  -650, -150),
     # ── Exterior bulkhead ports on the sealed end wall (X = C_LEN) ──
     (5893, 1181, 2250, "X1 (fresh fill)",            1007, -400,  450),
     (5893, 1181,  400, "X3 (Brown drain-out)",       1007, -500,  -50),
     (5893, 1181,  200, "X4 (Waste drain-out)",       1007, -500, -100),
-    # ── Wet-end panel equipment — pulled out the CONTAINER (front) side, laid out
-    #    the way the panel reads: two pump columns + three filters below (no
-    #    pipes/valves).  Left column (Yd 1109): ──
-    (5177, 1109, 2021, "ACC-01 (accumulator)",       -227, -1759,  329),
-    (5190, 1109, 1687, "P-04 (Tray-drain pump)",     -240, -1759,  263),
-    (5190, 1109, 1429, "P-01 (Blue-feed pump)",      -240, -1759,  121),
+    # ── Wet-end panel equipment (v2: panel moved FORWARD to X≈4814-4854) — pulled
+    #    out the CONTAINER (front) side, laid out the way the panel reads: two pump
+    #    columns + three filters below (no pipes/valves).  Left column (Yd 1109): ──
+    (4814, 1109, 2021, "ACC-01 (accumulator)",       -227, -1759,  329),
+    (4814, 1109, 1687, "P-04 (Tray-drain pump)",     -240, -1759,  263),
+    (4814, 1109, 1429, "P-01 (Blue-feed pump)",      -240, -1759,  121),
     # Right column (Yd 1253):
-    (5190, 1253, 2055, "P-05 (Brown drain pump)",     260, -1903,  295),
-    (5190, 1253, 1687, "P-03 (Waste-evac pump)",      260, -1903,  263),
-    (5190, 1253, 1429, "P-02 (Brown pump)",           260, -1903,  121),
+    (4854, 1253, 2055, "P-05 (Brown drain pump)",     260, -1903,  295),
+    (4854, 1253, 1687, "P-03 (Waste-evac pump)",      260, -1903,  263),
+    (4854, 1253, 1429, "P-02 (Brown pump)",           260, -1903,  121),
     # Filters (centered below the pumps):
-    (5175, 1181, 1110, "F3 (GAC filter)",               5, -1831,   40),
-    (5175, 1181,  740, "F2 (5um filter)",               5, -1831,   60),
-    (5175, 1181,  370, "F1 (50um filter)",              5, -1831,   80),
+    (4809, 1181, 1110, "F3 (GAC filter)",               5, -1831,   40),
+    (4809, 1181,  740, "F2 (5um filter)",               5, -1831,   60),
+    (4809, 1181,  370, "F1 (50um filter)",              5, -1831,   80),
 ]
 
 

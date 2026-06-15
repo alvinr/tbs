@@ -96,9 +96,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Battery 1 [ghost]
   grp = ents.add_group
   grp.name = "Battery 1 [ghost]"
-  face = grp.entities.add_face([1810.mm,0.mm,150.mm], [2050.mm,0.mm,150.mm], [2050.mm,120.mm,150.mm], [1810.mm,120.mm,150.mm])
+  face = grp.entities.add_face([1540.mm,0.mm,150.mm], [1870.mm,0.mm,150.mm], [1870.mm,172.mm,150.mm], [1540.mm,172.mm,150.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(500.mm)
+  face.pushpull(214.mm)
   mat = model.materials["Battery 1 [ghost]"] || model.materials.add("Battery 1 [ghost]")
   mat.color = Sketchup::Color.new(106, 90, 205)
   mat.alpha = 0.28
@@ -107,9 +107,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Battery 2 [ghost]
   grp = ents.add_group
   grp.name = "Battery 2 [ghost]"
-  face = grp.entities.add_face([2070.mm,0.mm,150.mm], [2310.mm,0.mm,150.mm], [2310.mm,120.mm,150.mm], [2070.mm,120.mm,150.mm])
+  face = grp.entities.add_face([1890.mm,0.mm,150.mm], [2220.mm,0.mm,150.mm], [2220.mm,172.mm,150.mm], [1890.mm,172.mm,150.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(500.mm)
+  face.pushpull(214.mm)
   mat = model.materials["Battery 1 [ghost]"] || model.materials.add("Battery 1 [ghost]")
   mat.color = Sketchup::Color.new(106, 90, 205)
   mat.alpha = 0.28

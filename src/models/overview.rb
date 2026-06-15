@@ -6978,7 +6978,7 @@ end
   # Pump P-01 (Blue)
   grp = ents.add_group
   grp.name = "Pump P-01 (Blue)"
-  face = grp.entities.add_face([4774.mm,1045.5.mm,1370.mm], [4874.mm,1045.5.mm,1370.mm], [4874.mm,1172.5.mm,1370.mm], [4774.mm,1172.5.mm,1370.mm])
+  face = grp.entities.add_face([4760.mm,1045.5.mm,1370.mm], [4874.mm,1045.5.mm,1370.mm], [4874.mm,1172.5.mm,1370.mm], [4760.mm,1172.5.mm,1370.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(218.mm)
   mat = model.materials["Pump P-01 (Blue)"] || model.materials.add("Pump P-01 (Blue)")
@@ -6989,7 +6989,7 @@ end
   # Pump P-02 (Brown)
   grp = ents.add_group
   grp.name = "Pump P-02 (Brown)"
-  face = grp.entities.add_face([4774.mm,1189.5.mm,1370.mm], [4874.mm,1189.5.mm,1370.mm], [4874.mm,1316.5.mm,1370.mm], [4774.mm,1316.5.mm,1370.mm])
+  face = grp.entities.add_face([4760.mm,1189.5.mm,1370.mm], [4874.mm,1189.5.mm,1370.mm], [4874.mm,1316.5.mm,1370.mm], [4760.mm,1316.5.mm,1370.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(218.mm)
   mat = model.materials["Pump P-01 (Blue)"] || model.materials.add("Pump P-01 (Blue)")
@@ -7000,7 +7000,7 @@ end
   # Pump P-04 (Tray drain)
   grp = ents.add_group
   grp.name = "Pump P-04 (Tray drain)"
-  face = grp.entities.add_face([4774.mm,1045.5.mm,1628.mm], [4874.mm,1045.5.mm,1628.mm], [4874.mm,1172.5.mm,1628.mm], [4774.mm,1172.5.mm,1628.mm])
+  face = grp.entities.add_face([4760.mm,1045.5.mm,1628.mm], [4874.mm,1045.5.mm,1628.mm], [4874.mm,1172.5.mm,1628.mm], [4760.mm,1172.5.mm,1628.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(218.mm)
   mat = model.materials["Pump P-01 (Blue)"] || model.materials.add("Pump P-01 (Blue)")
@@ -7011,7 +7011,7 @@ end
   # Pump P-03 (Waste evac)
   grp = ents.add_group
   grp.name = "Pump P-03 (Waste evac)"
-  face = grp.entities.add_face([4774.mm,1189.5.mm,1628.mm], [4874.mm,1189.5.mm,1628.mm], [4874.mm,1316.5.mm,1628.mm], [4774.mm,1316.5.mm,1628.mm])
+  face = grp.entities.add_face([4760.mm,1189.5.mm,1628.mm], [4874.mm,1189.5.mm,1628.mm], [4874.mm,1316.5.mm,1628.mm], [4760.mm,1316.5.mm,1628.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(218.mm)
   mat = model.materials["Pump P-01 (Blue)"] || model.materials.add("Pump P-01 (Blue)")
@@ -7022,7 +7022,7 @@ end
   # Pump P-05 (Brown drain)
   grp = ents.add_group
   grp.name = "Pump P-05 (Brown drain)"
-  face = grp.entities.add_face([4774.mm,1189.5.mm,1996.mm], [4874.mm,1189.5.mm,1996.mm], [4874.mm,1316.5.mm,1996.mm], [4774.mm,1316.5.mm,1996.mm])
+  face = grp.entities.add_face([4760.mm,1189.5.mm,1996.mm], [4874.mm,1189.5.mm,1996.mm], [4874.mm,1316.5.mm,1996.mm], [4760.mm,1316.5.mm,1996.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(218.mm)
   mat = model.materials["Pump P-01 (Blue)"] || model.materials.add("Pump P-01 (Blue)")
@@ -7037,7 +7037,7 @@ end
   circle = ge.add_circle([4811.mm,1109.mm,1996.mm], [0,0,1], 63.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(150.mm)
+  cface.pushpull(200.mm)
   mat = model.materials["ACC-01 Accumulator"] || model.materials.add("ACC-01 Accumulator")
   mat.color = Sketchup::Color.new(90, 154, 204)
   mat.alpha = 1.0
@@ -7047,7 +7047,7 @@ end
   grp = ents.add_group
   grp.name = "Filter F1 (50µ)"
   ge = grp.entities
-  circle = ge.add_circle([4809.mm,1181.mm,250.mm], [0,0,1], 65.mm, 24)
+  circle = ge.add_circle([4782.mm,1181.mm,250.mm], [0,0,1], 92.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(340.mm)
@@ -7060,7 +7060,7 @@ end
   grp = ents.add_group
   grp.name = "Filter F2 (5µ)"
   ge = grp.entities
-  circle = ge.add_circle([4809.mm,1181.mm,620.mm], [0,0,1], 65.mm, 24)
+  circle = ge.add_circle([4782.mm,1181.mm,620.mm], [0,0,1], 92.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(340.mm)
@@ -7073,7 +7073,7 @@ end
   grp = ents.add_group
   grp.name = "Filter F3 (GAC)"
   ge = grp.entities
-  circle = ge.add_circle([4809.mm,1181.mm,990.mm], [0,0,1], 65.mm, 24)
+  circle = ge.add_circle([4782.mm,1181.mm,990.mm], [0,0,1], 92.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(340.mm)
@@ -8172,9 +8172,9 @@ end
   # Battery 1 (12V 100Ah LiFePO4)
   grp = ents.add_group
   grp.name = "Battery 1 (12V 100Ah LiFePO4)"
-  face = grp.entities.add_face([1810.mm,0.mm,150.mm], [2050.mm,0.mm,150.mm], [2050.mm,120.mm,150.mm], [1810.mm,120.mm,150.mm])
+  face = grp.entities.add_face([1540.mm,0.mm,150.mm], [1870.mm,0.mm,150.mm], [1870.mm,172.mm,150.mm], [1540.mm,172.mm,150.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(500.mm)
+  face.pushpull(214.mm)
   mat = model.materials["Battery 1 (12V 100Ah LiFePO4)"] || model.materials.add("Battery 1 (12V 100Ah LiFePO4)")
   mat.color = Sketchup::Color.new(106, 90, 205)
   mat.alpha = 1.0
@@ -8183,9 +8183,9 @@ end
   # Battery 2 (optional 2nd pack — plug-in, ghosted)
   grp = ents.add_group
   grp.name = "Battery 2 (optional 2nd pack — plug-in, ghosted)"
-  face = grp.entities.add_face([2070.mm,0.mm,150.mm], [2310.mm,0.mm,150.mm], [2310.mm,120.mm,150.mm], [2070.mm,120.mm,150.mm])
+  face = grp.entities.add_face([1890.mm,0.mm,150.mm], [2220.mm,0.mm,150.mm], [2220.mm,172.mm,150.mm], [1890.mm,172.mm,150.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(500.mm)
+  face.pushpull(214.mm)
   mat = model.materials["Battery 2 (optional 2nd pack — plug-in, ghosted)"] || model.materials.add("Battery 2 (optional 2nd pack — plug-in, ghosted)")
   mat.color = Sketchup::Color.new(106, 90, 205)
   mat.alpha = 0.28
@@ -8216,7 +8216,7 @@ end
   # Battery Contactor (ML-RBS, in + feed)
   grp = ents.add_group
   grp.name = "Battery Contactor (ML-RBS, in + feed)"
-  face = grp.entities.add_face([1830.mm,15.mm,650.mm], [1950.mm,15.mm,650.mm], [1950.mm,105.mm,650.mm], [1830.mm,105.mm,650.mm])
+  face = grp.entities.add_face([1560.mm,15.mm,364.mm], [1680.mm,15.mm,364.mm], [1680.mm,105.mm,364.mm], [1560.mm,105.mm,364.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(100.mm)
   mat = model.materials["Battery Contactor (ML-RBS, in + feed)"] || model.materials.add("Battery Contactor (ML-RBS, in + feed)")
@@ -8254,8 +8254,8 @@ end
   grp = ents.add_group
   grp.name = "E-stop control wire (2x 18 AWG)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 1190.mm)
-  circle = ge.add_circle([1890.mm,60.mm,750.mm], vec, 5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 1476.mm)
+  circle = ge.add_circle([1620.mm,60.mm,464.mm], vec, 5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -8268,8 +8268,8 @@ end
   grp = ents.add_group
   grp.name = "E-stop control wire (2x 18 AWG) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1880.mm,60.mm,1940.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 10.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1890.mm,60.mm,1940.mm], [0.000000,0.000000,1.000000], 5.mm, 16)
+  arc = ge.add_arc([1610.mm,60.mm,1940.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 10.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1620.mm,60.mm,1940.mm], [0.000000,0.000000,1.000000], 5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["E-stop control wire (2x 18 AWG)"] || model.materials.add("E-stop control wire (2x 18 AWG)")
@@ -8281,8 +8281,8 @@ end
   grp = ents.add_group
   grp.name = "E-stop control wire (2x 18 AWG)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-450.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1880.mm,60.mm,1950.mm], vec, 5.mm, 16)
+  vec = Geom::Vector3d.new(-180.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1610.mm,60.mm,1950.mm], vec, 5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -13009,7 +13009,7 @@ end
   grp = ents.add_group
   grp.name = "P-02 → Filters"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-3.337337631720402.mm, -48.0576618967757.mm, 0.mm)
+  vec = Geom::Vector3d.new(-22.252676814717233.mm, -50.068522833113775.mm, 0.mm)
   circle = ge.add_circle([4814.mm,1253.mm,1370.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -13023,8 +13023,8 @@ end
   grp = ents.add_group
   grp.name = "P-02 → Filters elbow"
   ge = grp.entities
-  arc = ge.add_arc([4810.66266236828.mm,1204.9423381032243.mm,1346.mm], [0.000000,0.000000,1.000000], [0.997597,-0.069278,0.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4810.66266236828.mm,1204.9423381032243.mm,1370.mm], [-0.069278,-0.997597,0.000000], 12.mm, 16)
+  arc = ge.add_arc([4791.747323185283.mm,1202.9314771668862.mm,1346.mm], [0.000000,0.000000,1.000000], [0.913812,-0.406138,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4791.747323185283.mm,1202.9314771668862.mm,1370.mm], [-0.406138,-0.913812,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
@@ -13037,7 +13037,7 @@ end
   grp.name = "P-02 → Filters"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -1096.mm)
-  circle = ge.add_circle([4809.mm,1181.mm,1346.mm], vec, 12.mm, 16)
+  circle = ge.add_circle([4782.mm,1181.mm,1346.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -13051,7 +13051,7 @@ end
   grp.name = "3W-DV-01 Diverter"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 45.59999999999991.mm, 0.mm)
-  circle = ge.add_circle([4809.mm,1158.2.mm,2156.mm], vec, 16.200000000000003.mm, 16)
+  circle = ge.add_circle([4782.mm,1158.2.mm,2156.mm], vec, 16.200000000000003.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -13065,7 +13065,7 @@ end
   grp.name = "3W-DV-01 Diverter"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -22.800000000000182.mm)
-  circle = ge.add_circle([4809.mm,1181.mm,2156.mm], vec, 16.200000000000003.mm, 16)
+  circle = ge.add_circle([4782.mm,1181.mm,2156.mm], vec, 16.200000000000003.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -13079,7 +13079,7 @@ end
   grp.name = "Filters → DV-01 → IBC-2 side-entry"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, 972.mm)
-  circle = ge.add_circle([4809.mm,1181.mm,1160.mm], vec, 12.mm, 16)
+  circle = ge.add_circle([4782.mm,1181.mm,1160.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -13092,8 +13092,8 @@ end
   grp = ents.add_group
   grp.name = "Filters → DV-01 → IBC-2 side-entry elbow"
   ge = grp.entities
-  arc = ge.add_arc([4809.mm,1205.mm,2132.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4809.mm,1181.mm,2132.mm], [0.000000,0.000000,1.000000], 12.mm, 16)
+  arc = ge.add_arc([4782.mm,1205.mm,2132.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4782.mm,1181.mm,2132.mm], [0.000000,0.000000,1.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Filter F1 (50µ)"] || model.materials.add("Filter F1 (50µ)")
@@ -13106,7 +13106,7 @@ end
   grp.name = "Filters → DV-01 → IBC-2 side-entry"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 261.mm, 0.mm)
-  circle = ge.add_circle([4809.mm,1205.mm,2156.mm], vec, 12.mm, 16)
+  circle = ge.add_circle([4782.mm,1205.mm,2156.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -13119,7 +13119,7 @@ end
   grp = ents.add_group
   grp.name = "IBC-2 Recycle Flange"
   ge = grp.entities
-  circle = ge.add_circle([4809.mm,1307.mm,2156.mm], [0,1,0], 36.mm, 24)
+  circle = ge.add_circle([4782.mm,1307.mm,2156.mm], [0,1,0], 36.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
@@ -13133,7 +13133,7 @@ end
   grp.name = "DV-01 → IBC-4 reject"
   ge = grp.entities
   vec = Geom::Vector3d.new(17.850000000000364.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4809.mm,1181.mm,2156.mm], vec, 12.mm, 16)
+  circle = ge.add_circle([4782.mm,1181.mm,2156.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -13146,8 +13146,8 @@ end
   grp = ents.add_group
   grp.name = "DV-01 → IBC-4 reject elbow"
   ge = grp.entities
-  arc = ge.add_arc([4826.85.mm,1181.mm,2138.85.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 17.150000000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4826.85.mm,1181.mm,2156.mm], [1.000000,0.000000,0.000000], 12.mm, 16)
+  arc = ge.add_arc([4799.85.mm,1181.mm,2138.85.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 17.150000000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4799.85.mm,1181.mm,2156.mm], [1.000000,0.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
@@ -13160,7 +13160,7 @@ end
   grp.name = "DV-01 → IBC-4 reject"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -1026.85.mm)
-  circle = ge.add_circle([4844.mm,1181.mm,2138.85.mm], vec, 12.mm, 16)
+  circle = ge.add_circle([4817.mm,1181.mm,2138.85.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -13173,8 +13173,8 @@ end
   grp = ents.add_group
   grp.name = "DV-01 → IBC-4 reject elbow"
   ge = grp.entities
-  arc = ge.add_arc([4844.mm,1205.mm,1112.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4844.mm,1181.mm,1112.mm], [0.000000,0.000000,-1.000000], 12.mm, 16)
+  arc = ge.add_arc([4817.mm,1205.mm,1112.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4817.mm,1181.mm,1112.mm], [0.000000,0.000000,-1.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
@@ -13187,7 +13187,7 @@ end
   grp.name = "DV-01 → IBC-4 reject"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 261.mm, 0.mm)
-  circle = ge.add_circle([4844.mm,1205.mm,1088.mm], vec, 12.mm, 16)
+  circle = ge.add_circle([4817.mm,1205.mm,1088.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -13200,7 +13200,7 @@ end
   grp = ents.add_group
   grp.name = "IBC-4 Reject Flange"
   ge = grp.entities
-  circle = ge.add_circle([4844.mm,1307.mm,1088.mm], [0,1,0], 36.mm, 24)
+  circle = ge.add_circle([4817.mm,1307.mm,1088.mm], [0,1,0], 36.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)

@@ -45,16 +45,16 @@ PANEL_Z_AFF = 200  # panel bottom Z above finished floor
 # ── Shurflo 2088 pump dimensions ─────────────────────────────────────────
 PUMP_W   = 127   # front face width (mm)
 PUMP_H   = 218   # front face height (mm) — body length, vertical mount
-PUMP_D   = 100   # depth from panel (mm)
+PUMP_D   = 114   # depth from panel (mm) — = tbs_constants PUMP_D (real Shurflo 2088 height 4.5"); KEEP IN SYNC
 PUMP_GAP = 40    # vertical gap between pumps (mm)
 PORT_HALF = 30   # half of port-to-port spacing (mm)
 
 # ── Accumulator ───────────────────────────────────────────────────────────
 ACC_OD  = 127    # body OD (mm)
-ACC_LEN = 150    # body length (mm) — vertical mount, port at bottom
+ACC_LEN = 200    # body length (mm) — real SeaFlo 0.75L ~200; KEEP IN SYNC with the 3D equipment_panel() ACC cylinder
 
 # ── Filter housing (separate, 4.5"×10") ──────────────────────────────────
-FILT_OD  = 130   # housing OD (mm)
+FILT_OD  = 184   # housing OD (mm) — = tbs_constants BB_OD (real Big Blue 4.5x10 = Ø184); KEEP IN SYNC
 FILT_H   = 340   # total height (mm) — head + sump, hung vertically
 FILT_GAP = 30    # gap between housings (mm)
 FILT_HEAD = 70   # head section height (mm)

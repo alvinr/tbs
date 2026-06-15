@@ -1167,7 +1167,7 @@ def sheet4():
            fs=5.5, color=C_PIPE_BLUE, ha="right", font=FONT)
 
     # ── Legend ───────────────────────────────────────────────────────────────
-    leg_x = px(C_LEN + 380)        # right of the container, in the free margin
+    leg_x = px(C_LEN + 270)        # right of the container, in the free margin
     leg_top = py(C_WID - 100)
     leg_sp = py(33)
     pipe_lw = 2.5
@@ -1177,7 +1177,7 @@ def sheet4():
     leg_box_x = leg_x - px(10)
     leg_box_top = leg_top + leg_sp * 0.5
     leg_box_bot = leg_top - n_leg_items * leg_sp + leg_sp * 0.3
-    leg_box_w = px(800)
+    leg_box_w = px(1000)
     ax.add_patch(Rectangle((leg_box_x, leg_box_bot), leg_box_w,
                             leg_box_top - leg_box_bot,
                             fc="#F0F0F0", ec=C_OUT, lw=0.6, zorder=14))
@@ -1275,8 +1275,9 @@ def sheet4():
     # ── Notes (single block, in the right margin directly under the legend) ──
     notes = [
         "INTERNAL PLUMBING PLAN NOTES:",
-        "1. 4x 275-gal (1000L) caged composite IBCs in 2x2 direct-stack (Brown/Waste bottom, Blue top).",
-        "   Top tier visible; bottom tier shown dashed.",
+        "1. 4x 275-gal (1000L) caged composite IBCs in 2x2 direct-stack",
+        "  (Brown/Waste bottom, Blue top). Top tier visible; bottom",
+        "  tier shown dashed.",
         "2. All internal pipe 1\" HDPE SDR-11",
         "   (2\" NPT at bulkhead unions).",
         "3. IBC valve faces point toward corridor.",
@@ -1292,7 +1293,7 @@ def sheet4():
         f"9. Portal frame: seat brackets + corridor uprights. ~{FRAME_WEIGHT}kg.",
     ]
     draw_notes(ax, notes, leg_x, leg_box_bot - py(55), spacing=py(18),
-               fs=7, font=FONT, width=775)
+               fs=7, font=FONT, width=850)
 
     # ── Title block ──────────────────────────────────────────────────────────
     title_block(ax, "SHEET 4 OF 5",

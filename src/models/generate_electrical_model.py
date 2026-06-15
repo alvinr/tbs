@@ -129,10 +129,22 @@ def tilted_slab(name, x, y_near, z_base, w, length, t, tilt_deg, color, alpha=No
         '  grp.material = mat', ''])
 
 
-# ── Conductor run: fuse block → up to trunking → along ceiling → to the load ──
+# ── Conductor run, ORTHOGONAL per skill_plumbing_drawing (matches the overview's
+# lighting_wiring conduit style): rise out of the enclosure, pull to the pinhole-wall
+# trunking line, run ALONG the ceiling, cross out to the load, drop perpendicular.
+# Every segment changes exactly ONE axis — no diagonals.
 def _run(cct, load):
     lx, lyd, lz = load
-    pts = [FB, (FB[0], TRUNK_YD, TRUNK_Z), (lx, TRUNK_YD, TRUNK_Z), (lx, lyd, lz)]
+    fx, fy, fz = FB
+    raw = [
+        (fx, fy, fz),               # fuse block (inside enclosure)
+        (fx, fy, TRUNK_Z),          # rise to ceiling (Z) — exits the enclosure top
+        (fx, TRUNK_YD, TRUNK_Z),    # pull to the pinhole-wall trunking line (Yd)
+        (lx, TRUNK_YD, TRUNK_Z),    # run ALONG the ceiling to the load's X (X)
+        (lx, lyd, TRUNK_Z),         # cross out toward the load (Yd)
+        (lx, lyd, lz),              # drop perpendicular to the load (Z)
+    ]
+    pts = [p for i, p in enumerate(raw) if i == 0 or p != raw[i - 1]]  # drop zero-length legs
     return ov.ruby_pipe_run(f"Circuit {cct} ({CCT[cct][1]})", pts, 8, color=CCT[cct][0])
 
 

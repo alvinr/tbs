@@ -749,8 +749,8 @@ def sheet3():
         "5. All penetrations sealed with neoprene gaskets — light-tight and watertight.",
         "6. Interior connections routed through plumbing corridor (see Sheet 4).",
     ]
-    draw_notes(ax, notes, sx(YD_LO + 30), sy(Z_LO + 350), spacing=sy(18),
-               fs=7, font=FONT, width=5000)
+    draw_notes(ax, notes, sx(YD_HI - 25), sy(Z_LO + 350), spacing=sy(18),
+               fs=7, font=FONT, width=1800)
 
     # ── Title block ──────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 5",

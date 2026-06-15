@@ -179,7 +179,7 @@ My practice since has moved between classical portraiture and abstract color in 
 | Film plane movement | ±42° tilt, ±25.7° swing, 4-corner independent |
 | Front board movement | ±5.3° tilt and swing, 0.012°/click resolution |
 | Process | Cyanotype (Ware formula) on cotton muslin |
-| Water system | Self-contained, ~10 prints per resupply, off-grid capable |
+| Water system | Self-contained, ~13 prints per resupply, off-grid capable |
 | Transport | Commercial hire tilt-bed, no CDL required |
 
 ### Full Documentation

@@ -274,10 +274,10 @@ IBCs are arranged in a **2x2 stack** in the right end zone at X=4674mm, right-ju
 
 | Zone | Contents | X (mm) | Yd (mm) | H (mm) |
 |------|----------|--------|---------|--------|
-| Right end zone | IBC-1 Blue (top, near column) | 4,674–5,893 | 30–1,046 | 1,010–2,020 |
+| Right end zone | IBC-1 Blue (top, near column) | 4,674–5,893 | 30–1,046 | 1,168–2,336 |
 | Right end zone | IBC-3 Brown (bottom, near column) | 4,674–5,893 | 30–1,046 | 0–1,010 |
 | Right end zone | Plumbing corridor | 4,674–5,893 | 1,046–1,316 | 0–2,020 |
-| Right end zone | IBC-2 Blue (top, far column) | 4,674–5,893 | 1,316–2,332 | 1,010–2,020 |
+| Right end zone | IBC-2 Blue (top, far column) | 4,674–5,893 | 1,316–2,332 | 1,168–2,336 |
 | Right end zone | IBC-4 Waste (bottom, far column) | 4,674–5,893 | 1,316–2,332 | 0–1,010 |
 | Pinhole wall face | Pump manifold (P-01, P-02, P-04) | 2,400–2,700 | Y=0 | 200–600 |
 | IBC plumbing corridor | P-03 waste pump (on X4 drain run) | 4,674–5,893 | 1,046–1,316 | ~200 |

@@ -69,6 +69,7 @@ MD_FILES = [
     ("complete-distortion-renders.md",      (".",           "Distortion Renders")),
     ("equipment-layout-report.md",        (".",           "Equipment Layout")),
     ("component-dependency-map.md",       (".",           "Component Dependency Map")),
+    ("component-dimension-audit.md",      (".",           "Component Dimension Audit")),
     ("weight-distribution-report.md",    (".",           "Weight Distribution")),
     ("chemistry-prep-shelves.md",         (".",           "Chemistry Prep Shelves")),
     ("processing-tray-and-spray-bar.md",  (".",           "Processing Tray & Spray Bar")),
@@ -351,6 +352,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Distortion Renders](complete-distortion-renders.md) | Ray-traced projections for all film-plane and tilt-swing configurations |
 | [Equipment Layout](equipment-layout-report.md) | Shadow-free end-zone layout — optical clearance proof, IBC Y-stacking, new rail positions |
 | [Component Dependency Map](component-dependency-map.md) | System component registry, diagram index, and change propagation guide |
+| [Component Dimension Audit](component-dimension-audit.md) | Purchased-part dimensional reconciliation — real product sizes vs as-drawn, with datasheet links |
 | [Weight Distribution](weight-distribution-report.md) | Container weight analysis — dry, camera ready, materials exhausted — CG positions and ISO compliance |
 | [Chemistry Prep Shelves](chemistry-prep-shelves.md) | Two fold-down shelves on pinhole wall for cyanotype chemistry mixing and materials staging |
 | [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) | 304 SS processing tray and telescoping spray bar gantry — construction, operation, and parts list |

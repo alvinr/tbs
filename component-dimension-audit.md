@@ -1,0 +1,107 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
+# Component Dimension Audit — Purchased Parts vs. As-Drawn
+
+**Purpose.** After the IBC tote sizing error (assumed "600 L" small totes; the real
+food-grade caged product is **1000 L / 1219×1016×1168 mm**, which forced the entire
+`ibc-reconfig-v2` rework), this audit reconciles **every major purchased-as-is
+component** against the size used in the 3D models / 2D diagrams (`tbs_constants.py`).
+The goal: no other component is modeled at an assumed size that the real product
+doesn't match.
+
+**Scope.** Purchased components with a fixed catalog size — fans, pumps, accumulator,
+filters, IBC totes, batteries, solar, evap cooler, bearings, linear guides, leadscrews,
+nozzles. **Excluded:** fasteners and standard small fittings (nuts/bolts/valves/elbows/
+camlocks/unions), and **fabricated-to-spec** items (RHS steel, ACM panels, the Ø900 drum,
+the Ø89 pivot post, plywood) — those are cut to the drawing, so there is no
+"product ≠ drawing" risk.
+
+**Method.** Real dimensions are from the manufacturer/retailer datasheet (linked).
+Modeled dimensions are the `tbs_constants.py` value(s) the generators draw. mm.
+
+---
+
+## 1. Findings summary
+
+| # | Component | Real product (datasheet) | Modeled | Verdict |
+|---|-----------|--------------------------|---------|---------|
+| 1 | IBC tote (1000 L caged) | 1219×1016×1168 | 1219×1016×1168 (`IBC_W/IBC_D/IBC_H_1000`) | ✅ **FIXED** (v2) |
+| 2 | **Battery** (Renogy 100 Ah LiFePO4) | **330×172×214** | each ~240×120×**500** (`BA_*`) | ❌ **WRONG** — wrong proportions (modeled tall/narrow; real is long/short) |
+| 3 | **Pump** (Shurflo 2088-554-144) | **216×127×114** | Ø/box **100** (`PUMP_D`) | ❌ **UNDERSIZED** — real pump is ~2× the modeled footprint |
+| 4 | **Filter housing** (Big Blue 4.5"×20") | **Ø184 × 594 tall** (Pentek) | Ø130 × **340** (`BB_OD`/`BB_H`) | ❌ **WRONG** — modeled as a 10" housing; the 20" product is ~250 mm taller |
+| 5 | **Fan** (AC Infinity Cloudline S6) | **200×320×213, inline** (6"/152 duct) | 150 Ø × **50 deep** panel fan (`FAN_DIAM`/`FAN_BODY_D`) | ❌ **MISMATCH** — S6 is a 320 mm **inline duct fan**, not a thin panel fan; it can't "not protrude" and is **longer than the 300 mm baffle duct** (`DUCT_DEPTH`) |
+| 6 | **Evap cooler** ("Portacool Jetstream 110, 12 V DC") | **product does not exist** — Jetstreams are 220–270 and **120 V AC**, not 12 V DC | 600×350×800 (`EVAP_*`) | ❌ **INVALID PRODUCT** — needs a real 12 V DC cooler selected |
+| 7 | Accumulator (SeaFlo 0.75 L, SFAT-075-125-01) | 200×127×125 | Ø127 × 150 cyl | ⚠ **MINOR** — Ø127 matches; modeled 150 tall vs 125, length 200 not captured |
+| 8 | Spray-bar beam (aluminum SHS) | BoM "1½×1½×⅛" = **38.1×38.1×3.2** | spec text **40×40×3** | ⚠ **NAMING** — 1½" ≠ 40 mm; pick one (40×40 is metric SHS; 1½" is imperial) |
+
+**Excluded from the model but listed for BoM completeness:** Solar panel (Renogy 200 W
+rigid ≈ 1491×699×35, varies by model — mounted externally, no container clash).
+
+---
+
+## 2. Detail + sources
+
+### 2. Battery — Renogy 12 V 100 Ah LiFePO4 ❌
+- **Real:** 330 × 172 × 214 mm (L×W×H). [Renogy product page](https://www.renogy.com/12v-100ah-smart-lithium-iron-phosphate-battery/) · spec via [Renogy spec listing](https://www.renogy.com/pages/12v-100ah-smart-lithium-iron-phosphate-battery-rbt100lfp12s-html)
+- **Modeled:** `BA_X`=1810, `BA_W`=500, `BA_D`=120, `BA_H_LO`=150, `BA_H_HI`=650 → bank 500(X)×120(Yd)×500(Z); each of 2 packs ~240×120×500.
+- **Problem:** the modeled pack is **500 mm tall and only 120 mm deep**; the real pack is **214 mm tall and 172 mm deep**. Two packs side-by-side along X are 2×330 = **660 mm** (vs modeled 500), or stacked are 428 mm tall (vs 500). The battery-bank footprint on the pinhole wall and its clearances (electrical panel above, cable runs) are all drawn against the wrong box.
+- **Action:** set `BA_*` to two real 330×172×214 packs (decide side-by-side vs stacked), re-render electrical/floorplan/assembly + the film-plane near-wall ghost, re-check EP-above-battery clearance.
+
+### 3. Pump — Shurflo 2088-554-144 ❌
+- **Real:** 8.5"L × 5"W × 4.5"H = **216 × 127 × 114 mm**. [Fresh Water Systems](https://www.freshwatersystems.com/products/shurflo-2088-554-144-delivery-pump-3-5-gpm-45-psi-12vdc-no-cord) · [datasheet PDF](https://www.pumpagents.com/pdf/ShurfloPumps/2088-554-144.pdf)
+- **Modeled:** `PUMP_D`=100 (pump zone width). 4–5 pumps tile the equipment panel.
+- **Problem:** a real 2088 is **216 mm long × 127 mm wide** — the panel pump columns are drawn ~half-size. With 5 of them plus the accumulator + 3× 594 mm filters, the **panel layout must be re-checked for fit** (panel face is 270 mm corridor × 2060 mm tall).
+- **Action:** set the modeled pump footprint to ~216×127×114, re-lay-out the panel (`generate_panel_layout.py` + 3D `equipment_panel()`), re-check corridor depth.
+
+### 4. Filter housing — Big Blue 4.5" × 20" ❌
+- **Real:** Pentek 20×4.5 BB = 23⅜" × 7¼" = **594 mm tall × Ø184 mm**. [Pentek 20" BB](https://www.filterwater.com/p-541-pentek-20-big-blue-water-filter-housing-15-inch.aspx) · [allfilters 20×4.5](https://www.allfilters.com/filterhousings/20x4.5/20-bb-housing)
+- **Modeled:** `BB_OD`=130, `BB_H`=340 (a 10" housing).
+- **Problem:** the BoM specifies **4.5"×20"** cartridges (Purcooflow WHF2045B302), but the model draws **10"** housings — ~250 mm shorter and 54 mm narrower each. Three of them stacked is the panel's biggest vertical run.
+- **Action:** either set `BB_OD`=184 / `BB_H`=594 to match the 20" spec **or** down-spec the purchase to 4.5"×10" housings/cartridges — then re-render the panel + re-sum filter cost. **Decision needed:** keep 20" (more media life, taller panel) or switch to 10".
+
+### 5. Fan — AC Infinity Cloudline S6 ❌
+- **Real:** 6" (152 mm) duct; unit 7.9×12.6×8.4" = **200 × 320 × 213 mm**, an **inline duct fan**. [AC Infinity S6](https://acinfinity.com/cloudline-s6-quiet-inline-fan-6-with-speed-controller/)
+- **Modeled:** `FAN_DIAM`=150 (≈ the 152 duct ✓) but `FAN_BODY_D`=50 — drawn as a **thin axial panel fan** in a 300 mm baffle duct (`DUCT_DEPTH`=300).
+- **Problem:** the S6 is **320 mm long** — it won't sit flush ("fan bodies do not protrude beyond the panel face" is false for an S6) and it **exceeds the 300 mm baffle-duct depth**. The design intends a compact 150 mm axial **panel** fan; the S6 is a different form factor.
+- **Action (decision needed):** either (a) spec a thin 150 mm 12 V **axial panel fan** (matches the drawing) and drop "AC Infinity S6", or (b) keep an inline fan and redesign the baffle-duct housing to accept a ~320 mm inline body.
+
+### 6. Evaporative cooler — "Portacool Jetstream 110, 12 V DC" ❌
+- **Real:** **There is no Portacool Jetstream 110.** The Jetstream line is 220/230/240/250/260/270 and runs on **120 V AC**, not 12 V DC. [Portacool Jetstream series](https://www.portacool.com/legacy-evaporative-coolers/jetstream-series/)
+- **Modeled:** `EVAP_W`=600, `EVAP_D`=350, `EVAP_H`=800; Circuit E is 12 V DC, 80 W.
+- **Problem:** the specified product **does not exist** and the power basis (12 V DC, drawn into the 80 W Circuit-E budget) is wrong for any real Jetstream.
+- **Action (decision needed):** select a real **12 V DC** evaporative cooler (e.g., a 12 V swamp cooler in the ~300 CFM class) and re-dimension `EVAP_*` + re-check Circuit-E load, stowage zone, and duct.
+
+### 7. Accumulator — SeaFlo 0.75 L (SFAT-075-125-01) ⚠
+- **Real:** ~200 × 127 × 125 mm. [Amazon B01MUYL8F8](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) · [environmentalmarine SFAT-075](https://environmentalmarine.com/seaflo/fresh-water-pumps-accumulators/seaflo-1-gallon-accumulator-tank-sfat-075-125-01/)
+- **Modeled:** Ø127 × 150 cylinder. Ø matches; tweak length to ~200 when the panel is re-laid-out.
+
+### 8. Spray-bar beam ⚠ (naming)
+- BoM line says **1½"×1½"×⅛"** (= 38.1×38.1×3.2 mm); the spec/model use **40×40×3 mm**. Pick one — they differ by ~2 mm and the carriage saddle clamps are cut to the chosen section.
+
+---
+
+## 3. Catalog parts — spec'd by part number (confirm dims match the catalog)
+
+These are ordered by an exact catalog number, so the model **should** already match —
+listed for completeness; confirm the drawn size equals the catalog dimension:
+
+| Component | Catalog | Expected dim | Status |
+|-----------|---------|--------------|--------|
+| Linear rail HGR20 | HGR20, 2200 mm | 20 mm rail width, 2200 long (`RAIL_LEN`) | confirm |
+| Carriage HGH20CA | HGH20CA flanged | standard HGH20CA block | confirm |
+| Acme leadscrew ¾"-6 | McMaster 6289K36 | Ø¾" (19 mm) | confirm |
+| Rod-end bearing | GIR25-DO / McMaster 60645K73 | 25 mm bore | confirm |
+| Drum bearing | SKF 6215-2RS1 | 75×130×25 | confirm |
+| Tilt-swing bearing | GE50-DO-2RS | Ø50 bore | confirm |
+| Solar panel | Renogy 200 W | ~1491×699×35 (external) | no clash |
+| MPPT | Victron 100/50 | ~100×113×40 (in enclosure) | no clash |
+
+---
+
+## 4. Status
+
+- **Verified mismatches needing rework:** battery, pump, filter, fan, evap cooler (5).
+- **Two need a product/design decision first:** fan (panel vs inline) and evap cooler (pick a real 12 V DC unit).
+- **Once decided,** each fix cascades: `tbs_constants.py` → re-render the affected 2D diagrams → re-send the affected 3D models → re-check clearances → update the BoM spec + dimensions + cost.
+
+*This document is the source of truth for the purchased-part dimensional reconciliation; update it as each component is resolved.*

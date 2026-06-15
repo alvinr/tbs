@@ -279,7 +279,7 @@ def draw_sheet1():
     circuits = [
         # letter, name, fuse, wire, load, note, color
         ("A", "VENTILATION FAN\nEXHAUST  (6\")",  "5A",  "16 AWG", "60W",
-         "Far end wall (X=5893mm)  |  high position  |  Yd=1996mm", C_ALUM),
+         "Sealed end wall (X=5893mm)  |  below X1, in corridor  |  Yd=1181mm", C_ALUM),
         ("B", "VENTILATION FAN\nINTAKE  (6\")",   "5A",  "16 AWG", "60W",
          "Cargo door panel (X=0)  |  low position  |  Yd=365mm", C_ALUM),
         ("C", "EQUIP PANEL\n(PUMPS+FILTERS)",       "15A", "14 AWG", "100W",
@@ -701,7 +701,7 @@ def draw_sheet2():
             color="#808080", lw=1.2, ls=":", zorder=4)
 
     # ── Fans ──────────────────────────────────────────────────────────────────
-    # Fan A — EXHAUST: RIGHT short wall = far end (X=C_LEN), Yd=1996mm (far side, off corner — rev9/B2 swap), HIGH (above IBC)
+    # Fan A — EXHAUST: RIGHT short wall = sealed end (X=C_LEN), Yd=1181mm (below the X1 fill port, in the plumbing corridor)
     FA_X = OX + clen - wt/2
     FA_Y = OY + wt + FAN_A_YD * S_yd
     ax.add_patch(plt.Circle((FA_X, FA_Y), 110,
@@ -900,7 +900,7 @@ def draw_sheet2():
         ("BAT",   C_BATT,    "BATTERY BANK (BAT)",
          f"2×100Ah LiFePO4 12V  |  2,400Wh  |  Pinhole wall face, X={BA_X}mm"),
         ("A",     C_ALUM,    "EXHAUST FAN — Cct A",
-         "6\" inline DC  |  5A / 16 AWG / 60W  |  Far end wall (X=5893mm), high  |  Yd=1996mm"),
+         "6\" inline DC  |  5A / 16 AWG / 60W  |  Sealed end wall (X=5893mm), below X1  |  Yd=1181mm"),
         ("B",     C_ALUM,    "INTAKE FAN — Cct B",
          "6\" inline DC  |  5A / 16 AWG / 60W  |  Cargo door panel (X=0), low  |  Yd=365mm"),
         ("C",     C_PUMP,    "EQUIPMENT PANEL — Cct C",

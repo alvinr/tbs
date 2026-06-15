@@ -157,12 +157,19 @@ flexible coiled cable (with swing slack) from the fixed door frame (Circuit B).*
 | Duct penetration X | 1000mm | `EVAP_DUCT_X` |
 | Duct penetration Z | 1900mm | `EVAP_DUCT_Z` |
 | Duct diameter | 200mm | `EVAP_DUCT_D` |
+| Cooler body W×D×H | 559×305×711mm | `EVAP_W`/`EVAP_D`/`EVAP_H` |
+| Stow left edge X | 1450mm | `EVAP_STOW_X` |
+| Inverter mount X / Z | 1910 / 1180mm | `INVERTER_X`/`INVERTER_Z` |
+| Inverter W×H×D | 120×235×72mm | `INVERTER_W`/`INVERTER_H`/`INVERTER_D` |
 
-*Component: Portacool Jetstream 110 or equivalent, 12V DC, ~80W, ~300 CFM, dedicated 20L
-water reservoir, Circuit E. Ground-placed outside the container; cooled air enters through
-Ø200mm insulated flex duct to a wall penetration with light-safe baffle at Z=1900mm.*
+*Component: **Hessaire MC18M** evaporative cooler (120V AC, 85W, 1300 CFM run on low, 4.8 gal
+reservoir), ground-placed outside on Circuit E. Powered by an **interior 12V→120V pure-sine
+inverter (Victron Phoenix 12/375 GFCI)** wall-mounted below the EP; ~97W on the 12V bus. Cooled
+air enters through a Ø200mm insulated flex duct to a wall penetration with light-safe baffle at
+Z=1900mm. Replaces the fictional "Portacool Jetstream 110 12V DC" ([dimension audit](component-dimension-audit.md)).
+AC isolation/GFCI/equipotential-bonding: [Electrical §7.6](electrical-report.md#ac-safety).*
 
-*Report: [Ventilation & Cooling System](ventilation-report.md) §5 — evaporative cooler specification, light-safe intake duct, and transport stowage.*
+*Reports: [Ventilation & Cooling](ventilation-report.md) §5 (cooler spec + duct + stowage); [Electrical](electrical-report.md) §3/§5.4/§7.6 (Circuit E inverter, power panel AC outlet, AC safety).*
 
 *Diagrams: lighttrap sheet 1 (LT), electrical sheet 1 wiring (ES), floor plan (FP), assembly overview (AO), assembly fabrication (AF).*
 
@@ -426,6 +433,8 @@ Then commit the updated PNGs and `*.skp`/`*.rb` alongside the constant change.
 | `C_WID` | FP, LOS, AO, AF, FPM, ES, WS, HP, LT, PD, SC | Changes focal length and cone geometry |
 | `C_HGT` | FP, LOS, AO, AF, ES, HP, LT | Height change |
 | `EVAP_DUCT_X`, `EVAP_DUCT_Z`, `EVAP_DUCT_D` | FP, AO, AF, ES | Evap duct penetration (cooler external) |
+| `EVAP_W`, `EVAP_D`, `EVAP_H`, `EVAP_STOW_X` | AO, ES | Cooler body (Hessaire MC18M) + transport stow footprint |
+| `INVERTER_X`, `INVERTER_Z`, `INVERTER_W`, `INVERTER_H`, `INVERTER_D` | AO, ES | Circuit-E inverter (Victron Phoenix 12/375 GFCI) wall mount |
 | `EP_X`, `EP_W`, `EP_H_LO`, `EP_H_HI` | FP, LOS, AO, AF, ES | Electrical panel on pinhole wall |
 | `BA_X`, `BA_W`, `BA_H_LO`, `BA_H_HI` | FP, LOS, AO, AF, ES | Battery bank on pinhole wall |
 | `PUMP_X`, `PUMP_W`, `PUMP_H_LO`, `PUMP_H_HI` | FP, LOS, AO, AF, ES, WS | Pump manifold on equipment panel (Yd=1046) |

@@ -23,8 +23,8 @@ day. The container is cooled **once** in the morning and the fans + evaporative 
 then run **continuously** through the operating day.
 
 > **Standard build is manual** (electric actuation was dropped — see [Cost Analysis](cost-analysis-report.md)),
-> so Circuit F draws nothing. Per-print energy is ~**720 Wh** (vs 728 Wh with the optional
-> actuators).
+> so Circuit F draws nothing. Per-print energy is ~**771 Wh** (vs 780 Wh with the optional
+> actuators) — up from the old ~720 Wh now that the cooler runs through the AC inverter (~97 W on the 12 V bus).
 
 ---
 
@@ -32,18 +32,19 @@ then run **continuously** through the operating day.
 
 | Phase / load | W | Min | Wh |
 |---|--:|--:|--:|
-| Dark adaptation (fans + cooler + safelight) | 215 | 20 | 72 |
-| Load image plane (fans + cooler + safelight) | 215 | 45 | 161 |
-| **Exposure** (fans + cooler) | 200 | 37.5 | 125 |
-| Development & **wash** (fans + cooler + white light) | 260 | 20 | 87 |
-| Cleanup (fans + cooler + white light) | 260 | 30 | 130 |
+| Dark adaptation (fans + cooler + safelight) | 232 | 20 | 77 |
+| Load image plane (fans + cooler + safelight) | 232 | 45 | 174 |
+| **Exposure** (fans + cooler) | 217 | 37.5 | 136 |
+| Development & **wash** (fans + cooler + white light) | 277 | 20 | 92 |
+| Cleanup (fans + cooler + white light) | 277 | 30 | 138 |
 | Wash pump P-01 (Blue, 3× fills) | 90 | 15 | 22.5 |
 | Wash pump P-02 (Brown recycled) | 90 | 10 | 15.0 |
 | Tray-drain pump P-04 (sump → IBC) | 90 | 5 | 7.5 |
-| **Per print (manual)** | | | **~620** *(excl. one-time morning warmup)* |
+| **Per print (manual)** | | | **~663** *(excl. one-time morning warmup)* |
 
-The **continuous fans + evaporative cooler (200 W)** dominate — they are on the whole
-cycle, so most of the energy is *climate control*, not imaging or pumping.
+The **continuous fans + evaporative cooler (217 W)** dominate — they are on the whole
+cycle, so most of the energy is *climate control*, not imaging or pumping. The cooler now
+runs through the 12V→120V inverter (~97 W on the bus vs the old 80 W placeholder).
 
 ---
 
@@ -53,16 +54,16 @@ cycle, so most of the energy is *climate control*, not imaging or pumping.
 
 | Item | Wh |
 |---|--:|
-| Morning cooling warmup (once: fans + cooler, 30 min) | 100 |
-| 3 prints × 620 Wh (cycle + wash/drain pumps) | 1,860 |
+| Morning cooling warmup (once: fans + cooler, 30 min) | 108 |
+| 3 prints × 663 Wh (cycle + wash/drain pumps) | 1,989 |
 | End-of-day Brown + Waste pump-out (§6) | ~37 |
-| **Daily total (3 prints)** | **~2,000 Wh** |
+| **Daily total (3 prints)** | **~2,134 Wh** |
 
 | Day | Prints | Daily Wh |
 |---|--:|--:|
-| Short / poor light | 2 | ~1,380 |
-| **Representative** | **3** | **~2,000** |
-| Pushed | 4 | ~2,620 |
+| Short / poor light | 2 | ~1,471 |
+| **Representative** | **3** | **~2,134** |
+| Pushed | 4 | ~2,797 |
 
 ---
 
@@ -109,18 +110,20 @@ back to Blue rather than dumped; this line covers the case where it is drained o
 
 | Day | Daily draw | Solar net | Within one battery charge? |
 |---|--:|--:|---|
-| 2 prints | ~1,380 | **+1,920** | Yes (with wide margin) |
-| 3 prints | ~2,000 | **+1,300** | Yes — full overnight autonomy |
-| 4 prints | ~2,620 | **+680** | Exceeds the 2,400 Wh battery by ~220 Wh → covered by **daytime solar** (which runs during the prints), not battery alone |
+| 2 prints | ~1,471 | **+1,829** | Yes (with wide margin) |
+| 3 prints | ~2,134 | **+1,166** | Yes — full overnight autonomy |
+| 4 prints | ~2,797 | **+503** | Exceeds the 2,400 Wh battery by ~400 Wh → covered by **daytime solar** (which runs during the prints), not battery alone |
 
 **Conclusions:**
 - The system is **solar-positive at every realistic daily throughput** — even a 4-print
   day generates more than it consumes, so it sustains indefinitely on sun.
-- A **3-print day fits within a single battery charge**, giving a full day of operation
+- A **3-print day fits within a single 2-pack battery charge**, giving a full day of operation
   on a dead-cloudy day from the battery alone.
 - A **4-print day relies on the panels topping up during the day** (the loads run in
-  daylight, so this is normally fine); on a fully overcast day, cap at ~3 prints.
-- The dominant load is **climate control (fans + evaporative cooler, ~1,900 Wh/day)**, not
+  daylight, so this is normally fine); on a fully overcast day, cap at ~3 prints. The
+  higher-draw AC cooler (~97 W vs the old 80 W placeholder) widened the 4-print battery
+  shortfall from ~220 Wh to ~400 Wh — still solar-covered, but battery-only 4-print days are off the table.
+- The dominant load is **climate control (fans + evaporative cooler, ~2,050 Wh/day)**, not
   imaging or pumping — the biggest lever on daily energy is *cooling runtime*, not the
   print workflow.
 
@@ -134,14 +137,14 @@ pack** extend it? Two limits compete: **power** and **clean water**.
 
 ### 8.1 Power is not the limit (with sun)
 
-Solar generates ~3,300 Wh/day; a 3-print day draws ~2,000 Wh — a **+1,300 Wh/day surplus**,
+Solar generates ~3,300 Wh/day; a 3-print day draws ~2,134 Wh — a **+1,166 Wh/day surplus**,
 so on sunny days the battery never depletes and the system runs **indefinitely**. The
 battery's job is to ride out *cloudy* days, and that reserve is what the pack count changes:
 
-| Battery | Usable | No-sun reserve (at ~2,000 Wh/day) | With sun |
+| Battery | Usable | No-sun reserve (at ~2,134 Wh/day) | With sun |
 |---|--:|--:|---|
 | **1 pack** (1×100 Ah) | 1,200 Wh | ~0.6 day (≈ 2 prints) | Indefinite (solar-positive) |
-| **2 packs** (2×100 Ah) | 2,400 Wh | ~1.2 day (≈ 3–4 prints) | Indefinite (solar-positive) |
+| **2 packs** (2×100 Ah) | 2,400 Wh | ~1.1 day (≈ 3 prints) | Indefinite (solar-positive) |
 
 So the **second pack does not lengthen the deployment** — it buys a **cloudy-day buffer**
 (ride out ~1 fully-overcast day instead of half a day) and the headroom for a 4-print day

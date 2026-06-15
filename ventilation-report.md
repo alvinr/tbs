@@ -29,11 +29,11 @@ Without any mitigation, the container is unusable in summer daytime. The system 
 |--------|------------|------|-------|-----------|
 | 80% shade cloth canopy over container | −15 to −20°C | ~$300 | None | **Yes — always** |
 | Scheduling (shoot before 09:00 / after 18:00 in summer) | −10 to −15°C effective | $0 | None | Recommended |
-| 12V DC evaporative cooler (swamp cooler) | −10 to −15°C additional | ~$300 | 80W | **Yes — in temperatures above 30°C ambient** |
+| Evaporative cooler (swamp cooler) — 120V AC via 12V inverter | −10 to −15°C additional | ~$405 (cooler + inverter) | 97W on 12V bus | **Yes — in temperatures above 30°C ambient** |
 
 Combined (shade canopy + cooler + scheduling): interior temperature reaches 25–32°C — within operator working range.
 
-> **Why evaporative cooling works in hot climates (e.g. Palm Springs):** Evaporative (swamp) cooling is most effective when ambient relative humidity is low. Palm Springs in summer averages 10–18% RH — optimal for this technology. At 15% RH and 42°C ambient, an evaporative cooler can reduce temperature by 15–18°C, bringing 42°C down to 24–27°C after the shade canopy's contribution. At the same conditions, a standard 9,000 BTU mini-split uses 900W vs. the evaporative cooler's 80W — an 11× power saving.
+> **Why evaporative cooling works in hot climates (e.g. Palm Springs):** Evaporative (swamp) cooling is most effective when ambient relative humidity is low. Palm Springs in summer averages 10–18% RH — optimal for this technology. At 15% RH and 42°C ambient, an evaporative cooler can reduce temperature by 15–18°C, bringing 42°C down to 24–27°C after the shade canopy's contribution. At the same conditions, a standard 9,000 BTU mini-split uses 900W vs. the evaporative cooler's ~97W on the 12V bus (85W AC through the inverter) — a ~9× power saving.
 
 ---
 
@@ -102,18 +102,18 @@ The baffle design is identical for both fans. Fan A's baffle duct is fixed to th
 
 | Parameter | Specification |
 |-----------|--------------|
-| Model | Portacool Jetstream 110 (12V DC version) or equivalent |
-| Dimensions | ~600 × 350 × 800mm |
-| Weight | ~20 kg dry |
-| Power draw | ~80W at 12V DC |
-| Airflow | ~300 CFM |
-| Water consumption | ~3 liters/hour |
-| Circuit | E (10A fuse, 14 AWG) |
-| Water source | Dedicated 20-liter reservoir, refilled from Blue circuit IBC tote |
+| Model | **Hessaire MC18M** (120V AC) on a dedicated 12V→120V pure-sine inverter (Victron Phoenix 12/375 GFCI). *Replaces the fictional "Portacool Jetstream 110 12V DC" — see [dimension audit](component-dimension-audit.md).* |
+| Dimensions | 559 × 305 × 711mm (22 × 12 × 28 in) |
+| Weight | ~7.3 kg (16 lb) dry |
+| Power draw | 85W AC → **~97W on the 12V bus** (÷0.88 inverter efficiency) |
+| Airflow | 1300 CFM rated — **run on LOW** to match the Ø200 light-safe duct |
+| Water consumption | ~4.8 gal tank; ~3 L/hour evaporated |
+| Circuit | E — inverter DC feed 40A / 10 AWG; AC output GFCI-protected ([Electrical §7.6](electrical-report.md#ac-safety)) |
+| Water source | Onboard 4.8 gal reservoir, topped up from the Blue circuit IBC tote |
 
 ### 5.2 Light-Safe Cooler Intake
 
-The cooler sits on the ground outside the container, adjacent to the pinhole wall. A Ø200mm flexible insulated duct rises vertically from the cooler outlet and turns through a 90° elbow into the wall penetration (Z=1900mm), so it meets both the cooler and the wall stub at right angles. The penetration carries light-safe baffles. Power (Circuit E, 12V DC) is supplied via a Deutsch DT 2-pin bulkhead connector on the external power panel — the same flush-mount panel that carries the solar and shore power inputs. A 1.5m external cable connects the panel to the cooler; both the cable and flex duct are disconnected and stowed inside the container for transport. See [Electrical Report](electrical-report.md) §7.3 for the full wire path.
+The cooler sits on the ground outside the container, adjacent to the pinhole wall. A Ø200mm flexible insulated duct rises vertically from the cooler outlet and turns through a 90° elbow into the wall penetration (Z=1900mm), so it meets both the cooler and the wall stub at right angles. The penetration carries light-safe baffles. Power (Circuit E) is **120V AC** from the interior inverter, presented at a **GFCI-fed weatherproof outlet (in-use cover)** on the external power panel — the same flush-mount panel that carries the solar and shore power inputs. A 1.5m outdoor SJOOW cord connects the panel outlet to the cooler; both the cord and flex duct are disconnected and stowed inside the container for transport. The AC isolation/GFCI/equipotential-bonding design is in [Electrical Report §7.6](electrical-report.md#ac-safety); the full wire path is in §7.3.
 
 This arrangement requires no permanent external mounting — the cooler is simply placed, connected (duct + power), and removed each session.
 
@@ -191,7 +191,8 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 | Item | Spec | Source | Est. cost |
 |------|------|--------|-----------|
 | 150×150×50mm axial fans × 2 | 12V DC, ~150–200 CFM each | Amazon (GDSTIME/Wathai 15050) | ~$50 |
-| Evaporative cooler | 12V DC, ~300 CFM | Portacool / Amazon | ~$280 |
+| Evaporative cooler | Hessaire MC18M, 120V AC, 1300 CFM (run low), 85W | [Hessaire](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) / Amazon | ~$130 |
+| Cooler inverter | Victron Phoenix 12/375 GFCI (12V→120V) + DC fuse/disconnect + GFCI AC outlet | Victron / Amazon | ~$275 |
 | Shade canopy — 80% shade cloth | 20 × 10 ft | Amazon / Farm supply | ~$80 |
 | Canopy frame | 1.5" EMT conduit + fittings | Home Depot | ~$120 |
 | Baffle duct sheet metal (fans) | 22 ga galvanized, 2 × 300mm stubs | Local sheet metal / Home Depot | ~$30 |
@@ -230,7 +231,7 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 ## 11. Source References
 
 1. [150mm 12V DC axial fan 15050](https://www.coolingfanfactory.com/product/DC-Fan-15050-12V-24V-48V-150mm.html) — 150×150×50mm axial panel fan specifications.
-2. [Portacool Jetstream 110](https://www.portacool.com/) — 12V DC evaporative cooler specifications.
+2. [Hessaire MC18M](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) — 120V AC evaporative cooler (1300 CFM, 85W) specifications. Driven by a [Victron Phoenix 12/375 GFCI inverter](https://www.victronenergy.com/inverters/phoenix-inverter-vedirect-250va-800va).
 3. [OSHA Heat Illness Prevention](https://www.osha.gov/heat-exposure) — Workplace heat exposure guidelines and permissible limits.
 4. [Electrical Report](electrical-report.md) — Circuit assignments (A, B, E), wiring specification, and fuse block layout.
 5. [Hinged Panel Report](hinged-panel-report.md) — Panel corner zone construction and Fan B mounting.

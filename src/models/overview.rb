@@ -8407,15 +8407,15 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Deutsch DT 2-pin (Cct E cooler)
+  # GFCI AC outlet (Cct E cooler)
   grp = ents.add_group
-  grp.name = "Deutsch DT 2-pin (Cct E cooler)"
+  grp.name = "GFCI AC outlet (Cct E cooler)"
   ge = grp.entities
   circle = ge.add_circle([1510.78.mm,-85.mm,1908.mm], [0,1,0], 10.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["Deutsch DT 2-pin (Cct E cooler)"] || model.materials.add("Deutsch DT 2-pin (Cct E cooler)")
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -10895,11 +10895,22 @@ end
   # Evap Cooler (on ground)
   grp = ents.add_group
   grp.name = "Evap Cooler (on ground)"
-  face = grp.entities.add_face([700.mm,-490.mm,0.mm], [1300.mm,-490.mm,0.mm], [1300.mm,-140.mm,0.mm], [700.mm,-140.mm,0.mm])
+  face = grp.entities.add_face([720.5.mm,-445.mm,0.mm], [1279.5.mm,-445.mm,0.mm], [1279.5.mm,-140.mm,0.mm], [720.5.mm,-140.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(800.mm)
+  face.pushpull(711.mm)
   mat = model.materials["Evap Cooler (on ground)"] || model.materials.add("Evap Cooler (on ground)")
   mat.color = Sketchup::Color.new(61, 170, 150)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E Inverter (12->120V AC)
+  grp = ents.add_group
+  grp.name = "Cct E Inverter (12->120V AC)"
+  face = grp.entities.add_face([1910.mm,0.mm,1180.mm], [2030.mm,0.mm,1180.mm], [2030.mm,72.mm,1180.mm], [1910.mm,72.mm,1180.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(235.mm)
+  mat = model.materials["Cct E Inverter (12->120V AC)"] || model.materials.add("Cct E Inverter (12->120V AC)")
+  mat.color = Sketchup::Color.new(64, 72, 72)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -10920,8 +10931,8 @@ end
   grp = ents.add_group
   grp.name = "Evap Flex Duct"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 74.43846153846152.mm)
-  circle = ge.add_circle([1000.mm,-315.mm,800.mm], vec, 100.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 71.18166666666662.mm)
+  circle = ge.add_circle([1000.mm,-292.5.mm,711.mm], vec, 100.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -10934,8 +10945,8 @@ end
   grp = ents.add_group
   grp.name = "Evap Flex Duct"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 74.43846153846152.mm)
-  circle = ge.add_circle([1000.mm,-315.mm,874.4384615384615.mm], vec, 80.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 71.18166666666673.mm)
+  circle = ge.add_circle([1000.mm,-292.5.mm,782.1816666666666.mm], vec, 80.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -10948,8 +10959,8 @@ end
   grp = ents.add_group
   grp.name = "Evap Flex Duct"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 74.43846153846152.mm)
-  circle = ge.add_circle([1000.mm,-315.mm,948.876923076923.mm], vec, 100.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 71.18166666666662.mm)
+  circle = ge.add_circle([1000.mm,-292.5.mm,853.3633333333333.mm], vec, 100.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -10962,8 +10973,8 @@ end
   grp = ents.add_group
   grp.name = "Evap Flex Duct"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 74.43846153846152.mm)
-  circle = ge.add_circle([1000.mm,-315.mm,1023.3153846153846.mm], vec, 80.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 71.18166666666673.mm)
+  circle = ge.add_circle([1000.mm,-292.5.mm,924.545.mm], vec, 80.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -10976,8 +10987,8 @@ end
   grp = ents.add_group
   grp.name = "Evap Flex Duct"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 74.43846153846152.mm)
-  circle = ge.add_circle([1000.mm,-315.mm,1097.753846153846.mm], vec, 100.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 71.18166666666662.mm)
+  circle = ge.add_circle([1000.mm,-292.5.mm,995.7266666666667.mm], vec, 100.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -10990,8 +11001,8 @@ end
   grp = ents.add_group
   grp.name = "Evap Flex Duct"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 74.43846153846152.mm)
-  circle = ge.add_circle([1000.mm,-315.mm,1172.1923076923076.mm], vec, 80.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 71.18166666666662.mm)
+  circle = ge.add_circle([1000.mm,-292.5.mm,1066.9083333333333.mm], vec, 80.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11004,8 +11015,8 @@ end
   grp = ents.add_group
   grp.name = "Evap Flex Duct"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 74.43846153846152.mm)
-  circle = ge.add_circle([1000.mm,-315.mm,1246.6307692307691.mm], vec, 100.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 71.18166666666662.mm)
+  circle = ge.add_circle([1000.mm,-292.5.mm,1138.09.mm], vec, 100.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11018,8 +11029,8 @@ end
   grp = ents.add_group
   grp.name = "Evap Flex Duct"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 74.43846153846175.mm)
-  circle = ge.add_circle([1000.mm,-315.mm,1321.0692307692307.mm], vec, 80.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 71.18166666666684.mm)
+  circle = ge.add_circle([1000.mm,-292.5.mm,1209.2716666666665.mm], vec, 80.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11032,8 +11043,8 @@ end
   grp = ents.add_group
   grp.name = "Evap Flex Duct"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 74.4384615384613.mm)
-  circle = ge.add_circle([1000.mm,-315.mm,1395.5076923076924.mm], vec, 100.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 71.18166666666639.mm)
+  circle = ge.add_circle([1000.mm,-292.5.mm,1280.4533333333334.mm], vec, 100.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11046,8 +11057,8 @@ end
   grp = ents.add_group
   grp.name = "Evap Flex Duct"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 74.43846153846175.mm)
-  circle = ge.add_circle([1000.mm,-315.mm,1469.9461538461537.mm], vec, 80.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 71.18166666666684.mm)
+  circle = ge.add_circle([1000.mm,-292.5.mm,1351.6349999999998.mm], vec, 80.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11060,8 +11071,8 @@ end
   grp = ents.add_group
   grp.name = "Evap Flex Duct"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 74.43846153846152.mm)
-  circle = ge.add_circle([1000.mm,-315.mm,1544.3846153846155.mm], vec, 100.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 71.18166666666662.mm)
+  circle = ge.add_circle([1000.mm,-292.5.mm,1422.8166666666666.mm], vec, 100.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11074,8 +11085,8 @@ end
   grp = ents.add_group
   grp.name = "Evap Flex Duct"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 74.43846153846152.mm)
-  circle = ge.add_circle([1000.mm,-315.mm,1618.823076923077.mm], vec, 80.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 71.18166666666662.mm)
+  circle = ge.add_circle([1000.mm,-292.5.mm,1493.9983333333332.mm], vec, 80.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11088,8 +11099,36 @@ end
   grp = ents.add_group
   grp.name = "Evap Flex Duct"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 74.43846153846152.mm)
-  circle = ge.add_circle([1000.mm,-315.mm,1693.2615384615385.mm], vec, 100.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 71.18166666666684.mm)
+  circle = ge.add_circle([1000.mm,-292.5.mm,1565.1799999999998.mm], vec, 100.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cold-Air Duct Inlet (Ø200)"] || model.materials.add("Cold-Air Duct Inlet (Ø200)")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Evap Flex Duct
+  grp = ents.add_group
+  grp.name = "Evap Flex Duct"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 71.18166666666662.mm)
+  circle = ge.add_circle([1000.mm,-292.5.mm,1636.3616666666667.mm], vec, 80.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cold-Air Duct Inlet (Ø200)"] || model.materials.add("Cold-Air Duct Inlet (Ø200)")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Evap Flex Duct
+  grp = ents.add_group
+  grp.name = "Evap Flex Duct"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 71.18166666666662.mm)
+  circle = ge.add_circle([1000.mm,-292.5.mm,1707.5433333333333.mm], vec, 100.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11102,8 +11141,8 @@ end
   grp = ents.add_group
   grp.name = "Evap Flex Duct elbow"
   ge = grp.entities
-  arc = ge.add_arc([1000.mm,-182.69999999999996.mm,1767.7.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 132.30000000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1000.mm,-315.mm,1767.7.mm], [0.000000,0.000000,1.000000], 100.mm, 16)
+  arc = ge.add_arc([1000.mm,-171.225.mm,1778.725.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 121.275.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1000.mm,-292.5.mm,1778.725.mm], [0.000000,0.000000,1.000000], 100.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Cold-Air Duct Inlet (Ø200)"] || model.materials.add("Cold-Air Duct Inlet (Ø200)")
@@ -11115,8 +11154,8 @@ end
   grp = ents.add_group
   grp.name = "Evap Flex Duct"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 17.212500000000006.mm, 0.mm)
-  circle = ge.add_circle([1000.mm,-182.7.mm,1900.mm], vec, 100.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 15.778124999999989.mm, 0.mm)
+  circle = ge.add_circle([1000.mm,-171.22500000000002.mm,1900.mm], vec, 100.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11129,8 +11168,8 @@ end
   grp = ents.add_group
   grp.name = "Evap Flex Duct"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 17.212500000000006.mm, 0.mm)
-  circle = ge.add_circle([1000.mm,-165.48749999999998.mm,1900.mm], vec, 80.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 15.778125000000017.mm, 0.mm)
+  circle = ge.add_circle([1000.mm,-155.44687500000003.mm,1900.mm], vec, 80.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11143,8 +11182,8 @@ end
   grp = ents.add_group
   grp.name = "Evap Flex Duct"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 17.212499999999977.mm, 0.mm)
-  circle = ge.add_circle([1000.mm,-148.27499999999998.mm,1900.mm], vec, 100.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 15.778125000000003.mm, 0.mm)
+  circle = ge.add_circle([1000.mm,-139.66875000000002.mm,1900.mm], vec, 100.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11157,8 +11196,8 @@ end
   grp = ents.add_group
   grp.name = "Evap Flex Duct"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 17.212500000000006.mm, 0.mm)
-  circle = ge.add_circle([1000.mm,-131.0625.mm,1900.mm], vec, 80.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 15.778125000000003.mm, 0.mm)
+  circle = ge.add_circle([1000.mm,-123.89062500000001.mm,1900.mm], vec, 80.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11171,8 +11210,8 @@ end
   grp = ents.add_group
   grp.name = "Evap Flex Duct"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 17.212500000000006.mm, 0.mm)
-  circle = ge.add_circle([1000.mm,-113.85.mm,1900.mm], vec, 100.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 15.778125000000003.mm, 0.mm)
+  circle = ge.add_circle([1000.mm,-108.11250000000001.mm,1900.mm], vec, 100.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11185,8 +11224,8 @@ end
   grp = ents.add_group
   grp.name = "Evap Flex Duct"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 17.21249999999999.mm, 0.mm)
-  circle = ge.add_circle([1000.mm,-96.63749999999999.mm,1900.mm], vec, 80.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 15.778125000000003.mm, 0.mm)
+  circle = ge.add_circle([1000.mm,-92.33437500000001.mm,1900.mm], vec, 80.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11199,8 +11238,8 @@ end
   grp = ents.add_group
   grp.name = "Evap Flex Duct"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 17.21249999999999.mm, 0.mm)
-  circle = ge.add_circle([1000.mm,-79.425.mm,1900.mm], vec, 100.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 15.778125000000003.mm, 0.mm)
+  circle = ge.add_circle([1000.mm,-76.55625.mm,1900.mm], vec, 100.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11213,8 +11252,8 @@ end
   grp = ents.add_group
   grp.name = "Evap Flex Duct"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 17.212500000000006.mm, 0.mm)
-  circle = ge.add_circle([1000.mm,-62.212500000000006.mm,1900.mm], vec, 80.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 15.778125000000003.mm, 0.mm)
+  circle = ge.add_circle([1000.mm,-60.778125.mm,1900.mm], vec, 80.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

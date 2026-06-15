@@ -82,6 +82,7 @@ from tbs_constants import (
     SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH,
     SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z,
     EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D,
+    INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D,
     EXT_FILL_H, EXT_FILL_YD, EXT_DRAIN_H, EXT_DRAIN_3_H, EXT_DRAIN_YD,
     FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H,
     DUCT_DEPTH, DUCT_HEIGHT,
@@ -1359,7 +1360,7 @@ def electrical():
                           _px(0.742) - 30, face_y - 30, _pz(0.878) - 22,
                           60, 30, 45, color="#FFF0CC"))
 
-    parts.append(ruby_cylinder("Deutsch DT 2-pin (Cct E cooler)",
+    parts.append(ruby_cylinder("GFCI AC outlet (Cct E cooler)",
                                _px(0.767), face_y - 20, _pz(0.325),
                                10, 20, color="#E8884A", axis="y"))
 
@@ -1587,11 +1588,18 @@ def evap_cooler():
     """
     parts = []
     ext = -WALL_T
-    cw, cd, ch = EVAP_W, EVAP_D, EVAP_H          # 600 × 350 × 800
+    cw, cd, ch = EVAP_W, EVAP_D, EVAP_H          # 559 × 305 × 711 (Hessaire MC18M)
     # Cooler unit standing on the GROUND outside the pinhole wall.
     parts.append(ruby_box("Evap Cooler (on ground)",
                           EVAP_DUCT_X - cw / 2, ext - cd - 100, 0,
                           cw, cd, ch, color=C_EVAP))
+
+    # Circuit-E inverter (Victron Phoenix 12/375 GFCI) — INTERIOR, wall-mounted on
+    # the pinhole wall below the EP / above the battery; converts 12V→120V for the
+    # cooler.  See electrical-report.md §7.6 (AC isolation & safety).
+    parts.append(ruby_box("Cct E Inverter (12->120V AC)",
+                          INVERTER_X, 0, INVERTER_Z,
+                          INVERTER_W, INVERTER_D, INVERTER_H, color="#404848"))
 
     # Cold-air duct inlet — a Ø200 circle through the wall (axis into container).
     parts.append(ruby_cylinder("Cold-Air Duct Inlet (Ø200)",

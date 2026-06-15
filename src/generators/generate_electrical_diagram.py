@@ -260,12 +260,12 @@ def draw_sheet1():
     # electrical-report.md §3.1.  Update all three when specs change.
     summary = [
         ("Battery capacity",    "100Ah × 12V = 1,200Wh  (standard, 1 pack; +2nd → 2,400Wh)"),
-        ("Energy per session",  "728 Wh (0.73 kWh)  — 3.0h continuous + pumps"),
-        ("Sessions per charge", "1.6 standard  (3.3 with the 2nd pack)"),
+        ("Energy per session",  "780 Wh (0.78 kWh)  — 3.0h continuous + pumps"),
+        ("Sessions per charge", "1.5 standard  (3.1 with the 2nd pack)"),
         ("Solar yield",         "600W × 5.5h = 3,300 Wh/day  (Palm Springs)"),
-        ("Solar sessions/day",  "4.5 prints/day from solar alone"),
+        ("Solar sessions/day",  "4.2 prints/day from solar alone"),
         ("Shore recharge",      "~7h standard  (~14h with the 2nd pack)"),
-        ("Peak load",           "~475W simultaneous  (all circuits on)"),
+        ("Peak load",           "~492W simultaneous  (all circuits on)"),
     ]
     for k, (param, val) in enumerate(summary):
         yk = ey + eh - 0.80 - k * 0.37
@@ -286,8 +286,8 @@ def draw_sheet1():
          "Equipment panel, IBC corridor (Yd=1046–1316)", C_PUMP_TINT),
         ("D", "SAFELIGHT\ninterior + vestibule",  "5A",  "18 AWG", "15W",
          "3× red LED strips (ceiling, N–S)  |  pull-cord switch", "#FFEEDD"),
-        ("E", "EVAPORATIVE\nCOOLER  (12V DC)",      "10A", "14 AWG", "80W",
-         "External unit  |  200mm duct through pinhole wall", C_EVAP_TINT),
+        ("E", "EVAP COOLER\n(120V AC via inverter)",  "40A", "10 AWG", "97W",
+         "Inverter→AC unit  |  GFCI  |  200mm duct (see §7.6)", C_EVAP_TINT),
         ("F", "FILM PLANE\nACTUATORS  (optional)",  "20A", "12 AWG", "≤100W pk",
          "Future provision  |  leave fused spare", "#E8E8E8"),
         ("G", "WHITE LED PANELS\n(general lighting)",  "10A", "16 AWG", "60W",
@@ -841,7 +841,7 @@ def draw_sheet2():
     # Evap cooler — Cct E (external, duct penetration)
     leader(ax, DUCT_CX, OY + wt / 2,
            DUCT_CX - 350, OY - 200,
-           "Evap cooler (E)\n12V DC  80W\nExternal + duct",
+           "Evap cooler (E)\n120V AC 85W via inverter\nExternal + duct",
            fs=6.5, color=C_EVAP)
     # LED panels — Cct G (label middle panel only)
     led_mid_cx = ix(LED_POSITIONS[1] + LED_W_MM / 2)
@@ -908,7 +908,7 @@ def draw_sheet2():
         ("D",     "#FFD700", "SAFELIGHT — Cct D",
          f"3× red LED strips  |  5A / 18 AWG / 15W  |  Ceiling N–S at X≈{', '.join(str(x) for x in SL_POSITIONS)}"),
         ("E",     C_EVAP,    "EVAP COOLER — Cct E",
-         f"12V DC 80W  |  10A / 14 AWG  |  External unit, 200mm duct at X={EVAP_DUCT_X}mm"),
+         f"120V AC 85W via inverter (97W on 12V bus)  |  40A / 10 AWG DC + GFCI  |  duct at X={EVAP_DUCT_X}mm"),
         ("G",     C_LED,     "WHITE LED PANELS — Cct G",
          "3×20W ceiling panels  |  10A / 16 AWG / 60W  |  Pull-cord switch, non-operational only"),
         ("D/G",   C_SWITCH,  "PULL-CORD SWITCHES",

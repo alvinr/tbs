@@ -208,7 +208,7 @@ def draw_sheet1():
 
     leader(ax_a, (DT_X + DT_R + 3), (DT_Y),
            (PLATE_W + 25), (DT_Y - 25),
-           "DEUTSCH DT 2-PIN\nBULKHEAD (IP67)\nCIRCUIT E — COOLER",
+           "GFCI WEATHERPROOF\nAC OUTLET (120V, in-use cover)\nCIRCUIT E — COOLER",
            fs=6, color=C_DT, ha="left", arrow_style="-|>", font=FONT)
 
     leader(ax_a, (ESTOP_X), (ESTOP_Y + ESTOP_RING_R + 3),
@@ -505,22 +505,22 @@ def draw_sheet1():
     ax_c.text(bat_cx + 0.15, (row_top + row_bot) / 2 + 0.3, "12V DC\ncharge",
               fontsize=6, color=C_AC, ha="left", va="center", **FONT)
 
-    # Cooler DC output path (bottom row — reverse direction: interior → exterior)
+    # Cooler AC output path (bottom row — reverse direction: interior → exterior)
     row_cool = -0.4
     sbox(ax_c, 0.5, row_cool, 2.8, 0.9,
-         "EVAP COOLER", "12V DC  80W", fc="#FFE0C0", tc=C_DT)
+         "EVAP COOLER", "120V AC  85W", fc="#FFE0C0", tc=C_DT)
     sarrow(ax_c, 4.5, row_cool + 0.45, 3.3, col=C_DT)
-    ax_c.text(3.9, row_cool + 0.65, "DT 2-pin", fontsize=6, color=C_DT,
+    ax_c.text(3.9, row_cool + 0.65, "AC cord", fontsize=6, color=C_DT,
               ha="center", **FONT)
 
     sbox(ax_c, 4.5, row_cool, 3.0, 0.9,
-         "FLUSH-MOUNT PANEL", "DT bulkhead ×1", fc=C_ALUM)
+         "PANEL GFCI OUTLET", "120V AC, in-use cover", fc=C_ALUM)
     sarrow(ax_c, 10.0, row_cool + 0.45, 7.5, col=C_DT)
-    ax_c.text(8.75, row_cool + 0.65, "14 AWG Cct E", fontsize=6, color=C_DT,
+    ax_c.text(8.75, row_cool + 0.65, "from inverter", fontsize=6, color=C_DT,
               ha="center", **FONT)
 
     sbox(ax_c, 10.0, row_cool, 3.2, 0.9,
-         "FUSE BLOCK", "Cct E — 10A", fc="#FFF3CC", tc=C_DT)
+         "INVERTER + FUSE", "12→120V · Cct E 40A DC", fc="#FFF3CC", tc=C_DT)
     sarrow(ax_c, 14.5, row_cool + 0.45, 13.2, col=C_DT)
     ax_c.plot([14.5, bat_cx], [row_cool + 0.45, row_cool + 0.45],
               color=C_DT, lw=1.8, zorder=3)

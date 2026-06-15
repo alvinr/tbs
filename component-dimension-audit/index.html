@@ -1576,10 +1576,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#6-evaporative-cooler-portacool-jetstream-110-12-v-dc" class="md-nav__link">
+  <a href="#6-evaporative-cooler-portacool-jetstream-110-12-v-dc-resolved" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Evaporative cooler — "Portacool Jetstream 110, 12 V DC" ❌
+        6. Evaporative cooler — "Portacool Jetstream 110, 12 V DC" ✅ RESOLVED
       
     </span>
   </a>
@@ -2554,10 +2554,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#6-evaporative-cooler-portacool-jetstream-110-12-v-dc" class="md-nav__link">
+  <a href="#6-evaporative-cooler-portacool-jetstream-110-12-v-dc-resolved" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Evaporative cooler — "Portacool Jetstream 110, 12 V DC" ❌
+        6. Evaporative cooler — "Portacool Jetstream 110, 12 V DC" ✅ RESOLVED
       
     </span>
   </a>
@@ -2713,10 +2713,10 @@ Modeled dimensions are the <code>tbs_constants.py</code> value(s) the generators
 </tr>
 <tr>
 <td>6</td>
-<td><strong>Evap cooler</strong> ("Portacool Jetstream 110, 12 V DC")</td>
-<td><strong>product does not exist</strong> — Jetstreams are 220–270 and <strong>120 V AC</strong></td>
-<td>600×350×800 (<code>EVAP_*</code>)</td>
-<td>⏸ <strong>PARKED (follow-up)</strong> — no clean 12 V DC ground-placed cooler on the market; revisit (TurboKool roof unit / AC + inverter / drop active cooling)</td>
+<td><strong>Evap cooler</strong> (was fictional "Portacool Jetstream 110, 12 V DC")</td>
+<td><strong>Hessaire MC18M</strong>, 120 V AC, 1300 CFM, 85 W, 16 lb, 559×305×711</td>
+<td>600×350×800 → <strong>559×305×711</strong> (<code>EVAP_*</code>)</td>
+<td>✅ <strong>RESOLVED</strong> — no clean 12 V DC ground unit exists (only RV-roof or $1,100+ Solar Chill), so: commodity 120 V AC cooler on a dedicated 12V→120V inverter (Victron Phoenix 12/375 GFCI). Circuit E re-based to <strong>97 W on the 12 V bus</strong>; AC isolation/GFCI/bonding in <a href="../electrical-report/#ac-safety">Electrical §7.6</a></td>
 </tr>
 <tr>
 <td>7</td>
@@ -2766,12 +2766,12 @@ rigid ≈ 1491×699×35, varies by model — mounted externally, no container cl
 <li><strong>Problem:</strong> the S6 is <strong>320 mm long</strong> — it won't sit flush ("fan bodies do not protrude beyond the panel face" is false for an S6) and it <strong>exceeds the 300 mm baffle-duct depth</strong>. The design intends a compact 150 mm axial <strong>panel</strong> fan; the S6 is a different form factor.</li>
 <li><strong>Action (decision needed):</strong> either (a) spec a thin 150 mm 12 V <strong>axial panel fan</strong> (matches the drawing) and drop "AC Infinity S6", or (b) keep an inline fan and redesign the baffle-duct housing to accept a ~320 mm inline body.</li>
 </ul>
-<h3 id="6-evaporative-cooler-portacool-jetstream-110-12-v-dc">6. Evaporative cooler — "Portacool Jetstream 110, 12 V DC" ❌<a class="headerlink" href="#6-evaporative-cooler-portacool-jetstream-110-12-v-dc" title="Permanent link">&para;</a></h3>
+<h3 id="6-evaporative-cooler-portacool-jetstream-110-12-v-dc-resolved">6. Evaporative cooler — "Portacool Jetstream 110, 12 V DC" ✅ RESOLVED<a class="headerlink" href="#6-evaporative-cooler-portacool-jetstream-110-12-v-dc-resolved" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Real:</strong> <strong>There is no Portacool Jetstream 110.</strong> The Jetstream line is 220/230/240/250/260/270 and runs on <strong>120 V AC</strong>, not 12 V DC. <a href="https://www.portacool.com/legacy-evaporative-coolers/jetstream-series/">Portacool Jetstream series</a></li>
-<li><strong>Modeled:</strong> <code>EVAP_W</code>=600, <code>EVAP_D</code>=350, <code>EVAP_H</code>=800; Circuit E is 12 V DC, 80 W.</li>
-<li><strong>Problem:</strong> the specified product <strong>does not exist</strong> and the power basis (12 V DC, drawn into the 80 W Circuit-E budget) is wrong for any real Jetstream.</li>
-<li><strong>Action (decision needed):</strong> select a real <strong>12 V DC</strong> evaporative cooler (e.g., a 12 V swamp cooler in the ~300 CFM class) and re-dimension <code>EVAP_*</code> + re-check Circuit-E load, stowage zone, and duct.</li>
+<li><strong>Was:</strong> <strong>There is no Portacool Jetstream 110.</strong> The Jetstream line is 220/230/240/250/260/270 and runs on <strong>120 V AC</strong>, not 12 V DC. <a href="https://www.portacool.com/legacy-evaporative-coolers/jetstream-series/">Portacool Jetstream series</a></li>
+<li><strong>Market reality (researched):</strong> there is <strong>no good native-12 V DC ground-placed</strong> evap cooler. The only 12 V options are RV-<strong>roof</strong> units (TurboKool 2B-0001, ~$300 — rejected: roof penetration, roof-coupled vibration, transport conflict), a too-weak personal spot cooler (Transcool E3), or the premium <a href="https://www.southwest-solar.com/stainless-steel-solar-chill-coolers">Solar Chill</a> line (native 12 V, ground, but $1,100+ and sole-source).</li>
+<li><strong>Decision:</strong> a <strong>commodity 120 V AC swamp cooler (Hessaire MC18M, ~$130)</strong> on a <strong>dedicated 12V→120V pure-sine inverter (Victron Phoenix 12/375 GFCI, ~$210)</strong>. Keeps the cooler a swappable multi-vendor part; the inverter is general-purpose. Trade-off accepted: +inverter complexity and a 4-print day now needs solar (already within the published envelope).</li>
+<li><strong>Done:</strong> <code>EVAP_*</code> → 559×305×711 (real Hessaire MC18M); <code>INVERTER_*</code> constants added; Circuit E re-based <strong>80 W → 97 W on the 12 V bus</strong> (85 W AC ÷ 0.88) in <code>calculate_energy_budget.py</code>; energy/cost/shopping/ventilation/electrical reports re-summed; stow zone re-checked (cooler X1450–2009, clear); AC <strong>isolation/GFCI/equipotential-bonding</strong> design added in <a href="../electrical-report/#ac-safety">Electrical §7.6</a>.</li>
 </ul>
 <h3 id="7-accumulator-seaflo-075-l-sfat-075-125-01">7. Accumulator — SeaFlo 0.75 L (SFAT-075-125-01) ⚠<a class="headerlink" href="#7-accumulator-seaflo-075-l-sfat-075-125-01" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2910,19 +2910,23 @@ listed for completeness; confirm the drawn size equals the catalog dimension:</p
 </tr>
 <tr>
 <td><strong>Evap cooler</strong></td>
-<td><strong>PARKED</strong> — no clean 12 V DC ground unit</td>
-<td>TBD</td>
-<td>—</td>
-<td>—</td>
-<td>⏸ follow-up</td>
+<td>120 V AC cooler + 12V→120V inverter (no good 12 V DC ground unit exists)</td>
+<td>559×305×711 (Hessaire MC18M)</td>
+<td><code>EVAP_*</code> 600×350×800→559×305×711; <code>INVERTER_*</code> added</td>
+<td>Circuit E re-based 80→97 W; AC isolation/GFCI/bonding <a href="../electrical-report/#ac-safety">Electrical §7.6</a></td>
+<td>✅ done</td>
 </tr>
 </tbody>
 </table>
-<p><strong>3D re-sends DONE (2026-06-15):</strong> overview, ibc-stack (filter Ø + ACC), and film-plane
-(battery ghost) re-sent + <code>.skp</code> re-saved + committed. Sketchfab re-uploads are the manual step.</p>
-<p><strong>Cost re-sum HELD:</strong> the fan (−~$70) and filter (−~$200) changes plus the parked evap cooler
-all hit categories 5 &amp; 8 — the category-5/8 subtotals + the grand totals + Scenarios A/B/C
-will be re-summed in one pass <strong>once the evap cooler is resolved</strong> (avoids triple-summing).</p>
+<p><strong>3D re-sends:</strong> overview (filter Ø + ACC + <strong>evap box re-dim + inverter</strong>), ibc-stack, film-plane.
+The earlier audit batch (filter/ACC/battery) was sent 2026-06-15; the <strong>evap/inverter re-send is
+pending</strong> an interactive SketchUp session. Sketchfab re-uploads are the manual step.</p>
+<p><strong>Cost re-sum CLOSED (2026-06-15):</strong> the held bundle (fan −~$70, filter, evap cooler + inverter)
+is now re-summed. Cooler subsystem (cooler $130 + inverter $210 + DC protection $40 + AC outlet $25)
+lands in cost-breakdown <strong>5b</strong> ($769→$830 mid); the new fan ($50) is folded in; grand total
+$25,399→<strong>$25,460</strong> mid; Scenario A $19,882→<strong>$19,952</strong>, Scenario B $25,322→<strong>$25,383</strong>. (The
+cost-breakdown's water-system filter estimate already reflected a 10″-class figure, so no separate
+cat-5 filter adjustment was needed; the master-shopping-list BOM filter $282–445 is authoritative.)</p>
 <p><em>This document is the source of truth for the purchased-part dimensional reconciliation.</em></p>
 <p><em>This document is the source of truth for the purchased-part dimensional reconciliation; update it as each component is resolved.</em></p>
 

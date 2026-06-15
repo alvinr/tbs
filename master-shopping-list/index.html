@@ -2114,10 +2114,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#evaporative-cooler" class="md-nav__link">
+  <a href="#evaporative-cooler-inverter" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Evaporative cooler
+        Evaporative cooler (+ inverter)
       
     </span>
   </a>
@@ -3820,7 +3820,7 @@
 <td>$24–$45</td>
 </tr>
 <tr>
-<td><strong>Filter subtotal: ~$282–$445</strong> <em>(was ~$470–$652 for 4.5"×20"; category-5 + grand totals re-summed when the parked evap cooler is resolved)</em></td>
+<td><strong>Filter subtotal: ~$282–$445</strong> <em>(was ~$470–$652 for 4.5"×20"; folded into the re-summed category-5 + grand totals with the evap-cooler resolution — see <a href="../project-cost-breakdown/">cost breakdown</a>)</em></td>
 <td></td>
 <td></td>
 <td></td>
@@ -4441,11 +4441,11 @@
 <td>~$25</td>
 </tr>
 <tr>
-<td>Deutsch DT 2-pin bulkhead connector</td>
-<td>Panel-mount, IP67, Circuit E cooler output</td>
-<td>1</td>
-<td><a href="https://www.waytekwire.com">Waytek Wire</a></td>
-<td>~$5</td>
+<td>Panel cooler output</td>
+<td>120V AC — now a <strong>GFCI outlet</strong> (Circuit E); counted in the Evaporative cooler section (was a DC Deutsch bulkhead)</td>
+<td>—</td>
+<td>—</td>
+<td>(see cooling)</td>
 </tr>
 <tr>
 <td><strong>Solar &amp; battery subtotal: ~$1,295</strong>  <em>(1-pack standard; +$350 for the optional 2nd pack)</em></td>
@@ -5174,7 +5174,7 @@ top/bottom weld + anchor connection</em><em> (fabricator/PE review) — not the 
 <td>~$40</td>
 </tr>
 <tr>
-<td><strong>Ventilation subtotal: ~$110</strong> <em>(fan corrected to a real 150×150×50 axial panel fan; category-8 + grand totals re-summed when the parked evap cooler is resolved)</em></td>
+<td><strong>Ventilation subtotal: ~$110</strong> <em>(fan corrected to a real 150×150×50 axial panel fan; folded into the re-summed grand totals with the evap-cooler resolution — see <a href="../project-cost-breakdown/">cost breakdown</a>)</em></td>
 <td></td>
 <td></td>
 <td></td>
@@ -5217,7 +5217,8 @@ top/bottom weld + anchor connection</em><em> (fabricator/PE review) — not the 
 </tr>
 </tbody>
 </table>
-<h3 id="evaporative-cooler">Evaporative cooler<a class="headerlink" href="#evaporative-cooler" title="Permanent link">&para;</a></h3>
+<h3 id="evaporative-cooler-inverter">Evaporative cooler (+ inverter)<a class="headerlink" href="#evaporative-cooler-inverter" title="Permanent link">&para;</a></h3>
+<p><em>Resolves the parked evap cooler (<a href="../component-dimension-audit/">dimension audit</a>): a commodity 120V AC swamp cooler on a dedicated 12V→120V inverter, instead of the fictional "Portacool Jetstream 110 12V DC". AC isolation/GFCI/bonding per <a href="../electrical-report/#ac-safety">Electrical Report §7.6</a>.</em></p>
 <table>
 <thead>
 <tr>
@@ -5230,11 +5231,32 @@ top/bottom weld + anchor connection</em><em> (fabricator/PE review) — not the 
 </thead>
 <tbody>
 <tr>
-<td><a href="https://www.portacool.com">12V DC evaporative cooler</a></td>
-<td>~80W, ~300 CFM (Portacool Jetstream 110 12V or equiv.)</td>
+<td><a href="https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler">Evaporative cooler — Hessaire MC18M</a></td>
+<td>120V AC, 85W, 1300 CFM (run on <strong>low</strong> for the Ø200 duct), 16 lb, 559×305×711mm, 4.8 gal</td>
 <td>1</td>
-<td><a href="https://www.portacool.com">Portacool</a> / Amazon</td>
-<td>~$280</td>
+<td><a href="https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler">Hessaire</a> / Amazon</td>
+<td>~$130</td>
+</tr>
+<tr>
+<td><a href="https://www.victronenergy.com/inverters/phoenix-inverter-vedirect-250va-800va">Cooler inverter — Victron Phoenix 12/375 GFCI</a></td>
+<td>12V→120V pure-sine, <strong>built-in GFCI</strong>, factory bonded neutral, 0.9W idle (Circuit E)</td>
+<td>1</td>
+<td><a href="https://www.victronenergy.com/inverters/phoenix-inverter-vedirect-250va-800va">Victron</a> / Amazon</td>
+<td>~$210</td>
+</tr>
+<tr>
+<td>Inverter DC protection</td>
+<td>40A ANL fuse + holder + DC disconnect switch (inverter feed)</td>
+<td>1</td>
+<td>Blue Sea / Amazon</td>
+<td>~$40</td>
+</tr>
+<tr>
+<td>Panel GFCI AC outlet</td>
+<td>Weatherproof NEMA 5-15R + in-use (bubble) cover (Circuit E panel outlet)</td>
+<td>1</td>
+<td>Leviton / Amazon</td>
+<td>~$25</td>
 </tr>
 <tr>
 <td>Ø200mm insulated flex duct</td>
@@ -5272,10 +5294,10 @@ top/bottom weld + anchor connection</em><em> (fabricator/PE review) — not the 
 <td>~$20</td>
 </tr>
 <tr>
-<td>Cooler external power cable</td>
-<td>1.5m, 14 AWG 2-cond, Deutsch DT 2-pin plugs each end</td>
+<td>Cooler power cord</td>
+<td>1.5m outdoor SJOOW, NEMA 5-15P each end (panel outlet → cooler)</td>
 <td>1</td>
-<td><a href="https://www.waytekwire.com">Waytek Wire</a> / Amazon</td>
+<td>Amazon</td>
 <td>~$20</td>
 </tr>
 <tr>
@@ -5286,7 +5308,7 @@ top/bottom weld + anchor connection</em><em> (fabricator/PE review) — not the 
 <td>~$10</td>
 </tr>
 <tr>
-<td>12mm plywood base plate 600×350mm</td>
+<td>12mm plywood base plate 559×305mm</td>
 <td>Load distribution on walkway grating</td>
 <td>1</td>
 <td>Offcut / local</td>
@@ -5300,7 +5322,7 @@ top/bottom weld + anchor connection</em><em> (fabricator/PE review) — not the 
 <td>~$4</td>
 </tr>
 <tr>
-<td><strong>Cooler subtotal: ~$395</strong></td>
+<td><strong>Cooler + inverter subtotal: ~$520</strong></td>
 <td></td>
 <td></td>
 <td></td>
@@ -5308,8 +5330,8 @@ top/bottom weld + anchor connection</em><em> (fabricator/PE review) — not the 
 </tr>
 </tbody>
 </table>
-<p><strong>Section total: ~$759</strong>
-<em>Note: fans wired to Circuits A &amp; B, cooler to Circuit E — all from main fuse block. Cooler power supplied via Deutsch DT bulkhead connector on external power panel.</em></p>
+<p><strong>Section total: ~$830</strong> <em>(ventilation $110 + shade $200 + cooler/inverter $520)</em>
+<em>Note: fans wired to Circuits A &amp; B (DC); the cooler runs from the interior inverter (Circuit E) → GFCI panel outlet → outdoor cord. The cooler subsystem (cooler + inverter + DC protection + AC outlet) is the only 120V AC branch — see <a href="../electrical-report/#ac-safety">Electrical Report §7.6</a>.</em></p>
 <h2 id="9-printmaking-chemistry-cyanotype-50-prints">9. Printmaking Chemistry — Cyanotype (50 prints)<a class="headerlink" href="#9-printmaking-chemistry-cyanotype-50-prints" title="Permanent link">&para;</a></h2>
 <p><em>Source: <code>chemistry-shopping-list.md</code></em></p>
 <p><strong>Recommended process.</strong> No silver, no DEA registration, no hazmat shipping, development in plain cold water.</p>
@@ -5735,8 +5757,13 @@ top/bottom weld + anchor connection</em><em> (fabricator/PE review) — not the 
 <td>Glen Arm, MD</td>
 </tr>
 <tr>
-<td><strong><a href="https://www.portacool.com">Portacool</a></strong></td>
-<td>12V DC evaporative coolers</td>
+<td><strong><a href="https://hessaire.com">Hessaire</a></strong></td>
+<td>120V AC evaporative (swamp) coolers</td>
+<td>Online</td>
+</tr>
+<tr>
+<td><strong><a href="https://www.victronenergy.com">Victron / Amazon</a></strong></td>
+<td>Phoenix pure-sine inverters (Circuit E)</td>
 <td>Online</td>
 </tr>
 <tr>

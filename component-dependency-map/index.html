@@ -3320,12 +3320,35 @@ flexible coiled cable (with swing slack) from the fixed door frame (Circuit B).<
 <td>200mm</td>
 <td><code>EVAP_DUCT_D</code></td>
 </tr>
+<tr>
+<td>Cooler body W×D×H</td>
+<td>559×305×711mm</td>
+<td><code>EVAP_W</code>/<code>EVAP_D</code>/<code>EVAP_H</code></td>
+</tr>
+<tr>
+<td>Stow left edge X</td>
+<td>1450mm</td>
+<td><code>EVAP_STOW_X</code></td>
+</tr>
+<tr>
+<td>Inverter mount X / Z</td>
+<td>1910 / 1180mm</td>
+<td><code>INVERTER_X</code>/<code>INVERTER_Z</code></td>
+</tr>
+<tr>
+<td>Inverter W×H×D</td>
+<td>120×235×72mm</td>
+<td><code>INVERTER_W</code>/<code>INVERTER_H</code>/<code>INVERTER_D</code></td>
+</tr>
 </tbody>
 </table>
-<p><em>Component: Portacool Jetstream 110 or equivalent, 12V DC, ~80W, ~300 CFM, dedicated 20L
-water reservoir, Circuit E. Ground-placed outside the container; cooled air enters through
-Ø200mm insulated flex duct to a wall penetration with light-safe baffle at Z=1900mm.</em></p>
-<p><em>Report: <a href="../ventilation-report/">Ventilation &amp; Cooling System</a> §5 — evaporative cooler specification, light-safe intake duct, and transport stowage.</em></p>
+<p><em>Component: </em><em>Hessaire MC18M</em><em> evaporative cooler (120V AC, 85W, 1300 CFM run on low, 4.8 gal
+reservoir), ground-placed outside on Circuit E. Powered by an </em><em>interior 12V→120V pure-sine
+inverter (Victron Phoenix 12/375 GFCI)</em><em> wall-mounted below the EP; ~97W on the 12V bus. Cooled
+air enters through a Ø200mm insulated flex duct to a wall penetration with light-safe baffle at
+Z=1900mm. Replaces the fictional "Portacool Jetstream 110 12V DC" (<a href="../component-dimension-audit/">dimension audit</a>).
+AC isolation/GFCI/equipotential-bonding: <a href="../electrical-report/#ac-safety">Electrical §7.6</a>.</em></p>
+<p><em>Reports: <a href="../ventilation-report/">Ventilation &amp; Cooling</a> §5 (cooler spec + duct + stowage); <a href="../electrical-report/">Electrical</a> §3/§5.4/§7.6 (Circuit E inverter, power panel AC outlet, AC safety).</em></p>
 <p><em>Diagrams: lighttrap sheet 1 (LT), electrical sheet 1 wiring (ES), floor plan (FP), assembly overview (AO), assembly fabrication (AF).</em></p>
 <h3 id="19-electrical-system">1.9 Electrical System<a class="headerlink" href="#19-electrical-system" title="Permanent link">&para;</a></h3>
 <table>
@@ -4328,6 +4351,16 @@ Then commit the updated PNGs and <code>*.skp</code>/<code>*.rb</code> alongside 
 <td><code>EVAP_DUCT_X</code>, <code>EVAP_DUCT_Z</code>, <code>EVAP_DUCT_D</code></td>
 <td>FP, AO, AF, ES</td>
 <td>Evap duct penetration (cooler external)</td>
+</tr>
+<tr>
+<td><code>EVAP_W</code>, <code>EVAP_D</code>, <code>EVAP_H</code>, <code>EVAP_STOW_X</code></td>
+<td>AO, ES</td>
+<td>Cooler body (Hessaire MC18M) + transport stow footprint</td>
+</tr>
+<tr>
+<td><code>INVERTER_X</code>, <code>INVERTER_Z</code>, <code>INVERTER_W</code>, <code>INVERTER_H</code>, <code>INVERTER_D</code></td>
+<td>AO, ES</td>
+<td>Circuit-E inverter (Victron Phoenix 12/375 GFCI) wall mount</td>
 </tr>
 <tr>
 <td><code>EP_X</code>, <code>EP_W</code>, <code>EP_H_LO</code>, <code>EP_H_HI</code></td>

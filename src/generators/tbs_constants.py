@@ -323,6 +323,31 @@ BA_H_LO    = 150     # battery bank bottom Z (mm) — sits ON the raised grate [
 BA_H_HI    = 364     # battery bank top Z (mm) = 150 + 214 (real Renogy 100Ah height); was 650 (assumed tall slim pack)
 BA_D       = 172     # battery bank depth from wall (mm) — real Renogy 100Ah width (the rev7 'slim-profile 120mm' assumption was wrong — see component-dimension-audit.md)
 
+# ── Solar array — 3× 200W mono on a 30° ground tilt frame (electrical 3D model) ──
+# Ground-placed on the pinhole-wall exterior side (Yd<0), toward the door end so the
+# right edge (X≈2350) stays clear of the pinhole sightline at X=2399. Panels portrait
+# (680 along X), 1480 up the tilt.  Consumed by generate_electrical_model.py.
+SOLAR_PANEL_L  = 1480    # panel long dim (mm) — up the tilt
+SOLAR_PANEL_W  = 680     # panel short dim (mm) — along X
+SOLAR_PANEL_T  = 35      # panel thickness (mm)
+SOLAR_N        = 3       # number of panels
+SOLAR_TILT_DEG = 30      # tilt from horizontal (facing away from the container)
+SOLAR_GAP      = 30      # gap between panels along X (mm)
+SOLAR_ARRAY_X  = 250     # array left edge X (mm) — door end; right edge ≈2350 < pinhole 2399
+SOLAR_ARRAY_YD = -900    # array near-edge stand-off from the pinhole wall (mm, exterior)
+SOLAR_ARRAY_Z  = 0       # array base on the ground
+
+# ── Main enclosure internals — shown in the electrical model's "Power Core" scene ──
+# Placed within the EP volume (EP_X..EP_X+EP_W, Yd 0..ENCL_SHELL_D, EP_H_LO..EP_H_HI).
+# Sizes only; positions computed in the builder. Consumed by generate_electrical_model.py.
+ENCL_SHELL_D   = 165     # ghosted IP65 enclosure depth into the container (Yd, mm)
+MPPT_W, MPPT_D, MPPT_H          = 185, 70, 100   # Victron SmartSolar 100/50 MPPT
+FUSEBLK_W, FUSEBLK_D, FUSEBLK_H = 150, 45, 75    # Blue Sea 5026 12-circuit fuse block
+BUSBAR_L, BUSBAR_W, BUSBAR_H    = 120, 20, 22    # + / − distribution busbars
+DISCONNECT_D, DISCONNECT_H      = 70, 60         # Blue Sea m-Series rotary disconnect (knob)
+CONTACTOR_W, CONTACTOR_D, CONTACTOR_H = 120, 90, 100  # Blue Sea ML-RBS contactor
+MRBF_D, MRBF_H = 40, 38  # terminal-mount MRBF main fuse (on the battery + post)
+
 # ── Equipment panel — IBC plumbing corridor (rev 7: walkway reorg) ───────
 # 18mm marine ply panel spanning ACROSS the IBC plumbing corridor (Yd
 # direction), perpendicular to the sealed end wall.  Panel face (equipment

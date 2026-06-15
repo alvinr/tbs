@@ -2900,12 +2900,12 @@ IBC-2 (800L) ──┘                                                      │
         └──→ pH drift / discolored: FORWARD TO IBC-4 (waste)
 </code></pre></div>
 <p><strong>Filter train sizing:</strong></p>
-<p>The filter train uses a single 3-stage whole-house filter unit (e.g. <a href="https://www.purcooflow.com/products/whf2045b302-3-stage-kdf-heavy-metal-water-filter">Purcooflow WHF2045B302</a> or equivalent) with 4.5"×20" Big Blue cartridges. This eliminates all inter-housing plumbing and the separate filter skid frame — the unit mounts directly to the pinhole wall with its integrated bracket. 1" NPT inlet/outlet; a single 1/2"→1" bushing reducer connects P-02 output to the unit inlet.</p>
+<p>The filter train uses a single 3-stage whole-house filter unit (a <strong>4.5"×10"</strong> Big Blue 3-stage; Express Water / Geekpure / iSpring 10") with <strong>Ø184 × 333mm</strong> housings. <em>(Switched from 4.5"×20" to match the modeled BB_OD=184/BB_H=340 — see <a href="component-dimension-audit.md">component-dimension-audit.md</a>.)</em> This eliminates all inter-housing plumbing and the separate filter skid frame — the unit mounts directly to the pinhole wall with its integrated bracket. 1" NPT inlet/outlet; a single 1/2"→1" bushing reducer connects P-02 output to the unit inlet.</p>
 <table>
 <thead>
 <tr>
 <th>Stage</th>
-<th>Cartridge (4.5"×20")</th>
+<th>Cartridge (4.5"×10")</th>
 <th>Removes</th>
 <th>Replace interval</th>
 </tr>
@@ -2915,23 +2915,23 @@ IBC-2 (800L) ──┘                                                      │
 <td>F-1</td>
 <td>MPP 5-micron melt-blown polypropylene sediment</td>
 <td>Gross sediment, fiber lint, Prussian blue particles</td>
-<td>Every 25 prints</td>
+<td>~Every 13 prints</td>
 </tr>
 <tr>
 <td>F-2</td>
 <td>KDF-55 heavy metal removal</td>
 <td>Dissolved iron compounds from ferricyanide wash water</td>
-<td>Every 30 prints</td>
+<td>~Every 15 prints</td>
 </tr>
 <tr>
 <td>F-3</td>
 <td>CTO coconut shell activated carbon block</td>
 <td>Residual organics, color, taste</td>
-<td>Every 20 prints</td>
+<td>~Every 10 prints</td>
 </tr>
 </tbody>
 </table>
-<p>The 20" cartridges hold roughly 2× the media volume of the previous 10" cartridges, extending service life proportionally. The unit includes triple drain valves for flushing individual stages without disassembly. Equivalent 3-stage Big Blue units are available from iSpring (WGB32B), Express Water, and other vendors — any unit accepting standard 4.5"×20" cartridges with 1" NPT ports will work.</p>
+<p>The 10" cartridges (~½ the media of a 20") were chosen to match the modeled housing size, so service intervals are correspondingly shorter (~½). The unit includes triple drain valves for flushing individual stages without disassembly. Equivalent 3-stage Big Blue units are available from Express Water, Geekpure, iSpring and others — any unit accepting standard 4.5"×10" cartridges with 1" NPT ports will work.</p>
 <p><strong>pH management:</strong> If filtered water reads pH &lt;6, do nothing — slightly acidic is preferred. If pH &gt;7.5, add citric acid solution (10g citric acid in 1 liter water) via the dosing port in the IBC-3 outlet, stir, retest. Do not return water with pH &gt;8 to the Blue system.</p>
 <h3 id="53-black-system-waste-containment">5.3 Black System — Waste Containment<a class="headerlink" href="#53-black-system-waste-containment" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>FROM 3W-DV-01 (rejected filter output — pH out of range)
@@ -3412,36 +3412,36 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </thead>
 <tbody>
 <tr>
-<td><a href="https://www.purcooflow.com/products/whf2045b302-3-stage-kdf-heavy-metal-water-filter">3-stage Big Blue combo filter unit 4.5"×20"</a></td>
-<td>1" NPT ports, integrated bracket, triple drain valves. Purcooflow WHF2045B302 or equivalent (iSpring WGB32B, Express Water, etc.)</td>
+<td><a href="https://www.amazon.com/s?k=3+stage+10+inch+big+blue+whole+house+water+filter">3-stage Big Blue combo filter unit <strong>4.5"×10"</strong></a></td>
+<td>Ø184×333mm/housing, 1" NPT ports, integrated bracket (Express Water / Geekpure / iSpring 10")</td>
 <td>1</td>
-<td>Purcooflow / Amazon</td>
-<td>$350–$450</td>
-<td><strong>$350–$450</strong></td>
+<td>Amazon</td>
+<td>$200–$300</td>
+<td><strong>$200–$300</strong></td>
 </tr>
 <tr>
-<td><a href="https://www.amazon.com/s?k=4.5x20+melt+blown+polypropylene+sediment+filter+5+micron">MPP 5-micron sediment cartridge 4.5"×20"</a></td>
+<td><a href="https://www.amazon.com/s?k=4.5x10+melt+blown+polypropylene+sediment+filter+5+micron">MPP 5-micron sediment cartridge 4.5"×10"</a></td>
 <td>Melt-blown polypropylene depth filter (F-1 stage)</td>
 <td>3 + spares</td>
 <td>Amazon</td>
-<td>$8–$14 each</td>
-<td><strong>$24–$42</strong></td>
+<td>$6–$10 each</td>
+<td><strong>$18–$30</strong></td>
 </tr>
 <tr>
-<td><a href="https://www.amazon.com/s?k=4.5x20+KDF+55+heavy+metal+water+filter">KDF-55 heavy metal cartridge 4.5"×20"</a></td>
+<td><a href="https://www.amazon.com/s?k=4.5x10+KDF+55+heavy+metal+water+filter">KDF-55 heavy metal cartridge 4.5"×10"</a></td>
 <td>KDF-55 media for dissolved iron/metal removal (F-2 stage)</td>
 <td>2 + spares</td>
 <td>Amazon</td>
-<td>$30–$50 each</td>
-<td><strong>$60–$100</strong></td>
+<td>$20–$35 each</td>
+<td><strong>$40–$70</strong></td>
 </tr>
 <tr>
-<td><a href="https://www.amazon.com/s?k=4.5x20+CTO+coconut+shell+carbon+block+filter">CTO carbon block cartridge 4.5"×20"</a></td>
+<td><a href="https://www.amazon.com/s?k=4.5x10+CTO+coconut+shell+carbon+block+filter">CTO carbon block cartridge 4.5"×10"</a></td>
 <td>Coconut shell activated carbon block (F-3 stage)</td>
 <td>3 + spares</td>
 <td>Amazon</td>
-<td>$12–$20 each</td>
-<td><strong>$36–$60</strong></td>
+<td>$8–$15 each</td>
+<td><strong>$24–$45</strong></td>
 </tr>
 </tbody>
 </table>
@@ -3997,7 +3997,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <tbody>
 <tr>
 <td>Replace F-1 (50-micron cartridge)</td>
-<td>Every 20 prints</td>
+<td>~Every 10 prints</td>
 <td>Visually inspect — replace sooner if heavily discolored</td>
 </tr>
 <tr>

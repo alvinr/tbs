@@ -110,8 +110,8 @@ listed for completeness; confirm the drawn size equals the catalog dimension:
 | **Spray beam** | metric | 40×40×3 | none | name "1½×1½×⅛" → 40×40×3 | ✅ done |
 | **Evap cooler** | **PARKED** — no clean 12 V DC ground unit | TBD | — | — | ⏸ follow-up |
 
-**3D re-sends still pending** (geometry changed): **overview**, **ibc-stack** (filter Ø + ACC),
-and **film-plane** (battery ghost) need `--send` + `.skp` re-save.
+**3D re-sends DONE (2026-06-15):** overview, ibc-stack (filter Ø + ACC), and film-plane
+(battery ghost) re-sent + `.skp` re-saved + committed. Sketchfab re-uploads are the manual step.
 
 **Cost re-sum HELD:** the fan (−~$70) and filter (−~$200) changes plus the parked evap cooler
 all hit categories 5 & 8 — the category-5/8 subtotals + the grand totals + Scenarios A/B/C

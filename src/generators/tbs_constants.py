@@ -303,11 +303,11 @@ EP_H_LO    = 1500    # electrical panel bottom Z (mm) [rev11: DROPPED 150 (1650�
                      # for wall-seat saddles, but the EP is KEPT at this height. was 1650/1600/900]
 EP_H_HI    = 2100    # electrical panel top Z (mm)   [rev11: 2250→2100]
 
-BA_X       = 1810    # battery bank left edge X (mm)  [rev6: was 2050; shifted left to clear cone]
-BA_W       = 500     # battery bank width (mm)  → right edge 2310, clears cone left (2319)
+BA_X       = 1540    # battery bank left edge X (mm) — set so the 680-wide bank's right edge (2220) clears the optical-cone left boundary at the 172mm battery depth (X_left(172)=2228). [dimension-audit: real Renogy 100Ah]
+BA_W       = 680     # battery bank width (mm) — 2× Renogy 100Ah (330 long each) side-by-side + 20mm gap → right edge 2220
 BA_H_LO    = 150     # battery bank bottom Z (mm) — sits ON the raised grate [+50 walkway raise; was 100]
-BA_H_HI    = 650     # battery bank top Z (mm) [+50 walkway raise; was 600]
-BA_D       = 120     # battery bank depth from wall (mm) [rev7: slim-profile LiFePO4]
+BA_H_HI    = 364     # battery bank top Z (mm) = 150 + 214 (real Renogy 100Ah height); was 650 (assumed tall slim pack)
+BA_D       = 172     # battery bank depth from wall (mm) — real Renogy 100Ah width (the rev7 'slim-profile 120mm' assumption was wrong — see component-dimension-audit.md)
 
 # ── Equipment panel — IBC plumbing corridor (rev 7: walkway reorg) ───────
 # 18mm marine ply panel spanning ACROSS the IBC plumbing corridor (Yd
@@ -338,7 +338,7 @@ EQPANEL_W       = EQPANEL_T + 130   # = 148mm — total X footprint (ply + max p
 
 # Pump zone — near side of panel face (Yd=1046–1173)
 # Pumps protrude from panel face toward open end (lower X).
-PUMP_D       = 100     # pump protrusion from panel face in -X direction (mm) — Shurflo 2088 height
+PUMP_D       = 114     # pump protrusion from panel face in -X direction (mm) — real Shurflo 2088 height (4.5"); was 100
 PUMP_YD_SPAN = 127     # pump body width in Yd direction (mm) — Shurflo 2088 width
 PUMP_X       = EQPANEL_X - PUMP_D   # = 4900 — pump zone left edge X for elevation views
 PUMP_W       = PUMP_D               # = 100 — pump zone width in X for elevation views
@@ -385,7 +385,7 @@ TAP_WALL_T     = 3       # branch pipe wall thickness (mm) — reserved (spec; n
 # Flow: IBC-3 → P-02 → F1 → F2 → F3 → pH test → DV-01.
 
 # Big Blue 4.5"×10" housings (physical dimensions — 3× separate units)
-BB_OD          = 130     # housing outer diameter incl bracket (mm) — 4.5"=114mm + clamp
+BB_OD          = 184     # housing outer diameter (mm) — real Big Blue 4.5x10 housing is Ø7.25"=184 (was 130); BB_H=340 ≈ 333 (10" housing) ✓
 BB_H           = 340     # housing total height (mm) — head + sump bowl (10" sump)
 
 FSKID_X        = EQPANEL_X - BB_OD  # = 4870 — filter zone left edge X for elevation views

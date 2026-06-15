@@ -67,7 +67,7 @@ from tbs_constants import (
     FSKID_X, FSKID_YD, F1_Z, F2_Z, F3_Z,
     EQPANEL_X, EQPANEL_T, EQPANEL_Z_LO, EQPANEL_Z_HI,
     EQPANEL_YD, EQPANEL_YD_SPAN,
-    IBC_COL_X, IBC_W, IBC_D, IBC_H_600, IBC_H_1000, IBC_PALLET_H, IBC_BOTTLE_INSET,
+    IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_PALLET_H, IBC_BOTTLE_INSET,
     BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y,
     IBC_FRAME_RHS,
     IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD,
@@ -943,15 +943,13 @@ def equipment_panel():
     # 18mm marine-ply spine teed perpendicular off the panel (a T in plan), into
     # the corridor gap, so the X3/X4 drain risers (Brown @ X=5400, Waste @ X=5340,
     # both Yd=col_r) clamp to it instead of free-hanging.  Sits in the clear
-    # corridor (Yd 1046-1316) — no tote contact.  The top is LOWERED and capped
-    # with a horizontal ply shelf that the Blue fill trunk rests on (supported
-    # at the T) rather than the spine standing proud past the pipe.
+    # corridor (Yd 1046-1316) — no tote contact.  Rises to the full panel height
+    # (v2: the over-the-top Blue fill trunk this spine used to carry is gone — the
+    # Blue fill now SIDE-ENTERS near the top, so no shelf/saddle is needed).
     sp_t  = EQPANEL_T                              # 18mm ply
     sp_x0, sp_x1 = face_x, 5420                     # butts the panel rear → past the X3 riser
     sp_y  = col_r - 30                              # spine board Yd (near-face just off the risers)
-    blue_z   = 2 * IBC_H_600 + 230                  # 2250 — Blue fill trunk centerline (overZ)
-    cap_top  = blue_z - 12                          # 2238 — shelf top = fill-pipe underside (pr=12)
-    spine_top = cap_top - sp_t                      # 2220 — lowered web top (was EQPANEL_Z_HI=2260)
+    spine_top = EQPANEL_Z_HI                        # 2310 — full panel height
     parts.append(ruby_box("Drain-riser spine (ply)", sp_x0, sp_y, EQPANEL_Z_LO,
                           sp_x1 - sp_x0, sp_t, spine_top - EQPANEL_Z_LO,
                           color=C_PLY))
@@ -959,15 +957,6 @@ def equipment_panel():
     parts.append(ruby_box("Drain-riser spine flange (ply)", sp_x1 - sp_t,
                           col_r - 27, EQPANEL_Z_LO, sp_t, 54,
                           spine_top - EQPANEL_Z_LO, color=C_PLY))
-    # Top shelf — horizontal ply cap sitting on the lowered web, cantilevering
-    # toward the Blue trunk (Yd≈1181) so the fill pipe is supported at the T.
-    cap_y0 = 1160                                   # reaches under the Blue trunk
-    parts.append(ruby_box("Drain-riser spine top shelf (ply)", sp_x0, cap_y0,
-                          spine_top, sp_x1 - sp_x0 + 40, (sp_y + sp_t) - cap_y0,
-                          sp_t, color=C_PLY))
-    # Saddle clamp holding the Blue fill trunk down onto the shelf.
-    parts.append(ruby_box("Blue fill pipe clamp", 5420, 1181 - 16, cap_top,
-                          36, 32, 20, color=C_STEEL))
     # SS pipe clamps (P-clips) holding each riser to the spine face, ~400mm centers.
     clamp_face = sp_y + sp_t                        # spine face the pipes sit against
     for rx, ztop in ((5340, 1578), (5400, 1946)):   # X4 Waste, X3 Brown risers

@@ -299,14 +299,15 @@ def sheet1():
         "CROSS-SECTION NOTES:",
         "1. Section through IBC stack, looking +X toward sealed end (near/pinhole wall at right, far wall at left).",
         f"2. 4x identical 275-gal (~1000 L) caged composite IBCs. Each: 65kg tare, {IBC_W}x{IBC_D}x{IBC_H_1000}mm. v2 layout: Brown/Waste bottom, Blue on top (clean supply, 1600 L total).",
-        f"3. RESTRAINT-ONLY frame: a SINGLE FRONT PORTAL (2 full-height 50x50x3 RHS uprights at the corridor edges) on {IBC_FOOT_PLATE}x{IBC_FOOT_PLATE}x{IBC_FOOT_PLATE_T} floor flange feet ({IBC_FOOT_BOLT_N}x M12 each). The totes DIRECT-STACK (no deck) so no platform/wall-seat brackets are needed. ~{FRAME_WEIGHT}kg.",
+        f"3. RESTRAINT-ONLY frame: a SINGLE FRONT PORTAL (2 full-height 50x50x3 RHS uprights at the corridor edges) on {IBC_FOOT_PLATE}x{IBC_FOOT_PLATE}x{IBC_FOOT_PLATE_T} floor flange feet",
+        f"   ({IBC_FOOT_BOLT_N}x M12 each). The totes DIRECT-STACK (no deck) so no platform/wall-seat brackets are needed. ~{FRAME_WEIGHT}kg.",
         f"4. {IBC_GAP}mm plumbing corridor between columns for internal pipe routing.",
         "5. Front retaining bars (4x, Z560 + Z1760) at the IBC front stop the totes sliding out; wall ends drop into Simpson-style joist hangers.",
         f"6. D-ring lashing holders on the front bars ({DRING_WLL}kg WLL); ratchet straps over each stack tie down to them.",
         f"7. External plumbing panel moved forward to the corridor mouth for operator access (see Sheets 3-5).",
     ]
     draw_notes(ax, notes, sx(C_WID), sy(Z_LO + 425), spacing=sy(22),
-               fs=7, ha="left", font=FONT, width=2200)
+               fs=7, ha="left", font=FONT, width=1800)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 5",
@@ -336,7 +337,7 @@ def sheet2():
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(0, sx(600))
-    ax.set_ylim(sy(-120), sy(520))
+    ax.set_ylim(sy(-240), sy(520))
     ax.set_aspect("equal")
     ax.axis("off")
 
@@ -383,7 +384,7 @@ def sheet2():
     for bx in (bar_x0 + 30, bar_x0 + 60):
         ax.add_patch(Circle((sx(bx), sy(bar_y - cl_t / 2)), sy(5),
                             fc=C_BOLT, ec=C_OUT, lw=0.6, zorder=9))
-    leader(ax, sx(bar_x0 + 45), sy(bar_y - cl_t), sx(bar_x0 + 30), sy(bar_y - 55),
+    leader(ax, sx(bar_x0 + 45), sy(bar_y - cl_t), sx(bar_x0 + 30), sy(bar_y - 25),
            "ANGLE CLEAT +\n2x M12 BOLTS", color=C_FRAME, fs=6, ha="center",
            va="top", arrow_style="-|>", font=FONT)
 
@@ -393,7 +394,7 @@ def sheet2():
                         ec=C_STRAP, lw=4.0, zorder=9))
     ax.add_patch(Circle((sx(eye_cx), sy(eye_cy)), sy(7), fc=BG,
                         ec=C_STRAP, lw=2.0, zorder=10))
-    leader(ax, sx(eye_cx + 16), sy(eye_cy), sx(eye_cx + 50), sy(eye_cy + 45),
+    leader(ax, sx(eye_cx + 16), sy(eye_cy), sx(eye_cx + 30), sy(eye_cy + 25),
            "WELD-ON LASH EYE\n1100kg WLL\n(ratchet strap, Detail C)",
            color=C_STRAP, fs=6, ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
@@ -410,7 +411,7 @@ def sheet2():
             fontweight="bold", **FONT, zorder=15)
 
     # Side wall (vertical, hatched)
-    wall_x = 70
+    wall_x = 170
     ax.add_patch(Rectangle((sx(wall_x - 25), sy(120)), sx(25), sy(130),
                             fc=C_WALL, ec=C_OUT, lw=1.5, hatch="///", zorder=4))
     ax.plot([sx(wall_x), sx(wall_x)], [sy(120), sy(250)], color=C_OUT, lw=2.0, zorder=5)
@@ -447,10 +448,10 @@ def sheet2():
                 color=C_BOLT, lw=1.8, zorder=10)
         ax.add_patch(Rectangle((sx(ext_face - 14), sy(by - 4)), sx(6), sy(8),
                                 fc=C_BOLT, ec=C_OUT, lw=0.6, zorder=11))   # hex head outside
-    leader(ax, sx(ext_face - 11), sy(hb_y - 8), sx(ext_face + 10), sy(hb_y - 55),
+    leader(ax, sx(ext_face - 11), sy(hb_y - 8), sx(ext_face - 75), sy(hb_y - 55),
            "EXTERIOR BACKING PLATE\n100x135x8 + 4x M12 THROUGH-BOLTS\n(hex heads outside, load-spread)",
            color=C_FRAME, fs=6, ha="left", va="top", arrow_style="-|>", font=FONT)
-    leader(ax, sx(wall_x + pocket_d), sy(hb_y - 4), sx(wall_x + pocket_d + 35), sy(hb_y - 45),
+    leader(ax, sx(wall_x + pocket_d), sy(hb_y - 4), sx(wall_x + pocket_d + 15), sy(hb_y - 25),
            "U-POCKET SEAT\n(bar drops in)", color=C_STEEL, fs=6, ha="left",
            va="top", arrow_style="-|>", font=FONT)
 
@@ -496,12 +497,12 @@ def sheet2():
     ax.add_patch(Rectangle((sx(eyeR[0] - 6), sy((eyeR[1] + base_z + 2 * th) / 2)),
                             sx(14), sy(16), fc=C_STRAP, ec=C_OUT, lw=1.0, zorder=10))
 
-    leader(ax, sx((t_x + t_w / 2)), sy(base_z + 2 * th + 6), sx(t_x + t_w / 2 + 60),
-           sy(base_z + 2 * th + 55),
+    leader(ax, sx((t_x + t_w / 2)), sy(base_z + 2 * th + 6), sx(t_x + t_w / 2 + 10),
+           sy(base_z + 2 * th + 25),
            "25mm POLY RATCHET STRAP\n1100kg LC, over the stack",
            color=C_STRAP, fs=6, ha="left", va="bottom", arrow_style="-|>", font=FONT)
     leader(ax, sx(eyeR[0] + 1), sy((eyeR[1] + base_z + 2 * th) / 2 + 8),
-           sx(eyeR[0] + 45), sy(base_z - 10),
+           sx(eyeR[0] + 25), sy(base_z + 100),
            "RATCHET BUCKLE\n-> lash eye on front bar",
            color=C_STRAP, fs=6, ha="left", va="top", arrow_style="-|>", font=FONT)
 
@@ -517,7 +518,7 @@ def sheet2():
         "4. Detail C: 25mm poly ratchet straps (1100kg LC) pass over each stack and ratchet down to the front-bar lash eyes.",
         "5. Floor feet (150x150x12, 4x M12 each) anchor the corridor uprights to the slab — see Sheet 1.",
     ]
-    draw_notes(ax, notes, sx(20), sy(-118), spacing=sy(16),
+    draw_notes(ax, notes, sx(20), sy(-120), spacing=sy(8),
                fs=7, ha="left", font=FONT, width=560)
 
     # ── Title block ───────────────────────────────────────────────────────────

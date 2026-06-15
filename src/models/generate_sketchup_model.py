@@ -926,9 +926,9 @@ def equipment_panel():
     parts.append(pump("Pump P-03 (Waste evac)", col_r, z_mid))
     parts.append(pump("Pump P-05 (Brown drain)", col_r, z_top))
 
-    # ACC-01 accumulator — Ø127 × 150 vertical cylinder, left column.
+    # ACC-01 accumulator — Ø127 × 200 cylinder (real SeaFlo 0.75L ≈ 200×127×125), left column.
     parts.append(ruby_cylinder("ACC-01 Accumulator",
-                               face_x - 63, col_l, z_top, 127 / 2, 150,
+                               face_x - 63, col_l, z_top, 127 / 2, 200,
                                color=C_ACC))
 
     # Three Big Blue filters, centered on the panel, stacked F3→F2→F1.

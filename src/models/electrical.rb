@@ -1208,15 +1208,17 @@ model.active_view.zoom_extents
 zoom = {"Power Core" => [2060.mm, 90.mm, 1800.mm, 1400.mm], "External Panel" => [1420.mm, -65.mm, 1950.mm, 1600.mm]}
 [["Combined", ["Context", "Solar Array", "Power Core", "Battery", "External Panel", "Inverter", "Circuit Runs"]], ["Power Core", ["Power Core", "Battery", "Inverter"]], ["Distribution", ["Circuit Runs", "Power Core", "Battery"]], ["External Panel", ["External Panel", "Solar Array"]], ["Labeled", ["Context", "Solar Array", "Power Core", "Battery", "External Panel", "Inverter", "Circuit Runs", "Labels"]]].each { |name, tags|
   model.layers.each { |l| l.visible = (l == default_layer || l.name == "Context" || tags.include?(l.name)) }
-  page = model.pages.add(name)
+  # A Page captures the active_view camera at add-time (Page has no camera= setter),
+  # so set the camera FIRST — zoomed for the detail scenes, shared otherwise.
   if zoom[name]
     zx, zy, zz, zd = zoom[name]
     tgt = Geom::Point3d.new(zx, zy, zz)
     zeye = tgt.offset(dir, zd)
-    page.camera = Sketchup::Camera.new(zeye, tgt, Z_AXIS)
+    model.active_view.camera = Sketchup::Camera.new(zeye, tgt, Z_AXIS)
   else
-    page.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
+    model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
   end
+  page = model.pages.add(name)
   page.use_camera = true
 }
 model.layers.each { |l| l.visible = true }

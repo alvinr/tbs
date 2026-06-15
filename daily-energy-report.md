@@ -155,7 +155,7 @@ recycling ([Water System Report §3–4](water-system-report.md)), so:
 
 | Constraint | Capacity | Per print | Endurance |
 |---|--:|--:|---|
-| **Clean water (Blue, in)** | 1,200 L (316 gal) | 121 L (32 gal) | **~10 prints ≈ 3.3 days** @ 3/day |
+| **Clean water (Blue, in)** | 1,600 L (423 gal) | 121 L (32 gal) | **~13 prints ≈ 4.4 days** @ 3/day |
 | Power, 2 packs + sun | — | ~620 Wh | Indefinite |
 | Power, 2 packs, no sun | 2,400 Wh | ~620 Wh | ~3–4 prints (~1.2 day) |
 

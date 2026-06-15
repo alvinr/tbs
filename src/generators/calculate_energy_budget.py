@@ -81,7 +81,7 @@ DRAIN_LIGHT_MIN   = 10      # white light during the ~20-min drain operation
 # ── Water supply (clean-water autonomy) ───────────────────────────────────────
 # The binding endurance constraint for a disconnected (solar-only) deployment is
 # usually the FRESH water supply, not power. From water-system-report.md §3-4.
-BLUE_SUPPLY_L       = 1200  # 2× 600L Blue (fresh) totes (= 316 US gal)
+BLUE_SUPPLY_L       = 1600  # 2× 800L Blue (fresh) fill (= 423 US gal) — v2 reconciled to the weight model
 FRESH_PER_PRINT_GAL = 32    # net Blue consumed per print WITH Brown recycling (wash 2 from Brown)
 WASTE_CAP_L         = 600   # 1× Black (waste) tote — parallel out-flow constraint
 GAL_TO_L            = 3.785

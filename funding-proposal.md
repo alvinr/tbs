@@ -74,7 +74,7 @@ Cyanotype uses the **Mike Ware New Cyanotype formula** — ammonium iron(III) ox
 Per-print cost: approximately $38 (chemistry + fabric + water). A 50-print run costs approximately $1,900. By comparison, the next cheapest alternative (gum bichromate) costs ~$63 per print and requires dichromate sensitizer with associated hazmat handling.
 
 ### Water System
-A self-contained three-circuit water system — Blue (wash), Brown (recycle), and Black (waste) — provides off-grid processing capability. Four 1000L IBC totes in a 2×2 stack, 12V DC pumps (P-01/P-02/P-04 supply + filter + sump, plus P-05/P-03 drain pumps; corridor-mounted), check valves on all external lines, and a 3-stage filtration skid. Capacity: ~10 full prints between resupply. Water recycling: approximately 40% of used wash water is recovered and reused. Power: 12V DC from a 200Ah LiFePO4 battery bank (3+ prints per charge), with a 600W solar array for field recharging and shore power input for overnight top-up.
+A self-contained three-circuit water system — Blue (wash), Brown (recycle), and Black (waste) — provides off-grid processing capability. Four 1000L IBC totes in a 2×2 stack, 12V DC pumps (P-01/P-02/P-04 supply + filter + sump, plus P-05/P-03 drain pumps; corridor-mounted), check valves on all external lines, and a 3-stage filtration skid. Capacity: ~13 full prints between resupply. Water recycling: approximately 40% of used wash water is recovered and reused. Power: 12V DC from a 200Ah LiFePO4 battery bank (3+ prints per charge), with a 600W solar array for field recharging and shore power input for overnight top-up.
 
 The system was designed for remote deployments: no mains water connection required.
 

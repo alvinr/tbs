@@ -24,7 +24,7 @@ The camera operates in remote locations with no mains water or drainage. This do
 
 | Circuit | Color code | Purpose | Storage |
 |---------|-------------|---------|---------|
-| **Blue** | Blue — clean | Fresh water supply for processing | 2× 1000L IBC totes (~316 gal working fill total), Y-stacked in right end zone |
+| **Blue** | Blue — clean | Fresh water supply for processing | 2× 1000L IBC totes (~423 gal working fill total — 800L each), Y-stacked in right end zone |
 | **Brown** | Brown — used | Collected wash water; filtered and recycled back to Blue | 1× 1000L IBC tote, Y-stacked behind Blue IBCs |
 | **Black** | Black — waste | Heavily contaminated water; sealed IBC for off-site disposal | 1× 1000L IBC tote (IBC-4, ~158 gal working fill), Y-stacked in right end zone |
 
@@ -87,13 +87,13 @@ Volume per flood = 106 sq ft × (6mm / 304.8) = 106 × 0.0197 ft = 2.09 cu ft
 
 ### Storage capacity vs. print count
 
-| Scenario | Blue consumed per print | Prints from 316 gal Blue | Brown recycled |
+| Scenario | Blue consumed per print | Prints from 423 gal Blue | Brown recycled |
 |----------|------------------------|--------------------------|---------------|
-| No recycling | 48 gal (3 × 16) | ~6 prints | 0 |
-| With recycling (wash 2 from Brown) | 32 gal (2 × 16) | **~10 prints** | ~160 gal reused |
+| No recycling | 48 gal (3 × 16) | ~9 prints | 0 |
+| With recycling (wash 2 from Brown) | 32 gal (2 × 16) | **~13 prints** | ~208 gal reused |
 | Brown recycle limit (3 passes) | — | — | 158 gal max before going to Black |
 
-**Design target: 10 prints per resupply run** — achievable with the 316-gallon (1,200L) Blue supply using Brown recycling for wash 2.
+**~13 prints per resupply run** — the 423-gallon (1,600L) Blue supply (2× 800L) with Brown recycling for wash 2.
 
 ---
 
@@ -102,9 +102,9 @@ Volume per flood = 106 sq ft × (6mm / 304.8) = 106 × 0.0197 ft = 2.09 cu ft
 ### 5.1 Blue System — Clean Water Supply
 
 ```
-IBC-1 (600L) ──┐
+IBC-1 (800L) ──┐
                 ├──→ Manifold → BV-01 → P-01 → ACC-01 → BV-02 → Distribution
-IBC-2 (600L) ──┘                                                      │
+IBC-2 (800L) ──┘                                                      │
                                                                           ↓
                                                               FLOOD/SPRAY BAR
                                                               ↓ (Processing tray)

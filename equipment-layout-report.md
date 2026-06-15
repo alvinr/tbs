@@ -13,7 +13,7 @@ to a 4499mm span (X=150–4649mm). This creates two **provably shadow-free end
 zones** — one at each end of the container — where equipment can be placed at any
 depth without entering the optical cone.
 
-The right end zone contains a 2×2 IBC stack (including a dedicated 600L waste
+The right end zone contains a 2×2 IBC stack (including a dedicated 1000L waste
 IBC),  leaving the left zone to contain the light trap drum.
 The right zone boundary sits at X=4649mm, giving a 4499mm active film plane
 (rev 5, 2026-05-06).
@@ -95,10 +95,10 @@ is 30mm on each side.
 
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
-| Blue IBC-1 (600L, top near) | 4,674–5,893 | 30–1,046 | 1,010–2,020 | Near column top; stacked frame |
-| Blue IBC-2 (600L, top far) | 4,674–5,893 | 1,316–2,332 | 1,010–2,020 | Far column top; stacked frame |
-| Brown IBC-3 (600L, bottom near) | 4,674–5,893 | 30–1,046 | 0–1,010 | Near column bottom; recycled wash/fix |
-| Waste IBC-4 (600L, bottom far) | 4,674–5,893 | 1,316–2,332 | 0–1,010 | Far column bottom; sealed waste collection |
+| Blue IBC-1 (800L fill, top near) | 4,674–5,893 | 30–1,046 | 1,168–2,336 | Near column top; restraint frame |
+| Blue IBC-2 (800L fill, top far) | 4,674–5,893 | 1,316–2,332 | 1,168–2,336 | Far column top; restraint frame |
+| Brown IBC-3 (recycle buffer, bottom near) | 4,674–5,893 | 30–1,046 | 0–1,168 | Near column bottom; recycled wash/fix |
+| Waste IBC-4 (waste, bottom far) | 4,674–5,893 | 1,316–2,332 | 0–1,168 | Far column bottom; sealed waste collection |
 
 ---
 
@@ -273,7 +273,7 @@ pinhole wall at X=2399mm (pinhole side), H=400mm.
 
 | Tank | Qty | Capacity | Role |
 |------|-----|---------|------|
-| 600L Blue IBC (stacked ×2) | 2 | 1,200L | Clean wash water |
+| Blue IBC, 800L fill (stacked ×2) | 2 | 1,600L | Clean wash water |
 | 600L Brown IBC | 1 | 600L | Recycled wash / fix |
 | 600L Waste IBC | 1 | 600L | Waste (sealed) |
 | **Total** | — | **2,400L** | — |

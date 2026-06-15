@@ -996,8 +996,6 @@ def draw_sheet3():
 
     def wx(x_mm):
         return C_LEN - x_mm
-    def wz(z_mm):
-        return z_mm
 
     PAD_X_L = 800
     PAD_X_R = 2900
@@ -1088,7 +1086,7 @@ def draw_sheet3():
     TK_H_MM = 25    # trunking height (mm)
     TK_W_MM = 40    # trunking depth (mm) — shown as height on elevation
     TK_Z = C_HGT - TK_H_MM   # bottom of trunking (Z=2363mm)
-    tk_y = wz(TK_Z)
+    tk_y = (TK_Z)
     tk_h = TK_H_MM
     ax.add_patch(mpatches.Rectangle((OX + 8, tk_y), wlen - 16, tk_h,
                  fc=C_PIPE, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
@@ -1100,7 +1098,7 @@ def draw_sheet3():
     # ── Helper: wall-mount equipment box ──────────────────────────────────────
     def wall_equip(x_mm, z_lo, z_hi, w_mm, label, sublabel, fc, badge=""):
         ex = wx(x_mm + w_mm)   # mirrored: right edge of component maps to left in drawing
-        ey = wz(z_lo)
+        ey = (z_lo)
         ew = w_mm
         eh = z_hi - z_lo
         ax.add_patch(mpatches.Rectangle((ex, ey), ew, eh,
@@ -1123,7 +1121,7 @@ def draw_sheet3():
     PP_Z_LO = EP_H_LO   # align with bottom of EP
     PP_Z_HI = PP_Z_LO + PWR_PANEL_H
     pp_x = wx(PWR_PANEL_X + PWR_PANEL_W)   # mirrored
-    pp_y = wz(PP_Z_LO)
+    pp_y = (PP_Z_LO)
     pp_w = PWR_PANEL_W
     pp_h = PWR_PANEL_H
     ax.add_patch(mpatches.Rectangle((pp_x, pp_y), pp_w, pp_h,
@@ -1140,7 +1138,7 @@ def draw_sheet3():
 
     # ── Duct penetration (evap cooler now external) ────────────────────────────
     duct_cx = wx(EVAP_DUCT_X)
-    duct_cz = wz(EVAP_DUCT_Z)
+    duct_cz = (EVAP_DUCT_Z)
     duct_r = EVAP_DUCT_D / 2
     ax.add_patch(plt.Circle((duct_cx, duct_cz), duct_r,
                  fc=C_EVAP, ec=C_OUT, lw=1.5, zorder=6))
@@ -1167,7 +1165,7 @@ def draw_sheet3():
 
     # ── Pinhole ───────────────────────────────────────────────────────────────
     ph_x = wx(TBS_PH_X)
-    ph_z = wz(PH_H)
+    ph_z = (PH_H)
     ax.add_patch(plt.Circle((ph_x, ph_z), 48,
                  fc="black", ec=C_OUT, lw=1.0, zorder=8))
     leader(ax, ph_x, ph_z, ph_x, ph_z + 320,
@@ -1184,7 +1182,7 @@ def draw_sheet3():
         ("D", "#FFD700", -60), ("G", "#FFFFF0", 60)
     ]):
         sx = wx(PS_X_MM + sw_x_off)
-        sz = wz(PS_Z_MM)
+        sz = (PS_Z_MM)
         # Switch body
         sw_sz = 80
         ax.add_patch(mpatches.Rectangle((sx - sw_sz/2, sz - sw_sz/2), sw_sz, sw_sz,
@@ -1193,7 +1191,7 @@ def draw_sheet3():
                 ha="center", va="center", fontsize=7.0, fontweight="bold",
                 color=C_OUT, zorder=8)
         # Pull cord hanging down — parallel lines with repeating slash marks
-        cord_bot = wz(CORD_HANG_Z)
+        cord_bot = (CORD_HANG_Z)
         cord_top = sz - sw_sz/2
         cord_w = 11.2  # half-width of cord (mm)
         # Two parallel lines
@@ -1218,8 +1216,8 @@ def draw_sheet3():
                 color=C_PIPE, lw=2.0, solid_capstyle="round", zorder=4)
 
     # Pull switch label
-    leader(ax, wx(PS_X_MM + sw_x_off), wz(CORD_HANG_Z),
-           wx(PS_X_MM) + 200, wz(CORD_HANG_Z) + 240,
+    leader(ax, wx(PS_X_MM + sw_x_off), (CORD_HANG_Z),
+           wx(PS_X_MM) + 200, (CORD_HANG_Z) + 240,
            "Pull-cord switches\nD = safelight (red)\nG = white light\nCords hang to ~1500mm\nabove walkway deck",
            fs=6.5, color="#606080")
 
@@ -1231,7 +1229,7 @@ def draw_sheet3():
     C_LED = "#FFFFF0"
     for lp_x in LED_POSITIONS:
         lx = wx(lp_x + LED_W_MM)   # mirrored
-        lz = wz(LED_Z)
+        lz = (LED_Z)
         lw = LED_W_MM
         lh = LED_H_MM
         ax.add_patch(mpatches.Rectangle((lx, lz), lw, lh,
@@ -1245,7 +1243,7 @@ def draw_sheet3():
 
     # LED panel leader (label middle panel)
     mid_led_cx = wx(LED_POSITIONS[1] + LED_W_MM / 2)
-    mid_led_cz = wz(LED_Z + LED_H_MM)
+    mid_led_cz = (LED_Z + LED_H_MM)
     leader(ax, mid_led_cx, mid_led_cz - 40,
            mid_led_cx - 600, mid_led_cz - 200,
            "LED panels (G)\n3×20W  4000K  ceiling-mount\n300×600mm each",
@@ -1260,7 +1258,7 @@ def draw_sheet3():
     SL3_Z = C_HGT - TK_H_MM - LED_H_MM - 10 - SL3_H_MM - 10  # below LED panels
     for sl3_x in SL3_POSITIONS:
         s3x = wx(sl3_x + SL3_W_MM)   # mirrored
-        s3z = wz(SL3_Z)
+        s3z = (SL3_Z)
         s3w = max(SL3_W_MM, 32)
         s3h = SL3_H_MM
         ax.add_patch(mpatches.Rectangle((s3x, s3z), s3w, s3h,
@@ -1273,7 +1271,7 @@ def draw_sheet3():
                 color=C_PIPE, lw=2.0, solid_capstyle="round", zorder=4)
     # Leader on near-pinhole strip
     s3_ldr_x = wx(SL3_POSITIONS[0] + SL3_W_MM / 2)
-    s3_ldr_z = wz(SL3_Z)
+    s3_ldr_z = (SL3_Z)
     leader(ax, s3_ldr_x, s3_ldr_z,
            s3_ldr_x + 200, s3_ldr_z - 200,
            f"Safelight (D)\n3× red LED strips\nceiling N–S\nX≈{', '.join(str(x) for x in SL3_POSITIONS)}",
@@ -1291,29 +1289,29 @@ def draw_sheet3():
 
     # EP height dimensions — dim line to the left of EP (mirrored)
     ep_x_l = wx(EP_X)  # right edge in drawing (mirrored)
-    draw_dim_v(ax, ep_x_l, OY, wz(EP_H_LO),
+    draw_dim_v(ax, ep_x_l, OY, (EP_H_LO),
                f"{EP_H_LO}mm", offset=20, fs=6.5)
-    draw_dim_v(ax, ep_x_l - 340, wz(EP_H_LO), wz(EP_H_HI),
+    draw_dim_v(ax, ep_x_l - 340, (EP_H_LO), (EP_H_HI),
                f"{EP_H_HI - EP_H_LO}mm", offset=20, fs=6.5)
 
     # Battery height dimensions — dim line to the left of BAT (mirrored)
     ba_x_l = wx(BA_X)  # right edge in drawing (mirrored)
-    draw_dim_v(ax, ba_x_l + 60, OY, wz(BA_H_LO),
+    draw_dim_v(ax, ba_x_l + 60, OY, (BA_H_LO),
                f"{BA_H_LO}\nmm", offset=20, fs=6.5)
-    draw_dim_v(ax, ba_x_l + 60, wz(BA_H_LO), wz(BA_H_HI),
+    draw_dim_v(ax, ba_x_l + 60, (BA_H_LO), (BA_H_HI),
                f"{BA_H_HI - BA_H_LO}mm", offset=20, fs=6.5, right=True)
 
     # Pinhole height
-    draw_dim_v(ax, ph_x - 80, OY, wz(PH_H),
+    draw_dim_v(ax, ph_x - 80, OY, (PH_H),
                f"{PH_H}mm", offset=20, fs=6.5, right=True)
 
     # Trunking height callout
-    draw_dim_v(ax, OX - 200, wz(TK_Z), OY + whgt,
+    draw_dim_v(ax, OX - 200, (TK_Z), OY + whgt,
                f"Trunking\n{TK_H_MM}mm", offset=20, fs=6.0)
 
     # Pull switch cord length
     ps_dim_x = wx(PS_X_MM - 120)  # mirrored offset
-    draw_dim_v(ax, ps_dim_x, wz(CORD_HANG_Z), wz(PS_Z_MM),
+    draw_dim_v(ax, ps_dim_x, (CORD_HANG_Z), (PS_Z_MM),
                f"Cord {PS_Z_MM - CORD_HANG_Z}mm", offset=20, fs=6.0, right=True)
 
     # ── Horizontal X dimensions for key equipment ─────────────────────────────

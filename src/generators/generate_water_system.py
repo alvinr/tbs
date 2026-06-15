@@ -768,43 +768,37 @@ def draw_sheet3():
     TRAY_DRAW_W = PROC_TRAY_W
     TRAY_DRAW_H = PROC_TRAY_D
 
-    def s3x(mm):
-        return mm
 
-    def s3y(mm):
-        return mm
 
-    def s3d(mm):
-        return mm
 
-    ax3.set_xlim(s3x(-620), s3x(PROC_TRAY_W + 860))
-    ax3.set_ylim(s3y(-1820), s3y(PROC_TRAY_D + 620))
+    ax3.set_xlim((-620), (PROC_TRAY_W + 860))
+    ax3.set_ylim((-1820), (PROC_TRAY_D + 620))
     ax3.set_aspect("equal")
 
     # ── Tray outline ─────────────────────────────────────────────────────────────
-    ax3.add_patch(plt.Rectangle((s3x(0), s3y(0)),
-                  s3d(PROC_TRAY_W), s3d(PROC_TRAY_D),
+    ax3.add_patch(plt.Rectangle(((0), (0)),
+                  (PROC_TRAY_W), (PROC_TRAY_D),
                   fc="#E8F5E9", ec="#388E3C", lw=2.5, zorder=1))
 
     # Rim shading (inner border)
-    ax3.add_patch(plt.Rectangle((s3x(PROC_TRAY_RIM), s3y(PROC_TRAY_RIM)),
-                  s3d(PROC_TRAY_W - 2*PROC_TRAY_RIM),
-                  s3d(PROC_TRAY_D - 2*PROC_TRAY_RIM),
+    ax3.add_patch(plt.Rectangle(((PROC_TRAY_RIM), (PROC_TRAY_RIM)),
+                  (PROC_TRAY_W - 2*PROC_TRAY_RIM),
+                  (PROC_TRAY_D - 2*PROC_TRAY_RIM),
                   fc="#C8E6C9", ec="none", zorder=1, alpha=0.5))
 
     # Label corners with elevation annotations (high/low)
     # Low point: IBC corner (near rim, right side) — drain at X=4550, Yd=80
     # High point: far-left corner (opposite diagonal)
     drain_local_x_s3 = PROC_TRAY_DRAIN_X - PROC_TRAY_X_L
-    ax3.text(s3x(drain_local_x_s3), s3y(-380), "LOW CORNER\n(DRAIN — IBC SIDE)",
+    ax3.text((drain_local_x_s3), (-380), "LOW CORNER\n(DRAIN — IBC SIDE)",
              ha="center", fontsize=7.5, fontweight="bold", color="#D32F2F")
-    ax3.text(s3x(-50), s3y(PROC_TRAY_D + 120),
+    ax3.text((-50), (PROC_TRAY_D + 120),
              "HIGH CORNER\n(FAR-LEFT)",
              ha="left", fontsize=7.5, fontweight="bold", color="#1565C0")
 
-    ax3.text(s3x(-50), s3y(PROC_TRAY_D / 2), "HIGH\nEDGE",
+    ax3.text((-50), (PROC_TRAY_D / 2), "HIGH\nEDGE",
              ha="right", va="center", fontsize=6.5, color="#1565C0", fontweight="bold")
-    ax3.text(s3x(PROC_TRAY_W + 50), s3y(-70), "LOW EDGE",
+    ax3.text((PROC_TRAY_W + 50), (-70), "LOW EDGE",
              ha="left", va="center", fontsize=6.5, color="#D32F2F", fontweight="bold")
 
     # ── Slope arrows (flow direction) ───────────────────────────────────────────
@@ -835,12 +829,12 @@ def draw_sheet3():
             mag = math.sqrt(dx_mm**2 + dy_mm**2)
             if mag < 1:
                 continue
-            arrow_len = s3d(120)
+            arrow_len = (120)
             dx_du = dx_mm / mag * arrow_len
             dy_du = dy_mm / mag * arrow_len
 
-            ax_du = s3x(ax_mm)
-            ay_du = s3y(ay_mm)
+            ax_du = (ax_mm)
+            ay_du = (ay_mm)
 
             ax3.annotate("", xy=(ax_du + dx_du, ay_du + dy_du),
                          xytext=(ax_du - dx_du * 0.3, ay_du - dy_du * 0.3),
@@ -849,9 +843,9 @@ def draw_sheet3():
                          zorder=4)
 
     # ── Drain symbol (circle + crosshair) ───────────────────────────────────────
-    drain_dx = s3x(drain_local_x)
-    drain_dy = s3y(drain_local_yd)
-    DRAIN_R = s3d(100)
+    drain_dx = (drain_local_x)
+    drain_dy = (drain_local_yd)
+    DRAIN_R = (100)
 
     drain_circle = plt.Circle((drain_dx, drain_dy), DRAIN_R,
                                fc="white", ec="#D32F2F", lw=2.5, zorder=6)
@@ -863,8 +857,8 @@ def draw_sheet3():
              color="#D32F2F", lw=1.8, zorder=7)
 
     # Drain label — single leader to the right (clear side)
-    leader(ax3, s3x(drain_local_x), s3y(drain_local_yd + DRAIN_R),
-           s3x(drain_local_x + 250), s3y(drain_local_yd + 450),
+    leader(ax3, (drain_local_x), (drain_local_yd + DRAIN_R),
+           (drain_local_x + 250), (drain_local_yd + 450),
            f"SUMP WELL (P-04 PICKUP)\n"
            f"X={PROC_TRAY_DRAIN_X}  Yd={PROC_TRAY_DRAIN_YD}\n"
            f"{PROC_TRAY_SUMP_W}x{PROC_TRAY_SUMP_D}x{PROC_TRAY_SUMP_Z}mm",
@@ -876,8 +870,8 @@ def draw_sheet3():
     yd_fall = PROC_TRAY_D / 200  # full-depth fall (far to near)
 
     # X-slope annotation (center of tray)
-    ann_x = s3x(PROC_TRAY_W * 0.5)
-    ann_y = s3y(PROC_TRAY_D * 0.5)
+    ann_x = (PROC_TRAY_W * 0.5)
+    ann_y = (PROC_TRAY_D * 0.5)
     ax3.text(ann_x, ann_y,
              f"X-SLOPE: 1:200 → IBC CORNER\n({x_fall:.1f}mm fall over {PROC_TRAY_W:.0f}mm)",
              ha="center", va="center", fontsize=7, color="#0D47A1",
@@ -885,8 +879,8 @@ def draw_sheet3():
              zorder=8)
 
     # Yd-axis slope annotation (upper area)
-    ann_y2 = s3y(PROC_TRAY_D * 0.78)
-    ax3.text(s3x(PROC_TRAY_W * 0.5), ann_y2,
+    ann_y2 = (PROC_TRAY_D * 0.78)
+    ax3.text((PROC_TRAY_W * 0.5), ann_y2,
              f"Yd-SLOPE: 1:200\n({yd_fall:.1f}mm fall over {PROC_TRAY_D}mm)",
              ha="center", va="center", fontsize=7, color="#0D47A1",
              bbox=dict(fc="white", ec="#0D47A1", lw=0.8, pad=3, alpha=0.9),
@@ -894,7 +888,7 @@ def draw_sheet3():
 
     # ── Dimensions ───────────────────────────────────────────────────────────────
     # Tray width (X direction)
-    draw_dim_h(ax3, s3x(0), s3x(PROC_TRAY_W), s3y(PROC_TRAY_D + 310),
+    draw_dim_h(ax3, (0), (PROC_TRAY_W), (PROC_TRAY_D + 310),
                f"{PROC_TRAY_W}mm (X={PROC_TRAY_X_L}–{PROC_TRAY_X_R})", offset=93, fs=6.5, above=False)
 
 
@@ -907,11 +901,11 @@ def draw_sheet3():
     #          ha="center", fontsize=7, color=C_DIM)
 
     # Tray depth (Yd direction)
-    draw_dim_v(ax3, s3x(-310), s3y(PROC_TRAY_D), s3y(0),
+    draw_dim_v(ax3, (-310), (PROC_TRAY_D), (0),
                f"{PROC_TRAY_D}mm (Yd={PROC_TRAY_YD_NEAR}–{PROC_TRAY_YD_FAR})", offset=93, fs=6.5, right=False)
 
     # Drain X position dimension
-    draw_dim_h(ax3, s3x(drain_local_x), s3x(0), s3y(-170),
+    draw_dim_h(ax3, (drain_local_x), (0), (-170),
                f"{drain_local_x}mm from left edge", offset=58, fs=6.5, above=False)
 
     # ── Walkway positions (dashed outlines) ──────────────────────────────────────
@@ -919,25 +913,25 @@ def draw_sheet3():
     WK_ALPHA_L = 0.4
 
     # Near walkway (overlaps tray near edge)
-    near_wk_y0 = s3y(-PROC_TRAY_YD_NEAR + WALKWAY_NEAR_YD)  # Yd=0 in container coords
-    near_wk_y1 = s3y(-PROC_TRAY_YD_NEAR + WALKWAY_NEAR_YD + WALKWAY_W)
-    ax3.add_patch(plt.Rectangle((s3x(0), near_wk_y0),
-                  s3d(PROC_TRAY_W), near_wk_y1 - near_wk_y0,
+    near_wk_y0 = (-PROC_TRAY_YD_NEAR + WALKWAY_NEAR_YD)  # Yd=0 in container coords
+    near_wk_y1 = (-PROC_TRAY_YD_NEAR + WALKWAY_NEAR_YD + WALKWAY_W)
+    ax3.add_patch(plt.Rectangle(((0), near_wk_y0),
+                  (PROC_TRAY_W), near_wk_y1 - near_wk_y0,
                   fc=WK_COLOR, ec=WK_COLOR, lw=1.2, ls="--",
                   alpha=WK_ALPHA_L, hatch="//", zorder=2))
-    ax3.text(s3x(PROC_TRAY_W + 50), (near_wk_y0 + near_wk_y1)/2,
+    ax3.text((PROC_TRAY_W + 50), (near_wk_y0 + near_wk_y1)/2,
              "NEAR\nWALKWAY\n(300mm)",
              ha="left", va="center", fontsize=6, color=WK_COLOR)
 
     # Far walkway
     far_wk_yd_local = WALKWAY_FAR_YD - PROC_TRAY_YD_NEAR
-    far_wk_y0 = s3y(far_wk_yd_local)
-    far_wk_y1 = s3y(far_wk_yd_local + WALKWAY_W)
-    ax3.add_patch(plt.Rectangle((s3x(0), far_wk_y0),
-                  s3d(PROC_TRAY_W), far_wk_y1 - far_wk_y0,
+    far_wk_y0 = (far_wk_yd_local)
+    far_wk_y1 = (far_wk_yd_local + WALKWAY_W)
+    ax3.add_patch(plt.Rectangle(((0), far_wk_y0),
+                  (PROC_TRAY_W), far_wk_y1 - far_wk_y0,
                   fc=WK_COLOR, ec=WK_COLOR, lw=1.2, ls="--",
                   alpha=WK_ALPHA_L, hatch="//", zorder=2))
-    ax3.text(s3x(PROC_TRAY_W + 50), (far_wk_y0 + far_wk_y1)/2,
+    ax3.text((PROC_TRAY_W + 50), (far_wk_y0 + far_wk_y1)/2,
              "FAR\nWALKWAY\n(300mm)",
              ha="left", va="center", fontsize=6, color=WK_COLOR)
 
@@ -947,22 +941,22 @@ def draw_sheet3():
     # gap, then turns NORTH up the gap to the equipment panel (corridor, Yd≈1046).
     corner_local_x = PROC_TRAY_W + 15   # just past tray right edge (into the tray–IBC gap)
     pipe_rim_yd = drain_local_yd - 30    # ~Yd50 — in front of the tray near rim (the twist depth)
-    pipe_rim_dy = s3y(pipe_rim_yd)
+    pipe_rim_dy = (pipe_rim_yd)
 
     # Short drop from sump to rim exterior
     ax3.plot([drain_dx, drain_dx], [drain_dy - DRAIN_R, pipe_rim_dy],
              color=C_BROWN, lw=2.5, solid_capstyle="round", zorder=5)
 
     # Right along rim exterior to tray corner
-    corner_dx = s3x(corner_local_x)
+    corner_dx = (corner_local_x)
     ax3.plot([drain_dx, corner_dx], [pipe_rim_dy, pipe_rim_dy],
              color=C_BROWN, lw=2.5, solid_capstyle="round", zorder=5)
 
     # North from tray corner to corridor level
     panel_local_yd = CORRIDOR_YD_NEAR - PROC_TRAY_YD_NEAR   # 966mm
     panel_local_x = EQPANEL_X - PROC_TRAY_X_L               # 4830mm
-    panel_dy = s3y(panel_local_yd)
-    panel_dx = s3x(panel_local_x)
+    panel_dy = (panel_local_yd)
+    panel_dx = (panel_local_x)
     ax3.plot([corner_dx, corner_dx], [pipe_rim_dy, panel_dy],
              color=C_BROWN, lw=2.5, solid_capstyle="round", zorder=5)
 
@@ -971,15 +965,15 @@ def draw_sheet3():
              color=C_BROWN, lw=2.5, solid_capstyle="round", zorder=5)
 
     # Equipment panel symbol (small rectangle at pipe terminus)
-    ax3.add_patch(plt.Rectangle((s3x(panel_local_x), s3y(panel_local_yd - 85)),
-                  s3d(50), s3d(170),
+    ax3.add_patch(plt.Rectangle(((panel_local_x), (panel_local_yd - 85)),
+                  (50), (170),
                   fc="#D4C8A0", ec="#A09060", lw=1.5, zorder=6))
 
-    leader(ax3, s3x(panel_local_x + 50), s3y(panel_local_yd),
-           s3x(panel_local_x + 25), s3y(panel_local_yd + 205),
+    leader(ax3, (panel_local_x + 50), (panel_local_yd),
+           (panel_local_x + 25), (panel_local_yd + 205),
            "EQUIPMENT PANEL\n(P-04, FILTERS)", fs=6.5, color=C_PUMP)
 
-    ax3.text(s3x((drain_local_x + corner_local_x) / 2), s3y(pipe_rim_yd - 85),
+    ax3.text(((drain_local_x + corner_local_x) / 2), (pipe_rim_yd - 85),
              "P-04 SUCTION HOSE ALONG RIM EXTERIOR",
              ha="center", fontsize=6.5, color=C_BROWN, style="italic", zorder=8)
 
@@ -992,8 +986,8 @@ def draw_sheet3():
         f"4. Tray: 304 SS, {PROC_TRAY_RIM}mm rim, on tapered HDPE shim strips. No tray floor penetration.",
         f"5. Wall-cantilevered walkway — no legs or structure on tray floor near sump.",
     ]
-    draw_notes(ax3, notes, s3x(-410), s3y(-890), spacing=s3d(70), fs=7,
-               width=s3d(4800), color=C_TEXT, title_color=C_TEXT,
+    draw_notes(ax3, notes, (-410), (-890), spacing=(70), fs=7,
+               width=(4800), color=C_TEXT, title_color=C_TEXT,
                font={"fontfamily": "monospace"})
 
     _save(fig3, "water-system-sheet3")
@@ -1036,14 +1030,13 @@ def draw_sheet4():
 
 
 
-    def draw_pipe_path(ax, y_pts, z_pts, od_mm, wall_mm, sy, sz,
+    def draw_pipe_path(ax, y_pts, z_pts, od_mm, wall_mm,
                        fc="#B0B0B8", ec="#333333", bore_fc="white",
                        elbow_r=None, zorder=5):
         """Thin wrapper → tbs_drawing.draw_pipe_path (canonical body); injects
         this sheet's scale funcs.  See skills/skill_plumbing_drawing.md."""
         _tbs_pipe_path(ax, y_pts, z_pts, od_mm, wall_mm, fc, ec=ec,
-                       bore_fc=bore_fc, elbow_r=elbow_r, zorder=zorder,
-                       sx=sy, sz=sz)
+                       bore_fc=bore_fc, elbow_r=elbow_r, zorder=zorder)
 
     def draw_pipe_end(ax, cy, cz, r_data, wall_data, fc="#B0B0B8",
                       ec="#333333", bore_fc="white", zorder=5):
@@ -1062,29 +1055,25 @@ def draw_sheet4():
     OA_X = 0
     OA_Y = 0
 
-    def sa_y(yd_mm):
-        return yd_mm
 
-    def sa_z(z_mm):
-        return z_mm
 
-    ax4a.set_xlim(sa_y(-41), sa_y(422))
-    ax4a.set_ylim(sa_z(-56), sa_z(223))
+    ax4a.set_xlim((-41), (422))
+    ax4a.set_ylim((-56), (223))
 
     # Panel A title
-    ax4a.text(sa_y(195), sa_z(195), "DETAIL A — SUMP WELL & PICKUP (AXES IN mm)",
+    ax4a.text((195), (195), "DETAIL A — SUMP WELL & PICKUP (AXES IN mm)",
               ha="center", va="top", fontsize=10, fontweight="bold",
               color="#1A237E", zorder=10)
 
     # ── Container floor (section fill) ──────────────────────────────────────────
     FLOOR_T = 4.0   # simplified floor thickness in section
-    ax4a.add_patch(plt.Rectangle((sa_y(-20), sa_z(-FLOOR_T)),
+    ax4a.add_patch(plt.Rectangle(((-20), (-FLOOR_T)),
                   450 / SC_A, FLOOR_T / SC_A,
                   fc="#B0B0B8", ec=C_FRAME, lw=1.8, zorder=2, hatch=".."))
 
     # Near wall (Yd=0) — vertical
     WALL_T = 2.0
-    ax4a.add_patch(plt.Rectangle((sa_y(-WALL_T), sa_z(-FLOOR_T)), WALL_T / SC_A,
+    ax4a.add_patch(plt.Rectangle(((-WALL_T), (-FLOOR_T)), WALL_T / SC_A,
                   230 / SC_A,
                   fc="#B0B0B8", ec=C_FRAME, lw=1.8, zorder=2, hatch=".."))
 
@@ -1119,7 +1108,7 @@ def draw_sheet4():
         shim_h_slope = (shim_yd - tray_yd_near) * slope_per_mm * SLOPE_EXAG_A
         shim_h_here = shim_h_base + shim_h_slope
         shim_vis_w = 15  # visible width in cross-section (strip runs along X, we see its edge)
-        ax4a.add_patch(plt.Rectangle((sa_y(shim_yd - shim_vis_w/2), sa_z(0)),
+        ax4a.add_patch(plt.Rectangle(((shim_yd - shim_vis_w/2), (0)),
                       shim_vis_w / SC_A, shim_h_here / SC_A,
                       fc=shim_color, ec="#A09070", lw=0.8, zorder=3))
 
@@ -1129,16 +1118,16 @@ def draw_sheet4():
     tray_z_at_far = TRAY_BASE_Z + (tray_yd_far_view - tray_yd_near) * slope_per_mm * SLOPE_EXAG_A
 
     # Tray floor polygon
-    tray_pts_x = [sa_y(tray_yd_near), sa_y(tray_yd_far_view),
-                  sa_y(tray_yd_far_view), sa_y(tray_yd_near)]
-    tray_pts_y = [sa_z(tray_z_at_near), sa_z(tray_z_at_far),
-                  sa_z(tray_z_at_far + TRAY_T), sa_z(tray_z_at_near + TRAY_T)]
+    tray_pts_x = [(tray_yd_near), (tray_yd_far_view),
+                  (tray_yd_far_view), (tray_yd_near)]
+    tray_pts_y = [(tray_z_at_near), (tray_z_at_far),
+                  (tray_z_at_far + TRAY_T), (tray_z_at_near + TRAY_T)]
     ax4a.fill(tray_pts_x, tray_pts_y, fc="#C8D8E8", ec=C_FRAME, lw=1.5, zorder=4)
 
     # Near rim — extends from tray floor (Z=20mm) up by rim height (50mm)
     rim_h = PROC_TRAY_RIM  # 50mm
     RIM_TOP = TRAY_BASE_Z + rim_h  # 20 + 50 = 70mm above container floor
-    ax4a.add_patch(plt.Rectangle((sa_y(tray_yd_near - TRAY_T), sa_z(TRAY_BASE_Z)),
+    ax4a.add_patch(plt.Rectangle(((tray_yd_near - TRAY_T), (TRAY_BASE_Z)),
                   TRAY_T / SC_A, rim_h / SC_A,
                   fc="#C8D8E8", ec=C_FRAME, lw=1.5, zorder=4))
 
@@ -1151,21 +1140,21 @@ def draw_sheet4():
     sump_z_floor = 0.0  # sump bottom sits ON container floor
 
     # Sump well cavity — U-shaped depression from tray floor (Z=20) down to Z=0
-    sump_pts_x = [sa_y(sump_yd_start + 3), sa_y(sump_yd_end - 3),
-                  sa_y(sump_yd_end - 3), sa_y(sump_yd_end),
-                  sa_y(sump_yd_end), sa_y(sump_yd_start),
-                  sa_y(sump_yd_start), sa_y(sump_yd_start + 3)]
-    sump_pts_z = [sa_z(sump_z_floor + TRAY_T), sa_z(sump_z_floor + TRAY_T),
-                  sa_z(sump_z_floor), sa_z(sump_z_floor),
-                  sa_z(tray_z_at_near), sa_z(tray_z_at_near),
-                  sa_z(sump_z_floor), sa_z(sump_z_floor)]
+    sump_pts_x = [(sump_yd_start + 3), (sump_yd_end - 3),
+                  (sump_yd_end - 3), (sump_yd_end),
+                  (sump_yd_end), (sump_yd_start),
+                  (sump_yd_start), (sump_yd_start + 3)]
+    sump_pts_z = [(sump_z_floor + TRAY_T), (sump_z_floor + TRAY_T),
+                  (sump_z_floor), (sump_z_floor),
+                  (tray_z_at_near), (tray_z_at_near),
+                  (sump_z_floor), (sump_z_floor)]
     ax4a.fill(sump_pts_x, sump_pts_z, fc="#C8D8E8", ec=C_FRAME, lw=1.5, zorder=4)
 
     # Water pooled in sump (blue fill) — water collects from Z=0 up to near tray floor
-    ax4a.fill([sa_y(sump_yd_start + 4), sa_y(sump_yd_end - 4),
-               sa_y(sump_yd_end - 4), sa_y(sump_yd_start + 4)],
-              [sa_z(TRAY_BASE_Z - 4), sa_z(TRAY_BASE_Z - 4),
-               sa_z(sump_z_floor + TRAY_T), sa_z(sump_z_floor + TRAY_T)],
+    ax4a.fill([(sump_yd_start + 4), (sump_yd_end - 4),
+               (sump_yd_end - 4), (sump_yd_start + 4)],
+              [(TRAY_BASE_Z - 4), (TRAY_BASE_Z - 4),
+               (sump_z_floor + TRAY_T), (sump_z_floor + TRAY_T)],
               fc="#B3D9F2", ec="none", alpha=0.5, zorder=5)
 
     # ── Walkway & hose pass-through constants ────────────────────────────────────
@@ -1187,16 +1176,16 @@ def draw_sheet4():
     TUBE_WALL = 3.0  # HDPE tube wall thickness (mm)
     draw_pipe_path(ax4a,
                    [tube_yd, tube_yd], [tube_z_bot + foot_valve_h, tube_z_top],
-                   TUBE_OD, TUBE_WALL, sa_y, sa_z,
+                   TUBE_OD, TUBE_WALL, 
                    fc="#D0D0D0", ec=C_FRAME, zorder=6)
-    ax4a.add_patch(plt.Rectangle((sa_y(tube_yd - foot_valve_w/2), sa_z(tube_z_bot)),
+    ax4a.add_patch(plt.Rectangle(((tube_yd - foot_valve_w/2), (tube_z_bot)),
                   foot_valve_w / SC_A, foot_valve_h / SC_A,
                   fc="#D0D0D0", ec=C_FRAME, lw=1.0, zorder=7))
     # Strainer mesh marks
     for sy_m in range(3):
         mesh_y = tube_yd - foot_valve_w/2 + 5 + sy_m * (foot_valve_w - 10) / 2
-        ax4a.plot([sa_y(mesh_y), sa_y(mesh_y)],
-                 [sa_z(tube_z_bot), sa_z(tube_z_bot + foot_valve_h)],
+        ax4a.plot([(mesh_y), (mesh_y)],
+                 [(tube_z_bot), (tube_z_bot + foot_valve_h)],
                  color="#999999", lw=0.4, zorder=8)
 
     # ── Suction hose from tube top, along tray rim exterior ──────────────────────
@@ -1211,12 +1200,12 @@ def draw_sheet4():
     hose_pts_y = [tube_yd, tube_yd, RIM_EXT_YD, RIM_EXT_YD]
     hose_pts_z = [tube_z_top - ELBOW_OVERLAP, tube_z_top, tube_z_top, HOSE_RIM_Z]
     draw_pipe_path(ax4a, hose_pts_y, hose_pts_z, HOSE_OD, HOSE_WALL,
-                   sa_y, sa_z, fc=C_BROWN, ec="#5A3020", zorder=8)
+                   fc=C_BROWN, ec="#5A3020", zorder=8)
 
     # Pipe end-on at rim exterior (hose turns to run along X — into the page)
     pipe_r_a = HOSE_OD / 2 / SC_A
     pipe_wall_a = HOSE_WALL / SC_A
-    draw_pipe_end(ax4a, sa_y(RIM_EXT_YD), sa_z(HOSE_RIM_Z),
+    draw_pipe_end(ax4a, (RIM_EXT_YD), (HOSE_RIM_Z),
                   pipe_r_a, pipe_wall_a,
                   fc=C_BROWN, ec=C_FRAME, bore_fc="white", zorder=9)
 
@@ -1224,90 +1213,90 @@ def draw_sheet4():
     FLOOD_DEPTH = 6
     water_z_left = tray_z_at_near + TRAY_T + FLOOD_DEPTH
     water_z_right = tray_z_at_far + TRAY_T + FLOOD_DEPTH
-    ax4a.fill([sa_y(sump_yd_end + 5), sa_y(tray_yd_far_view),
-               sa_y(tray_yd_far_view), sa_y(sump_yd_end + 5)],
-              [sa_z(water_z_left + 1), sa_z(water_z_right),
-               sa_z(tray_z_at_far + TRAY_T), sa_z(tray_z_at_near + TRAY_T + 1)],
+    ax4a.fill([(sump_yd_end + 5), (tray_yd_far_view),
+               (tray_yd_far_view), (sump_yd_end + 5)],
+              [(water_z_left + 1), (water_z_right),
+               (tray_z_at_far + TRAY_T), (tray_z_at_near + TRAY_T + 1)],
               fc="#B3D9F2", ec="none", alpha=0.3, zorder=3)
-    ax4a.plot([sa_y(sump_yd_end + 5), sa_y(tray_yd_far_view)],
-             [sa_z(water_z_left + 1), sa_z(water_z_right)],
+    ax4a.plot([(sump_yd_end + 5), (tray_yd_far_view)],
+             [(water_z_left + 1), (water_z_right)],
              color=C_BLUE, lw=1.0, ls="--", zorder=5)
 
     # ── Walkway grate ───────────────────────────────────────────────────────────
-    ax4a.add_patch(plt.Rectangle((sa_y(0), sa_z(WK_DECK_H - WK_GRATE_T)),
+    ax4a.add_patch(plt.Rectangle(((0), (WK_DECK_H - WK_GRATE_T)),
                   WALKWAY_W / SC_A, WK_GRATE_T / SC_A,
                   fc="#E0D6C8", ec="#8D6E63", lw=1.0, hatch="///", zorder=3,
                   alpha=0.7))
 
     # Bracket arm (triangle)
-    ax4a.fill([sa_y(0), sa_y(0), sa_y(WALKWAY_W * 0.9)],
-              [sa_z(WK_DECK_H - WK_GRATE_T), sa_z(WK_DECK_H - WK_GRATE_T - 30),
-               sa_z(WK_DECK_H - WK_GRATE_T)],
+    ax4a.fill([(0), (0), (WALKWAY_W * 0.9)],
+              [(WK_DECK_H - WK_GRATE_T), (WK_DECK_H - WK_GRATE_T - 30),
+               (WK_DECK_H - WK_GRATE_T)],
               fc="#B0B0B8", ec=C_FRAME, lw=0.8, zorder=3, alpha=0.5)
 
     # ── Detail dimensions ────────────────────────────────────────────────────────
     # Rim top to floor
-    draw_dim_v(ax4a, sa_y(tray_yd_near - 45), sa_z(0), sa_z(RIM_TOP),
+    draw_dim_v(ax4a, (tray_yd_near - 45), (0), (RIM_TOP),
                f"{int(RIM_TOP)}mm\nRIM TOP AFF", offset=3, fs=7, right=False)
 
     # Tray floor height (20mm — too short for dim_v label, use leader)
-    leader(ax4a, sa_y(sump_yd_end + 20), sa_z(TRAY_BASE_Z),
-           sa_y(sump_yd_end + 40), sa_z(TRAY_BASE_Z + 30),
+    leader(ax4a, (sump_yd_end + 20), (TRAY_BASE_Z),
+           (sump_yd_end + 40), (TRAY_BASE_Z + 30),
            f"{PROC_TRAY_SUMP_Z}mm TRAY FLOOR AFF", fs=6.5, color=C_DIM)
 
     # Sump depth (20mm — too short for dim_v label, use leader)
-    leader(ax4a, sa_y(sump_yd_end + 5), sa_z(sump_z_floor + TRAY_BASE_Z / 2),
-           sa_y(sump_yd_end + 100), sa_z(-15),
+    leader(ax4a, (sump_yd_end + 5), (sump_z_floor + TRAY_BASE_Z / 2),
+           (sump_yd_end + 100), (-15),
            f"{PROC_TRAY_SUMP_Z}mm SUMP DEPTH", fs=6.5, color=C_DIM)
 
     # Sump width (Yd extent)
-    draw_dim_h(ax4a, sa_y(sump_yd_start), sa_y(sump_yd_end),
-               sa_z(sump_z_floor - 8),
+    draw_dim_h(ax4a, (sump_yd_start), (sump_yd_end),
+               (sump_z_floor - 8),
                f"{PROC_TRAY_SUMP_D}mm", offset=1.6, fs=7, above=False)
 
     # Pickup clearance from sump floor
-    draw_dim_v(ax4a, sa_y(tube_yd + TUBE_OD/2 + 8), sa_z(sump_z_floor), sa_z(tube_z_bot),
+    draw_dim_v(ax4a, (tube_yd + TUBE_OD/2 + 8), (sump_z_floor), (tube_z_bot),
                "5mm", offset=1.2, fs=6, right=True)
 
     # Sump to wall
-    draw_dim_h(ax4a, sa_y(0), sa_y(sump_yd_start), sa_z(FLOOR_T - 12),
+    draw_dim_h(ax4a, (0), (sump_yd_start), (FLOOR_T - 12),
                f"{sump_yd_start}mm", offset=1.6, fs=7, above=False)
 
     # Walkway deck height
-    draw_dim_v(ax4a, sa_y(WALKWAY_W + 105), sa_z(0), sa_z(WK_DECK_H),
+    draw_dim_v(ax4a, (WALKWAY_W + 105), (0), (WK_DECK_H),
                f"{WK_DECK_H}mm DECK", offset=2, fs=6.5, right=True)
 
     # ── Detail leaders ───────────────────────────────────────────────────────────
-    leader(ax4a, sa_y(tube_yd), sa_z(tube_z_bot + foot_valve_h/2),
-           sa_y(tube_yd + 80), sa_z(-25),
+    leader(ax4a, (tube_yd), (tube_z_bot + foot_valve_h/2),
+           (tube_yd + 80), (-25),
            "1\" SS FOOT VALVE\nW/ STRAINER SCREEN", fs=7, color=C_FRAME)
 
-    leader(ax4a, sa_y(tube_yd), sa_z(tube_z_top - 5),
-           sa_y(tube_yd + 90), sa_z(140),
+    leader(ax4a, (tube_yd), (tube_z_top - 5),
+           (tube_yd + 90), (140),
            "1\" HDPE\nPICKUP TUBE", fs=7, color=C_FRAME)
 
-    leader(ax4a, sa_y(RIM_EXT_YD + 5), sa_z(HOSE_RIM_Z),
-           sa_y(RIM_EXT_YD - 40), sa_z(HOSE_RIM_Z - 50),
+    leader(ax4a, (RIM_EXT_YD + 5), (HOSE_RIM_Z),
+           (RIM_EXT_YD - 40), (HOSE_RIM_Z - 50),
            "1\" REINFORCED SUCTION\nHOSE ALONG RIM TO P-04\n(INTO PAGE — SEE PLAN)", fs=6, color=C_BROWN)
 
-    leader(ax4a, sa_y(sump_yd_start + PROC_TRAY_SUMP_D/4), sa_z(TRAY_BASE_Z / 2),
-           sa_y(150), sa_z(-30),
+    leader(ax4a, (sump_yd_start + PROC_TRAY_SUMP_D/4), (TRAY_BASE_Z / 2),
+           (150), (-30),
            f"SUMP WELL\n({PROC_TRAY_SUMP_W}x{PROC_TRAY_SUMP_D}x{PROC_TRAY_SUMP_Z}mm)\nBOTTOM ON CONTAINER FLOOR", fs=6.5, color="#0D47A1")
 
-    leader(ax4a, sa_y(250), sa_z(water_z_left),
-           sa_y(350), sa_z(TRAY_BASE_Z + rim_h + 10),
+    leader(ax4a, (250), (water_z_left),
+           (350), (TRAY_BASE_Z + rim_h + 10),
            "WATER LEVEL\n(6mm FLOOD)", fs=6.5, color=C_BLUE)
 
-    leader(ax4a, sa_y(150), sa_z(WK_DECK_H - WK_GRATE_T/2),
-           sa_y(330), sa_z(155),
+    leader(ax4a, (150), (WK_DECK_H - WK_GRATE_T/2),
+           (330), (155),
            "WALKWAY GRATING\n(WALL-CANTILEVERED)", fs=6, color="#8D6E63")
 
-    leader(ax4a, sa_y(250), sa_z(TRAY_BASE_Z / 2),
-           sa_y(350), sa_z(TRAY_BASE_Z + rim_h /2 + 10),
+    leader(ax4a, (250), (TRAY_BASE_Z / 2),
+           (350), (TRAY_BASE_Z + rim_h /2 + 10),
            f"HDPE SHIM STRIP\n({PROC_TRAY_SHIM_W}mm WIDE,\n{PROC_TRAY_SUMP_Z}-{PROC_TRAY_SUMP_Z + PROC_TRAY_SHIM_H}mm)", fs=6, color="#A09070")
 
     # Slope note
-    ax4a.text(sa_y(360), sa_z(-40),
+    ax4a.text((360), (-40),
               f"FALL: {PROC_TRAY_PITCH}mm / {PROC_TRAY_D}mm (1:220)\n"
               f"SLOPE EXAGGERATED {SLOPE_EXAG_A:.0f}x",
               ha="center", va="center", fontsize=6, color="#0D47A1",
@@ -1323,23 +1312,19 @@ def draw_sheet4():
     OB_X = 0
     OB_Y = 0
 
-    def sb_y(yd_mm):
-        return yd_mm
 
-    def sb_z(z_mm):
-        return z_mm
 
-    ax4b.set_xlim(sb_y(-26), sb_y(1162))
-    ax4b.set_ylim(sb_z(-66), sb_z(638))
+    ax4b.set_xlim((-26), (1162))
+    ax4b.set_ylim((-66), (638))
 
     # Panel B title
-    ax4b.text(sb_y(550), sb_z(650), "SECTION A-A — SUMP TO EQUIPMENT PANEL (AXES IN mm)",
+    ax4b.text((550), (650), "SECTION A-A — SUMP TO EQUIPMENT PANEL (AXES IN mm)",
               ha="center", va="top", fontsize=10, fontweight="bold",
               color="#1A237E", zorder=10)
 
     # ── Container structure ──────────────────────────────────────────────────────
     # Floor
-    ax4b.add_patch(plt.Rectangle((sb_y(-20), sb_z(-FLOOR_T)),
+    ax4b.add_patch(plt.Rectangle(((-20), (-FLOOR_T)),
                   1180 / SC_B, FLOOR_T / SC_B,
                   fc="#B0B0B8", ec=C_FRAME, lw=1.5, zorder=2, hatch=".."))
 
@@ -1348,7 +1333,7 @@ def draw_sheet4():
     SLOPE_EXAG_B = 8.0
     for shim_yd in [130, 250, 370, 490]:
         sh_h = TRAY_BASE_Z + (shim_yd - tray_yd_near) * slope_per_mm * SLOPE_EXAG_B
-        ax4b.add_patch(plt.Rectangle((sb_y(shim_yd - 8), sb_z(0)),
+        ax4b.add_patch(plt.Rectangle(((shim_yd - 8), (0)),
                       16 / SC_B, max(sh_h, 1) / SC_B,
                       fc="#E8DCC0", ec="#A09070", lw=0.6, zorder=3))
 
@@ -1357,20 +1342,20 @@ def draw_sheet4():
     tray_z_far_b = TRAY_BASE_Z + (550 - tray_yd_near) * slope_per_mm * SLOPE_EXAG_B
 
     # Tray floor
-    ax4b.fill([sb_y(tray_yd_near), sb_y(550), sb_y(550), sb_y(tray_yd_near)],
-              [sb_z(tray_z_near_b), sb_z(tray_z_far_b),
-               sb_z(tray_z_far_b + TRAY_T * 5), sb_z(tray_z_near_b + TRAY_T * 5)],
+    ax4b.fill([(tray_yd_near), (550), (550), (tray_yd_near)],
+              [(tray_z_near_b), (tray_z_far_b),
+               (tray_z_far_b + TRAY_T * 5), (tray_z_near_b + TRAY_T * 5)],
               fc="#C8D8E8", ec=C_FRAME, lw=1.2, zorder=4)
 
     # Near rim — from tray floor (Z=20) up by rim height
-    ax4b.add_patch(plt.Rectangle((sb_y(tray_yd_near - 3), sb_z(TRAY_BASE_Z)),
+    ax4b.add_patch(plt.Rectangle(((tray_yd_near - 3), (TRAY_BASE_Z)),
                   6 / SC_B, rim_h / SC_B,
                   fc="#C8D8E8", ec=C_FRAME, lw=1.2, zorder=4))
 
     # ── Sump well (simplified at this scale) ────────────────────────────────────
     # Sump bottom at Z=0, tray floor at Z=TRAY_BASE_Z (20mm)
     sump_yd_b = PROC_TRAY_DRAIN_YD
-    ax4b.add_patch(plt.Rectangle((sb_y(sump_yd_b), sb_z(0)),
+    ax4b.add_patch(plt.Rectangle(((sump_yd_b), (0)),
                   PROC_TRAY_SUMP_D / SC_B, PROC_TRAY_SUMP_Z / SC_B,
                   fc="#B3D9F2", ec=C_FRAME, lw=1.2, alpha=0.6, zorder=5))
 
@@ -1379,9 +1364,9 @@ def draw_sheet4():
     RIM_TOP_B = TRAY_BASE_Z + rim_h  # 70mm
     tube_z_top_b = WK_DECK_H + WK_GRATE_T + 10  # 135mm — above walkway grate + clearance
     draw_pipe_path(ax4b, [tube_yd_b, tube_yd_b], [5, tube_z_top_b],
-                   TUBE_OD, TUBE_WALL, sb_y, sb_z,
+                   TUBE_OD, TUBE_WALL, 
                    fc="#D0D0D0", ec=C_FRAME, zorder=5)
-    ax4b.text(sb_y(tube_yd_b/2), sb_z(RIM_TOP_B + 85), "PICKUP\nTUBE",
+    ax4b.text((tube_yd_b/2), (RIM_TOP_B + 85), "PICKUP\nTUBE",
               ha="left", va="bottom", fontsize=5.5, color=C_FRAME,
               fontweight="bold", zorder=6)
 
@@ -1397,27 +1382,27 @@ def draw_sheet4():
     hose_b_y = [tube_yd_b, tube_yd_b, RIM_EXT_YD_B, RIM_EXT_YD_B]
     hose_b_z = [tube_z_top_b - ELBOW_OVERLAP_B, tube_z_top_b, tube_z_top_b, HOSE_RIM_Z_B]
     draw_pipe_path(ax4b, hose_b_y, hose_b_z, HOSE_OD, HOSE_WALL,
-                   sb_y, sb_z, fc=C_BROWN, ec="#5A3020", zorder=4)
+                   fc=C_BROWN, ec="#5A3020", zorder=4)
 
     # Pipe end-on at rim exterior (hose runs along X — into the page toward IBC corner)
     pipe_r_b = HOSE_OD / 2 / SC_B
     pipe_wall_b = HOSE_WALL / SC_B
-    draw_pipe_end(ax4b, sb_y(RIM_EXT_YD_B), sb_z(HOSE_RIM_Z_B),
+    draw_pipe_end(ax4b, (RIM_EXT_YD_B), (HOSE_RIM_Z_B),
                   pipe_r_b, pipe_wall_b,
                   fc=C_BROWN, ec=C_FRAME, bore_fc="white", zorder=6)
 
     # Dashed routing indicator from rim to equipment panel (truncated to view range)
     ROUTE_Z_TOP = 500
-    ax4b.plot([sb_y(RIM_EXT_YD_B), sb_y(PANEL_YD)],
-              [sb_z(HOSE_RIM_Z_B), sb_z(ROUTE_Z_TOP)],
+    ax4b.plot([(RIM_EXT_YD_B), (PANEL_YD)],
+              [(HOSE_RIM_Z_B), (ROUTE_Z_TOP)],
               color=C_BROWN, lw=1.0, ls=":", zorder=3, alpha=0.6)
-    ax4b.text(sb_y((RIM_EXT_YD_B + PANEL_YD) / 2), sb_z((HOSE_RIM_Z_B + ROUTE_Z_TOP) / 2 + 30),
+    ax4b.text(((RIM_EXT_YD_B + PANEL_YD) / 2), ((HOSE_RIM_Z_B + ROUTE_Z_TOP) / 2 + 30),
               "HOSE ALONG RIM →\nCROSSES AT IBC CORNER\n(SEE PLAN VIEW)",
               ha="center", va="bottom", fontsize=5.5, color=C_BROWN,
               style="italic", zorder=4)
 
     # ── Near walkway (Yd=0-300) ──────────────────────────────────────────────────
-    ax4b.add_patch(plt.Rectangle((sb_y(0), sb_z(WK_DECK_H - WK_GRATE_T)),
+    ax4b.add_patch(plt.Rectangle(((0), (WK_DECK_H - WK_GRATE_T)),
                   WALKWAY_W / SC_B, WK_GRATE_T / SC_B,
                   fc="#E0D6C8", ec="#8D6E63", lw=1.0, hatch="///", zorder=3,
                   alpha=0.7))
@@ -1427,7 +1412,7 @@ def draw_sheet4():
     # Z range (0–620).  Show a compact representation at the top of the view
     # with the plywood strip truncated and a destination leader.
     EP_Z_TOP = 580   # truncated top within view
-    ax4b.add_patch(plt.Rectangle((sb_y(PANEL_YD - 9), sb_z(0)),
+    ax4b.add_patch(plt.Rectangle(((PANEL_YD - 9), (0)),
                   18 / SC_B, EP_Z_TOP / SC_B,
                   fc="#D4C8A0", ec="#A09060", lw=1.5, zorder=3))
 
@@ -1436,13 +1421,13 @@ def draw_sheet4():
     brk_w = 30
     for side in [-1, 1]:
         bx = PANEL_YD + side * 9
-        ax4b.plot([sb_y(bx - brk_w/2), sb_y(bx), sb_y(bx + brk_w/2)],
-                  [sb_z(brk_z - 8), sb_z(brk_z + 8), sb_z(brk_z - 8)],
+        ax4b.plot([(bx - brk_w/2), (bx), (bx + brk_w/2)],
+                  [(brk_z - 8), (brk_z + 8), (brk_z - 8)],
                   color="#A09060", lw=1.2, zorder=4, clip_on=True)
 
     # Destination leader
-    leader(ax4b, sb_y(PANEL_YD), sb_z(EP_Z_TOP),
-           sb_y(PANEL_YD + 80), sb_z(EP_Z_TOP + 30),
+    leader(ax4b, (PANEL_YD), (EP_Z_TOP),
+           (PANEL_YD + 80), (EP_Z_TOP + 30),
            "EQUIPMENT PANEL (Yd=1046)\n"
            "P-04 Shurflo 2088 (Z=1400)\n"
            "3W-DV-02 diverter → IBC-3 / IBC-4",
@@ -1450,16 +1435,16 @@ def draw_sheet4():
 
     # ── Dimensions ───────────────────────────────────────────────────────────────
     # Rim top above floor
-    draw_dim_v(ax4b, sb_y(tray_yd_near - 50), sb_z(0), sb_z(RIM_TOP_B),
+    draw_dim_v(ax4b, (tray_yd_near - 50), (0), (RIM_TOP_B),
                f"{int(RIM_TOP_B)}mm", offset=4.8, fs=6.5, right=False)
 
     # Walkway
-    draw_dim_v(ax4b, sb_y(WALKWAY_W + 265), sb_z(0), sb_z(WK_DECK_H),
+    draw_dim_v(ax4b, (WALKWAY_W + 265), (0), (WK_DECK_H),
                f"{WK_DECK_H}mm", offset=4.8, fs=6, right=True)
 
     # ── Labels ───────────────────────────────────────────────────────────────────
-    leader(ax4b, sb_y(WALKWAY_W/2), sb_z(WK_DECK_H),
-           sb_y(200), sb_z(WK_DECK_H + 40),
+    leader(ax4b, (WALKWAY_W/2), (WK_DECK_H),
+           (200), (WK_DECK_H + 40),
            "WALKWAY", fs=6.5, color="#8D6E63")
 
     # ═════════════════════════════════════════════════════════════════════════════
@@ -1482,68 +1467,64 @@ def draw_sheet4():
     YD_VIEW_BOT = -30
     YD_VIEW_TOP = 1130
 
-    def pc_x(x_mm):
-        return x_mm
 
-    def pc_yd(yd_mm):
-        return yd_mm
 
-    ax4c.set_xlim(pc_x(X_VIEW_L - 4), pc_x(X_VIEW_R + 4))
-    ax4c.set_ylim(pc_yd(YD_VIEW_BOT - 4), pc_yd(YD_VIEW_TOP + 4))
+    ax4c.set_xlim((X_VIEW_L - 4), (X_VIEW_R + 4))
+    ax4c.set_ylim((YD_VIEW_BOT - 4), (YD_VIEW_TOP + 4))
 
     # Panel C title
-    ax4c.text(pc_x((X_VIEW_L + X_VIEW_R) / 2), pc_yd(YD_VIEW_TOP + 15),
+    ax4c.text(((X_VIEW_L + X_VIEW_R) / 2), (YD_VIEW_TOP + 15),
               "PLAN VIEW — HOSE ROUTING ALONG TRAY RIM (AXES IN mm)",
               ha="center", va="bottom", fontsize=9, fontweight="bold",
               color="#1A237E", zorder=10)
 
     # ── Container near wall (Yd=0, horizontal line at bottom) ─────────────────
-    ax4c.add_patch(plt.Rectangle((pc_x(X_VIEW_L - 20), pc_yd(-WALL_T)),
+    ax4c.add_patch(plt.Rectangle(((X_VIEW_L - 20), (-WALL_T)),
                   (X_VIEW_R - X_VIEW_L + 40) / SC_C, WALL_T / SC_C,
                   fc="#B0B0B8", ec=C_FRAME, lw=1.2, zorder=2, hatch=".."))
 
     # ── Tray outline (partial) ─────────────────────────────────────────────────
     tray_x_l_vis = max(PROC_TRAY_X_L, X_VIEW_L)
-    ax4c.add_patch(plt.Rectangle((pc_x(tray_x_l_vis), pc_yd(tray_yd_near)),
+    ax4c.add_patch(plt.Rectangle(((tray_x_l_vis), (tray_yd_near)),
                   (TRAY_X_R - tray_x_l_vis) / SC_C,
                   (400 - tray_yd_near) / SC_C,
                   fc="#E8F0F8", ec="#C8D8E8", lw=1.0, zorder=2, alpha=0.4))
-    ax4c.text(pc_x((tray_x_l_vis + TRAY_X_R) / 2), pc_yd(200),
+    ax4c.text(((tray_x_l_vis + TRAY_X_R) / 2), (200),
               "PROCESSING TRAY", ha="center", va="center",
               fontsize=6, color="#6A8CAF", style="italic", alpha=0.7, zorder=3)
 
     # Near rim line (Yd=80, runs along X — horizontal)
-    ax4c.plot([pc_x(tray_x_l_vis), pc_x(TRAY_X_R)],
-             [pc_yd(tray_yd_near), pc_yd(tray_yd_near)],
+    ax4c.plot([(tray_x_l_vis), (TRAY_X_R)],
+             [(tray_yd_near), (tray_yd_near)],
              color="#C8D8E8", lw=2.0, zorder=4)
 
     # Right rim line (X=4629, runs along Yd — vertical)
-    ax4c.plot([pc_x(TRAY_X_R), pc_x(TRAY_X_R)],
-             [pc_yd(tray_yd_near), pc_yd(400)],
+    ax4c.plot([(TRAY_X_R), (TRAY_X_R)],
+             [(tray_yd_near), (400)],
              color="#C8D8E8", lw=2.0, zorder=4)
 
     # ── Sump (small rectangle inside tray at near rim) ─────────────────────────
     ax4c.add_patch(plt.Rectangle(
-        (pc_x(SUMP_X - PROC_TRAY_SUMP_W / 2), pc_yd(PROC_TRAY_DRAIN_YD)),
+        ((SUMP_X - PROC_TRAY_SUMP_W / 2), (PROC_TRAY_DRAIN_YD)),
         PROC_TRAY_SUMP_W / SC_C, PROC_TRAY_SUMP_D / SC_C,
         fc="#B3D9F2", ec=C_FRAME, lw=1.0, zorder=5))
-    ax4c.text(pc_x(SUMP_X), pc_yd(PROC_TRAY_DRAIN_YD + PROC_TRAY_SUMP_D / 2),
+    ax4c.text((SUMP_X), (PROC_TRAY_DRAIN_YD + PROC_TRAY_SUMP_D / 2),
               "SUMP", ha="center", va="center", fontsize=5.5,
               fontweight="bold", color="#0D47A1", zorder=6)
 
     # ── Pickup tube end-on (vertical tube seen from above) ─────────────────────
     tube_r_c = TUBE_OD / 2 / SC_C
     tube_wall_c = TUBE_WALL / SC_C
-    draw_pipe_end(ax4c, pc_x(SUMP_X), pc_yd(tube_yd),
+    draw_pipe_end(ax4c, (SUMP_X), (tube_yd),
                   tube_r_c, tube_wall_c,
                   fc="#D0D0D0", ec=C_FRAME, bore_fc="white", zorder=7)
 
     # ── Equipment panel (spans corridor at X=EQPANEL_X, perpendicular to sealed end) ──
     ax4c.add_patch(plt.Rectangle(
-        (pc_x(EP_X), pc_yd(CORRIDOR_YD_NEAR - 9)),
+        ((EP_X), (CORRIDOR_YD_NEAR - 9)),
         EQPANEL_T / SC_C, 270 / SC_C,
         fc="#D4C8A0", ec="#A09060", lw=1.5, zorder=3))
-    ax4c.text(pc_x(EP_X + EQPANEL_T / 2), pc_yd(CORRIDOR_YD_NEAR - 65),
+    ax4c.text((EP_X + EQPANEL_T / 2), (CORRIDOR_YD_NEAR - 65),
               f"EQUIPMENT PANEL (X={int(EQPANEL_X)})",
               ha="center", va="bottom", fontsize=5.5, color=C_PUMP,
               style="italic", zorder=4)
@@ -1551,10 +1532,10 @@ def draw_sheet4():
     # P-04 on equipment panel — pump protrudes from panel face toward lower X
     P04_PLAN_X = EP_X - PUMP_D / 2
     ax4c.add_patch(plt.Circle(
-        (pc_x(P04_PLAN_X), pc_yd(CORRIDOR_YD_NEAR)),
+        ((P04_PLAN_X), (CORRIDOR_YD_NEAR)),
         20 / SC_C,
         fc="#E8884A", ec=C_FRAME, lw=1.2, zorder=6))
-    ax4c.text(pc_x(P04_PLAN_X), pc_yd(CORRIDOR_YD_NEAR + 35),
+    ax4c.text((P04_PLAN_X), (CORRIDOR_YD_NEAR + 35),
               "P-04", ha="center", va="center", fontsize=5.5,
               fontweight="bold", color="#E8884A", zorder=7)
 
@@ -1564,32 +1545,32 @@ def draw_sheet4():
     draw_pipe_path(ax4c,
                    [SUMP_X, SUMP_X, CORNER_X, CORNER_X, P04_PLAN_X],
                    [tube_yd, RIM_EXT_YD_C, RIM_EXT_YD_C, CORRIDOR_YD_NEAR, CORRIDOR_YD_NEAR],
-                   HOSE_OD, HOSE_WALL, pc_x, pc_yd,
+                   HOSE_OD, HOSE_WALL, 
                    fc=C_BROWN, ec="#5A3020", zorder=6)
 
     # P-clip marks along rim run (small ticks — horizontal marks along vertical pipe)
     for clip_x in range(SUMP_X, CORNER_X, 60):
-        ax4c.plot([pc_x(clip_x), pc_x(clip_x)],
-                 [pc_yd(RIM_EXT_YD_C - 8), pc_yd(RIM_EXT_YD_C + 8)],
+        ax4c.plot([(clip_x), (clip_x)],
+                 [(RIM_EXT_YD_C - 8), (RIM_EXT_YD_C + 8)],
                  color="#666666", lw=0.6, zorder=5)
 
     # ── Labels ──────────────────────────────────────────────────────────────────
-    leader(ax4c, pc_x(SUMP_X - 50), pc_yd(RIM_EXT_YD_C),
-           pc_x(X_VIEW_L + 50), pc_yd(RIM_EXT_YD_C - 120),
+    leader(ax4c, (SUMP_X - 50), (RIM_EXT_YD_C),
+           (X_VIEW_L + 50), (RIM_EXT_YD_C - 120),
            "1\" SUCTION HOSE\nALONG RIM EXTERIOR\n(P-CLIPPED TO RIM)", fs=6, color=C_BROWN)
 
-    leader(ax4c, pc_x(CORNER_X), pc_yd((RIM_EXT_YD_C + CORRIDOR_YD_NEAR) / 2),
-           pc_x(CORNER_X + 60), pc_yd(500),
+    leader(ax4c, (CORNER_X), ((RIM_EXT_YD_C + CORRIDOR_YD_NEAR) / 2),
+           (CORNER_X + 60), (500),
            "CROSSES TO\nEQUIPMENT PANEL\nAT TRAY CORNER", fs=6, color=C_BROWN)
 
     # ── Dimensions ──────────────────────────────────────────────────────────────
     # Rim-to-panel Yd distance (vertical dim)
-    draw_dim_v(ax4c, pc_x(X_VIEW_L - 5), pc_yd(RIM_EXT_YD_C), pc_yd(CORRIDOR_YD_NEAR),
+    draw_dim_v(ax4c, (X_VIEW_L - 5), (RIM_EXT_YD_C), (CORRIDOR_YD_NEAR),
                f"{CORRIDOR_YD_NEAR - RIM_EXT_YD_C:.0f}mm", offset=6.4, fs=6)
 
     # Hose run along rim (X distance — horizontal dim)
-    draw_dim_h(ax4c, pc_x(SUMP_X), pc_x(CORNER_X),
-               pc_yd(RIM_EXT_YD_C - 50),
+    draw_dim_h(ax4c, (SUMP_X), (CORNER_X),
+               (RIM_EXT_YD_C - 50),
                f"{CORNER_X - SUMP_X}mm", offset=4, fs=6)
 
     # ── Notes axes (full-width strip above title block) ─────────────────────────

@@ -112,8 +112,6 @@ FONT    = {"fontfamily": "monospace"}
 # Scale ≈ 5:1 for clarity.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet2():
-    def sx(mm): return mm
-    def sy(mm): return mm
 
     # ── Structural dimensions (mm real) ──────────────────────────────────────
     TRAY_WALL  = 3     # tray wall thickness (SS)
@@ -143,19 +141,19 @@ def sheet2():
     ax2 = fig.add_subplot(gs[0, 1])
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
-    ax.set_xlim(sx(YD_LO), sx(YD_HI))
-    ax.set_ylim(sy(Z_LO), sy(Z_HI))
+    ax.set_xlim((YD_LO), (YD_HI))
+    ax.set_ylim((Z_LO), (Z_HI))
     ax.set_aspect("equal")
     ax.axis("off")
 
     # View A title
-    ax.text(sx(YD_HI / 2), sy(Z_HI - 5),
+    ax.text((YD_HI / 2), (Z_HI - 5),
             "VIEW A — CROSS-SECTION AT BRACKET (LOOKING ALONG X)",
             ha="center", va="top", fontsize=8, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
 
     # ── Container floor ──────────────────────────────────────────────────────
-    ax.add_patch(Rectangle((sx(YD_LO), sy(-15)), sx(YD_HI - YD_LO), sy(15),
+    ax.add_patch(Rectangle(((YD_LO), (-15)), (YD_HI - YD_LO), (15),
                             fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="///", zorder=2))
 
     # ── Corrugated wall (cross-section through rib — HOLLOW profile) ─────────
@@ -164,68 +162,68 @@ def sheet2():
     ext_panel_yd = -CORR_DEPTH - WALL_T
 
     # Exterior wall steel panel (full height)
-    ax.add_patch(Rectangle((sx(ext_panel_yd), sy(0)),
-                            sx(WALL_T), sy(wall_z_top),
+    ax.add_patch(Rectangle(((ext_panel_yd), (0)),
+                            (WALL_T), (wall_z_top),
                             fc="#909098", ec=C_OUT, lw=1.2, zorder=3,
                             hatch="///"))
     # Rib side wall (connecting exterior panel to rib face)
-    ax.add_patch(Rectangle((sx(-CORR_DEPTH), sy(0)),
-                            sx(WALL_T), sy(wall_z_top),
+    ax.add_patch(Rectangle(((-CORR_DEPTH), (0)),
+                            (WALL_T), (wall_z_top),
                             fc="#909098", ec=C_OUT, lw=0.8, zorder=3,
                             hatch="///"))
     # Rib interior face (flange — where bracket bolts on)
-    ax.add_patch(Rectangle((sx(-WALL_T), sy(0)),
-                            sx(WALL_T), sy(wall_z_top),
+    ax.add_patch(Rectangle(((-WALL_T), (0)),
+                            (WALL_T), (wall_z_top),
                             fc="#909098", ec=C_OUT, lw=1.2, zorder=3,
                             hatch="///"))
     # Air gap inside the rib (light fill to show it's hollow)
-    ax.add_patch(Rectangle((sx(-CORR_DEPTH + WALL_T), sy(0)),
-                            sx(CORR_DEPTH - 2 * WALL_T), sy(wall_z_top),
+    ax.add_patch(Rectangle(((-CORR_DEPTH + WALL_T), (0)),
+                            (CORR_DEPTH - 2 * WALL_T), (wall_z_top),
                             fc="#F0F0F0", ec="none", lw=0, zorder=2))
-    ax.add_patch(Rectangle((sx(-CORR_DEPTH + WALL_T), sy(0)),
-                            sx(CORR_DEPTH - 2 * WALL_T), sy(wall_z_top),
+    ax.add_patch(Rectangle(((-CORR_DEPTH + WALL_T), (0)),
+                            (CORR_DEPTH - 2 * WALL_T), (wall_z_top),
                             fc="none", ec=C_DIM, lw=0.5, ls="--", zorder=3))
-    ax.text(sx(-CORR_DEPTH / 2), sy(wall_z_top * 0.45),
+    ax.text((-CORR_DEPTH / 2), (wall_z_top * 0.45),
             "AIR\nGAP",
             ha="center", va="center", fontsize=6, color=C_DIM,
             **FONT, zorder=15, style="italic")
     # Rib face (interior surface at Yd=0)
-    ax.plot([sx(0), sx(0)], [sy(0), sy(wall_z_top)],
+    ax.plot([(0), (0)], [(0), (wall_z_top)],
             color=C_OUT, lw=2.0, zorder=4)
-    ax.text(sx(-CORR_DEPTH / 2), sy(wall_z_top - 8),
+    ax.text((-CORR_DEPTH / 2), (wall_z_top - 8),
             "CORRUGATED\nWALL RIB\n(1.6mm CORTEN\nHOLLOW PROFILE)",
             ha="center", va="top", fontsize=5.5, color=C_DIM,
             fontweight="bold", **FONT, zorder=15)
 
     # ── Reinforcing plate (bonded to exterior wall face) ─────────────────────
     reinf_yd = ext_panel_yd - REINF_T
-    ax.add_patch(Rectangle((sx(reinf_yd), sy(0)),
-                            sx(REINF_T), sy(REINF_H),
+    ax.add_patch(Rectangle(((reinf_yd), (0)),
+                            (REINF_T), (REINF_H),
                             fc="#C08040", ec=C_OUT, lw=1.0, zorder=4))
-    leader(ax, sx(reinf_yd - 1), sy(REINF_H * 0.8),
-           sx(reinf_yd - 25), sy(REINF_H),
+    leader(ax, (reinf_yd - 1), (REINF_H * 0.8),
+           (reinf_yd - 25), (REINF_H),
            f"REINFORCING\nPLATE\n{REINF_W}\u00d7{REINF_H}\n\u00d7{REINF_T}mm\n(EXTERIOR)",
            color="#C08040", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Processing tray ──────────────────────────────────────────────────────
     # Tray near rim (vertical wall at Yd=TRAY_RIM_YD)
-    ax.add_patch(Rectangle((sx(TRAY_RIM_YD - TRAY_WALL), sy(0)),
-                            sx(TRAY_WALL), sy(PROC_TRAY_RIM),
+    ax.add_patch(Rectangle(((TRAY_RIM_YD - TRAY_WALL), (0)),
+                            (TRAY_WALL), (PROC_TRAY_RIM),
                             fc=C_TRAY, ec=C_OUT, lw=1.0, zorder=4))
     # Tray floor (extends inward from rim)
     tray_floor_start = TRAY_RIM_YD
     tray_floor_end = YD_HI - 20
-    ax.add_patch(Rectangle((sx(tray_floor_start), sy(0)),
-                            sx(tray_floor_end - tray_floor_start), sy(TRAY_FLOOR),
+    ax.add_patch(Rectangle(((tray_floor_start), (0)),
+                            (tray_floor_end - tray_floor_start), (TRAY_FLOOR),
                             fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
     # Tray rim label
-    leader(ax, sx(TRAY_RIM_YD - 5), sy(PROC_TRAY_RIM / 2 + 20),
-           sx(TRAY_RIM_YD - 20), sy(PROC_TRAY_RIM - 20),
+    leader(ax, (TRAY_RIM_YD - 5), (PROC_TRAY_RIM / 2 + 20),
+           (TRAY_RIM_YD - 20), (PROC_TRAY_RIM - 20),
            f"TRAY RIM\n{PROC_TRAY_RIM}mm\n(304 SS, 3mm)", color=C_TRAY, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
     # Sawtooth break line on tray floor (continues right)
-    bx = sx(tray_floor_end)
+    bx = (tray_floor_end)
     z_lo, z_hi = 0, TRAY_FLOOR
     zz = np.linspace(z_lo, z_hi, 5)
     ax.plot([bx - 3, bx + 3, bx - 3, bx + 3, bx - 3],
@@ -233,10 +231,10 @@ def sheet2():
 
     # Tray "water level" indication (wavy line at ~15mm)
     water_h = 15
-    wave_x = np.linspace(sx(TRAY_RIM_YD + 5), sx(tray_floor_end - 10), 40)
-    wave_y = sy(water_h) + 3 * np.sin(wave_x * 0.08)
+    wave_x = np.linspace((TRAY_RIM_YD + 5), (tray_floor_end - 10), 40)
+    wave_y = (water_h) + 3 * np.sin(wave_x * 0.08)
     ax.plot(wave_x, wave_y, color="#4080C0", lw=1.0, alpha=0.6, zorder=4)
-    ax.text(sx(TRAY_RIM_YD + 60), sy(water_h + 5),
+    ax.text((TRAY_RIM_YD + 60), (water_h + 5),
             "PROCESS WATER\n(~15mm depth)",
             ha="left", va="bottom", fontsize=5.5, color="#4080C0",
             **FONT, alpha=0.7, zorder=15)
@@ -257,37 +255,37 @@ def sheet2():
     GUSSET_REACH = 70  # gusset extends 70mm from wall (< 80mm tray rim position)
 
     # 1. Vertical mounting plate (flat against rib interior face, Yd=0 to BRKT_T)
-    ax.add_patch(Rectangle((sx(0), sy(0)),
-                            sx(BRKT_T), sy(BRKT_VERT),
+    ax.add_patch(Rectangle(((0), (0)),
+                            (BRKT_T), (BRKT_VERT),
                             fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
 
     # 2. Horizontal arm (projects inward at Z=brkt_arm_z)
-    ax.add_patch(Rectangle((sx(0), sy(arm_bot)),
-                            sx(WALKWAY_W), sy(ARM_DEPTH),
+    ax.add_patch(Rectangle(((0), (arm_bot)),
+                            (WALKWAY_W), (ARM_DEPTH),
                             fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
     # Arm top surface (where grate sits) — emphasize
-    ax.plot([sx(0), sx(WALKWAY_W)], [sy(brkt_arm_z), sy(brkt_arm_z)],
+    ax.plot([(0), (WALKWAY_W)], [(brkt_arm_z), (brkt_arm_z)],
             color=C_OUT, lw=2.0, zorder=7)
 
     # 3. Gusset UNDERNEATH the arm — right triangle bracing from below
     # Stops at Yd=70mm, before the tray rim at Yd=80mm
     gusset_verts = [
-        (sx(0), sy(0)),                   # wall at floor level
-        (sx(0), sy(arm_bot)),             # wall at arm bottom
-        (sx(GUSSET_REACH), sy(arm_bot)),  # 70mm out along arm bottom
+        ((0), (0)),                   # wall at floor level
+        ((0), (arm_bot)),             # wall at arm bottom
+        ((GUSSET_REACH), (arm_bot)),  # 70mm out along arm bottom
     ]
     ax.add_patch(Polygon(gusset_verts, closed=True,
                          fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=5, alpha=0.85))
     # Diagonal edge emphasis (hypotenuse)
-    ax.plot([sx(0), sx(GUSSET_REACH)], [sy(0), sy(arm_bot)],
+    ax.plot([(0), (GUSSET_REACH)], [(0), (arm_bot)],
             color=C_OUT, lw=1.5, zorder=6)
 
     # Weld symbol at gusset-to-arm joint
     weld_x = GUSSET_REACH / 3
-    ax.plot([sx(weld_x - 4), sx(weld_x), sx(weld_x + 4)],
-            [sy(arm_bot), sy(arm_bot - 5), sy(arm_bot)],
+    ax.plot([(weld_x - 4), (weld_x), (weld_x + 4)],
+            [(arm_bot), (arm_bot - 5), (arm_bot)],
             color="#CC4400", lw=1.5, zorder=8)
-    ax.text(sx(weld_x), sy(arm_bot - 7), "WELD",
+    ax.text((weld_x), (arm_bot - 7), "WELD",
             ha="center", va="top", fontsize=4.5, color="#CC4400",
             **FONT, zorder=15)
 
@@ -306,48 +304,48 @@ def sheet2():
     for bz in [bolt_z_lo, bolt_z_hi]:
         shank_hw = BOLT_R * 0.4  # half-width of shank in Z
         # Bolt shank — from reinf plate through to bracket face
-        ax.add_patch(Rectangle((sx(reinf_yd), sy(bz - shank_hw)),
-                                sx(BRKT_T - reinf_yd), sy(shank_hw * 2),
+        ax.add_patch(Rectangle(((reinf_yd), (bz - shank_hw)),
+                                (BRKT_T - reinf_yd), (shank_hw * 2),
                                 fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=10))
         # Hex head on exterior side (left of reinforcing plate)
-        ax.add_patch(Rectangle((sx(reinf_yd - BOLT_HEAD), sy(bz - BOLT_R)),
-                                sx(BOLT_HEAD), sy(BOLT_D),
+        ax.add_patch(Rectangle(((reinf_yd - BOLT_HEAD), (bz - BOLT_R)),
+                                (BOLT_HEAD), (BOLT_D),
                                 fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))
         # Washer under head
-        ax.add_patch(Rectangle((sx(reinf_yd - WASHER_T), sy(bz - BOLT_R - 1)),
-                                sx(WASHER_T), sy(BOLT_D + 2),
+        ax.add_patch(Rectangle(((reinf_yd - WASHER_T), (bz - BOLT_R - 1)),
+                                (WASHER_T), (BOLT_D + 2),
                                 fc="#808080", ec=C_OUT, lw=0.5, zorder=9))
         # Nut on interior side (right of bracket plate)
-        ax.add_patch(Rectangle((sx(BRKT_T), sy(bz - BOLT_R)),
-                                sx(NUT_H), sy(BOLT_D),
+        ax.add_patch(Rectangle(((BRKT_T), (bz - BOLT_R)),
+                                (NUT_H), (BOLT_D),
                                 fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))
         # Washer under nut
-        ax.add_patch(Rectangle((sx(BRKT_T), sy(bz - BOLT_R - 1)),
-                                sx(WASHER_T), sy(BOLT_D + 2),
+        ax.add_patch(Rectangle(((BRKT_T), (bz - BOLT_R - 1)),
+                                (WASHER_T), (BOLT_D + 2),
                                 fc="#808080", ec=C_OUT, lw=0.5, zorder=9))
 
     # Bracket label — point at the arm
-    leader(ax, sx(WALKWAY_W * 0.4), sy(brkt_arm_z - 5),
-           sx(WALKWAY_W * 0.4 + 50), sy(brkt_arm_z - 30),
+    leader(ax, (WALKWAY_W * 0.4), (brkt_arm_z - 5),
+           (WALKWAY_W * 0.4 + 50), (brkt_arm_z - 30),
            f"CANTILEVER BRACKET\n{BRKT_T}mm STEEL PLATE\n(VERT PLATE + ARM\n+ GUSSET UNDER)",
            color=C_BRKT, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # Gusset label
-    leader(ax, sx(GUSSET_REACH / 2), sy(arm_bot / 2 - 5),
-           sx(GUSSET_REACH-20), sy(arm_bot / 2 - 25),
+    leader(ax, (GUSSET_REACH / 2), (arm_bot / 2 - 5),
+           (GUSSET_REACH-20), (arm_bot / 2 - 25),
            f"GUSSET ({GUSSET_REACH}mm)\nSTOPS BEFORE\nTRAY RIM",
            color=C_BRKT, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # Bolt labels
-    leader(ax, sx(reinf_yd - BOLT_HEAD - 2), sy(bolt_z_lo),
-           sx(reinf_yd - 30), sy(bolt_z_lo + 20),
+    leader(ax, (reinf_yd - BOLT_HEAD - 2), (bolt_z_lo),
+           (reinf_yd - 30), (bolt_z_lo + 20),
            f"2\u00d7 M12 AT Z={bolt_z_lo}\n(STRADDLE GUSSET\nIN X \u2014 SEE VIEW B)",
            color=C_DIM, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
-    leader(ax, sx(reinf_yd - BOLT_HEAD - 2), sy(bolt_z_hi),
-           sx(reinf_yd - 30), sy(bolt_z_hi + 20),
+    leader(ax, (reinf_yd - BOLT_HEAD - 2), (bolt_z_hi),
+           (reinf_yd - 30), (bolt_z_hi + 20),
            f"1\u00d7 M12 AT Z={bolt_z_hi}\n(ON GUSSET CL\nIN X \u2014 SEE VIEW B)",
            color=C_DIM, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
@@ -356,25 +354,25 @@ def sheet2():
     # Grating sits on bracket arm: bottom at BRKT_ARM_H (65mm), top at WALKWAY_H (80mm)
     grate_bot = brkt_arm_z  # = 65mm
     grate_top = grate_bot + WALKWAY_GRATE_T  # = 80mm = WALKWAY_H
-    ax.add_patch(Rectangle((sx(BRKT_T), sy(grate_bot)),
-                            sx(WALKWAY_W - BRKT_T), sy(WALKWAY_GRATE_T),
+    ax.add_patch(Rectangle(((BRKT_T), (grate_bot)),
+                            (WALKWAY_W - BRKT_T), (WALKWAY_GRATE_T),
                             fc=C_GRATE, ec=C_OUT, lw=1.2, zorder=7))
     # Grate pattern (vertical bars in cross-section)
     bar_spacing = 34.2  # ~34mm bearing bar pitch (standard)
     bar_w = 3           # bearing bar thickness
     for yd in np.arange(BRKT_T + bar_w, WALKWAY_W - bar_w, bar_spacing):
-        ax.add_patch(Rectangle((sx(yd), sy(grate_bot)),
-                                sx(bar_w), sy(WALKWAY_GRATE_T),
+        ax.add_patch(Rectangle(((yd), (grate_bot)),
+                                (bar_w), (WALKWAY_GRATE_T),
                                 fc="#909098", ec=C_OUT, lw=0.3, zorder=8))
     # Cross bars (twist-locked — shown as small rectangles at mid-height)
     cross_h = 3
     for yd in np.arange(BRKT_T + bar_spacing / 2, WALKWAY_W, bar_spacing):
-        ax.add_patch(Rectangle((sx(yd - 1), sy(grate_bot + WALKWAY_GRATE_T / 2 - cross_h / 2)),
-                                sx(2), sy(cross_h),
+        ax.add_patch(Rectangle(((yd - 1), (grate_bot + WALKWAY_GRATE_T / 2 - cross_h / 2)),
+                                (2), (cross_h),
                                 fc="#808088", ec="none", zorder=9, alpha=0.7))
 
-    leader(ax, sx(WALKWAY_W / 4), sy((grate_bot + grate_top) / 2),
-           sx(WALKWAY_W / 4 - 30), sy(grate_top + 35),
+    leader(ax, (WALKWAY_W / 4), ((grate_bot + grate_top) / 2),
+           (WALKWAY_W / 4 - 30), (grate_top + 35),
            f"MOLDED GRP (FIBERGLASS) GRATING\n{WALKWAY_GRATE_T}mm \u00b7 VINYL-ESTER \u00b7 GRIT TOP",
            color=C_OUT, fs=6, ha="center", va="center",
            arrow_style="-|>", font=FONT)
@@ -386,64 +384,64 @@ def sheet2():
     clip_above = 5    # extends above grate top
     clip_bot = brkt_arm_z - clip_below
     clip_top = grate_top + clip_above
-    ax.add_patch(Rectangle((sx(clip_yd), sy(clip_bot)),
-                            sx(clip_w), sy(clip_top - clip_bot),
+    ax.add_patch(Rectangle(((clip_yd), (clip_bot)),
+                            (clip_w), (clip_top - clip_bot),
                             fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
-    leader(ax, sx(clip_yd + clip_w), sy(brkt_arm_z),
-           sx(clip_yd + 30), sy(brkt_arm_z + 55),
+    leader(ax, (clip_yd + clip_w), (brkt_arm_z),
+           (clip_yd + 30), (brkt_arm_z + 55),
            "316 SS HOLD-DOWN\nCLIP + BOLT", color="#505058", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Clear tray area annotation ───────────────────────────────────────────
     # Arrow showing clear air under the entire walkway — no legs, no beam
-    clr_x = sx(WALKWAY_W * 0.7)
-    ax.annotate("", xy=(clr_x, sy(TRAY_FLOOR + 1)), xytext=(clr_x, sy(brkt_arm_z - 1)),
+    clr_x = (WALKWAY_W * 0.7)
+    ax.annotate("", xy=(clr_x, (TRAY_FLOOR + 1)), xytext=(clr_x, (brkt_arm_z - 1)),
                 arrowprops=dict(arrowstyle="<->", color="#208020", lw=1.2, mutation_scale=8))
     gap_mm = brkt_arm_z - TRAY_FLOOR
-    ax.text(clr_x + sx(5), sy((TRAY_FLOOR + brkt_arm_z) / 2),
+    ax.text(clr_x + (5), ((TRAY_FLOOR + brkt_arm_z) / 2),
             f"{gap_mm:.0f}mm\nCLEAR AIR\n(NO LEGS,\nNO BEAM —\nFILM LAYS\nFLAT HERE)",
             ha="left", va="center", fontsize=5, color="#208020",
             fontweight="bold", **FONT, zorder=15, alpha=0.8)
 
     # ── Dimension lines ──────────────────────────────────────────────────────
     # Walkway width (= bracket arm cantilever)
-    draw_dim_h(ax, sx(0), sx(WALKWAY_W), sy(grate_top + 55),
-               f"{WALKWAY_W}mm WALKWAY WIDTH", offset=sy(8), fs=7, font=FONT)
+    draw_dim_h(ax, (0), (WALKWAY_W), (grate_top + 55),
+               f"{WALKWAY_W}mm WALKWAY WIDTH", offset=(8), fs=7, font=FONT)
 
     # Deck height (floor to grate top)
-    draw_dim_v(ax, sx(WALKWAY_W + 22), sy(0), sy(grate_top),
-               f"{WALKWAY_H}mm DECK TOP", offset=sx(6), fs=7, right=True, font=FONT)
+    draw_dim_v(ax, (WALKWAY_W + 22), (0), (grate_top),
+               f"{WALKWAY_H}mm DECK TOP", offset=(6), fs=7, right=True, font=FONT)
 
     # Grate thickness
-    draw_dim_v(ax, sx(WALKWAY_W + 5), sy(grate_bot), sy(grate_top),
-               f"{WALKWAY_GRATE_T}mm DECK\nHEIGHT", offset=sx(8), fs=6.5, right=True, font=FONT)
+    draw_dim_v(ax, (WALKWAY_W + 5), (grate_bot), (grate_top),
+               f"{WALKWAY_GRATE_T}mm DECK\nHEIGHT", offset=(8), fs=6.5, right=True, font=FONT)
 
     # Bracket vertical leg height
-    draw_dim_v(ax, sx(reinf_yd - BOLT_HEAD - 45), sy(0), sy(BRKT_VERT),
-               f"{BRKT_VERT}mm VERT LEG", offset=sx(8), fs=6.5, right=False, font=FONT)
+    draw_dim_v(ax, (reinf_yd - BOLT_HEAD - 45), (0), (BRKT_VERT),
+               f"{BRKT_VERT}mm VERT LEG", offset=(8), fs=6.5, right=False, font=FONT)
 
     # Bracket arm height
-    draw_dim_v(ax, sx(WALKWAY_W + 5), sy(0), sy(brkt_arm_z),
-               f"{brkt_arm_z}mm ARM TOP", offset=sx(8), fs=6.5, right=True, font=FONT)
+    draw_dim_v(ax, (WALKWAY_W + 5), (0), (brkt_arm_z),
+               f"{brkt_arm_z}mm ARM TOP", offset=(8), fs=6.5, right=True, font=FONT)
 
     # Tray rim height
-    draw_dim_v(ax, sx(TRAY_RIM_YD + 15), sy(0), sy(PROC_TRAY_RIM),
-               f"{PROC_TRAY_RIM}mm", offset=sx(8), fs=6.5, right=True,
+    draw_dim_v(ax, (TRAY_RIM_YD + 15), (0), (PROC_TRAY_RIM),
+               f"{PROC_TRAY_RIM}mm", offset=(8), fs=6.5, right=True,
                color=C_TRAY, font=FONT)
 
     # Clearance above rim (grate bottom to rim top)
     clr = grate_bot - PROC_TRAY_RIM
-    draw_dim_v(ax, sx(TRAY_RIM_YD + 15), sy(PROC_TRAY_RIM), sy(grate_bot),
-               f"{clr}mm\nCLR", offset=sx(8), fs=6.5, right=True,
+    draw_dim_v(ax, (TRAY_RIM_YD + 15), (PROC_TRAY_RIM), (grate_bot),
+               f"{clr}mm\nCLR", offset=(8), fs=6.5, right=True,
                color="#208020", font=FONT)
 
     # Corrugation depth
-    draw_dim_h(ax, sx(-CORR_DEPTH), sx(0), sy(-22),
-               f"{CORR_DEPTH}mm\nCORR", offset=sy(10), fs=6, above=False, font=FONT)
+    draw_dim_h(ax, (-CORR_DEPTH), (0), (-22),
+               f"{CORR_DEPTH}mm\nCORR", offset=(10), fs=6, above=False, font=FONT)
 
     # Wall to tray rim
-    draw_dim_h(ax, sx(0), sx(TRAY_RIM_YD), sy(-35),
-               f"{TRAY_RIM_YD}mm", offset=sy(10), fs=6, above=False, font=FONT)
+    draw_dim_h(ax, (0), (TRAY_RIM_YD), (-35),
+               f"{TRAY_RIM_YD}mm", offset=(10), fs=6, above=False, font=FONT)
 
     # ── Operator shoes (pair, US size 9 = ~270mm long × 100mm wide) ────────
     # In this cross-section (looking along X), shoes appear as their width
@@ -460,29 +458,29 @@ def sheet2():
         s_yd = shoe_start + i * (SHOE_W + SHOE_GAP)
         # Shoe sole (yellow ghost)
         ax.add_patch(Rectangle(
-            (sx(s_yd), sy(shoe_z)), sx(SHOE_W), sy(SHOE_H),
+            ((s_yd), (shoe_z)), (SHOE_W), (SHOE_H),
             fc="#FFD700", ec="#B89600", lw=0.6,
             zorder=10, alpha=0.3, ls="--"))
 
     # Shoe length annotation (into-page dimension, since shoes point along X)
-    ax.text(sx(WALKWAY_W / 2), sy(shoe_z + SHOE_H + 6),
+    ax.text((WALKWAY_W / 2), (shoe_z + SHOE_H + 6),
             "US 9 SHOE PAIR\n(270mm LONG \u00d7 100mm WIDE)",
             ha="center", va="bottom", fontsize=5.5, color="#404040",
             **FONT, zorder=15, alpha=0.7)
-    leader(ax, sx(shoe_start + SHOE_W / 2), sy(shoe_z + SHOE_H),
-           sx(95), sy(shoe_z + SHOE_H + 15),
+    leader(ax, (shoe_start + SHOE_W / 2), (shoe_z + SHOE_H),
+           (95), (shoe_z + SHOE_H + 15),
            "OPERATOR\nSTANDING", color=C_TRAY, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Axis labels ──────────────────────────────────────────────────────────
-    ax.text(sx(YD_HI / 2), sy(Z_LO + 5),
+    ax.text((YD_HI / 2), (Z_LO + 5),
             "Yd  (container width, 0 = pinhole wall)  \u2192",
             ha="center", va="bottom", fontsize=6.5, color=C_DIM,
             **FONT, zorder=15, style="italic")
 
     # ── Notes ────────────────────────────────────────────────────────────────
-    notes_x = sx(WALKWAY_W + 40)
-    notes_top = sy(Z_HI - 10)
+    notes_x = (WALKWAY_W + 40)
+    notes_top = (Z_HI - 10)
     notes = [
         "CONSTRUCTION NOTES:",
         "",
@@ -511,7 +509,7 @@ def sheet2():
         f"   no brackets (panel conflict). Rests on",
         f"   near/far butt joints. {WALKWAY_GRATE_T}mm grating.",
     ]
-    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6), fs=7, width=sx(130), font=FONT)
+    draw_notes(ax, notes, notes_x, notes_top, spacing=(6), fs=7, width=(130), font=FONT)
 
     # ══════════════════════════════════════════════════════════════════════════
     # VIEW B — Plate face (looking along −Yd, toward wall)
@@ -1106,8 +1104,6 @@ def sheet3():
 
     PLAN view looking down.  Horizontal = X, Vertical = Yd.
     """
-    def sx(mm): return mm
-    def sy(mm): return mm
 
     # ── Geometry ─────────────────────────────────────────────────────────────
     SHS       = 40                            # 40×40×3 SHS section
@@ -1133,24 +1129,24 @@ def sheet3():
     fig, ax = plt.subplots(figsize=(14, 10))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
-    ax.set_xlim(sx(X_LO), sx(X_HI))
-    ax.set_ylim(sy(Y_LO), sy(Y_HI))
+    ax.set_xlim((X_LO), (X_HI))
+    ax.set_ylim((Y_LO), (Y_HI))
     ax.set_aspect("equal")
     ax.axis("off")
 
     # ── Side walls (Yd=0 near, Yd=C_WID far) ─────────────────────────────────
     for wy in [0, C_WID]:
-        ax.plot([sx(X_LO), sx(X_HI)], [sy(wy), sy(wy)],
+        ax.plot([(X_LO), (X_HI)], [(wy), (wy)],
                 color=C_OUT, lw=2.0, zorder=3)
-    ax.text(sx(WK_L_X - 80), sy(0 - 55), "NEAR WALL (Yd=0)", ha="left", va="center",
+    ax.text((WK_L_X - 80), (0 - 55), "NEAR WALL (Yd=0)", ha="left", va="center",
             fontsize=6, color=C_OUT, **FONT)
-    ax.text(sx(WK_L_X - 80), sy(C_WID + 55), f"FAR WALL (Yd={C_WID})", ha="left", va="center",
+    ax.text((WK_L_X - 80), (C_WID + 55), f"FAR WALL (Yd={C_WID})", ha="left", va="center",
             fontsize=6, color=C_OUT, **FONT)
 
     # ── IBC 2×2 stack ghost ──────────────────────────────────────────────────
-    ax.add_patch(Rectangle((sx(IBC_COL_X), sy(0)), sx(IBC_W), sy(C_WID),
+    ax.add_patch(Rectangle(((IBC_COL_X), (0)), (IBC_W), (C_WID),
                             fc="#FFE8C0", ec=C_IBC, lw=1.0, ls="--", alpha=0.18, zorder=1))
-    ax.text(sx(IBC_COL_X + IBC_W / 2), sy(C_WID / 2), "IBC 2×2 STACK\n(GHOST)",
+    ax.text((IBC_COL_X + IBC_W / 2), (C_WID / 2), "IBC 2×2 STACK\n(GHOST)",
             ha="center", va="center", fontsize=7, color=C_IBC, fontweight="bold",
             **FONT, alpha=0.55, zorder=2)
 
@@ -1158,41 +1154,41 @@ def sheet3():
     GUT_X = X_LO + 15
 
     # ── Grated deck (hatched) over the rectangle ─────────────────────────────
-    ax.add_patch(Rectangle((sx(WK_L_X), sy(0)), sx(WK_R_X - WK_L_X), sy(C_WID),
+    ax.add_patch(Rectangle(((WK_L_X), (0)), (WK_R_X - WK_L_X), (C_WID),
                             fc=C_GRATE, ec="none", alpha=0.30, zorder=4, hatch="++"))
 
     # ── Closed SHS rectangle: 2 long beams + 2 end beams ─────────────────────
     for bx in [WK_L_X, WK_R_X]:
-        ax.add_patch(Rectangle((sx(bx), sy(0)), sx(SHS), sy(C_WID),
+        ax.add_patch(Rectangle(((bx), (0)), (SHS), (C_WID),
                                 fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=8, alpha=0.9))
     for ey in [0, C_WID - SHS]:
-        ax.add_patch(Rectangle((sx(WK_L_X), sy(ey)), sx((WK_R_X + SHS) - WK_L_X), sy(SHS),
+        ax.add_patch(Rectangle(((WK_L_X), (ey)), ((WK_R_X + SHS) - WK_L_X), (SHS),
                                 fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=8, alpha=0.9))
 
-    leader(ax, sx(WK_L_X + SHS / 2), sy(C_WID * 0.80),
-           sx(GUT_X), sy(C_WID * 0.84),
+    leader(ax, (WK_L_X + SHS / 2), (C_WID * 0.80),
+           (GUT_X), (C_WID * 0.84),
            f"LONG BEAM\n40×40×3 SHS\n(×2, X={WK_L_X}/{WK_R_X})",
            color=C_STEEL, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
-    leader(ax, sx((WK_L_X + WK_R_X) / 2), sy(C_WID - SHS / 2),
-           sx((WK_L_X + WK_R_X) / 2 - 40), sy(C_WID + 70),
+    leader(ax, ((WK_L_X + WK_R_X) / 2), (C_WID - SHS / 2),
+           ((WK_L_X + WK_R_X) / 2 - 40), (C_WID + 70),
            "END BEAM (×2)\ncloses the rectangle",
            color=C_STEEL, fs=6, ha="center", va="bottom", arrow_style="-|>", font=FONT)
 
     # ── Center cantilever arms off the IBC uprights ──────────────────────────
     for (yc0, yc1), ay in zip(UP_YDS, ARM_YDS):
-        ax.add_patch(Rectangle((sx(UP_X0), sy(yc0)), sx(IBC_FRAME_RHS), sy(yc1 - yc0),
+        ax.add_patch(Rectangle(((UP_X0), (yc0)), (IBC_FRAME_RHS), (yc1 - yc0),
                                 fc=C_IBC, ec=C_OUT, lw=1.0, zorder=6, alpha=0.7))
-        ax.add_patch(Rectangle((sx(WK_L_X), sy(ay - SHS / 2)), sx(ARM_X - WK_L_X), sy(SHS),
+        ax.add_patch(Rectangle(((WK_L_X), (ay - SHS / 2)), (ARM_X - WK_L_X), (SHS),
                                 fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=7, alpha=0.95))
         for bx in [WK_L_X, WK_R_X]:
-            ax.add_patch(Rectangle((sx(bx), sy(ay - SHS / 2)), sx(SHS), sy(SHS),
+            ax.add_patch(Rectangle(((bx), (ay - SHS / 2)), (SHS), (SHS),
                                     fc="none", ec=C_OUT, lw=0.9, ls=(0, (2, 1.5)), zorder=9))
-    leader(ax, sx(WK_L_X + SHS / 2), sy(ARM_YDS[0]),
-           sx(GUT_X), sy(C_WID * 0.52),
+    leader(ax, (WK_L_X + SHS / 2), (ARM_YDS[0]),
+           (GUT_X), (C_WID * 0.52),
            "CENTER CANTILEVER ARM (×2)\n40×40×3 SHS off the IBC\ncorridor uprights",
            color=C_STEEL, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
-    leader(ax, sx(WK_R_X + SHS / 2), sy(ARM_YDS[1] + SHS / 2),
-           sx(WK_R_X + 130), sy(ARM_YDS[1] + 180),
+    leader(ax, (WK_R_X + SHS / 2), (ARM_YDS[1] + SHS / 2),
+           (WK_R_X + 130), (ARM_YDS[1] + 180),
            "HALF-LAP JOINT\n(arm + long beam\ncross-halved, flush top)",
            color=C_OUT, fs=5.5, ha="center", va="bottom", arrow_style="-|>", font=FONT)
 
@@ -1200,32 +1196,32 @@ def sheet3():
     # Left corners (X=WK_L_X) on wall cleats
     for cy in [0, C_WID]:
         cyb = cy if cy == 0 else cy - SHS
-        ax.add_patch(Rectangle((sx(WK_L_X - 12), sy(cyb - 9)), sx(SHS + 24), sy(SHS + 18),
+        ax.add_patch(Rectangle(((WK_L_X - 12), (cyb - 9)), (SHS + 24), (SHS + 18),
                                 fc=C_PLATE, ec=C_OUT, lw=1.0, zorder=6, alpha=0.6))
-    leader(ax, sx(WK_L_X + SHS / 2), sy(SHS / 2),
-           sx(GUT_X), sy(C_WID * 0.24),
+    leader(ax, (WK_L_X + SHS / 2), (SHS / 2),
+           (GUT_X), (C_WID * 0.24),
            "WALL CLEAT (left corners)\nback-plate + ext. plate + shelf,\nM12 through-bolts",
            color=C_PLATE, fs=5.5, ha="left", va="center", arrow_style="-|>", font=FONT)
 
     # Right corners (X≈WALL_X) on combined corner plates — shared with BR film rail
     for cy in [0, C_WID]:
         cyb = cy if cy == 0 else cy - 70
-        ax.add_patch(Rectangle((sx(WK_R_X - 6), sy(cyb)), sx((WALL_X + 18) - (WK_R_X - 6)), sy(70),
+        ax.add_patch(Rectangle(((WK_R_X - 6), (cyb)), ((WALL_X + 18) - (WK_R_X - 6)), (70),
                                 fc=C_PLATE, ec=C_OUT, lw=1.2, zorder=10, alpha=0.85))
-    ax.plot([sx(WALL_X), sx(WALL_X)], [sy(0), sy(C_WID)],
+    ax.plot([(WALL_X), (WALL_X)], [(0), (C_WID)],
             color=C_CL, lw=1.4, ls=(0, (6, 3)), zorder=5)
-    ax.text(sx(WALL_X + 12), sy(C_WID * 0.50), "BOTTOM FILM RAIL (BR) — X=4649",
+    ax.text((WALL_X + 12), (C_WID * 0.50), "BOTTOM FILM RAIL (BR) — X=4649",
             ha="left", va="center", fontsize=5.5, color=C_CL, rotation=90, **FONT)
-    leader(ax, sx(WK_R_X + SHS / 2), sy(70),
-           sx(GUT_X), sy(C_WID * 0.06),
+    leader(ax, (WK_R_X + SHS / 2), (70),
+           (GUT_X), (C_WID * 0.06),
            "COMBINED CORNER PLATE (right corners)\nshared with the BR film rail — 10mm,\n4× M12, permanently bolted",
            color=C_PLATE, fs=5.5, ha="left", va="center", arrow_style="-|>", font=FONT)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
-    draw_dim_h(ax, sx(WK_L_X), sx(WK_R_X), sy(-70),
-               f"{WALKWAY_W}mm", offset=sy(6), fs=7, font=FONT)
-    draw_dim_v(ax, sx(X_HI - 30), sy(0), sy(C_WID),
-               f"{C_WID}mm\n(full width)", offset=sx(8), fs=6.5, right=True, font=FONT)
+    draw_dim_h(ax, (WK_L_X), (WK_R_X), (-70),
+               f"{WALKWAY_W}mm", offset=(6), fs=7, font=FONT)
+    draw_dim_v(ax, (X_HI - 30), (0), (C_WID),
+               f"{C_WID}mm\n(full width)", offset=(8), fs=6.5, right=True, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
@@ -1241,8 +1237,8 @@ def sheet3():
         "5. ZERO floor contact, ZERO roof penetrations —",
         "   replaces the ceiling-hung hangers.",
     ]
-    draw_notes(ax, notes, sx(IBC_COL_X + 40), sy(C_WID * 0.46),
-               spacing=sy(52), fs=6.5, width=sx(IBC_W - 60), font=FONT)
+    draw_notes(ax, notes, (IBC_COL_X + 40), (C_WID * 0.46),
+               spacing=(52), fs=6.5, width=(IBC_W - 60), font=FONT)
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 9",
@@ -1266,8 +1262,6 @@ def sheet3():
 # Scale ≈ 2:1 for clarity.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet4():
-    def sx(mm): return mm
-    def sy(mm): return mm
 
     # ── Key geometry ─────────────────────────────────────────────────────────
     BRKT_ARM_Z = WALKWAY_H - WALKWAY_GRATE_T  # 65mm (bracket arm top = grate bottom)
@@ -1299,35 +1293,35 @@ def sheet4():
     fig, ax = plt.subplots(figsize=(18, 13))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
-    ax.set_xlim(sx(X_LO), sx(X_HI))
-    ax.set_ylim(sy(Z_LO), sy(Z_HI))
+    ax.set_xlim((X_LO), (X_HI))
+    ax.set_ylim((Z_LO), (Z_HI))
     ax.set_aspect("equal")
     ax.axis("off")
 
     # ── Container floor ──────────────────────────────────────────────────────
-    ax.add_patch(Rectangle((sx(X_LO), sy(-15)), sx(X_HI - X_LO), sy(15),
+    ax.add_patch(Rectangle(((X_LO), (-15)), (X_HI - X_LO), (15),
                             fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="///", zorder=2))
 
     # ── Processing tray rim (at X = PROC_TRAY_X_L = 170mm) ──────────────────
     tray_x = PROC_TRAY_X_L   # = 170mm (same as LEFT_WK_L)
     # Tray left rim (vertical wall)
-    ax.add_patch(Rectangle((sx(tray_x - TRAY_WALL), sy(0)),
-                            sx(TRAY_WALL), sy(PROC_TRAY_RIM),
+    ax.add_patch(Rectangle(((tray_x - TRAY_WALL), (0)),
+                            (TRAY_WALL), (PROC_TRAY_RIM),
                             fc=C_TRAY, ec=C_OUT, lw=1.0, zorder=4))
     # Tray floor extending right
     tray_floor_end = X_HI - 200
-    ax.add_patch(Rectangle((sx(tray_x), sy(0)),
-                            sx(tray_floor_end - tray_x), sy(TRAY_FLOOR_T),
+    ax.add_patch(Rectangle(((tray_x), (0)),
+                            (tray_floor_end - tray_x), (TRAY_FLOOR_T),
                             fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
     # Sawtooth break line on tray floor
-    bx = sx(tray_floor_end)
+    bx = (tray_floor_end)
     z_lo, z_hi = 0, TRAY_FLOOR_T
     zz = np.linspace(z_lo, z_hi, 5)
     ax.plot([bx - 3, bx + 3, bx - 3, bx + 3, bx - 3],
             zz, color=C_OUT, lw=1.0, zorder=5)
     # Tray rim label
-    leader(ax, sx(tray_x - 5), sy(PROC_TRAY_RIM / 2 + 10),
-           sx(tray_x - 70), sy(PROC_TRAY_RIM + 15),
+    leader(ax, (tray_x - 5), (PROC_TRAY_RIM / 2 + 10),
+           (tray_x - 70), (PROC_TRAY_RIM + 15),
            f"TRAY RIM\n{PROC_TRAY_RIM}mm\n(304 SS)", color=C_TRAY, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -1339,60 +1333,60 @@ def sheet4():
     fx0 = LEFT_WK_CANT_FOOT_X0
     arm_z0 = LEFT_WK_CANT_ARM_Z0
     arm_x0 = legx + post / 2
-    ax.add_patch(Rectangle((sx(fx0), sy(0)), sx(fl), sy(ft),
+    ax.add_patch(Rectangle(((fx0), (0)), (fl), (ft),
                             fc=C_SUPPORT, ec=C_OUT, lw=0.9, zorder=5))
-    ax.add_patch(Rectangle((sx(legx - post / 2), sy(0)), sx(post), sy(grate_bot),
+    ax.add_patch(Rectangle(((legx - post / 2), (0)), (post), (grate_bot),
                             fc=C_SUPPORT, ec=C_OUT, lw=1.0, zorder=5))
-    ax.add_patch(Rectangle((sx(arm_x0), sy(arm_z0)), sx(LEFT_WK_R - arm_x0),
-                            sy(grate_bot - arm_z0), fc=C_SUPPORT, ec=C_OUT, lw=1.0, zorder=6))
-    leader(ax, sx(legx), sy(grate_bot * 0.5), sx(legx - 70), sy(grate_bot * 0.5),
+    ax.add_patch(Rectangle(((arm_x0), (arm_z0)), (LEFT_WK_R - arm_x0),
+                            (grate_bot - arm_z0), fc=C_SUPPORT, ec=C_OUT, lw=1.0, zorder=6))
+    leader(ax, (legx), (grate_bot * 0.5), (legx - 70), (grate_bot * 0.5),
            "FLOOR-LEG CANTILEVER\nBRACKET (x5) - 50x50 post\non bare floor + arm to X470\n(SEE SHEET 6)",
            color=C_SUPPORT, fs=5, ha="center", va="center", arrow_style="-|>", font=FONT)
     # Spray bar passes under the arm tip (Z20-60, stays at floor level)
-    ax.add_patch(Rectangle((sx(LEFT_WK_R), sy(SPRAY_BAR_Z_BOT)), sx(40),
-                            sy(SPRAY_BAR_Z_TOP - SPRAY_BAR_Z_BOT), fc="#C8D8E8", ec=C_OUT, lw=1.0, zorder=4))
+    ax.add_patch(Rectangle(((LEFT_WK_R), (SPRAY_BAR_Z_BOT)), (40),
+                            (SPRAY_BAR_Z_TOP - SPRAY_BAR_Z_BOT), fc="#C8D8E8", ec=C_OUT, lw=1.0, zorder=4))
 
     # ── Panel swing sweep (ghost) ────────────────────────────────────────────
     # The swinging cage sweeps X=0 to X=PANEL_INNER, bottom at Z=PANEL_FLOOR_GAP
     PANEL_Z_TOP = 250   # show enough of panel to be visible (not full height)
-    ax.add_patch(Rectangle((sx(0), sy(PANEL_FLOOR_GAP)),
-                            sx(PANEL_INNER), sy(PANEL_Z_TOP - PANEL_FLOOR_GAP),
+    ax.add_patch(Rectangle(((0), (PANEL_FLOOR_GAP)),
+                            (PANEL_INNER), (PANEL_Z_TOP - PANEL_FLOOR_GAP),
                             fc="#CC4422", ec="#CC4422", lw=1.5, ls="--",
                             alpha=0.08, zorder=3))
-    ax.add_patch(Rectangle((sx(0), sy(PANEL_FLOOR_GAP)),
-                            sx(PANEL_INNER), sy(PANEL_Z_TOP - PANEL_FLOOR_GAP),
+    ax.add_patch(Rectangle(((0), (PANEL_FLOOR_GAP)),
+                            (PANEL_INNER), (PANEL_Z_TOP - PANEL_FLOOR_GAP),
                             fc="none", ec="#CC4422", lw=1.5, ls="--",
                             alpha=0.5, zorder=8))
     # Panel bottom line (Z=80mm)
-    ax.plot([sx(0), sx(PANEL_INNER)], [sy(PANEL_FLOOR_GAP), sy(PANEL_FLOOR_GAP)],
+    ax.plot([(0), (PANEL_INNER)], [(PANEL_FLOOR_GAP), (PANEL_FLOOR_GAP)],
             color="#CC4422", lw=2.0, ls="--", alpha=0.6, zorder=8)
-    ax.text(sx(PANEL_INNER / 2), sy(PANEL_Z_TOP - 10),
+    ax.text((PANEL_INNER / 2), (PANEL_Z_TOP - 10),
             f"PANEL SWING\nSWEEP\n(rides Z={PANEL_FLOOR_GAP}mm over\nthe Z115 brackets)",
             ha="center", va="top", fontsize=6, color="#CC4422",
             fontweight="bold", **FONT, alpha=0.7, zorder=15)
 
     # ── Left walkway grating (X=170 to X=470, removable lift-out) ────────────
     C_LEFT_WK = "#A8C8A8"   # green tint for removable section
-    ax.add_patch(Rectangle((sx(LEFT_WK_L), sy(grate_bot)),
-                            sx(WALKWAY_W), sy(WALKWAY_GRATE_T),
+    ax.add_patch(Rectangle(((LEFT_WK_L), (grate_bot)),
+                            (WALKWAY_W), (WALKWAY_GRATE_T),
                             fc=C_LEFT_WK, ec=C_OUT, lw=1.5, zorder=7))
     # Bearing bars
     bar_spacing = 34.2
     bar_w = 3
     for x in np.arange(LEFT_WK_L + bar_w, LEFT_WK_R - bar_w, bar_spacing):
-        ax.add_patch(Rectangle((sx(x), sy(grate_bot)),
-                                sx(bar_w), sy(WALKWAY_GRATE_T),
+        ax.add_patch(Rectangle(((x), (grate_bot)),
+                                (bar_w), (WALKWAY_GRATE_T),
                                 fc="#8AAA8A", ec=C_OUT, lw=0.3, zorder=8))
-    ax.text(sx((LEFT_WK_L + LEFT_WK_R) / 2), sy(grate_top + 4),
+    ax.text(((LEFT_WK_L + LEFT_WK_R) / 2), (grate_top + 4),
             f"LEFT WALKWAY GRATING\n({WALKWAY_GRATE_T}mm) \u2014 REMOVABLE LIFT-OUT",
             ha="center", va="bottom", fontsize=6.5, color="#206020",
             fontweight="bold", **FONT, zorder=15)
 
     # -- The grate inner edge (X470) bears on the cantilever-arm tip (Z115) -----
-    ax.plot([sx(LEFT_WK_R - 60), sx(LEFT_WK_R)], [sy(grate_bot), sy(grate_bot)],
+    ax.plot([(LEFT_WK_R - 60), (LEFT_WK_R)], [(grate_bot), (grate_bot)],
             color="#CC4400", lw=3.0, zorder=10)
-    leader(ax, sx(LEFT_WK_R - 30), sy(grate_bot),
-           sx(LEFT_WK_R - 150), sy(grate_bot - 24),
+    leader(ax, (LEFT_WK_R - 30), (grate_bot),
+           (LEFT_WK_R - 150), (grate_bot - 24),
            f"GRATE INNER EDGE BEARS\nON THE ARM TIP (Z={int(grate_bot)})\nX={LEFT_WK_R} \u2014 LIFT TO REMOVE",
            color="#CC4400", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
@@ -1400,21 +1394,21 @@ def sheet4():
     # ── Near walkway grating (X=470 onward, standard gray) ───────────────────
     near_wk_start = LEFT_WK_R
     near_wk_end = near_wk_start + NEAR_WK_SHOW
-    ax.add_patch(Rectangle((sx(near_wk_start), sy(grate_bot)),
-                            sx(NEAR_WK_SHOW), sy(WALKWAY_GRATE_T),
+    ax.add_patch(Rectangle(((near_wk_start), (grate_bot)),
+                            (NEAR_WK_SHOW), (WALKWAY_GRATE_T),
                             fc=C_GRATE, ec=C_OUT, lw=1.2, zorder=7))
     # Bearing bars
     for x in np.arange(near_wk_start + bar_w, near_wk_end - bar_w, bar_spacing):
-        ax.add_patch(Rectangle((sx(x), sy(grate_bot)),
-                                sx(bar_w), sy(WALKWAY_GRATE_T),
+        ax.add_patch(Rectangle(((x), (grate_bot)),
+                                (bar_w), (WALKWAY_GRATE_T),
                                 fc="#909098", ec=C_OUT, lw=0.3, zorder=8))
     # Sawtooth break line on right edge (near walkway continues)
-    bx = sx(near_wk_end)
-    z_lo, z_hi = sy(grate_bot - 2), sy(grate_top + 2)
+    bx = (near_wk_end)
+    z_lo, z_hi = (grate_bot - 2), (grate_top + 2)
     zz = np.linspace(z_lo, z_hi, 7)
     ax.plot([bx - 3, bx + 3, bx - 3, bx + 3, bx - 3, bx + 3, bx - 3],
             zz, color=C_OUT, lw=1.0, zorder=10)
-    ax.text(sx(near_wk_start + NEAR_WK_SHOW / 2), sy(grate_top + 4),
+    ax.text((near_wk_start + NEAR_WK_SHOW / 2), (grate_top + 4),
             f"NEAR WALKWAY\n({WALKWAY_GRATE_T}mm GRATE)",
             ha="center", va="bottom", fontsize=5.5, color=C_OUT,
             **FONT, zorder=15)
@@ -1426,18 +1420,18 @@ def sheet4():
     clip_above = 5
     clip_bot_z = BRKT_ARM_Z - clip_below
     clip_top_z = grate_top + clip_above
-    ax.add_patch(Rectangle((sx(clip_x), sy(clip_bot_z)),
-                            sx(clip_w), sy(clip_top_z - clip_bot_z),
+    ax.add_patch(Rectangle(((clip_x), (clip_bot_z)),
+                            (clip_w), (clip_top_z - clip_bot_z),
                             fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
-    leader(ax, sx(clip_x + clip_w + 2), sy(grate_top),
-           sx(clip_x + 50), sy(grate_top + 20),
+    leader(ax, (clip_x + clip_w + 2), (grate_top),
+           (clip_x + 50), (grate_top + 20),
            "316 SS HOLD-DOWN\nCLIP + BOLT", color="#505058", fs=5.5,
            ha="left", va="center", arrow_style="-|>", font=FONT)
 
     # ── Butt joint line at X=470 ─────────────────────────────────────────────
-    ax.plot([sx(LEFT_WK_R), sx(LEFT_WK_R)], [sy(-5), sy(grate_top + 3)],
+    ax.plot([(LEFT_WK_R), (LEFT_WK_R)], [(-5), (grate_top + 3)],
             color=C_OUT, lw=2.0, ls=(0, (5, 3)), zorder=9)
-    ax.text(sx(LEFT_WK_R), sy(-18),
+    ax.text((LEFT_WK_R), (-18),
             f"BUTT JOINT\nX={LEFT_WK_R}mm",
             ha="center", va="top", fontsize=6, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
@@ -1446,39 +1440,39 @@ def sheet4():
     # rev10: the panel + drum swing ~56° about the pivot; the cage sweeps roughly to
     # X=PANEL_INNER (~1000), ~SWEEP_OVER (~530mm) PAST the X=470 butt joint — through
     # the zone the removable left walkway + edge beam have vacated, riding the Z130 gap.
-    draw_dim_h(ax, sx(LEFT_WK_R), sx(PANEL_INNER), sy(grate_top + 45),
+    draw_dim_h(ax, (LEFT_WK_R), (PANEL_INNER), (grate_top + 45),
                f"{SWEEP_OVER}mm CAGE SWEEPS PAST X={LEFT_WK_R}\n(LEFT WALKWAY REMOVED FIRST)",
-               offset=sy(5), fs=6.5, color="#CC4422", font=FONT)
+               offset=(5), fs=6.5, color="#CC4422", font=FONT)
     # Vertical guide line at the panel front face
-    ax.plot([sx(PANEL_INNER), sx(PANEL_INNER)], [sy(0), sy(grate_top + 55)],
+    ax.plot([(PANEL_INNER), (PANEL_INNER)], [(0), (grate_top + 55)],
             color="#CC4422", lw=0.6, ls=":", alpha=0.5, zorder=3)
-    ax.plot([sx(LEFT_WK_R), sx(LEFT_WK_R)], [sy(grate_top + 5), sy(grate_top + 55)],
+    ax.plot([(LEFT_WK_R), (LEFT_WK_R)], [(grate_top + 5), (grate_top + 55)],
             color="#CC4422", lw=0.6, ls=":", alpha=0.5, zorder=3)
 
     # ── Left walkway span dimension ──────────────────────────────────────────
-    draw_dim_h(ax, sx(LEFT_WK_L), sx(LEFT_WK_R), sy(grate_top + 70),
-               f"{WALKWAY_W}mm LEFT WALKWAY", offset=sy(5), fs=7, font=FONT)
+    draw_dim_h(ax, (LEFT_WK_L), (LEFT_WK_R), (grate_top + 70),
+               f"{WALKWAY_W}mm LEFT WALKWAY", offset=(5), fs=7, font=FONT)
 
     # ── Height dimensions (right side) ───────────────────────────────────────
     dim_x = near_wk_end + 40
     # Grate top
-    draw_dim_v(ax, sx(dim_x-30), sy(0), sy(grate_top),
-               f"{int(grate_top)}mm\nDECK", offset=sx(6), fs=6, right=True, font=FONT)
+    draw_dim_v(ax, (dim_x-30), (0), (grate_top),
+               f"{int(grate_top)}mm\nDECK", offset=(6), fs=6, right=True, font=FONT)
     # Beam ledge height (grating bears here)
-    draw_dim_v(ax, sx(dim_x), sy(0), sy(BRKT_ARM_Z),
-               f"{BRKT_ARM_Z}mm\nLEDGE", offset=sx(30), fs=6, right=True, font=FONT)
+    draw_dim_v(ax, (dim_x), (0), (BRKT_ARM_Z),
+               f"{BRKT_ARM_Z}mm\nLEDGE", offset=(30), fs=6, right=True, font=FONT)
     # Tray rim
-    draw_dim_v(ax, sx(tray_x + 20), sy(0), sy(PROC_TRAY_RIM),
-               f"{PROC_TRAY_RIM}mm", offset=sx(6), fs=6, right=True,
+    draw_dim_v(ax, (tray_x + 20), (0), (PROC_TRAY_RIM),
+               f"{PROC_TRAY_RIM}mm", offset=(6), fs=6, right=True,
                color=C_TRAY, font=FONT)
     # Panel bottom
-    draw_dim_v(ax, sx(LEFT_WK_L - 120), sy(0), sy(PANEL_FLOOR_GAP),
-               f"{PANEL_FLOOR_GAP}mm\nPANEL\nBOTTOM", offset=sx(6), fs=5.5, right=False,
+    draw_dim_v(ax, (LEFT_WK_L - 120), (0), (PANEL_FLOOR_GAP),
+               f"{PANEL_FLOOR_GAP}mm\nPANEL\nBOTTOM", offset=(6), fs=5.5, right=False,
                color="#CC4422", font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
-    notes_x = sx(LEFT_WK_R + 120)
-    notes_top = sy(Z_HI - 5)
+    notes_x = (LEFT_WK_R + 120)
+    notes_top = (Z_HI - 5)
     notes = [
         "LEFT WALKWAY \u2014 REMOVABLE LIFT-OUT:",
         f"1. NO wall brackets \u2014 panel occupies end wall.",
@@ -1488,7 +1482,7 @@ def sheet4():
         f"5. Panel + drum swing {SWING_LOCK_DEG}\u00b0 about the pivot; the cage sweeps ~{SWEEP_OVER}mm past the X={LEFT_WK_R} butt joint (rides Z{PANEL_FLOOR_GAP}, clears the Z115 brackets).",
         f"6. The grate lifts out before the swing; the floor brackets stay bolted (permanent). No kerb.",
     ]
-    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(8), fs=7, width=sx(400), font=FONT)
+    draw_notes(ax, notes, notes_x, notes_top, spacing=(8), fs=7, width=(400), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 4 OF 9",
@@ -1771,8 +1765,6 @@ def sheet6():
 # View A (looking along X axis), but wider viewport for the 500mm arm.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet7():
-    def sx(mm): return mm
-    def sy(mm): return mm
 
     # ── Structural dimensions ────────────────────────────────────────────────
     TRAY_WALL  = 3
@@ -1810,116 +1802,116 @@ def sheet7():
     ax2 = fig.add_subplot(gs[0, 1])
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
-    ax.set_xlim(sx(YD_LO), sx(YD_HI))
-    ax.set_ylim(sy(Z_LO), sy(Z_HI))
+    ax.set_xlim((YD_LO), (YD_HI))
+    ax.set_ylim((Z_LO), (Z_HI))
     ax.set_aspect("equal")
     ax.axis("off")
 
-    ax.text(sx(YD_HI / 2), sy(Z_HI - 5),
+    ax.text((YD_HI / 2), (Z_HI - 5),
             "VIEW A — WIDENED BRACKET CROSS-SECTION (LOOKING ALONG X)",
             ha="center", va="top", fontsize=8, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
 
     # ── Container floor ──────────────────────────────────────────────────────
-    ax.add_patch(Rectangle((sx(YD_LO), sy(-15)), sx(YD_HI - YD_LO), sy(15),
+    ax.add_patch(Rectangle(((YD_LO), (-15)), (YD_HI - YD_LO), (15),
                             fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="///", zorder=2))
 
     # ── Corrugated wall ──────────────────────────────────────────────────────
     wall_z_top = Z_HI
     ext_panel_yd = -CORR_DEPTH - WALL_T
 
-    ax.add_patch(Rectangle((sx(ext_panel_yd), sy(0)),
-                            sx(WALL_T), sy(wall_z_top),
+    ax.add_patch(Rectangle(((ext_panel_yd), (0)),
+                            (WALL_T), (wall_z_top),
                             fc="#909098", ec=C_OUT, lw=1.2, zorder=3, hatch="///"))
-    ax.add_patch(Rectangle((sx(-CORR_DEPTH), sy(0)),
-                            sx(WALL_T), sy(wall_z_top),
+    ax.add_patch(Rectangle(((-CORR_DEPTH), (0)),
+                            (WALL_T), (wall_z_top),
                             fc="#909098", ec=C_OUT, lw=0.8, zorder=3, hatch="///"))
-    ax.add_patch(Rectangle((sx(-WALL_T), sy(0)),
-                            sx(WALL_T), sy(wall_z_top),
+    ax.add_patch(Rectangle(((-WALL_T), (0)),
+                            (WALL_T), (wall_z_top),
                             fc="#909098", ec=C_OUT, lw=1.2, zorder=3, hatch="///"))
-    ax.add_patch(Rectangle((sx(-CORR_DEPTH + WALL_T), sy(0)),
-                            sx(CORR_DEPTH - 2 * WALL_T), sy(wall_z_top),
+    ax.add_patch(Rectangle(((-CORR_DEPTH + WALL_T), (0)),
+                            (CORR_DEPTH - 2 * WALL_T), (wall_z_top),
                             fc="#F0F0F0", ec="none", lw=0, zorder=2))
-    ax.add_patch(Rectangle((sx(-CORR_DEPTH + WALL_T), sy(0)),
-                            sx(CORR_DEPTH - 2 * WALL_T), sy(wall_z_top),
+    ax.add_patch(Rectangle(((-CORR_DEPTH + WALL_T), (0)),
+                            (CORR_DEPTH - 2 * WALL_T), (wall_z_top),
                             fc="none", ec=C_DIM, lw=0.5, ls="--", zorder=3))
-    ax.text(sx(-CORR_DEPTH / 2), sy(wall_z_top * 0.45),
+    ax.text((-CORR_DEPTH / 2), (wall_z_top * 0.45),
             "AIR\nGAP",
             ha="center", va="center", fontsize=6, color=C_DIM,
             **FONT, zorder=15, style="italic")
-    ax.plot([sx(0), sx(0)], [sy(0), sy(wall_z_top)],
+    ax.plot([(0), (0)], [(0), (wall_z_top)],
             color=C_OUT, lw=2.0, zorder=4)
-    ax.text(sx(-CORR_DEPTH / 2), sy(wall_z_top - 8),
+    ax.text((-CORR_DEPTH / 2), (wall_z_top - 8),
             "CORRUGATED\nWALL RIB\n(1.6mm CORTEN\nHOLLOW PROFILE)",
             ha="center", va="top", fontsize=5.5, color=C_DIM,
             fontweight="bold", **FONT, zorder=15)
 
     # ── Reinforcing plate ────────────────────────────────────────────────────
     reinf_yd = ext_panel_yd - REINF_T
-    ax.add_patch(Rectangle((sx(reinf_yd), sy(0)),
-                            sx(REINF_T), sy(W_REINF_H),
+    ax.add_patch(Rectangle(((reinf_yd), (0)),
+                            (REINF_T), (W_REINF_H),
                             fc="#C08040", ec=C_OUT, lw=1.0, zorder=4))
-    leader(ax, sx(reinf_yd - 1), sy(W_REINF_H * 0.8),
-           sx(reinf_yd - 25), sy(W_REINF_H),
+    leader(ax, (reinf_yd - 1), (W_REINF_H * 0.8),
+           (reinf_yd - 25), (W_REINF_H),
            f"REINFORCING\nPLATE\n{W_REINF_W}×{W_REINF_H}\n×{REINF_T}mm\n(EXTERIOR)",
            color="#C08040", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Processing tray ──────────────────────────────────────────────────────
-    ax.add_patch(Rectangle((sx(TRAY_RIM_YD - TRAY_WALL), sy(0)),
-                            sx(TRAY_WALL), sy(PROC_TRAY_RIM),
+    ax.add_patch(Rectangle(((TRAY_RIM_YD - TRAY_WALL), (0)),
+                            (TRAY_WALL), (PROC_TRAY_RIM),
                             fc=C_TRAY, ec=C_OUT, lw=1.0, zorder=4))
     tray_floor_end = YD_HI - 20
-    ax.add_patch(Rectangle((sx(TRAY_RIM_YD), sy(0)),
-                            sx(tray_floor_end - TRAY_RIM_YD), sy(TRAY_FLOOR),
+    ax.add_patch(Rectangle(((TRAY_RIM_YD), (0)),
+                            (tray_floor_end - TRAY_RIM_YD), (TRAY_FLOOR),
                             fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
-    bx = sx(tray_floor_end)
+    bx = (tray_floor_end)
     zz = np.linspace(0, TRAY_FLOOR, 5)
     ax.plot([bx - 3, bx + 3, bx - 3, bx + 3, bx - 3],
             zz, color=C_OUT, lw=1.0, zorder=5)
-    leader(ax, sx(TRAY_RIM_YD - 5), sy(PROC_TRAY_RIM / 2 + 20),
-           sx(TRAY_RIM_YD - 20), sy(PROC_TRAY_RIM - 20),
+    leader(ax, (TRAY_RIM_YD - 5), (PROC_TRAY_RIM / 2 + 20),
+           (TRAY_RIM_YD - 20), (PROC_TRAY_RIM - 20),
            f"TRAY RIM\n{PROC_TRAY_RIM}mm\n(304 SS, 3mm)", color=C_TRAY, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # Tray water level
     water_h = 15
-    wave_x = np.linspace(sx(TRAY_RIM_YD + 5), sx(tray_floor_end - 10), 40)
-    wave_y = sy(water_h) + 3 * np.sin(wave_x * 0.08)
+    wave_x = np.linspace((TRAY_RIM_YD + 5), (tray_floor_end - 10), 40)
+    wave_y = (water_h) + 3 * np.sin(wave_x * 0.08)
     ax.plot(wave_x, wave_y, color="#4080C0", lw=1.0, alpha=0.6, zorder=4)
 
     # ── Widened cantilever bracket ───────────────────────────────────────────
     brkt_arm_z = BRKT_ARM_H
 
     # 1. Vertical mounting plate (10mm thick, 200mm tall)
-    ax.add_patch(Rectangle((sx(0), sy(0)),
-                            sx(W_BRKT_T), sy(W_BRKT_VERT),
+    ax.add_patch(Rectangle(((0), (0)),
+                            (W_BRKT_T), (W_BRKT_VERT),
                             fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
 
     # 2. Horizontal arm (500mm reach)
-    ax.add_patch(Rectangle((sx(0), sy(w_arm_bot)),
-                            sx(W_ARM_W), sy(W_ARM_DEPTH),
+    ax.add_patch(Rectangle(((0), (w_arm_bot)),
+                            (W_ARM_W), (W_ARM_DEPTH),
                             fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
-    ax.plot([sx(0), sx(W_ARM_W)], [sy(brkt_arm_z), sy(brkt_arm_z)],
+    ax.plot([(0), (W_ARM_W)], [(brkt_arm_z), (brkt_arm_z)],
             color=C_OUT, lw=2.0, zorder=7)
 
     # 3. Gusset underneath arm
     gusset_verts = [
-        (sx(0), sy(0)),
-        (sx(0), sy(w_arm_bot)),
-        (sx(W_GUSSET), sy(w_arm_bot)),
+        ((0), (0)),
+        ((0), (w_arm_bot)),
+        ((W_GUSSET), (w_arm_bot)),
     ]
     ax.add_patch(Polygon(gusset_verts, closed=True,
                          fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=5, alpha=0.85))
-    ax.plot([sx(0), sx(W_GUSSET)], [sy(0), sy(w_arm_bot)],
+    ax.plot([(0), (W_GUSSET)], [(0), (w_arm_bot)],
             color=C_OUT, lw=1.5, zorder=6)
 
     # Weld symbol
     weld_x = W_GUSSET / 3
-    ax.plot([sx(weld_x - 4), sx(weld_x), sx(weld_x + 4)],
-            [sy(w_arm_bot), sy(w_arm_bot - 5), sy(w_arm_bot)],
+    ax.plot([(weld_x - 4), (weld_x), (weld_x + 4)],
+            [(w_arm_bot), (w_arm_bot - 5), (w_arm_bot)],
             color="#CC4400", lw=1.5, zorder=8)
-    ax.text(sx(weld_x), sy(w_arm_bot - 7), "WELD",
+    ax.text((weld_x), (w_arm_bot - 7), "WELD",
             ha="center", va="top", fontsize=4.5, color="#CC4400",
             **FONT, zorder=15)
 
@@ -1932,44 +1924,44 @@ def sheet7():
 
     for bz in [bolt_z_lo, bolt_z_hi]:
         shank_hw = BOLT_R * 0.4
-        ax.add_patch(Rectangle((sx(reinf_yd), sy(bz - shank_hw)),
-                                sx(W_BRKT_T - reinf_yd), sy(shank_hw * 2),
+        ax.add_patch(Rectangle(((reinf_yd), (bz - shank_hw)),
+                                (W_BRKT_T - reinf_yd), (shank_hw * 2),
                                 fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=10))
-        ax.add_patch(Rectangle((sx(reinf_yd - BOLT_HEAD), sy(bz - BOLT_R)),
-                                sx(BOLT_HEAD), sy(BOLT_D),
+        ax.add_patch(Rectangle(((reinf_yd - BOLT_HEAD), (bz - BOLT_R)),
+                                (BOLT_HEAD), (BOLT_D),
                                 fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))
-        ax.add_patch(Rectangle((sx(reinf_yd - WASHER_T), sy(bz - BOLT_R - 1)),
-                                sx(WASHER_T), sy(BOLT_D + 2),
+        ax.add_patch(Rectangle(((reinf_yd - WASHER_T), (bz - BOLT_R - 1)),
+                                (WASHER_T), (BOLT_D + 2),
                                 fc="#808080", ec=C_OUT, lw=0.5, zorder=9))
-        ax.add_patch(Rectangle((sx(W_BRKT_T), sy(bz - BOLT_R)),
-                                sx(NUT_H), sy(BOLT_D),
+        ax.add_patch(Rectangle(((W_BRKT_T), (bz - BOLT_R)),
+                                (NUT_H), (BOLT_D),
                                 fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))
-        ax.add_patch(Rectangle((sx(W_BRKT_T), sy(bz - BOLT_R - 1)),
-                                sx(WASHER_T), sy(BOLT_D + 2),
+        ax.add_patch(Rectangle(((W_BRKT_T), (bz - BOLT_R - 1)),
+                                (WASHER_T), (BOLT_D + 2),
                                 fc="#808080", ec=C_OUT, lw=0.5, zorder=9))
 
     # Bracket label
-    leader(ax, sx(W_ARM_W * 0.4), sy(brkt_arm_z - 5),
-           sx(W_ARM_W * 0.4 + 50), sy(brkt_arm_z - 30),
+    leader(ax, (W_ARM_W * 0.4), (brkt_arm_z - 5),
+           (W_ARM_W * 0.4 + 50), (brkt_arm_z - 30),
            f"WIDENED BRACKET\n{W_BRKT_T}mm STEEL PLATE\n(VERT PLATE + ARM\n+ GUSSET UNDER)",
            color=C_BRKT, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # Gusset label
-    leader(ax, sx(W_GUSSET / 2), sy(w_arm_bot / 2 - 5),
-           sx(W_GUSSET - 20), sy(w_arm_bot / 2 - 25),
+    leader(ax, (W_GUSSET / 2), (w_arm_bot / 2 - 5),
+           (W_GUSSET - 20), (w_arm_bot / 2 - 25),
            f"GUSSET ({W_GUSSET}mm)\nSTOPS BEFORE\nTRAY RIM",
            color=C_BRKT, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # Bolt labels
-    leader(ax, sx(reinf_yd - BOLT_HEAD - 2), sy(bolt_z_lo),
-           sx(reinf_yd - 30), sy(bolt_z_lo + 20),
+    leader(ax, (reinf_yd - BOLT_HEAD - 2), (bolt_z_lo),
+           (reinf_yd - 30), (bolt_z_lo + 20),
            f"2× M12 AT Z={bolt_z_lo}\n(STRADDLE GUSSET\nIN X — SEE VIEW B)",
            color=C_DIM, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
-    leader(ax, sx(reinf_yd - BOLT_HEAD - 2), sy(bolt_z_hi),
-           sx(reinf_yd - 30), sy(bolt_z_hi + 20),
+    leader(ax, (reinf_yd - BOLT_HEAD - 2), (bolt_z_hi),
+           (reinf_yd - 30), (bolt_z_hi + 20),
            f"2× M12 AT Z={bolt_z_hi}\n(ABOVE DECK — SEE VIEW B)",
            color=C_DIM, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
@@ -1977,21 +1969,21 @@ def sheet7():
     # ── Grated deck (500mm wide) ─────────────────────────────────────────────
     grate_bot = brkt_arm_z
     grate_top = grate_bot + WALKWAY_GRATE_T
-    ax.add_patch(Rectangle((sx(W_BRKT_T), sy(grate_bot)),
-                            sx(W_ARM_W - W_BRKT_T), sy(WALKWAY_GRATE_T),
+    ax.add_patch(Rectangle(((W_BRKT_T), (grate_bot)),
+                            (W_ARM_W - W_BRKT_T), (WALKWAY_GRATE_T),
                             fc=C_GRATE, ec=C_OUT, lw=1.2, zorder=7))
     for yd in np.arange(W_BRKT_T + 3, W_ARM_W - 3, 34.2):
-        ax.add_patch(Rectangle((sx(yd), sy(grate_bot)),
-                                sx(3), sy(WALKWAY_GRATE_T),
+        ax.add_patch(Rectangle(((yd), (grate_bot)),
+                                (3), (WALKWAY_GRATE_T),
                                 fc="#909098", ec=C_OUT, lw=0.3, zorder=8))
     cross_h = 3
     for yd in np.arange(W_BRKT_T + 34.2 / 2, W_ARM_W, 34.2):
-        ax.add_patch(Rectangle((sx(yd - 1), sy(grate_bot + WALKWAY_GRATE_T / 2 - cross_h / 2)),
-                                sx(2), sy(cross_h),
+        ax.add_patch(Rectangle(((yd - 1), (grate_bot + WALKWAY_GRATE_T / 2 - cross_h / 2)),
+                                (2), (cross_h),
                                 fc="#808088", ec="none", zorder=9, alpha=0.7))
 
-    leader(ax, sx(W_ARM_W / 4), sy((grate_bot + grate_top) / 2),
-           sx(W_ARM_W / 4 - 30), sy(grate_top + 40),
+    leader(ax, (W_ARM_W / 4), ((grate_bot + grate_top) / 2),
+           (W_ARM_W / 4 - 30), (grate_top + 40),
            f"MOLDED GRP (FIBERGLASS) GRATING\n{WALKWAY_GRATE_T}mm · VINYL-ESTER · GRIT TOP",
            color=C_OUT, fs=6, ha="center", va="center",
            arrow_style="-|>", font=FONT)
@@ -2000,21 +1992,21 @@ def sheet7():
     clip_yd = W_ARM_W - 20
     clip_bot = brkt_arm_z - 12
     clip_top = grate_top + 5
-    ax.add_patch(Rectangle((sx(clip_yd), sy(clip_bot)),
-                            sx(8), sy(clip_top - clip_bot),
+    ax.add_patch(Rectangle(((clip_yd), (clip_bot)),
+                            (8), (clip_top - clip_bot),
                             fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
-    leader(ax, sx(clip_yd + 10), sy(brkt_arm_z),
-           sx(clip_yd + 40), sy(brkt_arm_z + 55),
+    leader(ax, (clip_yd + 10), (brkt_arm_z),
+           (clip_yd + 40), (brkt_arm_z + 55),
            "316 SS HOLD-DOWN\nCLIP + BOLT", color="#505058", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Clear tray annotation ────────────────────────────────────────────────
-    clr_x = sx(W_ARM_W * 0.7)
-    ax.annotate("", xy=(clr_x, sy(TRAY_FLOOR + 1)),
-                xytext=(clr_x, sy(brkt_arm_z - 1)),
+    clr_x = (W_ARM_W * 0.7)
+    ax.annotate("", xy=(clr_x, (TRAY_FLOOR + 1)),
+                xytext=(clr_x, (brkt_arm_z - 1)),
                 arrowprops=dict(arrowstyle="<->", color="#208020", lw=1.2, mutation_scale=8))
     gap_mm = brkt_arm_z - TRAY_FLOOR
-    ax.text(clr_x + sx(5), sy((TRAY_FLOOR + brkt_arm_z) / 2),
+    ax.text(clr_x + (5), ((TRAY_FLOOR + brkt_arm_z) / 2),
             f"{gap_mm:.0f}mm\nCLEAR AIR\n(NO LEGS,\nNO BEAM —\nFILM LAYS\nFLAT HERE)",
             ha="left", va="center", fontsize=5, color="#208020",
             fontweight="bold", **FONT, zorder=15, alpha=0.8)
@@ -2028,45 +2020,45 @@ def sheet7():
     for i in range(2):
         s_yd = shoe_start + i * (SHOE_W + SHOE_GAP)
         ax.add_patch(Rectangle(
-            (sx(s_yd), sy(grate_top)), sx(SHOE_W), sy(SHOE_H),
+            ((s_yd), (grate_top)), (SHOE_W), (SHOE_H),
             fc="#FFD700", ec="#B89600", lw=0.6,
             zorder=10, alpha=0.3, ls="--"))
-    ax.text(sx(W_ARM_W / 2), sy(grate_top + SHOE_H + 6),
+    ax.text((W_ARM_W / 2), (grate_top + SHOE_H + 6),
             "US 9 SHOE PAIR\n(270mm LONG × 100mm WIDE)",
             ha="center", va="bottom", fontsize=5.5, color="#404040",
             **FONT, zorder=15, alpha=0.7)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
-    draw_dim_h(ax, sx(0), sx(W_ARM_W), sy(grate_top + 55),
-               f"{W_ARM_W}mm WIDENED ARM", offset=sy(8), fs=7, font=FONT)
-    draw_dim_h(ax, sx(0), sx(WALKWAY_W), sy(grate_top + 35),
-               f"{WALKWAY_W}mm STD (REF)", offset=sy(5), fs=5.5,
+    draw_dim_h(ax, (0), (W_ARM_W), (grate_top + 55),
+               f"{W_ARM_W}mm WIDENED ARM", offset=(8), fs=7, font=FONT)
+    draw_dim_h(ax, (0), (WALKWAY_W), (grate_top + 35),
+               f"{WALKWAY_W}mm STD (REF)", offset=(5), fs=5.5,
                color="#808080", font=FONT)
-    draw_dim_v(ax, sx(W_ARM_W + 20), sy(0), sy(grate_top),
-               f"{WALKWAY_H}mm\nDECK TOP", offset=sx(8), fs=7, right=True, font=FONT)
-    draw_dim_v(ax, sx(W_ARM_W + 5), sy(grate_bot), sy(grate_top),
-               f"{WALKWAY_GRATE_T}mm", offset=sx(8), fs=6.5, right=True, font=FONT)
-    draw_dim_v(ax, sx(reinf_yd - BOLT_HEAD - 45), sy(0), sy(W_BRKT_VERT),
-               f"{W_BRKT_VERT}mm\nVERT LEG", offset=sx(8), fs=6.5, right=False, font=FONT)
-    draw_dim_v(ax, sx(W_ARM_W + 5), sy(0), sy(brkt_arm_z),
-               f"{brkt_arm_z}mm ARM TOP", offset=sx(8), fs=6.5, right=True, font=FONT)
-    draw_dim_v(ax, sx(TRAY_RIM_YD + 15), sy(0), sy(PROC_TRAY_RIM),
-               f"{PROC_TRAY_RIM}mm", offset=sx(8), fs=6.5, right=True,
+    draw_dim_v(ax, (W_ARM_W + 20), (0), (grate_top),
+               f"{WALKWAY_H}mm\nDECK TOP", offset=(8), fs=7, right=True, font=FONT)
+    draw_dim_v(ax, (W_ARM_W + 5), (grate_bot), (grate_top),
+               f"{WALKWAY_GRATE_T}mm", offset=(8), fs=6.5, right=True, font=FONT)
+    draw_dim_v(ax, (reinf_yd - BOLT_HEAD - 45), (0), (W_BRKT_VERT),
+               f"{W_BRKT_VERT}mm\nVERT LEG", offset=(8), fs=6.5, right=False, font=FONT)
+    draw_dim_v(ax, (W_ARM_W + 5), (0), (brkt_arm_z),
+               f"{brkt_arm_z}mm ARM TOP", offset=(8), fs=6.5, right=True, font=FONT)
+    draw_dim_v(ax, (TRAY_RIM_YD + 15), (0), (PROC_TRAY_RIM),
+               f"{PROC_TRAY_RIM}mm", offset=(8), fs=6.5, right=True,
                color=C_TRAY, font=FONT)
-    draw_dim_h(ax, sx(-CORR_DEPTH), sx(0), sy(-22),
-               f"{CORR_DEPTH}mm\nCORR", offset=sy(10), fs=6, above=False, font=FONT)
-    draw_dim_h(ax, sx(0), sx(TRAY_RIM_YD), sy(-35),
-               f"{TRAY_RIM_YD}mm", offset=sy(10), fs=6, above=False, font=FONT)
+    draw_dim_h(ax, (-CORR_DEPTH), (0), (-22),
+               f"{CORR_DEPTH}mm\nCORR", offset=(10), fs=6, above=False, font=FONT)
+    draw_dim_h(ax, (0), (TRAY_RIM_YD), (-35),
+               f"{TRAY_RIM_YD}mm", offset=(10), fs=6, above=False, font=FONT)
 
     # ── Axis label ───────────────────────────────────────────────────────────
-    ax.text(sx(YD_HI / 2), sy(Z_LO + 5),
+    ax.text((YD_HI / 2), (Z_LO + 5),
             "Yd  (container width, 0 = pinhole wall)  →",
             ha="center", va="bottom", fontsize=6.5, color=C_DIM,
             **FONT, zorder=15, style="italic")
 
     # ── Notes ────────────────────────────────────────────────────────────────
-    notes_x = sx(W_ARM_W + 10)
-    notes_top = sy(Z_HI - 10)
+    notes_x = (W_ARM_W + 10)
+    notes_top = (Z_HI - 10)
     notes = [
         "WIDENED BRACKET NOTES:",
         f"1. {W_BRKT_T}mm plate (vs {BRKT_T}mm standard).",
@@ -2081,7 +2073,7 @@ def sheet7():
         f"   (Sheet 2).",
     ]
     draw_notes(ax, notes, notes_x, notes_top,
-               spacing=sy(6), fs=7, width=sx(160), font=FONT)
+               spacing=(6), fs=7, width=(160), font=FONT)
 
     # ══════════════════════════════════════════════════════════════════════════
     # VIEW B — Plate face (looking along −Yd, toward wall)
@@ -2251,8 +2243,6 @@ def sheet7():
 def sheet8():
     SC = 2.0  # 1:2 scale
 
-    def sx(mm): return mm / SC
-    def sy(mm): return mm / SC
 
     # ── Dimensions ───────────────────────────────────────────────────────────
     W_STD    = WALKWAY_W              # 300mm standard width
@@ -2282,8 +2272,8 @@ def sheet8():
     fig, ax = plt.subplots(figsize=(18, 18))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
-    ax.set_xlim(sx(YD_LO), sx(YD_HI))
-    ax.set_ylim(sy(-SHOW_X - 150), sy(TITLE_Y))
+    ax.set_xlim((YD_LO), (YD_HI))
+    ax.set_ylim((-SHOW_X - 150), (TITLE_Y))
     ax.set_aspect("equal")
     ax.axis("off")
 
@@ -2297,47 +2287,47 @@ def sheet8():
     # Wide grating on the -X side (left in diagram), std on +X side (right)
 
     # ── Wall ─────────────────────────────────────────────────────────────────
-    ax.add_patch(Rectangle((sx(-40), sy(-SHOW_X)),
-                 sx(40), sy(2 * SHOW_X),
+    ax.add_patch(Rectangle(((-40), (-SHOW_X)),
+                 (40), (2 * SHOW_X),
                  fc="#D8D4D0", ec=C_OUT, lw=2.0, zorder=1))
-    ax.text(sx(-20), sy(0), "WALL\n(Yd=0)",
+    ax.text((-20), (0), "WALL\n(Yd=0)",
             ha="center", va="center", fontsize=7, color=C_DIM,
             rotation=90, **FONT, zorder=20)
 
     # ── Processing tray rim line ─────────────────────────────────────────────
-    ax.plot([sx(TRAY_LIP), sx(TRAY_LIP)], [sy(-SHOW_X), sy(SHOW_X)],
+    ax.plot([(TRAY_LIP), (TRAY_LIP)], [(-SHOW_X), (SHOW_X)],
             color="#4A8A4A", lw=1.0, ls="--", alpha=0.5, zorder=2)
-    ax.text(sx(TRAY_LIP + 8), sy(SHOW_X - 30),
+    ax.text((TRAY_LIP + 8), (SHOW_X - 30),
             f"PROC. TRAY LIP\n(Yd={TRAY_LIP}mm)",
             ha="left", va="top", fontsize=5.5, color="#4A8A4A",
             **FONT, zorder=20)
 
     # ── Bracket arm (10mm plate, edge-on in plan view) ───────────────────────
-    ax.add_patch(Rectangle((sx(0), sy(-BRKT_T / 2)),
-                 sx(ARM_LEN), sy(BRKT_T),
+    ax.add_patch(Rectangle(((0), (-BRKT_T / 2)),
+                 (ARM_LEN), (BRKT_T),
                  fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=5))
-    ax.text(sx(ARM_LEN / 2), sy(-BRKT_T / 2 - 5),
+    ax.text((ARM_LEN / 2), (-BRKT_T / 2 - 5),
             f"BRACKET ARM (10mm × {ARM_LEN}mm)",
             ha="center", va="top", fontsize=5.5, color=C_DIM,
             **FONT, zorder=20)
 
     # ── Gusset (triangle in plan view, 70mm reach from wall) ─────────────────
     gusset_verts = [
-        (sx(0), sy(-BRKT_T / 2)),
-        (sx(GUSSET_R), sy(0)),
-        (sx(0), sy(BRKT_T / 2)),
+        ((0), (-BRKT_T / 2)),
+        ((GUSSET_R), (0)),
+        ((0), (BRKT_T / 2)),
     ]
     ax.add_patch(Polygon(gusset_verts, closed=True,
                          fc=C_GUSSET, ec=C_OUT, lw=1.0, zorder=4))
 
     # ── Bearing plate (40mm × 500mm, centered on arm) ────────────────────────
     bp_x0 = -BEARING_PLATE_W / 2
-    ax.add_patch(Rectangle((sx(0), sy(bp_x0)),
-                 sx(BEARING_PLATE_L), sy(BEARING_PLATE_W),
+    ax.add_patch(Rectangle(((0), (bp_x0)),
+                 (BEARING_PLATE_L), (BEARING_PLATE_W),
                  fc=C_PLATE, ec=C_OUT, lw=1.2, ls="--", alpha=0.7,
                  zorder=6))
-    leader(ax, sx(BEARING_PLATE_L + 5), sy(bp_x0 + BEARING_PLATE_W / 2),
-           sx(BEARING_PLATE_L + 20), sy(bp_x0 + BEARING_PLATE_W / 2 + 60),
+    leader(ax, (BEARING_PLATE_L + 5), (bp_x0 + BEARING_PLATE_W / 2),
+           (BEARING_PLATE_L + 20), (bp_x0 + BEARING_PLATE_W / 2 + 60),
            f"BEARING PLATE\n{BEARING_PLATE_W}×{BEARING_PLATE_L}×5mm\n(WELDED TO ARM)",
            color=C_DIM, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
@@ -2346,11 +2336,11 @@ def sheet8():
     # Grating extends from Yd=0 to Yd=W_WIDE (500mm), from X=-SHOW_X to X≈0
     gw_x0 = -SHOW_X
     gw_x1 = -BEARING_PLATE_W / 2  # ends at bearing plate edge
-    ax.add_patch(Rectangle((sx(0), sy(gw_x0)),
-                 sx(W_WIDE), sy(gw_x1 - gw_x0),
+    ax.add_patch(Rectangle(((0), (gw_x0)),
+                 (W_WIDE), (gw_x1 - gw_x0),
                  fc=C_WIDE_GRATE, ec=C_OUT, lw=0.6, alpha=0.15,
                  hatch="xx", zorder=3))
-    ax.text(sx(W_WIDE / 2), sy(gw_x0 + (gw_x1 - gw_x0) / 2 - 30),
+    ax.text((W_WIDE / 2), (gw_x0 + (gw_x1 - gw_x0) / 2 - 30),
             f"WIDENED GRATING\n(500mm)",
             ha="center", va="center", fontsize=7, color=C_OUT, backgroundcolor="#FFFFFF",
             **FONT, zorder=20, alpha=0.8)
@@ -2358,21 +2348,21 @@ def sheet8():
     # ── Standard grating (+X side) ───────────────────────────────────────────
     gs_x0 = BEARING_PLATE_W / 2   # starts at bearing plate edge
     gs_x1 = SHOW_X
-    ax.add_patch(Rectangle((sx(0), sy(gs_x0)),
-                 sx(W_STD), sy(gs_x1 - gs_x0),
+    ax.add_patch(Rectangle(((0), (gs_x0)),
+                 (W_STD), (gs_x1 - gs_x0),
                  fc=C_STD_GRATE, ec=C_OUT, lw=0.6, alpha=0.15,
                  hatch="xx", zorder=3))
-    ax.text(sx(W_STD / 2), sy(gs_x0 + (gs_x1 - gs_x0) / 2 + 30),
+    ax.text((W_STD / 2), (gs_x0 + (gs_x1 - gs_x0) / 2 + 30),
             f"STANDARD GRATING\n(300mm)",
             ha="center", va="center", fontsize=7, color=C_OUT, backgroundcolor="#FFFFFF",
             **FONT, zorder=20, alpha=0.8)
 
     # ── Show outer 200mm of widened grating past standard edge ───────────────
     # Light fill for the outer zone (Yd=300 to Yd=500) on the wide side
-    ax.add_patch(Rectangle((sx(W_STD), sy(gw_x0)),
-                 sx(W_WIDE - W_STD), sy(gw_x1 - gw_x0),
+    ax.add_patch(Rectangle(((W_STD), (gw_x0)),
+                 (W_WIDE - W_STD), (gw_x1 - gw_x0),
                  fc="#E8D8B8", ec="none", lw=0, alpha=0.10, zorder=3.5))
-    ax.text(sx(W_STD + (W_WIDE - W_STD) / 2), sy(gw_x0 + 30),
+    ax.text((W_STD + (W_WIDE - W_STD) / 2), (gw_x0 + 30),
             f"EXTENDED\n200mm",
             ha="center", va="center", fontsize=5.5, color="#8B6B3C",
             **FONT, zorder=20, alpha=0.9)
@@ -2388,13 +2378,13 @@ def sheet8():
             continue
         # Wide side bars: extend to Yd=W_WIDE
         if bar_x < -BEARING_PLATE_W / 2:
-            ax.plot([sx(0), sx(W_WIDE)],
-                    [sy(bar_x), sy(bar_x)],
+            ax.plot([(0), (W_WIDE)],
+                    [(bar_x), (bar_x)],
                     color=bar_color, lw=0.4, alpha=0.5, zorder=3.5)
         # Narrow side bars: extend to Yd=W_STD
         elif bar_x > BEARING_PLATE_W / 2:
-            ax.plot([sx(0), sx(W_STD)],
-                    [sy(bar_x), sy(bar_x)],
+            ax.plot([(0), (W_STD)],
+                    [(bar_x), (bar_x)],
                     color=bar_color, lw=0.4, alpha=0.5, zorder=3.5)
 
     # ── M saddle clips ───────────────────────────────────────────────────────
@@ -2414,62 +2404,62 @@ def sheet8():
         cw = CLIP_W
         cl = CLIP_L
         ax.add_patch(Rectangle(
-            (sx(yd_c - cw / 2), sy(x_c - cl / 2)),
-            sx(cw), sy(cl),
+            ((yd_c - cw / 2), (x_c - cl / 2)),
+            (cw), (cl),
             fc=C_CLIP, ec=C_OUT, lw=0.8, alpha=0.8, zorder=8))
         # TEK screw (small circle at center — directly over arm)
         ax.add_patch(Circle(
-            (sx(yd_c), sy(x_c)),
-            sx(3), fc="#333333", ec=C_OUT, lw=0.5, zorder=9))
+            ((yd_c), (x_c)),
+            (3), fc="#333333", ec=C_OUT, lw=0.5, zorder=9))
 
     # Label one clip
     bbox = dict(fc="white", ec="none", pad=1.5, alpha=0.85)
-    leader(ax, sx(clip_positions[0][0]), sy(clip_positions[0][1]),
-           sx(80), sy(-72),
+    leader(ax, (clip_positions[0][0]), (clip_positions[0][1]),
+           (80), (-72),
            "316 SS HOLD-DOWN CLIP\nBOLTED INTO\nBRACKET ARM BELOW\n(TYP. BOTH SIDES)",
            color=C_DIM, fs=5.5, ha="right", va="top",
            arrow_style="-|>", font=FONT, bbox=bbox)
 
     # ── Dimension: standard grating width ────────────────────────────────────
-    draw_dim_h(ax, sx(0), sx(W_STD), sy(SHOW_X - 20),
-               f"{W_STD}mm", color=C_DIM, fs=6, offset=sy(8), font=FONT)
+    draw_dim_h(ax, (0), (W_STD), (SHOW_X - 20),
+               f"{W_STD}mm", color=C_DIM, fs=6, offset=(8), font=FONT)
 
     # ── Dimension: widened grating width ─────────────────────────────────────
-    draw_dim_h(ax, sx(0), sx(W_WIDE), sy(-SHOW_X + 20),
-               f"{W_WIDE}mm", color=C_DIM, fs=6, offset=sy(8), font=FONT)
+    draw_dim_h(ax, (0), (W_WIDE), (-SHOW_X + 20),
+               f"{W_WIDE}mm", color=C_DIM, fs=6, offset=(8), font=FONT)
 
     # ── Dimension: bearing plate width ───────────────────────────────────────
-    draw_dim_v(ax, sx(ARM_LEN + 40),
-               sy(-BEARING_PLATE_W / 2), sy(BEARING_PLATE_W / 2),
+    draw_dim_v(ax, (ARM_LEN + 40),
+               (-BEARING_PLATE_W / 2), (BEARING_PLATE_W / 2),
                f"{BEARING_PLATE_W}mm", color=C_DIM, fs=5.5,
-               offset=sx(8), font=FONT)
+               offset=(8), font=FONT)
 
     # ── Dimension: tray lip to wall ──────────────────────────────────────────
-    draw_dim_h(ax, sx(0), sx(TRAY_LIP), sy(SHOW_X - 60),
+    draw_dim_h(ax, (0), (TRAY_LIP), (SHOW_X - 60),
                f"{TRAY_LIP}mm", color="#4A8A4A", fs=5.5,
-               offset=sy(8), font=FONT)
+               offset=(8), font=FONT)
 
     # ── Edge labels ──────────────────────────────────────────────────────────
-    ax.annotate("", xy=(sx(W_STD), sy(SHOW_X - 5)),
-                xytext=(sx(W_STD), sy(SHOW_X - 40)),
+    ax.annotate("", xy=((W_STD), (SHOW_X - 5)),
+                xytext=((W_STD), (SHOW_X - 40)),
                 arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.6, ls="--"))
-    ax.text(sx(W_STD + 10), sy(SHOW_X - 50),
+    ax.text((W_STD + 10), (SHOW_X - 50),
             "STD INNER\nEDGE", ha="left", va="top",
             fontsize=5, color=C_DIM, **FONT, zorder=20)
 
-    ax.annotate("", xy=(sx(W_WIDE), sy(-SHOW_X + 5)),
-                xytext=(sx(W_WIDE), sy(-SHOW_X + 40)),
+    ax.annotate("", xy=((W_WIDE), (-SHOW_X + 5)),
+                xytext=((W_WIDE), (-SHOW_X + 40)),
                 arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.6, ls="--"))
-    ax.text(sx(W_WIDE + 10), sy(-SHOW_X + 50),
+    ax.text((W_WIDE + 10), (-SHOW_X + 50),
             "WIDE INNER\nEDGE", ha="left", va="bottom",
             fontsize=5, color=C_DIM, **FONT, zorder=20)
 
     # ── View label (in title zone, above diagram) ──────────────────────────
-    ax.text(sx(W_WIDE / 2), sy(TITLE_Y - 10),
+    ax.text((W_WIDE / 2), (TITLE_Y - 10),
             "PLAN VIEW — WIDTH TRANSITION AT BRACKET",
             ha="center", va="top", fontsize=9, color=C_OUT,
             weight="bold", **FONT, zorder=20)
-    ax.text(sx(W_WIDE / 2), sy(TITLE_Y - 35),
+    ax.text((W_WIDE / 2), (TITLE_Y - 35),
             "LOOKING DOWN · WALL AT LEFT · Yd HORIZONTAL · X VERTICAL",
             ha="center", va="top", fontsize=6, color=C_DIM,
             **FONT, zorder=20)
@@ -2485,10 +2475,10 @@ def sheet8():
         f"6. OUTER 200mm OF BRACKET ARM EXPOSED ON STANDARD SIDE",
         f"7. TRANSITION BRACKETS AT X≈1156mm AND X≈2526mm",
     ]
-    draw_notes(ax, notes, sx(YD_LO + 440), sy(SHOW_X - 10),
-               spacing=sy(7), fs=5.5, title_fs=6, color=C_DIM,
+    draw_notes(ax, notes, (YD_LO + 440), (SHOW_X - 10),
+               spacing=(7), fs=5.5, title_fs=6, color=C_DIM,
                title_color=C_OUT, font=FONT,
-               width=sx(225))
+               width=(225))
 
     # ── Title block ──────────────────────────────────────────────────────────
     title_block(ax, "SHEET 8 OF 9",

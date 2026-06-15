@@ -101,24 +101,22 @@ def draw_sheet1():
     ax_a.set_aspect("equal")
     ax_a.axis("off")
 
-    def sx(mm): return mm
-    def sy(mm): return mm
 
     pad = 80
-    ax_a.set_xlim(sx(-pad), sx(PLATE_W + pad))
-    ax_a.set_ylim(sy(-pad), sy(PLATE_H + pad))
+    ax_a.set_xlim((-pad), (PLATE_W + pad))
+    ax_a.set_ylim((-pad), (PLATE_H + pad))
 
     # Face plate outline (aluminum, flat — no rounded box since it's a plate)
-    draw_rect(ax_a, sx(0), sy(0), sx(PLATE_W), sy(PLATE_H),
+    draw_rect(ax_a, (0), (0), (PLATE_W), (PLATE_H),
               fc=C_ALUM, color=C_OUT, lw=2.0, zorder=3)
 
     # Wall cutout visible behind plate (dashed, centered)
     cut_off_x = (PLATE_W - CUT_W) / 2
     cut_off_y = (PLATE_H - CUT_H) / 2
     ax_a.add_patch(mpatches.Rectangle(
-        (sx(cut_off_x), sy(cut_off_y)), sx(CUT_W), sy(CUT_H),
+        ((cut_off_x), (cut_off_y)), (CUT_W), (CUT_H),
         fc="none", ec=C_DIM, lw=1.0, ls="--", zorder=4))
-    ax_a.text(sx(PLATE_W - cut_off_x - 5), sy(cut_off_y + 5),
+    ax_a.text((PLATE_W - cut_off_x - 5), (cut_off_y + 5),
               "WALL CUTOUT\n(HIDDEN)", ha="right", va="bottom",
               fontsize=5.5, color=C_DIM, style="italic", **FONT, zorder=4)
 
@@ -127,7 +125,7 @@ def draw_sheet1():
                    (PLATE_W - MOUNT_INSET, MOUNT_INSET),
                    (MOUNT_INSET, PLATE_H - MOUNT_INSET),
                    (PLATE_W - MOUNT_INSET, PLATE_H - MOUNT_INSET)]:
-        draw_circle(ax_a, sx(mx), sy(my), sx(MOUNT_HOLE_D / 2),
+        draw_circle(ax_a, (mx), (my), (MOUNT_HOLE_D / 2),
                      lw=0.8, color=C_DIM, zorder=5)
 
     # MC4 bulkhead connectors — 3 pairs on left side
@@ -135,16 +133,16 @@ def draw_sheet1():
     for i in range(3):
         cy = mc4_y_base + i * MC4_PITCH
         cx_pos = MC4_X - MC4_GAP / 2
-        draw_circle(ax_a, sx(cx_pos), sy(cy), sx(MC4_R),
+        draw_circle(ax_a, (cx_pos), (cy), (MC4_R),
                      lw=1.5, color=C_MC4, fill=True, fc="#C0E8C0", zorder=5)
-        ax_a.text(sx(cx_pos), sy(cy), "+", ha="center", va="center",
+        ax_a.text((cx_pos), (cy), "+", ha="center", va="center",
                   fontsize=8, fontweight="bold", color=C_MC4, zorder=6)
         cx_neg = MC4_X + MC4_GAP / 2
-        draw_circle(ax_a, sx(cx_neg), sy(cy), sx(MC4_R),
+        draw_circle(ax_a, (cx_neg), (cy), (MC4_R),
                      lw=1.5, color=C_MC4, fill=True, fc="#E0E0E0", zorder=5)
-        ax_a.text(sx(cx_neg), sy(cy), "−", ha="center", va="center",
+        ax_a.text((cx_neg), (cy), "−", ha="center", va="center",
                   fontsize=8, fontweight="bold", color=C_DIM, zorder=6)
-        ax_a.text(sx(MC4_X + MC4_GAP / 2 + MC4_R + 8), sy(cy),
+        ax_a.text((MC4_X + MC4_GAP / 2 + MC4_R + 8), (cy),
                   f"PV{i + 1}", ha="left", va="center",
                   fontsize=7, color=C_MC4, fontweight="bold", **FONT, zorder=6)
 
@@ -152,75 +150,75 @@ def draw_sheet1():
     nema_cx = NEMA_X + NEMA_W / 2
     nema_cy = NEMA_Y + NEMA_H / 2
     ax_a.add_patch(mpatches.FancyBboxPatch(
-        (sx(NEMA_X), sy(NEMA_Y)), sx(NEMA_W), sy(NEMA_H),
+        ((NEMA_X), (NEMA_Y)), (NEMA_W), (NEMA_H),
         boxstyle="round,pad=3", fc=C_NEMA, ec=C_OUT, lw=1.5, zorder=5))
     slot_w, slot_h = 4, 14
     slot_gap = 18
     for dx in [-slot_gap / 2, slot_gap / 2]:
         ax_a.add_patch(mpatches.Rectangle(
-            (sx(nema_cx + dx - slot_w / 2), sy(nema_cy + 2)),
-            sx(slot_w), sy(slot_h),
+            ((nema_cx + dx - slot_w / 2), (nema_cy + 2)),
+            (slot_w), (slot_h),
             fc="white", ec=C_OUT, lw=1.0, zorder=6))
     ground_r = 5
     theta = np.linspace(np.pi, 2 * np.pi, 20)
-    gx = sx(nema_cx) + sx(ground_r) * np.cos(theta)
-    gy = sy(nema_cy - 6) + sx(ground_r) * np.sin(theta)
+    gx = (nema_cx) + (ground_r) * np.cos(theta)
+    gy = (nema_cy - 6) + (ground_r) * np.sin(theta)
     ax_a.plot(gx, gy, color=C_OUT, lw=1.0, zorder=6)
 
     # Deutsch DT 2-pin bulkhead — Circuit E (evap cooler DC output)
-    draw_circle(ax_a, sx(DT_X), sy(DT_Y), sx(DT_R),
+    draw_circle(ax_a, (DT_X), (DT_Y), (DT_R),
                  lw=1.5, color=C_DT, fill=True, fc="#FFE0C0", zorder=5)
-    ax_a.text(sx(DT_X), sy(DT_Y), "E", ha="center", va="center",
+    ax_a.text((DT_X), (DT_Y), "E", ha="center", va="center",
               fontsize=7, fontweight="bold", color=C_DT, zorder=6)
 
     # Emergency cut-off (E-stop) — red mushroom on safety-yellow collar
-    draw_circle(ax_a, sx(ESTOP_X), sy(ESTOP_Y), sx(ESTOP_RING_R),
+    draw_circle(ax_a, (ESTOP_X), (ESTOP_Y), (ESTOP_RING_R),
                  lw=1.5, color=C_OUT, fill=True, fc=C_ESTOP_RING, zorder=5)
-    draw_circle(ax_a, sx(ESTOP_X), sy(ESTOP_Y), sx(ESTOP_R),
+    draw_circle(ax_a, (ESTOP_X), (ESTOP_Y), (ESTOP_R),
                  lw=1.5, color="#7A1810", fill=True, fc=C_ESTOP, zorder=6)
     # raised-dome highlight (upper-left)
-    draw_circle(ax_a, sx(ESTOP_X - 5), sy(ESTOP_Y + 5), sx(ESTOP_R * 0.45),
+    draw_circle(ax_a, (ESTOP_X - 5), (ESTOP_Y + 5), (ESTOP_R * 0.45),
                  lw=0, color=C_ESTOP, fill=True, fc="#E05646", zorder=7)
-    ax_a.text(sx(ESTOP_X), sy(ESTOP_Y - ESTOP_RING_R - 5), "STOP",
+    ax_a.text((ESTOP_X), (ESTOP_Y - ESTOP_RING_R - 5), "STOP",
               ha="center", va="top", fontsize=6.5, fontweight="bold",
               color="#7A1810", zorder=7, **FONT)
 
     # Title
-    ax_a.text(sx(PLATE_W / 2), sy(PLATE_H + 55),
+    ax_a.text((PLATE_W / 2), (PLATE_H + 55),
               "VIEW A — FRONT ELEVATION (EXTERIOR FACE)",
               ha="center", va="bottom", fontsize=9, fontweight="bold",
               color=C_OUT, **FONT)
 
     # Dimensions
-    draw_dim_h(ax_a, sx(0), sx(PLATE_W), sy(-30),
-               f"{PLATE_W}mm", offset=sy(8), fs=7, above=False, font=FONT)
-    draw_dim_v(ax_a, sx(-30), sy(0), sy(PLATE_H),
-               f"{PLATE_H}mm", offset=sx(8), fs=7, font=FONT)
+    draw_dim_h(ax_a, (0), (PLATE_W), (-30),
+               f"{PLATE_W}mm", offset=(8), fs=7, above=False, font=FONT)
+    draw_dim_v(ax_a, (-30), (0), (PLATE_H),
+               f"{PLATE_H}mm", offset=(8), fs=7, font=FONT)
 
     # Leaders
-    leader(ax_a, sx(MC4_X), sy(mc4_y_base + 2 * MC4_PITCH + MC4_R + 5),
-           sx(MC4_X - 25), sy(PLATE_H + 35),
+    leader(ax_a, (MC4_X), (mc4_y_base + 2 * MC4_PITCH + MC4_R + 5),
+           (MC4_X - 25), (PLATE_H + 35),
            "MC4 BULKHEAD\nCONNECTORS (×3 PAIRS)\nIP67 PANEL-MOUNT",
            fs=6.5, color=C_MC4, ha="center", arrow_style="-|>", font=FONT)
 
-    leader(ax_a, sx(NEMA_X + NEMA_W + 5), sy(NEMA_Y + NEMA_H / 2),
-           sx(PLATE_W + 25), sy(NEMA_Y + NEMA_H / 2 + 10),
+    leader(ax_a, (NEMA_X + NEMA_W + 5), (NEMA_Y + NEMA_H / 2),
+           (PLATE_W + 25), (NEMA_Y + NEMA_H / 2 + 10),
            "NEMA 5-15R\nWEATHERPROOF INLET\n120V AC SHORE POWER",
            fs=6.5, color=C_AC, ha="left", arrow_style="-|>", font=FONT)
 
-    leader(ax_a, sx(DT_X + DT_R + 3), sy(DT_Y),
-           sx(PLATE_W + 25), sy(DT_Y - 25),
+    leader(ax_a, (DT_X + DT_R + 3), (DT_Y),
+           (PLATE_W + 25), (DT_Y - 25),
            "DEUTSCH DT 2-PIN\nBULKHEAD (IP67)\nCIRCUIT E — COOLER",
            fs=6, color=C_DT, ha="left", arrow_style="-|>", font=FONT)
 
-    leader(ax_a, sx(ESTOP_X), sy(ESTOP_Y + ESTOP_RING_R + 3),
-           sx(ESTOP_X), sy(PLATE_H + 28),
+    leader(ax_a, (ESTOP_X), (ESTOP_Y + ESTOP_RING_R + 3),
+           (ESTOP_X), (PLATE_H + 28),
            "EMERGENCY CUT-OFF (E-STOP)\n40mm IP66 · TRIPS BATTERY CONTACTOR",
            fs=6.5, color=C_ESTOP, ha="center", arrow_style="-|>", font=FONT)
 
-    leader(ax_a, sx(PLATE_W - MOUNT_INSET + MOUNT_HOLE_D),
-           sy(PLATE_H - MOUNT_INSET),
-           sx(PLATE_W + 25), sy(PLATE_H + 30),
+    leader(ax_a, (PLATE_W - MOUNT_INSET + MOUNT_HOLE_D),
+           (PLATE_H - MOUNT_INSET),
+           (PLATE_W + 25), (PLATE_H + 30),
            f"M{MOUNT_HOLE_D} MOUNTING\nBOLTS (×4)",
            fs=6, color=C_DIM, arrow_style="-|>", font=FONT)
 
@@ -232,8 +230,6 @@ def draw_sheet1():
     ax_b.axis("off")
 
     # Depth axis values are intentionally exaggerated for readability
-    def bx(mm): return mm
-    def by(mm): return mm
 
     # All vertical dimensions use a consistent mm_unit so that the plate
     # (3mm thick on depth axis), bolts (M6 = 6mm shaft), cutout (180mm),
@@ -274,79 +270,79 @@ def draw_sheet1():
     sec_h = plate_h_draw
     ext_pad = 80
     int_pad = 180
-    ax_b.set_xlim(bx(-ext_pad), bx(wall_x + wall_thick + int_pad))
-    ax_b.set_ylim(by(-40), by(sec_h + 80))
+    ax_b.set_xlim((-ext_pad), (wall_x + wall_thick + int_pad))
+    ax_b.set_ylim((-40), (sec_h + 80))
 
     # Interior zone fill
     ax_b.add_patch(mpatches.Rectangle(
-        (bx(wall_x + wall_thick), by(-20)), bx(int_pad), by(sec_h + 80),
+        ((wall_x + wall_thick), (-20)), (int_pad), (sec_h + 80),
         fc=C_INT, ec="none", alpha=0.3, zorder=1))
 
     # Container wall — top section (above cutout)
-    hatch_rect(ax_b, bx(wall_x), by(cut_top), bx(wall_thick),
-               by(sec_h - cut_top + 20),
+    hatch_rect(ax_b, (wall_x), (cut_top), (wall_thick),
+               (sec_h - cut_top + 20),
                color=C_WALL, edgecolor=C_OUT, lw=1.5, alpha=1.0, zorder=3)
     # Container wall — bottom section (below cutout)
-    hatch_rect(ax_b, bx(wall_x), by(-20), bx(wall_thick),
-               by(cut_bot + 20),
+    hatch_rect(ax_b, (wall_x), (-20), (wall_thick),
+               (cut_bot + 20),
                color=C_WALL, edgecolor=C_OUT, lw=1.5, alpha=1.0, zorder=3)
 
     # Cutout opening (clear)
-    draw_rect(ax_b, bx(wall_x), by(cut_bot), bx(wall_thick),
-              by(cut_h_draw),
+    draw_rect(ax_b, (wall_x), (cut_bot), (wall_thick),
+              (cut_h_draw),
               fc="white", color=C_OUT, lw=1.0, zorder=2)
 
     # Gasket (between plate and wall exterior face, around cutout perimeter)
     gasket_x = wall_x - gasket_t_draw
     gasket_strip_h = (plate_h_draw - cut_h_draw) / 2 + 3 * mm_v  # overlap cutout edge
     # Top gasket strip
-    draw_rect(ax_b, bx(gasket_x), by(cut_top - 3 * mm_v),
-              bx(gasket_t_draw), by(gasket_strip_h),
+    draw_rect(ax_b, (gasket_x), (cut_top - 3 * mm_v),
+              (gasket_t_draw), (gasket_strip_h),
               fc=C_GASKT, color=C_GASKT, lw=0.8, zorder=5)
     # Bottom gasket strip
-    draw_rect(ax_b, bx(gasket_x), by(cut_bot - (gasket_strip_h - 3 * mm_v)),
-              bx(gasket_t_draw), by(gasket_strip_h),
+    draw_rect(ax_b, (gasket_x), (cut_bot - (gasket_strip_h - 3 * mm_v)),
+              (gasket_t_draw), (gasket_strip_h),
               fc=C_GASKT, color=C_GASKT, lw=0.8, zorder=5)
 
     # Face plate (flush with exterior wall face)
     plate_x = gasket_x - plate_t_draw
-    draw_rect(ax_b, bx(plate_x), by(plate_bot), bx(plate_t_draw),
-              by(plate_h_draw),
+    draw_rect(ax_b, (plate_x), (plate_bot), (plate_t_draw),
+              (plate_h_draw),
               fc=C_ALUM, color=C_OUT, lw=1.5, zorder=6)
 
     # Connector bodies protruding through cutout into interior
     mc4_spacing = cut_h_draw / 4
     for i in range(3):
         cy = cut_bot + mc4_spacing * (i + 0.5)
-        draw_rect(ax_b, bx(wall_x - 5), by(cy - 4 * mm_v),
-                  bx(wall_thick + conn_depth + 5), by(8 * mm_v),
+        draw_rect(ax_b, (wall_x - 5), (cy - 4 * mm_v),
+                  (wall_thick + conn_depth + 5), (8 * mm_v),
                   fc="#C0E8C0", color=C_MC4, lw=1.0, zorder=4)
-        ax_b.plot([bx(wall_x + wall_thick + conn_depth),
-                   bx(wall_x + wall_thick + int_pad - 30)],
-                  [by(cy), by(cy)],
+        ax_b.plot([(wall_x + wall_thick + conn_depth),
+                   (wall_x + wall_thick + int_pad - 30)],
+                  [(cy), (cy)],
                   color=C_MC4, lw=1.5, zorder=5)
 
     # NEMA body through cutout — aligned with PV3
     nema_cy = cut_bot + mc4_spacing * 2.5
-    draw_rect(ax_b, bx(wall_x - 5), by(nema_cy - 5 * mm_v),
-              bx(wall_thick + conn_depth + 5), by(10 * mm_v),
+    draw_rect(ax_b, (wall_x - 5), (nema_cy - 5 * mm_v),
+              (wall_thick + conn_depth + 5), (10 * mm_v),
               fc=C_NEMA, color=C_AC, lw=1.0, zorder=4)
-    ax_b.plot([bx(wall_x + wall_thick + conn_depth),
-               bx(wall_x + wall_thick + int_pad - 30)],
-              [by(nema_cy), by(nema_cy)],
+    ax_b.plot([(wall_x + wall_thick + conn_depth),
+               (wall_x + wall_thick + int_pad - 30)],
+              [(nema_cy), (nema_cy)],
               color=C_AC, lw=1.5, ls="--", zorder=5)
 
     # Deutsch DT body through cutout (Circuit E — cooler DC output) — aligned with PV1
     dt_cy = cut_bot + mc4_spacing * 0.5
-    draw_rect(ax_b, bx(wall_x - 5), by(dt_cy - 3 * mm_v),
-              bx(wall_thick + DT_DEPTH + 5), by(6 * mm_v),
+    draw_rect(ax_b, (wall_x - 5), (dt_cy - 3 * mm_v),
+              (wall_thick + DT_DEPTH + 5), (6 * mm_v),
               fc="#FFE0C0", color=C_DT, lw=1.0, zorder=4)
-    ax_b.plot([bx(wall_x + wall_thick + DT_DEPTH),
-               bx(wall_x + wall_thick + int_pad - 30)],
-              [by(dt_cy), by(dt_cy)],
+    ax_b.plot([(wall_x + wall_thick + DT_DEPTH),
+               (wall_x + wall_thick + int_pad - 30)],
+              [(dt_cy), (dt_cy)],
               color=C_DT, lw=1.5, zorder=5)
-    ax_b.plot([bx(wall_x - 5), bx(-ext_pad + 10)],
-              [by(dt_cy), by(dt_cy)],
+    ax_b.plot([(wall_x - 5), (-ext_pad + 10)],
+              [(dt_cy), (dt_cy)],
               color=C_DT, lw=1.5, ls="--", zorder=5)
 
     # Mounting bolts (through plate + gasket + wall, nut clamped against wall)
@@ -356,83 +352,83 @@ def draw_sheet1():
         # Bolt shaft — from bolt head through plate, gasket, wall to nut
         shaft_start = plate_x - bolt_head_w
         shaft_end = wall_x + wall_thick + washer_w + nut_w
-        draw_rect(ax_b, bx(shaft_start),
-                  by(by_pos - bolt_shaft_h / 2),
-                  bx(shaft_end - shaft_start),
-                  by(bolt_shaft_h),
+        draw_rect(ax_b, (shaft_start),
+                  (by_pos - bolt_shaft_h / 2),
+                  (shaft_end - shaft_start),
+                  (bolt_shaft_h),
                   fc=C_STEEL, color=C_OUT, lw=0.6, zorder=7)
         # Bolt head (exterior side of plate)
-        draw_rect(ax_b, bx(plate_x - bolt_head_w),
-                  by(by_pos - bolt_head_h / 2),
-                  bx(bolt_head_w), by(bolt_head_h),
+        draw_rect(ax_b, (plate_x - bolt_head_w),
+                  (by_pos - bolt_head_h / 2),
+                  (bolt_head_w), (bolt_head_h),
                   fc=C_STEEL, color=C_OUT, lw=0.8, zorder=8)
         # Washer (against interior face of wall)
-        draw_rect(ax_b, bx(wall_x + wall_thick),
-                  by(by_pos - washer_h / 2),
-                  bx(washer_w), by(washer_h),
+        draw_rect(ax_b, (wall_x + wall_thick),
+                  (by_pos - washer_h / 2),
+                  (washer_w), (washer_h),
                   fc="#E0E0E0", color=C_OUT, lw=0.6, zorder=8)
         # Nut (clamped against washer, flush with interior wall face)
-        draw_rect(ax_b, bx(wall_x + wall_thick + washer_w),
-                  by(by_pos - nut_h / 2),
-                  bx(nut_w), by(nut_h),
+        draw_rect(ax_b, (wall_x + wall_thick + washer_w),
+                  (by_pos - nut_h / 2),
+                  (nut_w), (nut_h),
                   fc=C_STEEL, color=C_OUT, lw=0.8, zorder=8)
 
     # Interior destination labels
     int_label_x = wall_x + wall_thick + int_pad - 25
-    ax_b.text(bx(int_label_x), by(cut_bot + mc4_spacing + 16),
+    ax_b.text((int_label_x), (cut_bot + mc4_spacing + 16),
               "→ MPPT", ha="left", va="center", fontsize=7,
               color=C_MC4, fontweight="bold", **FONT, zorder=7)
-    ax_b.text(bx(int_label_x), by(nema_cy),
+    ax_b.text((int_label_x), (nema_cy),
               "→ CHARGER", ha="left", va="center", fontsize=7,
               color=C_AC, fontweight="bold", **FONT, zorder=7)
-    ax_b.text(bx(int_label_x), by(dt_cy),
+    ax_b.text((int_label_x), (dt_cy),
               "← CCT E", ha="left", va="center", fontsize=7,
               color=C_DT, fontweight="bold", **FONT, zorder=7)
-    ax_b.text(bx(-ext_pad + 8), by(dt_cy + 5),
+    ax_b.text((-ext_pad + 8), (dt_cy + 5),
               "→ COOLER", ha="left", va="bottom", fontsize=7,
               color=C_DT, fontweight="bold", **FONT, zorder=7)
 
     # Zone labels
-    ax_b.text(bx(plate_x - 30), by(sec_h + 55),
+    ax_b.text((plate_x - 30), (sec_h + 55),
               "EXTERIOR", ha="center", va="bottom", fontsize=9,
               fontweight="bold", color=C_DIM, **FONT)
-    ax_b.text(bx(wall_x + wall_thick + int_pad / 2), by(sec_h + 55),
+    ax_b.text((wall_x + wall_thick + int_pad / 2), (sec_h + 55),
               "INTERIOR", ha="center", va="bottom", fontsize=9,
               fontweight="bold", color=C_DIM, **FONT)
 
     # Title
-    ax_b.text(bx((wall_x + wall_thick + int_pad) / 2), by(sec_h + 70),
+    ax_b.text(((wall_x + wall_thick + int_pad) / 2), (sec_h + 70),
               "VIEW B — CROSS-SECTION (FLUSH-MOUNT DETAIL)",
               ha="center", va="bottom", fontsize=9, fontweight="bold",
               color=C_OUT, **FONT)
 
     # Dimensions
-    draw_dim_h(ax_b, bx(plate_x), bx(plate_x + plate_t_draw), by(-25),
-               f"{PLATE_T}mm\nPLATE", offset=by(5), fs=6, above=False, font=FONT)
-    draw_dim_h(ax_b, bx(wall_x), bx(wall_x + wall_thick), by(-25),
-               "WALL", offset=by(5), fs=6, above=False, font=FONT)
-    draw_dim_v(ax_b, bx(wall_x + wall_thick + 8), by(cut_bot), by(cut_top),
-               f"{CUT_H}mm\nCUTOUT", offset=bx(5), fs=6, right=True, font=FONT)
+    draw_dim_h(ax_b, (plate_x), (plate_x + plate_t_draw), (-25),
+               f"{PLATE_T}mm\nPLATE", offset=(5), fs=6, above=False, font=FONT)
+    draw_dim_h(ax_b, (wall_x), (wall_x + wall_thick), (-25),
+               "WALL", offset=(5), fs=6, above=False, font=FONT)
+    draw_dim_v(ax_b, (wall_x + wall_thick + 8), (cut_bot), (cut_top),
+               f"{CUT_H}mm\nCUTOUT", offset=(5), fs=6, right=True, font=FONT)
 
     # Leader labels
-    leader(ax_b, bx(gasket_x - gasket_t_draw / 2 + 3),
-           by(cut_top + 5),
-           bx(gasket_x - 60), by(cut_top - 5),
+    leader(ax_b, (gasket_x - gasket_t_draw / 2 + 3),
+           (cut_top + 5),
+           (gasket_x - 60), (cut_top - 5),
            "NEOPRENE GASKET\n3mm — WEATHERSEAL",
            fs=6, color=C_GASKT, ha="center", arrow_style="-|>", font=FONT)
 
-    leader(ax_b, bx(plate_x + PLATE_T / 2), by(cut_top + 23),
-           bx(plate_x - 25), by(sec_h + 40),
+    leader(ax_b, (plate_x + PLATE_T / 2), (cut_top + 23),
+           (plate_x - 25), (sec_h + 40),
            f"ALUMINUM FACE PLATE\n{PLATE_W}×{PLATE_H}×{PLATE_T}mm\nFLUSH WITH WALL",
            fs=6, color=C_OUT, ha="center", arrow_style="-|>", font=FONT)
 
-    leader(ax_b, bx(wall_x + wall_thick / 2), by(-15),
-           bx(wall_x + wall_thick / 2), by(-35),
+    leader(ax_b, (wall_x + wall_thick / 2), (-15),
+           (wall_x + wall_thick / 2), (-35),
            "CONTAINER WALL\n(CORRUGATED STEEL)",
            fs=6, color=C_WALL, ha="center", va="top", arrow_style="-|>", font=FONT)
 
-    leader(ax_b, bx(wall_x + wall_thick + 5), by(bolt_positions[1]),
-           bx(wall_x + wall_thick + 25), by(bolt_positions[1] + 25),
+    leader(ax_b, (wall_x + wall_thick + 5), (bolt_positions[1]),
+           (wall_x + wall_thick + 25), (bolt_positions[1] + 25),
            "M6 BOLT + NUT\nW/ WASHER (×4)",
            fs=6, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
 

@@ -304,8 +304,6 @@ ax1.text(cx_c, cy_c - hw - 200, 'PANEL C — ICP-01 INTERIOR (1:8)\n(Bearing poc
 # Horizontal: 1:5  →  600mm = 120 units
 # Vertical:   1:1  →  40mm frame + 25mm carrier + 35mm bearing shank = 100 units
 # ───────────────────────────────────────────────
-def sx(mm): return mm   # mm-first horizontal
-def sy(mm): return mm   # mm-first vertical
 
 ax1.text(80, 1776, 'PANEL D — SECTION A-A  (AXES IN mm  — thickness exaggerated for clarity)',
          fontsize=7, fontweight='bold')
@@ -316,9 +314,9 @@ cx_d = 2000
 frame_top = 1680   # top of ICP-01 frame
 
 # Heights in drawing units (1:1 vertical)
-fh = sy(TSB01_THICK)   # frame height = 40
-ch = sy(CARR_THICK)    # carrier height = 25
-bh = sy(BRG_W)         # bearing height = 46
+fh = (TSB01_THICK)   # frame height = 40
+ch = (CARR_THICK)    # carrier height = 25
+bh = (BRG_W)         # bearing height = 46
 
 # Y positions (drawing downward = interior side)
 frame_y_top = frame_top
@@ -326,13 +324,13 @@ frame_y_bot = frame_top - fh          # interior face of ICP-01
 carrier_y_top = frame_y_bot           # carrier sits flush on interior face
 carrier_y_bot = carrier_y_top - ch
 seat_y_top = frame_y_bot              # bearing pocket starts at interior face
-seat_y_bot = seat_y_top + sy(BRG_SEAT_DEP)   # pocket goes INTO frame (upward)
+seat_y_bot = seat_y_top + (BRG_SEAT_DEP)   # pocket goes INTO frame (upward)
 
 # Frame footprint — left wing
-left_wing_w = sx((PL_OD - TSB01_BORE) / 2)
-right_x = cx_d + sx(PL_OD/2)
-left_x  = cx_d - sx(PL_OD/2)
-bore_hw_d = sx(TSB01_BORE/2)
+left_wing_w = ((PL_OD - TSB01_BORE) / 2)
+right_x = cx_d + (PL_OD/2)
+left_x  = cx_d - (PL_OD/2)
+bore_hw_d = (TSB01_BORE/2)
 
 # Left frame wing
 lw_p = mpatches.Rectangle((left_x, frame_y_bot), left_wing_w, fh,
@@ -356,23 +354,23 @@ ax1.plot([cx_d + bore_hw_d, right_x], [frame_y_bot, frame_y_bot], color=C_OUT, l
 
 # Neoprene seal groove (exterior face, at ±SEAL_D/2 from center)
 for sgn in [-1, 1]:
-    gx = cx_d + sgn * sx(SEAL_D/2) - sgn * sx(SEAL_W/2)
-    sg_p = mpatches.Rectangle((gx - sx(SEAL_W/2), frame_y_top - sy(SEAL_DEP)),
-                                sx(SEAL_W), sy(SEAL_DEP),
+    gx = cx_d + sgn * (SEAL_D/2) - sgn * (SEAL_W/2)
+    sg_p = mpatches.Rectangle((gx - (SEAL_W/2), frame_y_top - (SEAL_DEP)),
+                                (SEAL_W), (SEAL_DEP),
                                 lw=0.5, edgecolor=C_OUT, facecolor=C_GASKT, zorder=5)
     ax1.add_patch(sg_p)
 
 # Light-trap rebate (exterior face)
 for sgn in [-1, 1]:
-    tx2 = cx_d + sgn * sx(TRAP_SQ/2) - sgn * sx(5)
-    tr_p = mpatches.Rectangle((tx2 - sx(2.5), frame_y_top - sy(5)),
-                                sx(5), sy(5),
+    tx2 = cx_d + sgn * (TRAP_SQ/2) - sgn * (5)
+    tr_p = mpatches.Rectangle((tx2 - (2.5), frame_y_top - (5)),
+                                (5), (5),
                                 lw=0.5, edgecolor=C_OUT, facecolor='white', zorder=4)
     ax1.add_patch(tr_p)
 
 # Bearing seat pocket (opens on interior face, goes INTO frame)
-seat_hw = sx(BRG_SEAT_D/2)
-seat_dep_d = sy(BRG_SEAT_DEP)
+seat_hw = (BRG_SEAT_D/2)
+seat_dep_d = (BRG_SEAT_DEP)
 ax1.plot([cx_d - seat_hw, cx_d - seat_hw], [frame_y_bot, frame_y_bot + seat_dep_d],
          color=C_OUT, lw=LW_MED)
 ax1.plot([cx_d + seat_hw, cx_d + seat_hw], [frame_y_bot, frame_y_bot + seat_dep_d],
@@ -381,38 +379,38 @@ ax1.plot([cx_d - seat_hw, cx_d + seat_hw], [frame_y_bot + seat_dep_d, frame_y_bo
          color=C_OUT, lw=LW_MED)
 
 # GE50 Bearing in section (in pocket)
-brg_hw_d = sx(BRG_OD/2)
-brg_wall = sx(7)
+brg_hw_d = (BRG_OD/2)
+brg_wall = (7)
 brg_top = frame_y_bot
-brg_bot = brg_top + sy(BRG_W/2)
+brg_bot = brg_top + (BRG_W/2)
 
 # Outer ring (two side walls, hatched)
 for sgn in [-1, 1]:
     bx0 = cx_d + sgn * (brg_hw_d - brg_wall)
     br_p = mpatches.Rectangle((bx0 - brg_wall if sgn < 0 else bx0, brg_top),
-                                brg_wall, sy(BRG_W/2),
+                                brg_wall, (BRG_W/2),
                                 lw=LW_MED, edgecolor=C_OUT, facecolor=C_BEAR,
                                 hatch='\\\\', zorder=4)
     ax1.add_patch(br_p)
 # Outer ring top cap
-br_top = mpatches.Rectangle((cx_d - brg_hw_d, brg_top), sx(BRG_OD), sy(4),
+br_top = mpatches.Rectangle((cx_d - brg_hw_d, brg_top), (BRG_OD), (4),
                               lw=LW_MED, edgecolor=C_OUT, facecolor=C_BEAR, hatch='\\\\', zorder=4)
 ax1.add_patch(br_top)
 
 # Inner ring
-ir_hw = sx(BRG_ID/2)
-ir_wall = sx(5)
+ir_hw = (BRG_ID/2)
+ir_wall = (5)
 for sgn in [-1, 1]:
     ix0 = cx_d + sgn * (ir_hw - ir_wall)
-    ir_p = mpatches.Rectangle((ix0 - ir_wall if sgn < 0 else ix0, brg_top + sy(4)),
-                                ir_wall, sy(BRG_W/2 - 4),
+    ir_p = mpatches.Rectangle((ix0 - ir_wall if sgn < 0 else ix0, brg_top + (4)),
+                                ir_wall, (BRG_W/2 - 4),
                                 lw=LW_MED, edgecolor=C_OUT, facecolor=C_BEAR,
                                 hatch='---', zorder=5)
     ax1.add_patch(ir_p)
 
 # ICP-02 Carrier plate
-carr_hw_d = sx(CARR_OD/2)
-ph_hw_d   = sx(PH_BORE/2)
+carr_hw_d = (CARR_OD/2)
+ph_hw_d   = (PH_BORE/2)
 # Carrier wings (either side of pinhole bore)
 for sgn in [-1, 1]:
     x0 = cx_d + sgn * ph_hw_d
@@ -433,25 +431,25 @@ ax1.plot([cx_d - ph_hw_d, cx_d - ph_hw_d], [carrier_y_bot, carrier_y_top], color
 ax1.plot([cx_d + ph_hw_d, cx_d + ph_hw_d], [carrier_y_bot, carrier_y_top], color=C_OUT, lw=LW_MED)
 
 # M8 adjustment screw (one side — right)
-adj_x = cx_d + sx(ADJ_PCD/2)
-adj_hw_d = sx(ADJ_D/2)
+adj_x = cx_d + (ADJ_PCD/2)
+adj_hw_d = (ADJ_D/2)
 # Bushing
-bush_d = mpatches.Rectangle((adj_x - sx(BUSH_OD/2), frame_y_bot),
-                              sx(BUSH_OD), sy(BUSH_L),
+bush_d = mpatches.Rectangle((adj_x - (BUSH_OD/2), frame_y_bot),
+                              (BUSH_OD), (BUSH_L),
                               lw=LW_THIN, edgecolor=C_OUT, facecolor=C_DELR, zorder=4)
 ax1.add_patch(bush_d)
 # Screw shaft through bushing + frame
 screw_d = mpatches.Rectangle((adj_x - adj_hw_d, frame_y_bot),
-                               sx(ADJ_D), fh,
+                               (ADJ_D), fh,
                                lw=0.8, edgecolor=C_OUT, facecolor=C_STEEL, zorder=5)
 ax1.add_patch(screw_d)
 # Ø8 ball (at carrier rim)
 ball_y_d = (carrier_y_top + carrier_y_bot) / 2
-ax1.plot(adj_x, ball_y_d, 'o', ms=sx(BALL_D), color=C_BEAR, mec=C_OUT, mew=0.7, zorder=6)
+ax1.plot(adj_x, ball_y_d, 'o', ms=(BALL_D), color=C_BEAR, mec=C_OUT, mew=0.7, zorder=6)
 
 # Bellows schematic (right side, between frame interior face and carrier)
-bell_x_out = cx_d + sx(BELL_OUT_PCD/2)
-bell_x_in  = cx_d + sx(BELL_IN_PCD/2)
+bell_x_out = cx_d + (BELL_OUT_PCD/2)
+bell_x_in  = cx_d + (BELL_IN_PCD/2)
 bell_y_top = frame_y_bot
 bell_y_bot = carrier_y_top
 n_p = BELL_PLEATS
@@ -505,8 +503,8 @@ leader(ax1, cx_d + seat_hw + 16, frame_y_bot + seat_dep_d/2,
 leader(ax1, cx_d + carr_hw_d + 16, carrier_y_bot + ch/2,
        cx_d + 520, carrier_y_bot + ch/2,
        'ICP-02 CARRIER\nØ320 × 25 Al', fs=4.8, color=C_DIM, arrow_style='->')
-leader(ax1, adj_x + sx(BUSH_OD/2), frame_y_bot + sy(BUSH_L)/2,
-       adj_x + 304, frame_y_bot + sy(BUSH_L)/2,
+leader(ax1, adj_x + (BUSH_OD/2), frame_y_bot + (BUSH_L)/2,
+       adj_x + 304, frame_y_bot + (BUSH_L)/2,
        'M8 SCREW\n+ DELRIN\nBUSHING', fs=4.5, color=C_DIM, arrow_style='->')
 leader(ax1, bell_x_out, (bell_span_top + bell_span_bot)/2.1,
        bell_x_out + 144, (bell_span_top + bell_span_bot)/2.2,

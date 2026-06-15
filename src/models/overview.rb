@@ -13426,6 +13426,10 @@ anc = Geom::Point3d.new(2060.mm, 60.mm, 600.mm)
 txt = entities.add_text("BATTERY 1× 100Ah
 (2nd pack ghosted = plug-in)", anc, Geom::Vector3d.new(-300.mm, -600.mm, 900.mm))
 txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(1970.mm, 36.mm, 1415.mm)
+txt = entities.add_text("CCT-E INVERTER
+12->120V AC (cooler)", anc, Geom::Vector3d.new(-430.mm, -820.mm, 480.mm))
+txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(1420.mm, -90.mm, 1950.mm)
 txt = entities.add_text("EMERGENCY E-STOP
 (external panel — kills all DC)", anc, Geom::Vector3d.new(-550.mm, -450.mm, 350.mm))

@@ -484,7 +484,7 @@ def draw_sheet1():
 
     # Shore power path (bottom row)
     sbox(ax_c, 0.5, row_bot, 2.8, 0.9,
-         "SHORE POWER", "120V AC mains", fc=C_NEMA, tc=C_AC)
+         "SHORE POWER", "120V AC grid", fc=C_NEMA, tc=C_AC)
     sarrow(ax_c, 3.3, row_bot + 0.45, 4.5, col=C_AC)
     ax_c.text(3.9, row_bot + 0.65, "AC cord", fontsize=6, color=C_AC,
               ha="center", **FONT)

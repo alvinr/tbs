@@ -4,13 +4,13 @@
 
 ## 1. Purpose
 
-The camera operates in remote locations with no mains water or drainage. This document specifies a self-contained three-circuit water system for off-grid cyanotype processing on a 4499 × 2388mm image plane inside a 20 ft ISO shipping container.
+The camera operates in remote locations with no municipal water or drainage. This document specifies a self-contained three-circuit water system for off-grid cyanotype processing on a 4499 × 2388mm image plane inside a 20 ft ISO shipping container.
 
 ---
 
 ## 2. Executive Summary
 
-The camera operates in remote locations with no mains water or drainage. This document specifies a self-contained three-circuit water system that:
+The camera operates in remote locations with no municipal water or drainage. This document specifies a self-contained three-circuit water system that:
 
 - Stores sufficient clean water for 8–10 full-size prints between resupply runs
 - Recycles used wash water through a three-stage filter train, extending usable supply by approximately 40%

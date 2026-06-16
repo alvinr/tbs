@@ -118,6 +118,8 @@ ELEC_POINT_LABELS = [
      "EXTERNAL PANEL\nMC4 PV / shore / GFCI cooler / E-STOP", 220, -520, 380),
     (EVAP_DUCT_X, -WALL - EVAP_D / 2 - 120, EVAP_H,
      "EVAP COOLER\n(Hessaire MC18M, Cct E)", -260, -520, 520),
+    (EQPANEL_X, EQPANEL_YD + EQPANEL_YD_SPAN / 2, PUMP_H_HI - 40,
+     "CCT-C PUMP DISTRIBUTION\n5 switches — P-01..P-05 (one at a time)", -350, -700, 250),
 ]
 
 
@@ -389,6 +391,27 @@ def inverter():
     return '\n'.join(p)
 
 
+def _pump_circuit():
+    """Circuit C: feed → drop to a 12V distribution block on the equipment panel →
+    5 individual pump switches → the 5 Shurflo pumps (one at a time). Per the
+    Equipment Panel report: left column P-01/P-04, right column P-02/P-03/P-05."""
+    col = CCT["C"][0]
+    lcol, rcol = EQPANEL_YD + 63, EQPANEL_YD + 207     # column centres (panel report)
+    pumps = [("P-01", lcol, 1229), ("P-04", lcol, 1487),
+             ("P-02", rcol, 1229), ("P-03", rcol, 1487), ("P-05", rcol, 1855)]
+    db = (EQPANEL_X, EQPANEL_YD + EQPANEL_YD_SPAN / 2, PUMP_H_HI - 40)  # dist block
+    p = [_run("C", db)]                                 # feed → distribution block
+    p.append(ov.ruby_box("Cct C distribution block", EQPANEL_X - 30, db[1] - 40,
+                         db[2] - 15, 60, 80, 30, color="#2B2B30"))
+    for nm, yd, z in pumps:
+        swx = EQPANEL_X - 120                           # switch on the panel face (-X)
+        p.append(ov.ruby_box(f"Pump switch {nm} (Cct C)", swx - 20, yd - 20, z + 40,
+                             40, 40, 40, color="#202020"))
+        br = _dedup([db, (db[0], yd, db[2]), (swx, yd, db[2]), (swx, yd, z + 60)])
+        p.append(ov.ruby_pipe_run(f"Cct C branch {nm}", br, 6, color=col))
+    return '\n'.join(p)
+
+
 def circuit_runs():
     """Ceiling cable-trunking spine + the 7 color-coded circuits A-G to their loads.
     Single-load circuits (A,B,C,E,F) trace fuse-block→load; the lighting circuits
@@ -400,8 +423,9 @@ def circuit_runs():
     tx0, tx1 = min(cxs) - 40, max(cxs) + 40
     p = [ov.ruby_box("Cable Trunking (40x25 PVC)", tx0, 0, ov.C_HGT - 25, tx1 - tx0, 40,
                      25, color=ov.C_TRUNK)]
-    for cct in ("A", "B", "C", "E"):
+    for cct in ("A", "B", "E"):
         p.append(_run(cct, LOADS[cct]))
+    p.append(_pump_circuit())              # Cct C: distribution block + 5 pump switches
     p.append(_multi_run("G", LED_ENDS))    # 3× white LED (incl. rotated IBC-end panel)
     p.append(_multi_run("D", SAFE_ENDS))   # 3× safelight
     return '\n'.join(p)

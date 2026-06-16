@@ -1132,6 +1132,26 @@ for zr, lbl, hot in [(Z_BOT, "P-01 /\nP-02", False),
 axb.text(PANX - 50, Z_TOP - 70, "PUMPS\n(front face)", fontsize=5.5, ha="center",
          va="top", color="#777", style="italic", **FB)
 
+# ── Circuit C pump power: feed → distribution block → 5 pump switches ─────
+# 12V DC Circuit C drops from the ceiling to a distribution block above the pumps;
+# one IP-rated switch per pump (P-01..P-05, run one at a time). In this Yd-section
+# the L+R columns overlap, so each row carries the pair.
+CWIRE = "#1565C0"
+busx = PANX - 135                                # wiring bus, just left of the pumps
+db_z = 2210                                      # distribution block, above the pumps
+axb.plot([busx, busx], [C_HGT, db_z], color=CWIRE, lw=1.4, zorder=12)     # feed
+_rect(busx - 42, db_z - 4, 66, 32, "#D9E8F7", ec=CWIRE, lw=1.0, z0=12)
+axb.text(busx - 9, db_z + 12, "Cct C\nDIST", fontsize=4.3, ha="center", va="center",
+         color=CWIRE, fontweight="bold", **FB)
+axb.plot([busx, busx], [db_z - 4, Z_BOT + 80], color=CWIRE, lw=1.2, zorder=11)  # bus
+for zr in (Z_BOT, Z_MID, Z_TOP):
+    swz = zr + 109
+    _rect(busx - 12, swz - 12, 24, 24, "white", ec=CWIRE, lw=0.9, z0=13)   # switch
+    axb.plot([busx + 12, PANX - 100], [swz, swz], color=CWIRE, lw=1.0, zorder=12)  # branch
+leader(axb, busx - 24, db_z + 40, 5180, 2210,
+       "CIRCUIT C POWER — 12V feed → distribution block →\n5 IP-rated switches (one per pump, P-01..P-05;\nrun one at a time). Rows show the L+R column pairs.",
+       color=CWIRE, fs=5.5, ha="left", va="center", arrow_style="-|>", font=FB)
+
 # ── Drain-riser spine (full panel height) ────────────────────────────────
 _rect(PANX1, EQPANEL_Z_LO, SPX1 - PANX1, EQPANEL_Z_HI - EQPANEL_Z_LO, C_PLYB, lw=1.2,
       z0=4, alpha=0.45)

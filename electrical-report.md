@@ -13,7 +13,18 @@ See also: [Operating Manual](operating-manual.md) for step-by-step operational p
 ## 2. System Overview
 TBS-001 is designed for fully off-grid operation. All power comes from a rooftop/ground-mounted solar array charging a LiFePO4 battery bank. Shore power (mains) is accommodated as an optional backup charging input only — the system operates identically without it.
 
-All loads run at **12V DC**. There is no mains AC distribution inside the container.
+All loads run at **12V DC** (the one exception is the dedicated Circuit-E cooler inverter — see §7.6).
+
+**Interactive 3D model** — the solar array, the enclosure internals (MPPT / fuse block / busbars / disconnect), the battery, the external power panel, the Circuit-E inverter, and the color-coded circuit runs out to each load. Drag to orbit, scroll to zoom.
+
+<div class="sketchfab-embed-wrapper">
+  <div style="position:relative;width:100%;padding-bottom:56.25%;">
+    <iframe title="TBS-001 Electrical Model" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/6930c96be025469fb8ef702393d7c35f/embed" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
+  </div>
+  <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"><a href="https://sketchfab.com/3d-models/tbs-001-electrical-model-6930c96be025469fb8ef702393d7c35f?utm_medium=embed&utm_campaign=share-popup&utm_content=6930c96be025469fb8ef702393d7c35f" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">TBS-001 Electrical Model</a> by <a href="https://sketchfab.com/alvin91403?utm_medium=embed&utm_campaign=share-popup&utm_content=6930c96be025469fb8ef702393d7c35f" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">alvin91403</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=6930c96be025469fb8ef702393d7c35f" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p>
+</div>
+
+---
 
 **Sheet 1 — System One-Line Diagram**
 Complete power flow from solar panels through controller, battery bank, fuse block, and out to each circuit. Wire gauges, fuse ratings, and component models labeled.

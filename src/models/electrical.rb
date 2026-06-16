@@ -1284,6 +1284,17 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # Cct C distribution wireway
+  grp = ents.add_group
+  grp.name = "Cct C distribution wireway"
+  face = grp.entities.add_face([4849.mm,1146.mm,1209.mm], [4899.mm,1146.mm,1209.mm], [4899.mm,1216.mm,1209.mm], [4849.mm,1216.mm,1209.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(1061.mm)
+  mat = model.materials["Fuse Block (Blue Sea 5026)"] || model.materials.add("Fuse Block (Blue Sea 5026)")
+  mat.color = Sketchup::Color.new(43, 43, 48)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Circuit C (water pumps)
   grp = ents.add_group
   grp.name = "Circuit C (water pumps)"
@@ -1396,24 +1407,13 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit C (water pumps)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -129.mm)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -114.mm)
   circle = ge.add_circle([4874.mm,1181.mm,2359.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C distribution block
-  grp = ents.add_group
-  grp.name = "Cct C distribution block"
-  face = grp.entities.add_face([4844.mm,1141.mm,2215.mm], [4904.mm,1141.mm,2215.mm], [4904.mm,1221.mm,2215.mm], [4844.mm,1221.mm,2215.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(30.mm)
-  mat = model.materials["Fuse Block (Blue Sea 5026)"] || model.materials.add("Fuse Block (Blue Sea 5026)")
-  mat.color = Sketchup::Color.new(43, 43, 48)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1432,62 +1432,35 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Cct C branch P-01"
   ge = grp.entities
+  vec = Geom::Vector3d.new(-108.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4874.mm,1181.mm,1289.mm], vec, 6.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C branch P-01 elbow
+  grp = ents.add_group
+  grp.name = "Cct C branch P-01 elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4766.mm,1169.mm,1289.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 12.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4766.mm,1181.mm,1289.mm], [-1.000000,0.000000,0.000000], 6.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C branch P-01
+  grp = ents.add_group
+  grp.name = "Cct C branch P-01"
+  ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -60.mm, 0.mm)
-  circle = ge.add_circle([4874.mm,1181.mm,2230.mm], vec, 6.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-01 elbow
-  grp = ents.add_group
-  grp.name = "Cct C branch P-01 elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4862.mm,1121.mm,2230.mm], [1.000000,0.000000,0.000000], [-0.000000,-0.000000,-1.000000], 12.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4874.mm,1121.mm,2230.mm], [0.000000,-1.000000,0.000000], 6.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-01
-  grp = ents.add_group
-  grp.name = "Cct C branch P-01"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-96.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4862.mm,1109.mm,2230.mm], vec, 6.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-01 elbow
-  grp = ents.add_group
-  grp.name = "Cct C branch P-01 elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4766.mm,1109.mm,2218.mm], [0.000000,0.000000,1.000000], [-0.000000,-1.000000,-0.000000], 12.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4766.mm,1109.mm,2230.mm], [-1.000000,0.000000,0.000000], 6.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-01
-  grp = ents.add_group
-  grp.name = "Cct C branch P-01"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -929.mm)
-  circle = ge.add_circle([4754.mm,1109.mm,2218.mm], vec, 6.mm, 16)
+  circle = ge.add_circle([4754.mm,1169.mm,1289.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1511,62 +1484,35 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Cct C branch P-04"
   ge = grp.entities
+  vec = Geom::Vector3d.new(-108.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4874.mm,1181.mm,1547.mm], vec, 6.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C branch P-04 elbow
+  grp = ents.add_group
+  grp.name = "Cct C branch P-04 elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4766.mm,1169.mm,1547.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 12.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4766.mm,1181.mm,1547.mm], [-1.000000,0.000000,0.000000], 6.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C branch P-04
+  grp = ents.add_group
+  grp.name = "Cct C branch P-04"
+  ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -60.mm, 0.mm)
-  circle = ge.add_circle([4874.mm,1181.mm,2230.mm], vec, 6.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-04 elbow
-  grp = ents.add_group
-  grp.name = "Cct C branch P-04 elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4862.mm,1121.mm,2230.mm], [1.000000,0.000000,0.000000], [-0.000000,-0.000000,-1.000000], 12.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4874.mm,1121.mm,2230.mm], [0.000000,-1.000000,0.000000], 6.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-04
-  grp = ents.add_group
-  grp.name = "Cct C branch P-04"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-96.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4862.mm,1109.mm,2230.mm], vec, 6.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-04 elbow
-  grp = ents.add_group
-  grp.name = "Cct C branch P-04 elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4766.mm,1109.mm,2218.mm], [0.000000,0.000000,1.000000], [-0.000000,-1.000000,-0.000000], 12.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4766.mm,1109.mm,2230.mm], [-1.000000,0.000000,0.000000], 6.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-04
-  grp = ents.add_group
-  grp.name = "Cct C branch P-04"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -671.mm)
-  circle = ge.add_circle([4754.mm,1109.mm,2218.mm], vec, 6.mm, 16)
+  circle = ge.add_circle([4754.mm,1169.mm,1547.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1590,62 +1536,35 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Cct C branch P-02"
   ge = grp.entities
+  vec = Geom::Vector3d.new(-108.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4874.mm,1181.mm,1289.mm], vec, 6.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C branch P-02 elbow
+  grp = ents.add_group
+  grp.name = "Cct C branch P-02 elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4766.mm,1193.mm,1289.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,-1.000000], 12.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4766.mm,1181.mm,1289.mm], [-1.000000,0.000000,0.000000], 6.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C branch P-02
+  grp = ents.add_group
+  grp.name = "Cct C branch P-02"
+  ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 60.mm, 0.mm)
-  circle = ge.add_circle([4874.mm,1181.mm,2230.mm], vec, 6.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-02 elbow
-  grp = ents.add_group
-  grp.name = "Cct C branch P-02 elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4862.mm,1241.mm,2230.mm], [1.000000,0.000000,0.000000], [0.000000,-0.000000,1.000000], 12.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4874.mm,1241.mm,2230.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-02
-  grp = ents.add_group
-  grp.name = "Cct C branch P-02"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-96.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4862.mm,1253.mm,2230.mm], vec, 6.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-02 elbow
-  grp = ents.add_group
-  grp.name = "Cct C branch P-02 elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4766.mm,1253.mm,2218.mm], [0.000000,0.000000,1.000000], [-0.000000,-1.000000,-0.000000], 12.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4766.mm,1253.mm,2230.mm], [-1.000000,0.000000,0.000000], 6.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-02
-  grp = ents.add_group
-  grp.name = "Cct C branch P-02"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -929.mm)
-  circle = ge.add_circle([4754.mm,1253.mm,2218.mm], vec, 6.mm, 16)
+  circle = ge.add_circle([4754.mm,1193.mm,1289.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1669,62 +1588,35 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Cct C branch P-03"
   ge = grp.entities
+  vec = Geom::Vector3d.new(-108.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4874.mm,1181.mm,1547.mm], vec, 6.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C branch P-03 elbow
+  grp = ents.add_group
+  grp.name = "Cct C branch P-03 elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4766.mm,1193.mm,1547.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,-1.000000], 12.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4766.mm,1181.mm,1547.mm], [-1.000000,0.000000,0.000000], 6.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C branch P-03
+  grp = ents.add_group
+  grp.name = "Cct C branch P-03"
+  ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 60.mm, 0.mm)
-  circle = ge.add_circle([4874.mm,1181.mm,2230.mm], vec, 6.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-03 elbow
-  grp = ents.add_group
-  grp.name = "Cct C branch P-03 elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4862.mm,1241.mm,2230.mm], [1.000000,0.000000,0.000000], [0.000000,-0.000000,1.000000], 12.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4874.mm,1241.mm,2230.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-03
-  grp = ents.add_group
-  grp.name = "Cct C branch P-03"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-96.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4862.mm,1253.mm,2230.mm], vec, 6.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-03 elbow
-  grp = ents.add_group
-  grp.name = "Cct C branch P-03 elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4766.mm,1253.mm,2218.mm], [0.000000,0.000000,1.000000], [-0.000000,-1.000000,-0.000000], 12.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4766.mm,1253.mm,2230.mm], [-1.000000,0.000000,0.000000], 6.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-03
-  grp = ents.add_group
-  grp.name = "Cct C branch P-03"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -671.mm)
-  circle = ge.add_circle([4754.mm,1253.mm,2218.mm], vec, 6.mm, 16)
+  circle = ge.add_circle([4754.mm,1193.mm,1547.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1748,62 +1640,35 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Cct C branch P-05"
   ge = grp.entities
+  vec = Geom::Vector3d.new(-108.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4874.mm,1181.mm,1915.mm], vec, 6.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C branch P-05 elbow
+  grp = ents.add_group
+  grp.name = "Cct C branch P-05 elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4766.mm,1193.mm,1915.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,-1.000000], 12.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4766.mm,1181.mm,1915.mm], [-1.000000,0.000000,0.000000], 6.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C branch P-05
+  grp = ents.add_group
+  grp.name = "Cct C branch P-05"
+  ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 60.mm, 0.mm)
-  circle = ge.add_circle([4874.mm,1181.mm,2230.mm], vec, 6.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-05 elbow
-  grp = ents.add_group
-  grp.name = "Cct C branch P-05 elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4862.mm,1241.mm,2230.mm], [1.000000,0.000000,0.000000], [0.000000,-0.000000,1.000000], 12.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4874.mm,1241.mm,2230.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-05
-  grp = ents.add_group
-  grp.name = "Cct C branch P-05"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-96.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4862.mm,1253.mm,2230.mm], vec, 6.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-05 elbow
-  grp = ents.add_group
-  grp.name = "Cct C branch P-05 elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4766.mm,1253.mm,2218.mm], [0.000000,0.000000,1.000000], [-0.000000,-1.000000,-0.000000], 12.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4766.mm,1253.mm,2230.mm], [-1.000000,0.000000,0.000000], 6.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-05
-  grp = ents.add_group
-  grp.name = "Cct C branch P-05"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -303.mm)
-  circle = ge.add_circle([4754.mm,1253.mm,2218.mm], vec, 6.mm, 16)
+  circle = ge.add_circle([4754.mm,1193.mm,1915.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

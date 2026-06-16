@@ -387,7 +387,7 @@ def draw_sheet1():
                 linespacing=1.25, zorder=4)
 
     # ── Title block ──────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 3",
+    title_block(ax, "SHEET 1 OF 4",
                 drawing_title="SYSTEM ONE-LINE DIAGRAM",
                 subtitle="Power flow  ·  Component specifications  ·  Circuit fuse ratings  ·  Wire gauges",
                 scale_note="Not to scale",
@@ -948,7 +948,7 @@ def draw_sheet2():
                fs=7, width=4250, font={"fontfamily": "monospace"})
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 3",
+    title_block(ax, "SHEET 2 OF 4",
                 drawing_title="CONTAINER FLOOR PLAN & WIRING LAYOUT",
                 subtitle="Top-down plan  ·  End-zone layout  ·  Optical cone clear",
                 scale_note="Axes in mm  (approx 1:500)",
@@ -1369,7 +1369,7 @@ def draw_sheet3():
                fs=7, width=3400, font={"fontfamily": "monospace"})
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 3 OF 3",
+    title_block(ax, "SHEET 3 OF 4",
                 drawing_title="PINHOLE WALL INTERIOR ELEVATION",
                 subtitle="Equipment mounting  ·  Cable trunking & drop conduits  ·  Pull-cord switches  ·  LED panels",
                 scale_note="Axes in mm  (approx 1:40)",
@@ -1383,9 +1383,118 @@ def draw_sheet3():
 
 # ─────────────────────────────────────────────────────────────────────────────
 
+def draw_sheet4():
+    """SHEET 4 — Equipment-Panel Pump Power (Circuit C), isometric.
+
+    2D iso companion to the electrical 3D model's pump distribution: the Circuit-C
+    feed → distribution wireway → 5 IP-rated switches → the 5 Shurflo pumps
+    (P-01..P-05, two columns), run one at a time.
+    """
+    from tbs_constants import DIAGRAMS_DIR
+    import matplotlib.colors as mcolors
+    A = np.radians(30.0)
+    CA, SA = np.cos(A), np.sin(A)
+
+    def iso(x, y, z):
+        # Textbook isometric, z up. x = protrusion toward viewer, y = panel width,
+        # z = height.  +x → right-down, +y → left-down, +z → up. Camera at (+,+,+)
+        # sees the +x, +y, +z faces.
+        return ((x - y) * CA, z - (x + y) * SA)
+
+    def cuboid(ax, x0, y0, z0, dx, dy, dz, base, ec=C_OUT, lw=0.9, zo=5):
+        def sh(f):
+            r, g, b = mcolors.to_rgb(base)
+            return (min(r * f, 1), min(g * f, 1), min(b * f, 1))
+        P = lambda i, j, k: iso(x0 + i * dx, y0 + j * dy, z0 + k * dz)
+        for pts, f in [([P(0, 1, 0), P(1, 1, 0), P(1, 1, 1), P(0, 1, 1)], 0.70),   # +y side
+                       ([P(1, 0, 0), P(1, 1, 0), P(1, 1, 1), P(1, 0, 1)], 0.85),   # +x front
+                       ([P(0, 0, 1), P(1, 0, 1), P(1, 1, 1), P(0, 1, 1)], 1.0)]:    # top
+            ax.add_patch(mpatches.Polygon(pts, closed=True, fc=sh(f), ec=ec, lw=lw, zorder=zo))
+
+    fig, ax = plt.subplots(figsize=(8.2, 13))
+    ax.set_aspect("equal")
+    ax.axis("off")
+    ax.set_xlim(-580, 820)
+    ax.set_ylim(150, 2760)
+
+    CC = "#2980B9"                                      # Circuit C blue
+    PW = 400                                            # panel width (schematic, exaggerated)
+    lcol, rcol, wy = 70, 330, 200                       # column centres + wireway (local Yd)
+    # rows (schematic, spread for clarity): bottom, mid, top
+    rb, rm, rt = 1120, 1440, 1760
+    z_top = 2160
+
+    # ── Equipment panel (thin slab behind everything) ──
+    cuboid(ax, -22, -30, 1020, 22, PW + 60, z_top - 1020 + 120, "#E2D4B2", lw=1.2, zo=2)
+    pl = iso(-22, -30, z_top + 120)                     # panel top-near corner
+    ax.annotate("EQUIPMENT PANEL\n(18mm ply)", xy=pl, xytext=(pl[0] + 150, pl[1] + 150),
+                fontsize=6.8, ha="left", va="center", color=C_OUT, fontweight="bold",
+                arrowprops=dict(arrowstyle="-|>", color=C_OUT, lw=0.9))
+
+    # ── Distribution wireway (full pump-zone height, between the columns) ──
+    cuboid(ax, -16, wy - 13, rb - 60, 16, 26, (z_top + 80) - (rb - 60), "#2B2B30", lw=0.9, zo=3)
+    leader(ax, iso(-16, wy - 13, 1500)[0], iso(-16, wy - 13, 1500)[1],
+           -430, iso(-16, wy - 13, 1500)[1] - 40, "DISTRIBUTION\nWIREWAY (12V bus)",
+           fs=6.5, color="#2B2B30", ha="right")
+
+    # ── Pumps + switches + branches — RIGHT column (far) first, then LEFT (near) ──
+    pumps = [("P-02", rcol, rb), ("P-03", rcol, rm), ("P-05", rcol, rt),   # right col
+             ("P-01", lcol, rb), ("P-04", lcol, rm)]                       # left col
+    for idx, (nm, yc, zb) in enumerate(pumps):
+        zo = 4 + idx                                    # painter order, far→near
+        cuboid(ax, 0, yc - 45, zb, 95, 90, 200, "#B4B4BC", zo=zo)
+        ax.text(*iso(95, yc, zb + 100), nm, fontsize=8, ha="center", va="center",
+                color="#111", fontweight="bold", zorder=zo + 20)
+        sz = zb + 210                                   # switch sits just above the pump
+        cuboid(ax, 8, yc - 16, sz, 30, 32, 34, "#242424", zo=zo + 10)
+        # Circuit-C branch: tap wireway at this level → switch → down to the pump head
+        bz = sz + 17
+        path = [iso(-8, wy, bz), iso(-8, yc, bz), iso(23, yc, bz), iso(23, yc, zb + 195)]
+        ax.plot([p[0] for p in path], [p[1] for p in path], color=CC, lw=2.2,
+                zorder=zo + 15, solid_capstyle="round")
+
+    # ── Circuit-C feed from the ceiling trunking into the wireway top ──
+    ft = iso(-8, wy, z_top + 520)
+    fb = iso(-8, wy, z_top + 80)
+    ax.plot([ft[0], fb[0]], [ft[1], fb[1]], color=CC, lw=3.2, zorder=30)
+    ax.text(ft[0] - 12, ft[1] + 30, "CIRCUIT C\n14 AWG · 15A\n(from fuse block)",
+            fontsize=6.8, ha="right", va="center", color=CC, fontweight="bold")
+    # switches callout
+    sc = iso(23, lcol, rm + 210)
+    ax.annotate("5× IP-RATED PUMP SWITCHES\n(one per pump — black)",
+                xy=sc, xytext=(330, 1980), fontsize=6.8, ha="left", va="center",
+                color="#202020", fontweight="bold",
+                arrowprops=dict(arrowstyle="-|>", color="#202020", lw=1.0))
+    ax.text(330, 1760, "LEFT col: P-01 / P-04\nRIGHT col: P-02 / P-03 / P-05",
+            fontsize=6.8, ha="left", va="top", color="#333")
+
+    # ── Notes (clear of the geometry + title block) ──
+    draw_notes(ax, [
+        "CIRCUIT C — PUMP POWER (one feed, five pumps):",
+        "One 14 AWG / 15A Circuit-C feed → 12V distribution wireway → 5 IP-rated rocker",
+        "switches (one per pump) → 16 AWG branch to each pump. Pumps run ONE AT A TIME —",
+        "the operator enables the pump for the current task; each Shurflo 2088 then runs on",
+        "its internal pressure switch. The 15A fuse covers a single pump (7.5A) with margin.",
+        "Wet zone: sealed, above the spill line. See Equipment Panel report §3.2 and",
+        "Electrical report §7.3 / §7.5.",
+    ], -540, 760, spacing=52, fs=7.2, width=950)
+
+    title_block(ax, "SHEET 4 OF 4",
+                drawing_title="PUMP POWER — CIRCUIT C",
+                subtitle="Iso · feed → wireway → 5 switches → P-01..P-05",
+                scale_note="Isometric 30° · mm",
+                doc_id="TBS-ELEC · Electrical", height=0.07, portrait=True)
+
+    plt.savefig(f"{DIAGRAMS_DIR}/electrical-sheet4.png", dpi=150, bbox_inches="tight",
+                pad_inches=0.10, facecolor="white")
+    plt.close(fig)
+    print("  → electrical-sheet4.png  Done.")
+
+
 if __name__ == "__main__":
     print("Generating TBS-001 Electrical & Systems diagrams...")
     draw_sheet1()
     draw_sheet2()
     draw_sheet3()
+    draw_sheet4()
     print("Done.")

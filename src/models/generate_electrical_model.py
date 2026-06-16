@@ -92,7 +92,8 @@ LOADS = {
     "B": (_FANB_BOX_X, 18, FAN_B_H + 45),                          # Fan B wall box
     "C": (EQPANEL_X, EQPANEL_YD + EQPANEL_YD_SPAN / 2, PUMP_H_HI),  # pump zone @ panel
     "E": (INVERTER_X + INVERTER_W / 2, INVERTER_D / 2, INVERTER_Z + INVERTER_H / 2),
-    "F": (260, 220, 1300),                                         # actuator spare stub
+    # Circuit F (film-plane actuators) is an OPTIONAL/future provision — "leave fused
+    # spare", draws nothing in the manual standard build — so it has NO routed conduit.
 }
 
 # Fuse-block reference point (runs originate here) — front face of the block in the EP.
@@ -394,12 +395,12 @@ def circuit_runs():
     (G white LED, D safelight) fan out to ALL three of their ceiling fixtures."""
     # Trunking spans only the circuit range (door-end first tap → Fan A), so there is
     # no dead-end grey stub past the last drop.
-    cxs = [LOADS[c][0] for c in ("A", "B", "C", "E", "F")] + \
+    cxs = [LOADS[c][0] for c in ("A", "B", "C", "E")] + \
           [e[0] for e in LED_ENDS + SAFE_ENDS] + [FB[0]]
     tx0, tx1 = min(cxs) - 40, max(cxs) + 40
     p = [ov.ruby_box("Cable Trunking (40x25 PVC)", tx0, 0, ov.C_HGT - 25, tx1 - tx0, 40,
                      25, color=ov.C_TRUNK)]
-    for cct in ("A", "B", "C", "E", "F"):
+    for cct in ("A", "B", "C", "E"):
         p.append(_run(cct, LOADS[cct]))
     p.append(_multi_run("G", LED_ENDS))    # 3× white LED (incl. rotated IBC-end panel)
     p.append(_multi_run("D", SAFE_ENDS))   # 3× safelight

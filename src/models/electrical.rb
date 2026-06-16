@@ -910,7 +910,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Cable Trunking (40x25 PVC)
   grp = ents.add_group
   grp.name = "Cable Trunking (40x25 PVC)"
-  face = grp.entities.add_face([220.mm,0.mm,2363.mm], [5658.mm,0.mm,2363.mm], [5658.mm,40.mm,2363.mm], [220.mm,40.mm,2363.mm])
+  face = grp.entities.add_face([260.mm,0.mm,2363.mm], [5658.mm,0.mm,2363.mm], [5658.mm,40.mm,2363.mm], [260.mm,40.mm,2363.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
@@ -1403,128 +1403,6 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf.pushpull(vec.length)
   mat = model.materials["Circuit E (cooler / inverter)"] || model.materials.add("Circuit E (cooler / inverter)")
   mat.color = Sketchup::Color.new(22, 160, 133)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Circuit F (actuators (spare))
-  grp = ents.add_group
-  grp.name = "Circuit F (actuators (spare))"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 559.mm)
-  circle = ge.add_circle([2005.mm,175.mm,1800.mm], vec, 8.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Circuit F (actuators (spare))"] || model.materials.add("Circuit F (actuators (spare))")
-  mat.color = Sketchup::Color.new(127, 140, 141)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Circuit F (actuators (spare)) elbow
-  grp = ents.add_group
-  grp.name = "Circuit F (actuators (spare)) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([2005.mm,159.mm,2359.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2005.mm,175.mm,2359.mm], [0.000000,0.000000,1.000000], 8.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Circuit F (actuators (spare))"] || model.materials.add("Circuit F (actuators (spare))")
-  mat.color = Sketchup::Color.new(127, 140, 141)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Circuit F (actuators (spare))
-  grp = ents.add_group
-  grp.name = "Circuit F (actuators (spare))"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -123.mm, 0.mm)
-  circle = ge.add_circle([2005.mm,159.mm,2375.mm], vec, 8.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Circuit F (actuators (spare))"] || model.materials.add("Circuit F (actuators (spare))")
-  mat.color = Sketchup::Color.new(127, 140, 141)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Circuit F (actuators (spare)) elbow
-  grp = ents.add_group
-  grp.name = "Circuit F (actuators (spare)) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([1989.mm,36.mm,2375.mm], [1.000000,0.000000,0.000000], [-0.000000,-0.000000,-1.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2005.mm,36.mm,2375.mm], [0.000000,-1.000000,0.000000], 8.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Circuit F (actuators (spare))"] || model.materials.add("Circuit F (actuators (spare))")
-  mat.color = Sketchup::Color.new(127, 140, 141)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Circuit F (actuators (spare))
-  grp = ents.add_group
-  grp.name = "Circuit F (actuators (spare))"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-1713.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1989.mm,20.mm,2375.mm], vec, 8.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Circuit F (actuators (spare))"] || model.materials.add("Circuit F (actuators (spare))")
-  mat.color = Sketchup::Color.new(127, 140, 141)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Circuit F (actuators (spare)) elbow
-  grp = ents.add_group
-  grp.name = "Circuit F (actuators (spare)) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([276.mm,36.mm,2375.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,-1.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([276.mm,20.mm,2375.mm], [-1.000000,0.000000,0.000000], 8.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Circuit F (actuators (spare))"] || model.materials.add("Circuit F (actuators (spare))")
-  mat.color = Sketchup::Color.new(127, 140, 141)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Circuit F (actuators (spare))
-  grp = ents.add_group
-  grp.name = "Circuit F (actuators (spare))"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 168.mm, 0.mm)
-  circle = ge.add_circle([260.mm,36.mm,2375.mm], vec, 8.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Circuit F (actuators (spare))"] || model.materials.add("Circuit F (actuators (spare))")
-  mat.color = Sketchup::Color.new(127, 140, 141)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Circuit F (actuators (spare)) elbow
-  grp = ents.add_group
-  grp.name = "Circuit F (actuators (spare)) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([260.mm,204.mm,2359.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([260.mm,204.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Circuit F (actuators (spare))"] || model.materials.add("Circuit F (actuators (spare))")
-  mat.color = Sketchup::Color.new(127, 140, 141)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Circuit F (actuators (spare))
-  grp = ents.add_group
-  grp.name = "Circuit F (actuators (spare))"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1059.mm)
-  circle = ge.add_circle([260.mm,220.mm,2359.mm], vec, 8.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Circuit F (actuators (spare))"] || model.materials.add("Circuit F (actuators (spare))")
-  mat.color = Sketchup::Color.new(127, 140, 141)
   mat.alpha = 1.0
   grp.material = mat
 

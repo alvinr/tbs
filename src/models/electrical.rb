@@ -120,9 +120,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Pump zone ghost (Cct C)
   grp = ents.add_group
   grp.name = "Pump zone ghost (Cct C)"
-  face = grp.entities.add_face([4734.mm,1046.mm,1400.mm], [4884.mm,1046.mm,1400.mm], [4884.mm,1316.mm,1400.mm], [4734.mm,1316.mm,1400.mm])
+  face = grp.entities.add_face([4734.mm,1046.mm,1100.mm], [4884.mm,1046.mm,1100.mm], [4884.mm,1316.mm,1100.mm], [4734.mm,1316.mm,1100.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(870.mm)
+  face.pushpull(1170.mm)
   mat = model.materials["Pump zone ghost (Cct C)"] || model.materials.add("Pump zone ghost (Cct C)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 0.14

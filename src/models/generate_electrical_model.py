@@ -224,8 +224,11 @@ def context():
                          FAN_A_H - 75, 120, 150, 150, color=CCT["A"][0], alpha=0.18))
     p.append(ov.ruby_box("Fan B wall box ghost (Cct B)", _FANB_BOX_X - 40, 0,
                          FAN_B_H - 45, 80, 60, 90, color=CCT["B"][0], alpha=0.20))
-    p.append(ov.ruby_box("Pump zone ghost (Cct C)", EQPANEL_X - 140, EQPANEL_YD, 1400,
-                         150, EQPANEL_YD_SPAN, PUMP_H_HI - 1400,
+    # Surround box spans the FULL pump stack — down to the lowest pumps (P-01/P-02,
+    # body bottom Z1120) so the lowest outlet is enclosed like the upper ones.
+    pz_bot = 1100
+    p.append(ov.ruby_box("Pump zone ghost (Cct C)", EQPANEL_X - 140, EQPANEL_YD, pz_bot,
+                         150, EQPANEL_YD_SPAN, PUMP_H_HI - pz_bot,
                          color=CCT["C"][0], alpha=0.14))
     for x0, y0, wx, wy in LED_PANELS:                   # white LED (rotated IBC-end)
         p.append(ov.ruby_box("White LED ghost (Cct G)", x0, y0, ov.C_HGT - 40,

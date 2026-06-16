@@ -22,7 +22,7 @@ The intuition "electricity + liquids + a conductive metal box = electrocution" i
 right instinct to check, but it **largely does not apply here**, because of one
 deliberate architectural choice:
 
-> **Everything inside the container runs at 12 V DC. There is no mains-AC distribution
+> **Everything inside the container runs at 12 V DC. There is no grid-AC distribution
 > inside the container** ([Electrical Report §2](electrical-report.md)).
 
 12 V DC is **Extra-Low Voltage (ELV)** — below every shock-safety threshold in the
@@ -80,7 +80,7 @@ Ranked by residual risk *before* the §5 improvements. Severity × likelihood fo
 | 2 | **Corroded wet-zone connections** | Developer/fixer vapor + condensation attacks unsealed terminals → high-resistance joints (heating) or intermittent faults. The 5 Shurflo pumps live in the wet IBC corridor / tray end | Med | High | IP65 enclosure (clean side only) | **Interior connectors are Anderson Powerpole — not sealed**; wet-zone wire not specified tinned |
 | 3 | **Battery busbar arc-flash** | 200 A+ available; a dropped wrench arcs, throws molten metal, burns | High | Low | Fusing limits duration | **No terminal covers**; no insulated-tool note |
 | 4 | **Battery thermal / venting** | Cells can vent under BMS failure / overcharge / abuse; container reaches 60 °C | High | Low | LiFePO4 (very stable), 60 °C rating, BMS | Confirm the mounted location has airflow and isn't a sealed, sun-baked pocket |
-| 5 | **Shore-power AC (the one lethal node)** | Mains AC feeds the exterior charger only — but the *site supply* and any extension cord are a genuine electrocution hazard | High | Low | AC kept exterior (IP65 charger); never distributed inside | Depends on the **site supply being RCD/GFCI-protected**; operational rule must be enforced |
+| 5 | **Shore-power AC (the one lethal node)** | Grid AC feeds the exterior charger only — but the *site supply* and any extension cord are a genuine electrocution hazard | High | Low | AC kept exterior (IP65 charger); never distributed inside | Depends on the **site supply being RCD/GFCI-protected**; operational rule must be enforced |
 
 ---
 
@@ -112,12 +112,12 @@ The following measures are now part of the design and BOM ([Electrical Report §
 
 ## 6. The Operational Rule That Matters Most
 
-Keep the **12 V ELV boundary intact: no mains AC inside the container, ever.** As long
+Keep the **12 V ELV boundary intact: no grid AC inside the container, ever.** As long
 as that holds, this is a fire-risk-management problem (fully addressed by fusing,
 isolation, sealing, and bonding), not a life-safety electrocution problem.
 
 - The shore-power AC input terminates at the **exterior** Victron charger only — never
-  run a mains extension cord or generator output into the wet interior.
+  run an AC extension cord or generator output into the wet interior.
 - Confirm the deployment **site's AC supply is on an RCD/GFCI-protected circuit** before
   connecting the shore charger.
 

@@ -11,7 +11,7 @@ See also: [Operating Manual](operating-manual.md) for step-by-step operational p
 ---
 
 ## 2. System Overview
-TBS-001 is designed for fully off-grid operation. All power comes from a rooftop/ground-mounted solar array charging a LiFePO4 battery bank. Shore power (mains) is accommodated as an optional backup charging input only — the system operates identically without it.
+TBS-001 is designed for fully off-grid operation. All power comes from a rooftop/ground-mounted solar array charging a LiFePO4 battery bank. Shore power (grid AC) is accommodated as an optional backup charging input only — the system operates identically without it.
 
 All loads run at **12V DC** (the one exception is the dedicated Circuit-E cooler inverter — see §7.6).
 
@@ -267,7 +267,7 @@ Frontal elevation of the Circuit-C pump distribution on the equipment panel (the
 
 ### 7.5 Circuit Protection & Electrical Safety
 
-This is a 12 V DC (extra-low-voltage) system whose **only** mains-AC element is the
+This is a 12 V DC (extra-low-voltage) system whose **only** 120 V AC element is the
 dedicated cooler inverter (Circuit E, §7.6); everywhere else the dominant electrical
 hazard is **DC short-circuit / arc / fire**, not shock — see the dedicated
 [Electrical Safety Report](electrical-safety-report.md) for the full hazard assessment.

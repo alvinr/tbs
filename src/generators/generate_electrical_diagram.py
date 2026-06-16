@@ -199,7 +199,7 @@ def draw_sheet1():
     # NEMA 5-15R inlet below shore charger
     rbox(ax, SC_X, SC_Y - 1.35, SC_W, 0.80,
          "NEMA 5-15R INLET  (flush-mount power panel — pinhole wall)",
-         "Weatherproof  |  Shore power input when mains available",
+         "Weatherproof  |  Shore power input when grid power available",
          fc="white", ec=C_OUT, lw=1.0, ts=8.5, ss=7.5, bold=False)
     varrow(ax, SC_X + SC_W / 2, SC_Y - 0.55, SC_Y, col="#A07820")
     wlabel(ax, SC_X + SC_W / 2 + 0.15, SC_Y - 0.28, "Shore AC →", size=7.0)

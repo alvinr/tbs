@@ -76,7 +76,7 @@ Per-print cost: approximately $38 (chemistry + fabric + water). A 50-print run c
 ### Water System
 A self-contained three-circuit water system — Blue (wash), Brown (recycle), and Black (waste) — provides off-grid processing capability. Four 1000L IBC totes in a 2×2 stack, 12V DC pumps (P-01/P-02/P-04 supply + filter + sump, plus P-05/P-03 drain pumps; corridor-mounted), check valves on all external lines, and a 3-stage filtration skid. Capacity: ~13 full prints between resupply. Water recycling: approximately 40% of used wash water is recovered and reused. Power: 12V DC from a 200Ah LiFePO4 battery bank (3+ prints per charge), with a 600W solar array for field recharging and shore power input for overnight top-up.
 
-The system was designed for remote deployments: no mains water connection required.
+The system was designed for remote deployments: no municipal water connection required.
 
 ### Transportation
 The container moves by commercial hire tilt-bed truck. No CDL is required for the operator (the trucking company provides the driver). No oversize or overweight permit is required for an empty 20ft standard container on Interstate highways. Local deployment: $300–$500 per move. Short regional haul (30–100 miles): $500–$1,200.

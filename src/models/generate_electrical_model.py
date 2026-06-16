@@ -392,7 +392,12 @@ def circuit_runs():
     """Ceiling cable-trunking spine + the 7 color-coded circuits A-G to their loads.
     Single-load circuits (A,B,C,E,F) trace fuse-block→load; the lighting circuits
     (G white LED, D safelight) fan out to ALL three of their ceiling fixtures."""
-    p = [ov.ruby_box("Cable Trunking (40x25 PVC)", 0, 0, ov.C_HGT - 25, ov.C_LEN, 40,
+    # Trunking spans only the circuit range (door-end first tap → Fan A), so there is
+    # no dead-end grey stub past the last drop.
+    cxs = [LOADS[c][0] for c in ("A", "B", "C", "E", "F")] + \
+          [e[0] for e in LED_ENDS + SAFE_ENDS] + [FB[0]]
+    tx0, tx1 = min(cxs) - 40, max(cxs) + 40
+    p = [ov.ruby_box("Cable Trunking (40x25 PVC)", tx0, 0, ov.C_HGT - 25, tx1 - tx0, 40,
                      25, color=ov.C_TRUNK)]
     for cct in ("A", "B", "C", "E", "F"):
         p.append(_run(cct, LOADS[cct]))

@@ -250,7 +250,7 @@ Interior elevation of the pinhole wall face (Yd=0), looking from inside the cont
 ![TBS-ELEC Sheet 3 — Pinhole Wall Interior Elevation](assets/electrical-sheet3.png)
 
 **Sheet 4 — Equipment-Panel Pump Power (Circuit C)**
-Isometric detail of the Circuit-C pump distribution on the equipment panel (the 2D companion to the electrical 3D model): the single 14 AWG / 15A feed drops into a 12V distribution wireway running the pump-zone height, with one IP-rated rocker switch per pump (left column P-01/P-04, right column P-02/P-03/P-05) tapped off the wireway by a 16 AWG branch. Pumps run one at a time. See §7.3 (Circuit C) and the [Equipment Panel report §3.2](equipment-panel-report.md).
+Frontal elevation of the Circuit-C pump distribution on the equipment panel (the 2D companion to the electrical 3D model): the single 14 AWG / 15A feed drops into a 12V distribution wireway running the pump-zone height, with one IP-rated rocker switch per pump (left column P-01/P-04, right column P-02/P-03/P-05) tapped off the wireway by a 16 AWG branch. Pumps run one at a time. See §7.3 (Circuit C) and the [Equipment Panel report §3.2](equipment-panel-report.md).
 
 ![TBS-ELEC Sheet 4 — Equipment-Panel Pump Power (Circuit C)](assets/electrical-sheet4.png)
 

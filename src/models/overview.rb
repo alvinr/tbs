@@ -40,6 +40,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Water Hookups") unless model.layers["Water Hookups"]
   model.layers.add("Fans") unless model.layers["Fans"]
   model.layers.add("Water Plumbing") unless model.layers["Water Plumbing"]
+  model.layers.add("Solar Array") unless model.layers["Solar Array"]
   model.layers.add("Labels") unless model.layers["Labels"]
 
 # Dashed line style for the optical cone wireframe (guidance, not a solid).
@@ -8424,6 +8425,155 @@ end
   inst.name = "Electrical"
   inst.layer = model.layers["Electrical"]
 
+  # ═══ Solar Array ═══
+  defn = model.definitions.add("Solar Array")
+  ents = defn.entities
+  # Solar Panel 1 (200W)
+  grp = ents.add_group
+  grp.name = "Solar Panel 1 (200W)"
+  face = grp.entities.add_face([250.mm,-900.mm,120.mm], [930.mm,-900.mm,120.mm], [930.mm,-2181.7175976009694.mm,859.9999999999999.mm], [250.mm,-2181.7175976009694.mm,859.9999999999999.mm])
+  face.pushpull(35.mm)
+  mat = model.materials["Solar Panel 1 (200W)"] || model.materials.add("Solar Panel 1 (200W)")
+  mat.color = Sketchup::Color.new(27, 58, 107)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Solar Panel 2 (200W)
+  grp = ents.add_group
+  grp.name = "Solar Panel 2 (200W)"
+  face = grp.entities.add_face([960.mm,-900.mm,120.mm], [1640.mm,-900.mm,120.mm], [1640.mm,-2181.7175976009694.mm,859.9999999999999.mm], [960.mm,-2181.7175976009694.mm,859.9999999999999.mm])
+  face.pushpull(35.mm)
+  mat = model.materials["Solar Panel 1 (200W)"] || model.materials.add("Solar Panel 1 (200W)")
+  mat.color = Sketchup::Color.new(27, 58, 107)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Solar Panel 3 (200W)
+  grp = ents.add_group
+  grp.name = "Solar Panel 3 (200W)"
+  face = grp.entities.add_face([1670.mm,-900.mm,120.mm], [2350.mm,-900.mm,120.mm], [2350.mm,-2181.7175976009694.mm,859.9999999999999.mm], [1670.mm,-2181.7175976009694.mm,859.9999999999999.mm])
+  face.pushpull(35.mm)
+  mat = model.materials["Solar Panel 1 (200W)"] || model.materials.add("Solar Panel 1 (200W)")
+  mat.color = Sketchup::Color.new(27, 58, 107)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Tilt Frame front rail
+  grp = ents.add_group
+  grp.name = "Tilt Frame front rail"
+  face = grp.entities.add_face([250.mm,-920.mm,0.mm], [2350.mm,-920.mm,0.mm], [2350.mm,-880.mm,0.mm], [250.mm,-880.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(120.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Tilt Frame back rail
+  grp = ents.add_group
+  grp.name = "Tilt Frame back rail"
+  face = grp.entities.add_face([250.mm,-2201.7175976009694.mm,0.mm], [2350.mm,-2201.7175976009694.mm,0.mm], [2350.mm,-2161.7175976009694.mm,0.mm], [250.mm,-2161.7175976009694.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(60.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Tilt Frame back leg
+  grp = ents.add_group
+  grp.name = "Tilt Frame back leg"
+  face = grp.entities.add_face([250.mm,-2201.7175976009694.mm,0.mm], [290.mm,-2201.7175976009694.mm,0.mm], [290.mm,-2161.7175976009694.mm,0.mm], [250.mm,-2161.7175976009694.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(859.9999999999999.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Tilt Frame back leg
+  grp = ents.add_group
+  grp.name = "Tilt Frame back leg"
+  face = grp.entities.add_face([2310.mm,-2201.7175976009694.mm,0.mm], [2350.mm,-2201.7175976009694.mm,0.mm], [2350.mm,-2161.7175976009694.mm,0.mm], [2310.mm,-2161.7175976009694.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(859.9999999999999.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV run (array -> panel)
+  grp = ents.add_group
+  grp.name = "PV run (array -> panel)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 830.mm, 0.mm)
+  circle = ge.add_circle([1300.mm,-920.mm,60.mm], vec, 10.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV run (array -> panel) elbow
+  grp = ents.add_group
+  grp.name = "PV run (array -> panel) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1300.mm,-90.mm,80.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 20.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1300.mm,-90.mm,60.mm], [0.000000,1.000000,0.000000], 10.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV run (array -> panel)
+  grp = ents.add_group
+  grp.name = "PV run (array -> panel)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 1860.2.mm)
+  circle = ge.add_circle([1300.mm,-70.mm,80.mm], vec, 10.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV run (array -> panel) elbow
+  grp = ents.add_group
+  grp.name = "PV run (array -> panel) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1309.8.mm,-70.mm,1940.2.mm], [-1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 9.800000000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1300.mm,-70.mm,1940.2.mm], [0.000000,0.000000,1.000000], 10.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV run (array -> panel)
+  grp = ents.add_group
+  grp.name = "PV run (array -> panel)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(10.200000000000045.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1309.8.mm,-70.mm,1950.mm], vec, 10.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Solar Array"
+  inst.layer = model.layers["Solar Array"]
+
   # ═══ Chemistry Shelf ═══
   defn = model.definitions.add("Chemistry Shelf")
   ents = defn.entities
@@ -13414,6 +13564,10 @@ if inst
   txt = entities.add_text("CHEMISTRY SHELF", anc, Geom::Vector3d.new(-200.mm, -850.mm, 700.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
+anc = Geom::Point3d.new(950.mm, -1400.mm, 450.mm)
+txt = entities.add_text("SOLAR ARRAY
+3× 200W (30° tilt)", anc, Geom::Vector3d.new(-200.mm, -700.mm, 700.mm))
+txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(5618.mm, 1181.mm, 2000.mm)
 txt = entities.add_text("FAN A
 (exhaust, IBC end)", anc, Geom::Vector3d.new(400.mm, 0.mm, 450.mm))
@@ -13456,7 +13610,7 @@ model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Combined Plate", "Pivot Axle", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans", "Water Plumbing", "Labels"]
+keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Combined Plate", "Pivot Axle", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans", "Water Plumbing", "Solar Array", "Labels"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -13484,7 +13638,7 @@ olp = model.pages.add("Labeled"); olp.use_camera = true
 model.layers["Labels"].visible = false if model.layers["Labels"]
 
 # Grouped scenes — translucent Shell (context) + the group's subsystems.
-[["Film Plane & Pinhole", ["Pinhole", "Optical Cone", "Film Plane", "Combined Plate"]], ["Water Systems", ["Processing Tray", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Shelf", "Water Hookups", "Water Plumbing"]], ["Electrical Systems", ["Electrical", "Lighting"]], ["Hinge Panel & Drum", ["Light Trap", "Light Seal", "Pivot Axle"]], ["Ventilation", ["Evap Cooler", "Fans"]], ["Walkways", ["Walkways", "Combined Plate"]]].each { |name, tags|
+[["Film Plane & Pinhole", ["Pinhole", "Optical Cone", "Film Plane", "Combined Plate"]], ["Water Systems", ["Processing Tray", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Shelf", "Water Hookups", "Water Plumbing"]], ["Electrical Systems", ["Electrical", "Lighting", "Solar Array"]], ["Hinge Panel & Drum", ["Light Trap", "Light Seal", "Pivot Axle"]], ["Ventilation", ["Evap Cooler", "Fans"]], ["Walkways", ["Walkways", "Combined Plate"]]].each { |name, tags|
   model.layers.each { |l| l.visible = (l == default_layer || l.name == "Shell" || tags.include?(l.name)) }
   page = model.pages.add(name)
   page.use_camera = true

@@ -27,7 +27,6 @@ NEW blank document before sending so the Overview model isn't overwritten, then 
 the result as models/electrical.skp.
 """
 import argparse
-import math
 import os
 import sys
 
@@ -37,8 +36,7 @@ from tbs_constants import (
     EP_X, EP_W, EP_H_LO, EP_H_HI, BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D,
     PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z,
     INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D,
-    SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG,
-    SOLAR_GAP, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SOLAR_ARRAY_Z,
+    SOLAR_ARRAY_X, SOLAR_ARRAY_YD,    # (the solar array geometry moved to ov.solar_array)
     ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, FUSEBLK_H,
     BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H,
     CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H,
@@ -134,29 +132,6 @@ def elec_labels():
     return '\n'.join(rows)
 
 
-# ── Tilted-slab helper (for the ground solar panels; mirrors ruby_box) ───────
-def tilted_slab(name, x, y_near, z_base, w, length, t, tilt_deg, color, alpha=None):
-    """Flat slab tilted up from its near-bottom edge, rising in +Z and -Y (faces
-    away from the container, toward the sun). length runs up the tilt."""
-    th = math.radians(tilt_deg)
-    dy, dz = -length * math.cos(th), length * math.sin(th)
-    corners = [(x, y_near, z_base), (x + w, y_near, z_base),
-               (x + w, y_near + dy, z_base + dz), (x, y_near + dy, z_base + dz)]
-    pts = ', '.join(f'[{ov.mm(px)},{ov.mm(py)},{ov.mm(pz)}]' for px, py, pz in corners)
-    r, g, b = ov.hex_to_rgb(color)
-    mat_nm = ov.shared_mat_name(name, color, alpha)
-    return '\n'.join([
-        f'  # {name}',
-        '  grp = ents.add_group',
-        f'  grp.name = "{name}"',
-        f'  face = grp.entities.add_face({pts})',
-        f'  face.pushpull({ov.mm(t)})',
-        f'  mat = model.materials["{mat_nm}"] || model.materials.add("{mat_nm}")',
-        f'  mat.color = Sketchup::Color.new({r}, {g}, {b})',
-        f'  mat.alpha = {alpha if alpha is not None else 1.0}',
-        '  grp.material = mat', ''])
-
-
 def _dedup(pts):
     return [p for i, p in enumerate(pts) if i == 0 or p != pts[i - 1]]
 
@@ -236,40 +211,6 @@ def context():
     for sx in SAFE_XS:                                  # safelight strips (Cct D)
         p.append(ov.ruby_box("Safelight ghost (Cct D)", sx, 100, ov.C_HGT - 25,
                              40, ov.C_WID - 200, 16, color=CCT["D"][0], alpha=0.16))
-    return '\n'.join(p)
-
-
-def solar_array():
-    """3x 200W panels on a 30deg ground tilt frame, exterior of the pinhole wall,
-    door-end so the right edge clears the pinhole sightline; + PV run to the panel."""
-    p = []
-    th = math.radians(SOLAR_TILT_DEG)
-    pitch = SOLAR_PANEL_W + SOLAR_GAP
-    for i in range(SOLAR_N):
-        x = SOLAR_ARRAY_X + i * pitch
-        p.append(tilted_slab(f"Solar Panel {i + 1} (200W)", x, SOLAR_ARRAY_YD,
-                             SOLAR_ARRAY_Z + 120, SOLAR_PANEL_W, SOLAR_PANEL_L,
-                             SOLAR_PANEL_T, SOLAR_TILT_DEG, "#1B3A6B"))
-    # Tilt frame: front + back ground rails along X, and back legs to the top edge.
-    span = (SOLAR_N - 1) * pitch + SOLAR_PANEL_W
-    back_yd = SOLAR_ARRAY_YD - SOLAR_PANEL_L * math.cos(th)
-    top_z = SOLAR_ARRAY_Z + 120 + SOLAR_PANEL_L * math.sin(th)
-    p.append(ov.ruby_box("Tilt Frame front rail", SOLAR_ARRAY_X, SOLAR_ARRAY_YD - 20,
-                         SOLAR_ARRAY_Z, span, 40, 120, color=ov.C_STEEL))
-    p.append(ov.ruby_box("Tilt Frame back rail", SOLAR_ARRAY_X, back_yd - 20,
-                         SOLAR_ARRAY_Z, span, 40, 60, color=ov.C_STEEL))
-    for x in (SOLAR_ARRAY_X, SOLAR_ARRAY_X + span - 40):
-        p.append(ov.ruby_box("Tilt Frame back leg", x, back_yd - 20, SOLAR_ARRAY_Z,
-                             40, 40, top_z - SOLAR_ARRAY_Z, color=ov.C_STEEL))
-    # PV run: array junction -> up to the external power panel MC4 bulkheads.
-    jx = SOLAR_ARRAY_X + span / 2
-    panel = (PWR_PANEL_X + 70, -WALL - 30, PWR_PANEL_Z + PWR_PANEL_H * 0.5)
-    p.append(ov.ruby_pipe_run("PV run (array -> panel)",
-                              [(jx, SOLAR_ARRAY_YD - 20, SOLAR_ARRAY_Z + 60),
-                               (jx, -WALL - 30, SOLAR_ARRAY_Z + 60),
-                               (jx, -WALL - 30, panel[2]),
-                               panel],
-                              10, color="#2D7A2D"))
     return '\n'.join(p)
 
 
@@ -442,7 +383,7 @@ def circuit_runs():
 def generate_ruby():
     comps = [
         ov.component("Container (ghost)", "Context", context()),
-        ov.component("Solar Array", "Solar Array", solar_array()),
+        ov.component("Solar Array", "Solar Array", ov.solar_array()),
         ov.component("Power Core", "Power Core", power_core()),
         ov.component("Battery Bank", "Battery", battery()),
         ov.component("External Power Panel", "External Panel", external_panel()),

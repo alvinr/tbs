@@ -79,6 +79,8 @@ from tbs_constants import (
     EP_X, EP_W, EP_H_LO, EP_H_HI,
     BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D,
     PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z,
+    SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG,
+    SOLAR_GAP, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SOLAR_ARRAY_Z,
     SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH,
     SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z,
     EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D,
@@ -137,7 +139,7 @@ TAGS = ["Shell", "Walkways", "Processing Tray",
         "Pivot Axle", "Spray Bar", "Equipment Panel",
         "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf",
         "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans",
-        "Water Plumbing", "Labels"]
+        "Water Plumbing", "Solar Array", "Labels"]
 
 
 # Major system components to call out in the "Labeled" scene.
@@ -166,6 +168,8 @@ OVERVIEW_LABELS = [
 # battery bank lives inside the "Electrical" component.
 # (x, y, z, text, leader Δx, Δy, Δz mm)
 OVERVIEW_POINT_LABELS = [
+    (SOLAR_ARRAY_X + 700, SOLAR_ARRAY_YD - 500, 450, "SOLAR ARRAY\n3× 200W (30° tilt)",
+     -200, -700, 700),
     (5618, 1181, 2000, "FAN A\n(exhaust, IBC end)",  400,    0,  450),
     (275,   365,  680, "FAN B\n(intake, door end)", -350,    0, 1250),
     (2060,   60,  600, "BATTERY 1× 100Ah\n(2nd pack ghosted = plug-in)",    -300, -600,  900),
@@ -1283,6 +1287,64 @@ def light_trap_bay():
     return lt.bay()
 
 
+# ── Solar array (ground tilt frame, exterior) ────────────────────────────────
+
+def tilted_slab(name, x, y_near, z_base, w, length, t, tilt_deg, color, alpha=None):
+    """Flat slab tilted up from its near-bottom edge, rising in +Z and -Y (faces
+    away from the container, toward the sun). length runs up the tilt."""
+    th = math.radians(tilt_deg)
+    dy, dz = -length * math.cos(th), length * math.sin(th)
+    corners = [(x, y_near, z_base), (x + w, y_near, z_base),
+               (x + w, y_near + dy, z_base + dz), (x, y_near + dy, z_base + dz)]
+    pts = ', '.join(f'[{mm(px)},{mm(py)},{mm(pz)}]' for px, py, pz in corners)
+    r, g, b = hex_to_rgb(color)
+    mat_nm = shared_mat_name(name, color, alpha)
+    return '\n'.join([
+        f'  # {name}',
+        '  grp = ents.add_group',
+        f'  grp.name = "{name}"',
+        f'  face = grp.entities.add_face({pts})',
+        f'  face.pushpull({mm(t)})',
+        f'  mat = model.materials["{mat_nm}"] || model.materials.add("{mat_nm}")',
+        f'  mat.color = Sketchup::Color.new({r}, {g}, {b})',
+        f'  mat.alpha = {alpha if alpha is not None else 1.0}',
+        '  grp.material = mat', ''])
+
+
+def solar_array():
+    """3x 200W panels on a 30deg ground tilt frame, exterior of the pinhole wall,
+    door-end so the right edge clears the pinhole sightline; + PV run to the panel.
+    Shared with the focused electrical model (generate_electrical_model.py)."""
+    p = []
+    th = math.radians(SOLAR_TILT_DEG)
+    pitch = SOLAR_PANEL_W + SOLAR_GAP
+    for i in range(SOLAR_N):
+        x = SOLAR_ARRAY_X + i * pitch
+        p.append(tilted_slab(f"Solar Panel {i + 1} (200W)", x, SOLAR_ARRAY_YD,
+                             SOLAR_ARRAY_Z + 120, SOLAR_PANEL_W, SOLAR_PANEL_L,
+                             SOLAR_PANEL_T, SOLAR_TILT_DEG, "#1B3A6B"))
+    span = (SOLAR_N - 1) * pitch + SOLAR_PANEL_W
+    back_yd = SOLAR_ARRAY_YD - SOLAR_PANEL_L * math.cos(th)
+    top_z = SOLAR_ARRAY_Z + 120 + SOLAR_PANEL_L * math.sin(th)
+    p.append(ruby_box("Tilt Frame front rail", SOLAR_ARRAY_X, SOLAR_ARRAY_YD - 20,
+                      SOLAR_ARRAY_Z, span, 40, 120, color=C_STEEL))
+    p.append(ruby_box("Tilt Frame back rail", SOLAR_ARRAY_X, back_yd - 20,
+                      SOLAR_ARRAY_Z, span, 40, 60, color=C_STEEL))
+    for x in (SOLAR_ARRAY_X, SOLAR_ARRAY_X + span - 40):
+        p.append(ruby_box("Tilt Frame back leg", x, back_yd - 20, SOLAR_ARRAY_Z,
+                          40, 40, top_z - SOLAR_ARRAY_Z, color=C_STEEL))
+    # PV run: array junction -> up to the external power panel MC4 bulkheads.
+    jx = SOLAR_ARRAY_X + span / 2
+    panel = (PWR_PANEL_X + 70, -WALL_T - 30, PWR_PANEL_Z + PWR_PANEL_H * 0.5)
+    p.append(ruby_pipe_run("PV run (array -> panel)",
+                           [(jx, SOLAR_ARRAY_YD - 20, SOLAR_ARRAY_Z + 60),
+                            (jx, -WALL_T - 30, SOLAR_ARRAY_Z + 60),
+                            (jx, -WALL_T - 30, panel[2]),
+                            panel],
+                           10, color="#2D7A2D"))
+    return '\n'.join(p)
+
+
 # ── Electrical (panel + battery, pinhole wall) ───────────────────────────────
 
 def electrical():
@@ -2176,6 +2238,7 @@ def generate_ruby():
         component("Light-Trap Drum", "Light Trap", light_trap_drum()),
         component("Light-Trap Bay", "Light Trap", light_trap_bay()),
         component("Electrical", "Electrical", electrical()),
+        component("Solar Array", "Solar Array", solar_array()),
         component("Chemistry Shelf", "Shelf", shelf()),
         component("Light-Trap Door Frame", "Light Seal", light_trap_frame()),
         component("Light Seal & Hinges", "Light Seal", light_seal()),
@@ -2199,7 +2262,7 @@ def generate_ruby():
         ("Water Systems", ["Processing Tray", "Spray Bar", "Equipment Panel",
                            "IBC Stack", "IBC Rack", "Shelf", "Water Hookups",
                            "Water Plumbing"]),
-        ("Electrical Systems", ["Electrical", "Lighting"]),
+        ("Electrical Systems", ["Electrical", "Lighting", "Solar Array"]),
         ("Hinge Panel & Drum", ["Light Trap", "Light Seal", "Pivot Axle"]),
         ("Ventilation", ["Evap Cooler", "Fans"]),
         ("Walkways", ["Walkways", "Combined Plate"]),

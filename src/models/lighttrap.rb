@@ -758,7 +758,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Stay inside plate
   grp = ents.add_group
   grp.name = "Stay inside plate"
-  face = grp.entities.add_face([1695.mm,0.mm,250.mm], [1895.mm,0.mm,250.mm], [1895.mm,12.mm,250.mm], [1695.mm,12.mm,250.mm])
+  face = grp.entities.add_face([1695.mm,0.mm,400.mm], [1895.mm,0.mm,400.mm], [1895.mm,12.mm,400.mm], [1695.mm,12.mm,400.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -769,7 +769,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Stay outside plate
   grp = ents.add_group
   grp.name = "Stay outside plate"
-  face = grp.entities.add_face([1695.mm,-52.mm,250.mm], [1895.mm,-52.mm,250.mm], [1895.mm,-40.mm,250.mm], [1695.mm,-40.mm,250.mm])
+  face = grp.entities.add_face([1695.mm,-52.mm,400.mm], [1895.mm,-52.mm,400.mm], [1895.mm,-40.mm,400.mm], [1695.mm,-40.mm,400.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -780,7 +780,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Stay eye
   grp = ents.add_group
   grp.name = "Stay eye"
-  face = grp.entities.add_face([1780.mm,12.mm,335.mm], [1810.mm,12.mm,335.mm], [1810.mm,67.mm,335.mm], [1780.mm,67.mm,335.mm])
+  face = grp.entities.add_face([1780.mm,12.mm,485.mm], [1810.mm,12.mm,485.mm], [1810.mm,67.mm,485.mm], [1780.mm,67.mm,485.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -791,7 +791,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Stay bolt M16
   grp = ents.add_group
   grp.name = "Stay bolt M16"
-  face = grp.entities.add_face([1717.mm,-58.mm,272.mm], [1733.mm,-58.mm,272.mm], [1733.mm,18.mm,272.mm], [1717.mm,18.mm,272.mm])
+  face = grp.entities.add_face([1717.mm,-58.mm,422.mm], [1733.mm,-58.mm,422.mm], [1733.mm,18.mm,422.mm], [1717.mm,18.mm,422.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -802,7 +802,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Stay bolt M16
   grp = ents.add_group
   grp.name = "Stay bolt M16"
-  face = grp.entities.add_face([1717.mm,-58.mm,412.mm], [1733.mm,-58.mm,412.mm], [1733.mm,18.mm,412.mm], [1717.mm,18.mm,412.mm])
+  face = grp.entities.add_face([1717.mm,-58.mm,562.mm], [1733.mm,-58.mm,562.mm], [1733.mm,18.mm,562.mm], [1717.mm,18.mm,562.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -813,7 +813,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Stay bolt M16
   grp = ents.add_group
   grp.name = "Stay bolt M16"
-  face = grp.entities.add_face([1857.mm,-58.mm,272.mm], [1873.mm,-58.mm,272.mm], [1873.mm,18.mm,272.mm], [1857.mm,18.mm,272.mm])
+  face = grp.entities.add_face([1857.mm,-58.mm,422.mm], [1873.mm,-58.mm,422.mm], [1873.mm,18.mm,422.mm], [1857.mm,18.mm,422.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -824,7 +824,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Stay bolt M16
   grp = ents.add_group
   grp.name = "Stay bolt M16"
-  face = grp.entities.add_face([1857.mm,-58.mm,412.mm], [1873.mm,-58.mm,412.mm], [1873.mm,18.mm,412.mm], [1857.mm,18.mm,412.mm])
+  face = grp.entities.add_face([1857.mm,-58.mm,562.mm], [1873.mm,-58.mm,562.mm], [1873.mm,18.mm,562.mm], [1857.mm,18.mm,562.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -1926,7 +1926,7 @@ ents = defn.entities
   # Stay hook (frame)
   grp = ents.add_group
   grp.name = "Stay hook (frame)"
-  face = grp.entities.add_face([-10.mm,175.mm,315.mm], [50.mm,175.mm,315.mm], [50.mm,235.mm,315.mm], [-10.mm,235.mm,315.mm])
+  face = grp.entities.add_face([-10.mm,175.mm,465.mm], [50.mm,175.mm,465.mm], [50.mm,235.mm,465.mm], [-10.mm,235.mm,465.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(70.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")

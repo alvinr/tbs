@@ -1362,7 +1362,7 @@ ents = defn.entities
   grp = ents.add_group
   grp.name = "LT Drum opening brush seal"
   ge = grp.entities
-  circle = ge.add_circle([-735.9104883076718.mm,899.1376331524525.mm,130.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([-735.9104883076719.mm,899.1376331524525.mm,130.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2120.mm)
@@ -1996,6 +1996,145 @@ lw_inst.set_attribute("dynamic_attributes", "_name", "LiftoutWalkways")
 lw_inst.set_attribute("dynamic_attributes", "hidden", 0.0)
 lw_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swing>0.5")
 
+# ── Transport stay rods — a CHILD DC component inside the swing def: SHOWN only when the
+#    panel is swung open (the M16 turnbuckle stays are engaged AFTER the swing). Built in
+#    TRANSPORT (swung) coords, then added with a -LOCK° pre-rotation about the pivot so the
+#    parent's +LOCK°·swing cancels it at swing=1 → the rod lands exactly on the frame hook
+#    (which also swings to SOCKET) and the static wall-anchor eye. A child, so its
+#    `_hidden_formula` (ancestor ref PanelSwing!swing) re-evaluates as the panel animates. ──
+sr_defn = model.definitions.add("Transport Stay Rods")
+ents = sr_defn.entities
+  # Stay clevis (eye end)
+  grp = ents.add_group
+  grp.name = "Stay clevis (eye end)"
+  face = grp.entities.add_face([1783.mm,42.mm,488.mm], [1807.mm,42.mm,488.mm], [1807.mm,66.mm,488.mm], [1783.mm,66.mm,488.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay rod (eye side)
+  grp = ents.add_group
+  grp.name = "Stay rod (eye side)"
+  ge = grp.entities
+  circle = ge.add_circle([1795.mm,60.mm,500.mm], [0,1,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(406.916798052543.mm)
+  mat = model.materials["Stay rod (eye side)"] || model.materials.add("Stay rod (eye side)")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Turnbuckle barrel
+  grp = ents.add_group
+  grp.name = "Turnbuckle barrel"
+  ge = grp.entities
+  circle = ge.add_circle([1795.mm,466.916798052543.mm,500.mm], [0,1,0], 14.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(120.mm)
+  mat = model.materials["Turnbuckle barrel"] || model.materials.add("Turnbuckle barrel")
+  mat.color = Sketchup::Color.new(106, 106, 114)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay rod (hook side)
+  grp = ents.add_group
+  grp.name = "Stay rod (hook side)"
+  ge = grp.entities
+  circle = ge.add_circle([1795.mm,586.9167980525431.mm,500.mm], [0,1,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(377.34275317533024.mm)
+  mat = model.materials["Stay rod (eye side)"] || model.materials.add("Stay rod (eye side)")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay clevis (hook end)
+  grp = ents.add_group
+  grp.name = "Stay clevis (hook end)"
+  face = grp.entities.add_face([1783.mm,964.2595512278733.mm,488.mm], [1807.mm,964.2595512278733.mm,488.mm], [1807.mm,988.2595512278733.mm,488.mm], [1783.mm,988.2595512278733.mm,488.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay clevis (eye end)
+  grp = ents.add_group
+  grp.name = "Stay clevis (eye end)"
+  face = grp.entities.add_face([1783.mm,42.mm,2038.mm], [1807.mm,42.mm,2038.mm], [1807.mm,66.mm,2038.mm], [1783.mm,66.mm,2038.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay rod (eye side)
+  grp = ents.add_group
+  grp.name = "Stay rod (eye side)"
+  ge = grp.entities
+  circle = ge.add_circle([1795.mm,60.mm,2050.mm], [0,1,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(406.916798052543.mm)
+  mat = model.materials["Stay rod (eye side)"] || model.materials.add("Stay rod (eye side)")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Turnbuckle barrel
+  grp = ents.add_group
+  grp.name = "Turnbuckle barrel"
+  ge = grp.entities
+  circle = ge.add_circle([1795.mm,466.916798052543.mm,2050.mm], [0,1,0], 14.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(120.mm)
+  mat = model.materials["Turnbuckle barrel"] || model.materials.add("Turnbuckle barrel")
+  mat.color = Sketchup::Color.new(106, 106, 114)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay rod (hook side)
+  grp = ents.add_group
+  grp.name = "Stay rod (hook side)"
+  ge = grp.entities
+  circle = ge.add_circle([1795.mm,586.9167980525431.mm,2050.mm], [0,1,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(377.34275317533024.mm)
+  mat = model.materials["Stay rod (eye side)"] || model.materials.add("Stay rod (eye side)")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay clevis (hook end)
+  grp = ents.add_group
+  grp.name = "Stay clevis (hook end)"
+  face = grp.entities.add_face([1783.mm,964.2595512278733.mm,2038.mm], [1807.mm,964.2595512278733.mm,2038.mm], [1807.mm,988.2595512278733.mm,2038.mm], [1783.mm,988.2595512278733.mm,2038.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+ents = defn.entities
+sr_tr = Geom::Transformation.rotation([175.mm, 2287.mm, 0], Z_AXIS, (-56).degrees)
+sr_inst = ents.add_instance(sr_defn, sr_tr)
+sr_inst.name = "Transport Stay Rods"
+sr_inst.layer = model.layers["Lock anchor"]
+sr_inst.set_attribute("dynamic_attributes", "_name", "TransportStayRods")
+sr_inst.set_attribute("dynamic_attributes", "hidden", 1.0)
+sr_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swing<0.5")
+
 # Shift the moving def by -pivot so the def origin sits at the pivot — then the instance's
 # RotZ swings the assembly about the pivot (same origin-at-rotation-point pattern the
 # cargo-door leaves use).
@@ -2124,7 +2263,7 @@ anc = Geom::Point3d.new(170.mm, 1181.mm, 2268.mm)
 txt = entities.add_text("FILM-PLANE RAILS
 (left pair removable)", anc, Geom::Vector3d.new(1400.mm, 0.mm, 300.mm))
 txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(1814.3813260216311.mm, 0.mm, 1075.mm)
+anc = Geom::Point3d.new(1814.381326021631.mm, 0.mm, 1075.mm)
 txt = entities.add_text("TRANSPORT STAY anchor
 (bolted plates; rod→wall when swung)", anc, Geom::Vector3d.new(300.mm, -300.mm, 700.mm))
 txt.layer = model.layers["Labels"] rescue nil

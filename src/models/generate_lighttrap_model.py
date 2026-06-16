@@ -94,7 +94,7 @@ def _rot_pt(x, y, deg):
     return PIVOT_X + (x - PIVOT_X) * c - (y - PIVOT_YD) * s, PIVOT_YD + (x - PIVOT_X) * s + (y - PIVOT_YD) * c
 
 
-SOCKET = _rot_pt(LOCK_BOLT[0], LOCK_BOLT[1], LOCK)  # transport position of the frame hook (1694, 1075)
+SOCKET = _rot_pt(LOCK_BOLT[0], LOCK_BOLT[1], LOCK)  # transport position of the frame hook (1814, 994)
 
 TAGS = ["Context", "Door Frame", "Pivot Axle",
         "Processing Tray", "Walkways", "Film Plane Rails",
@@ -489,14 +489,15 @@ def frame_hooks():
 # be welded to, so the stay eye reacts into an inside + outside plate pair bolted through
 # the wall (4× M16). Stays put even when the rod is removed.
 PLATE_HW, PLATE_T, BOLT_OFF, BOLT_D = 100, 12, 70, 16
+# Wall-anchor X: inboard of the hook's transport X, but CLAMPED so the plate right edge
+# clears the electrical panel (EP) on the same pinhole wall — the relocated top stay
+# (hooks on the perimeter stile) would otherwise overlap the EP left edge by a few mm.
+# The small resulting rod angle (~1°) the turnbuckle stay absorbs. Shared by stay_rods().
+ANCHOR_X = min(SOCKET[0], ov.EP_X - PLATE_HW - 15)   # ≤1795 → plate right edge ≤1895 < EP 1910
 
 
 def wall_anchors():
-    # Anchor plate sits inboard of the hook's transport X, but CLAMPED so its right edge
-    # clears the electrical panel (EP) on the same pinhole wall — the relocated top stay
-    # (hooks on the perimeter stile) would otherwise overlap the EP left edge by a few mm.
-    # The small resulting rod angle (~1°) the turnbuckle stay absorbs.
-    hx = min(SOCKET[0], ov.EP_X - PLATE_HW - 15)     # ≤1795 → plate right edge ≤1895 < EP 1910
+    hx = ANCHOR_X
     wt = WALL_T
     p = []
     for z in STAY_Z:
@@ -509,6 +510,34 @@ def wall_anchors():
             for dz in (-BOLT_OFF, BOLT_OFF):
                 p.append(ruby_box("Stay bolt M16", hx + dx - BOLT_D // 2, -wt - PLATE_T - 6, z + dz - BOLT_D // 2,
                                   BOLT_D, wt + 2 * PLATE_T + 12, BOLT_D, color=C_STEEL))
+    return '\n'.join(p)
+
+
+# Transport STAY RODS — the M16 turnbuckle stays themselves (top + bottom), drawn in the
+# TRANSPORT (swung) pose: a straight rod from each frame hook (at SOCKET) down to its wall-
+# anchor eye, with a turnbuckle barrel mid-span. Built here in transport (axis-aligned along
+# Yd) coords; generate_ruby adds it as a Panel-Swing DC CHILD with a -LOCK° pre-rotation so
+# the parent's +LOCK°·swing cancels it at swing=1 (rod meets hook + eye exactly), and HIDES
+# it until swung — the stays are engaged AFTER the swing and removed before the swing-back.
+ROD_R, TURN_R = 8, 14                                 # Ø16 M16 rod, Ø28 turnbuckle barrel
+
+
+def stay_rods():
+    sx = ANCHOR_X                                     # rod X — hook (SOCKET[0]) & eye share this X
+    y_eye = PLATE_T + 48                              # pin just past the wall eye (Yd≈60)
+    y_hook = SOCKET[1] - 30                           # pin at the hook's inner face (Yd≈1045)
+    cR, cT = "#8A8A92", "#6A6A72"                     # rod / turnbuckle barrel
+    TURN_L = 120
+    p = []
+    for z in STAY_Z:
+        y_barrel0 = y_eye + (y_hook - y_eye) * 0.45
+        p += [
+            ruby_box("Stay clevis (eye end)", sx - 12, y_eye - 18, z - 12, 24, 24, 24, color=C_STEEL),
+            ruby_cylinder("Stay rod (eye side)", sx, y_eye, z, ROD_R, y_barrel0 - y_eye, color=cR, axis="y"),
+            ruby_cylinder("Turnbuckle barrel", sx, y_barrel0, z, TURN_R, TURN_L, color=cT, axis="y"),
+            ruby_cylinder("Stay rod (hook side)", sx, y_barrel0 + TURN_L, z, ROD_R, y_hook - (y_barrel0 + TURN_L), color=cR, axis="y"),
+            ruby_box("Stay clevis (hook end)", sx - 12, y_hook, z - 12, 24, 24, 24, color=C_STEEL),
+        ]
     return '\n'.join(p)
 
 
@@ -772,6 +801,24 @@ lw_inst.layer = model.layers["Walkways"]
 lw_inst.set_attribute("dynamic_attributes", "_name", "LiftoutWalkways")
 lw_inst.set_attribute("dynamic_attributes", "hidden", 0.0)
 lw_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swing>0.5")
+
+# ── Transport stay rods — a CHILD DC component inside the swing def: SHOWN only when the
+#    panel is swung open (the M16 turnbuckle stays are engaged AFTER the swing). Built in
+#    TRANSPORT (swung) coords, then added with a -LOCK° pre-rotation about the pivot so the
+#    parent's +LOCK°·swing cancels it at swing=1 → the rod lands exactly on the frame hook
+#    (which also swings to SOCKET) and the static wall-anchor eye. A child, so its
+#    `_hidden_formula` (ancestor ref PanelSwing!swing) re-evaluates as the panel animates. ──
+sr_defn = model.definitions.add("Transport Stay Rods")
+ents = sr_defn.entities
+{stay_rods()}
+ents = defn.entities
+sr_tr = Geom::Transformation.rotation([{PIVOT_X}.mm, {PIVOT_YD}.mm, 0], Z_AXIS, (-{LOCK}).degrees)
+sr_inst = ents.add_instance(sr_defn, sr_tr)
+sr_inst.name = "Transport Stay Rods"
+sr_inst.layer = model.layers["Lock anchor"]
+sr_inst.set_attribute("dynamic_attributes", "_name", "TransportStayRods")
+sr_inst.set_attribute("dynamic_attributes", "hidden", 1.0)
+sr_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swing<0.5")
 
 # Shift the moving def by -pivot so the def origin sits at the pivot — then the instance's
 # RotZ swings the assembly about the pivot (same origin-at-rotation-point pattern the

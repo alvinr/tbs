@@ -2495,7 +2495,7 @@ budget or component selection — see the <a href="../electrical-report/">Electr
 right instinct to check, but it <strong>largely does not apply here</strong>, because of one
 deliberate architectural choice:</p>
 <blockquote>
-<p><strong>Everything inside the container runs at 12 V DC. There is no mains-AC distribution
+<p><strong>Everything inside the container runs at 12 V DC. There is no grid-AC distribution
 inside the container</strong> (<a href="../electrical-report/">Electrical Report §2</a>).</p>
 </blockquote>
 <p>12 V DC is <strong>Extra-Low Voltage (ELV)</strong> — below every shock-safety threshold in the
@@ -2641,7 +2641,7 @@ NEC) is the right yardstick for fuse placement, conductor protection, and bondin
 <tr>
 <td>5</td>
 <td><strong>Shore-power AC (the one lethal node)</strong></td>
-<td>Mains AC feeds the exterior charger only — but the <em>site supply</em> and any extension cord are a genuine electrocution hazard</td>
+<td>Grid AC feeds the exterior charger only — but the <em>site supply</em> and any extension cord are a genuine electrocution hazard</td>
 <td style="text-align: center;">High</td>
 <td style="text-align: center;">Low</td>
 <td>AC kept exterior (IP65 charger); never distributed inside</td>
@@ -2724,12 +2724,12 @@ NEC) is the right yardstick for fuse placement, conductor protection, and bondin
 </table>
 <hr />
 <h2 id="6-the-operational-rule-that-matters-most">6. The Operational Rule That Matters Most<a class="headerlink" href="#6-the-operational-rule-that-matters-most" title="Permanent link">&para;</a></h2>
-<p>Keep the <strong>12 V ELV boundary intact: no mains AC inside the container, ever.</strong> As long
+<p>Keep the <strong>12 V ELV boundary intact: no grid AC inside the container, ever.</strong> As long
 as that holds, this is a fire-risk-management problem (fully addressed by fusing,
 isolation, sealing, and bonding), not a life-safety electrocution problem.</p>
 <ul>
 <li>The shore-power AC input terminates at the <strong>exterior</strong> Victron charger only — never
-  run a mains extension cord or generator output into the wet interior.</li>
+  run an AC extension cord or generator output into the wet interior.</li>
 <li>Confirm the deployment <strong>site's AC supply is on an RCD/GFCI-protected circuit</strong> before
   connecting the shore charger.</li>
 </ul>

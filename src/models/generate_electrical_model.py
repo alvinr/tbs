@@ -42,7 +42,8 @@ from tbs_constants import (
     ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, FUSEBLK_H,
     BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H,
     CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H,
-    EQPANEL_X, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H,
+    EQPANEL_X, EQPANEL_YD, EQPANEL_YD_SPAN, PUMP_H_HI,
+    FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, FAN_BODY_D, DUCT_DEPTH, DUCT_HEIGHT,
     EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X,
 )
 
@@ -62,15 +63,36 @@ CCT = {
     "G": ("#F1C40F", "white LED"),
 }
 
-# Representative load endpoint for each circuit (x, yd, z) — where the conductor lands.
+# ── Load fixtures — geometry MATCHES the overview's lighting_wiring() (the plan) ──
+_LED_W, _LED_D = 600, 300
+_LED_YD = ov.C_WID / 2 - _LED_D / 2
+_RLED_X0 = EQPANEL_X - 150 - _LED_D            # IBC-end LED panel — ROTATED 90°
+_RLED_Y0 = ov.C_WID / 2 - _LED_W / 2
+# LED panel footprints (x0, y0, w_x, w_yd): two flat + the rotated IBC-end one.
+LED_PANELS = [(1000, _LED_YD, _LED_W, _LED_D),
+              (2900, _LED_YD, _LED_W, _LED_D),
+              (_RLED_X0, _RLED_Y0, _LED_D, _LED_W)]
+SAFE_XS = [500, 2250, 4150]
+# Circuit-drop endpoints (x, yd, z) — conduit lands per the overview (panel-centre X,
+# near-Yd edge); the rotated panel keeps its own Yd so the drop lands on it.
+LED_ENDS = [(1000 + _LED_W / 2, _LED_YD, ov.C_HGT - 40),
+            (2900 + _LED_W / 2, _LED_YD, ov.C_HGT - 40),
+            (_RLED_X0 + _LED_D / 2, _RLED_Y0, ov.C_HGT - 40)]
+SAFE_ENDS = [(sx + 20, 100, ov.C_HGT - 25) for sx in SAFE_XS]
+
+# Fan A on the sealed end wall; Fan B terminates at a fixed WALL BOX (the fan itself is
+# on the swing panel, reached by a flex connector — not part of the rigid conduit).
+_FAN_A_X = (ov.C_LEN - DUCT_DEPTH) + FAN_BODY_D / 2     # 5618
+_FAN_A_TOP = FAN_A_H + DUCT_HEIGHT / 2                  # 2100
+_FANB_BOX_X = 300
+
+# Representative load endpoint for each single-load circuit (x, yd, z).
 LOADS = {
-    "A": (ov.C_LEN - 160, FAN_A_YD,           FAN_A_H),            # Fan A, sealed end wall
-    "B": (330,            FAN_B_YD,            FAN_B_H),            # Fan B, door panel low
-    "C": (EQPANEL_X - 60, 1181,               1500),              # pumps @ equipment panel
-    "D": (500,            ov.C_WID / 2,        ov.C_HGT - 30),     # safelight strip
-    "E": (INVERTER_X + INVERTER_W / 2, INVERTER_D / 2, INVERTER_Z + INVERTER_H / 2),  # inverter
-    "F": (260,            220,                 1300),              # actuator spare stub
-    "G": (1000,           ov.C_WID / 2,        ov.C_HGT - 40),     # white LED panel
+    "A": (_FAN_A_X, FAN_A_YD, _FAN_A_TOP),                          # Fan A, end wall
+    "B": (_FANB_BOX_X, 18, FAN_B_H + 45),                          # Fan B wall box
+    "C": (EQPANEL_X, EQPANEL_YD + EQPANEL_YD_SPAN / 2, PUMP_H_HI),  # pump zone @ panel
+    "E": (INVERTER_X + INVERTER_W / 2, INVERTER_D / 2, INVERTER_Z + INVERTER_H / 2),
+    "F": (260, 220, 1300),                                         # actuator spare stub
 }
 
 # Fuse-block reference point (runs originate here) — front face of the block in the EP.
@@ -132,10 +154,6 @@ def tilted_slab(name, x, y_near, z_base, w, length, t, tilt_deg, color, alpha=No
         '  grp.material = mat', ''])
 
 
-LED_XS = [1000, 2900, 4550]      # white LED panels (Cct G)
-SAFE_XS = [500, 2250, 4150]      # red safelight strips (Cct D)
-
-
 def _dedup(pts):
     return [p for i, p in enumerate(pts) if i == 0 or p != pts[i - 1]]
 
@@ -158,11 +176,12 @@ def _run(cct, load):
     return ov.ruby_pipe_run(f"Circuit {cct} ({CCT[cct][1]})", pts, 8, color=CCT[cct][0])
 
 
-def _multi_run(cct, xs, yd, z):
+def _multi_run(cct, ends):
     """Circuit feeding MULTIPLE ceiling fixtures (LED / safelight): a fuse-block feed
     onto the ceiling line, a ceiling spine spanning all fixture Xs, and a perpendicular
-    cross+drop at EACH fixture — all orthogonal (so every light is connected)."""
+    cross+drop at EACH fixture (its own Yd) — all orthogonal, so every light connects."""
     col, fx, fy, fz = CCT[cct][0], *FB
+    xs = [e[0] for e in ends]
     p = [
         ov.ruby_pipe_run(f"Circuit {cct} feed ({CCT[cct][1]})",
                          _dedup([(fx, fy, fz), (fx, fy, TRUNK_Z), (fx, TRUNK_YD, TRUNK_Z)]),
@@ -171,10 +190,10 @@ def _multi_run(cct, xs, yd, z):
                          [(min(xs), TRUNK_YD, TRUNK_Z), (max(xs), TRUNK_YD, TRUNK_Z)],
                          8, color=col),
     ]
-    for x in xs:
+    for x, yd, z in ends:
         br = _dedup([(x, TRUNK_YD, TRUNK_Z), (x, yd, TRUNK_Z), (x, yd, z)])
         if len(br) > 1:
-            p.append(ov.ruby_pipe_run(f"Circuit {cct} drop X{x} ({CCT[cct][1]})",
+            p.append(ov.ruby_pipe_run(f"Circuit {cct} drop X{int(x)} ({CCT[cct][1]})",
                                       br, 8, color=col))
     return '\n'.join(p)
 
@@ -197,17 +216,18 @@ def context():
         ov.ruby_box("End Wall sealed (context)", ov.C_LEN, 0, 0, t, ov.C_WID, ov.C_HGT,
                     color=ov.C_SHELL, alpha=0.14),
     ]
-    # Ghost loads (faint) at their real positions.
-    p.append(ov.ruby_box("Fan A ghost (exhaust)", ov.C_LEN - 200, FAN_A_YD - 75,
+    # Ghost loads (faint) — geometry identical to the overview's lighting_wiring().
+    p.append(ov.ruby_box("Fan A ghost (exhaust)", _FAN_A_X - 60, FAN_A_YD - 75,
                          FAN_A_H - 75, 120, 150, 150, color=CCT["A"][0], alpha=0.18))
-    p.append(ov.ruby_box("Fan B ghost (intake)", 220, FAN_B_YD - 75, FAN_B_H - 75,
-                         120, 150, 150, color=CCT["B"][0], alpha=0.18))
-    p.append(ov.ruby_box("Pump cluster ghost", EQPANEL_X - 130, 1050, 1300,
-                         150, 260, 420, color=CCT["C"][0], alpha=0.16))
-    for lx in (1000, 2900, 4550):                       # white LED panels (Cct G)
-        p.append(ov.ruby_box("White LED ghost (Cct G)", lx, ov.C_WID / 2 - 150,
-                             ov.C_HGT - 40, 600, 300, 30, color=CCT["G"][0], alpha=0.16))
-    for sx in (500, 2250, 4150):                        # safelight strips (Cct D)
+    p.append(ov.ruby_box("Fan B wall box ghost (Cct B)", _FANB_BOX_X - 40, 0,
+                         FAN_B_H - 45, 80, 60, 90, color=CCT["B"][0], alpha=0.20))
+    p.append(ov.ruby_box("Pump zone ghost (Cct C)", EQPANEL_X - 140, EQPANEL_YD, 1400,
+                         150, EQPANEL_YD_SPAN, PUMP_H_HI - 1400,
+                         color=CCT["C"][0], alpha=0.14))
+    for x0, y0, wx, wy in LED_PANELS:                   # white LED (rotated IBC-end)
+        p.append(ov.ruby_box("White LED ghost (Cct G)", x0, y0, ov.C_HGT - 40,
+                             wx, wy, 30, color=CCT["G"][0], alpha=0.16))
+    for sx in SAFE_XS:                                  # safelight strips (Cct D)
         p.append(ov.ruby_box("Safelight ghost (Cct D)", sx, 100, ov.C_HGT - 25,
                              40, ov.C_WID - 200, 16, color=CCT["D"][0], alpha=0.16))
     return '\n'.join(p)
@@ -335,7 +355,7 @@ def external_panel():
     # the Cct E chain: ... GFCI outlet -> cord -> cooler.
     cw, cd, ch = EVAP_W, EVAP_D, EVAP_H
     cx = EVAP_DUCT_X - cw / 2
-    cyd = -WALL - cd - 120
+    cyd = -WALL - cd - 100         # matches the overview's evap_cooler() stand-off
     p.append(ov.ruby_box("Evap Cooler (Hessaire MC18M, external)", cx, cyd, 0,
                          cw, cd, ch, color=ov.C_EVAP))
     gfci_x = PWR_PANEL_X + 0.767 * PWR_PANEL_W
@@ -376,8 +396,8 @@ def circuit_runs():
                      25, color=ov.C_TRUNK)]
     for cct in ("A", "B", "C", "E", "F"):
         p.append(_run(cct, LOADS[cct]))
-    p.append(_multi_run("G", LED_XS, ov.C_WID / 2, ov.C_HGT - 40))   # 3× white LED
-    p.append(_multi_run("D", SAFE_XS, 120, ov.C_HGT - 25))            # 3× safelight
+    p.append(_multi_run("G", LED_ENDS))    # 3× white LED (incl. rotated IBC-end panel)
+    p.append(_multi_run("D", SAFE_ENDS))   # 3× safelight
     return '\n'.join(p)
 
 

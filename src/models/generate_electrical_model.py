@@ -399,15 +399,20 @@ def _pump_circuit():
     lcol, rcol = EQPANEL_YD + 63, EQPANEL_YD + 207     # column centres (panel report)
     pumps = [("P-01", lcol, 1229), ("P-04", lcol, 1487),
              ("P-02", rcol, 1229), ("P-03", rcol, 1487), ("P-05", rcol, 1855)]
-    db = (EQPANEL_X, EQPANEL_YD + EQPANEL_YD_SPAN / 2, PUMP_H_HI - 40)  # dist block
-    p = [_run("C", db)]                                 # feed → distribution block
-    p.append(ov.ruby_box("Cct C distribution block", EQPANEL_X - 30, db[1] - 40,
-                         db[2] - 15, 60, 80, 30, color="#2B2B30"))
+    cy = EQPANEL_YD + EQPANEL_YD_SPAN / 2              # wireway Yd centre
+    way_top = PUMP_H_HI                                 # feed enters the top
+    way_bot = min(z for _, _, z in pumps) - 20         # extends DOWN past the lowest pump
+    # Distribution WIREWAY — a vertical channel down the panel that covers every branch
+    # tap (the 5 power drops), instead of a single block floating above them.
+    p = [ov.ruby_box("Cct C distribution wireway", EQPANEL_X - 25, cy - 35, way_bot,
+                     50, 70, way_top - way_bot, color="#2B2B30")]
+    p.append(_run("C", (EQPANEL_X, cy, way_top - 25)))   # feed → top of the wireway
     for nm, yd, z in pumps:
         swx = EQPANEL_X - 120                           # switch on the panel face (-X)
         p.append(ov.ruby_box(f"Pump switch {nm} (Cct C)", swx - 20, yd - 20, z + 40,
                              40, 40, 40, color="#202020"))
-        br = _dedup([db, (db[0], yd, db[2]), (swx, yd, db[2]), (swx, yd, z + 60)])
+        # branch taps the wireway at THIS pump's level → switch → pump (orthogonal)
+        br = _dedup([(EQPANEL_X, cy, z + 60), (swx, cy, z + 60), (swx, yd, z + 60)])
         p.append(ov.ruby_pipe_run(f"Cct C branch {nm}", br, 6, color=col))
     return '\n'.join(p)
 

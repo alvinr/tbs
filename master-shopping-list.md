@@ -306,6 +306,8 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | [External emergency cut-off (E-stop)](https://www.automationdirect.com/) | Red mushroom push-button, IP66, panel-mount on the external power panel + 2× 18 AWG control loop | 1 | [AutomationDirect](https://www.automationdirect.com/) / Amazon | ~$30 |
 | Battery terminal covers (pair) | Insulating boots over + / − posts | 1 | Amazon | ~$10 |
 | [Sealed wet-zone connectors](https://www.waytekwire.com) | Deutsch DT / adhesive-lined heat-shrink — pump circuits in the IBC corridor / tray end | 1 lot | [Waytek Wire](https://www.waytekwire.com) | ~$25 |
+| [Pump switches (Circuit C)](https://www.amazon.com/s?k=IP67+rocker+switch+12V+16A) | IP67 sealed rocker, 12V 16A — one per pump (P-01–P-05), panel-face | 5 | Amazon / Waytek Wire | ~$30 |
+| [Pump distribution block](https://www.amazon.com/s?k=12V+bus+bar+distribution+block) | 12V DC + bus + negative bus (6-way), panel-mount, equipment panel | 1 | Blue Sea / Amazon | ~$15 |
 | Dielectric grease | Marine-grade — chemistry-vapor terminal protection | 1 | Amazon | ~$10 |
 | Tinned marine wire (wet-zone runs) | 14/16 AWG tinned copper, ~25ft | 1 | [Waytek Wire](https://www.waytekwire.com) | ~$30 |
 | Cable grommets / glands | Steel-shell penetrations (chafe protection) | 1 lot | McMaster-Carr | ~$15 |
@@ -322,9 +324,9 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Pull-cord ceiling switch, 12V 6A SPST | Inline switch for lighting Ccts D & G | 2 | Amazon | ~$16 total |
 | Copper ground stake 8ft × ⅝" dia | Earth connection | 1 | Home Depot | ~$20 |
 | 4 AWG ground wire, green/yellow | 3m | 1 | Amazon | ~$15 |
-**Distribution & wiring subtotal: ~$925**  *(+$325 circuit-protection / wet-zone-sealing hardware — external emergency cut-off + battery contactor, disconnect, terminal fuse, sealed connectors, bonding; see [Electrical Safety Report](electrical-safety-report.md) §5)*
+**Distribution & wiring subtotal: ~$970**  *(+$325 circuit-protection / wet-zone-sealing hardware — external emergency cut-off + battery contactor, disconnect, terminal fuse, sealed connectors, bonding; see [Electrical Safety Report](electrical-safety-report.md) §5; +$45 Circuit-C pump-control — 5 switches + distribution block)*
 
-**Section total: ~$2,220**  *(= Solar & battery $1,295 + Distribution & wiring $925; 1-pack standard, +$350 for the optional 2nd pack)*
+**Section total: ~$2,265**  *(= Solar & battery $1,295 + Distribution & wiring $970; 1-pack standard, +$350 for the optional 2nd pack)*
 
 ## 7. Housed Revolving-Door Light Lock — Custom Fabrication
 *Source: `light-trap-selection.md` § 4 (rev 9 / B2). Custom-fabricated Ø900 fixed housing + single-opening C-shell drum (no fins) built into the hinged cargo-door panel — light-tight by geometry. **rev 9 switches the drum/housing from 3mm aluminum to a hybrid plastic skin (5mm UV-HDPE housing, 4mm PP drum)** — cutting the drum/housing mass (~99 kg → ~60 kg), removing galvanic concerns, and lowering fabrication cost. Replaces the failed Ø750 4-fin drum. Single-operator entry/exit at any time without admitting daylight.*

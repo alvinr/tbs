@@ -25,7 +25,7 @@ Complete power flow from solar panels through controller, battery bank, fuse blo
 |---------|--------|-----------|-----------|
 | A | Ventilation fan — exhaust (6") | 60W | Continuous during processing |
 | B | Ventilation fan — intake (6") | 60W | Continuous during processing |
-| C | Water pumps P-01–P-04 (12V DC; P-03 in IBC corridor) | 100W | Intermittent (~30 min/print) |
+| C | Water pumps **P-01–P-05** (12V DC; 5× Shurflo 2088, run one at a time via individual switches) | 100W (one pump) | Intermittent (~30 min/print) |
 | D | Safelight — interior + vestibule | 15W | Loading phase only (~45 min) |
 | E | Evaporative cooler — Hessaire MC18M (120V AC) via 12V→120V inverter | 97W on 12V bus | Continuous during operation |
 | F | Film plane actuators (optional) | 100W peak | Intermittent |
@@ -216,7 +216,7 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 |---------|--------|------|-----------|-----------|
 | A | Ventilation fan — exhaust (far end wall, high) | 5A | 16 AWG | ~2.5m |
 | B | Ventilation fan — intake (panel-mounted, low) | 5A | 16 AWG | ~8m + flex connector |
-| C | Water pumps P-01–P-04 (P-03 in IBC corridor, longer run) | 15A | 14 AWG | ~5m (manifold) / ~8m (P-03) |
+| C | Water pumps **P-01–P-05** (5× Shurflo, individual switches) | 15A | 14 AWG feed + 16 AWG branches | ~5m feed (~8m to P-03) |
 | D | Safelight (3× ceiling strips + drum) | 5A | 18 AWG | ~15m (3 branches + drum) |
 | E | Evaporative cooler **inverter** (12V DC input) | 40A | 10 AWG | ~1m (battery → inverter) |
 | E-AC | Inverter 120V AC out → panel cooler outlet | (GFCI at inverter) | 14 AWG / SJOOW | ~4m |
@@ -232,6 +232,7 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 - Exterior penetrations (fans, shore inlet): Deutsch DT series 2-pin weatherproof connectors — IP67 rated. (The cooler is **120V AC** and terminates at the panel's GFCI-fed weatherproof outlet, **not** a DT connector — see Circuit E below and §7.6.)
 - **Circuit B flex connector (panel-mounted intake fan):** Fan B is mounted low on the swinging hinged panel. The wire run from the fuse block routes along the ceiling trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin connectors at each end. The coiled cable must accommodate the ~56° transport swing about the pivot (with slack) without binding. Anchor the fixed end to the door frame top rail; anchor the panel end to the swinging frame near the pivot. The service loop hangs in the ceiling zone above H=2200mm and the wire drops down the panel to the low fan.
 - **Circuit E (evaporative cooler, via inverter):** The cooler is a 120V AC unit operating outside the container during sessions. The **DC side** is short: a fused 10 AWG feed (~1m) from the fuse block to the wall-mounted inverter, with its own DC disconnect. The **AC side** runs from the inverter's GFCI output along the ceiling trunking, down the pinhole wall to the external power panel, and terminates at the panel's weatherproof GFCI-fed NEMA 5-15R outlet (in-use cover). On the exterior, a 1.5m outdoor-rated SJOOW cord (NEMA 5-15P each end) connects the outlet to the cooler. The cord is unplugged and stowed inside for transport. Full grounding/GFCI design in §7.6.
+- **Circuit C (water pumps P-01–P-05):** The single 14 AWG Circuit-C feed runs along the ceiling trunking and drops to the equipment panel in the IBC plumbing corridor. There it lands on a **12V DC distribution block** (positive bus + shared negative bus), which fans out to **five individual IP-rated rocker switches** — one per pump (P-01/P-04 left column, P-02/P-03/P-05 right column), panel-face-mounted for corridor access. Each switch feeds its pump via a short **16 AWG** branch (~0.5–1m; 7.5A per pump). The pumps run **one at a time**: the operator enables the pump for the current task and each Shurflo 2088 then runs on its **internal demand/pressure switch** when its valves open. The 15A circuit fuse protects the 14 AWG feed and covers a single pump (90W / 7.5A) with margin; simultaneous operation is not intended. All switches and the distribution block are in the wet zone — IP-rated, sealed, mounted above the spill line with drip loops (§7.5).
 
 **Grounding:** Bond the container steel body to the battery negative busbar using 4 AWG green/yellow wire at the main enclosure. Drive an 8-foot copper ground stake at the container foundation and connect to the main enclosure earth terminal. The inverter chassis, AC equipment-ground, and cooler ground bond to this same single point — see §7.6.
 
@@ -336,6 +337,8 @@ All US/SoCal sources. Prices approximate as of 2026.
 | External emergency cut-off (E-stop) | Red mushroom push-button, IP66, panel-mount on the external power panel + 2× 18 AWG control loop | [AutomationDirect](https://www.automationdirect.com/) / Amazon | ~$30 |
 | Battery terminal covers (pair) | Insulating boots over + / − posts/busbar | Amazon | ~$10 |
 | Sealed wet-zone connectors | Deutsch DT / adhesive-lined heat-shrink, pump circuits | Waytek Wire | ~$25 |
+| Pump switches (Circuit C) | 5× IP67 sealed rocker, 12V 16A — one per pump (P-01–P-05) | Amazon / Waytek Wire | ~$30 (×5) |
+| Pump distribution block | 12V DC positive bus + negative bus (6-way), panel-mount, in the equipment panel | Blue Sea / Amazon | ~$15 |
 | Dielectric grease | Marine-grade — chemistry-vapor terminal protection | Amazon | ~$10 |
 | Tinned marine wire (wet-zone runs) | 14/16 AWG tinned copper, ~25ft | Waytek Wire | ~$30 |
 | Cable grommets / glands | Steel-shell penetrations (chafe protection) | McMaster-Carr | ~$15 |
@@ -361,12 +364,12 @@ All US/SoCal sources. Prices approximate as of 2026.
 | Ventilation fans × 2 | 150×150×50mm 12V DC axial panel fan, ~150–200 CFM (dimension-audit correction; not the AC Infinity S6 inline) | Amazon | ~$50 |
 | 12V LED flat panel, 300×600mm, 4000K | 20W, neutral white, ceiling-mount | Amazon / superbrightleds.com | ~$75 (×3) |
 | Pull-cord ceiling switch, 12V 6A SPST | Inline switch for lighting circuits D & G | Amazon / Lowe's | ~$16 (×2) |
-| **Electrical system total** | | | **~$2,220** |
+| **Electrical system total** | | | **~$2,265** |
 | **Shade canopy total** | | | **~$200** |
 | **Cooling (cooler + inverter + DC protection + AC outlet + cord)** | | | **~$425** |
-| **Systems grand total** | | | **~$2,845** |
+| **Systems grand total** | | | **~$2,890** |
 
-*Electrical system total is the **standard 1-pack build** and matches the consolidated [Master Shopping List §6](master-shopping-list.md) (Solar & battery $1,295 + Distribution & wiring $925 = $2,220, the authoritative electrical BOM). The optional 2nd battery pack adds +$350. It includes ~$325 of circuit-protection / wet-zone-sealing hardware added per the [Electrical Safety Report](electrical-safety-report.md) §5 (external emergency cut-off + battery contactor, disconnect switch, terminal-mount fuse, sealed connectors, bonding, grommets).*
+*Electrical system total is the **standard 1-pack build** and matches the consolidated [Master Shopping List §6](master-shopping-list.md) (Solar & battery $1,295 + Distribution & wiring $970 = $2,265, the authoritative electrical BOM). The optional 2nd battery pack adds +$350. It includes ~$325 of circuit-protection / wet-zone-sealing hardware added per the [Electrical Safety Report](electrical-safety-report.md) §5 (external emergency cut-off + battery contactor, disconnect switch, terminal-mount fuse, sealed connectors, bonding, grommets), plus ~$45 of Circuit-C pump-control hardware (5 pump switches + distribution block).*
 
 ## 9. Maintenance
 

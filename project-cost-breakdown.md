@@ -18,7 +18,7 @@
 | **3. Optics — pinhole plate** | $80 | $150 | $280 |
 | **4. Film plane mechanism (4-corner Option A, incl. wall-seat saddles + cross-slides)** | $3,100 | $3,650 | $4,200 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $4,143 | $5,180 | $6,216 |
-| **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection)** | $1,980 | $2,220 | $2,530 |
+| **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · pump switches)** | $2,025 | $2,265 | $2,575 |
 | **5b. Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)** | $770 | $830 | $920 |
 | **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $1,465 | $1,802 | $2,160 |
 | **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $1,801 | $2,186 | $2,572 |
@@ -26,7 +26,7 @@
 | **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$20,279** | **$25,460** | **$32,218** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$20,324** | **$25,505** | **$32,263** |
 
 *Optional additions that may apply — see individual sections:*
 
@@ -492,7 +492,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Pinhole plate | $95 |
 | Film plane mechanism (manual Option A, incl. wall-seat saddles + cross-slides) | $3,100 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $4,100 |
-| Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection) | $1,980 |
+| Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · pump switches) | $2,025 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $770 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,465 |
 | Perimeter walkway (4 sections, removable, GRP grating) | $1,750 |
@@ -500,7 +500,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$19,952** |
+| **Scenario A total** | **~$19,997** |
 
 ### Scenario B — Recommended build, regional deployment
 
@@ -511,7 +511,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Pinhole plate | $150 |
 | Film plane mechanism (manual Option A + wall-seat saddles + cross-slides) | $3,270 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $5,089 |
-| Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection) | $2,220 |
+| Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · pump switches) | $2,265 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $830 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,800 |
 | Perimeter walkway (4 sections, removable, GRP grating) | $2,122 |
@@ -520,7 +520,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Rodenstock Apo-Ronar 1200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$25,383** |
+| **Scenario B total (excl. CDL)** | **~$25,428** |
 
 ### Scenario C — Full production, own transport, CDL
 

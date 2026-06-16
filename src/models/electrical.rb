@@ -910,7 +910,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Cable Trunking (40x25 PVC)
   grp = ents.add_group
   grp.name = "Cable Trunking (40x25 PVC)"
-  face = grp.entities.add_face([0.mm,0.mm,2363.mm], [5893.mm,0.mm,2363.mm], [5893.mm,40.mm,2363.mm], [0.mm,40.mm,2363.mm])
+  face = grp.entities.add_face([220.mm,0.mm,2363.mm], [5658.mm,0.mm,2363.mm], [5658.mm,40.mm,2363.mm], [220.mm,40.mm,2363.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")

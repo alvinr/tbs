@@ -4286,6 +4286,7 @@ scripts) so the 3D models stay in sync with the drawings — see the Workflow be
 </tr>
 </tbody>
 </table>
+<p>| <strong>electrical</strong> | <code>src/models/generate_electrical_model.py</code> | <code>models/electrical.skp</code> + <code>src/models/electrical.rb</code> | <strong>Power-system focused model</strong> (the missing subsystem) — solar generation → storage → distribution → loads. Higher fidelity than the overview's coarse <code>ov.electrical()</code>: a <strong>ghosted IP65 enclosure with distinct internals</strong> (<code>power_core()</code>: MPPT 100/50, Blue Sea 5026 fuse block, +/− busbars, m-Series rotary main disconnect), the <strong>battery</strong> (<code>battery()</code>: 100Ah pack + ghosted 2nd + ML-RBS contactor + MRBF main fuse), the <strong>external power panel</strong> (<code>external_panel()</code>: MC4 PV ×3, NEMA shore inlet, <strong>GFCI cooler outlet</strong>, exterior E-stop), the <strong>Circuit-E inverter</strong> (<code>inverter()</code>, reuses <code>INVERTER_*</code>), the <strong>ground solar array</strong> (<code>solar_array()</code>: 3×200W on a 30° tilt frame, exterior/door-end clear of the pinhole sightline, via the local <code>tilted_slab()</code> add_face+pushpull helper, + PV run to the panel), and <strong><code>circuit_runs()</code></strong> — the 40×25 ceiling trunking spine + <strong>7 color-coded circuits A–G</strong> routed fuse-block→trunking→each load. <code>context()</code> is a full-length ghost container + faint ghost loads (Fan A/B, pump cluster, 3× LED, 3× safelight) that anchor the circuit runs. Reuses <code>ov</code> helpers (<code>ruby_box</code>/<code>ruby_cylinder</code>/<code>ruby_pipe_run</code>/<code>component</code>/<code>mm</code>/<code>hex_to_rgb</code>/<code>shared_mat_name</code>/colors) + the scene/camera/send scaffold. 8 tags (Context / Solar Array / Power Core / Battery / External Panel / Inverter / Circuit Runs / <strong>Labels</strong>). <strong>5 scenes:</strong> Combined, <strong>Power Core</strong> (enclosure internals + battery, per-scene zoom camera), <strong>Distribution</strong> (circuit runs + core + battery), <strong>External Panel</strong> (panel + solar, per-scene zoom), <strong>Labeled</strong> (<code>elec_labels()</code> — point-anchored <code>add_text</code> callouts on the Labels tag; see [[feedback-3d-model-labels]]). Reads <code>EP_*</code>, <code>BA_*</code>, <code>PWR_PANEL_*</code>, <code>INVERTER_*</code>, the new <code>SOLAR_*</code> + enclosure-internals constants (<code>ENCL_SHELL_D</code>/<code>MPPT_*</code>/<code>FUSEBLK_*</code>/<code>BUSBAR_*</code>/<code>DISCONNECT_*</code>/<code>CONTACTOR_*</code>/<code>MRBF_*</code>), and load positions (<code>FAN_A_*</code>/<code>FAN_B_*</code>/<code>EQPANEL_X</code>). Rebuild whenever those constants change. 3D companion to the 2D <code>generate_electrical_diagram.py</code> + <code>generate_power_panel_diagram.py</code>. |</p>
 <p><em>As more models are added, list them here with the subsystems each contains, so a
 constants change re-runs only the affected models.</em></p>
 <hr />
@@ -4361,6 +4362,16 @@ Then commit the updated PNGs and <code>*.skp</code>/<code>*.rb</code> alongside 
 <td><code>INVERTER_X</code>, <code>INVERTER_Z</code>, <code>INVERTER_W</code>, <code>INVERTER_H</code>, <code>INVERTER_D</code></td>
 <td>AO, ES</td>
 <td>Circuit-E inverter (Victron Phoenix 12/375 GFCI) wall mount</td>
+</tr>
+<tr>
+<td><code>SOLAR_*</code> (panel L/W/T, N, tilt, gap, array X/Yd/Z)</td>
+<td>electrical 3D model</td>
+<td>Ground solar array (3×200W tilt frame) — <code>generate_electrical_model.solar_array()</code></td>
+</tr>
+<tr>
+<td><code>ENCL_SHELL_D</code>, <code>MPPT_*</code>, <code>FUSEBLK_*</code>, <code>BUSBAR_*</code>, <code>DISCONNECT_*</code>, <code>CONTACTOR_*</code>, <code>MRBF_*</code></td>
+<td>electrical 3D model</td>
+<td>Main-enclosure internals — <code>generate_electrical_model.power_core()</code> / <code>battery()</code></td>
 </tr>
 <tr>
 <td><code>EP_X</code>, <code>EP_W</code>, <code>EP_H_LO</code>, <code>EP_H_HI</code></td>

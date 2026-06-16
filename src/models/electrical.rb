@@ -98,7 +98,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Fan A ghost (exhaust)
   grp = ents.add_group
   grp.name = "Fan A ghost (exhaust)"
-  face = grp.entities.add_face([5693.mm,1106.mm,1925.mm], [5813.mm,1106.mm,1925.mm], [5813.mm,1256.mm,1925.mm], [5693.mm,1256.mm,1925.mm])
+  face = grp.entities.add_face([5558.mm,1106.mm,1925.mm], [5678.mm,1106.mm,1925.mm], [5678.mm,1256.mm,1925.mm], [5558.mm,1256.mm,1925.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Fan A ghost (exhaust)"] || model.materials.add("Fan A ghost (exhaust)")
@@ -106,26 +106,26 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 0.18
   grp.material = mat
 
-  # Fan B ghost (intake)
+  # Fan B wall box ghost (Cct B)
   grp = ents.add_group
-  grp.name = "Fan B ghost (intake)"
-  face = grp.entities.add_face([220.mm,290.mm,525.mm], [340.mm,290.mm,525.mm], [340.mm,440.mm,525.mm], [220.mm,440.mm,525.mm])
+  grp.name = "Fan B wall box ghost (Cct B)"
+  face = grp.entities.add_face([260.mm,0.mm,555.mm], [340.mm,0.mm,555.mm], [340.mm,60.mm,555.mm], [260.mm,60.mm,555.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Fan B ghost (intake)"] || model.materials.add("Fan B ghost (intake)")
+  face.pushpull(90.mm)
+  mat = model.materials["Fan B wall box ghost (Cct B)"] || model.materials.add("Fan B wall box ghost (Cct B)")
   mat.color = Sketchup::Color.new(230, 126, 34)
-  mat.alpha = 0.18
+  mat.alpha = 0.2
   grp.material = mat
 
-  # Pump cluster ghost
+  # Pump zone ghost (Cct C)
   grp = ents.add_group
-  grp.name = "Pump cluster ghost"
-  face = grp.entities.add_face([4744.mm,1050.mm,1300.mm], [4894.mm,1050.mm,1300.mm], [4894.mm,1310.mm,1300.mm], [4744.mm,1310.mm,1300.mm])
+  grp.name = "Pump zone ghost (Cct C)"
+  face = grp.entities.add_face([4734.mm,1046.mm,1400.mm], [4884.mm,1046.mm,1400.mm], [4884.mm,1316.mm,1400.mm], [4734.mm,1316.mm,1400.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(420.mm)
-  mat = model.materials["Pump cluster ghost"] || model.materials.add("Pump cluster ghost")
+  face.pushpull(870.mm)
+  mat = model.materials["Pump zone ghost (Cct C)"] || model.materials.add("Pump zone ghost (Cct C)")
   mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 0.16
+  mat.alpha = 0.14
   grp.material = mat
 
   # White LED ghost (Cct G)
@@ -153,7 +153,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # White LED ghost (Cct G)
   grp = ents.add_group
   grp.name = "White LED ghost (Cct G)"
-  face = grp.entities.add_face([4550.mm,1031.mm,2348.mm], [5150.mm,1031.mm,2348.mm], [5150.mm,1331.mm,2348.mm], [4550.mm,1331.mm,2348.mm])
+  face = grp.entities.add_face([4424.mm,881.mm,2348.mm], [4724.mm,881.mm,2348.mm], [4724.mm,1481.mm,2348.mm], [4424.mm,1481.mm,2348.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
   mat = model.materials["White LED ghost (Cct G)"] || model.materials.add("White LED ghost (Cct G)")
@@ -711,7 +711,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Evap Cooler (Hessaire MC18M, external)
   grp = ents.add_group
   grp.name = "Evap Cooler (Hessaire MC18M, external)"
-  face = grp.entities.add_face([720.5.mm,-465.mm,0.mm], [1279.5.mm,-465.mm,0.mm], [1279.5.mm,-160.mm,0.mm], [720.5.mm,-160.mm,0.mm])
+  face = grp.entities.add_face([720.5.mm,-445.mm,0.mm], [1279.5.mm,-445.mm,0.mm], [1279.5.mm,-140.mm,0.mm], [720.5.mm,-140.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(711.mm)
   mat = model.materials["Evap Cooler (Hessaire MC18M, external)"] || model.materials.add("Evap Cooler (Hessaire MC18M, external)")
@@ -804,7 +804,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -201.5.mm, 0.mm)
+  vec = Geom::Vector3d.new(0.mm, -181.5.mm, 0.mm)
   circle = ge.add_circle([1199.5.mm,-111.mm,611.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -976,7 +976,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit A (exhaust fan)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(3696.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(3581.mm, 0.mm, 0.mm)
   circle = ge.add_circle([2021.mm,20.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -990,8 +990,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit A (exhaust fan) elbow"
   ge = grp.entities
-  arc = ge.add_arc([5717.mm,36.mm,2375.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([5717.mm,20.mm,2375.mm], [1.000000,0.000000,0.000000], 8.mm, 16)
+  arc = ge.add_arc([5602.mm,36.mm,2375.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 16.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5602.mm,20.mm,2375.mm], [1.000000,0.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Busbar (+)"] || model.materials.add("Busbar (+)")
@@ -1004,7 +1004,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Circuit A (exhaust fan)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 1129.mm, 0.mm)
-  circle = ge.add_circle([5733.mm,36.mm,2375.mm], vec, 8.mm, 16)
+  circle = ge.add_circle([5618.mm,36.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1017,8 +1017,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit A (exhaust fan) elbow"
   ge = grp.entities
-  arc = ge.add_arc([5733.mm,1165.mm,2359.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([5733.mm,1165.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
+  arc = ge.add_arc([5618.mm,1165.mm,2359.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 16.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5618.mm,1165.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Busbar (+)"] || model.materials.add("Busbar (+)")
@@ -1030,8 +1030,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit A (exhaust fan)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -359.mm)
-  circle = ge.add_circle([5733.mm,1181.mm,2359.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -259.mm)
+  circle = ge.add_circle([5618.mm,1181.mm,2359.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1098,7 +1098,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit B (intake fan)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-1643.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(-1688.02.mm, 0.mm, 0.mm)
   circle = ge.add_circle([1989.mm,20.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -1112,8 +1112,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit B (intake fan) elbow"
   ge = grp.entities
-  arc = ge.add_arc([346.mm,36.mm,2375.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,-1.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([346.mm,20.mm,2375.mm], [-1.000000,0.000000,0.000000], 8.mm, 16)
+  arc = ge.add_arc([300.98.mm,19.02.mm,2375.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 0.9800000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([300.98.mm,20.mm,2375.mm], [-1.000000,0.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Circuit B (intake fan)"] || model.materials.add("Circuit B (intake fan)")
@@ -1125,8 +1125,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit B (intake fan)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 313.mm, 0.mm)
-  circle = ge.add_circle([330.mm,36.mm,2375.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -0.5201999999999991.mm, 0.mm)
+  circle = ge.add_circle([300.mm,19.02.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1139,8 +1139,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit B (intake fan) elbow"
   ge = grp.entities
-  arc = ge.add_arc([330.mm,349.mm,2359.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([330.mm,349.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
+  arc = ge.add_arc([300.mm,18.4998.mm,2374.5002.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 0.49979999999999986.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([300.mm,18.4998.mm,2375.mm], [0.000000,-1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Circuit B (intake fan)"] || model.materials.add("Circuit B (intake fan)")
@@ -1152,8 +1152,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit B (intake fan)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1759.mm)
-  circle = ge.add_circle([330.mm,365.mm,2359.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1729.5002.mm)
+  circle = ge.add_circle([300.mm,18.mm,2374.5002.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1220,7 +1220,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit C (water pumps)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(2777.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(2837.mm, 0.mm, 0.mm)
   circle = ge.add_circle([2021.mm,20.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -1234,8 +1234,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit C (water pumps) elbow"
   ge = grp.entities
-  arc = ge.add_arc([4798.mm,36.mm,2375.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4798.mm,20.mm,2375.mm], [1.000000,0.000000,0.000000], 8.mm, 16)
+  arc = ge.add_arc([4858.mm,36.mm,2375.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 16.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4858.mm,20.mm,2375.mm], [1.000000,0.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
@@ -1248,7 +1248,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Circuit C (water pumps)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 1129.mm, 0.mm)
-  circle = ge.add_circle([4814.mm,36.mm,2375.mm], vec, 8.mm, 16)
+  circle = ge.add_circle([4874.mm,36.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1261,8 +1261,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit C (water pumps) elbow"
   ge = grp.entities
-  arc = ge.add_arc([4814.mm,1165.mm,2359.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4814.mm,1165.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
+  arc = ge.add_arc([4874.mm,1165.mm,2359.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 16.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4874.mm,1165.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
@@ -1274,8 +1274,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit C (water pumps)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -859.mm)
-  circle = ge.add_circle([4814.mm,1181.mm,2359.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -89.mm)
+  circle = ge.add_circle([4874.mm,1181.mm,2359.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1573,8 +1573,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit G ceiling spine (white LED)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(3550.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1000.mm,20.mm,2375.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(3274.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1300.mm,20.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1583,12 +1583,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G drop X1000 (white LED)
+  # Circuit G drop X1300 (white LED)
   grp = ents.add_group
-  grp.name = "Circuit G drop X1000 (white LED)"
+  grp.name = "Circuit G drop X1300 (white LED)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 1147.77.mm, 0.mm)
-  circle = ge.add_circle([1000.mm,20.mm,2375.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 997.77.mm, 0.mm)
+  circle = ge.add_circle([1300.mm,20.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1597,12 +1597,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G drop X1000 (white LED) elbow
+  # Circuit G drop X1300 (white LED) elbow
   grp = ents.add_group
-  grp.name = "Circuit G drop X1000 (white LED) elbow"
+  grp.name = "Circuit G drop X1300 (white LED) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1000.mm,1167.77.mm,2361.77.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 13.230000000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1000.mm,1167.77.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
+  arc = ge.add_arc([1300.mm,1017.77.mm,2361.77.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 13.230000000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1300.mm,1017.77.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
@@ -1610,12 +1610,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G drop X1000 (white LED)
+  # Circuit G drop X1300 (white LED)
   grp = ents.add_group
-  grp.name = "Circuit G drop X1000 (white LED)"
+  grp.name = "Circuit G drop X1300 (white LED)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -13.769999999999982.mm)
-  circle = ge.add_circle([1000.mm,1181.mm,2361.77.mm], vec, 8.mm, 16)
+  circle = ge.add_circle([1300.mm,1031.mm,2361.77.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1624,12 +1624,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G drop X2900 (white LED)
+  # Circuit G drop X3200 (white LED)
   grp = ents.add_group
-  grp.name = "Circuit G drop X2900 (white LED)"
+  grp.name = "Circuit G drop X3200 (white LED)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 1147.77.mm, 0.mm)
-  circle = ge.add_circle([2900.mm,20.mm,2375.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 997.77.mm, 0.mm)
+  circle = ge.add_circle([3200.mm,20.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1638,12 +1638,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G drop X2900 (white LED) elbow
+  # Circuit G drop X3200 (white LED) elbow
   grp = ents.add_group
-  grp.name = "Circuit G drop X2900 (white LED) elbow"
+  grp.name = "Circuit G drop X3200 (white LED) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2900.mm,1167.77.mm,2361.77.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 13.230000000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2900.mm,1167.77.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
+  arc = ge.add_arc([3200.mm,1017.77.mm,2361.77.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 13.230000000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([3200.mm,1017.77.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
@@ -1651,12 +1651,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G drop X2900 (white LED)
+  # Circuit G drop X3200 (white LED)
   grp = ents.add_group
-  grp.name = "Circuit G drop X2900 (white LED)"
+  grp.name = "Circuit G drop X3200 (white LED)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -13.769999999999982.mm)
-  circle = ge.add_circle([2900.mm,1181.mm,2361.77.mm], vec, 8.mm, 16)
+  circle = ge.add_circle([3200.mm,1031.mm,2361.77.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1665,12 +1665,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G drop X4550 (white LED)
+  # Circuit G drop X4574 (white LED)
   grp = ents.add_group
-  grp.name = "Circuit G drop X4550 (white LED)"
+  grp.name = "Circuit G drop X4574 (white LED)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 1147.77.mm, 0.mm)
-  circle = ge.add_circle([4550.mm,20.mm,2375.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 847.77.mm, 0.mm)
+  circle = ge.add_circle([4574.mm,20.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1679,12 +1679,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G drop X4550 (white LED) elbow
+  # Circuit G drop X4574 (white LED) elbow
   grp = ents.add_group
-  grp.name = "Circuit G drop X4550 (white LED) elbow"
+  grp.name = "Circuit G drop X4574 (white LED) elbow"
   ge = grp.entities
-  arc = ge.add_arc([4550.mm,1167.77.mm,2361.77.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 13.230000000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4550.mm,1167.77.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
+  arc = ge.add_arc([4574.mm,867.77.mm,2361.77.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 13.230000000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4574.mm,867.77.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
@@ -1692,12 +1692,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G drop X4550 (white LED)
+  # Circuit G drop X4574 (white LED)
   grp = ents.add_group
-  grp.name = "Circuit G drop X4550 (white LED)"
+  grp.name = "Circuit G drop X4574 (white LED)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -13.769999999999982.mm)
-  circle = ge.add_circle([4550.mm,1181.mm,2361.77.mm], vec, 8.mm, 16)
+  circle = ge.add_circle([4574.mm,881.mm,2361.77.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1752,7 +1752,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Circuit D ceiling spine (safelight)"
   ge = grp.entities
   vec = Geom::Vector3d.new(3650.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([500.mm,20.mm,2375.mm], vec, 8.mm, 16)
+  circle = ge.add_circle([520.mm,20.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1761,12 +1761,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit D drop X500 (safelight)
+  # Circuit D drop X520 (safelight)
   grp = ents.add_group
-  grp.name = "Circuit D drop X500 (safelight)"
+  grp.name = "Circuit D drop X520 (safelight)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 94.12.mm, 0.mm)
-  circle = ge.add_circle([500.mm,20.mm,2375.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 74.12.mm, 0.mm)
+  circle = ge.add_circle([520.mm,20.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1775,12 +1775,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit D drop X500 (safelight) elbow
+  # Circuit D drop X520 (safelight) elbow
   grp = ents.add_group
-  grp.name = "Circuit D drop X500 (safelight) elbow"
+  grp.name = "Circuit D drop X520 (safelight) elbow"
   ge = grp.entities
-  arc = ge.add_arc([500.mm,114.12.mm,2369.12.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 5.880000000000001.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([500.mm,114.12.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
+  arc = ge.add_arc([520.mm,94.12.mm,2369.12.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 5.880000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([520.mm,94.12.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
@@ -1788,12 +1788,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit D drop X500 (safelight)
+  # Circuit D drop X520 (safelight)
   grp = ents.add_group
-  grp.name = "Circuit D drop X500 (safelight)"
+  grp.name = "Circuit D drop X520 (safelight)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -6.119999999999891.mm)
-  circle = ge.add_circle([500.mm,120.mm,2369.12.mm], vec, 8.mm, 16)
+  circle = ge.add_circle([520.mm,100.mm,2369.12.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1802,12 +1802,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit D drop X2250 (safelight)
+  # Circuit D drop X2270 (safelight)
   grp = ents.add_group
-  grp.name = "Circuit D drop X2250 (safelight)"
+  grp.name = "Circuit D drop X2270 (safelight)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 94.12.mm, 0.mm)
-  circle = ge.add_circle([2250.mm,20.mm,2375.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 74.12.mm, 0.mm)
+  circle = ge.add_circle([2270.mm,20.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1816,12 +1816,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit D drop X2250 (safelight) elbow
+  # Circuit D drop X2270 (safelight) elbow
   grp = ents.add_group
-  grp.name = "Circuit D drop X2250 (safelight) elbow"
+  grp.name = "Circuit D drop X2270 (safelight) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2250.mm,114.12.mm,2369.12.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 5.880000000000001.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2250.mm,114.12.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
+  arc = ge.add_arc([2270.mm,94.12.mm,2369.12.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 5.880000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2270.mm,94.12.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
@@ -1829,12 +1829,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit D drop X2250 (safelight)
+  # Circuit D drop X2270 (safelight)
   grp = ents.add_group
-  grp.name = "Circuit D drop X2250 (safelight)"
+  grp.name = "Circuit D drop X2270 (safelight)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -6.119999999999891.mm)
-  circle = ge.add_circle([2250.mm,120.mm,2369.12.mm], vec, 8.mm, 16)
+  circle = ge.add_circle([2270.mm,100.mm,2369.12.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1843,12 +1843,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit D drop X4150 (safelight)
+  # Circuit D drop X4170 (safelight)
   grp = ents.add_group
-  grp.name = "Circuit D drop X4150 (safelight)"
+  grp.name = "Circuit D drop X4170 (safelight)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 94.12.mm, 0.mm)
-  circle = ge.add_circle([4150.mm,20.mm,2375.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 74.12.mm, 0.mm)
+  circle = ge.add_circle([4170.mm,20.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1857,12 +1857,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit D drop X4150 (safelight) elbow
+  # Circuit D drop X4170 (safelight) elbow
   grp = ents.add_group
-  grp.name = "Circuit D drop X4150 (safelight) elbow"
+  grp.name = "Circuit D drop X4170 (safelight) elbow"
   ge = grp.entities
-  arc = ge.add_arc([4150.mm,114.12.mm,2369.12.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 5.880000000000001.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4150.mm,114.12.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
+  arc = ge.add_arc([4170.mm,94.12.mm,2369.12.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 5.880000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4170.mm,94.12.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
@@ -1870,12 +1870,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit D drop X4150 (safelight)
+  # Circuit D drop X4170 (safelight)
   grp = ents.add_group
-  grp.name = "Circuit D drop X4150 (safelight)"
+  grp.name = "Circuit D drop X4170 (safelight)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -6.119999999999891.mm)
-  circle = ge.add_circle([4150.mm,120.mm,2369.12.mm], vec, 8.mm, 16)
+  circle = ge.add_circle([4170.mm,100.mm,2369.12.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

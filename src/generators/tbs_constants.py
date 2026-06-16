@@ -309,8 +309,10 @@ PWR_PANEL_CUTOUT_H = 180   # wall cutout height (mm)
 
 # ── Pinhole wall face (Y = 0, shadow-free) ────────────────────────────────────
 EP_X       = 1910    # electrical panel left edge X (mm) — stacked above the battery bank
-                     # (X1810–2310), centered over it; clears the upper transport-stay anchor
-                     # (X1594–1794) and the pinhole (X2399). [rev10: moved right off the stay anchor]
+                     # (X1810–2310), centered over it; clears the pinhole (X2399). The upper
+                     # transport-stay anchor was relocated (hooks → swinging-panel perimeter
+                     # stile, structural fix); `wall_anchors()` now clamps the anchor's right
+                     # edge to ≤ EP_X−15 (X≤1895) so it still clears the EP. [rev10/stay-relocate]
 EP_W       = 300     # electrical panel width (mm)
 EP_H_LO    = 1500    # electrical panel bottom Z (mm) [rev11: DROPPED 150 (1650→1500); originally to
                      # clear the film-plane brace top beam — that brace cage has since been retired

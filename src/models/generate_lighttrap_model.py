@@ -80,7 +80,11 @@ WALL_FAR = 2000                                    # context far extent — reac
 STAY_Z = (350, 2050)                               # bottom + top transport-stay heights
 # (bottom raised 200→350 so its anchor plate, Z250–450, clears the walkway deck (Z130)
 #  + the wall-cantilever brackets (vertical leg to Z150 std / Z200 widened) it sits over)
-LOCK_BOLT = (20, 350)                              # stay hook on the swinging frame (good lever arm)
+LOCK_BOLT = (20, CUT + 25)                         # stay hook on the swinging frame's LEFT
+# perimeter 50×50 RHS STILE (Yd≈205, centred on the stile at the swing cut) — STEEL load
+# path, not the 4mm-PP skin. Relocated from the mid-corner (Yd350, which the rev11 plastic
+# skin left unbacked above the Z1125 ply band); the stile is also the farthest point from
+# the pivot (FAR0=2287) → best lever arm for the transport-stay couple.
 
 
 def _rot_pt(x, y, deg):
@@ -486,7 +490,11 @@ PLATE_HW, PLATE_T, BOLT_OFF, BOLT_D = 100, 12, 70, 16
 
 
 def wall_anchors():
-    hx = SOCKET[0]                                   # 1694
+    # Anchor plate sits inboard of the hook's transport X, but CLAMPED so its right edge
+    # clears the electrical panel (EP) on the same pinhole wall — the relocated top stay
+    # (hooks on the perimeter stile) would otherwise overlap the EP left edge by a few mm.
+    # The small resulting rod angle (~1°) the turnbuckle stay absorbs.
+    hx = min(SOCKET[0], ov.EP_X - PLATE_HW - 15)     # ≤1795 → plate right edge ≤1895 < EP 1910
     wt = WALL_T
     p = []
     for z in STAY_Z:

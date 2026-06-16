@@ -327,7 +327,9 @@ near-deck section lift out** before the swing; all are re-seated to datum afterw
 | State | Method |
 |-------|--------|
 | Operational (0°) | 4 × interior cam latches (§4) compress the EPDM perimeter + cut seals against the door frame |
-| Transport (swung 56°) | Top + bottom **wall stays** — hook on the frame ↔ eye on the near wall, tensioned by turnbuckle, forming a couple. Engaged after the swing, released before swing-back. |
+| Transport (swung 56°) | Top + bottom **wall stays** — hook welded to the **swinging panel's left perimeter 50×50×3 RHS stile** (the steel frame member at the swing cut, Yd≈205) ↔ eye on the near wall, tensioned by turnbuckle, forming a couple. Engaged after the swing, released before swing-back. |
+
+> **Stay hooks land on steel, not the skin.** The transport-stay couple carries real tension, so both hooks weld to the **left perimeter RHS stile** of the swinging frame — *not* the 4mm PP plastic skin (rev11). They were relocated from the mid-corner (Yd≈350), which the plastic-skin swap left unbacked above the Z1125 ply band; the perimeter stile is the farthest point from the pivot (best lever arm) and a continuous welded steel load path into the frame.
 
 ### 5.3 Floor Gap
 

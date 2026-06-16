@@ -121,33 +121,60 @@ def dc_geometry_local():
     return '\n'.join(parts)
 
 
-def dc_block():
-    """Ruby for the Film Plane DYNAMIC COMPONENT. Proven pattern: geometry lives
-    DIRECTLY in the clicked component, a custom `pose` driver + same-component
-    RotX/RotZ formulas, a SINGLE valid onclick, and redraw_with_undo AFTER commit."""
+def assembly_block():
+    """Ruby for the Film-Plane ASSEMBLY dynamic component. The WHOLE assembly is the
+    clickable target: an outer 'Film Plane Assembly' DC carries the `pose` driver +
+    the single onclick, and CONTAINS both the moving plane (inner 'Film Plane', which
+    reads the parent's pose via formula) AND the fixed rails / leadscrews / saddles.
+    So a click ANYWHERE on the assembly — screen, frame, carriage, or even a fixed
+    rail/leadscrew that happens to be frontmost — bubbles up to the parent onclick and
+    tilts+swings the plane. The guides stay put (no rotation formula of their own); the
+    inner plane rotates about its own origin at the plane centre, so the rigid tilt/swing
+    is unchanged. Proven pattern: pose driver + ancestor-reference RotX/RotZ formulas on
+    the child, a SINGLE valid onclick on the parent, and redraw_with_undo AFTER commit."""
     pvx, pvy, pvz = (ov.mm(v) for v in (CX, CY, CZ))
     return f'''
-# ═══ Film Plane — DYNAMIC COMPONENT (click to tilt+swing) ═══
+# ═══ Film Plane Assembly — outer DYNAMIC COMPONENT (click ANYWHERE to tilt+swing) ═══
+asm_defn = model.definitions.add("Film Plane Assembly")
+asm_ents = asm_defn.entities
+
+# inner MOVING plane: muslin screen + 2" frame + travelling corner hardware
 fp_defn = model.definitions.add("Film Plane")
 ents = fp_defn.entities
 {dc_geometry_local()}
-fp_inst = entities.add_instance(fp_defn, Geom::Transformation.translation([{pvx}, {pvy}, {pvz}]))
+fp_inst = asm_ents.add_instance(fp_defn, Geom::Transformation.translation([{pvx}, {pvy}, {pvz}]))
 fp_inst.name = "Film Plane"
 fp_inst.layer = model.layers["Film Plane"]
+
+# fixed guides INSIDE the assembly (clickable, but NO rotation formula -> they don't move)
+ents = asm_defn.entities
+{static_rails()}
+{saddles()}
+asm_ents.to_a.each {{ |e| next if e == fp_inst; e.layer = model.layers["Corner Mechanism"] rescue nil }}
+
+asm_inst = entities.add_instance(asm_defn, Geom::Transformation.new)
+asm_inst.name = "Film Plane Assembly"
+asm_inst.layer = model.layers["Film Plane"]
+
 fda = "dynamic_attributes"
+[asm_defn, asm_inst].each do |e|
+  e.set_attribute(fda, "_name", "FilmPlaneAssembly")
+  e.set_attribute(fda, "_lengthunits", "MILLIMETERS")
+  e.set_attribute(fda, "pose", 0.0)
+end
+asm_inst.set_attribute(fda, "_pose_access", "VIEW")
+asm_inst.set_attribute(fda, "_pose_label", "Pose (0 flat / 1 tilt+swing)")
+asm_inst.set_attribute(fda, "onclick", 'ANIMATE("pose", 0, 1)')
+asm_inst.set_attribute(fda, "_onclick_access", "NONE")
+
 [fp_defn, fp_inst].each do |e|
   e.set_attribute(fda, "_name", "FilmPlane")
   e.set_attribute(fda, "_lengthunits", "MILLIMETERS")
-  e.set_attribute(fda, "pose", 0.0)
   e.set_attribute(fda, "rotx", 0.0)
   e.set_attribute(fda, "rotz", 0.0)
 end
-fp_inst.set_attribute(fda, "_pose_access", "VIEW")
-fp_inst.set_attribute(fda, "_pose_label", "Pose (0 flat / 1 tilt+swing)")
-fp_inst.set_attribute(fda, "_rotx_formula", "{TILT_DEG}*pose")
-fp_inst.set_attribute(fda, "_rotz_formula", "{SWING_DEG}*pose")
-fp_inst.set_attribute(fda, "onclick", 'ANIMATE("pose", 0, 1)')
-fp_inst.set_attribute(fda, "_onclick_access", "NONE")
+fp_inst.set_attribute(fda, "_rotx_formula", "{TILT_DEG}*FilmPlaneAssembly!pose")
+fp_inst.set_attribute(fda, "_rotz_formula", "{SWING_DEG}*FilmPlaneAssembly!pose")
 '''
 
 
@@ -271,8 +298,9 @@ def generate_ruby():
         ov.component("Container (ghost)", "Context", context()),
         ov.component("Near-wall equipment (ghost)", "Context", near_wall_ghost()),
         ov.component("Processing Tray", "Processing Tray", ov.processing_tray()),
-        ov.component("Corner Mechanism", "Corner Mechanism",
-                     static_rails() + "\n" + saddles()),
+        # NB: the fixed rails/leadscrews/saddles ("Corner Mechanism" tag) now live INSIDE
+        # the Film Plane Assembly DC (see assembly_block) so they're part of the click
+        # target — they are no longer a separate top-level component here.
         ov.component("Walkways", "Walkways",
                      ov.walkways(include_right=True, include_right_hangers=False)),
         ov.component("IBC Cantilever Arms", "IBC Cantilever",
@@ -313,8 +341,8 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 
 {body}
 
-# ── Film Plane (Dynamic Component — click to tilt+swing) ──
-{dc_block()}
+# ── Film Plane Assembly (Dynamic Component — click anywhere to tilt+swing) ──
+{assembly_block()}
 
 # ── Corner-detail callouts (Labels tag — shown only in the corner-detail scene) ──
 {labels}
@@ -357,7 +385,7 @@ model.commit_operation
 # Register the DC AFTER committing (redraw_with_undo opens its own operation).
 if defined?($dc_observers) && $dc_observers.respond_to?(:get_latest_class)
   cls = $dc_observers.get_latest_class
-  cls.redraw_with_undo(fp_inst) rescue nil if cls
+  cls.redraw_with_undo(asm_inst) rescue nil if cls
 end
 
 {{ success: true, model: "film-plane", scenes: model.pages.count,

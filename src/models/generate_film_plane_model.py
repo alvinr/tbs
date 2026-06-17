@@ -3,15 +3,17 @@
 
 OPTION A design (chosen 2026-06-06): the film is a FIXED-SIZE rigid rectangle that
 only changes ANGLE. The framed muslin screen is a clickable DYNAMIC COMPONENT —
-click with the Interact tool to animate it between FLAT (pose 0) and an example
-TILT+SWING (pose 1, tilt 20 / swing 15). Because Option A's plane motion is a
-genuine RIGID rotation, the DC reproduces it exactly (unlike the old stretching
-4-corner scheme). The per-corner carriages + rod-ends travel WITH the plane; the
-HGR20 rails + leadscrews stay fixed.
+click with the Interact tool to animate it between FLAT (pose 0) and a SWUNG pose
+(pose 1): a simple SWING about the plane's vertical centre axis that carries the
+LEFT edge forward (toward the pinhole wall) and the RIGHT edge back. The DC is kept
+deliberately simple — a single top-level RotZ swing (no tilt). A pure swing never
+changes Z, so the bottom edge stays at rail height and the plane can't drop through
+the floor; the corners travel along the rails in depth. The per-corner carriages +
+rod-ends travel WITH the plane; the HGR20 rails + leadscrews stay fixed.
 
-The NON-rigid part of Option A — the X-Z cross-slides that absorb the arc travel —
-cannot be animated by a single rigid DC, so it is shown statically (with labels)
-in the non-interactive "Corner detail (TR)" scene.
+The FULL chain — tilt AND swing plus the X-Z cross-slides that absorb the arc travel
+— is shown statically (with labels) in the non-interactive "Corner detail (TR)" scene,
+since a single rigid DC can't animate the cross-slides.
 
 REUSES the helpers from the Overview generator (generate_sketchup_model as ov):
 ruby_box / ruby_cylinder / ruby_pipe / component / processing_tray / colors / mm.
@@ -121,67 +123,38 @@ def dc_geometry_local():
     return '\n'.join(parts)
 
 
-def assembly_block():
-    """Ruby for the Film-Plane ASSEMBLY dynamic component. The WHOLE assembly is the
-    clickable target: an outer 'Film Plane Assembly' DC carries the `pose` driver +
-    the single onclick, and CONTAINS both the moving plane (inner 'Film Plane', which
-    reads the parent's pose via formula) AND the fixed rails / leadscrews / saddles.
-    So a click ANYWHERE on the assembly — screen, frame, carriage, or even a fixed
-    rail/leadscrew that happens to be frontmost — bubbles up to the parent onclick and
-    tilts+swings the plane. The guides stay put (no rotation formula of their own); the
-    inner plane rotates about its own origin at the plane centre, so the rigid tilt/swing
-    is unchanged. Proven pattern: pose driver + ancestor-reference RotX/RotZ formulas on
-    the child, a SINGLE valid onclick on the parent, and redraw_with_undo AFTER commit."""
+def dc_block():
+    """Ruby for the Film Plane DYNAMIC COMPONENT — a SIMPLE SWING (no tilt). Click to swing
+    the rigid plane about its vertical centre axis: the LEFT edge moves forward (toward the
+    pinhole wall, -Y) and the RIGHT edge moves back (+Y). A TOP-LEVEL component placed at the
+    plane centre, so RotZ pivots about the centre. A pure swing never changes Z, so the bottom
+    edge stays at rail height and the plane can't drop through the floor; the corners travel
+    along the rails in depth. (Kept top-level on purpose: a nested rotating DC child resets its
+    position to the parent origin on redraw — that snapped the plane to (0,0,0) and through the
+    floor.) Proven pattern: pose driver + same-component RotZ formula + a single onclick +
+    redraw_with_undo AFTER commit. The full tilt+swing chain still lives in the static
+    'Corner detail (TR)' scene."""
     pvx, pvy, pvz = (ov.mm(v) for v in (CX, CY, CZ))
     return f'''
-# ═══ Film Plane Assembly — outer DYNAMIC COMPONENT (click ANYWHERE to tilt+swing) ═══
-asm_defn = model.definitions.add("Film Plane Assembly")
-asm_ents = asm_defn.entities
-
-# inner MOVING plane: muslin screen + 2" frame + travelling corner hardware
+# ═══ Film Plane — DYNAMIC COMPONENT (click to swing: left forward / right back) ═══
 fp_defn = model.definitions.add("Film Plane")
 ents = fp_defn.entities
 {dc_geometry_local()}
-fp_inst = asm_ents.add_instance(fp_defn, Geom::Transformation.translation([{pvx}, {pvy}, {pvz}]))
+fp_inst = entities.add_instance(fp_defn, Geom::Transformation.translation([{pvx}, {pvy}, {pvz}]))
 fp_inst.name = "Film Plane"
 fp_inst.layer = model.layers["Film Plane"]
-
-# fixed guides INSIDE the assembly (clickable, but NO rotation formula -> they don't move)
-ents = asm_defn.entities
-{static_rails()}
-{saddles()}
-asm_ents.to_a.each {{ |e| next if e == fp_inst; e.layer = model.layers["Corner Mechanism"] rescue nil }}
-
-asm_inst = entities.add_instance(asm_defn, Geom::Transformation.new)
-asm_inst.name = "Film Plane Assembly"
-asm_inst.layer = model.layers["Film Plane"]
-
 fda = "dynamic_attributes"
-[asm_defn, asm_inst].each do |e|
-  e.set_attribute(fda, "_name", "FilmPlaneAssembly")
-  e.set_attribute(fda, "_lengthunits", "MILLIMETERS")
-  e.set_attribute(fda, "pose", 0.0)
-end
-asm_inst.set_attribute(fda, "_pose_access", "VIEW")
-asm_inst.set_attribute(fda, "_pose_label", "Pose (0 flat / 1 tilt+swing)")
-asm_inst.set_attribute(fda, "onclick", 'ANIMATE("pose", 0, 1)')
-asm_inst.set_attribute(fda, "_onclick_access", "NONE")
-
 [fp_defn, fp_inst].each do |e|
   e.set_attribute(fda, "_name", "FilmPlane")
   e.set_attribute(fda, "_lengthunits", "MILLIMETERS")
-  e.set_attribute(fda, "rotx", 0.0)
+  e.set_attribute(fda, "pose", 0.0)
   e.set_attribute(fda, "rotz", 0.0)
 end
-# Anchor the nested child's POSITION at the plane centre. A DC reconstructs each child's
-# transform from its x/y/z + rot attributes on every redraw; without explicit x/y/z a nested
-# child snaps back to the parent origin when the parent's pose animates -> the plane would
-# jump to (0,0,0): through the floor and off the rails. With them, only the rotation moves.
-fp_inst.set_attribute(fda, "x", {ov.mm(CX)})
-fp_inst.set_attribute(fda, "y", {ov.mm(CY)})
-fp_inst.set_attribute(fda, "z", {ov.mm(CZ)})
-fp_inst.set_attribute(fda, "_rotx_formula", "{TILT_DEG}*FilmPlaneAssembly!pose")
-fp_inst.set_attribute(fda, "_rotz_formula", "{SWING_DEG}*FilmPlaneAssembly!pose")
+fp_inst.set_attribute(fda, "_pose_access", "VIEW")
+fp_inst.set_attribute(fda, "_pose_label", "Pose (0 flat / 1 swung)")
+fp_inst.set_attribute(fda, "_rotz_formula", "{SWING_DEG}*pose")
+fp_inst.set_attribute(fda, "onclick", 'ANIMATE("pose", 0, 1)')
+fp_inst.set_attribute(fda, "_onclick_access", "NONE")
 '''
 
 
@@ -305,9 +278,8 @@ def generate_ruby():
         ov.component("Container (ghost)", "Context", context()),
         ov.component("Near-wall equipment (ghost)", "Context", near_wall_ghost()),
         ov.component("Processing Tray", "Processing Tray", ov.processing_tray()),
-        # NB: the fixed rails/leadscrews/saddles ("Corner Mechanism" tag) now live INSIDE
-        # the Film Plane Assembly DC (see assembly_block) so they're part of the click
-        # target — they are no longer a separate top-level component here.
+        ov.component("Corner Mechanism", "Corner Mechanism",
+                     static_rails() + "\n" + saddles()),
         ov.component("Walkways", "Walkways",
                      ov.walkways(include_right=True, include_right_hangers=False)),
         ov.component("IBC Cantilever Arms", "IBC Cantilever",
@@ -348,8 +320,8 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 
 {body}
 
-# ── Film Plane Assembly (Dynamic Component — click anywhere to tilt+swing) ──
-{assembly_block()}
+# ── Film Plane (Dynamic Component — click to swing: left forward / right back) ──
+{dc_block()}
 
 # ── Corner-detail callouts (Labels tag — shown only in the corner-detail scene) ──
 {labels}
@@ -392,7 +364,7 @@ model.commit_operation
 # Register the DC AFTER committing (redraw_with_undo opens its own operation).
 if defined?($dc_observers) && $dc_observers.respond_to?(:get_latest_class)
   cls = $dc_observers.get_latest_class
-  cls.redraw_with_undo(asm_inst) rescue nil if cls
+  cls.redraw_with_undo(fp_inst) rescue nil if cls
 end
 
 {{ success: true, model: "film-plane", scenes: model.pages.count,

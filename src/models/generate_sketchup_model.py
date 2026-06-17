@@ -1402,9 +1402,11 @@ def electrical():
                                color="#C42B1C", axis="y"))
 
     # Low-current control loop: contactor → external E-stop (2× 18 AWG through a gland).
-    # Route the riser AROUND the chem shelf (X1180-1780): cross right past the shelf's
-    # right edge at contactor height, rise clear of the shelf, then over to the panel.
-    estop_riser_x = SHELF_X_R + 40                   # 1820 — clears shelf (1780) and EP (1910)
+    # Route the riser LEFT of the chem shelf (X1180-1780): going right is boxed in by the
+    # transport-stay wall anchors (X≈1695-1895, plates at Z400-600 & 1950-2150) and the EP
+    # (X1910). Left of the shelf the corridor is clear top-to-bottom — cross left past the
+    # shelf's left edge at contactor height, rise, then over to the panel above the shelf.
+    estop_riser_x = SHELF_X_L - 60                   # 1120 — clear of shelf, stay anchor & EP
     parts.append(ruby_pipe_run("E-stop control wire (2x 18 AWG)",
                                [(BA_X + 80, 60, BA_H_HI + 100),
                                 (estop_riser_x, 60, BA_H_HI + 100),

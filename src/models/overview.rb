@@ -8255,7 +8255,7 @@ end
   grp = ents.add_group
   grp.name = "E-stop control wire (2x 18 AWG)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(190.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(-490.mm, 0.mm, 0.mm)
   circle = ge.add_circle([1620.mm,60.mm,464.mm], vec, 5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -8269,8 +8269,8 @@ end
   grp = ents.add_group
   grp.name = "E-stop control wire (2x 18 AWG) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1810.mm,60.mm,474.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 10.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1810.mm,60.mm,464.mm], [1.000000,0.000000,0.000000], 5.mm, 16)
+  arc = ge.add_arc([1130.mm,60.mm,474.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 10.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1130.mm,60.mm,464.mm], [-1.000000,0.000000,0.000000], 5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["E-stop control wire (2x 18 AWG)"] || model.materials.add("E-stop control wire (2x 18 AWG)")
@@ -8283,7 +8283,7 @@ end
   grp.name = "E-stop control wire (2x 18 AWG)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, 1466.mm)
-  circle = ge.add_circle([1820.mm,60.mm,474.mm], vec, 5.mm, 16)
+  circle = ge.add_circle([1120.mm,60.mm,474.mm], vec, 5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -8296,8 +8296,8 @@ end
   grp = ents.add_group
   grp.name = "E-stop control wire (2x 18 AWG) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1810.mm,60.mm,1940.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 10.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1820.mm,60.mm,1940.mm], [0.000000,0.000000,1.000000], 5.mm, 16)
+  arc = ge.add_arc([1130.mm,60.mm,1940.mm], [-1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 10.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1120.mm,60.mm,1940.mm], [0.000000,0.000000,1.000000], 5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["E-stop control wire (2x 18 AWG)"] || model.materials.add("E-stop control wire (2x 18 AWG)")
@@ -8309,8 +8309,8 @@ end
   grp = ents.add_group
   grp.name = "E-stop control wire (2x 18 AWG)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-380.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1810.mm,60.mm,1950.mm], vec, 5.mm, 16)
+  vec = Geom::Vector3d.new(280.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1130.mm,60.mm,1950.mm], vec, 5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -8323,8 +8323,8 @@ end
   grp = ents.add_group
   grp.name = "E-stop control wire (2x 18 AWG) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1430.mm,50.mm,1950.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 10.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1430.mm,60.mm,1950.mm], [-1.000000,0.000000,0.000000], 5.mm, 16)
+  arc = ge.add_arc([1410.mm,50.mm,1950.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,-1.000000], 10.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1410.mm,60.mm,1950.mm], [1.000000,0.000000,0.000000], 5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["E-stop control wire (2x 18 AWG)"] || model.materials.add("E-stop control wire (2x 18 AWG)")

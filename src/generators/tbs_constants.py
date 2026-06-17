@@ -412,6 +412,12 @@ SHELF_T        = 22      # shelf total thickness (mm) — 18mm ply + 4mm frame
 SHELF_STAY_N   = 2       # support stays (wall-above to front corners; carry the load)
 SHELF_STOW_TOP_Z = SHELF_H + SHELF_DEPTH  # 1375 — folded-up (transport) top; the tap top aligns here
 
+# Ceiling pull-cord (light switches D/G) bottom Z — the cords hang in the chem-shelf
+# footprint (X1180–1780), so they end ABOVE the deployed shelf top (SHELF_H + 15 lip)
+# with clearance instead of dropping through it. Shared by the overview 3D model + the
+# 2D pinhole-wall elevation + electrical Sheet 3 so the cord length stays in sync.
+PULL_CORD_BOTTOM_Z = SHELF_H + 105   # 1180 — pull-cord bottom Z (clears the shelf)
+
 # ── Chemistry prep tap (pinhole wall, tees off blue supply line) ─────────────
 TAP_X          = 1130    # tap X (mm) — relocated LEFT of the shelf (battery bank is to the right) [rev13; was 3729]
 TAP_Z          = 1150    # spout outlet height AFF (mm) — ~75mm above the shelf; the riser tops at SHELF_STOW_TOP_Z (1375)

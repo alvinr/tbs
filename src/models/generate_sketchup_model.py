@@ -1402,9 +1402,13 @@ def electrical():
                                color="#C42B1C", axis="y"))
 
     # Low-current control loop: contactor → external E-stop (2× 18 AWG through a gland).
+    # Route the riser AROUND the chem shelf (X1180-1780): cross right past the shelf's
+    # right edge at contactor height, rise clear of the shelf, then over to the panel.
+    estop_riser_x = SHELF_X_R + 40                   # 1820 — clears shelf (1780) and EP (1910)
     parts.append(ruby_pipe_run("E-stop control wire (2x 18 AWG)",
                                [(BA_X + 80, 60, BA_H_HI + 100),
-                                (BA_X + 80, 60, es_cz),
+                                (estop_riser_x, 60, BA_H_HI + 100),
+                                (estop_riser_x, 60, es_cz),
                                 (es_cx, 60, es_cz),
                                 (es_cx, 10, es_cz)],
                                5, color="#6A3DA8"))
@@ -1560,7 +1564,9 @@ def lighting_wiring():
         # beaded-chain pull cord: alternating bead radii read it as a flexible
         # cord (the 3D analogue of the 2D cord hatching) + a pull knob at the end
         cordx, cordy = swx + 20, sw_yd + 20
-        z0, z1 = 900, cz - 40
+        # bottom RAISED to clear the deployed chem shelf below it (X1180-1780, top Z≈1090):
+        # both cords hang inside the shelf footprint, so they now end just above it.
+        z0, z1 = 1180, cz - 40
         nb = max(8, int((z1 - z0) / 20))
         bh = (z1 - z0) / nb
         for k in range(nb):

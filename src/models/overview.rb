@@ -8092,7 +8092,7 @@ end
   grp = ents.add_group
   grp.name = "LT Drum opening brush seal"
   ge = grp.entities
-  circle = ge.add_circle([-735.9104883076718.mm,899.1376331524525.mm,130.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([-735.9104883076719.mm,899.1376331524525.mm,130.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2120.mm)
@@ -8255,7 +8255,7 @@ end
   grp = ents.add_group
   grp.name = "E-stop control wire (2x 18 AWG)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 1476.mm)
+  vec = Geom::Vector3d.new(190.mm, 0.mm, 0.mm)
   circle = ge.add_circle([1620.mm,60.mm,464.mm], vec, 5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -8269,8 +8269,8 @@ end
   grp = ents.add_group
   grp.name = "E-stop control wire (2x 18 AWG) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1610.mm,60.mm,1940.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 10.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1620.mm,60.mm,1940.mm], [0.000000,0.000000,1.000000], 5.mm, 16)
+  arc = ge.add_arc([1810.mm,60.mm,474.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 10.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1810.mm,60.mm,464.mm], [1.000000,0.000000,0.000000], 5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["E-stop control wire (2x 18 AWG)"] || model.materials.add("E-stop control wire (2x 18 AWG)")
@@ -8282,8 +8282,35 @@ end
   grp = ents.add_group
   grp.name = "E-stop control wire (2x 18 AWG)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-180.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1610.mm,60.mm,1950.mm], vec, 5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 1466.mm)
+  circle = ge.add_circle([1820.mm,60.mm,474.mm], vec, 5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["E-stop control wire (2x 18 AWG)"] || model.materials.add("E-stop control wire (2x 18 AWG)")
+  mat.color = Sketchup::Color.new(106, 61, 168)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # E-stop control wire (2x 18 AWG) elbow
+  grp = ents.add_group
+  grp.name = "E-stop control wire (2x 18 AWG) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1810.mm,60.mm,1940.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 10.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1820.mm,60.mm,1940.mm], [0.000000,0.000000,1.000000], 5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["E-stop control wire (2x 18 AWG)"] || model.materials.add("E-stop control wire (2x 18 AWG)")
+  mat.color = Sketchup::Color.new(106, 61, 168)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # E-stop control wire (2x 18 AWG)
+  grp = ents.add_group
+  grp.name = "E-stop control wire (2x 18 AWG)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-380.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1810.mm,60.mm,1950.mm], vec, 5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -8951,10 +8978,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,900.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1180.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -8964,10 +8991,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,920.1111111111111.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1200.1379310344828.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -8977,10 +9004,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,940.2222222222222.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1220.2758620689656.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -8990,10 +9017,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,960.3333333333334.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1240.4137931034484.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9003,10 +9030,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,980.4444444444445.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1260.551724137931.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9016,10 +9043,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1000.5555555555555.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1280.6896551724137.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9029,10 +9056,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1020.6666666666666.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1300.8275862068965.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9042,10 +9069,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1040.7777777777778.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1320.9655172413793.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9055,10 +9082,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1060.888888888889.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1341.103448275862.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9068,10 +9095,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1081.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1361.2413793103449.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9081,10 +9108,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1101.111111111111.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1381.3793103448277.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9094,10 +9121,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1121.2222222222222.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1401.5172413793102.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9107,10 +9134,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1141.3333333333333.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1421.655172413793.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9120,10 +9147,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1161.4444444444443.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1441.7931034482758.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9133,10 +9160,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1181.5555555555557.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1461.9310344827586.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9146,10 +9173,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1201.6666666666667.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1482.0689655172414.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9159,10 +9186,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1221.7777777777778.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1502.2068965517242.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9172,10 +9199,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1241.888888888889.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1522.344827586207.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9185,10 +9212,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1262.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1542.4827586206898.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9198,10 +9225,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1282.111111111111.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1562.6206896551723.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9211,10 +9238,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1302.2222222222222.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1582.7586206896551.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9224,10 +9251,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1322.3333333333333.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1602.896551724138.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9237,10 +9264,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1342.4444444444443.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1623.0344827586207.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9250,10 +9277,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1362.5555555555557.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1643.1724137931035.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9263,10 +9290,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1382.6666666666665.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1663.310344827586.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9276,10 +9303,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1402.7777777777778.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1683.4482758620688.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9289,10 +9316,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1422.888888888889.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1703.5862068965516.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9302,10 +9329,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1443.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1723.7241379310344.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9315,10 +9342,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1463.111111111111.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1743.8620689655172.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9328,10 +9355,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1483.2222222222222.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1764.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9341,10 +9368,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1503.3333333333335.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1784.1379310344828.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9354,10 +9381,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1523.4444444444443.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1804.2758620689656.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9367,10 +9394,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1543.5555555555557.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1824.4137931034484.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9380,10 +9407,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1563.6666666666665.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1844.5517241379312.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9393,10 +9420,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1583.7777777777778.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1864.6896551724137.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9406,10 +9433,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1603.888888888889.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1884.8275862068965.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9419,10 +9446,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1624.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1904.9655172413793.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9432,10 +9459,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1644.111111111111.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1925.103448275862.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9445,10 +9472,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1664.2222222222222.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1945.2413793103447.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9458,10 +9485,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1684.3333333333335.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1965.3793103448274.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9471,10 +9498,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1704.4444444444443.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,1985.5172413793102.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9484,10 +9511,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1724.5555555555557.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,2005.655172413793.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9497,10 +9524,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1744.6666666666665.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,2025.7931034482758.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9510,10 +9537,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1764.7777777777778.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,2045.9310344827586.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9523,10 +9550,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1784.888888888889.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,2066.0689655172414.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9536,10 +9563,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1805.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,2086.206896551724.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9549,10 +9576,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1825.111111111111.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,2106.344827586207.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9562,10 +9589,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1845.2222222222222.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,2126.4827586206898.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9575,10 +9602,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1865.3333333333333.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,2146.620689655172.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9588,10 +9615,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1885.4444444444443.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,2166.758620689655.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9601,10 +9628,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1905.5555555555557.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,2186.8965517241377.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9614,10 +9641,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1925.6666666666667.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,2207.0344827586205.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9627,10 +9654,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1945.7777777777778.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,2227.1724137931033.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9640,10 +9667,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1965.888888888889.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,2247.310344827586.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9653,10 +9680,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,1986.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,2267.448275862069.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9666,10 +9693,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,2006.111111111111.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,2287.5862068965516.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9679,10 +9706,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,2026.2222222222222.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,2307.7241379310344.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9692,192 +9719,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,2046.3333333333333.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1470.mm,65.mm,2327.862068965517.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,2066.4444444444443.mm], [0,0,1], 3.5.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,2086.5555555555557.mm], [0,0,1], 2.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,2106.666666666667.mm], [0,0,1], 3.5.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,2126.777777777778.mm], [0,0,1], 2.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,2146.8888888888887.mm], [0,0,1], 3.5.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,2167.mm], [0,0,1], 2.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,2187.1111111111113.mm], [0,0,1], 3.5.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,2207.222222222222.mm], [0,0,1], 2.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,2227.333333333333.mm], [0,0,1], 3.5.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,2247.4444444444443.mm], [0,0,1], 2.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,2267.5555555555557.mm], [0,0,1], 3.5.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,2287.666666666667.mm], [0,0,1], 2.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,2307.777777777778.mm], [0,0,1], 3.5.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,2327.8888888888887.mm], [0,0,1], 2.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9887,7 +9732,7 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord Knob"
   ge = grp.entities
-  circle = ge.add_circle([1470.mm,65.mm,884.mm], [0,0,1], 6.mm, 10)
+  circle = ge.add_circle([1470.mm,65.mm,1164.mm], [0,0,1], 6.mm, 10)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
@@ -9911,10 +9756,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,900.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1180.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9924,10 +9769,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,920.1111111111111.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1200.1379310344828.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9937,10 +9782,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,940.2222222222222.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1220.2758620689656.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9950,10 +9795,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,960.3333333333334.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1240.4137931034484.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9963,10 +9808,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,980.4444444444445.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1260.551724137931.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9976,10 +9821,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1000.5555555555555.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1280.6896551724137.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -9989,10 +9834,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1020.6666666666666.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1300.8275862068965.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10002,10 +9847,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1040.7777777777778.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1320.9655172413793.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10015,10 +9860,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1060.888888888889.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1341.103448275862.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10028,10 +9873,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1081.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1361.2413793103449.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10041,10 +9886,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1101.111111111111.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1381.3793103448277.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10054,10 +9899,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1121.2222222222222.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1401.5172413793102.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10067,10 +9912,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1141.3333333333333.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1421.655172413793.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10080,10 +9925,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1161.4444444444443.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1441.7931034482758.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10093,10 +9938,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1181.5555555555557.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1461.9310344827586.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10106,10 +9951,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1201.6666666666667.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1482.0689655172414.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10119,10 +9964,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1221.7777777777778.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1502.2068965517242.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10132,10 +9977,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1241.888888888889.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1522.344827586207.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10145,10 +9990,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1262.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1542.4827586206898.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10158,10 +10003,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1282.111111111111.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1562.6206896551723.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10171,10 +10016,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1302.2222222222222.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1582.7586206896551.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10184,10 +10029,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1322.3333333333333.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1602.896551724138.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10197,10 +10042,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1342.4444444444443.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1623.0344827586207.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10210,10 +10055,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1362.5555555555557.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1643.1724137931035.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10223,10 +10068,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1382.6666666666665.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1663.310344827586.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10236,10 +10081,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1402.7777777777778.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1683.4482758620688.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10249,10 +10094,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1422.888888888889.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1703.5862068965516.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10262,10 +10107,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1443.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1723.7241379310344.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10275,10 +10120,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1463.111111111111.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1743.8620689655172.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10288,10 +10133,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1483.2222222222222.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1764.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10301,10 +10146,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1503.3333333333335.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1784.1379310344828.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10314,10 +10159,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1523.4444444444443.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1804.2758620689656.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10327,10 +10172,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1543.5555555555557.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1824.4137931034484.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10340,10 +10185,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1563.6666666666665.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1844.5517241379312.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10353,10 +10198,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1583.7777777777778.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1864.6896551724137.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10366,10 +10211,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1603.888888888889.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1884.8275862068965.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10379,10 +10224,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1624.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1904.9655172413793.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10392,10 +10237,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1644.111111111111.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1925.103448275862.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10405,10 +10250,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1664.2222222222222.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1945.2413793103447.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10418,10 +10263,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1684.3333333333335.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1965.3793103448274.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10431,10 +10276,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1704.4444444444443.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,1985.5172413793102.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10444,10 +10289,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1724.5555555555557.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,2005.655172413793.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10457,10 +10302,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1744.6666666666665.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,2025.7931034482758.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10470,10 +10315,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1764.7777777777778.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,2045.9310344827586.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10483,10 +10328,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1784.888888888889.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,2066.0689655172414.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10496,10 +10341,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1805.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,2086.206896551724.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10509,10 +10354,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1825.111111111111.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,2106.344827586207.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10522,10 +10367,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1845.2222222222222.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,2126.4827586206898.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10535,10 +10380,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1865.3333333333333.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,2146.620689655172.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10548,10 +10393,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1885.4444444444443.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,2166.758620689655.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10561,10 +10406,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1905.5555555555557.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,2186.8965517241377.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10574,10 +10419,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1925.6666666666667.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,2207.0344827586205.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10587,10 +10432,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1945.7777777777778.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,2227.1724137931033.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10600,10 +10445,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1965.888888888889.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,2247.310344827586.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10613,10 +10458,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,1986.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,2267.448275862069.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10626,10 +10471,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,2006.111111111111.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,2287.5862068965516.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10639,10 +10484,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,2026.2222222222222.mm], [0,0,1], 3.5.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,2307.7241379310344.mm], [0,0,1], 3.5.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10652,192 +10497,10 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,2046.3333333333333.mm], [0,0,1], 2.mm, 8)
+  circle = ge.add_circle([1550.mm,65.mm,2327.862068965517.mm], [0,0,1], 2.mm, 8)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,2066.4444444444443.mm], [0,0,1], 3.5.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,2086.5555555555557.mm], [0,0,1], 2.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,2106.666666666667.mm], [0,0,1], 3.5.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,2126.777777777778.mm], [0,0,1], 2.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,2146.8888888888887.mm], [0,0,1], 3.5.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,2167.mm], [0,0,1], 2.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,2187.1111111111113.mm], [0,0,1], 3.5.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,2207.222222222222.mm], [0,0,1], 2.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,2227.333333333333.mm], [0,0,1], 3.5.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,2247.4444444444443.mm], [0,0,1], 2.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,2267.5555555555557.mm], [0,0,1], 3.5.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,2287.666666666667.mm], [0,0,1], 2.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,2307.777777777778.mm], [0,0,1], 3.5.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pull Cord
-  grp = ents.add_group
-  grp.name = "Pull Cord"
-  ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,2327.8888888888887.mm], [0,0,1], 2.mm, 8)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.11111111111111.mm)
+  cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
   mat.color = Sketchup::Color.new(58, 58, 58)
   mat.alpha = 1.0
@@ -10847,7 +10510,7 @@ end
   grp = ents.add_group
   grp.name = "Pull Cord Knob"
   ge = grp.entities
-  circle = ge.add_circle([1550.mm,65.mm,884.mm], [0,0,1], 6.mm, 10)
+  circle = ge.add_circle([1550.mm,65.mm,1164.mm], [0,0,1], 6.mm, 10)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)

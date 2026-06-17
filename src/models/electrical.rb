@@ -372,14 +372,91 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Fuse Block (Blue Sea 5026)
+  # Fuse Block base (Blue Sea 5026)
   grp = ents.add_group
-  grp.name = "Fuse Block (Blue Sea 5026)"
+  grp.name = "Fuse Block base (Blue Sea 5026)"
   face = grp.entities.add_face([1925.mm,25.mm,1770.mm], [2075.mm,25.mm,1770.mm], [2075.mm,70.mm,1770.mm], [1925.mm,70.mm,1770.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(75.mm)
-  mat = model.materials["Fuse Block (Blue Sea 5026)"] || model.materials.add("Fuse Block (Blue Sea 5026)")
+  face.pushpull(28.mm)
+  mat = model.materials["Fuse Block base (Blue Sea 5026)"] || model.materials.add("Fuse Block base (Blue Sea 5026)")
   mat.color = Sketchup::Color.new(43, 43, 48)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fuse A (5A — exhaust fan)
+  grp = ents.add_group
+  grp.name = "Fuse A (5A — exhaust fan)"
+  face = grp.entities.add_face([1929.2142857142858.mm,43.mm,1798.mm], [1942.2142857142858.mm,43.mm,1798.mm], [1942.2142857142858.mm,52.mm,1798.mm], [1929.2142857142858.mm,52.mm,1798.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(42.mm)
+  mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
+  mat.color = Sketchup::Color.new(192, 57, 43)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fuse B (5A — intake fan)
+  grp = ents.add_group
+  grp.name = "Fuse B (5A — intake fan)"
+  face = grp.entities.add_face([1950.642857142857.mm,43.mm,1798.mm], [1963.642857142857.mm,43.mm,1798.mm], [1963.642857142857.mm,52.mm,1798.mm], [1950.642857142857.mm,52.mm,1798.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(42.mm)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fuse C (15A — water pumps)
+  grp = ents.add_group
+  grp.name = "Fuse C (15A — water pumps)"
+  face = grp.entities.add_face([1972.0714285714287.mm,43.mm,1798.mm], [1985.0714285714287.mm,43.mm,1798.mm], [1985.0714285714287.mm,52.mm,1798.mm], [1972.0714285714287.mm,52.mm,1798.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(42.mm)
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
+  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fuse D (5A — safelight)
+  grp = ents.add_group
+  grp.name = "Fuse D (5A — safelight)"
+  face = grp.entities.add_face([1993.5.mm,43.mm,1798.mm], [2006.5.mm,43.mm,1798.mm], [2006.5.mm,52.mm,1798.mm], [1993.5.mm,52.mm,1798.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(42.mm)
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fuse E (40A — cooler / inverter)
+  grp = ents.add_group
+  grp.name = "Fuse E (40A — cooler / inverter)"
+  face = grp.entities.add_face([2014.9285714285713.mm,43.mm,1798.mm], [2027.9285714285713.mm,43.mm,1798.mm], [2027.9285714285713.mm,52.mm,1798.mm], [2014.9285714285713.mm,52.mm,1798.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(42.mm)
+  mat = model.materials["Fuse E (40A — cooler / inverter)"] || model.materials.add("Fuse E (40A — cooler / inverter)")
+  mat.color = Sketchup::Color.new(22, 160, 133)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fuse F (20A — actuators (spare))
+  grp = ents.add_group
+  grp.name = "Fuse F (20A — actuators (spare))"
+  face = grp.entities.add_face([2036.357142857143.mm,43.mm,1798.mm], [2049.357142857143.mm,43.mm,1798.mm], [2049.357142857143.mm,52.mm,1798.mm], [2036.357142857143.mm,52.mm,1798.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(42.mm)
+  mat = model.materials["Fuse F (20A — actuators (spare))"] || model.materials.add("Fuse F (20A — actuators (spare))")
+  mat.color = Sketchup::Color.new(127, 140, 141)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fuse G (10A — white LED)
+  grp = ents.add_group
+  grp.name = "Fuse G (10A — white LED)"
+  face = grp.entities.add_face([2057.785714285714.mm,43.mm,1798.mm], [2070.785714285714.mm,43.mm,1798.mm], [2070.785714285714.mm,52.mm,1798.mm], [2057.785714285714.mm,52.mm,1798.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(42.mm)
+  mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
+  mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -389,7 +466,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([1925.mm,30.mm,1705.mm], [2045.mm,30.mm,1705.mm], [2045.mm,50.mm,1705.mm], [1925.mm,50.mm,1705.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["Busbar (+)"] || model.materials.add("Busbar (+)")
+  mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
   mat.color = Sketchup::Color.new(192, 57, 43)
   mat.alpha = 1.0
   grp.material = mat
@@ -922,12 +999,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit A (exhaust fan)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 559.mm)
-  circle = ge.add_circle([2005.mm,175.mm,1800.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 111.5.mm, 0.mm)
+  circle = ge.add_circle([1935.7142857142858.mm,47.5.mm,1840.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Busbar (+)"] || model.materials.add("Busbar (+)")
+  mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
   mat.color = Sketchup::Color.new(192, 57, 43)
   mat.alpha = 1.0
   grp.material = mat
@@ -936,11 +1013,38 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit A (exhaust fan) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2005.mm,159.mm,2359.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2005.mm,175.mm,2359.mm], [0.000000,0.000000,1.000000], 8.mm, 16)
+  arc = ge.add_arc([1935.7142857142858.mm,159.mm,1856.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 16.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1935.7142857142858.mm,159.mm,1840.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Busbar (+)"] || model.materials.add("Busbar (+)")
+  mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
+  mat.color = Sketchup::Color.new(192, 57, 43)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit A (exhaust fan)
+  grp = ents.add_group
+  grp.name = "Circuit A (exhaust fan)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 503.mm)
+  circle = ge.add_circle([1935.7142857142858.mm,175.mm,1856.mm], vec, 8.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
+  mat.color = Sketchup::Color.new(192, 57, 43)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit A (exhaust fan) elbow
+  grp = ents.add_group
+  grp.name = "Circuit A (exhaust fan) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1935.7142857142858.mm,159.mm,2359.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 16.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1935.7142857142858.mm,175.mm,2359.mm], [0.000000,0.000000,1.000000], 8.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
   mat.color = Sketchup::Color.new(192, 57, 43)
   mat.alpha = 1.0
   grp.material = mat
@@ -950,11 +1054,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Circuit A (exhaust fan)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -123.mm, 0.mm)
-  circle = ge.add_circle([2005.mm,159.mm,2375.mm], vec, 8.mm, 16)
+  circle = ge.add_circle([1935.7142857142858.mm,159.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Busbar (+)"] || model.materials.add("Busbar (+)")
+  mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
   mat.color = Sketchup::Color.new(192, 57, 43)
   mat.alpha = 1.0
   grp.material = mat
@@ -963,11 +1067,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit A (exhaust fan) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2021.mm,36.mm,2375.mm], [-1.000000,0.000000,0.000000], [-0.000000,0.000000,1.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2005.mm,36.mm,2375.mm], [0.000000,-1.000000,0.000000], 8.mm, 16)
+  arc = ge.add_arc([1951.7142857142858.mm,36.mm,2375.mm], [-1.000000,0.000000,0.000000], [-0.000000,0.000000,1.000000], 16.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1935.7142857142858.mm,36.mm,2375.mm], [0.000000,-1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Busbar (+)"] || model.materials.add("Busbar (+)")
+  mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
   mat.color = Sketchup::Color.new(192, 57, 43)
   mat.alpha = 1.0
   grp.material = mat
@@ -976,12 +1080,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit A (exhaust fan)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(3581.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2021.mm,20.mm,2375.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(3650.285714285714.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1951.7142857142858.mm,20.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Busbar (+)"] || model.materials.add("Busbar (+)")
+  mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
   mat.color = Sketchup::Color.new(192, 57, 43)
   mat.alpha = 1.0
   grp.material = mat
@@ -994,7 +1098,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([5602.mm,20.mm,2375.mm], [1.000000,0.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Busbar (+)"] || model.materials.add("Busbar (+)")
+  mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
   mat.color = Sketchup::Color.new(192, 57, 43)
   mat.alpha = 1.0
   grp.material = mat
@@ -1008,7 +1112,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Busbar (+)"] || model.materials.add("Busbar (+)")
+  mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
   mat.color = Sketchup::Color.new(192, 57, 43)
   mat.alpha = 1.0
   grp.material = mat
@@ -1021,7 +1125,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([5618.mm,1165.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Busbar (+)"] || model.materials.add("Busbar (+)")
+  mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
   mat.color = Sketchup::Color.new(192, 57, 43)
   mat.alpha = 1.0
   grp.material = mat
@@ -1035,7 +1139,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Busbar (+)"] || model.materials.add("Busbar (+)")
+  mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
   mat.color = Sketchup::Color.new(192, 57, 43)
   mat.alpha = 1.0
   grp.material = mat
@@ -1044,12 +1148,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit B (intake fan)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 559.mm)
-  circle = ge.add_circle([2005.mm,175.mm,1800.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 111.5.mm, 0.mm)
+  circle = ge.add_circle([1957.142857142857.mm,47.5.mm,1840.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit B (intake fan)"] || model.materials.add("Circuit B (intake fan)")
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
   mat.color = Sketchup::Color.new(230, 126, 34)
   mat.alpha = 1.0
   grp.material = mat
@@ -1058,11 +1162,38 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit B (intake fan) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2005.mm,159.mm,2359.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2005.mm,175.mm,2359.mm], [0.000000,0.000000,1.000000], 8.mm, 16)
+  arc = ge.add_arc([1957.142857142857.mm,159.mm,1856.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 16.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1957.142857142857.mm,159.mm,1840.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit B (intake fan)"] || model.materials.add("Circuit B (intake fan)")
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit B (intake fan)
+  grp = ents.add_group
+  grp.name = "Circuit B (intake fan)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 503.mm)
+  circle = ge.add_circle([1957.142857142857.mm,175.mm,1856.mm], vec, 8.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit B (intake fan) elbow
+  grp = ents.add_group
+  grp.name = "Circuit B (intake fan) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1957.142857142857.mm,159.mm,2359.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 16.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1957.142857142857.mm,175.mm,2359.mm], [0.000000,0.000000,1.000000], 8.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
   mat.color = Sketchup::Color.new(230, 126, 34)
   mat.alpha = 1.0
   grp.material = mat
@@ -1072,11 +1203,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Circuit B (intake fan)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -123.mm, 0.mm)
-  circle = ge.add_circle([2005.mm,159.mm,2375.mm], vec, 8.mm, 16)
+  circle = ge.add_circle([1957.142857142857.mm,159.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit B (intake fan)"] || model.materials.add("Circuit B (intake fan)")
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
   mat.color = Sketchup::Color.new(230, 126, 34)
   mat.alpha = 1.0
   grp.material = mat
@@ -1085,11 +1216,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit B (intake fan) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1989.mm,36.mm,2375.mm], [1.000000,0.000000,0.000000], [-0.000000,-0.000000,-1.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2005.mm,36.mm,2375.mm], [0.000000,-1.000000,0.000000], 8.mm, 16)
+  arc = ge.add_arc([1941.142857142857.mm,36.mm,2375.mm], [1.000000,0.000000,0.000000], [-0.000000,-0.000000,-1.000000], 16.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1957.142857142857.mm,36.mm,2375.mm], [0.000000,-1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit B (intake fan)"] || model.materials.add("Circuit B (intake fan)")
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
   mat.color = Sketchup::Color.new(230, 126, 34)
   mat.alpha = 1.0
   grp.material = mat
@@ -1098,12 +1229,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit B (intake fan)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-1688.02.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1989.mm,20.mm,2375.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(-1640.162857142857.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1941.142857142857.mm,20.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit B (intake fan)"] || model.materials.add("Circuit B (intake fan)")
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
   mat.color = Sketchup::Color.new(230, 126, 34)
   mat.alpha = 1.0
   grp.material = mat
@@ -1116,7 +1247,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([300.98.mm,20.mm,2375.mm], [-1.000000,0.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit B (intake fan)"] || model.materials.add("Circuit B (intake fan)")
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
   mat.color = Sketchup::Color.new(230, 126, 34)
   mat.alpha = 1.0
   grp.material = mat
@@ -1130,7 +1261,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit B (intake fan)"] || model.materials.add("Circuit B (intake fan)")
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
   mat.color = Sketchup::Color.new(230, 126, 34)
   mat.alpha = 1.0
   grp.material = mat
@@ -1143,7 +1274,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([300.mm,18.4998.mm,2375.mm], [0.000000,-1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit B (intake fan)"] || model.materials.add("Circuit B (intake fan)")
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
   mat.color = Sketchup::Color.new(230, 126, 34)
   mat.alpha = 1.0
   grp.material = mat
@@ -1157,7 +1288,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit B (intake fan)"] || model.materials.add("Circuit B (intake fan)")
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
   mat.color = Sketchup::Color.new(230, 126, 34)
   mat.alpha = 1.0
   grp.material = mat
@@ -1166,12 +1297,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit E (cooler / inverter)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 559.mm)
-  circle = ge.add_circle([2005.mm,175.mm,1800.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 111.5.mm, 0.mm)
+  circle = ge.add_circle([2021.4285714285713.mm,47.5.mm,1840.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit E (cooler / inverter)"] || model.materials.add("Circuit E (cooler / inverter)")
+  mat = model.materials["Fuse E (40A — cooler / inverter)"] || model.materials.add("Fuse E (40A — cooler / inverter)")
   mat.color = Sketchup::Color.new(22, 160, 133)
   mat.alpha = 1.0
   grp.material = mat
@@ -1180,11 +1311,38 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit E (cooler / inverter) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2005.mm,159.mm,2359.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2005.mm,175.mm,2359.mm], [0.000000,0.000000,1.000000], 8.mm, 16)
+  arc = ge.add_arc([2021.4285714285713.mm,159.mm,1856.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 16.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2021.4285714285713.mm,159.mm,1840.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit E (cooler / inverter)"] || model.materials.add("Circuit E (cooler / inverter)")
+  mat = model.materials["Fuse E (40A — cooler / inverter)"] || model.materials.add("Fuse E (40A — cooler / inverter)")
+  mat.color = Sketchup::Color.new(22, 160, 133)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit E (cooler / inverter)
+  grp = ents.add_group
+  grp.name = "Circuit E (cooler / inverter)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 503.mm)
+  circle = ge.add_circle([2021.4285714285713.mm,175.mm,1856.mm], vec, 8.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse E (40A — cooler / inverter)"] || model.materials.add("Fuse E (40A — cooler / inverter)")
+  mat.color = Sketchup::Color.new(22, 160, 133)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit E (cooler / inverter) elbow
+  grp = ents.add_group
+  grp.name = "Circuit E (cooler / inverter) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([2021.4285714285713.mm,159.mm,2359.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 16.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2021.4285714285713.mm,175.mm,2359.mm], [0.000000,0.000000,1.000000], 8.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Fuse E (40A — cooler / inverter)"] || model.materials.add("Fuse E (40A — cooler / inverter)")
   mat.color = Sketchup::Color.new(22, 160, 133)
   mat.alpha = 1.0
   grp.material = mat
@@ -1194,11 +1352,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Circuit E (cooler / inverter)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -123.mm, 0.mm)
-  circle = ge.add_circle([2005.mm,159.mm,2375.mm], vec, 8.mm, 16)
+  circle = ge.add_circle([2021.4285714285713.mm,159.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit E (cooler / inverter)"] || model.materials.add("Circuit E (cooler / inverter)")
+  mat = model.materials["Fuse E (40A — cooler / inverter)"] || model.materials.add("Fuse E (40A — cooler / inverter)")
   mat.color = Sketchup::Color.new(22, 160, 133)
   mat.alpha = 1.0
   grp.material = mat
@@ -1207,11 +1365,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit E (cooler / inverter) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1989.mm,36.mm,2375.mm], [1.000000,0.000000,0.000000], [-0.000000,-0.000000,-1.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2005.mm,36.mm,2375.mm], [0.000000,-1.000000,0.000000], 8.mm, 16)
+  arc = ge.add_arc([2005.4285714285713.mm,36.mm,2375.mm], [1.000000,0.000000,0.000000], [-0.000000,-0.000000,-1.000000], 16.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2021.4285714285713.mm,36.mm,2375.mm], [0.000000,-1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit E (cooler / inverter)"] || model.materials.add("Circuit E (cooler / inverter)")
+  mat = model.materials["Fuse E (40A — cooler / inverter)"] || model.materials.add("Fuse E (40A — cooler / inverter)")
   mat.color = Sketchup::Color.new(22, 160, 133)
   mat.alpha = 1.0
   grp.material = mat
@@ -1220,12 +1378,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit E (cooler / inverter)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.160000000000082.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1989.mm,20.mm,2375.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(-27.588571428571413.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2005.4285714285713.mm,20.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit E (cooler / inverter)"] || model.materials.add("Circuit E (cooler / inverter)")
+  mat = model.materials["Fuse E (40A — cooler / inverter)"] || model.materials.add("Fuse E (40A — cooler / inverter)")
   mat.color = Sketchup::Color.new(22, 160, 133)
   mat.alpha = 1.0
   grp.material = mat
@@ -1238,7 +1396,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([1977.84.mm,20.mm,2375.mm], [-1.000000,0.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit E (cooler / inverter)"] || model.materials.add("Circuit E (cooler / inverter)")
+  mat = model.materials["Fuse E (40A — cooler / inverter)"] || model.materials.add("Fuse E (40A — cooler / inverter)")
   mat.color = Sketchup::Color.new(22, 160, 133)
   mat.alpha = 1.0
   grp.material = mat
@@ -1252,7 +1410,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit E (cooler / inverter)"] || model.materials.add("Circuit E (cooler / inverter)")
+  mat = model.materials["Fuse E (40A — cooler / inverter)"] || model.materials.add("Fuse E (40A — cooler / inverter)")
   mat.color = Sketchup::Color.new(22, 160, 133)
   mat.alpha = 1.0
   grp.material = mat
@@ -1265,7 +1423,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([1970.mm,32.001599999999996.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit E (cooler / inverter)"] || model.materials.add("Circuit E (cooler / inverter)")
+  mat = model.materials["Fuse E (40A — cooler / inverter)"] || model.materials.add("Fuse E (40A — cooler / inverter)")
   mat.color = Sketchup::Color.new(22, 160, 133)
   mat.alpha = 1.0
   grp.material = mat
@@ -1279,7 +1437,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit E (cooler / inverter)"] || model.materials.add("Circuit E (cooler / inverter)")
+  mat = model.materials["Fuse E (40A — cooler / inverter)"] || model.materials.add("Fuse E (40A — cooler / inverter)")
   mat.color = Sketchup::Color.new(22, 160, 133)
   mat.alpha = 1.0
   grp.material = mat
@@ -1290,7 +1448,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4849.mm,1146.mm,1209.mm], [4899.mm,1146.mm,1209.mm], [4899.mm,1216.mm,1209.mm], [4849.mm,1216.mm,1209.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(1061.mm)
-  mat = model.materials["Fuse Block (Blue Sea 5026)"] || model.materials.add("Fuse Block (Blue Sea 5026)")
+  mat = model.materials["Fuse Block base (Blue Sea 5026)"] || model.materials.add("Fuse Block base (Blue Sea 5026)")
   mat.color = Sketchup::Color.new(43, 43, 48)
   mat.alpha = 1.0
   grp.material = mat
@@ -1299,12 +1457,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit C (water pumps)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 559.mm)
-  circle = ge.add_circle([2005.mm,175.mm,1800.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 111.5.mm, 0.mm)
+  circle = ge.add_circle([1978.5714285714287.mm,47.5.mm,1840.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1313,11 +1471,38 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit C (water pumps) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2005.mm,159.mm,2359.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2005.mm,175.mm,2359.mm], [0.000000,0.000000,1.000000], 8.mm, 16)
+  arc = ge.add_arc([1978.5714285714287.mm,159.mm,1856.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 16.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1978.5714285714287.mm,159.mm,1840.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
+  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit C (water pumps)
+  grp = ents.add_group
+  grp.name = "Circuit C (water pumps)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 503.mm)
+  circle = ge.add_circle([1978.5714285714287.mm,175.mm,1856.mm], vec, 8.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
+  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit C (water pumps) elbow
+  grp = ents.add_group
+  grp.name = "Circuit C (water pumps) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1978.5714285714287.mm,159.mm,2359.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 16.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1978.5714285714287.mm,175.mm,2359.mm], [0.000000,0.000000,1.000000], 8.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1327,11 +1512,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Circuit C (water pumps)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -123.mm, 0.mm)
-  circle = ge.add_circle([2005.mm,159.mm,2375.mm], vec, 8.mm, 16)
+  circle = ge.add_circle([1978.5714285714287.mm,159.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1340,11 +1525,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit C (water pumps) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2021.mm,36.mm,2375.mm], [-1.000000,0.000000,0.000000], [-0.000000,0.000000,1.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2005.mm,36.mm,2375.mm], [0.000000,-1.000000,0.000000], 8.mm, 16)
+  arc = ge.add_arc([1994.5714285714287.mm,36.mm,2375.mm], [-1.000000,0.000000,0.000000], [-0.000000,0.000000,1.000000], 16.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1978.5714285714287.mm,36.mm,2375.mm], [0.000000,-1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1353,12 +1538,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit C (water pumps)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(2837.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2021.mm,20.mm,2375.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(2863.4285714285716.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1994.5714285714287.mm,20.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1371,7 +1556,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([4858.mm,20.mm,2375.mm], [1.000000,0.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1385,7 +1570,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1398,7 +1583,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([4874.mm,1165.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1412,7 +1597,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1437,7 +1622,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1450,7 +1635,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([4766.mm,1181.mm,1289.mm], [-1.000000,0.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1464,7 +1649,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1489,7 +1674,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1502,7 +1687,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([4766.mm,1181.mm,1547.mm], [-1.000000,0.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1516,7 +1701,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1541,7 +1726,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1554,7 +1739,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([4766.mm,1181.mm,1289.mm], [-1.000000,0.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1568,7 +1753,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1593,7 +1778,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1606,7 +1791,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([4766.mm,1181.mm,1547.mm], [-1.000000,0.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1620,7 +1805,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1645,7 +1830,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1658,7 +1843,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([4766.mm,1181.mm,1915.mm], [-1.000000,0.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1672,7 +1857,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit C (water pumps)"] || model.materials.add("Circuit C (water pumps)")
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
   mat.alpha = 1.0
   grp.material = mat
@@ -1681,12 +1866,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit G feed (white LED)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 559.mm)
-  circle = ge.add_circle([2005.mm,175.mm,1800.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 111.5.mm, 0.mm)
+  circle = ge.add_circle([2064.285714285714.mm,47.5.mm,1840.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
+  mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
   grp.material = mat
@@ -1695,11 +1880,38 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit G feed (white LED) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2005.mm,159.mm,2359.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2005.mm,175.mm,2359.mm], [0.000000,0.000000,1.000000], 8.mm, 16)
+  arc = ge.add_arc([2064.285714285714.mm,159.mm,1856.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 16.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2064.285714285714.mm,159.mm,1840.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
+  mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
+  mat.color = Sketchup::Color.new(241, 196, 15)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit G feed (white LED)
+  grp = ents.add_group
+  grp.name = "Circuit G feed (white LED)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 503.mm)
+  circle = ge.add_circle([2064.285714285714.mm,175.mm,1856.mm], vec, 8.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
+  mat.color = Sketchup::Color.new(241, 196, 15)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit G feed (white LED) elbow
+  grp = ents.add_group
+  grp.name = "Circuit G feed (white LED) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([2064.285714285714.mm,159.mm,2359.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 16.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2064.285714285714.mm,175.mm,2359.mm], [0.000000,0.000000,1.000000], 8.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
   grp.material = mat
@@ -1709,11 +1921,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Circuit G feed (white LED)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -139.mm, 0.mm)
-  circle = ge.add_circle([2005.mm,159.mm,2375.mm], vec, 8.mm, 16)
+  circle = ge.add_circle([2064.285714285714.mm,159.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
+  mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
   grp.material = mat
@@ -1727,7 +1939,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
+  mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
   grp.material = mat
@@ -1741,7 +1953,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
+  mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
   grp.material = mat
@@ -1754,7 +1966,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([1300.mm,1017.77.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
+  mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
   grp.material = mat
@@ -1768,7 +1980,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
+  mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
   grp.material = mat
@@ -1782,7 +1994,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
+  mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
   grp.material = mat
@@ -1795,7 +2007,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([3200.mm,1017.77.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
+  mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
   grp.material = mat
@@ -1809,7 +2021,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
+  mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
   grp.material = mat
@@ -1823,7 +2035,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
+  mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
   grp.material = mat
@@ -1836,7 +2048,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([4574.mm,867.77.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
+  mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
   grp.material = mat
@@ -1850,7 +2062,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit G feed (white LED)"] || model.materials.add("Circuit G feed (white LED)")
+  mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
   grp.material = mat
@@ -1859,12 +2071,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit D feed (safelight)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 559.mm)
-  circle = ge.add_circle([2005.mm,175.mm,1800.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 111.5.mm, 0.mm)
+  circle = ge.add_circle([2000.mm,47.5.mm,1840.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
   mat.color = Sketchup::Color.new(142, 68, 173)
   mat.alpha = 1.0
   grp.material = mat
@@ -1873,11 +2085,38 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Circuit D feed (safelight) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2005.mm,159.mm,2359.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 16.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2005.mm,175.mm,2359.mm], [0.000000,0.000000,1.000000], 8.mm, 16)
+  arc = ge.add_arc([2000.mm,159.mm,1856.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 16.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2000.mm,159.mm,1840.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit D feed (safelight)
+  grp = ents.add_group
+  grp.name = "Circuit D feed (safelight)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 503.mm)
+  circle = ge.add_circle([2000.mm,175.mm,1856.mm], vec, 8.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Circuit D feed (safelight) elbow
+  grp = ents.add_group
+  grp.name = "Circuit D feed (safelight) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([2000.mm,159.mm,2359.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 16.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2000.mm,175.mm,2359.mm], [0.000000,0.000000,1.000000], 8.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
   mat.color = Sketchup::Color.new(142, 68, 173)
   mat.alpha = 1.0
   grp.material = mat
@@ -1887,11 +2126,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Circuit D feed (safelight)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -139.mm, 0.mm)
-  circle = ge.add_circle([2005.mm,159.mm,2375.mm], vec, 8.mm, 16)
+  circle = ge.add_circle([2000.mm,159.mm,2375.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
   mat.color = Sketchup::Color.new(142, 68, 173)
   mat.alpha = 1.0
   grp.material = mat
@@ -1905,7 +2144,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
   mat.color = Sketchup::Color.new(142, 68, 173)
   mat.alpha = 1.0
   grp.material = mat
@@ -1919,7 +2158,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
   mat.color = Sketchup::Color.new(142, 68, 173)
   mat.alpha = 1.0
   grp.material = mat
@@ -1932,7 +2171,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([520.mm,94.12.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
   mat.color = Sketchup::Color.new(142, 68, 173)
   mat.alpha = 1.0
   grp.material = mat
@@ -1946,7 +2185,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
   mat.color = Sketchup::Color.new(142, 68, 173)
   mat.alpha = 1.0
   grp.material = mat
@@ -1960,7 +2199,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
   mat.color = Sketchup::Color.new(142, 68, 173)
   mat.alpha = 1.0
   grp.material = mat
@@ -1973,7 +2212,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([2270.mm,94.12.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
   mat.color = Sketchup::Color.new(142, 68, 173)
   mat.alpha = 1.0
   grp.material = mat
@@ -1987,7 +2226,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
   mat.color = Sketchup::Color.new(142, 68, 173)
   mat.alpha = 1.0
   grp.material = mat
@@ -2001,7 +2240,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
   mat.color = Sketchup::Color.new(142, 68, 173)
   mat.alpha = 1.0
   grp.material = mat
@@ -2014,7 +2253,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([4170.mm,94.12.mm,2375.mm], [0.000000,1.000000,0.000000], 8.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
   mat.color = Sketchup::Color.new(142, 68, 173)
   mat.alpha = 1.0
   grp.material = mat
@@ -2028,7 +2267,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Circuit D feed (safelight)"] || model.materials.add("Circuit D feed (safelight)")
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
   mat.color = Sketchup::Color.new(142, 68, 173)
   mat.alpha = 1.0
   grp.material = mat
@@ -2046,9 +2285,9 @@ txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(2000.mm, 40.mm, 2040.mm)
 txt = entities.add_text("MPPT 100/50", anc, Geom::Vector3d.new(-380.mm, -700.mm, 280.mm))
 txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(2000.mm, 40.mm, 1800.mm)
-txt = entities.add_text("FUSE BLOCK
-(Cct A-G)", anc, Geom::Vector3d.new(420.mm, -700.mm, 240.mm))
+anc = Geom::Point3d.new(2000.mm, 40.mm, 1840.mm)
+txt = entities.add_text("FUSE STACK A-G
+5/5/15/5/40/20/10 A", anc, Geom::Vector3d.new(420.mm, -700.mm, 240.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(2000.mm, 40.mm, 1710.mm)
 txt = entities.add_text("+/- BUSBARS", anc, Geom::Vector3d.new(420.mm, -640.mm, -120.mm))

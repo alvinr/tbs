@@ -95,7 +95,31 @@ LOADS = {
 }
 
 # Fuse-block reference point (runs originate here) — front face of the block in the EP.
-FB = (EP_X + 95, ENCL_SHELL_D + 10, EP_H_LO + 300)
+# ── Blade-fuse stack (Blue Sea 5026): a standing row of 7 ATO blade fuses on the block
+# base, one per circuit A-G (left→right = the one-line schematic order), each coloured to
+# its circuit and rated per the schematic. Every circuit cable leaves the TOP of its OWN
+# blade, exits to the enclosure front, then rises — so each fuse→load run is traceable and
+# the model conforms to the electrical schematic. ──────────────────────────────────────
+FUSE_ORDER = ["A", "B", "C", "D", "E", "F", "G"]
+CCT_FUSE = {"A": "5A", "B": "5A", "C": "15A", "D": "5A", "E": "40A", "F": "20A", "G": "10A"}
+_FBLK_X0 = EP_X + 15                        # fuse-block left edge (X)
+_FBLK_YD = 25                              # block front Yd inside the enclosure
+_FBLK_Z0 = EP_H_LO + 270                   # block base bottom Z
+_FBASE_H = 28                              # block base height (Z)
+_FUSE_W, _FUSE_T, _FUSE_H = 13, 9, 42      # blade fuse: width(X), thickness(Yd), height(Z)
+_FUSE_PITCH = FUSEBLK_W / len(FUSE_ORDER)  # blade pitch along the block width
+_FUSE_YD = _FBLK_YD + (FUSEBLK_D - _FUSE_T) / 2
+
+
+def _fuse_cx(i):
+    return _FBLK_X0 + (i + 0.5) * _FUSE_PITCH
+
+
+FUSE_TOP_Z = _FBLK_Z0 + _FBASE_H + _FUSE_H            # cable exits each blade's top terminal
+ENCL_FRONT_YD = ENCL_SHELL_D + 10                    # risers run up the enclosure front (clears MPPT)
+# per-circuit fuse terminal (cable origin) = top-centre of that circuit's blade
+FUSE_POS = {c: (_fuse_cx(i), _FUSE_YD + _FUSE_T / 2, FUSE_TOP_Z)
+            for i, c in enumerate(FUSE_ORDER)}
 TRUNK_YD = 20                  # conductors hug the pinhole-wall ceiling line
 TRUNK_Z = ov.C_HGT - 13
 
@@ -105,7 +129,7 @@ ELEC_POINT_LABELS = [
     (SOLAR_ARRAY_X + 700, SOLAR_ARRAY_YD - 600, 700,
      "SOLAR ARRAY\n3x 200W (30deg tilt)", -200, -700, 700),
     (EP_X + 90, 40, EP_H_HI - 60, "MPPT 100/50",                 -380, -700, 280),
-    (EP_X + 90, 40, EP_H_LO + 300, "FUSE BLOCK\n(Cct A-G)",       420, -700, 240),
+    (EP_X + 90, 40, FUSE_TOP_Z, "FUSE STACK A-G\n5/5/15/5/40/20/10 A", 420, -700, 240),
     (EP_X + 90, 40, EP_H_LO + 210, "+/- BUSBARS",                 420, -640, -120),
     (EP_X + 240, ENCL_SHELL_D, EP_H_LO + 120, "MAIN DISCONNECT", 360, -760, -260),
     (BA_X + 80, 40, BA_H_HI + 50, "BATTERY CONTACTOR\n+ MRBF main fuse", -300, -760, 900),
@@ -142,10 +166,11 @@ def _dedup(pts):
 # Every segment changes exactly ONE axis — no diagonals.
 def _run(cct, load):
     lx, lyd, lz = load
-    fx, fy, fz = FB
+    fx, fy, fz = FUSE_POS[cct]
     pts = _dedup([
-        (fx, fy, fz),               # fuse block (inside enclosure)
-        (fx, fy, TRUNK_Z),          # rise to ceiling (Z) — exits the enclosure top
+        (fx, fy, fz),               # this circuit's fuse top terminal (inside enclosure)
+        (fx, ENCL_FRONT_YD, fz),    # out to the enclosure front face (Yd) — clears the MPPT
+        (fx, ENCL_FRONT_YD, TRUNK_Z),  # rise up the enclosure front to the ceiling (Z)
         (fx, TRUNK_YD, TRUNK_Z),    # pull to the pinhole-wall trunking line (Yd)
         (lx, TRUNK_YD, TRUNK_Z),    # run ALONG the ceiling to the load's X (X)
         (lx, lyd, TRUNK_Z),         # cross out toward the load (Yd)
@@ -158,11 +183,12 @@ def _multi_run(cct, ends):
     """Circuit feeding MULTIPLE ceiling fixtures (LED / safelight): a fuse-block feed
     onto the ceiling line, a ceiling spine spanning all fixture Xs, and a perpendicular
     cross+drop at EACH fixture (its own Yd) — all orthogonal, so every light connects."""
-    col, fx, fy, fz = CCT[cct][0], *FB
+    col, fx, fy, fz = CCT[cct][0], *FUSE_POS[cct]
     xs = [e[0] for e in ends]
     p = [
         ov.ruby_pipe_run(f"Circuit {cct} feed ({CCT[cct][1]})",
-                         _dedup([(fx, fy, fz), (fx, fy, TRUNK_Z), (fx, TRUNK_YD, TRUNK_Z)]),
+                         _dedup([(fx, fy, fz), (fx, ENCL_FRONT_YD, fz),
+                                 (fx, ENCL_FRONT_YD, TRUNK_Z), (fx, TRUNK_YD, TRUNK_Z)]),
                          8, color=col),
         ov.ruby_pipe_run(f"Circuit {cct} ceiling spine ({CCT[cct][1]})",
                          [(min(xs), TRUNK_YD, TRUNK_Z), (max(xs), TRUNK_YD, TRUNK_Z)],
@@ -225,8 +251,14 @@ def power_core():
                          color=ov.C_STEEL, alpha=0.12))
     p.append(ov.ruby_box("MPPT Controller (100/50)", EP_X + 15, 25,
                          EP_H_HI - MPPT_H - 30, MPPT_W, MPPT_D, MPPT_H, color="#3A5BA0"))
-    p.append(ov.ruby_box("Fuse Block (Blue Sea 5026)", EP_X + 15, 25, ez + 270,
-                         FUSEBLK_W, FUSEBLK_D, FUSEBLK_H, color="#2B2B30"))
+    # Blue Sea 5026: the block base + a standing row of 7 blade fuses (one per circuit A-G,
+    # coloured to its circuit). Each blade's top is the cable origin for that circuit.
+    p.append(ov.ruby_box("Fuse Block base (Blue Sea 5026)", _FBLK_X0, _FBLK_YD, _FBLK_Z0,
+                         FUSEBLK_W, FUSEBLK_D, _FBASE_H, color="#2B2B30"))
+    for i, c in enumerate(FUSE_ORDER):
+        p.append(ov.ruby_box(f"Fuse {c} ({CCT_FUSE[c]} — {CCT[c][1]})",
+                             _fuse_cx(i) - _FUSE_W / 2, _FUSE_YD, _FBLK_Z0 + _FBASE_H,
+                             _FUSE_W, _FUSE_T, _FUSE_H, color=CCT[c][0]))
     p.append(ov.ruby_box("Busbar (+)", EP_X + 15, 30, ez + 205,
                          BUSBAR_L, BUSBAR_W, BUSBAR_H, color="#C0392B"))
     p.append(ov.ruby_box("Busbar (-)", EP_X + 15, 30, ez + 175,
@@ -368,7 +400,7 @@ def circuit_runs():
     # Trunking spans only the circuit range (door-end first tap → Fan A), so there is
     # no dead-end grey stub past the last drop.
     cxs = [LOADS[c][0] for c in ("A", "B", "C", "E")] + \
-          [e[0] for e in LED_ENDS + SAFE_ENDS] + [FB[0]]
+          [e[0] for e in LED_ENDS + SAFE_ENDS] + [_FBLK_X0, _FBLK_X0 + FUSEBLK_W]
     tx0, tx1 = min(cxs) - 40, max(cxs) + 40
     p = [ov.ruby_box("Cable Trunking (40x25 PVC)", tx0, 0, ov.C_HGT - 25, tx1 - tx0, 40,
                      25, color=ov.C_TRUNK)]

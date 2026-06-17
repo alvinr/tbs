@@ -82,7 +82,7 @@ from tbs_constants import (
     SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG,
     SOLAR_GAP, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SOLAR_ARRAY_Z,
     SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH,
-    SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z,
+    SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, PULL_CORD_BOTTOM_Z,
     EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D,
     INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D,
     EXT_FILL_H, EXT_FILL_YD, EXT_DRAIN_H, EXT_DRAIN_3_H, EXT_DRAIN_YD,
@@ -1566,9 +1566,9 @@ def lighting_wiring():
         # beaded-chain pull cord: alternating bead radii read it as a flexible
         # cord (the 3D analogue of the 2D cord hatching) + a pull knob at the end
         cordx, cordy = swx + 20, sw_yd + 20
-        # bottom RAISED to clear the deployed chem shelf below it (X1180-1780, top Z≈1090):
-        # both cords hang inside the shelf footprint, so they now end just above it.
-        z0, z1 = 1180, cz - 40
+        # bottom clears the deployed chem shelf below it (X1180-1780, top Z≈1090): both
+        # cords hang inside the shelf footprint, so they end just above it (shared constant).
+        z0, z1 = PULL_CORD_BOTTOM_Z, cz - 40
         nb = max(8, int((z1 - z0) / 20))
         bh = (z1 - z0) / nb
         for k in range(nb):

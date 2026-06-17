@@ -29,7 +29,7 @@ from tbs_constants import (
     PUMP_PIPE_OD, PUMP_PIPE_WALL,
     TAP_X, TAP_Z,
     SHELF_X_L, SHELF_X_R, SHELF_H, SHELF_T, SHELF_STOW_TOP_Z,
-    SHELF_YD_NEAR, SHELF_DEPTH,
+    SHELF_YD_NEAR, SHELF_DEPTH, PULL_CORD_BOTTOM_Z,
     WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_W,
     WALKWAY_BRACKET_H, WALKWAY_BRACKET_T,
     WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R,
@@ -66,7 +66,7 @@ WK_X_R = PROC_TRAY_X_R               # 4629mm — near walkway right edge
 PS_X_D = 1450               # switch D — left of EP (EP now starts at X=1910)
 PS_X_G = 1530               # switch G
 PS_Z = C_HGT - 30           # 2358mm — ceiling-mounted switch body Z
-CORD_HANG_Z = 900           # pull cord bottom Z
+CORD_HANG_Z = PULL_CORD_BOTTOM_Z   # 1180 — cord bottom; clears the deployed chem shelf below
 
 # Cable trunking
 TK_H = 25                   # trunking height (mm)

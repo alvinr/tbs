@@ -985,7 +985,7 @@ def draw_sheet3():
         PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H,
         PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_RIM,
         WALKWAY_W, WALKWAY_H, WALKWAY_LEFT_X,
-        DIAGRAMS_DIR,  C_LT_DRUM,
+        DIAGRAMS_DIR,  C_LT_DRUM, PULL_CORD_BOTTOM_Z,
     )
 
     # ── mm-first coordinate system ───────────────────────────────────────────
@@ -1178,7 +1178,7 @@ def draw_sheet3():
     # ── Pull-cord switches ────────────────────────────────────────────────────
     PS_X_MM = EP_X - 110   # X position — ceiling-mounted, left of EP (cleared)
     PS_Z_MM = C_HGT - 60   # just below trunking
-    CORD_HANG_Z = 900  # cord bottom hangs to ~900mm above floor (~1500mm above walkway deck at 100mm)
+    CORD_HANG_Z = PULL_CORD_BOTTOM_Z  # 1180mm AFF — cord bottom clears the deployed chem shelf
 
     C_SWITCH = "#E0E0FF"
     for si, (sw_label, sw_color, sw_x_off) in enumerate([
@@ -1221,7 +1221,7 @@ def draw_sheet3():
     # Pull switch label
     leader(ax, wx(PS_X_MM + sw_x_off), (CORD_HANG_Z),
            wx(PS_X_MM) + 200, (CORD_HANG_Z) + 240,
-           "Pull-cord switches\nD = safelight (red)\nG = white light\nCords hang to ~1500mm\nabove walkway deck",
+           "Pull-cord switches\nD = safelight (red)\nG = white light\nCords end ~1180mm AFF\n(above the deployed shelf)",
            fs=6.5, color="#606080")
 
     # ── LED panels (ceiling-mounted, shown as rectangles at top) ──────────────

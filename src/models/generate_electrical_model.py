@@ -266,6 +266,16 @@ def power_core():
     p.append(ov.ruby_cylinder("Main Disconnect (m-Series)", EP_X + 240, ENCL_SHELL_D,
                               ez + 120, DISCONNECT_D / 2, DISCONNECT_H,
                               color="#D43A2F", axis="y"))
+    # Main disconnect → busbar(+) load link: the battery + feed lands on the disconnect
+    # LINE terminal (battery()); it exits the LOAD terminal here to the (+) busbar, so the
+    # whole bank — and every circuit fed off it — is isolated when the knob is OFF.
+    disc_x = EP_X + 240
+    p.append(ov.ruby_pipe_run("Main feed (disconnect → busbar +)",
+                              _dedup([(disc_x, 130, ez + 120 + 35),     # disconnect LOAD terminal (top)
+                                      (disc_x, 45, ez + 120 + 35),      # out toward the busbar plane
+                                      (disc_x, 45, ez + 205),           # rise to busbar(+) level
+                                      (EP_X + 15 + BUSBAR_L, 45, ez + 205)]),  # over to busbar(+) end
+                              11, color="#8B1A1A"))
     return '\n'.join(p)
 
 
@@ -281,13 +291,17 @@ def battery():
                          CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, color="#C42B1C"))
     p.append(ov.ruby_box("MRBF Main Fuse (on + post)", BA_X + CONTACTOR_W + 35, 20,
                          BA_H_HI, MRBF_D, MRBF_D, MRBF_H, color="#222222"))
-    # Main battery cables (2/0 AWG) up to the enclosure busbars — orthogonal
-    # (rise then over). + leaves via the MRBF fuse; − direct off the pack.
+    # Main battery cables (2/0 AWG) up to the enclosure — orthogonal (rise then over).
+    # + leaves via the MRBF fuse and lands on the MAIN DISCONNECT *line* terminal (the
+    # disconnect → busbar(+) load link is drawn in power_core(), so the bank is isolated
+    # when the knob is OFF); − goes direct to the busbar(−).
     bus_x = EP_X + 20
-    p.append(ov.ruby_pipe_run("Battery + cable (2/0 AWG, via MRBF)",
+    disc_x, disc_z = EP_X + 240, EP_H_LO + 120          # main disconnect centre (matches power_core)
+    p.append(ov.ruby_pipe_run("Battery + cable (2/0 AWG, MRBF → main disconnect)",
                               _dedup([(BA_X + CONTACTOR_W + 55, 45, BA_H_HI + MRBF_H),
-                                      (BA_X + CONTACTOR_W + 55, 45, EP_H_LO + 216),
-                                      (bus_x + 20, 45, EP_H_LO + 216)]),
+                                      (BA_X + CONTACTOR_W + 55, 45, disc_z - 35),
+                                      (disc_x, 45, disc_z - 35),
+                                      (disc_x, 130, disc_z - 35)]),
                               11, color="#8B1A1A"))
     p.append(ov.ruby_pipe_run("Battery − cable (2/0 AWG)",
                               _dedup([(BA_X + 60, 60, BA_H_HI),

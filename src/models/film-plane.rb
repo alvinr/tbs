@@ -3207,6 +3207,13 @@ asm_inst.set_attribute(fda, "_onclick_access", "NONE")
   e.set_attribute(fda, "rotx", 0.0)
   e.set_attribute(fda, "rotz", 0.0)
 end
+# Anchor the nested child's POSITION at the plane centre. A DC reconstructs each child's
+# transform from its x/y/z + rot attributes on every redraw; without explicit x/y/z a nested
+# child snaps back to the parent origin when the parent's pose animates -> the plane would
+# jump to (0,0,0): through the floor and off the rails. With them, only the rotation moves.
+fp_inst.set_attribute(fda, "x", 2399.5.mm)
+fp_inst.set_attribute(fda, "y", 1181.mm)
+fp_inst.set_attribute(fda, "z", 1219.mm)
 fp_inst.set_attribute(fda, "_rotx_formula", "20.0*FilmPlaneAssembly!pose")
 fp_inst.set_attribute(fda, "_rotz_formula", "15.0*FilmPlaneAssembly!pose")
 

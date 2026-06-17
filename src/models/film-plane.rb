@@ -3198,17 +3198,52 @@ fp_inst.set_attribute(fda, "onclick", 'ANIMATE("pose", 0, 1)')
 fp_inst.set_attribute(fda, "_onclick_access", "NONE")
 
 
-# ── Corner-detail callouts (Labels tag — shown only in the corner-detail scene) ──
-t=entities.add_text("HGR20 rail - FIXED (depth guide)", Geom::Point3d.new(4649.mm,1160.0520922298629.mm,2288.mm), Geom::Vector3d.new(10,0,11.0)); t.layer=model.layers["Labels"] rescue nil
-t=entities.add_text("Leadscrew - DEPTH / focus drive", Geom::Point3d.new(4683.mm,710.0520922298629.mm,2288.mm), Geom::Vector3d.new(4.0,0,19.0)); t.layer=model.layers["Labels"] rescue nil
-t=entities.add_text("Carriage + drive nut", Geom::Point3d.new(4629.mm,1410.0520922298629.mm,2276.mm), Geom::Vector3d.new(-10.0,0,-15.0)); t.layer=model.layers["Labels"] rescue nil
-t=entities.add_text("X cross-slide = SWING float (blue)", Geom::Point3d.new(4657.989722347415.mm,1410.0520922298629.mm,2302.mm), Geom::Vector3d.new(-12.0,0,4.0)); t.layer=model.layers["Labels"] rescue nil
-t=entities.add_text("Z cross-slide = TILT float (green)", Geom::Point3d.new(4666.979444694831.mm,1410.0520922298629.mm,2255.765705810068.mm), Geom::Vector3d.new(17.0,0,-12.0)); t.layer=model.layers["Labels"] rescue nil
-t=entities.add_text("Rod-end -> rigid frame corner", Geom::Point3d.new(4666.979444694831.mm,1410.0520922298629.mm,2223.531411620136.mm), Geom::Vector3d.new(17.0,0,5.0)); t.layer=model.layers["Labels"] rescue nil
-t=entities.add_text("ghost = corner if it stayed on rail", Geom::Point3d.new(4649.mm,1410.0520922298629.mm,2288.mm), Geom::Vector3d.new(-17.0,0,13.0)); t.layer=model.layers["Labels"] rescue nil
+# ── Corner-detail callouts (Corner Detail tag — shown in the corner-detail scene) ──
+t=entities.add_text("HGR20 rail - FIXED (depth guide)", Geom::Point3d.new(4649.mm,1160.0520922298629.mm,2288.mm), Geom::Vector3d.new(10,0,11.0)); t.layer=model.layers["Corner Detail"] rescue nil
+t=entities.add_text("Leadscrew - DEPTH / focus drive", Geom::Point3d.new(4683.mm,710.0520922298629.mm,2288.mm), Geom::Vector3d.new(4.0,0,19.0)); t.layer=model.layers["Corner Detail"] rescue nil
+t=entities.add_text("Carriage + drive nut", Geom::Point3d.new(4629.mm,1410.0520922298629.mm,2276.mm), Geom::Vector3d.new(-10.0,0,-15.0)); t.layer=model.layers["Corner Detail"] rescue nil
+t=entities.add_text("X cross-slide = SWING float (blue)", Geom::Point3d.new(4657.989722347415.mm,1410.0520922298629.mm,2302.mm), Geom::Vector3d.new(-12.0,0,4.0)); t.layer=model.layers["Corner Detail"] rescue nil
+t=entities.add_text("Z cross-slide = TILT float (green)", Geom::Point3d.new(4666.979444694831.mm,1410.0520922298629.mm,2255.765705810068.mm), Geom::Vector3d.new(17.0,0,-12.0)); t.layer=model.layers["Corner Detail"] rescue nil
+t=entities.add_text("Rod-end -> rigid frame corner", Geom::Point3d.new(4666.979444694831.mm,1410.0520922298629.mm,2223.531411620136.mm), Geom::Vector3d.new(17.0,0,5.0)); t.layer=model.layers["Corner Detail"] rescue nil
+t=entities.add_text("ghost = corner if it stayed on rail", Geom::Point3d.new(4649.mm,1410.0520922298629.mm,2288.mm), Geom::Vector3d.new(-17.0,0,13.0)); t.layer=model.layers["Corner Detail"] rescue nil
 
-# ── IBC cantilever-arm callout (IBC Cantilever tag — shown in the Combined view) ──
-t=entities.add_text("RIGHT-WALKWAY CANTILEVER ARMS\n(off the IBC corridor uprights -\nshare the BR combined corner plate)", Geom::Point3d.new(4531.5.mm,1046.mm,115.mm), Geom::Vector3d.new(-18, -16, 22)); t.layer=model.layers["IBC Cantilever"] rescue nil
+# ── Component callouts (Labels tag — shown only in the "Labeled" scene) ──
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Film Plane" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("FILM PLANE
+(rigid screen — click to swing:
+left fwd / right back)", anc, Geom::Vector3d.new(0.mm, -1200.mm, 800.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Corner Mechanism" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("HGR20 RAILS + LEADSCREWS
+(4 fixed corner depth-guides)", anc, Geom::Vector3d.new(1600.mm, -300.mm, 550.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Processing Tray" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("PROCESSING TRAY", anc, Geom::Vector3d.new(-800.mm, 650.mm, 450.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Walkways" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("WALKWAYS", anc, Geom::Vector3d.new(-1600.mm, -450.mm, 700.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+anc = Geom::Point3d.new(4531.5.mm, 1046.mm, 115.mm)
+txt = entities.add_text("RIGHT-WALKWAY CANTILEVER ARMS
+(off the IBC corridor uprights —
+share the BR combined corner plate)", anc, Geom::Vector3d.new(-700.mm, -350.mm, 650.mm))
+txt.layer = model.layers["Labels"] rescue nil
 
 # ── In-model © + license credit (default layer → shown in every scene) ──
 lbb = model.bounds
@@ -3229,7 +3264,7 @@ eye = ctr.offset(dir, bb.diagonal * 1.4)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
-[["Combined", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "IBC Cantilever"], nil, 0], ["No Container", ["Film Plane", "Corner Mechanism", "Processing Tray"], nil, 0], ["Corner detail (TR)", ["Corner Detail", "Labels"], [4666.979444694831.mm, 1410.0520922298629.mm, 2223.531411620136.mm], 95]].each { |name, tags, tgt, so|
+[["Combined", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "IBC Cantilever"], nil, 0], ["Labeled", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "IBC Cantilever", "Labels"], nil, 0], ["No Container", ["Film Plane", "Corner Mechanism", "Processing Tray"], nil, 0], ["Corner detail (TR)", ["Corner Detail"], [4666.979444694831.mm, 1410.0520922298629.mm, 2223.531411620136.mm], 95]].each { |name, tags, tgt, so|
   model.layers.each { |l| l.visible = (l == dl || tags.include?(l.name)) }
   if tgt
     t = Geom::Point3d.new(tgt[0], tgt[1], tgt[2])

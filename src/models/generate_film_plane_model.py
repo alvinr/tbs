@@ -234,21 +234,44 @@ def corner_detail():
     return '\n'.join(p), (px, py, pz), (fx, fz)
 
 
-def cantilever_label_ruby():
-    """A callout for the IBC-attached right-walkway cantilever arms, placed on the
-    'IBC Cantilever' tag so it shows wherever the arms show (the Combined view).
-    The arms (ov.ibc_cantilever_arms) come off the IBC corridor uprights and share
-    the combined corner plate with the film plane's bottom-right (BR) rail."""
-    ax_ = (ov.RWK_X_L + ov.RWK_X_UP) / 2     # mid-arm X
-    ay_ = ov.RWK_UP_YDS[0]                    # near arm Yd
-    az_ = ov.RWK_ARM_TOP                      # arm top Z
-    anc = f'Geom::Point3d.new({ov.mm(ax_)},{ov.mm(ay_)},{ov.mm(az_)})'
-    txt = ("RIGHT-WALKWAY CANTILEVER ARMS\\n"
-           "(off the IBC corridor uprights -\\n"
-           "share the BR combined corner plate)")
-    return (f't=entities.add_text("{txt}", {anc}, '
-            f'Geom::Vector3d.new(-18, -16, 22)); '
-            f't.layer=model.layers["IBC Cantilever"] rescue nil')
+# ── "Labeled" scene callouts (project rule: every .skp gets a Labeled scene) ──
+# (top-level component instance name, text, leader Δx, Δy, Δz mm). The camera looks from
+# +X/−Y/+Z, so Δy<0 / Δz>0 pulls a callout OUT toward the viewer; Δx spreads them apart.
+FILM_PLANE_LABELS = [
+    ("Film Plane",       "FILM PLANE\n(rigid screen — click to swing:\nleft fwd / right back)", 0,  -1200,  800),
+    ("Corner Mechanism", "HGR20 RAILS + LEADSCREWS\n(4 fixed corner depth-guides)",            1600,  -300,  550),
+    ("Processing Tray",  "PROCESSING TRAY",                                                     -800,   650,  450),
+    ("Walkways",         "WALKWAYS",                                                            -1600,  -450,  700),
+]
+# Point-anchored (x,y,z,text,Δx,Δy,Δz) — for a part whose bounds-centre lands off the
+# member (the cantilever arms come off the IBC corridor uprights).
+FILM_PLANE_POINT_LABELS = [
+    ((ov.RWK_X_L + ov.RWK_X_UP) / 2, ov.RWK_UP_YDS[0], ov.RWK_ARM_TOP,
+     "RIGHT-WALKWAY CANTILEVER ARMS\n(off the IBC corridor uprights —\nshare the BR combined corner plate)",
+     -700, -350, 650),
+]
+
+
+def film_plane_labels():
+    """Ruby adding an in-model text callout (with leader) for each major component on the
+    'Labels' tag — instance-anchored at bounds top-centre, plus a point-anchored one for
+    the IBC cantilever arms. Shown only in the 'Labeled' scene (mirrors lighttrap_labels)."""
+    rows = []
+    for name, text, dx, dy, dz in FILM_PLANE_LABELS:
+        rows.append(
+            f'inst = entities.grep(Sketchup::ComponentInstance).find {{ |i| i.name == "{name}" }}\n'
+            f'if inst\n'
+            f'  bb = inst.bounds\n'
+            f'  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)\n'
+            f'  txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'  txt.layer = model.layers["Labels"] rescue nil\n'
+            f'end')
+    for x, y, z, text, dx, dy, dz in FILM_PLANE_POINT_LABELS:
+        rows.append(
+            f'anc = Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)})\n'
+            f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'txt.layer = model.layers["Labels"] rescue nil')
+    return '\n'.join(rows)
 
 
 def labels_ruby(tr_world, flat_xz):
@@ -268,7 +291,7 @@ def labels_ruby(tr_world, flat_xz):
     for txt, anc, vec in notes:
         a = f'Geom::Point3d.new({ov.mm(anc[0])},{ov.mm(anc[1])},{ov.mm(anc[2])})'
         v = f'Geom::Vector3d.new({vec[0]},{vec[1]},{vec[2]})'
-        out.append(f't=entities.add_text("{txt}", {a}, {v}); t.layer=model.layers["Labels"] rescue nil')
+        out.append(f't=entities.add_text("{txt}", {a}, {v}); t.layer=model.layers["Corner Detail"] rescue nil')
     return '\n'.join(out)
 
 
@@ -288,7 +311,7 @@ def generate_ruby():
     ]
     body = '\n'.join(comps)
     labels = labels_ruby(tr_world, flat_xz)
-    cant_label = cantilever_label_ruby()
+    flabels = film_plane_labels()
     tags_ruby = '\n'.join(f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
     keep = '[' + ', '.join(f'"{t}"' for t in TAGS) + ']'
 
@@ -296,8 +319,9 @@ def generate_ruby():
     main = ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "IBC Cantilever"]
     noghost = ["Film Plane", "Corner Mechanism", "Processing Tray"]
     scenes = [("Combined", main, None, 0),
+              ("Labeled", main + ["Labels"], None, 0),
               ("No Container", noghost, None, 0),
-              ("Corner detail (TR)", ["Corner Detail", "Labels"], tr_world, 95)]
+              ("Corner detail (TR)", ["Corner Detail"], tr_world, 95)]
 
     def slit(s):
         name, tags, tgt, so = s
@@ -323,11 +347,11 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 # ── Film Plane (Dynamic Component — click to swing: left forward / right back) ──
 {dc_block()}
 
-# ── Corner-detail callouts (Labels tag — shown only in the corner-detail scene) ──
+# ── Corner-detail callouts (Corner Detail tag — shown in the corner-detail scene) ──
 {labels}
 
-# ── IBC cantilever-arm callout (IBC Cantilever tag — shown in the Combined view) ──
-{cant_label}
+# ── Component callouts (Labels tag — shown only in the "Labeled" scene) ──
+{flabels}
 
 {ov.license_note()}
 

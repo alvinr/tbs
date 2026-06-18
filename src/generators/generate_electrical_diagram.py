@@ -826,7 +826,7 @@ def draw_sheet2():
            fs=6.5, ha="right")
     # Fan B — Intake (cargo door panel)
     leader(ax, FB_X - 50, FB_Y + 50,
-           FB_X - 600, FB_Y + 350,
+           FB_X - 480, FB_Y + 350,
            "Intake fan (B)\n6\" DC  60W",
            fs=6.5)
     # Pump — Cct C (on equipment panel in IBC corridor)

@@ -408,15 +408,17 @@ ax.text(sx(_note_x), sz(_note_z),
 
 IBC_PIPE_EXIT_X = ZONE_R_START   # pipes enter IBC stack zone
 
-# Blue supply pipe: IBC zone → full length to spray bar
+# Blue supply pipe: IBC zone → TAP_X. The trunk TERMINATES at the chem tap (its leftmost
+# consumer), so the trunk→tap-riser corner is a 90° elbow, not a through-tee (matches the
+# 3D overview spray_supply(), x_l = TAP_X).
 SUPPLY_Z = SPRAY_BAR_FEED_Z  # 30mm — beam center, below walkway grating
 draw_pipe_path(ax,
-    [IBC_PIPE_EXIT_X, WK_X_L],
+    [IBC_PIPE_EXIT_X, TAP_X],
     [SUPPLY_Z, SUPPLY_Z],
     OD_H, WALL_H, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=8)
 
 # Flow arrow: Blue supply flowing right in drawing (toward cargo door = lower X)
-_supply_mid_x = (IBC_PIPE_EXIT_X + WK_X_L) / 2
+_supply_mid_x = (IBC_PIPE_EXIT_X + TAP_X) / 2
 ax.annotate("", xy=(sx(_supply_mid_x - 200), sz(SUPPLY_Z)),
             xytext=(sx(_supply_mid_x + 200), sz(SUPPLY_Z)),
             arrowprops=dict(arrowstyle="-|>", color=C_BLUE, lw=1.0), zorder=10)
@@ -459,36 +461,37 @@ ax.text(sx(BV02_X - 80), sz(BV02_Z - 80),
         style="italic", zorder=10, **FONT)
 
 # ── Chemistry tap branch (TAP-01 / BV-06) ───────────────────────────────
-# Branch tee off the Blue supply trunk, rises to tap height.
+# The Blue trunk ENDS at TAP_X, so the riser is an ELBOW off the trunk end (not a tee), and it
+# rises RIGHT of the chem shelf (TAP_X=1130 < shelf X1180–1780, so clear of it). The spout then
+# goosenecks out over the shelf to dispense at TAP_Z. (Matches the 3D overview spray_supply().)
 TAP_OD = 25     # 3/4" branch pipe
 TAP_WALL = 3
-TAP_BRANCH_Z = SHELF_STOW_TOP_Z   # 1375 — branch/riser top, aligned with the stowed shelf
-TAP_TEE_X = TAP_X + 250           # tee point on the Blue supply trunk (extended to the tap, rev13)
-BV06_X = TAP_X + 100              # valve position — just right of the relocated tap (TAP_X=1130)
-BV06_R = 25                   # valve body radius for symbol
+TAP_BRANCH_Z = SHELF_STOW_TOP_Z   # 1375 — riser top, above the stowed shelf
+BV06_Z = 1010                     # BV-06 on the riser (matches the 3D BV-06 box at Z1010)
+SPOUT_DX = 150                    # gooseneck reach over the shelf edge (display-left)
 
-# Riser from supply pipe up to TAP_BRANCH_Z, horizontal to BV-06
+# Riser up at TAP_X (right of the shelf) — elbow off the trunk's terminating end.
 draw_pipe_path(ax,
-    [TAP_TEE_X, TAP_TEE_X, BV06_X - BV06_R],
-    [SUPPLY_Z, TAP_BRANCH_Z, TAP_BRANCH_Z],
+    [TAP_X, TAP_X],
+    [SUPPLY_Z, TAP_BRANCH_Z],
     TAP_OD, TAP_WALL, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=7)
-# BV-06 to TAP-01
+# Spout: goosenecks out over the shelf edge, then dispenses down at TAP_Z.
 draw_pipe_path(ax,
-    [BV06_X + BV06_R, TAP_X, TAP_X],
+    [TAP_X, TAP_X + SPOUT_DX, TAP_X + SPOUT_DX],
     [TAP_BRANCH_Z, TAP_BRANCH_Z, TAP_Z],
     TAP_OD, TAP_WALL, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=7)
 
-# BV-06 valve symbol (filled circle with label)
-ax.add_patch(plt.Circle((sx(BV06_X), sz(TAP_BRANCH_Z)), BV06_R,
+# BV-06 valve symbol (filled circle with label) on the riser
+ax.add_patch(plt.Circle((sx(TAP_X), sz(BV06_Z)), 25,
              fill=True, facecolor="white", edgecolor=C_OUT,
              linewidth=0.8, zorder=9))
-ax.text(sx(BV06_X), sz(TAP_BRANCH_Z), "BV\n06",
+ax.text(sx(TAP_X), sz(BV06_Z), "BV\n06",
         ha="center", va="center", fontsize=4, color=C_OUT,
         zorder=10, **FONT)
 
-# Tap spout symbol
-leader(ax, sx(TAP_X), sz(TAP_Z),
-       sx(TAP_X + 150), sz(TAP_Z - 80),
+# Tap spout symbol (at the gooseneck outlet, over the shelf)
+leader(ax, sx(TAP_X + SPOUT_DX), sz(TAP_Z),
+       sx(TAP_X + SPOUT_DX + 180), sz(TAP_Z - 90),
        "TAP-01", fs=4.5, color=C_DIM, zorder=10)
 
 # ── Pull-cord switches ───────────────────────────────────────────────────

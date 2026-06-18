@@ -346,6 +346,15 @@ def corner_swing_detail(ox):
         ov.ruby_box("Swing Z slider TR", fx - 13, cy - 18, fz - 16, 26, 36, 32, color=ov.C_CARR),
         joint_ball("Swing Rod-End TR", (fx, cy, fz), 17, ov.C_STEEL),
     ]
+    # partial film-plane ghost at the corner (flat, extends toward TL/-X and BR/-Z), nested in
+    # the float child so it rides the corner along the arc — same faint look as the other two.
+    pl = 1100
+    leg = ov.FP_ANGLE_LEG / 2
+    child += [
+        ov.ruby_box("Swing Plane (partial ghost)", fx - pl, cy - 6, fz - pl, pl, 12, pl, color=ov.C_FILM, alpha=0.16),
+        ov.ruby_pipe("Swing FP Frame (top)", (fx, cy, fz), (fx - pl, cy, fz), leg, color=ov.C_STEEL, alpha=0.35),
+        ov.ruby_pipe("Swing FP Frame (right)", (fx, cy, fz), (fx, cy, fz - pl), leg, color=ov.C_STEEL, alpha=0.35),
+    ]
     return '\n'.join(static), '\n'.join(parent), '\n'.join(child), (fx, cy, fz)
 
 

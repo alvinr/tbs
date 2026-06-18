@@ -3412,6 +3412,8 @@ cd_inst.set_attribute(cda, "_slide_label", "Slide carriage on rail")
 cd_inst.set_attribute(cda, "_y_formula", "-400*slide")
 cd_inst.set_attribute(cda, "onclick", 'ANIMATE("slide", 0, 1)')
 cd_inst.set_attribute(cda, "_onclick_access", "NONE")
+tsl = entities.add_text("RAIL SLIDE\n(click: carriage slides on rail)", Geom::Point3d.new(2916.979444694831.mm, 1410.0520922298629.mm, 2223.531411620136.mm), Geom::Vector3d.new(220.mm, -700.mm, 350.mm))
+tsl.layer = model.layers["Corner Detail"] rescue nil
 
 
 # ── Partial film-plane ghost at the TR corner (static, posed) ──
@@ -3615,7 +3617,7 @@ cs_inst.set_attribute(csa, "_onclick_access", "NONE")
   e.set_attribute(csa, "x", 0.0); e.set_attribute(csa, "y", 0.0); e.set_attribute(csa, "z", 0.0)
 end
 cf_inst.set_attribute(csa, "_x_formula", "2249.5*(COS(15.0*CornerSwing!swing)-1)")
-ts = entities.add_text("SWING ARC\n(carriage in Y + X float; click to animate)", Geom::Point3d.new(1149.mm, 1181.mm, 2288.mm), Geom::Vector3d.new(-250.mm, -700.mm, 350.mm))
+ts = entities.add_text("SWING ARC\n(carriage in Y + X float; click to animate)", Geom::Point3d.new(1149.mm, 1181.mm, 2288.mm), Geom::Vector3d.new(250.mm, -700.mm, 350.mm))
 ts.layer = model.layers["Corner Detail"] rescue nil
 
 

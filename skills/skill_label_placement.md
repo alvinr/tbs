@@ -78,6 +78,7 @@ The master rule for *where* a callout goes. Keep the tip on the feature; move on
 - Always include **units** (`300mm`, not `300`). *(r49)*
 - Harmonize font size across same-tier dimensions. *(r53)*
 - A measured distance **<30mm** won't fit between extension lines → use a `leader()` with the value in the label text instead. *(r37)*
+- **Conversely, a clearance/gap ≥30mm is a DIMENSION, not a leader callout** — `draw_dim_v`/`draw_dim_h` stacked in the dim column (continue an existing chain where one fits, e.g. EP `1500→2100→2388`), never a `leader("… → …: Nmm")`. The leader-with-value is *only* the <30mm fallback. *(2026-06-18)*
 - Don't repeat a dimension across views, and don't restate a dimensioned value as a separate floating label. *(r34, r60)*
 
 ## 8. Notes block  *(r19, r21, r22, r23, r24, r25, r26, r32, r40, r41, r42, r47, r68)*

@@ -538,7 +538,7 @@ draw_dim_v(ax, rx1, sz(0), sz(WALKWAY_H),
 
 # Electrical panel Z range
 draw_dim_v(ax, rx1, sz(EP_H_LO), sz(EP_H_HI),
-           f"{EP_H_HI - EP_H_LO}mm", offset=60, fs=5, right=False)
+           f"{EP_H_HI - EP_H_LO}mm\nEP Height", offset=120, fs=5, right=False)
 
 # Left-side vertical dims (IBC end = X=C_LEN, left in display)
 # With inverted axis, higher X = further left in display
@@ -546,7 +546,7 @@ lx0 = C_LEN + 45
 
 # Pinhole height
 draw_dim_v(ax, lx0, sz(0), sz(PH_H),
-           f"{PH_H}mm", offset=60, fs=5, right=True)
+           f"{PH_H}mm\nConatiner floor to Pinhole", offset=120, fs=5, right=True)
 
 # ── Horizontal dims below floor ─────────────────────────────────────────────
 row1_z = -60     # first dim row, 60mm below floor
@@ -569,7 +569,7 @@ draw_dim_h(ax, sx(0), sx(C_LEN), row2_z,
 # ── EP top → ceiling clearance — DIMENSIONED at rx1, continuing the EP chain
 #    (1500→2100→2388). A ≥30mm clearance is a dimension, not a leader callout (skill P7). ──
 draw_dim_v(ax, rx1, sz(EP_H_HI), sz(C_HGT),
-           f"{C_HGT - EP_H_HI}mm", offset=60, fs=5, right=False)
+           f"{C_HGT - EP_H_HI}mm\nEP to Ceiling", offset=120, fs=5, right=False)
 
 # ═══════════════════════════════════════════════════════════════════════════
 # 6. X-POSITION ANNOTATIONS (absolute positions along top)

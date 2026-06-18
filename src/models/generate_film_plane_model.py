@@ -406,7 +406,8 @@ ts.layer = model.layers["Corner Detail"] rescue nil
 
 # Corner-detail diagram X offsets — LEFT→RIGHT order (screen-right is +X, so left = most −X):
 #   1. labelled (static)  2. cross-slide (swing arc)  3. rail slide  4. plane swing (rotate)
-OFF_LABELED = -5250      # 1. static, no-DC, carries the labels   (1750mm spacing, +25%)
+OFF_LABELED = -6125      # 1. static, no-DC, carries the labels   (gap to #2 = 2625, +50% so
+                         #    its callouts clear the 2nd diagram; #2–#4 stay 1750mm apart)
 OFF_CROSS   = -3500      # 2. swing-arc (cross-slide) DC
 OFF_RAIL    = -1750      # 3. carriage rail-slide DC
 OFF_PLANE   = 0          # 4. rail + partial plane that rotates on click
@@ -595,7 +596,7 @@ def generate_ruby():
     scenes = [("Combined", main, None, 0),
               ("Labeled", main + ["Labels"], None, 0),
               ("No Container", noghost, None, 0),
-              ("Corner detail (TR)", ["Corner Detail"], cd_tgt, 315)]
+              ("Corner detail (TR)", ["Corner Detail"], cd_tgt, 350)]
 
     def slit(s):
         name, tags, tgt, so = s

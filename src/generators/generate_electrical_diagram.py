@@ -432,7 +432,7 @@ def draw_sheet2():
         BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y,
         DRUM_CX, DRUM_D, DRUM_R,
         FAN_A_YD, FAN_B_YD,
-        DIAGRAMS_DIR, 
+        DIAGRAMS_DIR,
     )
 
     # ── mm-first coordinate system ───────────────────────────────────────────
@@ -1556,7 +1556,7 @@ def draw_sheet5():
             fontweight="bold", color="white", zorder=5)
     # feed path: battery(+) in from below → disconnect line; disconnect load → (+) busbar
     varrow(ax, 2.975, 1520, 1582, col="#8B1A1A", lw=2.6)
-    ax.text(2.975, 1512, "FROM BATTERY (+)  ·  2/0 AWG · MRBF 200A", ha="center", va="top",
+    ax.text(2.975, 1490, "FROM BATTERY (+)  ·  2/0 AWG · MRBF 200A", ha="center", va="top",
             fontsize=6.6, color="#8B1A1A", fontweight="bold")
     ax.plot([2.975, 2.975, 1.6], [1666, 1723, 1723], color="#8B1A1A", lw=2.4, zorder=3)
     ax.text(2.3, 1730, "load → (+) bus", ha="center", va="bottom", fontsize=6.2, color="#8B1A1A")

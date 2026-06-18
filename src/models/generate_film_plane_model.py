@@ -278,6 +278,43 @@ cd_inst.set_attribute(cda, "_onclick_access", "NONE")
 '''
 
 
+def corner_plane_ghost():
+    """Partial ghost of the rigid film plane at the TR corner — a corner chunk of the muslin
+    screen + the two 2in-angle frame edges meeting at TR, built in the plane's LOCAL frame
+    (centre at origin). generate_ruby poses it with the same tilt+swing transform as the
+    plane, so its TR corner lands on the rod-end — context for the plane this corner carries."""
+    t = 12
+    plen = 900                                    # partial extent from TR along each plane edge
+    leg = ov.FP_ANGLE_LEG / 2
+    x1, z1 = W / 2, HF / 2                         # TR corner (local)
+    x0, z0 = W / 2 - plen, HF / 2 - plen
+    ptr, ptl, pbr = (x1, 0, z1), (x0, 0, z1), (x1, 0, z0)
+    return '\n'.join([
+        ov.ruby_box("Film Plane (partial ghost)", x0, -t / 2, z0, plen, t, plen,
+                    color=ov.C_FILM, alpha=0.16),
+        ov.ruby_pipe("FP Frame ghost (top)", ptr, ptl, leg, color=ov.C_STEEL, alpha=0.35),
+        ov.ruby_pipe("FP Frame ghost (right)", ptr, pbr, leg, color=ov.C_STEEL, alpha=0.35),
+    ])
+
+
+def corner_plane_ghost_block(ghost_ruby):
+    """Ruby placing the partial-plane ghost (static), posed by the same tilt+swing as the
+    plane (translate ∘ RotZ(swing) ∘ RotX(tilt) about the plane centre), on the Corner
+    Detail tag so it shows in the corner-detail scene with the mechanism."""
+    return f'''
+# ── Partial film-plane ghost at the TR corner (static, posed by tilt+swing) ──
+cg_defn = model.definitions.add("Corner Plane Ghost TR")
+ents = cg_defn.entities
+{ghost_ruby}
+cg_t = Geom::Transformation.translation([{ov.mm(CX)}, {ov.mm(CY)}, {ov.mm(CZ)}]) *
+       Geom::Transformation.rotation(ORIGIN, Z_AXIS, ({SWING_DEG}).degrees) *
+       Geom::Transformation.rotation(ORIGIN, X_AXIS, ({TILT_DEG}).degrees)
+cg_inst = entities.add_instance(cg_defn, cg_t)
+cg_inst.name = "Corner Plane Ghost TR"
+cg_inst.layer = model.layers["Corner Detail"]
+'''
+
+
 # ── "Labeled" scene callouts (project rule: every .skp gets a Labeled scene) ──
 # (top-level component instance name, text, leader Δx, Δy, Δz mm). The camera looks from
 # +X/−Y/+Z, so Δy<0 / Δz>0 pulls a callout OUT toward the viewer; Δx spreads them apart.
@@ -393,6 +430,9 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 
 # ── Corner Slide TR (Dynamic Component — click: carriage slides along the rail) ──
 {corner_slide_block(cd_slide)}
+
+# ── Partial film-plane ghost at the TR corner (static, posed) ──
+{corner_plane_ghost_block(corner_plane_ghost())}
 
 # ── Corner-detail callouts (Corner Detail tag — shown in the corner-detail scene) ──
 {labels}

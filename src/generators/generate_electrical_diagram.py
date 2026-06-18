@@ -1483,15 +1483,14 @@ def draw_sheet4():
 def draw_sheet5():
     """SHEET 5 — Main Enclosure Panel Layout + Fuse Schedule.
 
-    Frontal elevation of the IP65 enclosure interior — mirrors the 3D model's
-    `power_core` arrangement (MPPT on top, the A-G blade-fuse stack, +/- busbars,
-    rotary main disconnect) — with the internal feed one-line
-    Battery(+) -> MRBF -> main disconnect -> busbar(+) -> fuse stack -> circuits,
-    plus a fuse schedule (position / circuit / rating / wire / load). Vertical axis
-    is real Z (mm, per tbs_constants); horizontal is schematic. Circuit colors match
-    the 3D fuse stack; ratings/loads mirror Sheet 1.
+    TRUE-SCALE front elevation (mm, equal aspect) of the IP65 enclosure interior —
+    mirrors the 3D model's `power_core` arrangement (MPPT, the A-G blade-fuse stack,
+    +/- busbars, rotary main disconnect) — with the internal feed one-line and a fuse
+    schedule. BOTH axes are real mm: enclosure-relative X (0 = enclosure left = EP_X),
+    Z = real height. Component sizes/positions read from tbs_constants (same as the 3D).
     """
-    from tbs_constants import EP_H_LO, EP_H_HI
+    from tbs_constants import (EP_H_LO, EP_H_HI, EP_W, MPPT_W, MPPT_H,
+                               FUSEBLK_W, BUSBAR_L, BUSBAR_H, DISCONNECT_D)
     R = mpatches.Rectangle
     # letter, circuit name, fuse, wire, load, color (= 3D model CCT color)
     CIRCUITS5 = [
@@ -1504,102 +1503,101 @@ def draw_sheet5():
         ("G", "White LED panels",    "10A", "16 AWG", "60 W",   "#F1C40F"),
     ]
 
-    fig, ax = plt.subplots(figsize=(11.5, 8.8))
+    fig, ax = plt.subplots(figsize=(13.5, 8.0))
+    ax.set_aspect("equal")        # ← true scale: 1 mm in X == 1 mm in Z
     ax.axis("off")
 
-    # ── Enclosure shell (vertical = real Z mm; horizontal = schematic units) ──
-    ex0, ex1 = 0.0, 3.7
-    ax.add_patch(FancyBboxPatch((ex0, EP_H_LO), ex1 - ex0, EP_H_HI - EP_H_LO,
-                                boxstyle="round,pad=0.02", fc="#F4F6F8", ec=C_OUT,
-                                lw=2.0, zorder=2))
-    ax.text((ex0 + ex1) / 2, EP_H_HI + 95, "IP65 ENCLOSURE — INTERIOR (front elevation)",
-            ha="center", va="bottom", fontsize=9.5, fontweight="bold", color=TITLE_COL)
+    eh0, eh1 = EP_H_LO, EP_H_HI                          # 1500, 2100
+    # ── Enclosure shell — real 300 × 600 mm, dimensioned ──
+    ax.add_patch(FancyBboxPatch((0, eh0), EP_W, eh1 - eh0, boxstyle="round,pad=2",
+                                fc="#F4F6F8", ec=C_OUT, lw=1.8, zorder=2))
+    ax.text(EP_W / 2, eh1 + 80, "IP65 ENCLOSURE — INTERIOR\n(front elevation · true scale)",
+            ha="center", va="bottom", fontsize=8.5, fontweight="bold", color=TITLE_COL)
+    draw_dim_v(ax, EP_W + 48, eh0, eh1, f"{eh1 - eh0}")
+    draw_dim_h(ax, 0, EP_W, eh0 - 110, f"{EP_W}")
 
-    # ── MPPT (top) ──
-    ax.add_patch(R((0.2, 1965), 2.2, 100, fc="#3A5BA0", ec=C_OUT, lw=1.3, zorder=4))
-    ax.text(1.3, 2015, "MPPT 100/50", ha="center", va="center", fontsize=8.5,
-            fontweight="bold", color="white", zorder=5)
-    varrow(ax, 0.55, 2120, 2065, col=C_GND)            # PV in
-    ax.text(0.55, 2126, "PV FROM ARRAY\n10 AWG", ha="center", va="bottom",
-            fontsize=6.6, color=C_GND, fontweight="bold")
-    ax.plot([2.25, 2.25, 1.55], [1965, 1718, 1718], color="#3A5BA0", lw=2.0, zorder=3)  # charge → (+) busbar (clear of fuses)
-    ax.text(2.29, 1850, "charge", ha="left", va="center", fontsize=6.4, color="#3A5BA0")
+    # ── MPPT ──
+    mz = eh1 - MPPT_H - 30                               # 1970
+    ax.add_patch(R((15, mz), MPPT_W, MPPT_H, fc="#3A5BA0", ec=C_OUT, lw=1.1, zorder=4))
+    ax.text(15 + MPPT_W / 2, mz + MPPT_H / 2, "MPPT 100/50", ha="center", va="center",
+            fontsize=6.6, fontweight="bold", color="white", zorder=5)
+    varrow(ax, 60, eh1 + 32, mz + MPPT_H, col=C_GND)                 # PV in
+    ax.text(60, eh1 + 40, "PV IN · 10 AWG", ha="center", va="bottom", fontsize=5.8,
+            color=C_GND, fontweight="bold")
+    ax.plot([210, 210, 135], [mz, 1718, 1718], color="#3A5BA0", lw=1.4, zorder=3)   # charge → +bus
+    ax.text(214, 1850, "charge", ha="left", va="center", fontsize=5.6, color="#3A5BA0")
 
     # ── Blade-fuse stack (Blue Sea 5026): base + 7 standing blades A-G ──
-    fb_x0, fb_x1, base_z = 0.2, 1.95, 1772
-    ax.add_patch(R((fb_x0, base_z), fb_x1 - fb_x0, 28, fc="#2B2B30", ec=C_OUT, lw=1.2, zorder=4))
-    pitch = (fb_x1 - fb_x0) / len(CIRCUITS5)
-    bw = pitch * 0.66
+    fb_x0, base_z = 15, eh0 + 270                        # 1770
+    fbase_h, fuse_h = 30, 46
+    ax.add_patch(R((fb_x0, base_z), FUSEBLK_W, fbase_h, fc="#2B2B30", ec=C_OUT, lw=0.9, zorder=4))
+    pitch = FUSEBLK_W / len(CIRCUITS5)
+    bw = pitch * 0.6
     for i, (lt, nm, fz, wr, ld, col) in enumerate(CIRCUITS5):
         cx = fb_x0 + (i + 0.5) * pitch
-        ax.add_patch(R((cx - bw / 2, base_z + 28), bw, 72, fc=col, ec=C_OUT, lw=1.0, zorder=5))
-        ax.text(cx, base_z + 64, lt, ha="center", va="center", fontsize=8.5,
-                fontweight="bold", color="white",
-                bbox=dict(fc="black", ec="none", alpha=0.35, pad=0.6), zorder=6)
-        # circuit exit stub (colored) up toward the trunking band
-        ax.plot([cx, cx], [base_z + 100, base_z + 138], color=col, lw=2.2, zorder=4)
-    ax.text(fb_x0 - 0.06, base_z + 14, "BLUE SEA 5026\nFUSE BLOCK", ha="right",
-            va="center", fontsize=6.6, color=C_OUT, fontweight="bold")
-    ax.text((fb_x0 + fb_x1) / 2, base_z + 150, "↑  CIRCUITS A–G  →  loads (via ceiling trunking — Sheet 2/3)",
-            ha="center", va="bottom", fontsize=6.8, color=C_OUT, fontweight="bold")
+        ax.add_patch(R((cx - bw / 2, base_z + fbase_h), bw, fuse_h, fc=col, ec=C_OUT, lw=0.7, zorder=5))
+        ax.text(cx, base_z + fbase_h + fuse_h / 2, lt, ha="center", va="center", fontsize=5.4,
+                fontweight="bold", color="white", zorder=6)
+        ax.plot([cx, cx], [base_z + fbase_h + fuse_h, base_z + fbase_h + fuse_h + 36], color=col, lw=1.4, zorder=4)
+    ax.text(EP_W / 2, base_z + fbase_h + fuse_h + 44, "↑ circuits A–G → loads",
+            ha="center", va="bottom", fontsize=5.8, color=C_OUT, fontweight="bold")
+    ax.text(fb_x0, base_z - 10, "Blue Sea 5026", ha="left", va="top", fontsize=5.4, color=C_OUT)
 
     # ── +/- busbars ──
-    ax.add_patch(R((0.2, 1712), 1.4, 22, fc="#C0392B", ec=C_OUT, lw=1.0, zorder=4))
-    ax.add_patch(R((0.2, 1672), 1.4, 22, fc="#2C2C2C", ec=C_OUT, lw=1.0, zorder=4))
-    ax.text(0.9, 1723, "+", ha="center", va="center", fontsize=11, color="white", fontweight="bold", zorder=5)
-    ax.text(0.9, 1683, "−", ha="center", va="center", fontsize=11, color="white", fontweight="bold", zorder=5)
-    ax.text(1.66, 1703, "± BUSBARS", ha="left", va="center", fontsize=6.8, color=C_OUT, fontweight="bold")
-    ax.plot([0.55, 0.55], [1734, base_z], color="#C0392B", lw=2.4, zorder=3)     # (+) main lug → fuse block
+    bbp, bbn = eh0 + 205, eh0 + 175                      # 1705, 1675
+    ax.add_patch(R((15, bbp), BUSBAR_L, BUSBAR_H, fc="#C0392B", ec=C_OUT, lw=0.7, zorder=4))
+    ax.add_patch(R((15, bbn), BUSBAR_L, BUSBAR_H, fc="#2C2C2C", ec=C_OUT, lw=0.7, zorder=4))
+    ax.text(15 + BUSBAR_L / 2, bbp + BUSBAR_H / 2, "+", ha="center", va="center", fontsize=7, color="white", fontweight="bold", zorder=5)
+    ax.text(15 + BUSBAR_L / 2, bbn + BUSBAR_H / 2, "−", ha="center", va="center", fontsize=7, color="white", fontweight="bold", zorder=5)
+    ax.text(15 + BUSBAR_L + 8, (bbp + bbn) / 2 + BUSBAR_H / 2, "± busbars", ha="left", va="center", fontsize=5.6, color=C_OUT)
+    ax.plot([75, 75], [bbp + BUSBAR_H, base_z], color="#C0392B", lw=1.6, zorder=3)   # (+) lug → fuse block
 
-    # ── Main disconnect (rotary) ──
-    ax.add_patch(FancyBboxPatch((2.55, 1582), 0.85, 84, boxstyle="round,pad=0.02",
-                                fc="#D43A2F", ec=C_OUT, lw=1.4, zorder=4))
-    ax.text(2.975, 1624, "MAIN\nDISCONNECT", ha="center", va="center", fontsize=6.8,
-            fontweight="bold", color="white", zorder=5)
-    # feed path: battery(+) in from below → disconnect line; disconnect load → (+) busbar
-    varrow(ax, 2.975, 1520, 1582, col="#8B1A1A", lw=2.6)
-    ax.text(2.975, 1490, "FROM BATTERY (+)  ·  2/0 AWG · MRBF 200A", ha="center", va="top",
-            fontsize=6.6, color="#8B1A1A", fontweight="bold")
-    ax.plot([2.975, 2.975, 1.6], [1666, 1723, 1723], color="#8B1A1A", lw=2.4, zorder=3)
-    ax.text(2.3, 1730, "load → (+) bus", ha="center", va="bottom", fontsize=6.2, color="#8B1A1A")
-    varrow(ax, 0.45, 1672, 1500, col="#2C2C2C", lw=2.0)                    # (−) return
-    ax.text(0.45, 1488, "(−) RETURN", ha="center", va="top", fontsize=6.4, color="#2C2C2C", fontweight="bold")
+    # ── Main disconnect (rotary knob) ──
+    dz = eh0 + 120                                       # 1620
+    ax.add_patch(mpatches.Circle((240, dz), DISCONNECT_D / 2, fc="#D43A2F", ec=C_OUT, lw=1.1, zorder=4))
+    ax.text(240, dz, "MAIN\nDISC.", ha="center", va="center", fontsize=4.6, fontweight="bold", color="white", zorder=5)
+    # feed: battery(+) in from below the enclosure → disconnect; disconnect → (+) busbar
+    varrow(ax, 240, eh0 - 50, dz - DISCONNECT_D / 2, col="#8B1A1A", lw=1.8)
+    ax.text(150, eh0 - 58, "FROM BATTERY (+) · 2/0 AWG · MRBF 200A", ha="center", va="top",
+            fontsize=5.6, color="#8B1A1A", fontweight="bold")
+    ax.plot([240, 240, 135], [dz + DISCONNECT_D / 2, 1712, 1712], color="#8B1A1A", lw=1.6, zorder=3)
+    ax.text(182, 1715, "→ (+) bus", ha="center", va="bottom", fontsize=5.2, color="#8B1A1A")
+    varrow(ax, 45, bbn, eh0 + 4, col="#2C2C2C", lw=1.5)              # (−) return
+    ax.text(45, eh0 - 6, "(−) return", ha="center", va="top", fontsize=5.4, color="#2C2C2C", fontweight="bold")
 
-    # ── Fuse schedule table (right) ──
-    tx = 4.6
-    cols = [(tx + 0.30, "POS", "center"), (tx + 0.55, "CIRCUIT", "left"),
-            (tx + 3.0, "FUSE", "center"), (tx + 3.7, "WIRE", "center"),
-            (tx + 4.6, "LOAD", "center")]
-    th = 2055
-    ax.text(tx, th + 55, "FUSE SCHEDULE — BLUE SEA 5026  (Cct A–G)", ha="left",
-            va="bottom", fontsize=9.0, fontweight="bold", color=TITLE_COL)
-    for cxt, label, ha in cols:
-        ax.text(cxt, th, label, ha=ha, va="center", fontsize=7.5, fontweight="bold", color=C_OUT)
-    ax.plot([tx - 0.15, tx + 5.15], [th - 24, th - 24], color=C_OUT, lw=1.1)
-    row_h = 60
+    # ── Fuse schedule table (right, same mm coordinate space) ──
+    tx = 400
+    th = eh1 - 50                                        # header Z
+    ax.text(tx, eh1 + 80, "FUSE SCHEDULE — BLUE SEA 5026  (Cct A–G)", ha="left",
+            va="bottom", fontsize=8.5, fontweight="bold", color=TITLE_COL)
+    cols = [(tx + 55, "POS", "center"), (tx + 100, "CIRCUIT", "left"),
+            (tx + 400, "FUSE", "center"), (tx + 540, "WIRE", "center"), (tx + 700, "LOAD", "center")]
+    for cxt, label, hh in cols:
+        ax.text(cxt, th, label, ha=hh, va="center", fontsize=7.0, fontweight="bold", color=C_OUT)
+    ax.plot([tx - 20, tx + 790], [th - 28, th - 28], color=C_OUT, lw=1.0)
+    row_h = 72
     for i, (lt, nm, fz, wr, ld, col) in enumerate(CIRCUITS5):
-        ry = th - 50 - i * row_h
-        ax.add_patch(R((tx - 0.02, ry - 14), 0.18, 28, fc=col, ec=C_OUT, lw=0.8))
-        ax.text(tx + 0.30, ry, lt, ha="center", va="center", fontsize=7.6, fontweight="bold")
-        ax.text(tx + 0.55, ry, nm, ha="left", va="center", fontsize=7.2)
-        ax.text(tx + 3.0, ry, fz, ha="center", va="center", fontsize=7.2, fontweight="bold")
-        ax.text(tx + 3.7, ry, wr, ha="center", va="center", fontsize=7.0)
-        ax.text(tx + 4.6, ry, ld, ha="center", va="center", fontsize=7.0)
-    botline = th - 50 - len(CIRCUITS5) * row_h + 30
-    ax.plot([tx - 0.15, tx + 5.15], [botline, botline], color=C_OUT, lw=0.8)
-    ax.text(tx, botline - 36,
-            "Feed: Battery (+) → 200A MRBF → main disconnect (Blue Sea m-Series)\n"
-            "→ (+) busbar → fuse block.  Charge: PV array → MPPT 100/50 → busbars.\n"
-            "Layout mirrors the 3D electrical model; ratings per Sheet 1 one-line.",
-            ha="left", va="top", fontsize=6.8, color="#333")
+        ry = th - 60 - i * row_h
+        ax.add_patch(R((tx - 5, ry - 16), 34, 32, fc=col, ec=C_OUT, lw=0.7))
+        ax.text(tx + 55, ry, lt, ha="center", va="center", fontsize=7.0, fontweight="bold")
+        ax.text(tx + 100, ry, nm, ha="left", va="center", fontsize=6.6)
+        ax.text(tx + 400, ry, fz, ha="center", va="center", fontsize=6.8, fontweight="bold")
+        ax.text(tx + 540, ry, wr, ha="center", va="center", fontsize=6.4)
+        ax.text(tx + 700, ry, ld, ha="center", va="center", fontsize=6.4)
+    botline = th - 60 - len(CIRCUITS5) * row_h + 36
+    ax.plot([tx - 20, tx + 790], [botline, botline], color=C_OUT, lw=0.8)
+    ax.text(tx, botline - 44,
+            "Feed: Battery (+) → 200A MRBF → main disconnect (Blue Sea m-Series) → (+) busbar → fuse block.\n"
+            "Charge: PV array → MPPT 100/50 → busbars.  Layout mirrors the 3D model; ratings per Sheet 1.",
+            ha="left", va="top", fontsize=6.2, color="#333")
 
-    ax.set_xlim(-0.7, 10.1)
-    ax.set_ylim(1380, 2265)
+    ax.set_xlim(-70, 1230)
+    ax.set_ylim(1330, 2250)
 
     title_block(ax, "SHEET 5 OF 5",
                 drawing_title="MAIN ENCLOSURE — PANEL LAYOUT",
-                subtitle="Front elevation · feed one-line · fuse schedule",
-                scale_note="Schematic · vertical = Z (mm)",
+                subtitle="True-scale front elevation · feed one-line · fuse schedule",
+                scale_note="True scale · mm (equal aspect)",
                 doc_id="TBS-ELEC", height=0.07)
 
     plt.savefig(f"{DIAGRAMS_DIR}/electrical-sheet5.png", dpi=150, bbox_inches="tight",

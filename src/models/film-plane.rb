@@ -3222,6 +3222,58 @@ cd_inst.set_attribute(cda, "onclick", 'ANIMATE("slide", 0, 1)')
 cd_inst.set_attribute(cda, "_onclick_access", "NONE")
 
 
+# ── Partial film-plane ghost at the TR corner (static, posed) ──
+
+# ── Partial film-plane ghost at the TR corner (static, posed by tilt+swing) ──
+cg_defn = model.definitions.add("Corner Plane Ghost TR")
+ents = cg_defn.entities
+  # Film Plane (partial ghost)
+  grp = ents.add_group
+  grp.name = "Film Plane (partial ghost)"
+  face = grp.entities.add_face([1349.5.mm,-6.mm,169.mm], [2249.5.mm,-6.mm,169.mm], [2249.5.mm,6.mm,169.mm], [1349.5.mm,6.mm,169.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(900.mm)
+  mat = model.materials["Film Plane (partial ghost)"] || model.materials.add("Film Plane (partial ghost)")
+  mat.color = Sketchup::Color.new(32, 96, 160)
+  mat.alpha = 0.16
+  grp.material = mat
+
+  # FP Frame ghost (top)
+  grp = ents.add_group
+  grp.name = "FP Frame ghost (top)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-900.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2249.5.mm,0.mm,1069.mm], vec, 25.4.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["FP Frame ghost (top)"] || model.materials.add("FP Frame ghost (top)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 0.35
+  grp.material = mat
+
+  # FP Frame ghost (right)
+  grp = ents.add_group
+  grp.name = "FP Frame ghost (right)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -900.mm)
+  circle = ge.add_circle([2249.5.mm,0.mm,1069.mm], vec, 25.4.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["FP Frame ghost (top)"] || model.materials.add("FP Frame ghost (top)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 0.35
+  grp.material = mat
+
+cg_t = Geom::Transformation.translation([2399.5.mm, 1181.mm, 1219.mm]) *
+       Geom::Transformation.rotation(ORIGIN, Z_AXIS, (15.0).degrees) *
+       Geom::Transformation.rotation(ORIGIN, X_AXIS, (20.0).degrees)
+cg_inst = entities.add_instance(cg_defn, cg_t)
+cg_inst.name = "Corner Plane Ghost TR"
+cg_inst.layer = model.layers["Corner Detail"]
+
+
 # ── Corner-detail callouts (Corner Detail tag — shown in the corner-detail scene) ──
 t=entities.add_text("HGR20 rail - FIXED (depth guide)", Geom::Point3d.new(4649.mm,1160.0520922298629.mm,2288.mm), Geom::Vector3d.new(10,0,11.0)); t.layer=model.layers["Corner Detail"] rescue nil
 t=entities.add_text("Leadscrew - DEPTH / focus drive", Geom::Point3d.new(4683.mm,710.0520922298629.mm,2288.mm), Geom::Vector3d.new(4.0,0,19.0)); t.layer=model.layers["Corner Detail"] rescue nil

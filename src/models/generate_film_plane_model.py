@@ -209,7 +209,7 @@ def static_rails():
 CORNER_SLIDE_TRAVEL = -400      # carriage slide along the rail on click (-Y, toward the near end)
 
 
-def corner_detail():
+def corner_detail(ox=0):
     """The full Option-A chain at the POSED TR corner. The FIXED guide (rail +
     leadscrew) is static; the CARRIAGE ASSEMBLY (carriage + drive nut + cross-slides +
     sliders + rod-end + flat-corner ghost) is returned separately so generate_ruby can
@@ -219,8 +219,8 @@ def corner_detail():
     flat_xz)."""
     cz = CZ
     lx, ly, lz = LOCAL["TR"]
-    fx, fz = CX + lx, cz + lz                 # flat rail point
-    d = _pose((lx, ly, lz)); px, py, pz = CX + d[0], CY + d[1], cz + d[2]
+    fx, fz = CX + lx + ox, cz + lz            # flat rail point (offset in X for layout)
+    d = _pose((lx, ly, lz)); px, py, pz = CX + d[0] + ox, CY + d[1], cz + d[2]
     dx, dz = px - fx, pz - fz
     y0, rlen = ov.FP_Y_MIN, ov.RAIL_LEN
     # ── fixed guide (static) ──
@@ -318,16 +318,12 @@ cg_inst.layer = model.layers["Corner Detail"]
 '''
 
 
-SWING_DETAIL_OFFSET = -1400      # X offset for the SECOND (swing) corner detail, beside the TR slide one
-
-
-def corner_swing_detail():
-    """A SECOND corner detail (beside the TR slide detail, offset −X) showing the SWING ARC:
-    the corner assembly built FLAT (on the rail), split so the CARRIAGE rides the rail in Y
-    while the SLIDER FLOATS in X — both driven by one `swing` attribute via SIN/COS formulas
-    (carriage Y = (W/2)·sin θ, X float = (W/2)·(cos θ−1)), so the rod-end traces the arc the
-    corner takes as the plane swings. Returns (static_ruby, parent_ruby, child_ruby, rod_world)."""
-    ox = SWING_DETAIL_OFFSET
+def corner_swing_detail(ox):
+    """A corner detail (offset −X) showing the SWING ARC: the corner assembly built FLAT (on
+    the rail), split so the CARRIAGE rides the rail in Y while the SLIDER FLOATS in X — both
+    driven by one `swing` attribute via SIN/COS formulas (carriage Y = (W/2)·sin θ, X float =
+    (W/2)·(cos θ−1)), so the rod-end traces the arc the corner takes as the plane swings.
+    Returns (static_ruby, parent_ruby, child_ruby, rod_world)."""
     lx, ly, lz = LOCAL["TR"]
     fx, fz = CX + lx + ox, CZ + lz            # flat rail point (offset −X), top-rail height
     cy = CY                                    # flat depth (on the rail)
@@ -353,7 +349,7 @@ def corner_swing_detail():
     return '\n'.join(static), '\n'.join(parent), '\n'.join(child), (fx, cy, fz)
 
 
-def corner_swing_block(parent_ruby, child_ruby):
+def corner_swing_block(parent_ruby, child_ruby, anchor):
     """Ruby for the SWING-ARC dynamic component: a parent 'Corner Swing' (carriage, moves in Y
     by (W/2)·SIN θ) with a NESTED child 'Corner Swing Float' (slider, moves in X by
     (W/2)·(COS θ−1)). One `swing` driver; the child reads it by ancestor reference so it
@@ -394,13 +390,17 @@ cs_inst.set_attribute(csa, "_onclick_access", "NONE")
   e.set_attribute(csa, "x", 0.0); e.set_attribute(csa, "y", 0.0); e.set_attribute(csa, "z", 0.0)
 end
 cf_inst.set_attribute(csa, "_x_formula", "{wh}*(COS({SWING_DEG}*CornerSwing!swing)-1)")
-ts = entities.add_text("SWING ARC\\n(carriage in Y + X float; click to animate)", Geom::Point3d.new({ov.mm(CX + W / 2 + SWING_DETAIL_OFFSET)}, {ov.mm(CY)}, {ov.mm(RZ_TOP)}), Geom::Vector3d.new({ov.mm(-250)}, {ov.mm(-700)}, {ov.mm(350)}))
+ts = entities.add_text("SWING ARC\\n(carriage in Y + X float; click to animate)", Geom::Point3d.new({ov.mm(anchor[0])}, {ov.mm(anchor[1])}, {ov.mm(anchor[2])}), Geom::Vector3d.new({ov.mm(-250)}, {ov.mm(-700)}, {ov.mm(350)}))
 ts.layer = model.layers["Corner Detail"] rescue nil
 '''
 
 
-STATIC_DETAIL_OFFSET = -2800     # X offset for the 3rd (static, labeled) corner detail
-ROTATE_DETAIL_OFFSET = -4200     # X offset for the 4th (rail + partial plane, rotates) diagram
+# Corner-detail diagram X offsets — LEFT→RIGHT order (screen-right is +X, so left = most −X):
+#   1. labelled (static)  2. cross-slide (swing arc)  3. rail slide  4. plane swing (rotate)
+OFF_LABELED = -4200      # 1. static, no-DC, carries the labels
+OFF_CROSS   = -2800      # 2. swing-arc (cross-slide) DC
+OFF_RAIL    = -1400      # 3. carriage rail-slide DC
+OFF_PLANE   = 0          # 4. rail + partial plane that rotates on click
 
 
 def corner_static_labeled(ox):
@@ -550,10 +550,10 @@ def labels_ruby(tr_world, flat_xz):
 
 
 def generate_ruby():
-    cd_static, cd_slide, tr_world, flat_xz = corner_detail()
-    sw_static, sw_parent, sw_child, sw_world = corner_swing_detail()
-    st_ruby, st_world, st_flat = corner_static_labeled(STATIC_DETAIL_OFFSET)
-    rp_rail, rp_plane, rp_corner = corner_rotate_plane(ROTATE_DETAIL_OFFSET)
+    cd_static, cd_slide, tr_world, flat_xz = corner_detail(OFF_RAIL)
+    sw_static, sw_parent, sw_child, sw_world = corner_swing_detail(OFF_CROSS)
+    st_ruby, st_world, st_flat = corner_static_labeled(OFF_LABELED)
+    rp_rail, rp_plane, rp_corner = corner_rotate_plane(OFF_PLANE)
     comps = [
         ov.component("Container (ghost)", "Context", context()),
         ov.component("Near-wall equipment (ghost)", "Context", near_wall_ghost()),
@@ -618,7 +618,7 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 {corner_plane_ghost_block(corner_plane_ghost())}
 
 # ── Corner Swing (2nd detail — click: corner traces the swing arc; carriage Y + X float) ──
-{corner_swing_block(sw_parent, sw_child)}
+{corner_swing_block(sw_parent, sw_child, sw_world)}
 
 # ── Rotate Plane (4th diagram — rail + partial plane; click rotates the plane about its corner) ──
 {corner_rotate_block(rp_plane, rp_corner)}

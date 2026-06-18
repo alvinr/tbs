@@ -297,19 +297,19 @@ def corner_plane_ghost():
     ])
 
 
-def corner_plane_ghost_block(ghost_ruby):
+def corner_plane_ghost_block(ghost_ruby, ox):
     """Ruby placing the partial-plane ghost, posed by the same tilt+swing as the plane
-    (translate ∘ RotZ(swing) ∘ RotX(tilt) about the plane centre) so its TR corner lands on
-    the rod-end, and NESTED inside the Corner Slide DC (cd_defn) so it RIDES the carriage when
-    it slides — the corner stays attached to the plane. It carries no DC attributes (plain
-    geometry), so it just moves rigidly with the parent, no DC reset. Corner Detail tag."""
+    (translate ∘ RotZ(swing) ∘ RotX(tilt) about the plane centre + the diagram's X offset ox)
+    so its TR corner lands on the rod-end, and NESTED inside the Corner Slide DC (cd_defn) so
+    it RIDES the carriage when it slides — the corner stays attached to the plane. It carries
+    no DC attributes (plain geometry), so it moves rigidly with the parent, no DC reset."""
     return f'''
-# ── Partial film-plane ghost at the TR corner (posed; nested in the slide DC so it rides
-#    the carriage — the plane corner stays attached as the carriage slides) ──
+# ── Partial film-plane ghost at the rail-slide corner (posed + offset ox; nested in the slide
+#    DC so it rides the carriage — the plane corner stays attached to the rail as it slides) ──
 cg_defn = model.definitions.add("Corner Plane Ghost TR")
 ents = cg_defn.entities
 {ghost_ruby}
-cg_t = Geom::Transformation.translation([{ov.mm(CX)}, {ov.mm(CY)}, {ov.mm(CZ)}]) *
+cg_t = Geom::Transformation.translation([{ov.mm(CX + ox)}, {ov.mm(CY)}, {ov.mm(CZ)}]) *
        Geom::Transformation.rotation(ORIGIN, Z_AXIS, ({SWING_DEG}).degrees) *
        Geom::Transformation.rotation(ORIGIN, X_AXIS, ({TILT_DEG}).degrees)
 cg_inst = cd_defn.entities.add_instance(cg_defn, cg_t)
@@ -615,7 +615,7 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 {corner_slide_block(cd_slide)}
 
 # ── Partial film-plane ghost at the TR corner (static, posed) ──
-{corner_plane_ghost_block(corner_plane_ghost())}
+{corner_plane_ghost_block(corner_plane_ghost(), OFF_RAIL)}
 
 # ── Corner Swing (2nd detail — click: corner traces the swing arc; carriage Y + X float) ──
 {corner_swing_block(sw_parent, sw_child, sw_world)}

@@ -399,6 +399,95 @@ ts.layer = model.layers["Corner Detail"] rescue nil
 '''
 
 
+STATIC_DETAIL_OFFSET = -2800     # X offset for the 3rd (static, labeled) corner detail
+ROTATE_DETAIL_OFFSET = -4200     # X offset for the 4th (rail + partial plane, rotates) diagram
+
+
+def corner_static_labeled(ox):
+    """A STATIC (no DC) posed corner detail at offset ox — the full Option-A chain at the
+    posed tilt+swing, as a clean LABELLED reference (the labels anchor to it). Same geometry
+    as the slide detail, but it never moves. Returns (ruby, rod_world, flat_xz)."""
+    cz = CZ
+    lx, ly, lz = LOCAL["TR"]
+    fx, fz = CX + lx + ox, cz + lz
+    d = _pose((lx, ly, lz)); px, py, pz = CX + d[0] + ox, CY + d[1], cz + d[2]
+    dx, dz = px - fx, pz - fz
+    x0 = min(fx, px) - 16
+    z0 = min(fz, pz) - 16
+    y0, rlen = ov.FP_Y_MIN, ov.RAIL_LEN
+    parts = [
+        ov.ruby_box("Static Rail TR", fx - 12, y0, fz - 8, 24, rlen, 16, color=ov.C_RAIL),
+        ov.ruby_pipe("Static Leadscrew TR", (fx + 34, y0, fz), (fx + 34, y0 + rlen, fz), 7, color=ov.C_STEEL),
+        ov.ruby_box("Static Carriage TR", fx - 26, py - 32, fz - 18, 52, 64, 24, color=ov.C_CARR),
+        ov.ruby_box("Static Drive Nut TR", fx + 20, py - 14, fz - 12, 28, 28, 26, color=ov.C_CARR),
+        ov.ruby_box("Static X cross-slide TR (SWING)", x0, py - 16, fz + 6, abs(dx) + 32, 32, 14, color=C_XSL),
+        ov.ruby_box("Static X slider TR", px - 16, py - 20, fz + 4, 32, 40, 20, color=ov.C_CARR),
+        ov.ruby_box("Static Z cross-slide TR (TILT)", px - 9, py - 15, z0, 18, 30, abs(dz) + 32, color=C_ZSL),
+        ov.ruby_box("Static Z slider TR", px - 13, py - 18, pz - 16, 26, 36, 32, color=ov.C_CARR),
+        joint_ball("Static Rod-End TR", (px, py, pz), 17, ov.C_STEEL),
+        joint_ball("Static Flat-corner ghost TR", (fx, py, fz), 13, C_GHOST),
+    ]
+    return '\n'.join(parts), (px, py, pz), (fx, fz)
+
+
+def corner_rotate_plane(ox):
+    """A diagram (offset ox): a rail + a partial film plane whose TR corner sits on the rail,
+    with a DC that ROTATES the plane (tilt+swing) about that corner on click. The partial plane
+    is built in LOCAL coords with its corner at the origin (the pivot). Returns
+    (rail_ruby, plane_ruby, corner_world)."""
+    lx, ly, lz = LOCAL["TR"]
+    fx, fz = CX + lx + ox, CZ + lz
+    cy = CY
+    y0, rlen = ov.FP_Y_MIN, ov.RAIL_LEN
+    rail = [
+        ov.ruby_box("Rotate Rail TR", fx - 12, y0, fz - 8, 24, rlen, 16, color=ov.C_RAIL),
+        ov.ruby_box("Rotate Carriage TR", fx - 26, cy - 32, fz - 18, 52, 64, 24, color=ov.C_CARR),
+        joint_ball("Rotate Rod-End TR", (fx, cy, fz), 16, ov.C_STEEL),
+    ]
+    t = 12
+    plen = 1100
+    leg = ov.FP_ANGLE_LEG / 2
+    plane = [
+        ov.ruby_box("Rotate Plane (partial)", -plen, -t / 2, -plen, plen, t, plen, color=ov.C_FILM, alpha=0.3),
+        ov.ruby_pipe("Rotate Frame (top)", (0, 0, 0), (-plen, 0, 0), leg, color=ov.C_STEEL),
+        ov.ruby_pipe("Rotate Frame (right)", (0, 0, 0), (0, 0, -plen), leg, color=ov.C_STEEL),
+    ]
+    return '\n'.join(rail), '\n'.join(plane), (fx, cy, fz)
+
+
+def corner_rotate_block(plane_ruby, corner):
+    """Ruby for the rail+plane ROTATE diagram: the partial plane is a top-level DC placed with
+    its corner on the rail, rotating (RotX=tilt, RotZ=swing about that corner) on click — so it
+    shows the plane angling relative to its corner rail. Top-level rotation about the placed
+    origin (the corner), so no through-floor / nested reset. Corner Detail tag; a callout flags it."""
+    cx_, cy_, cz_ = (ov.mm(v) for v in corner)
+    return f'''
+# ═══ Rotate Plane — DYNAMIC COMPONENT (click: partial plane rotates about its corner) ═══
+rp_defn = model.definitions.add("Rotate Plane")
+ents = rp_defn.entities
+{plane_ruby}
+rp_inst = entities.add_instance(rp_defn, Geom::Transformation.translation([{cx_}, {cy_}, {cz_}]))
+rp_inst.name = "Rotate Plane"
+rp_inst.layer = model.layers["Corner Detail"]
+rpa = "dynamic_attributes"
+[rp_defn, rp_inst].each do |e|
+  e.set_attribute(rpa, "_name", "RotatePlane")
+  e.set_attribute(rpa, "_lengthunits", "MILLIMETERS")
+  e.set_attribute(rpa, "rotate", 0.0)
+  e.set_attribute(rpa, "rotx", 0.0)
+  e.set_attribute(rpa, "rotz", 0.0)
+end
+rp_inst.set_attribute(rpa, "_rotate_access", "VIEW")
+rp_inst.set_attribute(rpa, "_rotate_label", "Rotate (0 flat / 1 tilt+swing)")
+rp_inst.set_attribute(rpa, "_rotx_formula", "{TILT_DEG}*rotate")
+rp_inst.set_attribute(rpa, "_rotz_formula", "{SWING_DEG}*rotate")
+rp_inst.set_attribute(rpa, "onclick", 'ANIMATE("rotate", 0, 1)')
+rp_inst.set_attribute(rpa, "_onclick_access", "NONE")
+tr = entities.add_text("RAIL + PLANE\\n(click: plane rotates about its corner)", Geom::Point3d.new({cx_}, {cy_}, {cz_}), Geom::Vector3d.new({ov.mm(220)}, {ov.mm(-700)}, {ov.mm(350)}))
+tr.layer = model.layers["Corner Detail"] rescue nil
+'''
+
+
 # ── "Labeled" scene callouts (project rule: every .skp gets a Labeled scene) ──
 # (top-level component instance name, text, leader Δx, Δy, Δz mm). The camera looks from
 # +X/−Y/+Z, so Δy<0 / Δz>0 pulls a callout OUT toward the viewer; Δx spreads them apart.
@@ -463,6 +552,8 @@ def labels_ruby(tr_world, flat_xz):
 def generate_ruby():
     cd_static, cd_slide, tr_world, flat_xz = corner_detail()
     sw_static, sw_parent, sw_child, sw_world = corner_swing_detail()
+    st_ruby, st_world, st_flat = corner_static_labeled(STATIC_DETAIL_OFFSET)
+    rp_rail, rp_plane, rp_corner = corner_rotate_plane(ROTATE_DETAIL_OFFSET)
     comps = [
         ov.component("Container (ghost)", "Context", context()),
         ov.component("Near-wall equipment (ghost)", "Context", near_wall_ghost()),
@@ -475,16 +566,18 @@ def generate_ruby():
                      '\n'.join(ov.ibc_cantilever_arms())),
         ov.component("Corner Detail (TR)", "Corner Detail", cd_static),
         ov.component("Corner Detail Swing (TR)", "Corner Detail", sw_static),
+        ov.component("Corner Detail Static (TR)", "Corner Detail", st_ruby),
+        ov.component("Rotate Rail (TR)", "Corner Detail", rp_rail),
     ]
     body = '\n'.join(comps)
-    labels = labels_ruby(tr_world, flat_xz)
+    labels = labels_ruby(st_world, st_flat)   # labels annotate the STATIC (no-DC) detail
     flabels = film_plane_labels()
     tags_ruby = '\n'.join(f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
     keep = '[' + ', '.join(f'"{t}"' for t in TAGS) + ']'
 
-    # Corner-detail camera: aim at the midpoint of the two details (slide + swing) so both frame
-    cd_tgt = ((tr_world[0] + sw_world[0]) / 2, (tr_world[1] + sw_world[1]) / 2,
-              (tr_world[2] + sw_world[2]) / 2)
+    # Corner-detail camera: aim at the centroid of all FOUR diagrams so they all frame
+    _worlds = [tr_world, sw_world, st_world, rp_corner]
+    cd_tgt = tuple(sum(w[i] for w in _worlds) / len(_worlds) for i in range(3))
 
     # scenes: name, visible tags, target point (mm) or None, standoff(inches) or 0=extents
     main = ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "IBC Cantilever"]
@@ -492,7 +585,7 @@ def generate_ruby():
     scenes = [("Combined", main, None, 0),
               ("Labeled", main + ["Labels"], None, 0),
               ("No Container", noghost, None, 0),
-              ("Corner detail (TR)", ["Corner Detail"], cd_tgt, 140)]
+              ("Corner detail (TR)", ["Corner Detail"], cd_tgt, 250)]
 
     def slit(s):
         name, tags, tgt, so = s
@@ -527,7 +620,10 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 # ── Corner Swing (2nd detail — click: corner traces the swing arc; carriage Y + X float) ──
 {corner_swing_block(sw_parent, sw_child)}
 
-# ── Corner-detail callouts (Corner Detail tag — shown in the corner-detail scene) ──
+# ── Rotate Plane (4th diagram — rail + partial plane; click rotates the plane about its corner) ──
+{corner_rotate_block(rp_plane, rp_corner)}
+
+# ── Corner-detail callouts (Corner Detail tag — shown on the STATIC detail) ──
 {labels}
 
 # ── Component callouts (Labels tag — shown only in the "Labeled" scene) ──

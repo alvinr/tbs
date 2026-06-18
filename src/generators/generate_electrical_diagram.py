@@ -1513,8 +1513,8 @@ def draw_sheet5():
                                 fc="#F4F6F8", ec=C_OUT, lw=1.8, zorder=2))
     ax.text(EP_W / 2, eh1 + 80, "IP65 ENCLOSURE — INTERIOR\n(front elevation · true scale)",
             ha="center", va="bottom", fontsize=8.5, fontweight="bold", color=TITLE_COL)
-    draw_dim_v(ax, EP_W + 48, eh0, eh1, f"{eh1 - eh0}")
-    draw_dim_h(ax, 0, EP_W, eh0 - 110, f"{EP_W}")
+    draw_dim_v(ax, EP_W + 48, eh0, eh1, f"{eh1 - eh0}mm")
+    draw_dim_h(ax, 0, EP_W, eh0 - 110, f"{EP_W}mm")
 
     # ── MPPT ──
     mz = eh1 - MPPT_H - 30                               # 1970

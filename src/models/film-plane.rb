@@ -3426,7 +3426,7 @@ ents = cg_defn.entities
   face = grp.entities.add_face([1349.5.mm,-6.mm,169.mm], [2249.5.mm,-6.mm,169.mm], [2249.5.mm,6.mm,169.mm], [1349.5.mm,6.mm,169.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(900.mm)
-  mat = model.materials["Rotate Plane (partial)"] || model.materials.add("Rotate Plane (partial)")
+  mat = model.materials["Swing Plane (partial ghost)"] || model.materials.add("Swing Plane (partial ghost)")
   mat.color = Sketchup::Color.new(32, 96, 160)
   mat.alpha = 0.16
   grp.material = mat
@@ -3440,7 +3440,7 @@ ents = cg_defn.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Rotate Frame (top)"] || model.materials.add("Rotate Frame (top)")
+  mat = model.materials["Swing FP Frame (top)"] || model.materials.add("Swing FP Frame (top)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 0.35
   grp.material = mat
@@ -3454,7 +3454,7 @@ ents = cg_defn.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Rotate Frame (top)"] || model.materials.add("Rotate Frame (top)")
+  mat = model.materials["Swing FP Frame (top)"] || model.materials.add("Swing FP Frame (top)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 0.35
   grp.material = mat
@@ -3556,6 +3556,45 @@ ents = cf_defn.entities
   mat.alpha = 1.0
   grp.material = mat
 
+  # Swing Plane (partial ghost)
+  grp = ents.add_group
+  grp.name = "Swing Plane (partial ghost)"
+  face = grp.entities.add_face([749.mm,1175.mm,1188.mm], [1849.mm,1175.mm,1188.mm], [1849.mm,1187.mm,1188.mm], [749.mm,1187.mm,1188.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(1100.mm)
+  mat = model.materials["Swing Plane (partial ghost)"] || model.materials.add("Swing Plane (partial ghost)")
+  mat.color = Sketchup::Color.new(32, 96, 160)
+  mat.alpha = 0.16
+  grp.material = mat
+
+  # Swing FP Frame (top)
+  grp = ents.add_group
+  grp.name = "Swing FP Frame (top)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1100.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1849.mm,1181.mm,2288.mm], vec, 25.4.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Swing FP Frame (top)"] || model.materials.add("Swing FP Frame (top)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 0.35
+  grp.material = mat
+
+  # Swing FP Frame (right)
+  grp = ents.add_group
+  grp.name = "Swing FP Frame (right)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1100.mm)
+  circle = ge.add_circle([1849.mm,1181.mm,2288.mm], vec, 25.4.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Swing FP Frame (top)"] || model.materials.add("Swing FP Frame (top)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 0.35
+  grp.material = mat
+
 cf_inst = cs_defn.entities.add_instance(cf_defn, Geom::Transformation.new)
 cf_inst.name = "Corner Swing Float"
 cf_inst.layer = model.layers["Corner Detail"]
@@ -3591,7 +3630,7 @@ ents = rp_defn.entities
   face = grp.entities.add_face([-1100.mm,-6.mm,-1100.mm], [0.mm,-6.mm,-1100.mm], [0.mm,6.mm,-1100.mm], [-1100.mm,6.mm,-1100.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(1100.mm)
-  mat = model.materials["Rotate Plane (partial)"] || model.materials.add("Rotate Plane (partial)")
+  mat = model.materials["Swing Plane (partial ghost)"] || model.materials.add("Swing Plane (partial ghost)")
   mat.color = Sketchup::Color.new(32, 96, 160)
   mat.alpha = 0.16
   grp.material = mat
@@ -3605,7 +3644,7 @@ ents = rp_defn.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Rotate Frame (top)"] || model.materials.add("Rotate Frame (top)")
+  mat = model.materials["Swing FP Frame (top)"] || model.materials.add("Swing FP Frame (top)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 0.35
   grp.material = mat
@@ -3619,7 +3658,7 @@ ents = rp_defn.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Rotate Frame (top)"] || model.materials.add("Rotate Frame (top)")
+  mat = model.materials["Swing FP Frame (top)"] || model.materials.add("Swing FP Frame (top)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 0.35
   grp.material = mat

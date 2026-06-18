@@ -1240,7 +1240,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Walkway Near (left section)
   grp = ents.add_group
   grp.name = "Walkway Near (left section)"
-  face = grp.entities.add_face([470.mm,0.mm,115.mm], [1155.mm,0.mm,115.mm], [1155.mm,300.mm,115.mm], [470.mm,300.mm,115.mm])
+  face = grp.entities.add_face([470.mm,8.mm,115.mm], [1155.mm,8.mm,115.mm], [1155.mm,300.mm,115.mm], [470.mm,300.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
@@ -1251,7 +1251,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Walkway Near (widened)
   grp = ents.add_group
   grp.name = "Walkway Near (widened)"
-  face = grp.entities.add_face([1155.mm,0.mm,115.mm], [2629.mm,0.mm,115.mm], [2629.mm,500.mm,115.mm], [1155.mm,500.mm,115.mm])
+  face = grp.entities.add_face([1155.mm,10.mm,115.mm], [2629.mm,10.mm,115.mm], [2629.mm,500.mm,115.mm], [1155.mm,500.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
@@ -1262,7 +1262,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Walkway Near (right section)
   grp = ents.add_group
   grp.name = "Walkway Near (right section)"
-  face = grp.entities.add_face([2629.mm,0.mm,115.mm], [4329.mm,0.mm,115.mm], [4329.mm,300.mm,115.mm], [2629.mm,300.mm,115.mm])
+  face = grp.entities.add_face([2629.mm,8.mm,115.mm], [4329.mm,8.mm,115.mm], [4329.mm,300.mm,115.mm], [2629.mm,300.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
@@ -1273,7 +1273,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Walkway Far
   grp = ents.add_group
   grp.name = "Walkway Far"
-  face = grp.entities.add_face([470.mm,2062.mm,115.mm], [4329.mm,2062.mm,115.mm], [4329.mm,2362.mm,115.mm], [470.mm,2362.mm,115.mm])
+  face = grp.entities.add_face([470.mm,2062.mm,115.mm], [4329.mm,2062.mm,115.mm], [4329.mm,2354.mm,115.mm], [470.mm,2354.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")

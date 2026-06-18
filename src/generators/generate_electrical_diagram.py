@@ -1514,7 +1514,7 @@ def draw_sheet5():
     ax.text(EP_W / 2, eh1 + 80, "IP65 ENCLOSURE — INTERIOR\n(front elevation · true scale)",
             ha="center", va="bottom", fontsize=8.5, fontweight="bold", color=TITLE_COL)
     draw_dim_v(ax, EP_W + 48, eh0, eh1, f"{eh1 - eh0}mm")
-    draw_dim_h(ax, 0, EP_W, eh0 - 110, f"{EP_W}mm")
+    draw_dim_h(ax, 0, EP_W, eh0 - 25, f"{EP_W}mm", above=False)
 
     # ── MPPT ──
     mz = eh1 - MPPT_H - 30                               # 1970
@@ -1539,9 +1539,9 @@ def draw_sheet5():
         ax.text(cx, base_z + fbase_h + fuse_h / 2, lt, ha="center", va="center", fontsize=5.4,
                 fontweight="bold", color="white", zorder=6)
         ax.plot([cx, cx], [base_z + fbase_h + fuse_h, base_z + fbase_h + fuse_h + 36], color=col, lw=1.4, zorder=4)
-    ax.text(EP_W / 2, base_z + fbase_h + fuse_h + 44, "↑ circuits A–G → loads",
+    ax.text(EP_W * 0.3, base_z + fbase_h + fuse_h + 44, "↑ circuits A–G → loads",
             ha="center", va="bottom", fontsize=5.8, color=C_OUT, fontweight="bold")
-    ax.text(fb_x0, base_z - 10, "Blue Sea 5026", ha="left", va="top", fontsize=5.4, color=C_OUT)
+    ax.text(fb_x0 + 70, base_z - 10, "Blue Sea 5026", ha="left", va="top", fontsize=5.4, color=C_OUT)
 
     # ── +/- busbars ──
     bbp, bbn = eh0 + 205, eh0 + 175                      # 1705, 1675
@@ -1561,7 +1561,7 @@ def draw_sheet5():
     ax.text(150, eh0 - 58, "FROM BATTERY (+) · 2/0 AWG · MRBF 200A", ha="center", va="top",
             fontsize=5.6, color="#8B1A1A", fontweight="bold")
     ax.plot([240, 240, 135], [dz + DISCONNECT_D / 2, 1712, 1712], color="#8B1A1A", lw=1.6, zorder=3)
-    ax.text(182, 1715, "→ (+) bus", ha="center", va="bottom", fontsize=5.2, color="#8B1A1A")
+    ax.text(170, 1725, "→ (+) bus", ha="center", va="bottom", fontsize=5.2, color="#8B1A1A")
     varrow(ax, 45, bbn, eh0 + 4, col="#2C2C2C", lw=1.5)              # (−) return
     ax.text(45, eh0 - 6, "(−) return", ha="center", va="top", fontsize=5.4, color="#2C2C2C", fontweight="bold")
 

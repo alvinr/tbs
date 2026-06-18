@@ -566,11 +566,10 @@ draw_dim_h(ax, sx(ba_r), sx(PH_X), row1_z,
 draw_dim_h(ax, sx(0), sx(C_LEN), row2_z,
            f"{C_LEN}mm", offset=45, fs=5, above=False)
 
-# ── Clearance leaders ──────────────────────────────────────────────────────
-ep_clr = C_HGT - EP_H_HI
-leader(ax, sx(EP_X + EP_W / 2), sz(EP_H_HI),
-       sx(EP_X - 300), sz(EP_H_HI + 300),
-       f"EP TOP → CEILING: {ep_clr}mm", fs=4.5, color=C_DIM, zorder=10)
+# ── EP top → ceiling clearance — DIMENSIONED at rx1, continuing the EP chain
+#    (1500→2100→2388). A ≥30mm clearance is a dimension, not a leader callout (skill P7). ──
+draw_dim_v(ax, rx1, sz(EP_H_HI), sz(C_HGT),
+           f"{C_HGT - EP_H_HI}mm", offset=60, fs=5, right=False)
 
 # ═══════════════════════════════════════════════════════════════════════════
 # 6. X-POSITION ANNOTATIONS (absolute positions along top)

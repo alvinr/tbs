@@ -117,5 +117,5 @@ On an `ax.invert_xaxis()` sheet, increasing data-x is **screen-left** while `ha=
 ## 12. Title block  *(r7, r27, r57)*
 
 - Height scales with content: **0.04** single-panel, **0.05** two-panel, **0.06** three-panel / long notes. *(r7)*
-- Keep it small enough not to overlap notes positioned below. *(r27)*
+- Keep it small enough not to overlap an adjacent notes block — whether the notes sit **below** it (landscape) or **above** it (portrait / bottom-title sheets, e.g. Sheets 4–5, where both crowd the bottom band). When they crowd, squeeze **both** sides: drop the title-block `height` (long-notes sheet → 0.06, not 0.07) **and** tighten the note `spacing`/`width` — adjusting only one often isn't enough. *(r27, 2026-06-18 tidy)*
 - In detail views, inset the title/subtitle text **10–15 data-units** from the viewport top. *(r57)*

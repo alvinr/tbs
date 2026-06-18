@@ -206,32 +206,76 @@ def static_rails():
 
 
 # ── Static, labeled corner-detail (the cross-slide story a DC can't animate) ──
+CORNER_SLIDE_TRAVEL = -400      # carriage slide along the rail on click (-Y, toward the near end)
+
+
 def corner_detail():
-    """The full Option-A chain at the POSED TR corner, static — including the X/Z
-    cross-slides that absorb the arc travel. Shown only in the corner-detail scene."""
+    """The full Option-A chain at the POSED TR corner. The FIXED guide (rail +
+    leadscrew) is static; the CARRIAGE ASSEMBLY (carriage + drive nut + cross-slides +
+    sliders + rod-end + flat-corner ghost) is returned separately so generate_ruby can
+    build it as a DYNAMIC COMPONENT that slides along the rail in depth (the leadscrew
+    drive — click to run it). The X/Z cross-slide float is still rigid within the slide.
+    Shown only in the corner-detail scene. Returns (static_ruby, slide_ruby, rod_end_world,
+    flat_xz)."""
     cz = CZ
     lx, ly, lz = LOCAL["TR"]
     fx, fz = CX + lx, cz + lz                 # flat rail point
     d = _pose((lx, ly, lz)); px, py, pz = CX + d[0], CY + d[1], cz + d[2]
     dx, dz = px - fx, pz - fz
     y0, rlen = ov.FP_Y_MIN, ov.RAIL_LEN
-    p = []
-    p.append(ov.ruby_box("Detail Rail TR", fx - 12, y0, fz - 8, 24, rlen, 16, color=ov.C_RAIL))
-    p.append(ov.ruby_pipe("Detail Leadscrew TR", (fx + 34, y0, fz), (fx + 34, y0 + rlen, fz),
-             7, color=ov.C_STEEL))
-    p.append(ov.ruby_box("Detail Carriage TR", fx - 26, py - 32, fz - 18, 52, 64, 24, color=ov.C_CARR))
-    p.append(ov.ruby_box("Detail Drive Nut TR", fx + 20, py - 14, fz - 12, 28, 28, 26, color=ov.C_CARR))
+    # ── fixed guide (static) ──
+    static = [
+        ov.ruby_box("Detail Rail TR", fx - 12, y0, fz - 8, 24, rlen, 16, color=ov.C_RAIL),
+        ov.ruby_pipe("Detail Leadscrew TR", (fx + 34, y0, fz), (fx + 34, y0 + rlen, fz),
+                     7, color=ov.C_STEEL),
+    ]
+    # ── moving carriage assembly (the DC — slides along the rail in Y on click) ──
     x0 = min(fx, px) - 16
-    p.append(ov.ruby_box("Detail X cross-slide TR (SWING)", x0, py - 16, fz + 6,
-             abs(dx) + 32, 32, 14, color=C_XSL))
-    p.append(ov.ruby_box("Detail X slider TR", px - 16, py - 20, fz + 4, 32, 40, 20, color=ov.C_CARR))
     z0 = min(fz, pz) - 16
-    p.append(ov.ruby_box("Detail Z cross-slide TR (TILT)", px - 9, py - 15, z0, 18, 30,
-             abs(dz) + 32, color=C_ZSL))
-    p.append(ov.ruby_box("Detail Z slider TR", px - 13, py - 18, pz - 16, 26, 36, 32, color=ov.C_CARR))
-    p.append(joint_ball("Detail Rod-End TR", (px, py, pz), 17, ov.C_STEEL))
-    p.append(joint_ball("Detail Flat-corner ghost TR", (fx, py, fz), 13, C_GHOST))
-    return '\n'.join(p), (px, py, pz), (fx, fz)
+    slide = [
+        ov.ruby_box("Detail Carriage TR", fx - 26, py - 32, fz - 18, 52, 64, 24, color=ov.C_CARR),
+        ov.ruby_box("Detail Drive Nut TR", fx + 20, py - 14, fz - 12, 28, 28, 26, color=ov.C_CARR),
+        ov.ruby_box("Detail X cross-slide TR (SWING)", x0, py - 16, fz + 6,
+                    abs(dx) + 32, 32, 14, color=C_XSL),
+        ov.ruby_box("Detail X slider TR", px - 16, py - 20, fz + 4, 32, 40, 20, color=ov.C_CARR),
+        ov.ruby_box("Detail Z cross-slide TR (TILT)", px - 9, py - 15, z0, 18, 30,
+                    abs(dz) + 32, color=C_ZSL),
+        ov.ruby_box("Detail Z slider TR", px - 13, py - 18, pz - 16, 26, 36, 32, color=ov.C_CARR),
+        joint_ball("Detail Rod-End TR", (px, py, pz), 17, ov.C_STEEL),
+        joint_ball("Detail Flat-corner ghost TR", (fx, py, fz), 13, C_GHOST),
+    ]
+    return '\n'.join(static), '\n'.join(slide), (px, py, pz), (fx, fz)
+
+
+def corner_slide_block(slide_ruby):
+    """Ruby for the Corner Slide TR DYNAMIC COMPONENT — the carriage assembly built at its
+    posed home, as a TOP-LEVEL translation DC: a `slide` driver (0→1) translates it along
+    the rail in Y (the leadscrew depth drive). Top-level + pure translation, so no rotation
+    pivot or nested-position reset (see the swing-DC notes). On the Corner Detail tag, so it
+    shows in the corner-detail scene with the static rail/leadscrew."""
+    return f'''
+# ═══ Corner Slide TR — DYNAMIC COMPONENT (click: carriage slides along the rail) ═══
+cd_defn = model.definitions.add("Corner Slide TR")
+ents = cd_defn.entities
+{slide_ruby}
+cd_inst = entities.add_instance(cd_defn, Geom::Transformation.new)
+cd_inst.name = "Corner Slide TR"
+cd_inst.layer = model.layers["Corner Detail"]
+cda = "dynamic_attributes"
+[cd_defn, cd_inst].each do |e|
+  e.set_attribute(cda, "_name", "CornerSlideTR")
+  e.set_attribute(cda, "_lengthunits", "MILLIMETERS")
+  e.set_attribute(cda, "slide", 0.0)
+  e.set_attribute(cda, "x", 0.0)
+  e.set_attribute(cda, "y", 0.0)
+  e.set_attribute(cda, "z", 0.0)
+end
+cd_inst.set_attribute(cda, "_slide_access", "VIEW")
+cd_inst.set_attribute(cda, "_slide_label", "Slide carriage on rail")
+cd_inst.set_attribute(cda, "_y_formula", "{CORNER_SLIDE_TRAVEL}*slide")
+cd_inst.set_attribute(cda, "onclick", 'ANIMATE("slide", 0, 1)')
+cd_inst.set_attribute(cda, "_onclick_access", "NONE")
+'''
 
 
 # ── "Labeled" scene callouts (project rule: every .skp gets a Labeled scene) ──
@@ -281,7 +325,7 @@ def labels_ruby(tr_world, flat_xz):
     notes = [
         ("HGR20 rail - FIXED (depth guide)", (fx, py - 250, fz), (L, 0, 1.1 * L)),
         ("Leadscrew - DEPTH / focus drive", (fx + 34, py - 700, fz), (0.4 * L, 0, 1.9 * L)),
-        ("Carriage + drive nut", (fx - 20, py, fz - 12), (-1.0 * L, 0, -1.5 * L)),
+        ("Carriage + drive nut\n(click: slides on rail)", (fx - 20, py, fz - 12), (-1.0 * L, 0, -1.5 * L)),
         ("X cross-slide = SWING float (blue)", ((fx + px) / 2, py, fz + 14), (-1.2 * L, 0, 0.4 * L)),
         ("Z cross-slide = TILT float (green)", (px, py, (fz + pz) / 2), (1.7 * L, 0, -1.2 * L)),
         ("Rod-end -> rigid frame corner", (px, py, pz), (1.7 * L, 0, 0.5 * L)),
@@ -296,7 +340,7 @@ def labels_ruby(tr_world, flat_xz):
 
 
 def generate_ruby():
-    detail, tr_world, flat_xz = corner_detail()
+    cd_static, cd_slide, tr_world, flat_xz = corner_detail()
     comps = [
         ov.component("Container (ghost)", "Context", context()),
         ov.component("Near-wall equipment (ghost)", "Context", near_wall_ghost()),
@@ -307,7 +351,7 @@ def generate_ruby():
                      ov.walkways(include_right=True, include_right_hangers=False)),
         ov.component("IBC Cantilever Arms", "IBC Cantilever",
                      '\n'.join(ov.ibc_cantilever_arms())),
-        ov.component("Corner Detail (TR)", "Corner Detail", detail),
+        ov.component("Corner Detail (TR)", "Corner Detail", cd_static),
     ]
     body = '\n'.join(comps)
     labels = labels_ruby(tr_world, flat_xz)
@@ -346,6 +390,9 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 
 # ── Film Plane (Dynamic Component — click to swing: left forward / right back) ──
 {dc_block()}
+
+# ── Corner Slide TR (Dynamic Component — click: carriage slides along the rail) ──
+{corner_slide_block(cd_slide)}
 
 # ── Corner-detail callouts (Corner Detail tag — shown in the corner-detail scene) ──
 {labels}

@@ -653,6 +653,11 @@ def walkways(include_right=True, include_right_hangers=None):
         include_right_hangers = include_right
     grate_z = WALKWAY_H - WALKWAY_GRATE_T   # 115mm — grate bottom (raised +50)
     t = WALKWAY_GRATE_T                      # 15mm — thin grate
+    # The near/far decks rest on the gusset-bracket ARMS, which start at the plate's inner
+    # face (y_arm = wall_yd + bracket_t). Inset each deck's WALL edge by the plate thickness
+    # so the grate sits on the INSIDE of those plates instead of being drawn through them.
+    bt = WALKWAY_BRACKET_T                    # 8mm  — standard bracket plate
+    btw = WALKWAY_WIDE_BRACKET_T              # 10mm — widened bracket plate (near EP/battery zone)
 
     near_x_l = WALKWAY_LEFT_X + WALKWAY_W
     near_x_r = WALKWAY_RIGHT_X
@@ -665,23 +670,24 @@ def walkways(include_right=True, include_right_hangers=None):
     if WALKWAY_NEAR_WIDE_X_L > near_x_l:
         seg_len = WALKWAY_NEAR_WIDE_X_L - near_x_l
         parts.append(ruby_box("Walkway Near (left section)",
-                              near_x_l, 0, grate_z,
-                              seg_len, WALKWAY_W, t, color=C_WALKWAY))
+                              near_x_l, bt, grate_z,
+                              seg_len, WALKWAY_W - bt, t, color=C_WALKWAY))
 
     wide_len = WALKWAY_NEAR_WIDE_X_R - WALKWAY_NEAR_WIDE_X_L
     parts.append(ruby_box("Walkway Near (widened)",
-                          WALKWAY_NEAR_WIDE_X_L, 0, grate_z,
-                          wide_len, WALKWAY_NEAR_WIDE_W, t, color=C_WALKWAY))
+                          WALKWAY_NEAR_WIDE_X_L, btw, grate_z,
+                          wide_len, WALKWAY_NEAR_WIDE_W - btw, t, color=C_WALKWAY))
 
     if WALKWAY_NEAR_WIDE_X_R < near_x_r:
         seg_len = near_x_r - WALKWAY_NEAR_WIDE_X_R
         parts.append(ruby_box("Walkway Near (right section)",
-                              WALKWAY_NEAR_WIDE_X_R, 0, grate_z,
-                              seg_len, WALKWAY_W, t, color=C_WALKWAY))
+                              WALKWAY_NEAR_WIDE_X_R, bt, grate_z,
+                              seg_len, WALKWAY_W - bt, t, color=C_WALKWAY))
 
+    # far deck: inset the FAR (wall) edge by the standard plate thickness; near edge unchanged
     parts.append(ruby_box("Walkway Far",
                           near_x_l, WALKWAY_FAR_YD, grate_z,
-                          near_len, WALKWAY_W, t, color=C_WALKWAY))
+                          near_len, WALKWAY_W - bt, t, color=C_WALKWAY))
 
     if include_right:
         if include_right_hangers:

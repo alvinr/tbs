@@ -162,6 +162,10 @@ def walkway_decks():
     'gates'. Geometry mirrors the overview's walkways() (minus the brackets,
     which are their own tag here)."""
     t = GRATE_T
+    # Inset each deck's WALL edge by the bracket plate thickness so the grate sits on the
+    # INSIDE of the gusset-bracket plates (which mount flat on the wall) instead of through
+    # them — matches the overview fix.
+    btw = k.WALKWAY_WIDE_BRACKET_T            # 10mm — widened bracket plate (BRK_T = 8 std)
     # Near/far grates start at the left-walkway inner edge (X = WK_LEFT_X+WK_W). With the
     # floor-leg cantilever redesign there is no full-width kerb beam to cut around.
     near_x_l = WK_LEFT_X + WK_W
@@ -174,20 +178,20 @@ def walkway_decks():
     # lifts out with the left walkway rather than dropping the grate (#8). The rest is fixed.
     if WK_NEAR_WIDE_XL > near_x_l:
         liftout_x = min(ov.WALKWAY_NEAR_LIFTOUT_X_R, WK_NEAR_WIDE_XL)   # X950 (sweep X≈896 +50mm)
-        parts.append(ruby_box("Walkway Near (door-end, removable)", near_x_l, 0, GRATE_Z,
-                              liftout_x - near_x_l, WK_W, t, color=C_REMOVABLE))
+        parts.append(ruby_box("Walkway Near (door-end, removable)", near_x_l, BRK_T, GRATE_Z,
+                              liftout_x - near_x_l, WK_W - BRK_T, t, color=C_REMOVABLE))
         if WK_NEAR_WIDE_XL > liftout_x:
-            parts.append(ruby_box("Walkway Near (left)", liftout_x, 0, GRATE_Z,
-                                  WK_NEAR_WIDE_XL - liftout_x, WK_W, t, color=C_WALKWAY))
-    parts.append(ruby_box("Walkway Near (widened)", WK_NEAR_WIDE_XL, 0, GRATE_Z,
-                          WK_NEAR_WIDE_XR - WK_NEAR_WIDE_XL, WK_NEAR_WIDE_W, t, color=C_WALKWAY))
+            parts.append(ruby_box("Walkway Near (left)", liftout_x, BRK_T, GRATE_Z,
+                                  WK_NEAR_WIDE_XL - liftout_x, WK_W - BRK_T, t, color=C_WALKWAY))
+    parts.append(ruby_box("Walkway Near (widened)", WK_NEAR_WIDE_XL, btw, GRATE_Z,
+                          WK_NEAR_WIDE_XR - WK_NEAR_WIDE_XL, WK_NEAR_WIDE_W - btw, t, color=C_WALKWAY))
     if WK_NEAR_WIDE_XR < near_x_r:
-        parts.append(ruby_box("Walkway Near (right)", WK_NEAR_WIDE_XR, 0, GRATE_Z,
-                              near_x_r - WK_NEAR_WIDE_XR, WK_W, t, color=C_WALKWAY))
+        parts.append(ruby_box("Walkway Near (right)", WK_NEAR_WIDE_XR, BRK_T, GRATE_Z,
+                              near_x_r - WK_NEAR_WIDE_XR, WK_W - BRK_T, t, color=C_WALKWAY))
 
     # Far deck.
     parts.append(ruby_box("Walkway Far", near_x_l, WK_FAR_YD, GRATE_Z,
-                          near_x_r - near_x_l, WK_W, t, color=C_WALKWAY))
+                          near_x_r - near_x_l, WK_W - BRK_T, t, color=C_WALKWAY))
 
     # (The right grate rides the Walkways tag via ov.right_walkway_grate() — see the
     #  component list — so it shows with the decks but not in the bare Right-Cantilever scene.)

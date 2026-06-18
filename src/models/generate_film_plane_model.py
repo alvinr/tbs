@@ -318,6 +318,87 @@ cg_inst.layer = model.layers["Corner Detail"]
 '''
 
 
+SWING_DETAIL_OFFSET = -1400      # X offset for the SECOND (swing) corner detail, beside the TR slide one
+
+
+def corner_swing_detail():
+    """A SECOND corner detail (beside the TR slide detail, offset −X) showing the SWING ARC:
+    the corner assembly built FLAT (on the rail), split so the CARRIAGE rides the rail in Y
+    while the SLIDER FLOATS in X — both driven by one `swing` attribute via SIN/COS formulas
+    (carriage Y = (W/2)·sin θ, X float = (W/2)·(cos θ−1)), so the rod-end traces the arc the
+    corner takes as the plane swings. Returns (static_ruby, parent_ruby, child_ruby, rod_world)."""
+    ox = SWING_DETAIL_OFFSET
+    lx, ly, lz = LOCAL["TR"]
+    fx, fz = CX + lx + ox, CZ + lz            # flat rail point (offset −X), top-rail height
+    cy = CY                                    # flat depth (on the rail)
+    y0, rlen = ov.FP_Y_MIN, ov.RAIL_LEN
+    # fixed guide
+    static = [
+        ov.ruby_box("Swing Rail TR", fx - 12, y0, fz - 8, 24, rlen, 16, color=ov.C_RAIL),
+        ov.ruby_pipe("Swing Leadscrew TR", (fx + 34, y0, fz), (fx + 34, y0 + rlen, fz), 7, color=ov.C_STEEL),
+    ]
+    # parent — carriage rides the rail (moves in Y); carries the X cross-slide channel
+    parent = [
+        ov.ruby_box("Swing Carriage TR", fx - 26, cy - 32, fz - 18, 52, 64, 24, color=ov.C_CARR),
+        ov.ruby_box("Swing Drive Nut TR", fx + 20, cy - 14, fz - 12, 28, 28, 26, color=ov.C_CARR),
+        ov.ruby_box("Swing X cross-slide TR (SWING float)", fx - 100, cy - 16, fz + 6, 130, 32, 14, color=C_XSL),
+    ]
+    # child — the slider floats in X (cross-slide); carries the Z stub + rod-end
+    child = [
+        ov.ruby_box("Swing X slider TR", fx - 16, cy - 20, fz + 4, 32, 40, 20, color=ov.C_CARR),
+        ov.ruby_box("Swing Z cross-slide TR", fx - 9, cy - 15, fz - 9, 18, 30, 50, color=C_ZSL),
+        ov.ruby_box("Swing Z slider TR", fx - 13, cy - 18, fz - 16, 26, 36, 32, color=ov.C_CARR),
+        joint_ball("Swing Rod-End TR", (fx, cy, fz), 17, ov.C_STEEL),
+    ]
+    return '\n'.join(static), '\n'.join(parent), '\n'.join(child), (fx, cy, fz)
+
+
+def corner_swing_block(parent_ruby, child_ruby):
+    """Ruby for the SWING-ARC dynamic component: a parent 'Corner Swing' (carriage, moves in Y
+    by (W/2)·SIN θ) with a NESTED child 'Corner Swing Float' (slider, moves in X by
+    (W/2)·(COS θ−1)). One `swing` driver; the child reads it by ancestor reference so it
+    re-evaluates as the parent animates. Both built FLAT at world coords + identity instances
+    (home baked in the geometry), so the SIN/COS formulas translate from flat — no DC reset.
+    A callout flags it clickable. Corner Detail tag (shows in the corner-detail scene)."""
+    wh = W / 2
+    return f'''
+# ═══ Corner Swing — DYNAMIC COMPONENT (click: corner traces the swing arc) ═══
+cs_defn = model.definitions.add("Corner Swing")
+ents = cs_defn.entities
+{parent_ruby}
+cs_inst = entities.add_instance(cs_defn, Geom::Transformation.new)
+cs_inst.name = "Corner Swing"
+cs_inst.layer = model.layers["Corner Detail"]
+csa = "dynamic_attributes"
+# nested child — the floating slider (built flat, world coords)
+cf_defn = model.definitions.add("Corner Swing Float")
+ents = cf_defn.entities
+{child_ruby}
+cf_inst = cs_defn.entities.add_instance(cf_defn, Geom::Transformation.new)
+cf_inst.name = "Corner Swing Float"
+cf_inst.layer = model.layers["Corner Detail"]
+[cs_defn, cs_inst].each do |e|
+  e.set_attribute(csa, "_name", "CornerSwing")
+  e.set_attribute(csa, "_lengthunits", "MILLIMETERS")
+  e.set_attribute(csa, "swing", 0.0)
+  e.set_attribute(csa, "x", 0.0); e.set_attribute(csa, "y", 0.0); e.set_attribute(csa, "z", 0.0)
+end
+cs_inst.set_attribute(csa, "_swing_access", "VIEW")
+cs_inst.set_attribute(csa, "_swing_label", "Swing (corner arc)")
+cs_inst.set_attribute(csa, "_y_formula", "{wh}*SIN({SWING_DEG}*swing)")
+cs_inst.set_attribute(csa, "onclick", 'ANIMATE("swing", 0, 1)')
+cs_inst.set_attribute(csa, "_onclick_access", "NONE")
+[cf_defn, cf_inst].each do |e|
+  e.set_attribute(csa, "_name", "CornerSwingFloat")
+  e.set_attribute(csa, "_lengthunits", "MILLIMETERS")
+  e.set_attribute(csa, "x", 0.0); e.set_attribute(csa, "y", 0.0); e.set_attribute(csa, "z", 0.0)
+end
+cf_inst.set_attribute(csa, "_x_formula", "{wh}*(COS({SWING_DEG}*CornerSwing!swing)-1)")
+ts = entities.add_text("SWING ARC\\n(carriage in Y + X float; click to animate)", Geom::Point3d.new({ov.mm(CX + W / 2 + SWING_DETAIL_OFFSET)}, {ov.mm(CY)}, {ov.mm(RZ_TOP)}), Geom::Vector3d.new({ov.mm(-250)}, {ov.mm(-700)}, {ov.mm(350)}))
+ts.layer = model.layers["Corner Detail"] rescue nil
+'''
+
+
 # ── "Labeled" scene callouts (project rule: every .skp gets a Labeled scene) ──
 # (top-level component instance name, text, leader Δx, Δy, Δz mm). The camera looks from
 # +X/−Y/+Z, so Δy<0 / Δz>0 pulls a callout OUT toward the viewer; Δx spreads them apart.
@@ -381,6 +462,7 @@ def labels_ruby(tr_world, flat_xz):
 
 def generate_ruby():
     cd_static, cd_slide, tr_world, flat_xz = corner_detail()
+    sw_static, sw_parent, sw_child, sw_world = corner_swing_detail()
     comps = [
         ov.component("Container (ghost)", "Context", context()),
         ov.component("Near-wall equipment (ghost)", "Context", near_wall_ghost()),
@@ -392,6 +474,7 @@ def generate_ruby():
         ov.component("IBC Cantilever Arms", "IBC Cantilever",
                      '\n'.join(ov.ibc_cantilever_arms())),
         ov.component("Corner Detail (TR)", "Corner Detail", cd_static),
+        ov.component("Corner Detail Swing (TR)", "Corner Detail", sw_static),
     ]
     body = '\n'.join(comps)
     labels = labels_ruby(tr_world, flat_xz)
@@ -399,13 +482,17 @@ def generate_ruby():
     tags_ruby = '\n'.join(f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
     keep = '[' + ', '.join(f'"{t}"' for t in TAGS) + ']'
 
+    # Corner-detail camera: aim at the midpoint of the two details (slide + swing) so both frame
+    cd_tgt = ((tr_world[0] + sw_world[0]) / 2, (tr_world[1] + sw_world[1]) / 2,
+              (tr_world[2] + sw_world[2]) / 2)
+
     # scenes: name, visible tags, target point (mm) or None, standoff(inches) or 0=extents
     main = ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "IBC Cantilever"]
     noghost = ["Film Plane", "Corner Mechanism", "Processing Tray"]
     scenes = [("Combined", main, None, 0),
               ("Labeled", main + ["Labels"], None, 0),
               ("No Container", noghost, None, 0),
-              ("Corner detail (TR)", ["Corner Detail"], tr_world, 95)]
+              ("Corner detail (TR)", ["Corner Detail"], cd_tgt, 140)]
 
     def slit(s):
         name, tags, tgt, so = s
@@ -436,6 +523,9 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 
 # ── Partial film-plane ghost at the TR corner (static, posed) ──
 {corner_plane_ghost_block(corner_plane_ghost())}
+
+# ── Corner Swing (2nd detail — click: corner traces the swing arc; carriage Y + X float) ──
+{corner_swing_block(sw_parent, sw_child)}
 
 # ── Corner-detail callouts (Corner Detail tag — shown in the corner-detail scene) ──
 {labels}

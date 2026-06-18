@@ -2884,94 +2884,6 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Detail Carriage TR
-  grp = ents.add_group
-  grp.name = "Detail Carriage TR"
-  face = grp.entities.add_face([4623.mm,1378.0520922298629.mm,2270.mm], [4675.mm,1378.0520922298629.mm,2270.mm], [4675.mm,1442.0520922298629.mm,2270.mm], [4623.mm,1442.0520922298629.mm,2270.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(24.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Detail Drive Nut TR
-  grp = ents.add_group
-  grp.name = "Detail Drive Nut TR"
-  face = grp.entities.add_face([4669.mm,1396.0520922298629.mm,2276.mm], [4697.mm,1396.0520922298629.mm,2276.mm], [4697.mm,1424.0520922298629.mm,2276.mm], [4669.mm,1424.0520922298629.mm,2276.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(26.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Detail X cross-slide TR (SWING)
-  grp = ents.add_group
-  grp.name = "Detail X cross-slide TR (SWING)"
-  face = grp.entities.add_face([4633.mm,1394.0520922298629.mm,2294.mm], [4682.979444694831.mm,1394.0520922298629.mm,2294.mm], [4682.979444694831.mm,1426.0520922298629.mm,2294.mm], [4633.mm,1426.0520922298629.mm,2294.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["Detail X cross-slide TR (SWING)"] || model.materials.add("Detail X cross-slide TR (SWING)")
-  mat.color = Sketchup::Color.new(31, 119, 180)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Detail X slider TR
-  grp = ents.add_group
-  grp.name = "Detail X slider TR"
-  face = grp.entities.add_face([4650.979444694831.mm,1390.0520922298629.mm,2292.mm], [4682.979444694831.mm,1390.0520922298629.mm,2292.mm], [4682.979444694831.mm,1430.0520922298629.mm,2292.mm], [4650.979444694831.mm,1430.0520922298629.mm,2292.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(20.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Detail Z cross-slide TR (TILT)
-  grp = ents.add_group
-  grp.name = "Detail Z cross-slide TR (TILT)"
-  face = grp.entities.add_face([4657.979444694831.mm,1395.0520922298629.mm,2207.531411620136.mm], [4675.979444694831.mm,1395.0520922298629.mm,2207.531411620136.mm], [4675.979444694831.mm,1425.0520922298629.mm,2207.531411620136.mm], [4657.979444694831.mm,1425.0520922298629.mm,2207.531411620136.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(96.46858837986383.mm)
-  mat = model.materials["Detail Z cross-slide TR (TILT)"] || model.materials.add("Detail Z cross-slide TR (TILT)")
-  mat.color = Sketchup::Color.new(44, 160, 44)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Detail Z slider TR
-  grp = ents.add_group
-  grp.name = "Detail Z slider TR"
-  face = grp.entities.add_face([4653.979444694831.mm,1392.0520922298629.mm,2207.531411620136.mm], [4679.979444694831.mm,1392.0520922298629.mm,2207.531411620136.mm], [4679.979444694831.mm,1428.0520922298629.mm,2207.531411620136.mm], [4653.979444694831.mm,1428.0520922298629.mm,2207.531411620136.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(32.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Detail Rod-End TR
-  grp = ents.add_group
-  grp.name = "Detail Rod-End TR"
-  face = grp.entities.add_face([4649.979444694831.mm,1393.0520922298629.mm,2206.531411620136.mm], [4683.979444694831.mm,1393.0520922298629.mm,2206.531411620136.mm], [4683.979444694831.mm,1427.0520922298629.mm,2206.531411620136.mm], [4649.979444694831.mm,1427.0520922298629.mm,2206.531411620136.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(34.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Detail Flat-corner ghost TR
-  grp = ents.add_group
-  grp.name = "Detail Flat-corner ghost TR"
-  face = grp.entities.add_face([4636.mm,1397.0520922298629.mm,2275.mm], [4662.mm,1397.0520922298629.mm,2275.mm], [4662.mm,1423.0520922298629.mm,2275.mm], [4636.mm,1423.0520922298629.mm,2275.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(26.mm)
-  mat = model.materials["Detail Flat-corner ghost TR"] || model.materials.add("Detail Flat-corner ghost TR")
-  mat.color = Sketchup::Color.new(154, 166, 178)
-  mat.alpha = 1.0
-  grp.material = mat
-
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Corner Detail (TR)"
   inst.layer = model.layers["Corner Detail"]
@@ -3198,10 +3110,123 @@ fp_inst.set_attribute(fda, "onclick", 'ANIMATE("pose", 0, 1)')
 fp_inst.set_attribute(fda, "_onclick_access", "NONE")
 
 
+# ── Corner Slide TR (Dynamic Component — click: carriage slides along the rail) ──
+
+# ═══ Corner Slide TR — DYNAMIC COMPONENT (click: carriage slides along the rail) ═══
+cd_defn = model.definitions.add("Corner Slide TR")
+ents = cd_defn.entities
+  # Detail Carriage TR
+  grp = ents.add_group
+  grp.name = "Detail Carriage TR"
+  face = grp.entities.add_face([4623.mm,1378.0520922298629.mm,2270.mm], [4675.mm,1378.0520922298629.mm,2270.mm], [4675.mm,1442.0520922298629.mm,2270.mm], [4623.mm,1442.0520922298629.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Detail Drive Nut TR
+  grp = ents.add_group
+  grp.name = "Detail Drive Nut TR"
+  face = grp.entities.add_face([4669.mm,1396.0520922298629.mm,2276.mm], [4697.mm,1396.0520922298629.mm,2276.mm], [4697.mm,1424.0520922298629.mm,2276.mm], [4669.mm,1424.0520922298629.mm,2276.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(26.mm)
+  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Detail X cross-slide TR (SWING)
+  grp = ents.add_group
+  grp.name = "Detail X cross-slide TR (SWING)"
+  face = grp.entities.add_face([4633.mm,1394.0520922298629.mm,2294.mm], [4682.979444694831.mm,1394.0520922298629.mm,2294.mm], [4682.979444694831.mm,1426.0520922298629.mm,2294.mm], [4633.mm,1426.0520922298629.mm,2294.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Detail X cross-slide TR (SWING)"] || model.materials.add("Detail X cross-slide TR (SWING)")
+  mat.color = Sketchup::Color.new(31, 119, 180)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Detail X slider TR
+  grp = ents.add_group
+  grp.name = "Detail X slider TR"
+  face = grp.entities.add_face([4650.979444694831.mm,1390.0520922298629.mm,2292.mm], [4682.979444694831.mm,1390.0520922298629.mm,2292.mm], [4682.979444694831.mm,1430.0520922298629.mm,2292.mm], [4650.979444694831.mm,1430.0520922298629.mm,2292.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(20.mm)
+  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Detail Z cross-slide TR (TILT)
+  grp = ents.add_group
+  grp.name = "Detail Z cross-slide TR (TILT)"
+  face = grp.entities.add_face([4657.979444694831.mm,1395.0520922298629.mm,2207.531411620136.mm], [4675.979444694831.mm,1395.0520922298629.mm,2207.531411620136.mm], [4675.979444694831.mm,1425.0520922298629.mm,2207.531411620136.mm], [4657.979444694831.mm,1425.0520922298629.mm,2207.531411620136.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(96.46858837986383.mm)
+  mat = model.materials["Detail Z cross-slide TR (TILT)"] || model.materials.add("Detail Z cross-slide TR (TILT)")
+  mat.color = Sketchup::Color.new(44, 160, 44)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Detail Z slider TR
+  grp = ents.add_group
+  grp.name = "Detail Z slider TR"
+  face = grp.entities.add_face([4653.979444694831.mm,1392.0520922298629.mm,2207.531411620136.mm], [4679.979444694831.mm,1392.0520922298629.mm,2207.531411620136.mm], [4679.979444694831.mm,1428.0520922298629.mm,2207.531411620136.mm], [4653.979444694831.mm,1428.0520922298629.mm,2207.531411620136.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(32.mm)
+  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Detail Rod-End TR
+  grp = ents.add_group
+  grp.name = "Detail Rod-End TR"
+  face = grp.entities.add_face([4649.979444694831.mm,1393.0520922298629.mm,2206.531411620136.mm], [4683.979444694831.mm,1393.0520922298629.mm,2206.531411620136.mm], [4683.979444694831.mm,1427.0520922298629.mm,2206.531411620136.mm], [4649.979444694831.mm,1427.0520922298629.mm,2206.531411620136.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(34.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Detail Flat-corner ghost TR
+  grp = ents.add_group
+  grp.name = "Detail Flat-corner ghost TR"
+  face = grp.entities.add_face([4636.mm,1397.0520922298629.mm,2275.mm], [4662.mm,1397.0520922298629.mm,2275.mm], [4662.mm,1423.0520922298629.mm,2275.mm], [4636.mm,1423.0520922298629.mm,2275.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(26.mm)
+  mat = model.materials["Detail Flat-corner ghost TR"] || model.materials.add("Detail Flat-corner ghost TR")
+  mat.color = Sketchup::Color.new(154, 166, 178)
+  mat.alpha = 1.0
+  grp.material = mat
+
+cd_inst = entities.add_instance(cd_defn, Geom::Transformation.new)
+cd_inst.name = "Corner Slide TR"
+cd_inst.layer = model.layers["Corner Detail"]
+cda = "dynamic_attributes"
+[cd_defn, cd_inst].each do |e|
+  e.set_attribute(cda, "_name", "CornerSlideTR")
+  e.set_attribute(cda, "_lengthunits", "MILLIMETERS")
+  e.set_attribute(cda, "slide", 0.0)
+  e.set_attribute(cda, "x", 0.0)
+  e.set_attribute(cda, "y", 0.0)
+  e.set_attribute(cda, "z", 0.0)
+end
+cd_inst.set_attribute(cda, "_slide_access", "VIEW")
+cd_inst.set_attribute(cda, "_slide_label", "Slide carriage on rail")
+cd_inst.set_attribute(cda, "_y_formula", "-400*slide")
+cd_inst.set_attribute(cda, "onclick", 'ANIMATE("slide", 0, 1)')
+cd_inst.set_attribute(cda, "_onclick_access", "NONE")
+
+
 # ── Corner-detail callouts (Corner Detail tag — shown in the corner-detail scene) ──
 t=entities.add_text("HGR20 rail - FIXED (depth guide)", Geom::Point3d.new(4649.mm,1160.0520922298629.mm,2288.mm), Geom::Vector3d.new(10,0,11.0)); t.layer=model.layers["Corner Detail"] rescue nil
 t=entities.add_text("Leadscrew - DEPTH / focus drive", Geom::Point3d.new(4683.mm,710.0520922298629.mm,2288.mm), Geom::Vector3d.new(4.0,0,19.0)); t.layer=model.layers["Corner Detail"] rescue nil
-t=entities.add_text("Carriage + drive nut", Geom::Point3d.new(4629.mm,1410.0520922298629.mm,2276.mm), Geom::Vector3d.new(-10.0,0,-15.0)); t.layer=model.layers["Corner Detail"] rescue nil
+t=entities.add_text("Carriage + drive nut
+(click: slides on rail)", Geom::Point3d.new(4629.mm,1410.0520922298629.mm,2276.mm), Geom::Vector3d.new(-10.0,0,-15.0)); t.layer=model.layers["Corner Detail"] rescue nil
 t=entities.add_text("X cross-slide = SWING float (blue)", Geom::Point3d.new(4657.989722347415.mm,1410.0520922298629.mm,2302.mm), Geom::Vector3d.new(-12.0,0,4.0)); t.layer=model.layers["Corner Detail"] rescue nil
 t=entities.add_text("Z cross-slide = TILT float (green)", Geom::Point3d.new(4666.979444694831.mm,1410.0520922298629.mm,2255.765705810068.mm), Geom::Vector3d.new(17.0,0,-12.0)); t.layer=model.layers["Corner Detail"] rescue nil
 t=entities.add_text("Rod-end -> rigid frame corner", Geom::Point3d.new(4666.979444694831.mm,1410.0520922298629.mm,2223.531411620136.mm), Geom::Vector3d.new(17.0,0,5.0)); t.layer=model.layers["Corner Detail"] rescue nil

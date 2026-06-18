@@ -1460,17 +1460,19 @@ def draw_sheet4():
     draw_notes(ax, [
         "CIRCUIT C — PUMP POWER (one feed, five pumps):",
         "One 14 AWG / 15A Circuit-C feed → 12V distribution wireway → 5 IP-rated rocker",
-        "switches (one per pump) → 16 AWG branch to each pump. Pumps run ONE AT A TIME —",
-        "the operator enables the pump for the current task; each Shurflo 2088 then runs",
-        "on its internal pressure switch. 15A fuse covers a single pump (7.5A) with margin.",
-        "Wet zone: sealed, above the spill line. See Equipment Panel report §3.2 / Electrical §7.3.",
-    ], -270, 910, spacing=46, fs=7.0, width=940)
+        "switches (one per pump) → 16 AWG branch to each pump. Pumps run ONE AT A",
+        "TIME — the operator enables the pump for the current task; each Shurflo 2088 then",
+        "runs on its internal pressure switch. 15A fuse covers a single pump (7.5A) with",
+        "margin.",
+        "Wet zone: sealed, above the spill line. See Equipment Panel report",
+        "§3.2 / Electrical §7.3.",
+    ], -240, 910, spacing=40, fs=7.0, width=970)
 
     title_block(ax, "SHEET 4 OF 5",
                 drawing_title="PUMP POWER — CIRCUIT C",
                 subtitle="Frontal · feed → wireway → 5 switches → pumps",
                 scale_note="Approx 1:8 · mm",
-                doc_id="TBS-ELEC", height=0.07, portrait=True)
+                doc_id="TBS-ELEC", height=0.06, portrait=True)
 
     plt.savefig(f"{DIAGRAMS_DIR}/electrical-sheet4.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")

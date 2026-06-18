@@ -3416,8 +3416,8 @@ cd_inst.set_attribute(cda, "_onclick_access", "NONE")
 
 # ── Partial film-plane ghost at the TR corner (static, posed) ──
 
-# ── Partial film-plane ghost at the TR corner (posed; nested in the slide DC so it rides
-#    the carriage — the plane corner stays attached as the carriage slides) ──
+# ── Partial film-plane ghost at the rail-slide corner (posed + offset ox; nested in the slide
+#    DC so it rides the carriage — the plane corner stays attached to the rail as it slides) ──
 cg_defn = model.definitions.add("Corner Plane Ghost TR")
 ents = cg_defn.entities
   # Film Plane (partial ghost)
@@ -3459,7 +3459,7 @@ ents = cg_defn.entities
   mat.alpha = 0.35
   grp.material = mat
 
-cg_t = Geom::Transformation.translation([2399.5.mm, 1181.mm, 1219.mm]) *
+cg_t = Geom::Transformation.translation([999.5.mm, 1181.mm, 1219.mm]) *
        Geom::Transformation.rotation(ORIGIN, Z_AXIS, (15.0).degrees) *
        Geom::Transformation.rotation(ORIGIN, X_AXIS, (20.0).degrees)
 cg_inst = cd_defn.entities.add_instance(cg_defn, cg_t)

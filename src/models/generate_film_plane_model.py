@@ -298,18 +298,21 @@ def corner_plane_ghost():
 
 
 def corner_plane_ghost_block(ghost_ruby):
-    """Ruby placing the partial-plane ghost (static), posed by the same tilt+swing as the
-    plane (translate ∘ RotZ(swing) ∘ RotX(tilt) about the plane centre), on the Corner
-    Detail tag so it shows in the corner-detail scene with the mechanism."""
+    """Ruby placing the partial-plane ghost, posed by the same tilt+swing as the plane
+    (translate ∘ RotZ(swing) ∘ RotX(tilt) about the plane centre) so its TR corner lands on
+    the rod-end, and NESTED inside the Corner Slide DC (cd_defn) so it RIDES the carriage when
+    it slides — the corner stays attached to the plane. It carries no DC attributes (plain
+    geometry), so it just moves rigidly with the parent, no DC reset. Corner Detail tag."""
     return f'''
-# ── Partial film-plane ghost at the TR corner (static, posed by tilt+swing) ──
+# ── Partial film-plane ghost at the TR corner (posed; nested in the slide DC so it rides
+#    the carriage — the plane corner stays attached as the carriage slides) ──
 cg_defn = model.definitions.add("Corner Plane Ghost TR")
 ents = cg_defn.entities
 {ghost_ruby}
 cg_t = Geom::Transformation.translation([{ov.mm(CX)}, {ov.mm(CY)}, {ov.mm(CZ)}]) *
        Geom::Transformation.rotation(ORIGIN, Z_AXIS, ({SWING_DEG}).degrees) *
        Geom::Transformation.rotation(ORIGIN, X_AXIS, ({TILT_DEG}).degrees)
-cg_inst = entities.add_instance(cg_defn, cg_t)
+cg_inst = cd_defn.entities.add_instance(cg_defn, cg_t)
 cg_inst.name = "Corner Plane Ghost TR"
 cg_inst.layer = model.layers["Corner Detail"]
 '''

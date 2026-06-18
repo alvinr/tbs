@@ -2888,6 +2888,38 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.name = "Corner Detail (TR)"
   inst.layer = model.layers["Corner Detail"]
 
+  # ═══ Corner Detail Swing (TR) ═══
+  defn = model.definitions.add("Corner Detail Swing (TR)")
+  ents = defn.entities
+  # Swing Rail TR
+  grp = ents.add_group
+  grp.name = "Swing Rail TR"
+  face = grp.entities.add_face([3237.mm,100.mm,2280.mm], [3261.mm,100.mm,2280.mm], [3261.mm,2300.mm,2280.mm], [3237.mm,2300.mm,2280.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
+  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Swing Leadscrew TR
+  grp = ents.add_group
+  grp.name = "Swing Leadscrew TR"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 2200.mm, 0.mm)
+  circle = ge.add_circle([3283.mm,100.mm,2288.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Corner Detail Swing (TR)"
+  inst.layer = model.layers["Corner Detail"]
+
 
 # ── Film Plane (Dynamic Component — click to swing: left forward / right back) ──
 
@@ -3275,6 +3307,119 @@ cg_inst.name = "Corner Plane Ghost TR"
 cg_inst.layer = model.layers["Corner Detail"]
 
 
+# ── Corner Swing (2nd detail — click: corner traces the swing arc; carriage Y + X float) ──
+
+# ═══ Corner Swing — DYNAMIC COMPONENT (click: corner traces the swing arc) ═══
+cs_defn = model.definitions.add("Corner Swing")
+ents = cs_defn.entities
+  # Swing Carriage TR
+  grp = ents.add_group
+  grp.name = "Swing Carriage TR"
+  face = grp.entities.add_face([3223.mm,1149.mm,2270.mm], [3275.mm,1149.mm,2270.mm], [3275.mm,1213.mm,2270.mm], [3223.mm,1213.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Swing Drive Nut TR
+  grp = ents.add_group
+  grp.name = "Swing Drive Nut TR"
+  face = grp.entities.add_face([3269.mm,1167.mm,2276.mm], [3297.mm,1167.mm,2276.mm], [3297.mm,1195.mm,2276.mm], [3269.mm,1195.mm,2276.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(26.mm)
+  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Swing X cross-slide TR (SWING float)
+  grp = ents.add_group
+  grp.name = "Swing X cross-slide TR (SWING float)"
+  face = grp.entities.add_face([3149.mm,1165.mm,2294.mm], [3279.mm,1165.mm,2294.mm], [3279.mm,1197.mm,2294.mm], [3149.mm,1197.mm,2294.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Detail X cross-slide TR (SWING)"] || model.materials.add("Detail X cross-slide TR (SWING)")
+  mat.color = Sketchup::Color.new(31, 119, 180)
+  mat.alpha = 1.0
+  grp.material = mat
+
+cs_inst = entities.add_instance(cs_defn, Geom::Transformation.new)
+cs_inst.name = "Corner Swing"
+cs_inst.layer = model.layers["Corner Detail"]
+csa = "dynamic_attributes"
+# nested child — the floating slider (built flat, world coords)
+cf_defn = model.definitions.add("Corner Swing Float")
+ents = cf_defn.entities
+  # Swing X slider TR
+  grp = ents.add_group
+  grp.name = "Swing X slider TR"
+  face = grp.entities.add_face([3233.mm,1161.mm,2292.mm], [3265.mm,1161.mm,2292.mm], [3265.mm,1201.mm,2292.mm], [3233.mm,1201.mm,2292.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(20.mm)
+  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Swing Z cross-slide TR
+  grp = ents.add_group
+  grp.name = "Swing Z cross-slide TR"
+  face = grp.entities.add_face([3240.mm,1166.mm,2279.mm], [3258.mm,1166.mm,2279.mm], [3258.mm,1196.mm,2279.mm], [3240.mm,1196.mm,2279.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Detail Z cross-slide TR (TILT)"] || model.materials.add("Detail Z cross-slide TR (TILT)")
+  mat.color = Sketchup::Color.new(44, 160, 44)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Swing Z slider TR
+  grp = ents.add_group
+  grp.name = "Swing Z slider TR"
+  face = grp.entities.add_face([3236.mm,1163.mm,2272.mm], [3262.mm,1163.mm,2272.mm], [3262.mm,1199.mm,2272.mm], [3236.mm,1199.mm,2272.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(32.mm)
+  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Swing Rod-End TR
+  grp = ents.add_group
+  grp.name = "Swing Rod-End TR"
+  face = grp.entities.add_face([3232.mm,1164.mm,2271.mm], [3266.mm,1164.mm,2271.mm], [3266.mm,1198.mm,2271.mm], [3232.mm,1198.mm,2271.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(34.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+cf_inst = cs_defn.entities.add_instance(cf_defn, Geom::Transformation.new)
+cf_inst.name = "Corner Swing Float"
+cf_inst.layer = model.layers["Corner Detail"]
+[cs_defn, cs_inst].each do |e|
+  e.set_attribute(csa, "_name", "CornerSwing")
+  e.set_attribute(csa, "_lengthunits", "MILLIMETERS")
+  e.set_attribute(csa, "swing", 0.0)
+  e.set_attribute(csa, "x", 0.0); e.set_attribute(csa, "y", 0.0); e.set_attribute(csa, "z", 0.0)
+end
+cs_inst.set_attribute(csa, "_swing_access", "VIEW")
+cs_inst.set_attribute(csa, "_swing_label", "Swing (corner arc)")
+cs_inst.set_attribute(csa, "_y_formula", "2249.5*SIN(15.0*swing)")
+cs_inst.set_attribute(csa, "onclick", 'ANIMATE("swing", 0, 1)')
+cs_inst.set_attribute(csa, "_onclick_access", "NONE")
+[cf_defn, cf_inst].each do |e|
+  e.set_attribute(csa, "_name", "CornerSwingFloat")
+  e.set_attribute(csa, "_lengthunits", "MILLIMETERS")
+  e.set_attribute(csa, "x", 0.0); e.set_attribute(csa, "y", 0.0); e.set_attribute(csa, "z", 0.0)
+end
+cf_inst.set_attribute(csa, "_x_formula", "2249.5*(COS(15.0*CornerSwing!swing)-1)")
+ts = entities.add_text("SWING ARC\n(carriage in Y + X float; click to animate)", Geom::Point3d.new(3249.mm, 1181.mm, 2288.mm), Geom::Vector3d.new(-250.mm, -700.mm, 350.mm))
+ts.layer = model.layers["Corner Detail"] rescue nil
+
+
 # ── Corner-detail callouts (Corner Detail tag — shown in the corner-detail scene) ──
 t=entities.add_text("HGR20 rail - FIXED (depth guide)", Geom::Point3d.new(4649.mm,1160.0520922298629.mm,2288.mm), Geom::Vector3d.new(10,0,11.0)); t.layer=model.layers["Corner Detail"] rescue nil
 t=entities.add_text("Leadscrew - DEPTH / focus drive", Geom::Point3d.new(4683.mm,710.0520922298629.mm,2288.mm), Geom::Vector3d.new(4.0,0,19.0)); t.layer=model.layers["Corner Detail"] rescue nil
@@ -3342,7 +3487,7 @@ eye = ctr.offset(dir, bb.diagonal * 1.4)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
-[["Combined", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "IBC Cantilever"], nil, 0], ["Labeled", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "IBC Cantilever", "Labels"], nil, 0], ["No Container", ["Film Plane", "Corner Mechanism", "Processing Tray"], nil, 0], ["Corner detail (TR)", ["Corner Detail"], [4666.979444694831.mm, 1410.0520922298629.mm, 2223.531411620136.mm], 95]].each { |name, tags, tgt, so|
+[["Combined", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "IBC Cantilever"], nil, 0], ["Labeled", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "IBC Cantilever", "Labels"], nil, 0], ["No Container", ["Film Plane", "Corner Mechanism", "Processing Tray"], nil, 0], ["Corner detail (TR)", ["Corner Detail"], [3957.9897223474154.mm, 1295.5260461149314.mm, 2255.765705810068.mm], 140]].each { |name, tags, tgt, so|
   model.layers.each { |l| l.visible = (l == dl || tags.include?(l.name)) }
   if tgt
     t = Geom::Point3d.new(tgt[0], tgt[1], tgt[2])

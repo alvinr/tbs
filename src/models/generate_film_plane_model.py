@@ -448,9 +448,10 @@ def corner_rotate_plane(ox):
     plen = 1100
     leg = ov.FP_ANGLE_LEG / 2
     plane = [
-        ov.ruby_box("Rotate Plane (partial)", -plen, -t / 2, -plen, plen, t, plen, color=ov.C_FILM, alpha=0.3),
-        ov.ruby_pipe("Rotate Frame (top)", (0, 0, 0), (-plen, 0, 0), leg, color=ov.C_STEEL),
-        ov.ruby_pipe("Rotate Frame (right)", (0, 0, 0), (0, 0, -plen), leg, color=ov.C_STEEL),
+        # ghosted to match the rail-slide partial-plane ghost (screen 0.16, frame 0.35)
+        ov.ruby_box("Rotate Plane (partial)", -plen, -t / 2, -plen, plen, t, plen, color=ov.C_FILM, alpha=0.16),
+        ov.ruby_pipe("Rotate Frame (top)", (0, 0, 0), (-plen, 0, 0), leg, color=ov.C_STEEL, alpha=0.35),
+        ov.ruby_pipe("Rotate Frame (right)", (0, 0, 0), (0, 0, -plen), leg, color=ov.C_STEEL, alpha=0.35),
     ]
     return '\n'.join(rail), '\n'.join(plane), (fx, cy, fz)
 

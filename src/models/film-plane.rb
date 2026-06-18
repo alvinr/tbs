@@ -3092,7 +3092,7 @@ ents = fp_defn.entities
   face = grp.entities.add_face([-2249.5.mm,-6.mm,-1069.mm], [2249.5.mm,-6.mm,-1069.mm], [2249.5.mm,6.mm,-1069.mm], [-2249.5.mm,6.mm,-1069.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2138.mm)
-  mat = model.materials["Rotate Plane (partial)"] || model.materials.add("Rotate Plane (partial)")
+  mat = model.materials["Film Plane Screen (muslin)"] || model.materials.add("Film Plane Screen (muslin)")
   mat.color = Sketchup::Color.new(32, 96, 160)
   mat.alpha = 0.3
   grp.material = mat
@@ -3426,7 +3426,7 @@ ents = cg_defn.entities
   face = grp.entities.add_face([1349.5.mm,-6.mm,169.mm], [2249.5.mm,-6.mm,169.mm], [2249.5.mm,6.mm,169.mm], [1349.5.mm,6.mm,169.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(900.mm)
-  mat = model.materials["Film Plane (partial ghost)"] || model.materials.add("Film Plane (partial ghost)")
+  mat = model.materials["Rotate Plane (partial)"] || model.materials.add("Rotate Plane (partial)")
   mat.color = Sketchup::Color.new(32, 96, 160)
   mat.alpha = 0.16
   grp.material = mat
@@ -3440,7 +3440,7 @@ ents = cg_defn.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["FP Frame ghost (top)"] || model.materials.add("FP Frame ghost (top)")
+  mat = model.materials["Rotate Frame (top)"] || model.materials.add("Rotate Frame (top)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 0.35
   grp.material = mat
@@ -3454,7 +3454,7 @@ ents = cg_defn.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["FP Frame ghost (top)"] || model.materials.add("FP Frame ghost (top)")
+  mat = model.materials["Rotate Frame (top)"] || model.materials.add("Rotate Frame (top)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 0.35
   grp.material = mat
@@ -3593,7 +3593,7 @@ ents = rp_defn.entities
   face.pushpull(1100.mm)
   mat = model.materials["Rotate Plane (partial)"] || model.materials.add("Rotate Plane (partial)")
   mat.color = Sketchup::Color.new(32, 96, 160)
-  mat.alpha = 0.3
+  mat.alpha = 0.16
   grp.material = mat
 
   # Rotate Frame (top)
@@ -3605,9 +3605,9 @@ ents = rp_defn.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Rotate Frame (top)"] || model.materials.add("Rotate Frame (top)")
   mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
+  mat.alpha = 0.35
   grp.material = mat
 
   # Rotate Frame (right)
@@ -3619,9 +3619,9 @@ ents = rp_defn.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Rotate Frame (top)"] || model.materials.add("Rotate Frame (top)")
   mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
+  mat.alpha = 0.35
   grp.material = mat
 
 rp_inst = entities.add_instance(rp_defn, Geom::Transformation.translation([4649.mm, 1181.mm, 2288.mm]))

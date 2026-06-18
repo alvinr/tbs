@@ -247,12 +247,13 @@ def corner_detail(ox=0):
     return '\n'.join(static), '\n'.join(slide), (px, py, pz), (fx, fz)
 
 
-def corner_slide_block(slide_ruby):
+def corner_slide_block(slide_ruby, anchor):
     """Ruby for the Corner Slide TR DYNAMIC COMPONENT — the carriage assembly built at its
     posed home, as a TOP-LEVEL translation DC: a `slide` driver (0→1) translates it along
     the rail in Y (the leadscrew depth drive). Top-level + pure translation, so no rotation
     pivot or nested-position reset (see the swing-DC notes). On the Corner Detail tag, so it
-    shows in the corner-detail scene with the static rail/leadscrew."""
+    shows in the corner-detail scene with the static rail/leadscrew. A callout (like the
+    swing/rotate diagrams) flags it clickable."""
     return f'''
 # ═══ Corner Slide TR — DYNAMIC COMPONENT (click: carriage slides along the rail) ═══
 cd_defn = model.definitions.add("Corner Slide TR")
@@ -275,6 +276,8 @@ cd_inst.set_attribute(cda, "_slide_label", "Slide carriage on rail")
 cd_inst.set_attribute(cda, "_y_formula", "{CORNER_SLIDE_TRAVEL}*slide")
 cd_inst.set_attribute(cda, "onclick", 'ANIMATE("slide", 0, 1)')
 cd_inst.set_attribute(cda, "_onclick_access", "NONE")
+tsl = entities.add_text("RAIL SLIDE\\n(click: carriage slides on rail)", Geom::Point3d.new({ov.mm(anchor[0])}, {ov.mm(anchor[1])}, {ov.mm(anchor[2])}), Geom::Vector3d.new({ov.mm(220)}, {ov.mm(-700)}, {ov.mm(350)}))
+tsl.layer = model.layers["Corner Detail"] rescue nil
 '''
 
 
@@ -399,7 +402,7 @@ cs_inst.set_attribute(csa, "_onclick_access", "NONE")
   e.set_attribute(csa, "x", 0.0); e.set_attribute(csa, "y", 0.0); e.set_attribute(csa, "z", 0.0)
 end
 cf_inst.set_attribute(csa, "_x_formula", "{wh}*(COS({SWING_DEG}*CornerSwing!swing)-1)")
-ts = entities.add_text("SWING ARC\\n(carriage in Y + X float; click to animate)", Geom::Point3d.new({ov.mm(anchor[0])}, {ov.mm(anchor[1])}, {ov.mm(anchor[2])}), Geom::Vector3d.new({ov.mm(-250)}, {ov.mm(-700)}, {ov.mm(350)}))
+ts = entities.add_text("SWING ARC\\n(carriage in Y + X float; click to animate)", Geom::Point3d.new({ov.mm(anchor[0])}, {ov.mm(anchor[1])}, {ov.mm(anchor[2])}), Geom::Vector3d.new({ov.mm(250)}, {ov.mm(-700)}, {ov.mm(350)}))
 ts.layer = model.layers["Corner Detail"] rescue nil
 '''
 
@@ -623,7 +626,7 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 {dc_block()}
 
 # ── Corner Slide TR (Dynamic Component — click: carriage slides along the rail) ──
-{corner_slide_block(cd_slide)}
+{corner_slide_block(cd_slide, tr_world)}
 
 # ── Partial film-plane ghost at the TR corner (static, posed) ──
 {corner_plane_ghost_block(corner_plane_ghost(), OFF_RAIL)}

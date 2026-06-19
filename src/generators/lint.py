@@ -55,8 +55,75 @@ def warn_facts() -> tuple[bool, list[str]]:
     return (not issues), (issues or ["all registered facts agree across docs"])
 
 
+# ── WARNING: markdown table arithmetic (every declared TOTAL = sum of its column) ──
+_MONEY = re.compile(r"^\*{0,2}~?\$?([\d,]+)\*{0,2}$")
+
+
+def _money(cell: str):
+    m = _MONEY.match(cell.strip())
+    if not m:
+        return None
+    try:
+        return int(m.group(1).replace(",", ""))
+    except ValueError:
+        return None
+
+
+def _cells(row: str) -> list[str]:
+    return [c.strip() for c in row.strip().strip("|").split("|")]
+
+
+def _check_table(fname, start, block, issues):
+    rows = [_cells(r) for r in block]
+    tot_idx = next((k for k, r in enumerate(rows)
+                    if r and re.search(r"\btotal\b", r[0], re.I)), None)
+    if tot_idx is None:
+        return
+    data = [r for k, r in enumerate(rows)
+            if k != tot_idx and not all(set(c) <= set("-: ") for c in r)]
+    if len(data) < 2:                                    # need a header + >=1 data row
+        return
+    for col in range(1, len(rows[tot_idx])):
+        tot = _money(rows[tot_idx][col])
+        if tot is None:
+            continue
+        vals, ok = [], True
+        for r in data[1:]:                               # data[0] is the header row
+            v = _money(r[col]) if col < len(r) else None
+            if v is None:                                # ambiguous cell -> skip column (no FP)
+                ok = False
+                break
+            vals.append(v)
+        if not ok or not vals:
+            continue
+        s = sum(vals)
+        if abs(s - tot) > max(round(0.01 * tot), 15):    # tolerance absorbs '~$' rounding
+            issues.append(f"{fname}:{start + tot_idx + 1}  col{col}: TOTAL ${tot:,} "
+                          f"!= sum ${s:,} (Δ${abs(s - tot):,})")
+
+
+def warn_arithmetic() -> tuple[bool, list[str]]:
+    issues = []
+    for fname in _md_files():
+        lines = open(os.path.join(ROOT, fname), encoding="utf-8").read().splitlines()
+        i = 0
+        while i < len(lines):
+            if not lines[i].lstrip().startswith("|"):
+                i += 1
+                continue
+            j = i
+            while j < len(lines) and lines[j].lstrip().startswith("|"):
+                j += 1
+            _check_table(fname, i, lines[i:j], issues)
+            i = j
+    return (not issues), (issues or ["all declared TOTAL rows reconcile with their columns"])
+
+
 GATES = [("costing reconciliation", gate_costing)]
-WARNINGS = [("facts-registry agreement", warn_facts)]
+WARNINGS = [
+    ("facts-registry agreement", warn_facts),
+    ("table arithmetic (TOTAL = sum of column)", warn_arithmetic),
+]
 
 
 def _run(checks):

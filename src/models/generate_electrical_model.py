@@ -364,15 +364,14 @@ def external_panel():
                          cw, cd, ch, color=ov.C_EVAP))
     gfci_x = PWR_PANEL_X + 0.767 * PWR_PANEL_W
     gfci_z = PWR_PANEL_Z + 0.325 * PWR_PANEL_H
-    cf = -WALL - 55                       # cord stand-off plane outside the wall
     inx = cx + cw - 80                    # cooler-top inlet
-    p.append(ov.ruby_pipe_run("Cct E cooler cord (panel GFCI -> cooler)",
-                              _dedup([(gfci_x, face_y - 10, gfci_z),
-                                      (gfci_x, cf, gfci_z),
-                                      (gfci_x, cf, ch - 100),
-                                      (inx, cf, ch - 100),
-                                      (inx, cyd + cd / 2, ch - 100)]),
-                              8, color="#E8884A"))
+    # SOFT flexible cord — a curly coil draping DIAGONALLY from the GFCI down to the cooler
+    # inlet (matches the overview's evap_cooler()); angles clear of the cooler body, with the
+    # straight terminating stub doing the plug-in.
+    p.append(ov.ruby_coil_cord("Cct E cooler cord (panel GFCI -> cooler, flexible)",
+                               [(gfci_x, face_y - 10, gfci_z),
+                                (inx, cyd + cd / 2, ch - 70)],
+                               r=5, color="#E8884A"))
     return '\n'.join(p)
 
 
@@ -434,6 +433,11 @@ def circuit_runs():
     p.append(_pump_circuit())              # Cct C: distribution block + 5 pump switches
     p.append(_multi_run("G", LED_ENDS))    # 3× white LED (incl. rotated IBC-end panel)
     p.append(_multi_run("D", SAFE_ENDS))   # 3× safelight
+    # Fan B flexible connector (wall box -> fan on the swing panel) — the SOFT jumper that is
+    # unplugged before the panel swings; a curly coil cord (matches the overview's lighting_wiring()).
+    p.append(ov.ruby_coil_cord("Fan B flex connector (box -> fan, Cct B)",
+                               [(_FANB_BOX_X, 55, FAN_B_H), (60, FAN_B_YD, FAN_B_H)],
+                               r=5, color=CCT["B"][0]))
     return '\n'.join(p)
 
 

@@ -1344,12 +1344,17 @@ def solar_array():
     # PV run: array junction -> up to the external power panel MC4 bulkheads.
     jx = SOLAR_ARRAY_X + span / 2
     panel = (PWR_PANEL_X + 70, -WALL_T - 30, PWR_PANEL_Z + PWR_PANEL_H * 0.5)
-    p.append(ruby_pipe_run("PV run (array -> panel)",
-                           [(jx, SOLAR_ARRAY_YD - 20, SOLAR_ARRAY_Z + 60),
-                            (jx, -WALL_T - 30, SOLAR_ARRAY_Z + 60),
-                            (jx, -WALL_T - 30, panel[2]),
-                            panel],
-                           10, color="#2D7A2D"))
+    # Flexible PV lead (array -> panel MC4) — a SOFT connector, drawn as a curly coil
+    # cord (ruby_coil_cord) to distinguish it from the rigid orthogonal conduit. Thinner
+    # conductor (r=5 vs the conduit's 10) reinforces the soft/hard read. The final leg
+    # drapes DIAGONALLY from the ground up to the panel (not a straight vertical rise) so
+    # it stays right of and clear of the evap cooler (X720-1280) — a flexible cord can take
+    # the angle a rigid orthogonal conduit can't.
+    p.append(ruby_coil_cord("PV cord (array -> panel, flexible)",
+                            [(jx, SOLAR_ARRAY_YD - 20, SOLAR_ARRAY_Z + 60),
+                             (jx, -WALL_T - 30, SOLAR_ARRAY_Z + 60),
+                             panel],
+                            r=5, color="#2D7A2D"))
     return '\n'.join(p)
 
 
@@ -1748,6 +1753,13 @@ def lighting_wiring():
                                fcr, color=C_TRUNK))
     parts.append(ruby_box("Fan B electrical box (Cct B — flex connector to fan, unplugged for swing)",
                           fb_drop_x - 40, 0, fb_box_z - 45, 80, 60, 90, color=C_SWITCH))
+    # The short FLEXIBLE CONNECTOR from the fixed wall box out to Fan B on the swing panel —
+    # now drawn (a SOFT cord) as a curly coil, distinguishing it from the rigid Cct B conduit
+    # feeding the box. This is the jumper that is unplugged before the panel swings.
+    parts.append(ruby_coil_cord("Fan B flex connector (box -> fan, Cct B)",
+                                [(fb_drop_x, 55, fb_box_z),
+                                 (60, FAN_B_YD, FAN_B_H)],
+                                r=5, color="#E67E22"))
 
     return '\n'.join(parts)
 
@@ -1788,6 +1800,15 @@ def evap_cooler():
                                 (gfci_x, 30, gfci_z),
                                 (gfci_x, 18, gfci_z)],
                                7, color="#E8884A"))
+
+    # Cct E cooler power cord (panel GFCI -> cooler) — a SOFT flexible connector, drawn as a
+    # curly coil that DRAPES DIAGONALLY from the GFCI outlet down to the cooler-top inlet
+    # (not a straight drop), so it angles clear of the cooler body until the straight
+    # terminating stub plugs in.
+    cooler_inlet = (EVAP_DUCT_X + cw / 2 - 80, ext - cd / 2 - 100, ch - 70)
+    parts.append(ruby_coil_cord("Cct E cooler cord (panel GFCI -> cooler, flexible)",
+                                [(gfci_x, ext - 30, gfci_z), cooler_inlet],
+                                r=5, color="#E8884A"))
 
     # Cold-air duct inlet — a Ø200 circle through the wall (axis into container).
     parts.append(ruby_cylinder("Cold-Air Duct Inlet (Ø200)",
@@ -2017,6 +2038,53 @@ def ruby_flex_duct(name, p1, p2, r, color=None, alpha=None, ribs=None):
         b = tuple(p1[k] + (p2[k] - p1[k]) * t1 for k in range(3))
         rr = r if i % 2 == 0 else r * 0.8            # crest / valley
         out.append(ruby_pipe(name, a, b, rr, color=color, alpha=alpha, n=14))
+    return '\n'.join(out)
+
+
+def ruby_coil_cord(name, waypoints, r=5.0, color=None, alpha=None,
+                   coil_r=None, pitch=None, pts_per_turn=8):
+    """A 'soft' flexible cord — the visual opposite of the rigid `ruby_pipe_run`:
+    a thin conductor that runs as a HELICAL COIL ('curly cord') along each straight
+    leg, with short straight stubs at the ends / at each waypoint for termination.
+    Color still encodes the circuit; the coiled geometry marks it as a flexible
+    connector (the soft-connector analogue of the beaded pull-cord + corrugated
+    flex-duct helpers). Tune `coil_r` (curl radius), `pitch` (axial advance per turn),
+    and `r` (conductor radius — keep it thinner than the rigid conduit it replaces)."""
+    coil_r = coil_r if coil_r is not None else 5.6 * r      # curl radius (~28 @ r=5, tightened 20%)
+    pitch = pitch if pitch is not None else 18.0 * r        # axial advance/turn (~90 @ r=5)
+    V = [tuple(float(c) for c in p) for p in waypoints]
+    out = []
+    for i in range(1, len(V)):
+        a, b = V[i - 1], V[i]
+        axis = _vsub(b, a)
+        L = _vlen(axis)
+        if L < 1e-3:
+            continue
+        d = _vscale(axis, 1.0 / L)
+        stub = min(max(0.10 * L, 3.0 * r), 0.30 * L)        # straight termination ends
+        coil_L = L - 2.0 * stub
+        p0 = _vadd(a, _vscale(d, stub))                     # coil start (on axis)
+        out.append(ruby_pipe(name, a, p0, r, color=color, alpha=alpha, n=10))
+        if coil_L > pitch * 0.5:
+            ref = (0.0, 0.0, 1.0) if abs(d[2]) < 0.9 else (1.0, 0.0, 0.0)
+            u = _vunit(_vcross(d, ref))                      # perpendicular frame
+            w = _vcross(d, u)
+            turns = coil_L / pitch
+            npts = max(8, int(round(turns * pts_per_turn)))
+            prev = p0
+            for k in range(1, npts + 1):
+                t = k / npts
+                ang = 2.0 * math.pi * turns * t
+                axial = _vadd(p0, _vscale(d, coil_L * t))
+                pt = _vadd(axial, _vadd(_vscale(u, coil_r * math.cos(ang)),
+                                        _vscale(w, coil_r * math.sin(ang))))
+                out.append(ruby_pipe(name, prev, pt, r, color=color, alpha=alpha, n=6))
+                prev = pt
+            p1 = _vadd(p0, _vscale(d, coil_L))              # coil end (back on axis)
+            out.append(ruby_pipe(name, prev, p1, r, color=color, alpha=alpha, n=8))
+            out.append(ruby_pipe(name, p1, b, r, color=color, alpha=alpha, n=10))
+        else:
+            out.append(ruby_pipe(name, p0, b, r, color=color, alpha=alpha, n=10))
     return '\n'.join(out)
 
 

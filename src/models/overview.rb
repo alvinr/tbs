@@ -8919,12 +8919,12 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV run (array -> panel)
+  # PV cord (array -> panel, flexible)
   grp = ents.add_group
-  grp.name = "PV run (array -> panel)"
+  grp.name = "PV cord (array -> panel, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 830.mm, 0.mm)
-  circle = ge.add_circle([1300.mm,-920.mm,60.mm], vec, 10.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 85.mm, 0.mm)
+  circle = ge.add_circle([1300.mm,-920.mm,60.mm], vec, 5.mm, 10)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -8933,25 +8933,12 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV run (array -> panel) elbow
+  # PV cord (array -> panel, flexible)
   grp = ents.add_group
-  grp.name = "PV run (array -> panel) elbow"
+  grp.name = "PV cord (array -> panel, flexible)"
   ge = grp.entities
-  arc = ge.add_arc([1300.mm,-90.mm,80.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 20.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1300.mm,-90.mm,60.mm], [0.000000,1.000000,0.000000], 10.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
-  mat.color = Sketchup::Color.new(45, 122, 45)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # PV run (array -> panel)
-  grp = ents.add_group
-  grp.name = "PV run (array -> panel)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 1860.2.mm)
-  circle = ge.add_circle([1300.mm,-70.mm,80.mm], vec, 10.mm, 16)
+  vec = Geom::Vector3d.new(19.683469607918596.mm, 11.333333333333371.mm, -19.913840016283835.mm)
+  circle = ge.add_circle([1300.mm,-835.mm,60.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -8960,25 +8947,2770 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV run (array -> panel) elbow
+  # PV cord (array -> panel, flexible)
   grp = ents.add_group
-  grp.name = "PV run (array -> panel) elbow"
+  grp.name = "PV cord (array -> panel, flexible)"
   ge = grp.entities
-  arc = ge.add_arc([1309.8.mm,-70.mm,1940.2.mm], [-1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 9.800000000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1300.mm,-70.mm,1940.2.mm], [0.000000,0.000000,1.000000], 10.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
+  vec = Geom::Vector3d.new(-20.009257050357746.mm, 11.333333333333258.mm, -8.084264607821503.mm)
+  circle = ge.add_circle([1319.6834696079186.mm,-823.6666666666666.mm,40.086159983716165.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
   mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV run (array -> panel)
+  # PV cord (array -> panel, flexible)
   grp = ents.add_group
-  grp.name = "PV run (array -> panel)"
+  grp.name = "PV cord (array -> panel, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(10.200000000000045.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1309.8.mm,-70.mm,1950.mm], vec, 10.mm, 16)
+  vec = Geom::Vector3d.new(-19.81572696704302.mm, 11.333333333333371.mm, 8.547670251253408.mm)
+  circle = ge.add_circle([1299.6742125575608.mm,-812.3333333333334.mm,32.00189537589466.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-7.850904343542652.mm, 11.333333333333371.mm, 20.101965151325494.mm)
+  circle = ge.add_circle([1279.8584855905178.mm,-801.mm,40.54956562714807.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.77765289270019.mm, 11.333333333333258.mm, 19.714931185571793.mm)
+  circle = ge.add_circle([1272.0075812469752.mm,-789.6666666666666.mm,60.651530778473564.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(20.191951767994624.mm, 11.333333333333371.mm, 7.616481192489317.mm)
+  circle = ge.add_circle([1280.7852341396754.mm,-778.3333333333334.mm,80.36646196404536.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(19.611466318005114.mm, 11.333333333333258.mm, -9.00644718045416.mm)
+  circle = ge.add_circle([1300.97718590767.mm,-767.mm,87.98294315653467.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(7.381026891803685.mm, 11.333333333333371.mm, -20.279204717617397.mm)
+  circle = ge.add_circle([1320.588652225675.mm,-755.6666666666667.mm,78.97649597608051.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.234022139430635.mm, 11.333333333333371.mm, -19.505346371830136.mm)
+  circle = ge.add_circle([1327.9696791174788.mm,-744.3333333333334.mm,58.69729125846312.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-20.363712187541523.mm, 11.333333333333258.mm, -7.144573318228495.mm)
+  circle = ge.add_circle([1318.7356569780482.mm,-733.mm,39.19194488663298.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-19.396585713988543.mm, 11.333333333333371.mm, 9.46034695962328.mm)
+  circle = ge.add_circle([1298.3719447905066.mm,-721.6666666666667.mm,32.047371568404486.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-6.9071524837931975.mm, 11.333333333333371.mm, 20.445462736807713.mm)
+  circle = ge.add_circle([1278.975359076518.mm,-710.3333333333334.mm,41.507718528027766.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.685391000274421.mm, 11.333333333333258.mm, 19.285199068932826.mm)
+  circle = ge.add_circle([1272.068206592725.mm,-699.mm,61.95318126483548.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(20.524445297700595.mm, 11.333333333333371.mm, 6.6687965314778666.mm)
+  circle = ge.add_circle([1281.7535975929993.mm,-687.6666666666667.mm,81.2383803337683.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(19.171201516631527.mm, 11.333333333333371.mm, -9.909123794023046.mm)
+  circle = ge.add_circle([1302.2780428907.mm,-676.3333333333334.mm,87.90717686524617.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(6.429537730863103.mm, 11.333333333333258.mm, -20.600649177246062.mm)
+  circle = ge.add_circle([1321.4492444073314.mm,-665.mm,77.99805307122313.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-10.131515051030647.mm, 11.333333333333371.mm, -19.054608490528018.mm)
+  circle = ge.add_circle([1327.8787821381945.mm,-653.6666666666667.mm,57.397403893977064.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-20.674064058658132.mm, 11.333333333333371.mm, -6.1894084737607.mm)
+  circle = ge.add_circle([1317.747267087164.mm,-642.3333333333334.mm,38.342795403449045.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-18.935435775452106.mm, 11.333333333333258.mm, 10.352534663080739.mm)
+  circle = ge.add_circle([1297.0732030285058.mm,-631.mm,32.153386929688345.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-5.948441269827981.mm, 11.333333333333371.mm, 20.74468000273731.mm)
+  circle = ge.add_circle([1278.1377672530537.mm,-619.6666666666667.mm,42.505921592769084.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(10.572152707655732.mm, 11.333333333333371.mm, 18.81369950548175.mm)
+  circle = ge.add_circle([1272.1893259832257.mm,-608.3333333333334.mm,63.250601595506396.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(20.81248744921527.mm, 11.333333333333258.mm, 5.706668742167182.mm)
+  circle = ge.add_circle([1282.7614786908814.mm,-597.mm,82.06430110098815.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(18.689416161759027.mm, 11.333333333333371.mm, -10.790339451988544.mm)
+  circle = ge.add_circle([1303.5739661400967.mm,-585.6666666666667.mm,87.77096984315533.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.464123622908346.mm, 11.333333333333371.mm, -20.877477218048554.mm)
+  circle = ge.add_circle([1322.2633823018557.mm,-574.3333333333334.mm,76.98063039116678.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-11.007065357086049.mm, 11.333333333333258.mm, -18.562602570259443.mm)
+  circle = ge.add_circle([1327.727505924764.mm,-563.mm,56.10315317311823.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-20.939640510663367.mm, 11.333333333333371.mm, -5.220838748777922.mm)
+  circle = ge.add_circle([1316.720440567678.mm,-551.6666666666667.mm,37.54055060285879.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-18.43327589951309.mm, 11.333333333333371.mm, 11.222301081729867.mm)
+  circle = ge.add_circle([1295.7808000570146.mm,-540.3333333333334.mm,32.319711854080865.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.976847056653696.mm, 11.333333333333258.mm, 20.998968911145084.mm)
+  circle = ge.add_circle([1277.3475241575015.mm,-529.mm,43.54201293581073.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(11.436017486448463.mm, 11.333333333333371.mm, 18.301453658280977.mm)
+  circle = ge.add_circle([1272.3706771008478.mm,-517.6666666666667.mm,64.54098184695582.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(21.055454387377722.mm, 11.333333333333314.mm, 4.732181579105045.mm)
+  circle = ge.add_circle([1283.8066945872963.mm,-506.33333333333337.mm,82.84243550523679.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(18.167153693184446.mm, 11.333333333333371.mm, -11.648185637461964.mm)
+  circle = ge.add_circle([1304.862148974674.mm,-495.00000000000006.mm,87.57461708434184.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.48687543992105.mm, 11.333333333333314.mm, -21.1090892921318.mm)
+  circle = ge.add_circle([1323.0293026678585.mm,-483.6666666666667.mm,75.92643144687987.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-11.858776810598556.mm, 11.333333333333371.mm, -18.030394186289215.mm)
+  circle = ge.add_circle([1327.5161781077795.mm,-472.33333333333337.mm,54.817342154748076.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.159866364100026.mm, 11.333333333333258.mm, -4.240961849626302.mm)
+  circle = ge.add_circle([1315.657401297181.mm,-461.mm,36.78694796845886.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-17.891193652643096.mm, 11.333333333333371.mm, 12.067762495184837.mm)
+  circle = ge.add_circle([1294.497534933081.mm,-449.66666666666674.mm,32.54598611883256.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-3.994474100984462.mm, 11.333333333333314.mm, 21.207778728879774.mm)
+  circle = ge.add_circle([1276.6063412804378.mm,-438.33333333333337.mm,44.613748614017396.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(12.27511439790419.mm, 11.333333333333371.mm, 17.749570937770002.mm)
+  circle = ge.add_circle([1272.6118671794534.mm,-427.00000000000006.mm,65.82152734289717.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(21.25281989990367.mm, 11.333333333333258.mm, 3.747445564490846.mm)
+  circle = ge.add_circle([1284.8869815773576.mm,-415.6666666666667.mm,83.57109828066717.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(17.605545215118582.mm, 11.333333333333371.mm, -12.480804446628227.mm)
+  circle = ge.add_circle([1306.1398014772612.mm,-404.3333333333334.mm,87.31854384515802.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.4999096838553214.mm, 11.333333333333314.mm, -21.29498377931801.mm)
+  circle = ge.add_circle([1323.7453466923798.mm,-393.00000000000006.mm,74.83773939852979.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-12.684804794216916.mm, 11.333333333333371.mm, -17.45913598346641.mm)
+  circle = ge.add_circle([1327.2452563762351.mm,-381.66666666666674.mm,53.54275561921178.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.334264658808706.mm, 11.333333333333258.mm, -3.251899971473321.mm)
+  circle = ge.add_circle([1314.5604515820182.mm,-370.33333333333337.mm,36.08361963574537.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-17.310363064279727.mm, 11.333333333333371.mm, 12.88708782228899.mm)
+  circle = ge.add_circle([1293.2261869232095.mm,-359.0000000000001.mm,32.83171966427205.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-3.003450003890066.mm, 11.333333333333314.mm, 21.370657220373296.mm)
+  circle = ge.add_circle([1275.9158238589298.mm,-347.66666666666674.mm,45.71880748656104.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(13.08762614496004.mm, 11.333333333333371.mm, 17.159246599029856.mm)
+  circle = ge.add_circle([1272.9123738550397.mm,-336.3333333333334.mm,67.08946470693434.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(21.4041565370419.mm, 11.333333333333314.mm, 2.7545934172540996.mm)
+  circle = ge.add_circle([1285.9999999999998.mm,-325.00000000000006.mm,84.24871130596419.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(17.00580704646768.mm, 11.333333333333258.mm, -13.286392612551793.mm)
+  circle = ge.add_circle([1307.4041565370417.mm,-313.66666666666674.mm,87.00330472321829.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(2.50536390276352.mm, 11.333333333333371.mm, -21.434758073542348.mm)
+  circle = ge.add_circle([1324.4099635835094.mm,-302.3333333333335.mm,73.7169121106665.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-13.483360315265827.mm, 11.333333333333371.mm, -16.850065179852358.mm)
+  circle = ge.add_circle([1326.9153274862729.mm,-291.0000000000001.mm,52.28215403712415.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.46245768691756.mm, 11.333333333333371.mm, -2.255795202105489.mm)
+  circle = ge.add_circle([1313.431967171007.mm,-279.66666666666674.mm,35.43208885727179.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-16.692042084139302.mm, 11.333333333333258.mm, 13.678502586828678.mm)
+  circle = ge.add_circle([1291.9695094840895.mm,-268.33333333333337.mm,33.176293655166305.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-2.0059211028867594.mm, 11.333333333333371.mm, 21.48725162708238.mm)
+  circle = ge.add_circle([1275.2774673999502.mm,-257.0000000000001.mm,46.85479624199498.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(13.871793008099985.mm, 11.333333333333258.mm, 16.531759153126657.mm)
+  circle = ge.add_circle([1273.2715462970634.mm,-245.66666666666674.mm,68.34204786907736.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(21.509136537335053.mm, 11.333333333333371.mm, 1.755775434060297.mm)
+  circle = ge.add_circle([1287.1433393051634.mm,-234.33333333333348.mm,84.87380702220402.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.36923808655706.mm, 11.333333333333258.mm, -14.063205410651292.mm)
+  circle = ge.add_circle([1308.6524758424985.mm,-223.0000000000001.mm,86.62958245626432.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(1.505392061345674.mm, 11.333333333333371.mm, -21.52810945480808.mm)
+  circle = ge.add_circle([1325.0217139290555.mm,-211.66666666666686.mm,72.56637704561302.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-14.252713880306828.mm, 11.333333333333371.mm, -16.204500887181524.mm)
+  circle = ge.add_circle([1326.5271059904012.mm,-200.33333333333348.mm,51.03826759080494.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.544167810873205.mm, 11.333333333333371.mm, -1.254804882643775.mm)
+  circle = ge.add_circle([1312.2743921100944.mm,-189.0000000000001.mm,34.83376670362342.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-16.037569857779545.mm, 11.333333333333258.mm, 14.440292760653762.mm)
+  circle = ge.add_circle([1290.7302242992212.mm,-177.66666666666674.mm,33.57896182097964.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1.004047823447081.mm, 11.333333333333371.mm, 21.557309431485166.mm)
+  circle = ge.add_circle([1274.6926544414416.mm,-166.33333333333348.mm,48.019254581633405.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(26.311393382005463.mm, 0.mm, -9.57656401311857.mm)
+  circle = ge.add_circle([1273.6886066179945.mm,-155.0000000000001.mm,69.57656401311857.mm], vec, 5.mm, 8)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 85.00000000000011.mm, 0.mm)
+  circle = ge.add_circle([1300.mm,-155.0000000000001.mm,60.mm], vec, 5.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(2.mm, 0.mm, 189.mm)
+  circle = ge.add_circle([1300.mm,-70.mm,60.mm], vec, 5.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-19.72571067309582.mm, 19.751642042856787.mm, 11.4935832922842.mm)
+  circle = ge.add_circle([1302.mm,-70.mm,249.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.033596305039964.mm, -19.8854018007748.mm, 11.369857214315346.mm)
+  circle = ge.add_circle([1282.2742893269042.mm,-50.24835795714321.mm,260.4935832922842.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.462007817958693.mm, -19.806594774805603.mm, 11.195300556929169.mm)
+  circle = ge.add_circle([1274.2406930218642.mm,-70.13375975791801.mm,271.86344050659955.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(20.04241258691286.mm, -8.058367490645068.mm, 11.072756591120083.mm)
+  circle = ge.add_circle([1282.702700839823.mm,-89.94035453272362.mm,283.0587410635287.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(19.884809157327027.mm, 8.437595480161633.mm, 11.07442435227972.mm)
+  circle = ge.add_circle([1302.7451134267358.mm,-97.99872202336869.mm,294.1314976546488.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.08205249366506.mm, 19.962393606829295.mm, 11.199321248191438.mm)
+  circle = ge.add_circle([1322.6299225840628.mm,-89.56112654320705.mm,305.2059220069285.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.412045843863098.mm, 19.725979722745876.mm, 11.37386197133992.mm)
+  circle = ge.add_circle([1330.7119750777279.mm,-69.59873293637776.mm,316.40524325511996.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-19.87968390752485.mm, 7.867641423765534.mm, 11.495212638680357.mm)
+  circle = ge.add_circle([1322.2999292338648.mm,-49.87275321363188.mm,327.7791052264599.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-19.564491435031414.mm, -8.626062785333794.mm, 11.491877268600945.mm)
+  circle = ge.add_circle([1302.42024532634.mm,-42.00511178986635.mm,339.27431786514023.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-7.65216987913459.mm, -20.03756316484563.mm, 11.36582095584015.mm)
+  circle = ge.add_circle([1282.8557538913085.mm,-50.63117457520014.mm,350.7661951337412.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.83891702490655.mm, -19.64356400346358.mm, 11.191312099712832.mm)
+  circle = ge.add_circle([1275.203584012174.mm,-70.66873774004577.mm,362.1320160895813.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(20.19274157088512.mm, -7.676197166751507.mm, 11.071165808220826.mm)
+  circle = ge.add_circle([1284.0425010370805.mm,-90.31230174350935.mm,373.32332818929416.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(19.719988827528596.mm, 8.81374266860169.mm, 11.076168482753815.mm)
+  circle = ge.add_circle([1304.2352426079656.mm,-97.98849891026086.mm,384.394493997515.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(7.699189784295186.mm, 20.11090361304244.mm, 11.20337270543348.mm)
+  circle = ge.add_circle([1323.9552314354942.mm,-89.17475624165917.mm,395.4706624802688.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.787380313138556.mm, 19.559355140199052.mm, 11.377833764665581.mm)
+  circle = ge.add_circle([1331.6544212197894.mm,-69.06385262861673.mm,406.6740351857023.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-20.02635491840283.mm, 7.484052195409113.mm, 11.496764712869549.mm)
+  circle = ge.add_circle([1322.8670409066508.mm,-49.50449748841768.mm,418.05186895036786.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-19.396085058965127.mm, -9.00061799778635.mm, 11.490095190547322.mm)
+  circle = ge.add_circle([1302.840685988248.mm,-42.020445293008564.mm,429.5486336632374.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-7.267905835556803.mm, -20.18240825660699.mm, 11.36175466966472.mm)
+  circle = ge.add_circle([1283.4446009292828.mm,-51.02106329079491.mm,441.03872885378473.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.212642494460397.mm, -19.47336081987784.mm, 11.187357332839213.mm)
+  circle = ge.add_circle([1276.176695093726.mm,-71.2034715474019.mm,452.40048352344945.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(20.335741219946158.mm, -7.2912240495087275.mm, 11.069652584421249.mm)
+  circle = ge.add_circle([1285.3893375881864.mm,-90.67683236727974.mm,463.58784085628866.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(19.548011778009595.mm, 9.186671714151856.mm, 11.07798834571173.mm)
+  circle = ge.add_circle([1305.7250788081326.mm,-97.96805641678847.mm,474.6574934407099.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(7.313559483685822.mm, 20.252070568306138.mm, 11.207453449355285.mm)
+  circle = ge.add_circle([1325.2730905861422.mm,-88.78138470263661.mm,485.73548178642164.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.159462667799062.mm, 19.38558889240948.mm, 11.381771144080005.mm)
+  circle = ge.add_circle([1332.586650069828.mm,-68.52931413433048.mm,496.94293523577693.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-20.16567015205942.mm, 7.097730331183364.mm, 11.498238948146195.mm)
+  circle = ge.add_circle([1323.427187402029.mm,-49.143725241921.mm,508.32470637985693.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-19.22055303475463.mm, -9.371886833962321.mm, 11.48823770880972.mm)
+  circle = ge.add_circle([1303.2615172499695.mm,-42.04599491073763.mm,519.8229453280031.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-6.880944479809841.mm, -20.3198841890824.mm, 11.357659840503402.mm)
+  circle = ge.add_circle([1284.040964215215.mm,-51.417881744699955.mm,531.3111830368128.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.583047769045152.mm, -19.296047369970466.mm, 11.183437700303898.mm)
+  circle = ge.add_circle([1277.160019735405.mm,-71.73776593378236.mm,542.6688428773163.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(20.471359320940564.mm, -6.9035887033223275.mm, 11.068217472241486.mm)
+  circle = ge.add_circle([1286.7430675044502.mm,-91.03381330375282.mm,553.8522805776201.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(19.36894080238062.mm, 9.556246450032418.mm, 11.079883276670671.mm)
+  circle = ge.add_circle([1307.2144268253908.mm,-97.93740200707515.mm,564.9204980498616.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(6.925302396198958.mm, 20.385842928633977.mm, 11.21156198996357.mm)
+  circle = ge.add_circle([1326.5833676277714.mm,-88.38115555704273.mm,576.0003813265323.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.528157050215896.mm, 19.204744426273237.mm, 11.385672671936277.mm)
+  circle = ge.add_circle([1333.5086700239704.mm,-67.99531262840875.mm,587.2119433164959.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-20.297578740623067.mm, 6.708816887958861.mm, 11.499634806226368.mm)
+  circle = ge.add_circle([1323.9805129737545.mm,-48.79056820213552.mm,598.5976159884322.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-19.03795945402976.mm, -9.739733733270668.mm, 11.486305501606353.mm)
+  circle = ge.add_circle([1303.6829342331314.mm,-42.08175131417666.mm,610.0972507946585.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-6.491427102261014.mm, -20.449940765980372.mm, 11.353537963492158.mm)
+  circle = ge.add_circle([1284.6449747791016.mm,-51.821485047447325.mm,621.5835562962649.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.949997603379416.mm, -19.11168839581974.mm, 11.179554633273824.mm)
+  circle = ge.add_circle([1278.1535476768406.mm,-72.2714258134277.mm,632.937094259757.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(20.59954635592385.mm, -6.513432664652143.mm, 11.066860995680827.mm)
+  circle = ge.add_circle([1288.10354528022.mm,-91.38311420924744.mm,644.1166488930309.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(19.18284128444111.mm, 9.922331934215691.mm, 11.081852583738964.mm)
+  circle = ge.add_circle([1308.7030916361439.mm,-97.89654687389958.mm,655.1835098887117.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(6.534560285309226.mm, 20.512171850011555.mm, 11.215696827115949.mm)
+  circle = ge.add_circle([1327.885932920585.mm,-87.97421493968389.mm,666.2653624724506.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.89332883980228.mm, 19.01688777314115.mm, 11.389536923677838.mm)
+  circle = ge.add_circle([1334.4204932058942.mm,-67.46204308967233.mm,677.4810592995666.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-20.422032520594712.mm, 6.317453868864206.mm, 11.500951777442765.mm)
+  circle = ge.add_circle([1324.527164366092.mm,-48.445155316531185.mm,688.8705962232444.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-18.848370986792588.mm, -10.104024384564838.mm, 11.484299274439763.mm)
+  circle = ge.add_circle([1304.1051318454972.mm,-42.12770144766698.mm,700.3715480006872.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-6.099495926550844.mm, -20.572530500022978.mm, 11.349390543643608.mm)
+  circle = ge.add_circle([1285.2567608587046.mm,-52.23172583223182.mm,711.855847275127.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(10.313358013860125.mm, -18.92035121202119.mm, 11.175709549565.mm)
+  circle = ge.add_circle([1279.1572649321538.mm,-72.8042563322548.mm,723.2052378187706.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(20.72025552023956.mm, -6.120898390332584.mm, 11.065583650026724.mm)
+  circle = ge.add_circle([1289.470622946014.mm,-91.72460754427598.mm,734.3809473683356.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(18.98978117430761.mm, 10.284794498696598.mm, 11.0838955478672.mm)
+  circle = ge.add_circle([1310.1908784662535.mm,-97.84550593460857.mm,745.4465310183623.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(6.141475821842278.mm, 20.631011206232202.mm, 11.219856451067926.mm)
+  circle = ge.add_circle([1329.180659640561.mm,-87.56071143591197.mm,756.5304265662295.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-10.254844702168839.mm, 18.82208752470835.mm, 11.393362488359116.mm)
+  circle = ge.add_circle([1335.3221354624034.mm,-66.92970022967977.mm,767.7502830172974.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-20.538986050433778.mm, 5.923784171436154.mm, 11.50218938093326.mm)
+  circle = ge.add_circle([1325.0672907602345.mm,-48.107612704971416.mm,779.1436455056565.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-18.651856857070698.mm, -10.464625775183421.mm, 11.482219759839495.mm)
+  circle = ge.add_circle([1304.5283047098008.mm,-42.18382853353526.mm,790.6458348865898.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-5.705294057667061.mm, -20.687608630284515.mm, 11.345219095295533.mm)
+  circle = ge.add_circle([1285.87644785273.mm,-52.648454308718684.mm,802.1280546464293.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(10.672996327482679.mm, -18.722105681108943.mm, 11.171903853124604.mm)
+  circle = ge.add_circle([1280.171153795063.mm,-73.3360629390032.mm,813.4732737417248.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(20.83344273961052.mm, -5.7261292055582516.mm, 11.064385901673631.mm)
+  circle = ge.add_circle([1290.8441501225457.mm,-92.05816862011214.mm,824.6451775948494.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(18.78983096360207.mm, 10.643501798299212.mm, 11.086011423112723.mm)
+  circle = ge.add_circle([1311.6775928621562.mm,-97.7842978256704.mm,835.7095634965231.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.746192531882798.mm, 20.74231760573757.mm, 11.224039343025197.mm)
+  circle = ge.add_circle([1330.4674238257583.mm,-87.14079602737118.mm,846.7955749196358.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-10.612572637807261.mm, 18.62041480797032.mm, 11.397147969159505.mm)
+  circle = ge.add_circle([1336.213616357641.mm,-66.39847842163361.mm,858.019614262661.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-20.648396627149623.mm, 5.5279515354437905.mm, 11.503347164813817.mm)
+  circle = ge.add_circle([1325.6010437198338.mm,-47.77806361366329.mm,869.4167622318205.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-18.448488817645966.mm, -10.82140623951694.mm, 11.480067717094244.mm)
+  circle = ge.add_circle([1304.9526470926842.mm,-42.2501120782195.mm,880.9201093966343.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-5.308965429688897.mm, -20.795133138534787.mm, 11.341025141560408.mm)
+  circle = ge.add_circle([1286.5041582750382.mm,-53.07151831773644.mm,892.4001771137285.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(11.028781230283585.mm, -18.517024188046776.mm, 11.168138933518208.mm)
+  circle = ge.add_circle([1281.1951928453493.mm,-73.86665145627123.mm,903.741202255289.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(20.939066686230944.mm, -5.3292692515521765.mm, 11.063268187952758.mm)
+  circle = ge.add_circle([1292.223974075633.mm,-92.383675644318.mm,914.9093411888072.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(18.583063659715435.mm, 10.99832285899933.mm, 11.088199436910486.mm)
+  circle = ge.add_circle([1313.1630407618638.mm,-97.71294489587018.mm,925.9726093767599.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.34885474436669.mm, 20.84605040746122.mm, 11.228243975697296.mm)
+  circle = ge.add_circle([1331.7461044215793.mm,-86.71462203687085.mm,937.0608088136704.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-10.966382030285786.mm, 18.41194325925217.mm, 11.40089198389478.mm)
+  circle = ge.add_circle([1337.094959165946.mm,-65.86857162940963.mm,948.2890527893677.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-20.750224301893468.mm, 5.130100490405823.mm, 11.504424706345503.mm)
+  circle = ge.add_circle([1326.1285771356602.mm,-47.45662837015746.mm,959.6899447732625.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-18.23834112385316.mm, -11.174235507082116.mm, 11.47784393197469.mm)
+  circle = ge.add_circle([1305.3783528337667.mm,-42.32652787975164.mm,971.194369479608.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.910654753235576.mm, -20.895064764581875.mm, 11.336810213767194.mm)
+  circle = ge.add_circle([1287.1400117099136.mm,-53.50076338683375.mm,982.6722134115827.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(11.380582815287198.mm, -18.305181613798922.mm, 11.16441616542295.mm)
+  circle = ge.add_circle([1282.229356956678.mm,-74.39582815141563.mm,994.0090236253499.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(21.037088793856356.mm, -4.930463432935042.mm, 11.062230916972567.mm)
+  circle = ge.add_circle([1293.6099397719652.mm,-92.70100976521455.mm,1005.1734397907728.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(18.36955475914806.mm, 11.349128125746958.mm, 11.090458790355797.mm)
+  circle = ge.add_circle([1314.6470285658215.mm,-97.63147319814959.mm,1016.2356707077454.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.949607538385862.mm, 20.942171735668325.mm, 11.232468813855576.mm)
+  circle = ge.add_circle([1333.0165833249696.mm,-86.28234507240263.mm,1027.3261294981012.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-11.316143693942877.mm, 18.196748997321805.mm, 11.404593165520737.mm)
+  circle = ge.add_circle([1337.9661908633555.mm,-65.34017333673431.mm,1038.5585983119568.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-20.844431894546005.mm, 4.730376302817959.mm, 11.505421612087957.mm)
+  circle = ge.add_circle([1326.6500471694126.mm,-47.143424339412505.mm,1049.9631914774775.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-18.02149050646699.mm, -11.52298475008807.mm, 11.475549216447007.mm)
+  circle = ge.add_circle([1305.8056152748666.mm,-42.413048036594546.mm,1061.4686130895655.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.510507462627174.mm, -20.98736702060627.mm, 11.332575850903595.mm)
+  circle = ge.add_circle([1287.7841247683996.mm,-53.93603278668262.mm,1072.9441623060125.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(11.72827262993792.mm, -18.08665530798828.mm, 11.160736908124818.mm)
+  circle = ge.add_circle([1283.2736173057724.mm,-74.92339980728889.mm,1084.276738156916.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(21.12747327188572.mm, -4.5298573648171185.mm, 11.061274467469957.mm)
+  circle = ge.add_circle([1295.0018899357103.mm,-93.01005511527717.mm,1095.4374750650409.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(18.149382219944982.mm, 11.69578950976964.mm, 11.092788658495238.mm)
+  circle = ge.add_circle([1316.129363207596.mm,-97.53991248009429.mm,1106.4987495325108.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.548596690213117.mm, 21.030646493786335.mm, 11.236712314894703.mm)
+  circle = ge.add_circle([1334.278745427541.mm,-85.84412297032465.mm,1117.591538191006.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-11.661729921054985.mm, 17.97491059559662.mm, 11.408250162633067.mm)
+  circle = ge.add_circle([1338.8273421177541.mm,-64.81347647653831.mm,1128.8282505059008.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-20.930985007291383.mm, 4.3289249231120905.mm, 11.506337518042756.mm)
+  circle = ge.add_circle([1327.1656121966992.mm,-46.838565880941694.mm,1140.2365006685338.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-17.79801614368671.mm, -11.86752663047433.mm, 11.473184408375118.mm)
+  circle = ge.add_circle([1306.2346271894078.mm,-42.5096409578296.mm,1151.7428381865766.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.108669662782404.mm, -21.072006204483344.mm, 11.32832359905342.mm)
+  circle = ge.add_circle([1288.436611045721.mm,-54.377167588303934.mm,1163.2160225949517.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(12.071723723002378.mm, -17.86152506065541.mm, 11.157102505023886.mm)
+  circle = ge.add_circle([1284.3279413829387.mm,-75.44917379278728.mm,1174.5443461940051.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(21.210187118429303.mm, -4.127597319629373.mm, 11.060399188670317.mm)
+  circle = ge.add_circle([1296.399665105941.mm,-93.31069885344269.mm,1185.701448699029.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(17.92262643323147.mm, 12.038180435342937.mm, 11.09518819062987.mm)
+  circle = ge.add_circle([1317.6098522243703.mm,-97.43829617307206.mm,1196.7618478876993.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.145968620076019.mm, 21.11144237721578.mm, 11.240972929393365.mm)
+  circle = ge.add_circle([1335.5324786576018.mm,-85.40011573772912.mm,1207.8570360783292.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-12.003014528466565.mm, 17.7465090534551.mm, 11.41186163996008.mm)
+  circle = ge.add_circle([1339.6784472776778.mm,-64.28867336051334.mm,1219.0980090077226.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.00985203717846.mm, 3.925892932366864.mm, 11.507172089787673.mm)
+  circle = ge.add_circle([1327.6754327492113.mm,-46.54216430705824.mm,1230.5098706476826.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-17.567999632225337.mm, -12.207735346405713.mm, 11.470750371217036.mm)
+  circle = ge.add_circle([1306.6655807120328.mm,-42.61627137469138.mm,1242.0170427374703.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-3.7052880758724314.mm, -21.148951412090824.mm, 11.324055010831898.mm)
+  circle = ge.add_circle([1289.0975810798075.mm,-54.82400672109709.mm,1253.4877931086874.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(12.410810690921835.mm, -17.629873073121743.mm, 11.153514283141021.mm)
+  circle = ge.add_circle([1285.392293003935.mm,-75.97295813318792.mm,1264.8118481195193.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(21.285200132358113.mm, -3.723830173716877.mm, 11.059605400163036.mm)
+  circle = ge.add_circle([1297.8031036948569.mm,-93.60283120630966.mm,1275.9653624026603.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(17.689370193860213.mm, 12.37617588600466.mm, 11.097656510623437.mm)
+  circle = ge.add_circle([1319.088303827215.mm,-97.32666138002654.mm,1287.0249678028233.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.741870338695435.mm, 21.1845298851311.mm, 11.245249101683157.mm)
+  circle = ge.add_circle([1336.7776740210752.mm,-84.95048549402188.mm,1298.1226243134467.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-12.339872903663718.mm, 17.511627766660382.mm, 11.4154262788511.mm)
+  circle = ge.add_circle([1340.5195443597706.mm,-63.76595560889078.mm,1309.36787341513.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.0810041876573.mm, 3.5214274887851786.mm, 11.507925022596964.mm)
+  circle = ge.add_circle([1328.179671456107.mm,-46.254327842230396.mm,1320.783299693981.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-17.33152495751733.mm, -12.543486678205923.mm, 11.468247993706655.mm)
+  circle = ge.add_circle([1307.0986672684496.mm,-42.73290035344522.mm,1332.291224716578.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-3.300509987747546.mm, -21.21817454859007.mm, 11.319771644820321.mm)
+  circle = ge.add_circle([1289.7671423109323.mm,-55.27638703165114.mm,1343.7594727102846.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(12.745409723602052.mm, -17.391783927980114.mm, 11.149973552636538.mm)
+  circle = ge.add_circle([1286.4666323231847.mm,-76.49456158024121.mm,1355.079244355105.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(21.352484924331748.mm, -3.3187033537079174.mm, 11.058893391782476.mm)
+  circle = ge.add_circle([1299.2120420467868.mm,-93.88634550822132.mm,1366.2292179077415.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(17.449698670179487.mm, 12.70965245020389.mm, 11.100192717222853.mm)
+  circle = ge.add_circle([1320.5645269711185.mm,-97.20504886192924.mm,1377.288111299524.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.336449393607154.mm, 21.249882331246795.mm, 11.249539270414289.mm)
+  circle = ge.add_circle([1338.014225641298.mm,-84.49539641172535.mm,1388.3883040167468.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-12.67218205027325.mm, 17.2703524969113.mm, 11.418942777757138.mm)
+  circle = ge.add_circle([1341.3506750349052.mm,-63.24551408047856.mm,1399.637843287161.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.144415479097916.mm, 3.115676273963871.mm, 11.508596041554028.mm)
+  circle = ge.add_circle([1328.678492984632.mm,-45.97516158356726.mm,1411.0567860649182.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-17.088678463050428.mm, -12.874658033714454.mm, 11.465678189532582.mm)
+  circle = ge.add_circle([1307.534077505534.mm,-42.859485309603386.mm,1422.5653821064723.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-2.8944831941594202.mm, -21.27965033868618.mm, 11.315475064993507.mm)
+  circle = ge.add_circle([1290.4453990424836.mm,-55.73414334331784.mm,1434.0310602960049.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(13.075398649618137.mm, -17.147344558206598.mm, 11.146481606329644.mm)
+  circle = ge.add_circle([1287.5509158483242.mm,-77.01379368200402.mm,1445.3465353609984.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(21.412016926798742.mm, -2.912364782686609.mm, 11.05826342350224.mm)
+  circle = ge.add_circle([1300.6263144979423.mm,-94.16113824021062.mm,1456.493016967328.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(17.203699372937308.mm, 13.03848836636027.mm, 11.102795884389707.mm)
+  circle = ge.add_circle([1322.038331424741.mm,-97.07350302289723.mm,1467.5512803908302.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(2.9298538152881974.mm, 21.3074758535652.mm, 11.253841869126745.mm)
+  circle = ge.add_circle([1339.2420307976784.mm,-84.03501465653696.mm,1478.65407627522.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-12.999820632971478.mm, 17.022771340527605.mm, 11.422409852706096.mm)
+  circle = ge.add_circle([1342.1718846129666.mm,-62.72753880297176.mm,1489.9079181443467.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.200062758270406.mm, 2.7087874389712283.mm, 11.509184901651224.mm)
+  circle = ge.add_circle([1329.172063979995.mm,-45.70476746244415.mm,1501.3303279970528.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-16.83954881884347.mm, -13.201128493046113.mm, 11.463041897001176.mm)
+  circle = ge.add_circle([1307.9720012217247.mm,-42.995980023472924.mm,1512.839512898704.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-2.4873559467982886.mm, -21.33335633585719.mm, 11.311166840154101.mm)
+  circle = ge.add_circle([1291.1324524028812.mm,-56.19710851651904.mm,1524.3025547957052.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(13.400656980823442.mm, -16.89664421542254.mm, 11.143039719226863.mm)
+  circle = ge.add_circle([1288.645096456083.mm,-77.53046485237623.mm,1535.6137216358593.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(21.46377440296783.mm, -2.5049628261809147.mm, 11.057715725341723.mm)
+  circle = ge.add_circle([1302.0457534369064.mm,-94.42710906779877.mm,1546.7567613550862.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.951462123327246.mm, 13.362563567323306.mm, 11.10546506163405.mm)
+  circle = ge.add_circle([1323.5095278398742.mm,-96.93207189397968.mm,1557.8144770804279.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(2.522232063106685.mm, 21.357289423087437.mm, 11.25815532682168.mm)
+  circle = ge.add_circle([1340.4609899632014.mm,-83.56950832665638.mm,1568.919942142062.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-13.322669021787988.mm, 16.7689746962848.mm, 11.425826237773208.mm)
+  circle = ge.add_circle([1342.983222026308.mm,-62.21221890356894.mm,1580.1780974688836.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.24792570680438.mm, 2.300909550251099.mm, 11.509691387879002.mm)
+  circle = ge.add_circle([1329.6605530045201.mm,-45.44324420728414.mm,1591.6039237066568.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-16.584226989066565.mm, -13.522778852745496.mm, 11.460340078696618.mm)
+  circle = ge.add_circle([1308.4126272977157.mm,-43.14233465703304.mm,1603.1136150945358.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-2.079276899158913.mm, -21.379272930546577.mm, 11.306848543353453.mm)
+  circle = ge.add_circle([1291.8284003086492.mm,-56.665113509778536.mm,1614.5739551732324.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(13.721065956343637.mm, -16.63977443730471.mm, 11.139649148057288.mm)
+  circle = ge.add_circle([1289.7491234094903.mm,-78.04438644032511.mm,1625.880803716586.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(21.507738454743276.mm, -2.0966462379902424.mm, 11.057250497280847.mm)
+  circle = ge.add_circle([1303.470189365834.mm,-94.68416087762982.mm,1637.0204528646432.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.69307902019318.mm, 13.681759724212867.mm, 11.108199274365688.mm)
+  circle = ge.add_circle([1324.9779278205772.mm,-96.78080711562006.mm,1648.077703361924.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(2.113732971115951.mm, 21.399304851492168.mm, 11.262478068535984.mm)
+  circle = ge.add_circle([1341.6710068407704.mm,-83.0990473914072.mm,1659.1859026362897.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-13.64060933578503.mm, 16.509055232404165.mm, 11.429190685540107.mm)
+  circle = ge.add_circle([1343.7847398118863.mm,-61.69974253991503.mm,1670.4483807048257.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.287986848604078.mm, 1.8921915353796734.mm, 11.510115315305711.mm)
+  circle = ge.add_circle([1330.1441304761013.mm,-45.19068730751086.mm,1681.8775713903658.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-16.322806198830676.mm, -13.839491669308622.mm, 11.457573721127801.mm)
+  circle = ge.add_circle([1308.8561436274972.mm,-43.29849577213119.mm,1693.3876867056715.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1.6703950522658033.mm, -21.41738335732837.mm, 11.302521751322956.mm)
+  circle = ge.add_circle([1292.5333374286665.mm,-57.13798744143981.mm,1704.8452604267993.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(14.036508585939828.mm, -16.3768290141619.mm, 11.136311130813056.mm)
+  circle = ge.add_circle([1290.8629423764007.mm,-78.55537079876818.mm,1716.1477821781223.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(21.543893029624087.mm, -1.6875641058714876.mm, 11.056867909186622.mm)
+  circle = ge.add_circle([1304.8994509623406.mm,-94.93219981293008.mm,1727.2840933089353.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.4286444064021.mm, 13.995960289622772.mm, 11.110997524247068.mm)
+  circle = ge.add_circle([1326.4433439919646.mm,-96.61976391880157.mm,1738.340961218122.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(1.7045056937099616.mm, 21.433506797776403.mm, 11.266808515915955.mm)
+  circle = ge.add_circle([1342.8719883983667.mm,-82.6238036291788.mm,1749.451958742369.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-26.5764940920767.mm, -8.809703168597608.mm, 0.28123274171503.mm)
+  circle = ge.add_circle([1344.5764940920767.mm,-61.19029683140239.mm,1760.718767258285.mm], vec, 5.mm, 8)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (array -> panel, flexible)
+  grp = ents.add_group
+  grp.name = "PV cord (array -> panel, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(2.mm, 0.mm, 189.mm)
+  circle = ge.add_circle([1318.mm,-70.mm,1761.mm], vec, 5.mm, 10)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11088,6 +13820,440 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-24.mm, 31.mm, 0.mm)
+  circle = ge.add_circle([300.mm,55.mm,600.mm], vec, 5.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.851511560266601.mm, 21.01868176094372.mm, -19.73157743024467.mm)
+  circle = ge.add_circle([276.mm,86.mm,600.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.415285721407372.mm, -3.1878709732554427.mm, -8.26777556548791.mm)
+  circle = ge.add_circle([284.8515115602666.mm,107.01868176094372.mm,580.2684225697553.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.50273106781765.mm, -3.2555705962828227.mm, 7.999501403076351.mm)
+  circle = ge.add_circle([262.43622583885923.mm,103.83081078768828.mm,572.0006470042674.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-13.500283629993305.mm, 3.7140661297747783.mm, 19.61916723026559.mm)
+  circle = ge.add_circle([239.93349477104158.mm,100.57524019140546.mm,580.0001484073438.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-0.6382537614751698.mm, 13.671766673143637.mm, 19.840340125280477.mm)
+  circle = ge.add_circle([226.43321114104828.mm,104.28930632118023.mm,599.6193156376094.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.610678641132552.mm, 20.832230468710918.mm, 8.534521378108138.mm)
+  circle = ge.add_circle([225.7949573795731.mm,117.96107299432387.mm,619.4596557628898.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.872998515546954.mm, 21.03531682309628.mm, -7.729748483022945.mm)
+  circle = ge.add_circle([234.40563602070566.mm,138.7933034630348.mm,627.994177140998.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-0.003698733156397793.mm, 14.163035082164612.mm, -19.503130305068453.mm)
+  circle = ge.add_circle([243.2786345362526.mm,159.82862028613107.mm,620.264428657975.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-12.862162052327875.mm, 4.2080957382899555.mm, -19.945435209911466.mm)
+  circle = ge.add_circle([243.2749358030962.mm,173.99165536829568.mm,600.7612983529066.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.231783666317455.mm, -3.0458048660890995.mm, -8.799689531312879.mm)
+  circle = ge.add_circle([230.41277375076834.mm,178.19975110658564.mm,580.8158631429951.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.668929577273758.mm, -3.3842404100552415.mm, 7.458566670834443.mm)
+  circle = ge.add_circle([208.18099008445088.mm,175.15394624049654.mm,572.0161736116822.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-13.91962343044716.mm, 3.3894159616814363.mm, 19.38348810480136.mm)
+  circle = ge.add_circle([185.51206050717713.mm,171.7697058304413.mm,579.4747402825167.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1.0671036276280574.mm, 13.339753873541468.mm, 20.046843256656985.mm)
+  circle = ge.add_circle([171.59243707672996.mm,175.15912179212273.mm,598.858228387318.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.421475164849738.mm, 20.68575035804028.mm, 9.063231007117906.mm)
+  circle = ge.add_circle([170.5253334491019.mm,188.4988756656642.mm,618.905071643975.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.033366303204417.mm, 21.159472529669813.mm, -7.186006096157257.mm)
+  circle = ge.add_circle([178.94680861395165.mm,209.18462602370448.mm,627.9683026510929.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.41306862197197347.mm, 14.48569367968338.mm, -19.26026274607011.mm)
+  circle = ge.add_circle([187.98017491715606.mm,230.3440985533743.mm,620.7822965549357.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-12.431131796185184.mm, 4.5417965817552215.mm, -20.14454551960796.mm)
+  circle = ge.add_circle([188.39324353912804.mm,244.82979223305767.mm,601.5220338088656.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.036913744282288.mm, -2.894937829674717.mm, -9.325097088240682.mm)
+  circle = ge.add_circle([175.96211174294285.mm,249.3715888148129.mm,581.3774882892576.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.823436998148622.mm, -3.503859058474518.mm, 6.912117143510841.mm)
+  circle = ge.add_circle([153.92519799866056.mm,246.47665098513818.mm,572.0523912010169.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-14.333741298209489.mm, 3.0688085801880334.mm, 19.13347700784925.mm)
+  circle = ge.add_circle([131.10176100051194.mm,242.97279192666366.mm,578.9645083445278.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1.5002345951338185.mm, 13.004426672891782.mm, 20.238523937893206.mm)
+  circle = ge.add_circle([116.76801970230245.mm,246.0416005068517.mm,598.097985352377.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.220974819980384.mm, 20.530524284593128.mm, 9.585239367105373.mm)
+  circle = ge.add_circle([115.26778510716863.mm,259.0460271797435.mm,618.3365092902702.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.181984795637973.mm, 21.27453200768275.mm, -6.636950442973102.mm)
+  circle = ge.add_circle([123.48875992714902.mm,279.5765514643366.mm,627.9217486573756.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.8244604501020376.mm, 14.804190578880878.mm, -19.003154327272227.mm)
+  circle = ge.add_circle([132.670744722787.mm,300.85108347201935.mm,621.2847982144025.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-11.995980184272383.mm, 4.878688152268467.mm, -20.328761139016706.mm)
+  circle = ge.add_circle([133.49520517288903.mm,315.65527405090023.mm,602.2816438871303.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.83082004031614.mm, -2.7353814137009635.mm, -9.843609754792169.mm)
+  circle = ge.add_circle([121.49922498861665.mm,320.5339622031687.mm,581.9528827481136.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.96613908908708.mm, -3.614338096620429.mm, 6.360556860822271.mm)
+  circle = ge.add_circle([99.6684049483005.mm,317.79858078946774.mm,572.1092729933214.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-14.742331038366345.mm, 2.7524810394214114.mm, 18.869318795297772.mm)
+  circle = ge.add_circle([76.70226585921343.mm,314.1842426928473.mm,578.4698298541437.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(22.04006517915292.mm, 17.063276267731283.mm, 2.6608513505585734.mm)
+  circle = ge.add_circle([61.95993482084708.mm,316.9367237322687.mm,597.3391486494414.mm], vec, 5.mm, 8)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-24.mm, 31.mm, 0.mm)
+  circle = ge.add_circle([84.mm,334.mm,600.mm], vec, 5.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Lighting & Wiring"
   inst.layer = model.layers["Lighting"]
@@ -11177,6 +14343,1364 @@ end
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -6.120000000000001.mm, 0.mm)
   circle = ge.add_circle([1510.78.mm,24.12.mm,1908.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-31.12799999999993.mm, -22.25.mm, -126.70000000000005.mm)
+  circle = ge.add_circle([1510.78.mm,-70.mm,1908.mm], vec, 5.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.911534316695224.mm, -20.5689858849434.mm, -2.7709411168864335.mm)
+  circle = ge.add_circle([1479.652.mm,-92.25.mm,1781.3.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-10.601367115128369.mm, 17.974514822995275.mm, -12.318342659127666.mm)
+  circle = ge.add_circle([1457.7404656833048.mm,-112.8189858849434.mm,1778.5290588831135.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.3780366767048235.mm, 17.274166539123.mm, -16.12121662847312.mm)
+  circle = ge.add_circle([1447.1390985681765.mm,-94.84447106194813.mm,1766.2107162239859.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.644135678089242.mm, 5.319172914605446.mm, -16.78966589105835.mm)
+  circle = ge.add_circle([1452.5171352448813.mm,-77.57030452282513.mm,1750.0894995955127.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.58187456801579.mm, -10.870916144349266.mm, -13.931200655098792.mm)
+  circle = ge.add_circle([1469.1612709229705.mm,-72.25113160821968.mm,1733.2998337044544.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.2278108707366755.mm, -21.78985231133329.mm, -9.224210722310318.mm)
+  circle = ge.add_circle([1485.7431454909863.mm,-83.12204775256895.mm,1719.3686330493556.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-10.75135033095512.mm, -21.02642201700951.mm, -5.4324742910744135.mm)
+  circle = ge.add_circle([1490.970956361723.mm,-104.91190006390224.mm,1710.1444223270453.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.97321009670509.mm, -9.02888455947803.mm, -4.782365038050102.mm)
+  circle = ge.add_circle([1480.2196060307679.mm,-125.93832208091175.mm,1704.7119480359709.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.84868882177011.mm, 7.158229919310372.mm, -7.655604149330429.mm)
+  circle = ge.add_circle([1458.2463959340628.mm,-134.96720664038978.mm,1699.9295829979208.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-10.45090099966069.mm, 18.03041966133452.mm, -12.365127125547133.mm)
+  circle = ge.add_circle([1436.3977071122927.mm,-127.8089767210794.mm,1692.2739788485903.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.527775025430628.mm, 17.203918946520048.mm, -16.145668454706083.mm)
+  circle = ge.add_circle([1425.946806112632.mm,-109.77855705974488.mm,1679.9088517230432.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.705225191709133.mm, 5.164019795705698.mm, -16.77742782858354.mm)
+  circle = ge.add_circle([1431.4745811380626.mm,-92.57463811322484.mm,1663.7631832683371.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.518445642323286.mm, -11.019874359430347.mm, -13.889458461850836.mm)
+  circle = ge.add_circle([1448.1798063297717.mm,-87.41061831751914.mm,1646.9857554397536.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.077106730059995.mm, -21.845152621146923.mm, -9.17747393948207.mm)
+  circle = ge.add_circle([1464.698251972095.mm,-98.43049267694948.mm,1633.0962969779027.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-10.900841539338444.mm, -20.95559403330148.mm, -5.408185106409292.mm)
+  circle = ge.add_circle([1469.775358702155.mm,-120.2756452980964.mm,1623.9188230384207.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.033712416508934.mm, -8.873515972046334.mm, -4.794785202687308.mm)
+  circle = ge.add_circle([1458.8745171628166.mm,-141.2312393313979.mm,1618.5106379320114.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.784677428252053.mm, 7.3069121648404405.mm, -7.6974409813783495.mm)
+  circle = ge.add_circle([1436.8408047463076.mm,-150.10475530344422.mm,1613.715852729324.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-10.299961121678734.mm, 18.085114603084975.mm, -12.411815515253238.mm)
+  circle = ge.add_circle([1415.0561273180556.mm,-142.79784313860378.mm,1606.0184117479457.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.67701682398183.mm, 17.132511646976653.mm, -16.169794629058515.mm)
+  circle = ge.add_circle([1404.7561661963769.mm,-124.7127285355188.mm,1593.6065962326925.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.7651393991855.mm, 5.008438098458896.mm, -16.76482575034038.mm)
+  circle = ge.add_circle([1410.4331830203587.mm,-107.58021688854215.mm,1577.436801603634.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.453852752764305.mm, -11.168278378200839.mm, -13.847527626145848.mm)
+  circle = ge.add_circle([1427.1983224195442.mm,-102.57177879008326.mm,1560.6719758532936.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.925933406254671.mm, -21.899241364487068.mm, -9.130834651693931.mm)
+  circle = ge.add_circle([1443.6521751723085.mm,-113.7400571682841.mm,1546.8244482271477.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-11.049831662354109.mm, -20.883608501987425.mm, -5.38422230863921.mm)
+  circle = ge.add_circle([1448.5781085785632.mm,-135.63929853277116.mm,1537.6936135754538.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.09303760207422.mm, -8.717723526936396.mm, -4.807569003219214.mm)
+  circle = ge.add_circle([1437.528276916209.mm,-156.5229070347586.mm,1532.3093912668146.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.719504023264108.mm, 7.455035703866656.mm, -7.739465184170967.mm)
+  circle = ge.add_circle([1415.4352393141348.mm,-165.24063056169499.mm,1527.5018222635954.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-10.148556647077385.mm, 18.138596326870385.mm, -12.458404993071781.mm)
+  circle = ge.add_circle([1393.7157352908707.mm,-157.78559485782833.mm,1519.7623570794244.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.825753009579557.mm, 17.05994897673517.mm, -16.193593686457234.mm)
+  circle = ge.add_circle([1383.5671786437933.mm,-139.64699853095794.mm,1507.3039520863526.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.82387466219916.mm, 4.852437270637296.mm, -16.751860421595893.mm)
+  circle = ge.add_circle([1389.392931653373.mm,-122.58704955422277.mm,1491.1103583998954.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.388099821771902.mm, -11.316119188756176.mm, -13.805410694253169.mm)
+  circle = ge.add_circle([1406.216806315572.mm,-117.73461228358548.mm,1474.3584979782995.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.77430007939347.mm, -21.952115256788915.mm, -9.08429569113946.mm)
+  circle = ge.add_circle([1422.604906137344.mm,-129.05073147234165.mm,1460.5530872840463.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-11.198311652505936.mm, -20.810469794423113.mm, -5.3605873529159.mm)
+  circle = ge.add_circle([1427.3792062167374.mm,-151.00284672913057.mm,1451.4687915929069.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.151182050851958.mm, -8.561516684718384.mm, -4.82071566334389.mm)
+  circle = ge.add_circle([1416.1808945642315.mm,-171.81331652355368.mm,1446.108204239991.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.653172564490887.mm, 7.6025915415168015.mm, -7.781674205768468.mm)
+  circle = ge.add_circle([1394.0297125133795.mm,-180.37483320827207.mm,1441.287488576647.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.996696769965865.mm, 18.19086158498766.mm, -12.50489272983441.mm)
+  circle = ge.add_circle([1372.3765399488886.mm,-172.77224166675526.mm,1433.5058143708786.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.9739745501478865.mm, 16.986235342197944.mm, -16.217064181692876.mm)
+  circle = ge.add_circle([1362.3798431789228.mm,-154.5813800817676.mm,1421.0009216410442.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.8814274140243.mm, 4.696026785465477.mm, -16.738532629676.mm)
+  circle = ge.add_circle([1368.3538177290707.mm,-137.59514473956966.mm,1404.7838574593513.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.321190842224723.mm, -11.463387813393098.mm, -13.763110223743979.mm)
+  circle = ge.add_circle([1385.235245143095.mm,-132.89911795410418.mm,1388.0453248296753.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.622215957481103.mm, -22.003771087260276.mm, -9.0378598839186.mm)
+  circle = ge.add_circle([1401.5564359853197.mm,-144.36250576749728.mm,1374.2822146059314.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-11.346272493276501.mm, -20.73618235199129.mm, -5.337281674483393.mm)
+  circle = ge.add_circle([1406.1786519428008.mm,-166.36627685475756.mm,1365.2443547220128.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.20814223199136.mm, -8.404904931126936.mm, -4.8342243847243935.mm)
+  circle = ge.add_circle([1394.8323794495243.mm,-187.10245920674885.mm,1359.9070730475294.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.585687079943227.mm, 7.749570717392601.mm, -7.824065483007871.mm)
+  circle = ge.add_circle([1372.624237217533.mm,-195.50736413787578.mm,1355.072848662805.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.844390712106815.mm, 18.24190720360417.mm, -12.551275902551652.mm)
+  circle = ge.add_circle([1351.0385501375897.mm,-187.75779342048318.mm,1347.248783179797.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(6.1216724448638615.mm, 16.91137521966067.mm, -16.240204689508573.mm)
+  circle = ge.add_circle([1341.194159425483.mm,-169.515886216879.mm,1334.6975072772454.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.937794159741543.mm, 4.539216141044136.mm, -16.724843183916846.mm)
+  circle = ge.add_circle([1347.3158318703468.mm,-152.60451099721834.mm,1318.4573025877369.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.253129877202127.mm, -11.610075309154297.mm, -13.720628783334178.mm)
+  circle = ge.add_circle([1364.2536260300883.mm,-148.0652948561742.mm,1301.73245940382.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.469690275898529.mm, -22.054205719076435.mm, -8.991530049868288.mm)
+  circle = ge.add_circle([1380.5067559072904.mm,-159.6753701653285.mm,1288.0118306204859.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-11.493705199672831.mm, -20.660750685832.mm, -5.3143066885900225.mm)
+  circle = ge.add_circle([1384.976446183189.mm,-181.72957588440494.mm,1279.0203005706176.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.26391468655902.mm, -8.247897776485189.mm, -4.848094347036977.mm)
+  circle = ge.add_circle([1373.4827409835161.mm,-202.39032657023694.mm,1273.7059938820275.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.51705166770853.mm, 7.895964306113797.mm, -7.866636441658784.mm)
+  circle = ge.add_circle([1351.218826296957.mm,-210.63822434672213.mm,1268.8578995349906.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.691647722358312.mm, 18.291730082950295.mm, -12.597551694582762.mm)
+  circle = ge.add_circle([1329.7017746292486.mm,-202.74226004060833.mm,1260.9912630933318.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(6.268837724702053.mm, 16.835373155039747.mm, -16.263013804686352.mm)
+  circle = ge.add_circle([1320.0101269068903.mm,-184.45052995765803.mm,1248.393711398749.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.99297147645416.mm, 4.382014859774529.mm, -16.710792915616594.mm)
+  circle = ge.add_circle([1326.2789646315923.mm,-167.6151568026183.mm,1232.1306975940627.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.18392105973885.mm, -11.756172768371812.mm, -13.67796895272977.mm)
+  circle = ge.add_circle([1343.2719361080465.mm,-163.23314194284376.mm,1215.419904678446.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.316732296840428.mm, -22.103416089570572.mm, -8.945309002388967.mm)
+  circle = ge.add_circle([1359.4558571677853.mm,-174.98931471121557.mm,1201.7419357257163.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-11.640600818774374.mm, -20.584179376569153.mm, -5.291663790403163.mm)
+  circle = ge.add_circle([1363.7725894646258.mm,-197.09273080078614.mm,1192.7966267233273.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.318496027746278.mm, -8.090504755127114.mm, -4.862324708021333.mm)
+  circle = ge.add_circle([1352.1319886458514.mm,-217.6769101773553.mm,1187.5049629329242.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.447270495704743.mm, 8.041763417860125.mm, -7.90938449658006.mm)
+  circle = ge.add_circle([1329.813492618105.mm,-225.7674149324824.mm,1182.6426382249028.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.538477076110667.mm, 18.340327197508373.mm, -12.643717295808301.mm)
+  circle = ge.add_circle([1308.3662221224004.mm,-217.72565151462229.mm,1174.7332537283228.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(6.415461452981617.mm, 16.75823376359665.mm, -16.285490142131266.mm)
+  circle = ge.add_circle([1298.8277450462897.mm,-199.3853243171139.mm,1162.0895364325145.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(17.0469560134934.mm, 4.224432487778671.mm, -16.696382677984957.mm)
+  circle = ge.add_circle([1305.2432064992713.mm,-182.62709055351726.mm,1145.8040462903832.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.113568592572392.mm, -11.901671319208333.mm, -13.635133322468619.mm)
+  circle = ge.add_circle([1322.2901625127647.mm,-178.4026580657386.mm,1129.1076636123983.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.163351308752681.mm, -22.151399210419044.mm, -8.899199548276101.mm)
+  circle = ge.add_circle([1338.403731105337.mm,-190.30432938494693.mm,1115.4725302899296.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-11.786950430275056.mm, -20.50647307403196.mm, -5.26935435492328.mm)
+  circle = ge.add_circle([1342.5670824140898.mm,-212.45572859536597.mm,1106.5733307416535.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.371882941074773.mm, -7.932735424818674.mm, -4.876914603532441.mm)
+  circle = ge.add_circle([1330.7801319838147.mm,-232.96220166939793.mm,1101.3039763867303.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.376347801427073.mm, 8.186959198911296.mm, -7.952307051875096.mm)
+  circle = ge.add_circle([1308.40824904274.mm,-240.8949370942166.mm,1096.4270617831978.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.384888074724358.mm, 18.387695596195414.mm, -12.68976990280089.mm)
+  circle = ge.add_circle([1287.0319012413129.mm,-232.7079778953053.mm,1088.4747547313227.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(6.561534725906768.mm, 16.679961729657464.mm, -16.30763233695734.mm)
+  circle = ge.add_circle([1277.6470131665885.mm,-214.3202822991099.mm,1075.7849848285218.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(17.099744492622676.mm, 4.066478594321239.mm, -16.68161334608976.mm)
+  circle = ge.add_circle([1284.2085478924953.mm,-197.64032056945243.mm,1059.4773524915645.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.042076747890178.mm, -12.046562126195198.mm, -13.592124493765368.mm)
+  circle = ge.add_circle([1301.308292385118.mm,-193.5738419751312.mm,1042.7957391454747.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.009556625768482.mm, -22.19815216782456.mm, -8.85320448754851.mm)
+  circle = ge.add_circle([1317.3503691330081.mm,-205.6204041013264.mm,1029.2036146517094.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-11.932745147024434.mm, -20.427636496972156.mm, -5.247379736901053.mm)
+  circle = ge.add_circle([1321.3599257587766.mm,-227.81855626915095.mm,1020.3504101641608.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.424072184599936.mm, -7.774599366177483.mm, -4.891863147591835.mm)
+  circle = ge.add_circle([1309.4271806117522.mm,-248.2461927661231.mm,1015.1030304272598.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.304287891689.mm, 8.331542832184454.mm, -7.995401501051219.mm)
+  circle = ge.add_circle([1287.0031084271523.mm,-256.0207921323006.mm,1010.211167279668.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.23089004496478.mm, 18.433832402543004.mm, -12.73570671899381.mm)
+  circle = ge.add_circle([1265.6988205354633.mm,-247.68924930011613.mm,1002.2157657786167.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(6.707048673109057.mm, 16.600561806328756.mm, -16.329439044569085.mm)
+  circle = ge.add_circle([1256.4679304904985.mm,-229.25541689757313.mm,989.4800590596229.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(17.151333708236052.mm, 3.908162771227296.mm, -16.666485816806244.mm)
+  circle = ge.add_circle([1263.1749791636075.mm,-212.65485509124437.mm,973.1506200150538.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(15.96944986706876.mm, -12.190836390769277.mm, -13.548945078351153.mm)
+  circle = ge.add_circle([1280.3263128718436.mm,-208.74669232001708.mm,956.4841341982476.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.855357587142862.mm, -22.243672122691464.mm, -8.807326613277496.mm)
+  circle = ge.add_circle([1296.2957627389123.mm,-220.93752871078635.mm,942.9351891198964.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-12.077976115569754.mm, -20.347674432778547.mm, -5.2257412707562025.mm)
+  circle = ge.add_circle([1300.1511203260552.mm,-243.18120083347782.mm,934.127862506619.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.475060589104487.mm, -7.616106182090732.mm, -4.9071694324420605.mm)
+  circle = ge.add_circle([1288.0731442104855.mm,-263.52887526625636.mm,928.9021212358628.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.231095142363074.mm, 8.475505537770175.mm, -8.038665227178058.mm)
+  circle = ge.add_circle([1265.598083621381.mm,-271.1449814483471.mm,923.9949518034207.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.076492338434718.mm, 18.478734814871387.mm, -12.781524954851534.mm)
+  circle = ge.add_circle([1244.366988479018.mm,-262.6694759105769.mm,915.9562865762426.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(6.851994458184208.mm, 16.520038815208522.mm, -16.35090894074426.mm)
+  circle = ge.add_circle([1235.2904961405832.mm,-244.19074109570553.mm,903.1747616213911.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(17.20172052755447.mm, 3.749494632300298.mm, -16.651001008760772.mm)
+  circle = ge.add_circle([1242.1424905987674.mm,-227.670702280497.mm,886.8238526806468.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(15.895692360409384.mm, -12.334485351807274.mm, -13.505597698316365.mm)
+  circle = ge.add_circle([1259.3442111263219.mm,-223.9212076481967.mm,870.1728516718861.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.700763556685615.mm, -22.287956310799018.mm, -8.761568711419159.mm)
+  circle = ge.add_circle([1275.2399034867312.mm,-236.255693000004.mm,856.6672539735697.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-12.222634516690732.mm, -20.266591737185024.mm, -5.204440270494501.mm)
+  circle = ge.add_circle([1278.9406670434169.mm,-258.543649310803.mm,847.9056852621505.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.524845058293522.mm, -7.457265497132539.mm, -4.922832528601589.mm)
+  circle = ge.add_circle([1266.7180325267261.mm,-278.81024104798803.mm,842.701244991656.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-21.156773998113977.mm, 8.618838573464359.mm, -8.082095603045445.mm)
+  circle = ge.add_circle([1244.1931874684326.mm,-286.26750654512057.mm,837.7784124630545.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.921704331008641.mm, 18.522400106460793.mm, -12.827221828040365.mm)
+  circle = ge.add_circle([1223.0364134703186.mm,-277.6486679716562.mm,829.696316860009.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(6.996363279230536.mm, 16.438397646093307.mm, -16.37204072171278.mm)
+  circle = ge.add_circle([1214.11470913931.mm,-259.1262678651954.mm,816.8690950319686.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(17.250901890814475.mm, 3.5904838127386256.mm, -16.635159862275373.mm)
+  circle = ge.add_circle([1221.1110724185405.mm,-242.6878702191021.mm,800.4970543102559.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(15.820808706871958.mm, -12.477500286157863.mm, -13.46208498595172.mm)
+  circle = ge.add_circle([1238.361974309355.mm,-239.09738640636348.mm,783.8618944479805.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.5457839221933227.mm, -22.331002042968322.mm, -8.715933560643634.mm)
+  circle = ge.add_circle([1254.182783016227.mm,-251.57488669252135.mm,770.3998094620288.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-27.100566938420116.mm, 3.6558887354896683.mm, 6.016124098614796.mm)
+  circle = ge.add_circle([1257.7285669384203.mm,-273.90588873548967.mm,761.6838759013851.mm], vec, 5.mm, 8)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-31.128000000000156.mm, -22.25.mm, -126.69999999999993.mm)
+  circle = ge.add_circle([1230.6280000000002.mm,-270.25.mm,767.6999999999999.mm], vec, 5.mm, 10)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

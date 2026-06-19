@@ -19,14 +19,14 @@
 | **4. Film plane mechanism (4-corner Option A, incl. wall-seat saddles + cross-slides)** | $3,100 | $3,650 | $4,200 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $4,063 | $5,085 | $6,104 |
 | **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · pump switches)** | $2,025 | $2,265 | $2,575 |
-| **5b. Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)** | $770 | $830 | $920 |
+| **5b. Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)** | $824 | $884 | $974 |
 | **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $1,465 | $1,802 | $2,160 |
 | **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $1,826 | $2,214 | $2,607 |
 | **6b. Panel swing pivot (Ø89 pivot post + bearings + cage + wall stays + rail saddles)** | $650 | $770 | $910 |
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,210 | $1,650 | $2,980 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$18,974** | **$24,409** | **$31,966** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$19,028** | **$24,463** | **$32,020** |
 
 *Line 7 (cyanotype printmaking) is now re-summed into the TOTAL on the **Mike Ware AmFe** chemistry + corrected ~$300 substrate: **Low = Lean ⅓-Ware ($1,210), Mid = Standard ½-Ware ($1,650), High = Rich full-Ware ($2,980)** — matching §7.1 and the master shopping list §9. The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md).*
 

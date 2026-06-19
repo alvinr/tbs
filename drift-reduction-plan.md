@@ -16,6 +16,25 @@ arithmetic, and to cross-doc disagreement. Those blind spots are exactly where t
 
 ---
 
+## Status (2026-06-19) — infrastructure built across all four phases
+
+| Phase | Built | Remaining |
+|-------|-------|-----------|
+| **1 costing.py** | Printmaking tiers + whole-build scenario table + **computed grand total**; emits §7.1 + Executive Summary; `--check` gate | per-section sub-line-items; 3-view emitters (master / funding); replace hand-typed tables with generated blocks |
+| **2 facts.py** | Dep-free registry (film-plane angles read from constants, prints/resupply) + agreement scan | more facts; `<!-- fact:x -->` injector; one-owner-per-fact prose pass |
+| **3 linter** | `lint.py` two-tier + **pre-commit hook** (`.githooks/`); 1 gate (costing) + 3 warnings (facts, arithmetic, cascade) | graduate facts→gate; prose-vs-constant; more rules |
+| **4 dependency** | **missing-cascade** check (staged constant change w/ no regenerated output → flags consumers) | hardwired-literal scan; duplication-equality checks; formal `dependencies` data |
+
+**The linter immediately caught 7 real internal inconsistencies (triage list — total ≠ its line items):**
+- [ ] `project-cost-breakdown.md:265` water-system total **$4,128 / $6,201** vs line-item sums **$4,063 / $6,104**
+- [ ] `project-cost-breakdown.md:316` walkway total **$1,801 / $2,186 / $2,572** vs sums **$1,826 / $2,214 / $2,607**
+- [ ] `ventilation-report.md:209` total **$769** vs sum **$824**
+- [ ] `weight-distribution-report.md:91` dry total **3,324 kg** vs sum **3,250 kg**
+
+(Each needs a human call on which figure is authoritative — left for the editorial/review pass.)
+
+---
+
 ## Phase 1 — `costing.py` (STARTED)
 
 A Python module that **owns the cost line items** and **generates** the cost tables; a self-check

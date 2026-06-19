@@ -148,6 +148,24 @@ WALKWAY = [
 ]
 
 
+# §5 Processing water system — the §5 sub-table is Low/High only; the scenario column needs Mid,
+# computed here as the per-item midpoint. Line items own the truth (the hand-typed sub-table total
+# $4,128/$6,201 and scenario $4,143/$5,180/$6,216 both drifted from the items, which sum to
+# $4,063/$6,104). Source: project-cost-breakdown.md §5.
+WATER = [
+    LineItem("Water storage (4× IBC totes, 3× bulkhead fittings, X1 fill tee)", 395, 558, 720),
+    LineItem("IBC stacking frame (RHS restraint portal + feet + retaining bars + hangers + fab)", 955, 1205, 1455),
+    LineItem("Pumps and accumulator (P-01/P-02/P-04 manifold + P-03)", 305, 330, 355),
+    LineItem("Filter skid (3× Big Blue housings + cartridges)", 265, 318, 370),
+    LineItem("Valves and fittings (S60×6 adapters, check valves CV1/CV3/CV4)", 390, 510, 630),
+    LineItem("Pipe (HDPE, spray bar)", 100, 120, 140),
+    LineItem("Processing tray (304 SS, fabricated, 2 panels)", 1177, 1517, 1857),
+    LineItem("Spray bar assembly (beam, LDPE pipe, 26 nozzles, manifold, 4 wheels, ball joint, arm, hose)", 210, 237, 264),
+    LineItem("Electrical (wiring only — fuse block in Electrical Report)", 35, 35, 35),
+    LineItem("Processing consumables (6-mil poly, pH meter, citric acid)", 231, 255, 278),
+]
+
+
 def emit_section_table(items: list[LineItem], total_label: str) -> str:
     """Generate a Low/Mid/High line-item table with a COMPUTED total row."""
     rows = ["| Item | Low | Mid | High | Notes |", "|------|-----|-----|------|-------|"]
@@ -181,7 +199,7 @@ SECTIONS = [
     Section("2",  "Interior conversion",                         970, 1140, 1310),
     Section("3",  "Optics — pinhole plate",                       80,  150,  280),
     Section("4",  "Film plane mechanism (4-corner Option A)",   3100, 3650, 4200),
-    Section("5",  "Processing water system",                    4143, 5180, 6216),
+    Section("5",  "Processing water system",                    *total(WATER)),  # COMPUTED from line items
     Section("5a", "Power & electrical system",                  2025, 2265, 2575),
     Section("5b", "Ventilation & cooling system",                770,  830,  920),
     Section("6",  "Housed revolving-door light lock",           1465, 1802, 2160),
@@ -214,8 +232,9 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 909,  "total": 1210, "per_print": 24},  # 909 not 910: consistent ferri rounding ($104, not the doc's hand-rounded $105)
     "standard": {"chem": 1353, "total": 1650, "per_print": 33},
     "rich":     {"chem": 2681, "total": 2980, "per_print": 60},
-    "grand_total": (19059, 24341, 32078),  # +25/28/35 vs the old hand-typed walkway total
+    "grand_total": (18979, 24246, 31966),  # walkway +25/28/35, water -80/-95/-112 vs old hand-typed
     "walkway": (1826, 2214, 2607),
+    "water": (4063, 5085, 6104),
 }
 
 
@@ -233,6 +252,8 @@ def check() -> list[str]:
             errs.append(f"{t.key} per-print {_r(c['per_print'],1)} != {e['per_print']}")
     if total(WALKWAY) != EXPECTED["walkway"]:
         errs.append(f"walkway {total(WALKWAY)} != {EXPECTED['walkway']}")
+    if total(WATER) != EXPECTED["water"]:
+        errs.append(f"water {total(WATER)} != {EXPECTED['water']}")
     if grand_total() != EXPECTED["grand_total"]:
         errs.append(f"grand total {grand_total()} != {EXPECTED['grand_total']}")
     return errs

@@ -28,7 +28,7 @@
 | **9. Licences & permits** | $220 | $790 | $1,620 |
 | **TOTAL (excl. own transport, CDL, lens)** | **$20,324** | **$25,505** | **$32,263** |
 
-*Line 7 (cyanotype printmaking) is **provisional**: the sensitizer chemistry is now a range pending [Sensitizer Trials](sensitizer-trials.md) (corrected to Ware-3:1 + two coats). The values above assume the **Standard ½-Ware** tier (§7.1 ~$2,455) — a Lean or Rich trial outcome shifts this line, and the totals, by up to ~4.6× on the chemistry portion.*
+*Line 7 (cyanotype printmaking) is **provisional**: the sensitizer chemistry is now a range pending [Sensitizer Trials](sensitizer-trials.md) (corrected to Ware-3:1 + two coats), and the muslin was reconciled down ~3× to ~$300 (§7.1). The §7 detail now totals **~$1,350–3,150 (Standard ~$1,800)**; the scenario columns above are not yet re-summed to that — a Lean/Rich trial outcome and the muslin fix together move this line materially.*
 
 *Optional additions that may apply — see individual sections:*
 
@@ -354,10 +354,12 @@ Cyanotype is the recommended starting process: no silver, no DEA registration, n
 | Ammonium iron(III) oxalate (AmFe) | 13 kg / ~$780 | **19.5 kg / ~$1,170** | 39 kg / ~$2,340 | Bostick & Sullivan (~$60/kg) |
 | Potassium ferricyanide (3:1 ratio) | 4.3 kg / ~$105 | **6.5 kg / ~$158** | 13 kg / ~$316 | Bostick & Sullivan ($24.29/kg) |
 | Ammonium dichromate (contrast, 0.1–0.4%) | ~$25 | **~$25** | ~$25 | Photographers' Formulary |
-| Unbleached cotton muslin, 60″ (150-yd rolls) | ~$1,100 | **~$1,100** | ~$1,100 | Fabric Direct |
-| **Cyanotype total — 50 prints** | **~$2,010** | **~$2,455** | **~$3,780** | |
+| Unbleached cotton muslin, 60″ — 3 × 150-yd rolls (~445 yd) | ~$300 | **~$300** | ~$300 | Fabric Direct (~$100/roll) |
+| **Cyanotype total — 50 prints** | **~$1,210** | **~$1,650** | **~$2,980** | |
 
-*Note: development requires only plain cold water — no darkroom chemistry. The §5 water system provides all wash water. (Per-print substrate cost in §7.2 uses a different muslin lay than this row's bulk-roll figure — a pre-existing discrepancy, separate from this chemistry update.)*
+*Note: development requires only plain cold water — no darkroom chemistry. The §5 water system provides all wash water.*
+
+*Muslin reconciled (2026-06-18): the earlier $1,100 / $900 / $43-per-print figures all over-counted the fabric ~3×. The [shopping list](chemistry-shopping-list.md) derived 6,670 sq ft ÷ 60″(5 ft) wide = "1,340 linear **yards**," but 6,670 ÷ 5 = 1,334 linear **feet** ≈ **445 yd** — feet were labelled yards. Three 60″ strips cover the 4499 mm width (×2388 mm tall = ~23.5 ft/print); 50 prints + 15% waste = ~450 yd = **3 × 150-yd rolls ≈ $300 (~$6/print)**. §7.1 and §7.2 now agree on this figure.*
 
 ### 7.2 Per-print cost (cyanotype — Standard ½-Ware tier; range locked by trial)
 
@@ -366,17 +368,17 @@ Cyanotype is the recommended starting process: no silver, no DEA registration, n
 | Ammonium iron(III) oxalate (AmFe, Part A) | ~$23 |
 | Potassium ferricyanide (Part B) | ~$3 |
 | Ammonium dichromate (contrast) | ~$0.50 |
-| Muslin substrate (~116 sq ft @ $1.20/yd, 5-strip layout) | ~$43 |
+| Muslin substrate (~116 sq ft = ~9 yd of 60″ + 15% waste) | ~$6 |
 | Water & consumables (6-mil liner, gloves) | ~$3 |
-| **Total per print (Standard)** | **~$73** |
+| **Total per print (Standard)** | **~$36** |
 
-*Across tiers, chemistry alone moves the per-print total to ~**$64 (Lean) – ~$100 (Rich)**; the [Sensitizer Trials](sensitizer-trials.md) lock the tier.*
+*Across tiers, chemistry moves the per-print total to ~**$27 (Lean) – ~$63 (Rich)**; the [Sensitizer Trials](sensitizer-trials.md) lock the tier. Muslin is now ~$6/print (see §7.1 reconciliation), so the §7.1 totals = this per-print × 50 (± the $3/print consumables that §7.1 excludes).*
 
 ### 7.3 Alternative process cost comparison
 
 | Process | 50-print total† | Per print | Key constraint |
 |---------|----------------|-----------|----------------|
-| **Cyanotype** | **~$2,010–3,780** (Std ~$2,455)‡ | **~$64–100** (Std ~$73)‡ | None — easiest |
+| **Cyanotype** | **~$1,350–3,150** (Std ~$1,800)‡ | **~$27–63** (Std ~$36)‡ | None — easiest |
 | Gum bichromate | ~$5,150 | ~$103 | Hazmat shipping (dichromate) |
 | Van Dyke Brown | ~$11,000 | ~$220 | DEA form; AgNO₃ price volatility |
 | Ilford RC paper | ~$20,500 | ~$410 | Paper rolls very expensive at this size |
@@ -385,7 +387,7 @@ Cyanotype is the recommended starting process: no silver, no DEA registration, n
 
 *Silver nitrate is the cost driver for Van Dyke, salt print, and Liquid Light. Cyanotype and gum bichromate are the only processes under $5,000 for a 50-print run.*
 
-*‡ Cyanotype chemistry is now a **range** pending [Sensitizer Trials](sensitizer-trials.md) — the corrected Ware-3:1 / two-coat figures swing the per-print AmFe (and the 50-print order/cost) by up to ~4.6×. The Standard (½-Ware) tier is the working default; see §7.1.*
+*‡ Cyanotype chemistry is a **range** pending [Sensitizer Trials](sensitizer-trials.md) — the corrected Ware-3:1 / two-coat figures swing the per-print AmFe (and the 50-print chemistry cost) by up to ~4.6×. Muslin (~$300 / ~$6 per print) is now reconciled and fixed (§7.1). The Standard (½-Ware) tier is the working default.*
 
 ---
 

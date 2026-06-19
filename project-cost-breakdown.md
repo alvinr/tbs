@@ -23,12 +23,12 @@
 | **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $1,465 | $1,802 | $2,160 |
 | **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $1,801 | $2,186 | $2,572 |
 | **6b. Panel swing pivot (Ø89 pivot post + bearings + cage + wall stays + rail saddles)** | $650 | $770 | $910 |
-| **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
+| **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,210 | $1,650 | $2,980 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$20,324** | **$25,505** | **$32,263** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$19,034** | **$24,313** | **$32,043** |
 
-*Line 7 (cyanotype printmaking) is **provisional**: the sensitizer chemistry is now a range pending [Sensitizer Trials](sensitizer-trials.md) (corrected to Ware-3:1 + two coats), and the muslin was reconciled down ~3× to ~$300 (§7.1). The §7 detail now totals **~$1,350–3,150 (Standard ~$1,800)**; the scenario columns above are not yet re-summed to that — a Lean/Rich trial outcome and the muslin fix together move this line materially.*
+*Line 7 (cyanotype printmaking) is now re-summed into the TOTAL on the **Mike Ware AmFe** chemistry + corrected ~$300 substrate: **Low = Lean ⅓-Ware ($1,210), Mid = Standard ½-Ware ($1,650), High = Rich full-Ware ($2,980)** — matching §7.1 and the master shopping list §9. The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md).*
 
 *Optional additions that may apply — see individual sections:*
 

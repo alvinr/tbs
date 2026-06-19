@@ -27,7 +27,7 @@ TBS-001 is a 20-foot ISO shipping container converted into a functional large-fo
 ### How
 The optical specification follows the Lord Rayleigh formula for optimal pinhole diameter (d = 1.9√(fλ), λ = 550 nm), yielding an f-number of f/1088 and a baseline exposure of approximately 30–45 minutes in direct sunlight using the *Mike Ware New Cyanotype formula* on cotton muslin. Every design decision — aperture, image plane materials, exposure calculation, process chemistry — traces to a peer-reviewed source or manufacturer datasheet. The full technical documentation is publicly available at [alvinr.github.io/tbs](https://alvinr.github.io/tbs/).
 
-The camera is transportable by commercial hire truck (no Commercial Drivers License required) and operates off-grid via a self-contained water system that supports ~10 full-size prints between resupply runs.
+The camera is transportable by commercial hire truck (no Commercial Drivers License required) and operates off-grid via a self-contained water system that supports ~13 full-size prints between resupply runs.
 
 ### Why Now
 The history of large-format photography is a history of increasing precision in decreasing size. The view camera shrank from room to studio to field. The Big Shoebox inverts that trajectory: it scales a camera back up to architectural dimensions, not as spectacle, but as instrument. The container is not incidental to the work — it is the camera body. The constraint of the container's interior geometry is the optical specification. Site, transport, and access become compositional decisions.
@@ -36,12 +36,12 @@ The history of large-format photography is a history of increasing precision in 
 The project incorporates two independent movement systems — equivalent to the front and rear standards of a view camera — operating at pinhole focal lengths. No camera of this type is known to exist.
 
 ### Front Board: Tilt and Swing (±5.3°)
-A spherical-pivot adapter plate mounts in the same wall-frame interface as the vanilla pinhole plate. A GE50-DO-2RS spherical plain bearing (PTFE-lined, maintenance-free) allows the pinhole to pivot ±5° in both tilt and swing. Four M8×1.0 fine-pitch adjustment screws with 36-detent knurled knobs provide 0.012° per click resolution.
+A spherical-pivot adapter plate mounts in the same wall-frame interface as the vanilla pinhole plate. A GE50-DO-2RS spherical plain bearing (PTFE-lined, maintenance-free) allows the pinhole to pivot up to ±5.3° in both tilt and swing. Four M8×1.0 fine-pitch adjustment screws with 36-detent knurled knobs provide 0.012° per click resolution.
 
 **Effect:** every 5° of board tilt steers the projected image 207mm across the film plane (2,362 × tan 5°). Used for compositional placement — shifting what part of the scene falls where on the print without moving the camera.
 
-### Film Plane: 4-Corner Independent Actuation (±42° tilt, ±28.3° swing)
-Four independently-driven corners allow the image plane to be tilted, swung, twisted, or warped into any compound configuration. Each corner is driven by a 3/4"-6 Acme leadscrew via an 8" handwheel; rod-end spherical bearings (GIR25-DO) connect the leadscrews to the image plane frame.
+### Film Plane: 4-Corner Independent Actuation (±40° tilt, ±28° swing)
+Four independently-driven corners allow the fixed-size rigid image plane (Option A) to be tilted and swung — including limited combined tilt-and-swing — about its center. Each corner is driven by a 3/4"-6 Acme leadscrew via an 8" handwheel; a 2-axis cross-slide and rod-end spherical bearing (GIR25-DO) at each corner absorb the rigid-rotation arc travel, so the plane rotates without stretching or twisting.
 
 **Effect:** Scheimpflug-equivalent movements at pinhole focal lengths — not to adjust focus (pinholes have infinite depth of field) but to control perspective, convergence, and geometric projection.
 
@@ -60,21 +60,21 @@ The pinhole camera's defining property is infinite depth of field: near and far 
 
 The movement systems add a second layer. The front board and film plane allow the photographer to place the image precisely on the print surface, to compress or expand perspective, to make the geometry of the scene converge or diverge. But unlike a view camera's Scheimpflug movements, which are used to adjust focus, these movements have no focus to adjust. They are purely compositional.
 
-**The result:** a camera with infinite depth of field and view-camera-level geometric control, operating at a scale where the print becomes an environment. Viewers do not stand in front of the image. They enter it. A 13-foot cyanotype print on fabric can be stretched across a gallery wall, suspended from a ceiling, or laid on the ground. The scale changes the relationship between image and the viewer.
+**The result:** a camera with infinite depth of field and view-camera-level geometric control, operating at a scale where the print becomes an environment. Viewers do not stand in front of the image. They enter it. A nearly 15-foot-wide cyanotype print on fabric can be stretched across a gallery wall, suspended from a ceiling, or laid on the ground. The scale changes the relationship between image and the viewer.
 
-The cyanotype process connects the work to the deepest history of photography. Anna Atkins made the first photographic book in 1843 using the same chemistry: ferric ammonium citrate and potassium ferricyanide, exposed to UV, developed in plain water. The blue-white palette of cyanotype — Prussian blue base, white highlights — is one of the most immediately recognizable photographic aesthetics. Working at this scale in this process is a deliberate claim about what photography was before the silver-gelatin era standardized it.
+The cyanotype process connects the work to the deepest history of photography. Anna Atkins made the first photographic book in 1843 using the cyanotype process — iron salts exposed to UV, developed in plain water. (Atkins used the classical ferric-ammonium-citrate formula; TBS-001 uses the modern, far more UV-sensitive Mike Ware ammonium-iron(III)-oxalate variant of the same process.) The blue-white palette of cyanotype — Prussian blue base, white highlights — is one of the most immediately recognizable photographic aesthetics. Working at this scale in this process is a deliberate claim about what photography was before the silver-gelatin era standardized it.
 
 The camera is deployable. It comes to the subject. A landscape that could never be brought to a studio is instead surrounded by the camera. The field, the parking structure, the salt flat, the housing development — each becomes not just the subject but the site of the printing, developed there in plain water and hung to dry in the same air that made the exposure.
 
 ## 5. Process and Sustainability
 
 ### Chemistry
-Cyanotype uses the **Mike Ware New Cyanotype formula** — ammonium iron(III) oxalate and potassium ferricyanide. Neither requires DEA registration, hazmat shipping, or special disposal. Development is plain cold water. The chemistry is mixed on-site; the substrate (unbleached cotton muslin) is coated by brush or roller, dried, and loaded in darkness. The Ware formula is 4–8× more UV-sensitive than the classical Herschel formula, reducing baseline exposure from ~2 hours to ~30–45 minutes in full sun.
+Cyanotype uses the **Mike Ware New Cyanotype formula** — ammonium iron(III) oxalate and potassium ferricyanide, with an optional trace of ammonium dichromate (0.1–0.4%) for added contrast. The two base reagents require no DEA registration, hazmat shipping, or special disposal; only the trace dichromate needs careful handling — at a tiny fraction of the bulk quantities used by dichromate-sensitized processes. Development is plain cold water. The chemistry is mixed on-site; the substrate (unbleached cotton muslin) is coated by brush or roller in two wet-on-wet coats, dried, and loaded in darkness. The Ware formula is 4–8× more UV-sensitive than the classical Herschel formula, reducing baseline exposure from ~2 hours to ~30–45 minutes in full sun.
 
-Per-print cost: approximately $38 (chemistry + fabric + water). A 50-print run costs approximately $1,900. By comparison, the next cheapest alternative (gum bichromate) costs ~$63 per print and requires dichromate sensitizer with associated hazmat handling.
+Per-print cost: approximately $33 (chemistry + fabric + water) at the Standard sensitizer strength — ranging $24–60 by tier, to be pinned by post-build sensitizer trials. A 50-print run costs approximately $1,650. By comparison, the next cheapest alternative (gum bichromate) costs ~$49 per print and depends on bulk dichromate as its primary sensitizer, with full hazmat handling and disposal.
 
 ### Water System
-A self-contained three-circuit water system — Blue (wash), Brown (recycle), and Black (waste) — provides off-grid processing capability. Four 1000L IBC totes in a 2×2 stack, 12V DC pumps (P-01/P-02/P-04 supply + filter + sump, plus P-05/P-03 drain pumps; corridor-mounted), check valves on all external lines, and a 3-stage filtration skid. Capacity: ~13 full prints between resupply. Water recycling: approximately 40% of used wash water is recovered and reused. Power: 12V DC from a 200Ah LiFePO4 battery bank (3+ prints per charge), with a 600W solar array for field recharging and shore power input for overnight top-up.
+A self-contained three-circuit water system — Blue (wash), Brown (recycle), and Black (waste) — provides off-grid processing capability. Four 1000L IBC totes in a 2×2 stack, 12V DC pumps (P-01/P-02/P-04 supply + filter + sump, plus P-05/P-03 drain pumps; corridor-mounted), check valves on all external lines, and a 3-stage filtration skid. Capacity: ~13 full prints between resupply. Water recycling: approximately 40% of used wash water is recovered and reused. Power: 12V DC from a 100Ah LiFePO4 battery (expandable to 200Ah with an optional second pack; ~2–3 prints per charge), with a 600W solar array for field recharging — the system is solar-positive in sun, so it runs indefinitely — plus shore-power input for overnight top-up.
 
 The system was designed for remote deployments: no municipal water connection required.
 
@@ -84,21 +84,25 @@ The container moves by commercial hire tilt-bed truck. No CDL is required for th
 ## 6. Budget and Use of Funds
 All figures are drawn from the [full cost breakdown](project-cost-breakdown.md). Per-item procurement details with supplier URLs are in the [master shopping list](master-shopping-list.md). Three funding levels are presented to allow partial or phased support.
 
-### Level 1 — Core Build (~$13,000–14,500)
-Everything required to operate the camera for a first deployment:
+### Level 1 — Core Build (~$26,700, Standard scenario)
+Everything required to operate the camera for a first deployment. Figures are the Standard (Mid) column of the [cost breakdown](project-cost-breakdown.md); Low–High scenarios span ~$22,000–$34,000.
 
 | Item | Cost |
 |------|------|
 | 20ft container (Cargo Worthy grade) + delivery | $3,150 |
-| Interior conversion (light-seal, paint, image-plane backing, ventilation) | $1,140 |
+| Interior conversion (light-seal, paint, image-plane backing) | $1,140 |
 | Pinhole plate (precision laser-drilled, SS-302, interchangeable frame) | $150 |
-| Film plane mechanism (4-corner, manual actuation) | $2,400 |
+| Film plane mechanism (4-corner Option A, manual actuation) | $3,650 |
 | Tilt-swing front board mechanism | $1,470 |
-| Housed revolving-door light trap (Ø900 aluminum housing + C-shell drum, bearings, seals, fabrication) | $2,300 |
-| Processing water system | $3,705 |
-| Cyanotype chemistry + muslin substrate (50-print run) | $2,842 |
-| Contingency (10%) | ~$1,700 |
-| **Level 1 total** | **~$18,870** |
+| Housed revolving-door light trap (plastic-skin Ø900 housing + C-shell drum, bearings, seals, fabrication) | $1,802 |
+| Processing water system (tray, spray bar, 3-stage filtration, IBC stacking frame) | $5,180 |
+| Power & electrical (600W solar · LiFePO4 · MPPT · distribution · protection · lighting) | $2,265 |
+| Ventilation & cooling (2 fans · evap cooler + 12V→120V inverter · light-safe ducting) | $830 |
+| Perimeter walkway (4 sections + drum-exit punch-out) | $2,186 |
+| Panel swing pivot (Ø89 post + bearings + cage + wall stays) | $770 |
+| Cyanotype chemistry + muslin substrate (50-print run, Standard tier) | $1,650 |
+| Contingency (10%) | ~$2,420 |
+| **Level 1 total** | **~$26,700** |
 
 ### Level 2 — First Deployment (+$1,350–2,800)
 Transport, permits, and water resupply for a single public deployment:
@@ -107,7 +111,7 @@ Transport, permits, and water resupply for a single public deployment:
 |------|------|
 | Commercial transport (short haul, 30–100 miles, round trip) | $1,000–2,400 |
 | Location permit (public land, non-commercial art use) | $0–300 |
-| Water resupply (550 gal ≈ 10 prints) | $25–50 |
+| Water resupply (~420 gal / 1,600L Blue tank ≈ 13 prints) | $25–50 |
 | **Level 2 total** | **~$1,350–2,800** |
 
 ### Level 3 — Documentation (+$2,000–4,000)
@@ -120,7 +124,7 @@ Video documentation, process photography, and initial publication:
 | Publication design (zine or catalogue, print run) | $500–1,500 |
 | **Level 3 total** | **~$2,000–4,000** |
 
-**Combined (Levels 1+2+3):** ~$22,220–25,670 for a complete first-year program with three public deployments, 50-print edition, and full documentation.
+**Combined (Levels 1+2+3):** ~$30,000–33,500 for a complete first-year program with three public deployments, 50-print edition, and full documentation.
 
 ## 7. Timeline
 A 12-month build and deployment program:
@@ -176,7 +180,7 @@ My practice since has moved between classical portraiture and abstract color in 
 | Optimal pinhole | Ø2.17mm (Rayleigh formula, λ=550nm) |
 | f-number | f/1088 |
 | Baseline exposure | ~30–45 min (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction) |
-| Film plane movement | ±42° tilt, ±25.7° swing, 4-corner independent |
+| Film plane movement | ±40° tilt, ±28° swing, 4-corner independent (Option A rigid plane) |
 | Front board movement | ±5.3° tilt and swing, 0.012°/click resolution |
 | Process | Cyanotype (Ware formula) on cotton muslin |
 | Water system | Self-contained, ~13 prints per resupply, off-grid capable |

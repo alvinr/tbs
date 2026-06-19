@@ -1,0 +1,11 @@
+#!/bin/sh
+# TBS-001 pre-commit drift gate — runs the deterministic linter before each commit.
+# Blocks the commit if any drift check fails. Emergency bypass:  git commit --no-verify
+#
+# One-time install per clone (makes git use this versioned hook directory):
+#     git config core.hooksPath .githooks
+#
+# Requires python3 on PATH (the linter is dependency-free).
+
+root=$(git rev-parse --show-toplevel)
+exec python3 "$root/src/generators/lint.py"

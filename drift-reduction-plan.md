@@ -20,7 +20,12 @@ arithmetic, and to cross-doc disagreement. Those blind spots are exactly where t
 
 | Phase | Built | Remaining |
 |-------|-------|-----------|
-| **1 costing.py** | Printmaking tiers + whole-build scenario table + **computed grand total**; emits §7.1 + Executive Summary; `--check` gate | per-section sub-line-items; 3-view emitters (master / funding); replace hand-typed tables with generated blocks |
+| **1 costing.py** | Printmaking tiers + scenario table + **computed grand total**; **7 sections line-item-owned** (§1,2,3,5,6,6a,6b) + §7 from tiers; `--check` gate | the 5 below; 3-view emitters (master / funding); replace hand-typed tables with generated blocks |
+
+**Cost line-item migration — remaining 5 sections (not all the same):**
+- **§4 Film plane** — needs **restructuring first**: its 4.1–4.4 detail tables are single-`Total` (no Low/Mid/High), have range-valued items (clamps $276–736), the category total is a range ($3,585–4,045), and that doesn't match the scenario ($3,100/$3,650/$4,200). Assigning per-item Low/Mid/High + reconciling the clamp range is a domain-judgment task.
+- **§5a Power / §5b Ventilation** — no cost-breakdown detail sub-table; the line items live in `electrical-report.md` / `ventilation-report.md` (the ventilation arithmetic finding is there too). Migratable by sourcing from those reports.
+- **§8 Transport / §9 Licences** — option/scenario **estimate ranges**, not line-item sums (8.1/8.2/8.3 are *alternatives*). These appropriately stay as direct section values; don't force line-item migration.
 | **2 facts.py** | Dep-free registry (film-plane angles read from constants, prints/resupply) + agreement scan | more facts; `<!-- fact:x -->` injector; one-owner-per-fact prose pass |
 | **3 linter** | `lint.py` two-tier + **pre-commit hook** (`.githooks/`); 1 gate (costing) + 3 warnings (facts, arithmetic, cascade) | graduate facts→gate; prose-vs-constant; more rules |
 | **4 dependency** | **missing-cascade** check (staged constant change w/ no regenerated output → flags consumers) | hardwired-literal scan; duplication-equality checks; formal `dependencies` data |

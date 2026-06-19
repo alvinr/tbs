@@ -127,6 +127,11 @@ def total(items: list[LineItem]) -> tuple[int, int, int]:
     return (sum(i.low for i in items), sum(i.mid for i in items), sum(i.high for i in items))
 
 
+def point(label: str, cost: int, note: str = "") -> LineItem:
+    """A single-value BOM item (low=mid=high) — for report BOMs that are point estimates."""
+    return LineItem(label, cost, cost, cost, note)
+
+
 # §6a Perimeter walkway — line items own the truth; the section total sums them (was hand-typed
 # at $1,801/$2,186/$2,572, $25–35 low). Source: project-cost-breakdown.md §6a / generate_walkway_diagram.
 WALKWAY = [
@@ -213,6 +218,38 @@ OPTICS = [
 ]
 
 
+# §5b Ventilation & cooling — single-value BOM (point estimates). Source: ventilation-report.md.
+# Items sum to $824; the report total was STALE at $769 (the last 4 items were added without
+# updating it). The cost-breakdown §5b scenario ($770/$830/$920) is a budget band around this.
+VENTILATION = [
+    point("150×150×50mm axial fans ×2 (12V DC)", 50),
+    point("Evaporative cooler (Hessaire MC18M)", 130),
+    point("Cooler inverter (Victron Phoenix 12/375 GFCI + DC fuse/disconnect + GFCI outlet)", 275),
+    point("Shade canopy — 80% shade cloth (20×10 ft)", 80),
+    point('Canopy frame (1.5" EMT conduit + fittings)', 120),
+    point("Baffle duct sheet metal (fans)", 30),
+    point("Baffle duct sheet metal (cooler, Ø200)", 20),
+    point("200mm insulated flex duct", 22),
+    point("200mm 90° duct elbow", 14),
+    point("Duct collar + hose clamp", 12),
+    point("Weatherproof duct cap", 8),
+    point("Deutsch DT 2-pin connectors (Fan B flex ×2)", 8),
+    point("16 AWG silicone coiled cable (Fan B flex)", 15),
+    point("Cooler external power cable", 20),
+    point("Ratchet straps ×2 (cooler stowage)", 12),
+    point("Plywood base plate (cooler stowage)", 8),
+]
+
+# §5a Power & electrical — owned at the AUTHORITATIVE subtotal level. The electrical-report §8 BOM
+# states the electrical system total $2,265 (= master-shopping-list §6 Solar & battery $1,295 +
+# Distribution & wiring $970; = the scenario §5a Mid). The full 43-row combined BOM overlaps the
+# §5b ventilation items, so we own the two authoritative subtotals rather than re-entering it.
+POWER = [
+    point("Solar & battery (3× 200W panels, MPPT 100/50, 1× 100Ah LiFePO4, shore charger, mounts, PV cabling, panel)", 1295),
+    point("Distribution & wiring (fuse block, disconnect, contactor, E-stop, protection, conduit, LED, pump switches)", 970),
+]
+
+
 def emit_section_table(items: list[LineItem], total_label: str) -> str:
     """Generate a Low/Mid/High line-item table with a COMPUTED total row."""
     rows = ["| Item | Low | Mid | High | Notes |", "|------|-----|-----|------|-------|"]
@@ -287,6 +324,8 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "swingpivot": (650, 770, 910),
     "interior": (950, 1138, 1350),
     "optics": (95, 165, 240),
+    "ventilation": (824, 824, 824),   # §5b BOM (point estimates); report total was stale at $769
+    "power": (2265, 2265, 2265),       # §5a authoritative subtotal ($1,295 + $970)
 }
 
 
@@ -307,7 +346,8 @@ def check() -> list[str]:
     if total(WATER) != EXPECTED["water"]:
         errs.append(f"water {total(WATER)} != {EXPECTED['water']}")
     for key, items in (("container", CONTAINER), ("lightlock", LIGHTLOCK), ("swingpivot", SWINGPIVOT),
-                       ("interior", INTERIOR), ("optics", OPTICS)):
+                       ("interior", INTERIOR), ("optics", OPTICS), ("ventilation", VENTILATION),
+                       ("power", POWER)):
         if total(items) != EXPECTED[key]:
             errs.append(f"{key} {total(items)} != {EXPECTED[key]}")
     if grand_total() != EXPECTED["grand_total"]:

@@ -206,7 +206,7 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 | Cooler external power cable | 1.5m, 14 AWG 2-cond, Deutsch DT 2-pin plugs each end | Waytek Wire / Amazon | ~$20 |
 | Ratchet straps, 25mm × 2 | Cooler stowage | Home Depot / Amazon | ~$12 |
 | Plywood base plate | 12mm, 600 × 350mm (cooler stowage) | Lumber yard / Home Depot | ~$8 |
-| **Ventilation & cooling total** | | | **~$769** |
+| **Ventilation & cooling total** | | | **~$824** |
 
 ---
 

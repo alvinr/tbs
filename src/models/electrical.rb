@@ -372,6 +372,74 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # PV feed (MC4 bulkheads -> MPPT)
+  grp = ents.add_group
+  grp.name = "PV feed (MC4 bulkheads -> MPPT)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 45.mm, 0.mm)
+  circle = ge.add_circle([1328.2.mm,22.mm,1884.mm], vec, 9.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV run (array -> panel)"] || model.materials.add("PV run (array -> panel)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV feed (MC4 bulkheads -> MPPT) elbow
+  grp = ents.add_group
+  grp.name = "PV feed (MC4 bulkheads -> MPPT) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1346.2.mm,67.mm,1884.mm], [-1.000000,0.000000,0.000000], [0.000000,0.000000,-1.000000], 18.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1328.2.mm,67.mm,1884.mm], [0.000000,1.000000,0.000000], 9.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["PV run (array -> panel)"] || model.materials.add("PV run (array -> panel)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV feed (MC4 bulkheads -> MPPT)
+  grp = ents.add_group
+  grp.name = "PV feed (MC4 bulkheads -> MPPT)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(585.8.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1346.2.mm,85.mm,1884.mm], vec, 9.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV run (array -> panel)"] || model.materials.add("PV run (array -> panel)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV feed (MC4 bulkheads -> MPPT) elbow
+  grp = ents.add_group
+  grp.name = "PV feed (MC4 bulkheads -> MPPT) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1932.mm,85.mm,1902.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 18.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1932.mm,85.mm,1884.mm], [1.000000,0.000000,0.000000], 9.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["PV run (array -> panel)"] || model.materials.add("PV run (array -> panel)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV feed (MC4 bulkheads -> MPPT)
+  grp = ents.add_group
+  grp.name = "PV feed (MC4 bulkheads -> MPPT)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 66.mm)
+  circle = ge.add_circle([1950.mm,85.mm,1902.mm], vec, 9.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV run (array -> panel)"] || model.materials.add("PV run (array -> panel)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Fuse Block base (Blue Sea 5026)
   grp = ents.add_group
   grp.name = "Fuse Block base (Blue Sea 5026)"

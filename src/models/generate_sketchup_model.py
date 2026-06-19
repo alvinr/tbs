@@ -77,6 +77,8 @@ from tbs_constants import (
     DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT,
     LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG,
     EP_X, EP_W, EP_H_LO, EP_H_HI,
+    ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, FUSEBLK_H,
+    BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, MRBF_D, MRBF_H,
     BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D,
     PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z,
     SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG,
@@ -1362,11 +1364,62 @@ def electrical():
     is flush in the exterior face (ghosted) — no interior conflict.
     """
     parts = []
-    ep_d = 160   # EP enclosure depth into the container (Yd)
 
-    parts.append(ruby_box("Electrical Panel (EP)",
-                          EP_X, 0, EP_H_LO,
-                          EP_W, ep_d, EP_H_HI - EP_H_LO, color=C_ELEC))
+    # ── EP internals — detail ported from the electrical model's "Power Core"
+    # (generate_electrical_model.py power_core()); DUPLICATED geometry, keep the two
+    # in sync (cf. the walkway-bracket duplication). The old single solid EP box is
+    # replaced by a ghosted IP65 enclosure exposing the MPPT, the Blue Sea 5026 fuse
+    # stack (7 blades A–G, one per circuit), the +/- busbars and the rotary main
+    # disconnect — so the overview's EP conforms to the electrical schematic. ────────
+    ez, eh = EP_H_LO, EP_H_HI - EP_H_LO
+
+    # circuit color + fuse rating per branch A–G (matches generate_electrical_model CCT)
+    ep_cct = {"A": "#C0392B", "B": "#E67E22", "C": "#2980B9", "D": "#8E44AD",
+              "E": "#16A085", "F": "#7F8C8D", "G": "#F1C40F"}
+    ep_load = {"A": "exhaust fan", "B": "intake fan", "C": "water pumps", "D": "safelight",
+               "E": "cooler / inverter", "F": "actuators (spare)", "G": "white LED"}
+    ep_fuse_order = ["A", "B", "C", "D", "E", "F", "G"]
+    ep_fuse_rating = {"A": "5A", "B": "5A", "C": "15A", "D": "5A",
+                      "E": "40A", "F": "20A", "G": "10A"}
+
+    # fuse-stack geometry (mirrors the electrical model's module constants)
+    fblk_x0, fblk_yd, fblk_z0, fbase_h = EP_X + 15, 25, ez + 270, 28
+    fuse_w, fuse_t, fuse_h = 13, 9, 42
+    fuse_pitch = FUSEBLK_W / len(ep_fuse_order)
+    fuse_yd = fblk_yd + (FUSEBLK_D - fuse_t) / 2
+
+    # Ghosted IP65 enclosure (was the solid "Electrical Panel (EP)" box).
+    parts.append(ruby_box("Electrical Panel (EP enclosure, IP65)",
+                          EP_X - 12, 0, ez - 12,
+                          EP_W + 24, ENCL_SHELL_D + 6, eh + 24, color=C_ELEC, alpha=0.14))
+    # Victron SmartSolar 100/50 MPPT (top of the enclosure).
+    parts.append(ruby_box("MPPT Controller (Victron 100/50)",
+                          EP_X + 15, 25, EP_H_HI - MPPT_H - 30,
+                          MPPT_W, MPPT_D, MPPT_H, color="#3A5BA0"))
+    # Blue Sea 5026 block base + a standing row of 7 blade fuses, coloured per circuit.
+    parts.append(ruby_box("Fuse Block base (Blue Sea 5026)",
+                          fblk_x0, fblk_yd, fblk_z0, FUSEBLK_W, FUSEBLK_D, fbase_h,
+                          color="#2B2B30"))
+    for i, c in enumerate(ep_fuse_order):
+        cx = fblk_x0 + (i + 0.5) * fuse_pitch
+        parts.append(ruby_box(f"Fuse {c} ({ep_fuse_rating[c]} — {ep_load[c]})",
+                              cx - fuse_w / 2, fuse_yd, fblk_z0 + fbase_h,
+                              fuse_w, fuse_t, fuse_h, color=ep_cct[c]))
+    # +/- distribution busbars.
+    parts.append(ruby_box("Busbar (+)", EP_X + 15, 30, ez + 205,
+                          BUSBAR_L, BUSBAR_W, BUSBAR_H, color="#C0392B"))
+    parts.append(ruby_box("Busbar (-)", EP_X + 15, 30, ez + 175,
+                          BUSBAR_L, BUSBAR_W, BUSBAR_H, color="#2C2C2C"))
+    # Rotary main disconnect — knob on the enclosure face (Yd).
+    disc_x = EP_X + 240
+    parts.append(ruby_cylinder("Main Disconnect (Blue Sea m-Series)",
+                               disc_x, ENCL_SHELL_D, ez + 120,
+                               DISCONNECT_D / 2, DISCONNECT_H, color="#D43A2F", axis="y"))
+    # Disconnect LOAD terminal → busbar(+) link (so the bank isolates when the knob is OFF).
+    parts.append(ruby_pipe_run("Main feed (disconnect -> busbar +)",
+                               [(disc_x, 130, ez + 155), (disc_x, 45, ez + 155),
+                                (disc_x, 45, ez + 205), (EP_X + 15 + BUSBAR_L, 45, ez + 205)],
+                               11, color="#8B1A1A"))
 
     # Battery bank — the standard build fits 1× LiFePO4 (cost). The 2nd position is
     # provisioned (the busbar/conduit below already serve it) and shown GHOSTED as a
@@ -1394,6 +1447,29 @@ def electrical():
     parts.append(ruby_box("Battery Contactor (ML-RBS, in + feed)",
                           BA_X + 20, 15, BA_H_HI,
                           120, 90, 100, color="#C42B1C"))
+
+    # Battery main DC cables — without these the bank reads as floating. Ported from the
+    # electrical model's battery() so the EP internals are actually fed:
+    #   (+) post -> contactor -> MRBF main fuse -> main disconnect LINE terminal (the
+    #   disconnect -> busbar(+) link lives in the EP internals, so the whole bank isolates
+    #   when the knob is OFF);  (-) post -> busbar(-).
+    # The (+) riser threads up at X≈1715 (between the lower stay-anchor bolts, Yd 45 clears
+    # the anchor eye); the (-) riser starts at X≈1760, clear (right) of the contactor/MRBF.
+    disc_x, disc_z = EP_X + 240, EP_H_LO + 120          # main disconnect centre (matches EP internals)
+    parts.append(ruby_box("MRBF Main Fuse (on + post)",
+                          BA_X + CONTACTOR_W + 35, 20, BA_H_HI,
+                          MRBF_D, MRBF_D, MRBF_H, color="#222222"))
+    parts.append(ruby_pipe_run("Battery + cable (2/0 AWG, MRBF -> main disconnect)",
+                               [(BA_X + CONTACTOR_W + 55, 45, BA_H_HI + MRBF_H),
+                                (BA_X + CONTACTOR_W + 55, 45, disc_z - 35),
+                                (disc_x, 45, disc_z - 35),
+                                (disc_x, 130, disc_z - 35)],
+                               11, color="#8B1A1A"))
+    parts.append(ruby_pipe_run("Battery - cable (2/0 AWG -> busbar -)",
+                               [(BA_X + 220, 60, BA_H_HI),
+                                (BA_X + 220, 60, EP_H_LO + 186),
+                                (EP_X + 35, 60, EP_H_LO + 186)],
+                               11, color="#202020"))
 
     # External emergency cut-off (E-stop) — red mushroom on a yellow collar, on the
     # exterior face of the power panel (Yd<0), so all DC can be killed from outside.
@@ -1442,6 +1518,23 @@ def electrical():
     parts.append(ruby_cylinder("GFCI AC outlet (Cct E cooler)",
                                _px(0.767), face_y - 20, _pz(0.325),
                                10, 20, color="#E8884A", axis="y"))
+
+    # PV interior feed: MC4 bulkheads (panel interior face) -> MPPT PV input. The exterior
+    # PV run (solar_array()) lands on the MC4 connectors; this is the conductor from their
+    # interior side into the MPPT. Crosses UNDER the upper transport-stay anchor (X1695-1895,
+    # Z1950-2150) at the bottom MC4 height (Z≈1884) and over the fuse block (top Z≈1840),
+    # then rises into the MPPT at Yd 85 (clear of the fuse block at Yd 25-70). Duplicated in
+    # the electrical model's power_core() — keep in sync.
+    mc4_x = _px(0.23)                          # between the MC4 (+)/(-) columns
+    mc4_z = _pz(0.225)                         # bottom MC4 pair (below the stay anchor)
+    mppt_in_x = EP_X + 40
+    mppt_in_z = EP_H_HI - MPPT_H - 32          # just under the MPPT bottom (PV input)
+    parts.append(ruby_pipe_run("PV feed (MC4 bulkheads -> MPPT)",
+                               [(mc4_x, 22, mc4_z),
+                                (mc4_x, 85, mc4_z),
+                                (mppt_in_x, 85, mc4_z),
+                                (mppt_in_x, 85, mppt_in_z)],
+                               9, color="#2D7A2D"))
 
     return '\n'.join(parts)
 
@@ -1681,6 +1774,20 @@ def evap_cooler():
     parts.append(ruby_box("Cct E Inverter (12->120V AC)",
                           INVERTER_X, 0, INVERTER_Z,
                           INVERTER_W, INVERTER_D, INVERTER_H, color="#404848"))
+
+    # Cct E 120V AC line: inverter output -> the external panel's GFCI outlet (interior
+    # face), which then runs the cooler cord outside. Ported from the electrical model's
+    # inverter(); routed LEFT under the EP enclosure at the inverter-top height (Z≈1415,
+    # below the busbars/fuses and the upper stay anchor), then up to the GFCI on the panel.
+    gfci_x = PWR_PANEL_X + 0.767 * PWR_PANEL_W
+    gfci_z = PWR_PANEL_Z + 0.325 * PWR_PANEL_H
+    inv_top = INVERTER_Z + INVERTER_H
+    parts.append(ruby_pipe_run("Cct E AC line (inverter -> panel GFCI)",
+                               [(INVERTER_X + INVERTER_W / 2, 30, inv_top),
+                                (gfci_x, 30, inv_top),
+                                (gfci_x, 30, gfci_z),
+                                (gfci_x, 18, gfci_z)],
+                               7, color="#E8884A"))
 
     # Cold-air duct inlet — a Ø200 circle through the wall (axis into container).
     parts.append(ruby_cylinder("Cold-Air Duct Inlet (Ø200)",

@@ -8092,7 +8092,7 @@ end
   grp = ents.add_group
   grp.name = "LT Drum opening brush seal"
   ge = grp.entities
-  circle = ge.add_circle([-735.9104883076719.mm,899.1376331524525.mm,130.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([-735.9104883076718.mm,899.1376331524525.mm,130.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2120.mm)
@@ -8159,14 +8159,216 @@ end
   # ═══ Electrical ═══
   defn = model.definitions.add("Electrical")
   ents = defn.entities
-  # Electrical Panel (EP)
+  # Electrical Panel (EP enclosure, IP65)
   grp = ents.add_group
-  grp.name = "Electrical Panel (EP)"
-  face = grp.entities.add_face([1910.mm,0.mm,1500.mm], [2210.mm,0.mm,1500.mm], [2210.mm,160.mm,1500.mm], [1910.mm,160.mm,1500.mm])
+  grp.name = "Electrical Panel (EP enclosure, IP65)"
+  face = grp.entities.add_face([1898.mm,0.mm,1488.mm], [2222.mm,0.mm,1488.mm], [2222.mm,171.mm,1488.mm], [1898.mm,171.mm,1488.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(600.mm)
-  mat = model.materials["Electrical Panel (EP)"] || model.materials.add("Electrical Panel (EP)")
+  face.pushpull(624.mm)
+  mat = model.materials["Electrical Panel (EP enclosure, IP65)"] || model.materials.add("Electrical Panel (EP enclosure, IP65)")
   mat.color = Sketchup::Color.new(245, 197, 24)
+  mat.alpha = 0.14
+  grp.material = mat
+
+  # MPPT Controller (Victron 100/50)
+  grp = ents.add_group
+  grp.name = "MPPT Controller (Victron 100/50)"
+  face = grp.entities.add_face([1925.mm,25.mm,1970.mm], [2110.mm,25.mm,1970.mm], [2110.mm,95.mm,1970.mm], [1925.mm,95.mm,1970.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["MPPT Controller (Victron 100/50)"] || model.materials.add("MPPT Controller (Victron 100/50)")
+  mat.color = Sketchup::Color.new(58, 91, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fuse Block base (Blue Sea 5026)
+  grp = ents.add_group
+  grp.name = "Fuse Block base (Blue Sea 5026)"
+  face = grp.entities.add_face([1925.mm,25.mm,1770.mm], [2075.mm,25.mm,1770.mm], [2075.mm,70.mm,1770.mm], [1925.mm,70.mm,1770.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(28.mm)
+  mat = model.materials["Fuse Block base (Blue Sea 5026)"] || model.materials.add("Fuse Block base (Blue Sea 5026)")
+  mat.color = Sketchup::Color.new(43, 43, 48)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fuse A (5A — exhaust fan)
+  grp = ents.add_group
+  grp.name = "Fuse A (5A — exhaust fan)"
+  face = grp.entities.add_face([1929.2142857142858.mm,43.mm,1798.mm], [1942.2142857142858.mm,43.mm,1798.mm], [1942.2142857142858.mm,52.mm,1798.mm], [1929.2142857142858.mm,52.mm,1798.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(42.mm)
+  mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
+  mat.color = Sketchup::Color.new(192, 57, 43)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fuse B (5A — intake fan)
+  grp = ents.add_group
+  grp.name = "Fuse B (5A — intake fan)"
+  face = grp.entities.add_face([1950.642857142857.mm,43.mm,1798.mm], [1963.642857142857.mm,43.mm,1798.mm], [1963.642857142857.mm,52.mm,1798.mm], [1950.642857142857.mm,52.mm,1798.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(42.mm)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fuse C (15A — water pumps)
+  grp = ents.add_group
+  grp.name = "Fuse C (15A — water pumps)"
+  face = grp.entities.add_face([1972.0714285714287.mm,43.mm,1798.mm], [1985.0714285714287.mm,43.mm,1798.mm], [1985.0714285714287.mm,52.mm,1798.mm], [1972.0714285714287.mm,52.mm,1798.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(42.mm)
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
+  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fuse D (5A — safelight)
+  grp = ents.add_group
+  grp.name = "Fuse D (5A — safelight)"
+  face = grp.entities.add_face([1993.5.mm,43.mm,1798.mm], [2006.5.mm,43.mm,1798.mm], [2006.5.mm,52.mm,1798.mm], [1993.5.mm,52.mm,1798.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(42.mm)
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fuse E (40A — cooler / inverter)
+  grp = ents.add_group
+  grp.name = "Fuse E (40A — cooler / inverter)"
+  face = grp.entities.add_face([2014.9285714285713.mm,43.mm,1798.mm], [2027.9285714285713.mm,43.mm,1798.mm], [2027.9285714285713.mm,52.mm,1798.mm], [2014.9285714285713.mm,52.mm,1798.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(42.mm)
+  mat = model.materials["Fuse E (40A — cooler / inverter)"] || model.materials.add("Fuse E (40A — cooler / inverter)")
+  mat.color = Sketchup::Color.new(22, 160, 133)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fuse F (20A — actuators (spare))
+  grp = ents.add_group
+  grp.name = "Fuse F (20A — actuators (spare))"
+  face = grp.entities.add_face([2036.357142857143.mm,43.mm,1798.mm], [2049.357142857143.mm,43.mm,1798.mm], [2049.357142857143.mm,52.mm,1798.mm], [2036.357142857143.mm,52.mm,1798.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(42.mm)
+  mat = model.materials["Fuse F (20A — actuators (spare))"] || model.materials.add("Fuse F (20A — actuators (spare))")
+  mat.color = Sketchup::Color.new(127, 140, 141)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fuse G (10A — white LED)
+  grp = ents.add_group
+  grp.name = "Fuse G (10A — white LED)"
+  face = grp.entities.add_face([2057.785714285714.mm,43.mm,1798.mm], [2070.785714285714.mm,43.mm,1798.mm], [2070.785714285714.mm,52.mm,1798.mm], [2057.785714285714.mm,52.mm,1798.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(42.mm)
+  mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
+  mat.color = Sketchup::Color.new(241, 196, 15)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Busbar (+)
+  grp = ents.add_group
+  grp.name = "Busbar (+)"
+  face = grp.entities.add_face([1925.mm,30.mm,1705.mm], [2045.mm,30.mm,1705.mm], [2045.mm,50.mm,1705.mm], [1925.mm,50.mm,1705.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
+  mat.color = Sketchup::Color.new(192, 57, 43)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Busbar (-)
+  grp = ents.add_group
+  grp.name = "Busbar (-)"
+  face = grp.entities.add_face([1925.mm,30.mm,1675.mm], [2045.mm,30.mm,1675.mm], [2045.mm,50.mm,1675.mm], [1925.mm,50.mm,1675.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Busbar (-)"] || model.materials.add("Busbar (-)")
+  mat.color = Sketchup::Color.new(44, 44, 44)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Main Disconnect (Blue Sea m-Series)
+  grp = ents.add_group
+  grp.name = "Main Disconnect (Blue Sea m-Series)"
+  ge = grp.entities
+  circle = ge.add_circle([2150.mm,165.mm,1620.mm], [0,1,0], 35.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Main Disconnect (Blue Sea m-Series)"] || model.materials.add("Main Disconnect (Blue Sea m-Series)")
+  mat.color = Sketchup::Color.new(212, 58, 47)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Main feed (disconnect -> busbar +)
+  grp = ents.add_group
+  grp.name = "Main feed (disconnect -> busbar +)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -63.mm, 0.mm)
+  circle = ge.add_circle([2150.mm,130.mm,1655.mm], vec, 11.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Main feed (disconnect -> busbar +)"] || model.materials.add("Main feed (disconnect -> busbar +)")
+  mat.color = Sketchup::Color.new(139, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Main feed (disconnect -> busbar +) elbow
+  grp = ents.add_group
+  grp.name = "Main feed (disconnect -> busbar +) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([2150.mm,67.mm,1677.mm], [0.000000,0.000000,-1.000000], [-1.000000,0.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2150.mm,67.mm,1655.mm], [0.000000,-1.000000,0.000000], 11.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Main feed (disconnect -> busbar +)"] || model.materials.add("Main feed (disconnect -> busbar +)")
+  mat.color = Sketchup::Color.new(139, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Main feed (disconnect -> busbar +)
+  grp = ents.add_group
+  grp.name = "Main feed (disconnect -> busbar +)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 14.279999999999973.mm)
+  circle = ge.add_circle([2150.mm,45.mm,1677.mm], vec, 11.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Main feed (disconnect -> busbar +)"] || model.materials.add("Main feed (disconnect -> busbar +)")
+  mat.color = Sketchup::Color.new(139, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Main feed (disconnect -> busbar +) elbow
+  grp = ents.add_group
+  grp.name = "Main feed (disconnect -> busbar +) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([2136.28.mm,45.mm,1691.28.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 13.72.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2150.mm,45.mm,1691.28.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Main feed (disconnect -> busbar +)"] || model.materials.add("Main feed (disconnect -> busbar +)")
+  mat.color = Sketchup::Color.new(139, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Main feed (disconnect -> busbar +)
+  grp = ents.add_group
+  grp.name = "Main feed (disconnect -> busbar +)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-91.2800000000002.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2136.28.mm,45.mm,1705.mm], vec, 11.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Main feed (disconnect -> busbar +)"] || model.materials.add("Main feed (disconnect -> busbar +)")
+  mat.color = Sketchup::Color.new(139, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8209,7 +8411,7 @@ end
   face = grp.entities.add_face([1250.mm,0.mm,1830.mm], [1590.mm,0.mm,1830.mm], [1590.mm,20.mm,1830.mm], [1250.mm,20.mm,1830.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(240.mm)
-  mat = model.materials["Electrical Panel (EP)"] || model.materials.add("Electrical Panel (EP)")
+  mat = model.materials["Ext. Power Panel (interior face)"] || model.materials.add("Ext. Power Panel (interior face)")
   mat.color = Sketchup::Color.new(245, 197, 24)
   mat.alpha = 1.0
   grp.material = mat
@@ -8222,6 +8424,126 @@ end
   face.pushpull(100.mm)
   mat = model.materials["Battery Contactor (ML-RBS, in + feed)"] || model.materials.add("Battery Contactor (ML-RBS, in + feed)")
   mat.color = Sketchup::Color.new(196, 43, 28)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # MRBF Main Fuse (on + post)
+  grp = ents.add_group
+  grp.name = "MRBF Main Fuse (on + post)"
+  face = grp.entities.add_face([1695.mm,20.mm,364.mm], [1735.mm,20.mm,364.mm], [1735.mm,60.mm,364.mm], [1695.mm,60.mm,364.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(38.mm)
+  mat = model.materials["MRBF Main Fuse (on + post)"] || model.materials.add("MRBF Main Fuse (on + post)")
+  mat.color = Sketchup::Color.new(34, 34, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Battery + cable (2/0 AWG, MRBF -> main disconnect)
+  grp = ents.add_group
+  grp.name = "Battery + cable (2/0 AWG, MRBF -> main disconnect)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 1161.mm)
+  circle = ge.add_circle([1715.mm,45.mm,402.mm], vec, 11.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Main feed (disconnect -> busbar +)"] || model.materials.add("Main feed (disconnect -> busbar +)")
+  mat.color = Sketchup::Color.new(139, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Battery + cable (2/0 AWG, MRBF -> main disconnect) elbow
+  grp = ents.add_group
+  grp.name = "Battery + cable (2/0 AWG, MRBF -> main disconnect) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1737.mm,45.mm,1563.mm], [-1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1715.mm,45.mm,1563.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Main feed (disconnect -> busbar +)"] || model.materials.add("Main feed (disconnect -> busbar +)")
+  mat.color = Sketchup::Color.new(139, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Battery + cable (2/0 AWG, MRBF -> main disconnect)
+  grp = ents.add_group
+  grp.name = "Battery + cable (2/0 AWG, MRBF -> main disconnect)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(391.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1737.mm,45.mm,1585.mm], vec, 11.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Main feed (disconnect -> busbar +)"] || model.materials.add("Main feed (disconnect -> busbar +)")
+  mat.color = Sketchup::Color.new(139, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Battery + cable (2/0 AWG, MRBF -> main disconnect) elbow
+  grp = ents.add_group
+  grp.name = "Battery + cable (2/0 AWG, MRBF -> main disconnect) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([2128.mm,67.mm,1585.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 22.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2128.mm,45.mm,1585.mm], [1.000000,0.000000,0.000000], 11.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Main feed (disconnect -> busbar +)"] || model.materials.add("Main feed (disconnect -> busbar +)")
+  mat.color = Sketchup::Color.new(139, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Battery + cable (2/0 AWG, MRBF -> main disconnect)
+  grp = ents.add_group
+  grp.name = "Battery + cable (2/0 AWG, MRBF -> main disconnect)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 63.mm, 0.mm)
+  circle = ge.add_circle([2150.mm,67.mm,1585.mm], vec, 11.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Main feed (disconnect -> busbar +)"] || model.materials.add("Main feed (disconnect -> busbar +)")
+  mat.color = Sketchup::Color.new(139, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Battery - cable (2/0 AWG -> busbar -)
+  grp = ents.add_group
+  grp.name = "Battery - cable (2/0 AWG -> busbar -)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 1300.mm)
+  circle = ge.add_circle([1760.mm,60.mm,364.mm], vec, 11.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Battery - cable (2/0 AWG -> busbar -)"] || model.materials.add("Battery - cable (2/0 AWG -> busbar -)")
+  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Battery - cable (2/0 AWG -> busbar -) elbow
+  grp = ents.add_group
+  grp.name = "Battery - cable (2/0 AWG -> busbar -) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1782.mm,60.mm,1664.mm], [-1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1760.mm,60.mm,1664.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Battery - cable (2/0 AWG -> busbar -)"] || model.materials.add("Battery - cable (2/0 AWG -> busbar -)")
+  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Battery - cable (2/0 AWG -> busbar -)
+  grp = ents.add_group
+  grp.name = "Battery - cable (2/0 AWG -> busbar -)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(163.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1782.mm,60.mm,1686.mm], vec, 11.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Battery - cable (2/0 AWG -> busbar -)"] || model.materials.add("Battery - cable (2/0 AWG -> busbar -)")
+  mat.color = Sketchup::Color.new(32, 32, 32)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8445,6 +8767,74 @@ end
   cface.pushpull(20.mm)
   mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
   mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV feed (MC4 bulkheads -> MPPT)
+  grp = ents.add_group
+  grp.name = "PV feed (MC4 bulkheads -> MPPT)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 45.mm, 0.mm)
+  circle = ge.add_circle([1328.2.mm,22.mm,1884.mm], vec, 9.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV feed (MC4 bulkheads -> MPPT) elbow
+  grp = ents.add_group
+  grp.name = "PV feed (MC4 bulkheads -> MPPT) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1346.2.mm,67.mm,1884.mm], [-1.000000,0.000000,0.000000], [0.000000,0.000000,-1.000000], 18.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1328.2.mm,67.mm,1884.mm], [0.000000,1.000000,0.000000], 9.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV feed (MC4 bulkheads -> MPPT)
+  grp = ents.add_group
+  grp.name = "PV feed (MC4 bulkheads -> MPPT)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(585.8.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1346.2.mm,85.mm,1884.mm], vec, 9.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV feed (MC4 bulkheads -> MPPT) elbow
+  grp = ents.add_group
+  grp.name = "PV feed (MC4 bulkheads -> MPPT) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1932.mm,85.mm,1902.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 18.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1932.mm,85.mm,1884.mm], [1.000000,0.000000,0.000000], 9.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV feed (MC4 bulkheads -> MPPT)
+  grp = ents.add_group
+  grp.name = "PV feed (MC4 bulkheads -> MPPT)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 66.mm)
+  circle = ge.add_circle([1950.mm,85.mm,1902.mm], vec, 9.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -10724,6 +11114,74 @@ end
   face.pushpull(235.mm)
   mat = model.materials["Cct E Inverter (12->120V AC)"] || model.materials.add("Cct E Inverter (12->120V AC)")
   mat.color = Sketchup::Color.new(64, 72, 72)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E AC line (inverter -> panel GFCI)
+  grp = ents.add_group
+  grp.name = "Cct E AC line (inverter -> panel GFCI)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-445.22.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1970.mm,30.mm,1415.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E AC line (inverter -> panel GFCI) elbow
+  grp = ents.add_group
+  grp.name = "Cct E AC line (inverter -> panel GFCI) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1524.78.mm,30.mm,1429.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 14.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1524.78.mm,30.mm,1415.mm], [-1.000000,0.000000,0.000000], 7.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E AC line (inverter -> panel GFCI)
+  grp = ents.add_group
+  grp.name = "Cct E AC line (inverter -> panel GFCI)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 473.1199999999999.mm)
+  circle = ge.add_circle([1510.78.mm,30.mm,1429.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E AC line (inverter -> panel GFCI) elbow
+  grp = ents.add_group
+  grp.name = "Cct E AC line (inverter -> panel GFCI) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1510.78.mm,24.119999999999997.mm,1902.12.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 5.880000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1510.78.mm,30.mm,1902.12.mm], [0.000000,0.000000,1.000000], 7.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E AC line (inverter -> panel GFCI)
+  grp = ents.add_group
+  grp.name = "Cct E AC line (inverter -> panel GFCI)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -6.120000000000001.mm, 0.mm)
+  circle = ge.add_circle([1510.78.mm,24.12.mm,1908.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
 

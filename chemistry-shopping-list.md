@@ -14,12 +14,12 @@
 
 | Process | Chemistry total | Substrate total | **50-print total** | **Per print** |
 |---|---|---|---|---|
-| **Cyanotype (Ware formula)** | ~$887 | ~$1,014 | **~$1,915** | **~$38** |
-| **Gum bichromate** | ~$2,159 | ~$1,014 | **~$3,154** | **~$63** |
-| **Van Dyke Brown** | ~$6,553 | ~$1,014 | **~$7,544** | **~$151** |
+| **Cyanotype (Ware formula)** | ~$887 | ~$300 | **~$1,187** | **~$24** |
+| **Gum bichromate** | ~$2,159 | ~$300 | **~$2,459** | **~$49** |
+| **Van Dyke Brown** | ~$6,553 | ~$300 | **~$6,853** | **~$137** |
 | **Ilford RC paper** | ~$1,275 (chemistry) | ~$13,500 (paper) | **~$14,775** | **~$296** |
-| **Liquid Light** | ~$900 (chemistry) | ~$14,690 (emulsion+substrate) | **~$15,590** | **~$312** |
-| **Salt print** | ~$18,522 | ~$1,014 | **~$19,536** | **~$391** |
+| **Liquid Light** | ~$900 (chemistry) | ~$14,090 (emulsion+substrate) | **~$14,990** | **~$300** |
+| **Salt print** | ~$18,522 | ~$300 | **~$18,822** | **~$376** |
 
 Silver nitrate is the cost driver for salt print and Van Dyke Brown. Cyanotype is the only process where 50 prints can be made for under $2,000 total; gum bichromate remains under $3,500.
 
@@ -29,7 +29,7 @@ Silver nitrate is the cost driver for salt print and Van Dyke Brown. Cyanotype i
 
 All iron/silver processes use unbleached cotton muslin as the substrate. 50 prints at ~116 sq ft each, plus 15% waste = ~6,670 sq ft total; at 60" (5 ft) wide fabric that is 6,670 ÷ 5 = **~1,334 linear feet ≈ 445 linear yards**.
 
-> **Correction (2026-06-18):** an earlier version of this section read "~1,340 linear **yards**" — that figure was 1,334 linear **feet** mis-labelled as yards (a 3× over-count). The corrected requirement is **~445 yd = 3 × 150-yd rolls ≈ $300**, not 9 rolls / $900. The per-process totals below that include "$900 muslin" still carry the old figure; **subtract ~$600 from each muslin-inclusive process total** pending a re-sum. The [cost breakdown §7](project-cost-breakdown.md) already uses the corrected ~$300.
+> **Correction (2026-06-18):** an earlier version of this section read "~1,340 linear **yards**" — that figure was 1,334 linear **feet** mis-labelled as yards (a 3× over-count). The corrected requirement is **~445 yd = 3 × 150-yd rolls ≈ $300**, not 9 rolls / $900 (the summary's "$1,014" was the same 1,340 yd priced by-the-yard). Every muslin-bearing process total below — and the executive summary and comparative tables — has now been re-summed at **$300 substrate** (each dropped ~$600, except Ilford, which is paper). The [cost breakdown §7](project-cost-breakdown.md) matches.
 
 | Item | Qty | Supplier | Unit | Units needed | Unit price | Total |
 |---|---|---|---|---|---|---|
@@ -117,9 +117,9 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 | Gum Arabic Powder, bulk | **Gum Arabic USA** | [gumarabicusa.com/gum-arabic-bulk](https://www.gumarabicusa.com/gum-arabic-bulk) | Contact for 30 kg quote | — | ~$18–22/kg | ~$540–660 |
 | Gum Arabic Powder (alt.) | **Jedwards International** | [bulknaturaloils.com/acacia-gum-seyal-organic](https://bulknaturaloils.com/acacia-gum-seyal-organic.html) | Bulk kg | 30 | ~$20/kg | ~$600 |
 | Dry pigment — raw umber or lamp black | **Kremer Pigments** | kremer-pigmente.com | 1 kg | 3 | ~$20–40/kg | ~$60–120 |
-| Unbleached muslin | Fabric Direct | As above | 150-yd roll | 9 | ~$100 | ~$900 |
+| Unbleached muslin | Fabric Direct | As above | 150-yd roll | 3 | ~$100 | ~$300 |
 
-**Process total: ~$3,059–$3,259 (~$2,159 chemistry, ~$900 muslin)**
+**Process total: ~$2,459–$2,659 (~$2,159 chemistry, ~$300 muslin)**
 
 **Hazard:** Ammonium dichromate is classified as an **oxidizer (UN Class 5.1)** and a known carcinogen (Category 1A, IARC). Must ship via UPS Ground only — no air freight. Wear nitrile gloves and N95 respirator when handling dry powder. Store away from flammables. The Photographers' Formulary listing explicitly states "Ground UPS only." Chem-Impex will require a completed hazmat shipping agreement.
 
@@ -129,7 +129,7 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 
 ## Process 3: Van Dyke Brown
 
-**50-print total: ~$7,544 | Per print: ~$151**
+**50-print total: ~$6,853 | Per print: ~$137**
 
 ### Chemistry quantities
 
@@ -152,9 +152,9 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 | Tartaric Acid, 1 kg | **Lab Alley** | [laballey.com/products/tartaric-acid-nf-fcc](https://www.laballey.com/products/tartaric-acid-nf-fcc) | 1 kg | 1 | ~$15–20 | ~$20 |
 | Tartaric Acid (winemaking grade) | **Enartis USA** | [shop-usa.enartis.com/tartaric-acid-food-grade-3](https://shop-usa.enartis.com/tartaric-acid-food-grade-3) | Various | 1 kg adequate | ~$15 | ~$15 |
 | Sodium Thiosulfate, 25 kg | **Ingredient Depot** | [ingredientdepot.com/products/sodium-thiosulphate-25-kgs](https://ingredientdepot.com/products/sodium-thiosulphate-25-kgs) | 25 kg bag | 1 | ~$40–55 | ~$50 |
-| Unbleached muslin | Fabric Direct | As above | 150-yd roll | 9 | ~$100 | ~$900 |
+| Unbleached muslin | Fabric Direct | As above | 150-yd roll | 3 | ~$100 | ~$300 |
 
-**Process total: ~$6,553–$7,544 depending on AgNO₃ source**
+**Process total: ~$6,853 (chemistry $6,553 + $300 muslin); silver nitrate cost varies ±20–30% by source — see procurement note**
 
 **Critical procurement note — silver nitrate:**
 - Silver nitrate is a DEA List I Chemical (used in drug synthesis). US purchases require a **DEA Form 224 registration** for quantities above threshold (typically >400g). Photographers' Formulary explicitly states "DEA Form Required" on their listing.
@@ -166,7 +166,7 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 
 ## Process 4: Salt Print
 
-**50-print total: ~$19,536 | Per print: ~$391**
+**50-print total: ~$18,822 | Per print: ~$376**
 
 ### Chemistry quantities
 
@@ -185,7 +185,7 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 | Sodium Chloride | Grocery / bulk food store | — | 1 kg | 1 | ~$2 | ~$2 |
 | Sodium Thiosulfate, 25 kg × 2 | **Ingredient Depot** | [ingredientdepot.com — sodium thiosulphate](https://ingredientdepot.com/collections/sodium-thiosulphate) | 25 kg bag | 2 | ~$40–55 | ~$90 |
 | Sodium Thiosulfate (alternative) | **Alliance Chemical** | [alliancechemical.com/products/sodium-thiosulfate](https://alliancechemical.com/products/sodium-thiosulfate) | 25 lb | 4+ | ~$35 per 25 lb | ~$140 |
-| Unbleached muslin | Fabric Direct | As above | 150-yd roll | 9 | ~$100 | ~$900 |
+| Unbleached muslin | Fabric Direct | As above | 150-yd roll | 3 | ~$100 | ~$300 |
 
 **The silver nitrate cost at 7.05 kg dominates entirely.** At $260/100g, this is $18,330 in AgNO₃ alone. Salt print is included here for completeness but is not recommended for a 50-print run at this scale. **Van Dyke Brown delivers a comparable aesthetic at roughly one-third the silver consumption.**
 
@@ -222,7 +222,7 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 
 ## Process 6: Rockland Liquid Light on Custom Substrate
 
-**50-print total: ~$15,590 | Per print: ~$312**
+**50-print total: ~$14,990 | Per print: ~$300**
 
 ### Material quantities
 
@@ -231,7 +231,7 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 | Rockland Liquid Light | 158 oz (double coat) | **7,900 oz** | 247 × 32oz OR contact Rockland for bulk |
 | Developer (Dektol) | 12.4 L | 620 L | As above |
 | Fixer | 17 L working | 850 L | As above |
-| Substrate (muslin) | ~116 sq ft | ~5,800 sq ft | 1,340 yd of 60" muslin |
+| Substrate (muslin) | ~116 sq ft | ~5,800 sq ft | ~445 yd of 60" muslin |
 
 ### Shopping list
 
@@ -241,7 +241,7 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 | Rockland Liquid Light 32 oz | **B&H Photo** | [bhphotovideo.com — Rockland LLE8](https://www.bhphotovideo.com/c/product/45028-REG/Rockland_LLE8_Liquid_Light_Photo_Emulsion.html) | 8 oz | 988 | ~$25 | ~$24,700 |
 | **Rockland direct (bulk quote)** | **Rockland Colloid** | [rockaloid.com](https://www.rockaloid.com/) | Custom bulk | Contact | — | **Recommended for 50-print volume** |
 | Developer, Fixer | As Ilford section | — | — | — | — | ~$900 |
-| Muslin substrate | Fabric Direct | As above | 150-yd roll | 9 | ~$100 | ~$900 |
+| Muslin substrate | Fabric Direct | As above | 150-yd roll | 3 | ~$100 | ~$300 |
 
 **Procurement note:** At 7,900 oz (~234 liters / ~62 US gallons), this volume of Liquid Light has no listed retail path that is commercially sane — 247 bottles at $55 each. **Contact Rockland Colloid directly** (rockaloid.com) before purchasing. Rockland does offer bulk supply to institutions and studios; the per-oz price drops significantly at this volume. A phone or email enquiry before ordering is essential for this process.
 
@@ -274,12 +274,12 @@ At 1:4 dilution: 5 L concentrate → 25 L working. 34 bottles × 25 L = 850 L wo
 
 | Process | AmFe / FAC | KFe | AgNO₃ | Amm. dichromate | Gum arabic | Na thiosulfate | Fabric/paper | Chemistry | **Total** |
 |---|---|---|---|---|---|---|---|---|---|
-| Cyanotype (Ware) | 8.45 kg AmFe | 3.95 kg | — | 0.45 kg | — | — | 1,340 yd muslin | ~$887 | **~$1,915** |
-| Gum bichromate | — | — | — | 9.3 kg | 29.3 kg | — | 1,340 yd muslin | ~$2,159 | **~$3,154** |
-| Van Dyke Brown | 5.9 kg FAC | — | 2.3 kg | — | — | 20.85 kg | 1,340 yd muslin | ~$6,553 | **~$7,544** |
-| Salt print | — | — | 7.05 kg | — | — | 41.65 kg | 1,340 yd muslin | ~$18,522 | **~$19,536** |
+| Cyanotype (Ware) | 8.45 kg AmFe | 3.95 kg | — | 0.45 kg | — | — | ~445 yd muslin | ~$887 | **~$1,187** |
+| Gum bichromate | — | — | — | 9.3 kg | 29.3 kg | — | ~445 yd muslin | ~$2,159 | **~$2,459** |
+| Van Dyke Brown | 5.9 kg FAC | — | 2.3 kg | — | — | 20.85 kg | ~445 yd muslin | ~$6,553 | **~$6,853** |
+| Salt print | — | — | 7.05 kg | — | — | 41.65 kg | ~445 yd muslin | ~$18,522 | **~$18,822** |
 | Ilford RC paper | — | — | — | — | — | — | 18 rolls paper | ~$1,275 (chem) | **~$14,775** |
-| Liquid Light | — | — | — | — | — | — | 1,340 yd + emulsion | ~$900 (chem) | **~$15,590** |
+| Liquid Light | — | — | — | — | — | — | ~445 yd + emulsion | ~$900 (chem) | **~$14,990** |
 
 ---
 

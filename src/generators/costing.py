@@ -165,6 +165,33 @@ WATER = [
     LineItem("Processing consumables (6-mil poly, pH meter, citric acid)", 231, 255, 278),
 ]
 
+# §1 Container — clean 2-item table; the scenario Mid was $3,150 but the items give $3,300.
+CONTAINER = [
+    LineItem("20 ft container — CW grade", 2000, 2750, 3500, "containermgt.com"),
+    LineItem("Delivery — short haul (<50 miles)", 300, 550, 800, "Commercial tilt-bed hire"),
+]
+
+# §6 Housed revolving-door light lock (plastic-skin) — detail already = scenario.
+LIGHTLOCK = [
+    LineItem("5mm UV-HDPE sheet — Ø900 housing shell (~7 m²)", 180, 230, 280, "TAP Plastics / Online Metals"),
+    LineItem("4mm PP sheet — Ø864 drum shell + caps + steel stub shafts ×2", 180, 215, 270, "TAP / Curbell + steel service center"),
+    LineItem("SKF 6215-2RS1 sealed bearing (×2)", 90, 110, 130, "Bearing World / Applied Industrial"),
+    LineItem("Seals — neoprene wiper + silicone + brush (drum↔housing)", 90, 110, 130, "McMaster-Carr"),
+    LineItem("Hardware — SS grab rail + M10 stainless bolts (×14)", 60, 75, 90, "McMaster / Fastenal"),
+    LineItem("Nylon isolation washers + stainless fasteners (no galvanic couple)", 25, 32, 40, "McMaster-Carr"),
+    LineItem("Matte-black interior finish", 40, 55, 70, "Rattle-can / local shop"),
+    LineItem("Plastic fabrication — roll + weld 2 cylinders, cap/shaft/bearing fit (16–22 hrs)", 800, 975, 1150, "Local plastic fab shop"),
+]
+
+# §6b Panel swing pivot — detail already = scenario.
+SWINGPIVOT = [
+    LineItem("Ø89×8 CHS pivot post + machined hub / thrust collar", 180, 220, 260, "Metal Supermarkets / local fab"),
+    LineItem("Thrust + journal bearings (12″ turntable thrust + 2× 89mm bronze sleeve)", 180, 210, 250, "VXB + McMaster SAE 841"),
+    LineItem("Drum support cage, 40×40×3mm SHS", 80, 90, 110, "Local fab"),
+    LineItem("Top + bottom wall stays + 4-bolt anchor plates", 120, 140, 160, "Turnbuckles + rods + plates"),
+    LineItem("Drop-in rail saddles + tapered dowels (×4, removable left film rails)", 90, 110, 130, "Local fab / McMaster"),
+]
+
 
 def emit_section_table(items: list[LineItem], total_label: str) -> str:
     """Generate a Low/Mid/High line-item table with a COMPUTED total row."""
@@ -195,16 +222,16 @@ def _printmaking_section() -> Section:
 
 
 SECTIONS = [
-    Section("1",  "Container purchase & delivery",              2300, 3150, 4300),
+    Section("1",  "Container purchase & delivery",              *total(CONTAINER)),  # COMPUTED
     Section("2",  "Interior conversion",                         970, 1140, 1310),
     Section("3",  "Optics — pinhole plate",                       80,  150,  280),
     Section("4",  "Film plane mechanism (4-corner Option A)",   3100, 3650, 4200),
     Section("5",  "Processing water system",                    *total(WATER)),  # COMPUTED from line items
     Section("5a", "Power & electrical system",                  2025, 2265, 2575),
     Section("5b", "Ventilation & cooling system",                770,  830,  920),
-    Section("6",  "Housed revolving-door light lock",           1465, 1802, 2160),
+    Section("6",  "Housed revolving-door light lock",           *total(LIGHTLOCK)),  # COMPUTED
     Section("6a", "Perimeter walkway",                          *total(WALKWAY)),  # COMPUTED from line items
-    Section("6b", "Panel swing pivot",                           650,  770,  910),
+    Section("6b", "Panel swing pivot",                           *total(SWINGPIVOT)),  # COMPUTED
     _printmaking_section(),
     Section("8",  "Transportation (per deployment)",             300,  750, 2000),
     Section("9",  "Licences & permits",                          220,  790, 1620),
@@ -232,9 +259,12 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 909,  "total": 1210, "per_print": 24},  # 909 not 910: consistent ferri rounding ($104, not the doc's hand-rounded $105)
     "standard": {"chem": 1353, "total": 1650, "per_print": 33},
     "rich":     {"chem": 2681, "total": 2980, "per_print": 60},
-    "grand_total": (18979, 24246, 31966),  # walkway +25/28/35, water -80/-95/-112 vs old hand-typed
+    "grand_total": (18979, 24396, 31966),  # + container Mid $150 (scenario said $3,150; items give $3,300)
     "walkway": (1826, 2214, 2607),
     "water": (4063, 5085, 6104),
+    "container": (2300, 3300, 4300),
+    "lightlock": (1465, 1802, 2160),
+    "swingpivot": (650, 770, 910),
 }
 
 
@@ -254,6 +284,9 @@ def check() -> list[str]:
         errs.append(f"walkway {total(WALKWAY)} != {EXPECTED['walkway']}")
     if total(WATER) != EXPECTED["water"]:
         errs.append(f"water {total(WATER)} != {EXPECTED['water']}")
+    for key, items in (("container", CONTAINER), ("lightlock", LIGHTLOCK), ("swingpivot", SWINGPIVOT)):
+        if total(items) != EXPECTED[key]:
+            errs.append(f"{key} {total(items)} != {EXPECTED[key]}")
     if grand_total() != EXPECTED["grand_total"]:
         errs.append(f"grand total {grand_total()} != {EXPECTED['grand_total']}")
     return errs

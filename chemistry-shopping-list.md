@@ -27,12 +27,14 @@ Silver nitrate is the cost driver for salt print and Van Dyke Brown. Cyanotype i
 
 ## Shared Item: Substrate Fabric
 
-All iron/silver processes use unbleached cotton muslin as the substrate. 50 prints at ~116 sq ft each, plus 15% waste = ~6,670 sq ft total; at 60" (5 ft) wide fabric = approximately **1,340 linear yards**.
+All iron/silver processes use unbleached cotton muslin as the substrate. 50 prints at ~116 sq ft each, plus 15% waste = ~6,670 sq ft total; at 60" (5 ft) wide fabric that is 6,670 ÷ 5 = **~1,334 linear feet ≈ 445 linear yards**.
+
+> **Correction (2026-06-18):** an earlier version of this section read "~1,340 linear **yards**" — that figure was 1,334 linear **feet** mis-labelled as yards (a 3× over-count). The corrected requirement is **~445 yd = 3 × 150-yd rolls ≈ $300**, not 9 rolls / $900. The per-process totals below that include "$900 muslin" still carry the old figure; **subtract ~$600 from each muslin-inclusive process total** pending a re-sum. The [cost breakdown §7](project-cost-breakdown.md) already uses the corrected ~$300.
 
 | Item | Qty | Supplier | Unit | Units needed | Unit price | Total |
 |---|---|---|---|---|---|---|
-| Unbleached cotton muslin, 60" wide | 1,340 yd | **Fabric Direct** | 150-yd roll | 9 rolls | ~$100/roll | ~$900 |
-| OR by the yard | 1,340 yd | **Fabric Wholesale Direct** | per yard | 1,340 | ~$0.80–$1.20/yd | ~$1,072–$1,608 |
+| Unbleached cotton muslin, 60" wide | ~445 yd | **Fabric Direct** | 150-yd roll | 3 rolls | ~$100/roll | ~$300 |
+| OR by the yard | ~445 yd | **Fabric Wholesale Direct** | per yard | 445 | ~$0.80–$1.20/yd | ~$360–$540 |
 
 **Fabric Direct** — 150-yard rolls of 60" unbleached muslin, medium weight  
 URL: [fabricdirect.com](https://www.fabricdirect.com/shop/craft-fabric/broadcloth-and-muslin-fabric/essence-60-medium-weight-muslin-fabric-unbleached-150-yard-roll/)
@@ -77,9 +79,9 @@ Cyanotype uses the **Mike Ware New Cyanotype formula** (1994) as the primary sen
 | Ammonium Iron(III) Oxalate (alt.) | **Bostick & Sullivan** | [bostick-sullivan.com/product/ammonium-ferric-oxalate](https://www.bostick-sullivan.com/product/ammonium-ferric-oxalate/) | 500 g | 17 | ~$30 | ~$510 |
 | Potassium Ferricyanide, 1 kg | **Bostick & Sullivan** | [bostick-sullivan.com/product/potassium-ferricyanide](https://www.bostick-sullivan.com/product/potassium-ferricyanide-250gm/) | 1,000 g | 4 | **$24.29†** | **$97** |
 | Ammonium Dichromate, 100 g | **Photographers' Formulary** | [stores.photoformulary.com/ammonium-dichromate](https://stores.photoformulary.com/ammonium-dichromate-class-5-1-bichromate-ground-ups-only-choose-ups-ground-at-checkout/) | 100 g | 5 | ~$12 | ~$60 |
-| Unbleached muslin, 60" wide | **Fabric Direct** | [fabricdirect.com — 150-yd roll](https://www.fabricdirect.com/shop/craft-fabric/broadcloth-and-muslin-fabric/essence-60-medium-weight-muslin-fabric-unbleached-150-yard-roll/) | 150-yd roll | 9 | ~$100 | ~$900 |
+| Unbleached muslin, 60" wide | **Fabric Direct** | [fabricdirect.com — 150-yd roll](https://www.fabricdirect.com/shop/craft-fabric/broadcloth-and-muslin-fabric/essence-60-medium-weight-muslin-fabric-unbleached-150-yard-roll/) | 150-yd roll | 3 | ~$100 | ~$300 |
 
-**Process total: ~$1,887 chemistry + substrate (~$887 chemistry, ~$900 muslin)**
+**Process total: ~$1,187 chemistry + substrate (~$887 chemistry, ~$300 muslin)** *(muslin corrected — see Shared Item: Substrate Fabric)*
 
 *Note: No fixer required. Development in plain cold water. No darkroom required for processing.*
 

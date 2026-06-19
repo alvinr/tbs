@@ -14,8 +14,8 @@
 | Category | Low | Mid | High |
 |----------|-----|-----|------|
 | **1. Container purchase & delivery** | $2,300 | $3,300 | $4,300 |
-| **2. Interior conversion** | $970 | $1,140 | $1,310 |
-| **3. Optics — pinhole plate** | $80 | $150 | $280 |
+| **2. Interior conversion** | $950 | $1,138 | $1,350 |
+| **3. Optics — pinhole plate** | $95 | $165 | $240 |
 | **4. Film plane mechanism (4-corner Option A, incl. wall-seat saddles + cross-slides)** | $3,100 | $3,650 | $4,200 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $4,063 | $5,085 | $6,104 |
 | **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · pump switches)** | $2,025 | $2,265 | $2,575 |
@@ -26,7 +26,7 @@
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,210 | $1,650 | $2,980 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$18,979** | **$24,396** | **$31,966** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$18,974** | **$24,409** | **$31,966** |
 
 *Line 7 (cyanotype printmaking) is now re-summed into the TOTAL on the **Mike Ware AmFe** chemistry + corrected ~$300 substrate: **Low = Lean ⅓-Ware ($1,210), Mid = Standard ½-Ware ($1,650), High = Rich full-Ware ($2,980)** — matching §7.1 and the master shopping list §9. The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md).*
 

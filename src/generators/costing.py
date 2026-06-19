@@ -193,6 +193,26 @@ SWINGPIVOT = [
 ]
 
 
+# §2 Interior conversion — the detail "Section total" category breakdown is correct ($950/$1,138/
+# $1,350); the SCENARIO row ($970/$1,140/$1,310) was the drifted one.
+INTERIOR = [
+    LineItem("Light-sealing materials", 150, 178, 210),
+    LineItem("Interior paint", 100, 130, 160),
+    LineItem("Image-plane flat backing (Dibond ACM)", 490, 550, 620),
+    LineItem("Ventilation (inline fans + light-trap baffles)", 80, 100, 130),
+    LineItem("Door & access upgrades", 50, 70, 100),
+    LineItem("Misc. conversion hardware", 80, 110, 130),
+]
+
+# §3 Optics — pinhole plate (§3.1; the optional lens §3.2 is NOT in the base total). Detail
+# ($95/$165/$240) is correct; the scenario row ($80/$150/$280) was drifted.
+OPTICS = [
+    LineItem("Custom laser-drilled pinhole, SS-302/304 shim, 3×3", 50, 100, 150, "Lenox Laser"),
+    LineItem("Steel backing plate 6×6×⅛, welded frame", 20, 30, 40),
+    LineItem("Shutter plate (⅛ steel, 10×8) + slide channel", 25, 35, 50),
+]
+
+
 def emit_section_table(items: list[LineItem], total_label: str) -> str:
     """Generate a Low/Mid/High line-item table with a COMPUTED total row."""
     rows = ["| Item | Low | Mid | High | Notes |", "|------|-----|-----|------|-------|"]
@@ -223,8 +243,8 @@ def _printmaking_section() -> Section:
 
 SECTIONS = [
     Section("1",  "Container purchase & delivery",              *total(CONTAINER)),  # COMPUTED
-    Section("2",  "Interior conversion",                         970, 1140, 1310),
-    Section("3",  "Optics — pinhole plate",                       80,  150,  280),
+    Section("2",  "Interior conversion",                         *total(INTERIOR)),  # COMPUTED
+    Section("3",  "Optics — pinhole plate",                       *total(OPTICS)),    # COMPUTED
     Section("4",  "Film plane mechanism (4-corner Option A)",   3100, 3650, 4200),
     Section("5",  "Processing water system",                    *total(WATER)),  # COMPUTED from line items
     Section("5a", "Power & electrical system",                  2025, 2265, 2575),
@@ -259,12 +279,14 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 909,  "total": 1210, "per_print": 24},  # 909 not 910: consistent ferri rounding ($104, not the doc's hand-rounded $105)
     "standard": {"chem": 1353, "total": 1650, "per_print": 33},
     "rich":     {"chem": 2681, "total": 2980, "per_print": 60},
-    "grand_total": (18979, 24396, 31966),  # + container Mid $150 (scenario said $3,150; items give $3,300)
+    "grand_total": (18974, 24409, 31966),  # + §2/§3 scenario rows reconciled to their (correct) detail
     "walkway": (1826, 2214, 2607),
     "water": (4063, 5085, 6104),
     "container": (2300, 3300, 4300),
     "lightlock": (1465, 1802, 2160),
     "swingpivot": (650, 770, 910),
+    "interior": (950, 1138, 1350),
+    "optics": (95, 165, 240),
 }
 
 
@@ -284,7 +306,8 @@ def check() -> list[str]:
         errs.append(f"walkway {total(WALKWAY)} != {EXPECTED['walkway']}")
     if total(WATER) != EXPECTED["water"]:
         errs.append(f"water {total(WATER)} != {EXPECTED['water']}")
-    for key, items in (("container", CONTAINER), ("lightlock", LIGHTLOCK), ("swingpivot", SWINGPIVOT)):
+    for key, items in (("container", CONTAINER), ("lightlock", LIGHTLOCK), ("swingpivot", SWINGPIVOT),
+                       ("interior", INTERIOR), ("optics", OPTICS)):
         if total(items) != EXPECTED[key]:
             errs.append(f"{key} {total(items)} != {EXPECTED[key]}")
     if grand_total() != EXPECTED["grand_total"]:

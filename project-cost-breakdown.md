@@ -28,6 +28,8 @@
 | **9. Licences & permits** | $220 | $790 | $1,620 |
 | **TOTAL (excl. own transport, CDL, lens)** | **$20,324** | **$25,505** | **$32,263** |
 
+*Line 7 (cyanotype printmaking) is **provisional**: the sensitizer chemistry is now a range pending [Sensitizer Trials](sensitizer-trials.md) (corrected to Ware-3:1 + two coats). The values above assume the **Standard ½-Ware** tier (§7.1 ~$2,455) — a Lean or Rich trial outcome shifts this line, and the totals, by up to ~4.6× on the chemistry portion.*
+
 *Optional additions that may apply — see individual sections:*
 
 | Optional item | Low | Mid | High |
@@ -340,30 +342,41 @@ Cyanotype is the recommended starting process: no silver, no DEA registration, n
 
 ### 7.1 Chemistry and substrate (50 prints)
 
-| Item | Qty needed | Source | Total† |
-|------|-----------|--------|--------|
-| Ferric ammonium citrate (green), 1 lb | 27 units (12.2 kg) | Photographers' Formulary | ~$810 |
-| Potassium ferricyanide, 1 kg | 5 units (5 kg) | Bostick & Sullivan ($24.29/kg) | ~$121 |
-| Unbleached cotton muslin, 60" wide (150-yd rolls) | 11 rolls | Fabric Direct | ~$1,100 |
-| **Cyanotype total — 50 prints** | | | **~$2,031** |
+> **⚠ Chemistry is now a RANGE — pending [Sensitizer Trials](sensitizer-trials.md).** Corrected to the
+> **Mike Ware New Cyanotype** formula: ammonium iron(III) oxalate (**AmFe** — not the old ferric ammonium
+> citrate), **3:1 AmFe:ferricyanide ratio**, and **two wet-on-wet coats** over the 10.74 m² active plane.
+> Per-print AmFe is **260–780 g** by concentration tier (Lean ⅓-Ware / Standard ½-Ware / Rich full-Ware —
+> operating-manual §0.2), so the chemistry cost spans a wide band until a tier is trialled. **Standard
+> (½-Ware) is the working default.**
 
-*Note: development requires only plain cold water — no darkroom chemistry needed. The water system in Section 5 provides all wash water required.*
+| Item (50 prints) | Lean (⅓-Ware) | **Standard (½-Ware) — default** | Rich (full-Ware) | Source |
+|---|---|---|---|---|
+| Ammonium iron(III) oxalate (AmFe) | 13 kg / ~$780 | **19.5 kg / ~$1,170** | 39 kg / ~$2,340 | Bostick & Sullivan (~$60/kg) |
+| Potassium ferricyanide (3:1 ratio) | 4.3 kg / ~$105 | **6.5 kg / ~$158** | 13 kg / ~$316 | Bostick & Sullivan ($24.29/kg) |
+| Ammonium dichromate (contrast, 0.1–0.4%) | ~$25 | **~$25** | ~$25 | Photographers' Formulary |
+| Unbleached cotton muslin, 60″ (150-yd rolls) | ~$1,100 | **~$1,100** | ~$1,100 | Fabric Direct |
+| **Cyanotype total — 50 prints** | **~$2,010** | **~$2,455** | **~$3,780** | |
 
-### 7.2 Per-print cost (cyanotype, 50-print run)
+*Note: development requires only plain cold water — no darkroom chemistry. The §5 water system provides all wash water. (Per-print substrate cost in §7.2 uses a different muslin lay than this row's bulk-roll figure — a pre-existing discrepancy, separate from this chemistry update.)*
 
-| Component | Cost per print |
+### 7.2 Per-print cost (cyanotype — Standard ½-Ware tier; range locked by trial)
+
+| Component | Cost per print (Standard) |
 |-----------|---------------|
-| Ferric ammonium citrate | ~$18 |
-| Potassium ferricyanide | ~$3 |
+| Ammonium iron(III) oxalate (AmFe, Part A) | ~$23 |
+| Potassium ferricyanide (Part B) | ~$3 |
+| Ammonium dichromate (contrast) | ~$0.50 |
 | Muslin substrate (~116 sq ft @ $1.20/yd, 5-strip layout) | ~$43 |
 | Water & consumables (6-mil liner, gloves) | ~$3 |
-| **Total per print** | **~$67** |
+| **Total per print (Standard)** | **~$73** |
+
+*Across tiers, chemistry alone moves the per-print total to ~**$64 (Lean) – ~$100 (Rich)**; the [Sensitizer Trials](sensitizer-trials.md) lock the tier.*
 
 ### 7.3 Alternative process cost comparison
 
 | Process | 50-print total† | Per print | Key constraint |
 |---------|----------------|-----------|----------------|
-| **Cyanotype** | **~$3,350** | **~$67** | None — easiest |
+| **Cyanotype** | **~$2,010–3,780** (Std ~$2,455)‡ | **~$64–100** (Std ~$73)‡ | None — easiest |
 | Gum bichromate | ~$5,150 | ~$103 | Hazmat shipping (dichromate) |
 | Van Dyke Brown | ~$11,000 | ~$220 | DEA form; AgNO₃ price volatility |
 | Ilford RC paper | ~$20,500 | ~$410 | Paper rolls very expensive at this size |
@@ -371,6 +384,8 @@ Cyanotype is the recommended starting process: no silver, no DEA registration, n
 | Salt print | ~$26,900 | ~$538 | 3× more silver than Van Dyke — not recommended |
 
 *Silver nitrate is the cost driver for Van Dyke, salt print, and Liquid Light. Cyanotype and gum bichromate are the only processes under $5,000 for a 50-print run.*
+
+*‡ Cyanotype chemistry is now a **range** pending [Sensitizer Trials](sensitizer-trials.md) — the corrected Ware-3:1 / two-coat figures swing the per-print AmFe (and the 50-print order/cost) by up to ~4.6×. The Standard (½-Ware) tier is the working default; see §7.1.*
 
 ---
 

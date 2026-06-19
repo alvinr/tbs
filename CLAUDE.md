@@ -140,8 +140,8 @@ ripple into both.
 | Rail right X | 4649mm | Right rail / film plane right edge |
 | Rail span | 4499mm | RAIL_X_R − RAIL_X_L |
 | Board tilt 5° → image shift | 207mm | 2362 × tan(5°) |
-| Film plane max tilt | ±42° | 4-corner mechanism hard stop |
-| Film plane max swing | ±25.7° | arctan(2162/4499) — wider rail span vs same Y travel |
+| Film plane max tilt | ±40° | Option A rigid-plane, single-axis (`MAX_TILT_DEG`, cross-slide-Z limit) |
+| Film plane max swing | ±28° | Option A rigid-plane, single-axis (`MAX_SWING_DEG`, rail-depth limit ~28.7°) |
 | Tilt-swing board max | ±5.3° | Screw shoulder hard stop |
 
 ---

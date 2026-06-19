@@ -248,7 +248,7 @@ The demountable brace cage is retired. Each of the 8 rail ends instead anchors t
 
 **Source document:** `water-system-report.md`
 
-Self-contained three-circuit water system for remote/off-grid cyanotype processing. Provides ~10 full-size prints (~116 sq ft each) between water resupply runs, with recycling.
+Self-contained three-circuit water system for remote/off-grid cyanotype processing. Provides ~13 full-size prints (~116 sq ft each) between water resupply runs, with Brown wash-2 recycling (~8–10 on fresh Blue alone).
 
 | Category | Low† | High† |
 |----------|------|-------|
@@ -492,7 +492,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Item | Cost |
 |------|------|
 | Transport (short haul, commercial hire) | $300–$800 |
-| Water resupply (550 gal / 10 prints ≈ $25–$50) | $25–$50 |
+| Water resupply (~420 gal / 1,600L Blue ≈ 13 prints) | $25–$50 |
 | Location permit | $0–$500 |
 | **Per-deployment overhead** | **~$325–$1,350** |
 

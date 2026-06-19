@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-The photosensitive muslin must be held taut against the [film plane frame](film-plane-mechanism-report.md) throughout exposures lasting 30–45 minutes, at any tilt angle up to ±42° and any swing angle up to ±25.7°. Loading and unloading happens under mixed safelight conditions, so the clamp mechanism must provide clear tactile feedback without visual confirmation.
+The photosensitive muslin must be held taut against the [film plane frame](film-plane-mechanism-report.md) throughout exposures lasting 30–45 minutes, at any tilt angle up to ±40° and any swing angle up to ±28°. Loading and unloading happens under mixed safelight conditions, so the clamp mechanism must provide clear tactile feedback without visual confirmation.
 
 This report describes the **cam-lever spring clamp system** that secures the muslin to the aluminum angle perimeter frame.
 
@@ -65,7 +65,7 @@ All items ship within the United States. Local Southern California pickup noted 
 |----------|------|
 | Before each session | Inspect muslin clamp engagement — all 92 clamps snapped closed |
 | Monthly | Check neoprene jaw pads for compression set — replace if grip force is noticeably reduced |
-| Every 6 months | Inspect torsion springs for fatigue — clamps should snap firmly to closed position under gravity at 42° tilt |
+| Every 6 months | Inspect torsion springs for fatigue — clamps should snap firmly to closed position under gravity at 40° tilt |
 | Annually | Replace neoprene jaw pads (preventive — $15 per roll covers all 92 clamps) |
 
 ---

@@ -22,14 +22,14 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 7a. Panel swing pivot (Ø89 pivot post + bearings + cage + wall stays + rail saddles) | $1,232 | $1,232 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,070 | $1,650 |
 | 8. Cooling & ventilation | $370 | $450 |
-| 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
+| 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,210 | $2,980 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$19,436** | **~$26,955** |
+| **TOTAL (base build + 50-print run)** | **~$18,146** | **~$26,735** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
-*Line 9 (printmaking chemistry) is **provisional** and not yet re-summed into the TOTAL: the muslin substrate was corrected down ~$800 (1,650 yd → ~445 yd; §9 now ~$1,231–$1,471 on the legacy FAC recipe), and the sensitizer chemistry is moving to the Ware-AmFe range (cost breakdown §7 / [Sensitizer Trials](sensitizer-trials.md)). Both land in §9 before the headline and TOTAL are re-summed.*
+*Line 9 (printmaking chemistry) is now the **Mike Ware AmFe** recipe with the corrected ~$300 substrate, re-summed into the TOTAL: **Low = Lean ⅓-Ware (~$1,210), High = Rich full-Ware (~$2,980)**, working default Standard ½-Ware (~$1,650). The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md); the TOTAL spans the Lean–Rich range, so it shifts within ±~$1,330 of the §9 line once a tier is locked.*
 
 ---
 
@@ -487,15 +487,16 @@ top/bottom weld + anchor connection** (fabricator/PE review) — not the member 
 
 **Recommended process.** No silver, no DEA registration, no hazmat shipping, development in plain cold water.
 
-### Chemistry
-| Item | Per print | × 50 prints | Supplier | Unit | Units | Unit price | Total |
+### Chemistry — Mike Ware New Cyanotype (3:1 AmFe : ferricyanide + dichromate contrast)
+| Item | Per print (Standard) | × 50 prints | Supplier | Unit | Units | Unit price | Total |
 |------|-----------|-------------|---------|------|-------|-----------|-------|
-| [Ferric ammonium citrate (FAC), green grade, 1 lb](https://stores.photoformulary.com) | 224g | 11.2 kg | [Photographers' Formulary](https://stores.photoformulary.com) | 454g (1 lb) | 27 | ~$30† | ~$810 |
-| [Potassium ferricyanide, 1 kg](https://bostick-sullivan.com) | 91g | 4.55 kg | [Bostick & Sullivan](https://bostick-sullivan.com) | 1,000g | 5 | $24.29† | $121 |
-| Distilled water | ~2 L | ~100 L | Tap water + DI filter adequate | — | — | — | ~$0 |
+| [Ammonium iron(III) oxalate (AmFe)](https://www.bostick-sullivan.com/product/ammonium-ferric-oxalate/) | 390g | 19.5 kg | [Bostick & Sullivan](https://www.bostick-sullivan.com/product/ammonium-ferric-oxalate/) | 500g | 39 | ~$30† | ~$1,170 |
+| [Potassium ferricyanide (3:1 ratio)](https://www.bostick-sullivan.com/product/potassium-ferricyanide-250gm/) | 130g | 6.5 kg | [Bostick & Sullivan](https://www.bostick-sullivan.com/product/potassium-ferricyanide-250gm/) | 1,000g | 7 | $24.29† | ~$158 |
+| [Ammonium dichromate (contrast, 0.1–0.4%)](https://stores.photoformulary.com/ammonium-dichromate-class-5-1-bichromate-ground-ups-only-choose-ups-ground-at-checkout/) | ~1–4g | ~0.2 kg | [Photographers' Formulary](https://stores.photoformulary.com) | 100g | 3 | ~$12 | ~$25 |
+| Distilled water | ~2.6 L | ~130 L | Tap water + DI filter adequate | — | — | — | ~$0 |
 
-> **FAC note:** Order green grade only (Fe³⁺). Brown grade (Fe²⁺) is not light-sensitive for cyanotype. Photographers' Formulary and Bostick & Sullivan both specify green grade.
-**Chemistry subtotal: ~$931**
+> **Ware-AmFe note:** Mike Ware New Cyanotype uses **ammonium iron(III) oxalate (AmFe), not the old ferric ammonium citrate** — 3:1 AmFe:ferricyanide by weight + ammonium dichromate for contrast, applied as **two wet-on-wet coats** over the 10.74 m² active plane. Quantities above are the **Standard ½-Ware** tier (the working default); the leanest/richest viable strength — and the final order — is set by the [Sensitizer Trials](sensitizer-trials.md), giving the tier range below. Matches [cost breakdown §7](project-cost-breakdown.md).
+**Chemistry subtotal (Standard): ~$1,353  ·  tier range ~$910 (Lean ⅓-Ware) – ~$2,681 (Rich full-Ware)**
 
 ### Substrate
 | Item | Qty | Supplier | Unit | Units | Unit price | Total |
@@ -507,7 +508,7 @@ top/bottom weld + anchor connection** (fabricator/PE review) — not the member 
 > **Muslin correction (2026-06-18):** the prior "1,650 yd / 11 rolls / $1,100" over-counted the fabric ~3.7× (a feet-as-yards error — see [chemistry-shopping-list.md](chemistry-shopping-list.md) Shared Item: Substrate Fabric). Real need is ~445 yd = 3 × 150-yd rolls ≈ **$300**.
 **Substrate subtotal: ~$300**
 
-**Section total: ~$1,231–$1,471** (per 50-print run, ~$25–29/print; chemistry shown is the legacy FAC figure — the Ware-AmFe range is in [chemistry-shopping-list.md](chemistry-shopping-list.md) / cost breakdown §7)
+**Section total: ~$1,650 (Standard ½-Ware default)**, range **~$1,210 (Lean) – ~$2,980 (Rich)** per 50-print run (chemistry + $300 substrate; ~$24–60/print) — tier pinned by the [Sensitizer Trials](sensitizer-trials.md). The summary table maps Low = Lean, High = Rich.
 
 ## 10. Printmaking Tools & Consumables
 *Source: `operating-manual.md`, `chemistry-shopping-list.md`*

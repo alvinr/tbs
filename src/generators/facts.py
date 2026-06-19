@@ -1,17 +1,12 @@
-"""facts.py — single source of truth for cross-referenced NUMBERS restated across many MD docs.
+"""facts.py — loads the facts.yml single-source registry (Phase 2 of drift-reduction-plan.md).
 
-Phase 2 of drift-reduction-plan.md. Realized as a Python module (not YAML) so the pre-commit
-linter stays DEPENDENCY-FREE — PyYAML isn't installed, and a dict registry serves the same
-single-source purpose. If we later want literal YAML, a tiny parser can read this shape.
+facts.yml is the editable source of truth. This module reads it with a TINY dependency-free
+YAML-subset parser (PyYAML isn't installed, and the pre-commit linter must stay dependency-free),
+resolves any `constant:` reference from tbs_constants (so the registry can never disagree with the
+code), and exposes FACTS = {name: {value, unit, owner, constant, aliases}} for lint.py.
 
-Each fact carries:
-  value     — the canonical value (read FROM a tbs_constants constant where one exists, so the
-              registry can never disagree with the code; else a literal with its derivation noted)
-  unit, owner — the unit and the one doc that owns/derives the fact
-  aliases   — SPECIFIC regexes for the shapes the number takes in prose; group(1) captures the
-              value. lint.py's facts-agreement check flags any doc whose captured value != `value`.
-
-Keep aliases tight (low false-positive). Add facts as we find more restated numbers.
+The parser handles exactly this file's shape: top-level fact keys, 2-space scalar fields
+(`key: value`), and an `aliases:` list of single-quoted `- 'regex'` items. Nothing fancier.
 """
 import os
 import sys
@@ -19,41 +14,70 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import tbs_constants as K  # noqa: E402
 
+YAML_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "facts.yml")
 
-FACTS = {
-    # The Option-A film-plane envelope — drifted across 6 docs this session (±42/±25.7/±28.3).
-    "film_plane_max_tilt": {
-        "value": K.MAX_TILT_DEG, "unit": "deg", "constant": "MAX_TILT_DEG",
-        "owner": "film-plane-mechanism-report.md",
-        "aliases": [
-            r"±(\d+(?:\.\d+)?)°\s*tilt,\s*±\d+(?:\.\d+)?°\s*swing",   # combined form (film-plane only)
-            r"[Ff]ilm plane max tilt\s*\|\s*±(\d+(?:\.\d+)?)°",       # CLAUDE.md constants table
-            r"tilt angle[s]?\s*up to\s*±(\d+(?:\.\d+)?)°",            # film-clamp report
-        ],
-    },
-    "film_plane_max_swing": {
-        "value": K.MAX_SWING_DEG, "unit": "deg", "constant": "MAX_SWING_DEG",
-        "owner": "film-plane-mechanism-report.md",
-        "aliases": [
-            r"±\d+(?:\.\d+)?°\s*tilt,\s*±(\d+(?:\.\d+)?)°\s*swing",
-            r"[Ff]ilm plane max swing\s*\|\s*±(\d+(?:\.\d+)?)°",
-            r"swing angle[s]?\s*up to\s*±(\d+(?:\.\d+)?)°",
-        ],
-    },
-    # Prints between resupply — drifted 10 vs 13 across README/summary/water/cost-breakdown.
-    # Aliases match the OPERATIONAL claim only (the "supports/Provides ~N prints" form). They
-    # deliberately do NOT match the water-report's "8–10 ... on fresh Blue alone" no-recycle
-    # baseline, nor "≈N prints per charge" (battery) — those are different, legitimate facts.
-    "prints_per_resupply": {
-        "value": 13, "unit": "prints", "constant": None,
-        "owner": "water-system-report.md",
-        "aliases": [
-            r"(?:supports|Provides) ~?(\d+)\s+full-size prints",
-            r"~?(\d+)\s+prints per resupply",
-        ],
-    },
-    # NOTE: camera focal length (2362mm), f/1088 and pinhole Ø2.17mm are intentionally NOT here —
-    # the lens-options / option-B / exposure-comparison docs legitimately discuss OTHER focal
-    # lengths and pinhole sizes, so a global "must always equal X" scan false-positives. Add such
-    # facts only with aliases specific enough to isolate the camera's own value.
-}
+
+def _unquote(s: str) -> str:
+    s = s.strip()
+    if len(s) >= 2 and s[0] == s[-1] and s[0] in "'\"":
+        s = s[1:-1]
+    return s.replace("''", "'")
+
+
+def _scalar(v: str):
+    v = _unquote(v)
+    try:
+        return int(v)
+    except ValueError:
+        try:
+            return float(v)
+        except ValueError:
+            return v
+
+
+def _load(path: str) -> dict:
+    out: dict = {}
+    cur = None
+    in_aliases = False
+    for raw in open(path, encoding="utf-8"):
+        line = raw.rstrip("\n")
+        if not line.strip() or line.lstrip().startswith("#"):
+            continue
+        indent = len(line) - len(line.lstrip())
+        s = line.strip()
+        if indent == 0 and s.endswith(":"):
+            cur = s[:-1]
+            out[cur] = {"aliases": []}
+            in_aliases = False
+        elif s == "aliases:":
+            in_aliases = True
+        elif in_aliases and s.startswith("- "):
+            out[cur]["aliases"].append(_unquote(s[2:]))
+        elif ":" in s:
+            k, v = s.split(":", 1)
+            out[cur][k.strip()] = _scalar(v)
+            in_aliases = False
+    return out
+
+
+def _resolve() -> dict:
+    facts = {}
+    for name, f in _load(YAML_PATH).items():
+        value = getattr(K, f["constant"]) if "constant" in f else f["value"]
+        facts[name] = {
+            "value": float(value),
+            "unit": f.get("unit"),
+            "owner": f.get("owner"),
+            "constant": f.get("constant"),
+            "aliases": f["aliases"],
+        }
+    return facts
+
+
+FACTS = _resolve()
+
+
+if __name__ == "__main__":   # quick dump to sanity-check the registry loads + resolves
+    for name, f in FACTS.items():
+        src = f"constant {f['constant']}" if f["constant"] else "literal"
+        print(f"{name} = {f['value']:g} {f['unit']}  ({src}; {len(f['aliases'])} aliases)")

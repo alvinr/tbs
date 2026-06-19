@@ -61,6 +61,12 @@ Cyanotype uses the **Mike Ware New Cyanotype formula** (1994) as the primary sen
 | Ammonium dichromate | 9 g | **450 g** | 500 g | Part B additive; contrast enhancer — handle with care |
 | Distilled / DI water | ~1.7 L | ~85 L | Tap water + DI filter adequate | Part A requires warm water (50–60°C) |
 
+> **⚠ Under revision (cyanotype) — see [Sensitizer Trials](sensitizer-trials.md).** These per-print
+> figures predate that review, which corrects (a) the coat count to **two wet-on-wet coats** (not one)
+> and (b) the ratio to **Ware 3:1** (AmFe:ferricyanide). At the corrected figures the per-print AmFe is
+> **~260–780 g** (concentration-tier dependent), so this **8.45 kg order makes ~11–32 prints, not 50** —
+> the order size and cost (~$887) will be re-set once a trial tier is locked. See [operating-manual §0.2](operating-manual.md).
+
 > **⚠ Ammonium dichromate** is a known carcinogen (Category 1A) and oxidizer. Quantities here are small (~10g per print, 1 kg for 50 prints). Wear nitrile gloves and mix in ventilated area. Store away from flammables. No hazmat shipping at this quantity (< 1 kg per shipment from Photographers' Formulary).
 
 ### Shopping list — Ware New Cyanotype (primary)

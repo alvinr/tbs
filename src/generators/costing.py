@@ -285,7 +285,8 @@ SECTIONS = [
     Section("4",  "Film plane mechanism (4-corner Option A)",   3100, 3650, 4200),
     Section("5",  "Processing water system",                    *total(WATER)),  # COMPUTED from line items
     Section("5a", "Power & electrical system",                  2025, 2265, 2575),
-    Section("5b", "Ventilation & cooling system",                770,  830,  920),
+    Section("5b", "Ventilation & cooling system",                total(VENTILATION)[0],
+            total(VENTILATION)[0] + 60, total(VENTILATION)[0] + 150),  # Low = BOM $824; +$60/+$150 band
     Section("6",  "Housed revolving-door light lock",           *total(LIGHTLOCK)),  # COMPUTED
     Section("6a", "Perimeter walkway",                          *total(WALKWAY)),  # COMPUTED from line items
     Section("6b", "Panel swing pivot",                           *total(SWINGPIVOT)),  # COMPUTED
@@ -316,7 +317,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 909,  "total": 1210, "per_print": 24},  # 909 not 910: consistent ferri rounding ($104, not the doc's hand-rounded $105)
     "standard": {"chem": 1353, "total": 1650, "per_print": 33},
     "rich":     {"chem": 2681, "total": 2980, "per_print": 60},
-    "grand_total": (18974, 24409, 31966),  # + §2/§3 scenario rows reconciled to their (correct) detail
+    "grand_total": (19028, 24463, 32020),  # + §5b band nudged so Low = its BOM ($824), whole band +$54
     "walkway": (1826, 2214, 2607),
     "water": (4063, 5085, 6104),
     "container": (2300, 3300, 4300),

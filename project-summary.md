@@ -46,14 +46,14 @@ Two independent movement systems work in series, stacking their effects non-line
 **Front board — tilt and swing (±5°)**
 The pinhole itself pivots on a spherical plain bearing, steering the image cone across the film plane. Every 5° of tilt shifts the projected image 207mm. Used for compositional placement — not correction, not distortion, but deliberate image steering.
 
-**Film plane — 4-corner independent actuation (±42° tilt, ±28.3° swing)**
+**Film plane — 4-corner independent actuation (±40° tilt, ±28° swing)**
 Four corners of the image plane move independently via handwheels, enabling view-camera-style geometric control at pinhole focal lengths. Scheimpflug-equivalent movements, compound twisted-plane projections, convergence manipulation — the full vocabulary of large-format photography, applied to a pinhole.
 
 **Combined:** the two systems interact non-linearly. Their compound optical projections — modeled and documented in the [distortion renders](tilt-swing-board-report.md) — produce images that no other camera type can make.
 
 Every specification traces to a peer-reviewed source or manufacturer datasheet. The optics are not approximated.
 
-**Off-grid capable:** a self-contained three-circuit water system supports ~10 full-size prints between resupply runs, with 40% water recycling. 12V DC operation. Deployable without power connection.
+**Off-grid capable:** a self-contained three-circuit water system supports ~13 full-size prints between resupply runs, with 40% water recycling. 12V DC operation. Deployable without power connection.
 
 ---
 

@@ -12,7 +12,7 @@ The camera operates in remote locations with no municipal water or drainage. Thi
 
 The camera operates in remote locations with no municipal water or drainage. This document specifies a self-contained three-circuit water system that:
 
-- Stores sufficient clean water for 8–10 full-size prints between resupply runs
+- Stores sufficient clean water for 8–10 full-size prints between resupply runs on fresh Blue alone (**~13 prints** once Brown wash-2 recycling is counted — see §below)
 - Recycles used wash water through a three-stage filter train, extending usable supply by approximately 40%
 - Contains all waste water in a closed, transportable IBC for proper off-site disposal
 - Runs entirely on 12V DC, compatible with a solar/battery off-grid power system

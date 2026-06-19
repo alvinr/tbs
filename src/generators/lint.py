@@ -119,10 +119,56 @@ def warn_arithmetic() -> tuple[bool, list[str]]:
     return (not issues), (issues or ["all declared TOTAL rows reconcile with their columns"])
 
 
+# ── WARNING: missing cascade (constant changed but outputs not regenerated) ──
+# The 2D<->3D drift class: a tbs_constants value changes but the generators/models that read it
+# aren't re-run, so the diagrams/.rb/.skp go stale. Fires only when constant-value lines are
+# STAGED with no regenerated outputs also staged. Consumers are auto-derived by grep (no
+# hand-maintained dependency table needed — Phase 4 can formalise it later).
+_CONST = os.path.join("src", "generators", "tbs_constants.py")
+
+
+def _git(args: list[str]) -> str:
+    return subprocess.run(["git", *args], capture_output=True, text=True, cwd=ROOT).stdout
+
+
+def _grep_consumers(name: str) -> list[str]:
+    out = subprocess.run(["grep", "-rlw", name, "src"], capture_output=True, text=True, cwd=ROOT).stdout
+    return sorted(f for f in out.split()
+                  if f.endswith(".py") and "tbs_constants" not in f and "__pycache__" not in f)
+
+
+def warn_missing_cascade() -> tuple[bool, list[str]]:
+    staged = _git(["diff", "--cached", "--name-only"]).split()
+    if _CONST not in staged:
+        return True, ["no tbs_constants change staged"]
+    diff = _git(["diff", "--cached", "-U0", "--", _CONST])
+    changed = set()
+    for ln in diff.splitlines():
+        if ln[:1] in "+-" and ln[:3] not in ("+++", "---"):
+            m = re.match(r"[+-]\s*([A-Z_][A-Z0-9_]*)\s*(?::[^=]+)?=\s*\S", ln)
+            if m:
+                changed.add(m.group(1))
+    if not changed:
+        return True, ["tbs_constants staged, but no constant-value lines changed"]
+    outputs_staged = [f for f in staged
+                      if f.startswith("diagrams/") or f.endswith((".rb", ".skp", ".png", ".svg"))]
+    issues = []
+    if not outputs_staged:
+        issues.append(f"{len(changed)} constant(s) changed ({', '.join(sorted(changed))}) but NO "
+                      f"regenerated outputs (diagrams/*.png, *.rb, *.skp) are staged — re-run the "
+                      f"affected generators/models and stage their output?")
+        for c in sorted(changed):
+            cons = _grep_consumers(c)
+            if cons:
+                issues.append(f"    {c} -> {', '.join(cons)}")
+    return (not issues), (issues or ["constants change has regenerated outputs staged"])
+
+
 GATES = [("costing reconciliation", gate_costing)]
 WARNINGS = [
     ("facts-registry agreement", warn_facts),
     ("table arithmetic (TOTAL = sum of column)", warn_arithmetic),
+    ("missing cascade (constant changed, outputs not regenerated)", warn_missing_cascade),
 ]
 
 

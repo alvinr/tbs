@@ -1,0 +1,38 @@
+# facts.yml — single source of truth for cross-referenced NUMBERS restated across the MD docs.
+# Phase 2 of drift-reduction-plan.md. This is the editable registry; facts.py loads it with a
+# tiny dependency-free YAML reader (PyYAML isn't installed, and the pre-commit hook must stay
+# dependency-free). Each fact:
+#   value     — a literal canonical value, OR
+#   constant  — a tbs_constants name to read it FROM (so the registry can't disagree with code)
+#   unit, owner — the unit and the one doc that owns/derives the fact
+#   aliases   — tight regexes (single-quoted); group(1) captures the value in prose. lint.py
+#               flags any doc whose captured value != the canonical value.
+# Keep aliases specific (low false-positive). Add a fact when a number gets restated in many docs.
+
+film_plane_max_tilt:
+  constant: MAX_TILT_DEG
+  unit: deg
+  owner: film-plane-mechanism-report.md
+  aliases:
+    - '±(\d+(?:\.\d+)?)°\s*tilt,\s*±\d+(?:\.\d+)?°\s*swing'
+    - '[Ff]ilm plane max tilt\s*\|\s*±(\d+(?:\.\d+)?)°'
+    - 'tilt angle[s]?\s*up to\s*±(\d+(?:\.\d+)?)°'
+
+film_plane_max_swing:
+  constant: MAX_SWING_DEG
+  unit: deg
+  owner: film-plane-mechanism-report.md
+  aliases:
+    - '±\d+(?:\.\d+)?°\s*tilt,\s*±(\d+(?:\.\d+)?)°\s*swing'
+    - '[Ff]ilm plane max swing\s*\|\s*±(\d+(?:\.\d+)?)°'
+    - 'swing angle[s]?\s*up to\s*±(\d+(?:\.\d+)?)°'
+
+# Prints between resupply — drifted 10 vs 13. Aliases match the OPERATIONAL claim only, not the
+# water-report's "8-10 ... on fresh Blue alone" baseline nor "per charge" (battery).
+prints_per_resupply:
+  value: 13
+  unit: prints
+  owner: water-system-report.md
+  aliases:
+    - '(?:supports|Provides) ~?(\d+)\s+full-size prints'
+    - '~?(\d+)\s+prints per resupply'

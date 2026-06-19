@@ -21,12 +21,12 @@
 | **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · pump switches)** | $2,025 | $2,265 | $2,575 |
 | **5b. Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)** | $770 | $830 | $920 |
 | **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $1,465 | $1,802 | $2,160 |
-| **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $1,801 | $2,186 | $2,572 |
+| **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $1,826 | $2,214 | $2,607 |
 | **6b. Panel swing pivot (Ø89 pivot post + bearings + cage + wall stays + rail saddles)** | $650 | $770 | $910 |
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,210 | $1,650 | $2,980 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$19,034** | **$24,313** | **$32,043** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$19,059** | **$24,341** | **$32,078** |
 
 *Line 7 (cyanotype printmaking) is now re-summed into the TOTAL on the **Mike Ware AmFe** chemistry + corrected ~$300 substrate: **Low = Lean ⅓-Ware ($1,210), Mid = Standard ½-Ware ($1,650), High = Rich full-Ware ($2,980)** — matching §7.1 and the master shopping list §9. The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md).*
 
@@ -313,7 +313,7 @@ Four removable grated walkway sections around all 4 sides of the processing tray
 | Left floor-leg cantilever brackets (×5) | $55 | $75 | $95 | 50×50×3 SHS posts (~115mm) + 40×40×3 SHS arms (2 std to X470, 3 extended to X770) + 128×60×8 foot plates; bolted to bare floor outside the tray, arms 15mm over the spray bar |
 | M10 wedge floor anchors (×20) | $25 | $35 | $45 | 4 per foot plate; sealed penetrations into the container floor |
 | Fabrication (brackets, cantilever frame, install) | $280 | $360 | $440 | 14 std + 4 widened wall brackets, fabricate + fit the right walkway cantilever frame (clamp arms to IBC uprights, bolt cleats + combined plates), fit 5 left floor-leg cantilever brackets + drill/seal floor anchors, install |
-| **Perimeter walkway total** | **$1,801** | **$2,186** | **$2,572** | GRP grating swap: +$720/+$799/+$880 vs galvanized steel |
+| **Perimeter walkway total** | **$1,826** | **$2,214** | **$2,607** | GRP grating swap: +$720/+$799/+$880 vs galvanized steel |
 
 ---
 

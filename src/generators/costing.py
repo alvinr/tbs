@@ -113,6 +113,51 @@ def printmaking_scenario() -> tuple[int, int, int]:
             _r(by_key("rich")["section_total"], 10))
 
 
+# ── Per-section line items (migrating in section by section; total is COMPUTED) ──
+@dataclass(frozen=True)
+class LineItem:
+    label: str
+    low: int
+    mid: int
+    high: int
+    note: str = ""
+
+
+def total(items: list[LineItem]) -> tuple[int, int, int]:
+    return (sum(i.low for i in items), sum(i.mid for i in items), sum(i.high for i in items))
+
+
+# §6a Perimeter walkway — line items own the truth; the section total sums them (was hand-typed
+# at $1,801/$2,186/$2,572, $25–35 low). Source: project-cost-breakdown.md §6a / generate_walkway_diagram.
+WALKWAY = [
+    LineItem("Molded GRP (fiberglass) grating, 15mm (vinyl-ester, grit top)", 970, 1115, 1260, "~4.5 m² (incl. 1474×500mm near-walkway bump-out); McNichols / Grating Pacific"),
+    LineItem("Standard wall brackets, 8mm steel plate (×14)", 112, 143, 175, "Near/far walls; 150mm vert × 300mm arm"),
+    LineItem("Widened wall brackets, 10mm steel plate (×4)", 72, 90, 112, "EP/battery/slit zone; 200mm vert × 500mm arm"),
+    LineItem("Reinforcing plates, std 100×180×6mm (×14) + wide 120×220×6mm (×4)", 47, 60, 73, "Welded to wall exterior behind each bracket"),
+    LineItem("M12×60mm hex bolts + nuts + washers (×58)", 57, 72, 87, "3 per std bracket (42) + 4 per widened (16)"),
+    LineItem("Transition bearing plates, 40×500×5mm flat bar (×2)", 5, 8, 10, "Welded to arm top at width transitions"),
+    LineItem("Right walkway cantilever frame, 40×40×3mm SHS (8m)", 28, 34, 40, "rev12: closed rectangle + 2× 405mm center arms"),
+    LineItem("Right walkway wall cleats, 8mm steel (×2)", 20, 28, 35, "Left corners — through-bolted to the wall"),
+    LineItem("Combined corner plates, 10mm steel (×2)", 50, 65, 80, "Right corners — shared with the bottom film rail"),
+    LineItem("M12 through-bolts + nuts/washers (~24)", 30, 40, 50, "Wall cleats + combined plates + 2 center-arm U-clamps"),
+    LineItem("316 SS hold-down clips (FRP M/G-clip, ×20)", 25, 32, 40, "Near/far/right walkway GRP grating retention"),
+    LineItem("Drum-exit punch-out — extra GRP grating (~0.23 m²)", 50, 57, 65, "600mm-deep landing at the light-lock exit"),
+    LineItem("Left floor-leg cantilever brackets (×5)", 55, 75, 95, "50×50×3 SHS posts + 40×40×3 arms + foot plates"),
+    LineItem("M10 wedge floor anchors (×20)", 25, 35, 45, "4 per foot plate; sealed floor penetrations"),
+    LineItem("Fabrication (brackets, cantilever frame, install)", 280, 360, 440, "14 std + 4 widened brackets, right cantilever frame, 5 left floor-leg brackets, install"),
+]
+
+
+def emit_section_table(items: list[LineItem], total_label: str) -> str:
+    """Generate a Low/Mid/High line-item table with a COMPUTED total row."""
+    rows = ["| Item | Low | Mid | High | Notes |", "|------|-----|-----|------|-------|"]
+    for i in items:
+        rows.append(f"| {i.label} | ${i.low:,} | ${i.mid:,} | ${i.high:,} | {i.note} |")
+    lo, mid, hi = total(items)
+    rows.append(f"| **{total_label}** | **${lo:,}** | **${mid:,}** | **${hi:,}** | |")
+    return "\n".join(rows)
+
+
 # ── Whole-build scenario table (project-cost-breakdown.md "Executive Cost Summary") ──
 # Each section's (Low, Mid, High). §7 Printmaking is COMPUTED from the tiers above; the others
 # are section totals owned here as data (sub-line-item ownership migrates in section by section).
@@ -140,7 +185,7 @@ SECTIONS = [
     Section("5a", "Power & electrical system",                  2025, 2265, 2575),
     Section("5b", "Ventilation & cooling system",                770,  830,  920),
     Section("6",  "Housed revolving-door light lock",           1465, 1802, 2160),
-    Section("6a", "Perimeter walkway",                          1801, 2186, 2572),
+    Section("6a", "Perimeter walkway",                          *total(WALKWAY)),  # COMPUTED from line items
     Section("6b", "Panel swing pivot",                           650,  770,  910),
     _printmaking_section(),
     Section("8",  "Transportation (per deployment)",             300,  750, 2000),
@@ -169,7 +214,8 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 909,  "total": 1210, "per_print": 24},  # 909 not 910: consistent ferri rounding ($104, not the doc's hand-rounded $105)
     "standard": {"chem": 1353, "total": 1650, "per_print": 33},
     "rich":     {"chem": 2681, "total": 2980, "per_print": 60},
-    "grand_total": (19034, 24313, 32043),
+    "grand_total": (19059, 24341, 32078),  # +25/28/35 vs the old hand-typed walkway total
+    "walkway": (1826, 2214, 2607),
 }
 
 
@@ -185,6 +231,8 @@ def check() -> list[str]:
             errs.append(f"{t.key} total {_r(c['section_total'],10)} != {e['total']}")
         if _r(c["per_print"], 1) != e["per_print"]:
             errs.append(f"{t.key} per-print {_r(c['per_print'],1)} != {e['per_print']}")
+    if total(WALKWAY) != EXPECTED["walkway"]:
+        errs.append(f"walkway {total(WALKWAY)} != {EXPECTED['walkway']}")
     if grand_total() != EXPECTED["grand_total"]:
         errs.append(f"grand total {grand_total()} != {EXPECTED['grand_total']}")
     return errs
@@ -202,6 +250,8 @@ def main(argv: list[str]) -> int:
         return 0
     print("# Printmaking — cyanotype §7.1 (generated by costing.py)\n")
     print(emit_cost_breakdown_7_1())
+    print("\n# §6a Perimeter walkway — line items (generated by costing.py)\n")
+    print(emit_section_table(WALKWAY, "Perimeter walkway total"))
     print("\n# Executive Cost Summary — whole build (generated by costing.py)\n")
     print(emit_scenario_table())
     print("\nSelf-check:", "✓ passed" if not errs else "✗ FAILED -> " + "; ".join(errs))

@@ -85,6 +85,7 @@ nav:
   - Shopping:
     - "Master Shopping List": master-shopping-list.md
     - "Chem Shopping List": chemistry-shopping-list.md
+    - "Sensitizer Trials": sensitizer-trials.md
   - "PoC":
     - "TBS-002 Design": mini-tbs/mini-tbs-poc.md
     - "TBS-002 Shopping List": mini-tbs/mini-tbs-shopping-list.md

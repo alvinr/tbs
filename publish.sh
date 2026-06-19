@@ -51,6 +51,7 @@ MD_FILES=(
     "lens-vs-pinhole-exposure.md"
     "photosensitive-plane-options.md"
     "chemistry-shopping-list.md"
+    "sensitizer-trials.md"
     "container-transport-options.md"
     "water-system-report.md"
     "film-plane-mechanism-report.md"

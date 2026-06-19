@@ -58,6 +58,7 @@ MD_FILES = [
     ("tilt-swing-board-analysis.md",     (".",           "Tilt & Swing Distortion Renders")),
     ("pinhole-camera-construction.md",   (".",           "Construction Guide")),
     ("chemistry-shopping-list.md",       (".",           "Chem Shopping List")),
+    ("sensitizer-trials.md",             (".",           "Sensitizer Trials")),
     ("operating-manual.md",             (".",           "Operating Manual")),
     ("electrical-report.md",            (".",           "Electrical & Systems")),
     ("electrical-safety-report.md",     (".",           "Electrical Safety")),
@@ -341,6 +342,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Cost Breakdown](project-cost-breakdown.md) | Full itemized build cost — three scenarios, all sources cited |
 | [Cost Analysis](cost-analysis-report.md) | Where the cost sits by system, capital vs consumable, and the ranked savings levers |
 | [Chem Shopping List](chemistry-shopping-list.md) | 50-print quantities with supplier URLs and confirmed prices |
+| [Sensitizer Trials](sensitizer-trials.md) | OPEN cyanotype coating-solution trials — coverage, concentration, dichromate; impacts the chemistry order/print count |
 | [Transportation](container-transport-options.md) | Commercial hire vs. self-haul analysis |
 | [Operating Manual](operating-manual.md) | Single-operator step-by-step workflow — coating, exposure, development, cleanup |
 | [Electrical & Systems](electrical-report.md) | Power architecture, light trap vestibule, lighting, wiring diagrams |

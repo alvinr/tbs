@@ -29,6 +29,8 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
+*Line 9 (printmaking chemistry) is **provisional** and not yet re-summed into the TOTAL: the muslin substrate was corrected down ~$800 (1,650 yd → ~445 yd; §9 now ~$1,231–$1,471 on the legacy FAC recipe), and the sensitizer chemistry is moving to the Ware-AmFe range (cost breakdown §7 / [Sensitizer Trials](sensitizer-trials.md)). Both land in §9 before the headline and TOTAL are re-summed.*
+
 ---
 
 ## 1. Container & Delivery
@@ -498,13 +500,14 @@ top/bottom weld + anchor connection** (fabricator/PE review) — not the member 
 ### Substrate
 | Item | Qty | Supplier | Unit | Units | Unit price | Total |
 |------|-----|---------|------|-------|-----------|-------|
-| [Unbleached cotton muslin, 60" wide](https://www.fabricdirect.com) | 1,650 linear yards | [Fabric Direct](https://www.fabricdirect.com) | 150-yd roll | 11 | ~$100 | ~$1,100 |
-| OR [unbleached cotton muslin by the yard](https://www.fabricwholesaledirect.com) | 1,650 yd | [Fabric Wholesale Direct](https://www.fabricwholesaledirect.com) | per yard | 1,650 | $0.80–$1.20/yd | $1,320–$1,980 |
+| [Unbleached cotton muslin, 60" wide](https://www.fabricdirect.com) | ~445 linear yards | [Fabric Direct](https://www.fabricdirect.com) | 150-yd roll | 3 | ~$100 | ~$300 |
+| OR [unbleached cotton muslin by the yard](https://www.fabricwholesaledirect.com) | ~445 yd | [Fabric Wholesale Direct](https://www.fabricwholesaledirect.com) | per yard | 445 | $0.80–$1.20/yd | $360–$540 |
 
-> **Muslin note:** Pre-wash all fabric twice in hot water, no detergent, to remove sizing. Sizing repels water-based sensitisers. 60" width requires 5 strips per print — or source 120" (theatrical/backdrop) width to eliminate vertical seams.
-**Substrate subtotal: ~$1,100**
+> **Muslin note:** Pre-wash all fabric twice in hot water, no detergent, to remove sizing. Sizing repels water-based sensitisers. 60" width requires 3 strips per print to cover the 4499mm width (each 2388mm tall) — or source 120" (theatrical/backdrop) width to eliminate vertical seams.
+> **Muslin correction (2026-06-18):** the prior "1,650 yd / 11 rolls / $1,100" over-counted the fabric ~3.7× (a feet-as-yards error — see [chemistry-shopping-list.md](chemistry-shopping-list.md) Shared Item: Substrate Fabric). Real need is ~445 yd = 3 × 150-yd rolls ≈ **$300**.
+**Substrate subtotal: ~$300**
 
-**Section total: ~$2,031–$2,842** (per 50-print run, ~$57/print)
+**Section total: ~$1,231–$1,471** (per 50-print run, ~$25–29/print; chemistry shown is the legacy FAC figure — the Ware-AmFe range is in [chemistry-shopping-list.md](chemistry-shopping-list.md) / cost breakdown §7)
 
 ## 10. Printmaking Tools & Consumables
 *Source: `operating-manual.md`, `chemistry-shopping-list.md`*

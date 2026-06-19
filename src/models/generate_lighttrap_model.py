@@ -101,6 +101,7 @@ TAGS = ["Context", "Door Frame", "Pivot Axle",
         "Near Leaf", "Far Leaf", "Lock anchor", "Panel skin",
         "Panel Swing",        # dynamic-component moving group (the swinging assembly)
         "Cargo Doors",        # dynamic-component swing doors (click to close)
+        "Fan B Cable",        # child DC: orange coil shown only when the door is closed
         "Labels"]             # add_text callouts — shown only in the "Labeled" scene
 
 
@@ -578,6 +579,24 @@ def fan_b():
     return '\n'.join(ov.fan_duct("Fan B (intake)", 0, -1, FAN_B_YD, FAN_B_H))
 
 
+def fan_b_cable():
+    """Fan B flexible connector (orange curly coil) — wall plug -> Fan B on the swing panel.
+    The SOFT jumper that is plugged in when the door is CLOSED and unplugged before the panel
+    swings open; lives in a child DC shown only at swing≈0. Reuses the shared ov.ruby_coil_cord
+    (Cct B colour), matching the overview/electrical models."""
+    return ov.ruby_coil_cord("Fan B flex connector (box -> fan, Cct B)",
+                             [(300, 18, FAN_B_H), (60, FAN_B_YD, FAN_B_H)],
+                             r=5, color="#E67E22")
+
+
+def fan_b_box():
+    """Fan B electrical box (Cct B termination) on the FIXED near wall — the plug point the
+    swing-gated coil cable runs to when the door is closed. It is STATIC (stays put when the
+    panel swings; only the cable unplugs/hides). Matches the overview's box."""
+    return ruby_box("Fan B electrical box (Cct B — flex connector to fan, unplugged for swing)",
+                    260, 0, FAN_B_H - 45, 80, 60, 90, color=ov.C_SWITCH)
+
+
 # ── Shared cargo-door-end context (tray + walkways + film-plane rails) ───────
 # Cropped to a common +X plane so the static context reads in place around the
 # moving Dynamic-Component assembly. Reuses the overview's tray / walkway / rail
@@ -708,6 +727,7 @@ def generate_ruby():
         component("Walkways (near + far, partial)", "Walkways", walkways_partial()),
         component("Film-Plane Rails (left, removable)", "Film Plane Rails", film_plane_left()),
         component("Transport stay wall anchors", "Lock anchor", wall_anchors()),
+        component("Fan B electrical box", "Fan B Cable", fan_b_box()),
     ]
     static_body = '\n'.join(static_comps)
 
@@ -819,6 +839,21 @@ sr_inst.layer = model.layers["Lock anchor"]
 sr_inst.set_attribute("dynamic_attributes", "_name", "TransportStayRods")
 sr_inst.set_attribute("dynamic_attributes", "hidden", 1.0)
 sr_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swing<0.5")
+
+# ── Fan B flexible connector — a CHILD DC component inside the swing def: SHOWN when the
+#    door is CLOSED (plugged in), HIDDEN when the panel swings open (the jumper is unplugged
+#    before transport). Built at world (closed) coords; the orange coil follows Fan B and
+#    hides past swing 0.5. Same child-DC + hidden-formula pattern as the lift-out walkways. ──
+fbc_defn = model.definitions.add("Fan B Cable")
+ents = fbc_defn.entities
+{fan_b_cable()}
+ents = defn.entities
+fbc_inst = ents.add_instance(fbc_defn, Geom::Transformation.new)
+fbc_inst.name = "Fan B Cable"
+fbc_inst.layer = model.layers["Fan B Cable"]
+fbc_inst.set_attribute("dynamic_attributes", "_name", "FanBCable")
+fbc_inst.set_attribute("dynamic_attributes", "hidden", 0.0)
+fbc_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swing>0.5")
 
 # Shift the moving def by -pivot so the def origin sits at the pivot — then the instance's
 # RotZ swings the assembly about the pivot (same origin-at-rotation-point pattern the

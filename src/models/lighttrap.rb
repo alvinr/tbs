@@ -28,6 +28,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Panel skin") unless model.layers["Panel skin"]
   model.layers.add("Panel Swing") unless model.layers["Panel Swing"]
   model.layers.add("Cargo Doors") unless model.layers["Cargo Doors"]
+  model.layers.add("Fan B Cable") unless model.layers["Fan B Cable"]
   model.layers.add("Labels") unless model.layers["Labels"]
 
 # ── Fixed subsystems ──
@@ -913,6 +914,24 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.name = "Transport stay wall anchors"
   inst.layer = model.layers["Lock anchor"]
 
+  # ═══ Fan B electrical box ═══
+  defn = model.definitions.add("Fan B electrical box")
+  ents = defn.entities
+  # Fan B electrical box (Cct B — flex connector to fan, unplugged for swing)
+  grp = ents.add_group
+  grp.name = "Fan B electrical box (Cct B — flex connector to fan, unplugged for swing)"
+  face = grp.entities.add_face([260.mm,0.mm,555.mm], [340.mm,0.mm,555.mm], [340.mm,60.mm,555.mm], [260.mm,60.mm,555.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(90.mm)
+  mat = model.materials["Fan B electrical box (Cct B — flex connector to fan, unplugged for swing)"] || model.materials.add("Fan B electrical box (Cct B — flex connector to fan, unplugged for swing)")
+  mat.color = Sketchup::Color.new(216, 216, 240)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Fan B electrical box"
+  inst.layer = model.layers["Fan B Cable"]
+
 
 # Strike the original 50×50 far brace post — the Ø89 pivot post replaces it.
 fpdef = model.definitions.to_a.find { |d| d.name =~ /Film-Plane Rails/ }
@@ -1362,7 +1381,7 @@ ents = defn.entities
   grp = ents.add_group
   grp.name = "LT Drum opening brush seal"
   ge = grp.entities
-  circle = ge.add_circle([-735.9104883076719.mm,899.1376331524525.mm,130.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([-735.9104883076718.mm,899.1376331524525.mm,130.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2120.mm)
@@ -2022,7 +2041,7 @@ ents = sr_defn.entities
   circle = ge.add_circle([1795.mm,60.mm,500.mm], [0,1,0], 8.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
-  cface.pushpull(406.916798052543.mm)
+  cface.pushpull(406.91679805254313.mm)
   mat = model.materials["Stay rod (eye side)"] || model.materials.add("Stay rod (eye side)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -2032,7 +2051,7 @@ ents = sr_defn.entities
   grp = ents.add_group
   grp.name = "Turnbuckle barrel"
   ge = grp.entities
-  circle = ge.add_circle([1795.mm,466.916798052543.mm,500.mm], [0,1,0], 14.mm, 24)
+  circle = ge.add_circle([1795.mm,466.91679805254313.mm,500.mm], [0,1,0], 14.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(120.mm)
@@ -2048,7 +2067,7 @@ ents = sr_defn.entities
   circle = ge.add_circle([1795.mm,586.9167980525431.mm,500.mm], [0,1,0], 8.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
-  cface.pushpull(377.34275317533024.mm)
+  cface.pushpull(377.3427531753305.mm)
   mat = model.materials["Stay rod (eye side)"] || model.materials.add("Stay rod (eye side)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -2057,7 +2076,7 @@ ents = sr_defn.entities
   # Stay clevis (hook end)
   grp = ents.add_group
   grp.name = "Stay clevis (hook end)"
-  face = grp.entities.add_face([1783.mm,964.2595512278733.mm,488.mm], [1807.mm,964.2595512278733.mm,488.mm], [1807.mm,988.2595512278733.mm,488.mm], [1783.mm,988.2595512278733.mm,488.mm])
+  face = grp.entities.add_face([1783.mm,964.2595512278735.mm,488.mm], [1807.mm,964.2595512278735.mm,488.mm], [1807.mm,988.2595512278735.mm,488.mm], [1783.mm,988.2595512278735.mm,488.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -2083,7 +2102,7 @@ ents = sr_defn.entities
   circle = ge.add_circle([1795.mm,60.mm,2050.mm], [0,1,0], 8.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
-  cface.pushpull(406.916798052543.mm)
+  cface.pushpull(406.91679805254313.mm)
   mat = model.materials["Stay rod (eye side)"] || model.materials.add("Stay rod (eye side)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -2093,7 +2112,7 @@ ents = sr_defn.entities
   grp = ents.add_group
   grp.name = "Turnbuckle barrel"
   ge = grp.entities
-  circle = ge.add_circle([1795.mm,466.916798052543.mm,2050.mm], [0,1,0], 14.mm, 24)
+  circle = ge.add_circle([1795.mm,466.91679805254313.mm,2050.mm], [0,1,0], 14.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(120.mm)
@@ -2109,7 +2128,7 @@ ents = sr_defn.entities
   circle = ge.add_circle([1795.mm,586.9167980525431.mm,2050.mm], [0,1,0], 8.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
-  cface.pushpull(377.34275317533024.mm)
+  cface.pushpull(377.3427531753305.mm)
   mat = model.materials["Stay rod (eye side)"] || model.materials.add("Stay rod (eye side)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -2118,7 +2137,7 @@ ents = sr_defn.entities
   # Stay clevis (hook end)
   grp = ents.add_group
   grp.name = "Stay clevis (hook end)"
-  face = grp.entities.add_face([1783.mm,964.2595512278733.mm,2038.mm], [1807.mm,964.2595512278733.mm,2038.mm], [1807.mm,988.2595512278733.mm,2038.mm], [1783.mm,988.2595512278733.mm,2038.mm])
+  face = grp.entities.add_face([1783.mm,964.2595512278735.mm,2038.mm], [1807.mm,964.2595512278735.mm,2038.mm], [1807.mm,988.2595512278735.mm,2038.mm], [1783.mm,988.2595512278735.mm,2038.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -2134,6 +2153,482 @@ sr_inst.layer = model.layers["Lock anchor"]
 sr_inst.set_attribute("dynamic_attributes", "_name", "TransportStayRods")
 sr_inst.set_attribute("dynamic_attributes", "hidden", 1.0)
 sr_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swing<0.5")
+
+# ── Fan B flexible connector — a CHILD DC component inside the swing def: SHOWN when the
+#    door is CLOSED (plugged in), HIDDEN when the panel swings open (the jumper is unplugged
+#    before transport). Built at world (closed) coords; the orange coil follows Fan B and
+#    hides past swing 0.5. Same child-DC + hidden-formula pattern as the lift-out walkways. ──
+fbc_defn = model.definitions.add("Fan B Cable")
+ents = fbc_defn.entities
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-24.mm, 34.7.mm, 0.mm)
+  circle = ge.add_circle([300.mm,18.mm,600.mm], vec, 5.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.88254607774877.mm, 20.51503667241026.mm, -19.800321490536817.mm)
+  circle = ge.add_circle([276.mm,52.7.mm,600.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.68564383602245.mm, -2.0105125474890855.mm, -8.199678256131165.mm)
+  circle = ge.add_circle([285.88254607774877.mm,73.21503667241026.mm,580.1996785094632.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.6838289165739.mm, -2.0092572717898207.mm, 8.2050052627593.mm)
+  circle = ge.add_circle([263.1969022417263.mm,71.20452412492118.mm,572.000000253332.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-13.141618916088305.mm, 4.590542152177164.mm, 19.80252750221382.mm)
+  circle = ge.add_circle([240.51307332515242.mm,69.19526685313136.mm,580.2050055160913.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.35038128882598585.mm, 13.922184945201437.mm, 19.798114045701254.mm)
+  circle = ge.add_circle([227.3714544090641.mm,73.78580900530852.mm,600.0075330183051.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.887457576706709.mm, 20.518433674571412.mm, 8.194350656005668.mm)
+  circle = ge.add_circle([227.7218356978901.mm,87.70799395050996.mm,619.8056470640064.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.882012818492626.mm, 20.514667847564553.mm, -8.210331675504335.mm)
+  circle = ge.add_circle([237.6092932745968.mm,108.22642762508137.mm,627.9999977200121.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.3372369976175946.mm, 13.913093792780643.mm, -19.804732080572876.mm)
+  circle = ge.add_circle([247.49130609308943.mm,128.74109547264592.mm,619.7896660445077.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-13.154761742458732.mm, 4.581452012900797.mm, -19.79590516786675.mm)
+  circle = ge.add_circle([247.82854309070703.mm,142.65418926542657.mm,599.9849339639348.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.6892701384956.mm, -2.013020652946068.mm, -8.189022462768548.mm)
+  circle = ge.add_circle([234.6737813482483.mm,147.23564127832736.mm,580.1890287960681.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.680195541909967.mm, -2.006744274904122.mm, 8.215657493981098.mm)
+  circle = ge.add_circle([211.9845112097527.mm,145.2226206253813.mm,572.0000063332996.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-13.132854591501854.mm, 4.596603932871005.mm, 19.806935225453913.mm)
+  circle = ge.add_circle([189.30431566784273.mm,143.21587635047717.mm,580.2156638272807.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.3591417071779972.mm, 13.928244024176877.mm, 19.7936948571936.mm)
+  circle = ge.add_circle([176.17146107634088.mm,147.81248028334818.mm,600.0225990527346.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.891081521257831.mm, 20.520940149188903.mm, 8.183693676805206.mm)
+  circle = ge.add_circle([176.53060278351887.mm,161.74072430752506.mm,619.8162939099282.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.878377086957585.mm, 20.512153220566233.mm, -8.22098271780385.mm)
+  circle = ge.add_circle([186.4216843047767.mm,182.26166445671396.mm,627.9999875867334.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.32847169805819476.mm, 13.907031337753978.mm, -19.809136936697882.mm)
+  circle = ge.add_circle([196.3000613917343.mm,202.7738176772802.mm,619.7790048689295.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-13.16352118266667.mm, 4.575393610451471.mm, -19.79148311384131.mm)
+  circle = ge.add_circle([196.62853308979248.mm,216.68084901503417.mm,599.9698679322316.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.692891724862363.mm, -2.0155254965426366.mm, -8.178364298501492.mm)
+  circle = ge.add_circle([183.4650119071258.mm,221.25624262548564.mm,580.1783848183903.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.676557453766975.mm, -2.0042280179752368.mm, 8.226307346587078.mm)
+  circle = ge.add_circle([160.77212018226345.mm,219.240717128943.mm,572.0000205198888.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-13.124088317603963.mm, 4.602667061791692.mm, 19.81133721414517.mm)
+  circle = ge.add_circle([138.09556272849647.mm,217.23648911096777.mm,580.2263278664759.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.3679001686079175.mm, 13.934301749661557.mm, 19.789269937970403.mm)
+  circle = ge.add_circle([124.97147441089251.mm,221.83915617275946.mm,600.0376650806211.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.894700749178014.mm, 20.523443361583247.mm, 8.173034328243148.mm)
+  circle = ge.add_circle([125.33937457950043.mm,235.77345792242102.mm,619.8269350185915.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.87473664246994.mm, 20.509635333888923.mm, -8.231631379945611.mm)
+  circle = ge.add_circle([135.23407532867844.mm,256.29690128400426.mm,627.9999693468346.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.3197044504563564.mm, 13.900967535378072.mm, -19.81353605763661.mm)
+  circle = ge.add_circle([145.10881197114838.mm,276.8065366178932.mm,619.768337966889.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-13.172278664684654.mm, 4.5693365623699265.mm, -19.787055329740838.mm)
+  circle = ge.add_circle([145.42851642160474.mm,290.70750415327126.mm,599.9548019092524.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.69650859407416.mm, -2.018027077553654.mm, -8.167703766415912.mm)
+  circle = ge.add_circle([132.2562377569201.mm,295.2768407156412.mm,580.1677465795116.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.672914653198006.mm, -2.0017085017315708.mm, 8.236954817493938.mm)
+  circle = ge.add_circle([109.55972916284593.mm,293.25881363808753.mm,572.0000428130957.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-13.115320096932777.mm, 4.608731537183758.mm, 19.815733467013047.mm)
+  circle = ge.add_circle([86.88681450964792.mm,291.25710513635596.mm,580.2369976305896.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.37665667058003294.mm, 13.940358119901646.mm, 19.784839289313027.mm)
+  circle = ge.add_circle([73.77149441271514.mm,295.8658366735397.mm,600.0527310976026.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.898315259419547.mm, 20.52594331102989.mm, 8.162372613405523.mm)
+  circle = ge.add_circle([74.14815108329518.mm,309.80619479344136.mm,619.8375703869157.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-0.04646634271472294.mm, -0.03213810447130072.mm, -27.999943000321196.mm)
+  circle = ge.add_circle([84.04646634271472.mm,330.33213810447126.mm,627.9999430003212.mm], vec, 5.mm, 8)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B flex connector (box -> fan, Cct B)
+  grp = ents.add_group
+  grp.name = "Fan B flex connector (box -> fan, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-24.mm, 34.700000000000045.mm, 0.mm)
+  circle = ge.add_circle([84.mm,330.29999999999995.mm,600.mm], vec, 5.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fan B flex connector (box -> fan, Cct B)"] || model.materials.add("Fan B flex connector (box -> fan, Cct B)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+ents = defn.entities
+fbc_inst = ents.add_instance(fbc_defn, Geom::Transformation.new)
+fbc_inst.name = "Fan B Cable"
+fbc_inst.layer = model.layers["Fan B Cable"]
+fbc_inst.set_attribute("dynamic_attributes", "_name", "FanBCable")
+fbc_inst.set_attribute("dynamic_attributes", "hidden", 0.0)
+fbc_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swing>0.5")
 
 # Shift the moving def by -pivot so the def origin sits at the pivot — then the instance's
 # RotZ swings the assembly about the pivot (same origin-at-rotation-point pattern the
@@ -2263,7 +2758,7 @@ anc = Geom::Point3d.new(170.mm, 1181.mm, 2268.mm)
 txt = entities.add_text("FILM-PLANE RAILS
 (left pair removable)", anc, Geom::Vector3d.new(1400.mm, 0.mm, 300.mm))
 txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(1814.381326021631.mm, 0.mm, 1075.mm)
+anc = Geom::Point3d.new(1814.3813260216311.mm, 0.mm, 1075.mm)
 txt = entities.add_text("TRANSPORT STAY anchor
 (bolted plates; rod→wall when swung)", anc, Geom::Vector3d.new(300.mm, -300.mm, 700.mm))
 txt.layer = model.layers["Labels"] rescue nil
@@ -2279,7 +2774,7 @@ model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Context", "Door Frame", "Pivot Axle", "Processing Tray", "Walkways", "Film Plane Rails", "Near Leaf", "Far Leaf", "Lock anchor", "Panel skin", "Panel Swing", "Cargo Doors", "Labels"]
+keep_tags = ["Context", "Door Frame", "Pivot Axle", "Processing Tray", "Walkways", "Film Plane Rails", "Near Leaf", "Far Leaf", "Lock anchor", "Panel skin", "Panel Swing", "Cargo Doors", "Fan B Cable", "Labels"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)

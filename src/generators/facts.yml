@@ -124,3 +124,29 @@ blue_supply_l:
   aliases:
     - '(\d,?\d{3})\s*L\s*Blue'
     - '(\d,?\d{3})\s*L \(423 gal\)'
+
+# ── Derived display figures (computed from their inputs; aliases anchor on the shift/area context
+# so they don't catch other mm values or the '116 kg' tray weight) ──
+# NB: 'shift (Nmm)' and a bare 'N sq ft' both catch OTHER values (other tilt configs, wall/coating
+# areas) — anchor strictly to the per-5° image-shift and the image-plane area.
+image_shift_per_5deg:
+  constant: IMAGE_SHIFT_PER_5DEG
+  unit: mm
+  owner: tilt-swing-board-report.md
+  aliases:
+    - 'tan\(5°\)\s*=\s*(\d+)\s*mm'
+    - '(\d+)\s*mm per 5°'
+    - '(\d+)\s*mm of image shift'
+    - 'projected image (\d+)\s*mm'
+    - '\| 5° \| (\d+)mm'
+
+image_area_sqft:
+  constant: IMAGE_AREA_SQFT
+  unit: sqft
+  owner: project-summary.md
+  aliases:
+    - '[Ii]mage area\s*\|\s*~?(\d+)\s*sq ft'
+    - '~?(\d+)\s*sq ft each'
+    - '~?(\d+)\s*sq ft \(active'
+    - '~?(\d+)\s*sq ft active'
+    - '(\d+)\s*sq ft image plane'

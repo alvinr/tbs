@@ -285,6 +285,40 @@ def emit_funding_level1() -> str:
     return "\n".join(out)
 
 
+def emit_master_summary() -> str:
+    """master-shopping-list.md summary — 3rd VIEW (Low/High, the master's groupings) from costing.
+    Excludes transport/permits (master = base build + 50-print run); adds tools + safety (§10/§11)."""
+    rows = [
+        ("1. Container & delivery", _sec("1")),
+        ("2. Interior conversion (light-seal, paint, backing)", _sec("2")),
+        ("3. Pinhole optics plate", _sec("3")),
+        ("4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides)", _sec("4")),
+        ("5. Print washing — water system (incl. IBC stacking frame)", _sec("5")),
+        ("6. Electrical — power, circuits, wiring", _sec("5a")),
+        ("7. Housed revolving-door light lock (plastic-skin custom fabrication)", _sec("6")),
+        ("7a. Panel swing pivot (Ø89 pivot post + bearings + cage + wall stays + rail saddles)", _sec("6b")),
+        ("7b. Perimeter walkway (4 sections + drum-exit punch-out)", _sec("6a")),
+        ("8. Cooling & ventilation", _sec("5b")),
+        ("9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier)", _sec("7")),
+        ("10. Printmaking tools & consumables", TOOLS),
+        ("11. Safety & PPE", SAFETY),
+    ]
+    out = ["| Area | Low | High |", "|------|-----|------|"]
+    lo = hi = 0
+    for label, s in rows:
+        out.append(f"| {label} | ${s.low:,} | ${s.high:,} |")
+        lo, hi = lo + s.low, hi + s.high
+    out.append(f"| **TOTAL (base build + 50-print run)** | **~${lo:,}** | **~${hi:,}** |")
+    return "\n".join(out)
+
+
+def master_total() -> tuple:
+    ids = ("1", "2", "3", "4", "5", "5a", "6", "6b", "6a", "5b", "7")
+    lo = sum(_sec(i).low for i in ids) + TOOLS.low + SAFETY.low
+    hi = sum(_sec(i).high for i in ids) + TOOLS.high + SAFETY.high
+    return (lo, hi)
+
+
 def funding_level1_total() -> int:
     sub = (_sec("1").mid + _sec("2").mid + _sec("3").mid + _sec("4").mid + FRONT_BOARD_MID
            + _sec("6").mid + _sec("5").mid + _sec("5a").mid + _sec("5b").mid + _sec("6a").mid
@@ -341,6 +375,10 @@ SECTIONS = [
     Section("9",  "Licences & permits", 220, 790, 1620),
 ]
 
+# Master-shopping-list-only sections (not in the cost-breakdown's 13). Low/Mid/High estimates.
+TOOLS = Section("10", "Printmaking tools & consumables", 350, 425, 500)
+SAFETY = Section("11", "Safety & PPE", 120, 150, 180)
+
 
 def grand_total() -> tuple[int, int, int]:
     return (sum(s.low for s in SECTIONS),
@@ -370,7 +408,8 @@ _F = "project-cost-breakdown.md"
 
 def _whole_blocks() -> dict:
     return {"scenario": (_F, emit_scenario_table), "chemistry-7-1": (_F, emit_cost_breakdown_7_1),
-            "funding-level1": ("funding-proposal.md", emit_funding_level1)}
+            "funding-level1": ("funding-proposal.md", emit_funding_level1),
+            "master-summary": ("master-shopping-list.md", emit_master_summary)}
 
 
 def _detail_blocks() -> dict:

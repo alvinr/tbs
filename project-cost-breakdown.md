@@ -412,7 +412,7 @@ Cyanotype is the recommended starting process: no silver, no DEA registration, n
 
 | Process | 50-print total† | Per print | Key constraint |
 |---------|----------------|-----------|----------------|
-| **Cyanotype** | **~$1,350–3,150** (Std ~$1,800)‡ | **~$27–63** (Std ~$36)‡ | None — easiest |
+| **Cyanotype** | **~<!-- BEGIN costing:s73-50run-range -->$1,350–3,150<!-- END costing:s73-50run-range -->** (Std ~<!-- BEGIN costing:s73-50run-std -->$1,800<!-- END costing:s73-50run-std -->)‡ | **~<!-- BEGIN costing:s73-pp-range -->$27–63<!-- END costing:s73-pp-range -->** (Std ~<!-- BEGIN costing:s73-pp-std -->$36<!-- END costing:s73-pp-std -->)‡ | None — easiest |
 | Gum bichromate | ~$5,150 | ~$103 | Hazmat shipping (dichromate) |
 | Van Dyke Brown | ~$11,000 | ~$220 | DEA form; AgNO₃ price volatility |
 | Ilford RC paper | ~$20,500 | ~$410 | Paper rolls very expensive at this size |
@@ -536,6 +536,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 
 ### Scenario A — Minimum viable build, local use, commercial hire transport
 
+<!-- BEGIN costing:scenario-a -->
 | Item | Cost |
 |------|------|
 | Container (WWT) + delivery | $1,800 |
@@ -552,9 +553,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
 | **Scenario A total** | **~$19,358** |
+<!-- END costing:scenario-a -->
 
 ### Scenario B — Recommended build, regional deployment
 
+<!-- BEGIN costing:scenario-b -->
 | Item | Cost |
 |------|------|
 | Container (CW) + delivery | $3,150 |
@@ -564,24 +567,27 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $5,085 |
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · pump switches) | $2,265 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $884 |
-| Revolving drum light trap (plastic-skin custom fabrication) | $1,800 |
+| Revolving drum light trap (plastic-skin custom fabrication) | $1,802 |
 | Perimeter walkway (4 sections, removable, GRP grating) | $2,214 |
 | Panel swing pivot (Ø89 pivot + bearings + cage + wall stays + saddles) | $1,232 |
 | Cyanotype chemistry + substrate (50 prints) | $1,650 |
 | Rodenstock Apo-Ronar 1200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$25,396** |
+| **Scenario B total (excl. CDL)** | **~$25,398** |
+<!-- END costing:scenario-b -->
 
 ### Scenario C — Full production, own transport, CDL
 
+<!-- BEGIN costing:scenario-c -->
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $24,422 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $24,498 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$113,922–$143,922** |
+| **Scenario C total** | **~$113,998–$143,998** |
+<!-- END costing:scenario-c -->
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*
 

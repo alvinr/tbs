@@ -25,6 +25,7 @@ from dataclasses import dataclass
 
 # ── Run basis ────────────────────────────────────────────────────────────────
 PRINTS = 50            # edition size every per-run figure is based on
+PER_PRINT_CONSUMABLES = 3   # §7.3 all-in basis: water/citric/pH per print BEYOND §7.1 chem+substrate
 
 # ── Unit prices (USD) — each carries its source for traceability ─────────────
 PRICE_AMFE_PER_KG  = 60.00     # Bostick & Sullivan — ammonium iron(III) oxalate (AmFe)
@@ -364,6 +365,84 @@ def funding_combined() -> tuple[int, int]:
     return (l1 + FUNDING_L2[0] + FUNDING_L3[0], l1 + FUNDING_L2[1] + FUNDING_L3[1])
 
 
+# ── §11 Complete Budget Scenarios — the build rows are pulled from the costing sections (Low for A,
+# Mid for B) so they can't drift; the grade/transport/permit/lens choices that AREN'T a section
+# midpoint are explicit editorial picks. Totals are computed. (Generating this corrected a couple of
+# hand-maintained drifts: scenario-B light trap 1,800 -> the §6 Mid 1,802, and the derived C figures.)
+SCEN_A = {"container": 1800, "transport": 400, "permits": 50}          # WWT grade, local deployment
+SCEN_B = {"container": 3150, "lens": 800, "transport": 900, "permits": 300}
+SCEN_C = {"cdl": 4500, "trailer": 35000, "truck_lo": 50000, "truck_hi": 80000}
+
+
+def _scenario_a_rows() -> list:
+    return [
+        ("Container (WWT) + delivery", SCEN_A["container"]),
+        ("Interior conversion (minimal)", _sec("2").low),
+        ("Pinhole plate", _sec("3").low),
+        ("Film plane mechanism (manual Option A, incl. wall-seat saddles + cross-slides)", _sec("4").low),
+        ("Water system (incl. processing tray, spray bar, IBC stacking frame)", _sec("5").low),
+        ("Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · pump switches)", _sec("5a").low),
+        ("Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy)", _sec("5b").low),
+        ("Revolving drum light trap (plastic-skin custom fabrication)", _sec("6").low),
+        ("Perimeter walkway (4 sections, removable, GRP grating)", _sec("6a").low),
+        ("Panel swing pivot (Ø89 pivot + bearings + cage + wall stays + saddles)", _sec("6b").low),
+        ("Cyanotype chemistry + substrate (50 prints)", _sec("7").low),
+        ("Transport per deployment (local)", SCEN_A["transport"]),
+        ("Permits (minimal)", SCEN_A["permits"]),
+    ]
+
+
+def _scenario_b_rows() -> list:
+    return [
+        ("Container (CW) + delivery", SCEN_B["container"]),
+        ("Interior conversion (full)", _sec("2").mid),
+        ("Pinhole plate", _sec("3").mid),
+        ("Film plane mechanism (manual Option A + wall-seat saddles + cross-slides)", _sec("4").mid),
+        ("Water system (incl. processing tray, spray bar, IBC stacking frame)", _sec("5").mid),
+        ("Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · pump switches)", _sec("5a").mid),
+        ("Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy)", _sec("5b").mid),
+        ("Revolving drum light trap (plastic-skin custom fabrication)", _sec("6").mid),
+        ("Perimeter walkway (4 sections, removable, GRP grating)", _sec("6a").mid),
+        ("Panel swing pivot (Ø89 pivot + bearings + cage + wall stays + saddles)", _sec("6b").mid),
+        ("Cyanotype chemistry + substrate (50 prints)", _sec("7").mid),
+        ("Rodenstock Apo-Ronar 1200mm lens", SCEN_B["lens"]),
+        ("Transport per deployment (50–100 miles)", SCEN_B["transport"]),
+        ("Permits (typical public land)", SCEN_B["permits"]),
+    ]
+
+
+def _scen_table(rows: list, total_label: str) -> str:
+    out = ["| Item | Cost |", "|------|------|"]
+    for lbl, v in rows:
+        out.append(f"| {lbl} | ${v:,} |")
+    out.append(f"| **{total_label}** | **~${sum(v for _, v in rows):,}** |")
+    return "\n".join(out)
+
+
+def emit_scenario_a() -> str:
+    return _scen_table(_scenario_a_rows(), "Scenario A total")
+
+
+def emit_scenario_b() -> str:
+    return _scen_table(_scenario_b_rows(), "Scenario B total (excl. CDL)")
+
+
+def emit_scenario_c() -> str:
+    b_less = sum(v for _, v in _scenario_b_rows()) - SCEN_B["transport"]   # B build, owned transport
+    base = b_less + SCEN_C["cdl"] + SCEN_C["trailer"]
+    rows = [
+        (f"Scenario B build (less the ${SCEN_B['transport']:,} commercial transport, replaced here by owned transport)", f"${b_less:,}"),
+        ("CDL Class A training + medical + DMV", f"${SCEN_C['cdl']:,}"),
+        ("QuickLoadz self-loading trailer", f"${SCEN_C['trailer']:,}"),
+        ("Ford F-350+ pickup (if needed)", f"${SCEN_C['truck_lo']:,}–${SCEN_C['truck_hi']:,} (new)"),
+    ]
+    out = ["| Item | Cost |", "|------|------|"]
+    for lbl, v in rows:
+        out.append(f"| {lbl} | {v} |")
+    out.append(f"| **Scenario C total** | **~${base + SCEN_C['truck_lo']:,}–${base + SCEN_C['truck_hi']:,}** |")
+    return "\n".join(out)
+
+
 def emit_section_table(items: list[LineItem], total_label: str) -> str:
     """Generate a Low/Mid/High line-item table with a COMPUTED total row."""
     rows = ["| Item | Low | Mid | High | Notes |", "|------|-----|-----|------|-------|"]
@@ -446,6 +525,8 @@ _F = "project-cost-breakdown.md"
 
 def _whole_blocks() -> dict:
     return {"scenario": (_F, emit_scenario_table), "chemistry-7-1": (_F, emit_cost_breakdown_7_1),
+            "scenario-a": (_F, emit_scenario_a), "scenario-b": (_F, emit_scenario_b),
+            "scenario-c": (_F, emit_scenario_c),
             "funding-level1": ("funding-proposal.md", emit_funding_level1),
             "master-summary": ("master-shopping-list.md", emit_master_summary)}
 
@@ -490,7 +571,18 @@ def _inline_blocks() -> dict:
         # project-summary.md (the home page) spec table — was a stale $38 / $1,900 pair.
         "summary-perprint":    ("project-summary.md", lambda: f"${_r(by_key('standard')['per_print'], 1):,}"),
         "summary-50run":       ("project-summary.md", lambda: f"${_r(by_key('standard')['section_total'], 10):,}"),
+        # project-cost-breakdown §7.3 process comparison — Cyanotype ALL-IN row (§7.1 per-print +
+        # PER_PRINT_CONSUMABLES), so it stays tied to §7.1 instead of drifting.
+        "s73-pp-std":          (_F, lambda: f"${_pp('standard')}"),
+        "s73-pp-range":        (_F, lambda: f"${_pp('lean')}–{_pp('rich')}"),
+        "s73-50run-std":       (_F, lambda: f"${_pp('standard') * PRINTS:,}"),
+        "s73-50run-range":     (_F, lambda: f"${_pp('lean') * PRINTS:,}–{_pp('rich') * PRINTS:,}"),
     }
+
+
+def _pp(tier: str) -> int:
+    """All-in per-print for §7.3 = §7.1 chem+substrate per-print + the processing consumables."""
+    return _r(by_key(tier)['per_print'], 1) + PER_PRINT_CONSUMABLES
 
 
 def _reformat_cell(cell: str, value: int) -> str:

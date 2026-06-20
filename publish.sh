@@ -44,6 +44,7 @@ fi
 info "Syncing markdown files to published/..."
 
 MD_FILES=(
+    "container-report.md"
     "pinhole-optics-report.md"
     "pinhole-option-b-optics.md"
     "pinhole-camera-construction.md"

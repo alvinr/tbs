@@ -74,7 +74,6 @@ nav:
       - "Film Clamp Mechanism": film-clamp-mechanism-report.md
       - "Tilt-Swing Front Board": tilt-swing-board-report.md
     - Misc:
-      - "Container": container-report.md
       - "Walkway": walkway-report.md
       - "Right Walkway Cantilever Study": right-walkway-cantilever-study.md
       - "Hinged Light-Trap Panel": hinged-panel-report.md
@@ -90,6 +89,7 @@ nav:
     - "TBS-002 Design": mini-tbs/mini-tbs-poc.md
     - "TBS-002 Shopping List": mini-tbs/mini-tbs-shopping-list.md
   - Research:
+    - "Container Basics": container-report.md
     - "Optics Report": pinhole-optics-report.md
     - "Container Optics": pinhole-option-b-optics.md
     - "Lens vs Pinhole": lens-vs-pinhole-exposure.md

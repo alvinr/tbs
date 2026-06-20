@@ -112,10 +112,14 @@ ripple into both.
   component** — regenerate, re-send, and re-save it:
   `python3 src/models/generate_sketchup_model.py --save --send` (then commit the
   updated `*.skp` + `*.rb` alongside the diagram/constant change).
-- **`component-dependency-map.md` is the source of truth** for which components
-  are drawn by which generators and present in which models (§3 diagram matrix,
-  §3.1 model list, §4 change-propagation + workflow). **Keep it updated** whenever
-  a system component, generator, or model is added or changed.
+- **`dependencies.yml` is the machine source of truth** for the `script → output-file`
+  graph (which generator/model writes which PNG / `.skp` / `.rb`). It is validated by
+  `lint.py` (so it can't drift) and the per-constant cascade is **computed** from it —
+  run `python3 src/generators/lint.py --cascade <CONSTANT>` to see exactly what a change
+  re-runs, and the commit-time *missing-cascade* check enforces it. **Add an entry to
+  `dependencies.yml` whenever a generator or model is added.** `component-dependency-map.md`
+  now holds the human design rationale (§1 component→constant registry, §3 diagram matrix,
+  §3.1 per-model narrative) — keep that updated when a component's design changes.
 - Today there is one model (`overview.skp`) containing nearly every component, so
   in practice any `tbs_constants.py` change ⇒ re-run `overview`.
 - **Audit for drift** after a geometry/design change (or when asked "does this

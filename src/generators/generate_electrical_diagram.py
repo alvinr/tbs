@@ -1781,7 +1781,7 @@ def draw_sheet6():
     # Leaders
     leader(ax_a, (MC4_X), (mc4_y_base + 2 * MC4_PITCH + MC4_R + 5),
            (MC4_X - 25), (PLATE_H + 35),
-           "MC4 BULKHEAD\nCONNECTORS (×3 PAIRS)\nIP67 PANEL-MOUNT",
+           "SOLAR PV INPUTS (×3 PAIRS)\n3×200W array (parallel) → MPPT\nIP67 MC4 bulkheads",
            fs=6.5, color=C_MC4, ha="center", arrow_style="-|>", font=FONT)
 
     leader(ax_a, (NEMA_X + NEMA_W + 5), (NEMA_Y + NEMA_H / 2),
@@ -2052,6 +2052,8 @@ def draw_sheet6():
     sarrow(ax_c, 3.3, row_top + 0.45, 4.5, col=C_MC4)
     ax_c.text(3.9, row_top + 0.65, "MC4", fontsize=6, color=C_MC4,
               ha="center", **FONT)
+    ax_c.text(3.9, row_top + 1.02, "30A fuse + 3-way\ncombiner / string", fontsize=5.0,
+              color=C_MC4, ha="center", va="bottom", **FONT)
 
     sbox(ax_c, 4.5, row_top, 3.0, 0.9,
          "FLUSH-MOUNT PANEL", "MC4 bulkhead ×3", fc=C_ALUM)

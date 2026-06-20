@@ -527,36 +527,36 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Interior conversion (minimal) | $950 |
 | Pinhole plate | $95 |
 | Film plane mechanism (manual Option A, incl. wall-seat saddles + cross-slides) | $3,100 |
-| Water system (incl. processing tray, spray bar, IBC stacking frame) | $4,100 |
+| Water system (incl. processing tray, spray bar, IBC stacking frame) | $4,063 |
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · pump switches) | $2,025 |
-| Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $770 |
+| Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $824 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,465 |
-| Perimeter walkway (4 sections, removable, GRP grating) | $1,750 |
-| Panel swing pivot (Ø89 pivot + bearings + cage + wall stays + saddles) | $650 |
-| Cyanotype chemistry + substrate (50 prints) | $2,842 |
+| Perimeter walkway (4 sections, removable, GRP grating) | $1,826 |
+| Panel swing pivot (Ø89 pivot + bearings + cage + wall stays + saddles) | $1,112 |
+| Cyanotype chemistry + substrate (50 prints) | $1,210 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$19,997** |
+| **Scenario A total** | **~$18,920** |
 
 ### Scenario B — Recommended build, regional deployment
 
 | Item | Cost |
 |------|------|
 | Container (CW) + delivery | $3,150 |
-| Interior conversion (full) | $1,140 |
-| Pinhole plate | $150 |
+| Interior conversion (full) | $1,138 |
+| Pinhole plate | $165 |
 | Film plane mechanism (manual Option A + wall-seat saddles + cross-slides) | $3,270 |
-| Water system (incl. processing tray, spray bar, IBC stacking frame) | $5,089 |
+| Water system (incl. processing tray, spray bar, IBC stacking frame) | $5,085 |
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · pump switches) | $2,265 |
-| Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $830 |
+| Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $884 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,800 |
-| Perimeter walkway (4 sections, removable, GRP grating) | $2,122 |
-| Panel swing pivot (Ø89 pivot + bearings + cage + wall stays + saddles) | $770 |
-| Cyanotype chemistry + substrate (50 prints) | $2,842 |
+| Perimeter walkway (4 sections, removable, GRP grating) | $2,214 |
+| Panel swing pivot (Ø89 pivot + bearings + cage + wall stays + saddles) | $1,232 |
+| Cyanotype chemistry + substrate (50 prints) | $1,650 |
 | Rodenstock Apo-Ronar 1200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$25,428** |
+| **Scenario B total (excl. CDL)** | **~$24,853** |
 
 ### Scenario C — Full production, own transport, CDL
 

@@ -2955,15 +2955,24 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
 <h1 id="component-dependency-map">Component Dependency Map<a class="headerlink" href="#component-dependency-map" title="Permanent link">&para;</a></h1>
-<p>This document is the operational guide for maintaining consistency across all TBS-001 engineering
-diagrams. When any component changes — position, dimension, or specification — consult:</p>
+<blockquote>
+<p><strong>Machine source of truth: <a href="dependencies.yml"><code>dependencies.yml</code></a>.</strong> The structured
+<code>script → output-file</code> graph (which generator/model writes which PNG / <code>.skp</code> / <code>.rb</code>) lives there
+— validated by <code>lint.py</code> so it can't drift — and the per-constant cascade is <strong>computed</strong> from it
+(<code>python3 src/generators/lint.py --cascade &lt;CONSTANT&gt;</code>; enforced at commit time). This document is
+now the <strong>human design rationale</strong> that the YAML can't hold: §1 the component → constant registry,
+§2 the script legend, §3 the subsystem × diagram matrix, and §3.1 the per-model "what it builds and
+why" narrative. The old hand-maintained §4 cascade table was retired into the computed view above.</p>
+</blockquote>
+<p>This document is the design-rationale companion for maintaining consistency across all TBS-001
+engineering diagrams. When any component changes — position, dimension, or specification — consult:</p>
 <ol>
 <li><strong>Section 1</strong> to find the controlling constant in <code>tbs_constants.py</code></li>
-<li><strong>Section 2</strong> to find which generator scripts use that constant</li>
-<li><strong>Section 3</strong> to confirm the exact scripts to re-run and PNGs to regenerate</li>
+<li><strong>Section 2 / 3</strong> for the subsystem ↔ diagram context</li>
+<li><strong><code>lint.py --cascade &lt;CONSTANT&gt;</code></strong> for the exact scripts to re-run and outputs to regenerate</li>
 </ol>
 <p>All shared constants live in <code>tbs_constants.py</code>. Change a value there once; re-run the affected
-scripts; all diagrams update consistently.</p>
+scripts (the cascade command lists them); all diagrams update consistently.</p>
 <hr />
 <h2 id="1-component-registry">1. Component Registry<a class="headerlink" href="#1-component-registry" title="Permanent link">&para;</a></h2>
 <p>Each subsystem lists its key physical parameters and the <code>tbs_constants.py</code> variable(s) that
@@ -4319,174 +4328,25 @@ scripts) so the 3D models stay in sync with the drawings — see the Workflow be
 constants change re-runs only the affected models.</em></p>
 <hr />
 <h2 id="4-change-propagation-guide">4. Change Propagation Guide<a class="headerlink" href="#4-change-propagation-guide" title="Permanent link">&para;</a></h2>
-<p>When a constant in <code>tbs_constants.py</code> changes, re-run all 2D scripts listed below
-<strong>and re-run any SketchUp model (§3.1) that contains the affected subsystem.</strong>
-Then commit the updated PNGs and <code>*.skp</code>/<code>*.rb</code> alongside the constant change.</p>
-<table>
-<thead>
-<tr>
-<th>Changed constant(s)</th>
-<th>Re-run scripts (abbr)</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>PH_X</code>, <code>PH_H</code></td>
-<td>FP, LOS, AO, AF, FPM, FPD, TSB, TSD, PD, SC</td>
-<td>Pinhole reposition — cone geometry changes everywhere; MAX_SWING_DEG unchanged</td>
-</tr>
-<tr>
-<td><code>PH_D</code>, <code>PH_FNO</code></td>
-<td>TSB, PD, SC</td>
-<td>Aperture spec change — layout diagrams unaffected</td>
-</tr>
-<tr>
-<td><code>FP_X_L</code>, <code>FP_X_R</code>, <code>FP_W</code></td>
-<td>FP, LOS, AO, AF, FPM, FPD, TSD</td>
-<td>Rail span + ZONE boundaries change (Option A: <code>MAX_SWING_DEG</code> is now a fixed design value, not derived from <code>FP_W</code>)</td>
-</tr>
-<tr>
-<td><code>FP_Y</code>, <code>FP_Y_MIN</code></td>
-<td>FP, LOS, AO, AF, FPM, FPD, TSD</td>
-<td>Depth / rail-travel change (Option A: <code>MAX_TILT_DEG</code>/<code>MAX_SWING_DEG</code> are now fixed design values, not auto-derived)</td>
-</tr>
-<tr>
-<td><code>MAX_TILT_DEG</code>, <code>MAX_SWING_DEG</code>, <code>XSLIDE_*</code></td>
-<td>FPM, FPD</td>
-<td>Option A tilt/swing envelope + cross-slide travel — <strong>design values</strong> (hardcoded, not derived); FPM sheets + FPD distortion renders redraw on change</td>
-</tr>
-<tr>
-<td><code>RAIL_LEN</code></td>
-<td>FPM</td>
-<td>Rail length only — no layout impact</td>
-</tr>
-<tr>
-<td><code>C_LEN</code></td>
-<td>FP, LOS, AO, AF, FPM, ES, WS, HP, LT, PD, SC</td>
-<td>Container resize — rare</td>
-</tr>
-<tr>
-<td><code>C_WID</code></td>
-<td>FP, LOS, AO, AF, FPM, ES, WS, HP, LT, PD, SC</td>
-<td>Changes focal length and cone geometry</td>
-</tr>
-<tr>
-<td><code>C_HGT</code></td>
-<td>FP, LOS, AO, AF, ES, HP, LT</td>
-<td>Height change</td>
-</tr>
-<tr>
-<td><code>EVAP_DUCT_X</code>, <code>EVAP_DUCT_Z</code>, <code>EVAP_DUCT_D</code></td>
-<td>FP, AO, AF, ES</td>
-<td>Evap duct penetration (cooler external)</td>
-</tr>
-<tr>
-<td><code>EVAP_W</code>, <code>EVAP_D</code>, <code>EVAP_H</code>, <code>EVAP_STOW_X</code></td>
-<td>AO, ES</td>
-<td>Cooler body (Hessaire MC18M) + transport stow footprint</td>
-</tr>
-<tr>
-<td><code>INVERTER_X</code>, <code>INVERTER_Z</code>, <code>INVERTER_W</code>, <code>INVERTER_H</code>, <code>INVERTER_D</code></td>
-<td>AO, ES</td>
-<td>Circuit-E inverter (Victron Phoenix 12/375 GFCI) wall mount</td>
-</tr>
-<tr>
-<td><code>SOLAR_*</code> (panel L/W/T, N, tilt, gap, array X/Yd/Z)</td>
-<td>overview + electrical 3D models</td>
-<td>Ground solar array (3×200W tilt frame) — shared <code>ov.solar_array()</code> / <code>ov.tilted_slab()</code> (re-run BOTH models)</td>
-</tr>
-<tr>
-<td><code>ENCL_SHELL_D</code>, <code>MPPT_*</code>, <code>FUSEBLK_*</code>, <code>BUSBAR_*</code>, <code>DISCONNECT_*</code></td>
-<td>electrical <strong>+ overview</strong> 3D models</td>
-<td>Main-enclosure internals — <code>generate_electrical_model.power_core()</code> AND the <strong>duplicated</strong> copy in <code>generate_sketchup_model.electrical()</code> (re-run BOTH)</td>
-</tr>
-<tr>
-<td><code>CONTACTOR_*</code>, <code>MRBF_*</code></td>
-<td>electrical 3D model</td>
-<td>Battery protection chain — <code>generate_electrical_model.battery()</code> (overview draws the contactor only, hardcoded)</td>
-</tr>
-<tr>
-<td><code>EP_X</code>, <code>EP_W</code>, <code>EP_H_LO</code>, <code>EP_H_HI</code></td>
-<td>FP, LOS, AO, AF, ES</td>
-<td>Electrical panel on pinhole wall</td>
-</tr>
-<tr>
-<td><code>BA_X</code>, <code>BA_W</code>, <code>BA_H_LO</code>, <code>BA_H_HI</code></td>
-<td>FP, LOS, AO, AF, ES</td>
-<td>Battery bank on pinhole wall</td>
-</tr>
-<tr>
-<td><code>PUMP_X</code>, <code>PUMP_W</code>, <code>PUMP_H_LO</code>, <code>PUMP_H_HI</code></td>
-<td>FP, LOS, AO, AF, ES, WS</td>
-<td>Pump manifold on equipment panel (Yd=1046)</td>
-</tr>
-<tr>
-<td><code>IBC_COL_X</code>, <code>BLUE_IBC_Y</code>, <code>BROWN_IBC_Y</code></td>
-<td>FP, LOS, AO, AF, WS</td>
-<td>Right end zone IBC stack</td>
-</tr>
-<tr>
-<td><code>WASTE_IBC_Y</code>, <code>IBC_FAR_Y</code>, <code>C_WASTE_IBC</code></td>
-<td>FP, LOS, AO, AF, WS</td>
-<td>Right end zone waste IBC (4th tote in 2×2 stack)</td>
-</tr>
-<tr>
-<td><code>SWING_LOCK_DEG</code>, <code>PIVOT_X</code>, <code>PIVOT_YD</code>, <code>PANEL_CUT_YD</code>, <code>FAR_STRIP_YD0</code>, <code>PIVOT_POST_OD/T</code></td>
-<td>FP, AO, AF, HP, LT, WK, ES, WA</td>
-<td>Panel transport swing geometry — the swung-clearance (+59mm) + sweep recompute everywhere; the cooler stow (<code>EVAP_STOW_X</code>) and weight CoM track it</td>
-</tr>
-<tr>
-<td><code>DRUM_CX</code>, <code>DRUM_D</code>, <code>DRUM_H_LT</code></td>
-<td>FP, LOS, AO, AF, HP, LT</td>
-<td>Light trap drum; check <code>ZONE_L_END</code></td>
-</tr>
-<tr>
-<td><code>ZONE_L_END</code>, <code>ZONE_R_START</code></td>
-<td>FP, LOS, AO, ES</td>
-<td>Zone boundaries — these are derived from <code>FP_X_L</code>/<code>FP_X_R</code>, so change those instead</td>
-</tr>
-<tr>
-<td><code>FAN_A_H</code>, <code>FAN_B_H</code>, <code>FAN_DIAM</code>, <code>FAN_BODY_D</code></td>
-<td>LT, ES</td>
-<td>Ventilation fan height or size</td>
-</tr>
-<tr>
-<td><code>DUCT_DEPTH</code>, <code>DUCT_HEIGHT</code></td>
-<td>LT</td>
-<td>Baffle duct only — lighttrap sheets</td>
-</tr>
-<tr>
-<td><code>WALKWAY_W</code>, <code>WALKWAY_H</code>, <code>WALKWAY_GRATE_T</code></td>
-<td>WK, HP</td>
-<td>Walkway deck dimensions — affects clearance annotations</td>
-</tr>
-<tr>
-<td><code>WALKWAY_BRACKET_H</code>, <code>WALKWAY_BRACKET_T</code>, <code>WALKWAY_BRACKET_SPACING</code></td>
-<td>WK, HP</td>
-<td>Bracket geometry</td>
-</tr>
-<tr>
-<td><code>WALKWAY_ANGLE_IRON</code>, <code>WALKWAY_ANGLE_IRON_T</code></td>
-<td>WK</td>
-<td>Right walkway angle iron mounting (flat end wall only)</td>
-</tr>
-<tr>
-<td><code>PROC_TRAY_X_L</code>, <code>PROC_TRAY_X_R</code>, <code>PROC_TRAY_RIM</code></td>
-<td>FP, AO, WK</td>
-<td>Processing tray position and rim — walkway alignment and panel clearance</td>
-</tr>
-<tr>
-<td><code>PANEL_FLOOR_GAP</code></td>
-<td>HP</td>
-<td>Panel bottom clearance — must exceed <code>PROC_TRAY_RIM</code></td>
-</tr>
-</tbody>
-</table>
+<p>When a constant in <code>tbs_constants.py</code> changes, re-run every script that reads it
+<strong>and re-run any SketchUp model that contains the affected subsystem</strong>, then commit
+the updated PNGs and <code>*.skp</code>/<code>*.rb</code> alongside the constant change.</p>
+<blockquote>
+<p><strong>This used to be a hand-maintained <code>constant → scripts</code> table — it is now COMPUTED, so it
+can't drift.</strong> The machine source is <strong><code>dependencies.yml</code></strong> (the validated <code>script → output-file</code>
+graph; <code>deps.py</code> loads it, <code>lint.py</code> validates it). To see what a given constant change cascades to:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>src/generators/lint.py<span class="w"> </span>--cascade<span class="w"> </span>&lt;CONSTANT_NAME&gt;<span class="w">   </span><span class="c1"># e.g. PROC_TRAY_X_R</span>
+</code></pre></div>
+<p>It greps every script that reads the constant and lists the exact PNGs / <code>.skp</code> / <code>.rb</code> each writes.
+And the <strong>pre-commit linter enforces it</strong>: stage a <code>tbs_constants.py</code> change without the regenerated
+outputs and the <em>missing-cascade</em> check names the specific files you still need to regenerate + stage
+(see <code>drift-reduction-plan.md</code>). So you no longer read a table to find the cascade — the tooling computes it.</p>
+</blockquote>
 <h3 id="workflow">Workflow<a class="headerlink" href="#workflow" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>1. Edit tbs_constants.py
 2. python3 tbs_constants.py          # verify no errors, check derived values in summary
-3. python3 generate_&lt;affected&gt;.py    # for each affected 2D script (see table above)
+2b. python3 src/generators/lint.py --cascade &lt;CONSTANT&gt;   # lists the exact scripts + outputs to re-run
+3. python3 generate_&lt;affected&gt;.py    # for each affected 2D script the cascade named
 4. Re-run affected SketchUp model(s) (§3.1):
      python3 src/models/generate_sketchup_model.py --save --send
    # regenerates overview.rb + re-sends to SketchUp; save the .skp

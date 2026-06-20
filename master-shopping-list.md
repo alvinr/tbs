@@ -78,7 +78,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 |------|------|-----|----------|-----------|-------|
 | Door gasket set | OEM-style rubber seal for container cargo doors | 1 | Container parts suppliers | $45 | $45 |
 | Miscellaneous hardware (fasteners, steel angle, touchup paint) | — | 1 lot | Home Depot | — | $110 |
-**Section total: ~$1,000–$1,350**
+**Section total: ~$950–$1,350**
 
 ## 3. Pinhole Optics Plate
 *Source: `pinhole-report.md`, `pinhole-camera-construction.md`*
@@ -144,7 +144,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 *All prices estimated — Metal Supermarkets and McMaster-Carr do not publish per-unit pricing online; call or add to cart for a current quote. 8mm A36 plate runs ~$3–5/kg cut. M8 thumbscrew pricing confirmed at ~$15–17 each from Maedler North America (PN 65499225, May 2026); Amazon multi-packs run ~$2–5 ea. depending on pack size.*
 
-**Section total (manual, incl. wall-seat saddles + Option A cross-slides): ~$3,237**
+**Section total (manual, incl. wall-seat saddles + Option A cross-slides): ~$3,100–$4,200**
 
 > **Option A delta (2026-06-06):** the film plane is now a **fixed-size rigid** rectangle posed by **8 corner cross-slides** (2-axis X-Z stage per corner) that absorb the rigid-rotation arc travel. Added 8 cross-slide rails +$200, 8 carriages +$96, 4 intermediate plates +$60 (= +$356); removed the folding-backing piano hinge –$56 → **net +$300**. Single rigid ACM backing replaces the hinged two-panel system; the achievable envelope is tilt ±40° / swing ±28° single-axis (combined limited; the old compound-twist config is dropped).
 >
@@ -278,7 +278,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Containment liner, 6-mil black LDPE | 20' × 10' sheet — secondary spill containment under IBCs and filter skid | 4 | Amazon | $18–$28/sheet | $75–$110 |
 **Water consumables subtotal: ~$205–$240**
 
-**Section total: $3,135–$4,766**
+**Section total: $4,063–$6,104**
 
 ## 6. Electrical — Power, Circuits & Wiring
 *Source: `electrical-report.md`*
@@ -373,7 +373,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | Plastic fabrication — roll 2 cylinders (housing + drum), hot-air / extrusion weld, cap/shaft fit, bearing fit | 16–22 hrs at local plastic fab shop | 1 job | Local plastic fabrication shop (SoCal) — get 2–3 quotes | ~$800–$1,150 |
-**Section total: ~$1,450–$2,100**
+**Section total: ~$1,465–$2,160**
 
 *Note: This is for the drum body only. The hinged panel that the drum mounts into (50×50mm RHS frame, 4mm PP plastic skins (18mm-ply Fan-B mount band), EPDM perimeter gasket) is covered in § 2 (Interior Conversion) above. See [light-trap-selection.md](light-trap-selection.md) for full specification and supplier notes.*
 
@@ -414,7 +414,7 @@ top/bottom weld + anchor connection** (fabricator/PE review) — not the member 
 | Fan B flex cable (coiled, 16AWG 2-cond, silicone) | 1m coiled, Deutsch DT 2-pin connectors each end — accommodates the ~56° swing | 1 | Waytek Wire / McMaster-Carr | ~$35 |
 **Door frame subtotal: ~$462**
 
-**Section total (materials): ~$1,232**
+**Section total (materials): ~$1,112–$1,372** *(swing pivot + fixed RHS door frame; = cost-breakdown §6b)*
 **Fabrication labor: ~12–16 hrs × $80–$100/hr = $960–$1,600**
 
 ## 7b. Perimeter Walkway
@@ -481,7 +481,7 @@ top/bottom weld + anchor connection** (fabricator/PE review) — not the member 
 | 25×25×3mm Al angle cleats, 100mm | Anti-slide cleats screwed to base plate | 2 | Metal Supermarkets / online | ~$4 |
 **Cooler + inverter subtotal: ~$520**
 
-**Section total: ~$830** *(ventilation $110 + shade $200 + cooler/inverter $520)*
+**Section total: ~$824–$974** *(ventilation $110 + shade $200 + cooler/inverter $520; = cost-breakdown §5b)*
 *Note: fans wired to Circuits A & B (DC); the cooler runs from the interior inverter (Circuit E) → GFCI panel outlet → outdoor cord. The cooler subsystem (cooler + inverter + DC protection + AC outlet) is the only 120V AC branch — see [Electrical Report §7.6](electrical-report.md#ac-safety).*
 
 ## 9. Printmaking Chemistry — Cyanotype (50 prints)

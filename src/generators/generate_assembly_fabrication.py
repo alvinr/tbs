@@ -57,7 +57,7 @@ from tbs_constants import (
 
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
 
-RAIL_OFF   = 100       # floor/ceiling offset for all equipment (mm)
+from tbs_constants import RAIL_OFF   # floor/ceiling offset for all equipment (mm)
 DRUM_H_ELV = DRUM_H_LT  # 2000mm — drum height in elevation view
 DRUM_CY    = C_WID // 2  # drum center in Y direction = container width center = 1181mm
 

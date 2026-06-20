@@ -61,7 +61,7 @@ from tbs_constants import (
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
 
 # ── Constants shared with previous session ────────────────────────────────────
-RAIL_OFF   = 100    # floor offset for all floor-standing equipment (mm)
+from tbs_constants import RAIL_OFF   # floor offset for all floor-standing equipment (mm)
 DRUM_H_ELV = DRUM_H_LT   # 2000mm — revolving drum height in elevation view
 
 # ── Palette ───────────────────────────────────────────────────────────────────

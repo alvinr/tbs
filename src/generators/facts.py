@@ -58,6 +58,7 @@ def _load(path: str) -> dict:
             out[cur]["aliases"].append(_unquote(s[2:]))
         elif ":" in s:
             k, v = s.split(":", 1)
+            v = v.split(" #", 1)[0]            # strip an inline ' # comment' (scalar fields only)
             out[cur][k.strip()] = _scalar(v)
             in_aliases = False
     return out

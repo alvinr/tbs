@@ -271,7 +271,7 @@ Line items (Option A, manual handwheel actuation) — **generated from `costing.
 
 **Source document:** `water-system-report.md`
 
-Self-contained three-circuit water system for remote/off-grid cyanotype processing. Provides ~13 full-size prints (~116 sq ft each) between water resupply runs, with Brown wash-2 recycling (~8–10 on fresh Blue alone).
+Self-contained three-circuit water system for remote/off-grid cyanotype processing. Provides ~<!-- BEGIN fact:prints_per_resupply -->13<!-- END fact:prints_per_resupply --> full-size prints (~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft each) between water resupply runs, with Brown wash-2 recycling (~8–10 on fresh Blue alone).
 
 <!-- BEGIN costing:water -->
 | Category | Low† | High† |
@@ -393,7 +393,7 @@ Cyanotype is the recommended starting process: no silver, no DEA registration, n
 
 *Note: development requires only plain cold water — no darkroom chemistry. The §5 water system provides all wash water.*
 
-*Muslin reconciled (2026-06-18): the earlier $1,100 / $900 / $43-per-print figures all over-counted the fabric ~3×. The [shopping list](chemistry-shopping-list.md) derived 6,670 sq ft ÷ 60″(5 ft) wide = "1,340 linear **yards**," but 6,670 ÷ 5 = 1,334 linear **feet** ≈ **445 yd** — feet were labelled yards. Three 60″ strips cover the 4499 mm width (×2388 mm tall = ~23.5 ft/print); 50 prints + 15% waste = ~450 yd = **3 × 150-yd rolls ≈ $300 (~$6/print)**. §7.1 and §7.2 now agree on this figure.*
+*Muslin reconciled (2026-06-18): the earlier $1,100 / $900 / $43-per-print figures all over-counted the fabric ~3×. The [shopping list](chemistry-shopping-list.md) derived 6,670 sq ft ÷ 60″(5 ft) wide = "1,340 linear **yards**," but 6,670 ÷ 5 = 1,334 linear **feet** ≈ **445 yd** — feet were labelled yards. Three 60″ strips cover the <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> mm width (×<!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm --> mm tall = ~23.5 ft/print); 50 prints + 15% waste = ~450 yd = **3 × 150-yd rolls ≈ $300 (~$6/print)**. §7.1 and §7.2 now agree on this figure.*
 
 ### 7.2 Per-print cost (cyanotype — Standard ½-Ware tier; range locked by trial)
 
@@ -402,7 +402,7 @@ Cyanotype is the recommended starting process: no silver, no DEA registration, n
 | Ammonium iron(III) oxalate (AmFe, Part A) | ~$23 |
 | Potassium ferricyanide (Part B) | ~$3 |
 | Ammonium dichromate (contrast) | ~$0.50 |
-| Muslin substrate (~116 sq ft = ~9 yd of 60″ + 15% waste) | ~$6 |
+| Muslin substrate (~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft = ~9 yd of 60″ + 15% waste) | ~$6 |
 | Water & consumables (6-mil liner, gloves) | ~$3 |
 | **Total per print (Standard)** | **~$36** |
 
@@ -526,7 +526,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Item | Cost |
 |------|------|
 | Transport (short haul, commercial hire) | $300–$800 |
-| Water resupply (~420 gal / 1,600L Blue ≈ 13 prints) | $25–$50 |
+| Water resupply (~420 gal / <!-- BEGIN fact:blue_supply_l -->1,600<!-- END fact:blue_supply_l -->L Blue ≈ <!-- BEGIN fact:prints_per_resupply -->13<!-- END fact:prints_per_resupply --> prints) | $25–$50 |
 | Location permit | $0–$500 |
 | **Per-deployment overhead** | **~$325–$1,350** |
 

@@ -148,7 +148,7 @@ A 12-month build and deployment program:
 Each deployment is a public event. The container is placed on-site; visitors can observe or participate in the coating, exposure, and development process. Invitations extended to local schools, photography programs, and community organizations at each site.
 
 ### Archival Print Edition
-50 cyanotype prints on cotton muslin, each approximately 4499 × 2388mm (~14'9" × 7'10"). Numbered, signed, with full exposure metadata. Available for acquisition by institutions and private collectors.
+50 cyanotype prints on cotton muslin, each approximately <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm (~14'9" × 7'10"). Numbered, signed, with full exposure metadata. Available for acquisition by institutions and private collectors.
 
 ### Open Documentation Site
 All design files, optical derivations, engineering drawings, and Python simulation source code are published openly at [alvinr.github.io/tbs](https://alvinr.github.io/tbs/) under a permissive license. Any institution or practitioner who wants to build a similar camera has everything required to do so — without starting from scratch.
@@ -176,7 +176,7 @@ My practice since has moved between classical portraiture and abstract color in 
 |-----------|-------|
 | Container | 20ft ISO standard (6,058 × 2438 × 2591mm exterior) |
 | Focal length | 2362mm |
-| Image plane (active) | 4499 × 2388mm (~14'9" × 7'10") |
+| Image plane (active) | <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm (~14'9" × 7'10") |
 | Container interior | 5893 × 2388mm (~19'4" × 7'10") |
 | Image area | ~116 sq ft |
 | Optimal pinhole | Ø2.17mm (Rayleigh formula, λ=550nm) |

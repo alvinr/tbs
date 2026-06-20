@@ -115,7 +115,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Item | Spec | Qty | Supplier A | Supplier B | Est. unit |
 |------|------|-----|-----------|-----------|-----------|
 | Aluminum angle 2"×2"×3/16" | 8ft lengths | 10 | Metal Supermarkets SoCal | [Online Metals](https://www.onlinemetals.com) | $22 |
-| [Dibond ACM panel 4mm](https://www.grimco.com) | 4'×8' sheets — **single rigid backing** (Option A), 4499×2388mm | 6 | Grimco, City of Industry CA | Signwarehouse | $85 |
+| [Dibond ACM panel 4mm](https://www.grimco.com) | 4'×8' sheets — **single rigid backing** (Option A), <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm -->×<!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm | 6 | Grimco, City of Industry CA | Signwarehouse | $85 |
 | [Black EPDM foam tape 1"×½"](https://www.mcmaster.com/8614K84) | 50ft rolls — panel perimeter seal + housing-surround ring (Ø900 aperture) | 4 | McMaster-Carr #8614K84 | — | $37 |
 | [Rosco Duvetyne blackout fabric](https://www.rosebrand.com) | 60" wide, 10 yd | 1 | [Rose Brand](https://www.rosebrand.com) (Burbank CA) | B&H Photo | $95 |
 | 6-mil black poly sheeting | 10'×100' roll | 1 | Home Depot | — | $65 |

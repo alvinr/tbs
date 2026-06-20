@@ -3,7 +3,7 @@
 # Photosensitive Options
 ## Giant Pinhole Camera — Image Plane Material Selection Guide
 
-**Image plane dimensions (active):** 4499 × 2388mm (~14′ 9″ × 7′ 10″)  
+**Image plane dimensions (active):** <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm (~14′ 9″ × 7′ 10″)  
 **Container interior:** 5893 × 2388mm (19′ 4″ × 7′ 10″) — end zones occupied by equipment  
 **Image plane area:** ~116 sq ft (10.7 m²)  
 **Camera configuration:** Option B (side-to-side), f = 2362mm, f/1088, pinhole Ø 2.17mm
@@ -12,7 +12,7 @@
 
 ## Executive Summary
 
-Eight photosensitive processes were evaluated for a ~116 sq ft (4499 × 2388mm) active image plane at f/1088 in full sunlight. The analysis covers per-image cost, chemistry sourcing, mounting method, spectral response to natural light, and ISO equivalent — the last being the single most consequential variable for practical operation of this camera.
+Eight photosensitive processes were evaluated for a ~116 sq ft (<!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm) active image plane at f/1088 in full sunlight. The analysis covers per-image cost, chemistry sourcing, mounting method, spectral response to natural light, and ISO equivalent — the last being the single most consequential variable for practical operation of this camera.
 
 ### The ISO problem
 

@@ -423,14 +423,18 @@ def _check_walkway() -> list[str]:
     return issues
 
 
-# Each pair: (label, check-fn, trigger-files, staged_warn). `staged_warn` gates the pre-commit
-# warning: True for a PRECISE same-frame equality (no false positives), False for the LOD-ambiguous
-# size-set comparison (overview legitimately simplifies fab detail) — that one stays on-demand only.
+# Each pair: (label, check-fn, trigger-files, staged_warn, accepted). `staged_warn` gates the
+# pre-commit warning (True only for a PRECISE same-frame equality with no false positives).
+# `accepted` documents an EXPECTED, signed-off difference: the overview deliberately simplifies the
+# walkway bracket's fab detail (a whole-system level-of-detail choice, like the 2D thin-section
+# scale exaggeration), so --duplication reports it as expected, not drift, and it never warns.
 _DUP_PAIRS = [
     ("electrical EP core (power_core ↔ electrical)", _check_electrical,
-     ["src/models/generate_electrical_model.py", "src/models/generate_sketchup_model.py"], True),
+     ["src/models/generate_electrical_model.py", "src/models/generate_sketchup_model.py"], True, None),
     ("walkway bracket (_cantilever_parts ↔ walkway_brackets)", _check_walkway,
-     ["src/models/generate_walkway_model.py", "src/models/generate_sketchup_model.py"], False),
+     ["src/models/generate_walkway_model.py", "src/models/generate_sketchup_model.py"], False,
+     "overview is a simplified whole-system view — it omits the exterior reinforcing plates + "
+     "full-length through-bolts the dedicated walkway model shows (intentional LOD, 2026-06)"),
 ]
 
 
@@ -500,17 +504,20 @@ def _duplication_report() -> int:
     """Full on-demand run — checks every known duplicated-geometry pair, regardless of staging."""
     print("Duplicated-geometry equality — calling both emitters, comparing what they build:\n")
     any_drift = False
-    for label, fn, *_ in _DUP_PAIRS:
+    for label, fn, _files, _warn, accepted in _DUP_PAIRS:
         issues = _duplication_findings([(label, fn)])
-        if issues:
+        if not issues:
+            print(f"  ✓ {label}: in sync")
+        elif accepted:
+            print(f"  ≈ {label}: EXPECTED difference — {accepted}")
+            for m in issues:
+                print("      " + m.split(': ', 1)[1])
+        else:
             any_drift = True
             print(f"  ✗ {label}: DRIFT")
             for m in issues:
                 print("      " + m.split(': ', 1)[1])
-        else:
-            print(f"  ✓ {label}: in sync")
-    if not any_drift:
-        print("\nall duplicated emitters agree")
+    print("\n✗ unexpected drift found" if any_drift else "\nno unexpected drift (accepted differences noted above)")
     return 0
 
 

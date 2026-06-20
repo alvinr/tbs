@@ -1349,19 +1349,27 @@ def solar_array():
         p.append(ruby_box("Tilt Frame back leg", x, back_yd - 20, SOLAR_ARRAY_Z,
                           40, 40, top_z - SOLAR_ARRAY_Z, color=C_STEEL))
     # PV run: array junction -> up to the external power panel MC4 bulkheads.
+    # A PV feed is a +/- PAIR, drawn as a BONDED ("siamese") pair of curly coil cords: the two
+    # conductors run together (coiled, ~16mm apart with a tightened curl so they read as one
+    # twisted pair, not a tangle) for the whole length, and FAN OUT only at the ends — straight
+    # stubs at the array terminals and to the panel's two MC4 columns (+ at _px 0.192, - at 0.275).
+    # The short end-legs fall under ruby_coil_cord's straight-stub threshold, so the fans render as
+    # clean straight leads while the long middle legs coil. Coil cords mark the SOFT connector (vs
+    # the rigid orthogonal conduit); the bonded run drapes DIAGONALLY up to the panel so it stays
+    # right of + clear of the evap cooler (X720-1280) — an angle a rigid conduit can't take.
     jx = SOLAR_ARRAY_X + span / 2
-    panel = (PWR_PANEL_X + 70, -WALL_T - 30, PWR_PANEL_Z + PWR_PANEL_H * 0.5)
-    # Flexible PV lead (array -> panel MC4) — a SOFT connector, drawn as a curly coil
-    # cord (ruby_coil_cord) to distinguish it from the rigid orthogonal conduit. Thinner
-    # conductor (r=5 vs the conduit's 10) reinforces the soft/hard read. The final leg
-    # drapes DIAGONALLY from the ground up to the panel (not a straight vertical rise) so
-    # it stays right of and clear of the evap cooler (X720-1280) — a flexible cord can take
-    # the angle a rigid orthogonal conduit can't.
-    p.append(ruby_coil_cord("PV cord (array -> panel, flexible)",
-                            [(jx, SOLAR_ARRAY_YD - 20, SOLAR_ARRAY_Z + 60),
-                             (jx, -WALL_T - 30, SOLAR_ARRAY_Z + 60),
-                             panel],
-                            r=5, color="#2D7A2D"))
+    mc4_z = PWR_PANEL_Z + PWR_PANEL_H * 0.225          # land on the BOTTOM MC4 pair (PV1)
+    pmid = PWR_PANEL_X + 0.2335 * PWR_PANEL_W          # midpoint of the two MC4 columns
+    PAIR, FAN = 8, 18                                  # bonded half-spacing / array-end fan-out
+    for s, panel_uf, col, sym in ((-1, 0.192, "#2D7A2D", "+"),     # (+) -> left MC4 column, green
+                                  (+1, 0.275, "#1A1A1A", "-")):    # (-) -> right MC4 column, black
+        p.append(ruby_coil_cord(f"PV cord ({sym}) (array -> panel MC4, bonded pair)",
+                                [(jx + s * FAN,  SOLAR_ARRAY_YD - 20, SOLAR_ARRAY_Z + 60),  # array terminal (fanned)
+                                 (jx + s * PAIR, SOLAR_ARRAY_YD - 50, SOLAR_ARRAY_Z + 60),  # converge into the pair
+                                 (jx + s * PAIR, -WALL_T - 30,        SOLAR_ARRAY_Z + 60),  # bonded run toward panel
+                                 (pmid + s * PAIR, -WALL_T - 30,      mc4_z),               # bonded, diagonal up
+                                 (PWR_PANEL_X + panel_uf * PWR_PANEL_W, -WALL_T - 30, mc4_z)],  # split to its MC4 column
+                                r=5, coil_r=13, color=col))
     return '\n'.join(p)
 
 

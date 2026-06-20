@@ -221,6 +221,32 @@ OPTICS = [
 ]
 
 
+# §4 Film plane mechanism (4-corner Option A, manual handwheel actuation). Line items own the truth;
+# the section total sums them. The only documented source of Low/High spread is the cam-lever muslin
+# clamps ($3/$5.50/$8 ea × 92 = $276/$506/$736) plus a modest band on the est. wall-seat saddle plate;
+# everything else is single-source-specced (point()). Folding this BOM in raised the §4 floor ~$480:
+# the hand-set summary ($3,100/$3,650/$4,200) sat BELOW the section's own bill of materials.
+# Source: project-cost-breakdown.md §4.1–4.3 / film-plane-mechanism-report.md.
+FILM = [
+    # 4.1 Structural & rails (HGR20 carriage + Option-A floating cross-slides)
+    point("Linear guide rails HGR20 2200mm (×4) + carriages HGH20CA (×8)", 324, "2 carriages per rail"),
+    point("Acme leadscrews ¾\"-6 8 ft (×4) + bronze nuts (×4)", 428, "manual handwheel drive"),
+    point("Handwheels 8\" (×4) + locking collars SS316 (×4)", 188),
+    point("Corner bracket L-plates, ¼\" alum 6×8 (×4)", 80),
+    point("Option-A cross-slides — HGR15 rails (×8) + HGH15CA (×8) + intermediate plates (×4)", 356, "floating-corner X–Z stage"),
+    point("Rod-end spherical bearings GIR25-DO (×8) + pivot pins SS316 (×8)", 240),
+    # 4.2 Film plane frame & backing
+    point("Aluminum angle 2×2×3/16 8 ft (×10)", 220),
+    point("Dibond ACM 4mm 4×8 sheets (×6) — single rigid plane", 510, "Option A: no folding hinge"),
+    point("Light-seal set — EPDM tape (×3) + Rosco Duvetyne + 6-mil poly + Gorilla tape (×6)", 316),
+    LineItem("Cam-lever spring clamps, muslin (×92)", 276, 506, 736, "$3/$5.50/$8 ea — the section's main Low/High driver"),
+    point("Clamp mounting — M5×16 SS bolts/Nylocks (×184+184) + neoprene jaw strip", 70),
+    # 4.3 Wall-seat saddles (rev 11, ICP-11–14) — estimates, confirm at procurement
+    LineItem("Wall-seat saddles ×8 — 8mm steel plate, cut + welded (ICP-11)", 380, 425, 470, "~28 kg total; back-plate + seat + gusset"),
+    point("Saddle fasteners — M12 through-bolts (×36) + M8 thumbscrews (×12) + M8 rail bolts (×12)", 150, "ICP-12/13/14"),
+]
+
+
 # §5b Ventilation & cooling — single-value BOM (point estimates). Source: ventilation-report.md.
 # Items sum to $824; the report total was STALE at $769 (the last 4 items were added without
 # updating it). The cost-breakdown §5b scenario ($770/$830/$920) is a budget band around this.
@@ -363,7 +389,7 @@ SECTIONS = [
     Section("1",  "Container purchase & delivery", *total(CONTAINER)),
     Section("2",  "Interior conversion", *total(INTERIOR)),
     Section("3",  "Optics — pinhole plate", *total(OPTICS)),
-    Section("4",  "Film plane mechanism (4-corner Option A, incl. wall-seat saddles + cross-slides)", 3100, 3650, 4200),
+    Section("4",  "Film plane mechanism (4-corner Option A, incl. wall-seat saddles + cross-slides)", *total(FILM)),
     Section("5",  "Processing water system (incl. tray, spray bar, IBC stacking frame)", *total(WATER)),
     Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · pump switches)", 2025, 2265, 2575),
     Section("5b", "Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)",
@@ -417,7 +443,7 @@ def _detail_blocks() -> dict:
     lmh = ("low", "mid", "high")
     return {
         "container": (_F, CONTAINER, lmh), "interior": (_F, INTERIOR, lmh),
-        "optics": (_F, OPTICS, lmh), "water": (_F, WATER, ("low", "high")),
+        "optics": (_F, OPTICS, lmh), "film": (_F, FILM, lmh), "water": (_F, WATER, ("low", "high")),
         "lightlock": (_F, LIGHTLOCK, lmh), "walkway": (_F, WALKWAY, lmh),
         "swingpivot": (_F, SWINGPIVOT, lmh),
     }
@@ -498,7 +524,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 909,  "total": 1210, "per_print": 24},  # 909 not 910: consistent ferri rounding ($104, not the doc's hand-rounded $105)
     "standard": {"chem": 1353, "total": 1650, "per_print": 33},
     "rich":     {"chem": 2681, "total": 2980, "per_print": 60},
-    "grand_total": (19490, 24925, 32482),  # + §6b now includes the $462 fixed door frame (was omitted)
+    "grand_total": (19928, 25088, 32370),  # §4 film plane folded to its BOM (+438/+163/−112) on top of the §6b door frame
     "walkway": (1826, 2214, 2607),
     "water": (4063, 5085, 6104),
     "container": (2300, 3300, 4300),
@@ -506,6 +532,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "swingpivot": (1112, 1232, 1372),
     "interior": (950, 1138, 1350),
     "optics": (95, 165, 240),
+    "film": (3538, 3813, 4088),   # §4 BOM folded in (was hand-set $3,100/$3,650/$4,200, below its own BOM)
     "ventilation": (824, 824, 824),   # §5b BOM (point estimates); report total was stale at $769
     "power": (2265, 2265, 2265),       # §5a authoritative subtotal ($1,295 + $970)
 }
@@ -528,7 +555,7 @@ def check() -> list[str]:
     if total(WATER) != EXPECTED["water"]:
         errs.append(f"water {total(WATER)} != {EXPECTED['water']}")
     for key, items in (("container", CONTAINER), ("lightlock", LIGHTLOCK), ("swingpivot", SWINGPIVOT),
-                       ("interior", INTERIOR), ("optics", OPTICS), ("ventilation", VENTILATION),
+                       ("interior", INTERIOR), ("optics", OPTICS), ("film", FILM), ("ventilation", VENTILATION),
                        ("power", POWER)):
         if total(items) != EXPECTED[key]:
             errs.append(f"{key} {total(items)} != {EXPECTED[key]}")

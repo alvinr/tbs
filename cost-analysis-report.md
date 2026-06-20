@@ -9,7 +9,7 @@ capital from recurring/consumable spend, and ranks the realistic savings levers.
 
 All figures are the **mid-column** estimates from the
 [Cost Breakdown](project-cost-breakdown.md) (the itemized source of truth); the build
-mid-total is **~$26,564**.
+mid-total is **~$25,088**.
 
 ---
 
@@ -21,12 +21,12 @@ recurs or is consumed — savings strategy is different for each.
 
 | Bucket | Mid | What it is |
 |---|--:|---|
-| **Capital build** (one-time hardware) | **$22,182** | The systems you build once — this is where build-savings live |
-| Consumable (per 50-print batch) | $2,842 | Cyanotype chemistry + substrate — recurs every batch |
+| **Capital build** (one-time hardware) | **$21,898** | The systems you build once — this is where build-savings live |
+| Consumable (per 50-print batch) | $1,650 | Cyanotype chemistry + substrate (Standard ½-Ware) — recurs every batch |
 | Recurring (per deployment) | $750 | Commercial-hire transport |
 | Soft / regulatory | $790 | Licences & permits |
 
-Build-savings work on the **$22,182 capital**. The $2,842 consumable is attacked
+Build-savings work on the **$21,898 capital**. The $1,650 consumable is attacked
 separately (bulk chemistry, cheaper substrate) because it repeats every batch and
 quickly dominates lifetime cost.
 
@@ -38,16 +38,16 @@ Capital systems ranked by mid cost:
 
 | System | Mid | % of capital | Notes |
 |---|--:|--:|---|
-| **Processing water system** | $6,175 | 28% | Tray (304 SS) + IBC frame dominate |
-| **Film-plane mechanism** | $3,650 | 16% | Carriages, cam-lever clamps, optional electric actuation |
-| **Container + delivery** | $3,150 | 14% | Grade-dependent (CW vs WWT) |
-| **Power & electrical** | $2,390 | 11% | Battery + solar + distribution + protection |
-| **Perimeter walkway** | $2,186 | 10% | GRP grating + steel cantilevers |
+| **Processing water system** | $5,085 | 23% | Tray (304 SS) + IBC frame dominate |
+| **Film-plane mechanism** | $3,813 | 17% | Carriages, Option-A cross-slides, cam-lever clamps, wall-seat saddles |
+| **Container + delivery** | $3,300 | 15% | Grade-dependent (CW vs WWT) |
+| **Power & electrical** | $2,265 | 10% | Battery + solar + distribution + protection |
+| **Perimeter walkway** | $2,214 | 10% | GRP grating + steel cantilevers |
 | **Light lock** | $1,802 | 8% | Plastic-skin custom fabrication |
-| **Interior conversion** | $1,140 | 5% | Insulation, sealing, safelight |
-| **Swing pivot** | $770 | 3% | Pivot post + bearings + cage |
-| **Ventilation & cooling** | $769 | 3% | Fans + cooler + baffle-duct fab + canopy |
-| **Optics — pinhole** | $150 | 0.7% | Trivial (it is a pinhole) |
+| **Swing pivot** | $1,232 | 6% | Pivot post + bearings + cage + fixed RHS door frame |
+| **Interior conversion** | $1,138 | 5% | Insulation, sealing, safelight |
+| **Ventilation & cooling** | $884 | 4% | Fans + cooler + inverter + baffle-duct fab + canopy |
+| **Optics — pinhole** | $165 | 0.8% | Trivial (it is a pinhole) |
 
 The **water system is 28% of the capital build** and the **304 SS processing tray is its
 single biggest line** (~$1,177–1,857) — the same item that topped the weight study.

@@ -125,6 +125,18 @@ film_plane_height_mm:
   unit: mm
   owner: film-plane-mechanism-report.md
 
+# Container interior — INJECTION-ONLY (no aliases): 2388 also = film-plane/container height and 5893
+# appears in comparison contexts, so they're filled only where a placeholder marks the meaning.
+container_interior_length_mm:
+  constant: C_LEN
+  unit: mm
+  owner: container-report.md
+
+container_height_mm:
+  constant: C_HGT
+  unit: mm
+  owner: container-report.md
+
 blue_supply_l:
   constant: BLUE_SUPPLY_L
   unit: L

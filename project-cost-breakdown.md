@@ -48,11 +48,13 @@
 
 The 20 ft standard container is the camera body. Minimum acceptable grade is Wind & Watertight (WWT); Cargo Worthy (CW) is recommended.
 
+<!-- BEGIN costing:container -->
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
 | 20 ft container — CW grade | $2,000 | $2,750 | $3,500 | From containermgt.com |
 | Delivery — short haul (<50 miles) | $300 | $550 | $800 | Commercial tilt-bed hire |
 | **Section total** | **$2,300** | **$3,300** | **$4,300** | |
+<!-- END costing:container -->
 
 **Grade comparison:**
 
@@ -126,6 +128,7 @@ Converting the container interior from cargo hold to pinhole camera. Includes li
 
 ### Section total
 
+<!-- BEGIN costing:interior -->
 | Category | Low | Mid | High |
 |----------|-----|-----|------|
 | Light-sealing | $150 | $178 | $210 |
@@ -135,6 +138,7 @@ Converting the container interior from cargo hold to pinhole camera. Includes li
 | Door & access | $50 | $70 | $100 |
 | Misc. hardware | $80 | $110 | $130 |
 | **Interior conversion total** | **$950** | **$1,138** | **$1,350** |
+<!-- END costing:interior -->
 
 ---
 
@@ -146,12 +150,14 @@ The precision aperture is the optical heart of the camera. Optimal diameter for 
 
 ### 3.1 Pinhole plate
 
+<!-- BEGIN costing:optics -->
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
 | Custom laser-drilled pinhole, SS-302/304 shim, 3"×3" | $50 | $100 | $150 | Lenox Laser, lenoxlaser.com — ±0.025mm tolerance, SEM-verified |
 | Steel backing plate 6"×6"×⅛", welded frame | $20 | $30 | $40 | Houses the precision insert |
 | Shutter plate (⅛" steel, 10"×8") + slide channel | $25 | $35 | $50 | Simple sliding shutter, operated from outside |
 | **Pinhole plate total** | **$95** | **$165** | **$240** | |
+<!-- END costing:optics -->
 
 ### 3.2 Optional lens (alternative to or supplement with pinhole)
 
@@ -252,6 +258,7 @@ The demountable brace cage is retired. Each of the 8 rail ends instead anchors t
 
 Self-contained three-circuit water system for remote/off-grid cyanotype processing. Provides ~13 full-size prints (~116 sq ft each) between water resupply runs, with Brown wash-2 recycling (~8–10 on fresh Blue alone).
 
+<!-- BEGIN costing:water -->
 | Category | Low† | High† |
 |----------|------|-------|
 | Water storage (4× IBC totes, 3× bulkhead fittings, X1 fill tee) | $395 | $720 |
@@ -265,6 +272,7 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 | Electrical (wiring only — fuse block in Electrical Report) | $35 | $35 |
 | Processing consumables (6-mil poly, pH meter, citric acid) | $231 | $278 |
 | **Water system total** | **$4,063** | **$6,104** |
+<!-- END costing:water -->
 
 *Used IBC totes (available locally, ~$80–$150 each from Container Exchanger CA) drive significant savings vs. new.*
 
@@ -276,6 +284,7 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 
 Personnel access during operation is via a **Ø900 fixed housing + single-opening C-shell drum** (no fins) built into the hinged cargo-door panel — light-tight by geometry (two 80° housing openings 180° apart; the drum opening can never bridge both). The drum rotates on two SKF 6215 bearings. This replaces the earlier Ø750 4-fin drum, which could not fit a person and leaked daylight at the rotation transit angles. **rev 9 / B2 builds the drum and housing from a hybrid plastic skin — 5mm UV-HDPE housing + 4mm PP drum — instead of 3mm aluminum**, cutting the drum/housing mass (~99 kg → ~60 kg), removing the aluminum-to-steel galvanic couple, and lowering both material and fabrication cost. Custom fabrication remains preferred over commercial darkroom doors (~$2,500–$4,500) — those are not weatherproof, transport-rated, or adaptable to a removable panel.
 
+<!-- BEGIN costing:lightlock -->
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
 | 5mm UV-HDPE sheet (black) — Ø900 housing shell (~7 m²) | $180 | $230 | $280 | TAP Plastics (SoCal) / Online Metals plastics |
@@ -287,6 +296,7 @@ Personnel access during operation is via a **Ø900 fixed housing + single-openin
 | Matte-black interior finish (black-pigmented sheet, no etch-prime; flat-black at welds) | $40 | $55 | $70 | Rattle-can / local shop SoCal |
 | Plastic fabrication — roll 2 cylinders (housing + drum), hot-air / extrusion weld, cap/shaft + bearing fit (16–22 hrs) | $800 | $975 | $1,150 | Local plastic fab shop — get 2–3 quotes |
 | **Housing + drum total** | **$1,465** | **$1,802** | **$2,160** | |
+<!-- END costing:lightlock -->
 
 *Note: the hinged panel that the housing mounts into (50×50mm RHS frame, 4mm PP plastic skins (18mm-ply Fan-B mount band), EPDM perimeter gasket) is part of the interior conversion covered in Section 2. Still below the $2,500–$4,500 commercial darkroom-door range, and weatherproof + transport-rated.*
 
@@ -298,6 +308,7 @@ Personnel access during operation is via a **Ø900 fixed housing + single-openin
 
 Four removable grated walkway sections around all 4 sides of the processing tray. Near walkway widens to 500mm at EP/battery/slit zone (X≈1,155–2,629). 130mm deck height (raised +50mm so the support clears the floor-level spray bar; 15mm grate). No tray contact on any section — entire tray interior completely clear for film loading. Near/far walkways: wall-cantilevered brackets bolted to corrugated wall ribs (14 standard 8mm + 4 widened 10mm). Right walkway (rev12): cantilever rectangle — a closed 40×40 SHS frame on 2 center arms off the IBC corridor uprights, left corners on wall cleats, right corners on combined corner plates shared with the bottom film rail. Left walkway: removable lift-out grate on 5 floor-leg cantilever brackets bolted to bare floor outside the tray (arms reach X=470, three extended to X=770 on the punch-out, passing 15mm over the spray bar; brackets stay, grate lifts out for transport). Butt joints at all corners.
 
+<!-- BEGIN costing:walkway -->
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
 | Molded GRP (fiberglass) grating, 15mm (vinyl-ester, grit top) | $970 | $1,115 | $1,260 | ~4.5 m² (incl. 1474×500mm near walkway bump-out); McNichols / Grating Pacific — corrosion-proof, −62 kg vs steel |
@@ -316,6 +327,7 @@ Four removable grated walkway sections around all 4 sides of the processing tray
 | M10 wedge floor anchors (×20) | $25 | $35 | $45 | 4 per foot plate; sealed penetrations into the container floor |
 | Fabrication (brackets, cantilever frame, install) | $280 | $360 | $440 | 14 std + 4 widened wall brackets, fabricate + fit the right walkway cantilever frame (clamp arms to IBC uprights, bolt cleats + combined plates), fit 5 left floor-leg cantilever brackets + drill/seal floor anchors, install |
 | **Perimeter walkway total** | **$1,826** | **$2,214** | **$2,607** | GRP grating swap: +$720/+$799/+$880 vs galvanized steel |
+<!-- END costing:walkway -->
 
 ---
 
@@ -325,6 +337,7 @@ Four removable grated walkway sections around all 4 sides of the processing tray
 
 The panel + drum SWING ~56° about a vertical Ø89×8mm CHS pivot post (rev10 — supersedes the HGR20 slide + ceiling-rail suspension), carrying the punch-out bay inboard of the door plane (true min X +59mm) so the cargo doors close. See the rotation-hardware detail in [master-shopping-list.md](master-shopping-list.md) §7a.
 
+<!-- BEGIN costing:swingpivot -->
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
 | Ø89×8 CHS pivot post (upgrades the reused film upright) + machined hub / thrust collar | $180 | $220 | $260 | Member check DONE (SF 3.7, [§4.1](hinged-panel-report.md)); post-to-container weld/anchor connection sign-off pending. Metal Supermarkets / local fab |
@@ -333,6 +346,7 @@ The panel + drum SWING ~56° about a vertical Ø89×8mm CHS pivot post (rev10 �
 | Top + bottom wall stays + 4-bolt anchor plates | $120 | $140 | $160 | Turnbuckles + eye/hook rods + plates; McMaster-Carr / local fab |
 | Drop-in rail saddles + tapered dowels (×4, removable left film rails) | $90 | $110 | $130 | Local fab / McMaster-Carr |
 | **Panel swing pivot total** | **$650** | **$770** | **$910** | |
+<!-- END costing:swingpivot -->
 
 ---
 

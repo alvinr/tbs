@@ -20,13 +20,13 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 5. Print washing — water system (incl. IBC stacking frame) | $4,063 | $6,104 |
 | 6. Electrical — power, circuits, wiring | $2,025 | $2,575 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,465 | $2,160 |
-| 7a. Panel swing pivot (Ø89 pivot post + bearings + cage + wall stays + rail saddles) | $650 | $910 |
+| 7a. Panel swing pivot (Ø89 pivot post + bearings + cage + wall stays + rail saddles) | $1,112 | $1,372 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,826 | $2,607 |
 | 8. Cooling & ventilation | $824 | $974 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,210 | $2,980 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$18,978** | **~$29,080** |
+| **TOTAL (base build + 50-print run)** | **~$19,440** | **~$29,542** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*

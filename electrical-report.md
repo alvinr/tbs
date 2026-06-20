@@ -163,7 +163,7 @@ The solar PV inputs, shore power inlet, and the evaporative cooler's **120V AC o
 
 The panel face sits flush with the exterior wall surface. A 280×180mm cutout allows all connector bodies to protrude directly into the container interior — no cable gland or junction box is needed. PV cables route to the MPPT charge controller; the shore inlet routes to the shore charger; the **cooler AC outlet is fed from the interior 12V→120V inverter** (Circuit E) whose output is GFCI-protected (§7.6). The IP67 MC4 connectors, weatherproof NEMA inlet, and the in-use-covered GFCI-fed outlet, combined with the perimeter neoprene gasket, provide a fully sealed exterior face. The cooler is unplugged and the cord stowed inside for transport. See the power panel detail drawing below.
 
-![External Power Panel Detail](assets/power-panel-sheet1.png)
+![External Power Panel Detail](assets/electrical-sheet6.png)
 
 ## 6. Interior Lighting
 

@@ -11,7 +11,7 @@
 generators:
   assembly_fabrication: {script: src/generators/generate_assembly_fabrication.py, outputs: [diagrams/assembly-fab-sheet1.png, diagrams/assembly-fab-sheet2.png]}
   assembly_overview: {script: src/generators/generate_assembly_overview.py, outputs: [diagrams/assembly-overview-fp.png, diagrams/assembly-overview-plan.png, diagrams/assembly-overview.png]}
-  electrical_diagram: {script: src/generators/generate_electrical_diagram.py, outputs: [diagrams/electrical-sheet2.png, diagrams/electrical-sheet3.png, diagrams/electrical-sheet4.png, diagrams/electrical-sheet5.png]}
+  electrical_diagram: {script: src/generators/generate_electrical_diagram.py, outputs: [diagrams/electrical-sheet1.png, diagrams/electrical-sheet2.png, diagrams/electrical-sheet3.png, diagrams/electrical-sheet4.png, diagrams/electrical-sheet5.png, diagrams/electrical-sheet6.png]}
   film_plane_distortion: {script: src/generators/generate_film_plane_distortion.py, outputs: [diagrams/film-plane-distortion-summary.png]}
   film_plane_mechanism: {script: src/generators/generate_film_plane_mechanism.py, outputs: [diagrams/film-plane-sheet1.png, diagrams/film-plane-sheet2.png, diagrams/film-plane-sheet3.png, diagrams/film-plane-sheet4.png, diagrams/film-plane-sheet5.png, diagrams/film-plane-sheet6.png]}
   floorplan_diagram: {script: src/generators/generate_floorplan_diagram.py, outputs: [diagrams/container-floorplan-sheet2.png, diagrams/container-floorplan.png]}
@@ -25,7 +25,6 @@ generators:
   pinhole_wall_elevation: {script: src/generators/generate_pinhole_wall_elevation.py, outputs: [diagrams/pinhole-wall-elevation.png]}
   plate_drawing: {script: src/generators/generate_plate_drawing.py, outputs: [diagrams/plate-drawing-sheet1.png, diagrams/plate-drawing-sheet2.png]}
   portrait_viz: {script: src/generators/generate_portrait_viz.py, outputs: [diagrams/portrait-camera-schematic.png, diagrams/portrait-optimal-3m.png, diagrams/portrait-scale-comparison.png]}
-  power_panel_diagram: {script: src/generators/generate_power_panel_diagram.py, outputs: [diagrams/power-panel-sheet1.png]}
   schematic: {script: src/generators/generate_schematic.py, outputs: [diagrams/portrait-camera-schematic.png]}
   shelf_diagram: {script: src/generators/generate_shelf_diagram.py, outputs: [diagrams/shelf-sheet1.png, diagrams/shelf-sheet2.png, diagrams/shelf-sheet3.png]}
   spray_bar_diagram: {script: src/generators/generate_spray_bar_diagram.py, outputs: [diagrams/spray-bar-sheet1.png]}

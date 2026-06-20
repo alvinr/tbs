@@ -275,2803 +275,5687 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 85.mm, 0.mm)
-  circle = ge.add_circle([1300.mm,-920.mm,60.mm], vec, 5.mm, 10)
+  vec = Geom::Vector3d.new(3.mm, -9.mm, 0.mm)
+  circle = ge.add_circle([1282.mm,-920.mm,60.mm], vec, 5.mm, 10)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(19.683469607918596.mm, 11.333333333333371.mm, -19.913840016283835.mm)
-  circle = ge.add_circle([1300.mm,-835.mm,60.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(7.mm, -21.mm, 0.mm)
+  circle = ge.add_circle([1285.mm,-929.mm,60.mm], vec, 5.mm, 10)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.009257050357746.mm, 11.333333333333258.mm, -8.084264607821503.mm)
-  circle = ge.add_circle([1319.6834696079186.mm,-823.6666666666666.mm,40.086159983716165.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(0.mm, 88.mm, 0.mm)
+  circle = ge.add_circle([1292.mm,-950.mm,60.mm], vec, 5.mm, 10)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-19.81572696704302.mm, 11.333333333333371.mm, 8.547670251253408.mm)
-  circle = ge.add_circle([1299.6742125575608.mm,-812.3333333333334.mm,32.00189537589466.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.240646482510101.mm, 11.174603174603135.mm, -9.143875140511966.mm)
+  circle = ge.add_circle([1292.mm,-862.mm,60.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-7.850904343542652.mm, 11.333333333333371.mm, 20.101965151325494.mm)
-  circle = ge.add_circle([1279.8584855905178.mm,-801.mm,40.54956562714807.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.103793034090586.mm, 11.174603174603249.mm, -3.8554044985163287.mm)
+  circle = ge.add_circle([1301.24064648251.mm,-850.8253968253969.mm,50.856124859488034.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(8.77765289270019.mm, 11.333333333333258.mm, 19.714931185571793.mm)
-  circle = ge.add_circle([1272.0075812469752.mm,-789.6666666666666.mm,60.651530778473564.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.182943879120785.mm, 11.174603174603135.mm, 3.6628859069936794.mm)
+  circle = ge.add_circle([1292.1368534484195.mm,-839.6507936507936.mm,47.000720360971705.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(20.191951767994624.mm, 11.333333333333371.mm, 7.616481192489317.mm)
-  circle = ge.add_circle([1280.7852341396754.mm,-778.3333333333334.mm,80.36646196404536.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-3.951028205245848.mm, 11.174603174603135.mm, 9.062702001946683.mm)
+  circle = ge.add_circle([1282.9539095692987.mm,-828.4761904761905.mm,50.663606267965385.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(19.611466318005114.mm, 11.333333333333258.mm, -9.00644718045416.mm)
-  circle = ge.add_circle([1300.97718590767.mm,-767.mm,87.98294315653467.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(3.5660123580282743.mm, 11.174603174603249.mm, 9.220994920133435.mm)
+  circle = ge.add_circle([1279.0028813640529.mm,-817.3015873015873.mm,59.72630826991207.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(7.381026891803685.mm, 11.333333333333371.mm, -20.279204717617397.mm)
-  circle = ge.add_circle([1320.588652225675.mm,-755.6666666666667.mm,78.97649597608051.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.02060659798417.mm, 11.174603174603135.mm, 4.046214040203338.mm)
+  circle = ge.add_circle([1282.5688937220812.mm,-806.1269841269841.mm,68.9473031900455.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.234022139430635.mm, 11.333333333333371.mm, -19.505346371830136.mm)
-  circle = ge.add_circle([1327.9696791174788.mm,-744.3333333333334.mm,58.69729125846312.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.25802404655201.mm, 11.174603174603135.mm, -3.4687436065814126.mm)
+  circle = ge.add_circle([1291.5895003200653.mm,-794.952380952381.mm,72.99351723024884.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.363712187541523.mm, 11.333333333333258.mm, -7.144573318228495.mm)
-  circle = ge.add_circle([1318.7356569780482.mm,-733.mm,39.19194488663298.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.140951454441392.mm, 11.174603174603249.mm, -8.977511487416585.mm)
+  circle = ge.add_circle([1300.8475243666173.mm,-783.7777777777778.mm,69.52477362366743.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-19.396585713988543.mm, 11.333333333333371.mm, 9.46034695962328.mm)
-  circle = ge.add_circle([1298.3719447905066.mm,-721.6666666666667.mm,32.047371568404486.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-3.3710904324400417.mm, 11.174603174603135.mm, -9.294027154632523.mm)
+  circle = ge.add_circle([1304.9884758210587.mm,-772.6031746031746.mm,60.54726213625084.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.9071524837931975.mm, 11.333333333333371.mm, 20.445462736807713.mm)
-  circle = ge.add_circle([1278.975359076518.mm,-710.3333333333334.mm,41.507718528027766.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.933421446249213.mm, 11.174603174603249.mm, -4.235229948707868.mm)
+  circle = ge.add_circle([1301.6173853886187.mm,-761.4285714285714.mm,51.25323498161832.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(9.685391000274421.mm, 11.333333333333258.mm, 19.285199068932826.mm)
-  circle = ge.add_circle([1272.068206592725.mm,-699.mm,61.95318126483548.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.32900025433878.mm, 11.174603174603135.mm, 3.2730636579942143.mm)
+  circle = ge.add_circle([1292.6839639423695.mm,-750.2539682539682.mm,47.01800503291045.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(20.524445297700595.mm, 11.333333333333371.mm, 6.6687965314778666.mm)
-  circle = ge.add_circle([1281.7535975929993.mm,-687.6666666666667.mm,81.2383803337683.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-4.3290390746112735.mm, 11.174603174603135.mm, 8.888341360750331.mm)
+  circle = ge.add_circle([1283.3549636880307.mm,-739.0793650793651.mm,50.291068690904666.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(19.171201516631527.mm, 11.333333333333371.mm, -9.909123794023046.mm)
-  circle = ge.add_circle([1302.2780428907.mm,-676.3333333333334.mm,87.90717686524617.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(3.174674147038104.mm, 11.174603174603135.mm, 9.36293946978536.mm)
+  circle = ge.add_circle([1279.0259246134194.mm,-727.9047619047619.mm,59.179410051655.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.429537730863103.mm, 11.333333333333258.mm, -20.600649177246062.mm)
-  circle = ge.add_circle([1321.4492444073314.mm,-665.mm,77.99805307122313.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.842276226910144.mm, 11.174603174603249.mm, 4.42236843577696.mm)
+  circle = ge.add_circle([1282.2005987604575.mm,-716.7301587301588.mm,68.54234952144036.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-10.131515051030647.mm, 11.333333333333371.mm, -19.054608490528018.mm)
-  circle = ge.add_circle([1327.8787821381945.mm,-653.6666666666667.mm,57.397403893977064.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.395841039666493.mm, 11.174603174603135.mm, -3.075932803565891.mm)
+  circle = ge.add_circle([1291.0428749873677.mm,-705.5555555555555.mm,72.96471795721732.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.674064058658132.mm, 11.333333333333371.mm, -6.1894084737607.mm)
-  circle = ge.add_circle([1317.747267087164.mm,-642.3333333333334.mm,38.342795403449045.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.51520768900059.mm, 11.174603174603249.mm, -8.795231149886035.mm)
+  circle = ge.add_circle([1300.4387160270342.mm,-694.3809523809524.mm,69.88878515365143.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-18.935435775452106.mm, 11.333333333333258.mm, 10.352534663080739.mm)
-  circle = ge.add_circle([1297.0732030285058.mm,-631.mm,32.153386929688345.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-2.976850570564011.mm, 11.174603174603135.mm, -9.427701317673794.mm)
+  circle = ge.add_circle([1304.9539237160348.mm,-683.2063492063492.mm,61.09355400376539.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-5.948441269827981.mm, 11.333333333333371.mm, 20.74468000273731.mm)
-  circle = ge.add_circle([1278.1377672530537.mm,-619.6666666666667.mm,42.505921592769084.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.747211343437812.mm, 11.174603174603135.mm, -4.607546545393788.mm)
+  circle = ge.add_circle([1301.9770731454707.mm,-672.031746031746.mm,51.6658526860916.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(10.572152707655732.mm, 11.333333333333371.mm, 18.81369950548175.mm)
-  circle = ge.add_circle([1272.1893259832257.mm,-608.3333333333334.mm,63.250601595506396.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.458516772898975.mm, 11.174603174603135.mm, 2.87743842879766.mm)
+  circle = ge.add_circle([1293.229861802033.mm,-660.8571428571429.mm,47.05830614069781.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(20.81248744921527.mm, 11.333333333333258.mm, 5.706668742167182.mm)
-  circle = ge.add_circle([1282.7614786908814.mm,-597.mm,82.06430110098815.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-4.69937477152439.mm, 11.174603174603249.mm, 8.698222129348956.mm)
+  circle = ge.add_circle([1283.771345029134.mm,-649.6825396825398.mm,49.93574456949547.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(18.689416161759027.mm, 11.333333333333371.mm, -10.790339451988544.mm)
-  circle = ge.add_circle([1303.5739661400967.mm,-585.6666666666667.mm,87.77096984315533.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(2.7777073955937794.mm, 11.174603174603135.mm, 9.488283990227039.mm)
+  circle = ge.add_circle([1279.0719702576096.mm,-638.5079365079365.mm,58.633966698844425.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(5.464123622908346.mm, 11.333333333333371.mm, -20.877477218048554.mm)
-  circle = ge.add_circle([1322.2633823018557.mm,-574.3333333333334.mm,76.98063039116678.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.648268936837894.mm, 11.174603174603249.mm, 4.790682190550868.mm)
+  circle = ge.add_circle([1281.8496776532033.mm,-627.3333333333334.mm,68.12225068907146.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.007065357086049.mm, 11.333333333333258.mm, -18.562602570259443.mm)
-  circle = ge.add_circle([1327.727505924764.mm,-563.mm,56.10315317311823.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.516999670712721.mm, 11.174603174603135.mm, -2.6776685236212074.mm)
+  circle = ge.add_circle([1290.4979465900412.mm,-616.1587301587301.mm,72.91293287962233.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.939640510663367.mm, 11.333333333333371.mm, -5.220838748777922.mm)
-  circle = ge.add_circle([1316.720440567678.mm,-551.6666666666667.mm,37.54055060285879.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.88145868334982.mm, 11.174603174603135.mm, -8.597357301955228.mm)
+  circle = ge.add_circle([1300.014946260754.mm,-604.984126984127.mm,70.23526435600112.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-18.43327589951309.mm, 11.333333333333371.mm, 11.222301081729867.mm)
-  circle = ge.add_circle([1295.7808000570146.mm,-540.3333333333334.mm,32.319711854080865.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-2.5773328996638156.mm, 11.174603174603135.mm, -9.544660631947359.mm)
+  circle = ge.add_circle([1304.8964049441038.mm,-593.8095238095239.mm,61.6379070540459.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-4.976847056653696.mm, 11.333333333333258.mm, 20.998968911145084.mm)
-  circle = ge.add_circle([1277.3475241575015.mm,-529.mm,43.54201293581073.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.545492866971017.mm, 11.174603174603249.mm, -4.9716941896382565.mm)
+  circle = ge.add_circle([1302.31907204444.mm,-582.6349206349207.mm,52.09324642209854.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(11.436017486448463.mm, 11.333333333333371.mm, 18.301453658280977.mm)
-  circle = ge.add_circle([1272.3706771008478.mm,-517.6666666666667.mm,64.54098184695582.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.571263808411913.mm, 11.174603174603249.mm, 2.476711643394019.mm)
+  circle = ge.add_circle([1293.773579177469.mm,-571.4603174603175.mm,47.12155223246028.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(21.055454387377722.mm, 11.333333333333314.mm, 4.732181579105045.mm)
-  circle = ge.add_circle([1283.8066945872963.mm,-506.33333333333337.mm,82.84243550523679.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-5.061378709086739.mm, 11.174603174603135.mm, 8.492681379749136.mm)
+  circle = ge.add_circle([1284.202315369057.mm,-560.2857142857142.mm,49.5982638758543.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(18.167153693184446.mm, 11.333333333333371.mm, -11.648185637461964.mm)
-  circle = ge.add_circle([1304.862148974674.mm,-495.00000000000006.mm,87.57461708434184.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(2.3758159061385413.mm, 11.174603174603135.mm, 9.59680625181496.mm)
+  circle = ge.add_circle([1279.1409366599703.mm,-549.1111111111111.mm,58.09094525560344.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(4.48687543992105.mm, 11.333333333333314.mm, -21.1090892921318.mm)
-  circle = ge.add_circle([1323.0293026678585.mm,-483.6666666666667.mm,75.92643144687987.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.438928693110029.mm, 11.174603174603135.mm, 5.150502302430169.mm)
+  circle = ge.add_circle([1281.5167525661088.mm,-537.936507936508.mm,67.6877515074184.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.858776810598556.mm, 11.333333333333371.mm, -18.030394186289215.mm)
-  circle = ge.add_circle([1327.5161781077795.mm,-472.33333333333337.mm,54.817342154748076.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.621285131421928.mm, 11.174603174603135.mm, -2.274656869643934.mm)
+  circle = ge.add_circle([1289.9556812592189.mm,-526.7619047619048.mm,72.83825380984857.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.159866364100026.mm, 11.333333333333258.mm, -4.240961849626302.mm)
-  circle = ge.add_circle([1315.657401297181.mm,-461.mm,36.78694796845886.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.239055092566787.mm, 11.174603174603249.mm, -8.384240764182898.mm)
+  circle = ge.add_circle([1299.5769663906408.mm,-515.5873015873017.mm,70.56359694020463.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-17.891193652643096.mm, 11.333333333333371.mm, 12.067762495184837.mm)
-  circle = ge.add_circle([1294.497534933081.mm,-449.66666666666674.mm,32.54598611883256.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-2.1732457448365494.mm, 11.174603174603192.mm, -9.644697734366083.mm)
+  circle = ge.add_circle([1304.8160214832076.mm,-504.41269841269843.mm,62.179356176021734.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-3.994474100984462.mm, 11.333333333333314.mm, 21.207778728879774.mm)
-  circle = ge.add_circle([1276.6063412804378.mm,-438.33333333333337.mm,44.613748614017396.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.328623653744444.mm, 11.174603174603135.mm, -5.327027265654515.mm)
+  circle = ge.add_circle([1302.642775738371.mm,-493.23809523809524.mm,52.53465844165565.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(12.27511439790419.mm, 11.333333333333371.mm, 17.749570937770002.mm)
-  circle = ge.add_circle([1272.6118671794534.mm,-427.00000000000006.mm,65.82152734289717.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.66704146595157.mm, 11.174603174603249.mm, 2.0715937705804706.mm)
+  circle = ge.add_circle([1294.3141520846266.mm,-482.0634920634921.mm,47.20763117600114.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(21.25281989990367.mm, 11.333333333333258.mm, 3.747445564490846.mm)
-  circle = ge.add_circle([1284.8869815773576.mm,-415.6666666666667.mm,83.57109828066717.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-5.414409072198168.mm, 11.174603174603135.mm, 8.272083525547465.mm)
+  circle = ge.add_circle([1284.647110618675.mm,-470.88888888888886.mm,49.27922494658161.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(17.605545215118582.mm, 11.333333333333371.mm, -12.480804446628227.mm)
-  circle = ge.add_circle([1306.1398014772612.mm,-404.3333333333334.mm,87.31854384515802.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(1.9697122124318867.mm, 11.174603174603192.mm, 9.68831384993971.mm)
+  circle = ge.add_circle([1279.2327015464768.mm,-459.7142857142857.mm,57.55130847212907.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(3.4999096838553214.mm, 11.333333333333314.mm, -21.29498377931801.mm)
-  circle = ge.add_circle([1323.7453466923798.mm,-393.00000000000006.mm,74.83773939852979.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.214626645638873.mm, 11.174603174603135.mm, 5.5011908281293245.mm)
+  circle = ge.add_circle([1281.2024137589087.mm,-448.53968253968253.mm,67.23962232206878.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-12.684804794216916.mm, 11.333333333333371.mm, -17.45913598346641.mm)
-  circle = ge.add_circle([1327.2452563762351.mm,-381.66666666666674.mm,53.54275561921178.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.708512528823348.mm, 11.174603174603249.mm, -1.8676123613903997.mm)
+  circle = ge.add_circle([1289.4170404045476.mm,-437.3650793650794.mm,72.74081315019811.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.334264658808706.mm, 11.333333333333258.mm, -3.251899971473321.mm)
-  circle = ge.add_circle([1314.5604515820182.mm,-370.33333333333337.mm,36.08361963574537.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.587362915880476.mm, 11.174603174603135.mm, -8.15625938166383.mm)
+  circle = ge.add_circle([1299.125552933371.mm,-426.19047619047615.mm,70.87320078880771.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-17.310363064279727.mm, 11.333333333333371.mm, 12.88708782228899.mm)
-  circle = ge.add_circle([1293.2261869232095.mm,-359.0000000000001.mm,32.83171966427205.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-1.765305532648199.mm, 11.174603174603192.mm, -9.727635264088526.mm)
+  circle = ge.add_circle([1304.7129158492514.mm,-415.015873015873.mm,62.71694140714388.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-3.003450003890066.mm, 11.333333333333314.mm, 21.370657220373296.mm)
-  circle = ge.add_circle([1275.9158238589298.mm,-347.66666666666674.mm,45.71880748656104.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.096988202160446.mm, 11.174603174603135.mm, -5.6729157854501295.mm)
+  circle = ge.add_circle([1302.9476103166032.mm,-403.8412698412698.mm,52.98930614305535.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(13.08762614496004.mm, 11.333333333333371.mm, 17.159246599029856.mm)
-  circle = ge.add_circle([1272.9123738550397.mm,-336.3333333333334.mm,67.08946470693434.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.745679936462693.mm, 11.174603174603192.mm, 1.6628030643352218.mm)
+  circle = ge.add_circle([1294.8506221144428.mm,-392.6666666666667.mm,47.31639035760522.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(21.4041565370419.mm, 11.333333333333314.mm, 2.7545934172540996.mm)
-  circle = ge.add_circle([1285.9999999999998.mm,-325.00000000000006.mm,84.24871130596419.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-5.7578399554618045.mm, 11.174603174603135.mm, 8.036819675843432.mm)
+  circle = ge.add_circle([1285.10494217798.mm,-381.4920634920635.mm,48.979193421940444.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(17.00580704646768.mm, 11.333333333333258.mm, -13.286392612551793.mm)
-  circle = ge.add_circle([1307.4041565370417.mm,-313.66666666666674.mm,87.00330472321829.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(1.5601163162637022.mm, 11.174603174603249.mm, 9.762644546149552.mm)
+  circle = ge.add_circle([1279.3471022225183.mm,-370.31746031746036.mm,57.016013097783876.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(2.50536390276352.mm, 11.333333333333371.mm, -21.434758073542348.mm)
-  circle = ge.add_circle([1324.4099635835094.mm,-302.3333333333335.mm,73.7169121106665.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(7.975760470875457.mm, 11.174603174603135.mm, 5.842126014214088.mm)
+  circle = ge.add_circle([1280.907218538782.mm,-359.1428571428571.mm,66.77865764393343.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-13.483360315265827.mm, 11.333333333333371.mm, -16.850065179852358.mm)
-  circle = ge.add_circle([1326.9153274862729.mm,-291.0000000000001.mm,52.28215403712415.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.778527213049983.mm, 11.174603174603135.mm, -1.457256668668279.mm)
+  circle = ge.add_circle([1288.8829790096574.mm,-347.968253968254.mm,72.62078365814752.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.46245768691756.mm, 11.333333333333371.mm, -2.255795202105489.mm)
-  circle = ge.add_circle([1313.431967171007.mm,-279.66666666666674.mm,35.43208885727179.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.925764620724294.mm, 11.174603174603135.mm, -7.913817354128447.mm)
+  circle = ge.add_circle([1298.6615062227074.mm,-336.79365079365084.mm,71.16352698947924.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-16.692042084139302.mm, 11.333333333333258.mm, 13.678502586828678.mm)
-  circle = ge.add_circle([1291.9695094840895.mm,-268.33333333333337.mm,33.176293655166305.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-1.354235520945167.mm, 11.174603174603249.mm, -9.793326176971128.mm)
+  circle = ge.add_circle([1304.5872708434317.mm,-325.6190476190477.mm,63.24970963535079.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-2.0059211028867594.mm, 11.333333333333371.mm, 21.48725162708238.mm)
-  circle = ge.add_circle([1275.2774673999502.mm,-257.0000000000001.mm,46.85479624199498.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-7.850997190433873.mm, 11.174603174603135.mm, -6.008746505764073.mm)
+  circle = ge.add_circle([1303.2330353224866.mm,-314.44444444444446.mm,53.45638345837966.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(13.871793008099985.mm, 11.333333333333258.mm, 16.531759153126657.mm)
-  circle = ge.add_circle([1273.2715462970634.mm,-245.66666666666674.mm,68.34204786907736.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.80703979782129.mm, 11.174603174603249.mm, 1.2510642903888183.mm)
+  circle = ge.add_circle([1295.3820381320527.mm,-303.2698412698413.mm,47.44763695261559.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(21.509136537335053.mm, 11.333333333333371.mm, 1.755775434060297.mm)
-  circle = ge.add_circle([1287.1433393051634.mm,-234.33333333333348.mm,84.87380702220402.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-6.091062472885142.mm, 11.174603174603135.mm, 7.787306941821903.mm)
+  circle = ge.add_circle([1285.5749983342314.mm,-292.0952380952381.mm,48.69870124300441.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.36923808655706.mm, 11.333333333333258.mm, -14.063205410651292.mm)
-  circle = ge.add_circle([1308.6524758424985.mm,-223.0000000000001.mm,86.62958245626432.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(1.1477544109268365.mm, 11.174603174603249.mm, 9.819666555791706.mm)
+  circle = ge.add_circle([1279.4839358613463.mm,-280.92063492063494.mm,56.48600818482631.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.505392061345674.mm, 11.333333333333371.mm, -21.52810945480808.mm)
-  circle = ge.add_circle([1325.0217139290555.mm,-211.66666666666686.mm,72.56637704561302.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(7.722753666748758.mm, 11.174603174603135.mm, 6.172703399439527.mm)
+  circle = ge.add_circle([1280.631690272273.mm,-269.7460317460317.mm,66.30567474061802.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-14.252713880306828.mm, 11.333333333333371.mm, -16.204500887181524.mm)
-  circle = ge.add_circle([1326.5271059904012.mm,-200.33333333333348.mm,51.03826759080494.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.831205051525103.mm, 11.174603174603135.mm, -1.0443173318518006.mm)
+  circle = ge.add_circle([1288.3544439390218.mm,-258.57142857142856.mm,72.47837814005754.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.544167810873205.mm, 11.333333333333371.mm, -1.254804882643775.mm)
-  circle = ge.add_circle([1312.2743921100944.mm,-189.0000000000001.mm,34.83376670362342.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(6.253660237591021.mm, 11.174603174603135.mm, -7.65734451931656.mm)
+  circle = ge.add_circle([1298.185648990547.mm,-247.39682539682542.mm,71.43406080820574.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-16.037569857779545.mm, 11.333333333333258.mm, 14.440292760653762.mm)
-  circle = ge.add_circle([1290.7302242992212.mm,-177.66666666666674.mm,33.57896182097964.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-0.9407645165540544.mm, 11.174603174603249.mm, -9.841654006269906.mm)
+  circle = ge.add_circle([1304.439309228138.mm,-236.22222222222229.mm,63.77671628888918.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-1.004047823447081.mm, 11.333333333333371.mm, 21.557309431485166.mm)
-  circle = ge.add_circle([1274.6926544414416.mm,-166.33333333333348.mm,48.019254581633405.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-7.591086748478347.mm, 11.174603174603135.mm, -6.333924015317287.mm)
+  circle = ge.add_circle([1303.498544711584.mm,-225.04761904761904.mm,53.93506228261928.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(26.311393382005463.mm, 0.mm, -9.57656401311857.mm)
-  circle = ge.add_circle([1273.6886066179945.mm,-155.0000000000001.mm,69.57656401311857.mm], vec, 5.mm, 8)
+  vec = Geom::Vector3d.new(-9.851012262023687.mm, 11.174603174603249.mm, 0.837107441250204.mm)
+  circle = ge.add_circle([1295.9074579631056.mm,-213.8730158730159.mm,47.60113826730199.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 85.00000000000011.mm, 0.mm)
-  circle = ge.add_circle([1300.mm,-155.0000000000001.mm,60.mm], vec, 5.mm, 10)
+  vec = Geom::Vector3d.new(-6.413485837403641.mm, 11.174603174603135.mm, 7.52398769723591.mm)
+  circle = ge.add_circle([1286.0564457010819.mm,-202.69841269841265.mm,48.438245708552195.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(2.mm, 0.mm, 189.mm)
-  circle = ge.add_circle([1300.mm,-70.mm,60.mm], vec, 5.mm, 10)
+  vec = Geom::Vector3d.new(0.7333575937109345.mm, 11.174603174603135.mm, 9.859278781659647.mm)
+  circle = ge.add_circle([1279.6429598636782.mm,-191.52380952380952.mm,55.962233405788105.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-19.72571067309582.mm, 19.751642042856787.mm, 11.4935832922842.mm)
-  circle = ge.add_circle([1302.mm,-70.mm,249.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(7.4560548018262125.mm, 11.174603174603135.mm, 6.492336886430067.mm)
+  circle = ge.add_circle([1280.3763174573892.mm,-180.34920634920638.mm,65.82151218744775.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-8.033596305039964.mm, -19.8854018007748.mm, 11.369857214315346.mm)
-  circle = ge.add_circle([1282.2742893269042.mm,-50.24835795714321.mm,260.4935832922842.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.866452649042685.mm, 11.174603174603249.mm, -0.6295264719886262.mm)
+  circle = ge.add_circle([1287.8323722592154.mm,-169.17460317460325.mm,72.31384907387782.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(8.462007817958693.mm, -19.806594774805603.mm, 11.195300556929169.mm)
-  circle = ge.add_circle([1274.2406930218642.mm,-70.13375975791801.mm,271.86344050659955.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-5.698824908258075.mm, 0.mm, -11.684322601889193.mm)
+  circle = ge.add_circle([1297.698824908258.mm,-158.mm,71.68432260188919.mm], vec, 5.mm, 8)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(20.04241258691286.mm, -8.058367490645068.mm, 11.072756591120083.mm)
-  circle = ge.add_circle([1282.702700839823.mm,-89.94035453272362.mm,283.0587410635287.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(0.mm, 88.mm, 0.mm)
+  circle = ge.add_circle([1292.mm,-158.mm,60.mm], vec, 5.mm, 10)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(19.884809157327027.mm, 8.437595480161633.mm, 11.07442435227972.mm)
-  circle = ge.add_circle([1302.7451134267358.mm,-97.99872202336869.mm,294.1314976546488.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(2.939000000000078.mm, 0.mm, 182.40000000000003.mm)
+  circle = ge.add_circle([1292.mm,-70.mm,60.mm], vec, 5.mm, 10)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(8.08205249366506.mm, 19.962393606829295.mm, 11.199321248191438.mm)
-  circle = ge.add_circle([1322.6299225840628.mm,-89.56112654320705.mm,305.2059220069285.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.99496719611102.mm, 9.207730857270427.mm, 11.372464949587481.mm)
+  circle = ge.add_circle([1294.939.mm,-70.mm,242.40000000000003.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-8.412045843863098.mm, 19.725979722745876.mm, 11.37386197133992.mm)
-  circle = ge.add_circle([1330.7119750777279.mm,-69.59873293637776.mm,316.40524325511996.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-3.641549939327888.mm, -9.164298928050435.mm, 11.286205666047522.mm)
+  circle = ge.add_circle([1285.944032803889.mm,-60.79226914272957.mm,253.77246494958752.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-19.87968390752485.mm, 7.867641423765534.mm, 11.495212638680357.mm)
-  circle = ge.add_circle([1322.2999292338648.mm,-49.87275321363188.mm,327.7791052264599.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(3.941961640230147.mm, -9.189638245741236.mm, 11.164013009620362.mm)
+  circle = ge.add_circle([1282.3024828645612.mm,-69.95656807078001.mm,265.05867061563504.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-19.564491435031414.mm, -8.626062785333794.mm, 11.491877268600945.mm)
-  circle = ge.add_circle([1302.42024532634.mm,-42.00511178986635.mm,339.27431786514023.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.331149549226211.mm, -3.85350347848248.mm, 11.077177355757726.mm)
+  circle = ge.add_circle([1286.2444445047913.mm,-79.14620631652124.mm,276.2226836252554.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-7.65216987913459.mm, -20.03756316484563.mm, 11.36582095584015.mm)
-  circle = ge.add_circle([1282.8557538913085.mm,-50.63117457520014.mm,350.7661951337412.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.381821324327575.mm, 3.7308654938301373.mm, 11.076360884556948.mm)
+  circle = ge.add_circle([1295.5755940540175.mm,-82.99970979500372.mm,287.2998609810131.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(8.83891702490655.mm, -19.64356400346358.mm, 11.191312099712832.mm)
-  circle = ge.add_circle([1275.203584012174.mm,-70.66873774004577.mm,362.1320160895813.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.064413733362699.mm, 9.13855045261559.mm, 11.162039946562686.mm)
+  circle = ge.add_circle([1304.957415378345.mm,-79.26884430117359.mm,298.3762218655701.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(20.19274157088512.mm, -7.676197166751507.mm, 11.071165808220826.mm)
-  circle = ge.add_circle([1284.0425010370805.mm,-90.31230174350935.mm,373.32332818929416.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-3.518759265741437.mm, 9.214567274365436.mm, 11.284227147463753.mm)
+  circle = ge.add_circle([1309.0218291117078.mm,-70.130293848558.mm,309.53826181213276.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(19.719988827528596.mm, 8.81374266860169.mm, 11.076168482753815.mm)
-  circle = ge.add_circle([1304.2352426079656.mm,-97.98849891026086.mm,384.394493997515.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.94347721629515.mm, 3.914565767164234.mm, 11.371635294704333.mm)
+  circle = ge.add_circle([1305.5030698459664.mm,-60.91572657419256.mm,320.8224889595965.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(7.699189784295186.mm, 20.11090361304244.mm, 11.20337270543348.mm)
-  circle = ge.add_circle([1323.9552314354942.mm,-89.17475624165917.mm,395.4706624802688.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.044818504160048.mm, -3.6692952732681263.mm, 11.373268200653058.mm)
+  circle = ge.add_circle([1296.5595926296712.mm,-57.00116080702833.mm,332.19412425430085.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-8.787380313138556.mm, 19.559355140199052.mm, 11.377833764665581.mm)
-  circle = ge.add_circle([1331.6544212197894.mm,-69.06385262861673.mm,406.6740351857023.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-3.763657984897236.mm, -9.112393969026904.mm, 11.288173185487892.mm)
+  circle = ge.add_circle([1287.5147741255112.mm,-60.670456080296454.mm,343.5673924549539.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.02635491840283.mm, 7.484052195409113.mm, 11.496764712869549.mm)
-  circle = ge.add_circle([1322.8670409066508.mm,-49.50449748841768.mm,418.05186895036786.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(3.818837868415585.mm, -9.239084900918641.mm, 11.16599689539538.mm)
+  circle = ge.add_circle([1283.751116140614.mm,-69.78285004932336.mm,354.8555656404418.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-19.396085058965127.mm, -9.00061799778635.mm, 11.490095190547322.mm)
-  circle = ge.add_circle([1302.840685988248.mm,-42.020445293008564.mm,429.5486336632374.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.278843663565112.mm, -3.9754532825315323.mm, 11.078020157281628.mm)
+  circle = ge.add_circle([1287.5699540090295.mm,-79.021934950242.mm,366.0215625358372.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-7.267905835556803.mm, -20.18240825660699.mm, 11.36175466966472.mm)
-  circle = ge.add_circle([1283.4446009292828.mm,-51.02106329079491.mm,441.03872885378473.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.430849939616564.mm, 3.6075612299644035.mm, 11.075570889489313.mm)
+  circle = ge.add_circle([1296.8487976725946.mm,-82.99738823277353.mm,377.0995826931188.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(9.212642494460397.mm, -19.47336081987784.mm, 11.187357332839213.mm)
-  circle = ge.add_circle([1276.176695093726.mm,-71.2034715474019.mm,452.40048352344945.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.18617227962045.mm, 9.085830645090851.mm, 11.160078058583224.mm)
+  circle = ge.add_circle([1306.2796476122112.mm,-79.38982700280913.mm,388.1751535826081.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(20.335741219946158.mm, -7.2912240495087275.mm, 11.069652584421249.mm)
-  circle = ge.add_circle([1285.3893375881864.mm,-90.67683236727974.mm,463.58784085628866.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-3.395307892796609.mm, 9.263190030764278.mm, 11.282237983071923.mm)
+  circle = ge.add_circle([1310.4658198918316.mm,-70.30399635771828.mm,399.33523164119134.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(19.548011778009595.mm, 9.186671714151856.mm, 11.07798834571173.mm)
-  circle = ge.add_circle([1305.7250788081326.mm,-97.96805641678847.mm,474.6574934407099.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.890357760085635.mm, 4.036163306144211.mm, 11.370779384168145.mm)
+  circle = ge.add_circle([1307.070511999035.mm,-61.040806326954.mm,410.61746962426326.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(7.313559483685822.mm, 20.252070568306138.mm, 11.207453449355285.mm)
-  circle = ge.add_circle([1325.2730905861422.mm,-88.78138470263661.mm,485.73548178642164.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.093022237711466.mm, -3.54566612015401.mm, 11.374044904451864.mm)
+  circle = ge.add_circle([1298.1801542389494.mm,-57.00464302080979.mm,421.9882490084314.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.159462667799062.mm, 19.38558889240948.mm, 11.381771144080005.mm)
-  circle = ge.add_circle([1332.586650069828.mm,-68.52931413433048.mm,496.94293523577693.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-3.8850615956996535.mm, -9.05886166677815.mm, 11.290129354414205.mm)
+  circle = ge.add_circle([1289.087132001238.mm,-60.5503091409638.mm,433.3622939128833.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.16567015205942.mm, 7.097730331183364.mm, 11.498238948146195.mm)
-  circle = ge.add_circle([1323.427187402029.mm,-49.143725241921.mm,508.32470637985693.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(3.695064406064148.mm, -9.286881587682458.mm, 11.167991249594081.mm)
+  circle = ge.add_circle([1285.2020704055383.mm,-69.60917080774195.mm,444.6524232672975.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-19.22055303475463.mm, -9.371886833962321.mm, 11.48823770880972.mm)
-  circle = ge.add_circle([1303.2615172499695.mm,-42.04599491073763.mm,519.8229453280031.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.22491300842762.mm, -4.096693127486546.mm, 11.078889138616319.mm)
+  circle = ge.add_circle([1288.8971348116024.mm,-78.8960523954244.mm,455.82041451689156.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.880944479809841.mm, -20.3198841890824.mm, 11.357659840503402.mm)
-  circle = ge.add_circle([1284.040964215215.mm,-51.417881744699955.mm,531.3111830368128.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.478226639282411.mm, 3.4836127072631626.mm, 11.07480751163672.mm)
+  circle = ge.add_circle([1298.12204782003.mm,-82.99274552291095.mm,466.8993036555079.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(9.583047769045152.mm, -19.296047369970466.mm, 11.183437700303898.mm)
-  circle = ge.add_circle([1277.160019735405.mm,-71.73776593378236.mm,542.6688428773163.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.307215534669922.mm, 9.031488238170581.mm, 11.158127696047075.mm)
+  circle = ge.add_circle([1307.6002744593125.mm,-79.50913281564779.mm,477.9741111671446.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(20.471359320940564.mm, -6.9035887033223275.mm, 11.068217472241486.mm)
-  circle = ge.add_circle([1286.7430675044502.mm,-91.03381330375282.mm,553.8522805776201.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-3.271217867142468.mm, 9.310158513918111.mm, 11.280238528108043.mm)
+  circle = ge.add_circle([1311.9074899939824.mm,-70.47764457747721.mm,489.1322388631917.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(19.36894080238062.mm, 9.556246450032418.mm, 11.079883276670671.mm)
-  circle = ge.add_circle([1307.2144268253908.mm,-97.93740200707515.mm,564.9204980498616.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.835618313858731.mm, 4.157040044088305.mm, 11.369897370832405.mm)
+  circle = ge.add_circle([1308.63627212684.mm,-61.167486063559096.mm,500.4124773912997.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.925302396198958.mm, 20.385842928633977.mm, 11.21156198996357.mm)
-  circle = ge.add_circle([1326.5833676277714.mm,-88.38115555704273.mm,576.0003813265323.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.139569788267636.mm, -3.4214037617857045.mm, 11.374794922275669.mm)
+  circle = ge.add_circle([1299.8006538129812.mm,-57.01044601947079.mm,511.7823747621321.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.528157050215896.mm, 19.204744426273237.mm, 11.385672671936277.mm)
-  circle = ge.add_circle([1333.5086700239704.mm,-67.99531262840875.mm,587.2119433164959.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-4.005739090786619.mm, -9.003711581407579.mm, 11.292073823482497.mm)
+  circle = ge.add_circle([1290.6610840247135.mm,-60.431849781256496.mm,523.1571696844078.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.297578740623067.mm, 6.708816887958861.mm, 11.499634806226368.mm)
-  circle = ge.add_circle([1323.9805129737545.mm,-48.79056820213552.mm,598.5976159884322.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(3.5706633573449835.mm, -9.333019770228091.mm, 11.16999571605345.mm)
+  circle = ge.add_circle([1286.655344933927.mm,-69.43556136266407.mm,534.4492435078903.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-19.03795945402976.mm, -9.739733733270668.mm, 11.486305501606353.mm)
-  circle = ge.add_circle([1303.6829342331314.mm,-42.08175131417666.mm,610.0972507946585.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.1693672150584.mm, -4.21720136164538.mm, 11.079784144574205.mm)
+  circle = ge.add_circle([1290.226008291272.mm,-78.76858113289217.mm,545.6192392239437.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.491427102261014.mm, -20.449940765980372.mm, 11.353537963492158.mm)
-  circle = ge.add_circle([1284.6449747791016.mm,-51.821485047447325.mm,621.5835562962649.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.523942962524416.mm, 3.3590420611596414.mm, 11.07407088732748.mm)
+  circle = ge.add_circle([1299.3953755063303.mm,-82.98578249453755.mm,556.6990233685179.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(9.949997603379416.mm, -19.11168839581974.mm, 11.179554633273824.mm)
-  circle = ge.add_circle([1278.1535476768406.mm,-72.2714258134277.mm,632.937094259757.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.427521881915709.mm, 8.975532936631367.mm, 11.15618920726115.mm)
+  circle = ge.add_circle([1308.9193184688547.mm,-79.6267404333779.mm,567.7730942558454.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(20.59954635592385.mm, -6.513432664652143.mm, 11.066860995680827.mm)
-  circle = ge.add_circle([1288.10354528022.mm,-91.38311420924744.mm,644.1166488930309.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-3.14651134948258.mm, 9.355464335927678.mm, 11.278229139646442.mm)
+  circle = ge.add_circle([1313.3468403507704.mm,-70.65120749674654.mm,578.9292834631066.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(19.18284128444111.mm, 9.922331934215691.mm, 11.081852583738964.mm)
-  circle = ge.add_circle([1308.7030916361439.mm,-97.89654687389958.mm,655.1835098887117.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.779268653295503.mm, 4.2771743941400615.mm, 11.368989412211704.mm)
+  circle = ge.add_circle([1310.2003290012879.mm,-61.29574316081886.mm,590.207512602753.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.534560285309226.mm, 20.512171850011555.mm, 11.215696827115949.mm)
-  circle = ge.add_circle([1327.885932920585.mm,-87.97421493968389.mm,666.2653624724506.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.184452843102463.mm, -3.296530389643003.mm, 11.375518120182392.mm)
+  circle = ge.add_circle([1301.4210603479924.mm,-57.0185687666788.mm,601.5765020149647.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.89332883980228.mm, 19.01688777314115.mm, 11.389536923677838.mm)
-  circle = ge.add_circle([1334.4204932058942.mm,-67.46204308967233.mm,677.4810592995666.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-4.125668918883548.mm, -8.946953561931686.mm, 11.294006245438482.mm)
+  circle = ge.add_circle([1292.23660750489.mm,-60.3150991563218.mm,612.9520201351471.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.422032520594712.mm, 6.317453868864206.mm, 11.500951777442765.mm)
-  circle = ge.add_circle([1324.527164366092.mm,-48.445155316531185.mm,688.8705962232444.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(3.4456569385067723.mm, -9.377491208936064.mm, 11.17200993680433.mm)
+  circle = ge.add_circle([1288.1109385860063.mm,-69.26205271825349.mm,624.2460263805856.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-18.848370986792588.mm, -10.104024384564838.mm, 11.484299274439763.mm)
-  circle = ge.add_circle([1304.1051318454972.mm,-42.12770144766698.mm,700.3715480006872.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.112216203140633.mm, -4.336956463961059.mm, 11.08070501531995.mm)
+  circle = ge.add_circle([1291.556595524513.mm,-78.63954392718955.mm,635.4180363173899.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.099495926550844.mm, -20.572530500022978.mm, 11.349390543643608.mm)
-  circle = ge.add_circle([1285.2567608587046.mm,-52.23172583223182.mm,711.855847275127.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.567990745061024.mm, 3.2338715381895327.mm, 11.073361148112099.mm)
+  circle = ge.add_circle([1300.6688117276537.mm,-82.97650039115061.mm,646.4987413327099.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(10.313358013860125.mm, -18.92035121202119.mm, 11.175709549565.mm)
-  circle = ge.add_circle([1279.1572649321538.mm,-72.8042563322548.mm,723.2052378187706.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.547069836366063.mm, 8.917974733289725.mm, 11.154262938411762.mm)
+  circle = ge.add_circle([1310.2368024727148.mm,-79.74262885296108.mm,657.572102480822.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(20.72025552023956.mm, -6.120898390332584.mm, 11.065583650026724.mm)
-  circle = ge.add_circle([1289.470622946014.mm,-91.72460754427598.mm,734.3809473683356.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-3.0212106106175725.mm, 9.399099405821133.mm, 11.276210176535074.mm)
+  circle = ge.add_circle([1314.7838723090808.mm,-70.82465411967135.mm,668.7263654192337.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(18.98978117430761.mm, 10.284794498696598.mm, 11.0838955478672.mm)
-  circle = ge.add_circle([1310.1908784662535.mm,-97.84550593460857.mm,745.4465310183623.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.721318841639913.mm, 4.396544902022889.mm, 11.36805567045485.mm)
+  circle = ge.add_circle([1311.7626616984633.mm,-61.42555471385022.mm,680.0025755957688.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.141475821842278.mm, 20.631011206232202.mm, 11.219856451067926.mm)
-  circle = ge.add_circle([1329.180659640561.mm,-87.56071143591197.mm,756.5304265662295.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.227663386743643.mm, -3.171068304324052.mm, 11.37621436901884.mm)
+  circle = ge.add_circle([1303.0413428568233.mm,-57.02900981182733.mm,691.3706312662237.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-10.254844702168839.mm, 18.82208752470835.mm, 11.393362488359116.mm)
-  circle = ge.add_circle([1335.3221354624034.mm,-66.92970022967977.mm,767.7502830172974.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-4.244829662238772.mm, -8.888597744520972.mm, 11.295926275179227.mm)
+  circle = ge.add_circle([1293.8136794700797.mm,-60.20007811615138.mm,702.7468456352425.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.538986050433778.mm, 5.923784171436154.mm, 11.50218938093326.mm)
-  circle = ge.add_circle([1325.0672907602345.mm,-48.107612704971416.mm,779.1436455056565.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(3.3200674739075566.mm, -9.4202879618435.mm, 11.174033552135825.mm)
+  circle = ge.add_circle([1289.568849807841.mm,-69.08867586067235.mm,714.0427719104217.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-18.651856857070698.mm, -10.464625775183421.mm, 11.482219759839495.mm)
-  circle = ge.add_circle([1304.5283047098008.mm,-42.18382853353526.mm,790.6458348865898.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.053470179027954.mm, -4.455937047885172.mm, 11.081651586399289.mm)
+  circle = ge.add_circle([1292.8889172817485.mm,-78.50896382251585.mm,725.2168054625575.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-5.705294057667061.mm, -20.687608630284515.mm, 11.345219095295533.mm)
-  circle = ge.add_circle([1285.87644785273.mm,-52.648454308718684.mm,802.1280546464293.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.610362120588889.mm, 3.108123492017853.mm, 11.072678420739976.mm)
+  circle = ge.add_circle([1301.9423874607764.mm,-82.96490087040102.mm,736.2984570489568.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(10.672996327482679.mm, -18.722105681108943.mm, 11.171903853124604.mm)
-  circle = ge.add_circle([1280.171153795063.mm,-73.3360629390032.mm,813.4732737417248.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.665838048465275.mm, 8.858823907217442.mm, 11.152349233502946.mm)
+  circle = ge.add_circle([1311.5527495813653.mm,-79.85677737838317.mm,747.3711354696968.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(20.83344273961052.mm, -5.7261292055582516.mm, 11.064385901673631.mm)
-  circle = ge.add_circle([1290.8441501225457.mm,-92.05816862011214.mm,824.6451775948494.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-2.895338027466778.mm, 9.44105593099924.mm, 11.274181999331745.mm)
+  circle = ge.add_circle([1316.2185876298306.mm,-70.99795347116573.mm,758.5234847031998.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(18.78983096360207.mm, 10.643501798299212.mm, 11.086011423112723.mm)
-  circle = ge.add_circle([1311.6775928621562.mm,-97.7842978256704.mm,835.7095634965231.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.661779227899387.mm, 4.515130249871426.mm, 11.36709631231463.mm)
+  circle = ge.add_circle([1313.3232496023638.mm,-61.55689754016649.mm,769.7976667025315.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(5.746192531882798.mm, 20.74231760573757.mm, 11.224039343025197.mm)
-  circle = ge.add_circle([1330.4674238257583.mm,-87.14079602737118.mm,846.7955749196358.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.26919370240671.mm, -3.0450399115628954.mm, 11.376883544444922.mm)
+  circle = ge.add_circle([1304.6614703744644.mm,-57.04176729029506.mm,781.1647630148461.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-10.612572637807261.mm, 18.62041480797032.mm, 11.397147969159505.mm)
-  circle = ge.add_circle([1336.213616357641.mm,-66.39847842163361.mm,858.019614262661.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-4.363200040447055.mm, -8.828654550689528.mm, 11.297833569814998.mm)
+  circle = ge.add_circle([1295.3922766720577.mm,-60.08680720185796.mm,792.541646559291.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.648396627149623.mm, 5.5279515354437905.mm, 11.503347164813817.mm)
-  circle = ge.add_circle([1325.6010437198338.mm,-47.77806361366329.mm,869.4167622318205.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(3.1939173920288795.mm, -9.461402386062474.mm, 11.17606620065908.mm)
+  circle = ge.add_circle([1291.0290766316107.mm,-68.91546175254749.mm,803.839480129106.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-18.448488817645966.mm, -10.82140623951694.mm, 11.480067717094244.mm)
-  circle = ge.add_circle([1304.9526470926842.mm,-42.2501120782195.mm,880.9201093966343.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.99313963392001.mm, -4.5741218651873226.mm, 11.08262368876808.mm)
+  circle = ge.add_circle([1294.2229940236396.mm,-78.37686413860996.mm,815.0155463297651.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-5.308965429688897.mm, -20.795133138534787.mm, 11.341025141560408.mm)
-  circle = ge.add_circle([1286.5041582750382.mm,-53.07151831773644.mm,892.4001771137285.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.65104952218644.mm, 2.9818203794469866.mm, 11.07202282713638.mm)
+  circle = ge.add_circle([1303.2161336575596.mm,-82.95098600379728.mm,826.0981700185332.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(11.028781230283585.mm, -18.517024188046776.mm, 11.168138933518208.mm)
-  circle = ge.add_circle([1281.1951928453493.mm,-73.86665145627123.mm,903.741202255289.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.783805307909915.mm, 8.798091021906075.mm, 11.150448434295186.mm)
+  circle = ge.add_circle([1312.867183179746.mm,-79.9691656243503.mm,837.1701928456696.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(20.939066686230944.mm, -5.3292692515521765.mm, 11.063268187952758.mm)
-  circle = ge.add_circle([1292.223974075633.mm,-92.383675644318.mm,914.9093411888072.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-2.7689160790737333.mm, 9.481326418626622.mm, 11.272144970240106.mm)
+  circle = ge.add_circle([1317.650988487656.mm,-71.17107460244422.mm,848.3206412799648.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(18.583063659715435.mm, 10.99832285899933.mm, 11.088199436910486.mm)
-  circle = ge.add_circle([1313.1630407618638.mm,-97.71294489587018.mm,925.9726093767599.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.600660444996947.mm, 4.63290926003878.mm, 11.366111509118582.mm)
+  circle = ge.add_circle([1314.8820724085822.mm,-61.6897481838176.mm,859.5927862502049.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(5.34885474436669.mm, 20.84605040746122.mm, 11.228243975697296.mm)
-  circle = ge.add_circle([1331.7461044215793.mm,-86.71462203687085.mm,937.0608088136704.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.3090363733711.mm, -2.9184677182276957.mm, 11.377525526955651.mm)
+  circle = ge.add_circle([1306.2814119635852.mm,-57.05683892377882.mm,870.9588977593235.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-10.966382030285786.mm, 18.41194325925217.mm, 11.40089198389478.mm)
-  circle = ge.add_circle([1337.094959165946.mm,-65.86857162940963.mm,948.2890527893677.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-4.480758914252874.mm, -8.767134685434584.mm, 11.299727788730138.mm)
+  circle = ge.add_circle([1296.9723755902141.mm,-59.975306642006515.mm,882.3364232862791.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.750224301893468.mm, 5.130100490405823.mm, 11.504424706345503.mm)
-  circle = ge.add_circle([1326.1285771356602.mm,-47.45662837015746.mm,959.6899447732625.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(3.067229221471962.mm, -9.500827139144917.mm, 11.178107519372134.mm)
+  circle = ge.add_circle([1292.4916166759613.mm,-68.7424413274411.mm,893.6361510750093.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-18.23834112385316.mm, -11.174235507082116.mm, 11.47784393197469.mm)
-  circle = ge.add_circle([1305.3783528337667.mm,-42.32652787975164.mm,971.194369479608.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.931235341988668.mm, -4.691489809749541.mm, 11.083621148822886.mm)
+  circle = ge.add_circle([1295.5588458974332.mm,-78.24326846658602.mm,904.8142585943814.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-4.910654753235576.mm, -20.895064764581875.mm, 11.336810213767194.mm)
-  circle = ge.add_circle([1287.1400117099136.mm,-53.50076338683375.mm,982.6722134115827.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.690045683665176.mm, 2.8549847564063526.mm, 11.071394484381017.mm)
+  circle = ge.add_circle([1304.490081239422.mm,-82.93475827633556.mm,915.8978797432043.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(11.380582815287198.mm, -18.305181613798922.mm, 11.16441616542295.mm)
-  circle = ge.add_circle([1282.229356956678.mm,-74.39582815141563.mm,994.0090236253499.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.900950547435059.mm, 8.735786923380218.mm, 11.148560880243735.mm)
+  circle = ge.add_circle([1314.180126923087.mm,-80.0797735199292.mm,926.9692742275853.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(21.037088793856356.mm, -4.930463432935042.mm, 11.062230916972567.mm)
-  circle = ge.add_circle([1293.6099397719652.mm,-92.70100976521455.mm,1005.1734397907728.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-2.641967342589851.mm, 9.519903676970202.mm, 11.270099453044168.mm)
+  circle = ge.add_circle([1319.0810774705221.mm,-71.34398659654899.mm,938.117835107829.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(18.36955475914806.mm, 11.349128125746958.mm, 11.090458790355797.mm)
-  circle = ge.add_circle([1314.6470285658215.mm,-97.63147319814959.mm,1016.2356707077454.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.537973407873551.mm, 4.749860898878353.mm, 11.365101436738655.mm)
+  circle = ge.add_circle([1316.4391101279323.mm,-61.824082919578785.mm,949.3879345608732.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(4.949607538385862.mm, 20.942171735668325.mm, 11.232468813855576.mm)
-  circle = ge.add_circle([1333.0165833249696.mm,-86.28234507240263.mm,1027.3261294981012.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.347184284305058.mm, -2.791374328301835.mm, 11.37814020190217.mm)
+  circle = ge.add_circle([1307.9011367200587.mm,-57.07422202070043.mm,960.7530359976118.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.316143693942877.mm, 18.196748997321805.mm, 11.404593165520737.mm)
-  circle = ge.add_circle([1337.9661908633555.mm,-65.34017333673431.mm,1038.5585983119568.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-4.597485289323004.mm, -8.704049135324091.mm, 11.301608593644005.mm)
+  circle = ge.add_circle([1298.5539524357537.mm,-59.86559634900227.mm,972.131176199514.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.844431894546005.mm, 4.730376302817959.mm, 11.505421612087957.mm)
-  circle = ge.add_circle([1326.6500471694126.mm,-47.143424339412505.mm,1049.9631914774775.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(2.9400255869313696.mm, -9.538555180393715.mm, 11.180157143724728.mm)
+  circle = ge.add_circle([1293.9564671464307.mm,-68.56964548432636.mm,983.432784793158.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-18.02149050646699.mm, -11.52298475008807.mm, 11.475549216447007.mm)
-  circle = ge.add_circle([1305.8056152748666.mm,-42.413048036594546.mm,1061.4686130895655.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.867768358456487.mm, -4.808019921335756.mm, 11.084643788431663.mm)
+  circle = ge.add_circle([1296.896492733362.mm,-78.10820066472007.mm,994.6129419368827.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-4.510507462627174.mm, -20.98736702060627.mm, 11.332575850903595.mm)
-  circle = ge.add_circle([1287.7841247683996.mm,-53.93603278668262.mm,1072.9441623060125.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.727343640867957.mm, 2.727639273923998.mm, 11.070793504686776.mm)
+  circle = ge.add_circle([1305.7642610918185.mm,-82.91622058605583.mm,1005.6975857253144.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(11.72827262993792.mm, -18.08665530798828.mm, 11.160736908124818.mm)
-  circle = ge.add_circle([1283.2736173057724.mm,-74.92339980728889.mm,1084.276738156916.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.017252846576184.mm, 8.671922738260733.mm, 11.146686908438937.mm)
+  circle = ge.add_circle([1315.4916047326865.mm,-80.18858131213183.mm,1016.7683792300012.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(21.12747327188572.mm, -4.5298573648171185.mm, 11.061274467469957.mm)
-  circle = ge.add_circle([1295.0018899357103.mm,-93.01005511527717.mm,1095.4374750650409.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-2.514514489243311.mm, 9.556780816683371.mm, 11.268045813044182.mm)
+  circle = ge.add_circle([1320.5088575792627.mm,-71.5166585738711.mm,1027.9150661384401.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(18.149382219944982.mm, 11.69578950976964.mm, 11.092788658495238.mm)
-  circle = ge.add_circle([1316.129363207596.mm,-97.53991248009429.mm,1106.4987495325108.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.473729311537227.mm, 4.8659642805003.mm, 11.36406627555948.mm)
+  circle = ge.add_circle([1317.9943430900194.mm,-61.959877757187726.mm,1039.1831119514843.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(4.548596690213117.mm, 21.030646493786335.mm, 11.236712314894703.mm)
-  circle = ge.add_circle([1334.278745427541.mm,-85.84412297032465.mm,1117.591538191006.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.383630622538476.mm, -2.6637824388469085.mm, 11.37872745951222.mm)
+  circle = ge.add_circle([1309.5206137784821.mm,-57.093913476687426.mm,1050.5471782270438.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.661729921054985.mm, 17.97491059559662.mm, 11.408250162633067.mm)
-  circle = ge.add_circle([1338.8273421177541.mm,-64.81347647653831.mm,1128.8282505059008.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-4.713358319995223.mm, -8.639409166534925.mm, 11.303475648672247.mm)
+  circle = ge.add_circle([1300.1369831559437.mm,-59.757695915534335.mm,1061.925905686556.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.930985007291383.mm, 4.3289249231120905.mm, 11.506337518042756.mm)
-  circle = ge.add_circle([1327.1656121966992.mm,-46.838565880941694.mm,1140.2365006685338.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(2.8123292051570843.mm, -9.57457977212053.mm, 11.182214707683215.mm)
+  circle = ge.add_circle([1295.4236248359484.mm,-68.39710508206926.mm,1073.2293813352283.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-17.79801614368671.mm, -11.86752663047433.mm, 11.473184408375118.mm)
-  circle = ge.add_circle([1306.2346271894078.mm,-42.5096409578296.mm,1151.7428381865766.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.802750017616972.mm, -4.923691389334692.mm, 11.085691424965262.mm)
+  circle = ge.add_circle([1298.2359540411055.mm,-77.97168485418979.mm,1084.4115960429115.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-4.108669662782404.mm, -21.072006204483344.mm, 11.32832359905342.mm)
-  circle = ge.add_circle([1288.436611045721.mm,-54.377167588303934.mm,1163.2160225949517.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.762936732914568.mm, 2.599806674081691.mm, 11.070219995380057.mm)
+  circle = ge.add_circle([1307.0387040587225.mm,-82.89537624352448.mm,1095.4972874678767.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(12.071723723002378.mm, -17.86152506065541.mm, 11.157102505023886.mm)
-  circle = ge.add_circle([1284.3279413829387.mm,-75.44917379278728.mm,1174.5443461940051.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.1326914354062865.mm, 8.606509871777604.mm, 11.14482685354551.mm)
+  circle = ge.add_circle([1316.801640791637.mm,-80.29556956944279.mm,1106.5675074632568.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(21.210187118429303.mm, -4.127597319629373.mm, 11.060399188670317.mm)
-  circle = ge.add_circle([1296.399665105941.mm,-93.31069885344269.mm,1185.701448699029.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-2.3865802802918097.mm, 9.591951252036644.mm, 11.265984416990932.mm)
+  circle = ge.add_circle([1321.9343322270433.mm,-71.68905969766519.mm,1117.7123343168023.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(17.92262643323147.mm, 12.038180435342937.mm, 11.09518819062987.mm)
-  circle = ge.add_circle([1317.6098522243703.mm,-97.43829617307206.mm,1196.7618478876993.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.40793962906423.mm, 4.981198670501122.mm, 11.36300621044552.mm)
+  circle = ge.add_circle([1319.5477519467515.mm,-62.09710844562854.mm,1128.9783187337932.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(4.145968620076019.mm, 21.11144237721578.mm, 11.240972929393365.mm)
-  circle = ge.add_circle([1335.5324786576018.mm,-85.40011573772912.mm,1207.8570360783292.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.418368879275704.mm, -2.5357148359493635.mm, 11.37928719490992.mm)
+  circle = ge.add_circle([1311.1398123176873.mm,-57.11590977512742.mm,1140.3413249442387.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-12.003014528466565.mm, 17.7465090534551.mm, 11.41186163996008.mm)
-  circle = ge.add_circle([1339.6784472776778.mm,-64.28867336051334.mm,1219.0980090077226.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-4.828357313004972.mm, -8.57322632284091.mm, 11.305328620385353.mm)
+  circle = ge.add_circle([1301.7214434384116.mm,-59.651624611076784.mm,1151.7206121391487.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.00985203717846.mm, 3.925892932366864.mm, 11.507172089787673.mm)
-  circle = ge.add_circle([1327.6754327492113.mm,-46.54216430705824.mm,1230.5098706476826.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(2.6841628808961104.mm, -9.60889448084859.mm, 11.184279843796048.mm)
+  circle = ge.add_circle([1296.8930861254066.mm,-68.2248509339177.mm,1163.025940759534.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-17.567999632225337.mm, -12.207735346405713.mm, 11.470750371217036.mm)
-  circle = ge.add_circle([1306.6655807120328.mm,-42.61627137469138.mm,1242.0170427374703.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.736191930817768.mm, -5.038483556476592.mm, 11.086763871330959.mm)
+  circle = ge.add_circle([1299.5772490063027.mm,-77.83374541476628.mm,1174.21022060333.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-3.7052880758724314.mm, -21.148951412090824.mm, 11.324055010831898.mm)
-  circle = ge.add_circle([1289.0975810798075.mm,-54.82400672109709.mm,1253.4877931086874.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.796818603386555.mm, 2.4715097859532733.mm, 11.069674058881446.mm)
+  circle = ge.add_circle([1308.3134409371205.mm,-82.87222897124288.mm,1185.296984474661.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(12.410810690921835.mm, -17.629873073121743.mm, 11.153514283141021.mm)
-  circle = ge.add_circle([1285.392293003935.mm,-75.97295813318792.mm,1264.8118481195193.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.2472456982441145.mm, 8.539560005733222.mm, 11.142981047742751.mm)
+  circle = ge.add_circle([1318.110259540507.mm,-80.4007191852896.mm,1196.3666585335425.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(21.285200132358113.mm, -3.723830173716877.mm, 11.059605400163036.mm)
-  circle = ge.add_circle([1297.8031036948569.mm,-93.60283120630966.mm,1275.9653624026603.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-2.258187562953708.mm, 9.62540870209304.mm, 11.263915633020133.mm)
+  circle = ge.add_circle([1323.3575052387512.mm,-71.86115917955638.mm,1207.5096395812852.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(17.689370193860213.mm, 12.37617588600466.mm, 11.097656510623437.mm)
-  circle = ge.add_circle([1319.088303827215.mm,-97.32666138002654.mm,1287.0249678028233.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.340616109551547.mm, 5.0955434896672.mm, 11.361921430709344.mm)
+  circle = ge.add_circle([1321.0993176757975.mm,-62.23575047746334.mm,1218.7735552143054.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(3.741870338695435.mm, 21.1845298851311.mm, 11.245249101683157.mm)
-  circle = ge.add_circle([1336.7776740210752.mm,-84.95048549402188.mm,1298.1226243134467.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.451392850761522.mm, -2.4071943906512985.mm, 11.379819308134756.mm)
+  circle = ge.add_circle([1312.758701566246.mm,-57.14020698779614.mm,1230.1354766450147.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-12.339872903663718.mm, 17.511627766660382.mm, 11.4154262788511.mm)
-  circle = ge.add_circle([1340.5195443597706.mm,-63.76595560889078.mm,1309.36787341513.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-4.942461731176081.mm, -8.5055124235516.mm, 11.307167177868905.mm)
+  circle = ge.add_circle([1303.3073087154844.mm,-59.54740137844744.mm,1241.5152959531495.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.0810041876573.mm, 3.5214274887851786.mm, 11.507925022596964.mm)
-  circle = ge.add_circle([1328.179671456107.mm,-46.254327842230396.mm,1320.783299693981.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(2.555549502820895.mm, -9.641493178461275.mm, 11.186352183259942.mm)
+  circle = ge.add_circle([1298.3648469843083.mm,-68.05291380199904.mm,1252.8224631310184.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-17.33152495751733.mm, -12.543486678205923.mm, 11.468247993706655.mm)
-  circle = ge.add_circle([1307.0986672684496.mm,-42.73290035344522.mm,1332.291224716578.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.668105984379508.mm, -5.152375922522495.mm, 11.087860936004745.mm)
+  circle = ge.add_circle([1300.9203964871292.mm,-77.69440698046031.mm,1264.0088153142783.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-3.300509987747546.mm, -21.21817454859007.mm, 11.319771644820321.mm)
-  circle = ge.add_circle([1289.7671423109323.mm,-55.27638703165114.mm,1343.7594727102846.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.828983201467508.mm, 2.342771521527908.mm, 11.069155792688207.mm)
+  circle = ge.add_circle([1309.5885024715087.mm,-82.84678290298281.mm,1275.096676250283.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(12.745409723602052.mm, -17.391783927980114.mm, 11.149973552636538.mm)
-  circle = ge.add_circle([1286.4666323231847.mm,-76.49456158024121.mm,1355.079244355105.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.36089517733717.mm, 8.471085096415933.mm, 11.141149820664168.mm)
+  circle = ge.add_circle([1319.4174856729762.mm,-80.5040113814549.mm,1286.1658320429713.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(21.352484924331748.mm, -3.3187033537079174.mm, 11.058893391782476.mm)
-  circle = ge.add_circle([1299.2120420467868.mm,-93.88634550822132.mm,1366.2292179077415.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-2.1293592663328127.mm, 9.65714719183076.mm, 11.261839830587405.mm)
+  circle = ge.add_circle([1324.7783808503134.mm,-72.03292628503897.mm,1297.3069818636354.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(17.449698670179487.mm, 12.70965245020389.mm, 11.100192717222853.mm)
-  circle = ge.add_circle([1320.5645269711185.mm,-97.20504886192924.mm,1377.288111299524.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.271770776016183.mm, 5.208978317649283.mm, 11.360812130077647.mm)
+  circle = ge.add_circle([1322.6490215839806.mm,-62.37577909320821.mm,1308.5688216942228.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(3.336449393607154.mm, 21.249882331246795.mm, 11.249539270414289.mm)
-  circle = ge.add_circle([1338.014225641298.mm,-84.49539641172535.mm,1388.3883040167468.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.482696639387086.mm, -2.278244054865965.mm, 11.3803237041584.mm)
+  circle = ge.add_circle([1314.3772508079644.mm,-57.166800775558926.mm,1319.9296338243005.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-12.67218205027325.mm, 17.2703524969113.mm, 11.418942777757138.mm)
-  circle = ge.add_circle([1341.3506750349052.mm,-63.24551408047856.mm,1399.637843287161.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-5.05565119709172.mm, -8.436279561400454.mm, 11.308990992783038.mm)
+  circle = ge.add_circle([1304.8945541685773.mm,-59.44504483042489.mm,1331.3099575284589.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.144415479097916.mm, 3.115676273963871.mm, 11.508596041554028.mm)
-  circle = ge.add_circle([1328.678492984632.mm,-45.97516158356726.mm,1411.0567860649182.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(2.4265120394416044.mm, -9.672370043297946.mm, 11.188431355983994.mm)
+  circle = ge.add_circle([1299.8389029714856.mm,-67.88132439182534.mm,1342.618948521242.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-17.088678463050428.mm, -12.874658033714454.mm, 11.465678189532582.mm)
-  circle = ge.add_circle([1307.534077505534.mm,-42.859485309603386.mm,1422.5653821064723.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.598504337479199.mm, -5.265348147924811.mm, 11.088982423067591.mm)
+  circle = ge.add_circle([1302.2654150109272.mm,-77.55369443512329.mm,1353.807379877226.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-2.8944831941594202.mm, -21.27965033868618.mm, 11.315475064993507.mm)
-  circle = ge.add_circle([1290.4453990424836.mm,-55.73414334331784.mm,1434.0310602960049.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.859424783019449.mm, 2.2136148716182618.mm, 11.068665289353476.mm)
+  circle = ge.add_circle([1310.8639193484064.mm,-82.8190425830481.mm,1364.8963623002935.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(13.075398649618137.mm, -17.147344558206598.mm, 11.146481606329644.mm)
-  circle = ge.add_circle([1287.5509158483242.mm,-77.01379368200402.mm,1445.3465353609984.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.473619576514466.mm, 8.401097372465173.mm, 11.139333499342229.mm)
+  circle = ge.add_circle([1320.7233441314258.mm,-80.60542771142984.mm,1375.965027589647.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(21.412016926798742.mm, -2.912364782686609.mm, 11.05826342350224.mm)
-  circle = ge.add_circle([1300.6263144979423.mm,-94.16113824021062.mm,1456.493016967328.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-2.0001183973201933.mm, 9.687161053209408.mm, 11.259757380400742.mm)
+  circle = ge.add_circle([1326.1969637079403.mm,-72.20433033896467.mm,1387.1043610889892.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(17.203699372937308.mm, 13.03848836636027.mm, 11.102795884389707.mm)
-  circle = ge.add_circle([1322.038331424741.mm,-97.07350302289723.mm,1467.5512803908302.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.201415923250579.mm, 5.321482896609602.mm, 11.359678506654745.mm)
+  circle = ge.add_circle([1324.1968453106201.mm,-62.51716928575526.mm,1398.36411846939.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(2.9298538152881974.mm, 21.3074758535652.mm, 11.253841869126745.mm)
-  circle = ge.add_circle([1339.2420307976784.mm,-84.03501465653696.mm,1478.65407627522.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.512274654742441.mm, -2.1488868572789173.mm, 11.380800292904041.mm)
+  circle = ge.add_circle([1315.9954293873695.mm,-57.195686389145656.mm,1409.7237969760447.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-12.999820632971478.mm, 17.022771340527605.mm, 11.422409852706096.mm)
-  circle = ge.add_circle([1342.1718846129666.mm,-62.72753880297176.mm,1489.9079181443467.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-5.167905496733056.mm, -8.365540100386568.mm, 11.310799739420418.mm)
+  circle = ge.add_circle([1306.483154732627.mm,-59.344573246424574.mm,1421.1045972689487.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.200062758270406.mm, 2.7087874389712283.mm, 11.509184901651224.mm)
-  circle = ge.add_circle([1329.172063979995.mm,-45.70476746244415.mm,1501.3303279970528.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(2.29707353500271.mm, -9.701519561192043.mm, 11.190516990657898.mm)
+  circle = ge.add_circle([1301.315249235894.mm,-67.71011334681114.mm,1432.4153970083692.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-16.83954881884347.mm, -13.201128493046113.mm, 11.463041897001176.mm)
-  circle = ge.add_circle([1307.9720012217247.mm,-42.995980023472924.mm,1512.839512898704.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.527399419975836.mm, -5.377380057459916.mm, 11.090128132237169.mm)
+  circle = ge.add_circle([1303.6123227708968.mm,-77.41163290800318.mm,1443.605913999027.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-2.4873559467982886.mm, -21.33335633585719.mm, 11.311166840154101.mm)
-  circle = ge.add_circle([1291.1324524028812.mm,-56.19710851651904.mm,1524.3025547957052.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.888137911611466.mm, 2.0840629017546064.mm, 11.06820263647569.mm)
+  circle = ge.add_circle([1312.1397221908726.mm,-82.7890129654631.mm,1454.6960421312642.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(13.400656980823442.mm, -16.89664421542254.mm, 11.143039719226863.mm)
-  circle = ge.add_circle([1288.645096456083.mm,-77.53046485237623.mm,1535.6137216358593.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.585398764810179.mm, 8.329609332687397.mm, 11.137532408144807.mm)
+  circle = ge.add_circle([1322.027860102484.mm,-80.7049500637085.mm,1465.76424476774.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(21.46377440296783.mm, -2.5049628261809147.mm, 11.057715725341723.mm)
-  circle = ge.add_circle([1302.0457534369064.mm,-94.42710906779877.mm,1546.7567613550862.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-1.870488036486222.mm, 9.715444926182656.mm, 11.257668654356394.mm)
+  circle = ge.add_circle([1327.6132588672942.mm,-72.3753407310211.mm,1476.9017771758847.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.951462123327246.mm, 13.362563567323306.mm, 11.10546506163405.mm)
-  circle = ge.add_circle([1323.5095278398742.mm,-96.93207189397968.mm,1557.8144770804279.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.129564115624817.mm, 5.433037134839523.mm, 11.358520762890521.mm)
+  circle = ge.add_circle([1325.742770830808.mm,-62.65989580483844.mm,1488.159445830241.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(2.522232063106685.mm, 21.357289423087437.mm, 11.25815532682168.mm)
-  circle = ge.add_circle([1340.4609899632014.mm,-83.56950832665638.mm,1568.919942142062.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.540121614618556.mm, -2.019145899235511.mm, 11.381248989258438.mm)
+  circle = ge.add_circle([1317.6132067151832.mm,-57.22685866999892.mm,1499.5179665931316.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-13.322669021787988.mm, 16.7689746962848.mm, 11.425826237773208.mm)
-  circle = ge.add_circle([1342.983222026308.mm,-62.21221890356894.mm,1580.1780974688836.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-5.279204583086084.mm, -8.293306673565766.mm, 11.31259309476468.mm)
+  circle = ge.add_circle([1308.0730851005646.mm,-59.24600456923443.mm,1510.89921558239.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.24792570680438.mm, 2.300909550251099.mm, 11.509691387879002.mm)
-  circle = ge.add_circle([1329.6605530045201.mm,-45.44324420728414.mm,1591.6039237066568.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(2.167257105370254.mm, -9.728936526456565.mm, 11.192608714817425.mm)
+  circle = ge.add_circle([1302.7938805174786.mm,-67.5393112428002.mm,1522.2118086771547.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-16.584226989066565.mm, -13.522778852745496.mm, 11.460340078696618.mm)
-  circle = ge.add_circle([1308.4126272977157.mm,-43.14233465703304.mm,1603.1136150945358.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.454803930189655.mm, -5.488451643831226.mm, 11.0912978589065.mm)
+  circle = ge.add_circle([1304.9611376228488.mm,-77.26824776925676.mm,1533.4044173919722.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-2.079276899158913.mm, -21.379272930546577.mm, 11.306848543353453.mm)
-  circle = ge.add_circle([1291.8284003086492.mm,-56.665113509778536.mm,1614.5739551732324.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.915117459490148.mm, 1.95413874806583.mm, 11.06776791667744.mm)
+  circle = ge.add_circle([1313.4159415530385.mm,-82.75669941308799.mm,1544.4957152508787.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(13.721065956343637.mm, -16.63977443730471.mm, 11.139649148057288.mm)
-  circle = ge.add_circle([1289.7491234094903.mm,-78.04438644032511.mm,1625.880803716586.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.6962127800597955.mm, 8.256633743823883.mm, 11.135746868721526.mm)
+  circle = ge.add_circle([1323.3310590125286.mm,-80.80256066502216.mm,1555.5634831675561.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(21.507738454743276.mm, -2.0966462379902424.mm, 11.057250497280847.mm)
-  circle = ge.add_circle([1303.470189365834.mm,-94.68416087762982.mm,1637.0204528646432.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-1.740491333959426.mm, 9.741993759655351.mm, 11.255574025470878.mm)
+  circle = ge.add_circle([1329.0272717925884.mm,-72.54592692119827.mm,1566.6992300362776.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.69307902019318.mm, 13.681759724212867.mm, 11.108199274365688.mm)
-  circle = ge.add_circle([1324.9779278205772.mm,-96.78080711562006.mm,1648.077703361924.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.056228184843803.mm, 5.543621110347708.mm, 11.357339105540632.mm)
+  circle = ge.add_circle([1327.286780458629.mm,-62.80393316154292.mm,1577.9548040617485.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(2.113732971115951.mm, 21.399304851492168.mm, 11.262478068535984.mm)
-  circle = ge.add_circle([1341.6710068407704.mm,-83.0990473914072.mm,1659.1859026362897.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.566232545945468.mm, -1.8890443506149097.mm, 11.381669713091696.mm)
+  circle = ge.add_circle([1319.2305522737852.mm,-57.260312051195214.mm,1589.3121431672892.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-13.64060933578503.mm, 16.509055232404165.mm, 11.429190685540107.mm)
-  circle = ge.add_circle([1343.7847398118863.mm,-61.69974253991503.mm,1670.4483807048257.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-5.389528579727994.mm, -8.21959218079509.mm, 11.314370738548405.mm)
+  circle = ge.add_circle([1309.6643197278397.mm,-59.149356401810124.mm,1600.6938128803808.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.287986848604078.mm, 1.8921915353796734.mm, 11.510115315305711.mm)
-  circle = ge.add_circle([1330.1441304761013.mm,-45.19068730751086.mm,1681.8775713903658.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(2.0370859339018352.mm, -9.754616042813709.mm, 11.194706154910364.mm)
+  circle = ge.add_circle([1304.2747911481117.mm,-67.36894858260521.mm,1612.0081836189293.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-16.322806198830676.mm, -13.839491669308622.mm, 11.457573721127801.mm)
-  circle = ge.add_circle([1308.8561436274972.mm,-43.29849577213119.mm,1693.3876867056715.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.380730832637482.mm, -5.598543071242105.mm, 11.092491394178978.mm)
+  circle = ge.add_circle([1306.3118770820136.mm,-77.12356462541892.mm,1623.2028897738396.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-1.6703950522658033.mm, -21.41738335732837.mm, 11.302521751322956.mm)
-  circle = ge.add_circle([1292.5333374286665.mm,-57.13798744143981.mm,1704.8452604267993.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(9.94035860849317.mm, 1.8238656131472624.mm, 11.067361207593422.mm)
+  circle = ge.add_circle([1314.692607914651.mm,-82.72210769666103.mm,1634.2953811680186.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(14.036508585939828.mm, -16.3768290141619.mm, 11.136311130813056.mm)
-  circle = ge.add_circle([1290.8629423764007.mm,-78.55537079876818.mm,1716.1477821781223.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.806041832466008.mm, 8.182183638271212.mm, 11.133977199943729.mm)
+  circle = ge.add_circle([1324.6329665231442.mm,-80.89824208351376.mm,1645.362742375612.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(21.543893029624087.mm, -1.6875641058714876.mm, 11.056867909186622.mm)
-  circle = ge.add_circle([1304.8994509623406.mm,-94.93219981293008.mm,1727.2840933089353.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-1.6101515052912418.mm, 9.76680281238555.mm, 11.253473867815046.mm)
+  circle = ge.add_circle([1330.4390083556102.mm,-72.71605844524255.mm,1656.4967195755557.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.4286444064021.mm, 13.995960289622772.mm, 11.110997524247068.mm)
-  circle = ge.add_circle([1326.4433439919646.mm,-96.61976391880157.mm,1738.340961218122.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-7.981421227656256.mm, 5.653215074417858.mm, 11.356133745633088.mm)
+  circle = ge.add_circle([1328.828856850319.mm,-62.949255632857.mm,1667.7501934433708.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.7045056937099616.mm, 21.433506797776403.mm, 11.266808515915955.mm)
-  circle = ge.add_circle([1342.8719883983667.mm,-82.6238036291788.mm,1749.451958742369.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.590602785685178.mm, -1.758605445692929.mm, 11.382062389268185.mm)
+  circle = ge.add_circle([1320.8474356226627.mm,-57.296040558439145.mm,1679.1063271890039.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-26.5764940920767.mm, -8.809703168597608.mm, 0.28123274171503.mm)
-  circle = ge.add_circle([1344.5764940920767.mm,-61.19029683140239.mm,1760.718767258285.mm], vec, 5.mm, 8)
+  vec = Geom::Vector3d.new(-5.498857784368965.mm, -8.144409786428518.mm, 11.316132353309285.mm)
+  circle = ge.add_circle([1311.2568328369775.mm,-59.054646004132074.mm,1690.488389578272.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV cord (array -> panel, flexible)
+  # PV cord (+) (array -> panel MC4, bonded pair)
   grp = ents.add_group
-  grp.name = "PV cord (array -> panel, flexible)"
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(2.mm, 0.mm, 189.mm)
-  circle = ge.add_circle([1318.mm,-70.mm,1761.mm], vec, 5.mm, 10)
+  vec = Geom::Vector3d.new(12.693024947391677.mm, -2.8009442094394075.mm, -0.20452193158098453.mm)
+  circle = ge.add_circle([1305.7579750526086.mm,-67.19905579056059.mm,1701.8045219315813.mm], vec, 5.mm, 8)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (+) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(2.938999999999851.mm, 0.mm, 182.39999999999964.mm)
+  circle = ge.add_circle([1318.4510000000002.mm,-70.mm,1701.6000000000004.mm], vec, 5.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (+) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1.8330000000000837.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1321.39.mm,-70.mm,1884.mm], vec, 5.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (+) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.277000000000044.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1319.557.mm,-70.mm,1884.mm], vec, 5.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-3.mm, -9.mm, 0.mm)
+  circle = ge.add_circle([1318.mm,-920.mm,60.mm], vec, 5.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-7.mm, -21.mm, 0.mm)
+  circle = ge.add_circle([1315.mm,-929.mm,60.mm], vec, 5.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 88.mm, 0.mm)
+  circle = ge.add_circle([1308.mm,-950.mm,60.mm], vec, 5.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.240646482510101.mm, 11.174603174603135.mm, -9.143875140511966.mm)
+  circle = ge.add_circle([1308.mm,-862.mm,60.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.103793034090586.mm, 11.174603174603249.mm, -3.8554044985163287.mm)
+  circle = ge.add_circle([1317.24064648251.mm,-850.8253968253969.mm,50.856124859488034.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.182943879120785.mm, 11.174603174603135.mm, 3.6628859069936794.mm)
+  circle = ge.add_circle([1308.1368534484195.mm,-839.6507936507936.mm,47.000720360971705.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-3.951028205245848.mm, 11.174603174603135.mm, 9.062702001946683.mm)
+  circle = ge.add_circle([1298.9539095692987.mm,-828.4761904761905.mm,50.663606267965385.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.5660123580282743.mm, 11.174603174603249.mm, 9.220994920133435.mm)
+  circle = ge.add_circle([1295.0028813640529.mm,-817.3015873015873.mm,59.72630826991207.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.02060659798417.mm, 11.174603174603135.mm, 4.046214040203338.mm)
+  circle = ge.add_circle([1298.5688937220812.mm,-806.1269841269841.mm,68.9473031900455.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.25802404655201.mm, 11.174603174603135.mm, -3.4687436065814126.mm)
+  circle = ge.add_circle([1307.5895003200653.mm,-794.952380952381.mm,72.99351723024884.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.140951454441392.mm, 11.174603174603249.mm, -8.977511487416585.mm)
+  circle = ge.add_circle([1316.8475243666173.mm,-783.7777777777778.mm,69.52477362366743.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-3.3710904324400417.mm, 11.174603174603135.mm, -9.294027154632523.mm)
+  circle = ge.add_circle([1320.9884758210587.mm,-772.6031746031746.mm,60.54726213625084.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.933421446249213.mm, 11.174603174603249.mm, -4.235229948707868.mm)
+  circle = ge.add_circle([1317.6173853886187.mm,-761.4285714285714.mm,51.25323498161832.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.32900025433878.mm, 11.174603174603135.mm, 3.2730636579942143.mm)
+  circle = ge.add_circle([1308.6839639423695.mm,-750.2539682539682.mm,47.01800503291045.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.3290390746112735.mm, 11.174603174603135.mm, 8.888341360750331.mm)
+  circle = ge.add_circle([1299.3549636880307.mm,-739.0793650793651.mm,50.291068690904666.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.174674147038104.mm, 11.174603174603135.mm, 9.36293946978536.mm)
+  circle = ge.add_circle([1295.0259246134194.mm,-727.9047619047619.mm,59.179410051655.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.842276226910144.mm, 11.174603174603249.mm, 4.42236843577696.mm)
+  circle = ge.add_circle([1298.2005987604575.mm,-716.7301587301588.mm,68.54234952144036.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.395841039666493.mm, 11.174603174603135.mm, -3.075932803565891.mm)
+  circle = ge.add_circle([1307.0428749873677.mm,-705.5555555555555.mm,72.96471795721732.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.51520768900059.mm, 11.174603174603249.mm, -8.795231149886035.mm)
+  circle = ge.add_circle([1316.4387160270342.mm,-694.3809523809524.mm,69.88878515365143.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-2.976850570564011.mm, 11.174603174603135.mm, -9.427701317673794.mm)
+  circle = ge.add_circle([1320.9539237160348.mm,-683.2063492063492.mm,61.09355400376539.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.747211343437812.mm, 11.174603174603135.mm, -4.607546545393788.mm)
+  circle = ge.add_circle([1317.9770731454707.mm,-672.031746031746.mm,51.6658526860916.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.458516772898975.mm, 11.174603174603135.mm, 2.87743842879766.mm)
+  circle = ge.add_circle([1309.229861802033.mm,-660.8571428571429.mm,47.05830614069781.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.69937477152439.mm, 11.174603174603249.mm, 8.698222129348956.mm)
+  circle = ge.add_circle([1299.771345029134.mm,-649.6825396825398.mm,49.93574456949547.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(2.7777073955937794.mm, 11.174603174603135.mm, 9.488283990227039.mm)
+  circle = ge.add_circle([1295.0719702576096.mm,-638.5079365079365.mm,58.633966698844425.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.648268936837894.mm, 11.174603174603249.mm, 4.790682190550868.mm)
+  circle = ge.add_circle([1297.8496776532033.mm,-627.3333333333334.mm,68.12225068907146.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.516999670712721.mm, 11.174603174603135.mm, -2.6776685236212074.mm)
+  circle = ge.add_circle([1306.4979465900412.mm,-616.1587301587301.mm,72.91293287962233.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.88145868334982.mm, 11.174603174603135.mm, -8.597357301955228.mm)
+  circle = ge.add_circle([1316.014946260754.mm,-604.984126984127.mm,70.23526435600112.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-2.5773328996638156.mm, 11.174603174603135.mm, -9.544660631947359.mm)
+  circle = ge.add_circle([1320.8964049441038.mm,-593.8095238095239.mm,61.6379070540459.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.545492866971017.mm, 11.174603174603249.mm, -4.9716941896382565.mm)
+  circle = ge.add_circle([1318.31907204444.mm,-582.6349206349207.mm,52.09324642209854.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.571263808411913.mm, 11.174603174603249.mm, 2.476711643394019.mm)
+  circle = ge.add_circle([1309.773579177469.mm,-571.4603174603175.mm,47.12155223246028.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-5.061378709086739.mm, 11.174603174603135.mm, 8.492681379749136.mm)
+  circle = ge.add_circle([1300.202315369057.mm,-560.2857142857142.mm,49.5982638758543.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(2.3758159061385413.mm, 11.174603174603135.mm, 9.59680625181496.mm)
+  circle = ge.add_circle([1295.1409366599703.mm,-549.1111111111111.mm,58.09094525560344.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.438928693110029.mm, 11.174603174603135.mm, 5.150502302430169.mm)
+  circle = ge.add_circle([1297.5167525661088.mm,-537.936507936508.mm,67.6877515074184.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.621285131421928.mm, 11.174603174603135.mm, -2.274656869643934.mm)
+  circle = ge.add_circle([1305.9556812592189.mm,-526.7619047619048.mm,72.83825380984857.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.239055092566787.mm, 11.174603174603249.mm, -8.384240764182898.mm)
+  circle = ge.add_circle([1315.5769663906408.mm,-515.5873015873017.mm,70.56359694020463.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-2.1732457448365494.mm, 11.174603174603192.mm, -9.644697734366083.mm)
+  circle = ge.add_circle([1320.8160214832076.mm,-504.41269841269843.mm,62.179356176021734.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.328623653744444.mm, 11.174603174603135.mm, -5.327027265654515.mm)
+  circle = ge.add_circle([1318.642775738371.mm,-493.23809523809524.mm,52.53465844165565.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.66704146595157.mm, 11.174603174603249.mm, 2.0715937705804706.mm)
+  circle = ge.add_circle([1310.3141520846266.mm,-482.0634920634921.mm,47.20763117600114.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-5.414409072198168.mm, 11.174603174603135.mm, 8.272083525547465.mm)
+  circle = ge.add_circle([1300.647110618675.mm,-470.88888888888886.mm,49.27922494658161.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(1.9697122124318867.mm, 11.174603174603192.mm, 9.68831384993971.mm)
+  circle = ge.add_circle([1295.2327015464768.mm,-459.7142857142857.mm,57.55130847212907.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.214626645638873.mm, 11.174603174603135.mm, 5.5011908281293245.mm)
+  circle = ge.add_circle([1297.2024137589087.mm,-448.53968253968253.mm,67.23962232206878.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.708512528823348.mm, 11.174603174603249.mm, -1.8676123613903997.mm)
+  circle = ge.add_circle([1305.4170404045476.mm,-437.3650793650794.mm,72.74081315019811.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.587362915880476.mm, 11.174603174603135.mm, -8.15625938166383.mm)
+  circle = ge.add_circle([1315.125552933371.mm,-426.19047619047615.mm,70.87320078880771.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1.765305532648199.mm, 11.174603174603192.mm, -9.727635264088526.mm)
+  circle = ge.add_circle([1320.7129158492514.mm,-415.015873015873.mm,62.71694140714388.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.096988202160446.mm, 11.174603174603135.mm, -5.6729157854501295.mm)
+  circle = ge.add_circle([1318.9476103166032.mm,-403.8412698412698.mm,52.98930614305535.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.745679936462693.mm, 11.174603174603192.mm, 1.6628030643352218.mm)
+  circle = ge.add_circle([1310.8506221144428.mm,-392.6666666666667.mm,47.31639035760522.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-5.7578399554618045.mm, 11.174603174603135.mm, 8.036819675843432.mm)
+  circle = ge.add_circle([1301.10494217798.mm,-381.4920634920635.mm,48.979193421940444.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(1.5601163162637022.mm, 11.174603174603249.mm, 9.762644546149552.mm)
+  circle = ge.add_circle([1295.3471022225183.mm,-370.31746031746036.mm,57.016013097783876.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(7.975760470875457.mm, 11.174603174603135.mm, 5.842126014214088.mm)
+  circle = ge.add_circle([1296.907218538782.mm,-359.1428571428571.mm,66.77865764393343.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.778527213049983.mm, 11.174603174603135.mm, -1.457256668668279.mm)
+  circle = ge.add_circle([1304.8829790096574.mm,-347.968253968254.mm,72.62078365814752.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.925764620724294.mm, 11.174603174603135.mm, -7.913817354128447.mm)
+  circle = ge.add_circle([1314.6615062227074.mm,-336.79365079365084.mm,71.16352698947924.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1.354235520945167.mm, 11.174603174603249.mm, -9.793326176971128.mm)
+  circle = ge.add_circle([1320.5872708434317.mm,-325.6190476190477.mm,63.24970963535079.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-7.850997190433873.mm, 11.174603174603135.mm, -6.008746505764073.mm)
+  circle = ge.add_circle([1319.2330353224866.mm,-314.44444444444446.mm,53.45638345837966.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.80703979782129.mm, 11.174603174603249.mm, 1.2510642903888183.mm)
+  circle = ge.add_circle([1311.3820381320527.mm,-303.2698412698413.mm,47.44763695261559.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-6.091062472885142.mm, 11.174603174603135.mm, 7.787306941821903.mm)
+  circle = ge.add_circle([1301.5749983342314.mm,-292.0952380952381.mm,48.69870124300441.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(1.1477544109268365.mm, 11.174603174603249.mm, 9.819666555791706.mm)
+  circle = ge.add_circle([1295.4839358613463.mm,-280.92063492063494.mm,56.48600818482631.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(7.722753666748758.mm, 11.174603174603135.mm, 6.172703399439527.mm)
+  circle = ge.add_circle([1296.631690272273.mm,-269.7460317460317.mm,66.30567474061802.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.831205051525103.mm, 11.174603174603135.mm, -1.0443173318518006.mm)
+  circle = ge.add_circle([1304.3544439390218.mm,-258.57142857142856.mm,72.47837814005754.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(6.253660237591021.mm, 11.174603174603135.mm, -7.65734451931656.mm)
+  circle = ge.add_circle([1314.185648990547.mm,-247.39682539682542.mm,71.43406080820574.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-0.9407645165540544.mm, 11.174603174603249.mm, -9.841654006269906.mm)
+  circle = ge.add_circle([1320.439309228138.mm,-236.22222222222229.mm,63.77671628888918.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-7.591086748478347.mm, 11.174603174603135.mm, -6.333924015317287.mm)
+  circle = ge.add_circle([1319.498544711584.mm,-225.04761904761904.mm,53.93506228261928.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.851012262023687.mm, 11.174603174603249.mm, 0.837107441250204.mm)
+  circle = ge.add_circle([1311.9074579631056.mm,-213.8730158730159.mm,47.60113826730199.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-6.413485837403641.mm, 11.174603174603135.mm, 7.52398769723591.mm)
+  circle = ge.add_circle([1302.0564457010819.mm,-202.69841269841265.mm,48.438245708552195.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.7333575937109345.mm, 11.174603174603135.mm, 9.859278781659647.mm)
+  circle = ge.add_circle([1295.6429598636782.mm,-191.52380952380952.mm,55.962233405788105.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(7.4560548018262125.mm, 11.174603174603135.mm, 6.492336886430067.mm)
+  circle = ge.add_circle([1296.3763174573892.mm,-180.34920634920638.mm,65.82151218744775.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.866452649042685.mm, 11.174603174603249.mm, -0.6295264719886262.mm)
+  circle = ge.add_circle([1303.8323722592154.mm,-169.17460317460325.mm,72.31384907387782.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-5.698824908258075.mm, 0.mm, -11.684322601889193.mm)
+  circle = ge.add_circle([1313.698824908258.mm,-158.mm,71.68432260188919.mm], vec, 5.mm, 8)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 88.mm, 0.mm)
+  circle = ge.add_circle([1308.mm,-158.mm,60.mm], vec, 5.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(2.939000000000078.mm, 0.mm, 182.40000000000003.mm)
+  circle = ge.add_circle([1308.mm,-70.mm,60.mm], vec, 5.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.99496719611102.mm, 9.207730857270427.mm, 11.372464949587481.mm)
+  circle = ge.add_circle([1310.939.mm,-70.mm,242.40000000000003.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-3.641549939327888.mm, -9.164298928050435.mm, 11.286205666047522.mm)
+  circle = ge.add_circle([1301.944032803889.mm,-60.79226914272957.mm,253.77246494958752.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.941961640230147.mm, -9.189638245741236.mm, 11.164013009620362.mm)
+  circle = ge.add_circle([1298.3024828645612.mm,-69.95656807078001.mm,265.05867061563504.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.331149549226211.mm, -3.85350347848248.mm, 11.077177355757726.mm)
+  circle = ge.add_circle([1302.2444445047913.mm,-79.14620631652124.mm,276.2226836252554.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.381821324327575.mm, 3.7308654938301373.mm, 11.076360884556948.mm)
+  circle = ge.add_circle([1311.5755940540175.mm,-82.99970979500372.mm,287.2998609810131.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.064413733362699.mm, 9.13855045261559.mm, 11.162039946562686.mm)
+  circle = ge.add_circle([1320.957415378345.mm,-79.26884430117359.mm,298.3762218655701.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-3.518759265741437.mm, 9.214567274365436.mm, 11.284227147463753.mm)
+  circle = ge.add_circle([1325.0218291117078.mm,-70.130293848558.mm,309.53826181213276.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.94347721629515.mm, 3.914565767164234.mm, 11.371635294704333.mm)
+  circle = ge.add_circle([1321.5030698459664.mm,-60.91572657419256.mm,320.8224889595965.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.044818504160048.mm, -3.6692952732681263.mm, 11.373268200653058.mm)
+  circle = ge.add_circle([1312.5595926296712.mm,-57.00116080702833.mm,332.19412425430085.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-3.763657984897236.mm, -9.112393969026904.mm, 11.288173185487892.mm)
+  circle = ge.add_circle([1303.5147741255112.mm,-60.670456080296454.mm,343.5673924549539.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.818837868415585.mm, -9.239084900918641.mm, 11.16599689539538.mm)
+  circle = ge.add_circle([1299.751116140614.mm,-69.78285004932336.mm,354.8555656404418.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.278843663565112.mm, -3.9754532825315323.mm, 11.078020157281628.mm)
+  circle = ge.add_circle([1303.5699540090295.mm,-79.021934950242.mm,366.0215625358372.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.430849939616564.mm, 3.6075612299644035.mm, 11.075570889489313.mm)
+  circle = ge.add_circle([1312.8487976725946.mm,-82.99738823277353.mm,377.0995826931188.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.18617227962045.mm, 9.085830645090851.mm, 11.160078058583224.mm)
+  circle = ge.add_circle([1322.2796476122112.mm,-79.38982700280913.mm,388.1751535826081.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-3.395307892796609.mm, 9.263190030764278.mm, 11.282237983071923.mm)
+  circle = ge.add_circle([1326.4658198918316.mm,-70.30399635771828.mm,399.33523164119134.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.890357760085635.mm, 4.036163306144211.mm, 11.370779384168145.mm)
+  circle = ge.add_circle([1323.070511999035.mm,-61.040806326954.mm,410.61746962426326.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.093022237711466.mm, -3.54566612015401.mm, 11.374044904451864.mm)
+  circle = ge.add_circle([1314.1801542389494.mm,-57.00464302080979.mm,421.9882490084314.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-3.8850615956996535.mm, -9.05886166677815.mm, 11.290129354414205.mm)
+  circle = ge.add_circle([1305.087132001238.mm,-60.5503091409638.mm,433.3622939128833.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.695064406064148.mm, -9.286881587682458.mm, 11.167991249594081.mm)
+  circle = ge.add_circle([1301.2020704055383.mm,-69.60917080774195.mm,444.6524232672975.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.22491300842762.mm, -4.096693127486546.mm, 11.078889138616319.mm)
+  circle = ge.add_circle([1304.8971348116024.mm,-78.8960523954244.mm,455.82041451689156.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.478226639282411.mm, 3.4836127072631626.mm, 11.07480751163672.mm)
+  circle = ge.add_circle([1314.12204782003.mm,-82.99274552291095.mm,466.8993036555079.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.307215534669922.mm, 9.031488238170581.mm, 11.158127696047075.mm)
+  circle = ge.add_circle([1323.6002744593125.mm,-79.50913281564779.mm,477.9741111671446.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-3.271217867142468.mm, 9.310158513918111.mm, 11.280238528108043.mm)
+  circle = ge.add_circle([1327.9074899939824.mm,-70.47764457747721.mm,489.1322388631917.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.835618313858731.mm, 4.157040044088305.mm, 11.369897370832405.mm)
+  circle = ge.add_circle([1324.63627212684.mm,-61.167486063559096.mm,500.4124773912997.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.139569788267636.mm, -3.4214037617857045.mm, 11.374794922275669.mm)
+  circle = ge.add_circle([1315.8006538129812.mm,-57.01044601947079.mm,511.7823747621321.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.005739090786619.mm, -9.003711581407579.mm, 11.292073823482497.mm)
+  circle = ge.add_circle([1306.6610840247135.mm,-60.431849781256496.mm,523.1571696844078.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.5706633573449835.mm, -9.333019770228091.mm, 11.16999571605345.mm)
+  circle = ge.add_circle([1302.655344933927.mm,-69.43556136266407.mm,534.4492435078903.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.1693672150584.mm, -4.21720136164538.mm, 11.079784144574205.mm)
+  circle = ge.add_circle([1306.226008291272.mm,-78.76858113289217.mm,545.6192392239437.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.523942962524416.mm, 3.3590420611596414.mm, 11.07407088732748.mm)
+  circle = ge.add_circle([1315.3953755063303.mm,-82.98578249453755.mm,556.6990233685179.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.427521881915709.mm, 8.975532936631367.mm, 11.15618920726115.mm)
+  circle = ge.add_circle([1324.9193184688547.mm,-79.6267404333779.mm,567.7730942558454.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-3.14651134948258.mm, 9.355464335927678.mm, 11.278229139646442.mm)
+  circle = ge.add_circle([1329.3468403507704.mm,-70.65120749674654.mm,578.9292834631066.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.779268653295503.mm, 4.2771743941400615.mm, 11.368989412211704.mm)
+  circle = ge.add_circle([1326.2003290012879.mm,-61.29574316081886.mm,590.207512602753.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.184452843102463.mm, -3.296530389643003.mm, 11.375518120182392.mm)
+  circle = ge.add_circle([1317.4210603479924.mm,-57.0185687666788.mm,601.5765020149647.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.125668918883548.mm, -8.946953561931686.mm, 11.294006245438482.mm)
+  circle = ge.add_circle([1308.23660750489.mm,-60.3150991563218.mm,612.9520201351471.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.4456569385067723.mm, -9.377491208936064.mm, 11.17200993680433.mm)
+  circle = ge.add_circle([1304.1109385860063.mm,-69.26205271825349.mm,624.2460263805856.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.112216203140633.mm, -4.336956463961059.mm, 11.08070501531995.mm)
+  circle = ge.add_circle([1307.556595524513.mm,-78.63954392718955.mm,635.4180363173899.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.567990745061024.mm, 3.2338715381895327.mm, 11.073361148112099.mm)
+  circle = ge.add_circle([1316.6688117276537.mm,-82.97650039115061.mm,646.4987413327099.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.547069836366063.mm, 8.917974733289725.mm, 11.154262938411762.mm)
+  circle = ge.add_circle([1326.2368024727148.mm,-79.74262885296108.mm,657.572102480822.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-3.0212106106175725.mm, 9.399099405821133.mm, 11.276210176535074.mm)
+  circle = ge.add_circle([1330.7838723090808.mm,-70.82465411967135.mm,668.7263654192337.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.721318841639913.mm, 4.396544902022889.mm, 11.36805567045485.mm)
+  circle = ge.add_circle([1327.7626616984633.mm,-61.42555471385022.mm,680.0025755957688.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.227663386743643.mm, -3.171068304324052.mm, 11.37621436901884.mm)
+  circle = ge.add_circle([1319.0413428568233.mm,-57.02900981182733.mm,691.3706312662237.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.244829662238772.mm, -8.888597744520972.mm, 11.295926275179227.mm)
+  circle = ge.add_circle([1309.8136794700797.mm,-60.20007811615138.mm,702.7468456352425.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.3200674739075566.mm, -9.4202879618435.mm, 11.174033552135825.mm)
+  circle = ge.add_circle([1305.568849807841.mm,-69.08867586067235.mm,714.0427719104217.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.053470179027954.mm, -4.455937047885172.mm, 11.081651586399289.mm)
+  circle = ge.add_circle([1308.8889172817485.mm,-78.50896382251585.mm,725.2168054625575.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.610362120588889.mm, 3.108123492017853.mm, 11.072678420739976.mm)
+  circle = ge.add_circle([1317.9423874607764.mm,-82.96490087040102.mm,736.2984570489568.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.665838048465275.mm, 8.858823907217442.mm, 11.152349233502946.mm)
+  circle = ge.add_circle([1327.5527495813653.mm,-79.85677737838317.mm,747.3711354696968.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-2.895338027466778.mm, 9.44105593099924.mm, 11.274181999331745.mm)
+  circle = ge.add_circle([1332.2185876298306.mm,-70.99795347116573.mm,758.5234847031998.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.661779227899387.mm, 4.515130249871426.mm, 11.36709631231463.mm)
+  circle = ge.add_circle([1329.3232496023638.mm,-61.55689754016649.mm,769.7976667025315.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.26919370240671.mm, -3.0450399115628954.mm, 11.376883544444922.mm)
+  circle = ge.add_circle([1320.6614703744644.mm,-57.04176729029506.mm,781.1647630148461.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.363200040447055.mm, -8.828654550689528.mm, 11.297833569814998.mm)
+  circle = ge.add_circle([1311.3922766720577.mm,-60.08680720185796.mm,792.541646559291.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.1939173920288795.mm, -9.461402386062474.mm, 11.17606620065908.mm)
+  circle = ge.add_circle([1307.0290766316107.mm,-68.91546175254749.mm,803.839480129106.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.99313963392001.mm, -4.5741218651873226.mm, 11.08262368876808.mm)
+  circle = ge.add_circle([1310.2229940236396.mm,-78.37686413860996.mm,815.0155463297651.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.65104952218644.mm, 2.9818203794469866.mm, 11.07202282713638.mm)
+  circle = ge.add_circle([1319.2161336575596.mm,-82.95098600379728.mm,826.0981700185332.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.783805307909915.mm, 8.798091021906075.mm, 11.150448434295186.mm)
+  circle = ge.add_circle([1328.867183179746.mm,-79.9691656243503.mm,837.1701928456696.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-2.7689160790737333.mm, 9.481326418626622.mm, 11.272144970240106.mm)
+  circle = ge.add_circle([1333.650988487656.mm,-71.17107460244422.mm,848.3206412799648.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.600660444996947.mm, 4.63290926003878.mm, 11.366111509118582.mm)
+  circle = ge.add_circle([1330.8820724085822.mm,-61.6897481838176.mm,859.5927862502049.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.3090363733711.mm, -2.9184677182276957.mm, 11.377525526955651.mm)
+  circle = ge.add_circle([1322.2814119635852.mm,-57.05683892377882.mm,870.9588977593235.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.480758914252874.mm, -8.767134685434584.mm, 11.299727788730138.mm)
+  circle = ge.add_circle([1312.9723755902141.mm,-59.975306642006515.mm,882.3364232862791.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.067229221471962.mm, -9.500827139144917.mm, 11.178107519372134.mm)
+  circle = ge.add_circle([1308.4916166759613.mm,-68.7424413274411.mm,893.6361510750093.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.931235341988668.mm, -4.691489809749541.mm, 11.083621148822886.mm)
+  circle = ge.add_circle([1311.5588458974332.mm,-78.24326846658602.mm,904.8142585943814.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.690045683665176.mm, 2.8549847564063526.mm, 11.071394484381017.mm)
+  circle = ge.add_circle([1320.490081239422.mm,-82.93475827633556.mm,915.8978797432043.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.900950547435059.mm, 8.735786923380218.mm, 11.148560880243735.mm)
+  circle = ge.add_circle([1330.180126923087.mm,-80.0797735199292.mm,926.9692742275853.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-2.641967342589851.mm, 9.519903676970202.mm, 11.270099453044168.mm)
+  circle = ge.add_circle([1335.0810774705221.mm,-71.34398659654899.mm,938.117835107829.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.537973407873551.mm, 4.749860898878353.mm, 11.365101436738655.mm)
+  circle = ge.add_circle([1332.4391101279323.mm,-61.824082919578785.mm,949.3879345608732.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.347184284305058.mm, -2.791374328301835.mm, 11.37814020190217.mm)
+  circle = ge.add_circle([1323.9011367200587.mm,-57.07422202070043.mm,960.7530359976118.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.597485289323004.mm, -8.704049135324091.mm, 11.301608593644005.mm)
+  circle = ge.add_circle([1314.5539524357537.mm,-59.86559634900227.mm,972.131176199514.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(2.9400255869313696.mm, -9.538555180393715.mm, 11.180157143724728.mm)
+  circle = ge.add_circle([1309.9564671464307.mm,-68.56964548432636.mm,983.432784793158.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.867768358456487.mm, -4.808019921335756.mm, 11.084643788431663.mm)
+  circle = ge.add_circle([1312.896492733362.mm,-78.10820066472007.mm,994.6129419368827.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.727343640867957.mm, 2.727639273923998.mm, 11.070793504686776.mm)
+  circle = ge.add_circle([1321.7642610918185.mm,-82.91622058605583.mm,1005.6975857253144.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.017252846576184.mm, 8.671922738260733.mm, 11.146686908438937.mm)
+  circle = ge.add_circle([1331.4916047326865.mm,-80.18858131213183.mm,1016.7683792300012.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-2.514514489243311.mm, 9.556780816683371.mm, 11.268045813044182.mm)
+  circle = ge.add_circle([1336.5088575792627.mm,-71.5166585738711.mm,1027.9150661384401.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.473729311537227.mm, 4.8659642805003.mm, 11.36406627555948.mm)
+  circle = ge.add_circle([1333.9943430900194.mm,-61.959877757187726.mm,1039.1831119514843.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.383630622538476.mm, -2.6637824388469085.mm, 11.37872745951222.mm)
+  circle = ge.add_circle([1325.5206137784821.mm,-57.093913476687426.mm,1050.5471782270438.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.713358319995223.mm, -8.639409166534925.mm, 11.303475648672247.mm)
+  circle = ge.add_circle([1316.1369831559437.mm,-59.757695915534335.mm,1061.925905686556.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(2.8123292051570843.mm, -9.57457977212053.mm, 11.182214707683215.mm)
+  circle = ge.add_circle([1311.4236248359484.mm,-68.39710508206926.mm,1073.2293813352283.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.802750017616972.mm, -4.923691389334692.mm, 11.085691424965262.mm)
+  circle = ge.add_circle([1314.2359540411055.mm,-77.97168485418979.mm,1084.4115960429115.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.762936732914568.mm, 2.599806674081691.mm, 11.070219995380057.mm)
+  circle = ge.add_circle([1323.0387040587225.mm,-82.89537624352448.mm,1095.4972874678767.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.1326914354062865.mm, 8.606509871777604.mm, 11.14482685354551.mm)
+  circle = ge.add_circle([1332.801640791637.mm,-80.29556956944279.mm,1106.5675074632568.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-2.3865802802918097.mm, 9.591951252036644.mm, 11.265984416990932.mm)
+  circle = ge.add_circle([1337.9343322270433.mm,-71.68905969766519.mm,1117.7123343168023.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.40793962906423.mm, 4.981198670501122.mm, 11.36300621044552.mm)
+  circle = ge.add_circle([1335.5477519467515.mm,-62.09710844562854.mm,1128.9783187337932.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.418368879275704.mm, -2.5357148359493635.mm, 11.37928719490992.mm)
+  circle = ge.add_circle([1327.1398123176873.mm,-57.11590977512742.mm,1140.3413249442387.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.828357313004972.mm, -8.57322632284091.mm, 11.305328620385353.mm)
+  circle = ge.add_circle([1317.7214434384116.mm,-59.651624611076784.mm,1151.7206121391487.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(2.6841628808961104.mm, -9.60889448084859.mm, 11.184279843796048.mm)
+  circle = ge.add_circle([1312.8930861254066.mm,-68.2248509339177.mm,1163.025940759534.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.736191930817768.mm, -5.038483556476592.mm, 11.086763871330959.mm)
+  circle = ge.add_circle([1315.5772490063027.mm,-77.83374541476628.mm,1174.21022060333.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.796818603386555.mm, 2.4715097859532733.mm, 11.069674058881446.mm)
+  circle = ge.add_circle([1324.3134409371205.mm,-82.87222897124288.mm,1185.296984474661.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.2472456982441145.mm, 8.539560005733222.mm, 11.142981047742751.mm)
+  circle = ge.add_circle([1334.110259540507.mm,-80.4007191852896.mm,1196.3666585335425.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-2.258187562953708.mm, 9.62540870209304.mm, 11.263915633020133.mm)
+  circle = ge.add_circle([1339.3575052387512.mm,-71.86115917955638.mm,1207.5096395812852.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.340616109551547.mm, 5.0955434896672.mm, 11.361921430709344.mm)
+  circle = ge.add_circle([1337.0993176757975.mm,-62.23575047746334.mm,1218.7735552143054.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.451392850761522.mm, -2.4071943906512985.mm, 11.379819308134756.mm)
+  circle = ge.add_circle([1328.758701566246.mm,-57.14020698779614.mm,1230.1354766450147.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.942461731176081.mm, -8.5055124235516.mm, 11.307167177868905.mm)
+  circle = ge.add_circle([1319.3073087154844.mm,-59.54740137844744.mm,1241.5152959531495.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(2.555549502820895.mm, -9.641493178461275.mm, 11.186352183259942.mm)
+  circle = ge.add_circle([1314.3648469843083.mm,-68.05291380199904.mm,1252.8224631310184.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.668105984379508.mm, -5.152375922522495.mm, 11.087860936004745.mm)
+  circle = ge.add_circle([1316.9203964871292.mm,-77.69440698046031.mm,1264.0088153142783.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.828983201467508.mm, 2.342771521527908.mm, 11.069155792688207.mm)
+  circle = ge.add_circle([1325.5885024715087.mm,-82.84678290298281.mm,1275.096676250283.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.36089517733717.mm, 8.471085096415933.mm, 11.141149820664168.mm)
+  circle = ge.add_circle([1335.4174856729762.mm,-80.5040113814549.mm,1286.1658320429713.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-2.1293592663328127.mm, 9.65714719183076.mm, 11.261839830587405.mm)
+  circle = ge.add_circle([1340.7783808503134.mm,-72.03292628503897.mm,1297.3069818636354.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.271770776016183.mm, 5.208978317649283.mm, 11.360812130077647.mm)
+  circle = ge.add_circle([1338.6490215839806.mm,-62.37577909320821.mm,1308.5688216942228.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.482696639387086.mm, -2.278244054865965.mm, 11.3803237041584.mm)
+  circle = ge.add_circle([1330.3772508079644.mm,-57.166800775558926.mm,1319.9296338243005.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-5.05565119709172.mm, -8.436279561400454.mm, 11.308990992783038.mm)
+  circle = ge.add_circle([1320.8945541685773.mm,-59.44504483042489.mm,1331.3099575284589.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(2.4265120394416044.mm, -9.672370043297946.mm, 11.188431355983994.mm)
+  circle = ge.add_circle([1315.8389029714856.mm,-67.88132439182534.mm,1342.618948521242.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.598504337479199.mm, -5.265348147924811.mm, 11.088982423067591.mm)
+  circle = ge.add_circle([1318.2654150109272.mm,-77.55369443512329.mm,1353.807379877226.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.859424783019449.mm, 2.2136148716182618.mm, 11.068665289353476.mm)
+  circle = ge.add_circle([1326.8639193484064.mm,-82.8190425830481.mm,1364.8963623002935.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.473619576514466.mm, 8.401097372465173.mm, 11.139333499342229.mm)
+  circle = ge.add_circle([1336.7233441314258.mm,-80.60542771142984.mm,1375.965027589647.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-2.0001183973201933.mm, 9.687161053209408.mm, 11.259757380400742.mm)
+  circle = ge.add_circle([1342.1969637079403.mm,-72.20433033896467.mm,1387.1043610889892.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.201415923250579.mm, 5.321482896609602.mm, 11.359678506654745.mm)
+  circle = ge.add_circle([1340.1968453106201.mm,-62.51716928575526.mm,1398.36411846939.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.512274654742441.mm, -2.1488868572789173.mm, 11.380800292904041.mm)
+  circle = ge.add_circle([1331.9954293873695.mm,-57.195686389145656.mm,1409.7237969760447.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-5.167905496733056.mm, -8.365540100386568.mm, 11.310799739420418.mm)
+  circle = ge.add_circle([1322.483154732627.mm,-59.344573246424574.mm,1421.1045972689487.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(2.29707353500271.mm, -9.701519561192043.mm, 11.190516990657898.mm)
+  circle = ge.add_circle([1317.315249235894.mm,-67.71011334681114.mm,1432.4153970083692.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.527399419975836.mm, -5.377380057459916.mm, 11.090128132237169.mm)
+  circle = ge.add_circle([1319.6123227708968.mm,-77.41163290800318.mm,1443.605913999027.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.888137911611466.mm, 2.0840629017546064.mm, 11.06820263647569.mm)
+  circle = ge.add_circle([1328.1397221908726.mm,-82.7890129654631.mm,1454.6960421312642.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.585398764810179.mm, 8.329609332687397.mm, 11.137532408144807.mm)
+  circle = ge.add_circle([1338.027860102484.mm,-80.7049500637085.mm,1465.76424476774.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1.870488036486222.mm, 9.715444926182656.mm, 11.257668654356394.mm)
+  circle = ge.add_circle([1343.6132588672942.mm,-72.3753407310211.mm,1476.9017771758847.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.129564115624817.mm, 5.433037134839523.mm, 11.358520762890521.mm)
+  circle = ge.add_circle([1341.742770830808.mm,-62.65989580483844.mm,1488.159445830241.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.540121614618556.mm, -2.019145899235511.mm, 11.381248989258438.mm)
+  circle = ge.add_circle([1333.6132067151832.mm,-57.22685866999892.mm,1499.5179665931316.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-5.279204583086084.mm, -8.293306673565766.mm, 11.31259309476468.mm)
+  circle = ge.add_circle([1324.0730851005646.mm,-59.24600456923443.mm,1510.89921558239.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(2.167257105370254.mm, -9.728936526456565.mm, 11.192608714817425.mm)
+  circle = ge.add_circle([1318.7938805174786.mm,-67.5393112428002.mm,1522.2118086771547.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.454803930189655.mm, -5.488451643831226.mm, 11.0912978589065.mm)
+  circle = ge.add_circle([1320.9611376228488.mm,-77.26824776925676.mm,1533.4044173919722.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.915117459490148.mm, 1.95413874806583.mm, 11.06776791667744.mm)
+  circle = ge.add_circle([1329.4159415530385.mm,-82.75669941308799.mm,1544.4957152508787.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.6962127800597955.mm, 8.256633743823883.mm, 11.135746868721526.mm)
+  circle = ge.add_circle([1339.3310590125286.mm,-80.80256066502216.mm,1555.5634831675561.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1.740491333959426.mm, 9.741993759655351.mm, 11.255574025470878.mm)
+  circle = ge.add_circle([1345.0272717925884.mm,-72.54592692119827.mm,1566.6992300362776.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.056228184843803.mm, 5.543621110347708.mm, 11.357339105540632.mm)
+  circle = ge.add_circle([1343.286780458629.mm,-62.80393316154292.mm,1577.9548040617485.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.566232545945468.mm, -1.8890443506149097.mm, 11.381669713091696.mm)
+  circle = ge.add_circle([1335.2305522737852.mm,-57.260312051195214.mm,1589.3121431672892.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-5.389528579727994.mm, -8.21959218079509.mm, 11.314370738548405.mm)
+  circle = ge.add_circle([1325.6643197278397.mm,-59.149356401810124.mm,1600.6938128803808.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(2.0370859339018352.mm, -9.754616042813709.mm, 11.194706154910364.mm)
+  circle = ge.add_circle([1320.2747911481117.mm,-67.36894858260521.mm,1612.0081836189293.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.380730832637482.mm, -5.598543071242105.mm, 11.092491394178978.mm)
+  circle = ge.add_circle([1322.3118770820136.mm,-77.12356462541892.mm,1623.2028897738396.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.94035860849317.mm, 1.8238656131472624.mm, 11.067361207593422.mm)
+  circle = ge.add_circle([1330.692607914651.mm,-82.72210769666103.mm,1634.2953811680186.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.806041832466008.mm, 8.182183638271212.mm, 11.133977199943729.mm)
+  circle = ge.add_circle([1340.6329665231442.mm,-80.89824208351376.mm,1645.362742375612.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1.6101515052912418.mm, 9.76680281238555.mm, 11.253473867815046.mm)
+  circle = ge.add_circle([1346.4390083556102.mm,-72.71605844524255.mm,1656.4967195755557.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-7.981421227656256.mm, 5.653215074417858.mm, 11.356133745633088.mm)
+  circle = ge.add_circle([1344.828856850319.mm,-62.949255632857.mm,1667.7501934433708.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.590602785685178.mm, -1.758605445692929.mm, 11.382062389268185.mm)
+  circle = ge.add_circle([1336.8474356226627.mm,-57.296040558439145.mm,1679.1063271890039.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-5.498857784368965.mm, -8.144409786428518.mm, 11.316132353309285.mm)
+  circle = ge.add_circle([1327.2568328369775.mm,-59.054646004132074.mm,1690.488389578272.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(12.693024947391677.mm, -2.8009442094394075.mm, -0.20452193158098453.mm)
+  circle = ge.add_circle([1321.7579750526086.mm,-67.19905579056059.mm,1701.8045219315813.mm], vec, 5.mm, 8)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(2.938999999999851.mm, 0.mm, 182.39999999999964.mm)
+  circle = ge.add_circle([1334.4510000000002.mm,-70.mm,1701.6000000000004.mm], vec, 5.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(1.8329999999998563.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1337.39.mm,-70.mm,1884.mm], vec, 5.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV cord (-) (array -> panel MC4, bonded pair)
+  grp = ents.add_group
+  grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.277000000000044.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1339.223.mm,-70.mm,1884.mm], vec, 5.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -3113,7 +5997,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
@@ -3126,7 +6010,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([1328.2.mm,67.mm,1884.mm], [0.000000,1.000000,0.000000], 9.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
@@ -3140,7 +6024,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
@@ -3153,7 +6037,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([1932.mm,85.mm,1884.mm], [1.000000,0.000000,0.000000], 9.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
@@ -3167,7 +6051,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
@@ -3560,7 +6444,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
@@ -3586,7 +6470,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
@@ -3612,7 +6496,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["PV cord (array -> panel, flexible)"] || model.materials.add("PV cord (array -> panel, flexible)")
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
   grp.material = mat
@@ -3709,7 +6593,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.901326650630608.mm, -20.566527845868265.mm, -2.8402651823646465.mm)
+  vec = Geom::Vector3d.new(-21.901326650630608.mm, -20.56652784586828.mm, -2.8402651823646465.mm)
   circle = ge.add_circle([1479.652.mm,-96.75.mm,1781.3.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -3723,8 +6607,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-10.610611923501665.mm, 18.00578194965506.mm, -12.23572774020704.mm)
-  circle = ge.add_circle([1457.7506733493694.mm,-117.31652784586826.mm,1778.4597348176353.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-10.610611923501665.mm, 18.005781949655074.mm, -12.23572774020704.mm)
+  circle = ge.add_circle([1457.7506733493694.mm,-117.31652784586828.mm,1778.4597348176353.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3961,7 +6845,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(5.4967973803252335.mm, 17.267472362990418.mm, -16.066297616289376.mm)
+  vec = Geom::Vector3d.new(5.4967973803252335.mm, 17.267472362990404.mm, -16.066297616289376.mm)
   circle = ge.add_circle([1404.7540012719533.mm,-128.715820582891.mm,1593.6597170313478.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -3975,8 +6859,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.67868045040359.mm, 5.261428327575942.mm, -16.752471242454476.mm)
-  circle = ge.add_circle([1410.2507986522785.mm,-111.4483482199006.mm,1577.5934194150584.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.67868045040359.mm, 5.261428327575956.mm, -16.752471242454476.mm)
+  circle = ge.add_circle([1410.2507986522785.mm,-111.44834821990061.mm,1577.5934194150584.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6728,7 +9612,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Fan B flex connector (box -> fan, Cct B)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-1.5002345951338185.mm, 13.004426672891782.mm, 20.238523937893206.mm)
+  vec = Geom::Vector3d.new(-1.5002345951338327.mm, 13.004426672891782.mm, 20.238523937893206.mm)
   circle = ge.add_circle([116.76801970230245.mm,246.0416005068517.mm,598.097985352377.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -6742,8 +9626,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Fan B flex connector (box -> fan, Cct B)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(8.220974819980384.mm, 20.530524284593128.mm, 9.585239367105373.mm)
-  circle = ge.add_circle([115.26778510716863.mm,259.0460271797435.mm,618.3365092902702.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.220974819980398.mm, 20.530524284593128.mm, 9.585239367105373.mm)
+  circle = ge.add_circle([115.26778510716862.mm,259.0460271797435.mm,618.3365092902702.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

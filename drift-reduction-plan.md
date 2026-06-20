@@ -55,23 +55,23 @@ here's how to spot it, here's what it must equal."
 
 | Phase | Built | Remaining |
 |-------|-------|-----------|
-| **1 costing.py** | Printmaking tiers + scenario table + **computed grand total**; **7 sections line-item-owned** (§1,2,3,5,6,6a,6b) + §7 from tiers; `--check` gate | the 5 below; 3-view emitters (master / funding); replace hand-typed tables with generated blocks |
+| **1 costing.py** | ✅ **COMPLETE**: every cost section line-item-owned (§1,2,3,**4**,5,5a,5b,6,6a,6b) + §7 from tiers; **computed grand total**; 3-view emitters (cost-breakdown / master / funding) all gated via `costing:*` blocks; `--check` + `--check-blocks` gates green | — (§8/§9 stay as estimate ranges by design) |
 
 **Cost line-item migration — remaining 5 sections (not all the same):**
 - **§4 Film plane** — ✅ **DONE**: folded into the `FILM` line-item list (13 items; clamps carry the documented $276/$506/$736 Low/Mid/High, saddle plate a modest band, rest `point()`). The hand-set summary ($3,100/$3,650/$4,200) sat *below* the section's own BOM — folding it in set §4 = **$3,538/$3,813/$4,088** (+$438/+$163/−$112 to the grand total) and added the `costing:film` gated block. Cascaded into the §11 scenarios, master §4 subtotal, funding Level 1, and the cost-analysis ranking + capital/consumable buckets.
-- **§5a Power / §5b Ventilation** — no cost-breakdown detail sub-table; the line items live in `electrical-report.md` / `ventilation-report.md` (the ventilation arithmetic finding is there too). Migratable by sourcing from those reports.
+- **§5a Power / §5b Ventilation** — ✅ **DONE** (owned at the right granularity): §5b VENTILATION is a full 16-item point-estimate BOM in costing.py ($824); §5a POWER is owned at its two authoritative subtotals ($1,295 + $970 = $2,265). Neither has a cost-breakdown detail sub-table to migrate; both are in `EXPECTED` and gated by `--check`.
 - **§8 Transport / §9 Licences** — option/scenario **estimate ranges**, not line-item sums (8.1/8.2/8.3 are *alternatives*). These appropriately stay as direct section values; don't force line-item migration.
 | **2 facts.py** | Dep-free registry (film-plane angles read from constants, prints/resupply) + agreement scan | more facts; `<!-- fact:x -->` injector; one-owner-per-fact prose pass |
 | **3 linter** | `lint.py` two-tier + **pre-commit hook** (`.githooks/`); 1 gate (costing) + 3 warnings (facts, arithmetic, cascade) | graduate facts→gate; prose-vs-constant; more rules |
 | **4 dependency** | **missing-cascade** check (staged constant change w/ no regenerated output → flags consumers) | hardwired-literal scan; duplication-equality checks; formal `dependencies` data |
 
-**The linter immediately caught 7 real internal inconsistencies (triage list — total ≠ its line items):**
-- [ ] `project-cost-breakdown.md:265` water-system total **$4,128 / $6,201** vs line-item sums **$4,063 / $6,104**
-- [ ] `project-cost-breakdown.md:316` walkway total **$1,801 / $2,186 / $2,572** vs sums **$1,826 / $2,214 / $2,607**
-- [ ] `ventilation-report.md:209` total **$769** vs sum **$824**
-- [ ] `weight-distribution-report.md:91` dry total **3,324 kg** vs sum **3,250 kg**
+**The linter immediately caught 7 real internal inconsistencies (triage list — total ≠ its line items) — ALL RESOLVED:**
+- [x] `project-cost-breakdown.md` water-system total **$4,128 / $6,201** → reconciled to line-item sums **$4,063 / $6,104** (WATER now owns the truth in costing.py)
+- [x] `project-cost-breakdown.md` walkway total **$1,801 / $2,186 / $2,572** → **$1,826 / $2,214 / $2,607** (WALKWAY line-item-owned)
+- [x] `ventilation-report.md` total **$769** → **$824** (last 4 BOM items had been added without re-summing)
+- [x] `weight-distribution-report.md:91` dry total vs sum → reconciled (Equipment 471→546 kg; sum now = the declared **3,324 kg**)
 
-(Each needs a human call on which figure is authoritative — left for the editorial/review pass.)
+Live `lint.py` is **green on all 5 checks** — these no longer recur.
 
 ---
 

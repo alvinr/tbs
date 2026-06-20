@@ -171,6 +171,115 @@ def warn_missing_cascade() -> tuple[bool, list[str]]:
     return (not issues), (issues or ["constants change has regenerated outputs staged"])
 
 
+# ── WARNING: hardwired literal that should be a tbs_constants reference ──────
+# The "should have been a constant" drift class (Phase 4): a generator/model carries a numeric
+# literal that equals a tbs_constants value instead of importing it — so when the constant changes,
+# the literal silently goes stale (exactly the calculate_energy_budget BLUE_SUPPLY_L=1600 case).
+# Two tiers:
+#   HIGH  — a module assignment `NAME = <lit>` where NAME *is* a constant and the file doesn't import
+#           it: a re-declaration that shadows/duplicates the source. Near-zero false positive.
+#   MAYBE — a bare literal equal to a DISTINCTIVE constant value (uniquely-owned, |v|>=50, and NOT a
+#           round multiple of 10) in a file that already works with tbs_constants. The round-number
+#           filter is the key precision lever: coincidental matches cluster on round values (90, 400,
+#           1000), while genuine "should-be-a-constant" dimensions are oddly specific (1016, 114, 2362).
+_INFRA = {"tbs_constants.py", "lint.py", "facts.py", "costing.py", "check_consistency.py", "setup_docs.py"}
+
+
+def _constants() -> tuple[dict, dict]:
+    sys.path.insert(0, HERE)
+    import tbs_constants as K  # noqa: E402
+    by_name, by_val = {}, {}
+    for n in dir(K):
+        if n.startswith("_") or not n.isupper():
+            continue
+        v = getattr(K, n)
+        if isinstance(v, bool) or not isinstance(v, (int, float)):
+            continue
+        by_name[n] = float(v)
+        by_val.setdefault(round(float(v), 5), []).append(n)
+    distinctive = {v: names[0] for v, names in by_val.items()
+                   if len(names) == 1 and abs(v) >= 50 and v % 10 != 0}   # non-round → specific
+    return by_name, distinctive
+
+
+def _scan_files() -> list[str]:
+    out = []
+    for base in ("generators", "models"):
+        d = os.path.join(ROOT, "src", base)
+        if os.path.isdir(d):
+            out += [os.path.join(d, f) for f in sorted(os.listdir(d))
+                    if f.endswith(".py") and f not in _INFRA]
+    return out
+
+
+def _imported_from_constants(text: str) -> set[str]:
+    names = set()
+    for m in re.finditer(r"from\s+tbs_constants\s+import\s+([^\n#]+(?:\\\n[^\n#]+)*)", text):
+        for part in m.group(1).replace("(", " ").replace(")", " ").replace("\\", " ").split(","):
+            base = part.strip().split(" as ")[0].strip()
+            if base:
+                names.add(base)
+    return names
+
+
+def _num(tok_string: str):
+    s = tok_string.replace("_", "")
+    try:
+        return float(int(s))
+    except ValueError:
+        try:
+            return float(s)
+        except ValueError:
+            return None
+
+
+def _scan_hardwired(paths: list[str]) -> list[str]:
+    import tokenize
+    by_name, distinctive = _constants()
+    issues = []
+    for path in paths:
+        rel = os.path.relpath(path, ROOT)
+        text = open(path, encoding="utf-8").read()
+        imported = _imported_from_constants(text)
+        uses_module = bool(re.search(r"import\s+tbs_constants", text))
+        # Tier HIGH — `NAME = <lit>` re-declaring a same-named constant the file doesn't import.
+        for i, line in enumerate(text.splitlines(), 1):
+            m = re.match(r"\s*([A-Z_][A-Z0-9_]*)\s*=\s*(-?\d+(?:\.\d+)?)\s*(?:#.*)?$", line)
+            if m and m.group(1) in by_name and m.group(1) not in imported:
+                if abs(_num(m.group(2)) - by_name[m.group(1)]) < 1e-6:
+                    issues.append(f"{rel}:{i}  [HIGH] re-declares `{m.group(1)}` = {m.group(2)} "
+                                  f"(== tbs_constants.{m.group(1)}) — import it, don't copy")
+        # Tier MAYBE — bare literal == a distinctive constant value, in a constant-aware file.
+        if not uses_module:
+            continue
+        try:
+            with open(path, "rb") as fb:
+                for tok in tokenize.tokenize(fb.readline):
+                    if tok.type != tokenize.NUMBER:
+                        continue
+                    val = _num(tok.string)
+                    if val is None:
+                        continue
+                    name = distinctive.get(round(val, 5))
+                    if name and name not in tok.line:        # not already cross-referenced on the line
+                        issues.append(f"{rel}:{tok.start[0]}  [maybe] literal {tok.string} == "
+                                      f"tbs_constants.{name} — reference the constant?")
+        except (tokenize.TokenError, IndentationError, SyntaxError):
+            pass
+    return issues
+
+
+def warn_hardwired_literals() -> tuple[bool, list[str]]:
+    """Pre-commit warning — scoped to STAGED files so it flags hardwiring at the point you add it,
+    not the whole pre-existing backlog on every commit. Use `lint.py --literals` for a full scan."""
+    staged = set(_git(["diff", "--cached", "--name-only"]).split())
+    paths = [p for p in _scan_files() if os.path.relpath(p, ROOT) in staged]
+    if not paths:
+        return True, ["no generator/model files staged"]
+    issues = _scan_hardwired(paths)
+    return (not issues), (issues or ["no hardwired literals in the staged files"])
+
+
 GATES = [
     ("costing reconciliation", gate_costing),
     ("costing doc-blocks (generated == doc)", gate_blocks),
@@ -179,6 +288,7 @@ WARNINGS = [
     ("facts-registry agreement", warn_facts),
     ("table arithmetic (TOTAL = sum of column)", warn_arithmetic),
     ("missing cascade (constant changed, outputs not regenerated)", warn_missing_cascade),
+    ("hardwired literal in staged file (should reference a constant)", warn_hardwired_literals),
 ]
 
 
@@ -195,7 +305,22 @@ def _run(checks):
     return failed
 
 
+def _literals_report() -> int:
+    """Full-repo backlog scan (on demand) — every generator/model, not just staged files."""
+    issues = _scan_hardwired(_scan_files())
+    high = [m for m in issues if "[HIGH]" in m]
+    maybe = [m for m in issues if "[maybe]" in m]
+    print(f"Hardwired-literal scan — {len(high)} HIGH (re-declarations) + {len(maybe)} maybe:\n")
+    for m in high + maybe:
+        print("  " + m)
+    if not issues:
+        print("  none — no generator/model literal matches a tbs_constants value")
+    return 0
+
+
 def main() -> int:
+    if "--literals" in sys.argv:
+        return _literals_report()
     print("TBS-001 drift linter — GATES (block on failure):")
     gate_fail = _run(GATES)
     print("\nTBS-001 drift linter — WARNINGS (advisory):")

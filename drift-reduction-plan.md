@@ -63,7 +63,7 @@ here's how to spot it, here's what it must equal."
 - **§8 Transport / §9 Licences** — option/scenario **estimate ranges**, not line-item sums (8.1/8.2/8.3 are *alternatives*). These appropriately stay as direct section values; don't force line-item migration.
 | **2 facts.py** | Dep-free registry (film-plane angles read from constants, prints/resupply) + agreement scan | more facts; `<!-- fact:x -->` injector; one-owner-per-fact prose pass |
 | **3 linter** | `lint.py` two-tier + **pre-commit hook** (`.githooks/`); 1 gate (costing) + 3 warnings (facts, arithmetic, cascade) | graduate facts→gate; prose-vs-constant; more rules |
-| **4 dependency** | **missing-cascade** check (staged constant change w/ no regenerated output → flags consumers) | hardwired-literal scan; duplication-equality checks; formal `dependencies` data |
+| **4 dependency** | **missing-cascade** check; ✅ **hardwired-literal scan** (`lint.py --literals` full scan + staged-scoped warning; HIGH re-declarations + non-round bare-literal matches; found a 12-item backlog incl. a `# KEEP IN SYNC` comment it now enforces) | fix the 12-item literal backlog; duplication-equality checks; formal `dependencies` data |
 
 **The linter immediately caught 7 real internal inconsistencies (triage list — total ≠ its line items) — ALL RESOLVED:**
 - [x] `project-cost-breakdown.md` water-system total **$4,128 / $6,201** → reconciled to line-item sums **$4,063 / $6,104** (WATER now owns the truth in costing.py)

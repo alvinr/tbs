@@ -210,7 +210,13 @@ def walkway_decks():
 def _cantilever_parts(nm, x, wall_yd, sign, reach, wide):
     """Geometry for ONE wall-cantilever bracket: interior mounting plate + arm +
     under-gusset, an EXTERIOR reinforcing plate, and the M12 through-bolts (hex
-    heads outside). `wide` selects the widened EP/battery-zone spec."""
+    heads outside). `wide` selects the widened EP/battery-zone spec.
+
+    This is the FULL-FAB version. The overview's `walkway_brackets()`
+    (generate_sketchup_model.py) intentionally simplifies it for the whole-system view —
+    it omits the exterior reinforcing plates and the full-length through-bolts (modeling
+    short interior studs instead). The difference is level-of-detail only, not the
+    load-bearing dimensions; `lint.py --duplication` reports it as EXPECTED, not drift."""
     bt, vh = BRK_T, BRK_H                                   # standard 8mm / 150mm
     btw, vhw = k.WALKWAY_WIDE_BRACKET_T, k.WALKWAY_WIDE_BRACKET_H   # widened 10mm / 200mm
     plate_w = 120

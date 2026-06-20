@@ -738,6 +738,13 @@ def walkway_brackets():
     4× M12 (2×2 rectangular), per walkway Sheet 7. The RIGHT walkway is
     ceiling-hung and the LEFT walkway is a removable lift-out, so neither is
     wall-cantilevered — they get no brackets here.
+
+    LEVEL OF DETAIL (intentional, signed off 2026-06): this whole-system view models
+    each bracket simplified — interior plate + arm + gusset + short interior bolt studs.
+    The dedicated walkway model's `_cantilever_parts()` (generate_walkway_model.py) is the
+    full-fab version: it adds the EXTERIOR reinforcing plates and the full-length M12
+    through-bolts. The two intentionally differ in detail (not in the load-bearing
+    dimensions); `lint.py --duplication` lists the gap as EXPECTED, not drift.
     """
     grate_z = WALKWAY_H - WALKWAY_GRATE_T   # arm top = grate underside
     bt = WALKWAY_BRACKET_T                    # 8 — standard plate thickness

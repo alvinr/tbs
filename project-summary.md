@@ -43,7 +43,7 @@ A fully operational pinhole camera built inside a standard 20-foot ISO shipping 
 
 Two independent movement systems work in series, stacking their effects non-linearly:
 
-**Front board — tilt and swing (±5°)**
+**Front board — tilt and swing (±5.3°)**
 The pinhole itself pivots on a spherical plain bearing, steering the image cone across the film plane. Every 5° of tilt shifts the projected image 207mm. Used for compositional placement — not correction, not distortion, but deliberate image steering.
 
 **Film plane — 4-corner independent actuation (±40° tilt, ±28° swing)**

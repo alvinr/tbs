@@ -23,6 +23,7 @@ from tbs_constants import (
     C_WID,
     FP_W as _FP_W, FP_H as _FP_H,
     DIAGRAMS_DIR,
+    FRONT_BOARD_MAX_DEG as FB,
 )
 from tbs_title_block import title_block
 
@@ -145,10 +146,10 @@ CONFIGS = [
     # (label, board_tilt, board_swing, description)
     ('C0', 0,    0,    'Reference — board neutral, no image shift'),
     ('C1', 2,    0,    'Mild tilt +2° — subtle vertical image steering'),
-    ('C2', 5.3,  0,    'Max tilt +5.3° — full vertical image shift (207mm)'),
-    ('C3', -5.3, 0,    'Max tilt -5.3° — full downward image shift'),
+    ('C2', FB,   0,    f'Max tilt +{FB}° — full vertical image shift (207mm)'),
+    ('C3', -FB,  0,    f'Max tilt -{FB}° — full downward image shift'),
     ('C4', 0,    2,    'Mild swing +2° — subtle horizontal image steering'),
-    ('C5', 0,    5.3,  'Max swing +5.3° — full horizontal image shift'),
+    ('C5', 0,    FB,   f'Max swing +{FB}° — full horizontal image shift'),
     ('C6', 3,    3,    'Compound +3° tilt, +3° swing — diagonal steering'),
 ]
 

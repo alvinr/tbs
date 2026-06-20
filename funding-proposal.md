@@ -71,7 +71,7 @@ The camera is deployable. It comes to the subject. A landscape that could never 
 ### Chemistry
 Cyanotype uses the **Mike Ware New Cyanotype formula** — ammonium iron(III) oxalate and potassium ferricyanide, with an optional trace of ammonium dichromate (0.1–0.4%) for added contrast. The two base reagents require no DEA registration, hazmat shipping, or special disposal; only the trace dichromate needs careful handling — at a tiny fraction of the bulk quantities used by dichromate-sensitized processes. Development is plain cold water. The chemistry is mixed on-site; the substrate (unbleached cotton muslin) is coated by brush or roller in two wet-on-wet coats, dried, and loaded in darkness. The Ware formula is 4–8× more UV-sensitive than the classical Herschel formula, reducing baseline exposure from ~2 hours to ~30–45 minutes in full sun.
 
-Per-print cost: approximately $33 (chemistry + fabric + water) at the Standard sensitizer strength — ranging $24–60 by tier, to be pinned by post-build sensitizer trials. A 50-print run costs approximately $1,650. By comparison, the next cheapest alternative (gum bichromate) costs ~$49 per print and depends on bulk dichromate as its primary sensitizer, with full hazmat handling and disposal.
+Per-print cost: approximately <!-- BEGIN costing:fund-perprint -->$33<!-- END costing:fund-perprint --> (chemistry + fabric + water) at the Standard sensitizer strength — ranging <!-- BEGIN costing:fund-perprint-range -->$24–60<!-- END costing:fund-perprint-range --> by tier, to be pinned by post-build sensitizer trials. A 50-print run costs approximately <!-- BEGIN costing:fund-50run -->$1,650<!-- END costing:fund-50run -->. By comparison, the next cheapest alternative (gum bichromate) costs ~$49 per print and depends on bulk dichromate as its primary sensitizer, with full hazmat handling and disposal.
 
 ### Water System
 A self-contained three-circuit water system — Blue (wash), Brown (recycle), and Black (waste) — provides off-grid processing capability. Four 1000L IBC totes in a 2×2 stack, 12V DC pumps (P-01/P-02/P-04 supply + filter + sump, plus P-05/P-03 drain pumps; corridor-mounted), check valves on all external lines, and a 3-stage filtration skid. Capacity: ~13 full prints between resupply. Water recycling: approximately 40% of used wash water is recovered and reused. Power: 12V DC from a 100Ah LiFePO4 battery (expandable to 200Ah with an optional second pack; ~2–3 prints per charge), with a 600W solar array for field recharging — the system is solar-positive in sun, so it runs indefinitely — plus shore-power input for overnight top-up.
@@ -84,8 +84,8 @@ The container moves by commercial hire tilt-bed truck. No CDL is required for th
 ## 6. Budget and Use of Funds
 All figures are drawn from the [full cost breakdown](project-cost-breakdown.md). Per-item procurement details with supplier URLs are in the [master shopping list](master-shopping-list.md). Three funding levels are presented to allow partial or phased support.
 
-### Level 1 — Core Build (~$27,518, Standard scenario)
-Everything required to operate the camera for a first deployment. Figures are the Standard (Mid) column of the [cost breakdown](project-cost-breakdown.md); Low–High scenarios span ~$20,000–$32,000.
+### Level 1 — Core Build (~<!-- BEGIN costing:fund-l1-total -->$27,518<!-- END costing:fund-l1-total -->, Standard scenario)
+Everything required to operate the camera for a first deployment. Figures are the Standard (Mid) column of the [cost breakdown](project-cost-breakdown.md); Low–High scenarios span ~<!-- BEGIN costing:fund-scenario-span -->$20,000–$32,000<!-- END costing:fund-scenario-span -->.
 
 <!-- BEGIN costing:funding-level1 -->
 | Item | Cost |
@@ -126,7 +126,7 @@ Video documentation, process photography, and initial publication:
 | Publication design (zine or catalogue, print run) | $500–1,500 |
 | **Level 3 total** | **~$2,000–4,000** |
 
-**Combined (Levels 1+2+3):** ~$30,868–34,318 for a complete first-year program with three public deployments, 50-print edition, and full documentation.
+**Combined (Levels 1+2+3):** ~<!-- BEGIN costing:fund-combined -->$30,868–34,318<!-- END costing:fund-combined --> for a complete first-year program with three public deployments, 50-print edition, and full documentation.
 
 ## 7. Timeline
 A 12-month build and deployment program:

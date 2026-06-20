@@ -353,6 +353,17 @@ def funding_level1_total() -> int:
     return sub + _r(sub * 0.10, 10)
 
 
+# Funding-proposal Level 2/3 ranges (deployment + documentation — funding-doc-specific, not in the
+# 13 build sections). The combined first-year band is computed from them + Level 1.
+FUNDING_L2 = (1350, 2800)   # transport + permits + water resupply (one deployment)
+FUNDING_L3 = (2000, 4000)   # video + photography + publication
+
+
+def funding_combined() -> tuple[int, int]:
+    l1 = funding_level1_total()
+    return (l1 + FUNDING_L2[0] + FUNDING_L3[0], l1 + FUNDING_L2[1] + FUNDING_L3[1])
+
+
 def emit_section_table(items: list[LineItem], total_label: str) -> str:
     """Generate a Low/Mid/High line-item table with a COMPUTED total row."""
     rows = ["| Item | Low | Mid | High | Notes |", "|------|-----|-----|------|-------|"]
@@ -454,6 +465,31 @@ def _block_pat(key: str) -> "re.Pattern":
                       r"(\n<!-- END costing:" + re.escape(key) + r" -->)", re.DOTALL)
 
 
+def _inline_pat(key: str) -> "re.Pattern":
+    # INLINE block — a single generated value embedded mid-sentence (no surrounding newlines), so a
+    # prose figure (e.g. the funding Level-1 total) is a true OUTPUT of costing.py while the pitch
+    # prose stays hand-edited. The HTML-comment markers render invisibly in MkDocs.
+    return re.compile(r"(<!-- BEGIN costing:" + re.escape(key) + r" -->)([^\n]*?)"
+                      r"(<!-- END costing:" + re.escape(key) + r" -->)")
+
+
+_FUND = "funding-proposal.md"
+
+
+def _inline_blocks() -> dict:
+    """key -> (file, fn) where fn() returns the exact inline string (the generated cost figure)."""
+    lo, _mid, hi = grand_total()
+    cl, ch = funding_combined()
+    return {
+        "fund-l1-total":       (_FUND, lambda: f"${funding_level1_total():,}"),
+        "fund-scenario-span":  (_FUND, lambda: f"${round(lo, -3):,}–${round(hi, -3):,}"),
+        "fund-perprint":       (_FUND, lambda: f"${_r(by_key('standard')['per_print'], 1):,}"),
+        "fund-perprint-range": (_FUND, lambda: f"${_r(by_key('lean')['per_print'], 1)}–{_r(by_key('rich')['per_print'], 1)}"),
+        "fund-50run":          (_FUND, lambda: f"${_r(by_key('standard')['section_total'], 10):,}"),
+        "fund-combined":       (_FUND, lambda: f"${cl:,}–{ch:,}"),
+    }
+
+
 def _reformat_cell(cell: str, value: int) -> str:
     """Replace the number in a value cell, preserving its whitespace / $ / ~ / ** formatting."""
     m = re.match(r"^(\s*\**~?\$?)([\d,]+)(\**\s*)$", cell)
@@ -503,6 +539,21 @@ def _apply(rel: str, key: str, regen, write: bool) -> tuple:
     return (rel, key, "STALE")
 
 
+def _apply_inline(rel: str, key: str, fn, write: bool) -> tuple:
+    path = os.path.join(_REPO, rel)
+    text = open(path, encoding="utf-8").read()
+    m = _inline_pat(key).search(text)
+    if not m:
+        return (rel, key, "missing")
+    new = fn()
+    if m.group(2) == new:
+        return (rel, key, "ok")
+    if write:
+        open(path, "w", encoding="utf-8").write(text[:m.start(2)] + new + text[m.end(2):])
+        return (rel, key, "updated")
+    return (rel, key, "STALE")
+
+
 def inject(write: bool = True) -> list:
     """Regenerate every marked block. Returns (file, key, 'ok'|'updated'|'STALE'|'missing')."""
     out = []
@@ -510,6 +561,8 @@ def inject(write: bool = True) -> list:
         out.append(_apply(rel, key, lambda cur, fn=fn: fn(), write))
     for key, (rel, items, fields) in _detail_blocks().items():
         out.append(_apply(rel, key, lambda cur, it=items, fl=fields: _render_detail(cur, it, fl), write))
+    for key, (rel, fn) in _inline_blocks().items():
+        out.append(_apply_inline(rel, key, fn, write))
     return out
 
 

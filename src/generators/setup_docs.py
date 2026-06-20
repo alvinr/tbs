@@ -44,6 +44,7 @@ MD_FILES = [
     ("funding-proposal.md",              (".",           "Proposal")),
     ("project-cost-breakdown.md",        (".",           "Cost Breakdown")),
     ("cost-analysis-report.md",          (".",           "Cost Analysis")),
+    ("container-report.md",              (".",           "Container")),
     ("pinhole-optics-report.md",         (".",           "Optics Report")),
     ("pinhole-option-b-optics.md",       (".",           "Container Optics")),
     ("lens-vs-pinhole-exposure.md",      (".",           "Lens vs Pinhole")),

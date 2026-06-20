@@ -370,7 +370,7 @@ def sheet1():
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet2():
     # ── Key dimensions (mm) ──────────────────────────────────────────────────
-    WALL_T = 40     # container end-wall steel thickness
+    from tbs_constants import WALL_T     # container end-wall steel thickness
     PLY_T  = 18     # ply skin thickness (each face)
     PT     = 120    # panel overall thickness (frame + 2 × ply)
     FRAME_T = PT - 2 * PLY_T   # = 84mm RHS frame depth
@@ -747,7 +747,7 @@ def sheet2():
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet3():
     # ── Key dimensions (re-use Sheet 2 depth constants) ──────────────────────
-    WALL_T  = 40    # container end-wall steel thickness
+    from tbs_constants import WALL_T    # container end-wall steel thickness
     PLY_T   = PANEL_SKIN_T   # rev11: 4mm PP skin each face (was 18mm ply); envelope kept via FRAME_T
     PT      = 120   # panel overall thickness (envelope unchanged)
     FRAME_T = PT - 2 * PLY_T   # = 112mm framed core

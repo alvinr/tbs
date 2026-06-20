@@ -34,7 +34,7 @@ from tbs_title_block import title_block
 PANEL_T      = 18    # plywood thickness (mm)
 PANEL_YD     = 1046  # panel near edge Yd (mm from pinhole wall)
 PANEL_WALL_X = EQPANEL_X  # panel face X position (= EQPANEL_X)
-WALKWAY_W    = 300   # standard walkway width (mm)
+from tbs_constants import WALKWAY_W   # standard walkway width (mm)
 WALKWAY_Z    = 100   # walkway grating top (mm AFF)
 
 # Panel face dimensions (new orientation: spans corridor)
@@ -45,7 +45,7 @@ PANEL_Z_AFF = 200  # panel bottom Z above finished floor
 # ── Shurflo 2088 pump dimensions ─────────────────────────────────────────
 PUMP_W   = 127   # front face width (mm)
 PUMP_H   = 218   # front face height (mm) — body length, vertical mount
-PUMP_D   = 114   # depth from panel (mm) — = tbs_constants PUMP_D (real Shurflo 2088 height 4.5"); KEEP IN SYNC
+from tbs_constants import PUMP_D   # depth from panel (mm) — real Shurflo 2088 (4.5")
 PUMP_GAP = 40    # vertical gap between pumps (mm)
 PORT_HALF = 30   # half of port-to-port spacing (mm)
 
@@ -742,7 +742,7 @@ CS_H_IN  = 80    # was 1.0 × 80
 
 # Yd range to show (wall through corridor to far IBC edge)
 IBC_NEAR_YD = 30
-IBC_D = 1016
+from tbs_constants import IBC_D
 IBC_NEAR_END = IBC_NEAR_YD + IBC_D     # 1046
 CORRIDOR_FAR = IBC_NEAR_END + 270       # 1316
 YD_MAX = 1450

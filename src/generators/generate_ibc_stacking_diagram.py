@@ -560,7 +560,7 @@ def sheet3():
     ax.axis("off")
 
     # ── Container end wall ───────────────────────────────────────────────────
-    WALL_T = 40  # visual wall thickness
+    from tbs_constants import WALL_T  # visual wall thickness
     # End wall face
     ax.add_patch(Rectangle(((0), (0)),
                             (C_WID), (C_HGT),

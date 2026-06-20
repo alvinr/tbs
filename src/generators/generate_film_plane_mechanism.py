@@ -60,7 +60,7 @@ PINHOLE = "#CC6600"   # pinhole aperture (orange, visible on white)
 L = 5893   # interior length (film plane spans this direction)
 W = 2362   # interior width = optical axis = focal length
 H = 2388   # interior height
-WALL_T = 40
+from tbs_constants import WALL_T
 
 # Carriage travel limits (100mm clearance each end)
 D_NEAR = 100

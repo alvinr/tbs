@@ -110,7 +110,7 @@ WALKWAY_POINT_LABELS = [
     (2298,   30,  150, "NEAR/FAR CANTILEVERS",         -300, -1000, 450),
     # rev12: the ceiling-hung right hangers are RETIRED — the right walkway is now a
     # cantilever rectangle (Z70–115). Anchor on the inner long beam, not the old ceiling.
-    (4629,  400,   90, "RIGHT CANTILEVER\n(IBC-end support)", 700, -300,  700),
+    (k.PROC_TRAY_X_R,  400,   90, "RIGHT CANTILEVER\n(IBC-end support)", 700, -300,  700),
     ( 140, 1181,  100, "LEFT SUPPORT\n(floor-leg cantilevers)", -850, -200, 600),
 ]
 

@@ -685,7 +685,7 @@ def _draw_container_outline(ax):
             ls="--", zorder=2)
 
 
-WALL_T = 40   # container end-wall thickness (mm)
+from tbs_constants import WALL_T   # container end-wall thickness (mm)
 DOOR_T = 60   # ISO door leaf thickness (schematic, mm)
 C_DOOR = "#9CA0A8"  # door fill color
 

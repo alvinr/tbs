@@ -87,8 +87,8 @@ so the old ±42°/±25.7° stretch-mechanism stops and the compound-twist config
 | Parameter | Value | Constant |
 |-----------|-------|----------|
 | Pinhole X (board centers here) | 2399mm | `PH_X` |
-| Max tilt/swing | ±5.3° | — (hardcoded in script) |
-| Resolution | 0.012°/click | — (hardcoded in script) |
+| Max tilt/swing | ±5.3° | `FRONT_BOARD_MAX_DEG` (computed from arm + travel) |
+| Resolution | 0.012°/click | `FRONT_BOARD_CLICK_DEG` (computed from screw + detents) |
 
 *Components: ICP-01 outer adapter frame (600×600×40mm Al 6061-T6), ICP-02 inner carrier plate
 (Ø320×25mm Al 6061-T6), GE50-DO-2RS spherical plain bearing (SKF, PTFE-lined), 4× M8×1.0

@@ -52,7 +52,7 @@ def warn_facts() -> tuple[bool, list[str]]:
             for pat in fact["aliases"]:
                 for m in re.finditer(pat, text):
                     try:
-                        got = float(m.group(1))
+                        got = float(m.group(1).replace(",", ""))   # tolerate 2,362 / 1,600
                     except (ValueError, IndexError):
                         continue
                     if abs(got - canon) > 1e-6:

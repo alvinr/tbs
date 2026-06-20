@@ -139,6 +139,20 @@ MAX_SWING_DEG = 28.0   # design max single-axis swing (≈ rail-depth limit 28.7
 XSLIDE_Z_TRAVEL = round((FP_H / 2) * (1 - math.cos(math.radians(MAX_TILT_DEG))))   # ≈ 280mm (tilt) — reserved
 XSLIDE_X_TRAVEL = round((FP_W / 2) * (1 - math.cos(math.radians(MAX_SWING_DEG))))  # ≈ 263mm (swing) — reserved
 XSLIDE_STROKE   = 300   # specified linear cross-slide travel (mm) — covers both, with margin — reserved
+
+# ── Tilt-swing front board (spherical-pivot adapter on the pinhole frame) ─────
+# The board pivots up to FRONT_BOARD_MAX_DEG in tilt AND swing, set by the screw-shoulder
+# hard stop: FRONT_BOARD_TRAVEL_MM of linear travel each way at the FRONT_BOARD_ARM_MM pivot
+# arm. Resolution is one knurled-knob detent — FRONT_BOARD_CLICK_DEG/click — from the M8×1.0
+# fine-pitch screw (FRONT_BOARD_SCREW_PITCH mm/turn) over FRONT_BOARD_DETENTS detents, via the
+# same arm. Both ANGLES are COMPUTED from those physical inputs (was hardcoded ±5.3° / 0.012°
+# in the tilt-swing generators — component-dependency-map.md §1.4).
+FRONT_BOARD_ARM_MM      = 130    # pivot arm — adjustment screw to pivot centre (mm)
+FRONT_BOARD_TRAVEL_MM   = 12     # screw-shoulder hard-stop travel each way (mm)
+FRONT_BOARD_SCREW_PITCH = 1.0    # M8×1.0 fine-pitch adjustment screw (mm per turn)
+FRONT_BOARD_DETENTS     = 36     # knurled-knob detents per turn
+FRONT_BOARD_MAX_DEG   = round(math.degrees(math.atan(FRONT_BOARD_TRAVEL_MM / FRONT_BOARD_ARM_MM)), 1)            # = 5.3
+FRONT_BOARD_CLICK_DEG = round(math.degrees(math.atan((FRONT_BOARD_SCREW_PITCH / FRONT_BOARD_DETENTS) / FRONT_BOARD_ARM_MM)), 3)  # = 0.012
 XSLIDE_N        = 8     # 2 cross-slides (X + Z) per corner × 4 corners — reserved
 
 # ── Equipment zones ───────────────────────────────────────────────────────────

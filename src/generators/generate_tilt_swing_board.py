@@ -19,7 +19,8 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
 import os
-from tbs_constants import DIAGRAMS_DIR
+from tbs_constants import (DIAGRAMS_DIR, FRONT_BOARD_MAX_DEG, FRONT_BOARD_CLICK_DEG,
+                           FRONT_BOARD_DETENTS, FRONT_BOARD_TRAVEL_MM, FRONT_BOARD_SCREW_PITCH)
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v, draw_cl, draw_circle,
                          draw_rect, leader, bolt_holes)
@@ -838,7 +839,7 @@ draw_dim_h(ax2, cx2d - frame_wall_w, cx2d - frame_wall_w + bush_w,
 
 leader(ax2, cx2d + screw_len + s1b(KNOB_H)/2, cy2d + s1b(KNOB_D/2),
        cx2d + screw_len + s1b(KNOB_H) + 24, cy2d + 20,
-       'Ø40 KNURLED KNOB\n36-DETENT\n0.012°/CLICK', fs=5, color=C_DIM, arrow_style='->')
+       f'Ø40 KNURLED KNOB\n{FRONT_BOARD_DETENTS}-DETENT\n{FRONT_BOARD_CLICK_DEG}°/CLICK', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, cx2d - frame_wall_w + bush_w/2, cy2d + s1b(BUSH_OD/2),
        cx2d - frame_wall_w - 50, cy2d + 28,
        'DELRIN/POM\nGUIDE BUSHING\nM22×1.0 OD', fs=5, color=C_DIM, arrow_style='->')
@@ -860,13 +861,13 @@ tbl_x, tbl_y = 1160, 414
 ax2.text(tbl_x, tbl_y, 'ANGULAR RESOLUTION', fontsize=6, fontweight='bold', color='black')
 rows = [
     ('Arm radius (pivot→ball)', '130mm'),
-    ('Screw pitch', '1.0mm / turn'),
+    ('Screw pitch', f'{FRONT_BOARD_SCREW_PITCH}mm / turn'),
     ('Linear travel ÷ arm', '1/130 rad/mm = 0.0077°/mm'),
     ('Resolution per turn', '0.44° / turn'),
-    ('Detents per turn', '36'),
-    ('Resolution per click', '0.012° / click'),
+    ('Detents per turn', f'{FRONT_BOARD_DETENTS}'),
+    ('Resolution per click', f'{FRONT_BOARD_CLICK_DEG}° / click'),
     ('Full ±5° range', '~410 clicks (11.4 turns)'),
-    ('Hard stop travel', '±12mm = ±5.3°'),
+    ('Hard stop travel', f'±{FRONT_BOARD_TRAVEL_MM}mm = ±{FRONT_BOARD_MAX_DEG}°'),
 ]
 for i, (k, v) in enumerate(rows):
     ry = tbl_y - 20 - i*18

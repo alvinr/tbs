@@ -56,3 +56,71 @@ prints_per_resupply:
   aliases:
     - '(?:supports|Provides) ~?(\d+)\s+full-size prints'
     - '~?(\d+)\s+prints per resupply'
+    - '~(\d+)\s+full prints between resupply'
+    - 'Blue tank ≈ (\d+)\s+prints'
+
+# ── Tilt-swing front board envelope (Part 1: promoted to FRONT_BOARD_* constants) ──
+# Both angles are COMPUTED in tbs_constants from the arm/travel/screw/detents, so these reference
+# the constant. Aliases anchor on 'tilt and swing' / 'per click' so they don't catch the ±5°
+# approximations (e.g. 'every 5° of board tilt') or the 5° bellows-compression note.
+front_board_max_deg:
+  constant: FRONT_BOARD_MAX_DEG
+  unit: deg
+  owner: tilt-swing-board-report.md
+  aliases:
+    - '[Tt]ilt and [Ss]wing \(±(\d+(?:\.\d+)?)°\)'
+    - '±(\d+(?:\.\d+)?)°\s*tilt and swing'
+    - 'pivot up to ±(\d+(?:\.\d+)?)°'
+    - '[Tt]ilt.swing board max\s*\|?\s*±(\d+(?:\.\d+)?)°'
+
+front_board_click_deg:
+  constant: FRONT_BOARD_CLICK_DEG
+  unit: deg
+  owner: tilt-swing-board-report.md
+  aliases:
+    - '(\d+\.\d+)°\s*per click'
+    - '(\d+\.\d+)°/click'
+
+# ── Optical constants (Part 2: restated across many docs; each already owned by tbs_constants) ──
+pinhole_diameter_mm:
+  constant: PH_D
+  unit: mm
+  owner: pinhole-optics-report.md
+  aliases:
+    - '[Pp]inhole \((\d\.\d+)\s*mm'
+    - 'Ø(\d\.\d+)\s*mm \([Rr]ayleigh'
+    - '[Pp]inhole\s*\|\s*Ø(\d\.\d+)\s*mm'
+
+# NB: f-number and focal length appear in MANY comparison/alternative contexts (other pinhole sizes,
+# lens options), so a value-equality check must anchor ONLY to the CANONICAL statement — the spec-table
+# row and the one prose phrasing — never a bare 'f/NNNN' or 'NNNN mm'.
+f_number:
+  constant: PH_FNO
+  unit: f-number
+  owner: pinhole-optics-report.md
+  aliases:
+    - '\| f.number \| f/(\d+)'
+    - 'an f.number of f/(\d+)'
+
+focal_length_mm:
+  constant: PH_F
+  unit: mm
+  owner: pinhole-optics-report.md
+  aliases:
+    - '\| [Ff]ocal length \| ~?(\d[\d,]{3,})\s*mm'
+
+film_plane_width_mm:
+  constant: FP_W
+  unit: mm
+  owner: film-plane-mechanism-report.md
+  aliases:
+    - 'active[^0-9]{0,6}(\d{4})\s*×\s*2388'
+    - '[Ii]mage plane.{0,18}(\d{4})\s*×\s*2388'
+
+blue_supply_l:
+  constant: BLUE_SUPPLY_L
+  unit: L
+  owner: water-system-report.md
+  aliases:
+    - '(\d,?\d{3})\s*L\s*Blue'
+    - '(\d,?\d{3})\s*L \(423 gal\)'

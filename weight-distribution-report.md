@@ -79,15 +79,15 @@ UV-HDPE 950 kg/m³, water 1,000 kg/m³.
 | Brown IBC-3 (tote) | 65 | 4,674–5,893 | 30–1,046 | 1000L caged composite tare (bottom tier, near) |
 | Waste IBC-4 (tote) | 65 | 4,674–5,893 | 1,316–2,332 | 1000L caged composite tare (bottom tier, far) |
 | IBC restraint frame | 178 | 4,674–5,893 | 0–2,362 | 50×50×3mm RHS restraint-only frame (totes direct-stack cage-on-cage): full-height corridor + front-bay uprights + longitudinal ties + front retaining bars + 8 floor flange feet + 4 wall joist hangers (through-bolted to 4 exterior backing plates) + forward panel-mount frame ([Equipment Layout](equipment-layout-report.md) §5) |
-| **Equipment subtotal** | **471** | | | |
+| **Equipment subtotal** | **546** | | | |
 
 ### 3.4 Dry Weight Summary
 
 | Category | Weight (kg) | % of Dry Total |
 |----------|------------|---------------|
-| Container (shell + doors) | 2,200 | 67.7% |
-| Structure | 579 | 17.8% |
-| Equipment | 471 | 14.5% |
+| Container (shell + doors) | 2,200 | 66.2% |
+| Structure | 578 | 17.4% |
+| Equipment | 546 | 16.4% |
 | **Total dry** | **3,324** | **100%** |
 
 **Grating weight assumption:** 5/8" (15mm) molded GRP (fiberglass) grating,

@@ -252,6 +252,46 @@ POWER = [
 ]
 
 
+FRONT_BOARD_MID = 1470   # tilt-swing front board — source: tilt-swing-board-report.md (not a SECTIONS row)
+
+
+def _sec(sid: str) -> Section:
+    return next(s for s in SECTIONS if s.sid == sid)
+
+
+def emit_funding_level1() -> str:
+    """funding-proposal.md Level 1 — Core Build: each section's Mid + the (separate) front board,
+    plus 10% contingency. A 2nd VIEW of the same costing source (so it can't drift)."""
+    rows = [
+        ("20ft container (Cargo Worthy grade) + delivery", _sec("1").mid),
+        ("Interior conversion (light-seal, paint, image-plane backing)", _sec("2").mid),
+        ("Pinhole plate (precision laser-drilled, SS-302, interchangeable frame)", _sec("3").mid),
+        ("Film plane mechanism (4-corner Option A, manual actuation)", _sec("4").mid),
+        ("Tilt-swing front board mechanism", FRONT_BOARD_MID),
+        ("Housed revolving-door light trap (plastic-skin Ø900 housing + C-shell drum, bearings, seals, fabrication)", _sec("6").mid),
+        ("Processing water system (tray, spray bar, 3-stage filtration, IBC stacking frame)", _sec("5").mid),
+        ("Power & electrical (600W solar · LiFePO4 · MPPT · distribution · protection · lighting)", _sec("5a").mid),
+        ("Ventilation & cooling (2 fans · evap cooler + 12V→120V inverter · light-safe ducting)", _sec("5b").mid),
+        ("Perimeter walkway (4 sections + drum-exit punch-out)", _sec("6a").mid),
+        ("Panel swing pivot (Ø89 post + bearings + cage + wall stays)", _sec("6b").mid),
+        ("Cyanotype chemistry + muslin substrate (50-print run, Standard tier)", _sec("7").mid),
+    ]
+    sub = sum(v for _, v in rows)
+    cont = _r(sub * 0.10, 10)
+    out = ["| Item | Cost |", "|------|------|"]
+    out += [f"| {label} | ${v:,} |" for label, v in rows]
+    out.append(f"| Contingency (10%) | ~${cont:,} |")
+    out.append(f"| **Level 1 total** | **~${sub + cont:,}** |")
+    return "\n".join(out)
+
+
+def funding_level1_total() -> int:
+    sub = (_sec("1").mid + _sec("2").mid + _sec("3").mid + _sec("4").mid + FRONT_BOARD_MID
+           + _sec("6").mid + _sec("5").mid + _sec("5a").mid + _sec("5b").mid + _sec("6a").mid
+           + _sec("6b").mid + _sec("7").mid)
+    return sub + _r(sub * 0.10, 10)
+
+
 def emit_section_table(items: list[LineItem], total_label: str) -> str:
     """Generate a Low/Mid/High line-item table with a COMPUTED total row."""
     rows = ["| Item | Low | Mid | High | Notes |", "|------|-----|-----|------|-------|"]
@@ -329,7 +369,8 @@ _F = "project-cost-breakdown.md"
 
 
 def _whole_blocks() -> dict:
-    return {"scenario": (_F, emit_scenario_table), "chemistry-7-1": (_F, emit_cost_breakdown_7_1)}
+    return {"scenario": (_F, emit_scenario_table), "chemistry-7-1": (_F, emit_cost_breakdown_7_1),
+            "funding-level1": ("funding-proposal.md", emit_funding_level1)}
 
 
 def _detail_blocks() -> dict:

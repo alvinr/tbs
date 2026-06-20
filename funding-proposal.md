@@ -84,25 +84,27 @@ The container moves by commercial hire tilt-bed truck. No CDL is required for th
 ## 6. Budget and Use of Funds
 All figures are drawn from the [full cost breakdown](project-cost-breakdown.md). Per-item procurement details with supplier URLs are in the [master shopping list](master-shopping-list.md). Three funding levels are presented to allow partial or phased support.
 
-### Level 1 — Core Build (~$26,700, Standard scenario)
+### Level 1 — Core Build (~$26,833, Standard scenario)
 Everything required to operate the camera for a first deployment. Figures are the Standard (Mid) column of the [cost breakdown](project-cost-breakdown.md); Low–High scenarios span ~$22,000–$34,000.
 
+<!-- BEGIN costing:funding-level1 -->
 | Item | Cost |
 |------|------|
-| 20ft container (Cargo Worthy grade) + delivery | $3,150 |
-| Interior conversion (light-seal, paint, image-plane backing) | $1,140 |
-| Pinhole plate (precision laser-drilled, SS-302, interchangeable frame) | $150 |
+| 20ft container (Cargo Worthy grade) + delivery | $3,300 |
+| Interior conversion (light-seal, paint, image-plane backing) | $1,138 |
+| Pinhole plate (precision laser-drilled, SS-302, interchangeable frame) | $165 |
 | Film plane mechanism (4-corner Option A, manual actuation) | $3,650 |
 | Tilt-swing front board mechanism | $1,470 |
 | Housed revolving-door light trap (plastic-skin Ø900 housing + C-shell drum, bearings, seals, fabrication) | $1,802 |
-| Processing water system (tray, spray bar, 3-stage filtration, IBC stacking frame) | $5,180 |
+| Processing water system (tray, spray bar, 3-stage filtration, IBC stacking frame) | $5,085 |
 | Power & electrical (600W solar · LiFePO4 · MPPT · distribution · protection · lighting) | $2,265 |
-| Ventilation & cooling (2 fans · evap cooler + 12V→120V inverter · light-safe ducting) | $830 |
-| Perimeter walkway (4 sections + drum-exit punch-out) | $2,186 |
+| Ventilation & cooling (2 fans · evap cooler + 12V→120V inverter · light-safe ducting) | $884 |
+| Perimeter walkway (4 sections + drum-exit punch-out) | $2,214 |
 | Panel swing pivot (Ø89 post + bearings + cage + wall stays) | $770 |
 | Cyanotype chemistry + muslin substrate (50-print run, Standard tier) | $1,650 |
-| Contingency (10%) | ~$2,420 |
-| **Level 1 total** | **~$26,700** |
+| Contingency (10%) | ~$2,440 |
+| **Level 1 total** | **~$26,833** |
+<!-- END costing:funding-level1 -->
 
 ### Level 2 — First Deployment (+$1,350–2,800)
 Transport, permits, and water resupply for a single public deployment:
@@ -124,7 +126,7 @@ Video documentation, process photography, and initial publication:
 | Publication design (zine or catalogue, print run) | $500–1,500 |
 | **Level 3 total** | **~$2,000–4,000** |
 
-**Combined (Levels 1+2+3):** ~$30,000–33,500 for a complete first-year program with three public deployments, 50-print edition, and full documentation.
+**Combined (Levels 1+2+3):** ~$30,183–33,633 for a complete first-year program with three public deployments, 50-print edition, and full documentation.
 
 ## 7. Timeline
 A 12-month build and deployment program:

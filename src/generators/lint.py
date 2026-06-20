@@ -126,11 +126,11 @@ def warn_arithmetic() -> tuple[bool, list[str]]:
     return (not issues), (issues or ["all declared TOTAL rows reconcile with their columns"])
 
 
-# ── WARNING: missing cascade (constant changed but outputs not regenerated) ──
+# ── dependencies.yml — the single script -> output-file graph (deps.py loads it) ──
 # The 2D<->3D drift class: a tbs_constants value changes but the generators/models that read it
-# aren't re-run, so the diagrams/.rb/.skp go stale. Fires only when constant-value lines are
-# STAGED with no regenerated outputs also staged. Consumers are auto-derived by grep (no
-# hand-maintained dependency table needed — Phase 4 can formalise it later).
+# aren't re-run, so the diagrams/.rb/.skp go stale. `dependencies.yml` (validated below, can't drift)
+# maps each script to the files it WRITES — grep finds which scripts read a changed constant, then
+# this map names the SPECIFIC outputs that must be regenerated + staged.
 _CONST = os.path.join("src", "generators", "tbs_constants.py")
 
 
@@ -144,10 +144,36 @@ def _grep_consumers(name: str) -> list[str]:
                   if f.endswith(".py") and "tbs_constants" not in f and "__pycache__" not in f)
 
 
-def warn_missing_cascade() -> tuple[bool, list[str]]:
-    staged = _git(["diff", "--cached", "--name-only"]).split()
+def _deps():
+    sys.path.insert(0, HERE)
+    import deps  # noqa: E402
+    return deps
+
+
+# ── WARNING: dependencies.yml validity (self-check so the single source can't drift) ──
+def warn_deps_valid() -> tuple[bool, list[str]]:
+    deps = _deps()
+    issues = []
+    for name, e in deps.ENTRIES.items():
+        scr = os.path.join(ROOT, e["script"])
+        if not os.path.exists(scr):
+            issues.append(f"{name}: script {e['script']} does not exist")
+            continue
+        txt = open(scr, encoding="utf-8").read()
+        for out in e["outputs"]:
+            if not os.path.exists(os.path.join(ROOT, out)):
+                issues.append(f"{name}: declared output {out} is missing on disk")
+            base = os.path.basename(out)
+            # The script must reference each output's basename it writes (png stem / .rb). The .skp
+            # is built in the SketchUp app, never named in the script — so don't require it there.
+            if not base.endswith(".skp") and base not in txt:
+                issues.append(f"{name}: script does not write its declared output {base}")
+    return (not issues), (issues or ["dependencies.yml agrees with the filesystem + scripts"])
+
+
+def _changed_constants(staged) -> set:
     if _CONST not in staged:
-        return True, ["no tbs_constants change staged"]
+        return set()
     diff = _git(["diff", "--cached", "-U0", "--", _CONST])
     changed = set()
     for ln in diff.splitlines():
@@ -155,20 +181,28 @@ def warn_missing_cascade() -> tuple[bool, list[str]]:
             m = re.match(r"[+-]\s*([A-Z_][A-Z0-9_]*)\s*(?::[^=]+)?=\s*\S", ln)
             if m:
                 changed.add(m.group(1))
+    return changed
+
+
+def warn_missing_cascade() -> tuple[bool, list[str]]:
+    staged = set(_git(["diff", "--cached", "--name-only"]).split())
+    if _CONST not in staged:
+        return True, ["no tbs_constants change staged"]
+    changed = _changed_constants(staged)
     if not changed:
         return True, ["tbs_constants staged, but no constant-value lines changed"]
-    outputs_staged = [f for f in staged
-                      if f.startswith("diagrams/") or f.endswith((".rb", ".skp", ".png", ".svg"))]
+    deps = _deps()
     issues = []
-    if not outputs_staged:
-        issues.append(f"{len(changed)} constant(s) changed ({', '.join(sorted(changed))}) but NO "
-                      f"regenerated outputs (diagrams/*.png, *.rb, *.skp) are staged — re-run the "
-                      f"affected generators/models and stage their output?")
-        for c in sorted(changed):
-            cons = _grep_consumers(c)
-            if cons:
-                issues.append(f"    {c} -> {', '.join(cons)}")
-    return (not issues), (issues or ["constants change has regenerated outputs staged"])
+    for c in sorted(changed):
+        need = []  # the registered outputs of every script that reads this constant
+        for scr in _grep_consumers(c):
+            e = deps.for_script(scr)
+            if e:
+                need += e["outputs"]
+        missing = [o for o in dict.fromkeys(need) if o not in staged]
+        if missing:
+            issues.append(f"{c} changed → regenerate + stage: {', '.join(missing)}")
+    return (not issues), (issues or ["every registered output of the changed constants is staged"])
 
 
 # ── WARNING: hardwired literal that should be a tbs_constants reference ──────
@@ -467,6 +501,7 @@ GATES = [
 ]
 WARNINGS = [
     ("facts-registry agreement", warn_facts),
+    ("dependencies.yml valid (script→output map matches reality)", warn_deps_valid),
     ("table arithmetic (TOTAL = sum of column)", warn_arithmetic),
     ("missing cascade (constant changed, outputs not regenerated)", warn_missing_cascade),
     ("hardwired literal in staged file (should reference a constant)", warn_hardwired_literals),
@@ -521,11 +556,34 @@ def _duplication_report() -> int:
     return 0
 
 
+def _cascade_report(const: str) -> int:
+    """Computed replacement for the old component-dependency-map.md §4 table: given a constant,
+    list the scripts that read it (grep) and the outputs each writes (dependencies.yml)."""
+    deps = _deps()
+    cons = _grep_consumers(const)
+    print(f"`{const}` is read by {len(cons)} script(s) — re-run these and stage their outputs:\n")
+    for scr in cons:
+        e = deps.for_script(scr)
+        outs = e["outputs"] if e else ["(no registered outputs — not a diagram/model generator)"]
+        print(f"  {scr}")
+        for o in outs:
+            print(f"      → {o}")
+    if not cons:
+        print("  (no src/ script references this constant — doc-only or unused)")
+    return 0
+
+
 def main() -> int:
     if "--literals" in sys.argv:
         return _literals_report()
     if "--duplication" in sys.argv:
         return _duplication_report()
+    if "--cascade" in sys.argv:
+        i = sys.argv.index("--cascade")
+        if i + 1 >= len(sys.argv):
+            print("usage: lint.py --cascade <CONSTANT_NAME>")
+            return 2
+        return _cascade_report(sys.argv[i + 1])
     print("TBS-001 drift linter — GATES (block on failure):")
     gate_fail = _run(GATES)
     print("\nTBS-001 drift linter — WARNINGS (advisory):")

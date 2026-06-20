@@ -3034,6 +3034,7 @@
 <h2 id="1-container-purchase-delivery">1. Container Purchase &amp; Delivery<a class="headerlink" href="#1-container-purchase-delivery" title="Permanent link">&para;</a></h2>
 <p><strong>Source document:</strong> <code>pinhole-camera-construction.md</code></p>
 <p>The 20 ft standard container is the camera body. Minimum acceptable grade is Wind &amp; Watertight (WWT); Cargo Worthy (CW) is recommended.</p>
+<!-- BEGIN costing:container -->
 <table>
 <thead>
 <tr>
@@ -3068,6 +3069,8 @@
 </tr>
 </tbody>
 </table>
+<!-- END costing:container -->
+
 <p><strong>Grade comparison:</strong></p>
 <table>
 <thead>
@@ -3324,6 +3327,7 @@
 </tbody>
 </table>
 <h3 id="section-total">Section total<a class="headerlink" href="#section-total" title="Permanent link">&para;</a></h3>
+<!-- BEGIN costing:interior -->
 <table>
 <thead>
 <tr>
@@ -3378,11 +3382,14 @@
 </tr>
 </tbody>
 </table>
+<!-- END costing:interior -->
+
 <hr />
 <h2 id="3-optics-pinhole-plate">3. Optics — Pinhole Plate<a class="headerlink" href="#3-optics-pinhole-plate" title="Permanent link">&para;</a></h2>
 <p><strong>Source document:</strong> <code>pinhole-camera-construction.md</code>, <code>pinhole-optics-report.md</code></p>
 <p>The precision aperture is the optical heart of the camera. Optimal diameter for this focal length: <strong>2.17mm</strong> (Rayleigh formula, λ = 550 nm).</p>
 <h3 id="31-pinhole-plate">3.1 Pinhole plate<a class="headerlink" href="#31-pinhole-plate" title="Permanent link">&para;</a></h3>
+<!-- BEGIN costing:optics -->
 <table>
 <thead>
 <tr>
@@ -3424,6 +3431,8 @@
 </tr>
 </tbody>
 </table>
+<!-- END costing:optics -->
+
 <h3 id="32-optional-lens-alternative-to-or-supplement-with-pinhole">3.2 Optional lens (alternative to or supplement with pinhole)<a class="headerlink" href="#32-optional-lens-alternative-to-or-supplement-with-pinhole" title="Permanent link">&para;</a></h3>
 <p><strong>Source document:</strong> <code>lens-options.md</code></p>
 <p>The pinhole plate is interchangeable. A lens plate can be swapped in for portrait or shorter-exposure work.</p>
@@ -3784,6 +3793,7 @@
 <h2 id="5-processing-water-system">5. Processing Water System<a class="headerlink" href="#5-processing-water-system" title="Permanent link">&para;</a></h2>
 <p><strong>Source document:</strong> <code>water-system-report.md</code></p>
 <p>Self-contained three-circuit water system for remote/off-grid cyanotype processing. Provides ~13 full-size prints (~116 sq ft each) between water resupply runs, with Brown wash-2 recycling (~8–10 on fresh Blue alone).</p>
+<!-- BEGIN costing:water -->
 <table>
 <thead>
 <tr>
@@ -3850,11 +3860,14 @@
 </tr>
 </tbody>
 </table>
+<!-- END costing:water -->
+
 <p><em>Used IBC totes (available locally, ~$80–$150 each from Container Exchanger CA) drive significant savings vs. new.</em></p>
 <hr />
 <h2 id="6-housed-revolving-door-light-lock-custom-fabrication">6. Housed Revolving-Door Light Lock — Custom Fabrication<a class="headerlink" href="#6-housed-revolving-door-light-lock-custom-fabrication" title="Permanent link">&para;</a></h2>
 <p><strong>Source document:</strong> <code>light-trap-selection.md</code></p>
 <p>Personnel access during operation is via a <strong>Ø900 fixed housing + single-opening C-shell drum</strong> (no fins) built into the hinged cargo-door panel — light-tight by geometry (two 80° housing openings 180° apart; the drum opening can never bridge both). The drum rotates on two SKF 6215 bearings. This replaces the earlier Ø750 4-fin drum, which could not fit a person and leaked daylight at the rotation transit angles. <strong>rev 9 / B2 builds the drum and housing from a hybrid plastic skin — 5mm UV-HDPE housing + 4mm PP drum — instead of 3mm aluminum</strong>, cutting the drum/housing mass (~99 kg → ~60 kg), removing the aluminum-to-steel galvanic couple, and lowering both material and fabrication cost. Custom fabrication remains preferred over commercial darkroom doors (~$2,500–$4,500) — those are not weatherproof, transport-rated, or adaptable to a removable panel.</p>
+<!-- BEGIN costing:lightlock -->
 <table>
 <thead>
 <tr>
@@ -3931,11 +3944,14 @@
 </tr>
 </tbody>
 </table>
+<!-- END costing:lightlock -->
+
 <p><em>Note: the hinged panel that the housing mounts into (50×50mm RHS frame, 4mm PP plastic skins (18mm-ply Fan-B mount band), EPDM perimeter gasket) is part of the interior conversion covered in Section 2. Still below the $2,500–$4,500 commercial darkroom-door range, and weatherproof + transport-rated.</em></p>
 <hr />
 <h2 id="6a-perimeter-walkway">6a. Perimeter Walkway<a class="headerlink" href="#6a-perimeter-walkway" title="Permanent link">&para;</a></h2>
 <p><strong>Source documents:</strong> <code>engineering-diagrams.md</code> §14, <code>generate_walkway_diagram.py</code></p>
 <p>Four removable grated walkway sections around all 4 sides of the processing tray. Near walkway widens to 500mm at EP/battery/slit zone (X≈1,155–2,629). 130mm deck height (raised +50mm so the support clears the floor-level spray bar; 15mm grate). No tray contact on any section — entire tray interior completely clear for film loading. Near/far walkways: wall-cantilevered brackets bolted to corrugated wall ribs (14 standard 8mm + 4 widened 10mm). Right walkway (rev12): cantilever rectangle — a closed 40×40 SHS frame on 2 center arms off the IBC corridor uprights, left corners on wall cleats, right corners on combined corner plates shared with the bottom film rail. Left walkway: removable lift-out grate on 5 floor-leg cantilever brackets bolted to bare floor outside the tray (arms reach X=470, three extended to X=770 on the punch-out, passing 15mm over the spray bar; brackets stay, grate lifts out for transport). Butt joints at all corners.</p>
+<!-- BEGIN costing:walkway -->
 <table>
 <thead>
 <tr>
@@ -4061,10 +4077,13 @@
 </tr>
 </tbody>
 </table>
+<!-- END costing:walkway -->
+
 <hr />
 <h2 id="6b-panel-swing-pivot">6b. Panel Swing Pivot<a class="headerlink" href="#6b-panel-swing-pivot" title="Permanent link">&para;</a></h2>
 <p><strong>Source documents:</strong> <code>equipment-layout-report.md</code> §6.1, <code>hinged-panel-report.md</code> §4–5</p>
 <p>The panel + drum SWING ~56° about a vertical Ø89×8mm CHS pivot post (rev10 — supersedes the HGR20 slide + ceiling-rail suspension), carrying the punch-out bay inboard of the door plane (true min X +59mm) so the cargo doors close. See the rotation-hardware detail in <a href="../master-shopping-list/">master-shopping-list.md</a> §7a.</p>
+<!-- BEGIN costing:swingpivot -->
 <table>
 <thead>
 <tr>
@@ -4120,6 +4139,8 @@
 </tr>
 </tbody>
 </table>
+<!-- END costing:swingpivot -->
+
 <hr />
 <h2 id="7-printmaking-50-prints-cyanotype">7. Printmaking — 50 Prints (Cyanotype)<a class="headerlink" href="#7-printmaking-50-prints-cyanotype" title="Permanent link">&para;</a></h2>
 <p><strong>Source document:</strong> <code>chemistry-shopping-list.md</code></p>

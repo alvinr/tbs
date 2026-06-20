@@ -100,7 +100,7 @@
 
 ![TBS-001 Electrical — Sheet 3: Pinhole Wall Interior Elevation](assets/electrical-sheet3.png)
 
-![TBS-001 — External Power Panel Detail](assets/power-panel-sheet1.png)
+![TBS-001 — External Power Panel Detail](assets/electrical-sheet6.png)
 
 ---
 

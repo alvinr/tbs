@@ -317,17 +317,28 @@ def emit_scenario_table() -> str:
     return "\n".join(rows)
 
 
-# ── Block injector — make the doc tables true OUTPUTS of costing.py ──────────
-# Each doc wraps a generated table in `<!-- BEGIN costing:KEY -->` / `<!-- END costing:KEY -->`.
-# inject() regenerates the content between the markers; the linter gate (check_blocks) fails the
-# commit if any doc block ever diverges from costing.py — so the tables are outputs, not copies.
+# ── Block injector — make the doc cost tables true OUTPUTS of costing.py ──────
+# Each doc wraps a table in `<!-- BEGIN costing:KEY -->` / `<!-- END costing:KEY -->`. Two styles:
+#   WHOLE  — the table is regenerated entirely from a generator fn (scenario, §7.1).
+#   DETAIL — NUMBERS-ONLY: rewrite just the value cells (cols 1..len(fields)) from the line items,
+#            preserving the doc's labels / Notes / format. Handles Low/Mid/High and Low/High
+#            tables, with or without a Notes column. inject() regenerates; the linter gate
+#            (check_blocks) blocks a commit if any block ever diverges from costing.py.
 _REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+_F = "project-cost-breakdown.md"
 
 
-def _injectables() -> dict:
+def _whole_blocks() -> dict:
+    return {"scenario": (_F, emit_scenario_table), "chemistry-7-1": (_F, emit_cost_breakdown_7_1)}
+
+
+def _detail_blocks() -> dict:
+    lmh = ("low", "mid", "high")
     return {
-        "scenario": ("project-cost-breakdown.md", emit_scenario_table),
-        "chemistry-7-1": ("project-cost-breakdown.md", emit_cost_breakdown_7_1),
+        "container": (_F, CONTAINER, lmh), "interior": (_F, INTERIOR, lmh),
+        "optics": (_F, OPTICS, lmh), "water": (_F, WATER, ("low", "high")),
+        "lightlock": (_F, LIGHTLOCK, lmh), "walkway": (_F, WALKWAY, lmh),
+        "swingpivot": (_F, SWINGPIVOT, lmh),
     }
 
 
@@ -336,25 +347,62 @@ def _block_pat(key: str) -> "re.Pattern":
                       r"(\n<!-- END costing:" + re.escape(key) + r" -->)", re.DOTALL)
 
 
-def inject(write: bool = True) -> list:
-    """Regenerate each marked block from its generator. Returns (file, key, status); status is
-    'ok' | 'updated' (write) | 'STALE' (write=False) | 'missing'."""
-    out = []
-    for key, (rel, fn) in _injectables().items():
-        path = os.path.join(_REPO, rel)
-        text = open(path, encoding="utf-8").read()
-        m = _block_pat(key).search(text)
-        if not m:
-            out.append((rel, key, "missing"))
+def _reformat_cell(cell: str, value: int) -> str:
+    """Replace the number in a value cell, preserving its whitespace / $ / ~ / ** formatting."""
+    m = re.match(r"^(\s*\**~?\$?)([\d,]+)(\**\s*)$", cell)
+    return f"{m.group(1)}{value:,}{m.group(3)}" if m else cell
+
+
+def _render_detail(content: str, items: list, fields: tuple) -> str:
+    """Numbers-only: rewrite each data/total row's value cells from the items; keep everything else."""
+    tot = total(items)
+    fidx = {"low": 0, "mid": 1, "high": 2}
+    out, di = [], 0
+    for ln in content.split("\n"):
+        cells = ln.split("|")
+        if len(cells) < 4:                                          # not a value-bearing row
+            out.append(ln)
             continue
-        gen = fn()
-        if m.group(2) == gen:
-            out.append((rel, key, "ok"))
-        elif write:
-            open(path, "w", encoding="utf-8").write(text[:m.start(2)] + gen + text[m.end(2):])
-            out.append((rel, key, "updated"))
-        else:
-            out.append((rel, key, "STALE"))
+        inner = [c.strip() for c in cells[1:-1]]
+        if all(c == "" or set(c) <= set("-:") for c in inner):      # separator
+            out.append(ln)
+            continue
+        is_total = "total" in inner[0].lower()
+        if not is_total and not re.match(r"^\s*\**~?\$?[\d,]+\**\s*$", cells[2]):
+            out.append(ln)                                          # header / non-numeric row
+            continue
+        for k, f in enumerate(fields):
+            ci = 2 + k
+            if ci < len(cells) - 1:
+                cells[ci] = _reformat_cell(cells[ci], tot[fidx[f]] if is_total else getattr(items[di], f))
+        if not is_total:
+            di += 1
+        out.append("|".join(cells))
+    return "\n".join(out)
+
+
+def _apply(rel: str, key: str, regen, write: bool) -> tuple:
+    path = os.path.join(_REPO, rel)
+    text = open(path, encoding="utf-8").read()
+    m = _block_pat(key).search(text)
+    if not m:
+        return (rel, key, "missing")
+    new = regen(m.group(2))
+    if m.group(2) == new:
+        return (rel, key, "ok")
+    if write:
+        open(path, "w", encoding="utf-8").write(text[:m.start(2)] + new + text[m.end(2):])
+        return (rel, key, "updated")
+    return (rel, key, "STALE")
+
+
+def inject(write: bool = True) -> list:
+    """Regenerate every marked block. Returns (file, key, 'ok'|'updated'|'STALE'|'missing')."""
+    out = []
+    for key, (rel, fn) in _whole_blocks().items():
+        out.append(_apply(rel, key, lambda cur, fn=fn: fn(), write))
+    for key, (rel, items, fields) in _detail_blocks().items():
+        out.append(_apply(rel, key, lambda cur, it=items, fl=fields: _render_detail(cur, it, fl), write))
     return out
 
 

@@ -280,6 +280,183 @@ def warn_hardwired_literals() -> tuple[bool, list[str]]:
     return (not issues), (issues or ["no hardwired literals in the staged files"])
 
 
+# ── DUPLICATION-EQUALITY: two functions that build the SAME part must emit the same geometry ──
+# The "NB: keep in sync" drift class (Phase 4): a part is built by two duplicated emitters (the
+# overview re-implements the specialised model's geometry inline). Rather than trust a comment, we
+# CALL both emitters, record the geometry their helpers emit (monkeypatch ruby_box/cylinder/pipe to
+# capture args instead of Ruby text), and compare. Two pairs, two comparison modes:
+#   electrical EP core — power_core() vs electrical(): SAME world frame (both use EP_X/constants),
+#       so compare ABSOLUTE geometry per canonical part-key (catches dimension/offset/PV-path drift).
+#   walkway bracket    — _cantilever_parts(std/wide) vs walkway_brackets(): different frames +
+#       a parameterised loop, so compare the position-invariant SET of part SIZE-signatures.
+_MODELS = os.path.join(ROOT, "src", "models")
+_HELPERS = ("ruby_box", "ruby_cylinder", "ruby_pipe_run", "ruby_flex_run",
+            "ruby_flex_duct", "ruby_coil_cord")
+
+
+def _models_on_path():
+    for p in (_MODELS, HERE):
+        if p not in sys.path:
+            sys.path.insert(0, p)
+
+
+def _record(run) -> list:
+    """Run `run()` with the ov geometry helpers monkeypatched to record (kind, name, nums)."""
+    _models_on_path()
+    import generate_sketchup_model as ov  # noqa: E402
+    rec = []
+
+    def box(name, x, y, z, w, d, h, color=None, alpha=None, both_sides=False):
+        rec.append(("box", name, (x, y, z, w, d, h))); return ""
+
+    def cyl(name, cx, cy, cz, radius, height, color=None, alpha=None, **k):
+        rec.append(("cyl", name, (cx, cy, cz, radius, height))); return ""
+
+    def pipe(name, waypoints, r, color=None, alpha=None, **k):
+        rec.append(("pipe", name, (tuple(tuple(p) for p in waypoints), r))); return ""
+
+    def duct(name, p1, p2, r, color=None, alpha=None, **k):
+        rec.append(("pipe", name, ((tuple(p1), tuple(p2)), r))); return ""
+
+    def coil(name, waypoints, r=5.0, color=None, alpha=None, **k):
+        rec.append(("pipe", name, (tuple(tuple(p) for p in waypoints), r))); return ""
+
+    stub = {"ruby_box": box, "ruby_cylinder": cyl, "ruby_pipe_run": pipe,
+            "ruby_flex_run": pipe, "ruby_flex_duct": duct, "ruby_coil_cord": coil}
+    orig = {nm: getattr(ov, nm) for nm in _HELPERS}
+    patched = []  # (module, name, original) — helpers are imported by-name into several modules
+    for mod in list(sys.modules.values()):
+        if not mod:
+            continue
+        for nm in _HELPERS:
+            if getattr(mod, nm, None) is orig[nm]:
+                patched.append((mod, nm, orig[nm])); setattr(mod, nm, stub[nm])
+    try:
+        run()
+    finally:
+        for mod, nm, o in patched:
+            setattr(mod, nm, o)
+    return rec
+
+
+def _geom(kind, nums):
+    """Normalise a recorded primitive to a comparable tuple (rounded; color/name dropped)."""
+    if kind == "box":
+        return ("box",) + tuple(round(v, 1) for v in nums)
+    if kind == "cyl":
+        return ("cyl",) + tuple(round(v, 1) for v in nums)
+    pts, r = nums
+    return ("pipe", tuple(tuple(round(c, 1) for c in p) for p in pts), round(r, 1))
+
+
+def _ep_key(name: str):
+    """Canonical key for an EP-core part shared by power_core() and electrical(). Battery-side parts
+    (cables, MRBF) are NOT shared — exclude them. Feeds are matched before their endpoint words
+    (a 'PV feed -> MPPT' / 'main feed -> disconnect' name mentions the endpoint but isn't it)."""
+    n = name.lower().strip()
+    if any(x in n for x in ("battery", "cable", "mrbf")):
+        return None
+    if "pv feed" in n:
+        return "pv-feed"
+    if "main feed" in n:
+        return "main-feed"
+    if n.startswith("enclosure") or "ep enclosure" in n:
+        return "enclosure"
+    if n.startswith("mppt"):
+        return "mppt"
+    if "fuse block" in n:
+        return "fuseblock"
+    m = re.search(r"\bfuse ([a-g])\b", n)
+    if m:
+        return "fuse-" + m.group(1)
+    if "busbar (+)" in n:
+        return "busbar+"
+    if "busbar (-)" in n:
+        return "busbar-"
+    if "main disconnect" in n:
+        return "disconnect"
+    return None
+
+
+def _check_electrical() -> list[str]:
+    _models_on_path()
+    import generate_sketchup_model as ov
+    import generate_electrical_model as em
+    P = {_ep_key(n): _geom(k, g) for k, n, g in _record(em.power_core) if _ep_key(n)}
+    E = {_ep_key(n): _geom(k, g) for k, n, g in _record(ov.electrical) if _ep_key(n)}
+    issues = []
+    for key in sorted(P):
+        if key not in E:
+            issues.append(f"electrical EP core: power_core emits '{key}' but electrical() does not")
+        elif P[key] != E[key]:
+            issues.append(f"electrical EP core: '{key}' geometry differs — "
+                          f"power_core {P[key]} vs electrical() {E[key]}")
+    return issues
+
+
+def _sizesig(rec) -> set:
+    """Position-invariant set of distinct part SIZE-signatures (box w×d×h sorted, cyl r×h, pipe r)."""
+    sig = set()
+    for k, n, g in rec:
+        if k == "box":
+            sig.add(("box",) + tuple(sorted(round(v, 1) for v in g[3:6])))
+        elif k == "cyl":
+            sig.add(("cyl", round(g[3], 1), round(g[4], 1)))
+        else:
+            sig.add(("pipe", round(g[1], 1)))
+    return sig
+
+
+def _check_walkway() -> list[str]:
+    _models_on_path()
+    import generate_sketchup_model as ov
+    import generate_walkway_model as wm
+    src = _sizesig(_record(lambda: [
+        wm._cantilever_parts("Std", wm.CT_STD_X, 0, +1, wm.WK_W, False),
+        wm._cantilever_parts("Wide", wm.CT_WIDE_X, 0, +1, wm.WK_NEAR_WIDE_W, True)]))
+    ovr = _sizesig(_record(ov.walkway_brackets))
+    issues = []
+    for s in sorted(src - ovr, key=str):
+        issues.append(f"walkway bracket: walkway-model emits size {s} that overview omits")
+    for s in sorted(ovr - src, key=str):
+        issues.append(f"walkway bracket: overview emits size {s} not in the walkway model")
+    return issues
+
+
+# Each pair: (label, check-fn, trigger-files, staged_warn). `staged_warn` gates the pre-commit
+# warning: True for a PRECISE same-frame equality (no false positives), False for the LOD-ambiguous
+# size-set comparison (overview legitimately simplifies fab detail) — that one stays on-demand only.
+_DUP_PAIRS = [
+    ("electrical EP core (power_core ↔ electrical)", _check_electrical,
+     ["src/models/generate_electrical_model.py", "src/models/generate_sketchup_model.py"], True),
+    ("walkway bracket (_cantilever_parts ↔ walkway_brackets)", _check_walkway,
+     ["src/models/generate_walkway_model.py", "src/models/generate_sketchup_model.py"], False),
+]
+
+
+def _duplication_findings(pairs) -> list[str]:
+    out = []
+    for label, fn, *_ in pairs:
+        try:
+            found = fn()
+        except Exception as e:  # a model refactor broke the harness — surface it, don't crash the hook
+            out.append(f"{label}: check could not run ({type(e).__name__}: {e})")
+            continue
+        out += [f"{label}: {m.split(': ', 1)[1]}" if ': ' in m else f"{label}: {m}" for m in found]
+    return out
+
+
+def warn_duplication() -> tuple[bool, list[str]]:
+    """Pre-commit warning — only the PRECISE pairs (staged_warn=True), and only when one of their
+    files is staged. The LOD-ambiguous walkway pair is `lint.py --duplication` (on-demand) only."""
+    staged = set(_git(["diff", "--cached", "--name-only"]).split())
+    pairs = [p for p in _DUP_PAIRS if p[3] and staged.intersection(p[2])]
+    if not pairs:
+        return True, ["no precise duplicated-geometry source files staged"]
+    issues = _duplication_findings(pairs)
+    return (not issues), (issues or ["staged duplicated emitters agree"])
+
+
 GATES = [
     ("costing reconciliation", gate_costing),
     ("costing doc-blocks (generated == doc)", gate_blocks),
@@ -289,6 +466,7 @@ WARNINGS = [
     ("table arithmetic (TOTAL = sum of column)", warn_arithmetic),
     ("missing cascade (constant changed, outputs not regenerated)", warn_missing_cascade),
     ("hardwired literal in staged file (should reference a constant)", warn_hardwired_literals),
+    ("duplicated geometry in sync (staged emitters)", warn_duplication),
 ]
 
 
@@ -318,9 +496,29 @@ def _literals_report() -> int:
     return 0
 
 
+def _duplication_report() -> int:
+    """Full on-demand run — checks every known duplicated-geometry pair, regardless of staging."""
+    print("Duplicated-geometry equality — calling both emitters, comparing what they build:\n")
+    any_drift = False
+    for label, fn, *_ in _DUP_PAIRS:
+        issues = _duplication_findings([(label, fn)])
+        if issues:
+            any_drift = True
+            print(f"  ✗ {label}: DRIFT")
+            for m in issues:
+                print("      " + m.split(': ', 1)[1])
+        else:
+            print(f"  ✓ {label}: in sync")
+    if not any_drift:
+        print("\nall duplicated emitters agree")
+    return 0
+
+
 def main() -> int:
     if "--literals" in sys.argv:
         return _literals_report()
+    if "--duplication" in sys.argv:
+        return _duplication_report()
     print("TBS-001 drift linter — GATES (block on failure):")
     gate_fail = _run(GATES)
     print("\nTBS-001 drift linter — WARNINGS (advisory):")

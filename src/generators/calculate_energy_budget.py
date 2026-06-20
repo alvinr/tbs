@@ -81,11 +81,13 @@ DRAIN_LIGHT_MIN   = 10      # white light during the ~20-min drain operation
 
 # ── Water supply (clean-water autonomy) ───────────────────────────────────────
 # The binding endurance constraint for a disconnected (solar-only) deployment is
-# usually the FRESH water supply, not power. From water-system-report.md §3-4.
-BLUE_SUPPLY_L       = 1600  # 2× 800L Blue (fresh) fill (= 423 US gal) — v2 reconciled to the weight model
-FRESH_PER_PRINT_GAL = 32    # net Blue consumed per print WITH Brown recycling (wash 2 from Brown)
-WASTE_CAP_L         = 600   # 1× Black (waste) tote — parallel out-flow constraint
-GAL_TO_L            = 3.785
+# usually the FRESH water supply, not power. SINGLE SOURCE: import the Blue supply and
+# per-print consumption from tbs_constants (computed there from tray geometry + the report's
+# wash model) rather than re-declaring the literals — see water-system-report.md §3-4.
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+from tbs_constants import BLUE_SUPPLY_L, BLUE_PER_PRINT_L  # noqa: E402
+WASTE_CAP_L = 600   # 1× Black (waste) tote — parallel out-flow constraint
 
 # ── Phase-by-phase load matrix ────────────────────────────────────────────────
 # Each phase specifies which circuits are ON and for how long.
@@ -259,8 +261,7 @@ def compute_autonomy(battery_ah, prints_per_day=PRINTS_PER_DAY):
     daily = compute_daily(prints_per_day)["daily_wh"]
     battery_wh = battery_ah * BATTERY_V * DOD
     solar = SOLAR_W * PEAK_SUN_HOURS
-    fresh_l = FRESH_PER_PRINT_GAL * GAL_TO_L
-    prints_water = BLUE_SUPPLY_L / fresh_l
+    prints_water = BLUE_SUPPLY_L / BLUE_PER_PRINT_L
     return {
         "battery_ah": battery_ah, "battery_wh": battery_wh,
         "prints_per_day": prints_per_day, "daily_wh": daily,
@@ -288,10 +289,10 @@ def print_daily_report():
     print("\n" + "=" * 72)
     print("DISCONNECTED ENDURANCE (no AC charge — solar top-up only)")
     print("=" * 72)
-    fresh_l = FRESH_PER_PRINT_GAL * GAL_TO_L
-    print(f"  CLEAN WATER (Blue {BLUE_SUPPLY_L}L / {fresh_l:.0f}L net per print)"
-          f" → {BLUE_SUPPLY_L/fresh_l:.1f} prints"
-          f" ≈ {BLUE_SUPPLY_L/fresh_l/PRINTS_PER_DAY:.1f} days @ {PRINTS_PER_DAY}/day")
+    prints_water = BLUE_SUPPLY_L / BLUE_PER_PRINT_L
+    print(f"  CLEAN WATER (Blue {BLUE_SUPPLY_L}L / {BLUE_PER_PRINT_L:.0f}L net per print)"
+          f" → {prints_water:.1f} prints"
+          f" ≈ {prints_water/PRINTS_PER_DAY:.1f} days @ {PRINTS_PER_DAY}/day")
     print(f"  WASTE OUT (Black {WASTE_CAP_L}L) — must be emptied at resupply (parallel limit)\n")
     for ah, label in [(100, "1 pack (100Ah)"), (200, "2 packs (200Ah)")]:
         a = compute_autonomy(ah)

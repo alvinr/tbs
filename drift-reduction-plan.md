@@ -16,6 +16,41 @@ arithmetic, and to cross-doc disagreement. Those blind spots are exactly where t
 
 ---
 
+## The three value stores — where a number lives, and why (read before adding a number anywhere)
+
+Having more than one place to put a value is how drift starts. We have **three** stores, separated
+by *who consumes the value* — and the rule below keeps each value to exactly one home so they can't
+disagree:
+
+| Store | Holds | Consumed by |
+|-------|-------|-------------|
+| `tbs_constants.py` | geometry & engineering values | code that computes/draws/builds — generators, 3D models, weight/cost scripts |
+| `costing.py` | money line items + summed totals | code that sums them into the doc cost tables |
+| `facts.yml` | a *registry* of numbers restated in prose + the regex to find them | `lint.py`, to police English across the `.md` docs |
+
+The first two are **machine inputs** (code does arithmetic on them). `facts.yml` is different: it is
+**not where a value is used** — it is where the linter learns "this number is repeated in sentences,
+here's how to spot it, here's what it must equal."
+
+**Decision rule — does code compute / draw / build with the number?**
+- yes, geometry/engineering → `tbs_constants.py`
+- yes, it's money → `costing.py`
+- no, it only appears in prose but is restated across docs and you want it policed → `facts.yml`:
+  - it **is** also a code value → `constant:` **reference** (no copy — reads from `tbs_constants`)
+  - it lives **nowhere** in code → `value:` literal — the *only* case facts.yml is itself a source,
+    and even then prefer making it a **computed constant first** (see `PRINTS_PER_RESUPPLY`:
+    derived in `tbs_constants` from Blue supply ÷ Blue-per-print, then *referenced*), so facts.yml
+    stays 100% reference-only.
+
+**Guardrails that keep facts.yml from becoming a 2nd drift vector:**
+1. Default to `constant:`. A literal `value:` is a last resort (no code home) — and a candidate to
+   convert into a computed constant.
+2. Never put a cost in facts.yml — costs live in `costing.py`.
+3. `tbs_constants` never imports from `facts` — the dependency points one way (facts → constants),
+   so constants stay the root.
+
+---
+
 ## Status (2026-06-19) — infrastructure built across all four phases
 
 | Phase | Built | Remaining |
@@ -70,7 +105,10 @@ A YAML registry of the **cross-referenced non-cost numbers** that are currently 
 capacities, battery/solar, etc.). Each entry: `value`, `unit`, `derivation`, `owner-doc`, `aliases`.
 
 - Where a number is already a code constant (`MAX_TILT_DEG`, etc.), `facts.yml` **references the
-  constant** rather than duplicating it — one value, surfaced to the MD layer.
+  constant** rather than duplicating it — one value, surfaced to the MD layer. `facts.yml` is now
+  **100% reference-only** (no literals): `prints_per_resupply` was the last literal and is now a
+  **computed** constant (`PRINTS_PER_RESUPPLY` = Blue supply ÷ Blue-per-print over the real tray
+  footprint) that the fact references — so even an operational number derives from first principles.
 - A tiny injector fills `<!-- fact:name -->` placeholders in prose, OR (lighter first step) the linter
   just **scans every doc for any registered fact's aliases and flags a stale value**.
 - **Canonical owner per fact:** one doc derives it; the others say "see <owner>" and do not restate the

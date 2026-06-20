@@ -2956,7 +2956,7 @@
 <!-- © 2026 Alvin Richards -->
 <h1 id="component-dependency-map">Component Dependency Map<a class="headerlink" href="#component-dependency-map" title="Permanent link">&para;</a></h1>
 <blockquote>
-<p><strong>Machine source of truth: <a href="dependencies.yml"><code>dependencies.yml</code></a>.</strong> The structured
+<p><strong>Machine source of truth: <code>dependencies.yml</code>.</strong> The structured
 <code>script → output-file</code> graph (which generator/model writes which PNG / <code>.skp</code> / <code>.rb</code>) lives there
 — validated by <code>lint.py</code> so it can't drift — and the per-constant cascade is <strong>computed</strong> from it
 (<code>python3 src/generators/lint.py --cascade &lt;CONSTANT&gt;</code>; enforced at commit time). This document is

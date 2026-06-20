@@ -2,7 +2,7 @@
 <!-- © 2026 Alvin Richards -->
 # Component Dependency Map
 
-> **Machine source of truth: [`dependencies.yml`](dependencies.yml).** The structured
+> **Machine source of truth: `dependencies.yml`.** The structured
 > `script → output-file` graph (which generator/model writes which PNG / `.skp` / `.rb`) lives there
 > — validated by `lint.py` so it can't drift — and the per-constant cascade is **computed** from it
 > (`python3 src/generators/lint.py --cascade <CONSTANT>`; enforced at commit time). This document is

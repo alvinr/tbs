@@ -18,6 +18,8 @@ USAGE:  python3 src/generators/costing.py            # print the tables + run th
 """
 from __future__ import annotations
 
+import os
+import re
 import sys
 from dataclasses import dataclass
 
@@ -275,24 +277,28 @@ class Section:
 
 def _printmaking_section() -> Section:
     lo, mid, hi = printmaking_scenario()
-    return Section("7", "Printmaking — 50 prints (cyanotype)", lo, mid, hi)
+    return Section("7", "Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)", lo, mid, hi)
 
 
+# Labels match the cost-breakdown "Executive Cost Summary" EXACTLY, so emit_scenario_table()
+# regenerates that table verbatim — it is INJECTED into the <!-- costing:scenario --> block, and
+# the linter gate fails if the doc block ever diverges. (Computed totals where a line-item list
+# owns the section; direct values for the estimate/BOM sections 4/5a/8/9.)
 SECTIONS = [
-    Section("1",  "Container purchase & delivery",              *total(CONTAINER)),  # COMPUTED
-    Section("2",  "Interior conversion",                         *total(INTERIOR)),  # COMPUTED
-    Section("3",  "Optics — pinhole plate",                       *total(OPTICS)),    # COMPUTED
-    Section("4",  "Film plane mechanism (4-corner Option A)",   3100, 3650, 4200),
-    Section("5",  "Processing water system",                    *total(WATER)),  # COMPUTED from line items
-    Section("5a", "Power & electrical system",                  2025, 2265, 2575),
-    Section("5b", "Ventilation & cooling system",                total(VENTILATION)[0],
-            total(VENTILATION)[0] + 60, total(VENTILATION)[0] + 150),  # Low = BOM $824; +$60/+$150 band
-    Section("6",  "Housed revolving-door light lock",           *total(LIGHTLOCK)),  # COMPUTED
-    Section("6a", "Perimeter walkway",                          *total(WALKWAY)),  # COMPUTED from line items
-    Section("6b", "Panel swing pivot",                           *total(SWINGPIVOT)),  # COMPUTED
+    Section("1",  "Container purchase & delivery", *total(CONTAINER)),
+    Section("2",  "Interior conversion", *total(INTERIOR)),
+    Section("3",  "Optics — pinhole plate", *total(OPTICS)),
+    Section("4",  "Film plane mechanism (4-corner Option A, incl. wall-seat saddles + cross-slides)", 3100, 3650, 4200),
+    Section("5",  "Processing water system (incl. tray, spray bar, IBC stacking frame)", *total(WATER)),
+    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · pump switches)", 2025, 2265, 2575),
+    Section("5b", "Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)",
+            total(VENTILATION)[0], total(VENTILATION)[0] + 60, total(VENTILATION)[0] + 150),
+    Section("6",  "Housed revolving-door light lock (plastic-skin custom fabrication)", *total(LIGHTLOCK)),
+    Section("6a", "Perimeter walkway (4 sections + drum-exit punch-out)", *total(WALKWAY)),
+    Section("6b", "Panel swing pivot (Ø89 pivot post + bearings + cage + wall stays + rail saddles)", *total(SWINGPIVOT)),
     _printmaking_section(),
-    Section("8",  "Transportation (per deployment)",             300,  750, 2000),
-    Section("9",  "Licences & permits",                          220,  790, 1620),
+    Section("8",  "Transportation (per deployment)", 300, 750, 2000),
+    Section("9",  "Licences & permits", 220, 790, 1620),
 ]
 
 
@@ -309,6 +315,52 @@ def emit_scenario_table() -> str:
     lo, mid, hi = grand_total()
     rows.append(f"| **TOTAL (excl. own transport, CDL, lens)** | **${lo:,}** | **${mid:,}** | **${hi:,}** |")
     return "\n".join(rows)
+
+
+# ── Block injector — make the doc tables true OUTPUTS of costing.py ──────────
+# Each doc wraps a generated table in `<!-- BEGIN costing:KEY -->` / `<!-- END costing:KEY -->`.
+# inject() regenerates the content between the markers; the linter gate (check_blocks) fails the
+# commit if any doc block ever diverges from costing.py — so the tables are outputs, not copies.
+_REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+
+def _injectables() -> dict:
+    return {
+        "scenario": ("project-cost-breakdown.md", emit_scenario_table),
+        "chemistry-7-1": ("project-cost-breakdown.md", emit_cost_breakdown_7_1),
+    }
+
+
+def _block_pat(key: str) -> "re.Pattern":
+    return re.compile(r"(<!-- BEGIN costing:" + re.escape(key) + r" -->\n)(.*?)"
+                      r"(\n<!-- END costing:" + re.escape(key) + r" -->)", re.DOTALL)
+
+
+def inject(write: bool = True) -> list:
+    """Regenerate each marked block from its generator. Returns (file, key, status); status is
+    'ok' | 'updated' (write) | 'STALE' (write=False) | 'missing'."""
+    out = []
+    for key, (rel, fn) in _injectables().items():
+        path = os.path.join(_REPO, rel)
+        text = open(path, encoding="utf-8").read()
+        m = _block_pat(key).search(text)
+        if not m:
+            out.append((rel, key, "missing"))
+            continue
+        gen = fn()
+        if m.group(2) == gen:
+            out.append((rel, key, "ok"))
+        elif write:
+            open(path, "w", encoding="utf-8").write(text[:m.start(2)] + gen + text[m.end(2):])
+            out.append((rel, key, "updated"))
+        else:
+            out.append((rel, key, "STALE"))
+    return out
+
+
+def check_blocks() -> list:
+    """Linter helper: list of problems (a doc block that is stale or missing its markers)."""
+    return [f"{rel}  costing:{key} -> {st}" for rel, key, st in inject(write=False) if st != "ok"]
 
 
 # ── Self-check (regression guard — the canonical numbers, asserted) ──────────
@@ -357,6 +409,19 @@ def check() -> list[str]:
 
 
 def main(argv: list[str]) -> int:
+    if "--inject" in argv:
+        for rel, key, st in inject(write=True):
+            print(f"  [{st:>7}] {rel}  costing:{key}")
+        return 0
+    if "--check-blocks" in argv:
+        probs = check_blocks()
+        if probs:
+            print("✗ doc blocks out of sync with costing.py (run: costing.py --inject):")
+            for p in probs:
+                print("   -", p)
+            return 1
+        print("✓ all costing blocks match the docs")
+        return 0
     errs = check()
     if "--check" in argv:
         if errs:

@@ -16,7 +16,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
-| 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,100 | $4,200 |
+| 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,538 | $4,088 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $4,063 | $6,104 |
 | 6. Electrical — power, circuits, wiring | $2,025 | $2,575 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,465 | $2,160 |
@@ -26,7 +26,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,210 | $2,980 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$19,440** | **~$29,542** |
+| **TOTAL (base build + 50-print run)** | **~$19,878** | **~$29,430** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -144,7 +144,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 *All prices estimated — Metal Supermarkets and McMaster-Carr do not publish per-unit pricing online; call or add to cart for a current quote. 8mm A36 plate runs ~$3–5/kg cut. M8 thumbscrew pricing confirmed at ~$15–17 each from Maedler North America (PN 65499225, May 2026); Amazon multi-packs run ~$2–5 ea. depending on pack size.*
 
-**Section total (manual, incl. wall-seat saddles + Option A cross-slides): ~$3,100–$4,200**
+**Section total (manual, incl. wall-seat saddles + Option A cross-slides): ~$3,538–$4,088** *(= cost-breakdown §4)*
 
 > **Option A delta (2026-06-06):** the film plane is now a **fixed-size rigid** rectangle posed by **8 corner cross-slides** (2-axis X-Z stage per corner) that absorb the rigid-rotation arc travel. Added 8 cross-slide rails +$200, 8 carriages +$96, 4 intermediate plates +$60 (= +$356); removed the folding-backing piano hinge –$56 → **net +$300**. Single rigid ACM backing replaces the hinged two-panel system; the achievable envelope is tilt ±40° / swing ±28° single-axis (combined limited; the old compound-twist config is dropped).
 >

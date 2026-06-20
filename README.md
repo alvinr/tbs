@@ -1,5 +1,10 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
+
+<div align="center">
+  <img src="assets/logo-final.png" alt="The Big Shoebox Project (TBS-001)" width="440">
+</div>
+
 # The Big Shoebox Project (TBS-001) — Repository & Build Guide
 
 This repository is the **source** for the TBS-001 engineering documentation: a giant pinhole

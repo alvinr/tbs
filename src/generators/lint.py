@@ -33,6 +33,13 @@ def gate_costing() -> tuple[bool, list[str]]:
     return r.returncode == 0, [(r.stdout + r.stderr).strip()]
 
 
+# ── GATE: doc cost-tables match their costing.py generator (the block injector) ──
+def gate_blocks() -> tuple[bool, list[str]]:
+    r = subprocess.run([sys.executable, os.path.join(HERE, "costing.py"), "--check-blocks"],
+                       capture_output=True, text=True)
+    return r.returncode == 0, [(r.stdout + r.stderr).strip()]
+
+
 # ── WARNING: facts-registry agreement (facts.py vs every doc) ────────────────
 def warn_facts() -> tuple[bool, list[str]]:
     sys.path.insert(0, HERE)
@@ -164,7 +171,10 @@ def warn_missing_cascade() -> tuple[bool, list[str]]:
     return (not issues), (issues or ["constants change has regenerated outputs staged"])
 
 
-GATES = [("costing reconciliation", gate_costing)]
+GATES = [
+    ("costing reconciliation", gate_costing),
+    ("costing doc-blocks (generated == doc)", gate_blocks),
+]
 WARNINGS = [
     ("facts-registry agreement", warn_facts),
     ("table arithmetic (TOTAL = sum of column)", warn_arithmetic),

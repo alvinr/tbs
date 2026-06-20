@@ -11,6 +11,7 @@
 
 ## Summary — Total Project Cost
 
+<!-- BEGIN costing:scenario -->
 | Category | Low | Mid | High |
 |----------|-----|-----|------|
 | **1. Container purchase & delivery** | $2,300 | $3,300 | $4,300 |
@@ -27,6 +28,7 @@
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
 | **TOTAL (excl. own transport, CDL, lens)** | **$19,028** | **$24,463** | **$32,020** |
+<!-- END costing:scenario -->
 
 *Line 7 (cyanotype printmaking) is now re-summed into the TOTAL on the **Mike Ware AmFe** chemistry + corrected ~$300 substrate: **Low = Lean ⅓-Ware ($1,210), Mid = Standard ½-Ware ($1,650), High = Rich full-Ware ($2,980)** — matching §7.1 and the master shopping list §9. The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md).*
 
@@ -349,13 +351,15 @@ Cyanotype is the recommended starting process: no silver, no DEA registration, n
 > operating-manual §0.2), so the chemistry cost spans a wide band until a tier is trialled. **Standard
 > (½-Ware) is the working default.**
 
+<!-- BEGIN costing:chemistry-7-1 -->
 | Item (50 prints) | Lean (⅓-Ware) | **Standard (½-Ware) — default** | Rich (full-Ware) | Source |
 |---|---|---|---|---|
 | Ammonium iron(III) oxalate (AmFe) | 13 kg / ~$780 | **19.5 kg / ~$1,170** | 39 kg / ~$2,340 | Bostick & Sullivan (~$60/kg) |
-| Potassium ferricyanide (3:1 ratio) | 4.3 kg / ~$105 | **6.5 kg / ~$158** | 13 kg / ~$316 | Bostick & Sullivan ($24.29/kg) |
+| Potassium ferricyanide (3:1 ratio) | 4.3 kg / ~$104 | **6.5 kg / ~$158** | 13 kg / ~$316 | Bostick & Sullivan ($24.29/kg) |
 | Ammonium dichromate (contrast, 0.1–0.4%) | ~$25 | **~$25** | ~$25 | Photographers' Formulary |
 | Unbleached cotton muslin, 60″ — 3 × 150-yd rolls (~445 yd) | ~$300 | **~$300** | ~$300 | Fabric Direct (~$100/roll) |
 | **Cyanotype total — 50 prints** | **~$1,210** | **~$1,650** | **~$2,980** | |
+<!-- END costing:chemistry-7-1 -->
 
 *Note: development requires only plain cold water — no darkroom chemistry. The §5 water system provides all wash water.*
 

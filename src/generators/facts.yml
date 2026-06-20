@@ -1,9 +1,27 @@
-# facts.yml — single source of truth for cross-referenced NUMBERS restated across the MD docs.
-# Phase 2 of drift-reduction-plan.md. This is the editable registry; facts.py loads it with a
-# tiny dependency-free YAML reader (PyYAML isn't installed, and the pre-commit hook must stay
-# dependency-free). Each fact:
-#   value     — a literal canonical value, OR
-#   constant  — a tbs_constants name to read it FROM (so the registry can't disagree with code)
+# facts.yml — registry of cross-referenced NUMBERS restated across the MD docs, + the regexes that
+# police them. Phase 2 of drift-reduction-plan.md. This is NOT where values are USED (code computes
+# with those); it is where the linter learns "this number is repeated in prose, here's how to spot
+# it, here's what it must equal." facts.py loads it with a tiny dependency-free YAML reader (PyYAML
+# isn't installed, and the pre-commit hook must stay dependency-free).
+#
+# WHERE DOES A NUMBER LIVE? (one home per value — this is what keeps the three stores from drifting)
+#   Does code compute / draw / build with it?
+#     • yes, geometry/engineering        -> tbs_constants.py   (e.g. RAIL_X_L, MAX_TILT_DEG)
+#     • yes, it's money                  -> costing.py         (line items + summed totals)
+#     • no, it only appears in prose but is restated across docs and you want it policed -> here:
+#         - it IS also a code value  -> `constant:` REFERENCE (no copy; reads from tbs_constants)
+#         - it lives nowhere in code -> `value:` literal  (the ONLY case facts.yml is itself a source)
+#   Rules that keep this from becoming a 2nd drift vector:
+#     1. DEFAULT to `constant:`. Reach for a literal `value:` only when the number has no code home —
+#        and prefer making it a COMPUTED constant first (see prints_per_resupply: derived, then
+#        referenced) so even the literal disappears.
+#     2. NEVER put a cost here — costs live in costing.py.
+#     3. tbs_constants must never import from facts — the dependency points one way (facts ->
+#        constants), so constants stay the root.
+#
+# Each fact:
+#   value     — a literal canonical value (last resort: no code home), OR
+#   constant  — a tbs_constants name to read it FROM (preferred — registry can't disagree with code)
 #   unit, owner — the unit and the one doc that owns/derives the fact
 #   aliases   — tight regexes (single-quoted); group(1) captures the value in prose. lint.py
 #               flags any doc whose captured value != the canonical value.
@@ -29,8 +47,10 @@ film_plane_max_swing:
 
 # Prints between resupply — drifted 10 vs 13. Aliases match the OPERATIONAL claim only, not the
 # water-report's "8-10 ... on fresh Blue alone" baseline nor "per charge" (battery).
+# COMPUTED in tbs_constants (Blue supply / Blue-per-print over the real tray footprint), so this
+# REFERENCES the constant rather than restating 13 — the value can't disagree with its derivation.
 prints_per_resupply:
-  value: 13
+  constant: PRINTS_PER_RESUPPLY
   unit: prints
   owner: water-system-report.md
   aliases:

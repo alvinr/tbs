@@ -553,6 +553,26 @@ PROC_TRAY_SUMP_W   = 150        # sump well width in X (mm)
 PROC_TRAY_SUMP_D   = 100        # sump well depth in Yd (mm)
 PROC_TRAY_SUMP_Z   = 20         # sump well depth below tray floor (mm)
 
+# ── Water throughput — prints per resupply (COMPUTED, never transcribed) ──────
+# "~13 prints per resupply" (and the ~32 gal/print, ~121 L/print, ~4.4 days figures derived from it)
+# is restated across the docs and was independently re-declared in calculate_energy_budget.py. Rather
+# than copy any of those literals, derive them here from named inputs so they can't drift. The chain
+# mirrors water-system-report.md §"Per-print water requirement" / §"Storage capacity vs. print count"
+# EXACTLY, including the report's documented per-wash rounding (15.6 gal ≈ 16 gal), so every
+# downstream published number stays stable:
+#   tray flood at TRAY_FLOOD_DEPTH_MM over the real footprint -> ~15.6 gal, ROUNDED to 16 gal/wash
+#   wash 1 + wash 3 draw clean Blue (wash 2 recycles Brown) -> BLUE_WASHES_PER_PRINT × 16 = 32 gal
+#   usable Blue supply / Blue-per-print -> prints between resupply runs (floor)
+# facts.yml references PRINTS_PER_RESUPPLY via `constant:`; energy-budget imports these (one source).
+L_PER_GAL             = 3.78541
+BLUE_SUPPLY_L         = 1600    # usable clean-water (Blue) volume — 2× 800L gravity fill (~423 gal)
+TRAY_FLOOD_DEPTH_MM   = 6       # one process flood depth (¼") over the tray footprint
+BLUE_WASHES_PER_PRINT = 2       # washes 1 & 3 draw Blue; wash 2 recycles from Brown
+TRAY_FLOOD_GAL        = round(PROC_TRAY_W * PROC_TRAY_D * TRAY_FLOOD_DEPTH_MM / 1e6 / L_PER_GAL)  # 15.6 → 16
+BLUE_PER_PRINT_GAL    = BLUE_WASHES_PER_PRINT * TRAY_FLOOD_GAL   # = 32 gal net Blue/print
+BLUE_PER_PRINT_L      = BLUE_PER_PRINT_GAL * L_PER_GAL           # ≈ 121 L
+PRINTS_PER_RESUPPLY   = int(BLUE_SUPPLY_L / BLUE_PER_PRINT_L)    # = 13
+
 # ── Perimeter walkway — removable grated sections around processing tray ─────
 # 4 sections form a rectangular perimeter walk so the operator can access all
 # working parts (valves, electrical panel, film plane, tilt-swing adjusters)

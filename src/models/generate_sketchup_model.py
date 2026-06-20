@@ -27,7 +27,7 @@ Subsystems / tags:
 Usage
 -----
     python3 src/models/generate_sketchup_model.py          # print Ruby
-    python3 src/models/generate_sketchup_model.py --save   # write tbs_model.rb
+    python3 src/models/generate_sketchup_model.py --save   # write overview.rb
     python3 src/models/generate_sketchup_model.py --send    # push to SketchUp
 """
 
@@ -2560,7 +2560,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Generate Ruby code for the TBS-001 Overview SketchUp model")
     parser.add_argument("--save", action="store_true",
-                        help="Write Ruby to src/models/tbs_model.rb")
+                        help="Write Ruby to src/models/overview.rb")
     parser.add_argument("--send", action="store_true",
                         help="Send the Ruby straight to the running SketchUp")
     parser.add_argument("--sketchfab", nargs="?", const="overview", default=None,

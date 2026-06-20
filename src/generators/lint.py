@@ -168,6 +168,18 @@ def warn_deps_valid() -> tuple[bool, list[str]]:
             # is built in the SketchUp app, never named in the script — so don't require it there.
             if not base.endswith(".skp") and base not in txt:
                 issues.append(f"{name}: script does not write its declared output {base}")
+        # Reverse direction — UNDECLARED outputs: a .png/.svg the generator writes but that isn't in
+        # the YAML (the gap that hid electrical-sheet1.png + panel-layout-back.png). A line carrying
+        # DIAGRAMS_DIR + a filename literal catches every savefig form — f-string, os.path.join, and
+        # `out = …`/`savefig(out)`. (Models build one .skp in-app + one .rb already validated above.)
+        if e["kind"] == "generator":
+            declared = {os.path.basename(o) for o in e["outputs"]}
+            written = set()
+            for line in txt.splitlines():
+                if "DIAGRAMS_DIR" in line:
+                    written |= set(re.findall(r"([A-Za-z0-9_.\-]+\.(?:png|svg))", line))
+            for w in sorted(written - declared):
+                issues.append(f"{name}: writes {w} but it is NOT declared in dependencies.yml")
     return (not issues), (issues or ["dependencies.yml agrees with the filesystem + scripts"])
 
 

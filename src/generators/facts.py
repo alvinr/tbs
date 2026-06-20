@@ -9,12 +9,15 @@ The parser handles exactly this file's shape: top-level fact keys, 2-space scala
 (`key: value`), and an `aliases:` list of single-quoted `- 'regex'` items. Nothing fancier.
 """
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import tbs_constants as K  # noqa: E402
 
-YAML_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "facts.yml")
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_ROOT = os.path.dirname(os.path.dirname(_HERE))     # repo root (where the .md docs live)
+YAML_PATH = os.path.join(_HERE, "facts.yml")
 
 
 def _unquote(s: str) -> str:
@@ -69,6 +72,7 @@ def _resolve() -> dict:
             "unit": f.get("unit"),
             "owner": f.get("owner"),
             "constant": f.get("constant"),
+            "display": f.get("display"),     # optional: 'comma' for thousands separators
             "aliases": f["aliases"],
         }
     return facts
@@ -77,7 +81,64 @@ def _resolve() -> dict:
 FACTS = _resolve()
 
 
-if __name__ == "__main__":   # quick dump to sanity-check the registry loads + resolves
-    for name, f in FACTS.items():
-        src = f"constant {f['constant']}" if f["constant"] else "literal"
-        print(f"{name} = {f['value']:g} {f['unit']}  ({src}; {len(f['aliases'])} aliases)")
+# ── Fact injector — fill `<!-- BEGIN fact:KEY -->value<!-- END fact:KEY -->` placeholders so a prose
+# number is a true OUTPUT of the registry (generated, not just policed). Mirrors costing.py's inline
+# blocks. The unit/sign live in the prose ("±<!-- BEGIN fact:... -->40<!-- END ... -->° tilt"); the
+# injector fills only the number. The linter gate (gate_fact_blocks) blocks a commit if any filled
+# value diverges from the registry. The alias-scan still polices UN-marked restatements.
+def _fmt(fact: dict) -> str:
+    v = fact["value"]
+    if fact.get("display") == "comma":
+        return f"{int(round(v)):,}"
+    if float(v).is_integer():
+        return str(int(round(v)))
+    return "%g" % v
+
+
+def _md_files() -> list:
+    return sorted(f for f in os.listdir(_ROOT) if f.endswith(".md"))
+
+
+def _fact_pat(key: str) -> "re.Pattern":
+    return re.compile(r"(<!-- BEGIN fact:" + re.escape(key) + r" -->)([^\n]*?)"
+                      r"(<!-- END fact:" + re.escape(key) + r" -->)")
+
+
+def inject(write: bool = True) -> list:
+    """Fill every fact marker across the docs. Returns (file, key, 'ok'|'STALE')."""
+    results = []
+    for fn in _md_files():
+        path = os.path.join(_ROOT, fn)
+        text = open(path, encoding="utf-8").read()
+        new_text = text
+        for key, fact in FACTS.items():
+            pat = _fact_pat(key)
+            for m in pat.finditer(text):
+                results.append((fn, key, "ok" if m.group(2) == _fmt(fact) else "STALE"))
+            new_text = pat.sub(lambda m, fact=fact: m.group(1) + _fmt(fact) + m.group(3), new_text)
+        if write and new_text != text:
+            open(path, "w", encoding="utf-8").write(new_text)
+    return results
+
+
+def check_blocks() -> list:
+    """Linter helper: list of fact markers whose filled value is stale vs the registry."""
+    return [f"{fn}  fact:{key} -> {st}" for fn, key, st in inject(write=False) if st != "ok"]
+
+
+if __name__ == "__main__":
+    if "--inject" in sys.argv:
+        for fn, key, st in inject(True):
+            print(f"  [{st:>5}] {fn}  fact:{key}")
+    elif "--check-blocks" in sys.argv:
+        probs = check_blocks()
+        if probs:
+            print("✗ fact blocks out of sync with the registry (run: facts.py --inject):")
+            for p in probs:
+                print("   -", p)
+            sys.exit(1)
+        print("✓ all fact blocks match the docs")
+    else:                                    # default: dump the registry
+        for name, f in FACTS.items():
+            src = f"constant {f['constant']}" if f["constant"] else "literal"
+            print(f"{name} = {f['value']:g} {f['unit']}  ({src}; {len(f['aliases'])} aliases)")

@@ -20,7 +20,7 @@ Not a reference to a camera. Not a metaphor. A working, optically precise, trans
 ## 2. Project Overview
 
 ### What
-TBS-001 is a 20-foot ISO shipping container converted into a functional large-format pinhole camera. The pinhole (2.17mm, precision laser-drilled, stainless steel) sits at one side of the container. The image plane — a stretched cotton muslin surface spanning the active 4499 × 2388mm film zone — sits at the other. Every exposure produces a latent cyanotype image on approximately 116 square feet of fabric, developed in plain water.
+TBS-001 is a 20-foot ISO shipping container converted into a functional large-format pinhole camera. The pinhole (<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm, precision laser-drilled, stainless steel) sits at one side of the container. The image plane — a stretched cotton muslin surface spanning the active 4499 × 2388mm film zone — sits at the other. Every exposure produces a latent cyanotype image on approximately 116 square feet of fabric, developed in plain water.
 
 ![TBS-001 Container Floor Plan](assets/container-floorplan.png)
 
@@ -35,12 +35,12 @@ The history of large-format photography is a history of increasing precision in 
 ## 3. Technical Innovation
 The project incorporates two independent movement systems — equivalent to the front and rear standards of a view camera — operating at pinhole focal lengths. No camera of this type is known to exist.
 
-### Front Board: Tilt and Swing (±5.3°)
+### Front Board: Tilt and Swing (±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->°)
 A spherical-pivot adapter plate mounts in the same wall-frame interface as the vanilla pinhole plate. A GE50-DO-2RS spherical plain bearing (PTFE-lined, maintenance-free) allows the pinhole to pivot up to ±5.3° in both tilt and swing. Four M8×1.0 fine-pitch adjustment screws with 36-detent knurled knobs provide 0.012° per click resolution.
 
 **Effect:** every 5° of board tilt steers the projected image 207mm across the film plane (2,362 × tan 5°). Used for compositional placement — shifting what part of the scene falls where on the print without moving the camera.
 
-### Film Plane: 4-Corner Independent Actuation (±40° tilt, ±28° swing)
+### Film Plane: 4-Corner Independent Actuation (±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt, ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing)
 Four independently-driven corners allow the fixed-size rigid image plane (Option A) to be tilted and swung — including limited combined tilt-and-swing — about its center. Each corner is driven by a 3/4"-6 Acme leadscrew via an 8" handwheel; a 2-axis cross-slide and rod-end spherical bearing (GIR25-DO) at each corner absorb the rigid-rotation arc travel, so the plane rotates without stretching or twisting.
 
 **Effect:** Scheimpflug-equivalent movements at pinhole focal lengths — not to adjust focus (pinholes have infinite depth of field) but to control perspective, convergence, and geometric projection.

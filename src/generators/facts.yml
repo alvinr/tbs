@@ -141,6 +141,7 @@ blue_supply_l:
   constant: BLUE_SUPPLY_L
   unit: L
   owner: water-system-report.md
+  display: comma                       # fills as '1,600' (with thousands separator) when injected
   aliases:
     - '(\d,?\d{3})\s*L\s*Blue'
     - '(\d,?\d{3})\s*L \(423 gal\)'

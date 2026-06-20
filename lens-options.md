@@ -4,7 +4,7 @@
 ## A Technical Analysis of Image Quality, Depth of Field, and Exposure Impact
 
 **Camera configuration:** Option B (side-to-side), container interior depth f = 2362mm  
-**Image plane (active):** 4499 × 2388mm (~14′ 9″ × 7′ 10″); container interior 5893 × 2388mm  
+**Image plane (active):** <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm (~14′ 9″ × 7′ 10″); container interior 5893 × 2388mm  
 **Current pinhole:** Ø 2.17mm, f/1088  
 **Baseline exposure (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction):** ~30–45 min
 
@@ -257,9 +257,9 @@ Large Fresnel lenses are the only commercially available single elements that co
 | Fresnel Technologies surplus acrylic | Up to 1200mm × 900mm | Custom | $200–$500 |
 | Glass Fresnel (lighthouse type, antique) | 500–1000mm dia | 300–1000mm | $500–$5,000 |
 
-For this camera: a 600 × 600mm Fresnel lens at 1400mm focal length would cover a 600mm square within the 4499 × 2388mm active image plane — still not full coverage, but significantly more than a process lens. Stacking two side by side (600 × 600mm each) in a 1200 × 600mm assembly would cover about **27% of the active image width**.
+For this camera: a 600 × 600mm Fresnel lens at 1400mm focal length would cover a 600mm square within the <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm active image plane — still not full coverage, but significantly more than a process lens. Stacking two side by side (600 × 600mm each) in a 1200 × 600mm assembly would cover about **27% of the active image width**.
 
-A full-width solution would require a 4499 × 2388mm Fresnel element — this does not exist commercially. Custom mylar Fresnel film exists in large formats (used in projection screens) but at extremely low optical quality.
+A full-width solution would require a <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm Fresnel element — this does not exist commercially. Custom mylar Fresnel film exists in large formats (used in projection screens) but at extremely low optical quality.
 
 **Optical qualities of Fresnel lenses:**
 
@@ -305,7 +305,7 @@ For crown glass (n = 1.52), a symmetric biconvex lens with equal radii:
 
 This is the fundamental optical constraint of this camera that no lens choice can fully resolve.
 
-The active image plane is 4499 × 2388mm, centered on the pinhole (X=2399mm) — giving half-width 2250mm and half-height 1194mm. The distance from the lens to the center of the image plane is 2362mm. The distance from the lens to the active image plane corners and edges:
+The active image plane is <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm, centered on the pinhole (X=2399mm) — giving half-width 2250mm and half-height 1194mm. The distance from the lens to the center of the image plane is 2362mm. The distance from the lens to the active image plane corners and edges:
 
 ```
 d_mid-width = √(2,362² + 2,250²) = 3262mm   [half-width of active plane]

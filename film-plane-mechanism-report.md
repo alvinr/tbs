@@ -172,7 +172,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | Item | Spec | Qty | Source A | Source B | Est. Unit |
 |------|------|-----|---------|---------|-----------|
 | Aluminum angle 2"×2"×3/16" | 8 ft lengths | 10 | Metal Supermarkets SoCal | Online Metals | $22 |
-| Dibond ACM panel 4mm | 4 ft × 8 ft sheets — **single rigid backing**, 4499×2388mm | 6 | Grimco, City of Industry CA | Signwarehouse | $85 |
+| Dibond ACM panel 4mm | 4 ft × 8 ft sheets — **single rigid backing**, <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm -->×<!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm | 6 | Grimco, City of Industry CA | Signwarehouse | $85 |
 | Black EPDM foam tape 1"×½" | 50 ft rolls | 3 | McMaster-Carr #8614K84 | Grainger | $28 |
 | Rosco Duvetyne | 60" wide, 10 yd | 1 | B&H Photo | Rosco direct | $95 |
 | 6-mil black poly sheeting | 10 ft × 100 ft | 1 | Home Depot (local, all SoCal) | Uline | $65 |

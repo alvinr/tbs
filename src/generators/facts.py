@@ -96,7 +96,13 @@ def _fmt(fact: dict) -> str:
 
 
 def _md_files() -> list:
-    return sorted(f for f in os.listdir(_ROOT) if f.endswith(".md"))
+    """Every source .md (root + subdirs like mini-tbs/), excluding build/output + system dirs."""
+    skip = {"published", "site", ".venv", ".git", "node_modules", "__pycache__", ".claude"}
+    out = []
+    for dp, dns, fns in os.walk(_ROOT):
+        dns[:] = [d for d in dns if d not in skip]
+        out += [os.path.relpath(os.path.join(dp, f), _ROOT) for f in fns if f.endswith(".md")]
+    return sorted(out)
 
 
 def _fact_pat(key: str) -> "re.Pattern":

@@ -26,11 +26,11 @@ A fully operational pinhole camera built inside a standard 20-foot ISO shipping 
 | Parameter | Value |
 |-----------|-------|
 | Image plane (active) | <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm (~14'9" × 7'10") |
-| Container interior | 5893 × 2388mm (~19'4" × 7'10") |
-| Image area | ~116 sq ft |
-| Focal length | 2362mm (container interior depth) |
-| Optimal pinhole | Ø2.17mm (Lord Rayleigh formula, λ = 550 nm) |
-| f-number | f/1088 |
+| Container interior | <!-- BEGIN fact:container_interior_length_mm -->5893<!-- END fact:container_interior_length_mm --> × <!-- BEGIN fact:container_height_mm -->2388<!-- END fact:container_height_mm -->mm (~19'4" × 7'10") |
+| Image area | ~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft |
+| Focal length | <!-- BEGIN fact:focal_length_mm -->2362<!-- END fact:focal_length_mm -->mm (container interior depth) |
+| Optimal pinhole | Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm (Lord Rayleigh formula, λ = 550 nm) |
+| f-number | f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> |
 | Baseline exposure | ~30–45 min (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction) |
 | Process | Cyanotype (Ware formula) — water-based, non-toxic, no silver |
 | Per-print cost | ~<!-- BEGIN costing:summary-perprint -->$33<!-- END costing:summary-perprint --> |
@@ -43,17 +43,17 @@ A fully operational pinhole camera built inside a standard 20-foot ISO shipping 
 
 Two independent movement systems work in series, stacking their effects non-linearly:
 
-**Front board — tilt and swing (±5.3°)**
-The pinhole itself pivots on a spherical plain bearing, steering the image cone across the film plane. Every 5° of tilt shifts the projected image 207mm. Used for compositional placement — not correction, not distortion, but deliberate image steering.
+**Front board — tilt and swing (±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->°)**
+The pinhole itself pivots on a spherical plain bearing, steering the image cone across the film plane. Every 5° of tilt shifts the projected image <!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm. Used for compositional placement — not correction, not distortion, but deliberate image steering.
 
-**Film plane — 4-corner independent actuation (±40° tilt, ±28° swing)**
+**Film plane — 4-corner independent actuation (±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt, ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing)**
 Four corners of the image plane move independently via handwheels, enabling view-camera-style geometric control at pinhole focal lengths. Scheimpflug-equivalent movements, compound twisted-plane projections, convergence manipulation — the full vocabulary of large-format photography, applied to a pinhole.
 
 **Combined:** the two systems interact non-linearly. Their compound optical projections — modeled and documented in the [distortion renders](tilt-swing-board-report.md) — produce images that no other camera type can make.
 
 Every specification traces to a peer-reviewed source or manufacturer datasheet. The optics are not approximated.
 
-**Off-grid capable:** a self-contained three-circuit water system supports ~13 full-size prints between resupply runs, with 40% water recycling. 12V DC operation. Deployable without power connection.
+**Off-grid capable:** a self-contained three-circuit water system supports ~<!-- BEGIN fact:prints_per_resupply -->13<!-- END fact:prints_per_resupply --> full-size prints between resupply runs, with 40% water recycling. 12V DC operation. Deployable without power connection.
 
 ---
 

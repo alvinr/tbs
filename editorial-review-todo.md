@@ -66,7 +66,7 @@ also a `tbs_constants` value or a `costing.py`/`facts.yml` fact, prefer the refe
 ## C. Summary / outward-facing
 
 - [ ] project-summary.md  (= README.md, symlink — edit project-summary.md only)
-- [ ] funding-proposal.md  — *curated summary; should reference, not restate, figures owned elsewhere*
+- [x] funding-proposal.md  — *DONE (2026-06-20): the restated figures are now single-sourced — cost numbers via costing.py inline blocks (L1 total, scenario span, per-print/tier/50-run, combined band) and engineering numbers via fact placeholders (front-board ±5.3°, film-plane ±40°/±28°, pinhole Ø2.17, film zone 4499×2388). Generated + gated, so they can't drift from their owners — the right model for a standalone pitch (funders won't click through to "referenced" figures).*
 
 ## D. Operating
 

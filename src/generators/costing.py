@@ -487,6 +487,9 @@ def _inline_blocks() -> dict:
         "fund-perprint-range": (_FUND, lambda: f"${_r(by_key('lean')['per_print'], 1)}–{_r(by_key('rich')['per_print'], 1)}"),
         "fund-50run":          (_FUND, lambda: f"${_r(by_key('standard')['section_total'], 10):,}"),
         "fund-combined":       (_FUND, lambda: f"${cl:,}–{ch:,}"),
+        # project-summary.md (the home page) spec table — was a stale $38 / $1,900 pair.
+        "summary-perprint":    ("project-summary.md", lambda: f"${_r(by_key('standard')['per_print'], 1):,}"),
+        "summary-50run":       ("project-summary.md", lambda: f"${_r(by_key('standard')['section_total'], 10):,}"),
     }
 
 

@@ -9,7 +9,7 @@ yields. This page lists the trials needed to lock the [operating manual](operati
 [cost breakdown](project-cost-breakdown.md) quantities.
 
 **These can be run post-construction at full scale, or — preferably first — on the
-[TBS-002 proof-of-concept](mini-tbs-poc.md) at small scale** to converge cheaply before
+TBS-002 proof-of-concept at small scale** to converge cheaply before
 mixing kilograms of chemistry.
 
 ---

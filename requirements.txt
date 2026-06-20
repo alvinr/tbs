@@ -1,0 +1,25 @@
+# TBS-001 — Python dependencies (the reproducible build/dev environment).
+#
+# Target interpreter: CPython 3.9  (developed + run on 3.9.6, the macOS system python3).
+# The drift tooling (lint.py / costing.py / facts.py / deps.py) and the SketchUp model
+# generators are standard-library ONLY — these packages are needed for the 2D diagram
+# generators and the documentation site.
+#
+# Reproduce the environment:
+#     python3 -m venv .venv
+#     .venv/bin/pip install -r requirements.txt
+#
+# Pinned to the versions these docs/diagrams are currently generated with.
+
+# ── 2D engineering diagrams (src/generators/generate_*.py) ──
+matplotlib==3.9.4
+numpy==2.0.2
+
+# ── Documentation site (publish.sh → MkDocs → GitHub Pages) ──
+mkdocs==1.6.1
+mkdocs-material==9.7.6
+
+# ── Optional: the PDF brochure (publish.sh, skipped if absent) ──
+fpdf2==2.8.4
+Markdown==3.9
+PyYAML==6.0.3

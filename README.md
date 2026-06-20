@@ -35,16 +35,22 @@ workflow) in more depth — it's worth a read before adding content.
 
 ## Prerequisites
 
-| For | Install |
-|-----|---------|
-| 2D diagram generators | Python 3.9+, `pip install matplotlib numpy` |
-| The site | `pip install mkdocs mkdocs-material` |
-| The PDF brochure (optional) | `pip install fpdf2 markdown pyyaml` |
-| The drift linter / hooks | Python 3 only — **dependency-free** by design |
-| 3D models | [SketchUp](https://www.sketchup.com/) + the live-send bridge (see below) |
+- **Interpreter: CPython 3.9** — developed and run on **3.9.6** (the macOS system `python3`).
+- **Packages: [`requirements.txt`](requirements.txt)** — the single, pinned dependency list (for the
+  2D diagram generators and the documentation site). Set up a virtual environment from it:
 
-The linter and git hook deliberately use **only** the Python standard library, so a clone can
-commit safely without installing anything.
+  ```bash
+  python3 -m venv .venv
+  .venv/bin/pip install -r requirements.txt
+  # then activate it, or prefix commands with .venv/bin/
+  ```
+
+- **3D models** additionally need [SketchUp](https://www.sketchup.com/) + the live-send bridge — not
+  a pip dependency (see "The 3D SketchUp models").
+
+The drift tooling (`lint.py`, `costing.py`, `facts.py`, `deps.py`) and the SketchUp model generators
+use **only the Python standard library**, so the pre-commit hook runs on any `python3` with nothing
+installed. Only the diagram generators and the site build need `requirements.txt`.
 
 ---
 

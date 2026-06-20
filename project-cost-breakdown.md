@@ -23,11 +23,11 @@
 | **5b. Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)** | $824 | $884 | $974 |
 | **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $1,465 | $1,802 | $2,160 |
 | **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $1,826 | $2,214 | $2,607 |
-| **6b. Panel swing pivot (Ø89 pivot post + bearings + cage + wall stays + rail saddles)** | $650 | $770 | $910 |
+| **6b. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles)** | $1,112 | $1,232 | $1,372 |
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,210 | $1,650 | $2,980 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$19,028** | **$24,463** | **$32,020** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$19,490** | **$24,925** | **$32,482** |
 <!-- END costing:scenario -->
 
 *Line 7 (cyanotype printmaking) is now re-summed into the TOTAL on the **Mike Ware AmFe** chemistry + corrected ~$300 substrate: **Low = Lean ⅓-Ware ($1,210), Mid = Standard ½-Ware ($1,650), High = Rich full-Ware ($2,980)** — matching §7.1 and the master shopping list §9. The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md).*
@@ -345,7 +345,8 @@ The panel + drum SWING ~56° about a vertical Ø89×8mm CHS pivot post (rev10 �
 | Drum support cage, 40×40×3mm SHS | $80 | $90 | $110 | Local fab |
 | Top + bottom wall stays + 4-bolt anchor plates | $120 | $140 | $160 | Turnbuckles + eye/hook rods + plates; McMaster-Carr / local fab |
 | Drop-in rail saddles + tapered dowels (×4, removable left film rails) | $90 | $110 | $130 | Local fab / McMaster-Carr |
-| **Panel swing pivot total** | **$650** | **$770** | **$910** | |
+| Fixed RHS door frame (50×50×3 RHS seal landing + EPDM seals) | $462 | $462 | $462 | rev10 seal-landing frame for the hinged light-trap panel — was omitted here (caught vs master §7a) |
+| **Panel swing pivot total** | **$1,112** | **$1,232** | **$1,372** | |
 <!-- END costing:swingpivot -->
 
 ---

@@ -197,6 +197,7 @@ SWINGPIVOT = [
     LineItem("Drum support cage, 40×40×3mm SHS", 80, 90, 110, "Local fab"),
     LineItem("Top + bottom wall stays + 4-bolt anchor plates", 120, 140, 160, "Turnbuckles + rods + plates"),
     LineItem("Drop-in rail saddles + tapered dowels (×4, removable left film rails)", 90, 110, 130, "Local fab / McMaster"),
+    point("Fixed RHS door frame (50×50×3 RHS seal landing + EPDM seals)", 462, "the hinged light-trap panel's seal-landing frame — master §7a; was omitted from the cost-breakdown"),
 ]
 
 
@@ -369,7 +370,7 @@ SECTIONS = [
             total(VENTILATION)[0], total(VENTILATION)[0] + 60, total(VENTILATION)[0] + 150),
     Section("6",  "Housed revolving-door light lock (plastic-skin custom fabrication)", *total(LIGHTLOCK)),
     Section("6a", "Perimeter walkway (4 sections + drum-exit punch-out)", *total(WALKWAY)),
-    Section("6b", "Panel swing pivot (Ø89 pivot post + bearings + cage + wall stays + rail saddles)", *total(SWINGPIVOT)),
+    Section("6b", "Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles)", *total(SWINGPIVOT)),
     _printmaking_section(),
     Section("8",  "Transportation (per deployment)", 300, 750, 2000),
     Section("9",  "Licences & permits", 220, 790, 1620),
@@ -497,12 +498,12 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 909,  "total": 1210, "per_print": 24},  # 909 not 910: consistent ferri rounding ($104, not the doc's hand-rounded $105)
     "standard": {"chem": 1353, "total": 1650, "per_print": 33},
     "rich":     {"chem": 2681, "total": 2980, "per_print": 60},
-    "grand_total": (19028, 24463, 32020),  # + §5b band nudged so Low = its BOM ($824), whole band +$54
+    "grand_total": (19490, 24925, 32482),  # + §6b now includes the $462 fixed door frame (was omitted)
     "walkway": (1826, 2214, 2607),
     "water": (4063, 5085, 6104),
     "container": (2300, 3300, 4300),
     "lightlock": (1465, 1802, 2160),
-    "swingpivot": (650, 770, 910),
+    "swingpivot": (1112, 1232, 1372),
     "interior": (950, 1138, 1350),
     "optics": (95, 165, 240),
     "ventilation": (824, 824, 824),   # §5b BOM (point estimates); report total was stale at $769

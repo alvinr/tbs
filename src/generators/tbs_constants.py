@@ -153,6 +153,13 @@ FRONT_BOARD_SCREW_PITCH = 1.0    # M8×1.0 fine-pitch adjustment screw (mm per t
 FRONT_BOARD_DETENTS     = 36     # knurled-knob detents per turn
 FRONT_BOARD_MAX_DEG   = round(math.degrees(math.atan(FRONT_BOARD_TRAVEL_MM / FRONT_BOARD_ARM_MM)), 1)            # = 5.3
 FRONT_BOARD_CLICK_DEG = round(math.degrees(math.atan((FRONT_BOARD_SCREW_PITCH / FRONT_BOARD_DETENTS) / FRONT_BOARD_ARM_MM)), 3)  # = 0.012
+
+# ── Derived display figures (COMPUTED from their inputs so the prose figures can't drift) ────
+# These appear hand-computed across many reports; deriving them here (and registering as facts)
+# means a focal-length or film-size change ripples to every doc that restates them.
+BOARD_TILT_REF_DEG   = 5     # round reference tilt for the image-shift unit-rate illustration
+IMAGE_SHIFT_PER_5DEG = round(C_WID * math.tan(math.radians(BOARD_TILT_REF_DEG)))   # = 207mm (focal × tan 5°)
+IMAGE_AREA_SQFT      = round(FP_W * FP_H / 1e6 * 10.7639)                          # = 116 sq ft (active film plane)
 XSLIDE_N        = 8     # 2 cross-slides (X + Z) per corner × 4 corners — reserved
 
 # ── Equipment zones ───────────────────────────────────────────────────────────

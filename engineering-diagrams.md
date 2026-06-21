@@ -16,7 +16,7 @@ There are a number of discrete systems, color-coded in the diagram below. This v
 
 The major systems are:
 
-- Electrical system
+- Electrical system (including solar charging sub-system)
 - Water system and plumbing
 - Lighttrap & Hinged panel
 - Pinhole & Film plane mechanism
@@ -26,9 +26,9 @@ The major systems are:
 
 The container is split into three main areas
 
-- Left: [Lighttrap](light-trap-selection.md), [hinged panel](hinged-panel-report.md)
-- Center: [Pinhole construction](pinhole-optics-report.md), [processing tray & spray bar](processing-tray-and-spray-bar.md), [film plane mechanism](film-plane-mechanism-report.md), [electrical panels & battery pack](electrical-report.md), [walkway](walkway-report.md)
-- Right: [IBC stacking system](ibc-stacking-report.md), [equipment panel & plumbing](equipment-panel-report.md)
+- Left: [Lighttrap](light-trap-selection.md), [hinged panel](hinged-panel-report.md) and [walkway](walkway-report.md)
+- Center: [Pinhole construction](pinhole-optics-report.md), [processing tray & spray bar](processing-tray-and-spray-bar.md), [film plane mechanism](film-plane-mechanism-report.md), [electrical panels & battery pack](electrical-report.md) and [walkway](walkway-report.md)
+- Right: [IBC stacking system](ibc-stacking-report.md), [equipment panel & plumbing](equipment-panel-report.md) and [walkway](walkway-report.md)
 
 ![TBS-001 — Assembly: Side Elevation — pinhole wall view](assets/assembly-overview.png)
 
@@ -38,6 +38,6 @@ From the pinhole wall, looking toward the film plane, you can see the orientatio
 
 Second view is from the film plane wall, looking toward the pinhole. The X axis
 is mirrored (far end at left, cargo door at right). The orientation of the optical cone, film plane rails,
-and carriage can be seen.
+and carriage can be seen, along with the ventilation path between the two ends of the container.
 
 There are detailed construction reports for each of the major systems and their sub-systems.

@@ -261,7 +261,36 @@ hose/manifold hold-up the transfer pump cannot lift). This loss is also *why two
 collection totes suffice for a 1,600L supply* — they are sized for the recovered fraction,
 not the full throughput (zero loss would need 1,600L of collection capacity).
 
+**Initial load — maximizing print capacity.** The 800L-per-tote Blue fill is a convention,
+not a limit: both Blue totes are 1000L vessels, so a camera-ready haul can carry up to
+**~1,900L** of clean Blue (~950L per tote, allowing ullage) with no extra hardware —
+lifting the single-load capacity from the nominal **~<!-- BEGIN fact:prints_per_resupply -->13<!-- END fact:prints_per_resupply -->** to **~15–16 prints**.
+The upside is free on both sides of the balance. *Transport:* the added ~300 kg sits in the
+top tier, nudging the validated worst-case vertical CG (Z=1,306mm, static tip ~42°) up only
+marginally, and gross weight stays far below the ISO 24,000 kg limit (see
+[weight report](weight-distribution-report.md)). *Collection:* the ~400L process loss makes
+Brown/Waste fill slower than Blue drains, so they do not reach their own tote limits until
+~21 prints. The binding constraint on a single hauled load is therefore the **Blue tote
+volume itself (~1000L each), capping a deployment at ~16 prints** before any resupply.
+
 See [Processing System Report](water-system-report.md) for full water circuit design.
+
+### 8.1 On-Site Top-Up — Extended Deployment
+
+The capacity above is for a **single Blue fill hauled to site**. A deployment can run past the
+~16-print single-load ceiling using the external end-wall bulkhead ports — **no cargo-door
+access required**:
+
+- **Resupply Blue** from a water bowser or tanker through the **X1** gravity-fill inlet (tees
+  to both Blue totes in parallel), restoring clean supply mid-stay.
+- **Discharge Brown/Waste** through the **X3 / X4** drain ports to a holding tank or tanker,
+  freeing collection capacity.
+
+In this mode the tote volumes act as **buffers, not hard caps**, and print count per deployment
+is set by water *logistics* (bowser visits, disposal access) rather than the per-tote 1000L
+volume ceiling. This is a distinct operating mode from the hauled single-load case: for transport the
+totes are returned to their validated fill states (Blue drained, Waste within its return-haul
+limit).
 
 ---
 

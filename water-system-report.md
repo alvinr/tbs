@@ -95,6 +95,8 @@ Volume per flood = 106 sq ft × (6mm / 304.8) = 106 × 0.0197 ft = 2.09 cu ft
 
 **~13 prints per resupply run** — the 423-gallon (1,600L) Blue supply (2× 800L) with Brown recycling for wash 2.
 
+**Cooling-water overhead (hot-weather deployments):** the evaporative cooler draws clean water from the *same* Blue circuit (at TAP-01 on the pinhole wall), so it is not free of the processing budget. Its reservoir holds ~4.8 gal (~18 L) and evaporates ~3 L/hour while running ([Ventilation Report §5](ventilation-report.md)), so a deployment consumes roughly **one tankful (~18 L)** — about **15% of one print's net Blue draw**, or **~1% of the full 1,600 L supply**. This is sub-one-print of overhead: it does not move the 13-print count for a 1–2 print outing, but a resupply spent entirely on hot, multi-print sessions should be planned as **~12 effective prints** to leave the cooler its margin. The 13-print figure above counts processing water only.
+
 ---
 
 ## 5. System Architecture

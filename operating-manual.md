@@ -18,14 +18,14 @@ Single-operator workflow for cyanotype on cotton muslin.
 | 5 | Cleanup and close-down | ~30 min |
 | **Total** | **First print, ideal conditions** | **~5–5.5 hours** |
 
-Baseline exposure is **30–45 minutes** under direct full sun (Mike Ware New Cyanotype formula on cotton muslin, ISO equivalent ~2–4; no reciprocity correction required). See the [Exposure Adjustment Table](#exposure-adjustment-table) for cloud cover and time-of-day corrections.
+Baseline exposure is **30–45 minutes** under direct full sun, ISO equivalent ~2–4. See the [Exposure Adjustment Table](#exposure-adjustment-table) for cloud cover and time-of-day corrections.
 
 ## Phase 0 — Pre-Departure
 **Time: ~2 hours. Complete the day before or morning of shoot day at your workshop/home.**
 **Lighting: normal white light throughout this phase.**
 
 ### 0.1 Water System
-The water system has three circuits (Blue/Brown/Black), pumps on the equipment panel in the IBC plumbing corridor (P-01 Blue supply, P-02 Brown filter feed, P-04 tray-sump transfer, plus the P-05/P-03 Brown/Waste drain pumps), and four 1000L IBC totes in a 2×2 stack. All IBCs use DN50 butterfly valves (S60×6 thread) facing the plumbing corridor; all tote-top connections are **side-entry near the top** (no top-cap access — the direct-stack leaves only 52mm of headroom). The X1 fill line tees inside the corridor to fill both Blue totes (IBC-1 and IBC-2) in parallel via side-entry near the top. Check valves CV1/CV3/CV4 on each bulkhead line prevent backflow. External fill (X1) and drain (X3/X4) ports on the sealed end wall allow resupply and disposal without opening the cargo doors.
+The water system has three circuits (Blue/Brown/Black), pumps on the equipment panel in the IBC plumbing corridor (P-01 Blue supply, P-02 Brown filter feed, P-04 tray-sump transfer, plus the P-05/P-03 Brown/Waste drain pumps), and four 1000L IBC totes in a 2×2 stack. All IBCs use DN50 butterfly valves facing the plumbing corridor; all tote-top connections are **side-entry near the top** (no top-cap access — only 52mm of headroom). The X1 fill line tees inside the corridor to fill both Blue totes (IBC-1 and IBC-2) in parallel via side-entry near the top. Check valves CV1/CV3/CV4 on each bulkhead line prevent backflow. External fill (X1) and drain (X3/X4) ports on the sealed end wall allow resupply and disposal without opening the cargo doors.
 
 - [ ] 0.1.1 — Fill the Blue totes via external bulkhead port X1 (minimum 400 liters total for one print). X1 tees internally to fill both IBC-1 and IBC-2 in parallel. Confirm Brown IBC-3 and Waste IBC-4 are empty or have capacity.
 - [ ] 0.1.2 — Open isolation valve V1 (fill line) and VB1, VB2, VB3 (Blue outflow manifold). Prime P-01 by hand-filling the filter housing wet side.
@@ -33,7 +33,7 @@ The water system has three circuits (Blue/Brown/Black), pumps on the equipment p
 - [ ] 0.1.4 — Check all pipe joints for drips. Tighten any fittings that are weeping.
 - [ ] 0.1.5 — Run water through the spray bar for 60 seconds. Check spray pattern is even across the full image plane width.
 - [ ] 0.1.6 — Switch P-01 OFF.
-- [ ] 0.1.7 — Confirm P-04 suction pickup tube is seated in the sump well and the suction hose is connected over the tray rim to the pump manifold. Set 3W-DV-02 (on P-04 discharge) to route toward IBC-3 (Brown). P-04 draws used wash water from the sump and lifts it to IBC-3 via a side-entry near the top (~900mm head). Switch on manually after each wash cycle. (The tray and pickup tube are permanently installed between the film plane rails.)
+- [ ] 0.1.7 — Confirm P-04 suction pickup tube is seated in the sump well and the suction hose is connected over the tray rim to the pump manifold. Set 3W-DV-02 (on P-04 discharge) to route toward IBC-3 (Brown). P-04 draws used wash water from the sump and lifts it to IBC-3 via a side-entry near the top. Switch on manually after each wash cycle. (The tray and pickup tube are permanently installed between the film plane rails.)
 
 ### 0.2 Chemistry — Part A (Ammonium Iron(III) Oxalate)
 **Lighting: WHITE LIGHT — Part A is not light-sensitive in dry or dissolved form.**
@@ -131,7 +131,7 @@ The container arrives in transport mode: the stepped hinged panel is swung ~56°
 - [ ] 1.3.1 — Open and secure the cargo doors.
 - [ ] 1.3.2 — Release the top + bottom wall stays: slack the turnbuckles and unhook the rods from the near-wall eyes.
 - [ ] 1.3.3 — With the panel still swung clear of the door plane, retrieve the evaporative cooler from near-walkway stowage (release 2 ratchet straps) and carry it out through the door opening (~20 kg dry, one person).
-- [ ] 1.3.4 — Place the cooler on the ground outside the container, adjacent to the pinhole wall near the Ø200mm duct penetration. Remove the weatherproof cap from the wall stub. Connect the Ø200mm flex duct from the cooler outlet to the wall stub collar and secure with a hose clamp. Fill reservoir from the Blue circuit IBC via external port X1.
+- [ ] 1.3.4 — Place the cooler on the ground outside the container, adjacent to the pinhole wall near the Ø200mm duct penetration. Remove the weatherproof cap from the wall stub. Connect the Ø200mm flex duct from the cooler outlet to the wall stub collar and secure with a hose clamp. Fill the reservoir (~18 L, one tankful) from the Blue circuit at TAP-01 on the pinhole wall — doors are open at this stage, so draw at TAP-01 and carry/hose the water out to the cooler. (X1 is a one-way gravity *fill inlet* into the Blue totes — it cannot be drawn from.)
 - [ ] 1.3.5 — Swing the frame back ~56° to the door plane (camera position), assisted. The vertical pivot is balanced at any angle (no gravity torque) — effort is only inertia + bearing friction; control momentum at the stop.
 - [ ] 1.3.6 — Latch the panel to the door frame with all 4 Southco cam latches (quarter-turn, flush with panel face) — compresses the EPDM perimeter + cut seals.
 - [ ] 1.3.7 — Re-fit the two left film rails (TL + BL): drop each into its saddles; the tapered dowels set the film datum; clamp down. Confirm the re-seated rails return the film plane square and planar to datum.

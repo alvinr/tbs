@@ -250,6 +250,17 @@ totes empty. As printing proceeds the Blue supply drains into the process while 
 recycle buffer and the sealed Waste tote fill toward their 600L working levels; the supply
 is **exhausted when the Blue totes are empty**. The <!-- BEGIN fact:blue_supply_l -->1,600<!-- END fact:blue_supply_l -->L Blue supply supports **~<!-- BEGIN fact:prints_per_resupply -->13<!-- END fact:prints_per_resupply --> prints per resupply** with 40% water recycling (16 gal per wash cycle, 32 gal Blue consumed per print with Brown recycling).
 
+**Where the other ~400L goes:** the two collection totes hold 1,200L, but 1,600L of clean
+Blue was consumed — the ~400L difference (~31L per print, ~17% of the ~182L gross washed
+per print) never reaches them. It is ordinary open-process loss to three sinks: water
+**carried out in the wet prints** (each full-plane muslin sheet, ~10.7 m², leaves the
+container saturated to dry, taking its bound water with it); **evaporation** from the open
+spray-wash tray in hot, low-humidity air over multi-hour sessions; and **unrecovered
+residual** (the tray-surface film, the sump dead-volume below the P-04 pickup, and the
+hose/manifold hold-up the transfer pump cannot lift). This loss is also *why two 600L
+collection totes suffice for a 1,600L supply* — they are sized for the recovered fraction,
+not the full throughput (zero loss would need 1,600L of collection capacity).
+
 See [Processing System Report](water-system-report.md) for full water circuit design.
 
 ---

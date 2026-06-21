@@ -78,7 +78,7 @@ also a `tbs_constants` value or a `costing.py`/`facts.yml` fact, prefer the refe
 - [ ] CLAUDE.md  — project instructions (not a report)
 - [ ] component-dependency-map.md  — the map itself (becomes data in Phase 4)
 - [ ] all-diagrams.md  — diagram gallery/index
-- [ ] engineering-diagrams.md  — diagram index
+- [x] engineering-diagrams.md  — *DONE (2026-06-21): index/overview page — SKIP for value substitution (carries no owned figures; all numbers live in the linked detail reports). Copy-edited prose typos and refreshed the system/area lists (solar sub-system, walkway in all three areas, ventilation path).*
 - [ ] skill_label_placement.md  — drawing skill
 
 ## F. PoC (TBS-002)

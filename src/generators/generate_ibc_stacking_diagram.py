@@ -739,7 +739,7 @@ def sheet3():
         "1. 3x 2\" NPT bulkhead unions through sealed end wall on container centerline.",
         "2. 6mm mild steel reinforcing plate welded to wall interior before penetrations.",
         "3. Type DC camlock fittings (2\" aluminum) on exterior face — quick-connect for fill hose (X1) and drain hose (X3/X4).",
-        "4. X1 fill tees to BOTH Blue totes via SIDE entries near the top (gravity-linked, ~800L each). X3/X4 drains are PUMP-driven (P-05->X3, P-03->X4).",
+        "4. X1 fill tees to BOTH Blue totes via SIDE entries near the top (gravity-linked, ~900L each). X3/X4 drains are PUMP-driven (P-05->X3, P-03->X4).",
         "5. All penetrations sealed with neoprene gaskets — light-tight and watertight.",
         "6. Interior connections routed through plumbing corridor (see Sheet 4).",
     ]

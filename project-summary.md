@@ -53,7 +53,7 @@ Four corners of the image plane move independently via handwheels, enabling view
 
 Every specification traces to a peer-reviewed source or manufacturer datasheet. The optics are not approximated.
 
-**Off-grid capable:** a self-contained three-circuit water system supports ~<!-- BEGIN fact:prints_per_resupply -->13<!-- END fact:prints_per_resupply --> full-size prints between resupply runs, with 40% water recycling. 12V DC operation. Deployable without power connection.
+**Off-grid capable:** a self-contained three-circuit water system supports ~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> full-size prints between resupply runs, with 40% water recycling. 12V DC operation. Deployable without power connection.
 
 ---
 

@@ -83,7 +83,7 @@ Complete power flow from solar panels through controller, battery bank, fuse blo
 
 A representative daylight day of **3 sequential prints** draws **~2,130 Wh** (2 prints ~1,470; 4 prints ~2,800), dominated by the continuous fans + evaporative cooler (the cooler now drives the AC inverter, ~97 W on the 12 V bus); the end-of-day Brown/Waste pump-out is gravity-assisted and tiny (~37 Wh).
 
-**Disconnected endurance (no AC charge, solar top-up only): the system is clean-water limited, not power limited.** With sun it is solar-positive (+1,166 Wh/day at 3 prints) → runs **indefinitely on either 1 or 2 packs**; the fresh Blue supply (1,600 L / 121 L net per print) caps a deployment at **~13 prints ≈ 4.4 days @ 3/day**. Battery count sets only the *cloudy-day reserve* (1 pack ≈ 0.6 day, 2 packs ≈ 1.1 day) and the 4-print-day headroom — **not** the deployment length. The Black waste tote (1,000 L) is a parallel out-flow limit for fully self-contained field use.
+**Disconnected endurance (no AC charge, solar top-up only): the system is clean-water limited, not power limited.** With sun it is solar-positive (+1,166 Wh/day at 3 prints) → runs **indefinitely on either 1 or 2 packs**; the fresh Blue supply (1,800 L / 121 L net per print) caps a deployment at **~14 prints ≈ 4.7 days @ 3/day**. Battery count sets only the *cloudy-day reserve* (1 pack ≈ 0.6 day, 2 packs ≈ 1.1 day) and the 4-print-day headroom — **not** the deployment length. The Black waste tote (1,000 L) is a parallel out-flow limit for fully self-contained field use.
 
 ## 4. Solar Array
 
@@ -126,7 +126,7 @@ The SmartSolar has a built-in load output (30A) for direct low-power 12V loads. 
 | Recommended brands | Battle Born 100Ah, Renogy 100Ah Smart Lithium |
 | Approximate cost | **~$350 (one unit)**; +$350 for the optional 2nd pack |
 
-**One pack vs two — sizing rationale:** a disconnected deployment is **clean-water limited (~13 prints / ~4.4 days)**, not power limited (see §3.2), and the system is solar-positive, so **one 100 Ah pack runs the standard deployment indefinitely on sun**. The 2nd pack is a **resilience upgrade** — it extends the no-sun (cloudy-day) reserve from ~0.6 day to ~1.2 day and gives headroom for a 4-print day — not an endurance one. It plugs straight onto the busbar (the 2/0 cable, fuse, and disconnect are already sized for 200 Ah), so it can be added later without touching the wiring.
+**One pack vs two — sizing rationale:** a disconnected deployment is **clean-water limited (~14 prints / ~4.7 days)**, not power limited (see §3.2), and the system is solar-positive, so **one 100 Ah pack runs the standard deployment indefinitely on sun**. The 2nd pack is a **resilience upgrade** — it extends the no-sun (cloudy-day) reserve from ~0.6 day to ~1.2 day and gives headroom for a 4-print day — not an endurance one. It plugs straight onto the busbar (the 2/0 cable, fuse, and disconnect are already sized for 200 Ah), so it can be added later without touching the wiring.
 
 **Why LiFePO4 and not NMC or lead-acid:**
 - LiFePO4 does not exhibit thermal runaway — safe in an enclosed steel container that may reach 60°C interior

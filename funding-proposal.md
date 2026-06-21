@@ -27,7 +27,7 @@ TBS-001 is a 20-foot ISO shipping container converted into a functional large-fo
 ### How
 The optical specification follows the Lord Rayleigh formula for optimal pinhole diameter, yielding an f-number of f/1088 and a baseline exposure of approximately 30–45 minutes in direct sunlight using the *Mike Ware New Cyanotype formula* on cotton muslin. Every design decision — aperture, image plane materials, exposure calculation, process chemistry — traces to a peer-reviewed source or manufacturer datasheet. The full technical documentation is publicly available at [alvinr.github.io/tbs](https://alvinr.github.io/tbs/).
 
-The camera is transportable by commercial hire truck (no Commercial Drivers License required) and operates off-grid via a self-contained water system that supports ~13 full-size prints between resupply runs. Power is provided by Lithium battery packs with are recharged via Solar panels or through regular household power outlet.
+The camera is transportable by commercial hire truck (no Commercial Drivers License required) and operates off-grid via a self-contained water system that supports ~14 full-size prints between resupply runs. Power is provided by Lithium battery packs with are recharged via Solar panels or through regular household power outlet.
 
 ### Why Now
 The history of large-format photography is a history of increasing precision in decreasing size. The view camera shrank from room to studio to field. The Big Shoebox inverts that trajectory: it scales a camera back up to architectural dimensions, not as spectacle, but as instrument. The container is not incidental to the work — it is the camera body. The constraint of the container's interior geometry is the optical specification. Site, transport, and access become compositional decisions.
@@ -74,7 +74,7 @@ Cyanotype uses the **Mike Ware New Cyanotype formula** — ammonium iron(III) ox
 Per-print cost: approximately <!-- BEGIN costing:fund-perprint -->$33<!-- END costing:fund-perprint --> (chemistry + fabric + water) at the Standard sensitizer strength — ranging <!-- BEGIN costing:fund-perprint-range -->$24–60<!-- END costing:fund-perprint-range --> by tier, to be pinned by post-build sensitizer trials. A 50-print run costs approximately <!-- BEGIN costing:fund-50run -->$1,650<!-- END costing:fund-50run -->. By comparison, the next cheapest alternative (gum bichromate) costs ~$49 per print and depends on bulk dichromate as its primary sensitizer, with full hazmat handling and disposal.
 
 ### Water System
-A self-contained three-circuit water system — Blue (wash), Brown (recycle), and Black (waste) — provides off-grid processing capability. Four 1000L IBC totes in a 2×2 stack, 12V DC pumps, check valves on all external lines, and a 3-stage filtration skid. Capacity: ~13 full prints between resupply. Water recycling: approximately 40% of used wash water is recovered and reused. Power: 12V DC from a 100Ah LiFePO4 battery (expandable to 200Ah with an optional second pack; ~2–3 prints per charge), with a 600W solar array for field recharging — the system is solar-positive in sun, so it runs indefinitely — plus shore-power input for overnight top-up.
+A self-contained three-circuit water system — Blue (wash), Brown (recycle), and Black (waste) — provides off-grid processing capability. Four 1000L IBC totes in a 2×2 stack, 12V DC pumps, check valves on all external lines, and a 3-stage filtration skid. Capacity: ~14 full prints between resupply. Water recycling: approximately 40% of used wash water is recovered and reused. Power: 12V DC from a 100Ah LiFePO4 battery (expandable to 200Ah with an optional second pack; ~2–3 prints per charge), with a 600W solar array for field recharging — the system is solar-positive in sun, so it runs indefinitely — plus shore-power input for overnight top-up.
 
 The system was designed for remote deployments: no municipal water or power connection required.
 
@@ -113,7 +113,7 @@ Transport, permits, and water resupply for a single public deployment:
 |------|------|
 | Commercial transport (short haul, 30–100 miles, round trip) | $1,000–2,400 |
 | Location permit (public land, non-commercial art use) | $0–300 |
-| Water resupply (~420 gal / 1,600L Blue tank ≈ 13 prints) | $25–50 |
+| Water resupply (~476 gal / 1,800L Blue tank ≈ 14 prints) | $25–50 |
 | **Level 2 total** | **~$1,350–2,800** |
 
 ### Level 3 — Documentation (+$2,000–4,000)
@@ -185,7 +185,7 @@ My practice since has moved between classical portraiture and abstract color in 
 | Film plane movement | ±40° tilt, ±28° swing, 4-corner independent (Option A rigid plane) |
 | Front board movement | ±5.3° tilt and swing, 0.012°/click resolution |
 | Process | Cyanotype (Ware formula) on cotton muslin |
-| Water system | Self-contained, ~13 prints per resupply, off-grid capable |
+| Water system | Self-contained, ~14 prints per resupply, off-grid capable |
 | Transport | Commercial hire tilt-bed, no CDL required |
 
 ### Full Documentation

@@ -33,7 +33,7 @@ Redesign basis (2026-05-03 rev 4):
   allowing standard ISO cargo doors to close. Fixed door frame with EPDM seal at X=0.
 
 Redesign basis (2026-05-06 rev 5):
-  Waste drums (2x 55-gal) eliminated.  Replaced by a 4th IBC (waste, 600L)
+  Waste drums (2x 55-gal) eliminated.  Replaced by a 4th IBC (waste, 630L)
   in the right end zone.  4 IBCs in 2x2 stack: Blue #1 + Blue #2 on top
   (gravity feeds spray bar), Brown + Waste on bottom (receives by gravity).
   All V-groove dolly tracks, bridge sections, and drum slide mechanisms removed.
@@ -586,13 +586,13 @@ PROC_TRAY_SUMP_Z   = 20         # sump well depth below tray floor (mm)
 #   usable Blue supply / Blue-per-print -> prints between resupply runs (floor)
 # facts.yml references PRINTS_PER_RESUPPLY via `constant:`; energy-budget imports these (one source).
 L_PER_GAL             = 3.78541
-BLUE_SUPPLY_L         = 1600    # usable clean-water (Blue) volume — 2× 800L gravity fill (~423 gal)
+BLUE_SUPPLY_L         = 1800    # usable clean-water (Blue) volume — 2× 900L gravity fill (~476 gal)
 TRAY_FLOOD_DEPTH_MM   = 6       # one process flood depth (¼") over the tray footprint
 BLUE_WASHES_PER_PRINT = 2       # washes 1 & 3 draw Blue; wash 2 recycles from Brown
 TRAY_FLOOD_GAL        = round(PROC_TRAY_W * PROC_TRAY_D * TRAY_FLOOD_DEPTH_MM / 1e6 / L_PER_GAL)  # 15.6 → 16
 BLUE_PER_PRINT_GAL    = BLUE_WASHES_PER_PRINT * TRAY_FLOOD_GAL   # = 32 gal net Blue/print
 BLUE_PER_PRINT_L      = BLUE_PER_PRINT_GAL * L_PER_GAL           # ≈ 121 L
-PRINTS_PER_RESUPPLY   = int(BLUE_SUPPLY_L / BLUE_PER_PRINT_L)    # = 13
+PRINTS_PER_RESUPPLY   = int(BLUE_SUPPLY_L / BLUE_PER_PRINT_L)    # = 14
 
 # ── Perimeter walkway — removable grated sections around processing tray ─────
 # 4 sections form a rectangular perimeter walk so the operator can access all

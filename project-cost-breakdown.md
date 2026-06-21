@@ -271,7 +271,7 @@ Line items (Option A, manual handwheel actuation) — **generated from `costing.
 
 **Source document:** `water-system-report.md`
 
-Self-contained three-circuit water system for remote/off-grid cyanotype processing. Provides ~<!-- BEGIN fact:prints_per_resupply -->13<!-- END fact:prints_per_resupply --> full-size prints (~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft each) between water resupply runs, with Brown wash-2 recycling (~8–10 on fresh Blue alone).
+Self-contained three-circuit water system for remote/off-grid cyanotype processing. Provides ~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> full-size prints (~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft each) between water resupply runs, with Brown wash-2 recycling (~8–10 on fresh Blue alone).
 
 <!-- BEGIN costing:water -->
 | Category | Low† | High† |
@@ -532,7 +532,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Item | Cost |
 |------|------|
 | Transport (short haul, commercial hire) | $300–$800 |
-| Water resupply (~420 gal / <!-- BEGIN fact:blue_supply_l -->1,600<!-- END fact:blue_supply_l -->L Blue ≈ <!-- BEGIN fact:prints_per_resupply -->13<!-- END fact:prints_per_resupply --> prints) | $25–$50 |
+| Water resupply (~420 gal / <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue ≈ <!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints) | $25–$50 |
 | Location permit | $0–$500 |
 | **Per-deployment overhead** | **~$325–$1,350** |
 

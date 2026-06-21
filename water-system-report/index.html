@@ -875,6 +875,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Storage capacity vs. print count">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extending-capacity-beyond-13-prints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extending capacity beyond 13 prints
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -2923,6 +2940,33 @@
 </tbody>
 </table>
 <p><strong>~13 prints per resupply run</strong> — the 423-gallon (1,600L) Blue supply (2× 800L) with Brown recycling for wash 2.</p>
+<p><strong>Water balance — recovered vs. consumed.</strong> Of the 1,600L of clean Blue consumed over a run, only
+~1,200L is recovered into the collection totes (Brown + Waste, ~600L each at their working fill); the
+~400L difference (~31L per print, ~17% of the ~182L gross washed per print) is open-process loss —
+water <strong>carried out in the wet prints</strong> (each full-plane muslin sheet, ~10.7 m², leaves saturated to
+dry), <strong>evaporation</strong> from the open spray-wash tray, and <strong>unrecovered residual</strong> (tray-surface film,
+the sump dead-volume below the P-04 pickup, hose/manifold hold-up). This loss is <em>why two 600L
+collection totes balance a 1,600L supply</em> — they are sized for the recovered fraction, not full
+throughput. (The <a href="../weight-distribution-report/">weight report</a> instead models the system as <em>closed</em>
+— full 1,600L recovered — as a deliberately conservative transport-weight bound.)</p>
+<h4 id="extending-capacity-beyond-13-prints">Extending capacity beyond 13 prints<a class="headerlink" href="#extending-capacity-beyond-13-prints" title="Permanent link">&para;</a></h4>
+<p><strong>Maximizing the initial load.</strong> The 800L-per-tote Blue fill is a convention, not a limit: both Blue
+totes are 1000L vessels, so a camera-ready haul can carry up to <strong>~1,900L</strong> of clean Blue (~950L per
+tote, allowing ullage) with no extra hardware — lifting single-load capacity from the nominal <strong>~13</strong>
+to <strong>~15–16 prints</strong>. The upside is free on both sides of the balance: the heavier top-tier load is
+transport-validated (worst-case CG rises only 52mm, static tip 42.1° → 41.0°, gross weight ~22% of the
+ISO limit — see <a href="../weight-distribution-report/">weight report §4.4</a>), and the collection totes do not
+reach their own limits until ~21 prints (the process loss makes them fill slower than Blue drains). The
+binding constraint on a single hauled load is therefore the <strong>per-tote 1000L volume</strong>, capping a
+deployment at ~16 prints.</p>
+<p><strong>On-site top-up — extended deployment.</strong> A deployment can run past the ~16-print single-load ceiling
+using the external end-wall bulkhead ports — <em>no cargo-door access required</em>: <strong>resupply Blue</strong> from a
+water bowser or tanker through the <strong>X1</strong> gravity-fill inlet (tees to both Blue totes), and <strong>discharge
+Brown/Waste</strong> through the <strong>X3 / X4</strong> drain ports to a holding tank or tanker. In this mode the tote
+volumes act as <strong>buffers, not hard caps</strong>, and print count is set by water <em>logistics</em> (bowser visits,
+disposal access) rather than tote volume. This is a distinct operating mode from the hauled single load:
+for transport the totes return to their validated fill states (Blue drained, Waste within its
+return-haul limit). See the <a href="../operating-manual/">Operating Manual</a> for the top-up procedure.</p>
 <p><strong>Cooling-water overhead (hot-weather deployments):</strong> the evaporative cooler draws clean water from the <em>same</em> Blue circuit (at TAP-01 on the pinhole wall), so it is not free of the processing budget. Its reservoir holds ~4.8 gal (~18 L) and evaporates ~3 L/hour while running (<a href="../ventilation-report/">Ventilation Report §5</a>), so a deployment consumes roughly <strong>one tankful (~18 L)</strong> — about <strong>15% of one print's net Blue draw</strong>, or <strong>~1% of the full 1,600 L supply</strong>. This is sub-one-print of overhead: it does not move the 13-print count for a 1–2 print outing, but a resupply spent entirely on hot, multi-print sessions should be planned as <strong>~12 effective prints</strong> to leave the cooler its margin. The 13-print figure above counts processing water only.</p>
 <hr />
 <h2 id="5-system-architecture">5. System Architecture<a class="headerlink" href="#5-system-architecture" title="Permanent link">&para;</a></h2>

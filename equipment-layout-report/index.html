@@ -895,23 +895,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="8. Water Capacity Summary">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#81-on-site-top-up-extended-deployment" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8.1 On-Site Top-Up — Extended Deployment
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -3162,47 +3145,15 @@ swings between the two ends of a resupply cycle:</p>
 </tr>
 </tbody>
 </table>
-<p>A session starts camera-ready with both Blue totes full (800L each) and the Brown/Waste
-totes empty. As printing proceeds the Blue supply drains into the process while the Brown
-recycle buffer and the sealed Waste tote fill toward their 600L working levels; the supply
-is <strong>exhausted when the Blue totes are empty</strong>. The <!-- BEGIN fact:blue_supply_l -->1,600<!-- END fact:blue_supply_l -->L Blue supply supports <strong>~<!-- BEGIN fact:prints_per_resupply -->13<!-- END fact:prints_per_resupply --> prints per resupply</strong> with 40% water recycling (16 gal per wash cycle, 32 gal Blue consumed per print with Brown recycling).</p>
-<p><strong>Where the other ~400L goes:</strong> the two collection totes hold 1,200L, but 1,600L of clean
-Blue was consumed — the ~400L difference (~31L per print, ~17% of the ~182L gross washed
-per print) never reaches them. It is ordinary open-process loss to three sinks: water
-<strong>carried out in the wet prints</strong> (each full-plane muslin sheet, ~10.7 m², leaves the
-container saturated to dry, taking its bound water with it); <strong>evaporation</strong> from the open
-spray-wash tray in hot, low-humidity air over multi-hour sessions; and <strong>unrecovered
-residual</strong> (the tray-surface film, the sump dead-volume below the P-04 pickup, and the
-hose/manifold hold-up the transfer pump cannot lift). This loss is also <em>why two 600L
-collection totes suffice for a 1,600L supply</em> — they are sized for the recovered fraction,
-not the full throughput (zero loss would need 1,600L of collection capacity).</p>
-<p><strong>Initial load — maximizing print capacity.</strong> The 800L-per-tote Blue fill is a convention,
-not a limit: both Blue totes are 1000L vessels, so a camera-ready haul can carry up to
-<strong>~1,900L</strong> of clean Blue (~950L per tote, allowing ullage) with no extra hardware —
-lifting the single-load capacity from the nominal <strong>~<!-- BEGIN fact:prints_per_resupply -->13<!-- END fact:prints_per_resupply --></strong> to <strong>~15–16 prints</strong>.
-The upside is free on both sides of the balance. <em>Transport:</em> the added ~300 kg sits in the
-top tier, nudging the validated worst-case vertical CG (Z=1,306mm, static tip ~42°) up only
-marginally, and gross weight stays far below the ISO 24,000 kg limit (see
-<a href="../weight-distribution-report/">weight report</a>). <em>Collection:</em> the ~400L process loss makes
-Brown/Waste fill slower than Blue drains, so they do not reach their own tote limits until
-~21 prints. The binding constraint on a single hauled load is therefore the <strong>Blue tote
-volume itself (~1000L each), capping a deployment at ~16 prints</strong> before any resupply.</p>
-<p>See <a href="../water-system-report/">Processing System Report</a> for full water circuit design.</p>
-<h3 id="81-on-site-top-up-extended-deployment">8.1 On-Site Top-Up — Extended Deployment<a class="headerlink" href="#81-on-site-top-up-extended-deployment" title="Permanent link">&para;</a></h3>
-<p>The capacity above is for a <strong>single Blue fill hauled to site</strong>. A deployment can run past the
-~16-print single-load ceiling using the external end-wall bulkhead ports — <strong>no cargo-door
-access required</strong>:</p>
-<ul>
-<li><strong>Resupply Blue</strong> from a water bowser or tanker through the <strong>X1</strong> gravity-fill inlet (tees
-  to both Blue totes in parallel), restoring clean supply mid-stay.</li>
-<li><strong>Discharge Brown/Waste</strong> through the <strong>X3 / X4</strong> drain ports to a holding tank or tanker,
-  freeing collection capacity.</li>
-</ul>
-<p>In this mode the tote volumes act as <strong>buffers, not hard caps</strong>, and print count per deployment
-is set by water <em>logistics</em> (bowser visits, disposal access) rather than the per-tote 1000L
-volume ceiling. This is a distinct operating mode from the hauled single-load case: for transport the
-totes are returned to their validated fill states (Blue drained, Waste within its return-haul
-limit).</p>
+<p>A session starts camera-ready with both Blue totes full (800L each) and the Brown/Waste totes
+empty; the supply is <strong>exhausted when the Blue totes are empty</strong>. The collection totes hold ~1,200L
+while ~1,600L of Blue was consumed — the ~400L difference is open-process loss (wet-print carryout,
+evaporation, unrecovered residual).</p>
+<p><strong>Print capacity.</strong> The <!-- BEGIN fact:blue_supply_l -->1,600<!-- END fact:blue_supply_l -->L nominal load supports <strong>~<!-- BEGIN fact:prints_per_resupply -->13<!-- END fact:prints_per_resupply --> prints per resupply</strong>; filling Blue toward the
+tote's physical maximum (~1,900L) raises this to ~15–16 (transport-validated,
+<a href="../weight-distribution-report/">Weight Report §4.4</a>), and on-site top-up via the X1 / X3 / X4 bulkhead
+ports extends it further. See <a href="../water-system-report/">Processing System Report §4</a> for the full water
+balance, max-fill, and top-up analysis, and the full water circuit design.</p>
 <hr />
 <h2 id="9-egress-safety-assessment">9. Egress Safety Assessment<a class="headerlink" href="#9-egress-safety-assessment" title="Permanent link">&para;</a></h2>
 <p>When the hinged panel is opened 180° from the inside, the light trap drum (mounted

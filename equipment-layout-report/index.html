@@ -3009,10 +3009,10 @@ unobstructed egress at the cargo door end.</p>
 <h3 id="61-stepped-panel-and-swing-pivot-transport-mode">6.1 Stepped Panel and Swing Pivot (Transport Mode)<a class="headerlink" href="#61-stepped-panel-and-swing-pivot-transport-mode" title="Permanent link">&para;</a></h3>
 <p>The hinged panel has a stepped profile: 40mm thick at the corner zones and 120mm thick at the center zone
 where the light trap drum is mounted. For transport the panel + drum SWING ~56° about a
-vertical Ø89×8mm CHS pivot post (the reused film-plane far-left upright at X=175, Yd=2287),
+vertical Ø89×8mm CHS pivot post (sharing the film-plane far-left upright),
 carrying the punch-out bay inboard of the door plane. Two narrow strips stay fixed at the
-door plane (near Yd0–180, far Yd2287–2362, which carries the pivot); the cargo doors close
-outboard of the fixed near strip. The earlier "slide ~880mm on ceiling rails" scheme is retired.</p>
+door plane; the cargo doors close
+outboard of the fixed near strip.</p>
 <table>
 <thead>
 <tr>
@@ -3045,7 +3045,7 @@ compressed by the four Southco C2-33 cam latches and released before the swing. 
 <strong><a href="../hinged-panel-report/">Hinged Panel Report §6 — Light Seal Design</a></strong> for the full
 per-path seal table and the dark-adaptation verification check.</p>
 <h3 id="62-evaporative-cooler-transport-stowage">6.2 Evaporative Cooler Transport Stowage<a class="headerlink" href="#62-evaporative-cooler-transport-stowage" title="Permanent link">&para;</a></h3>
-<p>The evaporative cooler (<strong>Hessaire MC18M</strong>, 559×305×711mm, ~7.3 kg / 16 lb dry — replaces the fictional "Portacool Jetstream 110"; see <a href="../component-dimension-audit/">dimension audit</a>) sits on the ground outside the container during operation, connected to the wall penetration via Ø200mm flex duct and powered from the interior inverter (Circuit E, 120V AC). It must be stowed inside the container for transport.</p>
+<p>The evaporative cooler (<strong>Hessaire MC18M</strong>, 559×305×711mm) sits on the ground outside the container during operation, connected to the wall penetration via Ø200mm flex cord and powered from the interior inverter (Circuit E, 120V AC). It must be stowed inside the container for transport.</p>
 <p><strong>Stowage position:</strong> On the near walkway grating in the wide section. The cooler sits on a 12mm plywood base plate (559×305mm) that distributes the load across the grating and prevents the housing from catching in the grate openings. The wide section (500mm) fully contains the 305mm cooler depth with ~195mm clearance — no overhang into the processing tray zone. The lighter (16 lb) unit also eases the handling.</p>
 <p><strong>Securing:</strong> Two 25mm ratchet straps loop over the cooler and hook to the nearest cantilever bracket arms. Two aluminum angle cleats (25×25×3mm, 100mm long) screwed to the base plate prevent lateral sliding.</p>
 <table>
@@ -3106,43 +3106,49 @@ termination. All circuits ≤ 9m — within voltage-drop budget for 12V DC with
 pinhole wall at X=2399mm (pinhole side), H=400mm.</p>
 <hr />
 <h2 id="8-water-capacity-summary">8. Water Capacity Summary<a class="headerlink" href="#8-water-capacity-summary" title="Permanent link">&para;</a></h2>
+<p>All four positions are identical 1000L caged composite IBCs — the 600L / 800L figures
+are <strong>fill levels, not tote sizes</strong> (a 600L caged tote does not exist). Each tote's fill
+swings between the two ends of a resupply cycle:</p>
 <table>
 <thead>
 <tr>
-<th>Tank</th>
-<th>Qty</th>
-<th>Capacity</th>
+<th>IBC (identical 1000L tote)</th>
 <th>Role</th>
+<th style="text-align: right;">Camera ready</th>
+<th style="text-align: right;">Supply exhausted</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Blue IBC, 800L fill (stacked ×2)</td>
-<td>2</td>
-<td><!-- BEGIN fact:blue_supply_l -->1,600<!-- END fact:blue_supply_l -->L</td>
-<td>Clean wash water</td>
+<td>Blue ×2 (stacked)</td>
+<td>Clean wash supply</td>
+<td style="text-align: right;"><!-- BEGIN fact:blue_supply_l -->1,600<!-- END fact:blue_supply_l -->L (2× 800L)</td>
+<td style="text-align: right;">0L</td>
 </tr>
 <tr>
-<td>Brown IBC, 600L fill</td>
-<td>1</td>
-<td>600L</td>
-<td>Recycled wash / fix</td>
+<td>Brown</td>
+<td>Recycled wash / fix buffer</td>
+<td style="text-align: right;">0L</td>
+<td style="text-align: right;">600L</td>
 </tr>
 <tr>
-<td>Waste IBC, 600L fill</td>
-<td>1</td>
-<td>600L</td>
 <td>Waste (sealed)</td>
+<td>Waste collection</td>
+<td style="text-align: right;">0L</td>
+<td style="text-align: right;">600L</td>
 </tr>
 <tr>
-<td><strong>Total</strong></td>
+<td><strong>Total in system</strong></td>
 <td>—</td>
-<td><strong>2,800L</strong></td>
-<td>—</td>
+<td style="text-align: right;"><strong>1,600L clean</strong></td>
+<td style="text-align: right;"><strong>1,200L used</strong></td>
 </tr>
 </tbody>
 </table>
-<p>The <!-- BEGIN fact:blue_supply_l -->1,600<!-- END fact:blue_supply_l -->L Blue supply supports <strong>~<!-- BEGIN fact:prints_per_resupply -->13<!-- END fact:prints_per_resupply --> prints per resupply</strong> with 40% water recycling (16 gal per wash cycle, 32 gal Blue consumed per print with Brown recycling).</p>
+<p>A session starts camera-ready with both Blue totes full (800L each) and the Brown/Waste
+totes empty. As printing proceeds the Blue supply drains into the process while the Brown
+recycle buffer and the sealed Waste tote fill toward their 600L working levels; the supply
+is <strong>exhausted when the Blue totes are empty</strong>. The <!-- BEGIN fact:blue_supply_l -->1,600<!-- END fact:blue_supply_l -->L Blue supply supports <strong>~<!-- BEGIN fact:prints_per_resupply -->13<!-- END fact:prints_per_resupply --> prints per resupply</strong> with 40% water recycling (16 gal per wash cycle, 32 gal Blue consumed per print with Brown recycling).</p>
 <p>See <a href="../water-system-report/">Processing System Report</a> for full water circuit design.</p>
 <hr />
 <h2 id="9-egress-safety-assessment">9. Egress Safety Assessment<a class="headerlink" href="#9-egress-safety-assessment" title="Permanent link">&para;</a></h2>

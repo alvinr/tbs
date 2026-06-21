@@ -443,6 +443,57 @@ def emit_scenario_c() -> str:
     return "\n".join(out)
 
 
+# ── cost-analysis-report.md — §2 capital/recurring buckets + §3 system ranking, both DERIVED from the
+# section Mids (this report summarises the Mid column), so they can't drift. Generating §3 + the
+# water-% inline also retired the stale '28%' the prose carried from the old water/capital figures.
+_CA = "cost-analysis-report.md"
+
+
+def capital_mid() -> int:
+    """One-time build capital = grand Mid − consumable (§7) − recurring transport (§8) − permits (§9)."""
+    return grand_total()[1] - _sec("7").mid - _sec("8").mid - _sec("9").mid
+
+
+def _pct(mid: int, cap: int) -> str:
+    p = mid / cap * 100
+    return f"{round(p)}%" if p >= 1 else f"{p:.1f}%"
+
+
+def emit_ca_buckets() -> str:
+    return "\n".join([
+        "| Bucket | Mid | What it is |",
+        "|---|--:|---|",
+        f"| **Capital build** (one-time hardware) | **${capital_mid():,}** | The systems you build once — this is where build-savings live |",
+        f"| Consumable (per 50-print batch) | ${_sec('7').mid:,} | Cyanotype chemistry + substrate (Standard ½-Ware) — recurs every batch |",
+        f"| Recurring (per deployment) | ${_sec('8').mid:,} | Commercial-hire transport |",
+        f"| Soft / regulatory | ${_sec('9').mid:,} | Licences & permits |",
+    ])
+
+
+# (system label, section id, note) — the §3 ranking, sorted by Mid descending in the emitter.
+_CA_SYSTEMS = [
+    ("Processing water system", "5",  "Tray (304 SS) + IBC frame dominate"),
+    ("Film-plane mechanism",    "4",  "Carriages, Option-A cross-slides, cam-lever clamps, wall-seat saddles"),
+    ("Container + delivery",    "1",  "Grade-dependent (CW vs WWT)"),
+    ("Power & electrical",      "5a", "Battery + solar + distribution + protection"),
+    ("Perimeter walkway",       "6a", "GRP grating + steel cantilevers"),
+    ("Light lock",              "6",  "Plastic-skin custom fabrication"),
+    ("Swing pivot",             "6b", "Pivot post + bearings + cage + fixed RHS door frame"),
+    ("Interior conversion",     "2",  "Insulation, sealing, safelight"),
+    ("Ventilation & cooling",   "5b", "Fans + cooler + inverter + baffle-duct fab + canopy"),
+    ("Optics — pinhole",        "3",  "Trivial (it is a pinhole)"),
+]
+
+
+def emit_ca_ranking() -> str:
+    cap = capital_mid()
+    rows = sorted(((lbl, _sec(sid).mid, note) for lbl, sid, note in _CA_SYSTEMS), key=lambda r: -r[1])
+    out = ["| System | Mid | % of capital | Notes |", "|---|--:|--:|---|"]
+    for lbl, mid, note in rows:
+        out.append(f"| **{lbl}** | ${mid:,} | {_pct(mid, cap)} | {note} |")
+    return "\n".join(out)
+
+
 def emit_section_table(items: list[LineItem], total_label: str) -> str:
     """Generate a Low/Mid/High line-item table with a COMPUTED total row."""
     rows = ["| Item | Low | Mid | High | Notes |", "|------|-----|-----|------|-------|"]
@@ -527,6 +578,7 @@ def _whole_blocks() -> dict:
     return {"scenario": (_F, emit_scenario_table), "chemistry-7-1": (_F, emit_cost_breakdown_7_1),
             "scenario-a": (_F, emit_scenario_a), "scenario-b": (_F, emit_scenario_b),
             "scenario-c": (_F, emit_scenario_c),
+            "ca-buckets": (_CA, emit_ca_buckets), "ca-ranking": (_CA, emit_ca_ranking),
             "funding-level1": ("funding-proposal.md", emit_funding_level1),
             "master-summary": ("master-shopping-list.md", emit_master_summary)}
 
@@ -577,6 +629,11 @@ def _inline_blocks() -> dict:
         "s73-pp-range":        (_F, lambda: f"${_pp('lean')}–{_pp('rich')}"),
         "s73-50run-std":       (_F, lambda: f"${_pp('standard') * PRINTS:,}"),
         "s73-50run-range":     (_F, lambda: f"${_pp('lean') * PRINTS:,}–{_pp('rich') * PRINTS:,}"),
+        # cost-analysis-report.md prose figures.
+        "ca-mid-total":        (_CA, lambda: f"${grand_total()[1]:,}"),
+        "ca-capital":          (_CA, lambda: f"${capital_mid():,}"),
+        "ca-consumable":       (_CA, lambda: f"${_sec('7').mid:,}"),
+        "ca-water-pct":        (_CA, lambda: f"{round(_sec('5').mid / capital_mid() * 100)}"),
     }
 
 

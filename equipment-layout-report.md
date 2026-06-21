@@ -164,10 +164,10 @@ unobstructed egress at the cargo door end.
 
 The hinged panel has a stepped profile: 40mm thick at the corner zones and 120mm thick at the center zone
 where the light trap drum is mounted. For transport the panel + drum SWING ~56° about a
-vertical Ø89×8mm CHS pivot post (the reused film-plane far-left upright at X=175, Yd=2287),
+vertical Ø89×8mm CHS pivot post (sharing the film-plane far-left upright),
 carrying the punch-out bay inboard of the door plane. Two narrow strips stay fixed at the
-door plane (near Yd0–180, far Yd2287–2362, which carries the pivot); the cargo doors close
-outboard of the fixed near strip. The earlier "slide ~880mm on ceiling rails" scheme is retired.
+door plane; the cargo doors close
+outboard of the fixed near strip.
 
 | Position | Description | Doors clear? |
 |----------|-------------|-------------|
@@ -189,7 +189,7 @@ per-path seal table and the dark-adaptation verification check.
 
 ### 6.2 Evaporative Cooler Transport Stowage
 
-The evaporative cooler (**Hessaire MC18M**, 559×305×711mm, ~7.3 kg / 16 lb dry — replaces the fictional "Portacool Jetstream 110"; see [dimension audit](component-dimension-audit.md)) sits on the ground outside the container during operation, connected to the wall penetration via Ø200mm flex duct and powered from the interior inverter (Circuit E, 120V AC). It must be stowed inside the container for transport.
+The evaporative cooler (**Hessaire MC18M**, 559×305×711mm) sits on the ground outside the container during operation, connected to the wall penetration via Ø200mm flex cord and powered from the interior inverter (Circuit E, 120V AC). It must be stowed inside the container for transport.
 
 **Stowage position:** On the near walkway grating in the wide section. The cooler sits on a 12mm plywood base plate (559×305mm) that distributes the load across the grating and prevents the housing from catching in the grate openings. The wide section (500mm) fully contains the 305mm cooler depth with ~195mm clearance — no overhang into the processing tray zone. The lighter (16 lb) unit also eases the handling.
 
@@ -234,14 +234,21 @@ pinhole wall at X=2399mm (pinhole side), H=400mm.
 
 ## 8. Water Capacity Summary
 
-| Tank | Qty | Capacity | Role |
-|------|-----|---------|------|
-| Blue IBC, 800L fill (stacked ×2) | 2 | <!-- BEGIN fact:blue_supply_l -->1,600<!-- END fact:blue_supply_l -->L | Clean wash water |
-| Brown IBC, 600L fill | 1 | 600L | Recycled wash / fix |
-| Waste IBC, 600L fill | 1 | 600L | Waste (sealed) |
-| **Total** | — | **2,800L** | — |
+All four positions are identical 1000L caged composite IBCs — the 600L / 800L figures
+are **fill levels, not tote sizes** (a 600L caged tote does not exist). Each tote's fill
+swings between the two ends of a resupply cycle:
 
-The <!-- BEGIN fact:blue_supply_l -->1,600<!-- END fact:blue_supply_l -->L Blue supply supports **~<!-- BEGIN fact:prints_per_resupply -->13<!-- END fact:prints_per_resupply --> prints per resupply** with 40% water recycling (16 gal per wash cycle, 32 gal Blue consumed per print with Brown recycling).
+| IBC (identical 1000L tote) | Role | Camera ready | Supply exhausted |
+|----------------------------|------|-------------:|-----------------:|
+| Blue ×2 (stacked) | Clean wash supply | <!-- BEGIN fact:blue_supply_l -->1,600<!-- END fact:blue_supply_l -->L (2× 800L) | 0L |
+| Brown | Recycled wash / fix buffer | 0L | 600L |
+| Waste (sealed) | Waste collection | 0L | 600L |
+| **Total in system** | — | **1,600L clean** | **1,200L used** |
+
+A session starts camera-ready with both Blue totes full (800L each) and the Brown/Waste
+totes empty. As printing proceeds the Blue supply drains into the process while the Brown
+recycle buffer and the sealed Waste tote fill toward their 600L working levels; the supply
+is **exhausted when the Blue totes are empty**. The <!-- BEGIN fact:blue_supply_l -->1,600<!-- END fact:blue_supply_l -->L Blue supply supports **~<!-- BEGIN fact:prints_per_resupply -->13<!-- END fact:prints_per_resupply --> prints per resupply** with 40% water recycling (16 gal per wash cycle, 32 gal Blue consumed per print with Brown recycling).
 
 See [Processing System Report](water-system-report.md) for full water circuit design.
 

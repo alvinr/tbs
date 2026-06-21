@@ -69,6 +69,23 @@ def warn_facts() -> tuple[bool, list[str]]:
     return (not issues), (issues or ["all registered facts agree across docs"])
 
 
+# ── WARNING: editorial-review list covers every published doc (the hand-kept list can silently miss
+# one — that's how cost-analysis-report.md was reviewed-complete-but-unlisted). Flags only the
+# 'published but unlisted' direction; editorial entries for unpublished docs (§E meta, superseded
+# reports pending a retire decision) are intentional and not flagged. ──
+def warn_editorial_list() -> tuple[bool, list[str]]:
+    pub = open(os.path.join(ROOT, "publish.sh"), encoding="utf-8").read()
+    m = re.search(r"MD_FILES=\((.*?)\)", pub, re.DOTALL)
+    published = {os.path.basename(f) for f in re.findall(r'"([^"]+\.md)"', m.group(1))} if m else set()
+    published.add("project-summary.md")                         # the home page (synced separately)
+    todo = open(os.path.join(ROOT, "editorial-review-todo.md"), encoding="utf-8").read()
+    listed = {os.path.basename(f) for f in re.findall(r"^- \[[ x]\]\s+(\S+\.md)", todo, re.M)}
+    missing = sorted(published - listed)
+    issues = [f"{f} is published (publish.sh MD_FILES) but has no editorial-review-todo.md entry"
+              for f in missing]
+    return (not issues), (issues or ["every published doc has an editorial-review entry"])
+
+
 # ── WARNING: markdown table arithmetic (every declared TOTAL = sum of its column) ──
 _MONEY = re.compile(r"^\*{0,2}~?\$?([\d,]+)\*{0,2}$")
 
@@ -521,6 +538,7 @@ GATES = [
 ]
 WARNINGS = [
     ("facts-registry agreement", warn_facts),
+    ("editorial-review list covers every published doc", warn_editorial_list),
     ("dependencies.yml valid (script→output map matches reality)", warn_deps_valid),
     ("table arithmetic (TOTAL = sum of column)", warn_arithmetic),
     ("missing cascade (constant changed, outputs not regenerated)", warn_missing_cascade),

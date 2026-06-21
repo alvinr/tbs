@@ -9,27 +9,9 @@ widens as it approaches the film plane. Any equipment placed inside the cone cas
 a shadow on the film plane, producing an unexposed void in the image.
 
 **Solution:** Reduce the active film plane from the full <!-- BEGIN fact:container_interior_length_mm -->5893<!-- END fact:container_interior_length_mm -->mm container width
-to a <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm -->mm span (X=150–4649mm). This creates two **provably shadow-free end
+to a <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm -->mm span. This creates two **provably shadow-free end
 zones** — one at each end of the container — where equipment can be placed at any
-depth without entering the optical cone.
-
-The right end zone contains a 2×2 IBC stack (including a dedicated 1000L waste
-IBC),  leaving the left zone to contain the light trap drum.
-The right zone boundary sits at X=4649mm, giving a <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm -->mm active film plane
-(rev 5, 2026-05-06).
-
-### Optical Cone (rev 6 geometry)
-
-The pinhole is centered on the film plane at X=2399mm. At depth Y from the
-pinhole wall, the cone boundaries are:
-
-```
-X_left(Y)  = 2,399 − 2,249 × Y/2,262    [left cone boundary]
-X_right(Y) = 2,399 + 2,250 × Y/2,262    [right cone boundary]
-```
-
-At the film plane (Y=2262mm): X_left=150mm, X_right=4649mm — exactly the
-film plane edges. The cone never extends beyond these X values at any depth ≤ 2262mm.
+depth without entering the optical cone. The right end zone contains a 2×2 IBC stack,  leaving the left zone to contain the light trap drum.
 
 ### Zone Definitions
 
@@ -40,13 +22,6 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 | **Right end zone** | 4649–5893mm | YES at all depths | IBC tanks (2×2 stack: 2× Blue, 1× Brown, 1× Waste) |
 | **Pinhole wall face** | Y=0 surface | YES (cone collapses to point) | Electrical panel, battery, pump |
 
-**Shadow-free proof:**
-- Left zone (X=0–150): cone left boundary ≥ 150mm at all depths Y ≤ 2262mm.
-  All left-zone equipment (light trap drum, hinged panel) stays within zone. ✓
-- Right zone (X=4,649–5,893): cone right boundary ≤ 4649mm at all depths Y ≤ 2262mm.
-  All right-zone equipment has X_left ≥ 4674mm — well inside the zone. ✓
-- Pinhole wall (Y=0): cone collapses to a single point (the pinhole). ✓
-
 ---
 
 ## 2. Equipment Positions
@@ -56,14 +31,14 @@ Overall floorplan can be seen below. Its essentially split into three areas, lef
 **Floor plan**
 ![TBS-001 Container Floor Plan — End-Zone Layout](assets/container-floorplan.png)
 
-### 2.1 Left End Zone — X=0–150mm (shadow-free at all depths)
+### 2.1 Left End Zone — X=0–150mm
 
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
 | Hinged panel (stepped) | 0–40 (corner) / 0–120 (center) | 0–2,362 | 0–<!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm --> | Stepped profile: 40mm corners, 120mm center (drum housing). Swings ~56° about the Ø89 pivot for transport. |
 | Light trap drum | −375–375 | 806–1,556 (centered at CW/2=1181mm) | 0–2,200 | Centered at X=0 (spans container wall); integrated into panel center zone; rotary drum entry |
 
-### 2.2 Pinhole Wall Face — Y=0 surface (shadow-free)
+### 2.2 Pinhole Wall Face — Y=0 surface mounted
 
 | Item | X (mm) | H (mm) | Notes |
 |------|--------|--------|-------|
@@ -85,12 +60,12 @@ spans this zone at depth Y=2262mm (nominal far position).
 | Processing tray (2 panels, 304 SS) | 170–4,629 | 80–2,280 | 0–50 | 50mm rim; 20mm clearance to film plane rails; sump well at X=2,399, Yd=80 with P-04 suction pickup to 3W-DV-02. On tapered HDPE shim strips. Permanently installed. |
 | Perimeter walkway (4 sections, removable) | 170–4,629 | 0–300 / 2,062–2,362 | 0–130 | 300mm wide, 130mm deck height (raised +50; 115mm support + 15mm grate). Near/far: wall-cantilevered 8mm gusset brackets at 457mm centers. Right: brackets on angle iron welded to end wall. Left: removable lift-out grate on 5 floor-leg cantilever brackets bolted to bare floor outside the tray (arms to X=470, 3 extended to X=770 on the punch-out; the panel occupies this end wall), 15mm grating. Left corners: butt joint (no miter). No tray contact (left brackets bolt to bare floor outside the tray). Floor-leg arm (Z=75–115) clears the 50mm tray rim and the Z60 spray bar by 15mm. |
 
-The processing tray sits below the film plane carriage blocks (minimum Z=140mm at maximum 40° tilt — conservative; the lower max angle only increases clearance), providing 90mm clearance above the tray rim. The tray does not contact or interfere with the HGR20 rail channels at X=150 and X=4,649.
+The processing tray sits below the film plane carriage blocks (minimum Z=140mm at maximum 40° tilt; the lower max angle only increases clearance), providing 90mm clearance above the tray rim. The tray does not contact or interfere with the HGR20 rail channels at X=150 and X=4,649.
 
-### 2.4 Right End Zone — X=4649–5893mm (shadow-free at all depths)
+### 2.4 Right End Zone — X=4649–5893mm
 
 2×2 IBC stack — right-justified flush to the far end wall. Four IBCs in two
-columns at X=4674mm (25mm clearance from zone boundary), separated by a
+columns (25mm clearance from zone boundary), separated by a
 270mm plumbing corridor between near and far columns. IBC wall clearance
 is 30mm on each side.
 
@@ -116,7 +91,7 @@ cone in either the plan (top-down) or elevation (side) view.
 
 ## 4. Why IBC Y-Stacking (Front-to-Back)
 
-In the current layout (rev 5) the entire right end zone is
+In the current layout the entire right end zone is
 X-clear from X=4649mm to the end wall — all four tanks occupy the same X column
 in a 2×2 arrangement (two columns along Y, two tiers high).
 
@@ -129,7 +104,7 @@ The 2×2 stack gives a 1219mm X footprint (= IBC cage width), right-justified to
 the far end wall. The zone itself is only 1244mm wide (X=4649–5893mm), so the
 IBCs fit with 25mm clearance on the zone boundary side. The two columns are
 separated by a 270mm plumbing corridor, with
-30mm wall clearance on each side. 
+30mm wall clearance on each side.
 
 ---
 
@@ -157,8 +132,8 @@ only restrains them for transport (front retaining bars + D-ring lashing).
 **Why 1000L caged composite (all four totes):**
 
 All four positions use the 275-gal (≈1000 L) caged composite tote — the only
-food-grade, 48×40-footprint tote stocked. A 600 L *caged* tote does not exist;
-"600 L" / "1000 L" are **fill levels**, not tote sizes. Two cages direct-stack to 2336mm:
+food-grade, 48×40-footprint tote stocked.
+"600 L" / "1000 L" are **fill levels**, not tote sizes.
 
 | IBC type | H (mm) | Stacked pair | Ceiling clearance |
 |----------|--------|--------------|-------------------|
@@ -166,8 +141,7 @@ food-grade, 48×40-footprint tote stocked. A 600 L *caged* tote does not exist;
 
 The 52mm headroom is tight but **transport-validated**: the loaded-transport CG sits at
 Z=1,306mm (static sideways tip threshold ≈42°, ≈20% of the ISO gross limit) — see the
-[weight-distribution report](weight-distribution-report.md). The Blue-on-top layout (two
-Blue clean-supply totes on top, Brown + Waste on the bottom) is retained.
+[weight-distribution report](weight-distribution-report.md).
 
 **Raw material suppliers:**
 
@@ -181,11 +155,9 @@ Blue clean-supply totes on top, Brown + Waste on the bottom) is retained.
 
 ---
 
-## 6. Left End Zone — Simplified Layout (Rev 5)
+## 6. Left End Zone — Simplified Layout
 
-Waste collection is handled by IBC-4 (600L, sealed) in the right end zone 2×2 stack.
-The left end zone contains only the light trap drum and the hinged panel — no
-floor-mounted equipment, no dolly tracks, no bridge sections, providing
+The left end zone contains only the light trap drum and the hinged panel — providing
 unobstructed egress at the cargo door end.
 
 ### 6.1 Stepped Panel and Swing Pivot (Transport Mode)

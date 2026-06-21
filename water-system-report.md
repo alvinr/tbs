@@ -2,17 +2,12 @@
 <!-- © 2026 Alvin Richards -->
 # Water Processing Report
 
+
 ## 1. Purpose
-
-The camera operates in remote locations with no municipal water or drainage. This document specifies a self-contained three-circuit water system for off-grid cyanotype processing on a <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm image plane inside a 20 ft ISO shipping container.
-
----
-
-## 2. Executive Summary
 
 The camera operates in remote locations with no municipal water or drainage. This document specifies a self-contained three-circuit water system that:
 
-- Stores sufficient clean water for 9–11 full-size prints between resupply runs on fresh Blue alone (**~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints** once Brown wash-2 recycling is counted — see §below)
+- Stores sufficient clean water for 9–14 full-size prints between resupply runs on fresh Blue alone (**~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints** once Brown wash-2 recycling is counted — see §below)
 - Recycles used wash water through a three-stage filter train, extending usable supply by approximately 40%
 - Contains all waste water in a closed, transportable IBC for proper off-site disposal
 - Runs entirely on 12V DC, compatible with a solar/battery off-grid power system
@@ -24,15 +19,15 @@ The camera operates in remote locations with no municipal water or drainage. Thi
 
 | Circuit | Color code | Purpose | Storage |
 |---------|-------------|---------|---------|
-| **Blue** | Blue — clean | Fresh water supply for processing | 2× 1000L IBC totes (~476 gal working fill total — 900L each), Y-stacked in right end zone |
-| **Brown** | Brown — used | Collected wash water; filtered and recycled back to Blue | 1× 1000L IBC tote, Y-stacked behind Blue IBCs |
-| **Black** | Black — waste | Heavily contaminated water; sealed IBC for off-site disposal | 1× 1000L IBC tote (IBC-4, ~166 gal working fill), Y-stacked in right end zone |
+| **Blue** | Blue — clean | Fresh water supply for processing | 2× 1000L IBC totes (1800L working fill total — 900L each), stacked side-by-sdie |
+| **Brown** | Brown — used | Collected wash water; filtered and recycled back to Blue | 1× 1000L IBC tote, stacked below Blue IBCs |
+| **Black** | Black — waste | Heavily contaminated water; sealed IBC for off-site disposal | 1× 1000L IBC tote , stacked below Blue IBCs |
 
 ![Water System — Sheet 1: System Schematic](assets/water-system-sheet1.png)
 
 ---
 
-## 3. Cyanotype Wash Water — Chemistry and Constraints
+## 2. Cyanotype Wash Water — Chemistry and Constraints
 
 ### What is in the wash water?
 
@@ -67,7 +62,7 @@ It will **not**:
 
 ---
 
-## 4. Water Volume Calculations
+## 3. Water Volume Calculations
 
 ### Per-print water requirement
 
@@ -93,9 +88,9 @@ Volume per flood = 106 sq ft × (6mm / 304.8) = 106 × 0.0197 ft = 2.09 cu ft
 | With recycling (wash 2 from Brown) | 32 gal (2 × 16) | **~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints** | ~224 gal reused |
 | Brown recycle limit (3 passes) | — | — | 166 gal max before going to Black |
 
-**~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints per resupply run** — the 476-gallon (<!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L) Blue supply (2× 900L) with Brown recycling for wash 2.
+**~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints per resupply run** — <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue supply (2× 900L) with Brown recycling for wash 2.
 
-**Water balance — recovered vs. consumed.** Of the 1,800L Blue supply, a 14-print run processes ~1,690L
+**Water balance — recovered vs. consumed.** Of the <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue supply, a 14-print run processes ~1,690L
 (leaving ~110L of dregs, under one print): ~1,260L is recovered into the collection totes (Brown + Waste,
 ~630L each at their working fill) and ~430L (~31L per print, ~17% of the ~182L gross washed per print) is
 open-process loss — water **carried out in the wet prints** (each full-plane muslin sheet, ~10.7 m²,
@@ -108,7 +103,7 @@ for its exhausted-state transport mass — 4,584 kg, ~540 kg below the loaded st
 #### Extending capacity beyond 14 prints
 
 **Maximizing the initial load.** The standard 900L-per-tote fill (<!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L → <!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints) leaves a little
-ullage in each 1000L tote; topping toward the ~950–1000L tote limit (~1,900–2,000L) buys ~1–2 more prints
+residue in each 1000L tote; topping toward the ~950–1000L tote limit (~1,900–2,000L) buys ~1–2 more prints
 (~15–16), transport-validated to a worst-case static tip of 41.0° (see
 [weight report §4.4](weight-distribution-report.md)). To actually realize those extra prints the
 collection totes must also rise proportionally — they are sized at ~630L each for the 14-print recovery —
@@ -127,9 +122,9 @@ return-haul limit). See the [Operating Manual](operating-manual.md) for the top-
 
 ---
 
-## 5. System Architecture
+## 4. System Architecture
 
-### 5.1 Blue System — Clean Water Supply
+### 4.1 Blue System — Clean Water Supply
 
 ```
 IBC-1 (900L) ──┐
@@ -147,7 +142,7 @@ IBC-2 (900L) ──┘                                                      │
 - Spray bar: gantry design — 40×40×3mm aluminum SHS beam spanning the open processing area (3859mm) between walkway inner edges, with wheel carriages rolling on the tray floor beneath walkway grating. Beam bore serves as spray pipe (no separate HDPE tube). See §3.5 for full mechanical design
 - Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline (Yd=1181mm) at Z=2250mm — gravity feed, no pump required. Inside, an internal tee (near X1) splits to a SIDE entry near the top of BOTH Blue totes (no top-cap access — 52mm headroom), filling them in parallel and gravity-linked — one external hose. Remote resupply from water bowser or tanker (no cargo door access required)
 
-### 5.2 Brown System — Used Water Recycling
+### 4.2 Brown System — Used Water Recycling
 
 ```
 Processing tray sump (P-04 suction pickup)
@@ -176,19 +171,19 @@ Processing tray sump (P-04 suction pickup)
 
 **Filter train sizing:**
 
-The filter train uses a single 3-stage whole-house filter unit (a **4.5"×10"** Big Blue 3-stage; Express Water / Geekpure / iSpring 10") with **Ø184 × 333mm** housings. *(Switched from 4.5"×20" to match the modeled BB_OD=184/BB_H=340 — see [component-dimension-audit.md](component-dimension-audit.md).)* This eliminates all inter-housing plumbing and the separate filter skid frame — the unit mounts directly to the pinhole wall with its integrated bracket. 1" NPT inlet/outlet; a single 1/2"→1" bushing reducer connects P-02 output to the unit inlet.
+The filter train uses a single 3-stage whole-house filter unit (a **4.5"×10"** Big Blue 3-stage; Express Water / Geekpure / iSpring 10") with **Ø184 × 333mm** housings. *(Switched from 4.5"×20" to match the modeled BB_OD=184/BB_H=340 — see [component-dimension-audit.md](component-dimension-audit.md).)*. 1" NPT inlet/outlet; a single 1/2"→1" bushing reducer connects P-02 output to the unit inlet.
 
 | Stage | Cartridge (4.5"×10") | Removes | Replace interval |
 |-------|---------------------|---------|-----------------|
 | F-1 | MPP 5-micron melt-blown polypropylene sediment | Gross sediment, fiber lint, Prussian blue particles | ~Every 14 prints |
 | F-2 | KDF-55 heavy metal removal | Dissolved iron compounds from ferricyanide wash water | ~Every 15 prints |
-| F-3 | CTO coconut shell activated carbon block | Residual organics, color, taste | ~Every 10 prints |
+| F-3 | CTO coconut shell activated carbon block | Residual organics, color | ~Every 10 prints |
 
 The 10" cartridges (~½ the media of a 20") were chosen to match the modeled housing size, so service intervals are correspondingly shorter (~½). The unit includes triple drain valves for flushing individual stages without disassembly. Equivalent 3-stage Big Blue units are available from Express Water, Geekpure, iSpring and others — any unit accepting standard 4.5"×10" cartridges with 1" NPT ports will work.
 
 **pH management:** If filtered water reads pH <6, do nothing — slightly acidic is preferred. If pH >7.5, add citric acid solution (10g citric acid in 1 liter water) via the dosing port in the IBC-3 outlet, stir, retest. Do not return water with pH >8 to the Blue system.
 
-### 5.3 Black System — Waste Containment
+### 4.3 Black System — Waste Containment
 
 ```
 FROM 3W-DV-01 (rejected filter output — pH out of range)
@@ -201,21 +196,21 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
    TRANSPORT to licensed liquid waste disposal facility
 ```
 
-- IBC-4 is a 1000L caged composite tote with DN50 butterfly valve (S60×6 thread), identical to IBC-1 through IBC-3 (all four totes are the same size; "600 L"/"1000 L" are fill levels)
-- IBC-4 sits in the right end zone in a 2x2 stack: bottom-far position (Yd=1,316–2,332)
+- IBC-4 is a 1000L caged composite tote with DN50 butterfly valve (S60×6 thread); "600 L"/"1000 L" are fill levels
+- IBC-4 sits in the right end zone in a 2x2 stack: bottom-far position
 - Cap sealed before transport; label contents, date, location, UN numbers for ferricyanide/iron compounds
-- Drained remotely via external 2" NPT bulkhead fitting with camlock on the container end wall centerline (Yd=1181mm, Z=200mm) — no need to open cargo doors
+- Drained remotely via external 2" NPT bulkhead fitting with camlock on the container end wall centerline — no need to open cargo doors
 - **Do not leave IBC valve open** — evaporation and UV exposure can drive ferricyanide chemistry
 
-### 5.4 Processing Tray and Spray Bar
+### 4.4 Processing Tray and Spray Bar
 
 The processing tray and spray bar gantry are fully specified in the [Processing Tray & Spray Bar Report](processing-tray-and-spray-bar.md). Their role in the water system is summarized here.
 
-**Processing tray:** A permanently installed 4459 × 2200mm stainless steel tray sits on the optical zone floor between the film plane rails. A 1:200 dual-axis slope drains wash water to a pressed sump well at the near rim center (X=2399mm, Yd=80mm). P-04 draws from the sump via a suction pickup tube — no penetration of the tray floor or container floor.
+**Processing tray:** A permanently installed 4459 × 2200mm stainless steel tray sits on the optical zone floor between the film plane rails. A 1:200 dual-axis slope drains wash water to a pressed sump well on the right side nearest the pinhole wall. P-04 draws from the sump via a suction pickup tube — no penetration of the tray floor or container floor.
 
 **Drain path:** P-04 suction pickup → 1" flexible hose over near rim → P-04 pump on equipment panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste).
 
-**External drain-out risers:** The Brown (IBC-3) and Waste (IBC-4) totes are pumped out to the sealed end-wall ports — X3 via P-05, X4 via P-03. The two vertical drain risers run down the IBC corridor gap (Yd 1046–1316, clear of both tote columns) and are clamped at ~400mm centers to an 18mm marine-ply backing spine that tees perpendicular off the equipment panel. Its top is capped with a horizontal ply shelf that the Blue fill trunk rests on — so both the drain risers and the fill trunk are supported at the T rather than free-hanging.
+**External drain-out risers:** The Brown (IBC-3) and Waste (IBC-4) totes are pumped out to the sealed end-wall ports — X3 via P-05, X4 via P-03. The two vertical drain risers run down the IBC corridor gap and are clamped at ~400mm centers to an 18mm marine-ply backing spine that tees perpendicular off the equipment panel. Its top is capped with a horizontal ply shelf that the Blue fill trunk rests on — so both the drain risers and the fill trunk are supported at the T rather than free-hanging.
 
 **Spray bar:** A 4399mm aluminum SHS beam gantry rolls on the tray floor beneath the walkway grating. Water from P-01 (Blue supply) reaches the bar via BV-02 → 4m flexible hose → center feed bulkhead fitting → 38 × 3mm spray holes at 100mm centers.
 
@@ -227,7 +222,7 @@ For full construction details, structural analysis, parts list, and engineering 
 
 ---
 
-## 6. Plumbing Specification
+## 5. Plumbing Specification
 
 ### Pipe sizing
 
@@ -278,7 +273,7 @@ At 3.5 GPM, flow velocity in 1/2" pipe (ID ~15.8mm) is approximately 1.1 m/s —
 
 ---
 
-## 7. Electrical — 12V DC Power
+## 6. Electrical — 12V DC Power
 
 | Item | Current draw | Hours/print | Wh/print |
 |------|-------------|-------------|---------|
@@ -293,14 +288,14 @@ A 100 Ah 12V lithium battery (1,200 Wh usable) provides **>25 prints** of pump p
 
 ---
 
-## 8. Equipment Layout
+## 7. Equipment Layout
 
-See **Sheet 2 — Plan View** (`water-system-sheet2.png`) for the water-system-specific P&ID layout. All four IBCs are in the provably shadow-free **right end zone** (X=4649–5893mm), arranged in a 2x2 stack. The optical zone (X=150–4649mm) contains only the processing tray and perimeter walkways at floor level.
+See **Sheet 2 — Plan View** (`water-system-sheet2.png`) for the water-system-specific P&ID layout. All four IBCs are in the provably shadow-free **right end zone** (X=4649–5893mm), arranged in a 2x2 stack. The optical zone contains only the processing tray and perimeter walkways at floor level.
 
 **Container floor plan — all systems (top-down, 1:75):**
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 
-IBCs are arranged in a **2x2 stack** in the right end zone at X=4674mm, right-justified to the far end wall. Near column (Yd=30–1,046): IBC-1 Blue (top) + IBC-3 Brown (bottom). Far column (Yd=1,316–2,332): IBC-2 Blue (top) + IBC-4 Waste (bottom). A 270mm plumbing corridor between the two columns (Yd=1,046–1,316) carries all internal supply and return lines. Total physical capacity: 4×1000L = 4,000L (totes are filled to working levels, not full). All IBCs are loaded empty through the cargo doors and filled/drained remotely via 3x external 2" NPT bulkhead fittings (X1/X3/X4) through the container end wall. IBC wall clearance is 30mm (near wall to near column edge).
+IBCs are arranged in a **2x2 stack** in the right end zone, right-justified to the far end wall. Near column: IBC-1 Blue (top) + IBC-3 Brown (bottom). Far column: IBC-2 Blue (top) + IBC-4 Waste (bottom). A 270mm plumbing corridor between the two columns carries all internal supply and return lines. Total physical capacity: 4×1000L = 4,000L (totes are filled to working levels, not full). All IBCs are loaded empty through the cargo doors and filled/drained remotely via 3x external 2" NPT bulkhead fittings (X1/X3/X4) through the container end wall. IBC wall clearance is 30mm (near wall to near column edge).
 
 | Zone | Contents | X (mm) | Yd (mm) | H (mm) |
 |------|----------|--------|---------|--------|
@@ -332,7 +327,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 ---
 
-## 9. Parts List
+## 8. Parts List
 
 ### Water storage
 
@@ -480,7 +475,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 ---
 
-## 10. Maintenance
+## 9. Maintenance
 
 | Task | Frequency | Notes |
 |------|-----------|-------|
@@ -494,7 +489,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 ---
 
-## 11. Safety Notes
+## 10. Safety Notes
 
 1. **Ferricyanide in alkaline conditions:** Do not allow IBC-4 waste water to contact strong alkalis (sodium hydroxide, bleach). In alkaline + UV conditions, ferricyanide can release trace cyanide ions. Keep pH < 7.5 in all containers. This is a theoretical rather than acute risk at the concentrations involved, but is worth managing.
 
@@ -508,7 +503,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 ---
 
-## 12. Source References
+## 11. Source References
 
 **Chemistry and safety:**
 - [Photrio — Composition of cyanotype wash water](https://www.photrio.com/forum/threads/composition-of-cyanotype-wash-water.126234/)

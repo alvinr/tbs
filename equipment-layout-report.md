@@ -261,15 +261,15 @@ balance, max-fill, and top-up analysis, and the full water circuit design.
 ## 9. Egress Safety Assessment
 
 When the hinged panel is opened 180° from the inside, the light trap drum (mounted
-in the panel center zone, Yd=653–1709mm) swings outward with the panel. With the
-waste drums eliminated (rev 5), the entire left end zone floor is clear.
+in the panel center zone) swings outward with the panel. With the
+waste drums eliminated, the entire left end zone floor is clear.
 
 ### 9.1 Egress Gap
 
 | Measurement | Value |
 |-------------|-------|
 | **Clear passage width** | **2362mm (93") — full container width** |
-| At door frame (X=0) | ~2362mm (full frame opening) |
+| At door frame | ~2362mm (full frame opening) |
 | Obstructions in egress path | None |
 
 **Human factors reference:**
@@ -300,7 +300,7 @@ The panel + drum swing about the Ø89 pivot — ~56° inboard for transport (the
 **Cargo door egress detail — panel open 180° outward:**
 ![TBS-001 Cargo Door Egress Detail](assets/container-floorplan-sheet2.png)
 
-The light trap drum (900mm dia, center ~1181mm from hinge axis) sweeps through exterior space during 180° rotation. With waste drums eliminated, no interior equipment exists in the left end zone floor area.
+The light trap drum (900mm dia, center ~1181mm from hinge axis) sweeps through exterior space during 180° rotation. No interior equipment exists in the left end zone floor area.
 
 **Conclusion:** No components obstruct egress. The left end zone is entirely clear at floor level, providing unobstructed single-person egress and full swing clearance at the cargo door end.
 

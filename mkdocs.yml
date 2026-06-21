@@ -53,7 +53,6 @@ nav:
   - Home: index.md
   - Proposal: funding-proposal.md
   - "Costing": project-cost-breakdown.md
-  - "Cost Analysis": cost-analysis-report.md
   - "Operating Manual": operating-manual.md
   - Construction:
     - "Overview": engineering-diagrams.md
@@ -98,6 +97,7 @@ nav:
     - "Distortion Renders": complete-distortion-renders.md
     - "Tilt & Swing Distortion Renders": tilt-swing-board-analysis.md
     - "Light Trap Selection": light-trap-selection.md
+    - "Cost Analysis": cost-analysis-report.md
   - "Transportation":
     - "Options": container-transport-options.md
     - "Weight Distribution": weight-distribution-report.md

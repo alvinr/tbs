@@ -366,8 +366,8 @@ DV-01 sits after the filter skid (F1→F2→F3) and the pH test point. After bro
 ## Extended Deployment — On-Site Water Top-Up (optional)
 **Lighting: normal — all top-up is external; the container stays sealed and dark.**
 
-A single hauled Blue fill supports ~13 prints (or ~15–16 if the Blue totes were filled toward
-their ~1,900L maximum before departure — see [Water System Report §4](water-system-report.md)). For
+A single hauled Blue fill supports ~14 prints (or ~15–16 if the Blue totes were topped toward
+their ~1,900–2,000L maximum before departure — see [Water System Report §4](water-system-report.md)). For
 a longer stay, resupply Blue and discharge waste through the **external end-wall bulkhead ports** —
 **without opening the cargo doors**, so the dark, camera-ready state is preserved and the print cycle
 (Phases 2–4) simply repeats. This is a distinct mode from the single-fill deployment; it is **not**

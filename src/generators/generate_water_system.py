@@ -243,10 +243,10 @@ def draw_sheet1():
     # ── BLUE SYSTEM ───────────────────────────────────────────────────────────────
     # IBC1 Clean water A
     tank(ax1, 1.5, 8.2, 1.4, 1.4, fc="#BBDEFB", ec=C_BLUE_IBC, lw=2,
-         label="IBC-1", sublabel="264 gal (1000L)\nCLEAN A (~800L)")
+         label="IBC-1", sublabel="264 gal (1000L)\nCLEAN A (~900L)")
     # IBC2 Clean water B
     tank(ax1, 3.3, 8.2, 1.4, 1.4, fc="#BBDEFB", ec=C_BLUE_IBC, lw=2,
-         label="IBC-2", sublabel="264 gal (1000L)\nCLEAN B (~800L)")
+         label="IBC-2", sublabel="264 gal (1000L)\nCLEAN B (~900L)")
 
     # X1 fill tees to BOTH Blue totes; both supply the pump via BV-01 — the two
     # totes are connected in parallel (no cross-connect), matching the 3D.
@@ -637,12 +637,12 @@ def draw_sheet2():
     # Near column (Yd=30–1046mm): Blue #1 on top, Brown on bottom
     NEAR_IBC_DY = BLUE_IBC_Y * SY
     ibc_plan(ax2, IBC_COL_DX, NEAR_IBC_DY, "#BBDEFB", C_BLUE_IBC,
-             "IBC-1 BLUE / IBC-3 BROWN", "Top: Blue ~800L clean\nBottom: Brown recycle")
+             "IBC-1 BLUE / IBC-3 BROWN", "Top: Blue ~900L clean\nBottom: Brown recycle")
     # Far column (Yd=1316–2332mm): Blue #2 on top, Waste on bottom — 270mm plumbing corridor between columns
     # Plan view sees top tier (Blue #2)
     FAR_IBC_DY = IBC_FAR_Y * SY
     ibc_plan(ax2, IBC_COL_DX, FAR_IBC_DY, "#BBDEFB", C_BLUE_IBC,
-             "IBC-2 BLUE / IBC-4 WASTE", "Top: Blue ~800L clean\nBottom: Waste")
+             "IBC-2 BLUE / IBC-4 WASTE", "Top: Blue ~900L clean\nBottom: Waste")
 
     # Equipment panel in IBC plumbing corridor (between IBC columns)
     EP_X_DU = PUMP_X * SX             # ≈ 9.77

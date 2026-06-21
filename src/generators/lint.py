@@ -244,7 +244,7 @@ def warn_missing_cascade() -> tuple[bool, list[str]]:
 # ── WARNING: hardwired literal that should be a tbs_constants reference ──────
 # The "should have been a constant" drift class (Phase 4): a generator/model carries a numeric
 # literal that equals a tbs_constants value instead of importing it — so when the constant changes,
-# the literal silently goes stale (exactly the calculate_energy_budget BLUE_SUPPLY_L=1600 case).
+# the literal silently goes stale (exactly the calculate_energy_budget BLUE_SUPPLY_L=1800 case).
 # Two tiers:
 #   HIGH  — a module assignment `NAME = <lit>` where NAME *is* a constant and the file doesn't import
 #           it: a re-declaration that shadows/duplicates the source. Near-zero false positive.

@@ -141,10 +141,10 @@ blue_supply_l:
   constant: BLUE_SUPPLY_L
   unit: L
   owner: water-system-report.md
-  display: comma                       # fills as '1,600' (with thousands separator) when injected
+  display: comma                       # fills as '1,800' (with thousands separator) when injected
   aliases:
     - '(\d,?\d{3})\s*L\s*Blue'
-    - '(\d,?\d{3})\s*L \(423 gal\)'
+    - '(\d,?\d{3})\s*L \(476 gal\)'
 
 # ── Derived display figures (computed from their inputs; aliases anchor on the shift/area context
 # so they don't catch other mm values or the '116 kg' tray weight) ──

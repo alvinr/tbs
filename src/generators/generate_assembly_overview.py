@@ -709,7 +709,7 @@ legend2 = [
     (C_CONE_L,   "Optical cone (shadow-free projection)"),
     (C_ALUM2,    "Film plane rail (floor & ceiling)"),
     (C_FILM_PLN, "Film plane carriage (symbolic)"),
-    (C_BLUE_IBC, "Blue IBC stack x2 (1000L, 1600L total)"),
+    (C_BLUE_IBC, "Blue IBC stack x2 (1000L, 1800L total)"),
     (C_BROWN_IBC,"Brown IBC x1 (1000L)"),
     (C_LT_DRUM,  "Revolving light-trap drum"),
     (C_HINGE_PANEL,     "Hinged panel"),

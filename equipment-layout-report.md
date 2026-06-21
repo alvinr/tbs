@@ -71,8 +71,8 @@ is 30mm on each side.
 
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
-| Blue IBC-1 (800L fill, top near) | 4,674–5,893 | 30–1,046 | 1,168–2,336 | Near column top; restraint frame |
-| Blue IBC-2 (800L fill, top far) | 4,674–5,893 | 1,316–2,332 | 1,168–2,336 | Far column top; restraint frame |
+| Blue IBC-1 (900L fill, top near) | 4,674–5,893 | 30–1,046 | 1,168–2,336 | Near column top; restraint frame |
+| Blue IBC-2 (900L fill, top far) | 4,674–5,893 | 1,316–2,332 | 1,168–2,336 | Far column top; restraint frame |
 | Brown IBC-3 (recycle buffer, bottom near) | 4,674–5,893 | 30–1,046 | 0–1,168 | Near column bottom; recycled wash/fix |
 | Waste IBC-4 (waste, bottom far) | 4,674–5,893 | 1,316–2,332 | 0–1,168 | Far column bottom; sealed waste collection |
 
@@ -140,7 +140,7 @@ food-grade, 48×40-footprint tote stocked.
 | **1000L caged composite** | **1,168** | **2336mm** | **52mm** |
 
 The 52mm headroom is tight but **transport-validated**: the loaded-transport CG sits at
-Z=1,306mm (static sideways tip threshold ≈42°, ≈20% of the ISO gross limit) — see the
+Z=1,341mm (static sideways tip threshold ≈41°, ≈21% of the ISO gross limit) — see the
 [weight-distribution report](weight-distribution-report.md).
 
 **Raw material suppliers:**
@@ -234,24 +234,24 @@ pinhole wall at X=2399mm (pinhole side), H=400mm.
 
 ## 8. Water Capacity Summary
 
-All four positions are identical 1000L caged composite IBCs — the 600L / 800L figures
+All four positions are identical 1000L caged composite IBCs — the 630L / 900L working fills
 are **fill levels, not tote sizes** (a 600L caged tote does not exist). Each tote's fill
 swings between the two ends of a resupply cycle:
 
 | IBC (identical 1000L tote) | Role | Camera ready | Supply exhausted |
 |----------------------------|------|-------------:|-----------------:|
-| Blue ×2 (stacked) | Clean wash supply | <!-- BEGIN fact:blue_supply_l -->1,600<!-- END fact:blue_supply_l -->L (2× 800L) | 0L |
-| Brown | Recycled wash / fix buffer | 0L | 600L |
-| Waste (sealed) | Waste collection | 0L | 600L |
-| **Total in system** | — | **1,600L clean** | **1,200L used** |
+| Blue ×2 (stacked) | Clean wash supply | <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L (2× 900L) | 0L |
+| Brown | Recycled wash / fix buffer | 0L | 630L |
+| Waste (sealed) | Waste collection | 0L | 630L |
+| **Total in system** | — | **1,800L clean** | **1,260L used** |
 
-A session starts camera-ready with both Blue totes full (800L each) and the Brown/Waste totes
-empty; the supply is **exhausted when the Blue totes are empty**. The collection totes hold ~1,200L
-while ~1,600L of Blue was consumed — the ~400L difference is open-process loss (wet-print carryout,
-evaporation, unrecovered residual).
+A session starts camera-ready with both Blue totes full (900L each) and the Brown/Waste totes
+empty; the supply is **exhausted when the Blue totes are empty**. The collection totes hold ~1,260L
+of the 1,800L Blue supply — the rest is open-process loss (~430L; wet-print carryout, evaporation,
+unrecovered residual) plus a sub-print dreg (~110L).
 
-**Print capacity.** The <!-- BEGIN fact:blue_supply_l -->1,600<!-- END fact:blue_supply_l -->L nominal load supports **~<!-- BEGIN fact:prints_per_resupply -->13<!-- END fact:prints_per_resupply --> prints per resupply**; filling Blue toward the
-tote's physical maximum (~1,900L) raises this to ~15–16 (transport-validated,
+**Print capacity.** The <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L nominal load supports **~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints per resupply**; filling Blue toward the
+tote's physical maximum (~1,900–2,000L) raises this to ~15–16 (transport-validated,
 [Weight Report §4.4](weight-distribution-report.md)), and on-site top-up via the X1 / X3 / X4 bulkhead
 ports extends it further. See [Processing System Report §4](water-system-report.md) for the full water
 balance, max-fill, and top-up analysis, and the full water circuit design.

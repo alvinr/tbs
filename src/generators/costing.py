@@ -448,6 +448,7 @@ def emit_scenario_c() -> str:
 # water-% inline also retired the stale '28%' the prose carried from the old water/capital figures.
 _CA = "cost-analysis-report.md"
 _OM = "operating-manual.md"
+_EL = "equipment-layout-report.md"
 
 
 def capital_mid() -> int:
@@ -645,6 +646,8 @@ def _inline_blocks() -> dict:
         "om-ferri-g-lean":     (_OM, lambda: f"{_ferri_g('lean')}"),
         "om-ferri-g-standard": (_OM, lambda: f"{_ferri_g('standard')}"),
         "om-ferri-g-rich":     (_OM, lambda: f"{_ferri_g('rich')}"),
+        # equipment-layout-report.md §5 IBC stacking frame price band (from the WATER line item).
+        "eq-ibc-frame-cost":   (_EL, lambda: f"${_ibc_frame().low:,}–${_ibc_frame().high:,}"),
     }
 
 
@@ -669,6 +672,11 @@ def _ferri_g(key: str) -> int:
 
 def _kg_fmt(v: float) -> str:
     return str(int(v)) if float(v).is_integer() else f"{v:g}"
+
+
+# equipment-layout-report.md §5 — the IBC stacking frame line item owns its own price band.
+def _ibc_frame() -> LineItem:
+    return next(li for li in WATER if li.label.startswith("IBC stacking frame"))
 
 
 def _reformat_cell(cell: str, value: int) -> str:

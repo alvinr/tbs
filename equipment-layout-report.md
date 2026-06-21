@@ -308,20 +308,20 @@ The light trap drum (900mm dia, center ~1181mm from hinge axis) sweeps through e
 
 ## 10. Summary
 
-| Parameter | Old (colonnade) | New (end-zone) |
-|-----------|----------------|----------------|
-| Equipment zone concept | Yd=0–1220mm depth band | X=0–150mm and X=4649–5893mm end zones |
-| Pinhole position | X=2946mm | **X=2399mm** (centered on active FP) |
-| Active film plane width | <!-- BEGIN fact:container_interior_length_mm -->5893<!-- END fact:container_interior_length_mm -->mm | **<!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm -->mm** (X=150–4649mm) |
-| Rail positions | X=200mm, X=5693mm | **X=150mm, X=4649mm** |
-| Rail span | 5493mm | **<!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm -->mm** |
-| Max swing angle | 20.3° | **<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->°** |
-| Blue IBCs (×2) | Left side, X=100–1319mm | Right end zone, X=4674mm, 2×2 stack top tier |
-| Brown IBC | Right side, X=4674mm | Right end zone, X=4674mm, 2×2 stack bottom near |
-| Waste handling | 55-gal drums (right side, X=3900mm) | **IBC-4 in the right end zone, 2×2 stack bottom far** |
-| Evap cooler | X=1380mm (near optical zone) | **Ground-placed outside; duct penetration at Yd=0, X=1000mm** |
-| Items in optical cone | 0 (colonnade already fixed) | **0** ✓ |
-| Shadow-free proof | Depth-limited (max Yd=1220mm) | **Geometry-limited (exact cone fit at film plane edges)** |
+| Parameter | Value |
+|-----------|-------|
+| Equipment zone concept | X=0–150mm and X=4649–5893mm end zones |
+| Pinhole position | X=2399mm (centered on active FP) |
+| Active film plane width | <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm -->mm (X=150–4649mm) |
+| Rail positions | X=150mm, X=4649mm |
+| Rail span | <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm -->mm |
+| Max swing angle | <!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° |
+| Blue IBCs (×2) | Right end zone, X=4674mm, 2×2 stack top tier |
+| Brown IBC | Right end zone, X=4674mm, 2×2 stack bottom near |
+| Waste handling | IBC-4 in the right end zone, 2×2 stack bottom far |
+| Evap cooler | Ground-placed outside; duct penetration at Yd=0, X=1000mm |
+| Items in optical cone | 0 ✓ |
+| Shadow-free proof | Geometry-limited (exact cone fit at film plane edges) |
 
 ---
 

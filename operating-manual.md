@@ -51,9 +51,9 @@ iron and is ~half the working volume (mixed 1:1 with Part B, §2.1).
 
 | Tier (per print) | AmFe (dry) | Part A water (warm) | mixed strength | AmFe for 50 prints |
 |---|---|---|---|---|
-| Lean (⅓-Ware) | 260 g | ~1.3 L | 10 g/100 ml | 13 kg |
-| **Standard (½-Ware) — default** | **390 g** | **~1.3 L** | **15 g/100 ml** | **19.5 kg** |
-| Rich (full-Ware) | 780 g | ~1.3 L | 30 g/100 ml | 39 kg |
+| Lean (⅓-Ware) | <!-- BEGIN costing:om-amfe-g-lean -->260<!-- END costing:om-amfe-g-lean --> g | ~1.3 L | 10 g/100 ml | <!-- BEGIN costing:om-amfe-kg-lean -->13<!-- END costing:om-amfe-kg-lean --> kg |
+| **Standard (½-Ware) — default** | **<!-- BEGIN costing:om-amfe-g-standard -->390<!-- END costing:om-amfe-g-standard --> g** | **~1.3 L** | **15 g/100 ml** | **<!-- BEGIN costing:om-amfe-kg-standard -->19.5<!-- END costing:om-amfe-kg-standard --> kg** |
+| Rich (full-Ware) | <!-- BEGIN costing:om-amfe-g-rich -->780<!-- END costing:om-amfe-g-rich --> g | ~1.3 L | 30 g/100 ml | <!-- BEGIN costing:om-amfe-kg-rich -->39<!-- END costing:om-amfe-kg-rich --> kg |
 
 - [ ] 0.2.1 — Heat water to 50–60°C (a kettle left to stand for 2 minutes after boiling is ideal).
 - [ ] 0.2.2 — Weigh AmFe into a mixing jug.
@@ -71,9 +71,9 @@ for more contrast (trial **T3**: 0.1% / 0.2% / 0.4%).
 
 | Tier (per print) | Potassium ferricyanide | Ammonium dichromate (0.1–0.4%, trial) | Part B water |
 |---|---|---|---|
-| Lean (⅓-Ware) | 87 g | 2.6–10.4 g | ~1.3 L |
-| **Standard (½-Ware) — default** | **130 g** | **2.6–10.4 g** | **~1.3 L** |
-| Rich (full-Ware) | 260 g | 2.6–10.4 g | ~1.3 L |
+| Lean (⅓-Ware) | <!-- BEGIN costing:om-ferri-g-lean -->86<!-- END costing:om-ferri-g-lean --> g | 2.6–10.4 g | ~1.3 L |
+| **Standard (½-Ware) — default** | **<!-- BEGIN costing:om-ferri-g-standard -->130<!-- END costing:om-ferri-g-standard --> g** | **2.6–10.4 g** | **~1.3 L** |
+| Rich (full-Ware) | <!-- BEGIN costing:om-ferri-g-rich -->260<!-- END costing:om-ferri-g-rich --> g | 2.6–10.4 g | ~1.3 L |
 
 - [ ] 0.3.1 — Weigh potassium ferricyanide and ammonium dichromate into a second jug.
 - [ ] 0.3.2 — Add water (room temperature). Stir until fully dissolved — the solution turns bright orange-red.
@@ -101,7 +101,7 @@ for more contrast (trial **T3**: 0.1% / 0.2% / 0.4%).
 - [ ] 0.5.1 — Inspect interior: no water ingress or condensation on image plane.
 - [ ] 0.5.2 — All seals (door perimeter, neoprene cord) are intact.
 - [ ] 0.5.3 — Film plane mechanism moves freely on all four corners.
-- [ ] 0.5.4 — Install perimeter walkway grating sections onto wall-cantilevered brackets around all 4 sides of the processing tray. Near, far, and right grating panels lift onto bracket arms and are secured with grating clips. The left walkway (cargo door end) is a removable lift-out section — it rests on 5 floor-leg cantilever brackets bolted to the bare floor outside the tray (arms reach X=470, three extended to X=770 on the drum-exit punch-out; the hinged panel occupies this end wall). Left corners use butt joints (no miter) so near/far walkways start at X=470, clear of the door-end panel swing sweep. The left walkway grate must be removed before the panel swings to its transport position; the floor brackets stay bolted. No contact with the tray (brackets sit on bare floor outside it).
+- [ ] 0.5.4 — Install perimeter walkway grating sections onto wall-cantilevered brackets around all 4 sides of the processing tray. Near, far, and right grating panels lift onto bracket arms and are secured with grating clips. The left walkway (cargo door end) is a removable lift-out section — it rests on 5 floor-leg cantilever brackets bolted to the bare floor outside the tray (the three brackets at the drum-exit punch-out reach further inboard than the rest; the hinged panel occupies this end wall). Left corners use butt joints (no miter) so near/far walkways start clear of the door-end panel swing sweep. The left walkway grate must be removed before the panel swings to its transport position; the floor brackets stay bolted. No contact with the tray (brackets sit on bare floor outside it).
 - [ ] 0.5.5 — Lay fresh 6-mil black LDPE containment liner over the tray surface, overlapping 50mm over the rims.
 
 **GO/NO-GO checkpoint:** Water system tested and IBCs filled. Part A and Part B prepared and sealed. All equipment packed. Container interior inspected (if accessible).
@@ -126,12 +126,12 @@ for more contrast (trial **T3**: 0.1% / 0.2% / 0.4%).
 ### 1.3 Mode Conversion — Transport to Operational
 **Time: ~5 minutes. Single-person operation.**
 
-The container arrives in transport mode: the stepped hinged panel is swung ~56° inboard about the Ø89mm vertical pivot post and held by the top + bottom wall stays; the two left film rails (TL + BL) and the left walkway have been struck/removed. Convert to operational mode before proceeding.
+The container arrives in transport mode: the stepped hinged panel is swung ~56° inboard about the vertical pivot post and held by the top + bottom wall stays; the two left film rails (TL + BL) and the left walkway have been struck/removed. Convert to operational mode before proceeding.
 
 - [ ] 1.3.1 — Open and secure the cargo doors.
 - [ ] 1.3.2 — Release the top + bottom wall stays: slack the turnbuckles and unhook the rods from the near-wall eyes.
 - [ ] 1.3.3 — With the panel still swung clear of the door plane, retrieve the evaporative cooler from near-walkway stowage (release 2 ratchet straps) and carry it out through the door opening (~20 kg dry, one person).
-- [ ] 1.3.4 — Place the cooler on the ground outside the container, adjacent to the pinhole wall near the Ø200mm duct penetration (X=1200mm). Remove the weatherproof cap from the wall stub. Connect the Ø200mm flex duct from the cooler outlet to the wall stub collar and secure with a hose clamp. Fill reservoir from the Blue circuit IBC via external port X1.
+- [ ] 1.3.4 — Place the cooler on the ground outside the container, adjacent to the pinhole wall near the Ø200mm duct penetration. Remove the weatherproof cap from the wall stub. Connect the Ø200mm flex duct from the cooler outlet to the wall stub collar and secure with a hose clamp. Fill reservoir from the Blue circuit IBC via external port X1.
 - [ ] 1.3.5 — Swing the frame back ~56° to the door plane (camera position), assisted. The vertical pivot is balanced at any angle (no gravity torque) — effort is only inertia + bearing friction; control momentum at the stop.
 - [ ] 1.3.6 — Latch the panel to the door frame with all 4 Southco cam latches (quarter-turn, flush with panel face) — compresses the EPDM perimeter + cut seals.
 - [ ] 1.3.7 — Re-fit the two left film rails (TL + BL): drop each into its saddles; the tapered dowels set the film datum; clamp down. Confirm the re-seated rails return the film plane square and planar to datum.
@@ -398,14 +398,14 @@ If shore charger is connected, leave it running overnight to top up the battery 
 ### 5.5 Transport Mode Conversion (Packing Up)
 **Time: ~5 minutes. Single-person operation.**
 
-The stepped hinged panel + drum SWING ~56° inboard about the Ø89mm vertical pivot post for transport, riding the 130mm floor gap (clearing the processing tray rim). The two left film rails (TL + BL) and the left walkway must be struck/removed before the swing so the drum cage can transition the X=150mm film-plane rail plane. The processing tray and the near/far/right walkway sections remain in place during mode conversion.
+The stepped hinged panel + drum SWING ~56° inboard about the vertical pivot post for transport, riding the floor gap (clearing the processing tray rim). The two left film rails (TL + BL) and the left walkway must be struck/removed before the swing so the drum cage can transition the left film-plane rail plane. The processing tray and the near/far/right walkway sections remain in place during mode conversion.
 
 - [ ] 5.5.1 — End camera use: power off Fan B, finish any darkroom access. Stow all interior items; return the film-plane cross-slides to their datum.
 - [ ] 5.5.2 — Park the revolving drum in its closed/aligned position and pin its rotation (detent) so it cannot flop during the move.
 - [ ] 5.5.3 — Disconnect the flex duct from the wall stub collar (release hose clamp). Replace the weatherproof cap on the wall stub. Drain the cooler reservoir completely.
-- [ ] 5.5.4 — Carry the cooler in through the door opening (~20 kg, one person). Place on a ply base plate on the near-walkway wide section at X=1450–2050mm (clear of the panel swing sweep). Secure with 2× ratchet straps to the wall brackets. Stow the flex duct alongside.
-- [ ] 5.5.5 — Lift out the removable left walkway + door-end near-deck section (X470–950) — both sit inside the swing arc.
-- [ ] 5.5.6 — Strike the two left film rails (TL + BL): release each clamp bar, lift the rail straight up out of its saddles, and stow (clipped to the near wall). *Required before the swing — otherwise the drum cage fouls the X=150 rail plane.*
+- [ ] 5.5.4 — Carry the cooler in through the door opening (~20 kg, one person). Place on a ply base plate on the near-walkway wide section, clear of the panel swing sweep. Secure with 2× ratchet straps to the wall brackets. Stow the flex duct alongside.
+- [ ] 5.5.5 — Lift out the removable left walkway + door-end near-deck section — both sit inside the swing arc.
+- [ ] 5.5.6 — Strike the two left film rails (TL + BL): release each clamp bar, lift the rail straight up out of its saddles, and stow (clipped to the near wall). *Required before the swing — otherwise the drum cage fouls the left rail plane.*
 - [ ] 5.5.7 — Release all 4 Southco cam latches — releases the perimeter + cut seals.
 - [ ] 5.5.8 — Swing the frame ~56° inboard (toward the far wall), assisted. Balanced about the vertical pivot (no gravity torque); control momentum at the stop.
 - [ ] 5.5.9 — Engage the transport lock: connect the top + bottom wall stays — hook the rods from the frame hooks to the near-wall eyes and tension the turnbuckles.

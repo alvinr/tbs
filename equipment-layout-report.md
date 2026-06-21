@@ -318,8 +318,7 @@ The light trap drum (900mm dia, center ~1181mm from hinge axis) sweeps through e
 | Max swing angle | 20.3° | **<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->°** |
 | Blue IBCs (×2) | Left side, X=100–1319mm | Right end zone, X=4674mm, 2×2 stack top tier |
 | Brown IBC | Right side, X=4674mm | Right end zone, X=4674mm, 2×2 stack bottom near |
-| Waste IBC | — (55-gal drums) | **Right end zone, X=4674mm, 2×2 stack bottom far** |
-| 55-gal drums | Right side, X=3900mm | **Eliminated — waste via IBC-4 in right end zone** |
+| Waste handling | 55-gal drums (right side, X=3900mm) | **IBC-4 in the right end zone, 2×2 stack bottom far** |
 | Evap cooler | X=1380mm (near optical zone) | **Ground-placed outside; duct penetration at Yd=0, X=1000mm** |
 | Items in optical cone | 0 (colonnade already fixed) | **0** ✓ |
 | Shadow-free proof | Depth-limited (max Yd=1220mm) | **Geometry-limited (exact cone fit at film plane edges)** |

@@ -185,9 +185,7 @@ leader(ax, EVAP_DUCT_X + duct_r, EVAP_DUCT_Z + duct_r, 1300, 2500,
        f"Evap duct penetration\nØ{EVAP_DUCT_D}mm (external unit)",
        ha="left", fs=FS_SM)
 
-# Black-water drums — 2× 55-gal, one per Yd corner (rev 4: on slide dollies).
-# In this side elevation both drums share X → collapse to single block.
-# (waste drums eliminated in rev 5 — left zone is light trap only)
+# Left end zone is light trap drum only — no floor equipment.
 
 
 # ── PINHOLE WALL EQUIPMENT — flush-mount on near long wall (Yd=0 face) ────────

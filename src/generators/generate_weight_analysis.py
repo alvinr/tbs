@@ -572,22 +572,24 @@ def build_components():
                   color=C_BLUE_IBC,
                   states=("ready", "loaded_transport"),
                   calc_note="800L clean wash water (top tier, 1600L Blue total)"),
-        # ── Liquids — Materials Exhausted (the 1600L of Blue has been processed
-        #    down into the bottom-tier Brown (recycle) + Waste totes) ────
-        Component("Brown IBC-3 water", "liquid", 800.0,
+        # ── Liquids — Materials Exhausted (the 1600L of Blue has been processed;
+        #    only ~1200L is RECOVERED into the bottom-tier Brown (recycle) + Waste
+        #    totes — ~400L is lost to the open process (evaporation, wet-print
+        #    carryout, unrecovered residual; see water-system-report.md §4) ────
+        Component("Brown IBC-3 water", "liquid", 600.0,
                   IBC_COL_X, IBC_COL_X + IBC_W,
                   BROWN_IBC_Y, BROWN_IBC_Y + IBC_D,
-                  IBC_PALLET_H, IBC_PALLET_H + 800 * IBC_BOTTLE_FILL_PER_L,
+                  IBC_PALLET_H, IBC_PALLET_H + 600 * IBC_BOTTLE_FILL_PER_L,
                   color=C_BROWN_IBC,
                   states=("exhausted",),
-                  calc_note="800L recycled water (bottom tier; 1600L recovered, split)"),
-        Component("Waste IBC-4 water", "liquid", 800.0,
+                  calc_note="600L recycled water (bottom tier; 1200L recovered of 1600L, ~400L lost)"),
+        Component("Waste IBC-4 water", "liquid", 600.0,
                   IBC_COL_X, IBC_COL_X + IBC_W,
                   WASTE_IBC_Y, WASTE_IBC_Y + IBC_D,
-                  IBC_PALLET_H, IBC_PALLET_H + 800 * IBC_BOTTLE_FILL_PER_L,
+                  IBC_PALLET_H, IBC_PALLET_H + 600 * IBC_BOTTLE_FILL_PER_L,
                   color=C_WASTE_IBC,
                   states=("exhausted",),
-                  calc_note="800L waste water (bottom tier; 1600L recovered, split)"),
+                  calc_note="600L waste water (bottom tier; 1200L recovered of 1600L, ~400L lost)"),
         # Processing tray is empty in exhausted state — all water has been
         # processed and drained into Brown/Waste IBCs.
     ]

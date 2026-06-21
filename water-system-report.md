@@ -102,8 +102,8 @@ water **carried out in the wet prints** (each full-plane muslin sheet, ~10.7 m²
 dry), **evaporation** from the open spray-wash tray, and **unrecovered residual** (tray-surface film,
 the sump dead-volume below the P-04 pickup, hose/manifold hold-up). This loss is *why two 600L
 collection totes balance a 1,600L supply* — they are sized for the recovered fraction, not full
-throughput. (The [weight report](weight-distribution-report.md) instead models the system as *closed*
-— full 1,600L recovered — as a deliberately conservative transport-weight bound.)
+throughput. (The [weight report](weight-distribution-report.md) carries the same ~1,200L recovered
+figure for its exhausted-state transport mass — 4,524 kg, ~400 kg below the loaded state.)
 
 #### Extending capacity beyond 13 prints
 

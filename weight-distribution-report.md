@@ -121,18 +121,19 @@ during processing, not pre-loaded).
 ### 4.2 Materials Exhausted (Ready for Resupply)
 
 After a full session, wash water has been consumed and redistributed.
-Blue IBCs are empty; Brown (recycled) and Waste IBCs are full. The
-processing tray has been drained — all processed water is in the
-Brown/Waste IBCs.
+Blue IBCs are empty; Brown (recycled) and Waste IBCs hold the ~1,200L
+recovered (~600L each). The processing tray has been drained; the other
+~400L was lost to the open process (evaporation, wet-print carryout,
+unrecovered residual — see [water-system report §4](water-system-report.md)).
 
 | Liquid | Volume (L) | Weight (kg) | Position | Tier |
 |--------|-----------|------------|----------|------|
-| Brown IBC-3 water | 800 | 800 | X=4,674–5,893, Yd=30–1,046 | Bottom (Z=168–968) |
-| Waste IBC-4 water | 800 | 800 | X=4,674–5,893, Yd=1,316–2,332 | Bottom (Z=168–968) |
+| Brown IBC-3 water | 600 | 600 | X=4,674–5,893, Yd=30–1,046 | Bottom (Z=168–768) |
+| Waste IBC-4 water | 600 | 600 | X=4,674–5,893, Yd=1,316–2,332 | Bottom (Z=168–768) |
 | Processing tray | — | 0 | Drained | — |
-| **Total liquid** | **1,600** | **1,600** | | |
+| **Total liquid** | **1,200** | **1,200** | | |
 
-**Total loaded weight: 4,924 kg** (3,324 dry + 1,600 liquid)
+**Total exhausted weight: 4,524 kg** (3,324 dry + 1,200 liquid)
 
 ### 4.3 State Comparison
 
@@ -141,17 +142,18 @@ Brown/Waste IBCs.
 | Dry (Transport) | 3,324 | 2,798 | 1,196 | 1,099 | 52.8/47.2% | 48.4/51.6% |
 | Loaded Transport (Blue full) | 4,924 | 3,606 | 1,191 | 1,306 | 35.6/64.4% | 48.9/51.1% |
 | Camera Ready (Deployed) | 4,924 | 3,603 | 1,175 | 1,306 | 35.6/64.4% | 50.2/49.8% |
-| Materials Exhausted (Transport) | 4,924 | 3,606 | 1,191 | 927 | 35.6/64.4% | 48.9/51.1% |
+| Materials Exhausted (Transport) | 4,524 | 3,459 | 1,192 | 932 | 38.8/61.2% | 48.8/51.2% |
 
 **Loaded Transport** is the camera-ready water load (full top-tier Blue IBCs,
 1,600 kg) carried in the *transport* configuration — panel swung in, cargo doors
-closed. It shares the Materials Exhausted footprint (same X/Yd, same 35.6/64.4
-front/rear) but the water sits in the **top** tier, so its vertical CG is
-**Z=1,306mm — 379mm higher** than the exhausted state (927mm). It is therefore
-the **highest-CG transport case** and governs road-transport stability (tie-down
-and cornering), even though total mass and axle split are unchanged. Even here the
-static sideways tip threshold is **~42°** (½-width 1,181mm ÷ Z_cg 1,306mm), so the
-deliberate Blue-on-top layout stays comfortably stable.
+closed. The water sits in the **top** tier, so its vertical CG is **Z=1,306mm —
+374mm higher** than the exhausted state (932mm), making it the **highest-CG
+transport case** that governs road-transport stability (tie-down and cornering).
+The exhausted (return) state is both lighter — **4,524 kg**, since ~400 kg of the
+processed water is lost to the open process rather than recovered — and lower-CG,
+so it is never the governing case. Even at the loaded worst case the static sideways
+tip threshold is **~42°** (½-width 1,181mm ÷ Z_cg 1,306mm), so the deliberate
+Blue-on-top layout stays comfortably stable.
 
 ### 4.4 Optional Max-Blue-Fill Transport Case
 
@@ -177,7 +179,7 @@ optional max-Blue-fill haul is therefore transport-validated.
 ### 1 — Summary Comparison
 
 Three-state side-by-side comparison with CG positions and summary table.
-The dry state is nearly balanced; liquid states shift CG rearward by ~805mm.
+The dry state is nearly balanced; the camera-ready/loaded states shift the CG rearward by ~805mm (the lighter exhausted return state by ~660mm).
 
 ![TBS-001 — Weight Analysis: Summary Comparison](assets/weight-analysis-sheet1.png)
 
@@ -201,25 +203,22 @@ Quadrant weights show the rear-heavy bias from the IBC stack.
 
 ### 4 — Materials Exhausted (Configured for Transport)
 
-Water has migrated from top-tier Blue IBCs to bottom-tier Brown/Waste
-IBCs. The hinged panel is swung ~56° about the pivot to its transport position.
-Total mass is modeled as unchanged between the loaded and exhausted states — a **conservative
-closed-system assumption** (no process loss). In practice ~400L (~400 kg) is lost to evaporation,
-wet-print carryout, and unrecovered residual ([equipment-layout §8](equipment-layout-report.md)),
-so the real return-haul is ~400 kg lighter; the closed-system figure is a conservative
-gross-weight/axle bound, and the governing transport case is in any event the Loaded (Blue-on-top)
-state, not this one. The vertical CG drops by 379mm (Z: 1,306 → 927mm) as water moves to the bottom
-tier.
+Water has migrated from top-tier Blue IBCs to bottom-tier Brown/Waste IBCs, and ~400 kg of it has
+been lost to the open process (evaporation, wet-print carryout, unrecovered residual — see
+[water-system report §4](water-system-report.md)), so only ~1,200 kg is recovered. The hinged panel
+is swung ~56° about the pivot to its transport position. Total mass therefore drops to **4,524 kg**
+(~400 kg below the loaded state), and the vertical CG drops by 374mm (Z: 1,306 → 932mm) as the
+remaining water settles in the bottom tier. This is the lightest, lowest-CG transport state — never
+the governing case.
 
 ![TBS-001 — Weight Analysis: Materials Exhausted](assets/weight-analysis-sheet4.png)
 
 ### 5 — Loaded Transport (Full Blue IBCs)
 
 The camera-ready water load (1,600 kg in the top-tier Blue IBCs) carried in
-transport configuration — panel swung in, cargo doors closed. Same
-plan footprint and 35.6/64.4 front/rear split as Materials Exhausted, but the
-water is in the **top** tier, raising the vertical CG to **Z=1,306mm** (+379mm
-vs the exhausted state). This is the worst-case transport vertical CG.
+transport configuration — panel swung in, cargo doors closed. The water is in
+the **top** tier, raising the vertical CG to **Z=1,306mm** (+374mm vs the lighter
+exhausted state at 932mm). This is the worst-case transport vertical CG.
 
 ![TBS-001 — Weight Analysis: Loaded Transport](assets/weight-analysis-sheet5.png)
 
@@ -235,10 +234,10 @@ All four states are well within the ISO 24,000 kg maximum gross weight:
 |-------|-----------|------------|-------------|
 | Dry | 3,324 | 20,681 | 13.8% |
 | Camera Ready | 4,924 | 19,081 | 20.5% |
-| Materials Exhausted | 4,924 | 19,081 | 20.5% |
+| Materials Exhausted | 4,524 | 19,476 | 18.9% |
 | Loaded Transport | 4,924 | 19,081 | 20.5% |
 
-The container operates at about 20% of its rated capacity in all states.
+The container operates at about 19–20% of its rated capacity in all states.
 There is no structural concern from a gross weight perspective.
 
 ### 6.2 Left-Right Balance (Near/Far)
@@ -268,7 +267,7 @@ zone (X=4674–5893mm). This creates a 35.6/64.4% front/rear split — more
 rear-biased than the 600L design (the heavier 1000L totes sit at the sealed end).
 
 **Transport implication:** When loaded for transport (materials exhausted,
-doors closed), the container's CG is at 61.2% of the length from the cargo
+doors closed), the container's CG is at 58.7% of the length from the cargo
 door end. For trailer placement, the container
 should be positioned so the rear (sealed) end sits over or near the trailer
 axle(s) to balance the load.
@@ -278,16 +277,15 @@ axle(s) to balance the load.
 The most significant finding is the **vertical CG migration** between states:
 
 - **Camera Ready:** Z_cg = 1,306mm (1,600 kg of water in top-tier IBCs)
-- **Materials Exhausted:** Z_cg = 927mm (1,600 kg of water in bottom-tier IBCs)
-- **ΔZ = −379mm** (CG drops ~379mm during a session)
+- **Materials Exhausted:** Z_cg = 932mm (1,200 kg of recovered water in bottom-tier IBCs)
+- **ΔZ = −374mm** (CG drops ~374mm during a session)
 
 This is an inherent self-stabilizing feature of the 2×2 IBC stack design.
-The water system is closed — 1,600 kg of water is loaded into the Blue IBCs
-and redistributed during processing. No water is added or lost; it simply
-migrates from top-tier Blue IBCs through the processing tray into bottom-tier
-Brown/Waste IBCs. Total mass remains constant at 4,924 kg throughout a
-session, but the vertical redistribution of 1,600 kg from top tier to
-bottom tier drops the center of gravity by 379mm, improving stability.
+1,600 kg of clean water is loaded into the top-tier Blue IBCs and processed during a
+session; ~1,200 kg is recovered into the bottom-tier Brown/Waste IBCs and ~400 kg is
+lost to the open process, so total mass drops from 4,924 to **4,524 kg**. The water that
+remains migrates from the top tier to the bottom tier, dropping the center of gravity by
+374mm and improving stability through the session.
 
 ### 6.5 Walkway Weight Sensitivity
 

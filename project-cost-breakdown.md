@@ -1,9 +1,9 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
-# Giant Pinhole Camera — Complete Project Cost Breakdown
+# Complete Project Cost Breakdown
 
-**Date:** April 2026  
-**Basis:** 20 ft standard shipping container, Orientation B (pinhole on 20ft long side), Proposal 1 configuration. All USD. Ranges given where source documents provide them; midpoints used for totals. Costs marked † are from detailed procurement research in supporting documents; others are estimates.
+**Date:** April 2026
+**Basis:** Ranges given where source documents provide them; midpoints used for totals. Costs marked † are from detailed procurement research in supporting documents; others are estimates.
 
 **Related:** [Master Shopping List](master-shopping-list.md) (per-item procurement with suppliers and URLs) · [Funding Proposal](funding-proposal.md) (grant-ready summary at three funding levels)
 
@@ -297,7 +297,7 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 
 **Source document:** `light-trap-selection.md`
 
-Personnel access during operation is via a **Ø900 fixed housing + single-opening C-shell drum** (no fins) built into the hinged cargo-door panel — light-tight by geometry (two 80° housing openings 180° apart; the drum opening can never bridge both). The drum rotates on two SKF 6215 bearings. This replaces the earlier Ø750 4-fin drum, which could not fit a person and leaked daylight at the rotation transit angles. **rev 9 / B2 builds the drum and housing from a hybrid plastic skin — 5mm UV-HDPE housing + 4mm PP drum — instead of 3mm aluminum**, cutting the drum/housing mass (~99 kg → ~60 kg), removing the aluminum-to-steel galvanic couple, and lowering both material and fabrication cost. Custom fabrication remains preferred over commercial darkroom doors (~$2,500–$4,500) — those are not weatherproof, transport-rated, or adaptable to a removable panel.
+Personnel access during operation is via a **Ø900 fixed housing + single-opening C-shell drum** built into the hinged cargo-door panel — light-tight by geometry (two 80° housing openings 180° apart; the drum opening can never bridge both). The drum rotates on two SKF 6215 bearings. The drum and housing from a hybrid plastic skin — 5mm UV-HDPE housing + 4mm PP drum. Custom fabrication remains preferred over commercial darkroom doors (~$2,500–$4,500) — those are not weatherproof, transport-rated, or adaptable to a removable panel.
 
 <!-- BEGIN costing:lightlock -->
 | Item | Low | Mid | High | Notes |
@@ -321,7 +321,13 @@ Personnel access during operation is via a **Ø900 fixed housing + single-openin
 
 **Source documents:** `engineering-diagrams.md` §14, `generate_walkway_diagram.py`
 
-Four removable grated walkway sections around all 4 sides of the processing tray. Near walkway widens to 500mm at EP/battery/slit zone (X≈1,155–2,629). 130mm deck height (raised +50mm so the support clears the floor-level spray bar; 15mm grate). No tray contact on any section — entire tray interior completely clear for film loading. Near/far walkways: wall-cantilevered brackets bolted to corrugated wall ribs (14 standard 8mm + 4 widened 10mm). Right walkway (rev12): cantilever rectangle — a closed 40×40 SHS frame on 2 center arms off the IBC corridor uprights, left corners on wall cleats, right corners on combined corner plates shared with the bottom film rail. Left walkway: removable lift-out grate on 5 floor-leg cantilever brackets bolted to bare floor outside the tray (arms reach X=470, three extended to X=770 on the punch-out, passing 15mm over the spray bar; brackets stay, grate lifts out for transport). Butt joints at all corners.
+Four removable grated walkway sections around all 4 sides of the processing tray. Near walkway widens to 500mm at EP/battery/slit zone. 130mm deck height to clear the processing tray and spray bar. No tray contact on any section — entire tray interior completely clear for film loading.
+
+Near/far walkways: wall-cantilevered brackets bolted to corrugated wall ribs (14 standard 8mm + 4 widened 10mm).
+
+Right walkway: cantilever rectangle — a closed 40×40 SHS frame on 2 center arms off the IBC corridor uprights, left corners on wall cleats, right corners on combined corner plates shared with the bottom film rail.
+
+Left walkway: removable lift-out grate on 5 floor-leg cantilever brackets bolted to bare floor outside the tray. Arms are extened in the middle punch out section to ease operator egress. Grate lifts out for transport. Butt joints at all corners.
 
 <!-- BEGIN costing:walkway -->
 | Item | Low | Mid | High | Notes |
@@ -350,7 +356,7 @@ Four removable grated walkway sections around all 4 sides of the processing tray
 
 **Source documents:** `equipment-layout-report.md` §6.1, `hinged-panel-report.md` §4–5
 
-The panel + drum SWING ~56° about a vertical Ø89×8mm CHS pivot post (rev10 — supersedes the HGR20 slide + ceiling-rail suspension), carrying the punch-out bay inboard of the door plane (true min X +59mm) so the cargo doors close. See the rotation-hardware detail in [master-shopping-list.md](master-shopping-list.md) §7a.
+The panel + drum SWING ~56° about a vertical Ø89×8mm CHS pivot post, carrying the punch-out bay inboard of the door plane so the cargo doors close. See the rotation-hardware detail in [master-shopping-list.md](master-shopping-list.md) §7a.
 
 <!-- BEGIN costing:swingpivot -->
 | Item | Low | Mid | High | Notes |
@@ -370,7 +376,7 @@ The panel + drum SWING ~56° about a vertical Ø89×8mm CHS pivot post (rev10 �
 
 **Source document:** `chemistry-shopping-list.md`
 
-Cyanotype is the recommended starting process: no silver, no DEA registration, no hazmat shipping, processing in plain water. Cost is lowest of all processes evaluated at this scale.
+Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipping, processing in plain water. Cost is lowest of all processes evaluated at this scale.
 
 ### 7.1 Chemistry and substrate (50 prints)
 

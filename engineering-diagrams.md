@@ -4,7 +4,7 @@
 
 ## 1. System Assembly Overview
 
-There are a number of discrete systems, color-coded in the diagram below. This view is shown from the optical axis, looking through the container wall. Each of these sub-systems, has a detailed breakdown of construction, schematic and other diagrams to show how each system it built, installed, used and maintained. The 3d model below provides a simply way to view the whole system. 
+There are a number of discrete systems, color-coded in the diagram below. This view is shown from the optical axis, looking through the container wall. Each of these sub-systems has a detailed breakdown of construction, schematic, and other diagrams to show how each system is built, installed, used, and maintained. The 3D model below provides a simple way to view the whole system.
 
 <div class="sketchfab-embed-wrapper">
   <div style="position:relative;width:100%;padding-bottom:56.25%;">
@@ -32,7 +32,7 @@ The container is split into three main areas
 
 ![TBS-001 — Assembly: Side Elevation — pinhole wall view](assets/assembly-overview.png)
 
-From the pinhole wall, looking toward the film plane, you can see the orientation of equipment placed on the inside of the container wall, relative to the pinhole. The equipment is located to no interfere with the optical cone. On the left the rotating light trap can be see deployed in *camera* mode (as opposed to *transport* mode). On the right there is the stack of IBC containers for clean and waste water, stacked.
+From the pinhole wall, looking toward the film plane, you can see the orientation of equipment placed on the inside of the container wall, relative to the pinhole. The equipment is positioned so as not to interfere with the optical cone. On the left the rotating light trap can be seen deployed in *camera* mode (as opposed to *transport* mode). On the right is the stack of IBC containers for clean and waste water.
 
 ![TBS-001 — Assembly: Film Plane Side Elevation](assets/assembly-overview-fp.png)
 
@@ -40,4 +40,4 @@ Second view is from the film plane wall, looking toward the pinhole. The X axis
 is mirrored (far end at left, cargo door at right). The orientation of the optical cone, film plane rails,
 and carriage can be seen.
 
-The sub-sections, there are details construction reports for each of the major system and sub-systems of each.
+There are detailed construction reports for each of the major systems and their sub-systems.

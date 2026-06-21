@@ -81,6 +81,11 @@ also a `tbs_constants` value or a `costing.py`/`facts.yml` fact, prefer the refe
 - [ ] engineering-diagrams.md  — diagram index
 - [ ] skill_label_placement.md  — drawing skill
 
+## F. PoC (TBS-002)
+
+- [ ] mini-tbs-poc.md  — *small-scale proof-of-concept design*
+- [ ] mini-tbs-shopping-list.md  — *PoC procurement*
+
 ---
 
 *Tip: when you clear a file, tick it and (optionally) note what moved out, so we can spot any number

@@ -71,7 +71,7 @@ also a `tbs_constants` value or a `costing.py`/`facts.yml` fact, prefer the refe
 
 ## D. Operating
 
-- [ ] operating-manual.md  — *procedural; keep step values, trim restated geometry*
+- [x] operating-manual.md  — *DONE (2026-06-20): procedural doc, so most values stay as step guidance. (a) The §0.2/§0.3 chemistry tier tables now single-source the AmFe/ferricyanide masses from `costing.py` TIERS — AmFe per-print g + 50-print kg + ferri per-print g are generated `costing:om-*` blocks (generating reconciled lean ferri 87 g → 86 g); the Ware strengths (g/100 ml), water, and dichromate stay as recipe constants. (b) Trimmed the raw diagram coordinates an operator locates physically, not by measuring — pivot Ø89mm, duct X=1200mm, cooler X=1450–2050mm, walkway X=470/770/950, film-rail X=150mm. Kept operational values: angles (~56° swing, 30° solar, 5° level), the Ø200mm duct size they connect, 150mm clamp centers, spray-bar Yd positions, timings, temps.*
 
 ## E. Meta / index / skill (NOT report content — likely SKIP or treat separately)
 

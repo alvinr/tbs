@@ -447,6 +447,7 @@ def emit_scenario_c() -> str:
 # section Mids (this report summarises the Mid column), so they can't drift. Generating §3 + the
 # water-% inline also retired the stale '28%' the prose carried from the old water/capital figures.
 _CA = "cost-analysis-report.md"
+_OM = "operating-manual.md"
 
 
 def capital_mid() -> int:
@@ -634,12 +635,40 @@ def _inline_blocks() -> dict:
         "ca-capital":          (_CA, lambda: f"${capital_mid():,}"),
         "ca-consumable":       (_CA, lambda: f"${_sec('7').mid:,}"),
         "ca-water-pct":        (_CA, lambda: f"{round(_sec('5').mid / capital_mid() * 100)}"),
+        # operating-manual.md §0.2/§0.3 chemistry tier masses (from the TIERS).
+        "om-amfe-g-lean":      (_OM, lambda: f"{_amfe_g('lean')}"),
+        "om-amfe-g-standard":  (_OM, lambda: f"{_amfe_g('standard')}"),
+        "om-amfe-g-rich":      (_OM, lambda: f"{_amfe_g('rich')}"),
+        "om-amfe-kg-lean":     (_OM, lambda: _kg_fmt(_tier('lean').amfe_kg)),
+        "om-amfe-kg-standard": (_OM, lambda: _kg_fmt(_tier('standard').amfe_kg)),
+        "om-amfe-kg-rich":     (_OM, lambda: _kg_fmt(_tier('rich').amfe_kg)),
+        "om-ferri-g-lean":     (_OM, lambda: f"{_ferri_g('lean')}"),
+        "om-ferri-g-standard": (_OM, lambda: f"{_ferri_g('standard')}"),
+        "om-ferri-g-rich":     (_OM, lambda: f"{_ferri_g('rich')}"),
     }
 
 
 def _pp(tier: str) -> int:
     """All-in per-print for §7.3 = §7.1 chem+substrate per-print + the processing consumables."""
     return _r(by_key(tier)['per_print'], 1) + PER_PRINT_CONSUMABLES
+
+
+# operating-manual.md §0.2/§0.3 chemistry tier tables — the AmFe/ferricyanide masses restate the
+# TIERS, so they fill from there (per-print g = tier kg ÷ PRINTS; 50-print = tier kg).
+def _tier(key: str) -> Tier:
+    return next(t for t in TIERS if t.key == key)
+
+
+def _amfe_g(key: str) -> int:
+    return round(_tier(key).amfe_kg * 1000 / PRINTS)
+
+
+def _ferri_g(key: str) -> int:
+    return round(_tier(key).ferri_kg * 1000 / PRINTS)
+
+
+def _kg_fmt(v: float) -> str:
+    return str(int(v)) if float(v).is_integer() else f"{v:g}"
 
 
 def _reformat_cell(cell: str, value: int) -> str:

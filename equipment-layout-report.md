@@ -167,7 +167,7 @@ where the light trap drum is mounted. For transport the panel + drum SWING ~56°
 vertical Ø89×8mm CHS pivot post (the reused film-plane far-left upright at X=175, Yd=2287),
 carrying the punch-out bay inboard of the door plane. Two narrow strips stay fixed at the
 door plane (near Yd0–180, far Yd2287–2362, which carries the pivot); the cargo doors close
-outboard of the fixed near strip. The earlier "slide 880mm on HGR20 rails" scheme is retired.
+outboard of the fixed near strip. The earlier "slide ~880mm on ceiling rails" scheme is retired.
 
 | Position | Description | Doors clear? |
 |----------|-------------|-------------|
@@ -180,22 +180,12 @@ against this frame with the Southco C2-33 cam latches and 20mm EPDM gaskets in t
 
 #### 6.1.1 Swinging Panel Light Seal Design
 
-The swinging panel seals against the fixed door frame in its operational (camera-ready,
-closed) position. Five light ingress paths are sealed:
-
-| # | Light path | Seal method |
-|---|-----------|-------------|
-| 1 | **Panel perimeter → door frame** | 20mm EPDM gasket in an aluminum channel, compressed by the 4× Southco C2-33 cam latches against the fixed door frame at X=0. |
-| 2 | **Swing cuts → fixed strips** | The swinging center+corners separate from the two fixed strips along vertical cuts at Yd=180 and Yd=2287. A 20mm EPDM cut seal runs the full panel height down each cut, compressed by the cam latches when the panel is latched at the door plane. (Replaces the old sliding-carriage beam/guide-slot brush seals.) |
-| 3 | **Panel bottom → 130mm floor gap** | Fixed-frame bottom seal lip — a continuous steel threshold upstand, full panel-bottom width (no notch; the drum rides at Z=130). A 20mm EPDM strip on the panel bottom edge compresses against it, latched by the lower cam latches; releases before the swing. |
-| 4 | **Panel top → frame gap** | Fixed-frame top seal lip — a steel downstand from the frame top rail, full panel-top width, continuous across the center. A 20mm EPDM strip on the panel top edge compresses against it, latched by the upper cam latches. |
-| 5 | **Housing surround → door frame** | A second 20mm EPDM gasket rings the Ø900 housing aperture, concentric inboard of the perimeter seal, sealing the housing surround to the frame in the closed position. |
-
-**Light seal verification:** After mode conversion to operational position, the
-operator performs a dark-adaptation check (5 minutes in a darkened container with
-all seals engaged). Any visible light points are marked with gaffer tape for
-re-sealing. The cut seals at the swing boundaries and the bottom/top lips are the
-critical compression seals.
+The swinging panel seals against the fixed door frame in its operational (closed)
+position via five light-tight paths — panel perimeter, the two swing-cut seals, the
+bottom and top frame seal lips, and the Ø900 housing-surround ring — all 20mm EPDM,
+compressed by the four Southco C2-33 cam latches and released before the swing. See
+**[Hinged Panel Report §6 — Light Seal Design](hinged-panel-report.md)** for the full
+per-path seal table and the dark-adaptation verification check.
 
 ### 6.2 Evaporative Cooler Transport Stowage
 

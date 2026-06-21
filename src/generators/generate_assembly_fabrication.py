@@ -208,8 +208,7 @@ def sheet1():
             f"DUCT\nØ{EVAP_DUCT_D}", ha="center", va="center",
             fontsize=FS_SM-2, color=C_OUT, zorder=6)
 
-    # 55-gal drums ×2 — one per Yd corner (near wall + far wall), both at CX=330mm.
-    # (waste drums eliminated in rev 5 — left zone is light trap only)
+    # Left end zone is light trap drum only — no floor equipment.
 
     # ── PINHOLE WALL EQUIPMENT (flush on near long wall) ──────────────────────
     # Electrical panel

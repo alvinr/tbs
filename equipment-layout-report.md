@@ -8,14 +8,14 @@ The optical cone from the pinhole narrows as it approaches the pinhole wall and
 widens as it approaches the film plane. Any equipment placed inside the cone casts
 a shadow on the film plane, producing an unexposed void in the image.
 
-**Solution:** Reduce the active film plane from the full 5893mm container width
-to a 4499mm span (X=150–4649mm). This creates two **provably shadow-free end
+**Solution:** Reduce the active film plane from the full <!-- BEGIN fact:container_interior_length_mm -->5893<!-- END fact:container_interior_length_mm -->mm container width
+to a <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm -->mm span (X=150–4649mm). This creates two **provably shadow-free end
 zones** — one at each end of the container — where equipment can be placed at any
 depth without entering the optical cone.
 
 The right end zone contains a 2×2 IBC stack (including a dedicated 1000L waste
 IBC),  leaving the left zone to contain the light trap drum.
-The right zone boundary sits at X=4649mm, giving a 4499mm active film plane
+The right zone boundary sits at X=4649mm, giving a <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm -->mm active film plane
 (rev 5, 2026-05-06).
 
 ### Optical Cone (rev 6 geometry)
@@ -60,7 +60,7 @@ Overall floorplan can be seen below. Its essentially split into three areas, lef
 
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
-| Hinged panel (stepped) | 0–40 (corner) / 0–120 (center) | 0–2,362 | 0–2,388 | Stepped profile: 40mm corners, 120mm center (drum housing). Swings ~56° about the Ø89 pivot for transport. |
+| Hinged panel (stepped) | 0–40 (corner) / 0–120 (center) | 0–2,362 | 0–<!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm --> | Stepped profile: 40mm corners, 120mm center (drum housing). Swings ~56° about the Ø89 pivot for transport. |
 | Light trap drum | −375–375 | 806–1,556 (centered at CW/2=1181mm) | 0–2,200 | Centered at X=0 (spans container wall); integrated into panel center zone; rotary drum entry |
 
 ### 2.2 Pinhole Wall Face — Y=0 surface (shadow-free)
@@ -152,7 +152,7 @@ only restrains them for transport (front retaining bars + D-ring lashing).
 | Panel mount | the front portal also carries the (forward) wet-end equipment panel and the right-walkway cantilever arms |
 | Surface finish | Gray oxide primer + flat black powder coat (interior) |
 | Approx. weight | ~178kg (uprights + feet + front bars + hangers + exterior wall plates + panel mount) |
-| Approx. cost | USD $500–$800 (local mild steel fabrication) |
+| Approx. cost | USD <!-- BEGIN costing:eq-ibc-frame-cost -->$955–$1,455<!-- END costing:eq-ibc-frame-cost --> (local mild steel fabrication) |
 
 **Why 1000L caged composite (all four totes):**
 
@@ -274,12 +274,12 @@ pinhole wall at X=2399mm (pinhole side), H=400mm.
 
 | Tank | Qty | Capacity | Role |
 |------|-----|---------|------|
-| Blue IBC, 800L fill (stacked ×2) | 2 | 1,600L | Clean wash water |
+| Blue IBC, 800L fill (stacked ×2) | 2 | <!-- BEGIN fact:blue_supply_l -->1,600<!-- END fact:blue_supply_l -->L | Clean wash water |
 | Brown IBC, 600L fill | 1 | 600L | Recycled wash / fix |
 | Waste IBC, 600L fill | 1 | 600L | Waste (sealed) |
 | **Total** | — | **2,800L** | — |
 
-The 1,600L Blue supply supports **~13 prints per resupply** with 40% water recycling (16 gal per wash cycle, 32 gal Blue consumed per print with Brown recycling).
+The <!-- BEGIN fact:blue_supply_l -->1,600<!-- END fact:blue_supply_l -->L Blue supply supports **~<!-- BEGIN fact:prints_per_resupply -->13<!-- END fact:prints_per_resupply --> prints per resupply** with 40% water recycling (16 gal per wash cycle, 32 gal Blue consumed per print with Brown recycling).
 
 See [Processing System Report](water-system-report.md) for full water circuit design.
 
@@ -339,10 +339,10 @@ The light trap drum (900mm dia, center ~1181mm from hinge axis) sweeps through e
 |-----------|----------------|----------------|
 | Equipment zone concept | Yd=0–1220mm depth band | X=0–150mm and X=4649–5893mm end zones |
 | Pinhole position | X=2946mm | **X=2399mm** (centered on active FP) |
-| Active film plane width | 5893mm | **4499mm** (X=150–4649mm) |
+| Active film plane width | <!-- BEGIN fact:container_interior_length_mm -->5893<!-- END fact:container_interior_length_mm -->mm | **<!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm -->mm** (X=150–4649mm) |
 | Rail positions | X=200mm, X=5693mm | **X=150mm, X=4649mm** |
-| Rail span | 5493mm | **4499mm** |
-| Max swing angle | 20.3° | **25.7°** |
+| Rail span | 5493mm | **<!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm -->mm** |
+| Max swing angle | 20.3° | **<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->°** |
 | Blue IBCs (×2) | Left side, X=100–1319mm | Right end zone, X=4674mm, 2×2 stack top tier |
 | Brown IBC | Right side, X=4674mm | Right end zone, X=4674mm, 2×2 stack bottom near |
 | Waste IBC | — (55-gal drums) | **Right end zone, X=4674mm, 2×2 stack bottom far** |

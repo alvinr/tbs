@@ -35,7 +35,7 @@ also a `tbs_constants` value or a `costing.py`/`facts.yml` fact, prefer the refe
 - [ ] tilt-swing-board-analysis.md
 - [ ] water-system-report.md  — *8–10 vs 13 prints assumption now clarified; check other repeated figures*
 - [ ] ibc-stacking-report.md
-- [ ] equipment-layout-report.md  — *had a 42°/clearance Z that the tray diagram carries*
+- [x] equipment-layout-report.md  — *DONE (2026-06-21): single-sourced the headline geometry (film_plane_width_mm 4499 ×4, container_interior_length_mm 5893, film_plane_height_mm 2388, prints_per_resupply, blue_supply_l) as fact placeholders; §5 IBC-frame cost → generated costing block ($955–$1,455, was a stale $500–800); §10 max-swing drift 25.7°→28°. Reworked §8 into a two-state Camera-ready/Supply-exhausted water table with the 400L process-loss balance, max-fill capacity + on-site top-up (later cascaded to the 1,800L/14-print revision). §6.1 seal table slimmed to a pointer (hinged-panel §6); §10 reduced to a current-design summary (dropped the Old/colonnade column + 55-gal-drum archaeology). §2 coordinate position tables intentionally left as diagram-of-record detail.*
 - [ ] equipment-panel-report.md
 - [ ] electrical-report.md
 - [ ] electrical-safety-report.md

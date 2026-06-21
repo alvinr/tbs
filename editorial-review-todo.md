@@ -59,6 +59,7 @@ also a `tbs_constants` value or a `costing.py`/`facts.yml` fact, prefer the refe
 ## B. Cost & shopping (numbers move to costing.py — Phase 1; prose editorial still applies)
 
 - [x] project-cost-breakdown.md  — *DONE (2026-06-20): fully single-sourced from costing.py — 10 section detail tables, the scenario summary, §7.1 chemistry, §7.3 process-comparison Cyanotype row (all-in = §7.1 + $3/print consumables), and the §11 budget scenarios A/B/C are all generated blocks (generating §11 fixed latent drifts). Prose engineering dims (4499×2388, 116 sq ft, 13 prints, 1,600L) are fact placeholders. Only genuine external estimates (CDL/truck/transport ranges) remain hand-kept.*
+- [x] cost-analysis-report.md  — *DONE (2026-06-20): summarizes the Mid column, now generated from costing.py — §2 capital/recurring buckets (capital = grand Mid − §7/§8/§9) + §3 system ranking (sections × Mid + % of capital) are blocks; mid-total/capital/consumable/water-% inline. Generating fixed a stale "28%" water figure → 23%. Editorial savings-lever estimates left as prose. (Was missing from this list.)*
 - [ ] master-shopping-list.md  — *ditto*
 - [ ] chemistry-shopping-list.md  — *ditto*
 - [ ] sensitizer-trials.md

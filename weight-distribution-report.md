@@ -153,6 +153,23 @@ and cornering), even though total mass and axle split are unchanged. Even here t
 static sideways tip threshold is **~42°** (½-width 1,181mm ÷ Z_cg 1,306mm), so the
 deliberate Blue-on-top layout stays comfortably stable.
 
+### 4.4 Optional Max-Blue-Fill Transport Case
+
+The [equipment-layout report §8](equipment-layout-report.md) notes the Blue totes can be hauled
+to **~1,900L** (~950L per tote, vs the nominal 800L) to lift single-load print capacity to
+~15–16. Re-running the weight model at that fill confirms the heavier load stays well within
+transport limits:
+
+| Loaded Transport | Gross mass | Z_cg | Static tip threshold |
+|------------------|-----------:|-----:|---------------------:|
+| Nominal Blue fill (1,600L) | 4,924 kg | 1,306mm | 42.1° |
+| **Max Blue fill (1,900L)** | **5,224 kg** | **1,358mm** | **41.0°** |
+
+The extra ~300 kg sits in the top tier, raising the worst-case vertical CG just 52mm and lowering
+the static sideways tip threshold only ~1° (to 41.0° — still far above any rollover concern). Gross
+weight stays at ~22% of the [ISO 668](https://www.iso.org/standard/76912.html) 24,000 kg limit. The
+optional max-Blue-fill haul is therefore transport-validated.
+
 ---
 
 ## 5. Weight Distribution Diagrams
@@ -186,8 +203,13 @@ Quadrant weights show the rear-heavy bias from the IBC stack.
 
 Water has migrated from top-tier Blue IBCs to bottom-tier Brown/Waste
 IBCs. The hinged panel is swung ~56° about the pivot to its transport position.
-Total weight is unchanged (closed water system). The vertical
-CG drops by 379mm (Z: 1,306 → 927mm) as water moves to bottom tier.
+Total mass is modeled as unchanged between the loaded and exhausted states — a **conservative
+closed-system assumption** (no process loss). In practice ~400L (~400 kg) is lost to evaporation,
+wet-print carryout, and unrecovered residual ([equipment-layout §8](equipment-layout-report.md)),
+so the real return-haul is ~400 kg lighter; the closed-system figure is a conservative
+gross-weight/axle bound, and the governing transport case is in any event the Loaded (Blue-on-top)
+state, not this one. The vertical CG drops by 379mm (Z: 1,306 → 927mm) as water moves to the bottom
+tier.
 
 ![TBS-001 — Weight Analysis: Materials Exhausted](assets/weight-analysis-sheet4.png)
 

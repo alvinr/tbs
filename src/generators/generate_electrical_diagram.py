@@ -26,6 +26,7 @@ from tbs_constants import (
     DIAGRAMS_DIR,
     PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_D,          # Sheet 6 (external power panel, folded in)
     PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H,
+    EVAP_COOLER_W_AC, EVAP_COOLER_W_BUS,            # Circuit E cooler power (AC draw / 12V-bus draw)
 )
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_notes,
@@ -292,7 +293,7 @@ def draw_sheet1():
          "Equipment panel, IBC corridor (Yd=1046–1316)", C_PUMP_TINT),
         ("D", "SAFELIGHT\ninterior + vestibule",  "5A",  "18 AWG", "15W",
          "3× red LED strips (ceiling, N–S)  |  pull-cord switch", "#FFEEDD"),
-        ("E", "EVAP COOLER\n(120V AC via inverter)",  "40A", "10 AWG", "97W",
+        ("E", "EVAP COOLER\n(120V AC via inverter)",  "40A", "10 AWG", f"{EVAP_COOLER_W_BUS}W",
          "Inverter→AC unit  |  GFCI  |  200mm duct (see §7.6)", C_EVAP_TINT),
         ("F", "FILM PLANE\nACTUATORS  (optional)",  "20A", "12 AWG", "≤100W pk",
          "Future provision  |  leave fused spare", "#E8E8E8"),
@@ -847,7 +848,7 @@ def draw_sheet2():
     # Evap cooler — Cct E (external, duct penetration)
     leader(ax, DUCT_CX, OY + wt / 2,
            DUCT_CX - 350, OY - 200,
-           "Evap cooler (E)\n120V AC 85W via inverter\nExternal + duct",
+           f"Evap cooler (E)\n120V AC {EVAP_COOLER_W_AC}W via inverter\nExternal + duct",
            fs=6.5, color=C_EVAP)
     # LED panels — Cct G (label middle panel only)
     led_mid_cx = ix(LED_POSITIONS[1] + LED_W_MM / 2)
@@ -914,7 +915,7 @@ def draw_sheet2():
         ("D",     "#FFD700", "SAFELIGHT — Cct D",
          f"3× red LED strips  |  5A / 18 AWG / 15W  |  Ceiling N–S at X≈{', '.join(str(x) for x in SL_POSITIONS)}"),
         ("E",     C_EVAP,    "EVAP COOLER — Cct E",
-         f"120V AC 85W via inverter (97W on 12V bus)  |  40A / 10 AWG DC + GFCI  |  duct at X={EVAP_DUCT_X}mm"),
+         f"120V AC {EVAP_COOLER_W_AC}W via inverter ({EVAP_COOLER_W_BUS}W on 12V bus)  |  40A / 10 AWG DC + GFCI  |  duct at X={EVAP_DUCT_X}mm"),
         ("G",     C_LED,     "WHITE LED PANELS — Cct G",
          "3×20W ceiling panels  |  10A / 16 AWG / 60W  |  Pull-cord switch, non-operational only"),
         ("D/G",   C_SWITCH,  "PULL-CORD SWITCHES",
@@ -1501,7 +1502,7 @@ def draw_sheet5():
         ("B", "Vent fan — intake",   "5A",  "16 AWG", "60 W",   "#E67E22"),
         ("C", "Equip panel (pumps)", "15A", "14 AWG", "100 W",  "#2980B9"),
         ("D", "Safelight",           "5A",  "18 AWG", "15 W",   "#8E44AD"),
-        ("E", "Evap cooler (inv.)",  "40A", "10 AWG", "97 W",   "#16A085"),
+        ("E", "Evap cooler (inv.)",  "40A", "10 AWG", f"{EVAP_COOLER_W_BUS} W",   "#16A085"),
         ("F", "Actuators (spare)",   "20A", "12 AWG", "≤100 W", "#7F8C8D"),
         ("G", "White LED panels",    "10A", "16 AWG", "60 W",   "#F1C40F"),
     ]
@@ -2093,7 +2094,7 @@ def draw_sheet6():
     # Cooler AC output path (bottom row — reverse direction: interior → exterior)
     row_cool = -0.4
     sbox(ax_c, 0.5, row_cool, 2.8, 0.9,
-         "EVAP COOLER", "120V AC  85W", fc="#FFE0C0", tc=C_DT)
+         "EVAP COOLER", f"120V AC  {EVAP_COOLER_W_AC}W", fc="#FFE0C0", tc=C_DT)
     sarrow(ax_c, 4.5, row_cool + 0.45, 3.3, col=C_DT)
     ax_c.text(3.9, row_cool + 0.65, "AC cord", fontsize=6, color=C_DT,
               ha="center", **FONT)

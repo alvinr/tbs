@@ -42,7 +42,7 @@ Overall floorplan can be seen below. Its essentially split into three areas, lef
 
 | Item | X (mm) | H (mm) | Notes |
 |------|--------|--------|-------|
-| Evaporative cooler | 700–1,300 | ground | Hessaire MC18M, 120V AC 85W (97W on 12V bus via inverter); ground-placed outside, flex duct to wall stub at Z=1900mm |
+| Evaporative cooler | 700–1,300 | ground | Hessaire MC18M, 120V AC <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W (<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus via inverter); ground-placed outside, flex duct to wall stub at Z=1900mm |
 | Cooler inverter (Cct E) | 1,910–2,030 | 1,180–1,415 | Victron Phoenix 12/375 GFCI, wall-mounted below the EP (12V→120V for the cooler) |
 | Electrical panel | 1,910–2,210 | 1,500–2,100 | IP65, wall-mount (stacked above the battery bank; clears the upper transport-stay anchor). rev11: dropped 150mm (was Z1,650–2,250) — originally to clear the film-plane brace top beam; that brace cage is now retired for wall-seat saddles, but the EP is kept at this height |
 | Battery bank (2× 100Ah LiFePO4, each 330×172×214mm) | 1,540–2,220 | 150–364 | Wall shelf below panel; side-by-side, clears the optical cone |

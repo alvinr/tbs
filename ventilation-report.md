@@ -29,11 +29,11 @@ Without any mitigation, the container is unusable in summer daytime. The system 
 |--------|------------|------|-------|-----------|
 | 80% shade cloth canopy over container | −15 to −20°C | ~$300 | None | **Yes — always** |
 | Scheduling (shoot before 09:00 / after 18:00 in summer) | −10 to −15°C effective | $0 | None | Recommended |
-| Evaporative cooler (swamp cooler) — 120V AC via 12V inverter | −10 to −15°C additional | ~$405 (cooler + inverter) | 97W on 12V bus | **Yes — in temperatures above 30°C ambient** |
+| Evaporative cooler (swamp cooler) — 120V AC via 12V inverter | −10 to −15°C additional | ~$405 (cooler + inverter) | <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus | **Yes — in temperatures above 30°C ambient** |
 
 Combined (shade canopy + cooler + scheduling): interior temperature reaches 25–32°C — within operator working range.
 
-> **Why evaporative cooling works in hot climates (e.g. Palm Springs):** Evaporative (swamp) cooling is most effective when ambient relative humidity is low. Palm Springs in summer averages 10–18% RH — optimal for this technology. At 15% RH and 42°C ambient, an evaporative cooler can reduce temperature by 15–18°C, bringing 42°C down to 24–27°C after the shade canopy's contribution. At the same conditions, a standard 9,000 BTU mini-split uses 900W vs. the evaporative cooler's ~97W on the 12V bus (85W AC through the inverter) — a ~9× power saving.
+> **Why evaporative cooling works in hot climates (e.g. Palm Springs):** Evaporative (swamp) cooling is most effective when ambient relative humidity is low. Palm Springs in summer averages 10–18% RH — optimal for this technology. At 15% RH and 42°C ambient, an evaporative cooler can reduce temperature by 15–18°C, bringing 42°C down to 24–27°C after the shade canopy's contribution. At the same conditions, a standard 9,000 BTU mini-split uses 900W vs. the evaporative cooler's ~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on the 12V bus (<!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W AC through the inverter) — a ~9× power saving.
 
 ---
 
@@ -105,7 +105,7 @@ The baffle design is identical for both fans. Fan A's baffle duct is fixed to th
 | Model | **Hessaire MC18M** (120V AC) on a dedicated 12V→120V pure-sine inverter (Victron Phoenix 12/375 GFCI). *Replaces the fictional "Portacool Jetstream 110 12V DC" — see [dimension audit](component-dimension-audit.md).* |
 | Dimensions | 559 × 305 × 711mm (22 × 12 × 28 in) |
 | Weight | ~7.3 kg (16 lb) dry |
-| Power draw | 85W AC → **~97W on the 12V bus** (÷0.88 inverter efficiency) |
+| Power draw | <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W AC → **~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on the 12V bus** (÷0.88 inverter efficiency) |
 | Airflow | 1300 CFM rated — **run on LOW** to match the Ø200 light-safe duct |
 | Water consumption | ~4.8 gal tank; ~3 L/hour evaporated |
 | Circuit | E — inverter DC feed 40A / 10 AWG; AC output GFCI-protected ([Electrical §7.6](electrical-report.md#ac-safety)) |
@@ -191,7 +191,7 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 | Item | Spec | Source | Est. cost |
 |------|------|--------|-----------|
 | 150×150×50mm axial fans × 2 | 12V DC, ~150–200 CFM each | Amazon (GDSTIME/Wathai 15050) | ~$50 |
-| Evaporative cooler | Hessaire MC18M, 120V AC, 1300 CFM (run low), 85W | [Hessaire](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) / Amazon | ~$130 |
+| Evaporative cooler | Hessaire MC18M, 120V AC, 1300 CFM (run low), <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W | [Hessaire](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) / Amazon | ~$130 |
 | Cooler inverter | Victron Phoenix 12/375 GFCI (12V→120V) + DC fuse/disconnect + GFCI AC outlet | Victron / Amazon | ~$275 |
 | Shade canopy — 80% shade cloth | 20 × 10 ft | Amazon / Farm supply | ~$80 |
 | Canopy frame | 1.5" EMT conduit + fittings | Home Depot | ~$120 |
@@ -231,7 +231,7 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 ## 11. Source References
 
 1. [150mm 12V DC axial fan 15050](https://www.coolingfanfactory.com/product/DC-Fan-15050-12V-24V-48V-150mm.html) — 150×150×50mm axial panel fan specifications.
-2. [Hessaire MC18M](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) — 120V AC evaporative cooler (1300 CFM, 85W) specifications. Driven by a [Victron Phoenix 12/375 GFCI inverter](https://www.victronenergy.com/inverters/phoenix-inverter-vedirect-250va-800va).
+2. [Hessaire MC18M](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) — 120V AC evaporative cooler (1300 CFM, <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W) specifications. Driven by a [Victron Phoenix 12/375 GFCI inverter](https://www.victronenergy.com/inverters/phoenix-inverter-vedirect-250va-800va).
 3. [OSHA Heat Illness Prevention](https://www.osha.gov/heat-exposure) — Workplace heat exposure guidelines and permissible limits.
 4. [Electrical Report](electrical-report.md) — Circuit assignments (A, B, E), wiring specification, and fuse block layout.
 5. [Hinged Panel Report](hinged-panel-report.md) — Panel corner zone construction and Fan B mounting.

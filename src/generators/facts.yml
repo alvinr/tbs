@@ -186,3 +186,22 @@ swung_door_clearance_mm:
     - '\(door clears? \+(\d+)\s?mm\)'
     - '(?:swung frame|door plane) by \+(\d+)\s?mm'
     - 'closed door is \+(\d+)\s?mm'
+
+# Evaporative cooler (Circuit E) power — 85W AC datasheet draw; 97W = 85 ÷ 0.88 on the 12V bus.
+# Anchored to the cooler-power phrasings so a coincidental 85/97 elsewhere isn't policed.
+evap_cooler_w_ac:
+  constant: EVAP_COOLER_W_AC
+  unit: W
+  owner: ventilation-report.md
+  aliases:
+    - '(\d+) ?W AC'
+    - 'AC,? (\d+) ?W'
+    - '(\d+) ?W, (?:16 lb|1300 CFM)'
+evap_cooler_w_bus:
+  constant: EVAP_COOLER_W_BUS
+  unit: W
+  owner: electrical-report.md
+  aliases:
+    - '(\d+) ?W on (?:the )?(?:12 ?V )?bus'
+    - '~?(\d+) ?W on the 12'
+    - '~(\d+) ?W vs the old'

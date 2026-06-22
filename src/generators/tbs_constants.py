@@ -327,6 +327,13 @@ INVERTER_W   = 120     # width along X (mm)
 INVERTER_H   = 235     # height (mm)
 INVERTER_D   = 72      # protrusion from pinhole wall (Yd, mm)
 
+# Circuit E power — the Hessaire MC18M draws 85W AC; on the 12V battery bus through the
+# 12V→120V inverter that is 85 ÷ 0.88 efficiency = 97W. COMPUTED so the bus draw can't drift
+# (was a literal COOLER_W=97 in calculate_energy_budget + restated raw in ~6 docs).
+EVAP_COOLER_W_AC    = 85      # Hessaire MC18M datasheet AC draw (run on low)
+INVERTER_EFFICIENCY = 0.88    # Victron Phoenix 12/375 pure-sine efficiency
+EVAP_COOLER_W_BUS   = round(EVAP_COOLER_W_AC / INVERTER_EFFICIENCY)   # = 97 (12V-bus draw)
+
 # ── External power panel (pinhole wall exterior, near EP) ─────────────────────
 PWR_PANEL_X = 1250   # power panel left edge X (mm) — just left of EP
 PWR_PANEL_W = 340    # face plate width (mm)

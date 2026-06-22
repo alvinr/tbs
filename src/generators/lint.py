@@ -231,21 +231,57 @@ def warn_missing_cascade() -> tuple[bool, list[str]]:
     staged = set(_git(["diff", "--cached", "--name-only"]).split())
     if _CONST not in staged:
         return True, ["no tbs_constants change staged"]
-    changed = _changed_constants(staged)
+    changed = _changed_constants(staged) - {"DIAGRAMS_DIR", "PROJECT_ROOT"}   # path constants don't change diagram CONTENT
     if not changed:
-        return True, ["tbs_constants staged, but no constant-value lines changed"]
+        return True, ["tbs_constants staged, but no content-affecting constant changed"]
     deps = _deps()
-    issues = []
+    # group each changed constant's consumer scripts → (its outputs, the constants that reach it),
+    # keeping only scripts with at least one UNstaged output (the ones worth checking).
+    scripts = {}
     for c in sorted(changed):
-        need = []  # the registered outputs of every script that reads this constant
         for scr in _grep_consumers(c):
             e = deps.for_script(scr)
-            if e:
-                need += e["outputs"]
-        missing = [o for o in dict.fromkeys(need) if o not in staged]
-        if missing:
-            issues.append(f"{c} changed → regenerate + stage: {', '.join(missing)}")
-    return (not issues), (issues or ["every registered output of the changed constants is staged"])
+            if e and any(o not in staged for o in e["outputs"]):
+                scripts.setdefault(scr, (e["outputs"], set()))[1].add(c)
+    # Cost guard: byte-diff regenerates each script (~1–2s). For a wide change (many consumers,
+    # e.g. a core geometry constant) skip the regen and fall back to the cheap "not staged" list —
+    # the dev regenerates everything for a real geometry change anyway. Narrow refactors (the
+    # value-identical case we want to silence) stay under the cap and get the precise byte-diff.
+    byte_diff = len(scripts) <= 5
+    issues = []
+    for scr in sorted(scripts):
+        outs, cs = scripts[scr]
+        unstaged = [o for o in outs if o not in staged]
+        clabel = ", ".join(sorted(cs))
+        pngs = [o for o in unstaged if o.endswith((".png", ".svg"))]
+        models = [o for o in unstaged if not o.endswith((".png", ".svg"))]
+        stale = _regen_diff(scr, pngs) if byte_diff else pngs   # cheap fallback: flag all unstaged
+        for o in stale:
+            issues.append(f"{o} is stale — regenerate + stage [{clabel}]")
+        for o in models:  # .skp built in-app, .rb: can't auto-verify here → advisory
+            issues.append(f"{o}: re-save/re-send + stage if affected (model) [{clabel}]")
+    return (not issues), (issues or ["every output of the changed constants is up to date or staged"])
+
+
+def _regen_diff(scr: str, pngs: list[str]) -> list[str]:
+    """Regenerate `scr` into a temp DIAGRAMS_DIR (via the TBS_DIAGRAMS_DIR env override) and
+    byte-compare each png to the working tree. Returns only the outputs that genuinely differ —
+    a value-identical regeneration is byte-for-byte equal and is suppressed. If regeneration
+    fails, returns all `pngs` (can't verify → keep flagging)."""
+    import tempfile, filecmp
+    if not pngs:
+        return []
+    with tempfile.TemporaryDirectory() as td:
+        r = subprocess.run([sys.executable, os.path.join(ROOT, scr)],
+                           capture_output=True, cwd=ROOT, env={**os.environ, "TBS_DIAGRAMS_DIR": td})
+        if r.returncode != 0:
+            return pngs
+        stale = []
+        for o in pngs:
+            fresh, cur = os.path.join(td, os.path.basename(o)), os.path.join(ROOT, o)
+            if not (os.path.exists(fresh) and os.path.exists(cur) and filecmp.cmp(fresh, cur, shallow=False)):
+                stale.append(o)
+    return stale
 
 
 # ── WARNING: hardwired literal that should be a tbs_constants reference ──────

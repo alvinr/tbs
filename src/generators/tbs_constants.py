@@ -833,7 +833,7 @@ FAN_A_MARGIN = C_LEN - ZONE_R_START - FAN_DIAM // 2 - DUCT_DEPTH   # = 869mm ✓
 FAN_B_MARGIN = PANEL_CORNER_T   # = 40mm (fan flush with panel inner face)
 
 # ── Output directories ────────────────────────────────────────────────────────
-DIAGRAMS_DIR = os.path.join(PROJECT_ROOT, "diagrams")
+DIAGRAMS_DIR = os.environ.get("TBS_DIAGRAMS_DIR") or os.path.join(PROJECT_ROOT, "diagrams")  # env override: lint regenerates to a temp dir to byte-diff the cascade
 
 # ── Palette (shared drawing style) ───────────────────────────────────────────
 C_OUT   = "#1A1A1A"   # outlines

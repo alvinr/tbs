@@ -250,7 +250,7 @@ for the few generators not yet repointed (overview Blue-trunk shelf, walkway/wei
 DN50 butterfly valve (S60×6) + S60×6-to-1" NPT adapter at drain outlet,
 integrated 3-stage Big Blue filter unit (50μm → 5μm → GAC carbon, wall-mounted, no separate skid frame), Shurflo P-02,
 3-way diverter valves 3W-DV-01 and 3W-DV-02, pH test point.
-Filled via side-entry near the top from the P-04 tray-sump pickup pump (no top-cap access — 52mm headroom).*
+Filled via side-entry near the top from the P-04 tray-sump pickup pump (no top-cap access — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom).*
 
 ### 1.13 Water System — Black Circuit (Waste)
 

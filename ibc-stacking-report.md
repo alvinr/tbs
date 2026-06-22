@@ -44,7 +44,7 @@ panel.
 | Cage upright tube | Ø25mm |
 | Cage top rail | 25mm OD |
 | Drain valve | DN50 butterfly valve, S60×6 thread, at Z=185mm above IBC base |
-| Fill | **side entry near the top** (no top-cap access — only 52mm headroom stacked) |
+| Fill | **side entry near the top** (no top-cap access — only <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom stacked) |
 | Tare weight | ~65 kg per tote |
 | Full weight (1000 L) | ~1,065 kg per tote |
 | Total tare (4 totes) | ~260 kg; water load see [weight-distribution report](weight-distribution-report.md) |
@@ -68,7 +68,7 @@ panel.
 | Plumbing corridor | Yd=1046–1316mm (270mm gap between columns) |
 | Single IBC height | 1168mm |
 | Stacked height (2 totes, direct-stack cage-on-cage) | 2336mm (2 × 1168mm — no deck/mat between tiers) |
-| Ceiling clearance | 52mm (2388 − 2336mm) — tight but transport-validated (see [weight report](weight-distribution-report.md)) |
+| Ceiling clearance | <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm (2388 − 2336mm) — tight but transport-validated (see [weight report](weight-distribution-report.md)) |
 
 ---
 
@@ -77,7 +77,7 @@ panel.
 ### 3.1 General Arrangement
 
 The 1000L caged totes **direct-stack cage-on-cage** — the upper tote's pallet base
-bears directly on the lower tote's cage top, leaving only 52mm of ceiling headroom.
+bears directly on the lower tote's cage top, leaving only <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm of ceiling headroom.
 There is no room for (and no need for) a load-bearing platform deck between tiers, so
 the frame is **restraint-only**: it carries no vertical service load, it only keeps the
 totes from moving during transport.
@@ -187,7 +187,7 @@ doors.
 
 | Port | Height (Z) | Circuit | Function |
 |------|-----------|---------|----------|
-| X1 | 2250mm | Blue | Fill — gravity feed; an internal tee (near X1) splits to a SIDE entry near the top of BOTH Blue totes (no top-cap access — 52mm headroom) |
+| X1 | 2250mm | Blue | Fill — gravity feed; an internal tee (near X1) splits to a SIDE entry near the top of BOTH Blue totes (no top-cap access — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom) |
 | X3 | 400mm | Brown | Drain IBC-3 — bottom tier, near column |
 | X4 | 200mm | Waste | Drain IBC-4 — bottom tier, far column |
 
@@ -222,7 +222,7 @@ thread).
 
 | Pipe | Route | Notes |
 |------|-------|-------|
-| X1 fill (Blue) | End wall bulkhead → corridor → V1 ball valve → tee → **side-entry** into both IBC-1 & IBC-2 corridor faces near the top (Z=2156, 150mm + flange) | Gravity feed from Z=2250mm; fills both Blue totes in parallel. No top-cap access (~52mm headroom) |
+| X1 fill (Blue) | End wall bulkhead → corridor → V1 ball valve → tee → **side-entry** into both IBC-1 & IBC-2 corridor faces near the top (Z=2156, 150mm + flange) | Gravity feed from Z=2250mm; fills both Blue totes in parallel. No top-cap access (~<!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom) |
 | X3 drain (Brown) | IBC-3 DN50 valve → V3 ball valve → **P-05 drain pump** → corridor → end wall bulkhead X3 | Pumped — port at Z=400mm, gravity head insufficient |
 | X4 drain (Waste) | IBC-4 DN50 valve → V4 ball valve → **P-03 drain pump** → corridor → end wall bulkhead X4 | Pumped — port at Z=200mm, evacuates residual below port |
 | Recycle returns | All tote-top returns (sump→IBC-3, filter→IBC-2, reject→IBC-4) enter via **side-entry near the top** | No top-cap access — DV-01/DV-02 recycle loop unchanged |
@@ -250,7 +250,7 @@ Eight construction drawings cover the IBC system across two drawing sets:
 
 ### IBC Stacking & Securing (5 sheets)
 
-**Sheet 1 — Cross-section elevation: 2-tier direct-stack, restraint front portal, front retaining bars + wall hangers, direct-stack junction, 52mm clearance**
+**Sheet 1 — Cross-section elevation: 2-tier direct-stack, restraint front portal, front retaining bars + wall hangers, direct-stack junction, <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm clearance**
 ![TBS-001 IBC Stacking — Sheet 1](assets/ibc-stacking-sheet1.png)
 
 **Sheet 2 — Fastening details: front-bar→upright cleat + lash eye, wall joist hanger, ratchet lashing over the stack**

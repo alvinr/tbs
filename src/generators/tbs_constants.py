@@ -610,6 +610,16 @@ TRAY_FLOOD_GAL        = round(PROC_TRAY_W * PROC_TRAY_D * TRAY_FLOOD_DEPTH_MM / 
 BLUE_PER_PRINT_GAL    = BLUE_WASHES_PER_PRINT * TRAY_FLOOD_GAL   # = 32 gal net Blue/print
 BLUE_PER_PRINT_L      = BLUE_PER_PRINT_GAL * L_PER_GAL           # ≈ 121 L
 PRINTS_PER_RESUPPLY   = int(BLUE_SUPPLY_L / BLUE_PER_PRINT_L)    # = 14
+BLUE_SUPPLY_GAL       = round(BLUE_SUPPLY_L / L_PER_GAL)         # = 476 gal (Blue supply in gallons)
+
+# Water balance — of the Blue consumed per run, ~31 L/print is open-process loss (muslin carryout +
+# evaporation + unrecovered residual; water-system-report §4); the rest is recovered into Brown+Waste.
+# All COMPUTED so a supply/print change (e.g. the 1,600→1,800 L revision) re-derives them everywhere.
+LOSS_PER_PRINT_L      = 31                                             # design est. — see water-system §4
+RECOVERED_PER_PRINT_L = round(BLUE_PER_PRINT_L) - LOSS_PER_PRINT_L     # ≈ 90 L recovered/print
+RECOVERED_L           = PRINTS_PER_RESUPPLY * RECOVERED_PER_PRINT_L    # = 1260 L (Brown+Waste at exhaustion)
+COLLECTION_FILL_L     = RECOVERED_L // 2                              # = 630 L per collection tote
+LOST_L                = PRINTS_PER_RESUPPLY * LOSS_PER_PRINT_L         # = 434 L lost over a run
 
 # ── Perimeter walkway — removable grated sections around processing tray ─────
 # 4 sections form a rectangular perimeter walk so the operator can access all

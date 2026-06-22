@@ -47,8 +47,8 @@ Overall floorplan can be seen below. Its essentially split into three areas, lef
 | Electrical panel | 1,910–2,210 | 1,500–2,100 | IP65, wall-mount (stacked above the battery bank; clears the upper transport-stay anchor). rev11: dropped 150mm (was Z1,650–2,250) — originally to clear the film-plane brace top beam; that brace cage is now retired for wall-seat saddles, but the EP is kept at this height |
 | Battery bank (2× 100Ah LiFePO4, each 330×172×214mm) | 1,540–2,220 | 150–364 | Wall shelf below panel; side-by-side, clears the optical cone |
 | Solar charge controller | Within panel | — | Mounted inside enclosure |
-| Pump manifold (3 pumps: P-01, P-02, P-04) | 2,400–2,700 | 200–600 | Wall-bracket |
 | Cable trunking | Along wall face, H=1800mm | — | Full length |
+| Blue supply pipe → spray bar | along wall to X=2,399 | — | Rigid 1/2" HDPE from the corridor pump panel to the spray-bar feed; pumps themselves are on the equipment panel in the IBC corridor (§2.4 / [Equipment Panel Report](equipment-panel-report.md)) |
 
 ### 2.3 Optical Zone — X=150–4649mm
 
@@ -211,16 +211,17 @@ See [Walkway Diagram — Sheet 1](engineering-diagrams.md) for stowage position 
 
 ## 7. Plumbing and Electrical — Pinhole Wall Routing
 
-All services route along the pinhole wall face. No conduit, pipe, or cable
-runs through the optical zone.
+Electrical services and the Blue supply pipe route along the pinhole wall face;
+the pump/filter plumbing panel sits in the IBC corridor (right end zone). No
+conduit, pipe, or cable runs through the optical zone.
 
-**Plumbing manifold:** 3-pump distribution header (P-01 Blue spray bar, P-02 Brown
-recycle, P-04 tray sump pickup) wall-mounted.
-P-03 (waste evacuation) is mounted separately in the IBC plumbing corridor on
-the X4 waste drain run, minimizing pipe length to the external drain port.
-Hose runs drop vertically from manifold to IBCs in the right end zone. Maximum
-hose run: ~5.5m (manifold to Brown IBC - along pinhole wall then
-along right end wall).
+**Plumbing:** All pumps (P-01 Blue supply, P-02 Brown filter feed, P-04 tray-sump
+transfer, plus the P-05/P-03 waste-drain pumps) mount on the equipment panel in the
+270mm IBC plumbing corridor (right end zone), at the tote stack — so the pump↔tote
+runs are short. The Blue supply pipe runs from P-01 along the pinhole wall to the
+spray-bar feed in the optical zone (~4m coiled flex to the rolling beam); the tray
+drain returns from the sump to P-04 on the panel. See the
+[Equipment Panel Report](equipment-panel-report.md) for the full plumbing layout.
 
 **Electrical conduit:** 25mm PVC trunking along the
 full container length on the pinhole wall face. Branch drops at each circuit

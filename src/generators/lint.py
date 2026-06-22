@@ -222,7 +222,7 @@ def _changed_constants(staged) -> set:
         m = re.match(r"[+-]\s*([A-Z_][A-Z0-9_]*)\s*(?::[^=]+)?=\s*(.+)", ln)
         if not m:
             continue
-        val = re.split(r"\s#", m.group(2), 1)[0].strip()      # value expr, inline comment dropped
+        val = re.split(r"\s#", m.group(2), maxsplit=1)[0].strip()   # value expr, inline comment dropped
         (old if ln[0] == "-" else new)[m.group(1)] = val
     return {name for name, v in new.items() if old.get(name) != v}
 

@@ -2746,15 +2746,15 @@
 <p>TBS-001 is a 20-foot ISO shipping container converted into a functional large-format pinhole camera. The pinhole (<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm, precision laser-drilled, stainless steel) sits at one side of the container. The image plane — a stretched cotton muslin surface spanning the active <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm film zone — sits at the other. Every exposure produces a latent cyanotype image on approximately 116 square feet of fabric, developed in plain water.</p>
 <p><img alt="TBS-001 Container Floor Plan" src="../assets/container-floorplan.png" /></p>
 <h3 id="how">How<a class="headerlink" href="#how" title="Permanent link">&para;</a></h3>
-<p>The optical specification follows the Lord Rayleigh formula for optimal pinhole diameter, yielding an f-number of f/1088 and a baseline exposure of approximately 30–45 minutes in direct sunlight using the <em>Mike Ware New Cyanotype formula</em> on cotton muslin. Every design decision — aperture, image plane materials, exposure calculation, process chemistry — traces to a peer-reviewed source or manufacturer datasheet. The full technical documentation is publicly available at <a href="https://alvinr.github.io/tbs/">alvinr.github.io/tbs</a>.</p>
-<p>The camera is transportable by commercial hire truck (no Commercial Drivers License required) and operates off-grid via a self-contained water system that supports ~14 full-size prints between resupply runs. Power is provided by Lithium battery packs with are recharged via Solar panels or through regular household power outlet.</p>
+<p>The optical specification follows the Lord Rayleigh formula for optimal pinhole diameter, yielding an f-number of f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> and a baseline exposure of approximately 30–45 minutes in direct sunlight using the <em>Mike Ware New Cyanotype formula</em> on cotton muslin. Every design decision — aperture, image plane materials, exposure calculation, process chemistry — traces to a peer-reviewed source or manufacturer datasheet. The full technical documentation is publicly available at <a href="https://alvinr.github.io/tbs/">alvinr.github.io/tbs</a>.</p>
+<p>The camera is transportable by commercial hire truck (no Commercial Drivers License required) and operates off-grid via a self-contained water system that supports ~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> full-size prints between resupply runs. Power is provided by Lithium battery packs with are recharged via Solar panels or through regular household power outlet.</p>
 <h3 id="why-now">Why Now<a class="headerlink" href="#why-now" title="Permanent link">&para;</a></h3>
 <p>The history of large-format photography is a history of increasing precision in decreasing size. The view camera shrank from room to studio to field. The Big Shoebox inverts that trajectory: it scales a camera back up to architectural dimensions, not as spectacle, but as instrument. The container is not incidental to the work — it is the camera body. The constraint of the container's interior geometry is the optical specification. Site, transport, and access become compositional decisions.</p>
 <h2 id="3-technical-innovation">3. Technical Innovation<a class="headerlink" href="#3-technical-innovation" title="Permanent link">&para;</a></h2>
 <p>The project incorporates two independent movement systems — equivalent to the front and rear standards of a view camera — operating at pinhole focal lengths. No camera of this type is known to exist.</p>
 <h3 id="front-board-tilt-and-swing-53">Front Board: Tilt and Swing (±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->°)<a class="headerlink" href="#front-board-tilt-and-swing-53" title="Permanent link">&para;</a></h3>
-<p>A spherical-pivot adapter plate mounts in the same wall-frame interface as the vanilla pinhole plate. A spherical plain bearing allows the pinhole to pivot up to ±5.3° in both tilt and swing. Four M8×1.0 fine-pitch adjustment screws with 36-detent knurled knobs provide 0.012° per click resolution.</p>
-<p><strong>Effect:</strong> every 5° of board tilt steers the projected image 207mm across the film plane. Used for compositional placement — shifting what part of the scene falls where on the print without moving the camera.</p>
+<p>A spherical-pivot adapter plate mounts in the same wall-frame interface as the vanilla pinhole plate. A spherical plain bearing allows the pinhole to pivot up to ±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->° in both tilt and swing. Four M8×1.0 fine-pitch adjustment screws with 36-detent knurled knobs provide <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->° per click resolution.</p>
+<p><strong>Effect:</strong> every 5° of board tilt steers the projected image <!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm across the film plane. Used for compositional placement — shifting what part of the scene falls where on the print without moving the camera.</p>
 <h3 id="film-plane-4-corner-independent-actuation-40-tilt-28-swing">Film Plane: 4-Corner Independent Actuation (±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt, ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing)<a class="headerlink" href="#film-plane-4-corner-independent-actuation-40-tilt-28-swing" title="Permanent link">&para;</a></h3>
 <p>Four independently-driven corners allow the fixed-size rigid image plane (Option A) to be tilted and swung — including limited combined tilt-and-swing — about its center. Each corner is driven by a 3/4"-6 Acme leadscrew via an 8" handwheel; a 2-axis cross-slide and rod-end spherical bearing at each corner absorb the rigid-rotation arc travel, so the plane rotates without stretching or twisting.</p>
 <p><strong>Effect:</strong> Scheimpflug-equivalent movements at pinhole focal lengths — not to adjust focus (pinholes have infinite depth of field) but to control perspective, convergence, and geometric projection.</p>
@@ -2775,7 +2775,7 @@
 <p>Cyanotype uses the <strong>Mike Ware New Cyanotype formula</strong> — ammonium iron(III) oxalate and potassium ferricyanide, with an optional trace of ammonium dichromate (0.1–0.4%) for added contrast. The two base reagents require no DEA registration, hazmat shipping, or special disposal; only the trace dichromate needs careful handling — at a tiny fraction of the bulk quantities used by dichromate-sensitized processes. Development is plain cold water. The chemistry is mixed on-site; the substrate (unbleached cotton muslin) is coated by brush or roller in two wet-on-wet coats, dried, and loaded in darkness. The Ware formula is 4–8× more UV-sensitive than the classical Herschel formula, reducing baseline exposure from ~2 hours to ~30–45 minutes in full sun.</p>
 <p>Per-print cost: approximately <!-- BEGIN costing:fund-perprint -->$33<!-- END costing:fund-perprint --> (chemistry + fabric + water) at the Standard sensitizer strength — ranging <!-- BEGIN costing:fund-perprint-range -->$24–60<!-- END costing:fund-perprint-range --> by tier, to be pinned by post-build sensitizer trials. A 50-print run costs approximately <!-- BEGIN costing:fund-50run -->$1,650<!-- END costing:fund-50run -->. By comparison, the next cheapest alternative (gum bichromate) costs ~$49 per print and depends on bulk dichromate as its primary sensitizer, with full hazmat handling and disposal.</p>
 <h3 id="water-system">Water System<a class="headerlink" href="#water-system" title="Permanent link">&para;</a></h3>
-<p>A self-contained three-circuit water system — Blue (wash), Brown (recycle), and Black (waste) — provides off-grid processing capability. Four 1000L IBC totes in a 2×2 stack, 12V DC pumps, check valves on all external lines, and a 3-stage filtration skid. Capacity: ~14 full prints between resupply. Water recycling: approximately 40% of used wash water is recovered and reused. Power: 12V DC from a 100Ah LiFePO4 battery (expandable to 200Ah with an optional second pack; ~2–3 prints per charge), with a 600W solar array for field recharging — the system is solar-positive in sun, so it runs indefinitely — plus shore-power input for overnight top-up.</p>
+<p>A self-contained three-circuit water system — Blue (wash), Brown (recycle), and Black (waste) — provides off-grid processing capability. Four 1000L IBC totes in a 2×2 stack, 12V DC pumps, check valves on all external lines, and a 3-stage filtration skid. Capacity: ~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> full prints between resupply. Water recycling: approximately 40% of used wash water is recovered and reused. Power: 12V DC from a 100Ah LiFePO4 battery (expandable to 200Ah with an optional second pack; ~2–3 prints per charge), with a 600W solar array for field recharging — the system is solar-positive in sun, so it runs indefinitely — plus shore-power input for overnight top-up.</p>
 <p>The system was designed for remote deployments: no municipal water or power connection required.</p>
 <h3 id="transportation">Transportation<a class="headerlink" href="#transportation" title="Permanent link">&para;</a></h3>
 <p>The container moves by commercial hire tilt-bed truck. No CDL is required for the operator (the trucking company provides the driver). No oversize or overweight permit is required for an empty 20ft standard container on Interstate highways. Local deployment: $300–$500 per move. Short regional haul (30–100 miles): $500–$1,200.</p>
@@ -2871,7 +2871,7 @@
 <td>$0–300</td>
 </tr>
 <tr>
-<td>Water resupply (~476 gal / 1,800L Blue tank ≈ 14 prints)</td>
+<td>Water resupply (~476 gal / <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue tank ≈ <!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints)</td>
 <td>$25–50</td>
 </tr>
 <tr>
@@ -2988,7 +2988,7 @@
 </tr>
 <tr>
 <td>Focal length</td>
-<td>2362mm</td>
+<td><!-- BEGIN fact:focal_length_mm -->2362<!-- END fact:focal_length_mm -->mm</td>
 </tr>
 <tr>
 <td>Image plane (active)</td>
@@ -3000,15 +3000,15 @@
 </tr>
 <tr>
 <td>Image area</td>
-<td>~116 sq ft</td>
+<td>~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft</td>
 </tr>
 <tr>
 <td>Optimal pinhole</td>
-<td>Ø2.17mm (Rayleigh formula, λ=550nm)</td>
+<td>Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm (Rayleigh formula, λ=550nm)</td>
 </tr>
 <tr>
 <td>f-number</td>
-<td>f/1088</td>
+<td>f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --></td>
 </tr>
 <tr>
 <td>Baseline exposure</td>
@@ -3016,11 +3016,11 @@
 </tr>
 <tr>
 <td>Film plane movement</td>
-<td>±40° tilt, ±28° swing, 4-corner independent (Option A rigid plane)</td>
+<td>±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt, ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing, 4-corner independent (Option A rigid plane)</td>
 </tr>
 <tr>
 <td>Front board movement</td>
-<td>±5.3° tilt and swing, 0.012°/click resolution</td>
+<td>±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->° tilt and swing, <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click resolution</td>
 </tr>
 <tr>
 <td>Process</td>
@@ -3028,7 +3028,7 @@
 </tr>
 <tr>
 <td>Water system</td>
-<td>Self-contained, ~14 prints per resupply, off-grid capable</td>
+<td>Self-contained, ~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints per resupply, off-grid capable</td>
 </tr>
 <tr>
 <td>Transport</td>

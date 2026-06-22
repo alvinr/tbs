@@ -1967,7 +1967,7 @@ end
   # Processing Tray Floor
   grp = ents.add_group
   grp.name = "Processing Tray Floor"
-  face = grp.entities.add_face([170.mm,80.mm,0.mm], [4629.mm,80.mm,0.mm], [4629.mm,2281.mm,0.mm], [170.mm,2281.mm,0.mm])
+  face = grp.entities.add_face([170.mm,80.mm,0.mm], [4629.mm,80.mm,0.mm], [4629.mm,2280.mm,0.mm], [170.mm,2280.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
   mat = model.materials["Processing Tray Floor"] || model.materials.add("Processing Tray Floor")
@@ -1989,7 +1989,7 @@ end
   # Tray Rim Far
   grp = ents.add_group
   grp.name = "Tray Rim Far"
-  face = grp.entities.add_face([170.mm,2279.mm,2.mm], [4629.mm,2279.mm,2.mm], [4629.mm,2281.mm,2.mm], [170.mm,2281.mm,2.mm])
+  face = grp.entities.add_face([170.mm,2278.mm,2.mm], [4629.mm,2278.mm,2.mm], [4629.mm,2280.mm,2.mm], [170.mm,2280.mm,2.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
   mat = model.materials["Processing Tray Floor"] || model.materials.add("Processing Tray Floor")
@@ -2000,7 +2000,7 @@ end
   # Tray Rim Left
   grp = ents.add_group
   grp.name = "Tray Rim Left"
-  face = grp.entities.add_face([170.mm,80.mm,2.mm], [172.mm,80.mm,2.mm], [172.mm,2281.mm,2.mm], [170.mm,2281.mm,2.mm])
+  face = grp.entities.add_face([170.mm,80.mm,2.mm], [172.mm,80.mm,2.mm], [172.mm,2280.mm,2.mm], [170.mm,2280.mm,2.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
   mat = model.materials["Processing Tray Floor"] || model.materials.add("Processing Tray Floor")
@@ -2011,7 +2011,7 @@ end
   # Tray Rim Right
   grp = ents.add_group
   grp.name = "Tray Rim Right"
-  face = grp.entities.add_face([4627.mm,80.mm,2.mm], [4629.mm,80.mm,2.mm], [4629.mm,2281.mm,2.mm], [4627.mm,2281.mm,2.mm])
+  face = grp.entities.add_face([4627.mm,80.mm,2.mm], [4629.mm,80.mm,2.mm], [4629.mm,2280.mm,2.mm], [4627.mm,2280.mm,2.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
   mat = model.materials["Processing Tray Floor"] || model.materials.add("Processing Tray Floor")
@@ -2022,7 +2022,7 @@ end
   # Chemistry Bath
   grp = ents.add_group
   grp.name = "Chemistry Bath"
-  face = grp.entities.add_face([172.mm,82.mm,2.mm], [4627.mm,82.mm,2.mm], [4627.mm,2279.mm,2.mm], [172.mm,2279.mm,2.mm])
+  face = grp.entities.add_face([172.mm,82.mm,2.mm], [4627.mm,82.mm,2.mm], [4627.mm,2278.mm,2.mm], [172.mm,2278.mm,2.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Chemistry Bath"] || model.materials.add("Chemistry Bath")
@@ -8092,7 +8092,7 @@ end
   grp = ents.add_group
   grp.name = "LT Drum opening brush seal"
   ge = grp.entities
-  circle = ge.add_circle([-735.9104883076719.mm,899.1376331524525.mm,130.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([-735.9104883076718.mm,899.1376331524525.mm,130.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2120.mm)
@@ -9077,7 +9077,7 @@ end
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-3.3710904324400417.mm, 11.174603174603135.mm, -9.294027154632523.mm)
+  vec = Geom::Vector3d.new(-3.3710904324400417.mm, 11.174603174603135.mm, -9.294027154632516.mm)
   circle = ge.add_circle([1304.9884758210587.mm,-772.6031746031746.mm,60.54726213625084.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -9091,8 +9091,8 @@ end
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-8.933421446249213.mm, 11.174603174603249.mm, -4.235229948707868.mm)
-  circle = ge.add_circle([1301.6173853886187.mm,-761.4285714285714.mm,51.25323498161832.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.933421446249213.mm, 11.174603174603249.mm, -4.235229948707875.mm)
+  circle = ge.add_circle([1301.6173853886187.mm,-761.4285714285714.mm,51.25323498161833.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9245,7 +9245,7 @@ end
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(2.7777073955937794.mm, 11.174603174603135.mm, 9.488283990227039.mm)
+  vec = Geom::Vector3d.new(2.7777073955937794.mm, 11.174603174603135.mm, 9.488283990227053.mm)
   circle = ge.add_circle([1279.0719702576096.mm,-638.5079365079365.mm,58.633966698844425.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -9259,8 +9259,8 @@ end
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(8.648268936837894.mm, 11.174603174603249.mm, 4.790682190550868.mm)
-  circle = ge.add_circle([1281.8496776532033.mm,-627.3333333333334.mm,68.12225068907146.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.648268936837894.mm, 11.174603174603249.mm, 4.790682190550854.mm)
+  circle = ge.add_circle([1281.8496776532033.mm,-627.3333333333334.mm,68.12225068907148.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9679,7 +9679,7 @@ end
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.091062472885142.mm, 11.174603174603135.mm, 7.787306941821903.mm)
+  vec = Geom::Vector3d.new(-6.091062472885142.mm, 11.174603174603135.mm, 7.78730694182191.mm)
   circle = ge.add_circle([1285.5749983342314.mm,-292.0952380952381.mm,48.69870124300441.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -9693,8 +9693,8 @@ end
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.1477544109268365.mm, 11.174603174603249.mm, 9.819666555791706.mm)
-  circle = ge.add_circle([1279.4839358613463.mm,-280.92063492063494.mm,56.48600818482631.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(1.1477544109268365.mm, 11.174603174603249.mm, 9.819666555791699.mm)
+  circle = ge.add_circle([1279.4839358613463.mm,-280.92063492063494.mm,56.48600818482632.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11009,7 +11009,7 @@ end
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.418368879275704.mm, -2.5357148359493635.mm, 11.37928719490992.mm)
+  vec = Geom::Vector3d.new(-9.418368879275704.mm, -2.5357148359493706.mm, 11.37928719490992.mm)
   circle = ge.add_circle([1311.1398123176873.mm,-57.11590977512742.mm,1140.3413249442387.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -11023,8 +11023,8 @@ end
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-4.828357313004972.mm, -8.57322632284091.mm, 11.305328620385353.mm)
-  circle = ge.add_circle([1301.7214434384116.mm,-59.651624611076784.mm,1151.7206121391487.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-4.828357313004972.mm, -8.573226322840902.mm, 11.305328620385353.mm)
+  circle = ge.add_circle([1301.7214434384116.mm,-59.65162461107679.mm,1151.7206121391487.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11233,7 +11233,7 @@ end
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.482696639387086.mm, -2.278244054865965.mm, 11.3803237041584.mm)
+  vec = Geom::Vector3d.new(-9.482696639387086.mm, -2.278244054865958.mm, 11.3803237041584.mm)
   circle = ge.add_circle([1314.3772508079644.mm,-57.166800775558926.mm,1319.9296338243005.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -11247,8 +11247,8 @@ end
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-5.05565119709172.mm, -8.436279561400454.mm, 11.308990992783038.mm)
-  circle = ge.add_circle([1304.8945541685773.mm,-59.44504483042489.mm,1331.3099575284589.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-5.05565119709172.mm, -8.436279561400461.mm, 11.308990992783038.mm)
+  circle = ge.add_circle([1304.8945541685773.mm,-59.445044830424884.mm,1331.3099575284589.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11345,7 +11345,7 @@ end
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.512274654742441.mm, -2.1488868572789173.mm, 11.380800292904041.mm)
+  vec = Geom::Vector3d.new(-9.512274654742669.mm, -2.1488868572789173.mm, 11.380800292904041.mm)
   circle = ge.add_circle([1315.9954293873695.mm,-57.195686389145656.mm,1409.7237969760447.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -11359,8 +11359,8 @@ end
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-5.167905496733056.mm, -8.365540100386568.mm, 11.310799739420418.mm)
-  circle = ge.add_circle([1306.483154732627.mm,-59.344573246424574.mm,1421.1045972689487.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-5.167905496732828.mm, -8.365540100386568.mm, 11.310799739420418.mm)
+  circle = ge.add_circle([1306.4831547326269.mm,-59.344573246424574.mm,1421.1045972689487.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11919,7 +11919,7 @@ end
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-3.3710904324400417.mm, 11.174603174603135.mm, -9.294027154632523.mm)
+  vec = Geom::Vector3d.new(-3.3710904324400417.mm, 11.174603174603135.mm, -9.294027154632516.mm)
   circle = ge.add_circle([1320.9884758210587.mm,-772.6031746031746.mm,60.54726213625084.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -11933,8 +11933,8 @@ end
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-8.933421446249213.mm, 11.174603174603249.mm, -4.235229948707868.mm)
-  circle = ge.add_circle([1317.6173853886187.mm,-761.4285714285714.mm,51.25323498161832.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.933421446249213.mm, 11.174603174603249.mm, -4.235229948707875.mm)
+  circle = ge.add_circle([1317.6173853886187.mm,-761.4285714285714.mm,51.25323498161833.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -12087,7 +12087,7 @@ end
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(2.7777073955937794.mm, 11.174603174603135.mm, 9.488283990227039.mm)
+  vec = Geom::Vector3d.new(2.7777073955937794.mm, 11.174603174603135.mm, 9.488283990227053.mm)
   circle = ge.add_circle([1295.0719702576096.mm,-638.5079365079365.mm,58.633966698844425.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -12101,8 +12101,8 @@ end
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(8.648268936837894.mm, 11.174603174603249.mm, 4.790682190550868.mm)
-  circle = ge.add_circle([1297.8496776532033.mm,-627.3333333333334.mm,68.12225068907146.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.648268936837894.mm, 11.174603174603249.mm, 4.790682190550854.mm)
+  circle = ge.add_circle([1297.8496776532033.mm,-627.3333333333334.mm,68.12225068907148.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -12521,7 +12521,7 @@ end
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.091062472885142.mm, 11.174603174603135.mm, 7.787306941821903.mm)
+  vec = Geom::Vector3d.new(-6.091062472885142.mm, 11.174603174603135.mm, 7.78730694182191.mm)
   circle = ge.add_circle([1301.5749983342314.mm,-292.0952380952381.mm,48.69870124300441.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -12535,8 +12535,8 @@ end
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.1477544109268365.mm, 11.174603174603249.mm, 9.819666555791706.mm)
-  circle = ge.add_circle([1295.4839358613463.mm,-280.92063492063494.mm,56.48600818482631.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(1.1477544109268365.mm, 11.174603174603249.mm, 9.819666555791699.mm)
+  circle = ge.add_circle([1295.4839358613463.mm,-280.92063492063494.mm,56.48600818482632.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -13851,7 +13851,7 @@ end
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.418368879275704.mm, -2.5357148359493635.mm, 11.37928719490992.mm)
+  vec = Geom::Vector3d.new(-9.418368879275704.mm, -2.5357148359493706.mm, 11.37928719490992.mm)
   circle = ge.add_circle([1327.1398123176873.mm,-57.11590977512742.mm,1140.3413249442387.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -13865,8 +13865,8 @@ end
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-4.828357313004972.mm, -8.57322632284091.mm, 11.305328620385353.mm)
-  circle = ge.add_circle([1317.7214434384116.mm,-59.651624611076784.mm,1151.7206121391487.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-4.828357313004972.mm, -8.573226322840902.mm, 11.305328620385353.mm)
+  circle = ge.add_circle([1317.7214434384116.mm,-59.65162461107679.mm,1151.7206121391487.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -14075,7 +14075,7 @@ end
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.482696639387086.mm, -2.278244054865965.mm, 11.3803237041584.mm)
+  vec = Geom::Vector3d.new(-9.482696639387086.mm, -2.278244054865958.mm, 11.3803237041584.mm)
   circle = ge.add_circle([1330.3772508079644.mm,-57.166800775558926.mm,1319.9296338243005.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -14089,8 +14089,8 @@ end
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-5.05565119709172.mm, -8.436279561400454.mm, 11.308990992783038.mm)
-  circle = ge.add_circle([1320.8945541685773.mm,-59.44504483042489.mm,1331.3099575284589.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-5.05565119709172.mm, -8.436279561400461.mm, 11.308990992783038.mm)
+  circle = ge.add_circle([1320.8945541685773.mm,-59.445044830424884.mm,1331.3099575284589.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -14187,7 +14187,7 @@ end
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.512274654742441.mm, -2.1488868572789173.mm, 11.380800292904041.mm)
+  vec = Geom::Vector3d.new(-9.512274654742669.mm, -2.1488868572789173.mm, 11.380800292904041.mm)
   circle = ge.add_circle([1331.9954293873695.mm,-57.195686389145656.mm,1409.7237969760447.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -14201,8 +14201,8 @@ end
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-5.167905496733056.mm, -8.365540100386568.mm, 11.310799739420418.mm)
-  circle = ge.add_circle([1322.483154732627.mm,-59.344573246424574.mm,1421.1045972689487.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-5.167905496732828.mm, -8.365540100386568.mm, 11.310799739420418.mm)
+  circle = ge.add_circle([1322.4831547326269.mm,-59.344573246424574.mm,1421.1045972689487.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -17002,7 +17002,7 @@ end
   grp = ents.add_group
   grp.name = "Fan B flex connector (box -> fan, Cct B)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-1.5002345951338327.mm, 13.004426672891782.mm, 20.238523937893206.mm)
+  vec = Geom::Vector3d.new(-1.5002345951338185.mm, 13.004426672891782.mm, 20.238523937893206.mm)
   circle = ge.add_circle([116.76801970230245.mm,246.0416005068517.mm,598.097985352377.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -17016,8 +17016,8 @@ end
   grp = ents.add_group
   grp.name = "Fan B flex connector (box -> fan, Cct B)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(8.220974819980398.mm, 20.530524284593128.mm, 9.585239367105373.mm)
-  circle = ge.add_circle([115.26778510716862.mm,259.0460271797435.mm,618.3365092902702.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.220974819980384.mm, 20.530524284593128.mm, 9.585239367105373.mm)
+  circle = ge.add_circle([115.26778510716863.mm,259.0460271797435.mm,618.3365092902702.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -17309,7 +17309,7 @@ end
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.581874568015564.mm, -10.870916144349266.mm, -13.931200655098792.mm)
+  vec = Geom::Vector3d.new(16.58187456801579.mm, -10.870916144349266.mm, -13.931200655098792.mm)
   circle = ge.add_circle([1469.1612709229705.mm,-72.25113160821968.mm,1733.2998337044544.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -17323,8 +17323,8 @@ end
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(5.227810870736903.mm, -21.78985231133329.mm, -9.224210722310318.mm)
-  circle = ge.add_circle([1485.743145490986.mm,-83.12204775256895.mm,1719.3686330493556.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.2278108707366755.mm, -21.78985231133329.mm, -9.224210722310318.mm)
+  circle = ge.add_circle([1485.7431454909863.mm,-83.12204775256895.mm,1719.3686330493556.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -17617,7 +17617,7 @@ end
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(5.825753009579557.mm, 17.059948976735157.mm, -16.193593686457234.mm)
+  vec = Geom::Vector3d.new(5.825753009579557.mm, 17.05994897673517.mm, -16.193593686457234.mm)
   circle = ge.add_circle([1383.5671786437933.mm,-139.64699853095794.mm,1507.3039520863526.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -17631,8 +17631,8 @@ end
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.82387466219916.mm, 4.85243727063731.mm, -16.751860421595893.mm)
-  circle = ge.add_circle([1389.392931653373.mm,-122.58704955422279.mm,1491.1103583998954.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.82387466219916.mm, 4.852437270637296.mm, -16.751860421595893.mm)
+  circle = ge.add_circle([1389.392931653373.mm,-122.58704955422277.mm,1491.1103583998954.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -19561,6 +19561,244 @@ end
   face.pushpull(50.mm)
   mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
   mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.292850314478528.mm, 23.543879748522244.mm, 3.292850314478642.mm)
+  circle = ge.add_circle([2399.mm,37.mm,950.mm], vec, 8.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(19.292138103169236.mm, 6.865064453135503.mm, -17.477269061786956.mm)
+  circle = ge.add_circle([2402.2928503144785.mm,60.543879748522244.mm,953.2928503144786.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-17.520690916446256.mm, 10.457813404115555.mm, -6.352595041678455.mm)
+  circle = ge.add_circle([2421.5849884176478.mm,67.40894420165775.mm,935.8155812526917.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-17.43326377815174.mm, 8.272679947854542.mm, 9.183682032292836.mm)
+  circle = ge.add_circle([2404.0642975012015.mm,77.8667576057733.mm,929.4629862110132.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-6.247717158910746.mm, 5.229572401590104.mm, 19.756354368842494.mm)
+  circle = ge.add_circle([2386.6310337230498.mm,86.13943755362784.mm,938.6466682433061.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.286145026529994.mm, 3.164822947196896.mm, 18.98545078231382.mm)
+  circle = ge.add_circle([2380.383316564139.mm,91.36900995521795.mm,958.4030226121486.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(19.79457222671499.mm, 3.324383564014184.mm, 7.336165171884659.mm)
+  circle = ge.add_circle([2389.669461590669.mm,94.53383290241484.mm,977.3884733944624.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(18.93636132765323.mm, 5.611969026769188.mm, -8.161859987751313.mm)
+  circle = ge.add_circle([2409.464033817384.mm,97.85821646642903.mm,984.724638566347.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(7.229390934953699.mm, 8.647159241797326.mm, -18.156499632503824.mm)
+  circle = ge.add_circle([2428.4003951450372.mm,103.47018549319822.mm,976.5627785785957.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.261887183728504.mm, 10.598399659930962.mm, -16.616590503476345.mm)
+  circle = ge.add_circle([2435.629786079991.mm,112.11734473499554.mm,958.4062789460919.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-18.18941939728711.mm, 10.288234170953956.mm, -4.471375043732905.mm)
+  circle = ge.add_circle([2427.3678988962624.mm,122.7157443949265.mm,941.7896884426156.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-16.56253774108336.mm, 7.9038289727272115.mm, 10.95024046738547.mm)
+  circle = ge.add_circle([2409.1784794989753.mm,133.00397856588046.mm,937.3183133988827.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.362967341808144.mm, 4.884029039858007.mm, 20.34223958812413.mm)
+  circle = ge.add_circle([2392.615941757892.mm,140.90780753860767.mm,948.2685538662681.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(11.047585587844424.mm, 3.0511018128641467.mm, 18.037116331478956.mm)
+  circle = ge.add_circle([2388.252974416084.mm,145.79183657846568.mm,968.6107934543923.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(20.369780207966414.mm, 3.5111085146208723.mm, 5.425873793795063.mm)
+  circle = ge.add_circle([2399.3005600039282.mm,148.84293839132982.mm,986.6479097858712.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-3.9631905263731824.mm, 4.102073345527032.mm, -25.36663389414491.mm)
+  circle = ge.add_circle([2419.6703402118947.mm,152.3540469059507.mm,992.0737835796663.mm], vec, 8.mm, 8)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.292850314478528.mm, 23.543879748522272.mm, 3.292850314478642.mm)
+  circle = ge.add_circle([2415.7071496855215.mm,156.45612025147773.mm,966.7071496855214.mm], vec, 8.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 

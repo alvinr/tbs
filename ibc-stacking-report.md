@@ -229,17 +229,13 @@ thread).
 
 ### 7.3 Equipment Panel
 
-An 18mm marine plywood panel spans across the IBC plumbing corridor — at the front (cargo-door) mouth of the corridor,
-where it bolts to the front-portal frame (see [§3.2](#32-frame-specification)).
-All pumps, filters, accumulator, and diverter valves mount on the cargo-door
-face of this panel.
-
-| Equipment | Specification |
-|-----------|--------------|
-| Pumps | P-01, P-02, P-03, P-04 — Shurflo 2088 (12V DC, 3.5 GPM, 45 PSI) |
-| Accumulator | ACC-01 — 0.75 L (23.5 oz), 125 PSI |
-| Filter unit | Purcooflow WHF2045B302 3-stage (F1: 5μ sediment, F2: KDF-55, F3: GAC carbon) |
-| Panel size | 270 × ~1,110mm (corridor width × working height) |
+The five pumps, the three-stage filter train, the accumulator, and the diverter
+valves all mount on a single 18mm marine plywood panel at the front (cargo-door)
+mouth of the corridor, bolted to the front-portal frame (see
+[§3.2](#32-frame-specification)). Its construction — the full equipment schedule,
+layout, mounting, and on-panel plumbing — is owned by the
+[Equipment Panel Report](equipment-panel-report.md); this report treats the panel
+only as a load the front portal carries.
 
 ---
 

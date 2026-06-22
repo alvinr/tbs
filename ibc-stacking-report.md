@@ -5,7 +5,7 @@
 ## 1. Purpose
 
 TBS-001's three-circuit water system requires four 1,000 L caged composite totes arranged in a
-2×2 stack in the right end zone (X=4,674–5,893mm) of the container. Two Blue supply
+2×2 stack in the right end zone of the container. Two Blue supply
 totes (IBC-1 and IBC-2) sit on top; one Brown recycle tote (IBC-3) and one Waste tote
 (IBC-4) sit on the bottom. A welded mild steel **restraint-only** frame restrains all four direct-stacked totes for transport, and maintains a 270mm plumbing corridor
 between the near and far columns for internal pipe routing, valves, and the equipment
@@ -37,7 +37,7 @@ panel.
 | Parameter | Value |
 |-----------|-------|
 | Model | Schütz Ecobulk MX 1000L (or equivalent US 48×40 caged composite tote) |
-| Capacity | 1,000 L (~264 US gal) per tote. **"600 L" / "1,000 L" are fill levels, not tote sizes** — all four totes are identical (a 600 L *caged* tote does not exist) |
+| Capacity | 1,000 L (~264 US gal) per tote. **"600 L" / "1,000 L" are fill levels, not tote sizes** — all four totes are identical |
 | Overall dimensions | 1,219 × 1016 × 1,168mm (W × D × H) |
 | Pallet format | US 48" × 40" composite |
 | Pallet base height | 168mm (includes feet/runners) |
@@ -83,11 +83,11 @@ the frame is **restraint-only**: it carries no vertical service load, it only ke
 totes from moving during transport.
 
 The frame is a **single front portal** at the IBC front: two full-height 50×50×3 RHS
-uprights at the corridor edges (Yd 1046/1266) on floor flange feet. The deep mid/back
+uprights at the corridor edges on floor flange feet. The deep mid/back
 corridor stations, platform cross-beams, X-bracing and wall seat brackets of the
 earlier load-bearing rack are **dropped**. Transport restraint is provided by:
 
-- **front retaining bars** across each column at the IBC front (Z560 + Z1760) that stop
+- **front retaining bars** across each column at the IBC front that stop
   the totes sliding out the open front, their wall ends dropped into Simpson-style joist
   hangers;
 - **D-ring lashing** holders on the front bars, with ratchet straps over each stack;
@@ -101,9 +101,9 @@ mounts the (forward) wet-end equipment panel.
 | Parameter | Value |
 |-----------|-------|
 | Material | 50 × 50 × 3mm RHS mild steel (A500 Grade B) |
-| Front-portal uprights | 2 full-height (Z 0–2,296mm) at the IBC front (X≈4734), Yd 1046/1266 |
+| Front-portal uprights | 2 full-height at the IBC front |
 | Floor anchorage | 2 × 150 × 150 × 12mm flange-plate feet, 4 × M12 anchors each |
-| Front retaining bars | 4 × 50×20×3 RHS at the IBC front (Z560 + Z1760, seated in the 25mm gap to the film rail), wall → upright per column |
+| Front retaining bars | 4 × 50×20×3 RHS at the IBC front (seated in the 25mm gap to the film rail), wall → upright per column |
 | Wall joist hangers | 4 × Simpson-style U-pocket receiving the front-bar wall ends, **through-bolted (4 × M12 each) to an exterior backing plate** |
 | Exterior backing plates | 4 × 100 × 135 × 8mm steel, on the **outside** of the container side walls (hex heads outside) — spread the totes' transport thrust into the thin corrugated wall so the bolts can't pull through |
 | D-ring lashing | holders on the front bars, 1,100 kg WLL |
@@ -113,7 +113,7 @@ mounts the (forward) wet-end equipment panel.
 
 ### 3.3 Direct-Stack Junction
 
-The upper tote bears directly on the lower tote's galvanized cage top rail at Z=1,168mm
+The upper tote bears directly on the lower tote's galvanized cage top rail
 (no platform, mat or lip) — the totes' normal warehouse cage-on-cage stacking interface,
 rated for a full upper tote.
 
@@ -161,16 +161,16 @@ braking/cornering (loaded mass 5,124 kg, worst-case CG at Z=1,341mm — see the
 
 ### 4.3 Wall Trapping
 
-There is no anti-rotation lip (no platform). The direct-stacked totes are trapped
+There is no anti-rotation lip. The direct-stacked totes are trapped
 laterally by the container side walls (30mm gap each side) and the sealed end wall;
-the front retaining bars + D-ring ratchet straps restrain the open (−X) front and
+the front retaining bars + D-ring ratchet straps restrain the open front and
 provide vertical tie-down. Together these restrain both tiers in all six DOF.
 
 ---
 
 ## 5. Drain Valve Access
 
-The bottom-tier drain valves (DN50 butterfly, corridor-facing at Z=185mm) are reached
+The bottom-tier drain valves (DN50 butterfly, corridor-facing) are reached
 directly from the **open corridor front** — with the equipment panel moved forward and
 no load-bearing base frame, there are no removable access gates. The operator reaches in
 from the right walkway.
@@ -229,11 +229,10 @@ thread).
 
 ### 7.3 Equipment Panel
 
-An 18mm marine plywood panel spans across the IBC plumbing corridor
-(Yd=1,046–1,316mm) at X=4,874mm — at the front (cargo-door) mouth of the corridor,
+An 18mm marine plywood panel spans across the IBC plumbing corridor — at the front (cargo-door) mouth of the corridor,
 where it bolts to the front-portal frame (see [§3.2](#32-frame-specification)).
 All pumps, filters, accumulator, and diverter valves mount on the cargo-door
-(-X) face of this panel.
+face of this panel.
 
 | Equipment | Specification |
 |-----------|--------------|

@@ -113,6 +113,20 @@ python3 src/generators/costing.py --inject     # rewrite the doc cost tables fro
 python3 src/generators/costing.py --check      # assert the figures are internally consistent
 ```
 
+`facts.yml` prose figures and the per-session **energy budget** are block-injected the same way:
+
+```bash
+python3 src/generators/facts.py --inject                    # fill the <!-- fact:KEY --> placeholders
+python3 src/generators/calculate_energy_budget.py --inject  # fill the <!-- energy:KEY --> figures
+```
+
+The energy injector fills the `<!-- BEGIN energy:KEY -->` placeholders in `electrical-report.md`
+§3.1/§3.2 from `calculate_energy_budget.py` — the per-session, daily-roll-up, and autonomy model.
+It is **lint-gated** (the *energy doc-blocks* gate), so those figures cannot drift from the model.
+**Rerun `--inject` after any spec change** that affects power, and regenerate the electrical
+**Sheet 1** summary panel (`generate_electrical_diagram.py`) to match. (`daily-energy-report.md`
+presents the same model in prose but is not yet block-injected.)
+
 ---
 
 ## Tooling: the drift linter
@@ -127,10 +141,11 @@ git config core.hooksPath .githooks       # one-time install; emergency bypass: 
 Run it by hand any time:
 
 ```bash
-python3 src/generators/lint.py            # all checks (2 gates that BLOCK + 6 advisory warnings)
+python3 src/generators/lint.py            # all checks (4 gates that BLOCK + 7 advisory warnings)
 ```
 
-**Gates** (block the commit): costing reconciliation, costing doc-blocks match the source.
+**Gates** (block the commit): costing reconciliation, costing doc-blocks match the source,
+fact placeholders match the registry, energy doc-blocks match `calculate_energy_budget.py`.
 **Warnings** (advisory): facts-registry agreement, `dependencies.yml` validity, table arithmetic,
 missing-cascade, hardwired-literal, duplicated-geometry equality.
 

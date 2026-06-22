@@ -4,16 +4,16 @@
 
 ## 1. Purpose
 
-This report specifies the complete electrical and environmental control systems for TBS-001: solar power architecture, battery bank, light trap vestibule, cooling, ventilation, interior lighting, and wiring. All systems run at 12V DC from a rooftop/ground-mounted solar array with optional shore power backup, enabling fully off-grid operation.
+This report specifies the complete electrical and environmental control systems for TBS-001: solar power architecture, battery bank, light trap vestibule, cooling, ventilation, interior lighting, and wiring. All systems run at 12V DC from a solar array with optional shore power backup, enabling fully off-grid operation.
 
 See also: [Operating Manual](operating-manual.md) for step-by-step operational procedures.
 
 ---
 
 ## 2. System Overview
-TBS-001 is designed for fully off-grid operation. All power comes from a rooftop/ground-mounted solar array charging a LiFePO4 battery bank. Shore power (grid AC) is accommodated as an optional backup charging input only — the system operates identically without it.
+TBS-001 is designed for fully off-grid operation. All power comes from a solar array charging a LiFePO4 battery bank. Shore power (grid AC) is accommodated as an optional backup charging input only — the system operates identically without it.
 
-All loads run at **12V DC** (the one exception is the dedicated Circuit-E cooler inverter — see §7.6).
+All loads run at **12V DC** - the one exception is the dedicated Circuit-E cooler inverter — see §7.6.
 
 **Interactive 3D model** — the solar array, the enclosure internals (MPPT / fuse block / busbars / disconnect), the battery, the external power panel, the Circuit-E inverter, and the color-coded circuit runs out to each load. Drag to orbit, scroll to zoom.
 

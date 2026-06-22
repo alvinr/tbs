@@ -179,27 +179,19 @@ from the right walkway.
 
 ## 6. External Plumbing Panel
 
-Three 2" NPT bulkhead unions penetrate the sealed end wall on the container
-centerline (Yd=1,181mm), allowing external fill and drain without opening cargo
-doors.
+Three 2" NPT bulkhead ports penetrate the sealed end wall on the container
+centerline — **X1** (Blue fill), **X3** (Brown drain), and **X4** (Waste drain) —
+so all four totes fill and drain without opening the cargo doors. X1 gravity-feeds
+an internal tee that side-enters both Blue totes near the top, so one external hose
+fills both. Each penetration is backed by a welded wall reinforcing plate that
+spreads its load into the corrugated wall (the same approach as the frame's
+exterior backing plates, [§3.2](#32-frame-specification)).
 
-### 6.1 Port Layout
-
-| Port | Height (Z) | Circuit | Function |
-|------|-----------|---------|----------|
-| X1 | 2,250mm | Blue | Fill — gravity feed; an internal tee (near X1) splits to a SIDE entry near the top of BOTH Blue totes (no top-cap access — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom) |
-| X3 | 400mm | Brown | Drain IBC-3 — bottom tier, near column |
-| X4 | 200mm | Waste | Drain IBC-4 — bottom tier, far column |
-
-### 6.2 Exterior Fittings
-
-| Parameter | Value |
-|-----------|-------|
-| Bulkhead type | 2" NPT bulkhead union |
-| Exterior fittings | Type DC camlock (2" aluminum) — quick-connect for fill/drain hose |
-| Reinforcing plate | 6mm mild steel, ~300mm wide, welded to wall interior before penetrations |
-| Seal | Neoprene gasket — light-tight and watertight |
-| IBC-2 fill | No dedicated external port — fed in parallel with IBC-1 from the internal X1 fill tee (one external hose still fills both) |
+The port elevations are the diagram-of-record (see [§8 Sheet 3](#8-engineering-drawings)).
+The bulkhead fittings, camlock, and seals are specified in the
+[Water System Report](water-system-report.md) §5 and §7; the bulkhead BOM,
+including the reinforcing plates, is in the
+[master shopping list](master-shopping-list.md).
 
 ---
 
@@ -273,43 +265,26 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | Primer + paint | Anti-corrosion coating | 1 | $30–$50 |
 | **Frame subtotal** | | | **<!-- BEGIN costing:ibc-frame-low -->$955<!-- END costing:ibc-frame-low -->–<!-- BEGIN costing:ibc-frame-high -->$1,455<!-- END costing:ibc-frame-high -->** |
 
-### 9.2 External Plumbing Panel
-
-| Item | Specification | Qty | Est. cost (USD) |
-|------|--------------|-----|----------------|
-| 2" NPT bulkhead union | End wall penetrations | 3 | $45–$75 |
-| 2" Type DC aluminum camlock | Exterior quick-connect fittings | 3 | $30–$50 |
-| 6mm mild steel reinforcing plate (~300 × 2,100mm) | Welded to wall interior | 1 | $40–$60 |
-| Neoprene gaskets | Light-tight, watertight seal | 3 | $10–$15 |
-| **External plumbing subtotal** | | | **$125–$200** |
-
-### 9.3 Internal Plumbing
-
-| Item | Specification | Qty | Est. cost (USD) |
-|------|--------------|-----|----------------|
-| 1" HDPE SDR-11 pipe (per meter) | Corridor pipe runs (~10 m total) | 10 m | $30–$50 |
-| 2" HDPE pipe | Cross-connect IBC-1 ↔ IBC-2 (~2 m) | 2 m | $10–$20 |
-| Banjo LE100 90° elbow (1" HDPE NPT) | Direction changes | 8 | $25–$40 |
-| Banjo V100FP ball valve (1" full-port) | V1, V3, V4 isolation valves | 3 | $30–$45 |
-| Hose clamps + fittings | IBC connections, bulkhead connections | 12 | $20–$30 |
-| **Internal plumbing subtotal** | | | **$115–$185** |
-
-### 9.4 IBC Totes
+### 9.2 IBC Totes
 
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
 | 1,000 L caged composite IBC tote (Schütz Ecobulk MX 1000 or equiv.) | New or reconditioned US 48×40 caged composite (~65 kg) | 4 | $300–$900 |
 | **IBC subtotal** | | | **$300–$900** |
 
-### 9.5 Cost Summary
+The corridor and bulkhead **plumbing parts** (pipe, valves, fittings, camlock,
+bulkhead unions, reinforcing plates) are budgeted in the
+[Water System Report](water-system-report.md) §8 and the
+[master shopping list](master-shopping-list.md), not here — this BOM covers only
+the stacking structure and the totes it restrains.
+
+### 9.3 Cost Summary
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
 | Stacking frame (restraint front portal) | <!-- BEGIN costing:ibc-frame-low -->$955<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,455<!-- END costing:ibc-frame-high --> |
-| External plumbing panel | $125 | $200 |
-| Internal plumbing | $115 | $185 |
 | IBC totes (4×) | $300 | $900 |
-| **Total** | **$1,495** | **$2,740** |
+| **Total** | **$1,255** | **$2,355** |
 
 ---
 
@@ -340,11 +315,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 |------|--------|
 | Schütz Ecobulk MX 1000 L IBC | [Schütz product catalog](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — US 48×40 composite tote, DN50 valve, UN31HA1/Y (all four totes are this size; "600 L"/"640 L" are fill levels, not tote sizes) |
 | D-ring lashing point | [McMaster-Carr #3641T29](https://www.mcmaster.com/3641T29) — 25mm, 1,100 kg WLL |
-| Banjo V100FP ball valve | [Banjo Corp catalog](https://www.banjocorp.com/banjo/Valves/V100FP/p/2832572) — 1" full-port polypropylene, quarter-turn |
-| Banjo LE100 90° elbow | [Banjo Corp catalog](https://www.banjocorp.com/banjo/Pipe-Fittings/EL100-90/p/2796532) — 1" HDPE NPT |
-| HDPE SDR-11 pipe | [Standard 1" IPS](https://www.ferguson.com/category/pipe-tubing/plastic-pipe-tubing/plastic-pipe/?prefn1=sku_Material_Type_ss&prefv1=HDPE) — PE4710 resin, 200 PSI rated |
-| Type DC camlock fitting | [2" aluminum, MIL-C-27487 spec](https://www.amazon.com/s?k=2+inch+aluminum+camlock+type+DC) |
-| Shurflo 2088 pump | [Pentair Shurflo catalog](https://www.shurflo.com/products/2088-series) — 12V DC, 3.5 GPM, 45 PSI, self-priming diaphragm |
+| Plumbing fittings, pipe, valves, camlock, pumps | Specified and sourced in the [Water System Report](water-system-report.md) §11 and [Equipment Panel Report](equipment-panel-report.md) §11 |
 | Water system architecture | [Water System Report](water-system-report.md) §3 |
 | IBC layout and stacking | [Equipment Layout Report](equipment-layout-report.md) §5 |
 | Frame fabrication drawings | [§8 — Engineering Drawings](#8-engineering-drawings) (this report) · [All Diagrams](all-diagrams.md) |

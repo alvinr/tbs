@@ -492,7 +492,7 @@ top/bottom weld + anchor connection** (fabricator/PE review) — not the member 
 ### Chemistry — Mike Ware New Cyanotype (3:1 AmFe : ferricyanide + dichromate contrast)
 | Item | Per print (Standard) | × 50 prints | Supplier | Unit | Units | Unit price | Total |
 |------|-----------|-------------|---------|------|-------|-----------|-------|
-| [Ammonium iron(III) oxalate (AmFe)](https://www.bostick-sullivan.com/product/ammonium-ferric-oxalate/) | 390g | 19.5 kg | [Bostick & Sullivan](https://www.bostick-sullivan.com/product/ammonium-ferric-oxalate/) | 500g | 39 | ~$30† | ~$1,170 |
+| [Ammonium iron(III) oxalate (AmFe)](https://www.bostick-sullivan.com/product/ammonium-ferric-oxalate/) | <!-- BEGIN costing:om-amfe-g-standard -->390<!-- END costing:om-amfe-g-standard -->g | <!-- BEGIN costing:om-amfe-kg-standard -->19.5<!-- END costing:om-amfe-kg-standard --> kg | [Bostick & Sullivan](https://www.bostick-sullivan.com/product/ammonium-ferric-oxalate/) | 500g | 39 | ~$30† | ~$1,170 |
 | [Potassium ferricyanide (3:1 ratio)](https://www.bostick-sullivan.com/product/potassium-ferricyanide-250gm/) | 130g | 6.5 kg | [Bostick & Sullivan](https://www.bostick-sullivan.com/product/potassium-ferricyanide-250gm/) | 1,000g | 7 | $24.29† | ~$158 |
 | [Ammonium dichromate (contrast, 0.1–0.4%)](https://stores.photoformulary.com/ammonium-dichromate-class-5-1-bichromate-ground-ups-only-choose-ups-ground-at-checkout/) | ~1–4g | ~0.2 kg | [Photographers' Formulary](https://stores.photoformulary.com) | 100g | 3 | ~$12 | ~$25 |
 | Distilled water | ~2.6 L | ~130 L | Tap water + DI filter adequate | — | — | — | ~$0 |

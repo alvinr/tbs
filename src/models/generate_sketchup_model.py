@@ -1992,6 +1992,18 @@ def spray_bar_plumbing():
                           BV02_X - 25, yd - 25, BV02_Z - 25, 50, 50, 50,
                           color=C_VALVE))
 
+    # Flexible ½" supply hose — the COILED service loop from BV-02 out to the operator
+    # end of the spray bar's feed (which is then bound down the push pole to the
+    # distribution manifold in generate_spraybar_model.build_feed_pole). Drawn with the
+    # coil-cord helper so it reads as a soft, slack connector that takes up/pays out
+    # length as the bar rolls along Yd (report §3.10). Operator-end point mirrors
+    # build_feed_pole's pole top (beam-center X ≈ BV02_X, op_y=180, op_z=970, hose
+    # offset 20 off the pole).
+    parts.append(ruby_coil_cord("Spray Bar Supply Hose (BV-02 -> bar, coiled)",
+                                [(BV02_X, yd + 25, BV02_Z),
+                                 (BV02_X + 20, 180, 970)],
+                                r=8, color=C_BLUE, coil_r=26, pitch=55))
+
     # TAP-01 chemistry tap branch (¾") — relocated LEFT of the chem shelf. The riser
     # tops at the stowed-shelf height (SHELF_STOW_TOP_Z); the spout reaches out over
     # the shelf and dispenses at TAP_Z. BV-06 isolates the branch.

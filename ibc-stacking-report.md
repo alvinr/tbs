@@ -205,37 +205,17 @@ doors.
 
 ## 7. Internal Plumbing
 
-### 7.1 Pipe Specification
-
-| Parameter | Value |
-|-----------|-------|
-| Material | 1" HDPE SDR-11 (33.4mm OD, 3mm wall) |
-| Elbows | Banjo LE100, 1" HDPE NPT, 90° |
-| Ball valves | Banjo V100FP, 1" full-port poly, quarter-turn |
-| Fill tee | 1" HDPE equal tee (Banjo TEE100) behind the panel-frame top rail — splits X1 to both Blue totes |
-
-### 7.2 Pipe Routing
-
-All pipes route through the 270mm plumbing corridor between the near and far IBC
-columns. IBC valve faces point toward the corridor (DN50 butterfly valve, S60×6
-thread).
-
-| Pipe | Route | Notes |
-|------|-------|-------|
-| X1 fill (Blue) | End wall bulkhead → corridor → V1 ball valve → tee → **side-entry** into both IBC-1 & IBC-2 corridor faces near the top (Z=2156, 150mm + flange) | Gravity feed from Z=2,250mm; fills both Blue totes in parallel. No top-cap access (~<!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom) |
-| X3 drain (Brown) | IBC-3 DN50 valve → V3 ball valve → **P-05 drain pump** → corridor → end wall bulkhead X3 | Pumped — port at Z=400mm, gravity head insufficient |
-| X4 drain (Waste) | IBC-4 DN50 valve → V4 ball valve → **P-03 drain pump** → corridor → end wall bulkhead X4 | Pumped — port at Z=200mm, evacuates residual below port |
-| Recycle returns | All tote-top returns (sump→IBC-3, filter→IBC-2, reject→IBC-4) enter via **side-entry near the top** | No top-cap access — DV-01/DV-02 recycle loop unchanged |
-
-### 7.3 Equipment Panel
-
-The five pumps, the three-stage filter train, the accumulator, and the diverter
-valves all mount on a single 18mm marine plywood panel at the front (cargo-door)
-mouth of the corridor, bolted to the front-portal frame (see
-[§3.2](#32-frame-specification)). Its construction — the full equipment schedule,
-layout, mounting, and on-panel plumbing — is owned by the
-[Equipment Panel Report](equipment-panel-report.md); this report treats the panel
-only as a load the front portal carries.
+All internal supply and return lines route through the 270mm plumbing corridor
+between the near and far IBC columns, reaching each tote's corridor-facing DN50
+butterfly valve (S60×6 thread). The pipe specification, the per-circuit routing
+(X1 Blue gravity-fill teed to both top totes, X3 Brown and X4 Waste pumped drains,
+and the recycle returns), and the valve schedule are owned by the
+[Water System Report](water-system-report.md) §4–§5 and §7. The panel-mounted
+pumps, filters, and diverter valves that drive those circuits — mounted on the
+plywood equipment panel at the front (cargo-door) mouth of the corridor, bolted to
+the front-portal frame (see [§3.2](#32-frame-specification)) — are owned by the
+[Equipment Panel Report](equipment-panel-report.md). This report treats the
+corridor plumbing and panel only as loads the stacking frame carries.
 
 ---
 

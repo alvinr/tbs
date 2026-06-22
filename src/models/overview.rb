@@ -19568,7 +19568,7 @@ end
   grp = ents.add_group
   grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(3.292850314478528.mm, 23.543879748522244.mm, 3.292850314478642.mm)
+  vec = Geom::Vector3d.new(1.mm, 7.299999999999997.mm, -80.mm)
   circle = ge.add_circle([2399.mm,37.mm,950.mm], vec, 8.mm, 10)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -19582,8 +19582,8 @@ end
   grp = ents.add_group
   grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(19.292138103169236.mm, 6.865064453135503.mm, -17.477269061786956.mm)
-  circle = ge.add_circle([2402.2928503144785.mm,60.543879748522244.mm,953.2928503144786.mm], vec, 8.mm, 6)
+  vec = Geom::Vector3d.new(-16.942057914042834.mm, -15.998593981290277.mm, -10.513140575403213.mm)
+  circle = ge.add_circle([2400.mm,44.3.mm,870.mm], vec, 8.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -19596,8 +19596,8 @@ end
   grp = ents.add_group
   grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-17.520690916446256.mm, 10.457813404115555.mm, -6.352595041678455.mm)
-  circle = ge.add_circle([2421.5849884176478.mm,67.40894420165775.mm,935.8155812526917.mm], vec, 8.mm, 6)
+  vec = Geom::Vector3d.new(-6.835767489434147.mm, 17.858416157764054.mm, -7.297359769906848.mm)
+  circle = ge.add_circle([2383.057942085957.mm,28.30140601870972.mm,859.4868594245968.mm], vec, 8.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -19610,8 +19610,8 @@ end
   grp = ents.add_group
   grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-17.43326377815174.mm, 8.272679947854542.mm, 9.183682032292836.mm)
-  circle = ge.add_circle([2404.0642975012015.mm,77.8667576057733.mm,929.4629862110132.mm], vec, 8.mm, 6)
+  vec = Geom::Vector3d.new(7.386945846385515.mm, 17.704422917046223.mm, -7.133627736424614.mm)
+  circle = ge.add_circle([2376.222174596523.mm,46.159822176473774.mm,852.1894996546899.mm], vec, 8.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -19624,8 +19624,8 @@ end
   grp = ents.add_group
   grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.247717158910746.mm, 5.229572401590104.mm, 19.756354368842494.mm)
-  circle = ge.add_circle([2386.6310337230498.mm,86.13943755362784.mm,938.6466682433061.mm], vec, 8.mm, 6)
+  vec = Geom::Vector3d.new(17.29646400573438.mm, 7.5313970333494495.mm, -7.938047371320181.mm)
+  circle = ge.add_circle([2383.6091204429085.mm,63.86424509352.mm,845.0558719182653.mm], vec, 8.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -19638,8 +19638,8 @@ end
   grp = ents.add_group
   grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(9.286145026529994.mm, 3.164822947196896.mm, 18.98545078231382.mm)
-  circle = ge.add_circle([2380.383316564139.mm,91.36900995521795.mm,958.4030226121486.mm], vec, 8.mm, 6)
+  vec = Geom::Vector3d.new(17.019543849708953.mm, -6.631240737185095.mm, -9.233849569831705.mm)
+  circle = ge.add_circle([2400.905584448643.mm,71.39564212686945.mm,837.1178245469451.mm], vec, 8.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -19652,8 +19652,8 @@ end
   grp = ents.add_group
   grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(19.79457222671499.mm, 3.324383564014184.mm, 7.336165171884659.mm)
-  circle = ge.add_circle([2389.669461590669.mm,94.53383290241484.mm,977.3884733944624.mm], vec, 8.mm, 6)
+  vec = Geom::Vector3d.new(6.720312370179727.mm, -16.389478316772298.mm, -10.253029142463106.mm)
+  circle = ge.add_circle([2417.925128298352.mm,64.76440138968435.mm,827.8839749771134.mm], vec, 8.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -19666,8 +19666,8 @@ end
   grp = ents.add_group
   grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(18.93636132765323.mm, 5.611969026769188.mm, -8.161859987751313.mm)
-  circle = ge.add_circle([2409.464033817384.mm,97.85821646642903.mm,984.724638566347.mm], vec, 8.mm, 6)
+  vec = Geom::Vector3d.new(-7.4970092537332675.mm, -15.959734607873528.mm, -10.391531549325123.mm)
+  circle = ge.add_circle([2424.6454406685316.mm,48.374923072912054.mm,817.6309458346503.mm], vec, 8.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -19680,8 +19680,8 @@ end
   grp = ents.add_group
   grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(7.229390934953699.mm, 8.647159241797326.mm, -18.156499632503824.mm)
-  circle = ge.add_circle([2428.4003951450372.mm,103.47018549319822.mm,976.5627785785957.mm], vec, 8.mm, 6)
+  vec = Geom::Vector3d.new(-17.20599853220756.mm, -5.596713143919036.mm, -9.567268206720087.mm)
+  circle = ge.add_circle([2417.1484314147983.mm,32.415188465038526.mm,807.2394142853252.mm], vec, 8.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -19694,8 +19694,8 @@ end
   grp = ents.add_group
   grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-8.261887183728504.mm, 10.598399659930962.mm, -16.616590503476345.mm)
-  circle = ge.add_circle([2435.629786079991.mm,112.11734473499554.mm,958.4062789460919.mm], vec, 8.mm, 6)
+  vec = Geom::Vector3d.new(-16.65226319827434.mm, 8.557557397936296.mm, -8.268769328101712.mm)
+  circle = ge.add_circle([2399.9424328825908.mm,26.81847532111949.mm,797.6721460786051.mm], vec, 8.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -19708,8 +19708,8 @@ end
   grp = ents.add_group
   grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-18.18941939728711.mm, 10.288234170953956.mm, -4.471375043732905.mm)
-  circle = ge.add_circle([2427.3678988962624.mm,122.7157443949265.mm,941.7896884426156.mm], vec, 8.mm, 6)
+  vec = Geom::Vector3d.new(-6.163995016510398.mm, 18.11402408803567.mm, -7.265638390358049.mm)
+  circle = ge.add_circle([2383.2901696843164.mm,35.376032719055786.mm,789.4033767505034.mm], vec, 8.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -19722,8 +19722,8 @@ end
   grp = ents.add_group
   grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-16.56253774108336.mm, 7.9038289727272115.mm, 10.95024046738547.mm)
-  circle = ge.add_circle([2409.1784794989753.mm,133.00397856588046.mm,937.3183133988827.mm], vec, 8.mm, 6)
+  vec = Geom::Vector3d.new(8.04254522754718.mm, 17.408692823208817.mm, -7.152418115222758.mm)
+  circle = ge.add_circle([2377.126174667806.mm,53.490056807091456.mm,782.1377383601454.mm], vec, 8.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -19736,8 +19736,8 @@ end
   grp = ents.add_group
   grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-4.362967341808144.mm, 4.884029039858007.mm, 20.34223958812413.mm)
-  circle = ge.add_circle([2392.615941757892.mm,140.90780753860767.mm,948.2685538662681.mm], vec, 8.mm, 6)
+  vec = Geom::Vector3d.new(17.547325028351224.mm, 6.85960431393076.mm, -7.996212694184351.mm)
+  circle = ge.add_circle([2385.168719895353.mm,70.89874963030027.mm,774.9853202449226.mm], vec, 8.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -19750,8 +19750,8 @@ end
   grp = ents.add_group
   grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(11.047585587844424.mm, 3.0511018128641467.mm, 18.037116331478956.mm)
-  circle = ge.add_circle([2388.252974416084.mm,145.79183657846568.mm,968.6107934543923.mm], vec, 8.mm, 6)
+  vec = Geom::Vector3d.new(16.716984432955996.mm, -7.280933233432265.mm, -9.29691600282365.mm)
+  circle = ge.add_circle([2402.7160449237044.mm,77.75835394423103.mm,766.9891075507383.mm], vec, 8.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -19764,8 +19764,8 @@ end
   grp = ents.add_group
   grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(20.369780207966414.mm, 3.5111085146208723.mm, 5.425873793795063.mm)
-  circle = ge.add_circle([2399.3005600039282.mm,148.84293839132982.mm,986.6479097858712.mm], vec, 8.mm, 6)
+  vec = Geom::Vector3d.new(6.043655563874381.mm, -16.632006257291913.mm, -10.283618027114358.mm)
+  circle = ge.add_circle([2419.4330293566604.mm,70.47742071079877.mm,757.6921915479146.mm], vec, 8.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -19778,8 +19778,8 @@ end
   grp = ents.add_group
   grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-3.9631905263731824.mm, 4.102073345527032.mm, -25.36663389414491.mm)
-  circle = ge.add_circle([2419.6703402118947.mm,152.3540469059507.mm,992.0737835796663.mm], vec, 8.mm, 8)
+  vec = Geom::Vector3d.new(-8.146717719504068.mm, -15.651354821731807.mm, -10.371513249661916.mm)
+  circle = ge.add_circle([2425.476684920535.mm,53.845414453506855.mm,747.4085735208002.mm], vec, 8.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -19792,8 +19792,1926 @@ end
   grp = ents.add_group
   grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(3.292850314478528.mm, 23.543879748522272.mm, 3.292850314478642.mm)
-  circle = ge.add_circle([2415.7071496855215.mm,156.45612025147773.mm,966.7071496855214.mm], vec, 8.mm, 10)
+  vec = Geom::Vector3d.new(-17.443684859957102.mm, -4.920198338528223.mm, -9.508507309825063.mm)
+  circle = ge.add_circle([2417.3299672010307.mm,38.19405963177505.mm,737.0370602711383.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-16.33705377828619.mm, 9.201245654593109.mm, -8.206092656931787.mm)
+  circle = ge.add_circle([2399.8862823410736.mm,33.273861293246824.mm,727.5285529613133.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-5.482710391770524.mm, 18.34338009848542.mm, -7.236193596595285.mm)
+  circle = ge.add_circle([2383.5492285627874.mm,42.47510694783993.mm,719.3224603043815.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.68611647887019.mm, 17.087780248965664.mm, -7.173656746980896.mm)
+  circle = ge.add_circle([2378.066518171017.mm,60.81848704632535.mm,712.0862667077862.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(17.771746556331436.mm, 6.178623883683471.mm, -8.055546889344669.mm)
+  circle = ge.add_circle([2386.752634649887.mm,77.90626729529102.mm,704.9126099608053.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.38924450299237.mm, -7.918373233653639.mm, -9.359179151968533.mm)
+  circle = ge.add_circle([2404.5243812062185.mm,84.08489117897449.mm,696.8570630714606.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.358001390014579.mm, -16.84810339072277.mm, -10.311907567713206.mm)
+  circle = ge.add_circle([2420.913625709211.mm,76.16651794532085.mm,687.4978839194921.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.783907783890754.mm, -15.318031114665402.mm, -10.349062337196756.mm)
+  circle = ge.add_circle([2426.2716270992255.mm,59.31841455459808.mm,677.1859763517789.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-17.654756511839878.mm, -4.235010437421167.mm, -9.448622309497523.mm)
+  circle = ge.add_circle([2417.4877193153347.mm,44.000383439932676.mm,666.8369140145821.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-15.99690758181896.mm, 9.83219575019578.mm, -8.1442666332523.mm)
+  circle = ge.add_circle([2399.832962803495.mm,39.76537300251151.mm,657.3882917050846.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.792946594564.mm, 18.54613643427794.mm, -7.20907003348907.mm)
+  circle = ge.add_circle([2383.836055221676.mm,49.59756875270729.mm,649.2440250718323.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.316683802885564.mm, 16.742171769310943.mm, -7.197311429199431.mm)
+  circle = ge.add_circle([2379.043108627112.mm,68.14370518698523.mm,642.0349550383432.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(17.969388316615095.mm, 5.489488260730596.mm, -8.115959992935473.mm)
+  circle = ge.add_circle([2388.3597924299975.mm,84.88587695629617.mm,634.8376436091438.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.036820986605562.mm, -8.542594236723076.mm, -9.420544612453341.mm)
+  circle = ge.add_circle([2406.3291807466126.mm,90.37536521702677.mm,626.7216836162083.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.664389453159856.mm, -17.037442065642452.mm, -10.33785487101045.mm)
+  circle = ge.add_circle([2422.366001733218.mm,81.83277098030369.mm,617.301139003755.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.407613324726299.mm, -14.960268879712174.mm, -10.32421285251769.mm)
+  circle = ge.add_circle([2427.030391186378.mm,64.79532891466124.mm,606.9632841327445.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-17.838893456182632.mm, -3.542188338184765.mm, -9.387704004746524.mm)
+  circle = ge.add_circle([2417.6227778616517.mm,49.835060034949066.mm,596.6390712802269.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-15.632340346325691.mm, 10.449451023760375.mm, -8.08338499909587.mm)
+  circle = ge.add_circle([2399.783884405469.mm,46.2928716967643.mm,587.2513672754803.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.0957494605563625.mm, 18.72198567161363.mm, -7.184308826407118.mm)
+  circle = ge.add_circle([2384.1515440591434.mm,56.742322720524676.mm,579.1679822763845.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.933291118976285.mm, 16.37239140373603.mm, -7.223346296106797.mm)
+  circle = ge.add_circle([2380.055794598587.mm,75.4643083921383.mm,571.9836734499773.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(18.13995064023902.mm, 4.793242328285288.mm, -8.17736040522584.mm)
+  circle = ge.add_circle([2389.9890857175633.mm,91.83669979587434.mm,564.7603271538705.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(15.660248236401458.mm, -9.152649784461019.mm, -9.480919340562082.mm)
+  circle = ge.add_circle([2408.1290363578023.mm,96.62994212415963.mm,556.5829667486447.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.963871423613.mm, -17.199735202416036.mm, -10.361420595110076.mm)
+  circle = ge.add_circle([2423.7892845942038.mm,87.47729233969861.mm,547.1020474080826.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-10.016888665385522.mm, -14.578610564165658.mm, -10.297002472982513.mm)
+  circle = ge.add_circle([2427.7531560178168.mm,70.27755713728257.mm,536.7406268129726.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-17.995816500334513.mm, -2.8427825135517395.mm, -9.325844761300573.mm)
+  circle = ge.add_circle([2417.7362673524312.mm,55.69894657311691.mm,526.44362433999.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-15.243904836997444.mm, 11.052075578705654.mm, -8.023540064590634.mm)
+  circle = ge.add_circle([2399.7404508520967.mm,52.856164059565174.mm,517.1177795786895.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-3.3921760960083702.mm, 18.870661183851723.mm, -7.161947518858597.mm)
+  circle = ge.add_circle([2384.4965460150993.mm,63.90823963827083.mm,509.09423951409883.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(10.535003513009087.mm, 15.978999821699631.mm, -7.251721873042186.mm)
+  circle = ge.add_circle([2381.104369919091.mm,82.77890082212255.mm,501.93229199524023.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(18.283174916702592.mm, 4.090941750374512.mm, -8.239655029504434.mm)
+  circle = ge.add_circle([2391.6393734321.mm,98.75790064382218.mm,494.68057012219805.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(15.260097220607804.mm, -9.74761489667516.mm, -9.540211794749041.mm)
+  circle = ge.add_circle([2409.9225483488026.mm,102.8488423941967.mm,486.4409150926936.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.2575094428530065.mm, -17.33473672847309.mm, -10.382569009122392.mm)
+  circle = ge.add_circle([2425.1826455694104.mm,93.10122749752153.mm,476.9007032979446.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-10.61081000864533.mm, -14.17363484710404.mm, -10.267472455591246.mm)
+  circle = ge.add_circle([2428.4401550122634.mm,75.76649076904845.mm,466.5181342888222.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-18.125287713981834.mm, -2.1378534186502094.mm, -9.263138371561467.mm)
+  circle = ge.add_circle([2417.829345003618.mm,61.592855921944405.mm,456.25066183323094.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-14.832190008648467.mm, 11.639155701880895.mm, -7.964822567996521.mm)
+  circle = ge.add_circle([2399.7040572896362.mm,59.455002503294196.mm,446.98752346166947.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-2.683293274967127.mm, 18.991937545775983.mm, -7.142020015569869.mm)
+  circle = ge.add_circle([2384.8718672809878.mm,71.09415820517509.mm,439.02270089367295.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(11.120908654872437.mm, 15.562593492526986.mm, -7.282395136305979.mm)
+  circle = ge.add_circle([2382.1885740060206.mm,90.08609575095107.mm,431.8806808781031.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(18.39884398607728.mm, 3.3836513712177663.mm, -8.30274941323529.mm)
+  circle = ge.add_circle([2393.309482660893.mm,105.64868924347806.mm,424.5982857417971.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(14.836974657358041.mm, -10.326587473637375.mm, -9.598332074437394.mm)
+  circle = ge.add_circle([2411.7083266469704.mm,109.03234061469583.mm,416.2955363285618.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(2.5463745130909956.mm, -17.442241951408107.mm, -10.401268047337282.mm)
+  circle = ge.add_circle([2426.5453013043284.mm,98.70575314105845.mm,406.6972042541244.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-11.188476837363396.mm, -13.745955761983907.mm, -10.235667574432966.mm)
+  circle = ge.add_circle([2429.0916758174194.mm,81.26351118965034.mm,396.29593620678713.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-18.22711078990551.mm, -1.4284698831169038.mm, -9.199679912393151.mm)
+  circle = ge.add_circle([2417.903198980056.mm,67.51755542766644.mm,386.06026863235417.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-14.397820112730187.mm, 12.209801248959096.mm, -7.907321538126666.mm)
+  circle = ge.add_circle([2399.6760881901505.mm,66.08908554454953.mm,376.860588719961.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1.9701758218002396.mm, 19.085630875388986.mm, -7.124556531078099.mm)
+  circle = ge.add_circle([2385.2782680774203.mm,78.29888679350863.mm,368.95326718183435.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(11.69011818177296.mm, 15.123803781030375.mm, -7.315319578393712.mm)
+  circle = ge.add_circle([2383.30809225562.mm,97.38451766889762.mm,361.82871065075625.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(18.486782468271485.mm, 2.6724436006850993.mm, -8.366547891269136.mm)
+  circle = ge.add_circle([2394.998210437393.mm,112.50832144992799.mm,354.51339107236254.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(14.391522094773336.mm, -10.88868966386778.mm, -9.655192056328076.mm)
+  circle = ge.add_circle([2413.4849929056645.mm,115.18076505061309.mm,346.1468431810934.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(1.8315448733924313.mm, -17.522087869340197.mm, -10.417489357844886.mm)
+  circle = ge.add_circle([2427.876515000438.mm,104.29207538674531.mm,336.4916511247653.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-11.749013279865721.mm, -13.296221765627863.mm, -10.201636052796857.mm)
+  circle = ge.add_circle([2429.7080598738303.mm,86.76998751740511.mm,326.07416176692044.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-18.301131341625933.mm, -0.7157074905139211.mm, -9.135565600964526.mm)
+  circle = ge.add_circle([2417.9590465939646.mm,73.47376575177725.mm,315.8725257141236.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-13.941453750825985.mm, 12.763146994093518.mm, -7.851124159359358.mm)
+  circle = ge.add_circle([2399.6579152523386.mm,72.75805826126333.mm,306.73696011315906.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1.2539049815204635.mm, 19.151599112719182.mm, -7.109583543918234.mm)
+  circle = ge.add_circle([2385.7164615015126.mm,85.52120525535685.mm,298.8858359537997.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(12.241769045190267.mm, 14.6632959902188.mm, -7.350445278512609.mm)
+  circle = ge.add_circle([2384.462556519992.mm,104.67280436807603.mm,291.77625240988147.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(18.54685702894494.mm, 1.9583967882850999.mm, -8.430953730892043.mm)
+  circle = ge.add_circle([2396.7043255651824.mm,119.33610035829483.mm,284.42580713136886.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(13.924414938228892.mm, -11.43306919515311.mm, -9.710705528014785.mm)
+  circle = ge.add_circle([2415.2511825941274.mm,121.29449714657993.mm,275.9948534004768.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(1.1141043648281084.mm, -17.574153418060078.mm, -10.431208345522549.mm)
+  circle = ge.add_circle([2429.1755975323563.mm,109.86142795142682.mm,266.28414787246203.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-12.291569437961243.mm, -12.825114755020437.mm, -10.165429490055146.mm)
+  circle = ge.add_circle([2430.2897018971844.mm,92.28727453336674.mm,255.85293952693948.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-18.34723713748781.mm, -0.0006469475034123207.mm, -9.070892648863094.mm)
+  circle = ge.add_circle([2417.998132459223.mm,79.4621597783463.mm,245.68751003688433.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-13.46378287606558.mm, 13.298353941793636.mm, -7.796315639447158.mm)
+  circle = ge.add_circle([2399.6508953217353.mm,79.46151283084289.mm,236.61661738802124.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(21.812887554330246.mm, 9.94013322736346.mm, 1.1796982514260321.mm)
+  circle = ge.add_circle([2386.1871124456698.mm,92.75986677263653.mm,228.82030174857408.mm], vec, 8.mm, 8)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(1.mm, 7.300000000000011.mm, -80.00000000000011.mm)
+  circle = ge.add_circle([2408.mm,102.69999999999999.mm,230.0000000000001.mm], vec, 8.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(1.mm, 7.mm, 82.mm)
+  circle = ge.add_circle([2409.mm,110.mm,150.mm], vec, 8.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-16.90695013170307.mm, 17.62904913963186.mm, 7.512970806759512.mm)
+  circle = ge.add_circle([2410.mm,117.mm,232.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-6.8776169281918555.mm, -16.235950039439246.mm, 10.281576429320324.mm)
+  circle = ge.add_circle([2393.093049868297.mm,134.62904913963186.mm,239.5129708067595.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(7.268871856686928.mm, -16.17686310134252.mm, 10.104014266496506.mm)
+  circle = ge.add_circle([2386.215432940105.mm,118.39309910019261.mm,249.79454723607984.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(17.19332230756936.mm, -6.141548237437036.mm, 9.126311162859622.mm)
+  circle = ge.add_circle([2393.484304796792.mm,102.2162359988501.mm,259.89856150257634.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(17.045383989669972.mm, 7.954290809502112.mm, 7.924811955412395.mm)
+  circle = ge.add_circle([2410.6776271043614.mm,96.07468776141306.mm,269.02487266543596.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(6.912264855380727.mm, 17.801317567387272.mm, 7.207786733815965.mm)
+  circle = ge.add_circle([2427.7230110940313.mm,104.02897857091517.mm,276.94968462084836.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-7.232676849778727.mm, 17.5948219860788.mm, 7.397913694478348.mm)
+  circle = ge.add_circle([2434.635275949412.mm,121.83029613830244.mm,284.1574713546643.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-17.051159196306344.mm, 7.456530857389424.mm, 8.38311516090954.mm)
+  circle = ge.add_circle([2427.4025990996333.mm,139.42511812438124.mm,291.55538504914267.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-16.755298739248246.mm, -6.637148741405582.mm, 9.582626096696117.mm)
+  circle = ge.add_circle([2410.351439903327.mm,146.88164898177067.mm,299.9385002100522.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-6.519501846204548.mm, -16.378153308288944.mm, 10.289348475661313.mm)
+  circle = ge.add_circle([2393.5961411640787.mm,140.24450024036508.mm,309.52112630674833.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(7.6223458687059065.mm, -16.02427166641317.mm, 10.086677509709602.mm)
+  circle = ge.add_circle([2387.076639317874.mm,123.86634693207614.mm,319.81047478240964.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(17.333786347973728.mm, -5.784113010580384.mm, 9.094085423488877.mm)
+  circle = ge.add_circle([2394.69898518658.mm,107.84207526566297.mm,329.89715229211924.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.890036107467495.mm, 8.305865835637036.mm, 7.896693939549664.mm)
+  circle = ge.add_circle([2412.032771534554.mm,102.05796225508259.mm,338.9912377156081.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(6.552680856676034.mm, 17.939782921689883.mm, 7.200351691359742.mm)
+  circle = ge.add_circle([2428.9228076420213.mm,110.36382809071962.mm,346.8879316551578.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-7.584526295820069.mm, 17.43855392023613.mm, 7.41554449822155.mm)
+  circle = ge.add_circle([2435.4754884986974.mm,128.3036110124095.mm,354.0882833465175.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-17.18786285116812.mm, 7.097647615275093.mm, 8.41541865297853.mm)
+  circle = ge.add_circle([2427.8909622028773.mm,145.74216493264564.mm,361.5038278447391.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-16.596271356358102.mm, -6.987089578650682.mm, 9.610559736669643.mm)
+  circle = ge.add_circle([2410.703099351709.mm,152.83981254792073.mm,369.9192464977176.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-6.158488255390239.mm, -16.51286560528044.mm, 10.296445701126231.mm)
+  circle = ge.add_circle([2394.106827995351.mm,145.85272296927005.mm,379.52980623438725.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(7.972532270024203.mm, -15.864344059350543.mm, 10.068754587139438.mm)
+  circle = ge.add_circle([2387.948339739961.mm,129.3398573639896.mm,389.8262519355135.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(17.466714667189535.mm, -5.423821001179633.mm, 9.061707711476402.mm)
+  circle = ge.add_circle([2395.920872009985.mm,113.47551330463907.mm,399.8950065226529.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.727346615346505.mm, 8.654134213974913.mm, 7.86894773032725.mm)
+  circle = ge.add_circle([2413.3875866771746.mm,108.05169230345943.mm,408.9567142341293.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(6.190277154701562.mm, 18.07072742904576.mm, 7.193593059048453.mm)
+  circle = ge.add_circle([2430.114933292521.mm,116.70582651743435.mm,416.8256619644566.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-7.933011355542931.mm, 17.274984261859373.mm, 7.433757579543055.mm)
+  circle = ge.add_circle([2436.3052104472226.mm,134.7765539464801.mm,424.019255023505.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-17.31700129751198.mm, 6.735986240624015.mm, 8.447867044062718.mm)
+  circle = ge.add_circle([2428.3721990916797.mm,152.05153820833948.mm,431.4530126030481.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-16.429937546956808.mm, -7.333647410966279.mm, 9.63811548077706.mm)
+  circle = ge.add_circle([2411.0551977941677.mm,158.7875244489635.mm,439.9008796471108.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-5.794734075228007.mm, -16.640028002727036.mm, 10.302865001150224.mm)
+  circle = ge.add_circle([2394.625260247211.mm,151.45387703799722.mm,449.53899512788786.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.319277877340028.mm, -15.697150237865344.mm, 10.050253338874597.mm)
+  circle = ge.add_circle([2388.830526171983.mm,134.81384903527018.mm,459.8418601290381.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(17.59204911790175.mm, -5.060829813070001.mm, 9.029192189921844.mm)
+  circle = ge.add_circle([2397.149804049323.mm,119.11669879740484.mm,469.8921134679127.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.557386679161027.mm, 8.998943600220954.mm, 7.841585464869411.mm)
+  circle = ge.add_circle([2414.7418531672247.mm,114.05586898433484.mm,478.9213056578345.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.825212277015453.mm, 18.1940938099262.mm, 7.18751379333537.mm)
+  circle = ge.add_circle([2431.2992398463857.mm,123.05481258455579.mm,486.76289112270393.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.277979589867755.mm, 17.104184561814975.mm, 7.452544971428836.mm)
+  circle = ge.add_circle([2437.124452123401.mm,141.248906394482.mm,493.9504049160393.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-17.43851804584301.mm, 6.371704936277695.mm, 8.48044614014509.mm)
+  circle = ge.add_circle([2428.8464725335334.mm,158.35309095629697.mm,501.40294988746814.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-16.256370071042056.mm, -7.676670642308011.mm, 9.665281275209736.mm)
+  circle = ge.add_circle([2411.4079544876904.mm,164.72479589257466.mm,509.88339602761323.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-5.4283984240228165.mm, -16.75958487552188.mm, 10.308603567715409.mm)
+  circle = ge.add_circle([2395.1515844166483.mm,157.04812525026665.mm,519.548677302823.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.66243101246846.mm, -15.52276333815496.mm, 10.031181857983142.mm)
+  circle = ge.add_circle([2389.7231859926255.mm,140.28854037474477.mm,529.8572808705384.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(17.70973487461015.mm, -4.695298230797903.mm, 8.996553082207015.mm)
+  circle = ge.add_circle([2398.385617005094.mm,124.76577703658981.mm,539.8884627285215.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.380230645098436.mm, 9.34014316315995.mm, 7.814619112351124.mm)
+  circle = ge.add_circle([2416.095351879704.mm,120.07047880579191.mm,548.8850158107285.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.457645915267676.mm, 18.30982809972943.mm, 7.182116553495462.mm)
+  circle = ge.add_circle([2432.4755825248026.mm,129.41062196895186.mm,556.6996349230797.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.61928009809526.mm, 16.92622953363275.mm, 7.47189845564219.mm)
+  circle = ge.add_circle([2437.9332284400703.mm,147.7204500686813.mm,563.8817514765751.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-17.552359940649694.mm, 6.004963051122928.mm, 8.51314169003399.mm)
+  circle = ge.add_circle([2429.313948341975.mm,164.64667960231404.mm,571.3536499322173.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-16.075644852862297.mm, -8.016009222784817.mm, 9.692045236736021.mm)
+  circle = ge.add_circle([2411.7615884013253.mm,170.65164265343697.mm,579.8667916222513.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-5.059641549301887.mm, -16.871483925470386.mm, 10.313658890580541.mm)
+  circle = ge.add_circle([2395.685943548463.mm,162.63563343065215.mm,589.5588368589873.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.001841568695.mm, -15.3412596429107.mm, 10.011548486971606.mm)
+  circle = ge.add_circle([2390.626301999161.mm,145.76414950518176.mm,599.8724957495679.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(17.819720457607673.mm, -4.327386150163747.mm, 8.963804665774887.mm)
+  circle = ge.add_circle([2399.628143567856.mm,130.42288986227106.mm,609.8840442365395.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.195956007163204.mm, 9.677583650634588.mm, 7.788060468760932.mm)
+  circle = ge.add_circle([2417.447864025464.mm,126.09550371210732.mm,618.8478489023144.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.087738855339012.mm, 18.417879672386988.mm, 7.177403700462833.mm)
+  circle = ge.add_circle([2433.643820032627.mm,135.7730873627419.mm,626.6359093710753.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.956763583910288.mm, 16.74119702082359.mm, 7.491809566318807.mm)
+  circle = ge.add_circle([2438.731558887966.mm,154.1909670351289.mm,633.8133130715381.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-17.65847718366149.mm, 5.635921010387108.mm, 8.545939391597017.mm)
+  circle = ge.add_circle([2429.7747953040557.mm,170.93216405595248.mm,641.3051226378569.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-15.887840947702898.mm, -8.351514714295575.mm, 9.718395657899691.mm)
+  circle = ge.add_circle([2412.116318120394.mm,176.5680850663396.mm,649.8510620294539.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.688624757716298.mm, -16.975676204166632.mm, 10.318028758376613.mm)
+  circle = ge.add_circle([2396.2284771726913.mm,168.21657035204402.mm,659.5694576873536.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.337361076434263.mm, -15.152718547949775.mm, 9.991361814136667.mm)
+  circle = ge.add_circle([2391.539852414975.mm,151.24089414787738.mm,669.8874864457302.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(17.92195775550408.mm, -3.9572545082779698.mm, 8.930961265883525.mm)
+  circle = ge.add_circle([2400.8772134914093.mm,136.0881755999276.mm,679.8788482598669.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.004643373275485.mm, 10.011117454833567.mm, 7.761921151742513.mm)
+  circle = ge.add_circle([2418.7991712469134.mm,132.13092109164964.mm,688.8098095257504.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.715652907010735.mm, 18.518201262509365.mm, 7.173377295797877.mm)
+  circle = ge.add_circle([2434.803814620189.mm,142.1420385464832.mm,696.571730677493.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.29028242069262.mm, 16.549167962827482.mm, 7.512269593669544.mm)
+  circle = ge.add_circle([2439.5194675271996.mm,160.66023980899257.mm,703.7451079732908.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-17.75682335562942.mm, 5.2647402454634005.mm, 8.57882489801682.mm)
+  circle = ge.add_circle([2430.229185106507.mm,177.20940777182005.mm,711.2573775669604.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-15.693040507303522.mm, -8.683040355461316.mm, 9.744321012140745.mm)
+  circle = ge.add_circle([2412.4723617508776.mm,182.47414801728345.mm,719.8362024649772.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.315510344482391.mm, -17.072116134406173.mm, 10.321711259577114.mm)
+  circle = ge.add_circle([2396.779321243574.mm,173.79110766182214.mm,729.5805234771179.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.668842768175637.mm, -14.957222527483964.mm, 9.970630669807406.mm)
+  circle = ge.add_circle([2392.4638108990916.mm,156.71899152741597.mm,739.902234736695.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(18.016402046268922.mm, -3.585065213161755.mm, 8.898037249339836.mm)
+  circle = ge.add_circle([2402.1326536672673.mm,141.761768999932.mm,749.8728654065025.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(15.806376430011824.mm, 10.34059867686014.mm, 7.736212595511802.mm)
+  circle = ge.add_circle([2420.149055713536.mm,138.17670378677025.mm,758.7709026558423.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.341550833182737.mm, 18.610748986060912.mm, 7.170039100785289.mm)
+  circle = ge.add_circle([2435.955432143548.mm,148.5173024636304.mm,766.5071152513541.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.619690716092919.mm, 16.35022635960928.mm, 7.533269587790414.mm)
+  circle = ge.add_circle([2440.2969829767308.mm,167.1280514496913.mm,773.6771543521394.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-17.847355436631915.mm, 4.891583123294282.mm, 8.611783824068084.mm)
+  circle = ge.add_circle([2430.677292260638.mm,183.47827780930058.mm,781.2104239399298.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-15.491328743924896.mm, -9.01044112582332.mm, 9.769809958837527.mm)
+  circle = ge.add_circle([2412.829936824006.mm,188.36986093259486.mm,789.8222077639979.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-3.940461522385249.mm, -17.160761530121817.mm, 10.324704783332322.mm)
+  circle = ge.add_circle([2397.338608080081.mm,179.35941980677154.mm,799.5920177228354.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.996141642684961.mm, -14.754857098044056.mm, 9.949364122483075.mm)
+  circle = ge.add_circle([2393.398146557696.mm,162.19865827664972.mm,809.9167225061677.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(18.103012016795674.mm, -3.210981072922607.mm, 8.865047018215478.mm)
+  circle = ge.add_circle([2403.3942882003807.mm,147.44380117860567.mm,819.8660866286508.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(15.60124190599754.mm, 10.665883190553302.mm, 7.71094604585528.mm)
+  circle = ge.add_circle([2421.4973002171764.mm,144.23282010568306.mm,828.7311336468663.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.965596278677367.mm, 18.695482359556678.mm, 7.167390575663603.mm)
+  circle = ge.add_circle([2437.098542123174.mm,154.89870329623636.mm,836.4420796927216.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.944844375850607.mm, 16.144459234912944.mm, 7.554800362578817.mm)
+  circle = ge.add_circle([2441.0641384018513.mm,173.59418565579304.mm,843.6094702683852.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-17.930033824895418.mm, 4.5166128753476755.mm, 8.644801752408057.mm)
+  circle = ge.add_circle([2431.1192940260007.mm,189.73864489070598.mm,851.164270630964.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-15.282793893071357.mm, -9.333573809279983.mm, 9.794851348268821.mm)
+  circle = ge.add_circle([2413.1892602011053.mm,194.25525776605366.mm,859.809072383372.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-3.563642350385635.mm, -17.241573614837932.mm, 10.327008020173821.mm)
+  circle = ge.add_circle([2397.906466308034.mm,184.92168395677368.mm,869.6039237316409.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(10.319114528434056.mm, -14.54571078107071.mm, 9.927571474866454.mm)
+  circle = ge.add_circle([2394.3428239576483.mm,167.68011034193574.mm,879.9309317518147.mm], vec, 8.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(13.338061513917637.mm, 19.865600439134965.mm, -1.8585032266812505.mm)
+  circle = ge.add_circle([2404.6619384860824.mm,153.13439956086503.mm,889.8585032266811.mm], vec, 8.mm, 8)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Supply Hose (BV-02 -> bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray Bar Supply Hose (BV-02 -> bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(1.mm, 7.mm, 82.00000000000011.mm)
+  circle = ge.add_circle([2418.mm,173.mm,887.9999999999999.mm], vec, 8.mm, 10)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

@@ -1996,13 +1996,14 @@ def spray_bar_plumbing():
     # end of the spray bar's feed (which is then bound down the push pole to the
     # distribution manifold in generate_spraybar_model.build_feed_pole). Drawn with the
     # coil-cord helper so it reads as a soft, slack connector that takes up/pays out
-    # length as the bar rolls along Yd (report §3.10). Operator-end point mirrors
-    # build_feed_pole's pole top (beam-center X ≈ BV02_X, op_y=180, op_z=970, hose
-    # offset 20 off the pole).
+    # length as the bar rolls along Yd (report §3.10). It drapes down to rest on the
+    # near walkway deck (~WALKWAY_H) in a hanging loop, then rises to the operator end
+    # (beam-center X ≈ BV02_X, op_y=180, op_z=970, hose offset 20 off the pole).
     parts.append(ruby_coil_cord("Spray Bar Supply Hose (BV-02 -> bar, coiled)",
-                                [(BV02_X, yd + 25, BV02_Z),
-                                 (BV02_X + 20, 180, 970)],
-                                r=8, color=C_BLUE, coil_r=26, pitch=55))
+                                [(BV02_X, yd + 25, BV02_Z),       # BV-02 outlet (Z≈950)
+                                 (BV02_X + 10, 110, WALKWAY_H + 20),  # loop bottom — draped on the walkway deck
+                                 (BV02_X + 20, 180, 970)],        # operator end of the pole-bound feed
+                                r=8, color=C_BLUE, coil_r=24, pitch=70))
 
     # TAP-01 chemistry tap branch (¾") — relocated LEFT of the chem shelf. The riser
     # tops at the stowed-shelf height (SHELF_STOW_TOP_Z); the spout reaches out over

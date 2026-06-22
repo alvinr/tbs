@@ -106,7 +106,7 @@ The baffle design is identical for both fans. Fan A's baffle duct is fixed to th
 | Dimensions | 559 × 305 × 711mm (22 × 12 × 28 in) |
 | Weight | ~7.3 kg (16 lb) dry |
 | Power draw | <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W AC → **~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on the 12V bus** (÷0.88 inverter efficiency) |
-| Airflow | 1300 CFM rated — **run on LOW** to match the Ø200 light-safe duct |
+| Airflow | 1,300 CFM rated — **run on LOW** to match the Ø200 light-safe duct |
 | Water consumption | ~4.8 gal tank; ~3 L/hour evaporated |
 | Circuit | E — inverter DC feed 40A / 10 AWG; AC output GFCI-protected ([Electrical §7.6](electrical-report.md#ac-safety)) |
 | Water source | Onboard 4.8 gal reservoir, topped up from the Blue circuit IBC tote |
@@ -191,7 +191,7 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 | Item | Spec | Source | Est. cost |
 |------|------|--------|-----------|
 | 150×150×50mm axial fans × 2 | 12V DC, ~150–200 CFM each | Amazon (GDSTIME/Wathai 15050) | ~$50 |
-| Evaporative cooler | Hessaire MC18M, 120V AC, 1300 CFM (run low), <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W | [Hessaire](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) / Amazon | ~$130 |
+| Evaporative cooler | Hessaire MC18M, 120V AC, 1,300 CFM (run low), <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W | [Hessaire](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) / Amazon | ~$130 |
 | Cooler inverter | Victron Phoenix 12/375 GFCI (12V→120V) + DC fuse/disconnect + GFCI AC outlet | Victron / Amazon | ~$275 |
 | Shade canopy — 80% shade cloth | 20 × 10 ft | Amazon / Farm supply | ~$80 |
 | Canopy frame | 1.5" EMT conduit + fittings | Home Depot | ~$120 |
@@ -231,7 +231,7 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 ## 11. Source References
 
 1. [150mm 12V DC axial fan 15050](https://www.coolingfanfactory.com/product/DC-Fan-15050-12V-24V-48V-150mm.html) — 150×150×50mm axial panel fan specifications.
-2. [Hessaire MC18M](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) — 120V AC evaporative cooler (1300 CFM, <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W) specifications. Driven by a [Victron Phoenix 12/375 GFCI inverter](https://www.victronenergy.com/inverters/phoenix-inverter-vedirect-250va-800va).
+2. [Hessaire MC18M](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) — 120V AC evaporative cooler (1,300 CFM, <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W) specifications. Driven by a [Victron Phoenix 12/375 GFCI inverter](https://www.victronenergy.com/inverters/phoenix-inverter-vedirect-250va-800va).
 3. [OSHA Heat Illness Prevention](https://www.osha.gov/heat-exposure) — Workplace heat exposure guidelines and permissible limits.
 4. [Electrical Report](electrical-report.md) — Circuit assignments (A, B, E), wiring specification, and fuse block layout.
 5. [Hinged Panel Report](hinged-panel-report.md) — Panel corner zone construction and Fan B mounting.

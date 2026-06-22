@@ -230,7 +230,7 @@ evap_cooler_w_ac:
   aliases:
     - '(\d+) ?W AC'
     - 'AC,? (\d+) ?W'
-    - '(\d+) ?W, (?:16 lb|1300 CFM)'
+    - '(\d+) ?W, (?:16 lb|1,?300 CFM)'
 evap_cooler_w_bus:
   constant: EVAP_COOLER_W_BUS
   unit: W

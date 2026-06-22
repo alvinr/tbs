@@ -1069,45 +1069,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="7. Internal Plumbing">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#71-pipe-specification" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.1 Pipe Specification
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#72-pipe-routing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.2 Pipe Routing
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#73-equipment-panel" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.3 Equipment Panel
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -3176,76 +3137,17 @@ doors.</p>
 </table>
 <hr />
 <h2 id="7-internal-plumbing">7. Internal Plumbing<a class="headerlink" href="#7-internal-plumbing" title="Permanent link">&para;</a></h2>
-<h3 id="71-pipe-specification">7.1 Pipe Specification<a class="headerlink" href="#71-pipe-specification" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Material</td>
-<td>1" HDPE SDR-11 (33.4mm OD, 3mm wall)</td>
-</tr>
-<tr>
-<td>Elbows</td>
-<td>Banjo LE100, 1" HDPE NPT, 90°</td>
-</tr>
-<tr>
-<td>Ball valves</td>
-<td>Banjo V100FP, 1" full-port poly, quarter-turn</td>
-</tr>
-<tr>
-<td>Fill tee</td>
-<td>1" HDPE equal tee (Banjo TEE100) behind the panel-frame top rail — splits X1 to both Blue totes</td>
-</tr>
-</tbody>
-</table>
-<h3 id="72-pipe-routing">7.2 Pipe Routing<a class="headerlink" href="#72-pipe-routing" title="Permanent link">&para;</a></h3>
-<p>All pipes route through the 270mm plumbing corridor between the near and far IBC
-columns. IBC valve faces point toward the corridor (DN50 butterfly valve, S60×6
-thread).</p>
-<table>
-<thead>
-<tr>
-<th>Pipe</th>
-<th>Route</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>X1 fill (Blue)</td>
-<td>End wall bulkhead → corridor → V1 ball valve → tee → <strong>side-entry</strong> into both IBC-1 &amp; IBC-2 corridor faces near the top (Z=2156, 150mm + flange)</td>
-<td>Gravity feed from Z=2,250mm; fills both Blue totes in parallel. No top-cap access (~<!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom)</td>
-</tr>
-<tr>
-<td>X3 drain (Brown)</td>
-<td>IBC-3 DN50 valve → V3 ball valve → <strong>P-05 drain pump</strong> → corridor → end wall bulkhead X3</td>
-<td>Pumped — port at Z=400mm, gravity head insufficient</td>
-</tr>
-<tr>
-<td>X4 drain (Waste)</td>
-<td>IBC-4 DN50 valve → V4 ball valve → <strong>P-03 drain pump</strong> → corridor → end wall bulkhead X4</td>
-<td>Pumped — port at Z=200mm, evacuates residual below port</td>
-</tr>
-<tr>
-<td>Recycle returns</td>
-<td>All tote-top returns (sump→IBC-3, filter→IBC-2, reject→IBC-4) enter via <strong>side-entry near the top</strong></td>
-<td>No top-cap access — DV-01/DV-02 recycle loop unchanged</td>
-</tr>
-</tbody>
-</table>
-<h3 id="73-equipment-panel">7.3 Equipment Panel<a class="headerlink" href="#73-equipment-panel" title="Permanent link">&para;</a></h3>
-<p>The five pumps, the three-stage filter train, the accumulator, and the diverter
-valves all mount on a single 18mm marine plywood panel at the front (cargo-door)
-mouth of the corridor, bolted to the front-portal frame (see
-<a href="#32-frame-specification">§3.2</a>). Its construction — the full equipment schedule,
-layout, mounting, and on-panel plumbing — is owned by the
-<a href="../equipment-panel-report/">Equipment Panel Report</a>; this report treats the panel
-only as a load the front portal carries.</p>
+<p>All internal supply and return lines route through the 270mm plumbing corridor
+between the near and far IBC columns, reaching each tote's corridor-facing DN50
+butterfly valve (S60×6 thread). The pipe specification, the per-circuit routing
+(X1 Blue gravity-fill teed to both top totes, X3 Brown and X4 Waste pumped drains,
+and the recycle returns), and the valve schedule are owned by the
+<a href="../water-system-report/">Water System Report</a> §4–§5 and §7. The panel-mounted
+pumps, filters, and diverter valves that drive those circuits — mounted on the
+plywood equipment panel at the front (cargo-door) mouth of the corridor, bolted to
+the front-portal frame (see <a href="#32-frame-specification">§3.2</a>) — are owned by the
+<a href="../equipment-panel-report/">Equipment Panel Report</a>. This report treats the
+corridor plumbing and panel only as loads the stacking frame carries.</p>
 <hr />
 <h2 id="8-engineering-drawings">8. Engineering Drawings<a class="headerlink" href="#8-engineering-drawings" title="Permanent link">&para;</a></h2>
 <p>Eight construction drawings cover the IBC system across two drawing sets:</p>

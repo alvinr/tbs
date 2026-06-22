@@ -19,7 +19,7 @@ time without opening the panel or breaking the light seal. In case of emergency,
 - 100% light exclusion — no straight-line optical path from exterior to interior
 - Single-operator personnel access at any time during exposure
 - 180° outward swing for full-width loading access (IBC totes, equipment)
-- ~56° transport swing about the Ø89 pivot post — carries the B2 punch-out bay inboard of the ISO container doors (true min X +59mm) + hardware
+- ~56° transport swing about the Ø89 pivot post — carries the B2 punch-out bay inboard of the ISO container doors (true min X +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm -->mm) + hardware
 - Emergency egress operable from inside without tools
 - Weatherproof for outdoor field deployment (IP44 rated seals)
 - Single-person mode conversion (~5 minutes)
@@ -320,7 +320,7 @@ near-deck section lift out** before the swing; all are re-seated to datum afterw
 | Position | Bay front-right corner X | Container doors clear? |
 |----------|-------------------------|----------------------|
 | Operational (0°) | −890mm (bay protrudes ~890mm outside the door plane) | No — the cargo doors stay open during operation |
-| Transport (swung 56°) | +59mm (true min X over the whole swept assembly — computed 58.6mm at this corner) | Yes — the swept frame is fully inboard of the closed door |
+| Transport (swung 56°) | +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm -->mm (true min X over the whole swept assembly — computed 58.6mm at this corner) | Yes — the swept frame is fully inboard of the closed door |
 
 ### 5.2 Locking
 
@@ -356,7 +356,7 @@ the latches are released for the swing.
 
 The rotation transport + swing clearance vs the film-plane left mechanism is shown in
 **Sheet 4** (above): the panel + drum swing ~56° about the pivot, pulling the bay inboard of
-the door plane (true min X +59 mm); the two left film rails are struck (removable) so the
+the door plane (true min X +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm --> mm); the two left film rails are struck (removable) so the
 swinging cage transitions the X=150 rail plane, then re-seat to the film datum.
 
 The swing carries the drum cage through **X=150**, where the film-plane mechanism's
@@ -379,7 +379,7 @@ Order of operations (single person, ~10 min) — see the [Operating Manual](oper
 6. **Swing the frame ~56° inboard** about the pivot, assisted (balanced about the
    vertical axis — no gravity torque; control momentum at the stop).
 7. Engage the top + bottom wall stays (the transport lock).
-8. Close the ISO cargo doors (they clear the swung frame by +59 mm).
+8. Close the ISO cargo doors (they clear the swung frame by +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm --> mm).
 
 Re-deployment reverses the sequence.
 

@@ -171,3 +171,18 @@ image_area_sqft:
     - '~?(\d+)\s*sq ft \(active'
     - '~?(\d+)\s*sq ft active'
     - '(\d+)\s*sq ft image plane'
+
+# Transport swung-panel clearance to the closed door plane — COMPUTED from the swing geometry
+# (was hardcoded +59 in labels + ~8 docs). Anchored to the "+NNmm" clearance phrasings so a
+# coincidental 59 elsewhere isn't policed.
+swung_door_clearance_mm:
+  constant: SWUNG_DOOR_CLEARANCE_MM
+  unit: mm
+  owner: hinged-panel-report.md
+  aliases:
+    - 'true min X \+(\d+)\s?mm'
+    - '\+(\d+)\s?mm \(true min X'
+    - '\(clear \+(\d+)\s?mm\)'
+    - '\(door clears? \+(\d+)\s?mm\)'
+    - '(?:swung frame|door plane) by \+(\d+)\s?mm'
+    - 'closed door is \+(\d+)\s?mm'

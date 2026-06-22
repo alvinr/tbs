@@ -210,8 +210,8 @@ WALL_T            = 40    # container end-wall steel thickness (mm)
 # See docs/superpowers/specs/2026-06-08-cargo-door-rotating-panel-design.md.
 # RETIRED with the slide: PANEL_SLIDE, HGR20 carriage rails, Destaco locks, the ceiling-
 # rail suspension, the barrel hinges + swing-support caster.
-SWING_LOCK_DEG = 56     # transport swing angle, locked (clears the door plane — true min X +59mm,
-                        # computed 58.6mm at the bay front-right corner, BAY_FRONT_X×PANEL_CORNER_YD_R)
+SWING_LOCK_DEG = 56     # transport swing angle, locked (clears the door plane; the resulting
+                        # clearance is computed as SWUNG_DOOR_CLEARANCE_MM, below)
 PANEL_CUT_YD   = 180    # fixed-left-panel width / swing cut (mm) — 160 min to clear the near
                         # upright at Yd100, 180 for margin. Swinging part runs PANEL_CUT_YD→PIVOT_YD.
 PIVOT_POST_OD  = 89     # Ø89×8 CHS pivot post (mm) — carries the ~3.6kN·m swing cantilever, SF~3.7 (S355)
@@ -285,6 +285,15 @@ DRUM_CAGE_X0   = BAY_FRONT_X            # -890 — cage outer face (= bay front)
 DRUM_CAGE_X1   = 50                     # cage inner face (just past the panel)
 DRUM_CAGE_YD_L = DRUM_CY - DRUM_R - 31  # 700 — cage side ~30mm clear of the Ø900 housing
 DRUM_CAGE_YD_R = DRUM_CY + DRUM_R + 31  # 1662
+
+# Transport swung-panel door clearance — the bay front-right corner (BAY_FRONT_X, PANEL_CORNER_YD_R),
+# the outermost point of the swept assembly, rotated SWING_LOCK_DEG about the pivot lands at this X.
+# Its (positive) value is how far the swung frame sits INBOARD of the closed door plane (X=0) — the
+# true minimum clearance. COMPUTED from the swing geometry so it can't drift (was hardcoded +59 in
+# labels + ~8 docs). = 59 (precise 58.6).
+SWUNG_DOOR_CLEARANCE_MM = round(
+    PIVOT_X + (BAY_FRONT_X - PIVOT_X) * math.cos(math.radians(SWING_LOCK_DEG))
+            - (PANEL_CORNER_YD_R - PIVOT_YD) * math.sin(math.radians(SWING_LOCK_DEG)))
 
 # Evaporative cooler — external mount (rev 7: was interior on pinhole wall)
 # Cooler ground-placed outside container, connected via 200mm flex duct

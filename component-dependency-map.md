@@ -287,7 +287,7 @@ Equipment in the IBC corridor (X > ZONE_R_START) at any Yd is shadow-free.*
 | Pivot post position | X=175mm, Yd=2287mm | `PIVOT_X`, `PIVOT_YD` |
 | Pivot post | Ø89×8mm CHS (reused film far-left upright) | `PIVOT_POST_OD`, `PIVOT_POST_T` |
 | Lock mechanism | top + bottom wall stays (hook + eye + turnbuckle) | — |
-| Swung door clearance | +59mm (true min X, bay front-right corner) | — |
+| Swung door clearance | +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm -->mm (true min X, bay front-right corner) | — |
 
 *Components: Ø89×8mm CHS pivot post on a thrust collar + top/bottom hub bearings (Ø220 thrust +
 2× Ø90 journal), drum support cage (40×40×3mm SHS), top + bottom wall stays + 4-bolt wall anchor

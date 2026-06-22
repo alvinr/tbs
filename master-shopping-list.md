@@ -236,7 +236,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | [1" reinforced suction hose, 6 ft](https://www.amazon.com/s?k=1+inch+reinforced+suction+hose+6+ft) | P-04 suction from sump pickup over tray rim to pump manifold | 1 | Amazon | $12–$20 | $15 |
 | [Silicone gasket strip, FDA grade](https://www.mcmaster.com/1460N14) | 1/16" × 1" × 10 ft, center flange seal | 1 roll | McMaster-Carr | $15–$25 | $20 |
 | [M6×16 SS hex bolts + flange nuts](https://www.mcmaster.com/92196A150) | Center flange, 200mm spacing | 24 | McMaster-Carr | $0.50 each | $12 |
-**Processing tray subtotal: ~$1,277–$1,992**
+**Processing tray subtotal: ~<!-- BEGIN costing:tray-low -->$1,300<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,015<!-- END costing:tray-high -->** — canonical figure from the [Processing Tray & Spray Bar report](processing-tray-and-spray-bar.md) §6.1; rows above are the procurement detail.
 
 ### Spray bar assembly (gantry design)
 | Item | Spec | Qty | Supplier | Est. cost |
@@ -264,7 +264,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | [304 SS saddle clamp, 10mm (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | Curved conduit-style axle retention — bolted to carriage plate underside, cradles axle pin | 8 | Amazon | $8–$12 |
 | SS spring clip / pole attachment | Pole-to-arm quick-release clip | 1 | Amazon | $6 |
 | [Cable ties, 200mm, nylon](https://www.amazon.com/s?k=cable+ties+200mm+nylon) | Secure flex hose to arm tube | 1 pack | Amazon | $5 |
-**Spray bar subtotal: ~$200–$270**
+**Spray bar subtotal: ~<!-- BEGIN costing:spray-low -->$235<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$299<!-- END costing:spray-high -->** — canonical figure from the [Processing Tray & Spray Bar report](processing-tray-and-spray-bar.md) §6.2; rows above are the procurement detail.
 
 ### Water system processing consumables
 | Item | Spec | Qty | Supplier | Est. cost |

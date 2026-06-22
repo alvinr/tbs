@@ -206,7 +206,7 @@ and the recycle returns), and the valve schedule are specified in the
 pumps, filters, and diverter valves that drive those circuits — mounted on the
 plywood equipment panel at the front (cargo-door) mouth of the corridor, bolted to
 the front-portal frame (see [§3.2](#32-frame-specification)) — are specified in the
-[Equipment Panel Report](equipment-panel-report.md). This report treats the
+[Plumbing Panel Report](plumbing-panel-report.md). This report treats the
 corridor plumbing and panel only as loads the stacking frame carries.
 
 ---
@@ -312,10 +312,10 @@ the stacking structure and the totes it restrains.
 |------|--------|
 | Schütz Ecobulk MX 1000 L IBC | [Schütz product catalog](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — US 48×40 composite tote, DN50 valve, UN31HA1/Y (all four totes are this size; "600 L"/"640 L" are fill levels, not tote sizes) |
 | D-ring lashing point | [McMaster-Carr #3641T29](https://www.mcmaster.com/3641T29) — 25mm, 1,100 kg WLL |
-| Plumbing fittings, pipe, valves, camlock, pumps | Specified and sourced in the [Water System Report](water-system-report.md) §11 and [Equipment Panel Report](equipment-panel-report.md) §11 |
+| Plumbing fittings, pipe, valves, camlock, pumps | Specified and sourced in the [Water System Report](water-system-report.md) §11 and [Plumbing Panel Report](plumbing-panel-report.md) §11 |
 | Water system architecture | [Water System Report](water-system-report.md) §3 |
 | IBC layout and stacking | [Equipment Layout Report](equipment-layout-report.md) §5 |
 | Frame fabrication drawings | [§8 — Engineering Drawings](#8-engineering-drawings) (this report) · [All Diagrams](all-diagrams.md) |
-| Equipment panel specification | [Equipment Panel Report](equipment-panel-report.md) |
+| Equipment panel specification | [Plumbing Panel Report](plumbing-panel-report.md) |
 
 *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

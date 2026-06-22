@@ -76,7 +76,7 @@ week, each fixed by slimming the copy to a pointer:
   → two were stale and contradicted the others.
 
 Rule: pick the owning report for each subsystem (the dedicated one —
-`equipment-panel-report` for the pumps, `hinged-panel-report` for the seals). Detail
+`plumbing-panel-report` for the pumps, `hinged-panel-report` for the seals). Detail
 lives there; every other mention is a sentence + a link.
 
 ---
@@ -149,7 +149,7 @@ URL. Reports end with a **Source References** section.
 
 1. **Verify before rewriting.** When a value looks stale, check the *subsystem's
    dedicated report* (the authoritative source) before changing it — the pump
-   location was wrong in 2 of ~6 places; `equipment-panel-report` was the tiebreaker.
+   location was wrong in 2 of ~6 places; `plumbing-panel-report` was the tiebreaker.
 2. **Triage** every figure with §A; **single-source** per §B; **de-duplicate** per
    §C; **strip archaeology** per §D.
 3. **Run the tooling:** `facts.py --inject`, `lint.py` (placeholders + alias

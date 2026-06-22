@@ -80,7 +80,7 @@ MD_FILES = [
     ("ventilation-report.md",             (".",           "Ventilation & Cooling")),
     ("walkway-report.md",                 (".",           "Walkway")),
     ("right-walkway-cantilever-study.md", (".",           "Right Walkway Cantilever Study")),
-    ("equipment-panel-report.md",         (".",           "Equipment Panel & Plumbing")),
+    ("plumbing-panel-report.md",         (".",           "Plumbing Panel")),
     ("all-diagrams.md",                   (".",           "All Diagrams")),
     ("mini-tbs/mini-tbs-poc.md",          ("mini-tbs",    "Mini-TBS PoC")),
     ("mini-tbs/mini-tbs-shopping-list.md",("mini-tbs",    "Mini-TBS Shopping List")),
@@ -365,7 +365,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [IBC Stacking System](ibc-stacking-report.md) | 2×2 IBC stack with welded stacking frame, external plumbing panel, and internal pipe routing |
 | [Perimeter Walkway](walkway-report.md) | 4-section walkway system — wall-cantilevered, right-end cantilever rectangle, and lift-out designs with zero tray contact |
 | [Right Walkway Cantilever Study](right-walkway-cantilever-study.md) | rev12 design study: replacing the ceiling-hung right walkway with a cantilever rectangle tied to the IBC frame + a combined corner plate shared with the bottom film rail |
-| [Equipment Panel & Plumbing](equipment-panel-report.md) | Equipment panel in IBC corridor with 5 pumps, integrated 3-stage filter unit, accumulator, valves, and pipe routing |
+| [Plumbing Panel](plumbing-panel-report.md) | Equipment panel in IBC corridor with 5 pumps, integrated 3-stage filter unit, accumulator, valves, and pipe routing |
 | [All Diagrams](all-diagrams.md) | Complete visual gallery of every TBS-001 engineering diagram on a single page |
 
 """

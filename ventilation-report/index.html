@@ -2643,14 +2643,14 @@
 <td>Evaporative cooler (swamp cooler) — 120V AC via 12V inverter</td>
 <td>−10 to −15°C additional</td>
 <td>~$405 (cooler + inverter)</td>
-<td>97W on 12V bus</td>
+<td><!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus</td>
 <td><strong>Yes — in temperatures above 30°C ambient</strong></td>
 </tr>
 </tbody>
 </table>
 <p>Combined (shade canopy + cooler + scheduling): interior temperature reaches 25–32°C — within operator working range.</p>
 <blockquote>
-<p><strong>Why evaporative cooling works in hot climates (e.g. Palm Springs):</strong> Evaporative (swamp) cooling is most effective when ambient relative humidity is low. Palm Springs in summer averages 10–18% RH — optimal for this technology. At 15% RH and 42°C ambient, an evaporative cooler can reduce temperature by 15–18°C, bringing 42°C down to 24–27°C after the shade canopy's contribution. At the same conditions, a standard 9,000 BTU mini-split uses 900W vs. the evaporative cooler's ~97W on the 12V bus (85W AC through the inverter) — a ~9× power saving.</p>
+<p><strong>Why evaporative cooling works in hot climates (e.g. Palm Springs):</strong> Evaporative (swamp) cooling is most effective when ambient relative humidity is low. Palm Springs in summer averages 10–18% RH — optimal for this technology. At 15% RH and 42°C ambient, an evaporative cooler can reduce temperature by 15–18°C, bringing 42°C down to 24–27°C after the shade canopy's contribution. At the same conditions, a standard 9,000 BTU mini-split uses 900W vs. the evaporative cooler's ~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on the 12V bus (<!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W AC through the inverter) — a ~9× power saving.</p>
 </blockquote>
 <hr />
 <h2 id="4-ventilation-fans">4. Ventilation Fans<a class="headerlink" href="#4-ventilation-fans" title="Permanent link">&para;</a></h2>
@@ -2763,7 +2763,7 @@ Detail views of the L-shaped light-safe baffle duct construction for both the 6"
 </tr>
 <tr>
 <td>Power draw</td>
-<td>85W AC → <strong>~97W on the 12V bus</strong> (÷0.88 inverter efficiency)</td>
+<td><!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W AC → <strong>~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on the 12V bus</strong> (÷0.88 inverter efficiency)</td>
 </tr>
 <tr>
 <td>Airflow</td>
@@ -3003,7 +3003,7 @@ Detail views of the L-shaped light-safe baffle duct construction for both the 6"
 </tr>
 <tr>
 <td>Evaporative cooler</td>
-<td>Hessaire MC18M, 120V AC, 1300 CFM (run low), 85W</td>
+<td>Hessaire MC18M, 120V AC, 1300 CFM (run low), <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W</td>
 <td><a href="https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler">Hessaire</a> / Amazon</td>
 <td>~$130</td>
 </tr>
@@ -3159,7 +3159,7 @@ Detail views of the L-shaped light-safe baffle duct construction for both the 6"
 <h2 id="11-source-references">11. Source References<a class="headerlink" href="#11-source-references" title="Permanent link">&para;</a></h2>
 <ol>
 <li><a href="https://www.coolingfanfactory.com/product/DC-Fan-15050-12V-24V-48V-150mm.html">150mm 12V DC axial fan 15050</a> — 150×150×50mm axial panel fan specifications.</li>
-<li><a href="https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler">Hessaire MC18M</a> — 120V AC evaporative cooler (1300 CFM, 85W) specifications. Driven by a <a href="https://www.victronenergy.com/inverters/phoenix-inverter-vedirect-250va-800va">Victron Phoenix 12/375 GFCI inverter</a>.</li>
+<li><a href="https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler">Hessaire MC18M</a> — 120V AC evaporative cooler (1300 CFM, <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W) specifications. Driven by a <a href="https://www.victronenergy.com/inverters/phoenix-inverter-vedirect-250va-800va">Victron Phoenix 12/375 GFCI inverter</a>.</li>
 <li><a href="https://www.osha.gov/heat-exposure">OSHA Heat Illness Prevention</a> — Workplace heat exposure guidelines and permissible limits.</li>
 <li><a href="../electrical-report/">Electrical Report</a> — Circuit assignments (A, B, E), wiring specification, and fuse block layout.</li>
 <li><a href="../hinged-panel-report/">Hinged Panel Report</a> — Panel corner zone construction and Fan B mounting.</li>

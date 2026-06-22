@@ -2724,9 +2724,9 @@ Modeled dimensions are the <code>tbs_constants.py</code> value(s) the generators
 <tr>
 <td>6</td>
 <td><strong>Evap cooler</strong> (was fictional "Portacool Jetstream 110, 12 V DC")</td>
-<td><strong>Hessaire MC18M</strong>, 120 V AC, 1300 CFM, 85 W, 16 lb, 559×305×711</td>
+<td><strong>Hessaire MC18M</strong>, 120 V AC, 1300 CFM, <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac --> W, 16 lb, 559×305×711</td>
 <td>600×350×800 → <strong>559×305×711</strong> (<code>EVAP_*</code>)</td>
-<td>✅ <strong>RESOLVED</strong> — no clean 12 V DC ground unit exists (only RV-roof or $1,100+ Solar Chill), so: commodity 120 V AC cooler on a dedicated 12V→120V inverter (Victron Phoenix 12/375 GFCI). Circuit E re-based to <strong>97 W on the 12 V bus</strong>; AC isolation/GFCI/bonding in <a href="../electrical-report/#ac-safety">Electrical §7.6</a></td>
+<td>✅ <strong>RESOLVED</strong> — no clean 12 V DC ground unit exists (only RV-roof or $1,100+ Solar Chill), so: commodity 120 V AC cooler on a dedicated 12V→120V inverter (Victron Phoenix 12/375 GFCI). Circuit E re-based to <strong><!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V bus</strong>; AC isolation/GFCI/bonding in <a href="../electrical-report/#ac-safety">Electrical §7.6</a></td>
 </tr>
 <tr>
 <td>7</td>
@@ -2781,7 +2781,7 @@ rigid ≈ 1491×699×35, varies by model — mounted externally, no container cl
 <li><strong>Was:</strong> <strong>There is no Portacool Jetstream 110.</strong> The Jetstream line is 220/230/240/250/260/270 and runs on <strong>120 V AC</strong>, not 12 V DC. <a href="https://www.portacool.com/legacy-evaporative-coolers/jetstream-series/">Portacool Jetstream series</a></li>
 <li><strong>Market reality (researched):</strong> there is <strong>no good native-12 V DC ground-placed</strong> evap cooler. The only 12 V options are RV-<strong>roof</strong> units (TurboKool 2B-0001, ~$300 — rejected: roof penetration, roof-coupled vibration, transport conflict), a too-weak personal spot cooler (Transcool E3), or the premium <a href="https://www.southwest-solar.com/stainless-steel-solar-chill-coolers">Solar Chill</a> line (native 12 V, ground, but $1,100+ and sole-source).</li>
 <li><strong>Decision:</strong> a <strong>commodity 120 V AC swamp cooler (Hessaire MC18M, ~$130)</strong> on a <strong>dedicated 12V→120V pure-sine inverter (Victron Phoenix 12/375 GFCI, ~$210)</strong>. Keeps the cooler a swappable multi-vendor part; the inverter is general-purpose. Trade-off accepted: +inverter complexity and a 4-print day now needs solar (already within the published envelope).</li>
-<li><strong>Done:</strong> <code>EVAP_*</code> → 559×305×711 (real Hessaire MC18M); <code>INVERTER_*</code> constants added; Circuit E re-based <strong>80 W → 97 W on the 12 V bus</strong> (85 W AC ÷ 0.88) in <code>calculate_energy_budget.py</code>; energy/cost/shopping/ventilation/electrical reports re-summed; stow zone re-checked (cooler X1450–2009, clear); AC <strong>isolation/GFCI/equipotential-bonding</strong> design added in <a href="../electrical-report/#ac-safety">Electrical §7.6</a>.</li>
+<li><strong>Done:</strong> <code>EVAP_*</code> → 559×305×711 (real Hessaire MC18M); <code>INVERTER_*</code> constants added; Circuit E re-based <strong>80 W → <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V bus</strong> (<!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac --> W AC ÷ 0.88) in <code>calculate_energy_budget.py</code>; energy/cost/shopping/ventilation/electrical reports re-summed; stow zone re-checked (cooler X1450–2009, clear); AC <strong>isolation/GFCI/equipotential-bonding</strong> design added in <a href="../electrical-report/#ac-safety">Electrical §7.6</a>.</li>
 </ul>
 <h3 id="7-accumulator-seaflo-075-l-sfat-075-125-01">7. Accumulator — SeaFlo 0.75 L (SFAT-075-125-01) ⚠<a class="headerlink" href="#7-accumulator-seaflo-075-l-sfat-075-125-01" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2923,7 +2923,7 @@ listed for completeness; confirm the drawn size equals the catalog dimension:</p
 <td>120 V AC cooler + 12V→120V inverter (no good 12 V DC ground unit exists)</td>
 <td>559×305×711 (Hessaire MC18M)</td>
 <td><code>EVAP_*</code> 600×350×800→559×305×711; <code>INVERTER_*</code> added</td>
-<td>Circuit E re-based 80→97 W; AC isolation/GFCI/bonding <a href="../electrical-report/#ac-safety">Electrical §7.6</a></td>
+<td>Circuit E re-based 80→<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W; AC isolation/GFCI/bonding <a href="../electrical-report/#ac-safety">Electrical §7.6</a></td>
 <td>✅ done</td>
 </tr>
 </tbody>

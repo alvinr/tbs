@@ -45,7 +45,7 @@ also a `tbs_constants` value or a `costing.py`/`facts.yml` fact, prefer the refe
 - [ ] hinged-panel-report.md
 - [ ] walkway-report.md
 - [ ] right-walkway-cantilever-study.md
-- [ ] processing-tray-and-spray-bar.md
+- [x] processing-tray-and-spray-bar.md  — *DONE (2026-06-22): corrections — comma thousands-sep the linter can't see (4,459 / 2,229 / 2,340 / 101,972mm⁴), §3.6 numbering gap (3.6.5→3.6.4), unit tidy (liters→L); fixed the operating water weight (~233kg/117kg water → ~175kg/59kg — was ~2× the 6mm-flood volume). Cost reconciliation: §6 tray/spray subtotals + total → costing.py blocks; the WATER line items rebased to this dedicated report's detailed BOM (tray $1,177→$1,300–$2,015 — was undercounting shims/pickup/liner/hardware; spray $210→$235–$299), cascaded to project-cost-breakdown §5, scenarios, funding-proposal, master-shopping, cost-analysis. New SPRAY_BEAM_SPAN constant + injection-only facts (pinhole_x_mm, film_plane_left/right_x_mm, spray_beam_span_mm — no aliases; values collide with unrelated uses); 14 restatements wrapped. Downstream: slimmed water-system §8 (full) + master-shopping (kept supplier rows, fixed cost) tray/spray BOMs to point here. Engine fix: costing keys can span multiple docs + inject/check ALL occurrences (was first-only). Detail dims (Z-table coordinates, carriage/beam geometry) intentionally left as diagram-of-record.*
 - [ ] chemistry-prep-shelves.md
 - [ ] weight-distribution-report.md
 - [ ] container-transport-options.md

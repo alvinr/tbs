@@ -168,7 +168,7 @@ The panel face sits flush with the exterior wall surface. A 280×180mm cutout al
 ### 6.1 Two-Circuit Lighting Design
 TBS-001 requires two mutually exclusive lighting modes:
 
-- **Safelight (Circuit D):** Three red LED strips ceiling-mounted running north–south (across the container width) at X≈600mm, X≈1,800mm, and X≈4,100mm, plus a strip on the inner drum face. Each strip runs from Yd=0 (pinhole wall) and is shortened to stay clear of the optical cone at its X position: the near-door strip (X=600) stops at Yd≈1,800mm; the other two stop at Yd≈2,100mm. Used during loading and development when photosensitive material is present. 15W, always available.
+- **Safelight (Circuit D):** Three red LED strips ceiling-mounted running north–south (across the container width), plus a strip on the inner drum face. Each strip runs from the pinhole wall and is shortened to stay clear of the optical cone at its X position: the near-door strip (X=600) stops at Yd≈1,800mm; the other two stop at Yd≈2,100mm. Used during loading and development when photosensitive material is present. 15W, always available.
 - **White light (Circuit G):** General-purpose white/natural LED panels for setup, maintenance, cleaning, and any non-operational work. 60W total. Must be switched off before any photosensitive material is exposed.
 
 The two circuits are independently switched — they are **not** interlocked, so the operator is responsible for ensuring Circuit G is off during operational phases. The pull-cord switches are positioned side by side for easy identification.
@@ -182,7 +182,7 @@ The two circuits are independently switched — they are **not** interlocked, so
 | Total power | 60W |
 | Luminous output | ~1,800 lumens per panel (5,400 lm total) |
 | Size | ~300 × 600mm |
-| Mounting | Ceiling-mounted, centered across container width (Yd ≈ 1,181mm) |
+| Mounting | Ceiling-mounted, centered across container width |
 | Positions | X ≈ 1,000mm, X ≈ 2,900mm, X ≈ 4,800mm (evenly spaced along length) |
 | Circuit | G (10A fuse, 16 AWG) |
 | Approximate cost | ~$25 each, ~$75 total |
@@ -196,7 +196,7 @@ Two ceiling-mounted pull-cord switches are installed on the pinhole wall side of
 |-----------|--------------|
 | Type | 12V DC SPST pull-cord ceiling switch, 6A rated |
 | Quantity | 2 |
-| Position | Pinhole wall face (Yd ≈ 0), X ≈ 1,750mm (near electrical panel), ceiling height |
+| Position | Pinhole wall face, X ≈ 1,750mm (near electrical panel), ceiling height |
 | Switch 1 | Circuit D — safelight (red). Cord labeled "RED" |
 | Switch 2 | Circuit G — white light. Cord labeled "WHITE" |
 | Wire | Inline on respective circuit, between fuse block and load |
@@ -207,12 +207,13 @@ The switches are positioned near the electrical panel, accessible from the near 
 ## 7. Wiring Specification
 
 ### 7.1 Main Enclosure
-IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior pinhole wall face (Y=0, X≈2,050–2,350mm). Contains:
+IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior pinhole wall face. Contains:
+
 - Victron MPPT controller (or external, hardwired)
 - Blue Sea 5026 12-circuit fuse block with busbars
 - Battery positive and negative busbars, fed from the battery through a terminal-mount **200A MRBF fuse** (on the battery + post, ≤180mm), a **remote battery contactor** (Blue Sea ML-RBS, tripped by the external panel E-stop), and a **main disconnect switch** (Blue Sea m-Series 300A) — see §7.5
 - Shore charger output terminals
-- **Circuit E inverter** — Victron Phoenix 12/375 (GFCI version) wall-mounted on the pinhole wall adjacent to the enclosure (X≈1910, Z≈1180, below the EP, above the battery), with a short fused DC feed and its own DC disconnect (§7.6). Converts 12V DC → 120V AC for the evaporative cooler only.
+- **Circuit E inverter** — Victron Phoenix 12/375 (GFCI version) wall-mounted on the pinhole wall adjacent to the enclosure (below the EP, above the battery), with a short fused DC feed and its own DC disconnect (§7.6). Converts 12V DC → 120V AC for the evaporative cooler only.
 
 **Sheet 5 — Main Enclosure Panel Layout**
 Front elevation of the enclosure interior (mirrors the 3D model): MPPT, the color-coded **A–G blade-fuse stack** (Blue Sea 5026), the +/− busbars and the rotary main disconnect, with the internal feed one-line **Battery(+) → 200A MRBF → main disconnect → (+) busbar → fuse stack → circuits** (and the PV-charge path through the MPPT). A fuse schedule lists each position's circuit, rating, wire gauge and load.
@@ -244,7 +245,7 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 **Connectors:**
 - Interior connections: Anderson Powerpole 30A (red/black) — tool-free, industry standard for 12V DC
 - Exterior penetrations (fans, shore inlet): Deutsch DT series 2-pin weatherproof connectors — IP67 rated. (The cooler is **120V AC** and terminates at the panel's GFCI-fed weatherproof outlet, **not** a DT connector — see Circuit E below and §7.6.)
-- **Circuit B flex connector (panel-mounted intake fan):** Fan B is mounted low on the swinging hinged panel. The wire run from the fuse block routes along the ceiling trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin connectors at each end. The coiled cable must accommodate the ~56° transport swing about the pivot (with slack) without binding. Anchor the fixed end to the door frame top rail; anchor the panel end to the swinging frame near the pivot. The service loop hangs in the ceiling zone above H=2,200mm and the wire drops down the panel to the low fan.
+- **Circuit B flex connector (panel-mounted intake fan):** Fan B is mounted low on the swinging hinged panel. The wire run from the fuse block routes along the ceiling trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin connectors at each end. The coiled cable must accommodate the ~56° transport swing about the pivot (with slack) without binding. Anchor the fixed end to the door frame top rail; anchor the panel end to the swinging frame near the pivot. The service loop hangs in the ceiling zone above and the wire drops down the panel to the low fan.
 - **Circuit E (evaporative cooler, via inverter):** The cooler is a 120V AC unit operating outside the container during sessions. The **DC side** is short: a fused 10 AWG feed (~1m) from the fuse block to the wall-mounted inverter, with its own DC disconnect. The **AC side** runs from the inverter's GFCI output along the ceiling trunking, down the pinhole wall to the external power panel, and terminates at the panel's weatherproof GFCI-fed NEMA 5-15R outlet (in-use cover). On the exterior, a 1.5m outdoor-rated SJOOW cord (NEMA 5-15P each end) connects the outlet to the cooler. The cord is unplugged and stowed inside for transport. Full grounding/GFCI design in §7.6.
 - **Circuit C (water pumps P-01–P-05):** The single 14 AWG Circuit-C feed runs along the ceiling trunking and drops to the equipment panel in the IBC plumbing corridor. There it lands on a **12V DC distribution block** (positive bus + shared negative bus), which fans out to **five individual IP-rated rocker switches** — one per pump (P-01/P-04 left column, P-02/P-03/P-05 right column), panel-face-mounted for corridor access. Each switch feeds its pump via a short **16 AWG** branch (~0.5–1m; 7.5A per pump). The pumps run **one at a time**: the operator enables the pump for the current task and each Shurflo 2088 then runs on its **internal demand/pressure switch** when its valves open. The 15A circuit fuse protects the 14 AWG feed and covers a single pump (90W / 7.5A) with margin; simultaneous operation is not intended. All switches and the distribution block are in the wet zone — IP-rated, sealed, mounted above the spill line with drip loops (§7.5).
 
@@ -259,7 +260,7 @@ Complete power flow from solar panels through controller, battery bank, fuse blo
 ![TBS-ELEC Sheet 1 — System One-Line Diagram](assets/electrical-sheet1.png)
 
 **Sheet 3 — Pinhole Wall Interior Elevation**
-Interior elevation of the pinhole wall face (Yd=0), looking from inside the container. Shows equipment mounting heights, cable trunking at the ceiling corner rail, drop conduits to each device, pull-cord switch positions with cord lengths, and ceiling-mounted LED panel locations.
+Interior elevation of the pinhole wall face, looking from inside the container. Shows equipment mounting heights, cable trunking at the ceiling corner rail, drop conduits to each device, pull-cord switch positions with cord lengths, and ceiling-mounted LED panel locations.
 
 ![TBS-ELEC Sheet 3 — Pinhole Wall Interior Elevation](assets/electrical-sheet3.png)
 

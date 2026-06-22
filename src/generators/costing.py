@@ -167,8 +167,8 @@ WATER = [
     LineItem("Filter skid (3× Big Blue housings + cartridges)", 265, 318, 370),
     LineItem("Valves and fittings (S60×6 adapters, check valves CV1/CV3/CV4)", 390, 510, 630),
     LineItem("Pipe (HDPE, spray bar)", 100, 120, 140),
-    LineItem("Processing tray (304 SS, fabricated, 2 panels)", 1177, 1517, 1857),
-    LineItem("Spray bar assembly (beam, LDPE pipe, 26 nozzles, manifold, 4 wheels, ball joint, arm, hose)", 210, 237, 264),
+    LineItem("Processing tray (304 SS panels + fabrication, shim strips, sump pickup, liner, hardware)", 1300, 1660, 2015),
+    LineItem("Spray bar assembly (beam, LDPE pipe, 26 nozzles, manifold + 7 feed tubes, 4 wheels, ball joint, arm, hose)", 235, 267, 299),
     LineItem("Electrical (wiring only — fuse block in Electrical Report)", 35, 35, 35),
     LineItem("Processing consumables (6-mil poly, pH meter, citric acid)", 231, 255, 278),
 ]
@@ -450,6 +450,7 @@ _CA = "cost-analysis-report.md"
 _OM = "operating-manual.md"
 _EL = "equipment-layout-report.md"
 _IBC = "ibc-stacking-report.md"
+_PT = "processing-tray-and-spray-bar.md"
 
 
 def capital_mid() -> int:
@@ -652,6 +653,13 @@ def _inline_blocks() -> dict:
         # ibc-stacking-report.md §9 frame cost (low/high split for the two-column BOM tables).
         "ibc-frame-low":       (_IBC, lambda: f"${_ibc_frame().low:,}"),
         "ibc-frame-high":      (_IBC, lambda: f"${_ibc_frame().high:,}"),
+        # processing-tray-and-spray-bar.md §6 BOM subtotals (from the WATER line items).
+        "tray-low":            (_PT, lambda: f"${_pt_line('Processing tray').low:,}"),
+        "tray-high":           (_PT, lambda: f"${_pt_line('Processing tray').high:,}"),
+        "spray-low":           (_PT, lambda: f"${_pt_line('Spray bar').low:,}"),
+        "spray-high":          (_PT, lambda: f"${_pt_line('Spray bar').high:,}"),
+        "tray-spray-total-low":  (_PT, lambda: f"${_pt_line('Processing tray').low + _pt_line('Spray bar').low:,}"),
+        "tray-spray-total-high": (_PT, lambda: f"${_pt_line('Processing tray').high + _pt_line('Spray bar').high:,}"),
     }
 
 
@@ -681,6 +689,11 @@ def _kg_fmt(v: float) -> str:
 # equipment-layout-report.md §5 — the IBC stacking frame line item owns its own price band.
 def _ibc_frame() -> LineItem:
     return next(li for li in WATER if li.label.startswith("IBC stacking frame"))
+
+
+# processing-tray-and-spray-bar.md §6 — the tray + spray-bar line items own their price bands.
+def _pt_line(prefix: str) -> LineItem:
+    return next(li for li in WATER if li.label.startswith(prefix))
 
 
 def _reformat_cell(cell: str, value: int) -> str:
@@ -770,9 +783,9 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 909,  "total": 1210, "per_print": 24},  # 909 not 910: consistent ferri rounding ($104, not the doc's hand-rounded $105)
     "standard": {"chem": 1353, "total": 1650, "per_print": 33},
     "rich":     {"chem": 2681, "total": 2980, "per_print": 60},
-    "grand_total": (19928, 25088, 32370),  # §4 film plane folded to its BOM (+438/+163/−112) on top of the §6b door frame
+    "grand_total": (20076, 25261, 32563),  # +148/+173/+193 vs prior: tray+spray reconciled to processing-tray report §6 BOM
     "walkway": (1826, 2214, 2607),
-    "water": (4063, 5085, 6104),
+    "water": (4211, 5258, 6297),   # tray 1177→1300 / spray 210→235 (+ mid/high) — dedicated report §6 detailed BOM
     "container": (2300, 3300, 4300),
     "lightlock": (1465, 1802, 2160),
     "swingpivot": (1112, 1232, 1372),

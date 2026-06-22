@@ -142,6 +142,35 @@ container_height_mm:
   owner: container-report.md
   display: comma
 
+# Film-plane / pinhole X coordinates — INJECTION-ONLY (no aliases): these system-defining
+# X positions (CLAUDE.md Key Optical Constants) are computed in tbs_constants, but the bare
+# values (150, 2399, 4649) also appear in many unrelated contexts (150mm plates, slit center
+# ≈2399, zone X=4649–5893), so they're filled only where a placeholder marks the meaning.
+pinhole_x_mm:
+  constant: PH_X
+  unit: mm
+  owner: pinhole-optics-report.md
+  display: comma
+
+film_plane_left_x_mm:
+  constant: FP_X_L
+  unit: mm
+  owner: film-plane-mechanism-report.md
+
+film_plane_right_x_mm:
+  constant: FP_X_R
+  unit: mm
+  owner: film-plane-mechanism-report.md
+  display: comma
+
+# Spray-bar beam span — derived (WALKWAY_RIGHT_X − near-walkway start); owned by the
+# processing-tray report. INJECTION-ONLY.
+spray_beam_span_mm:
+  constant: SPRAY_BEAM_SPAN
+  unit: mm
+  owner: processing-tray-and-spray-bar.md
+  display: comma
+
 blue_supply_l:
   constant: BLUE_SUPPLY_L
   unit: L

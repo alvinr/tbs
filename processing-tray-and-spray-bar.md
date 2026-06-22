@@ -36,7 +36,7 @@ full print width. Together they form the print washing subsystem of the
 | Parameter | Value | Rationale |
 |-----------|-------|-----------|
 | Material | 16-gauge (1.5mm) 304 stainless steel, #4 brushed finish | Chemically inert to ferricyanide wash water; resists pitting from citric acid pH adjustment |
-| Overall footprint | 4,459 × 2,200mm (2 panels, field-bolted) | Fits inside film plane rails (X=150–4,649) with 20mm clearance per side |
+| Overall footprint | 4,459 × 2,200mm (2 panels, field-bolted) | Fits inside film plane rails (X=<!-- BEGIN fact:film_plane_left_x_mm -->150<!-- END fact:film_plane_left_x_mm -->–<!-- BEGIN fact:film_plane_right_x_mm -->4,649<!-- END fact:film_plane_right_x_mm -->) with 20mm clearance per side |
 | Position | X=170–4,629, Yd=80–2,280 | Between film plane rails, inboard of walkway perimeter |
 | Panel size (each) | 2,229 × 2,200mm | Two equal panels, butted at midpoint with silicone gasket + bolted flange. Each panel fits through the cargo door opening (2,340 × 2,280mm) |
 | Rim height | 50mm (all four sides) | Contains 6mm flood depth with margin; constrained to ≤75mm by film plane carriage clearance |
@@ -44,7 +44,7 @@ full print width. Together they form the print washing subsystem of the
 | Fall | 1:200 dual-axis (10mm over 2,200mm Yd + 11mm over 2,229mm X) toward sump | Water converges from both axes toward the sump well |
 | Sump well | 150 × 100mm, 20mm deep, pressed into tray floor at low point | Collects water at lowest point; P-04 suction pickup sits in sump |
 | Weight (empty) | ~116 kg (2 panels × ~58 kg) | 304 SS, 1.5mm × 4.90 m² per panel × 7.93 kg/m² per mm |
-| Weight (operating, 6mm flood) | ~233 kg | Tray + ~117 kg water |
+| Weight (operating, 6mm flood) | ~175 kg | Tray + ~59 kg water (6mm over the 4,459 × 2,200mm tray ≈ 59 L) |
 
 ### 2.2 Slope Support — Tapered HDPE Shim Strips
 
@@ -102,7 +102,7 @@ fold the liner around the sump pickup tube.
 | Constraint | Clearance | Status |
 |------------|-----------|--------|
 | Film plane carriage blocks (Z=140mm at max tilt) | 90mm above tray rim (140 − 50) | Clear |
-| Film plane rails at X=150 and X=4,649 | 20mm gap between tray edge and rail | Clear |
+| Film plane rails at X=<!-- BEGIN fact:film_plane_left_x_mm -->150<!-- END fact:film_plane_left_x_mm --> and X=<!-- BEGIN fact:film_plane_right_x_mm -->4,649<!-- END fact:film_plane_right_x_mm --> | 20mm gap between tray edge and rail | Clear |
 | Spray bar (rides on tray floor beneath walkway grating) | Top clamp plate at Z=63mm (nut ~66mm), grating bottom at Z=75mm | Clear |
 | IBCs (X=4,674+, right end zone) | Tray ends at X=4,629 — 45mm gap | Clear |
 | Pump manifold (equipment panel at Yd=1,046) | Suction hose routes over near rim exterior | Clear |
@@ -129,7 +129,7 @@ toward the pinhole wall), flooding the print surface progressively.
 
 ![Sheet 1 — Gantry Elevation](assets/spray-bar-sheet1.png)
 
-The beam spans 3,859mm between the inner edges of the left and right walkways
+The beam spans <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm between the inner edges of the left and right walkways
 (X=470 to X=4,329), extending under the walkway grating at each end. At each end, a
 two-wheel carriage rolls on the processing tray floor beneath the grating. A 3/4" LDPE
 irrigation poly pipe inside the aluminum SHS bore serves as the spray pipe — the supply
@@ -152,7 +152,7 @@ twenty-six barbed flat-fan irrigation nozzles at 150mm pitch along the beam bott
 
 | Component | Specification | Qty | Purpose |
 |-----------|--------------|-----|---------|
-| Beam | 6061-T6 AL SHS, 40×40×3mm, 3,859mm long (two 8 ft lengths joined with splice sleeve) | 1 | Structural beam housing internal spray pipe |
+| Beam | 6061-T6 AL SHS, 40×40×3mm, <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm long (two 8 ft lengths joined with splice sleeve) | 1 | Structural beam housing internal spray pipe |
 | Internal spray pipe | 3/4" LDPE irrigation poly pipe (OD 25mm, ID 19mm) | 1 | Water distribution inside beam bore |
 | Flat-fan spray nozzles | Barbed inlet, irrigation-type, 180° fan pattern | 26 | Spray distribution through beam bottom wall (150mm pitch) |
 | Distribution manifold | 1/2" inlet → 7 barbed outlets, mounted at the ball joint | 1 | Splits the supply hose to the 7 feed tubes |
@@ -176,7 +176,7 @@ twenty-six barbed flat-fan irrigation nozzles at 150mm pitch along the beam bott
 ### 3.3 Beam / Spray Pipe
 
 The structural beam houses a 3/4" LDPE irrigation poly pipe for water distribution. A single 6061-T6 aluminum
-SHS (40×40×3mm, imperial 1-1/2" × 1-1/2" × 1/8") spans 3,859mm between the inner
+SHS (40×40×3mm, imperial 1-1/2" × 1-1/2" × 1/8") spans <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm between the inner
 edges of the left and right walkways.
 
 **Beam properties:**
@@ -186,11 +186,11 @@ edges of the left and right walkways.
 | Material | 6061-T6 aluminum alloy |
 | Section | 40×40×3mm SHS (1-1/2" × 1-1/2" × 1/8") |
 | Internal bore | 34×34mm |
-| Span | 3,859mm (X=470 to X=4,329) |
+| Span | <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm (X=470 to X=4,329) |
 | Second moment of area (I) | 101,972mm⁴ |
 | Cross-sectional area | 444mm² |
 | Linear mass (beam only) | 1.20 kg/m |
-| Beam mass (3,859mm) | 4.63 kg |
+| Beam mass (<!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm) | 4.63 kg |
 
 **Sourcing:** Standard 8 ft (2,438mm) lengths are widely stocked at Home Depot, Online
 Metals, and metals suppliers. Two 8 ft lengths are required; see §3.8 for splice joint.
@@ -374,7 +374,7 @@ the top plate, spacer, carriage plate wing, and bottom plate, with nuts top and 
 
 ### 3.7 Structural Analysis
 
-**Loading (simply supported, uniform distributed load across 3,859mm span):**
+**Loading (simply supported, uniform distributed load across <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm span):**
 
 | Component | Linear mass (kg/m) | Linear weight (N/m) |
 |-----------|-------------------|---------------------|
@@ -408,8 +408,8 @@ halves meet at a shallow upward angle.
 
 | Component | Mass (kg) |
 |-----------|-----------|
-| Beam (40×40×3mm × 3,859mm) | 4.63 |
-| LDPE pipe (OD 25mm × 3,859mm) | 0.74 |
+| Beam (40×40×3mm × <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm) | 4.63 |
+| LDPE pipe (OD 25mm × <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm) | 0.74 |
 | Water in pipe | 1.09 |
 | Carriage plates (2×) | 0.35 |
 | Wheel assemblies (4× wheel + axle + 8 saddle clamps) | 0.50 |
@@ -447,12 +447,12 @@ than a single center feed — keeps the supply pressure uniform along the pipe, 
 the 26 nozzles sees nearly the same flow regardless of its distance from the inlet. The
 19mm bore provides adequate flow capacity at 3.5 GPM. Each irrigation nozzle delivers a
 180° flat fan pattern; at 150mm pitch the fans overlap heavily, giving near-continuous
-wash coverage along the 3,859mm beam span.
+wash coverage along the <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm beam span.
 
 ### 3.10 Water Connection
 
 BV-02 (1/2" ball valve, Blue supply isolation) is mounted on the pinhole wall (Yd=0) at
-X=2,399mm (pinhole centerline), Z=900mm — waist height from the walkway deck. A
+X=<!-- BEGIN fact:pinhole_x_mm -->2,399<!-- END fact:pinhole_x_mm -->mm (pinhole centerline), Z=900mm — waist height from the walkway deck. A
 1/2" HDPE riser runs from the Blue supply trunk up to BV-02. A 4 m length of 1/2"
 reinforced braided PVC hose connects from BV-02 down to the distribution manifold at the
 ball joint. The hose coils when the bar is near the pinhole wall and extends as the bar is
@@ -544,7 +544,7 @@ tray drainage plan and sump cross-section).
 | Silicone gasket strip | Center flange seal | 1 | $20 |
 | M6 SS hex bolts + flange nuts | Panel flange bolts | 12 | $12 |
 | 6-mil black LDPE sheet, 10 ft × 8 ft | Containment liner (consumable, per session) | 1 | $8 |
-| **Tray subtotal** | | | **$1,300–$2,015** |
+| **Tray subtotal** | | | **<!-- BEGIN costing:tray-low -->$1,300<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,015<!-- END costing:tray-high -->** |
 
 ### 6.2 Spray Bar Assembly
 
@@ -572,15 +572,15 @@ tray drainage plan and sump cross-section).
 | 6061-T6 AL round tube 25mm OD × 2mm wall, 500mm | Arm tube | 1 | $6 |
 | M6 SS hex bolt + nut | Pinch bolt for arm tube | 1 | $1 |
 | Nylon zip ties, 200mm | Hose to arm tube | 6 | $1 |
-| **Spray bar subtotal** | | | **$235–$299** |
+| **Spray bar subtotal** | | | **<!-- BEGIN costing:spray-low -->$235<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$299<!-- END costing:spray-high -->** |
 
 ### 6.3 Combined Total
 
 | Subsystem | Cost Range |
 |-----------|-----------|
-| Processing tray | $1,300–$2,015 |
-| Spray bar assembly | $235–$299 |
-| **Total** | **$1,535–$2,314** |
+| Processing tray | <!-- BEGIN costing:tray-low -->$1,300<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,015<!-- END costing:tray-high --> |
+| Spray bar assembly | <!-- BEGIN costing:spray-low -->$235<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$299<!-- END costing:spray-high --> |
+| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,535<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,314<!-- END costing:tray-spray-total-high -->** |
 
 ---
 

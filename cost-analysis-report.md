@@ -25,7 +25,7 @@ recurs or is consumed — savings strategy is different for each.
 | **Capital build** (one-time hardware) | **$21,898** | The systems you build once — this is where build-savings live |
 | Consumable (per 50-print batch) | $1,650 | Cyanotype chemistry + substrate (Standard ½-Ware) — recurs every batch |
 | Recurring (per deployment) | $750 | Commercial-hire transport |
-| Soft / regulatory | $790 | Licences & permits |
+| Soft / regulatory | $790 | Licenses & permits |
 <!-- END costing:ca-buckets -->
 
 Build-savings work on the **<!-- BEGIN costing:ca-capital -->$21,898<!-- END costing:ca-capital --> capital**. The <!-- BEGIN costing:ca-consumable -->$1,650<!-- END costing:ca-consumable --> consumable is attacked

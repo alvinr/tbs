@@ -159,6 +159,32 @@ subsystem × diagram matrix, per-model narratives); `dependencies.yml` is the **
 
 ---
 
+## Tooling: the editorial validator
+
+`src/generators/editorial_lint.py` enforces the report **narrative** house style codified in
+[`skills/skill_report_writing.md`](skills/skill_report_writing.md) (the counterpart to `lint.py`,
+which guards the *numbers*). It scans the published reports (`publish.sh` `MD_FILES` +
+`project-summary.md`).
+
+It is a **manual step — *not* wired into the pre-commit hook.** Run it by hand:
+
+```bash
+python3 src/generators/editorial_lint.py          # gates + advisory
+python3 src/generators/editorial_lint.py --gates   # gates only (exit 1 on failure, for future CI)
+```
+
+**Gates** (deterministic, exit 1 on failure): American spelling (British → American), and every
+item in a *Source References* section carries a hyperlink.
+**Advisory** (review; never blocks): banned stale design terms (e.g. `55-gal`, `colonnade`,
+`Portacool Jetstream` — extend `_BANNED`), a registry-known value restated **raw** that should be a
+`<!-- fact: -->` placeholder (the highest-leverage check — it auto-cascades once wrapped), mixed
+thousands-separator styles, and reports missing a *Source References* section.
+
+> Scope: it reads the report `.md` prose only — it can't see British spellings baked into diagram
+> **labels** (inside the generator `.py`) or `.skp` models; those still need a manual sweep.
+
+---
+
 ## Building & deploying the site
 
 ```bash

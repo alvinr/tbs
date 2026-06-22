@@ -369,7 +369,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 |------|------|-----|----------|-----------|
 | Matte-black interior finish | Black-pigmented sheet (no etch-prime); scuff + flat-black touch-in at extrusion welds | 1 job | Rattle-can / local shop | ~$40–$70 |
 
-### Fabrication labour
+### Fabrication labor
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | Plastic fabrication — roll 2 cylinders (housing + drum), hot-air / extrusion weld, cap/shaft fit, bearing fit | 16–22 hrs at local plastic fab shop | 1 job | Local plastic fabrication shop (SoCal) — get 2–3 quotes | ~$800–$1,150 |

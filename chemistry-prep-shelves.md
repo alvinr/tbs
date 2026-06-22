@@ -101,7 +101,7 @@ corners. Deployed, they hold the board level and carry the shelf + chemistry loa
 the shelf folds up they fold flat against the wall. Either a pair of folding fold-flat
 shelf brackets or diagonal struts/chains may be used — both lock the board level.
 
-**Transport latch:** a simple over-centre latch (or barrel bolt) at the top secures the
+**Transport latch:** a simple over-center latch (or barrel bolt) at the top secures the
 folded-up board against the wall.
 
 ![Chemistry Prep Shelf — Sheet 3: Hinge + stay detail](assets/shelf-sheet3.png)
@@ -176,7 +176,7 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 | Folding shelf stays/brackets | fold-flat, ~30–50 kg rating | 2 | Amazon / McMaster-Carr | ~$24 |
 | Wall mounting cleat + anchors | 6 mm steel cleat + 2 stay anchors (slotted) | 1 set | Local fab / offcut | ~$18 |
 | M8 wall bolts + washers/nuts | hinge cleat + stay anchors into the wall ribs | ~12 | McMaster-Carr | ~$12 |
-| Transport latch (over-centre/barrel) | secures the folded board | 1 | Amazon | ~$8 |
+| Transport latch (over-center/barrel) | secures the folded board | 1 | Amazon | ~$8 |
 | M5×16 mm CSK screws | ply panel attachment | 8 | McMaster-Carr | ~$4 |
 | Corner gusset plate, 3 mm | 50×50 mm triangular | 4 | Steel offcut | ~$5 |
 | Flat black epoxy spray paint | frame + hardware finish | 1 can | Hardware store | ~$12 |

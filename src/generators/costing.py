@@ -468,7 +468,7 @@ def emit_ca_buckets() -> str:
         f"| **Capital build** (one-time hardware) | **${capital_mid():,}** | The systems you build once — this is where build-savings live |",
         f"| Consumable (per 50-print batch) | ${_sec('7').mid:,} | Cyanotype chemistry + substrate (Standard ½-Ware) — recurs every batch |",
         f"| Recurring (per deployment) | ${_sec('8').mid:,} | Commercial-hire transport |",
-        f"| Soft / regulatory | ${_sec('9').mid:,} | Licences & permits |",
+        f"| Soft / regulatory | ${_sec('9').mid:,} | Licenses & permits |",
     ])
 
 
@@ -542,7 +542,7 @@ SECTIONS = [
     Section("6b", "Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles)", *total(SWINGPIVOT)),
     _printmaking_section(),
     Section("8",  "Transportation (per deployment)", 300, 750, 2000),
-    Section("9",  "Licences & permits", 220, 790, 1620),
+    Section("9",  "Licenses & permits", 220, 790, 1620),
 ]
 
 # Master-shopping-list-only sections (not in the cost-breakdown's 13). Low/Mid/High estimates.

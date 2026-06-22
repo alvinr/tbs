@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
 # Transportation Options
-## 20 ft and 40 ft — Hauling Methods, Trailer Requirements, Licence Requirements, and Pricing
+## 20 ft and 40 ft — Hauling Methods, Trailer Requirements, License Requirements, and Pricing
 
 *For the Giant Pinhole Camera project. Containers in this context are used as the camera body and transported empty or with lightweight interior fittings.*
 
@@ -159,7 +159,7 @@ You rent a container chassis (an intermodal trailer specifically designed to car
 | Ryder | ~$200–$400/day | ~$1,000–$1,800/wk | Class 8, requires CDL |
 | Local/regional rental yards | Varies | Varies | Often cheaper; check listings at [RentalYard.com](https://www.rentalyard.com) |
 
-### Licence requirement
+### License requirement
 **CDL Class A is required** — no exceptions.
 
 - Combination vehicle GVWR over 26,001 lbs with towed unit over 10,000 lbs triggers mandatory CDL Class A under FMCSA 49 CFR §383.
@@ -372,7 +372,7 @@ Walk-around of the vehicle while verbally identifying and explaining each system
 - Engine compartment (oil, coolant, belts, hoses)
 - Steering and suspension
 - Brakes (air or hydraulic), lines, chambers, slack adjusters
-- Wheels, tyres, rims, lugs
+- Wheels, tires, rims, lugs
 - Lights and reflectors
 - Fuel system
 - Coupling system (Class A only — fifth wheel, kingpin, landing gear)

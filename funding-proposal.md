@@ -123,7 +123,7 @@ Video documentation, process photography, and initial publication:
 |------|------|
 | Videography (1–2 deployment days) | $1,000–2,500 |
 | Photography (behind-the-scenes, prints) | $500–1,000 |
-| Publication design (zine or catalogue, print run) | $500–1,500 |
+| Publication design (zine or catalog, print run) | $500–1,500 |
 | **Level 3 total** | **~$2,000–4,000** |
 
 **Combined (Levels 1+2+3):** ~<!-- BEGIN costing:fund-combined -->$30,868–34,318<!-- END costing:fund-combined --> for a complete first-year program with three public deployments, 50-print edition, and full documentation.

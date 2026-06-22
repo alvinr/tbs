@@ -30,3 +30,7 @@ models/*.dae
 
 # Python Virtual Environment
 .venv/
+
+# Python caches
+src/generators/__pycache__/
+src/models/__pycache__/

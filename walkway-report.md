@@ -51,8 +51,8 @@ tray's watertight seal.
 | Bracket arm height | 65mm above finished floor |
 | Bracket spacing (near/far) | 457mm (18") — aligned to container rib spacing |
 | Container rib spacing | 457mm (18") — ISO standard corrugation pitch |
-| Near walkway widened section | 500mm at X≈1155–2629mm |
-| Open processing area | 3859×1662mm = 6.41 m² |
+| Near walkway widened section | 500mm at X≈1,155–2,629mm |
+| Open processing area | 3859×1,662mm = 6.41 m² |
 | Spray bar slit width | 30mm (near and far walkways) |
 | Total walkway sections | 4 (all removable) |
 
@@ -60,9 +60,9 @@ tray's watertight seal.
 
 ## 3. Near and Far Walkways — Wall-Cantilevered
 
-The near (pinhole wall, Yd=0) and far (film plane wall, Yd=2362mm) walkways run
+The near (pinhole wall, Yd=0) and far (film plane wall, Yd=2,362mm) walkways run
 the full length of the processing tray zone, from the left walkway butt joint at
-X=470mm to the right walkway butt joint at X=4629mm — a span of 4159mm.
+X=470mm to the right walkway butt joint at X=4,629mm — a span of 4,159mm.
 
 ### 3.1 Cantilever Bracket Design
 
@@ -92,16 +92,16 @@ provide a bearing surface for the bolt heads and washers. See View B for the bol
 
 ### 3.2 Near Walkway Widened Section
 
-The near walkway widens from 300mm to 500mm between X≈1155mm and X≈2629mm
-(1474mm length), extending past the spray bar slit to the next rib position.
+The near walkway widens from 300mm to 500mm between X≈1,155mm and X≈2,629mm
+(1,474mm length), extending past the spray bar slit to the next rib position.
 This widened section provides additional standing room in front of the
-electrical panel (EP, X=1910–2210mm), battery bank (X=1810–2310mm), and
-through the spray bar slit zone (X≈2400mm). These wall-mounted equipment
+electrical panel (EP, X=1,910–2,210mm), battery bank (X=1,810–2,310mm), and
+through the spray bar slit zone (X≈2,400mm). These wall-mounted equipment
 items require front access for operation and maintenance, and the wider
 platform gives the operator full-width standing room during spray bar passes.
 
-Four brackets in this zone (at X≈1156mm, X≈1612mm, X≈2070mm, and
-X≈2526mm) use a heavier design to support the 500mm cantilever arm. The
+Four brackets in this zone (at X≈1,156mm, X≈1,612mm, X≈2,070mm, and
+X≈2,526mm) use a heavier design to support the 500mm cantilever arm. The
 bracket positions align to container corrugation ribs at 457mm centers.
 Extending the widened zone past the slit ensures 500mm-arm brackets support
 the grating on both sides of the slit, eliminating unsupported overhang.
@@ -159,7 +159,7 @@ continuity across the slit.
 | Walkway | Inner edge (Yd) | Tray lip (Yd) | Slit depth | Solid remaining |
 |---------|----------------|---------------|-----------|----------------|
 | Near (widened) | 500mm | 80mm | 420mm | 80mm |
-| Far (standard) | 2062mm | 2280mm | 218mm | 82mm |
+| Far (standard) | 2,062mm | 2,280mm | 218mm | 82mm |
 
 See [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) for pole
 assembly details.
@@ -170,8 +170,8 @@ assembly details.
 
 ## 4. Right Walkway — Cantilever Rectangle (rev12)
 
-The right walkway at the IBC end (X=4329–4629mm) cannot use wall-cantilevered
-brackets because the IBC stack (X=4674–5893mm) occupies the floor below. The
+The right walkway at the IBC end (X=4,329–4,629mm) cannot use wall-cantilevered
+brackets because the IBC stack (X=4,674–5,893mm) occupies the floor below. The
 earlier scheme suspended it from the roof on threaded-rod hangers; **rev12 replaces
 the ceiling hangers with a self-supporting cantilever rectangle** that ties into
 two structures already present at the IBC end — the IBC corridor frame and the
@@ -183,15 +183,15 @@ bottom film rail — and so needs **no roof penetrations**.
 
 A closed rectangular frame of **40×40×3mm SHS** sits directly under the deck:
 
-- **Two long beams** run the full container width (2362mm along Yd) at X=4329mm
-  and X=4629mm. The 300mm grating spans between them.
+- **Two long beams** run the full container width (2,362mm along Yd) at X=4,329mm
+  and X=4,629mm. The 300mm grating spans between them.
 - **Two short end beams** (≈300mm) close the near and far ends, joining the long
   beams into a torsionally stiff closed rectangle (no free bearer ends to droop).
 
 ### 4.2 Center Cantilever Arms
 
 Two **40×40×3mm SHS arms** cantilever inward off the **IBC corridor uprights**
-(at Yd=1046mm and Yd=1266mm, station X≈4734mm) and pick the rectangle up at
+(at Yd=1,046mm and Yd=1,266mm, station X≈4,734mm) and pick the rectangle up at
 mid-span. Each arm is **half-lapped (cross-halved)** where the long beams cross
 it, so the beams seat down into the arm and the two members share a flush top
 face. The arms carry the central span that the corner supports alone would leave
@@ -202,11 +202,11 @@ moment at the arm root — see the [cantilever study](right-walkway-cantilever-s
 
 | Corner | Support | Fixing |
 |--------|---------|--------|
-| Left (X=4329mm), near + far | **Wall cleat** — 8mm steel back-plate + exterior reinforcing plate + a shelf the long beam lands on | M12 through-bolts (sandwich the wall, sealed) |
-| Right (X=4629mm), near + far | **Combined corner plate** — a single 10mm plate that carries BOTH the walkway right beam AND the bottom film rail (BR/TR) | 4× M12, permanently bolted (interior + exterior plate sandwich the wall) |
+| Left (X=4,329mm), near + far | **Wall cleat** — 8mm steel back-plate + exterior reinforcing plate + a shelf the long beam lands on | M12 through-bolts (sandwich the wall, sealed) |
+| Right (X=4,629mm), near + far | **Combined corner plate** — a single 10mm plate that carries BOTH the walkway right beam AND the bottom film rail (BR/TR) | 4× M12, permanently bolted (interior + exterior plate sandwich the wall) |
 
 The **combined corner plate** is the key coupling: the walkway's right long beam
-and the film plane's bottom (and top) rail terminate at the same X=4649mm wall
+and the film plane's bottom (and top) rail terminate at the same X=4,649mm wall
 station, so a single plate seats both — the walkway beam on a 70mm seat, the film
 rail on a 150mm seat. This **replaces the film-plane BR rail saddle** (the
 film-plane model now skips the BR saddle and draws this combined plate instead).
@@ -275,19 +275,19 @@ The operator steps out of the revolving-door light lock at its interior face
 (X≈450mm), but the standard 300mm walkway ends at X=470mm — leaving only ~20mm of
 landing in front of the drum opening, with the processing-tray basin immediately
 beyond. The left walkway is therefore **deepened to 600mm (X=170–770mm) over the
-drum-opening span (Yd 800–1560mm)** — a ~600 × 760mm landing centered on the exit
+drum-opening span (Yd 800–1,560mm)** — a ~600 × 760mm landing centered on the exit
 (the same approach as the near-walkway widened section on the pinhole side).
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
 | Punch-out depth | 600mm (vs 300mm) | `WALKWAY_LEFT_WIDE_W` |
-| Punch-out Yd span | 800–1560mm | `WALKWAY_LEFT_WIDE_YD_L/_YD_R` |
+| Punch-out Yd span | 800–1,560mm | `WALKWAY_LEFT_WIDE_YD_L/_YD_R` |
 | Deck height | Z=115–130mm (grating, as elsewhere) | `WALKWAY_H` |
 
 **Optical clearance.** The punch-out reaches X=770mm — inside the active image
 zone (X≥150mm) — so it was checked against the optical cone. At the drum-exit depth
-(Yd 800–1560mm) the cone's left boundary lies at **X≈914–1535mm** (the cone narrows
-toward the pinhole at X=2399mm), so the punch-out is entirely **left of the cone**:
+(Yd 800–1,560mm) the cone's left boundary lies at **X≈914–1,535mm** (the cone narrows
+toward the pinhole at X=2,399mm), so the punch-out is entirely **left of the cone**:
 every pinhole sight line through it lands at X≤37mm on the film plane, ~113mm clear
 of the image edge. Confirmed by `generate_line_of_sight.py` (no equipment intersects
 the cone).
@@ -332,7 +332,7 @@ floor-bolted posts stay in place. No through-wall hardware at all.
 | Parameter | Value |
 |-----------|-------|
 | Panel transport motion | SWING ~56° about the Ø89 pivot (rev10 — supersedes the linear slide) |
-| Swing sweep reach (near-walkway zone) | X≈1395mm |
+| Swing sweep reach (near-walkway zone) | X≈1,395mm |
 | Butt joint / near-far walkway start | X=470mm |
 | Panel / cage bottom edge | Z=130mm (grate-top level) |
 
@@ -358,7 +358,7 @@ intersections.
 | Corner | Butt joint X | Design |
 |--------|-------------|--------|
 | Near-left / Far-left | X=470mm | Left walkway grate rests on the floor-leg cantilever arms; butts the near/far grate |
-| Near-right / Far-right | X=4629mm | Right walkway grating abuts near/far grating |
+| Near-right / Far-right | X=4,629mm | Right walkway grating abuts near/far grating |
 
 Butt joints are used rather than miters for two reasons:
 
@@ -373,12 +373,12 @@ Butt joints are used rather than miters for two reasons:
 ## 7. Evaporative Cooler Transport Stowage
 
 During transport, the evaporative cooler (600×350mm, ~20kg dry) is stowed on the
-near walkway grating at X=1450–2050mm, Yd=0–350mm — in the widened section, moved
+near walkway grating at X=1,450–2,050mm, Yd=0–350mm — in the widened section, moved
 deeper (rev10) so it clears the panel swing sweep (which reaches X≈1395 in this
 near-walkway zone). The cooler sits on a 12mm plywood base plate that distributes
 load across the grating and prevents the housing from catching in grate openings.
 Two 25mm ratchet straps loop over the cooler and hook to near walkway cantilever
-bracket arms at X≈1550mm and X≈1950mm.
+bracket arms at X≈1,550mm and X≈1,950mm.
 
 The 350mm cooler depth slightly exceeds the 300mm walkway width — the cooler
 overhangs 50mm into the processing tray zone. This is acceptable because the
@@ -460,7 +460,7 @@ bounces noticeably less than the rod-hung version it replaces.
 | 4 | M12×80mm through-bolt kit | Hex bolt + 2× washers + nut, grade 8.8 | 58 (3 per std bracket + 4 per widened) | $87–$145 |
 | 5 | Reinforcing plate (exterior) | 6mm steel: 100×180mm std (×14) + 120×220mm widened (×4) | 18 | $75–$130 |
 | 6 | Transition bearing plate | 40×500×5mm flat bar, welded to bracket arm top at width transitions | 2 | $5–$10 |
-| 7 | Right walkway cantilever frame | 40×40×3mm SHS — 2 long beams (2362mm) + 2 end beams (300mm) + 2 center arms (405mm) | ~8 m | $28–$40 |
+| 7 | Right walkway cantilever frame | 40×40×3mm SHS — 2 long beams (2,362mm) + 2 end beams (300mm) + 2 center arms (405mm) | ~8 m | $28–$40 |
 | 8 | Wall cleat (left corners) | 8mm steel: back-plate + exterior plate + shelf, through-bolted to the wall | 2 | $20–$35 |
 | 9 | Combined corner plate (right corners) | 10mm steel, 150mm wide — carries the walkway right beam AND the bottom film rail (replaces the BR rail saddle) | 2 | $50–$80 |
 | 10 | M12 through-bolt kit (right walkway) | Wall cleats + combined plates + 2 center-arm U-clamps to the IBC uprights | ~24 | $30–$50 |

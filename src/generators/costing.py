@@ -230,7 +230,7 @@ OPTICS = [
 # Source: project-cost-breakdown.md §4.1–4.3 / film-plane-mechanism-report.md.
 FILM = [
     # 4.1 Structural & rails (HGR20 carriage + Option-A floating cross-slides)
-    point("Linear guide rails HGR20 2200mm (×4) + carriages HGH20CA (×8)", 324, "2 carriages per rail"),
+    point("Linear guide rails HGR20 2,200mm (×4) + carriages HGH20CA (×8)", 324, "2 carriages per rail"),
     point("Acme leadscrews ¾\"-6 8 ft (×4) + bronze nuts (×4)", 428, "manual handwheel drive"),
     point("Handwheels 8\" (×4) + locking collars SS316 (×4)", 188),
     point("Corner bracket L-plates, ¼\" alum 6×8 (×4)", 80),
@@ -405,7 +405,7 @@ def _scenario_b_rows() -> list:
         ("Perimeter walkway (4 sections, removable, GRP grating)", _sec("6a").mid),
         ("Panel swing pivot (Ø89 pivot + bearings + cage + wall stays + saddles)", _sec("6b").mid),
         ("Cyanotype chemistry + substrate (50 prints)", _sec("7").mid),
-        ("Rodenstock Apo-Ronar 1200mm lens", SCEN_B["lens"]),
+        ("Rodenstock Apo-Ronar 1,200mm lens", SCEN_B["lens"]),
         ("Transport per deployment (50–100 miles)", SCEN_B["transport"]),
         ("Permits (typical public land)", SCEN_B["permits"]),
     ]

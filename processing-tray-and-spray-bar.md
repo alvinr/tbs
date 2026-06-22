@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-Cyanotype prints on muslin substrate (<!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm) require a controlled flood wash
+Cyanotype prints on muslin substrate (<!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm) require a controlled flood wash
 to remove unexposed sensitizer chemistry after UV exposure. The processing tray provides
 the containment surface and the spray bar delivers even water distribution across the
 full print width. Together they form the print washing subsystem of the
@@ -36,12 +36,12 @@ full print width. Together they form the print washing subsystem of the
 | Parameter | Value | Rationale |
 |-----------|-------|-----------|
 | Material | 16-gauge (1.5mm) 304 stainless steel, #4 brushed finish | Chemically inert to ferricyanide wash water; resists pitting from citric acid pH adjustment |
-| Overall footprint | 4459 × 2200mm (2 panels, field-bolted) | Fits inside film plane rails (X=150–4,649) with 20mm clearance per side |
+| Overall footprint | 4459 × 2,200mm (2 panels, field-bolted) | Fits inside film plane rails (X=150–4,649) with 20mm clearance per side |
 | Position | X=170–4,629, Yd=80–2,280 | Between film plane rails, inboard of walkway perimeter |
-| Panel size (each) | 2229 × 2200mm | Two equal panels, butted at midpoint with silicone gasket + bolted flange. Each panel fits through the cargo door opening (2340 × 2280mm) |
+| Panel size (each) | 2229 × 2,200mm | Two equal panels, butted at midpoint with silicone gasket + bolted flange. Each panel fits through the cargo door opening (2340 × 2,280mm) |
 | Rim height | 50mm (all four sides) | Contains 6mm flood depth with margin; constrained to ≤75mm by film plane carriage clearance |
 | Floor-to-rim height | 50mm | Tray sits on tapered HDPE shim strips on the container floor |
-| Fall | 1:200 dual-axis (10mm over 2200mm Yd + 11mm over 2229mm X) toward sump | Water converges from both axes toward the sump well |
+| Fall | 1:200 dual-axis (10mm over 2,200mm Yd + 11mm over 2,229mm X) toward sump | Water converges from both axes toward the sump well |
 | Sump well | 150 × 100mm, 20mm deep, pressed into tray floor at low point | Collects water at lowest point; P-04 suction pickup sits in sump |
 | Weight (empty) | ~116 kg (2 panels × ~58 kg) | 304 SS, 1.5mm × 4.90 m² per panel × 7.93 kg/m² per mm |
 | Weight (operating, 6mm flood) | ~233 kg | Tray + ~117 kg water |
@@ -57,8 +57,8 @@ directly on the shims to flow the water into the bottom right for pickup by the 
 | Parameter | Value |
 |-----------|-------|
 | Material | HDPE flat bar, 50mm wide |
-| Quantity | 5 strips running full tray depth (Yd direction, 2200mm each) |
-| Spacing | ~1000mm apart across tray width (X direction) |
+| Quantity | 5 strips running full tray depth (Yd direction, 2,200mm each) |
+| Spacing | ~1,000mm apart across tray width (X direction) |
 | Profile | Tapered: 0mm at near rim (Yd=80, drain end) → 10mm at far rim (Yd=2,280) |
 | Attachment | Construction adhesive (Loctite PL Premium or equivalent) to container floor |
 | Function | Creates the Yd-axis slope; X-axis slope is formed into the tray panels during fabrication (pressed crown) |
@@ -129,7 +129,7 @@ toward the pinhole wall), flooding the print surface progressively.
 
 ![Sheet 1 — Gantry Elevation](assets/spray-bar-sheet1.png)
 
-The beam spans 3859mm between the inner edges of the left and right walkways
+The beam spans 3,859mm between the inner edges of the left and right walkways
 (X=470 to X=4,329), extending under the walkway grating at each end. At each end, a
 two-wheel carriage rolls on the processing tray floor beneath the grating. A 3/4" LDPE
 irrigation poly pipe inside the aluminum SHS bore serves as the spray pipe — the supply
@@ -144,7 +144,7 @@ twenty-six barbed flat-fan irrigation nozzles at 150mm pitch along the beam bott
 - Carriage plate top must clear walkway grating underside (Z=75mm) — no contact during travel
 - Wheels must fit within the 50mm tray rim height, rolling on the tray floor beneath walkways
 - Single-operator use — push/pull from the near walkway via telescoping pole through a 30mm slit
-- Must travel 2200mm along Yd (tray depth, near rim to far rim)
+- Must travel 2,200mm along Yd (tray depth, near rim to far rim)
 - Tray rim walls provide lateral guidance — no separate guide rails required
 - Must accommodate a flexible water connection that follows the bar as it moves
 
@@ -152,7 +152,7 @@ twenty-six barbed flat-fan irrigation nozzles at 150mm pitch along the beam bott
 
 | Component | Specification | Qty | Purpose |
 |-----------|--------------|-----|---------|
-| Beam | 6061-T6 AL SHS, 40×40×3mm, 3859mm long (two 8 ft lengths joined with splice sleeve) | 1 | Structural beam housing internal spray pipe |
+| Beam | 6061-T6 AL SHS, 40×40×3mm, 3,859mm long (two 8 ft lengths joined with splice sleeve) | 1 | Structural beam housing internal spray pipe |
 | Internal spray pipe | 3/4" LDPE irrigation poly pipe (OD 25mm, ID 19mm) | 1 | Water distribution inside beam bore |
 | Flat-fan spray nozzles | Barbed inlet, irrigation-type, 180° fan pattern | 26 | Spray distribution through beam bottom wall (150mm pitch) |
 | Distribution manifold | 1/2" inlet → 7 barbed outlets, mounted at the ball joint | 1 | Splits the supply hose to the 7 feed tubes |
@@ -176,7 +176,7 @@ twenty-six barbed flat-fan irrigation nozzles at 150mm pitch along the beam bott
 ### 3.3 Beam / Spray Pipe
 
 The structural beam houses a 3/4" LDPE irrigation poly pipe for water distribution. A single 6061-T6 aluminum
-SHS (40×40×3mm, imperial 1-1/2" × 1-1/2" × 1/8") spans 3859mm between the inner
+SHS (40×40×3mm, imperial 1-1/2" × 1-1/2" × 1/8") spans 3,859mm between the inner
 edges of the left and right walkways.
 
 **Beam properties:**
@@ -186,13 +186,13 @@ edges of the left and right walkways.
 | Material | 6061-T6 aluminum alloy |
 | Section | 40×40×3mm SHS (1-1/2" × 1-1/2" × 1/8") |
 | Internal bore | 34×34mm |
-| Span | 3859mm (X=470 to X=4,329) |
+| Span | 3,859mm (X=470 to X=4,329) |
 | Second moment of area (I) | 101972mm⁴ |
 | Cross-sectional area | 444mm² |
 | Linear mass (beam only) | 1.20 kg/m |
-| Beam mass (3859mm) | 4.63 kg |
+| Beam mass (3,859mm) | 4.63 kg |
 
-**Sourcing:** Standard 8 ft (2438mm) lengths are widely stocked at Home Depot, Online
+**Sourcing:** Standard 8 ft (2,438mm) lengths are widely stocked at Home Depot, Online
 Metals, and metals suppliers. Two 8 ft lengths are required; see §3.8 for splice joint.
 
 **Spray nozzles:**
@@ -370,11 +370,11 @@ the top plate, spacer, carriage plate wing, and bottom plate, with nuts top and 
 | 4 | Lay the top clamp plate over the beam, aligning the bolt holes with the bottom plate |
 | 5 | Pass four bolts down through top plate + spacer + carriage wing + bottom plate; thread nuts top and bottom and tighten evenly until the beam is gripped |
 | 6 | Set the assembled spray bar on the processing tray floor. Confirm the top clamp plate (Z=63mm, nut ~66mm) clears the walkway grating bottom (Z=75mm). Confirm all wheels roll freely on the tray floor |
-| 7 | Push the bar through its full 2200mm Yd travel to verify it tracks straight between the tray rim walls without binding |
+| 7 | Push the bar through its full 2,200mm Yd travel to verify it tracks straight between the tray rim walls without binding |
 
 ### 3.7 Structural Analysis
 
-**Loading (simply supported, uniform distributed load across 3859mm span):**
+**Loading (simply supported, uniform distributed load across 3,859mm span):**
 
 | Component | Linear mass (kg/m) | Linear weight (N/m) |
 |-----------|-------------------|---------------------|
@@ -408,8 +408,8 @@ halves meet at a shallow upward angle.
 
 | Component | Mass (kg) |
 |-----------|-----------|
-| Beam (40×40×3mm × 3859mm) | 4.63 |
-| LDPE pipe (OD 25mm × 3859mm) | 0.74 |
+| Beam (40×40×3mm × 3,859mm) | 4.63 |
+| LDPE pipe (OD 25mm × 3,859mm) | 0.74 |
 | Water in pipe | 1.09 |
 | Carriage plates (2×) | 0.35 |
 | Wheel assemblies (4× wheel + axle + 8 saddle clamps) | 0.50 |
@@ -422,12 +422,12 @@ Per wheel load (wet): 8.2 / 4 = 2.1 kg — well within any small nylon wheel's r
 
 ### 3.8 Beam Splice Joint
 
-Two 8 ft (2438mm) SHS lengths are joined with an internal sleeve splice at midspan:
+Two 8 ft (2,438mm) SHS lengths are joined with an internal sleeve splice at midspan:
 
 - **Sleeve:** 150mm of 30×30mm solid aluminum bar stock, inserted into the 34×34mm bore (2mm clearance per side)
 - **Sealant:** Marine-grade RTV silicone on sleeve exterior — watertight, allows future disassembly with heat
 - **Fastening:** 2× M5 set screws through SHS wall on each side (4 total), engaging dimples in sleeve
-- **Location:** Midspan (1930mm from each end). The solid bar has higher I than the hollow beam wall, so the splice is not the weak point.
+- **Location:** Midspan (1,930mm from each end). The solid bar has higher I than the hollow beam wall, so the splice is not the weak point.
 
 **Alternative:** Source a single 16 ft or 20 ft length by special order to eliminate
 the splice entirely.
@@ -447,12 +447,12 @@ than a single center feed — keeps the supply pressure uniform along the pipe, 
 the 26 nozzles sees nearly the same flow regardless of its distance from the inlet. The
 19mm bore provides adequate flow capacity at 3.5 GPM. Each irrigation nozzle delivers a
 180° flat fan pattern; at 150mm pitch the fans overlap heavily, giving near-continuous
-wash coverage along the 3859mm beam span.
+wash coverage along the 3,859mm beam span.
 
 ### 3.10 Water Connection
 
 BV-02 (1/2" ball valve, Blue supply isolation) is mounted on the pinhole wall (Yd=0) at
-X=2399mm (pinhole centerline), Z=900mm — waist height from the walkway deck. A
+X=2,399mm (pinhole centerline), Z=900mm — waist height from the walkway deck. A
 1/2" HDPE riser runs from the Blue supply trunk up to BV-02. A 4 m length of 1/2"
 reinforced braided PVC hose connects from BV-02 down to the distribution manifold at the
 ball joint. The hose coils when the bar is near the pinhole wall and extends as the bar is
@@ -468,7 +468,7 @@ coiled flexible hose → manifold → 7 irrigation tubes → poly pipe bore → 
 
 The operator controls the spray bar position from the near walkway using a telescoping
 aluminum pool pole (1.2–2.4 m). The pole passes through a 30mm wide slit cut into the
-walkway grating at the beam centerline X=2500mm. A matching slit is cut into the far
+walkway grating at the beam centerline X=2,500mm. A matching slit is cut into the far
 walkway grating at the same X position. The slit positions are shown on the
 [walkway plan view](all-diagrams.md#13-perimeter-walkway).
 
@@ -535,9 +535,9 @@ tray drainage plan and sump cross-section).
 
 | Item | Specification | Qty | Est. Cost |
 |------|--------------|-----|-----------|
-| 304 SS sheet, 16-gauge (1.5mm), #4 brushed | 2229 × 2200mm panels | 2 | $720–$1,000 |
+| 304 SS sheet, 16-gauge (1.5mm), #4 brushed | 2229 × 2,200mm panels | 2 | $720–$1,000 |
 | Fabrication (cut, brake, weld, press sump) | Two panels with center flange + sump well | 1 lot | $450–$850 |
-| HDPE flat bar, 50mm wide | Tapered shim strips, 2200mm each | 5 | $40–$75 |
+| HDPE flat bar, 50mm wide | Tapered shim strips, 2,200mm each | 5 | $40–$75 |
 | Loctite PL Premium construction adhesive | Shim-to-floor bond | 2 tubes | $15 |
 | 1" SS foot valve with strainer screen | Sump pickup tube | 1 | $20 |
 | 1" reinforced suction hose, 6 ft | Pickup tube to P-04 | 1 | $15 |

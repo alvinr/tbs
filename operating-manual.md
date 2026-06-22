@@ -25,7 +25,7 @@ Baseline exposure is **30–45 minutes** under direct full sun, ISO equivalent ~
 **Lighting: normal white light throughout this phase.**
 
 ### 0.1 Water System
-The water system has three circuits (Blue/Brown/Black), pumps on the equipment panel in the IBC plumbing corridor (P-01 Blue supply, P-02 Brown filter feed, P-04 tray-sump transfer, plus the P-05/P-03 Brown/Waste drain pumps), and four 1000L IBC totes in a 2×2 stack. All IBCs use DN50 butterfly valves facing the plumbing corridor; all tote-top connections are **side-entry near the top** (no top-cap access — only <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm of headroom). The X1 fill line tees inside the corridor to fill both Blue totes (IBC-1 and IBC-2) in parallel via side-entry near the top. Check valves CV1/CV3/CV4 on each bulkhead line prevent backflow. External fill (X1) and drain (X3/X4) ports on the sealed end wall allow resupply and disposal without opening the cargo doors.
+The water system has three circuits (Blue/Brown/Black), pumps on the equipment panel in the IBC plumbing corridor (P-01 Blue supply, P-02 Brown filter feed, P-04 tray-sump transfer, plus the P-05/P-03 Brown/Waste drain pumps), and four 1,000L IBC totes in a 2×2 stack. All IBCs use DN50 butterfly valves facing the plumbing corridor; all tote-top connections are **side-entry near the top** (no top-cap access — only <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm of headroom). The X1 fill line tees inside the corridor to fill both Blue totes (IBC-1 and IBC-2) in parallel via side-entry near the top. Check valves CV1/CV3/CV4 on each bulkhead line prevent backflow. External fill (X1) and drain (X3/X4) ports on the sealed end wall allow resupply and disposal without opening the cargo doors.
 
 - [ ] 0.1.1 — Fill the Blue totes via external bulkhead port X1 (minimum 400 liters total for one print). X1 tees internally to fill both IBC-1 and IBC-2 in parallel. Confirm Brown IBC-3 and Waste IBC-4 are empty or have capacity.
 - [ ] 0.1.2 — Open isolation valve V1 (fill line) and VB1, VB2, VB3 (Blue outflow manifold). Prime P-01 by hand-filling the filter housing wet side.
@@ -90,7 +90,7 @@ for more contrast (trial **T3**: 0.1% / 0.2% / 0.4%).
 - [ ] 0.4.4 — Funnel and stirring rod
 - [ ] 0.4.5 — Digital scale (1g resolution)
 - [ ] 0.4.6 — Digital hygrometer
-- [ ] 0.4.7 — Pre-cut muslin in light-safe bag (unbleached cotton, 5900 × 2400mm with 100mm hem allowance)
+- [ ] 0.4.7 — Pre-cut muslin in light-safe bag (unbleached cotton, 5900 × 2,400mm with 100mm hem allowance)
 - [ ] 0.4.8 — Part A bottle (sealed, labeled)
 - [ ] 0.4.9 — Part B bottle (sealed, labeled)
 - [ ] 0.4.10 — Timer (phone or dedicated)
@@ -306,7 +306,7 @@ Cyanotype develops by oxidation — the iron salts convert to Prussian blue on c
 
 **Spray bar setup:**
 
-- [ ] 4.2.1 — Position the spray bar at the far end of the tray (Yd≈2280mm, film-plane side). Attach the telescoping pole to the arm tube.
+- [ ] 4.2.1 — Position the spray bar at the far end of the tray (Yd≈2,280mm, film-plane side). Attach the telescoping pole to the arm tube.
 
 **Wash sequence using the Blue circuit:**
 

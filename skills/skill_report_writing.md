@@ -130,10 +130,10 @@ URL. Reports end with a **Source References** section.
   ports `X1/X3/X4`; valves `BV-…`, `3W-DV-…`, `V1`; filters `F-1…F-3`; circuits
   **Blue / Brown / Black**; parts `ICP-XX`; camera `TBS-001`.
 - **Consistent units:** mm for geometry, L/gal paired where useful (state both once,
-  then pick one), `±N°` for angles. **Thousands separators are by role:** mm
-  coordinates/dimensions carry **no** separator (`4499mm`, `X=2399`); volumes, money,
-  weights, and energy **do** (`1,800 L`, `$1,800`, `24,000 kg`). Never write the *same
-  value with the same unit* both ways (`1,800 L` and `1800 L`) in one doc.
+  then pick one), `±N°` for angles. **Thousands separators on every 4+ digit quantity:**
+  a number that carries a unit or `$` gets a comma — `4,499mm`, `X=2,399`, `1,800 L`,
+  `$1,800`, `24,000 kg`. Bare product/model numbers, years, and f-numbers do **not**
+  (`Shurflo 2088`, `MX 1000`, `2026`, `f/1088`). Enforced by `editorial_lint.py` (advisory).
 - **Watch the overloaded number.** "600 L" has meant a fill level *and* a tote size
   *and* a collection volume — disambiguate ("600 L is a **fill level**, not a tote
   size; all four totes are identical 1000 L vessels"). Same for `2362` (focal length

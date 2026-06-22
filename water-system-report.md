@@ -19,9 +19,9 @@ The camera operates in remote locations with no municipal water or drainage. Thi
 
 | Circuit | Color code | Purpose | Storage |
 |---------|-------------|---------|---------|
-| **Blue** | Blue — clean | Fresh water supply for processing | 2× 1000L IBC totes (1800L working fill total — 900L each), stacked side-by-side |
-| **Brown** | Brown — used | Collected wash water; filtered and recycled back to Blue | 1× 1000L IBC tote, stacked below Blue IBCs |
-| **Black** | Black — waste | Heavily contaminated water; sealed IBC for off-site disposal | 1× 1000L IBC tote, stacked below Blue IBCs |
+| **Blue** | Blue — clean | Fresh water supply for processing | 2× 1,000L IBC totes (1,800L working fill total — 900L each), stacked side-by-side |
+| **Brown** | Brown — used | Collected wash water; filtered and recycled back to Blue | 1× 1,000L IBC tote, stacked below Blue IBCs |
+| **Black** | Black — waste | Heavily contaminated water; sealed IBC for off-site disposal | 1× 1,000L IBC tote, stacked below Blue IBCs |
 
 ![Water System — Sheet 1: System Schematic](assets/water-system-sheet1.png)
 
@@ -66,7 +66,7 @@ It will **not**:
 
 ### Per-print water requirement
 
-Processing a ~106 sq ft print in the processing tray (4459 × 2200mm), flooded to 6mm (¼ inch) depth:
+Processing a ~106 sq ft print in the processing tray (4459 × 2,200mm), flooded to 6mm (¼ inch) depth:
 
 ```
 Volume per flood = 106 sq ft × (6mm / 304.8) = 106 × 0.0197 ft = 2.09 cu ft
@@ -103,11 +103,11 @@ for its exhausted-state transport mass — 4,584 kg, ~540 kg below the loaded st
 #### Extending capacity beyond 14 prints
 
 **Maximizing the initial load.** The standard 900L-per-tote fill (<!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L → <!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints) leaves a little
-residue in each 1000L tote; topping toward the ~950–1000L tote limit (~1,900–2,000L) buys ~1–2 more prints
+residue in each 1,000L tote; topping toward the ~950–1,000L tote limit (~1,900–2,000L) buys ~1–2 more prints
 (~15–16), transport-validated to a worst-case static tip of 41.0° (see
 [weight report §4.4](weight-distribution-report.md)). To actually realize those extra prints the
 collection totes must also rise proportionally — they are sized at ~<!-- BEGIN fact:collection_fill_l -->630<!-- END fact:collection_fill_l -->L each for the 14-print recovery —
-so the hard ceiling on a single hauled load is the **per-tote 1000L volume**, capping it at ~16 prints.
+so the hard ceiling on a single hauled load is the **per-tote 1,000L volume**, capping it at ~16 prints.
 
 **On-site top-up — extended deployment.** A deployment can run past the ~16-print single-load ceiling
 using the external end-wall bulkhead ports — *no cargo-door access required*: **resupply Blue** from a
@@ -139,8 +139,8 @@ IBC-2 (900L) ──┘                                                      │
 - P-01: Shurflo 2088 12VDC diaphragm pump — 3.5 GPM, 45 PSI, self-priming
 - ACC-01: 0.75 L (23.5 oz) pressure accumulator — smooths pump cycling, maintains pressure when pump is off
 - Low-level float switch on IBC-2 alerts operator when Blue supply is low
-- Spray bar: gantry design — 40×40×3mm aluminum SHS beam spanning the open processing area (3859mm) between walkway inner edges, with wheel carriages rolling on the tray floor beneath walkway grating. Beam bore serves as spray pipe (no separate HDPE tube). See §3.5 for full mechanical design
-- Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline (Yd=1181mm) at Z=2250mm — gravity feed, no pump required. Inside, an internal tee (near X1) splits to a SIDE entry near the top of BOTH Blue totes (no top-cap access — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom), filling them in parallel and gravity-linked — one external hose. Remote resupply from water bowser or tanker (no cargo door access required)
+- Spray bar: gantry design — 40×40×3mm aluminum SHS beam spanning the open processing area (3,859mm) between walkway inner edges, with wheel carriages rolling on the tray floor beneath walkway grating. Beam bore serves as spray pipe (no separate HDPE tube). See §3.5 for full mechanical design
+- Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline (Yd=1,181mm) at Z=2,250mm — gravity feed, no pump required. Inside, an internal tee (near X1) splits to a SIDE entry near the top of BOTH Blue totes (no top-cap access — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom), filling them in parallel and gravity-linked — one external hose. Remote resupply from water bowser or tanker (no cargo door access required)
 
 ### 4.2 Brown System — Used Water Recycling
 
@@ -196,7 +196,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
    TRANSPORT to licensed liquid waste disposal facility
 ```
 
-- IBC-4 is a 1000L caged composite tote with DN50 butterfly valve (S60×6 thread); "600 L"/"1000 L" are fill levels
+- IBC-4 is a 1,000L caged composite tote with DN50 butterfly valve (S60×6 thread); "600 L"/"1,000 L" are fill levels
 - IBC-4 sits in the right end zone in a 2x2 stack: bottom-far position
 - Cap sealed before transport; label contents, date, location, UN numbers for ferricyanide/iron compounds
 - Drained remotely via external 2" NPT bulkhead fitting with camlock on the container end wall centerline — no need to open cargo doors
@@ -206,13 +206,13 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 
 The processing tray and spray bar gantry are fully specified in the [Processing Tray & Spray Bar Report](processing-tray-and-spray-bar.md). Their role in the water system is summarized here.
 
-**Processing tray:** A permanently installed 4459 × 2200mm stainless steel tray sits on the optical zone floor between the film plane rails. A 1:200 dual-axis slope drains wash water to a pressed sump well on the right side nearest the pinhole wall. P-04 draws from the sump via a suction pickup tube — no penetration of the tray floor or container floor.
+**Processing tray:** A permanently installed 4459 × 2,200mm stainless steel tray sits on the optical zone floor between the film plane rails. A 1:200 dual-axis slope drains wash water to a pressed sump well on the right side nearest the pinhole wall. P-04 draws from the sump via a suction pickup tube — no penetration of the tray floor or container floor.
 
 **Drain path:** P-04 suction pickup → 1" flexible hose over near rim → P-04 pump on equipment panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste).
 
 **External drain-out risers:** The Brown (IBC-3) and Waste (IBC-4) totes are pumped out to the sealed end-wall ports — X3 via P-05, X4 via P-03. The two vertical drain risers run down the IBC corridor gap and are clamped at ~400mm centers to an 18mm marine-ply backing spine that tees perpendicular off the equipment panel. Its top is capped with a horizontal ply shelf that the Blue fill trunk rests on — so both the drain risers and the fill trunk are supported at the T rather than free-hanging.
 
-**Spray bar:** A 4399mm aluminum SHS beam gantry rolls on the tray floor beneath the walkway grating. Water from P-01 (Blue supply) reaches the bar via BV-02 → 4m flexible hose → center feed bulkhead fitting → 38 × 3mm spray holes at 100mm centers.
+**Spray bar:** A 4,399mm aluminum SHS beam gantry rolls on the tray floor beneath the walkway grating. Water from P-01 (Blue supply) reaches the bar via BV-02 → 4m flexible hose → center feed bulkhead fitting → 38 × 3mm spray holes at 100mm centers.
 
 **Supply path:** P-01 → ACC-01 → rigid 1/2" HDPE pipe along pinhole wall → BV-02 → coiled flexible hose → bulkhead fitting → beam bore → spray holes.
 
@@ -290,12 +290,12 @@ A 100 Ah 12V lithium battery (1,200 Wh usable) provides **>25 prints** of pump p
 
 ## 7. Equipment Layout
 
-See **Sheet 2 — Plan View** (`water-system-sheet2.png`) for the water-system-specific P&ID layout. All four IBCs are in the provably shadow-free **right end zone** (X=4649–5893mm), arranged in a 2x2 stack. The optical zone contains only the processing tray and perimeter walkways at floor level.
+See **Sheet 2 — Plan View** (`water-system-sheet2.png`) for the water-system-specific P&ID layout. All four IBCs are in the provably shadow-free **right end zone** (X=4,649–5,893mm), arranged in a 2x2 stack. The optical zone contains only the processing tray and perimeter walkways at floor level.
 
 **Container floor plan — all systems (top-down, 1:75):**
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 
-IBCs are arranged in a **2x2 stack** in the right end zone, right-justified to the far end wall. Near column: IBC-1 Blue (top) + IBC-3 Brown (bottom). Far column: IBC-2 Blue (top) + IBC-4 Waste (bottom). A 270mm plumbing corridor between the two columns carries all internal supply and return lines. Total physical capacity: 4×1000L = 4,000L (totes are filled to working levels, not full). All IBCs are loaded empty through the cargo doors and filled/drained remotely via 3x external 2" NPT bulkhead fittings (X1/X3/X4) through the container end wall. IBC wall clearance is 30mm (near wall to near column edge).
+IBCs are arranged in a **2x2 stack** in the right end zone, right-justified to the far end wall. Near column: IBC-1 Blue (top) + IBC-3 Brown (bottom). Far column: IBC-2 Blue (top) + IBC-4 Waste (bottom). A 270mm plumbing corridor between the two columns carries all internal supply and return lines. Total physical capacity: 4×1,000L = 4,000L (totes are filled to working levels, not full). All IBCs are loaded empty through the cargo doors and filled/drained remotely via 3x external 2" NPT bulkhead fittings (X1/X3/X4) through the container end wall. IBC wall clearance is 30mm (near wall to near column edge).
 
 | Zone | Contents | X (mm) | Yd (mm) | H (mm) |
 |------|----------|--------|---------|--------|
@@ -333,7 +333,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
-| [IBC tote 1000L (275 gal), food-grade, used/rinsed](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) | Caged composite tote, DN50 butterfly valve (S60×6 thread); side-entry fittings near top | 4 | Container Exchanger | $80–$150 | **$320–$600** |
+| [IBC tote 1,000L (275 gal), food-grade, used/rinsed](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) | Caged composite tote, DN50 butterfly valve (S60×6 thread); side-entry fittings near top | 4 | Container Exchanger | $80–$150 | **$320–$600** |
 | [2" NPT bulkhead fitting (304 SS)](https://www.mcmaster.com/4464K115) | External fill/drain port, welded through container wall | 3 | McMaster-Carr | $25–$40 | **$75–$120** |
 
 **Storage subtotal: ~$420–$760**
@@ -400,8 +400,8 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
 | [304 SS sheet, 16-ga (1.5mm)](https://www.onlinemetals.com/en/buy/stainless-steel/304-stainless-steel-sheet) | #4 brushed, 4'×8' sheets | 4 | Online Metals | $180–$250/sheet | **$720–$1,000** |
-| Fabrication (cut, brake, weld, press sump) | Two tray halves: each 2229×2200mm with 50mm rims, pressed sump well (150×100×20mm) in near panel, welded corners | 1 job | Local sheet metal shop | $450–$850 | **$450–$850** |
-| [HDPE flat bar 50×10mm](https://www.mcmaster.com/8619K451) | Tapered shim strips for tray slope support, 2200mm long, 5 required | 5 | McMaster-Carr / TAP Plastics | $8–$15 each | **$40–$75** |
+| Fabrication (cut, brake, weld, press sump) | Two tray halves: each 2229×2,200mm with 50mm rims, pressed sump well (150×100×20mm) in near panel, welded corners | 1 job | Local sheet metal shop | $450–$850 | **$450–$850** |
+| [HDPE flat bar 50×10mm](https://www.mcmaster.com/8619K451) | Tapered shim strips for tray slope support, 2,200mm long, 5 required | 5 | McMaster-Carr / TAP Plastics | $8–$15 each | **$40–$75** |
 | [1" SS foot valve with strainer](https://www.amazon.com/s?k=1+inch+stainless+foot+valve+strainer) | Suction pickup for sump well, prevents debris and maintains prime | 1 | Amazon | $15–$25 | **$20** |
 | [1" reinforced suction hose, 6 ft](https://www.amazon.com/s?k=1+inch+reinforced+suction+hose+6+ft) | P-04 suction line from sump pickup over tray rim to pump manifold (P-04) | 1 | Amazon | $12–$20 | **$15** |
 | [Silicone gasket strip, FDA grade](https://www.mcmaster.com/1460N14) | 1/16" × 1" × 10 ft, for center flange seal | 1 roll | McMaster-Carr | $15–$25 | **$20** |
@@ -440,7 +440,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
-| [6061-T6 aluminum SHS 1-1/2"×1-1/2"×1/8"](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-tube) | 40×40×3mm, 8 ft lengths. 2 pieces joined with internal sleeve for 3859mm span | 2 | Online Metals / Metal Supermarket | $18–$28/8ft | **$36–$56** |
+| [6061-T6 aluminum SHS 1-1/2"×1-1/2"×1/8"](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-tube) | 40×40×3mm, 8 ft lengths. 2 pieces joined with internal sleeve for 3,859mm span | 2 | Online Metals / Metal Supermarket | $18–$28/8ft | **$36–$56** |
 | [6061-T6 aluminum plate 3/16" (5mm)](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-sheet-plate) | L-brackets (2×) + end caps (2×). ~300×600mm sheet, cut and bend | 1 | Online Metals | $15–$25 | **$15–$25** |
 | [30×30mm (1-1/4"×1-1/4") aluminum solid bar](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-bar) | Internal splice sleeve, 150mm long. Cut from 1 ft minimum order | 1 | Online Metals | $8–$12 | **$8–$12** |
 | [Nylon fixed wheel, 50mm×20mm, 10mm bore](https://www.amazon.com/s?k=50mm+nylon+wheel+10mm+bore+fixed) | Carriage wheels — flat tread, ≥25 kg rated | 4 | Amazon / McMaster-Carr | $3–$5 | **$12–$20** |

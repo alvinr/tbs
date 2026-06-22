@@ -22,7 +22,7 @@ The pinhole is a geometric projector — it has no focal length in the lens sens
 | Board swing right (+β) | Image shifts right on film (~<!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm per 5°) |
 | Compound tilt + swing | Image shifts diagonally; introduces ~1.5% anamorphic keystone at 5° |
 
-At f = 2362mm, a 5° board tilt shifts the image **2,362 × tan(5°) = <!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm** on the film plane. On a 2388mm tall film plane this is nearly 9% of the frame height — a very significant compositional tool.
+At f = 2,362mm, a 5° board tilt shifts the image **2,362 × tan(5°) = <!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm** on the film plane. On a 2,388mm tall film plane this is nearly 9% of the frame height — a very significant compositional tool.
 
 **No Scheimpflug effect**: because a pinhole has no plane of focus, front-board tilt does not rotate the zone of sharpness. Instead it steers the cone of light projected onto the film.
 

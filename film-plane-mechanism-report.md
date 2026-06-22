@@ -7,7 +7,7 @@
 The configuration the photosensitive film plane is flush against one of the 20ft long-side walls of the container. This report describes a **view-camera-style moveable film plane** — a mechanism with **four independently actuated corners** (TL, TR, BL, BR) carrying a **fixed-size rigid** plane (Option A), allowing tilt, swing, and limited compound movements comparable to a large-format view camera's rear standard.
 
 **System context — container floor plan:**
-The floor plan below shows the film plane rail positions (at Y=2262mm, X=150–4649mm) in the context of the complete TBS-001 interior, including left end zone (light trap), processing tray and perimeter walkway in the optical zone, and right end zone (4× IBCs in 2×2 stack, pump manifold and filter skid on equipment panel).
+The floor plan below shows the film plane rail positions (at Y=2,262mm, X=150–4,649mm) in the context of the complete TBS-001 interior, including left end zone (light trap), processing tray and perimeter walkway in the optical zone, and right end zone (4× IBCs in 2×2 stack, pump manifold and filter skid on equipment panel).
 
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 
@@ -26,9 +26,9 @@ The floor plan below shows the film plane rail positions (at Y=2262mm, X=150–4
 
 | Dimension | Value | Notes |
 |-----------|-------|-------|
-| Interior length | 5893mm (19 ft 4 in) | Film plane spans this direction |
-| Interior width | 2362mm (7 ft 9 in) | **Optical axis = focal length** |
-| Interior height | 2388mm (7 ft 10 in) | Film plane height |
+| Interior length | 5,893mm (19 ft 4 in) | Film plane spans this direction |
+| Interior width | 2,362mm (7 ft 9 in) | **Optical axis = focal length** |
+| Interior height | 2,388mm (7 ft 10 in) | Film plane height |
 | Pinhole position | Center of one 20ft long-side wall | |
 | Nominal film plane | Opposite 20ft long-side wall | flush to wall |
 | Structural ribs | Every 457mm (18 in) along length | Rail mounting points |
@@ -41,12 +41,12 @@ The four-corner mechanism supports all view-camera movements. Corners are labele
 
 | Axis | Corners Controlled | Max Travel | Effect |
 |------|--------------------|-----------|--------|
-| **Tilt (top)** | TL + TR together | 100–2262mm | Perspective convergence, keystone |
-| **Tilt (bottom)** | BL + BR together | 100–2262mm | Perspective convergence, keystone |
-| **Swing (left)** | TL + BL together | 100–2262mm | Left-right perspective skew |
-| **Swing (right)** | TR + BR together | 100–2262mm | Left-right perspective skew |
-| **Compound (limited)** | Tilt + swing together | 100–2262mm | Combined tilt+swing — limited range; plane stays **flat** (no twist) |
-| **Back focus** | All 4 together | 100–2262mm | Uniform magnification change |
+| **Tilt (top)** | TL + TR together | 100–2,262mm | Perspective convergence, keystone |
+| **Tilt (bottom)** | BL + BR together | 100–2,262mm | Perspective convergence, keystone |
+| **Swing (left)** | TL + BL together | 100–2,262mm | Left-right perspective skew |
+| **Swing (right)** | TR + BR together | 100–2,262mm | Left-right perspective skew |
+| **Compound (limited)** | Tilt + swing together | 100–2,262mm | Combined tilt+swing — limited range; plane stays **flat** (no twist) |
+| **Back focus** | All 4 together | 100–2,262mm | Uniform magnification change |
 | **Rise / Fall** | All 4 together, offset vertically | ±200mm | Horizon shift |
 | **Shift** | All 4 together, offset horizontally | ±300mm | Left/right perspective offset |
 
@@ -54,9 +54,9 @@ The four-corner mechanism supports all view-camera movements. Corners are labele
 
 **Maximum swing angle** (single-axis): **28°** — rail-depth limited: asin(1081 / (4499/2)) ≈ 28.7°.
 
-(Swing is the binding limit because the plane is 4499mm wide — the same depth travel over a wider span sweeps the corner further along the rail. Combined tilt+swing is further limited — see §5.)
+(Swing is the binding limit because the plane is 4,499mm wide — the same depth travel over a wider span sweeps the corner further along the rail. Combined tilt+swing is further limited — see §5.)
 
-Because the plane is a **fixed-size rigid rectangle**, its physical height stays **2388mm at every angle** — it does not grow. The earlier scheme stretched it ~40% at max tilt and needed a folding two-panel backing; Option A's corner **cross-slides** absorb the rigid-rotation arc travel instead, so a single rigid backing panel suffices.
+Because the plane is a **fixed-size rigid rectangle**, its physical height stays **2,388mm at every angle** — it does not grow. The earlier scheme stretched it ~40% at max tilt and needed a folding two-panel backing; Option A's corner **cross-slides** absorb the rigid-rotation arc travel instead, so a single rigid backing panel suffices.
 
 ---
 
@@ -70,11 +70,11 @@ Each corner of the film plane frame rides on its own independent carriage assemb
 
 ![Sheet 6 — System Schematic: Four-Corner Frame Front Elevation](assets/film-plane-sheet6.png)
 
-- **4 depth rails** — HiWin HGR20 profile, 2200mm length, mounted at X=150mm (left pair) and X=4649mm (right pair) on ceiling and floor. Rails run along the 2362mm optical axis direction; their carriages set each corner's **depth** (focus / back-focus).
+- **4 depth rails** — HiWin HGR20 profile, 2,200mm length, mounted at X=150mm (left pair) and X=4,649mm (right pair) on ceiling and floor. Rails run along the 2,362mm optical axis direction; their carriages set each corner's **depth** (focus / back-focus).
 - **8 depth carriages** — HGH20CA flanged blocks, 2 per rail, joined by an L-bracket at each corner.
-- **4 leadscrews** — ¾"-6 Acme, 8 ft (2438mm) length, one per corner (TL, TR, BL, BR). Each turns in a bronze Acme nut fixed to the corner bracket and drives that corner's depth.
+- **4 leadscrews** — ¾"-6 Acme, 8 ft (2,438mm) length, one per corner (TL, TR, BL, BR). Each turns in a bronze Acme nut fixed to the corner bracket and drives that corner's depth.
 - **8 corner cross-slides (Option A)** — a **2-axis X-Z floating stage** at each corner (one X slide + one Z slide, ~300mm travel each, on HGR15 rail + block), bolted on top of the depth carriage. These absorb the small in-plane arc travel that a **rigid** rotation forces on each corner (≈280mm in Z at max tilt, ≈263mm in X at max swing), so the film plane stays a **fixed-size flat rectangle** instead of stretching.
-- **Film plane frame** — welded 2"×2"×3/16" aluminum angle, a **FIXED-SIZE rigid rectangle, 4499mm × 2388mm** (rail span × container height). Each corner connects to its cross-slide through a **rod-end spherical bearing** (GIR25-DO or equivalent, 25mm bore), which provides the angular freedom; the cross-slide provides the translation. Together they let the rigid plane tilt and swing without the frame ever changing size. The following diagrams show the range of movements of the film plane.
+- **Film plane frame** — welded 2"×2"×3/16" aluminum angle, a **FIXED-SIZE rigid rectangle, 4,499mm × 2,388mm** (rail span × container height). Each corner connects to its cross-slide through a **rod-end spherical bearing** (GIR25-DO or equivalent, 25mm bore), which provides the angular freedom; the cross-slide provides the translation. Together they let the rigid plane tilt and swing without the frame ever changing size. The following diagrams show the range of movements of the film plane.
 
 ![Sheet 1 — Plan view](assets/film-plane-sheet1.png)
 
@@ -108,35 +108,35 @@ Each of the four leadscrews is turned by an **8" cast aluminum handwheel** (¾" 
 
 ### Fixed-Size Plane — No Variable Geometry
 
-Because the plane is a **fixed-size rigid rectangle**, its physical dimensions never change: the along-plane height stays **2388mm at every tilt angle** (the earlier stretching scheme grew it ~40% and needed a folding backing — no longer required). The arc travel that the rotation forces on each corner is taken up entirely by the **cross-slides** (≈280mm Z at max tilt, ≈263mm X at max swing), not by the frame.
+Because the plane is a **fixed-size rigid rectangle**, its physical dimensions never change: the along-plane height stays **2,388mm at every tilt angle** (the earlier stretching scheme grew it ~40% and needed a folding backing — no longer required). The arc travel that the rotation forces on each corner is taken up entirely by the **cross-slides** (≈280mm Z at max tilt, ≈263mm X at max swing), not by the frame.
 
-**Single rigid backing panel:** the backing is now **one flat ACM (aluminum composite) sheet, 4499mm × 2388mm**, bonded to the rear of the angle frame. No piano hinge, no folding two-panel system — the panel simply rotates with the rigid plane.
+**Single rigid backing panel:** the backing is now **one flat ACM (aluminum composite) sheet, 4,499mm × 2,388mm**, bonded to the rear of the angle frame. No piano hinge, no folding two-panel system — the panel simply rotates with the rigid plane.
 
 ---
 
 ## 5. Tilt / Swing Configurations
 
-The plane stays flat at all times, so it is always a single tilt **or** swing (or a limited combination). Corner depths below are about the **mid-rail center (1181mm)** — add the focus offset to reposition the whole plane. Film height is **constant**.
+The plane stays flat at all times, so it is always a single tilt **or** swing (or a limited combination). Corner depths below are about the **mid-rail center (1,181mm)** — add the focus offset to reposition the whole plane. Film height is **constant**.
 
 | Config | Name | TL | TR | BL | BR | Tilt | Swing | Film Height |
 |--------|------|----|----|----|----|------|-------|-------------|
-| C0 | Flat | 1181 | 1181 | 1181 | 1181 | 0° | 0° | 2388mm |
-| C1 | Mild tilt | 953 | 953 | 1409 | 1409 | 11.0° | 0° | 2388mm |
-| C2 | Strong tilt | 557 | 557 | 1805 | 1805 | 31.5° | 0° | 2388mm |
-| C3 | Max tilt | 414 | 414 | 1948 | 1948 | 40.0° | 0° | 2388mm |
-| C4 | Mild swing | 923 | 1439 | 923 | 1439 | 0° | 6.6° | 2388mm |
-| C5 | Strong swing | 412 | 1950 | 412 | 1950 | 0° | 20.0° | 2388mm |
-| C6 | Max swing | 125 | 2237 | 125 | 2237 | 0° | 28.0° | 2388mm |
+| C0 | Flat | 1181 | 1181 | 1181 | 1181 | 0° | 0° | 2,388mm |
+| C1 | Mild tilt | 953 | 953 | 1409 | 1409 | 11.0° | 0° | 2,388mm |
+| C2 | Strong tilt | 557 | 557 | 1805 | 1805 | 31.5° | 0° | 2,388mm |
+| C3 | Max tilt | 414 | 414 | 1948 | 1948 | 40.0° | 0° | 2,388mm |
+| C4 | Mild swing | 923 | 1439 | 923 | 1439 | 0° | 6.6° | 2,388mm |
+| C5 | Strong swing | 412 | 1950 | 412 | 1950 | 0° | 20.0° | 2,388mm |
+| C6 | Max swing | 125 | 2237 | 125 | 2237 | 0° | 28.0° | 2,388mm |
 
-*Depths measured from the pinhole wall about the mid-rail center. Tilt = asin(2·Δd_top-bottom / FP_H) about the plane center (FP_H=2388); swing = asin(2·Δd_left-right / FP_W) (FP_W=4499). Rail positions: left X=150mm, right X=4649mm.*
+*Depths measured from the pinhole wall about the mid-rail center. Tilt = asin(2·Δd_top-bottom / FP_H) about the plane center (FP_H=2388); swing = asin(2·Δd_left-right / FP_W) (FP_W=4499). Rail positions: left X=150mm, right X=4,649mm.*
 
-**Combined tilt+swing is limited** — the corners must all stay on the 2200mm depth rails, so the full single-axis maxima cannot be used together. The old C7 "compound" config (simultaneous 42° tilt **and** 28° swing) is **not achievable** with a rigid plane: it required a diagonally **twisted ruled surface** (TL/BR near, TR/BL far), which a fixed-size flat rectangle cannot form, and its corners would sweep ~3.4m of depth — past both end walls.
+**Combined tilt+swing is limited** — the corners must all stay on the 2,200mm depth rails, so the full single-axis maxima cannot be used together. The old C7 "compound" config (simultaneous 42° tilt **and** 28° swing) is **not achievable** with a rigid plane: it required a diagonally **twisted ruled surface** (TL/BR near, TR/BL far), which a fixed-size flat rectangle cannot form, and its corners would sweep ~3.4m of depth — past both end walls.
 
 ---
 
 ## 6. Optical Distortion Summary
 
-The six achievable flat configurations (C0–C5) on a checker grid (D = 8000mm). Because Option A's plane is always flat, each render is a pure tilt or swing; the former compound *twist* is no longer producible:
+The six achievable flat configurations (C0–C5) on a checker grid (D = 8,000mm). Because Option A's plane is always flat, each render is a pure tilt or swing; the former compound *twist* is no longer producible:
 
 ![Distortion summary](assets/film-plane-distortion-summary.png)
 
@@ -152,7 +152,7 @@ All items ship within the United States. Local Southern California pickup noted 
 
 | Item | Spec | Qty | Source A | Source B | Est. Unit |
 |------|------|-----|---------|---------|-----------|
-| Linear guide rail HGR20 | 2200mm | 4 | Automation Overstock, Gardena CA | McMaster-Carr #5901T777 | $45 |
+| Linear guide rail HGR20 | 2,200mm | 4 | Automation Overstock, Gardena CA | McMaster-Carr #5901T777 | $45 |
 | Rail carriage HGH20CA | Flanged block | 8 | Automation Overstock / Amazon | McMaster-Carr | $18 |
 | Acme leadscrew ¾"-6 | 8 ft length | **4** | Roton Products (LA area) | McMaster-Carr #6289K36 | $95 |
 | Acme nut bronze ¾"-6 | — | 4 | Roton Products | McMaster-Carr #6289K512 | $12 |
@@ -165,14 +165,14 @@ All items ship within the United States. Local Southern California pickup noted 
 | Rod-end spherical bearing | GIR25-DO or equiv., 25mm bore | 8 | McMaster-Carr #60645K73 | Amazon Industrial | $22 |
 | Pivot pin SS316 | 1" dia × 8" long | 8 | McMaster-Carr #98173A150 | Fastenal (SoCal branches) | $8 |
 
-*Items in **bold** are new for **Option A** — the 2-axis X-Z cross-slide stage at each corner (8 slides total, ≈300mm travel) that lets the **fixed-size rigid** plane tilt/swing without stretching. The two 5893mm T-slot beams of the original two-beam design remain removed.*
+*Items in **bold** are new for **Option A** — the 2-axis X-Z cross-slide stage at each corner (8 slides total, ≈300mm travel) that lets the **fixed-size rigid** plane tilt/swing without stretching. The two 5,893mm T-slot beams of the original two-beam design remain removed.*
 
 ### Film Plane Frame
 
 | Item | Spec | Qty | Source A | Source B | Est. Unit |
 |------|------|-----|---------|---------|-----------|
 | Aluminum angle 2"×2"×3/16" | 8 ft lengths | 10 | Metal Supermarkets SoCal | Online Metals | $22 |
-| Dibond ACM panel 4mm | 4 ft × 8 ft sheets — **single rigid backing**, <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm -->×<!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm | 6 | Grimco, City of Industry CA | Signwarehouse | $85 |
+| Dibond ACM panel 4mm | 4 ft × 8 ft sheets — **single rigid backing**, <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->×<!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm | 6 | Grimco, City of Industry CA | Signwarehouse | $85 |
 | Black EPDM foam tape 1"×½" | 50 ft rolls | 3 | McMaster-Carr #8614K84 | Grainger | $28 |
 | Rosco Duvetyne | 60" wide, 10 yd | 1 | B&H Photo | Rosco direct | $95 |
 | 6-mil black poly sheeting | 10 ft × 100 ft | 1 | Home Depot (local, all SoCal) | Uline | $65 |
@@ -184,7 +184,7 @@ The demountable brace cage is retired. Each of the **8 rail ends** instead ancho
 
 **Right vs left.** The **right** rails (X 4649, TR + BR) are **permanently bolted** into place. The **left** rails (X 150, TL + BL) drop into their saddles on **knurled thumb screws** so they lift out for transport.
 
-**Combined corner plate (rev 12).** At each bottom-right corner (near and far) the film plane and the right walkway terminate at the same X=4649mm wall station, so a single **10mm combined corner plate** seats both — the **bottom film rail (BR) on a 150mm seat** and the **right walkway long beam on a 70mm seat** — bolted through the wall with a shared interior/exterior plate pair. This **replaces the 2 BR wall-seat saddles**. The plate is single-sourced in the overview generator (`fp_combined_corner_plate`) and reused by both the film-plane and walkway 3D models; the film-plane model skips the BR saddle and draws the combined plate instead. See [Walkway Report](walkway-report.md) §4.3.
+**Combined corner plate (rev 12).** At each bottom-right corner (near and far) the film plane and the right walkway terminate at the same X=4,649mm wall station, so a single **10mm combined corner plate** seats both — the **bottom film rail (BR) on a 150mm seat** and the **right walkway long beam on a 70mm seat** — bolted through the wall with a shared interior/exterior plate pair. This **replaces the 2 BR wall-seat saddles**. The plate is single-sourced in the overview generator (`fp_combined_corner_plate`) and reused by both the film-plane and walkway 3D models; the film-plane model skips the BR saddle and draws the combined plate instead. See [Walkway Report](walkway-report.md) §4.3.
 
 **Transport mode.** The film-plane left rail is **continuous** (no demountable center segment): the light lock (Ø900 housing + drum) is offset (`DRUM_CX = −400`) and exits through the hinge-panel punch-out bay rather than rotating within the rail span. For *transport*, the panel + drum **SWING ~56°** about the pivot and the drum cage transitions X=150, so the **two left film rails (TL + BL) and the muslin screen are struck first** — the left rails lift out of their thumb-screw saddles and re-seat to the film datum on re-deployment — see [Hinged Panel Report](hinged-panel-report.md) §5.4 for the conversion sequence.
 

@@ -45,7 +45,7 @@ folded flat against the wall whenever the plane tilts/swings during exposure. No
 restriction is imposed.
 
 **Optical cone.** Even deployed, the shelf is clear of the optical cone. Its right edge
-(X=1780 mm) sits left of the cone's left boundary at the shelf's deepest point (Yd=300):
+(X=1,780 mm) sits left of the cone's left boundary at the shelf's deepest point (Yd=300):
 
     cone_left(300) = PH_X + (FP_X_L − PH_X) × 300 / FP_Y
                    = 2,399 + (150 − 2,399) × 300 / 2,262
@@ -58,10 +58,10 @@ film-plane position.
 
 | Constraint | Value |
 |-----------|-------|
-| Shelf X range | X=1180–1780 mm (600 mm), left of the battery bank (X=1810) |
+| Shelf X range | X=1,180–1,780 mm (600 mm), left of the battery bank (X=1810) |
 | Deployed footprint | Yd=0–300 mm (hinged on the pinhole wall, projects 300 mm) |
-| Stowed (transport) | Vertical against the wall, Z=1075–1375 mm, ~25 mm proud |
-| Work surface height | H=1075 mm (945 mm above the 130 mm walkway deck) |
+| Stowed (transport) | Vertical against the wall, Z=1,075–1,375 mm, ~25 mm proud |
+| Work surface height | H=1,075 mm (945 mm above the 130 mm walkway deck) |
 | Walkway (widened) | 500 mm deep — ~200 mm pass when deployed, full clear when stowed |
 | Evap cooler (stow) | Slides under the deployed shelf (top Z950 < shelf underside Z1050) |
 | Optical cone | ~321 mm clear (shelf right edge X1780 vs cone-left X2101 at Yd300) |
@@ -76,10 +76,10 @@ film-plane position.
 |-----------|-------|
 | Width (X) | 600 mm |
 | Depth (Yd, deployed) | 300 mm |
-| Work surface height | H=1075 mm AFF (945 mm above the walkway deck) |
+| Work surface height | H=1,075 mm AFF (945 mm above the walkway deck) |
 | Thickness | 22 mm (18 mm phenolic ply + 4 mm perimeter frame) |
 | Work surface area | 600 × 300 = 0.18 m² |
-| Stowed top | Z=1375 mm (= H + depth) |
+| Stowed top | Z=1,375 mm (= H + depth) |
 
 **Work surface:** 18 mm phenolic-faced plywood (concrete form ply) — chemical-resistant
 to cyanotype solutions and pH 3–4 citric acid; smooth, non-absorbent, wipe-clean.
@@ -93,7 +93,7 @@ edges retains bottles/items. Flat black powder coat.
 ![Chemistry Prep Shelf — Sheet 2: Section (fold-down mechanism)](assets/shelf-sheet2.png)
 
 **Piano hinge:** a continuous steel piano hinge runs the full 600 mm back edge,
-bolted to a mounting cleat on the pinhole wall at Z=1075 mm. The shelf swings between
+bolted to a mounting cleat on the pinhole wall at Z=1,075 mm. The shelf swings between
 horizontal (deployed) and vertical-up (stowed) about this hinge.
 
 **Stays:** two stays run from wall anchors ~230 mm above the hinge to the shelf's front
@@ -126,7 +126,7 @@ each front corner; level the board with a spirit level on first install, then lo
 
 ## 4. Transport Mode
 
-The shelf folds UP flat against the pinhole wall (top Z=1375 mm) and latches.
+The shelf folds UP flat against the pinhole wall (top Z=1,375 mm) and latches.
 
 | Check | Status |
 |-------|--------|
@@ -141,7 +141,7 @@ The shelf folds UP flat against the pinhole wall (top Z=1375 mm) and latches.
 ## 5. Operator Access
 
 The operator stands on the widened near walkway (deck Z=130) at about X=1480 (shelf
-midpoint), facing the wall. The deployed surface at H=1075 mm (945 mm above the deck) is
+midpoint), facing the wall. The deployed surface at H=1,075 mm (945 mm above the deck) is
 ergonomic counter height; the full 300 mm depth is reachable. The tap (left of the shelf)
 fills containers staged on the board.
 

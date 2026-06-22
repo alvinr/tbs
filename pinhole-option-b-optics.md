@@ -14,11 +14,11 @@ All calculations on this page use these fixed values, derived from the 20-foot s
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| Focal length (f) | **2362mm (7 ft 9 in)** | ISO 668 interior width |
+| Focal length (f) | **2,362mm (7 ft 9 in)** | ISO 668 interior width |
 | Rayleigh optimal pinhole (d) | **2.17mm** | d = 1.9 × √(f × 0.00055); Rayleigh, *Phil. Mag.* 1891 |
 | F-number (N) | **f/1088** | N = f/d |
-| Image plane width | 5893mm (19 ft 4 in) | Container interior length |
-| Image plane height | 2388mm (7 ft 10 in) | Container interior height |
+| Image plane width | 5,893mm (19 ft 4 in) | Container interior length |
+| Image plane height | 2,388mm (7 ft 10 in) | Container interior height |
 | Wavelength (λ) | 0.00055mm (550 nm) | Green light reference |
 
 ---
@@ -152,7 +152,7 @@ Minimum resolvable feature at distance D = D / 3438
 
 A commonly cited rule for pinhole cameras is: **subjects closer than 3–10× the focal length show noticeable softness.**
 
-For our focal length of 2362mm:
+For our focal length of 2,362mm:
 - **3× f = 7.1 m (23 ft)** — softness starts to become apparent
 - **10× f = 23.6 m (77 ft)** — essentially indistinguishable from infinity
 
@@ -183,7 +183,7 @@ M = f / u
 
 **Where:**
 - `M` = lateral magnification (dimensionless)
-- `f` = focal length = 2362mm
+- `f` = focal length = 2,362mm
 - `u` = subject distance from pinhole (mm)
 
 The image is **inverted** (upside down and mirror-reversed). The magnitude |M| gives the size ratio.
@@ -203,7 +203,7 @@ The image is **inverted** (upside down and mirror-reversed). The magnitude |M| g
 
 ### What Magnification Means for Subject Framing
 
-The image plane is 5893mm wide × 2388mm tall. For a given subject distance, the portion of the real world captured within that frame is:
+The image plane is 5,893mm wide × 2,388mm tall. For a given subject distance, the portion of the real world captured within that frame is:
 
 ```
 Scene width captured = image width / M = image width × (u / f)
@@ -220,16 +220,16 @@ Scene height captured = image height × (u / f)
 | 100 m | 249.4 m (818 ft) | 101.1 m (331 ft) |
 
 **Example:** A building 15 meters tall at 50 meters from the camera:
-- Image height = 15000mm × (2362/50000) = 15,000 × 0.0472 = **708mm (2.3 ft)** on the image plane
+- Image height = 15,000mm × (2362/50000) = 15,000 × 0.0472 = **708mm (2.3 ft)** on the image plane
 - This building fills 708/2388 = **30% of the image height**
 
 **Example:** A person 1.8 m tall at 5 meters:
-- Image height = 1800mm × (2362/5000) = 1,800 × 0.4724 = **850mm (2.8 ft)**
+- Image height = 1,800mm × (2362/5000) = 1,800 × 0.4724 = **850mm (2.8 ft)**
 - Fills 850/2388 = **36% of the image height**
 
 ### The 1:1 Point — Where Subjects Are Life-Size in the Image
 
-At u = f = 2362mm (approximately **7 ft 9 in**), subjects project at exactly life-size onto the image plane. A person standing 7'9" from the outside of the container wall appears life-size on the opposite interior wall.
+At u = f = 2,362mm (approximately **7 ft 9 in**), subjects project at exactly life-size onto the image plane. A person standing 7'9" from the outside of the container wall appears life-size on the opposite interior wall.
 
 This has creative implications: subjects between 0.5 m and 2.36 m from the camera project at **larger than life scale** on the image plane — they are magnified. Objects directly pressed against the outside of the container wall approach macro photography scales.
 
@@ -273,7 +273,7 @@ This is the classical DoF near limit from Part 4. It depends on the viewing dist
 
 A fourth practical constraint: the subject must be far enough that they fit within the image plane boundaries.
 
-For a person 1.8 m (71 inches) tall to fit within the 2388mm image height:
+For a person 1.8 m (71 inches) tall to fit within the 2,388mm image height:
 
 ```
 1,800 × M ≤ 2,388
@@ -298,7 +298,7 @@ u ≥ 10,000 × 2362/2388 ≈ 9891mm ≈ 9.9 m (32.4 ft)
 
 ## Part 7: Consolidated Minimum Focal Distance Table
 
-Combining all four definitions for Option B (20-ft container, f = 2362mm, d = 2.17mm):
+Combining all four definitions for Option B (20-ft container, f = 2,362mm, d = 2.17mm):
 
 | Criterion | Minimum Distance | Notes |
 |-----------|-----------------|-------|
@@ -317,9 +317,9 @@ For deliberate soft/blurred foreground elements — a creative technique — sub
 
 ## Part 8: Comparison of All Four Proposals — DoF and Magnification
 
-The container width is the same for both 20-ft and 40-ft standard containers (7'9" = 2362mm). Therefore **Proposals 1, 2, and 4 all have identical depth of field, magnification, and minimum focal distance.** Only Proposal 3 (end-to-end, f = 12013mm) differs.
+The container width is the same for both 20-ft and 40-ft standard containers (7'9" = 2,362mm). Therefore **Proposals 1, 2, and 4 all have identical depth of field, magnification, and minimum focal distance.** Only Proposal 3 (end-to-end, f = 12,013mm) differs.
 
-| Parameter | Proposals 1, 2, 4 (f = 2362mm) | Proposal 3 (f = 12013mm) |
+| Parameter | Proposals 1, 2, 4 (f = 2,362mm) | Proposal 3 (f = 12,013mm) |
 |-----------|----------------------------------|---------------------------|
 | Pinhole diameter | 2.17mm | 4.87mm |
 | F-number | f/1088 | f/2467 |
@@ -374,4 +374,4 @@ Distance from pinhole:
 | Young, M., *Applied Optics*, Vol. 10, No. 12, 1971. DOI: [10.1364/AO.10.002763](https://doi.org/10.1364/AO.10.002763) | Depth of field behavior in pinhole cameras |
 | Stinson Photography, "Pinhole Pro and the Optics of Pinhole Cameras," 2018. [stinsonphotography.wordpress.com](https://stinsonphotography.wordpress.com/2018/07/16/pinhole-pro-and-the-optics-of-pinhole-cameras/) | 3–10× focal length rule of thumb for DoF |
 | [Photrio.com — CoC and hyperfocal distance for pinhole cameras](https://www.photrio.com/forum/threads/circle-of-confusion-and-hyperfocal-distance-of-a-pinhole-camera.15715/) | Practical CoC discussion; minimum focus distance concepts |
-| ISO 668:2020 | Container interior dimensions (source of f = 2362mm) |
+| ISO 668:2020 | Container interior dimensions (source of f = 2,362mm) |

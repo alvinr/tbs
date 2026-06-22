@@ -6,7 +6,7 @@
 
 Personnel access during operation is via a revolving light trap drum built into the panel. Operators can enter or exit at any time without opening the full panel or admitting daylight — for example, between coating of the photosensitive material, or while the exposure is being made.
 
-The cargo door end of TBS-001 is sealed by a stepped hinged panel (2362mm wide × 2388mm tall, 50×50mm RHS steel frame, 18mm ply skins). The panel has a stepped profile: 40mm thick at the corner zones (Yd=0–653mm and Yd=1709–2362mm) and 120mm thick at the center zone (Yd=653–1709mm) where the Ø900 housed revolving-door light lock is permanently mounted. The panel swings open about its pivot to clear the door opening for loading IBC totes and equipment. When closed it is light-sealed at the perimeter by a 20mm EPDM compression gasket against a fixed welded door frame at X=0.
+The cargo door end of TBS-001 is sealed by a stepped hinged panel (2,362mm wide × 2,388mm tall, 50×50mm RHS steel frame, 18mm ply skins). The panel has a stepped profile: 40mm thick at the corner zones (Yd=0–653mm and Yd=1,709–2,362mm) and 120mm thick at the center zone (Yd=653–1,709mm) where the Ø900 housed revolving-door light lock is permanently mounted. The panel swings open about its pivot to clear the door opening for loading IBC totes and equipment. When closed it is light-sealed at the perimeter by a 20mm EPDM compression gasket against a fixed welded door frame at X=0.
 
 Under rev 9 (B2) the Ø900 housing sits in a **punch-out bay** that offsets the drum to X=−400, clearing the X=150 film-plane rail (which is now continuous in operation). For transport (rev10) the panel + drum **SWING ~56° about a vertical Ø89×8mm CHS pivot post** (the reused film-plane far-left upright at X=175, Yd=2287) — carrying the punch-out bay inboard of the door plane (true min X +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm -->mm) so the cargo doors close. The two left film rails (TL + BL) lift out before the swing so the drum cage can transition the X=150 rail plane, then re-seat to the film datum. The housing/drum ride with the panel at Z=130, so they pass over the processing-tray rim (and the Z115 walkway brackets) rather than fouling them. Single-person operation (the swing is assisted, ~5 minutes per mode conversion). See [Equipment Layout Report](equipment-layout-report.md) §6 for the swing-mechanism specification.
 
@@ -28,7 +28,7 @@ Full drawings also appear in the [Engineering Diagrams](engineering-diagrams.md)
 | Requirement | Value |
 |-------------|-------|
 | Clear passage diameter | ≥ 700mm (minimum comfortable single-person access) |
-| Clear passage height | ≥ 1900mm (full headroom) |
+| Clear passage height | ≥ 1,900mm (full headroom) |
 | Light exclusion | 100% — no straight-line optical path from exterior to interior |
 | Durability | Repeated field deployment, transport vibration, outdoor exposure |
 | Operability | Single operator, no tools required to enter/exit |
@@ -47,7 +47,7 @@ Three categories of commercial product were reviewed against these requirements.
 |-----------|-------|
 | Typical product | Vario LT-800, Kaiser RD-800, Kindermann equivalents |
 | Clear diameter | 800mm |
-| Height | 2000–2200mm |
+| Height | 2,000–2,200mm |
 | Approximate price | USD $2,500–$3,500 (import from DE/NL; shipping +$400) |
 | Lead time | 4–8 weeks |
 
@@ -67,7 +67,7 @@ The Vario/Kaiser/Kindermann range is designed for permanent darkroom installatio
 |-----------|-------|
 | Product | Porta-Fab DK series modular panels with revolving door unit |
 | Clear diameter | 750–900mm (model-dependent) |
-| Height | 2000mm |
+| Height | 2,000mm |
 | Approximate price | USD $3,000–$4,500 (direct from supplier; custom spec required) |
 | Lead time | 6–10 weeks |
 
@@ -86,7 +86,7 @@ The Porta-Fab system is modular and more robust than the Vario range, but shares
 | Parameter | Value |
 |-----------|-------|
 | Housing outer diameter | Ø900mm (fixed) + Ø864mm rotating drum, ~Ø850mm bore |
-| Height | 2200mm (floor to upper bearing) |
+| Height | 2,200mm (floor to upper bearing) |
 | Wall thickness | Hybrid plastic skin (rev 9 / B2): 5mm UV-HDPE housing + 4mm PP drum, rolled and extrusion-welded (was 3mm aluminum 5052-H32) |
 | Surface finish | Black-pigmented sheet + flat-black touch-in at welds (interior); UV-stabilized sheet (exterior) — no primer |
 | Baffles | None — two 80° housing openings 180° apart + single-opening C-shell drum (see §4, §5) |
@@ -126,7 +126,7 @@ The SKF 6215 sealed bearing is rated for radial loads to 52.7 kN and operates at
 | Housing openings | Two, **80° arc each, 180° apart** (full height) — one facing the exterior, one facing the interior/walkway |
 | Rotating drum | 4mm PP C-shell (LT_DRUM_T), **Ø864mm OD** (~Ø850mm bore), single **80° opening**, edge-stiffened, rotates inside the housing on a 15mm running gap |
 | Internal baffles | **None** — light-tightness is by the fixed-housing geometry (openings <90°, 180° apart; see §5) |
-| Drum/housing height | 2200mm |
+| Drum/housing height | 2,200mm |
 | Top cap | 5mm PP plate, flanged, welded to the drum; steel hub insert for the stub shaft |
 | Bottom cap | 5mm PP plate, flanged, steel hub insert with 75mm stub shaft for lower bearing |
 | Upper stub shaft | 75mm Ø × 150mm steel stub, into the drum top-cap steel hub (nylon-isolated) |
@@ -209,7 +209,7 @@ and [Hinged Panel Report](hinged-panel-report.md) §3.3 / §3.6.
 | | Vario LT-800 | Porta-Fab DK | **Custom (recommended)** |
 |---|---|---|---|
 | Clear bore / passage | 800mm | 750–900mm | **Ø850mm bore / ~555mm passage** |
-| Height | 2000–2200mm | 2000mm | **2200mm** |
+| Height | 2,000–2,200mm | 2,000mm | **2,200mm** |
 | Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **$1,465–$2,160** |
 | Weatherproofing | None | None | **IP44 (neoprene/silicone)** |
 | Panel integration | Requires surround wall | Requires panel-bay frame | **Direct bolt-in (120mm panel)** |
@@ -229,7 +229,7 @@ Custom fabrication is comparable to or below commercial alternatives while provi
 - The drum rotates freely in both directions; there is no rotation limit. The exterior face carries no handle — the operator pushes the bare drum wall to enter. An interior grab rail (100mm Ø SS, welded bracket, no through-hole) at 900mm height allows the operator to pull the drum closed from inside and brace during exit. This eliminates any through-bolt penetration of the drum wall on the exterior face, removing a potential light leak path.
 - Interior safelight (Circuit D, per [Electrical Report](electrical-report.md)) illuminates the drum interior during loading operations, allowing operators to orient themselves in darkness.
 - **Panel latches (×4 Southco C2-33 cam compression latches) are mounted on the interior face of the panel.** This is a deliberate safety design: if the revolving drum jams and prevents normal egress, an operator inside the container can release all four latches independently from the inside and push the panel open outward. The panel swings open about its left-edge pivot post, clearing the door opening. Latches appear as hidden (dashed) features in the exterior elevation drawing (Sheet 1).
-- **Stepped panel construction:** The panel has three thickness zones — 40mm at corners (18mm ply + 3mm aluminum plate + 18mm ply) and 120mm at center (18mm ply + 84mm steel RHS frame + 18mm ply). The step transitions occur at Yd=653mm and Yd=1709mm. The 120mm center zone houses the drum; the 40mm corner zones are flush with the container walls.
+- **Stepped panel construction:** The panel has three thickness zones — 40mm at corners (18mm ply + 3mm aluminum plate + 18mm ply) and 120mm at center (18mm ply + 84mm steel RHS frame + 18mm ply). The step transitions occur at Yd=653mm and Yd=1,709mm. The 120mm center zone houses the drum; the 40mm corner zones are flush with the container walls.
 - **Swing pivot:** For transport the panel + drum revolve ~56° about a vertical Ø89×8mm CHS pivot post (the reused film-plane far-left upright at X=175, Yd=2287) on a thrust collar + top/bottom hub bearings. The vertical axis is balanced at any angle (no gravity torque). Locked at the swung position by top + bottom wall stays (hook + eye + turnbuckle). A fixed welded door frame (50×50×3mm RHS) at X=0 provides the EPDM seal landing for the perimeter + cut + lip seals, compressed by the cam latches in the closed position.
 - **Transport mode conversion** (single person, ~5 minutes, swing assisted): park + pin the drum → lift out the left walkway + door-end near-deck → strike the two left film rails (TL + BL) → release the cam latches → swing the frame ~56° inboard about the pivot → engage the top + bottom wall stays → close the container doors (they clear the swung frame by +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm -->mm; the door-end walkway brackets are cleared at Z, not struck). See [Equipment Layout Report](equipment-layout-report.md) §6 for full specification.
 

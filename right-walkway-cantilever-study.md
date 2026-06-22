@@ -30,7 +30,7 @@ The IBC stacking frame only has uprights at the **corridor (Yd 1046 / 1266, at X
 
 - **2 inner cantilever arms** — off the **IBC corridor uprights** (X4734). A U-clamp grips each upright with 2× M12; the arm (40×45 SHS) reaches ~405mm back to the deck's left edge (X4329).
 - **2 outer wall-mounted ledgers** — on the **near (Yd0) and far (Yd2362) container walls**, each **through-bolted** (interior + exterior plate, 2 bolts) at 2 X stations along the deck width. These carry the deck's ends, where the frame can't reach.
-- **2 longitudinal bearers** (Yd-running, at X4329 + X4629) ride the arms + ledgers; the grate spans the ≤1046mm between supports.
+- **2 longitudinal bearers** (Yd-running, at X4329 + X4629) ride the arms + ledgers; the grate spans the ≤1,046mm between supports.
 - All members sit at **Z70–115** — 10mm above the spray bar (Z60), below the film frame (Z150). **No ceiling rods. Nothing into the tray. Nothing in the optical band above the deck.**
 
 3D study model: `src/models/generate_right_cantilever_study.py` (scenes: Combined / **Anchors (frame + walls)** / Clearance / Labeled — the Anchors scene shows both the upright U-clamps and the wall ledgers).

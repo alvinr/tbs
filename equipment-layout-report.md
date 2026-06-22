@@ -8,8 +8,8 @@ The optical cone from the pinhole narrows as it approaches the pinhole wall and
 widens as it approaches the film plane. Any equipment placed inside the cone casts
 a shadow on the film plane, producing an unexposed void in the image.
 
-**Solution:** Reduce the active film plane from the full <!-- BEGIN fact:container_interior_length_mm -->5893<!-- END fact:container_interior_length_mm -->mm container width
-to a <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm -->mm span. This creates two **provably shadow-free end
+**Solution:** Reduce the active film plane from the full <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm -->mm container width
+to a <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm span. This creates two **provably shadow-free end
 zones** — one at each end of the container — where equipment can be placed at any
 depth without entering the optical cone. The right end zone contains a 2×2 IBC stack,  leaving the left zone to contain the light trap drum.
 
@@ -18,8 +18,8 @@ depth without entering the optical cone. The right end zone contains a 2×2 IBC 
 | Zone | X range | Shadow-free? | Equipment assigned |
 |------|---------|--------------|--------------------|
 | **Left end zone** | 0–150mm | YES at all depths | Light trap drum, hinged panel (stepped) |
-| **Optical zone** | 150–4649mm | NO | Film plane, rails, processing tray, perimeter walkway |
-| **Right end zone** | 4649–5893mm | YES at all depths | IBC tanks (2×2 stack: 2× Blue, 1× Brown, 1× Waste) |
+| **Optical zone** | 150–4,649mm | NO | Film plane, rails, processing tray, perimeter walkway |
+| **Right end zone** | 4,649–5,893mm | YES at all depths | IBC tanks (2×2 stack: 2× Blue, 1× Brown, 1× Waste) |
 | **Pinhole wall face** | Y=0 surface | YES (cone collapses to point) | Electrical panel, battery, pump |
 
 ---
@@ -35,25 +35,25 @@ Overall floorplan can be seen below. Its essentially split into three areas, lef
 
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
-| Hinged panel (stepped) | 0–40 (corner) / 0–120 (center) | 0–2,362 | 0–<!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm --> | Stepped profile: 40mm corners, 120mm center (drum housing). Swings ~56° about the Ø89 pivot for transport. |
-| Light trap drum | −375–375 | 806–1,556 (centered at CW/2=1181mm) | 0–2,200 | Centered at X=0 (spans container wall); integrated into panel center zone; rotary drum entry |
+| Hinged panel (stepped) | 0–40 (corner) / 0–120 (center) | 0–2,362 | 0–<!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm --> | Stepped profile: 40mm corners, 120mm center (drum housing). Swings ~56° about the Ø89 pivot for transport. |
+| Light trap drum | −375–375 | 806–1,556 (centered at CW/2=1,181mm) | 0–2,200 | Centered at X=0 (spans container wall); integrated into panel center zone; rotary drum entry |
 
 ### 2.2 Pinhole Wall Face — Y=0 surface mounted
 
 | Item | X (mm) | H (mm) | Notes |
 |------|--------|--------|-------|
-| Evaporative cooler | 700–1,300 | ground | Hessaire MC18M, 120V AC <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W (<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus via inverter); ground-placed outside, flex duct to wall stub at Z=1900mm |
+| Evaporative cooler | 700–1,300 | ground | Hessaire MC18M, 120V AC <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W (<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus via inverter); ground-placed outside, flex duct to wall stub at Z=1,900mm |
 | Cooler inverter (Cct E) | 1,910–2,030 | 1,180–1,415 | Victron Phoenix 12/375 GFCI, wall-mounted below the EP (12V→120V for the cooler) |
 | Electrical panel | 1,910–2,210 | 1,500–2,100 | IP65, wall-mount (stacked above the battery bank; clears the upper transport-stay anchor). rev11: dropped 150mm (was Z1,650–2,250) — originally to clear the film-plane brace top beam; that brace cage is now retired for wall-seat saddles, but the EP is kept at this height |
 | Battery bank (2× 100Ah LiFePO4, each 330×172×214mm) | 1,540–2,220 | 150–364 | Wall shelf below panel; side-by-side, clears the optical cone |
 | Solar charge controller | Within panel | — | Mounted inside enclosure |
-| Cable trunking | Along wall face, H=1800mm | — | Full length |
+| Cable trunking | Along wall face, H=1,800mm | — | Full length |
 | Blue supply pipe → spray bar | along wall to X=2,399 | — | Rigid 1/2" HDPE from the corridor pump panel to the spray-bar feed; pumps themselves are on the equipment panel in the IBC corridor (§2.4 / [Equipment Panel Report](equipment-panel-report.md)) |
 
-### 2.3 Optical Zone — X=150–4649mm
+### 2.3 Optical Zone — X=150–4,649mm
 
 Rail slots in floor/ceiling at X=150 and X=4,649. Film plane frame
-spans this zone at depth Y=2262mm (nominal far position).
+spans this zone at depth Y=2,262mm (nominal far position).
 
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
@@ -62,7 +62,7 @@ spans this zone at depth Y=2262mm (nominal far position).
 
 The processing tray sits below the film plane carriage blocks (minimum Z=140mm at maximum 40° tilt; the lower max angle only increases clearance), providing 90mm clearance above the tray rim. The tray does not contact or interfere with the HGR20 rail channels at X=150 and X=4,649.
 
-### 2.4 Right End Zone — X=4649–5893mm
+### 2.4 Right End Zone — X=4,649–5,893mm
 
 2×2 IBC stack — right-justified flush to the far end wall. Four IBCs in two
 columns (25mm clearance from zone boundary), separated by a
@@ -92,16 +92,16 @@ cone in either the plan (top-down) or elevation (side) view.
 ## 4. Why IBC Y-Stacking (Front-to-Back)
 
 In the current layout the entire right end zone is
-X-clear from X=4649mm to the end wall — all four tanks occupy the same X column
+X-clear from X=4,649mm to the end wall — all four tanks occupy the same X column
 in a 2×2 arrangement (two columns along Y, two tiers high).
 
 | Arrangement | X span used | Max Y depth |
 |-------------|------------|------------|
-| Old (side-by-side X) | 2400mm | 1116mm |
-| **New (Y-stacked, right-justified)** | **1219mm** | **2302mm** |
+| Old (side-by-side X) | 2,400mm | 1,116mm |
+| **New (Y-stacked, right-justified)** | **1,219mm** | **2,302mm** |
 
-The 2×2 stack gives a 1219mm X footprint (= IBC cage width), right-justified to
-the far end wall. The zone itself is only 1244mm wide (X=4649–5893mm), so the
+The 2×2 stack gives a 1,219mm X footprint (= IBC cage width), right-justified to
+the far end wall. The zone itself is only 1,244mm wide (X=4,649–5,893mm), so the
 IBCs fit with 25mm clearance on the zone boundary side. The two columns are
 separated by a 270mm plumbing corridor, with
 30mm wall clearance on each side.
@@ -110,7 +110,7 @@ separated by a 270mm plumbing corridor, with
 
 ## 5. IBC Stacking Frame — Design Specification
 
-A welded mild steel **restraint-only** frame holds the 2×2 IBC stack (4× 1000L
+A welded mild steel **restraint-only** frame holds the 2×2 IBC stack (4× 1,000L
 caged composite totes — two columns, two tiers each, direct-stacked) as a single
 unit. The totes stack cage-on-cage, so the frame does not carry vertical load — it
 only restrains them for transport (front retaining bars + D-ring lashing).
@@ -118,26 +118,26 @@ only restrains them for transport (front retaining bars + D-ring lashing).
 | Item | Specification |
 |------|--------------|
 | Frame material | 50×50×3mm RHS mild steel |
-| Frame type | RESTRAINT-ONLY single **front portal** — the 1000L caged totes direct-stack cage-on-cage (no load-bearing deck), so the frame only restrains them |
+| Frame type | RESTRAINT-ONLY single **front portal** — the 1,000L caged totes direct-stack cage-on-cage (no load-bearing deck), so the frame only restrains them |
 | Uprights | 2 full-height corridor uprights (Yd 1046/1266) at the IBC front (X≈4734) on 150×150×12mm floor flange feet (4× M12 each); define the 270mm plumbing corridor |
 | Front retaining bars | 4× 50×20×3 RHS at the IBC front (Z560 + Z1760), seated in the 25mm gap to the film rail — stop the totes sliding out the front; each bar's wall end drops into a Simpson-style joist hanger (×4) |
 | Wall attachment | each joist hanger is through-bolted (4× M12) to a 100×135×8mm **exterior** backing plate (×4, hex heads outside) that spreads the load into the thin corrugated side wall |
 | Lashing points | 25mm D-ring holders on the front bars (1,100kg WLL); ratchet straps pass over each stack and tie down to them |
-| Total stacked height | 2336mm (2× 1168mm direct-stack) — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm ceiling clearance |
+| Total stacked height | 2,336mm (2× 1,168mm direct-stack) — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm ceiling clearance |
 | Panel mount | the front portal also carries the (forward) wet-end equipment panel and the right-walkway cantilever arms |
 | Surface finish | Gray oxide primer + flat black powder coat (interior) |
 | Approx. weight | ~178kg (uprights + feet + front bars + hangers + exterior wall plates + panel mount) |
 | Approx. cost | USD <!-- BEGIN costing:eq-ibc-frame-cost -->$955–$1,455<!-- END costing:eq-ibc-frame-cost --> (local mild steel fabrication) |
 
-**Why 1000L caged composite (all four totes):**
+**Why 1,000L caged composite (all four totes):**
 
-All four positions use the 275-gal (≈1000 L) caged composite tote — the only
+All four positions use the 275-gal (≈1,000 L) caged composite tote — the only
 food-grade, 48×40-footprint tote stocked.
-"600 L" / "1000 L" are **fill levels**, not tote sizes.
+"600 L" / "1,000 L" are **fill levels**, not tote sizes.
 
 | IBC type | H (mm) | Stacked pair | Ceiling clearance |
 |----------|--------|--------------|-------------------|
-| **1000L caged composite** | **1,168** | **2336mm** | **<!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm** |
+| **1,000L caged composite** | **1,168** | **2,336mm** | **<!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm** |
 
 The <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom is tight but **transport-validated**: the loaded-transport CG sits at
 Z=1,341mm (static sideways tip threshold ≈41°, ≈21% of the ISO gross limit) — see the
@@ -197,7 +197,7 @@ The evaporative cooler (**Hessaire MC18M**, 559×305×711mm) sits on the ground 
 
 | Parameter | Value |
 |-----------|-------|
-| Stowage zone | X=1450–2009mm, Yd=0–305mm (near walkway wide section) |
+| Stowage zone | X=1,450–2,009mm, Yd=0–305mm (near walkway wide section) |
 | Cooler footprint | 559×305mm (long axis along X) |
 | Cooler height on grating | 711mm (top at Z=861mm) |
 | Weight (dry) | ~7.3 kg (16 lb) |
@@ -229,17 +229,17 @@ termination. All circuits ≤ 9m — within voltage-drop budget for 12V DC with
 10 AWG wire.
 
 **Solar inlet + shore power:** NEMA 5-15R weatherproof inlet on exterior of
-pinhole wall at X=2399mm (pinhole side), H=400mm.
+pinhole wall at X=2,399mm (pinhole side), H=400mm.
 
 ---
 
 ## 8. Water Capacity Summary
 
-All four positions are identical 1000L caged composite IBCs — the <!-- BEGIN fact:collection_fill_l -->630<!-- END fact:collection_fill_l -->L / 900L working fills
+All four positions are identical 1,000L caged composite IBCs — the <!-- BEGIN fact:collection_fill_l -->630<!-- END fact:collection_fill_l -->L / 900L working fills
 are **fill levels, not tote sizes** (a 600L caged tote does not exist). Each tote's fill
 swings between the two ends of a resupply cycle:
 
-| IBC (identical 1000L tote) | Role | Camera ready | Supply exhausted |
+| IBC (identical 1,000L tote) | Role | Camera ready | Supply exhausted |
 |----------------------------|------|-------------:|-----------------:|
 | Blue ×2 (stacked) | Clean wash supply | <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L (2× 900L) | 0L |
 | Brown | Recycled wash / fix buffer | 0L | <!-- BEGIN fact:collection_fill_l -->630<!-- END fact:collection_fill_l -->L |
@@ -269,8 +269,8 @@ waste drums eliminated, the entire left end zone floor is clear.
 
 | Measurement | Value |
 |-------------|-------|
-| **Clear passage width** | **2362mm (93") — full container width** |
-| At door frame | ~2362mm (full frame opening) |
+| **Clear passage width** | **2,362mm (93") — full container width** |
+| At door frame | ~2,362mm (full frame opening) |
 | Obstructions in egress path | None |
 
 **Human factors reference:**
@@ -279,7 +279,7 @@ waste drums eliminated, the entire left end zone floor is clear.
 - Standard doorway minimum (IBC/IRC): 762mm (30")
 - Emergency egress minimum: 610mm (24")
 
-The 2362mm passage exceeds all minimums by more than 3×. No equipment narrows
+The 2,362mm passage exceeds all minimums by more than 3×. No equipment narrows
 the egress path at any point. The elimination of waste drums from the left end
 zone provides completely unobstructed access to the cargo doors.
 
@@ -301,7 +301,7 @@ The panel + drum swing about the Ø89 pivot — ~56° inboard for transport (the
 **Cargo door egress detail — panel open 180° outward:**
 ![TBS-001 Cargo Door Egress Detail](assets/container-floorplan-sheet2.png)
 
-The light trap drum (900mm dia, center ~1181mm from hinge axis) sweeps through exterior space during 180° rotation. No interior equipment exists in the left end zone floor area.
+The light trap drum (900mm dia, center ~1,181mm from hinge axis) sweeps through exterior space during 180° rotation. No interior equipment exists in the left end zone floor area.
 
 **Conclusion:** No components obstruct egress. The left end zone is entirely clear at floor level, providing unobstructed single-person egress and full swing clearance at the cargo door end.
 
@@ -311,16 +311,16 @@ The light trap drum (900mm dia, center ~1181mm from hinge axis) sweeps through e
 
 | Parameter | Value |
 |-----------|-------|
-| Equipment zone concept | X=0–150mm and X=4649–5893mm end zones |
-| Pinhole position | X=2399mm (centered on active FP) |
-| Active film plane width | <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm -->mm (X=150–4649mm) |
-| Rail positions | X=150mm, X=4649mm |
-| Rail span | <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm -->mm |
+| Equipment zone concept | X=0–150mm and X=4,649–5,893mm end zones |
+| Pinhole position | X=2,399mm (centered on active FP) |
+| Active film plane width | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm (X=150–4,649mm) |
+| Rail positions | X=150mm, X=4,649mm |
+| Rail span | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm |
 | Max swing angle | <!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° |
-| Blue IBCs (×2) | Right end zone, X=4674mm, 2×2 stack top tier |
-| Brown IBC | Right end zone, X=4674mm, 2×2 stack bottom near |
+| Blue IBCs (×2) | Right end zone, X=4,674mm, 2×2 stack top tier |
+| Brown IBC | Right end zone, X=4,674mm, 2×2 stack bottom near |
 | Waste handling | IBC-4 in the right end zone, 2×2 stack bottom far |
-| Evap cooler | Ground-placed outside; duct penetration at Yd=0, X=1000mm |
+| Evap cooler | Ground-placed outside; duct penetration at Yd=0, X=1,000mm |
 | Items in optical cone | 0 ✓ |
 | Shadow-free proof | Geometry-limited (exact cone fit at film plane edges) |
 
@@ -329,7 +329,7 @@ The light trap drum (900mm dia, center ~1181mm from hinge axis) sweeps through e
 ## 11. Source References
 
 1. [ISO 668:2020](https://www.iso.org/standard/76912.html) — Series 1 freight containers: Classification, dimensions and ratings.
-2. [Schütz Ecobulk MX 1000L](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — 1000L caged composite IBC tote specifications and cage dimensions (~65 kg tare; a 600L caged tote does not exist).
+2. [Schütz Ecobulk MX 1000L](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — 1,000L caged composite IBC tote specifications and cage dimensions (~65 kg tare; a 600L caged tote does not exist).
 3. [Light Trap Selection Report](light-trap-selection.md) — Revolving drum specification and panel integration.
 4. [Hinged Panel Report](hinged-panel-report.md) — Stepped panel construction and swing-pivot specification.
 5. [Water System Report](water-system-report.md) — IBC layout, plumbing manifold, and pump positions.

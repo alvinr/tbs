@@ -97,7 +97,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 ### Structural & rails
 | Item | Spec | Qty | Supplier A | Supplier B | Est. unit |
 |------|------|-----|-----------|-----------|-----------|
-| [Linear guide rail HGR20](https://www.amazon.com/s?k=HGR20+linear+rail+guide) | 2200mm length | 4 | Amazon / Automation Overstock | [McMaster #5901T777](https://www.mcmaster.com/5901T777) | $45 |
+| [Linear guide rail HGR20](https://www.amazon.com/s?k=HGR20+linear+rail+guide) | 2,200mm length | 4 | Amazon / Automation Overstock | [McMaster #5901T777](https://www.mcmaster.com/5901T777) | $45 |
 | [Rail carriage HGH20CA](https://www.amazon.com/s?k=HGH20CA+carriage+block) | Flanged block | 8 | Amazon / Automation Overstock | McMaster-Carr | $18 |
 | [Acme leadscrew ¾"-6](https://www.roton.com) | 8ft length | 4 | [Roton Products](https://www.roton.com) | [McMaster #6289K36](https://www.mcmaster.com/6289K36) | $95 |
 | [Acme nut, bronze ¾"-6](https://www.roton.com) | — | 4 | [Roton Products](https://www.roton.com) | [McMaster #6289K512](https://www.mcmaster.com/6289K512) | $12 |
@@ -115,7 +115,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Item | Spec | Qty | Supplier A | Supplier B | Est. unit |
 |------|------|-----|-----------|-----------|-----------|
 | Aluminum angle 2"×2"×3/16" | 8ft lengths | 10 | Metal Supermarkets SoCal | [Online Metals](https://www.onlinemetals.com) | $22 |
-| [Dibond ACM panel 4mm](https://www.grimco.com) | 4'×8' sheets — **single rigid backing** (Option A), <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm -->×<!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm | 6 | Grimco, City of Industry CA | Signwarehouse | $85 |
+| [Dibond ACM panel 4mm](https://www.grimco.com) | 4'×8' sheets — **single rigid backing** (Option A), <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->×<!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm | 6 | Grimco, City of Industry CA | Signwarehouse | $85 |
 | [Black EPDM foam tape 1"×½"](https://www.mcmaster.com/8614K84) | 50ft rolls — panel perimeter seal + housing-surround ring (Ø900 aperture) | 4 | McMaster-Carr #8614K84 | — | $37 |
 | [Rosco Duvetyne blackout fabric](https://www.rosebrand.com) | 60" wide, 10 yd | 1 | [Rose Brand](https://www.rosebrand.com) (Burbank CA) | B&H Photo | $95 |
 | 6-mil black poly sheeting | 10'×100' roll | 1 | Home Depot | — | $65 |
@@ -148,7 +148,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 > **Option A delta (2026-06-06):** the film plane is now a **fixed-size rigid** rectangle posed by **8 corner cross-slides** (2-axis X-Z stage per corner) that absorb the rigid-rotation arc travel. Added 8 cross-slide rails +$200, 8 carriages +$96, 4 intermediate plates +$60 (= +$356); removed the folding-backing piano hinge –$56 → **net +$300**. Single rigid ACM backing replaces the hinged two-panel system; the achievable envelope is tilt ±40° / swing ±28° single-axis (combined limited; the old compound-twist config is dropped).
 >
-> **4-corner vs original 2-beam design delta:** Removed 2× 80/20 T-slot beams (5893mm) — saves $416. Added: 2× extra leadscrews +$190, 2× extra handwheels +$70, 4× rod-end spherical bearings +$88, 4× corner L-brackets +$80. Added wall-seat saddles (ICP-11–14): +$575. Excl. fabrication, fasteners, and optional electric actuation.
+> **4-corner vs original 2-beam design delta:** Removed 2× 80/20 T-slot beams (5,893mm) — saves $416. Added: 2× extra leadscrews +$190, 2× extra handwheels +$70, 4× rod-end spherical bearings +$88, 4× corner L-brackets +$80. Added wall-seat saddles (ICP-11–14): +$575. Excl. fabrication, fasteners, and optional electric actuation.
 
 ---
 
@@ -158,7 +158,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 ### Water storage
 | Item | Spec | Qty | Supplier | Est. unit | Total |
 |------|------|-----|----------|-----------|-------|
-| [IBC tote 275 gal, food-grade, used/rinsed](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) | **1219×1016×1168mm** caged composite, DN50 butterfly valve (S60×6) — Blue (×2), Brown (×1), Waste (×1) | 4 | Container Exchanger | $80–$150 | $320–$600 |
+| [IBC tote 275 gal, food-grade, used/rinsed](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) | **1219×1016×1,168mm** caged composite, DN50 butterfly valve (S60×6) — Blue (×2), Brown (×1), Waste (×1) | 4 | Container Exchanger | $80–$150 | $320–$600 |
 | [2" NPT bulkhead fitting (304 SS)](https://www.mcmaster.com/4464K115) | External drain/fill port, welded through container wall (X1/X3/X4) | 3 | McMaster-Carr | $25–$40 | $75–$120 |
 | Reinforcing plate, 6mm A36 steel, 150×150mm | Backing plate for external bulkhead ports (one per fitting) | 3 | Metal Supermarkets SoCal | $8–$12 | $24–$36 |
 **Storage subtotal: ~$388–$698**
@@ -230,8 +230,8 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Item | Spec | Qty | Supplier | Unit price | Est. cost |
 |------|------|-----|----------|-----------|-----------|
 | [304 SS sheet, 16-ga (1.5mm)](https://www.onlinemetals.com/en/buy/stainless-steel/304-stainless-steel-sheet) | #4 brushed, 4'×8' sheets | 4 | Online Metals | $180–$250/sheet | $720–$1,000 |
-| Fabrication (cut, brake, weld, press sump) | Two tray halves: 2229×2200mm, 50mm rims, pressed sump well (150×100×20mm) | 1 job | Local sheet metal shop | $450–$850 | $450–$850 |
-| [HDPE flat bar 50×10mm](https://www.mcmaster.com/8619K451) | Tapered shim strips for slope support, 2200mm long | 5 | McMaster-Carr / TAP Plastics | $8–$15 each | $40–$75 |
+| Fabrication (cut, brake, weld, press sump) | Two tray halves: 2229×2,200mm, 50mm rims, pressed sump well (150×100×20mm) | 1 job | Local sheet metal shop | $450–$850 | $450–$850 |
+| [HDPE flat bar 50×10mm](https://www.mcmaster.com/8619K451) | Tapered shim strips for slope support, 2,200mm long | 5 | McMaster-Carr / TAP Plastics | $8–$15 each | $40–$75 |
 | [1" SS foot valve with strainer](https://www.amazon.com/s?k=1+inch+stainless+foot+valve+strainer) | Sump pickup, prevents debris, maintains prime | 1 | Amazon | $15–$25 | $20 |
 | [1" reinforced suction hose, 6 ft](https://www.amazon.com/s?k=1+inch+reinforced+suction+hose+6+ft) | P-04 suction from sump pickup over tray rim to pump manifold | 1 | Amazon | $12–$20 | $15 |
 | [Silicone gasket strip, FDA grade](https://www.mcmaster.com/1460N14) | 1/16" × 1" × 10 ft, center flange seal | 1 roll | McMaster-Carr | $15–$25 | $20 |
@@ -241,7 +241,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 ### Spray bar assembly (gantry design)
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [6061-T6 aluminum SHS **40×40×3mm**](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-tube) | 40×40×3mm structural beam (metric — matches the model + carriage saddle cut; was mislabeled "1½×1½×⅛"), 8 ft lengths (2 joined with sleeve for 3859mm). 12mm holes drilled for nozzle fittings | 2 | Online Metals | $36–$56 |
+| [6061-T6 aluminum SHS **40×40×3mm**](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-tube) | 40×40×3mm structural beam (metric — matches the model + carriage saddle cut; was mislabeled "1½×1½×⅛"), 8 ft lengths (2 joined with sleeve for 3,859mm). 12mm holes drilled for nozzle fittings | 2 | Online Metals | $36–$56 |
 | [3/4" LDPE irrigation poly pipe](https://www.amazon.com/s?k=3%2F4+inch+LDPE+irrigation+poly+pipe) | Internal spray pipe (OD 25mm, ID 19mm), 15 ft length | 1 | Home Depot / Amazon | $10 |
 | [Flat-fan irrigation spray nozzles, barbed](https://www.amazon.com/s?k=flat+fan+irrigation+spray+nozzle+barbed) | 180° fan pattern, barbed inlet through beam wall (26 @ 150mm pitch) | 26 | Amazon | $30–$50 |
 | [Distribution manifold, 1/2" → multi barb](https://www.amazon.com/s?k=irrigation+distribution+manifold+1%2F2+barb) | Mounted at ball joint, splits supply hose to 7 feed tubes | 1 | Amazon | $12 |
@@ -391,7 +391,7 @@ top/bottom weld + anchor connection** (fabricator/PE review) — not the member 
 
 | Item | Spec | Qty | Suppliers (A / B) + part # | Est. cost |
 |------|------|-----|----------------------------|-----------|
-| Pivot post — 3.5″ OD × 0.375″ wall DOM tube, ~2300mm | A513 DOM (≈Ø89×9.5, **exceeds** the Ø89×8 S355 spec); upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever (SF 3.7) | 1 | [Online Metals #12976](https://www.onlinemetals.com/en/buy/carbon-steel/3-5-od-x-0-375-wall-x-2-75-id-carbon-steel-round-tube-a513-type-5-dom/pid/12976) / [Metals Depot DOM](https://www.metalsdepot.com/steel-products/steel-round-tube-dom) · Metal Supermarkets SoCal (cut-to-size) | ~$110 |
+| Pivot post — 3.5″ OD × 0.375″ wall DOM tube, ~2,300mm | A513 DOM (≈Ø89×9.5, **exceeds** the Ø89×8 S355 spec); upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever (SF 3.7) | 1 | [Online Metals #12976](https://www.onlinemetals.com/en/buy/carbon-steel/3-5-od-x-0-375-wall-x-2-75-id-carbon-steel-round-tube-a513-type-5-dom/pid/12976) / [Metals Depot DOM](https://www.metalsdepot.com/steel-products/steel-round-tube-dom) · Metal Supermarkets SoCal (cut-to-size) | ~$110 |
 | Turntable thrust bearing — 12″ (Ø305), 1000 lb | Axial only at the post base — carries the ~330 kg (3.24 kN) vertical load; the overturning moment is taken by the journal couple, so a thrust-only turntable suffices | 1 | [VXB Lazy-Susan 1000 lb, USA](https://vxb.com/products/12inch-lazy-susan-5-16-thick-turntable-bearings-made-in-usa-1000-lbs-capacity) / [Shepherd 9549E](https://www.shepherdhardware.com/product/12-inch-lazy-susan-round-turntable-1000-lb-load-capacity) | ~$40 |
 | Flanged sleeve (journal) bearing — 3½″ (89mm) bore | SAE 841 bronze (oil-embedded); top + bottom radial location of hub on post; 1.6 kN radial each | 2 | [McMaster-Carr 6391K-series](https://www.mcmaster.com/sleeve-bearings/) / [Grainger](https://www.grainger.com/category/power-transmission/bearings/sleeve-bearings) | ~$100 |
 | Pivot hub + thrust collar, machined steel | Couples the swinging frame to the post; bores Ø89 for the sleeves + seats the turntable; includes machining the post bearing landings | 1 | Local fab (SoCal machine shop) | ~$160 |
@@ -430,7 +430,7 @@ top/bottom weld + anchor connection** (fabricator/PE review) — not the member 
 | Reinforcing plates, 120×220×6mm mild steel | Wider plates behind each widened bracket (4-bolt pattern) | 4 | Metal Supermarkets | ~$16–$24 |
 | M12×60mm hex bolts, nuts, flat washers | Grade 8.8, galvanized. 3 per standard bracket (42) + 4 per widened bracket (16). | 58 | McMaster-Carr | ~$57–$87 |
 | Transition bearing plate, 40×500×5mm flat bar | Welded to bracket arm top at width transitions (X≈1,156 and X≈2,526). Both grating widths land on plate. | 2 | Metal Supermarkets | ~$5–$10 |
-| Mild steel SHS 40×40×3mm, galvanized | Right walkway CANTILEVER frame (rev12): 2 long beams (2362mm) + 2 end beams (300mm) + 2 center arms (405mm); order 8m | 8 m | Metal Supermarkets | ~$28–$40 |
+| Mild steel SHS 40×40×3mm, galvanized | Right walkway CANTILEVER frame (rev12): 2 long beams (2,362mm) + 2 end beams (300mm) + 2 center arms (405mm); order 8m | 8 m | Metal Supermarkets | ~$28–$40 |
 | Right walkway wall cleats (left corners, ×2) | 8mm steel — back-plate + exterior plate + shelf the long beam lands on, through-bolted to the wall | 2 | Local fab | ~$20–$35 |
 | Combined corner plates (right corners, ×2) | 10mm steel, 150mm-wide — secures BOTH the bottom film rail (BR) AND the walkway right beam (interior + exterior plate + 2 seats). Shared with the film plane: REPLACES the BR rail saddle | 2 | Local fab | ~$50–$80 |
 | M12 through-bolts + nuts, flat + lock washers | Wall cleats + combined plates (through-wall) + the 2 center-arm U-clamps to the IBC corridor uprights. Galvanized, grade 8.8. | ~24 | McMaster-Carr | ~$30–$50 |
@@ -506,7 +506,7 @@ top/bottom weld + anchor connection** (fabricator/PE review) — not the member 
 | [Unbleached cotton muslin, 60" wide](https://www.fabricdirect.com) | ~445 linear yards | [Fabric Direct](https://www.fabricdirect.com) | 150-yd roll | 3 | ~$100 | ~$300 |
 | OR [unbleached cotton muslin by the yard](https://www.fabricwholesaledirect.com) | ~445 yd | [Fabric Wholesale Direct](https://www.fabricwholesaledirect.com) | per yard | 445 | $0.80–$1.20/yd | $360–$540 |
 
-> **Muslin note:** Pre-wash all fabric twice in hot water, no detergent, to remove sizing. Sizing repels water-based sensitisers. 60" width requires 3 strips per print to cover the 4499mm width (each 2388mm tall) — or source 120" (theatrical/backdrop) width to eliminate vertical seams.
+> **Muslin note:** Pre-wash all fabric twice in hot water, no detergent, to remove sizing. Sizing repels water-based sensitisers. 60" width requires 3 strips per print to cover the 4,499mm width (each 2,388mm tall) — or source 120" (theatrical/backdrop) width to eliminate vertical seams.
 > **Muslin correction (2026-06-18):** the prior "1,650 yd / 11 rolls / $1,100" over-counted the fabric ~3.7× (a feet-as-yards error — see [chemistry-shopping-list.md](chemistry-shopping-list.md) Shared Item: Substrate Fabric). Real need is ~445 yd = 3 × 150-yd rolls ≈ **$300**.
 **Substrate subtotal: ~$300**
 

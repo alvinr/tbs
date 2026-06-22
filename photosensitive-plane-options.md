@@ -3,16 +3,16 @@
 # Photosensitive Options
 ## Giant Pinhole Camera — Image Plane Material Selection Guide
 
-**Image plane dimensions (active):** <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm (~14′ 9″ × 7′ 10″)  
-**Container interior:** 5893 × 2388mm (19′ 4″ × 7′ 10″) — end zones occupied by equipment  
+**Image plane dimensions (active):** <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm (~14′ 9″ × 7′ 10″)  
+**Container interior:** 5893 × 2,388mm (19′ 4″ × 7′ 10″) — end zones occupied by equipment  
 **Image plane area:** ~116 sq ft (10.7 m²)  
-**Camera configuration:** Option B (side-to-side), f = 2362mm, f/1088, pinhole Ø 2.17mm
+**Camera configuration:** Option B (side-to-side), f = 2,362mm, f/1088, pinhole Ø 2.17mm
 
 ---
 
 ## Executive Summary
 
-Eight photosensitive processes were evaluated for a ~116 sq ft (<!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm) active image plane at f/1088 in full sunlight. The analysis covers per-image cost, chemistry sourcing, mounting method, spectral response to natural light, and ISO equivalent — the last being the single most consequential variable for practical operation of this camera.
+Eight photosensitive processes were evaluated for a ~116 sq ft (<!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm) active image plane at f/1088 in full sunlight. The analysis covers per-image cost, chemistry sourcing, mounting method, spectral response to natural light, and ISO equivalent — the last being the single most consequential variable for practical operation of this camera.
 
 ### The ISO problem
 
@@ -136,7 +136,7 @@ Coverage: approximately 1–1.5 ml of mixed solution per 50 cm², or ~2 ml/sq ft
 ### Mounting and Preparation Method
 
 1. **Pre-wash substrate** twice in hot water without detergent; dry fully. This removes sizing (starch filler) that repels sensitiser.
-2. **Cut panels** to slightly oversize (e.g., 5950 × 2450mm). For full coverage, one continuous roll of 60" (1524mm) wide muslin folded/overlapped at join, or two lengths of 120" wide drop cloth fabric joined with a single flat seam at center.
+2. **Cut panels** to slightly oversize (e.g., 5950 × 2,450mm). For full coverage, one continuous roll of 60" (1,524mm) wide muslin folded/overlapped at join, or two lengths of 120" wide drop cloth fabric joined with a single flat seam at center.
 3. **Coat in subdued indoor light.** Lay fabric flat on clean plastic sheeting. Apply sensitiser with a foam roller or large Japanese hake brush. Work in two passes (horizontal, then vertical crossing) for even coverage.
 4. **Dry completely** in a dark or very dimly lit space before loading. A fan speeds drying; heat is acceptable (sensitiser is stable when dry).
 5. **Mount in camera:** Stretch fabric over a rigid backing panel — ACM (aluminum composite) sheet or plywood — using a staple gun or binder clips on a timber batten frame. The backing panel attaches to the structural ribs of the container interior. Fabric must be taut and flat; wrinkles will show in the final image.
@@ -340,11 +340,11 @@ Ilford Multigrade V RC Deluxe is the industry-standard enlarging paper and the m
 
 ### Coverage Calculation
 
-Active image plane: 4499mm wide × 2388mm tall.  
-Paper roll width: 1270mm (50").  
-Number of strips needed: ⌈4,499 / 1,270⌉ = **4 strips** (covers 5080mm — 581mm spare).  
-Each strip height: 2388mm (~7.84 ft), cut from the 30.5 m roll.  
-Strips from one roll: ⌊30,500 / 2,388⌋ = **12 strips per roll** → **3 complete images per roll** (with ~1300mm of roll remaining).
+Active image plane: 4,499mm wide × 2,388mm tall.  
+Paper roll width: 1,270mm (50").  
+Number of strips needed: ⌈4,499 / 1,270⌉ = **4 strips** (covers 5,080mm — 581mm spare).  
+Each strip height: 2,388mm (~7.84 ft), cut from the 30.5 m roll.  
+Strips from one roll: ⌊30,500 / 2,388⌋ = **12 strips per roll** → **3 complete images per roll** (with ~1,300mm of roll remaining).
 
 ### Material Cost
 
@@ -366,14 +366,14 @@ Floor-tray or in-camera processing required; standard silver gelatin chemistry.
 ### Seam Management
 
 Five vertical strips require four seams across the image. Options:
-1. **Accept seam lines** as a design feature — horizontal bands visible at 1270mm intervals across width.
+1. **Accept seam lines** as a design feature — horizontal bands visible at 1,270mm intervals across width.
 2. **Butt-join on flat backing with black photographic tape** applied to the back; front surface is continuous but slight ridges may be visible.
 3. **Overlap joins in shadow areas** of the composition — position seams deliberately to fall in dark background, minimising visibility.
 4. **Single-emulsion coating** on a seamless substrate (see Liquid Light below) avoids seams entirely.
 
 ### Mounting Method
 
-1. Pre-cut five strips to 2450mm (allowing overlap/trim) in complete darkness or under dark cloth in a light-tight changing tent.
+1. Pre-cut five strips to 2,450mm (allowing overlap/trim) in complete darkness or under dark cloth in a light-tight changing tent.
 2. Lay ACM backing panel flat on the floor (camera interior or adjacent dark space). Adhere strips to backing using repositionable photographic mounting adhesive or double-sided photo-safe tape on the back face.
 3. Butt strips together or overlap by 10mm. Tape reverse side seams with 2" black photographic tape.
 4. Load backing panel into camera, emulsion side inward, and secure to container structural ribs.
@@ -466,7 +466,7 @@ Industrial and medical X-ray film is available in very large sheet formats, unli
 
 | Spec | Value |
 |---|---|
-| Available sizes | Up to 14"×17" (355×432mm) standard medical; industrial film to 36"×48" (914×1219mm) and larger |
+| Available sizes | Up to 14"×17" (355×432mm) standard medical; industrial film to 36"×48" (914×1,219mm) and larger |
 | ISO equivalent | Approximately ISO 400–800 (much faster than paper) |
 | Base | Polyester; dimensionally stable; blue-gray tint |
 | Emulsion | Double-sided silver halide; blue/green sensitive |
@@ -511,7 +511,7 @@ Regardless of process, the image plane requires a flat rigid backing. Corrugated
 ### Recommended Backing System
 
 **Aluminum Composite Material (ACM / Dibond) panels, 3mm thick:**
-- Available in 4×8 ft (1220×2440mm) sheets; approximately 18 sheets needed to tile 116 sq ft
+- Available in 4×8 ft (1220×2,440mm) sheets; approximately 18 sheets needed to tile 116 sq ft
 - ACM is completely flat, dimensionally stable, lightweight (~3 lb/sq ft), and mounts by bolting through panel edge to timber battens or directly to container rib flanges
 - Chemical-resistant (developer, fixer do not damage aluminum face)
 - Cost: ~$40–60 per 4×8 sheet × 18 sheets = **$720–1,080 for the backing system** (one-time infrastructure cost, reusable)

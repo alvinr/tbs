@@ -16,7 +16,7 @@ mixing kilograms of chemistry.
 
 ## Why this matters (not a rounding error)
 
-The active image plane is **<!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm --> mm = 10.74 m²** and is coated **two wet-on-wet
+The active image plane is **<!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm --> mm = 10.74 m²** and is coated **two wet-on-wet
 coats** (§2.5). The per-print chemistry therefore scales as
 `coverage (ml/m²) × 2 coats × 10.74 m² × concentration`. Two of those terms are estimates:
 

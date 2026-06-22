@@ -31,9 +31,9 @@ control it. Scripts should import from `tbs_constants` rather than hardcoding th
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Interior length (long axis X) | 5893mm | `C_LEN` |
-| Interior width (optical depth Y) | 2362mm | `C_WID` |
-| Interior height Z | 2388mm | `C_HGT` |
+| Interior length (long axis X) | 5,893mm | `C_LEN` |
+| Interior width (optical depth Y) | 2,362mm | `C_WID` |
+| Interior height Z | 2,388mm | `C_HGT` |
 
 *Components: corrugated steel long walls, short end walls (cargo door end / far end), roof,
 bamboo floor, corner castings, corner posts, structural corrugation ribs.*
@@ -42,11 +42,11 @@ bamboo floor, corner castings, corner posts, structural corrugation ribs.*
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Pinhole X position (long axis) | 2399mm | `PH_X` |
-| Pinhole center height | 1194mm | `PH_H` |
+| Pinhole X position (long axis) | 2,399mm | `PH_X` |
+| Pinhole center height | 1,194mm | `PH_H` |
 | Pinhole diameter | Ø2.17mm | `PH_D` |
 | f-number | f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> | `PH_FNO` |
-| Focal length | <!-- BEGIN fact:focal_length_mm -->2362<!-- END fact:focal_length_mm -->mm | `PH_F` (= `C_WID`) |
+| Focal length | <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm | `PH_F` (= `C_WID`) |
 
 *Components: wall frame (600×600mm, 6mm steel), pinhole plate (ICP-02 / interchangeable
 Ø50mm SS-302 disc, 0.1mm, Lenox Laser laser-drilled), lens plate, shutter plate and channel.*
@@ -56,15 +56,15 @@ bamboo floor, corner castings, corner posts, structural corrugation ribs.*
 | Parameter | Value | Constant |
 |-----------|-------|----------|
 | Film plane left edge X | 150mm | `FP_X_L` |
-| Film plane right edge X | 4649mm | `FP_X_R` |
-| Film plane width | 4499mm | `FP_W` |
-| Film plane height | 2388mm | `FP_H` |
-| Nominal depth from pinhole wall | 2262mm | `FP_Y` |
+| Film plane right edge X | 4,649mm | `FP_X_R` |
+| Film plane width | 4,499mm | `FP_W` |
+| Film plane height | 2,388mm | `FP_H` |
+| Nominal depth from pinhole wall | 2,262mm | `FP_Y` |
 | Minimum carriage depth | 100mm | `FP_Y_MIN` |
 | Left rail X | 150mm | `RAIL_X_L` |
-| Right rail X | 4649mm | `RAIL_X_R` |
-| Rail span | 4499mm | `RAIL_SPAN` |
-| Rail length (Y travel) | 2200mm | `RAIL_LEN` |
+| Right rail X | 4,649mm | `RAIL_X_R` |
+| Rail span | 4,499mm | `RAIL_SPAN` |
+| Rail length (Y travel) | 2,200mm | `RAIL_LEN` |
 | Max tilt (single-axis, Option A) | ±40° | `MAX_TILT_DEG` |
 | Max swing (single-axis, Option A) | ±28° | `MAX_SWING_DEG` |
 | Cross-slide Z travel (tilt) | ~280mm | `XSLIDE_Z_TRAVEL` |
@@ -86,7 +86,7 @@ so the old ±42°/±25.7° stretch-mechanism stops and the compound-twist config
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Pinhole X (board centers here) | 2399mm | `PH_X` |
+| Pinhole X (board centers here) | 2,399mm | `PH_X` |
 | Max tilt/swing | ±5.3° | `FRONT_BOARD_MAX_DEG` (computed from arm + travel) |
 | Resolution | <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click | `FRONT_BOARD_CLICK_DEG` (computed from screw + detents) |
 
@@ -104,7 +104,7 @@ bellows (4-pleat, Ø290 ID → Ø360 OD).*
 | Housing radius | 450mm | `DRUM_R` / `LT_HOUSING_R` |
 | Drum outer radius (rotating) | 432mm | `LT_DRUM_OR` |
 | Opening arc (each) | 80° | `LT_OPENING_DEG` |
-| Height | 2200mm | `DRUM_H_LT` |
+| Height | 2,200mm | `DRUM_H_LT` |
 
 *Components: fixed Ø900 aluminum housing with two 80° openings (exterior + interior-onto-walkway,
 180° apart); single-opening C-shell rotating drum (Ø864, ~Ø850 bore, NO internal fins) — light-tight
@@ -116,8 +116,8 @@ neoprene compression strip. Replaces the failed Ø750 4-fin drum.*
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Panel width | 2362mm | `C_WID` |
-| Panel height | 2388mm | `C_HGT` |
+| Panel width | 2,362mm | `C_WID` |
+| Panel height | 2,388mm | `C_HGT` |
 | Panel thickness | 120mm | — (hardcoded in scripts) |
 
 *Components: 50×50mm RHS steel frame, 4mm PP plastic skins (both faces; 18mm-ply Fan-B mount band), 20mm EPDM compression
@@ -133,9 +133,9 @@ B2 punch-out bay.*
 |-----------|-------|----------|
 | Fan diameter (both fans) | 150mm | `FAN_DIAM` |
 | Panel fan body depth | 50mm | `FAN_BODY_D` |
-| Fan A center height AFF (below X1, in corridor) | 2000mm | `FAN_A_H` |
+| Fan A center height AFF (below X1, in corridor) | 2,000mm | `FAN_A_H` |
 | Fan B center height AFF (low) | 600mm | `FAN_B_H` |
-| Fan A Yd position (below the X1 fill port, plumbing corridor) | 1181mm | `FAN_A_YD` |
+| Fan A Yd position (below the X1 fill port, plumbing corridor) | 1,181mm | `FAN_A_YD` |
 | Fan B Yd position (near pinhole wall, near corner — rev9/B2 swap) | 365mm | `FAN_B_YD` |
 | Baffle duct depth | 300mm | `DUCT_DEPTH` |
 | Baffle duct height | 200mm | `DUCT_HEIGHT` |
@@ -143,8 +143,8 @@ B2 punch-out bay.*
 | Fan B shadow margin (from cone) | 40mm | `FAN_B_MARGIN` |
 
 *Components: Fan A — 150mm compact axial panel fan, sealed end wall (X=C_LEN), exhaust, Circuit A,
-in the 270mm plumbing corridor directly **below the X1 fill port** (Yd=1181, Z=2000mm) — the only
-full-height clear channel past the v2 1000L direct-stack (totes reach Z=2336mm in both flanking
+in the 270mm plumbing corridor directly **below the X1 fill port** (Yd=1181, Z=2,000mm) — the only
+full-height clear channel past the v2 1,000L direct-stack (totes reach Z=2,336mm in both flanking
 columns; the old high spot at Yd1996/Z2200 was buried — RESOLVED, see [[project-fan-a-ibc-clash]]). Fan B —
 identical fan, mounted on hinged panel (near corner zone by the pinhole wall, Yd=365mm — rev9/B2
 swap so its conduit runs along the pinhole wall near the pivot side), intake,
@@ -162,19 +162,19 @@ flexible coiled cable (with swing slack) from the fixed door frame (Circuit B).*
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Duct penetration X | 1000mm | `EVAP_DUCT_X` |
-| Duct penetration Z | 1900mm | `EVAP_DUCT_Z` |
+| Duct penetration X | 1,000mm | `EVAP_DUCT_X` |
+| Duct penetration Z | 1,900mm | `EVAP_DUCT_Z` |
 | Duct diameter | 200mm | `EVAP_DUCT_D` |
 | Cooler body W×D×H | 559×305×711mm | `EVAP_W`/`EVAP_D`/`EVAP_H` |
-| Stow left edge X | 1450mm | `EVAP_STOW_X` |
-| Inverter mount X / Z | 1910 / 1180mm | `INVERTER_X`/`INVERTER_Z` |
+| Stow left edge X | 1,450mm | `EVAP_STOW_X` |
+| Inverter mount X / Z | 1910 / 1,180mm | `INVERTER_X`/`INVERTER_Z` |
 | Inverter W×H×D | 120×235×72mm | `INVERTER_W`/`INVERTER_H`/`INVERTER_D` |
 
 *Component: **Hessaire MC18M** evaporative cooler (120V AC, <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W, 1300 CFM run on low, 4.8 gal
 reservoir), ground-placed outside on Circuit E. Powered by an **interior 12V→120V pure-sine
 inverter (Victron Phoenix 12/375 GFCI)** wall-mounted below the EP; ~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on the 12V bus. Cooled
 air enters through a Ø200mm insulated flex duct to a wall penetration with light-safe baffle at
-Z=1900mm. Replaces the fictional "Portacool Jetstream 110 12V DC" ([dimension audit](component-dimension-audit.md)).
+Z=1,900mm. Replaces the fictional "Portacool Jetstream 110 12V DC" ([dimension audit](component-dimension-audit.md)).
 AC isolation/GFCI/equipotential-bonding: [Electrical §7.6](electrical-report.md#ac-safety).*
 
 *Reports: [Ventilation & Cooling](ventilation-report.md) §5 (cooler spec + duct + stowage); [Electrical](electrical-report.md) §3/§5.4/§7.6 (Circuit E inverter, power panel AC outlet, AC safety).*
@@ -185,10 +185,10 @@ AC isolation/GFCI/equipotential-bonding: [Electrical §7.6](electrical-report.md
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Electrical panel left edge X | 1910mm | `EP_X` |
+| Electrical panel left edge X | 1,910mm | `EP_X` |
 | Panel width | 300mm | `EP_W` |
-| Panel height range | 900–1500mm | `EP_H_LO`, `EP_H_HI` |
-| Battery bank left edge X | 1810mm | `BA_X` |
+| Panel height range | 900–1,500mm | `EP_H_LO`, `EP_H_HI` |
+| Battery bank left edge X | 1,810mm | `BA_X` |
 | Battery bank width | 500mm | `BA_W` |
 | Battery bank height range | 100–600mm | `BA_H_LO`, `BA_H_HI` |
 
@@ -206,10 +206,10 @@ C — water pumps P-01–P-04 (P-03 in IBC corridor); D — safelight vestibule;
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Left edge X | 4800mm | `PUMP_X` |
+| Left edge X | 4,800mm | `PUMP_X` |
 | Width | 780mm | `PUMP_W` |
-| Height range | 900–1400mm | `PUMP_H_LO`, `PUMP_H_HI` |
-| Depth from pinhole wall | 1046mm | `PUMP_YD` (= `CORRIDOR_YD_NEAR`) |
+| Height range | 900–1,400mm | `PUMP_H_LO`, `PUMP_H_HI` |
+| Depth from pinhole wall | 1,046mm | `PUMP_YD` (= `CORRIDOR_YD_NEAR`) |
 | Protrusion from panel | 127mm | `PUMP_D` |
 
 *Components: 1" HDPE header + isolation valves, 4× 12V pumps on equipment panel (P-01 Blue spray bar supply,
@@ -222,15 +222,15 @@ Mounted on 18mm marine ply equipment panel at Yd=1,046 (near IBC column face), i
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| IBC column left edge X | 4674mm | `IBC_COL_X` |
-| IBC footprint width | 1219mm | `IBC_W` |
-| IBC footprint depth | 1016mm | `IBC_D` |
-| Single tote height (1000L caged) | 1168mm | `IBC_H_1000` |
-| Stacked height (2× 1000L, direct-stack) | 2336mm | `IBC_H_STK_1000` |
+| IBC column left edge X | 4,674mm | `IBC_COL_X` |
+| IBC footprint width | 1,219mm | `IBC_W` |
+| IBC footprint depth | 1,016mm | `IBC_D` |
+| Single tote height (1,000L caged) | 1,168mm | `IBC_H_1000` |
+| Stacked height (2× 1,000L, direct-stack) | 2,336mm | `IBC_H_STK_1000` |
 | Near-column front depth from pinhole wall | 30mm | `BLUE_IBC_Y` |
-| Far-column front depth from pinhole wall | 1316mm | `IBC_FAR_Y` |
+| Far-column front depth from pinhole wall | 1,316mm | `IBC_FAR_Y` |
 
-*Components (`ibc-reconfig-v2`): **4× 1000L caged composite IBC totes** (1219×1016×1168), **direct-stacked**
+*Components (`ibc-reconfig-v2`): **4× 1,000L caged composite IBC totes** (1219×1016×1168), **direct-stacked**
 cage-on-cage in two columns (near: Brown developer + Blue #1; far: Waste + Blue #2) — Blue-on-top layout
 kept. Held by a **restraint FRONT PORTAL** at the corridor mouth (50×50×3 RHS uprights + 50×20×3 front
 retaining bars in the 25mm tote↔film-rail gap + Simpson wall joist-hangers + D-ring lashing + floor feet) —
@@ -246,7 +246,7 @@ for the few generators not yet repointed (overview Blue-trunk shelf, walkway/wei
 | Brown IBC front depth | 30mm | `BROWN_IBC_Y` |
 | IBC dimensions | same as Blue | `IBC_W`, `IBC_D`, `IBC_H_600` |
 
-*Components: 1× 1000L caged composite IBC (Y-stacked behind Blue stack, right end zone),
+*Components: 1× 1,000L caged composite IBC (Y-stacked behind Blue stack, right end zone),
 DN50 butterfly valve (S60×6) + S60×6-to-1" NPT adapter at drain outlet,
 integrated 3-stage Big Blue filter unit (50μm → 5μm → GAC carbon, wall-mounted, no separate skid frame), Shurflo P-02,
 3-way diverter valves 3W-DV-01 and 3W-DV-02, pH test point.
@@ -256,11 +256,11 @@ Filled via side-entry near the top from the P-04 tray-sump pickup pump (no top-c
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Waste IBC front depth | 1316mm | `WASTE_IBC_Y` |
-| IBC far column start Y | 1316mm | `IBC_FAR_Y` |
+| Waste IBC front depth | 1,316mm | `WASTE_IBC_Y` |
+| IBC far column start Y | 1,316mm | `IBC_FAR_Y` |
 | Waste IBC color code | Black | `C_WASTE_IBC` |
 
-*Components: 1× 1000L caged composite IBC tote (4th IBC in 2×2 stack, right end zone),
+*Components: 1× 1,000L caged composite IBC tote (4th IBC in 2×2 stack, right end zone),
 DN50 butterfly valve (S60×6) + S60×6-to-1" NPT adapter at drain outlet,
 2" NPT bulkhead fittings for external drain/fill (X4), reinforcing plates for external ports,
 P-03 waste evacuation pump (mounted in IBC plumbing corridor on X4 drain run). Filled via side-entry near the top from the filter reject line (no top-cap access).*
@@ -270,7 +270,7 @@ P-03 waste evacuation pump (mounted in IBC plumbing corridor on X4 drain run). F
 | Parameter | Value | Constant |
 |-----------|-------|----------|
 | Left end zone boundary (right edge) | X = 150mm | `ZONE_L_END` |
-| Right end zone boundary (left edge) | X = 4649mm | `ZONE_R_START` |
+| Right end zone boundary (left edge) | X = 4,649mm | `ZONE_R_START` |
 | Optical cone left at depth Y | `PH_X − (PH_X − FP_X_L) × Y / FP_Y` | `cone_left(y)` |
 | Optical cone right at depth Y | `PH_X + (FP_X_R − PH_X) × Y / FP_Y` | `cone_right(y)` |
 
@@ -284,7 +284,7 @@ Equipment in the IBC corridor (X > ZONE_R_START) at any Yd is shadow-free.*
 | Parameter | Value | Constant |
 |-----------|-------|----------|
 | Transport swing angle | 56° | `SWING_LOCK_DEG` |
-| Pivot post position | X=175mm, Yd=2287mm | `PIVOT_X`, `PIVOT_YD` |
+| Pivot post position | X=175mm, Yd=2,287mm | `PIVOT_X`, `PIVOT_YD` |
 | Pivot post | Ø89×8mm CHS (reused film far-left upright) | `PIVOT_POST_OD`, `PIVOT_POST_T` |
 | Lock mechanism | top + bottom wall stays (hook + eye + turnbuckle) | — |
 | Swung door clearance | +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm -->mm (true min X, bay front-right corner) | — |
@@ -301,14 +301,14 @@ supersedes the HGR20 slide carriage + ceiling-rail suspension.*
 | Parameter | Value | Constant |
 |-----------|-------|----------|
 | Tray left edge X | 170mm | `PROC_TRAY_X_L` |
-| Tray right edge X | 4629mm | `PROC_TRAY_X_R` |
-| Tray width | 4459mm | `PROC_TRAY_W` |
-| Tray depth | 2200mm | `PROC_TRAY_D` |
+| Tray right edge X | 4,629mm | `PROC_TRAY_X_R` |
+| Tray width | 4,459mm | `PROC_TRAY_W` |
+| Tray depth | 2,200mm | `PROC_TRAY_D` |
 | Tray near edge Yd | 80mm | `PROC_TRAY_YD_NEAR` |
-| Tray far edge Yd | 2280mm | `PROC_TRAY_YD_FAR` |
+| Tray far edge Yd | 2,280mm | `PROC_TRAY_YD_FAR` |
 | Rim height | 50mm | `PROC_TRAY_RIM` |
 | Dual-axis pitch | 1:200 (10mm fall) | `PROC_TRAY_PITCH` |
-| Sump X | 2399mm | `PROC_TRAY_DRAIN_X` |
+| Sump X | 2,399mm | `PROC_TRAY_DRAIN_X` |
 | Sump Yd | 80mm | `PROC_TRAY_DRAIN_YD` |
 | Sump dimensions | 150 x 100 x 20mm | `PROC_TRAY_SUMP_W/D/Z` |
 
@@ -333,10 +333,10 @@ Permanently installed — no removal for transport mode conversion.*
 | Container rib spacing | 457mm | `CONTAINER_RIB_SPACING` |
 | Angle iron mounting rail | 50×50×5mm | `WALKWAY_ANGLE_IRON` |
 | Near walkway Yd | 0mm | `WALKWAY_NEAR_YD` |
-| Far walkway Yd | 2062mm | `WALKWAY_FAR_YD` |
+| Far walkway Yd | 2,062mm | `WALKWAY_FAR_YD` |
 | Left walkway X | 170mm | `WALKWAY_LEFT_X` |
-| Left walkway unsupported span | 1762mm | `WALKWAY_LEFT_SPAN` |
-| Right walkway X | 4329mm | `WALKWAY_RIGHT_X` |
+| Left walkway unsupported span | 1,762mm | `WALKWAY_LEFT_SPAN` |
+| Right walkway X | 4,329mm | `WALKWAY_RIGHT_X` |
 
 *Components: Near/far: 15mm grating on 8mm gusset brackets bolted to corrugated wall ribs.
 Right (rev12): cantilever rectangle — a closed 40×40×3mm SHS frame (2 long beams at X=4329/4629 +
@@ -413,7 +413,7 @@ scripts) so the 3D models stay in sync with the drawings — see the Workflow be
 |---|---|---|---|
 | **overview** | `src/models/generate_sketchup_model.py` | `models/overview.skp` + `src/models/overview.rb` | **1–18 (all)** — built as 25 tagged components (incl. lighting/wiring, spray-bar plumbing, fans, water hookups, the **ground solar array** (`solar_array()` + `tilted_slab()` — shared with the electrical model on a `Solar Array` tag), the `Combined Plate` tag). Its `spray_bar()` **reuses the spray-bar model's builders** (`generate_spraybar_model.build_beam/build_carriages/build_feed_pole`), and `light_trap_drum()` + `light_trap_frame()` **reuse the light-trap model's `lt.drum()` + `lt.door_frame()`** (the door frame + top/bottom seal lips that block light) — so all stay in sync; rebuild overview whenever the spray-bar **or** light-trap model changes. Its `walkways()` includes the wall-cantilevered **gusset brackets** (`walkway_brackets()`: near & far long walls at 457mm rib centers — standard 8mm/150mm-leg/300mm-arm with 3× M12, the four widened EP/battery-zone brackets 10mm/200mm-leg/500mm-arm with 4× M12, per Sheet 7) that carry the near/far decks, AND the **left floor-leg cantilever brackets** (foot + 50×50 post + arm to X470, 3 extended to X770 on the punch-out), added by **reusing the walkway model's shared `left_floor_cantilevers()`** (lazy import) so the support design can't drift between the two models. **NB:** `walkway_brackets()` is still a parallel copy of the walkway model's `_cantilever_parts()` — keep the two in sync (see [[project-walkway-bracket-duplication]]). **NB2:** `electrical()` now draws the **EP enclosure internals** (ghosted IP65 shell + MPPT + Blue Sea 5026 fuse stack A–G + +/− busbars + m-Series disconnect + disconnect→busbar link) as a **parallel copy of the electrical model's `power_core()`** — keep the two in sync. The **BR film-plane rail anchor** (combined corner plate, shared with the walkway right beam) is drawn ONCE on its own **`Combined Plate`** tag (`fp_combined_corner_plates()`) and included in BOTH the **Film Plane & Pinhole** and **Walkways** scenes — so it reads with either subsystem without duplicating/z-fighting; in the overview `walkways()` calls `right_walkway_cantilever(include_combined=False)` to omit it there, while walkway.skp keeps it inline. **Scenes:** Overview (all, labels off) + **Labeled** — same view with in-model `add_text` callouts on the major system components (`overview_labels()`: 10 anchored to each instance's bounds top-center + 6 **point-anchored** via `OVERVIEW_POINT_LABELS` for items not a single instance — **SOLAR ARRAY** (exterior), **FAN A** (IBC end), **FAN B** (door end) [the two live in one "Fans A & B" component spanning both ends], the **BATTERY BANK** [inside the Electrical component], and the **CCT-E INVERTER**; on a `Labels` tag shown only in this scene; see [[feedback-3d-model-labels]]). The leader format is `(Δx,Δy,Δz)` mm so wall-mounted callouts (pinhole, spray bar) pull OUT toward the viewer clear of the container — keep Δz modest so the label isn't clipped past the geometry-framed camera. Plus 6 grouped subsystem scenes (labels off). |
 | **spray-bar** | `src/models/generate_spraybar_model.py` | `models/spraybar.skp` + `src/models/spraybar.rb` | Spray-bar gantry detail — beam (**spans the full tray width, `PROC_TRAY_X±30`, matching the 2D `generate_spray_bar_diagram.py`; bugfix 2026-06-06 — the 3D beam had used the narrower `PROC_OPEN_X` print zone**) + housed ¾" LDPE pipe + 26 flat-fan nozzles (150mm pitch, in the open zone), wheel carriages (2 wheels/carriage, curved saddle axle clamps, top/bottom beam clamp plates), feed pole + ball joint with **distribution manifold + 7 irrigation feed tubes** into the poly pipe, **processing tray** (floor + rim + sump). The two carriages are on their own **Carriage L / Carriage R** tags, and the small tray-floor reference patch is on its own **Tray Ref** tag (shown only in the carriage-only scenes — the Combined / Processing-Tray scenes have the real tray, so the ref patch no longer doubles up under the beam). **7 scenes:** Beam, Carriage Assembly, **One Carriage** (Carriage L only — no beam/tray, with a perpendicular close-up camera — `cdir`/standoff, not zoom_extents), Pole & Ball Joint, Processing Tray, Combined, **Labeled** (`spraybar_labels()` — `add_text` callouts; beam/carriage/nozzles/pole/manifold point-anchored; see [[feedback-3d-model-labels]]). The scene loop takes an optional `[x,y,z,standoff]` close-up target. **NB: avoid `"` in label text** — an unescaped quote closes the emitted Ruby string and silently corrupts the whole rebuild (hangs the send). Reads `SPRAY_BAR_*` and `PROC_TRAY_*` constants. |
-| **ibc-stack** | `src/models/generate_ibc_model.py` | `models/ibc-stack.skp` + `src/models/ibc-stack.rb` | **v2 (`ibc-reconfig-v2`) — REBUILT 2026-06-14:** this is **THE canonical IBC 3D model** (the Sketchfab embed in `ibc-stacking-report.md`). Because it reuses the `ov` builders it now carries the full v2 design — `ov.ibc_rack()` = restraint FRONT PORTAL + exterior wall backing plates (was a load-bearing platform), `ov.equipment_panel()` pulled **forward** to the corridor mouth (film-safe, X>4649), and `ov.water_plumbing()` = Blue **side-entry** fill + the full recycle loop (sump→IBC-3, filter→IBC-2, reject→IBC-4, all side-entry near the top) + pumped X3/X4 drains. Re-sent + **`.skp` saved 2026-06-14** (the `ibc_labels()` panel-equipment anchors were moved forward to X≈4814–4854 to track the panel; Sketchfab re-upload is the manual step). IBC tote stacking arrangement at the IBC end. Reuses Overview builders: `ov.ibc_stack()` (4× 1000L totes), `ov.ibc_rack()` (v2 restraint front portal), `ov.equipment_panel()` (pump/filter), `ov.water_plumbing()`, `ov.water_hookups()` (exterior wall). Container is a low-alpha ghost. 5 tags (Context / IBC Tanks / IBC Frame / Plumbing & Panel / **Walkway Cantilever**) + a `Labels` tag. The **Walkway Cantilever** component (`ov.ibc_cantilever_arms()` — the 2 right-walkway support arms + upright clamps + M12 bolts that attach to the corridor uprights, rev12; single-sourced with the overview/walkway models). **5 scenes:** IBC Tanks, **IBC Frame** (the frame + the attached walkway cantilever arms — the `Walkway Cantilever` tag rides in this scene), Plumbing & Panel, Combined, **Labeled** (`ibc_labels()` — `add_text` callouts on the `Labels` tag, shown only in this scene; 19 callouts split by side. **Container/front side:** the near-column totes (BROWN developer + BLUE #1), the **SUMP PICKUP** riser, the **TO SPRAY BAR** Blue feed, **IBC FRAME**, and the **wet-end panel equipment** pulled out the front laid out as the panel reads — two pump columns (left ACC-01/P-04/P-01, right P-05/P-03/P-02) + three filters F1/F2/F3 below (pumps/filters/accumulator only, no pipes/valves). **Sealed-end side** (right-hand column): the far-column totes (WASTE + BLUE #2) plus the exterior bulkhead ports **X1** (fresh fill), **X3** (Brown drain-out), **X4** (Waste drain-out). Per the project rule every .skp gets a Labeled scene — see [[feedback-3d-model-labels]]). Rebuild whenever those `ov` builders or the IBC/plumbing constants change. |
+| **ibc-stack** | `src/models/generate_ibc_model.py` | `models/ibc-stack.skp` + `src/models/ibc-stack.rb` | **v2 (`ibc-reconfig-v2`) — REBUILT 2026-06-14:** this is **THE canonical IBC 3D model** (the Sketchfab embed in `ibc-stacking-report.md`). Because it reuses the `ov` builders it now carries the full v2 design — `ov.ibc_rack()` = restraint FRONT PORTAL + exterior wall backing plates (was a load-bearing platform), `ov.equipment_panel()` pulled **forward** to the corridor mouth (film-safe, X>4649), and `ov.water_plumbing()` = Blue **side-entry** fill + the full recycle loop (sump→IBC-3, filter→IBC-2, reject→IBC-4, all side-entry near the top) + pumped X3/X4 drains. Re-sent + **`.skp` saved 2026-06-14** (the `ibc_labels()` panel-equipment anchors were moved forward to X≈4814–4854 to track the panel; Sketchfab re-upload is the manual step). IBC tote stacking arrangement at the IBC end. Reuses Overview builders: `ov.ibc_stack()` (4× 1,000L totes), `ov.ibc_rack()` (v2 restraint front portal), `ov.equipment_panel()` (pump/filter), `ov.water_plumbing()`, `ov.water_hookups()` (exterior wall). Container is a low-alpha ghost. 5 tags (Context / IBC Tanks / IBC Frame / Plumbing & Panel / **Walkway Cantilever**) + a `Labels` tag. The **Walkway Cantilever** component (`ov.ibc_cantilever_arms()` — the 2 right-walkway support arms + upright clamps + M12 bolts that attach to the corridor uprights, rev12; single-sourced with the overview/walkway models). **5 scenes:** IBC Tanks, **IBC Frame** (the frame + the attached walkway cantilever arms — the `Walkway Cantilever` tag rides in this scene), Plumbing & Panel, Combined, **Labeled** (`ibc_labels()` — `add_text` callouts on the `Labels` tag, shown only in this scene; 19 callouts split by side. **Container/front side:** the near-column totes (BROWN developer + BLUE #1), the **SUMP PICKUP** riser, the **TO SPRAY BAR** Blue feed, **IBC FRAME**, and the **wet-end panel equipment** pulled out the front laid out as the panel reads — two pump columns (left ACC-01/P-04/P-01, right P-05/P-03/P-02) + three filters F1/F2/F3 below (pumps/filters/accumulator only, no pipes/valves). **Sealed-end side** (right-hand column): the far-column totes (WASTE + BLUE #2) plus the exterior bulkhead ports **X1** (fresh fill), **X3** (Brown drain-out), **X4** (Waste drain-out). Per the project rule every .skp gets a Labeled scene — see [[feedback-3d-model-labels]]). Rebuild whenever those `ov` builders or the IBC/plumbing constants change. |
 | **walkway** | `src/models/generate_walkway_model.py` | `models/walkway.skp` + `src/models/walkway.rb` | Processing-tray **perimeter walkway + how it's held up**, separated so the structure reads apart from the decks. 6 tagged components: **Walkways** (near + widened + far + left removable decks + drum-exit punch-out + the **right walkway grate** — `ov.right_walkway_grate()`, moved onto this tag so the Right Cantilever scene reads as bare structure); **Right Cantilever** (the IBC-end cantilever rectangle — `ov.right_walkway_cantilever(include_grate=False)`: closed 40×40×3 SHS frame (2 long + 2 end beams) + 2 center arms off the IBC corridor uprights (half-lapped at the long beams) + wall cleats at the left corners + combined corner plates at the right corners shared with the bottom film rail BR (`ov.fp_combined_corner_plate`), with a ghost of the IBC uprights + BR rail for context — the GRATE is on the Walkways tag, not here); **Cantilevers** (near/far wall-cantilevered gusset brackets carrying the near/far decks, with the **exterior** detail — reinforcing plate + through-bolts, hex heads outside; standard brackets 8mm/150mm-leg/300mm-arm with **3× M12** triangular, the four widened EP/battery-zone brackets (near, X 1155–2629) 10mm/200mm-leg/500mm-arm with **4× M12** rectangular — matching Sheet 7); **Left Support** (removable lift-out grate on **5 floor-leg cantilever brackets** bolted to bare floor outside the tray — foot + 50×50 post + arm Z75–115 to X470, 3 extended to X770 on the punch-out, passing 15mm over the spray bar; enabled by the +50mm walkway raise); **Processing Tray** (reuses `ov.processing_tray()`); plus a **Cantilever Types** tag/component — ONE of each unique wall-support bracket built side-by-side on the near wall by `cantilever_types()`: STANDARD + WIDENED cantilevers (reuse the extracted `_cantilever_parts()` helper that also builds the in-situ `cantilevers()`) and the **FLOOR-LEG CANTILEVER** (`_floor_cant_type_parts()`, the same bracket `left_support()` builds — the left removable walkway's support, **rev 2026-06-07**: a foot plate + 50×50×3 SHS post on bare floor outside the tray + an arm (Z75–115, 40mm deep) reaching the grate inner edge X470, extended to X770 on the 3 punch-out brackets, passing 15mm over the floor-level spray bar — enabled by the +50mm walkway raise. Geometry from `LEFT_WK_CANT_*` constants; matches 2D walkway Sheet 6 / Detail D). **PLUS the rev12 right-walkway support brackets** (catalog stations X6000/7000/8000): the **WALL CLEAT** (`ov._rwk_wall_cleat`, left corners), the **COMBINED CORNER PLATE** (`ov.fp_combined_corner_plate` with a `cx` override, right corners — shared with the BR film rail), and the **CENTER CANTILEVER ARM** (`_rwk_arm_type_parts`, off an IBC corridor upright). Shown only in the Cantilevers scene. Container is a low-alpha ghost so the exterior braces + bolt-throughs show. **7 scenes:** **Combined**, **Labeled** (`walkway_labels()` — `add_text` callouts on a `Labels` tag, decks/cantilevers/support point-anchored since they're paired/perimeter; camera pulls back `zoom(0.72)`; see [[feedback-3d-model-labels]]), **Walkway** (all decks), **Near/Far Cantilevers** (the brackets in situ), **Right Cantilever** (only the right walkway support — near/far/left `Walkways` tag off), **Left Support**, and **Cantilevers** (one of each unique bracket type isolated with the wall hidden + a per-scene close-up camera + type-spec callouts on the `Cantilever Types` tag, ordered left→right: the left removable walkway's **floor-leg cantilever** (50×50 post on bare floor + arm Z75–115 to X470, extended to X770 on the punch-out), the **standard** cantilever (8mm/150/300/3×M12), the **widened** cantilever (10mm/200/500/4×M12), and the three rev12 **right-walkway brackets** — wall cleat, combined corner plate, center cantilever arm — with the camera re-centered + pulled back to frame the full row). Reads `WALKWAY_*`, `PROC_TRAY_*`, `LEFT_WK_*`. The floor-leg cantilever design (rev 2026-06-07, with the +50mm walkway raise + panel/drum + film-plane-bottom raise) is fully propagated to both 3D models (re-sent), the 2D `generate_walkway_diagram.py` (Sheets 1/4/5/6/9), master-shopping-list, and project-cost-breakdown. |
 | **film-plane** | `src/models/generate_film_plane_model.py` | `models/film-plane.skp` + `src/models/film-plane.rb` | Film plane + **tilt/swing mechanism — OPTION A** (chosen 2026-06-06; replaced the old stretching/U-joint 4-corner DC). The film is a **FIXED-SIZE rigid rectangle** (FP_W wide × HF=2188 rail-to-rail) that only changes ANGLE; each corner's existing **HGR20 rail + leadscrew** (depth/focus) gains a **2-axis X-Z cross-slide + spherical rod-end** that absorbs the rigid-rotation arc travel. **DYNAMIC COMPONENT** "Film Plane": click (Interact tool) → `ANIMATE("pose",0,1)` between **FLAT** (pose 0, vertical at mid-rail depth) and **TILT 20°/SWING 15°** (pose 1). Option A's plane motion *is* a genuine rigid rotation, so the DC reproduces it **exactly** (single component, geometry direct, custom `pose` + same-component `_rotx_formula="20*pose"`/`_rotz_formula="15*pose"`, single `onclick`, `redraw_with_undo` AFTER commit). The **carriages + rod-ends travel WITH the plane** (built into the DC); the **rails + leadscrews stay static** — at the posed extreme the carriages necessarily leave the rails (the rigid-DC can't keep them on AND extend the slides; the default flat state reads connected). **The X/Z cross-slides are the NON-rigid part a DC can't animate**, so they're shown **statically with labels** in the non-interactive **"Corner detail (TR)"** scene (in-model `add_text` callouts on a `Labels` tag — see [[feedback-3d-model-labels]]). **Design note:** a rigid plane can't reach the old ±42°/±25.7° stops — at those angles a corner sweeps ~3.4 m of depth (through both end walls); practical envelope **tilt≤20°/swing≤15° combined**. **NB: DC interactivity is SketchUp-app only — does NOT carry to Sketchfab embeds; scene-tab cameras mis-frame in some builds → render via direct camera.** Reuses `ov.processing_tray()` + helpers; ghost-container context. **rev12:** the BR rail anchors via `ov.fp_combined_corner_plate` (shared with the right walkway, BR saddle skipped), and the **Combined view shows the IBC walkway cantilever arms** (`ov.ibc_cantilever_arms()` on a labeled `IBC Cantilever` tag — just the arms + upright clamps + bolts, NO IBC stack/frame). Reads `FP_*`, `RAIL_*`, `FP_ANGLE_LEG`, `PROC_TRAY_*`; the example DC pose (20°/15°) is **local** to the generator, but the Option-A envelope (`MAX_TILT_DEG`=40 / `MAX_SWING_DEG`=28) + cross-slide constants, the 2D `generate_film_plane_mechanism.py` sheets, the film-plane report, master-shopping-list and project-cost-breakdown were all **cascaded (done 2026-06-06)**. 3 scenes (Combined, No Container, Corner detail TR). 3D companion to 2D `generate_film_plane_mechanism.py`. |
 | **lighttrap** | `src/models/generate_lighttrap_model.py` | `models/lighttrap.skp` + `src/models/lighttrap.rb` | **Single interactive cargo-door-end model** (rev10 — the cargo panel + drum SWING 56° about a vertical Ø89 CHS pivot post; consolidates the former separate operating + transport models into one .skp via Dynamic Components). **Static parts:** ghosted container stub (ends at the door plane X=0 so the bay/drum/doors read as protruding beyond it), fixed RHS **door frame** (`door_frame()` + housing-surround EPDM), the **fixed pivot axle** (`axle()` — Ø89 CHS post + thrust collar + Ø220 thrust / Ø120 journal bearings), the two **FIXED panel strips** (`near_leaf()` Yd0–180 + `far_leaf()` at the pivot, each with perimeter EPDM + the vertical cut seal), the **removable left film-plane rails** on drop-in **saddles** (`_rail_saddle()`), **wall anchors** + stay eyes (`wall_anchors()`), and partial **processing tray**. **Two Dynamic Components** (click with SketchUp's Interact tool): **(1) Panel Swing** — the swinging assembly (the swinging center+corner panel leaves + `pivot_link()` hub + 4 Southco latches, B2 **punch-out bay** `bay()` offsetting the drum to X=−400, the **housed revolving-door light lock** Ø900 housing + C-shell drum [the rotor is **baked static** as `drum_rotor()` so the nested DC doesn't reset] + seals + grab rail, **Fan B**, the **drum support cage** `drum_frame()`, the stay hooks `frame_hooks()`, **plus a nested "Lift-out Walkways" child** — `liftout_walkways()` builds the amber removable left walkway + drum-exit punch-out + near door-end band at world coords, carrying `_hidden_formula = "PanelSwing!swing>0.5"` so the lift-out decks **disappear once the panel swings past half-open** (lifted out for transport) and reappear when closed; these were moved out of the static `context()`/`walkways_partial()` so they draw once) animates **RotZ 0↔56°** about the pivot (operating↔transport); **(2) Cargo Doors** — a parent DC whose `shut` attribute drives two leaf children's `RotZ` (`door_leaf_local()`), swinging both ISO leaves 0↔±180° (closed↔open). Fan B **reuses the Overview's shared `fan_duct()`**, and its **flexible connector** is shown: a **static** wall box (`fan_b_box()`, Cct B termination — stays put when the panel swings) plus an orange **curly coil cable** (`fan_b_cable()` → `ov.ruby_coil_cord`) that lives in a **third child DC ("Fan B Cable")** carrying `_hidden_formula = "PanelSwing!swing>0.5"`, so the coil is **shown only when the door is closed** (plugged box→fan) and **hides when the panel swings open** (unplugged for transport) — same soft-cord convention as the overview/electrical models. Reads `DRUM_*`, `PANEL_*`, `FAN_B_*`, `BAY_*`, `PIVOT_X`/`PIVOT_YD`, `SWING_LOCK_DEG`, `PANEL_CUT_YD`. **Requires the Dynamic Components extension** for the click behavior — it does **not** carry to Sketchfab web embeds (those render a static pose). Static parts + 2 DCs, **2 scenes**: the interactive swing scene + a **Labeled** scene (`lighttrap_labels()` / `LIGHTTRAP_LABELS` + `LIGHTTRAP_POINT_LABELS` — `add_text` callouts on a `Labels` tag, drum/Fan B point-anchored since they're nested in the Panel Swing DC; the camera pulls back `zoom(0.62)` so callouts have margin). Per the project rule, every new .skp gets a Labeled scene — see [[feedback-3d-model-labels]]. **Rebuild whenever those constants or the shared builders change.** |

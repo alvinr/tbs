@@ -167,10 +167,10 @@ The pinhole plate is interchangeable. A lens plate can be swapped in for portrai
 
 | Lens | f | Image circle | Used price | Notes |
 |------|---|-------------|-----------|-------|
-| Rodenstock Apo-Ronar 1200mm | f/14 | ~400mm | $400–$1,200 | Primary recommendation — excellent on flat field |
-| Nikkor T 1200mm f/11 | f/11 | ~450mm | $600–$1,500 | One stop faster than Rodenstock |
+| Rodenstock Apo-Ronar 1,200mm | f/14 | ~400mm | $400–$1,200 | Primary recommendation — excellent on flat field |
+| Nikkor T 1,200mm f/11 | f/11 | ~450mm | $600–$1,500 | One stop faster than Rodenstock |
 | Schneider Apo-Symmar 800mm | f/14 | ~500mm | $300–$800 | Shorter focal length; needs separate focus board |
-| Acrylic Fresnel 600×600mm @ 1400mm | f/2.3 | ~600mm | $40–$120 | Cheap artistic option; significant aberrations |
+| Acrylic Fresnel 600×600mm @ 1,400mm | f/2.3 | ~600mm | $40–$120 | Cheap artistic option; significant aberrations |
 
 *Lens is an optional upgrade — not required for pinhole operation. Not included in base total.*
 
@@ -186,7 +186,7 @@ View-camera-style moveable film plane (Option A — a **fixed-size rigid** plane
 
 | Item | Spec | Qty | Unit | Total |
 |------|------|-----|------|-------|
-| Linear guide rail HGR20 | 2200mm | 4 | $45† | $180 |
+| Linear guide rail HGR20 | 2,200mm | 4 | $45† | $180 |
 | Rail carriage HGH20CA | Flanged block | 8 | $18† | $144 |
 | Acme leadscrew ¾"-6 | 8 ft length | 4 | $95† | $380 |
 | Acme nut bronze ¾"-6 | — | 4 | $12† | $48 |
@@ -245,7 +245,7 @@ Line items (Option A, manual handwheel actuation) — **generated from `costing.
 <!-- BEGIN costing:film -->
 | Item | Low | Mid | High |
 |------|-----|-----|------|
-| Linear guide rails HGR20 2200mm (×4) + carriages HGH20CA (×8) | $324 | $324 | $324 |
+| Linear guide rails HGR20 2,200mm (×4) + carriages HGH20CA (×8) | $324 | $324 | $324 |
 | Acme leadscrews ¾"-6 8 ft (×4) + bronze nuts (×4) | $428 | $428 | $428 |
 | Handwheels 8" (×4) + locking collars SS316 (×4) | $188 | $188 | $188 |
 | Corner bracket L-plates, ¼" alum 6×8 (×4) | $80 | $80 | $80 |
@@ -338,7 +338,7 @@ Left walkway: removable lift-out grate on 5 floor-leg cantilever brackets bolted
 | Reinforcing plates, std 100×180×6mm (×14) + wide 120×220×6mm (×4) | $47 | $60 | $73 | Welded to wall exterior behind each bracket |
 | M12×60mm hex bolts + nuts + washers (×58) | $57 | $72 | $87 | 3 per std bracket (42) + 4 per widened (16) |
 | Transition bearing plates, 40×500×5mm flat bar (×2) | $5 | $8 | $10 | Welded to arm top at width transitions |
-| Right walkway cantilever frame, 40×40×3mm SHS (8m) | $28 | $34 | $40 | rev12: closed rectangle (2× 2362mm long + 2× 300mm end beams) + 2× 405mm center arms |
+| Right walkway cantilever frame, 40×40×3mm SHS (8m) | $28 | $34 | $40 | rev12: closed rectangle (2× 2,362mm long + 2× 300mm end beams) + 2× 405mm center arms |
 | Right walkway wall cleats, 8mm steel (×2) | $20 | $28 | $35 | Left corners — back-plate + exterior plate + shelf, through-bolted to the wall |
 | Combined corner plates, 10mm steel (×2) | $50 | $65 | $80 | Right corners — shared with the bottom film rail (replaces the BR rail saddle); interior + exterior plate + 2 seats |
 | M12 through-bolts + nuts/washers (~24) | $30 | $40 | $50 | Wall cleats + combined plates + 2 center-arm U-clamps to the IBC uprights |
@@ -399,7 +399,7 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 
 *Note: development requires only plain cold water — no darkroom chemistry. The §5 water system provides all wash water.*
 
-*Muslin reconciled (2026-06-18): the earlier $1,100 / $900 / $43-per-print figures all over-counted the fabric ~3×. The [shopping list](chemistry-shopping-list.md) derived 6,670 sq ft ÷ 60″(5 ft) wide = "1,340 linear **yards**," but 6,670 ÷ 5 = 1,334 linear **feet** ≈ **445 yd** — feet were labelled yards. Three 60″ strips cover the <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> mm width (×<!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm --> mm tall = ~23.5 ft/print); 50 prints + 15% waste = ~450 yd = **3 × 150-yd rolls ≈ $300 (~$6/print)**. §7.1 and §7.2 now agree on this figure.*
+*Muslin reconciled (2026-06-18): the earlier $1,100 / $900 / $43-per-print figures all over-counted the fabric ~3×. The [shopping list](chemistry-shopping-list.md) derived 6,670 sq ft ÷ 60″(5 ft) wide = "1,340 linear **yards**," but 6,670 ÷ 5 = 1,334 linear **feet** ≈ **445 yd** — feet were labelled yards. Three 60″ strips cover the <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> mm width (×<!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm --> mm tall = ~23.5 ft/print); 50 prints + 15% waste = ~450 yd = **3 × 150-yd rolls ≈ $300 (~$6/print)**. §7.1 and §7.2 now agree on this figure.*
 
 ### 7.2 Per-print cost (cyanotype — Standard ½-Ware tier; range locked by trial)
 
@@ -577,7 +577,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Perimeter walkway (4 sections, removable, GRP grating) | $2,214 |
 | Panel swing pivot (Ø89 pivot + bearings + cage + wall stays + saddles) | $1,232 |
 | Cyanotype chemistry + substrate (50 prints) | $1,650 |
-| Rodenstock Apo-Ronar 1200mm lens | $800 |
+| Rodenstock Apo-Ronar 1,200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
 | **Scenario B total (excl. CDL)** | **~$25,398** |

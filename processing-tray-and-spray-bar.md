@@ -36,9 +36,9 @@ full print width. Together they form the print washing subsystem of the
 | Parameter | Value | Rationale |
 |-----------|-------|-----------|
 | Material | 16-gauge (1.5mm) 304 stainless steel, #4 brushed finish | Chemically inert to ferricyanide wash water; resists pitting from citric acid pH adjustment |
-| Overall footprint | 4459 × 2,200mm (2 panels, field-bolted) | Fits inside film plane rails (X=150–4,649) with 20mm clearance per side |
+| Overall footprint | 4,459 × 2,200mm (2 panels, field-bolted) | Fits inside film plane rails (X=150–4,649) with 20mm clearance per side |
 | Position | X=170–4,629, Yd=80–2,280 | Between film plane rails, inboard of walkway perimeter |
-| Panel size (each) | 2229 × 2,200mm | Two equal panels, butted at midpoint with silicone gasket + bolted flange. Each panel fits through the cargo door opening (2340 × 2,280mm) |
+| Panel size (each) | 2,229 × 2,200mm | Two equal panels, butted at midpoint with silicone gasket + bolted flange. Each panel fits through the cargo door opening (2,340 × 2,280mm) |
 | Rim height | 50mm (all four sides) | Contains 6mm flood depth with margin; constrained to ≤75mm by film plane carriage clearance |
 | Floor-to-rim height | 50mm | Tray sits on tapered HDPE shim strips on the container floor |
 | Fall | 1:200 dual-axis (10mm over 2,200mm Yd + 11mm over 2,229mm X) toward sump | Water converges from both axes toward the sump well |
@@ -187,7 +187,7 @@ edges of the left and right walkways.
 | Section | 40×40×3mm SHS (1-1/2" × 1-1/2" × 1/8") |
 | Internal bore | 34×34mm |
 | Span | 3,859mm (X=470 to X=4,329) |
-| Second moment of area (I) | 101972mm⁴ |
+| Second moment of area (I) | 101,972mm⁴ |
 | Cross-sectional area | 444mm² |
 | Linear mass (beam only) | 1.20 kg/m |
 | Beam mass (3,859mm) | 4.63 kg |
@@ -354,7 +354,7 @@ carriage plate underside. The saddle cradles the 10mm axle pin with 1mm clearanc
 | 5 | Tighten all nyloc nuts to 4 Nm |
 | 6 | Stand the carriage on a flat surface — both wheels must contact simultaneously. Shim if needed before final torque |
 
-#### 3.6.5 Beam Attachment
+#### 3.6.4 Beam Attachment
 
 The carriages attach to the beam with a top + bottom clamp plate that sandwich the SHS
 vertically. The bottom plate sits under the beam (Z=17–20mm) and the top plate over it
@@ -383,7 +383,7 @@ the top plate, spacer, carriage plate wing, and bottom plate, with nuts top and 
 | Water in pipe (19mm ID bore) | 0.283 | 2.78 |
 | **Total UDL** | **1.675** | **16.43** |
 
-Water volume in pipe: π × 9.5² × 3,859 = 1.09 liters (1.09 kg). The water is contained
+Water volume in pipe: π × 9.5² × 3,859 = 1.09 L (1.09 kg). The water is contained
 within the LDPE pipe bore, not the full SHS bore.
 
 **Deflection — δ = 5wL⁴ / 384EI, E = 68,900 MPa:**
@@ -535,7 +535,7 @@ tray drainage plan and sump cross-section).
 
 | Item | Specification | Qty | Est. Cost |
 |------|--------------|-----|-----------|
-| 304 SS sheet, 16-gauge (1.5mm), #4 brushed | 2229 × 2,200mm panels | 2 | $720–$1,000 |
+| 304 SS sheet, 16-gauge (1.5mm), #4 brushed | 2,229 × 2,200mm panels | 2 | $720–$1,000 |
 | Fabrication (cut, brake, weld, press sump) | Two panels with center flange + sump well | 1 lot | $450–$850 |
 | HDPE flat bar, 50mm wide | Tapered shim strips, 2,200mm each | 5 | $40–$75 |
 | Loctite PL Premium construction adhesive | Shim-to-floor bond | 2 tubes | $15 |

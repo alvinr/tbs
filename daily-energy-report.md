@@ -24,7 +24,7 @@ then run **continuously** through the operating day.
 
 > **Standard build is manual** (electric actuation was dropped — see [Cost Analysis](cost-analysis-report.md)),
 > so Circuit F draws nothing. Per-print energy is ~**771 Wh** (vs 780 Wh with the optional
-> actuators) — up from the old ~720 Wh now that the cooler runs through the AC inverter (~97 W on the 12 V bus).
+> actuators) — up from the old ~720 Wh now that the cooler runs through the AC inverter (~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V bus).
 
 ---
 
@@ -44,7 +44,7 @@ then run **continuously** through the operating day.
 
 The **continuous fans + evaporative cooler (217 W)** dominate — they are on the whole
 cycle, so most of the energy is *climate control*, not imaging or pumping. The cooler now
-runs through the 12V→120V inverter (~97 W on the bus vs the old 80 W placeholder).
+runs through the 12V→120V inverter (~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the bus vs the old 80 W placeholder).
 
 ---
 
@@ -121,7 +121,7 @@ back to Blue rather than dumped; this line covers the case where it is drained o
   on a dead-cloudy day from the battery alone.
 - A **4-print day relies on the panels topping up during the day** (the loads run in
   daylight, so this is normally fine); on a fully overcast day, cap at ~3 prints. The
-  higher-draw AC cooler (~97 W vs the old 80 W placeholder) widened the 4-print battery
+  higher-draw AC cooler (~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W vs the old 80 W placeholder) widened the 4-print battery
   shortfall from ~220 Wh to ~400 Wh — still solar-covered, but battery-only 4-print days are off the table.
 - The dominant load is **climate control (fans + evaporative cooler, ~2,050 Wh/day)**, not
   imaging or pumping — the biggest lever on daily energy is *cooling runtime*, not the

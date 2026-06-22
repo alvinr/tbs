@@ -11,6 +11,10 @@ Outputs a markdown table suitable for the electrical report.
 Run:  python3 calculate_energy_budget.py
 """
 
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+from tbs_constants import EVAP_COOLER_W_BUS  # noqa: E402
+
 # ── Circuit power ratings (watts) ─────────────────────────────────────────────
 # From electrical-report.md §3 Power Budget table
 
@@ -18,8 +22,7 @@ FAN_EXHAUST_W   = 60    # Circuit A — 6" exhaust fan, far end wall high (AC In
 FAN_INTAKE_W    = 60    # Circuit B — 6" intake fan, cargo door panel low (AC Infinity S6)
 PUMP_W          = 90    # Circuit C — Shurflo 2088: 7.5A × 12V = 90W (one pump at a time)
 SAFELIGHT_W     = 15    # Circuit D — red LED strips
-COOLER_W        = 97    # Circuit E — Hessaire MC18M 120V AC evap cooler (85W AC) on the
-                        # 12V bus via a 12V→120V pure-sine inverter: 85W ÷ 0.88 eff = 97W
+COOLER_W        = EVAP_COOLER_W_BUS   # Circuit E — Hessaire MC18M 85W AC ÷ 0.88 inverter = 97W on the 12V bus
 ACTUATOR_W      = 100   # Circuit F — film plane actuators (optional, peak)
 WHITE_LIGHT_W   = 60    # Circuit G — 3× 20W LED panels
 

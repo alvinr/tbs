@@ -506,7 +506,8 @@ IBC_H_STK   = 2020   # 2× stacked height (mm)
 # (so the support frame is RESTRAINT-ONLY — no load-bearing deck between tiers).
 # Layout is UNCHANGED from main: two Blue on top, Brown + Waste on the bottom.
 IBC_H_1000  = 1168   # 275-gal (≈1000 L) caged composite overall height (mm) = 46"
-IBC_H_STK_1000 = 2 * IBC_H_1000   # 2336 mm 2× stacked (ceiling headroom ~52 mm)
+IBC_H_STK_1000 = 2 * IBC_H_1000   # 2336 mm 2× stacked
+IBC_CEILING_CLEARANCE_MM = C_HGT - IBC_H_STK_1000   # = 52mm — direct-stack ceiling headroom (was restated raw in ~5 docs)
 
 # IBC cage/pallet anatomy (US 48"×40" composite tote)
 # Three parts: steel/plastic pallet base, HDPE blow-molded bottle, galvanized wire cage.

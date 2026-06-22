@@ -205,3 +205,13 @@ evap_cooler_w_bus:
     - '(\d+) ?W on (?:the )?(?:12 ?V )?bus'
     - '~?(\d+) ?W on the 12'
     - '~(\d+) ?W vs the old'
+
+# IBC direct-stack ceiling headroom — COMPUTED (C_HGT − IBC_H_STK_1000). Anchored to the
+# headroom/clearance phrasings so a coincidental 52mm isn't policed.
+ibc_ceiling_clearance_mm:
+  constant: IBC_CEILING_CLEARANCE_MM
+  unit: mm
+  owner: ibc-stacking-report.md
+  aliases:
+    - '(\d+) ?mm (?:of )?(?:ceiling )?headroom'
+    - '(\d+) ?mm ceiling clearance'

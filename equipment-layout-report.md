@@ -123,7 +123,7 @@ only restrains them for transport (front retaining bars + D-ring lashing).
 | Front retaining bars | 4× 50×20×3 RHS at the IBC front (Z560 + Z1760), seated in the 25mm gap to the film rail — stop the totes sliding out the front; each bar's wall end drops into a Simpson-style joist hanger (×4) |
 | Wall attachment | each joist hanger is through-bolted (4× M12) to a 100×135×8mm **exterior** backing plate (×4, hex heads outside) that spreads the load into the thin corrugated side wall |
 | Lashing points | 25mm D-ring holders on the front bars (1,100kg WLL); ratchet straps pass over each stack and tie down to them |
-| Total stacked height | 2336mm (2× 1168mm direct-stack) — 52mm ceiling clearance |
+| Total stacked height | 2336mm (2× 1168mm direct-stack) — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm ceiling clearance |
 | Panel mount | the front portal also carries the (forward) wet-end equipment panel and the right-walkway cantilever arms |
 | Surface finish | Gray oxide primer + flat black powder coat (interior) |
 | Approx. weight | ~178kg (uprights + feet + front bars + hangers + exterior wall plates + panel mount) |
@@ -137,9 +137,9 @@ food-grade, 48×40-footprint tote stocked.
 
 | IBC type | H (mm) | Stacked pair | Ceiling clearance |
 |----------|--------|--------------|-------------------|
-| **1000L caged composite** | **1,168** | **2336mm** | **52mm** |
+| **1000L caged composite** | **1,168** | **2336mm** | **<!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm** |
 
-The 52mm headroom is tight but **transport-validated**: the loaded-transport CG sits at
+The <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom is tight but **transport-validated**: the loaded-transport CG sits at
 Z=1,341mm (static sideways tip threshold ≈41°, ≈21% of the ISO gross limit) — see the
 [weight-distribution report](weight-distribution-report.md).
 

@@ -99,6 +99,19 @@ Always annotate: `HORIZONTAL SCALE 1:5 / VERTICAL SCALE 1:1 — thickness exagge
 - Distortion renders: dark background (`PRU_DEEP = "#0F2D5E"`), 800×600px per configuration, 3×3 summary grid as a separate PNG.
 - Logo/favicon palette constants live in `generate_logo_final.py` and `generate_favicon.py` — reuse if needed.
 - **Use American English spelling throughout** — e.g. "center" not "centre", "color" not "colour", "aluminum" not "aluminium", "analyze" not "analyse".
+- **Describe the current design only; put design history in a changelog** (the `tbs_constants.py` rev-history header is the pattern). No "Old vs New" comparison tables in a living report — they accumulate stale archaeology.
+- **Report narrative house style is codified in `skills/skill_report_writing.md`** (prose-vs-single-source-vs-diagram triage, one-source-of-record / summaries-point-not-restate, source citation, terminology). Read it before writing or editing a report. `python3 src/generators/editorial_lint.py` is a **manual** check (not in the hook) for spelling, bare source links, and raw values that should be placeholders.
+
+---
+
+## Single Source of Truth
+
+Restated numbers drift. Every value that recurs across docs has ONE home; everything else references it.
+
+- **Three value stores, keyed by consumer:** `tbs_constants.py` (geometry/engineering), `costing.py` (money — with computed totals), `facts.yml` (registry of prose-restated numbers + regex aliases that police them). **Never put a cost in `facts.yml`; `tbs_constants.py` never imports from `facts.yml`.** (See the `facts.yml` header for the store-selection rule.)
+- **Placeholder-first.** A restated owned value gets a `<!-- BEGIN fact:KEY -->…<!-- END fact:KEY -->` (engineering) or `<!-- BEGIN costing:KEY -->…<!-- END costing:KEY -->` (money) placeholder — *not raw text*, **especially in the fact's owner doc**. The alias scan only POLICES raw values (flags disagreement); a placeholder AUTO-UPDATES on every constant change (`python3 src/generators/facts.py --inject` / `costing.py --inject`), which is what makes a value cascade for free.
+- **Derive, don't hardcode.** If a value is computable from existing constants, make it a *computed* constant (e.g. `IBC_CEILING_CLEARANCE_MM = C_HGT - IBC_H_STK_1000`) so it can never drift.
+- **Diagram-of-record stays in the diagram.** Exact coordinates/positions a reader would verify by *measuring the drawing* belong in the diagram (and its position tables), not single-sourced as facts. Single-source *system-defining* and *derivable* values; leave detail dims.
 
 ---
 
@@ -128,6 +141,15 @@ ripple into both.
   It scans for stale literals (old constant values in labels/comments), 2D↔3D
   git divergence, import asymmetry, and part/label gaps. See
   `skills/skill_model_consistency.md`.
+- **Cascade checklist for any `tbs_constants.py` value change:** (1) edit the constant;
+  (2) facts/costing placeholders auto-fill via `--inject`; (3) regenerate the affected
+  models + diagrams and confirm *only the affected sheets changed* (value-identical = no
+  change — the `lint.py` missing-cascade check now byte-diffs to prove this); (4) sweep
+  prose for raw restatements **and** generator label literals; (5) `lint.py`;
+  (6) `check_consistency.py`. **A numeric literal in a generator's label string is a latent
+  stale value the constant cascade can miss — reference the constant** (`f"{BLUE_SUPPLY_L}L"`,
+  not `"1800L"`). When a value looks stale, verify it against the *subsystem's dedicated
+  report* before changing it (the authoritative source, not a summary that may itself be stale).
 
 ---
 

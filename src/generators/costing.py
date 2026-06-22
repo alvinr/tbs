@@ -453,6 +453,7 @@ _IBC = "ibc-stacking-report.md"
 _PT = "processing-tray-and-spray-bar.md"
 _WS = "water-system-report.md"
 _MS = "master-shopping-list.md"
+_ELEC = "electrical-report.md"
 
 
 def capital_mid() -> int:
@@ -663,6 +664,11 @@ def _inline_blocks() -> dict:
         "spray-high":          ([_PT, _WS, _MS], lambda: f"${_pt_line('Spray bar').high:,}"),
         "tray-spray-total-low":  (_PT, lambda: f"${_pt_line('Processing tray').low + _pt_line('Spray bar').low:,}"),
         "tray-spray-total-high": (_PT, lambda: f"${_pt_line('Processing tray').high + _pt_line('Spray bar').high:,}"),
+        # electrical-report.md §8 system totals (1-pack standard build).
+        "elec-system-total":   (_ELEC, lambda: f"${_sec('5a').mid:,}"),
+        "elec-canopy-total":   (_ELEC, lambda: f"${_elec_canopy():,}"),
+        "elec-cooling-total":  (_ELEC, lambda: f"${_elec_cooling():,}"),
+        "elec-grand-total":    (_ELEC, lambda: f"${_elec_grand():,}"),
     }
 
 
@@ -697,6 +703,24 @@ def _ibc_frame() -> LineItem:
 # processing-tray-and-spray-bar.md §6 — the tray + spray-bar line items own their price bands.
 def _pt_line(prefix: str) -> LineItem:
     return next(li for li in WATER if li.label.startswith(prefix))
+
+
+# electrical-report.md §8 — the cooler/canopy groupings are subsets of the §5b VENTILATION BOM.
+def _vent_line(prefix: str) -> LineItem:
+    return next(li for li in VENTILATION if li.label.startswith(prefix))
+
+
+def _elec_canopy() -> int:    # shade cloth + frame
+    return _vent_line("Shade canopy").mid + _vent_line("Canopy frame").mid
+
+
+def _elec_cooling() -> int:   # cooler + inverter(+DC/outlet) + external power cable
+    return (_vent_line("Evaporative cooler").mid + _vent_line("Cooler inverter").mid
+            + _vent_line("Cooler external power").mid)
+
+
+def _elec_grand() -> int:     # electrical system + canopy + cooling
+    return _sec("5a").mid + _elec_canopy() + _elec_cooling()
 
 
 def _reformat_cell(cell: str, value: int) -> str:

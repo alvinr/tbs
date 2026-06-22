@@ -170,7 +170,7 @@ flexible coiled cable (with swing slack) from the fixed door frame (Circuit B).*
 | Inverter mount X / Z | 1910 / 1,180mm | `INVERTER_X`/`INVERTER_Z` |
 | Inverter W×H×D | 120×235×72mm | `INVERTER_W`/`INVERTER_H`/`INVERTER_D` |
 
-*Component: **Hessaire MC18M** evaporative cooler (120V AC, <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W, 1300 CFM run on low, 4.8 gal
+*Component: **Hessaire MC18M** evaporative cooler (120V AC, <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W, 1,300 CFM run on low, 4.8 gal
 reservoir), ground-placed outside on Circuit E. Powered by an **interior 12V→120V pure-sine
 inverter (Victron Phoenix 12/375 GFCI)** wall-mounted below the EP; ~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on the 12V bus. Cooled
 air enters through a Ø200mm insulated flex duct to a wall penetration with light-safe baffle at

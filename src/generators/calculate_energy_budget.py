@@ -390,7 +390,92 @@ def generate_markdown():
     return "\n".join(lines)
 
 
+# ── Doc-block injection — single-source the §3.1/§3.2 summary figures ──────────
+# Mirrors costing.py's inline-block injector: the report carries
+# <!-- BEGIN energy:KEY -->value<!-- END energy:KEY --> placeholders that THIS script
+# fills, so the computed figures cannot drift from the doc (a key may repeat / span docs).
+import re as _re
+
+_REPO = _os.path.dirname(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+_ENERGY_DOCS = ["electrical-report.md"]
+
+
+def _energy_values() -> dict:
+    """key -> filled string (comma-grouped integers; 1-dp for ratios/days)."""
+    _, _, _, s = compute()
+    a1, a2 = compute_autonomy(100), compute_autonomy(200)
+    d2, d3, d4 = compute_daily(2), compute_daily(3), compute_daily(4)
+    batt_2pack = 2 * BATTERY_AH_PER_PACK * BATTERY_V * DOD
+    c = lambda v: f"{round(v):,}"                    # comma integer
+    f1 = lambda v: f"{v:.1f}"                        # one decimal
+    return {
+        "wh-session":         c(s["total_wh"]),
+        "battery-wh-1pack":   c(s["battery_wh"]),
+        "battery-wh-2pack":   c(batt_2pack),
+        "sessions-1pack":     f1(s["sessions_per_charge"]),
+        "sessions-2pack":     f1(batt_2pack / s["total_wh"]),
+        "solar-wh-day":       c(s["solar_wh_day"]),
+        "solar-sessions-day": f1(s["recharge_prints_day"]),
+        "daily-wh-3":         c(d3["daily_wh"]),
+        "daily-wh-2":         c(d2["daily_wh"]),
+        "daily-wh-4":         c(d4["daily_wh"]),
+        "drain-wh":           c(end_of_day_drain_wh()),
+        "solar-net-3":        c(a1["solar_net_wh"]),
+        "reserve-1pack-day":  f1(a1["battery_only_days"]),
+        "reserve-2pack-day":  f1(a2["battery_only_days"]),
+    }
+
+
+def _energy_pat(key: str):
+    return _re.compile(r"(<!-- BEGIN energy:" + _re.escape(key) + r" -->)([^\n]*?)"
+                       r"(<!-- END energy:" + _re.escape(key) + r" -->)")
+
+
+def inject(write: bool = True) -> list:
+    """Fill every energy block. Returns (doc, key, 'ok'|'updated'|'STALE'|'missing')."""
+    vals = _energy_values()
+    out = []
+    for rel in _ENERGY_DOCS:
+        path = _os.path.join(_REPO, rel)
+        text = open(path, encoding="utf-8").read()
+        changed = False
+        for key, sval in vals.items():
+            pat = _energy_pat(key)
+            matches = list(pat.finditer(text))
+            if not matches:
+                continue                              # key simply not used in this doc
+            if all(m.group(2) == sval for m in matches):
+                out.append((rel, key, "ok")); continue
+            if write:
+                text = pat.sub(lambda m: m.group(1) + sval + m.group(3), text)
+                changed = True
+                out.append((rel, key, "updated"))
+            else:
+                out.append((rel, key, "STALE"))
+        if write and changed:
+            open(path, "w", encoding="utf-8").write(text)
+    return out
+
+
+def check_blocks() -> list:
+    """Linter helper: list of stale energy blocks (run --inject to fix)."""
+    return [f"{rel}  energy:{key} -> {st}" for rel, key, st in inject(write=False) if st != "ok"]
+
+
 if __name__ == "__main__":
+    if "--inject" in _sys.argv:
+        for rel, key, st in inject(write=True):
+            print(f"  [{st:>7}] {rel}  energy:{key}")
+        _sys.exit(0)
+    if "--check-blocks" in _sys.argv:
+        probs = check_blocks()
+        if probs:
+            print("✗ energy blocks out of sync (run: calculate_energy_budget.py --inject):")
+            for p in probs:
+                print("   -", p)
+            _sys.exit(1)
+        print("✓ energy blocks in sync")
+        _sys.exit(0)
     print_report()
     print_daily_report()
     print("\n" + "=" * 72)

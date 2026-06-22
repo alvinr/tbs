@@ -167,7 +167,7 @@ def warn_thousands_sep() -> list[str]:
     '$1455' → '$1,455'). A unit/`$` is required, so bare product/model numbers (Shurflo 2088,
     years, f-numbers — no unit) are not flagged. `_MODEL_NUMS` exempts model designations
     that collide with a unit ('Ecobulk MX 1000 L' — the 1000 is the model, not a volume)."""
-    num = re.compile(r"(?<![#\d.,$])(\$?)(\d{4,})( ?)(mm|cm|kg|gal|Wh|W|V|A|L|g|°|sq ft|m²|km|hrs?|km/h)?(?![\w])")
+    num = re.compile(r"(?<![#\d.,$])(\$?)(\d{4,})( ?)(mm|cm|kg|gal|Wh|W|V|A|L|g|°|sq ft|m²|km|hrs?|km/h|CFM)?(?![\w])")
     _MODEL_NUMS = re.compile(r"MX $")          # Schütz Ecobulk MX 1000 — model name, not a quantity
     issues = []
     for fn in _published_docs():

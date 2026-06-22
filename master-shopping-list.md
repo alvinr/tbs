@@ -466,7 +466,7 @@ top/bottom weld + anchor connection** (fabricator/PE review) — not the member 
 
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [Evaporative cooler — Hessaire MC18M](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) | 120V AC, <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W, 1300 CFM (run on **low** for the Ø200 duct), 16 lb, 559×305×711mm, 4.8 gal | 1 | [Hessaire](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) / Amazon | ~$130 |
+| [Evaporative cooler — Hessaire MC18M](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) | 120V AC, <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W, 1,300 CFM (run on **low** for the Ø200 duct), 16 lb, 559×305×711mm, 4.8 gal | 1 | [Hessaire](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) / Amazon | ~$130 |
 | [Cooler inverter — Victron Phoenix 12/375 GFCI](https://www.victronenergy.com/inverters/phoenix-inverter-vedirect-250va-800va) | 12V→120V pure-sine, **built-in GFCI**, factory bonded neutral, 0.9W idle (Circuit E) | 1 | [Victron](https://www.victronenergy.com/inverters/phoenix-inverter-vedirect-250va-800va) / Amazon | ~$210 |
 | Inverter DC protection | 40A ANL fuse + holder + DC disconnect switch (inverter feed) | 1 | Blue Sea / Amazon | ~$40 |
 | Panel GFCI AC outlet | Weatherproof NEMA 5-15R + in-use (bubble) cover (Circuit E panel outlet) | 1 | Leviton / Amazon | ~$25 |

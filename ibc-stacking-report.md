@@ -294,9 +294,9 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | 25mm ratchet strap, 1,100 kg WLL | Transport securing, over each stack | 4 | $30–$50 |
 | M12 floor anchor (wedge/sleeve, container floor) | Upright flange feet, 4 each | 8 | $15–$30 |
 | M12 × 40 bolt, Grade 8.8 | Wall hangers (2 each) + front-bar cleats | 12 | $12–$22 |
-| Welding / fabrication (frame assembly) | ~14–20 hrs labor (single front portal — much less than the old load-bearing rack) | 1 | $650–$950 |
+| Welding / fabrication (frame assembly) | ~14–20 hrs labor (single front portal — much less than the old load-bearing rack) | 1 | $688–$1,018 |
 | Primer + paint | Anti-corrosion coating | 1 | $30–$50 |
-| **Frame subtotal** | | | **$920–$1,390** |
+| **Frame subtotal** | | | **<!-- BEGIN costing:ibc-frame-low -->$955<!-- END costing:ibc-frame-low -->–<!-- BEGIN costing:ibc-frame-high -->$1,455<!-- END costing:ibc-frame-high -->** |
 
 ### 9.2 External Plumbing Panel
 
@@ -330,11 +330,11 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Stacking frame (restraint front portal) | $920 | $1,390 |
+| Stacking frame (restraint front portal) | <!-- BEGIN costing:ibc-frame-low -->$955<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,455<!-- END costing:ibc-frame-high --> |
 | External plumbing panel | $125 | $200 |
 | Internal plumbing | $115 | $185 |
 | IBC totes (4×) | $300 | $900 |
-| **Total** | **$1,460** | **$2,675** |
+| **Total** | **$1,495** | **$2,740** |
 
 ---
 

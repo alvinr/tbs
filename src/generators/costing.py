@@ -449,6 +449,7 @@ def emit_scenario_c() -> str:
 _CA = "cost-analysis-report.md"
 _OM = "operating-manual.md"
 _EL = "equipment-layout-report.md"
+_IBC = "ibc-stacking-report.md"
 
 
 def capital_mid() -> int:
@@ -648,6 +649,9 @@ def _inline_blocks() -> dict:
         "om-ferri-g-rich":     (_OM, lambda: f"{_ferri_g('rich')}"),
         # equipment-layout-report.md §5 IBC stacking frame price band (from the WATER line item).
         "eq-ibc-frame-cost":   (_EL, lambda: f"${_ibc_frame().low:,}–${_ibc_frame().high:,}"),
+        # ibc-stacking-report.md §9 frame cost (low/high split for the two-column BOM tables).
+        "ibc-frame-low":       (_IBC, lambda: f"${_ibc_frame().low:,}"),
+        "ibc-frame-high":      (_IBC, lambda: f"${_ibc_frame().high:,}"),
     }
 
 

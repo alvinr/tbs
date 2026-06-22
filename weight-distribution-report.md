@@ -26,7 +26,7 @@ changes during a photographic session.
 | Tare weight (empty container) | 2,200 kg (4,850 lbs) | Hapag-Lloyd Container Spec |
 | Max gross weight | 24,000 kg (52,910 lbs) | ISO 668 |
 | Max payload | 21,800 kg (48,060 lbs) | Gross − tare |
-| Interior dimensions | 5,893 × 2362 × 2388mm | ISO 668 |
+| Interior dimensions | 5,893 × 2362 × 2,388mm | ISO 668 |
 
 ---
 
@@ -74,10 +74,10 @@ UV-HDPE 950 kg/m³, water 1,000 kg/m³.
 | Tilt-swing board | 30 | 2,089–2,709 | 0–100 | 620×620×45mm Al plate + spherical pivot + screws |
 | Fans (A+B) | 4 | End walls | Near corners | 2× 150mm axial panel fans |
 | Baffle ducts | 6 | Distributed | Distributed | 2× galvanized steel baffle ducts |
-| Blue IBC-1 (tote) | 65 | 4,674–5,893 | 30–1,046 | 1000L caged composite tare (top tier, near) |
-| Blue IBC-2 (tote) | 65 | 4,674–5,893 | 1,316–2,332 | 1000L caged composite tare (top tier, far) |
-| Brown IBC-3 (tote) | 65 | 4,674–5,893 | 30–1,046 | 1000L caged composite tare (bottom tier, near) |
-| Waste IBC-4 (tote) | 65 | 4,674–5,893 | 1,316–2,332 | 1000L caged composite tare (bottom tier, far) |
+| Blue IBC-1 (tote) | 65 | 4,674–5,893 | 30–1,046 | 1,000L caged composite tare (top tier, near) |
+| Blue IBC-2 (tote) | 65 | 4,674–5,893 | 1,316–2,332 | 1,000L caged composite tare (top tier, far) |
+| Brown IBC-3 (tote) | 65 | 4,674–5,893 | 30–1,046 | 1,000L caged composite tare (bottom tier, near) |
+| Waste IBC-4 (tote) | 65 | 4,674–5,893 | 1,316–2,332 | 1,000L caged composite tare (bottom tier, far) |
 | IBC restraint frame | 178 | 4,674–5,893 | 0–2,362 | 50×50×3mm RHS restraint-only frame (totes direct-stack cage-on-cage): full-height corridor + front-bay uprights + longitudinal ties + front retaining bars + 8 floor flange feet + 4 wall joist hangers (through-bolted to 4 exterior backing plates) + forward panel-mount frame ([Equipment Layout](equipment-layout-report.md) §5) |
 | **Equipment subtotal** | **546** | | | |
 
@@ -157,7 +157,7 @@ Blue-on-top layout stays comfortably stable.
 
 ### 4.4 Optional Max-Blue-Fill Transport Case
 
-The standard load fills each Blue tote to 900L (1,800L). The totes are 1000L vessels, so the
+The standard load fills each Blue tote to 900L (1,800L). The totes are 1,000L vessels, so the
 [equipment-layout report §8](equipment-layout-report.md) notes they can be topped further — to
 **~1,900L** (~950L per tote) — for one more print (~15). Re-running the weight model confirms even
 that heavier load stays well within transport limits:
@@ -261,10 +261,10 @@ in the front (door-end) half.
 
 When liquids are added and the panel and doors are deployed (camera ready),
 the CG shifts rearward to X=3,670mm (~870mm past the dry CG). The doors
-swing open flat against the side walls (X=0–1221mm), redistributing
+swing open flat against the side walls (X=0–1,221mm), redistributing
 280 kg from X≈−70 to X≈610, while 1,800 kg of water loads in the IBC stack
-zone (X=4674–5893mm). This creates a 34.2/65.8% front/rear split — more
-rear-biased than the 600L design (the heavier 1000L totes sit at the sealed end).
+zone (X=4,674–5,893mm). This creates a 34.2/65.8% front/rear split — more
+rear-biased than the 600L design (the heavier 1,000L totes sit at the sealed end).
 
 **Transport implication:** When loaded for transport (materials exhausted,
 doors closed), the container's CG is at 59.1% of the length from the cargo
@@ -305,7 +305,7 @@ clearance are unchanged.
 1. [ISO 668:2020](https://www.iso.org/standard/76912.html) — Series 1 freight containers: Classification, dimensions and ratings
 2. [Hapag-Lloyd Container Specification](https://www.hapag-lloyd.com/en/products/fleet/container/20-foot-standard.html) — 20ft Standard Dry Container
 3. [McNICHOLS — Fiberglass Grating](https://www.mcnichols.com/fiberglass-grating) / [Grating Pacific — Molded FRP](https://gratingpacific.com/product/molded-fiberglass-grating/) — Molded GRP (fiberglass) grating, vinyl-ester, weight tables
-4. [Schütz Ecobulk MX 1000L](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — 1000L caged composite IBC tote specifications (~65 kg tare; all four positions standardize on this size — a 600L caged tote does not exist)
+4. [Schütz Ecobulk MX 1000L](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — 1,000L caged composite IBC tote specifications (~65 kg tare; all four positions standardize on this size — a 600L caged tote does not exist)
 5. [Water System Report](water-system-report.md) — Processing tray weight (§4), IBC layout (§5)
 6. [Light Trap Selection](light-trap-selection.md) — Panel + drum weight (§7)
 

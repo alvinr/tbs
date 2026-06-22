@@ -41,7 +41,7 @@ The default plate for camera obscura operation:
 
 - **Ø90mm tapered bore** on the exterior (scene) face — admits a wide cone of light
 - **Ø52mm × 3mm deep counterbore** on the interior (camera) face — seats the pinhole disc
-- **Ø50mm × 0.1mm SS-302 pinhole disc** (Lenox Laser) — Ø2.17mm aperture (Rayleigh optimal for f=2362mm, λ=550nm)
+- **Ø50mm × 0.1mm SS-302 pinhole disc** (Lenox Laser) — Ø2.17mm aperture (Rayleigh optimal for f=2,362mm, λ=550nm)
 - **Light-trap rebate** — 490mm square, 5mm wide × 5mm deep step on the mating face prevents stray light leaking past the O-ring seal
 
 The pinhole disc is retained by the counterbore geometry — no separate retaining ring is needed. Procurement: [Lenox Laser](https://lenoxlaser.com) custom pinhole discs, specify SS-302 Ø50mm substrate, Ø2.17mm ±0.025mm aperture.
@@ -56,7 +56,7 @@ The alternate plate for lens-based operation:
 - **Ø174.5mm g6 lens tube** — slides in the bore with ±40mm focus travel
 - **3× M8 set screws at 120°** — lock the tube at the desired focus position
 - **Ø165mm tube inner bore** — clear passage for the lens assembly
-- **Focus positions:** at 3.4m subject distance, lens principal plane is 1400mm from the pinhole wall interior face; at 5.0m, retract to 1604mm. Mark both positions with scribed lines on the tube.
+- **Focus positions:** at 3.4m subject distance, lens principal plane is 1,400mm from the pinhole wall interior face; at 5.0m, retract to 1,604mm. Mark both positions with scribed lines on the tube.
 
 The lens plate has the same bolt pattern, dowels, seal groove, and light-trap rebate as the pinhole plate.
 
@@ -120,7 +120,7 @@ Front elevation of all three components at 1:8 scale, showing bolt patterns, ape
 | 5 — Lens Tube | Ø174.5 g6 × Ø165 ID × 100mm, 6061-T6 | 1 | Machined; black anodize |
 | 6 — Mounting Bolts | M12 × 40mm, A2 stainless | 8 | McMaster-Carr / Bolt Depot |
 | 7 — Dowel Pins | Ø8 × 25mm, hardened | 2 | McMaster-Carr |
-| 8 — O-ring Cord | Neoprene, 3mm Ø, ~1320mm length (Ø420mm circle) | 1 | McMaster-Carr |
+| 8 — O-ring Cord | Neoprene, 3mm Ø, ~1,320mm length (Ø420mm circle) | 1 | McMaster-Carr |
 | 9 — Set Screws | M8 × 8mm, cup point, A2 stainless | 3 | McMaster-Carr / Bolt Depot |
 | 10 — Shutter Panel | 175 × 55 × 3mm, black aluminum | 1 | Guide rails spring-loaded to closed |
 

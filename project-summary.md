@@ -25,10 +25,10 @@ A fully operational pinhole camera built inside a standard 20-foot ISO shipping 
 
 | Parameter | Value |
 |-----------|-------|
-| Image plane (active) | <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm (~14'9" × 7'10") |
-| Container interior | <!-- BEGIN fact:container_interior_length_mm -->5893<!-- END fact:container_interior_length_mm --> × <!-- BEGIN fact:container_height_mm -->2388<!-- END fact:container_height_mm -->mm (~19'4" × 7'10") |
+| Image plane (active) | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm (~14'9" × 7'10") |
+| Container interior | <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm --> × <!-- BEGIN fact:container_height_mm -->2,388<!-- END fact:container_height_mm -->mm (~19'4" × 7'10") |
 | Image area | ~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft |
-| Focal length | <!-- BEGIN fact:focal_length_mm -->2362<!-- END fact:focal_length_mm -->mm (container interior depth) |
+| Focal length | <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm (container interior depth) |
 | Optimal pinhole | Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm (Lord Rayleigh formula, λ = 550 nm) |
 | f-number | f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> |
 | Baseline exposure | ~30–45 min (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction) |

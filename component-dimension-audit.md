@@ -3,7 +3,7 @@
 # Component Dimension Audit — Purchased Parts vs. As-Drawn
 
 **Purpose.** After the IBC tote sizing error (assumed "600 L" small totes; the real
-food-grade caged product is **1000 L / 1219×1016×1168 mm**, which forced the entire
+food-grade caged product is **1,000 L / 1219×1016×1,168 mm**, which forced the entire
 `ibc-reconfig-v2` rework), this audit reconciles **every major purchased-as-is
 component** against the size used in the 3D models / 2D diagrams (`tbs_constants.py`).
 The goal: no other component is modeled at an assumed size that the real product
@@ -25,7 +25,7 @@ Modeled dimensions are the `tbs_constants.py` value(s) the generators draw. mm.
 
 | # | Component | Real product (datasheet) | Modeled | Verdict |
 |---|-----------|--------------------------|---------|---------|
-| 1 | IBC tote (1000 L caged) | 1219×1016×1168 | 1219×1016×1168 (`IBC_W/IBC_D/IBC_H_1000`) | ✅ **FIXED** (v2) |
+| 1 | IBC tote (1,000 L caged) | 1219×1016×1168 | 1219×1016×1168 (`IBC_W/IBC_D/IBC_H_1000`) | ✅ **FIXED** (v2) |
 | 2 | **Battery** (Renogy 100 Ah LiFePO4) | **330×172×214** | was 240×120×500 → now 2×330×172×214 side-by-side (`BA_*`) | ✅ **FIXED** — `BA_D` 120→172, `BA_H_HI` 650→364, `BA_W` 500→680, `BA_X` 1810→1540 (clears the cone; line-of-sight re-check passes) |
 | 3 | Pump (Shurflo 2088-554-144) | 216×127×114 | 100×127×218 (`PUMP_D`×`PUMP_YD_SPAN`×Z) | ✅ **FIXED (minor)** — width 127 + length 218 already matched the real pump; only protrusion `PUMP_D` 100→114 |
 | 4 | Filter housing (Big Blue) | switch to **4.5"×10"** = Ø184 × 333 (Pentek) | Ø130 → **184** × 340 (`BB_OD`/`BB_H`) | ✅ **FIXED** — `BB_OD` 130→184 (`BB_H`=340 ≈ 333 ✓); BoM switched to 4.5"×10" |
@@ -50,7 +50,7 @@ rigid ≈ 1491×699×35, varies by model — mounted externally, no container cl
 ### 3. Pump — Shurflo 2088-554-144 ❌
 - **Real:** 8.5"L × 5"W × 4.5"H = **216 × 127 × 114 mm**. [Fresh Water Systems](https://www.freshwatersystems.com/products/shurflo-2088-554-144-delivery-pump-3-5-gpm-45-psi-12vdc-no-cord) · [datasheet PDF](https://www.pumpagents.com/pdf/ShurfloPumps/2088-554-144.pdf)
 - **Modeled:** `PUMP_D`=100 (pump zone width). 4–5 pumps tile the equipment panel.
-- **Problem:** a real 2088 is **216 mm long × 127 mm wide** — the panel pump columns are drawn ~half-size. With 5 of them plus the accumulator + 3× 594 mm filters, the **panel layout must be re-checked for fit** (panel face is 270 mm corridor × 2060 mm tall).
+- **Problem:** a real 2088 is **216 mm long × 127 mm wide** — the panel pump columns are drawn ~half-size. With 5 of them plus the accumulator + 3× 594 mm filters, the **panel layout must be re-checked for fit** (panel face is 270 mm corridor × 2,060 mm tall).
 - **Action:** set the modeled pump footprint to ~216×127×114, re-lay-out the panel (`generate_panel_layout.py` + 3D `equipment_panel()`), re-check corridor depth.
 
 ### 4. Filter housing — Big Blue 4.5" × 20" ❌
@@ -87,7 +87,7 @@ listed for completeness; confirm the drawn size equals the catalog dimension:
 
 | Component | Catalog | Expected dim | Status |
 |-----------|---------|--------------|--------|
-| Linear rail HGR20 | HGR20, 2200 mm | 20 mm rail width, 2200 long (`RAIL_LEN`) | confirm |
+| Linear rail HGR20 | HGR20, 2,200 mm | 20 mm rail width, 2200 long (`RAIL_LEN`) | confirm |
 | Carriage HGH20CA | HGH20CA flanged | standard HGH20CA block | confirm |
 | Acme leadscrew ¾"-6 | McMaster 6289K36 | Ø¾" (19 mm) | confirm |
 | Rod-end bearing | GIR25-DO / McMaster 60645K73 | 25 mm bore | confirm |

@@ -162,21 +162,25 @@ def warn_should_be_placeholder() -> list[str]:
 
 
 def warn_thousands_sep() -> list[str]:
-    """The same value *with the same unit* written both with and without a thousands
-    separator in one doc (e.g. '1,800 L' and '1800 L'). Keys on the trailing unit so the
-    project convention — mm coordinates carry no separator, volumes/money/weights do — is
-    not flagged as an inconsistency."""
-    num = re.compile(r"(?<![\d.,$])(\$?)(\d{1,2},\d{3}|\d{4,5})\s*(mm|cm|kg|gal|Wh|W|V|A|L|g|°|sq ft|prints)?")
+    """Convention: 4+ digit QUANTITIES carry a comma thousands separator. Flags a 4+ digit
+    number with a `$` prefix or a unit suffix that has no comma (e.g. '4499mm' → '4,499mm',
+    '$1455' → '$1,455'). A unit/`$` is required, so bare product/model numbers (Shurflo 2088,
+    years, f-numbers — no unit) are not flagged. `_MODEL_NUMS` exempts model designations
+    that collide with a unit ('Ecobulk MX 1000 L' — the 1000 is the model, not a volume)."""
+    num = re.compile(r"(?<![#\d.,$])(\$?)(\d{4,})( ?)(mm|cm|kg|gal|Wh|W|V|A|L|g|°|sq ft|m²|km|hrs?|km/h)?(?![\w])")
+    _MODEL_NUMS = re.compile(r"MX $")          # Schütz Ecobulk MX 1000 — model name, not a quantity
     issues = []
     for fn in _published_docs():
         text = _strip(open(os.path.join(ROOT, fn), encoding="utf-8").read())
-        comma, plain = {}, {}
         for m in num.finditer(text):
-            key = (m.group(1), m.group(2).replace(",", ""), m.group(3) or "")
-            (comma if "," in m.group(2) else plain).setdefault(key, True)
-        for pre, val, unit in sorted(set(comma) & set(plain)):
-            label = f"{pre}{int(val):,}{(' ' + unit) if unit else ''}"
-            issues.append(f"{fn}  '{label}' written both with and without a thousands separator")
+            pre, digits, sp, unit = m.group(1), m.group(2), m.group(3), m.group(4)
+            if not (pre or unit):            # bare number (product/model/year) — not a quantity
+                continue
+            if _MODEL_NUMS.search(text[:m.start()]):
+                continue
+            sep = f"{int(digits):,}"
+            issues.append(f"{fn}:{_loc(text, m.start())}  "
+                          f"'{pre}{digits}{sp}{unit or ''}' → '{pre}{sep}{sp}{unit or ''}'")
     return issues
 
 

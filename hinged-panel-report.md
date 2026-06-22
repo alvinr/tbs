@@ -6,7 +6,7 @@
 
 TBS-001 requires a light-tight seal at the cargo door end of the container that
 simultaneously allows personnel access during operation without admitting daylight.
-The hinged light-trap panel fills both roles: it seals the full 2362 × 2388mm
+The hinged light-trap panel fills both roles: it seals the full 2362 × 2,388mm
 cargo door opening as a rigid structural panel, and incorporates a revolving drum
 light trap that permits operators to enter and exit the darkened interior at any
 time without opening the panel or breaking the light seal. In case of emergency, or to easy loading and unloading of materials, the whole hinged panel can open fully, being locked from the inside.
@@ -47,12 +47,12 @@ while keeping the corners flush with the container walls.
 
 | Zone | Yd range (mm) | Width (mm) | Thickness (mm) | Construction |
 |------|--------------|-----------|---------------|-------------|
-| Near corner | 0–653 | 653 | 40 | 4mm PP skin + 3mm Al core + 4mm PP skin (40mm framed); **18mm-ply Fan-B mount band** bottom→1125mm |
+| Near corner | 0–653 | 653 | 40 | 4mm PP skin + 3mm Al core + 4mm PP skin (40mm framed); **18mm-ply Fan-B mount band** bottom→1,125mm |
 | Center | 653–1,709 | 1,056 | 120 | 4mm PP skin + 84mm RHS frame + 4mm PP skin |
 | Far corner | 1,709–2,362 | 653 | 40 | 4mm PP skin + 3mm Al core + 4mm PP skin (40mm framed) |
 
 The 80mm step between corner and center zones occurs at Yd=653mm and
-Yd=1709mm (widened in rev 8 to frame the Ø900 housing). The center zone houses the
+Yd=1,709mm (widened in rev 8 to frame the Ø900 housing). The center zone houses the
 light-trap housing; the corner zones are
 flush-faced panels that seal against the fixed door frame.
 
@@ -61,8 +61,8 @@ flush-faced panels that seal against the fixed door frame.
 | Parameter | Value |
 |-----------|-------|
 | Frame material | 50 × 50 × 3mm RHS mild steel |
-| Outer dimensions | 2362 × 2388mm |
-| Skin (each face) | **4mm PP plastic sheet** (rev11; same material as the drum/housing), set in U-channels — black-pigmented, light-tight, moisture/chemical-proof. **Exception:** an 18mm exterior-grade plywood band on the Fan B corner (bottom up to 1125mm) for rigid fan/duct mounting + screw retention |
+| Outer dimensions | 2362 × 2,388mm |
+| Skin (each face) | **4mm PP plastic sheet** (rev11; same material as the drum/housing), set in U-channels — black-pigmented, light-tight, moisture/chemical-proof. **Exception:** an 18mm exterior-grade plywood band on the Fan B corner (bottom up to 1,125mm) for rigid fan/duct mounting + screw retention |
 | Interior finish | Black-pigmented sheet (PP) + flat-black touch-in — optically dead at visible wavelengths |
 | Frame perimeter | Welded corners, mitered joints |
 | Panel weight (full panel: skins + Ø900 housing + B2 bay, excl. drum) | ~171 kg (first-principles: 125 kg framed skins + 22 kg housing + 25 kg B2 bay). The 4mm-PP-skin swap cut ~72 kg vs the 18mm-ply build. See §2.4–2.5 for the movable breakdown + trade study |
@@ -87,7 +87,7 @@ The transport scheme swings the panel + drum ~56° about the vertical Ø89 pivot
 the **movable assembly** is everything that rotates about that pivot. The breakdown
 below is first-principles from the geometry constants (reproducible via
 `src/generators/generate_movable_panel_weight.py`); it isolates the swing zone
-(Yd 180–2287mm) and deducts the Ø900 housing aperture from the center skins, so it
+(Yd 180–2,287mm) and deducts the Ø900 housing aperture from the center skins, so it
 is slightly lower than the whole-panel figure carried in the
 [Weight Distribution Report §3.2](weight-distribution-report.md).
 
@@ -133,7 +133,7 @@ is light-tight (proven on the drum), moisture- and chemical-proof in the wet dar
 and floats in its channel to absorb its higher thermal expansion. A tighter stiffener-
 channel grid (~400–450mm centers) keeps the floppier 4mm sheet flat at the EPDM seal
 line. **One exception:** the Fan B corner keeps an **18mm plywood band** (bottom up to
-1125mm) for rigid fan/duct mounting + screw retention. Net: **~72 kg off** the panel
+1,125mm) for rigid fan/duct mounting + screw retention. Net: **~72 kg off** the panel
 (243 → 171 kg), at roughly comparable material cost (PP sheet + U-channel ≈ ply +
 adhesive/fasteners; panel BOM rises ~$100, see §8.1).
 
@@ -166,12 +166,12 @@ lower cost and risk.
 | Housing openings | Two, **80° arc each, 180° apart** — one facing exterior, one facing the interior/walkway |
 | Drum (rotating) | Ø864mm C-shell, single 80° opening, **~Ø850mm clear bore** |
 | Passage width | **~555mm** (the 80° opening) — single operator, sideways entry |
-| Height | Top at Z=2200mm (upper bearing on panel top rail) |
+| Height | Top at Z=2,200mm (upper bearing on panel top rail) |
 | Mounting | **Carried with the panel** — rides at Z=130 on the panel bottom rail (130mm floor gap → clears the tray rim, and the swinging cage passes over the Z115 walkway brackets). Operator steps up ~130mm over the threshold to enter; exits level onto the walkway deck (also Z=130). |
 | Wall thickness | 5mm UV-HDPE housing (LT_HOUSING_T) + 4mm PP drum (LT_DRUM_T) — rolled and extrusion-welded plastic skin (rev 9 / B2; was 3mm aluminum); opening edge-stiffened |
 | Interior finish | Black-pigmented sheet + flat-black touch-in at welds (no etch-prime) |
 | Exterior finish | UV-stabilized black/gray sheet — inherent, no primer |
-| Clear walking height | 1910mm (between bearings) |
+| Clear walking height | 1,910mm (between bearings) |
 | Internal baffles | **None** — light-tightness is by the fixed-housing geometry (§3.3) |
 | Weight | housing ~22 kg + rotating drum ~38 kg = **~60 kg** (plastic skin, ≈60% of the 3mm-aluminum ~99 kg; the steel shaft/bearings set a floor the shell mass can't drop below) |
 
@@ -262,7 +262,7 @@ standard commercial-darkroom-door arrangement, here custom-built to the panel.
 |-----------|-------|
 | Type | Vertical **Ø89×8 CHS pivot post** (the reused film-plane far-left upright) on a thrust collar + top/bottom hub bearings — **STRUCTURAL SIGN-OFF REQUIRED** |
 | Quantity | 1 post (carries the full bay + housing + drum swing cantilever, ~3.6 kN·m, SF ~3.7 in S355) |
-| Position | Far-left panel edge — X=175mm, Yd=2287mm |
+| Position | Far-left panel edge — X=175mm, Yd=2,287mm |
 | Mounting | Post fixed top + bottom to the container end structure; the swinging frame rotates on the hub bearings (vertical axis ⇒ balanced at any angle, no gravity torque) |
 | Swing | ~56° inboard to the transport position (locked by the top + bottom wall stays); swings clear of the door plane for personnel/equipment access |
 
@@ -284,7 +284,7 @@ engineer's sign-off** before fabrication.
 |-----------|-------|
 | Model | Southco C2-33 cam compression latch |
 | Quantity | 4 (one at each corner) |
-| Positions | 210mm and 2152mm from side edges, 220mm and 2168mm from floor |
+| Positions | 210mm and 2,152mm from side edges, 220mm and 2,168mm from floor |
 | Mounting face | **Interior** — deliberate safety design for emergency egress |
 | Seal compression | Compresses EPDM perimeter gasket against fixed door frame |
 
@@ -299,7 +299,7 @@ interior equipment.
 
 For transport the entire swinging assembly — the panel center section (Yd 180–2287), the B2
 punch-out bay, and the housing + revolving drum — **revolves ~56° about a vertical Ø89mm CHS
-pivot post** (the reused film-plane far-left upright, at X=175mm / Yd=2287mm). The swing carries
+pivot post** (the reused film-plane far-left upright, at X=175mm / Yd=2,287mm). The swing carries
 the bay's ~890mm exterior overhang from outside the cargo-door plane to inboard of it, so the ISO
 doors close. The earlier "slide ~880mm on ceiling rails" scheme is **retired** — there is no
 linear carriage.
@@ -428,9 +428,9 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame perimeter + internal members | 4 | $120–$160 |
-| 4mm black PP plastic sheet (1220 × 2440mm) | Panel skins, both faces (~12 m²) — rev11, replaces 18mm ply | 4 | $260–$420 |
-| 18mm exterior-grade plywood | Fan B mount band only (one corner, bottom→1125mm) | 0.5 sheet | $30–$50 |
-| 3mm aluminum plate (1220 × 2440mm) | Corner zone core plates | 2 | $360–$460 |
+| 4mm black PP plastic sheet (1220 × 2,440mm) | Panel skins, both faces (~12 m²) — rev11, replaces 18mm ply | 4 | $260–$420 |
+| 18mm exterior-grade plywood | Fan B mount band only (one corner, bottom→1,125mm) | 0.5 sheet | $30–$50 |
+| 3mm aluminum plate (1220 × 2,440mm) | Corner zone core plates | 2 | $360–$460 |
 | 20mm EPDM gasket (per meter, closed-cell) | Perimeter seal (~10 m) + housing-surround ring (~6 m) + 2× vertical **cut seals** at Yd180/2287 (~5 m) | 21 m | $84–$126 |
 | Aluminum U-channel (per meter) | Gasket retainer + **PP-skin retention** (perimeter + housing-surround + stiffener grid) | 40 m | $120–$200 |
 | Southco C2-33 cam compression latch | Interior-mounted corner latches (compress the perimeter + cut + lip seals) | 4 | $60–$100 |

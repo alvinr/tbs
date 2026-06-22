@@ -12,14 +12,14 @@ This report describes the **cam-lever spring clamp system** that secures the mus
 
 ## 2. Clamp Layout
 
-**92 cam-lever spring clamps** are spaced at 150mm centers around the full perimeter of the 4499mm × 2388mm film plane frame:
+**92 cam-lever spring clamps** are spaced at 150mm centers around the full perimeter of the 4,499mm × 2,388mm film plane frame:
 
 | Edge | Length | Clamp Count |
 |------|--------|-------------|
-| Top horizontal | 4499mm | 30 |
-| Bottom horizontal | 4499mm | 30 |
-| Left vertical | 2388mm | 16 |
-| Right vertical | 2388mm | 16 |
+| Top horizontal | 4,499mm | 30 |
+| Bottom horizontal | 4,499mm | 30 |
+| Left vertical | 2,388mm | 16 |
+| Right vertical | 2,388mm | 16 |
 | **Total** | | **92** |
 
 ---

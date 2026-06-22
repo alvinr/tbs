@@ -3,7 +3,7 @@
 # Why a Lens Changes Exposure Time
 ## A First-Principles Explanation of Aperture, Light Collection, and Reciprocity
 
-**Camera:** Option B, f = 2362mm, pinhole Ø 2.17mm (f/1088)  
+**Camera:** Option B, f = 2,362mm, pinhole Ø 2.17mm (f/1088)  
 **Baseline:** ISO 6 silver gelatin paper, full sun, Schwarzschild corrected — pinhole exposure ~43 minutes  
 **Lens comparison:** Process lens or telescope objective at f/8–f/128
 
@@ -57,7 +57,7 @@ A_lens = π(D/2)²
 
 For a lens of focal length f_L at f-number N, the aperture diameter D = f_L / N.
 
-For a lens at f/16 installed in this camera (f_L = 2362mm):
+For a lens at f/16 installed in this camera (f_L = 2,362mm):
 
 ```
 D = 2,362 / 16 = 147.6mm
@@ -286,7 +286,7 @@ At f/32–f/64, exposure times on ISO 6 paper run 2–11 seconds. This changes t
 - Reciprocity failure is negligible — exposure is predictable and repeatable
 - Depth of field of 1.2–2.6 m provides useful control over background sharpness
 
-The trade-off is that a lens only covers a 300–600mm diameter central circle of the 5893mm wide image plane. The choice between pinhole (full plane, slow) and lens (central medallion, fast) is therefore also a compositional and aesthetic decision, not only a technical one.
+The trade-off is that a lens only covers a 300–600mm diameter central circle of the 5,893mm wide image plane. The choice between pinhole (full plane, slow) and lens (central medallion, fast) is therefore also a compositional and aesthetic decision, not only a technical one.
 
 ### The fundamental recommendation
 

@@ -4,8 +4,8 @@
 
 ## 1. Purpose
 
-TBS-001's three-circuit water system requires four 1000 L caged composite totes arranged in a
-2×2 stack in the right end zone (X=4674–5893mm) of the container. Two Blue supply
+TBS-001's three-circuit water system requires four 1,000 L caged composite totes arranged in a
+2×2 stack in the right end zone (X=4,674–5,893mm) of the container. Two Blue supply
 totes (IBC-1 and IBC-2) sit on top; one Brown recycle tote (IBC-3) and one Waste tote
 (IBC-4) sit on the bottom. A welded mild steel **restraint-only** frame restrains all four direct-stacked totes for transport, and maintains a 270mm plumbing corridor
 between the near and far columns for internal pipe routing, valves, and the equipment
@@ -13,11 +13,11 @@ panel.
 
 **Design goals:**
 
-- Restrain 4× 1000 L caged totes in a 2×2 direct-stack (2 columns × 2 tiers)
+- Restrain 4× 1,000 L caged totes in a 2×2 direct-stack (2 columns × 2 tiers)
 - Restrain all totes for road transport with D-ring lashing points
 - Maintain a central plumbing corridor for pipe routing and valve access
 - Enable external fill and drain without opening cargo doors
-- Fit within the <!-- BEGIN fact:container_height_mm -->2388<!-- END fact:container_height_mm -->mm container ceiling height with adequate clearance
+- Fit within the <!-- BEGIN fact:container_height_mm -->2,388<!-- END fact:container_height_mm -->mm container ceiling height with adequate clearance
 
 **Interactive 3D model** — the four IBC totes, the welded stacking frame, and the plumbing corridor. Drag to orbit, scroll to zoom.
 
@@ -37,8 +37,8 @@ panel.
 | Parameter | Value |
 |-----------|-------|
 | Model | Schütz Ecobulk MX 1000L (or equivalent US 48×40 caged composite tote) |
-| Capacity | 1000 L (~264 US gal) per tote. **"600 L" / "1000 L" are fill levels, not tote sizes** — all four totes are identical (a 600 L *caged* tote does not exist) |
-| Overall dimensions | 1,219 × 1016 × 1168mm (W × D × H) |
+| Capacity | 1,000 L (~264 US gal) per tote. **"600 L" / "1,000 L" are fill levels, not tote sizes** — all four totes are identical (a 600 L *caged* tote does not exist) |
+| Overall dimensions | 1,219 × 1016 × 1,168mm (W × D × H) |
 | Pallet format | US 48" × 40" composite |
 | Pallet base height | 168mm (includes feet/runners) |
 | Cage upright tube | Ø25mm |
@@ -46,7 +46,7 @@ panel.
 | Drain valve | DN50 butterfly valve, S60×6 thread, at Z=185mm above IBC base |
 | Fill | **side entry near the top** (no top-cap access — only <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom stacked) |
 | Tare weight | ~65 kg per tote |
-| Full weight (1000 L) | ~1,065 kg per tote |
+| Full weight (1,000 L) | ~1,065 kg per tote |
 | Total tare (4 totes) | ~260 kg; water load see [weight-distribution report](weight-distribution-report.md) |
 
 ### 2.2 Tote Assignments
@@ -62,13 +62,13 @@ panel.
 
 | Parameter | Value |
 |-----------|-------|
-| Near column Yd | 30–1046mm (pushed to near/pinhole wall, 30mm clearance) |
-| Far column Yd | 1316–2332mm (pushed to far wall, 30mm clearance) |
-| Column X range | 4674–5893mm (right-justified to sealed end wall) |
-| Plumbing corridor | Yd=1046–1316mm (270mm gap between columns) |
-| Single IBC height | 1168mm |
-| Stacked height (2 totes, direct-stack cage-on-cage) | 2336mm (2 × 1168mm — no deck/mat between tiers) |
-| Ceiling clearance | <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm (2388 − 2336mm) — tight but transport-validated (see [weight report](weight-distribution-report.md)) |
+| Near column Yd | 30–1,046mm (pushed to near/pinhole wall, 30mm clearance) |
+| Far column Yd | 1,316–2,332mm (pushed to far wall, 30mm clearance) |
+| Column X range | 4,674–5,893mm (right-justified to sealed end wall) |
+| Plumbing corridor | Yd=1,046–1,316mm (270mm gap between columns) |
+| Single IBC height | 1,168mm |
+| Stacked height (2 totes, direct-stack cage-on-cage) | 2,336mm (2 × 1,168mm — no deck/mat between tiers) |
+| Ceiling clearance | <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm (2388 − 2,336mm) — tight but transport-validated (see [weight report](weight-distribution-report.md)) |
 
 ---
 
@@ -76,7 +76,7 @@ panel.
 
 ### 3.1 General Arrangement
 
-The 1000L caged totes **direct-stack cage-on-cage** — the upper tote's pallet base
+The 1,000L caged totes **direct-stack cage-on-cage** — the upper tote's pallet base
 bears directly on the lower tote's cage top, leaving only <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm of ceiling headroom.
 There is no room for (and no need for) a load-bearing platform deck between tiers, so
 the frame is **restraint-only**: it carries no vertical service load, it only keeps the
@@ -101,7 +101,7 @@ mounts the (forward) wet-end equipment panel.
 | Parameter | Value |
 |-----------|-------|
 | Material | 50 × 50 × 3mm RHS mild steel (A500 Grade B) |
-| Front-portal uprights | 2 full-height (Z 0–2296mm) at the IBC front (X≈4734), Yd 1046/1266 |
+| Front-portal uprights | 2 full-height (Z 0–2,296mm) at the IBC front (X≈4734), Yd 1046/1266 |
 | Floor anchorage | 2 × 150 × 150 × 12mm flange-plate feet, 4 × M12 anchors each |
 | Front retaining bars | 4 × 50×20×3 RHS at the IBC front (Z560 + Z1760, seated in the 25mm gap to the film rail), wall → upright per column |
 | Wall joist hangers | 4 × Simpson-style U-pocket receiving the front-bar wall ends, **through-bolted (4 × M12 each) to an exterior backing plate** |
@@ -113,7 +113,7 @@ mounts the (forward) wet-end equipment panel.
 
 ### 3.3 Direct-Stack Junction
 
-The upper tote bears directly on the lower tote's galvanized cage top rail at Z=1168mm
+The upper tote bears directly on the lower tote's galvanized cage top rail at Z=1,168mm
 (no platform, mat or lip) — the totes' normal warehouse cage-on-cage stacking interface,
 rated for a full upper tote.
 
@@ -180,14 +180,14 @@ from the right walkway.
 ## 6. External Plumbing Panel
 
 Three 2" NPT bulkhead unions penetrate the sealed end wall on the container
-centerline (Yd=1181mm), allowing external fill and drain without opening cargo
+centerline (Yd=1,181mm), allowing external fill and drain without opening cargo
 doors.
 
 ### 6.1 Port Layout
 
 | Port | Height (Z) | Circuit | Function |
 |------|-----------|---------|----------|
-| X1 | 2250mm | Blue | Fill — gravity feed; an internal tee (near X1) splits to a SIDE entry near the top of BOTH Blue totes (no top-cap access — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom) |
+| X1 | 2,250mm | Blue | Fill — gravity feed; an internal tee (near X1) splits to a SIDE entry near the top of BOTH Blue totes (no top-cap access — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom) |
 | X3 | 400mm | Brown | Drain IBC-3 — bottom tier, near column |
 | X4 | 200mm | Waste | Drain IBC-4 — bottom tier, far column |
 
@@ -222,7 +222,7 @@ thread).
 
 | Pipe | Route | Notes |
 |------|-------|-------|
-| X1 fill (Blue) | End wall bulkhead → corridor → V1 ball valve → tee → **side-entry** into both IBC-1 & IBC-2 corridor faces near the top (Z=2156, 150mm + flange) | Gravity feed from Z=2250mm; fills both Blue totes in parallel. No top-cap access (~<!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom) |
+| X1 fill (Blue) | End wall bulkhead → corridor → V1 ball valve → tee → **side-entry** into both IBC-1 & IBC-2 corridor faces near the top (Z=2156, 150mm + flange) | Gravity feed from Z=2,250mm; fills both Blue totes in parallel. No top-cap access (~<!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom) |
 | X3 drain (Brown) | IBC-3 DN50 valve → V3 ball valve → **P-05 drain pump** → corridor → end wall bulkhead X3 | Pumped — port at Z=400mm, gravity head insufficient |
 | X4 drain (Waste) | IBC-4 DN50 valve → V4 ball valve → **P-03 drain pump** → corridor → end wall bulkhead X4 | Pumped — port at Z=200mm, evacuates residual below port |
 | Recycle returns | All tote-top returns (sump→IBC-3, filter→IBC-2, reject→IBC-4) enter via **side-entry near the top** | No top-cap access — DV-01/DV-02 recycle loop unchanged |
@@ -230,7 +230,7 @@ thread).
 ### 7.3 Equipment Panel
 
 An 18mm marine plywood panel spans across the IBC plumbing corridor
-(Yd=1046–1316mm) at X=4874mm — at the front (cargo-door) mouth of the corridor,
+(Yd=1,046–1,316mm) at X=4,874mm — at the front (cargo-door) mouth of the corridor,
 where it bolts to the front-portal frame (see [§3.2](#32-frame-specification)).
 All pumps, filters, accumulator, and diverter valves mount on the cargo-door
 (-X) face of this panel.
@@ -240,7 +240,7 @@ All pumps, filters, accumulator, and diverter valves mount on the cargo-door
 | Pumps | P-01, P-02, P-03, P-04 — Shurflo 2088 (12V DC, 3.5 GPM, 45 PSI) |
 | Accumulator | ACC-01 — 0.75 L (23.5 oz), 125 PSI |
 | Filter unit | Purcooflow WHF2045B302 3-stage (F1: 5μ sediment, F2: KDF-55, F3: GAC carbon) |
-| Panel size | 270 × ~1110mm (corridor width × working height) |
+| Panel size | 270 × ~1,110mm (corridor width × working height) |
 
 ---
 
@@ -304,7 +304,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 |------|--------------|-----|----------------|
 | 2" NPT bulkhead union | End wall penetrations | 3 | $45–$75 |
 | 2" Type DC aluminum camlock | Exterior quick-connect fittings | 3 | $30–$50 |
-| 6mm mild steel reinforcing plate (~300 × 2100mm) | Welded to wall interior | 1 | $40–$60 |
+| 6mm mild steel reinforcing plate (~300 × 2,100mm) | Welded to wall interior | 1 | $40–$60 |
 | Neoprene gaskets | Light-tight, watertight seal | 3 | $10–$15 |
 | **External plumbing subtotal** | | | **$125–$200** |
 
@@ -323,7 +323,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
-| 1000 L caged composite IBC tote (Schütz Ecobulk MX 1000 or equiv.) | New or reconditioned US 48×40 caged composite (~65 kg) | 4 | $300–$900 |
+| 1,000 L caged composite IBC tote (Schütz Ecobulk MX 1000 or equiv.) | New or reconditioned US 48×40 caged composite (~65 kg) | 4 | $300–$900 |
 | **IBC subtotal** | | | **$300–$900** |
 
 ### 9.5 Cost Summary

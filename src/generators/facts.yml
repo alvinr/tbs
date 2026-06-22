@@ -106,6 +106,7 @@ focal_length_mm:
   constant: PH_F
   unit: mm
   owner: pinhole-optics-report.md
+  display: comma
   aliases:
     - '\| [Ff]ocal length \| ~?(\d[\d,]{3,})\s*mm'
 
@@ -113,9 +114,10 @@ film_plane_width_mm:
   constant: FP_W
   unit: mm
   owner: film-plane-mechanism-report.md
+  display: comma
   aliases:
-    - 'active[^0-9]{0,6}(\d{4})\s*×\s*2388'
-    - '[Ii]mage plane.{0,18}(\d{4})\s*×\s*2388'
+    - 'active[^0-9]{0,6}(\d[\d,]{3,})\s*×\s*2,?388'
+    - '[Ii]mage plane.{0,18}(\d[\d,]{3,})\s*×\s*2,?388'
 
 # Film-plane height — INJECTION-ONLY (no aliases): 2388 also equals the container height C_HGT, so a
 # value-equality alias-scan would false-positive. Used to FILL the '× 2388' placeholder in the
@@ -124,6 +126,7 @@ film_plane_height_mm:
   constant: FP_H
   unit: mm
   owner: film-plane-mechanism-report.md
+  display: comma
 
 # Container interior — INJECTION-ONLY (no aliases): 2388 also = film-plane/container height and 5893
 # appears in comparison contexts, so they're filled only where a placeholder marks the meaning.
@@ -131,11 +134,13 @@ container_interior_length_mm:
   constant: C_LEN
   unit: mm
   owner: container-report.md
+  display: comma
 
 container_height_mm:
   constant: C_HGT
   unit: mm
   owner: container-report.md
+  display: comma
 
 blue_supply_l:
   constant: BLUE_SUPPLY_L

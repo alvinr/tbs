@@ -98,7 +98,7 @@ TOP VIEW:
 Container doors (for loading) are on the SHORT ENDS — completely separate from the optical path.
 ```
 
-- Focal length = container interior width (7'9" = 2362mm for both 20 ft and 40 ft)
+- Focal length = container interior width (7'9" = 2,362mm for both 20 ft and 40 ft)
 - Image plane = entire interior of one long wall
 - Image width = container interior length (~19'4" for 20 ft; ~39'5" for 40 ft)
 - Field of view = 102° horizontal for 20 ft container; 137° for 40 ft container
@@ -112,8 +112,8 @@ Container doors (for loading) are on the SHORT ENDS — completely separate from
 
 The floor plan below shows the container interior from above (top-down view) with all
 major systems in their installed positions. The optical axis runs left-right in this view
-(from the pinhole on the near long wall to the film plane on the far long wall at 2262mm depth).
-The equipment zone occupies the left third of the container (X = 0–2700mm); the right two-thirds
+(from the pinhole on the near long wall to the film plane on the far long wall at 2,262mm depth).
+The equipment zone occupies the left third of the container (X = 0–2,700mm); the right two-thirds
 is the clear optical zone.
 
 ![TBS-001 — Container Floor Plan (Top Elevation)](assets/container-floorplan.png)
@@ -121,12 +121,12 @@ is the clear optical zone.
 | Zone | Long-axis span | Contents |
 |------|---------------|----------|
 | Left end zone | X = 0–150mm | Light trap drum, hinged panel |
-| Right end zone | X = 4649–5893mm | IBC totes (×4, 2×2 stack), pump manifold (equip panel), filter skid |
+| Right end zone | X = 4,649–5,893mm | IBC totes (×4, 2×2 stack), pump manifold (equip panel), filter skid |
 | Pinhole wall (Yd=0) | Full length | Electrical panel, battery bank, evap duct penetration (cooler external) |
-| Optical zone | X = 2700–5893mm | Clear — no equipment; optical cone from pinhole traverses this area unobstructed |
+| Optical zone | X = 2,700–5,893mm | Clear — no equipment; optical cone from pinhole traverses this area unobstructed |
 | Cargo door end | X = 0mm | Hinged panel with integrated revolving light-trap drum |
-| Pinhole wall | X = 2946mm (center) | Aperture Ø2.17mm at Y_depth=0 |
-| Film plane | Y_depth = 2262mm | Muslin sensitised surface, spanning full 5893mm × 2388mm |
+| Pinhole wall | X = 2,946mm (center) | Aperture Ø2.17mm at Y_depth=0 |
+| Film plane | Y_depth = 2,262mm | Muslin sensitised surface, spanning full 5,893mm × 2,388mm |
 
 See [Engineering Diagrams](engineering-diagrams.md) §3 for the full floor plan drawing,
 and §13 for the optical line-of-sight clearance analysis.
@@ -165,8 +165,8 @@ and §13 for the optical line-of-sight clearance analysis.
 
 | Parameter | Value | Formula |
 |-----------|-------|---------|
-| Image plane dimensions | 19 ft 4 in × 7 ft 10 in (5893mm × 2388mm) | Interior long wall |
-| Focal length | 7 ft 9 in = **2362mm** | Interior width |
+| Image plane dimensions | 19 ft 4 in × 7 ft 10 in (5,893mm × 2,388mm) | Interior long wall |
+| Focal length | 7 ft 9 in = **2,362mm** | Interior width |
 | Rayleigh optimal pinhole | **2.17mm** | d = 1.9 × √(2362 × 0.00055) |
 | Petzval optimal pinhole | 1.78mm | d = 1.56 × √(2362 × 0.00055) |
 | Design pinhole range | **1.8–2.2mm** | Sweet spot |
@@ -228,7 +228,7 @@ The 40-foot container uses the same width (same focal length, same f-number, sam
 |-----------|-------|
 | Image plane dimensions (full) | 39 ft 5 in × 7 ft 10 in |
 | Image plane (masked to target) | **20 ft × 7 ft** (mask the rest) |
-| Focal length | **2362mm** (same interior width as 20 ft container) |
+| Focal length | **2,362mm** (same interior width as 20 ft container) |
 | Rayleigh optimal pinhole | **2.17mm** (identical to Proposal 1) |
 | F-number | **f/1088** (identical) |
 | Horizontal FOV (full 39' width) | **137°** — extreme panoramic |
@@ -253,8 +253,8 @@ This is Orientation A: pinhole on one short end, image on the opposite short end
 
 | Parameter | Value |
 |-----------|-------|
-| Image plane | 7 ft 9 in × 7 ft 10 in (2337mm × 2388mm) |
-| Focal length | **39 ft 5 in = 12013mm** |
+| Image plane | 7 ft 9 in × 7 ft 10 in (2,337mm × 2,388mm) |
+| Focal length | **39 ft 5 in = 12,013mm** |
 | Rayleigh optimal pinhole | **4.87mm** |
 | F-number | **f/2467** |
 | Horizontal FOV | **11°** (narrow, telephoto) |
@@ -271,7 +271,7 @@ This is Orientation A: pinhole on one short end, image on the opposite short end
 
 Two 20-foot standard containers are positioned end-to-end or side-by-side on site:
 
-- **Container A (Camera):** Configured exactly as Proposal 1 — pinhole camera with 2362mm focal length and ~19' × 7.8' image plane.
+- **Container A (Camera):** Configured exactly as Proposal 1 — pinhole camera with 2,362mm focal length and ~19' × 7.8' image plane.
 - **Container B (Darkroom):** Outfitted as a field darkroom for developing and fixing the large-format prints on-site. Equipped with processing trays/tanks, chemistry storage, ventilation, safelighting, and wash station with plumbed water.
 
 #### Advantages
@@ -384,8 +384,8 @@ The pinhole goes in the center of the opposite long wall.
 TBS-001 replaces the original cargo doors with a purpose-built stepped hinged panel incorporating a revolving light trap drum. This provides two things simultaneously: a light-tight seal for operations, and the ability to swing the full panel 180° open for loading IBC totes and equipment.
 
 **Panel design (see engineering drawings below):**
-- 2362 × 2388mm stepped panel, 50×50mm RHS steel frame, 4mm PP plastic skins (18mm-ply Fan-B band)
-- **Stepped profile:** 40mm thick at corner zones (Yd=0–653mm and Yd=1709–2362mm) and 120mm thick at center zone (Yd=653–1709mm) where the light trap drum is mounted
+- 2362 × 2,388mm stepped panel, 50×50mm RHS steel frame, 4mm PP plastic skins (18mm-ply Fan-B band)
+- **Stepped profile:** 40mm thick at corner zones (Yd=0–653mm and Yd=1,709–2,362mm) and 120mm thick at center zone (Yd=653–1,709mm) where the light trap drum is mounted
 - Carried on a vertical **Ø89×8mm CHS pivot post** at the far-left edge (the reused film-plane far-left upright) on a thrust collar + top/bottom hub bearings — swings open about the pivot for access, and ~56° inboard for transport
 - 4 × Southco C2-33 cam compression latches at corners, compressing the 20mm EPDM perimeter + cut seals against a fixed welded door frame (50×50×3mm RHS) at X=0
 - Ø900 housed revolving-door light lock (single-opening C-shell drum, no fins, SKF 6215 bearings) — personnel access without opening the panel; light-tight by geometry
@@ -407,7 +407,7 @@ TBS-001 replaces the original cargo doors with a purpose-built stepped hinged pa
 
 For operations involving darkroom chemistry inside the container:
 
-- **Fan A (exhaust):** 6" vent penetration on the sealed end wall (X=C_LEN), in the 270mm plumbing corridor directly below the X1 fill port (Yd=1181, Z=2000) — the only full-height clear channel past the 1000L direct-stack (totes reach 2336mm). Interior face covered with a 300mm deep light-trap baffle duct (L-shaped offset baffles, black sheet metal).
+- **Fan A (exhaust):** 6" vent penetration on the sealed end wall (X=C_LEN), in the 270mm plumbing corridor directly below the X1 fill port (Yd=1181, Z=2000) — the only full-height clear channel past the 1,000L direct-stack (totes reach 2,336mm). Interior face covered with a 300mm deep light-trap baffle duct (L-shaped offset baffles, black sheet metal).
 - **Fan B (intake):** 6" fan mounted low on the hinged panel (near corner zone by the pinhole wall — rev9/B2 swap, so its conduit runs along the pinhole wall without crossing the suspension rails). Baffle duct protrudes from the panel exterior face — draws fresh air from the open doorway during operation. Wiring via flexible coiled cable from fixed door frame to panel (see [Electrical Report](electrical-report.md) §8.3).
 - During exposure: fans off
 - During processing/loading: fans on for ventilation
@@ -425,7 +425,7 @@ For operations involving darkroom chemistry inside the container:
 | Container | 20 ft standard | 40 ft standard | 40 ft standard | Two 20 ft |
 | Orientation | Side-to-side | Side-to-side | End-to-end | Side-to-side + darkroom |
 | Image plane | 19'4" × 7'10" | Up to 39'5" × 7'10" | 7'9" × 7'10" | 19'4" × 7'10" |
-| Focal length | 7'9" (2362mm) | 7'9" (2362mm) | 39'5" (12013mm) | 7'9" (2362mm) |
+| Focal length | 7'9" (2,362mm) | 7'9" (2,362mm) | 39'5" (12,013mm) | 7'9" (2,362mm) |
 | Optimal pinhole | 2.17mm | 2.17mm | 4.87mm | 2.17mm |
 | F-number | f/1088 | f/1088 | f/2467 | f/1088 |
 | Horizontal FOV | 102° | 102°–137° | 11° | 102° |

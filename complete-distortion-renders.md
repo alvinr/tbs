@@ -30,7 +30,7 @@ Option A's plane is a fixed-size rigid rectangle, so every configuration is a **
 | C2 | 30° | Strong keystone | ![C2](assets/film-plane-distortion-c2.png) |
 | C3 | 40° | Max tilt (design max) — radical perspective break | ![C3](assets/film-plane-distortion-c3.png) |
 | C4 | −40° | Inverted max tilt — bottom rushes forward, ground-rush effect | ![C4](assets/film-plane-distortion-c4.png) |
-| C5 | 0° (near) | Flat plane 2162mm closer — uniform magnification boost ~2.3× | ![C5](assets/film-plane-distortion-c5.png) |
+| C5 | 0° (near) | Flat plane 2,162mm closer — uniform magnification boost ~2.3× | ![C5](assets/film-plane-distortion-c5.png) |
 
 ---
 

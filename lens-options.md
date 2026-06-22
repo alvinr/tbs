@@ -3,8 +3,8 @@
 # Lens Options
 ## A Technical Analysis of Image Quality, Depth of Field, and Exposure Impact
 
-**Camera configuration:** Option B (side-to-side), container interior depth f = 2362mm  
-**Image plane (active):** <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm (~14′ 9″ × 7′ 10″); container interior 5893 × 2388mm  
+**Camera configuration:** Option B (side-to-side), container interior depth f = 2,362mm  
+**Image plane (active):** <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm (~14′ 9″ × 7′ 10″); container interior 5893 × 2,388mm  
 **Current pinhole:** Ø 2.17mm, f/1088  
 **Baseline exposure (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction):** ~30–45 min
 
@@ -12,7 +12,7 @@
 
 ## The Fundamental Problem
 
-Before specifying any lens, one geometric fact must be understood: **no commercially available photographic lens covers the full 5893 × 2388mm image plane.** The image circle required to cover this format fully is 6358mm in diameter. For comparison, the largest format commonly served by photographic lenses is 8×10 inch (203 × 254mm, diagonal 325mm). Our image plane diagonal is **20 times larger**.
+Before specifying any lens, one geometric fact must be understood: **no commercially available photographic lens covers the full 5893 × 2,388mm image plane.** The image circle required to cover this format fully is 6,358mm in diameter. For comparison, the largest format commonly served by photographic lenses is 8×10 inch (203 × 254mm, diagonal 325mm). Our image plane diagonal is **20 times larger**.
 
 This does not mean a lens is useless here. It means the lens choice determines *which portion* of the image plane receives focused, optically sharp light. The decision matrix is:
 
@@ -32,28 +32,28 @@ Each is analyzed in detail below. All share a common optical framework.
 
 ### 1.1 Thin Lens Equation and Focus Distance
 
-The image plane is fixed at 2362mm from the lens position (the pinhole wall). Using the thin lens equation:
+The image plane is fixed at 2,362mm from the lens position (the pinhole wall). Using the thin lens equation:
 
 ```
 1/f_L = 1/d_i + 1/d_o
 ```
 
-Where d_i = 2362mm (fixed), d_o = subject distance, f_L = lens focal length.
+Where d_i = 2,362mm (fixed), d_o = subject distance, f_L = lens focal length.
 
 Solving for d_o: **d_o = d_i × f_L / (d_i − f_L)**
 
 | Lens focal length (f_L) | Sharp focus distance |
 |---|---|
-| 1200mm | 2.4 m |
-| 1321mm | **3.0 m** |
-| 1400mm | 3.4 m |
-| 1500mm | 4.1 m |
-| 1604mm | **5.0 m** |
-| 1800mm | 7.6 m |
-| 2000mm | 13.1 m |
-| 2362mm | ∞ (infinity) |
+| 1,200mm | 2.4 m |
+| 1,321mm | **3.0 m** |
+| 1,400mm | 3.4 m |
+| 1,500mm | 4.1 m |
+| 1,604mm | **5.0 m** |
+| 1,800mm | 7.6 m |
+| 2,000mm | 13.1 m |
+| 2,362mm | ∞ (infinity) |
 
-**For portrait work at 3–5 m: the required lens focal length is 1300–1600mm.** This is the working specification. No standard photographic lens, enlarger lens, or projector lens operates in this focal length range at the diameters needed for this camera. The sources that do are discussed under each option below.
+**For portrait work at 3–5 m: the required lens focal length is 1,300–1,600mm.** This is the working specification. No standard photographic lens, enlarger lens, or projector lens operates in this focal length range at the diameters needed for this camera. The sources that do are discussed under each option below.
 
 ### 1.2 Adjustable Focus: The Lens Board
 
@@ -65,7 +65,7 @@ Moving the lens 1mm toward the subject (increasing d_i by 1mm) shifts focus sign
 Δd_o / Δd_i = −(d_o / d_i)² = −(d_o / 2,362)²
 ```
 
-At 3.4 m subject distance (d_o = 3438mm): moving the lens 1mm toward subject shifts focus by −(3,438/2,362)² = −2.12 m. Focus is extremely sensitive to lens position at these distances. A fine-thread adjustment screw is essential.
+At 3.4 m subject distance (d_o = 3,438mm): moving the lens 1mm toward subject shifts focus by −(3,438/2,362)² = −2.12 m. Focus is extremely sensitive to lens position at these distances. A fine-thread adjustment screw is essential.
 
 ### 1.3 Magnification
 
@@ -77,19 +77,19 @@ M = d_i / d_o = 2,362 / d_o
 
 This is identical to the pinhole case. A subject at 3.4 m produces an image 0.687× their actual size, regardless of whether the camera uses a pinhole or a lens. The lens determines *sharpness*; geometry determines *size*.
 
-| Subject distance | Magnification | Image height of 1780mm person |
+| Subject distance | Magnification | Image height of 1,780mm person |
 |---|---|---|
-| 2.0 m | 1.18× | 2102mm (larger than life) |
-| 2.4 m | 0.98× | 1752mm (near life-size) |
-| 3.0 m | 0.79× | 1401mm |
-| 3.4 m | 0.69× | 1237mm |
+| 2.0 m | 1.18× | 2,102mm (larger than life) |
+| 2.4 m | 0.98× | 1,752mm (near life-size) |
+| 3.0 m | 0.79× | 1,401mm |
+| 3.4 m | 0.69× | 1,237mm |
 | 5.0 m | 0.47× | 841mm |
 | 7.6 m | 0.31× | 553mm |
 | 10.0 m | 0.24× | 420mm |
 
 ### 1.4 Bellows Extension Factor
 
-At portrait distances, the lens-to-image-plane distance (2362mm) is comparable in magnitude to the object distance. This ratio matters for exposure: the closer the subject, the more the effective f-number increases relative to the lens's rated value.
+At portrait distances, the lens-to-image-plane distance (2,362mm) is comparable in magnitude to the object distance. This ratio matters for exposure: the closer the subject, the more the effective f-number increases relative to the lens's rated value.
 
 ```
 Effective f-number = rated f-number × (1 + M)
@@ -139,8 +139,8 @@ Baseline: Sunny-16 at ISO 6 = 1/6 second at f/16. All times below include bellow
 With a pinhole, depth of field is effectively unlimited — the blur circle grows slowly with distance from the optimum, and the variation is small compared to the pinhole's already-modest resolution. With a lens, depth of field is sharply defined and depends on aperture.
 
 The following uses:
-- f_L = 1400mm (focused at 3.44 m)
-- Circle of confusion c = 3mm (appropriate for a 4499mm wide active image viewed from 5–7 m)
+- f_L = 1,400mm (focused at 3.44 m)
+- Circle of confusion c = 3mm (appropriate for a 4,499mm wide active image viewed from 5–7 m)
 - Hyperfocal distance H = f_L² / (N × c)
 
 | Aperture | Hyperfocal dist. | Near limit | Far limit | DoF span | Portrait suitability |
@@ -177,7 +177,7 @@ The following uses:
 
 These are diffraction limits — the ceiling for any perfect lens. Real lenses fall below this due to aberrations. At f/8 a real-world large-format process lens might achieve 15–25 lp/mm (still 65–110× better than the pinhole). Even a mediocre singlet at f/8 would give 5–10 lp/mm, 20–43× better.
 
-### 4.2 What the Improvement Looks Like on a 4499mm Wide Active Image
+### 4.2 What the Improvement Looks Like on a 4,499mm Wide Active Image
 
 The pinhole resolves features of ~2.17mm on the image plane. At 3.4 m subject distance (M = 0.69), this corresponds to resolving features ~3.1mm in the subject — roughly the resolution needed to clearly see eyebrows, lips, and hair texture.
 
@@ -197,16 +197,16 @@ These are the highest-quality option within their coverage area. Process lenses 
 
 | Lens | Focal length | Max aperture | Image circle (@ infinity) | Typical used price |
 |---|---|---|---|---|
-| Rodenstock Apo-Ronar 1200mm | 1200mm | f/14 | ~400mm | $400–$1,200 |
-| Nikkor T 1200mm f/11 | 1200mm | f/11 | ~450mm | $600–$1,500 |
+| Rodenstock Apo-Ronar 1,200mm | 1,200mm | f/14 | ~400mm | $400–$1,200 |
+| Nikkor T 1,200mm f/11 | 1,200mm | f/11 | ~450mm | $600–$1,500 |
 | Schneider Apo-Symmar 800mm | 800mm | f/14 | ~500mm | $300–$800 |
 | Rodenstock Apo-Ronar 600mm | 600mm | f/9 | ~350mm | $150–$400 |
 
-**For this camera**, the most practical option is the **Rodenstock Apo-Ronar 1200mm or Nikkor T 1200mm** — both focus sharply near 2.4 m (d_i = 2362mm) with a single fixed lens. A 1400mm process lens (custom made or a rare large-format aerial lens) would focus at 3.4 m — more appropriate for portraits.
+**For this camera**, the most practical option is the **Rodenstock Apo-Ronar 1,200mm or Nikkor T 1,200mm** — both focus sharply near 2.4 m (d_i = 2,362mm) with a single fixed lens. A 1,400mm process lens (custom made or a rare large-format aerial lens) would focus at 3.4 m — more appropriate for portraits.
 
-**What the image looks like:** A sharp circular disk in the center of the photosensitive surface, approximately 400–500mm in diameter. The remaining ~4099mm width of the active image plane receives no light. The entire portrait must be composed within this central medallion.
+**What the image looks like:** A sharp circular disk in the center of the photosensitive surface, approximately 400–500mm in diameter. The remaining ~4,099mm width of the active image plane receives no light. The entire portrait must be composed within this central medallion.
 
-**Coverage as percentage of image plane:** 400mm circle / 4499mm active width = **8.9% of image width**. The circular image is a small fraction of the ~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft active plane. The remainder of the plane is unexposed (black in the final image, or could be utilised by other means).
+**Coverage as percentage of image plane:** 400mm circle / 4,499mm active width = **8.9% of image width**. The circular image is a small fraction of the ~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft active plane. The remainder of the plane is unexposed (black in the final image, or could be utilised by other means).
 
 **Distortion:** Designed for <0.1% distortion across the image circle. Straight lines render straight. Essentially identical to pinhole geometry within the covered area.
 
@@ -220,19 +220,19 @@ t = (1/6) × (24/16)² = (1/6) × 2.25 = 0.375 sec — a hand-operated shutter i
 
 ### 5B: Telescope Achromat Objective
 
-Telescope refractor objectives are commercially produced as high-quality achromatic doublets in the 80–200mm aperture range at focal lengths of 500–2000mm. They are designed to form sharp star images — the most demanding test of on-axis sharpness — and perform excellently as camera lenses on axis.
+Telescope refractor objectives are commercially produced as high-quality achromatic doublets in the 80–200mm aperture range at focal lengths of 500–2,000mm. They are designed to form sharp star images — the most demanding test of on-axis sharpness — and perform excellently as camera lenses on axis.
 
 **Useful examples for this camera:**
 
 | Optic | Focal length | Aperture | f-number | Image circle | Price (approx) |
 |---|---|---|---|---|---|
-| Sky-Watcher 120mm f/8.3 Doublet Apo | 1000mm | 120mm | f/8.3 | ~100–150mm | ~$700 |
+| Sky-Watcher 120mm f/8.3 Doublet Apo | 1,000mm | 120mm | f/8.3 | ~100–150mm | ~$700 |
 | William Optics GT102 | 714mm | 102mm | f/7 | ~80–100mm | ~$900 |
 | Explore Scientific ED127 | 952mm | 127mm | f/7.5 | ~120–150mm | ~$800 |
-| Takahashi FSQ-130ED | 1000mm | 130mm | f/7.7 | ~180mm | ~$4,500 |
-| Custom telescope doublet (150mm f/10) | 1500mm | 150mm | f/10 | ~200–250mm | ~$500–$2,000 (used) |
+| Takahashi FSQ-130ED | 1,000mm | 130mm | f/7.7 | ~180mm | ~$4,500 |
+| Custom telescope doublet (150mm f/10) | 1,500mm | 150mm | f/10 | ~200–250mm | ~$500–$2,000 (used) |
 
-A 150mm aperture f/10 refractor objective at 1500mm focal length focuses at 5.0 m from the camera wall — ideal for portraits. It covers approximately 200–250mm image circle — still a small central medallion (200/4,499 = **4.4% of active image width**) but of extremely high quality.
+A 150mm aperture f/10 refractor objective at 1,500mm focal length focuses at 5.0 m from the camera wall — ideal for portraits. It covers approximately 200–250mm image circle — still a small central medallion (200/4,499 = **4.4% of active image width**) but of extremely high quality.
 
 These can be sourced as surplus telescope objectives from astronomy retailers (OPT Telescopes, High Point Scientific, Agena Astro) at prices that are far below commercial photographic process lenses of similar quality.
 
@@ -252,14 +252,14 @@ Large Fresnel lenses are the only commercially available single elements that co
 
 | Source / product | Aperture | Focal length | Price |
 |---|---|---|---|
-| Anchor Optics / Edmund Optics (acrylic) | 280mm × 280mm | 500–2500mm | $40–$200 |
-| Plastic focal lens (solar/Fresnel) | 600mm × 600mm | 700–1500mm | $30–$80 |
-| Fresnel Technologies surplus acrylic | Up to 1200mm × 900mm | Custom | $200–$500 |
-| Glass Fresnel (lighthouse type, antique) | 500–1000mm dia | 300–1000mm | $500–$5,000 |
+| Anchor Optics / Edmund Optics (acrylic) | 280mm × 280mm | 500–2,500mm | $40–$200 |
+| Plastic focal lens (solar/Fresnel) | 600mm × 600mm | 700–1,500mm | $30–$80 |
+| Fresnel Technologies surplus acrylic | Up to 1,200mm × 900mm | Custom | $200–$500 |
+| Glass Fresnel (lighthouse type, antique) | 500–1,000mm dia | 300–1,000mm | $500–$5,000 |
 
-For this camera: a 600 × 600mm Fresnel lens at 1400mm focal length would cover a 600mm square within the <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm active image plane — still not full coverage, but significantly more than a process lens. Stacking two side by side (600 × 600mm each) in a 1200 × 600mm assembly would cover about **27% of the active image width**.
+For this camera: a 600 × 600mm Fresnel lens at 1,400mm focal length would cover a 600mm square within the <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm active image plane — still not full coverage, but significantly more than a process lens. Stacking two side by side (600 × 600mm each) in a 1200 × 600mm assembly would cover about **27% of the active image width**.
 
-A full-width solution would require a <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm Fresnel element — this does not exist commercially. Custom mylar Fresnel film exists in large formats (used in projection screens) but at extremely low optical quality.
+A full-width solution would require a <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm Fresnel element — this does not exist commercially. Custom mylar Fresnel film exists in large formats (used in projection screens) but at extremely low optical quality.
 
 **Optical qualities of Fresnel lenses:**
 
@@ -281,18 +281,18 @@ t = (1/6) × (12/16)² = 0.047 sec ≈ 1/21 sec — requires a mechanical shutte
 
 ### 5D: Custom Single-Element Optic
 
-A biconvex or plano-convex glass or acrylic lens of approximately 1400mm focal length can be custom-fabricated by specialist optical workshops. This is the route for larger image coverage with more controlled quality than a Fresnel.
+A biconvex or plano-convex glass or acrylic lens of approximately 1,400mm focal length can be custom-fabricated by specialist optical workshops. This is the route for larger image coverage with more controlled quality than a Fresnel.
 
-**Specification for a custom singlet covering ~1000mm image circle:**
+**Specification for a custom singlet covering ~1,000mm image circle:**
 
 For crown glass (n = 1.52), a symmetric biconvex lens with equal radii:
-- Focal length 1400mm → radius of curvature each surface: R = 2(n−1)f = 2 × 0.52 × 1,400 = **1456mm**
+- Focal length 1,400mm → radius of curvature each surface: R = 2(n−1)f = 2 × 0.52 × 1,400 = **1,456mm**
 - Aperture required: at f/16, d = 1,400/16 = 87.5mm. At f/8: 175mm.
 - Physical diameter: 200–300mm is practical for fabrication; covers ~250–400mm image circle
 
-**To cover the full 4499mm active image plane** as a single element, the lens would need to be at least 700mm in diameter — a single glass element of 0.7 meter diameter, 1.4 m focal length. This is within the realm of custom optics for scientific instruments but the cost is extreme ($30,000–$200,000+). Acrylic is cheaper to fabricate at large size but optically inferior.
+**To cover the full 4,499mm active image plane** as a single element, the lens would need to be at least 700mm in diameter — a single glass element of 0.7 meter diameter, 1.4 m focal length. This is within the realm of custom optics for scientific instruments but the cost is extreme ($30,000–$200,000+). Acrylic is cheaper to fabricate at large size but optically inferior.
 
-**Realistic custom singlet:** A 200–300mm diameter, 1400mm focal length crown glass singlet is fabricatable by companies such as Optical Surfaces Ltd (UK), II-VI Optical Systems, or local optical fabrication shops. Cost: approximately **$2,000–$8,000** depending on surface quality specification. This covers a ~300–500mm circle.
+**Realistic custom singlet:** A 200–300mm diameter, 1,400mm focal length crown glass singlet is fabricatable by companies such as Optical Surfaces Ltd (UK), II-VI Optical Systems, or local optical fabrication shops. Cost: approximately **$2,000–$8,000** depending on surface quality specification. This covers a ~300–500mm circle.
 
 **Aberrations of a singlet at f/8:**
 - Spherical aberration: significant — a biconvex singlet at f/8 has a spherical aberration blur of approximately f_L × (d/f_L)³ / (8(n−1)) ≈ several mm. This degrades the image significantly.
@@ -305,16 +305,16 @@ For crown glass (n = 1.52), a symmetric biconvex lens with equal radii:
 
 This is the fundamental optical constraint of this camera that no lens choice can fully resolve.
 
-The active image plane is <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm, centered on the pinhole (X=2399mm) — giving half-width 2250mm and half-height 1194mm. The distance from the lens to the center of the image plane is 2362mm. The distance from the lens to the active image plane corners and edges:
+The active image plane is <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm, centered on the pinhole (X=2,399mm) — giving half-width 2,250mm and half-height 1,194mm. The distance from the lens to the center of the image plane is 2,362mm. The distance from the lens to the active image plane corners and edges:
 
 ```
 d_mid-width = √(2,362² + 2,250²) = 3262mm   [half-width of active plane]
 d_corner    = √(2,362² + 2,250² + 1,194²) = 3474mm   [half-diagonal of active plane]
 ```
 
-The corner is **1112mm further from the lens than the center.** The left/right mid-edge point is 3262mm from the lens (900mm further than center). This means:
+The corner is **1,112mm further from the lens than the center.** The left/right mid-edge point is 3,262mm from the lens (900mm further than center). This means:
 
-**A lens focused on the center (d_i = 2362mm) is focused on a subject at ~3.4 m. At the left/right edges of the active image plane, the equivalent focused subject distance would be ~3.4 × (3,262/2,362) = 4.7 m. At the corners, ~3.4 × (3,474/2,362) = 5.0 m.**
+**A lens focused on the center (d_i = 2,362mm) is focused on a subject at ~3.4 m. At the left/right edges of the active image plane, the equivalent focused subject distance would be ~3.4 × (3,262/2,362) = 4.7 m. At the corners, ~3.4 × (3,474/2,362) = 5.0 m.**
 
 This is not a focus error in the traditional sense — it is the geometric consequence of projecting a wide-angle perspective onto a flat plane. A person standing 3.4 m in front of the center of the camera would be rendered sharply in the center and soft in the corners, because at the corners the image plane is optically further from the lens. The only way to have the full image plane in sharp focus simultaneously would be:
 
@@ -335,20 +335,20 @@ Both the pinhole and any lens suffer the same physical law: illumination falls a
 | Mid-width edge | 43.6° | 0.273 | 27% | 1.9 stops |
 | Corner | 47.1° | 0.215 | 22% | 2.2 stops |
 
-The corners of the active image plane receive 22% of the light falling on the center — approximately **2.2 stops less exposure**. This is present with the pinhole and with any lens; it is a property of the field angle, not the optical system. Because the active image plane (4499mm wide) is substantially narrower than the full container interior (5893mm), the field angle is less extreme than a full-container analysis would suggest — the corner penalty improves from ~3 stops (full container) to ~2.2 stops (active plane). The effect on the final image: a natural vignette, darkening from center to corners. At 35 minutes or at 2 seconds, the corner of the image is always about 2 stops darker than the center.
+The corners of the active image plane receive 22% of the light falling on the center — approximately **2.2 stops less exposure**. This is present with the pinhole and with any lens; it is a property of the field angle, not the optical system. Because the active image plane (4,499mm wide) is substantially narrower than the full container interior (5,893mm), the field angle is less extreme than a full-container analysis would suggest — the corner penalty improves from ~3 stops (full container) to ~2.2 stops (active plane). The effect on the final image: a natural vignette, darkening from center to corners. At 35 minutes or at 2 seconds, the corner of the image is always about 2 stops darker than the center.
 
 On silver gelatin paper, 2.2 stops of underexposure in the corners means the corner areas may not reach adequate density in a correctly-exposed center. Exposure must account for this — either the center will be slightly overexposed to ensure the corners have sufficient density, or the corners are accepted as darker (which, for a portrait centered in the frame, may be desirable — a natural vignette framing the subject).
 
 ### 6.2 The Curved Image Plane Option
 
-If the photosensitive substrate is mounted on a concave backing panel curved to match the focal surface (a sphere of radius 2362mm centerd on the lens), the field geometry problem is eliminated. Every point on the curved surface is equidistant from the lens. The image plane would need to curve forward (toward the lens) at the edges by approximately:
+If the photosensitive substrate is mounted on a concave backing panel curved to match the focal surface (a sphere of radius 2,362mm centerd on the lens), the field geometry problem is eliminated. Every point on the curved surface is equidistant from the lens. The image plane would need to curve forward (toward the lens) at the edges by approximately:
 
 ```
 Δz at mid-width edge = 3,262 − 2,362 = 900mm
 Δz at corner = 3,474 − 2,362 = 1112mm
 ```
 
-This is still substantial curvature — the active image plane would bow forward at the sides by ~900mm. Constructing this with ACM panel is not feasible, but constructing it with fabric (canvas or muslin) stretched over a curved timber frame absolutely is. The curved frame would need to be CNC-machined or steam-bent to a precise 2362mm radius sphere section. Note: the bow is significantly more manageable than for a full-container-width image plane (which would require 1414mm of forward bow at the mid-width edge).
+This is still substantial curvature — the active image plane would bow forward at the sides by ~900mm. Constructing this with ACM panel is not feasible, but constructing it with fabric (canvas or muslin) stretched over a curved timber frame absolutely is. The curved frame would need to be CNC-machined or steam-bent to a precise 2,362mm radius sphere section. Note: the bow is significantly more manageable than for a full-container-width image plane (which would require 1,414mm of forward bow at the mid-width edge).
 
 For a process lens or telescope objective (covering only a 300–600mm circle in the center), this is irrelevant — the field curvature is only noticeable at extreme field angles beyond the lens's image circle. Only relevant if full-field coverage is attempted with a large Fresnel or custom element.
 
@@ -380,7 +380,7 @@ For the image areas covered by each option (central circle, 300–600mm diameter
 
 | Lens type | Longitudinal CA | Lateral CA | On image | Remedy |
 |---|---|---|---|---|
-| Singlet crown glass, f_L = 1400mm | ~25mm | Significant | Color fringing on edges | Achromatic doublet |
+| Singlet crown glass, f_L = 1,400mm | ~25mm | Significant | Color fringing on edges | Achromatic doublet |
 | Singlet flint glass | ~18mm | Significant | Less than crown | Achromatic doublet |
 | Achromatic doublet (crown + flint) | ~1–3mm | Minimal | Very slight color fringing | — or APO |
 | Apochromatic triplet (telescope APO) | <0.5mm | Negligible | Invisible in practice | — |
@@ -398,7 +398,7 @@ The most interesting option for this camera may be to combine a lens with the pi
 
 ### 9A: Central Lens, Peripheral Pinhole Array
 
-Mount a 300mm process lens in the center of the pinhole wall. Drill a series of 2.17mm pinholes at regular intervals across the remainder of the wall (e.g., a 5 × 2 grid of pinholes spaced 1000mm apart). Each pinhole projects a complete, soft image of the full scene onto the image plane, overlapping with each other and with the lens image.
+Mount a 300mm process lens in the center of the pinhole wall. Drill a series of 2.17mm pinholes at regular intervals across the remainder of the wall (e.g., a 5 × 2 grid of pinholes spaced 1,000mm apart). Each pinhole projects a complete, soft image of the full scene onto the image plane, overlapping with each other and with the lens image.
 
 Result: a central sharp-focus portrait medallion surrounded by a web of overlapping, offset soft pinhole images — a unique artefact that could not be produced any other way.
 
@@ -433,7 +433,7 @@ Install multiple lenses (e.g., 6 large magnifying glass elements, 200mm diameter
 
 If a lens is added for portrait work with the goal of maximising image quality:
 
-**Primary choice:** A **Rodenstock Apo-Ronar 1200mm f/14** or **Nikkor T 1200mm f/11** mounted on an adjustable focus board in the pinhole wall. Both are available on the used market for $400–$1,500. The 1200mm focal length focuses at 2.4 m from the wall — slightly close for comfortable portrait work; extending the lens board ~80mm forward (toward the subject) re-focuses the system to approximately 3.4 m. These lenses provide:
+**Primary choice:** A **Rodenstock Apo-Ronar 1,200mm f/14** or **Nikkor T 1,200mm f/11** mounted on an adjustable focus board in the pinhole wall. Both are available on the used market for $400–$1,500. The 1,200mm focal length focuses at 2.4 m from the wall — slightly close for comfortable portrait work; extending the lens board ~80mm forward (toward the subject) re-focuses the system to approximately 3.4 m. These lenses provide:
 
 - f/14 maximum aperture → effective f/24 at 3.4 m → 0.4 second exposure on ISO 6 paper
 - <0.1% distortion (designed for reprographic work)
@@ -441,9 +441,9 @@ If a lens is added for portrait work with the goal of maximising image quality:
 - Ø ~400mm image circle — a large, centerd medallion portrait
 - Extremely well-documented optical performance
 
-**For broader coverage at the cost of aberrant character:** A **600 × 600mm acrylic Fresnel lens at 1400mm focal length** (available from Edmund Optics or solar optics suppliers for $40–$120). Covers a 600mm circle with characteristic soft-center/chromatic-edge quality. Interesting artistic choice; very cheap to test.
+**For broader coverage at the cost of aberrant character:** A **600 × 600mm acrylic Fresnel lens at 1,400mm focal length** (available from Edmund Optics or solar optics suppliers for $40–$120). Covers a 600mm circle with characteristic soft-center/chromatic-edge quality. Interesting artistic choice; very cheap to test.
 
-**For maximum sharpness in the smallest area:** A **150mm aperture apochromatic telescope doublet** (1200–1500mm focal length). Sky-Watcher or William Optics 150mm f/8–f/10 APO objectives, purchased as bare objectives without focuser from surplus telescope suppliers. These deliver the finest image quality available at this price point ($800–$2,000) and can be experimentally swapped with the pinhole plate.
+**For maximum sharpness in the smallest area:** A **150mm aperture apochromatic telescope doublet** (1,200–1,500mm focal length). Sky-Watcher or William Optics 150mm f/8–f/10 APO objectives, purchased as bare objectives without focuser from surplus telescope suppliers. These deliver the finest image quality available at this price point ($800–$2,000) and can be experimentally swapped with the pinhole plate.
 
 ### The Fundamental Trade-Off
 
@@ -469,7 +469,7 @@ The pinhole gives the whole image, slowly. The lens gives a sharp central circle
 | Stroebel, L., *View Camera Technique*, 7th ed., Focal Press, 1999 | Bellows extension factor, large-format lens practice |
 | Renner, E., *Pinhole Photography*, 4th ed., Focal Press, 2009 | Pinhole-to-lens comparison; practical exposure guidance |
 | Rodenstock product data sheets (rodenstock-photo.de) | Apo-Ronar focal length / image circle specifications |
-| Nikon / Nikkor large format lens specifications | T-ED series 1200mm data |
+| Nikon / Nikkor large format lens specifications | T-ED series 1,200mm data |
 | Edmund Optics (edmundoptics.com) | Fresnel lens specifications, acrylic singlet availability |
 | Sky-Watcher / William Optics product pages | APO refractor objective specifications |
 | Ray, S., *Applied Photographic Optics*, 3rd ed., Focal Press, 2002, §15 | Field curvature, cos⁴ falloff, large-format lens design |

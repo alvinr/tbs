@@ -162,15 +162,21 @@ def warn_should_be_placeholder() -> list[str]:
 
 
 def warn_thousands_sep() -> list[str]:
-    """The same 4–5 digit value written both with and without a thousands separator in
-    one doc (e.g. '1,800' and '1800') — pick one."""
+    """The same value *with the same unit* written both with and without a thousands
+    separator in one doc (e.g. '1,800 L' and '1800 L'). Keys on the trailing unit so the
+    project convention — mm coordinates carry no separator, volumes/money/weights do — is
+    not flagged as an inconsistency."""
+    num = re.compile(r"(?<![\d.,$])(\$?)(\d{1,2},\d{3}|\d{4,5})\s*(mm|cm|kg|gal|Wh|W|V|A|L|g|°|sq ft|prints)?")
     issues = []
     for fn in _published_docs():
         text = _strip(open(os.path.join(ROOT, fn), encoding="utf-8").read())
-        comma = {int(t.replace(",", "")) for t in re.findall(r"(?<![\d.,])\d{1,2},\d{3}(?![\d.,])", text)}
-        plain = {int(t) for t in re.findall(r"(?<![\d.,])\d{4,5}(?![\d.,])", text)}
-        for v in sorted(comma & plain):
-            issues.append(f"{fn}  '{v:,}' and '{v}' both appear — use one thousands-separator style")
+        comma, plain = {}, {}
+        for m in num.finditer(text):
+            key = (m.group(1), m.group(2).replace(",", ""), m.group(3) or "")
+            (comma if "," in m.group(2) else plain).setdefault(key, True)
+        for pre, val, unit in sorted(set(comma) & set(plain)):
+            label = f"{pre}{int(val):,}{(' ' + unit) if unit else ''}"
+            issues.append(f"{fn}  '{label}' written both with and without a thousands separator")
     return issues
 
 

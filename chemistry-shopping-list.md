@@ -3,7 +3,7 @@
 # Chemistry Shopping Lists
 ## Giant Pinhole Camera: Raw Material Procurement by Process
 
-**Image plane per print:** <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm (~116 sq ft active film zone; container interior 5893 × 2388mm)  
+**Image plane per print:** <!-- BEGIN fact:film_plane_width_mm -->4499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2388<!-- END fact:film_plane_height_mm -->mm (~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft active film zone; container interior 5893 × 2388mm)  
 **Run size:** 50 prints  
 **Total substrate area:** ~5,800 sq ft  
 **Pricing basis:** April 2026. Prices marked † are confirmed from supplier listings. All others are close estimates from current market data and should be verified before ordering. All prices USD unless noted.
@@ -27,7 +27,7 @@ Silver nitrate is the cost driver for salt print and Van Dyke Brown. Cyanotype i
 
 ## Shared Item: Substrate Fabric
 
-All iron/silver processes use unbleached cotton muslin as the substrate. 50 prints at ~116 sq ft each, plus 15% waste = ~6,670 sq ft total; at 60" (5 ft) wide fabric that is 6,670 ÷ 5 = **~1,334 linear feet ≈ 445 linear yards**.
+All iron/silver processes use unbleached cotton muslin as the substrate. 50 prints at ~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft each, plus 15% waste = ~6,670 sq ft total; at 60" (5 ft) wide fabric that is 6,670 ÷ 5 = **~1,334 linear feet ≈ 445 linear yards**.
 
 > **Correction (2026-06-18):** an earlier version of this section read "~1,340 linear **yards**" — that figure was 1,334 linear **feet** mis-labelled as yards (a 3× over-count). The corrected requirement is **~445 yd = 3 × 150-yd rolls ≈ $300**, not 9 rolls / $900 (the summary's "$1,014" was the same 1,340 yd priced by-the-yard). Every muslin-bearing process total below — and the executive summary and comparative tables — has now been re-summed at **$300 substrate** (each dropped ~$600, except Ilford, which is paper). The [cost breakdown §7](project-cost-breakdown.md) matches.
 

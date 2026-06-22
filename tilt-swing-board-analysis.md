@@ -18,11 +18,11 @@ The pinhole is a geometric projector — it has no focal length in the lens sens
 
 | Movement | Effect on image |
 |----------|----------------|
-| Board tilt up (+α) | Image shifts upward on film (~207mm per 5°) |
-| Board swing right (+β) | Image shifts right on film (~207mm per 5°) |
+| Board tilt up (+α) | Image shifts upward on film (~<!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm per 5°) |
+| Board swing right (+β) | Image shifts right on film (~<!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm per 5°) |
 | Compound tilt + swing | Image shifts diagonally; introduces ~1.5% anamorphic keystone at 5° |
 
-At f = 2362mm, a 5° board tilt shifts the image **2,362 × tan(5°) = 207mm** on the film plane. On a 2388mm tall film plane this is nearly 9% of the frame height — a very significant compositional tool.
+At f = 2362mm, a 5° board tilt shifts the image **2,362 × tan(5°) = <!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm** on the film plane. On a 2388mm tall film plane this is nearly 9% of the frame height — a very significant compositional tool.
 
 **No Scheimpflug effect**: because a pinhole has no plane of focus, front-board tilt does not rotate the zone of sharpness. Instead it steers the cone of light projected onto the film.
 
@@ -30,7 +30,7 @@ At f = 2362mm, a 5° board tilt shifts the image **2,362 × tan(5°) = 207mm** o
 
 | | Front board tilt | Film plane tilt |
 |-|-----------------|-----------------|
-| Image shift | Yes — 207mm per 5° | No (film moves, not image center) |
+| Image shift | Yes — <!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm per 5° | No (film moves, not image center) |
 | Keystone | Gentle (~1.5% at 5°) | Dramatic (Scheimpflug-style) |
 | Scale gradient | Uniform across field | Non-uniform (near edge stretched) |
 | Focus | Constant (pinhole) | Constant (pinhole) |
@@ -52,9 +52,9 @@ See the [Combined Distortion Renders](#10-combined-distortion-renders) section b
 
 | Axis | Control | Travel | Resolution | Image effect |
 |------|---------|--------|-----------|--------------|
-| Tilt | Top + bottom M8 screws (black knobs) | ±5.3° | 0.012°/click | ±222mm vertical image shift |
-| Swing | Left + right M8 screws (silver knobs) | ±5.3° | 0.012°/click | ±222mm horizontal image shift |
-| Compound | All 4 screws | ±3.7° per axis simultaneously | 0.012°/click | Diagonal shift + keystone |
+| Tilt | Top + bottom M8 screws (black knobs) | ±5.3° | <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click | ±222mm vertical image shift |
+| Swing | Left + right M8 screws (silver knobs) | ±5.3° | <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click | ±222mm horizontal image shift |
+| Compound | All 4 screws | ±3.7° per axis simultaneously | <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click | Diagonal shift + keystone |
 
 **Image shift formula:** shift (mm) = f × tan(θ) = 2,362 × tan(θ)
 
@@ -63,7 +63,7 @@ See the [Combined Distortion Renders](#10-combined-distortion-renders) section b
 | 1° | 41mm | Very subtle — useful for fine composition |
 | 2° | 83mm | ~3.5% of frame height |
 | 3° | 124mm | ~5.2% — clearly visible on print |
-| 5° | 207mm | ~8.7% — dramatic compositional shift |
+| 5° | <!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm | ~8.7% — dramatic compositional shift |
 | 5.3° (max) | 220mm | Mechanical hard stop |
 
 ---

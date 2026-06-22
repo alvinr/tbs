@@ -500,7 +500,7 @@ Covering 116 sq ft with photographic film at any standard format produces costs 
 
 Processing adds C-41 or B&W chemistry at additional cost. 8×10 sheet film in continuous rolls is not commercially available. Handling and tiling 350+ sheets of 8×10 in complete darkness is impractical.
 
-Film is included here for completeness and to confirm the user's instinct: **film is categorically the wrong medium for a 116 sq ft image plane**, both on cost and operational grounds.
+Film is included here for completeness and to confirm the user's instinct: **film is categorically the wrong medium for a <!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft image plane**, both on cost and operational grounds.
 
 ---
 

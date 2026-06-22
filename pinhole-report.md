@@ -128,7 +128,7 @@ Front elevation of all three components at 1:8 scale, showing bolt patterns, ape
 
 ## 10. See Also
 
-- [Tilt-Swing Front Board](tilt-swing-board-report.md) — spherical-pivot adapter that replaces the pinhole plate, adding ±5.3° tilt and swing adjustment
+- [Tilt-Swing Front Board](tilt-swing-board-report.md) — spherical-pivot adapter that replaces the pinhole plate, adding ±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->° tilt and swing adjustment
 - [Electrical Report](electrical-report.md) — circuit assignments and wiring
 - [Engineering Diagrams](engineering-diagrams.md) — complete diagram index
 

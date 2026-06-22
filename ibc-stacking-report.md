@@ -201,11 +201,11 @@ All internal supply and return lines route through the 270mm plumbing corridor
 between the near and far IBC columns, reaching each tote's corridor-facing DN50
 butterfly valve (S60×6 thread). The pipe specification, the per-circuit routing
 (X1 Blue gravity-fill teed to both top totes, X3 Brown and X4 Waste pumped drains,
-and the recycle returns), and the valve schedule are owned by the
+and the recycle returns), and the valve schedule are specified in the
 [Water System Report](water-system-report.md) §4–§5 and §7. The panel-mounted
 pumps, filters, and diverter valves that drive those circuits — mounted on the
 plywood equipment panel at the front (cargo-door) mouth of the corridor, bolted to
-the front-portal frame (see [§3.2](#32-frame-specification)) — are owned by the
+the front-portal frame (see [§3.2](#32-frame-specification)) — are specified in the
 [Equipment Panel Report](equipment-panel-report.md). This report treats the
 corridor plumbing and panel only as loads the stacking frame carries.
 
@@ -295,9 +295,6 @@ the stacking structure and the totes it restrains.
 | Every use | Visually inspect ratchet strap tension before transport |
 | Every 10 prints | Inspect IBC valve seals (DN50 butterfly) for drips; tighten or replace O-ring |
 | Every 10 prints | Check external camlock fittings for cross-threading; clean dust caps |
-| Every 25 prints | Replace F-1 sediment cartridge (5μ melt-blown PP) |
-| Every 20 prints | Replace F-3 GAC carbon block cartridge |
-| Every 30 prints | Replace F-2 KDF-55 heavy metal cartridge |
 | Every 6 months | Inspect D-ring welds for cracking; load-test straps |
 | Every 6 months | Inspect D-ring holders + ratchet straps for wear; re-tension straps |
 | Annually | Inspect frame welds (all joints) for fatigue cracking |

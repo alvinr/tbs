@@ -17,7 +17,7 @@ panel.
 - Restrain all totes for road transport with D-ring lashing points
 - Maintain a central plumbing corridor for pipe routing and valve access
 - Enable external fill and drain without opening cargo doors
-- Fit within the 2388mm container ceiling height with adequate clearance
+- Fit within the <!-- BEGIN fact:container_height_mm -->2388<!-- END fact:container_height_mm -->mm container ceiling height with adequate clearance
 
 **Interactive 3D model** — the four IBC totes, the welded stacking frame, and the plumbing corridor. Drag to orbit, scroll to zoom.
 
@@ -363,7 +363,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 
 | Item | Source |
 |------|--------|
-| Schutz Ecobulk MX 640 L IBC | [Schutz GmbH product catalog](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — US 48×40 composite tote, DN50 valve, UN31HA1/Y |
+| Schütz Ecobulk MX 1000 L IBC | [Schütz product catalog](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — US 48×40 composite tote, DN50 valve, UN31HA1/Y (all four totes are this size; "600 L"/"640 L" are fill levels, not tote sizes) |
 | D-ring lashing point | [McMaster-Carr #3641T29](https://www.mcmaster.com/3641T29) — 25mm, 1,100 kg WLL |
 | Banjo V100FP ball valve | [Banjo Corp catalog](https://www.banjocorp.com/banjo/Valves/V100FP/p/2832572) — 1" full-port polypropylene, quarter-turn |
 | Banjo LE100 90° elbow | [Banjo Corp catalog](https://www.banjocorp.com/banjo/Pipe-Fittings/EL100-90/p/2796532) — 1" HDPE NPT |
@@ -372,7 +372,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | Shurflo 2088 pump | [Pentair Shurflo catalog](https://www.shurflo.com/products/2088-series) — 12V DC, 3.5 GPM, 45 PSI, self-priming diaphragm |
 | Water system architecture | [Water System Report](water-system-report.md) §3 |
 | IBC layout and stacking | [Equipment Layout Report](equipment-layout-report.md) §5 |
-| Frame fabrication drawings | [Engineering Diagrams](engineering-diagrams.md) §15, §17 |
-| Equipment panel specification | [Engineering Diagrams](engineering-diagrams.md) §18 |
+| Frame fabrication drawings | [§8 — Engineering Drawings](#8-engineering-drawings) (this report) · [All Diagrams](all-diagrams.md) |
+| Equipment panel specification | [Equipment Panel Report](equipment-panel-report.md) |
 
 *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

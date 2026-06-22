@@ -134,6 +134,9 @@ URL. Reports end with a **Source References** section.
   a number that carries a unit or `$` gets a comma — `4,499mm`, `X=2,399`, `1,800 L`,
   `$1,800`, `24,000 kg`. Bare product/model numbers, years, and f-numbers do **not**
   (`Shurflo 2088`, `MX 1000`, `2026`, `f/1088`). Enforced by `editorial_lint.py` (advisory).
+  **This is a prose convention only — engineering diagrams keep mm labels comma-free**
+  (standard drafting practice), so a doc reads `4,499mm` while its diagram-of-record reads
+  `4499mm`. That difference is by design, not drift; `editorial_lint` scans docs only.
 - **Watch the overloaded number.** "600 L" has meant a fill level *and* a tote size
   *and* a collection volume — disambiguate ("600 L is a **fill level**, not a tote
   size; all four totes are identical 1000 L vessels"). Same for `2362` (focal length

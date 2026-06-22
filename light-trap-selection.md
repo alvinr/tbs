@@ -167,7 +167,7 @@ The SKF 6215 sealed bearing is rated for radial loads to 52.7 kN and operates at
 | Silicone bead sealant | McMaster-Carr #7587A3 or equivalent | Black, UV-stable |
 | SS grab rail 100mm Ø (×1) | McMaster-Carr #4530T37 | 1" nominal; 400mm cut to length; interior face only |
 | Matte-black interior finish | Black-pigmented sheet; rattle-can / local shop | Touch-in at welds; ~$40–$70 |
-| Plastic fabrication (rolling, hot-air / extrusion welding, fitting) | Estimate 16–22 hrs labour at local plastic shop | $800–$1,150 depending on shop rate |
+| Plastic fabrication (rolling, hot-air / extrusion welding, fitting) | Estimate 16–22 hrs labor at local plastic shop | $800–$1,150 depending on shop rate |
 
 **Total custom housing+drum estimate: $1,465–$2,160.**
 

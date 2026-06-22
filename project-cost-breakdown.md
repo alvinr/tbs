@@ -26,7 +26,7 @@
 | **6b. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles)** | $1,112 | $1,232 | $1,372 |
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,210 | $1,650 | $2,980 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
-| **9. Licences & permits** | $220 | $790 | $1,620 |
+| **9. Licenses & permits** | $220 | $790 | $1,620 |
 | **TOTAL (excl. own transport, CDL, lens)** | **$19,928** | **$25,088** | **$32,370** |
 <!-- END costing:scenario -->
 
@@ -468,7 +468,7 @@ Costs are **per deployment** (one move). The container requires no oversize/over
 
 ---
 
-## 9. Licences & Permits
+## 9. Licenses & Permits
 
 **Source document:** `container-transport-options.md`; location permit costs are estimates not covered by existing research.
 

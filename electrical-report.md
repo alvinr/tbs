@@ -217,7 +217,7 @@ IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior pinhol
 - **Circuit E inverter** — Victron Phoenix 12/375 (GFCI version) wall-mounted on the pinhole wall adjacent to the enclosure (X≈1910, Z≈1180, below the EP, above the battery), with a short fused DC feed and its own DC disconnect (§7.6). Converts 12V DC → 120V AC for the evaporative cooler only.
 
 **Sheet 5 — Main Enclosure Panel Layout**
-Front elevation of the enclosure interior (mirrors the 3D model): MPPT, the colour-coded **A–G blade-fuse stack** (Blue Sea 5026), the +/− busbars and the rotary main disconnect, with the internal feed one-line **Battery(+) → 200A MRBF → main disconnect → (+) busbar → fuse stack → circuits** (and the PV-charge path through the MPPT). A fuse schedule lists each position's circuit, rating, wire gauge and load.
+Front elevation of the enclosure interior (mirrors the 3D model): MPPT, the color-coded **A–G blade-fuse stack** (Blue Sea 5026), the +/− busbars and the rotary main disconnect, with the internal feed one-line **Battery(+) → 200A MRBF → main disconnect → (+) busbar → fuse stack → circuits** (and the PV-charge path through the MPPT). A fuse schedule lists each position's circuit, rating, wire gauge and load.
 
 ![TBS-ELEC Sheet 5 — Main Enclosure Panel Layout + Fuse Schedule](assets/electrical-sheet5.png)
 
@@ -271,7 +271,7 @@ Frontal elevation of the Circuit-C pump distribution on the equipment panel (the
 ![TBS-ELEC Sheet 4 — Equipment-Panel Pump Power (Circuit C)](assets/electrical-sheet4.png)
 
 **Sheet 5 — Main Enclosure Panel Layout**
-Front elevation of the IP65 enclosure interior (the 2D companion to the electrical 3D model's `power_core`): MPPT on top, the colour-coded A–G blade-fuse stack on the Blue Sea 5026, the +/− busbars and the rotary main disconnect, with the internal feed one-line (Battery(+) → 200A MRBF → main disconnect → (+) busbar → fuse stack → circuits) and the PV-charge path. Includes a fuse schedule (position / circuit / rating / wire / load). See §7.1.
+Front elevation of the IP65 enclosure interior (the 2D companion to the electrical 3D model's `power_core`): MPPT on top, the color-coded A–G blade-fuse stack on the Blue Sea 5026, the +/− busbars and the rotary main disconnect, with the internal feed one-line (Battery(+) → 200A MRBF → main disconnect → (+) busbar → fuse stack → circuits) and the PV-charge path. Includes a fuse schedule (position / circuit / rating / wire / load). See §7.1.
 
 ![TBS-ELEC Sheet 5 — Main Enclosure Panel Layout + Fuse Schedule](assets/electrical-sheet5.png)
 

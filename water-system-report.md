@@ -481,7 +481,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 |------|-----------|-------|
 | Replace F-1 (50-micron cartridge) | ~Every 10 prints | Visually inspect — replace sooner if heavily discolored |
 | Replace F-2 (5-micron cartridge) | Every 10 prints | Replace sooner if flow rate drops |
-| Replace F-3 (GAC carbon) | Every 15 prints | Replace if taste/odour test fails |
+| Replace F-3 (GAC carbon) | Every 15 prints | Replace if taste/odor test fails |
 | Flush Brown IBC-3 | Every 5 prints | Rinse with clean water, inspect for sediment buildup |
 | pH check of filtered output | Every session | Before returning Brown water to Blue system |
 | Drain and rinse Blue IBCs | Annually (or before long storage) | Prevent biofilm formation |

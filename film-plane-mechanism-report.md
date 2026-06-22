@@ -62,7 +62,7 @@ Because the plane is a **fixed-size rigid rectangle**, its physical height stays
 
 ## 4. Mechanism Design
 
-> **Note (Option A, 2026-06-06):** this describes the **fixed-size rigid plane on floating-corner cross-slides**. The drawings (Sheets 1–6) and distortion renders show **axis tilt/swing** — the rigid plane rotates about its centre and **foreshortens** (it never grows), illustrated about the mid-rail position (the film back-focuses anywhere along the rail; flat-at-far-wall is the max-focal-length extreme). The interactive 3D model `models/film-plane.skp` also reflects Option A.
+> **Note (Option A, 2026-06-06):** this describes the **fixed-size rigid plane on floating-corner cross-slides**. The drawings (Sheets 1–6) and distortion renders show **axis tilt/swing** — the rigid plane rotates about its center and **foreshortens** (it never grows), illustrated about the mid-rail position (the film back-focuses anywhere along the rail; flat-at-far-wall is the max-focal-length extreme). The interactive 3D model `models/film-plane.skp` also reflects Option A.
 
 ### Four-Corner Frame
 
@@ -116,7 +116,7 @@ Because the plane is a **fixed-size rigid rectangle**, its physical dimensions n
 
 ## 5. Tilt / Swing Configurations
 
-The plane stays flat at all times, so it is always a single tilt **or** swing (or a limited combination). Corner depths below are about the **mid-rail centre (1181mm)** — add the focus offset to reposition the whole plane. Film height is **constant**.
+The plane stays flat at all times, so it is always a single tilt **or** swing (or a limited combination). Corner depths below are about the **mid-rail center (1181mm)** — add the focus offset to reposition the whole plane. Film height is **constant**.
 
 | Config | Name | TL | TR | BL | BR | Tilt | Swing | Film Height |
 |--------|------|----|----|----|----|------|-------|-------------|
@@ -128,7 +128,7 @@ The plane stays flat at all times, so it is always a single tilt **or** swing (o
 | C5 | Strong swing | 412 | 1950 | 412 | 1950 | 0° | 20.0° | 2388mm |
 | C6 | Max swing | 125 | 2237 | 125 | 2237 | 0° | 28.0° | 2388mm |
 
-*Depths measured from the pinhole wall about the mid-rail centre. Tilt = asin(2·Δd_top-bottom / FP_H) about the plane centre (FP_H=2388); swing = asin(2·Δd_left-right / FP_W) (FP_W=4499). Rail positions: left X=150mm, right X=4649mm.*
+*Depths measured from the pinhole wall about the mid-rail center. Tilt = asin(2·Δd_top-bottom / FP_H) about the plane center (FP_H=2388); swing = asin(2·Δd_left-right / FP_W) (FP_W=4499). Rail positions: left X=150mm, right X=4649mm.*
 
 **Combined tilt+swing is limited** — the corners must all stay on the 2200mm depth rails, so the full single-axis maxima cannot be used together. The old C7 "compound" config (simultaneous 42° tilt **and** 28° swing) is **not achievable** with a rigid plane: it required a diagonally **twisted ruled surface** (TL/BR near, TR/BL far), which a fixed-size flat rectangle cannot form, and its corners would sweep ~3.4m of depth — past both end walls.
 
@@ -211,7 +211,7 @@ See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) f
 | DPDT momentary rocker | Panel-mount, 20A | **4** | Mouser | Grainger | $8 |
 
 **Estimated materials total (manual actuation, incl. wall-seat saddles + Option A cross-slides): ~$3,100** (rev 12: the 2 BR saddles move to the walkway's combined corner plates)  
-*Excludes fasteners, fabrication labour, and electric actuation option.*  
+*Excludes fasteners, fabrication labor, and electric actuation option.*  
 *Option A net change vs the earlier four-corner design: added 8 cross-slide rails +$200, 8 cross-slide carriages +$96, 4 intermediate plates +$60 (= +$356); removed the folding-backing piano hinge –$56 → net +$300. The single rigid ACM backing replaces the hinged two-panel system.*
 
 ### Local SoCal Metal Sourcing

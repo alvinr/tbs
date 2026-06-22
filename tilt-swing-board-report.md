@@ -57,9 +57,9 @@ WALL FRAME (fixed, welded to container)
 
 | Axis | Control | Travel | Resolution | Image effect |
 |------|---------|--------|-----------|--------------|
-| Tilt | Top + bottom M8 screws (black knobs) | ±5.3° | 0.012°/click | ±222mm vertical image shift |
-| Swing | Left + right M8 screws (silver knobs) | ±5.3° | 0.012°/click | ±222mm horizontal image shift |
-| Compound | All 4 screws | ±3.7° per axis simultaneously | 0.012°/click | Diagonal shift + keystone |
+| Tilt | Top + bottom M8 screws (black knobs) | ±5.3° | <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click | ±222mm vertical image shift |
+| Swing | Left + right M8 screws (silver knobs) | ±5.3° | <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click | ±222mm horizontal image shift |
+| Compound | All 4 screws | ±3.7° per axis simultaneously | <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click | Diagonal shift + keystone |
 
 **Image shift formula:** shift (mm) = f × tan(θ) = 2,362 × tan(θ)
 
@@ -68,7 +68,7 @@ WALL FRAME (fixed, welded to container)
 | 1° | 41mm | Very subtle — useful for fine composition |
 | 2° | 83mm | ~3.5% of frame height |
 | 3° | 124mm | ~5.2% — clearly visible on print |
-| 5° | 207mm | ~8.7% — dramatic compositional shift |
+| 5° | <!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm | ~8.7% — dramatic compositional shift |
 | 5.3° (max) | 220mm | Mechanical hard stop |
 
 ---
@@ -155,7 +155,7 @@ The following renders show the isolated effect of the tilt-swing front board on 
 
 ![All board-only configurations](assets/tilt-swing-board-distortion-summary.png)
 
-The board's ±5.3° range produces up to 207mm of image shift — enough to steer composition without any film plane movement.
+The board's ±5.3° range produces up to <!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm of image shift — enough to steer composition without any film plane movement.
 
 | Config | Board Tilt | Board Swing | Effect |
 |--------|-----------|-------------|--------|

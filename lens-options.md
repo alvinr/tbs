@@ -206,7 +206,7 @@ These are the highest-quality option within their coverage area. Process lenses 
 
 **What the image looks like:** A sharp circular disk in the center of the photosensitive surface, approximately 400–500mm in diameter. The remaining ~4099mm width of the active image plane receives no light. The entire portrait must be composed within this central medallion.
 
-**Coverage as percentage of image plane:** 400mm circle / 4499mm active width = **8.9% of image width**. The circular image is a small fraction of the ~116 sq ft active plane. The remainder of the plane is unexposed (black in the final image, or could be utilised by other means).
+**Coverage as percentage of image plane:** 400mm circle / 4499mm active width = **8.9% of image width**. The circular image is a small fraction of the ~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft active plane. The remainder of the plane is unexposed (black in the final image, or could be utilised by other means).
 
 **Distortion:** Designed for <0.1% distortion across the image circle. Straight lines render straight. Essentially identical to pinhole geometry within the covered area.
 
@@ -418,7 +418,7 @@ Install multiple lenses (e.g., 6 large magnifying glass elements, 200mm diameter
 
 | Quality | Pinhole | Process lens | Telescope APO | Fresnel lens |
 |---|---|---|---|---|
-| Coverage of image plane | ~116 sq ft (active) | Ø ~400mm circle | Ø ~150–200mm circle | Ø ~600mm circle |
+| Coverage of image plane | ~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft (active) | Ø ~400mm circle | Ø ~150–200mm circle | Ø ~600mm circle |
 | Sharpness (within covered area) | 0.23 lp/mm | 15–25 lp/mm | 20–40 lp/mm | 2–8 lp/mm |
 | Depth of field | Unlimited (all soft) | f/32: 1.2 m span | f/32: 1.2 m span | Shallow (soft) |
 | Exposure time (Ware cyanotype, ISO ~2–4) | ~35 min | ~1.5 sec | ~6 sec | ~0.4 sec |
@@ -449,7 +449,7 @@ If a lens is added for portrait work with the goal of maximising image quality:
 
 | | Pinhole | Lens |
 |---|---|---|
-| Image area | ~116 sq ft (active) | 0.7–4% of total (within image circle) |
+| Image area | ~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft (active) | 0.7–4% of total (within image circle) |
 | Subject holds still | ~35 min | 1.5–10 seconds |
 | Geometric character | Perfect perspective, unlimited DoF | Sharp focus zone, controllable DoF |
 | Background | Soft but rendered | Sharp (at working aperture) or shallow-DoF blur |

@@ -248,7 +248,7 @@ swings between the two ends of a resupply cycle:
 
 A session starts camera-ready with both Blue totes full (900L each) and the Brown/Waste totes
 empty; the supply is **exhausted when the Blue totes are empty**. The collection totes hold ~1,260L
-of the 1,800L Blue supply — the rest is open-process loss (~430L; wet-print carryout, evaporation,
+of the <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue supply — the rest is open-process loss (~430L; wet-print carryout, evaporation,
 unrecovered residual) plus a sub-print dreg (~110L).
 
 **Print capacity.** The <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L nominal load supports **~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints per resupply**; filling Blue toward the

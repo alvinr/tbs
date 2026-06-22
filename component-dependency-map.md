@@ -45,8 +45,8 @@ bamboo floor, corner castings, corner posts, structural corrugation ribs.*
 | Pinhole X position (long axis) | 2399mm | `PH_X` |
 | Pinhole center height | 1194mm | `PH_H` |
 | Pinhole diameter | Ø2.17mm | `PH_D` |
-| f-number | f/1088 | `PH_FNO` |
-| Focal length | 2362mm | `PH_F` (= `C_WID`) |
+| f-number | f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> | `PH_FNO` |
+| Focal length | <!-- BEGIN fact:focal_length_mm -->2362<!-- END fact:focal_length_mm -->mm | `PH_F` (= `C_WID`) |
 
 *Components: wall frame (600×600mm, 6mm steel), pinhole plate (ICP-02 / interchangeable
 Ø50mm SS-302 disc, 0.1mm, Lenox Laser laser-drilled), lens plate, shutter plate and channel.*
@@ -88,7 +88,7 @@ so the old ±42°/±25.7° stretch-mechanism stops and the compound-twist config
 |-----------|-------|----------|
 | Pinhole X (board centers here) | 2399mm | `PH_X` |
 | Max tilt/swing | ±5.3° | `FRONT_BOARD_MAX_DEG` (computed from arm + travel) |
-| Resolution | 0.012°/click | `FRONT_BOARD_CLICK_DEG` (computed from screw + detents) |
+| Resolution | <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click | `FRONT_BOARD_CLICK_DEG` (computed from screw + detents) |
 
 *Components: ICP-01 outer adapter frame (600×600×40mm Al 6061-T6), ICP-02 inner carrier plate
 (Ø320×25mm Al 6061-T6), GE50-DO-2RS spherical plain bearing (SKF, PTFE-lined), 4× M8×1.0

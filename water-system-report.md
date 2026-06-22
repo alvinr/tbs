@@ -311,17 +311,17 @@ IBCs are arranged in a **2x2 stack** in the right end zone, right-justified to t
 
 All equipment clears the optical cone at every depth — shadow-free proof in [Equipment Layout Report](equipment-layout-report.md).
 
-**Hose routing:** All pumps mount on the **equipment panel** at the front of the IBC stack (front-portal frame, ~X=4734mm), reaching into the 270mm plumbing corridor (Yd=1,046–1,316) between the two IBC columns — so the pump↔tote suction and return lines are **short**, running entirely within the corridor to the IBCs' corridor-facing DN50 valves. The longest run is the **Blue supply to the spray bar**: P-01 → ACC-01 → rigid 1/2" HDPE along the pinhole wall to the tray center → BV-02 → ~4m coiled flexible hose → the rolling beam in the optical zone. The **tray drain** returns the other way — P-04's sump pickup → 1" flexible hose over the near rim → P-04 on the panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste). **Waste evacuation** pumps P-05 (X3 / Brown) and P-03 (X4 / Waste) sit directly on the corridor drain risers, minimizing pipe to the external end-wall ports.
+**Hose routing:** All pumps mount on the **equipment panel** at the front of the IBC stack, reaching into the 270mm plumbing corridor between the two IBC columns — so the pump↔tote suction and return lines are **short**, running entirely within the corridor to the IBCs' corridor-facing DN50 valves. The longest run is the **Blue supply to the spray bar**: P-01 → ACC-01 → rigid 1/2" HDPE along the pinhole wall to the tray center → BV-02 → ~4m coiled flexible hose → the rolling beam in the optical zone. The **tray drain** returns the other way — P-04's sump pickup → 1" flexible hose over the near rim → P-04 on the panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste). **Waste evacuation** pumps P-05 (X3 / Brown) and P-03 (X4 / Waste) sit directly on the corridor drain risers, minimizing pipe to the external end-wall ports.
 
-**External fill/drain ports:** Three 2" NPT bulkhead fittings with camlock fittings on the exterior are mounted on the container end wall centerline (Yd=1181mm), stacked vertically:
+**External fill/drain ports:** Three 2" NPT bulkhead fittings with camlock fittings on the exterior are mounted on the container end wall centerline, stacked vertically:
 
-| Port | Function | Z (mm) | Connects to |
-|------|----------|--------|-------------|
-| X1 — Fill Blue | Fresh water supply fill | 2,250 | IBC-1 (top, near column) — gravity feed |
-| X3 — Drain Brown | Used water drain | 400 | IBC-3 (bottom, near column) |
-| X4 — Drain Waste | Waste water drain | 200 | IBC-4 (bottom, far column) |
+| Port | Function | Connects to |
+|------|----------|-------------|
+| X1 — Fill Blue | Fresh water supply fill | IBC-1 (top, near column) — gravity feed |
+| X3 — Drain Brown | Used water drain | IBC-3 (bottom, near column) |
+| X4 — Drain Waste | Waste water drain | IBC-4 (bottom, far column) |
 
-A single external fill port (X1) feeds an internal 1" tee in the corridor, which splits the flow to BOTH Blue IBCs (each branch **side-enters** the tote's corridor face near the top, 150mm + flange — no top-cap access, only 52mm headroom). The two top totes fill in parallel, so only one external hose is needed — without a separate cross-connect pipe. (This matches the 3D model routing.)
+A single external fill port (X1) feeds an internal 1" tee in the corridor, which splits the flow to BOTH Blue IBCs (each branch **side-enters** the tote's corridor face near the top, 150mm + flange — no top-cap access, only 52mm headroom). The two top totes fill in parallel, so only one external hose is needed — without a separate cross-connect pipe.
 
 This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC-4 to disposal tanker) without opening the cargo doors or entering the container. Internal plumbing from each port routes through the 270mm central corridor between the two IBC columns to reach the respective tote. All ports are accessible from the container exterior.
 

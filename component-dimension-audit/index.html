@@ -2660,7 +2660,7 @@
 <!-- © 2026 Alvin Richards -->
 <h1 id="component-dimension-audit-purchased-parts-vs-as-drawn">Component Dimension Audit — Purchased Parts vs. As-Drawn<a class="headerlink" href="#component-dimension-audit-purchased-parts-vs-as-drawn" title="Permanent link">&para;</a></h1>
 <p><strong>Purpose.</strong> After the IBC tote sizing error (assumed "600 L" small totes; the real
-food-grade caged product is <strong>1000 L / 1219×1016×1168 mm</strong>, which forced the entire
+food-grade caged product is <strong>1,000 L / 1219×1016×1,168 mm</strong>, which forced the entire
 <code>ibc-reconfig-v2</code> rework), this audit reconciles <strong>every major purchased-as-is
 component</strong> against the size used in the 3D models / 2D diagrams (<code>tbs_constants.py</code>).
 The goal: no other component is modeled at an assumed size that the real product
@@ -2688,7 +2688,7 @@ Modeled dimensions are the <code>tbs_constants.py</code> value(s) the generators
 <tbody>
 <tr>
 <td>1</td>
-<td>IBC tote (1000 L caged)</td>
+<td>IBC tote (1,000 L caged)</td>
 <td>1219×1016×1168</td>
 <td>1219×1016×1168 (<code>IBC_W/IBC_D/IBC_H_1000</code>)</td>
 <td>✅ <strong>FIXED</strong> (v2)</td>
@@ -2759,7 +2759,7 @@ rigid ≈ 1491×699×35, varies by model — mounted externally, no container cl
 <ul>
 <li><strong>Real:</strong> 8.5"L × 5"W × 4.5"H = <strong>216 × 127 × 114 mm</strong>. <a href="https://www.freshwatersystems.com/products/shurflo-2088-554-144-delivery-pump-3-5-gpm-45-psi-12vdc-no-cord">Fresh Water Systems</a> · <a href="https://www.pumpagents.com/pdf/ShurfloPumps/2088-554-144.pdf">datasheet PDF</a></li>
 <li><strong>Modeled:</strong> <code>PUMP_D</code>=100 (pump zone width). 4–5 pumps tile the equipment panel.</li>
-<li><strong>Problem:</strong> a real 2088 is <strong>216 mm long × 127 mm wide</strong> — the panel pump columns are drawn ~half-size. With 5 of them plus the accumulator + 3× 594 mm filters, the <strong>panel layout must be re-checked for fit</strong> (panel face is 270 mm corridor × 2060 mm tall).</li>
+<li><strong>Problem:</strong> a real 2088 is <strong>216 mm long × 127 mm wide</strong> — the panel pump columns are drawn ~half-size. With 5 of them plus the accumulator + 3× 594 mm filters, the <strong>panel layout must be re-checked for fit</strong> (panel face is 270 mm corridor × 2,060 mm tall).</li>
 <li><strong>Action:</strong> set the modeled pump footprint to ~216×127×114, re-lay-out the panel (<code>generate_panel_layout.py</code> + 3D <code>equipment_panel()</code>), re-check corridor depth.</li>
 </ul>
 <h3 id="4-filter-housing-big-blue-45-20">4. Filter housing — Big Blue 4.5" × 20" ❌<a class="headerlink" href="#4-filter-housing-big-blue-45-20" title="Permanent link">&para;</a></h3>
@@ -2808,7 +2808,7 @@ listed for completeness; confirm the drawn size equals the catalog dimension:</p
 <tbody>
 <tr>
 <td>Linear rail HGR20</td>
-<td>HGR20, 2200 mm</td>
+<td>HGR20, 2,200 mm</td>
 <td>20 mm rail width, 2200 long (<code>RAIL_LEN</code>)</td>
 <td>confirm</td>
 </tr>

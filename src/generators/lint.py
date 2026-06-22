@@ -208,16 +208,23 @@ def warn_deps_valid() -> tuple[bool, list[str]]:
 
 
 def _changed_constants(staged) -> set:
+    """Constants whose VALUE changed (or were added) in the staged tbs_constants diff.
+    Comment-only edits are ignored: a constant is 'changed' only if its value expression
+    (the RHS with any trailing ` # comment` stripped) differs between the old and new sides,
+    or it is newly added. (Strips on `\\s#` so a `#hex` colour value isn't truncated.)"""
     if _CONST not in staged:
         return set()
     diff = _git(["diff", "--cached", "-U0", "--", _CONST])
-    changed = set()
+    old, new = {}, {}
     for ln in diff.splitlines():
-        if ln[:1] in "+-" and ln[:3] not in ("+++", "---"):
-            m = re.match(r"[+-]\s*([A-Z_][A-Z0-9_]*)\s*(?::[^=]+)?=\s*\S", ln)
-            if m:
-                changed.add(m.group(1))
-    return changed
+        if ln[:3] in ("+++", "---") or ln[:1] not in "+-":
+            continue
+        m = re.match(r"[+-]\s*([A-Z_][A-Z0-9_]*)\s*(?::[^=]+)?=\s*(.+)", ln)
+        if not m:
+            continue
+        val = re.split(r"\s#", m.group(2), 1)[0].strip()      # value expr, inline comment dropped
+        (old if ln[0] == "-" else new)[m.group(1)] = val
+    return {name for name, v in new.items() if old.get(name) != v}
 
 
 def warn_missing_cascade() -> tuple[bool, list[str]]:

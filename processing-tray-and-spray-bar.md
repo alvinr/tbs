@@ -37,7 +37,6 @@ full print width. Together they form the print washing subsystem of the
 |-----------|-------|-----------|
 | Material | 16-gauge (1.5mm) 304 stainless steel, #4 brushed finish | Chemically inert to ferricyanide wash water; resists pitting from citric acid pH adjustment |
 | Overall footprint | 4,459 × 2,200mm (2 panels, field-bolted) | Fits inside film plane rails (X=<!-- BEGIN fact:film_plane_left_x_mm -->150<!-- END fact:film_plane_left_x_mm -->–<!-- BEGIN fact:film_plane_right_x_mm -->4,649<!-- END fact:film_plane_right_x_mm -->) with 20mm clearance per side |
-| Position | X=170–4,629, Yd=80–2,280 | Between film plane rails, inboard of walkway perimeter |
 | Panel size (each) | 2,229 × 2,200mm | Two equal panels, butted at midpoint with silicone gasket + bolted flange. Each panel fits through the cargo door opening (2,340 × 2,280mm) |
 | Rim height | 50mm (all four sides) | Contains 6mm flood depth with margin; constrained to ≤75mm by film plane carriage clearance |
 | Floor-to-rim height | 50mm | Tray sits on tapered HDPE shim strips on the container floor |
@@ -57,7 +56,7 @@ directly on the shims to flow the water into the bottom right for pickup by the 
 | Parameter | Value |
 |-----------|-------|
 | Material | HDPE flat bar, 50mm wide |
-| Quantity | 5 strips running full tray depth (Yd direction, 2,200mm each) |
+| Quantity | 5 strips running full tray depth |
 | Spacing | ~1,000mm apart across tray width (X direction) |
 | Profile | Tapered: 0mm at near rim (Yd=80, drain end) → 10mm at far rim (Yd=2,280) |
 | Attachment | Construction adhesive (Loctite PL Premium or equivalent) to container floor |
@@ -113,9 +112,7 @@ The processing tray is permanently installed — it remains in place during both
 operational and transport modes. The two panels are positioned between the film plane
 rails, bolted together at the center flange. The P-04 suction pickup tube sits in the
 sump well permanently. The 50mm rim height is below all transport-mode clearance
-envelopes, so no removal is required for mode conversion. This eliminates the former
-15–20 minute tray install/remove step; mode conversion now requires only the panel swing
-(~5 minutes).
+envelopes, so no removal is required for mode conversion.
 
 ---
 
@@ -129,8 +126,7 @@ toward the pinhole wall), flooding the print surface progressively.
 
 ![Sheet 1 — Gantry Elevation](assets/spray-bar-sheet1.png)
 
-The beam spans <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm between the inner edges of the left and right walkways
-(X=470 to X=4,329), extending under the walkway grating at each end. At each end, a
+The beam spans <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm between the inner edges of the left and right walkways, extending under the walkway grating at each end. At each end, a
 two-wheel carriage rolls on the processing tray floor beneath the grating. A 3/4" LDPE
 irrigation poly pipe inside the aluminum SHS bore serves as the spray pipe — the supply
 hose terminates at a distribution manifold by the ball joint, which feeds seven irrigation
@@ -357,8 +353,7 @@ carriage plate underside. The saddle cradles the 10mm axle pin with 1mm clearanc
 #### 3.6.4 Beam Attachment
 
 The carriages attach to the beam with a top + bottom clamp plate that sandwich the SHS
-vertically. The bottom plate sits under the beam (Z=17–20mm) and the top plate over it
-(Z=60–63mm); a solid aluminum spacer block beside each beam face fills the gap so the
+vertically. The bottom plate sits under the beam and the top plate over it; a solid aluminum spacer block beside each beam face fills the gap so the
 bolts grip the beam rather than bending the plates. Four bolts per carriage pass through
 the top plate, spacer, carriage plate wing, and bottom plate, with nuts top and bottom.
 
@@ -369,7 +364,7 @@ the top plate, spacer, carriage plate wing, and bottom plate, with nuts top and 
 | 3 | Place a spacer block against each beam face, between the plate wings |
 | 4 | Lay the top clamp plate over the beam, aligning the bolt holes with the bottom plate |
 | 5 | Pass four bolts down through top plate + spacer + carriage wing + bottom plate; thread nuts top and bottom and tighten evenly until the beam is gripped |
-| 6 | Set the assembled spray bar on the processing tray floor. Confirm the top clamp plate (Z=63mm, nut ~66mm) clears the walkway grating bottom (Z=75mm). Confirm all wheels roll freely on the tray floor |
+| 6 | Set the assembled spray bar on the processing tray floor. Confirm the top clamp plate clears the walkway grating bottom. Confirm all wheels roll freely on the tray floor |
 | 7 | Push the bar through its full 2,200mm Yd travel to verify it tracks straight between the tray rim walls without binding |
 
 ### 3.7 Structural Analysis
@@ -468,7 +463,7 @@ coiled flexible hose → manifold → 7 irrigation tubes → poly pipe bore → 
 
 The operator controls the spray bar position from the near walkway using a telescoping
 aluminum pool pole (1.2–2.4 m). The pole passes through a 30mm wide slit cut into the
-walkway grating at the beam centerline X=2,500mm. A matching slit is cut into the far
+walkway grating at the beam centerline. A matching slit is cut into the far
 walkway grating at the same X position. The slit positions are shown on the
 [walkway plan view](all-diagrams.md#13-perimeter-walkway).
 

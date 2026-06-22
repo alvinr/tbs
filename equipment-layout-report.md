@@ -235,20 +235,20 @@ pinhole wall at X=2399mm (pinhole side), H=400mm.
 
 ## 8. Water Capacity Summary
 
-All four positions are identical 1000L caged composite IBCs — the 630L / 900L working fills
+All four positions are identical 1000L caged composite IBCs — the <!-- BEGIN fact:collection_fill_l -->630<!-- END fact:collection_fill_l -->L / 900L working fills
 are **fill levels, not tote sizes** (a 600L caged tote does not exist). Each tote's fill
 swings between the two ends of a resupply cycle:
 
 | IBC (identical 1000L tote) | Role | Camera ready | Supply exhausted |
 |----------------------------|------|-------------:|-----------------:|
 | Blue ×2 (stacked) | Clean wash supply | <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L (2× 900L) | 0L |
-| Brown | Recycled wash / fix buffer | 0L | 630L |
-| Waste (sealed) | Waste collection | 0L | 630L |
-| **Total in system** | — | **1,800L clean** | **1,260L used** |
+| Brown | Recycled wash / fix buffer | 0L | <!-- BEGIN fact:collection_fill_l -->630<!-- END fact:collection_fill_l -->L |
+| Waste (sealed) | Waste collection | 0L | <!-- BEGIN fact:collection_fill_l -->630<!-- END fact:collection_fill_l -->L |
+| **Total in system** | — | **1,800L clean** | **<!-- BEGIN fact:recovered_l -->1,260<!-- END fact:recovered_l -->L used** |
 
 A session starts camera-ready with both Blue totes full (900L each) and the Brown/Waste totes
-empty; the supply is **exhausted when the Blue totes are empty**. The collection totes hold ~1,260L
-of the <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue supply — the rest is open-process loss (~430L; wet-print carryout, evaporation,
+empty; the supply is **exhausted when the Blue totes are empty**. The collection totes hold ~<!-- BEGIN fact:recovered_l -->1,260<!-- END fact:recovered_l -->L
+of the <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue supply — the rest is open-process loss (~<!-- BEGIN fact:lost_l -->434<!-- END fact:lost_l -->L; wet-print carryout, evaporation,
 unrecovered residual) plus a sub-print dreg (~110L).
 
 **Print capacity.** The <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L nominal load supports **~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints per resupply**; filling Blue toward the

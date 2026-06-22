@@ -215,3 +215,41 @@ ibc_ceiling_clearance_mm:
   aliases:
     - '(\d+) ?mm (?:of )?(?:ceiling )?headroom'
     - '(\d+) ?mm ceiling clearance'
+
+# Water-balance figures — COMPUTED from BLUE_SUPPLY_L + the per-print loss (water-system §4); a
+# supply/print change re-derives them everywhere. Anchored to the recovered/collection/lost/gal
+# phrasings (value appears as both L and kg — water is 1:1 — in the water vs weight reports).
+blue_supply_gal:
+  constant: BLUE_SUPPLY_GAL
+  unit: gal
+  owner: water-system-report.md
+  aliases:
+    - '(\d{3})[- ]gallon \(1,800'
+    - '(\d{3}) gal / 1,800'
+    - '1,800 ?L \((\d{3}) gal\)'
+recovered_l:
+  constant: RECOVERED_L
+  unit: L
+  owner: water-system-report.md
+  display: comma
+  aliases:
+    - '~?(\d,?\d{3})\s?(?:L|kg)[^.()]{0,18}recover'
+    - 'hold(?:s)? (?:the )?~?(\d,?\d{3})L'
+    - '~?(\d,?\d{3})\s?kg of recovered'
+collection_fill_l:
+  constant: COLLECTION_FILL_L
+  unit: L
+  owner: water-system-report.md
+  aliases:
+    - '(\d{3})L each at'
+    - '(\d{3})L each for'
+    - 'recovered \(~?(\d{3})L each\)'
+    - 'two (\d{3})L collection'
+lost_l:
+  constant: LOST_L
+  unit: L
+  owner: water-system-report.md
+  aliases:
+    - 'and ~?(\d{3})\s?L \('
+    - '~?(\d{3})\s?(?:L|kg) (?:was |is )?lost'
+    - 'other ~?(\d{3})\s?L'

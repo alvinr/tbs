@@ -121,9 +121,9 @@ during processing, not pre-loaded).
 ### 4.2 Materials Exhausted (Ready for Resupply)
 
 After a full session, wash water has been consumed and redistributed.
-Blue IBCs are empty; Brown (recycled) and Waste IBCs hold the ~1,260L
-recovered (~630L each). The processing tray has been drained; the other
-~430L was lost to the open process (evaporation, wet-print carryout,
+Blue IBCs are empty; Brown (recycled) and Waste IBCs hold the ~<!-- BEGIN fact:recovered_l -->1,260<!-- END fact:recovered_l -->L
+recovered (~<!-- BEGIN fact:collection_fill_l -->630<!-- END fact:collection_fill_l -->L each). The processing tray has been drained; the other
+~<!-- BEGIN fact:lost_l -->434<!-- END fact:lost_l -->L was lost to the open process (evaporation, wet-print carryout,
 unrecovered residual — see [water-system report §4](water-system-report.md)).
 
 | Liquid | Volume (L) | Weight (kg) | Position | Tier |
@@ -149,7 +149,7 @@ unrecovered residual — see [water-system report §4](water-system-report.md)).
 closed. The water sits in the **top** tier, so its vertical CG is **Z=1,341mm —
 411mm higher** than the exhausted state (930mm), making it the **highest-CG
 transport case** that governs road-transport stability (tie-down and cornering).
-The exhausted (return) state is both lighter — **4,584 kg**, since ~430 kg of the
+The exhausted (return) state is both lighter — **4,584 kg**, since ~<!-- BEGIN fact:lost_l -->434<!-- END fact:lost_l --> kg of the
 processed water is lost to the open process rather than recovered — and lower-CG,
 so it is never the governing case. Even at the loaded worst case the static sideways
 tip threshold is **~41°** (½-width 1,181mm ÷ Z_cg 1,341mm), so the deliberate
@@ -203,9 +203,9 @@ Quadrant weights show the rear-heavy bias from the IBC stack.
 
 ### 4 — Materials Exhausted (Configured for Transport)
 
-Water has migrated from top-tier Blue IBCs to bottom-tier Brown/Waste IBCs, and ~430 kg of it has
+Water has migrated from top-tier Blue IBCs to bottom-tier Brown/Waste IBCs, and ~<!-- BEGIN fact:lost_l -->434<!-- END fact:lost_l --> kg of it has
 been lost to the open process (evaporation, wet-print carryout, unrecovered residual — see
-[water-system report §4](water-system-report.md)), so only ~1,260 kg is recovered. The hinged panel
+[water-system report §4](water-system-report.md)), so only ~<!-- BEGIN fact:recovered_l -->1,260<!-- END fact:recovered_l --> kg is recovered. The hinged panel
 is swung ~56° about the pivot to its transport position. Total mass therefore drops to **4,584 kg**
 (~540 kg below the loaded state), and the vertical CG drops by 411mm (Z: 1,341 → 930mm) as the
 remaining water settles in the bottom tier. This is the lightest, lowest-CG transport state — never
@@ -277,12 +277,12 @@ axle(s) to balance the load.
 The most significant finding is the **vertical CG migration** between states:
 
 - **Camera Ready:** Z_cg = 1,340mm (1,800 kg of water in top-tier IBCs)
-- **Materials Exhausted:** Z_cg = 930mm (1,260 kg of recovered water in bottom-tier IBCs)
+- **Materials Exhausted:** Z_cg = 930mm (<!-- BEGIN fact:recovered_l -->1,260<!-- END fact:recovered_l --> kg of recovered water in bottom-tier IBCs)
 - **ΔZ = −410mm** (CG drops ~410mm during a session)
 
 This is an inherent self-stabilizing feature of the 2×2 IBC stack design.
 1,800 kg of clean water is loaded into the top-tier Blue IBCs and processed during a
-session; ~1,260 kg is recovered into the bottom-tier Brown/Waste IBCs and ~430 kg is
+session; ~<!-- BEGIN fact:recovered_l -->1,260<!-- END fact:recovered_l --> kg is recovered into the bottom-tier Brown/Waste IBCs and ~<!-- BEGIN fact:lost_l -->434<!-- END fact:lost_l --> kg is
 lost to the open process, so total mass drops from 5,124 to **4,584 kg**. The water that
 remains migrates from the top tier to the bottom tier, dropping the center of gravity by
 410mm and improving stability through the session.

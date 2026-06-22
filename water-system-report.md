@@ -82,7 +82,7 @@ Volume per flood = 106 sq ft × (6mm / 304.8) = 106 × 0.0197 ft = 2.09 cu ft
 
 ### Storage capacity vs. print count
 
-| Scenario | Blue consumed per print | Prints from 476 gal Blue | Brown recycled |
+| Scenario | Blue consumed per print | Prints from <!-- BEGIN fact:blue_supply_gal -->476<!-- END fact:blue_supply_gal --> gal Blue | Brown recycled |
 |----------|------------------------|--------------------------|---------------|
 | No recycling | 48 gal (3 × 16) | ~10 prints | 0 |
 | With recycling (wash 2 from Brown) | 32 gal (2 × 16) | **~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints** | ~224 gal reused |
@@ -91,13 +91,13 @@ Volume per flood = 106 sq ft × (6mm / 304.8) = 106 × 0.0197 ft = 2.09 cu ft
 **~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints per resupply run** — <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue supply (2× 900L) with Brown recycling for wash 2.
 
 **Water balance — recovered vs. consumed.** Of the <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue supply, a 14-print run processes ~1,690L
-(leaving ~110L of dregs, under one print): ~1,260L is recovered into the collection totes (Brown + Waste,
-~630L each at their working fill) and ~430L (~31L per print, ~17% of the ~182L gross washed per print) is
+(leaving ~110L of dregs, under one print): ~<!-- BEGIN fact:recovered_l -->1,260<!-- END fact:recovered_l -->L is recovered into the collection totes (Brown + Waste,
+~<!-- BEGIN fact:collection_fill_l -->630<!-- END fact:collection_fill_l -->L each at their working fill) and ~<!-- BEGIN fact:lost_l -->434<!-- END fact:lost_l -->L (~31L per print, ~17% of the ~182L gross washed per print) is
 open-process loss — water **carried out in the wet prints** (each full-plane muslin sheet, ~10.7 m²,
 leaves saturated to dry), **evaporation** from the open spray-wash tray, and **unrecovered residual**
 (tray-surface film, the sump dead-volume below the P-04 pickup, hose/manifold hold-up). This loss is *why
-two 630L collection totes balance the supply* — they are sized for the recovered fraction, not full
-throughput. (The [weight report](weight-distribution-report.md) carries the same ~1,260L recovered figure
+two <!-- BEGIN fact:collection_fill_l -->630<!-- END fact:collection_fill_l -->L collection totes balance the supply* — they are sized for the recovered fraction, not full
+throughput. (The [weight report](weight-distribution-report.md) carries the same ~<!-- BEGIN fact:recovered_l -->1,260<!-- END fact:recovered_l -->L recovered figure
 for its exhausted-state transport mass — 4,584 kg, ~540 kg below the loaded state.)
 
 #### Extending capacity beyond 14 prints
@@ -106,7 +106,7 @@ for its exhausted-state transport mass — 4,584 kg, ~540 kg below the loaded st
 residue in each 1000L tote; topping toward the ~950–1000L tote limit (~1,900–2,000L) buys ~1–2 more prints
 (~15–16), transport-validated to a worst-case static tip of 41.0° (see
 [weight report §4.4](weight-distribution-report.md)). To actually realize those extra prints the
-collection totes must also rise proportionally — they are sized at ~630L each for the 14-print recovery —
+collection totes must also rise proportionally — they are sized at ~<!-- BEGIN fact:collection_fill_l -->630<!-- END fact:collection_fill_l -->L each for the 14-print recovery —
 so the hard ceiling on a single hauled load is the **per-tote 1000L volume**, capping it at ~16 prints.
 
 **On-site top-up — extended deployment.** A deployment can run past the ~16-print single-load ceiling

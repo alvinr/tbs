@@ -113,7 +113,7 @@ Transport, permits, and water resupply for a single public deployment:
 |------|------|
 | Commercial transport (short haul, 30–100 miles, round trip) | $1,000–2,400 |
 | Location permit (public land, non-commercial art use) | $0–300 |
-| Water resupply (~476 gal / <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue tank ≈ <!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints) | $25–50 |
+| Water resupply (~<!-- BEGIN fact:blue_supply_gal -->476<!-- END fact:blue_supply_gal --> gal / <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue tank ≈ <!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints) | $25–50 |
 | **Level 2 total** | **~$1,350–2,800** |
 
 ### Level 3 — Documentation (+$2,000–4,000)

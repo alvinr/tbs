@@ -746,6 +746,7 @@ _NX0 = WALKWAY_LEFT_X + WALKWAY_W                       # near walkway start = 4
 _FIRST_RIB = _NX0 + CONTAINER_RIB_SPACING // 2          # first bracket ≈ 698
 WALKWAY_NEAR_WIDE_X_L = _FIRST_RIB + CONTAINER_RIB_SPACING  # second bracket ≈ 1155
 _SLIT_CX = (_NX0 + WALKWAY_RIGHT_X) // 2                # spray bar slit center X ≈ 2399
+SPRAY_BEAM_SPAN = WALKWAY_RIGHT_X - _NX0                # = 3859mm — spray-bar beam span (left↔right walkway inner edges)
 WALKWAY_NEAR_WIDE_X_R = _SLIT_CX + CONTAINER_RIB_SPACING // 2 + 2  # past slit to next rib ≈ 2629
 WALKWAY_WIDE_BRACKET_T = 10             # widened bracket plate thickness (mm) — heavier than std 8mm
 WALKWAY_WIDE_BRACKET_H = 200            # widened bracket vertical leg height (mm) — taller for 4-bolt pattern

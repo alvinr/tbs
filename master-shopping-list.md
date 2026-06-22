@@ -17,7 +17,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
 | 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,538 | $4,088 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $4,063 | $6,104 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $4,211 | $6,297 |
 | 6. Electrical — power, circuits, wiring | $2,025 | $2,575 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,465 | $2,160 |
 | 7a. Panel swing pivot (Ø89 pivot post + bearings + cage + wall stays + rail saddles) | $1,112 | $1,372 |
@@ -26,7 +26,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,210 | $2,980 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$19,878** | **~$29,430** |
+| **TOTAL (base build + 50-print run)** | **~$20,026** | **~$29,623** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*

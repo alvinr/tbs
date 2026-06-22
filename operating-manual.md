@@ -428,7 +428,7 @@ The stepped hinged panel + drum SWING ~56° inboard about the vertical pivot pos
 - [ ] 5.5.7 — Release all 4 Southco cam latches — releases the perimeter + cut seals.
 - [ ] 5.5.8 — Swing the frame ~56° inboard (toward the far wall), assisted. Balanced about the vertical pivot (no gravity torque); control momentum at the stop.
 - [ ] 5.5.9 — Engage the transport lock: connect the top + bottom wall stays — hook the rods from the frame hooks to the near-wall eyes and tension the turnbuckles.
-- [ ] 5.5.10 — Close and latch the standard ISO container cargo doors. They close outboard of the fixed left panel (Yd0–180); the swung frame clears the door plane by +59 mm.
+- [ ] 5.5.10 — Close and latch the standard ISO container cargo doors. They close outboard of the fixed left panel (Yd0–180); the swung frame clears the door plane by +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm --> mm.
 
 ### 5.6 Operational Mode Conversion (Setting Up)
 **Time: ~5 minutes. Single-person operation. Reverse of 5.5.**

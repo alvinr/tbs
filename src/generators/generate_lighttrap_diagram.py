@@ -20,6 +20,7 @@ from tbs_constants import (
     FAN_DIAM, DUCT_DEPTH, DUCT_HEIGHT,
     EVAP_DUCT_Z, C_HGT,
     DIAGRAMS_DIR,
+    SWUNG_DOOR_CLEARANCE_MM,
 )
 from tbs_drawing import (
     draw_dim_h, draw_dim_v, draw_rect, draw_circle, leader, draw_notes,
@@ -317,7 +318,7 @@ def draw_sheet1():
     ax.text(TN_CX, TN_CY,
             "TRANSPORT (rev10): strike the LEFT film rails + lift out\n"
             "the left walkway → cargo panel + drum SWING ~56° about\n"
-            "the pivot post, clearing the door (true min X +59mm)",
+            f"the pivot post, clearing the door (true min X +{SWUNG_DOOR_CLEARANCE_MM}mm)",
             ha="center", va="center", fontsize=6.2, color="#0D47A1",
             fontweight="bold", zorder=12)
     # Leader arrow from note top to drum box bottom-center

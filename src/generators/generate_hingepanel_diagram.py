@@ -39,6 +39,7 @@ from tbs_constants import (
     LT_DRUM_OR, LT_OPENING_DEG,
     RAIL_X_L,                                    # film-plane left rail (now continuous, B2)
     FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_WALL_T, PANEL_SKIN_T,
+    SWUNG_DOOR_CLEARANCE_MM,
 )
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v,
@@ -1485,7 +1486,7 @@ def sheet4():
     draw_moving(0, "#7a5a20", 0.55, "-", "////")
     ax.text(BAY_FRONT_X / 2, -100, "CAMERA\n(deployed)", fontsize=7.5, color=C_DIM, **FONT, ha="center", va="top")
     d1 = draw_moving(LOCK, BLUE, 0.30, (0, (5, 3)), None)
-    ax.text(d1[0], d1[1], f"SWUNG {int(LOCK)}°\n(door clears +59mm)", fontsize=7, color=BLUE, **FONT,
+    ax.text(d1[0], d1[1], f"SWUNG {int(LOCK)}°\n(door clears +{SWUNG_DOOR_CLEARANCE_MM}mm)", fontsize=7, color=BLUE, **FONT,
             ha="center", va="center", fontweight="bold", zorder=15)
     arc = [rot(0, CUT, dd) for dd in np.linspace(0, LOCK, 36)]
     ax.plot([p[0] for p in arc], [p[1] for p in arc], color=BLUE, lw=1.3, ls=(0, (4, 2)), zorder=11)
@@ -1496,7 +1497,7 @@ def sheet4():
         ax.text(x, y, str(n), fontsize=12, color=col, **FONT, fontweight="bold",
                 ha="center", va="center", zorder=15)
     mark(RX, 430, 1); mark(RX, 1940, 1)       # left rails struck so the cage transitions
-    mark(40, cyd, 2)                          # swing clears the door plane (+59mm)
+    mark(40, cyd, 2)                          # swing clears the door plane (SWUNG_DOOR_CLEARANCE_MM)
 
     ax.text(-280, 2640, "SWING CLEARANCE vs FILM-PLANE LEFT MECHANISM  (plan, looking down)",
             fontsize=13, fontweight="bold", color=C_OUT, **FONT)
@@ -1505,7 +1506,7 @@ def sheet4():
         "The panel + drum SWING ~56° about the vertical",
         "pivot (the film far-left post), pulling the punch-",
         "out bay inboard of the door plane so the cargo",
-        "doors close (true min X +59mm).",
+        f"doors close (true min X +{SWUNG_DOOR_CLEARANCE_MM}mm).",
         "",
         "1.  The swinging cage transitions the X=150 rail",
         "    plane, so the two LEFT film rails (TL+BL) are",

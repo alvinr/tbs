@@ -451,6 +451,8 @@ _OM = "operating-manual.md"
 _EL = "equipment-layout-report.md"
 _IBC = "ibc-stacking-report.md"
 _PT = "processing-tray-and-spray-bar.md"
+_WS = "water-system-report.md"
+_MS = "master-shopping-list.md"
 
 
 def capital_mid() -> int:
@@ -654,10 +656,11 @@ def _inline_blocks() -> dict:
         "ibc-frame-low":       (_IBC, lambda: f"${_ibc_frame().low:,}"),
         "ibc-frame-high":      (_IBC, lambda: f"${_ibc_frame().high:,}"),
         # processing-tray-and-spray-bar.md §6 BOM subtotals (from the WATER line items).
-        "tray-low":            (_PT, lambda: f"${_pt_line('Processing tray').low:,}"),
-        "tray-high":           (_PT, lambda: f"${_pt_line('Processing tray').high:,}"),
-        "spray-low":           (_PT, lambda: f"${_pt_line('Spray bar').low:,}"),
-        "spray-high":          (_PT, lambda: f"${_pt_line('Spray bar').high:,}"),
+        # Shared across the dedicated report + the two docs that summarize/point to it.
+        "tray-low":            ([_PT, _WS, _MS], lambda: f"${_pt_line('Processing tray').low:,}"),
+        "tray-high":           ([_PT, _WS, _MS], lambda: f"${_pt_line('Processing tray').high:,}"),
+        "spray-low":           ([_PT, _WS, _MS], lambda: f"${_pt_line('Spray bar').low:,}"),
+        "spray-high":          ([_PT, _WS, _MS], lambda: f"${_pt_line('Spray bar').high:,}"),
         "tray-spray-total-low":  (_PT, lambda: f"${_pt_line('Processing tray').low + _pt_line('Spray bar').low:,}"),
         "tray-spray-total-high": (_PT, lambda: f"${_pt_line('Processing tray').high + _pt_line('Spray bar').high:,}"),
     }
@@ -733,14 +736,15 @@ def _render_detail(content: str, items: list, fields: tuple) -> str:
 def _apply(rel: str, key: str, regen, write: bool) -> tuple:
     path = os.path.join(_REPO, rel)
     text = open(path, encoding="utf-8").read()
-    m = _block_pat(key).search(text)
-    if not m:
+    pat = _block_pat(key)
+    matches = list(pat.finditer(text))
+    if not matches:
         return (rel, key, "missing")
-    new = regen(m.group(2))
-    if m.group(2) == new:
+    if all(m.group(2) == regen(m.group(2)) for m in matches):   # every occurrence current
         return (rel, key, "ok")
     if write:
-        open(path, "w", encoding="utf-8").write(text[:m.start(2)] + new + text[m.end(2):])
+        open(path, "w", encoding="utf-8").write(
+            pat.sub(lambda m: m.group(1) + regen(m.group(2)) + m.group(3), text))
         return (rel, key, "updated")
     return (rel, key, "STALE")
 
@@ -748,14 +752,16 @@ def _apply(rel: str, key: str, regen, write: bool) -> tuple:
 def _apply_inline(rel: str, key: str, fn, write: bool) -> tuple:
     path = os.path.join(_REPO, rel)
     text = open(path, encoding="utf-8").read()
-    m = _inline_pat(key).search(text)
-    if not m:
+    pat = _inline_pat(key)
+    matches = list(pat.finditer(text))
+    if not matches:
         return (rel, key, "missing")
     new = fn()
-    if m.group(2) == new:
+    if all(m.group(2) == new for m in matches):                 # every occurrence current
         return (rel, key, "ok")
     if write:
-        open(path, "w", encoding="utf-8").write(text[:m.start(2)] + new + text[m.end(2):])
+        open(path, "w", encoding="utf-8").write(
+            pat.sub(lambda m: m.group(1) + new + m.group(3), text))
         return (rel, key, "updated")
     return (rel, key, "STALE")
 
@@ -768,7 +774,8 @@ def inject(write: bool = True) -> list:
     for key, (rel, items, fields) in _detail_blocks().items():
         out.append(_apply(rel, key, lambda cur, it=items, fl=fields: _render_detail(cur, it, fl), write))
     for key, (rel, fn) in _inline_blocks().items():
-        out.append(_apply_inline(rel, key, fn, write))
+        for r in ((rel,) if isinstance(rel, str) else rel):     # a key may live in several docs
+            out.append(_apply_inline(r, key, fn, write))
     return out
 
 

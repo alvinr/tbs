@@ -397,19 +397,10 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 ### Processing tray
 
-| Item | Spec | Qty | Supplier | Unit price | Total |
-|------|------|-----|---------|-----------|-------|
-| [304 SS sheet, 16-ga (1.5mm)](https://www.onlinemetals.com/en/buy/stainless-steel/304-stainless-steel-sheet) | #4 brushed, 4'×8' sheets | 4 | Online Metals | $180–$250/sheet | **$720–$1,000** |
-| Fabrication (cut, brake, weld, press sump) | Two tray halves: each 2229×2,200mm with 50mm rims, pressed sump well (150×100×20mm) in near panel, welded corners | 1 job | Local sheet metal shop | $450–$850 | **$450–$850** |
-| [HDPE flat bar 50×10mm](https://www.mcmaster.com/8619K451) | Tapered shim strips for tray slope support, 2,200mm long, 5 required | 5 | McMaster-Carr / TAP Plastics | $8–$15 each | **$40–$75** |
-| [1" SS foot valve with strainer](https://www.amazon.com/s?k=1+inch+stainless+foot+valve+strainer) | Suction pickup for sump well, prevents debris and maintains prime | 1 | Amazon | $15–$25 | **$20** |
-| [1" reinforced suction hose, 6 ft](https://www.amazon.com/s?k=1+inch+reinforced+suction+hose+6+ft) | P-04 suction line from sump pickup over tray rim to pump manifold (P-04) | 1 | Amazon | $12–$20 | **$15** |
-| [Silicone gasket strip, FDA grade](https://www.mcmaster.com/1460N14) | 1/16" × 1" × 10 ft, for center flange seal | 1 roll | McMaster-Carr | $15–$25 | **$20** |
-| [M6×16 SS hex bolts + flange nuts](https://www.mcmaster.com/92196A150) | Center flange bolts, 200mm spacing | 24 | McMaster-Carr | $0.50 each | **$12** |
-
-**Processing tray subtotal: ~$1,277–$1,992**
-
-*Fabrication cost varies significantly by region. Get quotes from at least two local shops. For DIY builders with access to a sheet metal brake and TIG welder, material cost alone is $720–$1,000.*
+The tray's itemized BOM (304 SS panels, fabrication, shim strips, sump pickup, gasket,
+hardware, liner) is owned by the
+[Processing Tray & Spray Bar report](processing-tray-and-spray-bar.md) §6.1; its cost is
+carried in the Total cost summary below.
 
 ### Electrical
 
@@ -438,21 +429,10 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 ### Spray bar assembly (gantry design)
 
-| Item | Spec | Qty | Supplier | Unit price | Total |
-|------|------|-----|---------|-----------|-------|
-| [6061-T6 aluminum SHS 1-1/2"×1-1/2"×1/8"](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-tube) | 40×40×3mm, 8 ft lengths. 2 pieces joined with internal sleeve for 3,859mm span | 2 | Online Metals / Metal Supermarket | $18–$28/8ft | **$36–$56** |
-| [6061-T6 aluminum plate 3/16" (5mm)](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-sheet-plate) | L-brackets (2×) + end caps (2×). ~300×600mm sheet, cut and bend | 1 | Online Metals | $15–$25 | **$15–$25** |
-| [30×30mm (1-1/4"×1-1/4") aluminum solid bar](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-bar) | Internal splice sleeve, 150mm long. Cut from 1 ft minimum order | 1 | Online Metals | $8–$12 | **$8–$12** |
-| [Nylon fixed wheel, 50mm×20mm, 10mm bore](https://www.amazon.com/s?k=50mm+nylon+wheel+10mm+bore+fixed) | Carriage wheels — flat tread, ≥25 kg rated | 4 | Amazon / McMaster-Carr | $3–$5 | **$12–$20** |
-| [1/2" NPT bulkhead fitting, brass](https://www.amazon.com/s?k=1%2F2+NPT+brass+bulkhead+fitting) | Feed end cap — connects hose to beam bore | 1 | Amazon | $5–$10 | **$8** |
-| [1/2" MNPT × 1/2" hose barb, brass](https://www.amazon.com/s?k=1%2F2+MNPT+hose+barb+brass) | Connects hose to bulkhead fitting | 1 | Amazon | $3–$5 | **$4** |
-| [Telescoping aluminum pool pole](https://www.amazon.com/s?k=telescoping+aluminum+pool+pole+8+ft) | 4–8 ft (1.2–2.4m), standard pool skimmer handle | 1 | Amazon / Home Depot | $12–$20 | **$15** |
-| [1/2" reinforced braided PVC hose, 15 ft](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+15+ft) | Flexible connection from BV-02 to beam feed end (4m coiled) | 1 | Amazon | $12–$18 | **$15** |
-| [10mm clevis pins + R-clips](https://www.mcmaster.com/97295A480) | Wheel axle pins | 4+4 | McMaster-Carr | $1–$2 | **$8** |
-| [M6×20 stainless bolts + nylock nuts](https://www.mcmaster.com/92196A150) | L-bracket to beam, fork to bracket, splice set screws | 16 | McMaster-Carr | $0.40 | **$7** |
-| [Stainless spring clip / U-bolt](https://www.amazon.com/s?k=pool+pole+tip+clip+stainless) | Pole attachment to beam center | 1 | Amazon | $5–$8 | **$6** |
-
-**Spray bar subtotal: ~$134–$176**
+The spray bar's itemized BOM (beam + splice, LDPE spray pipe, 26 nozzles, 7-feed
+manifold, 4 wheel carriages, ball joint, arm, hose) is owned by the
+[Processing Tray & Spray Bar report](processing-tray-and-spray-bar.md) §6.2; its cost is
+carried in the Total cost summary below.
 
 ---
 
@@ -465,11 +445,11 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Filter unit (3-stage combo + cartridges) | $470 | $652 |
 | Valves and fittings (incl. S60×6 adapters, check valves) | $414 | $660 |
 | Pipe | $76 | $108 |
-| Processing tray (304 SS, fabricated) | $1,177 | $1,857 |
-| Spray bar assembly (gantry: beam/pipe, wheels, L-brackets, hose) | $134 | $176 |
+| Processing tray (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.1) | <!-- BEGIN costing:tray-low -->$1,300<!-- END costing:tray-low --> | <!-- BEGIN costing:tray-high -->$2,015<!-- END costing:tray-high --> |
+| Spray bar assembly (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.2) | <!-- BEGIN costing:spray-low -->$235<!-- END costing:spray-low --> | <!-- BEGIN costing:spray-high -->$299<!-- END costing:spray-high --> |
 | Electrical (wiring only — fuse block in [Electrical Report](electrical-report.md)) | $35 | $35 |
 | Processing consumables | $231 | $278 |
-| **TOTAL** | **$3,262** | **$4,881** |
+| **TOTAL** | **$3,486** | **$5,162** |
 
 *Used IBC totes drive significant savings vs. new. The parts list consolidates to 4 primary suppliers: **Amazon** (~30 line items — qualifies for bulk/subscribe discounts), **McMaster-Carr** (tray hardware — single order, fast shipping), **Ferguson** (HDPE pipe — call for contractor pricing), and **Online Metals** (SS sheet). Obtain quotes from Ferguson before ordering pipe from Amazon — trade counter pricing is typically 20–30% below retail.*
 

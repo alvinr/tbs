@@ -2803,7 +2803,7 @@ full print width. Together they form the print washing subsystem of the
 <tr>
 <td>Overall footprint</td>
 <td>4,459 × 2,200mm (2 panels, field-bolted)</td>
-<td>Fits inside film plane rails (X=150–4,649) with 20mm clearance per side</td>
+<td>Fits inside film plane rails (X=<!-- BEGIN fact:film_plane_left_x_mm -->150<!-- END fact:film_plane_left_x_mm -->–<!-- BEGIN fact:film_plane_right_x_mm -->4,649<!-- END fact:film_plane_right_x_mm -->) with 20mm clearance per side</td>
 </tr>
 <tr>
 <td>Position</td>
@@ -2842,8 +2842,8 @@ full print width. Together they form the print washing subsystem of the
 </tr>
 <tr>
 <td>Weight (operating, 6mm flood)</td>
-<td>~233 kg</td>
-<td>Tray + ~117 kg water</td>
+<td>~175 kg</td>
+<td>Tray + ~59 kg water (6mm over the 4,459 × 2,200mm tray ≈ 59 L)</td>
 </tr>
 </tbody>
 </table>
@@ -2962,7 +2962,7 @@ fold the liner around the sump pickup tube.</p>
 <td>Clear</td>
 </tr>
 <tr>
-<td>Film plane rails at X=150 and X=4,649</td>
+<td>Film plane rails at X=<!-- BEGIN fact:film_plane_left_x_mm -->150<!-- END fact:film_plane_left_x_mm --> and X=<!-- BEGIN fact:film_plane_right_x_mm -->4,649<!-- END fact:film_plane_right_x_mm --></td>
 <td>20mm gap between tray edge and rail</td>
 <td>Clear</td>
 </tr>
@@ -2998,7 +2998,7 @@ envelopes, so no removal is required for mode conversion. This eliminates the fo
 washing. The operator slides the bar along the tray (Yd direction, from film-plane side
 toward the pinhole wall), flooding the print surface progressively.</p>
 <p><img alt="Sheet 1 — Gantry Elevation" src="../assets/spray-bar-sheet1.png" /></p>
-<p>The beam spans 3,859mm between the inner edges of the left and right walkways
+<p>The beam spans <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm between the inner edges of the left and right walkways
 (X=470 to X=4,329), extending under the walkway grating at each end. At each end, a
 two-wheel carriage rolls on the processing tray floor beneath the grating. A 3/4" LDPE
 irrigation poly pipe inside the aluminum SHS bore serves as the spray pipe — the supply
@@ -3028,7 +3028,7 @@ twenty-six barbed flat-fan irrigation nozzles at 150mm pitch along the beam bott
 <tbody>
 <tr>
 <td>Beam</td>
-<td>6061-T6 AL SHS, 40×40×3mm, 3,859mm long (two 8 ft lengths joined with splice sleeve)</td>
+<td>6061-T6 AL SHS, 40×40×3mm, <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm long (two 8 ft lengths joined with splice sleeve)</td>
 <td>1</td>
 <td>Structural beam housing internal spray pipe</td>
 </tr>
@@ -3150,7 +3150,7 @@ twenty-six barbed flat-fan irrigation nozzles at 150mm pitch along the beam bott
 </table>
 <h3 id="33-beam-spray-pipe">3.3 Beam / Spray Pipe<a class="headerlink" href="#33-beam-spray-pipe" title="Permanent link">&para;</a></h3>
 <p>The structural beam houses a 3/4" LDPE irrigation poly pipe for water distribution. A single 6061-T6 aluminum
-SHS (40×40×3mm, imperial 1-1/2" × 1-1/2" × 1/8") spans 3,859mm between the inner
+SHS (40×40×3mm, imperial 1-1/2" × 1-1/2" × 1/8") spans <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm between the inner
 edges of the left and right walkways.</p>
 <p><strong>Beam properties:</strong></p>
 <table>
@@ -3175,7 +3175,7 @@ edges of the left and right walkways.</p>
 </tr>
 <tr>
 <td>Span</td>
-<td>3,859mm (X=470 to X=4,329)</td>
+<td><!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm (X=470 to X=4,329)</td>
 </tr>
 <tr>
 <td>Second moment of area (I)</td>
@@ -3190,7 +3190,7 @@ edges of the left and right walkways.</p>
 <td>1.20 kg/m</td>
 </tr>
 <tr>
-<td>Beam mass (3,859mm)</td>
+<td>Beam mass (<!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm)</td>
 <td>4.63 kg</td>
 </tr>
 </tbody>
@@ -3583,7 +3583,7 @@ the top plate, spacer, carriage plate wing, and bottom plate, with nuts top and 
 </tbody>
 </table>
 <h3 id="37-structural-analysis">3.7 Structural Analysis<a class="headerlink" href="#37-structural-analysis" title="Permanent link">&para;</a></h3>
-<p><strong>Loading (simply supported, uniform distributed load across 3,859mm span):</strong></p>
+<p><strong>Loading (simply supported, uniform distributed load across <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm span):</strong></p>
 <table>
 <thead>
 <tr>
@@ -3666,11 +3666,11 @@ halves meet at a shallow upward angle.</p>
 </thead>
 <tbody>
 <tr>
-<td>Beam (40×40×3mm × 3,859mm)</td>
+<td>Beam (40×40×3mm × <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm)</td>
 <td>4.63</td>
 </tr>
 <tr>
-<td>LDPE pipe (OD 25mm × 3,859mm)</td>
+<td>LDPE pipe (OD 25mm × <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm)</td>
 <td>0.74</td>
 </tr>
 <tr>
@@ -3750,10 +3750,10 @@ than a single center feed — keeps the supply pressure uniform along the pipe, 
 the 26 nozzles sees nearly the same flow regardless of its distance from the inlet. The
 19mm bore provides adequate flow capacity at 3.5 GPM. Each irrigation nozzle delivers a
 180° flat fan pattern; at 150mm pitch the fans overlap heavily, giving near-continuous
-wash coverage along the 3,859mm beam span.</p>
+wash coverage along the <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm beam span.</p>
 <h3 id="310-water-connection">3.10 Water Connection<a class="headerlink" href="#310-water-connection" title="Permanent link">&para;</a></h3>
 <p>BV-02 (1/2" ball valve, Blue supply isolation) is mounted on the pinhole wall (Yd=0) at
-X=2,399mm (pinhole centerline), Z=900mm — waist height from the walkway deck. A
+X=<!-- BEGIN fact:pinhole_x_mm -->2,399<!-- END fact:pinhole_x_mm -->mm (pinhole centerline), Z=900mm — waist height from the walkway deck. A
 1/2" HDPE riser runs from the Blue supply trunk up to BV-02. A 4 m length of 1/2"
 reinforced braided PVC hose connects from BV-02 down to the distribution manifold at the
 ball joint. The hose coils when the bar is near the pinhole wall and extends as the bar is
@@ -3912,7 +3912,7 @@ tray drainage plan and sump cross-section).</p>
 <td><strong>Tray subtotal</strong></td>
 <td></td>
 <td></td>
-<td><strong>$1,300–$2,015</strong></td>
+<td><strong><!-- BEGIN costing:tray-low -->$1,300<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,015<!-- END costing:tray-high --></strong></td>
 </tr>
 </tbody>
 </table>
@@ -4063,7 +4063,7 @@ tray drainage plan and sump cross-section).</p>
 <td><strong>Spray bar subtotal</strong></td>
 <td></td>
 <td></td>
-<td><strong>$235–$299</strong></td>
+<td><strong><!-- BEGIN costing:spray-low -->$235<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$299<!-- END costing:spray-high --></strong></td>
 </tr>
 </tbody>
 </table>
@@ -4078,15 +4078,15 @@ tray drainage plan and sump cross-section).</p>
 <tbody>
 <tr>
 <td>Processing tray</td>
-<td>$1,300–$2,015</td>
+<td><!-- BEGIN costing:tray-low -->$1,300<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,015<!-- END costing:tray-high --></td>
 </tr>
 <tr>
 <td>Spray bar assembly</td>
-<td>$235–$299</td>
+<td><!-- BEGIN costing:spray-low -->$235<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$299<!-- END costing:spray-high --></td>
 </tr>
 <tr>
 <td><strong>Total</strong></td>
-<td><strong>$1,535–$2,314</strong></td>
+<td><strong><!-- BEGIN costing:tray-spray-total-low -->$1,535<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,314<!-- END costing:tray-spray-total-high --></strong></td>
 </tr>
 </tbody>
 </table>

@@ -19,9 +19,9 @@ The camera operates in remote locations with no municipal water or drainage. Thi
 
 | Circuit | Color code | Purpose | Storage |
 |---------|-------------|---------|---------|
-| **Blue** | Blue — clean | Fresh water supply for processing | 2× 1000L IBC totes (1800L working fill total — 900L each), stacked side-by-sdie |
+| **Blue** | Blue — clean | Fresh water supply for processing | 2× 1000L IBC totes (1800L working fill total — 900L each), stacked side-by-side |
 | **Brown** | Brown — used | Collected wash water; filtered and recycled back to Blue | 1× 1000L IBC tote, stacked below Blue IBCs |
-| **Black** | Black — waste | Heavily contaminated water; sealed IBC for off-site disposal | 1× 1000L IBC tote , stacked below Blue IBCs |
+| **Black** | Black — waste | Heavily contaminated water; sealed IBC for off-site disposal | 1× 1000L IBC tote, stacked below Blue IBCs |
 
 ![Water System — Sheet 1: System Schematic](assets/water-system-sheet1.png)
 

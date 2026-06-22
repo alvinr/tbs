@@ -1,6 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
-# Equipment Panel Report
+# Plumbing Panel Report
 
 ## 1. Purpose
 

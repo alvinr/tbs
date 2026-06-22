@@ -81,7 +81,7 @@ energy — the cooling load is the real consumer.
 
 At end of day the Brown (IBC-3) and Waste (IBC-4) totes are evacuated to the sealed
 end-wall ports — **Brown → X3 via P-05**, **Waste → X4 via P-03** ([Equipment Panel
-Report §4.3](equipment-panel-report.md), [Water System Report §6](water-system-report.md)).
+Report §4.3](plumbing-panel-report.md), [Water System Report §6](water-system-report.md)).
 
 This is **gravity-assisted**: each tote gravity-drains through its low (Z = 200 mm) port,
 and the pump only lifts the **~120 L residual** below the port:
@@ -189,5 +189,5 @@ all, that — not power or fresh water — becomes the hard stop.
 
 1. [Electrical Report §3](electrical-report.md) — power budget and the per-session itemized energy (`calculate_energy_budget.py`).
 2. [Water System Report §6](water-system-report.md) — pump runtimes, wash cycles, and the Brown/Waste drain-out path.
-3. [Equipment Panel Report §4.3](equipment-panel-report.md) — P-03 (Waste evac) and P-05 (Brown drain) duties; the ~120 L gravity-drain residual.
+3. [Plumbing Panel Report §4.3](plumbing-panel-report.md) — P-03 (Waste evac) and P-05 (Brown drain) duties; the ~120 L gravity-drain residual.
 4. [Cost Analysis](cost-analysis-report.md) — the manual-actuation decision (Circuit F unused in the standard build).

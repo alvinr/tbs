@@ -48,7 +48,7 @@ Overall floorplan can be seen below. Its essentially split into three areas, lef
 | Battery bank (2× 100Ah LiFePO4, each 330×172×214mm) | 1,540–2,220 | 150–364 | Wall shelf below panel; side-by-side, clears the optical cone |
 | Solar charge controller | Within panel | — | Mounted inside enclosure |
 | Cable trunking | Along wall face, H=1,800mm | — | Full length |
-| Blue supply pipe → spray bar | along wall to X=2,399 | — | Rigid 1/2" HDPE from the corridor pump panel to the spray-bar feed; pumps themselves are on the equipment panel in the IBC corridor (§2.4 / [Equipment Panel Report](equipment-panel-report.md)) |
+| Blue supply pipe → spray bar | along wall to X=2,399 | — | Rigid 1/2" HDPE from the corridor pump panel to the spray-bar feed; pumps themselves are on the equipment panel in the IBC corridor (§2.4 / [Plumbing Panel Report](plumbing-panel-report.md)) |
 
 ### 2.3 Optical Zone — X=150–4,649mm
 
@@ -221,7 +221,7 @@ transfer, plus the P-05/P-03 waste-drain pumps) mount on the equipment panel in 
 runs are short. The Blue supply pipe runs from P-01 along the pinhole wall to the
 spray-bar feed in the optical zone (~4m coiled flex to the rolling beam); the tray
 drain returns from the sump to P-04 on the panel. See the
-[Equipment Panel Report](equipment-panel-report.md) for the full plumbing layout.
+[Plumbing Panel Report](plumbing-panel-report.md) for the full plumbing layout.
 
 **Electrical conduit:** 25mm PVC trunking along the
 full container length on the pinhole wall face. Branch drops at each circuit

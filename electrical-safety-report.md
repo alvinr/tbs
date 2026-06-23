@@ -82,17 +82,18 @@ These were specified independently of this review and form a sound baseline.
 
 ## 4. Hazard & Risk Assessment
 
-Ranked by residual risk *before* the §5 improvements. Severity × likelihood for the
-12 V-DC-in-a-wet-conductive-box environment.
+Ranked by residual risk *as first assessed* — the Sev × Like ratings are the *pre-control*
+values for the 12 V-DC-in-a-wet-conductive-box environment; the final column tracks how each
+gap is now **closed** by the §5 controls.
 
-| # | Hazard | Mechanism | Sev. | Like. | Existing control | Residual gap |
+| # | Hazard | Mechanism | Sev. | Like. | Existing control | Residual gap → closed by |
 |---|--------|-----------|:----:|:-----:|------------------|--------------|
-| 1 | **Sustained DC short / arc → fire** | LiFePO4 delivers huge fault current; DC arc won't self-extinguish. Chafed conductor on the steel shell, dropped tool on the busbar, or liquid bridging a terminal | High | Med | 200 A + per-circuit fuses, BMS | Main fuse may be ~0.5 m from the battery (cable unprotected); **no manual disconnect**; chafe protection at shell penetrations not specified |
-| 2 | **Corroded wet-zone connections** | Developer/fixer vapor + condensation attacks unsealed terminals → high-resistance joints (heating) or intermittent faults. The 5 Shurflo pumps live in the wet IBC corridor / tray end | Med | High | IP65 enclosure (clean side only) | **Interior connectors are Anderson Powerpole — not sealed**; wet-zone wire not specified tinned |
-| 3 | **Battery busbar arc-flash** | 200 A+ available; a dropped wrench arcs, throws molten metal, burns | High | Low | Fusing limits duration | **No terminal covers**; no insulated-tool note |
-| 4 | **Battery thermal / venting** | Cells can vent under BMS failure / overcharge / abuse; container reaches 60 °C, and the BMS blocks charging above ~45 °C (mid-day charge lock-out) | High | Low | LiFePO4 (very stable), 60 °C rating, BMS | Addressed by thermal siting — low/shaded/cooled-air path (§5.2); confirm < 45 °C at commissioning |
-| 5 | **Shore-power AC** | Grid AC feeds the exterior charger only — but the *site supply* and any extension cord are a genuine electrocution hazard | High | Low | AC kept exterior (IP65 charger); never distributed inside | Depends on the **site supply being RCD/GFCI-protected**; operational rule must be enforced |
-| 6 | **Circuit-E cooler inverter (120 V AC)** | The only interior-derived AC: a 12 V→120 V inverter feeds an outdoor, water-wetted cooler beside the grounded steel box — a line-to-metal shock path | High | Low | Separately-derived source, single-point neutral-ground bond; **GFCI** on the cooler outlet; shell/chassis/cooler equipotential bond; DC-side fuse + dedicated disconnect; transformer galvanic isolation ([electrical §7.6](electrical-report.md#ac-safety)) | Operational only: cooler unplugged + inverter DC-disconnect open for transport; periodic GFCI trip test |
+| 1 | **Sustained DC short / arc → fire** | LiFePO4 delivers huge fault current; DC arc won't self-extinguish. Chafed conductor on the steel shell, dropped tool on the busbar, or liquid bridging a terminal | High | Med | 200 A + per-circuit fuses, BMS | Main fuse far from battery; **no manual disconnect**; chafe not specified; **PV/charge side not load-break isolatable** → **all closed (§5 #1):** terminal-mount fuse, manual disconnect + **two E-stops (in/out)**, **PV disconnect**, **charge-line fuse**, **per-pack MRBF**, chafe protection |
+| 2 | **Corroded wet-zone connections** | Developer/fixer vapor + condensation attacks unsealed terminals → high-resistance joints (heating) or intermittent faults. The 5 Shurflo pumps live in the wet IBC corridor / tray end | Med | High | IP65 enclosure (clean side only) | **Anderson Powerpole — not sealed**; wire not tinned → **closed (§5 #2):** sealed IP-rated connectors + tinned wire + dielectric grease |
+| 3 | **Battery busbar arc-flash** | 200 A+ available; a dropped wrench arcs, throws molten metal, burns | High | Low | Fusing limits duration | **No terminal covers**; no insulated-tool note → **closed (§5 #3):** terminal covers + insulated-tool rule |
+| 4 | **Battery thermal / venting** | Cells can vent under BMS failure / overcharge / abuse; container reaches 60 °C, and the BMS blocks charging above ~45 °C (mid-day charge lock-out) | High | Low | LiFePO4 (very stable), 60 °C rating, BMS | Charge lock-out > 45 °C → **closed (§5 #4):** thermal siting — low/shaded/cooled-air (§5.2); confirm < 45 °C at commissioning |
+| 5 | **Shore-power AC** | Grid AC feeds the exterior charger only — but the *site supply* and any extension cord are a genuine electrocution hazard | High | Low | AC kept exterior (IP65 charger); never distributed inside | Depends on site RCD/GFCI + the operational rule → **managed (§5 #5 / §6):** exterior-only AC, site-RCD rule, commissioning check |
+| 6 | **Circuit-E cooler inverter (120 V AC)** | The only interior-derived AC: a 12 V→120 V inverter feeds an outdoor, water-wetted cooler beside the grounded steel box — a line-to-metal shock path | High | Low | Separately-derived source, single-point neutral-ground bond; **GFCI** on the cooler outlet; shell/chassis/cooler equipotential bond; DC-side fuse + dedicated disconnect; transformer galvanic isolation ([electrical §7.6](electrical-report.md#ac-safety)) | → **managed (§6 / §7.6):** cooler unplugged + inverter DC-disconnect for transport; periodic GFCI trip test |
 
 ---
 

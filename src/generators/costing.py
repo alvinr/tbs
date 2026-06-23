@@ -681,7 +681,7 @@ def _inline_blocks() -> dict:
         "vent-cooler-inverter": (_VENT, lambda: f"${_vent_line('Evaporative cooler').mid + _vent_line('Cooler inverter').mid:,}"),
         # film-plane-mechanism-report.md §7 materials total — the §4 FILM BOM low (base estimate;
         # the old hand-set ~$3,100 sat below this BOM).
-        "film-total":          ([_FPM, _TSB], lambda: f"${total(FILM)[0]:,}"),
+        "film-total":          (_FPM, lambda: f"${total(FILM)[0]:,}"),
         # film-clamp-mechanism-report.md §4 — clamp-system band (generic toggle → Destaco-equiv).
         "clamp-system-low":    (_FC, lambda: f"${_clamp_system('low'):,}"),
         "clamp-system-high":   (_FC, lambda: f"${_clamp_system('high'):,}"),

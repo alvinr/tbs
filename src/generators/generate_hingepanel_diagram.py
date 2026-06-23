@@ -1584,12 +1584,14 @@ def sheet6():
     # interior backing plate behind the exterior wall (spreads the load)
     ax.add_patch(Rectangle((-7, -22), 7, 44, fc="#9AA0A6", ec=C_OUT, lw=1.0, zorder=3))
     leader(ax, (-5, -18), (-78, -92), "interior backing\nplate", col=C_OUT)
-    # handle: foot plate on the skin, two standoff bosses, Ø25 grip bar (vertical → circle here)
-    ax.add_patch(Rectangle((54, -22), 6, 44, fc="#202020", ec=C_OUT, lw=1.0, zorder=5))
+    # handle: foot plate on the skin, two standoff bosses, Ø25 grip bar (vertical → circle here).
+    # Drawn at 60% opacity (40% reduced) so the through-bolt detail reads clearly underneath.
+    HA = 0.6
+    ax.add_patch(Rectangle((54, -22), 6, 44, fc="#202020", ec=C_OUT, lw=1.0, alpha=HA, zorder=5))
     for fy in (-15, 15):
-        ax.add_patch(Rectangle((60, fy - 6), 34, 12, fc="#202020", ec=C_OUT, lw=0.8, zorder=5))
-    ax.add_patch(Rectangle((94, -22), 6, 44, fc="#202020", ec=C_OUT, lw=0.8, zorder=5))
-    ax.add_patch(Circle((100, 0), 12.5, fc="#202020", ec=C_OUT, lw=1.2, zorder=6))
+        ax.add_patch(Rectangle((60, fy - 6), 34, 12, fc="#202020", ec=C_OUT, lw=0.8, alpha=HA, zorder=5))
+    ax.add_patch(Rectangle((94, -22), 6, 44, fc="#202020", ec=C_OUT, lw=0.8, alpha=HA, zorder=5))
+    ax.add_patch(Circle((100, 0), 12.5, fc="#202020", ec=C_OUT, lw=1.2, alpha=HA, zorder=6))
     leader(ax, (100, 13), (148, 74),
            "316 SS D-grab handle\n~300mm grip · 25mm bar\nMATTE-BLACK (optically dead)",
            col=C_OUT, fw="bold")

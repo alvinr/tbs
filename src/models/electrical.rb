@@ -433,7 +433,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-3.3710904324400417.mm, 11.174603174603135.mm, -9.294027154632523.mm)
+  vec = Geom::Vector3d.new(-3.3710904324400417.mm, 11.174603174603135.mm, -9.294027154632516.mm)
   circle = ge.add_circle([1304.9884758210587.mm,-772.6031746031746.mm,60.54726213625084.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -447,8 +447,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-8.933421446249213.mm, 11.174603174603249.mm, -4.235229948707868.mm)
-  circle = ge.add_circle([1301.6173853886187.mm,-761.4285714285714.mm,51.25323498161832.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.933421446249213.mm, 11.174603174603249.mm, -4.235229948707875.mm)
+  circle = ge.add_circle([1301.6173853886187.mm,-761.4285714285714.mm,51.25323498161833.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -601,7 +601,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(2.7777073955937794.mm, 11.174603174603135.mm, 9.488283990227039.mm)
+  vec = Geom::Vector3d.new(2.7777073955937794.mm, 11.174603174603135.mm, 9.488283990227053.mm)
   circle = ge.add_circle([1279.0719702576096.mm,-638.5079365079365.mm,58.633966698844425.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -615,8 +615,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(8.648268936837894.mm, 11.174603174603249.mm, 4.790682190550868.mm)
-  circle = ge.add_circle([1281.8496776532033.mm,-627.3333333333334.mm,68.12225068907146.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.648268936837894.mm, 11.174603174603249.mm, 4.790682190550854.mm)
+  circle = ge.add_circle([1281.8496776532033.mm,-627.3333333333334.mm,68.12225068907148.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1035,7 +1035,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.091062472885142.mm, 11.174603174603135.mm, 7.787306941821903.mm)
+  vec = Geom::Vector3d.new(-6.091062472885142.mm, 11.174603174603135.mm, 7.78730694182191.mm)
   circle = ge.add_circle([1285.5749983342314.mm,-292.0952380952381.mm,48.69870124300441.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -1049,8 +1049,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.1477544109268365.mm, 11.174603174603249.mm, 9.819666555791706.mm)
-  circle = ge.add_circle([1279.4839358613463.mm,-280.92063492063494.mm,56.48600818482631.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(1.1477544109268365.mm, 11.174603174603249.mm, 9.819666555791699.mm)
+  circle = ge.add_circle([1279.4839358613463.mm,-280.92063492063494.mm,56.48600818482632.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2365,7 +2365,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.418368879275704.mm, -2.5357148359493635.mm, 11.37928719490992.mm)
+  vec = Geom::Vector3d.new(-9.418368879275704.mm, -2.5357148359493706.mm, 11.37928719490992.mm)
   circle = ge.add_circle([1311.1398123176873.mm,-57.11590977512742.mm,1140.3413249442387.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -2379,8 +2379,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-4.828357313004972.mm, -8.57322632284091.mm, 11.305328620385353.mm)
-  circle = ge.add_circle([1301.7214434384116.mm,-59.651624611076784.mm,1151.7206121391487.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-4.828357313004972.mm, -8.573226322840902.mm, 11.305328620385353.mm)
+  circle = ge.add_circle([1301.7214434384116.mm,-59.65162461107679.mm,1151.7206121391487.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2589,7 +2589,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.482696639387086.mm, -2.278244054865965.mm, 11.3803237041584.mm)
+  vec = Geom::Vector3d.new(-9.482696639387086.mm, -2.278244054865958.mm, 11.3803237041584.mm)
   circle = ge.add_circle([1314.3772508079644.mm,-57.166800775558926.mm,1319.9296338243005.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -2603,8 +2603,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-5.05565119709172.mm, -8.436279561400454.mm, 11.308990992783038.mm)
-  circle = ge.add_circle([1304.8945541685773.mm,-59.44504483042489.mm,1331.3099575284589.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-5.05565119709172.mm, -8.436279561400461.mm, 11.308990992783038.mm)
+  circle = ge.add_circle([1304.8945541685773.mm,-59.445044830424884.mm,1331.3099575284589.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2701,7 +2701,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.512274654742441.mm, -2.1488868572789173.mm, 11.380800292904041.mm)
+  vec = Geom::Vector3d.new(-9.512274654742669.mm, -2.1488868572789173.mm, 11.380800292904041.mm)
   circle = ge.add_circle([1315.9954293873695.mm,-57.195686389145656.mm,1409.7237969760447.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -2715,8 +2715,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-5.167905496733056.mm, -8.365540100386568.mm, 11.310799739420418.mm)
-  circle = ge.add_circle([1306.483154732627.mm,-59.344573246424574.mm,1421.1045972689487.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-5.167905496732828.mm, -8.365540100386568.mm, 11.310799739420418.mm)
+  circle = ge.add_circle([1306.4831547326269.mm,-59.344573246424574.mm,1421.1045972689487.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3275,7 +3275,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-3.3710904324400417.mm, 11.174603174603135.mm, -9.294027154632523.mm)
+  vec = Geom::Vector3d.new(-3.3710904324400417.mm, 11.174603174603135.mm, -9.294027154632516.mm)
   circle = ge.add_circle([1320.9884758210587.mm,-772.6031746031746.mm,60.54726213625084.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -3289,8 +3289,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-8.933421446249213.mm, 11.174603174603249.mm, -4.235229948707868.mm)
-  circle = ge.add_circle([1317.6173853886187.mm,-761.4285714285714.mm,51.25323498161832.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.933421446249213.mm, 11.174603174603249.mm, -4.235229948707875.mm)
+  circle = ge.add_circle([1317.6173853886187.mm,-761.4285714285714.mm,51.25323498161833.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3443,7 +3443,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(2.7777073955937794.mm, 11.174603174603135.mm, 9.488283990227039.mm)
+  vec = Geom::Vector3d.new(2.7777073955937794.mm, 11.174603174603135.mm, 9.488283990227053.mm)
   circle = ge.add_circle([1295.0719702576096.mm,-638.5079365079365.mm,58.633966698844425.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -3457,8 +3457,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(8.648268936837894.mm, 11.174603174603249.mm, 4.790682190550868.mm)
-  circle = ge.add_circle([1297.8496776532033.mm,-627.3333333333334.mm,68.12225068907146.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.648268936837894.mm, 11.174603174603249.mm, 4.790682190550854.mm)
+  circle = ge.add_circle([1297.8496776532033.mm,-627.3333333333334.mm,68.12225068907148.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3877,7 +3877,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.091062472885142.mm, 11.174603174603135.mm, 7.787306941821903.mm)
+  vec = Geom::Vector3d.new(-6.091062472885142.mm, 11.174603174603135.mm, 7.78730694182191.mm)
   circle = ge.add_circle([1301.5749983342314.mm,-292.0952380952381.mm,48.69870124300441.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -3891,8 +3891,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.1477544109268365.mm, 11.174603174603249.mm, 9.819666555791706.mm)
-  circle = ge.add_circle([1295.4839358613463.mm,-280.92063492063494.mm,56.48600818482631.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(1.1477544109268365.mm, 11.174603174603249.mm, 9.819666555791699.mm)
+  circle = ge.add_circle([1295.4839358613463.mm,-280.92063492063494.mm,56.48600818482632.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -5207,7 +5207,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.418368879275704.mm, -2.5357148359493635.mm, 11.37928719490992.mm)
+  vec = Geom::Vector3d.new(-9.418368879275704.mm, -2.5357148359493706.mm, 11.37928719490992.mm)
   circle = ge.add_circle([1327.1398123176873.mm,-57.11590977512742.mm,1140.3413249442387.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -5221,8 +5221,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-4.828357313004972.mm, -8.57322632284091.mm, 11.305328620385353.mm)
-  circle = ge.add_circle([1317.7214434384116.mm,-59.651624611076784.mm,1151.7206121391487.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-4.828357313004972.mm, -8.573226322840902.mm, 11.305328620385353.mm)
+  circle = ge.add_circle([1317.7214434384116.mm,-59.65162461107679.mm,1151.7206121391487.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -5431,7 +5431,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.482696639387086.mm, -2.278244054865965.mm, 11.3803237041584.mm)
+  vec = Geom::Vector3d.new(-9.482696639387086.mm, -2.278244054865958.mm, 11.3803237041584.mm)
   circle = ge.add_circle([1330.3772508079644.mm,-57.166800775558926.mm,1319.9296338243005.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -5445,8 +5445,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-5.05565119709172.mm, -8.436279561400454.mm, 11.308990992783038.mm)
-  circle = ge.add_circle([1320.8945541685773.mm,-59.44504483042489.mm,1331.3099575284589.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-5.05565119709172.mm, -8.436279561400461.mm, 11.308990992783038.mm)
+  circle = ge.add_circle([1320.8945541685773.mm,-59.445044830424884.mm,1331.3099575284589.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -5543,7 +5543,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.512274654742441.mm, -2.1488868572789173.mm, 11.380800292904041.mm)
+  vec = Geom::Vector3d.new(-9.512274654742669.mm, -2.1488868572789173.mm, 11.380800292904041.mm)
   circle = ge.add_circle([1331.9954293873695.mm,-57.195686389145656.mm,1409.7237969760447.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -5557,8 +5557,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-5.167905496733056.mm, -8.365540100386568.mm, 11.310799739420418.mm)
-  circle = ge.add_circle([1322.483154732627.mm,-59.344573246424574.mm,1421.1045972689487.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-5.167905496732828.mm, -8.365540100386568.mm, 11.310799739420418.mm)
+  circle = ge.add_circle([1322.4831547326269.mm,-59.344573246424574.mm,1421.1045972689487.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6247,6 +6247,43 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # Charge-line Fuse (60A, MPPT -> battery)
+  grp = ents.add_group
+  grp.name = "Charge-line Fuse (60A, MPPT -> battery)"
+  face = grp.entities.add_face([1925.mm,95.mm,1695.mm], [1970.mm,95.mm,1695.mm], [1970.mm,125.mm,1695.mm], [1925.mm,125.mm,1695.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(45.mm)
+  mat = model.materials["Charge-line Fuse (60A, MPPT -> battery)"] || model.materials.add("Charge-line Fuse (60A, MPPT -> battery)")
+  mat.color = Sketchup::Color.new(34, 34, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Interior E-stop collar (safety yellow)
+  grp = ents.add_group
+  grp.name = "Interior E-stop collar (safety yellow)"
+  ge = grp.entities
+  circle = ge.add_circle([2060.mm,165.mm,1580.mm], [0,1,0], 30.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Interior E-stop collar (safety yellow)"] || model.materials.add("Interior E-stop collar (safety yellow)")
+  mat.color = Sketchup::Color.new(242, 194, 0)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Interior E-stop button (red mushroom)
+  grp = ents.add_group
+  grp.name = "Interior E-stop button (red mushroom)"
+  ge = grp.entities
+  circle = ge.add_circle([2060.mm,177.mm,1580.mm], [0,1,0], 24.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(26.mm)
+  mat = model.materials["Interior E-stop button (red mushroom)"] || model.materials.add("Interior E-stop button (red mushroom)")
+  mat.color = Sketchup::Color.new(196, 43, 28)
+  mat.alpha = 1.0
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Power Core"
   inst.layer = model.layers["Power Core"]
@@ -6282,7 +6319,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([1560.mm,15.mm,364.mm], [1680.mm,15.mm,364.mm], [1680.mm,105.mm,364.mm], [1560.mm,105.mm,364.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(100.mm)
-  mat = model.materials["Battery Contactor (ML-RBS)"] || model.materials.add("Battery Contactor (ML-RBS)")
+  mat = model.materials["Interior E-stop button (red mushroom)"] || model.materials.add("Interior E-stop button (red mushroom)")
   mat.color = Sketchup::Color.new(196, 43, 28)
   mat.alpha = 1.0
   grp.material = mat
@@ -6293,7 +6330,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([1695.mm,20.mm,364.mm], [1735.mm,20.mm,364.mm], [1735.mm,60.mm,364.mm], [1695.mm,60.mm,364.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
-  mat = model.materials["MRBF Main Fuse (on + post)"] || model.materials.add("MRBF Main Fuse (on + post)")
+  mat = model.materials["Charge-line Fuse (60A, MPPT -> battery)"] || model.materials.add("Charge-line Fuse (60A, MPPT -> battery)")
   mat.color = Sketchup::Color.new(34, 34, 34)
   mat.alpha = 1.0
   grp.material = mat
@@ -6546,7 +6583,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(12.mm)
-  mat = model.materials["E-stop collar (safety yellow)"] || model.materials.add("E-stop collar (safety yellow)")
+  mat = model.materials["Interior E-stop collar (safety yellow)"] || model.materials.add("Interior E-stop collar (safety yellow)")
   mat.color = Sketchup::Color.new(242, 194, 0)
   mat.alpha = 1.0
   grp.material = mat
@@ -6559,8 +6596,19 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(28.mm)
-  mat = model.materials["Battery Contactor (ML-RBS)"] || model.materials.add("Battery Contactor (ML-RBS)")
+  mat = model.materials["Interior E-stop button (red mushroom)"] || model.materials.add("Interior E-stop button (red mushroom)")
   mat.color = Sketchup::Color.new(196, 43, 28)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV Array Disconnect (load-break isolator)
+  grp = ents.add_group
+  grp.name = "PV Array Disconnect (load-break isolator)"
+  face = grp.entities.add_face([1386.mm,22.mm,1834.8.mm], [1456.mm,22.mm,1834.8.mm], [1456.mm,67.mm,1834.8.mm], [1386.mm,67.mm,1834.8.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Main Disconnect (m-Series)"] || model.materials.add("Main Disconnect (m-Series)")
+  mat.color = Sketchup::Color.new(212, 58, 47)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6593,7 +6641,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.901326650630608.mm, -20.56652784586828.mm, -2.8402651823646465.mm)
+  vec = Geom::Vector3d.new(-21.901326650630608.mm, -20.566527845868265.mm, -2.8402651823646465.mm)
   circle = ge.add_circle([1479.652.mm,-96.75.mm,1781.3.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -6607,8 +6655,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-10.610611923501665.mm, 18.005781949655074.mm, -12.23572774020704.mm)
-  circle = ge.add_circle([1457.7506733493694.mm,-117.31652784586828.mm,1778.4597348176353.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-10.610611923501665.mm, 18.00578194965506.mm, -12.23572774020704.mm)
+  circle = ge.add_circle([1457.7506733493694.mm,-117.31652784586826.mm,1778.4597348176353.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6845,7 +6893,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(5.4967973803252335.mm, 17.267472362990404.mm, -16.066297616289376.mm)
+  vec = Geom::Vector3d.new(5.4967973803252335.mm, 17.267472362990418.mm, -16.066297616289376.mm)
   circle = ge.add_circle([1404.7540012719533.mm,-128.715820582891.mm,1593.6597170313478.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -6859,8 +6907,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.67868045040359.mm, 5.261428327575956.mm, -16.752471242454476.mm)
-  circle = ge.add_circle([1410.2507986522785.mm,-111.44834821990061.mm,1577.5934194150584.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.67868045040359.mm, 5.261428327575942.mm, -16.752471242454476.mm)
+  circle = ge.add_circle([1410.2507986522785.mm,-111.4483482199006.mm,1577.5934194150584.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9612,7 +9660,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Fan B flex connector (box -> fan, Cct B)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-1.5002345951338327.mm, 13.004426672891782.mm, 20.238523937893206.mm)
+  vec = Geom::Vector3d.new(-1.5002345951338185.mm, 13.004426672891782.mm, 20.238523937893206.mm)
   circle = ge.add_circle([116.76801970230245.mm,246.0416005068517.mm,598.097985352377.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -9626,8 +9674,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Fan B flex connector (box -> fan, Cct B)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(8.220974819980398.mm, 20.530524284593128.mm, 9.585239367105373.mm)
-  circle = ge.add_circle([115.26778510716862.mm,259.0460271797435.mm,618.3365092902702.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.220974819980384.mm, 20.530524284593128.mm, 9.585239367105373.mm)
+  circle = ge.add_circle([115.26778510716863.mm,259.0460271797435.mm,618.3365092902702.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9794,6 +9842,18 @@ txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(4874.mm, 1181.mm, 2230.mm)
 txt = entities.add_text("CCT-C PUMP DISTRIBUTION
 5 switches — P-01..P-05 (one at a time)", anc, Geom::Vector3d.new(-350.mm, -700.mm, 250.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(1392.8.mm, 35.mm, 1846.8.mm)
+txt = entities.add_text("PV DISCONNECT
+(load-break, array->MPPT)", anc, Geom::Vector3d.new(300.mm, -560.mm, 320.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(1950.mm, 95.mm, 1715.mm)
+txt = entities.add_text("60A CHARGE FUSE
+(MPPT -> battery)", anc, Geom::Vector3d.new(440.mm, -680.mm, 160.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(2060.mm, 203.mm, 1580.mm)
+txt = entities.add_text("INTERIOR E-STOP
+(EP face, parallel)", anc, Geom::Vector3d.new(-340.mm, -560.mm, -160.mm))
 txt.layer = model.layers["Labels"] rescue nil
 
 # ── In-model © + license credit (default layer → shown in every scene) ──

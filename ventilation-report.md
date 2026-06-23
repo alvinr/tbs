@@ -58,26 +58,26 @@ Longitudinal section showing the cross-flow ventilation path: Fan B intake at th
 
 ### 4.1 Fan Positions
 
-| Fan | Position | Mounting | Function |
+| Fan | Location | Mounting | Function |
 |-----|----------|----------|----------|
-| Fan B (intake) | Hinged panel, near corner zone by the pinhole wall (Yd=365mm, Z=600mm — rev9/B2 swap) | Flush-mounted in 40mm corner zone panel | Fresh air intake — draws cooler air near floor level |
-| Fan A (exhaust) | Sealed end wall (X=5,893mm), in the plumbing corridor below the X1 fill port (Yd=1,181mm, Z=2,000mm) | Flush-mounted in wall penetration | Exhaust warm, humid air during processing and drying |
+| Fan B (intake) | Hinged panel, near corner zone by the pinhole wall | Flush-mounted in 40mm corner zone panel | Fresh air intake — draws cooler air near floor level |
+| Fan A (exhaust) | Sealed end wall, in the plumbing corridor below the X1 fill port | Flush-mounted in wall penetration | Exhaust warm, humid air during processing and drying |
 
-Both fans are 6" (150mm) diameter, 12V DC, **150×150×50mm axial panel fans** (e.g. GDSTIME/Wathai 15050-12V — the AC Infinity S6 was a mis-spec: it's a 320mm inline fan; see [component-dimension-audit.md](component-dimension-audit.md)). Fan bodies (50mm deep) do not protrude beyond either panel face. Cross-flow ventilation runs diagonally: **low intake at the cargo door end → high exhaust at the sealed end** — fresh air enters near the floor, sweeps the working volume, and warm air discharges high.
+Both fans are 12V DC, **150×150×50mm axial panel fans** (e.g. GDSTIME/Wathai 15050-12V). Fan bodies (50mm deep) do not protrude beyond either panel face. Cross-flow ventilation runs diagonally: **low intake at the cargo door end → high exhaust at the sealed end** — fresh air enters near the floor, sweeps the working volume, and warm air discharges high.
 
-> **Why this layout:** The intake sits on the cargo door panel (low) and the exhaust on the sealed end wall (high). With the v2 1,000L direct-stack the totes now reach Z=2,336mm against the end wall in both flanking columns, leaving only the **270mm plumbing corridor** (Yd=1046–1316) clear full-height. Fan A is therefore placed in that corridor, directly **below the X1 fill port** (Yd=1181, Z=2000) — the only channel where its 300mm baffle duct projects into clear space rather than into a tote — while preserving the diagonal low-in / high-out flow.
+> **Why this layout:** The intake sits on the cargo door panel (low) and the exhaust on the sealed end wall (high). With the v1,000L direct-stack the totes now reach Z=2,336mm against the end wall in both flanking columns, leaving only the **270mm plumbing corridor** clear full-height. Fan A is therefore placed in that corridor, directly **below the X1 fill port** — the only channel where its 300mm baffle duct projects into clear space rather than into a tote — while preserving the diagonal low-in / high-out flow.
 
 ### 4.2 Fan A — Sealed End Wall Exhaust
 
-Fan A is flush-mounted in a wall penetration at the sealed end wall (X=5,893mm), in the plumbing corridor directly below the X1 fill port (Z=2,000mm AFF, Yd=1,181mm — the 270mm corridor between the two 1,000L tote columns is the only full-height clear channel at this end). Its 300mm baffle duct projects into the clear corridor, clearing the X1 fill trunk above (Z=2,250mm). The fan body sits inside a light-safe baffle duct (see §4.4) bolted to the interior face of the wall. A weatherproof louvre grille on the exterior face protects the penetration from rain and debris. The fan, duct, and grille are permanently installed — no removal is required for mode conversion or transport.
+Fan A is flush-mounted in a wall penetration at the sealed end wall, in the plumbing corridor directly below the X1 fill port, the 270mm corridor between the two 1,000L tote columns is the only full-height clear channel at this end. Its 300mm baffle duct projects into the clear corridor, clearing the X1 fill trunk above. The fan body sits inside a light-safe baffle duct (see §4.4) bolted to the interior face of the wall. A weatherproof louvre grille on the exterior face protects the penetration from rain and debris. The fan, duct, and grille are permanently installed — no removal is required for mode conversion or transport.
 
-**Wiring:** Fan A's wire run routes from the fuse block along the ceiling cable trunking to the sealed end wall, then drops down the plumbing corridor to the fan (Z=2,000mm). The entire run is inside the container — no flex cable or weatherproof connectors are needed.
+**Wiring:** Fan A's wire run routes from the fuse block along the ceiling cable trunking to the sealed end wall, then drops down the plumbing corridor to the fan. The entire run is inside the container — no flex cable or weatherproof connectors are needed.
 
 ### 4.3 Fan B — Panel-Mounted Intake
 
 Fan B is mounted low on the swinging hinged panel, so it travels with the panel during mode conversion (the ~56° transport swing about the pivot). The fan and baffle duct are interior-mounted (same as Fan A); a weatherproof louvre grille on the panel exterior face is the only external component. During operation, the cargo doors are open (personnel access is via the revolving light trap drum), so fresh outside air is drawn in through the grille near floor level.
 
-**Wiring:** Fan B's wire run routes from the fuse block along the ceiling cable trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin weatherproof connectors at each end. The coiled cable accommodates the ~56° transport swing about the pivot (with slack) without binding. The fixed end anchors to the door frame top rail; the panel end anchors to the swinging frame near the pivot. The service loop hangs in the ceiling zone above Z=2,200mm; the wire drops down the panel to the low fan.
+**Wiring:** Fan B's wire run routes from the fuse block along the ceiling cable trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin weatherproof connectors at each end. The coiled cable accommodates the ~56° transport swing about the pivot (with slack) without binding. The fixed end anchors to the door frame top rail; the panel end anchors to the swinging frame near the pivot. The service loop hangs in the ceiling zone; the wire drops down the panel to the low fan.
 
 ### 4.4 Light-Safe Baffle Ducts
 
@@ -113,14 +113,14 @@ The baffle design is identical for both fans. Fan A's baffle duct is fixed to th
 
 ### 5.2 Light-Safe Cooler Intake
 
-The cooler sits on the ground outside the container, adjacent to the pinhole wall. A Ø200mm flexible insulated duct rises vertically from the cooler outlet and turns through a 90° elbow into the wall penetration (Z=1,900mm), so it meets both the cooler and the wall stub at right angles. The penetration carries light-safe baffles. Power (Circuit E) is **120V AC** from the interior inverter, presented at a **GFCI-fed weatherproof outlet (in-use cover)** on the external power panel — the same flush-mount panel that carries the solar and shore power inputs. A 1.5m outdoor SJOOW cord connects the panel outlet to the cooler; both the cord and flex duct are disconnected and stowed inside the container for transport. The AC isolation/GFCI/equipotential-bonding design is in [Electrical Report §7.6](electrical-report.md#ac-safety); the full wire path is in §7.3.
+The cooler sits on the ground outside the container, adjacent to the pinhole wall. A Ø200mm flexible insulated duct rises vertically from the cooler outlet and turns through a 90° elbow into the wall penetration, so it meets both the cooler and the wall stub at right angles. The penetration carries light-safe baffles. Power (Circuit E) is **120V AC** from the interior inverter, presented at a **GFCI-fed weatherproof outlet (in-use cover)** on the external power panel — the same flush-mount panel that carries the solar and shore power inputs. A 1.5m outdoor SJOOW cord connects the panel outlet to the cooler; both the cord and flex duct are disconnected and stowed inside the container for transport. The AC isolation/GFCI/equipotential-bonding design is in [Electrical Report §7.6](electrical-report.md#ac-safety); the full wire path is in §7.3.
 
 This arrangement requires no permanent external mounting — the cooler is simply placed, connected (duct + power), and removed each session.
 
 | Parameter | Value |
 |-----------|-------|
 | Duct size | 200mm (8") — sized for ~300 CFM at low velocity |
-| Penetration location | Pinhole wall (Yd=0 face) at X=1,000mm, Z=1,900mm |
+| Penetration location | Pinhole wall at X=1,000mm, Z=1,900mm |
 | Flexible duct | Ø200mm insulated flex, ~1.2m length, aluminum foil jacket |
 | Elbow | Ø200mm (8") 90° galvanized elbow — vertical riser to horizontal wall entry |
 | Interior baffles | Two 200 × 200mm flat steel baffles, offset 100mm, inside a 300mm duct stub |
@@ -138,10 +138,10 @@ From the walkway design, the location of the cooler (green rectangle) can be see
 
 | Parameter | Value |
 |-----------|-------|
-| Stowage zone | Near walkway wide section, X=1,450–2,050mm, Yd=0–350mm |
+| Stowage zone | Near walkway wide section, X=1,450–2,050mm |
 | Base plate | 12mm plywood, 600 × 350mm (load distribution) |
 | Securing | 2 × 25mm ratchet straps to cantilever bracket arms |
-| Clearance to panel swing sweep | ~55mm (the swing reaches X≈1,395; the cooler starts at X=1,450, moved deeper from X=1,200 in rev10 to clear the deeper swing) |
+| Clearance to panel swing sweep | ~55mm (the swing reaches X≈1,395; the cooler starts at X=1,450) |
 
 ---
 

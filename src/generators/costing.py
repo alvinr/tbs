@@ -152,7 +152,7 @@ WALKWAY = [
     LineItem("Drum-exit punch-out — extra GRP grating (~0.23 m²)", 50, 57, 65, "600mm-deep landing at the light-lock exit"),
     LineItem("Left floor-leg cantilever brackets (×5)", 55, 75, 95, "50×50×3 SHS posts + 40×40×3 arms + foot plates"),
     LineItem("M10 wedge floor anchors (×20)", 25, 35, 45, "4 per foot plate; sealed floor penetrations"),
-    LineItem("Fabrication (brackets, cantilever frame, install)", 280, 360, 440, "14 std + 4 widened brackets, right cantilever frame, 5 left floor-leg brackets, install"),
+    LineItem("Fabrication (brackets, cantilever frame, install)", 454, 634, 808, "14 std + 4 widened brackets, right cantilever frame, 5 left floor-leg brackets, install; raised so the bracket scope (material + fab) matches the walkway-report §10 all-in bracket figures ($742–$1,255)"),
 ]
 
 
@@ -459,6 +459,7 @@ _VENT = "ventilation-report.md"
 _FPM = "film-plane-mechanism-report.md"
 _FC  = "film-clamp-mechanism-report.md"
 _TSB = "tilt-swing-board-report.md"
+_WK  = "walkway-report.md"
 
 
 def capital_mid() -> int:
@@ -689,6 +690,9 @@ def _inline_blocks() -> dict:
         # rest of the model reads); the §12.4 note's film-plane comparison uses film-total above.
         "front-board-total":   (_TSB, lambda: f"${FRONT_BOARD_MID:,}"),
         "front-board-total-high": (_TSB, lambda: f"${FRONT_BOARD_HIGH:,}"),
+        # walkway-report.md §10 parts-list total — the §6a WALKWAY band (low–high).
+        "walkway-total-low":   (_WK, lambda: f"${_sec('6a').low:,}"),
+        "walkway-total-high":  (_WK, lambda: f"${_sec('6a').high:,}"),
     }
 
 
@@ -844,8 +848,8 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 909,  "total": 1210, "per_print": 24},  # 909 not 910: consistent ferri rounding ($104, not the doc's hand-rounded $105)
     "standard": {"chem": 1353, "total": 1650, "per_print": 33},
     "rich":     {"chem": 2681, "total": 2980, "per_print": 60},
-    "grand_total": (20161, 25346, 32648),  # +85 §5a: electrical safety design-change (PV disconnect, charge/shore fuses, 2nd E-stop)
-    "walkway": (1826, 2214, 2607),
+    "grand_total": (20335, 25620, 33016),  # +85 §5a electrical-safety; +174/274/368 §6a walkway (bracket fab reconciled to report §10 all-in figures)
+    "walkway": (2000, 2488, 2975),   # §6a fab line raised so bracket scope matches walkway-report §10 ($742–$1,255 all-in)
     "water": (4211, 5258, 6297),   # tray 1177→1300 / spray 210→235 (+ mid/high) — dedicated report §6 detailed BOM
     "container": (2300, 3300, 4300),
     "lightlock": (1465, 1802, 2160),

@@ -455,6 +455,7 @@ bounces noticeably less than the rod-hung version it replaces.
 | # | Item | Specification | Qty | Est. Cost |
 |---|------|--------------|-----|-----------|
 | 1 | Molded GRP (fiberglass) grating | 15mm, vinyl-ester resin, grit top, ~38mm mesh | ~4.5 m² (4 sections) | $970–$1,260 |
+| 11 | Drum-exit punch-out grating | Extra GRP landing (~0.23 m²) at the light-lock exit | ~0.23 m² | $50–$65 |
 | 2 | Cantilever bracket — standard (near/far) | 8mm steel plate: 150mm vert leg + 300mm arm + 70mm gusset, welded | 14 (5 near + 9 far at 457mm centers) | $420–$700 |
 | 3 | Cantilever bracket — widened (near) | 10mm steel plate: 200mm vert leg + 500mm arm + 70mm gusset, welded | 4 (EP/battery/slit zone) | $160–$280 |
 | 4 | M12×80mm through-bolt kit | Hex bolt + 2× washers + nut, grade 8.8 | 58 (3 per std bracket + 4 per widened) | $87–$145 |
@@ -467,9 +468,9 @@ bounces noticeably less than the rod-hung version it replaces.
 | 12 | Floor-leg cantilever bracket (left walkway, ×5) | 50×50×3mm steel SHS post (~115mm) + 40×40×3mm SHS arm (2 reach X470, 3 extended to X770) + 128×60×8mm foot plate; bolted to bare floor outside the tray | 5 | $55–$95 |
 | 13 | M10 wedge floor anchors | 4 per foot plate (20 total), sealed into the container floor | 20 | $25–$45 |
 | 17 | Grating clips | Removable spring clips, stainless | ~30 | $30–$50 |
-| 18 | Plywood base plate (evap cooler stowage) | 12mm plywood, 600×350mm | 1 | $5–$10 |
-| 19 | Ratchet strap (evap cooler) | 25mm×3m, 500kg WLL | 2 | $15–$25 |
-| | **Total** | | | **$2,024–$3,030** |
+| | **Total** | | | **<!-- BEGIN costing:walkway-total-low -->$2,000<!-- END costing:walkway-total-low -->–<!-- BEGIN costing:walkway-total-high -->$2,975<!-- END costing:walkway-total-high -->** |
+
+*Evap-cooler transport-stowage hardware (plywood base plate + ratchet straps, §7) is costed in the [Ventilation & Cooling parts list](ventilation-report.md), not here.*
 
 ---
 

@@ -295,17 +295,17 @@ interior equipment.
 
 ### 4.3 Interior Pull Handle
 
-A grab/pull handle is **through-bolted to the panel frame on the interior face**, near the
-free (latch) edge at waist height, so a single operator can grip it and swing the heavy
-(~171 kg movable) panel open from **inside** the container — both for the emergency-egress
-swing (§4.2) and to initiate the transport rotation (§5). It bolts to the steel frame, not
-the PP skin.
+A grab/pull handle is **through-bolted to the panel's structural frame on the interior
+face** — the **left jamb of the drum aperture**, at waist height — so a single operator
+can grip it and swing the heavy (~171 kg movable) panel open from **inside** the container,
+both for the emergency-egress swing (§4.2) and to initiate the transport rotation (§5). It
+bolts to the steel frame, not the PP skin.
 
 | Parameter | Value |
 |-----------|-------|
 | Type | 316 SS D-grab pull handle, ~300mm grip span, 25mm round bar |
-| Mounting | Through-bolted to a 50 × 50 × 3mm RHS frame member — **2 × M8 SS bolts** with an interior backing plate/washers (not screwed to the PP skin) |
-| Position | Interior face of the **swinging** panel, near its free (near) edge — Yd ≈ 300mm, center Z ≈ 1,300mm (above the Fan-B mount band, which tops at 1,125mm). The swing pivot is the **far** edge (§5), so the near edge gives the operator the most leverage |
+| Mounting | Through-bolted to the 50 × 50 × 3mm RHS frame jamb beside the drum aperture — **2 × M8 SS bolts** passing through **both** RHS walls into an interior backing plate/washers (not screwed to the PP skin) |
+| Position | Interior face of the **swinging** panel, on the **left drum-aperture jamb** — Yd ≈ 683mm, center Z ≈ 1,300mm. The transport swing pivots on the **far** edge (§5), so this near-of-center jamb keeps the operator's leverage while landing the load on frame steel right beside the drum (rather than the unbacked PP skin) |
 | Finish | **Matte-black powder-coat** — the interior must stay optically dead (stray-light control for the pinhole), so the handle is not left bare/reflective |
 
 See [§8.1](#81-panel-structure) for the part; the handle is also shown on the interior-face

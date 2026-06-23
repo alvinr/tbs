@@ -24,11 +24,11 @@ also a `tbs_constants` value or a `costing.py`/`facts.yml` fact, prefer the refe
 ## A. Engineering reports (primary targets — most likely to repeat dimensions)
 
 - [ ] container-report.md
-- [ ] pinhole-report.md
+- [x] pinhole-report.md  — *DONE (2026-06-23): clean to start (header/footer, editorial_lint, all sources hyperlinked, no costs). Single-sourced the two Key Optical Constants that were restated raw and un-policed (the tight facts.yml aliases didn't reach these phrasings): Ø2.17mm pinhole aperture ×4 → pinhole_diameter_mm; f=2,362mm focal length → focal_length_mm. Rest is detail dims (bore sizes, bolt patterns, dowel/seal/fit geometry) — left as diagram-of-record.*
 - [ ] pinhole-camera-construction.md
 - [ ] pinhole-optics-report.md
 - [ ] pinhole-option-b-optics.md
-- [ ] film-plane-mechanism-report.md  — *heavy mm/angle detail; cross-check vs the FPM sheets*
+- [x] film-plane-mechanism-report.md  — *DONE (2026-06-23): single-sourced the system-defining geometry that was restated raw — §2 reference table (length 5,893 → container_interior_length_mm, width 2,362 → focal_length_mm, height 2,388 → film_plane_height_mm), §3 single-axis maxima (40°/28° → film_plane_max_tilt/swing) + 4,499 width, §4 plane size 4,499×2,388 (×2). §7 materials total wired to costing.py (costing:film-total = FILM low \$3,538; was a stale hand-set \$3,100 that sat below its own BOM). Config-table corner depths, per-corner angles, rail X coordinates + per-item BoM prices left as diagram-of-record. (Author also trimmed prose: rail coords in §1, the 'earlier stretching scheme' archaeology in §3, the Option-A date note in §4.)*
 - [ ] film-plane-mechanism-analysis.md  — *superseded doc; flagged out-of-date at top — decide retire vs trim*
 - [ ] film-clamp-mechanism-report.md  — *had hardcoded ±tilt/swing; verify it now references constants*
 - [ ] tilt-swing-board-report.md

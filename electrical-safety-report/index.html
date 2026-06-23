@@ -2579,8 +2579,9 @@ NEC) is the right yardstick for fuse placement, conductor protection, and bondin
 </table>
 <hr />
 <h2 id="4-hazard-risk-assessment">4. Hazard &amp; Risk Assessment<a class="headerlink" href="#4-hazard-risk-assessment" title="Permanent link">&para;</a></h2>
-<p>Ranked by residual risk <em>before</em> the §5 improvements. Severity × likelihood for the
-12 V-DC-in-a-wet-conductive-box environment.</p>
+<p>Ranked by residual risk <em>as first assessed</em> — the Sev × Like ratings are the <em>pre-control</em>
+values for the 12 V-DC-in-a-wet-conductive-box environment; the final column tracks how each
+gap is now <strong>closed</strong> by the §5 controls.</p>
 <table>
 <thead>
 <tr>
@@ -2590,7 +2591,7 @@ NEC) is the right yardstick for fuse placement, conductor protection, and bondin
 <th style="text-align: center;">Sev.</th>
 <th style="text-align: center;">Like.</th>
 <th>Existing control</th>
-<th>Residual gap</th>
+<th>Residual gap → closed by</th>
 </tr>
 </thead>
 <tbody>
@@ -2601,7 +2602,7 @@ NEC) is the right yardstick for fuse placement, conductor protection, and bondin
 <td style="text-align: center;">High</td>
 <td style="text-align: center;">Med</td>
 <td>200 A + per-circuit fuses, BMS</td>
-<td>Main fuse may be ~0.5 m from the battery (cable unprotected); <strong>no manual disconnect</strong>; chafe protection at shell penetrations not specified</td>
+<td>Main fuse far from battery; <strong>no manual disconnect</strong>; chafe not specified; <strong>PV/charge side not load-break isolatable</strong> → <strong>all closed (§5 #1):</strong> terminal-mount fuse, manual disconnect + <strong>two E-stops (in/out)</strong>, <strong>PV disconnect</strong>, <strong>charge-line fuse</strong>, <strong>per-pack MRBF</strong>, chafe protection</td>
 </tr>
 <tr>
 <td>2</td>
@@ -2610,7 +2611,7 @@ NEC) is the right yardstick for fuse placement, conductor protection, and bondin
 <td style="text-align: center;">Med</td>
 <td style="text-align: center;">High</td>
 <td>IP65 enclosure (clean side only)</td>
-<td><strong>Interior connectors are Anderson Powerpole — not sealed</strong>; wet-zone wire not specified tinned</td>
+<td><strong>Anderson Powerpole — not sealed</strong>; wire not tinned → <strong>closed (§5 #2):</strong> sealed IP-rated connectors + tinned wire + dielectric grease</td>
 </tr>
 <tr>
 <td>3</td>
@@ -2619,7 +2620,7 @@ NEC) is the right yardstick for fuse placement, conductor protection, and bondin
 <td style="text-align: center;">High</td>
 <td style="text-align: center;">Low</td>
 <td>Fusing limits duration</td>
-<td><strong>No terminal covers</strong>; no insulated-tool note</td>
+<td><strong>No terminal covers</strong>; no insulated-tool note → <strong>closed (§5 #3):</strong> terminal covers + insulated-tool rule</td>
 </tr>
 <tr>
 <td>4</td>
@@ -2628,7 +2629,7 @@ NEC) is the right yardstick for fuse placement, conductor protection, and bondin
 <td style="text-align: center;">High</td>
 <td style="text-align: center;">Low</td>
 <td>LiFePO4 (very stable), 60 °C rating, BMS</td>
-<td>Addressed by thermal siting — low/shaded/cooled-air path (§5.2); confirm &lt; 45 °C at commissioning</td>
+<td>Charge lock-out &gt; 45 °C → <strong>closed (§5 #4):</strong> thermal siting — low/shaded/cooled-air (§5.2); confirm &lt; 45 °C at commissioning</td>
 </tr>
 <tr>
 <td>5</td>
@@ -2637,7 +2638,7 @@ NEC) is the right yardstick for fuse placement, conductor protection, and bondin
 <td style="text-align: center;">High</td>
 <td style="text-align: center;">Low</td>
 <td>AC kept exterior (IP65 charger); never distributed inside</td>
-<td>Depends on the <strong>site supply being RCD/GFCI-protected</strong>; operational rule must be enforced</td>
+<td>Depends on site RCD/GFCI + the operational rule → <strong>managed (§5 #5 / §6):</strong> exterior-only AC, site-RCD rule, commissioning check</td>
 </tr>
 <tr>
 <td>6</td>
@@ -2646,7 +2647,7 @@ NEC) is the right yardstick for fuse placement, conductor protection, and bondin
 <td style="text-align: center;">High</td>
 <td style="text-align: center;">Low</td>
 <td>Separately-derived source, single-point neutral-ground bond; <strong>GFCI</strong> on the cooler outlet; shell/chassis/cooler equipotential bond; DC-side fuse + dedicated disconnect; transformer galvanic isolation (<a href="../electrical-report/#ac-safety">electrical §7.6</a>)</td>
-<td>Operational only: cooler unplugged + inverter DC-disconnect open for transport; periodic GFCI trip test</td>
+<td>→ <strong>managed (§6 / §7.6):</strong> cooler unplugged + inverter DC-disconnect for transport; periodic GFCI trip test</td>
 </tr>
 </tbody>
 </table>

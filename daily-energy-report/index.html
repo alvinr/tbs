@@ -2542,7 +2542,7 @@ then run <strong>continuously</strong> through the operating day.</p>
 <blockquote>
 <p><strong>Standard build is manual</strong> (electric actuation was dropped — see <a href="../cost-analysis-report/">Cost Analysis</a>),
 so Circuit F draws nothing. Per-<strong>session</strong> energy (incl. the once-daily morning warmup) is ~<strong>771 Wh</strong> (vs 780 Wh with the optional
-actuators) — up from the old ~720 Wh now that the cooler runs through the AC inverter (~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V bus).</p>
+actuators); the cooler runs through the AC inverter (~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V bus).</p>
 </blockquote>
 <hr />
 <h2 id="3-per-print-energy-from-the-session-budget">3. Per-Print Energy (from the session budget)<a class="headerlink" href="#3-per-print-energy-from-the-session-budget" title="Permanent link">&para;</a></h2>
@@ -2608,13 +2608,13 @@ actuators) — up from the old ~720 Wh now that the cooler runs through the AC i
 <td><strong>Per print (manual)</strong></td>
 <td style="text-align: right;"></td>
 <td style="text-align: right;"></td>
-<td style="text-align: right;"><strong>~663</strong> <em>(excl. one-time morning warmup)</em></td>
+<td style="text-align: right;"><strong>~<!-- BEGIN energy:per-print-wh -->663<!-- END energy:per-print-wh --></strong> <em>(excl. one-time morning warmup)</em></td>
 </tr>
 </tbody>
 </table>
 <p>The <strong>continuous fans + evaporative cooler (217 W)</strong> dominate — they are on the whole
 cycle, so most of the energy is <em>climate control</em>, not imaging or pumping. The cooler now
-runs through the 12V→120V inverter (~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the bus vs the old 80 W placeholder).</p>
+runs through the 12V→120V inverter (~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the bus).</p>
 <hr />
 <h2 id="4-daily-roll-up-representative-3-print-day">4. Daily Roll-Up — Representative 3-Print Day<a class="headerlink" href="#4-daily-roll-up-representative-3-print-day" title="Permanent link">&para;</a></h2>
 <table>
@@ -2627,19 +2627,19 @@ runs through the 12V→120V inverter (~<!-- BEGIN fact:evap_cooler_w_bus -->97<!
 <tbody>
 <tr>
 <td>Morning cooling warmup (once: fans + cooler, 30 min)</td>
-<td style="text-align: right;">108</td>
+<td style="text-align: right;"><!-- BEGIN energy:warmup-wh -->108<!-- END energy:warmup-wh --></td>
 </tr>
 <tr>
-<td>3 prints × 663 Wh (cycle + wash/drain pumps)</td>
+<td>3 prints × <!-- BEGIN energy:per-print-wh -->663<!-- END energy:per-print-wh --> Wh (cycle + wash/drain pumps)</td>
 <td style="text-align: right;">1,989</td>
 </tr>
 <tr>
 <td>End-of-day Brown + Waste pump-out (§6)</td>
-<td style="text-align: right;">~37</td>
+<td style="text-align: right;">~<!-- BEGIN energy:drain-wh -->37<!-- END energy:drain-wh --></td>
 </tr>
 <tr>
 <td><strong>Daily total (3 prints)</strong></td>
-<td style="text-align: right;"><strong>~2,134 Wh</strong></td>
+<td style="text-align: right;"><strong>~<!-- BEGIN energy:daily-wh-3 -->2,134<!-- END energy:daily-wh-3 --> Wh</strong></td>
 </tr>
 </tbody>
 </table>
@@ -2655,17 +2655,17 @@ runs through the 12V→120V inverter (~<!-- BEGIN fact:evap_cooler_w_bus -->97<!
 <tr>
 <td>Short / poor light</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">~1,471</td>
+<td style="text-align: right;">~<!-- BEGIN energy:daily-wh-2 -->1,471<!-- END energy:daily-wh-2 --></td>
 </tr>
 <tr>
 <td><strong>Representative</strong></td>
 <td style="text-align: right;"><strong>3</strong></td>
-<td style="text-align: right;"><strong>~2,134</strong></td>
+<td style="text-align: right;"><strong>~<!-- BEGIN energy:daily-wh-3 -->2,134<!-- END energy:daily-wh-3 --></strong></td>
 </tr>
 <tr>
 <td>Pushed</td>
 <td style="text-align: right;">4</td>
-<td style="text-align: right;">~2,797</td>
+<td style="text-align: right;">~<!-- BEGIN energy:daily-wh-4 -->2,797<!-- END energy:daily-wh-4 --></td>
 </tr>
 </tbody>
 </table>
@@ -2720,7 +2720,7 @@ and the pump only lifts the <strong>~120 L residual</strong> below the port:</p>
 <td></td>
 <td style="text-align: right;"></td>
 <td style="text-align: right;"></td>
-<td style="text-align: right;"><strong>~37 Wh</strong></td>
+<td style="text-align: right;"><strong>~<!-- BEGIN energy:drain-wh -->37<!-- END energy:drain-wh --> Wh</strong></td>
 </tr>
 </tbody>
 </table>
@@ -2741,11 +2741,11 @@ back to Blue rather than dumped; this line covers the case where it is drained o
 <tbody>
 <tr>
 <td>Solar generation (600 W × 5.5 peak-sun-h, Palm Springs)</td>
-<td style="text-align: right;">~3,300 Wh/day</td>
+<td style="text-align: right;">~<!-- BEGIN energy:solar-wh-day -->3,300<!-- END energy:solar-wh-day --> Wh/day</td>
 </tr>
 <tr>
 <td>Battery usable (200 Ah × 12 V LiFePO4, 100% DoD)</td>
-<td style="text-align: right;">2,400 Wh</td>
+<td style="text-align: right;"><!-- BEGIN energy:battery-wh-2pack -->2,400<!-- END energy:battery-wh-2pack --> Wh</td>
 </tr>
 </tbody>
 </table>
@@ -2761,21 +2761,21 @@ back to Blue rather than dumped; this line covers the case where it is drained o
 <tbody>
 <tr>
 <td>2 prints</td>
-<td style="text-align: right;">~1,471</td>
-<td style="text-align: right;"><strong>+1,829</strong></td>
+<td style="text-align: right;">~<!-- BEGIN energy:daily-wh-2 -->1,471<!-- END energy:daily-wh-2 --></td>
+<td style="text-align: right;"><strong>+<!-- BEGIN energy:solar-net-2 -->1,829<!-- END energy:solar-net-2 --></strong></td>
 <td>Yes (with wide margin)</td>
 </tr>
 <tr>
 <td>3 prints</td>
-<td style="text-align: right;">~2,134</td>
-<td style="text-align: right;"><strong>+1,166</strong></td>
+<td style="text-align: right;">~<!-- BEGIN energy:daily-wh-3 -->2,134<!-- END energy:daily-wh-3 --></td>
+<td style="text-align: right;"><strong>+<!-- BEGIN energy:solar-net-3 -->1,166<!-- END energy:solar-net-3 --></strong></td>
 <td>Yes — full overnight autonomy</td>
 </tr>
 <tr>
 <td>4 prints</td>
-<td style="text-align: right;">~2,797</td>
-<td style="text-align: right;"><strong>+503</strong></td>
-<td>Exceeds the 2,400 Wh battery by ~400 Wh → covered by <strong>daytime solar</strong> (which runs during the prints), not battery alone</td>
+<td style="text-align: right;">~<!-- BEGIN energy:daily-wh-4 -->2,797<!-- END energy:daily-wh-4 --></td>
+<td style="text-align: right;"><strong>+<!-- BEGIN energy:solar-net-4 -->503<!-- END energy:solar-net-4 --></strong></td>
+<td>Exceeds the <!-- BEGIN energy:battery-wh-2pack -->2,400<!-- END energy:battery-wh-2pack --> Wh battery by ~400 Wh → covered by <strong>daytime solar</strong> (which runs during the prints), not battery alone</td>
 </tr>
 </tbody>
 </table>
@@ -2797,7 +2797,7 @@ back to Blue rather than dumped; this line covers the case where it is drained o
 battery alone), how long can the system operate — and does adding the <strong>second battery
 pack</strong> extend it? Two limits compete: <strong>power</strong> and <strong>clean water</strong>.</p>
 <h3 id="81-power-is-not-the-limit-with-sun">8.1 Power is not the limit (with sun)<a class="headerlink" href="#81-power-is-not-the-limit-with-sun" title="Permanent link">&para;</a></h3>
-<p>Solar generates ~3,300 Wh/day; a 3-print day draws ~2,134 Wh — a <strong>+1,166 Wh/day surplus</strong>,
+<p>Solar generates ~<!-- BEGIN energy:solar-wh-day -->3,300<!-- END energy:solar-wh-day --> Wh/day; a 3-print day draws ~<!-- BEGIN energy:daily-wh-3 -->2,134<!-- END energy:daily-wh-3 --> Wh — a <strong>+<!-- BEGIN energy:solar-net-3 -->1,166<!-- END energy:solar-net-3 --> Wh/day surplus</strong>,
 so on sunny days the battery never depletes and the system runs <strong>indefinitely</strong>. The
 battery's job is to ride out <em>cloudy</em> days, and that reserve is what the pack count changes:</p>
 <table>
@@ -2805,21 +2805,21 @@ battery's job is to ride out <em>cloudy</em> days, and that reserve is what the 
 <tr>
 <th>Battery</th>
 <th style="text-align: right;">Usable</th>
-<th style="text-align: right;">No-sun reserve (at ~2,134 Wh/day)</th>
+<th style="text-align: right;">No-sun reserve (at ~<!-- BEGIN energy:daily-wh-3 -->2,134<!-- END energy:daily-wh-3 --> Wh/day)</th>
 <th>With sun</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>1 pack</strong> (1×100 Ah)</td>
-<td style="text-align: right;">1,200 Wh</td>
-<td style="text-align: right;">~0.6 day (≈ 2 prints)</td>
+<td style="text-align: right;"><!-- BEGIN energy:battery-wh-1pack -->1,200<!-- END energy:battery-wh-1pack --> Wh</td>
+<td style="text-align: right;">~<!-- BEGIN energy:reserve-1pack-day -->0.6<!-- END energy:reserve-1pack-day --> day (≈ 2 prints)</td>
 <td>Indefinite (solar-positive)</td>
 </tr>
 <tr>
 <td><strong>2 packs</strong> (2×100 Ah)</td>
-<td style="text-align: right;">2,400 Wh</td>
-<td style="text-align: right;">~1.1 day (≈ 3 prints)</td>
+<td style="text-align: right;"><!-- BEGIN energy:battery-wh-2pack -->2,400<!-- END energy:battery-wh-2pack --> Wh</td>
+<td style="text-align: right;">~<!-- BEGIN energy:reserve-2pack-day -->1.1<!-- END energy:reserve-2pack-day --> day (≈ 3 prints)</td>
 <td>Indefinite (solar-positive)</td>
 </tr>
 </tbody>
@@ -2855,9 +2855,9 @@ recycling (<a href="../water-system-report/">Water System Report §3–4</a>), s
 </tr>
 <tr>
 <td>Power, 2 packs, no sun</td>
-<td style="text-align: right;">2,400 Wh</td>
+<td style="text-align: right;"><!-- BEGIN energy:battery-wh-2pack -->2,400<!-- END energy:battery-wh-2pack --> Wh</td>
 <td style="text-align: right;">~620 Wh</td>
-<td>~3 prints (~1.1 day)</td>
+<td>~3 prints (~<!-- BEGIN energy:reserve-2pack-day -->1.1<!-- END energy:reserve-2pack-day --> day)</td>
 </tr>
 </tbody>
 </table>

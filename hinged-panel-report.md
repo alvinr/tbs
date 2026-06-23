@@ -293,6 +293,27 @@ operator inside the container can release all four interior-mounted cam latches
 independently and push the panel open outward. The panel swings 180° clear of all
 interior equipment.
 
+### 4.3 Interior Pull Handle
+
+A grab/pull handle is **through-bolted to the panel frame on the interior face**, near the
+free (latch) edge at waist height, so a single operator can grip it and swing the heavy
+(~171 kg movable) panel open from **inside** the container — both for the emergency-egress
+swing (§4.2) and to initiate the transport rotation (§5). It bolts to the steel frame, not
+the PP skin.
+
+| Parameter | Value |
+|-----------|-------|
+| Type | 316 SS D-grab pull handle, ~300mm grip span, 25mm round bar |
+| Mounting | Through-bolted to a 50 × 50 × 3mm RHS frame member — **2 × M8 SS bolts** with an interior backing plate/washers (not screwed to the PP skin) |
+| Position | Interior face of the **swinging** panel, near its free (near) edge — Yd ≈ 300mm, center Z ≈ 1,300mm (above the Fan-B mount band, which tops at 1,125mm). The swing pivot is the **far** edge (§5), so the near edge gives the operator the most leverage |
+| Finish | **Matte-black powder-coat** — the interior must stay optically dead (stray-light control for the pinhole), so the handle is not left bare/reflective |
+
+See [§8.1](#81-panel-structure) for the part; the handle is also shown on the interior-face
+**Sheet 1** front elevation.
+
+**Sheet 6 — Interior Pull Handle: mounting detail (handle through-bolted to the RHS frame)**
+![TBS-001 Hinged Panel — Sheet 6: Pull Handle Mounting Detail](assets/hingepanel-sheet6.png)
+
 ---
 
 ## 5. Rotating Transport System
@@ -436,7 +457,8 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Southco C2-33 cam compression latch | Interior-mounted corner latches (compress the perimeter + cut + lip seals) | 4 | $60–$100 |
 | 4mm black PP sheet + EPDM lip | B2 punch-out bay — 4-wall light-tight tube (~890mm deep) around the housing (rev11; was 6mm ply) | 1 lot | $60–$120 |
 | Flat black paint (RAL 9005) | Bay/weld touch-in (PP skins are pre-pigmented black) | 1 qt | $10–$20 |
-| **Panel subtotal** | | | **$985–$1,495** |
+| 316 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black | Interior pull handle — through-bolted to the frame (§4.3) | 1 | $20–$35 |
+| **Panel subtotal** | | | **$1,005–$1,530** |
 
 *The panel pivot post + bearings + drum cage + wall stays are itemized in §8.3.*
 
@@ -481,11 +503,11 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Panel structure (incl. B2 bay) | $890 | $1,310 |
+| Panel structure (incl. B2 bay + pull handle) | $910 | $1,345 |
 | Housing + drum (plastic skin) | $1,385 | $2,070 |
 | Swing pivot hardware | $560 | $960 |
 | Fixed door frame | $335 | $550 |
-| **Total** | **$3,170** | **$4,890** |
+| **Total** | **$3,190** | **$4,925** |
 
 ---
 

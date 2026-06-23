@@ -2520,6 +2520,8 @@
 
 
 
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 <h1 id="daily-electrical-consumption-report">Daily Electrical Consumption Report<a class="headerlink" href="#daily-electrical-consumption-report" title="Permanent link">&para;</a></h1>
 <h2 id="1-purpose-scope">1. Purpose &amp; Scope<a class="headerlink" href="#1-purpose-scope" title="Permanent link">&para;</a></h2>
 <p>The <a href="../electrical-report/">Electrical Report §3.1</a> budgets energy <strong>per print session</strong>.
@@ -2539,7 +2541,7 @@ day. The container is cooled <strong>once</strong> in the morning and the fans +
 then run <strong>continuously</strong> through the operating day.</p>
 <blockquote>
 <p><strong>Standard build is manual</strong> (electric actuation was dropped — see <a href="../cost-analysis-report/">Cost Analysis</a>),
-so Circuit F draws nothing. Per-print energy is ~<strong>771 Wh</strong> (vs 780 Wh with the optional
+so Circuit F draws nothing. Per-<strong>session</strong> energy (incl. the once-daily morning warmup) is ~<strong>771 Wh</strong> (vs 780 Wh with the optional
 actuators) — up from the old ~720 Wh now that the cooler runs through the AC inverter (~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V bus).</p>
 </blockquote>
 <hr />
@@ -2843,7 +2845,7 @@ recycling (<a href="../water-system-report/">Water System Report §3–4</a>), s
 <td><strong>Clean water (Blue, in)</strong></td>
 <td style="text-align: right;"><!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l --> L (<!-- BEGIN fact:blue_supply_gal -->476<!-- END fact:blue_supply_gal --> gal)</td>
 <td style="text-align: right;">121 L (32 gal)</td>
-<td><strong>~14 prints ≈ 4.7 days</strong> @ 3/day</td>
+<td><strong>~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints ≈ 4.7 days</strong> @ 3/day</td>
 </tr>
 <tr>
 <td>Power, 2 packs + sun</td>
@@ -2855,22 +2857,21 @@ recycling (<a href="../water-system-report/">Water System Report §3–4</a>), s
 <td>Power, 2 packs, no sun</td>
 <td style="text-align: right;">2,400 Wh</td>
 <td style="text-align: right;">~620 Wh</td>
-<td>~3–4 prints (~1.2 day)</td>
+<td>~3 prints (~1.1 day)</td>
 </tr>
 </tbody>
 </table>
-<p>A disconnected deployment therefore runs <strong>~14 prints (~4.7 days at 3/day)</strong> before it needs
+<p>A disconnected deployment therefore runs <strong>~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints (~4.7 days at 3/day)</strong> before it needs
 a <strong>resupply run</strong> — which is fundamentally a <em>water</em> event (refill Blue), not a charging
 event.</p>
 <h3 id="83-watch-the-waste-side-too">8.3 Watch the waste side too<a class="headerlink" href="#83-watch-the-waste-side-too" title="Permanent link">&para;</a></h3>
-<p>The endurance is bounded on <strong>both ends of the water loop</strong>. The <strong>Black (waste) tote is
-600 L</strong> — a <em>parallel</em> out-flow limit: in fully self-contained field use (no sewer, waste
+<p>The endurance is bounded on <strong>both ends of the water loop</strong>. The <strong>Black (waste) tote fills to ~600 L</strong> (a 1,000 L tote at its working fill) — a <em>parallel</em> out-flow limit: in fully self-contained field use (no sewer, waste
 transported for disposal), the waste tank can fill before the Blue tank empties, so a
 resupply run must <strong>empty Black as well as refill Blue</strong>. If waste cannot be disposed at
 all, that — not power or fresh water — becomes the hard stop.</p>
 <h3 id="84-verdict">8.4 Verdict<a class="headerlink" href="#84-verdict" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>The deployment length is set by clean water (~14 prints / ~4.7 days), not power.</strong></li>
+<li><strong>The deployment length is set by clean water (~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints / ~4.7 days), not power.</strong></li>
 <li><strong>One vs two battery packs does not change that</strong> — both run indefinitely on sun. The
   second pack buys a <strong>~1-day cloudy-weather reserve</strong> (vs ~half a day) and enables 4-print
   days; for a <em>fresh-water-limited</em> 10-print deployment, a single pack is energetically
@@ -2885,6 +2886,7 @@ all, that — not power or fresh water — becomes the hard stop.</p>
 <li><a href="../plumbing-panel-report/">Plumbing Panel Report §4.3</a> — P-03 (Waste evac) and P-05 (Brown drain) duties; the ~120 L gravity-drain residual.</li>
 <li><a href="../cost-analysis-report/">Cost Analysis</a> — the manual-actuation decision (Circuit F unused in the standard build).</li>
 </ol>
+<p><em>© 2026 Alvin Richards — Released under <a href="../licensing/">GNU AGPLv3</a></em></p>
 
 
 

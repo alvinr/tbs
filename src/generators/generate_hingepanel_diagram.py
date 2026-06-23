@@ -1577,13 +1577,13 @@ def sheet6():
     # 50×50×3 RHS frame member (3mm walls)
     ax.add_patch(Rectangle((0, -25), 50, 50, fc=C_STEEL, ec=C_OUT, lw=1.8, zorder=3))
     ax.add_patch(Rectangle((3, -22), 44, 44, fc=BG, ec=C_OUT, lw=1.0, zorder=4))
-    leader(ax, (24, -25), (28, -120), "50×50×3 RHS frame jamb\n(beside drum aperture)", col=C_OUT)
+    leader(ax, (24, -25), (50, -50), "50×50×3 RHS frame jamb\n(beside drum aperture)", col=C_OUT)
     # 4mm PP interior skin on the +X face
     ax.add_patch(Rectangle((50, -25), 4, 50, fc=C_PLASTIC, ec=C_OUT, lw=0.8, zorder=4))
-    leader(ax, (52, 24), (92, 72), "4mm PP\ninterior skin", col=C_OUT)
+    leader(ax, (52, 24), (72, 72), "4mm PP\ninterior skin", col=C_OUT)
     # interior backing plate behind the exterior wall (spreads the load)
     ax.add_patch(Rectangle((-7, -22), 7, 44, fc="#9AA0A6", ec=C_OUT, lw=1.0, zorder=3))
-    leader(ax, (-5, -18), (-78, -92), "interior backing\nplate", col=C_OUT)
+    leader(ax, (-2, -22), (-25, -50), "exterior backing\nplate", col=C_OUT)
     # handle: foot plate on the skin, two standoff bosses, Ø25 grip bar (vertical → circle here).
     # Drawn at 60% opacity (40% reduced) so the through-bolt detail reads clearly underneath.
     HA = 0.6
@@ -1592,7 +1592,7 @@ def sheet6():
         ax.add_patch(Rectangle((60, fy - 6), 34, 12, fc="#202020", ec=C_OUT, lw=0.8, alpha=HA, zorder=5))
     ax.add_patch(Rectangle((94, -22), 6, 44, fc="#202020", ec=C_OUT, lw=0.8, alpha=HA, zorder=5))
     ax.add_patch(Circle((100, 0), 12.5, fc="#202020", ec=C_OUT, lw=1.2, alpha=HA, zorder=6))
-    leader(ax, (100, 13), (148, 74),
+    leader(ax, (100, 13), (148, 50),
            "316 SS D-grab handle\n~300mm grip · 25mm bar\nMATTE-BLACK (optically dead)",
            col=C_OUT, fw="bold")
     # 2× M8 through-bolts at Yd ±15 — INSIDE the 50mm frame (±25), so each bolt passes
@@ -1601,7 +1601,7 @@ def sheet6():
         ax.plot([-7, 60], [by, by], color="#101010", lw=2.6, zorder=7)
         ax.add_patch(Rectangle((57, by - 5), 5, 10, fc="#101010", ec="none", zorder=8))
         ax.add_patch(Rectangle((-11, by - 6), 4, 12, fc="#101010", ec="none", zorder=8))
-    leader(ax, (25, 15), (66, 100),
+    leader(ax, (15, 15), (5, 50),
            "2× M8 SS through-bolt\nthrough BOTH frame walls (not the skin)", col=C_OUT, fw="bold")
 
     ax.text(60, -103,

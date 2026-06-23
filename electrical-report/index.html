@@ -2904,12 +2904,16 @@ Complete power flow from solar panels through controller, battery bank, fuse blo
 <td>3-way MC4 branch connector + 30A inline fuse per string</td>
 </tr>
 <tr>
+<td><strong>PV disconnect</strong></td>
+<td><strong>DC load-break isolator (50 A / 150 VDC), readily accessible at the power panel</strong> — isolates the array from the MPPT for service/fault (<a href="https://www.nfpa.org/codes-and-standards/nfpa-70-standard-development/70">NEC 690.13</a>). MC4 connectors are <strong>not</strong> load-break rated, and the external E-stop kills only the battery side — this kills the charge side</td>
+</tr>
+<tr>
 <td>Wall entry</td>
 <td>Via flush-mount power panel (shared with shore power) — 280×180mm wall cutout</td>
 </tr>
 <tr>
 <td>Approximate cost</td>
-<td>~$400 (panels) + ~$80 (mounting hardware)</td>
+<td>~$400 (panels) + ~$80 (mounting hardware) + ~$40 (PV disconnect)</td>
 </tr>
 </tbody>
 </table>
@@ -2945,12 +2949,17 @@ Complete power flow from solar panels through controller, battery bank, fuse blo
 <td>Interior short wall, adjacent main enclosure</td>
 </tr>
 <tr>
+<td><strong>Charge-line protection</strong></td>
+<td><strong>60 A ANL/MIDI fuse on the MPPT→battery lead, close to the battery; charge conductor sized 6 AWG</strong></td>
+</tr>
+<tr>
 <td>Approximate cost</td>
-<td>~$200</td>
+<td>~$200 + ~$15 (charge fuse)</td>
 </tr>
 </tbody>
 </table>
 <p>The SmartSolar has a built-in load output (30A) for direct low-power 12V loads. The main high-current loads connect via the Blue Sea fuse block (see Section 7).</p>
+<p>The MPPT delivers up to 50 A to the battery, so its battery lead carries far more than the array side — a <strong>dedicated 60 A fuse close to the battery</strong> protects that conductor (the 200 A main fuse is far too large to protect a charge-controller lead), and the conductor is upsized to 6 AWG to match.</p>
 <h3 id="52-battery-bank">5.2 Battery Bank<a class="headerlink" href="#52-battery-bank" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2973,8 +2982,12 @@ Complete power flow from solar panels through controller, battery bank, fuse blo
 <td><strong>1,200 Wh standard</strong> (2,400 Wh with the optional 2nd pack)</td>
 </tr>
 <tr>
-<td>Temperature rating</td>
-<td>−20°C to +60°C operating — suitable for interior of steel container in summer</td>
+<td>Discharge temperature</td>
+<td>−20°C to +60°C operating — suitable for the hot container interior</td>
+</tr>
+<tr>
+<td><strong>Charge temperature</strong></td>
+<td><strong>0–45 °C — the BMS blocks charging above ~45 °C</strong> (cell protection); this drives the thermal siting below</td>
 </tr>
 <tr>
 <td>Cycle life</td>
@@ -2994,7 +3007,8 @@ Complete power flow from solar panels through controller, battery bank, fuse blo
 </tr>
 </tbody>
 </table>
-<p><strong>One pack vs two — sizing rationale:</strong> a disconnected deployment is <strong>clean-water limited (~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints / ~4.7 days)</strong>, not power limited (see §3.2), and the system is solar-positive, so <strong>one 100 Ah pack runs the standard deployment indefinitely on sun</strong>. The 2nd pack is a <strong>resilience upgrade</strong> — it extends the no-sun (cloudy-day) reserve from ~<!-- BEGIN energy:reserve-1pack-day -->0.6<!-- END energy:reserve-1pack-day --> day to ~<!-- BEGIN energy:reserve-2pack-day -->1.1<!-- END energy:reserve-2pack-day --> day and gives headroom for a 4-print day — not an endurance one. It plugs straight onto the busbar (the 2/0 cable, fuse, and disconnect are already sized for 200 Ah), so it can be added later without touching the wiring.</p>
+<p><strong>Thermal siting (required).</strong> Because the BMS inhibits charging above ~45 °C while a sun-exposed steel container can reach 60 °C interior, the pack is <strong>mounted low (floor level, in the coolest stratified air), shaded from the sun-baked shell, and kept in the evaporative-cooler / ventilation airflow path</strong> — so it stays inside the charge window during peak sun rather than locking out the solar charge. A commissioning temperature check confirms the bay stays &lt; 45 °C under load (see <a href="../electrical-safety-report/">Electrical Safety §4 #4</a>).</p>
+<p><strong>One pack vs two — sizing rationale:</strong> a disconnected deployment is <strong>clean-water limited (~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints / ~4.7 days)</strong>, not power limited (see §3.2), and the system is solar-positive, so <strong>one 100 Ah pack runs the standard deployment indefinitely on sun</strong>. The 2nd pack is a <strong>resilience upgrade</strong> — it extends the no-sun (cloudy-day) reserve from ~<!-- BEGIN energy:reserve-1pack-day -->0.6<!-- END energy:reserve-1pack-day --> day to ~<!-- BEGIN energy:reserve-2pack-day -->1.1<!-- END energy:reserve-2pack-day --> day and gives headroom for a 4-print day — not an endurance one. It plugs onto the busbar via its <strong>own terminal MRBF fuse</strong> — each parallel pack is fused at its own + post, so one pack's fault can't be back-fed by the other (the 2/0 cable and main disconnect are already sized for 200 Ah), so it can be added later without touching the wiring.</p>
 <p><strong>Why LiFePO4 and not NMC or lead-acid:</strong>
 - LiFePO4 does not exhibit thermal runaway — safe in an enclosed steel container that may reach 60°C interior
 - Full 100% depth of discharge usable (vs. 50% for lead-acid, 80% for NMC)
@@ -3030,8 +3044,12 @@ Complete power flow from solar panels through controller, battery bank, fuse blo
 <td>NEMA 5-15R weatherproof inlet in external power panel (pinhole wall exterior)</td>
 </tr>
 <tr>
+<td><strong>Output protection</strong></td>
+<td><strong>20 A fuse on the charger's DC output lead, close to the battery</strong></td>
+</tr>
+<tr>
 <td>Approximate cost</td>
-<td>~$150</td>
+<td>~$150 + ~$5 (output fuse)</td>
 </tr>
 </tbody>
 </table>
@@ -3193,8 +3211,10 @@ Complete power flow from solar panels through controller, battery bank, fuse blo
 <ul>
 <li>Victron MPPT controller (or external, hardwired)</li>
 <li>Blue Sea 5026 12-circuit fuse block with busbars</li>
-<li>Battery positive and negative busbars, fed from the battery through a terminal-mount <strong>200A MRBF fuse</strong> (on the battery + post, ≤180mm), a <strong>remote battery contactor</strong> (Blue Sea ML-RBS, tripped by the external panel E-stop), and a <strong>main disconnect switch</strong> (Blue Sea m-Series 300A) — see §7.5</li>
-<li>Shore charger output terminals</li>
+<li>Battery positive and negative busbars, fed from the battery through a terminal-mount <strong>200A MRBF fuse</strong> (on the battery + post, ≤180mm), a <strong>remote battery contactor</strong> (Blue Sea ML-RBS, tripped by <strong>either the exterior power-panel E-stop or an interior E-stop on the EP face</strong>, wired in parallel), and a <strong>main disconnect switch</strong> (Blue Sea m-Series 300A) — see §7.5</li>
+<li><strong>MPPT charge-line fuse</strong> — a 60A ANL/MIDI fuse on the MPPT→battery lead at the busbar (§5.1)</li>
+<li><strong>Interior E-stop</strong> — a red mushroom IP65 button on the EP face, paralleled with the exterior E-stop, so the contactor can also be tripped from inside the container (§7.5)</li>
+<li>Shore charger output terminals (with the 20A output fuse, §5.3)</li>
 <li><strong>Circuit E inverter</strong> — Victron Phoenix 12/375 (GFCI version) wall-mounted on the pinhole wall adjacent to the enclosure (below the EP, above the battery), with a short fused DC feed and its own DC disconnect (§7.6). Converts 12V DC → 120V AC for the evaporative cooler only.</li>
 </ul>
 <p><strong>Sheet 5 — Main Enclosure Panel Layout</strong>
@@ -3278,6 +3298,27 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 <td>2/0 AWG</td>
 <td>~0.5m (battery to busbar)</td>
 </tr>
+<tr>
+<td>—</td>
+<td>PV array disconnect (load-break isolator)</td>
+<td>—</td>
+<td>10 AWG</td>
+<td>array → MPPT (at power panel)</td>
+</tr>
+<tr>
+<td>—</td>
+<td>MPPT charge-line fuse</td>
+<td>60A</td>
+<td>6 AWG</td>
+<td>MPPT → battery (~0.5m)</td>
+</tr>
+<tr>
+<td>—</td>
+<td>E-stop control loop (exterior <strong>+</strong> interior, parallel)</td>
+<td>—</td>
+<td>2× 18 AWG</td>
+<td>both → ML-RBS trip</td>
+</tr>
 </tbody>
 </table>
 <h3 id="73-wiring-construction">7.3 Wiring Construction<a class="headerlink" href="#73-wiring-construction" title="Permanent link">&para;</a></h3>
@@ -3311,17 +3352,25 @@ hazard is <strong>DC short-circuit / arc / fire</strong>, not shock — see the 
 The 120 V AC cooler branch introduces a genuine <strong>shock</strong> hazard that is contained by the
 isolation/GFCI/bonding design in §7.6. The following protective measures are part of the build:</p>
 <ul>
-<li><strong>External emergency cut-off</strong> — a magnetic-latch battery contactor (Blue Sea ML-RBS,
-  500 A) sits in the battery (+) feed, downstream of the MRBF fuse and upstream of the
-  internal disconnect. It is tripped by a <strong>red weatherproof E-stop push-button (IP66) on
-  the external power-panel face</strong>: pressing it opens the contactor and de-energizes the
-  entire DC system <strong>from outside the container, without entry</strong>. The magnetic latch holds
-  the contactor open at <strong>zero standby current</strong> (no parasitic drain on the off-grid
-  budget); reset is at the contactor's manual lever inside. Only a low-current 2 × 18 AWG
-  control loop penetrates the pinhole wall, through a sealed gland.</li>
+<li><strong>Emergency cut-off — two E-stops (inside + outside)</strong> — a magnetic-latch battery
+  contactor (Blue Sea ML-RBS, 500 A) sits in the battery (+) feed, downstream of the MRBF
+  fuse and upstream of the internal disconnect. It is tripped by <strong>either of two E-stop
+  push-buttons wired in parallel</strong>: a <strong>red weatherproof IP66 button on the external
+  power-panel face</strong> (kills the DC system from outside, without entry) <strong>and a red IP65
+  button on the EP face inside</strong> (so an operator already in the container kills it without
+  going out to the panel). Pressing either opens the contactor and de-energizes the entire
+  DC system. The magnetic latch holds the contactor open at <strong>zero standby current</strong>; reset
+  is at the contactor's manual lever. A low-current 2 × 18 AWG control loop (both buttons in
+  parallel) runs to the contactor, the exterior leg penetrating the pinhole wall through a
+  sealed gland.</li>
 <li><strong>Battery main disconnect switch</strong> (Blue Sea m-Series 300 A) between the contactor and
   the distribution busbar — a manual isolator for maintenance / service
   de-energization (the 200 A fuse is overcurrent protection, not a switch).</li>
+<li><strong>PV array disconnect</strong> — a DC load-break isolator (50 A / 150 VDC) on the array→MPPT
+  line at the power panel isolates the <em>charge</em> side (which the battery-side E-stops do not
+  reach) for service or fault; MC4 connectors are not load-break rated (NEC 690.13).</li>
+<li><strong>MPPT charge-line fuse</strong> — a 60 A ANL/MIDI fuse on the MPPT→battery lead (6 AWG) close to
+  the battery protects the charge conductor, which the 200 A main fuse is too large to cover.</li>
 <li><strong>Main fuse at the battery terminal</strong> — a terminal-mount MRBF fuse on the battery + post
   (≤180 mm, per ABYC E-11) protects the main cable along its whole length.</li>
 <li><strong>Battery terminal covers</strong> over both posts/busbar; use insulated tools at the busbar.</li>
@@ -3403,9 +3452,9 @@ the full hazard assessment including this AC branch.</p>
 </tr>
 <tr>
 <td>LiFePO4 battery — 2nd pack (optional, plug-in)</td>
-<td>100Ah 12V, parallel onto the busbar (no rewiring)</td>
+<td>100Ah 12V, parallel onto the busbar (no rewiring) + its <strong>own MRBF terminal fuse</strong></td>
 <td>same</td>
-<td>+$350</td>
+<td>+$375</td>
 </tr>
 <tr>
 <td>Shore backup charger</td>
@@ -3442,6 +3491,30 @@ the full hazard assessment including this AC branch.</p>
 <td>Red mushroom push-button, IP66, panel-mount on the external power panel + 2× 18 AWG control loop</td>
 <td><a href="https://www.automationdirect.com/">AutomationDirect</a> / Amazon</td>
 <td>~$30</td>
+</tr>
+<tr>
+<td>Interior emergency cut-off (E-stop)</td>
+<td>Red mushroom push-button, IP65, EP-face mount — paralleled to the exterior E-stop → ML-RBS trip</td>
+<td><a href="https://www.automationdirect.com/">AutomationDirect</a> / Amazon</td>
+<td>~$25</td>
+</tr>
+<tr>
+<td>PV array disconnect</td>
+<td>DC load-break isolator, 50A / 150VDC, panel-mount (array → MPPT; NEC 690.13)</td>
+<td><a href="https://www.automationdirect.com/">AutomationDirect</a> / Amazon</td>
+<td>~$40</td>
+</tr>
+<tr>
+<td>MPPT charge-line fuse</td>
+<td>60A ANL/MIDI + holder on the MPPT→battery lead; 6 AWG charge conductor</td>
+<td>Blue Sea / Amazon</td>
+<td>~$15</td>
+</tr>
+<tr>
+<td>Shore-charger output fuse</td>
+<td>20A inline on the charger DC output lead</td>
+<td>Amazon</td>
+<td>~$5</td>
 </tr>
 <tr>
 <td>Battery terminal covers (pair)</td>
@@ -3621,7 +3694,7 @@ the full hazard assessment including this AC branch.</p>
 <td><strong>Electrical system total</strong></td>
 <td></td>
 <td></td>
-<td><strong>~<!-- BEGIN costing:elec-system-total -->$2,265<!-- END costing:elec-system-total --></strong></td>
+<td><strong>~<!-- BEGIN costing:elec-system-total -->$2,350<!-- END costing:elec-system-total --></strong></td>
 </tr>
 <tr>
 <td><strong>Shade canopy total</strong></td>
@@ -3639,11 +3712,11 @@ the full hazard assessment including this AC branch.</p>
 <td><strong>Systems grand total</strong></td>
 <td></td>
 <td></td>
-<td><strong>~<!-- BEGIN costing:elec-grand-total -->$2,890<!-- END costing:elec-grand-total --></strong></td>
+<td><strong>~<!-- BEGIN costing:elec-grand-total -->$2,975<!-- END costing:elec-grand-total --></strong></td>
 </tr>
 </tbody>
 </table>
-<p><em>Electrical system total is the </em><em>standard 1-pack build</em><em> and matches the consolidated <a href="../master-shopping-list/">Master Shopping List §6</a> (Solar &amp; battery $1,295 + Distribution &amp; wiring $970 = $2,265, the authoritative electrical BOM). The optional 2nd battery pack adds +$350. It includes ~$325 of circuit-protection / wet-zone-sealing hardware added per the <a href="../electrical-safety-report/">Electrical Safety Report</a> §5 (external emergency cut-off + battery contactor, disconnect switch, terminal-mount fuse, sealed connectors, bonding, grommets), plus ~$45 of Circuit-C pump-control hardware (5 pump switches + distribution block).</em></p>
+<p><em>Electrical system total is the </em><em>standard 1-pack build</em><em> and matches the consolidated <a href="../master-shopping-list/">Master Shopping List §6</a> (Solar &amp; battery $1,335 + Distribution &amp; wiring $1,015 = $2,350, the authoritative electrical BOM). The optional 2nd battery pack adds +$375 (its own MRBF fuse). It includes ~$410 of circuit-protection / wet-zone-sealing hardware added per the <a href="../electrical-safety-report/">Electrical Safety Report</a> §5 (interior </em><em>+</em><em> exterior emergency cut-offs + battery contactor, disconnect switch, terminal-mount fuse, </em><em>PV array disconnect, MPPT charge-line + shore-charger fuses</em><em>, sealed connectors, bonding, grommets), plus ~$45 of Circuit-C pump-control hardware (5 pump switches + distribution block).</em></p>
 <h2 id="9-maintenance">9. Maintenance<a class="headerlink" href="#9-maintenance" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

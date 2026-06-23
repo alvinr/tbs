@@ -2624,11 +2624,11 @@ NEC) is the right yardstick for fuse placement, conductor protection, and bondin
 <tr>
 <td>4</td>
 <td><strong>Battery thermal / venting</strong></td>
-<td>Cells can vent under BMS failure / overcharge / abuse; container reaches 60 °C</td>
+<td>Cells can vent under BMS failure / overcharge / abuse; container reaches 60 °C, and the BMS blocks charging above ~45 °C (mid-day charge lock-out)</td>
 <td style="text-align: center;">High</td>
 <td style="text-align: center;">Low</td>
 <td>LiFePO4 (very stable), 60 °C rating, BMS</td>
-<td>Confirm the mounted location has airflow and isn't a sealed, sun-baked pocket</td>
+<td>Addressed by thermal siting — low/shaded/cooled-air path (§5.2); confirm &lt; 45 °C at commissioning</td>
 </tr>
 <tr>
 <td>5</td>
@@ -2668,8 +2668,8 @@ This report maps each gap to its control; it does not re-specify the hardware.</
 <tbody>
 <tr>
 <td><strong>#1</strong> — DC short / arc</td>
-<td>External E-stop + magnetic-latch battery contactor; manual main disconnect; terminal-mount main fuse at the battery post; chafe protection at shell penetrations; equipotential metalwork bonding</td>
-<td>elec §7.5</td>
+<td><strong>Two E-stops (interior + exterior)</strong> → magnetic-latch battery contactor; manual main disconnect; terminal-mount main fuse at the battery post; <strong>PV array disconnect</strong> (isolates the charge side the E-stops don't reach); <strong>MPPT charge-line fuse</strong>; <strong>per-parallel-pack MRBF fuse</strong>; chafe protection; equipotential bonding</td>
+<td>elec §7.5, §5.1–5.2</td>
 </tr>
 <tr>
 <td><strong>#2</strong> — wet-zone corrosion</td>
@@ -2683,7 +2683,7 @@ This report maps each gap to its control; it does not re-specify the hardware.</
 </tr>
 <tr>
 <td><strong>#4</strong> — battery thermal</td>
-<td>Confirm the mounted location has airflow and stays within the LiFePO4 rating in a 60 °C container</td>
+<td>Battery <strong>sited low + shaded + in the cooled-air path</strong> so it stays in the ≤45 °C charge window (the BMS blocks charging above ~45 °C); commissioning temperature check</td>
 <td>elec §5.2</td>
 </tr>
 <tr>
@@ -2731,7 +2731,11 @@ electrocution one.</p>
 </tr>
 <tr>
 <td>At commissioning</td>
-<td>Insulation check: positive-bus-to-shell resistance high (no leakage) with loads off</td>
+<td><strong>Both E-stops</strong> (interior + exterior) each trip the contactor; PV array disconnect operates; MPPT charge-line fuse present (60 A); each parallel pack has its own MRBF fuse</td>
+</tr>
+<tr>
+<td>At commissioning</td>
+<td><strong>Battery bay &lt; 45 °C</strong> under peak-sun load (thermal siting, §5.2); insulation check: positive-bus-to-shell resistance high with loads off</td>
 </tr>
 <tr>
 <td>At commissioning</td>

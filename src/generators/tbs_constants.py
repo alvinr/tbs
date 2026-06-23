@@ -308,6 +308,7 @@ EVAP_DUCT_D  = 200     # duct outer diameter (mm)
 EVAP_W     = 559     # cooler width along X (mm)  — 22 in
 EVAP_D     = 305     # cooler depth along Yd (mm) — 12 in
 EVAP_H     = 711     # cooler height (mm)         — 28 in
+EVAP_CFM_RATED = 1300  # Hessaire MC18M rated airflow (CFM); run on LOW to match the Ø200 duct
 # Transport stowage — on near walkway grating, in the widened section.
 # rev10: moved deeper (was 1200) to clear the panel SWING sweep, which reaches
 # X≈1395 in the near-walkway Yd band; 1450 gives margin (cooler X1450–2009,

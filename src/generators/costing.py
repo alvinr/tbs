@@ -454,6 +454,7 @@ _PT = "processing-tray-and-spray-bar.md"
 _WS = "water-system-report.md"
 _MS = "master-shopping-list.md"
 _ELEC = "electrical-report.md"
+_VENT = "ventilation-report.md"
 
 
 def capital_mid() -> int:
@@ -669,6 +670,11 @@ def _inline_blocks() -> dict:
         "elec-canopy-total":   (_ELEC, lambda: f"${_elec_canopy():,}"),
         "elec-cooling-total":  (_ELEC, lambda: f"${_elec_cooling():,}"),
         "elec-grand-total":    (_ELEC, lambda: f"${_elec_grand():,}"),
+        # ventilation-report.md §3/§4 strategy costs + §9 parts-list total — all from §5b VENTILATION.
+        "vent-total":          (_VENT, lambda: f"${total(VENTILATION)[1]:,}"),
+        "vent-fans":           (_VENT, lambda: f"${_vent_line('150×150×50mm axial fans').mid:,}"),
+        "vent-shade":          (_VENT, lambda: f"${_vent_line('Shade canopy').mid + _vent_line('Canopy frame').mid:,}"),
+        "vent-cooler-inverter": (_VENT, lambda: f"${_vent_line('Evaporative cooler').mid + _vent_line('Cooler inverter').mid:,}"),
     }
 
 

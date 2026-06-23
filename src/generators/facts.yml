@@ -171,6 +171,15 @@ spray_beam_span_mm:
   owner: processing-tray-and-spray-bar.md
   display: comma
 
+# Evaporative-cooler rated airflow — Hessaire MC18M spec, restated in ventilation §5.1/§9/§11.
+# INJECTION-ONLY (no aliases): 200/300/400 CFM also appear for the fans/duct, so a CFM-value
+# alias would false-positive; filled only where a placeholder marks the cooler rating.
+cooler_cfm_rated:
+  constant: EVAP_CFM_RATED
+  unit: CFM
+  owner: ventilation-report.md
+  display: comma
+
 blue_supply_l:
   constant: BLUE_SUPPLY_L
   unit: L

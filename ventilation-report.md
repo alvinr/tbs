@@ -27,9 +27,9 @@ Without any mitigation, the container is unusable in summer daytime. The system 
 
 | Method | Interior ΔT | Cost | Power | Required? |
 |--------|------------|------|-------|-----------|
-| 80% shade cloth canopy over container | −15 to −20°C | ~$200 | None | **Yes — always** |
+| 80% shade cloth canopy over container | −15 to −20°C | ~<!-- BEGIN costing:vent-shade -->$200<!-- END costing:vent-shade --> | None | **Yes — always** |
 | Scheduling (shoot before 09:00 / after 18:00 in summer) | −10 to −15°C effective | $0 | None | Recommended |
-| Evaporative cooler (swamp cooler) — 120V AC via 12V inverter | −10 to −15°C additional | ~$405 (cooler + inverter) | <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus | **Yes — in temperatures above 30°C ambient** |
+| Evaporative cooler (swamp cooler) — 120V AC via 12V inverter | −10 to −15°C additional | ~<!-- BEGIN costing:vent-cooler-inverter -->$405<!-- END costing:vent-cooler-inverter --> (cooler + inverter) | <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus | **Yes — in temperatures above 30°C ambient** |
 
 Combined (shade canopy + cooler + scheduling): interior temperature reaches 25–32°C — within operator working range.
 
@@ -54,7 +54,7 @@ Longitudinal section showing the cross-flow ventilation path: Fan B intake at th
 | Total airflow | ~400 CFM |
 | Power draw (each) |  ~60W |
 | Circuit fuse | 5A |
-| Cost  | ~$50 |
+| Cost  | ~<!-- BEGIN costing:vent-fans -->$50<!-- END costing:vent-fans --> |
 
 ### 4.1 Fan Positions
 
@@ -106,7 +106,7 @@ The baffle design is identical for both fans. Fan A's baffle duct is fixed to th
 | Dimensions | 559 × 305 × 711mm (22 × 12 × 28 in) |
 | Weight | ~7.3 kg (16 lb) dry |
 | Power draw | <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W AC → **~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on the 12V bus** (÷0.88 inverter efficiency) |
-| Airflow | 1,300 CFM rated — **run on LOW** to match the Ø200 light-safe duct |
+| Airflow | <!-- BEGIN fact:cooler_cfm_rated -->1,300<!-- END fact:cooler_cfm_rated --> CFM rated — **run on LOW** to match the Ø200 light-safe duct |
 | Water consumption | ~4.8 gal tank; ~3 L/hour evaporated |
 | Circuit | E — inverter DC feed 40A / 10 AWG; AC output GFCI-protected ([Electrical §7.6](electrical-report.md#ac-safety)) |
 | Water source | Onboard 4.8 gal reservoir, topped up from the Blue circuit IBC tote |
@@ -191,7 +191,7 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 | Item | Spec | Source | Est. cost |
 |------|------|--------|-----------|
 | 150×150×50mm axial fans × 2 | 12V DC, ~150–200 CFM each | Amazon (GDSTIME/Wathai 15050) | ~$50 |
-| Evaporative cooler | Hessaire MC18M, 120V AC, 1,300 CFM (run low), <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W | [Hessaire](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) / Amazon | ~$130 |
+| Evaporative cooler | Hessaire MC18M, 120V AC, <!-- BEGIN fact:cooler_cfm_rated -->1,300<!-- END fact:cooler_cfm_rated --> CFM (run low), <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W | [Hessaire](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) / Amazon | ~$130 |
 | Cooler inverter | Victron Phoenix 12/375 GFCI (12V→120V) + DC fuse/disconnect + GFCI AC outlet | Victron / Amazon | ~$275 |
 | Shade canopy — 80% shade cloth | 20 × 10 ft | Amazon / Farm supply | ~$80 |
 | Canopy frame | 1.5" EMT conduit + fittings | Home Depot | ~$120 |
@@ -206,7 +206,7 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 | Cooler external power cable | 1.5m, 14 AWG 2-cond, Deutsch DT 2-pin plugs each end | Waytek Wire / Amazon | ~$20 |
 | Ratchet straps, 25mm × 2 | Cooler stowage | Home Depot / Amazon | ~$12 |
 | Plywood base plate | 12mm, 600 × 350mm (cooler stowage) | Lumber yard / Home Depot | ~$8 |
-| **Ventilation & cooling total** | | | **~$824** |
+| **Ventilation & cooling total** | | | **~<!-- BEGIN costing:vent-total -->$824<!-- END costing:vent-total -->** |
 
 ---
 
@@ -231,7 +231,7 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 ## 11. Source References
 
 1. [150mm 12V DC axial fan 15050](https://www.coolingfanfactory.com/product/DC-Fan-15050-12V-24V-48V-150mm.html) — 150×150×50mm axial panel fan specifications.
-2. [Hessaire MC18M](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) — 120V AC evaporative cooler (1,300 CFM, <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W) specifications. Driven by a [Victron Phoenix 12/375 GFCI inverter](https://www.victronenergy.com/inverters/phoenix-inverter-vedirect-250va-800va).
+2. [Hessaire MC18M](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) — 120V AC evaporative cooler (<!-- BEGIN fact:cooler_cfm_rated -->1,300<!-- END fact:cooler_cfm_rated --> CFM, <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W) specifications. Driven by a [Victron Phoenix 12/375 GFCI inverter](https://www.victronenergy.com/inverters/phoenix-inverter-vedirect-250va-800va).
 3. [OSHA Heat Illness Prevention](https://www.osha.gov/heat-exposure) — Workplace heat exposure guidelines and permissible limits.
 4. [Electrical Report](electrical-report.md) — Circuit assignments (A, B, E), wiring specification, and fuse block layout.
 5. [Hinged Panel Report](hinged-panel-report.md) — Panel corner zone construction and Fan B mounting.

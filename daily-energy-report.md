@@ -86,7 +86,7 @@ service interval is set by the Blue water (~14 prints ≈ 4.7 days at 3/day, §8
 totes are emptied roughly **every ~4.7 days, not every evening** — the camera can sit on
 site for several days between dump runs.
 
-This is **gravity-assisted**: each tote gravity-drains through its low (Z = 200 mm) port,
+This is **gravity-assisted**: each tote gravity-drains through its low port,
 and the pump only lifts the **~120 L residual** below the port:
 
 | Pump | Tank | Volume pumped | Min @ 3.5 GPM | Wh @ 90 W |

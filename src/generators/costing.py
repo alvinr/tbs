@@ -456,6 +456,7 @@ _MS = "master-shopping-list.md"
 _ELEC = "electrical-report.md"
 _VENT = "ventilation-report.md"
 _FPM = "film-plane-mechanism-report.md"
+_FC  = "film-clamp-mechanism-report.md"
 
 
 def capital_mid() -> int:
@@ -679,6 +680,9 @@ def _inline_blocks() -> dict:
         # film-plane-mechanism-report.md §7 materials total — the §4 FILM BOM low (base estimate;
         # the old hand-set ~$3,100 sat below this BOM).
         "film-total":          (_FPM, lambda: f"${total(FILM)[0]:,}"),
+        # film-clamp-mechanism-report.md §4 — clamp-system band (generic toggle → Destaco-equiv).
+        "clamp-system-low":    (_FC, lambda: f"${_clamp_system('low'):,}"),
+        "clamp-system-high":   (_FC, lambda: f"${_clamp_system('high'):,}"),
     }
 
 
@@ -718,6 +722,16 @@ def _pt_line(prefix: str) -> LineItem:
 # electrical-report.md §8 — the cooler/canopy groupings are subsets of the §5b VENTILATION BOM.
 def _vent_line(prefix: str) -> LineItem:
     return next(li for li in VENTILATION if li.label.startswith(prefix))
+
+
+# film-clamp-mechanism-report.md §4 — the muslin clamp system = the §4 FILM clamp line + its
+# mounting line (M5 bolts/Nylocks + neoprene jaw strip).
+def _film_line(prefix: str) -> LineItem:
+    return next(li for li in FILM if li.label.startswith(prefix))
+
+
+def _clamp_system(which: str) -> int:    # which = 'low' | 'high'
+    return getattr(_film_line("Cam-lever spring clamps"), which) + _film_line("Clamp mounting").mid
 
 
 def _elec_canopy() -> int:    # shade cloth + frame

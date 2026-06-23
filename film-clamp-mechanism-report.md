@@ -12,14 +12,14 @@ This report describes the **cam-lever spring clamp system** that secures the mus
 
 ## 2. Clamp Layout
 
-**92 cam-lever spring clamps** are spaced at 150mm centers around the full perimeter of the 4,499mm × 2,388mm film plane frame:
+**92 cam-lever spring clamps** are spaced at 150mm centers around the full perimeter of the <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm film plane frame:
 
 | Edge | Length | Clamp Count |
 |------|--------|-------------|
-| Top horizontal | 4,499mm | 30 |
-| Bottom horizontal | 4,499mm | 30 |
-| Left vertical | 2,388mm | 16 |
-| Right vertical | 2,388mm | 16 |
+| Top horizontal | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm | 30 |
+| Bottom horizontal | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm | 30 |
+| Left vertical | <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm | 16 |
+| Right vertical | <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm | 16 |
 | **Total** | | **92** |
 
 ---
@@ -55,7 +55,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | M5 SS Nylock nut | A2-70 stainless | 184 | McMaster-Carr #93625A200 | Bolt Depot | $0.08 |
 | Neoprene strip 60A | 35mm × 6mm, self-adhesive | 1 roll (10m) | McMaster-Carr #8614K44 | Grainger | $15 |
 
-**Clamp system estimated cost:** $330 (generic toggle clamps) to $790 (Destaco-equivalent quality).
+**Clamp system estimated cost:** <!-- BEGIN costing:clamp-system-low -->$346<!-- END costing:clamp-system-low --> (generic toggle clamps) to <!-- BEGIN costing:clamp-system-high -->$806<!-- END costing:clamp-system-high --> (Destaco-equivalent quality).
 
 ---
 
@@ -65,7 +65,7 @@ All items ship within the United States. Local Southern California pickup noted 
 |----------|------|
 | Before each session | Inspect muslin clamp engagement — all 92 clamps snapped closed |
 | Monthly | Check neoprene jaw pads for compression set — replace if grip force is noticeably reduced |
-| Every 6 months | Inspect torsion springs for fatigue — clamps should snap firmly to closed position under gravity at 40° tilt |
+| Every 6 months | Inspect torsion springs for fatigue — clamps should snap firmly to closed position under gravity at <!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt |
 | Annually | Replace neoprene jaw pads (preventive — $15 per roll covers all 92 clamps) |
 
 ---

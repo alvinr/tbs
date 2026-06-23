@@ -350,7 +350,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Operating Manual](operating-manual.md) | Single-operator step-by-step workflow — coating, exposure, development, cleanup |
 | [Electrical & Systems](electrical-report.md) | Power architecture, light trap vestibule, lighting, wiring diagrams |
 | [Electrical Safety](electrical-safety-report.md) | 12V DC hazard assessment — fire/arc/corrosion risks, existing controls, and the protective measures added |
-| [Daily Energy Use](daily-energy-report.md) | One-day-of-daylight consumption — prints, cooling, wash pumping, end-of-day tank pump-out, and the solar/battery balance |
+| [Daily Energy Use](daily-energy-report.md) | One-day-of-daylight consumption — prints, cooling, wash pumping, the per-resupply tank pump-out, and the solar/battery balance |
 | [Ventilation & Cooling](ventilation-report.md) | Fan system, evaporative cooler, light-safe baffle ducts, shade canopy, and operating modes |
 | [Master Shopping List](master-shopping-list.md) | All components consolidated by build area — electrical, water, chemistry, vestibule, cooling |
 | [License](licensing.md) | GNU AGPLv3 — © 2026 Alvin Richards |

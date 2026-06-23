@@ -269,14 +269,16 @@ def hinge_panel():
     parts.append(ruby_box("Panel far corner (40mm)",
                           0, NEW_YD_R, PANEL_Z_BOT, tc, C_WID - NEW_YD_R, h, color=C_PLASTIC))
 
-    # Center zone (120mm) framed around the housing aperture: two jambs + header.
-    parts.append(ruby_box("Panel center jamb L (120mm)",
-                          0, NEW_YD_L, PANEL_Z_BOT, tk, APER_L - NEW_YD_L, h, color=C_PLASTIC))
-    parts.append(ruby_box("Panel center jamb R (120mm)",
-                          0, APER_R, PANEL_Z_BOT, tk, NEW_YD_R - APER_R, h, color=C_PLASTIC))
-    parts.append(ruby_box("Panel header over housing (120mm)",
+    # Center zone (120mm) — the structural FRAME around the housing aperture: two jambs +
+    # header. Colored STEEL (vs the blue PP skin) so the frame reads distinctly from the
+    # flat corner panels — and it's the member the interior pull handle bolts to.
+    parts.append(ruby_box("Panel center jamb L (120mm frame)",
+                          0, NEW_YD_L, PANEL_Z_BOT, tk, APER_L - NEW_YD_L, h, color=C_STEEL))
+    parts.append(ruby_box("Panel center jamb R (120mm frame)",
+                          0, APER_R, PANEL_Z_BOT, tk, NEW_YD_R - APER_R, h, color=C_STEEL))
+    parts.append(ruby_box("Panel header over housing (120mm frame)",
                           0, NEW_YD_L, DRUM_H, tk, NEW_YD_R - NEW_YD_L,
-                          PANEL_Z_TOP - DRUM_H, color=C_PLASTIC))
+                          PANEL_Z_TOP - DRUM_H, color=C_STEEL))
 
     # (Housing-aperture neoprene lining strips omitted in this model — they read
     # as distracting brown bands flanking the drum opening.)

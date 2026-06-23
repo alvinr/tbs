@@ -966,36 +966,36 @@ ents = defn.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Panel center jamb L (120mm)
+  # Panel center jamb L (120mm frame)
   grp = ents.add_group
-  grp.name = "Panel center jamb L (120mm)"
+  grp.name = "Panel center jamb L (120mm frame)"
   face = grp.entities.add_face([0.mm,653.mm,130.mm], [120.mm,653.mm,130.mm], [120.mm,713.mm,130.mm], [0.mm,713.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2170.mm)
-  mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
-  mat.color = Sketchup::Color.new(110, 140, 160)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Panel center jamb R (120mm)
+  # Panel center jamb R (120mm frame)
   grp = ents.add_group
-  grp.name = "Panel center jamb R (120mm)"
+  grp.name = "Panel center jamb R (120mm frame)"
   face = grp.entities.add_face([0.mm,1649.mm,130.mm], [120.mm,1649.mm,130.mm], [120.mm,1709.mm,130.mm], [0.mm,1709.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2170.mm)
-  mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
-  mat.color = Sketchup::Color.new(110, 140, 160)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Panel header over housing (120mm)
+  # Panel header over housing (120mm frame)
   grp = ents.add_group
-  grp.name = "Panel header over housing (120mm)"
+  grp.name = "Panel header over housing (120mm frame)"
   face = grp.entities.add_face([0.mm,653.mm,2250.mm], [120.mm,653.mm,2250.mm], [120.mm,1709.mm,2250.mm], [0.mm,1709.mm,2250.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
-  mat.color = Sketchup::Color.new(110, 140, 160)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 

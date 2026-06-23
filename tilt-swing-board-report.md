@@ -256,7 +256,7 @@ Detailed renders can be found [in the full analysis](tilt-swing-board-analysis.m
 | CNC machining | $800 | $1,500 |
 | Anodising | $140 | $210 |
 | Knobs + scales | $110 | $150 |
-| **Total** | **~<!-- BEGIN costing:front-board-total -->$1,470<!-- END costing:front-board-total -->** | **~$2,440** |
+| **Total** | **~<!-- BEGIN costing:front-board-total -->$1,470<!-- END costing:front-board-total -->** | **~<!-- BEGIN costing:front-board-total-high -->$2,440<!-- END costing:front-board-total-high -->** |
 
 The mechanism costs less than the film plane mechanism (~<!-- BEGIN costing:film-total -->$3,538<!-- END costing:film-total -->) due to the smaller scale and single bearing rather than 4 rod ends.
 

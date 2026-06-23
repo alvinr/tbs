@@ -280,7 +280,8 @@ POWER = [
 ]
 
 
-FRONT_BOARD_MID = 1470   # tilt-swing front board — source: tilt-swing-board-report.md (not a SECTIONS row)
+FRONT_BOARD_MID  = 1470   # tilt-swing front board §12.4 LOW total — source: tilt-swing-board-report.md
+FRONT_BOARD_HIGH = 2440   # §12.4 HIGH total (CNC + anodise + custom bellows upper band)
 
 
 def _sec(sid: str) -> Section:
@@ -687,6 +688,7 @@ def _inline_blocks() -> dict:
         # tilt-swing-board-report.md §12.4 — the board's own BOM low (= FRONT_BOARD_MID, which the
         # rest of the model reads); the §12.4 note's film-plane comparison uses film-total above.
         "front-board-total":   (_TSB, lambda: f"${FRONT_BOARD_MID:,}"),
+        "front-board-total-high": (_TSB, lambda: f"${FRONT_BOARD_HIGH:,}"),
     }
 
 

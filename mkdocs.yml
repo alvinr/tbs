@@ -53,7 +53,9 @@ nav:
   - Home: index.md
   - Proposal: funding-proposal.md
   - "Costing": project-cost-breakdown.md
-  - "Operating Manual": operating-manual.md
+  - "Operating Manual":
+    - "Operating Manual": operating-manual.md
+    - "Daily Energy Use": daily-energy-report.md
   - Construction:
     - "Overview": engineering-diagrams.md
     - "Equipment Layout": equipment-layout-report.md
@@ -65,7 +67,6 @@ nav:
     - Electrical Systems:
       - "Electrical": electrical-report.md
       - "Electrical Safety": electrical-safety-report.md
-      - "Daily Energy Use": daily-energy-report.md
       - "Ventilation & Cooling": ventilation-report.md
     - Film Plane & Pinhole:
       - "Pinhole Report": pinhole-report.md

@@ -27,7 +27,7 @@ Without any mitigation, the container is unusable in summer daytime. The system 
 
 | Method | Interior ΔT | Cost | Power | Required? |
 |--------|------------|------|-------|-----------|
-| 80% shade cloth canopy over container | −15 to −20°C | ~$300 | None | **Yes — always** |
+| 80% shade cloth canopy over container | −15 to −20°C | ~$200 | None | **Yes — always** |
 | Scheduling (shoot before 09:00 / after 18:00 in summer) | −10 to −15°C effective | $0 | None | Recommended |
 | Evaporative cooler (swamp cooler) — 120V AC via 12V inverter | −10 to −15°C additional | ~$405 (cooler + inverter) | <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus | **Yes — in temperatures above 30°C ambient** |
 
@@ -54,7 +54,7 @@ Longitudinal section showing the cross-flow ventilation path: Fan B intake at th
 | Total airflow | ~400 CFM |
 | Power draw (each) |  ~60W |
 | Circuit fuse | 5A |
-| Cost  | ~$60 |
+| Cost  | ~$50 |
 
 ### 4.1 Fan Positions
 
@@ -102,7 +102,7 @@ The baffle design is identical for both fans. Fan A's baffle duct is fixed to th
 
 | Parameter | Specification |
 |-----------|--------------|
-| Model | **Hessaire MC18M** (120V AC) on a dedicated 12V→120V pure-sine inverter (Victron Phoenix 12/375 GFCI). *Replaces the fictional "Portacool Jetstream 110 12V DC" — see [dimension audit](component-dimension-audit.md).* |
+| Model | **Hessaire MC18M** (120V AC) on a dedicated 12V→120V pure-sine inverter (Victron Phoenix 12/375 GFCI). Sizing justified in the [dimension audit](component-dimension-audit.md). |
 | Dimensions | 559 × 305 × 711mm (22 × 12 × 28 in) |
 | Weight | ~7.3 kg (16 lb) dry |
 | Power draw | <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W AC → **~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on the 12V bus** (÷0.88 inverter efficiency) |

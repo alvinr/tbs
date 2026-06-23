@@ -181,12 +181,12 @@ The following renders show the combined projection of both systems operating sim
 
 The projection model applies two sequential transformations:
 
-**Step 1 — Front board rotation:**  
-Board tilt α and swing β rotate the effective world coordinate system:  
+**Step 1 — Front board rotation:**
+Board tilt α and swing β rotate the effective world coordinate system:
 `W' = Ry(−β) · Rx(−α) · W_world`
 
-**Step 2 — Film plane intersection:**  
-The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r₀=(0,0,2362) and normal n = Ry(φ)·Rx(θ)·[0,0,−1]. The image point is:  
+**Step 2 — Film plane intersection:**
+The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r₀=(0,0,2362) and normal n = Ry(φ)·Rx(θ)·[0,0,−1]. The image point is:
 `t = (n·r₀)/(n·d);  F = t × d`
 
 ![All configurations](assets/tilt-swing-combined-summary.png)
@@ -258,7 +258,6 @@ Detailed renders can be found [in the full analysis](tilt-swing-board-analysis.m
 | Knobs + scales | $110 | $150 |
 | **Total** | **~<!-- BEGIN costing:front-board-total -->$1,470<!-- END costing:front-board-total -->** | **~<!-- BEGIN costing:front-board-total-high -->$2,440<!-- END costing:front-board-total-high -->** |
 
-The mechanism costs less than the film plane mechanism (~<!-- BEGIN costing:film-total -->$3,538<!-- END costing:film-total -->) due to the smaller scale and single bearing rather than 4 rod ends.
 
 ---
 

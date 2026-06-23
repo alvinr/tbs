@@ -170,7 +170,7 @@ The shade canopy is the most effective single mitigation — it eliminates direc
 | Development / washing | Low speed | Low speed | ON if > 30°C | Erected |
 | Post-session ventilation | Full speed | Full speed | OFF | — |
 
-**Minimum ventilation requirement for darkroom chemistry:** Cyanotype chemistry includes ammonium iron(III) oxalate and potassium ferricyanide, which produce low-level fumes during mixing and application. OSHA permissible exposure limits require forced ventilation during chemistry use. The 400 CFM combined airflow (2 × 200 CFM) provides approximately 16 air changes per hour in the container volume (~25 m³) — exceeding the OSHA minimum for darkroom operations.
+**Forced ventilation for darkroom chemistry:** Cyanotype chemistry uses ammonium iron(III) oxalate and potassium ferricyanide, which give off low-level fumes during mixing and application, so the fans run whenever chemistry is handled. Fan B (intake) and Fan A (exhaust) work in series, so the fresh-air exchange is the **~200 CFM through-flow** — not the 2 × 200 CFM nameplate sum — giving roughly **14 air changes per hour** in the container's ~25 m³ free-air volume. When the evaporative cooler runs it supplies a further **~300 CFM of 100% outside air** (its <!-- BEGIN fact:cooler_cfm_rated -->1,300<!-- END fact:cooler_cfm_rated --> CFM rated output, run on LOW to match the Ø200 duct), lifting the turnover past **30 ACH** during coating and development — vigorous fresh-air exchange to keep fume levels low.
 
 ---
 

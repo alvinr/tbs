@@ -100,6 +100,8 @@ TAGS = ["Context", "Door Frame", "Pivot Axle",
         "Processing Tray", "Walkways", "Film Plane Rails",
         "Near Leaf", "Far Leaf", "Lock anchor", "Panel skin",
         "Panel Swing",        # dynamic-component moving group (the swinging assembly)
+        "Fan B",              # Fan B body/duct/ply band — taggable so scenes can hide it
+        "Drum shell",         # Ø900 housing arcs + rotating C-shell — taggable for hiding
         "Cargo Doors",        # dynamic-component swing doors (click to close)
         "Fan B Cable",        # child DC: orange coil shown only when the door is closed
         "Labels"]             # add_text callouts — shown only in the "Labeled" scene
@@ -265,9 +267,9 @@ def hinge_panel():
     # Near corner (hinge side) and far corner (Fan B side) — flush 40mm zones.
     # The center zone is WIDENED (step lines at NEW_YD_L/R) to frame the Ø900 housing.
     parts.append(ruby_box("Panel near corner (40mm)",
-                          0, 0, PANEL_Z_BOT, tc, NEW_YD_L, h, color=C_PLASTIC))
+                          0, 0, PANEL_Z_BOT, tc, NEW_YD_L, h, color=C_PLASTIC, alpha=0.5))
     parts.append(ruby_box("Panel far corner (40mm)",
-                          0, NEW_YD_R, PANEL_Z_BOT, tc, C_WID - NEW_YD_R, h, color=C_PLASTIC))
+                          0, NEW_YD_R, PANEL_Z_BOT, tc, C_WID - NEW_YD_R, h, color=C_PLASTIC, alpha=0.5))
 
     # Center zone (120mm) — the structural FRAME around the housing aperture: two jambs +
     # header. Colored STEEL (vs the blue PP skin) so the frame reads distinctly from the
@@ -289,14 +291,14 @@ def hinge_panel():
     z0, z1 = PANEL_Z_BOT, PANEL_Z_TOP
     dg0, dg1 = DRUM_CY - HOUSING_R - 15, DRUM_CY + HOUSING_R + 15  # clear housing aperture
     # bottom + top strips run on the panel edges, notched around the housing
-    parts.append(ruby_box("EPDM seal bottom L", -gt, 0, z0, gt, dg0, gw, color=C_GASKT))
+    parts.append(ruby_box("EPDM seal bottom L", -gt, 0, z0, gt, dg0, gw, color=C_GASKT, alpha=0.5))
     parts.append(ruby_box("EPDM seal bottom R", -gt, dg1, z0, gt, C_WID - dg1, gw,
-                          color=C_GASKT))
+                          color=C_GASKT, alpha=0.5))
     # top strip runs continuously full-width (panel top edge is the solid header)
-    parts.append(ruby_box("EPDM seal top", -gt, 0, z1 - gw, gt, C_WID, gw, color=C_GASKT))
-    parts.append(ruby_box("EPDM seal left", -gt, 0, z0, gt, gw, z1 - z0, color=C_GASKT))
+    parts.append(ruby_box("EPDM seal top", -gt, 0, z1 - gw, gt, C_WID, gw, color=C_GASKT, alpha=0.5))
+    parts.append(ruby_box("EPDM seal left", -gt, 0, z0, gt, gw, z1 - z0, color=C_GASKT, alpha=0.5))
     parts.append(ruby_box("EPDM seal right", -gt, C_WID - gw, z0, gt, gw, z1 - z0,
-                          color=C_GASKT))
+                          color=C_GASKT, alpha=0.5))
 
     # 3 × 200mm SS piano hinges on the left edge (Yd=0), exterior, per report §4.1.
     hd, hw, hh = 60, 30, 200
@@ -340,10 +342,10 @@ def drum_housing(cx, cy):
     # interior 0°). Suspended: spans Z 80..2200 (bottom at the panel bottom rail).
     parts.append(ov.ruby_arc_wall("LT Housing arc (near Yd)", cx, cy, HOUSING_R,
                                   HOUSING_T, H - ZB, gap_center_deg=270, gap_deg=180 + od,
-                                  color=C_ALUM, alpha=0.42, z0=ZB))
+                                  color=C_ALUM, alpha=0.5, z0=ZB))
     parts.append(ov.ruby_arc_wall("LT Housing arc (far Yd)", cx, cy, HOUSING_R,
                                   HOUSING_T, H - ZB, gap_center_deg=90, gap_deg=180 + od,
-                                  color=C_ALUM, alpha=0.42, z0=ZB))
+                                  color=C_ALUM, alpha=0.5, z0=ZB))
     parts.append(ruby_cylinder("LT Upper bearing (SKF 6215)", cx, cy, H, 65, 45,
                                color=C_STEEL, axis="z"))
     # (Lower bearing collar + mount plate omitted in this model — the drum is
@@ -366,7 +368,7 @@ def drum_rotor(cx=0, cy=0):
     parts = []
     parts.append(ov.ruby_arc_wall("LT Drum C-shell", cx, cy, DRUM_OR, DRUM_T, H - ZB,
                                   gap_center_deg=180, gap_deg=od,
-                                  color=C_ALUM, alpha=0.85, z0=ZB))
+                                  color=C_ALUM, alpha=0.5, z0=ZB))
     parts.append(ruby_cylinder("LT Drum top cap", cx, cy, H - 5, DRUM_OR, 5,
                                color=C_ALUM, axis="z"))
     parts.append(ruby_cylinder("LT Drum bottom cap", cx, cy, ZB, DRUM_OR, 5,
@@ -719,10 +721,10 @@ def bay():
     depth = ov.BAY_BACK_X - xf                             # 890 — bay X span
     h = z1 - z0
     return '\n'.join([
-        ruby_box("Bay wall near (Yd)", xf, yL, z0, depth, t, h, color=C_PLASTIC),
-        ruby_box("Bay wall far (Yd)", xf, yR - t, z0, depth, t, h, color=C_PLASTIC),
-        ruby_box("Bay wall top", xf, yL, z1 - t, depth, yR - yL, t, color=C_PLASTIC),
-        ruby_box("Bay wall bottom", xf, yL, z0, depth, yR - yL, t, color=C_PLASTIC),
+        ruby_box("Bay wall near (Yd)", xf, yL, z0, depth, t, h, color=C_PLASTIC, alpha=0.5),
+        ruby_box("Bay wall far (Yd)", xf, yR - t, z0, depth, t, h, color=C_PLASTIC, alpha=0.5),
+        ruby_box("Bay wall top", xf, yL, z1 - t, depth, yR - yL, t, color=C_PLASTIC, alpha=0.5),
+        ruby_box("Bay wall bottom", xf, yL, z0, depth, yR - yL, t, color=C_PLASTIC, alpha=0.5),
     ])
 
 
@@ -755,16 +757,16 @@ def generate_ruby():
         # Fan B corner: 18mm PLYWOOD mount band (bottom up to PANEL_FAN_BAND_Z) for
         # rigid fan/duct mounting; 4mm PP skin above. (rev11 material differentiation.)
         ruby_box("Fan B mount band (18mm ply)", 0, CUT, PANEL_Z_BOT, 40,
-                 NEW_YD_L - CUT, ov.PANEL_FAN_BAND_Z - PANEL_Z_BOT, color=C_PLY),
+                 NEW_YD_L - CUT, ov.PANEL_FAN_BAND_Z - PANEL_Z_BOT, color=C_PLY, alpha=0.5),
         ruby_box(f"Panel near (swing, Yd{CUT}-{NEW_YD_L})", 0, CUT, ov.PANEL_FAN_BAND_Z, 40,
-                 NEW_YD_L - CUT, PANEL_Z_TOP - ov.PANEL_FAN_BAND_Z, color=C_PLASTIC),
-        ruby_box("EPDM seal top (trimmed)", -20, CUT, PANEL_Z_TOP - 40, 20, PIVOT_YD - CUT, 40, color=C_GASKT),
+                 NEW_YD_L - CUT, PANEL_Z_TOP - ov.PANEL_FAN_BAND_Z, color=C_PLASTIC, alpha=0.5),
+        ruby_box("EPDM seal top (trimmed)", -20, CUT, PANEL_Z_TOP - 40, 20, PIVOT_YD - CUT, 40, color=C_GASKT, alpha=0.5),
         ruby_box("EPDM seal bottom L (trimmed)", -20, CUT, PANEL_Z_BOT, 20,
-                 (DRUM_CY - HOUSING_R - 15) - CUT, 40, color=C_GASKT),
+                 (DRUM_CY - HOUSING_R - 15) - CUT, 40, color=C_GASKT, alpha=0.5),
         ruby_box("Panel far corner (trimmed)", 0, NEW_YD_R, PANEL_Z_BOT, 40,
-                 PIVOT_YD - NEW_YD_R, PANEL_Z_TOP - PANEL_Z_BOT, color=C_PLASTIC),
+                 PIVOT_YD - NEW_YD_R, PANEL_Z_TOP - PANEL_Z_BOT, color=C_PLASTIC, alpha=0.5),
         ruby_box("EPDM seal bottom R (trimmed)", -20, DRUM_CY + HOUSING_R + 15, PANEL_Z_BOT, 20,
-                 PIVOT_YD - (DRUM_CY + HOUSING_R + 15), 40, color=C_GASKT),
+                 PIVOT_YD - (DRUM_CY + HOUSING_R + 15), 40, color=C_GASKT, alpha=0.5),
         bay(),
         drum_housing(DRUM_CX, DRUM_CY),   # housing + rotor are static geometry in the swing
         drum_rotor(DRUM_CX, DRUM_CY),     # def, so they swing rigidly at the correct position
@@ -947,6 +949,26 @@ model.layers.to_a.each {{ |l|
   model.layers.remove(l, true) rescue nil
 }}
 
+# ── Tag the Panel Swing's skin / EPDM-seal / Fan-B sub-parts onto hideable tags (they
+#    default to the always-on untagged layer, so the "Handle · Frame · Pivot" scene can't
+#    drop them otherwise). The frame jambs/header, handle, hinges, latches, drum stay. ──
+ps_defn = model.definitions["Panel Swing"]
+if ps_defn
+  skin_l = model.layers["Panel skin"]
+  fan_l  = model.layers["Fan B"]
+  drum_l = model.layers["Drum shell"]
+  ps_defn.entities.grep(Sketchup::Group).each do |g|
+    nm = g.name.to_s
+    if nm.include?("corner") || nm.include?("near (swing") || nm.include?("EPDM") || nm.include?("Bay wall") || nm.include?("mount band")
+      g.layer = skin_l if skin_l
+    elsif nm.include?("Fan B")
+      g.layer = fan_l if fan_l
+    elsif nm.include?("C-shell") || nm.include?("Housing arc")
+      g.layer = drum_l if drum_l
+    end
+  end
+end
+
 # ── Camera + scenes (the swing is interactive; plus a "Labeled" callout scene) ──
 model.layers.each {{ |l| l.visible = true }}
 model.layers["Labels"].visible = false if model.layers["Labels"]  # frame geometry, not labels
@@ -968,12 +990,22 @@ model.layers["Labels"].visible = false if model.layers["Labels"]
 # ── "Handle · Frame · Pivot" scene — isolate the swinging panel (frame + interior pull
 #    handle) and the Ø89 pivot post, hiding the container/tray/walkway clutter so the
 #    handle-to-frame mounting reads clearly. Per-page tag visibility is captured on add. ──
+hf_keep = ["Door Frame", "Pivot Axle", "Panel Swing"]
 model.layers.each {{ |l| l.visible = false }}
-["Door Frame", "Pivot Axle", "Panel Swing"].each {{ |n|
-  model.layers[n].visible = true if model.layers[n] }}
-hf_eye = Geom::Point3d.new(3600, 1150, 1750)     # interior side, looking back at the panel face
-hf_tgt = Geom::Point3d.new(120, 1500, 1200)
+hf_keep.each {{ |n| model.layers[n].visible = true if model.layers[n] }}
+# drum panels + the blue/brown panel skins stay visible here at 50% opacity for context
+# (Fan B stays hidden); the steel frame + handle read solid on top.
+model.layers["Drum shell"].visible = true if model.layers["Drum shell"]
+model.layers["Panel skin"].visible = true if model.layers["Panel skin"]
+# 3/4 view from the interior side (high X), near-Yd corner, slightly above — sets the
+# viewing DIRECTION; the zoom-to-fit below then frames it (the old fixed eye read zoomed-out).
+hf_eye = Geom::Point3d.new(3200, 250, 1950)
+hf_tgt = Geom::Point3d.new(120, 1150, 1080)
 model.active_view.camera = Sketchup::Camera.new(hf_eye, hf_tgt, Z_AXIS)
+hf_focus = model.entities.grep(Sketchup::ComponentInstance).select {{ |i|
+  hf_keep.include?(i.layer.name) }}
+model.active_view.zoom(hf_focus) unless hf_focus.empty?   # fit the isolated panel + pivot
+model.active_view.zoom(0.9)                               # small margin around the assembly
 hfpage = model.pages.add("Handle · Frame · Pivot"); hfpage.use_camera = true
 model.layers.each {{ |l| l.visible = true }}      # restore for the default state
 model.layers["Labels"].visible = false if model.layers["Labels"]

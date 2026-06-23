@@ -27,6 +27,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Lock anchor") unless model.layers["Lock anchor"]
   model.layers.add("Panel skin") unless model.layers["Panel skin"]
   model.layers.add("Panel Swing") unless model.layers["Panel Swing"]
+  model.layers.add("Fan B") unless model.layers["Fan B"]
+  model.layers.add("Drum shell") unless model.layers["Drum shell"]
   model.layers.add("Cargo Doors") unless model.layers["Cargo Doors"]
   model.layers.add("Fan B Cable") unless model.layers["Fan B Cable"]
   model.layers.add("Labels") unless model.layers["Labels"]
@@ -952,7 +954,7 @@ ents = defn.entities
   face.pushpull(2170.mm)
   mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
   mat.color = Sketchup::Color.new(110, 140, 160)
-  mat.alpha = 1.0
+  mat.alpha = 0.5
   grp.material = mat
 
   # Panel far corner (40mm)
@@ -963,7 +965,7 @@ ents = defn.entities
   face.pushpull(2170.mm)
   mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
   mat.color = Sketchup::Color.new(110, 140, 160)
-  mat.alpha = 1.0
+  mat.alpha = 0.5
   grp.material = mat
 
   # Panel center jamb L (120mm frame)
@@ -1005,9 +1007,9 @@ ents = defn.entities
   face = grp.entities.add_face([-20.mm,0.mm,130.mm], [0.mm,0.mm,130.mm], [0.mm,716.mm,130.mm], [-20.mm,716.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
+  mat = model.materials["EPDM seal bottom L"] || model.materials.add("EPDM seal bottom L")
   mat.color = Sketchup::Color.new(90, 48, 32)
-  mat.alpha = 1.0
+  mat.alpha = 0.5
   grp.material = mat
 
   # EPDM seal bottom R
@@ -1016,9 +1018,9 @@ ents = defn.entities
   face = grp.entities.add_face([-20.mm,1646.mm,130.mm], [0.mm,1646.mm,130.mm], [0.mm,2362.mm,130.mm], [-20.mm,2362.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
+  mat = model.materials["EPDM seal bottom L"] || model.materials.add("EPDM seal bottom L")
   mat.color = Sketchup::Color.new(90, 48, 32)
-  mat.alpha = 1.0
+  mat.alpha = 0.5
   grp.material = mat
 
   # EPDM seal top
@@ -1027,9 +1029,9 @@ ents = defn.entities
   face = grp.entities.add_face([-20.mm,0.mm,2260.mm], [0.mm,0.mm,2260.mm], [0.mm,2362.mm,2260.mm], [-20.mm,2362.mm,2260.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
+  mat = model.materials["EPDM seal bottom L"] || model.materials.add("EPDM seal bottom L")
   mat.color = Sketchup::Color.new(90, 48, 32)
-  mat.alpha = 1.0
+  mat.alpha = 0.5
   grp.material = mat
 
   # EPDM seal left
@@ -1038,9 +1040,9 @@ ents = defn.entities
   face = grp.entities.add_face([-20.mm,0.mm,130.mm], [0.mm,0.mm,130.mm], [0.mm,40.mm,130.mm], [-20.mm,40.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2170.mm)
-  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
+  mat = model.materials["EPDM seal bottom L"] || model.materials.add("EPDM seal bottom L")
   mat.color = Sketchup::Color.new(90, 48, 32)
-  mat.alpha = 1.0
+  mat.alpha = 0.5
   grp.material = mat
 
   # EPDM seal right
@@ -1049,9 +1051,9 @@ ents = defn.entities
   face = grp.entities.add_face([-20.mm,2322.mm,130.mm], [0.mm,2322.mm,130.mm], [0.mm,2362.mm,130.mm], [-20.mm,2362.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2170.mm)
-  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
+  mat = model.materials["EPDM seal bottom L"] || model.materials.add("EPDM seal bottom L")
   mat.color = Sketchup::Color.new(90, 48, 32)
-  mat.alpha = 1.0
+  mat.alpha = 0.5
   grp.material = mat
 
   # Piano hinge
@@ -1172,7 +1174,7 @@ ents = defn.entities
   face.pushpull(995.mm)
   mat = model.materials["Fan B mount band (18mm ply)"] || model.materials.add("Fan B mount band (18mm ply)")
   mat.color = Sketchup::Color.new(156, 123, 77)
-  mat.alpha = 1.0
+  mat.alpha = 0.5
   grp.material = mat
 
   # Panel near (swing, Yd180-653)
@@ -1183,7 +1185,7 @@ ents = defn.entities
   face.pushpull(1175.mm)
   mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
   mat.color = Sketchup::Color.new(110, 140, 160)
-  mat.alpha = 1.0
+  mat.alpha = 0.5
   grp.material = mat
 
   # EPDM seal top (trimmed)
@@ -1192,9 +1194,9 @@ ents = defn.entities
   face = grp.entities.add_face([-20.mm,180.mm,2260.mm], [0.mm,180.mm,2260.mm], [0.mm,2287.mm,2260.mm], [-20.mm,2287.mm,2260.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
+  mat = model.materials["EPDM seal bottom L"] || model.materials.add("EPDM seal bottom L")
   mat.color = Sketchup::Color.new(90, 48, 32)
-  mat.alpha = 1.0
+  mat.alpha = 0.5
   grp.material = mat
 
   # EPDM seal bottom L (trimmed)
@@ -1203,9 +1205,9 @@ ents = defn.entities
   face = grp.entities.add_face([-20.mm,180.mm,130.mm], [0.mm,180.mm,130.mm], [0.mm,716.mm,130.mm], [-20.mm,716.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
+  mat = model.materials["EPDM seal bottom L"] || model.materials.add("EPDM seal bottom L")
   mat.color = Sketchup::Color.new(90, 48, 32)
-  mat.alpha = 1.0
+  mat.alpha = 0.5
   grp.material = mat
 
   # Panel far corner (trimmed)
@@ -1216,7 +1218,7 @@ ents = defn.entities
   face.pushpull(2170.mm)
   mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
   mat.color = Sketchup::Color.new(110, 140, 160)
-  mat.alpha = 1.0
+  mat.alpha = 0.5
   grp.material = mat
 
   # EPDM seal bottom R (trimmed)
@@ -1225,9 +1227,9 @@ ents = defn.entities
   face = grp.entities.add_face([-20.mm,1646.mm,130.mm], [0.mm,1646.mm,130.mm], [0.mm,2287.mm,130.mm], [-20.mm,2287.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["EPDM fixed-panel top"] || model.materials.add("EPDM fixed-panel top")
+  mat = model.materials["EPDM seal bottom L"] || model.materials.add("EPDM seal bottom L")
   mat.color = Sketchup::Color.new(90, 48, 32)
-  mat.alpha = 1.0
+  mat.alpha = 0.5
   grp.material = mat
 
   # Bay wall near (Yd)
@@ -1238,7 +1240,7 @@ ents = defn.entities
   face.pushpull(2170.mm)
   mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
   mat.color = Sketchup::Color.new(110, 140, 160)
-  mat.alpha = 1.0
+  mat.alpha = 0.5
   grp.material = mat
 
   # Bay wall far (Yd)
@@ -1249,7 +1251,7 @@ ents = defn.entities
   face.pushpull(2170.mm)
   mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
   mat.color = Sketchup::Color.new(110, 140, 160)
-  mat.alpha = 1.0
+  mat.alpha = 0.5
   grp.material = mat
 
   # Bay wall top
@@ -1260,7 +1262,7 @@ ents = defn.entities
   face.pushpull(6.mm)
   mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
   mat.color = Sketchup::Color.new(110, 140, 160)
-  mat.alpha = 1.0
+  mat.alpha = 0.5
   grp.material = mat
 
   # Bay wall bottom
@@ -1271,7 +1273,7 @@ ents = defn.entities
   face.pushpull(6.mm)
   mat = model.materials["Panel near corner (40mm)"] || model.materials.add("Panel near corner (40mm)")
   mat.color = Sketchup::Color.new(110, 140, 160)
-  mat.alpha = 1.0
+  mat.alpha = 0.5
   grp.material = mat
 
   # LT Housing arc (near Yd)
@@ -1283,7 +1285,7 @@ ents = defn.entities
   face.pushpull(2120.mm)
   mat = model.materials["LT Housing arc (near Yd)"] || model.materials.add("LT Housing arc (near Yd)")
   mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 0.42
+  mat.alpha = 0.5
   grp.material = mat
 
   # LT Housing arc (far Yd)
@@ -1295,7 +1297,7 @@ ents = defn.entities
   face.pushpull(2120.mm)
   mat = model.materials["LT Housing arc (near Yd)"] || model.materials.add("LT Housing arc (near Yd)")
   mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 0.42
+  mat.alpha = 0.5
   grp.material = mat
 
   # LT Upper bearing (SKF 6215)
@@ -1318,9 +1320,9 @@ ents = defn.entities
   face = ge.add_face([[-730.93.mm,903.32.mm,130.mm], [-701.mm,871.12.mm,130.mm], [-667.94.mm,842.13.mm,130.mm], [-632.11.mm,816.65.mm,130.mm], [-593.88.mm,794.95.mm,130.mm], [-553.64.mm,777.24.mm,130.mm], [-511.81.mm,763.72.mm,130.mm], [-468.82.mm,754.52.mm,130.mm], [-425.12.mm,749.73.mm,130.mm], [-381.16.mm,749.41.mm,130.mm], [-337.39.mm,753.56.mm,130.mm], [-294.27.mm,762.14.mm,130.mm], [-252.25.mm,775.05.mm,130.mm], [-211.75.mm,792.17.mm,130.mm], [-173.21.mm,813.32.mm,130.mm], [-137.02.mm,838.27.mm,130.mm], [-103.54.mm,866.77.mm,130.mm], [-73.14.mm,898.53.mm,130.mm], [-46.13.mm,933.21.mm,130.mm], [-22.78.mm,970.46.mm,130.mm], [-3.33.mm,1009.89.mm,130.mm], [12.01.mm,1051.1.mm,130.mm], [23.08.mm,1093.64.mm,130.mm], [29.76.mm,1137.09.mm,130.mm], [32.mm,1181.mm,130.mm], [29.76.mm,1224.91.mm,130.mm], [23.08.mm,1268.36.mm,130.mm], [12.01.mm,1310.9.mm,130.mm], [-3.33.mm,1352.11.mm,130.mm], [-22.78.mm,1391.54.mm,130.mm], [-46.13.mm,1428.79.mm,130.mm], [-73.14.mm,1463.47.mm,130.mm], [-103.54.mm,1495.23.mm,130.mm], [-137.02.mm,1523.73.mm,130.mm], [-173.21.mm,1548.68.mm,130.mm], [-211.75.mm,1569.83.mm,130.mm], [-252.25.mm,1586.95.mm,130.mm], [-294.27.mm,1599.86.mm,130.mm], [-337.39.mm,1608.44.mm,130.mm], [-381.16.mm,1612.59.mm,130.mm], [-425.12.mm,1612.27.mm,130.mm], [-468.82.mm,1607.48.mm,130.mm], [-511.81.mm,1598.28.mm,130.mm], [-553.64.mm,1584.76.mm,130.mm], [-593.88.mm,1567.05.mm,130.mm], [-632.11.mm,1545.35.mm,130.mm], [-667.94.mm,1519.87.mm,130.mm], [-701.mm,1490.88.mm,130.mm], [-730.93.mm,1458.68.mm,130.mm], [-727.87.mm,1456.11.mm,130.mm], [-698.21.mm,1488.01.mm,130.mm], [-665.46.mm,1516.73.mm,130.mm], [-629.96.mm,1541.97.mm,130.mm], [-592.09.mm,1563.47.mm,130.mm], [-552.22.mm,1581.02.mm,130.mm], [-510.77.mm,1594.42.mm,130.mm], [-468.18.mm,1603.53.mm,130.mm], [-424.89.mm,1608.28.mm,130.mm], [-381.33.mm,1608.59.mm,130.mm], [-337.97.mm,1604.48.mm,130.mm], [-295.25.mm,1595.98.mm,130.mm], [-253.62.mm,1583.19.mm,130.mm], [-213.5.mm,1566.23.mm,130.mm], [-175.31.mm,1545.28.mm,130.mm], [-139.45.mm,1520.56.mm,130.mm], [-106.29.mm,1492.32.mm,130.mm], [-76.17.mm,1460.85.mm,130.mm], [-49.4.mm,1426.49.mm,130.mm], [-26.27.mm,1389.59.mm,130.mm], [-7.mm,1350.52.mm,130.mm], [8.19.mm,1309.7.mm,130.mm], [19.16.mm,1267.55.mm,130.mm], [25.78.mm,1224.5.mm,130.mm], [28.mm,1181.mm,130.mm], [25.78.mm,1137.5.mm,130.mm], [19.16.mm,1094.45.mm,130.mm], [8.19.mm,1052.3.mm,130.mm], [-7.mm,1011.48.mm,130.mm], [-26.27.mm,972.41.mm,130.mm], [-49.4.mm,935.51.mm,130.mm], [-76.17.mm,901.15.mm,130.mm], [-106.29.mm,869.68.mm,130.mm], [-139.45.mm,841.44.mm,130.mm], [-175.31.mm,816.72.mm,130.mm], [-213.5.mm,795.77.mm,130.mm], [-253.62.mm,778.81.mm,130.mm], [-295.25.mm,766.02.mm,130.mm], [-337.97.mm,757.52.mm,130.mm], [-381.33.mm,753.41.mm,130.mm], [-424.89.mm,753.72.mm,130.mm], [-468.18.mm,758.47.mm,130.mm], [-510.77.mm,767.58.mm,130.mm], [-552.22.mm,780.98.mm,130.mm], [-592.09.mm,798.53.mm,130.mm], [-629.96.mm,820.03.mm,130.mm], [-665.46.mm,845.27.mm,130.mm], [-698.21.mm,873.99.mm,130.mm], [-727.87.mm,905.89.mm,130.mm]])
   face.reverse! if face.normal.z < 0
   face.pushpull(2120.mm)
-  mat = model.materials["LT Drum C-shell"] || model.materials.add("LT Drum C-shell")
+  mat = model.materials["LT Housing arc (near Yd)"] || model.materials.add("LT Housing arc (near Yd)")
   mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 0.85
+  mat.alpha = 0.5
   grp.material = mat
 
   # LT Drum top cap
@@ -2807,12 +2809,32 @@ model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Context", "Door Frame", "Pivot Axle", "Processing Tray", "Walkways", "Film Plane Rails", "Near Leaf", "Far Leaf", "Lock anchor", "Panel skin", "Panel Swing", "Cargo Doors", "Fan B Cable", "Labels"]
+keep_tags = ["Context", "Door Frame", "Pivot Axle", "Processing Tray", "Walkways", "Film Plane Rails", "Near Leaf", "Far Leaf", "Lock anchor", "Panel skin", "Panel Swing", "Fan B", "Drum shell", "Cargo Doors", "Fan B Cable", "Labels"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
   model.layers.remove(l, true) rescue nil
 }
+
+# ── Tag the Panel Swing's skin / EPDM-seal / Fan-B sub-parts onto hideable tags (they
+#    default to the always-on untagged layer, so the "Handle · Frame · Pivot" scene can't
+#    drop them otherwise). The frame jambs/header, handle, hinges, latches, drum stay. ──
+ps_defn = model.definitions["Panel Swing"]
+if ps_defn
+  skin_l = model.layers["Panel skin"]
+  fan_l  = model.layers["Fan B"]
+  drum_l = model.layers["Drum shell"]
+  ps_defn.entities.grep(Sketchup::Group).each do |g|
+    nm = g.name.to_s
+    if nm.include?("corner") || nm.include?("near (swing") || nm.include?("EPDM") || nm.include?("Bay wall") || nm.include?("mount band")
+      g.layer = skin_l if skin_l
+    elsif nm.include?("Fan B")
+      g.layer = fan_l if fan_l
+    elsif nm.include?("C-shell") || nm.include?("Housing arc")
+      g.layer = drum_l if drum_l
+    end
+  end
+end
 
 # ── Camera + scenes (the swing is interactive; plus a "Labeled" callout scene) ──
 model.layers.each { |l| l.visible = true }
@@ -2835,12 +2857,22 @@ model.layers["Labels"].visible = false if model.layers["Labels"]
 # ── "Handle · Frame · Pivot" scene — isolate the swinging panel (frame + interior pull
 #    handle) and the Ø89 pivot post, hiding the container/tray/walkway clutter so the
 #    handle-to-frame mounting reads clearly. Per-page tag visibility is captured on add. ──
+hf_keep = ["Door Frame", "Pivot Axle", "Panel Swing"]
 model.layers.each { |l| l.visible = false }
-["Door Frame", "Pivot Axle", "Panel Swing"].each { |n|
-  model.layers[n].visible = true if model.layers[n] }
-hf_eye = Geom::Point3d.new(3600, 1150, 1750)     # interior side, looking back at the panel face
-hf_tgt = Geom::Point3d.new(120, 1500, 1200)
+hf_keep.each { |n| model.layers[n].visible = true if model.layers[n] }
+# drum panels + the blue/brown panel skins stay visible here at 50% opacity for context
+# (Fan B stays hidden); the steel frame + handle read solid on top.
+model.layers["Drum shell"].visible = true if model.layers["Drum shell"]
+model.layers["Panel skin"].visible = true if model.layers["Panel skin"]
+# 3/4 view from the interior side (high X), near-Yd corner, slightly above — sets the
+# viewing DIRECTION; the zoom-to-fit below then frames it (the old fixed eye read zoomed-out).
+hf_eye = Geom::Point3d.new(3200, 250, 1950)
+hf_tgt = Geom::Point3d.new(120, 1150, 1080)
 model.active_view.camera = Sketchup::Camera.new(hf_eye, hf_tgt, Z_AXIS)
+hf_focus = model.entities.grep(Sketchup::ComponentInstance).select { |i|
+  hf_keep.include?(i.layer.name) }
+model.active_view.zoom(hf_focus) unless hf_focus.empty?   # fit the isolated panel + pivot
+model.active_view.zoom(0.9)                               # small margin around the assembly
 hfpage = model.pages.add("Handle · Frame · Pivot"); hfpage.use_camera = true
 model.layers.each { |l| l.visible = true }      # restore for the default state
 model.layers["Labels"].visible = false if model.layers["Labels"]

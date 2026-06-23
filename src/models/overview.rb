@@ -8291,6 +8291,17 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # Charge-line Fuse (60A, MPPT -> battery)
+  grp = ents.add_group
+  grp.name = "Charge-line Fuse (60A, MPPT -> battery)"
+  face = grp.entities.add_face([1925.mm,95.mm,1695.mm], [1970.mm,95.mm,1695.mm], [1970.mm,125.mm,1695.mm], [1925.mm,125.mm,1695.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(45.mm)
+  mat = model.materials["Charge-line Fuse (60A, MPPT -> battery)"] || model.materials.add("Charge-line Fuse (60A, MPPT -> battery)")
+  mat.color = Sketchup::Color.new(34, 34, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Main Disconnect (Blue Sea m-Series)
   grp = ents.add_group
   grp.name = "Main Disconnect (Blue Sea m-Series)"
@@ -8433,7 +8444,7 @@ end
   face = grp.entities.add_face([1695.mm,20.mm,364.mm], [1735.mm,20.mm,364.mm], [1735.mm,60.mm,364.mm], [1695.mm,60.mm,364.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
-  mat = model.materials["MRBF Main Fuse (on + post)"] || model.materials.add("MRBF Main Fuse (on + post)")
+  mat = model.materials["Charge-line Fuse (60A, MPPT -> battery)"] || model.materials.add("Charge-line Fuse (60A, MPPT -> battery)")
   mat.color = Sketchup::Color.new(34, 34, 34)
   mat.alpha = 1.0
   grp.material = mat
@@ -8668,6 +8679,46 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # Interior E-stop collar (safety yellow)
+  grp = ents.add_group
+  grp.name = "Interior E-stop collar (safety yellow)"
+  ge = grp.entities
+  circle = ge.add_circle([2060.mm,165.mm,1580.mm], [0,1,0], 30.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["E-stop collar (safety yellow)"] || model.materials.add("E-stop collar (safety yellow)")
+  mat.color = Sketchup::Color.new(242, 194, 0)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Interior E-stop button (red mushroom)
+  grp = ents.add_group
+  grp.name = "Interior E-stop button (red mushroom)"
+  ge = grp.entities
+  circle = ge.add_circle([2060.mm,177.mm,1580.mm], [0,1,0], 24.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(26.mm)
+  mat = model.materials["Battery Contactor (ML-RBS, in + feed)"] || model.materials.add("Battery Contactor (ML-RBS, in + feed)")
+  mat.color = Sketchup::Color.new(196, 43, 28)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Interior E-stop control wire (parallel)
+  grp = ents.add_group
+  grp.name = "Interior E-stop control wire (parallel)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -135.mm, 0.mm)
+  circle = ge.add_circle([2060.mm,165.mm,1580.mm], vec, 5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["E-stop control wire (2x 18 AWG)"] || model.materials.add("E-stop control wire (2x 18 AWG)")
+  mat.color = Sketchup::Color.new(106, 61, 168)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # MC4 PV1 (+)
   grp = ents.add_group
   grp.name = "MC4 PV1 (+)"
@@ -8767,6 +8818,17 @@ end
   cface.pushpull(20.mm)
   mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
   mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV Array Disconnect (load-break isolator)
+  grp = ents.add_group
+  grp.name = "PV Array Disconnect (load-break isolator)"
+  face = grp.entities.add_face([1386.mm,22.mm,1834.8.mm], [1456.mm,22.mm,1834.8.mm], [1456.mm,67.mm,1834.8.mm], [1386.mm,67.mm,1834.8.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Main Disconnect (Blue Sea m-Series)"] || model.materials.add("Main Disconnect (Blue Sea m-Series)")
+  mat.color = Sketchup::Color.new(212, 58, 47)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -23272,6 +23334,10 @@ txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(1420.mm, -90.mm, 1950.mm)
 txt = entities.add_text("EMERGENCY E-STOP
 (external panel — kills all DC)", anc, Geom::Vector3d.new(-550.mm, -450.mm, 350.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(2060.mm, 203.mm, 1580.mm)
+txt = entities.add_text("INTERIOR E-STOP
+(EP face — parallel)", anc, Geom::Vector3d.new(360.mm, -500.mm, -180.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(2400.mm, 150.mm, 65.mm)
 txt = entities.add_text("WALKWAYS", anc, Geom::Vector3d.new(-200.mm, -850.mm, 750.mm))

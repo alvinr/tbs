@@ -52,7 +52,7 @@ tray's watertight seal.
 | Bracket spacing (near/far) | 457mm (18") — aligned to container rib spacing |
 | Container rib spacing | 457mm (18") — ISO standard corrugation pitch |
 | Near walkway widened section | 500mm at X≈1,155–2,629mm |
-| Open processing area | 3859×1,662mm = 6.41 m² |
+| Open processing area | <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->×1,662mm = 6.41 m² |
 | Spray bar slit width | 30mm (near and far walkways) |
 | Total walkway sections | 4 (all removable) |
 

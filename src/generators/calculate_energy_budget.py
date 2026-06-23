@@ -397,7 +397,7 @@ def generate_markdown():
 import re as _re
 
 _REPO = _os.path.dirname(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
-_ENERGY_DOCS = ["electrical-report.md"]
+_ENERGY_DOCS = ["electrical-report.md", "daily-energy-report.md"]
 
 
 def _energy_values() -> dict:
@@ -420,7 +420,11 @@ def _energy_values() -> dict:
         "daily-wh-2":         c(d2["daily_wh"]),
         "daily-wh-4":         c(d4["daily_wh"]),
         "drain-wh":           c(end_of_day_drain_wh()),
+        "per-print-wh":       c(per_print_wh()),
+        "warmup-wh":          c(warmup_wh()),
+        "solar-net-2":        c(s["solar_wh_day"] - d2["daily_wh"]),
         "solar-net-3":        c(a1["solar_net_wh"]),
+        "solar-net-4":        c(s["solar_wh_day"] - d4["daily_wh"]),
         "reserve-1pack-day":  f1(a1["battery_only_days"]),
         "reserve-2pack-day":  f1(a2["battery_only_days"]),
     }

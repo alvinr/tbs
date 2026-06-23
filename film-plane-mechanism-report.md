@@ -26,9 +26,9 @@ The floor plan below shows the film plane rail positions (at Y=2,262mm, X=150–
 
 | Dimension | Value | Notes |
 |-----------|-------|-------|
-| Interior length | 5,893mm (19 ft 4 in) | Film plane spans this direction |
-| Interior width | 2,362mm (7 ft 9 in) | **Optical axis = focal length** |
-| Interior height | 2,388mm (7 ft 10 in) | Film plane height |
+| Interior length | <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm -->mm (19 ft 4 in) | Film plane spans this direction |
+| Interior width | <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm (7 ft 9 in) | **Optical axis = focal length** |
+| Interior height | <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm (7 ft 10 in) | Film plane height |
 | Pinhole position | Center of one 20ft long-side wall | |
 | Nominal film plane | Opposite 20ft long-side wall | flush to wall |
 | Structural ribs | Every 457mm (18 in) along length | Rail mounting points |
@@ -50,11 +50,11 @@ The four-corner mechanism supports all view-camera movements. Corners are labele
 | **Rise / Fall** | All 4 together, offset vertically | ±200mm | Horizon shift |
 | **Shift** | All 4 together, offset horizontally | ±300mm | Left/right perspective offset |
 
-**Maximum tilt angle** (single-axis): **40°** — set by the cross-slide Z travel (~280mm); the depth rails alone would allow ~65°.
+**Maximum tilt angle** (single-axis): **<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->°** — set by the cross-slide Z travel (~280mm); the depth rails alone would allow ~65°.
 
-**Maximum swing angle** (single-axis): **28°** — rail-depth limited: asin(1081 / (4499/2)) ≈ 28.7°.
+**Maximum swing angle** (single-axis): **<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->°** — rail-depth limited: asin(1081 / (4499/2)) ≈ 28.7°.
 
-(Swing is the binding limit because the plane is 4,499mm wide — the same depth travel over a wider span sweeps the corner further along the rail. Combined tilt+swing is further limited — see §5.)
+(Swing is the binding limit because the plane is <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm wide — the same depth travel over a wider span sweeps the corner further along the rail. Combined tilt+swing is further limited — see §5.)
 
 Because the plane is a **fixed-size rigid rectangle**, its physical height stays **2,388mm at every angle** — it does not grow. The earlier scheme stretched it ~40% at max tilt and needed a folding two-panel backing; Option A's corner **cross-slides** absorb the rigid-rotation arc travel instead, so a single rigid backing panel suffices.
 
@@ -74,7 +74,7 @@ Each corner of the film plane frame rides on its own independent carriage assemb
 - **8 depth carriages** — HGH20CA flanged blocks, 2 per rail, joined by an L-bracket at each corner.
 - **4 leadscrews** — ¾"-6 Acme, 8 ft (2,438mm) length, one per corner (TL, TR, BL, BR). Each turns in a bronze Acme nut fixed to the corner bracket and drives that corner's depth.
 - **8 corner cross-slides (Option A)** — a **2-axis X-Z floating stage** at each corner (one X slide + one Z slide, ~300mm travel each, on HGR15 rail + block), bolted on top of the depth carriage. These absorb the small in-plane arc travel that a **rigid** rotation forces on each corner (≈280mm in Z at max tilt, ≈263mm in X at max swing), so the film plane stays a **fixed-size flat rectangle** instead of stretching.
-- **Film plane frame** — welded 2"×2"×3/16" aluminum angle, a **FIXED-SIZE rigid rectangle, 4,499mm × 2,388mm** (rail span × container height). Each corner connects to its cross-slide through a **rod-end spherical bearing** (GIR25-DO or equivalent, 25mm bore), which provides the angular freedom; the cross-slide provides the translation. Together they let the rigid plane tilt and swing without the frame ever changing size. The following diagrams show the range of movements of the film plane.
+- **Film plane frame** — welded 2"×2"×3/16" aluminum angle, a **FIXED-SIZE rigid rectangle, <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm** (rail span × container height). Each corner connects to its cross-slide through a **rod-end spherical bearing** (GIR25-DO or equivalent, 25mm bore), which provides the angular freedom; the cross-slide provides the translation. Together they let the rigid plane tilt and swing without the frame ever changing size. The following diagrams show the range of movements of the film plane.
 
 ![Sheet 1 — Plan view](assets/film-plane-sheet1.png)
 
@@ -110,7 +110,7 @@ Each of the four leadscrews is turned by an **8" cast aluminum handwheel** (¾" 
 
 Because the plane is a **fixed-size rigid rectangle**, its physical dimensions never change: the along-plane height stays **2,388mm at every tilt angle** (the earlier stretching scheme grew it ~40% and needed a folding backing — no longer required). The arc travel that the rotation forces on each corner is taken up entirely by the **cross-slides** (≈280mm Z at max tilt, ≈263mm X at max swing), not by the frame.
 
-**Single rigid backing panel:** the backing is now **one flat ACM (aluminum composite) sheet, 4,499mm × 2,388mm**, bonded to the rear of the angle frame. No piano hinge, no folding two-panel system — the panel simply rotates with the rigid plane.
+**Single rigid backing panel:** the backing is now **one flat ACM (aluminum composite) sheet, <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm**, bonded to the rear of the angle frame. No piano hinge, no folding two-panel system — the panel simply rotates with the rigid plane.
 
 ---
 

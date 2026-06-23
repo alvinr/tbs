@@ -181,6 +181,8 @@ OVERVIEW_POINT_LABELS = [
     (INVERTER_X + INVERTER_W // 2, INVERTER_D // 2, INVERTER_Z + INVERTER_H,
      "CCT-E INVERTER\n12->120V AC (cooler)", -430, -820, 480),
     (1420,  -90, 1950, "EMERGENCY E-STOP\n(external panel — kills all DC)", -550, -450,  350),
+    (EP_X + EP_W // 2, ENCL_SHELL_D + 38, EP_H_LO + 80,
+     "INTERIOR E-STOP\n(EP face — parallel)", 360, -500, -180),
     # Walkways span paired/perimeter parts, so their bounds-centre would land in the
     # empty middle — anchor on the actual NEAR member instead.
     (2400,  150,   65, "WALKWAYS",                   -200, -850,  750),  # near walkway strip
@@ -1430,6 +1432,10 @@ def electrical():
                           BUSBAR_L, BUSBAR_W, BUSBAR_H, color="#C0392B"))
     parts.append(ruby_box("Busbar (-)", EP_X + 15, 30, ez + 175,
                           BUSBAR_L, BUSBAR_W, BUSBAR_H, color="#2C2C2C"))
+    # MPPT charge-line fuse — 60A on the MPPT battery-output lead, in front of the busbars
+    # (protects the 6 AWG charge conductor; matches the electrical model).
+    parts.append(ruby_box("Charge-line Fuse (60A, MPPT -> battery)",
+                          EP_X + 15, 95, ez + 195, 45, 30, 45, color="#222222"))
     # Rotary main disconnect — knob on the enclosure face (Yd).
     disc_x = EP_X + 240
     parts.append(ruby_cylinder("Main Disconnect (Blue Sea m-Series)",
@@ -1517,6 +1523,17 @@ def electrical():
                                 (es_cx, 10, es_cz)],
                                5, color="#6A3DA8"))
 
+    # Interior E-stop — red mushroom on the EP (enclosure) face, paralleled with the
+    # exterior one so the contactor can be tripped from inside the container too.
+    ies_cx, ies_cz = EP_X + EP_W / 2, EP_H_LO + 80
+    parts.append(ruby_cylinder("Interior E-stop collar (safety yellow)",
+                               ies_cx, ENCL_SHELL_D, ies_cz, 30, 12, color="#F2C200", axis="y"))
+    parts.append(ruby_cylinder("Interior E-stop button (red mushroom)",
+                               ies_cx, ENCL_SHELL_D + 12, ies_cz, 24, 26, color="#C42B1C", axis="y"))
+    parts.append(ruby_pipe_run("Interior E-stop control wire (parallel)",
+                               [(ies_cx, ENCL_SHELL_D, ies_cz), (ies_cx, 30, ies_cz)],
+                               5, color="#6A3DA8"))
+
     # Remaining panel-face hardware — matches the 2D power-panel detail (View A):
     # MC4 PV bulkheads (3 pairs, left), NEMA 5-15R inlet (top-right), Deutsch DT
     # cooler bulkhead (bottom-right). Positions are panel-local fractions, protruding
@@ -1538,6 +1555,11 @@ def electrical():
     parts.append(ruby_cylinder("GFCI AC outlet (Cct E cooler)",
                                _px(0.767), face_y - 20, _pz(0.325),
                                10, 20, color="#E8884A", axis="y"))
+
+    # PV array disconnect — DC load-break isolator on the PV path (array -> MPPT),
+    # panel-mounted (interior), readily accessible (NEC 690.13).
+    parts.append(ruby_box("PV Array Disconnect (load-break isolator)",
+                          _px(0.40), 22, _pz(0.02), 70, 45, 70, color="#D43A2F"))
 
     # PV interior feed: MC4 bulkheads (panel interior face) -> MPPT PV input. The exterior
     # PV run (solar_array()) lands on the MC4 connectors; this is the conductor from their

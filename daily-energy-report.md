@@ -26,7 +26,7 @@ then run **continuously** through the operating day.
 
 > **Standard build is manual** (electric actuation was dropped — see [Cost Analysis](cost-analysis-report.md)),
 > so Circuit F draws nothing. Per-**session** energy (incl. the once-daily morning warmup) is ~**771 Wh** (vs 780 Wh with the optional
-> actuators) — up from the old ~720 Wh now that the cooler runs through the AC inverter (~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V bus).
+> actuators); the cooler runs through the AC inverter (~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V bus).
 
 ---
 
@@ -42,11 +42,11 @@ then run **continuously** through the operating day.
 | Wash pump P-01 (Blue, 3× fills) | 90 | 15 | 22.5 |
 | Wash pump P-02 (Brown recycled) | 90 | 10 | 15.0 |
 | Tray-drain pump P-04 (sump → IBC) | 90 | 5 | 7.5 |
-| **Per print (manual)** | | | **~663** *(excl. one-time morning warmup)* |
+| **Per print (manual)** | | | **~<!-- BEGIN energy:per-print-wh -->663<!-- END energy:per-print-wh -->** *(excl. one-time morning warmup)* |
 
 The **continuous fans + evaporative cooler (217 W)** dominate — they are on the whole
 cycle, so most of the energy is *climate control*, not imaging or pumping. The cooler now
-runs through the 12V→120V inverter (~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the bus vs the old 80 W placeholder).
+runs through the 12V→120V inverter (~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the bus).
 
 ---
 
@@ -54,16 +54,16 @@ runs through the 12V→120V inverter (~<!-- BEGIN fact:evap_cooler_w_bus -->97<!
 
 | Item | Wh |
 |---|--:|
-| Morning cooling warmup (once: fans + cooler, 30 min) | 108 |
-| 3 prints × 663 Wh (cycle + wash/drain pumps) | 1,989 |
-| End-of-day Brown + Waste pump-out (§6) | ~37 |
-| **Daily total (3 prints)** | **~2,134 Wh** |
+| Morning cooling warmup (once: fans + cooler, 30 min) | <!-- BEGIN energy:warmup-wh -->108<!-- END energy:warmup-wh --> |
+| 3 prints × <!-- BEGIN energy:per-print-wh -->663<!-- END energy:per-print-wh --> Wh (cycle + wash/drain pumps) | 1,989 |
+| End-of-day Brown + Waste pump-out (§6) | ~<!-- BEGIN energy:drain-wh -->37<!-- END energy:drain-wh --> |
+| **Daily total (3 prints)** | **~<!-- BEGIN energy:daily-wh-3 -->2,134<!-- END energy:daily-wh-3 --> Wh** |
 
 | Day | Prints | Daily Wh |
 |---|--:|--:|
-| Short / poor light | 2 | ~1,471 |
-| **Representative** | **3** | **~2,134** |
-| Pushed | 4 | ~2,797 |
+| Short / poor light | 2 | ~<!-- BEGIN energy:daily-wh-2 -->1,471<!-- END energy:daily-wh-2 --> |
+| **Representative** | **3** | **~<!-- BEGIN energy:daily-wh-3 -->2,134<!-- END energy:daily-wh-3 -->** |
+| Pushed | 4 | ~<!-- BEGIN energy:daily-wh-4 -->2,797<!-- END energy:daily-wh-4 --> |
 
 ---
 
@@ -91,7 +91,7 @@ and the pump only lifts the **~120 L residual** below the port:
 | P-05 | Brown IBC-3 → X3 | ~120 L residual | ~9 | ~14 |
 | P-03 | Waste IBC-4 → X4 | ~120 L residual | ~9 | ~14 |
 | | + white light for the ~20 min operation | | | ~10 |
-| **End-of-day drain total** | | | | **~37 Wh** |
+| **End-of-day drain total** | | | | **~<!-- BEGIN energy:drain-wh -->37<!-- END energy:drain-wh --> Wh** |
 
 Because gravity does the bulk, the pump energy is **independent of how full the tanks
 got** and is **tiny (<2% of the day)**. *Worst case* — if a tote had to be pumped out
@@ -105,14 +105,14 @@ back to Blue rather than dumped; this line covers the case where it is drained o
 
 | | Value |
 |---|--:|
-| Solar generation (600 W × 5.5 peak-sun-h, Palm Springs) | ~3,300 Wh/day |
-| Battery usable (200 Ah × 12 V LiFePO4, 100% DoD) | 2,400 Wh |
+| Solar generation (600 W × 5.5 peak-sun-h, Palm Springs) | ~<!-- BEGIN energy:solar-wh-day -->3,300<!-- END energy:solar-wh-day --> Wh/day |
+| Battery usable (200 Ah × 12 V LiFePO4, 100% DoD) | <!-- BEGIN energy:battery-wh-2pack -->2,400<!-- END energy:battery-wh-2pack --> Wh |
 
 | Day | Daily draw | Solar net | Within one battery charge? |
 |---|--:|--:|---|
-| 2 prints | ~1,471 | **+1,829** | Yes (with wide margin) |
-| 3 prints | ~2,134 | **+1,166** | Yes — full overnight autonomy |
-| 4 prints | ~2,797 | **+503** | Exceeds the 2,400 Wh battery by ~400 Wh → covered by **daytime solar** (which runs during the prints), not battery alone |
+| 2 prints | ~<!-- BEGIN energy:daily-wh-2 -->1,471<!-- END energy:daily-wh-2 --> | **+<!-- BEGIN energy:solar-net-2 -->1,829<!-- END energy:solar-net-2 -->** | Yes (with wide margin) |
+| 3 prints | ~<!-- BEGIN energy:daily-wh-3 -->2,134<!-- END energy:daily-wh-3 --> | **+<!-- BEGIN energy:solar-net-3 -->1,166<!-- END energy:solar-net-3 -->** | Yes — full overnight autonomy |
+| 4 prints | ~<!-- BEGIN energy:daily-wh-4 -->2,797<!-- END energy:daily-wh-4 --> | **+<!-- BEGIN energy:solar-net-4 -->503<!-- END energy:solar-net-4 -->** | Exceeds the <!-- BEGIN energy:battery-wh-2pack -->2,400<!-- END energy:battery-wh-2pack --> Wh battery by ~400 Wh → covered by **daytime solar** (which runs during the prints), not battery alone |
 
 **Conclusions:**
 - The system is **solar-positive at every realistic daily throughput** — even a 4-print
@@ -137,14 +137,14 @@ pack** extend it? Two limits compete: **power** and **clean water**.
 
 ### 8.1 Power is not the limit (with sun)
 
-Solar generates ~3,300 Wh/day; a 3-print day draws ~2,134 Wh — a **+1,166 Wh/day surplus**,
+Solar generates ~<!-- BEGIN energy:solar-wh-day -->3,300<!-- END energy:solar-wh-day --> Wh/day; a 3-print day draws ~<!-- BEGIN energy:daily-wh-3 -->2,134<!-- END energy:daily-wh-3 --> Wh — a **+<!-- BEGIN energy:solar-net-3 -->1,166<!-- END energy:solar-net-3 --> Wh/day surplus**,
 so on sunny days the battery never depletes and the system runs **indefinitely**. The
 battery's job is to ride out *cloudy* days, and that reserve is what the pack count changes:
 
-| Battery | Usable | No-sun reserve (at ~2,134 Wh/day) | With sun |
+| Battery | Usable | No-sun reserve (at ~<!-- BEGIN energy:daily-wh-3 -->2,134<!-- END energy:daily-wh-3 --> Wh/day) | With sun |
 |---|--:|--:|---|
-| **1 pack** (1×100 Ah) | 1,200 Wh | ~0.6 day (≈ 2 prints) | Indefinite (solar-positive) |
-| **2 packs** (2×100 Ah) | 2,400 Wh | ~1.1 day (≈ 3 prints) | Indefinite (solar-positive) |
+| **1 pack** (1×100 Ah) | <!-- BEGIN energy:battery-wh-1pack -->1,200<!-- END energy:battery-wh-1pack --> Wh | ~<!-- BEGIN energy:reserve-1pack-day -->0.6<!-- END energy:reserve-1pack-day --> day (≈ 2 prints) | Indefinite (solar-positive) |
+| **2 packs** (2×100 Ah) | <!-- BEGIN energy:battery-wh-2pack -->2,400<!-- END energy:battery-wh-2pack --> Wh | ~<!-- BEGIN energy:reserve-2pack-day -->1.1<!-- END energy:reserve-2pack-day --> day (≈ 3 prints) | Indefinite (solar-positive) |
 
 So the **second pack does not lengthen the deployment** — it buys a **cloudy-day buffer**
 (ride out ~1 fully-overcast day instead of half a day) and the headroom for a 4-print day
@@ -160,7 +160,7 @@ recycling ([Water System Report §3–4](water-system-report.md)), so:
 |---|--:|--:|---|
 | **Clean water (Blue, in)** | <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l --> L (<!-- BEGIN fact:blue_supply_gal -->476<!-- END fact:blue_supply_gal --> gal) | 121 L (32 gal) | **~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints ≈ 4.7 days** @ 3/day |
 | Power, 2 packs + sun | — | ~620 Wh | Indefinite |
-| Power, 2 packs, no sun | 2,400 Wh | ~620 Wh | ~3 prints (~1.1 day) |
+| Power, 2 packs, no sun | <!-- BEGIN energy:battery-wh-2pack -->2,400<!-- END energy:battery-wh-2pack --> Wh | ~620 Wh | ~3 prints (~<!-- BEGIN energy:reserve-2pack-day -->1.1<!-- END energy:reserve-2pack-day --> day) |
 
 A disconnected deployment therefore runs **~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints (~4.7 days at 3/day)** before it needs
 a **resupply run** — which is fundamentally a *water* event (refill Blue), not a charging

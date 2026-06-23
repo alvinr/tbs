@@ -2720,16 +2720,16 @@
 <tr>
 <td>Tilt</td>
 <td>Top + bottom M8 screws (black knobs)</td>
-<td>±5.3°</td>
+<td>±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->°</td>
 <td><!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click</td>
-<td>±222mm vertical image shift</td>
+<td>±220mm vertical image shift</td>
 </tr>
 <tr>
 <td>Swing</td>
 <td>Left + right M8 screws (silver knobs)</td>
-<td>±5.3°</td>
+<td>±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->°</td>
 <td><!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click</td>
-<td>±222mm horizontal image shift</td>
+<td>±220mm horizontal image shift</td>
 </tr>
 <tr>
 <td>Compound</td>
@@ -2740,7 +2740,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Image shift formula:</strong> shift (mm) = f × tan(θ) = 2,362 × tan(θ)</p>
+<p><strong>Image shift formula:</strong> shift (mm) = f × tan(θ) = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm --> × tan(θ)</p>
 <table>
 <thead>
 <tr>
@@ -2783,7 +2783,7 @@
 <ul>
 <li><strong>Cross-flexure</strong>: two stacked stages needed for tilt + swing simultaneously; combined depth of ~60mm exceeds the 40mm plate budget; parasitic translation at compound angles</li>
 <li><strong>Cardan joint</strong>: cross-spider projects beyond Ø350mm aperture; gimbal-lock risk near cross-axis; shaft seals at 4 points</li>
-<li><strong>GE50-DO-2RS (chosen)</strong>: single component handles both axes about a true pivot point; ±15° misalignment capacity (well above ±5.3° required); PTFE sliding surface is sealed, maintenance-free, and impervious to photographic chemistry; zero backlash under preload from opposing screw pairs</li>
+<li><strong>GE50-DO-2RS (chosen)</strong>: single component handles both axes about a true pivot point; ±15° misalignment capacity (well above ±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->° required); PTFE sliding surface is sealed, maintenance-free, and impervious to photographic chemistry; zero backlash under preload from opposing screw pairs</li>
 </ul>
 <p>The pivot is located at the plane of the pinhole disc face (40mm forward of the bearing housing), so tilt rotates the image cone about the pinhole itself — no parallax error from pivot offset.</p>
 <hr />
@@ -2797,7 +2797,7 @@ Resolution per full turn:             arctan(1.0/130) = 0.44°
 Detents per turn (36-detent knob):    36
 Resolution per click:                 0.44° / 36 = 0.012° per click
 Full ±5° range from center:           ~410 clicks (11.4 turns)
-Mechanical hard stop:                 ±12mm travel = ±5.3°
+Mechanical hard stop:                 ±12mm travel = ±&lt;!-- BEGIN fact:front_board_max_deg --&gt;5.3&lt;!-- END fact:front_board_max_deg --&gt;°
 </code></pre></div>
 <p><strong>Knob identification:</strong>
 - Top and bottom screws → <strong>TILT</strong> axis → <strong>black anodised</strong> knobs, engraved TILT+ / TILT−
@@ -2835,7 +2835,7 @@ Mechanical hard stop:                 ±12mm travel = ±5.3°
 <h2 id="9-board-only-distortion-renders">9. Board-Only Distortion Renders<a class="headerlink" href="#9-board-only-distortion-renders" title="Permanent link">&para;</a></h2>
 <p>The following renders show the isolated effect of the tilt-swing front board on the projected image, with the film plane held flat at the far wall. The world scene is a regular grid at three depths (near: 7m, mid: 22m, far: 102m from pinhole) plus a human-figure reference and horizon line.</p>
 <p><img alt="All board-only configurations" src="../assets/tilt-swing-board-distortion-summary.png" /></p>
-<p>The board's ±5.3° range produces up to <!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm of image shift — enough to steer composition without any film plane movement.</p>
+<p>The board's ±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->° range produces up to <!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm of image shift — enough to steer composition without any film plane movement.</p>
 <table>
 <thead>
 <tr>
@@ -3171,12 +3171,12 @@ The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r
 </tr>
 <tr>
 <td><strong>Total</strong></td>
-<td><strong>~$1,470</strong></td>
+<td><strong>~<!-- BEGIN costing:front-board-total -->$1,470<!-- END costing:front-board-total --></strong></td>
 <td><strong>~$2,440</strong></td>
 </tr>
 </tbody>
 </table>
-<p>The mechanism costs less than the film plane mechanism (~$2,400) due to the smaller scale and single bearing rather than 4 rod ends.</p>
+<p>The mechanism costs less than the film plane mechanism (~<!-- BEGIN costing:film-total -->$3,538<!-- END costing:film-total -->) due to the smaller scale and single bearing rather than 4 rod ends.</p>
 <hr />
 <h2 id="13-maintenance">13. Maintenance<a class="headerlink" href="#13-maintenance" title="Permanent link">&para;</a></h2>
 <table>

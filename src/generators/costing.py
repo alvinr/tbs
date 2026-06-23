@@ -275,8 +275,8 @@ VENTILATION = [
 # Distribution & wiring $970; = the scenario §5a Mid). The full 43-row combined BOM overlaps the
 # §5b ventilation items, so we own the two authoritative subtotals rather than re-entering it.
 POWER = [
-    point("Solar & battery (3× 200W panels, MPPT 100/50, 1× 100Ah LiFePO4, shore charger, mounts, PV cabling, panel)", 1295),
-    point("Distribution & wiring (fuse block, disconnect, contactor, E-stop, protection, conduit, LED, pump switches)", 970),
+    point("Solar & battery (3× 200W panels, MPPT 100/50, 1× 100Ah LiFePO4, shore charger, mounts, PV cabling, PV disconnect, panel)", 1335),
+    point("Distribution & wiring (fuse block, disconnect, contactor, 2× E-stop, charge/shore fuses, protection, conduit, LED, pump switches)", 1015),
 ]
 
 
@@ -539,7 +539,7 @@ SECTIONS = [
     Section("3",  "Optics — pinhole plate", *total(OPTICS)),
     Section("4",  "Film plane mechanism (4-corner Option A, incl. wall-seat saddles + cross-slides)", *total(FILM)),
     Section("5",  "Processing water system (incl. tray, spray bar, IBC stacking frame)", *total(WATER)),
-    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · pump switches)", 2025, 2265, 2575),
+    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · pump switches)", 2110, 2350, 2660),
     Section("5b", "Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)",
             total(VENTILATION)[0], total(VENTILATION)[0] + 60, total(VENTILATION)[0] + 150),
     Section("6",  "Housed revolving-door light lock (plastic-skin custom fabrication)", *total(LIGHTLOCK)),
@@ -814,7 +814,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 909,  "total": 1210, "per_print": 24},  # 909 not 910: consistent ferri rounding ($104, not the doc's hand-rounded $105)
     "standard": {"chem": 1353, "total": 1650, "per_print": 33},
     "rich":     {"chem": 2681, "total": 2980, "per_print": 60},
-    "grand_total": (20076, 25261, 32563),  # +148/+173/+193 vs prior: tray+spray reconciled to processing-tray report §6 BOM
+    "grand_total": (20161, 25346, 32648),  # +85 §5a: electrical safety design-change (PV disconnect, charge/shore fuses, 2nd E-stop)
     "walkway": (1826, 2214, 2607),
     "water": (4211, 5258, 6297),   # tray 1177→1300 / spray 210→235 (+ mid/high) — dedicated report §6 detailed BOM
     "container": (2300, 3300, 4300),
@@ -824,7 +824,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "optics": (95, 165, 240),
     "film": (3538, 3813, 4088),   # §4 BOM folded in (was hand-set $3,100/$3,650/$4,200, below its own BOM)
     "ventilation": (824, 824, 824),   # §5b BOM (point estimates); report total was stale at $769
-    "power": (2265, 2265, 2265),       # §5a authoritative subtotal ($1,295 + $970)
+    "power": (2350, 2350, 2350),       # §5a authoritative subtotal ($1,335 + $1,015)
 }
 
 

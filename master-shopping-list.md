@@ -18,7 +18,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 3. Pinhole optics plate | $95 | $240 |
 | 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,538 | $4,088 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $4,211 | $6,297 |
-| 6. Electrical — power, circuits, wiring | $2,025 | $2,575 |
+| 6. Electrical — power, circuits, wiring | $2,110 | $2,660 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,465 | $2,160 |
 | 7a. Panel swing pivot (Ø89 pivot post + bearings + cage + wall stays + rail saddles) | $1,112 | $1,372 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,826 | $2,607 |
@@ -26,7 +26,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,210 | $2,980 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$20,026** | **~$29,623** |
+| **TOTAL (base build + 50-print run)** | **~$20,111** | **~$29,708** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -293,12 +293,13 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | NEMA 5-15R inlet (weatherproof) | Mounted in flush-mount power panel | 1 | Amazon | ~$25 |
 | [Solar panel ground mount frame](https://www.renogy.com) | Tilt frame, 30° | 1 | [Renogy](https://www.renogy.com) | ~$80 |
 | PV cable 10 AWG | MC4 connectors | 1 lot | Amazon | ~$30 |
+| [PV array disconnect](https://www.automationdirect.com/) | DC load-break isolator, 50A / 150VDC, panel-mount (array → MPPT; NEC 690.13) | 1 | [AutomationDirect](https://www.automationdirect.com/) / Amazon | ~$40 |
 | Aluminum plate 340×240×3mm | Flush-mount face plate, power panel | 1 | [Online Metals](https://www.onlinemetals.com) | ~$18 |
 | Neoprene gasket 340×240×3mm | Weatherseal between plate and wall | 1 | McMaster-Carr | ~$6 |
 | M6 bolt + nut + washer set | Panel mounting hardware, SS | 4 | McMaster-Carr | ~$5 |
 | [MC4 bulkhead connector pairs](https://www.amazon.com/s?k=MC4+bulkhead+connector+panel+mount+IP67) | IP67 panel-mount | 3 pairs | Amazon | ~$25 |
 | Panel cooler output | 120V AC — now a **GFCI outlet** (Circuit E); counted in the Evaporative cooler section (was a DC Deutsch bulkhead) | — | — | (see cooling) |
-**Solar & battery subtotal: ~$1,295**  *(1-pack standard; +$350 for the optional 2nd pack)*
+**Solar & battery subtotal: ~$1,335**  *(1-pack standard; +$375 for the optional 2nd pack — incl. its own MRBF fuse)*
 
 ### Distribution & wiring
 | Item | Spec | Qty | Supplier | Est. cost |
@@ -308,6 +309,9 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | [Battery main disconnect switch](https://www.bluesea.com/products/category/8/2/Battery_Switches) | Blue Sea m-Series 300A — manual isolator, contactor to busbar | 1 | [West Marine](https://www.westmarine.com) / Amazon | ~$40 |
 | [Remote battery switch (contactor)](https://www.bluesea.com/products/category/8/2/Battery_Switches) | Blue Sea ML-RBS 500A magnetic-latch — in battery + feed, tripped by the external E-stop | 1 | [West Marine](https://www.westmarine.com) / Amazon | ~$150 |
 | [External emergency cut-off (E-stop)](https://www.automationdirect.com/) | Red mushroom push-button, IP66, panel-mount on the external power panel + 2× 18 AWG control loop | 1 | [AutomationDirect](https://www.automationdirect.com/) / Amazon | ~$30 |
+| [Interior emergency cut-off (E-stop)](https://www.automationdirect.com/) | Red mushroom IP65, EP-face mount — paralleled to the exterior E-stop → ML-RBS trip | 1 | [AutomationDirect](https://www.automationdirect.com/) / Amazon | ~$25 |
+| MPPT charge-line fuse | 60A ANL/MIDI + holder on the MPPT→battery lead; 6 AWG charge conductor | 1 | Blue Sea / Amazon | ~$15 |
+| Shore-charger output fuse | 20A inline on the charger DC output lead | 1 | Amazon | ~$5 |
 | Battery terminal covers (pair) | Insulating boots over + / − posts | 1 | Amazon | ~$10 |
 | [Sealed wet-zone connectors](https://www.waytekwire.com) | Deutsch DT / adhesive-lined heat-shrink — pump circuits in the IBC corridor / tray end | 1 lot | [Waytek Wire](https://www.waytekwire.com) | ~$25 |
 | [Pump switches (Circuit C)](https://www.amazon.com/s?k=IP67+rocker+switch+12V+16A) | IP67 sealed rocker, 12V 16A — one per pump (P-01–P-05), panel-face | 5 | Amazon / Waytek Wire | ~$30 |
@@ -328,9 +332,9 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Pull-cord ceiling switch, 12V 6A SPST | Inline switch for lighting Ccts D & G | 2 | Amazon | ~$16 total |
 | Copper ground stake 8ft × ⅝" dia | Earth connection | 1 | Home Depot | ~$20 |
 | 4 AWG ground wire, green/yellow | 3m | 1 | Amazon | ~$15 |
-**Distribution & wiring subtotal: ~$970**  *(+$325 circuit-protection / wet-zone-sealing hardware — external emergency cut-off + battery contactor, disconnect, terminal fuse, sealed connectors, bonding; see [Electrical Safety Report](electrical-safety-report.md) §5; +$45 Circuit-C pump-control — 5 switches + distribution block)*
+**Distribution & wiring subtotal: ~$1,015**  *(+$410 circuit-protection / wet-zone-sealing hardware — interior **+** exterior emergency cut-offs + battery contactor, disconnect, terminal fuse, **PV array disconnect, MPPT charge-line + shore-charger fuses**, sealed connectors, bonding; see [Electrical Safety Report](electrical-safety-report.md) §5; +$45 Circuit-C pump-control — 5 switches + distribution block)*
 
-**Section total: ~$2,265**  *(= Solar & battery $1,295 + Distribution & wiring $970; 1-pack standard, +$350 for the optional 2nd pack)*
+**Section total: ~$2,350**  *(= Solar & battery $1,335 + Distribution & wiring $1,015; 1-pack standard, +$375 for the optional 2nd pack)*
 
 ## 7. Housed Revolving-Door Light Lock — Custom Fabrication
 *Source: `light-trap-selection.md` § 4 (rev 9 / B2). Custom-fabricated Ø900 fixed housing + single-opening C-shell drum (no fins) built into the hinged cargo-door panel — light-tight by geometry. **rev 9 switches the drum/housing from 3mm aluminum to a hybrid plastic skin (5mm UV-HDPE housing, 4mm PP drum)** — cutting the drum/housing mass (~99 kg → ~60 kg), removing galvanic concerns, and lowering fabrication cost. Replaces the failed Ø750 4-fin drum. Single-operator entry/exit at any time without admitting daylight.*

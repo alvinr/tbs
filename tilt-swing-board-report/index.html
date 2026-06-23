@@ -2897,11 +2897,11 @@ Mechanical hard stop:                 ±12mm travel = ±&lt;!-- BEGIN fact:front
 <h2 id="10-combined-distortion-renders">10. Combined Distortion Renders<a class="headerlink" href="#10-combined-distortion-renders" title="Permanent link">&para;</a></h2>
 <p>The following renders show the combined projection of both systems operating simultaneously. The world scene is a regular grid at three depths (near: 7.4m, mid: 22.4m, far: 102.4m from pinhole) plus a human-figure reference and horizon line.</p>
 <p>The projection model applies two sequential transformations:</p>
-<p><strong>Step 1 — Front board rotation:</strong><br />
-Board tilt α and swing β rotate the effective world coordinate system:<br />
+<p><strong>Step 1 — Front board rotation:</strong>
+Board tilt α and swing β rotate the effective world coordinate system:
 <code>W' = Ry(−β) · Rx(−α) · W_world</code></p>
-<p><strong>Step 2 — Film plane intersection:</strong><br />
-The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r₀=(0,0,2362) and normal n = Ry(φ)·Rx(θ)·[0,0,−1]. The image point is:<br />
+<p><strong>Step 2 — Film plane intersection:</strong>
+The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r₀=(0,0,2362) and normal n = Ry(φ)·Rx(θ)·[0,0,−1]. The image point is:
 <code>t = (n·r₀)/(n·d);  F = t × d</code></p>
 <p><img alt="All configurations" src="../assets/tilt-swing-combined-summary.png" /></p>
 <p>The red cross (+) marks the projected image center; gray cross marks the nominal center.</p>
@@ -3176,7 +3176,6 @@ The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r
 </tr>
 </tbody>
 </table>
-<p>The mechanism costs less than the film plane mechanism (~<!-- BEGIN costing:film-total -->$3,538<!-- END costing:film-total -->) due to the smaller scale and single bearing rather than 4 rod ends.</p>
 <hr />
 <h2 id="13-maintenance">13. Maintenance<a class="headerlink" href="#13-maintenance" title="Permanent link">&para;</a></h2>
 <table>

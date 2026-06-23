@@ -90,7 +90,7 @@ Ranked by residual risk *before* the §5 improvements. Severity × likelihood fo
 | 1 | **Sustained DC short / arc → fire** | LiFePO4 delivers huge fault current; DC arc won't self-extinguish. Chafed conductor on the steel shell, dropped tool on the busbar, or liquid bridging a terminal | High | Med | 200 A + per-circuit fuses, BMS | Main fuse may be ~0.5 m from the battery (cable unprotected); **no manual disconnect**; chafe protection at shell penetrations not specified |
 | 2 | **Corroded wet-zone connections** | Developer/fixer vapor + condensation attacks unsealed terminals → high-resistance joints (heating) or intermittent faults. The 5 Shurflo pumps live in the wet IBC corridor / tray end | Med | High | IP65 enclosure (clean side only) | **Interior connectors are Anderson Powerpole — not sealed**; wet-zone wire not specified tinned |
 | 3 | **Battery busbar arc-flash** | 200 A+ available; a dropped wrench arcs, throws molten metal, burns | High | Low | Fusing limits duration | **No terminal covers**; no insulated-tool note |
-| 4 | **Battery thermal / venting** | Cells can vent under BMS failure / overcharge / abuse; container reaches 60 °C | High | Low | LiFePO4 (very stable), 60 °C rating, BMS | Confirm the mounted location has airflow and isn't a sealed, sun-baked pocket |
+| 4 | **Battery thermal / venting** | Cells can vent under BMS failure / overcharge / abuse; container reaches 60 °C, and the BMS blocks charging above ~45 °C (mid-day charge lock-out) | High | Low | LiFePO4 (very stable), 60 °C rating, BMS | Addressed by thermal siting — low/shaded/cooled-air path (§5.2); confirm < 45 °C at commissioning |
 | 5 | **Shore-power AC** | Grid AC feeds the exterior charger only — but the *site supply* and any extension cord are a genuine electrocution hazard | High | Low | AC kept exterior (IP65 charger); never distributed inside | Depends on the **site supply being RCD/GFCI-protected**; operational rule must be enforced |
 | 6 | **Circuit-E cooler inverter (120 V AC)** | The only interior-derived AC: a 12 V→120 V inverter feeds an outdoor, water-wetted cooler beside the grounded steel box — a line-to-metal shock path | High | Low | Separately-derived source, single-point neutral-ground bond; **GFCI** on the cooler outlet; shell/chassis/cooler equipotential bond; DC-side fuse + dedicated disconnect; transformer galvanic isolation ([electrical §7.6](electrical-report.md#ac-safety)) | Operational only: cooler unplugged + inverter DC-disconnect open for transport; periodic GFCI trip test |
 
@@ -106,10 +106,10 @@ This report maps each gap to its control; it does not re-specify the hardware.
 
 | Gap (Hazard #) | Control | Specified in |
 |---|---|---|
-| **#1** — DC short / arc | External E-stop + magnetic-latch battery contactor; manual main disconnect; terminal-mount main fuse at the battery post; chafe protection at shell penetrations; equipotential metalwork bonding | elec §7.5 |
+| **#1** — DC short / arc | **Two E-stops (interior + exterior)** → magnetic-latch battery contactor; manual main disconnect; terminal-mount main fuse at the battery post; **PV array disconnect** (isolates the charge side the E-stops don't reach); **MPPT charge-line fuse**; **per-parallel-pack MRBF fuse**; chafe protection; equipotential bonding | elec §7.5, §5.1–5.2 |
 | **#2** — wet-zone corrosion | Sealed IP-rated wet-zone connectors + tinned marine wire + dielectric grease; wet wiring elevated above the spill line with drip loops | elec §7.5 |
 | **#3** — busbar arc-flash | Battery terminal covers + insulated-tool rule (the main disconnect also de-energizes the bus) | elec §7.5 |
-| **#4** — battery thermal | Confirm the mounted location has airflow and stays within the LiFePO4 rating in a 60 °C container | elec §5.2 |
+| **#4** — battery thermal | Battery **sited low + shaded + in the cooled-air path** so it stays in the ≤45 °C charge window (the BMS blocks charging above ~45 °C); commissioning temperature check | elec §5.2 |
 | **#5** — shore AC | Shore AC terminates at the exterior charger only; site RCD/GFCI rule (§6) | §6 |
 | **#6** — Circuit-E AC | Single-point neutral-ground bond + mandatory GFCI + equipotential bond + DC fuse/disconnect + transformer galvanic isolation | elec §7.6 |
 
@@ -140,7 +140,8 @@ electrocution one.
 | When | Check |
 |---|---|
 | At commissioning | Main fuse ≤180 mm from battery +; disconnect operates; shell-to-battery-negative bond < 0.1 Ω; all metalwork bonded; terminal covers fitted |
-| At commissioning | Insulation check: positive-bus-to-shell resistance high (no leakage) with loads off |
+| At commissioning | **Both E-stops** (interior + exterior) each trip the contactor; PV array disconnect operates; MPPT charge-line fuse present (60 A); each parallel pack has its own MRBF fuse |
+| At commissioning | **Battery bay < 45 °C** under peak-sun load (thermal siting, §5.2); insulation check: positive-bus-to-shell resistance high with loads off |
 | At commissioning | Circuit E: neutral-ground bonded at the inverter only; cooler-outlet GFCI trips on test; inverter chassis/cooler/shell bonded; DC disconnect operates |
 | Before each session | Wet-zone connectors seated and dry; no liquid pooling at any connection |
 | Before each cooling session | Trip-test the Circuit-E cooler-outlet GFCI; cord and outlet undamaged |

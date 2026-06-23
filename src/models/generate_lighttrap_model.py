@@ -307,6 +307,16 @@ def hinge_panel():
         for lz in (220, 2168):
             parts.append(ruby_box("Southco cam latch", tc, ly - ld / 2, lz - lh / 2,
                                   lw, ld, lh, color=C_VALVE))
+
+    # Interior pull handle (matte-black 316 SS D-grab) — through-bolted to the frame on
+    # the interior face, near the free (near) edge above the Fan-B band, so the operator
+    # can swing the panel open from inside (report §4.3).
+    hy, hz0, hz1 = 300, 1150, 1450
+    for hz in (hz0 + 18, hz1 - 18):                       # two standoff posts off the face
+        parts.append(ruby_box("Pull-handle standoff", tc, hy - 10, hz - 8, 28, 20, 16,
+                              color="#202020"))
+    parts.append(ruby_box("Pull-handle grip (matte black)", tc + 28, hy - 12, hz0,
+                          24, 24, hz1 - hz0, color="#202020"))
     return '\n'.join(parts)
 
 

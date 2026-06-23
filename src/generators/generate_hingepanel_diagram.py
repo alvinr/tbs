@@ -292,6 +292,18 @@ def sheet1():
            (PW + 430, LATCH_YS[0]),
            "SOUTHCO C2-33 CAM LATCH (×4)\nINTERIOR FACE — shown dashed\nEMERGENCY EGRESS:\noperate from inside if drum jams")
 
+    # ── Interior pull handle — bolted to the frame, interior face (§4.3) ──────
+    # Interior feature on this exterior view → dashed (like the latches above).
+    HXD, HZD, HGL = 300, 1300, 300        # Yd 300 / Z 1300 / ~300mm grip — free near edge, above the Fan-B band
+    ax.add_patch(Rectangle((HXD - 16, HZD - HGL / 2), 32, HGL, fc="none",
+                           ec="#204080", lw=1.3, ls=(0, (4, 2)), zorder=8))
+    for bz in (HZD - HGL / 2 + 18, HZD + HGL / 2 - 18):
+        ax.add_patch(Circle((HXD, bz), 9, fc="#204080", ec="#204080", lw=0.8, zorder=9))
+    leader(ax, (HXD + 16, HZD + HGL / 2),
+           (HXD + 520, HZD + 470),
+           "INTERIOR PULL HANDLE (§4.3)\nthrough-bolted to frame —\npull the panel open from inside",
+           col="#204080", fw="bold")
+
     # ── Outward-opening annotation ────────────────────────────────────────────
     # Panel hinges on left (X=0); right edge is the free edge.
     # Opens outward — away from interior camera equipment.
@@ -343,7 +355,7 @@ def sheet1():
             color=C_CL, fontsize=6.5, ha="center", va="bottom", **FONT, alpha=0.8, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 5",
+    title_block(ax, "SHEET 1 OF 6",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FRONT ELEVATION — EXTERIOR VIEW",
                 scale_note="SCALE 1:20",
@@ -724,7 +736,7 @@ def sheet2():
     ], X_LO + 20, (Y_LO + Y_HI) / 2 + 160, title="MATERIALS", fs=6, col_w=420)
 
     # ── Title block ────────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 5",
+    title_block(ax, "SHEET 2 OF 6",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="PLAN CROSS-SECTION (SECTION A-A AT H=1000mm) — HOUSED REVOLVING DOOR (HOUSING + C-SHELL DRUM, NO FINS)",
                 scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
@@ -1293,7 +1305,7 @@ def sheet3():
     ddlbl((DDX(20), DDY(30)), DDY(42), "SWINGING panel edge\n(joint opens as it swings)")
 
     # ── Title block (portrait sheet — taller box, smaller fonts, clipped) ──────
-    title_block(ax, "SHEET 3 OF 5",
+    title_block(ax, "SHEET 3 OF 6",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="DRUM ELEVATION — SECTION A-A: VERTICAL DRUM, WALKING HEIGHT",
                 scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
@@ -1409,7 +1421,7 @@ def sheet5():
     ]):
         ax.text(v_x + 5, v_y + v_h - 55 - i * 42, line, ha="left", va="center", fontsize=8, color="#16361f", **FONT)
 
-    title_block(ax, "SHEET 5 OF 5",
+    title_block(ax, "SHEET 5 OF 6",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="REVOLVING-DOOR LIGHT LOCK (rev 8) — ACCESS & LIGHT-TIGHTNESS VERIFICATION (BOTH PASS)",
                 scale_note="PLAN VIEWS · NOT TO SCALE · ALL DIMS IN mm",
@@ -1530,7 +1542,7 @@ def sheet4():
     # panel's near-end (which sweeps to ~X1824/Yd964) — rule 35: never sit text on geometry.
     draw_notes(ax, notes, 1325, 2500, spacing=40, fs=7.0, width=985, font=FONT)
 
-    title_block(ax, "SHEET 4 OF 5",
+    title_block(ax, "SHEET 4 OF 6",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="ROTATING TRANSPORT + SWING CLEARANCE vs FILM-PLANE LEFT MECHANISM (PLAN)",
                 scale_note="PLAN VIEW · NOT TO SCALE · ALL DIMS IN mm",
@@ -1540,6 +1552,70 @@ def sheet4():
     plt.close(fig)
     print("  diagrams/hingepanel-sheet4.png saved")
 
+def sheet6():
+    """Sheet 6 — interior pull-handle mounting detail. Horizontal section through the
+    panel near-edge: the matte-black 316 SS D-grab handle through-bolted to the 50×50×3
+    RHS frame member (NOT the PP skin), reacting into an interior backing plate."""
+    fig, ax = plt.subplots(figsize=(11, 8.0))
+    fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
+    ax.set_aspect("equal"); ax.axis("off")
+    ax.set_xlim(-95, 215); ax.set_ylim(-150, 150)
+
+    ax.text(60, 135, "INTERIOR PULL HANDLE — MOUNTING DETAIL", ha="center",
+            fontsize=12, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(60, 116, "Horizontal section through the swinging-panel near-edge frame member",
+            ha="center", fontsize=8, color=C_DIM, **FONT)
+
+    # exterior ↔ interior axis (exterior = door plane on the left, container interior right)
+    ax.annotate("", xy=(150, 95), xytext=(80, 95),
+                arrowprops=dict(arrowstyle="-|>", color=C_DIM, lw=1.4))
+    ax.text(115, 84, "INTERIOR →", ha="center", fontsize=7.5, color=C_DIM, **FONT)
+    ax.text(-58, 88, "← EXTERIOR\n(door plane)", ha="center", fontsize=7.5, color=C_DIM, **FONT)
+
+    # 50×50×3 RHS frame member (3mm walls)
+    ax.add_patch(Rectangle((0, -25), 50, 50, fc=C_STEEL, ec=C_OUT, lw=1.8, zorder=3))
+    ax.add_patch(Rectangle((3, -22), 44, 44, fc=BG, ec=C_OUT, lw=1.0, zorder=4))
+    leader(ax, (8, -22), (-30, -75), "50×50×3 RHS\nframe member", col=C_OUT)
+    # 4mm PP interior skin on the +X face
+    ax.add_patch(Rectangle((50, -25), 4, 50, fc=C_PLASTIC, ec=C_OUT, lw=0.8, zorder=4))
+    leader(ax, (52, 24), (92, 72), "4mm PP\ninterior skin", col=C_OUT)
+    # interior backing plate behind the exterior wall (spreads the load)
+    ax.add_patch(Rectangle((-7, -22), 7, 44, fc="#9AA0A6", ec=C_OUT, lw=1.0, zorder=3))
+    leader(ax, (-5, -18), (-55, -72), "interior backing\nplate", col=C_OUT)
+    # handle: foot plate on the skin, two standoffs, Ø25 grip bar (vertical → circle in this cut)
+    ax.add_patch(Rectangle((54, -34), 6, 68, fc="#202020", ec=C_OUT, lw=1.0, zorder=5))
+    for fy in (-27, 27):
+        ax.add_patch(Rectangle((60, fy - 6), 34, 12, fc="#202020", ec=C_OUT, lw=0.8, zorder=5))
+    ax.add_patch(Rectangle((94, -34), 6, 68, fc="#202020", ec=C_OUT, lw=0.8, zorder=5))
+    ax.add_patch(Circle((100, 0), 12.5, fc="#202020", ec=C_OUT, lw=1.2, zorder=6))
+    leader(ax, (100, 13), (148, 74),
+           "316 SS D-grab handle\n~300mm grip · 25mm bar\nMATTE-BLACK (optically dead)",
+           col=C_OUT, fw="bold")
+    # 2× M8 through-bolts (handle foot → skin → both RHS walls → nut on the backing plate)
+    for by in (-27, 27):
+        ax.plot([-7, 60], [by, by], color="#101010", lw=2.6, zorder=7)
+        ax.add_patch(Rectangle((57, by - 5), 5, 10, fc="#101010", ec="none", zorder=8))
+        ax.add_patch(Rectangle((-11, by - 6), 4, 12, fc="#101010", ec="none", zorder=8))
+    leader(ax, (25, 27), (58, 100),
+           "2× M8 SS through-bolt\nbolts to the FRAME (not the skin)", col=C_OUT, fw="bold")
+
+    ax.text(60, -103,
+            "The handle bolts to the STEEL FRAME with a backing plate — the swing load\n"
+            "reacts into the 50×50 RHS, never the PP skin. Matte-black keeps the container\n"
+            "interior optically dead (stray-light control for the pinhole).",
+            ha="center", fontsize=7.5, color=C_OUT, **FONT,
+            bbox=dict(boxstyle="round,pad=0.4", fc="#F4F1E8", ec=C_DIM, lw=0.7))
+
+    title_block(ax, "SHEET 6 OF 6", drawing_title="HINGED LIGHT-TRAP PANEL",
+                subtitle="INTERIOR PULL HANDLE — MOUNTING DETAIL (HORIZONTAL SECTION)",
+                scale_note="DETAIL · NOT TO SCALE · ALL DIMS IN mm",
+                doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.05)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet6.png"), dpi=130,
+                bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/hingepanel-sheet6.png saved")
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     print("Generating hinged light-trap panel drawings...")
@@ -1548,4 +1624,5 @@ if __name__ == "__main__":
     sheet3()
     sheet4()
     sheet5()
+    sheet6()
     print("Done.")

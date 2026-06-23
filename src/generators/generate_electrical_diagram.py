@@ -126,16 +126,26 @@ def draw_sheet1():
          "MPPT CHARGE CONTROLLER",
          "Victron SmartSolar MPPT 100/50  |  Max PV: 100V OC / 50A charge",
          fc=C_ELEC_TINT, ts=9.5, ss=8.0)
-    varrow(ax, CX, 12.0, 11.2, col=C_SOLAR)
-    wlabel(ax, CX + 0.18, 11.6, "10 AWG PV cable  |  Via flush-mount power panel")
+    # 1b. PV array disconnect — load-break isolator between array and MPPT (NEC 690.13)
+    rbox(ax, LX + 1.2, 11.32, LW - 2.4, 0.46,
+         "PV ARRAY DISCONNECT  (load-break)",
+         "DC 50A / 150VDC  |  array → MPPT, at the power panel (NEC 690.13)",
+         fc=C_WARN, ts=8.3, ss=6.4)
+    varrow(ax, CX, 12.0, 11.78, col=C_SOLAR)
+    wlabel(ax, CX + 0.18, 11.92, "10 AWG PV  |  via power panel", size=6.8)
 
     # 3. Battery bank  y=8.4–9.5
     rbox(ax, LX, 8.4, LW, 1.1,
          "BATTERY — 100Ah / 1,200Wh (standard, 1 pack)",
          "1× 100Ah 12V LiFePO4  |  busbar wired for a 2nd pack (plug-in → 200Ah / 2,400Wh)  |  100% DoD",
          fc=C_BATT_TINT, ts=9.5, ss=8.0)
-    varrow(ax, CX, 10.3, 9.5, col=C_CL)
-    wlabel(ax, CX + 0.18, 9.9, "2 AWG  |  Charge positive")
+    # 2b. MPPT charge-line fuse — protects the MPPT→battery conductor (6 AWG)
+    rbox(ax, LX + 1.2, 9.55, LW - 2.4, 0.42,
+         "60A CHARGE-LINE FUSE  (MPPT → battery)",
+         "Close to the battery  |  6 AWG charge conductor",
+         fc=C_WARN, ts=8.3, ss=6.4)
+    varrow(ax, CX, 10.3, 9.97, col=C_CL)
+    wlabel(ax, CX + 0.18, 10.12, "6 AWG  |  Charge +", size=6.8)
 
     # Negative busbar (dashed, right side of column)
     nb_x = LX + LW - 0.35
@@ -156,7 +166,7 @@ def draw_sheet1():
     # 4b. Remote battery switch (contactor) — tripped by the external E-stop  y=7.24–7.71
     rbox(ax, bx, 7.24, bw, 0.47,
          "REMOTE BATTERY SWITCH  (contactor)",
-         "Blue Sea ML-RBS 500A magnetic-latch  |  trips OFF on external E-stop",
+         "Blue Sea ML-RBS 500A magnetic-latch  |  trips OFF on either E-stop (in/out)",
          fc=C_WARN, ts=9.0, ss=6.8)
     varrow(ax, CX, 7.82, 7.71, col=C_OUT)
 
@@ -216,7 +226,7 @@ def draw_sheet1():
     es_y, es_h = 6.32, 0.60
     rbox(ax, SC_X, es_y, SC_W, es_h,
          "EMERGENCY CUT-OFF  (E-STOP) — external panel",
-         "Red mushroom button on power-panel face  →  trips contactor OFF",
+         "Red IP66 mushroom on power-panel face  →  trips contactor OFF (1 of 2)",
          fc=C_WARN, ts=9.0, ss=7.0)
     # low-current control loop: contactor (left chain) → external E-stop
     ax.annotate("", xy=(SC_X, es_y + es_h / 2), xytext=(bx + bw, 7.47),
@@ -224,6 +234,17 @@ def draw_sheet1():
                                 lw=1.6, linestyle=(0, (4, 2))), zorder=7)
     wlabel(ax, (bx + bw + SC_X) / 2 - 0.1, 7.18,
            "Control 2× 18 AWG  |  pinhole-wall gland", ha="center", size=7.0)
+    # interior E-stop on the EP face — paralleled with the exterior one (kill from inside too)
+    ies_y = 5.50
+    rbox(ax, SC_X, ies_y, SC_W, es_h,
+         "EMERGENCY CUT-OFF  (E-STOP) — interior EP",
+         "Red IP65 mushroom on the EP face  →  also trips contactor OFF (2 of 2)",
+         fc=C_WARN, ts=9.0, ss=7.0)
+    ax.annotate("", xy=(SC_X, ies_y + es_h / 2), xytext=(bx + bw, 7.20),
+                arrowprops=dict(arrowstyle="-|>", color="#6A3DA8",
+                                lw=1.6, linestyle=(0, (4, 2))), zorder=7)
+    wlabel(ax, (bx + bw + SC_X) / 2 - 0.1, 6.42,
+           "parallel — either E-stop trips it", ha="center", size=6.6)
 
     # ── LEGEND ────────────────────────────────────────────────────────────────
     lx, ly = SC_X, 1.4

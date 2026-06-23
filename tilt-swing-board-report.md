@@ -57,11 +57,11 @@ WALL FRAME (fixed, welded to container)
 
 | Axis | Control | Travel | Resolution | Image effect |
 |------|---------|--------|-----------|--------------|
-| Tilt | Top + bottom M8 screws (black knobs) | ±5.3° | <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click | ±222mm vertical image shift |
-| Swing | Left + right M8 screws (silver knobs) | ±5.3° | <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click | ±222mm horizontal image shift |
+| Tilt | Top + bottom M8 screws (black knobs) | ±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->° | <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click | ±220mm vertical image shift |
+| Swing | Left + right M8 screws (silver knobs) | ±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->° | <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click | ±220mm horizontal image shift |
 | Compound | All 4 screws | ±3.7° per axis simultaneously | <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click | Diagonal shift + keystone |
 
-**Image shift formula:** shift (mm) = f × tan(θ) = 2,362 × tan(θ)
+**Image shift formula:** shift (mm) = f × tan(θ) = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm --> × tan(θ)
 
 | Board angle | Tilt image shift | Notes |
 |-------------|-----------------|-------|
@@ -79,7 +79,7 @@ The GE50-DO-2RS was chosen over cross-flexure and Cardan arrangements:
 
 - **Cross-flexure**: two stacked stages needed for tilt + swing simultaneously; combined depth of ~60mm exceeds the 40mm plate budget; parasitic translation at compound angles
 - **Cardan joint**: cross-spider projects beyond Ø350mm aperture; gimbal-lock risk near cross-axis; shaft seals at 4 points
-- **GE50-DO-2RS (chosen)**: single component handles both axes about a true pivot point; ±15° misalignment capacity (well above ±5.3° required); PTFE sliding surface is sealed, maintenance-free, and impervious to photographic chemistry; zero backlash under preload from opposing screw pairs
+- **GE50-DO-2RS (chosen)**: single component handles both axes about a true pivot point; ±15° misalignment capacity (well above ±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->° required); PTFE sliding surface is sealed, maintenance-free, and impervious to photographic chemistry; zero backlash under preload from opposing screw pairs
 
 The pivot is located at the plane of the pinhole disc face (40mm forward of the bearing housing), so tilt rotates the image cone about the pinhole itself — no parallax error from pivot offset.
 
@@ -99,7 +99,7 @@ Resolution per full turn:             arctan(1.0/130) = 0.44°
 Detents per turn (36-detent knob):    36
 Resolution per click:                 0.44° / 36 = 0.012° per click
 Full ±5° range from center:           ~410 clicks (11.4 turns)
-Mechanical hard stop:                 ±12mm travel = ±5.3°
+Mechanical hard stop:                 ±12mm travel = ±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->°
 ```
 
 **Knob identification:**
@@ -155,7 +155,7 @@ The following renders show the isolated effect of the tilt-swing front board on 
 
 ![All board-only configurations](assets/tilt-swing-board-distortion-summary.png)
 
-The board's ±5.3° range produces up to <!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm of image shift — enough to steer composition without any film plane movement.
+The board's ±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->° range produces up to <!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm of image shift — enough to steer composition without any film plane movement.
 
 | Config | Board Tilt | Board Swing | Effect |
 |--------|-----------|-------------|--------|
@@ -256,9 +256,9 @@ Detailed renders can be found [in the full analysis](tilt-swing-board-analysis.m
 | CNC machining | $800 | $1,500 |
 | Anodising | $140 | $210 |
 | Knobs + scales | $110 | $150 |
-| **Total** | **~$1,470** | **~$2,440** |
+| **Total** | **~<!-- BEGIN costing:front-board-total -->$1,470<!-- END costing:front-board-total -->** | **~$2,440** |
 
-The mechanism costs less than the film plane mechanism (~$2,400) due to the smaller scale and single bearing rather than 4 rod ends.
+The mechanism costs less than the film plane mechanism (~<!-- BEGIN costing:film-total -->$3,538<!-- END costing:film-total -->) due to the smaller scale and single bearing rather than 4 rod ends.
 
 ---
 

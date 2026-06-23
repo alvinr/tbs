@@ -170,7 +170,7 @@ The shade canopy is the most effective single mitigation — it eliminates direc
 | Development / washing | Low speed | Low speed | ON if > 30°C | Erected |
 | Post-session ventilation | Full speed | Full speed | OFF | — |
 
-**Forced ventilation for darkroom chemistry:** Cyanotype chemistry uses ammonium iron(III) oxalate and potassium ferricyanide, which give off low-level fumes during mixing and application, so the fans run whenever chemistry is handled. Fan B (intake) and Fan A (exhaust) work in series, so the fresh-air exchange is the **~200 CFM through-flow** — not the 2 × 200 CFM nameplate sum — giving roughly **14 air changes per hour** in the container's ~25 m³ free-air volume. When the evaporative cooler runs it supplies a further **~300 CFM of 100% outside air** (its <!-- BEGIN fact:cooler_cfm_rated -->1,300<!-- END fact:cooler_cfm_rated --> CFM rated output, run on LOW to match the Ø200 duct), lifting the turnover past **30 ACH** during coating and development — vigorous fresh-air exchange to keep fume levels low.
+**Forced ventilation for darkroom chemistry:** Cyanotype chemistry uses ammonium iron(III) oxalate and potassium ferricyanide, which give off low-level fumes during mixing and application, so the fans run whenever chemistry is handled. Fan B (intake) and Fan A (exhaust) work in series, so the fresh-air exchange is the **~200 CFM through-flow** — giving roughly **14 air changes per hour** in the container's ~25 m³ free-air volume — above the **≥10 ACH** recommended for darkroom dilution ventilation ([Kodak / darkroom-safety guidance](https://nontoxic-print.com/safety-of-darkroom-photography/), which also gives an equivalent **170 CFM** per processor). When the evaporative cooler runs it supplies a further **~300 CFM of 100% outside air** (its <!-- BEGIN fact:cooler_cfm_rated -->1,300<!-- END fact:cooler_cfm_rated --> CFM rated output, run on LOW to match the Ø200 duct), lifting the turnover past **30 ACH** during coating and development.
 
 ---
 
@@ -237,5 +237,6 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 5. [Hinged Panel Report](hinged-panel-report.md) — Panel corner zone construction and Fan B mounting.
 6. [Equipment Layout Report](equipment-layout-report.md) — Evaporative cooler position and transport stowage specification.
 7. [Operating Manual](operating-manual.md) — Ventilation and cooling operational procedures (Phase 1.6).
+8. [Darkroom ventilation safety](https://nontoxic-print.com/safety-of-darkroom-photography/) — Kodak's recommended darkroom dilution-ventilation rate: ≥10 air changes per hour, or 170 CFM per processor/work station.
 
 *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

@@ -12,9 +12,11 @@ already in the design, and specifies the protective measures added to close the
 residual gaps.
 
 It covers the 12 V DC power system (solar → MPPT → LiFePO4 → distribution → loads),
-its interaction with the conductive enclosure and the wet zones, and the single
-external AC interface (the shore-power charger). It does **not** re-derive the power
-budget or component selection — see the [Electrical Report](electrical-report.md).
+its interaction with the conductive enclosure and the wet zones, and the **two AC
+interfaces** — the external shore-power charger and the dedicated **Circuit-E cooler
+inverter** (12 V→120 V; isolation/GFCI design in [electrical §7.6](electrical-report.md#ac-safety)).
+It does **not** re-derive the power budget or component selection — see the
+[Electrical Report](electrical-report.md).
 
 ---
 
@@ -42,7 +44,14 @@ threshold for DC, which is itself far higher than for AC ([IEC/TS 60479-1 body-c
 effects](https://webstore.iec.ch/publication/62920)). **You cannot get a dangerous
 shock from the 12 V system, even standing in chemistry.**
 
-So the hazard model shifts from **electrocution → fire / arc / corrosion / thermal**.
+**The one exception — Circuit E.** A single 12 V→120 V pure-sine inverter powers the
+*outdoor* evaporative cooler; its 120 V AC output **is** a real shock hazard. It is the
+*only* AC originating inside the box, kept off the 12 V distribution and contained by a
+GFCI + single-point-bonding design ([electrical §7.6](electrical-report.md#ac-safety)) —
+assessed as **Hazard #6** below. Everything *else* in the container is 12 V ELV.
+
+So for the 12 V system the hazard model shifts from **electrocution → fire / arc /
+corrosion / thermal**.
 The LiFePO4 pack can deliver hundreds-to-thousands of amps into a fault, and **DC arcs
 do not self-extinguish** (no current zero-crossing), so the real exposures are
 *sustained short-circuit arcing, conductor/joint heating, and corrosion-driven
@@ -62,7 +71,7 @@ These were specified independently of this review and form a sound baseline.
 
 | Control | What it does | Source |
 |---|---|---|
-| **12 V DC only; no interior AC** | Eliminates the lethal-voltage path entirely | [Elec §2](electrical-report.md) |
+| **12 V DC distribution; AC isolated to Circuit E** | Eliminates the lethal-voltage path for every interior load except the one isolated, GFCI-protected cooler inverter (Hazard #6) | [Elec §2, §7.6](electrical-report.md) |
 | **LiFePO4 chemistry** | No thermal runaway (unlike NMC / lead-acid); rated −20 to +60 °C for the hot container; internal per-cell BMS (over-current / over-temp / over-discharge) | [Elec §5.2](electrical-report.md) |
 | **Layered fusing** | 200 A main fuse at the battery + per-circuit fuses (Blue Sea block) + 30 A per-string solar fuses | [Elec §7](electrical-report.md) |
 | **Negative-ground bonding** | Steel shell bonded to battery-negative (4 AWG) + 8-ft earth stake — a positive-to-shell fault becomes a short the fuse clears | [Elec §7.3](electrical-report.md) |
@@ -82,46 +91,47 @@ Ranked by residual risk *before* the §5 improvements. Severity × likelihood fo
 | 2 | **Corroded wet-zone connections** | Developer/fixer vapor + condensation attacks unsealed terminals → high-resistance joints (heating) or intermittent faults. The 5 Shurflo pumps live in the wet IBC corridor / tray end | Med | High | IP65 enclosure (clean side only) | **Interior connectors are Anderson Powerpole — not sealed**; wet-zone wire not specified tinned |
 | 3 | **Battery busbar arc-flash** | 200 A+ available; a dropped wrench arcs, throws molten metal, burns | High | Low | Fusing limits duration | **No terminal covers**; no insulated-tool note |
 | 4 | **Battery thermal / venting** | Cells can vent under BMS failure / overcharge / abuse; container reaches 60 °C | High | Low | LiFePO4 (very stable), 60 °C rating, BMS | Confirm the mounted location has airflow and isn't a sealed, sun-baked pocket |
-| 5 | **Shore-power AC (the one lethal node)** | Grid AC feeds the exterior charger only — but the *site supply* and any extension cord are a genuine electrocution hazard | High | Low | AC kept exterior (IP65 charger); never distributed inside | Depends on the **site supply being RCD/GFCI-protected**; operational rule must be enforced |
+| 5 | **Shore-power AC** | Grid AC feeds the exterior charger only — but the *site supply* and any extension cord are a genuine electrocution hazard | High | Low | AC kept exterior (IP65 charger); never distributed inside | Depends on the **site supply being RCD/GFCI-protected**; operational rule must be enforced |
+| 6 | **Circuit-E cooler inverter (120 V AC)** | The only interior-derived AC: a 12 V→120 V inverter feeds an outdoor, water-wetted cooler beside the grounded steel box — a line-to-metal shock path | High | Low | Separately-derived source, single-point neutral-ground bond; **GFCI** on the cooler outlet; shell/chassis/cooler equipotential bond; DC-side fuse + dedicated disconnect; transformer galvanic isolation ([electrical §7.6](electrical-report.md#ac-safety)) | Operational only: cooler unplugged + inverter DC-disconnect open for transport; periodic GFCI trip test |
 
 ---
 
 ## 5. Improvements — Specified & Cascaded
 
-The following measures are now part of the design and BOM ([Electrical Report §8](electrical-report.md),
-[Master Shopping List §6](master-shopping-list.md)).
+Each §4 residual gap is closed by a measure now part of the design — **specified in full**
+in [electrical §7.5 (Circuit Protection & Electrical Safety)](electrical-report.md) and
+[§7.6 (Circuit-E AC Isolation)](electrical-report.md#ac-safety), and priced in
+[electrical §8](electrical-report.md) / [Master Shopping List §6](master-shopping-list.md).
+This report maps each gap to its control; it does not re-specify the hardware.
 
-### 5.1 Do First (cheap, closes real gaps)
-
-| Measure | Detail | Closes |
+| Gap (Hazard #) | Control | Specified in |
 |---|---|---|
-| **External emergency cut-off (E-stop)** | A red weatherproof E-stop (IP66) on the external power-panel face trips a magnetic-latch contactor (Blue Sea ML-RBS) in the battery + feed — kills all DC power **from outside the container, without entry**, at zero standby draw | #1 |
-| **Battery main disconnect switch** | A manual isolator (Blue Sea m-Series 300 A) between the contactor and the distribution busbar — maintenance / service de-energization (a fuse is not a switch) | #1, #3 |
-| **Fuse at the battery terminal** | Relocate the main fuse to within **≤180 mm of the battery + post** (ABYC E-11) — terminal-mount MRBF fuse — so the main cable is protected along its whole length | #1 |
-| **Battery terminal covers + tool rule** | Insulating boots over both posts/busbar; "insulated tools only at the busbar" maintenance note | #3 |
-| **Sealed wet-zone connections** | Replace the Anderson Powerpoles on the pump circuits with IP-rated connectors (Deutsch DT or adhesive-lined heat-shrink); **tinned marine-grade wire** on wet runs; **dielectric grease** on any terminal exposed to chemistry vapor | #2 |
+| **#1** — DC short / arc | External E-stop + magnetic-latch battery contactor; manual main disconnect; terminal-mount main fuse at the battery post; chafe protection at shell penetrations; equipotential metalwork bonding | elec §7.5 |
+| **#2** — wet-zone corrosion | Sealed IP-rated wet-zone connectors + tinned marine wire + dielectric grease; wet wiring elevated above the spill line with drip loops | elec §7.5 |
+| **#3** — busbar arc-flash | Battery terminal covers + insulated-tool rule (the main disconnect also de-energizes the bus) | elec §7.5 |
+| **#4** — battery thermal | Confirm the mounted location has airflow and stays within the LiFePO4 rating in a 60 °C container | elec §5.2 |
+| **#5** — shore AC | Shore AC terminates at the exterior charger only; site RCD/GFCI rule (§6) | §6 |
+| **#6** — Circuit-E AC | Single-point neutral-ground bond + mandatory GFCI + equipotential bond + DC fuse/disconnect + transformer galvanic isolation | elec §7.6 |
 
-### 5.2 Do Next
-
-| Measure | Detail | Closes |
-|---|---|---|
-| **Chafe protection at shell penetrations** | Rubber grommets / cable glands at every steel-shell pass-through; keep + and − conductors paired/sheathed to minimize the loop a fault could energize | #1 |
-| **Elevate wet-zone wiring** | Route pump wiring above the spill/flood line; drip loops; no connectors at the lowest point where liquid pools | #2 |
-| **Equipotential bonding of metalwork** | Bond the IBC stacking frame, walkways, and tray-adjacent metal to the battery-negative reference (6 AWG) — minor for shock at 12 V, but it guarantees clean fault-clearing and removes stray potentials | #1 |
-| **Confirm battery thermal margin** | Verify the mounted location (pinhole wall, near the EP) has airflow and stays within the LiFePO4 rating in a 60 °C container | #4 |
+The #1–#3 / #5 measures were the cheap, high-value first tranche; all are now specified
+and cascaded into the electrical BOM.
 
 ---
 
 ## 6. The Operational Rule That Matters Most
 
-Keep the **12 V ELV boundary intact: no grid AC inside the container, ever.** As long
-as that holds, this is a fire-risk-management problem (fully addressed by fusing,
-isolation, sealing, and bonding), not a life-safety electrocution problem.
+Keep the **12 V ELV boundary intact: no grid AC distributed inside the container, ever.**
+The one designed-in AC branch — the Circuit-E cooler inverter — is deliberately isolated
+and GFCI-protected (§7.6); apart from it, everything inside is 12 V ELV and this is a
+fire-risk-management problem (fusing, isolation, sealing, bonding), not a life-safety
+electrocution one.
 
 - The shore-power AC input terminates at the **exterior** Victron charger only — never
   run an AC extension cord or generator output into the wet interior.
 - Confirm the deployment **site's AC supply is on an RCD/GFCI-protected circuit** before
   connecting the shore charger.
+- Plug the cooler into the Circuit-E GFCI outlet **only during sessions**; for transport,
+  unplug it and open the inverter DC-disconnect (§7.6). Trip-test that GFCI periodically.
 
 ---
 
@@ -131,7 +141,9 @@ isolation, sealing, and bonding), not a life-safety electrocution problem.
 |---|---|
 | At commissioning | Main fuse ≤180 mm from battery +; disconnect operates; shell-to-battery-negative bond < 0.1 Ω; all metalwork bonded; terminal covers fitted |
 | At commissioning | Insulation check: positive-bus-to-shell resistance high (no leakage) with loads off |
+| At commissioning | Circuit E: neutral-ground bonded at the inverter only; cooler-outlet GFCI trips on test; inverter chassis/cooler/shell bonded; DC disconnect operates |
 | Before each session | Wet-zone connectors seated and dry; no liquid pooling at any connection |
+| Before each cooling session | Trip-test the Circuit-E cooler-outlet GFCI; cord and outlet undamaged |
 | Monthly | Terminals for corrosion/discoloration (heat); re-grease as needed; fuse and disconnect tight |
 | Before shore connect | Site supply is RCD/GFCI-protected |
 

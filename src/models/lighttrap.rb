@@ -1131,6 +1131,39 @@ ents = defn.entities
   mat.alpha = 1.0
   grp.material = mat
 
+  # Pull-handle standoff
+  grp = ents.add_group
+  grp.name = "Pull-handle standoff"
+  face = grp.entities.add_face([120.mm,673.mm,1160.mm], [148.mm,673.mm,1160.mm], [148.mm,693.mm,1160.mm], [120.mm,693.mm,1160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Pull-handle standoff"] || model.materials.add("Pull-handle standoff")
+  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Pull-handle standoff
+  grp = ents.add_group
+  grp.name = "Pull-handle standoff"
+  face = grp.entities.add_face([120.mm,673.mm,1424.mm], [148.mm,673.mm,1424.mm], [148.mm,693.mm,1424.mm], [120.mm,693.mm,1424.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Pull-handle standoff"] || model.materials.add("Pull-handle standoff")
+  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Pull-handle grip (matte black)
+  grp = ents.add_group
+  grp.name = "Pull-handle grip (matte black)"
+  face = grp.entities.add_face([148.mm,671.mm,1150.mm], [172.mm,671.mm,1150.mm], [172.mm,695.mm,1150.mm], [148.mm,695.mm,1150.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(300.mm)
+  mat = model.materials["Pull-handle standoff"] || model.materials.add("Pull-handle standoff")
+  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Fan B mount band (18mm ply)
   grp = ents.add_group
   grp.name = "Fan B mount band (18mm ply)"
@@ -2797,6 +2830,19 @@ page.use_camera = true
 # Labeled — same view + component callouts.
 model.layers["Labels"].visible = true if model.layers["Labels"]
 lpage = model.pages.add("Labeled"); lpage.use_camera = true
+model.layers["Labels"].visible = false if model.layers["Labels"]
+
+# ── "Handle · Frame · Pivot" scene — isolate the swinging panel (frame + interior pull
+#    handle) and the Ø89 pivot post, hiding the container/tray/walkway clutter so the
+#    handle-to-frame mounting reads clearly. Per-page tag visibility is captured on add. ──
+model.layers.each { |l| l.visible = false }
+["Door Frame", "Pivot Axle", "Panel Swing"].each { |n|
+  model.layers[n].visible = true if model.layers[n] }
+hf_eye = Geom::Point3d.new(3600, 1150, 1750)     # interior side, looking back at the panel face
+hf_tgt = Geom::Point3d.new(120, 1500, 1200)
+model.active_view.camera = Sketchup::Camera.new(hf_eye, hf_tgt, Z_AXIS)
+hfpage = model.pages.add("Handle · Frame · Pivot"); hfpage.use_camera = true
+model.layers.each { |l| l.visible = true }      # restore for the default state
 model.layers["Labels"].visible = false if model.layers["Labels"]
 
 model.commit_operation

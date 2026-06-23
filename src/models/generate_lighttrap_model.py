@@ -308,14 +308,18 @@ def hinge_panel():
             parts.append(ruby_box("Southco cam latch", tc, ly - ld / 2, lz - lh / 2,
                                   lw, ld, lh, color=C_VALVE))
 
-    # Interior pull handle (matte-black 316 SS D-grab) — through-bolted to the frame on
-    # the interior face, near the free (near) edge above the Fan-B band, so the operator
-    # can swing the panel open from inside (report §4.3).
-    hy, hz0, hz1 = 300, 1150, 1450
-    for hz in (hz0 + 18, hz1 - 18):                       # two standoff posts off the face
-        parts.append(ruby_box("Pull-handle standoff", tc, hy - 10, hz - 8, 28, 20, 16,
+    # Interior pull handle (matte-black 316 SS D-grab) — through-bolted to the panel's
+    # structural FRAME: the left drum-aperture jamb (the 120mm center-zone stud just left
+    # of the Ø900 housing), NOT the 4mm PP skin. Mounted on the interior face. The transport
+    # swing pivots on the FAR edge, so this near-of-center jamb keeps good leverage while
+    # landing the load on steel right beside the drum (report §4.3).
+    hy = (NEW_YD_L + APER_L) // 2                         # ≈683 — center of the left drum jamb
+    hz0, hz1 = 1150, 1450
+    xf = PANEL_CENTER_T                                   # 120 — interior face of the frame zone
+    for hz in (hz0 + 18, hz1 - 18):                       # two standoff posts off the frame face
+        parts.append(ruby_box("Pull-handle standoff", xf, hy - 10, hz - 8, 28, 20, 16,
                               color="#202020"))
-    parts.append(ruby_box("Pull-handle grip (matte black)", tc + 28, hy - 12, hz0,
+    parts.append(ruby_box("Pull-handle grip (matte black)", xf + 28, hy - 12, hz0,
                           24, 24, hz1 - hz0, color="#202020"))
     return '\n'.join(parts)
 
@@ -957,6 +961,19 @@ page.use_camera = true
 # Labeled — same view + component callouts.
 model.layers["Labels"].visible = true if model.layers["Labels"]
 lpage = model.pages.add("Labeled"); lpage.use_camera = true
+model.layers["Labels"].visible = false if model.layers["Labels"]
+
+# ── "Handle · Frame · Pivot" scene — isolate the swinging panel (frame + interior pull
+#    handle) and the Ø89 pivot post, hiding the container/tray/walkway clutter so the
+#    handle-to-frame mounting reads clearly. Per-page tag visibility is captured on add. ──
+model.layers.each {{ |l| l.visible = false }}
+["Door Frame", "Pivot Axle", "Panel Swing"].each {{ |n|
+  model.layers[n].visible = true if model.layers[n] }}
+hf_eye = Geom::Point3d.new(3600, 1150, 1750)     # interior side, looking back at the panel face
+hf_tgt = Geom::Point3d.new(120, 1500, 1200)
+model.active_view.camera = Sketchup::Camera.new(hf_eye, hf_tgt, Z_AXIS)
+hfpage = model.pages.add("Handle · Frame · Pivot"); hfpage.use_camera = true
+model.layers.each {{ |l| l.visible = true }}      # restore for the default state
 model.layers["Labels"].visible = false if model.layers["Labels"]
 
 model.commit_operation

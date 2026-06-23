@@ -294,14 +294,15 @@ def sheet1():
 
     # ── Interior pull handle — bolted to the frame, interior face (§4.3) ──────
     # Interior feature on this exterior view → dashed (like the latches above).
-    HXD, HZD, HGL = 300, 1300, 300        # Yd 300 / Z 1300 / ~300mm grip — free near edge, above the Fan-B band
+    # Mounted on the LEFT drum-aperture jamb (frame), just left of the Ø900 housing.
+    HXD, HZD, HGL = 683, 1300, 300        # Yd 683 (left drum jamb) / Z 1300 / ~300mm grip
     ax.add_patch(Rectangle((HXD - 16, HZD - HGL / 2), 32, HGL, fc="none",
                            ec="#204080", lw=1.3, ls=(0, (4, 2)), zorder=8))
     for bz in (HZD - HGL / 2 + 18, HZD + HGL / 2 - 18):
         ax.add_patch(Circle((HXD, bz), 9, fc="#204080", ec="#204080", lw=0.8, zorder=9))
-    leader(ax, (HXD + 16, HZD + HGL / 2),
-           (HXD + 520, HZD + 470),
-           "INTERIOR PULL HANDLE (§4.3)\nthrough-bolted to frame —\npull the panel open from inside",
+    leader(ax, (HXD - 16, HZD + HGL / 2),
+           (HXD - 380, HZD + 540),
+           "INTERIOR PULL HANDLE (§4.3)\nbolted to the drum-aperture jamb (frame) —\npull the panel open from inside",
            col="#204080", fw="bold")
 
     # ── Outward-opening annotation ────────────────────────────────────────────
@@ -1554,8 +1555,9 @@ def sheet4():
 
 def sheet6():
     """Sheet 6 — interior pull-handle mounting detail. Horizontal section through the
-    panel near-edge: the matte-black 316 SS D-grab handle through-bolted to the 50×50×3
-    RHS frame member (NOT the PP skin), reacting into an interior backing plate."""
+    panel's left drum-aperture jamb: the matte-black 316 SS D-grab handle through-bolted
+    to the 50×50×3 RHS frame stud (NOT the PP skin), reacting into an interior backing
+    plate. The two M8 bolts pass THROUGH both walls of the RHS, well inside its width."""
     fig, ax = plt.subplots(figsize=(11, 8.0))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_aspect("equal"); ax.axis("off")
@@ -1563,7 +1565,7 @@ def sheet6():
 
     ax.text(60, 135, "INTERIOR PULL HANDLE — MOUNTING DETAIL", ha="center",
             fontsize=12, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(60, 116, "Horizontal section through the swinging-panel near-edge frame member",
+    ax.text(60, 116, "Horizontal section through the swinging-panel drum-aperture frame jamb",
             ha="center", fontsize=8, color=C_DIM, **FONT)
 
     # exterior ↔ interior axis (exterior = door plane on the left, container interior right)
@@ -1575,29 +1577,30 @@ def sheet6():
     # 50×50×3 RHS frame member (3mm walls)
     ax.add_patch(Rectangle((0, -25), 50, 50, fc=C_STEEL, ec=C_OUT, lw=1.8, zorder=3))
     ax.add_patch(Rectangle((3, -22), 44, 44, fc=BG, ec=C_OUT, lw=1.0, zorder=4))
-    leader(ax, (8, -22), (-30, -75), "50×50×3 RHS\nframe member", col=C_OUT)
+    leader(ax, (24, -25), (28, -120), "50×50×3 RHS frame jamb\n(beside drum aperture)", col=C_OUT)
     # 4mm PP interior skin on the +X face
     ax.add_patch(Rectangle((50, -25), 4, 50, fc=C_PLASTIC, ec=C_OUT, lw=0.8, zorder=4))
     leader(ax, (52, 24), (92, 72), "4mm PP\ninterior skin", col=C_OUT)
     # interior backing plate behind the exterior wall (spreads the load)
     ax.add_patch(Rectangle((-7, -22), 7, 44, fc="#9AA0A6", ec=C_OUT, lw=1.0, zorder=3))
-    leader(ax, (-5, -18), (-55, -72), "interior backing\nplate", col=C_OUT)
-    # handle: foot plate on the skin, two standoffs, Ø25 grip bar (vertical → circle in this cut)
-    ax.add_patch(Rectangle((54, -34), 6, 68, fc="#202020", ec=C_OUT, lw=1.0, zorder=5))
-    for fy in (-27, 27):
+    leader(ax, (-5, -18), (-78, -92), "interior backing\nplate", col=C_OUT)
+    # handle: foot plate on the skin, two standoff bosses, Ø25 grip bar (vertical → circle here)
+    ax.add_patch(Rectangle((54, -22), 6, 44, fc="#202020", ec=C_OUT, lw=1.0, zorder=5))
+    for fy in (-15, 15):
         ax.add_patch(Rectangle((60, fy - 6), 34, 12, fc="#202020", ec=C_OUT, lw=0.8, zorder=5))
-    ax.add_patch(Rectangle((94, -34), 6, 68, fc="#202020", ec=C_OUT, lw=0.8, zorder=5))
+    ax.add_patch(Rectangle((94, -22), 6, 44, fc="#202020", ec=C_OUT, lw=0.8, zorder=5))
     ax.add_patch(Circle((100, 0), 12.5, fc="#202020", ec=C_OUT, lw=1.2, zorder=6))
     leader(ax, (100, 13), (148, 74),
            "316 SS D-grab handle\n~300mm grip · 25mm bar\nMATTE-BLACK (optically dead)",
            col=C_OUT, fw="bold")
-    # 2× M8 through-bolts (handle foot → skin → both RHS walls → nut on the backing plate)
-    for by in (-27, 27):
+    # 2× M8 through-bolts at Yd ±15 — INSIDE the 50mm frame (±25), so each bolt passes
+    # cleanly through BOTH RHS walls: head boss at the handle foot → nut on the backing plate.
+    for by in (-15, 15):
         ax.plot([-7, 60], [by, by], color="#101010", lw=2.6, zorder=7)
         ax.add_patch(Rectangle((57, by - 5), 5, 10, fc="#101010", ec="none", zorder=8))
         ax.add_patch(Rectangle((-11, by - 6), 4, 12, fc="#101010", ec="none", zorder=8))
-    leader(ax, (25, 27), (58, 100),
-           "2× M8 SS through-bolt\nbolts to the FRAME (not the skin)", col=C_OUT, fw="bold")
+    leader(ax, (25, 15), (66, 100),
+           "2× M8 SS through-bolt\nthrough BOTH frame walls (not the skin)", col=C_OUT, fw="bold")
 
     ax.text(60, -103,
             "The handle bolts to the STEEL FRAME with a backing plate — the swing load\n"

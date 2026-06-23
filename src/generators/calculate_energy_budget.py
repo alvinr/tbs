@@ -242,8 +242,10 @@ def per_print_wh(include_actuators=INCLUDE_ACTUATORS):
     return cont + pumps
 
 
-def end_of_day_drain_wh():
-    """End-of-day Brown (P-05→X3) + Waste (P-03→X4) pump-out — gravity-assisted residual."""
+def resupply_drain_wh():
+    """Per-RESUPPLY Brown (P-05→X3) + Waste (P-03→X4) dump run — gravity-assisted residual.
+    This runs at the ~14-print / ~4.7-day resupply service (when clean water is replenished
+    and the totes are emptied), NOT every operating day — so it is NOT part of compute_daily."""
     pump_min_per_tote = DRAIN_RESIDUAL_L / PUMP_LPM
     pump_wh = 2 * PUMP_W * pump_min_per_tote / 60.0
     light_wh = WHITE_LIGHT_W * DRAIN_LIGHT_MIN / 60.0
@@ -251,12 +253,13 @@ def end_of_day_drain_wh():
 
 
 def compute_daily(n=PRINTS_PER_DAY, include_actuators=INCLUDE_ACTUATORS):
-    """Energy for one full operating day of `n` sequential prints."""
+    """Energy for one full operating day of `n` sequential prints: the once-daily morning
+    cooling warmup + the n print cycles. The Brown/Waste dump is a per-resupply servicing
+    event (resupply_drain_wh), not a daily one, so it is deliberately excluded here."""
     w = warmup_wh()
     pp = per_print_wh(include_actuators)
-    drain = end_of_day_drain_wh()
-    return {"n": n, "warmup_wh": w, "per_print_wh": pp, "drain_wh": drain,
-            "daily_wh": w + n * pp + drain}
+    return {"n": n, "warmup_wh": w, "per_print_wh": pp,
+            "daily_wh": w + n * pp}
 
 
 def compute_autonomy(battery_ah, prints_per_day=PRINTS_PER_DAY):
@@ -284,10 +287,11 @@ def print_daily_report():
     print(f"  Morning cooling warmup (once)   : {d['warmup_wh']:6.0f} Wh")
     print(f"  Per print (cycle + wash/drain)  : {d['per_print_wh']:6.0f} Wh  × {d['n']}"
           f" = {d['per_print_wh']*d['n']:6.0f} Wh")
-    print(f"  End-of-day Brown+Waste pump-out : {d['drain_wh']:6.0f} Wh")
     print(f"  ── Daily total                  : {d['daily_wh']:6.0f} Wh")
     print(f"\n  2 prints: {compute_daily(2)['daily_wh']:.0f} Wh   "
           f"4 prints: {compute_daily(4)['daily_wh']:.0f} Wh")
+    print(f"  Resupply Brown+Waste dump run (per ~14-print service): "
+          f"{resupply_drain_wh():.0f} Wh")
 
     print("\n" + "=" * 72)
     print("DISCONNECTED ENDURANCE (no AC charge — solar top-up only)")
@@ -419,7 +423,7 @@ def _energy_values() -> dict:
         "daily-wh-3":         c(d3["daily_wh"]),
         "daily-wh-2":         c(d2["daily_wh"]),
         "daily-wh-4":         c(d4["daily_wh"]),
-        "drain-wh":           c(end_of_day_drain_wh()),
+        "drain-wh":           c(resupply_drain_wh()),
         "per-print-wh":       c(per_print_wh()),
         "warmup-wh":          c(warmup_wh()),
         "solar-net-2":        c(s["solar_wh_day"] - d2["daily_wh"]),

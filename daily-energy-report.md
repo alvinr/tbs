@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # Daily Electrical Consumption Report
 
 ## 1. Purpose & Scope
@@ -23,7 +25,7 @@ day. The container is cooled **once** in the morning and the fans + evaporative 
 then run **continuously** through the operating day.
 
 > **Standard build is manual** (electric actuation was dropped — see [Cost Analysis](cost-analysis-report.md)),
-> so Circuit F draws nothing. Per-print energy is ~**771 Wh** (vs 780 Wh with the optional
+> so Circuit F draws nothing. Per-**session** energy (incl. the once-daily morning warmup) is ~**771 Wh** (vs 780 Wh with the optional
 > actuators) — up from the old ~720 Wh now that the cooler runs through the AC inverter (~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V bus).
 
 ---
@@ -156,25 +158,24 @@ recycling ([Water System Report §3–4](water-system-report.md)), so:
 
 | Constraint | Capacity | Per print | Endurance |
 |---|--:|--:|---|
-| **Clean water (Blue, in)** | <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l --> L (<!-- BEGIN fact:blue_supply_gal -->476<!-- END fact:blue_supply_gal --> gal) | 121 L (32 gal) | **~14 prints ≈ 4.7 days** @ 3/day |
+| **Clean water (Blue, in)** | <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l --> L (<!-- BEGIN fact:blue_supply_gal -->476<!-- END fact:blue_supply_gal --> gal) | 121 L (32 gal) | **~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints ≈ 4.7 days** @ 3/day |
 | Power, 2 packs + sun | — | ~620 Wh | Indefinite |
-| Power, 2 packs, no sun | 2,400 Wh | ~620 Wh | ~3–4 prints (~1.2 day) |
+| Power, 2 packs, no sun | 2,400 Wh | ~620 Wh | ~3 prints (~1.1 day) |
 
-A disconnected deployment therefore runs **~14 prints (~4.7 days at 3/day)** before it needs
+A disconnected deployment therefore runs **~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints (~4.7 days at 3/day)** before it needs
 a **resupply run** — which is fundamentally a *water* event (refill Blue), not a charging
 event.
 
 ### 8.3 Watch the waste side too
 
-The endurance is bounded on **both ends of the water loop**. The **Black (waste) tote is
-600 L** — a *parallel* out-flow limit: in fully self-contained field use (no sewer, waste
+The endurance is bounded on **both ends of the water loop**. The **Black (waste) tote fills to ~600 L** (a 1,000 L tote at its working fill) — a *parallel* out-flow limit: in fully self-contained field use (no sewer, waste
 transported for disposal), the waste tank can fill before the Blue tank empties, so a
 resupply run must **empty Black as well as refill Blue**. If waste cannot be disposed at
 all, that — not power or fresh water — becomes the hard stop.
 
 ### 8.4 Verdict
 
-- **The deployment length is set by clean water (~14 prints / ~4.7 days), not power.**
+- **The deployment length is set by clean water (~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints / ~4.7 days), not power.**
 - **One vs two battery packs does not change that** — both run indefinitely on sun. The
   second pack buys a **~1-day cloudy-weather reserve** (vs ~half a day) and enables 4-print
   days; for a *fresh-water-limited* 10-print deployment, a single pack is energetically
@@ -189,3 +190,5 @@ all, that — not power or fresh water — becomes the hard stop.
 2. [Water System Report §6](water-system-report.md) — pump runtimes, wash cycles, and the Brown/Waste drain-out path.
 3. [Plumbing Panel Report §4.3](plumbing-panel-report.md) — P-03 (Waste evac) and P-05 (Brown drain) duties; the ~120 L gravity-drain residual.
 4. [Cost Analysis](cost-analysis-report.md) — the manual-actuation decision (Circuit F unused in the standard build).
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

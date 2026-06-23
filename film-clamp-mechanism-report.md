@@ -6,7 +6,7 @@
 
 The photosensitive muslin must be held taut against the [film plane frame](film-plane-mechanism-report.md) throughout exposures lasting 30–45 minutes, at any tilt angle up to ±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° and any swing angle up to ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->°. Loading and unloading happens under mixed safelight conditions, so the clamp mechanism must provide clear tactile feedback without visual confirmation.
 
-This report describes the **cam-lever spring clamp system** that secures the muslin to the aluminum angle perimeter frame.
+This report describes the **cam-lever spring clamp system** that secures the muslin to the **2"×2"×3/16" aluminum L-angle** perimeter frame (the welded film-plane frame — [Film Plane Mechanism §4](film-plane-mechanism-report.md)). Its two 2-inch (≈51mm) legs are what the clamp sections below call the *pinhole-facing leg* and the *perpendicular leg*.
 
 ---
 

@@ -142,6 +142,11 @@ ELEC_POINT_LABELS = [
      "EVAP COOLER\n(Hessaire MC18M, Cct E)", -260, -520, 520),
     (EQPANEL_X, EQPANEL_YD + EQPANEL_YD_SPAN / 2, PUMP_H_HI - 40,
      "CCT-C PUMP DISTRIBUTION\n5 switches — P-01..P-05 (one at a time)", -350, -700, 250),
+    (PWR_PANEL_X + 0.42 * PWR_PANEL_W, 35, PWR_PANEL_Z + 0.07 * PWR_PANEL_H,
+     "PV DISCONNECT\n(load-break, array->MPPT)", 300, -560, 320),
+    (EP_X + 40, 95, EP_H_LO + 215, "60A CHARGE FUSE\n(MPPT -> battery)", 440, -680, 160),
+    (EP_X + EP_W / 2, ENCL_SHELL_D + 38, EP_H_LO + 80,
+     "INTERIOR E-STOP\n(EP face, parallel)", -340, -560, -160),
 ]
 
 
@@ -287,6 +292,17 @@ def power_core():
                                       (disc_x, 45, ez + 205),           # rise to busbar(+) level
                                       (EP_X + 15 + BUSBAR_L, 45, ez + 205)]),  # over to busbar(+) end
                               11, color="#8B1A1A"))
+    # MPPT charge-line fuse — 60A on the MPPT battery-output lead, in front of the busbars
+    # (D2; protects the 6 AWG charge conductor the 200A main fuse is too large to cover).
+    p.append(ov.ruby_box("Charge-line Fuse (60A, MPPT -> battery)",
+                         EP_X + 15, 95, ez + 195, 45, 30, 45, color="#222222"))
+    # Interior E-stop — red mushroom on the EP (enclosure) face, paralleled with the
+    # exterior one so the contactor can be tripped from inside too (D5).
+    ies_cx, ies_cz = EP_X + EP_W / 2, EP_H_LO + 80
+    p.append(ov.ruby_cylinder("Interior E-stop collar (safety yellow)",
+                              ies_cx, ENCL_SHELL_D, ies_cz, 30, 12, color="#F2C200", axis="y"))
+    p.append(ov.ruby_cylinder("Interior E-stop button (red mushroom)",
+                              ies_cx, ENCL_SHELL_D + 12, ies_cz, 24, 26, color="#C42B1C", axis="y"))
     return '\n'.join(p)
 
 
@@ -352,6 +368,10 @@ def external_panel():
                               es_cz, 35, 12, color="#F2C200", axis="y"))
     p.append(ov.ruby_cylinder("E-stop button (red mushroom)", es_cx, face_y - 40,
                               es_cz, 26, 28, color="#C42B1C", axis="y"))
+    # PV array disconnect — DC load-break isolator on the PV path (array -> MPPT),
+    # panel-mounted, readily accessible (D1; NEC 690.13).
+    p.append(ov.ruby_box("PV Array Disconnect (load-break isolator)",
+                         px(0.40), 22, pz(0.02), 70, 45, 70, color="#D43A2F"))
 
     # Evap cooler (Hessaire MC18M) — external, ground-placed off the pinhole wall — and
     # its 120V AC cord from the panel GFCI outlet (Circuit E). The DC feed (fuse block ->

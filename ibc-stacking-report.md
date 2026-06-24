@@ -252,18 +252,20 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 
 ### 9.1 Stacking Frame
 
-| Item | Specification | Qty | Est. cost (USD) |
-|------|--------------|-----|----------------|
-| 50 × 50 × 3mm RHS mild steel (6 m lengths) | Front-portal uprights + front retaining bars + panel-mount rail | 4 | $120–$180 |
-| 12mm steel plate, 150 × 150 cut | Upright floor flange feet | 2 | $10–$20 |
-| 4mm folded plate | Simpson-style wall joist hangers | 4 | $30–$50 |
-| 25mm welded D-ring (McMaster #3641T29) | Lashing holders on the front bars, 6mm mount plates | 4 | $20–$35 |
-| 25mm ratchet strap, 1,100 kg WLL | Transport securing, over each stack | 4 | $30–$50 |
-| M12 floor anchor (wedge/sleeve, container floor) | Upright flange feet, 4 each | 8 | $15–$30 |
-| M12 × 40 bolt, Grade 8.8 | Wall hangers (2 each) + front-bar cleats | 12 | $12–$22 |
-| Welding / fabrication (frame assembly) | ~14–20 hrs labor (single front portal — much less than the old load-bearing rack) | 1 | $688–$1,018 |
-| Primer + paint | Anti-corrosion coating | 1 | $30–$50 |
-| **Frame subtotal** | | | **<!-- BEGIN costing:ibc-frame-low -->$955<!-- END costing:ibc-frame-low -->–<!-- BEGIN costing:ibc-frame-high -->$1,455<!-- END costing:ibc-frame-high -->** |
+<!-- BEGIN parts:ibc-frame -->
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| 50 × 50 × 3mm RHS mild steel (6 m lengths) | Front-portal uprights + front retaining bars + panel-mount rail | 4 ea | Metal Supermarkets | $120–$180 |
+| 12mm steel plate, 150 × 150 cut | Upright floor flange feet | 2 ea | Metal Supermarkets | $10–$20 |
+| 4mm folded plate | Simpson-style wall joist hangers | 4 ea | local fab | $30–$50 |
+| 25mm welded D-ring (3641T29) | Lashing holders on the front bars, 6mm mount plates | 4 ea | McMaster-Carr | $20–$35 |
+| 25mm ratchet strap, 1,100 kg WLL | Transport securing, over each stack | 4 ea | Amazon | $30–$50 |
+| M12 floor anchor (wedge/sleeve, container floor) | Upright flange feet, 4 each | 8 ea | McMaster-Carr | $15–$30 |
+| M12 × 40 bolt, Grade 8.8 | Wall hangers (2 each) + front-bar cleats | 12 ea | McMaster-Carr | $12–$22 |
+| Welding / fabrication (frame assembly) | ~14–20 hrs labor (single front portal) | 1 lot | local fab | $688–$1,018 |
+| Primer + paint | Anti-corrosion coating | 1 lot | Hardware store | $30–$50 |
+| **Ibc-Frame total** | | | | **$955–$1,455** |
+<!-- END parts:ibc-frame -->
 
 ### 9.2 IBC Totes
 

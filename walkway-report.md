@@ -9,7 +9,7 @@ the processing tray without wading through chemical solution. It serves four
 access functions:
 
 - **Near walkway** (pinhole wall side) — access to electrical panel, battery
-  bank, tilt-swing adjusters, and valve manifold.
+  bank, spray-bar, tilt-swing adjusters, and valve manifold.
 - **Far walkway** (film plane wall side) — access to film plane carriage clamps,
   rail end-stops, and far-side spray bar pole slot.
 - **Left walkway** (cargo door end) — access to hinged light-trap panel latches
@@ -19,10 +19,7 @@ access functions:
 
 All four sections share a common 130mm deck height (115mm bracket arm, L-angle, or
 floor-leg arm + 15mm grating) and 300mm standard width, creating a level perimeter walking
-surface. The deck was raised +50mm (from the previously-lowered 80mm) so the left
-walkway's floor-leg support arms clear the floor-level spray bar (beam top Z=60mm) by
-15mm where they cross it (arm bottom Z=75mm). The near/far cantilever bracket arm (top
-at Z=115mm) overhangs the 50mm processing-tray rim with clearance.
+surface. There are two sections that _punch out_ to allows easier access of the lightrap and around the battery stack.
 
 The design enforces **zero processing tray contact** — all walkway supports are
 either wall-mounted, carried on the cantilever rectangle off the IBC frame, or placed outside the tray footprint. This
@@ -60,9 +57,9 @@ tray's watertight seal.
 
 ## 3. Near and Far Walkways — Wall-Cantilevered
 
-The near (pinhole wall, Yd=0) and far (film plane wall, Yd=<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) walkways run
+The near (pinhole wall) and far (film plane wall) walkways run
 the full length of the processing tray zone, from the left walkway butt joint at
-X=470mm to the right walkway butt joint at X=4,629mm — a span of 4,159mm.
+with the left and right walkways.
 
 ### 3.1 Cantilever Bracket Design
 
@@ -71,8 +68,8 @@ Each bracket is a three-piece welded 8mm steel plate assembly:
 | Component | Dimensions | Function |
 |-----------|-----------|----------|
 | Vertical mounting plate | 8×150mm (height), flat against wall rib | Bolted to container corrugation rib interior face |
-| Horizontal arm | 8mm plate, 300mm cantilever (500mm in widened zone) | Supports grating — top surface at Z=115mm |
-| Triangular gusset | Right triangle, 70mm reach from wall | Braces arm from below; reach stops before tray rim at Yd=80mm |
+| Horizontal arm | 8mm plate, 300mm cantilever (500mm in widened zone) | Supports grating |
+| Triangular gusset | Right triangle, 70mm reach from wall | Braces arm from below; reach stops before tray rim |
 
 ![TBS-001 Walkway — Sheet 2: Cross-Section with Bracket Detail](assets/walkway-sheet2.png)
 
@@ -81,8 +78,8 @@ passing through the full wall assembly: hex head → reinforcing plate (6mm) →
 exterior panel (1.6mm Corten) → air gap → rib interior face (1.6mm) →
 bracket vertical plate (8mm) → nut. Two lower bolts at Z=35mm straddle
 the 8mm gusset plate at ±27mm from the plate centerline in X (centered
-between plate edge and gusset). One upper bolt at Z=120mm (just above the bracket
-arm at Z=115mm, near the top of the mounting plate) is centered on the gusset
+between plate edge and gusset). One upper bolt (just above the bracket
+arm, near the top of the mounting plate) is centered on the gusset
 centerline. The container
 corrugation ribs are hollow — each bolt bridges the air gap inside the rib.
 A 6mm reinforcing plate (100×180mm) is welded to the exterior panel face to
@@ -95,14 +92,13 @@ provide a bearing surface for the bolt heads and washers. See View B for the bol
 The near walkway widens from 300mm to 500mm between X≈1,155mm and X≈2,629mm
 (1,474mm length), extending past the spray bar slit to the next rib position.
 This widened section provides additional standing room in front of the
-electrical panel (EP, X=1,910–2,210mm), battery bank (X=1,810–2,310mm), and
-through the spray bar slit zone (X≈2,400mm). These wall-mounted equipment
+electrical panel, battery bank, and
+through the spray bar slit zone. These wall-mounted equipment
 items require front access for operation and maintenance, and the wider
 platform gives the operator full-width standing room during spray bar passes.
 
-Four brackets in this zone (at X≈1,156mm, X≈1,612mm, X≈2,070mm, and
-X≈2,526mm) use a heavier design to support the 500mm cantilever arm. The
-bracket positions align to container corrugation ribs at 457mm centers.
+Four brackets in this zone use a heavier design to support the 500mm cantilever arm. The
+bracket positions align to container corrugation ribs.
 Extending the widened zone past the slit ensures 500mm-arm brackets support
 the grating on both sides of the slit, eliminating unsupported overhang.
 
@@ -118,23 +114,23 @@ the grating on both sides of the slit, eliminating unsupported overhang.
 | Reinforcing plate | 100x180x6mm | 120x220x6mm |
 
 The gusset reach remains 70mm on both bracket types — limited by the processing
-tray rim at Yd=80mm. The widened bracket compensates with heavier plate, taller
+tray rim. The widened bracket compensates with heavier plate, taller
 vertical leg for greater wall engagement, and the additional bolt for higher
 moment capacity.
 
 **Attachment:** 4× M12 through-bolts per bracket in a rectangular pattern,
 passing through the full wall assembly: hex head → reinforcing plate (6mm) →
 exterior panel (1.6mm Corten) → air gap → rib interior face (1.6mm) →
-bracket vertical plate (10mm) → nut. Two lower bolts at Z=35mm straddle
+bracket vertical plate (10mm) → nut. Two lower bolts straddle
 the 10mm gusset plate at ±32mm from the plate centerline in X (centered
-between plate edge and gusset). Two upper bolts at Z=160mm (30mm above the grating
-deck at Z=130mm) at the same ±32mm X offset. The
+between plate edge and gusset). Two upper bolts (30mm above the grating
+deck) at the same ±32mm X offset. The
 container corrugation ribs are hollow — each bolt bridges the air gap inside
 the rib. A 6mm reinforcing plate (120×220mm) is welded to the exterior panel
 face to provide a bearing surface for the bolt heads and washers. See Sheet 7,
 View B for the bolt pattern detail.
 
-**Width transition:** At the two transition brackets (X≈1,156 and X≈2,526),
+**Width transition:** At the two transition brackets,
 the grating changes from 300mm to 500mm width (or vice versa). Both the
 narrow and wide grating sections rest on the same 500mm bracket arm. A
 40×500×5mm flat bearing plate is welded to the bracket arm top surface at each
@@ -170,12 +166,8 @@ assembly details.
 
 ## 4. Right Walkway — Cantilever Rectangle (rev12)
 
-The right walkway at the IBC end (X=4,329–4,629mm) cannot use wall-cantilevered
-brackets because the IBC stack (X=4,674–<!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm -->mm) occupies the floor below. The
-earlier scheme suspended it from the roof on threaded-rod hangers; **rev12 replaces
-the ceiling hangers with a self-supporting cantilever rectangle** that ties into
-two structures already present at the IBC end — the IBC corridor frame and the
-bottom film rail — and so needs **no roof penetrations**.
+The right walkway at the IBC end cannot use wall-cantilevered
+brackets because the IBC stack occupies the floor below.
 
 ![TBS-001 Walkway — Sheet 3: Cantilever Support](assets/walkway-sheet3.png)
 
@@ -183,15 +175,14 @@ bottom film rail — and so needs **no roof penetrations**.
 
 A closed rectangular frame of **40×40×3mm SHS** sits directly under the deck:
 
-- **Two long beams** run the full container width (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm along Yd) at X=4,329mm
-  and X=4,629mm. The 300mm grating spans between them.
+- **Two long beams** run the full container width, with the 300mm grating spans between them.
 - **Two short end beams** (≈300mm) close the near and far ends, joining the long
   beams into a torsionally stiff closed rectangle (no free bearer ends to droop).
 
 ### 4.2 Center Cantilever Arms
 
 Two **40×40×3mm SHS arms** cantilever inward off the **IBC corridor uprights**
-(at Yd=1,046mm and Yd=1,266mm, station X≈4,734mm) and pick the rectangle up at
+and pick the rectangle up at
 mid-span. Each arm is **half-lapped (cross-halved)** where the long beams cross
 it, so the beams seat down into the arm and the two members share a flush top
 face. The arms carry the central span that the corner supports alone would leave
@@ -202,17 +193,13 @@ moment at the arm root — see the [cantilever study](right-walkway-cantilever-s
 
 | Corner | Support | Fixing |
 |--------|---------|--------|
-| Left (X=4,329mm), near + far | **Wall cleat** — 8mm steel back-plate + exterior reinforcing plate + a shelf the long beam lands on | M12 through-bolts (sandwich the wall, sealed) |
-| Right (X=4,629mm), near + far | **Combined corner plate** — a single 10mm plate that carries BOTH the walkway right beam AND the bottom film rail (BR/TR) | 4× M12, permanently bolted (interior + exterior plate sandwich the wall) |
+| Left, near + far | **Wall cleat** — 8mm steel back-plate + exterior reinforcing plate + a shelf the long beam lands on | M12 through-bolts (sandwich the wall, sealed) |
+| Right, near + far | **Combined corner plate** — a single 10mm plate that carries BOTH the walkway right beam AND the bottom film rail (BR/TR) | 4× M12, permanently bolted (interior + exterior plate sandwich the wall) |
 
 The **combined corner plate** is the key coupling: the walkway's right long beam
-and the film plane's bottom (and top) rail terminate at the same X=4,649mm wall
-station, so a single plate seats both — the walkway beam on a 70mm seat, the film
-rail on a 150mm seat. This **replaces the film-plane BR rail saddle** (the
-film-plane model now skips the BR saddle and draws this combined plate instead).
-The plate is single-sourced in the overview generator (`fp_combined_corner_plate`)
-and reused by both the walkway and film-plane models so the two subsystems stay in
-register.
+and the film plane's bottom (and top) rail terminate at the same position, so a
+single plate seats both — the walkway beam on a 70mm seat, the film
+rail on a 150mm seat.
 
 ### 4.4 Design Rationale
 
@@ -221,22 +208,20 @@ The cantilever rectangle achieves four goals:
 1. **Zero floor contact** — clears the IBC stack entirely; no legs on the floor in
    the IBC zone.
 2. **Zero tray contact** — the rectangle floats above the processing tray.
-3. **No roof penetrations** — loads react into the IBC frame and the side walls,
-   not the roof skin (the hanger scheme needed 40 sealed roof bolts).
-4. **Consolidated film-rail anchor** — the combined corner plate does double duty,
+3. **Consolidated film-rail anchor** — the combined corner plate does double duty,
    removing a separate BR saddle.
 
 ---
 
 ## 5. Left Walkway — Removable Lift-Out
 
-The left walkway at the cargo door end (X=170–470mm) cannot use wall-cantilevered
+The left walkway at the cargo door end cannot use wall-cantilevered
 brackets because the hinged light-trap panel occupies the end wall and swings ~56°
 about the pivot for transport (its sweep passes over this zone). Its **inner edge
-(X=470mm) sits over the processing tray**, so it cannot be supported from below
+sits over the processing tray**, so it cannot be supported from below
 either. The left walkway is therefore a removable lift-out grate carried by **5
 floor-leg cantilever brackets** — each a post standing on the bare floor *outside*
-the tray (X=140mm) with an arm that cantilevers over the tray to the grate inner
+the tray with an arm that cantilevers over the tray to the grate inner
 edge. The +50mm deck raise lifts these arms clear of the floor-level spray bar.
 
 ![TBS-001 Walkway — Sheet 4: Lift-Out at Butt Joint](assets/walkway-sheet5.png)
@@ -245,46 +230,37 @@ edge. The +50mm deck raise lifts these arms clear of the floor-level spray bar.
 
 | Component | Specification | Position |
 |-----------|--------------|----------|
-| Floor-leg cantilever bracket (×5) | 50×50×3mm steel SHS post (~115mm, floor to grate bottom) + 40×40×3mm SHS arm (Z75–115, 40mm deep) + 128×60×8mm foot plate | Posts on bare floor at X=140mm (outside the tray), at Yd 250 / 800 / 1180 / 1560 / 2110 |
+| Floor-leg cantilever bracket (×5) | 50×50×3mm steel SHS post (~115mm, floor to grate bottom) + 40×40×3mm SHS arm (40mm deep) + 128×60×8mm foot plate | 5 brackets (outside the tray) |
 | Floor anchors | 4× M10 wedge anchors per foot plate (20 total) | Sealed penetrations into the container floor |
-| Standard arm reach | Arm reaches the grate inner edge at X=470mm | 2 brackets (Yd 250, 2110) |
-| Extended arm reach | Arm extends to X=770mm under the drum-exit punch-out | 3 brackets (Yd 800 / 1180 / 1560) |
+| Standard arm reach | Arm reaches the grate inner edge | 2 brackets |
+| Extended arm reach | Arm extends to X=770mm under the drum-exit punch-out | 3 brackets |
 
 The grate rests on the cantilever arms and lifts straight out — no fasteners, no
 kerb. The operator load travels grating → 40×40×3 cantilever arm → 50×50×3 post →
 foot plate → floor anchor, with **zero tray contact**: the posts stand on bare
-floor outside the tray (X<170mm) and the arms cantilever over it. The arm bottom at
-Z=75mm clears the floor-level spray bar (beam top Z=60mm) by 15mm and the tray rim
-(Z=50mm) by 25mm — clearances created by the +50mm deck raise. Because the brackets
+floor outside the tray and the arms cantilever over it. The arm bottom clears the floor-level spray bar
+by 15mm and the tray rim
+by 25mm. Because the brackets
 stand entirely outside the panel's transport-swing footprint, the grate simply
 lifts out before the panel swings; the floor-bolted posts stay put.
 
-**Load path / hand-check.** The longest cantilever is the X=770mm punch-out arm
-(~630mm reach from the X=140mm post). With a ~1kN footfall at the arm tip, the
+**Load path / hand-check.** The longest cantilever is the punch-out arm. With a ~1kN footfall at the arm tip, the
 40×40×3 SHS arm and 50×50×3 SHS post carry the moment with margin and the foot
 plate's 4× M10 anchors react the overturning. This is a hand-check, not a signed
 analysis; the brackets bolt to the floor permanently and only the grate lifts out
 for transport. This floor-leg cantilever supersedes the earlier full-width
-edge-beam scheme — it is simpler and lighter and needs no through-wall seats, and
-the +50mm deck raise (which it relies on to clear the spray bar) is what made it
-viable.
+edge-beam scheme — it is simpler and lighter and needs no through-wall seats.
 
-### 5.2 Drum-Exit Punch-Out (rev 8)
+### 5.2 Drum-Exit Punch-Out
 
-The operator steps out of the revolving-door light lock at its interior face
-(X≈450mm), but the standard 300mm walkway ends at X=470mm — leaving only ~20mm of
+The operator steps out of the revolving-door light lock at its interior face, but the standard 300mm walkway
+ends — leaving only ~20mm of
 landing in front of the drum opening, with the processing-tray basin immediately
 beyond. The left walkway is therefore **deepened to 600mm (X=170–770mm) over the
-drum-opening span (Yd 800–1,560mm)** — a ~600 × 760mm landing centered on the exit
+drum-opening span** — a ~600 × 760mm landing centered on the exit
 (the same approach as the near-walkway widened section on the pinhole side).
 
-| Parameter | Value | Constant |
-|-----------|-------|----------|
-| Punch-out depth | 600mm (vs 300mm) | `WALKWAY_LEFT_WIDE_W` |
-| Punch-out Yd span | 800–1,560mm | `WALKWAY_LEFT_WIDE_YD_L/_YD_R` |
-| Deck height | Z=115–130mm (grating, as elsewhere) | `WALKWAY_H` |
-
-**Optical clearance.** The punch-out reaches X=770mm — inside the active image
+**Optical clearance.** The punch-out is inside the active image
 zone (X≥150mm) — so it was checked against the optical cone. At the drum-exit depth
 (Yd 800–1,560mm) the cone's left boundary lies at **X≈914–1,535mm** (the cone narrows
 toward the pinhole at X=2,399mm), so the punch-out is entirely **left of the cone**:
@@ -292,8 +268,8 @@ every pinhole sight line through it lands at X≤37mm on the film plane, ~113mm 
 of the image edge. Confirmed by `generate_line_of_sight.py` (no equipment intersects
 the cone).
 
-**Support.** The 600mm punch-out (X=170–770) is carried by the **3 middle
-floor-leg brackets** (Yd 800 / 1180 / 1560) — the same posts that carry the
+**Support.** The 600mm punch-out is carried by the **3 middle
+floor-leg brackets** — the same posts that carry the
 standard left walkway, but with their arms **extended to X=770mm** (vs 470mm for
 the two end brackets). Each arm cantilevers the full ~630mm over the tray from its
 X=140mm post on bare floor, with **zero tray contact**, and lifts out with the rest
@@ -338,10 +314,10 @@ floor-bolted posts stay in place. No through-wall hardware at all.
 
 ![TBS-001 Walkway — Sheet 4: Lift-Out at Butt Joint](assets/walkway-sheet4.png)
 
-The left walkway grate (X170–470) — together with the door-end near-deck lift-out
+The left walkway grate — together with the door-end near-deck lift-out
 section — must be lifted out before the panel can swing (the 5 floor-leg posts stay
 bolted to the floor). As the panel + drum swing ~56° about the pivot, the cage sweeps past
-the X=470mm butt joint into the vacated zone, **riding the Z=130mm floor gap over the
+the butt joint into the vacated zone, **riding the Z=130mm floor gap over the
 Z115 door-end brackets** — so no walkway bracket is struck (the swing clears them at Z).
 The relevant standing clearance is vertical: the panel/cage bottom edge sits at the
 grate-top level (Z=130mm), clearing the tray rim and the bracket tops.
@@ -372,13 +348,12 @@ Butt joints are used rather than miters for two reasons:
 
 ## 7. Evaporative Cooler Transport Stowage
 
-During transport, the evaporative cooler (600×350mm, ~20kg dry) is stowed on the
-near walkway grating at X=1,450–2,050mm, Yd=0–350mm — in the widened section, moved
-deeper (rev10) so it clears the panel swing sweep (which reaches X≈1395 in this
-near-walkway zone). The cooler sits on a 12mm plywood base plate that distributes
+During transport, the evaporative cooler (~20kg dry) is stowed on the
+near walkway grating — in the widened section, so it clears the panel swing sweep. The cooler sits on a
+12mm plywood base plate that distributes
 load across the grating and prevents the housing from catching in grate openings.
 Two 25mm ratchet straps loop over the cooler and hook to near walkway cantilever
-bracket arms at X≈1,550mm and X≈1,950mm.
+bracket arms.
 
 The 350mm cooler depth slightly exceeds the 300mm walkway width — the cooler
 overhangs 50mm into the processing tray zone. This is acceptable because the
@@ -406,7 +381,7 @@ All four walkway sections use the same grating:
 | Near (pinhole wall) | 316 SS hold-down clips | Bracket arm top surface | Release clips, lift grating |
 | Far (film plane wall) | 316 SS hold-down clips | Bracket arm top surface | Release clips, lift grating |
 | Right (IBC end) | 316 SS hold-down clips | L-angle bearer horizontal leg | Release clips, lift grating |
-| Left (cargo door) | Gravity (floor-leg arms) | Floor-leg cantilever arms (reach X=470) | Lift straight up — no fasteners |
+| Left (cargo door) | Gravity (floor-leg arms) | Floor-leg cantilever arms | Lift straight up — no fasteners |
 
 **Near and far walkways** use 316 SS hold-down clips that clamp the GRP panel
 down onto the bracket arm (a stainless clamp clip — not a TEK screw driven into a
@@ -434,12 +409,12 @@ operator standing at the outer edge.
 The standard 8mm steel plate gusset brackets at 457mm centers provide substantial
 structural capacity. Each standard bracket is a rigid triangle (vertical leg +
 horizontal arm + gusset) with 3x M12 through-bolts to the container rib. The four
-widened brackets (X≈1,156, 1,612, 2,070, 2,526) use 10mm plate with 4x M12
+widened brackets use 10mm plate with 4x M12
 rectangular bolt patterns and 200mm vertical legs for the increased moment
 demand of the 500mm cantilever arm.
 
-The right walkway is now a **cantilever rectangle** rather than the earlier
-hanger scheme. A closed 40×40×3mm SHS frame is picked up at mid-span by two arms
+The right walkway is a **cantilever rectangle**. A closed 40×40×3mm SHS frame is picked up
+at mid-span by two arms
 cantilevering off the IBC corridor uprights and at its four corners by wall
 cleats (left) and the combined corner plates (right). The governing case is the
 arm root, where the design footfall produces a peak moment of only ≈0.35 kN·m —
@@ -509,6 +484,6 @@ bounces noticeably less than the rod-hung version it replaces.
    dimensions at cargo door end.
 9. [IBC Stacking Report](ibc-stacking-report.md) — IBC stack dimensions and
    floor zone clearance requirements.
-   
+
    *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*
 

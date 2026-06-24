@@ -491,6 +491,12 @@ in the [water BOM](water-system-report.md), and the Circuit-D red safelight stri
 ## 11. Safety & PPE
 *Source: `operating-manual.md`, `electrical-report.md`*
 
+*General / operator safety + electrical-work tools — none of these belong to a system BOM, so nothing
+here is repeated above. Related safety items live with their use: chemistry-handling PPE (nitrile
+gloves in the [water BOM](water-system-report.md), UV glasses + apron in §10); the **built-in**
+electrical-safety hardware (terminal-mount fuse, disconnect, two E-stops, terminal covers, bonding) is
+in the electrical BOM and the [Electrical Safety Report](electrical-safety-report.md) §5.*
+
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | First aid kit | ANSI Class A, for remote deployment | 1 | Amazon / Safety supply | ~$35 |

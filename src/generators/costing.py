@@ -500,7 +500,6 @@ _EL = "equipment-layout-report.md"
 _IBC = "ibc-stacking-report.md"
 _PT = "processing-tray-and-spray-bar.md"
 _WS = "water-system-report.md"
-_MS = "master-shopping-list.md"
 _ELEC = "electrical-report.md"
 _VENT = "ventilation-report.md"
 _FPM = "film-plane-mechanism-report.md"
@@ -717,10 +716,10 @@ def _inline_blocks() -> dict:
         "ibc-frame-high":      (_IBC, lambda: f"${_ibc_frame().high:,}"),
         # processing-tray-and-spray-bar.md §6 BOM subtotals (from the WATER line items).
         # Shared across the dedicated report + the two docs that summarize/point to it.
-        "tray-low":            ([_PT, _WS, _MS], lambda: f"${_pt_line('Processing tray').low:,}"),
-        "tray-high":           ([_PT, _WS, _MS], lambda: f"${_pt_line('Processing tray').high:,}"),
-        "spray-low":           ([_PT, _WS, _MS], lambda: f"${_pt_line('Spray bar').low:,}"),
-        "spray-high":          ([_PT, _WS, _MS], lambda: f"${_pt_line('Spray bar').high:,}"),
+        "tray-low":            ([_PT, _WS], lambda: f"${_pt_line('Processing tray').low:,}"),
+        "tray-high":           ([_PT, _WS], lambda: f"${_pt_line('Processing tray').high:,}"),
+        "spray-low":           ([_PT, _WS], lambda: f"${_pt_line('Spray bar').low:,}"),
+        "spray-high":          ([_PT, _WS], lambda: f"${_pt_line('Spray bar').high:,}"),
         "tray-spray-total-low":  (_PT, lambda: f"${_pt_line('Processing tray').low + _pt_line('Spray bar').low:,}"),
         "tray-spray-total-high": (_PT, lambda: f"${_pt_line('Processing tray').high + _pt_line('Spray bar').high:,}"),
         # electrical-report.md §8 system totals (1-pack standard build).

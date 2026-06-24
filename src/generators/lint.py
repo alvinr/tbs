@@ -47,6 +47,13 @@ def gate_fact_blocks() -> tuple[bool, list[str]]:
     return r.returncode == 0, [(r.stdout + r.stderr).strip()]
 
 
+# ── GATE: parts doc-blocks match parts.py (the registry block injector) ──
+def gate_parts_blocks() -> tuple[bool, list[str]]:
+    r = subprocess.run([sys.executable, os.path.join(HERE, "parts.py"), "--check-blocks"],
+                       capture_output=True, text=True)
+    return r.returncode == 0, [(r.stdout + r.stderr).strip()]
+
+
 # ── GATE: energy doc-blocks match calculate_energy_budget.py (the block injector) ──
 def gate_energy_blocks() -> tuple[bool, list[str]]:
     r = subprocess.run([sys.executable, os.path.join(HERE, "calculate_energy_budget.py"), "--check-blocks"],
@@ -613,6 +620,7 @@ GATES = [
     ("costing doc-blocks (generated == doc)", gate_blocks),
     ("fact placeholders (generated == doc)", gate_fact_blocks),
     ("energy doc-blocks (generated == doc)", gate_energy_blocks),
+    ("parts doc-blocks (generated == doc)", gate_parts_blocks),
 ]
 WARNINGS = [
     ("facts-registry agreement", warn_facts),

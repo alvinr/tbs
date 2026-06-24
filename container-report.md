@@ -107,10 +107,12 @@ Container doors (for loading) are on the SHORT ENDS — completely separate from
 ## Part 4A: Container Interior Layout — Top Elevation
 
 The floor plan below shows the container interior from above (top-down view) with all
-major systems in their installed positions. The optical axis runs left-right in this view
-(from the pinhole on the near long wall to the film plane on the far long wall at 2,262mm depth).
-The equipment zone occupies the left third of the container (X = 0–2,700mm); the right two-thirds
-is the clear optical zone.
+major systems in their installed positions. The long axis (image width) runs left-right in
+this view; the optical axis runs front-to-back, from the pinhole on the near long wall to the
+film plane on the far long wall at 2,262mm depth. Equipment occupies the two end zones — the
+light-trap drum at the far left (X = 0–150mm) and the IBC stack with its pump panel at the far
+right (X = 4,649–5,893mm) — leaving the central span (X = 150–4,649mm, the active film-plane
+width) as the clear optical zone.
 
 ![TBS-001 — Container Floor Plan (Top Elevation)](assets/container-floorplan.png)
 
@@ -119,10 +121,10 @@ is the clear optical zone.
 | Left end zone | X = 0–150mm | Light trap drum, hinged panel |
 | Right end zone | X = 4,649–5,893mm | IBC totes (×4, 2×2 stack), pump manifold (equip panel), filter skid |
 | Pinhole wall (Yd=0) | Full length | Electrical panel, battery bank, evap duct penetration (cooler external) |
-| Optical zone | X = 2,700–5,893mm | Clear — no equipment; optical cone from pinhole traverses this area unobstructed |
+| Optical zone | X = 150–4,649mm | Clear — no equipment; optical cone from pinhole traverses this central span unobstructed |
 | Cargo door end | X = 0mm | Hinged panel with integrated revolving light-trap drum |
-| Pinhole wall | X = 2,946mm (center) | Aperture Ø2.17mm at Y_depth=0 |
-| Film plane | Y_depth = 2,262mm | Muslin sensitised surface, spanning full 5,893mm × 2,388mm |
+| Pinhole aperture | X = 2,399mm (center of active film plane) | Aperture Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm at Y_depth=0 |
+| Film plane | Y_depth = 2,262mm | Muslin sensitized surface, spanning full 5,893mm × 2,388mm |
 
 See [Engineering Diagrams](engineering-diagrams.md) §3 for the full floor plan drawing,
 and §13 for the optical line-of-sight clearance analysis.
@@ -149,7 +151,7 @@ and §13 for the optical line-of-sight clearance analysis.
 
 #### Estimated Purchase Cost
 
-| Condition | Approx. Price (2025 US market) | Source |
+| Condition | Approx. Price (2026 US market, indicative) | Source |
 |-----------|-------------------------------|--------|
 | As-Is | $800–$1,500 | Not recommended |
 | WWT | **$1,500–$3,000** | [containermgt.com](https://www.containermgt.com/how-much-does-a-shipping-container-cost) |
@@ -225,8 +227,8 @@ The 40-foot container uses the same width (same focal length, same f-number, sam
 | Image plane dimensions (full) | 39 ft 5 in × 7 ft 10 in |
 | Image plane (masked to target) | **20 ft × 7 ft** (mask the rest) |
 | Focal length | **<!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm** (same interior width as 20 ft container) |
-| Rayleigh optimal pinhole | **2.17mm** (identical to Proposal 1) |
-| F-number | **f/1088** (identical) |
+| Rayleigh optimal pinhole | **<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm** (identical to Proposal 1) |
+| F-number | **f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number -->** (identical) |
 | Horizontal FOV (full 39' width) | **137°** — extreme panoramic |
 | Horizontal FOV (masked to 20') | **102°** — same as Proposal 1 |
 | Exposure times | **Identical to Proposal 1** |
@@ -249,7 +251,7 @@ This is Orientation A: pinhole on one short end, image on the opposite short end
 
 | Parameter | Value |
 |-----------|-------|
-| Image plane | 7 ft 9 in × 7 ft 10 in (2,337mm × 2,388mm) |
+| Image plane | 7 ft 9 in × 7 ft 10 in (2,362mm × 2,388mm) |
 | Focal length | **39 ft 5 in = 12,013mm** |
 | Rayleigh optimal pinhole | **4.87mm** |
 | F-number | **f/2467** |
@@ -377,7 +379,7 @@ The pinhole goes in the center of the opposite long wall.
 
 ### Step 5: Access Door — Hinged Light-Trap Panel
 
-TBS-001 suplements the original cargo doors with a purpose-built stepped hinged panel incorporating a revolving light trap drum. This provides two things simultaneously: a light-tight seal for operations, and the ability to swing the full panel 180° open for loading IBC totes and equipment.
+TBS-001 supplements the original cargo doors with a purpose-built stepped hinged panel incorporating a revolving light trap drum. This provides two things simultaneously: a light-tight seal for operations, and the ability to swing the full panel 180° open for loading IBC totes and equipment.
 
 **Panel design (see engineering drawings below):**
 - <!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm --> × 2,388mm stepped panel, 50×50mm RHS steel frame, 4mm PP plastic skins (18mm-ply Fan-B band)
@@ -404,13 +406,13 @@ TBS-001 suplements the original cargo doors with a purpose-built stepped hinged 
 For operations involving darkroom chemistry inside the container:
 
 - **Fan A (exhaust):** 6" vent penetration on the sealed end wall (X=C_LEN), in the 270mm plumbing corridor directly below the X1 fill port (Yd=1181, Z=2000) — the only full-height clear channel past the 1,000L direct-stack (totes reach 2,336mm). Interior face covered with a 300mm deep light-trap baffle duct (L-shaped offset baffles, black sheet metal).
-- **Fan B (intake):** 6" fan mounted low on the hinged panel (near corner zone by the pinhole wall — rev9/B2 swap, so its conduit runs along the pinhole wall without crossing the suspension rails). Baffle duct protrudes from the panel exterior face — draws fresh air from the open doorway during operation. Wiring via flexible coiled cable from fixed door frame to panel (see [Electrical Report](electrical-report.md) §8.3).
+- **Fan B (intake):** 6" fan mounted low on the hinged panel (near corner zone by the pinhole wall, so its conduit runs along the pinhole wall without crossing the suspension rails). Baffle duct protrudes from the panel exterior face — draws fresh air from the open doorway during operation. Wiring via flexible coiled cable from fixed door frame to panel (see [Electrical Report](electrical-report.md) §8.3).
 - During exposure: fans off
 - During processing/loading: fans on for ventilation
 
 **Minimum ventilation requirement for darkroom chemistry:** Acetic acid stop bath and sodium thiosulfate fixer both produce fumes. OSHA permissible exposure limit for acetic acid is 10 ppm (8-hour TWA). Forced ventilation during chemistry use is required.
 
-**Source:** OSHA Table Z-1, Limits for Air Contaminants. US Occupational Safety and Health Administration.
+**Source:** [OSHA Table Z-1, Limits for Air Contaminants](https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.1000TableZ1). US Occupational Safety and Health Administration.
 
 ---
 
@@ -447,7 +449,7 @@ Shipping containers are engineered to carry loads at the **eight corner castings
 - The 4" × 4" pinhole opening requires no structural reinforcement
 - The image plane backing panel attachment requires bolting to the structural ribs (vertical corrugation crests) — not to the flat web between ribs
 
-**Source:** Container conversion engineering is a well-documented practice. Structural guidelines for container modifications are published by the Container Home Builders Association and referenced in construction literature. The ISO 1496 standard governs container structural performance requirements.
+**Source:** Container conversion engineering — cutting non-structural wall panels while preserving the corner posts — is a well-documented practice. Structural performance requirements for freight containers are defined by [ISO 1496-1](https://www.iso.org/standard/57051.html) (Series 1 freight containers — Specification and testing), consistent with the corner-casting load paths detailed in the [Hapag-Lloyd Container Specification](https://www.hapag-lloyd.com/content/dam/website/downloads/press_and_media/publications/15211_Container_Specification_engl_Gesamt_web.pdf).
 
 ---
 
@@ -457,9 +459,9 @@ Shipping containers are engineered to carry loads at the **eight corner castings
 
 | Vendor | Notes | URL |
 |--------|-------|-----|
-| Boxhub | Online purchase, nationwide delivery, grade-verified | boxhub.com |
-| Container Management | Price comparison across depots | containermgt.com |
-| IronPlanet / Ritchie Bros. | Auction-based; inspect before bidding | ironplanet.com |
+| Boxhub | Online purchase, nationwide delivery, grade-verified | [boxhub.com](https://www.boxhub.com) |
+| Container Management | Price comparison across depots | [containermgt.com](https://www.containermgt.com) |
+| IronPlanet / Ritchie Bros. | Auction-based; inspect before bidding | [ironplanet.com](https://www.ironplanet.com) |
 
 ### Container Depots (Direct Purchase)
 
@@ -491,7 +493,7 @@ The following order minimizes rework and avoids modifying a container that fails
 8. **Build and test shutter mechanism** — confirm full seal when closed
 9. **Install ventilation** — cut vent penetrations, install fans and light-trap baffles
 10. **Install safelight and door light-trap** — for loading operations
-11. **Test exposure** — cut a 200mm × full-height strip of sensitised muslin, pin over the image plane center; expose for 20-minute intervals using a card mask, develop in plain water, compare zones to verify image formation and correct exposure time
+11. **Test exposure** — cut a 200mm × full-height strip of sensitized muslin, pin over the image plane center; expose for 20-minute intervals using a card mask, develop in plain water, compare zones to verify image formation and correct exposure time
 12. **Full-format test** — load full image plane, expose, develop
 
 ---
@@ -503,11 +505,11 @@ The following order minimizes rework and avoids modifying a container that fails
 | ISO 668:2020 | Container dimensions standard | via [chs-containergroup.com](https://chs-containergroup.com/us/shipping-container-dimensions/) |
 | Hapag-Lloyd Container Specification | Industry-standard dimension and weight specs | [hapag-lloyd.com PDF](https://www.hapag-lloyd.com/content/dam/website/downloads/press_and_media/publications/15211_Container_Specification_engl_Gesamt_web.pdf) |
 | FHWA Federal Size Regulations for CMVs | US permit-free transport dimensions | [ops.fhwa.dot.gov](https://ops.fhwa.dot.gov/freight/publications/size_regs_final_rpt/) |
-| containermgt.com 2025 pricing | Container cost data | [containermgt.com](https://www.containermgt.com/how-much-does-a-shipping-container-cost) |
+| containermgt.com 2026 pricing | Container cost data | [containermgt.com](https://www.containermgt.com/how-much-does-a-shipping-container-cost) |
 | CARU Containers FAQ | Container condition grade definitions | [carucontainers.com](https://www.carucontainers.com/en-us/faq/what-is-the-difference-between-cargoworthy-cwo-wind-and-water-tight-wwt-and) |
 | The Great Picture (Wikipedia) | Light-sealing precedent, materials list | [en.wikipedia.org/wiki/The_Great_Picture](https://en.wikipedia.org/wiki/The_Great_Picture) |
 | Lenox Laser | Precision pinhole fabrication | [lenoxlaser.com](https://lenoxlaser.com/blog/pinholes-and-apertures/) |
-| OSHA Table Z-1 | Ventilation requirements for darkroom chemistry | osha.gov |
+| OSHA Table Z-1 | Ventilation requirements for darkroom chemistry | [osha.gov](https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.1000TableZ1) |
 | All optical formulas | See pinhole-optics-report.md | — |
 
 *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

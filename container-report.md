@@ -257,8 +257,9 @@ This is Orientation A: pinhole on one short end, image on the opposite short end
 | Horizontal FOV | **11°** (narrow, telephoto) |
 | Calculated paper exposure (bright sun) | **1 hr 8 min** |
 | Corrected paper exposure (p=0.85) | **~4 hr 52 min** |
+| Cyanotype exposure (Ware New Cyanotype, no correction) | **~2.5–4 hr** |
 
-**Verdict:** At f/2467 with a ~5-hour corrected paper exposure, this orientation is not practical for silver gelatin paper in a single outdoor session. It becomes viable with digital capture (CMOS sensor, which has no reciprocity failure) or with very fast emulsions. Noted here for completeness.
+**Verdict:** At f/2467 with a ~5-hour corrected paper exposure — or a ~2.5–4 hr cyanotype exposure (the selected process, scaled from the f/1088 baseline; no reciprocity correction, as it is iron-based) — this orientation is not practical in a single outdoor session. It becomes viable with digital capture (CMOS sensor, which has no reciprocity failure) or with very fast emulsions. Noted here for completeness.
 
 ---
 

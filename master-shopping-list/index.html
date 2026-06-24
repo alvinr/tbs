@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tbs-001-master-shopping-list" class="md-skip">
+        <a href="#tbs-001-master-shopping-list-bom" class="md-skip">
           Skip to content
         </a>
       
@@ -2745,11 +2745,8 @@
 
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
-<h1 id="tbs-001-master-shopping-list">TBS-001 — Master Shopping List<a class="headerlink" href="#tbs-001-master-shopping-list" title="Permanent link">&para;</a></h1>
-<p><strong>Camera:</strong> The Big Shoebox Project — TBS-001
-<strong>Basis:</strong> April 2026. All prices USD. Prices marked † confirmed from supplier listings; others are close estimates.
-<strong>Process assumed:</strong> Cyanotype (lowest cost, no hazmat, no silver). See <code>chemistry-shopping-list.md</code> for alternative process costs.
-<strong>Power assumed:</strong> 12V DC off-grid solar + LiFePO4. See <code>electrical-report.md</code> for full architecture.</p>
+<h1 id="tbs-001-master-shopping-list-bom">TBS-001 — Master Shopping List (BoM)<a class="headerlink" href="#tbs-001-master-shopping-list-bom" title="Permanent link">&para;</a></h1>
+<p><strong>Basis:</strong> April 2026. All prices USD. Prices marked † confirmed from supplier listings; others are close estimates.</p>
 <p>Items are grouped by build area. Source documents are cross-referenced in each section header.</p>
 <h2 id="summary-estimated-total">Summary — Estimated Total<a class="headerlink" href="#summary-estimated-total" title="Permanent link">&para;</a></h2>
 <!-- BEGIN costing:master-summary -->
@@ -2847,7 +2844,7 @@
 <!-- END costing:master-summary -->
 
 <p><em>Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).</em></p>
-<p><em>Line 9 (printmaking chemistry) is now the </em><em>Mike Ware AmFe</em><em> recipe with the corrected ~$300 substrate, re-summed into the TOTAL: </em><em>Low = Lean ⅓-Ware (~$1,210), High = Rich full-Ware (~$2,980)</em><em>, working default Standard ½-Ware (~$1,650). The tier is pinned by the <a href="../sensitizer-trials/">Sensitizer Trials</a>; the TOTAL spans the Lean–Rich range, so it shifts within ±~$1,330 of the §9 line once a tier is locked.</em></p>
+<p><em>Line 9 (printmaking chemistry) is the </em><em>Mike Ware AmFe</em><em> recipe with the corrected ~$300 substrate, re-summed into the TOTAL: </em><em>Low = Lean ⅓-Ware (~$1,210), High = Rich full-Ware (~$2,980)</em><em>, working default Standard ½-Ware (~$1,650). The tier is pinned by the <a href="../sensitizer-trials/">Sensitizer Trials</a>; the TOTAL spans the Lean–Rich range, so it shifts within ±~$1,330 of the §9 line once a tier is locked.</em></p>
 <hr />
 <h2 id="procurement-bom-by-material-type-supplier">Procurement BOM — by material type &amp; supplier<a class="headerlink" href="#procurement-bom-by-material-type-supplier" title="Permanent link">&para;</a></h2>
 <p><em>This is the consolidated </em><em>Bill of Materials</em><em> for the whole build: every purchasable item grouped
@@ -5250,6 +5247,11 @@ column header to re-order by item, supplier, system, or cost.</em></p>
 <p><strong>Section total: ~$1,650 (Standard ½-Ware default)</strong>, range <strong>~$1,210 (Lean) – ~$2,980 (Rich)</strong> per 50-print run (chemistry + $300 substrate; ~$24–60/print) — tier pinned by the <a href="../sensitizer-trials/">Sensitizer Trials</a>. The summary table maps Low = Lean, High = Rich.</p>
 <h2 id="10-printmaking-tools-consumables">10. Printmaking Tools &amp; Consumables<a class="headerlink" href="#10-printmaking-tools-consumables" title="Permanent link">&para;</a></h2>
 <p><em>Source: <code>operating-manual.md</code>, <code>chemistry-shopping-list.md</code></em></p>
+<p><em>Printmaking-specific tools only. Items shared with other systems are </em><em>not</em><em> repeated here — they
+roll up in the Procurement BOM above and are itemized in their owning system: the muslin clamps +
+mounting in the <a href="../film-clamp-mechanism-report/">film-clamp BOM</a>, nitrile gloves + 6-mil floor poly
+in the <a href="../water-system-report/">water BOM</a>, and the Circuit-D red safelight strips in the
+<a href="../electrical-report/">electrical BOM</a>.</em></p>
 <table>
 <thead>
 <tr>
@@ -5283,13 +5285,6 @@ column header to re-order by item, supplier, system, or cost.</em></p>
 <td>~$20</td>
 </tr>
 <tr>
-<td>Nitrile gloves, box of 100</td>
-<td>Size M/L, for chemistry handling</td>
-<td>3 boxes</td>
-<td>Amazon / Home Depot</td>
-<td>~$40</td>
-</tr>
-<tr>
 <td>Chemical-resistant apron</td>
 <td>Full-length</td>
 <td>2</td>
@@ -5298,17 +5293,10 @@ column header to re-order by item, supplier, system, or cost.</em></p>
 </tr>
 <tr>
 <td>Red LED safelight headlamp</td>
-<td>Loading operations inside container</td>
+<td>Loading operations inside container (wearable; not the Circuit-D strips)</td>
 <td>2</td>
 <td>Amazon</td>
 <td>~$30</td>
-</tr>
-<tr>
-<td>Red LED strip light 12V</td>
-<td>Interior safelight — Circuit D</td>
-<td>1 (5m roll)</td>
-<td>Amazon</td>
-<td>~$15</td>
 </tr>
 <tr>
 <td>Digital timer</td>
@@ -5325,27 +5313,6 @@ column header to re-order by item, supplier, system, or cost.</em></p>
 <td>~$25</td>
 </tr>
 <tr>
-<td><a href="https://www.amazon.com/s?k=over+center+cam+toggle+clamp+small">Cam-lever spring clamps</a></td>
-<td>Muslin attachment — over-center cam, neoprene jaw, ~5N</td>
-<td>92</td>
-<td>Amazon / McMaster-Carr</td>
-<td>~$3–8 ea</td>
-</tr>
-<tr>
-<td><a href="https://www.mcmaster.com/91292A128">M5×16 SS socket head bolt + Nylock nut</a></td>
-<td>Clamp base plate mounting (2 per clamp)</td>
-<td>184 + 184</td>
-<td>McMaster-Carr #91292A128</td>
-<td>~$55</td>
-</tr>
-<tr>
-<td><a href="https://www.mcmaster.com/8614K44">Neoprene strip 60A, 35mm × 6mm</a></td>
-<td>Jaw pads (self-adhesive, cut to 35×12mm)</td>
-<td>1 roll (10m)</td>
-<td>McMaster-Carr #8614K44</td>
-<td>~$15</td>
-</tr>
-<tr>
 <td>Spray bottle (1 liter)</td>
 <td>Humidity/misting in low-RH conditions</td>
 <td>2</td>
@@ -5360,14 +5327,7 @@ column header to re-order by item, supplier, system, or cost.</em></p>
 <td>~$10</td>
 </tr>
 <tr>
-<td>6-mil black poly sheeting, 10'×100'</td>
-<td>Container floor protection during development</td>
-<td>1 roll</td>
-<td>Home Depot / Uline</td>
-<td>~$80</td>
-</tr>
-<tr>
-<td><strong>Section total: ~$650–1,100</strong> (range depends on generic vs Destaco-equivalent clamps)</td>
+<td><strong>Listed tools total: ~$190.</strong> <em>(The Section 10 budget in the summary above — $350–$500 — adds consumable-replacement contingency for rollers/brushes/gloves used up each session.)</em></td>
 <td></td>
 <td></td>
 <td></td>

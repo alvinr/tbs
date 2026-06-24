@@ -741,10 +741,14 @@ SYSTEM_DOC = {
     "panel": "hinged-panel-report.md", "lightlock": "hinged-panel-report.md",
     "swing": "hinged-panel-report.md", "door": "hinged-panel-report.md",
     "shelf": "chemistry-prep-shelves.md", "walkway": "walkway-report.md",
-    "optics": "pinhole-report.md", "ibc-frame": "ibc-stacking-report.md",
+    "ibc-frame": "ibc-stacking-report.md",
     "tray": "processing-tray-and-spray-bar.md", "spray": "processing-tray-and-spray-bar.md",
     "clamp": "film-clamp-mechanism-report.md",
 }
+# Deliberately NOT block-generated (these systems live in the master BOM only, no per-report §Parts
+# block): container + interior (project-level rollups), optics (pinhole §9 is an optical-ASSEMBLY
+# spec — H7 bores / g6 fits / weld notes + an optional lens add-on, not a procurement table),
+# electrical (§8 is a curated cross-system electrical+cooling summary, not a pure parts list).
 
 
 def _block_pat(key: str) -> "re.Pattern":

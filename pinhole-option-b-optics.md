@@ -14,7 +14,7 @@ All calculations on this page use these fixed values, derived from the 20-foot s
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| Focal length (f) | **2,362mm (7 ft 9 in)** | ISO 668 interior width |
+| Focal length (f) | **<!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm (7 ft 9 in)** | ISO 668 interior width |
 | Rayleigh optimal pinhole (d) | **2.17mm** | d = 1.9 × √(f × 0.00055); Rayleigh, *Phil. Mag.* 1891 |
 | F-number (N) | **f/1088** | N = f/d |
 | Image plane width | 5,893mm (19 ft 4 in) | Container interior length |
@@ -152,7 +152,7 @@ Minimum resolvable feature at distance D = D / 3438
 
 A commonly cited rule for pinhole cameras is: **subjects closer than 3–10× the focal length show noticeable softness.**
 
-For our focal length of 2,362mm:
+For our focal length of <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm:
 - **3× f = 7.1 m (23 ft)** — softness starts to become apparent
 - **10× f = 23.6 m (77 ft)** — essentially indistinguishable from infinity
 
@@ -183,7 +183,7 @@ M = f / u
 
 **Where:**
 - `M` = lateral magnification (dimensionless)
-- `f` = focal length = 2,362mm
+- `f` = focal length = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm
 - `u` = subject distance from pinhole (mm)
 
 The image is **inverted** (upside down and mirror-reversed). The magnitude |M| gives the size ratio.
@@ -229,7 +229,7 @@ Scene height captured = image height × (u / f)
 
 ### The 1:1 Point — Where Subjects Are Life-Size in the Image
 
-At u = f = 2,362mm (approximately **7 ft 9 in**), subjects project at exactly life-size onto the image plane. A person standing 7'9" from the outside of the container wall appears life-size on the opposite interior wall.
+At u = f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm (approximately **7 ft 9 in**), subjects project at exactly life-size onto the image plane. A person standing 7'9" from the outside of the container wall appears life-size on the opposite interior wall.
 
 This has creative implications: subjects between 0.5 m and 2.36 m from the camera project at **larger than life scale** on the image plane — they are magnified. Objects directly pressed against the outside of the container wall approach macro photography scales.
 
@@ -298,7 +298,7 @@ u ≥ 10,000 × 2362/2388 ≈ 9891mm ≈ 9.9 m (32.4 ft)
 
 ## Part 7: Consolidated Minimum Focal Distance Table
 
-Combining all four definitions for Option B (20-ft container, f = 2,362mm, d = 2.17mm):
+Combining all four definitions for Option B (20-ft container, f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm, d = 2.17mm):
 
 | Criterion | Minimum Distance | Notes |
 |-----------|-----------------|-------|
@@ -317,9 +317,9 @@ For deliberate soft/blurred foreground elements — a creative technique — sub
 
 ## Part 8: Comparison of All Four Proposals — DoF and Magnification
 
-The container width is the same for both 20-ft and 40-ft standard containers (7'9" = 2,362mm). Therefore **Proposals 1, 2, and 4 all have identical depth of field, magnification, and minimum focal distance.** Only Proposal 3 (end-to-end, f = 12,013mm) differs.
+The container width is the same for both 20-ft and 40-ft standard containers (7'9" = <!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm). Therefore **Proposals 1, 2, and 4 all have identical depth of field, magnification, and minimum focal distance.** Only Proposal 3 (end-to-end, f = 12,013mm) differs.
 
-| Parameter | Proposals 1, 2, 4 (f = 2,362mm) | Proposal 3 (f = 12,013mm) |
+| Parameter | Proposals 1, 2, 4 (f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm) | Proposal 3 (f = 12,013mm) |
 |-----------|----------------------------------|---------------------------|
 | Pinhole diameter | 2.17mm | 4.87mm |
 | F-number | f/1088 | f/2467 |
@@ -374,4 +374,4 @@ Distance from pinhole:
 | Young, M., *Applied Optics*, Vol. 10, No. 12, 1971. DOI: [10.1364/AO.10.002763](https://doi.org/10.1364/AO.10.002763) | Depth of field behavior in pinhole cameras |
 | Stinson Photography, "Pinhole Pro and the Optics of Pinhole Cameras," 2018. [stinsonphotography.wordpress.com](https://stinsonphotography.wordpress.com/2018/07/16/pinhole-pro-and-the-optics-of-pinhole-cameras/) | 3–10× focal length rule of thumb for DoF |
 | [Photrio.com — CoC and hyperfocal distance for pinhole cameras](https://www.photrio.com/forum/threads/circle-of-confusion-and-hyperfocal-distance-of-a-pinhole-camera.15715/) | Practical CoC discussion; minimum focus distance concepts |
-| ISO 668:2020 | Container interior dimensions (source of f = 2,362mm) |
+| ISO 668:2020 | Container interior dimensions (source of f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm) |

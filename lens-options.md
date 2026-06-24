@@ -3,7 +3,7 @@
 # Lens Options
 ## A Technical Analysis of Image Quality, Depth of Field, and Exposure Impact
 
-**Camera configuration:** Option B (side-to-side), container interior depth f = 2,362mm  
+**Camera configuration:** Option B (side-to-side), container interior depth f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm  
 **Image plane (active):** <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm (~14′ 9″ × 7′ 10″); container interior 5893 × 2,388mm  
 **Current pinhole:** Ø 2.17mm, f/1088  
 **Baseline exposure (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction):** ~30–45 min
@@ -32,13 +32,13 @@ Each is analyzed in detail below. All share a common optical framework.
 
 ### 1.1 Thin Lens Equation and Focus Distance
 
-The image plane is fixed at 2,362mm from the lens position (the pinhole wall). Using the thin lens equation:
+The image plane is fixed at <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm from the lens position (the pinhole wall). Using the thin lens equation:
 
 ```
 1/f_L = 1/d_i + 1/d_o
 ```
 
-Where d_i = 2,362mm (fixed), d_o = subject distance, f_L = lens focal length.
+Where d_i = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm (fixed), d_o = subject distance, f_L = lens focal length.
 
 Solving for d_o: **d_o = d_i × f_L / (d_i − f_L)**
 
@@ -51,7 +51,7 @@ Solving for d_o: **d_o = d_i × f_L / (d_i − f_L)**
 | 1,604mm | **5.0 m** |
 | 1,800mm | 7.6 m |
 | 2,000mm | 13.1 m |
-| 2,362mm | ∞ (infinity) |
+| <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm | ∞ (infinity) |
 
 **For portrait work at 3–5 m: the required lens focal length is 1,300–1,600mm.** This is the working specification. No standard photographic lens, enlarger lens, or projector lens operates in this focal length range at the diameters needed for this camera. The sources that do are discussed under each option below.
 
@@ -89,7 +89,7 @@ This is identical to the pinhole case. A subject at 3.4 m produces an image 0.68
 
 ### 1.4 Bellows Extension Factor
 
-At portrait distances, the lens-to-image-plane distance (2,362mm) is comparable in magnitude to the object distance. This ratio matters for exposure: the closer the subject, the more the effective f-number increases relative to the lens's rated value.
+At portrait distances, the lens-to-image-plane distance (<!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm) is comparable in magnitude to the object distance. This ratio matters for exposure: the closer the subject, the more the effective f-number increases relative to the lens's rated value.
 
 ```
 Effective f-number = rated f-number × (1 + M)
@@ -202,7 +202,7 @@ These are the highest-quality option within their coverage area. Process lenses 
 | Schneider Apo-Symmar 800mm | 800mm | f/14 | ~500mm | $300–$800 |
 | Rodenstock Apo-Ronar 600mm | 600mm | f/9 | ~350mm | $150–$400 |
 
-**For this camera**, the most practical option is the **Rodenstock Apo-Ronar 1,200mm or Nikkor T 1,200mm** — both focus sharply near 2.4 m (d_i = 2,362mm) with a single fixed lens. A 1,400mm process lens (custom made or a rare large-format aerial lens) would focus at 3.4 m — more appropriate for portraits.
+**For this camera**, the most practical option is the **Rodenstock Apo-Ronar 1,200mm or Nikkor T 1,200mm** — both focus sharply near 2.4 m (d_i = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm) with a single fixed lens. A 1,400mm process lens (custom made or a rare large-format aerial lens) would focus at 3.4 m — more appropriate for portraits.
 
 **What the image looks like:** A sharp circular disk in the center of the photosensitive surface, approximately 400–500mm in diameter. The remaining ~4,099mm width of the active image plane receives no light. The entire portrait must be composed within this central medallion.
 
@@ -341,14 +341,14 @@ On silver gelatin paper, 2.2 stops of underexposure in the corners means the cor
 
 ### 6.2 The Curved Image Plane Option
 
-If the photosensitive substrate is mounted on a concave backing panel curved to match the focal surface (a sphere of radius 2,362mm centerd on the lens), the field geometry problem is eliminated. Every point on the curved surface is equidistant from the lens. The image plane would need to curve forward (toward the lens) at the edges by approximately:
+If the photosensitive substrate is mounted on a concave backing panel curved to match the focal surface (a sphere of radius <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm centerd on the lens), the field geometry problem is eliminated. Every point on the curved surface is equidistant from the lens. The image plane would need to curve forward (toward the lens) at the edges by approximately:
 
 ```
 Δz at mid-width edge = 3,262 − 2,362 = 900mm
 Δz at corner = 3,474 − 2,362 = 1112mm
 ```
 
-This is still substantial curvature — the active image plane would bow forward at the sides by ~900mm. Constructing this with ACM panel is not feasible, but constructing it with fabric (canvas or muslin) stretched over a curved timber frame absolutely is. The curved frame would need to be CNC-machined or steam-bent to a precise 2,362mm radius sphere section. Note: the bow is significantly more manageable than for a full-container-width image plane (which would require 1,414mm of forward bow at the mid-width edge).
+This is still substantial curvature — the active image plane would bow forward at the sides by ~900mm. Constructing this with ACM panel is not feasible, but constructing it with fabric (canvas or muslin) stretched over a curved timber frame absolutely is. The curved frame would need to be CNC-machined or steam-bent to a precise <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm radius sphere section. Note: the bow is significantly more manageable than for a full-container-width image plane (which would require 1,414mm of forward bow at the mid-width edge).
 
 For a process lens or telescope objective (covering only a 300–600mm circle in the center), this is irrelevant — the field curvature is only noticeable at extreme field angles beyond the lens's image circle. Only relevant if full-field coverage is attempted with a large Fresnel or custom element.
 

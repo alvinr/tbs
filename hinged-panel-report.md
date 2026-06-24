@@ -45,14 +45,13 @@ while keeping the corners flush with the container walls.
 **Sheet 2 — Plan Cross-Section (1:10 horiz / 1:1 depth): Housed Revolving Door — Housing, Drum & Light-Tight Geometry**
 ![TBS-001 Hinged Panel — Sheet 2: Plan Cross-Section](assets/hingepanel-sheet2.png)
 
-| Zone | Yd range (mm) | Width (mm) | Thickness (mm) | Construction |
+| Zone | Width (mm) | Thickness (mm) | Construction |
 |------|--------------|-----------|---------------|-------------|
-| Near corner | 0–653 | 653 | 40 | 4mm PP skin + 3mm Al core + 4mm PP skin (40mm framed); **18mm-ply Fan-B mount band** bottom→1,125mm |
-| Center | 653–1,709 | 1,056 | 120 | 4mm PP skin + 84mm RHS frame + 4mm PP skin |
-| Far corner | 1,709–<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm --> | 653 | 40 | 4mm PP skin + 3mm Al core + 4mm PP skin (40mm framed) |
+| Near corner | 653 | 40 | 4mm PP skin + 3mm Al core + 4mm PP skin (40mm framed); **18mm-ply Fan-B mount band** bottom→1,125mm |
+| Center | 1,056 | 120 | 4mm PP skin + 84mm RHS frame + 4mm PP skin |
+| Far corner | 653 | 40 | 4mm PP skin + 3mm Al core + 4mm PP skin (40mm framed) |
 
-The 80mm step between corner and center zones occurs at Yd=653mm and
-Yd=1,709mm (widened in rev 8 to frame the Ø900 housing). The center zone houses the
+The 80mm step between corner and center zones to locate the
 light-trap housing; the corner zones are
 flush-faced panels that seal against the fixed door frame.
 
@@ -71,14 +70,14 @@ flush-faced panels that seal against the fixed door frame.
 
 A 20mm closed-cell EPDM compression gasket runs the full perimeter of the panel,
 seated in an extruded aluminum channel. The gasket compresses against a fixed welded
-door frame (50 × 50 × 3mm RHS) at X=0 when the four cam latches engage. The seal
+door frame (50 × 50 × 3mm RHS) when the four cam latches engage. The seal
 provides light-tight compression on all four sides.
 
 A **second** 20mm EPDM gasket — the **housing-surround seal** — runs as a ring around
 the Ø900 light-trap housing aperture. Because the housing is **fixed** (only the drum
 rotates inside it), this gasket seals the fixed surround to the frame independently of
 the moving panel, all the way around the opening the housing passes through. It sits in
-the same exterior door plane (X=0), concentric inboard of the panel-perimeter seal (see
+the same exterior door plane, concentric inboard of the panel-perimeter seal (see
 §6, light-path #8).
 
 ### 2.4 Movable-Panel Weight Breakdown
@@ -87,7 +86,7 @@ The transport scheme swings the panel + drum ~<!-- BEGIN fact:panel_swing_deg --
 the **movable assembly** is everything that rotates about that pivot. The breakdown
 below is first-principles from the geometry constants (reproducible via
 `src/generators/generate_movable_panel_weight.py`); it isolates the swing zone
-(Yd 180–2,287mm) and deducts the Ø900 housing aperture from the center skins, so it
+ and deducts the Ø900 housing aperture from the center skins, so it
 is slightly lower than the whole-panel figure carried in the
 [Weight Distribution Report §3.2](weight-distribution-report.md).
 
@@ -112,10 +111,7 @@ is slightly lower than the whole-panel figure carried in the
 **By material:** steel 103 kg (46%), PP 74 kg (33%), aluminum 20 kg (9%),
 HDPE 16 kg (7%), plywood 10 kg (4%, Fan B band only), EPDM/other 3 kg.
 
-**Findings.** rev11 replaced the 18mm plywood skins with 4mm PP plastic sheet (the
-same material as the drum/housing), set in U-channels — cutting **~72 kg** off the
-panel (movable assembly 283 → 226 kg; whole panel 243 → 171 kg). Plywood is now only
-the 10 kg Fan B mount band. The largest remaining single item is the **steel center
+**Findings.** The largest remaining single item is the **steel center
 RHS frame (49 kg)** — the structural spine carrying the drum — which is the only
 meaningful target left (§2.5). Because the swing axis is **vertical**, this mass
 produces **no gravity overturning torque** at any swing angle; it matters for the
@@ -123,12 +119,9 @@ thrust-bearing/pivot-post sizing, for handling during assembly (still beyond a
 two-person lift — an engine crane or gantry hoist is required), and for total
 container payload.
 
-### 2.5 Weight-Reduction — Adopted + Residual
+### 2.5 Weight-Reduction
 
-**Adopted (rev11): 4mm PP plastic skins.** The 18mm exterior-grade plywood skins were
-replaced with **4mm polypropylene sheet** — the same material as the drum and housing —
-set in **U-channels** on the existing frame faces (the 40mm corner / 120mm center
-**envelope is unchanged**; only the skin material/thickness changed). Black-pigmented PP
+Black-pigmented PP
 is light-tight (proven on the drum), moisture- and chemical-proof in the wet darkroom,
 and floats in its channel to absorb its higher thermal expansion. A tighter stiffener-
 channel grid (~400–450mm centers) keeps the floppier 4mm sheet flat at the EPDM seal
@@ -137,19 +130,11 @@ line. **One exception:** the Fan B corner keeps an **18mm plywood band** (bottom
 (243 → 171 kg), at roughly comparable material cost (PP sheet + U-channel ≈ ply +
 adhesive/fasteners; panel BOM rises ~$100, see §8.1).
 
-**Residual option (not adopted): aluminum center frame.** The 49 kg steel RHS center
-frame could go to **aluminum RHS** (up-sized, e.g. 60×60×4, for stiffness) for a further
-~22–28 kg — at higher $/kg + TIG welding, and it carries the drum, so it is a
-structural change deferred pending need. Honeycomb-panel routes (the earlier aggressive
-option) are now moot: the PP swap already captured most of the available saving at far
-lower cost and risk.
-
 ---
 
 ## 3. Housed Revolving-Door Light Lock
 
-> **rev 8.** Replaces the earlier Ø750mm / 4-fin revolving drum, which failed both
-> personnel-fit and rotation light-tightness (see §3.6). The light lock is now a
+> The light lock is  a
 > **fixed cylindrical housing + single-opening C-shell drum** — the standard
 > commercial-darkroom-door arrangement — sized for a single operator.
 
@@ -202,9 +187,7 @@ facing. So at **no rotation angle** is there a straight-line path from exterior 
 interior: daylight entering the bore through the exterior opening is stopped by the
 drum's solid wall before it can reach the interior opening.
 
-This resolves both failure modes of the earlier Ø750 / 4-fin drum (§3.6): a single
-operator fits the open ~Ø850mm bore, and there is no transit angle that admits
-daylight. See [Light Trap Selection](light-trap-selection.md) §5 and **Sheet 5**
+See [Light Trap Selection](light-trap-selection.md) §5 and **Sheet 5**
 (enter / transit / exit verification).
 
 ### 3.4 Drum Seals
@@ -220,21 +203,17 @@ daylight. See [Light Trap Selection](light-trap-selection.md) §5 and **Sheet 5*
 ### 3.5 Handle
 
 A 100mm Ø × 400mm stainless steel grab rail is mounted on the interior face
-only at 900mm height. The handle is attached by a welded bracket — no through-bolt
+at 900mm height. The handle is attached by a welded bracket — no through-bolt
 penetration of the drum wall on the exterior face. This eliminates a potential
 light leak path. The operator enters by pushing the bare exterior drum wall, then
 uses the interior grab rail to pull the drum closed and brace during exit.
 
 ### 3.6 Access & Light-Tightness Verification (both tests pass)
 
-Two questions decide whether a revolving light lock actually works. The rev-8
-housed revolving door **passes both** — the same two questions on which the earlier
-Ø750mm / 4-fin drum failed (that failure is what drove this redesign).
-
 **Sheet 5 — Light-lock access & light-tightness verification**
 ![TBS-001 Hinged Panel — Sheet 5: Light-Lock Verification](assets/hingepanel-sheet5.png)
 
-**1. Does a person fit? — Yes.** The four radial fins are gone; the drum is a
+**1. Does a person fit? — Yes.** The drum is a
 single-opening C-shell, so the whole **~Ø850mm bore** is clear standing space. The
 80° opening gives a **~555mm passage** (sideways entry), enough for a single operator to enter and
 turn inside. Emergency egress remains the whole panel swinging open.
@@ -244,13 +223,6 @@ openings are 180° apart, so the 80° drum opening can never reach both at once:
 **enter** the exterior opening feeds the bore but the interior opening is covered by
 the drum's solid wall; at **transit** both housing openings are covered; at **exit**
 the exterior opening is covered. There is no straight-line path at any angle.
-
-**Why the earlier 4-fin drum failed (for the record).** Four fins from the bore
-center to the wall split the Ø744mm bore into 90° wedges (~250–300mm of body space —
-a person could not fit), and a revolving drum with a person-sized opening and *no
-fixed housing* necessarily bridged exterior and interior at the transit angles. The
-fix — a **fixed housing** with two offset openings narrower than 90° — is the
-standard commercial-darkroom-door arrangement, here custom-built to the panel.
 
 ---
 
@@ -262,16 +234,11 @@ standard commercial-darkroom-door arrangement, here custom-built to the panel.
 |-----------|-------|
 | Type | Vertical **Ø89×8 CHS pivot post** (the reused film-plane far-left upright) on a thrust collar + top/bottom hub bearings — **STRUCTURAL SIGN-OFF REQUIRED** |
 | Quantity | 1 post (carries the full bay + housing + drum swing cantilever, ~3.6 kN·m, SF ~3.7 in S355) |
-| Position | Far-left panel edge — X=175mm, Yd=2,287mm |
+| Position | Far-left panel edge |
 | Mounting | Post fixed top + bottom to the container end structure; the swinging frame rotates on the hub bearings (vertical axis ⇒ balanced at any angle, no gravity torque) |
 | Swing | ~<!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->° inboard to the transport position (locked by the top + bottom wall stays); swings clear of the door plane for personnel/equipment access |
 
-Under rev 9 (B2) the panel no longer carries just plywood skins: the punch-out bay,
-the fixed Ø900 housing, and the revolving drum all hang off the swinging leaf, roughly
-tripling the cantilevered swing moment. rev10 carries that load on a vertical **Ø89×8
-CHS pivot post** (the reused film-plane far-left upright) rather than barrel hinges —
-the post takes the ~3.6 kN·m swing cantilever on a thrust collar + top/bottom hub
-bearings (SF ~3.7 in S355). The plastic-skinned drum/housing (LT_DRUM_T = 4mm PP,
+The plastic-skinned drum/housing (LT_DRUM_T = 4mm PP,
 LT_HOUSING_T = 5mm UV-HDPE) keeps the added mass modest. Because the pivot axis is
 **vertical**, the assembly is balanced at any swing angle — no gravity torque and no
 free-edge sag, so no swing-support caster is needed (the old B2 barrel-hinge + caster
@@ -305,7 +272,7 @@ bolts to the steel frame, not the PP skin.
 |-----------|-------|
 | Type | 316 SS D-grab pull handle, ~300mm grip span, 25mm round bar |
 | Mounting | Through-bolted to the 50 × 50 × 3mm RHS frame jamb beside the drum aperture — **2 × M8 SS bolts** passing through **both** RHS walls into an interior backing plate/washers (not screwed to the PP skin) |
-| Position | Interior face of the **swinging** panel, on the **left drum-aperture jamb** — Yd ≈ 683mm, center Z ≈ 1,300mm. The transport swing pivots on the **far** edge (§5), so this near-of-center jamb keeps the operator's leverage while landing the load on frame steel right beside the drum (rather than the unbacked PP skin) |
+| Position | Interior face of the **swinging** panel, on the **left drum-aperture jamb**. The transport swing pivots on the **far** edge (§5), so this near-of-center jamb keeps the operator's leverage while landing the load on frame steel right beside the drum (rather than the unbacked PP skin) |
 | Finish | **Matte-black powder-coat** — the interior must stay optically dead (stray-light control for the pinhole), so the handle is not left bare/reflective |
 
 See [§8.1](#81-panel-structure) for the part; the handle is also shown on the interior-face
@@ -318,15 +285,14 @@ See [§8.1](#81-panel-structure) for the part; the handle is also shown on the i
 
 ## 5. Rotating Transport System
 
-For transport the entire swinging assembly — the panel center section (Yd 180–2287), the B2
+For transport the entire swinging assembly — the panel center section, the B2
 punch-out bay, and the housing + revolving drum — **revolves ~<!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->° about a vertical Ø89mm CHS
 pivot post** (the reused film-plane far-left upright, at X=175mm / Yd=2,287mm). The swing carries
 the bay's ~890mm exterior overhang from outside the cargo-door plane to inboard of it, so the ISO
-doors close. The earlier "slide ~880mm on ceiling rails" scheme is **retired** — there is no
-linear carriage.
+doors close.
 
-Two narrow strips stay fixed at the door plane and do **not** swing: the near strip (Yd 0–180)
-and the far strip (Yd 2287–2362, which carries the pivot). The cargo doors close outboard of the
+Two narrow strips stay fixed at the door plane and do **not** swing: the near strip
+and the far strip. The cargo doors close outboard of the
 fixed near strip.
 
 To let the swinging cage cross the X=150mm film-plane rail line, the **two left film rails
@@ -348,13 +314,13 @@ near-deck section lift out** before the swing; all are re-seated to datum afterw
 | State | Method |
 |-------|--------|
 | Operational (0°) | 4 × interior cam latches (§4) compress the EPDM perimeter + cut seals against the door frame |
-| Transport (swung <!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->°) | Top + bottom **wall stays** — hook welded to the **swinging panel's left perimeter 50×50×3 RHS stile** (the steel frame member at the swing cut, Yd≈205) ↔ eye on the near wall, tensioned by turnbuckle, forming a couple. Engaged after the swing, released before swing-back. |
+| Transport (swung <!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->°) | Top + bottom **wall stays** — hook welded to the **swinging panel's left perimeter 50×50×3 RHS stile** (the steel frame member at the swing cut) ↔ eye on the near wall, tensioned by turnbuckle, forming a couple. Engaged after the swing, released before swing-back. |
 
-> **Stay hooks land on steel, not the skin.** The transport-stay couple carries real tension, so both hooks weld to the **left perimeter RHS stile** of the swinging frame — *not* the 4mm PP plastic skin (rev11). They were relocated from the mid-corner (Yd≈350), which the plastic-skin swap left unbacked above the Z1125 ply band; the perimeter stile is the farthest point from the pivot (best lever arm) and a continuous welded steel load path into the frame.
+> **Stay hooks land on steel, not the skin.** The transport-stay couple carries real tension, so both hooks weld to the **left perimeter RHS stile** of the swinging frame — *not* the 4mm PP plastic skin (rev11). They were relocated from the mid-corner (Yd≈350), which the plastic-skin swap left unbacked above the plywood band; the perimeter stile is the farthest point from the pivot (best lever arm) and a continuous welded steel load path into the frame.
 
 ### 5.3 Floor Gap
 
-The panel + drum cage ride at a **130mm floor gap** (Z=130 — the grate-top level set
+The panel + drum cage ride at a **130mm floor gap** (the grate-top level set
 by the +50mm walkway raise), carried by the pivot post on its thrust collar + hub
 bearings. The gap clears the processing tray rim with margin; it is also the threshold
 the drum revolves over and the floor datum the swing arc sweeps at.
@@ -414,10 +380,10 @@ position. Five light ingress paths are sealed:
 | # | Light path | Seal method |
 |---|-----------|-------------|
 | 1 | Panel perimeter → door frame | 20mm EPDM gasket in an aluminum channel, compressed by the 4 × Southco C2-33 cam latches against the fixed door frame at X=0 |
-| 2 | Swing cuts → fixed strips | The swinging center+corners separate from the two FIXED strips (near Yd0–180, far Yd2287–2362, which carries the pivot) along vertical cuts at Yd=180 and Yd=2287. A 20mm EPDM **cut seal** runs the full panel height down each cut, compressed by the cam latches when the panel is latched at the door plane. Replaces the old sliding-carriage beam/guide-slot brush seals. (Sheet 3, Detail D.) |
+| 2 | Swing cuts → fixed strips | The swinging center+corners separate from the two FIXED strips (near Yd0–180, far Yd2287–2362, which carries the pivot) along vertical cuts. A 20mm EPDM **cut seal** runs the full panel height down each cut, compressed by the cam latches when the panel is latched at the door plane. Replaces the old sliding-carriage beam/guide-slot brush seals. (Sheet 3, Detail D.) |
 | 3 | Panel bottom → 130mm floor gap | Fixed-frame **bottom seal lip** — a continuous steel upstand welded to the threshold, rising above the panel bottom edge (Z=130) across the **full panel-bottom width, continuous (no notch)** — the housing/drum ride at Z=130 and never reach the floor, so the gap is uniform and the lip closes it as a solid wall; a 20mm EPDM strip on the panel bottom edge **recedes into / sandwiches against the lip**, compressed by the lower pair of Southco cam latches in the operational ("camera") position. The latches release to lift the seal before the swing. (Sheet 3, Detail B.) |
 | 4 | Panel top → frame gap | Fixed-frame **top seal lip** — the mirror of #3: a steel downstand from the frame top rail reaching ~30mm below the panel top edge. The drum stub shaft stops below the lip, so this lip runs as **one continuous member across the full panel-top width — no notch — meeting across the center**. A 20mm EPDM strip on the panel top edge sandwiches against it, compressed by the upper pair of cam latches in the operational position; released before the swing. (Sheet 3, Detail C.) |
-| 5 | Housing surround → door frame | The Ø900 light-trap housing carries the revolving drum and swings with the panel. A **second 20mm EPDM gasket** rings the housing aperture (Yd 713–1649, floor gap up to the housing top at Z=2200), concentric **inboard** of the panel-perimeter seal (#1), seated in the door plane (X=0). In the closed position it seals the housing surround to the frame all the way around the opening — light-tight. (3D: the `door_frame()` "Housing surround seal", in both the light-trap and overview models.) |
+| 5 | Housing surround → door frame | The Ø900 light-trap housing carries the revolving drum and swings with the panel. A **second 20mm EPDM gasket** rings the housing aperture (floor gap up to the housing top at Z=2200), concentric **inboard** of the panel-perimeter seal (#1), seated in the door plane. In the closed position it seals the housing surround to the frame all the way around the opening — light-tight. (3D: the `door_frame()` "Housing surround seal", in both the light-trap and overview models.) |
 
 **Seal verification:** After mode conversion, the operator performs a 5-minute
 dark-adaptation check inside the container with all seals engaged. Any visible light
@@ -436,7 +402,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Position | X=0 (container end wall inner face) |
 | Function | EPDM seal landing for the swinging panel perimeter + cut seals + housing surround |
 | Attachment | Welded to container end wall structural members |
-| Cut-seal landings | 2 × vertical EPDM landings at Yd=180 and Yd=2287 (the swing cuts between the swinging panel and the fixed strips) |
+| Cut-seal landings | 2 × vertical EPDM landings (the swing cuts between the swinging panel and the fixed strips) |
 | Bottom seal lip | Continuous 3mm steel upstand welded to the threshold, **full panel-bottom width (no notch — drum rides at Z=130)** — the EPDM bottom seal compresses against it (see §6 path #3) |
 | Top seal lip | Mirror of the bottom: continuous 3mm steel downstand from the frame top rail, reaching ~30mm below the panel top edge, full panel-top width and **continuous across the center** (the drum does not reach the top, so no notch) — the EPDM top seal compresses against it (see §6 path #4) |
 

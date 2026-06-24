@@ -2014,6 +2014,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#cyanotype-speed-mike-ware-new-cyanotype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cyanotype Speed (Mike Ware New Cyanotype)
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2838,8 +2849,8 @@
 <!-- © 2026 Alvin Richards -->
 <h1 id="optics-technical-reference">Optics: Technical Reference<a class="headerlink" href="#optics-technical-reference" title="Permanent link">&para;</a></h1>
 <h3 id="from-810-inches-to-407-feet">From 8×10 Inches to 40×7 Feet<a class="headerlink" href="#from-810-inches-to-407-feet" title="Permanent link">&para;</a></h3>
-<p><strong>Prepared for:</strong> The Big Shoebox Project (TBS-001)<br />
-<strong>Date:</strong> April 2026<br />
+<p><strong>Prepared for:</strong> The Big Shoebox Project (TBS-001)
+<strong>Date:</strong> April 2026
 <strong>Status:</strong> Technical Reference</p>
 <hr />
 <h2 id="how-to-read-this-document">How to Read This Document<a class="headerlink" href="#how-to-read-this-document" title="Permanent link">&para;</a></h2>
@@ -2850,7 +2861,7 @@
 <p>A pinhole camera works on a simple optical principle: light travels in straight lines. When light from a scene passes through a very small hole in an opaque wall, each point in the scene sends a narrow cone of light through the hole, projecting a small circle of light onto the opposite wall. Because each point in the scene projects to a different location on the wall, an image forms — inverted and reversed, but geometrically faithful.</p>
 <p>There is no lens. The pinhole does not bend or focus light. The image forms purely by geometry.</p>
 <p><strong>Plain language:</strong> Think of light as millions of tiny flashlights, each aimed in a different direction from every point in the scene. The pinhole lets through only the one beam from each flashlight that travels directly through the hole. The wall behind collects those beams into a picture.</p>
-<p><strong>Source:</strong> Young, M., "Pinhole Optics," <em>Applied Optics</em>, Vol. 10, No. 12, 1971, pp. 2763–2767. DOI: <a href="https://doi.org/10.1364/AO.10.002763">10.1364/AO.10.002763</a><br />
+<p><strong>Source:</strong> Young, M., "Pinhole Optics," <em>Applied Optics</em>, Vol. 10, No. 12, 1971, pp. 2763–2767. DOI: <a href="https://doi.org/10.1364/AO.10.002763">10.1364/AO.10.002763</a>
 Young describes the pinhole as "a useful and practical device which offers freedom from distortion and virtually infinite depth of field."</p>
 <hr />
 <h2 id="part-2-the-competing-forces-that-determine-sharpness">Part 2: The Competing Forces That Determine Sharpness<a class="headerlink" href="#part-2-the-competing-forces-that-determine-sharpness" title="Permanent link">&para;</a></h2>
@@ -2940,11 +2951,28 @@ Young describes the pinhole as "a useful and practical device which offers freed
 <p>Using ISO 100 film at f/16, 1/100 sec as the reference:</p>
 <div class="highlight"><pre><span></span><code>t_pinhole (seconds) = (1/100) × (f-number / 16)²
 </code></pre></div>
+<p><strong>Worked example — f/1000 (an indicative pinhole aperture, close to TBS-001's f/1088), ISO 100 film, bright sun:</strong></p>
+<div class="highlight"><pre><span></span><code>t_film = (1/100) × (1000 / 16)² = (1/100) × 62.5² = (1/100) × 3,906 ≈ 39 seconds
+</code></pre></div>
+<p>This 39-second bright-sun film baseline is what the paper and cyanotype calculations below scale from.</p>
 <h3 id="photographic-paper-speed">Photographic Paper Speed<a class="headerlink" href="#photographic-paper-speed" title="Permanent link">&para;</a></h3>
 <p>Photographic printing paper is much less sensitive to light than film. Silver gelatin enlarging paper (e.g., Ilford Multigrade RC) has an effective speed of approximately ISO 6 in daylight (green-yellow light sensitivity), compared to ISO 100 film. To correct:</p>
 <div class="highlight"><pre><span></span><code>t_paper = t_film × (ISO_film / ISO_paper) = t_film × (100 / 6) ≈ t_film × 16.7
 </code></pre></div>
+<p><strong>Worked example — f/1000, continuing from the 39-second film baseline:</strong></p>
+<div class="highlight"><pre><span></span><code>t_paper = 39 sec × 16.7 ≈ 650 sec ≈ 11 minutes   (calculated, before reciprocity)
+</code></pre></div>
+<p>Silver-gelatin paper suffers reciprocity failure at these exposure lengths, so the actual time is longer: applying the Part 6 correction (≈2.3× in this range, p = 0.85) gives roughly <strong>25 minutes</strong>.</p>
 <p><strong>Source:</strong> Stroebel, L., Compton, J., Current, I., Zakia, R., <em>Basic Photographic Materials and Processes</em>, 3rd edition, Focal Press, 2009, Chapter 8. ISO-equivalent speeds for photographic papers are discussed in the context of exposure and sensitometry.</p>
+<h3 id="cyanotype-speed-mike-ware-new-cyanotype">Cyanotype Speed (Mike Ware New Cyanotype)<a class="headerlink" href="#cyanotype-speed-mike-ware-new-cyanotype" title="Permanent link">&para;</a></h3>
+<p>The TBS-001 image plane is cotton muslin sensitized with the <strong>Mike Ware New Cyanotype formula</strong>, not silver-gelatin paper. Its effective speed is approximately <strong>ISO 2–4</strong>, and — being an iron-based process — it does <strong>not</strong> exhibit Schwarzschild reciprocity failure (Part 6), so no long-exposure correction is applied:</p>
+<div class="highlight"><pre><span></span><code>t_cyanotype = t_film × (100 / ISO_cyanotype)   [ISO 2–4 → ×25 to ×50; no reciprocity correction]
+</code></pre></div>
+<p><strong>Worked example — f/1000, continuing from the 39-second film baseline:</strong></p>
+<div class="highlight"><pre><span></span><code>t_cyanotype = 39 sec × (25 to 50) ≈ 980–1,950 sec ≈ 16 to 33 minutes   (no reciprocity correction)
+</code></pre></div>
+<p>In the field the baseline runs <strong>~30–45 minutes</strong> in full sun (TBS-001 at f/1088), the longer end reflecting real UV and sky conditions below ideal Sunny-16. Because there is no reciprocity penalty to amplify it, this real exposure stays comparable to silver-gelatin paper despite paper's higher nominal ISO — paper's ~2.3× reciprocity multiplier erases its speed advantage. This is the property that makes the giant-camera exposure practical (see the TBS-001 as-built summary in Part 11).</p>
+<p><strong>Source:</strong> Ware, M., <em>Cyanotype: the History, Science and Art of Photographic Printing in Prussian Blue</em>, 1999 (New Cyanotype process); see Part 12.</p>
 <hr />
 <h2 id="part-6-reciprocity-failure">Part 6: Reciprocity Failure<a class="headerlink" href="#part-6-reciprocity-failure" title="Permanent link">&para;</a></h2>
 <h3 id="what-it-is">What It Is<a class="headerlink" href="#what-it-is" title="Permanent link">&para;</a></h3>
@@ -2960,7 +2988,7 @@ Young describes the pinhole as "a useful and practical device which offers freed
 - <code>E</code> = illuminance (intensity of light on the surface)
 - <code>t</code> = exposure time (seconds)
 - <code>p</code> = Schwarzschild exponent (dimensionless, specific to each material)</p>
-<p>For ideal reciprocity: p = 1.0<br />
+<p>For ideal reciprocity: p = 1.0
 For real photographic materials at long exposures: p ≈ 0.75–0.90</p>
 <p><strong>Corrected exposure time:</strong>
 <div class="highlight"><pre><span></span><code>t_actual = t_calculated^(1/p)
@@ -3079,7 +3107,7 @@ For real photographic materials at long exposures: p ≈ 0.75–0.90</p>
 <p>This is the physical diffraction limit — the sharpest image the pinhole can produce regardless of how well it is manufactured.</p>
 <p><strong>For context:</strong>
 - Human vision at 25 cm (comfortable reading distance): ~8–10 lp/mm
-- Human vision at 3 m (across a room): ~0.5–1 lp/mm<br />
+- Human vision at 3 m (across a room): ~0.5–1 lp/mm
 - Human vision at 10 ft: ~0.3 lp/mm
 - Human vision at 20 ft: ~0.15 lp/mm</p>
 <p>Large-format pinhole images are viewed from large distances. A 20-foot-wide print is not examined at arm's length. The required resolution for comfortable large-format viewing is much lower than for a small print, and the physical diffraction limit is sufficient.</p>
@@ -3089,8 +3117,8 @@ For real photographic materials at long exposures: p ≈ 0.75–0.90</p>
 <p>The angle of view depends on the ratio of the image dimension to the focal length:</p>
 <div class="highlight"><pre><span></span><code>Angle of view (horizontal) = 2 × arctan(image_width / (2 × f))
 </code></pre></div>
-<p>When focal length ≈ image diagonal, the angle of view is approximately the same as normal human vision (~50–53° diagonal) — this is the "normal" perspective.  </p>
-<p>When focal length &lt; diagonal: wide-angle (more of the scene visible)<br />
+<p>When focal length ≈ image diagonal, the angle of view is approximately the same as normal human vision (~50–53° diagonal) — this is the "normal" perspective.</p>
+<p>When focal length &lt; diagonal: wide-angle (more of the scene visible)
 When focal length &gt; diagonal: telephoto (narrower field, magnified)</p>
 <p><strong>Practical note for large cameras:</strong> A focal length equal to the image diagonal requires a camera depth equal to that diagonal. For a 40' × 7' image, this means a camera approximately 40 feet deep — impractical. Using a shorter focal length (e.g., equal to the image height of 7 feet) creates a wide-angle view in a much more manageable structure, with the trade-off of a larger optimal pinhole and shorter exposure times.</p>
 <hr />
@@ -3752,6 +3780,11 @@ When focal length &gt; diagonal: telephoto (narrower field, magnified)</p>
 <td>12</td>
 <td>"The Great Picture" (world's largest pinhole camera), Wikipedia. <a href="https://en.wikipedia.org/wiki/The_Great_Picture">en.wikipedia.org/wiki/The_Great_Picture</a></td>
 <td><strong>Verified</strong> — confirmed via WebSearch; all dimensions and materials cited match.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Ware, M., <em>Cyanotype: the History, Science and Art of Photographic Printing in Prussian Blue</em>, 1999; New Cyanotype process (ISO ~2–4; no reciprocity failure).</td>
+<td>Author's reference: <a href="https://www.mikeware.co.uk/mikeware/New_Cyanotype_Process.html">mikeware.co.uk</a></td>
 </tr>
 </tbody>
 </table>

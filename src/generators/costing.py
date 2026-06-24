@@ -282,8 +282,8 @@ FILM = [
     LineItem("Cam-lever spring clamps, muslin (×92)", 276, 506, 736, "$3/$5.50/$8 ea — the section's main Low/High driver"),
     point("Clamp mounting — M5×16 SS bolts/Nylocks (×184+184) + neoprene jaw strip", 70),
     # 4.3 Wall-seat saddles (rev 11, ICP-11–14) — estimates, confirm at procurement
-    LineItem("Wall-seat saddles ×8 — 8mm steel plate, cut + welded (ICP-11)", 380, 425, 470, "~28 kg total; back-plate + seat + gusset"),
-    point("Saddle fasteners — M12 through-bolts (×36) + M8 thumbscrews (×12) + M8 rail bolts (×12)", 150, "ICP-12/13/14"),
+    point("Wall-seat saddles ×6 — 8mm steel plate, cut + welded (ICP-11)", 318, "rev12: 2 BR ends moved to the walkway combined corner plates; ~$53/saddle"),
+    point("Saddle fasteners — M12×90 through-bolts (×28) + M8 thumbscrews (×12) + M8 hex bolts (×8)", 122, "ICP-12/13/14"),
 ]
 
 
@@ -920,7 +920,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 909,  "total": 1210, "per_print": 24},  # 909 not 910: consistent ferri rounding ($104, not the doc's hand-rounded $105)
     "standard": {"chem": 1353, "total": 1650, "per_print": 33},
     "rich":     {"chem": 2681, "total": 2980, "per_print": 60},
-    "grand_total": (21285, 27017, 34817),  # water lines reconciled to water-system-report §8 item-sums (parts-registry Phase 2b)
+    "grand_total": (21195, 26882, 34637),  # film saddles ×8→×6 (rev12 BR ends moved to walkway combined plates) — parts-registry Phase 2b
     "walkway": (2000, 2488, 2975),   # §6a fab line raised so bracket scope matches walkway-report §10 ($742–$1,255 all-in)
     "water": (4171, 5207, 6236),   # §8 lines (pumps/filter/valves/pipe/consumables) reconciled to the report's itemized rows; stale subtotals discarded
     "container": (2300, 3300, 4300),
@@ -930,7 +930,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "shelf": (203, 203, 203),          # §6d = chemistry-prep-shelves §7 (point estimates) — was MISSING from the model
     "interior": (950, 1138, 1350),
     "optics": (95, 165, 240),
-    "film": (3538, 3813, 4088),   # §4 BOM folded in (was hand-set $3,100/$3,650/$4,200, below its own BOM)
+    "film": (3448, 3678, 3908),   # saddles ×8→×6 (rev12: 2 BR ends are walkway combined plates) + fasteners 150→122
     "ventilation": (824, 824, 824),   # §5b BOM (point estimates); report total was stale at $769
     "power": (2350, 2350, 2350),       # §5a authoritative subtotal ($1,335 + $1,015)
 }

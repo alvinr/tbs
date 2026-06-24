@@ -17,7 +17,7 @@
 | **1. Container purchase & delivery** | $2,300 | $3,300 | $4,300 |
 | **2. Interior conversion** | $950 | $1,138 | $1,350 |
 | **3. Optics — pinhole plate** | $95 | $165 | $240 |
-| **4. Film plane mechanism (4-corner Option A, incl. wall-seat saddles + cross-slides)** | $3,538 | $3,813 | $4,088 |
+| **4. Film plane mechanism (4-corner Option A, incl. wall-seat saddles + cross-slides)** | $3,448 | $3,678 | $3,908 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $4,171 | $5,207 | $6,236 |
 | **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · pump switches)** | $2,110 | $2,350 | $2,660 |
 | **5b. Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)** | $824 | $884 | $974 |
@@ -29,7 +29,7 @@
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,210 | $1,650 | $2,980 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licenses & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$21,285** | **$27,017** | **$34,817** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$21,195** | **$26,882** | **$34,637** |
 <!-- END costing:scenario -->
 
 *Line 7 (cyanotype printmaking) is now re-summed into the TOTAL on the **Mike Ware AmFe** chemistry + corrected ~$300 substrate: **Low = Lean ⅓-Ware ($1,210), Mid = Standard ½-Ware ($1,650), High = Rich full-Ware ($2,980)** — matching §7.1 and the master shopping list §9. The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md).*
@@ -258,9 +258,9 @@ Line items (Option A, manual handwheel actuation) — **generated from `costing.
 | Light-seal set — EPDM tape (×3) + Rosco Duvetyne + 6-mil poly + Gorilla tape (×6) | $316 | $316 | $316 |
 | Cam-lever spring clamps, muslin (×92) | $276 | $506 | $736 |
 | Clamp mounting — M5×16 SS bolts/Nylocks (×184+184) + neoprene jaw strip | $70 | $70 | $70 |
-| Wall-seat saddles ×8 — 8mm steel plate, cut + welded (ICP-11) | $380 | $425 | $470 |
-| Saddle fasteners — M12 through-bolts (×36) + M8 thumbscrews (×12) + M8 rail bolts (×12) | $150 | $150 | $150 |
-| **Section total — film plane mechanism (manual, incl. saddles + cross-slides)** | **$3,538** | **$3,813** | **$4,088** |
+| Wall-seat saddles ×8 — 8mm steel plate, cut + welded (ICP-11) | $318 | $318 | $318 |
+| Saddle fasteners — M12 through-bolts (×36) + M8 thumbscrews (×12) + M8 rail bolts (×12) | $122 | $122 | $122 |
+| **Section total — film plane mechanism (manual, incl. saddles + cross-slides)** | **$3,448** | **$3,678** | **$3,908** |
 <!-- END costing:film -->
 
 *Electric actuation (optional add-on, not in any standard build): +$827 — see §4.4.*
@@ -555,7 +555,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Container (WWT) + delivery | $1,800 |
 | Interior conversion (minimal) | $950 |
 | Pinhole plate | $95 |
-| Film plane mechanism (manual Option A, incl. wall-seat saddles + cross-slides) | $3,538 |
+| Film plane mechanism (manual Option A, incl. wall-seat saddles + cross-slides) | $3,448 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $4,171 |
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · pump switches) | $2,110 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $824 |
@@ -567,7 +567,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Cyanotype chemistry + substrate (50 prints) | $1,210 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$20,715** |
+| **Scenario A total** | **~$20,625** |
 <!-- END costing:scenario-a -->
 
 ### Scenario B — Recommended build, regional deployment
@@ -578,7 +578,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Container (CW) + delivery | $3,150 |
 | Interior conversion (full) | $1,138 |
 | Pinhole plate | $165 |
-| Film plane mechanism (manual Option A + wall-seat saddles + cross-slides) | $3,813 |
+| Film plane mechanism (manual Option A + wall-seat saddles + cross-slides) | $3,678 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $5,207 |
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · pump switches) | $2,350 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $884 |
@@ -591,7 +591,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Rodenstock Apo-Ronar 1,200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$27,327** |
+| **Scenario B total (excl. CDL)** | **~$27,192** |
 <!-- END costing:scenario-b -->
 
 ### Scenario C — Full production, own transport, CDL
@@ -599,11 +599,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 <!-- BEGIN costing:scenario-c -->
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $26,427 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $26,292 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$115,927–$145,927** |
+| **Scenario C total** | **~$115,792–$145,792** |
 <!-- END costing:scenario-c -->
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*

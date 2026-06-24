@@ -4,16 +4,23 @@
 The single source of every purchasable item: quantity, type, supplier, unit-cost band, the
 verified physical SIZE (folds in component-dimension-audit), and the cyanotype chemistry tiers.
 
-From this ONE source, GENERATED views (Phase 2):
+From this ONE source, GENERATED views:
   • master-shopping-list.md     — by TYPE, qty summed across systems, grouped by SUPPLIER (procurement).
   • each report's §Parts-List    — by SYSTEM (emit_system).
   • component-dimension-audit.md — real-vs-modeled size reconciliation (emit_dimension_audit).
   • chemistry-shopping-list.md   — cyanotype-only shopping (emit_chemistry).
-And (Phase 3) costing.py section totals derive from system_total().
+costing.py's section totals reconcile to system_total() (lint-gated via costing.py --check-registry).
 
-This file is being built incrementally — see /Users/.../plans (Phase 0..3). Right now ONE system
-(ventilation) is populated end-to-end to prove the schema + the costing reconciliation guardrail:
-every system present here must sum to costing.EXPECTED[system].
+parts.py is the PROCUREMENT SOURCE OF RECORD (firm low/high item costs); costing.py is the scenario
+layer (mid + budgeting bands) on top. Every system here must sum to its costing reconcile target.
+
+# ─────────────────────────────────────────────────────────────────────────────────────────────
+# TODO (AUGUST 2026): RE-PRICE EVERY PART against current supplier listings — not just the timber-ply
+# section. The cost bands below are an April-2026 basis (indicative low/high estimates, pre-quote);
+# refresh them all, mark confirmed lines, and re-run `parts.py --inject` + `lint.py`. A cost change
+# cascades automatically: edit the band here → the master/report/cost blocks regenerate and the
+# costing reconciliation gate proves consistency. (Update the master header's "Basis: April 2026" too.)
+# ─────────────────────────────────────────────────────────────────────────────────────────────
 """
 from __future__ import annotations
 import argparse

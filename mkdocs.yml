@@ -97,6 +97,7 @@ nav:
     - "Light Trap Selection": light-trap-selection.md
     - "Cost Analysis": cost-analysis-report.md
     - "Right Walkway Cantilever (decision record)": right-walkway-cantilever-study.md
+    - "Process Comparison (alt processes)": process-comparison.md
   - "Transportation":
     - "Options": container-transport-options.md
     - "Weight Distribution": weight-distribution-report.md

@@ -81,6 +81,7 @@ MD_FILES=(
     "hinged-panel-report.md"
     "walkway-report.md"
     "right-walkway-cantilever-study.md"
+    "process-comparison.md"
     "plumbing-panel-report.md"
     "ibc-stacking-report.md"
     "ventilation-report.md"

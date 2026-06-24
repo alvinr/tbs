@@ -137,8 +137,21 @@ if (window.Tablesort) {
       return num(a) - num(b);
     });
 }
+// A bold "total" / "subtotal" row is a footer, not data — move it to <tfoot> so tablesort (which
+// only ever sorts <tbody> rows) leaves it pinned at the bottom instead of shuffling it into the sort.
+function isTotalRow(row) {
+  return Array.prototype.some.call(row.querySelectorAll("strong, b"), function (el) {
+    return /total/i.test(el.textContent);
+  });
+}
 document$.subscribe(function () {
   document.querySelectorAll("article table:not([class])").forEach(function (table) {
+    var tbody = table.tBodies[0];
+    if (tbody) {
+      Array.prototype.slice.call(tbody.rows).forEach(function (row) {
+        if (isTotalRow(row)) (table.tFoot || table.createTFoot()).appendChild(row);
+      });
+    }
     new Tablesort(table);
   });
 });

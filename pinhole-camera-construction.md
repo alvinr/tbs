@@ -183,9 +183,9 @@ and §13 for the optical line-of-sight clearance analysis.
 |--------|-----------|-----------|-------------------|
 | ISO 100 film | 100 | **46 sec** | ~69 sec |
 | Silver gelatin RC paper | ~6 | **12.8 min** | **~43 min** |
-| Cyanotype on fabric | ~0.5 | ~2.6 hr | test required |
+| Cyanotype on muslin (Ware New Cyanotype) — **selected process** | ~2–4 | **~30–45 min** | no reciprocity failure (iron process) |
 
-> Reciprocity corrections per Schwarzschild law, p = 0.85. Actual correction must be verified empirically with the specific paper lot used. Sources: Stroebel et al., *Basic Photographic Materials and Processes*, 3rd ed., Focal Press, 2009; Schwarzschild, K., *The Astrophysical Journal*, Vol. 11, 1900.
+> Reciprocity corrections for film and silver-gelatin paper per Schwarzschild law, p = 0.85; actual correction must be verified empirically with the specific lot used. **Cyanotype — the selected TBS-001 process — is iron-based and exhibits no Schwarzschild reciprocity failure, so its ~30–45 min baseline (Mike Ware New Cyanotype on muslin, f/1088, full sun) needs no correction** (see [Pinhole Optics Report](pinhole-optics-report.md)). Sources: Stroebel et al., *Basic Photographic Materials and Processes*, 3rd ed., Focal Press, 2009; Schwarzschild, K., *The Astrophysical Journal*, Vol. 11, 1900.
 
 #### Transport Compliance
 
@@ -432,7 +432,7 @@ For operations involving darkroom chemistry inside the container:
 | F-number | f/1088 | f/1088 | f/2467 | f/1088 |
 | Horizontal FOV | 102° | 102°–137° | 11° | 102° |
 | RC paper exp. (Schwarzschild-corrected) | **~43 min** | **~43 min** | ~4 hr 52 min | **~43 min** |
-| Cyanotype on muslin exp. (no correction) | **~2–3 hr** | **~2–3 hr** | ~13 hr | **~2–3 hr** |
+| Cyanotype on muslin exp. (Ware New Cyanotype, no correction) | **~30–45 min** | **~30–45 min** | ~2.5–4 hr | **~30–45 min** |
 | Transport permit | None | None | None | None (2 loads) |
 | Purchase price range | $1,800–$3,800 | $2,200–$5,700 | $2,200–$5,700 | $3,600–$7,600 |
 | Darkroom included | No | No | No | **Yes** |

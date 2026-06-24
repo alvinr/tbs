@@ -145,6 +145,7 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Stainless fasteners + nylon isolation washers (no galvanic couple) | 1 lot | McMaster-Carr | lightlock | $30–$50 |
 | M12 through-bolt kit (right walkway) | 24 ea | McMaster-Carr | walkway | $30–$50 |
 | M10 wedge floor anchors | 20 ea | McMaster-Carr | walkway | $25–$45 |
+| Shurflo pump mounting bracket | 4 ea | Amazon | water | $40 |
 | 316 SS D-grab pull handle (~300mm) + 2× M8 + backing plate | 1 ea | McMaster-Carr | panel | $20–$35 |
 | 100mm Ø SS grab rail (400mm cut) | 1 ea | McMaster-Carr | lightlock | $15–$25 |
 | Folding shelf stays/brackets | 2 ea | Amazon | shelf | $24 |
@@ -154,7 +155,7 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Transport latch (over-center/barrel) | 1 ea | Amazon | shelf | $8 |
 | M6 bolt+nut+washer set, SS (panel mount) | 4 set | McMaster-Carr | electrical | $5 |
 | M5×16 mm CSK screws | 8 ea | McMaster-Carr | shelf | $4 |
-| **fasteners-hardware subtotal** | | | | **$1,098–$1,931** |
+| **fasteners-hardware subtotal** | | | | **$1,138–$1,971** |
 
 ### bearings-motion
 
@@ -174,19 +175,43 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| Valves + fittings — S60×6 adapters, check valves CV1/CV3/CV4 | 1 lot | Amazon | water | $333–$567 |
-| Pipe — HDPE pump runs + spray-bar feed | 1 lot | Ferguson | water | $80–$114 |
+| Bulkhead fitting 2" NPT (304 SS) | 3 ea | McMaster-Carr | water | $75–$120 |
+| S60×6 to 1" NPT adapter | 8 ea | Amazon | water | $64–$120 |
+| Banjo V100FP ball valve 1" FNPT | 6 ea | Amazon | water | $60–$96 |
+| 1/2" NPT 90° elbow polypropylene | 14 ea | Amazon | water | $28–$56 |
+| 1" NPT spring check valve (CV1/CV3/CV4) | 3 ea | Amazon | water | $24–$42 |
+| Banjo V050FP ball valve 1/2" FNPT | 4 ea | Amazon | water | $24–$40 |
+| 1/2" SDR-11 HDPE pipe | 4 stick | Ferguson | water | $24–$40 |
+| 1/2" NPT polypropylene union | 6 ea | Amazon | water | $24–$36 |
+| 2" polypropylene camlock pairs (M+F) | 4 pair | Amazon | water | $20–$32 |
+| 3-way diverter valve 1" FNPT | 1 ea | Amazon | water | $18–$30 |
+| 3/4" SDR-11 HDPE pipe | 2 stick | Ferguson | water | $20–$30 |
+| 1/2" NPT polypropylene tee | 6 ea | Amazon | water | $12–$24 |
+| Banjo TEE100 equal tee 1" NPT | 4 ea | Amazon | water | $16–$24 |
+| 3-way diverter valve 1/2" FNPT | 1 ea | Amazon | water | $12–$22 |
+| Banjo EL100-90 elbow 1" NPT | 4 ea | Amazon | water | $12–$20 |
+| 1/2" ID reinforced braided PVC hose | 2 length | Amazon | water | $20 |
+| 1" SDR-11 HDPE pipe | 1 stick | Ferguson | water | $12–$18 |
+| Banjo V075FP ball valve 3/4" FNPT | 1 ea | Amazon | water | $8–$12 |
 | ½" HDPE pipe (tap relocation) | 1 lot | Irrigation supply | shelf | $10 |
-| **plumbing-fittings subtotal** | | | | **$423–$691** |
+| Banjo TEE100 equal tee, 1" HDPE NPT | 1 ea | Amazon | water | $4–$6 |
+| 1/2"×1" NPT bushing reducer | 1 ea | Amazon | water | $3–$5 |
+| **plumbing-fittings subtotal** | | | | **$490–$803** |
 
 ### water-equipment
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| Water storage — 4× IBC totes + 3× bulkhead fittings + fill tee | 1 lot | Container Exchanger | water | $395–$720 |
-| Filter skid — 3-stage Big Blue housing + cartridges | 1 lot | Amazon | water | $282–$445 |
-| Pumps + accumulator — P-01/P-02/P-04 manifold + P-03 | 1 lot | Amazon | water | $315–$345 |
-| **water-equipment subtotal** | | | | **$992–$1,510** |
+| IBC tote 1,000L (275 gal), food-grade, used/rinsed | 4 ea | Container Exchanger | water | $320–$600 |
+| Big Blue 3-stage combo filter unit 4.5"×10" | 1 ea | Amazon | water | $200–$300 |
+| Shurflo 2088-554-144 pump (P-01, P-02) | 2 ea | Amazon | water | $110–$140 |
+| KDF-55 heavy-metal cartridge 4.5"×10" | 2 ea | Amazon | water | $40–$70 |
+| Shurflo 2088-554-144 pump (P-03 waste evacuation) | 1 ea | Amazon | water | $65 |
+| Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 1 ea | Amazon | water | $65 |
+| CTO carbon block cartridge 4.5"×10" | 3 ea | Amazon | water | $24–$45 |
+| SeaFlo pressure accumulator | 1 ea | Amazon | water | $35 |
+| MPP 5-micron sediment cartridge 4.5"×10" | 3 ea | Amazon | water | $18–$30 |
+| **water-equipment subtotal** | | | | **$877–$1,350** |
 
 ### electrical-power
 
@@ -214,7 +239,6 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Battery main disconnect — Blue Sea m-Series 300A isolator | 1 ea | West Marine | electrical | $40 |
 | Anderson Powerpole 30A connectors, 50 pairs | 1 kit | Powerwerx | electrical | $40 |
 | 40×25mm PVC cable trunking, 5m | 4 ea | McMaster-Carr | electrical | $40 |
-| Water-system wiring (fuse block in Electrical Report) | 1 lot | Amazon | water | $35 |
 | PV cable 10 AWG + MC4 connectors | 1 lot | Amazon | electrical | $30 |
 | External emergency cut-off — red mushroom IP66 + control loop | 1 ea | AutomationDirect | electrical | $30 |
 | Pump switches (Circuit C) — IP67 sealed rocker 12V 16A | 5 ea | Amazon | electrical | $30 |
@@ -227,6 +251,7 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Interior emergency cut-off — red mushroom IP65 (paralleled to exterior) | 1 ea | AutomationDirect | electrical | $25 |
 | Sealed wet-zone connectors — Deutsch DT / adhesive heat-shrink | 1 lot | Waytek Wire | electrical | $25 |
 | MC4 bulkhead connector pairs, IP67 panel-mount | 3 pair | Amazon | electrical | $25 |
+| 14 AWG duplex marine wire | 1 roll | Amazon | water | $22 |
 | Cooler external power cable | 1 ea | Waytek Wire | ventilation | $20 |
 | Equipotential bonding kit — 6 AWG + ring lugs | 1 ea | Amazon | electrical | $20 |
 | Copper ground stake, 8ft × ⅝" dia | 1 ea | Home Depot | electrical | $20 |
@@ -238,6 +263,8 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | 4 AWG ground wire, green/yellow, 3m | 1 lot | Amazon | electrical | $15 |
 | Battery terminal covers (pair), insulating boots | 1 pair | Amazon | electrical | $10 |
 | Deutsch DT 2-pin connectors | 2 set | Waytek Wire | ventilation | $8 |
+| Anderson Powerpole connectors 30A | 4 pair | Amazon | water | $8 |
+| 10A blade fuses (pack) | 1 pack | Amazon | water | $5 |
 | Shore-charger output fuse — 20A inline | 1 ea | Amazon | electrical | $5 |
 | **electrical-distribution subtotal** | | | | **$1,164** |
 
@@ -262,7 +289,8 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Silicone bead sealant (bearing housing) | 1 ea | McMaster-Carr | lightlock | $10–$15 |
 | Flat black epoxy spray paint | 1 can | Hardware store | shelf | $12 |
 | Dielectric grease, marine-grade (terminal protection) | 1 ea | Amazon | electrical | $10 |
-| **adhesives-finishes subtotal** | | | | **$182–$287** |
+| Thread seal tape (PTFE) | 4 roll | Home Depot | water | $8 |
+| **adhesives-finishes subtotal** | | | | **$190–$295** |
 
 ### fabric-textile
 
@@ -288,7 +316,12 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| Processing consumables — 6-mil poly, pH meter, citric acid, gloves, labels | 1 lot | Amazon | water | $241 |
+| 6-mil black LDPE sheeting | 1 roll | Home Depot | water | $100 |
+| Apera Instruments AI311 PH60 pH meter | 1 ea | Amazon | water | $55 |
+| Citric acid, food grade, 5 lb | 2 bag | Amazon | water | $28 |
+| Nitrile gloves, box of 100 | 2 box | Amazon | water | $28 |
+| Chemical-resistant labels (GHS) | 1 pack | Amazon | water | $20 |
+| pH calibration solution set | 1 set | Amazon | water | $10 |
 | **tools-safety subtotal** | | | | **$241** |
 
 ### fabrication-labor
@@ -304,10 +337,10 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| Amazon | 29 | adhesives-finishes, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,915–$3,852 |
+| Amazon | 57 | adhesives-finishes, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,831–$3,770 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Online Metals | 8 | aluminum, stainless-sheet, steel-structural | $2,363–$3,322 |
-| McMaster-Carr | 25 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, seals-gaskets | $1,849–$2,239 |
+| McMaster-Carr | 26 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets | $1,924–$2,359 |
 | Metal Supermarkets | 7 | steel-structural | $1,438–$2,195 |
 | TAP Plastics | 6 | plastics-sheet | $1,650–$2,190 |
 | McNichols | 3 | fasteners-hardware, plastics-sheet | $1,050–$1,375 |
@@ -315,9 +348,9 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
 | local fab | 5 | fabrication-labor, steel-structural | $755–$1,120 |
 | Renogy | 3 | electrical-power | $829 |
+| Home Depot | 15 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety | $644–$824 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
-| Container Exchanger | 1 | water-equipment | $395–$720 |
-| Home Depot | 13 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply | $536–$716 |
+| Container Exchanger | 1 | water-equipment | $320–$600 |
 | altE Store | 2 | electrical-power | $350 |
 | Rosco | 1 | seals-gaskets | $316 |
 | Victron | 1 | electrical-power | $275 |
@@ -326,10 +359,10 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Lenox Laser | 1 | stainless-sheet | $50–$150 |
 | Hessaire | 1 | ducting-ventilation | $130 |
 | Bearing World | 1 | bearings-motion | $90–$130 |
-| Ferguson | 1 | plumbing-fittings | $80–$114 |
 | Southco | 1 | fasteners-hardware | $60–$100 |
 | AutomationDirect | 3 | electrical-distribution, electrical-power | $95 |
 | local | 2 | adhesives-finishes | $50–$90 |
+| Ferguson | 3 | plumbing-fittings | $56–$88 |
 | VXB | 1 | bearings-motion | $40–$60 |
 | Local sheet metal | 2 | steel-structural | $50 |
 | steel service center | 1 | steel-structural | $30–$50 |

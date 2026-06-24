@@ -4,7 +4,7 @@
 
 Complete itemized list for building the Mini-TBS proof-of-concept camera (two-box design) and making **20 cyanotype prints** on watercolor paper. All quantities include 25% overage for waste and practice.
 
-**Target budget:** $94–$148 (see summary at bottom).
+**Target budget:** $129–$195 (see summary at bottom).
 
 ---
 
@@ -69,13 +69,13 @@ The **Mike Ware New Cyanotype formula** — identical to the TBS-001 specificati
 
 | Item | Qty | Supplier 1 | Price | Supplier 2 | Price | Notes |
 |------|-----|-----------|-------|-----------|-------|-------|
-| Watercolor paper, hot-press, 140 lb (300 gsm), 22×30" | 12 sheets | Blick Art Materials (Arches Aquarelle) | $7.49/sheet or $59.99/25-pk | Amazon (Arches) | $8.50/sheet | 100% cotton. Each sheet yields one 16×18" print with trim to spare. |
+| Watercolor paper, 10×14" block (20 sheets), hot-press, 140 lb (300 gsm) | 1–2 blocks (20–25 sheets) | Blick Art Materials (Arches Aquarelle) | $44.99/20-sheet block | Amazon (Fabriano Artistico) | ~$2.50/sheet | 100% cotton. Standard 10×14" size — one sheet per print, no cutting. |
 
-**Why watercolor paper instead of muslin?** At the PoC scale (14×16" prints), watercolor paper is the superior substrate: no pre-washing, no stretching, no clipping tension — it lies flat naturally and coats evenly. Muslin is used for TBS-001 only because no paper is manufactured 4.5 meters wide.
+**Why watercolor paper instead of muslin?** At the PoC scale (10×14" prints), watercolor paper is the superior substrate: no pre-washing, no stretching, no clipping tension — it lies flat naturally and coats evenly. Muslin is used for TBS-001 only because no paper is manufactured 4.5 meters wide.
 
-**Yield:** 12 sheets of 22×30" = 12 prints, cut to 17.5×19.5" each (with overlap for mounting on the backing board). Buy 12 initially and re-order as needed. If buying the 25-sheet pack, the unit cost drops to ~$2.40/sheet.
+**Yield:** One 20-sheet block = 20 prints, used whole (no cutting). For the 25% practice/waste margin, add a second block or a 10×14" pad. Arches Aquarelle and Fabriano Artistico both ship the 10×14" size in blocks and pads.
 
-**Subtotal: $10–$18** (less with bulk pack)
+**Subtotal: $45–$65**
 
 ---
 
@@ -95,7 +95,7 @@ The **Mike Ware New Cyanotype formula** — identical to the TBS-001 specificati
 
 ## 6. Photo Trays
 
-Standard darkroom developing trays — used for both chemistry coating and development washes. The 12×16" size fits inside the 18×18" prep box (external ~13.4×17.5"). Paper (16×18") overhangs slightly during brush coating — standard practice for cyanotype.
+Standard darkroom developing trays — used for both chemistry coating and development washes. The 12×16" size fits inside the 18×18" prep box (external ~13.4×17.5"). The 10×14" paper fits inside the tray interior, lying flat during brush coating.
 
 | Item | Qty | Supplier 1 | Price | Supplier 2 | Price | Notes |
 |------|-----|-----------|-------|-----------|-------|-------|
@@ -127,12 +127,12 @@ Standard darkroom developing trays — used for both chemistry coating and devel
 | Pinhole materials | $8 | $15 |
 | Chemistry (without ammonium dichromate) | $25 | $35 |
 | Chemistry (with ammonium dichromate) | $37 | $45 |
-| Substrate (watercolor paper) | $10 | $18 |
+| Substrate (watercolor paper) | $45 | $65 |
 | Tools + consumables | $8 | $14 |
 | Photo trays (Paterson 12×16", ×3) | $28 | $33 |
 | Safelight + light-seal | $4 | $7 |
-| **Total (without dichromate)** | **$94** | **$138** |
-| **Total (with dichromate)** | **$106** | **$148** |
+| **Total (without dichromate)** | **$129** | **$185** |
+| **Total (with dichromate)** | **$141** | **$195** |
 
 ### What the Minimum Order Gets You
 
@@ -142,7 +142,7 @@ The chemistry suppliers sell minimum quantities far larger than the PoC requires
 |----------|-----------|-----------|---------------|-------------------|
 | AmFe, 100 g | 100 g | 30 g | 70 g | ~45 more |
 | K₃[Fe(CN)₆], 100 g | 100 g | 8 g | 92 g | ~230 more |
-| Paper (25-sheet bulk) | 25 sheets | 12 sheets | 13 sheets | 13 more |
+| Paper (10×14" blocks, ×2) | 40 sheets | 25 sheets | 15 sheets | ~15 more |
 
 The leftover chemistry is enough for extended testing, workshops, or demonstrations.
 

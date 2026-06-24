@@ -410,11 +410,11 @@ See the [Mini-TBS Shopping List](mini-tbs-shopping-list.md) for the complete ite
 | Boxes + construction (×2) | $11 | $16 |
 | Pinhole materials | $8 | $15 |
 | Chemistry | $25 | $45 |
-| Substrate (watercolor paper) | $10 | $18 |
+| Substrate (watercolor paper) | $45 | $65 |
 | Tools + consumables | $8 | $14 |
 | Photo trays (Paterson 12×16", ×3) | $28 | $33 |
 | Safelight + light-seal | $4 | $7 |
-| **Total** | **$94** | **$148** |
+| **Total** | **$129** | **$195** |
 
 ---
 

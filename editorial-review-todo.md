@@ -77,7 +77,7 @@ also a `tbs_constants` value or a `costing.py`/`facts.yml` fact, prefer the refe
 
 - [ ] CLAUDE.md  — project instructions (not a report)
 - [ ] component-dependency-map.md  — the map itself (becomes data in Phase 4)
-- [ ] all-diagrams.md  — diagram gallery/index
+- [x] all-diagrams.md  — *DONE (2026-06-23): audited the gallery against every generated `diagrams/*.png` — 3 sheets were referenced nowhere (electrical-sheet4 Pump Power/Circuit C + sheet5 Main Enclosure Panel Layout; hingepanel-sheet6 Interior Pull Handle), all added in sheet order. No broken refs. Added a standing rule (every new diagram PNG → all-diagrams.md, incl. new sheets on existing generators) to CLAUDE.md workflow + skill_diagram_structure, ENFORCED by a new lint.py warning 'all-diagrams gallery covers every generated diagram PNG'. Gallery is a complete index; no owned figures to single-source (it carries captions only).*
 - [x] engineering-diagrams.md  — *DONE (2026-06-21): index/overview page — SKIP for value substitution (carries no owned figures; all numbers live in the linked detail reports). Copy-edited prose typos and refreshed the system/area lists (solar sub-system, walkway in all three areas, ventilation path).*
 - [ ] skill_label_placement.md  — drawing skill
 

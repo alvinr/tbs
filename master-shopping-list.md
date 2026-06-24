@@ -65,17 +65,17 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Cantilever bracket — widened (near) | 4 ea | Local fab | walkway | $160–$280 |
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | 4 ea | Metal Supermarkets | ibc-frame | $120–$180 |
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | 4 ea | Metal Supermarkets | panel | $120–$160 |
-| Drop-in rail saddles + tapered dowels | 4 ea | local fab | swing | $80–$130 |
+| Drop-in rail saddles + tapered dowels | 4 ea | Local fab | swing | $80–$130 |
 | Reinforcing plate (exterior) | 18 ea | Local fab | walkway | $75–$130 |
 | Canopy frame | 1 lot | Home Depot | ventilation | $120 |
-| Drum support cage, 40 × 40 × 3mm SHS | 1 lot | local fab | swing | $70–$120 |
+| Drum support cage, 40 × 40 × 3mm SHS | 1 lot | Local fab | swing | $70–$120 |
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | 3 ea | Metal Supermarkets | door | $90–$120 |
 | Floor-leg cantilever bracket (left walkway, ×5) | 5 ea | Local fab | walkway | $55–$95 |
 | 3mm steel plate/angle (~110mm × ~4 m) | 1 lot | Metal Supermarkets | door | $45–$80 |
 | Combined corner plate (right corners) | 2 ea | Local fab | walkway | $50–$80 |
-| 4mm folded plate | 4 ea | local fab | ibc-frame | $30–$50 |
-| Shutter plate (⅛ steel 10×8) + slide channel | 1 ea | local fab | optics | $25–$50 |
-| 75mm Ø × 150mm steel stub shaft | 2 ea | steel service center | lightlock | $30–$50 |
+| 4mm folded plate | 4 ea | Local fab | ibc-frame | $30–$50 |
+| Shutter plate (⅛ steel 10×8) + slide channel | 1 ea | Local fab | optics | $25–$50 |
+| 75mm Ø × 150mm steel stub shaft | 2 ea | Steel service center | lightlock | $30–$50 |
 | Steel backing plate 6×6×⅛ + welded frame | 1 ea | Metal Supermarkets | optics | $20–$40 |
 | Right walkway cantilever frame | 1 lot | Metal Supermarkets | walkway | $28–$40 |
 | Wall cleat (left corners) | 2 ea | Local fab | walkway | $20–$35 |
@@ -327,9 +327,9 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 |------|-----|----------|---------|-----------|
 | Interior matte-black paint | 1 lot | Home Depot | interior | $100–$160 |
 | 2" black Gorilla Tape | 6 roll | Home Depot | film | $72 |
-| Matte-black interior finish | 1 ea | local | lightlock | $40–$70 |
+| Matte-black interior finish | 1 ea | Local fab | lightlock | $40–$70 |
 | Primer + paint | 1 lot | Hardware store | ibc-frame | $30–$50 |
-| Flat black paint (RAL 9005) | 1 qt | local | panel | $10–$20 |
+| Flat black paint (RAL 9005) | 1 qt | Local fab | panel | $10–$20 |
 | Loctite PL Premium construction adhesive | 2 tube | Home Depot | tray | $15 |
 | Silicone bead sealant (black, UV-stable) | 1 ea | McMaster-Carr | lightlock | $10–$15 |
 | Flat black epoxy spray paint | 1 can | Hardware store | shelf | $12 |
@@ -377,10 +377,10 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | Plastic fabrication (roll 2 cylinders, hot-air / extrusion weld, fit, bearings) | 1 lot | Local plastic fab | lightlock | $800–$1,150 |
-| Welding / fabrication (frame assembly) | 1 lot | local fab | ibc-frame | $688–$1,018 |
-| Fabrication (cut, brake, weld, press sump) | 1 lot | local sheet metal | tray | $450–$850 |
+| Welding / fabrication (frame assembly) | 1 lot | Local fab | ibc-frame | $688–$1,018 |
+| Fabrication (cut, brake, weld, press sump) | 1 lot | Local sheet metal | tray | $450–$850 |
 | Delivery — short haul (<50 miles), tilt-bed | 1 job | Commercial tilt-bed hire | container | $300–$800 |
-| Welding / fabrication | 1 lot | local fab | door | $200–$350 |
+| Welding / fabrication | 1 lot | Local fab | door | $200–$350 |
 | **fabrication-labor subtotal** | | | | **$2,438–$4,168** |
 
 ## Supplier consolidation (largest orders first)
@@ -388,17 +388,16 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
 | containermgt.com | 1 | container | $2,000–$3,500 |
+| Local fab | 16 | adhesives-finishes, fabrication-labor, steel-structural | $1,946–$3,156 |
 | McMaster-Carr | 41 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets | $1,772–$2,715 |
 | Amazon | 71 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,110–$2,629 |
 | Online Metals | 10 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,354–$1,885 |
-| local fab | 6 | fabrication-labor, steel-structural | $1,093–$1,718 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,291–$1,618 |
 | McNichols | 3 | fasteners-hardware, plastics-sheet | $1,050–$1,375 |
-| Local fab | 8 | steel-structural | $803–$1,348 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
 | Home Depot | 19 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety | $804–$984 |
-| local sheet metal | 1 | fabrication-labor | $450–$850 |
+| Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
 | Renogy | 3 | electrical-power | $829 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
 | Automation Overstock | 4 | bearings-motion | $620 |
@@ -416,12 +415,10 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Southco | 1 | fasteners-hardware | $60–$100 |
 | AutomationDirect | 3 | electrical-distribution, electrical-power | $95 |
 | B&H Photo | 1 | fabric-textile | $95 |
-| local | 2 | adhesives-finishes | $50–$90 |
 | Ferguson | 3 | plumbing-fittings | $56–$88 |
 | Hardware store | 2 | adhesives-finishes | $42–$62 |
 | VXB | 1 | bearings-motion | $40–$60 |
-| Local sheet metal | 2 | steel-structural | $50 |
-| steel service center | 1 | steel-structural | $30–$50 |
+| Steel service center | 1 | steel-structural | $30–$50 |
 | Powerwerx | 1 | electrical-distribution | $40 |
 | Blue Sea | 2 | electrical-distribution | $30 |
 | Irrigation supply | 1 | plumbing-fittings | $10 |

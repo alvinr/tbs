@@ -423,7 +423,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Aluminum U-channel (per meter) | Gasket retainer + PP-skin retention (perimeter + housing-surround + stiffener grid) | 40 m | Online Metals | $120–$200 |
 | Southco C2-33 cam compression latch | Interior-mounted corner latches (compress the perimeter + cut + lip seals) | 4 ea | Southco / McMaster-Carr | $60–$100 |
 | 4mm black PP sheet + EPDM lip | B2 punch-out bay — 4-wall light-tight tube (~890mm deep) around the housing (rev11) | 1 lot | TAP Plastics | $60–$120 |
-| Flat black paint (RAL 9005) | Bay/weld touch-in (PP skins are pre-pigmented black) | 1 qt | local | $10–$20 |
+| Flat black paint (RAL 9005) | Bay/weld touch-in (PP skins are pre-pigmented black) | 1 qt | Local fab | $10–$20 |
 | 316 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black | Interior pull handle — through-bolted to the frame (§4.3) | 1 ea | McMaster-Carr | $20–$35 |
 | **Panel total** | | | | **$1,124–$1,691** |
 <!-- END parts:panel -->
@@ -439,11 +439,11 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | 5mm UV-stabilized HDPE sheet (black) | Ø900 fixed housing shell — LT_HOUSING_T (rolled + extrusion-welded, ~7 m²) | 1 lot | TAP Plastics / Online Metals | $180–$280 |
 | 4mm black polypropylene sheet | Ø864 revolving drum shell + top/bottom caps — LT_DRUM_T (~7 m²) | 1 lot | TAP Plastics / Curbell | $150–$240 |
 | SKF 6215-2RS1 sealed bearing | Top and bottom (drum rotation) | 2 ea | Bearing World / Applied | $90–$130 |
-| 75mm Ø × 150mm steel stub shaft | Bearing shafts | 2 ea | steel service center | $30–$50 |
+| 75mm Ø × 150mm steel stub shaft | Bearing shafts | 2 ea | Steel service center | $30–$50 |
 | Felt/brush wiper strip + 12mm closed-cell neoprene | Drum↔housing rotating seal (opening edges + top/bottom rings) + drum top/bottom | 1 lot | McMaster-Carr | $40–$60 |
 | Silicone bead sealant (black, UV-stable) | Bearing housing seal | 1 ea | McMaster-Carr | $10–$15 |
 | 100mm Ø SS grab rail | Interior handle, 400mm cut length | 1 ea | McMaster-Carr | $15–$25 |
-| Matte-black interior finish | Black-pigmented sheet (no etch-prime); scuff + flat-black touch-in at welds | 1 ea | local | $40–$70 |
+| Matte-black interior finish | Black-pigmented sheet (no etch-prime); scuff + flat-black touch-in at welds | 1 ea | Local fab | $40–$70 |
 | Stainless fasteners + nylon isolation washers | Steel shaft/bearing ↔ plastic shell joints (no galvanic couple) | 1 lot | McMaster-Carr | $30–$50 |
 | Plastic fabrication (roll 2 cylinders, hot-air / extrusion weld, fit, bearings) | 16–22 hrs labor | 1 lot | Local plastic fab | $800–$1,150 |
 | **Lightlock total** | | | | **$1,385–$2,070** |
@@ -455,12 +455,12 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 <!-- BEGIN parts:swing -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Ø89×8mm CHS pivot post + machined hub / thrust collar | Upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever — SF 3.7 in S355 | 1 ea | Metal Supermarkets / local fab | $180–$300 |
+| Ø89×8mm CHS pivot post + machined hub / thrust collar | Upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever — SF 3.7 in S355 | 1 ea | Metal Supermarkets / Local fab | $180–$300 |
 | Turntable thrust bearing, 12″ (Ø305) 1000 lb | Carries the ~330 kg (3.24 kN) vertical load at the post base; thrust-only | 1 ea | VXB | $40–$60 |
 | Flanged sleeve (journal) bearing, Ø90 bore | Top + bottom radial location of the post / hub (SAE 841 bronze) | 2 ea | McMaster-Carr | $60–$110 |
-| Drum support cage, 40 × 40 × 3mm SHS | Steel frame carrying the Ø900 housing + drum on the swinging leaf | 1 lot | local fab | $70–$120 |
+| Drum support cage, 40 × 40 × 3mm SHS | Steel frame carrying the Ø900 housing + drum on the swinging leaf | 1 lot | Local fab | $70–$120 |
 | Top + bottom wall stays + 4-bolt anchor plates | Transport lock — M16 turnbuckle + eye/hook rods + inside/outside wall plates | 2 set | McMaster-Carr | $90–$160 |
-| Drop-in rail saddles + tapered dowels | For the 2 removable left film rails (TL + BL); dowels set the film datum | 4 ea | local fab / McMaster-Carr | $80–$130 |
+| Drop-in rail saddles + tapered dowels | For the 2 removable left film rails (TL + BL); dowels set the film datum | 4 ea | Local fab / McMaster-Carr | $80–$130 |
 | **Swing total** | | | | **$520–$880** |
 <!-- END parts:swing -->
 
@@ -472,7 +472,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 |------|------|-----|----------|-----------|
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame members | 3 ea | Metal Supermarkets | $90–$120 |
 | 3mm steel plate/angle (~110mm × ~4 m) | Top + bottom seal lips — threshold upstand + frame-top downstand; seal paths #3–#4 | 1 lot | Metal Supermarkets | $45–$80 |
-| Welding / fabrication | Frame assembly + wall attachment | 1 lot | local fab | $200–$350 |
+| Welding / fabrication | Frame assembly + wall attachment | 1 lot | Local fab | $200–$350 |
 | **Door total** | | | | **$335–$550** |
 <!-- END parts:door -->
 

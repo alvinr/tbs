@@ -167,7 +167,7 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 <!-- BEGIN parts:shelf -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Phenolic-faced plywood, 18 mm | cut to 300×600 mm | 1 ea | Home Depot / lumber yard | $60 |
+| Phenolic-faced plywood, 18 mm | cut to 300×600 mm | 1 ea | Home Depot / Lumber yard | $60 |
 | 25×25×3 mm steel SHS | 6 m (frame + spill lip) | 1 lot | Online Metals / Metal Supermarkets | $30 |
 | Continuous (piano) hinge, 600 mm | stainless/steel, ~32 mm leaf | 1 ea | McMaster-Carr | $20 |
 | Folding shelf stays/brackets | fold-flat, ~30–50 kg rating | 2 ea | Amazon / McMaster-Carr | $24 |

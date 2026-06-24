@@ -180,25 +180,49 @@ CONTAINER = [
 ]
 
 # §6 Housed revolving-door light lock (plastic-skin) — detail already = scenario.
+# §6 = hinged-panel-report.md §8.2 (housing + drum). Line items mirror that BOM.
 LIGHTLOCK = [
-    LineItem("5mm UV-HDPE sheet — Ø900 housing shell (~7 m²)", 180, 230, 280, "TAP Plastics / Online Metals"),
-    LineItem("4mm PP sheet — Ø864 drum shell + caps + steel stub shafts ×2", 180, 215, 270, "TAP / Curbell + steel service center"),
-    LineItem("SKF 6215-2RS1 sealed bearing (×2)", 90, 110, 130, "Bearing World / Applied Industrial"),
-    LineItem("Seals — neoprene wiper + silicone + brush (drum↔housing)", 90, 110, 130, "McMaster-Carr"),
-    LineItem("Hardware — SS grab rail + M10 stainless bolts (×14)", 60, 75, 90, "McMaster / Fastenal"),
-    LineItem("Nylon isolation washers + stainless fasteners (no galvanic couple)", 25, 32, 40, "McMaster-Carr"),
-    LineItem("Matte-black interior finish", 40, 55, 70, "Rattle-can / local shop"),
-    LineItem("Plastic fabrication — roll + weld 2 cylinders, cap/shaft/bearing fit (16–22 hrs)", 800, 975, 1150, "Local plastic fab shop"),
+    LineItem("5mm UV-stabilized HDPE — Ø900 housing shell (~7 m²)", 180, 230, 280, "rolled + extrusion-welded; TAP / Online Metals"),
+    LineItem("4mm PP — Ø864 drum shell + top/bottom caps (~7 m²)", 150, 195, 240, "TAP / Curbell"),
+    LineItem("SKF 6215-2RS1 sealed bearing (×2)", 90, 110, 130, "Bearing World / Applied"),
+    LineItem("75mm Ø × 150mm steel stub shafts (×2)", 30, 40, 50, "steel service center"),
+    LineItem("Felt/brush wiper + 12mm neoprene (drum↔housing seal)", 40, 50, 60, "McMaster-Carr"),
+    LineItem("Silicone bead sealant (bearing housing)", 10, 13, 15, "McMaster-Carr"),
+    LineItem("100mm Ø SS grab rail (400mm cut)", 15, 20, 25, "McMaster-Carr"),
+    LineItem("Matte-black interior finish", 40, 55, 70, "scuff + flat-black touch-in"),
+    LineItem("Stainless fasteners + nylon isolation washers (no galvanic couple)", 30, 40, 50, "McMaster-Carr"),
+    LineItem("Plastic fabrication — roll + weld 2 cylinders, fit (16–22 hrs)", 800, 975, 1150, "Local plastic fab"),
 ]
 
-# §6b Panel swing pivot — detail already = scenario.
+# §6b = hinged-panel-report.md §8.3 (swing pivot) + §8.4 (fixed door frame). Line items mirror both.
 SWINGPIVOT = [
-    LineItem("Ø89×8 CHS pivot post + machined hub / thrust collar", 180, 220, 260, "Metal Supermarkets / local fab"),
-    LineItem("Thrust + journal bearings (12″ turntable thrust + 2× 89mm bronze sleeve)", 180, 210, 250, "VXB + McMaster SAE 841"),
-    LineItem("Drum support cage, 40×40×3mm SHS", 80, 90, 110, "Local fab"),
-    LineItem("Top + bottom wall stays + 4-bolt anchor plates", 120, 140, 160, "Turnbuckles + rods + plates"),
-    LineItem("Drop-in rail saddles + tapered dowels (×4, removable left film rails)", 90, 110, 130, "Local fab / McMaster"),
-    point("Fixed RHS door frame (50×50×3 RHS seal landing + EPDM seals)", 462, "the hinged light-trap panel's seal-landing frame — master §7a; was omitted from the cost-breakdown"),
+    # §8.3 swing pivot hardware
+    LineItem("Ø89×8 CHS pivot post + machined hub / thrust collar", 180, 240, 300, "carries ~3.6 kN·m swing cantilever; Metal Supermarkets / local fab"),
+    LineItem("Turntable thrust bearing, 12″ (Ø305) 1000 lb", 40, 50, 60, "VXB"),
+    LineItem("Flanged sleeve (journal) bearings, Ø90 bore (×2)", 60, 85, 110, "McMaster SAE 841"),
+    LineItem("Drum support cage, 40×40×3mm SHS", 70, 95, 120, "Local fab"),
+    LineItem("Top + bottom wall stays + 4-bolt anchor plates", 90, 125, 160, "turnbuckles + rods + plates"),
+    LineItem("Drop-in rail saddles + tapered dowels (×4, removable left film rails)", 80, 105, 130, "Local fab / McMaster"),
+    # §8.4 fixed door frame
+    LineItem("Fixed door frame — 50×50×3 RHS members (×3)", 90, 105, 120, "Metal Supermarkets"),
+    LineItem("Fixed door frame — top/bottom seal lips (3mm steel ~110×4m)", 45, 63, 80, "seal paths #3–#4"),
+    LineItem("Fixed door frame — welding/fabrication + wall attachment", 200, 275, 350, "Local fab"),
+]
+
+# §6c = hinged-panel-report.md §8.1 (panel structure). Line items mirror that BOM. This section was
+# MISSING from the model — the stepped panel itself (frame, skins, EPDM, latches, B2 bay, handle) had
+# no home, so the grand total undercounted the hinged panel by its full cost.
+PANEL = [
+    LineItem("50×50×3mm RHS mild steel — frame perimeter + members (4× 6m)", 120, 140, 160, "Metal Supermarkets"),
+    LineItem("4mm black PP sheet — panel skins both faces (~12 m², ×4)", 260, 340, 420, "rev11; TAP / Curbell"),
+    LineItem("18mm exterior-grade plywood — Fan B mount band (0.5 sheet)", 30, 40, 50, "Home Depot"),
+    LineItem("3mm aluminum plate — corner-zone core plates (×2)", 360, 410, 460, "Online Metals"),
+    LineItem("20mm EPDM gasket — perimeter + housing-surround + cut seals (~21 m)", 84, 105, 126, "McMaster-Carr"),
+    LineItem("Aluminum U-channel — gasket + PP-skin retention (~40 m)", 120, 160, 200, "Online Metals"),
+    LineItem("Southco C2-33 cam compression latch (×4)", 60, 80, 100, "Southco / McMaster"),
+    LineItem("4mm PP + EPDM lip — B2 punch-out bay (4-wall tube ~890mm)", 60, 90, 120, "rev11"),
+    LineItem("Flat-black paint (RAL 9005) — bay/weld touch-in", 10, 15, 20, "local"),
+    LineItem("316 SS D-grab pull handle (~300mm) + 2× M8 + backing plate", 20, 28, 35, "matte-black, §4.3"),
 ]
 
 
@@ -302,7 +326,8 @@ def emit_funding_level1() -> str:
         ("Power & electrical (600W solar · LiFePO4 · MPPT · distribution · protection · lighting)", _sec("5a").mid),
         ("Ventilation & cooling (2 fans · evap cooler + 12V→120V inverter · light-safe ducting)", _sec("5b").mid),
         ("Perimeter walkway (4 sections + drum-exit punch-out)", _sec("6a").mid),
-        ("Panel swing pivot (Ø89 post + bearings + cage + wall stays)", _sec("6b").mid),
+        ("Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + door frame)", _sec("6b").mid),
+        ("Hinged panel structure (stepped frame + PP skins + Al core + EPDM + latches + B2 bay + handle)", _sec("6c").mid),
         ("Cyanotype chemistry + muslin substrate (50-print run, Standard tier)", _sec("7").mid),
     ]
     sub = sum(v for _, v in rows)
@@ -325,8 +350,9 @@ def emit_master_summary() -> str:
         ("5. Print washing — water system (incl. IBC stacking frame)", _sec("5")),
         ("6. Electrical — power, circuits, wiring", _sec("5a")),
         ("7. Housed revolving-door light lock (plastic-skin custom fabrication)", _sec("6")),
-        ("7a. Panel swing pivot (Ø89 pivot post + bearings + cage + wall stays + rail saddles)", _sec("6b")),
+        ("7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame)", _sec("6b")),
         ("7b. Perimeter walkway (4 sections + drum-exit punch-out)", _sec("6a")),
+        ("7c. Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle)", _sec("6c")),
         ("8. Cooling & ventilation", _sec("5b")),
         ("9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier)", _sec("7")),
         ("10. Printmaking tools & consumables", TOOLS),
@@ -342,7 +368,7 @@ def emit_master_summary() -> str:
 
 
 def master_total() -> tuple:
-    ids = ("1", "2", "3", "4", "5", "5a", "6", "6b", "6a", "5b", "7")
+    ids = ("1", "2", "3", "4", "5", "5a", "6", "6b", "6c", "6a", "5b", "7")
     lo = sum(_sec(i).low for i in ids) + TOOLS.low + SAFETY.low
     hi = sum(_sec(i).high for i in ids) + TOOLS.high + SAFETY.high
     return (lo, hi)
@@ -351,7 +377,7 @@ def master_total() -> tuple:
 def funding_level1_total() -> int:
     sub = (_sec("1").mid + _sec("2").mid + _sec("3").mid + _sec("4").mid + FRONT_BOARD_MID
            + _sec("6").mid + _sec("5").mid + _sec("5a").mid + _sec("5b").mid + _sec("6a").mid
-           + _sec("6b").mid + _sec("7").mid)
+           + _sec("6b").mid + _sec("6c").mid + _sec("7").mid)
     return sub + _r(sub * 0.10, 10)
 
 
@@ -386,7 +412,8 @@ def _scenario_a_rows() -> list:
         ("Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy)", _sec("5b").low),
         ("Revolving drum light trap (plastic-skin custom fabrication)", _sec("6").low),
         ("Perimeter walkway (4 sections, removable, GRP grating)", _sec("6a").low),
-        ("Panel swing pivot (Ø89 pivot + bearings + cage + wall stays + saddles)", _sec("6b").low),
+        ("Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame)", _sec("6b").low),
+        ("Hinged panel structure (stepped frame + PP skins + Al core + EPDM + latches + B2 bay + handle)", _sec("6c").low),
         ("Cyanotype chemistry + substrate (50 prints)", _sec("7").low),
         ("Transport per deployment (local)", SCEN_A["transport"]),
         ("Permits (minimal)", SCEN_A["permits"]),
@@ -404,7 +431,8 @@ def _scenario_b_rows() -> list:
         ("Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy)", _sec("5b").mid),
         ("Revolving drum light trap (plastic-skin custom fabrication)", _sec("6").mid),
         ("Perimeter walkway (4 sections, removable, GRP grating)", _sec("6a").mid),
-        ("Panel swing pivot (Ø89 pivot + bearings + cage + wall stays + saddles)", _sec("6b").mid),
+        ("Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame)", _sec("6b").mid),
+        ("Hinged panel structure (stepped frame + PP skins + Al core + EPDM + latches + B2 bay + handle)", _sec("6c").mid),
         ("Cyanotype chemistry + substrate (50 prints)", _sec("7").mid),
         ("Rodenstock Apo-Ronar 1,200mm lens", SCEN_B["lens"]),
         ("Transport per deployment (50–100 miles)", SCEN_B["transport"]),
@@ -460,6 +488,7 @@ _FPM = "film-plane-mechanism-report.md"
 _FC  = "film-clamp-mechanism-report.md"
 _TSB = "tilt-swing-board-report.md"
 _WK  = "walkway-report.md"
+_HP  = "hinged-panel-report.md"
 
 
 def capital_mid() -> int:
@@ -492,6 +521,7 @@ _CA_SYSTEMS = [
     ("Perimeter walkway",       "6a", "GRP grating + steel cantilevers"),
     ("Light lock",              "6",  "Plastic-skin custom fabrication"),
     ("Swing pivot",             "6b", "Pivot post + bearings + cage + fixed RHS door frame"),
+    ("Hinged panel structure",  "6c", "Stepped frame + PP skins + Al core + EPDM + latches + B2 bay"),
     ("Interior conversion",     "2",  "Insulation, sealing, safelight"),
     ("Ventilation & cooling",   "5b", "Fans + cooler + inverter + baffle-duct fab + canopy"),
     ("Optics — pinhole",        "3",  "Trivial (it is a pinhole)"),
@@ -551,6 +581,7 @@ SECTIONS = [
     Section("6",  "Housed revolving-door light lock (plastic-skin custom fabrication)", *total(LIGHTLOCK)),
     Section("6a", "Perimeter walkway (4 sections + drum-exit punch-out)", *total(WALKWAY)),
     Section("6b", "Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles)", *total(SWINGPIVOT)),
+    Section("6c", "Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle)", *total(PANEL)),
     _printmaking_section(),
     Section("8",  "Transportation (per deployment)", 300, 750, 2000),
     Section("9",  "Licenses & permits", 220, 790, 1620),
@@ -693,6 +724,17 @@ def _inline_blocks() -> dict:
         # walkway-report.md §10 parts-list total — the §6a WALKWAY band (low–high).
         "walkway-total-low":   (_WK, lambda: f"${_sec('6a').low:,}"),
         "walkway-total-high":  (_WK, lambda: f"${_sec('6a').high:,}"),
+        # hinged-panel-report.md §8.1–8.5 — the panel's four assemblies (§6c / §6 / §6b-split) + total.
+        "hp-panel-low":        (_HP, lambda: f"${total(PANEL)[0]:,}"),
+        "hp-panel-high":       (_HP, lambda: f"${total(PANEL)[2]:,}"),
+        "hp-housing-low":      (_HP, lambda: f"${total(LIGHTLOCK)[0]:,}"),
+        "hp-housing-high":     (_HP, lambda: f"${total(LIGHTLOCK)[2]:,}"),
+        "hp-swing-low":        (_HP, lambda: f"${_swing_only('low'):,}"),
+        "hp-swing-high":       (_HP, lambda: f"${_swing_only('high'):,}"),
+        "hp-doorframe-low":    (_HP, lambda: f"${_door_only('low'):,}"),
+        "hp-doorframe-high":   (_HP, lambda: f"${_door_only('high'):,}"),
+        "hp-total-low":        (_HP, lambda: f"${_panel_grand('low'):,}"),
+        "hp-total-high":       (_HP, lambda: f"${_panel_grand('high'):,}"),
     }
 
 
@@ -742,6 +784,20 @@ def _film_line(prefix: str) -> LineItem:
 
 def _clamp_system(which: str) -> int:    # which = 'low' | 'high'
     return getattr(_film_line("Cam-lever spring clamps"), which) + _film_line("Clamp mounting").mid
+
+
+# hinged-panel-report.md §8.3/§8.4 — §6b SWINGPIVOT bundles the swing pivot (§8.3) + door frame (§8.4);
+# split them out for the report's separate §8.3/§8.4/§8.5 rows.
+def _swing_only(which: str) -> int:
+    return sum(getattr(li, which) for li in SWINGPIVOT if not li.label.startswith("Fixed door frame"))
+
+
+def _door_only(which: str) -> int:
+    return sum(getattr(li, which) for li in SWINGPIVOT if li.label.startswith("Fixed door frame"))
+
+
+def _panel_grand(which: str) -> int:     # §8.5 total = §6 + §6b + §6c
+    return getattr(_sec("6"), which) + getattr(_sec("6b"), which) + getattr(_sec("6c"), which)
 
 
 def _elec_canopy() -> int:    # shade cloth + frame
@@ -848,12 +904,13 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 909,  "total": 1210, "per_print": 24},  # 909 not 910: consistent ferri rounding ($104, not the doc's hand-rounded $105)
     "standard": {"chem": 1353, "total": 1650, "per_print": 33},
     "rich":     {"chem": 2681, "total": 2980, "per_print": 60},
-    "grand_total": (20335, 25620, 33016),  # +85 §5a electrical-safety; +174/274/368 §6a walkway (bracket fab reconciled to report §10 all-in figures)
+    "grand_total": (21122, 26865, 34675),  # +787/1245/1659 §6: added §6c hinged-panel structure (was MISSING; $1,124/1,408/1,691) + §6/§6b reconciled to the report §8 line items
     "walkway": (2000, 2488, 2975),   # §6a fab line raised so bracket scope matches walkway-report §10 ($742–$1,255 all-in)
     "water": (4211, 5258, 6297),   # tray 1177→1300 / spray 210→235 (+ mid/high) — dedicated report §6 detailed BOM
     "container": (2300, 3300, 4300),
-    "lightlock": (1465, 1802, 2160),
-    "swingpivot": (1112, 1232, 1372),
+    "lightlock": (1385, 1728, 2070),   # §6 = hinged-panel §8.2 (housing + drum) line items
+    "swingpivot": (855, 1143, 1430),   # §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
+    "panel": (1124, 1408, 1691),       # §6c = hinged-panel §8.1 (panel structure) — was MISSING from the model
     "interior": (950, 1138, 1350),
     "optics": (95, 165, 240),
     "film": (3538, 3813, 4088),   # §4 BOM folded in (was hand-set $3,100/$3,650/$4,200, below its own BOM)
@@ -879,8 +936,8 @@ def check() -> list[str]:
     if total(WATER) != EXPECTED["water"]:
         errs.append(f"water {total(WATER)} != {EXPECTED['water']}")
     for key, items in (("container", CONTAINER), ("lightlock", LIGHTLOCK), ("swingpivot", SWINGPIVOT),
-                       ("interior", INTERIOR), ("optics", OPTICS), ("film", FILM), ("ventilation", VENTILATION),
-                       ("power", POWER)):
+                       ("panel", PANEL), ("interior", INTERIOR), ("optics", OPTICS), ("film", FILM),
+                       ("ventilation", VENTILATION), ("power", POWER)):
         if total(items) != EXPECTED[key]:
             errs.append(f"{key} {total(items)} != {EXPECTED[key]}")
     if grand_total() != EXPECTED["grand_total"]:

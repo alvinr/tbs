@@ -84,8 +84,8 @@ The container moves by commercial hire tilt-bed truck. No CDL is required for th
 ## 6. Budget and Use of Funds
 All figures are drawn from the [full cost breakdown](project-cost-breakdown.md). Per-item procurement details with supplier URLs are in the [master shopping list](master-shopping-list.md). Three funding levels are presented to allow partial or phased support.
 
-### Level 1 — Core Build (~<!-- BEGIN costing:fund-l1-total -->$28,110<!-- END costing:fund-l1-total -->, Standard scenario)
-Everything required to operate the camera for a first deployment. Figures are the Standard (Mid) column of the [cost breakdown](project-cost-breakdown.md); Low–High scenarios span ~<!-- BEGIN costing:fund-scenario-span -->$20,000–$33,000<!-- END costing:fund-scenario-span -->.
+### Level 1 — Core Build (~<!-- BEGIN costing:fund-l1-total -->$29,475<!-- END costing:fund-l1-total -->, Standard scenario)
+Everything required to operate the camera for a first deployment. Figures are the Standard (Mid) column of the [cost breakdown](project-cost-breakdown.md); Low–High scenarios span ~<!-- BEGIN costing:fund-scenario-span -->$21,000–$35,000<!-- END costing:fund-scenario-span -->.
 
 <!-- BEGIN costing:funding-level1 -->
 | Item | Cost |
@@ -95,15 +95,16 @@ Everything required to operate the camera for a first deployment. Figures are th
 | Pinhole plate (precision laser-drilled, SS-302, interchangeable frame) | $165 |
 | Film plane mechanism (4-corner Option A, manual actuation) | $3,813 |
 | Tilt-swing front board mechanism | $1,470 |
-| Housed revolving-door light trap (plastic-skin Ø900 housing + C-shell drum, bearings, seals, fabrication) | $1,802 |
+| Housed revolving-door light trap (plastic-skin Ø900 housing + C-shell drum, bearings, seals, fabrication) | $1,728 |
 | Processing water system (tray, spray bar, 3-stage filtration, IBC stacking frame) | $5,258 |
 | Power & electrical (600W solar · LiFePO4 · MPPT · distribution · protection · lighting) | $2,350 |
 | Ventilation & cooling (2 fans · evap cooler + 12V→120V inverter · light-safe ducting) | $884 |
 | Perimeter walkway (4 sections + drum-exit punch-out) | $2,488 |
-| Panel swing pivot (Ø89 post + bearings + cage + wall stays) | $1,232 |
+| Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + door frame) | $1,143 |
+| Hinged panel structure (stepped frame + PP skins + Al core + EPDM + latches + B2 bay + handle) | $1,408 |
 | Cyanotype chemistry + muslin substrate (50-print run, Standard tier) | $1,650 |
-| Contingency (10%) | ~$2,560 |
-| **Level 1 total** | **~$28,110** |
+| Contingency (10%) | ~$2,680 |
+| **Level 1 total** | **~$29,475** |
 <!-- END costing:funding-level1 -->
 
 ### Level 2 — First Deployment (+$1,350–2,800)
@@ -126,7 +127,7 @@ Video documentation, process photography, and initial publication:
 | Publication design (zine or catalog, print run) | $500–1,500 |
 | **Level 3 total** | **~$2,000–4,000** |
 
-**Combined (Levels 1+2+3):** ~<!-- BEGIN costing:fund-combined -->$31,460–34,910<!-- END costing:fund-combined --> for a complete first-year program with three public deployments, 50-print edition, and full documentation.
+**Combined (Levels 1+2+3):** ~<!-- BEGIN costing:fund-combined -->$32,825–36,275<!-- END costing:fund-combined --> for a complete first-year program with three public deployments, 50-print edition, and full documentation.
 
 ## 7. Timeline
 A 12-month build and deployment program:

@@ -6,7 +6,7 @@
 
 TBS-001 requires a light-tight seal at the cargo door end of the container that
 simultaneously allows personnel access during operation without admitting daylight.
-The hinged light-trap panel fills both roles: it seals the full 2362 × 2,388mm
+The hinged light-trap panel fills both roles: it seals the full <!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm --> × <!-- BEGIN fact:container_height_mm -->2,388<!-- END fact:container_height_mm -->mm
 cargo door opening as a rigid structural panel, and incorporates a revolving drum
 light trap that permits operators to enter and exit the darkened interior at any
 time without opening the panel or breaking the light seal. In case of emergency, or to easy loading and unloading of materials, the whole hinged panel can open fully, being locked from the inside.
@@ -19,7 +19,7 @@ time without opening the panel or breaking the light seal. In case of emergency,
 - 100% light exclusion — no straight-line optical path from exterior to interior
 - Single-operator personnel access at any time during exposure
 - 180° outward swing for full-width loading access (IBC totes, equipment)
-- ~56° transport swing about the Ø89 pivot post — carries the B2 punch-out bay inboard of the ISO container doors (true min X +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm -->mm) + hardware
+- ~<!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->° transport swing about the Ø89 pivot post — carries the B2 punch-out bay inboard of the ISO container doors (true min X +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm -->mm) + hardware
 - Emergency egress operable from inside without tools
 - Weatherproof for outdoor field deployment (IP44 rated seals)
 - Single-person mode conversion (~5 minutes)
@@ -49,7 +49,7 @@ while keeping the corners flush with the container walls.
 |------|--------------|-----------|---------------|-------------|
 | Near corner | 0–653 | 653 | 40 | 4mm PP skin + 3mm Al core + 4mm PP skin (40mm framed); **18mm-ply Fan-B mount band** bottom→1,125mm |
 | Center | 653–1,709 | 1,056 | 120 | 4mm PP skin + 84mm RHS frame + 4mm PP skin |
-| Far corner | 1,709–2,362 | 653 | 40 | 4mm PP skin + 3mm Al core + 4mm PP skin (40mm framed) |
+| Far corner | 1,709–<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm --> | 653 | 40 | 4mm PP skin + 3mm Al core + 4mm PP skin (40mm framed) |
 
 The 80mm step between corner and center zones occurs at Yd=653mm and
 Yd=1,709mm (widened in rev 8 to frame the Ø900 housing). The center zone houses the
@@ -61,7 +61,7 @@ flush-faced panels that seal against the fixed door frame.
 | Parameter | Value |
 |-----------|-------|
 | Frame material | 50 × 50 × 3mm RHS mild steel |
-| Outer dimensions | 2362 × 2,388mm |
+| Outer dimensions | <!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm --> × <!-- BEGIN fact:container_height_mm -->2,388<!-- END fact:container_height_mm -->mm |
 | Skin (each face) | **4mm PP plastic sheet** (rev11; same material as the drum/housing), set in U-channels — black-pigmented, light-tight, moisture/chemical-proof. **Exception:** an 18mm exterior-grade plywood band on the Fan B corner (bottom up to 1,125mm) for rigid fan/duct mounting + screw retention |
 | Interior finish | Black-pigmented sheet (PP) + flat-black touch-in — optically dead at visible wavelengths |
 | Frame perimeter | Welded corners, mitered joints |
@@ -83,7 +83,7 @@ the same exterior door plane (X=0), concentric inboard of the panel-perimeter se
 
 ### 2.4 Movable-Panel Weight Breakdown
 
-The transport scheme swings the panel + drum ~56° about the vertical Ø89 pivot, so
+The transport scheme swings the panel + drum ~<!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->° about the vertical Ø89 pivot, so
 the **movable assembly** is everything that rotates about that pivot. The breakdown
 below is first-principles from the geometry constants (reproducible via
 `src/generators/generate_movable_panel_weight.py`); it isolates the swing zone
@@ -264,7 +264,7 @@ standard commercial-darkroom-door arrangement, here custom-built to the panel.
 | Quantity | 1 post (carries the full bay + housing + drum swing cantilever, ~3.6 kN·m, SF ~3.7 in S355) |
 | Position | Far-left panel edge — X=175mm, Yd=2,287mm |
 | Mounting | Post fixed top + bottom to the container end structure; the swinging frame rotates on the hub bearings (vertical axis ⇒ balanced at any angle, no gravity torque) |
-| Swing | ~56° inboard to the transport position (locked by the top + bottom wall stays); swings clear of the door plane for personnel/equipment access |
+| Swing | ~<!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->° inboard to the transport position (locked by the top + bottom wall stays); swings clear of the door plane for personnel/equipment access |
 
 Under rev 9 (B2) the panel no longer carries just plywood skins: the punch-out bay,
 the fixed Ø900 housing, and the revolving drum all hang off the swinging leaf, roughly
@@ -319,7 +319,7 @@ See [§8.1](#81-panel-structure) for the part; the handle is also shown on the i
 ## 5. Rotating Transport System
 
 For transport the entire swinging assembly — the panel center section (Yd 180–2287), the B2
-punch-out bay, and the housing + revolving drum — **revolves ~56° about a vertical Ø89mm CHS
+punch-out bay, and the housing + revolving drum — **revolves ~<!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->° about a vertical Ø89mm CHS
 pivot post** (the reused film-plane far-left upright, at X=175mm / Yd=2,287mm). The swing carries
 the bay's ~890mm exterior overhang from outside the cargo-door plane to inboard of it, so the ISO
 doors close. The earlier "slide ~880mm on ceiling rails" scheme is **retired** — there is no
@@ -335,20 +335,20 @@ near-deck section lift out** before the swing; all are re-seated to datum afterw
 
 ### 5.1 Panel Positions
 
-**Sheet 4 — Rotating transport + swing clearance: panel swings 56° about the pivot (camera vs swung), removable left rails**
+**Sheet 4 — Rotating transport + swing clearance: panel swings <!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->° about the pivot (camera vs swung), removable left rails**
 ![TBS-001 Hinged Panel — Sheet 4: Rotating Transport + Swing Clearance](assets/hingepanel-sheet4.png)
 
 | Position | Bay front-right corner X | Container doors clear? |
 |----------|-------------------------|----------------------|
 | Operational (0°) | −890mm (bay protrudes ~890mm outside the door plane) | No — the cargo doors stay open during operation |
-| Transport (swung 56°) | +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm -->mm (true min X over the whole swept assembly — computed 58.6mm at this corner) | Yes — the swept frame is fully inboard of the closed door |
+| Transport (swung <!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->°) | +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm -->mm (true min X over the whole swept assembly — computed 58.6mm at this corner) | Yes — the swept frame is fully inboard of the closed door |
 
 ### 5.2 Locking
 
 | State | Method |
 |-------|--------|
 | Operational (0°) | 4 × interior cam latches (§4) compress the EPDM perimeter + cut seals against the door frame |
-| Transport (swung 56°) | Top + bottom **wall stays** — hook welded to the **swinging panel's left perimeter 50×50×3 RHS stile** (the steel frame member at the swing cut, Yd≈205) ↔ eye on the near wall, tensioned by turnbuckle, forming a couple. Engaged after the swing, released before swing-back. |
+| Transport (swung <!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->°) | Top + bottom **wall stays** — hook welded to the **swinging panel's left perimeter 50×50×3 RHS stile** (the steel frame member at the swing cut, Yd≈205) ↔ eye on the near wall, tensioned by turnbuckle, forming a couple. Engaged after the swing, released before swing-back. |
 
 > **Stay hooks land on steel, not the skin.** The transport-stay couple carries real tension, so both hooks weld to the **left perimeter RHS stile** of the swinging frame — *not* the 4mm PP plastic skin (rev11). They were relocated from the mid-corner (Yd≈350), which the plastic-skin swap left unbacked above the Z1125 ply band; the perimeter stile is the farthest point from the pivot (best lever arm) and a continuous welded steel load path into the frame.
 
@@ -376,7 +376,7 @@ the latches are released for the swing.
 ### 5.4 Transport Conversion Sequence
 
 The rotation transport + swing clearance vs the film-plane left mechanism is shown in
-**Sheet 4** (above): the panel + drum swing ~56° about the pivot, pulling the bay inboard of
+**Sheet 4** (above): the panel + drum swing ~<!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->° about the pivot, pulling the bay inboard of
 the door plane (true min X +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm --> mm); the two left film rails are struck (removable) so the
 swinging cage transitions the X=150 rail plane, then re-seat to the film datum.
 
@@ -397,7 +397,7 @@ Order of operations (single person, ~10 min) — see the [Operating Manual](oper
 4. **Strike the two left film rails (TL + BL)** — release each clamp bar, lift the rail
    out of its saddles, and stow.
 5. Release the four Southco cam latches (releases the perimeter + cut seals).
-6. **Swing the frame ~56° inboard** about the pivot, assisted (balanced about the
+6. **Swing the frame ~<!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->° inboard** about the pivot, assisted (balanced about the
    vertical axis — no gravity torque; control momentum at the stop).
 7. Engage the top + bottom wall stays (the transport lock).
 8. Close the ISO cargo doors (they clear the swung frame by +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm --> mm).

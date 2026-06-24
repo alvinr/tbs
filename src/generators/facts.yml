@@ -81,6 +81,13 @@ front_board_click_deg:
     - '(\d+\.\d+)°\s*per click'
     - '(\d+\.\d+)°/click'
 
+# Hinged-panel transport swing angle — SWING_LOCK_DEG; restated across the hinged-panel report.
+# INJECTION-ONLY (56 is a bare 2-digit value that recurs in other contexts).
+panel_swing_deg:
+  constant: SWING_LOCK_DEG
+  unit: deg
+  owner: hinged-panel-report.md
+
 # ── Optical constants (Part 2: restated across many docs; each already owned by tbs_constants) ──
 pinhole_diameter_mm:
   constant: PH_D

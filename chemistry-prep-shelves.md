@@ -16,21 +16,20 @@ Chemistry is mixed **before exposure**, so the shelf does not need to be permane
 deployed. It is a **wall-hinged fold-down** in the widened near walkway: folded DOWN to
 a counter-height work surface while mixing, and folded UP flat against the pinhole wall
 for transport and during exposure. Because it is only deployed while the film plane is
-parked, it is **fully decoupled from the film-plane swing** — replacing the previous
-ceiling-hung shelf and its swing/optics constraints.
+parked, it is **fully decoupled from the film-plane swing**.
 
 A dedicated water tap (TAP-01) on the pinhole wall provides filtered water from the blue
 supply line for chemistry mixing and wash-down. It is relocated to the **left of the
 shelf** (the battery bank is to the right); the branch riser tops at the stowed-shelf
-height (Z1375) and the spout reaches over the shelf to fill containers. Ball valve BV-06
+height and the spout reaches over the shelf to fill containers. Ball valve BV-06
 on the ¾" branch gives shut-off control from the prep position.
 
 ---
 
 ## 2. Location and Spatial Constraints
 
-The shelf is in the **widened near walkway** (500 mm deep, X≈1155–2629), hinged on the
-pinhole wall (Yd=0) at **X=1180–1780 — left of the battery bank** (X=1810). Deployed, it
+The shelf is in the **widened near walkway** (500 mm deep), hinged on the
+pinhole wall **left of the battery bank**. Deployed, it
 projects 300 mm into the walkway. The operator stands on the widened walkway and works
 facing the wall. When folded up, the full walkway is clear.
 
@@ -45,7 +44,7 @@ folded flat against the wall whenever the plane tilts/swings during exposure. No
 restriction is imposed.
 
 **Optical cone.** Even deployed, the shelf is clear of the optical cone. Its right edge
-(X=1,780 mm) sits left of the cone's left boundary at the shelf's deepest point (Yd=300):
+sits left of the cone's left boundary at the shelf's deepest point (Yd=300):
 
     cone_left(300) = PH_X + (FP_X_L − PH_X) × 300 / FP_Y
                    = 2,399 + (150 − 2,399) × 300 / 2,262
@@ -140,8 +139,8 @@ The shelf folds UP flat against the pinhole wall (top Z=1,375 mm) and latches.
 
 ## 5. Operator Access
 
-The operator stands on the widened near walkway (deck Z=130) at about X=1480 (shelf
-midpoint), facing the wall. The deployed surface at H=1,075 mm (945 mm above the deck) is
+The operator stands on the widened near walkway at about the shelf
+midpoint, facing the wall. The deployed surface (945 mm above the deck) is
 ergonomic counter height; the full 300 mm depth is reachable. The tap (left of the shelf)
 fills containers staged on the board.
 

@@ -64,10 +64,10 @@ where *f* is focal length in mm and *λ* = 0.00055mm (550 nm green light).
 
 | Parameter | TBS-002 (Mini-TBS) | TBS-001 (Container) | Derivation |
 |-----------|---------------|---------------------|------------|
-| Focal length (f) | 457mm | 2362mm | Box depth / container width |
-| Rayleigh optimal d | 0.95mm | 2.17mm | 1.9 × √(f × 0.00055) |
+| Focal length (f) | 457mm | <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm | Box depth / container width |
+| Rayleigh optimal d | 0.95mm | <!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm | 1.9 × √(f × 0.00055) |
 | Drill bit used | 1/32" (0.794mm) | Laser-drilled SS | Closest Home Depot standard |
-| Actual pinhole Ø | ~0.80mm | 2.17mm | Drill bit through aluminum can |
+| Actual pinhole Ø | ~0.80mm | <!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm | Drill bit through aluminum can |
 | f-number | f/575 | f/1088 | f / d |
 | Film plane | 406 × 457mm | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm | Box face / container face |
 | Usable image area | 356 × 406mm | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm | After mounting margins |
@@ -232,7 +232,7 @@ The armholes are on the prep box end face — the operator's face. They are cent
 4. **Wrist seal:** When in use, insert your arms through the sleeves and cinch heavy-duty rubber bands or elastic hair ties around your forearms to seal the openings. The cinch point should be snug enough to block light but not restrict circulation.
 5. **Test:** Insert your arms through the sleeves and verify you can reach the tray, the backing board, and manipulate binder clips with both hands. In a darkened room, shine a flashlight at the armhole from outside — check for any light leaks around the tape seal rings. Re-tape any gaps.
 
-### 4.8 Extraction Flap
+### 4.7 Extraction Flap
 
 The prep box end face (the face farthest from the pinhole) is an extraction flap, hinged at the top with duct tape. After exposure, the cyanotype print is no longer UV-sensitive and can be handled in full daylight. The extraction flap opens to allow the operator to remove the exposed print, unfold it from the board, and wash it externally — no need to disassemble the camera or break the light seal on the camera box.
 
@@ -246,7 +246,7 @@ The prep box end face (the face farthest from the pinhole) is an extraction flap
 
 **Note:** The extraction flap only needs to be light-tight during coating, tack-drying, and mounting (safelight operations). After exposure, the print is daylight-safe, so the flap can remain open during print removal and washing.
 
-### 4.7 Substrate: Watercolor Paper
+### 4.8 Substrate: Watercolor Paper
 
 **Why watercolor paper instead of muslin?**
 
@@ -400,28 +400,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 
 ---
 
-## 10. Comparison to TBS-001
-
-| Parameter | TBS-002 (Mini-TBS) | TBS-001 (Container) |
-|-----------|---------------|---------------------|
-| Camera body | Two moving boxes + photo tray | 20ft ISO shipping container |
-| Focal length | 457mm | 2362mm |
-| Pinhole | 0.80mm (drill bit) | 2.17mm (laser-drilled SS) |
-| f-number | f/575 | f/1088 |
-| Image area | ~1.0 sq ft | ~116 sq ft |
-| Exposure (full sun) | ~10 min | ~30–45 min |
-| Tilt/swing movements | None (fixed) | ±42° tilt, ±25.7° swing |
-| Process | Ware New Cyanotype | Ware New Cyanotype |
-| Chemistry | Identical formula | Identical formula |
-| Development | 3× cold water wash | 3× cold water wash |
-| Per-print cost | ~$2–3 | ~$38 |
-| Build cost | ~$94–148 | ~$15,500 |
-
-The optical physics, chemistry, and process are identical. The Mini-TBS validates all three at a scale that fits on a kitchen table.
-
----
-
-## 11. Bill of Materials
+## 10. Bill of Materials
 
 See the [Mini-TBS Shopping List](mini-tbs-shopping-list.md) for the complete itemized list with suppliers, prices, and quantities for 20 prints.
 
@@ -440,7 +419,7 @@ See the [Mini-TBS Shopping List](mini-tbs-shopping-list.md) for the complete ite
 
 ---
 
-## 12. References
+## 11. References
 
 All sources cited here are the same peer-reviewed references used throughout the TBS-001 documentation:
 

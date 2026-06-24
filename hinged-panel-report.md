@@ -458,7 +458,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | 4mm black PP sheet + EPDM lip | B2 punch-out bay — 4-wall light-tight tube (~890mm deep) around the housing (rev11; was 6mm ply) | 1 lot | $60–$120 |
 | Flat black paint (RAL 9005) | Bay/weld touch-in (PP skins are pre-pigmented black) | 1 qt | $10–$20 |
 | 316 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black | Interior pull handle — through-bolted to the frame (§4.3) | 1 | $20–$35 |
-| **Panel subtotal** | | | **$1,005–$1,530** |
+| **Panel subtotal** | | | **<!-- BEGIN costing:hp-panel-low -->$1,124<!-- END costing:hp-panel-low -->–<!-- BEGIN costing:hp-panel-high -->$1,691<!-- END costing:hp-panel-high -->** |
 
 *The panel pivot post + bearings + drum cage + wall stays are itemized in §8.3.*
 
@@ -476,7 +476,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Matte-black interior finish | Black-pigmented sheet (no etch-prime); scuff + flat-black touch-in at welds | 1 | $40–$70 |
 | Stainless fasteners + nylon isolation washers | Steel shaft/bearing ↔ plastic shell joints (no galvanic couple, plastic↔plastic elsewhere) | 1 lot | $30–$50 |
 | Plastic fabrication (roll 2 cylinders, hot-air / extrusion weld, fit, bearings) | 16–22 hrs labor | 1 | $800–$1,150 |
-| **Housing + drum subtotal** | | | **$1,385–$2,070** |
+| **Housing + drum subtotal** | | | **<!-- BEGIN costing:hp-housing-low -->$1,385<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$2,070<!-- END costing:hp-housing-high -->** |
 
 ### 8.3 Swing Pivot Hardware
 
@@ -488,7 +488,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Drum support cage, 40 × 40 × 3mm SHS | Steel frame carrying the Ø900 housing + drum on the swinging leaf | 1 | $70–$120 |
 | Top + bottom wall stays + 4-bolt anchor plates | Transport lock — M16 turnbuckle + eye/hook rods + inside/outside wall plates | 2 | $90–$160 |
 | Drop-in rail saddles + tapered dowels | For the 2 removable left film rails (TL + BL); dowels set the film datum on re-seat | 4 | $80–$130 |
-| **Swing pivot subtotal** | | | **$560–$960** |
+| **Swing pivot subtotal** | | | **<!-- BEGIN costing:hp-swing-low -->$520<!-- END costing:hp-swing-low -->–<!-- BEGIN costing:hp-swing-high -->$880<!-- END costing:hp-swing-high -->** |
 
 ### 8.4 Fixed Door Frame
 
@@ -497,17 +497,17 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame members | 3 | $90–$120 |
 | 3mm steel plate/angle (~110mm × ~4 m) | Top + bottom seal lips — threshold upstand (bottom, full width, no notch — drum rides at Z130) + frame-top downstand (top, continuous full width); seal paths #3–#4 | 1 | $45–$80 |
 | Welding / fabrication | Frame assembly + wall attachment | 1 | $200–$350 |
-| **Door frame subtotal** | | | **$335–$550** |
+| **Door frame subtotal** | | | **<!-- BEGIN costing:hp-doorframe-low -->$335<!-- END costing:hp-doorframe-low -->–<!-- BEGIN costing:hp-doorframe-high -->$550<!-- END costing:hp-doorframe-high -->** |
 
 ### 8.5 Cost Summary
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Panel structure (incl. B2 bay + pull handle) | $910 | $1,345 |
-| Housing + drum (plastic skin) | $1,385 | $2,070 |
-| Swing pivot hardware | $560 | $960 |
-| Fixed door frame | $335 | $550 |
-| **Total** | **$3,190** | **$4,925** |
+| Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,124<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,691<!-- END costing:hp-panel-high --> |
+| Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$1,385<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$2,070<!-- END costing:hp-housing-high --> |
+| Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$520<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$880<!-- END costing:hp-swing-high --> |
+| Fixed door frame | <!-- BEGIN costing:hp-doorframe-low -->$335<!-- END costing:hp-doorframe-low --> | <!-- BEGIN costing:hp-doorframe-high -->$550<!-- END costing:hp-doorframe-high --> |
+| **Total** | **<!-- BEGIN costing:hp-total-low -->$3,364<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$5,191<!-- END costing:hp-total-high -->** |
 
 ---
 

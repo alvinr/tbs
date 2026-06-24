@@ -37,458 +37,308 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 ---
 
-## 1. Container & Delivery
-*Source: `pinhole-camera-construction.md`, `project-cost-breakdown.md`*
+## Procurement BOM — by material type & supplier
 
-| Item | Spec | Supplier | Est. cost |
-|------|------|----------|-----------|
-| 20ft ISO container — Cargo Worthy grade | CSC-certified, WWT minimum | Container Management / Local container dealers | $2,000–$3,500 |
-| Delivery — short haul (<50 miles, tilt-bed) | Commercial hire | Local crane/tilt-bed truck hire | $300–$800 |
-| Delivery — long haul (100–300 miles, semi flatbed) | If needed | Commercial freight broker | $1,200–$2,500 |
+*Generated from the parts registry (`src/generators/parts.py`) — the single source of every
+purchasable item across all systems. This replaces the old by-system list, which duplicated each
+report's own parts list. Procurement reads parts grouped by **type** with quantities summed across
+systems, then a **supplier-consolidation** table to place the fewest, largest orders; the per-system
+detail lives in each report. Refresh with `python3 src/generators/parts.py --inject`.*
 
-**Section total: $2,300–$4,300**
+<!-- BEGIN parts:master -->
+## Procurement BOM — by material type
 
-## 2. Interior Conversion
-*Source: `pinhole-camera-construction.md`, `project-cost-breakdown.md`*
+### container
 
-### Light-sealing
-| Item | Spec | Qty | Supplier | Est. unit | Total |
-|------|------|-----|----------|-----------|-------|
-| D-profile foam weatherstripping, 1"×⅜" | Door perimeter seals | 50 ft | Home Depot / Lowe's | $0.50/ft | $25 |
-| Black silicone sealant, 11 oz cartridge | Weld seam gaps, corner posts | 5 | Home Depot | $8† | $40 |
-| 6-mil black polyethylene sheeting, 10'×100' | Interior lining over persistent seams | 1 roll | Home Depot / Uline | $65† | $65 |
-| 2" black Gorilla Tape, 35 yd roll | Secondary sealing | 4 | Home Depot / Target | $12† | $48 |
+| Item | Qty | Supplier | Systems | Est. cost |
+|------|-----|----------|---------|-----------|
+| 20 ft ISO container — CW (cargo-worthy) grade | 1 ea | containermgt.com | container | $2,000–$3,500 |
+| **container subtotal** | | | | **$2,000–$3,500** |
 
-**Light-seal subtotal: ~$178**
-### Interior paint
-| Item | Spec | Qty | Supplier | Est. unit | Total |
-|------|------|-----|----------|-----------|-------|
-| Flat black latex paint (zero sheen) | Two long walls, two short walls, ceiling (~755 sq ft) | 3 gal | Home Depot / Sherwin-Williams | $25 | $75 |
-| Primer (bare steel areas) | One coat on new welds or repairs | 1 gal | Home Depot | $30 | $30 |
-| Rollers, brushes, trays | — | 1 kit | Home Depot | $25 | $25 |
-**Paint subtotal: ~$130**
+### steel-structural
 
-### Image-plane flat backing
-| Item | Spec | Qty | Supplier | Est. unit | Total |
-|------|------|-----|----------|-----------|-------|
-| [Dibond ACM panel 4mm](https://www.grimco.com) | 4'×8' sheets — flat backing surface | 6 | Grimco, City of Industry CA | $85† | $510 |
-| Through-bolts + hardware | Into structural ribs every 18" | 1 lot | McMaster-Carr | $40 | $40 |
-**Backing subtotal: ~$550**
+| Item | Qty | Supplier | Systems | Est. cost |
+|------|-----|----------|---------|-----------|
+| IBC stacking frame — RHS restraint portal + feet + retaining bars + hangers + fab | 1 lot | Metal Supermarkets | water | $955–$1,455 |
+| Wall-seat saddles ×8 — 8mm steel plate, cut + welded (ICP-11) | 8 ea | local fab | film | $380–$470 |
+| Ø89×8 CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swingpivot | $180–$300 |
+| Standard wall brackets, 8mm steel plate (×14) | 14 ea | local fab | walkway | $112–$175 |
+| 50×50×3mm RHS mild steel — frame perimeter + members (4× 6m) | 4 ea | Metal Supermarkets | panel | $120–$160 |
+| Drop-in rail saddles + tapered dowels (×4, removable left film rails) | 4 ea | local fab | swingpivot | $80–$130 |
+| Canopy frame — 1.5" EMT conduit + fittings | 1 lot | Home Depot | ventilation | $120 |
+| Drum support cage, 40×40×3mm SHS | 1 lot | local fab | swingpivot | $70–$120 |
+| Fixed door frame — 50×50×3 RHS members (×3) | 3 ea | Metal Supermarkets | swingpivot | $90–$120 |
+| Widened wall brackets, 10mm steel plate (×4) | 4 ea | local fab | walkway | $72–$112 |
+| Left floor-leg cantilever brackets (×5) | 5 ea | local fab | walkway | $55–$95 |
+| Fixed door frame — top/bottom seal lips (3mm steel ~110×4m) | 1 lot | Metal Supermarkets | swingpivot | $45–$80 |
+| Combined corner plates, 10mm steel (×2) | 2 ea | local fab | walkway | $50–$80 |
+| Reinforcing plates, std 100×180×6mm (×14) + wide 120×220×6mm (×4) | 1 lot | local fab | walkway | $47–$73 |
+| Shutter plate (⅛ steel 10×8) + slide channel | 1 ea | local fab | optics | $25–$50 |
+| 75mm Ø × 150mm steel stub shafts (×2) | 2 ea | steel service center | lightlock | $30–$50 |
+| Steel backing plate 6×6×⅛ + welded frame | 1 ea | Metal Supermarkets | optics | $20–$40 |
+| Right walkway cantilever frame, 40×40×3mm SHS (8m) | 1 lot | Metal Supermarkets | walkway | $28–$40 |
+| Right walkway wall cleats, 8mm steel (×2) | 2 ea | local fab | walkway | $20–$35 |
+| Baffle-duct sheet metal (fans), 22 ga galvanized | 1 lot | Local sheet metal | ventilation | $30 |
+| 25×25×3mm steel SHS — frame + spill lip (6m) | 1 lot | Online Metals | shelf | $30 |
+| Baffle-duct sheet metal (cooler, Ø200), 22 ga galvanized | 1 lot | Local sheet metal | ventilation | $20 |
+| Wall mounting cleat + 2 stay anchors (6mm steel, slotted) | 1 lot | local fab | shelf | $18 |
+| Transition bearing plates, 40×500×5mm flat bar (×2) | 2 ea | local fab | walkway | $5–$10 |
+| Corner gusset plates, 3mm (×4) | 4 ea | steel offcut | shelf | $5 |
+| **steel-structural subtotal** | | | | **$2,607–$3,818** |
 
-### Door & access
-| Item | Spec | Qty | Supplier | Est. unit | Total |
-|------|------|-----|----------|-----------|-------|
-| Door gasket set | OEM-style rubber seal for container cargo doors | 1 | Container parts suppliers | $45 | $45 |
-| Miscellaneous hardware (fasteners, steel angle, touchup paint) | — | 1 lot | Home Depot | — | $110 |
-**Section total: ~$950–$1,350**
+### stainless-sheet
 
-## 3. Pinhole Optics Plate
-*Source: `pinhole-report.md`, `pinhole-camera-construction.md`*
+| Item | Qty | Supplier | Systems | Est. cost |
+|------|-----|----------|---------|-----------|
+| Processing tray — 304 SS panels + fabrication, shim strips, sump pickup, liner, hardware | 1 lot | Online Metals | water | $1,300–$2,015 |
+| Custom laser-drilled pinhole — SS-302/304 shim, 3×3 | 1 ea | Lenox Laser | optics | $50–$150 |
+| **stainless-sheet subtotal** | | | | **$1,350–$2,165** |
 
-| Item | Spec | Qty | Supplier | Est. cost |
-|------|------|-----|----------|-----------|
-| [Custom laser-drilled pinhole](https://www.lenoxlaser.com) | Ø2.17mm ±0.025mm, SS-302 shim 3"×3", SEM-verified | 1 | Lenox Laser | $50–$150 |
-| Steel backing plate 6"×6"×⅛" + welded frame | Houses precision insert in wall plate | 1 | Metal Supermarkets SoCal | $20–$40 |
-| Shutter plate ⅛" steel, 10"×8" + slide channel | Simple sliding shutter, exterior operation | 1 | Metal Supermarkets | $25–$50 |
+### aluminum
 
-**Section total: $95–$240**
+| Item | Qty | Supplier | Systems | Est. cost |
+|------|-----|----------|---------|-----------|
+| 3mm aluminum plate — corner-zone core plates (×2) | 2 ea | Online Metals | panel | $360–$460 |
+| Spray bar — beam, LDPE pipe, 26 nozzles, manifold + 7 feed tubes, 4 wheels, ball joint, arm, hose | 1 lot | Online Metals | water | $235–$299 |
+| Aluminum angle 2×2×3/16 8 ft (×10) | 10 ea | Online Metals | film | $220 |
+| Aluminum U-channel — gasket + PP-skin retention (~40 m) | 40 m | Online Metals | panel | $120–$200 |
+| Corner bracket L-plates, ¼" alum 6×8 (×4) | 4 ea | Online Metals | film | $80 |
+| Aluminum face plate 340×240×3mm (flush power panel) | 1 ea | Online Metals | electrical | $18 |
+| **aluminum subtotal** | | | | **$1,033–$1,277** |
 
-## 4. Film Plane Mechanism (4-Corner Independent)
-*Source: `film-plane-mechanism-report.md`, `project-cost-breakdown.md`*
+### plastics-sheet
 
-### Structural & rails
-| Item | Spec | Qty | Supplier A | Supplier B | Est. unit |
-|------|------|-----|-----------|-----------|-----------|
-| [Linear guide rail HGR20](https://www.amazon.com/s?k=HGR20+linear+rail+guide) | 2,200mm length | 4 | Amazon / Automation Overstock | [McMaster #5901T777](https://www.mcmaster.com/5901T777) | $45 |
-| [Rail carriage HGH20CA](https://www.amazon.com/s?k=HGH20CA+carriage+block) | Flanged block | 8 | Amazon / Automation Overstock | McMaster-Carr | $18 |
-| [Acme leadscrew ¾"-6](https://www.roton.com) | 8ft length | 4 | [Roton Products](https://www.roton.com) | [McMaster #6289K36](https://www.mcmaster.com/6289K36) | $95 |
-| [Acme nut, bronze ¾"-6](https://www.roton.com) | — | 4 | [Roton Products](https://www.roton.com) | [McMaster #6289K512](https://www.mcmaster.com/6289K512) | $12 |
-| [Handwheel 8" dia](https://www.mcmaster.com/6440K64) | ¾" bore, cast aluminum | 4 | McMaster-Carr | McMaster #6440K64 | $35 |
-| [Locking collar SS316](https://www.mcmaster.com/6436K12) | ¾" bore | 4 | McMaster-Carr | McMaster #6436K12 | $12 |
-| Corner bracket L-plate | ¼" aluminum plate, 6"×8" | 4 | Metal Supermarkets SoCal | [Online Metals](https://www.onlinemetals.com) | $20 |
-| Cross-slide rail HGR15 (Option A) | 300mm — X-Z floating stage | 8 | Amazon / Automation Overstock | McMaster-Carr | $25 |
-| Cross-slide carriage HGH15CA (Option A) | Flanged block | 8 | Amazon / Automation Overstock | McMaster-Carr | $12 |
-| Cross-slide intermediate plate (Option A) | ¼" aluminum, joins X slide to Z slide | 4 | Metal Supermarkets SoCal | [Online Metals](https://www.onlinemetals.com) | $15 |
-| [Rod-end spherical bearing](https://www.mcmaster.com/60645K73) | GIR25-DO or equiv., 25mm bore | 8 | McMaster-Carr | McMaster #60645K73 | $22 |
-| [Pivot pin SS316](https://www.mcmaster.com/98173A150) | 1" dia × 8" long | 8 | McMaster-Carr | McMaster #98173A150 | $8 |
-**Rails & structural subtotal: ~$1,616** *(incl. Option A cross-slides +$356)*
+| Item | Qty | Supplier | Systems | Est. cost |
+|------|-----|----------|---------|-----------|
+| Molded GRP (fiberglass) grating, 15mm (vinyl-ester, grit top, ~4.5 m²) | 1 lot | McNichols | walkway | $970–$1,260 |
+| Image-plane flat backing — Dibond ACM | 1 lot | TAP Plastics | interior | $490–$620 |
+| Dibond ACM 4mm 4×8 sheets (×6) — single rigid plane | 6 sheet | TAP Plastics | film | $510 |
+| 4mm black PP sheet — panel skins both faces (~12 m², ×4) | 4 sheet | TAP Plastics | panel | $260–$420 |
+| 5mm UV-stabilized HDPE — Ø900 housing shell (~7 m²) | 1 lot | TAP Plastics | lightlock | $180–$280 |
+| 4mm PP — Ø864 drum shell + top/bottom caps (~7 m²) | 1 lot | TAP Plastics | lightlock | $150–$240 |
+| 4mm PP + EPDM lip — B2 punch-out bay (4-wall tube ~890mm) | 1 lot | TAP Plastics | panel | $60–$120 |
+| Drum-exit punch-out — extra GRP grating (~0.23 m²) | 1 lot | McNichols | walkway | $50–$65 |
+| **plastics-sheet subtotal** | | | | **$2,670–$3,515** |
 
-### Film plane frame & backing
-| Item | Spec | Qty | Supplier A | Supplier B | Est. unit |
-|------|------|-----|-----------|-----------|-----------|
-| Aluminum angle 2"×2"×3/16" | 8ft lengths | 10 | Metal Supermarkets SoCal | [Online Metals](https://www.onlinemetals.com) | $22 |
-| [Dibond ACM panel 4mm](https://www.grimco.com) | 4'×8' sheets — **single rigid backing** (Option A), <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->×<!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm | 6 | Grimco, City of Industry CA | Signwarehouse | $85 |
-| [Black EPDM foam tape 1"×½"](https://www.mcmaster.com/8614K84) | 50ft rolls — panel perimeter seal + housing-surround ring (Ø900 aperture) | 4 | McMaster-Carr #8614K84 | — | $37 |
-| [Rosco Duvetyne blackout fabric](https://www.rosebrand.com) | 60" wide, 10 yd | 1 | [Rose Brand](https://www.rosebrand.com) (Burbank CA) | B&H Photo | $95 |
-| 6-mil black poly sheeting | 10'×100' roll | 1 | Home Depot | — | $65 |
-| 2" black Gorilla Tape | 35 yd rolls | 6 | Home Depot | Amazon | $12 |
-**Frame subtotal: ~$1,055** *(Option A: single rigid ACM backing — folding piano hinge removed, –$56)*
+### timber-ply
 
-### Optional: electric actuation (add-on)
-| Item | Spec | Qty | Supplier | Est. unit |
-|------|------|-----|----------|-----------|
-| [PA-14 linear actuator](https://www.progressiveautomations.com) | 12V, 20" stroke, 150 lb | 4 | [Progressive Automations](https://www.progressiveautomations.com) | $185 |
-| 12V 30A power supply | Enclosed | 1 | [Mouser](https://www.mouser.com) / Digi-Key | $55 |
-| DPDT momentary rocker switch | Panel-mount, 20A | 4 | [Mouser](https://www.mouser.com) | $8 |
-**Electric actuation subtotal: ~$827 (optional)**
+| Item | Qty | Supplier | Systems | Est. cost |
+|------|-----|----------|---------|-----------|
+| Phenolic-faced plywood, 18mm (300×600) | 1 ea | Home Depot | shelf | $60 |
+| 18mm exterior-grade plywood — Fan B mount band (0.5 sheet) | 1 lot | Home Depot | panel | $30–$50 |
+| Plywood base plate, 12mm 600×350 (cooler stowage) | 1 ea | Home Depot | ventilation | $8 |
+| **timber-ply subtotal** | | | | **$98–$118** |
 
-### Wall-seat saddles (ICP-11 through ICP-14) — rev 11, replaces the brace cage
-*Each of the 8 film-plane rail ends anchors to the container with a wall-seat saddle (back-plate + seat + gusset), through-bolted with a 4-bolt pattern to an exterior wall plate — the container shell carries the rigidity. Right rails permanently bolted; left rails thumb-screw drop-in (lift out for the drum swing).*
+### fasteners-hardware
 
-| Item | ICP # | Spec | Qty | Supplier A | Supplier B | Est. unit | Est. total |
-|------|-------|------|-----|-----------|-----------|-----------|------------|
-| [Mild steel plate 8mm — laser/plasma cut](https://www.metalsupermarkets.com/product/mild-steel-plate/) | ICP-11 | back-plate + exterior plate + seat + gusset per saddle; ~28 kg total over 8 saddles, cut + welded | 8 saddles | [Metal Supermarkets SoCal](https://www.metalsupermarkets.com/) (Anaheim / Van Nuys / San Diego — cut to size, walk-in) | [Online Metals — A36 steel plate 8mm](https://www.onlinemetals.com/en/buy/carbon-steel) (ships; cut to size) | ~$53 est. | ~$425 est. |
-| [M12×90mm hex through-bolt + nut + washers, SS](https://www.mcmaster.com/products/screws/) | ICP-12 | Wall sandwich through-bolt (interior↔exterior plate); 4 per saddle × 8 = 32 + 4 spare | 36 | [McMaster-Carr — A2 stainless cap screws](https://www.mcmaster.com/products/screws/) | [Amazon — M12 stainless bolts](https://www.amazon.com/s?k=m12+stainless+bolt+90mm) | ~$2.50 est. | ~$90 est. |
-| [M8×25mm knurled thumbscrew DIN 464, SS 303](https://www.amazon.com/knurled-thumb-screws-din-464/s?k=knurled+thumb+screws+din+464) | ICP-13 | Left-rail drop-in hold-down (lifts out for drum swing); 2 per saddle × 4 left saddles = 8 + 4 spare | 12 | [Amazon — DIN 464 M8 stainless](https://www.amazon.com/knurled-thumb-screws-din-464/s?k=knurled+thumb+screws+din+464) | [Maedler North America — PN 65499225](https://maedlernorthamerica.com/partshop/knurled-thumb-screw-din-464-m8-x-20mm-long-stainless-steel-1-4305-pn-65499225/) (~$15–17 ea. direct; Amazon cheaper in packs) | ~$3 est. | ~$36 est. |
-| [M8 hex fixing bolt + nut, SS](https://www.mcmaster.com/products/screws/) | ICP-14 | Right-rail permanent fixing (rail bolted to seat); 2 per saddle × 4 right saddles = 8 + spare | 12 | [McMaster-Carr — A2 stainless](https://www.mcmaster.com/products/screws/) | [Amazon — M8 stainless bolts](https://www.amazon.com/s?k=m8+stainless+bolt) | ~$2 est. | ~$24 est. |
+| Item | Qty | Supplier | Systems | Est. cost |
+|------|-----|----------|---------|-----------|
+| Cam-lever spring clamps, muslin (×92) | 92 ea | Amazon | film | $276–$736 |
+| Top + bottom wall stays + 4-bolt anchor plates | 2 set | McMaster-Carr | swingpivot | $90–$160 |
+| Saddle fasteners — M12 through-bolts (×36) + M8 thumbscrews (×12) + M8 rail bolts (×12) | 1 lot | McMaster-Carr | film | $150 |
+| Misc. conversion hardware | 1 lot | Home Depot | interior | $80–$130 |
+| Door & access upgrades | 1 lot | Home Depot | interior | $50–$100 |
+| Southco C2-33 cam compression latch (×4) | 4 ea | Southco | panel | $60–$100 |
+| M12×60mm hex bolts + nuts + washers (×58) | 58 set | McMaster-Carr | walkway | $57–$87 |
+| Clamp mounting — M5×16 SS bolts/Nylocks (×184+184) + neoprene jaw strip | 1 lot | McMaster-Carr | film | $70 |
+| Stainless fasteners + nylon isolation washers (no galvanic couple) | 1 lot | McMaster-Carr | lightlock | $30–$50 |
+| M12 through-bolts + nuts/washers (~24) | 1 lot | McMaster-Carr | walkway | $30–$50 |
+| M10 wedge floor anchors (×20) | 20 ea | McMaster-Carr | walkway | $25–$45 |
+| 316 SS hold-down clips (FRP M/G-clip, ×20) | 20 ea | McNichols | walkway | $25–$40 |
+| 316 SS D-grab pull handle (~300mm) + 2× M8 + backing plate | 1 ea | McMaster-Carr | panel | $20–$35 |
+| 100mm Ø SS grab rail (400mm cut) | 1 ea | McMaster-Carr | lightlock | $15–$25 |
+| Folding shelf stays/brackets (×2, fold-flat) | 2 ea | Amazon | shelf | $24 |
+| Continuous (piano) hinge, 600mm | 1 ea | McMaster-Carr | shelf | $20 |
+| Ratchet strap, 25mm (cooler stowage) | 2 ea | Home Depot | ventilation | $12 |
+| M8 wall bolts + washers/nuts (~12) | 1 lot | McMaster-Carr | shelf | $12 |
+| Transport latch (over-center / barrel) | 1 ea | Amazon | shelf | $8 |
+| M6 bolt+nut+washer set, SS (panel mount) | 4 set | McMaster-Carr | electrical | $5 |
+| M5×16 CSK screws (×8) — ply panel | 8 ea | McMaster-Carr | shelf | $4 |
+| **fasteners-hardware subtotal** | | | | **$1,063–$1,863** |
 
-**Wall-seat saddle subtotal: ~$575 est.** *(roughly cost-neutral with the retired brace cage)*
+### bearings-motion
 
-*All prices estimated — Metal Supermarkets and McMaster-Carr do not publish per-unit pricing online; call or add to cart for a current quote. 8mm A36 plate runs ~$3–5/kg cut. M8 thumbscrew pricing confirmed at ~$15–17 each from Maedler North America (PN 65499225, May 2026); Amazon multi-packs run ~$2–5 ea. depending on pack size.*
+| Item | Qty | Supplier | Systems | Est. cost |
+|------|-----|----------|---------|-----------|
+| Acme leadscrews ¾"-6 8 ft (×4) + bronze nuts (×4) | 1 set | McMaster-Carr | film | $428 |
+| Option-A cross-slides — HGR15 rails (×8) + HGH15CA (×8) + intermediate plates (×4) | 1 set | Amazon | film | $356 |
+| Linear guide rails HGR20 2,200mm (×4) + carriages HGH20CA (×8) | 1 set | Amazon | film | $324 |
+| Rod-end spherical bearings GIR25-DO (×8) + pivot pins SS316 (×8) | 1 set | McMaster-Carr | film | $240 |
+| Handwheels 8" (×4) + locking collars SS316 (×4) | 1 set | McMaster-Carr | film | $188 |
+| SKF 6215-2RS1 sealed bearing (×2) | 2 ea | Bearing World | lightlock | $90–$130 |
+| Flanged sleeve (journal) bearings, Ø90 bore (×2) | 2 ea | McMaster-Carr | swingpivot | $60–$110 |
+| Turntable thrust bearing, 12″ (Ø305) 1000 lb | 1 ea | VXB | swingpivot | $40–$60 |
+| **bearings-motion subtotal** | | | | **$1,726–$1,836** |
 
-**Section total (manual, incl. wall-seat saddles + Option A cross-slides): ~$3,538–$4,088** *(= cost-breakdown §4)*
+### plumbing-fittings
 
-> **Option A delta (2026-06-06):** the film plane is now a **fixed-size rigid** rectangle posed by **8 corner cross-slides** (2-axis X-Z stage per corner) that absorb the rigid-rotation arc travel. Added 8 cross-slide rails +$200, 8 carriages +$96, 4 intermediate plates +$60 (= +$356); removed the folding-backing piano hinge –$56 → **net +$300**. Single rigid ACM backing replaces the hinged two-panel system; the achievable envelope is tilt ±40° / swing ±28° single-axis (combined limited; the old compound-twist config is dropped).
->
-> **4-corner vs original 2-beam design delta:** Removed 2× 80/20 T-slot beams (5,893mm) — saves $416. Added: 2× extra leadscrews +$190, 2× extra handwheels +$70, 4× rod-end spherical bearings +$88, 4× corner L-brackets +$80. Added wall-seat saddles (ICP-11–14): +$575. Excl. fabrication, fasteners, and optional electric actuation.
+| Item | Qty | Supplier | Systems | Est. cost |
+|------|-----|----------|---------|-----------|
+| Valves + fittings — S60×6 adapters, check valves CV1/CV3/CV4 | 1 lot | Amazon | water | $390–$630 |
+| Pipe — HDPE, spray-bar feed | 1 lot | Ferguson | water | $100–$140 |
+| ½" HDPE pipe — TAP-01 trunk extension (~1.5m) | 1 lot | irrigation supply | shelf | $10 |
+| **plumbing-fittings subtotal** | | | | **$500–$780** |
 
----
+### water-equipment
 
-## 5. Print Washing — Water System
-*Source: `water-system-report.md`*
+| Item | Qty | Supplier | Systems | Est. cost |
+|------|-----|----------|---------|-----------|
+| Water storage — 4× IBC totes + 3× bulkhead fittings + fill tee | 1 lot | Container Exchanger | water | $395–$720 |
+| Filter skid — 3× Big Blue housings + cartridges | 1 lot | Amazon | water | $265–$370 |
+| Pumps + accumulator — P-01/P-02/P-04 manifold + P-03 | 1 lot | Amazon | water | $305–$355 |
+| **water-equipment subtotal** | | | | **$965–$1,445** |
 
-### Water storage
-| Item | Spec | Qty | Supplier | Est. unit | Total |
-|------|------|-----|----------|-----------|-------|
-| [IBC tote 275 gal, food-grade, used/rinsed](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) | **1219×1016×1,168mm** caged composite, DN50 butterfly valve (S60×6) — Blue (×2), Brown (×1), Waste (×1) | 4 | Container Exchanger | $80–$150 | $320–$600 |
-| [2" NPT bulkhead fitting (304 SS)](https://www.mcmaster.com/4464K115) | External drain/fill port, welded through container wall (X1/X3/X4) | 3 | McMaster-Carr | $25–$40 | $75–$120 |
-| Reinforcing plate, 6mm A36 steel, 150×150mm | Backing plate for external bulkhead ports (one per fitting) | 3 | Metal Supermarkets SoCal | $8–$12 | $24–$36 |
-**Storage subtotal: ~$388–$698**
+### electrical-power
 
-### IBC stacking frame
-*Source: `ibc-stacking-report.md` §3, §9.1. Welded 50×50×3mm RHS **restraint-only** frame (single front portal) for the 2×2 direct-stack — the totes stack cage-on-cage, so there is no load-bearing platform; front retaining bars + Simpson-style wall joist hangers + D-ring lashing restrain them for transport.*
+| Item | Qty | Supplier | Systems | Est. cost |
+|------|-----|----------|---------|-----------|
+| Solar panel, 200W monocrystalline 12V | 3 ea | Renogy | electrical | $399 |
+| LiFePO4 battery, 100Ah 12V (Renogy Smart Lithium) | 1 ea | Renogy | electrical | $350 |
+| Cooler inverter — Victron Phoenix 12/375 GFCI + DC fuse/disconnect + GFCI outlet | 1 ea | Victron | ventilation | $275 |
+| Victron SmartSolar MPPT 100/50 charge controller | 1 ea | altE Store | electrical | $200 |
+| Victron Blue Smart IP65 12/15 shore backup charger | 1 ea | altE Store | electrical | $150 |
+| Solar panel ground-mount tilt frame, 30° | 1 ea | Renogy | electrical | $80 |
+| PV array disconnect — DC load-break isolator, 50A/150VDC (NEC 690.13) | 1 ea | AutomationDirect | electrical | $40 |
+| **electrical-power subtotal** | | | | **$1,494** |
 
-| Item | Spec | Qty | Supplier | Est. unit | Total |
-|------|------|-----|----------|-----------|-------|
-| [Mild steel RHS 50×50×3mm, 6 m length](https://www.metalsupermarkets.com/product/mild-steel-square-tube-structural-welded/) | Front-portal uprights + panel-mount rail (50×50×3) + front retaining bars (50×20×3) (A500 Grade B) | 4 | [Metal Supermarkets SoCal](https://www.metalsupermarkets.com/) / [Online Metals](https://www.onlinemetals.com) | $30–$45 | $120–$180 |
-| [Steel plate 12mm, 150×150mm cut](https://www.onlinemetals.com/en/buy/carbon-steel) | Upright floor flange feet | 2 | Metal Supermarkets SoCal / Online Metals | $4–$8 | $10–$20 |
-| Steel folded plate 4mm | Simpson-style wall joist hangers | 4 | Metal Supermarkets SoCal / [Simpson Strong-Tie](https://www.strongtie.com/) | $7–$12 | $30–$50 |
-| [Steel plate 8mm, 100×135mm cut](https://www.onlinemetals.com/en/buy/carbon-steel) | Exterior wall backing plates (load-spread, hex heads outside the container wall) | 4 | Metal Supermarkets SoCal / Online Metals | $4–$8 | $16–$32 |
-| [Welded D-ring, 25mm, 1,100 kg WLL](https://www.mcmaster.com/3641T29) | Lashing holders on the front bars, 6mm mount plates | 4 | McMaster-Carr #3641T29 | $5–$8 | $20–$35 |
-| [Ratchet strap, 25mm, 1,100 kg WLL](https://www.amazon.com/s?k=25mm+ratchet+strap+1100kg) | Transport securing, over each stack | 4 | Amazon / Harbor Freight | $8–$13 | $30–$50 |
-| [M12 wedge/sleeve floor anchor](https://www.mcmaster.com/concrete-anchors) | Upright flange feet, 4 each into container floor | 8 | McMaster-Carr / Home Depot | $2–$3 | $15–$30 |
-| [M12×80 hex bolt, Grade 8.8 + washer + nut](https://www.mcmaster.com/91290A655) | Wall-hanger through-bolts to the exterior backing plates, 4 each × 4 hangers | 16 | McMaster-Carr / Fastenal | $1.50–$2.50 | $24–$40 |
-| [M12×40 hex bolt, Grade 8.8 + nut/washer](https://www.mcmaster.com/91290A655) | Front-bar-to-upright cleats | 8 | McMaster-Carr / Fastenal | $1–$2 | $8–$16 |
-| Welding / fabrication | ~14–20 hrs (single front portal — far less than the old load-bearing rack) | 1 | Local fab shop | $650–$950 | $650–$950 |
-| Primer + flat-black powder coat | Anti-corrosion finish | 1 | Local | $30–$50 | $30–$50 |
-**IBC stacking frame subtotal: ~$955–$1,455**
+### electrical-distribution
 
-### Pumps
-| Item | Spec | Qty | Supplier | Est. unit | Total |
-|------|------|-----|----------|-----------|-------|
-| [Shurflo 2088-554-144 pump](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | **216×127×114mm**, 12VDC, 3.5 GPM, 45 PSI, ½" NPSM ports (P-01, P-02, P-04 manifold + P-03 IBC corridor) | 4 | Amazon | $55–$70 | $220–$280 |
-| [SeaFlo pressure accumulator](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) | **~200×127×125mm**, 0.75 L (23.5 oz), 125 PSI, ½" MNPT | 1 | Amazon | $25–$45 | $35 |
-| [Shurflo pump mounting bracket](https://www.amazon.com/s?k=shurflo+2088+mounting+bracket+stainless) | Stainless, for 2088 series (3× manifold + 1× IBC corridor for P-03) | 4 | Amazon | $8–$12 | $32–$48 |
-**Pump subtotal: ~$167–$203**
+| Item | Qty | Supplier | Systems | Est. cost |
+|------|-----|----------|---------|-----------|
+| Remote battery switch — Blue Sea ML-RBS 500A magnetic-latch (E-stop trip) | 1 ea | West Marine | electrical | $150 |
+| Wiring kit — 12/14/16/18 AWG tinned, 50ft/color | 1 kit | Waytek Wire | electrical | $80 |
+| Brady M210 wire label kit | 1 ea | Amazon | electrical | $80 |
+| 12V LED flat panel 300×600mm, 20W 4000K | 3 ea | Amazon | electrical | $75 |
+| IP65 enclosure 300×200×130mm (fuse block + MPPT) | 1 ea | Amazon | electrical | $60 |
+| Blue Sea 5026 fuse block, 12-circuit ST-blade | 1 ea | Amazon | electrical | $55 |
+| Battery main disconnect — Blue Sea m-Series 300A isolator | 1 ea | West Marine | electrical | $40 |
+| Anderson Powerpole 30A connectors, 50 pairs | 1 kit | Powerwerx | electrical | $40 |
+| 40×25mm PVC cable trunking, 5m | 4 ea | McMaster-Carr | electrical | $40 |
+| Water-system wiring (fuse block in Electrical Report) | 1 lot | Amazon | water | $35 |
+| PV cable 10 AWG + MC4 connectors | 1 lot | Amazon | electrical | $30 |
+| External emergency cut-off — red mushroom IP66 + control loop | 1 ea | AutomationDirect | electrical | $30 |
+| Pump switches (Circuit C) — IP67 sealed rocker 12V 16A | 5 ea | Amazon | electrical | $30 |
+| Tinned marine wire 14/16 AWG, ~25ft (wet-zone runs) | 1 lot | Waytek Wire | electrical | $30 |
+| 2/0 AWG battery cable, 3ft (battery–fuse–busbar) | 1 lot | Amazon | electrical | $30 |
+| Deutsch DT 2-pin connectors, IP67 (exterior penetrations) | 10 set | Waytek Wire | electrical | $30 |
+| 10mm corrugated conduit, drop runs (McMaster 7828K48) | 10 m | McMaster-Carr | electrical | $30 |
+| NEMA 5-15R weatherproof inlet (flush power panel) | 1 ea | Amazon | electrical | $25 |
+| 200A main fuse — MRBF terminal-mount (ABYC E-11) | 1 ea | Amazon | electrical | $25 |
+| Interior emergency cut-off — red mushroom IP65 (paralleled to exterior) | 1 ea | AutomationDirect | electrical | $25 |
+| Sealed wet-zone connectors — Deutsch DT / adhesive heat-shrink | 1 lot | Waytek Wire | electrical | $25 |
+| MC4 bulkhead connector pairs, IP67 panel-mount | 3 pair | Amazon | electrical | $25 |
+| Cooler external power cable, 1.5m 14 AWG + Deutsch plugs | 1 ea | Waytek Wire | ventilation | $20 |
+| Equipotential bonding kit — 6 AWG + ring lugs | 1 ea | Amazon | electrical | $20 |
+| Copper ground stake, 8ft × ⅝" dia | 1 ea | Home Depot | electrical | $20 |
+| Pull-cord ceiling switch, 12V 6A SPST | 2 ea | Amazon | electrical | $16 |
+| 16 AWG silicone coiled cable, 1m 2-cond (Fan B flex) | 1 ea | Waytek Wire | ventilation | $15 |
+| MPPT charge-line fuse — 60A ANL/MIDI + holder | 1 ea | Blue Sea | electrical | $15 |
+| Pump distribution block — 12V DC + / − bus, 6-way | 1 ea | Blue Sea | electrical | $15 |
+| Cable grommets / glands — steel-shell penetrations | 1 lot | McMaster-Carr | electrical | $15 |
+| 4 AWG ground wire, green/yellow, 3m | 1 lot | Amazon | electrical | $15 |
+| Battery terminal covers (pair), insulating boots | 1 pair | Amazon | electrical | $10 |
+| Deutsch DT 2-pin weatherproof connector set | 2 set | Waytek Wire | ventilation | $8 |
+| Shore-charger output fuse — 20A inline | 1 ea | Amazon | electrical | $5 |
+| **electrical-distribution subtotal** | | | | **$1,164** |
 
-### Filter unit
-| Item | Spec | Qty | Supplier | Est. unit | Total |
-|------|------|-----|----------|-----------|-------|
-| [3-stage Big Blue combo filter **4.5"×10"**](https://www.amazon.com/s?k=3+stage+10+inch+big+blue+whole+house+water+filter) | **Ø184 × 333mm per housing**, 1" NPT ports, integrated bracket (e.g. Express Water / Geekpure / iSpring 10" 3-stage). *Was 4.5"×20" — switched to 10" to match the modeled BB_OD=184/BB_H=340; see [dimension audit](component-dimension-audit.md). NB: 10" cartridges hold ~½ the media → ~½ the service interval vs 20"* | 1 | Amazon | $200–$300 | $200–$300 |
-| [MPP 5-micron sediment cartridge 4.5"×10"](https://www.amazon.com/s?k=4.5x10+melt+blown+polypropylene+sediment+filter+5+micron) | Melt-blown polypropylene depth filter (F-1 stage) | 3 + spares | Amazon | $6–$10 | $18–$30 |
-| [KDF-55 heavy metal cartridge 4.5"×10"](https://www.amazon.com/s?k=4.5x10+KDF+55+heavy+metal+water+filter) | KDF-55 media for dissolved iron removal (F-2 stage) | 2 + spares | Amazon | $20–$35 | $40–$70 |
-| [CTO carbon block cartridge 4.5"×10"](https://www.amazon.com/s?k=4.5x10+CTO+coconut+shell+carbon+block+filter) | Coconut shell activated carbon block (F-3 stage) | 3 + spares | Amazon | $8–$15 | $24–$45 |
-**Filter subtotal: ~$282–$445** *(was ~$470–$652 for 4.5"×20"; folded into the re-summed category-5 + grand totals with the evap-cooler resolution — see [cost breakdown](project-cost-breakdown.md))*
+### seals-gaskets
 
-### Valves, fittings & pipe
-| Item | Spec | Qty | Supplier | Est. unit | Total |
-|------|------|-----|----------|-----------|-------|
-| [Banjo V050FP ball valve 1/2" FNPT](https://www.amazon.com/s?k=banjo+1%2F2+inch+ball+valve+polypropylene) | Polypropylene, full-port, quarter-turn. BV-01, BV-02, plus spares | 4 | Amazon | $6–$10 | $24–$40 |
-| [Banjo V100FP ball valve 1" FNPT](https://www.amazon.com/s?k=Banjo+V100FP+polypropylene+ball+valve) | Polypropylene, full-port, quarter-turn. V1/V3/V4, VB1–VB3 (IBC fill/drain valves) | 6 | Amazon | $10–$16 | $60–$96 |
-| [Banjo V075FP ball valve 3/4" FNPT](https://www.amazon.com/s?k=Banjo+V075FP+polypropylene+ball+valve) | Polypropylene, full-port, quarter-turn. BV-06 (chemistry tap shut-off) | 1 | Amazon | $8–$12 | $8–$12 |
-| [3-way diverter valve 1/2" FNPT](https://www.amazon.com/s?k=1%2F2+inch+3+way+ball+valve+NPT) | L-port or T-port, HDPE compatible. 3W-DV-02 (tray drain) | 1 | Amazon | $12–$22 | $12–$22 |
-| [3-way diverter valve 1" FNPT](https://www.amazon.com/s?k=1+inch+3+way+ball+valve+NPT) | L-port or T-port, HDPE compatible. 3W-DV-01 (filter output) | 1 | Amazon | $18–$30 | $18–$30 |
-| [2" polypropylene camlock pairs (M+F)](https://www.amazon.com/s?k=2+inch+polypropylene+camlock+fitting+pair) | For external bulkhead connections (X1/X3/X4 + spare) | 4 pairs | Amazon | $5–$8/pair | $20–$32 |
-| [1/2" NPT 90° elbow polypropylene](https://www.amazon.com/s?k=1%2F2+NPT+90+elbow+polypropylene) | All pump-driven run bends (manifold internal + external runs) | 14 | Amazon | $2–$4 | $28–$56 |
-| [Banjo EL100-90 elbow 1" NPT](https://www.amazon.com/Banjo-EL100-90-Polypropylene-Fitting-Schedule/dp/B00AB5XSZ8) | Polypropylene 90° elbow. IBC fill/drain bends, filter outlet to DV-01 | 4 | Amazon | $3–$5 | $12–$20 |
-| [1/2" NPT polypropylene tee](https://www.amazon.com/s?k=1%2F2+NPT+tee+polypropylene) | Blue suction/discharge tees, system branches | 6 | Amazon | $2–$4 | $12–$24 |
-| [Banjo TEE100 equal tee 1" NPT](https://www.amazon.com/s?k=Banjo+TEE100+polypropylene+tee+1+inch) | Polypropylene. IBC fill/drain tees | 4 | Amazon | $4–$6 | $16–$24 |
-| [1/2" NPT polypropylene union](https://www.amazon.com/s?k=1%2F2+inch+NPT+polypropylene+union) | Maintenance disconnects on pump runs | 6 | Amazon | $4–$6 | $24–$36 |
-| [1/2"×1" NPT bushing reducer](https://www.amazon.com/s?k=1%2F2+inch+to+1+inch+NPT+bushing+reducer+polypropylene) | P-02 riser to F1 filter inlet | 1 | Amazon | $3–$5 | $3–$5 |
-| [S60×6 to 1" NPT adapter](https://www.amazon.com/s?k=IBC+S60x6+1+NPT+adapter) | IBC DN50 valve to 1" HDPE pipe | 8 | Amazon | $8–$15 | $64–$120 |
-| [1" NPT spring check valve](https://www.amazon.com/s?k=1+inch+NPT+spring+check+valve+PVC) (CV1/CV3/CV4) | Non-return valve, PVC body, EPDM seal | 3 | Amazon | $8–$14 | $24–$42 |
-| PTFE thread seal tape | ½" wide, 260" roll | 4 | Home Depot | $2 | $8 |
-| [1/2" SDR-11 HDPE pipe](https://www.ferguson.com) | All pump-driven runs (IBC to manifold, manifold to spray bar, tray drain, DV outputs). 20ft sticks | 4 sticks | Ferguson | $6–$10/stick | $24–$40 |
-| [1" SDR-11 HDPE pipe](https://www.ferguson.com) | Food-safe, blue-stripe, 20ft stick. Filter outlet to DV-01 and IBC fill/drain lines only | 1 stick | Ferguson | $12–$18/stick | $12–$18 |
-| [Banjo TEE100 equal tee, 1" HDPE NPT](https://www.amazon.com/s?k=Banjo+TEE100+polypropylene+tee+1+inch) | X1 fill tee — splits the fill to both Blue totes (replaces the 2" cross-connect) | 1 | Amazon | $4–$6 | $4–$6 |
-| [¾" SDR-11 HDPE pipe](https://www.ferguson.com) | Spray bar run, 20ft sticks | 2 sticks | Ferguson | $9–$14/stick | $20–$30 |
-| [½" ID reinforced braided PVC hose](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+6+ft) | Pump inlet flexible connection, 6ft per pump | 2 lengths | Amazon | $8–$12/length | $20 |
-| [1" polypropylene camlock (Type E)](https://www.amazon.com/s?k=1+inch+polypropylene+camlock+type+E) | Quick-disconnect at IBC and pipe stubs | 4 pairs | Amazon | $5–$8/pair | $20–$32 |
-| [18mm marine plywood offcut (~0.4 m²)](https://www.homedepot.com/b/Lumber-Composites-Plywood-Marine-Plywood/N-5yc1vZc6ad) | Drain-riser backing spine + capped top shelf — teed off the equipment panel; mounts the X3/X4 risers and supports the Blue fill trunk in the corridor | 1 | Home Depot / local lumber | $12–$20 | $12–$20 |
-| [SS 2-hole pipe straps / cushioned P-clips, ½"–¾"](https://www.mcmaster.com/products/pipe-clamps/) | Clamp the X3/X4 drain risers (~400mm centers) + the Blue fill trunk on the top shelf (+ SS screws) | 11 | McMaster-Carr | $1–$2 each | $12–$22 |
-**Valves, fittings & pipe subtotal: ~$526–$857**
+| Item | Qty | Supplier | Systems | Est. cost |
+|------|-----|----------|---------|-----------|
+| Light-seal set — EPDM tape (×3) + Rosco Duvetyne + 6-mil poly + Gorilla tape (×6) | 1 set | Rosco | film | $316 |
+| Light-sealing materials (interior conversion) | 1 lot | McMaster-Carr | interior | $150–$210 |
+| 20mm EPDM gasket — perimeter + housing-surround + cut seals (~21 m) | 21 m | McMaster-Carr | panel | $84–$126 |
+| Felt/brush wiper + 12mm neoprene (drum↔housing seal) | 1 lot | McMaster-Carr | lightlock | $40–$60 |
+| Neoprene gasket 340×240×3mm (panel weatherseal) | 1 ea | McMaster-Carr | electrical | $6 |
+| **seals-gaskets subtotal** | | | | **$596–$718** |
 
-### Processing tray
-| Item | Spec | Qty | Supplier | Unit price | Est. cost |
-|------|------|-----|----------|-----------|-----------|
-| [304 SS sheet, 16-ga (1.5mm)](https://www.onlinemetals.com/en/buy/stainless-steel/304-stainless-steel-sheet) | #4 brushed, 4'×8' sheets | 4 | Online Metals | $180–$250/sheet | $720–$1,000 |
-| Fabrication (cut, brake, weld, press sump) | Two tray halves: 2229×2,200mm, 50mm rims, pressed sump well (150×100×20mm) | 1 job | Local sheet metal shop | $450–$850 | $450–$850 |
-| [HDPE flat bar 50×10mm](https://www.mcmaster.com/8619K451) | Tapered shim strips for slope support, 2,200mm long | 5 | McMaster-Carr / TAP Plastics | $8–$15 each | $40–$75 |
-| [1" SS foot valve with strainer](https://www.amazon.com/s?k=1+inch+stainless+foot+valve+strainer) | Sump pickup, prevents debris, maintains prime | 1 | Amazon | $15–$25 | $20 |
-| [1" reinforced suction hose, 6 ft](https://www.amazon.com/s?k=1+inch+reinforced+suction+hose+6+ft) | P-04 suction from sump pickup over tray rim to pump manifold | 1 | Amazon | $12–$20 | $15 |
-| [Silicone gasket strip, FDA grade](https://www.mcmaster.com/1460N14) | 1/16" × 1" × 10 ft, center flange seal | 1 roll | McMaster-Carr | $15–$25 | $20 |
-| [M6×16 SS hex bolts + flange nuts](https://www.mcmaster.com/92196A150) | Center flange, 200mm spacing | 24 | McMaster-Carr | $0.50 each | $12 |
-**Processing tray subtotal: ~<!-- BEGIN costing:tray-low -->$1,300<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,015<!-- END costing:tray-high -->** — canonical figure from the [Processing Tray & Spray Bar report](processing-tray-and-spray-bar.md) §6.1; rows above are the procurement detail.
+### adhesives-finishes
 
-### Spray bar assembly (gantry design)
-| Item | Spec | Qty | Supplier | Est. cost |
-|------|------|-----|----------|-----------|
-| [6061-T6 aluminum SHS **40×40×3mm**](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-tube) | 40×40×3mm structural beam (metric — matches the model + carriage saddle cut; was mislabeled "1½×1½×⅛"), 8 ft lengths (2 joined with sleeve for 3,859mm). 12mm holes drilled for nozzle fittings | 2 | Online Metals | $36–$56 |
-| [3/4" LDPE irrigation poly pipe](https://www.amazon.com/s?k=3%2F4+inch+LDPE+irrigation+poly+pipe) | Internal spray pipe (OD 25mm, ID 19mm), 15 ft length | 1 | Home Depot / Amazon | $10 |
-| [Flat-fan irrigation spray nozzles, barbed](https://www.amazon.com/s?k=flat+fan+irrigation+spray+nozzle+barbed) | 180° fan pattern, barbed inlet through beam wall (26 @ 150mm pitch) | 26 | Amazon | $30–$50 |
-| [Distribution manifold, 1/2" → multi barb](https://www.amazon.com/s?k=irrigation+distribution+manifold+1%2F2+barb) | Mounted at ball joint, splits supply hose to 7 feed tubes | 1 | Amazon | $12 |
-| [1/4" irrigation poly tube](https://www.amazon.com/s?k=1%2F4+inch+irrigation+poly+tubing) | Manifold to beam feed points (~7m total) | 1 | Amazon / Home Depot | $6 |
-| [Barbed feed fittings, through beam top](https://www.amazon.com/s?k=irrigation+barbed+insert+fitting) | Irrigation tube to poly pipe, 7 feed points (~550mm pitch) | 7 | Amazon | $10 |
-| [SS/nylon retainer clips for 3/4" poly pipe](https://www.amazon.com/s?k=retainer+clip+3%2F4+poly+pipe+fold+back) | Fold-back end closures | 2 | Amazon | $4 |
-| [6061-T6 aluminum plate 3/16" (5mm)](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-sheet-plate) | Carriage plates (5mm, notched to meet beam) + end caps — ~300×500mm sheet | 1 | Online Metals | $12–$20 |
-| [30×30mm aluminum solid bar](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-bar) | Internal splice sleeve, 150mm long | 1 | Online Metals | $8–$12 |
-| [SS flat bar, ~3mm](https://www.onlinemetals.com/en/buy/stainless-steel/stainless-steel-flat-bar) | Beam clamp plates (top + bottom) sandwiching the 40mm SHS; 40mm AL offcut spacer beside each beam face | 4 plates | Online Metals / Amazon | $12–$18 |
-| [Nylon skate wheel, 50mm×20mm, 10mm bore](https://www.mcmaster.com/products/rollers/skate-wheels-1~/) | Carriage wheels, flat tread, ≥25 kg rated (2 per carriage) | 4 | McMaster-Carr | $12–$20 |
-| [Telescoping aluminum pool pole](https://www.amazon.com/s?k=telescoping+aluminum+pool+pole+8+ft) | 4–8 ft push handle | 1 | Amazon / Home Depot | $15 |
-| [½" reinforced braided PVC hose, 15 ft](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+15+ft) | Flexible connection BV-02 to the distribution manifold | 1 | Amazon | $15 |
-| [M5×16 SS hex bolt + nyloc nut + washers](https://www.mcmaster.com/91292A126) | Axle saddle-clamp through-bolts (2 per saddle, 8 saddles) | 16 sets | McMaster-Carr | $12 |
-| [20mm ball joint, SS ball + zinc socket](https://www.amazon.com/s?k=20mm+ball+joint+stud+zinc+socket) | Multi-axis arm articulation on beam top face. Ø36mm socket, 50mm flange base, M12 stud | 1 | Amazon / McMaster | $8–$15 |
-| [Self-tapping SS screws, thread-forming (8-pack)](https://www.amazon.com/s?k=stainless+self+tapping+screws) | Fasten ball-joint flange to the 3mm SHS beam top wall (no internal access for nuts) | 4 | Amazon / McMaster-Carr | $3–$5 |
-| [25mm OD × 2mm wall 6061-T6 AL round tube](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-round-tube) | Vertical arm tube, ~500mm long, clamped to ball joint stud | 1 | Online Metals | $5–$8 |
-| M6×25 SS hex bolt + nut | Pinch bolt — clamps arm tube onto ball joint stud | 1 | McMaster-Carr | $1 |
-| [½" barb × ½" hose barb, brass](https://www.amazon.com/s?k=1%2F2+hose+barb+brass) | Flex hose to manifold inlet | 1 | Amazon | $4 |
-| [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | Wheel axle pins, flat head | 4 (1 pack) | Amazon | $4–$8 |
-| [304 SS saddle clamp, 10mm (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | Curved conduit-style axle retention — bolted to carriage plate underside, cradles axle pin | 8 | Amazon | $8–$12 |
-| SS spring clip / pole attachment | Pole-to-arm quick-release clip | 1 | Amazon | $6 |
-| [Cable ties, 200mm, nylon](https://www.amazon.com/s?k=cable+ties+200mm+nylon) | Secure flex hose to arm tube | 1 pack | Amazon | $5 |
-**Spray bar subtotal: ~<!-- BEGIN costing:spray-low -->$235<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$299<!-- END costing:spray-high -->** — canonical figure from the [Processing Tray & Spray Bar report](processing-tray-and-spray-bar.md) §6.2; rows above are the procurement detail.
+| Item | Qty | Supplier | Systems | Est. cost |
+|------|-----|----------|---------|-----------|
+| Interior matte-black paint | 1 lot | Home Depot | interior | $100–$160 |
+| Matte-black interior finish | 1 job | local | lightlock | $40–$70 |
+| Flat-black paint (RAL 9005) — bay/weld touch-in | 1 lot | local | panel | $10–$20 |
+| Silicone bead sealant (bearing housing) | 1 ea | McMaster-Carr | lightlock | $10–$15 |
+| Flat-black epoxy spray paint | 1 ea | hardware store | shelf | $12 |
+| Dielectric grease, marine-grade (terminal protection) | 1 ea | Amazon | electrical | $10 |
+| **adhesives-finishes subtotal** | | | | **$182–$287** |
 
-### Water system processing consumables
-| Item | Spec | Qty | Supplier | Est. cost |
-|------|------|-----|----------|-----------|
-| [Apera Instruments AI311 PH60 pH meter](https://www.amazon.com/Apera-Instruments-AI311-Replaceable-2-00-16-00/dp/B01ENFOIQE) | Waterproof, 0–16, ±0.01 accuracy | 1 | Amazon | $45–$65 |
-| [pH calibration solution set](https://www.amazon.com/s?k=pH+calibration+buffer+solution+4+7+sachet) | pH 4 + pH 7 buffer sachets | 1 set | Amazon | $10 |
-| [Citric acid, food grade, 5 lb](https://www.amazon.com/s?k=citric+acid+food+grade+5+lb) | pH adjustment (acidifier) | 2 bags | Amazon | $28 |
-| [Chemical-resistant GHS labels](https://www.amazon.com/s?k=GHS+chemical+resistant+labels) | For IBC totes | 1 pack | Amazon | $20 |
-| Funnel with filter screen 2" | For IBC filling | 2 | Amazon | $18 |
+### fabric-textile
 
-| Containment liner, 6-mil black LDPE | 20' × 10' sheet — secondary spill containment under IBCs and filter skid | 4 | Amazon | $18–$28/sheet | $75–$110 |
-**Water consumables subtotal: ~$205–$240**
+| Item | Qty | Supplier | Systems | Est. cost |
+|------|-----|----------|---------|-----------|
+| 80% shade cloth, 20×10 ft | 1 ea | Amazon | ventilation | $80 |
+| **fabric-textile subtotal** | | | | **$80** |
 
-**Section total: $4,063–$6,104**
+### ducting-ventilation
 
-## 6. Electrical — Power, Circuits & Wiring
-*Source: `electrical-report.md`*
+| Item | Qty | Supplier | Systems | Est. cost |
+|------|-----|----------|---------|-----------|
+| Evaporative cooler — Hessaire MC18M (120V AC, 1,300 CFM) | 1 ea | Hessaire | ventilation | $130 |
+| Ventilation (inline fans + light-trap baffles) — interior-conversion allowance | 1 lot | Amazon | interior | $80–$130 |
+| 150×150×50mm axial panel fan (12V DC) | 2 ea | Amazon | ventilation | $50 |
+| Ø200mm insulated flex duct, ~1.2m | 1 ea | Home Depot | ventilation | $22 |
+| Ø200mm 90° galvanized duct elbow | 1 ea | Home Depot | ventilation | $14 |
+| Ø200mm duct collar + hose clamp | 1 ea | Home Depot | ventilation | $12 |
+| Ø200mm removable weatherproof duct cap | 1 ea | Home Depot | ventilation | $8 |
+| **ducting-ventilation subtotal** | | | | **$316–$366** |
 
-### Solar & battery (primary power)
-| Item | Spec | Qty | Supplier | Est. cost |
-|------|------|-----|----------|-----------|
-| [Solar panels, 200W monocrystalline](https://www.renogy.com/200-watt-12-volt-monocrystalline-solar-panel/) | 12V nominal | 3 | [Renogy](https://www.renogy.com) | ~$400 total |
-| [Victron SmartSolar MPPT 100/50](https://www.altestore.com) | MPPT charge controller | 1 | [altE Store](https://www.altestore.com) | ~$200 |
-| [LiFePO4 battery 100Ah 12V](https://www.renogy.com/12v-100ah-smart-lithium-iron-phosphate-battery/) | Renogy Smart Lithium or Battle Born, **each 330×172×214mm**. **1 standard**; busbar provisioned for a 2nd in parallel (plug-in, no rewiring — see [Electrical Report §5.2](electrical-report.md)) | 1 | [Renogy](https://www.renogy.com) | ~$350 (+$350 optional 2nd) |
-| [Victron Blue Smart IP65 12/15](https://www.altestore.com) | Shore backup charger | 1 | [altE Store](https://www.altestore.com) | ~$150 |
-| NEMA 5-15R inlet (weatherproof) | Mounted in flush-mount power panel | 1 | Amazon | ~$25 |
-| [Solar panel ground mount frame](https://www.renogy.com) | Tilt frame, 30° | 1 | [Renogy](https://www.renogy.com) | ~$80 |
-| PV cable 10 AWG | MC4 connectors | 1 lot | Amazon | ~$30 |
-| [PV array disconnect](https://www.automationdirect.com/) | DC load-break isolator, 50A / 150VDC, panel-mount (array → MPPT; NEC 690.13) | 1 | [AutomationDirect](https://www.automationdirect.com/) / Amazon | ~$40 |
-| Aluminum plate 340×240×3mm | Flush-mount face plate, power panel | 1 | [Online Metals](https://www.onlinemetals.com) | ~$18 |
-| Neoprene gasket 340×240×3mm | Weatherseal between plate and wall | 1 | McMaster-Carr | ~$6 |
-| M6 bolt + nut + washer set | Panel mounting hardware, SS | 4 | McMaster-Carr | ~$5 |
-| [MC4 bulkhead connector pairs](https://www.amazon.com/s?k=MC4+bulkhead+connector+panel+mount+IP67) | IP67 panel-mount | 3 pairs | Amazon | ~$25 |
-| Panel cooler output | 120V AC — now a **GFCI outlet** (Circuit E); counted in the Evaporative cooler section (was a DC Deutsch bulkhead) | — | — | (see cooling) |
-**Solar & battery subtotal: ~$1,335**  *(1-pack standard; +$375 for the optional 2nd pack — incl. its own MRBF fuse)*
+### tools-safety
 
-### Distribution & wiring
-| Item | Spec | Qty | Supplier | Est. cost |
-|------|------|-----|----------|-----------|
-| [Blue Sea 5026 fuse block](https://www.amazon.com/s?k=Blue+Sea+5026+fuse+block) | 12-circuit ST-blade | 1 | Amazon / [West Marine](https://www.westmarine.com) | ~$55 |
-| [200A main fuse — MRBF terminal-mount](https://www.amazon.com/s?k=Blue+Sea+MRBF+terminal+fuse) | On the battery + post (≤180mm from battery, ABYC E-11) | 1 | Amazon | ~$25 |
-| [Battery main disconnect switch](https://www.bluesea.com/products/category/8/2/Battery_Switches) | Blue Sea m-Series 300A — manual isolator, contactor to busbar | 1 | [West Marine](https://www.westmarine.com) / Amazon | ~$40 |
-| [Remote battery switch (contactor)](https://www.bluesea.com/products/category/8/2/Battery_Switches) | Blue Sea ML-RBS 500A magnetic-latch — in battery + feed, tripped by the external E-stop | 1 | [West Marine](https://www.westmarine.com) / Amazon | ~$150 |
-| [External emergency cut-off (E-stop)](https://www.automationdirect.com/) | Red mushroom push-button, IP66, panel-mount on the external power panel + 2× 18 AWG control loop | 1 | [AutomationDirect](https://www.automationdirect.com/) / Amazon | ~$30 |
-| [Interior emergency cut-off (E-stop)](https://www.automationdirect.com/) | Red mushroom IP65, EP-face mount — paralleled to the exterior E-stop → ML-RBS trip | 1 | [AutomationDirect](https://www.automationdirect.com/) / Amazon | ~$25 |
-| MPPT charge-line fuse | 60A ANL/MIDI + holder on the MPPT→battery lead; 6 AWG charge conductor | 1 | Blue Sea / Amazon | ~$15 |
-| Shore-charger output fuse | 20A inline on the charger DC output lead | 1 | Amazon | ~$5 |
-| Battery terminal covers (pair) | Insulating boots over + / − posts | 1 | Amazon | ~$10 |
-| [Sealed wet-zone connectors](https://www.waytekwire.com) | Deutsch DT / adhesive-lined heat-shrink — pump circuits in the IBC corridor / tray end | 1 lot | [Waytek Wire](https://www.waytekwire.com) | ~$25 |
-| [Pump switches (Circuit C)](https://www.amazon.com/s?k=IP67+rocker+switch+12V+16A) | IP67 sealed rocker, 12V 16A — one per pump (P-01–P-05), panel-face | 5 | Amazon / Waytek Wire | ~$30 |
-| [Pump distribution block](https://www.amazon.com/s?k=12V+bus+bar+distribution+block) | 12V DC + bus + negative bus (6-way), panel-mount, equipment panel | 1 | Blue Sea / Amazon | ~$15 |
-| Dielectric grease | Marine-grade — chemistry-vapor terminal protection | 1 | Amazon | ~$10 |
-| Tinned marine wire (wet-zone runs) | 14/16 AWG tinned copper, ~25ft | 1 | [Waytek Wire](https://www.waytekwire.com) | ~$30 |
-| Cable grommets / glands | Steel-shell penetrations (chafe protection) | 1 lot | McMaster-Carr | ~$15 |
-| Equipotential bonding kit | 6 AWG green/yellow + ring lugs — IBC frame / walkway / tray-metal to battery-negative | 1 | Amazon | ~$20 |
-| [IP65 enclosure 300×200×130mm](https://www.amazon.com/s?k=IP65+enclosure+300x200+junction+box) | Houses fuse block + MPPT | 1 | Amazon | ~$60 |
-| Wiring kit — 12/14/16/18 AWG | 50ft each color, tinned copper | 1 kit | [Waytek Wire](https://www.waytekwire.com) / Amazon | ~$80 |
-| 2/0 AWG cable | Battery–fuse–busbar, 3ft | 1 lot | Amazon | ~$30 |
-| [Anderson Powerpole connectors 30A](https://powerwerx.com/anderson-powerpole-connectors) | 50 pairs | 1 kit | [Powerwerx](https://powerwerx.com) | ~$40 |
-| [Deutsch DT connectors 2-pin](https://www.waytekwire.com) | Exterior penetrations, IP67 | 10 sets | [Waytek Wire](https://www.waytekwire.com) | ~$30 |
-| 40×25mm PVC cable trunking | 5m lengths | 4 | McMaster-Carr | ~$40 |
-| [10mm corrugated conduit](https://www.mcmaster.com/7828K48) | Drop conduits to devices | 10m | McMaster-Carr #7828K48 | ~$30 |
-| [Brady M210 wire label kit](https://www.amazon.com/s?k=Brady+M210+label+printer+wire) | Wire label cartridge | 1 | Amazon | ~$80 |
-| [12V LED flat panel 300×600mm](https://www.amazon.com/s?k=12V+LED+flat+panel+300x600+4000K) | 20W neutral white, ceiling-mount | 3 | Amazon | ~$75 total |
-| Pull-cord ceiling switch, 12V 6A SPST | Inline switch for lighting Ccts D & G | 2 | Amazon | ~$16 total |
-| Copper ground stake 8ft × ⅝" dia | Earth connection | 1 | Home Depot | ~$20 |
-| 4 AWG ground wire, green/yellow | 3m | 1 | Amazon | ~$15 |
-**Distribution & wiring subtotal: ~$1,015**  *(+$410 circuit-protection / wet-zone-sealing hardware — interior **+** exterior emergency cut-offs + battery contactor, disconnect, terminal fuse, **PV array disconnect, MPPT charge-line + shore-charger fuses**, sealed connectors, bonding; see [Electrical Safety Report](electrical-safety-report.md) §5; +$45 Circuit-C pump-control — 5 switches + distribution block)*
+| Item | Qty | Supplier | Systems | Est. cost |
+|------|-----|----------|---------|-----------|
+| Processing consumables — 6-mil poly, pH meter, citric acid | 1 lot | Amazon | water | $231–$278 |
+| **tools-safety subtotal** | | | | **$231–$278** |
 
-**Section total: ~$2,350**  *(= Solar & battery $1,335 + Distribution & wiring $1,015; 1-pack standard, +$375 for the optional 2nd pack)*
+### fabrication-labor
 
-## 7. Housed Revolving-Door Light Lock — Custom Fabrication
-*Source: `light-trap-selection.md` § 4 (rev 9 / B2). Custom-fabricated Ø900 fixed housing + single-opening C-shell drum (no fins) built into the hinged cargo-door panel — light-tight by geometry. **rev 9 switches the drum/housing from 3mm aluminum to a hybrid plastic skin (5mm UV-HDPE housing, 4mm PP drum)** — cutting the drum/housing mass (~99 kg → ~60 kg), removing galvanic concerns, and lowering fabrication cost. Replaces the failed Ø750 4-fin drum. Single-operator entry/exit at any time without admitting daylight.*
+| Item | Qty | Supplier | Systems | Est. cost |
+|------|-----|----------|---------|-----------|
+| Plastic fabrication — roll + weld 2 cylinders, fit (16–22 hrs) | 1 job | Local plastic fab | lightlock | $800–$1,150 |
+| Fabrication (brackets, cantilever frame, install) | 1 job | local fab | walkway | $454–$808 |
+| Delivery — short haul (<50 miles), tilt-bed | 1 job | Commercial tilt-bed hire | container | $300–$800 |
+| Fixed door frame — welding/fabrication + wall attachment | 1 job | local fab | swingpivot | $200–$350 |
+| **fabrication-labor subtotal** | | | | **$1,754–$3,108** |
 
-### Housing + drum body
-| Item | Spec | Qty | Supplier | Est. cost |
-|------|------|-----|----------|-----------|
-| 5mm UV-stabilized HDPE sheet (black) | Ø900 fixed housing shell — LT_HOUSING_T (rolled + extrusion-welded, ~7 m²) | ~7 m² | [TAP Plastics (SoCal)](https://www.tapplastics.com/) / Online Metals plastics | ~$180–$280 |
-| 4mm black polypropylene sheet | Ø864 drum shell + top/bottom caps + opening edge stiffeners — LT_DRUM_T (~7 m²) | ~7 m² | TAP Plastics / Curbell Plastics (SoCal) | ~$150–$240 |
-| 75mm Ø solid round bar, cut to 150mm | Upper and lower stub shafts (×2) | 2 pieces | Pacific Coast Steel or any steel service center | ~$30 |
+## Supplier consolidation (largest orders first)
 
-### Bearings
-| Item | Spec | Qty | Supplier | Est. cost |
-|------|------|-----|----------|-----------|
-| [SKF 6215-2RS1 sealed deep-groove ball bearing](https://www.amazon.com/s?k=SKF+6215-2RS1+bearing) | 75mm ID × 130mm OD × 25mm wide, C3 clearance | 2 | Amazon / Bearing World (Anaheim CA) | ~$45–$65 each → ~$90–$130 |
-| [Circlip for 75mm shaft](https://www.mcmaster.com/98541A113) | DIN 471, shaft circlip | 4 | McMaster-Carr #98541A113 | ~$10 |
-
-### Seals
-| Item | Spec | Qty | Supplier | Est. cost |
-|------|------|-----|----------|-----------|
-| [12mm closed-cell neoprene wiper strip](https://www.mcmaster.com/93855K6) | PSA-backed, drum cap + top/bottom housing wiper seals; 3m | 1 pack (3m) | McMaster-Carr #93855K6 | ~$22 |
-| [Nylon/felt brush wiper strip](https://www.mcmaster.com/brush-seal-strip) | Drum↔housing rotating seal at the two opening edges (full height ×2) | ~5m | McMaster-Carr | ~$40 |
-| [20mm neoprene compression strip](https://www.mcmaster.com/8635K31) | PSA-backed, drum-to-panel gap seal | 2.4m | McMaster-Carr #8635K31 | ~$20 |
-| [Black UV-stable silicone sealant](https://www.mcmaster.com/7587A3) | Bead seal at top and bottom mount plates | 2 tubes | McMaster-Carr #7587A3 | ~$18 |
-
-### Hardware
-| Item | Spec | Qty | Supplier | Est. cost |
-|------|------|-----|----------|-----------|
-| [SS round grab rail, 100mm Ø × 400mm](https://www.mcmaster.com/4530T37) | Interior face only, welded bracket | 1 | McMaster-Carr #4530T37 | ~$20 |
-| M10 × 40mm hex bolt, stainless + flat washer | Lower bearing collar — 8 off | 1 lot | McMaster-Carr | ~$20 |
-| M10 × 35mm hex bolt, stainless + flat washer | Upper bearing housing — 6 off | 1 lot | McMaster-Carr | ~$15 |
-| Nylon isolation washers + stainless fasteners | Steel shaft/bearing ↔ plastic shell joints (plastic↔plastic elsewhere — no galvanic couple) | 1 lot | McMaster-Carr | ~$25–$40 |
-
-### Surface treatment
-| Item | Spec | Qty | Supplier | Est. cost |
-|------|------|-----|----------|-----------|
-| Matte-black interior finish | Black-pigmented sheet (no etch-prime); scuff + flat-black touch-in at extrusion welds | 1 job | Rattle-can / local shop | ~$40–$70 |
-
-### Fabrication labor
-| Item | Spec | Qty | Supplier | Est. cost |
-|------|------|-----|----------|-----------|
-| Plastic fabrication — roll 2 cylinders (housing + drum), hot-air / extrusion weld, cap/shaft fit, bearing fit | 16–22 hrs at local plastic fab shop | 1 job | Local plastic fabrication shop (SoCal) — get 2–3 quotes | ~$800–$1,150 |
-**Section total: ~$1,465–$2,160**
-
-*Note: This is for the drum body only. The hinged panel that the drum mounts into (50×50mm RHS frame, 4mm PP plastic skins (18mm-ply Fan-B mount band), EPDM perimeter gasket) is covered in § 2 (Interior Conversion) above. See [light-trap-selection.md](light-trap-selection.md) for full specification and supplier notes.*
-
-## 7a. Panel Swing Pivot
-*Source: `equipment-layout-report.md` § 6.1, `hinged-panel-report.md` § 4–5. Enables transport mode: the panel + drum SWING ~56° about a vertical Ø89×8mm CHS pivot post (rev10 — supersedes the B2 slide), carrying the punch-out bay inboard of the door plane (true min X +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm -->mm) so the cargo doors close. Single-person operation (~5 min, swing assisted; strike the two left film rails + the left walkway first, then swing).*
-
-### Swing pivot system
-
-*Firmed BOM (Stage 4, 2026-06-10). Structural member check DONE: the Ø89×8 post gives
-Z ≈ 37.9 cm³, so the ~3.6 kN·m swing cantilever puts σ ≈ 95 MPa on an S355 (355 MPa)
-section → **SF ≈ 3.7** (matches `hinged-panel-report.md` §4.1). The journal couple is
-H = M/h = 3.6 kN·m / 2.2 m ≈ 1.6 kN per bearing → sleeve bearing pressure ≈ 0.37 MPa «
-14 MPa allowable for SAE 841 bronze. **Remaining sign-off: the post-to-container
-top/bottom weld + anchor connection** (fabricator/PE review) — not the member itself.*
-
-| Item | Spec | Qty | Suppliers (A / B) + part # | Est. cost |
-|------|------|-----|----------------------------|-----------|
-| Pivot post — 3.5″ OD × 0.375″ wall DOM tube, ~2,300mm | A513 DOM (≈Ø89×9.5, **exceeds** the Ø89×8 S355 spec); upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever (SF 3.7) | 1 | [Online Metals #12976](https://www.onlinemetals.com/en/buy/carbon-steel/3-5-od-x-0-375-wall-x-2-75-id-carbon-steel-round-tube-a513-type-5-dom/pid/12976) / [Metals Depot DOM](https://www.metalsdepot.com/steel-products/steel-round-tube-dom) · Metal Supermarkets SoCal (cut-to-size) | ~$110 |
-| Turntable thrust bearing — 12″ (Ø305), 1000 lb | Axial only at the post base — carries the ~330 kg (3.24 kN) vertical load; the overturning moment is taken by the journal couple, so a thrust-only turntable suffices | 1 | [VXB Lazy-Susan 1000 lb, USA](https://vxb.com/products/12inch-lazy-susan-5-16-thick-turntable-bearings-made-in-usa-1000-lbs-capacity) / [Shepherd 9549E](https://www.shepherdhardware.com/product/12-inch-lazy-susan-round-turntable-1000-lb-load-capacity) | ~$40 |
-| Flanged sleeve (journal) bearing — 3½″ (89mm) bore | SAE 841 bronze (oil-embedded); top + bottom radial location of hub on post; 1.6 kN radial each | 2 | [McMaster-Carr 6391K-series](https://www.mcmaster.com/sleeve-bearings/) / [Grainger](https://www.grainger.com/category/power-transmission/bearings/sleeve-bearings) | ~$100 |
-| Pivot hub + thrust collar, machined steel | Couples the swinging frame to the post; bores Ø89 for the sleeves + seats the turntable; includes machining the post bearing landings | 1 | Local fab (SoCal machine shop) | ~$160 |
-| Drum support cage — [40×40×3mm SHS](https://www.metalsupermarkets.com/product/square-tube/) (~4m) | Steel frame carrying the Ø900 housing + drum on the swinging leaf | 1 | Metal Supermarkets SoCal / local fab | ~$90 |
-| Top + bottom **wall stays** (transport lock) | [M16 turnbuckle](https://www.mcmaster.com/turnbuckles/) (eye-eye) + [eye bolt](https://www.mcmaster.com/eyebolts/) + hook rod, each | 2 | [McMaster-Carr 3411T-series](https://www.mcmaster.com/turnbuckles/) / [Grainger](https://www.grainger.com/category/material-handling/rigging/turnbuckles) | ~$90 |
-| Wall-stay anchor plates + M16 bolts | Inside + outside 4-bolt plates per stay eye, sandwiching the side wall (same pattern as the walkway anchors) | 2 sets | Local fab / [McMaster-Carr M16](https://www.mcmaster.com/bolts/) | ~$60 |
-| Drop-in rail saddles + tapered dowels + clamp bars | Drop-in saddles for the 2 removable left film rails (TL + BL) — the dowels set the film datum on re-seat | 4 | Local fab / McMaster-Carr | ~$120 |
-| **Swing pivot subtotal** | | | (firmed — was a ~$770 estimate, now priced line-by-line) | **~$770** |
-
-### Fixed door frame + seals
-| Item | Spec | Qty | Supplier | Est. cost |
-|------|------|-----|----------|-----------|
-| 50×50×3mm RHS welded frame | Full door perimeter ~9.5m | 1 | Metal Supermarkets | ~$120 |
-| 3mm steel plate/angle, ~110mm × ~4m | Top + bottom seal lips — frame-top downstand (top, continuous full width) + threshold upstand (bottom, full width, no notch — drum rides at Z130); seal paths #3–#4 | 1 | Metal Supermarkets | ~$60 |
-| Seal landing machining | Mill flat on all frame faces + the 2 vertical cut-seal landings | 1 | Local fab | ~$80 |
-| [EPDM gasket 20×15mm](https://www.mcmaster.com/8635K31) | Perimeter (~9.5m) + 2× vertical **cut seals** at Yd180/2287 (~4.8m) + top/bottom lip strips | 1 | McMaster-Carr #8635K31 | ~$70 |
-| Neoprene backup strip, 10×10mm | Self-adhesive, ~9.5m | 1 | McMaster-Carr | ~$22 |
-| Fasteners, misc | M10/M12 stainless, assorted | 1 lot | McMaster-Carr | ~$60 |
-| Flat black paint | Touch-up, 1 qt | 1 | Home Depot | ~$15 |
-| Fan B flex cable (coiled, 16AWG 2-cond, silicone) | 1m coiled, Deutsch DT 2-pin connectors each end — accommodates the ~56° swing | 1 | Waytek Wire / McMaster-Carr | ~$35 |
-**Door frame subtotal: ~$462**
-
-**Section total (materials): ~$1,112–$1,372** *(swing pivot + fixed RHS door frame; = cost-breakdown §6b)*
-**Fabrication labor: ~12–16 hrs × $80–$100/hr = $960–$1,600**
-
-## 7b. Perimeter Walkway
-*Source: `generate_walkway_diagram.py`, `engineering-diagrams.md` §14. Four removable grated walkway sections around the processing tray. Near walkway widens from 300mm to 500mm at EP/battery/slit zone (X≈1,155–2,629). Near/far: wall-cantilevered brackets bolted to corrugated wall ribs. Right (rev12): cantilever rectangle — a closed 40×40 SHS frame on 2 center arms off the IBC corridor uprights, left corners on wall cleats, right corners on combined corner plates shared with the bottom film rail (no floor contact — clears IBC stack entirely). Left: removable lift-out grate on 5 floor-leg cantilever brackets (50×50 post on bare floor + arm to X=470, 3 extended to X=770 on the punch-out). Butt joints at all corners. No tray contact on any section — entire tray interior completely clear for film loading. Deck height 130mm (115mm support + 15mm grate; raised +50 so the support clears the floor-level spray bar).*
-
-### Walkway sections (4 off)
-| Item | Spec | Qty | Supplier | Est. cost |
-|------|------|-----|----------|-----------|
-| [Molded GRP (fiberglass) grating, 15mm](https://www.mcnichols.com/fiberglass-grating) | 5/8" (15mm) molded FRP, **vinyl-ester resin, grit top** (corrosion-proof in the chemistry zone; 15mm depth keeps the lowered deck + spray-bar clearance). Cut to size: near 4459×300mm (with 1474×500mm bump-out), far 4459×300mm, right 2362×300mm, left 2362×300mm (removable) | ~4.5 m² | [McNichols](https://www.mcnichols.com) / [Grating Pacific](https://gratingpacific.com) (SoCal) | ~$970–$1,260 |
-| Standard wall brackets, 8mm steel plate | Triangular gusset: 150mm vert × 300mm arm, welded. Hot-dip galvanized. | 14 | Local fab / Metal Supermarkets | ~$112–$175 |
-| Widened wall brackets, 10mm steel plate | 200mm vert × 500mm arm, 70mm gusset, welded. Hot-dip galvanized. EP/battery/slit zone. | 4 | Local fab / Metal Supermarkets | ~$72–$112 |
-| Reinforcing plates, 100×180×6mm mild steel | Welded to exterior wall face behind each standard bracket | 14 | Metal Supermarkets | ~$31–$49 |
-| Reinforcing plates, 120×220×6mm mild steel | Wider plates behind each widened bracket (4-bolt pattern) | 4 | Metal Supermarkets | ~$16–$24 |
-| M12×60mm hex bolts, nuts, flat washers | Grade 8.8, galvanized. 3 per standard bracket (42) + 4 per widened bracket (16). | 58 | McMaster-Carr | ~$57–$87 |
-| Transition bearing plate, 40×500×5mm flat bar | Welded to bracket arm top at width transitions (X≈1,156 and X≈2,526). Both grating widths land on plate. | 2 | Metal Supermarkets | ~$5–$10 |
-| Mild steel SHS 40×40×3mm, galvanized | Right walkway CANTILEVER frame (rev12): 2 long beams (2,362mm) + 2 end beams (300mm) + 2 center arms (405mm); order 8m | 8 m | Metal Supermarkets | ~$28–$40 |
-| Right walkway wall cleats (left corners, ×2) | 8mm steel — back-plate + exterior plate + shelf the long beam lands on, through-bolted to the wall | 2 | Local fab | ~$20–$35 |
-| Combined corner plates (right corners, ×2) | 10mm steel, 150mm-wide — secures BOTH the bottom film rail (BR) AND the walkway right beam (interior + exterior plate + 2 seats). Shared with the film plane: REPLACES the BR rail saddle | 2 | Local fab | ~$50–$80 |
-| M12 through-bolts + nuts, flat + lock washers | Wall cleats + combined plates (through-wall) + the 2 center-arm U-clamps to the IBC corridor uprights. Galvanized, grade 8.8. | ~24 | McMaster-Carr | ~$30–$50 |
-| [316 SS hold-down clips (M/G-clip, FRP)](https://www.mcnichols.com/fiberglass-grating/) | Stainless hold-down clips clamp the GRP panel to the bracket arm / L-angle (no TEK-into-bar — FRP uses a clamp clip). Near/far/right walkways. | ~20 | [McNichols](https://www.mcnichols.com) | ~$25–$40 |
-| Left floor-leg cantilever brackets (×5) | Each = 50×50×3mm steel SHS post (~115mm, floor to grate bottom) + 40×40×3mm SHS arm (2× standard reach to X470, 3× extended to X770 on the drum-exit punch-out) + 128×60×8mm foot plate. Bolted to bare floor outside the tray (X<170); arms pass 15mm over the spray bar. Hot-dip galvanized. | 5 | Metal Supermarkets / local fab | ~$55–$95 |
-| [M10 wedge anchors + nuts/washers](https://www.mcmaster.com/) | Galvanized. 4 per foot plate (20 total) — sealed penetrations into the container floor. | 20 | McMaster-Carr | ~$25–$45 |
-| Drum-exit punch-out — extra GRP grating (~0.23 m²) | Deeper landing (600mm) at the light-lock exit; carried by the 3 extended bracket arms (to X770) — no separate bearer/leg. | 1 lot | McNichols / Grating Pacific | ~$50–$65 |
-| Fabrication + installation | Cut/weld/galvanize 14 std + 4 widened wall brackets, reinforcing plates, drill wall ribs, fabricate + fit the right walkway cantilever frame (clamp 2 center arms to the IBC uprights, bolt wall cleats + combined corner plates), fit 5 left floor-leg cantilever brackets + drill/seal floor anchors, install | 1 job | Local fab / metal shop | ~$290–$455 |
-**Walkway subtotal: ~$1,865–$2,650**  *(GRP grating swap: +$720–$890 vs galvanized steel; buys −62 kg + corrosion immunity in the chemistry zone)*
-
-*Near/far grating secured with M saddle clips + TEK screws to bracket arms. Right walkway grating secured with M saddle clips + TEK screws to L-angle bearer horizontal leg. Left walkway uses gravity retention — the grating rests on the floor-leg cantilever arms (5 brackets on bare floor at X=140, arms reaching X=470, three extended to X=770 on the punch-out); lift straight up to remove (no fasteners, no kerb). The brackets are bolted to the floor (permanent); only the grating lifts out for transport. No edge beam, no bearing strip, no tray contact (the +50mm walkway raise lifts the arms clear of the floor-level spray bar). Near walkway widens to 500mm at EP/battery/slit zone (X≈1,155–2,629) with heavier 10mm brackets (see Sheet 7). Slits cut to tray lip only (near: 420mm, far: 218mm), not full walkway depth. Transition bearing plates at width change brackets (X≈1,156 and X≈2,526). Butt joints at all corners. No floor contact on any section — entire tray interior clear.*
-
-## 8. Cooling & Ventilation
-*Source: `electrical-report.md`*
-
-### Ventilation fans (upgrade from original 4" spec)
-| Item | Spec | Qty | Supplier | Est. cost |
-|------|------|-----|----------|-----------|
-| [150×150×50mm 12V DC axial panel fan](https://www.coolingfanfactory.com/product/DC-Fan-15050-12V-24V-48V-150mm.html) | **150×150×50mm**, 12V DC, ball-bearing, ~150–200 CFM (e.g. GDSTIME / Wathai 15050-12V). *Thin axial PANEL fan — fits flush + inside the 300mm baffle duct (NOT the 320mm-long AC Infinity S6 inline fan; see [dimension audit](component-dimension-audit.md))* | 2 | Amazon | ~$50 total |
-| 6" duct stub fittings | Wall penetration collars | 2 | Amazon | ~$20 |
-| Fan baffle plates (3mm mild steel) | 2 baffles per fan, offset S-path | 1 lot | Metal Supermarkets | ~$40 |
-**Ventilation subtotal: ~$110** *(fan corrected to a real 150×150×50 axial panel fan; folded into the re-summed grand totals with the evap-cooler resolution — see [cost breakdown](project-cost-breakdown.md))*
-
-### Shade canopy
-| Item | Spec | Qty | Supplier | Est. cost |
-|------|------|-----|----------|-----------|
-| 80% shade cloth 20×10ft | UV-stabilized, over container roof | 1 | Amazon / Farm supply | ~$80 |
-| Canopy frame | 1.5" EMT conduit + T-fittings | 1 lot | Home Depot | ~$120 |
-**Shade canopy subtotal: ~$200**
-
-### Evaporative cooler (+ inverter)
-*Resolves the parked evap cooler ([dimension audit](component-dimension-audit.md)): a commodity 120V AC swamp cooler on a dedicated 12V→120V inverter, instead of the fictional "Portacool Jetstream 110 12V DC". AC isolation/GFCI/bonding per [Electrical Report §7.6](electrical-report.md#ac-safety).*
-
-| Item | Spec | Qty | Supplier | Est. cost |
-|------|------|-----|----------|-----------|
-| [Evaporative cooler — Hessaire MC18M](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) | 120V AC, <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W, 1,300 CFM (run on **low** for the Ø200 duct), 16 lb, 559×305×711mm, 4.8 gal | 1 | [Hessaire](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) / Amazon | ~$130 |
-| [Cooler inverter — Victron Phoenix 12/375 GFCI](https://www.victronenergy.com/inverters/phoenix-inverter-vedirect-250va-800va) | 12V→120V pure-sine, **built-in GFCI**, factory bonded neutral, 0.9W idle (Circuit E) | 1 | [Victron](https://www.victronenergy.com/inverters/phoenix-inverter-vedirect-250va-800va) / Amazon | ~$210 |
-| Inverter DC protection | 40A ANL fuse + holder + DC disconnect switch (inverter feed) | 1 | Blue Sea / Amazon | ~$40 |
-| Panel GFCI AC outlet | Weatherproof NEMA 5-15R + in-use (bubble) cover (Circuit E panel outlet) | 1 | Leviton / Amazon | ~$25 |
-| Ø200mm insulated flex duct | ~1.2m, aluminum foil jacket, cooler to wall stub | 1 | [Home Depot](https://www.homedepot.com/s/8%20inch%20insulated%20flex%20duct) / McMaster-Carr | ~$22 |
-| Ø200mm (8") 90° duct elbow | Galvanized — vertical riser off cooler to horizontal wall entry | 1 | [Home Depot](https://www.homedepot.com/s/8%20inch%20duct%20elbow) | ~$14 |
-| Ø200mm duct collar + hose clamp | Galvanized, wall stub coupling | 1 | [Home Depot](https://www.homedepot.com/s/8%20inch%20duct%20collar) | ~$12 |
-| Ø200mm weatherproof duct cap | Removable, protects wall stub when cooler disconnected | 1 | [Home Depot](https://www.homedepot.com/s/8%20inch%20duct%20cap) | ~$8 |
-| 200mm baffle duct + plates | Light-safe baffled intake, 300mm stub, 2× offset baffles | 1 lot | McMaster-Carr / local fab | ~$20 |
-| Cooler power cord | 1.5m outdoor SJOOW, NEMA 5-15P each end (panel outlet → cooler) | 1 | Amazon | ~$20 |
-| 25mm ratchet strap, 2m | Cooler transport stowage on near walkway | 2 | Amazon / Harbor Freight | ~$10 |
-| 12mm plywood base plate 559×305mm | Load distribution on walkway grating | 1 | Offcut / local | ~$5 |
-| 25×25×3mm Al angle cleats, 100mm | Anti-slide cleats screwed to base plate | 2 | Metal Supermarkets / online | ~$4 |
-**Cooler + inverter subtotal: ~$520**
-
-**Section total: ~$824–$974** *(ventilation $110 + shade $200 + cooler/inverter $520; = cost-breakdown §5b)*
-*Note: fans wired to Circuits A & B (DC); the cooler runs from the interior inverter (Circuit E) → GFCI panel outlet → outdoor cord. The cooler subsystem (cooler + inverter + DC protection + AC outlet) is the only 120V AC branch — see [Electrical Report §7.6](electrical-report.md#ac-safety).*
+| Supplier | Line items | Types | Est. cost |
+|----------|-----------|-------|-----------|
+| Amazon | 29 | adhesives-finishes, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,935–$3,887 |
+| containermgt.com | 1 | container | $2,000–$3,500 |
+| Online Metals | 8 | aluminum, stainless-sheet, steel-structural | $2,363–$3,322 |
+| local fab | 14 | fabrication-labor, steel-structural | $1,588–$2,526 |
+| Metal Supermarkets | 7 | steel-structural | $1,438–$2,195 |
+| TAP Plastics | 6 | plastics-sheet | $1,650–$2,190 |
+| McMaster-Carr | 25 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, seals-gaskets | $1,819–$2,181 |
+| McNichols | 3 | fasteners-hardware, plastics-sheet | $1,045–$1,365 |
+| Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
+| Renogy | 3 | electrical-power | $829 |
+| Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
+| Container Exchanger | 1 | water-equipment | $395–$720 |
+| Home Depot | 13 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply | $536–$716 |
+| altE Store | 2 | electrical-power | $350 |
+| Rosco | 1 | seals-gaskets | $316 |
+| Victron | 1 | electrical-power | $275 |
+| Waytek Wire | 7 | electrical-distribution | $208 |
+| West Marine | 2 | electrical-distribution | $190 |
+| Lenox Laser | 1 | stainless-sheet | $50–$150 |
+| Ferguson | 1 | plumbing-fittings | $100–$140 |
+| Hessaire | 1 | ducting-ventilation | $130 |
+| Bearing World | 1 | bearings-motion | $90–$130 |
+| Southco | 1 | fasteners-hardware | $60–$100 |
+| AutomationDirect | 3 | electrical-distribution, electrical-power | $95 |
+| local | 2 | adhesives-finishes | $50–$90 |
+| VXB | 1 | bearings-motion | $40–$60 |
+| Local sheet metal | 2 | steel-structural | $50 |
+| steel service center | 1 | steel-structural | $30–$50 |
+| Powerwerx | 1 | electrical-distribution | $40 |
+| Blue Sea | 2 | electrical-distribution | $30 |
+| hardware store | 1 | adhesives-finishes | $12 |
+| irrigation supply | 1 | plumbing-fittings | $10 |
+| steel offcut | 1 | steel-structural | $5 |
+<!-- END parts:master -->
 
 ## 9. Printmaking Chemistry — Cyanotype (50 prints)
 *Source: `chemistry-shopping-list.md`*

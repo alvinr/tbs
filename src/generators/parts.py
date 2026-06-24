@@ -505,6 +505,66 @@ def emit_master() -> str:
     return "\n".join(out)
 
 
+# ── Block injection (docs ← registry) ────────────────────────────────────────
+# Each generated view lives in a doc wrapped in `<!-- BEGIN parts:KEY -->` / `<!-- END parts:KEY -->`.
+# Whole-block style: the table is regenerated entirely from the emitter. inject() rewrites it;
+# the lint gate (check_blocks) blocks a commit if any block ever diverges from the registry.
+_DOC_MASTER = "master-shopping-list.md"
+
+# system → the report doc that carries its §Parts-List `parts:<system>` block (Phase 2b).
+SYSTEM_DOC = {
+    "water": "water-system-report.md", "electrical": "electrical-report.md",
+    "ventilation": "ventilation-report.md", "film": "film-plane-mechanism-report.md",
+    "lightlock": "light-trap-selection.md", "panel": "hinged-panel-report.md",
+    "shelf": "chemistry-prep-shelves.md", "walkway": "walkway-report.md",
+    "optics": "pinhole-report.md",
+}
+
+
+def _block_pat(key: str) -> "re.Pattern":
+    return re.compile(r"(<!-- BEGIN parts:" + re.escape(key) + r" -->\n)(.*?)"
+                      r"(\n<!-- END parts:" + re.escape(key) + r" -->)", re.DOTALL)
+
+
+def _blocks() -> dict:
+    """key -> (doc, emitter_fn). Only WIRED blocks are registered (added incrementally per phase)."""
+    b = {"master": (_DOC_MASTER, emit_master)}
+    # per-system §Parts-List blocks (Phase 2b) — only those already placed in their doc.
+    for sys, doc in SYSTEM_DOC.items():
+        b[sys] = (doc, lambda s=sys: emit_system(s))
+    return b
+
+
+def inject(write: bool = True) -> list:
+    """Regenerate every marked parts: block. Returns (file, key, 'ok'|'updated'|'STALE'|'missing')."""
+    out = []
+    for key, (rel, fn) in _blocks().items():
+        path = os.path.join(ROOT, rel)
+        text = open(path, encoding="utf-8").read()
+        pat = _block_pat(key)
+        matches = list(pat.finditer(text))
+        if not matches:
+            out.append((rel, key, "missing"))
+            continue
+        body = fn()
+        if all(m.group(2) == body for m in matches):
+            out.append((rel, key, "ok"))
+        elif write:
+            open(path, "w", encoding="utf-8").write(
+                pat.sub(lambda m: m.group(1) + body + m.group(3), text))
+            out.append((rel, key, "updated"))
+        else:
+            out.append((rel, key, "STALE"))
+    return out
+
+
+def check_blocks() -> list:
+    """Linter helper: list of placed parts: blocks that are stale (a missing marker is not an error —
+    blocks are wired incrementally, so a doc without its marker yet is simply skipped)."""
+    return [f"{rel}  parts:{key} -> {st}" for rel, key, st in inject(write=False)
+            if st not in ("ok", "missing")]
+
+
 # ── Self-check (the migration guardrail) ─────────────────────────────────────
 # reconciliation key: registry system → the costing.EXPECTED entry it must sum to.
 # Defaults to the same name; only electrical maps to the differently-named 'power' rollup.
@@ -536,7 +596,17 @@ if __name__ == "__main__":
     ap.add_argument("--check", action="store_true", help="reconcile each migrated system vs costing")
     ap.add_argument("--system", help="print a system's parts table")
     ap.add_argument("--master", action="store_true", help="print the by-type procurement BOM")
+    ap.add_argument("--inject", action="store_true", help="rewrite every placed parts: doc block")
+    ap.add_argument("--check-blocks", action="store_true", help="list any stale parts: doc block")
     args = ap.parse_args()
+    if args.inject:
+        for rel, key, st in inject(write=True):
+            print(f"  [{st:>7}] {rel}  parts:{key}")
+        raise SystemExit(0)
+    if args.check_blocks:
+        probs = check_blocks()
+        print("\n".join(f"  STALE: {p}" for p in probs) if probs else "✓ all parts: doc blocks current")
+        raise SystemExit(1 if probs else 0)
     if args.check or not (args.system or args.master):
         errs = self_check()
         if errs:

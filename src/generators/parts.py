@@ -72,42 +72,43 @@ TYPES = [
 # (the migration guardrail, asserted by self_check()).
 PARTS: list[Part] = [
     # ═══ ventilation (§5b) — proves the schema; sums to EXPECTED['ventilation'] = 824 ═══
-    Part("axial-fan-150", "150×150×50mm axial panel fan (12V DC)", "ducting-ventilation",
-         "ventilation", 2, "ea", 25, 25, "Amazon", spec="GDSTIME/Wathai 15050-12V",
+    Part("axial-fan-150", "150×150×50mm axial fans", "ducting-ventilation",
+         "ventilation", 2, "ea", 25, 25, "Amazon", spec="12V DC, ~150–200 CFM each (GDSTIME/Wathai 15050)",
          dims="150×150×50", modeled_const="FAN_DIAM/FAN_BODY_D", audit_status="✅ FIXED"),
-    Part("evap-cooler-mc18m", "Evaporative cooler — Hessaire MC18M (120V AC, 1,300 CFM)", "ducting-ventilation",
+    Part("evap-cooler-mc18m", "Evaporative cooler", "ducting-ventilation",
          "ventilation", 1, "ea", 130, 130, "Hessaire", "Amazon",
          url="https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler",
+         spec="Hessaire MC18M, 120V AC, {{fact:cooler_cfm_rated}} CFM (run low), {{fact:evap_cooler_w_ac}}W",
          dims="559×305×711", datasheet="Hessaire MC18M", modeled_const="EVAP_W/EVAP_D/EVAP_H",
          audit_status="✅ RESOLVED"),
-    Part("cooler-inverter", "Cooler inverter — Victron Phoenix 12/375 GFCI + DC fuse/disconnect + GFCI outlet",
-         "electrical-power", "ventilation", 1, "ea", 275, 275, "Victron", "Amazon"),
-    Part("shade-cloth-80", "80% shade cloth, 20×10 ft", "fabric-textile",
-         "ventilation", 1, "ea", 80, 80, "Amazon", "Farm supply"),
-    Part("canopy-frame-emt", 'Canopy frame — 1.5" EMT conduit + fittings', "steel-structural",
-         "ventilation", 1, "lot", 120, 120, "Home Depot"),
-    Part("baffle-metal-fan", "Baffle-duct sheet metal (fans), 22 ga galvanized", "steel-structural",
-         "ventilation", 1, "lot", 30, 30, "Local sheet metal", "Home Depot"),
-    Part("baffle-metal-cooler", "Baffle-duct sheet metal (cooler, Ø200), 22 ga galvanized", "steel-structural",
-         "ventilation", 1, "lot", 20, 20, "Local sheet metal", "Home Depot"),
-    Part("flex-duct-200", "Ø200mm insulated flex duct, ~1.2m", "ducting-ventilation",
-         "ventilation", 1, "ea", 22, 22, "Home Depot", "McMaster-Carr"),
-    Part("duct-elbow-200", "Ø200mm 90° galvanized duct elbow", "ducting-ventilation",
-         "ventilation", 1, "ea", 14, 14, "Home Depot"),
-    Part("duct-collar-clamp", "Ø200mm duct collar + hose clamp", "ducting-ventilation",
-         "ventilation", 1, "ea", 12, 12, "Home Depot"),
-    Part("duct-cap-200", "Ø200mm removable weatherproof duct cap", "ducting-ventilation",
-         "ventilation", 1, "ea", 8, 8, "Home Depot"),
-    Part("deutsch-dt-2pin", "Deutsch DT 2-pin weatherproof connector set", "electrical-distribution",
-         "ventilation", 2, "set", 4, 4, "Waytek Wire"),
-    Part("coiled-cable-16awg", "16 AWG silicone coiled cable, 1m 2-cond (Fan B flex)", "electrical-distribution",
-         "ventilation", 1, "ea", 15, 15, "Waytek Wire", "Amazon"),
-    Part("cooler-power-cable", "Cooler external power cable, 1.5m 14 AWG + Deutsch plugs", "electrical-distribution",
-         "ventilation", 1, "ea", 20, 20, "Waytek Wire", "Amazon"),
-    Part("ratchet-strap-25", "Ratchet strap, 25mm (cooler stowage)", "fasteners-hardware",
-         "ventilation", 2, "ea", 6, 6, "Home Depot", "Amazon"),
-    Part("plywood-base-12", "Plywood base plate, 12mm 600×350 (cooler stowage)", "timber-ply",
-         "ventilation", 1, "ea", 8, 8, "Home Depot", "Lumber yard"),
+    Part("cooler-inverter", "Cooler inverter", "electrical-power", "ventilation", 1, "ea", 275, 275,
+         "Victron", "Amazon", spec="Victron Phoenix 12/375 GFCI (12V→120V) + DC fuse/disconnect + GFCI AC outlet"),
+    Part("shade-cloth-80", "Shade canopy — 80% shade cloth", "fabric-textile",
+         "ventilation", 1, "ea", 80, 80, "Amazon", "Farm supply", spec="20 × 10 ft"),
+    Part("canopy-frame-emt", "Canopy frame", "steel-structural",
+         "ventilation", 1, "lot", 120, 120, "Home Depot", spec='1.5" EMT conduit + fittings'),
+    Part("baffle-metal-fan", "Baffle duct sheet metal (fans)", "steel-structural",
+         "ventilation", 1, "lot", 30, 30, "Local sheet metal", "Home Depot", spec="22 ga galvanized, 2 × 300mm stubs"),
+    Part("baffle-metal-cooler", "Baffle duct sheet metal (cooler)", "steel-structural",
+         "ventilation", 1, "lot", 20, 20, "Local sheet metal", "Home Depot", spec="22 ga galvanized, 1 × 300mm stub, Ø200mm"),
+    Part("flex-duct-200", "200mm insulated flex duct", "ducting-ventilation",
+         "ventilation", 1, "ea", 22, 22, "Home Depot", "McMaster-Carr", spec="Ø200mm × 1.2m, aluminum foil jacket"),
+    Part("duct-elbow-200", "200mm 90° duct elbow", "ducting-ventilation",
+         "ventilation", 1, "ea", 14, 14, "Home Depot", spec='Ø200mm (8") galvanized, cooler riser to wall stub'),
+    Part("duct-collar-clamp", "Duct collar + hose clamp", "ducting-ventilation",
+         "ventilation", 1, "ea", 12, 12, "Home Depot", spec="Ø200mm, galvanized"),
+    Part("duct-cap-200", "Weatherproof duct cap", "ducting-ventilation",
+         "ventilation", 1, "ea", 8, 8, "Home Depot", spec="Ø200mm, removable"),
+    Part("deutsch-dt-2pin", "Deutsch DT 2-pin connectors", "electrical-distribution",
+         "ventilation", 2, "set", 4, 4, "Waytek Wire", spec="Fan B flex connector (×2 sets)"),
+    Part("coiled-cable-16awg", "16 AWG silicone coiled cable", "electrical-distribution",
+         "ventilation", 1, "ea", 15, 15, "Waytek Wire", "Amazon", spec="1m, 2-conductor (Fan B flex)"),
+    Part("cooler-power-cable", "Cooler external power cable", "electrical-distribution",
+         "ventilation", 1, "ea", 20, 20, "Waytek Wire", "Amazon", spec="1.5m, 14 AWG 2-cond, Deutsch DT 2-pin plugs each end"),
+    Part("ratchet-strap-25", "Ratchet straps, 25mm", "fasteners-hardware",
+         "ventilation", 2, "ea", 6, 6, "Home Depot", "Amazon", spec="Cooler stowage"),
+    Part("plywood-base-12", "Plywood base plate", "timber-ply",
+         "ventilation", 1, "ea", 8, 8, "Home Depot", "Lumber yard", spec="12mm, 600 × 350mm (cooler stowage)"),
 
     # ═══ water (§5) — mirrors costing.WATER (sub-group granularity → exact $4,211–$6,297). The
     # bundled lines (frame/tray/spray/valves) carry the full sub-group cost under their dominant
@@ -450,6 +451,20 @@ def _money(v: float) -> str:
     return f"${round(v):,}"
 
 
+import facts as _facts  # live fact-marker expansion inside generated spec cells
+
+_FACT_TOKEN = re.compile(r"\{\{fact:([a-z0-9_]+)\}\}")
+
+
+def _expand(text: str) -> str:
+    """Expand {{fact:KEY}} tokens to a live fact marker carrying the CURRENT value, so a generated
+    parts block can restate a single-sourced fact without freezing it: parts.py --inject and
+    facts.py --inject then write the identical string, and both lint gates stay consistent."""
+    return _FACT_TOKEN.sub(
+        lambda m: f"<!-- BEGIN fact:{m.group(1)} -->{_facts._fmt(_facts.FACTS[m.group(1)])}"
+                  f"<!-- END fact:{m.group(1)} -->", text)
+
+
 def _item_cell(p: Part) -> str:
     """Item name, hyperlinked to the part URL when the registry carries one; part_no appended."""
     name = f"[{p.desc}]({p.url})" if p.url else p.desc
@@ -464,7 +479,7 @@ def emit_system(sys: str) -> str:
         lo, hi = line(p)
         cost = _money(lo) if round(lo) == round(hi) else f"{_money(lo)}–{_money(hi)}"
         sup = p.supplier + (f" / {p.supplier_alt}" if p.supplier_alt else "")
-        rows.append(f"| {_item_cell(p)} | {p.spec or '—'} | {p.qty:g} {p.unit} | {sup} | {cost} |")
+        rows.append(f"| {_item_cell(p)} | {_expand(p.spec) or '—'} | {p.qty:g} {p.unit} | {sup} | {cost} |")
     lo, hi = system_total(sys)
     tot = _money(lo) if lo == hi else f"{_money(lo)}–{_money(hi)}"
     rows.append(f"| **{sys.title()} total** | | | | **{tot}** |")

@@ -188,25 +188,27 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 
 ## 9. Parts List
 
-| Item | Spec | Source | Est. cost |
-|------|------|--------|-----------|
-| 150×150×50mm axial fans × 2 | 12V DC, ~150–200 CFM each | Amazon (GDSTIME/Wathai 15050) | ~$50 |
-| Evaporative cooler | Hessaire MC18M, 120V AC, <!-- BEGIN fact:cooler_cfm_rated -->1,300<!-- END fact:cooler_cfm_rated --> CFM (run low), <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W | [Hessaire](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) / Amazon | ~$130 |
-| Cooler inverter | Victron Phoenix 12/375 GFCI (12V→120V) + DC fuse/disconnect + GFCI AC outlet | Victron / Amazon | ~$275 |
-| Shade canopy — 80% shade cloth | 20 × 10 ft | Amazon / Farm supply | ~$80 |
-| Canopy frame | 1.5" EMT conduit + fittings | Home Depot | ~$120 |
-| Baffle duct sheet metal (fans) | 22 ga galvanized, 2 × 300mm stubs | Local sheet metal / Home Depot | ~$30 |
-| Baffle duct sheet metal (cooler) | 22 ga galvanized, 1 × 300mm stub, Ø200mm | Local sheet metal / Home Depot | ~$20 |
-| 200mm insulated flex duct | Ø200mm × 1.2m, aluminum foil jacket | Home Depot / McMaster-Carr | ~$22 |
-| 200mm 90° duct elbow | Ø200mm (8") galvanized, cooler riser to wall stub | Home Depot | ~$14 |
-| Duct collar + hose clamp | Ø200mm, galvanized | Home Depot | ~$12 |
-| Weatherproof duct cap | Ø200mm, removable | Home Depot | ~$8 |
-| Deutsch DT 2-pin connectors | Fan B flex connector (×2 sets) | Waytek Wire (waytekwire.com) | ~$8 |
-| 16 AWG silicone coiled cable | 1m, 2-conductor (Fan B flex) | Amazon / Waytek Wire | ~$15 |
-| Cooler external power cable | 1.5m, 14 AWG 2-cond, Deutsch DT 2-pin plugs each end | Waytek Wire / Amazon | ~$20 |
-| Ratchet straps, 25mm × 2 | Cooler stowage | Home Depot / Amazon | ~$12 |
-| Plywood base plate | 12mm, 600 × 350mm (cooler stowage) | Lumber yard / Home Depot | ~$8 |
-| **Ventilation & cooling total** | | | **~<!-- BEGIN costing:vent-total -->$824<!-- END costing:vent-total -->** |
+<!-- BEGIN parts:ventilation -->
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| 150×150×50mm axial fans | 12V DC, ~150–200 CFM each (GDSTIME/Wathai 15050) | 2 ea | Amazon | $50 |
+| [Evaporative cooler](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) | Hessaire MC18M, 120V AC, <!-- BEGIN fact:cooler_cfm_rated -->1,300<!-- END fact:cooler_cfm_rated --> CFM (run low), <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W | 1 ea | Hessaire / Amazon | $130 |
+| Cooler inverter | Victron Phoenix 12/375 GFCI (12V→120V) + DC fuse/disconnect + GFCI AC outlet | 1 ea | Victron / Amazon | $275 |
+| Shade canopy — 80% shade cloth | 20 × 10 ft | 1 ea | Amazon / Farm supply | $80 |
+| Canopy frame | 1.5" EMT conduit + fittings | 1 lot | Home Depot | $120 |
+| Baffle duct sheet metal (fans) | 22 ga galvanized, 2 × 300mm stubs | 1 lot | Local sheet metal / Home Depot | $30 |
+| Baffle duct sheet metal (cooler) | 22 ga galvanized, 1 × 300mm stub, Ø200mm | 1 lot | Local sheet metal / Home Depot | $20 |
+| 200mm insulated flex duct | Ø200mm × 1.2m, aluminum foil jacket | 1 ea | Home Depot / McMaster-Carr | $22 |
+| 200mm 90° duct elbow | Ø200mm (8") galvanized, cooler riser to wall stub | 1 ea | Home Depot | $14 |
+| Duct collar + hose clamp | Ø200mm, galvanized | 1 ea | Home Depot | $12 |
+| Weatherproof duct cap | Ø200mm, removable | 1 ea | Home Depot | $8 |
+| Deutsch DT 2-pin connectors | Fan B flex connector (×2 sets) | 2 set | Waytek Wire | $8 |
+| 16 AWG silicone coiled cable | 1m, 2-conductor (Fan B flex) | 1 ea | Waytek Wire / Amazon | $15 |
+| Cooler external power cable | 1.5m, 14 AWG 2-cond, Deutsch DT 2-pin plugs each end | 1 ea | Waytek Wire / Amazon | $20 |
+| Ratchet straps, 25mm | Cooler stowage | 2 ea | Home Depot / Amazon | $12 |
+| Plywood base plate | 12mm, 600 × 350mm (cooler stowage) | 1 ea | Home Depot / Lumber yard | $8 |
+| **Ventilation total** | | | | **$824** |
+<!-- END parts:ventilation -->
 
 ---
 

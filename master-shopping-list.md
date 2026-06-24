@@ -65,7 +65,7 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Standard wall brackets, 8mm steel plate (×14) | 14 ea | local fab | walkway | $112–$175 |
 | 50×50×3mm RHS mild steel — frame perimeter + members (4× 6m) | 4 ea | Metal Supermarkets | panel | $120–$160 |
 | Drop-in rail saddles + tapered dowels (×4, removable left film rails) | 4 ea | local fab | swingpivot | $80–$130 |
-| Canopy frame — 1.5" EMT conduit + fittings | 1 lot | Home Depot | ventilation | $120 |
+| Canopy frame | 1 lot | Home Depot | ventilation | $120 |
 | Drum support cage, 40×40×3mm SHS | 1 lot | local fab | swingpivot | $70–$120 |
 | Fixed door frame — 50×50×3 RHS members (×3) | 3 ea | Metal Supermarkets | swingpivot | $90–$120 |
 | Widened wall brackets, 10mm steel plate (×4) | 4 ea | local fab | walkway | $72–$112 |
@@ -78,12 +78,12 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Steel backing plate 6×6×⅛ + welded frame | 1 ea | Metal Supermarkets | optics | $20–$40 |
 | Right walkway cantilever frame, 40×40×3mm SHS (8m) | 1 lot | Metal Supermarkets | walkway | $28–$40 |
 | Right walkway wall cleats, 8mm steel (×2) | 2 ea | local fab | walkway | $20–$35 |
-| Baffle-duct sheet metal (fans), 22 ga galvanized | 1 lot | Local sheet metal | ventilation | $30 |
-| 25×25×3mm steel SHS — frame + spill lip (6m) | 1 lot | Online Metals | shelf | $30 |
-| Baffle-duct sheet metal (cooler, Ø200), 22 ga galvanized | 1 lot | Local sheet metal | ventilation | $20 |
-| Wall mounting cleat + 2 stay anchors (6mm steel, slotted) | 1 lot | local fab | shelf | $18 |
+| Baffle duct sheet metal (fans) | 1 lot | Local sheet metal | ventilation | $30 |
+| 25×25×3 mm steel SHS | 1 lot | Online Metals | shelf | $30 |
+| Baffle duct sheet metal (cooler) | 1 lot | Local sheet metal | ventilation | $20 |
+| Wall mounting cleat + anchors | 1 lot | Local fab | shelf | $18 |
 | Transition bearing plates, 40×500×5mm flat bar (×2) | 2 ea | local fab | walkway | $5–$10 |
-| Corner gusset plates, 3mm (×4) | 4 ea | steel offcut | shelf | $5 |
+| Corner gusset plate, 3 mm | 4 ea | Steel offcut | shelf | $5 |
 | **steel-structural subtotal** | | | | **$2,607–$3,818** |
 
 ### stainless-sheet
@@ -124,9 +124,9 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| Phenolic-faced plywood, 18mm (300×600) | 1 ea | Home Depot | shelf | $60 |
+| Phenolic-faced plywood, 18 mm | 1 ea | Home Depot | shelf | $60 |
 | 18mm exterior-grade plywood — Fan B mount band (0.5 sheet) | 1 lot | Home Depot | panel | $30–$50 |
-| Plywood base plate, 12mm 600×350 (cooler stowage) | 1 ea | Home Depot | ventilation | $8 |
+| Plywood base plate | 1 ea | Home Depot | ventilation | $8 |
 | **timber-ply subtotal** | | | | **$98–$118** |
 
 ### fasteners-hardware
@@ -147,13 +147,13 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | 316 SS hold-down clips (FRP M/G-clip, ×20) | 20 ea | McNichols | walkway | $25–$40 |
 | 316 SS D-grab pull handle (~300mm) + 2× M8 + backing plate | 1 ea | McMaster-Carr | panel | $20–$35 |
 | 100mm Ø SS grab rail (400mm cut) | 1 ea | McMaster-Carr | lightlock | $15–$25 |
-| Folding shelf stays/brackets (×2, fold-flat) | 2 ea | Amazon | shelf | $24 |
-| Continuous (piano) hinge, 600mm | 1 ea | McMaster-Carr | shelf | $20 |
-| Ratchet strap, 25mm (cooler stowage) | 2 ea | Home Depot | ventilation | $12 |
-| M8 wall bolts + washers/nuts (~12) | 1 lot | McMaster-Carr | shelf | $12 |
-| Transport latch (over-center / barrel) | 1 ea | Amazon | shelf | $8 |
+| Folding shelf stays/brackets | 2 ea | Amazon | shelf | $24 |
+| Continuous (piano) hinge, 600 mm | 1 ea | McMaster-Carr | shelf | $20 |
+| Ratchet straps, 25mm | 2 ea | Home Depot | ventilation | $12 |
+| M8 wall bolts + washers/nuts | 12 ea | McMaster-Carr | shelf | $12 |
+| Transport latch (over-center/barrel) | 1 ea | Amazon | shelf | $8 |
 | M6 bolt+nut+washer set, SS (panel mount) | 4 set | McMaster-Carr | electrical | $5 |
-| M5×16 CSK screws (×8) — ply panel | 8 ea | McMaster-Carr | shelf | $4 |
+| M5×16 mm CSK screws | 8 ea | McMaster-Carr | shelf | $4 |
 | **fasteners-hardware subtotal** | | | | **$1,063–$1,863** |
 
 ### bearings-motion
@@ -176,7 +176,7 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 |------|-----|----------|---------|-----------|
 | Valves + fittings — S60×6 adapters, check valves CV1/CV3/CV4 | 1 lot | Amazon | water | $390–$630 |
 | Pipe — HDPE, spray-bar feed | 1 lot | Ferguson | water | $100–$140 |
-| ½" HDPE pipe — TAP-01 trunk extension (~1.5m) | 1 lot | irrigation supply | shelf | $10 |
+| ½" HDPE pipe (tap relocation) | 1 lot | Irrigation supply | shelf | $10 |
 | **plumbing-fittings subtotal** | | | | **$500–$780** |
 
 ### water-equipment
@@ -194,7 +194,7 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 |------|-----|----------|---------|-----------|
 | Solar panel, 200W monocrystalline 12V | 3 ea | Renogy | electrical | $399 |
 | LiFePO4 battery, 100Ah 12V (Renogy Smart Lithium) | 1 ea | Renogy | electrical | $350 |
-| Cooler inverter — Victron Phoenix 12/375 GFCI + DC fuse/disconnect + GFCI outlet | 1 ea | Victron | ventilation | $275 |
+| Cooler inverter | 1 ea | Victron | ventilation | $275 |
 | Victron SmartSolar MPPT 100/50 charge controller | 1 ea | altE Store | electrical | $200 |
 | Victron Blue Smart IP65 12/15 shore backup charger | 1 ea | altE Store | electrical | $150 |
 | Solar panel ground-mount tilt frame, 30° | 1 ea | Renogy | electrical | $80 |
@@ -227,17 +227,17 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Interior emergency cut-off — red mushroom IP65 (paralleled to exterior) | 1 ea | AutomationDirect | electrical | $25 |
 | Sealed wet-zone connectors — Deutsch DT / adhesive heat-shrink | 1 lot | Waytek Wire | electrical | $25 |
 | MC4 bulkhead connector pairs, IP67 panel-mount | 3 pair | Amazon | electrical | $25 |
-| Cooler external power cable, 1.5m 14 AWG + Deutsch plugs | 1 ea | Waytek Wire | ventilation | $20 |
+| Cooler external power cable | 1 ea | Waytek Wire | ventilation | $20 |
 | Equipotential bonding kit — 6 AWG + ring lugs | 1 ea | Amazon | electrical | $20 |
 | Copper ground stake, 8ft × ⅝" dia | 1 ea | Home Depot | electrical | $20 |
 | Pull-cord ceiling switch, 12V 6A SPST | 2 ea | Amazon | electrical | $16 |
-| 16 AWG silicone coiled cable, 1m 2-cond (Fan B flex) | 1 ea | Waytek Wire | ventilation | $15 |
+| 16 AWG silicone coiled cable | 1 ea | Waytek Wire | ventilation | $15 |
 | MPPT charge-line fuse — 60A ANL/MIDI + holder | 1 ea | Blue Sea | electrical | $15 |
 | Pump distribution block — 12V DC + / − bus, 6-way | 1 ea | Blue Sea | electrical | $15 |
 | Cable grommets / glands — steel-shell penetrations | 1 lot | McMaster-Carr | electrical | $15 |
 | 4 AWG ground wire, green/yellow, 3m | 1 lot | Amazon | electrical | $15 |
 | Battery terminal covers (pair), insulating boots | 1 pair | Amazon | electrical | $10 |
-| Deutsch DT 2-pin weatherproof connector set | 2 set | Waytek Wire | ventilation | $8 |
+| Deutsch DT 2-pin connectors | 2 set | Waytek Wire | ventilation | $8 |
 | Shore-charger output fuse — 20A inline | 1 ea | Amazon | electrical | $5 |
 | **electrical-distribution subtotal** | | | | **$1,164** |
 
@@ -260,7 +260,7 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Matte-black interior finish | 1 job | local | lightlock | $40–$70 |
 | Flat-black paint (RAL 9005) — bay/weld touch-in | 1 lot | local | panel | $10–$20 |
 | Silicone bead sealant (bearing housing) | 1 ea | McMaster-Carr | lightlock | $10–$15 |
-| Flat-black epoxy spray paint | 1 ea | hardware store | shelf | $12 |
+| Flat black epoxy spray paint | 1 can | Hardware store | shelf | $12 |
 | Dielectric grease, marine-grade (terminal protection) | 1 ea | Amazon | electrical | $10 |
 | **adhesives-finishes subtotal** | | | | **$182–$287** |
 
@@ -268,20 +268,20 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| 80% shade cloth, 20×10 ft | 1 ea | Amazon | ventilation | $80 |
+| Shade canopy — 80% shade cloth | 1 ea | Amazon | ventilation | $80 |
 | **fabric-textile subtotal** | | | | **$80** |
 
 ### ducting-ventilation
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| Evaporative cooler — Hessaire MC18M (120V AC, 1,300 CFM) | 1 ea | Hessaire | ventilation | $130 |
+| Evaporative cooler | 1 ea | Hessaire | ventilation | $130 |
 | Ventilation (inline fans + light-trap baffles) — interior-conversion allowance | 1 lot | Amazon | interior | $80–$130 |
-| 150×150×50mm axial panel fan (12V DC) | 2 ea | Amazon | ventilation | $50 |
-| Ø200mm insulated flex duct, ~1.2m | 1 ea | Home Depot | ventilation | $22 |
-| Ø200mm 90° galvanized duct elbow | 1 ea | Home Depot | ventilation | $14 |
-| Ø200mm duct collar + hose clamp | 1 ea | Home Depot | ventilation | $12 |
-| Ø200mm removable weatherproof duct cap | 1 ea | Home Depot | ventilation | $8 |
+| 150×150×50mm axial fans | 2 ea | Amazon | ventilation | $50 |
+| 200mm insulated flex duct | 1 ea | Home Depot | ventilation | $22 |
+| 200mm 90° duct elbow | 1 ea | Home Depot | ventilation | $14 |
+| Duct collar + hose clamp | 1 ea | Home Depot | ventilation | $12 |
+| Weatherproof duct cap | 1 ea | Home Depot | ventilation | $8 |
 | **ducting-ventilation subtotal** | | | | **$316–$366** |
 
 ### tools-safety
@@ -308,7 +308,7 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Amazon | 29 | adhesives-finishes, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,935–$3,887 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Online Metals | 8 | aluminum, stainless-sheet, steel-structural | $2,363–$3,322 |
-| local fab | 14 | fabrication-labor, steel-structural | $1,588–$2,526 |
+| local fab | 13 | fabrication-labor, steel-structural | $1,570–$2,508 |
 | Metal Supermarkets | 7 | steel-structural | $1,438–$2,195 |
 | TAP Plastics | 6 | plastics-sheet | $1,650–$2,190 |
 | McMaster-Carr | 25 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, seals-gaskets | $1,819–$2,181 |
@@ -335,9 +335,10 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | steel service center | 1 | steel-structural | $30–$50 |
 | Powerwerx | 1 | electrical-distribution | $40 |
 | Blue Sea | 2 | electrical-distribution | $30 |
-| hardware store | 1 | adhesives-finishes | $12 |
-| irrigation supply | 1 | plumbing-fittings | $10 |
-| steel offcut | 1 | steel-structural | $5 |
+| Local fab | 1 | steel-structural | $18 |
+| Hardware store | 1 | adhesives-finishes | $12 |
+| Irrigation supply | 1 | plumbing-fittings | $10 |
+| Steel offcut | 1 | steel-structural | $5 |
 <!-- END parts:master -->
 
 ## 9. Printmaking Chemistry — Cyanotype (50 prints)

@@ -4,7 +4,7 @@
 
 ## Cyanotype Prints from a Moving Box
 
-A small-scale proof of concept for the [Big Shoebox Project](../index.md). This camera uses the same optics, chemistry, and process as TBS-001 — scaled down to two standard moving boxes. It produces real cyanotype prints on watercolor paper, approximately 14 × 16 inches, suitable for inclusion in proposals, exhibitions, and grant applications.
+A small-scale proof of concept for the [Big Shoebox Project](../index.md). This camera uses the same optics, chemistry, and process as TBS-001 — scaled down to two standard moving boxes. It produces real cyanotype prints on watercolor paper, approximately 10 × 14 inches, suitable for inclusion in proposals, exhibitions, and grant applications.
 
 **Purpose:** Validate the pinhole-to-cyanotype workflow before committing to the full container build. Every technical decision below traces to the same peer-reviewed sources used in the TBS-001 design.
 
@@ -31,7 +31,7 @@ A small-scale proof of concept for the [Big Shoebox Project](../index.md). This 
 **Why this box:**
 
 - 457mm focal length gives a practical f-number and ~10 min exposure in full sun
-- 14 × 16" usable print area is large enough to be visually compelling
+- 10 × 14" usable print area is large enough to be visually compelling
 - Standard item, universally available, inexpensive
 - Rigid enough when taped and reinforced
 - Two identical boxes mate perfectly at the shared face
@@ -46,7 +46,7 @@ A small-scale proof of concept for the [Big Shoebox Project](../index.md). This 
 | Usable area | ~20 × 16" (~2.2 sq ft) |
 | Cost | ~$6–8 |
 
-The Large box gives a bigger print but the same f-number (same 18" depth). Use it if you want a more dramatic print for a proposal.
+The Large box uses the same 18" depth (same f-number) but a larger film plane and more interior room — print on the same 10 × 14" paper, or a larger sheet for a more dramatic proposal print.
 
 ---
 
@@ -70,7 +70,7 @@ where *f* is focal length in mm and *λ* = 0.00055mm (550 nm green light).
 | Actual pinhole Ø | ~0.80mm | <!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm | Drill bit through aluminum can |
 | f-number | f/575 | f/1088 | f / d |
 | Film plane | 406 × 457mm | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm | Box face / container face |
-| Usable image area | 356 × 406mm | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm | After mounting margins |
+| Usable image area | 254 × 356mm | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm | Paper size (centered on the film plane) |
 | Angle of view (diag.) | ~53° | ~56° | 2 × arctan(half-diag / f) |
 
 **Pinhole undersizing note:** The 1/32" drill bit produces a hole 16% smaller than the Rayleigh optimal. This means slightly less light throughput (longer exposure by ~10%) but slightly sharper image — the geometric blur circle is smaller while the diffraction blur increases only marginally. At this scale, the trade is favorable. (Renner, E., *Pinhole Photography*, 4th ed., Focal Press, 2009, Ch. 2.)
@@ -250,7 +250,7 @@ The prep box end face (the face farthest from the pinhole) is an extraction flap
 
 **Why watercolor paper instead of muslin?**
 
-The TBS-001 full-scale camera uses cotton muslin because of the scale — no paper is manufactured 4.5 meters wide. For the 14 × 16" PoC prints, watercolor paper is the superior substrate:
+The TBS-001 full-scale camera uses cotton muslin because of the scale — no paper is manufactured 4.5 meters wide. For the 10 × 14" PoC prints, watercolor paper is the superior substrate:
 
 | | Watercolor paper | Cotton muslin |
 |---|---|---|
@@ -261,9 +261,9 @@ The TBS-001 full-scale camera uses cotton muslin because of the scale — no pap
 | Availability | Any art supply store | Fabric store, requires cutting |
 | Traditional substrate? | Yes — the original cyanotype medium | Used for large-format only |
 
-**Recommended paper:** Arches Aquarelle hot-press, 140 lb (300 gsm), 100% cotton. Available in 22 × 30" sheets at Blick Art Materials, Joann, or Amazon. Cut each sheet to 16 × 18" (one print per sheet with trim to spare).
+**Recommended paper:** Arches Aquarelle hot-press, 140 lb (300 gsm), 100% cotton. Available as 10 × 14" blocks and pads at Blick Art Materials, Joann, or Amazon — a standard size, no cutting needed (one sheet per print).
 
-**Alternative:** Fabriano Artistico hot-press, 140 lb (300 gsm). Also 100% cotton.
+**Alternative:** Fabriano Artistico hot-press, 140 lb (300 gsm), 100% cotton — also in 10 × 14" blocks.
 
 **Requirements:**
 - **Weight:** 140 lb / 300 gsm minimum. Lighter paper curls severely when wet.
@@ -272,10 +272,9 @@ The TBS-001 full-scale camera uses cotton muslin because of the scale — no pap
 
 **Mounting the paper:**
 
-1. Cut a sheet to fit the backing board with 1-inch overlap on all sides (approximately 17.5 × 19.5 inches).
-2. After coating and tack-drying (see §6), fold the overlap over the board edges.
-3. Clip with binder clips every 3 inches along all four edges. The paper will lie flat naturally — much simpler than stretching muslin.
-4. Fold the backing board up into the camera position, paper face toward the pinhole.
+1. After coating and tack-drying (see §6), center the 10 × 14" sheet on the backing board (landscape — 14" across, 10" tall — it sits well within the 17.5 × 13" board).
+2. Clip it to the board with binder clips every ~3 inches along all four edges. The paper lies flat naturally — much simpler than stretching muslin.
+3. Fold the backing board up into the camera position, paper face toward the pinhole.
 
 ---
 
@@ -323,13 +322,13 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 
 **Environment:** Darkened room. Red LED safelight only. No daylight, no white or blue LED light.
 
-**Materials:** Foam brush (2-inch), mixing cup, watercolor paper pre-cut to 17.5 × 19.5 inches.
+**Materials:** Foam brush (2-inch), mixing cup, a 10 × 14" watercolor sheet.
 
-**Using the photo tray:** The paper is coated in the Paterson 12×16" developing tray inside the prep box. The paper (16 × 18") is slightly larger than the tray interior (12 × 16") — the edges overhang the tray rim during brush coating. This is standard practice for cyanotype; the tray catches drips and provides a stable work surface. Access the tray through the arm sleeves on the prep box end face (see §4.6).
+**Using the photo tray:** The paper is coated in the Paterson 12×16" developing tray inside the prep box. The 10 × 14" paper fits inside the tray interior (12 × 16"), lying flat during brush coating; the tray catches drips and provides a stable work surface. Access the tray through the arm sleeves on the prep box end face (see §4.6).
 
 **Procedure (from [Operating Manual](../operating-manual.md) §2.3):**
 
-1. Place the pre-cut watercolor paper in the tray. The paper overhangs the 12" edges slightly — this is fine for brush coating.
+1. Place the 10 × 14" watercolor paper in the tray; it sits within the tray walls.
 2. Pour ~4 ml of mixed sensitizer into a shallow cup (not directly into the tray).
 3. Load the foam brush evenly (not dripping).
 4. **First pass:** Brush horizontally, left to right, with 50% overlap between strokes. Work from top to bottom.

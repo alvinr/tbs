@@ -180,7 +180,7 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 | Corner gusset plate, 3 mm | 50×50 mm triangular | 4 | Steel offcut | ~$5 |
 | Flat black epoxy spray paint | frame + hardware finish | 1 can | Hardware store | ~$12 |
 | ½" HDPE pipe (tap relocation) | extend the blue supply trunk ~1.3 m left to TAP-01 | ~1.5 m | Irrigation supply | ~$10 |
-| **Total** | | | | **~$203** |
+| **Total** | | | | **~<!-- BEGIN costing:shelf-total -->$203<!-- END costing:shelf-total -->** |
 
 *The relocated TAP-01 + BV-06 hardware itself is unchanged (carried in the water-system
 BOM); only the ~1.3 m trunk extension is added here.*

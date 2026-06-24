@@ -225,6 +225,21 @@ PANEL = [
     LineItem("316 SS D-grab pull handle (~300mm) + 2× M8 + backing plate", 20, 28, 35, "matte-black, §4.3"),
 ]
 
+# §6d = chemistry-prep-shelves.md §7 (fold-down chemistry prep shelf). Point estimates.
+SHELF = [
+    point("Phenolic-faced plywood, 18mm (300×600)", 60, "Home Depot / lumber yard"),
+    point("25×25×3mm steel SHS — frame + spill lip (6m)", 30, "Online Metals / Metal Supermarkets"),
+    point("Continuous (piano) hinge, 600mm", 20, "McMaster-Carr"),
+    point("Folding shelf stays/brackets (×2, fold-flat)", 24, "Amazon / McMaster-Carr"),
+    point("Wall mounting cleat + 2 stay anchors (6mm steel, slotted)", 18, "Local fab / offcut"),
+    point("M8 wall bolts + washers/nuts (~12)", 12, "McMaster-Carr"),
+    point("Transport latch (over-center / barrel)", 8, "Amazon"),
+    point("M5×16 CSK screws (×8) — ply panel", 4, "McMaster-Carr"),
+    point("Corner gusset plates, 3mm (×4)", 5, "steel offcut"),
+    point("Flat-black epoxy spray paint", 12, "hardware store"),
+    point("½\" HDPE pipe — TAP-01 trunk extension (~1.5m)", 10, "irrigation supply"),
+]
+
 
 # §2 Interior conversion — the detail "Section total" category breakdown is correct ($950/$1,138/
 # $1,350); the SCENARIO row ($970/$1,140/$1,310) was the drifted one.
@@ -328,6 +343,7 @@ def emit_funding_level1() -> str:
         ("Perimeter walkway (4 sections + drum-exit punch-out)", _sec("6a").mid),
         ("Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + door frame)", _sec("6b").mid),
         ("Hinged panel structure (stepped frame + PP skins + Al core + EPDM + latches + B2 bay + handle)", _sec("6c").mid),
+        ("Chemistry prep shelf (fold-down board + frame + hinge/stays + tap trunk extension)", _sec("6d").mid),
         ("Cyanotype chemistry + muslin substrate (50-print run, Standard tier)", _sec("7").mid),
     ]
     sub = sum(v for _, v in rows)
@@ -353,6 +369,7 @@ def emit_master_summary() -> str:
         ("7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame)", _sec("6b")),
         ("7b. Perimeter walkway (4 sections + drum-exit punch-out)", _sec("6a")),
         ("7c. Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle)", _sec("6c")),
+        ("7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension)", _sec("6d")),
         ("8. Cooling & ventilation", _sec("5b")),
         ("9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier)", _sec("7")),
         ("10. Printmaking tools & consumables", TOOLS),
@@ -368,7 +385,7 @@ def emit_master_summary() -> str:
 
 
 def master_total() -> tuple:
-    ids = ("1", "2", "3", "4", "5", "5a", "6", "6b", "6c", "6a", "5b", "7")
+    ids = ("1", "2", "3", "4", "5", "5a", "6", "6b", "6c", "6d", "6a", "5b", "7")
     lo = sum(_sec(i).low for i in ids) + TOOLS.low + SAFETY.low
     hi = sum(_sec(i).high for i in ids) + TOOLS.high + SAFETY.high
     return (lo, hi)
@@ -377,7 +394,7 @@ def master_total() -> tuple:
 def funding_level1_total() -> int:
     sub = (_sec("1").mid + _sec("2").mid + _sec("3").mid + _sec("4").mid + FRONT_BOARD_MID
            + _sec("6").mid + _sec("5").mid + _sec("5a").mid + _sec("5b").mid + _sec("6a").mid
-           + _sec("6b").mid + _sec("6c").mid + _sec("7").mid)
+           + _sec("6b").mid + _sec("6c").mid + _sec("6d").mid + _sec("7").mid)
     return sub + _r(sub * 0.10, 10)
 
 
@@ -414,6 +431,7 @@ def _scenario_a_rows() -> list:
         ("Perimeter walkway (4 sections, removable, GRP grating)", _sec("6a").low),
         ("Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame)", _sec("6b").low),
         ("Hinged panel structure (stepped frame + PP skins + Al core + EPDM + latches + B2 bay + handle)", _sec("6c").low),
+        ("Chemistry prep shelf (fold-down board + tap trunk extension)", _sec("6d").low),
         ("Cyanotype chemistry + substrate (50 prints)", _sec("7").low),
         ("Transport per deployment (local)", SCEN_A["transport"]),
         ("Permits (minimal)", SCEN_A["permits"]),
@@ -433,6 +451,7 @@ def _scenario_b_rows() -> list:
         ("Perimeter walkway (4 sections, removable, GRP grating)", _sec("6a").mid),
         ("Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame)", _sec("6b").mid),
         ("Hinged panel structure (stepped frame + PP skins + Al core + EPDM + latches + B2 bay + handle)", _sec("6c").mid),
+        ("Chemistry prep shelf (fold-down board + tap trunk extension)", _sec("6d").mid),
         ("Cyanotype chemistry + substrate (50 prints)", _sec("7").mid),
         ("Rodenstock Apo-Ronar 1,200mm lens", SCEN_B["lens"]),
         ("Transport per deployment (50–100 miles)", SCEN_B["transport"]),
@@ -489,6 +508,7 @@ _FC  = "film-clamp-mechanism-report.md"
 _TSB = "tilt-swing-board-report.md"
 _WK  = "walkway-report.md"
 _HP  = "hinged-panel-report.md"
+_CPS = "chemistry-prep-shelves.md"
 
 
 def capital_mid() -> int:
@@ -522,6 +542,7 @@ _CA_SYSTEMS = [
     ("Light lock",              "6",  "Plastic-skin custom fabrication"),
     ("Swing pivot",             "6b", "Pivot post + bearings + cage + fixed RHS door frame"),
     ("Hinged panel structure",  "6c", "Stepped frame + PP skins + Al core + EPDM + latches + B2 bay"),
+    ("Chemistry prep shelf",    "6d", "Fold-down phenolic board + frame + hinge/stays + tap extension"),
     ("Interior conversion",     "2",  "Insulation, sealing, safelight"),
     ("Ventilation & cooling",   "5b", "Fans + cooler + inverter + baffle-duct fab + canopy"),
     ("Optics — pinhole",        "3",  "Trivial (it is a pinhole)"),
@@ -582,6 +603,7 @@ SECTIONS = [
     Section("6a", "Perimeter walkway (4 sections + drum-exit punch-out)", *total(WALKWAY)),
     Section("6b", "Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles)", *total(SWINGPIVOT)),
     Section("6c", "Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle)", *total(PANEL)),
+    Section("6d", "Chemistry prep shelf (fold-down phenolic board + steel frame + hinge/stays + TAP-01 trunk extension)", *total(SHELF)),
     _printmaking_section(),
     Section("8",  "Transportation (per deployment)", 300, 750, 2000),
     Section("9",  "Licenses & permits", 220, 790, 1620),
@@ -735,6 +757,8 @@ def _inline_blocks() -> dict:
         "hp-doorframe-high":   (_HP, lambda: f"${_door_only('high'):,}"),
         "hp-total-low":        (_HP, lambda: f"${_panel_grand('low'):,}"),
         "hp-total-high":       (_HP, lambda: f"${_panel_grand('high'):,}"),
+        # chemistry-prep-shelves.md §7 parts-list total — the §6d SHELF (point estimate).
+        "shelf-total":         (_CPS, lambda: f"${total(SHELF)[1]:,}"),
     }
 
 
@@ -904,13 +928,14 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 909,  "total": 1210, "per_print": 24},  # 909 not 910: consistent ferri rounding ($104, not the doc's hand-rounded $105)
     "standard": {"chem": 1353, "total": 1650, "per_print": 33},
     "rich":     {"chem": 2681, "total": 2980, "per_print": 60},
-    "grand_total": (21122, 26865, 34675),  # +787/1245/1659 §6: added §6c hinged-panel structure (was MISSING; $1,124/1,408/1,691) + §6/§6b reconciled to the report §8 line items
+    "grand_total": (21325, 27068, 34878),  # §6c hinged-panel structure + §6d chemistry prep shelf ($203) — both were MISSING from the model
     "walkway": (2000, 2488, 2975),   # §6a fab line raised so bracket scope matches walkway-report §10 ($742–$1,255 all-in)
     "water": (4211, 5258, 6297),   # tray 1177→1300 / spray 210→235 (+ mid/high) — dedicated report §6 detailed BOM
     "container": (2300, 3300, 4300),
     "lightlock": (1385, 1728, 2070),   # §6 = hinged-panel §8.2 (housing + drum) line items
     "swingpivot": (855, 1143, 1430),   # §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
     "panel": (1124, 1408, 1691),       # §6c = hinged-panel §8.1 (panel structure) — was MISSING from the model
+    "shelf": (203, 203, 203),          # §6d = chemistry-prep-shelves §7 (point estimates) — was MISSING from the model
     "interior": (950, 1138, 1350),
     "optics": (95, 165, 240),
     "film": (3538, 3813, 4088),   # §4 BOM folded in (was hand-set $3,100/$3,650/$4,200, below its own BOM)
@@ -936,7 +961,7 @@ def check() -> list[str]:
     if total(WATER) != EXPECTED["water"]:
         errs.append(f"water {total(WATER)} != {EXPECTED['water']}")
     for key, items in (("container", CONTAINER), ("lightlock", LIGHTLOCK), ("swingpivot", SWINGPIVOT),
-                       ("panel", PANEL), ("interior", INTERIOR), ("optics", OPTICS), ("film", FILM),
+                       ("panel", PANEL), ("shelf", SHELF), ("interior", INTERIOR), ("optics", OPTICS), ("film", FILM),
                        ("ventilation", VENTILATION), ("power", POWER)):
         if total(items) != EXPECTED[key]:
             errs.append(f"{key} {total(items)} != {EXPECTED[key]}")

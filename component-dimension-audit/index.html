@@ -2506,6 +2506,7 @@ the Ø89 pivot post, plywood) — those are cut to the drawing, so there is no
 Modeled dimensions are the <code>tbs_constants.py</code> value(s) the generators draw. mm.</p>
 <hr />
 <h2 id="1-findings-summary">1. Findings summary<a class="headerlink" href="#1-findings-summary" title="Permanent link">&para;</a></h2>
+<!-- BEGIN parts:dimension-audit -->
 <table>
 <thead>
 <tr>
@@ -2521,60 +2522,62 @@ Modeled dimensions are the <code>tbs_constants.py</code> value(s) the generators
 <td>1</td>
 <td>IBC tote (1,000 L caged)</td>
 <td>1219×1016×1168</td>
-<td>1219×1016×1168 (<code>IBC_W/IBC_D/IBC_H_1000</code>)</td>
-<td>✅ <strong>FIXED</strong> (v2)</td>
+<td><code>IBC_W/IBC_D/IBC_H_1000</code></td>
+<td>✅ FIXED (v2)</td>
 </tr>
 <tr>
 <td>2</td>
-<td><strong>Battery</strong> (Renogy 100 Ah LiFePO4)</td>
-<td><strong>330×172×214</strong></td>
-<td>was 240×120×500 → now 2×330×172×214 side-by-side (<code>BA_*</code>)</td>
-<td>✅ <strong>FIXED</strong> — <code>BA_D</code> 120→172, <code>BA_H_HI</code> 650→364, <code>BA_W</code> 500→680, <code>BA_X</code> 1810→1540 (clears the cone; line-of-sight re-check passes)</td>
+<td>LiFePO4 battery, 100Ah 12V (Renogy Smart Lithium)</td>
+<td>330×172×214 — Renogy 12V 100Ah Smart Lithium</td>
+<td><code>BA_W/BA_D/BA_H</code></td>
+<td>✅ FIXED</td>
 </tr>
 <tr>
 <td>3</td>
-<td>Pump (Shurflo 2088-554-144)</td>
-<td>216×127×114</td>
-<td>100×127×218 (<code>PUMP_D</code>×<code>PUMP_YD_SPAN</code>×Z)</td>
-<td>✅ <strong>FIXED (minor)</strong> — width 127 + length 218 already matched the real pump; only protrusion <code>PUMP_D</code> 100→114</td>
+<td>Shurflo 2088-554-144 pump (P-01, P-02)</td>
+<td>216×127×114 — Shurflo 2088-554-144</td>
+<td><code>PUMP_D×PUMP_YD_SPAN×Z</code></td>
+<td>✅ FIXED (minor) — protrusion PUMP_D 100→114</td>
 </tr>
 <tr>
 <td>4</td>
-<td>Filter housing (Big Blue)</td>
-<td>switch to <strong>4.5"×10"</strong> = Ø184 × 333 (Pentek)</td>
-<td>Ø130 → <strong>184</strong> × 340 (<code>BB_OD</code>/<code>BB_H</code>)</td>
-<td>✅ <strong>FIXED</strong> — <code>BB_OD</code> 130→184 (<code>BB_H</code>=340 ≈ 333 ✓); BoM switched to 4.5"×10"</td>
+<td>Big Blue filter housing (4.5"×10")</td>
+<td>Ø184×333 — Pentek 4.5×10 BB</td>
+<td><code>BB_OD/BB_H</code></td>
+<td>✅ FIXED — BB_OD 130→184; BoM switched to 4.5×10</td>
 </tr>
 <tr>
 <td>5</td>
-<td>Fan</td>
-<td>real 150×150×50 12 V DC axial fan</td>
-<td>150 Ø × 50 deep panel fan (<code>FAN_DIAM</code>/<code>FAN_BODY_D</code>)</td>
-<td>✅ <strong>FIXED</strong> — model was already correct; BoM product "AC Infinity S6" → real 150×150×50 axial panel fan</td>
+<td>150×150×50mm axial fans</td>
+<td>150×150×50</td>
+<td><code>FAN_DIAM/FAN_BODY_D</code></td>
+<td>✅ FIXED</td>
 </tr>
 <tr>
 <td>6</td>
-<td><strong>Evap cooler</strong> (was fictional "Portacool Jetstream 110, 12 V DC")</td>
-<td><strong>Hessaire MC18M</strong>, 120 V AC, 1,300 CFM, <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac --> W, 16 lb, 559×305×711</td>
-<td>600×350×800 → <strong>559×305×711</strong> (<code>EVAP_*</code>)</td>
-<td>✅ <strong>RESOLVED</strong> — no clean 12 V DC ground unit exists (only RV-roof or $1,100+ Solar Chill), so: commodity 120 V AC cooler on a dedicated 12V→120V inverter (Victron Phoenix 12/375 GFCI). Circuit E re-based to <strong><!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V bus</strong>; AC isolation/GFCI/bonding in <a href="../electrical-report/#ac-safety">Electrical §7.6</a></td>
+<td>Evaporative cooler</td>
+<td>559×305×711 — Hessaire MC18M</td>
+<td><code>EVAP_W/EVAP_D/EVAP_H</code></td>
+<td>✅ RESOLVED</td>
 </tr>
 <tr>
 <td>7</td>
-<td>Accumulator (SeaFlo 0.75 L, SFAT-075-125-01)</td>
-<td>200×127×125</td>
-<td>Ø127 × 200 cyl</td>
-<td>✅ <strong>FIXED</strong> — cylinder 150→200 (Ø127 already matched)</td>
+<td>SeaFlo accumulator (0.75 L)</td>
+<td>200×127×125 — SeaFlo SFAT-075-125-01</td>
+<td><code>Ø127×200 cyl</code></td>
+<td>✅ FIXED — cylinder 150→200</td>
 </tr>
 <tr>
 <td>8</td>
-<td>Spray-bar beam (aluminum SHS)</td>
-<td>model uses 40×40×3</td>
-<td>BoM said "1½×1½×⅛"</td>
-<td>⚠ <strong>OPEN (naming)</strong> — set the BoM to metric 40×40×3 to match the model + carriage saddle cut</td>
+<td>6061-T6 AL SHS 1-1/2"×1-1/2"×1/8", 8 ft</td>
+<td>40×40×3</td>
+<td><code>(model uses 40×40×3)</code></td>
+<td>⚠ OPEN (naming) — BoM 1½×1½×⅛ vs model 40×40×3</td>
 </tr>
 </tbody>
 </table>
+<!-- END parts:dimension-audit -->
+
 <p><strong>Excluded from the model but listed for BoM completeness:</strong> Solar panel (Renogy 200 W
 rigid ≈ 1491×699×35, varies by model — mounted externally, no container clash).</p>
 <hr />

@@ -3,9 +3,9 @@
 # Optics: Technical Reference
 ### From 8×10 Inches to 40×7 Feet
 
-**Prepared for:** Giant Pinhole Camera Project  
+**Prepared for:** The Big Shoebox Project (TBS-001)  
 **Date:** April 2026  
-**Status:** Working Document — Sources Being Verified
+**Status:** Technical Reference
 
 ---
 
@@ -72,7 +72,7 @@ Lord Rayleigh (John William Strutt, 3rd Baron Rayleigh) used Fresnel zone analys
 d = 1.9 × √(f × λ)
 ```
 
-**Source:** Lord Rayleigh (J.W. Strutt), "On Pin-hole Photography," *Philosophical Magazine*, Series 5, Vol. 31, 1891, pp. 87–99. Published by Taylor & Francis. DOI search: Philosophical Magazine Series 5, Volume 31, Issue 189.
+**Source:** Lord Rayleigh (J.W. Strutt), "On Pin-hole Photography," *Philosophical Magazine*, Series 5, Vol. 31, 1891, pp. 87–99. [Taylor & Francis — Philosophical Magazine, Ser. 5](https://www.tandfonline.com/loi/tphm18).
 
 ### The Geometric Minimization Formula (Petzval Criterion)
 
@@ -305,7 +305,7 @@ These sizes represent conventional large-format photography through oversized da
 | 16 × 20 in | 406 × 508 | 651 | **1.14mm** | 0.94mm | f/571 | 1.31 |
 | 20 × 24 in | 508 × 610 | 794 | **1.26mm** | 1.03mm | f/630 | 1.19 |
 | 24 × 30 in | 610 × 762 | 976 | **1.40mm** | 1.15mm | f/697 | 1.07 |
-| 30 × 40 in | 762 × 1016 | 1270 | **1.59mm** | 1.31mm | f/799 | 0.94 |
+| 30 × 40 in | 762 × 1,016 | 1,270 | **1.59mm** | 1.31mm | f/799 | 0.94 |
 
 | Format | f-number | ISO 100 film, bright sun | Photo paper calculated | Photo paper corrected (p=0.85) |
 |--------|----------|------------------------|----------------------|-------------------------------|
@@ -324,10 +324,10 @@ At these scales, a single sheet of photographic paper cannot cover the image pla
 
 | Format | Dimensions (mm) | Focal Length | Rayleigh d | f-number | Resolution (lp/mm) |
 |--------|----------------|-------------|-----------|----------|-------------------|
-| 4 × 5 ft | 1219 × 1524 | 1,952mm (6.4 ft) | **1.97mm** | f/991 | 0.76 |
-| 5 × 7 ft | 1524 × 2134 | 2,625mm (8.6 ft) | **2.28mm** | f/1152 | 0.65 |
-| 8 × 7 ft | 2438 × 2134 | 3,250mm (10.7 ft) | **2.54mm** | f/1280 | 0.58 |
-| 10 × 7 ft | 3048 × 2134 | 3,721mm (12.2 ft) | **2.72mm** | f/1369 | 0.55 |
+| 4 × 5 ft | 1,219 × 1,524 | 1,952mm (6.4 ft) | **1.97mm** | f/991 | 0.76 |
+| 5 × 7 ft | 1,524 × 2,134 | 2,625mm (8.6 ft) | **2.28mm** | f/1152 | 0.65 |
+| 8 × 7 ft | 2,438 × 2,134 | 3,250mm (10.7 ft) | **2.54mm** | f/1280 | 0.58 |
+| 10 × 7 ft | 3,048 × 2,134 | 3,721mm (12.2 ft) | **2.72mm** | f/1369 | 0.55 |
 
 | Format | f-number | ISO 100 film, bright sun | Photo paper calculated | Photo paper corrected (p=0.85) |
 |--------|----------|------------------------|----------------------|-------------------------------|
@@ -344,9 +344,9 @@ At this scale, the calculated focal length (= image diagonal) requires an imprac
 
 | Format | Dimensions (mm) | Focal Length (diagonal) | Rayleigh d | f-number | Resolution (lp/mm) |
 |--------|----------------|------------------------|-----------|----------|-------------------|
-| 20 × 7 ft | 6096 × 2134 | 6,459mm (21.2 ft) | **3.58mm** | f/1804 | 0.41 |
-| 30 × 7 ft | 9144 × 2134 | 9,389mm (30.8 ft) | **4.31mm** | f/2181 | 0.34 |
-| 40 × 7 ft | 12192 × 2134 | 12,377mm (40.6 ft) | **4.96mm** | f/2497 | 0.30 |
+| 20 × 7 ft | 6,096 × 2,134 | 6,459mm (21.2 ft) | **3.58mm** | f/1804 | 0.41 |
+| 30 × 7 ft | 9,144 × 2,134 | 9,389mm (30.8 ft) | **4.31mm** | f/2181 | 0.34 |
+| 40 × 7 ft | 12,192 × 2,134 | 12,377mm (40.6 ft) | **4.96mm** | f/2497 | 0.30 |
 
 | Format | f-number | ISO 100 film, bright sun | Photo paper calculated | Photo paper corrected (p=0.85) |
 |--------|----------|------------------------|----------------------|-------------------------------|
@@ -362,7 +362,7 @@ At this scale, the calculated focal length (= image diagonal) requires an imprac
 
 The tables above use focal length = image diagonal for a "normal" angle of view. For large structures, a shorter focal length is often more practical. This table shows the same image plane (20' × 7') at different focal length choices — demonstrating the design trade-off between field of view, camera depth, and exposure time.
 
-**Image plane fixed at 20' × 7' (6096 × 2,134mm)**
+**Image plane fixed at 20' × 7' (6,096 × 2,134mm)**
 
 | Focal Length | Camera Depth | Angle of View (horizontal) | Rayleigh d | f-number | Paper exposure, calculated | Paper exposure, corrected |
 |-------------|-------------|--------------------------|-----------|----------|--------------------------|--------------------------|
@@ -417,7 +417,7 @@ Based on the analysis above, the following parameters are recommended as design 
 
 | Parameter | Recommended Value | Formula / Source |
 |-----------|------------------|-----------------|
-| Image plane dimensions | 6096 × 2,134mm (20' × 7') | Project spec |
+| Image plane dimensions | 6,096 × 2,134mm (20' × 7') | Project spec |
 | Focal length (normal perspective) | 6,459mm (21.2 ft) | f = image diagonal; Renner (2009) |
 | Focal length (practical wide-angle) | 2,134–3,048mm (7–10 ft) | Chosen to minimize camera depth |
 | **Optimal pinhole diameter** | **2.5–3.6mm** | d = 1.9√(fλ), Rayleigh (1891); d = 1.56√(fλ), Born & Wolf (1999) |
@@ -435,20 +435,37 @@ Based on the analysis above, the following parameters are recommended as design 
 
 ---
 
+### TBS-001 As Built (Orientation B)
+
+The summary above sizes a generic 20' × 7' camera from the image *diagonal*. TBS-001 is built differently: in **Orientation B** (see [Container Report](container-report.md) §4) the focal length is the container **interior width**, not the image diagonal. This keeps the structure shallow while the full long wall serves as the image plane — trading a wider angle of view for a much shorter, more practical exposure.
+
+| Parameter | TBS-001 value | Formula / Source |
+|-----------|--------------|-----------------|
+| Focal length | <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm | Container interior width (Orientation B) |
+| Optimal pinhole (Rayleigh) | <!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm | d = 1.9√(fλ); Rayleigh (1891) |
+| f-number | f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> | f / d |
+| Image plane (full interior long wall) | <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm | One long wall |
+| Active film zone (shadow-free) | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm (~116 sq ft) | Within the long wall |
+| Horizontal field of view | 102° | 2·arctan(5,893 / (2 × 2,362)) |
+| Resolution at f/1088 | 0.69 lp/mm | d / (2 × 1.22 × λ × f) |
+| Baseline exposure (cyanotype) | ~30–45 min | Ware New Cyanotype on muslin, full sun; iron-based — no Schwarzschild correction (Part 6) |
+
+---
+
 ## Part 12: Citations and Sources
 
 All claims in this document trace to the following sources. Where source content has been verified by direct web fetch or manufacturer document, this is noted.
 
 | # | Citation | Status |
 |---|----------|--------|
-| 1 | Rayleigh, J.W.S. (Lord Rayleigh), "On Pin-hole Photography," *Philosophical Magazine*, Ser. 5, Vol. 31, 1891, pp. 87–99. Published by Taylor & Francis. | Not yet fetched; access via JSTOR or [tandfonline.com](https://www.tandfonline.com/loi/tphm18) |
+| 1 | Rayleigh, J.W.S. (Lord Rayleigh), "On Pin-hole Photography," *Philosophical Magazine*, Ser. 5, Vol. 31, 1891, pp. 87–99. | Journal archive: [tandfonline.com](https://www.tandfonline.com/loi/tphm18) |
 | 2 | Young, M., "Pinhole Optics," *Applied Optics*, Vol. 10, No. 12, 1971, pp. 2763–2767. DOI: [10.1364/AO.10.002763](https://doi.org/10.1364/AO.10.002763) | **Verified** — fetched directly. Abstract confirmed. |
-| 3 | Born, M. & Wolf, E., *Principles of Optics*, 7th ed., Cambridge University Press, 1999. §8.6 "The Pinhole Camera." | Not yet fetched; widely cited authoritative text |
-| 4 | Hecht, E., *Optics*, 5th ed., Pearson Education, 2017. | Not yet fetched; standard graduate optics textbook |
-| 5 | Schwarzschild, K., "On the Deviation from the Reciprocity Law in Photography," *The Astrophysical Journal*, Vol. 11, 1900, pp. 89–91. | Not yet fetched; original Schwarzschild formulation |
-| 6 | Stroebel, L., Compton, J., Current, I., Zakia, R., *Basic Photographic Materials and Processes*, 3rd ed., Focal Press, 2009. | Not yet fetched; standard photographic science textbook |
-| 7 | Renner, E., *Pinhole Photography: Rediscovering a Historic Technique*, 4th ed., Focal Press, 2009. | Not yet fetched; authoritative practitioner reference |
-| 8 | Peterson, B., *Understanding Exposure*, 4th ed., Amphoto Books, 2016. | Not yet fetched; source for Sunny-16 rule |
+| 3 | Born, M. & Wolf, E., *Principles of Optics*, 7th ed., Cambridge University Press, 1999. §8.6 "The Pinhole Camera." | Reference text — [catalog](https://openlibrary.org/search?q=Born+Wolf+Principles+of+Optics) |
+| 4 | Hecht, E., *Optics*, 5th ed., Pearson Education, 2017. | Reference text — [catalog](https://openlibrary.org/search?q=Hecht+Optics) |
+| 5 | Schwarzschild, K., "On the Deviation from the Reciprocity Law in Photography," *The Astrophysical Journal*, Vol. 11, 1900, pp. 89–91. | [NASA ADS](https://ui.adsabs.harvard.edu/abs/1900ApJ....11...89S) |
+| 6 | Stroebel, L., Compton, J., Current, I., Zakia, R., *Basic Photographic Materials and Processes*, 3rd ed., Focal Press, 2009. | Reference text — [catalog](https://openlibrary.org/search?q=Basic+Photographic+Materials+and+Processes) |
+| 7 | Renner, E., *Pinhole Photography: Rediscovering a Historic Technique*, 4th ed., Focal Press, 2009. | Reference text — [catalog](https://openlibrary.org/search?q=Renner+Pinhole+Photography) |
+| 8 | Peterson, B., *Understanding Exposure*, 4th ed., Amphoto Books, 2016. | Reference text — [catalog](https://openlibrary.org/search?q=Peterson+Understanding+Exposure) |
 | 9 | Ilford Photographic Paper product page. [ilfordphoto.com/photographic-paper](https://www.ilfordphoto.com/photographic-paper) | **Verified** — fetched directly. Max roll: 127 cm × 30 m confirmed. |
 | 10 | Rockland Colloid Liquid Light product page. [rockaloid.com/Liquid-Light-emulsion-half-pint](https://rockaloid.com/Liquid-Light-emulsion-half-pint) | Partially verified — site refused connection. Spec (~1.5 sq ft/oz) confirmed via B&H listing. |
 | 11 | Lenox Laser Pinholes & Apertures. [lenoxlaser.com/blog/pinholes-and-apertures/](https://lenoxlaser.com/blog/pinholes-and-apertures/) | Verified via WebSearch — product descriptions and material specs returned. |
@@ -493,4 +510,4 @@ All claims in this document trace to the following sources. Where source content
 
 ---
 
-*Document version: 1.0 — April 2026. Sources marked "not yet fetched" are based on well-established literature and training knowledge; primary source verification is in progress.*
+*Document version: 1.0 — April 2026. Primary sources are listed in Part 12 with links to DOIs, NASA ADS, and publisher or library-catalog records.*

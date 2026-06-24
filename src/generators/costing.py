@@ -723,10 +723,10 @@ def _inline_blocks() -> dict:
         "ca-water-pct":        (_CA, lambda: f"{round(_sec('5').mid / capital_mid() * 100)}"),
         # operating-manual.md §0.2/§0.3 chemistry tier masses (from the TIERS).
         "om-amfe-g-lean":      (_OM, lambda: f"{_amfe_g('lean')}"),
-        "om-amfe-g-standard":  (_OM, lambda: f"{_amfe_g('standard')}"),
+        "om-amfe-g-standard":  ([_OM, "master-shopping-list.md"], lambda: f"{_amfe_g('standard')}"),
         "om-amfe-g-rich":      (_OM, lambda: f"{_amfe_g('rich')}"),
         "om-amfe-kg-lean":     (_OM, lambda: _kg_fmt(_tier('lean').amfe_kg)),
-        "om-amfe-kg-standard": (_OM, lambda: _kg_fmt(_tier('standard').amfe_kg)),
+        "om-amfe-kg-standard": ([_OM, "master-shopping-list.md"], lambda: _kg_fmt(_tier('standard').amfe_kg)),
         "om-amfe-kg-rich":     (_OM, lambda: _kg_fmt(_tier('rich').amfe_kg)),
         "om-ferri-g-lean":     (_OM, lambda: f"{_ferri_g('lean')}"),
         "om-ferri-g-standard": (_OM, lambda: f"{_ferri_g('standard')}"),

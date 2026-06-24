@@ -507,7 +507,6 @@ _FC  = "film-clamp-mechanism-report.md"
 _TSB = "tilt-swing-board-report.md"
 _WK  = "walkway-report.md"
 _HP  = "hinged-panel-report.md"
-_CPS = "chemistry-prep-shelves.md"
 
 
 def capital_mid() -> int:
@@ -756,8 +755,6 @@ def _inline_blocks() -> dict:
         "hp-doorframe-high":   (_HP, lambda: f"${_door_only('high'):,}"),
         "hp-total-low":        (_HP, lambda: f"${_panel_grand('low'):,}"),
         "hp-total-high":       (_HP, lambda: f"${_panel_grand('high'):,}"),
-        # chemistry-prep-shelves.md §7 parts-list total — the §6d SHELF (point estimate).
-        "shelf-total":         (_CPS, lambda: f"${total(SHELF)[1]:,}"),
     }
 
 

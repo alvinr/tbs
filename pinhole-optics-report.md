@@ -3,8 +3,8 @@
 # Optics: Technical Reference
 ### From 8×10 Inches to 40×7 Feet
 
-**Prepared for:** The Big Shoebox Project (TBS-001)  
-**Date:** April 2026  
+**Prepared for:** The Big Shoebox Project (TBS-001)
+**Date:** April 2026
 **Status:** Technical Reference
 
 ---
@@ -25,7 +25,7 @@ There is no lens. The pinhole does not bend or focus light. The image forms pure
 
 **Plain language:** Think of light as millions of tiny flashlights, each aimed in a different direction from every point in the scene. The pinhole lets through only the one beam from each flashlight that travels directly through the hole. The wall behind collects those beams into a picture.
 
-**Source:** Young, M., "Pinhole Optics," *Applied Optics*, Vol. 10, No. 12, 1971, pp. 2763–2767. DOI: [10.1364/AO.10.002763](https://doi.org/10.1364/AO.10.002763)  
+**Source:** Young, M., "Pinhole Optics," *Applied Optics*, Vol. 10, No. 12, 1971, pp. 2763–2767. DOI: [10.1364/AO.10.002763](https://doi.org/10.1364/AO.10.002763)
 Young describes the pinhole as "a useful and practical device which offers freedom from distortion and virtually infinite depth of field."
 
 ---
@@ -182,7 +182,7 @@ Where:
 - `t` = exposure time (seconds)
 - `p` = Schwarzschild exponent (dimensionless, specific to each material)
 
-For ideal reciprocity: p = 1.0  
+For ideal reciprocity: p = 1.0
 For real photographic materials at long exposures: p ≈ 0.75–0.90
 
 **Corrected exposure time:**
@@ -247,7 +247,7 @@ This is the physical diffraction limit — the sharpest image the pinhole can pr
 
 **For context:**
 - Human vision at 25 cm (comfortable reading distance): ~8–10 lp/mm
-- Human vision at 3 m (across a room): ~0.5–1 lp/mm  
+- Human vision at 3 m (across a room): ~0.5–1 lp/mm
 - Human vision at 10 ft: ~0.3 lp/mm
 - Human vision at 20 ft: ~0.15 lp/mm
 
@@ -265,9 +265,9 @@ The angle of view depends on the ratio of the image dimension to the focal lengt
 Angle of view (horizontal) = 2 × arctan(image_width / (2 × f))
 ```
 
-When focal length ≈ image diagonal, the angle of view is approximately the same as normal human vision (~50–53° diagonal) — this is the "normal" perspective.  
+When focal length ≈ image diagonal, the angle of view is approximately the same as normal human vision (~50–53° diagonal) — this is the "normal" perspective.
 
-When focal length < diagonal: wide-angle (more of the scene visible)  
+When focal length < diagonal: wide-angle (more of the scene visible)
 When focal length > diagonal: telephoto (narrower field, magnified)
 
 **Practical note for large cameras:** A focal length equal to the image diagonal requires a camera depth equal to that diagonal. For a 40' × 7' image, this means a camera approximately 40 feet deep — impractical. Using a shorter focal length (e.g., equal to the image height of 7 feet) creates a wide-angle view in a much more manageable structure, with the trade-off of a larger optimal pinhole and shorter exposure times.

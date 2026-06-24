@@ -38,6 +38,25 @@ When you'd otherwise write a repeated coordinate, write a pointer instead:
 `equipment-layout-report.md` are the deliberate exception — they **are** a
 diagram-of-record in table form, so their coordinates stay.
 
+**Strip coordinates from prose and spec-table cells — describe location _qualitatively_.**
+This was *the* most frequent editorial edit (2026-06-23, across electrical / ventilation /
+walkway / film-plane / ibc / hinged-panel / processing-tray): deleting `X=`/`Yd=`/`Z=` mm
+values from running text and table cells, leaving a feature-relative description. The
+diagram (and its position tables) hold the numbers; the prose says *where* by reference to
+a part the reader can see. If a feature name already locates it, the coordinate is noise.
+
+- `Fan A … at the sealed end wall (X=5,893mm), below the X1 fill port (Yd=1,181mm, Z=2,000mm)`
+  → `Fan A … at the sealed end wall, in the plumbing corridor below the X1 fill port`
+- `Four brackets (at X≈1,156, X≈1,612, X≈2,070, X≈2,526mm) … ribs at 457mm centers`
+  → `Four brackets in this zone … ribs`
+- `2×2 stack in the right end zone (X=4,674–5,893mm)` → `2×2 stack in the right end zone`
+- `the service loop hangs in the ceiling zone above Z=2,200mm` → `…hangs in the ceiling zone`
+
+Keep a coordinate only when the coordinate *is* the thing being specified (a penetration's
+drill position; the `equipment-layout §2` position tables). Qualitative anchors —
+"by the pinhole wall", "at the IBC front", "near floor level", "the corridor edges",
+"low / high" — are preferred over the numbers everywhere else.
+
 ---
 
 ## B. Single-source every restated value — placeholder-*first*
@@ -94,6 +113,30 @@ living report describes the **current** design only.
 - A `# (eliminated in rev N)` comment in a generator that still *describes* the
   removed geometry is the same smell — delete the description, keep at most a
   one-line "this zone is now X."
+
+**Archaeology is more than an Old column.** The 2026-06-23 pass stripped all of the
+following from report bodies — each is the same smell, and each was a recurring hand-edit:
+
+- **Rev tags and dates in headings and asides.** `Wall-Seat Saddles (rev 11 — replaces the
+  brace cage; rev 12 combines…)` → `Wall-Seat Saddles`; `Note (Option A, 2026-06-06):` →
+  `Note:`; `Quantities basis (rev 12):` → `Quantities:`. Drop `(Option A)` / `(rev N)`
+  suffixes from headings entirely — the design has one name, the current one.
+- **"former X → now Y" / "no longer required" framing.** `eliminated the former
+  15–20-minute tray install step; now requires only the swing` → state only what it is now.
+- **Before/after metrics.** `cut ~72 kg (movable 283 → 226 kg)`, `the earlier scheme
+  stretched it ~40%` → delete; give the *current* weight/size, nothing it used to be.
+- **"Adopted vs Residual / not-adopted option" trade sub-sections.** A living report carries
+  the chosen design, not a catalogue of rejected options (`### 2.5 Weight-Reduction —
+  Adopted + Residual` → `### 2.5 Weight-Reduction`). If the rationale is genuinely worth
+  keeping, move it to a standalone **decision record** (see `right-walkway-cantilever-study`,
+  reframed from a live "proposal" to an adopted decision record) — not the report body.
+- **"mis-spec" / corrected-mistake notes.** `the AC Infinity S6 was a mis-spec: it's a
+  320 mm inline fan` → just name the correct part.
+
+Net effect: editorial passes are **subtractive**. The author's edits ran ~2:1 deletions to
+insertions — leaner prose, current state only. Also cut redundant restatements at the
+sentence level (a `6" (150mm) diameter` when `150×150×50mm` follows; a `Yd range (mm)`
+table column the `Width` column already implies).
 
 ---
 

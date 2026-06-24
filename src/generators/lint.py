@@ -93,6 +93,20 @@ def warn_editorial_list() -> tuple[bool, list[str]]:
     return (not issues), (issues or ["every published doc has an editorial-review entry"])
 
 
+# ── WARNING: all-diagrams.md gallery covers every generated diagram PNG. The gallery is a hand-kept
+# index, so a NEW SHEET on an existing generator silently misses it (electrical-sheet4/5,
+# hingepanel-sheet6 were added to existing generators and never reached the gallery). Flags only the
+# 'generated but ungalleried' direction. ──
+def warn_gallery_coverage() -> tuple[bool, list[str]]:
+    diag = os.path.join(ROOT, "diagrams")
+    generated = {f for f in os.listdir(diag) if f.endswith(".png")} if os.path.isdir(diag) else set()
+    gallery = open(os.path.join(ROOT, "all-diagrams.md"), encoding="utf-8").read()
+    referenced = {os.path.basename(p) for p in re.findall(r"assets/([^)\s]+\.png)", gallery)}
+    missing = sorted(generated - referenced)
+    issues = [f"{f} is generated (diagrams/) but not in all-diagrams.md" for f in missing]
+    return (not issues), (issues or ["every generated diagram PNG is in the all-diagrams gallery"])
+
+
 # ── WARNING: markdown table arithmetic (every declared TOTAL = sum of its column) ──
 _MONEY = re.compile(r"^\*{0,2}~?\$?([\d,]+)\*{0,2}$")
 
@@ -590,6 +604,7 @@ GATES = [
 WARNINGS = [
     ("facts-registry agreement", warn_facts),
     ("editorial-review list covers every published doc", warn_editorial_list),
+    ("all-diagrams gallery covers every generated diagram PNG", warn_gallery_coverage),
     ("dependencies.yml valid (script→output map matches reality)", warn_deps_valid),
     ("table arithmetic (TOTAL = sum of column)", warn_arithmetic),
     ("missing cascade (constant changed, outputs not regenerated)", warn_missing_cascade),

@@ -44,11 +44,13 @@ site/                    ← built output — gitignored, never commit
 4. Register any new `.png` files in `publish.sh` → `DIAG_FILES` array (for generated diagrams) or `IMG_FILES` (for root-only images like logos).
 5. Register the `.md` in `src/generators/setup_docs.py` → `MD_FILES` list (controls nav title).
 6. Register any new `.png` files in `src/generators/setup_docs.py` → `DIAG_IMAGE_FILES` list (for generated diagrams) or `ROOT_IMAGE_FILES` (for root-only images).
-7. Add a row to the `INDEX_MD` table in `setup_docs.py`.
-8. Add a nav entry to `mkdocs.yml` → `nav:` block.
-9. Add a row to `docs/index.md` → Documents table.
-10. Run `bash publish.sh` to sync and deploy.
-11. Commit all source files together: scripts + `.md` + `.png`.
+7. **Add every new diagram PNG to `all-diagrams.md`** (the gallery index) under the right section, in sheet order. **This applies to a NEW SHEET added to an EXISTING generator too — not just new documents** (the common miss: `electrical-sheet4/5` and `hingepanel-sheet6` were added to existing generators and never reached the gallery). Audit any time — the output must be empty:
+   `comm -23 <(ls diagrams/*.png | xargs -n1 basename | sort -u) <(grep -oE 'assets/[^)]+\.png' all-diagrams.md | sed 's|assets/||' | sort -u)`
+8. Add a row to the `INDEX_MD` table in `setup_docs.py`.
+9. Add a nav entry to `mkdocs.yml` → `nav:` block.
+10. Add a row to `docs/index.md` → Documents table.
+11. Run `bash publish.sh` to sync and deploy.
+12. Commit all source files together: scripts + `.md` + `.png`.
 
 ---
 

@@ -111,8 +111,7 @@ major systems in their installed positions. The long axis (image width) runs lef
 this view; the optical axis runs front-to-back, from the pinhole on the near long wall to the
 film plane on the far long wall at 2,262mm depth. Equipment occupies the two end zones — the
 light-trap drum at the far left and the IBC stack with its pump panel at the far
-right — leaving the central span as the active film-plane
-width as the clear optical zone.
+right — leaving the central span (the active film-plane width) as the clear optical zone.
 
 ![TBS-001 — Container Floor Plan (Top Elevation)](assets/container-floorplan.png)
 
@@ -120,7 +119,7 @@ width as the clear optical zone.
 |------|----------|
 | Left end zone | Light trap drum, hinged panel |
 | Right end zone | IBC totes (×4, 2×2 stack), pump manifold (equip panel), filter skid |
-| Pinhole wall | Full length | Electrical panel, battery bank, evap duct penetration (cooler external) |
+| Pinhole wall | Full-length wall: electrical panel, battery bank, evap duct penetration (cooler external) |
 | Optical zone | Clear — no equipment; optical cone from pinhole traverses this central span unobstructed |
 | Cargo door end | Hinged panel with integrated revolving light-trap drum |
 | Pinhole aperture | Aperture Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm at Y_depth=0 |

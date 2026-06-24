@@ -427,23 +427,25 @@ bounces noticeably less than the rod-hung version it replaces.
 
 ## 10. Parts List
 
-| # | Item | Specification | Qty | Est. Cost |
-|---|------|--------------|-----|-----------|
-| 1 | Molded GRP (fiberglass) grating | 15mm, vinyl-ester resin, grit top, ~38mm mesh | ~4.5 m² (4 sections) | $970–$1,260 |
-| 11 | Drum-exit punch-out grating | Extra GRP landing (~0.23 m²) at the light-lock exit | ~0.23 m² | $50–$65 |
-| 2 | Cantilever bracket — standard (near/far) | 8mm steel plate: 150mm vert leg + 300mm arm + 70mm gusset, welded | 14 (5 near + 9 far at 457mm centers) | $420–$700 |
-| 3 | Cantilever bracket — widened (near) | 10mm steel plate: 200mm vert leg + 500mm arm + 70mm gusset, welded | 4 (EP/battery/slit zone) | $160–$280 |
-| 4 | M12×80mm through-bolt kit | Hex bolt + 2× washers + nut, grade 8.8 | 58 (3 per std bracket + 4 per widened) | $87–$145 |
-| 5 | Reinforcing plate (exterior) | 6mm steel: 100×180mm std (×14) + 120×220mm widened (×4) | 18 | $75–$130 |
-| 6 | Transition bearing plate | 40×500×5mm flat bar, welded to bracket arm top at width transitions | 2 | $5–$10 |
-| 7 | Right walkway cantilever frame | 40×40×3mm SHS — 2 long beams (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) + 2 end beams (300mm) + 2 center arms (405mm) | ~8 m | $28–$40 |
-| 8 | Wall cleat (left corners) | 8mm steel: back-plate + exterior plate + shelf, through-bolted to the wall | 2 | $20–$35 |
-| 9 | Combined corner plate (right corners) | 10mm steel, 150mm wide — carries the walkway right beam AND the bottom film rail (replaces the BR rail saddle) | 2 | $50–$80 |
-| 10 | M12 through-bolt kit (right walkway) | Wall cleats + combined plates + 2 center-arm U-clamps to the IBC uprights | ~24 | $30–$50 |
-| 12 | Floor-leg cantilever bracket (left walkway, ×5) | 50×50×3mm steel SHS post (~115mm) + 40×40×3mm SHS arm (2 reach X470, 3 extended to X770) + 128×60×8mm foot plate; bolted to bare floor outside the tray | 5 | $55–$95 |
-| 13 | M10 wedge floor anchors | 4 per foot plate (20 total), sealed into the container floor | 20 | $25–$45 |
-| 17 | Grating clips | Removable spring clips, stainless | ~30 | $30–$50 |
-| | **Total** | | | **<!-- BEGIN costing:walkway-total-low -->$2,000<!-- END costing:walkway-total-low -->–<!-- BEGIN costing:walkway-total-high -->$2,975<!-- END costing:walkway-total-high -->** |
+<!-- BEGIN parts:walkway -->
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| Molded GRP (fiberglass) grating | 15mm, vinyl-ester resin, grit top, ~38mm mesh; ~4.5 m² (4 sections) | 1 lot | McNichols / Grating Pacific | $970–$1,260 |
+| Drum-exit punch-out grating | Extra GRP landing (~0.23 m²) at the light-lock exit | 1 lot | McNichols | $50–$65 |
+| Cantilever bracket — standard (near/far) | 8mm steel plate: 150mm vert leg + 300mm arm + 70mm gusset, welded (5 near + 9 far at 457mm centers) | 14 ea | Local fab | $420–$700 |
+| Cantilever bracket — widened (near) | 10mm steel plate: 200mm vert leg + 500mm arm + 70mm gusset, welded (EP/battery/slit zone) | 4 ea | Local fab | $160–$280 |
+| M12×80mm through-bolt kit | Hex bolt + 2× washers + nut, grade 8.8 (3 per std + 4 per widened) | 58 ea | McMaster-Carr | $87–$145 |
+| Reinforcing plate (exterior) | 6mm steel: 100×180mm std (×14) + 120×220mm widened (×4) | 18 ea | Local fab | $75–$130 |
+| Transition bearing plate | 40×500×5mm flat bar, welded to bracket arm top at width transitions | 2 ea | Local fab | $5–$10 |
+| Right walkway cantilever frame | 40×40×3mm SHS — 2 long beams (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) + 2 end beams (300mm) + 2 center arms (405mm), ~8 m | 1 lot | Metal Supermarkets | $28–$40 |
+| Wall cleat (left corners) | 8mm steel: back-plate + exterior plate + shelf, through-bolted to the wall | 2 ea | Local fab | $20–$35 |
+| Combined corner plate (right corners) | 10mm steel, 150mm wide — carries the walkway right beam AND the bottom film rail | 2 ea | Local fab | $50–$80 |
+| M12 through-bolt kit (right walkway) | Wall cleats + combined plates + 2 center-arm U-clamps to the IBC uprights | 24 ea | McMaster-Carr | $30–$50 |
+| Floor-leg cantilever bracket (left walkway, ×5) | 50×50×3mm SHS post (~115mm) + 40×40×3mm SHS arm (2 reach X470, 3 extended to X770) + 128×60×8mm foot plate | 5 ea | Local fab | $55–$95 |
+| M10 wedge floor anchors | 4 per foot plate (20 total), sealed into the container floor | 20 ea | McMaster-Carr | $25–$45 |
+| Grating clips | Removable spring clips, stainless | 30 ea | McNichols / McMaster-Carr | $30–$50 |
+| **Walkway total** | | | | **$2,005–$2,985** |
+<!-- END parts:walkway -->
 
 *Evap-cooler transport-stowage hardware (plywood base plate + ratchet straps, §7) is costed in the [Ventilation & Cooling parts list](ventilation-report.md), not here.*
 

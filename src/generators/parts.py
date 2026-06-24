@@ -353,28 +353,28 @@ PARTS: list[Part] = [
          "panel", 1, "ea", 20, 35, "McMaster-Carr", note="matte-black, §4.3"),
 
     # ═══ shelf (§7 chem-prep) — mirrors costing.SHELF → exact $203 ═══
-    Part("shelf-phenolic-ply", "Phenolic-faced plywood, 18mm (300×600)", "timber-ply",
-         "shelf", 1, "ea", 60, 60, "Home Depot", "lumber yard"),
-    Part("shelf-steel-shs", "25×25×3mm steel SHS — frame + spill lip (6m)", "steel-structural",
-         "shelf", 1, "lot", 30, 30, "Online Metals", "Metal Supermarkets"),
-    Part("shelf-piano-hinge", "Continuous (piano) hinge, 600mm", "fasteners-hardware",
-         "shelf", 1, "ea", 20, 20, "McMaster-Carr"),
-    Part("shelf-folding-stays", "Folding shelf stays/brackets (×2, fold-flat)", "fasteners-hardware",
-         "shelf", 2, "ea", 12, 12, "Amazon", "McMaster-Carr"),
-    Part("shelf-wall-cleat", "Wall mounting cleat + 2 stay anchors (6mm steel, slotted)", "steel-structural",
-         "shelf", 1, "lot", 18, 18, "local fab"),
-    Part("shelf-m8-bolts", "M8 wall bolts + washers/nuts (~12)", "fasteners-hardware",
-         "shelf", 1, "lot", 12, 12, "McMaster-Carr"),
-    Part("shelf-transport-latch", "Transport latch (over-center / barrel)", "fasteners-hardware",
-         "shelf", 1, "ea", 8, 8, "Amazon"),
-    Part("shelf-csk-screws", "M5×16 CSK screws (×8) — ply panel", "fasteners-hardware",
-         "shelf", 8, "ea", 0.5, 0.5, "McMaster-Carr"),
-    Part("shelf-gusset-plates", "Corner gusset plates, 3mm (×4)", "steel-structural",
-         "shelf", 4, "ea", 1.25, 1.25, "steel offcut"),
-    Part("shelf-paint", "Flat-black epoxy spray paint", "adhesives-finishes",
-         "shelf", 1, "ea", 12, 12, "hardware store"),
-    Part("shelf-hdpe-pipe", '½" HDPE pipe — TAP-01 trunk extension (~1.5m)', "plumbing-fittings",
-         "shelf", 1, "lot", 10, 10, "irrigation supply"),
+    Part("shelf-phenolic-ply", "Phenolic-faced plywood, 18 mm", "timber-ply",
+         "shelf", 1, "ea", 60, 60, "Home Depot", "lumber yard", spec="cut to 300×600 mm"),
+    Part("shelf-steel-shs", "25×25×3 mm steel SHS", "steel-structural",
+         "shelf", 1, "lot", 30, 30, "Online Metals", "Metal Supermarkets", spec="6 m (frame + spill lip)"),
+    Part("shelf-piano-hinge", "Continuous (piano) hinge, 600 mm", "fasteners-hardware",
+         "shelf", 1, "ea", 20, 20, "McMaster-Carr", spec="stainless/steel, ~32 mm leaf"),
+    Part("shelf-folding-stays", "Folding shelf stays/brackets", "fasteners-hardware",
+         "shelf", 2, "ea", 12, 12, "Amazon", "McMaster-Carr", spec="fold-flat, ~30–50 kg rating"),
+    Part("shelf-wall-cleat", "Wall mounting cleat + anchors", "steel-structural",
+         "shelf", 1, "lot", 18, 18, "Local fab", spec="6 mm steel cleat + 2 stay anchors (slotted)"),
+    Part("shelf-m8-bolts", "M8 wall bolts + washers/nuts", "fasteners-hardware",
+         "shelf", 12, "ea", 1, 1, "McMaster-Carr", spec="hinge cleat + stay anchors into the wall ribs"),
+    Part("shelf-transport-latch", "Transport latch (over-center/barrel)", "fasteners-hardware",
+         "shelf", 1, "ea", 8, 8, "Amazon", spec="secures the folded board"),
+    Part("shelf-csk-screws", "M5×16 mm CSK screws", "fasteners-hardware",
+         "shelf", 8, "ea", 0.5, 0.5, "McMaster-Carr", spec="ply panel attachment"),
+    Part("shelf-gusset-plates", "Corner gusset plate, 3 mm", "steel-structural",
+         "shelf", 4, "ea", 1.25, 1.25, "Steel offcut", spec="50×50 mm triangular"),
+    Part("shelf-paint", "Flat black epoxy spray paint", "adhesives-finishes",
+         "shelf", 1, "can", 12, 12, "Hardware store", spec="frame + hardware finish"),
+    Part("shelf-hdpe-pipe", '½" HDPE pipe (tap relocation)', "plumbing-fittings",
+         "shelf", 1, "lot", 10, 10, "Irrigation supply", spec="extend the blue supply trunk ~1.3 m left to TAP-01"),
 
     # ═══ walkway (§9) — mirrors costing.WALKWAY → exact $2,000–$2,975 ═══
     Part("walkway-grp-grating", "Molded GRP (fiberglass) grating, 15mm (vinyl-ester, grit top, ~4.5 m²)",
@@ -450,14 +450,21 @@ def _money(v: float) -> str:
     return f"${round(v):,}"
 
 
+def _item_cell(p: Part) -> str:
+    """Item name, hyperlinked to the part URL when the registry carries one; part_no appended."""
+    name = f"[{p.desc}]({p.url})" if p.url else p.desc
+    return f"{name} ({p.part_no})" if p.part_no else name
+
+
 def emit_system(sys: str) -> str:
-    """A report's §Parts-List (by-system view)."""
+    """A report's §Parts-List (by-system view). Registry insertion order (faithful to the report);
+    renders spec + URL-linked item + qty + supplier(+alt) + cost band + a system-total row."""
     rows = ["| Item | Spec | Qty | Supplier | Est. cost |", "|------|------|-----|----------|-----------|"]
-    for p in sorted(by_system(sys), key=lambda x: x.type):
+    for p in by_system(sys):                                    # insertion order, not type-sorted
         lo, hi = line(p)
         cost = _money(lo) if round(lo) == round(hi) else f"{_money(lo)}–{_money(hi)}"
         sup = p.supplier + (f" / {p.supplier_alt}" if p.supplier_alt else "")
-        rows.append(f"| {p.desc} | {p.spec or '—'} | {p.qty:g} {p.unit} | {sup} | {cost} |")
+        rows.append(f"| {_item_cell(p)} | {p.spec or '—'} | {p.qty:g} {p.unit} | {sup} | {cost} |")
     lo, hi = system_total(sys)
     tot = _money(lo) if lo == hi else f"{_money(lo)}–{_money(hi)}"
     rows.append(f"| **{sys.title()} total** | | | | **{tot}** |")

@@ -164,20 +164,22 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 
 ## 7. Parts List
 
+<!-- BEGIN parts:shelf -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Phenolic-faced plywood, 18 mm | cut to 300×600 mm | 1 | Home Depot / lumber yard | ~$60 |
-| 25×25×3 mm steel SHS | 6 m (frame + spill lip) | 1 | Online Metals / Metal Supermarkets | ~$30 |
-| Continuous (piano) hinge, 600 mm | stainless/steel, ~32 mm leaf | 1 | McMaster-Carr | ~$20 |
-| Folding shelf stays/brackets | fold-flat, ~30–50 kg rating | 2 | Amazon / McMaster-Carr | ~$24 |
-| Wall mounting cleat + anchors | 6 mm steel cleat + 2 stay anchors (slotted) | 1 set | Local fab / offcut | ~$18 |
-| M8 wall bolts + washers/nuts | hinge cleat + stay anchors into the wall ribs | ~12 | McMaster-Carr | ~$12 |
-| Transport latch (over-center/barrel) | secures the folded board | 1 | Amazon | ~$8 |
-| M5×16 mm CSK screws | ply panel attachment | 8 | McMaster-Carr | ~$4 |
-| Corner gusset plate, 3 mm | 50×50 mm triangular | 4 | Steel offcut | ~$5 |
-| Flat black epoxy spray paint | frame + hardware finish | 1 can | Hardware store | ~$12 |
-| ½" HDPE pipe (tap relocation) | extend the blue supply trunk ~1.3 m left to TAP-01 | ~1.5 m | Irrigation supply | ~$10 |
-| **Total** | | | | **~<!-- BEGIN costing:shelf-total -->$203<!-- END costing:shelf-total -->** |
+| Phenolic-faced plywood, 18 mm | cut to 300×600 mm | 1 ea | Home Depot / lumber yard | $60 |
+| 25×25×3 mm steel SHS | 6 m (frame + spill lip) | 1 lot | Online Metals / Metal Supermarkets | $30 |
+| Continuous (piano) hinge, 600 mm | stainless/steel, ~32 mm leaf | 1 ea | McMaster-Carr | $20 |
+| Folding shelf stays/brackets | fold-flat, ~30–50 kg rating | 2 ea | Amazon / McMaster-Carr | $24 |
+| Wall mounting cleat + anchors | 6 mm steel cleat + 2 stay anchors (slotted) | 1 lot | Local fab | $18 |
+| M8 wall bolts + washers/nuts | hinge cleat + stay anchors into the wall ribs | 12 ea | McMaster-Carr | $12 |
+| Transport latch (over-center/barrel) | secures the folded board | 1 ea | Amazon | $8 |
+| M5×16 mm CSK screws | ply panel attachment | 8 ea | McMaster-Carr | $4 |
+| Corner gusset plate, 3 mm | 50×50 mm triangular | 4 ea | Steel offcut | $5 |
+| Flat black epoxy spray paint | frame + hardware finish | 1 can | Hardware store | $12 |
+| ½" HDPE pipe (tap relocation) | extend the blue supply trunk ~1.3 m left to TAP-01 | 1 lot | Irrigation supply | $10 |
+| **Shelf total** | | | | **$203** |
+<!-- END parts:shelf -->
 
 *The relocated TAP-01 + BV-06 hardware itself is unchanged (carried in the water-system
 BOM); only the ~1.3 m trunk extension is added here.*

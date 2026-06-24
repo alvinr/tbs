@@ -358,6 +358,22 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Weatherproof duct cap | 1 ea | Home Depot | ventilation | $8 |
 | **ducting-ventilation subtotal** | | | | **$316–$366** |
 
+### chemistry-reagents
+
+| Item | Qty | Supplier | Systems | Est. cost |
+|------|-----|----------|---------|-----------|
+| Ammonium iron(III) oxalate (AmFe) | 19.5 kg | Photographers' Formulary | chemistry | $1,170 |
+| Potassium ferricyanide | 6.5 kg | Bostick & Sullivan | chemistry | $158 |
+| Ammonium dichromate | 1 run | Photographers' Formulary | chemistry | $25 |
+| **chemistry-reagents subtotal** | | | | **$1,353** |
+
+### substrate-fabric
+
+| Item | Qty | Supplier | Systems | Est. cost |
+|------|-----|----------|---------|-----------|
+| Unbleached muslin, 60" wide | 3 roll | Fabric Direct | chemistry | $300 |
+| **substrate-fabric subtotal** | | | | **$300** |
+
 ### tools-safety
 
 | Item | Qty | Supplier | Systems | Est. cost |
@@ -395,6 +411,7 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,291–$1,618 |
 | McNichols | 3 | fasteners-hardware, plastics-sheet | $1,050–$1,375 |
+| Photographers' Formulary | 2 | chemistry-reagents | $1,195 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
 | Home Depot | 19 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety | $804–$984 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
@@ -405,9 +422,11 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Grimco | 1 | plastics-sheet | $510 |
 | Roton Products | 2 | bearings-motion | $428 |
 | altE Store | 2 | electrical-power | $350 |
+| Fabric Direct | 1 | substrate-fabric | $300 |
 | Victron | 1 | electrical-power | $275 |
 | Waytek Wire | 7 | electrical-distribution | $208 |
 | West Marine | 2 | electrical-distribution | $190 |
+| Bostick & Sullivan | 1 | chemistry-reagents | $158 |
 | Lenox Laser | 1 | stainless-sheet | $50–$150 |
 | Grainger | 1 | bearings-motion | $140 |
 | Hessaire | 1 | ducting-ventilation | $130 |

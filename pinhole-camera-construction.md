@@ -114,21 +114,20 @@ The floor plan below shows the container interior from above (top-down view) wit
 major systems in their installed positions. The long axis (image width) runs left-right in
 this view; the optical axis runs front-to-back, from the pinhole on the near long wall to the
 film plane on the far long wall at 2,262mm depth. Equipment occupies the two end zones — the
-light-trap drum at the far left (X = 0–150mm) and the IBC stack with its pump panel at the far
-right (X = 4,649–5,893mm) — leaving the central span (X = 150–4,649mm, the active film-plane
-width) as the clear optical zone.
+light-trap drum at the far left and the IBC stack with its pump panel at the far
+right — leaving the central span (the active film-plane width) as the clear optical zone.
 
 ![TBS-001 — Container Floor Plan (Top Elevation)](assets/container-floorplan.png)
 
-| Zone | Long-axis span | Contents |
-|------|---------------|----------|
-| Left end zone | X = 0–150mm | Light trap drum, hinged panel |
-| Right end zone | X = 4,649–5,893mm | IBC totes (×4, 2×2 stack), pump manifold (equip panel), filter skid |
-| Pinhole wall (Yd=0) | Full length | Electrical panel, battery bank, evap duct penetration (cooler external) |
-| Optical zone | X = 150–4,649mm | Clear — no equipment; optical cone from pinhole traverses this central span unobstructed |
-| Cargo door end | X = 0mm | Hinged panel with integrated revolving light-trap drum |
-| Pinhole aperture | X = 2,399mm (center of active film plane) | Aperture Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm at Y_depth=0 |
-| Film plane | Y_depth = 2,262mm | Muslin sensitized surface, spanning full 5,893mm × 2,388mm |
+| Zone | Contents |
+|------|----------|
+| Left end zone | Light trap drum, hinged panel |
+| Right end zone | IBC totes (×4, 2×2 stack), pump manifold (equip panel), filter skid |
+| Pinhole wall | Full-length wall: electrical panel, battery bank, evap duct penetration (cooler external) |
+| Optical zone | Clear — no equipment; optical cone from pinhole traverses this central span unobstructed |
+| Cargo door end | Hinged panel with integrated revolving light-trap drum |
+| Pinhole aperture | Aperture Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm at Y_depth=0 |
+| Film plane | Muslin sensitized surface, spanning full 5,893mm × 2,388mm |
 
 See [Engineering Diagrams](engineering-diagrams.md) §3 for the full floor plan drawing,
 and §13 for the optical line-of-sight clearance analysis.

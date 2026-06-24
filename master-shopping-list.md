@@ -473,24 +473,24 @@ column header to re-order by item, supplier, system, or cost.*
 ## 10. Printmaking Tools & Consumables
 *Source: `operating-manual.md`, `chemistry-shopping-list.md`*
 
+*Printmaking-specific tools only. Items shared with other systems are **not** repeated here — they
+roll up in the Procurement BOM above and are itemized in their owning system: the muslin clamps +
+mounting in the [film-clamp BOM](film-clamp-mechanism-report.md), nitrile gloves + 6-mil floor poly
+in the [water BOM](water-system-report.md), and the Circuit-D red safelight strips in the
+[electrical BOM](electrical-report.md).*
+
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | Foam roller 18" wide | For sensitiser application | 3 | Home Depot / art supply | ~$30 |
 | Foam brush 4" wide | Detail/edge work | 6 | Home Depot / art supply | ~$15 |
 | UV-blocking safety glasses | Mandatory during sensitiser handling | 2 pairs | Amazon / safety supply | ~$20 |
-| Nitrile gloves, box of 100 | Size M/L, for chemistry handling | 3 boxes | Amazon / Home Depot | ~$40 |
 | Chemical-resistant apron | Full-length | 2 | Amazon / safety supply | ~$30 |
-| Red LED safelight headlamp | Loading operations inside container | 2 | Amazon | ~$30 |
-| Red LED strip light 12V | Interior safelight — Circuit D | 1 (5m roll) | Amazon | ~$15 |
+| Red LED safelight headlamp | Loading operations inside container (wearable; not the Circuit-D strips) | 2 | Amazon | ~$30 |
 | Digital timer | Exposure timing | 1 | Amazon / camera store | ~$15 |
 | Folding step stool | Reaching top of image plane | 1 | Home Depot | ~$25 |
-| [Cam-lever spring clamps](https://www.amazon.com/s?k=over+center+cam+toggle+clamp+small) | Muslin attachment — over-center cam, neoprene jaw, ~5N | 92 | Amazon / McMaster-Carr | ~$3–8 ea |
-| [M5×16 SS socket head bolt + Nylock nut](https://www.mcmaster.com/91292A128) | Clamp base plate mounting (2 per clamp) | 184 + 184 | McMaster-Carr #91292A128 | ~$55 |
-| [Neoprene strip 60A, 35mm × 6mm](https://www.mcmaster.com/8614K44) | Jaw pads (self-adhesive, cut to 35×12mm) | 1 roll (10m) | McMaster-Carr #8614K44 | ~$15 |
 | Spray bottle (1 liter) | Humidity/misting in low-RH conditions | 2 | Amazon / garden supply | ~$15 |
 | pH test strips | Quick wash water check | 1 pack | Amazon | ~$10 |
-| 6-mil black poly sheeting, 10'×100' | Container floor protection during development | 1 roll | Home Depot / Uline | ~$80 |
-**Section total: ~$650–1,100** (range depends on generic vs Destaco-equivalent clamps)
+**Listed tools total: ~$190.** *(The Section 10 budget in the summary above — $350–$500 — adds consumable-replacement contingency for rollers/brushes/gloves used up each session.)*
 
 ## 11. Safety & PPE
 *Source: `operating-manual.md`, `electrical-report.md`*

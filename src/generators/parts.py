@@ -482,69 +482,73 @@ PARTS: list[Part] = [
     Part("clamp-neoprene", "Neoprene strip 60A", "seals-gaskets",
          "clamp", 1, "roll", 15, 15, "McMaster-Carr", "Grainger", part_no="8614K44", spec="35mm × 6mm, self-adhesive, 10m"),
 
-    # ═══ lightlock (§7) — mirrors costing.LIGHTLOCK → exact $1,385–$2,070 ═══
-    Part("ll-hdpe-housing", "5mm UV-stabilized HDPE — Ø900 housing shell (~7 m²)", "plastics-sheet",
-         "lightlock", 1, "lot", 180, 280, "TAP Plastics", "Online Metals", note="rolled + extrusion-welded"),
-    Part("ll-pp-drum", "4mm PP — Ø864 drum shell + top/bottom caps (~7 m²)", "plastics-sheet",
-         "lightlock", 1, "lot", 150, 240, "TAP Plastics", "Curbell"),
-    Part("ll-skf-bearing", "SKF 6215-2RS1 sealed bearing (×2)", "bearings-motion",
-         "lightlock", 2, "ea", 45, 65, "Bearing World", "Applied"),
-    Part("ll-stub-shafts", "75mm Ø × 150mm steel stub shafts (×2)", "steel-structural",
-         "lightlock", 2, "ea", 15, 25, "steel service center"),
-    Part("ll-wiper-seal", "Felt/brush wiper + 12mm neoprene (drum↔housing seal)", "seals-gaskets",
-         "lightlock", 1, "lot", 40, 60, "McMaster-Carr"),
-    Part("ll-silicone-sealant", "Silicone bead sealant (bearing housing)", "adhesives-finishes",
-         "lightlock", 1, "ea", 10, 15, "McMaster-Carr"),
-    Part("ll-grab-rail", "100mm Ø SS grab rail (400mm cut)", "fasteners-hardware",
-         "lightlock", 1, "ea", 15, 25, "McMaster-Carr"),
+    # ═══ lightlock (hinged-panel §8.2) — housing + drum; sums to costing.LIGHTLOCK ($1,385–$2,070) ═══
+    Part("ll-hdpe-housing", "5mm UV-stabilized HDPE sheet (black)", "plastics-sheet",
+         "lightlock", 1, "lot", 180, 280, "TAP Plastics", "Online Metals",
+         spec="Ø900 fixed housing shell — LT_HOUSING_T (rolled + extrusion-welded, ~7 m²)"),
+    Part("ll-pp-drum", "4mm black polypropylene sheet", "plastics-sheet",
+         "lightlock", 1, "lot", 150, 240, "TAP Plastics", "Curbell",
+         spec="Ø864 revolving drum shell + top/bottom caps — LT_DRUM_T (~7 m²)"),
+    Part("ll-skf-bearing", "SKF 6215-2RS1 sealed bearing", "bearings-motion",
+         "lightlock", 2, "ea", 45, 65, "Bearing World", "Applied", spec="Top and bottom (drum rotation)"),
+    Part("ll-stub-shafts", "75mm Ø × 150mm steel stub shaft", "steel-structural",
+         "lightlock", 2, "ea", 15, 25, "steel service center", spec="Bearing shafts"),
+    Part("ll-wiper-seal", "Felt/brush wiper strip + 12mm closed-cell neoprene", "seals-gaskets",
+         "lightlock", 1, "lot", 40, 60, "McMaster-Carr", spec="Drum↔housing rotating seal (opening edges + top/bottom rings) + drum top/bottom"),
+    Part("ll-silicone-sealant", "Silicone bead sealant (black, UV-stable)", "adhesives-finishes",
+         "lightlock", 1, "ea", 10, 15, "McMaster-Carr", spec="Bearing housing seal"),
+    Part("ll-grab-rail", "100mm Ø SS grab rail", "fasteners-hardware",
+         "lightlock", 1, "ea", 15, 25, "McMaster-Carr", spec="Interior handle, 400mm cut length"),
     Part("ll-matte-finish", "Matte-black interior finish", "adhesives-finishes",
-         "lightlock", 1, "job", 40, 70, "local", note="scuff + flat-black touch-in"),
-    Part("ll-fasteners", "Stainless fasteners + nylon isolation washers (no galvanic couple)", "fasteners-hardware",
-         "lightlock", 1, "lot", 30, 50, "McMaster-Carr"),
-    Part("ll-fabrication", "Plastic fabrication — roll + weld 2 cylinders, fit (16–22 hrs)", "fabrication-labor",
-         "lightlock", 1, "job", 800, 1150, "Local plastic fab"),
+         "lightlock", 1, "ea", 40, 70, "local", spec="Black-pigmented sheet (no etch-prime); scuff + flat-black touch-in at welds"),
+    Part("ll-fasteners", "Stainless fasteners + nylon isolation washers", "fasteners-hardware",
+         "lightlock", 1, "lot", 30, 50, "McMaster-Carr", spec="Steel shaft/bearing ↔ plastic shell joints (no galvanic couple)"),
+    Part("ll-fabrication", "Plastic fabrication (roll 2 cylinders, hot-air / extrusion weld, fit, bearings)", "fabrication-labor",
+         "lightlock", 1, "lot", 800, 1150, "Local plastic fab", spec="16–22 hrs labor"),
 
-    # ═══ swingpivot (§8.3–8.4) — mirrors costing.SWINGPIVOT → exact $855–$1,430 ═══
-    Part("sp-pivot-post", "Ø89×8 CHS pivot post + machined hub / thrust collar", "steel-structural",
-         "swingpivot", 1, "ea", 180, 300, "Metal Supermarkets", "local fab", note="carries ~3.6 kN·m swing cantilever"),
+    # ═══ swing (hinged-panel §8.3) — swing pivot hardware; sums to SWINGPIVOT minus door ($520–$880) ═══
+    Part("sp-pivot-post", "Ø89×8mm CHS pivot post + machined hub / thrust collar", "steel-structural",
+         "swing", 1, "ea", 180, 300, "Metal Supermarkets", "local fab",
+         spec="Upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever — SF 3.7 in S355"),
     Part("sp-thrust-bearing", "Turntable thrust bearing, 12″ (Ø305) 1000 lb", "bearings-motion",
-         "swingpivot", 1, "ea", 40, 60, "VXB"),
-    Part("sp-sleeve-bearings", "Flanged sleeve (journal) bearings, Ø90 bore (×2)", "bearings-motion",
-         "swingpivot", 2, "ea", 30, 55, "McMaster-Carr", note="SAE 841 bronze"),
-    Part("sp-drum-cage", "Drum support cage, 40×40×3mm SHS", "steel-structural",
-         "swingpivot", 1, "lot", 70, 120, "local fab"),
+         "swing", 1, "ea", 40, 60, "VXB", spec="Carries the ~330 kg (3.24 kN) vertical load at the post base; thrust-only"),
+    Part("sp-sleeve-bearings", "Flanged sleeve (journal) bearing, Ø90 bore", "bearings-motion",
+         "swing", 2, "ea", 30, 55, "McMaster-Carr", spec="Top + bottom radial location of the post / hub (SAE 841 bronze)"),
+    Part("sp-drum-cage", "Drum support cage, 40 × 40 × 3mm SHS", "steel-structural",
+         "swing", 1, "lot", 70, 120, "local fab", spec="Steel frame carrying the Ø900 housing + drum on the swinging leaf"),
     Part("sp-wall-stays", "Top + bottom wall stays + 4-bolt anchor plates", "fasteners-hardware",
-         "swingpivot", 2, "set", 45, 80, "McMaster-Carr", note="turnbuckles + rods + plates"),
-    Part("sp-rail-saddles", "Drop-in rail saddles + tapered dowels (×4, removable left film rails)", "steel-structural",
-         "swingpivot", 4, "ea", 20, 32.5, "local fab", "McMaster-Carr"),
-    Part("sp-door-frame-rhs", "Fixed door frame — 50×50×3 RHS members (×3)", "steel-structural",
-         "swingpivot", 3, "ea", 30, 40, "Metal Supermarkets"),
-    Part("sp-door-seal-lips", "Fixed door frame — top/bottom seal lips (3mm steel ~110×4m)", "steel-structural",
-         "swingpivot", 1, "lot", 45, 80, "Metal Supermarkets", note="seal paths #3–#4"),
-    Part("sp-door-fab", "Fixed door frame — welding/fabrication + wall attachment", "fabrication-labor",
-         "swingpivot", 1, "job", 200, 350, "local fab"),
+         "swing", 2, "set", 45, 80, "McMaster-Carr", spec="Transport lock — M16 turnbuckle + eye/hook rods + inside/outside wall plates"),
+    Part("sp-rail-saddles", "Drop-in rail saddles + tapered dowels", "steel-structural",
+         "swing", 4, "ea", 20, 32.5, "local fab", "McMaster-Carr", spec="For the 2 removable left film rails (TL + BL); dowels set the film datum"),
+    # ═══ door (hinged-panel §8.4) — fixed door frame; sums to the SWINGPIVOT door lines ($335–$550) ═══
+    Part("sp-door-frame-rhs", "50 × 50 × 3mm RHS mild steel (6 m lengths)", "steel-structural",
+         "door", 3, "ea", 30, 40, "Metal Supermarkets", spec="Frame members"),
+    Part("sp-door-seal-lips", "3mm steel plate/angle (~110mm × ~4 m)", "steel-structural",
+         "door", 1, "lot", 45, 80, "Metal Supermarkets", spec="Top + bottom seal lips — threshold upstand + frame-top downstand; seal paths #3–#4"),
+    Part("sp-door-fab", "Welding / fabrication", "fabrication-labor",
+         "door", 1, "lot", 200, 350, "local fab", spec="Frame assembly + wall attachment"),
 
-    # ═══ panel (§8.1) — mirrors costing.PANEL → exact $1,124–$1,691 ═══
-    Part("panel-rhs-frame", "50×50×3mm RHS mild steel — frame perimeter + members (4× 6m)", "steel-structural",
-         "panel", 4, "ea", 30, 40, "Metal Supermarkets"),
-    Part("panel-pp-skins", "4mm black PP sheet — panel skins both faces (~12 m², ×4)", "plastics-sheet",
-         "panel", 4, "sheet", 65, 105, "TAP Plastics", "Curbell", note="rev11"),
-    Part("panel-fanb-ply", "18mm exterior-grade plywood — Fan B mount band (0.5 sheet)", "timber-ply",
-         "panel", 1, "lot", 30, 50, "Home Depot"),
-    Part("panel-corner-plates", "3mm aluminum plate — corner-zone core plates (×2)", "aluminum",
-         "panel", 2, "ea", 180, 230, "Online Metals"),
-    Part("panel-epdm-gasket", "20mm EPDM gasket — perimeter + housing-surround + cut seals (~21 m)", "seals-gaskets",
-         "panel", 21, "m", 4, 6, "McMaster-Carr"),
-    Part("panel-u-channel", "Aluminum U-channel — gasket + PP-skin retention (~40 m)", "aluminum",
-         "panel", 40, "m", 3, 5, "Online Metals"),
-    Part("panel-southco-latch", "Southco C2-33 cam compression latch (×4)", "fasteners-hardware",
-         "panel", 4, "ea", 15, 25, "Southco", "McMaster-Carr"),
-    Part("panel-b2-bay", "4mm PP + EPDM lip — B2 punch-out bay (4-wall tube ~890mm)", "plastics-sheet",
-         "panel", 1, "lot", 60, 120, "TAP Plastics", note="rev11"),
-    Part("panel-paint", "Flat-black paint (RAL 9005) — bay/weld touch-in", "adhesives-finishes",
-         "panel", 1, "lot", 10, 20, "local"),
-    Part("panel-grab-handle", "316 SS D-grab pull handle (~300mm) + 2× M8 + backing plate", "fasteners-hardware",
-         "panel", 1, "ea", 20, 35, "McMaster-Carr", note="matte-black, §4.3"),
+    # ═══ panel (hinged-panel §8.1) — panel structure; sums to costing.PANEL ($1,124–$1,691) ═══
+    Part("panel-rhs-frame", "50 × 50 × 3mm RHS mild steel (6 m lengths)", "steel-structural",
+         "panel", 4, "ea", 30, 40, "Metal Supermarkets", spec="Frame perimeter + internal members"),
+    Part("panel-pp-skins", "4mm black PP plastic sheet (1220 × 2,440mm)", "plastics-sheet",
+         "panel", 4, "sheet", 65, 105, "TAP Plastics", "Curbell", spec="Panel skins, both faces (~12 m²) — rev11, replaces 18mm ply"),
+    Part("panel-fanb-ply", "18mm exterior-grade plywood", "timber-ply",
+         "panel", 0.5, "sheet", 60, 100, "Home Depot", spec="Fan B mount band only (one corner, bottom→1,125mm)"),
+    Part("panel-corner-plates", "3mm aluminum plate (1220 × 2,440mm)", "aluminum",
+         "panel", 2, "ea", 180, 230, "Online Metals", spec="Corner zone core plates"),
+    Part("panel-epdm-gasket", "20mm EPDM gasket (per meter, closed-cell)", "seals-gaskets",
+         "panel", 21, "m", 4, 6, "McMaster-Carr", spec="Perimeter seal (~10 m) + housing-surround ring (~6 m) + 2× vertical cut seals at Yd180/2287 (~5 m)"),
+    Part("panel-u-channel", "Aluminum U-channel (per meter)", "aluminum",
+         "panel", 40, "m", 3, 5, "Online Metals", spec="Gasket retainer + PP-skin retention (perimeter + housing-surround + stiffener grid)"),
+    Part("panel-southco-latch", "Southco C2-33 cam compression latch", "fasteners-hardware",
+         "panel", 4, "ea", 15, 25, "Southco", "McMaster-Carr", spec="Interior-mounted corner latches (compress the perimeter + cut + lip seals)"),
+    Part("panel-b2-bay", "4mm black PP sheet + EPDM lip", "plastics-sheet",
+         "panel", 1, "lot", 60, 120, "TAP Plastics", spec="B2 punch-out bay — 4-wall light-tight tube (~890mm deep) around the housing (rev11)"),
+    Part("panel-paint", "Flat black paint (RAL 9005)", "adhesives-finishes",
+         "panel", 1, "qt", 10, 20, "local", spec="Bay/weld touch-in (PP skins are pre-pigmented black)"),
+    Part("panel-grab-handle", "316 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black", "fasteners-hardware",
+         "panel", 1, "ea", 20, 35, "McMaster-Carr", spec="Interior pull handle — through-bolted to the frame (§4.3)"),
 
     # ═══ shelf (§7 chem-prep) — mirrors costing.SHELF → exact $203 ═══
     Part("shelf-phenolic-ply", "Phenolic-faced plywood, 18 mm", "timber-ply",
@@ -734,7 +738,8 @@ _DOC_MASTER = "master-shopping-list.md"
 SYSTEM_DOC = {
     "water": "water-system-report.md", "electrical": "electrical-report.md",
     "ventilation": "ventilation-report.md", "film": "film-plane-mechanism-report.md",
-    "lightlock": "light-trap-selection.md", "panel": "hinged-panel-report.md",
+    "panel": "hinged-panel-report.md", "lightlock": "hinged-panel-report.md",
+    "swing": "hinged-panel-report.md", "door": "hinged-panel-report.md",
     "shelf": "chemistry-prep-shelves.md", "walkway": "walkway-report.md",
     "optics": "pinhole-report.md", "ibc-frame": "ibc-stacking-report.md",
     "tray": "processing-tray-and-spray-bar.md", "spray": "processing-tray-and-spray-bar.md",
@@ -820,13 +825,17 @@ def reconcile_target(sys: str):
         return _split_sum(costing.FILM, _CLAMP_LINES, keep=True)
     if sys == "film":                                           # FILM minus the clamp lines
         return _split_sum(costing.FILM, _CLAMP_LINES, keep=False)
+    if sys == "door":                                           # the "Fixed door frame" lines of SWINGPIVOT
+        return _split_sum(costing.SWINGPIVOT, ("Fixed door frame",), keep=True)
+    if sys == "swing":                                          # SWINGPIVOT minus the door lines
+        return _split_sum(costing.SWINGPIVOT, ("Fixed door frame",), keep=False)
     exp = costing.EXPECTED[reconcile_key(sys)]
     return (exp[0], exp[2]) if len(exp) == 3 else exp
 
 
 def self_check() -> list[str]:
     """Every migrated system must sum to its costing reconcile target (±$10 absorbs rounding)."""
-    special = set(_WATER_SPLIT) | {"water", "clamp", "film"}    # reconciled to costing line slices
+    special = set(_WATER_SPLIT) | {"water", "clamp", "film", "swing", "door"}  # reconciled to costing line slices
     errs = []
     for sys in systems():
         key = reconcile_key(sys)

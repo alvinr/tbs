@@ -61,21 +61,21 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 |------|-----|----------|---------|-----------|
 | Cantilever bracket — standard (near/far) | 14 ea | Local fab | walkway | $420–$700 |
 | Mild steel plate 8mm (laser/plasma cut + welded) | 6 ea | Metal Supermarkets | film | $318 |
-| Ø89×8 CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swingpivot | $180–$300 |
+| Ø89×8mm CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swing | $180–$300 |
 | Cantilever bracket — widened (near) | 4 ea | Local fab | walkway | $160–$280 |
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | 4 ea | Metal Supermarkets | ibc-frame | $120–$180 |
-| 50×50×3mm RHS mild steel — frame perimeter + members (4× 6m) | 4 ea | Metal Supermarkets | panel | $120–$160 |
-| Drop-in rail saddles + tapered dowels (×4, removable left film rails) | 4 ea | local fab | swingpivot | $80–$130 |
+| 50 × 50 × 3mm RHS mild steel (6 m lengths) | 4 ea | Metal Supermarkets | panel | $120–$160 |
+| Drop-in rail saddles + tapered dowels | 4 ea | local fab | swing | $80–$130 |
 | Reinforcing plate (exterior) | 18 ea | Local fab | walkway | $75–$130 |
 | Canopy frame | 1 lot | Home Depot | ventilation | $120 |
-| Drum support cage, 40×40×3mm SHS | 1 lot | local fab | swingpivot | $70–$120 |
-| Fixed door frame — 50×50×3 RHS members (×3) | 3 ea | Metal Supermarkets | swingpivot | $90–$120 |
+| Drum support cage, 40 × 40 × 3mm SHS | 1 lot | local fab | swing | $70–$120 |
+| 50 × 50 × 3mm RHS mild steel (6 m lengths) | 3 ea | Metal Supermarkets | door | $90–$120 |
 | Floor-leg cantilever bracket (left walkway, ×5) | 5 ea | Local fab | walkway | $55–$95 |
-| Fixed door frame — top/bottom seal lips (3mm steel ~110×4m) | 1 lot | Metal Supermarkets | swingpivot | $45–$80 |
+| 3mm steel plate/angle (~110mm × ~4 m) | 1 lot | Metal Supermarkets | door | $45–$80 |
 | Combined corner plate (right corners) | 2 ea | Local fab | walkway | $50–$80 |
 | 4mm folded plate | 4 ea | local fab | ibc-frame | $30–$50 |
 | Shutter plate (⅛ steel 10×8) + slide channel | 1 ea | local fab | optics | $25–$50 |
-| 75mm Ø × 150mm steel stub shafts (×2) | 2 ea | steel service center | lightlock | $30–$50 |
+| 75mm Ø × 150mm steel stub shaft | 2 ea | steel service center | lightlock | $30–$50 |
 | Steel backing plate 6×6×⅛ + welded frame | 1 ea | Metal Supermarkets | optics | $20–$40 |
 | Right walkway cantilever frame | 1 lot | Metal Supermarkets | walkway | $28–$40 |
 | Wall cleat (left corners) | 2 ea | Local fab | walkway | $20–$35 |
@@ -100,9 +100,9 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| 3mm aluminum plate — corner-zone core plates (×2) | 2 ea | Online Metals | panel | $360–$460 |
+| 3mm aluminum plate (1220 × 2,440mm) | 2 ea | Online Metals | panel | $360–$460 |
 | Aluminum angle 2"×2"×3/16" | 10 ea | Metal Supermarkets | film | $220 |
-| Aluminum U-channel — gasket + PP-skin retention (~40 m) | 40 m | Online Metals | panel | $120–$200 |
+| Aluminum U-channel (per meter) | 40 m | Online Metals | panel | $120–$200 |
 | Corner bracket L-plate | 4 ea | Metal Supermarkets | film | $80 |
 | Cross-slide intermediate plate (Option A) | 4 ea | Metal Supermarkets | film | $60 |
 | 6061-T6 AL SHS 1-1/2"×1-1/2"×1/8", 8 ft | 2 ea | Online Metals | spray | $36–$56 |
@@ -120,10 +120,10 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Molded GRP (fiberglass) grating | 1 lot | McNichols | walkway | $970–$1,260 |
 | Image-plane flat backing — Dibond ACM | 1 lot | TAP Plastics | interior | $490–$620 |
 | Dibond ACM panel 4mm | 6 sheet | Grimco | film | $510 |
-| 4mm black PP sheet — panel skins both faces (~12 m², ×4) | 4 sheet | TAP Plastics | panel | $260–$420 |
-| 5mm UV-stabilized HDPE — Ø900 housing shell (~7 m²) | 1 lot | TAP Plastics | lightlock | $180–$280 |
-| 4mm PP — Ø864 drum shell + top/bottom caps (~7 m²) | 1 lot | TAP Plastics | lightlock | $150–$240 |
-| 4mm PP + EPDM lip — B2 punch-out bay (4-wall tube ~890mm) | 1 lot | TAP Plastics | panel | $60–$120 |
+| 4mm black PP plastic sheet (1220 × 2,440mm) | 4 sheet | TAP Plastics | panel | $260–$420 |
+| 5mm UV-stabilized HDPE sheet (black) | 1 lot | TAP Plastics | lightlock | $180–$280 |
+| 4mm black polypropylene sheet | 1 lot | TAP Plastics | lightlock | $150–$240 |
+| 4mm black PP sheet + EPDM lip | 1 lot | TAP Plastics | panel | $60–$120 |
 | HDPE flat bar, 50mm wide | 5 ea | Online Metals | tray | $40–$75 |
 | Drum-exit punch-out grating | 1 lot | McNichols | walkway | $50–$65 |
 | **plastics-sheet subtotal** | | | | **$2,710–$3,590** |
@@ -133,7 +133,7 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | Phenolic-faced plywood, 18 mm | 1 ea | Home Depot | shelf | $60 |
-| 18mm exterior-grade plywood — Fan B mount band (0.5 sheet) | 1 lot | Home Depot | panel | $30–$50 |
+| 18mm exterior-grade plywood | 0.5 sheet | Home Depot | panel | $30–$50 |
 | Plywood base plate | 1 ea | Home Depot | ventilation | $8 |
 | **timber-ply subtotal** | | | | **$98–$118** |
 
@@ -142,25 +142,25 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | Cam-lever spring clamp | 92 ea | McMaster-Carr | clamp | $276–$736 |
-| Top + bottom wall stays + 4-bolt anchor plates | 2 set | McMaster-Carr | swingpivot | $90–$160 |
+| Top + bottom wall stays + 4-bolt anchor plates | 2 set | McMaster-Carr | swing | $90–$160 |
 | M12×80mm through-bolt kit | 58 ea | McMaster-Carr | walkway | $87–$145 |
 | Misc. conversion hardware | 1 lot | Home Depot | interior | $80–$130 |
 | Door & access upgrades | 1 lot | Home Depot | interior | $50–$100 |
-| Southco C2-33 cam compression latch (×4) | 4 ea | Southco | panel | $60–$100 |
+| Southco C2-33 cam compression latch | 4 ea | Southco | panel | $60–$100 |
 | M12×90mm hex through-bolt + nut + washers, SS | 28 ea | McMaster-Carr | film | $70 |
 | Pivot pin SS316 | 8 ea | McMaster-Carr | film | $64 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
 | 25mm ratchet strap, 1,100 kg WLL | 4 ea | Amazon | ibc-frame | $30–$50 |
-| Stainless fasteners + nylon isolation washers (no galvanic couple) | 1 lot | McMaster-Carr | lightlock | $30–$50 |
+| Stainless fasteners + nylon isolation washers | 1 lot | McMaster-Carr | lightlock | $30–$50 |
 | M12 through-bolt kit (right walkway) | 24 ea | McMaster-Carr | walkway | $30–$50 |
 | M5×16 SS socket head bolt | 184 ea | McMaster-Carr | clamp | $46 |
 | M10 wedge floor anchors | 20 ea | McMaster-Carr | walkway | $25–$45 |
 | Shurflo pump mounting bracket | 4 ea | Amazon | water | $40 |
 | M8×25mm knurled thumbscrew DIN 464 | 12 ea | Amazon | film | $36 |
 | 25mm welded D-ring | 4 ea | McMaster-Carr | ibc-frame | $20–$35 |
-| 316 SS D-grab pull handle (~300mm) + 2× M8 + backing plate | 1 ea | McMaster-Carr | panel | $20–$35 |
+| 316 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black | 1 ea | McMaster-Carr | panel | $20–$35 |
 | M12 floor anchor (wedge/sleeve, container floor) | 8 ea | McMaster-Carr | ibc-frame | $15–$30 |
-| 100mm Ø SS grab rail (400mm cut) | 1 ea | McMaster-Carr | lightlock | $15–$25 |
+| 100mm Ø SS grab rail | 1 ea | McMaster-Carr | lightlock | $15–$25 |
 | Folding shelf stays/brackets | 2 ea | Amazon | shelf | $24 |
 | M12 × 40 bolt, Grade 8.8 | 12 ea | McMaster-Carr | ibc-frame | $12–$22 |
 | Continuous (piano) hinge, 600 mm | 1 ea | McMaster-Carr | shelf | $20 |
@@ -192,10 +192,10 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Rod-end spherical bearing | 8 ea | McMaster-Carr | film | $176 |
 | Rail carriage HGH20CA | 8 ea | Automation Overstock | film | $144 |
 | Handwheel 8" dia | 4 ea | Grainger | film | $140 |
-| SKF 6215-2RS1 sealed bearing (×2) | 2 ea | Bearing World | lightlock | $90–$130 |
-| Flanged sleeve (journal) bearings, Ø90 bore (×2) | 2 ea | McMaster-Carr | swingpivot | $60–$110 |
+| SKF 6215-2RS1 sealed bearing | 2 ea | Bearing World | lightlock | $90–$130 |
+| Flanged sleeve (journal) bearing, Ø90 bore | 2 ea | McMaster-Carr | swing | $60–$110 |
 | Cross-slide carriage HGH15CA (Option A) | 8 ea | Automation Overstock | film | $96 |
-| Turntable thrust bearing, 12″ (Ø305) 1000 lb | 1 ea | VXB | swingpivot | $40–$60 |
+| Turntable thrust bearing, 12″ (Ø305) 1000 lb | 1 ea | VXB | swing | $40–$60 |
 | Acme nut bronze ¾"-6 | 4 ea | Roton Products | film | $48 |
 | Locking collar SS316 | 4 ea | McMaster-Carr | film | $48 |
 | Nylon skate wheel, 50mm × 20mm, 10mm bore | 4 ea | McMaster-Carr | spray | $12–$20 |
@@ -313,9 +313,9 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | Light-sealing materials (interior conversion) | 1 lot | McMaster-Carr | interior | $150–$210 |
-| 20mm EPDM gasket — perimeter + housing-surround + cut seals (~21 m) | 21 m | McMaster-Carr | panel | $84–$126 |
+| 20mm EPDM gasket (per meter, closed-cell) | 21 m | McMaster-Carr | panel | $84–$126 |
 | Black EPDM foam tape 1"×½" | 3 roll | McMaster-Carr | film | $84 |
-| Felt/brush wiper + 12mm neoprene (drum↔housing seal) | 1 lot | McMaster-Carr | lightlock | $40–$60 |
+| Felt/brush wiper strip + 12mm closed-cell neoprene | 1 lot | McMaster-Carr | lightlock | $40–$60 |
 | Silicone gasket strip | 1 ea | McMaster-Carr | tray | $20 |
 | Neoprene strip 60A | 1 roll | McMaster-Carr | clamp | $15 |
 | Neoprene gasket 340×240×3mm (panel weatherseal) | 1 ea | McMaster-Carr | electrical | $6 |
@@ -327,11 +327,11 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 |------|-----|----------|---------|-----------|
 | Interior matte-black paint | 1 lot | Home Depot | interior | $100–$160 |
 | 2" black Gorilla Tape | 6 roll | Home Depot | film | $72 |
-| Matte-black interior finish | 1 job | local | lightlock | $40–$70 |
+| Matte-black interior finish | 1 ea | local | lightlock | $40–$70 |
 | Primer + paint | 1 lot | Hardware store | ibc-frame | $30–$50 |
-| Flat-black paint (RAL 9005) — bay/weld touch-in | 1 lot | local | panel | $10–$20 |
+| Flat black paint (RAL 9005) | 1 qt | local | panel | $10–$20 |
 | Loctite PL Premium construction adhesive | 2 tube | Home Depot | tray | $15 |
-| Silicone bead sealant (bearing housing) | 1 ea | McMaster-Carr | lightlock | $10–$15 |
+| Silicone bead sealant (black, UV-stable) | 1 ea | McMaster-Carr | lightlock | $10–$15 |
 | Flat black epoxy spray paint | 1 can | Hardware store | shelf | $12 |
 | Dielectric grease, marine-grade (terminal protection) | 1 ea | Amazon | electrical | $10 |
 | Thread seal tape (PTFE) | 4 roll | Home Depot | water | $8 |
@@ -376,11 +376,11 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| Plastic fabrication — roll + weld 2 cylinders, fit (16–22 hrs) | 1 job | Local plastic fab | lightlock | $800–$1,150 |
+| Plastic fabrication (roll 2 cylinders, hot-air / extrusion weld, fit, bearings) | 1 lot | Local plastic fab | lightlock | $800–$1,150 |
 | Welding / fabrication (frame assembly) | 1 lot | local fab | ibc-frame | $688–$1,018 |
 | Fabrication (cut, brake, weld, press sump) | 1 lot | local sheet metal | tray | $450–$850 |
 | Delivery — short haul (<50 miles), tilt-bed | 1 job | Commercial tilt-bed hire | container | $300–$800 |
-| Fixed door frame — welding/fabrication + wall attachment | 1 job | local fab | swingpivot | $200–$350 |
+| Welding / fabrication | 1 lot | local fab | door | $200–$350 |
 | **fabrication-labor subtotal** | | | | **$2,438–$4,168** |
 
 ## Supplier consolidation (largest orders first)

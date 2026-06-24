@@ -412,58 +412,70 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 
 ### 8.1 Panel Structure
 
-| Item | Specification | Qty | Est. cost (USD) |
-|------|--------------|-----|----------------|
-| 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame perimeter + internal members | 4 | $120–$160 |
-| 4mm black PP plastic sheet (1220 × 2,440mm) | Panel skins, both faces (~12 m²) — rev11, replaces 18mm ply | 4 | $260–$420 |
-| 18mm exterior-grade plywood | Fan B mount band only (one corner, bottom→1,125mm) | 0.5 sheet | $30–$50 |
-| 3mm aluminum plate (1220 × 2,440mm) | Corner zone core plates | 2 | $360–$460 |
-| 20mm EPDM gasket (per meter, closed-cell) | Perimeter seal (~10 m) + housing-surround ring (~6 m) + 2× vertical **cut seals** at Yd180/2287 (~5 m) | 21 m | $84–$126 |
-| Aluminum U-channel (per meter) | Gasket retainer + **PP-skin retention** (perimeter + housing-surround + stiffener grid) | 40 m | $120–$200 |
-| Southco C2-33 cam compression latch | Interior-mounted corner latches (compress the perimeter + cut + lip seals) | 4 | $60–$100 |
-| 4mm black PP sheet + EPDM lip | B2 punch-out bay — 4-wall light-tight tube (~890mm deep) around the housing (rev11; was 6mm ply) | 1 lot | $60–$120 |
-| Flat black paint (RAL 9005) | Bay/weld touch-in (PP skins are pre-pigmented black) | 1 qt | $10–$20 |
-| 316 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black | Interior pull handle — through-bolted to the frame (§4.3) | 1 | $20–$35 |
-| **Panel subtotal** | | | **<!-- BEGIN costing:hp-panel-low -->$1,124<!-- END costing:hp-panel-low -->–<!-- BEGIN costing:hp-panel-high -->$1,691<!-- END costing:hp-panel-high -->** |
+<!-- BEGIN parts:panel -->
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame perimeter + internal members | 4 ea | Metal Supermarkets | $120–$160 |
+| 4mm black PP plastic sheet (1220 × 2,440mm) | Panel skins, both faces (~12 m²) — rev11, replaces 18mm ply | 4 sheet | TAP Plastics / Curbell | $260–$420 |
+| 18mm exterior-grade plywood | Fan B mount band only (one corner, bottom→1,125mm) | 0.5 sheet | Home Depot | $30–$50 |
+| 3mm aluminum plate (1220 × 2,440mm) | Corner zone core plates | 2 ea | Online Metals | $360–$460 |
+| 20mm EPDM gasket (per meter, closed-cell) | Perimeter seal (~10 m) + housing-surround ring (~6 m) + 2× vertical cut seals at Yd180/2287 (~5 m) | 21 m | McMaster-Carr | $84–$126 |
+| Aluminum U-channel (per meter) | Gasket retainer + PP-skin retention (perimeter + housing-surround + stiffener grid) | 40 m | Online Metals | $120–$200 |
+| Southco C2-33 cam compression latch | Interior-mounted corner latches (compress the perimeter + cut + lip seals) | 4 ea | Southco / McMaster-Carr | $60–$100 |
+| 4mm black PP sheet + EPDM lip | B2 punch-out bay — 4-wall light-tight tube (~890mm deep) around the housing (rev11) | 1 lot | TAP Plastics | $60–$120 |
+| Flat black paint (RAL 9005) | Bay/weld touch-in (PP skins are pre-pigmented black) | 1 qt | local | $10–$20 |
+| 316 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black | Interior pull handle — through-bolted to the frame (§4.3) | 1 ea | McMaster-Carr | $20–$35 |
+| **Panel total** | | | | **$1,124–$1,691** |
+<!-- END parts:panel -->
+
 
 *The panel pivot post + bearings + drum cage + wall stays are itemized in §8.3.*
 
 ### 8.2 Housed Revolving Door (housing + drum)
 
-| Item | Specification | Qty | Est. cost (USD) |
-|------|--------------|-----|----------------|
-| 5mm UV-stabilized HDPE sheet (black) | Ø900 fixed housing shell — LT_HOUSING_T (rolled + extrusion-welded, ~7 m²) | 1 lot | $180–$280 |
-| 4mm black polypropylene sheet | Ø864 revolving drum shell + top/bottom caps — LT_DRUM_T (~7 m²) | 1 lot | $150–$240 |
-| SKF 6215-2RS1 sealed bearing | Top and bottom (drum rotation) | 2 | $90–$130 |
-| 75mm Ø × 150mm steel stub shaft | Bearing shafts | 2 | $30–$50 |
-| Felt/brush wiper strip + 12mm closed-cell neoprene | Drum↔housing rotating seal (opening edges + top/bottom rings) + drum top/bottom | 1 lot | $40–$60 |
-| Silicone bead sealant (black, UV-stable) | Bearing housing seal | 1 | $10–$15 |
-| 100mm Ø SS grab rail | Interior handle, 400mm cut length | 1 | $15–$25 |
-| Matte-black interior finish | Black-pigmented sheet (no etch-prime); scuff + flat-black touch-in at welds | 1 | $40–$70 |
-| Stainless fasteners + nylon isolation washers | Steel shaft/bearing ↔ plastic shell joints (no galvanic couple, plastic↔plastic elsewhere) | 1 lot | $30–$50 |
-| Plastic fabrication (roll 2 cylinders, hot-air / extrusion weld, fit, bearings) | 16–22 hrs labor | 1 | $800–$1,150 |
-| **Housing + drum subtotal** | | | **<!-- BEGIN costing:hp-housing-low -->$1,385<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$2,070<!-- END costing:hp-housing-high -->** |
+<!-- BEGIN parts:lightlock -->
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| 5mm UV-stabilized HDPE sheet (black) | Ø900 fixed housing shell — LT_HOUSING_T (rolled + extrusion-welded, ~7 m²) | 1 lot | TAP Plastics / Online Metals | $180–$280 |
+| 4mm black polypropylene sheet | Ø864 revolving drum shell + top/bottom caps — LT_DRUM_T (~7 m²) | 1 lot | TAP Plastics / Curbell | $150–$240 |
+| SKF 6215-2RS1 sealed bearing | Top and bottom (drum rotation) | 2 ea | Bearing World / Applied | $90–$130 |
+| 75mm Ø × 150mm steel stub shaft | Bearing shafts | 2 ea | steel service center | $30–$50 |
+| Felt/brush wiper strip + 12mm closed-cell neoprene | Drum↔housing rotating seal (opening edges + top/bottom rings) + drum top/bottom | 1 lot | McMaster-Carr | $40–$60 |
+| Silicone bead sealant (black, UV-stable) | Bearing housing seal | 1 ea | McMaster-Carr | $10–$15 |
+| 100mm Ø SS grab rail | Interior handle, 400mm cut length | 1 ea | McMaster-Carr | $15–$25 |
+| Matte-black interior finish | Black-pigmented sheet (no etch-prime); scuff + flat-black touch-in at welds | 1 ea | local | $40–$70 |
+| Stainless fasteners + nylon isolation washers | Steel shaft/bearing ↔ plastic shell joints (no galvanic couple) | 1 lot | McMaster-Carr | $30–$50 |
+| Plastic fabrication (roll 2 cylinders, hot-air / extrusion weld, fit, bearings) | 16–22 hrs labor | 1 lot | Local plastic fab | $800–$1,150 |
+| **Lightlock total** | | | | **$1,385–$2,070** |
+<!-- END parts:lightlock -->
+
 
 ### 8.3 Swing Pivot Hardware
 
-| Item | Specification | Qty | Est. cost (USD) |
-|------|--------------|-----|----------------|
-| Ø89×8mm CHS pivot post + machined hub / thrust collar | Upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever — member check DONE (σ ≈ 95 MPa, **SF 3.7** in S355); post-to-container weld/anchor connection still needs fabricator/PE sign-off | 1 | $180–$300 |
-| Turntable thrust bearing, 12″ (Ø305) 1000 lb | Carries the ~330 kg (3.24 kN) swinging-assembly vertical load at the post base; moment goes to the journal couple, so thrust-only suffices | 1 | $40–$60 |
-| Flanged sleeve (journal) bearing, Ø90 bore | Top + bottom radial location of the post / hub | 2 | $60–$110 |
-| Drum support cage, 40 × 40 × 3mm SHS | Steel frame carrying the Ø900 housing + drum on the swinging leaf | 1 | $70–$120 |
-| Top + bottom wall stays + 4-bolt anchor plates | Transport lock — M16 turnbuckle + eye/hook rods + inside/outside wall plates | 2 | $90–$160 |
-| Drop-in rail saddles + tapered dowels | For the 2 removable left film rails (TL + BL); dowels set the film datum on re-seat | 4 | $80–$130 |
-| **Swing pivot subtotal** | | | **<!-- BEGIN costing:hp-swing-low -->$520<!-- END costing:hp-swing-low -->–<!-- BEGIN costing:hp-swing-high -->$880<!-- END costing:hp-swing-high -->** |
+<!-- BEGIN parts:swing -->
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| Ø89×8mm CHS pivot post + machined hub / thrust collar | Upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever — SF 3.7 in S355 | 1 ea | Metal Supermarkets / local fab | $180–$300 |
+| Turntable thrust bearing, 12″ (Ø305) 1000 lb | Carries the ~330 kg (3.24 kN) vertical load at the post base; thrust-only | 1 ea | VXB | $40–$60 |
+| Flanged sleeve (journal) bearing, Ø90 bore | Top + bottom radial location of the post / hub (SAE 841 bronze) | 2 ea | McMaster-Carr | $60–$110 |
+| Drum support cage, 40 × 40 × 3mm SHS | Steel frame carrying the Ø900 housing + drum on the swinging leaf | 1 lot | local fab | $70–$120 |
+| Top + bottom wall stays + 4-bolt anchor plates | Transport lock — M16 turnbuckle + eye/hook rods + inside/outside wall plates | 2 set | McMaster-Carr | $90–$160 |
+| Drop-in rail saddles + tapered dowels | For the 2 removable left film rails (TL + BL); dowels set the film datum | 4 ea | local fab / McMaster-Carr | $80–$130 |
+| **Swing total** | | | | **$520–$880** |
+<!-- END parts:swing -->
+
 
 ### 8.4 Fixed Door Frame
 
-| Item | Specification | Qty | Est. cost (USD) |
-|------|--------------|-----|----------------|
-| 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame members | 3 | $90–$120 |
-| 3mm steel plate/angle (~110mm × ~4 m) | Top + bottom seal lips — threshold upstand (bottom, full width, no notch — drum rides at Z130) + frame-top downstand (top, continuous full width); seal paths #3–#4 | 1 | $45–$80 |
-| Welding / fabrication | Frame assembly + wall attachment | 1 | $200–$350 |
-| **Door frame subtotal** | | | **<!-- BEGIN costing:hp-doorframe-low -->$335<!-- END costing:hp-doorframe-low -->–<!-- BEGIN costing:hp-doorframe-high -->$550<!-- END costing:hp-doorframe-high -->** |
+<!-- BEGIN parts:door -->
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame members | 3 ea | Metal Supermarkets | $90–$120 |
+| 3mm steel plate/angle (~110mm × ~4 m) | Top + bottom seal lips — threshold upstand + frame-top downstand; seal paths #3–#4 | 1 lot | Metal Supermarkets | $45–$80 |
+| Welding / fabrication | Frame assembly + wall attachment | 1 lot | local fab | $200–$350 |
+| **Door total** | | | | **$335–$550** |
+<!-- END parts:door -->
+
 
 ### 8.5 Cost Summary
 

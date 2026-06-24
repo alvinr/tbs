@@ -2497,10 +2497,12 @@ Container doors (for loading) are on the SHORT ENDS — completely separate from
 <hr />
 <h2 id="part-4a-container-interior-layout-top-elevation">Part 4A: Container Interior Layout — Top Elevation<a class="headerlink" href="#part-4a-container-interior-layout-top-elevation" title="Permanent link">&para;</a></h2>
 <p>The floor plan below shows the container interior from above (top-down view) with all
-major systems in their installed positions. The optical axis runs left-right in this view
-(from the pinhole on the near long wall to the film plane on the far long wall at 2,262mm depth).
-The equipment zone occupies the left third of the container (X = 0–2,700mm); the right two-thirds
-is the clear optical zone.</p>
+major systems in their installed positions. The long axis (image width) runs left-right in
+this view; the optical axis runs front-to-back, from the pinhole on the near long wall to the
+film plane on the far long wall at 2,262mm depth. Equipment occupies the two end zones — the
+light-trap drum at the far left (X = 0–150mm) and the IBC stack with its pump panel at the far
+right (X = 4,649–5,893mm) — leaving the central span (X = 150–4,649mm, the active film-plane
+width) as the clear optical zone.</p>
 <p><img alt="TBS-001 — Container Floor Plan (Top Elevation)" src="../assets/container-floorplan.png" /></p>
 <table>
 <thead>
@@ -2528,8 +2530,8 @@ is the clear optical zone.</p>
 </tr>
 <tr>
 <td>Optical zone</td>
-<td>X = 2,700–5,893mm</td>
-<td>Clear — no equipment; optical cone from pinhole traverses this area unobstructed</td>
+<td>X = 150–4,649mm</td>
+<td>Clear — no equipment; optical cone from pinhole traverses this central span unobstructed</td>
 </tr>
 <tr>
 <td>Cargo door end</td>
@@ -2537,14 +2539,14 @@ is the clear optical zone.</p>
 <td>Hinged panel with integrated revolving light-trap drum</td>
 </tr>
 <tr>
-<td>Pinhole wall</td>
-<td>X = 2,946mm (center)</td>
-<td>Aperture Ø2.17mm at Y_depth=0</td>
+<td>Pinhole aperture</td>
+<td>X = 2,399mm (center of active film plane)</td>
+<td>Aperture Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm at Y_depth=0</td>
 </tr>
 <tr>
 <td>Film plane</td>
 <td>Y_depth = 2,262mm</td>
-<td>Muslin sensitised surface, spanning full 5,893mm × 2,388mm</td>
+<td>Muslin sensitized surface, spanning full 5,893mm × 2,388mm</td>
 </tr>
 </tbody>
 </table>
@@ -2606,7 +2608,7 @@ and §13 for the optical line-of-sight clearance analysis.</p>
 <thead>
 <tr>
 <th>Condition</th>
-<th>Approx. Price (2025 US market)</th>
+<th>Approx. Price (2026 US market, indicative)</th>
 <th>Source</th>
 </tr>
 </thead>
@@ -2856,11 +2858,11 @@ and §13 for the optical line-of-sight clearance analysis.</p>
 </tr>
 <tr>
 <td>Rayleigh optimal pinhole</td>
-<td><strong>2.17mm</strong> (identical to Proposal 1)</td>
+<td><strong><!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm</strong> (identical to Proposal 1)</td>
 </tr>
 <tr>
 <td>F-number</td>
-<td><strong>f/1088</strong> (identical)</td>
+<td><strong>f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --></strong> (identical)</td>
 </tr>
 <tr>
 <td>Horizontal FOV (full 39' width)</td>
@@ -2896,7 +2898,7 @@ and §13 for the optical line-of-sight clearance analysis.</p>
 <tbody>
 <tr>
 <td>Image plane</td>
-<td>7 ft 9 in × 7 ft 10 in (2,337mm × 2,388mm)</td>
+<td>7 ft 9 in × 7 ft 10 in (2,362mm × 2,388mm)</td>
 </tr>
 <tr>
 <td>Focal length</td>
@@ -3086,12 +3088,12 @@ and §13 for the optical line-of-sight clearance analysis.</p>
 <p>For operations involving darkroom chemistry inside the container:</p>
 <ul>
 <li><strong>Fan A (exhaust):</strong> 6" vent penetration on the sealed end wall (X=C_LEN), in the 270mm plumbing corridor directly below the X1 fill port (Yd=1181, Z=2000) — the only full-height clear channel past the 1,000L direct-stack (totes reach 2,336mm). Interior face covered with a 300mm deep light-trap baffle duct (L-shaped offset baffles, black sheet metal).</li>
-<li><strong>Fan B (intake):</strong> 6" fan mounted low on the hinged panel (near corner zone by the pinhole wall — rev9/B2 swap, so its conduit runs along the pinhole wall without crossing the suspension rails). Baffle duct protrudes from the panel exterior face — draws fresh air from the open doorway during operation. Wiring via flexible coiled cable from fixed door frame to panel (see <a href="../electrical-report/">Electrical Report</a> §8.3).</li>
+<li><strong>Fan B (intake):</strong> 6" fan mounted low on the hinged panel (near corner zone by the pinhole wall, so its conduit runs along the pinhole wall without crossing the suspension rails). Baffle duct protrudes from the panel exterior face — draws fresh air from the open doorway during operation. Wiring via flexible coiled cable from fixed door frame to panel (see <a href="../electrical-report/">Electrical Report</a> §8.3).</li>
 <li>During exposure: fans off</li>
 <li>During processing/loading: fans on for ventilation</li>
 </ul>
 <p><strong>Minimum ventilation requirement for darkroom chemistry:</strong> Acetic acid stop bath and sodium thiosulfate fixer both produce fumes. OSHA permissible exposure limit for acetic acid is 10 ppm (8-hour TWA). Forced ventilation during chemistry use is required.</p>
-<p><strong>Source:</strong> OSHA Table Z-1, Limits for Air Contaminants. US Occupational Safety and Health Administration.</p>
+<p><strong>Source:</strong> <a href="https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.1000TableZ1">OSHA Table Z-1, Limits for Air Contaminants</a>. US Occupational Safety and Health Administration.</p>
 <hr />
 <h2 id="part-7-comparative-proposal-summary">Part 7: Comparative Proposal Summary<a class="headerlink" href="#part-7-comparative-proposal-summary" title="Permanent link">&para;</a></h2>
 <table>
@@ -3208,7 +3210,7 @@ and §13 for the optical line-of-sight clearance analysis.</p>
 <p><strong>For our camera:</strong>
 - The 4" × 4" pinhole opening requires no structural reinforcement
 - The image plane backing panel attachment requires bolting to the structural ribs (vertical corrugation crests) — not to the flat web between ribs</p>
-<p><strong>Source:</strong> Container conversion engineering is a well-documented practice. Structural guidelines for container modifications are published by the Container Home Builders Association and referenced in construction literature. The ISO 1496 standard governs container structural performance requirements.</p>
+<p><strong>Source:</strong> Container conversion engineering — cutting non-structural wall panels while preserving the corner posts — is a well-documented practice. Structural performance requirements for freight containers are defined by <a href="https://www.iso.org/standard/57051.html">ISO 1496-1</a> (Series 1 freight containers — Specification and testing), consistent with the corner-casting load paths detailed in the <a href="https://www.hapag-lloyd.com/content/dam/website/downloads/press_and_media/publications/15211_Container_Specification_engl_Gesamt_web.pdf">Hapag-Lloyd Container Specification</a>.</p>
 <hr />
 <h2 id="part-9-sourcing-containers-where-to-buy">Part 9: Sourcing Containers — Where to Buy<a class="headerlink" href="#part-9-sourcing-containers-where-to-buy" title="Permanent link">&para;</a></h2>
 <h3 id="online-marketplaces">Online Marketplaces<a class="headerlink" href="#online-marketplaces" title="Permanent link">&para;</a></h3>
@@ -3224,17 +3226,17 @@ and §13 for the optical line-of-sight clearance analysis.</p>
 <tr>
 <td>Boxhub</td>
 <td>Online purchase, nationwide delivery, grade-verified</td>
-<td>boxhub.com</td>
+<td><a href="https://www.boxhub.com">boxhub.com</a></td>
 </tr>
 <tr>
 <td>Container Management</td>
 <td>Price comparison across depots</td>
-<td>containermgt.com</td>
+<td><a href="https://www.containermgt.com">containermgt.com</a></td>
 </tr>
 <tr>
 <td>IronPlanet / Ritchie Bros.</td>
 <td>Auction-based; inspect before bidding</td>
-<td>ironplanet.com</td>
+<td><a href="https://www.ironplanet.com">ironplanet.com</a></td>
 </tr>
 </tbody>
 </table>
@@ -3261,7 +3263,7 @@ and §13 for the optical line-of-sight clearance analysis.</p>
 <li><strong>Build and test shutter mechanism</strong> — confirm full seal when closed</li>
 <li><strong>Install ventilation</strong> — cut vent penetrations, install fans and light-trap baffles</li>
 <li><strong>Install safelight and door light-trap</strong> — for loading operations</li>
-<li><strong>Test exposure</strong> — cut a 200mm × full-height strip of sensitised muslin, pin over the image plane center; expose for 20-minute intervals using a card mask, develop in plain water, compare zones to verify image formation and correct exposure time</li>
+<li><strong>Test exposure</strong> — cut a 200mm × full-height strip of sensitized muslin, pin over the image plane center; expose for 20-minute intervals using a card mask, develop in plain water, compare zones to verify image formation and correct exposure time</li>
 <li><strong>Full-format test</strong> — load full image plane, expose, develop</li>
 </ol>
 <hr />
@@ -3291,7 +3293,7 @@ and §13 for the optical line-of-sight clearance analysis.</p>
 <td><a href="https://ops.fhwa.dot.gov/freight/publications/size_regs_final_rpt/">ops.fhwa.dot.gov</a></td>
 </tr>
 <tr>
-<td>containermgt.com 2025 pricing</td>
+<td>containermgt.com 2026 pricing</td>
 <td>Container cost data</td>
 <td><a href="https://www.containermgt.com/how-much-does-a-shipping-container-cost">containermgt.com</a></td>
 </tr>
@@ -3313,7 +3315,7 @@ and §13 for the optical line-of-sight clearance analysis.</p>
 <tr>
 <td>OSHA Table Z-1</td>
 <td>Ventilation requirements for darkroom chemistry</td>
-<td>osha.gov</td>
+<td><a href="https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.1000TableZ1">osha.gov</a></td>
 </tr>
 <tr>
 <td>All optical formulas</td>

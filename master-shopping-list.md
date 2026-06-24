@@ -242,14 +242,14 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| IBC tote 1,000L (275 gal), food-grade, used/rinsed | 4 ea | Container Exchanger | water | $320–$600 |
-| Big Blue 3-stage combo filter unit 4.5"×10" | 1 ea | Amazon | water | $200–$300 |
+| IBC tote (1,000 L caged) | 4 ea | Container Exchanger | water | $320–$600 |
+| Big Blue filter housing (4.5"×10") | 1 ea | Amazon | water | $200–$300 |
 | Shurflo 2088-554-144 pump (P-01, P-02) | 2 ea | Amazon | water | $110–$140 |
 | KDF-55 heavy-metal cartridge 4.5"×10" | 2 ea | Amazon | water | $40–$70 |
 | Shurflo 2088-554-144 pump (P-03 waste evacuation) | 1 ea | Amazon | water | $65 |
 | Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 1 ea | Amazon | water | $65 |
 | CTO carbon block cartridge 4.5"×10" | 3 ea | Amazon | water | $24–$45 |
-| SeaFlo pressure accumulator | 1 ea | Amazon | water | $35 |
+| SeaFlo accumulator (0.75 L) | 1 ea | Amazon | water | $35 |
 | MPP 5-micron sediment cartridge 4.5"×10" | 3 ea | Amazon | water | $18–$30 |
 | **water-equipment subtotal** | | | | **$877–$1,350** |
 

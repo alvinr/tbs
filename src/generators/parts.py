@@ -107,8 +107,9 @@ PARTS: list[Part] = [
          "ventilation", 1, "ea", 20, 20, "Waytek Wire", "Amazon", spec="1.5m, 14 AWG 2-cond, Deutsch DT 2-pin plugs each end"),
     Part("ratchet-strap-25", "Ratchet straps, 25mm", "fasteners-hardware",
          "ventilation", 2, "ea", 6, 6, "Home Depot", "Amazon", spec="Cooler stowage"),
-    Part("plywood-base-12", "Plywood base plate", "timber-ply",
-         "ventilation", 1, "ea", 8, 8, "Home Depot", "Lumber yard", spec="12mm, 600 × 350mm (cooler stowage)"),
+    Part("plywood-base-12", "Plywood base plate (cooler stowage)", "timber-ply",
+         "ventilation", 1, '2\'×4\' ½" panel', 8, 8, "Home Depot", "Lumber yard",
+         spec='½" (12mm) plywood project panel (610×1220mm), cut to 600×350'),
 
     # ═══ water family (split per owning report; reconciled to costing.WATER lines — water-system §8
     # item-sums after the 2026 reconciliation). The §8 group ("water") = storage+pumps+filter+valves+
@@ -542,8 +543,9 @@ PARTS: list[Part] = [
          "panel", 4, "ea", 30, 40, "Metal Supermarkets", spec="Frame perimeter + internal members"),
     Part("panel-pp-skins", "4mm black PP plastic sheet (1220 × 2,440mm)", "plastics-sheet",
          "panel", 4, "sheet", 65, 105, "TAP Plastics", "Curbell", spec="Panel skins, both faces (~12 m²) — rev11, replaces 18mm ply"),
-    Part("panel-fanb-ply", "18mm exterior-grade plywood", "timber-ply",
-         "panel", 0.5, "sheet", 60, 100, "Home Depot", spec="Fan B mount band only (one corner, bottom→1,125mm)"),
+    Part("panel-fanb-ply", "Exterior-grade plywood (Fan B mount band)", "timber-ply",
+         "panel", 1, '2\'×4\' ¾" panel', 30, 50, "Home Depot",
+         spec='¾" (18mm) exterior-grade project panel (610×1220mm); Fan B mount band, one corner bottom→1,125mm'),
     Part("panel-corner-plates", "3mm aluminum plate (1220 × 2,440mm)", "aluminum",
          "panel", 2, "ea", 180, 230, "Online Metals", spec="Corner zone core plates"),
     Part("panel-epdm-gasket", "20mm EPDM gasket (per meter, closed-cell)", "seals-gaskets",
@@ -560,8 +562,9 @@ PARTS: list[Part] = [
          "panel", 1, "ea", 20, 35, "McMaster-Carr", spec="Interior pull handle — through-bolted to the frame (§4.3)"),
 
     # ═══ shelf (§7 chem-prep) — mirrors costing.SHELF → exact $203 ═══
-    Part("shelf-phenolic-ply", "Phenolic-faced plywood, 18 mm", "timber-ply",
-         "shelf", 1, "ea", 60, 60, "Home Depot", "lumber yard", spec="cut to 300×600 mm"),
+    Part("shelf-phenolic-ply", "Phenolic-faced plywood (work surface)", "timber-ply",
+         "shelf", 1, '4\'×8\' ¾" sheet', 60, 60, "Home Depot", "lumber yard",
+         spec='¾" (18mm) phenolic-faced concrete-form sheet (1220×2440mm), cut to 300×600'),
     Part("shelf-steel-shs", "25×25×3 mm steel SHS", "steel-structural",
          "shelf", 1, "lot", 30, 30, "Online Metals", "Metal Supermarkets", spec="6 m (frame + spill lip)"),
     Part("shelf-piano-hinge", "Continuous (piano) hinge, 600 mm", "fasteners-hardware",
@@ -780,12 +783,13 @@ def emit_system(sys: str) -> str:
 
 
 def emit_master() -> str:
-    """The by-TYPE procurement BOM + the supplier-consolidation headline."""
+    """The by-TYPE procurement BOM + the supplier-consolidation headline. Type sections and the rows
+    within each are ordered ALPHABETICALLY (the table cuts across systems, so name is easiest to scan;
+    the published tables are also click-sortable by any column)."""
+    bt = by_type()
     out = ["## Procurement BOM — by material type\n"]
-    for t in TYPES:
-        items = by_type().get(t, [])
-        if not items:
-            continue
+    for t in sorted(bt):                                        # type sections A–Z
+        items = bt[t]
         out.append(f"### {t}\n")
         out.append("| Item | Qty | Supplier | Systems | Est. cost |")
         out.append("|------|-----|----------|---------|-----------|")
@@ -798,7 +802,7 @@ def emit_master() -> str:
             a["sys"].add(p.system)
             lo, hi = line(p); a["lo"] += lo; a["hi"] += hi
         sub_lo = sub_hi = 0.0
-        for a in sorted(agg.values(), key=lambda x: -x["hi"]):
+        for a in sorted(agg.values(), key=lambda x: x["desc"].lower()):   # rows A–Z by item name
             cost = _money(a["lo"]) if round(a["lo"]) == round(a["hi"]) else f"{_money(a['lo'])}–{_money(a['hi'])}"
             out.append(f"| {a['desc']} | {a['qty']:g} {a['unit']} | {a['sup']} | "
                        f"{', '.join(sorted(a['sys']))} | {cost} |")

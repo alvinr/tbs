@@ -254,6 +254,8 @@ markdown_extensions:
 extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - https://cdn.jsdelivr.net/npm/tablesort@5.3.0/dist/tablesort.min.js
+  - javascripts/tablesort.js   # click any column header to sort (the BOM tables especially)
 
 nav:
   - Home: index.md

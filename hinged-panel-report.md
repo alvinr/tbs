@@ -417,7 +417,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 |------|------|-----|----------|-----------|
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame perimeter + internal members | 4 ea | Metal Supermarkets | $120–$160 |
 | 4mm black PP plastic sheet (1220 × 2,440mm) | Panel skins, both faces (~12 m²) — rev11, replaces 18mm ply | 4 sheet | TAP Plastics / Curbell | $260–$420 |
-| 18mm exterior-grade plywood | Fan B mount band only (one corner, bottom→1,125mm) | 0.5 sheet | Home Depot | $30–$50 |
+| Exterior-grade plywood (Fan B mount band) | ¾" (18mm) exterior-grade project panel (610×1220mm); Fan B mount band, one corner bottom→1,125mm | 1 2'×4' ¾" panel | Home Depot | $30–$50 |
 | 3mm aluminum plate (1220 × 2,440mm) | Corner zone core plates | 2 ea | Online Metals | $360–$460 |
 | 20mm EPDM gasket (per meter, closed-cell) | Perimeter seal (~10 m) + housing-surround ring (~6 m) + 2× vertical cut seals at Yd180/2287 (~5 m) | 21 m | McMaster-Carr | $84–$126 |
 | Aluminum U-channel (per meter) | Gasket retainer + PP-skin retention (perimeter + housing-surround + stiffener grid) | 40 m | Online Metals | $120–$200 |

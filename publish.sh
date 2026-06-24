@@ -119,6 +119,17 @@ for f in "${MD_FILES[@]}"; do
     fi
 done
 
+# ── Write the tablesort init (makes every doc table click-sortable) ───────────
+mkdir -p "$DOCS_DIR/javascripts"
+cat > "$DOCS_DIR/javascripts/tablesort.js" <<'JS'
+// Make every plain markdown table click-sortable (Material instant-loading aware).
+document$.subscribe(function () {
+  document.querySelectorAll("article table:not([class])").forEach(function (table) {
+    new Tablesort(table);
+  });
+});
+JS
+
 # ── Sync image assets ─────────────────────────────────────────────────────────
 info "Syncing image assets to published/assets/..."
 

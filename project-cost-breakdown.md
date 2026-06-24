@@ -25,10 +25,11 @@
 | **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $2,000 | $2,488 | $2,975 |
 | **6b. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles)** | $855 | $1,143 | $1,430 |
 | **6c. Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle)** | $1,124 | $1,408 | $1,691 |
+| **6d. Chemistry prep shelf (fold-down phenolic board + steel frame + hinge/stays + TAP-01 trunk extension)** | $203 | $203 | $203 |
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,210 | $1,650 | $2,980 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licenses & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$21,122** | **$26,865** | **$34,675** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$21,325** | **$27,068** | **$34,878** |
 <!-- END costing:scenario -->
 
 *Line 7 (cyanotype printmaking) is now re-summed into the TOTAL on the **Mike Ware AmFe** chemistry + corrected ~$300 substrate: **Low = Lean ⅓-Ware ($1,210), Mid = Standard ½-Ware ($1,650), High = Rich full-Ware ($2,980)** — matching §7.1 and the master shopping list §9. The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md).*
@@ -562,10 +563,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Perimeter walkway (4 sections, removable, GRP grating) | $2,000 |
 | Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $855 |
 | Hinged panel structure (stepped frame + PP skins + Al core + EPDM + latches + B2 bay + handle) | $1,124 |
+| Chemistry prep shelf (fold-down board + tap trunk extension) | $203 |
 | Cyanotype chemistry + substrate (50 prints) | $1,210 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$20,552** |
+| **Scenario A total** | **~$20,755** |
 <!-- END costing:scenario-a -->
 
 ### Scenario B — Recommended build, regional deployment
@@ -584,11 +586,12 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Perimeter walkway (4 sections, removable, GRP grating) | $2,488 |
 | Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $1,143 |
 | Hinged panel structure (stepped frame + PP skins + Al core + EPDM + latches + B2 bay + handle) | $1,408 |
+| Chemistry prep shelf (fold-down board + tap trunk extension) | $203 |
 | Cyanotype chemistry + substrate (50 prints) | $1,650 |
 | Rodenstock Apo-Ronar 1,200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$27,175** |
+| **Scenario B total (excl. CDL)** | **~$27,378** |
 <!-- END costing:scenario-b -->
 
 ### Scenario C — Full production, own transport, CDL
@@ -596,11 +599,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 <!-- BEGIN costing:scenario-c -->
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $26,275 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $26,478 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$115,775–$145,775** |
+| **Scenario C total** | **~$115,978–$145,978** |
 <!-- END costing:scenario-c -->
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*

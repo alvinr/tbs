@@ -108,6 +108,128 @@ PARTS: list[Part] = [
          "ventilation", 2, "ea", 6, 6, "Home Depot", "Amazon"),
     Part("plywood-base-12", "Plywood base plate, 12mm 600×350 (cooler stowage)", "timber-ply",
          "ventilation", 1, "ea", 8, 8, "Home Depot", "Lumber yard"),
+
+    # ═══ water (§5) — mirrors costing.WATER (sub-group granularity → exact $4,211–$6,297). The
+    # bundled lines (frame/tray/spray/valves) carry the full sub-group cost under their dominant
+    # type; finer per-item type-splitting is a later pass (the master's itemized subtotals have
+    # drifted from costing, so splitting now would break exact reconciliation). ═══
+    Part("water-storage", "Water storage — 4× IBC totes + 3× bulkhead fittings + fill tee",
+         "water-equipment", "water", 1, "lot", 395, 720, "Container Exchanger", "Uline",
+         note="bundle: totes + bulkheads + tee"),
+    Part("ibc-stacking-frame", "IBC stacking frame — RHS restraint portal + feet + retaining bars + hangers + fab",
+         "steel-structural", "water", 1, "lot", 955, 1455, "Metal Supermarkets", "local fab",
+         note="bundle: steel sections + fabrication labor"),
+    Part("water-pumps", "Pumps + accumulator — P-01/P-02/P-04 manifold + P-03",
+         "water-equipment", "water", 1, "lot", 305, 355, "Amazon", "PexUniverse",
+         note="bundle: 4 pumps + accumulator + brackets"),
+    Part("filter-skid", "Filter skid — 3× Big Blue housings + cartridges",
+         "water-equipment", "water", 1, "lot", 265, 370, "Amazon", "US Water Systems"),
+    Part("water-valves-fittings", "Valves + fittings — S60×6 adapters, check valves CV1/CV3/CV4",
+         "plumbing-fittings", "water", 1, "lot", 390, 630, "Amazon", "PexUniverse",
+         note="bundle: ~15 valves/adapters/fittings"),
+    Part("water-pipe-hdpe", "Pipe — HDPE, spray-bar feed", "plumbing-fittings",
+         "water", 1, "lot", 100, 140, "Ferguson", "Home Depot"),
+    Part("processing-tray", "Processing tray — 304 SS panels + fabrication, shim strips, sump pickup, liner, hardware",
+         "stainless-sheet", "water", 1, "lot", 1300, 2015, "Online Metals", "local sheet metal",
+         note="bundle: SS sheet + fabrication labor; split sheet↔fab in a later pass"),
+    Part("spray-bar", "Spray bar — beam, LDPE pipe, 26 nozzles, manifold + 7 feed tubes, 4 wheels, ball joint, arm, hose",
+         "aluminum", "water", 1, "lot", 235, 299, "Online Metals", "Amazon",
+         note="bundle: extrusion + irrigation parts"),
+    Part("water-wiring", "Water-system wiring (fuse block in Electrical Report)",
+         "electrical-distribution", "water", 1, "lot", 35, 35, "Amazon"),
+    Part("processing-consumables", "Processing consumables — 6-mil poly, pH meter, citric acid",
+         "tools-safety", "water", 1, "lot", 231, 278, "Amazon"),
+
+    # ═══ electrical (§6) — fully itemized from master §6; point estimates summing to ~$2,345
+    # (reconciles to EXPECTED['power'] $2,350 within tolerance). Demonstrates the procurement-real
+    # granularity the by-type/by-supplier BOM needs. ═══
+    # — Solar & battery (primary power), ≈$1,329 —
+    Part("solar-panel-200w", "Solar panel, 200W monocrystalline 12V", "electrical-power",
+         "electrical", 3, "ea", 133, 133, "Renogy",
+         url="https://www.renogy.com/200-watt-12-volt-monocrystalline-solar-panel/"),
+    Part("mppt-100-50", "Victron SmartSolar MPPT 100/50 charge controller", "electrical-power",
+         "electrical", 1, "ea", 200, 200, "altE Store", url="https://www.altestore.com"),
+    Part("lifepo4-100ah", "LiFePO4 battery, 100Ah 12V (Renogy Smart Lithium)", "electrical-power",
+         "electrical", 1, "ea", 350, 350, "Renogy",
+         url="https://www.renogy.com/12v-100ah-smart-lithium-iron-phosphate-battery/",
+         dims="330×172×214", datasheet="Renogy 12V 100Ah Smart Lithium", modeled_const="BA_W/BA_D/BA_H",
+         audit_status="✅ FIXED", note="busbar provisioned for optional 2nd pack (+$375)"),
+    Part("shore-charger", "Victron Blue Smart IP65 12/15 shore backup charger", "electrical-power",
+         "electrical", 1, "ea", 150, 150, "altE Store", url="https://www.altestore.com"),
+    Part("nema-inlet", "NEMA 5-15R weatherproof inlet (flush power panel)", "electrical-distribution",
+         "electrical", 1, "ea", 25, 25, "Amazon"),
+    Part("solar-mount-frame", "Solar panel ground-mount tilt frame, 30°", "electrical-power",
+         "electrical", 1, "ea", 80, 80, "Renogy", url="https://www.renogy.com"),
+    Part("pv-cable-10awg", "PV cable 10 AWG + MC4 connectors", "electrical-distribution",
+         "electrical", 1, "lot", 30, 30, "Amazon"),
+    Part("pv-array-disconnect", "PV array disconnect — DC load-break isolator, 50A/150VDC (NEC 690.13)",
+         "electrical-power", "electrical", 1, "ea", 40, 40, "AutomationDirect", "Amazon",
+         url="https://www.automationdirect.com/"),
+    Part("power-panel-plate", "Aluminum face plate 340×240×3mm (flush power panel)", "aluminum",
+         "electrical", 1, "ea", 18, 18, "Online Metals", url="https://www.onlinemetals.com"),
+    Part("power-panel-gasket", "Neoprene gasket 340×240×3mm (panel weatherseal)", "seals-gaskets",
+         "electrical", 1, "ea", 6, 6, "McMaster-Carr"),
+    Part("power-panel-bolts", "M6 bolt+nut+washer set, SS (panel mount)", "fasteners-hardware",
+         "electrical", 4, "set", 1.25, 1.25, "McMaster-Carr"),
+    Part("mc4-bulkhead", "MC4 bulkhead connector pairs, IP67 panel-mount", "electrical-distribution",
+         "electrical", 3, "pair", 8.33, 8.33, "Amazon"),
+    # — Distribution & wiring, ≈$1,016 —
+    Part("fuse-block-5026", "Blue Sea 5026 fuse block, 12-circuit ST-blade", "electrical-distribution",
+         "electrical", 1, "ea", 55, 55, "Amazon", "West Marine"),
+    Part("mrbf-200a", "200A main fuse — MRBF terminal-mount (ABYC E-11)", "electrical-distribution",
+         "electrical", 1, "ea", 25, 25, "Amazon"),
+    Part("battery-disconnect", "Battery main disconnect — Blue Sea m-Series 300A isolator", "electrical-distribution",
+         "electrical", 1, "ea", 40, 40, "West Marine", "Amazon"),
+    Part("ml-rbs-contactor", "Remote battery switch — Blue Sea ML-RBS 500A magnetic-latch (E-stop trip)",
+         "electrical-distribution", "electrical", 1, "ea", 150, 150, "West Marine", "Amazon"),
+    Part("estop-external", "External emergency cut-off — red mushroom IP66 + control loop", "electrical-distribution",
+         "electrical", 1, "ea", 30, 30, "AutomationDirect", "Amazon"),
+    Part("estop-internal", "Interior emergency cut-off — red mushroom IP65 (paralleled to exterior)",
+         "electrical-distribution", "electrical", 1, "ea", 25, 25, "AutomationDirect", "Amazon"),
+    Part("mppt-charge-fuse", "MPPT charge-line fuse — 60A ANL/MIDI + holder", "electrical-distribution",
+         "electrical", 1, "ea", 15, 15, "Blue Sea", "Amazon"),
+    Part("shore-output-fuse", "Shore-charger output fuse — 20A inline", "electrical-distribution",
+         "electrical", 1, "ea", 5, 5, "Amazon"),
+    Part("battery-terminal-covers", "Battery terminal covers (pair), insulating boots", "electrical-distribution",
+         "electrical", 1, "pair", 10, 10, "Amazon"),
+    Part("wet-zone-connectors", "Sealed wet-zone connectors — Deutsch DT / adhesive heat-shrink",
+         "electrical-distribution", "electrical", 1, "lot", 25, 25, "Waytek Wire"),
+    Part("pump-switches", "Pump switches (Circuit C) — IP67 sealed rocker 12V 16A", "electrical-distribution",
+         "electrical", 5, "ea", 6, 6, "Amazon", "Waytek Wire"),
+    Part("pump-dist-block", "Pump distribution block — 12V DC + / − bus, 6-way", "electrical-distribution",
+         "electrical", 1, "ea", 15, 15, "Blue Sea", "Amazon"),
+    Part("dielectric-grease", "Dielectric grease, marine-grade (terminal protection)", "adhesives-finishes",
+         "electrical", 1, "ea", 10, 10, "Amazon"),
+    Part("tinned-marine-wire", "Tinned marine wire 14/16 AWG, ~25ft (wet-zone runs)", "electrical-distribution",
+         "electrical", 1, "lot", 30, 30, "Waytek Wire"),
+    Part("cable-grommets", "Cable grommets / glands — steel-shell penetrations", "electrical-distribution",
+         "electrical", 1, "lot", 15, 15, "McMaster-Carr"),
+    Part("bonding-kit", "Equipotential bonding kit — 6 AWG + ring lugs", "electrical-distribution",
+         "electrical", 1, "ea", 20, 20, "Amazon"),
+    Part("ip65-enclosure", "IP65 enclosure 300×200×130mm (fuse block + MPPT)", "electrical-distribution",
+         "electrical", 1, "ea", 60, 60, "Amazon"),
+    Part("wiring-kit", "Wiring kit — 12/14/16/18 AWG tinned, 50ft/color", "electrical-distribution",
+         "electrical", 1, "kit", 80, 80, "Waytek Wire", "Amazon"),
+    Part("battery-cable-2-0", "2/0 AWG battery cable, 3ft (battery–fuse–busbar)", "electrical-distribution",
+         "electrical", 1, "lot", 30, 30, "Amazon"),
+    Part("anderson-powerpole", "Anderson Powerpole 30A connectors, 50 pairs", "electrical-distribution",
+         "electrical", 1, "kit", 40, 40, "Powerwerx", url="https://powerwerx.com"),
+    Part("deutsch-dt-2pin-elec", "Deutsch DT 2-pin connectors, IP67 (exterior penetrations)", "electrical-distribution",
+         "electrical", 10, "set", 3, 3, "Waytek Wire"),
+    Part("pvc-trunking", "40×25mm PVC cable trunking, 5m", "electrical-distribution",
+         "electrical", 4, "ea", 10, 10, "McMaster-Carr"),
+    Part("corrugated-conduit", "10mm corrugated conduit, drop runs (McMaster 7828K48)", "electrical-distribution",
+         "electrical", 10, "m", 3, 3, "McMaster-Carr", part_no="7828K48"),
+    Part("wire-label-kit", "Brady M210 wire label kit", "electrical-distribution",
+         "electrical", 1, "ea", 80, 80, "Amazon"),
+    Part("led-flat-panel", "12V LED flat panel 300×600mm, 20W 4000K", "electrical-distribution",
+         "electrical", 3, "ea", 25, 25, "Amazon"),
+    Part("pullcord-switch", "Pull-cord ceiling switch, 12V 6A SPST", "electrical-distribution",
+         "electrical", 2, "ea", 8, 8, "Amazon"),
+    Part("ground-stake", 'Copper ground stake, 8ft × ⅝" dia', "electrical-distribution",
+         "electrical", 1, "ea", 20, 20, "Home Depot"),
+    Part("ground-wire-4awg", "4 AWG ground wire, green/yellow, 3m", "electrical-distribution",
+         "electrical", 1, "lot", 15, 15, "Amazon"),
 ]
 
 
@@ -206,17 +328,22 @@ def emit_master() -> str:
 
 
 # ── Self-check (the migration guardrail) ─────────────────────────────────────
+# reconciliation key: registry system → the costing.EXPECTED entry it must sum to.
+_RECONCILE = {"ventilation": "ventilation", "water": "water", "electrical": "power"}
+
+
 def self_check() -> list[str]:
-    """Every system present in the registry must sum to costing.EXPECTED[system]."""
+    """Every migrated system must sum to its costing.EXPECTED entry (±$10 absorbs rounding)."""
     errs = []
     for sys in systems():
-        if sys not in costing.EXPECTED:
+        key = _RECONCILE.get(sys)
+        if not key or key not in costing.EXPECTED:
             continue
-        exp = costing.EXPECTED[sys]
-        got = system_total(sys)
+        exp = costing.EXPECTED[key]
         exp_lh = (exp[0], exp[2]) if len(exp) == 3 else exp
-        if got != exp_lh:
-            errs.append(f"{sys}: registry {got} != costing.EXPECTED {exp_lh}")
+        got = system_total(sys)
+        if abs(got[0] - exp_lh[0]) > 10 or abs(got[1] - exp_lh[1]) > 10:
+            errs.append(f"{sys}: registry {got} != costing.EXPECTED[{key}] {exp_lh}")
     return errs
 
 

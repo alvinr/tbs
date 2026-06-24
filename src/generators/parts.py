@@ -622,13 +622,48 @@ PARTS: list[Part] = [
 ]
 
 
+# ── Chemistry (cyanotype, tier-tagged) — PRELIMINARY (subject to sensitizer-trials.md) ──
+# Built from costing's tier model + price constants so they can never drift from the cost source.
+# Only the cyanotype (chosen) process is in the registry; the alt-process comparison is the
+# process-comparison.md Research doc. Each reagent is tagged by tier; only the DEFAULT tier (+ the
+# tier-less muslin) enters the build views (master / grand) — the other tiers are alternatives.
+def _chem_parts() -> list[Part]:
+    out = []
+    for t in costing.TIERS:
+        out.append(Part(f"amfe-{t.key}", "Ammonium iron(III) oxalate (AmFe)", "chemistry-reagents",
+                        "chemistry", t.amfe_kg, "kg", costing.PRICE_AMFE_PER_KG, costing.PRICE_AMFE_PER_KG,
+                        "Photographers' Formulary", "Bostick & Sullivan",
+                        url="https://stores.photoformulary.com/ammonium-ferric-oxalate/",
+                        spec="Part A; warm water to dissolve", tier=t.key))
+        out.append(Part(f"ferri-{t.key}", "Potassium ferricyanide", "chemistry-reagents",
+                        "chemistry", t.ferri_kg, "kg", costing.PRICE_FERRI_PER_KG, costing.PRICE_FERRI_PER_KG,
+                        "Bostick & Sullivan", url="https://www.bostick-sullivan.com/product/potassium-ferricyanide-250gm/",
+                        spec="Part B", tier=t.key))
+        out.append(Part(f"dichromate-{t.key}", "Ammonium dichromate", "chemistry-reagents",
+                        "chemistry", 1, "run", costing.DICHROMATE_RUN, costing.DICHROMATE_RUN,
+                        "Photographers' Formulary", spec="Part B additive; contrast enhancer (Cat-1A carcinogen — handle with care)", tier=t.key))
+    out.append(Part("muslin", 'Unbleached muslin, 60" wide', "substrate-fabric",
+                    "chemistry", costing.MUSLIN_ROLLS, "roll", costing.MUSLIN_ROLL_PRICE, costing.MUSLIN_ROLL_PRICE,
+                    "Fabric Direct", url="https://www.fabricdirect.com/shop/craft-fabric/broadcloth-and-muslin-fabric/essence-60-medium-weight-muslin-fabric-unbleached-150-yard-roll/",
+                    spec=f"150-yd roll; ~{costing.MUSLIN_YARDS} yd for {costing.PRINTS} prints (+15% waste)"))
+    return out
+
+
+PARTS.extend(_chem_parts())
+
+
 # ── Roll-ups ─────────────────────────────────────────────────────────────────
+def _in_build(p: Part) -> bool:
+    """Tier-tagged alternatives (lean/rich) are NOT in the build — only the default tier + tier-less."""
+    return (not p.tier) or p.tier == costing.DEFAULT_TIER
+
+
 def systems() -> list[str]:
-    return sorted({p.system for p in PARTS})
+    return sorted({p.system for p in PARTS if _in_build(p)})
 
 
 def by_system(sys: str) -> list[Part]:
-    return [p for p in PARTS if p.system == sys]
+    return [p for p in PARTS if p.system == sys and _in_build(p)]
 
 
 def system_total(sys: str) -> tuple[int, int]:
@@ -638,14 +673,15 @@ def system_total(sys: str) -> tuple[int, int]:
 
 
 def grand() -> tuple[int, int]:
-    return (round(sum(line(p)[0] for p in PARTS)),
-            round(sum(line(p)[1] for p in PARTS)))
+    return (round(sum(line(p)[0] for p in PARTS if _in_build(p))),
+            round(sum(line(p)[1] for p in PARTS if _in_build(p))))
 
 
 def by_type() -> dict[str, list[Part]]:
     out: dict[str, list[Part]] = {}
     for p in PARTS:
-        out.setdefault(p.type, []).append(p)
+        if _in_build(p):
+            out.setdefault(p.type, []).append(p)
     return out
 
 
@@ -666,8 +702,41 @@ def canon_supplier(s: str) -> str:
 def by_supplier() -> dict[str, list[Part]]:
     out: dict[str, list[Part]] = {}
     for p in PARTS:
-        out.setdefault(canon_supplier(p.supplier) or "—", []).append(p)
+        if _in_build(p):
+            out.setdefault(canon_supplier(p.supplier) or "—", []).append(p)
     return out
+
+
+def chemistry_parts() -> list[Part]:
+    return [p for p in PARTS if p.system == "chemistry"]
+
+
+def emit_chemistry() -> str:
+    """The cyanotype shopping table — per-tier reagents + substrate, computed from costing's tiers."""
+    by = {(p.tier, p.desc): p for p in chemistry_parts()}
+    muslin = next(p for p in chemistry_parts() if p.key == "muslin")
+    tiers = costing.TIERS
+    hdr = "| Reagent | Supplier | " + " | ".join(
+        f"{t.label}{' (default)' if t.key == costing.DEFAULT_TIER else ''}" for t in tiers) + " |"
+    rows = [hdr, "|" + "---|" * (len(tiers) + 2)]
+    for desc, sup in (("Ammonium iron(III) oxalate (AmFe)", "Photographers' Formulary"),
+                      ("Potassium ferricyanide", "Bostick & Sullivan"),
+                      ("Ammonium dichromate", "Photographers' Formulary")):
+        cells = []
+        for t in tiers:
+            p = by[(t.key, desc)]
+            lo = line(p)[0]
+            cells.append(f"{p.qty:g} {p.unit} / {_money(lo)}" if p.unit == "kg" else _money(lo))
+        rows.append(f"| {desc} | {sup} | " + " | ".join(cells) + " |")
+    chem = [f"**{_money(costing.tier_costs(t)['chem_subtotal'])}**" for t in tiers]
+    rows.append("| **Chemistry subtotal** | | " + " | ".join(chem) + " |")
+    rows.append(f"| Unbleached muslin (substrate) | Fabric Direct | "
+                + " | ".join(_money(line(muslin)[0]) for _ in tiers) + " |")
+    tot = [f"**{_money(costing.tier_costs(t)['section_total'])}**" for t in tiers]
+    rows.append("| **Total (50 prints)** | | " + " | ".join(tot) + " |")
+    pp = [f"**{_money(costing.tier_costs(t)['per_print'])}**" for t in tiers]
+    rows.append("| **Per print** | | " + " | ".join(pp) + " |")
+    return "\n".join(rows)
 
 
 # ── Emitters (markdown) ──────────────────────────────────────────────────────
@@ -800,7 +869,8 @@ def _block_pat(key: str) -> "re.Pattern":
 def _blocks() -> dict:
     """key -> (doc, emitter_fn). Only WIRED blocks are registered (added incrementally per phase)."""
     b = {"master": (_DOC_MASTER, emit_master),
-         "dimension-audit": ("component-dimension-audit.md", emit_dimension_audit)}
+         "dimension-audit": ("component-dimension-audit.md", emit_dimension_audit),
+         "chemistry": ("chemistry-shopping-list.md", emit_chemistry)}
     # per-system §Parts-List blocks (Phase 2b) — only those already placed in their doc.
     for sys, doc in SYSTEM_DOC.items():
         b[sys] = (doc, lambda s=sys: emit_system(s))
@@ -875,13 +945,30 @@ def reconcile_target(sys: str):
         return _split_sum(costing.SWINGPIVOT, ("Fixed door frame",), keep=True)
     if sys == "swing":                                          # SWINGPIVOT minus the door lines
         return _split_sum(costing.SWINGPIVOT, ("Fixed door frame",), keep=False)
+    if sys == "chemistry":                                      # build = the DEFAULT tier total (+ muslin)
+        tot = costing.EXPECTED[costing.DEFAULT_TIER]["total"]
+        return (tot, tot)
     exp = costing.EXPECTED[reconcile_key(sys)]
     return (exp[0], exp[2]) if len(exp) == 3 else exp
 
 
+def _check_chemistry() -> list[str]:
+    """Each tier's reagents must sum to costing.EXPECTED[tier]['chem']; muslin to EXPECTED['muslin']."""
+    errs = []
+    for t in costing.TIERS:
+        chem = round(sum(line(p)[0] for p in chemistry_parts() if p.tier == t.key))
+        exp = costing.EXPECTED[t.key]["chem"]
+        if abs(chem - exp) > 2:
+            errs.append(f"chemistry {t.key}: registry ${chem} != costing.EXPECTED ${exp}")
+    muslin = round(line(next(p for p in chemistry_parts() if p.key == "muslin"))[0])
+    if muslin != costing.EXPECTED["muslin"]:
+        errs.append(f"chemistry muslin: registry ${muslin} != ${costing.EXPECTED['muslin']}")
+    return errs
+
+
 def self_check() -> list[str]:
     """Every migrated system must sum to its costing reconcile target (±$10 absorbs rounding)."""
-    special = set(_WATER_SPLIT) | {"water", "clamp", "film", "swing", "door"}  # reconciled to costing line slices
+    special = set(_WATER_SPLIT) | {"water", "clamp", "film", "swing", "door", "chemistry"}
     errs = []
     for sys in systems():
         key = reconcile_key(sys)
@@ -892,7 +979,7 @@ def self_check() -> list[str]:
         got = system_total(sys)
         if abs(got[0] - tgt[0]) > 10 or abs(got[1] - tgt[1]) > 10:
             errs.append(f"{sys}: registry {got} != costing target {tgt}")
-    return errs
+    return errs + _check_chemistry()
 
 
 if __name__ == "__main__":

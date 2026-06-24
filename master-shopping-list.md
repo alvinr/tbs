@@ -16,7 +16,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
-| 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,448 | $3,908 |
+| 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,454 | $3,914 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $4,171 | $6,236 |
 | 6. Electrical — power, circuits, wiring | $2,110 | $2,660 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,385 | $2,070 |
@@ -28,7 +28,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,210 | $2,980 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$21,145** | **~$31,697** |
+| **TOTAL (base build + 50-print run)** | **~$21,151** | **~$31,703** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -141,19 +141,19 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| Cam-lever spring clamps, muslin (×92) | 92 ea | Amazon | clamp | $276–$736 |
+| Cam-lever spring clamp | 92 ea | McMaster-Carr | clamp | $276–$736 |
 | Top + bottom wall stays + 4-bolt anchor plates | 2 set | McMaster-Carr | swingpivot | $90–$160 |
 | M12×80mm through-bolt kit | 58 ea | McMaster-Carr | walkway | $87–$145 |
 | Misc. conversion hardware | 1 lot | Home Depot | interior | $80–$130 |
 | Door & access upgrades | 1 lot | Home Depot | interior | $50–$100 |
 | Southco C2-33 cam compression latch (×4) | 4 ea | Southco | panel | $60–$100 |
 | M12×90mm hex through-bolt + nut + washers, SS | 28 ea | McMaster-Carr | film | $70 |
-| Clamp mounting — M5×16 SS bolts/Nylocks (×184+184) + neoprene jaw strip | 1 lot | McMaster-Carr | clamp | $70 |
 | Pivot pin SS316 | 8 ea | McMaster-Carr | film | $64 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
 | 25mm ratchet strap, 1,100 kg WLL | 4 ea | Amazon | ibc-frame | $30–$50 |
 | Stainless fasteners + nylon isolation washers (no galvanic couple) | 1 lot | McMaster-Carr | lightlock | $30–$50 |
 | M12 through-bolt kit (right walkway) | 24 ea | McMaster-Carr | walkway | $30–$50 |
+| M5×16 SS socket head bolt | 184 ea | McMaster-Carr | clamp | $46 |
 | M10 wedge floor anchors | 20 ea | McMaster-Carr | walkway | $25–$45 |
 | Shurflo pump mounting bracket | 4 ea | Amazon | water | $40 |
 | M8×25mm knurled thumbscrew DIN 464 | 12 ea | Amazon | film | $36 |
@@ -165,6 +165,7 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | M12 × 40 bolt, Grade 8.8 | 12 ea | McMaster-Carr | ibc-frame | $12–$22 |
 | Continuous (piano) hinge, 600 mm | 1 ea | McMaster-Carr | shelf | $20 |
 | M8 hex fixing bolt + nut, SS | 8 ea | McMaster-Carr | film | $16 |
+| M5 SS Nylock nut | 184 ea | McMaster-Carr | clamp | $15 |
 | Ratchet straps, 25mm | 2 ea | Home Depot | ventilation | $12 |
 | M6 SS hex bolts + flange nuts | 12 ea | McMaster-Carr | tray | $12 |
 | M8 wall bolts + washers/nuts | 12 ea | McMaster-Carr | shelf | $12 |
@@ -179,7 +180,7 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | M5×16 mm CSK screws | 8 ea | McMaster-Carr | shelf | $4 |
 | M6 SS hex bolt + nut | 1 ea | McMaster-Carr | spray | $1 |
 | Nylon zip ties, 200mm | 6 ea | Amazon | spray | $1 |
-| **fasteners-hardware subtotal** | | | | **$1,306–$2,199** |
+| **fasteners-hardware subtotal** | | | | **$1,297–$2,190** |
 
 ### bearings-motion
 
@@ -316,8 +317,9 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Black EPDM foam tape 1"×½" | 3 roll | McMaster-Carr | film | $84 |
 | Felt/brush wiper + 12mm neoprene (drum↔housing seal) | 1 lot | McMaster-Carr | lightlock | $40–$60 |
 | Silicone gasket strip | 1 ea | McMaster-Carr | tray | $20 |
+| Neoprene strip 60A | 1 roll | McMaster-Carr | clamp | $15 |
 | Neoprene gasket 340×240×3mm (panel weatherseal) | 1 ea | McMaster-Carr | electrical | $6 |
-| **seals-gaskets subtotal** | | | | **$384–$506** |
+| **seals-gaskets subtotal** | | | | **$399–$521** |
 
 ### adhesives-finishes
 
@@ -386,8 +388,8 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
 | containermgt.com | 1 | container | $2,000–$3,500 |
-| Amazon | 72 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,386–$3,365 |
-| McMaster-Carr | 38 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets | $1,490–$1,973 |
+| McMaster-Carr | 41 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets | $1,772–$2,715 |
+| Amazon | 71 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,110–$2,629 |
 | Online Metals | 10 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,354–$1,885 |
 | local fab | 6 | fabrication-labor, steel-structural | $1,093–$1,718 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |

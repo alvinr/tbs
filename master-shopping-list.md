@@ -443,32 +443,28 @@ column header to re-order by item, supplier, system, or cost.*
 <!-- END parts:master -->
 
 ## 9. Printmaking Chemistry — Cyanotype (50 prints)
-*Source: `chemistry-shopping-list.md`*
+*Source: `chemistry-shopping-list.md`. **Procurement** — reagent order quantities, per-tier costs,
+suppliers, and the muslin substrate — is in the Procurement BOM above (`chemistry-reagents` +
+`substrate-fabric`) and the [Cyanotype Shopping List](chemistry-shopping-list.md). This section is the
+**recipe + per-print basis** only.*
 
-**Recommended process.** No silver, no DEA registration, no hazmat shipping, development in plain cold water.
+**Mike Ware New Cyanotype** — 3:1 ammonium iron(III) oxalate (AmFe) : potassium ferricyanide by weight
++ ammonium dichromate for contrast, applied as **two wet-on-wet coats** over the 10.74 m² active plane
+(AmFe, **not** the old ferric ammonium citrate). No silver, no DEA registration, no hazmat shipping;
+development in plain cold water.
 
-### Chemistry — Mike Ware New Cyanotype (3:1 AmFe : ferricyanide + dichromate contrast)
-| Item | Per print (Standard) | × 50 prints | Supplier | Unit | Units | Unit price | Total |
-|------|-----------|-------------|---------|------|-------|-----------|-------|
-| [Ammonium iron(III) oxalate (AmFe)](https://www.bostick-sullivan.com/product/ammonium-ferric-oxalate/) | <!-- BEGIN costing:om-amfe-g-standard -->390<!-- END costing:om-amfe-g-standard -->g | <!-- BEGIN costing:om-amfe-kg-standard -->19.5<!-- END costing:om-amfe-kg-standard --> kg | [Bostick & Sullivan](https://www.bostick-sullivan.com/product/ammonium-ferric-oxalate/) | 500g | 39 | ~$30† | ~$1,170 |
-| [Potassium ferricyanide (3:1 ratio)](https://www.bostick-sullivan.com/product/potassium-ferricyanide-250gm/) | 130g | 6.5 kg | [Bostick & Sullivan](https://www.bostick-sullivan.com/product/potassium-ferricyanide-250gm/) | 1,000g | 7 | $24.29† | ~$158 |
-| [Ammonium dichromate (contrast, 0.1–0.4%)](https://stores.photoformulary.com/ammonium-dichromate-class-5-1-bichromate-ground-ups-only-choose-ups-ground-at-checkout/) | ~1–4g | ~0.2 kg | [Photographers' Formulary](https://stores.photoformulary.com) | 100g | 3 | ~$12 | ~$25 |
-| Distilled water | ~2.6 L | ~130 L | Tap water + DI filter adequate | — | — | — | ~$0 |
+| Reagent | Per print (Standard ½-Ware) | × 50 prints |
+|---------|-----------------------------|-------------|
+| Ammonium iron(III) oxalate (AmFe) | <!-- BEGIN costing:om-amfe-g-standard -->390<!-- END costing:om-amfe-g-standard -->g | <!-- BEGIN costing:om-amfe-kg-standard -->19.5<!-- END costing:om-amfe-kg-standard --> kg |
+| Potassium ferricyanide (3:1) | 130g | 6.5 kg |
+| Ammonium dichromate (contrast, 0.1–0.4%) | ~1–4g | ~0.2 kg |
+| Distilled water | ~2.6 L | ~130 L |
 
-> **Ware-AmFe note:** Mike Ware New Cyanotype uses **ammonium iron(III) oxalate (AmFe), not the old ferric ammonium citrate** — 3:1 AmFe:ferricyanide by weight + ammonium dichromate for contrast, applied as **two wet-on-wet coats** over the 10.74 m² active plane. Quantities above are the **Standard ½-Ware** tier (the working default); the leanest/richest viable strength — and the final order — is set by the [Sensitizer Trials](sensitizer-trials.md), giving the tier range below. Matches [cost breakdown §7](project-cost-breakdown.md).
-**Chemistry subtotal (Standard): ~$1,353  ·  tier range ~$910 (Lean ⅓-Ware) – ~$2,681 (Rich full-Ware)**
-
-### Substrate
-| Item | Qty | Supplier | Unit | Units | Unit price | Total |
-|------|-----|---------|------|-------|-----------|-------|
-| [Unbleached cotton muslin, 60" wide](https://www.fabricdirect.com) | ~445 linear yards | [Fabric Direct](https://www.fabricdirect.com) | 150-yd roll | 3 | ~$100 | ~$300 |
-| OR [unbleached cotton muslin by the yard](https://www.fabricwholesaledirect.com) | ~445 yd | [Fabric Wholesale Direct](https://www.fabricwholesaledirect.com) | per yard | 445 | $0.80–$1.20/yd | $360–$540 |
-
-> **Muslin note:** Pre-wash all fabric twice in hot water, no detergent, to remove sizing. Sizing repels water-based sensitisers. 60" width requires 3 strips per print to cover the 4,499mm width (each 2,388mm tall) — or source 120" (theatrical/backdrop) width to eliminate vertical seams.
-> **Muslin correction (2026-06-18):** the prior "1,650 yd / 11 rolls / $1,100" over-counted the fabric ~3.7× (a feet-as-yards error — see [chemistry-shopping-list.md](chemistry-shopping-list.md) Shared Item: Substrate Fabric). Real need is ~445 yd = 3 × 150-yd rolls ≈ **$300**.
-**Substrate subtotal: ~$300**
-
-**Section total: ~$1,650 (Standard ½-Ware default)**, range **~$1,210 (Lean) – ~$2,980 (Rich)** per 50-print run (chemistry + $300 substrate; ~$24–60/print) — tier pinned by the [Sensitizer Trials](sensitizer-trials.md). The summary table maps Low = Lean, High = Rich.
+Standard ½-Ware is the working default; the leanest/richest viable strength — and the final order — is
+pinned by the [Sensitizer Trials](sensitizer-trials.md). **Run cost ~$1,650 (Standard), range ~$1,210
+(Lean) – ~$2,980 (Rich)** per 50-print run (~$24–60/print), incl. ~$300 muslin substrate — ~445 linear
+yards of 60" unbleached cotton (pre-wash twice in hot water, no detergent, to remove sizing). The
+summary table maps Low = Lean, High = Rich.
 
 ## 10. Printmaking Tools & Consumables
 *Source: `operating-manual.md`, `chemistry-shopping-list.md`*
@@ -506,38 +502,42 @@ in the [water BOM](water-system-report.md), and the Circuit-D red safelight stri
 **Section total: ~$162**
 
 ## Supplier Directory
+
+*Contact reference (URL / location) for the suppliers used in the build. The **full** supplier list
+with order quantities and $ totals is the **Supplier consolidation** table in the Procurement BOM
+above — this directory adds where-to-buy detail and omits alternative/optional-only sources.*
+
 | Supplier | Category | URL / Location |
 |---------|---------|----------------|
 | **[Photographers' Formulary](https://stores.photoformulary.com)** | FAC, potassium ferricyanide, darkroom chemicals | Condon, MT |
 | **[Bostick & Sullivan](https://bostick-sullivan.com)** | Cyanotype, VDB, platinum/palladium chemistry | Santa Fe, NM |
 | **[Fabric Direct](https://www.fabricdirect.com)** | Unbleached cotton muslin, 150-yd rolls | Online |
 | **[Fabric Wholesale Direct](https://www.fabricwholesaledirect.com)** | Unbleached muslin by yard or bolt | Online |
-| **[Rose Brand](https://www.rosebrand.com)** | Rosco Duvetyne blackout fabric | Burbank CA |
 | **[Metal Supermarkets](https://www.metalsupermarkets.com)** | Steel, aluminum, cut-to-length | Anaheim · Van Nuys · San Diego |
 | **[Grimco](https://www.grimco.com)** | Dibond ACM panels (sign industry) | City of Industry CA |
 | **Automation Overstock** | Linear guides, carriages, surplus motion components | Gardena CA (walk-in) |
 | **[Roton Products](https://www.roton.com)** | Acme leadscrews and nuts, cut to length | Ships from LA area |
 | **[Renogy](https://www.renogy.com)** | Solar panels, MPPT controllers, LiFePO4 batteries | Online |
 | **[altE Store](https://www.altestore.com)** | Victron MPPT, Victron chargers, off-grid power | Online |
-| **[Battle Born Batteries](https://battlebornbatteries.com)** | 100Ah LiFePO4 12V | Online |
 | **[Powerwerx](https://powerwerx.com)** | Anderson Powerpole connectors and tools | Online |
 | **[Waytek Wire](https://www.waytekwire.com)** | Deutsch DT connectors, automotive wire | Online |
 | **[West Marine](https://www.westmarine.com)** | Blue Sea fuse blocks, marine DC wiring | Torrance CA |
 | **[Container Exchanger](https://containerexchanger.com)** | Used IBC totes, food-grade — CA listings | Online |
 | **[Ferguson Plumbing](https://www.ferguson.com)** | HDPE pipe, valves, fittings | Multiple SoCal branches |
 | **Pacific Coast Steel** | Hot-rolled A36 sheet, round bar, structural steel | Santa Fe Springs CA |
+| **[TAP Plastics](https://www.tapplastics.com)** | UV-HDPE / PP / acrylic sheet + plastic fabrication | Multiple SoCal stores |
+| **[Curbell Plastics](https://www.curbellplastics.com)** | PP / engineering plastic sheet | Online / SoCal |
+| **[AutomationDirect](https://www.automationdirect.com)** | DC load-break isolators, E-stop push-buttons | Online |
+| **[B&H Photo](https://www.bhphotovideo.com)** | Rosco Duvetyne, photographic supplies | Online / NYC |
 | **[Amazon](https://www.amazon.com)** | Pumps, filters, valves, fittings, electrical, consumables | Online |
 | **[McMaster-Carr](https://www.mcmaster.com)** | Fasteners, bearings, seals, neoprene, cable trunking | Online / Ships from LA |
 | **[Online Metals](https://www.onlinemetals.com)** | SS sheet, aluminum sheet/angle | Online |
 | **[McNichols](https://www.mcnichols.com)** | Molded GRP (fiberglass) grating, FRP hold-down clips | Online / Multiple branches |
 | **[Grating Pacific](https://gratingpacific.com)** | Molded FRP grating (vinyl-ester, grit top) | Los Angeles CA (SoCal) |
-| **[Purcooflow](https://www.purcooflow.com)** | 3-stage combo filter units, replacement cartridges | Online |
 | **[Grainger](https://www.grainger.com)** | Industrial supply — local branches throughout SoCal | Multiple SoCal branches |
 | **[Lenox Laser](https://www.lenoxlaser.com)** | Custom precision laser-drilled pinholes | Glen Arm, MD |
 | **[Hessaire](https://hessaire.com)** | 120V AC evaporative (swamp) coolers | Online |
 | **[Victron / Amazon](https://www.victronenergy.com)** | Phoenix pure-sine inverters (Circuit E) | Online |
-| **[Progressive Automations](https://www.progressiveautomations.com)** | Linear actuators (PA-14 series) | Online |
-| **[Mouser Electronics](https://www.mouser.com)** | Power supplies, switches, electronic components | Online |
 
 ## See Also
 - [Electrical & Systems Report](electrical-report.md) — full wiring specification, circuit fuse ratings, solar architecture

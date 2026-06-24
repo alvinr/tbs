@@ -471,11 +471,16 @@ PARTS: list[Part] = [
          "film", 12, "ea", 3, 3, "Amazon", "Maedler", spec="ICP-13: left-rail drop-in hold-down; 2/saddle ×4 left + 4 spare"),
     Part("saddle-m8-hex", "M8 hex fixing bolt + nut, SS", "fasteners-hardware",
          "film", 8, "ea", 2, 2, "McMaster-Carr", "Amazon", spec="ICP-14: right-rail permanent fixing; 2/saddle ×2 TR + spare"),
-    # ═══ clamp (film-clamp-mechanism-report) — split out of FILM (the muslin clamp system) ═══
-    Part("cam-lever-clamps", "Cam-lever spring clamps, muslin (×92)", "fasteners-hardware",
-         "clamp", 92, "ea", 3, 8, "Amazon", note="$3/$8 ea — the section's main Low/High driver"),
-    Part("clamp-mounting-hw", "Clamp mounting — M5×16 SS bolts/Nylocks (×184+184) + neoprene jaw strip",
-         "fasteners-hardware", "clamp", 1, "lot", 70, 70, "McMaster-Carr"),
+    # ═══ clamp (film-clamp-mechanism-report §4) — split out of FILM; itemized, sums to the FILM
+    # clamp lines (clamps 276–736 + mounting 76) = 352–812 ═══
+    Part("cam-lever-clamp", "Cam-lever spring clamp", "fasteners-hardware",
+         "clamp", 92, "ea", 3, 8, "McMaster-Carr", "Amazon", spec="Toggle-style, ~5N, neoprene jaw (Destaco equiv. / generic)"),
+    Part("clamp-m5-bolt", "M5×16 SS socket head bolt", "fasteners-hardware",
+         "clamp", 184, "ea", 0.25, 0.25, "McMaster-Carr", "Bolt Depot", part_no="91292A128", spec="A2-70 stainless"),
+    Part("clamp-m5-nut", "M5 SS Nylock nut", "fasteners-hardware",
+         "clamp", 184, "ea", 0.08, 0.08, "McMaster-Carr", "Bolt Depot", part_no="93625A200", spec="A2-70 stainless"),
+    Part("clamp-neoprene", "Neoprene strip 60A", "seals-gaskets",
+         "clamp", 1, "roll", 15, 15, "McMaster-Carr", "Grainger", part_no="8614K44", spec="35mm × 6mm, self-adhesive, 10m"),
 
     # ═══ lightlock (§7) — mirrors costing.LIGHTLOCK → exact $1,385–$2,070 ═══
     Part("ll-hdpe-housing", "5mm UV-stabilized HDPE — Ø900 housing shell (~7 m²)", "plastics-sheet",
@@ -733,6 +738,7 @@ SYSTEM_DOC = {
     "shelf": "chemistry-prep-shelves.md", "walkway": "walkway-report.md",
     "optics": "pinhole-report.md", "ibc-frame": "ibc-stacking-report.md",
     "tray": "processing-tray-and-spray-bar.md", "spray": "processing-tray-and-spray-bar.md",
+    "clamp": "film-clamp-mechanism-report.md",
 }
 
 

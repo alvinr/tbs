@@ -48,14 +48,17 @@ Each clamp jaw is faced with a 35mm × 6mm strip of **60A neoprene**, self-adhes
 
 All items ship within the United States. Local Southern California pickup noted where available.
 
-| Item | Spec | Qty | Source A | Source B | Est. Unit |
-|------|------|-----|---------|---------|-----------|
-| Cam-lever spring clamp | Toggle-style, ~5N, neoprene jaw | 92 | McMaster-Carr (Destaco equiv.) | Amazon (generic toggle) | $3-8 |
-| M5×16 SS socket head bolt | A2-70 stainless | 184 | McMaster-Carr #91292A128 | Bolt Depot | $0.25 |
-| M5 SS Nylock nut | A2-70 stainless | 184 | McMaster-Carr #93625A200 | Bolt Depot | $0.08 |
-| Neoprene strip 60A | 35mm × 6mm, self-adhesive | 1 roll (10m) | McMaster-Carr #8614K44 | Grainger | $15 |
+<!-- BEGIN parts:clamp -->
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| Cam-lever spring clamp | Toggle-style, ~5N, neoprene jaw (Destaco equiv. / generic) | 92 ea | McMaster-Carr / Amazon | $276–$736 |
+| M5×16 SS socket head bolt (91292A128) | A2-70 stainless | 184 ea | McMaster-Carr / Bolt Depot | $46 |
+| M5 SS Nylock nut (93625A200) | A2-70 stainless | 184 ea | McMaster-Carr / Bolt Depot | $15 |
+| Neoprene strip 60A (8614K44) | 35mm × 6mm, self-adhesive, 10m | 1 roll | McMaster-Carr / Grainger | $15 |
+| **Clamp total** | | | | **$352–$812** |
+<!-- END parts:clamp -->
 
-**Clamp system estimated cost:** <!-- BEGIN costing:clamp-system-low -->$346<!-- END costing:clamp-system-low --> (generic toggle clamps) to <!-- BEGIN costing:clamp-system-high -->$806<!-- END costing:clamp-system-high --> (Destaco-equivalent quality).
+**Clamp system estimated cost:** <!-- BEGIN costing:clamp-system-low -->$352<!-- END costing:clamp-system-low --> (generic toggle clamps) to <!-- BEGIN costing:clamp-system-high -->$812<!-- END costing:clamp-system-high --> (Destaco-equivalent quality).
 
 ---
 

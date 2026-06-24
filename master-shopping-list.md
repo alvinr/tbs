@@ -117,7 +117,7 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| Molded GRP (fiberglass) grating | 1 lot | McNichols | walkway | $970–$1,260 |
+| Molded GRP (fiberglass) grating | 1 lot | McNichols | walkway | $965–$1,250 |
 | Image-plane flat backing — Dibond ACM | 1 lot | TAP Plastics | interior | $490–$620 |
 | Dibond ACM panel 4mm | 6 sheet | Grimco | film | $510 |
 | 4mm black PP plastic sheet (1220 × 2,440mm) | 4 sheet | TAP Plastics | panel | $260–$420 |
@@ -126,7 +126,7 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | 4mm black PP sheet + EPDM lip | 1 lot | TAP Plastics | panel | $60–$120 |
 | HDPE flat bar, 50mm wide | 5 ea | Online Metals | tray | $40–$75 |
 | Drum-exit punch-out grating | 1 lot | McNichols | walkway | $50–$65 |
-| **plastics-sheet subtotal** | | | | **$2,710–$3,590** |
+| **plastics-sheet subtotal** | | | | **$2,705–$3,580** |
 
 ### timber-ply
 
@@ -410,7 +410,7 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Online Metals | 10 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,354–$1,885 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,291–$1,618 |
-| McNichols | 3 | fasteners-hardware, plastics-sheet | $1,050–$1,375 |
+| McNichols | 3 | fasteners-hardware, plastics-sheet | $1,045–$1,365 |
 | Photographers' Formulary | 2 | chemistry-reagents | $1,195 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
 | Home Depot | 19 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety | $804–$984 |

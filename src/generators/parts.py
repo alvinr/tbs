@@ -586,7 +586,7 @@ PARTS: list[Part] = [
     # ═══ walkway (§10) — re-decomposed to match the report (fab bundled into each bracket, no
     # separate fab line) → $2,005–$2,985 (reconciles to EXPECTED walkway $2,000–$2,975 within tol) ═══
     Part("walkway-grp-grating", "Molded GRP (fiberglass) grating", "plastics-sheet",
-         "walkway", 1, "lot", 970, 1260, "McNichols", "Grating Pacific",
+         "walkway", 1, "lot", 965, 1250, "McNichols", "Grating Pacific",
          spec="15mm, vinyl-ester resin, grit top, ~38mm mesh; ~4.5 m² (4 sections)"),
     Part("walkway-drum-exit-grp", "Drum-exit punch-out grating", "plastics-sheet",
          "walkway", 1, "lot", 50, 65, "McNichols", spec="Extra GRP landing (~0.23 m²) at the light-lock exit"),

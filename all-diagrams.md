@@ -100,6 +100,10 @@
 
 ![TBS-001 Electrical — Sheet 3: Pinhole Wall Interior Elevation](assets/electrical-sheet3.png)
 
+![TBS-001 Electrical — Sheet 4: Pump Power (Circuit C)](assets/electrical-sheet4.png)
+
+![TBS-001 Electrical — Sheet 5: Main Enclosure Panel Layout + Fuse Schedule](assets/electrical-sheet5.png)
+
 ![TBS-001 — External Power Panel Detail](assets/electrical-sheet6.png)
 
 ---
@@ -123,6 +127,8 @@
 ![TBS-001 Hinged Panel — Sheet 4: Rotating Transport + Swing Clearance](assets/hingepanel-sheet4.png)
 
 ![TBS-001 Hinged Panel — Sheet 5: Light-Lock Verification](assets/hingepanel-sheet5.png)
+
+![TBS-001 Hinged Panel — Sheet 6: Interior Pull Handle Mounting Detail](assets/hingepanel-sheet6.png)
 
 ---
 

@@ -515,15 +515,15 @@ above — this directory adds where-to-buy detail and omits alternative/optional
 
 | Supplier | Category | URL / Location |
 |---------|---------|----------------|
-| **[Photographers' Formulary](https://stores.photoformulary.com)** | FAC, potassium ferricyanide, darkroom chemicals | Condon, MT |
-| **[Bostick & Sullivan](https://bostick-sullivan.com)** | Cyanotype, VDB, platinum/palladium chemistry | Santa Fe, NM |
+| **[Photographers' Formulary](https://stores.photoformulary.com)** | Ammonium iron(III) oxalate (AmFe), ammonium dichromate | Condon, MT |
+| **[Bostick & Sullivan](https://bostick-sullivan.com)** | Potassium ferricyanide + AmFe (cyanotype reagents) | Santa Fe, NM |
 | **[Fabric Direct](https://www.fabricdirect.com)** | Unbleached cotton muslin, 150-yd rolls | Online |
 | **[Fabric Wholesale Direct](https://www.fabricwholesaledirect.com)** | Unbleached muslin by yard or bolt | Online |
 | **[Metal Supermarkets](https://www.metalsupermarkets.com)** | Steel, aluminum, cut-to-length | Anaheim · Van Nuys · San Diego |
 | **[Grimco](https://www.grimco.com)** | Dibond ACM panels (sign industry) | City of Industry CA |
 | **Automation Overstock** | Linear guides, carriages, surplus motion components | Gardena CA (walk-in) |
 | **[Roton Products](https://www.roton.com)** | Acme leadscrews and nuts, cut to length | Ships from LA area |
-| **[Renogy](https://www.renogy.com)** | Solar panels, MPPT controllers, LiFePO4 batteries | Online |
+| **[Renogy](https://www.renogy.com)** | Solar panels, LiFePO4 battery, tilt mount | Online |
 | **[altE Store](https://www.altestore.com)** | Victron MPPT, Victron chargers, off-grid power | Online |
 | **[Powerwerx](https://powerwerx.com)** | Anderson Powerpole connectors and tools | Online |
 | **[Waytek Wire](https://www.waytekwire.com)** | Deutsch DT connectors, automotive wire | Online |
@@ -537,7 +537,7 @@ above — this directory adds where-to-buy detail and omits alternative/optional
 | **[B&H Photo](https://www.bhphotovideo.com)** | Rosco Duvetyne, photographic supplies | Online / NYC |
 | **[Amazon](https://www.amazon.com)** | Pumps, filters, valves, fittings, electrical, consumables | Online |
 | **[McMaster-Carr](https://www.mcmaster.com)** | Fasteners, bearings, seals, neoprene, cable trunking | Online / Ships from LA |
-| **[Online Metals](https://www.onlinemetals.com)** | SS sheet, aluminum sheet/angle | Online |
+| **[Online Metals](https://www.onlinemetals.com)** | SS sheet, aluminum sheet/angle, steel, Dibond ACM | Online |
 | **[McNichols](https://www.mcnichols.com)** | Molded GRP (fiberglass) grating, FRP hold-down clips | Online / Multiple branches |
 | **[Grating Pacific](https://gratingpacific.com)** | Molded FRP grating (vinyl-ester, grit top) | Los Angeles CA (SoCal) |
 | **[Grainger](https://www.grainger.com)** | Industrial supply — local branches throughout SoCal | Multiple SoCal branches |

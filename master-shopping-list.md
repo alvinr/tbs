@@ -17,7 +17,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
 | 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,538 | $4,088 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $4,211 | $6,297 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $4,171 | $6,236 |
 | 6. Electrical — power, circuits, wiring | $2,110 | $2,660 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,385 | $2,070 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $855 | $1,430 |
@@ -28,7 +28,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,210 | $2,980 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$21,275** | **~$31,938** |
+| **TOTAL (base build + 50-print run)** | **~$21,235** | **~$31,877** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -59,7 +59,7 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| IBC stacking frame — RHS restraint portal + feet + retaining bars + hangers + fab | 1 lot | Metal Supermarkets | water | $955–$1,455 |
+| IBC stacking frame — RHS restraint portal + feet + retaining bars + hangers + fab | 1 lot | Metal Supermarkets | ibc-frame | $955–$1,455 |
 | Cantilever bracket — standard (near/far) | 14 ea | Local fab | walkway | $420–$700 |
 | Wall-seat saddles ×8 — 8mm steel plate, cut + welded (ICP-11) | 8 ea | local fab | film | $380–$470 |
 | Ø89×8 CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swingpivot | $180–$300 |
@@ -90,7 +90,7 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| Processing tray — 304 SS panels + fabrication, shim strips, sump pickup, liner, hardware | 1 lot | Online Metals | water | $1,300–$2,015 |
+| Processing tray — 304 SS panels + fabrication, shim strips, sump pickup, liner, hardware | 1 lot | Online Metals | tray | $1,300–$2,015 |
 | Custom laser-drilled pinhole — SS-302/304 shim, 3×3 | 1 ea | Lenox Laser | optics | $50–$150 |
 | **stainless-sheet subtotal** | | | | **$1,350–$2,165** |
 
@@ -99,7 +99,7 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | 3mm aluminum plate — corner-zone core plates (×2) | 2 ea | Online Metals | panel | $360–$460 |
-| Spray bar — beam, LDPE pipe, 26 nozzles, manifold + 7 feed tubes, 4 wheels, ball joint, arm, hose | 1 lot | Online Metals | water | $235–$299 |
+| Spray bar — beam, LDPE pipe, 26 nozzles, manifold + 7 feed tubes, 4 wheels, ball joint, arm, hose | 1 lot | Online Metals | spray | $235–$299 |
 | Aluminum angle 2×2×3/16 8 ft (×10) | 10 ea | Online Metals | film | $220 |
 | Aluminum U-channel — gasket + PP-skin retention (~40 m) | 40 m | Online Metals | panel | $120–$200 |
 | Corner bracket L-plates, ¼" alum 6×8 (×4) | 4 ea | Online Metals | film | $80 |
@@ -174,19 +174,19 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| Valves + fittings — S60×6 adapters, check valves CV1/CV3/CV4 | 1 lot | Amazon | water | $390–$630 |
-| Pipe — HDPE, spray-bar feed | 1 lot | Ferguson | water | $100–$140 |
+| Valves + fittings — S60×6 adapters, check valves CV1/CV3/CV4 | 1 lot | Amazon | water | $333–$567 |
+| Pipe — HDPE pump runs + spray-bar feed | 1 lot | Ferguson | water | $80–$114 |
 | ½" HDPE pipe (tap relocation) | 1 lot | Irrigation supply | shelf | $10 |
-| **plumbing-fittings subtotal** | | | | **$500–$780** |
+| **plumbing-fittings subtotal** | | | | **$423–$691** |
 
 ### water-equipment
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | Water storage — 4× IBC totes + 3× bulkhead fittings + fill tee | 1 lot | Container Exchanger | water | $395–$720 |
-| Filter skid — 3× Big Blue housings + cartridges | 1 lot | Amazon | water | $265–$370 |
-| Pumps + accumulator — P-01/P-02/P-04 manifold + P-03 | 1 lot | Amazon | water | $305–$355 |
-| **water-equipment subtotal** | | | | **$965–$1,445** |
+| Filter skid — 3-stage Big Blue housing + cartridges | 1 lot | Amazon | water | $282–$445 |
+| Pumps + accumulator — P-01/P-02/P-04 manifold + P-03 | 1 lot | Amazon | water | $315–$345 |
+| **water-equipment subtotal** | | | | **$992–$1,510** |
 
 ### electrical-power
 
@@ -288,8 +288,8 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| Processing consumables — 6-mil poly, pH meter, citric acid | 1 lot | Amazon | water | $231–$278 |
-| **tools-safety subtotal** | | | | **$231–$278** |
+| Processing consumables — 6-mil poly, pH meter, citric acid, gloves, labels | 1 lot | Amazon | water | $241 |
+| **tools-safety subtotal** | | | | **$241** |
 
 ### fabrication-labor
 
@@ -304,7 +304,7 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| Amazon | 29 | adhesives-finishes, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,935–$3,887 |
+| Amazon | 29 | adhesives-finishes, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,915–$3,852 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Online Metals | 8 | aluminum, stainless-sheet, steel-structural | $2,363–$3,322 |
 | McMaster-Carr | 25 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, seals-gaskets | $1,849–$2,239 |
@@ -324,9 +324,9 @@ detail lives in each report. Refresh with `python3 src/generators/parts.py --inj
 | Waytek Wire | 7 | electrical-distribution | $208 |
 | West Marine | 2 | electrical-distribution | $190 |
 | Lenox Laser | 1 | stainless-sheet | $50–$150 |
-| Ferguson | 1 | plumbing-fittings | $100–$140 |
 | Hessaire | 1 | ducting-ventilation | $130 |
 | Bearing World | 1 | bearings-motion | $90–$130 |
+| Ferguson | 1 | plumbing-fittings | $80–$114 |
 | Southco | 1 | fasteners-hardware | $60–$100 |
 | AutomationDirect | 3 | electrical-distribution, electrical-power | $95 |
 | local | 2 | adhesives-finishes | $50–$90 |

@@ -110,36 +110,40 @@ PARTS: list[Part] = [
     Part("plywood-base-12", "Plywood base plate", "timber-ply",
          "ventilation", 1, "ea", 8, 8, "Home Depot", "Lumber yard", spec="12mm, 600 × 350mm (cooler stowage)"),
 
-    # ═══ water (§5) — mirrors costing.WATER (sub-group granularity → exact $4,211–$6,297). The
-    # bundled lines (frame/tray/spray/valves) carry the full sub-group cost under their dominant
-    # type; finer per-item type-splitting is a later pass (the master's itemized subtotals have
-    # drifted from costing, so splitting now would break exact reconciliation). ═══
+    # ═══ water family (split per owning report; reconciled to costing.WATER lines — water-system §8
+    # item-sums after the 2026 reconciliation). The §8 group ("water") = storage+pumps+filter+valves+
+    # pipe+wiring+consumables; the frame/tray/spray are SEPARATE systems (their own reports). The §8
+    # bundles below are placeholders pending full itemization (Increment 2). ═══
     Part("water-storage", "Water storage — 4× IBC totes + 3× bulkhead fittings + fill tee",
          "water-equipment", "water", 1, "lot", 395, 720, "Container Exchanger", "Uline",
          note="bundle: totes + bulkheads + tee"),
-    Part("ibc-stacking-frame", "IBC stacking frame — RHS restraint portal + feet + retaining bars + hangers + fab",
-         "steel-structural", "water", 1, "lot", 955, 1455, "Metal Supermarkets", "local fab",
-         note="bundle: steel sections + fabrication labor"),
     Part("water-pumps", "Pumps + accumulator — P-01/P-02/P-04 manifold + P-03",
-         "water-equipment", "water", 1, "lot", 305, 355, "Amazon", "PexUniverse",
+         "water-equipment", "water", 1, "lot", 315, 345, "Amazon", "PexUniverse",
          note="bundle: 4 pumps + accumulator + brackets"),
-    Part("filter-skid", "Filter skid — 3× Big Blue housings + cartridges",
-         "water-equipment", "water", 1, "lot", 265, 370, "Amazon", "US Water Systems"),
+    Part("filter-skid", "Filter skid — 3-stage Big Blue housing + cartridges",
+         "water-equipment", "water", 1, "lot", 282, 445, "Amazon", "US Water Systems",
+         note="bundle: housing + sediment/KDF/carbon cartridges"),
     Part("water-valves-fittings", "Valves + fittings — S60×6 adapters, check valves CV1/CV3/CV4",
-         "plumbing-fittings", "water", 1, "lot", 390, 630, "Amazon", "PexUniverse",
+         "plumbing-fittings", "water", 1, "lot", 333, 567, "Amazon", "PexUniverse",
          note="bundle: ~15 valves/adapters/fittings"),
-    Part("water-pipe-hdpe", "Pipe — HDPE, spray-bar feed", "plumbing-fittings",
-         "water", 1, "lot", 100, 140, "Ferguson", "Home Depot"),
-    Part("processing-tray", "Processing tray — 304 SS panels + fabrication, shim strips, sump pickup, liner, hardware",
-         "stainless-sheet", "water", 1, "lot", 1300, 2015, "Online Metals", "local sheet metal",
-         note="bundle: SS sheet + fabrication labor; split sheet↔fab in a later pass"),
-    Part("spray-bar", "Spray bar — beam, LDPE pipe, 26 nozzles, manifold + 7 feed tubes, 4 wheels, ball joint, arm, hose",
-         "aluminum", "water", 1, "lot", 235, 299, "Online Metals", "Amazon",
-         note="bundle: extrusion + irrigation parts"),
+    Part("water-pipe-hdpe", "Pipe — HDPE pump runs + spray-bar feed", "plumbing-fittings",
+         "water", 1, "lot", 80, 114, "Ferguson", "Home Depot", note="bundle: HDPE sticks + braided hose"),
     Part("water-wiring", "Water-system wiring (fuse block in Electrical Report)",
          "electrical-distribution", "water", 1, "lot", 35, 35, "Amazon"),
-    Part("processing-consumables", "Processing consumables — 6-mil poly, pH meter, citric acid",
-         "tools-safety", "water", 1, "lot", 231, 278, "Amazon"),
+    Part("processing-consumables", "Processing consumables — 6-mil poly, pH meter, citric acid, gloves, labels",
+         "tools-safety", "water", 1, "lot", 241, 241, "Amazon", note="bundle: 6 consumable items"),
+    # — ibc-frame (ibc-stacking-report) —
+    Part("ibc-stacking-frame", "IBC stacking frame — RHS restraint portal + feet + retaining bars + hangers + fab",
+         "steel-structural", "ibc-frame", 1, "lot", 955, 1455, "Metal Supermarkets", "local fab",
+         note="bundle: steel sections + fabrication labor"),
+    # — tray (processing-tray-and-spray-bar §6.1) —
+    Part("processing-tray", "Processing tray — 304 SS panels + fabrication, shim strips, sump pickup, liner, hardware",
+         "stainless-sheet", "tray", 1, "lot", 1300, 2015, "Online Metals", "local sheet metal",
+         note="bundle: SS sheet + fabrication labor"),
+    # — spray (processing-tray-and-spray-bar §6.2) —
+    Part("spray-bar", "Spray bar — beam, LDPE pipe, 26 nozzles, manifold + 7 feed tubes, 4 wheels, ball joint, arm, hose",
+         "aluminum", "spray", 1, "lot", 235, 299, "Online Metals", "Amazon",
+         note="bundle: extrusion + irrigation parts"),
 
     # ═══ electrical (§6) — fully itemized from master §6; point estimates summing to ~$2,345
     # (reconciles to EXPECTED['power'] $2,350 within tolerance). Demonstrates the procurement-real
@@ -601,19 +605,40 @@ def reconcile_key(sys: str) -> str:
     return _RECONCILE.get(sys, sys)
 
 
+# costing's monolithic WATER list spans four reports; the registry splits it into four systems, each
+# reconciled to its slice of WATER (the §8 group = WATER minus frame/tray/spray).
+_WATER_SPLIT = {"ibc-frame": "IBC stacking frame", "tray": "Processing tray", "spray": "Spray bar"}
+
+
+def _water_line(prefix: str):
+    return next(li for li in costing.WATER if li.label.startswith(prefix))
+
+
+def reconcile_target(sys: str):
+    """The (low, high) the registry system must sum to."""
+    if sys in _WATER_SPLIT:
+        li = _water_line(_WATER_SPLIT[sys])
+        return (li.low, li.high)
+    if sys == "water":                                          # WATER minus the three split-out lines
+        rest = [li for li in costing.WATER
+                if not any(li.label.startswith(p) for p in _WATER_SPLIT.values())]
+        return (sum(li.low for li in rest), sum(li.high for li in rest))
+    exp = costing.EXPECTED[reconcile_key(sys)]
+    return (exp[0], exp[2]) if len(exp) == 3 else exp
+
+
 def self_check() -> list[str]:
-    """Every migrated system must sum to its costing.EXPECTED entry (±$10 absorbs rounding)."""
+    """Every migrated system must sum to its costing reconcile target (±$10 absorbs rounding)."""
     errs = []
     for sys in systems():
         key = reconcile_key(sys)
-        if key not in costing.EXPECTED:
+        if sys not in _WATER_SPLIT and sys != "water" and key not in costing.EXPECTED:
             errs.append(f"{sys}: no costing.EXPECTED['{key}'] to reconcile against")
             continue
-        exp = costing.EXPECTED[key]
-        exp_lh = (exp[0], exp[2]) if len(exp) == 3 else exp
+        tgt = reconcile_target(sys)
         got = system_total(sys)
-        if abs(got[0] - exp_lh[0]) > 10 or abs(got[1] - exp_lh[1]) > 10:
-            errs.append(f"{sys}: registry {got} != costing.EXPECTED[{key}] {exp_lh}")
+        if abs(got[0] - tgt[0]) > 10 or abs(got[1] - tgt[1]) > 10:
+            errs.append(f"{sys}: registry {got} != costing target {tgt}")
     return errs
 
 

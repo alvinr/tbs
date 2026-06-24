@@ -146,6 +146,14 @@ Using ISO 100 film at f/16, 1/100 sec as the reference:
 t_pinhole (seconds) = (1/100) × (f-number / 16)²
 ```
 
+**Worked example — f/1000 (an indicative pinhole aperture, close to TBS-001's f/1088), ISO 100 film, bright sun:**
+
+```
+t_film = (1/100) × (1000 / 16)² = (1/100) × 62.5² = (1/100) × 3,906 ≈ 39 seconds
+```
+
+This 39-second bright-sun film baseline is what the paper and cyanotype calculations below scale from.
+
 ### Photographic Paper Speed
 
 Photographic printing paper is much less sensitive to light than film. Silver gelatin enlarging paper (e.g., Ilford Multigrade RC) has an effective speed of approximately ISO 6 in daylight (green-yellow light sensitivity), compared to ISO 100 film. To correct:
@@ -154,7 +162,33 @@ Photographic printing paper is much less sensitive to light than film. Silver ge
 t_paper = t_film × (ISO_film / ISO_paper) = t_film × (100 / 6) ≈ t_film × 16.7
 ```
 
+**Worked example — f/1000, continuing from the 39-second film baseline:**
+
+```
+t_paper = 39 sec × 16.7 ≈ 650 sec ≈ 11 minutes   (calculated, before reciprocity)
+```
+
+Silver-gelatin paper suffers reciprocity failure at these exposure lengths, so the actual time is longer: applying the Part 6 correction (≈2.3× in this range, p = 0.85) gives roughly **25 minutes**.
+
 **Source:** Stroebel, L., Compton, J., Current, I., Zakia, R., *Basic Photographic Materials and Processes*, 3rd edition, Focal Press, 2009, Chapter 8. ISO-equivalent speeds for photographic papers are discussed in the context of exposure and sensitometry.
+
+### Cyanotype Speed (Mike Ware New Cyanotype)
+
+The TBS-001 image plane is cotton muslin sensitized with the **Mike Ware New Cyanotype formula**, not silver-gelatin paper. Its effective speed is approximately **ISO 2–4**, and — being an iron-based process — it does **not** exhibit Schwarzschild reciprocity failure (Part 6), so no long-exposure correction is applied:
+
+```
+t_cyanotype = t_film × (100 / ISO_cyanotype)   [ISO 2–4 → ×25 to ×50; no reciprocity correction]
+```
+
+**Worked example — f/1000, continuing from the 39-second film baseline:**
+
+```
+t_cyanotype = 39 sec × (25 to 50) ≈ 980–1,950 sec ≈ 16 to 33 minutes   (no reciprocity correction)
+```
+
+In the field the baseline runs **~30–45 minutes** in full sun (TBS-001 at f/1088), the longer end reflecting real UV and sky conditions below ideal Sunny-16. Because there is no reciprocity penalty to amplify it, this real exposure stays comparable to silver-gelatin paper despite paper's higher nominal ISO — paper's ~2.3× reciprocity multiplier erases its speed advantage. This is the property that makes the giant-camera exposure practical (see the TBS-001 as-built summary in Part 11).
+
+**Source:** Ware, M., *Cyanotype: the History, Science and Art of Photographic Printing in Prussian Blue*, 1999 (New Cyanotype process); see Part 12.
 
 ---
 
@@ -470,6 +504,7 @@ All claims in this document trace to the following sources. Where source content
 | 10 | Rockland Colloid Liquid Light product page. [rockaloid.com/Liquid-Light-emulsion-half-pint](https://rockaloid.com/Liquid-Light-emulsion-half-pint) | Partially verified — site refused connection. Spec (~1.5 sq ft/oz) confirmed via B&H listing. |
 | 11 | Lenox Laser Pinholes & Apertures. [lenoxlaser.com/blog/pinholes-and-apertures/](https://lenoxlaser.com/blog/pinholes-and-apertures/) | Verified via WebSearch — product descriptions and material specs returned. |
 | 12 | "The Great Picture" (world's largest pinhole camera), Wikipedia. [en.wikipedia.org/wiki/The_Great_Picture](https://en.wikipedia.org/wiki/The_Great_Picture) | **Verified** — confirmed via WebSearch; all dimensions and materials cited match. |
+| 13 | Ware, M., *Cyanotype: the History, Science and Art of Photographic Printing in Prussian Blue*, 1999; New Cyanotype process (ISO ~2–4; no reciprocity failure). | Author's reference: [mikeware.co.uk](https://www.mikeware.co.uk/mikeware/New_Cyanotype_Process.html) |
 
 ---
 

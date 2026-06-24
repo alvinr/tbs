@@ -37,9 +37,8 @@ facing the wall. When folded up, the full walkway is clear.
 
 ### 2.1 Why fold-down (film-plane swing) + optical cone
 
-**Film-plane swing.** A permanently-deployed shelf in the optical zone collides with the
-film-plane swing (the plane sweeps forward as it swings). The fold-down removes the
-conflict entirely: the shelf is only deployed while mixing (film plane parked), and is
+**Film-plane swing.** The fold-down removes the
+conflict with the film plane mechanism: the shelf is only deployed while mixing (film plane parked), and is
 folded flat against the wall whenever the plane tilts/swings during exposure. No swing
 restriction is imposed.
 
@@ -57,13 +56,12 @@ film-plane position.
 
 | Constraint | Value |
 |-----------|-------|
-| Shelf X range | X=1,180–1,780 mm (600 mm), left of the battery bank (X=1810) |
-| Deployed footprint | Yd=0–300 mm (hinged on the pinhole wall, projects 300 mm) |
-| Stowed (transport) | Vertical against the wall, Z=1,075–1,375 mm, ~25 mm proud |
-| Work surface height | H=1,075 mm (945 mm above the 130 mm walkway deck) |
+| Deployed footprint | Hinged on the pinhole wall, projects 300 mm |
+| Stowed (transport) | Vertical against the wall, ~25 mm proud |
+| Work surface height | 945 mm above the 130 mm walkway deck |
 | Walkway (widened) | 500 mm deep — ~200 mm pass when deployed, full clear when stowed |
-| Evap cooler (stow) | Slides under the deployed shelf (top Z950 < shelf underside Z1050) |
-| Optical cone | ~321 mm clear (shelf right edge X1780 vs cone-left X2101 at Yd300) |
+| Evap cooler (stow) | Slides under the deployed shelf |
+| Optical cone | ~321 mm clear |
 
 ---
 
@@ -75,10 +73,9 @@ film-plane position.
 |-----------|-------|
 | Width (X) | 600 mm |
 | Depth (Yd, deployed) | 300 mm |
-| Work surface height | H=1,075 mm AFF (945 mm above the walkway deck) |
+| Work surface height | 945 mm above the walkway deck |
 | Thickness | 22 mm (18 mm phenolic ply + 4 mm perimeter frame) |
 | Work surface area | 600 × 300 = 0.18 m² |
-| Stowed top | Z=1,375 mm (= H + depth) |
 
 **Work surface:** 18 mm phenolic-faced plywood (concrete form ply) — chemical-resistant
 to cyanotype solutions and pH 3–4 citric acid; smooth, non-absorbent, wipe-clean.
@@ -92,7 +89,7 @@ edges retains bottles/items. Flat black powder coat.
 ![Chemistry Prep Shelf — Sheet 2: Section (fold-down mechanism)](assets/shelf-sheet2.png)
 
 **Piano hinge:** a continuous steel piano hinge runs the full 600 mm back edge,
-bolted to a mounting cleat on the pinhole wall at Z=1,075 mm. The shelf swings between
+bolted to a mounting cleat on the pinhole wall. The shelf swings between
 horizontal (deployed) and vertical-up (stowed) about this hinge.
 
 **Stays:** two stays run from wall anchors ~230 mm above the hinge to the shelf's front
@@ -125,14 +122,14 @@ each front corner; level the board with a spirit level on first install, then lo
 
 ## 4. Transport Mode
 
-The shelf folds UP flat against the pinhole wall (top Z=1,375 mm) and latches.
+The shelf folds UP flat against the pinhole wall and latches.
 
 | Check | Status |
 |-------|--------|
 | Walkway clearance | Folded up, ~25 mm proud of the wall — full walkway clear ✓ |
 | Film-plane clearance | Folded flat — never in the swing envelope ✓ |
-| Overhead clearance | Folded top Z1375 — well below the cable trunking (Z1800) ✓ |
-| Evap stow | Evap (top Z950) tucks below the folded board ✓ |
+| Overhead clearance | 425mm below the cable trunking ✓ |
+| Evap stow | Evap tucks below the folded board ✓ |
 | Vibration | Board latched flat against the wall; no loose span ✓ |
 
 ---
@@ -141,7 +138,7 @@ The shelf folds UP flat against the pinhole wall (top Z=1,375 mm) and latches.
 
 The operator stands on the widened near walkway at about the shelf
 midpoint, facing the wall. The deployed surface (945 mm above the deck) is
-ergonomic counter height; the full 300 mm depth is reachable. The tap (left of the shelf)
+ergonomic counter height; the full depth is reachable. The tap (left of the shelf)
 fills containers staged on the board.
 
 When deployed, the 300 mm board leaves ~200 mm of the 500 mm walkway behind it — enough

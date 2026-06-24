@@ -43,6 +43,11 @@ MARGIN  = 25     # mm — mounting margin each side
 FP_W    = BOX_W - 2 * MARGIN   # usable film plane width
 FP_H    = BOX_H - 2 * MARGIN   # usable film plane height
 
+# Watercolor paper — standard 10 × 14" sheet, mounted landscape (14" across × 10" tall),
+# centered on the backing board (which is larger; the paper captures the central print).
+PAPER_W = 356    # mm — paper width  (14")
+PAPER_H = 254    # mm — paper height (10")
+
 SLEEVE_D = 102   # mm — armhole diameter (4")
 SLEEVE_SPACING = 230  # mm — armhole center-to-center spacing
 
@@ -198,9 +203,10 @@ board_top = hinge_y + BOARD_H
 ax.add_patch(mpatches.Rectangle((board_x, board_bottom), BACKING, BOARD_H,
              facecolor=C_BACKING, edgecolor=C_OUT, linewidth=1.0, zorder=5))
 
-# Paper on the camera side of the board
-paper_y1 = board_bottom + MARGIN
-paper_y2 = board_top - MARGIN
+# Paper on the camera side of the board — 10×14" sheet, centered (landscape; height = 10" in section)
+paper_cy = (board_bottom + board_top) / 2
+paper_y1 = paper_cy - PAPER_H / 2
+paper_y2 = paper_cy + PAPER_H / 2
 ax.plot([board_x, board_x], [paper_y1, paper_y2],
         color=C_CL, lw=3.0, solid_capstyle="butt", zorder=6)
 
@@ -302,7 +308,7 @@ draw_dim_h(ax, BOX_D, TOTAL_D, -45, f"Prep box  {PREP_D}mm  (18\")", offset=15)
 draw_dim_h(ax, 0, TOTAL_D, -75, f"Total length  {TOTAL_D}mm  (36\")", offset=15)
 draw_dim_v(ax, -50, 0, BOX_H, f"{BOX_H}mm (16\")", offset=15)
 draw_dim_v(ax, BOX_D + 10, paper_y1, paper_y2,
-           f"Image  {int(paper_y2 - paper_y1)}mm", offset=12, color=C_CL, right=True)
+           f"Paper  {PAPER_H}mm (10\")", offset=12, color=C_CL, right=True)
 draw_dim_h(ax, tray_x, tray_x_far, -20,
            f"Tray  {TRAY_EXT_D}mm (12×16\" Paterson)", offset=10, fs=FS_SM - 0.5)
 
@@ -316,7 +322,7 @@ leader(ax, sleeve_wall_x + WALL_T + SLEEVE_PROJ / 2, arm_top_s + 3,
        f"Arm sleeves (×2) Ø{SLEEVE_D}mm\n(on prep box end face)", ha="left", fs=FS_SM - 0.5)
 leader(ax, board_x, (paper_y1 + paper_y2) / 2,
        board_x - 80, ph_y + 90,
-       "Paper on board\n(film plane)", ha="center", color=C_CL)
+       "10×14\" paper\n(centered on board)", ha="center", color=C_CL)
 board_fold_mid = hinge_x + BOARD_H / 2
 leader(ax, hinge_x + BOARD_H - 10, hinge_y - 8,
        hinge_x + BOARD_H + 20, hinge_y + 80,
@@ -616,6 +622,9 @@ ax.add_patch(mpatches.Rectangle((tray_plan_x, tray_plan_y), TRAY_EXT_D, TRAY_EXT
 board_plan_x = tray_plan_x  # at the near rim of the tray
 ax.plot([board_plan_x, board_plan_x], [BOX_W / 2 - BOARD_W / 2, BOX_W / 2 + BOARD_W / 2],
         color=C_OUT, lw=2.5, solid_capstyle="butt", zorder=4)
+# 10×14" paper on the board — landscape (14" across), centered, smaller than the board
+ax.plot([board_plan_x, board_plan_x], [BOX_W / 2 - PAPER_W / 2, BOX_W / 2 + PAPER_W / 2],
+        color=C_CL, lw=3.5, solid_capstyle="butt", zorder=5)
 
 # Armholes on end face (dashed circles at the extraction flap wall)
 arm_plan_cy1 = BOX_W / 2 - SLEEVE_SPACING / 2
@@ -708,7 +717,7 @@ specs = [
     f"Focal length:  {FOCAL}mm (18\")",
     f"Pinhole:  Ø{PH_D}mm (1/32\" drill bit)",
     f"f-number:  f/{F_NO}",
-    f"Film plane:  {FP_W} × {int(paper_y2 - paper_y1)}mm",
+    f"Print (paper):  10 × 14\" ({PAPER_H} × {PAPER_W}mm)",
     f"Exposure:  ~10 min (full sun)",
     "Substrate:  Watercolor paper 300 gsm",
     "Process:  Ware New Cyanotype",

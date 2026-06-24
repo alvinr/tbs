@@ -40,8 +40,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 by **material type**, with quantities summed across all systems, followed by a **supplier
 consolidation** table so you can place the fewest, largest orders. The *Systems* column shows where
 each item is used; the full engineering detail for any item lives in that system's report. Costs are
-indicative low–high estimates — get quotes before ordering. **Tip:** every table is sortable — click a
-column header to re-order by item, supplier, system, or cost.*
+indicative low–high estimates — get quotes before ordering.
 
 <!-- BEGIN parts:master -->
 ## Procurement BOM — by material type
@@ -449,9 +448,7 @@ suppliers, and the muslin substrate — is in the Procurement BOM above (`chemis
 **recipe + per-print basis** only.*
 
 **Mike Ware New Cyanotype** — 3:1 ammonium iron(III) oxalate (AmFe) : potassium ferricyanide by weight
-+ ammonium dichromate for contrast, applied as **two wet-on-wet coats** over the 10.74 m² active plane
-(AmFe, **not** the old ferric ammonium citrate). No silver, no DEA registration, no hazmat shipping;
-development in plain cold water.
++ ammonium dichromate for contrast, applied as **two wet-on-wet coats** over the 10.74 m² active plane.
 
 | Reagent | Per print (Standard ½-Ware) | × 50 prints |
 |---------|-----------------------------|-------------|

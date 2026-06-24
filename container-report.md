@@ -383,9 +383,9 @@ TBS-001 supplements the original cargo doors with a purpose-built stepped hinged
 
 **Panel design (see engineering drawings below):**
 - <!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm --> × 2,388mm stepped panel, 50×50mm RHS steel frame, 4mm PP plastic skins (18mm-ply Fan-B band)
-- **Stepped profile:** 40mm thick at corner zones (Yd=0–653mm and Yd=1,709–<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) and 120mm thick at center zone (Yd=653–1,709mm) where the light trap drum is mounted
+- **Stepped profile:** 40mm thick at corner zones and 120mm thick at center zone where the light trap drum is mounted
 - Carried on a vertical **Ø89×8mm CHS pivot post** at the far-left edge (the reused film-plane far-left upright) on a thrust collar + top/bottom hub bearings — swings open about the pivot for access, and ~56° inboard for transport
-- 4 × Southco C2-33 cam compression latches at corners, compressing the 20mm EPDM perimeter + cut seals against a fixed welded door frame (50×50×3mm RHS) at X=0
+- 4 × Southco C2-33 cam compression latches at corners, compressing the 20mm EPDM perimeter + cut seals against a fixed welded door frame (50×50×3mm RHS)
 - Ø900 housed revolving-door light lock (single-opening C-shell drum, no fins, SKF 6215 bearings) — personnel access without opening the panel; light-tight by geometry
 - **Transport mode:** panel + drum swing ~56° about the pivot, carrying the bay inboard of the door plane (clear +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm -->mm) so the cargo doors close. Single-person operation (swing assisted), ~5 minutes. See [Equipment Layout Report](equipment-layout-report.md) §6 for full specification.
 
@@ -405,7 +405,7 @@ TBS-001 supplements the original cargo doors with a purpose-built stepped hinged
 
 For operations involving darkroom chemistry inside the container:
 
-- **Fan A (exhaust):** 6" vent penetration on the sealed end wall (X=C_LEN), in the 270mm plumbing corridor directly below the X1 fill port (Yd=1181, Z=2000) — the only full-height clear channel past the 1,000L direct-stack (totes reach 2,336mm). Interior face covered with a 300mm deep light-trap baffle duct (L-shaped offset baffles, black sheet metal).
+- **Fan A (exhaust):** 6" vent penetration on the sealed end wall, in the 270mm plumbing corridor directly below the X1 fill port — the only full-height clear channel past the 1,000L direct-stack (totes reach 2,336mm). Interior face covered with a 300mm deep light-trap baffle duct (L-shaped offset baffles, black sheet metal).
 - **Fan B (intake):** 6" fan mounted low on the hinged panel (near corner zone by the pinhole wall, so its conduit runs along the pinhole wall without crossing the suspension rails). Baffle duct protrudes from the panel exterior face — draws fresh air from the open doorway during operation. Wiring via flexible coiled cable from fixed door frame to panel (see [Electrical Report](electrical-report.md) §8.3).
 - During exposure: fans off
 - During processing/loading: fans on for ventilation

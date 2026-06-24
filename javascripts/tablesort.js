@@ -13,21 +13,28 @@ if (window.Tablesort) {
       return num(a) - num(b);
     });
 }
-// A bold "total" / "subtotal" row is a footer, not data — move it to <tfoot> so tablesort (which
-// only ever sorts <tbody> rows) leaves it pinned at the bottom instead of shuffling it into the sort.
-function isTotalRow(row) {
-  return Array.prototype.some.call(row.querySelectorAll("strong, b"), function (el) {
-    return /total/i.test(el.textContent);
-  });
+// A total / subtotal row is a footer, not data — move it to <tfoot> so tablesort (which only ever
+// sorts <tbody> rows) leaves it pinned at the bottom instead of shuffling it into the sort. Detect it
+// by CONTENT, not formatting: the BOM total rows have every middle column (Qty/Supplier/Systems) blank;
+// the summary/scenario total rows fill every column but are labelled "total" in the first cell.
+function isFooterRow(row) {
+  var c = row.cells, n = c.length;
+  if (!n) return false;
+  if (n >= 3) {
+    var middleBlank = true;
+    for (var i = 1; i < n - 1 && middleBlank; i++) middleBlank = c[i].textContent.trim() === "";
+    if (middleBlank) return true;
+  }
+  return /total/i.test(c[0].textContent);   // "...total" / "...subtotal" / "TOTAL"
 }
 document$.subscribe(function () {
   document.querySelectorAll("article table:not([class])").forEach(function (table) {
     var tbody = table.tBodies[0];
     if (tbody) {
       Array.prototype.slice.call(tbody.rows).forEach(function (row) {
-        if (isTotalRow(row)) (table.tFoot || table.createTFoot()).appendChild(row);
+        if (isFooterRow(row)) (table.tFoot || table.createTFoot()).appendChild(row);
       });
     }
-    new Tablesort(table);
+    if (!table.dataset.sortInit) { table.dataset.sortInit = "1"; new Tablesort(table); }
   });
 });

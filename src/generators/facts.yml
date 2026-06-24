@@ -128,8 +128,9 @@ film_plane_height_mm:
   owner: film-plane-mechanism-report.md
   display: comma
 
-# Container interior — INJECTION-ONLY (no aliases): 2388 also = film-plane/container height and 5893
-# appears in comparison contexts, so they're filled only where a placeholder marks the meaning.
+# Container interior — INJECTION-ONLY (no aliases): 2388 also = film-plane/container height, 5893
+# appears in comparison contexts, and 2362 (width) ALSO equals the focal length (the optical axis runs
+# across the container's short dimension), so they're filled only where a placeholder marks the meaning.
 container_interior_length_mm:
   constant: C_LEN
   unit: mm
@@ -138,6 +139,15 @@ container_interior_length_mm:
 
 container_height_mm:
   constant: C_HGT
+  unit: mm
+  owner: container-report.md
+  display: comma
+
+# Container interior WIDTH — C_WID, which is the SAME constant the focal length derives from
+# (PH_F = C_WID). This fact gives the *width* sense its own placeholder so structural uses (walkway
+# beams, far-wall Yd) don't have to borrow focal_length_mm. INJECTION-ONLY (2362 = focal length too).
+container_width_mm:
+  constant: C_WID
   unit: mm
   owner: container-report.md
   display: comma

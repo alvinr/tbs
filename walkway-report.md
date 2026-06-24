@@ -60,7 +60,7 @@ tray's watertight seal.
 
 ## 3. Near and Far Walkways — Wall-Cantilevered
 
-The near (pinhole wall, Yd=0) and far (film plane wall, Yd=2,362mm) walkways run
+The near (pinhole wall, Yd=0) and far (film plane wall, Yd=<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) walkways run
 the full length of the processing tray zone, from the left walkway butt joint at
 X=470mm to the right walkway butt joint at X=4,629mm — a span of 4,159mm.
 
@@ -171,7 +171,7 @@ assembly details.
 ## 4. Right Walkway — Cantilever Rectangle (rev12)
 
 The right walkway at the IBC end (X=4,329–4,629mm) cannot use wall-cantilevered
-brackets because the IBC stack (X=4,674–5,893mm) occupies the floor below. The
+brackets because the IBC stack (X=4,674–<!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm -->mm) occupies the floor below. The
 earlier scheme suspended it from the roof on threaded-rod hangers; **rev12 replaces
 the ceiling hangers with a self-supporting cantilever rectangle** that ties into
 two structures already present at the IBC end — the IBC corridor frame and the
@@ -183,7 +183,7 @@ bottom film rail — and so needs **no roof penetrations**.
 
 A closed rectangular frame of **40×40×3mm SHS** sits directly under the deck:
 
-- **Two long beams** run the full container width (2,362mm along Yd) at X=4,329mm
+- **Two long beams** run the full container width (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm along Yd) at X=4,329mm
   and X=4,629mm. The 300mm grating spans between them.
 - **Two short end beams** (≈300mm) close the near and far ends, joining the long
   beams into a torsionally stiff closed rectangle (no free bearer ends to droop).
@@ -461,7 +461,7 @@ bounces noticeably less than the rod-hung version it replaces.
 | 4 | M12×80mm through-bolt kit | Hex bolt + 2× washers + nut, grade 8.8 | 58 (3 per std bracket + 4 per widened) | $87–$145 |
 | 5 | Reinforcing plate (exterior) | 6mm steel: 100×180mm std (×14) + 120×220mm widened (×4) | 18 | $75–$130 |
 | 6 | Transition bearing plate | 40×500×5mm flat bar, welded to bracket arm top at width transitions | 2 | $5–$10 |
-| 7 | Right walkway cantilever frame | 40×40×3mm SHS — 2 long beams (2,362mm) + 2 end beams (300mm) + 2 center arms (405mm) | ~8 m | $28–$40 |
+| 7 | Right walkway cantilever frame | 40×40×3mm SHS — 2 long beams (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) + 2 end beams (300mm) + 2 center arms (405mm) | ~8 m | $28–$40 |
 | 8 | Wall cleat (left corners) | 8mm steel: back-plate + exterior plate + shelf, through-bolted to the wall | 2 | $20–$35 |
 | 9 | Combined corner plate (right corners) | 10mm steel, 150mm wide — carries the walkway right beam AND the bottom film rail (replaces the BR rail saddle) | 2 | $50–$80 |
 | 10 | M12 through-bolt kit (right walkway) | Wall cleats + combined plates + 2 center-arm U-clamps to the IBC uprights | ~24 | $30–$50 |

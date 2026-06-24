@@ -1,11 +1,8 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
-# TBS-001 — Master Shopping List
+# TBS-001 — Master Shopping List (BoM)
 
-**Camera:** The Big Shoebox Project — TBS-001
 **Basis:** April 2026. All prices USD. Prices marked † confirmed from supplier listings; others are close estimates.
-**Process assumed:** Cyanotype (lowest cost, no hazmat, no silver). See `chemistry-shopping-list.md` for alternative process costs.
-**Power assumed:** 12V DC off-grid solar + LiFePO4. See `electrical-report.md` for full architecture.
 
 Items are grouped by build area. Source documents are cross-referenced in each section header.
 
@@ -33,7 +30,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
-*Line 9 (printmaking chemistry) is now the **Mike Ware AmFe** recipe with the corrected ~$300 substrate, re-summed into the TOTAL: **Low = Lean ⅓-Ware (~$1,210), High = Rich full-Ware (~$2,980)**, working default Standard ½-Ware (~$1,650). The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md); the TOTAL spans the Lean–Rich range, so it shifts within ±~$1,330 of the §9 line once a tier is locked.*
+*Line 9 (printmaking chemistry) is the **Mike Ware AmFe** recipe with the corrected ~$300 substrate, re-summed into the TOTAL: **Low = Lean ⅓-Ware (~$1,210), High = Rich full-Ware (~$2,980)**, working default Standard ½-Ware (~$1,650). The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md); the TOTAL spans the Lean–Rich range, so it shifts within ±~$1,330 of the §9 line once a tier is locked.*
 
 ---
 

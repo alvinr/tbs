@@ -269,8 +269,8 @@ waste drums eliminated, the entire left end zone floor is clear.
 
 | Measurement | Value |
 |-------------|-------|
-| **Clear passage width** | **2,362mm (93") — full container width** |
-| At door frame | ~2,362mm (full frame opening) |
+| **Clear passage width** | **<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm (93") — full container width** |
+| At door frame | ~<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm (full frame opening) |
 | Obstructions in egress path | None |
 
 **Human factors reference:**
@@ -279,7 +279,7 @@ waste drums eliminated, the entire left end zone floor is clear.
 - Standard doorway minimum (IBC/IRC): 762mm (30")
 - Emergency egress minimum: 610mm (24")
 
-The 2,362mm passage exceeds all minimums by more than 3×. No equipment narrows
+The <!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm passage exceeds all minimums by more than 3×. No equipment narrows
 the egress path at any point. The elimination of waste drums from the left end
 zone provides completely unobstructed access to the cargo doors.
 

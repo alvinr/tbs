@@ -528,46 +528,50 @@ tray drainage plan and sump cross-section).
 
 ### 6.1 Processing Tray
 
-| Item | Specification | Qty | Est. Cost |
-|------|--------------|-----|-----------|
-| 304 SS sheet, 16-gauge (1.5mm), #4 brushed | 2,229 × 2,200mm panels | 2 | $720–$1,000 |
-| Fabrication (cut, brake, weld, press sump) | Two panels with center flange + sump well | 1 lot | $450–$850 |
-| HDPE flat bar, 50mm wide | Tapered shim strips, 2,200mm each | 5 | $40–$75 |
-| Loctite PL Premium construction adhesive | Shim-to-floor bond | 2 tubes | $15 |
-| 1" SS foot valve with strainer screen | Sump pickup tube | 1 | $20 |
-| 1" reinforced suction hose, 6 ft | Pickup tube to P-04 | 1 | $15 |
-| Silicone gasket strip | Center flange seal | 1 | $20 |
-| M6 SS hex bolts + flange nuts | Panel flange bolts | 12 | $12 |
-| 6-mil black LDPE sheet, 10 ft × 8 ft | Containment liner (consumable, per session) | 1 | $8 |
-| **Tray subtotal** | | | **<!-- BEGIN costing:tray-low -->$1,300<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,015<!-- END costing:tray-high -->** |
+<!-- BEGIN parts:tray -->
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| 304 SS sheet, 16-gauge (1.5mm), #4 brushed | 2,229 × 2,200mm panels | 2 ea | Online Metals | $720–$1,000 |
+| Fabrication (cut, brake, weld, press sump) | Two panels with center flange + sump well | 1 lot | local sheet metal | $450–$850 |
+| HDPE flat bar, 50mm wide | Tapered shim strips, 2,200mm each | 5 ea | Online Metals | $40–$75 |
+| Loctite PL Premium construction adhesive | Shim-to-floor bond | 2 tube | Home Depot | $15 |
+| 1" SS foot valve with strainer screen | Sump pickup tube | 1 ea | Amazon | $20 |
+| 1" reinforced suction hose, 6 ft | Pickup tube to P-04 | 1 ea | Amazon | $15 |
+| Silicone gasket strip | Center flange seal | 1 ea | McMaster-Carr | $20 |
+| M6 SS hex bolts + flange nuts | Panel flange bolts | 12 ea | McMaster-Carr | $12 |
+| 6-mil black LDPE sheet, 10 ft × 8 ft | Containment liner (consumable, per session) | 1 ea | Home Depot | $8 |
+| **Tray total** | | | | **$1,300–$2,015** |
+<!-- END parts:tray -->
 
 ### 6.2 Spray Bar Assembly
 
-| Item | Specification | Qty | Est. Cost |
-|------|--------------|-----|-----------|
-| 6061-T6 AL SHS 1-1/2" × 1-1/2" × 1/8", 8 ft | 40×40×3mm, joined with internal sleeve | 2 | $36–$56 |
-| 6061-T6 AL plate 3/16" (5mm) | Carriage plates + spacer blocks (~300 × 500mm sheet) | 1 | $15–$25 |
-| 30×30mm AL solid bar, 150mm | Internal splice sleeve | 1 | $8–$12 |
-| 3/4" LDPE irrigation poly pipe, 15 ft | Internal spray pipe (OD 25mm, ID 19mm) | 1 | $10 |
-| Flat-fan irrigation spray nozzles, barbed | 180° fan pattern, barbed inlet | 26 | $30–$50 |
-| Distribution manifold, 1/2" → 7 barb outlets | Mounted at ball joint, splits feed to tubes | 1 | $12 |
-| 1/4" irrigation poly tube | Manifold to beam feed points (~7m total) | 1 | $6 |
-| Barbed feed fittings, through beam top | Tube to poly pipe, 7 feed points | 7 | $10 |
-| SS/nylon retainer clips for 3/4" LDPE | Fold-back end closures | 2 | $4 |
-| [Nylon skate wheel, 50mm × 20mm, 10mm bore](https://www.mcmaster.com/products/rollers/skate-wheels-1~/) | Flat tread, ≥25 kg rated (2 per carriage) | 4 | $12–$20 |
-| 1/2" barb × 1/2" hose barb, brass | Flex hose to manifold inlet | 1 | $4 |
-| Telescoping aluminum pool pole, 4–8 ft | Standard pool skimmer handle | 1 | $15 |
-| 1/2" reinforced braided PVC hose, 15 ft | BV-02 to beam feed (4 m coiled) | 1 | $15 |
-| [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | Wheel axle pins | 4 (1 pack) | $5 |
-| [304 SS saddle clamp, 10mm (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | Axle retention, bolted to plate underside | 8 | $10 |
-| M6×20 SS bolts + nyloc nuts | Carriage plate, beam clamp, saddle clamp, splice fasteners | 16 | $7 |
-| Self-tapping SS screws (8-pack) | Ball-joint flange to beam top wall | 4 | $5 |
-| Ø20mm ball joint, zinc socket, M12 stud | Multi-axis arm articulation | 1 | $12 |
-| SS beam clamp plates (top + bottom) + spacers (40mm) | Beam to carriage plate (sandwich, bolted) | 4 | $10 |
-| 6061-T6 AL round tube 25mm OD × 2mm wall, 500mm | Arm tube | 1 | $6 |
-| M6 SS hex bolt + nut | Pinch bolt for arm tube | 1 | $1 |
-| Nylon zip ties, 200mm | Hose to arm tube | 6 | $1 |
-| **Spray bar subtotal** | | | **<!-- BEGIN costing:spray-low -->$235<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$299<!-- END costing:spray-high -->** |
+<!-- BEGIN parts:spray -->
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| 6061-T6 AL SHS 1-1/2"×1-1/2"×1/8", 8 ft | 40×40×3mm, joined with internal sleeve | 2 ea | Online Metals | $36–$56 |
+| 6061-T6 AL plate 3/16" (5mm) | Carriage plates + spacer blocks (~300 × 500mm sheet) | 1 ea | Online Metals | $16–$28 |
+| 30×30mm AL solid bar, 150mm | Internal splice sleeve | 1 ea | Online Metals | $8–$12 |
+| 3/4" LDPE irrigation poly pipe, 15 ft | Internal spray pipe (OD 25mm, ID 19mm) | 1 ea | Amazon | $10 |
+| Flat-fan irrigation spray nozzles, barbed | 180° fan pattern, barbed inlet | 26 ea | Amazon | $30–$50 |
+| Distribution manifold, 1/2" → 7 barb outlets | Mounted at ball joint, splits feed to tubes | 1 ea | Amazon | $12 |
+| 1/4" irrigation poly tube | Manifold to beam feed points (~7m total) | 1 ea | Amazon | $6 |
+| Barbed feed fittings, through beam top | Tube to poly pipe, 7 feed points | 7 ea | Amazon | $10 |
+| SS/nylon retainer clips for 3/4" LDPE | Fold-back end closures | 2 ea | Amazon | $4 |
+| [Nylon skate wheel, 50mm × 20mm, 10mm bore](https://www.mcmaster.com/products/rollers/skate-wheels-1~/) | Flat tread, ≥25 kg rated (2 per carriage) | 4 ea | McMaster-Carr | $12–$20 |
+| 1/2" barb × 1/2" hose barb, brass | Flex hose to manifold inlet | 1 ea | Amazon | $4 |
+| Telescoping aluminum pool pole, 4–8 ft | Standard pool skimmer handle | 1 ea | Amazon | $15 |
+| 1/2" reinforced braided PVC hose, 15 ft | BV-02 to beam feed (4 m coiled) | 1 ea | Amazon | $15 |
+| [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | Wheel axle pins | 1 pack | Amazon | $5 |
+| [304 SS saddle clamp, 10mm (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | Axle retention, bolted to plate underside | 8 ea | Amazon | $10 |
+| M6×20 SS bolts + nyloc nuts | Carriage plate, beam clamp, saddle, splice fasteners | 16 ea | McMaster-Carr | $7 |
+| Self-tapping SS screws (8-pack) | Ball-joint flange to beam top wall | 4 ea | McMaster-Carr | $5 |
+| Ø20mm ball joint, zinc socket, M12 stud | Multi-axis arm articulation | 1 ea | Amazon | $12 |
+| SS beam clamp plates (top + bottom) + spacers (40mm) | Beam to carriage plate (sandwich, bolted) | 4 ea | McMaster-Carr | $10 |
+| 6061-T6 AL round tube 25mm OD × 2mm wall, 500mm | Arm tube | 1 ea | Online Metals | $6 |
+| M6 SS hex bolt + nut | Pinch bolt for arm tube | 1 ea | McMaster-Carr | $1 |
+| Nylon zip ties, 200mm | Hose to arm tube | 6 ea | Amazon | $1 |
+| **Spray total** | | | | **$235–$299** |
+<!-- END parts:spray -->
 
 ### 6.3 Combined Total
 

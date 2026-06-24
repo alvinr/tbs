@@ -617,6 +617,30 @@ def grand_total() -> tuple[int, int, int]:
             sum(s.high for s in SECTIONS))
 
 
+# ── Registry reconciliation (parts.py is the procurement source of record) ───────────────────────
+# Each registry-backed section's firm low/high must equal the sum of its constituent registry
+# systems' parts.system_total. The mid + the scenario bands on 5a/5b/7/8/9 are costing-only (a thin
+# budgeting layer the procurement registry deliberately doesn't carry), so those are not asserted here.
+_SECTION_SYSTEMS = {
+    "1": ["container"], "2": ["interior"], "3": ["optics"], "4": ["film", "clamp"],
+    "5": ["water", "ibc-frame", "tray", "spray"], "6": ["lightlock"], "6a": ["walkway"],
+    "6b": ["swing", "door"], "6c": ["panel"], "6d": ["shelf"],
+}
+
+
+def check_registry() -> list[str]:
+    """Linter helper: every registry-backed section's (low, high) == sum of its registry systems."""
+    import parts                                                 # late import — parts imports costing
+    errs = []
+    for sid, syss in _SECTION_SYSTEMS.items():
+        sec = _sec(sid)
+        lo = sum(parts.system_total(s)[0] for s in syss)
+        hi = sum(parts.system_total(s)[1] for s in syss)
+        if (sec.low, sec.high) != (lo, hi):
+            errs.append(f"§{sid} {syss}: costing ({sec.low}, {sec.high}) != registry ({lo}, {hi})")
+    return errs
+
+
 def emit_scenario_table() -> str:
     rows = ["| Category | Low | Mid | High |", "|----------|-----|-----|------|"]
     for s in SECTIONS:
@@ -975,6 +999,15 @@ def main(argv: list[str]) -> int:
                 print("   -", p)
             return 1
         print("✓ all costing blocks match the docs")
+        return 0
+    if "--check-registry" in argv:
+        probs = check_registry()
+        if probs:
+            print("✗ section totals diverge from the parts registry (the source of record):")
+            for p in probs:
+                print("   -", p)
+            return 1
+        print("✓ every registry-backed section reconciles with parts.system_total")
         return 0
     errs = check()
     if "--check" in argv:

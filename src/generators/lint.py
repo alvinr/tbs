@@ -107,6 +107,19 @@ def warn_gallery_coverage() -> tuple[bool, list[str]]:
     return (not issues), (issues or ["every generated diagram PNG is in the all-diagrams gallery"])
 
 
+# ── WARNING: parts registry reconciles with costing (drift-reduction Phase 5). As systems are
+# migrated into parts.py, each must sum to costing.EXPECTED[system]; advisory until Phase 3 flips the
+# cost source, then it becomes the authority. ──
+def warn_parts_reconcile() -> tuple[bool, list[str]]:
+    try:
+        import parts
+    except Exception as e:                                       # parts.py not present yet
+        return True, [f"parts registry not loaded ({e})"]
+    errs = parts.self_check()
+    n = len(parts.systems())
+    return (not errs), (errs or [f"parts registry reconciles with costing ({n} system(s) migrated)"])
+
+
 # ── WARNING: markdown table arithmetic (every declared TOTAL = sum of its column) ──
 _MONEY = re.compile(r"^\*{0,2}~?\$?([\d,]+)\*{0,2}$")
 
@@ -605,6 +618,7 @@ WARNINGS = [
     ("facts-registry agreement", warn_facts),
     ("editorial-review list covers every published doc", warn_editorial_list),
     ("all-diagrams gallery covers every generated diagram PNG", warn_gallery_coverage),
+    ("parts registry reconciles with costing (migrated systems)", warn_parts_reconcile),
     ("dependencies.yml valid (script→output map matches reality)", warn_deps_valid),
     ("table arithmetic (TOTAL = sum of column)", warn_arithmetic),
     ("missing cascade (constant changed, outputs not regenerated)", warn_missing_cascade),

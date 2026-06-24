@@ -532,7 +532,7 @@ tray drainage plan and sump cross-section).
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | 304 SS sheet, 16-gauge (1.5mm), #4 brushed | 2,229 × 2,200mm panels | 2 ea | Online Metals | $720–$1,000 |
-| Fabrication (cut, brake, weld, press sump) | Two panels with center flange + sump well | 1 lot | local sheet metal | $450–$850 |
+| Fabrication (cut, brake, weld, press sump) | Two panels with center flange + sump well | 1 lot | Local sheet metal | $450–$850 |
 | HDPE flat bar, 50mm wide | Tapered shim strips, 2,200mm each | 5 ea | Online Metals | $40–$75 |
 | Loctite PL Premium construction adhesive | Shim-to-floor bond | 2 tube | Home Depot | $15 |
 | 1" SS foot valve with strainer screen | Sump pickup tube | 1 ea | Amazon | $20 |

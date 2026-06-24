@@ -640,10 +640,24 @@ def by_type() -> dict[str, list[Part]]:
     return out
 
 
+# Canonical supplier names — fold case/spelling variants so the by-supplier consolidation aggregates
+# correctly. The distinct local shops (structural fab / sheet-metal / plastic fab) stay separate —
+# they're different vendors a buyer quotes independently.
+_SUPPLIER_CANON = {
+    "local fab": "Local fab", "local": "Local fab",
+    "local sheet metal": "Local sheet metal", "lumber yard": "Lumber yard",
+    "steel service center": "Steel service center", "local depot": "Local depot",
+}
+
+
+def canon_supplier(s: str) -> str:
+    return _SUPPLIER_CANON.get(s, s)
+
+
 def by_supplier() -> dict[str, list[Part]]:
     out: dict[str, list[Part]] = {}
     for p in PARTS:
-        out.setdefault(p.supplier or "—", []).append(p)
+        out.setdefault(canon_supplier(p.supplier) or "—", []).append(p)
     return out
 
 
@@ -679,7 +693,7 @@ def emit_system(sys: str) -> str:
     for p in by_system(sys):                                    # insertion order, not type-sorted
         lo, hi = line(p)
         cost = _money(lo) if round(lo) == round(hi) else f"{_money(lo)}–{_money(hi)}"
-        sup = p.supplier + (f" / {p.supplier_alt}" if p.supplier_alt else "")
+        sup = canon_supplier(p.supplier) + (f" / {canon_supplier(p.supplier_alt)}" if p.supplier_alt else "")
         rows.append(f"| {_item_cell(p)} | {_expand(p.spec) or '—'} | {p.qty:g} {p.unit} | {sup} | {cost} |")
     lo, hi = system_total(sys)
     tot = _money(lo) if lo == hi else f"{_money(lo)}–{_money(hi)}"
@@ -701,7 +715,7 @@ def emit_master() -> str:
         agg: dict[str, dict] = {}
         for p in items:
             a = agg.setdefault(p.key, {"desc": p.desc, "qty": 0.0, "unit": p.unit,
-                                       "sup": p.supplier, "sys": set(), "lo": 0.0, "hi": 0.0})
+                                       "sup": canon_supplier(p.supplier), "sys": set(), "lo": 0.0, "hi": 0.0})
             a["qty"] += p.qty
             a["sys"].add(p.system)
             lo, hi = line(p); a["lo"] += lo; a["hi"] += hi

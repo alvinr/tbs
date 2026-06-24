@@ -75,7 +75,6 @@ nav:
       - "Tilt-Swing Front Board": tilt-swing-board-report.md
     - Misc:
       - "Walkway": walkway-report.md
-      - "Right Walkway Cantilever Study": right-walkway-cantilever-study.md
       - "Hinged Light-Trap Panel": hinged-panel-report.md
       - "Chemistry Prep Shelves": chemistry-prep-shelves.md
     - "Component Dependency Map": component-dependency-map.md
@@ -99,6 +98,7 @@ nav:
     - "Tilt & Swing Distortion Renders": tilt-swing-board-analysis.md
     - "Light Trap Selection": light-trap-selection.md
     - "Cost Analysis": cost-analysis-report.md
+    - "Right Walkway Cantilever (decision record)": right-walkway-cantilever-study.md
   - "Transportation":
     - "Options": container-transport-options.md
     - "Weight Distribution": weight-distribution-report.md

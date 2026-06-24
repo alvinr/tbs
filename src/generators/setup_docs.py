@@ -79,7 +79,7 @@ MD_FILES = [
     ("ibc-stacking-report.md",            (".",           "IBC Stacking System")),
     ("ventilation-report.md",             (".",           "Ventilation & Cooling")),
     ("walkway-report.md",                 (".",           "Walkway")),
-    ("right-walkway-cantilever-study.md", (".",           "Right Walkway Cantilever Study")),
+    ("right-walkway-cantilever-study.md", (".",           "Right Walkway Cantilever (decision record)")),
     ("plumbing-panel-report.md",         (".",           "Plumbing Panel")),
     ("all-diagrams.md",                   (".",           "All Diagrams")),
     ("mini-tbs/mini-tbs-poc.md",          ("mini-tbs",    "Mini-TBS PoC")),
@@ -366,7 +366,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Hinged Light-Trap Panel](hinged-panel-report.md) | Stepped cargo-door panel with revolving drum light trap, ~56° transport swing about the pivot, and light seal design |
 | [IBC Stacking System](ibc-stacking-report.md) | 2×2 IBC stack with welded stacking frame, external plumbing panel, and internal pipe routing |
 | [Perimeter Walkway](walkway-report.md) | 4-section walkway system — wall-cantilevered, right-end cantilever rectangle, and lift-out designs with zero tray contact |
-| [Right Walkway Cantilever Study](right-walkway-cantilever-study.md) | rev12 design study: replacing the ceiling-hung right walkway with a cantilever rectangle tied to the IBC frame + a combined corner plate shared with the bottom film rail |
+| [Right Walkway Cantilever (decision record)](right-walkway-cantilever-study.md) | Decision record (adopted, rev12): why the ceiling-hung right walkway was replaced by a cantilever rectangle tied to the IBC frame + side walls — and the first-order load check. As-built in [Walkway §4](walkway-report.md). |
 | [Plumbing Panel](plumbing-panel-report.md) | Equipment panel in IBC corridor with 5 pumps, integrated 3-stage filter unit, accumulator, valves, and pipe routing |
 | [All Diagrams](all-diagrams.md) | Complete visual gallery of every TBS-001 engineering diagram on a single page |
 

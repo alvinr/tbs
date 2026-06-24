@@ -115,10 +115,11 @@ PARTS: list[Part] = [
     # pipe+wiring+consumables; the frame/tray/spray are SEPARATE systems (their own reports). The §8
     # bundles below are placeholders pending full itemization (Increment 2). ═══
     # — storage (395–720) —
-    Part("ibc-tote-1000l", "IBC tote 1,000L (275 gal), food-grade, used/rinsed", "water-equipment",
+    Part("ibc-tote-1000l", "IBC tote (1,000 L caged)", "water-equipment",
          "water", 4, "ea", 80, 150, "Container Exchanger",
          url="https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale",
-         spec="Caged composite tote, DN50 butterfly valve (S60×6 thread); side-entry fittings near top"),
+         spec="Caged composite tote, DN50 butterfly valve (S60×6 thread); side-entry fittings near top",
+         dims="1219×1016×1168", modeled_const="IBC_W/IBC_D/IBC_H_1000", audit_status="✅ FIXED (v2)"),
     Part("bulkhead-2in", 'Bulkhead fitting 2" NPT (304 SS)', "plumbing-fittings",
          "water", 3, "ea", 25, 40, "McMaster-Carr", part_no="4464K115",
          url="https://www.mcmaster.com/4464K115", spec="External fill/drain port, welded through container wall"),
@@ -126,21 +127,27 @@ PARTS: list[Part] = [
     Part("shurflo-2088-p12", "Shurflo 2088-554-144 pump (P-01, P-02)", "water-equipment",
          "water", 2, "ea", 55, 70, "Amazon",
          url="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C",
-         spec='12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports'),
+         spec='12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports',
+         dims="216×127×114", datasheet="Shurflo 2088-554-144", modeled_const="PUMP_D×PUMP_YD_SPAN×Z",
+         audit_status="✅ FIXED (minor) — protrusion PUMP_D 100→114"),
     Part("shurflo-2088-p3", "Shurflo 2088-554-144 pump (P-03 waste evacuation)", "water-equipment",
          "water", 1, "ea", 65, 65, "Amazon", spec="12VDC, 3.5 GPM, 45 PSI; empties IBC-4 residual below X4 (~120L)"),
     Part("shurflo-2088-p4", "Shurflo 2088-554-144 pump (P-04 tray drain transfer)", "water-equipment",
          "water", 1, "ea", 65, 65, "Amazon", spec="12VDC, 3.5 GPM, 45 PSI; tray drain to IBC-3 (~900mm lift)"),
-    Part("seaflo-accumulator", "SeaFlo pressure accumulator", "water-equipment",
+    Part("seaflo-accumulator", "SeaFlo accumulator (0.75 L)", "water-equipment",
          "water", 1, "ea", 35, 35, "Amazon",
          url="https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8",
-         spec='0.75 L, 125 PSI, 1/2" MNPT'),
+         spec='0.75 L, 125 PSI, 1/2" MNPT', part_no="SFAT-075-125-01",
+         dims="200×127×125", datasheet="SeaFlo SFAT-075-125-01", modeled_const="Ø127×200 cyl",
+         audit_status="✅ FIXED — cylinder 150→200"),
     Part("shurflo-bracket", "Shurflo pump mounting bracket", "fasteners-hardware",
          "water", 4, "ea", 10, 10, "Amazon", spec="Stainless, 2088 series (3× manifold + 1× IBC corridor for P-03)"),
     # — filter (282–445) —
-    Part("bigblue-3stage", 'Big Blue 3-stage combo filter unit 4.5"×10"', "water-equipment",
+    Part("bigblue-3stage", 'Big Blue filter housing (4.5"×10")', "water-equipment",
          "water", 1, "ea", 200, 300, "Amazon", dims="Ø184×333",
-         spec='Ø184×333mm/housing, 1" NPT ports, integrated bracket (Express Water / Geekpure / iSpring)'),
+         spec='Ø184×333mm/housing, 1" NPT ports, integrated bracket (Express Water / Geekpure / iSpring)',
+         datasheet="Pentek 4.5×10 BB", modeled_const="BB_OD/BB_H",
+         audit_status="✅ FIXED — BB_OD 130→184; BoM switched to 4.5×10"),
     Part("cartridge-sediment", 'MPP 5-micron sediment cartridge 4.5"×10"', "water-equipment",
          "water", 3, "ea", 6, 10, "Amazon", spec="Melt-blown polypropylene depth filter (F-1 stage)"),
     Part("cartridge-kdf", 'KDF-55 heavy-metal cartridge 4.5"×10"', "water-equipment",
@@ -254,7 +261,9 @@ PARTS: list[Part] = [
     #   the $1/$3 report-subtotal rounding is absorbed into the AL-plate estimate so the block total
     #   matches the canonical figure) —
     Part("spray-al-shs", '6061-T6 AL SHS 1-1/2"×1-1/2"×1/8", 8 ft', "aluminum",
-         "spray", 2, "ea", 18, 28, "Online Metals", spec="40×40×3mm, joined with internal sleeve"),
+         "spray", 2, "ea", 18, 28, "Online Metals", spec="40×40×3mm, joined with internal sleeve",
+         dims="40×40×3", modeled_const="(model uses 40×40×3)",
+         audit_status='⚠ OPEN (naming) — BoM 1½×1½×⅛ vs model 40×40×3'),
     Part("spray-al-plate", '6061-T6 AL plate 3/16" (5mm)', "aluminum",
          "spray", 1, "ea", 16, 28, "Online Metals", spec="Carriage plates + spacer blocks (~300 × 500mm sheet)"),
     Part("spray-al-bar", "30×30mm AL solid bar, 150mm", "aluminum",
@@ -765,6 +774,24 @@ SYSTEM_DOC = {
 # electrical (§8 is a curated cross-system electrical+cooling summary, not a pure parts list).
 
 
+# component-dimension-audit.md §1 findings — generated from the parts carrying size data, in this
+# order. The registry IS the single source of the verified real-vs-modeled sizes; the doc's §2 detail
+# (sources, reasoning) + §3 catalog checklist + §4 decision log stay hand-maintained narrative.
+_AUDIT_ORDER = ["ibc-tote-1000l", "lifepo4-100ah", "shurflo-2088-p12", "bigblue-3stage",
+                "axial-fan-150", "evap-cooler-mc18m", "seaflo-accumulator", "spray-al-shs"]
+
+
+def emit_dimension_audit() -> str:
+    by_key = {p.key: p for p in PARTS}
+    rows = ["| # | Component | Real product (datasheet) | Modeled | Verdict |",
+            "|---|-----------|--------------------------|---------|---------|"]
+    for i, key in enumerate(_AUDIT_ORDER, 1):
+        p = by_key[key]
+        real = p.dims + (f" — {p.datasheet}" if p.datasheet else "")
+        rows.append(f"| {i} | {p.desc} | {_expand(real)} | `{p.modeled_const}` | {_expand(p.audit_status)} |")
+    return "\n".join(rows)
+
+
 def _block_pat(key: str) -> "re.Pattern":
     return re.compile(r"(<!-- BEGIN parts:" + re.escape(key) + r" -->\n)(.*?)"
                       r"(\n<!-- END parts:" + re.escape(key) + r" -->)", re.DOTALL)
@@ -772,7 +799,8 @@ def _block_pat(key: str) -> "re.Pattern":
 
 def _blocks() -> dict:
     """key -> (doc, emitter_fn). Only WIRED blocks are registered (added incrementally per phase)."""
-    b = {"master": (_DOC_MASTER, emit_master)}
+    b = {"master": (_DOC_MASTER, emit_master),
+         "dimension-audit": ("component-dimension-audit.md", emit_dimension_audit)}
     # per-system §Parts-List blocks (Phase 2b) — only those already placed in their doc.
     for sys, doc in SYSTEM_DOC.items():
         b[sys] = (doc, lambda s=sys: emit_system(s))

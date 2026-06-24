@@ -505,7 +505,6 @@ _VENT = "ventilation-report.md"
 _FPM = "film-plane-mechanism-report.md"
 _FC  = "film-clamp-mechanism-report.md"
 _TSB = "tilt-swing-board-report.md"
-_WK  = "walkway-report.md"
 _HP  = "hinged-panel-report.md"
 
 
@@ -741,9 +740,6 @@ def _inline_blocks() -> dict:
         # rest of the model reads); the §12.4 note's film-plane comparison uses film-total above.
         "front-board-total":   (_TSB, lambda: f"${FRONT_BOARD_MID:,}"),
         "front-board-total-high": (_TSB, lambda: f"${FRONT_BOARD_HIGH:,}"),
-        # walkway-report.md §10 parts-list total — the §6a WALKWAY band (low–high).
-        "walkway-total-low":   (_WK, lambda: f"${_sec('6a').low:,}"),
-        "walkway-total-high":  (_WK, lambda: f"${_sec('6a').high:,}"),
         # hinged-panel-report.md §8.1–8.5 — the panel's four assemblies (§6c / §6 / §6b-split) + total.
         "hp-panel-low":        (_HP, lambda: f"${total(PANEL)[0]:,}"),
         "hp-panel-high":       (_HP, lambda: f"${total(PANEL)[2]:,}"),

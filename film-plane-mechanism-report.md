@@ -148,35 +148,39 @@ A detailed analysis of the optical distortions can be found [here](complete-dist
 
 All items ship within the United States. Local Southern California pickup noted where available.
 
-### Structural & Rails
+<!-- BEGIN parts:film -->
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| Linear guide rail HGR20 (5901T777) | 2,200mm | 4 ea | Automation Overstock / McMaster-Carr | $180 |
+| Rail carriage HGH20CA | Flanged block | 8 ea | Automation Overstock / McMaster-Carr | $144 |
+| Acme leadscrew ¾"-6 (6289K36) | 8 ft length | 4 ea | Roton Products / McMaster-Carr | $380 |
+| Acme nut bronze ¾"-6 (6289K512) | — | 4 ea | Roton Products / McMaster-Carr | $48 |
+| Handwheel 8" dia (6440K64) | ¾" bore, cast aluminum | 4 ea | Grainger / McMaster-Carr | $140 |
+| Locking collar SS316 (6436K12) | ¾" bore | 4 ea | McMaster-Carr / Fastenal | $48 |
+| Corner bracket L-plate | ¼" alum. plate, 6"×8" | 4 ea | Metal Supermarkets / Online Metals | $80 |
+| Cross-slide rail HGR15 (Option A) | 300mm, X-Z stage | 8 ea | Automation Overstock / McMaster-Carr | $200 |
+| Cross-slide carriage HGH15CA (Option A) | Flanged block | 8 ea | Automation Overstock / McMaster-Carr | $96 |
+| Cross-slide intermediate plate (Option A) | ¼" alum., joins X slide to Z slide | 4 ea | Metal Supermarkets / Online Metals | $60 |
+| Rod-end spherical bearing (60645K73) | GIR25-DO or equiv., 25mm bore | 8 ea | McMaster-Carr / Amazon Industrial | $176 |
+| Pivot pin SS316 (98173A150) | 1" dia × 8" long | 8 ea | McMaster-Carr / Fastenal | $64 |
+| Aluminum angle 2"×2"×3/16" | 8 ft lengths | 10 ea | Metal Supermarkets / Online Metals | $220 |
+| Dibond ACM panel 4mm | 4 ft × 8 ft sheets — single rigid backing, <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->×<!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm | 6 sheet | Grimco / Signwarehouse | $510 |
+| Black EPDM foam tape 1"×½" (8614K84) | 50 ft rolls | 3 roll | McMaster-Carr / Grainger | $84 |
+| Rosco Duvetyne | 60" wide, 10 yd | 1 ea | B&H Photo / Rosco direct | $95 |
+| 6-mil black poly sheeting | 10 ft × 100 ft | 1 roll | Home Depot / Uline | $65 |
+| 2" black Gorilla Tape | 35 yd rolls | 6 roll | Home Depot / Amazon | $72 |
+| Mild steel plate 8mm (laser/plasma cut + welded) | ICP-11: back-plate + exterior plate + seat + gusset per saddle; ~21 kg over 6 saddles | 6 ea | Metal Supermarkets / Online Metals | $318 |
+| M12×90mm hex through-bolt + nut + washers, SS | ICP-12: wall sandwich through-bolt; 4/saddle ×6 + 4 spare | 28 ea | McMaster-Carr / Amazon | $70 |
+| M8×25mm knurled thumbscrew DIN 464 | ICP-13: left-rail drop-in hold-down; 2/saddle ×4 left + 4 spare | 12 ea | Amazon / Maedler | $36 |
+| M8 hex fixing bolt + nut, SS | ICP-14: right-rail permanent fixing; 2/saddle ×2 TR + spare | 8 ea | McMaster-Carr / Amazon | $16 |
+| **Film total** | | | | **$3,102** |
+<!-- END parts:film -->
 
-| Item | Spec | Qty | Source A | Source B | Est. Unit |
-|------|------|-----|---------|---------|-----------|
-| Linear guide rail HGR20 | 2,200mm | 4 | Automation Overstock, Gardena CA | McMaster-Carr #5901T777 | $45 |
-| Rail carriage HGH20CA | Flanged block | 8 | Automation Overstock / Amazon | McMaster-Carr | $18 |
-| Acme leadscrew ¾"-6 | 8 ft length | **4** | Roton Products (LA area) | McMaster-Carr #6289K36 | $95 |
-| Acme nut bronze ¾"-6 | — | 4 | Roton Products | McMaster-Carr #6289K512 | $12 |
-| Handwheel 8" dia | ¾" bore, cast aluminum | **4** | Grainger (Anaheim / LA / SD) | McMaster-Carr #6440K64 | $35 |
-| Locking collar SS316 | ¾" bore | **4** | McMaster-Carr #6436K12 | Fastenal (SoCal) | $12 |
-| Corner bracket L-plate | ¼" alum. plate, 6"×8" | 4 | Metal Supermarkets SoCal | Online Metals | $20 |
-| **Cross-slide rail HGR15 (Option A)** | 300mm, X-Z stage | **8** | Automation Overstock, Gardena CA | McMaster-Carr | $25 |
-| **Cross-slide carriage HGH15CA (Option A)** | Flanged block | **8** | Automation Overstock / Amazon | McMaster-Carr | $12 |
-| **Cross-slide intermediate plate (Option A)** | ¼" alum., joins X slide to Z slide | **4** | Metal Supermarkets SoCal | Online Metals | $15 |
-| Rod-end spherical bearing | GIR25-DO or equiv., 25mm bore | 8 | McMaster-Carr #60645K73 | Amazon Industrial | $22 |
-| Pivot pin SS316 | 1" dia × 8" long | 8 | McMaster-Carr #98173A150 | Fastenal (SoCal branches) | $8 |
-
-*Items in **bold** are new for **Option A** — the 2-axis X-Z cross-slide stage at each corner (8 slides total, ≈300mm travel) that lets the **fixed-size rigid** plane tilt/swing without stretching. The two 5,893mm T-slot beams of the original two-beam design remain removed.*
-
-### Film Plane Frame
-
-| Item | Spec | Qty | Source A | Source B | Est. Unit |
-|------|------|-----|---------|---------|-----------|
-| Aluminum angle 2"×2"×3/16" | 8 ft lengths | 10 | Metal Supermarkets SoCal | Online Metals | $22 |
-| Dibond ACM panel 4mm | 4 ft × 8 ft sheets — **single rigid backing**, <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->×<!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm | 6 | Grimco, City of Industry CA | Signwarehouse | $85 |
-| Black EPDM foam tape 1"×½" | 50 ft rolls | 3 | McMaster-Carr #8614K84 | Grainger | $28 |
-| Rosco Duvetyne | 60" wide, 10 yd | 1 | B&H Photo | Rosco direct | $95 |
-| 6-mil black poly sheeting | 10 ft × 100 ft | 1 | Home Depot (local, all SoCal) | Uline | $65 |
-| 2" black Gorilla Tape | 35 yd rolls | 6 | Home Depot / Target (local) | Amazon | $12 |
+*The cross-slide rails/carriages/intermediate plates (HGR15) are the **Option A** additions — the
+2-axis X–Z cross-slide stage at each corner (8 slides total, ≈300mm travel) that lets the
+**fixed-size rigid** plane tilt/swing without stretching. The two 5,893mm T-slot beams of the
+original two-beam design remain removed. The wall-seat saddles (ICP-11–14) are itemized in the
+table above; see below for their design.*
 
 ### Wall-Seat Saddles
 
@@ -188,15 +192,9 @@ Each of the **8 rail ends** anchors to the container — **6 of them** with a st
 
 **Transport mode.** The film-plane left rail is **continuous** (no demountable center segment): the light lock (Ø900 housing + drum) is offset (`DRUM_CX = −400`) and exits through the hinge-panel punch-out bay rather than rotating within the rail span. For *transport*, the panel + drum **SWING ~56°** about the pivot and the drum cage transitions X=150, so the **two left film rails (TL + BL) and the muslin screen are struck first** — the left rails lift out of their thumb-screw saddles and re-seat to the film datum on re-deployment — see [Hinged Panel Report](hinged-panel-report.md) §5.4 for the conversion sequence.
 
-| Item | ICP # | Spec | Qty | Source A | Source B | Est. Unit |
-|------|-------|------|-----|---------|---------|-----------|
-| Mild steel plate 8mm (laser/plasma cut + welded) | ICP-11 | back-plate + exterior plate + seat + gusset per saddle; ~21 kg total over 6 saddles | 6 saddles | [Metal Supermarkets SoCal](https://www.metalsupermarkets.com/product/mild-steel-plate/) | [Online Metals — A36 steel plate](https://www.onlinemetals.com/en/buy/carbon-steel) | ~$53/saddle est. |
-| Combined corner plate, 10mm (BR, near + far) | ICP-11b | Shared with the right walkway — carries the BR film rail (150mm seat) + walkway right beam (70mm seat). **Counted in the walkway BoM** (master-shopping-list §7b) — not re-costed here. | 2 (ref) | [Metal Supermarkets SoCal](https://www.metalsupermarkets.com/product/mild-steel-plate/) | [Online Metals — A36 steel plate](https://www.onlinemetals.com/en/buy/carbon-steel) | (walkway BoM) |
-| M12×90mm hex through-bolt + nut + washers, SS | ICP-12 | Wall sandwich through-bolt (interior↔exterior plate); 4 per saddle × 6 = 24 + 4 spare | 28 | [McMaster-Carr — A2 cap screws](https://www.mcmaster.com/products/screws/) | [Amazon — M12 stainless bolts](https://www.amazon.com/s?k=m12+stainless+bolt+90mm) | ~$2.50 est. |
-| M8×25mm knurled thumbscrew DIN 464 | ICP-13 | Left-rail drop-in hold-down (lifts out for drum swing); 2 per saddle × 4 left saddles = 8 + 4 spare | 12 | [Amazon — DIN 464 M8 knurled SS](https://www.amazon.com/knurled-thumb-screws-din-464/s?k=knurled+thumb+screws+din+464) | [Maedler North America — DIN 464 M8 SS](https://maedlernorthamerica.com/partshop/knurled-thumb-screw-din-464-m8-x-20mm-long-stainless-steel-1-4305-pn-65499225/) | ~$3 est. |
-| M8 hex fixing bolt + nut, SS | ICP-14 | Right-rail permanent fixing (TR rail bolted to seat; BR is fixed by the combined plate); 2 per saddle × 2 TR saddles = 4 + spare | 8 | [McMaster-Carr — A2 stainless](https://www.mcmaster.com/products/screws/) | [Amazon — M8 stainless bolts](https://www.amazon.com/s?k=m8+stainless+bolt) | ~$2 est. |
 
-*Quantities: 6 standalone saddles + 2 combined corner plates = 4 rail corners × near + far wall. The 2 bottom-right (BR) ends use the combined corner plate (carried in the walkway BoM), leaving 6 standalone saddles here. Each saddle: 1 back-plate + 1 exterior plate + 1 seat + 1 gusset (8mm plate) + 4× M12 through-bolts. Hold-downs: thumb screws on the 4 left saddles (8), hex fixing bolts on the 2 TR saddles (4). Subtotal ~$470 — roughly cost-neutral with the retired brace cage (the combined plates shift ~$130 of plate/bolt cost into the walkway BoM).*
+
+*Quantities: 6 standalone saddles + 2 combined corner plates = 4 rail corners × near + far wall. The 2 bottom-right (BR) ends use the combined corner plate (carried in the walkway BoM), leaving 6 standalone saddles here. Each saddle: 1 back-plate + 1 exterior plate + 1 seat + 1 gusset (8mm plate) + 4× M12 through-bolts. Hold-downs: thumb screws on the 4 left saddles (8), hex fixing bolts on the 2 TR saddles (4). Subtotal ~$440 (6 saddles) — roughly cost-neutral with the retired brace cage (the combined plates shift ~$130 of plate/bolt cost into the walkway BoM).*
 
 ### Muslin Clamp System
 
@@ -210,7 +208,7 @@ See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) f
 | 12V 30A power supply | Enclosed | 1 | Mouser | Digi-Key | $55 |
 | DPDT momentary rocker | Panel-mount, 20A | **4** | Mouser | Grainger | $8 |
 
-**Estimated materials total (manual actuation, incl. wall-seat saddles + Option A cross-slides): ~<!-- BEGIN costing:film-total -->$3,538<!-- END costing:film-total -->** (rev 12: the 2 BR saddles move to the walkway's combined corner plates)
+**Estimated materials total (manual actuation, incl. wall-seat saddles + Option A cross-slides): ~<!-- BEGIN costing:film-total -->$3,448<!-- END costing:film-total -->** (rev 12: the 2 BR saddles move to the walkway's combined corner plates)
 *Excludes fasteners, fabrication labor, and electric actuation option.*
 *Option A net change vs the earlier four-corner design: added 8 cross-slide rails +$200, 8 cross-slide carriages +$96, 4 intermediate plates +$60 (= +$356); removed the folding-backing piano hinge –$56 → net +$300. The single rigid ACM backing replaces the hinged two-panel system.*
 

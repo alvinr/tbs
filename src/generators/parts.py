@@ -420,34 +420,62 @@ PARTS: list[Part] = [
     Part("shutter-plate", "Shutter plate (⅛ steel 10×8) + slide channel", "steel-structural",
          "optics", 1, "ea", 25, 50, "local fab"),
 
-    # ═══ film (§4) — mirrors costing.FILM → exact $3,538–$4,088 ═══
-    Part("hgr20-rails-carriages", "Linear guide rails HGR20 2,200mm (×4) + carriages HGH20CA (×8)",
-         "bearings-motion", "film", 1, "set", 324, 324, "Amazon", "Automation Overstock",
-         note="2 carriages per rail"),
-    Part("acme-leadscrews", 'Acme leadscrews ¾"-6 8 ft (×4) + bronze nuts (×4)', "bearings-motion",
-         "film", 1, "set", 428, 428, "McMaster-Carr", note="manual handwheel drive"),
-    Part("handwheels-collars", 'Handwheels 8" (×4) + locking collars SS316 (×4)', "bearings-motion",
-         "film", 1, "set", 188, 188, "McMaster-Carr"),
-    Part("corner-l-plates", 'Corner bracket L-plates, ¼" alum 6×8 (×4)', "aluminum",
-         "film", 4, "ea", 20, 20, "Online Metals"),
-    Part("crossslide-hgr15", "Option-A cross-slides — HGR15 rails (×8) + HGH15CA (×8) + intermediate plates (×4)",
-         "bearings-motion", "film", 1, "set", 356, 356, "Amazon", note="floating-corner X–Z stage"),
-    Part("rod-end-bearings", "Rod-end spherical bearings GIR25-DO (×8) + pivot pins SS316 (×8)",
-         "bearings-motion", "film", 1, "set", 240, 240, "McMaster-Carr"),
-    Part("alu-angle-2x2", "Aluminum angle 2×2×3/16 8 ft (×10)", "aluminum",
-         "film", 10, "ea", 22, 22, "Online Metals"),
-    Part("dibond-acm-film", "Dibond ACM 4mm 4×8 sheets (×6) — single rigid plane", "plastics-sheet",
-         "film", 6, "sheet", 85, 85, "TAP Plastics", note="Option A: no folding hinge"),
-    Part("light-seal-set-film", "Light-seal set — EPDM tape (×3) + Rosco Duvetyne + 6-mil poly + Gorilla tape (×6)",
-         "seals-gaskets", "film", 1, "set", 316, 316, "Rosco", "McMaster-Carr"),
+    # ═══ film (film-plane-mechanism-report §7) — itemized; structural+frame+saddles, sums to costing
+    # FILM minus the clamp lines (= 3,102). The muslin clamps are the separate 'clamp' system below. ═══
+    # — Structural & Rails (1,616) —
+    Part("hgr20-rail", "Linear guide rail HGR20", "bearings-motion",
+         "film", 4, "ea", 45, 45, "Automation Overstock", "McMaster-Carr", part_no="5901T777", spec="2,200mm"),
+    Part("hgh20ca-carriage", "Rail carriage HGH20CA", "bearings-motion",
+         "film", 8, "ea", 18, 18, "Automation Overstock", "McMaster-Carr", spec="Flanged block"),
+    Part("acme-leadscrew", 'Acme leadscrew ¾"-6', "bearings-motion",
+         "film", 4, "ea", 95, 95, "Roton Products", "McMaster-Carr", part_no="6289K36", spec="8 ft length"),
+    Part("acme-nut", 'Acme nut bronze ¾"-6', "bearings-motion",
+         "film", 4, "ea", 12, 12, "Roton Products", "McMaster-Carr", part_no="6289K512"),
+    Part("handwheel-8in", 'Handwheel 8" dia', "bearings-motion",
+         "film", 4, "ea", 35, 35, "Grainger", "McMaster-Carr", part_no="6440K64", spec='¾" bore, cast aluminum'),
+    Part("locking-collar", "Locking collar SS316", "bearings-motion",
+         "film", 4, "ea", 12, 12, "McMaster-Carr", "Fastenal", part_no="6436K12", spec='¾" bore'),
+    Part("corner-l-plate", "Corner bracket L-plate", "aluminum",
+         "film", 4, "ea", 20, 20, "Metal Supermarkets", "Online Metals", spec='¼" alum. plate, 6"×8"'),
+    Part("crossslide-hgr15", "Cross-slide rail HGR15 (Option A)", "bearings-motion",
+         "film", 8, "ea", 25, 25, "Automation Overstock", "McMaster-Carr", spec="300mm, X-Z stage"),
+    Part("crossslide-hgh15ca", "Cross-slide carriage HGH15CA (Option A)", "bearings-motion",
+         "film", 8, "ea", 12, 12, "Automation Overstock", "McMaster-Carr", spec="Flanged block"),
+    Part("crossslide-plate", "Cross-slide intermediate plate (Option A)", "aluminum",
+         "film", 4, "ea", 15, 15, "Metal Supermarkets", "Online Metals", spec='¼" alum., joins X slide to Z slide'),
+    Part("rod-end-bearing", "Rod-end spherical bearing", "bearings-motion",
+         "film", 8, "ea", 22, 22, "McMaster-Carr", "Amazon Industrial", part_no="60645K73", spec="GIR25-DO or equiv., 25mm bore"),
+    Part("pivot-pin", "Pivot pin SS316", "fasteners-hardware",
+         "film", 8, "ea", 8, 8, "McMaster-Carr", "Fastenal", part_no="98173A150", spec='1" dia × 8" long'),
+    # — Film Plane Frame (1,046) —
+    Part("alu-angle-2x2", 'Aluminum angle 2"×2"×3/16"', "aluminum",
+         "film", 10, "ea", 22, 22, "Metal Supermarkets", "Online Metals", spec="8 ft lengths"),
+    Part("dibond-acm-film", "Dibond ACM panel 4mm", "plastics-sheet",
+         "film", 6, "sheet", 85, 85, "Grimco", "Signwarehouse",
+         spec="4 ft × 8 ft sheets — single rigid backing, {{fact:film_plane_width_mm}}×{{fact:film_plane_height_mm}}mm"),
+    Part("epdm-foam-tape", 'Black EPDM foam tape 1"×½"', "seals-gaskets",
+         "film", 3, "roll", 28, 28, "McMaster-Carr", "Grainger", part_no="8614K84", spec="50 ft rolls"),
+    Part("rosco-duvetyne", "Rosco Duvetyne", "fabric-textile",
+         "film", 1, "ea", 95, 95, "B&H Photo", "Rosco direct", spec='60" wide, 10 yd'),
+    Part("poly-sheeting-film", "6-mil black poly sheeting", "tools-safety",
+         "film", 1, "roll", 65, 65, "Home Depot", "Uline", spec="10 ft × 100 ft"),
+    Part("gorilla-tape", '2" black Gorilla Tape', "adhesives-finishes",
+         "film", 6, "roll", 12, 12, "Home Depot", "Amazon", spec="35 yd rolls"),
+    # — Wall-Seat Saddles (440; rev12 ×6, the 2 BR ends are walkway combined plates) —
+    Part("wall-seat-saddle", "Mild steel plate 8mm (laser/plasma cut + welded)", "steel-structural",
+         "film", 6, "ea", 53, 53, "Metal Supermarkets", "Online Metals",
+         spec="ICP-11: back-plate + exterior plate + seat + gusset per saddle; ~21 kg over 6 saddles"),
+    Part("saddle-m12-bolt", "M12×90mm hex through-bolt + nut + washers, SS", "fasteners-hardware",
+         "film", 28, "ea", 2.5, 2.5, "McMaster-Carr", "Amazon", spec="ICP-12: wall sandwich through-bolt; 4/saddle ×6 + 4 spare"),
+    Part("saddle-m8-thumb", "M8×25mm knurled thumbscrew DIN 464", "fasteners-hardware",
+         "film", 12, "ea", 3, 3, "Amazon", "Maedler", spec="ICP-13: left-rail drop-in hold-down; 2/saddle ×4 left + 4 spare"),
+    Part("saddle-m8-hex", "M8 hex fixing bolt + nut, SS", "fasteners-hardware",
+         "film", 8, "ea", 2, 2, "McMaster-Carr", "Amazon", spec="ICP-14: right-rail permanent fixing; 2/saddle ×2 TR + spare"),
+    # ═══ clamp (film-clamp-mechanism-report) — split out of FILM (the muslin clamp system) ═══
     Part("cam-lever-clamps", "Cam-lever spring clamps, muslin (×92)", "fasteners-hardware",
-         "film", 92, "ea", 3, 8, "Amazon", note="$3/$8 ea — the section's main Low/High driver"),
+         "clamp", 92, "ea", 3, 8, "Amazon", note="$3/$8 ea — the section's main Low/High driver"),
     Part("clamp-mounting-hw", "Clamp mounting — M5×16 SS bolts/Nylocks (×184+184) + neoprene jaw strip",
-         "fasteners-hardware", "film", 1, "lot", 70, 70, "McMaster-Carr"),
-    Part("wall-seat-saddles", "Wall-seat saddles ×8 — 8mm steel plate, cut + welded (ICP-11)", "steel-structural",
-         "film", 8, "ea", 47.5, 58.75, "local fab", note="~28 kg total; back-plate + seat + gusset"),
-    Part("saddle-fasteners", "Saddle fasteners — M12 through-bolts (×36) + M8 thumbscrews (×12) + M8 rail bolts (×12)",
-         "fasteners-hardware", "film", 1, "lot", 150, 150, "McMaster-Carr", note="ICP-12/13/14"),
+         "fasteners-hardware", "clamp", 1, "lot", 70, 70, "McMaster-Carr"),
 
     # ═══ lightlock (§7) — mirrors costing.LIGHTLOCK → exact $1,385–$2,070 ═══
     Part("ll-hdpe-housing", "5mm UV-stabilized HDPE — Ø900 housing shell (~7 m²)", "plastics-sheet",
@@ -765,31 +793,38 @@ def reconcile_key(sys: str) -> str:
 # costing's monolithic WATER list spans four reports; the registry splits it into four systems, each
 # reconciled to its slice of WATER (the §8 group = WATER minus frame/tray/spray).
 _WATER_SPLIT = {"ibc-frame": "IBC stacking frame", "tray": "Processing tray", "spray": "Spray bar"}
+# costing.FILM bundles the muslin clamps (which physically live in film-clamp-mechanism-report); the
+# registry splits them into a 'clamp' system, leaving 'film' = FILM minus these two lines.
+_CLAMP_LINES = ("Cam-lever spring clamps", "Clamp mounting")
 
 
-def _water_line(prefix: str):
-    return next(li for li in costing.WATER if li.label.startswith(prefix))
+def _split_sum(lst, prefixes, keep: bool):
+    sel = [li for li in lst if any(li.label.startswith(p) for p in prefixes) == keep]
+    return (sum(li.low for li in sel), sum(li.high for li in sel))
 
 
 def reconcile_target(sys: str):
     """The (low, high) the registry system must sum to."""
     if sys in _WATER_SPLIT:
-        li = _water_line(_WATER_SPLIT[sys])
+        li = next(l for l in costing.WATER if l.label.startswith(_WATER_SPLIT[sys]))
         return (li.low, li.high)
     if sys == "water":                                          # WATER minus the three split-out lines
-        rest = [li for li in costing.WATER
-                if not any(li.label.startswith(p) for p in _WATER_SPLIT.values())]
-        return (sum(li.low for li in rest), sum(li.high for li in rest))
+        return _split_sum(costing.WATER, _WATER_SPLIT.values(), keep=False)
+    if sys == "clamp":                                          # the two clamp lines of FILM
+        return _split_sum(costing.FILM, _CLAMP_LINES, keep=True)
+    if sys == "film":                                           # FILM minus the clamp lines
+        return _split_sum(costing.FILM, _CLAMP_LINES, keep=False)
     exp = costing.EXPECTED[reconcile_key(sys)]
     return (exp[0], exp[2]) if len(exp) == 3 else exp
 
 
 def self_check() -> list[str]:
     """Every migrated system must sum to its costing reconcile target (±$10 absorbs rounding)."""
+    special = set(_WATER_SPLIT) | {"water", "clamp", "film"}    # reconciled to costing line slices
     errs = []
     for sys in systems():
         key = reconcile_key(sys)
-        if sys not in _WATER_SPLIT and sys != "water" and key not in costing.EXPECTED:
+        if sys not in special and key not in costing.EXPECTED:
             errs.append(f"{sys}: no costing.EXPECTED['{key}'] to reconcile against")
             continue
         tgt = reconcile_target(sys)

@@ -306,9 +306,6 @@ for fname, fdesc, fz in filter_specs:
 ax.text(sx(FILT_COL), sz(F03_Z - 20),
         "FILTER SKID (×3)", ha="center", va="top",
         fontsize=6, color=C_FILTER, fontweight="bold", zorder=10, **FONT)
-ax.text(sx(FILT_COL), sz(F03_Z - 45),
-        "SUMP DOWN", ha="center", va="top",
-        fontsize=5, color=C_FILTER, zorder=10, **FONT)
 
 # Pump zone (top — spans both columns)
 ax.text(sx(PANEL_W / 2), sz(P01_Z - 30),
@@ -664,8 +661,8 @@ ax.text(sx(EXIT_R + 5), sz(_P05_DISCH_Z),
 # ═══════════════════════════════════════════════════════════════════════════
 
 # Panel width (Yd span)
-draw_dim_h(ax, sx(0), sx(PANEL_W), sz(-40),
-           f"{PANEL_W}", offset=4.8, fs=7, color=C_DIM, font=FONT)
+draw_dim_h(ax, sx(0), sx(PANEL_W), sz(-50),
+           f"{PANEL_W}", offset=4.8, fs=6, color=C_DIM, font=FONT)
 
 # Pump body width
 draw_dim_h(ax, sx(PUMP_COL - PUMP_W / 2), sx(PUMP_COL + PUMP_W / 2),
@@ -678,13 +675,13 @@ draw_dim_h(ax, sx(FILT_COL - FILT_OD / 2), sx(FILT_COL + FILT_OD / 2),
            f"O/{FILT_OD}", offset=3.2, fs=5.5, color=C_FILTER, font=FONT)
 
 # Filter housing height (single — bottom filter)
-draw_dim_v(ax, sx(FILT_COL + FILT_OD / 2 + 20),
+draw_dim_v(ax, sx(FILT_COL - FILT_OD / 2 - 20),
            sz(F03_Z), sz(F03_Z + FILT_H),
            f"{FILT_H}", offset=6.4, fs=6, color=C_FILTER,
            right=True, font=FONT)
 
 # Filter stack height (full)
-draw_dim_v(ax, sx(FILT_COL + FILT_OD / 2 + 50),
+draw_dim_v(ax, sx(FILT_COL + FILT_OD / 2 + 70),
            sz(F03_Z), sz(FILT_STACK_TOP),
            f"{FILT_STACK_TOP}", offset=6.4, fs=6, color=C_DIM,
            right=True, font=FONT)
@@ -725,8 +722,8 @@ leader(ax,
 
 # ACC-01
 leader(ax,
-       sx(ACC_YD + ACC_OD / 2), sz(ACC_BODY_Z + ACC_LEN / 2),
-       sx(PANEL_W + 40), sz(ACC_BODY_Z + ACC_LEN / 2 + 60),
+       sx(ACC_YD - ACC_OD / 2), sz(ACC_BODY_Z + ACC_LEN / 2),
+       sx(ACC_YD - 200), sz(ACC_BODY_Z + ACC_LEN / 2 + 60),
        "ACC-01: 0.75L ACCUM.\nO/127 × 150mm\n1/2\" MNPT (bottom)",
        fs=5.5, color=C_BLUE_EC, font=FONT)
 
@@ -741,7 +738,7 @@ leader(ax,
 max_depth = max(PUMP_D, FILT_OD)
 leader(ax,
        sx(PUMP_COL), sz(PANEL_H + 10),
-       sx(X_SHOW_L + 10), sz(PANEL_H + 40),
+       sx(X_SHOW_L + 50), sz(PANEL_H + 40),
        f"MAX PROTRUSION: {max_depth}mm\nFROM PANEL FACE (in -X)",
        fs=5.5, color=C_NEW, font=FONT)
 
@@ -1050,7 +1047,7 @@ for _ly, _ltxt in [(-D_PANEL_T / 2, "18mm\nPANEL"),
             color=C_DIM, lw=0.4, ls=":", zorder=2)
 
 # Section description
-ax.text(det_y(80), det_z(_sump_bot_z - 50),
+ax.text(det_y(80), det_z(_sump_bot_z - 70),
         "SECTION THROUGH FILTER HEAD\nPERPENDICULAR TO PANEL\nAT PORT HEIGHT\n(4.5\"×10\" BIG BLUE — SUMP-DOWN)",
         ha="center", va="top",
         fontsize=4.5, color="#666666", style="italic", zorder=10, **FONT)

@@ -140,7 +140,7 @@ The six achievable flat configurations (C0–C5) on a checker grid (D = 8,000mm)
 
 ![Distortion summary](assets/film-plane-distortion-summary.png)
 
-A detailed analysis of the optical distortions can be found [here](complete-distortion-renders.md#1-film-plane-distortion-renders).
+A detailed analysis of the optical distortions can be found [here](distortion-renders.md#1-film-plane-distortion-renders).
 
 ---
 

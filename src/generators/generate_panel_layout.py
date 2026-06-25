@@ -491,6 +491,21 @@ ax.text(sx(EXIT_R + 5), sz(F03_HEAD_Z),
         "FILTERED\nTO IBC-1\n(REUSE)", ha="left", va="center",
         fontsize=5.5, color=C_BROWN, zorder=10, **FONT)
 
+# SV-01 pH sample tap — branch DOWN off the filtered F-03 output line (valve + downturned spout)
+SV01_YD = F_OUT_YD + (EXIT_R - F_OUT_YD) * 0.5
+SV01_Z  = F03_HEAD_Z - 95
+draw_pipe_path(ax,
+    [SV01_YD, SV01_YD],
+    [F03_HEAD_Z, SV01_Z + BV_R],
+    PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN + 0.5)
+draw_ball_valve(SV01_YD, SV01_Z, "SV\n01", C_BROWN)
+# downturned spout below the valve — sample draws into a cup
+ax.annotate("", xy=(sx(SV01_YD), sz(SV01_Z - BV_R - 35)),
+            xytext=(sx(SV01_YD), sz(SV01_Z - BV_R)),
+            arrowprops=dict(**_arrow_kw, color=C_BROWN), zorder=11)
+ax.text(sx(SV01_YD - 8), sz(SV01_Z), "SV-01\npH SAMPLE\nTAP", ha="right", va="center",
+        fontsize=5, color=C_BROWN, zorder=10, **FONT)
+
 
 # ════════════════════════════════════════════════════════════════
 #  TRAY DRAIN / BLACK SYSTEM (C_BLACK_SYS)

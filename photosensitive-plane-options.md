@@ -3,14 +3,14 @@
 # Photosensitive Options
 ## The Big Shoebox Project (TBS-001) — Image Plane Material Selection Guide
 
-**Image plane dimensions (active):** <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm (~14′ 9″ × 7′ 10″)  
-**Container interior:** <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm --> × 2,388mm (19′ 4″ × 7′ 10″) — end zones occupied by equipment  
-**Image plane area:** ~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft (10.7 m²)  
+**Image plane dimensions (active):** <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm (~14′ 9″ × 7′ 10″)
+**Container interior:** <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm --> × 2,388mm (19′ 4″ × 7′ 10″) — end zones occupied by equipment
+**Image plane area:** ~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft (10.7 m²)
 **Camera configuration:** Option B (side-to-side), f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm, f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number -->, pinhole Ø <!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm
 
 ---
 
-## Executive Summary
+## Summary
 
 Eight photosensitive processes were evaluated for a ~116 sq ft (<!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm) active image plane at f/1088 in full sunlight. The analysis covers per-image cost, chemistry sourcing, mounting method, spectral response to natural light, and ISO equivalent — the last being the single most consequential variable for practical operation of this camera.
 
@@ -43,7 +43,7 @@ For portraiture, the practical ranking for tonal fidelity is: **Ilford Multigrad
 
 | Goal | Process | Reason |
 |---|---|---|
-| **TBS-001 selected process** | Cyanotype (Ware New Cyanotype formula on cotton muslin) | ~<!-- BEGIN costing:s73-pp-std -->$36<!-- END costing:s73-pp-std -->/print (Standard ½-Ware; <!-- BEGIN costing:s73-pp-range -->$27–63<!-- END costing:s73-pp-range --> by tier); ~30–45 min exposure at f/1088; water development only; no silver, no fixer, no darkroom; archival permanence; iron-based — no reciprocity failure |
+| **TBS-001 selected process** | Cyanotype (Ware formula) | ~<!-- BEGIN costing:s73-pp-std -->$36<!-- END costing:s73-pp-std -->/print (Standard ½-Ware; <!-- BEGIN costing:s73-pp-range -->$27–63<!-- END costing:s73-pp-range --> by tier); ~30–45 min exposure at f/1088; water development only; no silver, no fixer, no darkroom; archival permanence; iron-based — no reciprocity failure |
 | **Best all-round portrait result** | Ilford Multigrade RC paper | ISO 6; ~43 min; best tonal fidelity of non-film options; proven at scale |
 | **Lowest cost, repeatable experimentation** | Cyanotype (Ware formula) | ~<!-- BEGIN costing:s73-pp-std -->$36<!-- END costing:s73-pp-std -->/image; no fixer; no darkroom for processing; home chemistry; archival |
 | **Shortest exposures, practical subject movement** | Orthochromatic X-ray film | ISO 200–800; sub-2-minute exposures; operationally complex at scale |
@@ -81,8 +81,8 @@ Processes are ordered roughly by per-image cost (historic processes first, then 
 
 ## 1. Cyanotype
 
-**Estimated per-image cost: ~<!-- BEGIN costing:s73-pp-std -->$36<!-- END costing:s73-pp-std --> (Standard ½-Ware; <!-- BEGIN costing:s73-pp-range -->$27–63<!-- END costing:s73-pp-range --> by tier)**  
-**Darkroom required for processing: No**  
+**Estimated per-image cost: ~<!-- BEGIN costing:s73-pp-std -->$36<!-- END costing:s73-pp-std --> (Standard ½-Ware; <!-- BEGIN costing:s73-pp-range -->$27–63<!-- END costing:s73-pp-range --> by tier)**
+**Darkroom required for processing: No**
 **Home-makeable chemistry: Yes**
 
 ### Background
@@ -121,7 +121,7 @@ Coverage: approximately 1–1.5 ml of mixed solution per 50 cm², or ~2 ml/sq ft
 | Distilled water | 2–3 liters | Negligible | — |
 | **Chemistry total (Ware)** | | | **~$30** |
 
-**Source:** Photographers' Formulary and Bostick & Sullivan (photoformulary.com, bostick-sullivan.com). AmFe ~$35/lb as of 2026.  
+**Source:** Photographers' Formulary and Bostick & Sullivan (photoformulary.com, bostick-sullivan.com). AmFe ~$35/lb as of 2026.
 **Source for potassium ferricyanide:** Bostick & Sullivan; ~$24.29/kg.
 
 ### Substrate Options and Costs
@@ -163,8 +163,8 @@ Coverage: approximately 1–1.5 ml of mixed solution per 50 cm², or ~2 ml/sq ft
 
 ## 2. Gum Bichromate
 
-**Estimated per-image cost: ~$61–81 total (single coat)**  
-**Darkroom required for processing: No**  
+**Estimated per-image cost: ~$61–81 total (single coat)**
+**Darkroom required for processing: No**
 **Home-makeable chemistry: Yes**
 
 ### Background
@@ -218,8 +218,8 @@ Same options as cyanotype; cotton fabric or heavy watercolor paper. The gum arab
 
 ## 3. Salt Print
 
-**Estimated per-image cost: ~$280–$360 total (silver-dominated)**  
-**Darkroom required for processing: Yes (for loading; processing can be done in subdued light)**  
+**Estimated per-image cost: ~$280–$360 total (silver-dominated)**
+**Darkroom required for processing: Yes (for loading; processing can be done in subdued light)**
 **Home-makeable chemistry: Yes**
 
 ### Background
@@ -274,8 +274,8 @@ Identical to cyanotype in principle. Sensitized sheets/panels must be loaded in 
 
 ## 4. Van Dyke Brown
 
-**Estimated per-image cost: ~$121–$206 total**  
-**Darkroom required for processing: Yes (loading)**  
+**Estimated per-image cost: ~$121–$206 total**
+**Darkroom required for processing: Yes (loading)**
 **Home-makeable chemistry: Yes**
 
 ### Background
@@ -321,8 +321,8 @@ At 10 g AgNO₃ per 100 ml solution: **28 g silver nitrate** for single coat.
 
 ## 5. Commercial Silver Gelatin Paper — Ilford Multigrade RC Rolls
 
-**Estimated per-image cost: $380–$520 total**  
-**Darkroom required for processing: Yes (loading and development)**  
+**Estimated per-image cost: $380–$520 total**
+**Darkroom required for processing: Yes (loading and development)**
 **Home-makeable chemistry: No — commercial product**
 
 ### Product Specification
@@ -342,10 +342,10 @@ Ilford Multigrade V RC Deluxe is the industry-standard enlarging paper and the m
 
 ### Coverage Calculation
 
-Active image plane: 4,499mm wide × 2,388mm tall.  
-Paper roll width: 1,270mm (50").  
-Number of strips needed: ⌈4,499 / 1,270⌉ = **4 strips** (covers 5,080mm — 581mm spare).  
-Each strip height: 2,388mm (~7.84 ft), cut from the 30.5 m roll.  
+Active image plane: 4,499mm wide × 2,388mm tall.
+Paper roll width: 1,270mm (50").
+Number of strips needed: ⌈4,499 / 1,270⌉ = **4 strips** (covers 5,080mm — 581mm spare).
+Each strip height: 2,388mm (~7.84 ft), cut from the 30.5 m roll.
 Strips from one roll: ⌊30,500 / 2,388⌋ = **12 strips per roll** → **3 complete images per roll** (with ~1,300mm of roll remaining).
 
 ### Material Cost
@@ -394,8 +394,8 @@ Five vertical strips require four seams across the image. Options:
 
 ## 6. Liquid Light Gelatin Emulsion on Custom Substrate
 
-**Estimated per-image cost: $480–$700 total**  
-**Darkroom required for processing: Yes (loading and processing)**  
+**Estimated per-image cost: $480–$700 total**
+**Darkroom required for processing: Yes (loading and processing)**
 **Home-makeable chemistry: Partially — commercial emulsion on custom substrate**
 
 ### Product
@@ -414,10 +414,10 @@ Rockland Colloid Liquid Light (LLE series) is a liquid silver gelatin emulsion t
 
 ### Coverage and Cost
 
-For 116 sq ft at 1.5 sq ft/oz (single coat): **~94 oz required**.  
+For 116 sq ft at 1.5 sq ft/oz (single coat): **~94 oz required**.
 Double coat (recommended for density): **~188 oz**.
 
-Liquid Light retail: approximately **$25–30 per 8 oz (237 ml) bottle**.  
+Liquid Light retail: approximately **$25–30 per 8 oz (237 ml) bottle**.
 For double coat: 188 oz ÷ 8 oz/bottle = 23.5 bottles → **~$590–705 in emulsion alone**.
 
 This is the most expensive material option and is primarily justified by the unique aesthetic possibilities of the substrate (see below).
@@ -458,8 +458,8 @@ This is the most expensive material option and is primarily justified by the uni
 
 ## 7. X-Ray Film (Large Format)
 
-**Estimated per-image cost: $600–$900 total**  
-**Darkroom required for processing: Yes (loading and processing)**  
+**Estimated per-image cost: $600–$900 total**
+**Darkroom required for processing: Yes (loading and processing)**
 **Home-makeable chemistry: Partially (standard B&W chemistry)**
 
 ### Product
@@ -489,7 +489,7 @@ X-ray film is double-coated — emulsion on both sides. Wet processing produces 
 
 ## 8. Film (Sheet/Roll) — Cost Outlier
 
-**Estimated per-image cost: $2,000–$8,000+**  
+**Estimated per-image cost: $2,000–$8,000+**
 **Included for completeness; not recommended as primary medium**
 
 Covering 116 sq ft with photographic film at any standard format produces costs that are an order of magnitude higher than paper-based options:
@@ -559,10 +559,10 @@ The central variable is the **spectral sensitivity** of each photosensitive mate
 
 ### A.1 Cyanotype
 
-**Sensitive wavelengths:** UV (300–400 nm) and short-wave blue (400–450 nm) only.  
-**Blind to:** Green (500–565 nm), yellow, orange, red.  
-**Safelight:** Yellow-green (Wratten OC or equivalent) is safe; red is safe.  
-**ISO equivalent:** ~1–2 (Herschel standard formula); ~2–4 (Ware improved formula).  
+**Sensitive wavelengths:** UV (300–400 nm) and short-wave blue (400–450 nm) only.
+**Blind to:** Green (500–565 nm), yellow, orange, red.
+**Safelight:** Yellow-green (Wratten OC or equivalent) is safe; red is safe.
+**ISO equivalent:** ~1–2 (Herschel standard formula); ~2–4 (Ware improved formula).
 **Corrected exposure at f/1088, full sun:** ~30–45 min (Ware formula, selected) to ~2–4 hours (Herschel).
 
 **Source for ISO figures:** Practitioner consensus documented across pinhole photography literature, including Renner, E., *Pinhole Photography*, 4th ed., Focal Press, 2009, and Ware, M., *Cyanotype*, 1999. Cyanotype ISO is highly UV-condition-dependent — hazy sky, low sun angle, or high latitude dramatically increases actual exposure time beyond calculated values. ISO figures assume direct overhead summer sun.
@@ -596,10 +596,10 @@ Cyanotype has a relatively compressed tonal range (short scale). It produces str
 
 ### A.2 Gum Bichromate
 
-**Sensitive wavelengths:** UV (300–400 nm) and short-wave blue (400–460 nm).  
-**Blind to:** Green, yellow, orange, red.  
-**Safelight:** Red safelight is safe; yellow-green safe at low intensity.  
-**ISO equivalent:** ~0.25–0.5 (potassium dichromate); ~0.5–1 (ammonium dichromate, which is 2–3× more sensitive).  
+**Sensitive wavelengths:** UV (300–400 nm) and short-wave blue (400–460 nm).
+**Blind to:** Green, yellow, orange, red.
+**Safelight:** Red safelight is safe; yellow-green safe at low intensity.
+**ISO equivalent:** ~0.25–0.5 (potassium dichromate); ~0.5–1 (ammonium dichromate, which is 2–3× more sensitive).
 **Corrected exposure at f/1088, full sun:** ~8–17 hours (potassium dichromate); ~4–8 hours (ammonium dichromate).
 
 **Practical implication: gum bichromate is not viable as a primary in-camera process at f/1088.** At 8–17 hours, a single exposure spans daylight, sunset, and astronomical darkness — the illumination changes are uncontrollable and the accumulated exposure across the full period would be chaotic. Gum bichromate is retained in this report because it is an excellent option for contact printing from a negative made on one of the faster materials, and because a larger pinhole (reducing the f-number) could bring exposure times into range. At f/300 (achievable with a ~8mm pinhole), ISO 0.5 gum bichromate would require ~40 minutes — fully workable, though at the cost of a larger blur circle.
@@ -620,10 +620,10 @@ Lower inherent contrast than most silver processes. A single coat of gum bichrom
 
 ### A.3 Salt Print
 
-**Sensitive wavelengths:** UV (300–400 nm) and blue (400–480 nm).  
-**Blind to:** Green, yellow, orange, red.  
-**Safelight:** Red safelight is safe.  
-**ISO equivalent:** ~1–3.  
+**Sensitive wavelengths:** UV (300–400 nm) and blue (400–480 nm).
+**Blind to:** Green, yellow, orange, red.
+**Safelight:** Red safelight is safe.
+**ISO equivalent:** ~1–3.
 **Corrected exposure at f/1088, full sun:** ~1.5–4 hours.
 
 Salt print is a printing-out process — the image forms during exposure without a developer. This absence of development amplification keeps the effective speed low despite silver being the active compound. Speed varies with silver nitrate concentration at coating: higher concentration (15% vs. 10%) yields a modest speed increase at the cost of more AgNO₃ consumption.
@@ -658,10 +658,10 @@ Salt prints have a characteristic warm red-brown image tone (silver image color 
 
 ### A.4 Van Dyke Brown
 
-**Sensitive wavelengths:** UV and blue (300–480 nm), nearly identical to salt print.  
-**Blind to:** Green, yellow, orange, red.  
-**Safelight:** Red safelight is safe.  
-**ISO equivalent:** ~2–6.  
+**Sensitive wavelengths:** UV and blue (300–480 nm), nearly identical to salt print.
+**Blind to:** Green, yellow, orange, red.
+**Safelight:** Red safelight is safe.
+**ISO equivalent:** ~2–6.
 **Corrected exposure at f/1088, full sun:** ~45 min–2 hours.
 
 Van Dyke Brown is the fastest of the iron/silver UV processes. The two-stage mechanism (iron absorbs UV → reduces silver ion to silver metal) benefits from development amplification unlike the printing-out salt print: unexposed areas are washed away in water, so the image is formed by developed-out silver, not just printed-out silver. This gives it a meaningful speed advantage — roughly 2–3× faster than salt print and faster than standard cyanotype, putting it within practical range of the camera at its slower end.
@@ -686,10 +686,10 @@ The image color is warm red-brown (similar to, and named after, Van Dyck paintin
 
 ### A.5 Ilford Multigrade RC Paper (Silver Gelatin, Enlarging Paper)
 
-**Sensitive wavelengths:** Blue (400–500 nm) and green (500–565 nm).  
-**Blind to:** Orange (>580 nm) and red.  
-**Safelight:** Red/amber (Ilford 902 or equivalent) is safe.  
-**ISO equivalent:** ~6.  
+**Sensitive wavelengths:** Blue (400–500 nm) and green (500–565 nm).
+**Blind to:** Orange (>580 nm) and red.
+**Safelight:** Red/amber (Ilford 902 or equivalent) is safe.
+**ISO equivalent:** ~6.
 **Corrected exposure at f/1088, full sun:** ~43 minutes (Schwarzschild corrected, p = 0.85).
 
 ISO 6 is the well-established community standard for silver gelatin enlarging paper used in pinhole cameras and is consistent with the exposure calculations in the main body of this report. Ilford does not publish an in-camera ISO for their paper (it is designed for enlarger use), but ISO 6 is reproduced across Renner (2009), and practitioner tests on Photrio and the Large Format Photography Forum. Development time and developer dilution affect effective speed by approximately ±½ stop; Dektol 1:2 at 68°F/20°C for 90 seconds is the reference condition.
@@ -728,10 +728,10 @@ Grade 2 in-camera (both emulsion layers exposing together). Good shadow/highligh
 
 ### A.6 Liquid Light Gelatin Emulsion (Rockland Colloid)
 
-**Sensitive wavelengths:** Blue (400–500 nm) and UV.  
-**Blind to:** Green (limited response), yellow, orange, red.  
-**Safelight:** Red/amber safelight is safe.  
-**ISO equivalent:** ~6–12.  
+**Sensitive wavelengths:** Blue (400–500 nm) and UV.
+**Blind to:** Green (limited response), yellow, orange, red.
+**Safelight:** Red/amber safelight is safe.
+**ISO equivalent:** ~6–12.
 **Corrected exposure at f/1088, full sun:** ~20–43 minutes.
 
 The speed range reflects variation by substrate — porous substrates (wood, unprimed canvas) absorb part of the emulsion layer, effectively reducing silver density and therefore speed. A properly sealed, primed surface achieves the upper end of the range (~ISO 12). Applying two coats increases silver density and pushes speed slightly higher; it also improves maximum black density and shadow detail. The manufacturer specifies comparable speed to photographic paper (ISO 6), which is the conservative baseline.
@@ -761,9 +761,9 @@ Equivalent to approximately Grade 3 (manufacturer specification). Higher inheren
 
 *Full analysis already presented in the body of this document (Section 7). Summary below for comparison.*
 
-**Sensitive wavelengths:** UV and blue (blue-sensitive type) or UV, blue, and green (orthochromatic/green-sensitive type).  
-**Blind to:** Red (and orange in blue-sensitive type).  
-**ISO equivalent:** ~50–200 (blue-sensitive, direct exposure); ~200–800 (orthochromatic/green-sensitive screen-type).  
+**Sensitive wavelengths:** UV and blue (blue-sensitive type) or UV, blue, and green (orthochromatic/green-sensitive type).
+**Blind to:** Red (and orange in blue-sensitive type).
+**ISO equivalent:** ~50–200 (blue-sensitive, direct exposure); ~200–800 (orthochromatic/green-sensitive screen-type).
 **Corrected exposure at f/1088, full sun:** ~2–10 min (blue-sensitive); ~20 sec–2 min (orthochromatic).
 
 The speed range within X-ray film is wider than across all the other materials combined. Screen-type orthochromatic X-ray film is designed to expose via the light emitted by a rare-earth intensifying screen (which fluoresces green) and is therefore optimized for that narrow spectral band — but it still responds to broadband daylight. At ISO 200–800, exposures at f/1088 drop below 2 minutes, which transforms the operational challenge entirely: a subject can hold still for 90 seconds far more reliably than for 43 minutes, and camera vibration from wind is not a meaningful concern over that duration.

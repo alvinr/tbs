@@ -2694,14 +2694,14 @@
 <td>Top + bottom M8 screws (black knobs)</td>
 <td>±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->°</td>
 <td><!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click</td>
-<td>±220mm vertical image shift</td>
+<td>±<!-- BEGIN fact:front_board_max_shift_mm -->219<!-- END fact:front_board_max_shift_mm -->mm vertical image shift</td>
 </tr>
 <tr>
 <td>Swing</td>
 <td>Left + right M8 screws (silver knobs)</td>
 <td>±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->°</td>
 <td><!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click</td>
-<td>±220mm horizontal image shift</td>
+<td>±<!-- BEGIN fact:front_board_max_shift_mm -->219<!-- END fact:front_board_max_shift_mm -->mm horizontal image shift</td>
 </tr>
 <tr>
 <td>Compound</td>
@@ -2744,7 +2744,7 @@
 </tr>
 <tr>
 <td>5.3° (max)</td>
-<td>220mm</td>
+<td><!-- BEGIN fact:front_board_max_shift_mm -->219<!-- END fact:front_board_max_shift_mm -->mm</td>
 <td>Mechanical hard stop</td>
 </tr>
 </tbody>
@@ -2807,7 +2807,7 @@ Mechanical hard stop:                 ±12mm travel = ±&lt;!-- BEGIN fact:front
 <h2 id="9-board-only-distortion-renders">9. Board-Only Distortion Renders<a class="headerlink" href="#9-board-only-distortion-renders" title="Permanent link">&para;</a></h2>
 <p>The following renders show the isolated effect of the tilt-swing front board on the projected image, with the film plane held flat at the far wall. The world scene is a regular grid at three depths (near: 7m, mid: 22m, far: 102m from pinhole) plus a human-figure reference and horizon line.</p>
 <p><img alt="All board-only configurations" src="../assets/tilt-swing-board-distortion-summary.png" /></p>
-<p>The board's ±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->° range produces up to <!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm of image shift — enough to steer composition without any film plane movement.</p>
+<p>The board's ±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->° range produces up to <!-- BEGIN fact:front_board_max_shift_mm -->219<!-- END fact:front_board_max_shift_mm -->mm of image shift — enough to steer composition without any film plane movement.</p>
 <table>
 <thead>
 <tr>
@@ -2834,13 +2834,13 @@ Mechanical hard stop:                 ±12mm travel = ±&lt;!-- BEGIN fact:front
 <td>C2</td>
 <td>+5.3°</td>
 <td>0°</td>
-<td>Max vertical shift (+207mm)</td>
+<td>Max vertical shift (+<!-- BEGIN fact:front_board_max_shift_mm -->219<!-- END fact:front_board_max_shift_mm -->mm)</td>
 </tr>
 <tr>
 <td>C3</td>
 <td>-5.3°</td>
 <td>0°</td>
-<td>Max downward shift (-207mm)</td>
+<td>Max downward shift (-<!-- BEGIN fact:front_board_max_shift_mm -->219<!-- END fact:front_board_max_shift_mm -->mm)</td>
 </tr>
 <tr>
 <td>C4</td>

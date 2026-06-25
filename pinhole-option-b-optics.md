@@ -3,7 +3,7 @@
 # Depth of Field, Magnification & Minimum Focal Distance
 ### 20-foot Standard Container, Side-to-Side Orientation
 
-**Preceding documents:** pinhole-optics-report.md, pinhole-camera-construction.md  
+**Preceding documents:** [Optics: Technical Reference](pinhole-optics-report.md), [Container Selection & Construction Proposals](pinhole-camera-construction.md)  
 **Date:** April 2026
 
 ---
@@ -15,10 +15,10 @@ All calculations on this page use these fixed values, derived from the 20-foot s
 | Parameter | Value | Source |
 |-----------|-------|--------|
 | Focal length (f) | **<!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm (7 ft 9 in)** | ISO 668 interior width |
-| Rayleigh optimal pinhole (d) | **2.17mm** | d = 1.9 × √(f × 0.00055); Rayleigh, *Phil. Mag.* 1891 |
-| F-number (N) | **f/1088** | N = f/d |
-| Image plane width | 5,893mm (19 ft 4 in) | Container interior length |
-| Image plane height | 2,388mm (7 ft 10 in) | Container interior height |
+| Rayleigh optimal pinhole (d) | **<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm** | d = 1.9 × √(f × 0.00055); Rayleigh, *Phil. Mag.* 1891 |
+| F-number (N) | **f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number -->** | N = f/d |
+| Image plane width | <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm -->mm (19 ft 4 in) | Container interior length |
+| Image plane height | <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm (7 ft 10 in) | Container interior height |
 | Wavelength (λ) | 0.00055mm (550 nm) | Green light reference |
 
 ---
@@ -203,7 +203,7 @@ The image is **inverted** (upside down and mirror-reversed). The magnitude |M| g
 
 ### What Magnification Means for Subject Framing
 
-The image plane is 5,893mm wide × 2,388mm tall. For a given subject distance, the portion of the real world captured within that frame is:
+The image plane is <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm -->mm wide × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm tall. For a given subject distance, the portion of the real world captured within that frame is:
 
 ```
 Scene width captured = image width / M = image width × (u / f)
@@ -321,13 +321,13 @@ The container width is the same for both 20-ft and 40-ft standard containers (7'
 
 | Parameter | Proposals 1, 2, 4 (f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm) | Proposal 3 (f = 12,013mm) |
 |-----------|----------------------------------|---------------------------|
-| Pinhole diameter | 2.17mm | 4.87mm |
-| F-number | f/1088 | f/2467 |
+| Pinhole diameter | <!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm | 4.87mm |
+| F-number | f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> | f/2467 |
 | Minimum blur (at ∞) | **2.17mm** | **4.87mm** |
 | 1:1 magnification distance | **2.36 m** | **12.0 m** |
 | Near DoF (c=3mm) | **6.2 m** | Not achievable (3 < 4.87) |
-| Near DoF (c=10mm) | **0.65 m** | **12.4 m** |
-| Near DoF (c=6mm) | **1.5 m** | **25.8 m** |
+| Near DoF (c=10mm) | **0.65 m** | **11.4 m** |
+| Near DoF (c=6mm) | **1.3 m** | **51.8 m** |
 | Practical "all sharp" distance | **~24 m** | **~120 m** |
 
 **Key takeaway on Proposal 3 (end-to-end):** With a 4.87mm minimum blur, subjects must be over 120 meters from the camera for the blur to drop within 10% of its minimum value. The depth of field is effectively the middle distance and beyond. Close and mid-range subjects appear dramatically softer than in Proposals 1/2.
@@ -369,9 +369,9 @@ Distance from pinhole:
 
 | Source | Application |
 |--------|-------------|
-| Rayleigh, J.W.S., *Philosophical Magazine* Ser. 5, Vol. 31, 1891 | Pinhole diameter formula; basis for d = 2.17mm |
-| Born, M. & Wolf, E., *Principles of Optics*, 7th ed., Cambridge UP, 1999, §8.6 | Geometric derivation of blur circle from similar triangles |
+| Rayleigh, J.W.S., *Philosophical Magazine* Ser. 5, Vol. 31, 1891. [Taylor & Francis](https://www.tandfonline.com/loi/tphm18) | Pinhole diameter formula; basis for d = 2.17mm |
+| Born, M. & Wolf, E., *Principles of Optics*, 7th ed., Cambridge UP, 1999, §8.6. [Library catalog](https://openlibrary.org/search?q=Born+Wolf+Principles+of+Optics) | Geometric derivation of blur circle from similar triangles |
 | Young, M., *Applied Optics*, Vol. 10, No. 12, 1971. DOI: [10.1364/AO.10.002763](https://doi.org/10.1364/AO.10.002763) | Depth of field behavior in pinhole cameras |
 | Stinson Photography, "Pinhole Pro and the Optics of Pinhole Cameras," 2018. [stinsonphotography.wordpress.com](https://stinsonphotography.wordpress.com/2018/07/16/pinhole-pro-and-the-optics-of-pinhole-cameras/) | 3–10× focal length rule of thumb for DoF |
 | [Photrio.com — CoC and hyperfocal distance for pinhole cameras](https://www.photrio.com/forum/threads/circle-of-confusion-and-hyperfocal-distance-of-a-pinhole-camera.15715/) | Practical CoC discussion; minimum focus distance concepts |
-| ISO 668:2020 | Container interior dimensions (source of f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm) |
+| [ISO 668:2020](https://chs-containergroup.com/us/shipping-container-dimensions/) | Container interior dimensions (source of f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm) |

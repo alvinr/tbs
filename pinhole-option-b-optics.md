@@ -3,12 +3,12 @@
 # Depth of Field, Magnification & Minimum Focal Distance
 ### 20-foot Standard Container, Side-to-Side Orientation
 
-**Preceding documents:** [Optics: Technical Reference](pinhole-optics-report.md), [Container Selection & Construction Proposals](pinhole-camera-construction.md)  
+**Preceding documents:** [Optics: Technical Reference](pinhole-optics-report.md), [Container Selection & Construction Proposals](pinhole-camera-construction.md)
 **Date:** April 2026
 
 ---
 
-## Camera Parameters (Option B)
+## Camera Parameters
 
 All calculations on this page use these fixed values, derived from the 20-foot standard container in Orientation B (pinhole on one long wall, image plane on opposite long wall):
 
@@ -35,7 +35,7 @@ The claim that pinhole cameras have "infinite depth of field" is a useful shorth
 
 **The physical cause:** The pinhole has finite diameter d. Light from a point source at distance u passes through the entire width of the pinhole. Rays entering through the top edge of the pinhole and rays entering through the bottom edge both reach the image plane, but they arrive at slightly different positions — separated by the geometry of the cone of light. The total spread of these rays on the image plane is the blur circle.
 
-**Source:** Young, M., "Pinhole Optics," *Applied Optics*, Vol. 10, No. 12, 1971. DOI: [10.1364/AO.10.002763](https://doi.org/10.1364/AO.10.002763)  
+**Source:** Young, M., "Pinhole Optics," *Applied Optics*, Vol. 10, No. 12, 1971. DOI: [10.1364/AO.10.002763](https://doi.org/10.1364/AO.10.002763)
 "Pinhole cameras lose sharpness as the subject gets close to the pinhole due to simple geometry — diverging light rays from close objects produce larger spots at the image plane than more nearly parallel rays from distant objects." — [Photrio.com forum thread on CoC for pinhole cameras](https://www.photrio.com/forum/threads/circle-of-confusion-and-hyperfocal-distance-of-a-pinhole-camera.15715/)
 
 ---
@@ -158,7 +158,7 @@ For our focal length of <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:fo
 
 **Source:** Stinson Photography, "Pinhole Pro and the Optics of Pinhole Cameras," 2018. [stinsonphotography.wordpress.com](https://stinsonphotography.wordpress.com/2018/07/16/pinhole-pro-and-the-optics-of-pinhole-cameras/)
 
-### DoF Summary for Option B
+### DoF Summary
 
 | Zone | Distance Range | Sharpness |
 |------|---------------|-----------|

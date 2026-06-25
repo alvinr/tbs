@@ -12,8 +12,8 @@ Source reports: [Film Plane Mechanism](film-plane-mechanism-report.md) and
 
 ## 1. Film Plane Distortion Renders
 
-Four-corner independent actuation of the film plane (TBS-FM01). Each corner moves ±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt
-and ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing independently (Option A rigid plane), producing Scheimpflug-equivalent projections at pinhole
+Four-corner independent actuation of the film plane. Each corner moves ±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt
+and ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing independently, producing Scheimpflug-equivalent projections at pinhole
 focal lengths. Six configurations are shown.
 
 **Summary grid — Film Plane**
@@ -21,7 +21,7 @@ focal lengths. Six configurations are shown.
 
 Individual configurations:
 
-Option A's plane is a fixed-size rigid rectangle, so every configuration is a **flat** tilt or swing — a compound *twist* is not producible.
+The plane is a fixed-size rigid rectangle, so every configuration is a **flat** tilt or swing — a compound *twist* is not producible.
 
 | Config | Tilt | Effect | Render |
 |---|---|------|------------|
@@ -54,7 +54,7 @@ Option A's plane is a fixed-size rigid rectangle, so every configuration is a **
 ## 3. Combined Distortion Renders (Film Plane + Tilt-Swing Board)
 
 Compound optical projections when both the film plane mechanism and the tilt-swing
-front board (TBS-TS01) are active simultaneously. Nine configurations are shown.
+front board are active simultaneously. Nine configurations are shown.
 The two systems interact non-linearly — their combined effects cannot be decomposed
 into a simple sum of the individual systems' projections.
 

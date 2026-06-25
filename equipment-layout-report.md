@@ -48,7 +48,7 @@ Overall floorplan can be seen below. Its essentially split into three areas, lef
 | Battery bank (2× 100Ah LiFePO4, each 330×172×214mm) | 1,540–2,220 | 150–364 | Wall shelf below panel; side-by-side, clears the optical cone |
 | Solar charge controller | Within panel | — | Mounted inside enclosure |
 | Cable trunking | Along wall face, H=1,800mm | — | Full length |
-| Blue supply pipe → spray bar | along wall to X=2,399 | — | Rigid 1/2" HDPE from the corridor pump panel to the spray-bar feed; pumps themselves are on the equipment panel in the IBC corridor (§2.4 / [Plumbing Panel Report](plumbing-panel-report.md)) |
+| Blue supply pipe → spray bar | along wall to X=2,399 | — | Rigid 1/2" HDPE from the corridor pump panel to the spray-bar feed; pumps themselves are on the plumbing panel in the IBC corridor (§2.4 / [Plumbing Panel Report](plumbing-panel-report.md)) |
 
 ### 2.3 Optical Zone — X=150–4,649mm
 
@@ -124,7 +124,7 @@ only restrains them for transport (front retaining bars + D-ring lashing).
 | Wall attachment | each joist hanger is through-bolted (4× M12) to a 100×135×8mm **exterior** backing plate (×4, hex heads outside) that spreads the load into the thin corrugated side wall |
 | Lashing points | 25mm D-ring holders on the front bars (1,100kg WLL); ratchet straps pass over each stack and tie down to them |
 | Total stacked height | 2,336mm (2× 1,168mm direct-stack) — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm ceiling clearance |
-| Panel mount | the front portal also carries the (forward) wet-end equipment panel and the right-walkway cantilever arms |
+| Panel mount | the front portal also carries the (forward) wet-end plumbing panel and the right-walkway cantilever arms |
 | Surface finish | Gray oxide primer + flat black powder coat (interior) |
 | Approx. weight | ~178kg (uprights + feet + front bars + hangers + exterior wall plates + panel mount) |
 | Approx. cost | USD <!-- BEGIN costing:eq-ibc-frame-cost -->$955–$1,455<!-- END costing:eq-ibc-frame-cost --> (local mild steel fabrication) |
@@ -216,7 +216,7 @@ the pump/filter plumbing panel sits in the IBC corridor (right end zone). No
 conduit, pipe, or cable runs through the optical zone.
 
 **Plumbing:** All pumps (P-01 Blue supply, P-02 Brown filter feed, P-04 tray-sump
-transfer, plus the P-05/P-03 waste-drain pumps) mount on the equipment panel in the
+transfer, plus the P-05/P-03 waste-drain pumps) mount on the plumbing panel in the
 270mm IBC plumbing corridor (right end zone), at the tote stack — so the pump↔tote
 runs are short. The Blue supply pipe runs from P-01 along the pinhole wall to the
 spray-bar feed in the optical zone (~4m coiled flex to the rolling beam); the tray

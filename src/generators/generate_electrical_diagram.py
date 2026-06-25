@@ -8,7 +8,7 @@ TBS-001 Electrical & Systems — five engineering drawing sheets.
 Sheet 1: System one-line diagram (power flow, components, fuse ratings)
 Sheet 2: Container floor plan with wiring layout  (scale 1:500)
 Sheet 3: Pinhole-wall interior elevation
-Sheet 4: Equipment-panel pump power (Circuit C)
+Sheet 4: Plumbing-panel pump power (Circuit C)
 Sheet 5: Main enclosure panel layout + fuse schedule
 """
 
@@ -311,7 +311,7 @@ def draw_sheet1():
         ("B", "VENTILATION FAN\nINTAKE  (6\")",   "5A",  "16 AWG", "60W",
          "Cargo door panel (X=0)  |  low position  |  Yd=365mm", C_ALUM),
         ("C", "EQUIP PANEL\n(PUMPS+FILTERS)",       "15A", "14 AWG", "100W",
-         "Equipment panel, IBC corridor (Yd=1046–1316)", C_PUMP_TINT),
+         "Plumbing panel, IBC corridor (Yd=1046–1316)", C_PUMP_TINT),
         ("D", "SAFELIGHT\ninterior + vestibule",  "5A",  "18 AWG", "15W",
          "3× red LED strips (ceiling, N–S)  |  pull-cord switch", "#FFEEDD"),
         ("E", "EVAP COOLER\n(120V AC via inverter)",  "40A", "10 AWG", f"{EVAP_COOLER_W_BUS}W",
@@ -440,7 +440,7 @@ def draw_sheet1():
 #   Pinhole: on BOTTOM long wall at X=2399mm (centered on film plane)
 #   Image plane: on TOP long wall
 #   NO vestibule shown — light trap is part of hinged-panel drawing
-#   EP + BAT on pinhole wall (Yd=0); pumps on equipment panel (Yd=1046)
+#   EP + BAT on pinhole wall (Yd=0); pumps on plumbing panel (Yd=1046)
 # ─────────────────────────────────────────────────────────────────────────────
 
 def draw_sheet2():
@@ -683,7 +683,7 @@ def draw_sheet2():
             ha="center", va="center", fontsize=6.5, fontweight="bold",
             color=C_OUT, zorder=8)
 
-    # EQUIPMENT PANEL (Yd=1046) — pumps + filters in IBC corridor
+    # PLUMBING PANEL (Yd=1046) — pumps + filters in IBC corridor
     equip(FSKID_X, CORRIDOR_YD_NEAR, EQPANEL_W, CORRIDOR_W,
           "C", C_PUMP, "Equip panel  Yd=1046–1316")
 
@@ -854,10 +854,10 @@ def draw_sheet2():
            FB_X - 480, FB_Y + 350,
            "Intake fan (B)\n6\" DC  60W",
            fs=6.5)
-    # Pump — Cct C (on equipment panel in IBC corridor)
+    # Pump — Cct C (on plumbing panel in IBC corridor)
     leader(ax, PUMP_CX, OY + wt + (CORRIDOR_YD_NEAR + CORRIDOR_W/2) * S_yd,
            PUMP_CX + 150, OY + cwid * 0.55,
-           "Pumps + filters (C)\n12V DC  100W\nEquipment panel",
+           "Pumps + filters (C)\n12V DC  100W\nPlumbing panel",
            fs=6.5, color=C_PUMP)
     # Safelight — Cct D (label middle strip)
     sl_ldr_x = ix(SL_POSITIONS[1] + SL_STRIP_W / 2)
@@ -931,7 +931,7 @@ def draw_sheet2():
          "6\" inline DC  |  5A / 16 AWG / 60W  |  Sealed end wall (X=5893mm), below X1  |  Yd=1181mm"),
         ("B",     C_ALUM,    "INTAKE FAN — Cct B",
          "6\" inline DC  |  5A / 16 AWG / 60W  |  Cargo door panel (X=0), low  |  Yd=365mm"),
-        ("C",     C_PUMP,    "EQUIPMENT PANEL — Cct C",
+        ("C",     C_PUMP,    "PLUMBING PANEL — Cct C",
          f"Pumps + filters  |  12V DC  |  15A / 14 AWG / 100W  |  IBC corridor, Yd={CORRIDOR_YD_NEAR}–{CORRIDOR_YD_NEAR + CORRIDOR_W}mm"),
         ("D",     "#FFD700", "SAFELIGHT — Cct D",
          f"3× red LED strips  |  5A / 18 AWG / 15W  |  Ceiling N–S at X≈{', '.join(str(x) for x in SL_POSITIONS)}"),
@@ -1189,7 +1189,7 @@ def draw_sheet3():
     wall_equip(BA_X, BA_H_LO, BA_H_HI, BA_W,
                "BATTERY BANK", "2×100Ah LiFePO4", C_BATT)
 
-    # (Pump manifold removed from pinhole wall — now on equipment panel in IBC corridor)
+    # (Pump manifold removed from pinhole wall — now on plumbing panel in IBC corridor)
 
     # ── Pinhole ───────────────────────────────────────────────────────────────
     ph_x = wx(TBS_PH_X)
@@ -1365,7 +1365,7 @@ def draw_sheet3():
         (C_PIPE,    "CABLE TRUNKING",    "40×25mm PVC  |  Ceiling corner rail  |  Full length"),
         (C_ELEC,    "ELECTRICAL PANEL",  f"EP  |  X={EP_X}–{EP_X+EP_W}  |  Z={EP_H_LO}–{EP_H_HI}mm"),
         (C_BATT,    "BATTERY BANK",      f"BAT  |  X={BA_X}–{BA_X+BA_W}  |  Z={BA_H_LO}–{BA_H_HI}mm"),
-        ("#F5C8A0", "EQUIPMENT PANEL",   f"Cct C  |  Pumps + filters  |  IBC corridor (Yd={CORRIDOR_YD_NEAR}–{CORRIDOR_YD_NEAR + CORRIDOR_W})"),
+        ("#F5C8A0", "PLUMBING PANEL",   f"Cct C  |  Pumps + filters  |  IBC corridor (Yd={CORRIDOR_YD_NEAR}–{CORRIDOR_YD_NEAR + CORRIDOR_W})"),
         (C_EVAP,    "DUCT PENETRATION",  f"Cct E  |  Ø{EVAP_DUCT_D}mm at X={EVAP_DUCT_X}, Z={EVAP_DUCT_Z}mm  |  Evap cooler external"),
         (C_ALUM,    "EXT POWER PANEL",   f"Flush-mount  |  X={PWR_PANEL_X}–{PWR_PANEL_X+PWR_PANEL_W}  |  3×MC4 + NEMA"),
         ("#FFFFF0", "LED PANELS (G)",    "3×20W  4000K  |  Ceiling-mount  |  X≈1000, 2900, 4800"),
@@ -1385,7 +1385,7 @@ def draw_sheet3():
     # ── Drawing notes ─────────────────────────────────────────────────────────
     notes = [
         "DRAWING NOTES:",
-        "1. Elevation looking toward pinhole wall (Yd=0) from inside the container. EP and battery wall-mounted; pumps and filters on equipment panel",
+        "1. Elevation looking toward pinhole wall (Yd=0) from inside the container. EP and battery wall-mounted; pumps and filters on plumbing panel",
         "in IBC corridor (Yd=1046); evap cooler external via duct.",
         "2. Cable trunking runs horizontally at the ceiling corner rail (Z\u22482363mm). Drop conduits (10mm corrugated, shown dashed) descend to each device.",
         "3. Pull-cord switches at ceiling height, cords hang to ~1500mm above walkway deck (~900mm AFF). D=safelight (red), G=white light.",
@@ -1412,7 +1412,7 @@ def draw_sheet3():
 # ─────────────────────────────────────────────────────────────────────────────
 
 def draw_sheet4():
-    """SHEET 4 — Equipment-Panel Pump Power (Circuit C), frontal elevation.
+    """SHEET 4 — Plumbing-Panel Pump Power (Circuit C), frontal elevation.
 
     Flat 2D companion to the electrical 3D model's pump distribution (kept
     consistent with the other electrical sheets): the Circuit-C feed → 12V
@@ -1434,11 +1434,11 @@ def draw_sheet4():
     ph, pw = 200, 120                                    # pump body H × W
     z_lo, z_hi = 1000, 2060
 
-    # ── Equipment panel ──
+    # ── Plumbing panel ──
     ax.add_patch(R((-40, z_lo), PW + 80, z_hi - z_lo, fc="#EFE6CC", ec=C_OUT, lw=1.6,
                    zorder=2))
     leader(ax, -40, z_hi - 70, -210, z_hi + 30,
-           "EQUIPMENT PANEL\n(18mm ply, edge-on T\nacross IBC corridor)",
+           "PLUMBING PANEL\n(18mm ply, edge-on T\nacross IBC corridor)",
            fs=6.5, color=C_OUT, ha="right")
 
     # ── Distribution wireway (vertical, between the columns) ──
@@ -1489,7 +1489,7 @@ def draw_sheet4():
         "TIME — the operator enables the pump for the current task; each Shurflo 2088 then",
         "runs on its internal pressure switch. 15A fuse covers a single pump (7.5A) with",
         "margin.",
-        "Wet zone: sealed, above the spill line. See Equipment Panel report",
+        "Wet zone: sealed, above the spill line. See Plumbing Panel report",
         "§3.2 / Electrical §7.3.",
     ], -240, 910, spacing=40, fs=7.0, width=970)
 

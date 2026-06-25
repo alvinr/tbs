@@ -154,11 +154,11 @@
 
 ---
 
-## 14. Equipment Panel & Plumbing
+## 14. Plumbing Panel & Plumbing
 
-![TBS-001 — Equipment Panel Layout](assets/panel-layout.png)
+![TBS-001 — Plumbing Panel Layout](assets/panel-layout.png)
 
-![TBS-001 — Equipment Panel Backside](assets/panel-layout-back.png)
+![TBS-001 — Plumbing Panel Backside](assets/panel-layout-back.png)
 
 ---
 

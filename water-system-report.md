@@ -208,9 +208,9 @@ The processing tray and spray bar gantry are fully specified in the [Processing 
 
 **Processing tray:** A permanently installed 4459 × 2,200mm stainless steel tray sits on the optical zone floor between the film plane rails. A 1:200 dual-axis slope drains wash water to a pressed sump well on the right side nearest the pinhole wall. P-04 draws from the sump via a suction pickup tube — no penetration of the tray floor or container floor.
 
-**Drain path:** P-04 suction pickup → 1" flexible hose over near rim → P-04 pump on equipment panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste).
+**Drain path:** P-04 suction pickup → 1" flexible hose over near rim → P-04 pump on plumbing panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste).
 
-**External drain-out risers:** The Brown (IBC-3) and Waste (IBC-4) totes are pumped out to the sealed end-wall ports — X3 via P-05, X4 via P-03. The two vertical drain risers run down the IBC corridor gap and are clamped at ~400mm centers to an 18mm marine-ply backing spine that tees perpendicular off the equipment panel. Its top is capped with a horizontal ply shelf that the Blue fill trunk rests on — so both the drain risers and the fill trunk are supported at the T rather than free-hanging.
+**External drain-out risers:** The Brown (IBC-3) and Waste (IBC-4) totes are pumped out to the sealed end-wall ports — X3 via P-05, X4 via P-03. The two vertical drain risers run down the IBC corridor gap and are clamped at ~400mm centers to an 18mm marine-ply backing spine that tees perpendicular off the plumbing panel. Its top is capped with a horizontal ply shelf that the Blue fill trunk rests on — so both the drain risers and the fill trunk are supported at the T rather than free-hanging.
 
 **Spray bar:** A 4,399mm aluminum SHS beam gantry rolls on the tray floor beneath the walkway grating. Water from P-01 (Blue supply) reaches the bar via BV-02 → 4m flexible hose → center feed bulkhead fitting → 38 × 3mm spray holes at 100mm centers.
 
@@ -311,7 +311,7 @@ IBCs are arranged in a **2x2 stack** in the right end zone, right-justified to t
 
 All equipment clears the optical cone at every depth — shadow-free proof in [Equipment Layout Report](equipment-layout-report.md).
 
-**Hose routing:** All pumps mount on the **equipment panel** at the front of the IBC stack, reaching into the 270mm plumbing corridor between the two IBC columns — so the pump↔tote suction and return lines are **short**, running entirely within the corridor to the IBCs' corridor-facing DN50 valves. The longest run is the **Blue supply to the spray bar**: P-01 → ACC-01 → rigid 1/2" HDPE along the pinhole wall to the tray center → BV-02 → ~4m coiled flexible hose → the rolling beam in the optical zone. The **tray drain** returns the other way — P-04's sump pickup → 1" flexible hose over the near rim → P-04 on the panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste). **Waste evacuation** pumps P-05 (X3 / Brown) and P-03 (X4 / Waste) sit directly on the corridor drain risers, minimizing pipe to the external end-wall ports.
+**Hose routing:** All pumps mount on the **plumbing panel** at the front of the IBC stack, reaching into the 270mm plumbing corridor between the two IBC columns — so the pump↔tote suction and return lines are **short**, running entirely within the corridor to the IBCs' corridor-facing DN50 valves. The longest run is the **Blue supply to the spray bar**: P-01 → ACC-01 → rigid 1/2" HDPE along the pinhole wall to the tray center → BV-02 → ~4m coiled flexible hose → the rolling beam in the optical zone. The **tray drain** returns the other way — P-04's sump pickup → 1" flexible hose over the near rim → P-04 on the panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste). **Waste evacuation** pumps P-05 (X3 / Brown) and P-03 (X4 / Waste) sit directly on the corridor drain risers, minimizing pipe to the external end-wall ports.
 
 **External fill/drain ports:** Three 2" NPT bulkhead fittings with camlock fittings on the exterior are mounted on the container end wall centerline, stacked vertically:
 

@@ -4,11 +4,10 @@
 
 ## 1. Purpose
 
-The equipment panel is an 18mm marine plywood board mounted vertically at the
-front (cargo-door-facing) mouth of the IBC plumbing corridor at X=4,874mm —
-moved forward from the sealed end (`ibc-reconfig-v2`) for walkway reach-in
-access, mounting on the front-portal frame (~X4734). It spans the full 270mm
-corridor width (Yd=1,046–1,316mm) and 2,060mm in height (Z=250–2,310mm). All pumps,
+The plumbing panel is an 18mm marine plywood board mounted vertically at the
+front (cargo-door-facing) mouth of the IBC plumbing corridor — for walkway reach-in
+access, mounting on the front-portal frame. It spans the full 270mm
+corridor width and 2,060mm in height. All pumps,
 filters, the pressure accumulator, diverter valves,
 and isolation valves mount on this single panel, concentrating the entire
 water-handling system in one accessible location within the IBC zone.
@@ -34,11 +33,11 @@ The panel serves three functions:
 | Material | 18mm marine plywood (BS 1088 or equivalent) |
 | Face dimensions | 270mm wide (Yd) × 2,060mm tall (Z) |
 | Orientation | Vertical, perpendicular to sealed end wall |
-| Panel face X position | 4,874mm — corridor front mouth (equipment protrudes toward cargo door, -X; tip ~4,744mm, clear of film rail X=4649) |
+| Panel face X position | 4,874mm — corridor front mouth (equipment protrudes toward cargo door, -X; tip ~4,744mm, clear of film rail X=4,649) |
 | Bottom edge Z | 250mm (120mm above walkway deck) |
 | Top edge Z | 2,310mm (78mm below ceiling at Z=2,388mm) |
 | Corridor width | 270mm (Yd=1,046–1,316mm, between near and far IBC columns) |
-| Mounting | L-brackets to the front-portal frame uprights (~X4734), 4 points |
+| Mounting | L-brackets to the front-portal frame uprights (~X4,734), 4 points |
 | Finish | Sealed with marine varnish or epoxy; white face for visibility |
 
 ---
@@ -48,8 +47,8 @@ The panel serves three functions:
 The panel face is divided into two zones: a filter skid at the bottom and a pump
 zone above, with equipment arranged in columns for pipe routing efficiency.
 
-**Equipment Panel Layout — Front elevation with pump zone, filter skid, valves, and full plumbing routing**
-![TBS-001 — Equipment Panel Layout](assets/panel-layout.png)
+**Plumbing Panel Layout — Front elevation with pump zone, filter skid, valves, and full plumbing routing**
+![TBS-001 — Plumbing Panel Layout](assets/panel-layout.png)
 
 **Backside (corridor side section) — what is mounted on the *back* of the panel:**
 the drain-riser backing spine (18mm ply teed off the panel, with a lowered top
@@ -58,7 +57,7 @@ down to the sealed end-wall ports, and the Blue fill trunk resting on the shelf.
 Pumps mount on the front face; the drain/fill runs are on the back, in the
 corridor gap clear of both tote columns.
 
-![TBS-001 — Equipment Panel Backside](assets/panel-layout-back.png)
+![TBS-001 — Plumbing Panel Backside](assets/panel-layout-back.png)
 
 ### 3.1 Filter Skid — Z=200–1,280mm
 
@@ -194,7 +193,7 @@ Blue (IBC-2) for recycling; if pH >7.5 or discolored, route to Black (IBC-4).
 | CV-4 | 1" NPT | X4 bulkhead drain line | Prevents backflow from external to IBC-4 |
 
 Spring-loaded inline check valves (PVC body, EPDM seal) on each external
-bulkhead line. Installed in the IBC zone, not on the equipment panel.
+bulkhead line. Installed in the IBC zone, not on the plumbing panel.
 
 ---
 
@@ -260,10 +259,10 @@ below the gravity drain height to a disposal tanker.
 
 ## 7. Mounting and Structure
 
-### 7.1 Equipment Panel Mounting
+### 7.1 Plumbing Panel Mounting
 
 The plywood panel is secured to the IBC restraint front-portal frame uprights
-(~X4734, at the corridor mouth) at four points using L-brackets with M10 bolts.
+(~X4,734, at the corridor mouth) at four points using L-brackets with M10 bolts.
 The frame provides rigid lateral restraint — the panel does not contact the
 container walls directly.
 
@@ -307,7 +306,7 @@ component.
 
 ## 8. Pipe Routing Conventions
 
-All piping on the equipment panel follows the parallel-wall drawing convention
+All piping on the plumbing panel follows the parallel-wall drawing convention
 used throughout TBS-001 engineering diagrams:
 
 - **Blue pipes** — front layer (closest to viewer/operator)

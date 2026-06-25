@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards
 """
-generate_panel_layout.py — Equipment panel layout in IBC corridor.
+generate_panel_layout.py — Plumbing panel layout in IBC corridor.
 
 Front elevation of an 18mm plywood panel spanning the 270mm IBC plumbing
 corridor (Yd=1046–1316), perpendicular to the sealed end wall at X=5000.
@@ -174,7 +174,7 @@ def circ(x_c, z_c, r, fc, ec=C_FRAME, lw=1.0, zorder=5, alpha=1.0):
 
 # Title above panel
 ax.text(sx(PANEL_W / 2), sz(Z_SHOW_R) + 12,
-        "FRONT ELEVATION — EQUIPMENT PANEL",
+        "FRONT ELEVATION — PLUMBING PANEL",
         ha="center", va="bottom",
         fontsize=8, color=C_DIM, fontweight="bold", zorder=10, **FONT)
 
@@ -833,7 +833,7 @@ ax.text(cs_yd(YD_MAX / 2), cs_z(-15) - 14.4,
 #  NOTES
 # ═══════════════════════════════════════════════════════════════════════════
 notes = [
-    "EQUIPMENT PANEL — IBC PLUMBING CORRIDOR — ALL PIPE CONNECTIONS SHOWN",
+    "PLUMBING PANEL — IBC PLUMBING CORRIDOR — ALL PIPE CONNECTIONS SHOWN",
     f"1. Panel: 18mm marine ply spanning corridor Yd={PANEL_YD}–{PANEL_YD + PANEL_W} (270mm).",
     f"2. Panel face at X={PANEL_WALL_X}, equipment protrudes toward open end (-X direction).",
     f"3. Panel height: Z={PANEL_Z_AFF}–{PANEL_Z_AFF + PANEL_H}mm AFF ({PANEL_H}mm), uses full IBC stack height.",
@@ -892,7 +892,7 @@ ax.text(det_y(80), det_z(85),
 
 # ── All Z coords relative to filter head port center ──
 
-# 1. Equipment panel (18mm marine ply)
+# 1. Plumbing panel (18mm marine ply)
 D_PANEL_T = 18.0
 _dpanel_bot = -320
 _dpanel_top = 65
@@ -1044,7 +1044,7 @@ ax.text(det_y(80), det_z(_sump_bot_z - 50),
 #  TITLE BLOCK
 # ═══════════════════════════════════════════════════════════════════════════
 title_block(ax, "SHEET 1 OF 2",
-            drawing_title="EQUIPMENT PANEL — IBC CORRIDOR MOUNTING",
+            drawing_title="PLUMBING PANEL — IBC CORRIDOR MOUNTING",
             subtitle="FRONT ELEVATION + PIPE ROUTING + CROSS-SECTION + DETAIL B",
             scale_note="ELEV 1:80 · DETAIL B ~1:3 · X-SECTION NTS · AXES IN mm",
             doc_id="TBS-001 · Reorg Proposal",
@@ -1117,10 +1117,10 @@ axb.text(WALLX + 20, C_HGT - 60, f"SEALED\nEND WALL\n(X={int(C_LEN)})", fontsize
 axb.plot([4980, WALLX], [C_HGT, C_HGT], color="#999", lw=0.8, ls=(0, (6, 4)), zorder=2)
 axb.text(5010, C_HGT + 25, f"CEILING (Z={int(C_HGT)})", fontsize=6, color="#777", **FB)
 
-# ── Equipment panel (edge-on) + pumps on the front (-X) ──────────────────
+# ── Plumbing panel (edge-on) + pumps on the front (-X) ──────────────────
 _rect(PANX, EQPANEL_Z_LO, EQPANEL_T, EQPANEL_Z_HI - EQPANEL_Z_LO, C_PLYB, lw=1.3, z0=6)
 leader(axb, PANX + EQPANEL_T / 2, 700, 5150, 560,
-       f"EQUIPMENT PANEL\n18mm ply (edge-on)\nZ={EQPANEL_Z_LO}–{EQPANEL_Z_HI}", color=C_OUT, fs=6,
+       f"PLUMBING PANEL\n18mm ply (edge-on)\nZ={EQPANEL_Z_LO}–{EQPANEL_Z_HI}", color=C_OUT, fs=6,
        ha="center", va="top", arrow_style="-|>", font=FB)
 for zr, lbl, hot in [(Z_BOT, "P-01 /\nP-02", False),
                      (Z_MID, "P-03 /\nP-04", True),
@@ -1201,10 +1201,10 @@ draw_notes(axb, [
 ], 5985, 2380, spacing=64, fs=7, ha="left", width=600, font=FB)
 
 title_block(axb, "SHEET 2 OF 2",
-            drawing_title="EQUIPMENT PANEL — BACKSIDE",
+            drawing_title="PLUMBING PANEL — BACKSIDE",
             subtitle="DRAIN-RISER SPINE · X3/X4 RISERS · X1/X3/X4 END-WALL PORTS",
             scale_note="CORRIDOR SIDE SECTION ALONG Yd · AXES IN mm",
-            doc_id="TBS-001 · Equipment Panel",
+            doc_id="TBS-001 · Plumbing Panel",
             height=0.05)
 
 outb = os.path.join(DIAGRAMS_DIR, "panel-layout-back.png")

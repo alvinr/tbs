@@ -7083,10 +7083,24 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # SV-01 drop (filtered line -> tap)
+  grp = ents.add_group
+  grp.name = "SV-01 drop (filtered line -> tap)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -80.mm)
+  circle = ge.add_circle([4831.mm,1291.mm,1330.mm], vec, 6.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Filter F1 (50µ)"] || model.materials.add("Filter F1 (50µ)")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # SV-01 pH sample tap
   grp = ents.add_group
   grp.name = "SV-01 pH sample tap"
-  face = grp.entities.add_face([4802.mm,1279.mm,1330.mm], [4836.mm,1279.mm,1330.mm], [4836.mm,1311.mm,1330.mm], [4802.mm,1311.mm,1330.mm])
+  face = grp.entities.add_face([4814.mm,1275.mm,1220.mm], [4848.mm,1275.mm,1220.mm], [4848.mm,1307.mm,1220.mm], [4814.mm,1307.mm,1220.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(34.mm)
   mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
@@ -7098,10 +7112,10 @@ end
   grp = ents.add_group
   grp.name = "SV-01 spout"
   ge = grp.entities
-  circle = ge.add_circle([4819.mm,1295.mm,1290.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([4831.mm,1291.mm,1180.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(40.mm)
+  cface.pushpull(36.mm)
   mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
   mat.color = Sketchup::Color.new(184, 184, 64)
   mat.alpha = 1.0

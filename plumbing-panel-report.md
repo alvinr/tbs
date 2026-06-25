@@ -21,7 +21,7 @@ The panel serves three functions:
    connections, and valve positions are organized on one face, minimizing pipe
    runs and simplifying maintenance.
 3. **Accessibility** — the panel faces the open end of the container (-X
-   direction). The operator approaches from the right walkway (X=4,329–4,629mm)
+   direction). The operator approaches from the right walkway
    and reaches into the 270mm corridor to access valves and pump switches.
 
 ---
@@ -33,11 +33,10 @@ The panel serves three functions:
 | Material | 18mm marine plywood (BS 1088 or equivalent) |
 | Face dimensions | 270mm wide (Yd) × 2,060mm tall (Z) |
 | Orientation | Vertical, perpendicular to sealed end wall |
-| Panel face X position | 4,874mm — corridor front mouth (equipment protrudes toward cargo door, -X; tip ~4,744mm, clear of film rail X=4,649) |
 | Bottom edge Z | 250mm (120mm above walkway deck) |
-| Top edge Z | 2,310mm (78mm below ceiling at Z=2,388mm) |
-| Corridor width | 270mm (Yd=1,046–1,316mm, between near and far IBC columns) |
-| Mounting | L-brackets to the front-portal frame uprights (~X4,734), 4 points |
+| Top edge Z | 2,310mm (78mm below ceiling of 2,388mm) |
+| Corridor width | 270mm (between near and far IBC columns) |
+| Mounting | L-brackets to the front-portal frame uprights, 4 points |
 | Finish | Sealed with marine varnish or epoxy; white face for visibility |
 
 ---
@@ -59,7 +58,7 @@ corridor gap clear of both tote columns.
 
 ![TBS-001 — Plumbing Panel Backside](assets/panel-layout-back.png)
 
-### 3.1 Filter Skid — Z=200–1,280mm
+### 3.1 Filter Skid
 
 Three 4.5"×10" Big Blue filter housings mounted vertically (sump down) in a
 slotted angle frame. The housings stack vertically with 30mm gaps between them.
@@ -94,27 +93,27 @@ integrated bracket. 1" NPT inlet/outlet; a single 1/2"→1" bushing reducer
 connects P-02 output to the unit inlet. See
 [Water System Report](water-system-report.md) §3.2 for sizing rationale.
 
-### 3.2 Pump Zone — Z=1,120–1,960mm
+### 3.2 Pump Zone
 
 Five Shurflo 2088 pumps in a 2-column layout above the filter stack:
 
-| Pump | Column | Position (Z, mm) | Circuit | Function |
-|------|--------|------------------|---------|----------|
-| P-01 | Left | 1,120–1,338 | Blue | Clean water supply to spray bar |
-| P-04 | Left | 1,378–1,596 | Black/Brown | Tray drain transfer (sump → IBC-3 or IBC-4) |
-| P-02 | Right | 1,120–1,338 | Brown | Brown recycle (IBC-3 → filter train) |
-| P-03 | Right | 1,378–1,596 | Black | Waste evacuation (IBC-4 residual → external drain) |
-| P-05 | Right | 1,746–1,964 | Brown | Brown drain-out (IBC-3 → external drain) |
+| Pump | Column | Circuit | Function |
+|------|--------|---------|----------|
+| P-01 | Left | Blue | Clean water supply to spray bar |
+| P-04 | Left | Black/Brown | Tray drain transfer (sump → IBC-3 or IBC-4) |
+| P-02 | Right | Brown | Brown recycle (IBC-3 → filter train) |
+| P-03 | Right | Black | Waste evacuation (IBC-4 residual → external drain) |
+| P-05 | Right | Brown | Brown drain-out (IBC-3 → external drain) |
 
 All pumps are identical Shurflo 2088-554-144 units: 12VDC, 3.5 GPM, 45 PSI,
 self-priming diaphragm. Vertical mount orientation with ports at the head (top),
 127mm body width × 218mm body height × 100mm protrusion from panel. Each pump
 mounts on a stainless steel mounting bracket with 4 bolts through the plywood.
 
-**Left column** (Yd=0–127mm, near IBC side): P-01 and P-04 share suction from
+**Left column** (near IBC side): P-01 and P-04 share suction from
 the near IBC column (Blue IBC-1/IBC-2 and tray sump respectively).
 
-**Right column** (Yd=143–270mm, far IBC side): P-02, P-03, and P-05 serve the
+**Right column** (far IBC side): P-02, P-03, and P-05 serve the
 Brown and Waste circuits from the far IBC column.
 
 #### Pump electrical — Circuit C (one at a time)
@@ -139,13 +138,13 @@ fuse covers a single pump with margin; simultaneous running is not intended.
 Switches and the distribution block sit **above the spill line**, IP-rated and sealed,
 with drip loops, per the wet-zone rules in [Electrical Report §7.5](electrical-report.md).
 
-### 3.3 Accumulator — Z=1,746–1,896mm
+### 3.3 Accumulator
 
 | Parameter | Value |
 |-----------|-------|
 | Model | SeaFlo or equivalent, 0.75L (23.5 oz) |
 | Dimensions | 127mm OD × 150mm length |
-| Position | Left column, above P-04 (Z=1,746mm) |
+| Position | Left column, above P-04 |
 | Port | 1/2" NPT, bottom |
 | Function | Smooths P-01 pump cycling, maintains pressure when pump is off |
 
@@ -168,7 +167,7 @@ pump, providing steady flow to the spray bar.
 | BV-08 | 1/2" | P-03 suction | Waste IBC-4 drain-out isolation |
 
 BV-02 is the primary operator-controlled valve. It is mounted on the pinhole
-wall (Yd=0) at X=2,399mm, Z=900mm — waist height from the walkway deck,
+wall — waist height from the walkway deck,
 directly in front of the operator during spray bar wash passes.
 
 ### 4.2 Diverter Valves (3-Way)
@@ -252,7 +251,7 @@ IBC-4 → P-03 → external drain port X4 (gravity + pump assist)
 ```
 
 P-03 is dedicated to waste evacuation. IBC-4 gravity-drains through external
-port X4 (Z=200mm) down to approximately 120L residual; P-03 pumps the residual
+port X4 down to approximately 120L residual; P-03 pumps the residual
 below the gravity drain height to a disposal tanker.
 
 ---
@@ -262,7 +261,7 @@ below the gravity drain height to a disposal tanker.
 ### 7.1 Plumbing Panel Mounting
 
 The plywood panel is secured to the IBC restraint front-portal frame uprights
-(~X4,734, at the corridor mouth) at four points using L-brackets with M10 bolts.
+(at the corridor mouth) at four points using L-brackets with M10 bolts.
 The frame provides rigid lateral restraint — the panel does not contact the
 container walls directly.
 
@@ -298,8 +297,7 @@ panel and allows gravity to assist with priming.
 | Pipe fittings + valves | ~50mm |
 
 The maximum protrusion is 130mm (filter housings). Combined with the 18mm panel
-thickness, the total X footprint is 148mm. The walkway inner edge is at
-X=4,329mm — leaving 653mm clear between the walkway and the nearest protruding
+thickness, the total X footprint is 148mm. There is a 653mm clear between the walkway and the nearest protruding
 component.
 
 ---
@@ -317,9 +315,9 @@ Pipe crossings use the gap-break method (rear pipe broken at crossing) for pipes
 of different system colors, and the bridge-arc method for same-color crossings.
 
 Pipes enter and exit the panel zone at the left and right panel edges:
-- **Left edge** (Yd=1,046mm, near wall side) — Blue IBC suction, Blue discharge
+- **Left edge** (near wall side) — Blue IBC suction, Blue discharge
   riser to pinhole wall
-- **Right edge** (Yd=1,316mm, far wall side) — Brown/Waste IBC connections,
+- **Right edge** (far wall side) — Brown/Waste IBC connections,
   external drain routing
 
 ---

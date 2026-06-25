@@ -202,7 +202,7 @@ ax.text(BA_X + BA_W/2, (BA_H_LO + BA_H_HI)/2,
         "Battery\nbank", ha="center", va="center",
         fontsize=FS_SM - 1, color="#FFFFFF", zorder=6)
 
-# Equipment panel zone: X=4870–5018, Z=900–2010 (pumps+filters, Yd=1046–1316)
+# Plumbing panel zone: X=4870–5018, Z=900–2010 (pumps+filters, Yd=1046–1316)
 EQ_ZONE_X = FSKID_X
 EQ_ZONE_W = EQPANEL_X + EQPANEL_T - FSKID_X
 equip_rect(ax, EQ_ZONE_X, EQPANEL_Z_LO, EQ_ZONE_W, EQPANEL_Z_HI - EQPANEL_Z_LO, C_PUMP,
@@ -217,7 +217,7 @@ leader(ax, EP_X + EP_W, (EP_H_LO + EP_H_HI)/2, EP_X + 500, 2000,
 leader(ax, BA_X + BA_W, BA_H_HI, BA_X + (BA_W*2), 800,
        f"Battery bank\nX={BA_X}–{BA_X+BA_W}mm", ha="left", fs=FS_SM)
 leader(ax, EQ_ZONE_X + EQ_ZONE_W, (EQPANEL_Z_LO + EQPANEL_Z_HI)/2, EQ_ZONE_X + 1500, 700,
-       f"Equipment panel  (pumps+filters, Yd=1046–1316)\nX={EQ_ZONE_X}–{EQ_ZONE_X+EQ_ZONE_W}mm", ha="left", fs=FS_SM)
+       f"Plumbing panel  (pumps+filters, Yd=1046–1316)\nX={EQ_ZONE_X}–{EQ_ZONE_X+EQ_ZONE_W}mm", ha="left", fs=FS_SM)
 
 # External power panel — flush-mount on exterior of pinhole wall (ghost from this view)
 PP_CTR_H = (EP_H_LO + EP_H_HI) / 2
@@ -357,7 +357,7 @@ legend_items = [
     (C_BROWN_IBC, "Brown IBC x1 (bottom near)"),
     (C_WASTE_IBC, "Waste IBC x1 (bottom far)"),
     ("#E8E8E8",   "Evap duct penetration (ext unit)"),
-    (C_PUMP,      "Equipment panel (pumps+filters)"),
+    (C_PUMP,      "Plumbing panel (pumps+filters)"),
     (C_ELEC,      "Electrical panel"),
     (C_BATT,      "Battery bank"),
     (C_FILM_PLN,  "Film plane (symbolic band)"),

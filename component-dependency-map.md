@@ -202,7 +202,7 @@ face trips the contactor (kills all DC from outside). 4 AWG ground wire + 8ft co
 *Circuits: A — safelight strip (overhead red LED); B — film plane mechanism motors;
 C — water pumps P-01–P-04 (P-03 in IBC corridor); D — safelight vestibule; E — evaporative cooler; F — ventilation fans.*
 
-### 1.10 Pump Manifold (Equipment Panel)
+### 1.10 Pump Manifold (Plumbing Panel)
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
@@ -212,11 +212,11 @@ C — water pumps P-01–P-04 (P-03 in IBC corridor); D — safelight vestibule;
 | Depth from pinhole wall | 1,046mm | `PUMP_YD` (= `CORRIDOR_YD_NEAR`) |
 | Protrusion from panel | 127mm | `PUMP_D` |
 
-*Components: 1" HDPE header + isolation valves, 4× 12V pumps on equipment panel (P-01 Blue spray bar supply,
+*Components: 1" HDPE header + isolation valves, 4× 12V pumps on plumbing panel (P-01 Blue spray bar supply,
 P-02 Brown recycle via filter, P-03 waste evacuation, P-04 tray sump pickup),
 1-gal pressure accumulator ACC-01, DN50 butterfly valves V1–V4 (S60×6 thread) at IBC outlets,
 manifold ball valves VB1/VB2/VB3, check valves CV1/CV3/CV4 on bulkhead lines X1/X3/X4, X1 fill tee (splits to IBC-1 & IBC-2), Circuit C.
-Mounted on 18mm marine ply equipment panel at Yd=1,046 (near IBC column face), in the IBC plumbing corridor.*
+Mounted on 18mm marine ply plumbing panel at Yd=1,046 (near IBC column face), in the IBC plumbing corridor.*
 
 ### 1.11 Water System — Blue Circuit
 

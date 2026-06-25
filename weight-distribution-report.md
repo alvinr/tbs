@@ -69,7 +69,7 @@ UV-HDPE 950 kg/m³, water 1,000 kg/m³.
 | Electrical panel | 15 | 1,600–1,900 | 0–150 | Wall-mount distribution panel |
 | Battery bank | 13 | 1,810–2,310 | 0–150 | 1× 100Ah LiFePO4 @ 13 kg (standard build; +13 kg for the optional 2nd pack) |
 | Solar controller | 2 | 1,700–1,800 | 0–100 | MPPT charge controller |
-| Pump manifold | 5 | 4,800–5,580 | 1,046–1,173 | 4× 12V diaphragm pumps on equipment panel |
+| Pump manifold | 5 | 4,800–5,580 | 1,046–1,173 | 4× 12V diaphragm pumps on plumbing panel |
 | Film plane carriage | 33 | 150–4,649 | 2,212–2,312 | Al angle frame (50.8×50.8×4.8mm) + 92 cam-lever clamps + 4 HGH20CA carriages |
 | Tilt-swing board | 30 | 2,089–2,709 | 0–100 | 620×620×45mm Al plate + spherical pivot + screws |
 | Fans (A+B) | 4 | End walls | Near corners | 2× 150mm axial panel fans |
@@ -246,7 +246,7 @@ The near/far split stays close to balanced in all states (48.4–50.2% near). Th
 transport states lean slightly far (52% far) because the swung panel + drum carry
 their mass toward the far/pivot side. This is by
 design: equipment on the pinhole wall (near side) is lightweight (electrical
-panel, batteries totaling ~43 kg), the pump manifold is on the equipment panel
+panel, batteries totaling ~43 kg), the pump manifold is on the plumbing panel
 centered in the IBC corridor (Yd=1,046), and the IBC stack is centered
 across the container width. The film plane carriage contributes ~33 kg to
 the far side but is offset by the tilt-swing board on the near side.

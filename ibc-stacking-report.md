@@ -92,7 +92,7 @@ uprights at the corridor edges on floor flange feet. Transport restraint is prov
 - the totes are otherwise trapped by the container side walls (30mm gap) and sealed end wall.
 
 The front portal also gives the right-walkway cantilever arms their clamp point and
-mounts the (forward) wet-end equipment panel.
+mounts the (forward) wet-end plumbing panel.
 
 ### 3.2 Frame Specification
 
@@ -169,7 +169,7 @@ provide vertical tie-down. Together these restrain both tiers in all six DOF.
 ## 5. Drain Valve Access
 
 The bottom-tier drain valves (DN50 butterfly, corridor-facing) are reached
-directly from the **open corridor front** — with the equipment panel moved forward and
+directly from the **open corridor front** — with the plumbing panel moved forward and
 no load-bearing base frame, there are no removable access gates. The operator reaches in
 from the right walkway.
 
@@ -202,7 +202,7 @@ butterfly valve (S60×6 thread). The pipe specification, the per-circuit routing
 and the recycle returns), and the valve schedule are specified in the
 [Water System Report](water-system-report.md) §4–§5 and §7. The panel-mounted
 pumps, filters, and diverter valves that drive those circuits — mounted on the
-plywood equipment panel at the front (cargo-door) mouth of the corridor, bolted to
+plywood plumbing panel at the front (cargo-door) mouth of the corridor, bolted to
 the front-portal frame (see [§3.2](#32-frame-specification)) — are specified in the
 [Plumbing Panel Report](plumbing-panel-report.md). This report treats the
 corridor plumbing and panel only as loads the stacking frame carries.
@@ -224,7 +224,7 @@ Eight construction drawings cover the IBC system across two drawing sets:
 **Sheet 3 — External plumbing panel: Sealed end wall elevation with 3× bulkhead ports**
 ![TBS-001 IBC Stacking — Sheet 3](assets/ibc-stacking-sheet3.png)
 
-**Sheet 4 — Internal plumbing plan view: IBC layout, pipe routing, valves, equipment panel**
+**Sheet 4 — Internal plumbing plan view: IBC layout, pipe routing, valves, plumbing panel**
 ![TBS-001 IBC Stacking — Sheet 4](assets/ibc-stacking-sheet4.png)
 
 **Sheet 5 — Internal plumbing elevation: Pipe routing from IBCs to bulkhead unions**
@@ -316,6 +316,6 @@ the stacking structure and the totes it restrains.
 | Water system architecture | [Water System Report](water-system-report.md) §3 |
 | IBC layout and stacking | [Equipment Layout Report](equipment-layout-report.md) §5 |
 | Frame fabrication drawings | [§8 — Engineering Drawings](#8-engineering-drawings) (this report) · [All Diagrams](all-diagrams.md) |
-| Equipment panel specification | [Plumbing Panel Report](plumbing-panel-report.md) |
+| Plumbing panel specification | [Plumbing Panel Report](plumbing-panel-report.md) |
 
 *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

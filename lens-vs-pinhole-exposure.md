@@ -3,7 +3,7 @@
 # Why a Lens Changes Exposure Time
 ## A First-Principles Explanation of Aperture, Light Collection, and Reciprocity
 
-**Camera:** Option B, f = 2,362mm, pinhole Ø 2.17mm (f/1088)
+**Camera:** Option B, f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm, pinhole Ø <!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm (f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number -->)
 **Baseline:** ISO 6 silver gelatin paper, full sun, Schwarzschild corrected — pinhole exposure ~43 minutes
 **Lens comparison:** Process lens or telescope objective at f/8–f/128
 
@@ -61,10 +61,10 @@ For a lens at f/16 installed in this camera (f_L = 2,362mm):
 
 ```
 D = 2,362 / 16 = 147.6mm
-A_lens = π × (73.8)² = 17094mm²
+A_lens = π × (73.8)² = 17,094mm²
 ```
 
-Every ray intercepted across this 147.6mm diameter disc is redirected toward the correct image point. The pinhole collects 3.70mm². The lens at f/16 collects 17094mm².
+Every ray intercepted across this 147.6mm diameter disc is redirected toward the correct image point. The pinhole collects 3.70mm². The lens at f/16 collects 17,094mm².
 
 **Source:** Smith, W.J., *Modern Optical Engineering*, 4th ed., McGraw-Hill, 2008, §2.1 (Radiometry and Photometry of Optical Systems). The derivation of image plane irradiance as a function of aperture area and f-number is standard: E = (π/4) × L × (1/N²) × cos⁴θ, where L is scene luminance and θ is the off-axis angle.
 
@@ -96,13 +96,7 @@ This is the f-number squared law that every photographer encounters when changin
 
 ## Part 2: Why the Practical Factor is Larger Than 4,624
 
-The calculation above predicts that a lens at f/16 should require 1/4,624 of the pinhole exposure time. If the pinhole requires 43 minutes, the lens should require:
-
-```
-43 × 60 / 4,624 = 0.56 seconds
-```
-
-The measured and calculated lens exposure is indeed approximately 0.5 seconds. But the starting figure of 43 minutes for the pinhole is not the raw calculated time — it is already Schwarzschild-corrected. The raw calculated time at f/1088 and ISO 6 is approximately **12.8 minutes**. The Schwarzschild correction inflates this to 43 minutes. The lens avoids the Schwarzschild correction entirely because 0.5 seconds is too short for reciprocity failure to matter.
+The aperture ratio alone predicts that a lens at f/16 needs 1/4,624 of the pinhole's *calculated* exposure. The pinhole's 43-minute working time, however, is not its calculated time: at f/1088 and ISO 6 the calculated exposure is about **12.8 minutes**, which Schwarzschild reciprocity failure (Part 2.1) inflates to 43 minutes. The lens exposure of **0.47 sec** is far too brief to incur that penalty, so it carries no such inflation.
 
 The true comparison is therefore:
 
@@ -112,7 +106,7 @@ The true comparison is therefore:
 | Lens f/16, ISO 6 | 0.47 sec | **0.47 sec** (unchanged) |
 | Ratio | 1,632:1 | **5,489:1** |
 
-The lens is not just 4,624× faster. It is ~5,500× faster in practice because it also sidesteps the reciprocity failure that penalises the pinhole.
+The lens is not just 4,624× faster. It is ~5,500× faster in practice because it also sidesteps the reciprocity failure that penalizes the pinhole.
 
 ### 2.1 Schwarzschild Reciprocity Failure — What It Is
 
@@ -143,7 +137,7 @@ t_actual = 770^1.176 = 2,488 sec ≈ 41.5 min ≈ 43 min ✓
 
 The Schwarzschild correction adds **28 minutes** to the calculated time — more than doubling it. This penalty applies to every exposure over approximately 10 seconds. A lens at f/32 (2.1 sec exposure) just begins to enter the Schwarzschild regime; at f/16 (0.5 sec) it is entirely exempt.
 
-**Source:** Schwarzschild, K., "On the Law of Reciprocity for Photographic Surfaces," *Astrophysikalische Nachrichten*, Vol. 148, 1900, pp. 325–334. Applied to modern materials: Stroebel, L., Compton, J., Current, I., Zakia, R., *Basic Photographic Materials and Processes*, 3rd ed., Focal Press, 2009, Chapter 8. The value p ≈ 0.85 for RC paper is the standard practitioner figure; the precise value is emulsion-specific and should be tested.
+**Source:** Schwarzschild, K., "On the Deviation from the Reciprocity Law in Photography," *The Astrophysical Journal*, Vol. 11, 1900, pp. 89–91. Applied to modern materials: Stroebel, L., Compton, J., Current, I., Zakia, R., *Basic Photographic Materials and Processes*, 3rd ed., Focal Press, 2009, Chapter 8. The value p ≈ 0.85 for RC paper is the standard practitioner figure; the precise value is emulsion-specific and should be tested.
 
 ### 2.2 How the Two Factors Combine
 
@@ -183,7 +177,7 @@ means that image-plane illuminance scales as:
 E ∝ 1/N²
 ```
 
-This is why photographers say "each stop is a factor of two in exposure." One stop = a factor of √2 change in diameter = a factor of 2 change in area = a factor of 2 change in exposure time. The system was originally standardised at f/1, f/1.4, f/2, f/2.8, f/4, f/5.6, f/8, f/11, f/16 — each value is √2 × the previous.
+This is why photographers say "each stop is a factor of two in exposure." One stop = a factor of √2 change in diameter = a factor of 2 change in area = a factor of 2 change in exposure time. The system was originally standardized at f/1, f/1.4, f/2, f/2.8, f/4, f/5.6, f/8, f/11, f/16 — each value is √2 × the previous.
 
 The f/1088 pinhole sits 12.2 stops beyond f/16. Each of those 12.2 stops doubles the exposure time:
 
@@ -193,7 +187,7 @@ The f/1088 pinhole sits 12.2 stops beyond f/16. Each of those 12.2 stops doubles
 
 (The small discrepancy is rounding in the stop count.)
 
-**Source:** The f-number system was standardised by the British Journal of Photography and the Royal Photographic Society in the 1880s–1900s. The mathematical derivation of the inverse square law relationship to exposure is in every optics textbook; the most accessible photographic treatment is Adams, A., *The Negative*, New York Graphic Society, 1981, Chapter 4.
+**Source:** The f-number system was standardized by the British Journal of Photography and the Royal Photographic Society in the 1880s–1900s. The mathematical derivation of the inverse square law relationship to exposure is in every optics textbook; the most accessible photographic treatment is Adams, A., *The Negative*, New York Graphic Society, 1981, Chapter 4.
 
 ---
 
@@ -300,12 +294,12 @@ Building the camera with the **interchangeable plate system** (see fabrication d
 
 | Source | Relevance |
 |---|---|
-| Born, M. & Wolf, E., *Principles of Optics*, 7th ed., Cambridge UP, 1999, §8.6 | Image irradiance, aperture theory |
-| Hecht, E., *Optics*, 5th ed., Pearson, 2017, §5.1, §10.2 | Radiometry, pinhole model |
-| Smith, W.J., *Modern Optical Engineering*, 4th ed., McGraw-Hill, 2008, §2.1 | E = (π/4)L(1/N²)cos⁴θ derivation |
-| Young, M., "Pinhole Optics," *Applied Optics*, Vol. 10, No. 12, 1971, pp. 2763–2767 | Authoritative peer-reviewed pinhole analysis |
-| Schwarzschild, K., *Astrophysikalische Nachrichten*, Vol. 148, 1900 | Original reciprocity failure law |
-| Stroebel et al., *Basic Photographic Materials and Processes*, 3rd ed., Focal Press, 2009, Ch. 8 | Schwarzschild p values for modern emulsions |
-| Stroebel, L., *View Camera Technique*, 7th ed., Focal Press, 1999, Ch. 6 | f-number exposure calculations, bellows factor |
-| Adams, A., *The Negative*, New York Graphic Society, 1981, Ch. 4 | f-stop system; stops as doublings of exposure |
-| Renner, E., *Pinhole Photography*, 4th ed., Focal Press, 2009 | Pinhole exposure tables; practical f-number application |
+| Born, M. & Wolf, E., *Principles of Optics*, 7th ed., Cambridge UP, 1999, §8.6. [Catalog](https://openlibrary.org/search?q=Born+Wolf+Principles+of+Optics) | Image irradiance, aperture theory |
+| Hecht, E., *Optics*, 5th ed., Pearson, 2017, §5.1, §10.2. [Catalog](https://openlibrary.org/search?q=Hecht+Optics) | Radiometry, pinhole model |
+| Smith, W.J., *Modern Optical Engineering*, 4th ed., McGraw-Hill, 2008, §2.1. [Catalog](https://openlibrary.org/search?q=Smith+Modern+Optical+Engineering) | E = (π/4)L(1/N²)cos⁴θ derivation |
+| Young, M., "Pinhole Optics," *Applied Optics*, Vol. 10, No. 12, 1971, pp. 2763–2767. [DOI](https://doi.org/10.1364/AO.10.002763) | Authoritative peer-reviewed pinhole analysis |
+| Schwarzschild, K., "On the Deviation from the Reciprocity Law in Photography," *The Astrophysical Journal*, Vol. 11, 1900, pp. 89–91. [NASA ADS](https://ui.adsabs.harvard.edu/abs/1900ApJ....11...89S) | Original reciprocity failure law |
+| Stroebel et al., *Basic Photographic Materials and Processes*, 3rd ed., Focal Press, 2009, Ch. 8. [Catalog](https://openlibrary.org/search?q=Basic+Photographic+Materials+and+Processes) | Schwarzschild p values for modern emulsions |
+| Stroebel, L., *View Camera Technique*, 7th ed., Focal Press, 1999, Ch. 6. [Catalog](https://openlibrary.org/search?q=Stroebel+View+Camera+Technique) | f-number exposure calculations, bellows factor |
+| Adams, A., *The Negative*, New York Graphic Society, 1981, Ch. 4. [Catalog](https://openlibrary.org/search?q=Ansel+Adams+The+Negative) | f-stop system; stops as doublings of exposure |
+| Renner, E., *Pinhole Photography*, 4th ed., Focal Press, 2009. [Catalog](https://openlibrary.org/search?q=Renner+Pinhole+Photography) | Pinhole exposure tables; practical f-number application |

@@ -4,15 +4,15 @@
 ## A Technical Analysis of Image Quality, Depth of Field, and Exposure Impact
 
 **Camera configuration:** Option B (side-to-side), container interior depth f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm  
-**Image plane (active):** <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm (~14′ 9″ × 7′ 10″); container interior 5893 × 2,388mm  
-**Current pinhole:** Ø 2.17mm, f/1088  
+**Image plane (active):** <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm (~14′ 9″ × 7′ 10″); container interior <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm --> × 2,388mm  
+**Current pinhole:** Ø <!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm, f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number -->  
 **Baseline exposure (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction):** ~30–45 min
 
 ---
 
 ## The Fundamental Problem
 
-Before specifying any lens, one geometric fact must be understood: **no commercially available photographic lens covers the full 5893 × 2,388mm image plane.** The image circle required to cover this format fully is 6,358mm in diameter. For comparison, the largest format commonly served by photographic lenses is 8×10 inch (203 × 254mm, diagonal 325mm). Our image plane diagonal is **20 times larger**.
+Before specifying any lens, one geometric fact must be understood: **no commercially available photographic lens covers the full <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm --> × 2,388mm image plane.** The image circle required to cover this format fully is 6,358mm in diameter. For comparison, the largest format commonly served by photographic lenses is 8×10 inch (203 × 254mm, diagonal 325mm). Our image plane diagonal is **20 times larger**.
 
 This does not mean a lens is useless here. It means the lens choice determines *which portion* of the image plane receives focused, optically sharp light. The decision matrix is:
 
@@ -166,20 +166,20 @@ The following uses:
 
 | System | Blur disk size | Resolution (theoretical) | Notes |
 |---|---|---|---|
-| Pinhole (f/1088) | 2.17mm geometric | ~0.23 lp/mm | Diffraction-limited |
+| Pinhole (f/1088) | 1.46mm Airy | ~0.69 lp/mm | Diffraction-limited (per [Optics reference](pinhole-optics-report.md)) |
 | Lens f/8 | 0.011mm Airy | ~47 lp/mm | Diffraction limit only |
-| Lens f/16 | 0.021mm Airy | ~23 lp/mm | 100× better than pinhole |
-| Lens f/32 | 0.043mm Airy | ~12 lp/mm | 50× better |
-| Lens f/64 | 0.086mm Airy | ~6 lp/mm | 26× better |
-| Lens f/128 | 0.172mm Airy | ~3 lp/mm | 13× better |
-| Lens f/256 | 0.344mm Airy | ~1.5 lp/mm | 6× better |
-| Lens f/512 | 0.688mm Airy | ~0.7 lp/mm | 3× better |
+| Lens f/16 | 0.021mm Airy | ~23 lp/mm | 33× better than pinhole |
+| Lens f/32 | 0.043mm Airy | ~12 lp/mm | 17× better |
+| Lens f/64 | 0.086mm Airy | ~6 lp/mm | ~9× better |
+| Lens f/128 | 0.172mm Airy | ~3 lp/mm | ~4× better |
+| Lens f/256 | 0.344mm Airy | ~1.5 lp/mm | ~2× better |
+| Lens f/512 | 0.688mm Airy | ~0.7 lp/mm | ~1× (comparable) |
 
-These are diffraction limits — the ceiling for any perfect lens. Real lenses fall below this due to aberrations. At f/8 a real-world large-format process lens might achieve 15–25 lp/mm (still 65–110× better than the pinhole). Even a mediocre singlet at f/8 would give 5–10 lp/mm, 20–43× better.
+These are diffraction limits — the ceiling for any perfect lens. Real lenses fall below this due to aberrations. At f/8 a real-world large-format process lens might achieve 15–25 lp/mm (still 22–36× better than the pinhole's diffraction limit, and far more versus its ~2.17mm geometric blur). Even a mediocre singlet at f/8 would give 5–10 lp/mm, 7–14× better.
 
 ### 4.2 What the Improvement Looks Like on a 4,499mm Wide Active Image
 
-The pinhole resolves features of ~2.17mm on the image plane. At 3.4 m subject distance (M = 0.69), this corresponds to resolving features ~3.1mm in the subject — roughly the resolution needed to clearly see eyebrows, lips, and hair texture.
+The pinhole's geometric blur disk is ~2.17mm on the image plane — larger than the diffraction limit in §4.1, so it sets the practical resolution. At 3.4 m subject distance (M = 0.69), this corresponds to resolving features ~3.1mm in the subject — roughly the resolution needed to clearly see eyebrows, lips, and hair texture.
 
 A lens at f/32 resolves ~0.043mm on the image plane — **50× finer**. At the same subject distance this resolves 0.062mm features. On an image viewed from 5 m, the pinhole is already acceptably sharp to the naked eye; the lens at f/32 would appear dramatically, noticeably sharper even at long viewing distances. Individual hairs, fabric texture, and skin pores would be rendered.
 
@@ -206,7 +206,7 @@ These are the highest-quality option within their coverage area. Process lenses 
 
 **What the image looks like:** A sharp circular disk in the center of the photosensitive surface, approximately 400–500mm in diameter. The remaining ~4,099mm width of the active image plane receives no light. The entire portrait must be composed within this central medallion.
 
-**Coverage as percentage of image plane:** 400mm circle / 4,499mm active width = **8.9% of image width**. The circular image is a small fraction of the ~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft active plane. The remainder of the plane is unexposed (black in the final image, or could be utilised by other means).
+**Coverage as percentage of image plane:** 400mm circle / 4,499mm active width = **8.9% of image width**. The circular image is a small fraction of the ~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft active plane. The remainder of the plane is unexposed (black in the final image, or could be utilized by other means).
 
 **Distortion:** Designed for <0.1% distortion across the image circle. Straight lines render straight. Essentially identical to pinhole geometry within the covered area.
 
@@ -265,7 +265,7 @@ A full-width solution would require a <!-- BEGIN fact:film_plane_width_mm -->4,4
 
 1. **Chromatic aberration — severe.** A single-element Fresnel has no color correction. The focal point for blue light is shorter than for red by approximately f_L / V where V = Abbe number of acrylic (~57): Δf = 1,400 / 57 ≈ 25mm. Visible as color fringing — a rainbow halo on high-contrast edges, most prominent at the image periphery. On silver gelatin paper (blue/green sensitive), this manifests as softer blue channel focus vs. green, producing a slightly warm-tinted blur. On panchromatic film, colored fringes would be fully visible.
 
-2. **Zone diffraction artifacts.** The stepped Fresnel ring structure creates diffraction rings around point sources. In a portrait, this appears as a soft halo or glow around specular highlights (eyes, jewellery, white clothing). Can be aesthetically pleasant or distracting.
+2. **Zone diffraction artifacts.** The stepped Fresnel ring structure creates diffraction rings around point sources. In a portrait, this appears as a soft halo or glow around specular highlights (eyes, jewelry, white clothing). Can be aesthetically pleasant or distracting.
 
 3. **Edge image quality.** Fresnel lenses perform best on-axis and deteriorate rapidly toward the edges due to zone spacing errors and oblique incidence effects. A 600mm Fresnel covering a 600mm field: the center 200mm may be acceptable; the outer zone will be softer and more aberrant.
 
@@ -308,8 +308,8 @@ This is the fundamental optical constraint of this camera that no lens choice ca
 The active image plane is <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm, centered on the pinhole (X=2,399mm) — giving half-width 2,250mm and half-height 1,194mm. The distance from the lens to the center of the image plane is 2,362mm. The distance from the lens to the active image plane corners and edges:
 
 ```
-d_mid-width = √(2,362² + 2,250²) = 3262mm   [half-width of active plane]
-d_corner    = √(2,362² + 2,250² + 1,194²) = 3474mm   [half-diagonal of active plane]
+d_mid-width = √(2,362² + 2,250²) = 3,262mm   [half-width of active plane]
+d_corner    = √(2,362² + 2,250² + 1,194²) = 3,474mm   [half-diagonal of active plane]
 ```
 
 The corner is **1,112mm further from the lens than the center.** The left/right mid-edge point is 3,262mm from the lens (900mm further than center). This means:
@@ -335,17 +335,17 @@ Both the pinhole and any lens suffer the same physical law: illumination falls a
 | Mid-width edge | 43.6° | 0.273 | 27% | 1.9 stops |
 | Corner | 47.1° | 0.215 | 22% | 2.2 stops |
 
-The corners of the active image plane receive 22% of the light falling on the center — approximately **2.2 stops less exposure**. This is present with the pinhole and with any lens; it is a property of the field angle, not the optical system. Because the active image plane (4,499mm wide) is substantially narrower than the full container interior (5,893mm), the field angle is less extreme than a full-container analysis would suggest — the corner penalty improves from ~3 stops (full container) to ~2.2 stops (active plane). The effect on the final image: a natural vignette, darkening from center to corners. At 35 minutes or at 2 seconds, the corner of the image is always about 2 stops darker than the center.
+The corners of the active image plane receive 22% of the light falling on the center — approximately **2.2 stops less exposure**. This is present with the pinhole and with any lens; it is a property of the field angle, not the optical system. Because the active image plane (4,499mm wide) is substantially narrower than the full container interior (5,893mm), the field angle is less extreme than a full-container analysis would suggest — the corner penalty improves from ~3 stops (full container) to ~2.2 stops (active plane). The effect on the final image: a natural vignette, darkening from center to corners. At 30–45 minutes or at 2 seconds, the corner of the image is always about 2 stops darker than the center.
 
 On silver gelatin paper, 2.2 stops of underexposure in the corners means the corner areas may not reach adequate density in a correctly-exposed center. Exposure must account for this — either the center will be slightly overexposed to ensure the corners have sufficient density, or the corners are accepted as darker (which, for a portrait centered in the frame, may be desirable — a natural vignette framing the subject).
 
 ### 6.2 The Curved Image Plane Option
 
-If the photosensitive substrate is mounted on a concave backing panel curved to match the focal surface (a sphere of radius <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm centerd on the lens), the field geometry problem is eliminated. Every point on the curved surface is equidistant from the lens. The image plane would need to curve forward (toward the lens) at the edges by approximately:
+If the photosensitive substrate is mounted on a concave backing panel curved to match the focal surface (a sphere of radius <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm centered on the lens), the field geometry problem is eliminated. Every point on the curved surface is equidistant from the lens. The image plane would need to curve forward (toward the lens) at the edges by approximately:
 
 ```
 Δz at mid-width edge = 3,262 − 2,362 = 900mm
-Δz at corner = 3,474 − 2,362 = 1112mm
+Δz at corner = 3,474 − 2,362 = 1,112mm
 ```
 
 This is still substantial curvature — the active image plane would bow forward at the sides by ~900mm. Constructing this with ACM panel is not feasible, but constructing it with fabric (canvas or muslin) stretched over a curved timber frame absolutely is. The curved frame would need to be CNC-machined or steam-bent to a precise <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm radius sphere section. Note: the bow is significantly more manageable than for a full-container-width image plane (which would require 1,414mm of forward bow at the mid-width edge).
@@ -400,7 +400,7 @@ The most interesting option for this camera may be to combine a lens with the pi
 
 Mount a 300mm process lens in the center of the pinhole wall. Drill a series of 2.17mm pinholes at regular intervals across the remainder of the wall (e.g., a 5 × 2 grid of pinholes spaced 1,000mm apart). Each pinhole projects a complete, soft image of the full scene onto the image plane, overlapping with each other and with the lens image.
 
-Result: a central sharp-focus portrait medallion surrounded by a web of overlapping, offset soft pinhole images — a unique artefact that could not be produced any other way.
+Result: a central sharp-focus portrait medallion surrounded by a web of overlapping, offset soft pinhole images — a unique artifact that could not be produced any other way.
 
 ### 9B: Sequential Exposure — Sharp Portrait + Pinhole Landscape
 
@@ -408,7 +408,7 @@ Make two exposures on the same piece of paper. First: lens exposed for 2–5 sec
 
 ### 9C: Zone-Focus Grid Lens Array
 
-Install multiple lenses (e.g., 6 large magnifying glass elements, 200mm diameter each) across the pinhole wall in a 3 × 2 grid, each focused at a different distance. Each lens covers approximately a 300mm circle of the image plane, with the circles designed to tile adjacent areas. The total covered area is 6 × π(150)² ≈ 424000mm² — still only about 3.9% of the 10743612mm² active image plane, but arranged across the full width. The effect: a grid of sharp circular windows with dark/pinhole gaps between them.
+Install multiple lenses (e.g., 6 large magnifying glass elements, 200mm diameter each) across the pinhole wall in a 3 × 2 grid, each focused at a different distance. Each lens covers approximately a 300mm circle of the image plane, with the circles designed to tile adjacent areas. The total covered area is 6 × π(150)² ≈ 424,000mm² — still only about 3.9% of the 10,743,612mm² active image plane, but arranged across the full width. The effect: a grid of sharp circular windows with dark/pinhole gaps between them.
 
 ---
 
@@ -419,9 +419,9 @@ Install multiple lenses (e.g., 6 large magnifying glass elements, 200mm diameter
 | Quality | Pinhole | Process lens | Telescope APO | Fresnel lens |
 |---|---|---|---|---|
 | Coverage of image plane | ~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft (active) | Ø ~400mm circle | Ø ~150–200mm circle | Ø ~600mm circle |
-| Sharpness (within covered area) | 0.23 lp/mm | 15–25 lp/mm | 20–40 lp/mm | 2–8 lp/mm |
+| Sharpness (within covered area) | 0.69 lp/mm | 15–25 lp/mm | 20–40 lp/mm | 2–8 lp/mm |
 | Depth of field | Unlimited (all soft) | f/32: 1.2 m span | f/32: 1.2 m span | Shallow (soft) |
-| Exposure time (Ware cyanotype, ISO ~2–4) | ~35 min | ~1.5 sec | ~6 sec | ~0.4 sec |
+| Exposure time (Ware cyanotype, ISO ~2–4) | ~30–45 min | ~1.5 sec | ~6 sec | ~0.4 sec |
 | Geometric distortion | Zero | <0.1% | ~0.2% | 1–3% |
 | Chromatic aberration | Zero | <0.3mm (APO) | <0.5mm (APO) | ~25mm (severe) |
 | Image magnification | M = d_i/d_o | M = d_i/d_o (same) | M = d_i/d_o (same) | M = d_i/d_o (same) |
@@ -431,14 +431,14 @@ Install multiple lenses (e.g., 6 large magnifying glass elements, 200mm diameter
 
 ### Recommended Lens Specification for Portrait Work
 
-If a lens is added for portrait work with the goal of maximising image quality:
+If a lens is added for portrait work with the goal of maximizing image quality:
 
 **Primary choice:** A **Rodenstock Apo-Ronar 1,200mm f/14** or **Nikkor T 1,200mm f/11** mounted on an adjustable focus board in the pinhole wall. Both are available on the used market for $400–$1,500. The 1,200mm focal length focuses at 2.4 m from the wall — slightly close for comfortable portrait work; extending the lens board ~80mm forward (toward the subject) re-focuses the system to approximately 3.4 m. These lenses provide:
 
 - f/14 maximum aperture → effective f/24 at 3.4 m → 0.4 second exposure on ISO 6 paper
 - <0.1% distortion (designed for reprographic work)
 - Apochromatic correction — no visible color fringing
-- Ø ~400mm image circle — a large, centerd medallion portrait
+- Ø ~400mm image circle — a large, centered medallion portrait
 - Extremely well-documented optical performance
 
 **For broader coverage at the cost of aberrant character:** A **600 × 600mm acrylic Fresnel lens at 1,400mm focal length** (available from Edmund Optics or solar optics suppliers for $40–$120). Covers a 600mm circle with characteristic soft-center/chromatic-edge quality. Interesting artistic choice; very cheap to test.
@@ -450,7 +450,7 @@ If a lens is added for portrait work with the goal of maximising image quality:
 | | Pinhole | Lens |
 |---|---|---|
 | Image area | ~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft (active) | 0.7–4% of total (within image circle) |
-| Subject holds still | ~35 min | 1.5–10 seconds |
+| Subject holds still | ~30–45 min | 1.5–10 seconds |
 | Geometric character | Perfect perspective, unlimited DoF | Sharp focus zone, controllable DoF |
 | Background | Soft but rendered | Sharp (at working aperture) or shallow-DoF blur |
 | Aesthetic | Documentary/impressionistic | Conventional photographic |
@@ -464,12 +464,12 @@ The pinhole gives the whole image, slowly. The lens gives a sharp central circle
 
 | Source | Relevance |
 |---|---|
-| Hecht, E., *Optics*, 5th ed., Pearson, 2017, §6.3–6.6 | Thin lens equation, aberration theory, DoF formulas |
-| Born, M. & Wolf, E., *Principles of Optics*, 7th ed., Cambridge UP, 1999, §8.6 | Airy disk, diffraction limits, cos⁴ law derivation |
-| Stroebel, L., *View Camera Technique*, 7th ed., Focal Press, 1999 | Bellows extension factor, large-format lens practice |
-| Renner, E., *Pinhole Photography*, 4th ed., Focal Press, 2009 | Pinhole-to-lens comparison; practical exposure guidance |
-| Rodenstock product data sheets (rodenstock-photo.de) | Apo-Ronar focal length / image circle specifications |
-| Nikon / Nikkor large format lens specifications | T-ED series 1,200mm data |
-| Edmund Optics (edmundoptics.com) | Fresnel lens specifications, acrylic singlet availability |
-| Sky-Watcher / William Optics product pages | APO refractor objective specifications |
-| Ray, S., *Applied Photographic Optics*, 3rd ed., Focal Press, 2002, §15 | Field curvature, cos⁴ falloff, large-format lens design |
+| Hecht, E., *Optics*, 5th ed., Pearson, 2017, §6.3–6.6. [Catalog](https://openlibrary.org/search?q=Hecht+Optics) | Thin lens equation, aberration theory, DoF formulas |
+| Born, M. & Wolf, E., *Principles of Optics*, 7th ed., Cambridge UP, 1999, §8.6. [Catalog](https://openlibrary.org/search?q=Born+Wolf+Principles+of+Optics) | Airy disk, diffraction limits, cos⁴ law derivation |
+| Stroebel, L., *View Camera Technique*, 7th ed., Focal Press, 1999. [Catalog](https://openlibrary.org/search?q=Stroebel+View+Camera+Technique) | Bellows extension factor, large-format lens practice |
+| Renner, E., *Pinhole Photography*, 4th ed., Focal Press, 2009. [Catalog](https://openlibrary.org/search?q=Renner+Pinhole+Photography) | Pinhole-to-lens comparison; practical exposure guidance |
+| Rodenstock Apo-Ronar product data. [rodenstock-photo.com](https://www.rodenstock-photo.com/) | Apo-Ronar focal length / image circle specifications |
+| Nikon / Nikkor large-format lens specifications. [nikon.com](https://www.nikon.com/) | T-ED series 1,200mm data |
+| Edmund Optics. [edmundoptics.com](https://www.edmundoptics.com/) | Fresnel lens specifications, acrylic singlet availability |
+| Sky-Watcher / William Optics product pages. [skywatcher.com](https://www.skywatcher.com/) · [williamoptics.com](https://williamoptics.com/) | APO refractor objective specifications |
+| Ray, S., *Applied Photographic Optics*, 3rd ed., Focal Press, 2002, §15. [Catalog](https://openlibrary.org/search?q=Ray+Applied+Photographic+Optics) | Field curvature, cos⁴ falloff, large-format lens design |

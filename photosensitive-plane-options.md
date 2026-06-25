@@ -20,11 +20,11 @@ At f/1088, even the fastest non-film material (ISO 6 silver gelatin paper) requi
 
 | Process | ISO equiv. | Corrected exposure at f/1088 (full sun) | Per-image cost |
 |---|---|---|---|
-| Gum bichromate | **~0.25–0.5** | ~8–17 hours | $135–175 |
-| Cyanotype (Herschel) | **~1–2** | ~2–4 hours | $175–195 |
-| **Cyanotype (Ware formula) ★ selected** | **~2–4** | **~30–45 min** | **$180–220** |
-| Salt print | **~1–3** | ~1.5–4 hours | $350–450 |
-| Van Dyke Brown | **~2–6** | ~45 min–2 hours | $195–300 |
+| Gum bichromate | **~0.25–0.5** | ~8–17 hours | $61–81 |
+| Cyanotype (Herschel) | **~1–2** | ~2–4 hours | $30–40 |
+| **Cyanotype (Ware formula) ★ selected** | **~2–4** | **~30–45 min** | **~<!-- BEGIN costing:s73-pp-std -->$36<!-- END costing:s73-pp-std -->** |
+| Salt print | **~1–3** | ~1.5–4 hours | $280–360 |
+| Van Dyke Brown | **~2–6** | ~45 min–2 hours | $121–206 |
 | Ilford Multigrade RC paper | **~6** | **~43 min** | $405–480 |
 | Liquid Light emulsion | **~6–12** | ~20–43 min | $695–860 |
 | X-ray film (blue-sensitive) | **~50–200** | ~2–10 min | $600–900 |
@@ -43,9 +43,9 @@ For portraiture, the practical ranking for tonal fidelity is: **Ilford Multigrad
 
 | Goal | Process | Reason |
 |---|---|---|
-| **TBS-001 selected process** | Cyanotype (Ware New Cyanotype formula on cotton muslin) | ~$62/print; ~30–45 min exposure at f/1088; water development only; no silver, no fixer, no darkroom; archival permanence; iron-based — no reciprocity failure |
+| **TBS-001 selected process** | Cyanotype (Ware New Cyanotype formula on cotton muslin) | ~<!-- BEGIN costing:s73-pp-std -->$36<!-- END costing:s73-pp-std -->/print (Standard ½-Ware; <!-- BEGIN costing:s73-pp-range -->$27–63<!-- END costing:s73-pp-range --> by tier); ~30–45 min exposure at f/1088; water development only; no silver, no fixer, no darkroom; archival permanence; iron-based — no reciprocity failure |
 | **Best all-round portrait result** | Ilford Multigrade RC paper | ISO 6; ~43 min; best tonal fidelity of non-film options; proven at scale |
-| **Lowest cost, repeatable experimentation** | Cyanotype (Ware formula) | ~$190/image; no fixer; no darkroom for processing; home chemistry; archival |
+| **Lowest cost, repeatable experimentation** | Cyanotype (Ware formula) | ~<!-- BEGIN costing:s73-pp-std -->$36<!-- END costing:s73-pp-std -->/image; no fixer; no darkroom for processing; home chemistry; archival |
 | **Shortest exposures, practical subject movement** | Orthochromatic X-ray film | ISO 200–800; sub-2-minute exposures; operationally complex at scale |
 | **Most distinctive physical artifact** | Liquid Light on reclaimed wood/concrete | Surface texture visible through image; unrepeatable object |
 | **Ruled out at f/1088** | Gum bichromate (solo) | ISO 0.25–0.5; 8–17 hour exposures are not practical for in-camera capture |
@@ -58,7 +58,9 @@ The one-time infrastructure cost — ACM backing panels on timber battens bolted
 
 Covering a 116 sq ft photosensitive plane is not a solved problem in commercial photography. Every process listed below has been documented at large scale or can be extrapolated from known chemistry; costs are calculated per image for the full 116 sq ft surface including chemistry, substrate where applicable, and processing. All chemistry listed under historic/alternative processes can be sourced and mixed in a home or garage darkroom from commercially available reagents.
 
-Processes are ordered from lowest to highest per-image cost. Film is included at the end as the documented outlier.
+Processes are ordered roughly by per-image cost (historic processes first, then commercial products). Film is included at the end as the documented outlier.
+
+**Substrate cost basis:** muslin/cotton-fabric lines use the project's **bulk-roll basis — ~$6 per 116 sq ft print** (three 60″ × 150-yd rolls ≈ $300 ÷ a 50-print run; see [Project Cost Breakdown §7.1](project-cost-breakdown.md)). Buying muslin retail for a single image would add ~$75–95. The cyanotype per-print figure is single-sourced to the cost model (Ware New Cyanotype tier).
 
 ---
 
@@ -66,10 +68,10 @@ Processes are ordered from lowest to highest per-image cost. Film is included at
 
 | Process | Per-Image Cost (est.) | Darkroom for Processing | Home-Makeable Chemistry | Permanence | Development |
 |---|---|---|---|---|---|
-| **Cyanotype** | **$150–$250** | No | Yes | Excellent (archival) | Water wash only |
-| **Gum bichromate** | **$100–$180** | No | Yes | Good (pigment-dependent) | Water wash only |
-| **Salt print** | **$200–$330** | Yes (loading) | Yes | Moderate (needs gold toner for archival) | Printing-out, thiosulfate fix |
-| **Van Dyke Brown** | **$300–$520** | Yes (loading) | Yes | Good (thiosulfate fixed) | Water + thiosulfate |
+| **Cyanotype** | **~<!-- BEGIN costing:s73-pp-std -->$36<!-- END costing:s73-pp-std -->** | No | Yes | Excellent (archival) | Water wash only |
+| **Gum bichromate** | **$61–$81** | No | Yes | Good (pigment-dependent) | Water wash only |
+| **Salt print** | **$280–$360** | Yes (loading) | Yes | Moderate (needs gold toner for archival) | Printing-out, thiosulfate fix |
+| **Van Dyke Brown** | **$121–$206** | Yes (loading) | Yes | Good (thiosulfate fixed) | Water + thiosulfate |
 | **Ilford RC paper (rolls)** | **$380–$500** | Yes (loading) | No — commercial product | Excellent (RC base) | Dektol / stop / fixer |
 | **Liquid Light on custom substrate** | **$480–$700** | Yes (loading + processing) | Partially | Excellent | Dektol / stop / fixer |
 | **X-ray film (large sheets)** | **$600–$900** | Yes | No | Excellent | Rapid fixer |
@@ -79,7 +81,7 @@ Processes are ordered from lowest to highest per-image cost. Film is included at
 
 ## 1. Cyanotype
 
-**Estimated per-image cost: $150–$250 total**  
+**Estimated per-image cost: ~<!-- BEGIN costing:s73-pp-std -->$36<!-- END costing:s73-pp-std --> (Standard ½-Ware; <!-- BEGIN costing:s73-pp-range -->$27–63<!-- END costing:s73-pp-range --> by tier)**  
 **Darkroom required for processing: No**  
 **Home-makeable chemistry: Yes**
 
@@ -126,7 +128,7 @@ Coverage: approximately 1–1.5 ml of mixed solution per 50 cm², or ~2 ml/sq ft
 
 | Substrate | Cost per sq ft | Total (116 sq ft) | Notes |
 |---|---|---|---|
-| Unbleached muslin (100% cotton) | ~$0.50–0.80 | **$70–112** | Best absorption; flexible; same as The Great Picture substrate |
+| Unbleached muslin (100% cotton) | ~$0.05 (bulk roll) | **~$6** | Best absorption; bulk 50-print basis (~$300 ÷ 50); retail single sheet ~$70–112; same as The Great Picture substrate |
 | Pre-washed cotton canvas | ~$0.80–1.20 | $112–168 | Heavier; more dimensional stability; good for large panels |
 | Heavyweight cartridge/watercolor paper | ~$1.50–2.50 | $210–350 | Requires taping joins; difficult to handle at this scale |
 | Hanji/Japanese tissue on backing | ~$2.00–4.00 | $280–560 | Exceptional tonal range; fragile at scale |
@@ -152,16 +154,16 @@ Coverage: approximately 1–1.5 ml of mixed solution per 50 cm², or ~2 ml/sq ft
 ### Total Per-Image Cost (cyanotype on muslin)
 | Item | Cost |
 |---|---|
-| FAC + potassium ferricyanide | ~$85 |
-| Muslin (116 sq ft) | ~$80–100 |
-| Distilled water, misc | ~$10 |
-| **Total** | **~$175–$195** |
+| AmFe + potassium ferricyanide (Ware, Standard ½-Ware) | ~$27 |
+| Muslin (116 sq ft, bulk-roll basis ~$300 ÷ 50 prints) | ~$6 |
+| Water / processing consumables | ~$3 |
+| **Total per print (Standard tier; ~<!-- BEGIN costing:s73-pp-range -->$27–63<!-- END costing:s73-pp-range --> by tier)** | **~<!-- BEGIN costing:s73-pp-std -->$36<!-- END costing:s73-pp-std -->** |
 
 ---
 
 ## 2. Gum Bichromate
 
-**Estimated per-image cost: $100–$180 total**  
+**Estimated per-image cost: ~$61–81 total (single coat)**  
 **Darkroom required for processing: No**  
 **Home-makeable chemistry: Yes**
 
@@ -207,16 +209,16 @@ Same options as cyanotype; cotton fabric or heavy watercolor paper. The gum arab
 | Item | Cost |
 |---|---|
 | Chemistry (single coat) | ~$55–75 |
-| Muslin (116 sq ft) | ~$80–100 |
-| **Total** | **~$135–175** |
+| Muslin (116 sq ft, bulk-roll basis) | ~$6 |
+| **Total** | **~$61–81** |
 
-*Note: 4-coat image builds to ~$375–475. Single coat may be sufficient for a graphic, high-contrast aesthetic.*
+*Note: 4-coat image builds to ~$226–306. Single coat may be sufficient for a graphic, high-contrast aesthetic.*
 
 ---
 
 ## 3. Salt Print
 
-**Estimated per-image cost: $200–$330 total**  
+**Estimated per-image cost: ~$280–$360 total (silver-dominated)**  
 **Darkroom required for processing: Yes (for loading; processing can be done in subdued light)**  
 **Home-makeable chemistry: Yes**
 
@@ -263,8 +265,8 @@ Identical to cyanotype in principle. Sensitized sheets/panels must be loaded in 
 |---|---|
 | Silver nitrate (~130 g) | ~$338 |
 | All other chemistry | ~$15 |
-| Cotton muslin/canvas (116 sq ft) | ~$80–100 |
-| **Total** | **~$350–$450** |
+| Cotton muslin (116 sq ft, bulk-roll basis) | ~$6 |
+| **Total** | **~$280–$360** (silver nitrate is the driver) |
 
 *This is higher than the initial table estimate due to silver nitrate quantities at scale. Recalibrated from chemistry volumes above.*
 
@@ -272,7 +274,7 @@ Identical to cyanotype in principle. Sensitized sheets/panels must be loaded in 
 
 ## 4. Van Dyke Brown
 
-**Estimated per-image cost: $300–$520 total**  
+**Estimated per-image cost: ~$121–$206 total**  
 **Darkroom required for processing: Yes (loading)**  
 **Home-makeable chemistry: Yes**
 
@@ -309,9 +311,9 @@ At 10 g AgNO₃ per 100 ml solution: **28 g silver nitrate** for single coat.
 | Item | Cost |
 |---|---|
 | Chemistry | ~$100–$185 |
-| Muslin (116 sq ft) | ~$80–100 |
+| Muslin (116 sq ft, bulk-roll basis) | ~$6 |
 | Misc (water, containers, gloves) | ~$15 |
-| **Total** | **~$195–$300** |
+| **Total** | **~$121–$206** |
 
 *Significantly cheaper than salt print due to lower silver nitrate concentration — the ferric iron does most of the photochemical work.*
 
@@ -538,11 +540,11 @@ Timber battens (2×4 lumber) are bolted to the container's internal structural r
 
 | Goal | Recommended Process | Reason |
 |---|---|---|
-| **Lowest cost, most repeatable** | Cyanotype on muslin | ~$175 per image; no silver; no darkroom for processing; scales to any size; archivally stable; home-makeable chemistry |
+| **Lowest cost, most repeatable** | Cyanotype on muslin | ~<!-- BEGIN costing:s73-pp-std -->$36<!-- END costing:s73-pp-std --> per image; no silver; no darkroom for processing; scales to any size; archivally stable; home-makeable chemistry |
 | **Richest tonal range, conventional photograph look** | Ilford RC paper | Industry-standard; predictable; support widely available; ~$420 per image |
 | **Most unique physical artifact** | Liquid Light on reclaimed wood or concrete | Surface texture merges with image; unrepeatable object; highest cost |
 | **Fastest exposure time** | X-ray film | ~ISO 400–800 vs ISO 6 for paper; 5–10 min exposures possible; operationally complex |
-| **Cheapest repeated experimentation** | Gum bichromate on muslin | ~$135 single coat; fully repeatable; any color; no silver |
+| **Cheapest repeated experimentation** | Gum bichromate on muslin | ~$61–81 single coat; fully repeatable; any color; no silver |
 | **Historic authenticity** | Salt print or Van Dyke on cotton rag | Talbot-era processes; warm brown tones; moderate cost |
 
 ---

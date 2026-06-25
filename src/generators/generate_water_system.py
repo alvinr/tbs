@@ -404,7 +404,7 @@ def draw_sheet1():
     arrow_pipe(ax1, 8.6, 3.25, 9.1, 3.25, color=C_BROWN)     # rightward to DV-01
     valve(ax1, 9.15, 3.25, color="#F9A825", size=0.05, label="SV")   # SV-01 sample valve
     pipe(ax1, 9.15, 3.25 - 0.05 * 1.6, 9.15, 2.78, C_BROWN)  # downturned spout for the cup
-    leader(ax1, 9.15, 2.80, 8.55, 2.30,
+    leader(ax1, 9.15, 3.25, 10.55, 2.30,
            "SV-01 — pH sample tap\n(draw sample → meter → set DV-01)",
            fs=6, color="#E65100", ha="right")
 
@@ -533,7 +533,7 @@ def draw_sheet1():
     BOX_X = 0.3    # Blue System left edge
     BOX_Y = 1.3    # bottom of system boxes
     lx = BOX_X + 0.1            # left margin for content
-    ly = BOX_Y + BOX_H - 0.20   # top content Y (just inside box top)
+    ly = BOX_Y + BOX_H - 0.25   # top content Y (just inside box top)
 
     ax1.add_patch(plt.Rectangle((BOX_X, BOX_Y), BOX_W, BOX_H,
                                  fc="white", ec=C_FRAME, lw=1, zorder=6))
@@ -1178,7 +1178,7 @@ def draw_sheet4():
     TUBE_WALL = 3.0  # HDPE tube wall thickness (mm)
     draw_pipe_path(ax4a,
                    [tube_yd, tube_yd], [tube_z_bot + foot_valve_h, tube_z_top],
-                   TUBE_OD, TUBE_WALL, 
+                   TUBE_OD, TUBE_WALL,
                    fc="#D0D0D0", ec=C_FRAME, zorder=6)
     ax4a.add_patch(plt.Rectangle(((tube_yd - foot_valve_w/2), (tube_z_bot)),
                   foot_valve_w / SC_A, foot_valve_h / SC_A,
@@ -1366,7 +1366,7 @@ def draw_sheet4():
     RIM_TOP_B = TRAY_BASE_Z + rim_h  # 70mm
     tube_z_top_b = WK_DECK_H + WK_GRATE_T + 10  # 135mm — above walkway grate + clearance
     draw_pipe_path(ax4b, [tube_yd_b, tube_yd_b], [5, tube_z_top_b],
-                   TUBE_OD, TUBE_WALL, 
+                   TUBE_OD, TUBE_WALL,
                    fc="#D0D0D0", ec=C_FRAME, zorder=5)
     ax4b.text((tube_yd_b/2), (RIM_TOP_B + 85), "PICKUP\nTUBE",
               ha="left", va="bottom", fontsize=5.5, color=C_FRAME,
@@ -1547,7 +1547,7 @@ def draw_sheet4():
     draw_pipe_path(ax4c,
                    [SUMP_X, SUMP_X, CORNER_X, CORNER_X, P04_PLAN_X],
                    [tube_yd, RIM_EXT_YD_C, RIM_EXT_YD_C, CORRIDOR_YD_NEAR, CORRIDOR_YD_NEAR],
-                   HOSE_OD, HOSE_WALL, 
+                   HOSE_OD, HOSE_WALL,
                    fc=C_BROWN, ec="#5A3020", zorder=6)
 
     # P-clip marks along rim run (small ticks — horizontal marks along vertical pipe)

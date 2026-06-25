@@ -81,6 +81,13 @@ front_board_click_deg:
     - '(\d+\.\d+)°\s*per click'
     - '(\d+\.\d+)°/click'
 
+# Max image shift at the ±5.3° hard stop = C_WID·tan(FRONT_BOARD_MAX_DEG). INJECTION-ONLY
+# (a bare 3-digit value that recurs as the 5° reference 207 / other dims; aliases would over-match).
+front_board_max_shift_mm:
+  constant: FRONT_BOARD_MAX_SHIFT_MM
+  unit: mm
+  owner: tilt-swing-board-report.md
+
 # Hinged-panel transport swing angle — SWING_LOCK_DEG; restated across the hinged-panel report.
 # INJECTION-ONLY (56 is a bare 2-digit value that recurs in other contexts).
 panel_swing_deg:

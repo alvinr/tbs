@@ -1,16 +1,16 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
-# Tilt-and-Swing Front Board Mechanism
+# Tilt-and-Swing Front Board — Optical Effects & Distortion Renders
 
 ## 1. Purpose
 
-The front board is the interchangeable plate that carries the pinhole disc at the scene-facing end of the container. This report specifies a new plate — the **Tilt-Swing Board (TSB)** — that replaces the flat pinhole plate and adds two axes of angular adjustment to the pinhole's pointing direction.
+The front board is the interchangeable plate that carries the pinhole disc at the scene-facing end of the container. This report covers the optical effect of a new plate — the **Tilt-Swing Board (TSB)**, specified in the [Tilt-Swing Front Board report](tilt-swing-board-report.md) — which replaces the flat pinhole plate and adds two axes of angular adjustment to the pinhole's pointing direction.
 
 ---
 
 ## 2. Optical Effect: Front-Board vs Film-Plane Movement
 
-In a conventional view camera, front-standard movements and rear-standard movements have different optical effects. The Big Shoebox has both: this mechanism controls the **front board**, and the [Film Plane Mechanism](film-plane-mechanism-report.md) controls the rear.
+In a conventional view camera, front-standard movements and rear-standard movements have different optical effects. The Big Shoebox Project has both: this mechanism controls the **front board**, and the [Film Plane Mechanism](film-plane-mechanism-report.md) controls the rear.
 
 ### 2.1 What front-board tilt/swing does
 
@@ -22,7 +22,7 @@ The pinhole is a geometric projector — it has no focal length in the lens sens
 | Board swing right (+β) | Image shifts right on film (~<!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm per 5°) |
 | Compound tilt + swing | Image shifts diagonally; introduces ~1.5% anamorphic keystone at 5° |
 
-At f = 2,362mm, a 5° board tilt shifts the image **2,362 × tan(5°) = <!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm** on the film plane. On a 2,388mm tall film plane this is nearly 9% of the frame height — a very significant compositional tool.
+At f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm, a 5° board tilt shifts the image **2,362 × tan(5°) = <!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm** on the film plane. On a 2,388mm tall film plane this is nearly 9% of the frame height — a very significant compositional tool.
 
 **No Scheimpflug effect**: because a pinhole has no plane of focus, front-board tilt does not rotate the zone of sharpness. Instead it steers the cone of light projected onto the film.
 
@@ -44,7 +44,7 @@ When both systems operate simultaneously, the effects **stack non-linearly**. Th
 - **Opposing tilt:** the two effects partially cancel, producing a near-flat image with a subtle S-curve distortion at the transition zone — invisible with either system alone
 - **Full compound (both axes, both systems):** produces an image where no lines are parallel in any axis — the most complex projection the camera can make
 
-See the [Combined Distortion Renders](#10-combined-distortion-renders) section below.
+See the [Combined Distortion Renders](#4-combined-distortion-renders) section below.
 
 ---
 
@@ -52,8 +52,8 @@ See the [Combined Distortion Renders](#10-combined-distortion-renders) section b
 
 | Axis | Control | Travel | Resolution | Image effect |
 |------|---------|--------|-----------|--------------|
-| Tilt | Top + bottom M8 screws (black knobs) | ±5.3° | <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click | ±222mm vertical image shift |
-| Swing | Left + right M8 screws (silver knobs) | ±5.3° | <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click | ±222mm horizontal image shift |
+| Tilt | Top + bottom M8 screws (black knobs) | ±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->° | <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click | ±<!-- BEGIN fact:front_board_max_shift_mm -->219<!-- END fact:front_board_max_shift_mm -->mm vertical image shift |
+| Swing | Left + right M8 screws (silver knobs) | ±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->° | <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click | ±<!-- BEGIN fact:front_board_max_shift_mm -->219<!-- END fact:front_board_max_shift_mm -->mm horizontal image shift |
 | Compound | All 4 screws | ±3.7° per axis simultaneously | <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click | Diagonal shift + keystone |
 
 **Image shift formula:** shift (mm) = f × tan(θ) = 2,362 × tan(θ)
@@ -64,10 +64,11 @@ See the [Combined Distortion Renders](#10-combined-distortion-renders) section b
 | 2° | 83mm | ~3.5% of frame height |
 | 3° | 124mm | ~5.2% — clearly visible on print |
 | 5° | <!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm | ~8.7% — dramatic compositional shift |
-| 5.3° (max) | 220mm | Mechanical hard stop |
+| <!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->° (max) | <!-- BEGIN fact:front_board_max_shift_mm -->219<!-- END fact:front_board_max_shift_mm -->mm | Mechanical hard stop |
 
 ---
 
+<!-- TODO (2026-06-25, Alvin): §4 (combined renders C0–C8) shows the same PNGs as distortion-renders.md §3, with extra per-config commentary here. Decide whether to merge these two docs or point §4 to the gallery. -->
 ## 4. Combined Distortion Renders
 
 The following renders show the combined projection of both systems operating simultaneously. The world scene is a regular grid at three depths (near: 7.4m, mid: 22.4m, far: 102.4m from pinhole) plus a human-figure reference and horizon line.

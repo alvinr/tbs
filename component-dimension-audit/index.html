@@ -2620,7 +2620,7 @@ rigid ≈ 1491×699×35, varies by model — mounted externally, no container cl
 <h3 id="3-pump-shurflo-2088-554-144">3. Pump — Shurflo 2088-554-144 ❌<a class="headerlink" href="#3-pump-shurflo-2088-554-144" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Real:</strong> 8.5"L × 5"W × 4.5"H = <strong>216 × 127 × 114 mm</strong>. <a href="https://www.freshwatersystems.com/products/shurflo-2088-554-144-delivery-pump-3-5-gpm-45-psi-12vdc-no-cord">Fresh Water Systems</a> · <a href="https://www.pumpagents.com/pdf/ShurfloPumps/2088-554-144.pdf">datasheet PDF</a></li>
-<li><strong>Modeled:</strong> <code>PUMP_D</code>=100 (pump zone width). 4–5 pumps tile the equipment panel.</li>
+<li><strong>Modeled:</strong> <code>PUMP_D</code>=100 (pump zone width). 4–5 pumps tile the plumbing panel.</li>
 <li><strong>Problem:</strong> a real 2088 is <strong>216 mm long × 127 mm wide</strong> — the panel pump columns are drawn ~half-size. With 5 of them plus the accumulator + 3× 594 mm filters, the <strong>panel layout must be re-checked for fit</strong> (panel face is 270 mm corridor × 2,060 mm tall).</li>
 <li><strong>Action:</strong> set the modeled pump footprint to ~216×127×114, re-lay-out the panel (<code>generate_panel_layout.py</code> + 3D <code>equipment_panel()</code>), re-check corridor depth.</li>
 </ul>

@@ -2615,7 +2615,7 @@
 <!-- © 2026 Alvin Richards -->
 <h1 id="tilt-and-swing-front-board-optical-effects-distortion-renders">Tilt-and-Swing Front Board — Optical Effects &amp; Distortion Renders<a class="headerlink" href="#tilt-and-swing-front-board-optical-effects-distortion-renders" title="Permanent link">&para;</a></h1>
 <h2 id="1-purpose">1. Purpose<a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h2>
-<p>The front board is the interchangeable plate that carries the pinhole disc at the scene-facing end of the container. This report covers the optical effect of a new plate — the <strong>Tilt-Swing Board (TSB)</strong>, specified in the <a href="../tilt-swing-board-report/">Tilt-Swing Front Board report</a> — which replaces the flat pinhole plate and adds two axes of angular adjustment to the pinhole's pointing direction.</p>
+<p>The front board is the interchangeable plate that carries the pinhole disc at the scene-facing end of the container. This report covers the optical effect the <strong>Tilt-Swing Board (TSB)</strong>, specified in the <a href="../tilt-swing-board-report/">Tilt-Swing Front Board report</a> — which replaces the flat pinhole plate and adds two axes of angular adjustment to the pinhole's pointing direction.</p>
 <hr />
 <h2 id="2-optical-effect-front-board-vs-film-plane-movement">2. Optical Effect: Front-Board vs Film-Plane Movement<a class="headerlink" href="#2-optical-effect-front-board-vs-film-plane-movement" title="Permanent link">&para;</a></h2>
 <p>In a conventional view camera, front-standard movements and rear-standard movements have different optical effects. The Big Shoebox Project has both: this mechanism controls the <strong>front board</strong>, and the <a href="../film-plane-mechanism-report/">Film Plane Mechanism</a> controls the rear.</p>
@@ -2768,11 +2768,11 @@
 <h2 id="4-combined-distortion-renders">4. Combined Distortion Renders<a class="headerlink" href="#4-combined-distortion-renders" title="Permanent link">&para;</a></h2>
 <p>The following renders show the combined projection of both systems operating simultaneously. The world scene is a regular grid at three depths (near: 7.4m, mid: 22.4m, far: 102.4m from pinhole) plus a human-figure reference and horizon line.</p>
 <p>The projection model applies two sequential transformations:</p>
-<p><strong>Step 1 — Front board rotation:</strong><br />
-Board tilt α and swing β rotate the effective world coordinate system:<br />
+<p><strong>Step 1 — Front board rotation:</strong>
+Board tilt α and swing β rotate the effective world coordinate system:
 <code>W' = Ry(−β) · Rx(−α) · W_world</code></p>
-<p><strong>Step 2 — Film plane intersection:</strong><br />
-The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r₀=(0,0,2362) and normal n = Ry(φ)·Rx(θ)·[0,0,−1]. The image point is:<br />
+<p><strong>Step 2 — Film plane intersection:</strong>
+The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r₀=(0,0,2362) and normal n = Ry(φ)·Rx(θ)·[0,0,−1]. The image point is:
 <code>t = (n·r₀)/(n·d);  F = t × d</code></p>
 <p>The red cross (+) marks the projected image center; gray cross marks the nominal center.</p>
 <h3 id="c0-reference-all-flat">C0 — Reference (all flat)<a class="headerlink" href="#c0-reference-all-flat" title="Permanent link">&para;</a></h3>

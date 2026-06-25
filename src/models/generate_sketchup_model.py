@@ -966,14 +966,22 @@ def equipment_panel():
         parts.append(ruby_cylinder(f"Filter {nm}",
                                    fcx, fcy, fz, fr, BB_H, color=C_FILTER))
 
-    # SV-01 pH sample tap — small 1/4-turn valve + short downturned spout teed off
-    # the F3 filtered output (before 3W-DV-01). Panel face, beside the filter
-    # stack, spout down so a cup fits under it.
-    _sv_z = F3_Z + BB_H
+    # SV-01 pH sample tap — on the filtered line just past the F3 outlet, dropped
+    # into the CLEAR far corridor gap (Yd past the filter, below the Blue suction
+    # manifold) with a downturned spout. Placed here so the drop pipe + tap don't
+    # cross the Blue #2 → manifold suction line (plumbing rule: no pipe through pipe).
+    _f3_head = F3_Z + BB_H
+    _sv_y = fcy + fr + 18           # far corridor gap, just past the filter
+    _sv_x = face_x - 60
+    _sv_z = _f3_head - 110          # valve below the suction-manifold band
+    parts.append(ruby_pipe_run("SV-01 drop (filtered line -> tap)",
+                               [(_sv_x + 17, _sv_y, _f3_head),
+                                (_sv_x + 17, _sv_y, _sv_z + 30)],
+                               6, color=C_FILTER))
     parts.append(ruby_box("SV-01 pH sample tap",
-                          face_x - 72, fcy + fr + 6, _sv_z, 34, 32, 34, color=C_VALVE))
+                          _sv_x, _sv_y - 16, _sv_z, 34, 32, 34, color=C_VALVE))
     parts.append(ruby_cylinder("SV-01 spout",
-                               face_x - 55, fcy + fr + 22, _sv_z - 40, 5, 40, color=C_VALVE))
+                               _sv_x + 17, _sv_y, _sv_z - 40, 5, 36, color=C_VALVE))
 
     # ── Drain-riser backing spine (rev 8.1) ──────────────────────────────────
     # 18mm marine-ply spine teed perpendicular off the panel (a T in plan), into

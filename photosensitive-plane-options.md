@@ -1,12 +1,12 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
 # Photosensitive Options
-## Giant Pinhole Camera — Image Plane Material Selection Guide
+## The Big Shoebox Project (TBS-001) — Image Plane Material Selection Guide
 
 **Image plane dimensions (active):** <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm (~14′ 9″ × 7′ 10″)  
-**Container interior:** 5893 × 2,388mm (19′ 4″ × 7′ 10″) — end zones occupied by equipment  
-**Image plane area:** ~116 sq ft (10.7 m²)  
-**Camera configuration:** Option B (side-to-side), f = 2,362mm, f/1088, pinhole Ø 2.17mm
+**Container interior:** <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm --> × 2,388mm (19′ 4″ × 7′ 10″) — end zones occupied by equipment  
+**Image plane area:** ~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft (10.7 m²)  
+**Camera configuration:** Option B (side-to-side), f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm, f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number -->, pinhole Ø <!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm
 
 ---
 
@@ -47,7 +47,7 @@ For portraiture, the practical ranking for tonal fidelity is: **Ilford Multigrad
 | **Best all-round portrait result** | Ilford Multigrade RC paper | ISO 6; ~43 min; best tonal fidelity of non-film options; proven at scale |
 | **Lowest cost, repeatable experimentation** | Cyanotype (Ware formula) | ~$190/image; no fixer; no darkroom for processing; home chemistry; archival |
 | **Shortest exposures, practical subject movement** | Orthochromatic X-ray film | ISO 200–800; sub-2-minute exposures; operationally complex at scale |
-| **Most distinctive physical artefact** | Liquid Light on reclaimed wood/concrete | Surface texture visible through image; unrepeatable object |
+| **Most distinctive physical artifact** | Liquid Light on reclaimed wood/concrete | Surface texture visible through image; unrepeatable object |
 | **Ruled out at f/1088** | Gum bichromate (solo) | ISO 0.25–0.5; 8–17 hour exposures are not practical for in-camera capture |
 
 The one-time infrastructure cost — ACM backing panels on timber battens bolted to container ribs — is approximately **$900–1,500** and is shared across all processes.
@@ -131,14 +131,14 @@ Coverage: approximately 1–1.5 ml of mixed solution per 50 cm², or ~2 ml/sq ft
 | Heavyweight cartridge/watercolor paper | ~$1.50–2.50 | $210–350 | Requires taping joins; difficult to handle at this scale |
 | Hanji/Japanese tissue on backing | ~$2.00–4.00 | $280–560 | Exceptional tonal range; fragile at scale |
 
-**Recommended substrate: unbleached muslin.** This matches the documented approach used in The Great Picture (2006) for their gelatin emulsion application; muslin absorbs cyanotype sensitiser evenly and is manageable as a continuous panel at 13-foot widths.
+**Recommended substrate: unbleached muslin.** This matches the documented approach used in The Great Picture (2006) for their gelatin emulsion application; muslin absorbs cyanotype sensitizer evenly and is manageable as a continuous panel at 13-foot widths.
 
 ### Mounting and Preparation Method
 
-1. **Pre-wash substrate** twice in hot water without detergent; dry fully. This removes sizing (starch filler) that repels sensitiser.
-2. **Cut panels** to slightly oversize (e.g., 5950 × 2,450mm). For full coverage, one continuous roll of 60" (1,524mm) wide muslin folded/overlapped at join, or two lengths of 120" wide drop cloth fabric joined with a single flat seam at center.
-3. **Coat in subdued indoor light.** Lay fabric flat on clean plastic sheeting. Apply sensitiser with a foam roller or large Japanese hake brush. Work in two passes (horizontal, then vertical crossing) for even coverage.
-4. **Dry completely** in a dark or very dimly lit space before loading. A fan speeds drying; heat is acceptable (sensitiser is stable when dry).
+1. **Pre-wash substrate** twice in hot water without detergent; dry fully. This removes sizing (starch filler) that repels sensitizer.
+2. **Cut panels** to slightly oversize (e.g., 5,950 × 2,450mm). For full coverage, one continuous roll of 60" (1,524mm) wide muslin folded/overlapped at join, or two lengths of 120" wide drop cloth fabric joined with a single flat seam at center.
+3. **Coat in subdued indoor light.** Lay fabric flat on clean plastic sheeting. Apply sensitizer with a foam roller or large Japanese hake brush. Work in two passes (horizontal, then vertical crossing) for even coverage.
+4. **Dry completely** in a dark or very dimly lit space before loading. A fan speeds drying; heat is acceptable (sensitizer is stable when dry).
 5. **Mount in camera:** Stretch fabric over a rigid backing panel — ACM (aluminum composite) sheet or plywood — using a staple gun or binder clips on a timber batten frame. The backing panel attaches to the structural ribs of the container interior. Fabric must be taut and flat; wrinkles will show in the final image.
 6. **After exposure:** Remove panel in complete darkness or in the dark camera itself. Carry to a water source. Submerge or sluice with running water 5–10 minutes. No chemicals required. Image appears as deep Prussian blue on white/cream background.
 7. **Dry flat** on clean surface. Cyanotype on fabric can be displayed as a hanging textile, stretched on a frame, or backed with rigid board.
@@ -147,7 +147,7 @@ Coverage: approximately 1–1.5 ml of mixed solution per 50 cm², or ~2 ml/sq ft
 
 - **UV sensitivity:** Cyanotype requires UV light (300–400 nm range). Direct sunlight provides adequate UV. The long exposure times this camera produces (30–60+ minutes at f/1088) are well within the range needed for cyanotype in full outdoor sunlight — this is actually the **most compatible process** with the camera's exposure characteristics.
 - **Color:** Result is Prussian blue only. Cannot be converted to neutral or warm tone without toning chemistry (tannin toning produces a warm olive/black).
-- **Moisture sensitivity when wet:** During processing, avoid excessive agitation which can lift sensitiser from poorly prepared fabric.
+- **Moisture sensitivity when wet:** During processing, avoid excessive agitation which can lift sensitizer from poorly prepared fabric.
 
 ### Total Per-Image Cost (cyanotype on muslin)
 | Item | Cost |
@@ -173,7 +173,7 @@ Developed in the 1850s–1890s as a pictorialist alternative to silver processes
 
 ### Chemistry
 
-- Solution A: 15 g ammonium or potassium dichromate dissolved in 100 ml water (sensitiser)
+- Solution A: 15 g ammonium or potassium dichromate dissolved in 100 ml water (sensitizer)
 - Solution B: gum arabic solution, 1:1 water to 14° Baumé gum arabic syrup (binder)
 - Pigment: watercolor, mixed into gum solution at 1–3% by volume
 - Combine A + B + pigment immediately before coating
@@ -230,7 +230,7 @@ Invented by William Henry Fox Talbot, 1834–1840. The first negative-positive p
 
 **Two-bath process:**
 1. **Salting bath:** 2% sodium chloride (table salt, w/v) in water. Soak or brush onto substrate; dry.
-2. **Sensitising bath:** 10–15% silver nitrate (w/v) in water. Brush onto salted substrate in subdued red/orange light or near-darkness. Silver chloride forms in situ.
+2. **Sensitizing bath:** 10–15% silver nitrate (w/v) in water. Brush onto salted substrate in subdued red/orange light or near-darkness. Silver chloride forms in situ.
 3. **Exposure:** Printing-out process — image appears during exposure without development. No developer required.
 4. **Fix:** 20–25% sodium thiosulfate ("hypo") solution, 5–10 minutes. Rinse thoroughly in running water, 30 minutes minimum.
 5. **Optional:** Gold toner (sodium gold chloride, 0.1%) applied between exposure and fixation significantly improves archival stability and shifts color to red-brown/neutral.
@@ -246,7 +246,7 @@ Invented by William Henry Fox Talbot, 1834–1840. The first negative-positive p
 | Sodium thiosulfate (fixer) | 1–2 kg | ~$5–10/kg (bulk) | ~$10 |
 | **Chemistry total** | | | **~$270–$453** |
 
-**Source for silver nitrate pricing:** Chem-Impex catalog (chem-impex.com); ~$260.69/100g for reagent-grade AgNO₃ (2025). Photographers' Formulary also supplies it via B&H Photo at comparable pricing.
+**Source for silver nitrate pricing:** Chem-Impex catalog (chem-impex.com); ~$260.69/100g for reagent-grade AgNO₃ (2026). Photographers' Formulary also supplies it via B&H Photo at comparable pricing.
 
 **Note:** Silver nitrate pricing makes the salt print process moderately expensive and introduces safety and regulatory considerations — AgNO₃ permanently stains skin, clothing, and surfaces black. Nitrile gloves and good ventilation are required.
 
@@ -348,7 +348,7 @@ Strips from one roll: ⌊30,500 / 2,388⌋ = **12 strips per roll** → **3 comp
 
 ### Material Cost
 
-A 50" × 100' roll of Ilford Multigrade V RC Deluxe retails at approximately **$600–750** (B&H Photo, Freestyle Photographic, 2025 pricing). At 2 images per roll: **~$300–375 per image in paper cost.**
+A 50" × 100' roll of Ilford Multigrade V RC Deluxe retails at approximately **$600–750** (B&H Photo, Freestyle Photographic, 2026 pricing). At 2 images per roll: **~$300–375 per image in paper cost.**
 
 ### Processing Chemistry (116 sq ft)
 
@@ -368,7 +368,7 @@ Floor-tray or in-camera processing required; standard silver gelatin chemistry.
 Five vertical strips require four seams across the image. Options:
 1. **Accept seam lines** as a design feature — horizontal bands visible at 1,270mm intervals across width.
 2. **Butt-join on flat backing with black photographic tape** applied to the back; front surface is continuous but slight ridges may be visible.
-3. **Overlap joins in shadow areas** of the composition — position seams deliberately to fall in dark background, minimising visibility.
+3. **Overlap joins in shadow areas** of the composition — position seams deliberately to fall in dark background, minimizing visibility.
 4. **Single-emulsion coating** on a seamless substrate (see Liquid Light below) avoids seams entirely.
 
 ### Mounting Method
@@ -450,7 +450,7 @@ This is the most expensive material option and is primarily justified by the uni
 
 *(On canvas substrate, substrate cost adds ~$115 but emulsion cost dominates.)*
 
-**Design note:** Liquid Light on wood planks or cement board produces a photograph that is simultaneously an art object — the surface texture of the substrate merges with the photographic image, creating an artefact that cannot be replicated by any print-on-demand process. This is the highest-cost option but the highest uniqueness value.
+**Design note:** Liquid Light on wood planks or cement board produces a photograph that is simultaneously an art object — the surface texture of the substrate merges with the photographic image, creating an artifact that cannot be replicated by any print-on-demand process. This is the highest-cost option but the highest uniqueness value.
 
 ---
 
@@ -511,7 +511,7 @@ Regardless of process, the image plane requires a flat rigid backing. Corrugated
 ### Recommended Backing System
 
 **Aluminum Composite Material (ACM / Dibond) panels, 3mm thick:**
-- Available in 4×8 ft (1220×2,440mm) sheets; approximately 18 sheets needed to tile 116 sq ft
+- Available in 4×8 ft (1,220×2,440mm) sheets; approximately 18 sheets needed to tile 116 sq ft
 - ACM is completely flat, dimensionally stable, lightweight (~3 lb/sq ft), and mounts by bolting through panel edge to timber battens or directly to container rib flanges
 - Chemical-resistant (developer, fixer do not damage aluminum face)
 - Cost: ~$40–60 per 4×8 sheet × 18 sheets = **$720–1,080 for the backing system** (one-time infrastructure cost, reusable)
@@ -540,7 +540,7 @@ Timber battens (2×4 lumber) are bolted to the container's internal structural r
 |---|---|---|
 | **Lowest cost, most repeatable** | Cyanotype on muslin | ~$175 per image; no silver; no darkroom for processing; scales to any size; archivally stable; home-makeable chemistry |
 | **Richest tonal range, conventional photograph look** | Ilford RC paper | Industry-standard; predictable; support widely available; ~$420 per image |
-| **Most unique physical artefact** | Liquid Light on reclaimed wood or concrete | Surface texture merges with image; unrepeatable object; highest cost |
+| **Most unique physical artifact** | Liquid Light on reclaimed wood or concrete | Surface texture merges with image; unrepeatable object; highest cost |
 | **Fastest exposure time** | X-ray film | ~ISO 400–800 vs ISO 6 for paper; 5–10 min exposures possible; operationally complex |
 | **Cheapest repeated experimentation** | Gum bichromate on muslin | ~$135 single coat; fully repeatable; any color; no silver |
 | **Historic authenticity** | Salt print or Van Dyke on cotton rag | Talbot-era processes; warm brown tones; moderate cost |
@@ -549,7 +549,7 @@ Timber battens (2×4 lumber) are bolted to the container's internal structural r
 
 ## Appendix A: Spectral Response to Natural Light
 
-This appendix analyses how each process renders a natural daylight scene. The same questions are answered for every material: what wavelengths does it respond to, how does sunlight translate into tonal values, and what does that mean specifically for outdoor portrait work — the primary intended use of this camera.
+This appendix analyzes how each process renders a natural daylight scene. The same questions are answered for every material: what wavelengths does it respond to, how does sunlight translate into tonal values, and what does that mean specifically for outdoor portrait work — the primary intended use of this camera.
 
 The central variable is the **spectral sensitivity** of each photosensitive material. Sunlight is broadband: it contains UV, blue, green, yellow, and red in roughly equal photon flux across the visible range. A material that cannot see red will render warm skin tones, red objects, and much of the subtlety of autumn foliage as dark or black. A material that cannot see green will compress mid-tone separation. Understanding these limits is not academic — they determine whether a portrait looks natural, pallid, graphic, or completely alien.
 
@@ -561,7 +561,7 @@ The central variable is the **spectral sensitivity** of each photosensitive mate
 **Blind to:** Green (500–565 nm), yellow, orange, red.  
 **Safelight:** Yellow-green (Wratten OC or equivalent) is safe; red is safe.  
 **ISO equivalent:** ~1–2 (Herschel standard formula); ~2–4 (Ware improved formula).  
-**Corrected exposure at f/1088, full sun:** ~1–4 hours.
+**Corrected exposure at f/1088, full sun:** ~30–45 min (Ware formula, selected) to ~2–4 hours (Herschel).
 
 **Source for ISO figures:** Practitioner consensus documented across pinhole photography literature, including Renner, E., *Pinhole Photography*, 4th ed., Focal Press, 2009, and Ware, M., *Cyanotype*, 1999. Cyanotype ISO is highly UV-condition-dependent — hazy sky, low sun angle, or high latitude dramatically increases actual exposure time beyond calculated values. ISO figures assume direct overhead summer sun.
 
@@ -602,11 +602,11 @@ Cyanotype has a relatively compressed tonal range (short scale). It produces str
 
 **Practical implication: gum bichromate is not viable as a primary in-camera process at f/1088.** At 8–17 hours, a single exposure spans daylight, sunset, and astronomical darkness — the illumination changes are uncontrollable and the accumulated exposure across the full period would be chaotic. Gum bichromate is retained in this report because it is an excellent option for contact printing from a negative made on one of the faster materials, and because a larger pinhole (reducing the f-number) could bring exposure times into range. At f/300 (achievable with a ~8mm pinhole), ISO 0.5 gum bichromate would require ~40 minutes — fully workable, though at the cost of a larger blur circle.
 
-**Source for ISO figures:** Crawford, W., *The Keepers of Light*, 1979; practitioner documentation at alternativephotography.com. Ammonium dichromate speed advantage: Ware, M., *Cyanotype*, 1999, Appendix (comparative sensitiser analysis).
+**Source for ISO figures:** Crawford, W., *The Keepers of Light*, 1979; practitioner documentation at alternativephotography.com. Ammonium dichromate speed advantage: Ware, M., *Cyanotype*, 1999, Appendix (comparative sensitizer analysis).
 
 #### Tonal Rendering in Sunlight
 
-Identical spectral blindness to cyanotype — both processes are sensitised by the same chromate/iron UV absorption mechanism. The tonal rendering table is the same: blue sky overexposes, foliage goes dark, warm skin tones flatten.
+Identical spectral blindness to cyanotype — both processes are sensitized by the same chromate/iron UV absorption mechanism. The tonal rendering table is the same: blue sky overexposes, foliage goes dark, warm skin tones flatten.
 
 **One important difference from cyanotype:** gum bichromate renders in whatever watercolor pigment is chosen. A portrait done in raw umber or sepia pigment will have a warm brown palette regardless of what wavelengths the process responds to. The *color* of the image is decoupled from the *tonal scale*. This means the alien quality of missing warm skin tones can be partially compensated by choosing a warm pigment — the shadows and mid-tones read as "warm" even though the exposure was UV-only.
 
@@ -666,7 +666,7 @@ Van Dyke Brown is the fastest of the iron/silver UV processes. The two-stage mec
 
 **Source for ISO figures:** Crawford, W., *The Keepers of Light*, 1979; practitioner data from Photrio.com (vandyke brown in-camera tests, multiple contributors). ISO 2–6 is consistent with a developed-out iron-silver process at standard formulation.
 
-**Source:** Crawford, W., *The Keepers of Light*, 1979, p. 135. The sensitisation mechanism begins with ferric iron absorbing UV/blue, which reduces to ferrous; ferrous then reduces silver nitrate to metallic silver. The initial UV absorption step is the sensitivity-limiting stage.
+**Source:** Crawford, W., *The Keepers of Light*, 1979, p. 135. The sensitization mechanism begins with ferric iron absorbing UV/blue, which reduces to ferrous; ferrous then reduces silver nitrate to metallic silver. The initial UV absorption step is the sensitivity-limiting stage.
 
 #### Tonal Rendering in Sunlight
 
@@ -734,15 +734,15 @@ Grade 2 in-camera (both emulsion layers exposing together). Good shadow/highligh
 
 The speed range reflects variation by substrate — porous substrates (wood, unprimed canvas) absorb part of the emulsion layer, effectively reducing silver density and therefore speed. A properly sealed, primed surface achieves the upper end of the range (~ISO 12). Applying two coats increases silver density and pushes speed slightly higher; it also improves maximum black density and shadow detail. The manufacturer specifies comparable speed to photographic paper (ISO 6), which is the conservative baseline.
 
-**Source:** Rockland Colloid product documentation. Liquid Light is a silver halide emulsion of older formulation than modern variable-contrast enlarging papers — it uses a simpler, non-spectrally-sensitised silver bromide/chloride emulsion without the dye-sensitisation that gives modern papers their green sensitivity.
+**Source:** Rockland Colloid product documentation. Liquid Light is a silver halide emulsion of older formulation than modern variable-contrast enlarging papers — it uses a simpler, non-spectrally-sensitized silver bromide/chloride emulsion without the dye-sensitization that gives modern papers their green sensitivity.
 
 #### Tonal Rendering vs. Ilford RC Paper
 
-This is the critical distinction between Liquid Light and Ilford Multigrade paper: **Liquid Light lacks the green sensitisation** that makes modern enlarging papers more capable in daylight. It behaves more like a UV/blue-sensitive material — closer to cyanotype and salt print in tonal character than to Ilford Multigrade.
+This is the critical distinction between Liquid Light and Ilford Multigrade paper: **Liquid Light lacks the green sensitization** that makes modern enlarging papers more capable in daylight. It behaves more like a UV/blue-sensitive material — closer to cyanotype and salt print in tonal character than to Ilford Multigrade.
 
 | Subject | Liquid Light | Ilford Multigrade |
 |---|---|---|
-| Green foliage | Dark (near UV-process) | Mid-gray (green-sensitised) |
+| Green foliage | Dark (near UV-process) | Mid-gray (green-sensitized) |
 | Skin tones | Flatter/darker | More natural |
 | Blue sky | Very bright | Bright |
 | Red | Near-black | Dark gray |
@@ -824,14 +824,14 @@ The critical additions beyond the earlier analysis:
 
 | Source | Relevance |
 |---|---|
-| Herschel, J.F.W., *Phil. Trans. Royal Society*, 1842 | Original cyanotype chemistry |
-| Ware, M., *Cyanotype*, Science Museum UK, 1999 | Improved formula; technical analysis |
-| Getty Conservation Institute, *Atlas of Cyanotype*, 2013 | Archival properties and stability data |
-| Crawford, W., *The Keepers of Light*, Morgan & Morgan, 1979 | Van Dyke, salt print, gum bichromate formulae |
-| Reilly, J.M., *The Albumen and Salted Paper Book*, Light Impressions, 1980 | Salt print technical data |
-| Schaaf, L.J., *Out of the Shadows*, Yale University Press, 1992 | Talbot/salt print historical documentation |
-| Rockland Colloid product data (rockaloid.com; B&H Photo) | Liquid Light coverage and substrate compatibility |
-| Ilford product pages (ilfordphoto.com) | RC paper roll formats, dimensions |
-| Chem-Impex catalog (chem-impex.com) | Silver nitrate pricing (~$260.69/100g, 2025) |
-| Photographers' Formulary (photoformulary.com) | FAC pricing (~$14.95/100g, 2025); KFe pricing |
-| Wikipedia, *The Great Picture* | Precedent for muslin substrate at very large scale |
+| Herschel, J.F.W., *Phil. Trans. Royal Society*, 1842. [NASA ADS](https://ui.adsabs.harvard.edu/abs/1842RSPT..132..181H) | Original cyanotype chemistry |
+| Ware, M., *Cyanotype*, Science Museum UK, 1999. [mikeware.co.uk](https://www.mikeware.co.uk/mikeware/New_Cyanotype_Process.html) | Improved formula; technical analysis |
+| Getty Conservation Institute, *Atlas of Cyanotype*, 2013. [getty.edu](https://www.getty.edu/conservation/publications_resources/pdf_publications/atlas.html) | Archival properties and stability data |
+| Crawford, W., *The Keepers of Light*, Morgan & Morgan, 1979. [Catalog](https://openlibrary.org/search?q=Crawford+Keepers+of+Light) | Van Dyke, salt print, gum bichromate formulae |
+| Reilly, J.M., *The Albumen and Salted Paper Book*, Light Impressions, 1980. [Catalog](https://openlibrary.org/search?q=Reilly+Albumen+and+Salted+Paper) | Salt print technical data |
+| Schaaf, L.J., *Out of the Shadows*, Yale University Press, 1992. [Catalog](https://openlibrary.org/search?q=Schaaf+Out+of+the+Shadows) | Talbot/salt print historical documentation |
+| Rockland Colloid product data. [rockaloid.com](https://rockaloid.com/) | Liquid Light coverage and substrate compatibility |
+| Ilford product pages. [ilfordphoto.com](https://www.ilfordphoto.com/photographic-paper) | RC paper roll formats, dimensions |
+| Chem-Impex catalog. [chem-impex.com](https://www.chem-impex.com/) | Silver nitrate pricing (~$260.69/100g, 2026) |
+| Photographers' Formulary. [photoformulary.com](https://stores.photoformulary.com/) | FAC pricing (~$14.95/100g, 2026); KFe pricing |
+| "The Great Picture," Wikipedia. [en.wikipedia.org/wiki/The_Great_Picture](https://en.wikipedia.org/wiki/The_Great_Picture) | Precedent for muslin substrate at very large scale |

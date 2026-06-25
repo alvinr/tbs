@@ -13,6 +13,10 @@
         <link rel="canonical" href="https://alvinr.github.io/tbs/distortion-renders/">
       
       
+        <link rel="prev" href="../photosensitive-plane-options/">
+      
+      
+        <link rel="next" href="../tilt-swing-board-analysis/">
       
       
         
@@ -23,7 +27,7 @@
     
     
       
-        <title>Distortion renders - The Big Shoebox — Research & Build</title>
+        <title>Distortion Renders - The Big Shoebox — Research & Build</title>
       
     
     
@@ -107,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Distortion renders
+              Distortion Renders
             
           </span>
         </div>
@@ -343,10 +347,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../container-report/" class="md-tabs__link">
           
   
@@ -1666,26 +1672,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
             
   
   
@@ -1703,7 +1714,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1886,10 +1897,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../complete-distortion-renders/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Distortion Renders
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1905,6 +1943,59 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-film-plane-distortion-renders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Film Plane Distortion Renders
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-tilt-swing-board-distortion-renders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Tilt-Swing Board Distortion Renders
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-combined-distortion-renders-film-plane-tilt-swing-board" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Combined Distortion Renders (Film Plane + Tilt-Swing Board)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2341,54 +2432,123 @@ systems produce image projections — their compound effects interact non-linear
 <a href="../tilt-swing-board-report/">Tilt-Swing Front Board</a>.</p>
 <hr />
 <h2 id="1-film-plane-distortion-renders">1. Film Plane Distortion Renders<a class="headerlink" href="#1-film-plane-distortion-renders" title="Permanent link">&para;</a></h2>
-<p>Four-corner independent actuation of the film plane (TBS-FM01). Each corner moves ±42° tilt
-and ±25.7° swing independently, producing Scheimpflug-equivalent projections at pinhole
-focal lengths. Seven configurations are shown.</p>
-<p><strong>Summary grid — all 7 configurations</strong>
+<p>Four-corner independent actuation of the film plane. Each corner moves ±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt
+and ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing independently, producing Scheimpflug-equivalent projections at pinhole
+focal lengths. Six configurations are shown.</p>
+<p><strong>Summary grid — Film Plane</strong>
 <img alt="Film Plane Distortion — Summary Grid" src="../assets/film-plane-distortion-summary.png" /></p>
 <p>Individual configurations:</p>
+<p>The plane is a fixed-size rigid rectangle, so every configuration is a <strong>flat</strong> tilt or swing — a compound <em>twist</em> is not producible.</p>
 <table>
 <thead>
 <tr>
 <th>Config</th>
+<th>Tilt</th>
+<th>Effect</th>
 <th>Render</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>C0 — Flat</td>
+<td>C0</td>
+<td>0°</td>
+<td>Reference — no distortion</td>
 <td><img alt="C0" src="../assets/film-plane-distortion-c0.png" /></td>
 </tr>
 <tr>
-<td>C1 — Tilt +42°</td>
+<td>C1</td>
+<td>11°</td>
+<td>Subtle keystone</td>
 <td><img alt="C1" src="../assets/film-plane-distortion-c1.png" /></td>
 </tr>
 <tr>
-<td>C2 — Tilt −42°</td>
+<td>C2</td>
+<td>30°</td>
+<td>Strong keystone</td>
 <td><img alt="C2" src="../assets/film-plane-distortion-c2.png" /></td>
 </tr>
 <tr>
-<td>C3 — Swing +20°</td>
+<td>C3</td>
+<td>40°</td>
+<td>Max tilt (design max) — radical perspective break</td>
 <td><img alt="C3" src="../assets/film-plane-distortion-c3.png" /></td>
 </tr>
 <tr>
-<td>C4 — Swing −20°</td>
+<td>C4</td>
+<td>−40°</td>
+<td>Inverted max tilt — bottom rushes forward, ground-rush effect</td>
 <td><img alt="C4" src="../assets/film-plane-distortion-c4.png" /></td>
 </tr>
 <tr>
-<td>C5 — Twisted (tilt+swing)</td>
+<td>C5</td>
+<td>0° (near)</td>
+<td>Flat plane 2,162mm closer — uniform magnification boost ~2.3×</td>
 <td><img alt="C5" src="../assets/film-plane-distortion-c5.png" /></td>
-</tr>
-<tr>
-<td>C6 — Full compound</td>
-<td><img alt="C6" src="../assets/film-plane-distortion-c6.png" /></td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="2-combined-distortion-renders-film-plane-tilt-swing-board">2. Combined Distortion Renders (Film Plane + Tilt-Swing Board)<a class="headerlink" href="#2-combined-distortion-renders-film-plane-tilt-swing-board" title="Permanent link">&para;</a></h2>
+<h2 id="2-tilt-swing-board-distortion-renders">2. Tilt-Swing Board Distortion Renders<a class="headerlink" href="#2-tilt-swing-board-distortion-renders" title="Permanent link">&para;</a></h2>
+<p><strong>Summary grid — Tilt &amp; Swing Board</strong>
+<img alt="Film Plane Distortion — Summary Grid" src="../assets/tilt-swing-board-distortion-summary.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Tilt</th>
+<th>Swing</th>
+<th>Effect</th>
+<th>Render</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0°</td>
+<td>0°</td>
+<td>Reference — no shift</td>
+<td><img alt="C0" src="../assets/tilt-swing-board-distortion-c0.png" /></td>
+</tr>
+<tr>
+<td>+2°</td>
+<td>0°</td>
+<td>Subtle vertical steering</td>
+<td><img alt="C1" src="../assets/tilt-swing-board-distortion-c1.png" /></td>
+</tr>
+<tr>
+<td>+5.3°</td>
+<td>0°</td>
+<td>Max vertical shift (+219mm)</td>
+<td><img alt="C2" src="../assets/tilt-swing-board-distortion-c2.png" /></td>
+</tr>
+<tr>
+<td>-5.3°</td>
+<td>0°</td>
+<td>Max downward shift (-219mm)</td>
+<td><img alt="C3" src="../assets/tilt-swing-board-distortion-c3.png" /></td>
+</tr>
+<tr>
+<td>0°</td>
+<td>+2°</td>
+<td>Subtle horizontal steering</td>
+<td><img alt="C4" src="../assets/tilt-swing-board-distortion-c4.png" /></td>
+</tr>
+<tr>
+<td>0°</td>
+<td>+5.3°</td>
+<td>Max horizontal shift</td>
+<td><img alt="C5" src="../assets/tilt-swing-board-distortion-c5.png" /></td>
+</tr>
+<tr>
+<td>+3°</td>
+<td>+3°</td>
+<td>Compound diagonal steering</td>
+<td><img alt="C6" src="../assets/tilt-swing-board-distortion-c6.png" /></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-combined-distortion-renders-film-plane-tilt-swing-board">3. Combined Distortion Renders (Film Plane + Tilt-Swing Board)<a class="headerlink" href="#3-combined-distortion-renders-film-plane-tilt-swing-board" title="Permanent link">&para;</a></h2>
 <p>Compound optical projections when both the film plane mechanism and the tilt-swing
-front board (TBS-TS01) are active simultaneously. Nine configurations are shown.
+front board are active simultaneously. Nine configurations are shown.
 The two systems interact non-linearly — their combined effects cannot be decomposed
 into a simple sum of the individual systems' projections.</p>
 <p><strong>Summary grid — all 9 configurations</strong>
@@ -2397,45 +2557,85 @@ into a simple sum of the individual systems' projections.</p>
 <table>
 <thead>
 <tr>
-<th>Config</th>
+<th>Board/Tilt</th>
+<th>Board/Swing</th>
+<th>Film/Tilt</th>
+<th>Film/Swing</th>
+<th>Effect</th>
 <th>Render</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>C0 — Both flat</td>
+<td>0°</td>
+<td>0°</td>
+<td>0°</td>
+<td>0°</td>
+<td>Reference All flat</td>
 <td><img alt="C0" src="../assets/tilt-swing-combined-c0.png" /></td>
 </tr>
 <tr>
-<td>C1</td>
+<td>3°</td>
+<td>0°</td>
+<td>0°</td>
+<td>0°</td>
+<td>Board tilt +3° Film flat</td>
 <td><img alt="C1" src="../assets/tilt-swing-combined-c1.png" /></td>
 </tr>
 <tr>
-<td>C2</td>
+<td>0°</td>
+<td>0°</td>
+<td>20°</td>
+<td>0°</td>
+<td>Film tilt +20° Board flat</td>
 <td><img alt="C2" src="../assets/tilt-swing-combined-c2.png" /></td>
 </tr>
 <tr>
-<td>C3</td>
+<td>3°</td>
+<td>0°</td>
+<td>20°</td>
+<td>0°</td>
+<td>Opposing tilt (partially canceled)</td>
 <td><img alt="C3" src="../assets/tilt-swing-combined-c3.png" /></td>
 </tr>
 <tr>
-<td>C4</td>
+<td>3°</td>
+<td>0°</td>
+<td>-20°</td>
+<td>0°</td>
+<td>Opposing tilt (partially canceled)</td>
 <td><img alt="C4" src="../assets/tilt-swing-combined-c4.png" /></td>
 </tr>
 <tr>
-<td>C5</td>
+<td>0°</td>
+<td>3°</td>
+<td>0°</td>
+<td>15°</td>
+<td>Both swing + same direction</td>
 <td><img alt="C5" src="../assets/tilt-swing-combined-c5.png" /></td>
 </tr>
 <tr>
-<td>C6</td>
+<td>3°</td>
+<td>3°</td>
+<td>0°</td>
+<td>0°</td>
+<td>Compound board (tilt+swing) flat film</td>
 <td><img alt="C6" src="../assets/tilt-swing-combined-c6.png" /></td>
 </tr>
 <tr>
-<td>C7</td>
+<td>3°</td>
+<td>3°</td>
+<td>20°</td>
+<td>15°</td>
+<td>Full compound both systems (max distortion)</td>
 <td><img alt="C7" src="../assets/tilt-swing-combined-c7.png" /></td>
 </tr>
 <tr>
-<td>C8 — Full compound</td>
+<td>-3°</td>
+<td>3°</td>
+<td>20°</td>
+<td>-15°</td>
+<td>Opposing compound (surrealist)</td>
 <td><img alt="C8" src="../assets/tilt-swing-combined-c8.png" /></td>
 </tr>
 </tbody>

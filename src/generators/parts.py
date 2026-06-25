@@ -173,6 +173,8 @@ PARTS: list[Part] = [
          "water", 1, "ea", 12, 22, "Amazon", spec="L/T-port HDPE-compatible; 3W-DV-02 (tray drain)"),
     Part("valve-3way-1in", '3-way diverter valve 1" FNPT', "plumbing-fittings",
          "water", 1, "ea", 18, 30, "Amazon", spec="L/T-port; 3W-DV-01 (filter output)"),
+    Part("sample-tap-sv01", 'pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee', "plumbing-fittings",
+         "water", 1, "ea", 10, 18, "Amazon", spec='Filtered-water sample draw before 3W-DV-01; Banjo V050FP 1/2" PP ball valve + downturned 1/2" hose barb on a 1"×1/2" reducing branch tee, panel face above spill line'),
     Part("camlock-2in", '2" polypropylene camlock pairs (M+F)', "plumbing-fittings",
          "water", 4, "pair", 5, 8, "Amazon", spec="External bulkhead connections (X1/X3/X4 + spare)"),
     Part("elbow-half", '1/2" NPT 90° elbow polypropylene', "plumbing-fittings",

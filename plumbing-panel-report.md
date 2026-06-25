@@ -63,7 +63,7 @@ corridor gap clear of both tote columns.
 Three 4.5"×10" Big Blue filter housings mounted vertically (sump down) in a
 slotted angle frame. The housings stack vertically with 30mm gaps between them.
 Flow path: P-02 output → F-01 (top, coarsest) → F-02 (middle) → F-03 (bottom,
-finest) → pH test point → 3W-DV-01.
+finest) → SV-01 sample tap → 3W-DV-01.
 
 | Component | Position (Z, mm) | Specification |
 |-----------|-----------------|---------------|
@@ -174,13 +174,13 @@ directly in front of the operator during spray bar wash passes.
 
 | Valve | Size | Position | Function |
 |-------|------|----------|----------|
-| 3W-DV-01 | 1" FNPT | After filter skid + pH test point | Routes filtered Brown water to Blue (IBC-2) or Black (IBC-4) based on pH reading |
+| 3W-DV-01 | 1" FNPT | After filter skid + SV-01 sample tap | Routes filtered Brown water to Blue (IBC-2) or Black (IBC-4) based on the SV-01 pH reading |
 | 3W-DV-02 | 1/2" FNPT | P-04 discharge | Routes tray drain water to Brown (IBC-3) or Black (IBC-4) based on operator judgment |
 
 **3W-DV-02** is the operator judgment valve: set to Brown (default) for normal
 rinse water, switch to Black for heavy contamination events.
 
-**3W-DV-01** is the pH-gated valve: if filtered water reads pH 6–7, route to
+**3W-DV-01** is the pH-gated valve: draw a sample at **SV-01** (below) and meter it — if filtered water reads pH 6–7, route to
 Blue (IBC-2) for recycling; if pH >7.5 or discolored, route to Black (IBC-4).
 
 ### 4.3 Check Valves
@@ -193,6 +193,23 @@ Blue (IBC-2) for recycling; if pH >7.5 or discolored, route to Black (IBC-4).
 
 Spring-loaded inline check valves (PVC body, EPDM seal) on each external
 bulkhead line. Installed in the IBC zone, not on the plumbing panel.
+
+### 4.4 Sample Tap (SV-01)
+
+| Valve | Size | Position | Function |
+|-------|------|----------|----------|
+| SV-01 | 1/2" | Filtered-Brown line, between the F-03 outlet and 3W-DV-01 | pH sample draw — lets the operator meter the filtered water before diverting |
+
+The filter output has no usable sampling point without SV-01 — a capped tee
+cannot be drawn from. **SV-01** is a 1/2" PP quarter-turn ball valve (same Banjo
+family as the BV isolation valves) on a 1"×1/2" reducing branch tee, with a short
+downturned hose-barb spout. It sits on the panel face **above the spill line**,
+spout pointing toward the operator (−X) so a cup fits beneath it from the right
+walkway.
+
+**Use:** run P-02 to pressurize the filtered line, crack SV-01 to catch ~50 ml in
+a cup, close it, read pH on the meter, then set 3W-DV-01 to Blue-return (pH 6–7)
+or Black-waste (pH drift / discolored).
 
 ---
 
@@ -233,13 +250,13 @@ to the spray bar center feed bulkhead.
 
 ```
 Tray sump → P-04 → 3W-DV-02 → IBC-3
-IBC-3 → P-02 → 1/2"→1" reducer → F-01 → F-02 → F-03 → pH test → 3W-DV-01
+IBC-3 → P-02 → 1/2"→1" reducer → F-01 → F-02 → F-03 → SV-01 sample tap → 3W-DV-01
   → IBC-2 (if pH 6–7) or IBC-4 (if pH drift)
 ```
 
 P-04 lifts drain water from the processing tray sump (~900mm head) to IBC-3.
 P-02 recirculates IBC-3 water through the 3-stage filter train. After filtering,
-the operator checks pH and sets 3W-DV-01 to route either back to Blue (IBC-2)
+the operator draws a sample at SV-01, checks pH, and sets 3W-DV-01 to route either back to Blue (IBC-2)
 or to Waste (IBC-4).
 
 ### 6.3 Black System — Waste Containment
@@ -353,8 +370,8 @@ Pipes enter and exit the panel zone at the left and right panel edges:
 | 25 | 1/2" reinforced braided PVC hose | 4m, BV-02 to spray bar center feed | 1 | $12–$20 |
 | 26 | 1" reinforced suction hose | 6 ft, P-04 sump pickup over tray rim | 1 | $12–$20 |
 | 27 | Panel mounting L-brackets + M10 bolts | Connects panel to IBC frame uprights | 4 sets | $15–$25 |
-| 28 | pH test port | Inline tee with cap on filter outlet | 1 | $5–$10 |
-| | **Total** | | | **$830–$1,320** |
+| 28 | Sample tap SV-01 | 1/2" PP ball valve + barb spout + 1"×1/2" branch tee, on the filtered line before DV-01 | 1 | $10–$18 |
+| | **Total** | | | **$835–$1,328** |
 
 ---
 
@@ -363,7 +380,7 @@ Pipes enter and exit the panel zone at the left and right panel edges:
 | Interval | Task |
 |----------|------|
 | Before each session | Verify all valve positions per valve matrix (see [Water System Report](water-system-report.md) §4) |
-| Before each session | Run P-02 for 2 minutes to verify filter flow; check pH of filtered output |
+| Before each session | Run P-02 for 2 minutes to verify filter flow; draw a sample at SV-01 and check pH of filtered output |
 | Before each session | Confirm P-04 suction pickup tube seated in sump well (visual check) |
 | After each session | Run P-04 to evacuate residual tray water to Brown or Black as appropriate |
 | Monthly | Inspect all pipe joints for leaks; tighten compression fittings if needed |

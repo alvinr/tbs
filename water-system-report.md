@@ -162,7 +162,7 @@ Processing tray sump (P-04 suction pickup)
         │
        F-3 (GAC carbon block)
         │
-     pH TEST POINT (manual meter check before returning)
+     SV-01 SAMPLE TAP (draw sample → manual meter check before returning)
         │
    3W-DV-01 ──→ pH 6–7, visually acceptable: RETURN TO IBC-2 (Blue)
         │
@@ -181,7 +181,7 @@ The filter train uses a single 3-stage whole-house filter unit (a **4.5"×10"** 
 
 The 10" cartridges (~½ the media of a 20") were chosen to match the modeled housing size, so service intervals are correspondingly shorter (~½). The unit includes triple drain valves for flushing individual stages without disassembly. Equivalent 3-stage Big Blue units are available from Express Water, Geekpure, iSpring and others — any unit accepting standard 4.5"×10" cartridges with 1" NPT ports will work.
 
-**pH management:** If filtered water reads pH <6, do nothing — slightly acidic is preferred. If pH >7.5, add citric acid solution (10g citric acid in 1 liter water) via the dosing port in the IBC-3 outlet, stir, retest. Do not return water with pH >8 to the Blue system.
+**pH management:** Draw the post-filter sample at the **SV-01 sample tap** (½" valve + spout before 3W-DV-01) and meter it. If filtered water reads pH <6, do nothing — slightly acidic is preferred. If pH >7.5, add citric acid solution (10g citric acid in 1 liter water) via the dosing port in the IBC-3 outlet, stir, retest. Do not return water with pH >8 to the Blue system.
 
 ### 4.3 Black System — Waste Containment
 
@@ -246,7 +246,7 @@ All pump-driven internal runs use **1/2" pipe**, matching the Shurflo 2088 pump 
 
 | Circuit | Pipe | Size | Pressure rating | Material |
 |---------|------|------|----------------|---------|
-| Combo filter outlet → pH test → DV-01 | Sch 40 | 1" nominal (OD 33mm) | 100 PSI min | HDPE |
+| Combo filter outlet → SV-01 sample tap → DV-01 | Sch 40 | 1" nominal (OD 33mm) | 100 PSI min | HDPE |
 
 **IBC fill/drain (1" HDPE Sch 40 — gravity flow, not pump-driven):**
 
@@ -348,6 +348,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Banjo V075FP ball valve 3/4" FNPT | PP full-port; BV-06 (chemistry tap shut-off) | 1 ea | Amazon | $8–$12 |
 | 3-way diverter valve 1/2" FNPT | L/T-port HDPE-compatible; 3W-DV-02 (tray drain) | 1 ea | Amazon | $12–$22 |
 | 3-way diverter valve 1" FNPT | L/T-port; 3W-DV-01 (filter output) | 1 ea | Amazon | $18–$30 |
+| pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | Filtered-water sample draw before 3W-DV-01; Banjo V050FP 1/2" PP ball valve + downturned 1/2" hose barb on a 1"×1/2" reducing branch tee, panel face above spill line | 1 ea | Amazon | $10–$18 |
 | 2" polypropylene camlock pairs (M+F) | External bulkhead connections (X1/X3/X4 + spare) | 4 pair | Amazon | $20–$32 |
 | 1/2" NPT 90° elbow polypropylene | All pump-driven run bends | 14 ea | Amazon | $28–$56 |
 | Banjo EL100-90 elbow 1" NPT | PP 90°; IBC bends, filter outlet to DV-01 | 4 ea | Amazon | $12–$20 |
@@ -372,7 +373,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bag | Amazon | $28 |
 | Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon | $20 |
 | Nitrile gloves, box of 100 | Size M/L | 2 box | Amazon | $28 |
-| **Water total** | | | | **$1,681–$2,467** |
+| **Water total** | | | | **$1,691–$2,485** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own

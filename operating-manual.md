@@ -345,7 +345,7 @@ DV-02 sits on the P-04 pump discharge and controls whether drain water from the 
 
 **3W-DV-01 — Filter output diverter (pH meter reading)**
 
-DV-01 sits after the filter skid (F1→F2→F3) and the pH test point. After brown water has been filtered, the operator checks the pH reading:
+DV-01 sits after the filter skid (F1→F2→F3) and the SV-01 sample tap. After brown water has been filtered, the operator draws a ~50 ml sample at SV-01 and checks the pH reading:
 
 - **Set to Blue return (default):** pH is between 6.5 and 8.0, indicating the filtered water is chemically neutral enough to return to IBC-2 (Blue clean supply) for reuse.
 - **Switch to Black:** pH is outside the acceptable range, or the water is visibly discolored after filtering. This water goes to IBC-4 (waste) rather than contaminating the clean supply.

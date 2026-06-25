@@ -3,9 +3,9 @@
 # Lens Options
 ## A Technical Analysis of Image Quality, Depth of Field, and Exposure Impact
 
-**Camera configuration:** Option B (side-to-side), container interior depth f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm  
-**Image plane (active):** <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm (~14′ 9″ × 7′ 10″); container interior <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm --> × 2,388mm  
-**Current pinhole:** Ø <!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm, f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number -->  
+**Camera configuration:** Option B (side-to-side), container interior depth f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm
+**Image plane (active):** <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm (~14′ 9″ × 7′ 10″); container interior <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm --> × 2,388mm
+**Current pinhole:** Ø <!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm, f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number -->
 **Baseline exposure (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction):** ~30–45 min
 
 ---
@@ -305,7 +305,7 @@ For crown glass (n = 1.52), a symmetric biconvex lens with equal radii:
 
 This is the fundamental optical constraint of this camera that no lens choice can fully resolve.
 
-The active image plane is <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm, centered on the pinhole (X=2,399mm) — giving half-width 2,250mm and half-height 1,194mm. The distance from the lens to the center of the image plane is 2,362mm. The distance from the lens to the active image plane corners and edges:
+The active image plane is <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm, centered on the pinhole — giving half-width 2,250mm and half-height 1,194mm. The distance from the lens to the center of the image plane is 2,362mm. The distance from the lens to the active image plane corners and edges:
 
 ```
 d_mid-width = √(2,362² + 2,250²) = 3,262mm   [half-width of active plane]

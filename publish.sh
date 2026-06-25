@@ -71,7 +71,7 @@ MD_FILES=(
     "licensing.md"
     "light-trap-selection.md"
     "engineering-diagrams.md"
-    "complete-distortion-renders.md"
+    "distortion-renders.md"
     "equipment-layout-report.md"
     "component-dependency-map.md"
     "component-dimension-audit.md"

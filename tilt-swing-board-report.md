@@ -169,7 +169,7 @@ The board's ±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_boar
 
 ![All board-only configurations](assets/tilt-swing-board-distortion-summary.png)
 
-A detailed analysis of the optical distortions can be found [here](complete-distortion-renders.md#2-tilt-swing-board-distortion-renders).
+A detailed analysis of the optical distortions can be found [here](distortion-renders.md#2-tilt-swing-board-distortion-renders).
 
 The red cross (+) marks the projected image center; gray cross marks the nominal center. Note the grid remains rectilinear — the board translates the image cone without introducing geometric distortion. Distortion only appears when combined with film plane tilt/swing (§10).
 

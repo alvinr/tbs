@@ -68,7 +68,7 @@ MD_FILES = [
     ("licensing.md",                      (".",           "License")),
     ("light-trap-selection.md",           (".",           "Light Trap Selection")),
     ("engineering-diagrams.md",           (".",           "Engineering Diagrams")),
-    ("complete-distortion-renders.md",      (".",           "Distortion Renders")),
+    ("distortion-renders.md",      (".",           "Distortion Renders")),
     ("equipment-layout-report.md",        (".",           "Equipment Layout")),
     ("component-dependency-map.md",       (".",           "Component Dependency Map")),
     ("component-dimension-audit.md",      (".",           "Component Dimension Audit")),
@@ -359,7 +359,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [License](licensing.md) | GNU AGPLv3 — © 2026 Alvin Richards |
 | [Light Trap Selection](light-trap-selection.md) | Revolving light trap options, pricing, and custom fabrication specification |
 | [Engineering Diagrams](engineering-diagrams.md) | All TBS-001 construction drawings — assembly overview, fabrication, subsystems |
-| [Distortion Renders](complete-distortion-renders.md) | Ray-traced projections for all film-plane and tilt-swing configurations |
+| [Distortion Renders](distortion-renders.md) | Ray-traced projections for all film-plane and tilt-swing configurations |
 | [Equipment Layout](equipment-layout-report.md) | Shadow-free end-zone layout — optical clearance proof, IBC Y-stacking, new rail positions |
 | [Component Dependency Map](component-dependency-map.md) | System component registry, diagram index, and change propagation guide |
 | [Component Dimension Audit](component-dimension-audit.md) | Purchased-part dimensional reconciliation — real product sizes vs as-drawn, with datasheet links |

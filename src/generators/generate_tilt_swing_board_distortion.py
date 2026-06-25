@@ -31,6 +31,7 @@ from tbs_title_block import title_block
 F = C_WID         # focal length (container interior depth, mm) = 2362
 FP_W = _FP_W      # film plane width (mm) — from tbs_constants (4499mm)
 FP_H = _FP_H      # film plane height (mm) = 2388
+SHIFT = round(F * np.tan(np.radians(FB)))   # full image shift at the ±FB° hard stop = 219mm (was hardcoded 207, the 5° value)
 
 # ── Cyanotype palette (dark background — matches combined distortion renders) ─
 BG      = '#081A32'
@@ -146,8 +147,8 @@ CONFIGS = [
     # (label, board_tilt, board_swing, description)
     ('C0', 0,    0,    'Reference — board neutral, no image shift'),
     ('C1', 2,    0,    'Mild tilt +2° — subtle vertical image steering'),
-    ('C2', FB,   0,    f'Max tilt +{FB}° — full vertical image shift (207mm)'),
-    ('C3', -FB,  0,    f'Max tilt -{FB}° — full downward image shift'),
+    ('C2', FB,   0,    f'Max tilt +{FB}° — full vertical image shift ({SHIFT}mm)'),
+    ('C3', -FB,  0,    f'Max tilt -{FB}° — full downward image shift ({SHIFT}mm)'),
     ('C4', 0,    2,    'Mild swing +2° — subtle horizontal image steering'),
     ('C5', 0,    FB,   f'Max swing +{FB}° — full horizontal image shift'),
     ('C6', 3,    3,    'Compound +3° tilt, +3° swing — diagonal steering'),

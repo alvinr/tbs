@@ -12,16 +12,16 @@ Source reports: [Film Plane Mechanism](film-plane-mechanism-report.md) and
 
 ## 1. Film Plane Distortion Renders
 
-Four-corner independent actuation of the film plane (TBS-FM01). Each corner moves ±40° tilt
-and ±28° swing independently (Option A rigid plane), producing Scheimpflug-equivalent projections at pinhole
-focal lengths. Seven configurations are shown.
+Four-corner independent actuation of the film plane (TBS-FM01). Each corner moves ±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt
+and ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing independently (Option A rigid plane), producing Scheimpflug-equivalent projections at pinhole
+focal lengths. Six configurations are shown.
 
 **Summary grid — Film Plane**
 ![Film Plane Distortion — Summary Grid](assets/film-plane-distortion-summary.png)
 
 Individual configurations:
 
-Option A's plane is a fixed-size rigid rectangle, so every configuration is a **flat** tilt or swing — the old compound *twist* render is no longer producible.
+Option A's plane is a fixed-size rigid rectangle, so every configuration is a **flat** tilt or swing — a compound *twist* is not producible.
 
 | Config | Tilt | Effect | Render |
 |---|---|------|------------|
@@ -43,8 +43,8 @@ Option A's plane is a fixed-size rigid rectangle, so every configuration is a **
 |---|---|------|------------|
 | 0° | 0° | Reference — no shift | ![C0](assets/tilt-swing-board-distortion-c0.png) |
 | +2° | 0° | Subtle vertical steering | ![C1](assets/tilt-swing-board-distortion-c1.png) |
-| +5.3° | 0° | Max vertical shift (+207mm) | ![C2](assets/tilt-swing-board-distortion-c2.png) |
-| -5.3° | 0° | Max downward shift (-207mm) | ![C3](assets/tilt-swing-board-distortion-c3.png) |
+| +5.3° | 0° | Max vertical shift (+219mm) | ![C2](assets/tilt-swing-board-distortion-c2.png) |
+| -5.3° | 0° | Max downward shift (-219mm) | ![C3](assets/tilt-swing-board-distortion-c3.png) |
 | 0° | +2° | Subtle horizontal steering | ![C4](assets/tilt-swing-board-distortion-c4.png) |
 | 0° | +5.3° | Max horizontal shift | ![C5](assets/tilt-swing-board-distortion-c5.png) |
 | +3° | +3° | Compound diagonal steering | ![C6](assets/tilt-swing-board-distortion-c6.png) |

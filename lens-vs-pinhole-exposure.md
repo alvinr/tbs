@@ -161,6 +161,8 @@ Practical ratio = 1,632 (aperture) × 3.36 (reciprocity) = 5,484 ≈ 43 min ÷ 0
 
 The reciprocity factor attaches to the pinhole's own calculated time, not to the f-number area ratio — it is counted once, never compounded onto the aperture term. Only the pinhole pays both penalties; the lens removes the aperture penalty and the reciprocity penalty in a single stroke.
 
+> **For the camera as built:** Factor 2 applies only to silver-gelatin paper. TBS-001's cyanotype image plane is iron-based and exhibits no Schwarzschild reciprocity failure (see the Note at the top), so its ~30–45 min pinhole baseline is not inflated. Only Factor 1 applies, and the lens advantage over the cyanotype pinhole is the aperture ratio alone — ~4,624×, with no reciprocity term.
+
 ---
 
 ## Part 3: The f-Number as a Shorthand for This Relationship

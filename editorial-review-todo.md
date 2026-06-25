@@ -51,7 +51,7 @@ also a `tbs_constants` value or a `costing.py`/`facts.yml` fact, prefer the refe
 - [ ] weight-distribution-report.md
 - [ ] container-transport-options.md
 - [ ] lens-options.md
-- [ ] lens-vs-pinhole-exposure.md
+- [x] lens-vs-pinhole-exposure.md  — *DONE (2026-06-24): rewrote §2.2 to drop the show-wrong-then-correct device (the ~15,500 false start + 'Wait — this is not right') into a direct two-factor decomposition (1,632 aperture × 3.36 reciprocity = 5,484 ≈ 5,489), and added a 'for the camera as built' callout scoping Factor 2 to silver-gelatin paper (cyanotype is iron-based → no Schwarzschild term → lens edge is the ~4,624× aperture ratio alone). Hyperlinked the whole Sources table (books → catalog, Young → DOI, Schwarzschild → NASA ADS). Fixed the Schwarzschild citation: bogus 'Astrophysikalische Nachrichten Vol. 148' → The Astrophysical Journal Vol. 11, 1900, pp. 89–91 (ADS). Wrapped header f 2,362/2.17/f1088 as placeholders; 17094→17,094 (×2); dropped the naive 0.56 sec in Part 2 (0.47 used throughout); spellings penalises→penalizes, standardised→standardized (×2; editorial_lint misses -ise). Recorded the authoritative-voice/no-self-correction preference in memory. Editorial + drift gates pass.*
 - [ ] photosensitive-plane-options.md
 - [ ] complete-distortion-renders.md  — *prose ±angles now corrected to Option A; check for stray dims*
 - [ ] component-dimension-audit.md  — *this one is intentionally dimensional — likely keep as-is*

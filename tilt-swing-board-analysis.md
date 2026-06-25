@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-The front board is the interchangeable plate that carries the pinhole disc at the scene-facing end of the container. This report covers the optical effect of a new plate — the **Tilt-Swing Board (TSB)**, specified in the [Tilt-Swing Front Board report](tilt-swing-board-report.md) — which replaces the flat pinhole plate and adds two axes of angular adjustment to the pinhole's pointing direction.
+The front board is the interchangeable plate that carries the pinhole disc at the scene-facing end of the container. This report covers the optical effect the **Tilt-Swing Board (TSB)**, specified in the [Tilt-Swing Front Board report](tilt-swing-board-report.md) — which replaces the flat pinhole plate and adds two axes of angular adjustment to the pinhole's pointing direction.
 
 ---
 
@@ -75,12 +75,12 @@ The following renders show the combined projection of both systems operating sim
 
 The projection model applies two sequential transformations:
 
-**Step 1 — Front board rotation:**  
-Board tilt α and swing β rotate the effective world coordinate system:  
+**Step 1 — Front board rotation:**
+Board tilt α and swing β rotate the effective world coordinate system:
 `W' = Ry(−β) · Rx(−α) · W_world`
 
-**Step 2 — Film plane intersection:**  
-The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r₀=(0,0,2362) and normal n = Ry(φ)·Rx(θ)·[0,0,−1]. The image point is:  
+**Step 2 — Film plane intersection:**
+The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r₀=(0,0,2362) and normal n = Ry(φ)·Rx(θ)·[0,0,−1]. The image point is:
 `t = (n·r₀)/(n·d);  F = t × d`
 
 The red cross (+) marks the projected image center; gray cross marks the nominal center.

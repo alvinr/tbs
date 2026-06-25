@@ -1971,10 +1971,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-the-compounding-effect-visualised" class="md-nav__link">
+  <a href="#22-how-the-two-factors-combine" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2 The Compounding Effect Visualised
+        2.2 How the Two Factors Combine
       
     </span>
   </a>
@@ -2616,11 +2616,11 @@
 <!-- © 2026 Alvin Richards -->
 <h1 id="why-a-lens-changes-exposure-time">Why a Lens Changes Exposure Time<a class="headerlink" href="#why-a-lens-changes-exposure-time" title="Permanent link">&para;</a></h1>
 <h2 id="a-first-principles-explanation-of-aperture-light-collection-and-reciprocity">A First-Principles Explanation of Aperture, Light Collection, and Reciprocity<a class="headerlink" href="#a-first-principles-explanation-of-aperture-light-collection-and-reciprocity" title="Permanent link">&para;</a></h2>
-<p><strong>Camera:</strong> Option B, f = 2,362mm, pinhole Ø 2.17mm (f/1088)<br />
-<strong>Baseline:</strong> ISO 6 silver gelatin paper, full sun, Schwarzschild corrected — pinhole exposure ~43 minutes<br />
+<p><strong>Camera:</strong> Option B, f = 2,362mm, pinhole Ø 2.17mm (f/1088)
+<strong>Baseline:</strong> ISO 6 silver gelatin paper, full sun, Schwarzschild corrected — pinhole exposure ~43 minutes
 <strong>Lens comparison:</strong> Process lens or telescope objective at f/8–f/128</p>
 <blockquote>
-<p><strong>Note:</strong> TBS-001 uses cyanotype on cotton muslin (Ware New Cyanotype formula, ISO ~2–4), not silver gelatin paper. Cyanotype does not exhibit Schwarzschild reciprocity failure, so the pinhole baseline for TBS-001 is ~35 minutes (Ware New Cyanotype formula; no Schwarzschild correction). The lens-vs-pinhole aperture ratio derived in this document (4,624×) still applies; the total gain is ~4,600× rather than ~5,500× because there is no reciprocity correction to amplify the pinhole exposure. This document uses ISO 6 paper as its worked example because it produces the clearest derivation — the physics is identical for cyanotype.</p>
+<p><strong>Note:</strong> TBS-001 uses cyanotype on cotton muslin (Ware New Cyanotype formula, ISO ~2–4), not silver gelatin paper. Cyanotype does not exhibit Schwarzschild reciprocity failure, so the pinhole baseline for TBS-001 is 30-45 minutes (Ware New Cyanotype formula; no Schwarzschild correction). The lens-vs-pinhole aperture ratio derived in this document (4,624×) still applies; the total gain is ~4,600× rather than ~5,500× because there is no reciprocity correction to amplify the pinhole exposure. This document uses ISO 6 paper as its worked example because it produces the clearest derivation — the physics is identical for cyanotype.</p>
 </blockquote>
 <hr />
 <h2 id="the-central-claim">The Central Claim<a class="headerlink" href="#the-central-claim" title="Permanent link">&para;</a></h2>
@@ -2714,24 +2714,40 @@ t_actual = 770^1.176 = 2,488 sec ≈ 41.5 min ≈ 43 min ✓
 </code></pre></div>
 <p>The Schwarzschild correction adds <strong>28 minutes</strong> to the calculated time — more than doubling it. This penalty applies to every exposure over approximately 10 seconds. A lens at f/32 (2.1 sec exposure) just begins to enter the Schwarzschild regime; at f/16 (0.5 sec) it is entirely exempt.</p>
 <p><strong>Source:</strong> Schwarzschild, K., "On the Law of Reciprocity for Photographic Surfaces," <em>Astrophysikalische Nachrichten</em>, Vol. 148, 1900, pp. 325–334. Applied to modern materials: Stroebel, L., Compton, J., Current, I., Zakia, R., <em>Basic Photographic Materials and Processes</em>, 3rd ed., Focal Press, 2009, Chapter 8. The value p ≈ 0.85 for RC paper is the standard practitioner figure; the precise value is emulsion-specific and should be tested.</p>
-<h3 id="22-the-compounding-effect-visualised">2.2 The Compounding Effect Visualised<a class="headerlink" href="#22-the-compounding-effect-visualised" title="Permanent link">&para;</a></h3>
-<p>The 5,500× total factor is the product of two independent mechanisms:</p>
-<div class="highlight"><pre><span></span><code>Total factor = (aperture area ratio) × (reciprocity correction ratio)
-             = 4,624 × (43 min / 12.8 min)
-             = 4,624 × 3.36
-             ≈ 15,500
+<h3 id="22-how-the-two-factors-combine">2.2 How the Two Factors Combine<a class="headerlink" href="#22-how-the-two-factors-combine" title="Permanent link">&para;</a></h3>
+<p>The practical 5,489× advantage is the product of two independent factors, each applied exactly once and only to the quantity it governs:</p>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Pinhole f/1088</th>
+<th>Lens f/16</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Calculated exposure (ISO 6, full sun, 3.4 m)</td>
+<td>12.8 min</td>
+<td>0.47 sec</td>
+</tr>
+<tr>
+<td>Schwarzschild reciprocity penalty</td>
+<td>×3.36 (long exposure)</td>
+<td>none — too brief</td>
+</tr>
+<tr>
+<td>Working exposure</td>
+<td><strong>43 min</strong></td>
+<td><strong>0.47 sec</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Factor 1 — aperture (light collection).</strong> Comparing the two <em>calculated</em> times, the pinhole needs 12.8 min where the lens needs 0.47 sec: a ratio of <strong>1,632×</strong>. This is the f-number area advantage as it lands at the portrait working distance.</p>
+<p><strong>Factor 2 — reciprocity.</strong> The pinhole's 12.8-minute calculated time is long enough to trigger Schwarzschild failure, which inflates it to 43 min — a further <strong>×3.36</strong>. The lens exposure of 0.47 sec is far too brief for any reciprocity penalty.</p>
+<p>Because the two factors are independent, they multiply:</p>
+<div class="highlight"><pre><span></span><code>Practical ratio = 1,632 (aperture) × 3.36 (reciprocity) = 5,484 ≈ 43 min ÷ 0.47 sec = 5,489
 </code></pre></div>
-<p>Wait — this is not right. The aperture ratio already accounts for the full exposure reduction. The Schwarzschild correction is not applied on top of the aperture ratio; it applies to the pinhole's calculated time independently. The correct statement is:</p>
-<ul>
-<li>Pinhole <strong>calculated</strong> time: 12.8 min</li>
-<li>Pinhole <strong>corrected</strong> time: 43 min (Schwarzschild adds 30 min)</li>
-<li>Lens f/16 <strong>calculated</strong> time: 0.47 sec</li>
-<li>Lens f/16 <strong>corrected</strong> time: 0.47 sec (no correction at this duration)</li>
-</ul>
-<div class="highlight"><pre><span></span><code>Practical ratio = 43 min / 0.47 sec = 43×60 / 0.47 = 5,489
-</code></pre></div>
-<p>The Schwarzschild effect inflates the pinhole time by 3.36×. Combined with the 1,632× aperture ratio at the uncorrected level (12.8 min vs 0.47 sec = 1,632×), the product is 1,632 × 3.36 = <strong>5,483</strong> — consistent with the direct calculation.</p>
-<p>The two factors are independent but cumulative: the lens eliminates the aperture penalty AND the reciprocity penalty simultaneously.</p>
+<p>The reciprocity factor attaches to the pinhole's own calculated time, not to the f-number area ratio — it is counted once, never compounded onto the aperture term. Only the pinhole pays both penalties; the lens removes the aperture penalty and the reciprocity penalty in a single stroke.</p>
 <hr />
 <h2 id="part-3-the-f-number-as-a-shorthand-for-this-relationship">Part 3: The f-Number as a Shorthand for This Relationship<a class="headerlink" href="#part-3-the-f-number-as-a-shorthand-for-this-relationship" title="Permanent link">&para;</a></h2>
 <p>The f-number system was devised precisely to encode this area relationship in a convenient single number. The definition:</p>

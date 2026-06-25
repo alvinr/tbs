@@ -3,11 +3,11 @@
 # Why a Lens Changes Exposure Time
 ## A First-Principles Explanation of Aperture, Light Collection, and Reciprocity
 
-**Camera:** Option B, f = 2,362mm, pinhole Ø 2.17mm (f/1088)  
-**Baseline:** ISO 6 silver gelatin paper, full sun, Schwarzschild corrected — pinhole exposure ~43 minutes  
+**Camera:** Option B, f = 2,362mm, pinhole Ø 2.17mm (f/1088)
+**Baseline:** ISO 6 silver gelatin paper, full sun, Schwarzschild corrected — pinhole exposure ~43 minutes
 **Lens comparison:** Process lens or telescope objective at f/8–f/128
 
-> **Note:** TBS-001 uses cyanotype on cotton muslin (Ware New Cyanotype formula, ISO ~2–4), not silver gelatin paper. Cyanotype does not exhibit Schwarzschild reciprocity failure, so the pinhole baseline for TBS-001 is ~35 minutes (Ware New Cyanotype formula; no Schwarzschild correction). The lens-vs-pinhole aperture ratio derived in this document (4,624×) still applies; the total gain is ~4,600× rather than ~5,500× because there is no reciprocity correction to amplify the pinhole exposure. This document uses ISO 6 paper as its worked example because it produces the clearest derivation — the physics is identical for cyanotype.
+> **Note:** TBS-001 uses cyanotype on cotton muslin (Ware New Cyanotype formula, ISO ~2–4), not silver gelatin paper. Cyanotype does not exhibit Schwarzschild reciprocity failure, so the pinhole baseline for TBS-001 is 30-45 minutes (Ware New Cyanotype formula; no Schwarzschild correction). The lens-vs-pinhole aperture ratio derived in this document (4,624×) still applies; the total gain is ~4,600× rather than ~5,500× because there is no reciprocity correction to amplify the pinhole exposure. This document uses ISO 6 paper as its worked example because it produces the clearest derivation — the physics is identical for cyanotype.
 
 ---
 
@@ -145,31 +145,27 @@ The Schwarzschild correction adds **28 minutes** to the calculated time — more
 
 **Source:** Schwarzschild, K., "On the Law of Reciprocity for Photographic Surfaces," *Astrophysikalische Nachrichten*, Vol. 148, 1900, pp. 325–334. Applied to modern materials: Stroebel, L., Compton, J., Current, I., Zakia, R., *Basic Photographic Materials and Processes*, 3rd ed., Focal Press, 2009, Chapter 8. The value p ≈ 0.85 for RC paper is the standard practitioner figure; the precise value is emulsion-specific and should be tested.
 
-### 2.2 The Compounding Effect Visualised
+### 2.2 How the Two Factors Combine
 
-The 5,500× total factor is the product of two independent mechanisms:
+The practical 5,489× advantage is the product of two independent factors, each applied exactly once and only to the quantity it governs:
 
-```
-Total factor = (aperture area ratio) × (reciprocity correction ratio)
-             = 4,624 × (43 min / 12.8 min)
-             = 4,624 × 3.36
-             ≈ 15,500
-```
+| Factor | Pinhole f/1088 | Lens f/16 |
+|--------|---------------|-----------|
+| Calculated exposure (ISO 6, full sun, 3.4 m) | 12.8 min | 0.47 sec |
+| Schwarzschild reciprocity penalty | ×3.36 (long exposure) | none — too brief |
+| Working exposure | **43 min** | **0.47 sec** |
 
-Wait — this is not right. The aperture ratio already accounts for the full exposure reduction. The Schwarzschild correction is not applied on top of the aperture ratio; it applies to the pinhole's calculated time independently. The correct statement is:
+**Factor 1 — aperture (light collection).** Comparing the two *calculated* times, the pinhole needs 12.8 min where the lens needs 0.47 sec: a ratio of **1,632×**. This is the f-number area advantage as it lands at the portrait working distance.
 
-- Pinhole **calculated** time: 12.8 min
-- Pinhole **corrected** time: 43 min (Schwarzschild adds 30 min)
-- Lens f/16 **calculated** time: 0.47 sec
-- Lens f/16 **corrected** time: 0.47 sec (no correction at this duration)
+**Factor 2 — reciprocity.** The pinhole's 12.8-minute calculated time is long enough to trigger Schwarzschild failure, which inflates it to 43 min — a further **×3.36**. The lens exposure of 0.47 sec is far too brief for any reciprocity penalty.
+
+Because the two factors are independent, they multiply:
 
 ```
-Practical ratio = 43 min / 0.47 sec = 43×60 / 0.47 = 5,489
+Practical ratio = 1,632 (aperture) × 3.36 (reciprocity) = 5,484 ≈ 43 min ÷ 0.47 sec = 5,489
 ```
 
-The Schwarzschild effect inflates the pinhole time by 3.36×. Combined with the 1,632× aperture ratio at the uncorrected level (12.8 min vs 0.47 sec = 1,632×), the product is 1,632 × 3.36 = **5,483** — consistent with the direct calculation.
-
-The two factors are independent but cumulative: the lens eliminates the aperture penalty AND the reciprocity penalty simultaneously.
+The reciprocity factor attaches to the pinhole's own calculated time, not to the f-number area ratio — it is counted once, never compounded onto the aperture term. Only the pinhole pays both penalties; the lens removes the aperture penalty and the reciprocity penalty in a single stroke.
 
 ---
 

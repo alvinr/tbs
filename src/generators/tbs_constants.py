@@ -159,6 +159,7 @@ FRONT_BOARD_CLICK_DEG = round(math.degrees(math.atan((FRONT_BOARD_SCREW_PITCH / 
 # means a focal-length or film-size change ripples to every doc that restates them.
 BOARD_TILT_REF_DEG   = 5     # round reference tilt for the image-shift unit-rate illustration
 IMAGE_SHIFT_PER_5DEG = round(C_WID * math.tan(math.radians(BOARD_TILT_REF_DEG)))   # = 207mm (focal × tan 5°)
+FRONT_BOARD_MAX_SHIFT_MM = round(C_WID * math.tan(math.radians(FRONT_BOARD_MAX_DEG)))   # = 219mm — image shift at the ±5.3° hard stop
 IMAGE_AREA_SQFT      = round(FP_W * FP_H / 1e6 * 10.7639)                          # = 116 sq ft (active film plane)
 XSLIDE_N        = 8     # 2 cross-slides (X + Z) per corner × 4 corners — reserved
 

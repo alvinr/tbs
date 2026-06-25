@@ -43,8 +43,8 @@ The plane is a fixed-size rigid rectangle, so every configuration is a **flat** 
 |---|---|------|------------|
 | 0° | 0° | Reference — no shift | ![C0](assets/tilt-swing-board-distortion-c0.png) |
 | +2° | 0° | Subtle vertical steering | ![C1](assets/tilt-swing-board-distortion-c1.png) |
-| +5.3° | 0° | Max vertical shift (+219mm) | ![C2](assets/tilt-swing-board-distortion-c2.png) |
-| -5.3° | 0° | Max downward shift (-219mm) | ![C3](assets/tilt-swing-board-distortion-c3.png) |
+| +5.3° | 0° | Max vertical shift (+<!-- BEGIN fact:front_board_max_shift_mm -->219<!-- END fact:front_board_max_shift_mm -->mm) | ![C2](assets/tilt-swing-board-distortion-c2.png) |
+| -5.3° | 0° | Max downward shift (-<!-- BEGIN fact:front_board_max_shift_mm -->219<!-- END fact:front_board_max_shift_mm -->mm) | ![C3](assets/tilt-swing-board-distortion-c3.png) |
 | 0° | +2° | Subtle horizontal steering | ![C4](assets/tilt-swing-board-distortion-c4.png) |
 | 0° | +5.3° | Max horizontal shift | ![C5](assets/tilt-swing-board-distortion-c5.png) |
 | +3° | +3° | Compound diagonal steering | ![C6](assets/tilt-swing-board-distortion-c6.png) |

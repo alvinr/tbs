@@ -103,7 +103,7 @@ C_PINHOLE = "#CC6600"   # pinhole aperture + optical cone
 C_RAIL = "#606068"      # HGR20 linear rail
 C_CARR = "#C04010"      # HGH20CA carriage block
 C_ALUM = "#C8D8E8"      # aluminum (cargo door panel, spray bar beam)
-C_PLY = "#9C7B4D"       # marine ply (equipment panel + hinge-panel Fan B mount band)
+C_PLY = "#9C7B4D"       # marine ply (plumbing panel + hinge-panel Fan B mount band)
 C_PLASTIC = "#6E8CA0"   # 4mm PP plastic sheet (rev11 hinge-panel skins + B2 bay; differentiates from wood C_PLY)
 C_PUMP = "#454552"      # pump bodies (Shurflo 2088)
 C_ACC = "#5A9ACC"       # ACC-01 accumulator
@@ -138,7 +138,7 @@ C_BATH = "#2E6FA0"      # processing chemistry (translucent bath)
 # Subsystem → tag map (also drives tag creation order).
 TAGS = ["Shell", "Walkways", "Processing Tray",
         "Pinhole", "Optical Cone", "Film Plane", "Combined Plate",
-        "Pivot Axle", "Spray Bar", "Equipment Panel",
+        "Pivot Axle", "Spray Bar", "Plumbing Panel",
         "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf",
         "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans",
         "Water Plumbing", "Solar Array", "Labels"]
@@ -153,7 +153,7 @@ OVERVIEW_LABELS = [
     ("Pinhole Assembly",      "PINHOLE  Ø2.17mm",                 -140, -1120,  630),
     ("Film Plane Mechanism",  "FILM PLANE\n4-corner tilt/swing",   400,     0, 1250),
     ("Processing Tray",       "PROCESSING TRAY",                  -250,     0,  650),
-    ("Equipment Panel",       "EQUIPMENT PANEL\npump / filter",    500,     0,  820),
+    ("Plumbing Panel",       "PLUMBING PANEL\npump / filter",    500,     0,  820),
     ("IBC Stack",             "IBC WATER STORAGE\n4x tote",        600,     0, 1300),
     ("Light-Trap Drum",       "LIGHT-TRAP DRUM\n(entry)",         -650,     0, 1050),
     ("Electrical",            "ELECTRICAL PANEL",                  500,     0,  560),
@@ -917,7 +917,7 @@ def spray_bar():
                       sb.build_feed_pole()])
 
 
-# ── Equipment panel (pumps · filters · accumulator) ──────────────────────────
+# ── Plumbing panel (pumps · filters · accumulator) ──────────────────────────
 
 def equipment_panel():
     """18mm marine-ply panel in the IBC corridor carrying the wet end.
@@ -930,7 +930,7 @@ def equipment_panel():
     parts = []
     face_x = EQPANEL_X                    # panel face — equipment hangs in -X
 
-    parts.append(ruby_box("Equipment Panel (ply)",
+    parts.append(ruby_box("Plumbing Panel (ply)",
                           face_x, EQPANEL_YD, EQPANEL_Z_LO,
                           EQPANEL_T, EQPANEL_YD_SPAN, EQPANEL_Z_HI - EQPANEL_Z_LO,
                           color=C_PLY))
@@ -965,6 +965,15 @@ def equipment_panel():
     for nm, fz in [("F1 (50µ)", F1_Z), ("F2 (5µ)", F2_Z), ("F3 (GAC)", F3_Z)]:
         parts.append(ruby_cylinder(f"Filter {nm}",
                                    fcx, fcy, fz, fr, BB_H, color=C_FILTER))
+
+    # SV-01 pH sample tap — small 1/4-turn valve + short downturned spout teed off
+    # the F3 filtered output (before 3W-DV-01). Panel face, beside the filter
+    # stack, spout down so a cup fits under it.
+    _sv_z = F3_Z + BB_H
+    parts.append(ruby_box("SV-01 pH sample tap",
+                          face_x - 72, fcy + fr + 6, _sv_z, 34, 32, 34, color=C_VALVE))
+    parts.append(ruby_cylinder("SV-01 spout",
+                               face_x - 55, fcy + fr + 22, _sv_z - 40, 5, 40, color=C_VALVE))
 
     # ── Drain-riser backing spine (rev 8.1) ──────────────────────────────────
     # 18mm marine-ply spine teed perpendicular off the panel (a T in plan), into
@@ -1746,12 +1755,12 @@ def lighting_wiring():
                                    sx + 20, 40, czc, cr, 60,
                                    color=C_TRUNK, axis="y"))
 
-    # Circuit C — feed to the pump/filter equipment panel (IBC corridor).
+    # Circuit C — feed to the pump/filter plumbing panel (IBC corridor).
     # Branch off the ceiling trunking (Yd≈0) across to the panel center
     # (Yd≈1181), then drop to the top of the pump zone (Z=PUMP_H_HI) at the
     # panel face (X=EQPANEL_X). Runs at ceiling height (Z=2350), clearing the IBC stack top (Z=2336).
     pc_yd = EQPANEL_YD + EQPANEL_YD_SPAN / 2
-    parts.append(ruby_cylinder("Conduit to Equipment Panel (Cct C)",
+    parts.append(ruby_cylinder("Conduit to Plumbing Panel (Cct C)",
                                EQPANEL_X, 40, czc, cr, pc_yd - 40,
                                color=C_TRUNK, axis="y"))
     parts.append(ruby_box("Conduit Drop to Pumps (Cct C)",
@@ -2471,7 +2480,7 @@ def generate_ruby():
         component("FP Combined Corner Plates", "Combined Plate", fp_combined_corner_plates()),
         component("Panel & Pivot Axle", "Pivot Axle", panel_pivot()),
         component("Spray Bar", "Spray Bar", spray_bar()),
-        component("Equipment Panel", "Equipment Panel", equipment_panel()),
+        component("Plumbing Panel", "Plumbing Panel", equipment_panel()),
         component("IBC Stack", "IBC Stack", ibc_stack()),
         component("IBC Rack", "IBC Rack", ibc_rack()),
         component("Light-Trap Drum", "Light Trap", light_trap_drum()),
@@ -2498,7 +2507,7 @@ def generate_ruby():
     # Grouped scenes — related subsystems together (Shell shown as context).
     scene_groups = [
         ("Film Plane & Pinhole", ["Pinhole", "Optical Cone", "Film Plane", "Combined Plate"]),
-        ("Water Systems", ["Processing Tray", "Spray Bar", "Equipment Panel",
+        ("Water Systems", ["Processing Tray", "Spray Bar", "Plumbing Panel",
                            "IBC Stack", "IBC Rack", "Shelf", "Water Hookups",
                            "Water Plumbing"]),
         ("Electrical Systems", ["Electrical", "Lighting", "Solar Array"]),

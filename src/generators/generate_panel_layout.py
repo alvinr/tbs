@@ -503,8 +503,9 @@ draw_ball_valve(SV01_YD, SV01_Z, "SV\n01", C_BROWN)
 ax.annotate("", xy=(sx(SV01_YD), sz(SV01_Z - BV_R - 35)),
             xytext=(sx(SV01_YD), sz(SV01_Z - BV_R)),
             arrowprops=dict(**_arrow_kw, color=C_BROWN), zorder=11)
-ax.text(sx(SV01_YD - 8), sz(SV01_Z), "SV-01\npH SAMPLE\nTAP", ha="right", va="center",
-        fontsize=5, color=C_BROWN, zorder=10, **FONT)
+leader(ax, sx(SV01_YD), sz(SV01_Z), sx(EXIT_R + 8), sz(SV01_Z - 25),
+       "SV-01 — pH sample tap\n(draw sample, meter,\nthen set 3W-DV-01)",
+       fs=6.5, color=C_BROWN, ha="left", va="center")
 
 
 # ════════════════════════════════════════════════════════════════

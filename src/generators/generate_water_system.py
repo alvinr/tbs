@@ -399,12 +399,14 @@ def draw_sheet1():
     pipe(ax1, 8.2, 4.6, 8.2, 4.33, C_BROWN)
     pipe(ax1, 8.2, 4.07, 8.2, 3.25, C_BROWN)
 
-    # pH test point
+    # SV-01 pH sample tap — on the filtered line, before the diverter
     pipe(ax1, 8.2, 3.25, 8.9, 3.25, C_BROWN)
     arrow_pipe(ax1, 8.6, 3.25, 9.1, 3.25, color=C_BROWN)     # rightward to DV-01
-    box(ax1, 9.15, 3.25, 0.45, 0.35, fc="#FFF176", ec="#F9A825", lw=1.5)
-    ax1.text(9.15, 3.25, "pH\nTEST", ha="center", va="center", fontsize=5.5,
-             color="#E65100")
+    valve(ax1, 9.15, 3.25, color="#F9A825", size=0.05, label="SV")   # SV-01 sample valve
+    pipe(ax1, 9.15, 3.25 - 0.05 * 1.6, 9.15, 2.78, C_BROWN)  # downturned spout for the cup
+    leader(ax1, 9.15, 2.80, 8.55, 2.30,
+           "SV-01 — pH sample tap\n(draw sample → meter → set DV-01)",
+           fs=6, color="#E65100", ha="right")
 
     # ── DIVERTER VALVE after filter — back to Blue OR forward to Black ─────────────
     DVR = 0.075 * 1.6  # diverter valve circle radius = 0.12

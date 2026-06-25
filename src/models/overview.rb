@@ -28,7 +28,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Combined Plate") unless model.layers["Combined Plate"]
   model.layers.add("Pivot Axle") unless model.layers["Pivot Axle"]
   model.layers.add("Spray Bar") unless model.layers["Spray Bar"]
-  model.layers.add("Equipment Panel") unless model.layers["Equipment Panel"]
+  model.layers.add("Plumbing Panel") unless model.layers["Plumbing Panel"]
   model.layers.add("IBC Stack") unless model.layers["IBC Stack"]
   model.layers.add("IBC Rack") unless model.layers["IBC Rack"]
   model.layers.add("Light Trap") unless model.layers["Light Trap"]
@@ -6962,16 +6962,16 @@ end
   inst.name = "Spray Bar"
   inst.layer = model.layers["Spray Bar"]
 
-  # ═══ Equipment Panel ═══
-  defn = model.definitions.add("Equipment Panel")
+  # ═══ Plumbing Panel ═══
+  defn = model.definitions.add("Plumbing Panel")
   ents = defn.entities
-  # Equipment Panel (ply)
+  # Plumbing Panel (ply)
   grp = ents.add_group
-  grp.name = "Equipment Panel (ply)"
+  grp.name = "Plumbing Panel (ply)"
   face = grp.entities.add_face([4874.mm,1046.mm,250.mm], [4892.mm,1046.mm,250.mm], [4892.mm,1316.mm,250.mm], [4874.mm,1316.mm,250.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2060.mm)
-  mat = model.materials["Equipment Panel (ply)"] || model.materials.add("Equipment Panel (ply)")
+  mat = model.materials["Plumbing Panel (ply)"] || model.materials.add("Plumbing Panel (ply)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
   grp.material = mat
@@ -7083,13 +7083,37 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # SV-01 pH sample tap
+  grp = ents.add_group
+  grp.name = "SV-01 pH sample tap"
+  face = grp.entities.add_face([4802.mm,1279.mm,1330.mm], [4836.mm,1279.mm,1330.mm], [4836.mm,1311.mm,1330.mm], [4802.mm,1311.mm,1330.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(34.mm)
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 spout
+  grp = ents.add_group
+  grp.name = "SV-01 spout"
+  ge = grp.entities
+  circle = ge.add_circle([4819.mm,1295.mm,1290.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(40.mm)
+  mat = model.materials["Thumb screw TL near"] || model.materials.add("Thumb screw TL near")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Drain-riser spine (ply)
   grp = ents.add_group
   grp.name = "Drain-riser spine (ply)"
   face = grp.entities.add_face([4874.mm,1223.mm,250.mm], [5420.mm,1223.mm,250.mm], [5420.mm,1241.mm,250.mm], [4874.mm,1241.mm,250.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2060.mm)
-  mat = model.materials["Equipment Panel (ply)"] || model.materials.add("Equipment Panel (ply)")
+  mat = model.materials["Plumbing Panel (ply)"] || model.materials.add("Plumbing Panel (ply)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
   grp.material = mat
@@ -7100,7 +7124,7 @@ end
   face = grp.entities.add_face([5402.mm,1226.mm,250.mm], [5420.mm,1226.mm,250.mm], [5420.mm,1280.mm,250.mm], [5402.mm,1280.mm,250.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2060.mm)
-  mat = model.materials["Equipment Panel (ply)"] || model.materials.add("Equipment Panel (ply)")
+  mat = model.materials["Plumbing Panel (ply)"] || model.materials.add("Plumbing Panel (ply)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
   grp.material = mat
@@ -7183,8 +7207,8 @@ end
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
-  inst.name = "Equipment Panel"
-  inst.layer = model.layers["Equipment Panel"]
+  inst.name = "Plumbing Panel"
+  inst.layer = model.layers["Plumbing Panel"]
 
   # ═══ IBC Stack ═══
   defn = model.definitions.add("IBC Stack")
@@ -7961,7 +7985,7 @@ end
   face.pushpull(2120.mm)
   mat = model.materials["LT Housing arc (near Yd)"] || model.materials.add("LT Housing arc (near Yd)")
   mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 0.42
+  mat.alpha = 0.5
   grp.material = mat
 
   # LT Housing arc (far Yd)
@@ -7973,7 +7997,7 @@ end
   face.pushpull(2120.mm)
   mat = model.materials["LT Housing arc (near Yd)"] || model.materials.add("LT Housing arc (near Yd)")
   mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 0.42
+  mat.alpha = 0.5
   grp.material = mat
 
   # LT Upper bearing (SKF 6215)
@@ -7996,9 +8020,9 @@ end
   face = ge.add_face([[-730.93.mm,903.32.mm,130.mm], [-701.mm,871.12.mm,130.mm], [-667.94.mm,842.13.mm,130.mm], [-632.11.mm,816.65.mm,130.mm], [-593.88.mm,794.95.mm,130.mm], [-553.64.mm,777.24.mm,130.mm], [-511.81.mm,763.72.mm,130.mm], [-468.82.mm,754.52.mm,130.mm], [-425.12.mm,749.73.mm,130.mm], [-381.16.mm,749.41.mm,130.mm], [-337.39.mm,753.56.mm,130.mm], [-294.27.mm,762.14.mm,130.mm], [-252.25.mm,775.05.mm,130.mm], [-211.75.mm,792.17.mm,130.mm], [-173.21.mm,813.32.mm,130.mm], [-137.02.mm,838.27.mm,130.mm], [-103.54.mm,866.77.mm,130.mm], [-73.14.mm,898.53.mm,130.mm], [-46.13.mm,933.21.mm,130.mm], [-22.78.mm,970.46.mm,130.mm], [-3.33.mm,1009.89.mm,130.mm], [12.01.mm,1051.1.mm,130.mm], [23.08.mm,1093.64.mm,130.mm], [29.76.mm,1137.09.mm,130.mm], [32.mm,1181.mm,130.mm], [29.76.mm,1224.91.mm,130.mm], [23.08.mm,1268.36.mm,130.mm], [12.01.mm,1310.9.mm,130.mm], [-3.33.mm,1352.11.mm,130.mm], [-22.78.mm,1391.54.mm,130.mm], [-46.13.mm,1428.79.mm,130.mm], [-73.14.mm,1463.47.mm,130.mm], [-103.54.mm,1495.23.mm,130.mm], [-137.02.mm,1523.73.mm,130.mm], [-173.21.mm,1548.68.mm,130.mm], [-211.75.mm,1569.83.mm,130.mm], [-252.25.mm,1586.95.mm,130.mm], [-294.27.mm,1599.86.mm,130.mm], [-337.39.mm,1608.44.mm,130.mm], [-381.16.mm,1612.59.mm,130.mm], [-425.12.mm,1612.27.mm,130.mm], [-468.82.mm,1607.48.mm,130.mm], [-511.81.mm,1598.28.mm,130.mm], [-553.64.mm,1584.76.mm,130.mm], [-593.88.mm,1567.05.mm,130.mm], [-632.11.mm,1545.35.mm,130.mm], [-667.94.mm,1519.87.mm,130.mm], [-701.mm,1490.88.mm,130.mm], [-730.93.mm,1458.68.mm,130.mm], [-727.87.mm,1456.11.mm,130.mm], [-698.21.mm,1488.01.mm,130.mm], [-665.46.mm,1516.73.mm,130.mm], [-629.96.mm,1541.97.mm,130.mm], [-592.09.mm,1563.47.mm,130.mm], [-552.22.mm,1581.02.mm,130.mm], [-510.77.mm,1594.42.mm,130.mm], [-468.18.mm,1603.53.mm,130.mm], [-424.89.mm,1608.28.mm,130.mm], [-381.33.mm,1608.59.mm,130.mm], [-337.97.mm,1604.48.mm,130.mm], [-295.25.mm,1595.98.mm,130.mm], [-253.62.mm,1583.19.mm,130.mm], [-213.5.mm,1566.23.mm,130.mm], [-175.31.mm,1545.28.mm,130.mm], [-139.45.mm,1520.56.mm,130.mm], [-106.29.mm,1492.32.mm,130.mm], [-76.17.mm,1460.85.mm,130.mm], [-49.4.mm,1426.49.mm,130.mm], [-26.27.mm,1389.59.mm,130.mm], [-7.mm,1350.52.mm,130.mm], [8.19.mm,1309.7.mm,130.mm], [19.16.mm,1267.55.mm,130.mm], [25.78.mm,1224.5.mm,130.mm], [28.mm,1181.mm,130.mm], [25.78.mm,1137.5.mm,130.mm], [19.16.mm,1094.45.mm,130.mm], [8.19.mm,1052.3.mm,130.mm], [-7.mm,1011.48.mm,130.mm], [-26.27.mm,972.41.mm,130.mm], [-49.4.mm,935.51.mm,130.mm], [-76.17.mm,901.15.mm,130.mm], [-106.29.mm,869.68.mm,130.mm], [-139.45.mm,841.44.mm,130.mm], [-175.31.mm,816.72.mm,130.mm], [-213.5.mm,795.77.mm,130.mm], [-253.62.mm,778.81.mm,130.mm], [-295.25.mm,766.02.mm,130.mm], [-337.97.mm,757.52.mm,130.mm], [-381.33.mm,753.41.mm,130.mm], [-424.89.mm,753.72.mm,130.mm], [-468.18.mm,758.47.mm,130.mm], [-510.77.mm,767.58.mm,130.mm], [-552.22.mm,780.98.mm,130.mm], [-592.09.mm,798.53.mm,130.mm], [-629.96.mm,820.03.mm,130.mm], [-665.46.mm,845.27.mm,130.mm], [-698.21.mm,873.99.mm,130.mm], [-727.87.mm,905.89.mm,130.mm]])
   face.reverse! if face.normal.z < 0
   face.pushpull(2120.mm)
-  mat = model.materials["LT Drum C-shell"] || model.materials.add("LT Drum C-shell")
+  mat = model.materials["LT Housing arc (near Yd)"] || model.materials.add("LT Housing arc (near Yd)")
   mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 0.85
+  mat.alpha = 0.5
   grp.material = mat
 
   # LT Drum top cap
@@ -8116,7 +8140,7 @@ end
   face.pushpull(2170.mm)
   mat = model.materials["Bay wall near (Yd)"] || model.materials.add("Bay wall near (Yd)")
   mat.color = Sketchup::Color.new(110, 140, 160)
-  mat.alpha = 1.0
+  mat.alpha = 0.5
   grp.material = mat
 
   # Bay wall far (Yd)
@@ -8127,7 +8151,7 @@ end
   face.pushpull(2170.mm)
   mat = model.materials["Bay wall near (Yd)"] || model.materials.add("Bay wall near (Yd)")
   mat.color = Sketchup::Color.new(110, 140, 160)
-  mat.alpha = 1.0
+  mat.alpha = 0.5
   grp.material = mat
 
   # Bay wall top
@@ -8138,7 +8162,7 @@ end
   face.pushpull(6.mm)
   mat = model.materials["Bay wall near (Yd)"] || model.materials.add("Bay wall near (Yd)")
   mat.color = Sketchup::Color.new(110, 140, 160)
-  mat.alpha = 1.0
+  mat.alpha = 0.5
   grp.material = mat
 
   # Bay wall bottom
@@ -8149,7 +8173,7 @@ end
   face.pushpull(6.mm)
   mat = model.materials["Bay wall near (Yd)"] || model.materials.add("Bay wall near (Yd)")
   mat.color = Sketchup::Color.new(110, 140, 160)
-  mat.alpha = 1.0
+  mat.alpha = 0.5
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
@@ -16676,9 +16700,9 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Conduit to Equipment Panel (Cct C)
+  # Conduit to Plumbing Panel (Cct C)
   grp = ents.add_group
-  grp.name = "Conduit to Equipment Panel (Cct C)"
+  grp.name = "Conduit to Plumbing Panel (Cct C)"
   ge = grp.entities
   circle = ge.add_circle([4874.mm,40.mm,2350.mm], [0,1,0], 7.mm, 24)
   cface = ge.add_face(circle)
@@ -23206,7 +23230,7 @@ if inst
   txt = entities.add_text("PROCESSING TRAY", anc, Geom::Vector3d.new(-250.mm, 0.mm, 650.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
-inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Equipment Panel" }
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Plumbing Panel" }
 if inst
   bb = inst.bounds
   cx = bb.center.x; cy = bb.center.y; mz = bb.max.z
@@ -23220,7 +23244,7 @@ if inst
   if hit && hit[1] && hit[1].include?(inst) && (mz - hit[0].z) > 400.mm
     anc = hit[0]
   end
-  txt = entities.add_text("EQUIPMENT PANEL
+  txt = entities.add_text("PLUMBING PANEL
 pump / filter", anc, Geom::Vector3d.new(500.mm, 0.mm, 820.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
@@ -23361,7 +23385,7 @@ model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Combined Plate", "Pivot Axle", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans", "Water Plumbing", "Solar Array", "Labels"]
+keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Combined Plate", "Pivot Axle", "Spray Bar", "Plumbing Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans", "Water Plumbing", "Solar Array", "Labels"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -23389,7 +23413,7 @@ olp = model.pages.add("Labeled"); olp.use_camera = true
 model.layers["Labels"].visible = false if model.layers["Labels"]
 
 # Grouped scenes — translucent Shell (context) + the group's subsystems.
-[["Film Plane & Pinhole", ["Pinhole", "Optical Cone", "Film Plane", "Combined Plate"]], ["Water Systems", ["Processing Tray", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Shelf", "Water Hookups", "Water Plumbing"]], ["Electrical Systems", ["Electrical", "Lighting", "Solar Array"]], ["Hinge Panel & Drum", ["Light Trap", "Light Seal", "Pivot Axle"]], ["Ventilation", ["Evap Cooler", "Fans"]], ["Walkways", ["Walkways", "Combined Plate"]]].each { |name, tags|
+[["Film Plane & Pinhole", ["Pinhole", "Optical Cone", "Film Plane", "Combined Plate"]], ["Water Systems", ["Processing Tray", "Spray Bar", "Plumbing Panel", "IBC Stack", "IBC Rack", "Shelf", "Water Hookups", "Water Plumbing"]], ["Electrical Systems", ["Electrical", "Lighting", "Solar Array"]], ["Hinge Panel & Drum", ["Light Trap", "Light Seal", "Pivot Axle"]], ["Ventilation", ["Evap Cooler", "Fans"]], ["Walkways", ["Walkways", "Combined Plate"]]].each { |name, tags|
   model.layers.each { |l| l.visible = (l == default_layer || l.name == "Shell" || tags.include?(l.name)) }
   page = model.pages.add(name)
   page.use_camera = true

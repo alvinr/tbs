@@ -851,16 +851,16 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.name = "IBC Frame"
   inst.layer = model.layers["IBC Frame"]
 
-  # ═══ Equipment Panel ═══
-  defn = model.definitions.add("Equipment Panel")
+  # ═══ Plumbing Panel ═══
+  defn = model.definitions.add("Plumbing Panel")
   ents = defn.entities
-  # Equipment Panel (ply)
+  # Plumbing Panel (ply)
   grp = ents.add_group
-  grp.name = "Equipment Panel (ply)"
+  grp.name = "Plumbing Panel (ply)"
   face = grp.entities.add_face([4874.mm,1046.mm,250.mm], [4892.mm,1046.mm,250.mm], [4892.mm,1316.mm,250.mm], [4874.mm,1316.mm,250.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2060.mm)
-  mat = model.materials["Equipment Panel (ply)"] || model.materials.add("Equipment Panel (ply)")
+  mat = model.materials["Plumbing Panel (ply)"] || model.materials.add("Plumbing Panel (ply)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
   grp.material = mat
@@ -972,13 +972,37 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # SV-01 pH sample tap
+  grp = ents.add_group
+  grp.name = "SV-01 pH sample tap"
+  face = grp.entities.add_face([4802.mm,1279.mm,1330.mm], [4836.mm,1279.mm,1330.mm], [4836.mm,1311.mm,1330.mm], [4802.mm,1311.mm,1330.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(34.mm)
+  mat = model.materials["SV-01 pH sample tap"] || model.materials.add("SV-01 pH sample tap")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 spout
+  grp = ents.add_group
+  grp.name = "SV-01 spout"
+  ge = grp.entities
+  circle = ge.add_circle([4819.mm,1295.mm,1290.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(40.mm)
+  mat = model.materials["SV-01 pH sample tap"] || model.materials.add("SV-01 pH sample tap")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Drain-riser spine (ply)
   grp = ents.add_group
   grp.name = "Drain-riser spine (ply)"
   face = grp.entities.add_face([4874.mm,1223.mm,250.mm], [5420.mm,1223.mm,250.mm], [5420.mm,1241.mm,250.mm], [4874.mm,1241.mm,250.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2060.mm)
-  mat = model.materials["Equipment Panel (ply)"] || model.materials.add("Equipment Panel (ply)")
+  mat = model.materials["Plumbing Panel (ply)"] || model.materials.add("Plumbing Panel (ply)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
   grp.material = mat
@@ -989,7 +1013,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([5402.mm,1226.mm,250.mm], [5420.mm,1226.mm,250.mm], [5420.mm,1280.mm,250.mm], [5402.mm,1280.mm,250.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2060.mm)
-  mat = model.materials["Equipment Panel (ply)"] || model.materials.add("Equipment Panel (ply)")
+  mat = model.materials["Plumbing Panel (ply)"] || model.materials.add("Plumbing Panel (ply)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
   grp.material = mat
@@ -1072,7 +1096,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
-  inst.name = "Equipment Panel"
+  inst.name = "Plumbing Panel"
   inst.layer = model.layers["Plumbing & Panel"]
 
   # ═══ Water Plumbing ═══
@@ -2064,7 +2088,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["3W-DV-02 Diverter"] || model.materials.add("3W-DV-02 Diverter")
+  mat = model.materials["SV-01 pH sample tap"] || model.materials.add("SV-01 pH sample tap")
   mat.color = Sketchup::Color.new(184, 184, 64)
   mat.alpha = 1.0
   grp.material = mat
@@ -2078,7 +2102,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["3W-DV-02 Diverter"] || model.materials.add("3W-DV-02 Diverter")
+  mat = model.materials["SV-01 pH sample tap"] || model.materials.add("SV-01 pH sample tap")
   mat.color = Sketchup::Color.new(184, 184, 64)
   mat.alpha = 1.0
   grp.material = mat
@@ -2201,7 +2225,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["3W-DV-02 Diverter"] || model.materials.add("3W-DV-02 Diverter")
+  mat = model.materials["SV-01 pH sample tap"] || model.materials.add("SV-01 pH sample tap")
   mat.color = Sketchup::Color.new(184, 184, 64)
   mat.alpha = 1.0
   grp.material = mat
@@ -2215,7 +2239,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["3W-DV-02 Diverter"] || model.materials.add("3W-DV-02 Diverter")
+  mat = model.materials["SV-01 pH sample tap"] || model.materials.add("SV-01 pH sample tap")
   mat.color = Sketchup::Color.new(184, 184, 64)
   mat.alpha = 1.0
   grp.material = mat

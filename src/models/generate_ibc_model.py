@@ -2,13 +2,13 @@
 """Generate the TBS-001 IBC Stack SketchUp model (logical model: ibc-stack).
 
 Focused on the IBC tote stack, its steel support frame, and the plumbing +
-equipment panel. REUSES the helpers and component builders from the Overview
+plumbing panel. REUSES the helpers and component builders from the Overview
 generator (generate_sketchup_model.py) — same component/tag/scene structure,
 shared iso camera, and material-sharing-by-color. Subsystem tags grouped into scenes:
     1. IBC Tanks            (the four totes)
     2. IBC Frame            (the steel stacking frame/rack + the 2 right-walkway
                              cantilever arms that attach to the corridor uprights, rev12)
-    3. Plumbing & Panel     (equipment panel + pumps/filters + water plumbing + hookups)
+    3. Plumbing & Panel     (plumbing panel + pumps/filters + water plumbing + hookups)
     4. Combined             (all subsystems)
 
 Usage (build into a SketchUp document — see --send note):
@@ -129,7 +129,7 @@ def generate_ruby():
         ov.component("Container (ghost)", "Context", context()),
         ov.component("IBC Tanks", "IBC Tanks", ov.ibc_stack(alpha=0.25)),
         ov.component("IBC Frame", "IBC Frame", ov.ibc_rack()),
-        ov.component("Equipment Panel", "Plumbing & Panel", ov.equipment_panel()),
+        ov.component("Plumbing Panel", "Plumbing & Panel", ov.equipment_panel()),
         ov.component("Water Plumbing", "Plumbing & Panel", ov.water_plumbing() + "\n" + spray_wall_trunk()),
         ov.component("Water/Waste Hookups", "Plumbing & Panel", ov.water_hookups()),
         ov.component("Walkway Cantilever Arms", "Walkway Cantilever",

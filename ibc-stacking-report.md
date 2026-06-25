@@ -43,7 +43,7 @@ panel.
 | Pallet base height | 168mm (includes feet/runners) |
 | Cage upright tube | Ø25mm |
 | Cage top rail | 25mm OD |
-| Drain valve | DN50 butterfly valve, S60×6 thread, at Z=185mm above IBC base |
+| Drain valve | DN50 butterfly valve, S60×6 thread |
 | Fill | **side entry near the top** (no top-cap access — only <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom stacked) |
 | Tare weight | ~65 kg per tote |
 | Full weight (1,000 L) | ~1,065 kg per tote |
@@ -83,9 +83,7 @@ the frame is **restraint-only**: it carries no vertical service load, it only ke
 totes from moving during transport.
 
 The frame is a **single front portal** at the IBC front: two full-height 50×50×3 RHS
-uprights at the corridor edges on floor flange feet. The deep mid/back
-corridor stations, platform cross-beams, X-bracing and wall seat brackets of the
-earlier load-bearing rack are **dropped**. Transport restraint is provided by:
+uprights at the corridor edges on floor flange feet. Transport restraint is provided by:
 
 - **front retaining bars** across each column at the IBC front that stop
   the totes sliding out the open front, their wall ends dropped into Simpson-style joist

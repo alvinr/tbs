@@ -204,7 +204,7 @@ Two ceiling-mounted pull-cord switches are installed on the pinhole wall side of
 |-----------|--------------|
 | Type | 12V DC SPST pull-cord ceiling switch, 6A rated |
 | Quantity | 2 |
-| Position | Pinhole wall face, X ≈ 1,750mm (near electrical panel), ceiling height |
+| Position | Pinhole wall face, ceiling height |
 | Switch 1 | Circuit D — safelight (red). Cord labeled "RED" |
 | Switch 2 | Circuit G — white light. Cord labeled "WHITE" |
 | Wire | Inline on respective circuit, between fuse block and load |

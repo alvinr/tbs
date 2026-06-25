@@ -2710,7 +2710,7 @@
 <!-- © 2026 Alvin Richards -->
 <h1 id="depth-of-field-magnification-minimum-focal-distance">Depth of Field, Magnification &amp; Minimum Focal Distance<a class="headerlink" href="#depth-of-field-magnification-minimum-focal-distance" title="Permanent link">&para;</a></h1>
 <h3 id="20-foot-standard-container-side-to-side-orientation">20-foot Standard Container, Side-to-Side Orientation<a class="headerlink" href="#20-foot-standard-container-side-to-side-orientation" title="Permanent link">&para;</a></h3>
-<p><strong>Preceding documents:</strong> pinhole-optics-report.md, pinhole-camera-construction.md<br />
+<p><strong>Preceding documents:</strong> <a href="../pinhole-optics-report/">Optics: Technical Reference</a>, <a href="../pinhole-camera-construction/">Container Selection &amp; Construction Proposals</a><br />
 <strong>Date:</strong> April 2026</p>
 <hr />
 <h2 id="camera-parameters-option-b">Camera Parameters (Option B)<a class="headerlink" href="#camera-parameters-option-b" title="Permanent link">&para;</a></h2>
@@ -2731,22 +2731,22 @@
 </tr>
 <tr>
 <td>Rayleigh optimal pinhole (d)</td>
-<td><strong>2.17mm</strong></td>
+<td><strong><!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm</strong></td>
 <td>d = 1.9 × √(f × 0.00055); Rayleigh, <em>Phil. Mag.</em> 1891</td>
 </tr>
 <tr>
 <td>F-number (N)</td>
-<td><strong>f/1088</strong></td>
+<td><strong>f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --></strong></td>
 <td>N = f/d</td>
 </tr>
 <tr>
 <td>Image plane width</td>
-<td>5,893mm (19 ft 4 in)</td>
+<td><!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm -->mm (19 ft 4 in)</td>
 <td>Container interior length</td>
 </tr>
 <tr>
 <td>Image plane height</td>
-<td>2,388mm (7 ft 10 in)</td>
+<td><!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm (7 ft 10 in)</td>
 <td>Container interior height</td>
 </tr>
 <tr>
@@ -3063,7 +3063,7 @@
 </tbody>
 </table>
 <h3 id="what-magnification-means-for-subject-framing">What Magnification Means for Subject Framing<a class="headerlink" href="#what-magnification-means-for-subject-framing" title="Permanent link">&para;</a></h3>
-<p>The image plane is 5,893mm wide × 2,388mm tall. For a given subject distance, the portion of the real world captured within that frame is:</p>
+<p>The image plane is <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm -->mm wide × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm tall. For a given subject distance, the portion of the real world captured within that frame is:</p>
 <div class="highlight"><pre><span></span><code>Scene width captured = image width / M = image width × (u / f)
 Scene height captured = image height × (u / f)
 </code></pre></div>
@@ -3239,12 +3239,12 @@ u ≥ 1780mm ≈ 1.78 m (5.8 ft)
 <tbody>
 <tr>
 <td>Pinhole diameter</td>
-<td>2.17mm</td>
+<td><!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm</td>
 <td>4.87mm</td>
 </tr>
 <tr>
 <td>F-number</td>
-<td>f/1088</td>
+<td>f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --></td>
 <td>f/2467</td>
 </tr>
 <tr>
@@ -3265,12 +3265,12 @@ u ≥ 1780mm ≈ 1.78 m (5.8 ft)
 <tr>
 <td>Near DoF (c=10mm)</td>
 <td><strong>0.65 m</strong></td>
-<td><strong>12.4 m</strong></td>
+<td><strong>11.4 m</strong></td>
 </tr>
 <tr>
 <td>Near DoF (c=6mm)</td>
-<td><strong>1.5 m</strong></td>
-<td><strong>25.8 m</strong></td>
+<td><strong>1.3 m</strong></td>
+<td><strong>51.8 m</strong></td>
 </tr>
 <tr>
 <td>Practical "all sharp" distance</td>
@@ -3318,11 +3318,11 @@ Distance from pinhole:
 </thead>
 <tbody>
 <tr>
-<td>Rayleigh, J.W.S., <em>Philosophical Magazine</em> Ser. 5, Vol. 31, 1891</td>
+<td>Rayleigh, J.W.S., <em>Philosophical Magazine</em> Ser. 5, Vol. 31, 1891. <a href="https://www.tandfonline.com/loi/tphm18">Taylor &amp; Francis</a></td>
 <td>Pinhole diameter formula; basis for d = 2.17mm</td>
 </tr>
 <tr>
-<td>Born, M. &amp; Wolf, E., <em>Principles of Optics</em>, 7th ed., Cambridge UP, 1999, §8.6</td>
+<td>Born, M. &amp; Wolf, E., <em>Principles of Optics</em>, 7th ed., Cambridge UP, 1999, §8.6. <a href="https://openlibrary.org/search?q=Born+Wolf+Principles+of+Optics">Library catalog</a></td>
 <td>Geometric derivation of blur circle from similar triangles</td>
 </tr>
 <tr>
@@ -3338,7 +3338,7 @@ Distance from pinhole:
 <td>Practical CoC discussion; minimum focus distance concepts</td>
 </tr>
 <tr>
-<td>ISO 668:2020</td>
+<td><a href="https://chs-containergroup.com/us/shipping-container-dimensions/">ISO 668:2020</a></td>
 <td>Container interior dimensions (source of f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm)</td>
 </tr>
 </tbody>

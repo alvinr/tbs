@@ -376,7 +376,7 @@ required for a normal 1–2 print outing.
 - [ ] TU.1 — Watch the **Blue low-level float (IBC-2)** alert. Plan a top-up *before* it runs dry mid-wash, not after.
 - [ ] TU.2 — **Resupply Blue:** connect the water bowser/tanker hose to the external **X1** camlock inlet on the sealed end wall. Open isolation valve **V1**; X1 gravity-feeds and tees to both Blue totes in parallel (side-entry near the top). Confirm the level, then close V1 and disconnect.
 - [ ] TU.3 — **Discharge Brown/Waste** when they near their working levels: connect a disposal tanker or holding tank to the **X3** (Brown) and/or **X4** (Waste) camlock ports, then run **P-05** (X3) / **P-03** (X4) to pump out. Close and re-cap the ports when done.
-- [ ] TU.4 — With supply restored and collection capacity freed, resume the print cycle from [Phase 2](#phase-2--loading-the-image-plane). Print count per deployment is now set by water logistics (bowser visits, disposal access), not tote volume.
+- [ ] TU.4 — With supply restored and collection capacity freed, resume the print cycle from [Phase 2](#phase-2-loading-the-image-plane). Print count per deployment is now set by water logistics (bowser visits, disposal access), not tote volume.
 
 > **Before transport:** return the totes to their validated fill states — Blue drained, Waste within
 > its return-haul limit — per [§5.5](#55-transport-mode-conversion-packing-up). On-site top-up does

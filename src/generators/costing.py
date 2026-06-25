@@ -712,8 +712,8 @@ def _inline_blocks() -> dict:
         "summary-50run":       ("project-summary.md", lambda: f"${_r(by_key('standard')['section_total'], 10):,}"),
         # project-cost-breakdown §7.3 process comparison — Cyanotype ALL-IN row (§7.1 per-print +
         # PER_PRINT_CONSUMABLES), so it stays tied to §7.1 instead of drifting.
-        "s73-pp-std":          (_F, lambda: f"${_pp('standard')}"),
-        "s73-pp-range":        (_F, lambda: f"${_pp('lean')}–{_pp('rich')}"),
+        "s73-pp-std":          ([_F, "photosensitive-plane-options.md"], lambda: f"${_pp('standard')}"),
+        "s73-pp-range":        ([_F, "photosensitive-plane-options.md"], lambda: f"${_pp('lean')}–{_pp('rich')}"),
         "s73-50run-std":       (_F, lambda: f"${_pp('standard') * PRINTS:,}"),
         "s73-50run-range":     (_F, lambda: f"${_pp('lean') * PRINTS:,}–{_pp('rich') * PRINTS:,}"),
         # cost-analysis-report.md prose figures.

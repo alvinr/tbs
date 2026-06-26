@@ -10,7 +10,9 @@ LOW, keeping the torso band clear.  Includes the (widened) near-walkway deck and
     python3 src/models/massing_pinhole_wall.py --send   # build in the live SketchUp doc
 """
 import sys, os, argparse
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_ROOT = os.path.dirname(os.path.dirname(_HERE))   # repo root (src/models -> src -> root)
+sys.path.insert(0, _HERE)
 import generate_sketchup_model as ov
 
 # ── band + wall ──────────────────────────────────────────────────────────────
@@ -97,13 +99,18 @@ model.commit_operation
 '''
 
 
+SKP_PATH = os.path.abspath(os.path.join(_ROOT, "models", "pinhole-wall.skp"))
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--send", action="store_true")
+    ap.add_argument("--send", action="store_true", help="build into the ACTIVE SketchUp doc (open a blank doc first!)")
+    ap.add_argument("--save", action="store_true", help="after building, save the active doc as models/pinhole-wall.skp")
     a = ap.parse_args()
     ruby = build()
     if a.send:
         from sketchup_client import send_ruby
         print(send_ruby(ruby))
+        if a.save:
+            print(send_ruby(f'Sketchup.active_model.save({SKP_PATH!r}) ? "saved {SKP_PATH}" : "FAIL"'))
     else:
         print(ruby[:400])

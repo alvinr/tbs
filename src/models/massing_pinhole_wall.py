@@ -113,37 +113,78 @@ def other_equipment():
 
 
 def kit():
-    """Pinhole-wall SUB-SYSTEM (proposal): the tray-drain → filter loop ONLY, mounted HIGH
-    so the lower walkway stays clear (no widening needed).  Flow: tray sump → P-04 →
-    SV-01 (sample) → DV-02 → either the 3 filters (recycle) OR the grey/waste IBC.  The
-    other four pumps + ACC return to the plumbing corridor."""
+    """Pinhole-wall SUB-SYSTEM (detailed): the tray-drain → filter loop, mounted HIGH so the
+    lower walkway stays clear.  Flow: tray sump → P-04 → SV-01 (sample) → DV-02 → either the
+    3 filters (recycle) OR the grey/waste IBC.  Plumbing is orthogonal, stubs perpendicular
+    into every port, and routes AROUND the bodies in a front lane (Yd=yL)."""
     p = []
     fr = ov.BB_OD / 2          # 92
-    BB_H = ov.BB_H             # 340
-    f_top = C_HGT - 48         # cap just under the ceiling
-    f_bot = f_top - BB_H       # ≈ 2000 — the high tier
-    rp = 12
-    pw, pd, ph = ov.PUMP_W, ov.PUMP_YD_SPAN, 218
-    # P-04 — next to the filters, SAME level (fed by the tray sump)
+    BB_H, cap_h = ov.BB_H, 78
+    f_top = C_HGT - 48
+    f_bot = f_top - BB_H       # 2000 — the high tier
+    fcy = fr + 12              # 104 — filter center Yd (sump back near the wall)
+    cap_z = f_bot + BB_H - cap_h / 2   # 2301 — filter cap port centerline
+    rp = ov.PUMP_PIPE_OD / 2   # 10.5
+    yL = 230                   # front routing lane, clear of the bodies (Yd ≤ 196)
+    cdk = "#222228"
+
+    FX = {"F1": 3830, "F2": 3430, "F3": 3030}                      # F1 nearest DV-02
+    def f_in(nm):  return (FX[nm] - (fr + 30), fcy, cap_z - 40)    # IN  port (−X), bottom of the down-elbow
+    def f_out(nm): return (FX[nm] + (fr + 30), fcy, cap_z - 40)    # OUT port (+X)
+
+    # ── 3 Big Blue filters — sump + cap + in-line ±X 'T' ports (stub then elbow DOWN) ──
+    for nm, fx in FX.items():
+        p.append(ov.ruby_cylinder(f"Filter {nm} sump", fx, fcy, f_bot, fr, BB_H - cap_h, color=ov.C_FILTER))
+        p.append(ov.ruby_cylinder(f"Filter {nm} cap", fx, fcy, f_bot + BB_H - cap_h, fr + 3, cap_h, color=cdk))
+        for tag, sd in (("in", -1), ("out", +1)):
+            p.append(ov.ruby_pipe_run(f"Filter {nm} {tag} port",
+                [(fx + sd * (fr - 6), fcy, cap_z), (fx + sd * (fr + 30), fcy, cap_z),
+                 (fx + sd * (fr + 30), fcy, cap_z - 40)], rp, color=cdk))
+        p.append(ov.ruby_cylinder(f"Filter {nm} PR button", fx, fcy, f_bot + BB_H, 6, 9, color=ov.C_STEEL))
+
+    # ── P-04 — motor can + head, mounted on the wall, head facing +Yd; ports come DOWN ──
     p4x = 4400
-    p.append(ov.ruby_box("Pump P-04 (tray drain)", p4x - pw / 2, 12, f_bot, pw, pd, ph, color=ov.C_PUMP))
-    p.append(ov.ruby_box("Pump P-04 head", p4x - pw / 2, 12, f_bot + ph, pw, 68, 40, color="#3A3A42"))
-    # SV-01 sample tap + 3W-DV-02 diverter, same level
+    can_r, can_h, hh = 50, 178, 40
+    p.append(ov.ruby_cylinder("Pump P-04 body", p4x, 12 + can_r, f_bot, can_r, can_h, color=ov.C_PUMP))
+    p.append(ov.ruby_box("Pump P-04 head", p4x - 57, 12, f_bot + can_h, 114, 100, hh, color=cdk))
+    p4_pz = f_bot + 218 - 25                                       # 2193 port level
+    def p4_port(sd):  return (p4x + sd * 30, 142, p4_pz - 40)
+    for tag, sd in (("in", -1), ("out", +1)):
+        p.append(ov.ruby_pipe_run(f"Pump P-04 {tag} port",
+            [(p4x + sd * 30, 100, p4_pz), (p4x + sd * 30, 142, p4_pz), (p4x + sd * 30, 142, p4_pz - 40)],
+            rp, color=cdk))
+
+    # ── SV-01 sample tap (valve + downturned spout) + 3W-DV-02 diverter, on the feed line ──
     svx, dvx = 4230, 4060
-    p.append(ov.ruby_box("SV-01 (sample tap)", svx - 28, 30, f_bot + 70, 56, 56, 90, color=ov.C_VALVE))
-    p.append(ov.ruby_box("3W-DV-02 (divert)", dvx - 33, 30, f_bot + 60, 66, 66, 100, color=ov.C_VALVE))
-    # 3 filters — F1 nearest DV-02 (right), F3 left
-    for nm, fx in [("F1", 3830), ("F2", 3430), ("F3", 3030)]:
-        p.append(ov.ruby_cylinder(f"Filter {nm} (Ø184)", fx, fr + 10, f_bot, fr, BB_H - 70, color=ov.C_FILTER))
-        p.append(ov.ruby_cylinder(f"Filter {nm} cap", fx, fr + 10, f_top - 70, fr + 3, 70, color="#222228"))
-    # ── schematic flow (shows the topology; detailed routing later) ──
-    cz = f_bot + 120
-    p.append(ov.ruby_pipe_run("Sump -> P-04", [(ov.PROC_TRAY_DRAIN_X, 130, 40),
-             (ov.PROC_TRAY_DRAIN_X, 130, cz), (p4x, 130, cz)], rp, color=ov.C_IBC_WASTE))
-    p.append(ov.ruby_pipe_run("P-04 -> SV-01 -> DV-02 -> F1", [(p4x, 95, cz), (3830, 95, cz)], rp, color=ov.C_IBC_BROWN))
-    p.append(ov.ruby_pipe_run("F1 -> F2 -> F3", [(3830, fr + 50, cz), (3030, fr + 50, cz)], rp, color=ov.C_IBC_BROWN))
-    p.append(ov.ruby_pipe_run("DV-02 -> Grey IBC", [(dvx, 95, f_bot), (dvx, 95, 380),
-             (ov.IBC_COL_X + 60, 95, 380)], rp, color=ov.C_IBC_WASTE))
+    fz = p4_pz - 40                                                # 2153 — feed-line height (P-04 port out)
+    p.append(ov.ruby_box("SV-01 sample valve", svx - 25, yL - 25, fz - 25, 50, 50, 70, color=ov.C_VALVE))
+    p.append(ov.ruby_cylinder("SV-01 sample spout", svx, yL, fz - 25 - 80, 6, 80, color=ov.C_VALVE))
+    p.append(ov.ruby_box("3W-DV-02 diverter", dvx - 32, yL - 32, fz - 30, 64, 64, 80, color=ov.C_VALVE))
+    p.append(ov.ruby_cylinder("DV-02 handle", dvx, yL, fz + 50, 6, 55, color=ov.C_STEEL))
+
+    # ── PLUMBING (orthogonal; perpendicular port stubs; around the bodies on lane yL) ──
+    def pipe(nm, wp, col): p.append(ov.ruby_pipe_run(nm, wp, rp, color=col))
+    # 1. tray sump → P-04 inlet (riser up the wall, around the body into the +Yd inlet)
+    sx, sy = ov.PROC_TRAY_DRAIN_X, ov.PROC_TRAY_DRAIN_YD
+    pipe("Tray sump -> P-04 inlet",
+         [(sx, sy, ov.PROC_TRAY_SUMP_Z), (sx, sy, fz), (sx, yL, fz),
+          (p4_port(-1)[0], yL, fz), p4_port(-1)], ov.C_IBC_WASTE)
+    # 2. P-04 outlet → SV-01 → DV-02 (feed line on lane yL)
+    pipe("P-04 -> SV-01", [p4_port(1), (p4_port(1)[0], yL, fz), (svx, yL, fz)], ov.C_IBC_BROWN)
+    pipe("SV-01 -> DV-02", [(svx, yL, fz), (dvx, yL, fz)], ov.C_IBC_BROWN)
+    # 3. DV-02 → F1 inlet (recycle leg), up to the filter port height then around to F1
+    pipe("DV-02 -> F1 (recycle)",
+         [(dvx, yL, fz), (dvx, yL, cap_z - 40), (f_in("F1")[0], yL, cap_z - 40), f_in("F1")], ov.C_IBC_BROWN)
+    # 4. filter jumpers F1→F2→F3 (around the bodies)
+    for a, b in (("F1", "F2"), ("F2", "F3")):
+        pipe(f"{a} out -> {b} in",
+             [f_out(a), (f_out(a)[0], yL, cap_z - 40), (f_in(b)[0], yL, cap_z - 40), f_in(b)], ov.C_IBC_BROWN)
+    # 5. F3 outlet → recycle to the Blue IBC (leaves the wall toward the stack)
+    pipe("F3 -> recycle (Blue IBC)",
+         [f_out("F3"), (f_out("F3")[0], yL + 40, cap_z - 40), (ov.IBC_COL_X + 80, yL + 40, cap_z - 40)], ov.C_FILTER)
+    # 6. DV-02 → grey/waste IBC (the divert-to-waste leg, leaves the wall)
+    pipe("DV-02 -> Grey IBC (waste)",
+         [(dvx, yL, fz), (dvx, yL + 60, fz), (ov.IBC_COL_X + 80, yL + 60, fz)], ov.C_IBC_WASTE)
     return "\n".join(p)
 
 

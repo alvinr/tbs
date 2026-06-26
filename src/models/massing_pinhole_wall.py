@@ -217,24 +217,27 @@ def kit():
     pipe("F3 -> SV-01 (drop to waist)",
          [f_out("F3"), (f_out("F3")[0], yL, tie), (svx, yL, tie), (svx, yL, waist)], ov.C_FILTER)
     pipe("SV-01 -> DV-01", [(svx, yL, waist), (dvx, yL, waist)], ov.C_FILTER)
-    # 5. DV-01 → Blue IBC (run +X) + Brown IBC (off the UNDERSIDE branch).  Each enters its
-    #    tank near the TOP via the side-entry convention: flange (outside) + 150mm pipe in +
-    #    90° elbow + 150mm drop into the tank.
+    # 5. DV-01 → Blue IBC (IBC-2, run +X) + Waste IBC (IBC-4, off the UNDERSIDE branch).  Each
+    #    enters near the TOP via the convention: the 90° entry turn is ENTRY_OFF mm BEFORE the
+    #    flange (perpendicular approach stub), then flange (outside) + 150mm in + elbow + 150mm
+    #    drop, with a check valve on the approach (anti-siphon).
     xf = ov.IBC_COL_X                            # tote front face (X4674)
-    def tank_entry(nm, y, z, col):               # check valve + flange + 150 in + elbow + 150 drop
-        # check valve on the approach riser — prevents siphon/back-drain out of the IBC
-        p.append(ov.ruby_box(nm + " check valve", xf - 22, y - 20, z - 130, 44, 40, 55, color=ov.C_VALVE))
-        p.append(ov.ruby_pipe_run(nm + " entry", [(xf, y, z), (xf + 150, y, z), (xf + 150, y, z - 150)], rp, color=col))
+    ENTRY_OFF = 120                              # the entry turn is >=75mm before the flange
+    def tank_entry(nm, y, z, col):
+        p.append(ov.ruby_pipe_run(nm + " entry",
+            [(xf - ENTRY_OFF, y, z), (xf + 150, y, z), (xf + 150, y, z - 150)], rp, color=col))
         p.append(ov.ruby_cylinder(nm + " flange", xf - 8, y, z, 36, 16, color=ov.C_STEEL, axis="x"))
+        p.append(ov.ruby_box(nm + " check valve", xf - ENTRY_OFF + 18, y - 20, z - 18, 40, 40, 36, color=ov.C_VALVE))
     # Blue leg → Blue IBC (top tote), near top
     bz = 2 * ov.IBC_H_1000 - 180                 # ~2156 — Blue tote near-top entry
-    pipe("DV-01 -> Blue IBC (IBC-2)", [(dvx, yL, waist), (xf, yL, waist), (xf, yL, bz)], ov.C_BLUE)
+    pipe("DV-01 -> Blue IBC (IBC-2)",
+         [(dvx, yL, waist), (xf - ENTRY_OFF, yL, waist), (xf - ENTRY_OFF, yL, bz)], ov.C_BLUE)
     tank_entry("Blue IBC (IBC-2)", yL, bz, ov.C_BLUE)
-    # Brown leg (off the underside branch) → Brown IBC (bottom tote), near top
-    rz = ov.IBC_H_1000 - 80                      # ~1088 — Brown tote near-top entry
-    pipe("DV-01 -> Brown IBC (IBC-3)",
-         [(dvx, yL, waist), (dvx, yL, 850), (dvx, yL + 45, 850), (xf, yL + 45, 850), (xf, yL + 45, rz)], ov.C_IBC_BROWN)
-    tank_entry("Brown IBC (IBC-3)", yL + 45, rz, ov.C_IBC_BROWN)
+    # Waste leg (off the underside branch) → Waste IBC (IBC-4, far-bottom tote), near top
+    wy, wz = 1500, ov.IBC_H_1000 - 80            # far-column Yd / ~1088 near-top entry
+    pipe("DV-01 -> Waste IBC (IBC-4)",
+         [(dvx, yL, waist), (dvx, yL, 850), (dvx, wy, 850), (xf - ENTRY_OFF, wy, 850), (xf - ENTRY_OFF, wy, wz)], ov.C_IBC_WASTE)
+    tank_entry("Waste IBC (IBC-4)", wy, wz, ov.C_IBC_WASTE)
     return "\n".join(p)
 
 

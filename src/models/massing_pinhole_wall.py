@@ -16,7 +16,8 @@ sys.path.insert(0, _HERE)
 import generate_sketchup_model as ov
 
 # ── band + wall ──────────────────────────────────────────────────────────────
-X0, X1 = 2700, 4674            # clear mounting band on the pinhole wall (Yd0)
+X0, X1 = 2700, 4674            # wet-end clear mounting band on the pinhole wall (Yd0)
+WALL_X0, WALL_X1 = 0, ov.C_LEN # 0..5893 — the FULL pinhole wall (context spans the whole length)
 C_HGT, C_WID = ov.C_HGT, ov.C_WID
 DECK_Z = ov.WALKWAY_H          # 130
 DECK_W = ov.WALKWAY_W          # 300 — standard near walkway (evaluate whether it fits)
@@ -29,7 +30,7 @@ C_DECK   = "#9C7B4D"
 def context():
     """Limited-depth context: the pinhole wall + a floor/ceiling slice only as deep as
     300mm past the walkway (Yd0..VIEW_DEPTH).  No deep-container geometry."""
-    bx, bw = X0 - 50, (X1 - X0) + 100
+    bx, bw = WALL_X0, WALL_X1 - WALL_X0          # the FULL pinhole wall length
     p = []
     p.append(ov.ruby_box("Pinhole wall", bx, -ov.WALL_T, 0, bw, ov.WALL_T, C_HGT,
                          color=ov.C_SHELL, alpha=0.30))
@@ -44,8 +45,23 @@ def context():
 
 
 def deck():
-    return ov.ruby_box("Near walkway deck (widened 550)", X0 - 50, 0, DECK_Z - 15,
-                       (X1 - X0) + 100, DECK_W, 15, color=C_DECK, alpha=0.9)
+    return ov.ruby_box("Near walkway deck", WALL_X0, 0, DECK_Z - 15,
+                       WALL_X1 - WALL_X0, DECK_W, 15, color=C_DECK, alpha=0.9)
+
+
+# Other equipment ALREADY mounted on the pinhole wall (Yd0) — the wet-end layout has to
+# coexist with these.  electrical() = panel + inverter + batteries.
+OTHER_WALL_EQUIP = [("Electrical (panel/inverter/batteries)", "electrical")]
+
+
+def other_equipment():
+    p = []
+    for _label, fn in OTHER_WALL_EQUIP:
+        try:
+            p.append(getattr(ov, fn)())
+        except Exception as e:
+            print(f"  (skip {fn}: {e})", file=sys.stderr)
+    return "\n".join(p)
 
 
 def kit():
@@ -60,15 +76,17 @@ def kit():
                                   color=ov.C_FILTER))
         p.append(ov.ruby_cylinder(f"Filter F{i+1} cap", fx, fr + 10, f_top - 70, fr + 3, 70,
                                   color="#222228"))
-    # ── PUMPS — shallow, at SHOULDER height (Z~1330-1550) so legs/feet are clear (no kicking)
+    # ── PUMPS — shallow tier LOW, between ANKLE & KNEE (Z~160-380): heavy water-filled
+    # bodies stay low (CG + drip), projection sits below the torso, you step past at
+    # lower-leg level.
     pw, pd, ph = ov.PUMP_W, ov.PUMP_YD_SPAN, 218     # 114 x 127 x 218
-    pz = 1330                                         # body bottom ≈ shoulder
+    pz = 160                                          # body bottom ≈ ankle
     for i, cx in enumerate((2860, 3180, 3500, 3820, 4140)):
         p.append(ov.ruby_box(f"Pump P-0{i+1}", cx - pw / 2, 12, pz, pw, pd, ph, color=ov.C_PUMP))
         p.append(ov.ruby_box(f"Pump P-0{i+1} head", cx - pw / 2, 12, pz + ph, pw, 68, 40,
                              color="#3A3A42"))
-    # ── ACC — shallowest, shoulder height too, at the IBC end of the row
-    p.append(ov.ruby_cylinder("ACC-01 (Ø127)", 4430, 127 / 2 + 12, 1350, 127 / 2, 200, color=ov.C_ACC))
+    # ── ACC — shallowest, low with the pumps (ankle-knee)
+    p.append(ov.ruby_cylinder("ACC-01 (Ø127)", 4430, 127 / 2 + 12, 160, 127 / 2, 200, color=ov.C_ACC))
     return "\n".join(p)
 
 
@@ -88,13 +106,16 @@ def person():
 
 
 def build():
-    # Focused, limited-depth view: ONLY the pinhole-wall-mounted wet end + a shallow
-    # context slice (wall + floor/ceiling out to 300mm past the walkway) + scale figure.
+    # Limited-depth view of the FULL pinhole wall: the wet-end kit + the OTHER wall-mounted
+    # equipment (own layer/scene) + a shallow context slice (wall + floor/ceiling out to
+    # 300mm past the walkway) + scale figure.  Two scenes: wet end / other equipment.
     comps, tags = [], set()
     for name, tag, b in [("Context (limited depth)", "Context", context()),
                          ("Near walkway deck", "Deck", deck()),
+                         ("Pinhole Assembly", "Pinhole", ov.pinhole_assembly()),
                          ("Wet-end kit (raked)", "Kit", kit()),
-                         ("Person (scale)", "Scale", person())]:
+                         ("Person (scale)", "Scale", person()),
+                         ("Other pinhole-wall equipment", "Pinhole Equipment", other_equipment())]:
         comps.append(ov.component(name, tag, b)); tags.add(tag)
     body = "\n".join(comps)
     tags_ruby = "".join(f'  model.layers.add({t!r}) unless model.layers[{t!r}]\n' for t in sorted(tags))
@@ -107,7 +128,15 @@ model.definitions.purge_unused
 model.pages.to_a.each {{ |pg| model.pages.erase(pg) }}
 opts = model.options["UnitsOptions"]; opts["LengthUnit"]=2; opts["LengthFormat"]=0
 {tags_ruby}{body}
-pg = model.pages.add("Pinhole-wall layout")
+v = model.active_view
+v.camera = Sketchup::Camera.new(Geom::Point3d.new(800.mm, 6000.mm, 2300.mm), Geom::Point3d.new(2950.mm, 200.mm, 1100.mm), Geom::Vector3d.new(0,0,1), false, 52)
+def scene(model, name, on)
+  model.layers.each {{ |l| l.visible = (l.name == "Layer0" || l == model.layers[0] || on.include?(l.name)) }}
+  pg = model.pages.add(name); pg.use_hidden_layers = true rescue nil; pg
+end
+scene(model, "Pinhole-wall wet end", ["Context","Deck","Pinhole","Kit","Scale"])
+scene(model, "Other pinhole-wall equipment", ["Context","Deck","Pinhole","Pinhole Equipment"])
+model.layers.each {{ |l| l.visible = true }}
 model.commit_operation
 {{ ok: true }}.to_json
 '''

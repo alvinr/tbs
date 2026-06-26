@@ -46,8 +46,8 @@ def context():
 
 def walkway_full():
     """Real walkway geometry so the cantilevers + brackets read: perimeter decks
-    (near with punch-out, stopping at the IBC; far; left; right), the wall gusset
-    brackets, and the IBC-end cantilever arms."""
+    (near with punch-out, stopping at the IBC; left; right — FAR deck erased post-build),
+    the wall gusset brackets, and the IBC-end cantilever arms."""
     p = []
     for fn in ("walkways", "walkway_brackets", "ibc_cantilever_arms", "right_walkway_cantilever"):
         try:
@@ -55,6 +55,20 @@ def walkway_full():
             p.append("\n".join(r) if isinstance(r, (list, tuple)) else r)
         except Exception as e:
             print(f"  (skip {fn}: {e})", file=sys.stderr)
+    return "\n".join(p)
+
+
+def film_plane_beams():
+    """The four corner SUPPORT BEAMS (40x40 rails) the film plane runs on — at the L/R
+    X stations and bottom/top Z, each spanning the full depth in Yd."""
+    rail = 40
+    z_bot = ov.RAIL_OFF_BOT
+    z_top = ov.C_HGT - ov.RAIL_OFF - rail
+    p = []
+    for nm, x in (("L", ov.RAIL_X_L), ("R", ov.RAIL_X_R - rail)):
+        for zl, rz in (("bot", z_bot), ("top", z_top)):
+            p.append(ov.ruby_box(f"FP support beam {nm}-{zl}", x, 0, rz, rail, C_WID, rail,
+                                 color=ov.C_STEEL))
     return "\n".join(p)
 
 
@@ -187,6 +201,7 @@ def build():
     comps, tags = [], set()
     for name, tag, b in [("Context", "Context", context()),
                          ("Walkways + cantilevers + brackets", "Walkway", walkway_full()),
+                         ("Film-plane support beams", "Film Plane", film_plane_beams()),
                          ("IBC Tanks (full)", "IBC", ov.ibc_stack()),
                          ("Pinhole Assembly", "Pinhole", ov.pinhole_assembly()),
                          ("Wet-end kit (raked)", "Kit", kit()),
@@ -205,6 +220,8 @@ model.definitions.purge_unused
 model.pages.to_a.each {{ |pg| model.pages.erase(pg) }}
 opts = model.options["UnitsOptions"]; opts["LengthUnit"]=2; opts["LengthFormat"]=0
 {tags_ruby}{body}
+# remove the FAR walkway (not wanted in this view)
+model.definitions.each {{ |d| d.entities.grep(Sketchup::Group).each {{ |g| g.erase! if g.valid? && g.name == "Walkway Far" }} }}
 # in-model callout labels on the 'Labels' tag (shown only in the Labeled scene)
 {labels_ruby()}
 v = model.active_view
@@ -213,10 +230,10 @@ def scene(model, name, on)
   model.layers.each {{ |l| l.visible = (l.name == "Layer0" || l == model.layers[0] || on.include?(l.name)) }}
   pg = model.pages.add(name); pg.use_hidden_layers = true rescue nil; pg
 end
-scene(model, "Pinhole-wall wet end", ["Context","Deck","Walkway","IBC","Pinhole","Kit","Scale"])
-scene(model, "Other pinhole-wall equipment", ["Context","Deck","Walkway","IBC","Pinhole","Pinhole Equipment"])
-scene(model, "Overall", ["Context","Deck","Walkway","IBC","Pinhole","Kit","Scale","Pinhole Equipment"])
-scene(model, "Labeled", ["Context","Deck","Walkway","IBC","Pinhole","Kit","Scale","Pinhole Equipment","Labels"])
+scene(model, "Pinhole-wall wet end", ["Context","Walkway","Film Plane","IBC","Pinhole","Kit","Scale"])
+scene(model, "Other pinhole-wall equipment", ["Context","Walkway","Film Plane","IBC","Pinhole","Pinhole Equipment"])
+scene(model, "Overall", ["Context","Walkway","Film Plane","IBC","Pinhole","Kit","Scale","Pinhole Equipment"])
+scene(model, "Labeled", ["Context","Walkway","Film Plane","IBC","Pinhole","Kit","Scale","Pinhole Equipment","Labels"])
 model.layers.each {{ |l| l.visible = true }}
 model.commit_operation
 {{ ok: true }}.to_json

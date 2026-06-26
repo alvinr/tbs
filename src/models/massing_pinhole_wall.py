@@ -112,6 +112,33 @@ def other_equipment():
     return "\n".join(p)
 
 
+def _arm(nm, cx, cy, cz, axis, sd, body, L, r, color):
+    """One port stub of a fitting — a cylinder from the body face outward along an axis."""
+    if axis == "x":
+        x0 = cx + body / 2 if sd > 0 else cx - body / 2 - L
+        return ov.ruby_cylinder(nm, x0, cy, cz, r, L, color=color, axis="x")
+    if axis == "y":
+        y0 = cy + body / 2 if sd > 0 else cy - body / 2 - L
+        return ov.ruby_cylinder(nm, cx, y0, cz, r, L, color=color, axis="y")
+    z0 = cz + body / 2 if sd > 0 else cz - body / 2 - L
+    return ov.ruby_cylinder(nm, cx, cy, z0, r, L, color=color, axis="z")
+
+
+def diverter(name, cx, cy, cz, run="x", branch="y", color=None, L=55, r=13):
+    """3-way diverter valve drawn as a flat T (one consistent shape): a through-RUN (both
+    directions) + a perpendicular BRANCH off the side, a central body block, and a top
+    handle.  Valve body kept yellow (color defaults to C_VALVE)."""
+    color = color or ov.C_VALVE
+    body = 46
+    p = [ov.ruby_box(f"{name} body", cx - body / 2, cy - body / 2, cz - body / 2, body, body, body, color=color)]
+    p.append(_arm(f"{name} run +", cx, cy, cz, run, +1, body, L, r, color))
+    p.append(_arm(f"{name} run -", cx, cy, cz, run, -1, body, L, r, color))
+    p.append(_arm(f"{name} branch", cx, cy, cz, branch, +1, body, L, r, color))
+    p.append(ov.ruby_cylinder(f"{name} handle stem", cx, cy, cz + body / 2, 5, 50, color="#404048", axis="z"))
+    p.append(ov.ruby_box(f"{name} handle lever", cx - 30, cy - 6, cz + body / 2 + 42, 60, 12, 10, color="#404048"))
+    return "\n".join(p)
+
+
 def kit():
     """Pinhole-wall SUB-SYSTEM (detailed): the tray-drain → filter loop, mounted HIGH so the
     lower walkway stays clear.  Flow: tray sump → P-04 → SV-01 (sample) → DV-02 → either the
@@ -159,8 +186,7 @@ def kit():
     fz = p4_pz - 40                                                # 2153 — feed-line height (P-04 port out)
     p.append(ov.ruby_box("SV-01 sample valve", svx - 25, yL - 25, fz - 25, 50, 50, 70, color=ov.C_VALVE))
     p.append(ov.ruby_cylinder("SV-01 sample spout", svx, yL, fz - 25 - 80, 6, 80, color=ov.C_VALVE))
-    p.append(ov.ruby_box("3W-DV-02 diverter", dvx - 32, yL - 32, fz - 30, 64, 64, 80, color=ov.C_VALVE))
-    p.append(ov.ruby_cylinder("DV-02 handle", dvx, yL, fz + 50, 6, 55, color=ov.C_STEEL))
+    p.append(diverter("3W-DV-02", dvx, yL, fz, run="x", branch="y", color=ov.C_VALVE))
 
     # ── PLUMBING (orthogonal; perpendicular port stubs; around the bodies on lane yL) ──
     def pipe(nm, wp, col): p.append(ov.ruby_pipe_run(nm, wp, rp, color=col))

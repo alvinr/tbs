@@ -113,28 +113,37 @@ def other_equipment():
 
 
 def kit():
+    """Pinhole-wall SUB-SYSTEM (proposal): the tray-drain → filter loop ONLY, mounted HIGH
+    so the lower walkway stays clear (no widening needed).  Flow: tray sump → P-04 →
+    SV-01 (sample) → DV-02 → either the 3 filters (recycle) OR the grey/waste IBC.  The
+    other four pumps + ACC return to the plumbing corridor."""
     p = []
     fr = ov.BB_OD / 2          # 92
     BB_H = ov.BB_H             # 340
-    # ── FILTERS — deepest, HIGH (cap-up row near the ceiling); in-line ±X ports chain F1->F2->F3
-    f_top = C_HGT - 48         # cap top just under the ceiling
-    f_bot = f_top - BB_H       # body bottom ≈ 2000
-    for i, fx in enumerate((3120, 3520, 3920)):
-        p.append(ov.ruby_cylinder(f"Filter F{i+1} (Ø184)", fx, fr + 10, f_bot, fr, BB_H - 70,
-                                  color=ov.C_FILTER))
-        p.append(ov.ruby_cylinder(f"Filter F{i+1} cap", fx, fr + 10, f_top - 70, fr + 3, 70,
-                                  color="#222228"))
-    # ── PUMPS — shallow tier LOW, between ANKLE & KNEE (Z~160-380): heavy water-filled
-    # bodies stay low (CG + drip), projection sits below the torso, you step past at
-    # lower-leg level.
-    pw, pd, ph = ov.PUMP_W, ov.PUMP_YD_SPAN, 218     # 114 x 127 x 218
-    pz = 160                                          # body bottom ≈ ankle
-    for i, cx in enumerate((2860, 3180, 3500, 3820, 4140)):
-        p.append(ov.ruby_box(f"Pump P-0{i+1}", cx - pw / 2, 12, pz, pw, pd, ph, color=ov.C_PUMP))
-        p.append(ov.ruby_box(f"Pump P-0{i+1} head", cx - pw / 2, 12, pz + ph, pw, 68, 40,
-                             color="#3A3A42"))
-    # ── ACC — shallowest, low with the pumps (ankle-knee)
-    p.append(ov.ruby_cylinder("ACC-01 (Ø127)", 4430, 127 / 2 + 12, 160, 127 / 2, 200, color=ov.C_ACC))
+    f_top = C_HGT - 48         # cap just under the ceiling
+    f_bot = f_top - BB_H       # ≈ 2000 — the high tier
+    rp = 12
+    pw, pd, ph = ov.PUMP_W, ov.PUMP_YD_SPAN, 218
+    # P-04 — next to the filters, SAME level (fed by the tray sump)
+    p4x = 4400
+    p.append(ov.ruby_box("Pump P-04 (tray drain)", p4x - pw / 2, 12, f_bot, pw, pd, ph, color=ov.C_PUMP))
+    p.append(ov.ruby_box("Pump P-04 head", p4x - pw / 2, 12, f_bot + ph, pw, 68, 40, color="#3A3A42"))
+    # SV-01 sample tap + 3W-DV-02 diverter, same level
+    svx, dvx = 4230, 4060
+    p.append(ov.ruby_box("SV-01 (sample tap)", svx - 28, 30, f_bot + 70, 56, 56, 90, color=ov.C_VALVE))
+    p.append(ov.ruby_box("3W-DV-02 (divert)", dvx - 33, 30, f_bot + 60, 66, 66, 100, color=ov.C_VALVE))
+    # 3 filters — F1 nearest DV-02 (right), F3 left
+    for nm, fx in [("F1", 3830), ("F2", 3430), ("F3", 3030)]:
+        p.append(ov.ruby_cylinder(f"Filter {nm} (Ø184)", fx, fr + 10, f_bot, fr, BB_H - 70, color=ov.C_FILTER))
+        p.append(ov.ruby_cylinder(f"Filter {nm} cap", fx, fr + 10, f_top - 70, fr + 3, 70, color="#222228"))
+    # ── schematic flow (shows the topology; detailed routing later) ──
+    cz = f_bot + 120
+    p.append(ov.ruby_pipe_run("Sump -> P-04", [(ov.PROC_TRAY_DRAIN_X, 130, 40),
+             (ov.PROC_TRAY_DRAIN_X, 130, cz), (p4x, 130, cz)], rp, color=ov.C_IBC_WASTE))
+    p.append(ov.ruby_pipe_run("P-04 -> SV-01 -> DV-02 -> F1", [(p4x, 95, cz), (3830, 95, cz)], rp, color=ov.C_IBC_BROWN))
+    p.append(ov.ruby_pipe_run("F1 -> F2 -> F3", [(3830, fr + 50, cz), (3030, fr + 50, cz)], rp, color=ov.C_IBC_BROWN))
+    p.append(ov.ruby_pipe_run("DV-02 -> Grey IBC", [(dvx, 95, f_bot), (dvx, 95, 380),
+             (ov.IBC_COL_X + 60, 95, 380)], rp, color=ov.C_IBC_WASTE))
     return "\n".join(p)
 
 
@@ -162,16 +171,13 @@ def right_walkway():
 
 
 # ── "Labeled" scene callouts (point-anchored on the kit; instance-anchored on pinhole/elec) ──
-LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz)  — leaders pull +Yd (toward viewer) & up
-    (2860, 75, 378, "P-01", 0, 520, 720),
-    (3180, 75, 378, "P-02", 0, 520, 980),
-    (3500, 75, 378, "P-03", 0, 520, 720),
-    (3820, 75, 378, "P-04", 0, 520, 980),
-    (4140, 75, 378, "P-05", 0, 520, 720),
-    (4430, 75, 360, "ACC-01", 0, 520, 860),
-    (3120, 102, 2305, "F1 (50um)", 0, 560, 70),
-    (3520, 102, 2305, "F2 (5um)",  0, 560, 70),
-    (3920, 102, 2305, "F3 (GAC)",  0, 560, 70),
+LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz)  — the pinhole-wall SUB-SYSTEM (all high)
+    (4400, 95, 2218, "P-04\n(tray drain)", 0, 520, 250),
+    (4230, 60, 2160, "SV-01\n(sample)",   0, 460, 460),
+    (4060, 60, 2160, "DV-02\n(3-way)",    0, 460, 680),
+    (3830, 102, 2305, "F1 (50um)", 0, 560, 80),
+    (3430, 102, 2305, "F2 (5um)",  0, 560, 80),
+    (3030, 102, 2305, "F3 (GAC)",  0, 560, 80),
 ]
 LABEL_INSTANCES = [
     ("Pinhole Assembly", "PINHOLE\n(optical ref)", 0, 700, 350),

@@ -217,9 +217,24 @@ def kit():
     pipe("F3 -> SV-01 (drop to waist)",
          [f_out("F3"), (f_out("F3")[0], yL, tie), (svx, yL, tie), (svx, yL, waist)], ov.C_FILTER)
     pipe("SV-01 -> DV-01", [(svx, yL, waist), (dvx, yL, waist)], ov.C_FILTER)
-    # 5. DV-01 → Blue IBC (run +X, recycle) + Grey IBC (branch, exits UNDERSIDE then to waste)
-    pipe("DV-01 -> Blue IBC (IBC-2)", [(dvx, yL, waist), (ov.IBC_COL_X + 80, yL, waist)], ov.C_BLUE)
-    pipe("DV-01 -> Grey IBC (IBC-4)", [(dvx, yL, waist), (dvx, yL, 500), (ov.IBC_COL_X + 80, yL, 500)], ov.C_IBC_WASTE)
+    # 5. DV-01 → Blue IBC (run +X) + Brown IBC (off the UNDERSIDE branch).  Each enters its
+    #    tank near the TOP via the side-entry convention: flange (outside) + 150mm pipe in +
+    #    90° elbow + 150mm drop into the tank.
+    xf = ov.IBC_COL_X                            # tote front face (X4674)
+    def tank_entry(nm, y, z, col):               # check valve + flange + 150 in + elbow + 150 drop
+        # check valve on the approach riser — prevents siphon/back-drain out of the IBC
+        p.append(ov.ruby_box(nm + " check valve", xf - 22, y - 20, z - 130, 44, 40, 55, color=ov.C_VALVE))
+        p.append(ov.ruby_pipe_run(nm + " entry", [(xf, y, z), (xf + 150, y, z), (xf + 150, y, z - 150)], rp, color=col))
+        p.append(ov.ruby_cylinder(nm + " flange", xf - 8, y, z, 36, 16, color=ov.C_STEEL, axis="x"))
+    # Blue leg → Blue IBC (top tote), near top
+    bz = 2 * ov.IBC_H_1000 - 180                 # ~2156 — Blue tote near-top entry
+    pipe("DV-01 -> Blue IBC (IBC-2)", [(dvx, yL, waist), (xf, yL, waist), (xf, yL, bz)], ov.C_BLUE)
+    tank_entry("Blue IBC (IBC-2)", yL, bz, ov.C_BLUE)
+    # Brown leg (off the underside branch) → Brown IBC (bottom tote), near top
+    rz = ov.IBC_H_1000 - 80                      # ~1088 — Brown tote near-top entry
+    pipe("DV-01 -> Brown IBC (IBC-3)",
+         [(dvx, yL, waist), (dvx, yL, 850), (dvx, yL + 45, 850), (xf, yL + 45, 850), (xf, yL + 45, rz)], ov.C_IBC_BROWN)
+    tank_entry("Brown IBC (IBC-3)", yL + 45, rz, ov.C_IBC_BROWN)
     return "\n".join(p)
 
 

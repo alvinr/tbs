@@ -124,26 +124,33 @@ def _arm(nm, cx, cy, cz, axis, sd, body, L, r, color):
     return ov.ruby_cylinder(nm, cx, cy, z0, r, L, color=color, axis="z")
 
 
+C_HANDLE = "#C0202A"   # red diverter handle
+
+
 def diverter(name, cx, cy, cz, run="x", branch="y", color=None, L=55, r=13):
     """3-way diverter valve drawn as a flat T (one consistent shape): a through-RUN (both
-    directions) + a perpendicular BRANCH off the side, a central body block, and a top
-    handle.  Valve body kept yellow (color defaults to C_VALVE)."""
+    directions) + a perpendicular BRANCH off the side, a central body block, and a RED
+    handle on the FRONT face (projecting +Yd toward the operator).  Valve body kept yellow
+    (color defaults to C_VALVE)."""
     color = color or ov.C_VALVE
     body = 46
     p = [ov.ruby_box(f"{name} body", cx - body / 2, cy - body / 2, cz - body / 2, body, body, body, color=color)]
     p.append(_arm(f"{name} run +", cx, cy, cz, run, +1, body, L, r, color))
     p.append(_arm(f"{name} run -", cx, cy, cz, run, -1, body, L, r, color))
     p.append(_arm(f"{name} branch", cx, cy, cz, branch, +1, body, L, r, color))
-    p.append(ov.ruby_cylinder(f"{name} handle stem", cx, cy, cz + body / 2, 5, 50, color="#404048", axis="z"))
-    p.append(ov.ruby_box(f"{name} handle lever", cx - 30, cy - 6, cz + body / 2 + 42, 60, 12, 10, color="#404048"))
+    # RED handle on the FRONT face — stem projects +Yd, a vertical lever bar at its end
+    hy = cy + body / 2
+    p.append(ov.ruby_cylinder(f"{name} handle stem", cx, hy, cz + body / 4, 6, 44, color=C_HANDLE, axis="y"))
+    p.append(ov.ruby_box(f"{name} handle lever", cx - 7, hy + 44, cz + body / 4 - 28, 14, 12, 60, color=C_HANDLE))
     return "\n".join(p)
 
 
 def kit():
-    """Pinhole-wall SUB-SYSTEM (detailed): the tray-drain → filter loop, mounted HIGH so the
-    lower walkway stays clear.  Flow: tray sump → P-04 → SV-01 (sample) → DV-02 → either the
-    3 filters (recycle) OR the grey/waste IBC.  Plumbing is orthogonal, stubs perpendicular
-    into every port, and routes AROUND the bodies in a front lane (Yd=yL)."""
+    """Pinhole-wall FILTER sub-loop (Stage B, agreed labels).  Chain:
+    IBC-3 (Brown buffer) → P-02 → F1 → F2 → F3 → SV-01 (sample) → DV-01 → Blue/Grey IBC.
+    Mounted HIGH so the walkway stays clear; PUMP on the side FURTHEST from the IBCs
+    (low X); FILTERS shifted toward the IBCs (high X); SV-01 + DV-01 dropped to WAIST for
+    easy reach.  Plumbing orthogonal, perpendicular port stubs, routed around the bodies."""
     p = []
     fr = ov.BB_OD / 2          # 92
     BB_H, cap_h = ov.BB_H, 78
@@ -151,81 +158,78 @@ def kit():
     f_bot = f_top - BB_H       # 2000 — the high tier
     fcy = fr + 12              # 104 — filter center Yd (sump back near the wall)
     cap_z = f_bot + BB_H - cap_h / 2   # 2301 — filter cap port centerline
+    tie = cap_z - 40           # 2261 — filter port tie-in (bottom of the down-elbow)
     rp = ov.PUMP_PIPE_OD / 2   # 10.5
-    yL = 230                   # front routing lane, clear of the bodies (Yd ≤ 196)
+    yL, yS = 230, 295          # feed lane / suction+exit lane (clear of the bodies, Yd ≤ 196)
+    waist = 1000               # SV-01 + DV-01 reach height
     cdk = "#222228"
 
-    FX = {"F1": 3830, "F2": 3430, "F3": 3030}                      # F1 nearest DV-02
-    def f_in(nm):  return (FX[nm] - (fr + 30), fcy, cap_z - 40)    # IN  port (−X), bottom of the down-elbow
-    def f_out(nm): return (FX[nm] + (fr + 30), fcy, cap_z - 40)    # OUT port (+X)
+    FX = {"F1": 3300, "F2": 3700, "F3": 4100}                      # filters shifted toward the IBC
+    def f_in(nm):  return (FX[nm] - (fr + 30), fcy, tie)           # IN  port (−X)
+    def f_out(nm): return (FX[nm] + (fr + 30), fcy, tie)           # OUT port (+X)
 
-    # ── 3 Big Blue filters — sump + cap + in-line ±X 'T' ports (stub then elbow DOWN) ──
+    # ── 3 Big Blue filters — F1 50µm / F2 KDF-55 / F3 GAC; in-line ±X 'T' ports, stub→down ──
     for nm, fx in FX.items():
         p.append(ov.ruby_cylinder(f"Filter {nm} sump", fx, fcy, f_bot, fr, BB_H - cap_h, color=ov.C_FILTER))
         p.append(ov.ruby_cylinder(f"Filter {nm} cap", fx, fcy, f_bot + BB_H - cap_h, fr + 3, cap_h, color=cdk))
         for tag, sd in (("in", -1), ("out", +1)):
             p.append(ov.ruby_pipe_run(f"Filter {nm} {tag} port",
                 [(fx + sd * (fr - 6), fcy, cap_z), (fx + sd * (fr + 30), fcy, cap_z),
-                 (fx + sd * (fr + 30), fcy, cap_z - 40)], rp, color=cdk))
+                 (fx + sd * (fr + 30), fcy, tie)], rp, color=cdk))
         p.append(ov.ruby_cylinder(f"Filter {nm} PR button", fx, fcy, f_bot + BB_H, 6, 9, color=ov.C_STEEL))
 
-    # ── P-04 — motor can + head, mounted on the wall, head facing +Yd; ports come DOWN ──
-    p4x = 4400
+    # ── P-02 — far side from the IBCs (low X), filter level; head faces +Yd, ports come DOWN ──
+    p2x = 2860
     can_r, can_h, hh = 50, 178, 40
-    p.append(ov.ruby_cylinder("Pump P-04 body", p4x, 12 + can_r, f_bot, can_r, can_h, color=ov.C_PUMP))
-    p.append(ov.ruby_box("Pump P-04 head", p4x - 57, 12, f_bot + can_h, 114, 100, hh, color=cdk))
-    p4_pz = f_bot + 218 - 25                                       # 2193 port level
-    def p4_port(sd):  return (p4x + sd * 30, 142, p4_pz - 40)
+    p.append(ov.ruby_cylinder("Pump P-02 body", p2x, 12 + can_r, f_bot, can_r, can_h, color=ov.C_PUMP))
+    p.append(ov.ruby_box("Pump P-02 head", p2x - 57, 12, f_bot + can_h, 114, 100, hh, color=cdk))
+    p2_pz = f_bot + 218 - 25                                       # 2193
+    def p2_port(sd):  return (p2x + sd * 30, 142, p2_pz - 40)
     for tag, sd in (("in", -1), ("out", +1)):
-        p.append(ov.ruby_pipe_run(f"Pump P-04 {tag} port",
-            [(p4x + sd * 30, 100, p4_pz), (p4x + sd * 30, 142, p4_pz), (p4x + sd * 30, 142, p4_pz - 40)],
+        p.append(ov.ruby_pipe_run(f"Pump P-02 {tag} port",
+            [(p2x + sd * 30, 100, p2_pz), (p2x + sd * 30, 142, p2_pz), (p2x + sd * 30, 142, p2_pz - 40)],
             rp, color=cdk))
 
-    # ── SV-01 sample tap (valve + downturned spout) + 3W-DV-02 diverter, on the feed line ──
-    svx, dvx = 4230, 4060
-    fz = p4_pz - 40                                                # 2153 — feed-line height (P-04 port out)
-    p.append(ov.ruby_box("SV-01 sample valve", svx - 25, yL - 25, fz - 25, 50, 50, 70, color=ov.C_VALVE))
-    p.append(ov.ruby_cylinder("SV-01 sample spout", svx, yL, fz - 25 - 80, 6, 80, color=ov.C_VALVE))
-    p.append(diverter("3W-DV-02", dvx, yL, fz, run="x", branch="y", color=ov.C_VALVE))
+    # ── SV-01 sample tap + flat-T 3W-DV-01, dropped to WAIST level (easy reach) ──
+    svx, dvx = 4250, 4430
+    p.append(ov.ruby_box("SV-01 sample valve", svx - 25, yL - 25, waist - 25, 50, 50, 70, color=ov.C_VALVE))
+    p.append(ov.ruby_cylinder("SV-01 sample spout", svx, yL, waist - 25 - 90, 6, 90, color=ov.C_VALVE))
+    p.append(diverter("3W-DV-01", dvx, yL, waist, run="x", branch="y", color=ov.C_VALVE))
 
-    # ── PLUMBING (orthogonal; perpendicular port stubs; around the bodies on lane yL) ──
+    # ── PLUMBING ──
     def pipe(nm, wp, col): p.append(ov.ruby_pipe_run(nm, wp, rp, color=col))
-    # 1. tray sump → P-04 inlet (riser up the wall, around the body into the +Yd inlet)
-    sx, sy = ov.PROC_TRAY_DRAIN_X, ov.PROC_TRAY_DRAIN_YD
-    pipe("Tray sump -> P-04 inlet",
-         [(sx, sy, ov.PROC_TRAY_SUMP_Z), (sx, sy, fz), (sx, yL, fz),
-          (p4_port(-1)[0], yL, fz), p4_port(-1)], ov.C_IBC_WASTE)
-    # 2. P-04 outlet → SV-01 → DV-02 (feed line on lane yL)
-    pipe("P-04 -> SV-01", [p4_port(1), (p4_port(1)[0], yL, fz), (svx, yL, fz)], ov.C_IBC_BROWN)
-    pipe("SV-01 -> DV-02", [(svx, yL, fz), (dvx, yL, fz)], ov.C_IBC_BROWN)
-    # 3. DV-02 → F1 inlet (recycle leg), up to the filter port height then around to F1
-    pipe("DV-02 -> F1 (recycle)",
-         [(dvx, yL, fz), (dvx, yL, cap_z - 40), (f_in("F1")[0], yL, cap_z - 40), f_in("F1")], ov.C_IBC_BROWN)
-    # 4. filter jumpers F1→F2→F3 (around the bodies)
+    fz = p2_pz - 40                                                # 2153 — pump-port feed height
+    # 1. IBC-3 (Brown buffer) suction → P-02 inlet (long run from the stack, on the suction lane)
+    pipe("IBC-3 (Brown) -> P-02 inlet",
+         [(ov.IBC_COL_X + 80, yS, fz), (p2_port(-1)[0], yS, fz), (p2_port(-1)[0], yL, fz), p2_port(-1)],
+         ov.C_IBC_BROWN)
+    # 2. P-02 outlet → F1 inlet
+    pipe("P-02 -> F1",
+         [p2_port(1), (p2_port(1)[0], yL, fz), (f_in("F1")[0], yL, fz), (f_in("F1")[0], yL, tie), f_in("F1")],
+         ov.C_IBC_BROWN)
+    # 3. filter jumpers F1→F2→F3 (around the bodies)
     for a, b in (("F1", "F2"), ("F2", "F3")):
         pipe(f"{a} out -> {b} in",
-             [f_out(a), (f_out(a)[0], yL, cap_z - 40), (f_in(b)[0], yL, cap_z - 40), f_in(b)], ov.C_IBC_BROWN)
-    # 5. F3 outlet → recycle to the Blue IBC (leaves the wall toward the stack)
-    pipe("F3 -> recycle (Blue IBC)",
-         [f_out("F3"), (f_out("F3")[0], yL + 40, cap_z - 40), (ov.IBC_COL_X + 80, yL + 40, cap_z - 40)], ov.C_FILTER)
-    # 6. DV-02 → grey/waste IBC (the divert-to-waste leg, leaves the wall)
-    pipe("DV-02 -> Grey IBC (waste)",
-         [(dvx, yL, fz), (dvx, yL + 60, fz), (ov.IBC_COL_X + 80, yL + 60, fz)], ov.C_IBC_WASTE)
+             [f_out(a), (f_out(a)[0], yL, tie), (f_in(b)[0], yL, tie), f_in(b)], ov.C_IBC_BROWN)
+    # 4. F3 outlet → DOWN to SV-01 (waist) → DV-01
+    pipe("F3 -> SV-01 (drop to waist)",
+         [f_out("F3"), (f_out("F3")[0], yL, tie), (svx, yL, tie), (svx, yL, waist)], ov.C_FILTER)
+    pipe("SV-01 -> DV-01", [(svx, yL, waist), (dvx, yL, waist)], ov.C_FILTER)
+    # 5. DV-01 → Blue IBC (run, recycle) + Grey IBC (branch, waste)
+    pipe("DV-01 -> Blue IBC (IBC-2)", [(dvx, yL, waist), (ov.IBC_COL_X + 80, yL, waist)], ov.C_BLUE)
+    pipe("DV-01 -> Grey IBC (IBC-4)", [(dvx, yL, waist), (dvx, yS, waist), (ov.IBC_COL_X + 80, yS, waist)], ov.C_IBC_WASTE)
     return "\n".join(p)
 
 
 def person():
-    # A clearly-human standee for scale (1750 tall) standing on the deck, back to the wall.
-    # Stick-ish proportions so it reads as a PERSON, not equipment.
-    px, py = 2760, 230
+    # 1.75m scale figure standing ON the near walkway, FACING the IBC totes (+X):
+    # depth (front-back) along X, shoulders along Yd.
+    px, py = 3050, 150          # on the near walkway deck (Yd 0-300)
     z = DECK_Z
     pp = []
-    # legs
-    pp.append(ov.ruby_box("Person legs", px - 80, py, z, 160, 200, 850, color=C_PERSON, alpha=0.55))
-    # torso (narrower front-back)
-    pp.append(ov.ruby_box("Person torso", px - 150, py + 10, z + 850, 300, 180, 600, color=C_PERSON, alpha=0.55))
-    # head
-    pp.append(ov.ruby_cylinder("Person head (scale 1.75m)", px, py + 100, z + 1450, 100, 230, color=C_PERSON, alpha=0.6))
+    pp.append(ov.ruby_box("Person legs", px - 100, py - 80, z, 200, 160, 850, color=C_PERSON, alpha=0.55))
+    pp.append(ov.ruby_box("Person torso", px - 90, py - 150, z + 850, 180, 300, 600, color=C_PERSON, alpha=0.55))
+    pp.append(ov.ruby_cylinder("Person head (scale 1.75m)", px, py, z + 1450, 100, 230, color=C_PERSON, alpha=0.6))
     return "\n".join(pp)
 
 
@@ -238,13 +242,13 @@ def right_walkway():
 
 
 # ── "Labeled" scene callouts (point-anchored on the kit; instance-anchored on pinhole/elec) ──
-LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz)  — the pinhole-wall SUB-SYSTEM (all high)
-    (4400, 95, 2218, "P-04\n(tray drain)", 0, 520, 250),
-    (4230, 60, 2160, "SV-01\n(sample)",   0, 460, 460),
-    (4060, 60, 2160, "DV-02\n(3-way)",    0, 460, 680),
-    (3830, 102, 2305, "F1 (50um)", 0, 560, 80),
-    (3430, 102, 2305, "F2 (5um)",  0, 560, 80),
-    (3030, 102, 2305, "F3 (GAC)",  0, 560, 80),
+LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz)  — the pinhole-wall FILTER sub-loop
+    (2860, 95, 2218, "P-02\n(filter feed)", 0, 520, 250),
+    (3300, 102, 2305, "F1 (50um)",   0, 560, 80),
+    (3700, 102, 2305, "F2 (KDF-55)", 0, 560, 80),
+    (4100, 102, 2305, "F3 (GAC)",    0, 560, 80),
+    (4250, 230, 1000, "SV-01\n(sample)", 0, 430, 520),
+    (4430, 230, 1000, "DV-01\n(3-way)",  0, 430, 740),
 ]
 LABEL_INSTANCES = [
     ("Pinhole Assembly", "PINHOLE\n(optical ref)", 0, 700, 350),

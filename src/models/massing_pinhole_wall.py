@@ -127,21 +127,23 @@ def _arm(nm, cx, cy, cz, axis, sd, body, L, r, color):
 C_HANDLE = "#C0202A"   # red diverter handle
 
 
-def diverter(name, cx, cy, cz, run="x", branch="y", color=None, L=55, r=13):
-    """3-way diverter valve drawn as a flat T (one consistent shape): a through-RUN (both
-    directions) + a perpendicular BRANCH off the side, a central body block, and a RED
-    handle on the FRONT face (projecting +Yd toward the operator).  Valve body kept yellow
-    (color defaults to C_VALVE)."""
+def diverter(name, cx, cy, cz, run="x", branch="z-", color=None, L=55, r=13):
+    """3-way diverter = a standard T-port valve (3 coplanar ports, handle perpendicular)
+    rotated onto a VERTICAL WALL: the 3 pipes lie in the wall plane (seen face-on as a T),
+    and the RED handle projects out of the wall (+Yd) toward the operator.  `run` is the
+    through-run axis (both ways); `branch` is the divert port as axis+sign, default 'z-'
+    (exits the UNDERSIDE).  Valve body kept yellow (color defaults to C_VALVE)."""
     color = color or ov.C_VALVE
     body = 46
+    ba, bs = branch[0], (+1 if "+" in branch else -1)
     p = [ov.ruby_box(f"{name} body", cx - body / 2, cy - body / 2, cz - body / 2, body, body, body, color=color)]
     p.append(_arm(f"{name} run +", cx, cy, cz, run, +1, body, L, r, color))
     p.append(_arm(f"{name} run -", cx, cy, cz, run, -1, body, L, r, color))
-    p.append(_arm(f"{name} branch", cx, cy, cz, branch, +1, body, L, r, color))
-    # RED handle on the FRONT face — stem projects +Yd, a vertical lever bar at its end
+    p.append(_arm(f"{name} branch", cx, cy, cz, ba, bs, body, L, r, color))
+    # RED handle out of the wall plane (+Yd, toward the operator), with a lever bar along the run
     hy = cy + body / 2
-    p.append(ov.ruby_cylinder(f"{name} handle stem", cx, hy, cz + body / 4, 6, 44, color=C_HANDLE, axis="y"))
-    p.append(ov.ruby_box(f"{name} handle lever", cx - 7, hy + 44, cz + body / 4 - 28, 14, 12, 60, color=C_HANDLE))
+    p.append(ov.ruby_cylinder(f"{name} handle stem", cx, hy, cz, 6, 42, color=C_HANDLE, axis="y"))
+    p.append(ov.ruby_box(f"{name} handle lever", cx - 32, hy + 38, cz - 7, 64, 16, 14, color=C_HANDLE))
     return "\n".join(p)
 
 
@@ -194,7 +196,7 @@ def kit():
     svx, dvx = 4250, 4430
     p.append(ov.ruby_box("SV-01 sample valve", svx - 25, yL - 25, waist - 25, 50, 50, 70, color=ov.C_VALVE))
     p.append(ov.ruby_cylinder("SV-01 sample spout", svx, yL, waist - 25 - 90, 6, 90, color=ov.C_VALVE))
-    p.append(diverter("3W-DV-01", dvx, yL, waist, run="x", branch="y", color=ov.C_VALVE))
+    p.append(diverter("3W-DV-01", dvx, yL, waist, run="x", branch="z-", color=ov.C_VALVE))
 
     # ── PLUMBING ──
     def pipe(nm, wp, col): p.append(ov.ruby_pipe_run(nm, wp, rp, color=col))
@@ -215,9 +217,9 @@ def kit():
     pipe("F3 -> SV-01 (drop to waist)",
          [f_out("F3"), (f_out("F3")[0], yL, tie), (svx, yL, tie), (svx, yL, waist)], ov.C_FILTER)
     pipe("SV-01 -> DV-01", [(svx, yL, waist), (dvx, yL, waist)], ov.C_FILTER)
-    # 5. DV-01 → Blue IBC (run, recycle) + Grey IBC (branch, waste)
+    # 5. DV-01 → Blue IBC (run +X, recycle) + Grey IBC (branch, exits UNDERSIDE then to waste)
     pipe("DV-01 -> Blue IBC (IBC-2)", [(dvx, yL, waist), (ov.IBC_COL_X + 80, yL, waist)], ov.C_BLUE)
-    pipe("DV-01 -> Grey IBC (IBC-4)", [(dvx, yL, waist), (dvx, yS, waist), (ov.IBC_COL_X + 80, yS, waist)], ov.C_IBC_WASTE)
+    pipe("DV-01 -> Grey IBC (IBC-4)", [(dvx, yL, waist), (dvx, yL, 500), (ov.IBC_COL_X + 80, yL, 500)], ov.C_IBC_WASTE)
     return "\n".join(p)
 
 

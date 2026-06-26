@@ -57,43 +57,84 @@ def kit():
                                   color=ov.C_FILTER))
         p.append(ov.ruby_cylinder(f"Filter F{i+1} cap", fx, fr + 10, f_top - 70, fr + 3, 70,
                                   color="#222228"))
-    # ── PUMPS — shallow, LOW row (bodies on a wall rail); 5 across
+    # ── PUMPS — shallow, at SHOULDER height (Z~1330-1550) so legs/feet are clear (no kicking)
     pw, pd, ph = ov.PUMP_W, ov.PUMP_YD_SPAN, 218     # 114 x 127 x 218
-    pz = 270
+    pz = 1330                                         # body bottom ≈ shoulder
     for i, cx in enumerate((2860, 3180, 3500, 3820, 4140)):
         p.append(ov.ruby_box(f"Pump P-0{i+1}", cx - pw / 2, 12, pz, pw, pd, ph, color=ov.C_PUMP))
         p.append(ov.ruby_box(f"Pump P-0{i+1} head", cx - pw / 2, 12, pz + ph, pw, 68, 40,
                              color="#3A3A42"))
-    # ── ACC — shallowest, low, at the IBC end of the row
-    p.append(ov.ruby_cylinder("ACC-01 (Ø127)", 4430, 127 / 2 + 12, 250, 127 / 2, 200, color=ov.C_ACC))
+    # ── ACC — shallowest, shoulder height too, at the IBC end of the row
+    p.append(ov.ruby_cylinder("ACC-01 (Ø127)", 4430, 127 / 2 + 12, 1350, 127 / 2, 200, color=ov.C_ACC))
     return "\n".join(p)
 
 
 def person():
-    # simple standee on the deck, standing JUST clear of the pump projection (~165)
-    px, py = 2760, 200
-    body = ov.ruby_box("Person (1750, scale)", px - 225, py, DECK_Z, 450, 330, 1500, color=C_PERSON)
-    head = ov.ruby_cylinder("Person head", px, py + 165, DECK_Z + 1500, 110, 250, color=C_PERSON)
-    return body + "\n" + head
+    # A clearly-human standee for scale (1750 tall) standing on the deck, back to the wall.
+    # Stick-ish proportions so it reads as a PERSON, not equipment.
+    px, py = 2760, 230
+    z = DECK_Z
+    pp = []
+    # legs
+    pp.append(ov.ruby_box("Person legs", px - 80, py, z, 160, 200, 850, color=C_PERSON, alpha=0.55))
+    # torso (narrower front-back)
+    pp.append(ov.ruby_box("Person torso", px - 150, py + 10, z + 850, 300, 180, 600, color=C_PERSON, alpha=0.55))
+    # head
+    pp.append(ov.ruby_cylinder("Person head (scale 1.75m)", px, py + 100, z + 1450, 100, 230, color=C_PERSON, alpha=0.6))
+    return "\n".join(pp)
+
+
+# Whole-container CONTEXT — the real overview equipment (everything EXCEPT the corridor
+# wet-end being replaced: equipment_panel + water_plumbing).  optical_cone is included so
+# we can SEE the kit clears the light path.
+CONTEXT = [
+    ("Container Shell", "Shell", "container_shell"),
+    ("Walkways", "Walkways", "walkways"),
+    ("Processing Tray", "Processing Tray", "processing_tray"),
+    ("Pinhole Assembly", "Pinhole", "pinhole_assembly"),
+    ("Optical Cone", "Optical Cone", "optical_cone"),
+    ("Film Plane Mechanism", "Film Plane", "film_plane_mechanism"),
+    ("Spray Bar", "Spray Bar", "spray_bar"),
+    ("IBC Stack", "IBC Stack", "ibc_stack"),
+    ("IBC Rack", "IBC Rack", "ibc_rack"),
+    ("Light-Trap Drum", "Light Trap", "light_trap_drum"),
+    ("Light-Trap Bay", "Light Trap", "light_trap_bay"),
+    ("Light-Trap Door Frame", "Light Seal", "light_trap_frame"),
+    ("Light Seal & Hinges", "Light Seal", "light_seal"),
+    ("Electrical", "Electrical", "electrical"),
+    ("Evap Cooler & Duct", "Evap Cooler", "evap_cooler"),
+    ("Fans A & B", "Fans", "fans"),
+    ("Chemistry Shelf", "Shelf", "shelf"),
+    ("Water/Waste Hookups", "Water Hookups", "water_hookups"),
+]
 
 
 def build():
-    comps = [
-        ov.component("Context", "Context", context()),
-        ov.component("Walkway Deck", "Deck", deck()),
-        ov.component("Wet-end kit (raked)", "Kit", kit()),
-        ov.component("Person (scale)", "Scale", person()),
-    ]
+    comps, tags = [], set()
+    for name, tag, fn in CONTEXT:
+        try:
+            comps.append(ov.component(name, tag, getattr(ov, fn)()))
+            tags.add(tag)
+        except Exception as e:                       # skip any context piece that can't build on this branch
+            print(f"  (skip context {name}: {e})", file=sys.stderr)
+    # the NEW pinhole-wall wet-end massing + proposed widened deck + scale figure
+    for name, tag, b in [("Proposed widened deck", "Deck", deck()),
+                         ("Wet-end kit (raked)", "Kit", kit()),
+                         ("Person (scale)", "Scale", person())]:
+        comps.append(ov.component(name, tag, b)); tags.add(tag)
     body = "\n".join(comps)
+    tags_ruby = "".join(f'  model.layers.add({t!r}) unless model.layers[{t!r}]\n' for t in sorted(tags))
     return f'''model = Sketchup.active_model
-model.start_operation("Pinhole-wall massing", true)
+model.start_operation("Pinhole-wall layout", true)
 entities = model.active_entities
 to_erase = entities.to_a.select {{ |e| e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance) || e.is_a?(Sketchup::Text) }}
 entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
+model.pages.to_a.each {{ |pg| model.pages.erase(pg) }}
 opts = model.options["UnitsOptions"]; opts["LengthUnit"]=2; opts["LengthFormat"]=0
-["Context","Deck","Kit","Scale"].each {{ |t| model.layers.add(t) unless model.layers[t] }}
-{body}
+{tags_ruby}{body}
+# one combined scene, whole length
+pg = model.pages.add("Pinhole-wall layout")
 model.commit_operation
 {{ ok: true }}.to_json
 '''

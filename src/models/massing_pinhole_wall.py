@@ -45,8 +45,23 @@ def context():
 
 
 def deck():
-    return ov.ruby_box("Near walkway deck", WALL_X0, 0, DECK_Z - 15,
-                       WALL_X1 - WALL_X0, DECK_W, 15, color=C_DECK, alpha=0.9)
+    """Near walkway along the pinhole wall — STOPS at the IBC (does not pass it), with
+    its punch-out (widened to WALKWAY_NEAR_WIDE_W over X1155-2629)."""
+    p = []
+    p.append(ov.ruby_box("Near walkway (stops at IBC)", WALL_X0, 0, DECK_Z - 15,
+                         ov.IBC_COL_X - WALL_X0, DECK_W, 15, color=C_DECK, alpha=0.9))
+    p.append(ov.ruby_box("Near walkway punch-out", ov.WALKWAY_NEAR_WIDE_X_L, DECK_W, DECK_Z - 15,
+                         ov.WALKWAY_NEAR_WIDE_X_R - ov.WALKWAY_NEAR_WIDE_X_L,
+                         ov.WALKWAY_NEAR_WIDE_W - DECK_W, 15, color=C_DECK, alpha=0.9))
+    return "\n".join(p)
+
+
+def ibc_slice():
+    """A thin slice of the near IBC column at its front face (X=IBC_COL_X) — shows the
+    space to the LEFT (high X) is taken, so the wet end can't extend past it."""
+    return ov.ruby_box("IBC slice (space taken)", ov.IBC_COL_X, ov.BLUE_IBC_Y, 0,
+                       120, VIEW_DEPTH - ov.BLUE_IBC_Y, 2 * ov.IBC_H_1000,
+                       color=ov.C_IBC_BLUE, alpha=0.30)
 
 
 # Other equipment ALREADY mounted on the pinhole wall (Yd0) — the wet-end layout has to
@@ -128,6 +143,7 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz)  — leaders pull +Yd (towa
 LABEL_INSTANCES = [
     ("Pinhole Assembly", "PINHOLE\n(optical ref)", 0, 700, 350),
     ("Other pinhole-wall equipment", "ELECTRICAL\n(panel/inverter/batteries)", 0, 850, 500),
+    ("IBC slice (space taken)", "IBCs\n(space NOT available)", -300, 700, 300),
 ]
 
 
@@ -158,6 +174,7 @@ def build():
     for name, tag, b in [("Context (limited depth)", "Context", context()),
                          ("Near walkway deck", "Deck", deck()),
                          ("Right walkway (partial)", "Walkway", right_walkway()),
+                         ("IBC slice (space taken)", "IBC", ibc_slice()),
                          ("Pinhole Assembly", "Pinhole", ov.pinhole_assembly()),
                          ("Wet-end kit (raked)", "Kit", kit()),
                          ("Person (scale)", "Scale", person()),
@@ -183,11 +200,10 @@ def scene(model, name, on)
   model.layers.each {{ |l| l.visible = (l.name == "Layer0" || l == model.layers[0] || on.include?(l.name)) }}
   pg = model.pages.add(name); pg.use_hidden_layers = true rescue nil; pg
 end
-WET = ["Context","Deck","Walkway","Pinhole","Kit","Scale"]
-scene(model, "Pinhole-wall wet end", WET)
-scene(model, "Other pinhole-wall equipment", ["Context","Deck","Walkway","Pinhole","Pinhole Equipment"])
-scene(model, "Overall", ["Context","Deck","Walkway","Pinhole","Kit","Scale","Pinhole Equipment"])
-scene(model, "Labeled", ["Context","Deck","Walkway","Pinhole","Kit","Scale","Pinhole Equipment","Labels"])
+scene(model, "Pinhole-wall wet end", ["Context","Deck","Walkway","IBC","Pinhole","Kit","Scale"])
+scene(model, "Other pinhole-wall equipment", ["Context","Deck","Walkway","IBC","Pinhole","Pinhole Equipment"])
+scene(model, "Overall", ["Context","Deck","Walkway","IBC","Pinhole","Kit","Scale","Pinhole Equipment"])
+scene(model, "Labeled", ["Context","Deck","Walkway","IBC","Pinhole","Kit","Scale","Pinhole Equipment","Labels"])
 model.layers.each {{ |l| l.visible = true }}
 model.commit_operation
 {{ ok: true }}.to_json

@@ -49,7 +49,7 @@ def walkway_full():
     (near with punch-out, stopping at the IBC; left; right — FAR deck erased post-build),
     the wall gusset brackets, and the IBC-end cantilever arms."""
     p = []
-    for fn in ("walkways", "walkway_brackets", "ibc_cantilever_arms", "right_walkway_cantilever"):
+    for fn in ("walkways", "walkway_brackets", "ibc_cantilever_arms"):
         try:
             r = getattr(ov, fn)()
             p.append("\n".join(r) if isinstance(r, (list, tuple)) else r)
@@ -59,16 +59,21 @@ def walkway_full():
 
 
 def film_plane_beams():
-    """The four corner SUPPORT BEAMS (40x40 rails) the film plane runs on — at the L/R
-    X stations and bottom/top Z, each spanning the full depth in Yd."""
+    """The four corner SUPPORT BEAMS (40x40 rails) the film plane runs on (each spanning
+    the full depth in Yd), plus the 8 wall-seat SADDLE BRACKETS that secure each rail end
+    to the container shell."""
     rail = 40
     z_bot = ov.RAIL_OFF_BOT
     z_top = ov.C_HGT - ov.RAIL_OFF - rail
+    x_left, x_right = ov.RAIL_X_L, ov.RAIL_X_R - rail
     p = []
-    for nm, x in (("L", ov.RAIL_X_L), ("R", ov.RAIL_X_R - rail)):
+    for nm, x in (("L", x_left), ("R", x_right)):
         for zl, rz in (("bot", z_bot), ("top", z_top)):
             p.append(ov.ruby_box(f"FP support beam {nm}-{zl}", x, 0, rz, rail, C_WID, rail,
                                  color=ov.C_STEEL))
+    corners = {"TL": (x_left, z_top), "TR": (x_right, z_top),
+               "BL": (x_left, z_bot), "BR": (x_right, z_bot)}
+    p.append(ov.film_plane_saddles(corners))     # all 8 wall-seat saddle brackets
     return "\n".join(p)
 
 
@@ -220,8 +225,8 @@ model.definitions.purge_unused
 model.pages.to_a.each {{ |pg| model.pages.erase(pg) }}
 opts = model.options["UnitsOptions"]; opts["LengthUnit"]=2; opts["LengthFormat"]=0
 {tags_ruby}{body}
-# remove the FAR walkway (not wanted in this view)
-model.definitions.each {{ |d| d.entities.grep(Sketchup::Group).each {{ |g| g.erase! if g.valid? && g.name == "Walkway Far" }} }}
+# remove the FAR walkway deck AND its cantilever brackets (not wanted in this view)
+model.definitions.each {{ |d| d.entities.grep(Sketchup::Group).each {{ |g| g.erase! if g.valid? && g.name =~ /^Walkway Far/ }} }}
 # in-model callout labels on the 'Labels' tag (shown only in the Labeled scene)
 {labels_ruby()}
 v = model.active_view

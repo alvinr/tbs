@@ -19,24 +19,27 @@ import generate_sketchup_model as ov
 X0, X1 = 2700, 4674            # clear mounting band on the pinhole wall (Yd0)
 C_HGT, C_WID = ov.C_HGT, ov.C_WID
 DECK_Z = ov.WALKWAY_H          # 130
-DECK_W = 550                   # WIDENED near-walkway deck (vs 300) so you walk BESIDE the kit
+DECK_W = ov.WALKWAY_W          # 300 — standard near walkway (evaluate whether it fits)
+VIEW_DEPTH = DECK_W + 300      # 600 — show from the wall out to 300mm PAST the walkway, then stop
 
 C_PERSON = "#806040"
 C_DECK   = "#9C7B4D"
 
 
 def context():
+    """Limited-depth context: the pinhole wall + a floor/ceiling slice only as deep as
+    300mm past the walkway (Yd0..VIEW_DEPTH).  No deep-container geometry."""
+    bx, bw = X0 - 50, (X1 - X0) + 100
     p = []
-    # pinhole wall (a slab just behind Yd0) + floor + ceiling slabs over the band
-    p.append(ov.ruby_box("Pinhole wall (context)", X0 - 50, -ov.WALL_T, 0,
-                         (X1 - X0) + 100, ov.WALL_T, C_HGT, color=ov.C_SHELL, alpha=0.25))
-    p.append(ov.ruby_box("Floor (context)", X0 - 50, 0, -ov.WALL_T,
-                         (X1 - X0) + 100, 1200, ov.WALL_T, color=ov.C_SHELL, alpha=0.18))
-    p.append(ov.ruby_box("Ceiling (context)", X0 - 50, 0, C_HGT,
-                         (X1 - X0) + 100, 1200, ov.WALL_T, color=ov.C_SHELL, alpha=0.10))
-    # IBC stack face hint (band ends here)
-    p.append(ov.ruby_box("IBC face (context)", ov.IBC_COL_X, 0, 0, 30, 1046, 2 * ov.IBC_H_1000,
-                         color=ov.C_IBC_BLUE, alpha=0.12))
+    p.append(ov.ruby_box("Pinhole wall", bx, -ov.WALL_T, 0, bw, ov.WALL_T, C_HGT,
+                         color=ov.C_SHELL, alpha=0.30))
+    p.append(ov.ruby_box("Floor (to 300 past walkway)", bx, 0, -ov.WALL_T, bw, VIEW_DEPTH, ov.WALL_T,
+                         color=ov.C_SHELL, alpha=0.16))
+    p.append(ov.ruby_box("Ceiling (to 300 past walkway)", bx, 0, C_HGT, bw, VIEW_DEPTH, ov.WALL_T,
+                         color=ov.C_SHELL, alpha=0.08))
+    # faint cut plane marking the 300mm-past-walkway depth limit
+    p.append(ov.ruby_box("Depth limit (Yd %d)" % VIEW_DEPTH, bx, VIEW_DEPTH - 2, 0, bw, 4, C_HGT,
+                         color="#2060A0", alpha=0.10))
     return "\n".join(p)
 
 
@@ -84,41 +87,12 @@ def person():
     return "\n".join(pp)
 
 
-# Whole-container CONTEXT — the real overview equipment (everything EXCEPT the corridor
-# wet-end being replaced: equipment_panel + water_plumbing).  optical_cone is included so
-# we can SEE the kit clears the light path.
-CONTEXT = [
-    ("Container Shell", "Shell", "container_shell"),
-    ("Walkways", "Walkways", "walkways"),
-    ("Processing Tray", "Processing Tray", "processing_tray"),
-    ("Pinhole Assembly", "Pinhole", "pinhole_assembly"),
-    ("Optical Cone", "Optical Cone", "optical_cone"),
-    ("Film Plane Mechanism", "Film Plane", "film_plane_mechanism"),
-    ("Spray Bar", "Spray Bar", "spray_bar"),
-    ("IBC Stack", "IBC Stack", "ibc_stack"),
-    ("IBC Rack", "IBC Rack", "ibc_rack"),
-    ("Light-Trap Drum", "Light Trap", "light_trap_drum"),
-    ("Light-Trap Bay", "Light Trap", "light_trap_bay"),
-    ("Light-Trap Door Frame", "Light Seal", "light_trap_frame"),
-    ("Light Seal & Hinges", "Light Seal", "light_seal"),
-    ("Electrical", "Electrical", "electrical"),
-    ("Evap Cooler & Duct", "Evap Cooler", "evap_cooler"),
-    ("Fans A & B", "Fans", "fans"),
-    ("Chemistry Shelf", "Shelf", "shelf"),
-    ("Water/Waste Hookups", "Water Hookups", "water_hookups"),
-]
-
-
 def build():
+    # Focused, limited-depth view: ONLY the pinhole-wall-mounted wet end + a shallow
+    # context slice (wall + floor/ceiling out to 300mm past the walkway) + scale figure.
     comps, tags = [], set()
-    for name, tag, fn in CONTEXT:
-        try:
-            comps.append(ov.component(name, tag, getattr(ov, fn)()))
-            tags.add(tag)
-        except Exception as e:                       # skip any context piece that can't build on this branch
-            print(f"  (skip context {name}: {e})", file=sys.stderr)
-    # the NEW pinhole-wall wet-end massing + proposed widened deck + scale figure
-    for name, tag, b in [("Proposed widened deck", "Deck", deck()),
+    for name, tag, b in [("Context (limited depth)", "Context", context()),
+                         ("Near walkway deck", "Deck", deck()),
                          ("Wet-end kit (raked)", "Kit", kit()),
                          ("Person (scale)", "Scale", person())]:
         comps.append(ov.component(name, tag, b)); tags.add(tag)
@@ -133,7 +107,6 @@ model.definitions.purge_unused
 model.pages.to_a.each {{ |pg| model.pages.erase(pg) }}
 opts = model.options["UnitsOptions"]; opts["LengthUnit"]=2; opts["LengthFormat"]=0
 {tags_ruby}{body}
-# one combined scene, whole length
 pg = model.pages.add("Pinhole-wall layout")
 model.commit_operation
 {{ ok: true }}.to_json

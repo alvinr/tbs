@@ -28,19 +28,33 @@ C_DECK   = "#9C7B4D"
 
 
 def context():
-    """Limited-depth context: the pinhole wall + a floor/ceiling slice only as deep as
-    300mm past the walkway (Yd0..VIEW_DEPTH).  No deep-container geometry."""
+    """Pinhole wall + a FULL-depth floor/ceiling (so the full IBC tanks sit on it), with
+    a faint marker line at the 300mm-past-walkway depth for reference."""
     bx, bw = WALL_X0, WALL_X1 - WALL_X0          # the FULL pinhole wall length
     p = []
     p.append(ov.ruby_box("Pinhole wall", bx, -ov.WALL_T, 0, bw, ov.WALL_T, C_HGT,
                          color=ov.C_SHELL, alpha=0.30))
-    p.append(ov.ruby_box("Floor (to 300 past walkway)", bx, 0, -ov.WALL_T, bw, VIEW_DEPTH, ov.WALL_T,
+    p.append(ov.ruby_box("Floor", bx, 0, -ov.WALL_T, bw, C_WID, ov.WALL_T,
                          color=ov.C_SHELL, alpha=0.16))
-    p.append(ov.ruby_box("Ceiling (to 300 past walkway)", bx, 0, C_HGT, bw, VIEW_DEPTH, ov.WALL_T,
+    p.append(ov.ruby_box("Ceiling", bx, 0, C_HGT, bw, C_WID, ov.WALL_T,
                          color=ov.C_SHELL, alpha=0.08))
-    # faint cut plane marking the 300mm-past-walkway depth limit
-    p.append(ov.ruby_box("Depth limit (Yd %d)" % VIEW_DEPTH, bx, VIEW_DEPTH - 2, 0, bw, 4, C_HGT,
+    # faint reference line at the 300mm-past-walkway depth
+    p.append(ov.ruby_box("Depth ref (Yd %d)" % VIEW_DEPTH, bx, VIEW_DEPTH - 2, 0, bw, 4, C_HGT,
                          color="#2060A0", alpha=0.10))
+    return "\n".join(p)
+
+
+def walkway_full():
+    """Real walkway geometry so the cantilevers + brackets read: perimeter decks
+    (near with punch-out, stopping at the IBC; far; left; right), the wall gusset
+    brackets, and the IBC-end cantilever arms."""
+    p = []
+    for fn in ("walkways", "walkway_brackets", "ibc_cantilever_arms", "right_walkway_cantilever"):
+        try:
+            r = getattr(ov, fn)()
+            p.append("\n".join(r) if isinstance(r, (list, tuple)) else r)
+        except Exception as e:
+            print(f"  (skip {fn}: {e})", file=sys.stderr)
     return "\n".join(p)
 
 
@@ -143,7 +157,7 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz)  — leaders pull +Yd (towa
 LABEL_INSTANCES = [
     ("Pinhole Assembly", "PINHOLE\n(optical ref)", 0, 700, 350),
     ("Other pinhole-wall equipment", "ELECTRICAL\n(panel/inverter/batteries)", 0, 850, 500),
-    ("IBC slice (space taken)", "IBCs\n(space NOT available)", -300, 700, 300),
+    ("IBC Tanks (full)", "IBCs\n(space NOT available)", -300, 900, 300),
 ]
 
 
@@ -171,10 +185,9 @@ def build():
     # equipment (own layer/scene) + a shallow context slice (wall + floor/ceiling out to
     # 300mm past the walkway) + scale figure.  Two scenes: wet end / other equipment.
     comps, tags = [], set()
-    for name, tag, b in [("Context (limited depth)", "Context", context()),
-                         ("Near walkway deck", "Deck", deck()),
-                         ("Right walkway (partial)", "Walkway", right_walkway()),
-                         ("IBC slice (space taken)", "IBC", ibc_slice()),
+    for name, tag, b in [("Context", "Context", context()),
+                         ("Walkways + cantilevers + brackets", "Walkway", walkway_full()),
+                         ("IBC Tanks (full)", "IBC", ov.ibc_stack()),
                          ("Pinhole Assembly", "Pinhole", ov.pinhole_assembly()),
                          ("Wet-end kit (raked)", "Kit", kit()),
                          ("Person (scale)", "Scale", person()),

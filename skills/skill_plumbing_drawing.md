@@ -48,10 +48,29 @@ This is the rule most often gotten wrong — it has had to be fixed repeatedly. 
 - Used for gradual direction changes or to avoid obstacles.
 - Same concentric arc drawing convention, just a smaller sweep angle.
 
-### Tee (T-joint)
-- T-intersection where a branch pipe meets the main run at 90°.
-- Rounded internal junction.
-- Three openings, each drawn with double parallel walls.
+### Tee (T-connector)
+A molded/cast tee fitting (e.g. a US-Plastics 1" socket tee) — **three ports**: a straight
+**RUN** (two collinear ports) plus one **BRANCH** port at 90° to the run, meeting at a common
+center. Codified geometry:
+
+- **Body is one fitting, fatter than the pipe.** The run + branch are a single fitting body whose
+  OD is larger than the pipe OD (the pipe sockets *into* the fitting). Don't draw a tee as a plain
+  box, and don't draw it as three pipes butted together — it is one fatter fitting body.
+- **Run is straight through.** The two run ports are collinear (one axis); the pipe passes straight
+  through. The **branch is perpendicular**, leaving the run centerline at 90° — never a Y, never a
+  slanted branch.
+- **Socket cuff at each of the 3 ends** — a short, slightly-larger raised ring (the socket the pipe
+  inserts into), so the fitting reads as a tee and not a coupling/cross.
+- **Pick the orientation so two of the three flows are collinear** (they become the run) and the odd
+  one out is the branch. A junction where all three legs are mutually perpendicular is an
+  *elbow-with-branch*, not a tee — re-route so two legs line up before placing the tee.
+- **2D section:** three openings each with double parallel walls; the run walls continue straight
+  through; the branch walls meet the run with a small rounded fillet at the internal corner.
+- **3D model:** use the `tee(nm, cx, cy, cz, run, branch, color)` helper in
+  `massing_corridor_panel.py` — `run` = the through axis (`"x"|"y"|"z"`), `branch` = the branch
+  port as axis+sign (e.g. `"x-"`, `"y+"`). It draws the run body + perpendicular branch body
+  (both pipe-OD + a margin) and a socket cuff at all three ends. (Reuse it; don't draw tees as
+  `ruby_box` cubes.)
 
 ### Straight Coupling
 - Short fitting joining two pipe ends.

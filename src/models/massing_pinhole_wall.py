@@ -212,10 +212,12 @@ def kit():
     # (Yd1316 face) — leg + 150mm penetration + drop ONE run, ORANGE check valve.
     # routes to the SHARED IBC-4 merge tee (where DV-02's waste leg also arrives) so a SINGLE
     # pipe makes the tote entry — see cp.MERGE4 / cp.plumbing()'s "IBC-4 (Waste)" entry.
+    # arrives at the merge tee from the −Yd side (the tee's run; DV-02 comes in on the branch) so
+    # the two waste legs do not overlap.
     mx, my, mz = cp.MERGE4
     pipe("DV-01 -> IBC-4 merge",
-         [(dvx, yW, waist), (dvx, yW, 30), (4640, yW, 30), (4640, 1196, 30), (mx, 1196, 30),
-          (mx, 1196, mz), (mx, my, mz)], ov.C_IBC_WASTE)
+         [(dvx, yW, waist), (dvx, yW, 30), (4640, yW, 30), (4640, my - 60, 30), (mx, my - 60, 30),
+          (mx, my - 60, mz), (mx, my, mz)], ov.C_IBC_WASTE)
     return "\n".join(p)
 
 

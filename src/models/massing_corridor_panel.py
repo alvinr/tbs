@@ -156,40 +156,41 @@ C_CHECK = "#8A2BE2"                      # PURPLE — one-way / check valves (vs
 PVB_R, PVB_H, PCAP_H = 50, 180, 30       # vertical body radius / height, head/cap height
 PXC     = FACE_X - 120                    # 4984 — pump body center X (upright, in front of the panel)
 Z_ACC0  = 1780                            # ACC-01 BOTTOM — raised clear of the pipe runs below it
-MERGE4  = (ov.IBC_COL_X + 300, YD_FAR - 200, ov.IBC_PALLET_H + ov.IBC_H_1000 - 106)  # (4974,1116,1230)
-                                          # shared IBC-4 waste merge: DV-01 (wall) + DV-02 join here,
-                                          # then ONE pipe enters the tote (Z below the Brown entry)
+MERGE4  = (ov.IBC_COL_X + 600, YD_FAR - 200, ov.IBC_PALLET_H + ov.IBC_H_1000 - 106)  # (5274,1116,1230)
+                                          # shared IBC-4 waste merge — moved BACK toward the sealed
+                                          # end (behind the pumps/panel), so the grey riser clears
+                                          # the pumps.  DV-01 (wall) + DV-02 join here → one entry.
 BROWN_TAP = (5000, YD_NEAR + 120, ov.IBC_PALLET_H + 90)   # (5000,1166,258) — T-junction above the
                                           # SINGLE shared IBC-3 bottom dip tube; feeds BOTH P-02
                                           # (wall filter loop) and P-05 (drain) → one tote penetration
 
 
-def pump_unit(nm, cx, cy, cz0, face=-1, axis="x", color=None):
-    """UPRIGHT pump (like the filters): vertical body + cap, two ports out the TOP.  `axis` is the
-    port-exit axis: "x" (corridor pumps — exit ±X, perpendicular to the rear PANEL) or "y" (the
-    wall pump P-02 — exit ±Yd, perpendicular to the pinhole WALL); `face` is the sign.  The two
-    ports are offset ±26 in the OTHER horizontal axis.  Tips via pump_out()/pump_in()."""
+def pump_unit(nm, cx, cy, cz0, axis="x", face=1, color=None):
+    """UPRIGHT pump with IN and OUT on OPPOSITE sides near the top — the same pattern as the
+    filters (straight-through).  `axis` = the port line ("x": ports along ±X; "y": along ±Yd);
+    `face` = the sign of the OUT side (+1 → OUT on +axis / IN on −axis; −1 flips).  Tips via
+    pump_in()/pump_out()."""
     color = color or ov.C_PUMP
     top = cz0 + PVB_H
     p = [ov.ruby_cylinder(nm + " body", cx, cy, cz0, PVB_R, PVB_H, color=color, axis="z"),
          ov.ruby_cylinder(nm + " head", cx, cy, top, PVB_R + 3, PCAP_H, color=CDK, axis="z")]
-    pz = top + PCAP_H / 2
-    for tag, off in (("out", +26), ("in", -26)):
+    pz = top - 18                                # ports near the top (like the filter cap ports)
+    for tag, sd in (("in", -face), ("out", face)):
         if axis == "x":
-            x0 = cx + PVB_R if face > 0 else cx - PVB_R - 30
-            p.append(ov.ruby_cylinder(f"{nm} {tag} port", x0, cy + off, pz, RP, 30, color=CDK, axis="x"))
+            x0 = (cx + PVB_R) if sd > 0 else (cx - PVB_R - 30)
+            p.append(ov.ruby_cylinder(f"{nm} {tag} port", x0, cy, pz, RP, 30, color=CDK, axis="x"))
         else:
-            y0 = cy + PVB_R if face > 0 else cy - PVB_R - 30
-            p.append(ov.ruby_cylinder(f"{nm} {tag} port", cx + off, y0, pz, RP, 30, color=CDK, axis="y"))
+            y0 = (cy + PVB_R) if sd > 0 else (cy - PVB_R - 30)
+            p.append(ov.ruby_cylinder(f"{nm} {tag} port", cx, y0, pz, RP, 30, color=CDK, axis="y"))
     return p
 
 
-def pump_out(cx, cy, cz0, face=-1, axis="x"):
-    pz = cz0 + PVB_H + PCAP_H / 2
-    return (cx + face * (PVB_R + 30), cy + 26, pz) if axis == "x" else (cx + 26, cy + face * (PVB_R + 30), pz)
-def pump_in(cx, cy, cz0, face=-1, axis="x"):
-    pz = cz0 + PVB_H + PCAP_H / 2
-    return (cx + face * (PVB_R + 30), cy - 26, pz) if axis == "x" else (cx - 26, cy + face * (PVB_R + 30), pz)
+def pump_out(cx, cy, cz0, axis="x", face=1):
+    pz = cz0 + PVB_H - 18
+    return (cx + face * (PVB_R + 30), cy, pz) if axis == "x" else (cx, cy + face * (PVB_R + 30), pz)
+def pump_in(cx, cy, cz0, axis="x", face=1):
+    pz = cz0 + PVB_H - 18
+    return (cx - face * (PVB_R + 30), cy, pz) if axis == "x" else (cx, cy - face * (PVB_R + 30), pz)
 
 
 def tee(nm, cx, cy, cz, run="x", branch="z-", color=None):
@@ -261,11 +262,15 @@ def _bottom_pickup(p, nm, x, yface, into, col, riser_path):
     p.append(check_valve(nm + " pickup check valve", x, yface - into * 60, z0, "y"))   # in-line on the Yd approach
 
 
-# Pump rows + key fittings on the panel (UPRIGHT pumps; ports at the top, face −X)
-R1, R2 = 300, 560                         # pump base rows (low — knee/shin height)
-ACCX   = FACE_X - 90                       # 5014 — ACC-01 center X
-SVX    = PXC - PVB_R - 70                  # 4864 — SV-02 / DV-02 stand in front of the pumps
-DVZ    = 1180                              # 3W-DV-02 center Z
+# Pumps in a SINGLE vertical column (like the filter row) at (PXC, CTR_Y); IN −Yd / OUT +Yd.
+PSTACK = {"P-01": 300, "P-04": 540, "P-05": 780, "P-03": 1020}   # base Z, bottom → top
+PIY, POY = CTR_Y - (PVB_R + 30), CTR_Y + (PVB_R + 30)            # 1101 (IN) / 1261 (OUT) manifold Yd
+def _piz(key): return PSTACK[key] + PVB_H - 18                    # port Z for a stack key
+SV_Z   = 1180                              # SV-02 (on the P-04 discharge, above the stack)
+DV_Z   = 1340                              # 3W-DV-02 center Z (above the stack)
+# ACC-01 — SeaFlo bladder accumulator: a single BOTTOM port, plumbed as a vertical DEAD-LEG teed
+# onto the Blue supply line (like the pumps/filters tee in, but the tank's only port is underneath).
+ACC_X, ACC_Z0, ACC_TEE_Z = 4660, 640, 560  # tank center X, bottom-port Z, supply-line tee Z
 
 
 def equipment():
@@ -273,17 +278,16 @@ def equipment():
     ACC-01, SV-02 sample tap and 3W-DV-02 — all on the corridor plumbing panel.  (P-02 + the
     filters live on the pinhole wall.)  Pumps are UPRIGHT (filter-style), ports out the top."""
     p = []
-    p += pump_unit("Pump P-01 (Blue supply)", PXC, COL_L, R1)
-    p += pump_unit("Pump P-04 (Tray drain)",  PXC, COL_R, R1)
-    p += pump_unit("Pump P-05 (Brown drain)", PXC, COL_L, R2)
-    p += pump_unit("Pump P-03 (Waste drain)", PXC, COL_R, R2)
-    p.append(ov.ruby_cylinder("ACC-01 Accumulator", ACCX, COL_L, Z_ACC0, 127 / 2, 200, color=ov.C_ACC))
-    # SV-02 sample tap (on the P-04 discharge) + downturned spout
-    p.append(ov.ruby_box("SV-02 sample valve", SVX - 25, COL_R - 25, 1000, 50, 50, 60, color=ov.C_VALVE))
-    p.append(ov.ruby_cylinder("SV-02 sample spout", SVX, COL_R, 1000 - 90, 6, 90, color=ov.C_VALVE))
-    # 3W-DV-02 — Stage-A diverter (input underside from P-04/SV-02; run to Brown −Yd / Waste +Yd;
-    # red handle out the panel −X toward the operator).
-    p.append(diverter("3W-DV-02", SVX + 20, CTR_Y, DVZ, run="y", branch="z-", handle="x-", color=ov.C_VALVE))
+    for label, key in (("Pump P-01 (Blue supply)", "P-01"), ("Pump P-04 (Tray drain)", "P-04"),
+                       ("Pump P-05 (Brown drain)", "P-05"), ("Pump P-03 (Waste drain)", "P-03")):
+        p += pump_unit(label, PXC, CTR_Y, PSTACK[key], axis="y")
+    p.append(ov.ruby_cylinder("ACC-01 Accumulator", ACC_X, CTR_Y, ACC_Z0, 127 / 2, 200, color=ov.C_ACC))
+    p.append(ov.ruby_cylinder("ACC-01 bottom port", ACC_X, CTR_Y, ACC_Z0 - 24, RP + 4, 24, color=CDK, axis="z"))
+    # SV-02 sample tap on the P-04 discharge (+Yd manifold), above the stack + downturned spout
+    p.append(ov.ruby_box("SV-02 sample valve", PXC - 25, POY - 25, SV_Z, 50, 50, 60, color=ov.C_VALVE))
+    p.append(ov.ruby_cylinder("SV-02 sample spout", PXC, POY, SV_Z - 90, 6, 90, color=ov.C_VALVE))
+    # 3W-DV-02 — Stage-A diverter above the stack (input underside; run to Brown −Yd / Waste +Yd)
+    p.append(diverter("3W-DV-02", PXC, CTR_Y, DV_Z, run="y", branch="z-", handle="x-", color=ov.C_VALVE))
     return "\n".join(p)
 
 
@@ -295,50 +299,41 @@ def plumbing():
     clear of the pump bodies (tops ≤ 770)."""
     p = []
     def pipe(nm, wp, col): p.append(ov.ruby_pipe_run(nm, wp, RP, color=col))
-    p1o, p1i = pump_out(PXC, COL_L, R1), pump_in(PXC, COL_L, R1)
-    p4o, p4i = pump_out(PXC, COL_R, R1), pump_in(PXC, COL_R, R1)
+    def pin(k):  return (PXC, PIY, _piz(k))              # IN  tip (−Yd manifold side)
+    def pout(k): return (PXC, POY, _piz(k))             # OUT tip (+Yd manifold side)
     tip = DVB / 2 + DVL                                  # 78 — diverter port-stub tip
-    dvx = SVX + 20                                        # 4884 — DV-02 X
     dvm, dvp = CTR_Y - tip, CTR_Y + tip                  # 1103 / 1259 — DV-02 run−/run+ Yd
     xe  = ov.IBC_COL_X + 300                             # 4974 — tote side-entry X
     bz  = ov.IBC_PALLET_H + ov.IBC_H_1000 - 60           # 1276 — Brown near-top entry
-    wz  = MERGE4[2]                                       # 1230 — Waste entry (below Brown, no clash)
+    wz  = MERGE4[2]                                       # 1230 — Waste entry
     blz = ov.IBC_H_1000 + ov.IBC_PALLET_H + 64           # 1400 — Blue near top
-    GAP = 1166                                            # Yd lane in the gap BETWEEN the pump columns
 
-    # P-04 SUCTION ← tray sump  (lane 4760): −X stub, down, out the corridor mouth
+    # P-04 SUCTION ← tray sump (out the corridor mouth at the IN-manifold Yd, clear of the frame)
     pipe("P-04 suction (from tray sump)",
-         [p4i, (4760, 1227, 495), (4760, 1227, 360), (4500, 1227, 360), (4500, CTR_Y, 360), (4500, CTR_Y, 300)],
+         [pin("P-04"), (4500, PIY, _piz("P-04")), (4500, PIY, 360), (4500, CTR_Y, 360), (4500, CTR_Y, 300)],
          ov.C_IBC_BROWN)
-    # P-04 DISCHARGE → SV-02 → DV-02 underside branch  (riser in the SV-02 plane, X4864)
+    # P-04 DISCHARGE → SV-02 (in-line on the riser) → DV-02 underside branch (+Yd manifold)
     pipe("P-04 -> SV-02 -> DV-02",
-         [p4o, (SVX, 1279, 495), (SVX, 1279, 1000), (SVX, COL_R, 1000), (SVX, CTR_Y, 1000),
-          (dvx, CTR_Y, 1000), (dvx, CTR_Y, DVZ - tip)], ov.C_IBC_BROWN)
-    # DV-02 → IBC-3 Brown  (run− port at dvm → up → across to xe → penetrate)
+         [pout("P-04"), (PXC, POY, DV_Z - tip), (PXC, CTR_Y, DV_Z - tip)], ov.C_IBC_BROWN)
+    # DV-02 → IBC-3 Brown (run− port → down → across → penetrate)
     _side_entry(p, "DV-02 -> IBC-3 (Brown)",
-                [(dvx, dvm, DVZ), (dvx, dvm, bz), (xe, dvm, bz)], xe, YD_NEAR, bz, -1, ov.C_IBC_BROWN)
-    # DV-02 → SHARED IBC-4 merge TEE: DV-02 enters the BRANCH (from −X); DV-01 (from the wall)
-    #    enters the run's −Yd end; the outlet is the run's +Yd end → one tote entry.
+                [(PXC, dvm, DV_Z), (PXC, dvm, bz), (xe, dvm, bz)], xe, YD_NEAR, bz, -1, ov.C_IBC_BROWN)
+    # DV-02 → IBC-4 merge (DV-02 on the −X run end; DV-01 rises into the z− branch; outlet +X)
     pipe("DV-02 -> IBC-4 merge",
-         [(dvx, dvp, DVZ), (dvx, dvp, wz), (dvx, MERGE4[1], wz), MERGE4], ov.C_IBC_WASTE)
-    p.append(tee("IBC-4 waste merge tee", MERGE4[0], MERGE4[1], MERGE4[2], run="y", branch="x-"))
-    _side_entry(p, "IBC-4 (Waste)", [MERGE4, (xe, YD_FAR - 120, wz)], xe, YD_FAR, wz, +1, ov.C_IBC_WASTE)
+         [(PXC, dvp, DV_Z), (PXC, dvp, wz), (PXC, MERGE4[1], wz), MERGE4], ov.C_IBC_WASTE)
+    p.append(tee("IBC-4 waste merge tee", MERGE4[0], MERGE4[1], MERGE4[2], run="x", branch="z-"))
+    xe4 = ov.IBC_COL_X + 700                              # 5374 — entry near the sealed end
+    _side_entry(p, "IBC-4 (Waste)", [MERGE4, (xe4, MERGE4[1], wz)], xe4, YD_FAR, wz, +1, ov.C_IBC_WASTE)
 
-    # BLUE #1 → P-01 suction  (lane 4830)
+    # BLUE #1 → P-01 suction (riser on the IN manifold, then to the near-col tote)
     _side_entry(p, "Blue #1 -> P-01 suction",
-                [p1i, (4830, 1083, 495), (4830, 1083, blz), (4830, GAP, blz), (xe, GAP, blz)],
-                xe, YD_NEAR, blz, -1, ov.C_BLUE)
-    # ACC-01 TWISTED 90°: both ports come off the −X side of the tank (toward the operator), so the
-    # Blue in/out leave toward the mouth and never cross the Brown/Waste drains (which run +X to the
-    # end wall).  IN from P-01 (lower side port), OUT to the supply trunk (upper side port).
-    acc_edge = ACCX - 64                                  # −X face of the ACC
-    acc_in_z, acc_out_z = Z_ACC0 + 60, Z_ACC0 + 110
-    pipe("P-01 -> ACC-01 (in)",
-         [p1o, (4890, 1135, 495), (4890, 1135, acc_in_z), (4890, COL_L, acc_in_z), (acc_edge, COL_L, acc_in_z)],
-         ov.C_BLUE)
-    pipe("ACC-01 -> Blue supply trunk (-> spray bar)",
-         [(acc_edge, COL_L, acc_out_z), (4810, COL_L, acc_out_z), (4810, CTR_Y, acc_out_z),
-          (4810, CTR_Y, 300), (4500, CTR_Y, 300)], ov.C_BLUE)
+                [pin("P-01"), (PXC, PIY, blz), (xe, PIY, blz)], xe, YD_NEAR, blz, -1, ov.C_BLUE)
+    # P-01 → ACC-01 dead-leg tee → trunk to the spray bar (out past the +Yd side of the stack)
+    pipe("P-01 -> supply trunk (via ACC tee)",
+         [pout("P-01"), (PXC, POY, ACC_TEE_Z), (4800, POY, ACC_TEE_Z), (4800, CTR_Y, ACC_TEE_Z),
+          (ACC_X, CTR_Y, ACC_TEE_Z), (4500, CTR_Y, ACC_TEE_Z), (4500, CTR_Y, 300)], ov.C_BLUE)
+    p.append(tee("ACC-01 supply tee", ACC_X, CTR_Y, ACC_TEE_Z, run="x", branch="z+"))
+    pipe("ACC-01 dead-leg (-> bottom port)", [(ACC_X, CTR_Y, ACC_TEE_Z), (ACC_X, CTR_Y, ACC_Z0)], ov.C_BLUE)
     return "\n".join(p)
 
 
@@ -377,25 +372,24 @@ def drains_ports():
     p.append(ov.ruby_cylinder("IBC-3 (Brown) tap flange", tx3, YD_NEAR - 8, tz3, 36, 16, color=ov.C_STEEL, axis="y"))
     p.append(check_valve("IBC-3 (Brown) tap check valve", tx3, YD_NEAR + 60, tz3, "y"))   # in-line on the Yd approach
     p.append(tee("IBC-3 (Brown) tap T", tx3, ty3, tz3, run="z", branch="y-"))   # dip from −Yd; P-05 up / P-02 down
-    # P-05 (Brown drain) suction: shared tap T → P-05 inlet
-    p5i, p5o = pump_in(PXC, COL_L, R2), pump_out(PXC, COL_L, R2)
-    pipe("Brown tap -> P-05 inlet", [BROWN_TAP, (tx3, ty3, 760), (p5i[0], ty3, 760), (p5i[0], p5i[1], 760), p5i], ov.C_IBC_BROWN)
+    # P-05 (Brown drain) suction: shared tap T → up behind the panel → P-05 IN (−Yd manifold)
+    p5i = (PXC, PIY, _piz("P-05")); p5o = (PXC, POY, _piz("P-05"))
+    pipe("Brown tap -> P-05 inlet",
+         [BROWN_TAP, (5060, ty3, tz3), (5060, ty3, p5i[2]), (PXC, ty3, p5i[2]), p5i], ov.C_IBC_BROWN)
     p.append(ov.ruby_cylinder("X3 Brown drain port (end wall)", ew - 60, COL_L, 1700, 22, 60, color=C_CHECK, axis="x"))
-    # runs LOW (Z810, below the ACC) then rises near the end wall + a perpendicular ≥50mm stub
-    # straight into the bulkhead
+    # P-05 OUT → behind the panel → +X to the end wall + a perpendicular ≥50mm bulkhead stub
     pipe("P-05 -> X3 end-wall port",
-         [p5o, (4740, p5o[1], 755), (4740, p5o[1], 810), (4740, COL_L, 810),
-          (ew - 130, COL_L, 810), (ew - 130, COL_L, 1700), (ew - 60, COL_L, 1700)], ov.C_IBC_BROWN)
+         [p5o, (5060, POY, p5o[2]), (5060, COL_L, p5o[2]), (ew - 130, COL_L, p5o[2]),
+          (ew - 130, COL_L, 1700), (ew - 60, COL_L, 1700)], ov.C_IBC_BROWN)
 
     # ── IBC-4 WASTE: own bottom pickup (bend points DOWN to floor) → P-03 → X4 end-wall port ──
-    p3i, p3o = pump_in(PXC, COL_R, R2), pump_out(PXC, COL_R, R2)
-    ay4 = YD_FAR - 120
+    p3i = (PXC, PIY, _piz("P-03")); p3o = (PXC, POY, _piz("P-03"))
     _bottom_pickup(p, "X4 Waste (P-03)", 5200, YD_FAR, +1, ov.C_IBC_WASTE,
-                   [(5200, ay4, 760), (p3i[0], ay4, 760), (p3i[0], p3i[1], 760), p3i])
+                   [(5200, YD_FAR - 120, p3i[2]), (5060, YD_FAR - 120, p3i[2]), (5060, PIY, p3i[2]), (PXC, PIY, p3i[2])])
     p.append(ov.ruby_cylinder("X4 Waste drain port (end wall)", ew - 60, COL_R, 1620, 22, 60, color=C_CHECK, axis="x"))
     pipe("P-03 -> X4 end-wall port",
-         [p3o, (4720, p3o[1], 755), (4720, p3o[1], 810), (4720, COL_R, 810),
-          (ew - 130, COL_R, 810), (ew - 130, COL_R, 1620), (ew - 60, COL_R, 1620)], ov.C_IBC_WASTE)
+         [p3o, (5060, POY, p3o[2]), (5060, COL_R, p3o[2]), (ew - 130, COL_R, p3o[2]),
+          (ew - 130, COL_R, 1620), (ew - 60, COL_R, 1620)], ov.C_IBC_WASTE)
     return "\n".join(p)
 
 

@@ -136,7 +136,7 @@ def kit():
     waist = 1000               # SV-01 + DV-01 reach height
     cdk = "#222228"
 
-    FX = {"F1": 3300, "F2": 3700, "F3": 4100}                      # filters shifted toward the IBC
+    FX = {"F1": 3300, "F2": 3638, "F3": 3976}                      # spacing tightened (jumper −40%)
     def f_in(nm):  return (FX[nm] - (fr + 30), fcy, tie)           # IN  port (−X)
     def f_out(nm): return (FX[nm] + (fr + 30), fcy, tie)           # OUT port (+X)
 
@@ -149,15 +149,14 @@ def kit():
                 [(fx + sd * (fr - 6), fcy, cap_z), (fx + sd * (fr + 30), fcy, cap_z)], rp, color=cdk))
         p.append(ov.ruby_cylinder(f"Filter {nm} PR button", fx, fcy, f_bot + BB_H, 6, 9, color=ov.C_STEEL))
 
-    # ── P-02 — UPRIGHT, ROTATED 90° so the IN/OUT ports exit PERPENDICULAR to the pinhole WALL
-    #    (+Yd, toward the operator).  Mounted just −X of F1.  OUT → F1 inlet; IN ← the shared
-    #    Brown tap (cp.BROWN_TAP). ──
-    p2cx  = FX["F1"] - (fr + cp.PVB_R + 30)                        # body center just −X of F1 (~3128)
+    # ── P-02 — UPRIGHT, IN/OUT on OPPOSITE sides along X (same pattern as the filters): OUT (+X)
+    #    feeds straight into F1; IN (−X) takes the suction from the shared Brown tap. ──
+    p2cx  = f_in("F1")[0] - (cp.PVB_R + 30) - 40                   # body center: OUT tip 40mm before F1
     p2cy  = fcy                                                    # same Yd lane as the filters
-    p2cz0 = cap_z - (cp.PVB_H + cp.PCAP_H / 2)                     # ports at the filter-cap height
-    p += cp.pump_unit("Pump P-02 (Brown)", p2cx, p2cy, p2cz0, face=1, axis="y", color=ov.C_PUMP)
-    p2_out = cp.pump_out(p2cx, p2cy, p2cz0, 1, "y")               # OUT port — exits +Yd
-    p2_in  = cp.pump_in(p2cx, p2cy, p2cz0, 1, "y")               # IN port — exits +Yd
+    p2cz0 = cap_z - (cp.PVB_H - 18)                               # OUT/IN port height at the cap level
+    p += cp.pump_unit("Pump P-02 (Brown)", p2cx, p2cy, p2cz0, axis="x", color=ov.C_PUMP)
+    p2_out = cp.pump_out(p2cx, p2cy, p2cz0, "x")                  # OUT port — exits +X (→ F1)
+    p2_in  = cp.pump_in(p2cx, p2cy, p2cz0, "x")                   # IN port — exits −X (suction)
 
     # ── SV-01 sample tap (projects forward to yL for cup access) + flat-T 3W-DV-01 mounted
     #    back on the plywood (yW), both at WAIST level for easy reach ──
@@ -176,10 +175,8 @@ def kit():
     pipe("IBC-3 (Brown) tap -> P-02 inlet",
          [(tx, ty, tz), (tx, ty, 70), (4600, ty, 70), (4600, yB, 70),
           (p2_in[0], yB, 70), (p2_in[0], yB, p2_in[2]), p2_in], ov.C_IBC_BROWN)
-    # 2. P-02 OUT (+Yd) → F1 inlet — perpendicular stub off the port, then over and back to F1
-    pipe("P-02 -> F1",
-         [p2_out, (p2_out[0], p2_out[1] + 26, cap_z), (f_in("F1")[0], p2_out[1] + 26, cap_z), f_in("F1")],
-         ov.C_IBC_BROWN)
+    # 2. P-02 OUT (+X) → F1 inlet — straight, in line (same axis as the filter chain)
+    pipe("P-02 -> F1", [p2_out, f_in("F1")], ov.C_IBC_BROWN)
     # 3. filter-skid jumpers F1→F2→F3 — straight pipe between the adjacent in-line ports
     #    (combo unit; the ports face each other in the gap, so no around-the-body routing)
     for a, b in (("F1", "F2"), ("F2", "F3")):
@@ -214,10 +211,13 @@ def kit():
     # pipe makes the tote entry — see cp.MERGE4 / cp.plumbing()'s "IBC-4 (Waste)" entry.
     # arrives at the merge tee from the −Yd side (the tee's run; DV-02 comes in on the branch) so
     # the two waste legs do not overlap.
+    # crosses under the walkway at Z70 (clear of the IBC frame), runs +X along the corridor gap
+    # toward the SEALED END, and rises BEHIND the pumps/panel into the merge tee's underside branch
+    # (so it never passes through the pumps or the frame).
     mx, my, mz = cp.MERGE4
     pipe("DV-01 -> IBC-4 merge",
-         [(dvx, yW, waist), (dvx, yW, 30), (4640, yW, 30), (4640, my - 60, 30), (mx, my - 60, 30),
-          (mx, my - 60, mz), (mx, my, mz)], ov.C_IBC_WASTE)
+         [(dvx, yW, waist), (dvx, yW, 70), (dvx, my, 70), (mx, my, 70), (mx, my, mz)],
+         ov.C_IBC_WASTE)
     return "\n".join(p)
 
 

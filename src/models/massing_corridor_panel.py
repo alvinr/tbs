@@ -410,14 +410,20 @@ def plumbing():
 
     # BLUE #1 → P-01 suction: P-01 IN → front Yd-jog onto its back-lane → penetrate the panel →
     # vertical riser BEHIND the panel (clear of the pump-port stack) → back to the front → near tote.
+    # IN approached convention-style (P-04 reference): −Yd stub straight out of the IN port, around
+    # the front of the body, up the threading lane (between body Yd1131+ and the near upright Yd≤1096)
+    # behind the panel, to the tote.
     z01 = _piz("P-01")
     _side_entry(p, "Blue #1 -> P-01 suction",
-                [pin("P-01"), (PXC, BL_P01, z01), (BLANE, BL_P01, z01), (BLANE, BL_P01, blz),
-                 (PXC, BL_P01, blz), (xe, BL_P01, blz)], xe, YD_NEAR, blz, -1, ov.C_BLUE)
+                [pin("P-01"), (PXC, PIY - 30, z01), (4900, PIY - 30, z01), (4900, BL_P01, z01),
+                 (BLANE, BL_P01, z01), (BLANE, BL_P01, blz), (PXC, BL_P01, blz), (xe, BL_P01, blz)],
+                xe, YD_NEAR, blz, -1, ov.C_BLUE)
     p.append(ball_valve("BV-01 (P-01 suction)", BLANE, BL_P01, z01 + 150, "z"))   # on the back riser
     # Blue supply IN LINE through ACC-01 (like a filter in the chain): P-01 OUT → ACC IN (+Yd),
     # ACC OUT (−Yd) → trunk out the mouth to the spray bar.
-    pipe("P-01 -> ACC-01 (in)", [pout("P-01"), (PXC, POY, ACC_PZ), acc_in()], ov.C_BLUE)
+    # OUT leaves convention-style: +Yd stub straight out of the OUT port, then up to ACC-01 IN.
+    pipe("P-01 -> ACC-01 (in)",
+         [pout("P-01"), (PXC, POY + 30, _piz("P-01")), (PXC, POY + 30, ACC_PZ), acc_in()], ov.C_BLUE)
     # ACC-01 OUT → supply trunk → leaves the panel toward the spray bar / chem-prep tap (BV-04 at
     # TAP-01, BV-05 at the spray bar live at THOSE destinations, off this model — see schematic).
     pipe("Blue supply trunk -> spray bar / TAP-01 (off-panel)",
@@ -471,25 +477,27 @@ def drains_ports():
     # P-05 (Brown drain) suction: shared tap T → +X run end → rise to P-05 IN (−Yd manifold)
     p5i = (PXC, PIY, _piz("P-05")); p5o = (PXC, POY, _piz("P-05"))
     z05 = _piz("P-05")
-    pipe("Brown tap -> P-05 inlet",
-         [BROWN_TAP, (PXC, ty3, tz3), (PXC, BL_P05, tz3), (BLANE, BL_P05, tz3),
-          (BLANE, BL_P05, z05), (PXC, BL_P05, z05), p5i], ov.C_IBC_BROWN)
+    pipe("Brown tap -> P-05 inlet",   # IN approached convention-style: down the back riser, thread to
+         [BROWN_TAP, (PXC, ty3, tz3), (PXC, BL_P05, tz3), (BLANE, BL_P05, tz3), (BLANE, BL_P05, z05),
+          (BLANE, BL_P01, z05), (4900, BL_P01, z05), (4900, PIY - 30, z05), (PXC, PIY - 30, z05), p5i],
+         ov.C_IBC_BROWN)        # the front, then a −Yd stub straight into the IN port
     p.append(ball_valve("BV-02 (P-05 suction)", BLANE, BL_P05, z05 - 170, "z"))   # on the back riser
     p.append(ov.ruby_cylinder("X3 Brown drain port (end wall)", ew - 60, COL_L, 1700, 22, 60, color=C_CHECK, axis="x"))
     # P-05 OUT → behind the panel → +X to the end wall + a perpendicular ≥50mm bulkhead stub
-    pipe("P-05 -> X3 end-wall port",
-         [p5o, (5060, POY, p5o[2]), (5060, COL_L, p5o[2]), (ew - 130, COL_L, p5o[2]),
-          (ew - 130, COL_L, 1700), (ew - 60, COL_L, 1700)], ov.C_IBC_BROWN)
+    pipe("P-05 -> X3 end-wall port",   # OUT leaves with a +Yd stub straight out of the OUT port
+         [p5o, (PXC, POY + 30, p5o[2]), (5060, POY + 30, p5o[2]), (5060, COL_L, p5o[2]),
+          (ew - 130, COL_L, p5o[2]), (ew - 130, COL_L, 1700), (ew - 60, COL_L, 1700)], ov.C_IBC_BROWN)
 
     # ── IBC-4 WASTE: own bottom pickup (bend points DOWN to floor) → P-03 → X4 end-wall port ──
     p3i = (PXC, PIY, _piz("P-03")); p3o = (PXC, POY, _piz("P-03"))
-    _bottom_pickup(p, "X4 Waste (P-03)", 5200, YD_FAR, +1, ov.C_IBC_WASTE,
-                   [(5200, YD_FAR - 120, p3i[2]), (5060, YD_FAR - 120, p3i[2]), (5060, PIY, p3i[2]), (PXC, PIY, p3i[2])])
-    p.append(ball_valve("BV-06 (P-03 suction)", 5022, PIY, p3i[2], "x"))   # waste-drain suction isolation
+    _bottom_pickup(p, "X4 Waste (P-03)", 5200, YD_FAR, +1, ov.C_IBC_WASTE,   # IN ends convention-style:
+                   [(5200, YD_FAR - 120, p3i[2]), (5060, YD_FAR - 120, p3i[2]), (5060, PIY - 30, p3i[2]),
+                    (PXC, PIY - 30, p3i[2]), (PXC, PIY, p3i[2])])             # −Yd stub straight into the IN port
+    p.append(ball_valve("BV-06 (P-03 suction)", 5022, PIY - 30, p3i[2], "x"))   # waste-drain suction isolation
     p.append(ov.ruby_cylinder("X4 Waste drain port (end wall)", ew - 60, COL_R, 1620, 22, 60, color=C_CHECK, axis="x"))
-    pipe("P-03 -> X4 end-wall port",
-         [p3o, (5060, POY, p3o[2]), (5060, COL_R, p3o[2]), (ew - 130, COL_R, p3o[2]),
-          (ew - 130, COL_R, 1620), (ew - 60, COL_R, 1620)], ov.C_IBC_WASTE)
+    pipe("P-03 -> X4 end-wall port",   # OUT leaves with a +Yd stub straight out of the OUT port
+         [p3o, (PXC, POY + 30, p3o[2]), (5060, POY + 30, p3o[2]), (5060, COL_R, p3o[2]),
+          (ew - 130, COL_R, p3o[2]), (ew - 130, COL_R, 1620), (ew - 60, COL_R, 1620)], ov.C_IBC_WASTE)
     return "\n".join(p)
 
 

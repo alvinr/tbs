@@ -478,8 +478,9 @@ def drains_ports():
     p.append(ov.ruby_pipe_run("IBC-3 (Brown) bottom tap (shared P-02/P-05)",
         [(tx3, yin3, tz3 - 50), (tx3, yin3, tz3), (tx3, ty3, tz3)], RP, color=ov.C_IBC_BROWN))
     p.append(ov.ruby_cylinder("IBC-3 (Brown) tap flange", tx3, YD_NEAR - 8, tz3, 36, 16, color=ov.C_STEEL, axis="y"))
-    p.append(check_valve("IBC-3 (Brown) tap check valve", tx3, YD_NEAR + 60, tz3, "y"))   # in-line on the Yd approach
     p.append(tee("IBC-3 (Brown) tap T", tx3, ty3, tz3, run="x", branch="y-"))   # dip on −Yd; P-02 −X / P-05 +X
+    # (no check valve at the bottom tap — the schematic's CV-3 is at the IBC-3 buffer return TOP;
+    #  the shared bottom tap is just the tee feeding P-02/P-05 through BV-03/BV-02)
     # P-05 (Brown drain) suction: shared tap T → +X run end → rise to P-05 IN (−Yd manifold)
     p5i = (PXC, PIY, _piz("P-05")); p5o = (PXC, POY, _piz("P-05"))
     z05 = _piz("P-05")

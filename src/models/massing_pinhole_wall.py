@@ -203,11 +203,13 @@ def kit():
     # Blue leg → Blue IBC (top tote), FRONT-face entry near top — leg + 150mm penetration + drop
     # are ONE run so every 90 gets a swept elbow; ORANGE anti-siphon check valve on the approach.
     bz = 2 * ov.IBC_H_1000 - 180                 # ~2156 — Blue tote near-top entry
+    yBlue = 600                                   # leave the pinhole wall: turn out to Yd600 BEFORE
+                                                  # entering the Blue tote front face (not against the wall)
     pipe("DV-01 -> Blue IBC (IBC-2)",
          [(dvx, yW, waist), (xf - ENTRY_OFF, yW, waist), (xf - ENTRY_OFF, yW, bz),
-          (xf + 150, yW, bz), (xf + 150, yW, bz - 150)], ov.C_BLUE)
-    p.append(ov.ruby_cylinder("Blue IBC (IBC-2) flange", xf - 8, yW, bz, 36, 16, color=ov.C_STEEL, axis="x"))
-    p.append(ov.ruby_box("Blue IBC (IBC-2) check valve", xf - ENTRY_OFF + 18, yW - 20, bz - 18, 40, 40, 36, color=cp.C_CHECK))
+          (xf - ENTRY_OFF, yBlue, bz), (xf + 150, yBlue, bz), (xf + 150, yBlue, bz - 150)], ov.C_BLUE)
+    p.append(ov.ruby_cylinder("Blue IBC (IBC-2) flange", xf - 8, yBlue, bz, 36, 16, color=ov.C_STEEL, axis="x"))
+    p.append(ov.ruby_box("Blue IBC (IBC-2) check valve", xf - ENTRY_OFF + 18, yBlue - 20, bz - 18, 40, 40, 36, color=cp.C_CHECK))
     # Waste leg (off the underside branch) → Waste IBC (IBC-4, far-bottom).  Drops to the floor,
     # runs UNDER the walkway into the PLUMBING CORRIDOR, and enters from the CORRIDOR side
     # (Yd1316 face) — leg + 150mm penetration + drop ONE run, ORANGE check valve.

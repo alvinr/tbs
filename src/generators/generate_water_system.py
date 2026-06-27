@@ -272,15 +272,14 @@ def draw_sheet1():
     # IBC-2 outlet → BV-01 (parallel with IBC-1)
     pipe(ax1, 3.3, 7.48, 3.3, 7.0, C_BLUE)
     pipe(ax1, 3.3, 7.0, 2.4 + VR, 7.0, C_BLUE)
-    ax1.text(2.4, 7.62, 'IBC-1 & IBC-2 IN PARALLEL\n(X1 fill tee; shared BV-01 supply)',
-             ha="center", fontsize=5.5, color=C_BLUE, style="italic")
+    ax1.text(2.4, 7.55, 'IBC-1 & IBC-2 IN PARALLEL  (X1 fill tee · shared BV-01 supply\n· 1" tank-to-tank EQUALIZATION, level balance)',
+             ha="center", fontsize=5.2, color=C_BLUE, style="italic")
 
-    # Blue equalization — 1" cross-tie between the two tank bottoms (level balance)
-    EQ_Y = 7.3
-    pipe(ax1, 1.5, EQ_Y, 3.3, EQ_Y, C_BLUE)
-    ax1.plot([1.5, 3.3], [EQ_Y, EQ_Y], "o", ms=3.5, color=C_BLUE, zorder=6)
-    ax1.text(2.4, 7.22, '1" BLUE EQUALIZATION (bottoms tied — level balance)',
-             ha="center", fontsize=5.3, color=C_BLUE, style="italic")
+    # Blue equalization — 1" cross-tie DIRECTLY between the two tank bodies, low on
+    # the wall (IBC-1 right wall ↔ IBC-2 left wall) — level balance, not off the outlets.
+    EQ_Y = 7.85
+    pipe(ax1, 2.2, EQ_Y, 2.6, EQ_Y, C_BLUE)
+    ax1.plot([2.2, 2.6], [EQ_Y, EQ_Y], "o", ms=3.5, color=C_BLUE, zorder=6)
 
     # Valve on outlet
     valve(ax1, 2.4, 7.0, color=C_BLUE)
@@ -335,7 +334,7 @@ def draw_sheet1():
     # External fill (X1) via end-wall bulkhead — gravity feed, side-entry near the top of the Blue totes (no top-cap access)
     pipe(ax1, 1.5, 8.9, 1.5, 9.5, C_BLUE)
     check_valve(ax1, 1.5, 9.22, 0, -1, color=C_BLUE)               # anti-siphon — no back-feed out X1
-    ax1.text(1.18, 9.22, "CV1", ha="right", va="center", fontsize=5.5, color=C_BLUE)
+    ax1.text(1.18, 9.22, "CV-1", ha="right", va="center", fontsize=5.5, color=C_BLUE)
     arrow_pipe(ax1, 1.5, 9.45, 1.5, 9.36, color=C_BLUE)            # downward fill flow
     ext_port(ax1, 1.5, 9.65, color=C_BLUE, label="X1")
     ax1.text(1.5, 9.95, "EXT. FILL\n2\" NPT\nGRAVITY", ha="center", fontsize=5.5,
@@ -366,11 +365,9 @@ def draw_sheet1():
              ha="center", fontsize=6.5, color=C_BROWN)
     RIN_TOP = 8.55
     pipe(ax1, RIN_X, 6.3, RIN_X, RIN_TOP, C_BROWN, style="--")      # riser up to tank
-    check_valve(ax1, RIN_X, 6.95, 0, 1, color=C_BROWN)             # anti-siphon (flow up into IBC-3)
-    ax1.text(RIN_X + 0.16, 6.95, "CV3", ha="left", va="center", fontsize=5.5, color=C_BROWN)
-    valve(ax1, RIN_X, 7.5, color=C_BROWN)
-    ax1.text(RIN_X + 0.16, 7.5, "BV-03", ha="left", fontsize=6, color=C_BROWN)
-    arrow_pipe(ax1, RIN_X, 7.85, RIN_X, 8.15, color=C_BROWN)
+    check_valve(ax1, RIN_X, 7.2, 0, 1, color=C_BROWN)             # anti-siphon (flow up into IBC-3)
+    ax1.text(RIN_X + 0.16, 7.2, "CV-3", ha="left", va="center", fontsize=5.5, color=C_BROWN)
+    arrow_pipe(ax1, RIN_X, 7.7, RIN_X, 8.15, color=C_BROWN)
     pipe(ax1, RIN_X, RIN_TOP, 7.1, RIN_TOP, C_BROWN, style="--")    # into tank right side, near top
     arrow_pipe(ax1, 7.35, RIN_TOP, 7.16, RIN_TOP, color=C_BROWN)
 
@@ -460,7 +457,7 @@ def draw_sheet1():
     arrow_pipe(ax1, 5.0, RET_Y, 4.7, RET_Y, color=C_BLUE)            # short leftward return arrow
     pipe(ax1, 3.3, RET_Y, 3.3, 8.9, C_BLUE, style="--")              # down to IBC-2 side-entry near top
     check_valve(ax1, 3.3, 9.04, 0, -1, color=C_BLUE)                 # anti-siphon before IBC-2
-    ax1.text(3.5, 9.04, "CV2", ha="left", va="center", fontsize=5.5, color=C_BLUE)
+    ax1.text(3.5, 9.04, "CV-2", ha="left", va="center", fontsize=5.5, color=C_BLUE)
     arrow_pipe(ax1, 3.3, 8.92, 3.3, 8.85, color=C_BLUE)              # downward return arrow
     ax1.text(6.5, RET_Y + 0.15, "RECYCLED → IBC-2 SIDE-ENTRY (both Blue totes filled in parallel)",
              ha="center", fontsize=6, color=C_BLUE, style="italic")
@@ -480,7 +477,7 @@ def draw_sheet1():
     pipe(ax1, W_X, 6.3 + BR,  W_X, W_Y - W_H/2,  C_BLACK)  # brown crossing to IBC bottom
     arrow_pipe(ax1, W_X, 3.4, W_X, 4.5,       color=C_BLACK)   # upward flow (lower)
     check_valve(ax1, W_X, 6.62, 0, 1, color=C_BLACK)          # anti-siphon before IBC-4
-    ax1.text(W_X + 0.18, 6.62, "CV4", ha="left", va="center", fontsize=5.5, color=C_BLACK)
+    ax1.text(W_X + 0.18, 6.62, "CV-4", ha="left", va="center", fontsize=5.5, color=C_BLACK)
     arrow_pipe(ax1, W_X, 6.78, W_X, W_Y - W_H/2 - 0.02, color=C_BLACK)  # upward (upper)
 
     # ── Waste drain-out — IBC-4 to exterior drain port X4 via P-03 ────────────

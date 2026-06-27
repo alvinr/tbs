@@ -65,7 +65,7 @@ def classify(name):
     if "grate" in n:                   # the walkway GRATE (a surface) — the sump drain may loop
         return ("grate", "sump")       # up THROUGH it and back down (key "sump" excludes the drain)
     if any(k in n for k in ("rwk", "cantilever", "long beam", "end beam", "bearer", "upright clamp",
-                            "saddle", "gusset", "fp support beam")):
+                            "saddle", "gusset", "fp support beam", "walkway near bracket", "walkway bracket")):
         return ("cantilever", None)
     if ("tray" in n or "print on" in n) and "->" not in name:
         return ("skip", None)          # the real tray geometry is an OPEN basin; the footprint
@@ -78,7 +78,7 @@ def classify(name):
     # PIPE (a pipe run segment, elbow, or fitting on a line)
     if ("->" in name or any(k in n for k in (" entry", "pickup", "suction", "equaliz", " tap ",
             "merge", "trunk", "fill ", "drain port", "riser", " inlet", "supply", "dead-leg",
-            "spray bar", " port"))):
+            "spray bar", " port", "branch", "tap-0", "bv-0 riser"))):
         return ("pipe", None)
     return ("other", None)
 

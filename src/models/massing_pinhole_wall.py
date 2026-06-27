@@ -303,7 +303,10 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz)
     (ov.IBC_COL_X - 60, 600, 2 * ov.IBC_H_1000 - 180, "CV-2\n(IBC-2 return)", 0, 450, 200),
     (ov.IBC_COL_X + 300, cp.YD_NEAR + 60, ov.IBC_PALLET_H + ov.IBC_H_1000 - 60, "CV-3\n(IBC-3 return)", -600, 250, 200),
     (ov.IBC_COL_X + 700, cp.YD_FAR - 60, cp.MERGE4[2], "CV-4\n(IBC-4 waste)", -600, 250, 200),
-    # ── TAP-01 chem tap + spray-bar supply (off the corridor panel, along the wall) ──
+]
+# Off-panel / context labels — shown ONLY in the full "Labeled" scene (Labels Context tag), kept
+# OUT of the "Plumbing (labeled)" scene so their leaders don't clutter the plumbing view.
+LABEL_CONTEXT_POINTS = [
     (ov.TAP_X, 112, ov.TAP_Z, "TAP-01\n(chem tap)", 0, 450, 300),
     (ov.TAP_X, 12, 1010, "BV-04", -450, 0, 250),
     (ov.BV02_X, 12, ov.BV02_Z, "BV-05\n(spray bar)", 0, 450, 250),
@@ -322,6 +325,11 @@ def labels_ruby():
             f'anc = Geom::Point3d.new({ov.mm(x)},{ov.mm(y)},{ov.mm(z)})\n'
             f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)},{ov.mm(dy)},{ov.mm(dz)}))\n'
             f'txt.layer = model.layers["Labels"] rescue nil')
+    for x, y, z, text, dx, dy, dz in LABEL_CONTEXT_POINTS:   # off-panel labels → Labels Context tag
+        rows.append(
+            f'anc = Geom::Point3d.new({ov.mm(x)},{ov.mm(y)},{ov.mm(z)})\n'
+            f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)},{ov.mm(dy)},{ov.mm(dz)}))\n'
+            f'txt.layer = model.layers["Labels Context"] rescue nil')
     for name, text, dx, dy, dz in LABEL_INSTANCES:
         rows.append(
             f'inst = entities.grep(Sketchup::ComponentInstance).find {{ |i| i.name == "{name}" }}\n'

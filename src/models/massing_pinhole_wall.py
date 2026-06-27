@@ -60,21 +60,19 @@ def walkway_full():
 
 
 def film_plane_beams():
-    """The four corner SUPPORT BEAMS (40x40 rails) the film plane runs on (each spanning
-    the full depth in Yd), plus the 8 wall-seat SADDLE BRACKETS that secure each rail end
-    to the container shell."""
+    """The RIGHT-side (IBC-end) film-plane SUPPORT BEAMS (40x40 rails, full depth in Yd) +
+    their wall-seat SADDLE BRACKETS.  The LEFT-side (cargo-door end) rails are omitted in
+    this view to keep the wet end readable."""
     rail = 40
     z_bot = ov.RAIL_OFF_BOT
     z_top = ov.C_HGT - ov.RAIL_OFF - rail
-    x_left, x_right = ov.RAIL_X_L, ov.RAIL_X_R - rail
+    x_right = ov.RAIL_X_R - rail
     p = []
-    for nm, x in (("L", x_left), ("R", x_right)):
-        for zl, rz in (("bot", z_bot), ("top", z_top)):
-            p.append(ov.ruby_box(f"FP support beam {nm}-{zl}", x, 0, rz, rail, C_WID, rail,
-                                 color=ov.C_STEEL))
-    corners = {"TL": (x_left, z_top), "TR": (x_right, z_top),
-               "BL": (x_left, z_bot), "BR": (x_right, z_bot)}
-    p.append(ov.film_plane_saddles(corners))     # all 8 wall-seat saddle brackets
+    for zl, rz in (("bot", z_bot), ("top", z_top)):
+        p.append(ov.ruby_box(f"FP support beam R-{zl}", x_right, 0, rz, rail, C_WID, rail,
+                             color=ov.C_STEEL))
+    corners = {"TR": (x_right, z_top), "BR": (x_right, z_bot)}
+    p.append(ov.film_plane_saddles(corners))     # right-end wall-seat saddle brackets only
     return "\n".join(p)
 
 
@@ -113,39 +111,10 @@ def other_equipment():
     return "\n".join(p)
 
 
-def _arm(nm, cx, cy, cz, axis, sd, body, L, r, color):
-    """One port stub of a fitting — a cylinder from the body face outward along an axis."""
-    if axis == "x":
-        x0 = cx + body / 2 if sd > 0 else cx - body / 2 - L
-        return ov.ruby_cylinder(nm, x0, cy, cz, r, L, color=color, axis="x")
-    if axis == "y":
-        y0 = cy + body / 2 if sd > 0 else cy - body / 2 - L
-        return ov.ruby_cylinder(nm, cx, y0, cz, r, L, color=color, axis="y")
-    z0 = cz + body / 2 if sd > 0 else cz - body / 2 - L
-    return ov.ruby_cylinder(nm, cx, cy, z0, r, L, color=color, axis="z")
-
-
-C_HANDLE = "#C0202A"   # red diverter handle
-
-
-def diverter(name, cx, cy, cz, run="x", branch="z-", color=None, L=55, r=13):
-    """3-way diverter = a standard T-port valve (3 coplanar ports, handle perpendicular)
-    rotated onto a VERTICAL WALL: the 3 pipes lie in the wall plane (seen face-on as a T),
-    and the RED handle projects out of the wall (+Yd) toward the operator.  `run` is the
-    through-run axis (both ways); `branch` is the divert port as axis+sign, default 'z-'
-    (exits the UNDERSIDE).  Valve body kept yellow (color defaults to C_VALVE)."""
-    color = color or ov.C_VALVE
-    body = 46
-    ba, bs = branch[0], (+1 if "+" in branch else -1)
-    p = [ov.ruby_box(f"{name} body", cx - body / 2, cy - body / 2, cz - body / 2, body, body, body, color=color)]
-    p.append(_arm(f"{name} run +", cx, cy, cz, run, +1, body, L, r, color))
-    p.append(_arm(f"{name} run -", cx, cy, cz, run, -1, body, L, r, color))
-    p.append(_arm(f"{name} branch", cx, cy, cz, ba, bs, body, L, r, color))
-    # RED handle out of the wall plane (+Yd, toward the operator), with a lever bar along the run
-    hy = cy + body / 2
-    p.append(ov.ruby_cylinder(f"{name} handle stem", cx, hy, cz, 6, 42, color=C_HANDLE, axis="y"))
-    p.append(ov.ruby_box(f"{name} handle lever", cx - 32, hy + 38, cz - 7, 64, 16, 14, color=C_HANDLE))
-    return "\n".join(p)
+# Flat-T red-handle 3-way diverter — shared with the corridor module (DV-01 on the wall,
+# DV-02 on the corridor panel) and kept there to avoid a circular import.
+C_HANDLE = cp.C_HANDLE
+diverter = cp.diverter
 
 
 def kit():
@@ -161,7 +130,7 @@ def kit():
     f_bot = f_top - BB_H       # 2000 — the high tier
     fcy = fr + 12              # 104 — filter center Yd (sump back near the wall)
     cap_z = f_bot + BB_H - cap_h / 2   # 2301 — filter cap port centerline
-    tie = cap_z - 40           # 2261 — filter port tie-in (bottom of the down-elbow)
+    tie = cap_z                # ports are STRAIGHT/horizontal (in-line filter) — no down-elbow
     rp = ov.PUMP_PIPE_OD / 2   # 10.5
     yL, yS = 230, 295          # feed lane / suction+exit lane (clear of the bodies, Yd ≤ 196)
     yW = 35                    # wall plane — pipes/valves mounted on the plywood backing
@@ -172,14 +141,13 @@ def kit():
     def f_in(nm):  return (FX[nm] - (fr + 30), fcy, tie)           # IN  port (−X)
     def f_out(nm): return (FX[nm] + (fr + 30), fcy, tie)           # OUT port (+X)
 
-    # ── 3 Big Blue filters — F1 50µm / F2 KDF-55 / F3 GAC; in-line ±X 'T' ports, stub→down ──
+    # ── 3 Big Blue filters — F1 50µm / F2 KDF-55 / F3 GAC; STRAIGHT in-line ±X ports ──
     for nm, fx in FX.items():
         p.append(ov.ruby_cylinder(f"Filter {nm} sump", fx, fcy, f_bot, fr, BB_H - cap_h, color=ov.C_FILTER))
         p.append(ov.ruby_cylinder(f"Filter {nm} cap", fx, fcy, f_bot + BB_H - cap_h, fr + 3, cap_h, color=cdk))
         for tag, sd in (("in", -1), ("out", +1)):
             p.append(ov.ruby_pipe_run(f"Filter {nm} {tag} port",
-                [(fx + sd * (fr - 6), fcy, cap_z), (fx + sd * (fr + 30), fcy, cap_z),
-                 (fx + sd * (fr + 30), fcy, tie)], rp, color=cdk))
+                [(fx + sd * (fr - 6), fcy, cap_z), (fx + sd * (fr + 30), fcy, cap_z)], rp, color=cdk))
         p.append(ov.ruby_cylinder(f"Filter {nm} PR button", fx, fcy, f_bot + BB_H, 6, 9, color=ov.C_STEEL))
 
     # ── P-02 — far side from the IBCs (low X), filter level; head faces +Yd, ports come DOWN ──
@@ -204,9 +172,16 @@ def kit():
     # ── PLUMBING ──
     def pipe(nm, wp, col): p.append(ov.ruby_pipe_run(nm, wp, rp, color=col))
     fz = p2_pz - 40                                                # 2153 — pump-port feed height
-    # 1. IBC-3 (Brown buffer) suction → P-02 inlet (long run from the stack, on the suction lane)
+    # 1. IBC-3 (Brown buffer) suction → P-02 inlet.  IBC-3 is the near-column BASE tote, so the
+    #    feed is picked up on the PLUMBING-CORRIDOR side at its base (Yd1046 face), drops to the
+    #    floor, runs along the wall base, then RISES the pinhole wall to P-02's high inlet — it
+    #    must NOT tap the Blue tote up top.
+    bx, bz0 = 4950, 250          # Brown tote corridor-side outlet, base level (corridor face Yd1046)
+    p.append(ov.ruby_cylinder("IBC-3 (Brown) outlet flange", bx, 1046 + 8, bz0, 36, 16, color=ov.C_STEEL, axis="y"))
     pipe("IBC-3 (Brown) -> P-02 inlet",
-         [(ov.IBC_COL_X + 80, yS, fz), (p2_port(-1)[0], yS, fz), (p2_port(-1)[0], yL, fz), p2_port(-1)],
+         [(bx, 1046, bz0), (bx, 1100, bz0), (bx, 1100, 70),
+          (4600, 1100, 70), (4600, yW, 70), (p2x - 30, yW, 70),
+          (p2x - 30, yW, fz), p2_port(-1)],
          ov.C_IBC_BROWN)
     # 2. P-02 outlet → F1 inlet
     pipe("P-02 -> F1",
@@ -324,13 +299,16 @@ def build():
                          ("Walkways + cantilevers + brackets", "Walkway", walkway_full()),
                          ("Film-plane support beams", "Film Plane", film_plane_beams()),
                          ("IBC Tanks (full)", "IBC", ov.ibc_stack()),
+                         ("IBC restraint (bars + wall anchors)", "IBC Frame", cp.tote_restraint()),
                          ("Pinhole Assembly", "Pinhole", ov.pinhole_assembly()),
                          ("Wall backing (ply)", "Backing", backing()),
                          ("Wet-end kit (raked)", "Kit", kit()),
                          ("Person (scale)", "Scale", person()),
                          ("Other pinhole-wall equipment", "Pinhole Equipment", other_equipment()),
                          ("Corridor frame (deep box)", "Corridor Frame", cp.frame()),
-                         ("Corridor rear panel", "Corridor Panel", cp.rear_panel())]:
+                         ("Corridor rear panel", "Corridor Panel", cp.rear_panel()),
+                         ("Corridor equipment", "Corridor Equipment", cp.equipment()),
+                         ("Corridor plumbing", "Corridor Plumbing", cp.plumbing())]:
         comps.append(ov.component(name, tag, b)); tags.add(tag)
     tags.add("Labels")
     body = "\n".join(comps)
@@ -358,22 +336,23 @@ def scene(model, name, on, xray=false)
   pg.use_hidden_layers = true rescue nil
   pg
 end
-scene(model, "Pinhole-wall wet end", ["Context","Walkway","Film Plane","IBC","Pinhole","Backing","Kit","Scale"])
-scene(model, "Other pinhole-wall equipment", ["Context","Walkway","Film Plane","IBC","Pinhole","Pinhole Equipment"], true)
-scene(model, "Plumbing", ["Kit"])
-scene(model, "Corridor panel", ["Context","Walkway","IBC","Corridor Frame","Corridor Panel","Scale"])
-scene(model, "Overall", ["Context","Walkway","Film Plane","IBC","Pinhole","Backing","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel"])
-scene(model, "Labeled", ["Context","Walkway","Film Plane","IBC","Pinhole","Backing","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Labels"])
-model.rendering_options["ModelTransparency"] = false
+scene(model, "Pinhole-wall wet end", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Kit","Scale"])
+scene(model, "Other pinhole-wall equipment", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Pinhole Equipment"], true)
+scene(model, "Plumbing", ["Kit","Corridor Equipment","Corridor Plumbing"])
+scene(model, "Corridor panel", ["Context","Walkway","IBC","IBC Frame","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Scale"])
+scene(model, "Overall", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing"])
+scene(model, "Labeled", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Labels"])
 model.layers.each {{ |l| l.visible = true }}
-# robustly bake X-ray (ghost) into the "Other" scene's rendering options
-op = model.pages["Other pinhole-wall equipment"]
-if op
-  op.use_rendering_options = true
-  model.rendering_options["ModelTransparency"] = true
-  op.update(PAGE_USE_RENDERING_OPTIONS)
-  model.rendering_options["ModelTransparency"] = false
-end
+# Definitively bake per-page X-ray: SELECT each page, set the rendering option live, then
+# update the page to capture it (selecting first is what makes the capture stick).
+xray_on = ["Other pinhole-wall equipment"]
+model.pages.each {{ |pg|
+  model.pages.selected_page = pg
+  pg.use_rendering_options = true
+  model.rendering_options["ModelTransparency"] = xray_on.include?(pg.name)
+  pg.update(PAGE_USE_RENDERING_OPTIONS)
+}}
+model.rendering_options["ModelTransparency"] = false
 model.commit_operation
 {{ ok: true }}.to_json
 '''

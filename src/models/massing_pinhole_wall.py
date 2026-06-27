@@ -173,10 +173,12 @@ def kit():
     #    continuous run (an elbow at every 90).  It must NOT tap the Blue tote up top.
     bx, bz0 = 4950, 250                           # Brown tote corridor-side pickup, base level
     byin = 1046 - 150                             # 150mm penetration into the tote (Yd896)
+    yB = 80                                        # brown runs at Yd80 along the base — CLEAR of the
+                                                  # grey DV-01 waste drop (which falls at Yd=yW=35)
     pipe("IBC-3 (Brown) -> P-02 inlet",
          [(bx, byin, 40), (bx, byin, bz0), (bx, 1100, bz0), (bx, 1100, 70),
-          (4600, 1100, 70), (4600, yW, 70), (p2_in[0], yW, 70),
-          (p2_in[0], yW, p2_in[2]), p2_in], ov.C_IBC_BROWN)
+          (4600, 1100, 70), (4600, yB, 70), (p2_in[0], yB, 70),
+          (p2_in[0], yB, p2_in[2]), p2_in], ov.C_IBC_BROWN)
     p.append(ov.ruby_cylinder("IBC-3 (Brown) pickup flange", bx, 1038, bz0, 36, 16, color=ov.C_STEEL, axis="y"))
     p.append(ov.ruby_box("IBC-3 (Brown) pickup check valve", bx - 20, 1100 - 18, bz0 - 18, 40, 36, 40, color=cp.C_CHECK))
     # 2. P-02 outlet → F1 inlet — straight, in line (the pump is aligned to feed F1 directly)
@@ -325,7 +327,7 @@ v.camera = Sketchup::Camera.new(Geom::Point3d.new(800.mm, 6000.mm, 2300.mm), Geo
 # alpha does not.)  ModelTransparency stays OFF everywhere.
 model.rendering_options["ModelTransparency"] = false
 ghost = model.materials["GhostEquip"] || model.materials.add("GhostEquip")
-ghost.color = Sketchup::Color.new(150,160,175); ghost.alpha = 0.30
+ghost.color = Sketchup::Color.new(150,160,175); ghost.alpha = 0.35   # match the IBC-stack ghost alpha
 def ghost_faces(ents, mat)
   ents.each {{ |e|
     if e.is_a?(Sketchup::Face); e.material = mat; e.back_material = mat

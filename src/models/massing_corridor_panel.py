@@ -476,7 +476,7 @@ def drains_ports():
     tx3, ty3, tz3 = BROWN_TAP
     yin3 = YD_NEAR - 150                                  # 896 — penetration into the Brown tote
     p.append(ov.ruby_pipe_run("IBC-3 (Brown) bottom tap (shared P-02/P-05)",
-        [(tx3, yin3, tz3 - 50), (tx3, yin3, tz3), (tx3, ty3, tz3)], RP, color=ov.C_IBC_BROWN))
+        [(tx3, yin3, tz3 - 50), (tx3, yin3, tz3), (tx3, ty3 - 36, tz3)], RP, color=ov.C_IBC_BROWN))  # into the tee's −Yd branch end
     p.append(ov.ruby_cylinder("IBC-3 (Brown) tap flange", tx3, YD_NEAR - 8, tz3, 36, 16, color=ov.C_STEEL, axis="y"))
     p.append(tee("IBC-3 (Brown) tap T", tx3, ty3, tz3, run="x", branch="y-"))   # dip on −Yd; P-02 −X / P-05 +X
     # (no check valve at the bottom tap — the schematic's CV-3 is at the IBC-3 buffer return TOP;
@@ -484,8 +484,8 @@ def drains_ports():
     # P-05 (Brown drain) suction: shared tap T → +X run end → rise to P-05 IN (−Yd manifold)
     p5i = (PXC, PIY, _piz("P-05")); p5o = (PXC, POY, _piz("P-05"))
     z05 = _piz("P-05")
-    pipe("Brown tap -> P-05 inlet",   # IN approached convention-style: down the back riser, thread to
-         [BROWN_TAP, (PXC, ty3, tz3), (PXC, BL_P05, tz3), (BLANE, BL_P05, tz3), (BLANE, BL_P05, z05),
+    pipe("Brown tap -> P-05 inlet",   # OFF the tee's +X run end; IN approached convention-style via the back riser
+         [(tx3 + 30, ty3, tz3), (PXC, ty3, tz3), (PXC, BL_P05, tz3), (BLANE, BL_P05, tz3), (BLANE, BL_P05, z05),
           (BLANE, BL_P01, z05), (4900, BL_P01, z05), (4900, PIY - 30, z05), (PXC, PIY - 30, z05), p5i],
          ov.C_IBC_BROWN)        # the front, then a −Yd stub straight into the IN port
     p.append(ball_valve("BV-02 (P-05 suction)", BLANE, BL_P05, z05 - 170, "z"))   # on the back riser

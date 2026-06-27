@@ -397,9 +397,9 @@ def draw_sheet1():
     # ── Brown drain-out — shared tap → P-05 → exterior drain port X3 ─────────────
     BD_X = 5.35
     pipe(ax1, 6.4, TAP_Y, BD_X, TAP_Y, C_BROWN)                     # tee branch → drain riser
-    pipe(ax1, BD_X, TAP_Y, BD_X, 7.55, C_BROWN)                     # up to BV-07
+    pipe(ax1, BD_X, TAP_Y, BD_X, 7.55, C_BROWN)                     # up to BV-02 (P-05 drain isolation)
     valve(ax1, BD_X, 7.65, color=C_BROWN)
-    ax1.text(BD_X - 0.15, 7.62, "BV-07", ha="right", fontsize=6, color=C_BROWN)
+    ax1.text(BD_X - 0.15, 7.62, "BV-02", ha="right", fontsize=6, color=C_BROWN)
     pipe(ax1, BD_X, 7.75, BD_X, 8.3 - PR, C_BROWN)                  # valve top → pump bottom
     pump(ax1, BD_X, 8.3, color=C_PUMP)
     ax1.text(BD_X - 0.15, 8.2, "P-05\n12VDC", ha="right", fontsize=6, color=C_PUMP)
@@ -494,7 +494,7 @@ def draw_sheet1():
     WD_X = 12.6
     pipe(ax1, W_X + W_W/2, 7.8, WD_X + VR, 7.8, C_BLACK)   # stub from IBC right edge → valve
     valve(ax1, WD_X, 7.8, color=C_BLACK)
-    ax1.text(WD_X + 0.15, 7.75, "BV-08", ha="left", fontsize=6, color=C_BLACK)
+    ax1.text(WD_X + 0.15, 7.75, "BV-06", ha="left", fontsize=6, color=C_BLACK)
     pipe(ax1, WD_X, 7.8 + VR, WD_X, 8.7 - PR, C_BLACK)     # valve top → pump bottom
     pump(ax1, WD_X, 8.7, color=C_PUMP)
     ax1.text(WD_X + 0.15, 8.65, "P-03\n12VDC", ha="left", fontsize=6, color=C_PUMP)

@@ -149,13 +149,14 @@ def kit():
                 [(fx + sd * (fr - 6), fcy, cap_z), (fx + sd * (fr + 30), fcy, cap_z)], rp, color=cdk))
         p.append(ov.ruby_cylinder(f"Filter {nm} PR button", fx, fcy, f_bot + BB_H, 6, 9, color=ov.C_STEEL))
 
-    # ── P-02 — just −X of F1, head facing +X so the OUTLET feeds STRAIGHT into F1's inlet
-    #    (same Shurflo body as the corridor pumps).  Inlet (lower port) takes the Brown suction.
-    p2hx = f_in("F1")[0] - 58                                      # head front 58mm before F1 inlet
-    p2fz = cap_z - cp.PORT_DZ                                      # so the upper (out) port lines up with cap_z
-    p += cp.pump_unit("Pump P-02 (Brown)", p2hx, fcy, p2fz, face=1, color=ov.C_PUMP)
-    p2_out = cp.pump_out(p2hx, fcy, p2fz, 1)                       # (≈3148, 104, cap_z) — in line with F1 inlet
-    p2_in  = cp.pump_in(p2hx, fcy, p2fz, 1)                        # lower port — Brown suction tie-in
+    # ── P-02 — UPRIGHT (filter-style, ports out the TOP), just −X of F1 with its OUT port in
+    #    line with F1's inlet so the discharge feeds STRAIGHT into F1.  IN port takes the suction.
+    p2cx  = f_in("F1")[0] - (cp.PVB_R + 30) - 40                   # body center: OUT tip 40mm before F1
+    p2cy  = fcy - 26                                               # so the OUT port (cy+26) aligns to the filter Yd
+    p2cz0 = cap_z - (cp.PVB_H + cp.PCAP_H / 2)                     # so the OUT port lines up with cap_z
+    p += cp.pump_unit("Pump P-02 (Brown)", p2cx, p2cy, p2cz0, face=1, color=ov.C_PUMP)
+    p2_out = cp.pump_out(p2cx, p2cy, p2cz0, 1)                     # (≈3138, fcy, cap_z) — in line with F1 inlet
+    p2_in  = cp.pump_in(p2cx, p2cy, p2cz0, 1)                      # IN port (top) — Brown suction tie-in
 
     # ── SV-01 sample tap (projects forward to yL for cup access) + flat-T 3W-DV-01 mounted
     #    back on the plywood (yW), both at WAIST level for easy reach ──
@@ -173,7 +174,7 @@ def kit():
     bx, bz0 = 4950, 250                           # Brown tote corridor-side pickup, base level
     byin = 1046 - 150                             # 150mm penetration into the tote (Yd896)
     pipe("IBC-3 (Brown) -> P-02 inlet",
-         [(bx, byin, bz0 + 120), (bx, byin, bz0), (bx, 1100, bz0), (bx, 1100, 70),
+         [(bx, byin, 40), (bx, byin, bz0), (bx, 1100, bz0), (bx, 1100, 70),
           (4600, 1100, 70), (4600, yW, 70), (p2_in[0], yW, 70),
           (p2_in[0], yW, p2_in[2]), p2_in], ov.C_IBC_BROWN)
     p.append(ov.ruby_cylinder("IBC-3 (Brown) pickup flange", bx, 1038, bz0, 36, 16, color=ov.C_STEEL, axis="y"))
@@ -208,12 +209,12 @@ def kit():
     # Waste leg (off the underside branch) → Waste IBC (IBC-4, far-bottom).  Drops to the floor,
     # runs UNDER the walkway into the PLUMBING CORRIDOR, and enters from the CORRIDOR side
     # (Yd1316 face) — leg + 150mm penetration + drop ONE run, ORANGE check valve.
-    wx, wz, yf = 4900, ov.IBC_H_1000 - 80, 1316
-    pipe("DV-01 -> Waste IBC (IBC-4)",
-         [(dvx, yW, waist), (dvx, yW, 30), (4640, yW, 30), (4640, 1196, 30), (wx, 1196, 30),
-          (wx, 1196, wz), (wx, yf + 150, wz), (wx, yf + 150, wz - 150)], ov.C_IBC_WASTE)
-    p.append(ov.ruby_cylinder("Waste IBC (IBC-4) flange", wx, yf - 8, wz, 36, 16, color=ov.C_STEEL, axis="y"))
-    p.append(ov.ruby_box("Waste IBC (IBC-4) check valve", wx - 20, yf - ENTRY_OFF + 18, wz - 18, 40, 36, 40, color=cp.C_CHECK))
+    # routes to the SHARED IBC-4 merge tee (where DV-02's waste leg also arrives) so a SINGLE
+    # pipe makes the tote entry — see cp.MERGE4 / cp.plumbing()'s "IBC-4 (Waste)" entry.
+    mx, my, mz = cp.MERGE4
+    pipe("DV-01 -> IBC-4 merge",
+         [(dvx, yW, waist), (dvx, yW, 30), (4640, yW, 30), (4640, 1196, 30), (mx, 1196, 30),
+          (mx, 1196, mz), (mx, my, mz)], ov.C_IBC_WASTE)
     return "\n".join(p)
 
 
@@ -287,8 +288,9 @@ def build():
     for name, tag, b in [("Context", "Context", context()),
                          ("Walkways + cantilevers + brackets", "Walkway", walkway_full()),
                          ("Film-plane support beams", "Film Plane", film_plane_beams()),
-                         ("IBC Tanks (full)", "IBC", ov.ibc_stack()),
+                         ("IBC Tanks (full)", "IBC", ov.ibc_stack(alpha=0.35)),
                          ("IBC restraint (bars + wall anchors)", "IBC Frame", cp.tote_restraint()),
+                         ("End wall (context)", "Context", cp.end_wall()),
                          ("Pinhole Assembly", "Pinhole", ov.pinhole_assembly()),
                          ("Wall backing (ply)", "Backing", backing()),
                          ("Wet-end kit (raked)", "Kit", kit()),
@@ -343,6 +345,7 @@ def scene(model, name, on)
 end
 scene(model, "Water System", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Kit","Scale"])
 scene(model, "Plumbing", ["Kit","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
+scene(model, "Plumbing + IBC", ["Kit","Corridor Equipment","Corridor Plumbing","Corridor Drains","IBC"])
 scene(model, "Overall", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
 scene(model, "Labeled", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains","Labels"])
 model.layers.each {{ |l| l.visible = true }}

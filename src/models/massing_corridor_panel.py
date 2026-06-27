@@ -362,10 +362,9 @@ def drains_ports():
     p.append(check_valve("X1 one-way valve", ew - 200, CTR_Y, x1z, "x"))   # in-line, just after the camlock
     pipe("X1 camlock -> one-way -> tee (straight)", [(ew - 60, CTR_Y, x1z), (tx, CTR_Y, x1z)], ov.C_BLUE)
     p.append(tee("X1 fill tee", tx, CTR_Y, x1z, run="y", branch="x+"))   # inlet from +X, splits ±Yd to the blues
-    for yface, into, nm in ((YD_NEAR, -1, "Blue #1"), (YD_FAR, +1, "Blue #2")):
-        _side_entry(p, f"X1 fill -> {nm}",
-                    [(tx, CTR_Y, x1z), (tx, yface - into * 120, x1z), (5200, yface - into * 120, x1z)],
-                    5200, yface, x1z, into, ov.C_BLUE, check=False)
+    # each outlet runs STRAIGHT ±Yd off the tee's run port into its tote (no −X detour)
+    for yface, into, nm in ((YD_NEAR, -1, "Blue #1 (IBC-1)"), (YD_FAR, +1, "Blue #2 (IBC-2)")):
+        _side_entry(p, f"X1 fill -> {nm}", [(tx, CTR_Y, x1z)], tx, yface, x1z, into, ov.C_BLUE, check=False)
 
     # ── IBC-3 BROWN: ONE shared bottom tap (dip tube → floor) → T-junction (cp.BROWN_TAP) that
     #    feeds BOTH P-05 (drain) and P-02 (wall filter loop) — a single tote penetration. ──

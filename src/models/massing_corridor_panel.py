@@ -252,9 +252,10 @@ def _bottom_pickup(p, nm, x, yface, into, col, riser_path):
     """Tote BOTTOM pickup: penetrate the corridor face near the base, the 90° bend points DOWN to
     the FLOOR (dip tube), then back up through the flange and along `riser_path` to the pump inlet
     — ONE pipe_run (elbows everywhere).  Flange + ORANGE check valve."""
-    z0  = ov.IBC_PALLET_H + 90              # base pickup level
+    z0  = ov.IBC_PALLET_H + 90              # base pickup level (just above the pallet)
     yin = yface + into * 150                # 150mm penetration into the tote
-    wps = [(x, yin, 40), (x, yin, z0), (x, yface - into * 120, z0)] + list(riser_path)
+    # after the elbow inside the tote the dip tube descends only 50mm (a short standpipe), NOT to the floor
+    wps = [(x, yin, z0 - 50), (x, yin, z0), (x, yface - into * 120, z0)] + list(riser_path)
     p.append(ov.ruby_pipe_run(nm + " pickup", wps, RP, color=col))
     p.append(ov.ruby_cylinder(nm + " pickup flange", x, yface - into * 8, z0, 36, 16, color=ov.C_STEEL, axis="y"))
     p.append(check_valve(nm + " pickup check valve", x, yface - into * 60, z0, "y"))   # in-line on the Yd approach
@@ -327,16 +328,17 @@ def plumbing():
     _side_entry(p, "Blue #1 -> P-01 suction",
                 [p1i, (4830, 1083, 495), (4830, 1083, blz), (4830, GAP, blz), (xe, GAP, blz)],
                 xe, YD_NEAR, blz, -1, ov.C_BLUE)
-    # P-01 → ACC-01 IN  (lane 4890 up, then +X over the pumps into the ACC base; 150 drop)
-    aci = Z_ACC0 - 150                                    # 1230 — ACC IN turn (150 below the tank)
+    # ACC-01 TWISTED 90°: both ports come off the −X side of the tank (toward the operator), so the
+    # Blue in/out leave toward the mouth and never cross the Brown/Waste drains (which run +X to the
+    # end wall).  IN from P-01 (lower side port), OUT to the supply trunk (upper side port).
+    acc_edge = ACCX - 64                                  # −X face of the ACC
+    acc_in_z, acc_out_z = Z_ACC0 + 60, Z_ACC0 + 110
     pipe("P-01 -> ACC-01 (in)",
-         [p1o, (4890, 1135, 495), (4890, 1135, aci), (ACCX, 1135, aci), (ACCX, COL_L - 22, aci), (ACCX, COL_L - 22, Z_ACC0)],
+         [p1o, (4890, 1135, 495), (4890, 1135, acc_in_z), (4890, COL_L, acc_in_z), (acc_edge, COL_L, acc_in_z)],
          ov.C_BLUE)
-    # ACC-01 OUT → supply trunk  (260 drop before turning, lane 4810, out the mouth)
-    aco = Z_ACC0 - 260                                    # 1120 — ACC OUT turn (clear of the IN at 1230)
     pipe("ACC-01 -> Blue supply trunk (-> spray bar)",
-         [(ACCX, COL_L + 22, Z_ACC0), (ACCX, COL_L + 22, aco), (4810, COL_L + 22, aco),
-          (4810, CTR_Y, aco), (4810, CTR_Y, 300), (4500, CTR_Y, 300)], ov.C_BLUE)
+         [(acc_edge, COL_L, acc_out_z), (4810, COL_L, acc_out_z), (4810, CTR_Y, acc_out_z),
+          (4810, CTR_Y, 300), (4500, CTR_Y, 300)], ov.C_BLUE)
     return "\n".join(p)
 
 
@@ -371,7 +373,7 @@ def drains_ports():
     tx3, ty3, tz3 = BROWN_TAP
     yin3 = YD_NEAR - 150                                  # 896 — penetration into the Brown tote
     p.append(ov.ruby_pipe_run("IBC-3 (Brown) bottom tap (shared P-02/P-05)",
-        [(tx3, yin3, 40), (tx3, yin3, tz3), (tx3, ty3, tz3)], RP, color=ov.C_IBC_BROWN))
+        [(tx3, yin3, tz3 - 50), (tx3, yin3, tz3), (tx3, ty3, tz3)], RP, color=ov.C_IBC_BROWN))
     p.append(ov.ruby_cylinder("IBC-3 (Brown) tap flange", tx3, YD_NEAR - 8, tz3, 36, 16, color=ov.C_STEEL, axis="y"))
     p.append(check_valve("IBC-3 (Brown) tap check valve", tx3, YD_NEAR + 60, tz3, "y"))   # in-line on the Yd approach
     p.append(tee("IBC-3 (Brown) tap T", tx3, ty3, tz3, run="z", branch="y-"))   # dip from −Yd; P-05 up / P-02 down
@@ -379,7 +381,11 @@ def drains_ports():
     p5i, p5o = pump_in(PXC, COL_L, R2), pump_out(PXC, COL_L, R2)
     pipe("Brown tap -> P-05 inlet", [BROWN_TAP, (tx3, ty3, 760), (p5i[0], ty3, 760), (p5i[0], p5i[1], 760), p5i], ov.C_IBC_BROWN)
     p.append(ov.ruby_cylinder("X3 Brown drain port (end wall)", ew - 60, COL_L, 1700, 22, 60, color=C_CHECK, axis="x"))
-    pipe("P-05 -> X3 end-wall port", [p5o, (4740, p5o[1], 755), (4740, p5o[1], 1700), (ew - 60, p5o[1], 1700), (ew - 60, COL_L, 1700)], ov.C_IBC_BROWN)
+    # runs LOW (Z810, below the ACC) then rises near the end wall + a perpendicular ≥50mm stub
+    # straight into the bulkhead
+    pipe("P-05 -> X3 end-wall port",
+         [p5o, (4740, p5o[1], 755), (4740, p5o[1], 810), (4740, COL_L, 810),
+          (ew - 130, COL_L, 810), (ew - 130, COL_L, 1700), (ew - 60, COL_L, 1700)], ov.C_IBC_BROWN)
 
     # ── IBC-4 WASTE: own bottom pickup (bend points DOWN to floor) → P-03 → X4 end-wall port ──
     p3i, p3o = pump_in(PXC, COL_R, R2), pump_out(PXC, COL_R, R2)
@@ -387,7 +393,9 @@ def drains_ports():
     _bottom_pickup(p, "X4 Waste (P-03)", 5200, YD_FAR, +1, ov.C_IBC_WASTE,
                    [(5200, ay4, 760), (p3i[0], ay4, 760), (p3i[0], p3i[1], 760), p3i])
     p.append(ov.ruby_cylinder("X4 Waste drain port (end wall)", ew - 60, COL_R, 1620, 22, 60, color=C_CHECK, axis="x"))
-    pipe("P-03 -> X4 end-wall port", [p3o, (4720, p3o[1], 755), (4720, p3o[1], 1620), (ew - 60, p3o[1], 1620), (ew - 60, COL_R, 1620)], ov.C_IBC_WASTE)
+    pipe("P-03 -> X4 end-wall port",
+         [p3o, (4720, p3o[1], 755), (4720, p3o[1], 810), (4720, COL_R, 810),
+          (ew - 130, COL_R, 810), (ew - 130, COL_R, 1620), (ew - 60, COL_R, 1620)], ov.C_IBC_WASTE)
     return "\n".join(p)
 
 

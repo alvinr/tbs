@@ -55,7 +55,9 @@ def classify(name):
     if "accumulator" in n or n.startswith("acc-01"):
         return ("acc", "ACC-01")
     if "filter" in n and "->" not in name:
-        return ("filter", None)
+        import re
+        m = re.search(r"\bf(\d)\b", n)           # key = "F1"/"F2"/"F3" so a pipe naming that
+        return ("filter", f"F{m.group(1)}" if m else None)   # filter (it connects to) is excluded
     if any(k in n for k in ("upright", "frame rail", "foot plate", "foot anchor", "rear-panel bracket",
                             "front portal", "panel mount", "retaining bar", "wall hanger", "through-bolt",
                             "front bar", "d-ring")):

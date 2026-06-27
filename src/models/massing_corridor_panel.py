@@ -234,6 +234,29 @@ def check_valve(nm, px, py, pz, axis, color=None):
     return ov.ruby_cylinder(nm, px, py, pz - L / 2, r, L, color=color, axis="z")
 
 
+C_BV = "#7A8088"                              # ball-valve body — chrome/steel grey (distinct from
+                                              # PURPLE check valves and YELLOW diverters)
+
+
+def ball_valve(nm, px, py, pz, axis, color=None):
+    """In-line MANUAL ball valve: a short barrel the pipe runs THROUGH (centered on the pipe
+    centerline, oriented ALONG `axis`) plus a small RED lever handle perpendicular to the run.
+    Like a check valve it sits on a STRAIGHT length of pipe, never on an elbow."""
+    color = color or C_BV
+    L, r, hl = 44, RP + 8, 34                 # barrel length / radius, handle lever length
+    p = []
+    if axis == "x":
+        p.append(ov.ruby_cylinder(nm, px - L / 2, py, pz, r, L, color=color, axis="x"))
+        p.append(ov.ruby_box(nm + " handle", px - 5, py + r, pz - 5, 10, hl, 10, color=C_HANDLE))
+    elif axis == "y":
+        p.append(ov.ruby_cylinder(nm, px, py - L / 2, pz, r, L, color=color, axis="y"))
+        p.append(ov.ruby_box(nm + " handle", px + r, py - 5, pz - 5, hl, 10, 10, color=C_HANDLE))
+    else:
+        p.append(ov.ruby_cylinder(nm, px, py, pz - L / 2, r, L, color=color, axis="z"))
+        p.append(ov.ruby_box(nm + " handle", px + r, py - 5, pz - 5, hl, 10, 10, color=C_HANDLE))
+    return "\n".join(p)
+
+
 def _side_entry(p, nm, approach, x, yface, z, into, col, drop=-150, check=True):
     """Tote side-entry near the top, from the corridor.  `approach` = the FULL leg waypoint
     list UP TO the approach-turn point (x, af, z); this is concatenated with the in-tote
@@ -268,6 +291,15 @@ def _bottom_pickup(p, nm, x, yface, into, col, riser_path):
 PSTACK = {"P-01": 280, "P-04": 940, "P-05": 1340, "P-03": 1740}  # base Z
 PIY, POY = CTR_Y - (PVB_R + 30), CTR_Y + (PVB_R + 30)            # 1101 (IN) / 1261 (OUT) manifold Yd
 def _piz(key): return PSTACK[key] + PVB_H - 18                    # port Z for a stack key
+# ── BACK-OF-PANEL routing: LONG vertical risers run BEHIND the rear panel (no pump ports there),
+#    penetrating the ply; SHORT interconnects stay on the front.  Each long riser gets a UNIQUE Yd
+#    lane, and the Yd-jog onto that lane is done on the FRONT (at x=PXC, unique z per port) BEFORE
+#    penetrating, so the penetrations and the back verticals never share a plane. ──
+BLANE = BACK_X + EQT + 60                                        # 5182 — back-of-panel riser plane
+# Unique Yd lanes spread across the clear back band BETWEEN the corner uprights (near upright
+# Yd1046–1096, far upright Yd1296–1346) → keep lanes inside ~1105–1285, ≥30mm apart:
+BL_P01, BL_P05, BL_P04 = 1115, 1145, 1175                        # IN-side suction back-lanes
+BL_P04OUT, BL_DVBR, BL_DVWST = 1195, 1225, 1250                  # OUT/top back-lanes (clear of far upright Yd1266)
 SV_Z   = 2020                              # SV-02 (on the P-04 discharge, above the stack)
 DV_Z   = 2160                              # 3W-DV-02 center Z (above the stack)
 # ACC-01 — SeaFlo bladder accumulator: a single BOTTOM port, plumbed as a vertical DEAD-LEG teed
@@ -328,31 +360,50 @@ def plumbing():
     valveZ = ov.WALKWAY_H + 65                          # 195 — valve body above the deck
     dropX, dropY = sumpX - 70, 50                       # 4480 — return riser in the grate gap, off the end beam
     gapX = (ov.PROC_TRAY_X_R + ov.IBC_COL_X) / 2        # 4651.5 — centered in the tray–IBC gap
+    # Stay LOW (z40, UNDER the right-walkway grate/beams which start at z70) out to past the grate
+    # (x>4629), rise to z60 (clear of the bottom frame rails at z0–50), enter the corridor at the
+    # sump's low Yd, then up the BACK of the panel to P-04.
+    z04 = _piz("P-04")
     pipe("Tray sump -> P-04 suction",
-         [(sumpX, sumpY, sumpZ), (sumpX, sumpY, valveZ), (dropX, sumpY, valveZ), (dropX, dropY, valveZ),
-          (dropX, dropY, 30), (gapX, dropY, 30), (gapX, PIY, 30), (gapX, PIY, 90), (PXC, PIY, 90), pin("P-04")],
+         [(sumpX, sumpY, sumpZ), (sumpX, sumpY, 40), (4720, sumpY, 40), (4720, sumpY, 60),
+          (4720, BL_P04, 60), (BLANE, BL_P04, 60), (BLANE, BL_P04, z04), (PXC, BL_P04, z04), pin("P-04")],
          ov.C_IBC_BROWN)
     p.append(ov.ruby_cylinder("Tray sump strainer foot", sumpX, sumpY, sumpZ, 14, 36, color=CDK, axis="z"))
-    # P-04 DISCHARGE → SV-02 (in-line on the riser) → DV-02 underside branch (+Yd manifold)
+    # P-04 DISCHARGE → up the BACK of the panel (clear of the OUT-port stack), back to the front
+    # ABOVE the pumps where it's clear → SV-02 (in-line) → DV-02 underside branch.
+    z04 = _piz("P-04")
     pipe("P-04 -> SV-02 -> DV-02",
-         [pout("P-04"), (PXC, POY, DV_Z - tip), (PXC, CTR_Y, DV_Z - tip)], ov.C_IBC_BROWN)
-    # DV-02 → IBC-3 Brown (run− port → down → across → penetrate)
+         [pout("P-04"), (PXC, BL_P04OUT, z04), (BLANE, BL_P04OUT, z04), (BLANE, BL_P04OUT, 1960),
+          (PXC, BL_P04OUT, 1960), (PXC, POY, 1960), (PXC, POY, DV_Z - tip), (PXC, CTR_Y, DV_Z - tip)],
+         ov.C_IBC_BROWN)
+    # DV-02 → IBC-3 Brown — drop just below the top rear-panel bracket, then behind the panel (own
+    # lane) → down → front → tote entry.
+    zpen = 2050                                          # penetrate clear of the top bracket band (2146–2206)
     _side_entry(p, "DV-02 -> IBC-3 (Brown)",
-                [(PXC, dvm, DV_Z), (PXC, dvm, bz), (xe, dvm, bz)], xe, YD_NEAR, bz, -1, ov.C_IBC_BROWN)
-    # DV-02 → IBC-4 merge (DV-02 on the −X run end; DV-01 rises into the z− branch; outlet +X)
+                [(PXC, dvm, DV_Z), (PXC, dvm, zpen), (PXC, BL_DVBR, zpen), (BLANE, BL_DVBR, zpen),
+                 (BLANE, BL_DVBR, bz), (PXC, BL_DVBR, bz), (xe, BL_DVBR, bz)], xe, YD_NEAR, bz, -1, ov.C_IBC_BROWN)
+    # DV-02 → IBC-4 merge — waste port → drop below the bracket → behind the panel (own lane) → down
+    # → +X past the risers to the merge tee (jog to the merge Yd at x=MERGE, clear of the back verticals).
     pipe("DV-02 -> IBC-4 merge",
-         [(PXC, dvp, DV_Z), (PXC, dvp, wz), (PXC, MERGE4[1], wz), MERGE4], ov.C_IBC_WASTE)
+         [(PXC, dvp, DV_Z), (PXC, dvp, zpen), (PXC, BL_DVWST, zpen), (BLANE, BL_DVWST, zpen),
+          (BLANE, BL_DVWST, wz), (MERGE4[0], BL_DVWST, wz), MERGE4], ov.C_IBC_WASTE)
     p.append(tee("IBC-4 waste merge tee", MERGE4[0], MERGE4[1], MERGE4[2], run="x", branch="z-"))
     xe4 = ov.IBC_COL_X + 700                              # 5374 — entry near the sealed end
     _side_entry(p, "IBC-4 (Waste)", [MERGE4, (xe4, MERGE4[1], wz)], xe4, YD_FAR, wz, +1, ov.C_IBC_WASTE)
 
-    # BLUE #1 → P-01 suction (riser on the IN manifold, then to the near-col tote)
+    # BLUE #1 → P-01 suction: P-01 IN → front Yd-jog onto its back-lane → penetrate the panel →
+    # vertical riser BEHIND the panel (clear of the pump-port stack) → back to the front → near tote.
+    z01 = _piz("P-01")
     _side_entry(p, "Blue #1 -> P-01 suction",
-                [pin("P-01"), (PXC, PIY, blz), (xe, PIY, blz)], xe, YD_NEAR, blz, -1, ov.C_BLUE)
+                [pin("P-01"), (PXC, BL_P01, z01), (BLANE, BL_P01, z01), (BLANE, BL_P01, blz),
+                 (PXC, BL_P01, blz), (xe, BL_P01, blz)], xe, YD_NEAR, blz, -1, ov.C_BLUE)
+    p.append(ball_valve("BV-01 (P-01 suction)", BLANE, BL_P01, z01 + 150, "z"))   # on the back riser
     # Blue supply IN LINE through ACC-01 (like a filter in the chain): P-01 OUT → ACC IN (+Yd),
     # ACC OUT (−Yd) → trunk out the mouth to the spray bar.
     pipe("P-01 -> ACC-01 (in)", [pout("P-01"), (PXC, POY, ACC_PZ), acc_in()], ov.C_BLUE)
-    pipe("ACC-01 -> Blue supply trunk (-> spray bar)",
+    # ACC-01 OUT → supply trunk → leaves the panel toward the spray bar / chem-prep tap (BV-04 at
+    # TAP-01, BV-05 at the spray bar live at THOSE destinations, off this model — see schematic).
+    pipe("Blue supply trunk -> spray bar / TAP-01 (off-panel)",
          [acc_out(), (PXC, PIY, ACC_PZ), (4500, PIY, ACC_PZ), (4500, CTR_Y, ACC_PZ), (4500, CTR_Y, 300)], ov.C_BLUE)
     return "\n".join(p)
 
@@ -402,7 +453,11 @@ def drains_ports():
     p.append(tee("IBC-3 (Brown) tap T", tx3, ty3, tz3, run="x", branch="y-"))   # dip on −Yd; P-02 −X / P-05 +X
     # P-05 (Brown drain) suction: shared tap T → +X run end → rise to P-05 IN (−Yd manifold)
     p5i = (PXC, PIY, _piz("P-05")); p5o = (PXC, POY, _piz("P-05"))
-    pipe("Brown tap -> P-05 inlet", [BROWN_TAP, (PXC, ty3, tz3), p5i], ov.C_IBC_BROWN)
+    z05 = _piz("P-05")
+    pipe("Brown tap -> P-05 inlet",
+         [BROWN_TAP, (PXC, ty3, tz3), (PXC, BL_P05, tz3), (BLANE, BL_P05, tz3),
+          (BLANE, BL_P05, z05), (PXC, BL_P05, z05), p5i], ov.C_IBC_BROWN)
+    p.append(ball_valve("BV-02 (P-05 suction)", BLANE, BL_P05, z05 - 170, "z"))   # on the back riser
     p.append(ov.ruby_cylinder("X3 Brown drain port (end wall)", ew - 60, COL_L, 1700, 22, 60, color=C_CHECK, axis="x"))
     # P-05 OUT → behind the panel → +X to the end wall + a perpendicular ≥50mm bulkhead stub
     pipe("P-05 -> X3 end-wall port",
@@ -413,6 +468,7 @@ def drains_ports():
     p3i = (PXC, PIY, _piz("P-03")); p3o = (PXC, POY, _piz("P-03"))
     _bottom_pickup(p, "X4 Waste (P-03)", 5200, YD_FAR, +1, ov.C_IBC_WASTE,
                    [(5200, YD_FAR - 120, p3i[2]), (5060, YD_FAR - 120, p3i[2]), (5060, PIY, p3i[2]), (PXC, PIY, p3i[2])])
+    p.append(ball_valve("BV-06 (P-03 suction)", 5022, PIY, p3i[2], "x"))   # waste-drain suction isolation
     p.append(ov.ruby_cylinder("X4 Waste drain port (end wall)", ew - 60, COL_R, 1620, 22, 60, color=C_CHECK, axis="x"))
     pipe("P-03 -> X4 end-wall port",
          [p3o, (5060, POY, p3o[2]), (5060, COL_R, p3o[2]), (ew - 130, COL_R, p3o[2]),

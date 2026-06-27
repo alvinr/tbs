@@ -172,9 +172,11 @@ def kit():
     #    wall base (Yd80, clear of the grey DV-01 waste drop at yW=35), up to P-02's +Yd IN port.
     yB = 80
     tx, ty, tz = cp.BROWN_TAP
-    pipe("IBC-3 (Brown) tap -> P-02 inlet",
-         [(tx, ty, tz), (4600, ty, tz), (4600, ty, 70), (4600, yB, 70),
-          (p2_in[0], yB, 70), (p2_in[0], yB, p2_in[2]), p2_in], ov.C_IBC_BROWN)
+    yX = 1180   # cross the corridor in the OPENING (clear of the corner uprights at Yd1046–1096),
+    pipe("IBC-3 (Brown) tap -> P-02 inlet",   # staying high (z258, above the right-walkway grate),
+         [(tx, ty, tz), (tx, yX, tz), (4300, yX, tz), (4300, yX, 70), (4300, yB, 70),
+          (p2_in[0], yB, 70), (p2_in[0], yB, p2_in[2]), p2_in], ov.C_IBC_BROWN)  # then drop x<4329 (past the walkway)
+    p.append(cp.ball_valve("BV-03 (P-02 suction)", p2_in[0], yB, p2_in[2] - 160, "z"))   # suction isolation
     # 2. P-02 OUT (+X) → F1 inlet — straight, in line (same axis as the filter chain)
     pipe("P-02 -> F1", [p2_out, f_in("F1")], ov.C_IBC_BROWN)
     # 3. filter-skid jumpers F1→F2→F3 — straight pipe between the adjacent in-line ports
@@ -214,9 +216,11 @@ def kit():
     # crosses under the walkway at Z70 (clear of the IBC frame), runs +X along the corridor gap
     # toward the SEALED END, and rises BEHIND the pumps/panel into the merge tee's underside branch
     # (so it never passes through the pumps or the frame).
+    # DV-01 waste → +X at waist height to PAST the right-walkway grate (x>4629), THEN drop (clear of
+    # the grate), run low along the near wall to the merge X, jog to the merge Yd and up into the tee.
     mx, my, mz = cp.MERGE4
     pipe("DV-01 -> IBC-4 merge",
-         [(dvx, yW, waist), (dvx, yW, 70), (4640, yW, 70), (4640, my, 70), (mx, my, 70), (mx, my, mz)],
+         [(dvx, yW, waist), (4760, yW, waist), (4760, yW, 70), (mx, yW, 70), (mx, my, 70), (mx, my, mz)],
          ov.C_IBC_WASTE)
     return "\n".join(p)
 
@@ -265,6 +269,16 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz)
     (cp.PXC, cp.CTR_Y, cp.ACC_Z0 + 150, "ACC-01\n(accumulator)", -700, 0, 250),
     (cp.PXC, cp.POY, cp.SV_Z, "SV-02\n(sample)", -700, 200, 0),
     (cp.PXC, cp.CTR_Y, cp.DV_Z, "DV-02 (3-way)", -700, 0, 200),
+    # ── ball valves (in-panel pump-suction isolation; BV-01/02 on the BACK-of-panel risers) ──
+    (cp.BLANE, cp.BL_P01, cp._piz("P-01") + 150, "BV-01", 350, 0, 250),
+    (cp.BLANE, cp.BL_P05, cp._piz("P-05") - 170, "BV-02", 350, 0, 250),
+    (2978, 80, 2141, "BV-03", 0, 520, 200),
+    (5022, cp.PIY, cp._piz("P-03"), "BV-06", -1000, 0, 150),
+    # ── per-tank anti-siphon check valves ──
+    (ov.C_LEN - 200, cp.CTR_Y, 2250, "CV-1\n(X1 fill)", -600, 300, 0),
+    (ov.IBC_COL_X - 60, 600, 2 * ov.IBC_H_1000 - 180, "CV-2\n(IBC-2 return)", 0, 450, 200),
+    (ov.IBC_COL_X + 300, cp.YD_NEAR + 60, ov.IBC_PALLET_H + ov.IBC_H_1000 - 60, "CV-3\n(IBC-3 return)", -600, 250, 200),
+    (ov.IBC_COL_X + 700, cp.YD_FAR - 60, cp.MERGE4[2], "CV-4\n(IBC-4 waste)", -600, 250, 200),
 ]
 LABEL_INSTANCES = [
     ("Pinhole Assembly", "PINHOLE\n(optical ref)", 0, 700, 350),

@@ -375,15 +375,13 @@ def plumbing():
     valveZ = ov.WALKWAY_H + 65                          # 195 — valve body above the deck
     dropX, dropY = sumpX - 70, 50                       # 4480 — return riser in the grate gap, off the end beam
     gapX = (ov.PROC_TRAY_X_R + ov.IBC_COL_X) / 2        # 4651.5 — centered in the tray–IBC gap
-    # Stay LOW (z40, UNDER the right-walkway grate/beams which start at z70) out to past the grate
-    # (x>4629), rise to z60 (clear of the bottom frame rails at z0–50), enter the corridor at the
-    # sump's low Yd, then up the BACK of the panel to P-04.
-    # P-04 IN is approached convention-style: a front riser on the −Yd side of the IN port, then a
-    # short +Yd stub straight INTO the −Yd-facing port (not from the body side).
+    # Rise out of the sump to z65 — ABOVE the processing-tray rim (z50) but BELOW the right-walkway
+    # beam (z80) and grate (z114) — run +X out past the right-walkway cantilever end (x>4734), jog
+    # into the corridor, then a −Yd stub straight into the P-04 IN port (convention).
     z04 = _piz("P-04")
     pipe("Tray sump -> P-04 suction",
-         [(sumpX, sumpY, sumpZ), (sumpX, sumpY, 40), (4720, sumpY, 40), (4720, sumpY, 60),
-          (4720, PIY - 30, 60), (PXC, PIY - 30, 60), (PXC, PIY - 30, z04), pin("P-04")],
+         [(sumpX, sumpY, sumpZ), (sumpX, sumpY, 65), (4800, sumpY, 65),
+          (4800, PIY - 30, 65), (PXC, PIY - 30, 65), (PXC, PIY - 30, z04), pin("P-04")],
          ov.C_IBC_BROWN)
     p.append(ov.ruby_cylinder("Tray sump strainer foot", sumpX, sumpY, sumpZ, 14, 36, color=CDK, axis="z"))
     # P-04 DISCHARGE → up the BACK of the panel (clear of the OUT-port stack), back to the front

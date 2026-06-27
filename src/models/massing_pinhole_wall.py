@@ -344,6 +344,7 @@ def build():
     for name, tag, b in [("Context", "Context", context()),
                          ("Walkways + cantilevers + brackets", "Walkway", walkway_full()),
                          ("Film-plane support beams", "Film Plane", film_plane_beams()),
+                         ("Processing tray (ghost)", "Processing Tray", ov.processing_tray()),
                          ("IBC Tanks (full)", "IBC", ov.ibc_stack(alpha=0.35)),
                          ("IBC restraint (bars + wall anchors)", "IBC Frame", cp.tote_restraint()),
                          ("End wall (context)", "Context", cp.end_wall()),
@@ -392,7 +393,7 @@ def ghost_faces(ents, mat)
   }}
 end
 model.entities.grep(Sketchup::ComponentInstance).each {{ |ci|
-  ghost_faces(ci.definition.entities, ghost) if ci.layer && ci.layer.name == "Pinhole Equipment"
+  ghost_faces(ci.definition.entities, ghost) if ci.layer && ["Pinhole Equipment", "Processing Tray"].include?(ci.layer.name)
 }}
 def scene(model, name, on)
   model.layers.each {{ |l| l.visible = (l.name == "Layer0" || l == model.layers[0] || on.include?(l.name)) }}
@@ -404,7 +405,7 @@ scene(model, "Water System", ["Context","Walkway","Film Plane","IBC","IBC Frame"
 scene(model, "Plumbing", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
 scene(model, "Plumbing (labeled)", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","Labels"])
 scene(model, "Plumbing + IBC", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","IBC"])
-scene(model, "Overall", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
+scene(model, "Overall", ["Context","Walkway","Film Plane","Processing Tray","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
 scene(model, "Labeled", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains","Labels"])
 model.layers.each {{ |l| l.visible = true }}
 model.commit_operation

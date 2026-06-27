@@ -65,6 +65,8 @@ def classify(name):
     if any(k in n for k in ("rwk", "cantilever", "long beam", "end beam", "bearer", "upright clamp",
                             "saddle", "gusset", "fp support beam")):
         return ("cantilever", None)
+    if ("tray" in n or "print on" in n) and "->" not in name:
+        return ("tray", "sump")        # key "sump" → the sump drain pipe (connects to it) is excluded
     # PERMITTED penetrations / not obstacles (skip as obstacles)
     if any(k in n for k in ("ibc ", "tote", "pinhole wall", "floor", "ceiling", "end wall", "deck",
                             "walkway", "panel", "backing", "ply", "spine", "context", "scale", "person",
@@ -94,7 +96,7 @@ def main():
         g["cat"], g["key"] = cat, key
         if cat == "pipe":
             pipes.append(g)
-        elif cat in ("pump", "acc", "filter", "frame", "cantilever"):
+        elif cat in ("pump", "acc", "filter", "frame", "cantilever", "tray"):
             solids.append(g)
 
     TOL = 3.0   # mm — ignore mere touching

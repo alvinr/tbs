@@ -64,6 +64,9 @@ def classify(name):
         return ("frame", None)
     if "grate" in n:                   # the walkway GRATE (a surface) — the sump drain may loop
         return ("grate", "sump")       # up THROUGH it and back down (key "sump" excludes the drain)
+    if "walkway near bracket" in n and "gusset" in n:
+        return ("skip", None)          # the bracket gusset is a TRIANGLE — its low-outer corner is open
+                                       # (a pipe tucks under it against the tray rim); AABB would over-flag
     if any(k in n for k in ("rwk", "cantilever", "long beam", "end beam", "bearer", "upright clamp",
                             "saddle", "gusset", "fp support beam", "walkway near bracket", "walkway bracket")):
         return ("cantilever", None)

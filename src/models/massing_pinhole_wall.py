@@ -226,10 +226,10 @@ def kit():
 
 def tap01_supply():
     """Blue supply trunk along the pinhole wall → spray-bar tap (BV-05) + TAP-01 chem tap (BV-04).
-    Path copied from overview.skp's spray_bar_plumbing (do NOT reinvent) — Yd12 / Z40 wall trunk,
-    BV-05 riser at the pinhole centerline, TAP-01 branch up over the chem shelf.  Connected here to
-    the corridor blue trunk that exits the panel; BV-04/BV-05 live out here, off the corridor panel."""
-    yd, fz = 12, ov.SPRAY_BAR_FEED_Z                 # 12 off the wall, Z40 trunk (overview)
+    Based on overview.skp's spray_bar_plumbing, but the wall trunk runs at the TRAY-RIM edge (Yd69,
+    butted to the near rim) so it tucks UNDER the triangular near-walkway cantilever brackets — the
+    Yd12-against-the-wall path ran straight through the bracket plates/bolts.  BV-04/BV-05 off-panel."""
+    yd, fz = ov.PROC_TRAY_YD_NEAR - 11, ov.SPRAY_BAR_FEED_Z   # 69 — butt the tray near rim (Yd80), under the triangle
     pr, tr = ov.PUMP_PIPE_OD / 2, ov.TAP_PIPE_OD / 2
     p = []
     # AROUND the tray (Rule 5a): the corridor trunk ends at the gap (GAPX, CTR_Y, z60); cross to the

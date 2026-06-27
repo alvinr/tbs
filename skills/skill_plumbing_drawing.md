@@ -18,6 +18,8 @@ originSessionId: 54457a84-3dd4-4b25-a419-b2a4e2f11517
 
 5. **Never route a pipe THROUGH another object — route around it.** A pipe/hose/tube/duct must not pass through any solid body it does not connect to (ball joints, sockets, brackets, frames, the beam wall except at a fitting, tanks, etc.). In the 3D models, check for interpenetration: if an obstacle is in the path, detour around it (a bypass lane offset in Yd/Z, or up and over) and keep the routing orthogonal. This has been gotten wrong repeatedly (pipes drawn straight through objects).
 
+6. **In-line valves go ON a straight run, oriented ALONG it.** A check / one-way valve, ball valve, or any in-line fitting is an **in-line device**: the pipe runs straight THROUGH it, so its body is centered on the pipe centerline and elongated **along the run axis** — placed on a STRAIGHT length of pipe, **never straddling an elbow** and never drawn as a right-angle block off to the side. To meter or protect a port (e.g. an anti-siphon check before a tank entry), put the valve on the straight approach run a short distance before the flange, not at the corner. (3D: a short barrel cylinder, radius ≈ pipe-OD + a little, length ≈ 2× OD, with `axis` = the local run direction.)
+
 ## Right-Angle Connections (applies to 2D diagrams AND 3D models)
 
 This is the rule most often gotten wrong — it has had to be fixed repeatedly. Whenever a line (pipe / flex hose / corrugated duct / irrigation tube) terminates at a **box, manifold, fitting, appliance, or wall penetration**, the terminating segment must be a short stub that is **perpendicular to the face it enters**.
@@ -118,6 +120,7 @@ draw_pipe_path(ax, [x, x], [z_cross + _gap_half, z_end], rear_OD, rear_WALL, ...
 - [ ] No gradual curves — only straight runs and fittings
 - [ ] Every direction change has a discrete elbow fitting drawn
 - [ ] Every connection to a box / manifold / fitting / penetration is a perpendicular stub (right-angle entry), not a diagonal — in 2D and 3D alike
+- [ ] In-line valves (check / one-way / ball) sit ON a straight run, body oriented ALONG the pipe axis — not a right-angle block, not on an elbow
 - [ ] No pipe/tube/duct passes through a solid object it doesn't connect to — detour around obstacles (check the 3D model for interpenetration)
 - [ ] Elbow fittings show concentric arcs (not sharp corners, not gradual bends)
 - [ ] Barb connections show ridged profile + hose clamp band

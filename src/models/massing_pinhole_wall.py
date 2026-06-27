@@ -149,14 +149,15 @@ def kit():
                 [(fx + sd * (fr - 6), fcy, cap_z), (fx + sd * (fr + 30), fcy, cap_z)], rp, color=cdk))
         p.append(ov.ruby_cylinder(f"Filter {nm} PR button", fx, fcy, f_bot + BB_H, 6, 9, color=ov.C_STEEL))
 
-    # ── P-02 — UPRIGHT (filter-style, ports out the TOP), just −X of F1 with its OUT port in
-    #    line with F1's inlet so the discharge feeds STRAIGHT into F1.  IN port takes the suction.
-    p2cx  = f_in("F1")[0] - (cp.PVB_R + 30) - 40                   # body center: OUT tip 40mm before F1
-    p2cy  = fcy - 26                                               # so the OUT port (cy+26) aligns to the filter Yd
-    p2cz0 = cap_z - (cp.PVB_H + cp.PCAP_H / 2)                     # so the OUT port lines up with cap_z
-    p += cp.pump_unit("Pump P-02 (Brown)", p2cx, p2cy, p2cz0, face=1, color=ov.C_PUMP)
-    p2_out = cp.pump_out(p2cx, p2cy, p2cz0, 1)                     # (≈3138, fcy, cap_z) — in line with F1 inlet
-    p2_in  = cp.pump_in(p2cx, p2cy, p2cz0, 1)                      # IN port (top) — Brown suction tie-in
+    # ── P-02 — UPRIGHT, ROTATED 90° so the IN/OUT ports exit PERPENDICULAR to the pinhole WALL
+    #    (+Yd, toward the operator).  Mounted just −X of F1.  OUT → F1 inlet; IN ← the shared
+    #    Brown tap (cp.BROWN_TAP). ──
+    p2cx  = FX["F1"] - (fr + cp.PVB_R + 30)                        # body center just −X of F1 (~3128)
+    p2cy  = fcy                                                    # same Yd lane as the filters
+    p2cz0 = cap_z - (cp.PVB_H + cp.PCAP_H / 2)                     # ports at the filter-cap height
+    p += cp.pump_unit("Pump P-02 (Brown)", p2cx, p2cy, p2cz0, face=1, axis="y", color=ov.C_PUMP)
+    p2_out = cp.pump_out(p2cx, p2cy, p2cz0, 1, "y")               # OUT port — exits +Yd
+    p2_in  = cp.pump_in(p2cx, p2cy, p2cz0, 1, "y")               # IN port — exits +Yd
 
     # ── SV-01 sample tap (projects forward to yL for cup access) + flat-T 3W-DV-01 mounted
     #    back on the plywood (yW), both at WAIST level for easy reach ──
@@ -167,22 +168,18 @@ def kit():
 
     # ── PLUMBING ──
     def pipe(nm, wp, col): p.append(ov.ruby_pipe_run(nm, wp, rp, color=col))
-    # 1. IBC-3 (Brown buffer) suction → P-02 inlet.  IBC-3 is the near-column BASE tote: pick up on
-    #    the PLUMBING-CORRIDOR side at its base — 150mm penetration + elbow into the tote, out
-    #    through the flange, down to the floor, along the wall base, then UP to P-02's inlet.  ONE
-    #    continuous run (an elbow at every 90).  It must NOT tap the Blue tote up top.
-    bx, bz0 = 4950, 250                           # Brown tote corridor-side pickup, base level
-    byin = 1046 - 150                             # 150mm penetration into the tote (Yd896)
-    yB = 80                                        # brown runs at Yd80 along the base — CLEAR of the
-                                                  # grey DV-01 waste drop (which falls at Yd=yW=35)
-    pipe("IBC-3 (Brown) -> P-02 inlet",
-         [(bx, byin, 40), (bx, byin, bz0), (bx, 1100, bz0), (bx, 1100, 70),
-          (4600, 1100, 70), (4600, yB, 70), (p2_in[0], yB, 70),
-          (p2_in[0], yB, p2_in[2]), p2_in], ov.C_IBC_BROWN)
-    p.append(ov.ruby_cylinder("IBC-3 (Brown) pickup flange", bx, 1038, bz0, 36, 16, color=ov.C_STEEL, axis="y"))
-    p.append(ov.ruby_box("IBC-3 (Brown) pickup check valve", bx - 20, 1100 - 18, bz0 - 18, 40, 36, 40, color=cp.C_CHECK))
-    # 2. P-02 outlet → F1 inlet — straight, in line (the pump is aligned to feed F1 directly)
-    pipe("P-02 -> F1", [p2_out, f_in("F1")], ov.C_IBC_BROWN)
+    # 1. IBC-3 (Brown) suction → P-02 inlet, drawn FROM the shared bottom tap (cp.BROWN_TAP — a
+    #    T also feeding P-05, so IBC-3 has ONE bottom penetration).  Down to the floor, along the
+    #    wall base (Yd80, clear of the grey DV-01 waste drop at yW=35), up to P-02's +Yd IN port.
+    yB = 80
+    tx, ty, tz = cp.BROWN_TAP
+    pipe("IBC-3 (Brown) tap -> P-02 inlet",
+         [(tx, ty, tz), (tx, ty, 70), (4600, ty, 70), (4600, yB, 70),
+          (p2_in[0], yB, 70), (p2_in[0], yB, p2_in[2]), p2_in], ov.C_IBC_BROWN)
+    # 2. P-02 OUT (+Yd) → F1 inlet — perpendicular stub off the port, then over and back to F1
+    pipe("P-02 -> F1",
+         [p2_out, (p2_out[0], p2_out[1] + 26, cap_z), (f_in("F1")[0], p2_out[1] + 26, cap_z), f_in("F1")],
+         ov.C_IBC_BROWN)
     # 3. filter-skid jumpers F1→F2→F3 — straight pipe between the adjacent in-line ports
     #    (combo unit; the ports face each other in the gap, so no around-the-body routing)
     for a, b in (("F1", "F2"), ("F2", "F3")):
@@ -209,7 +206,7 @@ def kit():
          [(dvx, yW, waist), (xf - ENTRY_OFF, yW, waist), (xf - ENTRY_OFF, yW, bz),
           (xf - ENTRY_OFF, yBlue, bz), (xf + 150, yBlue, bz), (xf + 150, yBlue, bz - 150)], ov.C_BLUE)
     p.append(ov.ruby_cylinder("Blue IBC (IBC-2) flange", xf - 8, yBlue, bz, 36, 16, color=ov.C_STEEL, axis="x"))
-    p.append(ov.ruby_box("Blue IBC (IBC-2) check valve", xf - ENTRY_OFF + 18, yBlue - 20, bz - 18, 40, 40, 36, color=cp.C_CHECK))
+    p.append(cp.check_valve("Blue IBC (IBC-2) check valve", xf - 60, yBlue, bz, "x"))   # in-line on the X approach
     # Waste leg (off the underside branch) → Waste IBC (IBC-4, far-bottom).  Drops to the floor,
     # runs UNDER the walkway into the PLUMBING CORRIDOR, and enters from the CORRIDOR side
     # (Yd1316 face) — leg + 150mm penetration + drop ONE run, ORANGE check valve.

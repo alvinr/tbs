@@ -37,8 +37,7 @@ def context():
                          color=ov.C_SHELL, alpha=0.30))
     p.append(ov.ruby_box("Floor", bx, 0, -ov.WALL_T, bw, C_WID, ov.WALL_T,
                          color=ov.C_SHELL, alpha=0.16))
-    p.append(ov.ruby_box("Ceiling", bx, 0, C_HGT, bw, C_WID, ov.WALL_T,
-                         color=ov.C_SHELL, alpha=0.08))
+    # (container ceiling omitted in this view)
     # faint reference line at the 300mm-past-walkway depth
     p.append(ov.ruby_box("Depth ref (Yd %d)" % VIEW_DEPTH, bx, VIEW_DEPTH - 2, 0, bw, 4, C_HGT,
                          color="#2060A0", alpha=0.10))
@@ -150,17 +149,13 @@ def kit():
                 [(fx + sd * (fr - 6), fcy, cap_z), (fx + sd * (fr + 30), fcy, cap_z)], rp, color=cdk))
         p.append(ov.ruby_cylinder(f"Filter {nm} PR button", fx, fcy, f_bot + BB_H, 6, 9, color=ov.C_STEEL))
 
-    # ── P-02 — far side from the IBCs (low X), filter level; head faces +Yd, ports come DOWN ──
-    p2x = 2860
-    can_r, can_h, hh = 50, 178, 40
-    p.append(ov.ruby_cylinder("Pump P-02 body", p2x, 12 + can_r, f_bot, can_r, can_h, color=ov.C_PUMP))
-    p.append(ov.ruby_box("Pump P-02 head", p2x - 57, 12, f_bot + can_h, 114, 100, hh, color=cdk))
-    p2_pz = f_bot + 218 - 25                                       # 2193
-    def p2_port(sd):  return (p2x + sd * 30, 142, p2_pz - 40)
-    for tag, sd in (("in", -1), ("out", +1)):
-        p.append(ov.ruby_pipe_run(f"Pump P-02 {tag} port",
-            [(p2x + sd * 30, 100, p2_pz), (p2x + sd * 30, 142, p2_pz), (p2x + sd * 30, 142, p2_pz - 40)],
-            rp, color=cdk))
+    # ── P-02 — just −X of F1, head facing +X so the OUTLET feeds STRAIGHT into F1's inlet
+    #    (same Shurflo body as the corridor pumps).  Inlet (lower port) takes the Brown suction.
+    p2hx = f_in("F1")[0] - 58                                      # head front 58mm before F1 inlet
+    p2fz = cap_z - cp.PORT_DZ                                      # so the upper (out) port lines up with cap_z
+    p += cp.pump_unit("Pump P-02 (Brown)", p2hx, fcy, p2fz, face=1, color=ov.C_PUMP)
+    p2_out = cp.pump_out(p2hx, fcy, p2fz, 1)                       # (≈3148, 104, cap_z) — in line with F1 inlet
+    p2_in  = cp.pump_in(p2hx, fcy, p2fz, 1)                        # lower port — Brown suction tie-in
 
     # ── SV-01 sample tap (projects forward to yL for cup access) + flat-T 3W-DV-01 mounted
     #    back on the plywood (yW), both at WAIST level for easy reach ──
@@ -171,22 +166,20 @@ def kit():
 
     # ── PLUMBING ──
     def pipe(nm, wp, col): p.append(ov.ruby_pipe_run(nm, wp, rp, color=col))
-    fz = p2_pz - 40                                                # 2153 — pump-port feed height
-    # 1. IBC-3 (Brown buffer) suction → P-02 inlet.  IBC-3 is the near-column BASE tote, so the
-    #    feed is picked up on the PLUMBING-CORRIDOR side at its base (Yd1046 face), drops to the
-    #    floor, runs along the wall base, then RISES the pinhole wall to P-02's high inlet — it
-    #    must NOT tap the Blue tote up top.
-    bx, bz0 = 4950, 250          # Brown tote corridor-side outlet, base level (corridor face Yd1046)
-    p.append(ov.ruby_cylinder("IBC-3 (Brown) outlet flange", bx, 1046 + 8, bz0, 36, 16, color=ov.C_STEEL, axis="y"))
+    # 1. IBC-3 (Brown buffer) suction → P-02 inlet.  IBC-3 is the near-column BASE tote: pick up on
+    #    the PLUMBING-CORRIDOR side at its base — 150mm penetration + elbow into the tote, out
+    #    through the flange, down to the floor, along the wall base, then UP to P-02's inlet.  ONE
+    #    continuous run (an elbow at every 90).  It must NOT tap the Blue tote up top.
+    bx, bz0 = 4950, 250                           # Brown tote corridor-side pickup, base level
+    byin = 1046 - 150                             # 150mm penetration into the tote (Yd896)
     pipe("IBC-3 (Brown) -> P-02 inlet",
-         [(bx, 1046, bz0), (bx, 1100, bz0), (bx, 1100, 70),
-          (4600, 1100, 70), (4600, yW, 70), (p2x - 30, yW, 70),
-          (p2x - 30, yW, fz), p2_port(-1)],
-         ov.C_IBC_BROWN)
-    # 2. P-02 outlet → F1 inlet
-    pipe("P-02 -> F1",
-         [p2_port(1), (p2_port(1)[0], yL, fz), (f_in("F1")[0], yL, fz), (f_in("F1")[0], yL, tie), f_in("F1")],
-         ov.C_IBC_BROWN)
+         [(bx, byin, bz0 + 120), (bx, byin, bz0), (bx, 1100, bz0), (bx, 1100, 70),
+          (4600, 1100, 70), (4600, yW, 70), (p2_in[0], yW, 70),
+          (p2_in[0], yW, p2_in[2]), p2_in], ov.C_IBC_BROWN)
+    p.append(ov.ruby_cylinder("IBC-3 (Brown) pickup flange", bx, 1038, bz0, 36, 16, color=ov.C_STEEL, axis="y"))
+    p.append(ov.ruby_box("IBC-3 (Brown) pickup check valve", bx - 20, 1100 - 18, bz0 - 18, 40, 36, 40, color=cp.C_CHECK))
+    # 2. P-02 outlet → F1 inlet — straight, in line (the pump is aligned to feed F1 directly)
+    pipe("P-02 -> F1", [p2_out, f_in("F1")], ov.C_IBC_BROWN)
     # 3. filter-skid jumpers F1→F2→F3 — straight pipe between the adjacent in-line ports
     #    (combo unit; the ports face each other in the gap, so no around-the-body routing)
     for a, b in (("F1", "F2"), ("F2", "F3")):
@@ -204,27 +197,23 @@ def kit():
     #    drop, with a check valve on the approach (anti-siphon).
     xf = ov.IBC_COL_X                            # tote front face (X4674)
     ENTRY_OFF = 120                              # the entry turn is >=75mm before the flange
-    def tank_entry(nm, y, z, col):
-        p.append(ov.ruby_pipe_run(nm + " entry",
-            [(xf - ENTRY_OFF, y, z), (xf + 150, y, z), (xf + 150, y, z - 150)], rp, color=col))
-        p.append(ov.ruby_cylinder(nm + " flange", xf - 8, y, z, 36, 16, color=ov.C_STEEL, axis="x"))
-        p.append(ov.ruby_box(nm + " check valve", xf - ENTRY_OFF + 18, y - 20, z - 18, 40, 40, 36, color=ov.C_VALVE))
-    # Blue leg → Blue IBC (top tote), near top
+    # Blue leg → Blue IBC (top tote), FRONT-face entry near top — leg + 150mm penetration + drop
+    # are ONE run so every 90 gets a swept elbow; ORANGE anti-siphon check valve on the approach.
     bz = 2 * ov.IBC_H_1000 - 180                 # ~2156 — Blue tote near-top entry
     pipe("DV-01 -> Blue IBC (IBC-2)",
-         [(dvx, yW, waist), (xf - ENTRY_OFF, yW, waist), (xf - ENTRY_OFF, yW, bz)], ov.C_BLUE)
-    tank_entry("Blue IBC (IBC-2)", yW, bz, ov.C_BLUE)
-    # Waste leg (off the underside branch) → Waste IBC (IBC-4, far-bottom).  Drops to the
-    # floor, runs UNDER the walkway into the PLUMBING CORRIDOR, and enters the tote from the
-    # CORRIDOR side (Yd1316 face) — not the front.  Same entry convention (+Yd here).
+         [(dvx, yW, waist), (xf - ENTRY_OFF, yW, waist), (xf - ENTRY_OFF, yW, bz),
+          (xf + 150, yW, bz), (xf + 150, yW, bz - 150)], ov.C_BLUE)
+    p.append(ov.ruby_cylinder("Blue IBC (IBC-2) flange", xf - 8, yW, bz, 36, 16, color=ov.C_STEEL, axis="x"))
+    p.append(ov.ruby_box("Blue IBC (IBC-2) check valve", xf - ENTRY_OFF + 18, yW - 20, bz - 18, 40, 40, 36, color=cp.C_CHECK))
+    # Waste leg (off the underside branch) → Waste IBC (IBC-4, far-bottom).  Drops to the floor,
+    # runs UNDER the walkway into the PLUMBING CORRIDOR, and enters from the CORRIDOR side
+    # (Yd1316 face) — leg + 150mm penetration + drop ONE run, ORANGE check valve.
     wx, wz, yf = 4900, ov.IBC_H_1000 - 80, 1316
     pipe("DV-01 -> Waste IBC (IBC-4)",
-         [(dvx, yW, waist), (dvx, yW, 30), (4640, yW, 30), (4640, 1196, 30),
-          (wx, 1196, 30), (wx, 1196, wz)], ov.C_IBC_WASTE)
-    p.append(ov.ruby_pipe_run("Waste IBC (IBC-4) entry",
-        [(wx, yf - ENTRY_OFF, wz), (wx, yf + 150, wz), (wx, yf + 150, wz - 150)], rp, color=ov.C_IBC_WASTE))
+         [(dvx, yW, waist), (dvx, yW, 30), (4640, yW, 30), (4640, 1196, 30), (wx, 1196, 30),
+          (wx, 1196, wz), (wx, yf + 150, wz), (wx, yf + 150, wz - 150)], ov.C_IBC_WASTE)
     p.append(ov.ruby_cylinder("Waste IBC (IBC-4) flange", wx, yf - 8, wz, 36, 16, color=ov.C_STEEL, axis="y"))
-    p.append(ov.ruby_box("Waste IBC (IBC-4) check valve", wx - 20, yf - ENTRY_OFF + 18, wz - 18, 40, 36, 40, color=ov.C_VALVE))
+    p.append(ov.ruby_box("Waste IBC (IBC-4) check valve", wx - 20, yf - ENTRY_OFF + 18, wz - 18, 40, 36, 40, color=cp.C_CHECK))
     return "\n".join(p)
 
 
@@ -308,7 +297,8 @@ def build():
                          ("Corridor frame (deep box)", "Corridor Frame", cp.frame()),
                          ("Corridor rear panel", "Corridor Panel", cp.rear_panel()),
                          ("Corridor equipment", "Corridor Equipment", cp.equipment()),
-                         ("Corridor plumbing", "Corridor Plumbing", cp.plumbing())]:
+                         ("Corridor plumbing", "Corridor Plumbing", cp.plumbing()),
+                         ("Corridor drains + X-ports", "Corridor Drains", cp.drains_ports())]:
         comps.append(ov.component(name, tag, b)); tags.add(tag)
     tags.add("Labels")
     body = "\n".join(comps)
@@ -328,31 +318,34 @@ model.definitions.each {{ |d| d.entities.grep(Sketchup::Group).each {{ |g| g.era
 {labels_ruby()}
 v = model.active_view
 v.camera = Sketchup::Camera.new(Geom::Point3d.new(800.mm, 6000.mm, 2300.mm), Geom::Point3d.new(2950.mm, 200.mm, 1100.mm), Geom::Vector3d.new(0,0,1), false, 52)
-def scene(model, name, on, xray=false)
-  model.rendering_options["ModelTransparency"] = xray   # X-ray => all components draw as ghosts
+# Ghost the OTHER wall equipment by making its GEOMETRY translucent.  (A global X-ray render
+# mode "sticks" across scene changes in SketchUp and leaks into every scene — per-geometry
+# alpha does not.)  ModelTransparency stays OFF everywhere.
+model.rendering_options["ModelTransparency"] = false
+ghost = model.materials["GhostEquip"] || model.materials.add("GhostEquip")
+ghost.color = Sketchup::Color.new(150,160,175); ghost.alpha = 0.30
+def ghost_faces(ents, mat)
+  ents.each {{ |e|
+    if e.is_a?(Sketchup::Face); e.material = mat; e.back_material = mat
+    elsif e.is_a?(Sketchup::Group); ghost_faces(e.entities, mat)
+    elsif e.is_a?(Sketchup::ComponentInstance); ghost_faces(e.definition.entities, mat)
+    end
+  }}
+end
+model.entities.grep(Sketchup::ComponentInstance).each {{ |ci|
+  ghost_faces(ci.definition.entities, ghost) if ci.layer && ci.layer.name == "Pinhole Equipment"
+}}
+def scene(model, name, on)
   model.layers.each {{ |l| l.visible = (l.name == "Layer0" || l == model.layers[0] || on.include?(l.name)) }}
-  pg = model.pages.add(name, 4095)   # capture ALL page properties (incl. rendering options/X-ray + layers)
-  pg.use_rendering_options = true rescue nil
+  pg = model.pages.add(name, 4095)
   pg.use_hidden_layers = true rescue nil
   pg
 end
-scene(model, "Pinhole-wall wet end", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Kit","Scale"])
-scene(model, "Other pinhole-wall equipment", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Pinhole Equipment"], true)
-scene(model, "Plumbing", ["Kit","Corridor Equipment","Corridor Plumbing"])
-scene(model, "Corridor panel", ["Context","Walkway","IBC","IBC Frame","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Scale"])
-scene(model, "Overall", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing"])
-scene(model, "Labeled", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Labels"])
+scene(model, "Water System", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Kit","Scale"])
+scene(model, "Plumbing", ["Kit","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
+scene(model, "Overall", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
+scene(model, "Labeled", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains","Labels"])
 model.layers.each {{ |l| l.visible = true }}
-# Definitively bake per-page X-ray: SELECT each page, set the rendering option live, then
-# update the page to capture it (selecting first is what makes the capture stick).
-xray_on = ["Other pinhole-wall equipment"]
-model.pages.each {{ |pg|
-  model.pages.selected_page = pg
-  pg.use_rendering_options = true
-  model.rendering_options["ModelTransparency"] = xray_on.include?(pg.name)
-  pg.update(PAGE_USE_RENDERING_OPTIONS)
-}}
-model.rendering_options["ModelTransparency"] = false
 model.commit_operation
 {{ ok: true }}.to_json
 '''

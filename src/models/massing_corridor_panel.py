@@ -272,7 +272,7 @@ SV_Z   = 2020                              # SV-02 (on the P-04 discharge, above
 DV_Z   = 2160                              # 3W-DV-02 center Z (above the stack)
 # ACC-01 — SeaFlo bladder accumulator: a single BOTTOM port, plumbed as a vertical DEAD-LEG teed
 # onto the Blue supply line (like the pumps/filters tee in, but the tank's only port is underneath).
-ACC_Z0, ACC_R = 540, 64                     # ACC-01 base Z (in the column, above P-01); body radius (Ø127)
+ACC_Z0, ACC_R = 540, 63.5                   # ACC-01 base Z (in the column, above P-01); Ø127 body
 ACC_PZ = ACC_Z0 + 70                        # ACC-01 IN/OUT port Z (opposite sides, filter/pump style)
 def acc_in():  return (PXC, CTR_Y + ACC_R + 30, ACC_PZ)   # +Yd (from P-01 OUT)
 def acc_out(): return (PXC, CTR_Y - ACC_R - 30, ACC_PZ)   # −Yd (to the supply trunk)
@@ -286,11 +286,12 @@ def equipment():
     for label, key in (("Pump P-01 (Blue supply)", "P-01"), ("Pump P-04 (Tray drain)", "P-04"),
                        ("Pump P-05 (Brown drain)", "P-05"), ("Pump P-03 (Waste drain)", "P-03")):
         p += pump_unit(label, PXC, CTR_Y, PSTACK[key], axis="y")
-    # ACC-01 — drawn like the filters/pumps: a tall vertical body with IN/OUT on OPPOSITE sides
-    # (IN +Yd from P-01, OUT −Yd to the trunk), in line on the Blue supply.
-    acc_h = 300
+    # ACC-01 — SeaFlo SFAT-075-125-01 (0.75 L): Ø127 × 200mm overall (per component-dimension-audit).
+    # Drawn like the filters/pumps: a vertical body with IN/OUT on OPPOSITE sides (IN +Yd from
+    # P-01, OUT −Yd to the trunk), in line on the Blue supply.
+    acc_h = 174                                  # body 174 + 26 cap = 200 overall (to spec)
     p.append(ov.ruby_cylinder("ACC-01 Accumulator", PXC, CTR_Y, ACC_Z0, ACC_R, acc_h, color=ov.C_ACC))
-    p.append(ov.ruby_cylinder("ACC-01 head", PXC, CTR_Y, ACC_Z0 + acc_h, ACC_R + 3, 26, color=CDK, axis="z"))
+    p.append(ov.ruby_cylinder("ACC-01 head", PXC, CTR_Y, ACC_Z0 + acc_h, ACC_R + 2, 26, color=CDK, axis="z"))
     for tag, sd in (("in", +1), ("out", -1)):
         y0 = (CTR_Y + ACC_R) if sd > 0 else (CTR_Y - ACC_R - 30)
         p.append(ov.ruby_cylinder(f"ACC-01 {tag} port", PXC, y0, ACC_PZ, RP, 30, color=CDK, axis="y"))

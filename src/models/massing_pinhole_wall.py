@@ -164,6 +164,7 @@ def kit():
     tie = cap_z - 40           # 2261 — filter port tie-in (bottom of the down-elbow)
     rp = ov.PUMP_PIPE_OD / 2   # 10.5
     yL, yS = 230, 295          # feed lane / suction+exit lane (clear of the bodies, Yd ≤ 196)
+    yW = 35                    # wall plane — pipes/valves mounted on the plywood backing
     waist = 1000               # SV-01 + DV-01 reach height
     cdk = "#222228"
 
@@ -193,11 +194,12 @@ def kit():
             [(p2x + sd * 30, 100, p2_pz), (p2x + sd * 30, 142, p2_pz), (p2x + sd * 30, 142, p2_pz - 40)],
             rp, color=cdk))
 
-    # ── SV-01 sample tap + flat-T 3W-DV-01, dropped to WAIST level (easy reach) ──
+    # ── SV-01 sample tap (projects forward to yL for cup access) + flat-T 3W-DV-01 mounted
+    #    back on the plywood (yW), both at WAIST level for easy reach ──
     svx, dvx = 4250, 4430
     p.append(ov.ruby_box("SV-01 sample valve", svx - 25, yL - 25, waist - 25, 50, 50, 70, color=ov.C_VALVE))
     p.append(ov.ruby_cylinder("SV-01 sample spout", svx, yL, waist - 25 - 90, 6, 90, color=ov.C_VALVE))
-    p.append(diverter("3W-DV-01", dvx, yL, waist, run="x", branch="z-", color=ov.C_VALVE))
+    p.append(diverter("3W-DV-01", dvx, yW, waist, run="x", branch="z-", color=ov.C_VALVE))
 
     # ── PLUMBING ──
     def pipe(nm, wp, col): p.append(ov.ruby_pipe_run(nm, wp, rp, color=col))
@@ -216,10 +218,11 @@ def kit():
         pipe(f"{a} out -> {b} in", [f_out(a), f_in(b)], ov.C_IBC_BROWN)
     # 4. F3 outlet → SV-01: a 90° "collection" elbow brings it back to the WALL/backing, then
     #    the drop runs DOWN the wall (yW, clamped to the ply for support) to waist → SV-01.
-    yW = 35
     pipe("F3 -> SV-01 (wall-mounted drop)",
          [f_out("F3"), (f_out("F3")[0], yW, tie), (svx, yW, tie), (svx, yW, waist), (svx, yL, waist)], ov.C_FILTER)
-    pipe("SV-01 -> DV-01", [(svx, yL, waist), (dvx, yL, waist)], ov.C_FILTER)
+    # after SV-01 the run returns to the plywood (yW) BEFORE routing on to DV-01 — keeps the
+    # narrow walkway clear (only SV-01's sample spout projects forward to yL)
+    pipe("SV-01 -> DV-01", [(svx, yL, waist), (svx, yW, waist), (dvx, yW, waist)], ov.C_FILTER)
     # 5. DV-01 → Blue IBC (IBC-2, run +X) + Waste IBC (IBC-4, off the UNDERSIDE branch).  Each
     #    enters near the TOP via the convention: the 90° entry turn is ENTRY_OFF mm BEFORE the
     #    flange (perpendicular approach stub), then flange (outside) + 150mm in + elbow + 150mm
@@ -234,14 +237,14 @@ def kit():
     # Blue leg → Blue IBC (top tote), near top
     bz = 2 * ov.IBC_H_1000 - 180                 # ~2156 — Blue tote near-top entry
     pipe("DV-01 -> Blue IBC (IBC-2)",
-         [(dvx, yL, waist), (xf - ENTRY_OFF, yL, waist), (xf - ENTRY_OFF, yL, bz)], ov.C_BLUE)
-    tank_entry("Blue IBC (IBC-2)", yL, bz, ov.C_BLUE)
+         [(dvx, yW, waist), (xf - ENTRY_OFF, yW, waist), (xf - ENTRY_OFF, yW, bz)], ov.C_BLUE)
+    tank_entry("Blue IBC (IBC-2)", yW, bz, ov.C_BLUE)
     # Waste leg (off the underside branch) → Waste IBC (IBC-4, far-bottom).  Drops to the
     # floor, runs UNDER the walkway into the PLUMBING CORRIDOR, and enters the tote from the
     # CORRIDOR side (Yd1316 face) — not the front.  Same entry convention (+Yd here).
     wx, wz, yf = 4900, ov.IBC_H_1000 - 80, 1316
     pipe("DV-01 -> Waste IBC (IBC-4)",
-         [(dvx, yL, waist), (dvx, yL, 30), (4640, yL, 30), (4640, 1196, 30),
+         [(dvx, yW, waist), (dvx, yW, 30), (4640, yW, 30), (4640, 1196, 30),
           (wx, 1196, 30), (wx, 1196, wz)], ov.C_IBC_WASTE)
     p.append(ov.ruby_pipe_run("Waste IBC (IBC-4) entry",
         [(wx, yf - ENTRY_OFF, wz), (wx, yf + 150, wz), (wx, yf + 150, wz - 150)], rp, color=ov.C_IBC_WASTE))
@@ -260,7 +263,7 @@ def backing():
 def person():
     # 1.75m scale figure standing ON the near walkway, FACING the IBC totes (+X):
     # depth (front-back) along X, shoulders along Yd.
-    px, py = 3050, 150          # on the near walkway deck (Yd 0-300)
+    px, py = 3050, 200          # on the near walkway deck — nudged out so the back clears the ply
     z = DECK_Z
     pp = []
     pp.append(ov.ruby_box("Person legs", px - 100, py - 80, z, 200, 160, 850, color=C_PERSON, alpha=0.28))
@@ -284,7 +287,7 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz)  — the pinhole-wall FILTE
     (3700, 102, 2305, "F2 (KDF-55)", 0, 560, 80),
     (4100, 102, 2305, "F3 (GAC)",    0, 560, 80),
     (4250, 230, 1000, "SV-01\n(sample)", 0, 430, 520),
-    (4430, 230, 1000, "DV-01\n(3-way)",  0, 430, 740),
+    (4430, 35,  1000, "DV-01\n(3-way)",  0, 430, 740),
 ]
 LABEL_INSTANCES = [
     ("Pinhole Assembly", "PINHOLE\n(optical ref)", 0, 700, 350),

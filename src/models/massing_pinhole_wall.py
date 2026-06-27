@@ -233,10 +233,13 @@ def kit():
     pipe("DV-01 -> Blue IBC (IBC-2)",
          [(dvx, yL, waist), (xf - ENTRY_OFF, yL, waist), (xf - ENTRY_OFF, yL, bz)], ov.C_BLUE)
     tank_entry("Blue IBC (IBC-2)", yL, bz, ov.C_BLUE)
-    # Waste leg (off the underside branch) → Waste IBC (IBC-4, far-bottom tote), near top
+    # Waste leg (off the underside branch) → Waste IBC (IBC-4, far-bottom tote).  Drops to
+    # the floor and runs UNDER the walkway (Z30) so it never blocks the operator / film plane
+    # (pattern copied from the tray-sump routing), then up to the near-top entry.
     wy, wz = 1500, ov.IBC_H_1000 - 80            # far-column Yd / ~1088 near-top entry
     pipe("DV-01 -> Waste IBC (IBC-4)",
-         [(dvx, yL, waist), (dvx, yL, 850), (dvx, wy, 850), (xf - ENTRY_OFF, wy, 850), (xf - ENTRY_OFF, wy, wz)], ov.C_IBC_WASTE)
+         [(dvx, yL, waist), (dvx, yL, 30), (xf - ENTRY_OFF, yL, 30),
+          (xf - ENTRY_OFF, wy, 30), (xf - ENTRY_OFF, wy, wz)], ov.C_IBC_WASTE)
     tank_entry("Waste IBC (IBC-4)", wy, wz, ov.C_IBC_WASTE)
     return "\n".join(p)
 

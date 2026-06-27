@@ -171,10 +171,11 @@ def kit():
     #    wall base (Yd80, clear of the grey DV-01 waste drop at yW=35), up to P-02's +Yd IN port.
     yB = 80
     tx, ty, tz = cp.BROWN_TAP
-    pipe("IBC-3 (Brown) tap -> P-02 inlet",   # AROUND the tray (Rule 5a): corridor run clear of the upright,
-         [(tx, ty, tz), (tx, cp.GAP_CORR_Y, tz), (cp.GAPX, cp.GAP_CORR_Y, tz), (cp.GAPX, cp.TRAY_STRIP_Y, tz),
-          (p2_in[0], cp.TRAY_STRIP_Y, tz), (p2_in[0], cp.TRAY_STRIP_Y, p2_in[2]), p2_in], ov.C_IBC_BROWN)  # cross at the gap, strip, up
-    p.append(cp.ball_valve("BV-03 (P-02 suction)", p2_in[0], cp.TRAY_STRIP_Y, waist, "z"))   # at SV-01 reach height
+    pipe("IBC-3 (Brown) tap -> P-02 inlet",   # AROUND + UNDER the walkway (Rule 5a): drop clear of the FP
+         [(tx, ty, tz), (tx, cp.GAP_CORR_Y, tz), (4720, cp.GAP_CORR_Y, tz), (4720, cp.GAP_CORR_Y, 65),
+          (cp.GAPX, cp.GAP_CORR_Y, 65), (cp.GAPX, cp.GAP_CORR_Y, 50), (cp.GAPX, 56, 50), (cp.GAPX, 56, 10),
+          (2960, 56, 10), (2960, 56, p2_in[2]), (2960, p2cy, p2_in[2]), p2_in], ov.C_IBC_BROWN)  # over the rail, drop, cross under the cantilever, strip z10, rise before bracket-6
+    p.append(cp.ball_valve("BV-03 (P-02 suction)", 2960, 56, waist, "z"))   # at SV-01 reach height
     # 2. P-02 OUT (+X) → F1 inlet — straight, in line (same axis as the filter chain)
     pipe("P-02 -> F1", [p2_out, f_in("F1")], ov.C_IBC_BROWN)
     # 3. filter-skid jumpers F1→F2→F3 — straight pipe between the adjacent in-line ports

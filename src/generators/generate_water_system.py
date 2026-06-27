@@ -300,11 +300,10 @@ def draw_sheet1():
     ax1.text(2.4, 4.65, "ACC-01\n1 GAL", ha="center", va="center",
              fontsize=6, color=C_BLUE)
 
-    # Valve + run to processing — BV-02 sits at the supply run tap-off (Y=3.8)
-    pipe(ax1, 2.4, 4.42, 2.4, 3.8 + VR, C_BLUE)
+    # ACC-01 → supply run (Y=3.8). No isolation valve here — the two downstream
+    # branches carry their own (BV-04 at TAP-01, BV-05 at the spray bar).
+    pipe(ax1, 2.4, 4.42, 2.4, 3.8, C_BLUE)
     arrow_pipe(ax1, 2.4, 4.25, 2.4, 3.95, color=C_BLUE)
-    valve(ax1, 2.4, 3.8, color=C_BLUE)
-    ax1.text(2.70, 3.77, "BV-02", ha="center", fontsize=6, color=C_BLUE)
     # Run east to spray bar riser tap-off — humps over filter verticals, blue return, waste vertical
     pipe(ax1, 2.4, 3.8, 14.5, 3.8, C_BLUE)
     pipe_bridge(ax1, 6.0,   3.8, color=C_BLUE, lw=LW_PIPE, bg=C_FILT)     # over F1 vertical
@@ -319,7 +318,7 @@ def draw_sheet1():
     TAP_SCH_X = 12.0   # schematic X position for tap branch
     pipe(ax1, TAP_SCH_X, 3.8, TAP_SCH_X, 3.3 + VR, C_BLUE)
     valve(ax1, TAP_SCH_X, 3.3, color=C_BLUE)
-    ax1.text(TAP_SCH_X + 0.30, 3.30, "BV-06", ha="center", fontsize=6, color=C_BLUE)
+    ax1.text(TAP_SCH_X + 0.30, 3.30, "BV-04", ha="center", fontsize=6, color=C_BLUE)
     tap_y = 2.36
     pipe(ax1, TAP_SCH_X, 3.3 - VR, TAP_SCH_X, tap_y, C_BLUE)
     pipe_bridge(ax1, TAP_SCH_X, 2.6, direction='v', color=C_BLUE, lw=LW_PIPE, bg=C_BLACK_L)  # over black waste line
@@ -332,17 +331,23 @@ def draw_sheet1():
     ax1.text(TAP_SCH_X, tap_y - 0.7, "TAP-01\n(CHEM PREP)", ha="center",
              fontsize=6, color=C_BLUE)
 
-    # External fill (X1) via end-wall bulkhead — gravity feed, side-entry near the top of the Blue totes (no top-cap access)
-    pipe(ax1, 1.5, 8.2, 1.5, 9.5, C_BLUE)
-    check_valve(ax1, 1.5, 9.22, 0, -1, color=C_BLUE)               # anti-siphon — no back-feed out X1
-    ax1.text(1.18, 9.22, "CV-1", ha="right", va="center", fontsize=5.5, color=C_BLUE)
-    arrow_pipe(ax1, 1.5, 9.45, 1.5, 9.36, color=C_BLUE)            # downward fill flow
+    # External fill (X1) via end-wall bulkhead — gravity feed. A SINGLE check valve
+    # (CV-1) sits right after the port; the fill then tees to BOTH Blue totes near the
+    # top — a separate path from the dotted DV-01 return (which carries CV-2).
     ext_port(ax1, 1.5, 9.65, color=C_BLUE, label="X1")
     ax1.text(1.5, 9.95, "EXT. FILL\n2\" NPT\nGRAVITY", ha="center", fontsize=5.5,
              color=C_BLUE, style="italic")
-    # X1 fill tees to BOTH Blue totes (parallel fill — no separate X2 port).
-    pipe(ax1, 1.5, 9.65, 3.3, 9.65, C_BLUE)   # header over both tanks
-    pipe(ax1, 3.3, 9.65, 3.3, 9.6, C_BLUE)    # drop into IBC-2
+    pipe(ax1, 1.5, 9.53, 1.5, 9.08, C_BLUE)                        # port → CV-1 → tee
+    check_valve(ax1, 1.5, 9.38, 0, -1, color=C_BLUE)              # single anti-siphon on the fill
+    ax1.text(1.18, 9.38, "CV-1", ha="right", va="center", fontsize=5.5, color=C_BLUE)
+    pipe(ax1, 1.5, 9.08, 2.9, 9.08, C_BLUE)                        # fill header → IBC-2 branch
+    ax1.plot([1.5], [9.08], "o", ms=3.5, color=C_BLUE, zorder=6)   # tee node
+    pipe(ax1, 1.5, 9.08, 1.5, 8.2, C_BLUE)                         # drop into IBC-1
+    arrow_pipe(ax1, 1.5, 8.42, 1.5, 8.30, color=C_BLUE)
+    pipe(ax1, 2.9, 9.08, 2.9, 8.2, C_BLUE)                         # drop into IBC-2 (top-left)
+    arrow_pipe(ax1, 2.9, 8.42, 2.9, 8.30, color=C_BLUE)
+    ax1.text(2.2, 9.22, "X1 fill → IBC-1 & IBC-2", ha="center", fontsize=5.2,
+             color=C_BLUE, style="italic")
 
     # Water level sensor labels
     ax1.text(4.75, 8.08, "IBC-2 LOW-LEVEL\nFLOAT SW.", ha="center",
@@ -456,14 +461,14 @@ def draw_sheet1():
     pipe(ax1, 9.7, 3.8 + BR,   9.7, 6.3 - BR,  C_BLUE, style="--")   # between crossings
     pipe(ax1, 9.7, 6.3 + BR,   9.7, RET_Y,     C_BLUE, style="--")   # above brown drain → return level
     arrow_pipe(ax1, 9.7, 7.0, 9.7, 7.3, color=C_BLUE)                # short upward return arrow
-    pipe(ax1, 9.7, RET_Y, 3.3, RET_Y, C_BLUE, style="--")            # left to IBC-2 top
+    pipe(ax1, 9.7, RET_Y, 3.7, RET_Y, C_BLUE, style="--")            # left to IBC-2 top-right
     pipe_bridge(ax1, BD_X, RET_Y, color=C_BLUE, lw=LW_PIPE, bg=C_BROWN_L, style="--")  # over brown drain-out pipe
     arrow_pipe(ax1, 5.0, RET_Y, 4.7, RET_Y, color=C_BLUE)            # short leftward return arrow
-    pipe(ax1, 3.3, RET_Y, 3.3, 8.2, C_BLUE, style="--")              # down to IBC-2 side-entry near top
-    check_valve(ax1, 3.3, 8.5, 0, -1, color=C_BLUE)                  # anti-siphon before IBC-2
-    ax1.text(3.5, 8.5, "CV-2", ha="left", va="center", fontsize=5.5, color=C_BLUE)
-    arrow_pipe(ax1, 3.3, 8.36, 3.3, 8.28, color=C_BLUE)             # downward return arrow
-    ax1.text(6.5, RET_Y + 0.15, "RECYCLED → IBC-2 SIDE-ENTRY (both Blue totes filled in parallel)",
+    pipe(ax1, 3.7, RET_Y, 3.7, 8.2, C_BLUE, style="--")              # down to IBC-2 (top-right) — SEPARATE from the X1 fill
+    check_valve(ax1, 3.7, 8.5, 0, -1, color=C_BLUE)                  # anti-siphon before IBC-2
+    ax1.text(3.9, 8.5, "CV-2", ha="left", va="center", fontsize=5.5, color=C_BLUE)
+    arrow_pipe(ax1, 3.7, 8.36, 3.7, 8.28, color=C_BLUE)             # downward return arrow
+    ax1.text(6.5, RET_Y + 0.15, "DV-01 RECYCLE → IBC-2 SIDE-ENTRY (separate return path, anti-siphon CV-2)",
              ha="center", fontsize=6, color=C_BLUE, style="italic")
 
     # Path to Black system — right from DV-01 at Y=3.25, then up via W_X vertical
@@ -528,6 +533,9 @@ def draw_sheet1():
     pipe(ax1, 15.6, 4.0, 15.6, 3.65 + PUMP_R, C_BROWN)              # drain → P-04
     pump(ax1, 15.6, 3.65, color=C_PUMP)
     ax1.text(15.80, 3.60, "P-04\n12VDC", ha="left", fontsize=6, color=C_PUMP)
+    ax1.text(14.95, 3.18,
+             "NOTE — P-04 manually primed & started:\nsuction leg gravity-drains to the sump\nbetween cycles (no self-prime / auto-start)",
+             ha="right", va="top", fontsize=5.0, color="#555555", style="italic", zorder=6)
 
     # 3-way diverter valve below P-04
     DV02_Y = 3.05

@@ -160,9 +160,10 @@ MERGE4  = (ov.IBC_COL_X + 600, YD_FAR - 200, ov.IBC_PALLET_H + ov.IBC_H_1000 - 1
                                           # shared IBC-4 waste merge — moved BACK toward the sealed
                                           # end (behind the pumps/panel), so the grey riser clears
                                           # the pumps.  DV-01 (wall) + DV-02 join here → one entry.
-BROWN_TAP = (5000, YD_NEAR + 120, ov.IBC_PALLET_H + 90)   # (5000,1166,258) — T-junction above the
-                                          # SINGLE shared IBC-3 bottom dip tube; feeds BOTH P-02
-                                          # (wall filter loop) and P-05 (drain) → one tote penetration
+BROWN_TAP = (4880, CTR_Y - (PVB_R + 30), ov.IBC_PALLET_H + 90)   # (4880,1101,258) — the SINGLE shared
+                                          # IBC-3 bottom tap T: run ALONG X (P-02 leaves −X to the
+                                          # wall, P-05 leaves +X to the pump), dip on the −Yd branch.
+                                          # Feeds BOTH P-02 (wall loop) and P-05 → one tote penetration.
 
 
 def pump_unit(nm, cx, cy, cz0, axis="x", face=1, color=None):
@@ -263,14 +264,18 @@ def _bottom_pickup(p, nm, x, yface, into, col, riser_path):
 
 
 # Pumps in a SINGLE vertical column (like the filter row) at (PXC, CTR_Y); IN −Yd / OUT +Yd.
-PSTACK = {"P-01": 300, "P-04": 540, "P-05": 780, "P-03": 1020}   # base Z, bottom → top
+# Order bottom → top: P-01, [ACC-01 dead-leg], P-04, P-05, P-03 (ACC sits above P-01).
+PSTACK = {"P-01": 280, "P-04": 940, "P-05": 1340, "P-03": 1740}  # base Z
 PIY, POY = CTR_Y - (PVB_R + 30), CTR_Y + (PVB_R + 30)            # 1101 (IN) / 1261 (OUT) manifold Yd
 def _piz(key): return PSTACK[key] + PVB_H - 18                    # port Z for a stack key
-SV_Z   = 1180                              # SV-02 (on the P-04 discharge, above the stack)
-DV_Z   = 1340                              # 3W-DV-02 center Z (above the stack)
+SV_Z   = 2020                              # SV-02 (on the P-04 discharge, above the stack)
+DV_Z   = 2160                              # 3W-DV-02 center Z (above the stack)
 # ACC-01 — SeaFlo bladder accumulator: a single BOTTOM port, plumbed as a vertical DEAD-LEG teed
 # onto the Blue supply line (like the pumps/filters tee in, but the tank's only port is underneath).
-ACC_X, ACC_Z0, ACC_TEE_Z = 4660, 640, 560  # tank center X, bottom-port Z, supply-line tee Z
+ACC_Z0, ACC_R = 540, 64                     # ACC-01 base Z (in the column, above P-01); body radius (Ø127)
+ACC_PZ = ACC_Z0 + 70                        # ACC-01 IN/OUT port Z (opposite sides, filter/pump style)
+def acc_in():  return (PXC, CTR_Y + ACC_R + 30, ACC_PZ)   # +Yd (from P-01 OUT)
+def acc_out(): return (PXC, CTR_Y - ACC_R - 30, ACC_PZ)   # −Yd (to the supply trunk)
 
 
 def equipment():
@@ -281,8 +286,14 @@ def equipment():
     for label, key in (("Pump P-01 (Blue supply)", "P-01"), ("Pump P-04 (Tray drain)", "P-04"),
                        ("Pump P-05 (Brown drain)", "P-05"), ("Pump P-03 (Waste drain)", "P-03")):
         p += pump_unit(label, PXC, CTR_Y, PSTACK[key], axis="y")
-    p.append(ov.ruby_cylinder("ACC-01 Accumulator", ACC_X, CTR_Y, ACC_Z0, 127 / 2, 200, color=ov.C_ACC))
-    p.append(ov.ruby_cylinder("ACC-01 bottom port", ACC_X, CTR_Y, ACC_Z0 - 24, RP + 4, 24, color=CDK, axis="z"))
+    # ACC-01 — drawn like the filters/pumps: a tall vertical body with IN/OUT on OPPOSITE sides
+    # (IN +Yd from P-01, OUT −Yd to the trunk), in line on the Blue supply.
+    acc_h = 300
+    p.append(ov.ruby_cylinder("ACC-01 Accumulator", PXC, CTR_Y, ACC_Z0, ACC_R, acc_h, color=ov.C_ACC))
+    p.append(ov.ruby_cylinder("ACC-01 head", PXC, CTR_Y, ACC_Z0 + acc_h, ACC_R + 3, 26, color=CDK, axis="z"))
+    for tag, sd in (("in", +1), ("out", -1)):
+        y0 = (CTR_Y + ACC_R) if sd > 0 else (CTR_Y - ACC_R - 30)
+        p.append(ov.ruby_cylinder(f"ACC-01 {tag} port", PXC, y0, ACC_PZ, RP, 30, color=CDK, axis="y"))
     # SV-02 sample tap on the P-04 discharge (+Yd manifold), above the stack + downturned spout
     p.append(ov.ruby_box("SV-02 sample valve", PXC - 25, POY - 25, SV_Z, 50, 50, 60, color=ov.C_VALVE))
     p.append(ov.ruby_cylinder("SV-02 sample spout", PXC, POY, SV_Z - 90, 6, 90, color=ov.C_VALVE))
@@ -328,12 +339,11 @@ def plumbing():
     # BLUE #1 → P-01 suction (riser on the IN manifold, then to the near-col tote)
     _side_entry(p, "Blue #1 -> P-01 suction",
                 [pin("P-01"), (PXC, PIY, blz), (xe, PIY, blz)], xe, YD_NEAR, blz, -1, ov.C_BLUE)
-    # P-01 → ACC-01 dead-leg tee → trunk to the spray bar (out past the +Yd side of the stack)
-    pipe("P-01 -> supply trunk (via ACC tee)",
-         [pout("P-01"), (PXC, POY, ACC_TEE_Z), (4800, POY, ACC_TEE_Z), (4800, CTR_Y, ACC_TEE_Z),
-          (ACC_X, CTR_Y, ACC_TEE_Z), (4500, CTR_Y, ACC_TEE_Z), (4500, CTR_Y, 300)], ov.C_BLUE)
-    p.append(tee("ACC-01 supply tee", ACC_X, CTR_Y, ACC_TEE_Z, run="x", branch="z+"))
-    pipe("ACC-01 dead-leg (-> bottom port)", [(ACC_X, CTR_Y, ACC_TEE_Z), (ACC_X, CTR_Y, ACC_Z0)], ov.C_BLUE)
+    # Blue supply IN LINE through ACC-01 (like a filter in the chain): P-01 OUT → ACC IN (+Yd),
+    # ACC OUT (−Yd) → trunk out the mouth to the spray bar.
+    pipe("P-01 -> ACC-01 (in)", [pout("P-01"), (PXC, POY, ACC_PZ), acc_in()], ov.C_BLUE)
+    pipe("ACC-01 -> Blue supply trunk (-> spray bar)",
+         [acc_out(), (PXC, PIY, ACC_PZ), (4500, PIY, ACC_PZ), (4500, CTR_Y, ACC_PZ), (4500, CTR_Y, 300)], ov.C_BLUE)
     return "\n".join(p)
 
 
@@ -363,6 +373,14 @@ def drains_ports():
     for yface, into, nm in ((YD_NEAR, -1, "Blue #1 (IBC-1)"), (YD_FAR, +1, "Blue #2 (IBC-2)")):
         _side_entry(p, f"X1 fill -> {nm}", [(tx, CTR_Y, x1z)], tx, yface, x1z, into, ov.C_BLUE, check=False)
 
+    # ── Blue EQUALIZATION: a low 1" cross-connect tying the BOTTOMS of the two Blue totes together
+    #    so their levels equalize.  Straight across, near the sealed end. ──
+    beqz, beqx = ov.IBC_H_1000 + ov.IBC_PALLET_H + 40, 5500   # ~1376 — just above the Blue tote bottoms
+    p.append(ov.ruby_pipe_run("Blue equalization (IBC-1 <-> IBC-2)",
+        [(beqx, YD_NEAR - 150, beqz), (beqx, YD_FAR + 150, beqz)], 16, color=ov.C_BLUE))   # 1" pipe
+    p.append(ov.ruby_cylinder("Blue eq flange (IBC-1)", beqx, YD_NEAR - 8, beqz, 36, 16, color=ov.C_STEEL, axis="y"))
+    p.append(ov.ruby_cylinder("Blue eq flange (IBC-2)", beqx, YD_FAR - 8, beqz, 36, 16, color=ov.C_STEEL, axis="y"))
+
     # ── IBC-3 BROWN: ONE shared bottom tap (dip tube → floor) → T-junction (cp.BROWN_TAP) that
     #    feeds BOTH P-05 (drain) and P-02 (wall filter loop) — a single tote penetration. ──
     tx3, ty3, tz3 = BROWN_TAP
@@ -371,11 +389,10 @@ def drains_ports():
         [(tx3, yin3, tz3 - 50), (tx3, yin3, tz3), (tx3, ty3, tz3)], RP, color=ov.C_IBC_BROWN))
     p.append(ov.ruby_cylinder("IBC-3 (Brown) tap flange", tx3, YD_NEAR - 8, tz3, 36, 16, color=ov.C_STEEL, axis="y"))
     p.append(check_valve("IBC-3 (Brown) tap check valve", tx3, YD_NEAR + 60, tz3, "y"))   # in-line on the Yd approach
-    p.append(tee("IBC-3 (Brown) tap T", tx3, ty3, tz3, run="z", branch="y-"))   # dip from −Yd; P-05 up / P-02 down
-    # P-05 (Brown drain) suction: shared tap T → up behind the panel → P-05 IN (−Yd manifold)
+    p.append(tee("IBC-3 (Brown) tap T", tx3, ty3, tz3, run="x", branch="y-"))   # dip on −Yd; P-02 −X / P-05 +X
+    # P-05 (Brown drain) suction: shared tap T → +X run end → rise to P-05 IN (−Yd manifold)
     p5i = (PXC, PIY, _piz("P-05")); p5o = (PXC, POY, _piz("P-05"))
-    pipe("Brown tap -> P-05 inlet",
-         [BROWN_TAP, (5060, ty3, tz3), (5060, ty3, p5i[2]), (PXC, ty3, p5i[2]), p5i], ov.C_IBC_BROWN)
+    pipe("Brown tap -> P-05 inlet", [BROWN_TAP, (PXC, ty3, tz3), p5i], ov.C_IBC_BROWN)
     p.append(ov.ruby_cylinder("X3 Brown drain port (end wall)", ew - 60, COL_L, 1700, 22, 60, color=C_CHECK, axis="x"))
     # P-05 OUT → behind the panel → +X to the end wall + a perpendicular ≥50mm bulkhead stub
     pipe("P-05 -> X3 end-wall port",

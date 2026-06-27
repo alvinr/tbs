@@ -173,7 +173,7 @@ def kit():
     yB = 80
     tx, ty, tz = cp.BROWN_TAP
     pipe("IBC-3 (Brown) tap -> P-02 inlet",
-         [(tx, ty, tz), (tx, ty, 70), (4600, ty, 70), (4600, yB, 70),
+         [(tx, ty, tz), (4600, ty, tz), (4600, ty, 70), (4600, yB, 70),
           (p2_in[0], yB, 70), (p2_in[0], yB, p2_in[2]), p2_in], ov.C_IBC_BROWN)
     # 2. P-02 OUT (+X) → F1 inlet — straight, in line (same axis as the filter chain)
     pipe("P-02 -> F1", [p2_out, f_in("F1")], ov.C_IBC_BROWN)
@@ -249,13 +249,22 @@ def right_walkway():
 
 
 # ── "Labeled" scene callouts (point-anchored on the kit; instance-anchored on pinhole/elec) ──
-LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz)  — the pinhole-wall FILTER sub-loop
-    (2860, 95, 2218, "P-02\n(filter feed)", 0, 520, 250),
+LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz)
+    # ── pinhole-wall FILTER sub-loop (leaders point +Yd, out toward the operator) ──
+    (3058, 104, 2300, "P-02\n(filter feed)", 0, 520, 250),
     (3300, 102, 2305, "F1 (50um)",   0, 560, 80),
-    (3700, 102, 2305, "F2 (KDF-55)", 0, 560, 80),
-    (4100, 102, 2305, "F3 (GAC)",    0, 560, 80),
+    (3638, 102, 2305, "F2 (KDF-55)", 0, 560, 80),
+    (3976, 102, 2305, "F3 (GAC)",    0, 560, 80),
     (4250, 230, 1000, "SV-01\n(sample)", 0, 430, 520),
     (4430, 35,  1000, "DV-01\n(3-way)",  0, 430, 740),
+    # ── corridor plumbing panel: single-column pumps + ACC + Stage-A (leaders point −X, out the mouth) ──
+    (cp.PXC, cp.PIY, cp._piz("P-01") - 150, "P-01 (Blue supply)", -700, 0, -150),
+    (cp.PXC, cp.PIY, cp._piz("P-04") - 150, "P-04 (Tray drain)",  -800, 0, -150),
+    (cp.PXC, cp.PIY, cp._piz("P-05") - 150, "P-05 (Brown drain)", -900, 0,  150),
+    (cp.PXC, cp.PIY, cp._piz("P-03") - 150, "P-03 (Waste drain)", -1000, 0, 150),
+    (cp.PXC, cp.CTR_Y, cp.ACC_Z0 + 150, "ACC-01\n(accumulator)", -700, 0, 250),
+    (cp.PXC, cp.POY, cp.SV_Z, "SV-02\n(sample)", -700, 200, 0),
+    (cp.PXC, cp.CTR_Y, cp.DV_Z, "DV-02 (3-way)", -700, 0, 200),
 ]
 LABEL_INSTANCES = [
     ("Pinhole Assembly", "PINHOLE\n(optical ref)", 0, 700, 350),
@@ -348,6 +357,7 @@ def scene(model, name, on)
 end
 scene(model, "Water System", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Kit","Scale"])
 scene(model, "Plumbing", ["Kit","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
+scene(model, "Plumbing (labeled)", ["Kit","Corridor Equipment","Corridor Plumbing","Corridor Drains","Labels"])
 scene(model, "Plumbing + IBC", ["Kit","Corridor Equipment","Corridor Plumbing","Corridor Drains","IBC"])
 scene(model, "Overall", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
 scene(model, "Labeled", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains","Labels"])

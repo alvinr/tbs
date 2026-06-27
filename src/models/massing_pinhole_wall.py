@@ -210,13 +210,15 @@ def kit():
     pipe("P-02 -> F1",
          [p2_port(1), (p2_port(1)[0], yL, fz), (f_in("F1")[0], yL, fz), (f_in("F1")[0], yL, tie), f_in("F1")],
          ov.C_IBC_BROWN)
-    # 3. filter jumpers F1→F2→F3 (around the bodies)
+    # 3. filter-skid jumpers F1→F2→F3 — straight pipe between the adjacent in-line ports
+    #    (combo unit; the ports face each other in the gap, so no around-the-body routing)
     for a, b in (("F1", "F2"), ("F2", "F3")):
-        pipe(f"{a} out -> {b} in",
-             [f_out(a), (f_out(a)[0], yL, tie), (f_in(b)[0], yL, tie), f_in(b)], ov.C_IBC_BROWN)
-    # 4. F3 outlet → DOWN to SV-01 (waist) → DV-01
-    pipe("F3 -> SV-01 (drop to waist)",
-         [f_out("F3"), (f_out("F3")[0], yL, tie), (svx, yL, tie), (svx, yL, waist)], ov.C_FILTER)
+        pipe(f"{a} out -> {b} in", [f_out(a), f_in(b)], ov.C_IBC_BROWN)
+    # 4. F3 outlet → SV-01: a 90° "collection" elbow brings it back to the WALL/backing, then
+    #    the drop runs DOWN the wall (yW, clamped to the ply for support) to waist → SV-01.
+    yW = 35
+    pipe("F3 -> SV-01 (wall-mounted drop)",
+         [f_out("F3"), (f_out("F3")[0], yW, tie), (svx, yW, tie), (svx, yW, waist), (svx, yL, waist)], ov.C_FILTER)
     pipe("SV-01 -> DV-01", [(svx, yL, waist), (dvx, yL, waist)], ov.C_FILTER)
     # 5. DV-01 → Blue IBC (IBC-2, run +X) + Waste IBC (IBC-4, off the UNDERSIDE branch).  Each
     #    enters near the TOP via the convention: the 90° entry turn is ENTRY_OFF mm BEFORE the
@@ -234,15 +236,25 @@ def kit():
     pipe("DV-01 -> Blue IBC (IBC-2)",
          [(dvx, yL, waist), (xf - ENTRY_OFF, yL, waist), (xf - ENTRY_OFF, yL, bz)], ov.C_BLUE)
     tank_entry("Blue IBC (IBC-2)", yL, bz, ov.C_BLUE)
-    # Waste leg (off the underside branch) → Waste IBC (IBC-4, far-bottom tote).  Drops to
-    # the floor and runs UNDER the walkway (Z30) so it never blocks the operator / film plane
-    # (pattern copied from the tray-sump routing), then up to the near-top entry.
-    wy, wz = 1500, ov.IBC_H_1000 - 80            # far-column Yd / ~1088 near-top entry
+    # Waste leg (off the underside branch) → Waste IBC (IBC-4, far-bottom).  Drops to the
+    # floor, runs UNDER the walkway into the PLUMBING CORRIDOR, and enters the tote from the
+    # CORRIDOR side (Yd1316 face) — not the front.  Same entry convention (+Yd here).
+    wx, wz, yf = 4900, ov.IBC_H_1000 - 80, 1316
     pipe("DV-01 -> Waste IBC (IBC-4)",
-         [(dvx, yL, waist), (dvx, yL, 30), (xf - ENTRY_OFF, yL, 30),
-          (xf - ENTRY_OFF, wy, 30), (xf - ENTRY_OFF, wy, wz)], ov.C_IBC_WASTE)
-    tank_entry("Waste IBC (IBC-4)", wy, wz, ov.C_IBC_WASTE)
+         [(dvx, yL, waist), (dvx, yL, 30), (4640, yL, 30), (4640, 1196, 30),
+          (wx, 1196, 30), (wx, 1196, wz)], ov.C_IBC_WASTE)
+    p.append(ov.ruby_pipe_run("Waste IBC (IBC-4) entry",
+        [(wx, yf - ENTRY_OFF, wz), (wx, yf + 150, wz), (wx, yf + 150, wz - 150)], rp, color=ov.C_IBC_WASTE))
+    p.append(ov.ruby_cylinder("Waste IBC (IBC-4) flange", wx, yf - 8, wz, 36, 16, color=ov.C_STEEL, axis="y"))
+    p.append(ov.ruby_box("Waste IBC (IBC-4) check valve", wx - 20, yf - ENTRY_OFF + 18, wz - 18, 40, 36, 40, color=ov.C_VALVE))
     return "\n".join(p)
+
+
+def backing():
+    """18mm marine-ply backing for the whole wall sub-loop — secured to the container wall;
+    the pump, filters and valves mount on it and the pipes clamp to it for support (so the
+    sub-loop installs as one panel, mirroring the corridor rear panel)."""
+    return ov.ruby_box("Wall backing (18mm ply)", 2780, 0, 920, 1720, ov.EQPANEL_T, 1440, color=ov.C_PLY)
 
 
 def person():
@@ -251,9 +263,9 @@ def person():
     px, py = 3050, 150          # on the near walkway deck (Yd 0-300)
     z = DECK_Z
     pp = []
-    pp.append(ov.ruby_box("Person legs", px - 100, py - 80, z, 200, 160, 850, color=C_PERSON, alpha=0.55))
-    pp.append(ov.ruby_box("Person torso", px - 90, py - 150, z + 850, 180, 300, 600, color=C_PERSON, alpha=0.55))
-    pp.append(ov.ruby_cylinder("Person head (scale 1.75m)", px, py, z + 1450, 100, 230, color=C_PERSON, alpha=0.6))
+    pp.append(ov.ruby_box("Person legs", px - 100, py - 80, z, 200, 160, 850, color=C_PERSON, alpha=0.28))
+    pp.append(ov.ruby_box("Person torso", px - 90, py - 150, z + 850, 180, 300, 600, color=C_PERSON, alpha=0.28))
+    pp.append(ov.ruby_cylinder("Person head (scale 1.75m)", px, py, z + 1450, 100, 230, color=C_PERSON, alpha=0.32))
     return "\n".join(pp)
 
 
@@ -310,6 +322,7 @@ def build():
                          ("Film-plane support beams", "Film Plane", film_plane_beams()),
                          ("IBC Tanks (full)", "IBC", ov.ibc_stack()),
                          ("Pinhole Assembly", "Pinhole", ov.pinhole_assembly()),
+                         ("Wall backing (ply)", "Backing", backing()),
                          ("Wet-end kit (raked)", "Kit", kit()),
                          ("Person (scale)", "Scale", person()),
                          ("Other pinhole-wall equipment", "Pinhole Equipment", other_equipment()),
@@ -334,16 +347,30 @@ model.definitions.each {{ |d| d.entities.grep(Sketchup::Group).each {{ |g| g.era
 {labels_ruby()}
 v = model.active_view
 v.camera = Sketchup::Camera.new(Geom::Point3d.new(800.mm, 6000.mm, 2300.mm), Geom::Point3d.new(2950.mm, 200.mm, 1100.mm), Geom::Vector3d.new(0,0,1), false, 52)
-def scene(model, name, on)
+def scene(model, name, on, xray=false)
+  model.rendering_options["ModelTransparency"] = xray   # X-ray => all components draw as ghosts
   model.layers.each {{ |l| l.visible = (l.name == "Layer0" || l == model.layers[0] || on.include?(l.name)) }}
-  pg = model.pages.add(name); pg.use_hidden_layers = true rescue nil; pg
+  pg = model.pages.add(name, 4095)   # capture ALL page properties (incl. rendering options/X-ray + layers)
+  pg.use_rendering_options = true rescue nil
+  pg.use_hidden_layers = true rescue nil
+  pg
 end
-scene(model, "Pinhole-wall wet end", ["Context","Walkway","Film Plane","IBC","Pinhole","Kit","Scale"])
-scene(model, "Other pinhole-wall equipment", ["Context","Walkway","Film Plane","IBC","Pinhole","Pinhole Equipment"])
+scene(model, "Pinhole-wall wet end", ["Context","Walkway","Film Plane","IBC","Pinhole","Backing","Kit","Scale"])
+scene(model, "Other pinhole-wall equipment", ["Context","Walkway","Film Plane","IBC","Pinhole","Pinhole Equipment"], true)
+scene(model, "Plumbing", ["Kit"])
 scene(model, "Corridor panel", ["Context","Walkway","IBC","Corridor Frame","Corridor Panel","Scale"])
-scene(model, "Overall", ["Context","Walkway","Film Plane","IBC","Pinhole","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel"])
-scene(model, "Labeled", ["Context","Walkway","Film Plane","IBC","Pinhole","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Labels"])
+scene(model, "Overall", ["Context","Walkway","Film Plane","IBC","Pinhole","Backing","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel"])
+scene(model, "Labeled", ["Context","Walkway","Film Plane","IBC","Pinhole","Backing","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Labels"])
+model.rendering_options["ModelTransparency"] = false
 model.layers.each {{ |l| l.visible = true }}
+# robustly bake X-ray (ghost) into the "Other" scene's rendering options
+op = model.pages["Other pinhole-wall equipment"]
+if op
+  op.use_rendering_options = true
+  model.rendering_options["ModelTransparency"] = true
+  op.update(PAGE_USE_RENDERING_OPTIONS)
+  model.rendering_options["ModelTransparency"] = false
+end
 model.commit_operation
 {{ ok: true }}.to_json
 '''

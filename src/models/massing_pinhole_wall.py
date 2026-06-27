@@ -14,6 +14,7 @@ _HERE = os.path.dirname(os.path.abspath(__file__))
 _ROOT = os.path.dirname(os.path.dirname(_HERE))   # repo root (src/models -> src -> root)
 sys.path.insert(0, _HERE)
 import generate_sketchup_model as ov
+import massing_corridor_panel as cp        # the new corridor plumbing panel (same connected system)
 
 # ── band + wall ──────────────────────────────────────────────────────────────
 X0, X1 = 2700, 4674            # wet-end clear mounting band on the pinhole wall (Yd0)
@@ -311,7 +312,9 @@ def build():
                          ("Pinhole Assembly", "Pinhole", ov.pinhole_assembly()),
                          ("Wet-end kit (raked)", "Kit", kit()),
                          ("Person (scale)", "Scale", person()),
-                         ("Other pinhole-wall equipment", "Pinhole Equipment", other_equipment())]:
+                         ("Other pinhole-wall equipment", "Pinhole Equipment", other_equipment()),
+                         ("Corridor frame (deep box)", "Corridor Frame", cp.frame()),
+                         ("Corridor rear panel", "Corridor Panel", cp.rear_panel())]:
         comps.append(ov.component(name, tag, b)); tags.add(tag)
     tags.add("Labels")
     body = "\n".join(comps)
@@ -337,8 +340,9 @@ def scene(model, name, on)
 end
 scene(model, "Pinhole-wall wet end", ["Context","Walkway","Film Plane","IBC","Pinhole","Kit","Scale"])
 scene(model, "Other pinhole-wall equipment", ["Context","Walkway","Film Plane","IBC","Pinhole","Pinhole Equipment"])
-scene(model, "Overall", ["Context","Walkway","Film Plane","IBC","Pinhole","Kit","Scale","Pinhole Equipment"])
-scene(model, "Labeled", ["Context","Walkway","Film Plane","IBC","Pinhole","Kit","Scale","Pinhole Equipment","Labels"])
+scene(model, "Corridor panel", ["Context","Walkway","IBC","Corridor Frame","Corridor Panel","Scale"])
+scene(model, "Overall", ["Context","Walkway","Film Plane","IBC","Pinhole","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel"])
+scene(model, "Labeled", ["Context","Walkway","Film Plane","IBC","Pinhole","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Labels"])
 model.layers.each {{ |l| l.visible = true }}
 model.commit_operation
 {{ ok: true }}.to_json

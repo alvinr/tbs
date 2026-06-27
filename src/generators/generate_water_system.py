@@ -126,6 +126,20 @@ def valve(ax, x, y, color=C_BLUE, zorder=5, size=0.06, label="V"):
     ax.add_patch(tri1)
     ax.add_patch(tri2)
 
+def check_valve(ax, x, y, dx, dy, color=C_BROWN, zorder=6, size=0.085):
+    """Check / non-return valve (anti-siphon): a triangle pointing DOWNSTREAM
+    (the permitted flow direction) seated against a stop bar it cannot pass."""
+    L = (dx**2 + dy**2) ** 0.5
+    ux, uy = dx / L, dy / L            # downstream unit vector
+    px, py = -uy, ux                   # perpendicular
+    base1 = (x - ux*size + px*size, y - uy*size + py*size)
+    base2 = (x - ux*size - px*size, y - uy*size - py*size)
+    apex  = (x + ux*size, y + uy*size)
+    ax.add_patch(plt.Polygon([base1, base2, apex], fc=color, ec=color, zorder=zorder))
+    ax.plot([apex[0] + px*size, apex[0] - px*size],
+            [apex[1] + py*size, apex[1] - py*size],
+            color=color, lw=2.4, solid_capstyle="round", zorder=zorder + 1)
+
 def filter_sym(ax, x, y, color=C_FILT, zorder=4, label="F"):
     """Draw a filter symbol (pentagon/diamond)."""
     size = 0.126       # +20% from 0.105
@@ -261,6 +275,13 @@ def draw_sheet1():
     ax1.text(2.4, 7.62, 'IBC-1 & IBC-2 IN PARALLEL\n(X1 fill tee; shared BV-01 supply)',
              ha="center", fontsize=5.5, color=C_BLUE, style="italic")
 
+    # Blue equalization — 1" cross-tie between the two tank bottoms (level balance)
+    EQ_Y = 7.3
+    pipe(ax1, 1.5, EQ_Y, 3.3, EQ_Y, C_BLUE)
+    ax1.plot([1.5, 3.3], [EQ_Y, EQ_Y], "o", ms=3.5, color=C_BLUE, zorder=6)
+    ax1.text(2.4, 7.22, '1" BLUE EQUALIZATION (bottoms tied — level balance)',
+             ha="center", fontsize=5.3, color=C_BLUE, style="italic")
+
     # Valve on outlet
     valve(ax1, 2.4, 7.0, color=C_BLUE)
     ax1.text(2.4, 7.14, "BV-01", ha="center", fontsize=6, color=C_BLUE)
@@ -313,7 +334,9 @@ def draw_sheet1():
 
     # External fill (X1) via end-wall bulkhead — gravity feed, side-entry near the top of the Blue totes (no top-cap access)
     pipe(ax1, 1.5, 8.9, 1.5, 9.5, C_BLUE)
-    arrow_pipe(ax1, 1.5, 9.4, 1.5, 9.0, color=C_BLUE)               # downward fill flow
+    check_valve(ax1, 1.5, 9.22, 0, -1, color=C_BLUE)               # anti-siphon — no back-feed out X1
+    ax1.text(1.18, 9.22, "CV1", ha="right", va="center", fontsize=5.5, color=C_BLUE)
+    arrow_pipe(ax1, 1.5, 9.45, 1.5, 9.36, color=C_BLUE)            # downward fill flow
     ext_port(ax1, 1.5, 9.65, color=C_BLUE, label="X1")
     ax1.text(1.5, 9.95, "EXT. FILL\n2\" NPT\nGRAVITY", ha="center", fontsize=5.5,
              color=C_BLUE, style="italic")
@@ -322,47 +345,59 @@ def draw_sheet1():
     pipe(ax1, 3.3, 9.65, 3.3, 9.6, C_BLUE)    # drop into IBC-2
 
     # Water level sensor labels
-    ax1.text(4.8, 8.2, "LOW-LEVEL\nFLOAT SW.", ha="center",
+    ax1.text(4.75, 8.78, "IBC-2 LOW-LEVEL\nFLOAT SW.", ha="center",
              fontsize=5.5, color=C_BLUE, alpha=0.8)
-    ax1.plot([4.5, 3.95], [8.2, 8.2], color=C_BLUE, lw=0.8, ls=":")
+    ax1.plot([4.45, 3.95], [8.62, 8.55], color=C_BLUE, lw=0.8, ls=":")
 
     # ── BROWN SYSTEM ──────────────────────────────────────────────────────────────
     # IBC3 — used water buffer
     tank(ax1, 6.4, 8.2, 1.4, 1.4, fc="#D7CCC8", ec=C_BROWN_IBC, lw=2,
          label="IBC-3", sublabel="264 gal (1000L)\nUSED BUFFER")
 
-    # Inlet from processing floor drain
-    pipe(ax1, 6.4, 7.48, 6.4, 7.0 + VR, C_BROWN)
-    valve(ax1, 6.4, 7.0, color=C_BROWN)
-    ax1.text(6.75, 6.97, "BV-03", ha="center", fontsize=6, color=C_BROWN)
-    pipe(ax1, 6.4, 7.0 - VR, 6.4, 6.3, C_BROWN)
-    # Arrow from processing area — humps over blue return (X=9.7) and waste vertical (W_X)
-    pipe(ax1, 6.4, 6.3, 15.1, 6.3, C_BROWN, style="--")
-    pipe_bridge(ax1, 9.7,   6.3, color=C_BROWN, lw=LW_PIPE, bg=C_BROWN_L, style="--")
-    pipe_bridge(ax1, W_X,   6.3, color=C_BROWN, lw=LW_PIPE, bg=C_BLACK_L, style="--")
-    pipe_bridge(ax1, 14.5,  6.3, color=C_BROWN, lw=LW_PIPE, bg=C_PROC, style="--")
-    arrow_pipe(ax1, 6.6, 6.3, 6.4, 6.3, color=C_BROWN)
-    ax1.text(8.1, 6.1, "1\" HDPE — BROWN (DRAIN FROM FLOOR)", ha="center",
-             fontsize=7, color=C_BROWN)
+    # ── IBC-3 BUFFER — recycle return inlet (from DV-02 brown leg) ────────────────
+    # Recycled drain water from DV-02 fills the buffer near the top; an anti-siphon
+    # check valve + isolation BV-03 sit on the riser before the tank.
+    RIN_X = 7.7                      # return riser, just right of IBC-3
+    pipe(ax1, RIN_X, 6.3, 15.1, 6.3, C_BROWN, style="--")           # recycle return run
+    pipe_bridge(ax1, 9.7, 6.3, color=C_BROWN, lw=LW_PIPE, bg=C_BROWN_L, style="--")
+    pipe_bridge(ax1, W_X, 6.3, color=C_BROWN, lw=LW_PIPE, bg=C_BLACK_L, style="--")
+    arrow_pipe(ax1, 10.6, 6.3, 10.3, 6.3, color=C_BROWN)            # return flow (toward buffer)
+    ax1.text(11.4, 6.12, '1" BROWN — RECYCLE TO IBC-3 BUFFER (from DV-02)',
+             ha="center", fontsize=6.5, color=C_BROWN)
+    RIN_TOP = 8.55
+    pipe(ax1, RIN_X, 6.3, RIN_X, RIN_TOP, C_BROWN, style="--")      # riser up to tank
+    check_valve(ax1, RIN_X, 6.95, 0, 1, color=C_BROWN)             # anti-siphon (flow up into IBC-3)
+    ax1.text(RIN_X + 0.16, 6.95, "CV3", ha="left", va="center", fontsize=5.5, color=C_BROWN)
+    valve(ax1, RIN_X, 7.5, color=C_BROWN)
+    ax1.text(RIN_X + 0.16, 7.5, "BV-03", ha="left", fontsize=6, color=C_BROWN)
+    arrow_pipe(ax1, RIN_X, 7.85, RIN_X, 8.15, color=C_BROWN)
+    pipe(ax1, RIN_X, RIN_TOP, 7.1, RIN_TOP, C_BROWN, style="--")    # into tank right side, near top
+    arrow_pipe(ax1, 7.35, RIN_TOP, 7.16, RIN_TOP, color=C_BROWN)
 
-    # Brown pump P2 — outlet from bottom of IBC-3
-    pipe(ax1, 6.4, 7.0 - VR, 6.4, 5.4 + PR, C_BROWN)
-    arrow_pipe(ax1, 6.4, 6.8, 6.4, 5.8, color=C_BROWN)       # downward from IBC-3
+    # ── IBC-3 bottom shared tap → P-02 (recycle) + P-05 (drain): ONE penetration ──
+    TAP_Y = 6.85
+    pipe(ax1, 6.4, 7.5, 6.4, TAP_Y, C_BROWN)                        # tank bottom → shared tee
+    ax1.plot([6.4], [TAP_Y], "o", ms=4.5, color=C_BROWN, zorder=6)  # tee node
+    ax1.text(6.62, 7.12, "IBC-3 BOTTOM TAP\n(1 penetration\n→ P-02 + P-05)",
+             ha="left", va="center", fontsize=5.0, color=C_BROWN, style="italic")
+
+    # P-02 recycle leg (straight down to the filter skid)
+    pipe(ax1, 6.4, TAP_Y, 6.4, 5.4 + PR, C_BROWN)
+    arrow_pipe(ax1, 6.4, 6.35, 6.4, 5.85, color=C_BROWN)
     pump(ax1, 6.4, 5.4, color=C_PUMP)
     ax1.text(6.60, 5.3, "P-02\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_PUMP)
+    pipe(ax1, 6.4, 5.4 - PR, 6.4, 4.6, C_BROWN)                     # P-02 → filter skid
 
-    pipe(ax1, 6.4, 5.4 - PR, 6.4, 4.6, C_BROWN)
-
-    # ── Brown drain-out — IBC-3 to exterior drain port X3 via P-05 ───────────
-    # Separate drain circuit from left side of IBC-3 (right side feeds P-02 recirculation)
+    # ── Brown drain-out — shared tap → P-05 → exterior drain port X3 ─────────────
     BD_X = 5.35
-    pipe(ax1, 5.7, 8.0, BD_X + VR, 8.0, C_BROWN)        # stub from IBC left edge → valve edge
-    valve(ax1, BD_X, 8.0, color=C_BROWN)
-    ax1.text(BD_X - 0.15, 7.95, "BV-07", ha="right", fontsize=6, color=C_BROWN)
-    pipe(ax1, BD_X, 8.0 + VR, BD_X, 8.85 - PR, C_BROWN) # valve top → pump bottom
-    pump(ax1, BD_X, 8.85, color=C_PUMP)
-    ax1.text(BD_X - 0.15, 8.75, "P-05\n12VDC", ha="right", fontsize=6, color=C_PUMP)
-    pipe(ax1, BD_X, 8.85 + PR, BD_X, 9.5, C_BROWN)        # up from pump top → ext port
+    pipe(ax1, 6.4, TAP_Y, BD_X, TAP_Y, C_BROWN)                     # tee branch → drain riser
+    pipe(ax1, BD_X, TAP_Y, BD_X, 7.55, C_BROWN)                     # up to BV-07
+    valve(ax1, BD_X, 7.65, color=C_BROWN)
+    ax1.text(BD_X - 0.15, 7.62, "BV-07", ha="right", fontsize=6, color=C_BROWN)
+    pipe(ax1, BD_X, 7.75, BD_X, 8.3 - PR, C_BROWN)                  # valve top → pump bottom
+    pump(ax1, BD_X, 8.3, color=C_PUMP)
+    ax1.text(BD_X - 0.15, 8.2, "P-05\n12VDC", ha="right", fontsize=6, color=C_PUMP)
+    pipe(ax1, BD_X, 8.3 + PR, BD_X, 9.5, C_BROWN)                   # pump top → ext port
     arrow_pipe(ax1, BD_X, 9.3, BD_X, 9.45, color=C_BROWN)
     ext_port(ax1, BD_X, 9.65, color=C_BROWN, label="X3")
     ax1.text(BD_X, 9.95, "EXT. DRAIN\n2\" NPT", ha="center", fontsize=5.5,
@@ -424,7 +459,9 @@ def draw_sheet1():
     pipe_bridge(ax1, BD_X, RET_Y, color=C_BLUE, lw=LW_PIPE, bg=C_BROWN_L, style="--")  # over brown drain-out pipe
     arrow_pipe(ax1, 5.0, RET_Y, 4.7, RET_Y, color=C_BLUE)            # short leftward return arrow
     pipe(ax1, 3.3, RET_Y, 3.3, 8.9, C_BLUE, style="--")              # down to IBC-2 side-entry near top
-    arrow_pipe(ax1, 3.3, 9.1, 3.3, 8.95, color=C_BLUE)               # downward return arrow
+    check_valve(ax1, 3.3, 9.04, 0, -1, color=C_BLUE)                 # anti-siphon before IBC-2
+    ax1.text(3.5, 9.04, "CV2", ha="left", va="center", fontsize=5.5, color=C_BLUE)
+    arrow_pipe(ax1, 3.3, 8.92, 3.3, 8.85, color=C_BLUE)              # downward return arrow
     ax1.text(6.5, RET_Y + 0.15, "RECYCLED → IBC-2 SIDE-ENTRY (both Blue totes filled in parallel)",
              ha="center", fontsize=6, color=C_BLUE, style="italic")
 
@@ -442,7 +479,9 @@ def draw_sheet1():
     pipe(ax1, W_X, 3.8 + BR,  W_X, 6.3 - BR,  C_BLACK)   # blue crossing to brown crossing
     pipe(ax1, W_X, 6.3 + BR,  W_X, W_Y - W_H/2,  C_BLACK)  # brown crossing to IBC bottom
     arrow_pipe(ax1, W_X, 3.4, W_X, 4.5,       color=C_BLACK)   # upward flow (lower)
-    arrow_pipe(ax1, W_X, 6.5, W_X, W_Y - W_H/2 - 0.1, color=C_BLACK)  # upward (upper)
+    check_valve(ax1, W_X, 6.62, 0, 1, color=C_BLACK)          # anti-siphon before IBC-4
+    ax1.text(W_X + 0.18, 6.62, "CV4", ha="left", va="center", fontsize=5.5, color=C_BLACK)
+    arrow_pipe(ax1, W_X, 6.78, W_X, W_Y - W_H/2 - 0.02, color=C_BLACK)  # upward (upper)
 
     # ── Waste drain-out — IBC-4 to exterior drain port X4 via P-03 ────────────
     # Separate outlet from right side of IBC-4 (left side carries waste inflow)
@@ -493,8 +532,14 @@ def draw_sheet1():
     DV02_Y = 3.05
     DV02_R = 0.075 * 1.6   # diverter valve circle radius = 0.12
     pipe(ax1, 15.6, 3.65 - PUMP_R, 15.6, DV02_Y + DV02_R, C_BROWN)  # P-04 → DV-02
+    # SV-02 sample tap — teed off the P-04 discharge, ahead of the diverter
+    SV2_Y = 3.40
+    pipe(ax1, 15.6, SV2_Y, 15.98, SV2_Y, C_BROWN)                   # tee branch (right)
+    valve(ax1, 16.08, SV2_Y, color="#F9A825", size=0.05, label="SV")
+    pipe(ax1, 16.08, SV2_Y - 0.08, 16.08, SV2_Y - 0.22, C_BROWN)   # downturned sample spout
+    ax1.text(16.22, SV2_Y + 0.02, "SV-02", ha="left", fontsize=6, color="#E65100")
     valve(ax1, 15.6, DV02_Y, color="#777777", size=0.075)
-    ax1.text(16.00, DV02_Y, "3W-DV-02", ha="center", fontsize=6, color="#444")
+    ax1.text(16.00, DV02_Y - 0.22, "3W-DV-02", ha="center", fontsize=6, color="#444")
 
     # to brown: short horizontal from valve left to brown return riser (dashed — return flow)
     pipe(ax1, 15.1, DV02_Y, 15.6 - DV02_R, DV02_Y, C_BROWN, style="--")  # valve → brown return
@@ -561,6 +606,8 @@ def draw_sheet1():
         ("P-xx",      "Pump (12V DC diaphragm)"),
         ("BV-xx",     "Ball valve (manual)"),
         ("3W-DV",     "3-way diverter valve"),
+        ("SV-xx",     "Sample / test tap"),
+        ("▷|",        "Check valve (anti-siphon, before each IBC)"),
         ("F1/F2/F3",  "Filter cartridge"),
         ("⬡",         "External bulkhead port (2\" NPT)"),
     ]

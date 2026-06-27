@@ -171,11 +171,10 @@ def kit():
     #    wall base (Yd80, clear of the grey DV-01 waste drop at yW=35), up to P-02's +Yd IN port.
     yB = 80
     tx, ty, tz = cp.BROWN_TAP
-    yX = 1180   # cross the corridor in the OPENING (clear of the corner uprights at Yd1046–1096),
-    pipe("IBC-3 (Brown) tap -> P-02 inlet",   # staying high (z258, above the right-walkway grate),
-         [(tx, ty, tz), (tx, yX, tz), (4300, yX, tz), (4300, yX, 70), (4300, yB, 70),
-          (p2_in[0], yB, 70), (p2_in[0], yB, p2_in[2]), p2_in], ov.C_IBC_BROWN)  # then drop x<4329 (past the walkway)
-    p.append(cp.ball_valve("BV-03 (P-02 suction)", p2_in[0], yB, waist, "z"))   # dropped to SV-01 reach height
+    pipe("IBC-3 (Brown) tap -> P-02 inlet",   # AROUND the tray (Rule 5a): corridor run clear of the upright,
+         [(tx, ty, tz), (tx, cp.GAP_CORR_Y, tz), (cp.GAPX, cp.GAP_CORR_Y, tz), (cp.GAPX, cp.TRAY_STRIP_Y, tz),
+          (p2_in[0], cp.TRAY_STRIP_Y, tz), (p2_in[0], cp.TRAY_STRIP_Y, p2_in[2]), p2_in], ov.C_IBC_BROWN)  # cross at the gap, strip, up
+    p.append(cp.ball_valve("BV-03 (P-02 suction)", p2_in[0], cp.TRAY_STRIP_Y, waist, "z"))   # at SV-01 reach height
     # 2. P-02 OUT (+X) → F1 inlet — straight, in line (same axis as the filter chain)
     pipe("P-02 -> F1", [p2_out, f_in("F1")], ov.C_IBC_BROWN)
     # 3. filter-skid jumpers F1→F2→F3 — straight pipe between the adjacent in-line ports
@@ -215,13 +214,13 @@ def kit():
     # crosses under the walkway at Z70 (clear of the IBC frame), runs +X along the corridor gap
     # toward the SEALED END, and rises BEHIND the pumps/panel into the merge tee's underside branch
     # (so it never passes through the pumps or the frame).
-    # DV-01 waste → +X at waist to just past the right-walkway grate (gap x4629–4674, clear of the
-    # tote too), drop, jog into the CORRIDOR GAP (Yd in the opening, NOT under the IBC) and run low
-    # to the merge — parallel to the brown tray-sump pickup, never through the tote.
+    # DV-01 waste → AROUND the tray (Rule 5a): along the outside strip (Yd35) to the gap past the tray
+    # right edge, drop, cross to the corridor at the gap, and run low to the merge — never over the tray.
     mx, my, mz = cp.MERGE4
-    pipe("DV-01 -> IBC-4 merge",
-         [(dvx, yW, waist), (4280, yW, waist), (4280, yW, 60), (4280, my, 60), (mx, my, 60), (mx, my, mz)],
-         ov.C_IBC_WASTE)
+    pipe("DV-01 -> IBC-4 merge",   # strip at z10 UNDER the FP saddle gusset/cleat past x4617, step to z20
+         [(dvx, yW, waist), (4280, yW, waist), (4280, yW, 10), (4625, yW, 10), (4625, yW, 30),
+          (cp.GAPX, yW, 30), (cp.GAPX, my, 30), (cp.GAPX, my, 60), (mx, my, 60), (mx, my, mz)],
+         ov.C_IBC_WASTE)   # (clear of the corridor foot plate z0–12), cross, rise clear of the rail, merge
     return "\n".join(p)
 
 
@@ -232,14 +231,13 @@ def tap01_supply():
     the corridor blue trunk that exits the panel; BV-04/BV-05 live out here, off the corridor panel."""
     yd, fz = 12, ov.SPRAY_BAR_FEED_Z                 # 12 off the wall, Z40 trunk (overview)
     pr, tr = ov.PUMP_PIPE_OD / 2, ov.TAP_PIPE_OD / 2
-    x_conn = 4200                                    # connect clear of the right walkway (x<4329)
     p = []
-    # corridor panel trunk exit (4500,CTR_Y,300) → above the walkway → drop clear of it → wall trunk
-    p.append(ov.ruby_pipe_run("Blue trunk: corridor panel -> wall",
-        [(4500, cp.CTR_Y, 300), (x_conn, cp.CTR_Y, 300), (x_conn, cp.CTR_Y, fz), (x_conn, yd, fz)],
-        pr, color=ov.C_BLUE))
+    # AROUND the tray (Rule 5a): the corridor trunk ends at the gap (GAPX, CTR_Y, z60); cross to the
+    # outside-rim strip there, drop to the trunk height, then the wall trunk runs along the strip (Yd12).
+    p.append(ov.ruby_pipe_run("Blue trunk: corridor -> outside-rim strip",
+        [(4660, cp.GAP_CORR_Y, 60), (cp.GAPX, cp.GAP_CORR_Y, 60), (cp.GAPX, yd, 60), (cp.GAPX, yd, fz)], pr, color=ov.C_BLUE))
     p.append(ov.ruby_cylinder("Blue Supply Trunk (1/2in HDPE)",
-        ov.TAP_X, yd, fz, pr, x_conn - ov.TAP_X, color=ov.C_BLUE, axis="x"))
+        ov.TAP_X, yd, fz, pr, cp.GAPX - ov.TAP_X, color=ov.C_BLUE, axis="x"))
     # BV-05 spray-bar isolation (riser + valve at the pinhole centerline)
     p.append(ov.ruby_cylinder("BV-05 Riser", ov.BV02_X, yd, fz, pr, ov.BV02_Z - fz, color=ov.C_BLUE, axis="z"))
     p.append(cp.ball_valve("BV-05 (spray-bar isolation)", ov.BV02_X, yd, ov.BV02_Z, "z"))
@@ -331,7 +329,7 @@ def labels_ruby():
             f'  bb = inst.bounds\n'
             f'  anc = Geom::Point3d.new(bb.center.x, bb.min.y, bb.center.z)\n'
             f'  txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)},{ov.mm(dy)},{ov.mm(dz)}))\n'
-            f'  txt.layer = model.layers["Labels"] rescue nil\n'
+            f'  txt.layer = model.layers["Labels Context"] rescue nil\n'   # context labels (PINHOLE/ELEC/IBC) — full scene only
             f'end')
     return '\n'.join(rows)
 
@@ -360,7 +358,7 @@ def build():
                          ("Corridor plumbing", "Corridor Plumbing", cp.plumbing()),
                          ("Corridor drains + X-ports", "Corridor Drains", cp.drains_ports())]:
         comps.append(ov.component(name, tag, b)); tags.add(tag)
-    tags.add("Labels")
+    tags.add("Labels"); tags.add("Labels Context")
     body = "\n".join(comps)
     tags_ruby = "".join(f'  model.layers.add({t!r}) unless model.layers[{t!r}]\n' for t in sorted(tags))
     return f'''model = Sketchup.active_model
@@ -406,7 +404,7 @@ scene(model, "Plumbing", ["Kit","Supply","Corridor Equipment","Corridor Plumbing
 scene(model, "Plumbing (labeled)", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","Labels"])
 scene(model, "Plumbing + IBC", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","IBC"])
 scene(model, "Overall", ["Context","Walkway","Film Plane","Processing Tray","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
-scene(model, "Labeled", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains","Labels"])
+scene(model, "Labeled", ["Context","Walkway","Film Plane","Processing Tray","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains","Labels","Labels Context"])
 model.layers.each {{ |l| l.visible = true }}
 model.commit_operation
 {{ ok: true }}.to_json

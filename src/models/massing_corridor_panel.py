@@ -160,6 +160,12 @@ MERGE4  = (ov.IBC_COL_X + 600, YD_FAR - 200, ov.IBC_PALLET_H + ov.IBC_H_1000 - 1
                                           # shared IBC-4 waste merge — moved BACK toward the sealed
                                           # end (behind the pumps/panel), so the grey riser clears
                                           # the pumps.  DV-01 (wall) + DV-02 join here → one entry.
+GAPX  = ov.PROC_TRAY_X_R + 12             # 4641 — in the gap between the tray right edge (4629) and the
+                                          # frame upright (4654): the ONLY place to cross between the
+                                          # outside-rim strip (Yd<80) and the corridor (Rule 5a, around the
+                                          # tray).  Cross HORIZONTALLY here at a z clear of the FP rail (z510).
+TRAY_STRIP_Y = 60                         # outside the tray near rim (Yd80): the around-the-rim run lane
+GAP_CORR_Y = 1150                         # corridor-side approach Yd — clear of the front upright (Yd1046–1096)
 BROWN_TAP = (4880, CTR_Y - (PVB_R + 30), ov.IBC_PALLET_H + 90)   # (4880,1101,258) — the SINGLE shared
                                           # IBC-3 bottom tap T: run ALONG X (P-02 leaves −X to the
                                           # wall, P-05 leaves +X to the pump), dip on the −Yd branch.
@@ -375,14 +381,16 @@ def plumbing():
     valveZ = ov.WALKWAY_H + 65                          # 195 — valve body above the deck
     dropX, dropY = sumpX - 70, 50                       # 4480 — return riser in the grate gap, off the end beam
     gapX = (ov.PROC_TRAY_X_R + ov.IBC_COL_X) / 2        # 4651.5 — centered in the tray–IBC gap
-    # Rise out of the sump to z65 — ABOVE the processing-tray rim (z50) but BELOW the right-walkway
-    # beam (z80) and grate (z114) — run +X out past the right-walkway cantilever end (x>4734), jog
-    # into the corridor, then a −Yd stub straight into the P-04 IN port (convention).
+    # Original (overview) loop, AROUND the tray (Rule 5a): UP through the walkway grate to the valve
+    # above the deck, over in X, TWIST in Yd to OUTSIDE the tray near rim (dropY=50 < tray Yd80),
+    # back DOWN through the grate, floor run along the outside strip to the gap past the tray's right
+    # edge (x>4629), then up into the corridor and a −Yd stub straight into the P-04 IN port.
     z04 = _piz("P-04")
     pipe("Tray sump -> P-04 suction",
-         [(sumpX, sumpY, sumpZ), (sumpX, sumpY, 65), (4800, sumpY, 65),
+         [(sumpX, sumpY, sumpZ), (sumpX, sumpY, valveZ), (dropX, sumpY, valveZ), (dropX, dropY, valveZ),
+          (dropX, dropY, 10), (gapX, dropY, 10), (gapX, dropY, 65), (4800, dropY, 65),
           (4800, PIY - 30, 65), (PXC, PIY - 30, 65), (PXC, PIY - 30, z04), pin("P-04")],
-         ov.C_IBC_BROWN)
+         ov.C_IBC_BROWN)   # floor run at z10 — UNDER the film-plane saddle gusset (z20–140)
     p.append(ov.ruby_cylinder("Tray sump strainer foot", sumpX, sumpY, sumpZ, 14, 36, color=CDK, axis="z"))
     # P-04 DISCHARGE → up the BACK of the panel (clear of the OUT-port stack), back to the front
     # ABOVE the pumps where it's clear → SV-02 (in-line) → DV-02 underside branch.
@@ -422,10 +430,10 @@ def plumbing():
     # OUT leaves convention-style: +Yd stub straight out of the OUT port, then up to ACC-01 IN.
     pipe("P-01 -> ACC-01 (in)",
          [pout("P-01"), (PXC, POY + 30, _piz("P-01")), (PXC, POY + 30, ACC_PZ), acc_in()], ov.C_BLUE)
-    # ACC-01 OUT → supply trunk → leaves the panel toward the spray bar / chem-prep tap (BV-04 at
-    # TAP-01, BV-05 at the spray bar live at THOSE destinations, off this model — see schematic).
+    # ACC-01 OUT → supply trunk → out to the gap past the tray right edge (GAPX), dropped to z60 ready
+    # to cross to the outside-rim strip (tap01_supply continues it AROUND the tray to BV-05/TAP-01).
     pipe("Blue supply trunk -> spray bar / TAP-01 (off-panel)",
-         [acc_out(), (PXC, PIY, ACC_PZ), (4500, PIY, ACC_PZ), (4500, CTR_Y, ACC_PZ), (4500, CTR_Y, 300)], ov.C_BLUE)
+         [acc_out(), (PXC, PIY, ACC_PZ), (PXC, GAP_CORR_Y, ACC_PZ), (4660, GAP_CORR_Y, ACC_PZ), (4660, GAP_CORR_Y, 60)], ov.C_BLUE)
     return "\n".join(p)
 
 

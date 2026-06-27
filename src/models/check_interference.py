@@ -62,11 +62,14 @@ def classify(name):
                             "front portal", "panel mount", "retaining bar", "wall hanger", "through-bolt",
                             "front bar", "d-ring")):
         return ("frame", None)
+    if "grate" in n:                   # the walkway GRATE (a surface) — the sump drain may loop
+        return ("grate", "sump")       # up THROUGH it and back down (key "sump" excludes the drain)
     if any(k in n for k in ("rwk", "cantilever", "long beam", "end beam", "bearer", "upright clamp",
                             "saddle", "gusset", "fp support beam")):
         return ("cantilever", None)
     if ("tray" in n or "print on" in n) and "->" not in name:
-        return ("tray", "sump")        # key "sump" → the sump drain pipe (connects to it) is excluded
+        return ("skip", None)          # the real tray geometry is an OPEN basin; the footprint
+                                       # exclusion is enforced by a synthetic box (see main)
     # PERMITTED penetrations / not obstacles (skip as obstacles)
     if any(k in n for k in ("ibc ", "tote", "pinhole wall", "floor", "ceiling", "end wall", "deck",
                             "walkway", "panel", "backing", "ply", "spine", "context", "scale", "person",
@@ -96,8 +99,14 @@ def main():
         g["cat"], g["key"] = cat, key
         if cat == "pipe":
             pipes.append(g)
-        elif cat in ("pump", "acc", "filter", "frame", "cantilever", "tray"):
+        elif cat in ("pump", "acc", "filter", "frame", "cantilever", "tray", "grate"):
             solids.append(g)
+
+    # The processing tray is a TOTAL EXCLUSION ZONE: no pipe may cross its footprint at deck level.
+    # (The real basin is open geometry, so enforce the footprint with a synthetic box.)  Only the
+    # sump drain — which connects to the sump — is allowed (key "sump").
+    solids.append({"n": "PROCESSING TRAY (exclusion zone)", "p": "synthetic", "cat": "tray", "key": "sump",
+                   "mn": [170, 80, 0], "mx": [4629, 2280, 130]})
 
     TOL = 3.0   # mm — ignore mere touching
     hits = []

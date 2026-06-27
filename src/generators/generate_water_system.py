@@ -332,8 +332,9 @@ def draw_sheet1():
              fontsize=6, color=C_BLUE)
 
     # External fill (X1) via end-wall bulkhead — gravity feed. A SINGLE check valve
-    # (CV-1) sits right after the port; the fill then tees to BOTH Blue totes near the
-    # top — a separate path from the dotted DV-01 return (which carries CV-2).
+    # (CV-1) sits right after the port — the ONLY check valve in the system, since this is the
+    # only flow path with no pump (the pumps' integral checks cover the return legs).  The fill
+    # then tees to BOTH Blue totes near the top — a separate path from the dotted DV-01 return.
     ext_port(ax1, 1.5, 9.65, color=C_BLUE, label="X1")
     ax1.text(1.5, 9.95, "EXT. FILL\n2\" NPT\nGRAVITY", ha="center", fontsize=5.5,
              color=C_BLUE, style="italic")
@@ -370,9 +371,7 @@ def draw_sheet1():
     ax1.text(11.4, 6.12, '1" BROWN — RECYCLE TO IBC-3 BUFFER (from DV-02)',
              ha="center", fontsize=6.5, color=C_BROWN)
     RIN_TOP = 8.55
-    pipe(ax1, RIN_X, 6.3, RIN_X, RIN_TOP, C_BROWN, style="--")      # riser up to tank
-    check_valve(ax1, RIN_X, 7.2, 0, 1, color=C_BROWN)             # anti-siphon (flow up into IBC-3)
-    ax1.text(RIN_X + 0.16, 7.2, "CV-3", ha="left", va="center", fontsize=5.5, color=C_BROWN)
+    pipe(ax1, RIN_X, 6.3, RIN_X, RIN_TOP, C_BROWN, style="--")      # riser up to tank (no CV-3 — P-04 has an integral check valve)
     arrow_pipe(ax1, RIN_X, 7.7, RIN_X, 8.15, color=C_BROWN)
     pipe(ax1, RIN_X, RIN_TOP, 7.1, RIN_TOP, C_BROWN, style="--")    # into tank right side, near top
     arrow_pipe(ax1, 7.35, RIN_TOP, 7.16, RIN_TOP, color=C_BROWN)
@@ -464,11 +463,9 @@ def draw_sheet1():
     pipe(ax1, 9.7, RET_Y, 3.7, RET_Y, C_BLUE, style="--")            # left to IBC-2 top-right
     pipe_bridge(ax1, BD_X, RET_Y, color=C_BLUE, lw=LW_PIPE, bg=C_BROWN_L, style="--")  # over brown drain-out pipe
     arrow_pipe(ax1, 5.0, RET_Y, 4.7, RET_Y, color=C_BLUE)            # short leftward return arrow
-    pipe(ax1, 3.7, RET_Y, 3.7, 8.2, C_BLUE, style="--")              # down to IBC-2 (top-right) — SEPARATE from the X1 fill
-    check_valve(ax1, 3.7, 8.5, 0, -1, color=C_BLUE)                  # anti-siphon before IBC-2
-    ax1.text(3.9, 8.5, "CV-2", ha="left", va="center", fontsize=5.5, color=C_BLUE)
+    pipe(ax1, 3.7, RET_Y, 3.7, 8.2, C_BLUE, style="--")              # down to IBC-2 (top-right) — SEPARATE from the X1 fill (no CV-2 — P-02 has an integral check valve)
     arrow_pipe(ax1, 3.7, 8.36, 3.7, 8.28, color=C_BLUE)             # downward return arrow
-    ax1.text(6.5, RET_Y + 0.15, "DV-01 RECYCLE → IBC-2 SIDE-ENTRY (separate return path, anti-siphon CV-2)",
+    ax1.text(6.5, RET_Y + 0.15, "DV-01 RECYCLE → IBC-2 SIDE-ENTRY (separate return path)",
              ha="center", fontsize=6, color=C_BLUE, style="italic")
 
     # Path to Black system — right from DV-01 at Y=3.25, then up via W_X vertical
@@ -485,9 +482,8 @@ def draw_sheet1():
     pipe(ax1, W_X, 3.8 + BR,  W_X, 6.3 - BR,  C_BLACK)   # blue crossing to brown crossing
     pipe(ax1, W_X, 6.3 + BR,  W_X, W_Y - W_H/2,  C_BLACK)  # brown crossing to IBC bottom
     arrow_pipe(ax1, W_X, 3.4, W_X, 4.5,       color=C_BLACK)   # upward flow (lower)
-    check_valve(ax1, W_X, 6.62, 0, 1, color=C_BLACK)          # anti-siphon before IBC-4
-    ax1.text(W_X + 0.18, 6.62, "CV-4", ha="left", va="center", fontsize=5.5, color=C_BLACK)
-    arrow_pipe(ax1, W_X, 6.78, W_X, W_Y - W_H/2 - 0.02, color=C_BLACK)  # upward (upper)
+    # (no CV-4 — P-02/P-04 have integral check valves)
+    arrow_pipe(ax1, W_X, 6.62, W_X, W_Y - W_H/2 - 0.02, color=C_BLACK)  # upward (upper)
 
     # ── Waste drain-out — IBC-4 to exterior drain port X4 via P-03 ────────────
     # Separate outlet from right side of IBC-4 (left side carries waste inflow)
@@ -616,7 +612,7 @@ def draw_sheet1():
         ("BV-xx",     "Ball valve (manual)"),
         ("3W-DV",     "3-way diverter valve"),
         ("SV-xx",     "Sample / test tap"),
-        ("▷|",        "Check valve (anti-siphon, before each IBC)"),
+        ("▷|",        "Check valve — CV-1 (X1 gravity fill only; pumps have integral checks)"),
         ("F1/F2/F3",  "Filter cartridge"),
         ("⬡",         "External bulkhead port (2\" NPT)"),
     ]

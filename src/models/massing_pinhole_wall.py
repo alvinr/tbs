@@ -204,7 +204,7 @@ def kit():
          [(dvx, yW, waist), (xf - ENTRY_OFF, yW, waist), (xf - ENTRY_OFF, yW, bz),
           (xf - ENTRY_OFF, yBlue, bz), (xf + 150, yBlue, bz), (xf + 150, yBlue, bz - 150)], ov.C_BLUE)
     p.append(ov.ruby_cylinder("Blue IBC (IBC-2) flange", xf - 8, yBlue, bz, 36, 16, color=ov.C_STEEL, axis="x"))
-    p.append(cp.check_valve("Blue IBC (IBC-2) check valve", xf - 60, yBlue, bz, "x"))   # in-line on the X approach
+    # (no CV-2 here — P-02 has an integral check valve, so a dedicated anti-siphon on this return is redundant)
     # Waste leg (off the underside branch) → Waste IBC (IBC-4, far-bottom).  Drops to the floor,
     # runs UNDER the walkway into the PLUMBING CORRIDOR, and enters from the CORRIDOR side
     # (Yd1316 face) — leg + 150mm penetration + drop ONE run, ORANGE check valve.
@@ -300,10 +300,7 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz)
     (2978, 80, 1000, "BV-03", 0, 520, 200),
     (5022, cp.PIY, cp._piz("P-03"), "BV-06", -1000, 0, 150),
     # ── per-tank anti-siphon check valves ──
-    (ov.C_LEN - 200, cp.CTR_Y, 2250, "CV-1\n(X1 fill)", -600, 300, 0),
-    (ov.IBC_COL_X - 60, 600, 2 * ov.IBC_H_1000 - 180, "CV-2\n(IBC-2 return)", 0, 450, 200),
-    (ov.IBC_COL_X + 300, cp.YD_NEAR + 60, ov.IBC_PALLET_H + ov.IBC_H_1000 - 60, "CV-3\n(IBC-3 return)", -600, 250, 200),
-    (ov.IBC_COL_X + 700, cp.YD_FAR - 60, cp.MERGE4[2], "CV-4\n(IBC-4 waste)", -600, 250, 200),
+    (ov.C_LEN - 200, cp.CTR_Y, 2250, "CV-1\n(X1 fill)", -600, 300, 0),   # only CV-1 — the pumps' integral checks cover the returns
 ]
 # Off-panel / context labels — shown ONLY in the full "Labeled" scene (Labels Context tag), kept
 # OUT of the "Plumbing (labeled)" scene so their leaders don't clutter the plumbing view.

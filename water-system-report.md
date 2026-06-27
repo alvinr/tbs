@@ -137,6 +137,15 @@ IBC-2 (900L) ──┘                                                      │
 
 - Two IBC totes plumbed in parallel via 1" HDPE manifold with isolation valves
 - P-01: Shurflo 2088 12VDC diaphragm pump — 3.5 GPM, 45 PSI, self-priming
+<!-- TODO (check-valve design choice — write up + reconcile parts/cost): the Shurflo 2088-554-144
+     pumps have an INTEGRAL check valve (1-way, prevents reverse flow — see datasheet). Because
+     every return/drain leg is pump-driven, the dedicated anti-siphon check valves CV-2 (IBC-2
+     return), CV-3 (IBC-3 buffer return) and CV-4 (IBC-4 waste) are redundant and were DROPPED from
+     the schematic + 3D. Only CV-1 (the X1 gravity fill, the one path with no pump) remains. ACTION:
+     (1) state this rationale in §4.2/§4.3 prose with the Shurflo datasheet citation; (2) parts.py
+     check-valve qty 3→1 (drop CV3/CV4 from "1\" NPT spring check valve (CV1/CV3/CV4)" → just CV1);
+     (3) re-sum cost. -->
+
 - ACC-01: 0.75 L (23.5 oz) pressure accumulator — smooths pump cycling, maintains pressure when pump is off
 - Low-level float switch on IBC-2 alerts operator when Blue supply is low
 - Spray bar: gantry design — 40×40×3mm aluminum SHS beam spanning the open processing area (3,859mm) between walkway inner edges, with wheel carriages rolling on the tray floor beneath walkway grating. Beam bore serves as spray pipe (no separate HDPE tube). See §3.5 for full mechanical design

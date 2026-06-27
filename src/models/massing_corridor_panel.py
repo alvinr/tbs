@@ -298,14 +298,14 @@ def _side_entry(p, nm, approach, x, yface, z, into, col, drop=-150, check=True):
 def _bottom_pickup(p, nm, x, yface, into, col, riser_path):
     """Tote BOTTOM pickup: penetrate the corridor face near the base, the 90° bend points DOWN to
     the FLOOR (dip tube), then back up through the flange and along `riser_path` to the pump inlet
-    — ONE pipe_run (elbows everywhere).  Flange + ORANGE check valve."""
+    — ONE pipe_run (elbows everywhere).  Flange (no foot valve — the pump self-primes and has an
+    integral check valve, so a dedicated check here is redundant)."""
     z0  = ov.IBC_PALLET_H + 90              # base pickup level (just above the pallet)
     yin = yface + into * 150                # 150mm penetration into the tote
     # after the elbow inside the tote the dip tube descends only 50mm (a short standpipe), NOT to the floor
     wps = [(x, yin, z0 - 50), (x, yin, z0), (x, yface - into * 120, z0)] + list(riser_path)
     p.append(ov.ruby_pipe_run(nm + " pickup", wps, RP, color=col))
     p.append(ov.ruby_cylinder(nm + " pickup flange", x, yface - into * 8, z0, 36, 16, color=ov.C_STEEL, axis="y"))
-    p.append(check_valve(nm + " pickup check valve", x, yface - into * 60, z0, "y"))   # in-line on the Yd approach
 
 
 # Pumps in a SINGLE vertical column (like the filter row) at (PXC, CTR_Y); IN −Yd / OUT +Yd.
@@ -402,9 +402,9 @@ def plumbing():
     # DV-02 → IBC-3 Brown — drop just below the top rear-panel bracket, then behind the panel (own
     # lane) → down → front → tote entry.
     zpen = 2050                                          # penetrate clear of the top bracket band (2146–2206)
-    _side_entry(p, "DV-02 -> IBC-3 (Brown)",
+    _side_entry(p, "DV-02 -> IBC-3 (Brown)",   # no CV-3 — P-04 has an integral check valve (check=False)
                 [(PXC, dvm, DV_Z), (PXC, dvm, zpen), (PXC, BL_DVBR, zpen), (BLANE, BL_DVBR, zpen),
-                 (BLANE, BL_DVBR, bz), (PXC, BL_DVBR, bz), (xe, BL_DVBR, bz)], xe, YD_NEAR, bz, -1, ov.C_IBC_BROWN)
+                 (BLANE, BL_DVBR, bz), (PXC, BL_DVBR, bz), (xe, BL_DVBR, bz)], xe, YD_NEAR, bz, -1, ov.C_IBC_BROWN, check=False)
     # DV-02 → IBC-4 merge — waste port → drop below the bracket → behind the panel (own lane) → down
     # → +X past the risers to the merge tee (jog to the merge Yd at x=MERGE, clear of the back verticals).
     pipe("DV-02 -> IBC-4 merge",
@@ -412,7 +412,7 @@ def plumbing():
           (BLANE, BL_DVWST, wz), (MERGE4[0], BL_DVWST, wz), MERGE4], ov.C_IBC_WASTE)
     p.append(tee("IBC-4 waste merge tee", MERGE4[0], MERGE4[1], MERGE4[2], run="x", branch="z-"))
     xe4 = ov.IBC_COL_X + 700                              # 5374 — entry near the sealed end
-    _side_entry(p, "IBC-4 (Waste)", [MERGE4, (xe4, MERGE4[1], wz)], xe4, YD_FAR, wz, +1, ov.C_IBC_WASTE)
+    _side_entry(p, "IBC-4 (Waste)", [MERGE4, (xe4, MERGE4[1], wz)], xe4, YD_FAR, wz, +1, ov.C_IBC_WASTE, check=False)   # no CV-4 — P-02/P-04 have integral check valves
 
     # BLUE #1 → P-01 suction: P-01 IN → front Yd-jog onto its back-lane → penetrate the panel →
     # vertical riser BEHIND the panel (clear of the pump-port stack) → back to the front → near tote.
@@ -420,10 +420,10 @@ def plumbing():
     # the front of the body, up the threading lane (between body Yd1131+ and the near upright Yd≤1096)
     # behind the panel, to the tote.
     z01 = _piz("P-01")
-    _side_entry(p, "Blue #1 -> P-01 suction",
+    _side_entry(p, "Blue #1 -> P-01 suction",   # flooded suction + P-01's integral check → no foot valve (check=False)
                 [pin("P-01"), (PXC, PIY - 30, z01), (4900, PIY - 30, z01), (4900, BL_P01, z01),
                  (BLANE, BL_P01, z01), (BLANE, BL_P01, blz), (PXC, BL_P01, blz), (xe, BL_P01, blz)],
-                xe, YD_NEAR, blz, -1, ov.C_BLUE)
+                xe, YD_NEAR, blz, -1, ov.C_BLUE, check=False)
     p.append(ball_valve("BV-01 (P-01 suction)", BLANE, BL_P01, z01 + 150, "z"))   # on the back riser
     # Blue supply IN LINE through ACC-01 (like a filter in the chain): P-01 OUT → ACC IN (+Yd),
     # ACC OUT (−Yd) → trunk out the mouth to the spray bar.

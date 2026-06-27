@@ -192,6 +192,35 @@ def pump_in(cx, cy, cz0, face=-1, axis="x"):
     return (cx + face * (PVB_R + 30), cy - 26, pz) if axis == "x" else (cx - 26, cy + face * (PVB_R + 30), pz)
 
 
+def tee(nm, cx, cy, cz, run="x", branch="z-", color=None):
+    """Pipe TEE / T-connector fitting (socket × socket × socket, e.g. a Sch-40 PVC tee): a straight
+    RUN (two collinear ports along `run`) + a perpendicular BRANCH (`branch` = axis+sign), one
+    fitting body fatter than the pipe, with a raised SOCKET CUFF at each of the 3 ends.  Centered
+    on the run/branch intersection (cx,cy,cz)."""
+    color = color or "#9AA0A8"            # neutral fitting grey (PVC)
+    br, cr, cl = RP + 5, RP + 9, 12       # body radius, socket-cuff radius, cuff length
+    half, bl = 30, 36                     # run half-length, branch reach
+    ba, bs = branch[0], (1 if "+" in branch else -1)
+    p = []
+    # RUN body (centered, both ways) + BRANCH body (centre outward)
+    run0 = {"x": (cx - half, cy, cz), "y": (cx, cy - half, cz), "z": (cx, cy, cz - half)}[run]
+    p.append(ov.ruby_cylinder(nm + " run", run0[0], run0[1], run0[2], br, 2 * half, color=color, axis=run))
+    brn0 = {"x": ((cx if bs > 0 else cx - bl), cy, cz),
+            "y": (cx, (cy if bs > 0 else cy - bl), cz),
+            "z": (cx, cy, (cz if bs > 0 else cz - bl))}[ba]
+    p.append(ov.ruby_cylinder(nm + " branch", brn0[0], brn0[1], brn0[2], br, bl, color=color, axis=ba))
+    # SOCKET CUFFS at the 3 ends (raised bell sockets the pipe inserts into)
+    ends = {"x": [(cx - half, cy, cz, "x"), (cx + half - cl, cy, cz, "x")],
+            "y": [(cx, cy - half, cz, "y"), (cx, cy + half - cl, cz, "y")],
+            "z": [(cx, cy, cz - half, "z"), (cx, cy, cz + half - cl, "z")]}[run]
+    bend = {"x": ((cx + bl - cl) if bs > 0 else (cx - bl), cy, cz, "x"),
+            "y": (cx, (cy + bl - cl) if bs > 0 else (cy - bl), cz, "y"),
+            "z": (cx, cy, (cz + bl - cl) if bs > 0 else (cz - bl), "z")}[ba]
+    for ex, ey, ez, ax in ends + [bend]:
+        p.append(ov.ruby_cylinder(nm + " socket cuff", ex, ey, ez, cr, cl, color=color, axis=ax))
+    return "\n".join(p)
+
+
 def check_valve(nm, px, py, pz, axis, color=None):
     """In-line one-way / check valve: a short barrel the pipe runs THROUGH, centered on the pipe
     centerline (px,py,pz) and oriented ALONG the run (`axis`).  Check valves are IN-LINE devices —
@@ -287,10 +316,11 @@ def plumbing():
     # DV-02 → IBC-3 Brown  (run− port at dvm → up → across to xe → penetrate)
     _side_entry(p, "DV-02 -> IBC-3 (Brown)",
                 [(dvx, dvm, DVZ), (dvx, dvm, bz), (xe, dvm, bz)], xe, YD_NEAR, bz, -1, ov.C_IBC_BROWN)
-    # DV-02 → SHARED IBC-4 merge  (run+ port at dvp; DV-01 from the wall joins here → one entry)
+    # DV-02 → SHARED IBC-4 merge TEE: DV-02 enters the BRANCH (from −X); DV-01 (from the wall)
+    #    enters the run's −Yd end; the outlet is the run's +Yd end → one tote entry.
     pipe("DV-02 -> IBC-4 merge",
-         [(dvx, dvp, DVZ), (dvx, dvp, wz), (MERGE4[0], dvp, wz), (MERGE4[0], MERGE4[1], wz)], ov.C_IBC_WASTE)
-    p.append(ov.ruby_box("IBC-4 waste merge tee", MERGE4[0] - 16, MERGE4[1] - 16, MERGE4[2] - 16, 32, 32, 32, color=ov.C_STEEL))
+         [(dvx, dvp, DVZ), (dvx, dvp, wz), (dvx, MERGE4[1], wz), MERGE4], ov.C_IBC_WASTE)
+    p.append(tee("IBC-4 waste merge tee", MERGE4[0], MERGE4[1], MERGE4[2], run="y", branch="x-"))
     _side_entry(p, "IBC-4 (Waste)", [MERGE4, (xe, YD_FAR - 120, wz)], xe, YD_FAR, wz, +1, ov.C_IBC_WASTE)
 
     # BLUE #1 → P-01 suction  (lane 4830)
@@ -331,7 +361,7 @@ def drains_ports():
     p.append(ov.ruby_cylinder("X1 fill camlock (end wall)", ew - 60, CTR_Y, x1z, 26, 60, color=ov.C_STEEL, axis="x"))
     p.append(check_valve("X1 one-way valve", ew - 200, CTR_Y, x1z, "x"))   # in-line, just after the camlock
     pipe("X1 camlock -> one-way -> tee (straight)", [(ew - 60, CTR_Y, x1z), (tx, CTR_Y, x1z)], ov.C_BLUE)
-    p.append(ov.ruby_box("X1 fill tee", tx - 16, CTR_Y - 16, x1z - 16, 32, 32, 32, color=ov.C_STEEL))
+    p.append(tee("X1 fill tee", tx, CTR_Y, x1z, run="y", branch="x+"))   # inlet from +X, splits ±Yd to the blues
     for yface, into, nm in ((YD_NEAR, -1, "Blue #1"), (YD_FAR, +1, "Blue #2")):
         _side_entry(p, f"X1 fill -> {nm}",
                     [(tx, CTR_Y, x1z), (tx, yface - into * 120, x1z), (5200, yface - into * 120, x1z)],
@@ -345,7 +375,7 @@ def drains_ports():
         [(tx3, yin3, 40), (tx3, yin3, tz3), (tx3, ty3, tz3)], RP, color=ov.C_IBC_BROWN))
     p.append(ov.ruby_cylinder("IBC-3 (Brown) tap flange", tx3, YD_NEAR - 8, tz3, 36, 16, color=ov.C_STEEL, axis="y"))
     p.append(check_valve("IBC-3 (Brown) tap check valve", tx3, YD_NEAR + 60, tz3, "y"))   # in-line on the Yd approach
-    p.append(ov.ruby_box("IBC-3 (Brown) tap T", tx3 - 16, ty3 - 16, tz3 - 16, 32, 32, 32, color=ov.C_STEEL))
+    p.append(tee("IBC-3 (Brown) tap T", tx3, ty3, tz3, run="z", branch="y-"))   # dip from −Yd; P-05 up / P-02 down
     # P-05 (Brown drain) suction: shared tap T → P-05 inlet
     p5i, p5o = pump_in(PXC, COL_L, R2), pump_out(PXC, COL_L, R2)
     pipe("Brown tap -> P-05 inlet", [BROWN_TAP, (tx3, ty3, 760), (p5i[0], ty3, 760), (p5i[0], p5i[1], 760), p5i], ov.C_IBC_BROWN)

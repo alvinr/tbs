@@ -216,7 +216,7 @@ def kit():
     # (so it never passes through the pumps or the frame).
     mx, my, mz = cp.MERGE4
     pipe("DV-01 -> IBC-4 merge",
-         [(dvx, yW, waist), (dvx, yW, 70), (dvx, my, 70), (mx, my, 70), (mx, my, mz)],
+         [(dvx, yW, waist), (dvx, yW, 70), (4640, yW, 70), (4640, my, 70), (mx, my, 70), (mx, my, mz)],
          ov.C_IBC_WASTE)
     return "\n".join(p)
 

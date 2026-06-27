@@ -140,6 +140,9 @@ draw_pipe_path(ax, [x, x], [z_cross + _gap_half, z_end], rear_OD, rear_WALL, ...
 - [ ] Every direction change has a discrete elbow fitting drawn
 - [ ] Every connection to a box / manifold / fitting / penetration is a perpendicular stub (right-angle entry), not a diagonal — in 2D and 3D alike
 - [ ] In-line valves (check / one-way / ball) sit ON a straight run, body oriented ALONG the pipe axis — not a right-angle block, not on an elbow
+- [ ] **Ran `python3 src/models/check_interference.py` (3D models) and it reports 0 interferences.** Eyeballing renders is NOT enough — hand-routed waypoints in dense spaces reintroduce pipe-through-solid and pipe-on-pipe collisions every time. Run the checker after EVERY routing change; do not present until it is clean (permitted penetrations — IBC tank walls, ply panels — are already excluded).
+- [ ] Parallel pipes that must run together (a manifold) each get their OWN depth lane (distinct X or Yd) — a riser to one device's port must not pass through a neighbouring device's port/body that shares the same lane.
+- [ ] Under-deck / under-walkway crossings sit in a Z-band that clears BOTH the structure below (frame bottom ring) AND the cantilever beams above — check the actual member Z-ranges, don't assume.
 - [ ] No pipe/tube/duct passes through a solid object it doesn't connect to — detour around obstacles (check the 3D model for interpenetration)
 - [ ] Elbow fittings show concentric arcs (not sharp corners, not gradual bends)
 - [ ] Barb connections show ridged profile + hose clamp band

@@ -332,7 +332,6 @@ def plumbing():
          [(sumpX, sumpY, sumpZ), (sumpX, sumpY, valveZ), (dropX, sumpY, valveZ), (dropX, dropY, valveZ),
           (dropX, dropY, 30), (gapX, dropY, 30), (gapX, PIY, 30), (gapX, PIY, 90), (PXC, PIY, 90), pin("P-04")],
          ov.C_IBC_BROWN)
-    p.append(ov.ruby_box("Tray sump shut-off valve (BV)", sumpX - 22, sumpY - 22, valveZ - 50, 44, 44, 44, color=ov.C_VALVE))
     p.append(ov.ruby_cylinder("Tray sump strainer foot", sumpX, sumpY, sumpZ, 14, 36, color=CDK, axis="z"))
     # P-04 DISCHARGE → SV-02 (in-line on the riser) → DV-02 underside branch (+Yd manifold)
     pipe("P-04 -> SV-02 -> DV-02",

@@ -240,20 +240,36 @@ C_BV = "#7A8088"                              # ball-valve body — chrome/steel
 
 def ball_valve(nm, px, py, pz, axis, color=None):
     """In-line MANUAL ball valve: a short barrel the pipe runs THROUGH (centered on the pipe
-    centerline, oriented ALONG `axis`) plus a small RED lever handle perpendicular to the run.
-    Like a check valve it sits on a STRAIGHT length of pipe, never on an elbow."""
+    centerline, oriented ALONG `axis`) plus a clear RED lever handle — a stem out perpendicular
+    to the run with a lever bar at its tip (like the diverter handles) so it reads as a hand
+    valve.  Like a check valve it sits on a STRAIGHT length of pipe, never on an elbow."""
     color = color or C_BV
-    L, r, hl = 44, RP + 8, 34                 # barrel length / radius, handle lever length
+    L, r = 44, RP + 8                          # barrel length / radius
+    HS, HSr, LV = 28, 6, 48                    # handle stem length / radius, lever-bar length
     p = []
-    if axis == "x":
+    if axis == "x":                            # horizontal barrel along X — handle sticks UP (+Z)
         p.append(ov.ruby_cylinder(nm, px - L / 2, py, pz, r, L, color=color, axis="x"))
-        p.append(ov.ruby_box(nm + " handle", px - 5, py + r, pz - 5, 10, hl, 10, color=C_HANDLE))
-    elif axis == "y":
+        p.append(ov.ruby_cylinder(nm + " handle stem", px, py, pz + r, HSr, HS, color=C_HANDLE, axis="z"))
+        p.append(ov.ruby_box(nm + " handle", px - LV / 2, py - 7, pz + r + HS, LV, 14, 9, color=C_HANDLE))
+    elif axis == "y":                          # horizontal barrel along Yd — handle sticks UP (+Z)
         p.append(ov.ruby_cylinder(nm, px, py - L / 2, pz, r, L, color=color, axis="y"))
-        p.append(ov.ruby_box(nm + " handle", px + r, py - 5, pz - 5, hl, 10, 10, color=C_HANDLE))
-    else:
+        p.append(ov.ruby_cylinder(nm + " handle stem", px, py, pz + r, HSr, HS, color=C_HANDLE, axis="z"))
+        p.append(ov.ruby_box(nm + " handle", px - 7, py - LV / 2, pz + r + HS, 14, LV, 9, color=C_HANDLE))
+    else:                                      # vertical barrel — handle sticks out +Yd
         p.append(ov.ruby_cylinder(nm, px, py, pz - L / 2, r, L, color=color, axis="z"))
-        p.append(ov.ruby_box(nm + " handle", px + r, py - 5, pz - 5, hl, 10, 10, color=C_HANDLE))
+        p.append(ov.ruby_cylinder(nm + " handle stem", px, py + r, pz, HSr, HS, color=C_HANDLE, axis="y"))
+        p.append(ov.ruby_box(nm + " handle", px - 7, py + r + HS, pz - LV / 2, 14, 9, LV, color=C_HANDLE))
+    return "\n".join(p)
+
+
+def sample_valve(nm, cx, cy, cz, h=60, color=None):
+    """Sample / test tap: a small valve body + a downturned sample spout + a RED HANDWHEEL on top
+    (stem + flat disc) so it clearly reads as a valve.  `cz` = body base Z, `h` = body height."""
+    color = color or ov.C_VALVE
+    p = [ov.ruby_box(nm, cx - 25, cy - 25, cz, 50, 50, h, color=color),
+         ov.ruby_cylinder(nm + " spout", cx, cy, cz - 90, 6, 90, color=color, axis="z"),
+         ov.ruby_cylinder(nm + " handwheel stem", cx, cy, cz + h, 5, 16, color=C_HANDLE, axis="z"),
+         ov.ruby_cylinder(nm + " handwheel", cx, cy, cz + h + 16, 30, 10, color=C_HANDLE, axis="z")]
     return "\n".join(p)
 
 
@@ -328,9 +344,8 @@ def equipment():
     for tag, sd in (("in", +1), ("out", -1)):
         y0 = (CTR_Y + ACC_R) if sd > 0 else (CTR_Y - ACC_R - 30)
         p.append(ov.ruby_cylinder(f"ACC-01 {tag} port", PXC, y0, ACC_PZ, RP, 30, color=CDK, axis="y"))
-    # SV-02 sample tap on the P-04 discharge (+Yd manifold), above the stack + downturned spout
-    p.append(ov.ruby_box("SV-02 sample valve", PXC - 25, POY - 25, SV_Z, 50, 50, 60, color=ov.C_VALVE))
-    p.append(ov.ruby_cylinder("SV-02 sample spout", PXC, POY, SV_Z - 90, 6, 90, color=ov.C_VALVE))
+    # SV-02 sample tap on the P-04 discharge (+Yd manifold), above the stack — body + spout + handwheel
+    p.append(sample_valve("SV-02 sample valve", PXC, POY, SV_Z, h=60))
     # 3W-DV-02 — Stage-A diverter above the stack (input underside; run to Brown −Yd / Waste +Yd)
     p.append(diverter("3W-DV-02", PXC, CTR_Y, DV_Z, run="y", branch="z-", handle="x-", color=ov.C_VALVE))
     return "\n".join(p)
@@ -363,19 +378,21 @@ def plumbing():
     # Stay LOW (z40, UNDER the right-walkway grate/beams which start at z70) out to past the grate
     # (x>4629), rise to z60 (clear of the bottom frame rails at z0–50), enter the corridor at the
     # sump's low Yd, then up the BACK of the panel to P-04.
+    # P-04 IN is approached convention-style: a front riser on the −Yd side of the IN port, then a
+    # short +Yd stub straight INTO the −Yd-facing port (not from the body side).
     z04 = _piz("P-04")
     pipe("Tray sump -> P-04 suction",
          [(sumpX, sumpY, sumpZ), (sumpX, sumpY, 40), (4720, sumpY, 40), (4720, sumpY, 60),
-          (4720, BL_P04, 60), (BLANE, BL_P04, 60), (BLANE, BL_P04, z04), (PXC, BL_P04, z04), pin("P-04")],
+          (4720, PIY - 30, 60), (PXC, PIY - 30, 60), (PXC, PIY - 30, z04), pin("P-04")],
          ov.C_IBC_BROWN)
     p.append(ov.ruby_cylinder("Tray sump strainer foot", sumpX, sumpY, sumpZ, 14, 36, color=CDK, axis="z"))
     # P-04 DISCHARGE → up the BACK of the panel (clear of the OUT-port stack), back to the front
     # ABOVE the pumps where it's clear → SV-02 (in-line) → DV-02 underside branch.
-    z04 = _piz("P-04")
+    # P-04 OUT leaves convention-style: a short +Yd stub straight OUT of the +Yd-facing OUT port to a
+    # front riser, up ABOVE the pumps (clear), then back in to SV-02 (in-line) and DV-02.
     pipe("P-04 -> SV-02 -> DV-02",
-         [pout("P-04"), (PXC, BL_P04OUT, z04), (BLANE, BL_P04OUT, z04), (BLANE, BL_P04OUT, 1960),
-          (PXC, BL_P04OUT, 1960), (PXC, POY, 1960), (PXC, POY, DV_Z - tip), (PXC, CTR_Y, DV_Z - tip)],
-         ov.C_IBC_BROWN)
+         [pout("P-04"), (PXC, POY + 30, z04), (PXC, POY + 30, 1960), (PXC, POY, 1960),
+          (PXC, POY, DV_Z - tip), (PXC, CTR_Y, DV_Z - tip)], ov.C_IBC_BROWN)
     # DV-02 → IBC-3 Brown — drop just below the top rear-panel bracket, then behind the panel (own
     # lane) → down → front → tote entry.
     zpen = 2050                                          # penetrate clear of the top bracket band (2146–2206)

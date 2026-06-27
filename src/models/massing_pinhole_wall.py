@@ -161,8 +161,7 @@ def kit():
     # ── SV-01 sample tap (projects forward to yL for cup access) + flat-T 3W-DV-01 mounted
     #    back on the plywood (yW), both at WAIST level for easy reach ──
     svx, dvx = 4250, 4430
-    p.append(ov.ruby_box("SV-01 sample valve", svx - 25, yL - 25, waist - 25, 50, 50, 70, color=ov.C_VALVE))
-    p.append(ov.ruby_cylinder("SV-01 sample spout", svx, yL, waist - 25 - 90, 6, 90, color=ov.C_VALVE))
+    p.append(cp.sample_valve("SV-01 sample valve", svx, yL, waist - 25, h=70))
     p.append(diverter("3W-DV-01", dvx, yW, waist, run="x", branch="z-", color=ov.C_VALVE))
 
     # ── PLUMBING ──
@@ -176,7 +175,7 @@ def kit():
     pipe("IBC-3 (Brown) tap -> P-02 inlet",   # staying high (z258, above the right-walkway grate),
          [(tx, ty, tz), (tx, yX, tz), (4300, yX, tz), (4300, yX, 70), (4300, yB, 70),
           (p2_in[0], yB, 70), (p2_in[0], yB, p2_in[2]), p2_in], ov.C_IBC_BROWN)  # then drop x<4329 (past the walkway)
-    p.append(cp.ball_valve("BV-03 (P-02 suction)", p2_in[0], yB, p2_in[2] - 160, "z"))   # suction isolation
+    p.append(cp.ball_valve("BV-03 (P-02 suction)", p2_in[0], yB, waist, "z"))   # dropped to SV-01 reach height
     # 2. P-02 OUT (+X) → F1 inlet — straight, in line (same axis as the filter chain)
     pipe("P-02 -> F1", [p2_out, f_in("F1")], ov.C_IBC_BROWN)
     # 3. filter-skid jumpers F1→F2→F3 — straight pipe between the adjacent in-line ports
@@ -216,12 +215,39 @@ def kit():
     # crosses under the walkway at Z70 (clear of the IBC frame), runs +X along the corridor gap
     # toward the SEALED END, and rises BEHIND the pumps/panel into the merge tee's underside branch
     # (so it never passes through the pumps or the frame).
-    # DV-01 waste → +X at waist height to PAST the right-walkway grate (x>4629), THEN drop (clear of
-    # the grate), run low along the near wall to the merge X, jog to the merge Yd and up into the tee.
+    # DV-01 waste → +X at waist to just past the right-walkway grate (gap x4629–4674, clear of the
+    # tote too), drop, jog into the CORRIDOR GAP (Yd in the opening, NOT under the IBC) and run low
+    # to the merge — parallel to the brown tray-sump pickup, never through the tote.
     mx, my, mz = cp.MERGE4
     pipe("DV-01 -> IBC-4 merge",
-         [(dvx, yW, waist), (4760, yW, waist), (4760, yW, 70), (mx, yW, 70), (mx, my, 70), (mx, my, mz)],
+         [(dvx, yW, waist), (4280, yW, waist), (4280, yW, 60), (4280, my, 60), (mx, my, 60), (mx, my, mz)],
          ov.C_IBC_WASTE)
+    return "\n".join(p)
+
+
+def tap01_supply():
+    """Blue supply trunk along the pinhole wall → spray-bar tap (BV-05) + TAP-01 chem tap (BV-04).
+    Path copied from overview.skp's spray_bar_plumbing (do NOT reinvent) — Yd12 / Z40 wall trunk,
+    BV-05 riser at the pinhole centerline, TAP-01 branch up over the chem shelf.  Connected here to
+    the corridor blue trunk that exits the panel; BV-04/BV-05 live out here, off the corridor panel."""
+    yd, fz = 12, ov.SPRAY_BAR_FEED_Z                 # 12 off the wall, Z40 trunk (overview)
+    pr, tr = ov.PUMP_PIPE_OD / 2, ov.TAP_PIPE_OD / 2
+    x_conn = 4200                                    # connect clear of the right walkway (x<4329)
+    p = []
+    # corridor panel trunk exit (4500,CTR_Y,300) → above the walkway → drop clear of it → wall trunk
+    p.append(ov.ruby_pipe_run("Blue trunk: corridor panel -> wall",
+        [(4500, cp.CTR_Y, 300), (x_conn, cp.CTR_Y, 300), (x_conn, cp.CTR_Y, fz), (x_conn, yd, fz)],
+        pr, color=ov.C_BLUE))
+    p.append(ov.ruby_cylinder("Blue Supply Trunk (1/2in HDPE)",
+        ov.TAP_X, yd, fz, pr, x_conn - ov.TAP_X, color=ov.C_BLUE, axis="x"))
+    # BV-05 spray-bar isolation (riser + valve at the pinhole centerline)
+    p.append(ov.ruby_cylinder("BV-05 Riser", ov.BV02_X, yd, fz, pr, ov.BV02_Z - fz, color=ov.C_BLUE, axis="z"))
+    p.append(cp.ball_valve("BV-05 (spray-bar isolation)", ov.BV02_X, yd, ov.BV02_Z, "z"))
+    # TAP-01 chem branch (3/4in) up over the shelf + BV-04 isolation (overview path)
+    p.append(ov.ruby_pipe_run("TAP-01 Branch (3/4in)",
+        [(ov.TAP_X, yd, fz), (ov.TAP_X, yd, ov.SHELF_STOW_TOP_Z),
+         (ov.TAP_X, yd + 100, ov.SHELF_STOW_TOP_Z), (ov.TAP_X, yd + 100, ov.TAP_Z)], tr, color=ov.C_BLUE))
+    p.append(cp.ball_valve("BV-04 (chem tap isolation)", ov.TAP_X, yd, 1010, "z"))
     return "\n".join(p)
 
 
@@ -272,13 +298,17 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz)
     # ── ball valves (in-panel pump-suction isolation; BV-01/02 on the BACK-of-panel risers) ──
     (cp.BLANE, cp.BL_P01, cp._piz("P-01") + 150, "BV-01", 350, 0, 250),
     (cp.BLANE, cp.BL_P05, cp._piz("P-05") - 170, "BV-02", 350, 0, 250),
-    (2978, 80, 2141, "BV-03", 0, 520, 200),
+    (2978, 80, 1000, "BV-03", 0, 520, 200),
     (5022, cp.PIY, cp._piz("P-03"), "BV-06", -1000, 0, 150),
     # ── per-tank anti-siphon check valves ──
     (ov.C_LEN - 200, cp.CTR_Y, 2250, "CV-1\n(X1 fill)", -600, 300, 0),
     (ov.IBC_COL_X - 60, 600, 2 * ov.IBC_H_1000 - 180, "CV-2\n(IBC-2 return)", 0, 450, 200),
     (ov.IBC_COL_X + 300, cp.YD_NEAR + 60, ov.IBC_PALLET_H + ov.IBC_H_1000 - 60, "CV-3\n(IBC-3 return)", -600, 250, 200),
     (ov.IBC_COL_X + 700, cp.YD_FAR - 60, cp.MERGE4[2], "CV-4\n(IBC-4 waste)", -600, 250, 200),
+    # ── TAP-01 chem tap + spray-bar supply (off the corridor panel, along the wall) ──
+    (ov.TAP_X, 112, ov.TAP_Z, "TAP-01\n(chem tap)", 0, 450, 300),
+    (ov.TAP_X, 12, 1010, "BV-04", -450, 0, 250),
+    (ov.BV02_X, 12, ov.BV02_Z, "BV-05\n(spray bar)", 0, 450, 250),
 ]
 LABEL_INSTANCES = [
     ("Pinhole Assembly", "PINHOLE\n(optical ref)", 0, 700, 350),
@@ -319,6 +349,7 @@ def build():
                          ("End wall (context)", "Context", cp.end_wall()),
                          ("Pinhole Assembly", "Pinhole", ov.pinhole_assembly()),
                          ("Wall backing (ply)", "Backing", backing()),
+                         ("TAP-01 + spray-bar supply", "Supply", tap01_supply()),
                          ("Wet-end kit (raked)", "Kit", kit()),
                          ("Person (scale)", "Scale", person()),
                          ("Other pinhole-wall equipment", "Pinhole Equipment", other_equipment()),
@@ -369,12 +400,12 @@ def scene(model, name, on)
   pg.use_hidden_layers = true rescue nil
   pg
 end
-scene(model, "Water System", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Kit","Scale"])
-scene(model, "Plumbing", ["Kit","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
-scene(model, "Plumbing (labeled)", ["Kit","Corridor Equipment","Corridor Plumbing","Corridor Drains","Labels"])
-scene(model, "Plumbing + IBC", ["Kit","Corridor Equipment","Corridor Plumbing","Corridor Drains","IBC"])
-scene(model, "Overall", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
-scene(model, "Labeled", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains","Labels"])
+scene(model, "Water System", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale"])
+scene(model, "Plumbing", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
+scene(model, "Plumbing (labeled)", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","Labels"])
+scene(model, "Plumbing + IBC", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","IBC"])
+scene(model, "Overall", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
+scene(model, "Labeled", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains","Labels"])
 model.layers.each {{ |l| l.visible = true }}
 model.commit_operation
 {{ ok: true }}.to_json

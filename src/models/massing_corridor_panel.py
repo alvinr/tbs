@@ -273,7 +273,8 @@ DV_Z   = 2160                              # 3W-DV-02 center Z (above the stack)
 # ACC-01 — SeaFlo bladder accumulator: a single BOTTOM port, plumbed as a vertical DEAD-LEG teed
 # onto the Blue supply line (like the pumps/filters tee in, but the tank's only port is underneath).
 ACC_Z0, ACC_R = 540, 63.5                   # ACC-01 base Z (in the column, above P-01); Ø127 body
-ACC_PZ = ACC_Z0 + 70                        # ACC-01 IN/OUT port Z (opposite sides, filter/pump style)
+ACC_PZ = ACC_Z0 + 28                        # ACC-01 IN/OUT port Z — at the BOTTOM of the body (the
+                                            # SeaFlo's ports are underneath); pump-shaped, ports low
 def acc_in():  return (PXC, CTR_Y + ACC_R + 30, ACC_PZ)   # +Yd (from P-01 OUT)
 def acc_out(): return (PXC, CTR_Y - ACC_R - 30, ACC_PZ)   # −Yd (to the supply trunk)
 
@@ -320,10 +321,19 @@ def plumbing():
     wz  = MERGE4[2]                                       # 1230 — Waste entry
     blz = ov.IBC_H_1000 + ov.IBC_PALLET_H + 64           # 1400 — Blue near top
 
-    # P-04 SUCTION ← tray sump (out the corridor mouth at the IN-manifold Yd, clear of the frame)
-    pipe("P-04 suction (from tray sump)",
-         [pin("P-04"), (4500, PIY, _piz("P-04")), (4500, PIY, 360), (4500, CTR_Y, 360), (4500, CTR_Y, 300)],
+    # P-04 SUCTION ← processing-tray SUMP (near-right corner), pickup routing copied from the
+    # overview model: riser UP from the sump to a shut-off valve above the deck (over the tray
+    # rim), back DOWN through the grate, then a floor-level run into the corridor and up to P-04 IN.
+    sumpX, sumpY, sumpZ = ov.PROC_TRAY_DRAIN_X, ov.PROC_TRAY_DRAIN_YD + 75, ov.PROC_TRAY_SUMP_Z  # 4550,155,20
+    valveZ = ov.WALKWAY_H + 65                          # 195 — valve body above the deck
+    dropX, dropY = sumpX - 70, 50                       # 4480 — return riser in the grate gap, off the end beam
+    gapX = (ov.PROC_TRAY_X_R + ov.IBC_COL_X) / 2        # 4651.5 — centered in the tray–IBC gap
+    pipe("Tray sump -> P-04 suction",
+         [(sumpX, sumpY, sumpZ), (sumpX, sumpY, valveZ), (dropX, sumpY, valveZ), (dropX, dropY, valveZ),
+          (dropX, dropY, 30), (gapX, dropY, 30), (gapX, PIY, 30), (gapX, PIY, 90), (PXC, PIY, 90), pin("P-04")],
          ov.C_IBC_BROWN)
+    p.append(ov.ruby_box("Tray sump shut-off valve (BV)", sumpX - 22, sumpY - 22, valveZ - 50, 44, 44, 44, color=ov.C_VALVE))
+    p.append(ov.ruby_cylinder("Tray sump strainer foot", sumpX, sumpY, sumpZ, 14, 36, color=CDK, axis="z"))
     # P-04 DISCHARGE → SV-02 (in-line on the riser) → DV-02 underside branch (+Yd manifold)
     pipe("P-04 -> SV-02 -> DV-02",
          [pout("P-04"), (PXC, POY, DV_Z - tip), (PXC, CTR_Y, DV_Z - tip)], ov.C_IBC_BROWN)

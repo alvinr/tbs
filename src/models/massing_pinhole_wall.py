@@ -183,7 +183,9 @@ def kit():
     yB = 80
     tx, ty, tz = cp.BROWN_TAP
     pipe("IBC-3 (Brown) tap -> P-02 inlet",   # AROUND + UNDER the walkway (Rule 5a): drop clear of the FP
-         [(tx - 30, ty, tz), (4720, ty, tz), (4720, 1170, tz), (4720, 1170, 82),
+         [(tx - 30, ty, tz), (4720, ty, tz), (4720, ty, cp.SUCT_SURF_Z - 10), (4720, 1170, cp.SUCT_SURF_Z - 10),
+          (4720, 1170, 82),   # ^ drop to z195 (BELOW the surface stack at z205+) BEFORE the +Yd, so this
+          #   suction passes UNDER the brown/blue/grey perimeter routes instead of crossing them at x4720
           (cp.GAPX, 1170, 82), (cp.GAPX, 1170, 25), (cp.GAPX, 900, 25), (cp.GAPX, 900, 10),
           (cp.GAPX, 56, 10), (2960, 56, 10), (2960, 43, 10), (2960, 43, p2_in[2]), (2960, p2cy, p2_in[2]), p2_in], ov.C_IBC_BROWN)
     # ^ OFF the tee's −X end; descent OFFSET from the blue trunk (Yd1170 not 1150); −Yd at z25 OVER the
@@ -235,12 +237,22 @@ def kit():
     # DV-01 waste → AROUND the tray (Rule 5a): along the outside strip (Yd35) to the gap past the tray
     # right edge, drop, cross to the corridor at the gap, and run low to the merge — never over the tray.
     mx, my, mz = cp.MERGE4
-    pipe("DV-01 -> IBC-4 merge",   # strip at z10 UNDER the FP saddle gusset/cleat past x4617, step to z20
-         [(dvx, yW, waist), (dvx, yW, waist - 100), (4280, yW, waist - 100), (4280, yW, 10), (4625, yW, 10), (4625, yW, 30),
-          (cp.GAPX, yW, 30), (cp.GAPX, my, 30), (cp.GAPX, my, 60), (mx, my, 60), (mx, my, mz)],
-         # ^ leave DV-01 DOWN via the z− branch (feed is on run−/−X, blue on run+/+X), jog −X clear of the
-         #   walkway grate (x≥4329) ABOVE it, then drop to the strip
-         ov.C_IBC_WASTE)   # (clear of the corridor foot plate z0–12), cross, rise clear of the rail, merge
+    # Waste leg → the IBC-4 merge tee.  To clear the UNDER-WALKWAY contention in the tray-IBC gap
+    # (it shared the low gap with the blue supply trunk + P-02 suction), route it ON the walkway
+    # SURFACE the same way as the brown suction / blue recycle — +X along the pinhole wall, down,
+    # +Yd along the IBC −X face STACKED above the blue (z262, threading the gap between the blue at
+    # z246 and the now-low ACC-01 body at z280), +X across the corridor, then up into the merge tee's
+    # z− branch.
+    gz = 262
+    pipe("DV-01 -> IBC-4 merge",
+         [(dvx, yW, waist), (xdrop, yW, waist),     # +X horizontal along the pinhole wall
+          (xdrop, yW, gz),                          # turn DOWN to the grey surface lane (stacked)
+          (cp.SUCT_XLANE, yW, gz),                  # step to the gap lane
+          (cp.SUCT_XLANE, cp.CTR_Y, gz),            # +Yd along the IBC −X face (stacked above the blue)
+          (mx, cp.CTR_Y, gz),                       # +X across the corridor to the merge x
+          (mx, my, gz),                             # −Yd to the merge Yd
+          (mx, my, mz)],                            # rise into the merge tee's z− branch
+         ov.C_IBC_WASTE)
     return "\n".join(p)
 
 

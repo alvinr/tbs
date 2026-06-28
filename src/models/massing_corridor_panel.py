@@ -536,11 +536,12 @@ def drains_ports():
     # P-05 (Brown drain) suction: shared tap T → +X run end → rise to P-05 IN (−Yd manifold)
     p5i = (PXC, PIY, _piz("P-05")); p5o = (PXC, POY, _piz("P-05"))
     z05 = _piz("P-05")
-    pipe("Brown tap -> P-05 inlet",   # OFF the tee's +X run end; IN approached convention-style via the back riser
-         [(tx3 + 30, ty3, tz3), (PXC, ty3, tz3), (PXC, BL_P05, tz3), (BLANE, BL_P05, tz3), (BLANE, BL_P05, z05),
-          (BLANE, BL_P01, z05), (4900, BL_P01, z05), (4900, PIY - 30, z05), (PXC, PIY - 30, z05), p5i],
-         ov.C_IBC_BROWN)        # the front, then a −Yd stub straight into the IN port
-    p.append(ball_valve("BV-02 (P-05 suction)", BLANE, BL_P05, z05 - 170, "z"))   # on the back riser
+    rx = 5070   # BV-02 riser in the gap between the pump column (x5034) and the rear panel (x5104) — IN
+    pipe("Brown tap -> P-05 inlet",   # FRONT of the upright, so it comes straight in (no detour loop):
+         [(tx3 + 30, ty3, tz3), (rx, ty3, tz3), (rx, PIY - 30, tz3), (rx, PIY - 30, z05),
+          (PXC, PIY - 30, z05), p5i],   # tee +X end → riser (BV-02) → −X on the −Yd lane → +Yd stub into IN port
+         ov.C_IBC_BROWN)
+    p.append(ball_valve("BV-02 (P-05 suction)", rx, PIY - 30, z05 - 170, "z"))   # on the gap riser
     p.append(ov.ruby_cylinder("X3 Brown drain port (end wall)", ew - 60, COL_L, 1700, 22, 60, color=C_CHECK, axis="x"))
     # P-05 OUT → behind the panel → +X to the end wall + a perpendicular ≥50mm bulkhead stub
     pipe("P-05 -> X3 end-wall port",   # OUT leaves with a +Yd stub straight out of the OUT port

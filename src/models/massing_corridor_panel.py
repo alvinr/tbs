@@ -374,6 +374,8 @@ SV_Z   = 1150                              # SV-02 sample tap — low on the P-0
 DV_Z   = 2220                              # 3W-DV-02 center Z — raised the max clean headroom UNDER the
 #   frame top rail (z2246); a bigger raise (toward the requested +300) needs the feed/legs reworked to
 #   thread the ring opening — they currently drop/rise at the ring edges (Yd1103/1259) and clip the rails
+DV02X  = PXC - 75                          # 3W-DV-02 X — nudged 75mm toward the −X walkway (off the pump
+#   column centerline) to open up the brown tray-sump → P-04 suction route; feed + both legs follow it
 # ACC-01 — SeaFlo bladder accumulator: a single BOTTOM port, plumbed as a vertical DEAD-LEG teed
 # onto the Blue supply line (like the pumps/filters tee in, but the tank's only port is underneath).
 ACC_Z0, ACC_R = 540, 63.5                   # ACC-01 base Z (in the column, above P-01); Ø127 body
@@ -409,7 +411,7 @@ def equipment():
     p.append(ov.ruby_pipe_run("SV-02 tap", [(PXC, sv_y, SV_Z + 25), (sv_x + 25, sv_y, SV_Z + 25)], RP, color=ov.C_VALVE))
     p.append(sample_valve("SV-02 sample valve", sv_x, sv_y, SV_Z, h=60))
     # 3W-DV-02 — Stage-A diverter above the stack (input underside; run to Brown −Yd / Waste +Yd)
-    p.append(diverter("3W-DV-02", PXC, CTR_Y, DV_Z, run="y", branch="z-", handle="x-", color=ov.C_VALVE))
+    p.append(diverter("3W-DV-02", DV02X, CTR_Y, DV_Z, run="y", branch="z-", handle="x-", color=ov.C_VALVE))
     return "\n".join(p)
 
 
@@ -455,7 +457,8 @@ def plumbing():
     # P-04 OUT leaves convention-style: a short +Yd stub straight OUT of the +Yd-facing OUT port to a
     # front riser, up ABOVE the pumps (clear), then back in to SV-02 (in-line) and DV-02.
     pipe("P-04 -> SV-02 -> DV-02",
-         [pout("P-04"), (PXC, POY + 50, z04), (PXC, POY + 50, 1960), (PXC, CTR_Y, 1960), (PXC, CTR_Y, DV_Z - tip)],
+         [pout("P-04"), (PXC, POY + 50, z04), (PXC, POY + 50, 1960), (PXC, CTR_Y, 1960),
+          (DV02X, CTR_Y, 1960), (DV02X, CTR_Y, DV_Z - tip)],   # jog -X to the nudged DV-02, then up into it
          ov.C_IBC_BROWN)   # P-04 OUT → up its OWN +Yd lane (POY+50, clear of the pump-discharge lane POY+30)
     #   → jog to the CENTRAL lane (CTR_Y) above the pumps → SV-02 tap → VERTICALLY
     #   into the underside (z−) branch; central lane keeps the feed/SV-02 clear of the ±Yd diverter legs
@@ -465,7 +468,7 @@ def plumbing():
     bwx = 4835                                            # brown drop: +75 toward the sealed end of the Blue
     #   suction riser at x4760 (clears it), still −X of the pump bodies (x4934)
     _side_entry(p, "DV-02 -> IBC-3 (Brown)",   # no CV-3 — P-04 has an integral check valve (check=False)
-                [(PXC, dvm, DV_Z), (PXC, dvm - 30, DV_Z), (bwx, dvm - 30, DV_Z), (bwx, dvm - 30, bz)],
+                [(DV02X, dvm, DV_Z), (DV02X, dvm - 30, DV_Z), (bwx, dvm - 30, DV_Z), (bwx, dvm - 30, bz)],
                 bwx, YD_NEAR, bz, -1, ov.C_IBC_BROWN, check=False, drop=-50)   # turn 90° toward the −X WALKWAY
     #   right off the diverter, run clear of the pump column, then drop (clear of the restraint x4729 &
     #   film-plane beams x4684) and into the tote   # short 50mm dip tube inside the tote
@@ -476,7 +479,7 @@ def plumbing():
     dvwx = MERGE4[0] - 115                                # drop −x of the tee (top run 75mm shorter) so the
     #   horizontal approach seats on the −x run port as a clear run, not a stub right at the drop
     pipe("DV-02 -> IBC-4 merge",
-         [(PXC, dvp, DV_Z), (PXC, dvp + 15, DV_Z), (dvwx, dvp + 15, DV_Z), (dvwx, dvp + 15, wz),
+         [(DV02X, dvp, DV_Z), (DV02X, dvp + 15, DV_Z), (dvwx, dvp + 15, DV_Z), (dvwx, dvp + 15, wz),
           (dvwx, MERGE4[1], wz), MERGE4], ov.C_IBC_WASTE)   # ~380mm toward the sealed end, drop, then
     #   a horizontal +x run that SEATS on the merge's −x run port (was dropping inside the tee body)
     # 3-way merge: tote entry on +x (run), DV-02 waste on −x (run), DV-01 waste rises into the z− branch

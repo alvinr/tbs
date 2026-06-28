@@ -309,7 +309,7 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz)
     (cp.PXC, cp.PIY, cp._piz("P-03") - 150, "P-03 (Waste drain)", -1000, 0, 150),
     (cp.PXC, cp.CTR_Y, cp.ACC_Z0 + 150, "ACC-01\n(accumulator)", -700, 0, 250),
     (cp.PXC - 95, cp.POY + 50, cp.SV_Z, "SV-02\n(sample)", -600, 0, 120),   # teed off to the −X aisle (low, P-04↔P-05)
-    (cp.PXC, cp.CTR_Y, cp.DV_Z, "DV-02 (3-way)", -700, 0, 200),
+    (cp.DV02X, cp.CTR_Y, cp.DV_Z, "DV-02 (3-way)", -700, 0, 200),
     # ── ball valves (in-panel pump-suction isolation; BV-01/02 on the BACK-of-panel risers) ──
     (cp.FRONT_X + 106, cp.YD_NEAR + 67, 1000, "BV-01", -600, 0, 250),   # now on the front walkway-side riser
     (cp.BLANE, cp.BL_P05, cp._piz("P-05") - 170, "BV-02", 350, 0, 250),

@@ -103,9 +103,11 @@ OTHER_WALL_EQUIP = [("Electrical (panel/inverter/batteries)", "electrical")]
 # (built muted via ov.ibc_stack(mute=)) and the in-place-muted context tags below all use
 # these.  Desaturate the color this fraction toward ov.MUTE_NEUTRAL, at this alpha.
 MUTE_DESAT, MUTE_ALPHA = 0.65, 0.18
-# Context systems shown as a quiet faded backdrop (NOT the key plumbing/kit) — desaturated
-# in place keeping a faint tint.
-MUTE_TAGS = ["Pinhole Equipment", "Processing Tray", "IBC Frame", "Corridor Frame", "Corridor Panel"]
+# Context systems shown as a quiet faded backdrop (NOT the key plumbing/kit/supply) — desaturated
+# in place keeping a faint tint.  Everything that is enclosure/structure rather than a water
+# component is muted, so in EVERY scene only the plumbing reads boldly (easier to validate).
+MUTE_TAGS = ["Pinhole Equipment", "Processing Tray", "IBC Frame", "Corridor Frame", "Corridor Panel",
+             "Walkway", "Film Plane", "Pinhole", "Backing"]
 
 
 def other_equipment():

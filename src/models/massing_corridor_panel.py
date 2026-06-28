@@ -362,7 +362,8 @@ BLANE = BACK_X + EQT + 60                                        # 5182 — back
 # Yd1046–1096, far upright Yd1296–1346) → keep lanes inside ~1105–1285, ≥30mm apart:
 BL_P01, BL_P05, BL_P04 = 1115, 1145, 1175                        # IN-side suction back-lanes
 BL_P04OUT, BL_DVBR, BL_DVWST = 1195, 1225, 1250                  # OUT/top back-lanes (clear of far upright Yd1266)
-SV_Z   = 2060                              # SV-02 (on the P-04 discharge, above the stack) — raised 40mm
+SV_Z   = 1150                              # SV-02 sample tap — low on the P-04 discharge riser, in the gap
+                                           # BETWEEN P-04 (top 1120) and P-05 (base 1340), ~1100mm for reach
 DV_Z   = 2220                              # 3W-DV-02 center Z — raised the max clean headroom UNDER the
 #   frame top rail (z2246); a bigger raise (toward the requested +300) needs the feed/legs reworked to
 #   thread the ring opening — they currently drop/rise at the ring edges (Yd1103/1259) and clip the rails
@@ -392,13 +393,14 @@ def equipment():
     for tag, sd in (("in", +1), ("out", -1)):
         y0 = (CTR_Y + ACC_R) if sd > 0 else (CTR_Y - ACC_R - 30)
         p.append(ov.ruby_cylinder(f"ACC-01 {tag} port", PXC, y0, ACC_PZ, RP, 30, color=CDK, axis="y"))
-    # SV-02 sample tap on the P-04 discharge (+Yd manifold), above the stack — body + spout + handwheel
-    # SV-02 sample tap — TEED off the central feed riser out to the −X aisle so the valve body/handwheel
-    # are clear of the through-riser and the ±Yd diverter legs (spout drops straight for cup access)
+    # SV-02 sample tap — TEED off the P-04 DISCHARGE RISER low down (the +Yd lane POY+50, between
+    # P-04 and P-05 at ~1100mm) out to the −X aisle so the valve body/handwheel are reachable and
+    # the spout drops straight for cup access, clear of the pump bodies.
     sv_x = PXC - 95
-    p.append(tee("SV-02 tap tee", PXC, CTR_Y, SV_Z + 25, run="z", branch="x-"))
-    p.append(ov.ruby_pipe_run("SV-02 tap", [(PXC, CTR_Y, SV_Z + 25), (sv_x + 25, CTR_Y, SV_Z + 25)], RP, color=ov.C_VALVE))
-    p.append(sample_valve("SV-02 sample valve", sv_x, CTR_Y, SV_Z, h=60))
+    sv_y = POY + 50                        # the discharge riser's Yd lane (1311) at this height
+    p.append(tee("SV-02 tap tee", PXC, sv_y, SV_Z + 25, run="z", branch="x-"))
+    p.append(ov.ruby_pipe_run("SV-02 tap", [(PXC, sv_y, SV_Z + 25), (sv_x + 25, sv_y, SV_Z + 25)], RP, color=ov.C_VALVE))
+    p.append(sample_valve("SV-02 sample valve", sv_x, sv_y, SV_Z, h=60))
     # 3W-DV-02 — Stage-A diverter above the stack (input underside; run to Brown −Yd / Waste +Yd)
     p.append(diverter("3W-DV-02", PXC, CTR_Y, DV_Z, run="y", branch="z-", handle="x-", color=ov.C_VALVE))
     return "\n".join(p)

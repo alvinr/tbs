@@ -301,6 +301,12 @@ def shared_mat_name(name, color, alpha):
     return _MAT_BY_COLOR.setdefault(key, name)
 
 
+# TODO(refactor): give every drawing helper below (ruby_box / ruby_cylinder / ruby_tri /
+# ruby_pipe_run / tilted_slab / …) an optional `mute=0.0` parameter that runs the fill color
+# through mute_hex(color, mute) and (when muted) applies the context alpha — DEFAULTING to 0.0
+# so all current call sites are byte-identical.  Then any component can be built as muted
+# CONTEXT at source (as ibc_stack(mute=) already does), every component behaves identically,
+# and the post-build "mute_groups" re-coloring pass in massing_pinhole_wall.py can be retired.
 def ruby_box(name, x, y, z, w, d, h, color=None, alpha=None, both_sides=False):
     """Generate Ruby to create a named box group inside the `ents` context.
 

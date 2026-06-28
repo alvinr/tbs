@@ -439,9 +439,11 @@ def plumbing():
     # → +X past the risers to the merge tee (jog to the merge Yd at x=MERGE, clear of the back verticals).
     # leave the +Yd port, turn toward the SEALED END and run 400mm along the top (Yd1229 clears the far
     # upright at 1266 now that the short-port diverter pulled dvp in to 1214), THEN drop and into the merge.
+    dvwx = MERGE4[0] - 40                                 # drop just −x of the tee's −x run port (tip at −30)
     pipe("DV-02 -> IBC-4 merge",
-         [(PXC, dvp, DV_Z), (PXC, dvp + 15, DV_Z), (PXC + 400, dvp + 15, DV_Z), (PXC + 400, dvp + 15, wz),
-          (PXC + 400, MERGE4[1], wz), MERGE4], ov.C_IBC_WASTE)   # arrive along −x into the merge run port
+         [(PXC, dvp, DV_Z), (PXC, dvp + 15, DV_Z), (dvwx, dvp + 15, DV_Z), (dvwx, dvp + 15, wz),
+          (dvwx, MERGE4[1], wz), MERGE4], ov.C_IBC_WASTE)   # ~380mm toward the sealed end, drop, then
+    #   a horizontal +x run that SEATS on the merge's −x run port (was dropping inside the tee body)
     # 3-way merge: tote entry on +x (run), DV-02 waste on −x (run), DV-01 waste rises into the z− branch
     p.append(tee("IBC-4 waste merge tee", MERGE4[0], MERGE4[1], MERGE4[2], run="x", branch="z-"))
     xe4 = ov.IBC_COL_X + 830                              # 5504 — entry +130 toward the sealed end

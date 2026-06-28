@@ -423,26 +423,25 @@ def plumbing():
     wz  = MERGE4[2]                                       # 1230 — Waste entry
     blz = ov.IBC_H_1000 + ov.IBC_PALLET_H + 64           # 1400 — Blue near top
 
-    # P-04 SUCTION ← processing-tray SUMP (near-right corner), pickup routing copied from the
-    # overview model: riser UP from the sump to a shut-off valve above the deck (over the tray
-    # rim), back DOWN through the grate, then a floor-level run into the corridor and up to P-04 IN.
+    # P-04 SUCTION ← processing-tray SUMP (near-right corner).  COMPROMISE: this run can't pass under
+    # the IBC tote (it sits on its pallet on the floor — no room under it) and there isn't room under
+    # the walkway grate either, so it runs ON the walkway SURFACE around the perimeter: up from the
+    # sump, +X to the tray–IBC gap, then +Yd along the IBC −X face into the corridor, across (below the
+    # pump bodies) and up into P-04.  The surface run sits ABOVE the FP bottom rail (z190), so it stands
+    # ~75mm proud of the deck and the operator steps over it.
     sumpX, sumpY, sumpZ = ov.PROC_TRAY_DRAIN_X, ov.PROC_TRAY_DRAIN_YD + 75, ov.PROC_TRAY_SUMP_Z  # 4550,155,20
-    valveZ = ov.WALKWAY_H + 65                          # 195 — valve body above the deck
-    dropX, dropY = sumpX - 70, 50                       # 4480 — return riser in the grate gap, off the end beam
-    gapX = (ov.PROC_TRAY_X_R + ov.IBC_COL_X) / 2        # 4651.5 — centered in the tray–IBC gap
-    # Original (overview) loop, AROUND the tray (Rule 5a): UP through the walkway grate to the valve
-    # above the deck, over in X, TWIST in Yd to OUTSIDE the tray near rim (dropY=50 < tray Yd80),
-    # back DOWN through the grate, floor run along the outside strip to the gap past the tray's right
-    # edge (x>4629), then up into the corridor and a −Yd stub straight into the P-04 IN port.
-    z04 = _piz("P-04")
-    p04by = PIY - 76                                      # 1025 — rise the suction in a back-lane −Yd of
-    #   the ACC out-port/acc_out line (Yd1088): clears the blue ACC plumbing by ~52mm (was 6mm at PXC),
-    #   then TWO 90° turns (rise, then +Yd) into the −Yd-facing P-04 IN port.
+    z04   = _piz("P-04")
+    srz   = ov.WALKWAY_H + 75            # 205 — surface run: above the deck (130) AND the FP bottom rail (190)
+    xlane = ov.RAIL_X_R - 6             # 4643 — tray–IBC gap lane, clear of the corridor-frame front upright (x4654)
+    appy  = PIY - 30                    # 1071 — P-04 IN approach lane (corridor side of the IBC face, Yd1046)
     pipe("Tray sump -> P-04 suction",
-         [(sumpX, sumpY, sumpZ), (sumpX, sumpY, valveZ), (dropX, sumpY, valveZ), (dropX, dropY, valveZ),
-          (dropX, dropY, 10), (gapX, dropY, 10), (gapX, dropY, 65), (4800, dropY, 65),
-          (4800, p04by, 65), (PXC, p04by, 65), (PXC, p04by, z04), pin("P-04")],
-         ov.C_IBC_BROWN)   # floor run at z10 — UNDER the film-plane saddle gusset (z20–140)
+         [(sumpX, sumpY, sumpZ), (sumpX, sumpY, srz),       # up from the sump to the walkway surface
+          (xlane, sumpY, srz),                              # +X to the tray–IBC gap
+          (xlane, CTR_Y, srz),                              # +Yd along the walkway perimeter / IBC −X face into the corridor
+          (PXC, CTR_Y, srz),                                # +X across the corridor (below the pump bodies)
+          (PXC, appy, srz),                                 # −Yd to the P-04 approach lane
+          (PXC, appy, z04), pin("P-04")],                   # rise → +Yd into the −Yd-facing IN port
+         ov.C_IBC_BROWN)
     p.append(ov.ruby_cylinder("Tray sump strainer foot", sumpX, sumpY, sumpZ, 14, 36, color=CDK, axis="z"))
     # P-04 DISCHARGE → up the BACK of the panel (clear of the OUT-port stack), back to the front
     # ABOVE the pumps where it's clear → SV-02 (in-line) → DV-02 underside branch.

@@ -360,7 +360,7 @@ def build():
                          ("Walkways + cantilevers + brackets", "Walkway", walkway_full()),
                          ("Film-plane support beams", "Film Plane", film_plane_beams()),
                          ("Processing tray (ghost)", "Processing Tray", ov.processing_tray()),
-                         ("IBC Tanks (full)", "IBC", ov.ibc_stack(alpha=0.35)),
+                         ("IBC Tanks (full)", "IBC", ov.ibc_stack(alpha=0.18, mute=0.65)),
                          ("IBC restraint (bars + wall anchors)", "IBC Frame", cp.tote_restraint()),
                          ("End wall (context)", "Context", cp.end_wall()),
                          ("Pinhole Assembly", "Pinhole", ov.pinhole_assembly()),
@@ -398,7 +398,7 @@ v.camera = Sketchup::Camera.new(Geom::Point3d.new(800.mm, 6000.mm, 2300.mm), Geo
 # alpha does not.)  ModelTransparency stays OFF everywhere.
 model.rendering_options["ModelTransparency"] = false
 ghost = model.materials["GhostEquip"] || model.materials.add("GhostEquip")
-ghost.color = Sketchup::Color.new(150,160,175); ghost.alpha = 0.35   # match the IBC-stack ghost alpha
+ghost.color = Sketchup::Color.new(150,160,175); ghost.alpha = 0.35   # muted blue-grey for ghosted in-place equipment (frame/tray/etc.)
 def ghost_faces(ents, mat)
   ents.each {{ |e|
     if e.is_a?(Sketchup::Face); e.material = mat; e.back_material = mat

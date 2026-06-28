@@ -353,6 +353,13 @@ def _piz(key): return PSTACK[key] + PVB_H - 18                    # port Z for a
 # X1 fresh-fill distribution fitting (top of the corridor, near the sealed end): a 4-WAY CROSS —
 # +X X1 inlet, ±Yd to both Blue totes (IBC-1/IBC-2), −X the DV-01 blue recycle return.
 X1_TEE_X, X1_TEE_Z = 5500, 2250
+
+# Shared SURFACE perimeter lane for the two pipes that can't pass under the IBC tote / walkway grate
+# (the tray-sump→P-04 suction and the DV-01 blue recycle): both run ON the walkway surface along the
+# IBC −X face, STACKED in Z.  The lane sits above the FP bottom rail (z190) and just clear of the
+# corridor-frame front upright (x4654).
+SUCT_SURF_Z = ov.WALKWAY_H + 75            # 205 — brown suction height; blue recycle stacks +30 above
+SUCT_XLANE  = ov.RAIL_X_R - 6              # 4643 — tray–IBC gap lane
 # ── BACK-OF-PANEL routing: LONG vertical risers run BEHIND the rear panel (no pump ports there),
 #    penetrating the ply; SHORT interconnects stay on the front.  Each long riser gets a UNIQUE Yd
 #    lane, and the Yd-jog onto that lane is done on the FRONT (at x=PXC, unique z per port) BEFORE
@@ -431,8 +438,8 @@ def plumbing():
     # ~75mm proud of the deck and the operator steps over it.
     sumpX, sumpY, sumpZ = ov.PROC_TRAY_DRAIN_X, ov.PROC_TRAY_DRAIN_YD + 75, ov.PROC_TRAY_SUMP_Z  # 4550,155,20
     z04   = _piz("P-04")
-    srz   = ov.WALKWAY_H + 75            # 205 — surface run: above the deck (130) AND the FP bottom rail (190)
-    xlane = ov.RAIL_X_R - 6             # 4643 — tray–IBC gap lane, clear of the corridor-frame front upright (x4654)
+    srz   = SUCT_SURF_Z                  # 205 — surface run: above the deck (130) AND the FP bottom rail (190)
+    xlane = SUCT_XLANE                   # 4643 — tray–IBC gap lane, clear of the corridor-frame front upright
     appy  = PIY - 30                    # 1071 — P-04 IN approach lane (corridor side of the IBC face, Yd1046)
     pipe("Tray sump -> P-04 suction",
          [(sumpX, sumpY, sumpZ), (sumpX, sumpY, srz),       # up from the sump to the walkway surface

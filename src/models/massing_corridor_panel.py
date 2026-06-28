@@ -430,7 +430,8 @@ def plumbing():
     # DV-02 → IBC-3 Brown — drop just below the top rear-panel bracket, then behind the panel (own
     # lane) → down → front → tote entry.
     zpen = 2050                                          # penetrate clear of the top bracket band (2146–2206)
-    bwx = 4760                                            # brown drop: −X of the pump column/restraint, toward walkway
+    bwx = 4835                                            # brown drop: +75 toward the sealed end of the Blue
+    #   suction riser at x4760 (clears it), still −X of the pump bodies (x4934)
     _side_entry(p, "DV-02 -> IBC-3 (Brown)",   # no CV-3 — P-04 has an integral check valve (check=False)
                 [(PXC, dvm, DV_Z), (PXC, dvm - 30, DV_Z), (bwx, dvm - 30, DV_Z), (bwx, dvm - 30, bz)],
                 bwx, YD_NEAR, bz, -1, ov.C_IBC_BROWN, check=False, drop=-50)   # turn 90° toward the −X WALKWAY

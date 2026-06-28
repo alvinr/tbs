@@ -205,27 +205,20 @@ def kit():
     # narrow walkway clear (only SV-01's sample spout projects forward to yL)
     pipe("SV-01 -> DV-01", [(svx, sv_y, waist), (svx, yW, waist), (dvx, yW, waist)], ov.C_FILTER)
     # 5. DV-01 BLUE RECYCLE → the X1 fill CROSS (4-way) at the top of the corridor, + the Waste
-    #    leg → IBC-4 (off the UNDERSIDE branch, unchanged below).  The blue return runs UP the
-    #    pinhole wall, ALONG the wall to the IBC stack, down the IBC −X face at a 25mm gap to the
-    #    corridor, then in to the cross — so it never crosses the optical zone / film plane.  The
-    #    cross distributes it to BOTH Blue totes alongside the X1 fresh fill (so no direct tote
-    #    entry here; no CV-2 — P-02 has an integral check valve).
-    xf = ov.IBC_COL_X                            # tote front face (X4674)
-    ENTRY_OFF = 120
-    bz = 2 * ov.IBC_H_1000 - 180                 # ~2156
-    rise = bz - 100                              # riser stops 100mm LOWER to clear the film-plane hanger bracket
-    xIBC = xf - 32                               # 4642 — runs just clear of the corridor-frame FRONT upright
-                                                 # (x4654-4704) that occupies the nominal 25mm IBC-face gap
-    xUp  = cp.X1_TEE_X - 60                       # 5440 — rise to cross height is done PAST the corridor frame
-                                                 # (x>5104) so it clears the frame top rails (z2246+)
+    #    leg → IBC-4 (off the UNDERSIDE branch, unchanged below).  The blue return shares the brown
+    #    tray-sump suction's SURFACE perimeter route around the IBC — DROP from DV-01 to the walkway
+    #    surface, +X to the tray-IBC gap, +Yd along the IBC −X face STACKED 30mm above the brown, +X
+    #    across the corridor, then rise to the cross past the frame.  (No wall riser past the FP
+    #    hanger.)  The cross distributes it to BOTH Blue totes alongside the X1 fresh fill — no direct
+    #    tote entry here, and no CV-2 (P-02 has an integral check valve).
+    sz   = cp.SUCT_SURF_Z + 30                   # 235 — STACKED 30mm above the brown suction surface run
+    xUp  = cp.X1_TEE_X - 60                       # 5440 — rise to cross height PAST the corridor frame (x>5104)
     pipe("DV-01 blue recycle -> X1 cross",
-         [(dvx, yW, waist), (xf - ENTRY_OFF, yW, waist), (xf - ENTRY_OFF, yW, rise),
-          (xIBC, yW, rise), (xIBC, cp.CTR_Y, rise),
-          (xUp, cp.CTR_Y, rise), (xUp, cp.CTR_Y, cp.X1_TEE_Z),
-          (cp.X1_TEE_X, cp.CTR_Y, cp.X1_TEE_Z)], ov.C_BLUE)
-    # ^ +X along the wall → UP the riser (−100mm, clears the FP hanger) → +X to the IBC −X face → +Yd
-    #   parallel to that face into the corridor (z2056, BELOW the FP top beam + BETWEEN the frame rings)
-    #   → +X along the corridor → rise to cross height past the frame → +X into the cross's −X port.
+         [(dvx, yW, waist), (dvx, yW, sz),                       # leave DV-01 → DROP to the surface lane
+          (cp.SUCT_XLANE, yW, sz),                               # +X to the tray-IBC gap
+          (cp.SUCT_XLANE, cp.CTR_Y, sz),                         # +Yd along the IBC −X face (stacked above brown)
+          (xUp, cp.CTR_Y, sz), (xUp, cp.CTR_Y, cp.X1_TEE_Z),     # +X across the corridor → rise to cross height
+          (cp.X1_TEE_X, cp.CTR_Y, cp.X1_TEE_Z)], ov.C_BLUE)      # +X into the cross's −X port
     # Waste leg (off the underside branch) → Waste IBC (IBC-4, far-bottom).  Drops to the floor,
     # runs UNDER the walkway into the PLUMBING CORRIDOR, and enters from the CORRIDOR side
     # (Yd1316 face) — leg + 150mm penetration + drop ONE run, ORANGE check valve.

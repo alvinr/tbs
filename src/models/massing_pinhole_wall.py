@@ -473,12 +473,12 @@ model.commit_operation
 '''
 
 
-SKP_PATH = os.path.abspath(os.path.join(_ROOT, "models", "pinhole-wall.skp"))
+SKP_PATH = os.path.abspath(os.path.join(_ROOT, "models", "water.skp"))
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--send", action="store_true", help="build into the ACTIVE SketchUp doc (open a blank doc first!)")
-    ap.add_argument("--save", action="store_true", help="after building, save the active doc as models/pinhole-wall.skp")
+    ap.add_argument("--save", action="store_true", help="after building, save the active doc as models/water.skp")
     a = ap.parse_args()
     ruby = build()
     if a.send:

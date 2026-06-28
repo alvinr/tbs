@@ -372,9 +372,8 @@ BL_P01, BL_P05, BL_P04 = 1115, 1145, 1175                        # IN-side sucti
 BL_P04OUT, BL_DVBR, BL_DVWST = 1195, 1225, 1250                  # OUT/top back-lanes (clear of far upright Yd1266)
 SV_Z   = 1150                              # SV-02 sample tap — low on the P-04 discharge riser, in the gap
                                            # BETWEEN P-04 (top 1120) and P-05 (base 1340), ~1100mm for reach
-DV_Z   = 2220                              # 3W-DV-02 center Z — raised the max clean headroom UNDER the
-#   frame top rail (z2246); a bigger raise (toward the requested +300) needs the feed/legs reworked to
-#   thread the ring opening — they currently drop/rise at the ring edges (Yd1103/1259) and clip the rails
+DV_Z   = 2145                              # 3W-DV-02 center Z — dropped 75mm (room above P-03, top z1950) to
+#   shorten the IBC-3 vertical drop; still well under the frame top rail (z2246) and above P-03
 DV02X  = PXC - 75                          # 3W-DV-02 X — nudged 75mm toward the −X walkway (off the pump
 #   column centerline) to open up the brown tray-sump → P-04 suction route; feed + both legs follow it
 # ACC-01 — SeaFlo bladder accumulator: a single BOTTOM port, plumbed as a vertical DEAD-LEG teed
@@ -467,16 +466,12 @@ def plumbing():
          ov.C_IBC_BROWN)   # P-04 OUT → up its OWN +Yd lane (POY+50, clear of the pump-discharge lane POY+30)
     #   → jog to the CENTRAL lane (CTR_Y) above the pumps → SV-02 tap → VERTICALLY
     #   into the underside (z−) branch; central lane keeps the feed/SV-02 clear of the ±Yd diverter legs
-    # DV-02 → IBC-3 Brown — drop just below the top rear-panel bracket, then behind the panel (own
-    # lane) → down → front → tote entry.
-    zpen = 2050                                          # penetrate clear of the top bracket band (2146–2206)
-    bwx = 4835                                            # brown drop: +75 toward the sealed end of the Blue
-    #   suction riser at x4760 (clears it), still −X of the pump bodies (x4934)
+    # DV-02 → IBC-3 Brown — straight down off the diverter: a short −Yd stub, a 90° elbow to a VERTICAL
+    # drop at DV02X (clear, −X of the pump bodies x4934), then a horizontal 90° into the tote.  Flange/
+    # entry at x=DV02X (+74mm from the old x4835) so the drop is directly below the diverter.
     _side_entry(p, "DV-02 -> IBC-3 (Brown)",   # no CV-3 — P-04 has an integral check valve (check=False)
-                [(DV02X, dvm, DV_Z), (DV02X, dvm - 30, DV_Z), (bwx, dvm - 30, DV_Z), (bwx, dvm - 30, bz)],
-                bwx, YD_NEAR, bz, -1, ov.C_IBC_BROWN, check=False, drop=-50)   # turn 90° toward the −X WALKWAY
-    #   right off the diverter, run clear of the pump column, then drop (clear of the restraint x4729 &
-    #   film-plane beams x4684) and into the tote   # short 50mm dip tube inside the tote
+                [(DV02X, dvm, DV_Z), (DV02X, dvm - 30, DV_Z), (DV02X, dvm - 30, bz)],
+                DV02X, YD_NEAR, bz, -1, ov.C_IBC_BROWN, check=False, drop=-50)   # short 50mm dip tube inside the tote
     # DV-02 → IBC-4 merge — waste port → drop below the bracket → behind the panel (own lane) → down
     # → +X past the risers to the merge tee (jog to the merge Yd at x=MERGE, clear of the back verticals).
     # leave the +Yd port, turn toward the SEALED END and run 400mm along the top (Yd1229 clears the far
@@ -484,7 +479,8 @@ def plumbing():
     dvwx = MERGE4[0] - 115                                # drop −x of the tee (top run 75mm shorter) so the
     #   horizontal approach seats on the −x run port as a clear run, not a stub right at the drop
     pipe("DV-02 -> IBC-4 merge",
-         [(DV02X, dvp, DV_Z), (DV02X, dvp + 15, DV_Z), (dvwx, dvp + 15, DV_Z), (dvwx, dvp + 15, wz),
+         [(DV02X, dvp, DV_Z), (DV02X, dvp + 15, DV_Z), (DV02X, dvp + 15, DV_Z - 45),   # drop below the rear-panel
+          (dvwx, dvp + 15, DV_Z - 45), (dvwx, dvp + 15, wz),                            # bracket band (z2146+) before +X
           (dvwx, MERGE4[1], wz), MERGE4], ov.C_IBC_WASTE)   # ~380mm toward the sealed end, drop, then
     #   a horizontal +x run that SEATS on the merge's −x run port (was dropping inside the tee body)
     # 3-way merge: tote entry on +x (run), DV-02 waste on −x (run), DV-01 waste rises into the z− branch

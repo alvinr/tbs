@@ -223,8 +223,10 @@ def kit():
     # right edge, drop, cross to the corridor at the gap, and run low to the merge — never over the tray.
     mx, my, mz = cp.MERGE4
     pipe("DV-01 -> IBC-4 merge",   # strip at z10 UNDER the FP saddle gusset/cleat past x4617, step to z20
-         [(dvx, yW, waist), (4280, yW, waist), (4280, yW, 10), (4625, yW, 10), (4625, yW, 30),
+         [(dvx, yW, waist), (dvx, yW, waist - 100), (4280, yW, waist - 100), (4280, yW, 10), (4625, yW, 10), (4625, yW, 30),
           (cp.GAPX, yW, 30), (cp.GAPX, my, 30), (cp.GAPX, my, 60), (mx, my, 60), (mx, my, mz)],
+         # ^ leave DV-01 DOWN via the z− branch (feed is on run−/−X, blue on run+/+X), jog −X clear of the
+         #   walkway grate (x≥4329) ABOVE it, then drop to the strip
          ov.C_IBC_WASTE)   # (clear of the corridor foot plate z0–12), cross, rise clear of the rail, merge
     return "\n".join(p)
 

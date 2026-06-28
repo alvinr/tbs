@@ -272,6 +272,22 @@ def hex_to_rgb(h):
     return (int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16))
 
 
+# Neutral that muted "context" colors blend toward — a light blue-grey matching the
+# GhostEquip ghost so faded context reads as a quiet wash, not a saturated volume.
+MUTE_NEUTRAL = (190, 190, 195)
+
+def mute_hex(h, f, neutral=MUTE_NEUTRAL):
+    """Blend a '#RRGGBB' color a fraction `f` toward `neutral` (0 = unchanged, 1 = full
+    neutral).  Used to desaturate ghosted context (e.g. IBC tanks) so strong circuit
+    colors don't bury the key components — matches the muted feel of overview.skp."""
+    if not f:
+        return h
+    r, g, b = hex_to_rgb(h)
+    nr, ng, nb = neutral
+    blend = lambda c, n: round(c * (1 - f) + n * f)
+    return "#%02X%02X%02X" % (blend(r, nr), blend(g, ng), blend(b, nb))
+
+
 # Web viewers (e.g. Sketchfab) cap material count at ~100. Dozens of elements
 # share a color, so materials are keyed by color+alpha and reused — the first
 # group to use a given color+alpha names the shared material. This collapses
@@ -1015,13 +1031,16 @@ def equipment_panel():
 
 # ── IBC stack (4× totes, 2×2) + support rack ─────────────────────────────────
 
-def ibc_stack(alpha=0.55):
+def ibc_stack(alpha=0.55, mute=0.0):
     """Four IBC totes in a 2×2 stack: pallet base + translucent bottle each.
 
     Near column (Yd=30): Brown developer below, Blue #1 on top.
     Far column (Yd=1316): Waste below, Blue #2 on top. X spans 4674–5893.
     ibc-reconfig-v2: 1000L caged composite totes (1168mm), direct-stacked to 2336mm.
     `alpha` sets the bottle translucency (lower = more transparent).
+    `mute` (0–1) desaturates the bottle/pallet colors toward neutral so the stack
+    reads as quiet CONTEXT (a faint tint) rather than saturated volumes — used where
+    the IBC stack is a backdrop to other key systems (e.g. the corridor plumbing view).
     """
     parts = []
     pal = IBC_PALLET_H
@@ -1037,11 +1056,11 @@ def ibc_stack(alpha=0.55):
     for nm, yd, z0, col in totes:
         parts.append(ruby_box(f"{nm} pallet",
                               IBC_COL_X, yd, z0, IBC_W, IBC_D, pal,
-                              color=C_PALLET))
+                              color=mute_hex(C_PALLET, mute), alpha=(alpha if mute else None)))
         parts.append(ruby_box(f"{nm} bottle",
                               IBC_COL_X + inset, yd + inset, z0 + pal,
                               IBC_W - 2 * inset, IBC_D - 2 * inset, bottle_h,
-                              color=col, alpha=alpha))
+                              color=mute_hex(col, mute), alpha=alpha))
     return '\n'.join(parts)
 
 

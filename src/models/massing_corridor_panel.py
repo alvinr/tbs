@@ -338,7 +338,7 @@ BLANE = BACK_X + EQT + 60                                        # 5182 — back
 # Yd1046–1096, far upright Yd1296–1346) → keep lanes inside ~1105–1285, ≥30mm apart:
 BL_P01, BL_P05, BL_P04 = 1115, 1145, 1175                        # IN-side suction back-lanes
 BL_P04OUT, BL_DVBR, BL_DVWST = 1195, 1225, 1250                  # OUT/top back-lanes (clear of far upright Yd1266)
-SV_Z   = 2020                              # SV-02 (on the P-04 discharge, above the stack)
+SV_Z   = 2060                              # SV-02 (on the P-04 discharge, above the stack) — raised 40mm
 DV_Z   = 2220                              # 3W-DV-02 center Z — raised the max clean headroom UNDER the
 #   frame top rail (z2246); a bigger raise (toward the requested +300) needs the feed/legs reworked to
 #   thread the ring opening — they currently drop/rise at the ring edges (Yd1103/1259) and clip the rails

@@ -172,10 +172,14 @@ def kit():
     yB = 80
     tx, ty, tz = cp.BROWN_TAP
     pipe("IBC-3 (Brown) tap -> P-02 inlet",   # AROUND + UNDER the walkway (Rule 5a): drop clear of the FP
-         [(tx - 30, ty, tz), (4720, ty, tz), (4720, cp.GAP_CORR_Y, tz), (4720, cp.GAP_CORR_Y, 65),
-          (cp.GAPX, cp.GAP_CORR_Y, 65), (cp.GAPX, cp.GAP_CORR_Y, 50), (cp.GAPX, 56, 50), (cp.GAPX, 56, 10),
-          (2960, 56, 10), (2960, 56, p2_in[2]), (2960, p2cy, p2_in[2]), p2_in], ov.C_IBC_BROWN)  # OFF the tee's −X end, then over the rail, drop, cross under the cantilever, strip z10, rise before bracket-6
-    p.append(cp.ball_valve("BV-03 (P-02 suction)", 2960, 56, waist, "z"))   # at SV-01 reach height
+         [(tx - 30, ty, tz), (4720, ty, tz), (4720, 1170, tz), (4720, 1170, 82),
+          (cp.GAPX, 1170, 82), (cp.GAPX, 1170, 25), (cp.GAPX, 900, 25), (cp.GAPX, 900, 10),
+          (cp.GAPX, 56, 10), (2960, 56, 10), (2960, 43, 10), (2960, 43, p2_in[2]), (2960, p2cy, p2_in[2]), p2_in], ov.C_IBC_BROWN)
+    # ^ OFF the tee's −X end; descent OFFSET from the blue trunk (Yd1170 not 1150); −Yd at z25 OVER the
+    #   corridor foot-plate, then step DOWN to z10 (2 elbows) to pass UNDER the blue trunk; strip z10 to P-02.
+    #   At x2960 the riser is nudged back to Yd43 (off the strip's Yd56) so it clears the Yd69 supply trunk
+    #   it would otherwise rise straight through (grey lane Yd24–45 is x≥4269, so x2960 is clear at Yd43).
+    p.append(cp.ball_valve("BV-03 (P-02 suction)", 2960, 43, waist, "z"))   # at SV-01 reach height
     # 2. P-02 OUT (+X) → F1 inlet — straight, in line (same axis as the filter chain)
     pipe("P-02 -> F1", [p2_out, f_in("F1")], ov.C_IBC_BROWN)
     # 3. filter-skid jumpers F1→F2→F3 — straight pipe between the adjacent in-line ports

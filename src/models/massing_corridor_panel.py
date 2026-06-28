@@ -244,7 +244,7 @@ C_BV = "#7A8088"                              # ball-valve body — chrome/steel
                                               # PURPLE check valves and YELLOW diverters)
 
 
-def ball_valve(nm, px, py, pz, axis, color=None):
+def ball_valve(nm, px, py, pz, axis, color=None, hdir="+y"):
     """In-line MANUAL ball valve: a short barrel the pipe runs THROUGH (centered on the pipe
     centerline, oriented ALONG `axis`) plus a clear RED lever handle — a stem out perpendicular
     to the run with a lever bar at its tip (like the diverter handles) so it reads as a hand
@@ -261,10 +261,15 @@ def ball_valve(nm, px, py, pz, axis, color=None):
         p.append(ov.ruby_cylinder(nm, px, py - L / 2, pz, r, L, color=color, axis="y"))
         p.append(ov.ruby_cylinder(nm + " handle stem", px, py, pz + r, HSr, HS, color=C_HANDLE, axis="z"))
         p.append(ov.ruby_box(nm + " handle", px - 7, py - LV / 2, pz + r + HS, 14, LV, 9, color=C_HANDLE))
-    else:                                      # vertical barrel — handle sticks out +Yd
+    else:                                      # vertical barrel — handle sticks out horizontally toward `hdir`
         p.append(ov.ruby_cylinder(nm, px, py, pz - L / 2, r, L, color=color, axis="z"))
-        p.append(ov.ruby_cylinder(nm + " handle stem", px, py + r, pz, HSr, HS, color=C_HANDLE, axis="y"))
-        p.append(ov.ruby_box(nm + " handle", px - 7, py + r + HS, pz - LV / 2, 14, 9, LV, color=C_HANDLE))
+        ux, uy = {"+y": (0, 1), "-y": (0, -1), "+x": (1, 0), "-x": (-1, 0)}[hdir]
+        if uy:                                 # stem along Yd, lever a vertical bar at the tip
+            p.append(ov.ruby_cylinder(nm + " handle stem", px, (py + r) if uy > 0 else (py - r - HS), pz, HSr, HS, color=C_HANDLE, axis="y"))
+            p.append(ov.ruby_box(nm + " handle", px - 7, py + uy * (r + HS) - (0 if uy > 0 else 9), pz - LV / 2, 14, 9, LV, color=C_HANDLE))
+        else:                                  # stem along X, lever a vertical bar at the tip
+            p.append(ov.ruby_cylinder(nm + " handle stem", (px + r) if ux > 0 else (px - r - HS), py, pz, HSr, HS, color=C_HANDLE, axis="x"))
+            p.append(ov.ruby_box(nm + " handle", px + ux * (r + HS) - (0 if ux > 0 else 9), py - 7, pz - LV / 2, 9, 14, LV, color=C_HANDLE))
     return "\n".join(p)
 
 
@@ -386,10 +391,13 @@ def plumbing():
     # back DOWN through the grate, floor run along the outside strip to the gap past the tray's right
     # edge (x>4629), then up into the corridor and a −Yd stub straight into the P-04 IN port.
     z04 = _piz("P-04")
+    p04by = PIY - 76                                      # 1025 — rise the suction in a back-lane −Yd of
+    #   the ACC out-port/acc_out line (Yd1088): clears the blue ACC plumbing by ~52mm (was 6mm at PXC),
+    #   then TWO 90° turns (rise, then +Yd) into the −Yd-facing P-04 IN port.
     pipe("Tray sump -> P-04 suction",
          [(sumpX, sumpY, sumpZ), (sumpX, sumpY, valveZ), (dropX, sumpY, valveZ), (dropX, dropY, valveZ),
           (dropX, dropY, 10), (gapX, dropY, 10), (gapX, dropY, 65), (4800, dropY, 65),
-          (4800, PIY - 30, 65), (PXC, PIY - 30, 65), (PXC, PIY - 30, z04), pin("P-04")],
+          (4800, p04by, 65), (PXC, p04by, 65), (PXC, p04by, z04), pin("P-04")],
          ov.C_IBC_BROWN)   # floor run at z10 — UNDER the film-plane saddle gusset (z20–140)
     p.append(ov.ruby_cylinder("Tray sump strainer foot", sumpX, sumpY, sumpZ, 14, 36, color=CDK, axis="z"))
     # P-04 DISCHARGE → up the BACK of the panel (clear of the OUT-port stack), back to the front
@@ -420,20 +428,33 @@ def plumbing():
     # the front of the body, up the threading lane (between body Yd1131+ and the near upright Yd≤1096)
     # behind the panel, to the tote.
     z01 = _piz("P-01")
+    # BV-01 must be reachable from the −X WALKWAY, so the suction comes FORWARD to a vertical section in the
+    # corridor front (bvx, just clear of the front upright x≤4704) instead of rising on the back BLANE riser:
+    # P-01 IN → −Yd stub → −X toward the walkway → UP the front vertical (BV-01 at reach height) → back +X
+    # and up to the Blue tote near-top.
+    bvx, bvy = FRONT_X + 106, YD_NEAR + 67       # 4760 / 1113 — corridor-front lane, clear of the front
+    #   upright (Yd≤1096) AND the pump bodies (Yd≥1131) the high run passes at z=blz
     _side_entry(p, "Blue #1 -> P-01 suction",   # flooded suction + P-01's integral check → no foot valve (check=False)
-                [pin("P-01"), (PXC, PIY - 30, z01), (4900, PIY - 30, z01), (4900, BL_P01, z01),
-                 (BLANE, BL_P01, z01), (BLANE, BL_P01, blz), (PXC, BL_P01, blz), (xe, BL_P01, blz)],
-                xe, YD_NEAR, blz, -1, ov.C_BLUE, check=False)
-    p.append(ball_valve("BV-01 (P-01 suction)", BLANE, BL_P01, z01 + 150, "z"))   # on the back riser
+                [pin("P-01"), (PXC, PIY - 30, z01), (bvx, PIY - 30, z01), (bvx, bvy, z01),
+                 (bvx, bvy, blz), (xe, bvy, blz)],
+                xe, YD_NEAR, blz, -1, ov.C_BLUE, check=False, drop=-50)   # short 50mm dip tube inside the tote
+    p.append(ball_valve("BV-01 (P-01 suction)", bvx, bvy, 1000, "z", hdir="-x"))   # front vertical section, handle faces the −X walkway operator
     # Blue supply IN LINE through ACC-01 (like a filter in the chain): P-01 OUT → ACC IN (+Yd),
     # ACC OUT (−Yd) → trunk out the mouth to the spray bar.
-    # OUT leaves convention-style: +Yd stub straight out of the OUT port, then up to ACC-01 IN.
+    # The ACC-IN elbow goes OUT HORIZONTALLY (+Yd into the aisle, clear of the P-01 head below) before
+    # dropping to the P-01 OUT blue riser — NOT straight down over the pump.
+    inby = CTR_Y + ACC_R + 75                              # 1320 — IN riser well +Yd of the P-01 head (Yd1234)
     pipe("P-01 -> ACC-01 (in)",
-         [pout("P-01"), (PXC, POY + 30, _piz("P-01")), (PXC, POY + 30, ACC_PZ), acc_in()], ov.C_BLUE)
+         [pout("P-01"), (PXC, inby, _piz("P-01")), (PXC, inby, ACC_PZ), acc_in()], ov.C_BLUE)
     # ACC-01 OUT → supply trunk → out to the gap past the tray right edge (GAPX), dropped to z60 ready
     # to cross to the outside-rim strip (tap01_supply continues it AROUND the tray to BV-05/TAP-01).
+    # Leave the −Yd OUT port OUTWARD (−Yd), then run +Yd to the gap in the clear band BETWEEN the P-01 head
+    # top (z490) and the ACC body bottom (z540) — z515 clears both by ~15mm.  (The old route ran +Yd at the
+    # port's z568 and TUNNELED through the ACC body; z490 then grazed the P-01 head top.)
+    trz = (PSTACK["P-01"] + PVB_H + PCAP_H + ACC_Z0) // 2     # 515 — midway P-01 head-top↔ACC body-bottom
     pipe("Blue supply trunk -> spray bar / TAP-01 (off-panel)",
-         [acc_out(), (PXC, PIY, ACC_PZ), (PXC, GAP_CORR_Y, ACC_PZ), (4660, GAP_CORR_Y, ACC_PZ), (4660, GAP_CORR_Y, 60)], ov.C_BLUE)
+         [acc_out(), (PXC, CTR_Y - ACC_R - 50, ACC_PZ), (PXC, CTR_Y - ACC_R - 50, trz),
+          (PXC, GAP_CORR_Y, trz), (4660, GAP_CORR_Y, trz), (4660, GAP_CORR_Y, 60)], ov.C_BLUE)
     return "\n".join(p)
 
 

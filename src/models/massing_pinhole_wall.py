@@ -408,7 +408,7 @@ def ghost_faces(ents, mat)
   }}
 end
 model.entities.grep(Sketchup::ComponentInstance).each {{ |ci|
-  ghost_faces(ci.definition.entities, ghost) if ci.layer && ["Pinhole Equipment", "Processing Tray"].include?(ci.layer.name)
+  ghost_faces(ci.definition.entities, ghost) if ci.layer && ["Pinhole Equipment", "Processing Tray", "IBC Frame"].include?(ci.layer.name)
 }}
 def scene(model, name, on)
   model.layers.each {{ |l| l.visible = (l.name == "Layer0" || l == model.layers[0] || on.include?(l.name)) }}
@@ -419,7 +419,7 @@ end
 scene(model, "Water System", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale"])
 scene(model, "Plumbing", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
 scene(model, "Plumbing (labeled)", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","Labels"])
-scene(model, "Plumbing + IBC", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","IBC"])
+scene(model, "Plumbing + IBC", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","IBC","IBC Frame"])
 scene(model, "Overall", ["Context","Walkway","Film Plane","Processing Tray","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
 scene(model, "Labeled", ["Context","Walkway","Film Plane","Processing Tray","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains","Labels","Labels Context"])
 model.layers.each {{ |l| l.visible = true }}

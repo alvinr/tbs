@@ -39,7 +39,7 @@ def _arm(nm, cx, cy, cz, axis, sd, body, L, r, color):
     return ov.ruby_cylinder(nm, cx, cy, z0, r, L, color=color, axis="z")
 
 
-def diverter(name, cx, cy, cz, run="x", branch="z-", handle="y+", color=None, L=55, r=13):
+def diverter(name, cx, cy, cz, run="x", branch="z-", handle="y+", color=None, L=10, r=13):
     """3-way diverter = a standard T-port valve (3 coplanar ports, handle perpendicular).
     The 3 pipes lie in a plane (seen face-on as a T); the RED handle projects out of that
     plane toward the operator.  `run` is the through-run axis (both ways); `branch` is the
@@ -149,7 +149,8 @@ CTR_Y  = (YD_NEAR + YD_FAR) / 2          # 1181 — corridor center
 RP     = ov.PUMP_PIPE_OD / 2            # 1/2" pipe radius
 CDK    = "#3A3A42"                       # dark fittings / motor cans
 DVB    = 46                              # diverter body cube
-DVL    = 55                              # diverter port stub length
+DVL    = 10                              # diverter port socket length — real 1/2" socket 3-way ball valve
+#   is 2.62"/66.5mm overall (US Plastics #30667), i.e. ports reach only ~33mm from center (DVB/2+DVL)
 C_CHECK = "#8A2BE2"                      # PURPLE — one-way / check valves (vs YELLOW diverters)
 # UPRIGHT pump (filter-style): a vertical body + cap with BOTH ports out the TOP, exiting along
 # ±X (face dir), offset ±26 in Yd (OUT +Yd, IN −Yd).  All pumps (incl. the wall P-02) conform.
@@ -430,17 +431,17 @@ def plumbing():
     # lane) → down → front → tote entry.
     zpen = 2050                                          # penetrate clear of the top bracket band (2146–2206)
     _side_entry(p, "DV-02 -> IBC-3 (Brown)",   # no CV-3 — P-04 has an integral check valve (check=False)
-                [(PXC, dvm, DV_Z), (PXC, dvm - 35, DV_Z), (PXC, dvm - 35, bz), (xe, dvm - 35, bz)],
+                [(PXC, dvm, DV_Z), (PXC, dvm - 80, DV_Z), (PXC, dvm - 80, bz), (xe, dvm - 80, bz)],
                 xe, YD_NEAR, bz, -1, ov.C_IBC_BROWN, check=False, drop=-50)   # straight DOWN the front −Yd lane
-    #   (Yd1068, −Yd of the pump bodies & the central feed) — never crosses CTR_Y or the back lanes   # short 50mm dip tube inside the tote
+    #   (Yd1068, −Yd of the pump IN ports at Yd1101) — the short-port diverter moved dvm in, so the
+    #   leg needs the larger −80 offset to stay on that lane   # short 50mm dip tube inside the tote
     # DV-02 → IBC-4 merge — waste port → drop below the bracket → behind the panel (own lane) → down
     # → +X past the risers to the merge tee (jog to the merge Yd at x=MERGE, clear of the back verticals).
-    # leave the +Yd port, drop behind the panel (clear of the front feed-lane sweep + the corner upright),
-    # then ONE long straight +x into the relocated merge (arrive along −x). Front-drop isn't possible: the
-    # feed at Yd1311 jogs across Yd1181–1311 at z1960 and the far upright fills Yd1266–1316.
+    # leave the +Yd port, turn toward the SEALED END and run 400mm along the top (Yd1229 clears the far
+    # upright at 1266 now that the short-port diverter pulled dvp in to 1214), THEN drop and into the merge.
     pipe("DV-02 -> IBC-4 merge",
-         [(PXC, dvp, DV_Z), (PXC, dvp + 35, DV_Z), (PXC, dvp + 35, zpen), (PXC, BL_DVWST, zpen), (BLANE, BL_DVWST, zpen),
-          (BLANE, BL_DVWST, wz), (BLANE, MERGE4[1], wz), MERGE4], ov.C_IBC_WASTE)
+         [(PXC, dvp, DV_Z), (PXC, dvp + 15, DV_Z), (PXC + 400, dvp + 15, DV_Z), (PXC + 400, dvp + 15, wz),
+          (PXC + 400, MERGE4[1], wz), MERGE4], ov.C_IBC_WASTE)   # arrive along −x into the merge run port
     # 3-way merge: tote entry on +x (run), DV-02 waste on −x (run), DV-01 waste rises into the z− branch
     p.append(tee("IBC-4 waste merge tee", MERGE4[0], MERGE4[1], MERGE4[2], run="x", branch="z-"))
     xe4 = ov.IBC_COL_X + 830                              # 5504 — entry +130 toward the sealed end

@@ -161,7 +161,8 @@ def kit():
     # ── SV-01 sample tap (projects forward to yL for cup access) + flat-T 3W-DV-01 mounted
     #    back on the plywood (yW), both at WAIST level for easy reach ──
     svx, dvx = 4250, 4430
-    p.append(cp.sample_valve("SV-01 sample valve", svx, yL, waist - 25, h=70))
+    sv_y = yW + 75             # SV-01 projects only 75mm forward of the wall (cup access; was yL=230)
+    p.append(cp.sample_valve("SV-01 sample valve", svx, sv_y, waist - 25, h=70))
     p.append(diverter("3W-DV-01", dvx, yW, waist, run="x", branch="z-", color=ov.C_VALVE))
 
     # ── PLUMBING ──
@@ -189,10 +190,10 @@ def kit():
     # 4. F3 outlet → SV-01: a 90° "collection" elbow brings it back to the WALL/backing, then
     #    the drop runs DOWN the wall (yW, clamped to the ply for support) to waist → SV-01.
     pipe("F3 -> SV-01 (wall-mounted drop)",
-         [f_out("F3"), (f_out("F3")[0], yW, tie), (svx, yW, tie), (svx, yW, waist), (svx, yL, waist)], ov.C_FILTER)
+         [f_out("F3"), (f_out("F3")[0], yW, tie), (svx, yW, tie), (svx, yW, waist), (svx, sv_y, waist)], ov.C_FILTER)
     # after SV-01 the run returns to the plywood (yW) BEFORE routing on to DV-01 — keeps the
     # narrow walkway clear (only SV-01's sample spout projects forward to yL)
-    pipe("SV-01 -> DV-01", [(svx, yL, waist), (svx, yW, waist), (dvx, yW, waist)], ov.C_FILTER)
+    pipe("SV-01 -> DV-01", [(svx, sv_y, waist), (svx, yW, waist), (dvx, yW, waist)], ov.C_FILTER)
     # 5. DV-01 → Blue IBC (IBC-2, run +X) + Waste IBC (IBC-4, off the UNDERSIDE branch).  Each
     #    enters near the TOP via the convention: the 90° entry turn is ENTRY_OFF mm BEFORE the
     #    flange (perpendicular approach stub), then flange (outside) + 150mm in + elbow + 150mm
@@ -290,7 +291,7 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz)
     (3300, 102, 2305, "F1 (50um)",   0, 560, 80),
     (3638, 102, 2305, "F2 (KDF-55)", 0, 560, 80),
     (3976, 102, 2305, "F3 (GAC)",    0, 560, 80),
-    (4250, 230, 1000, "SV-01\n(sample)", 0, 430, 520),
+    (4250, 110, 1000, "SV-01\n(sample)", 0, 430, 520),   # SV-01 now 75mm off the wall (yW+75)
     (4430, 35,  1000, "DV-01\n(3-way)",  0, 430, 740),
     # ── corridor plumbing panel: single-column pumps + ACC + Stage-A (leaders point −X, out the mouth) ──
     (cp.PXC, cp.PIY, cp._piz("P-01") - 150, "P-01 (Blue supply)", -700, 0, -150),

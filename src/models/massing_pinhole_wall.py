@@ -298,15 +298,19 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz)
     (cp.PXC, cp.PIY, cp._piz("P-05") - 150, "P-05 (Brown drain)", -900, 0,  150),
     (cp.PXC, cp.PIY, cp._piz("P-03") - 150, "P-03 (Waste drain)", -1000, 0, 150),
     (cp.PXC, cp.CTR_Y, cp.ACC_Z0 + 150, "ACC-01\n(accumulator)", -700, 0, 250),
-    (cp.PXC, cp.POY, cp.SV_Z, "SV-02\n(sample)", -700, 200, 0),
+    (cp.PXC - 95, cp.CTR_Y, cp.SV_Z, "SV-02\n(sample)", -600, 0, 120),   # teed off to the −X aisle
     (cp.PXC, cp.CTR_Y, cp.DV_Z, "DV-02 (3-way)", -700, 0, 200),
     # ── ball valves (in-panel pump-suction isolation; BV-01/02 on the BACK-of-panel risers) ──
-    (cp.BLANE, cp.BL_P01, cp._piz("P-01") + 150, "BV-01", 350, 0, 250),
+    (cp.FRONT_X + 106, cp.YD_NEAR + 67, 1000, "BV-01", -600, 0, 250),   # now on the front walkway-side riser
     (cp.BLANE, cp.BL_P05, cp._piz("P-05") - 170, "BV-02", 350, 0, 250),
     (2978, 80, 1000, "BV-03", 0, 520, 200),
     (5022, cp.PIY, cp._piz("P-03"), "BV-06", -1000, 0, 150),
     # ── per-tank anti-siphon check valves ──
     (ov.C_LEN - 200, cp.CTR_Y, 2250, "CV-1\n(X1 fill)", -600, 300, 0),   # only CV-1 — the pumps' integral checks cover the returns
+    # ── end-wall bulkhead ports ──
+    (ov.C_LEN, cp.CTR_Y, 2250, "X1\n(fresh fill)", -550, 250, 0),
+    (ov.C_LEN, 1109, 1700, "X3\n(brown drain out)", -550, 0, 250),
+    (ov.C_LEN, 1253, 1620, "X4\n(waste drain out)", -550, 0, -250),
 ]
 # Off-panel / context labels — shown ONLY in the full "Labeled" scene (Labels Context tag), kept
 # OUT of the "Plumbing (labeled)" scene so their leaders don't clutter the plumbing view.

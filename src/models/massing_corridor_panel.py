@@ -428,7 +428,9 @@ def plumbing():
     tip = DVB / 2 + DVL                                  # 78 — diverter port-stub tip
     dvm, dvp = CTR_Y - tip, CTR_Y + tip                  # 1103 / 1259 — DV-02 run−/run+ Yd
     xe  = ov.IBC_COL_X + 300                             # 4974 — tote side-entry X
-    bz  = ov.IBC_PALLET_H + ov.IBC_H_1000 - 60           # 1276 — Brown near-top entry
+    bz  = ov.IBC_H_1000 - 38                             # 1130 — Brown entry, threaded into the TOP of the brown
+    #   bottle (z168–1148): above the P-04 suction approach (tops at z1102) and below the bottle top.
+    #   (The old 1276 sat 128mm ABOVE the brown tote, at the Blue #1 pallet level — looked like the blue IBC.)
     wz  = MERGE4[2]                                       # 1230 — Waste entry
     blz = ov.IBC_H_1000 + ov.IBC_PALLET_H + 64           # 1400 — Blue near top
 

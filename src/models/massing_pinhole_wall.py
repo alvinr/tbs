@@ -206,16 +206,19 @@ def kit():
     pipe("SV-01 -> DV-01", [(svx, sv_y, waist), (svx, yW, waist), (dvx, yW, waist)], ov.C_FILTER)
     # 5. DV-01 BLUE RECYCLE → the X1 fill CROSS (4-way) at the top of the corridor, + the Waste
     #    leg → IBC-4 (off the UNDERSIDE branch, unchanged below).  The blue return shares the brown
-    #    tray-sump suction's SURFACE perimeter route around the IBC — DROP from DV-01 to the walkway
-    #    surface, +X to the tray-IBC gap, +Yd along the IBC −X face STACKED 30mm above the brown, +X
-    #    across the corridor, then rise to the cross past the frame.  (No wall riser past the FP
-    #    hanger.)  The cross distributes it to BOTH Blue totes alongside the X1 fresh fill — no direct
-    #    tote entry here, and no CV-2 (P-02 has an integral check valve).
-    sz   = cp.SUCT_SURF_Z + 30                   # 235 — STACKED 30mm above the brown suction surface run
-    xUp  = cp.X1_TEE_X - 60                       # 5440 — rise to cross height PAST the corridor frame (x>5104)
+    #    tray-sump suction's SURFACE perimeter route around the IBC — run +X HORIZONTALLY along the
+    #    pinhole wall at waist, turn DOWN the wall to the surface lane, then +Yd along the IBC −X face
+    #    STACKED 30mm above the brown, +X across the corridor, and rise to the cross past the frame.
+    #    (No wall riser past the FP hanger.)  The cross distributes it to BOTH Blue totes alongside the
+    #    X1 fresh fill — no direct tote entry here, and no CV-2 (P-02 has an integral check valve).
+    sz    = cp.SUCT_SURF_Z + 30                   # 235 — STACKED 30mm above the brown suction surface run
+    xdrop = ov.RAIL_X_R - 17                      # 4632 — turn DOWN here, −X clear of the IBC-restraint wall
+                                                  # hanger (x4646+) that the brown (at Yd155) misses
+    xUp   = cp.X1_TEE_X - 60                       # 5440 — rise to cross height PAST the corridor frame (x>5104)
     pipe("DV-01 blue recycle -> X1 cross",
-         [(dvx, yW, waist), (dvx, yW, sz),                       # leave DV-01 → DROP to the surface lane
-          (cp.SUCT_XLANE, yW, sz),                               # +X to the tray-IBC gap
+         [(dvx, yW, waist), (xdrop, yW, waist),                  # leave DV-01 → +X HORIZONTAL along the pinhole wall
+          (xdrop, yW, sz),                                       # turn DOWN the wall to the surface lane
+          (cp.SUCT_XLANE, yW, sz),                               # step +X to the gap lane (aligns with the brown)
           (cp.SUCT_XLANE, cp.CTR_Y, sz),                         # +Yd along the IBC −X face (stacked above brown)
           (xUp, cp.CTR_Y, sz), (xUp, cp.CTR_Y, cp.X1_TEE_Z),     # +X across the corridor → rise to cross height
           (cp.X1_TEE_X, cp.CTR_Y, cp.X1_TEE_Z)], ov.C_BLUE)      # +X into the cross's −X port
@@ -447,7 +450,6 @@ def scene(model, name, on)
   pg.use_hidden_layers = true rescue nil
   pg
 end
-scene(model, "Water System", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale"])
 scene(model, "Plumbing", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
 scene(model, "Plumbing (labeled)", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","Labels"])
 scene(model, "Plumbing + IBC", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","IBC","IBC Frame","Corridor Frame","Corridor Panel"])

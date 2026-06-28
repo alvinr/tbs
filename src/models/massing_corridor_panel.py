@@ -359,7 +359,7 @@ X1_TEE_X, X1_TEE_Z = 5500, 2250
 # IBC −X face, STACKED in Z.  The lane sits above the FP bottom rail (z190) and just clear of the
 # corridor-frame front upright (x4654).
 SUCT_SURF_Z = ov.WALKWAY_H + 75            # 205 — brown suction height; blue recycle stacks +30 above
-SUCT_XLANE  = ov.RAIL_X_R - 6              # 4643 — tray–IBC gap lane
+SUCT_XLANE  = ov.RAIL_X_R - 14             # 4635 — tray–IBC gap lane (−X clear of the blue supply-trunk drop at x4660)
 # ── BACK-OF-PANEL routing: LONG vertical risers run BEHIND the rear panel (no pump ports there),
 #    penetrating the ply; SHORT interconnects stay on the front.  Each long riser gets a UNIQUE Yd
 #    lane, and the Yd-jog onto that lane is done on the FRONT (at x=PXC, unique z per port) BEFORE
@@ -442,14 +442,17 @@ def plumbing():
     z04   = _piz("P-04")
     srz   = SUCT_SURF_Z                  # 205 — surface run: above the deck (130) AND the FP bottom rail (190)
     xlane = SUCT_XLANE                   # 4643 — tray–IBC gap lane, clear of the corridor-frame front upright
-    appy  = PIY - 30                    # 1071 — P-04 IN approach lane (corridor side of the IBC face, Yd1046)
+    xrise = PXC - 84                    # 4900 — rise lane −X of the pump column / ACC body & blue out-trunk (PXC)
+    ybr   = PIY - 4                     # 1097 — rise Yd, THREADED between the P-01 suction (Yd1071) and the
+                                        # ACC-01 body (Yd1117+); also clear of the stacked blue recycle (Yd1181)
     pipe("Tray sump -> P-04 suction",
          [(sumpX, sumpY, sumpZ), (sumpX, sumpY, srz),       # up from the sump to the walkway surface
           (xlane, sumpY, srz),                              # +X to the tray–IBC gap
           (xlane, CTR_Y, srz),                              # +Yd along the walkway perimeter / IBC −X face into the corridor
-          (PXC, CTR_Y, srz),                                # +X across the corridor (below the pump bodies)
-          (PXC, appy, srz),                                 # −Yd to the P-04 approach lane
-          (PXC, appy, z04), pin("P-04")],                   # rise → +Yd into the −Yd-facing IN port
+          (xrise, CTR_Y, srz),                              # +X across the corridor to the rise lane (x4900)
+          (xrise, ybr, srz),                                # −Yd to the threaded rise Yd
+          (xrise, ybr, z04),                                # RISE past the blue ACC-01 out-trunk + P-01 suction
+          (PXC, ybr, z04), pin("P-04")],                    # +X back to the pump → +Yd into the −Yd-facing IN port
          ov.C_IBC_BROWN)
     p.append(ov.ruby_cylinder("Tray sump strainer foot", sumpX, sumpY, sumpZ, 14, 36, color=CDK, axis="z"))
     # P-04 DISCHARGE → up the BACK of the panel (clear of the OUT-port stack), back to the front

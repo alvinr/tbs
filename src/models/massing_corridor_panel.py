@@ -430,11 +430,12 @@ def plumbing():
     # DV-02 → IBC-3 Brown — drop just below the top rear-panel bracket, then behind the panel (own
     # lane) → down → front → tote entry.
     zpen = 2050                                          # penetrate clear of the top bracket band (2146–2206)
+    bwx = 4760                                            # brown drop: −X of the pump column/restraint, toward walkway
     _side_entry(p, "DV-02 -> IBC-3 (Brown)",   # no CV-3 — P-04 has an integral check valve (check=False)
-                [(PXC, dvm, DV_Z), (PXC, dvm - 80, DV_Z), (PXC, dvm - 80, bz), (xe, dvm - 80, bz)],
-                xe, YD_NEAR, bz, -1, ov.C_IBC_BROWN, check=False, drop=-50)   # straight DOWN the front −Yd lane
-    #   (Yd1068, −Yd of the pump IN ports at Yd1101) — the short-port diverter moved dvm in, so the
-    #   leg needs the larger −80 offset to stay on that lane   # short 50mm dip tube inside the tote
+                [(PXC, dvm, DV_Z), (PXC, dvm - 30, DV_Z), (bwx, dvm - 30, DV_Z), (bwx, dvm - 30, bz)],
+                bwx, YD_NEAR, bz, -1, ov.C_IBC_BROWN, check=False, drop=-50)   # turn 90° toward the −X WALKWAY
+    #   right off the diverter, run clear of the pump column, then drop (clear of the restraint x4729 &
+    #   film-plane beams x4684) and into the tote   # short 50mm dip tube inside the tote
     # DV-02 → IBC-4 merge — waste port → drop below the bracket → behind the panel (own lane) → down
     # → +X past the risers to the merge tee (jog to the merge Yd at x=MERGE, clear of the back verticals).
     # leave the +Yd port, turn toward the SEALED END and run 400mm along the top (Yd1229 clears the far

@@ -99,6 +99,14 @@ def ibc_slice():
 # coexist with these.  electrical() = panel + inverter + batteries.
 OTHER_WALL_EQUIP = [("Electrical (panel/inverter/batteries)", "electrical")]
 
+# Context-muting parameters — ONE place so every muted system matches: the IBC tanks
+# (built muted via ov.ibc_stack(mute=)) and the in-place-muted context tags below all use
+# these.  Desaturate the color this fraction toward ov.MUTE_NEUTRAL, at this alpha.
+MUTE_DESAT, MUTE_ALPHA = 0.65, 0.18
+# Context systems shown as a quiet faded backdrop (NOT the key plumbing/kit) — desaturated
+# in place keeping a faint tint.
+MUTE_TAGS = ["Pinhole Equipment", "Processing Tray", "IBC Frame", "Corridor Frame", "Corridor Panel"]
+
 
 def other_equipment():
     p = []
@@ -360,7 +368,7 @@ def build():
                          ("Walkways + cantilevers + brackets", "Walkway", walkway_full()),
                          ("Film-plane support beams", "Film Plane", film_plane_beams()),
                          ("Processing tray (ghost)", "Processing Tray", ov.processing_tray()),
-                         ("IBC Tanks (full)", "IBC", ov.ibc_stack(alpha=0.18, mute=0.65)),
+                         ("IBC Tanks (full)", "IBC", ov.ibc_stack(alpha=MUTE_ALPHA, mute=MUTE_DESAT)),
                          ("IBC restraint (bars + wall anchors)", "IBC Frame", cp.tote_restraint()),
                          ("End wall (context)", "Context", cp.end_wall()),
                          ("Pinhole Assembly", "Pinhole", ov.pinhole_assembly()),
@@ -378,6 +386,8 @@ def build():
     tags.add("Labels"); tags.add("Labels Context")
     body = "\n".join(comps)
     tags_ruby = "".join(f'  model.layers.add({t!r}) unless model.layers[{t!r}]\n' for t in sorted(tags))
+    mute_tags_ruby = "[" + ", ".join(f'"{t}"' for t in MUTE_TAGS) + "]"
+    mn0, mn1, mn2 = ov.MUTE_NEUTRAL
     return f'''model = Sketchup.active_model
 model.start_operation("Pinhole-wall layout", true)
 entities = model.active_entities
@@ -393,22 +403,42 @@ model.definitions.each {{ |d| d.entities.grep(Sketchup::Group).each {{ |g| g.era
 {labels_ruby()}
 v = model.active_view
 v.camera = Sketchup::Camera.new(Geom::Point3d.new(800.mm, 6000.mm, 2300.mm), Geom::Point3d.new(2950.mm, 200.mm, 1100.mm), Geom::Vector3d.new(0,0,1), false, 52)
-# Ghost the OTHER wall equipment by making its GEOMETRY translucent.  (A global X-ray render
-# mode "sticks" across scene changes in SketchUp and leaks into every scene — per-geometry
-# alpha does not.)  ModelTransparency stays OFF everywhere.
+# Mute the ghosted CONTEXT in place: desaturate each group's OWN color toward a light
+# neutral (keeping a faint tint) and drop alpha — the SAME treatment as the IBC tanks
+# (ov.ibc_stack mute=), so every context system reads as a quiet backdrop rather than a
+# saturated volume.  New per-source-color "Mute_*" materials are created (never the shared
+# originals, so KEY components that happen to share a color are untouched).  A global X-ray
+# render mode "sticks" across scene changes and leaks into every scene; per-geometry
+# materials do not — so ModelTransparency stays OFF everywhere.
+#
+# TODO(refactor): the clean fix is to give the drawing helpers themselves
+# (ruby_box / ruby_cylinder / ruby_pipe_run / … in generate_sketchup_model.py) a `mute=`
+# parameter (and matching `alpha=`) DEFAULTING to the current opaque/full-color value, so
+# any component can be built muted at source — exactly like ov.ibc_stack(mute=) already is.
+# Then every component behaves identically and we can retire this post-build re-coloring
+# pass instead of maintaining the MUTE_TAGS allow-list.
 model.rendering_options["ModelTransparency"] = false
-ghost = model.materials["GhostEquip"] || model.materials.add("GhostEquip")
-ghost.color = Sketchup::Color.new(150,160,175); ghost.alpha = 0.35   # muted blue-grey for ghosted in-place equipment (frame/tray/etc.)
-def ghost_faces(ents, mat)
+def mute_groups(ents, model, f, n, a)
   ents.each {{ |e|
-    if e.is_a?(Sketchup::Face); e.material = mat; e.back_material = mat
-    elsif e.is_a?(Sketchup::Group); ghost_faces(e.entities, mat)
-    elsif e.is_a?(Sketchup::ComponentInstance); ghost_faces(e.definition.entities, mat)
+    if e.is_a?(Sketchup::Group)
+      m = e.material
+      if m && !m.name.start_with?("Mute_")
+        c = m.color
+        key = "Mute_#{{c.red}}_#{{c.green}}_#{{c.blue}}"
+        mm = model.materials[key] || model.materials.add(key)
+        mm.color = Sketchup::Color.new((c.red*(1-f)+n[0]*f).round, (c.green*(1-f)+n[1]*f).round, (c.blue*(1-f)+n[2]*f).round)
+        mm.alpha = a
+        e.material = mm
+      end
+      mute_groups(e.entities, model, f, n, a)
+    elsif e.is_a?(Sketchup::ComponentInstance)
+      mute_groups(e.definition.entities, model, f, n, a)
     end
   }}
 end
+MUTE_TAGS = {mute_tags_ruby}
 model.entities.grep(Sketchup::ComponentInstance).each {{ |ci|
-  ghost_faces(ci.definition.entities, ghost) if ci.layer && ["Pinhole Equipment", "Processing Tray", "IBC Frame"].include?(ci.layer.name)
+  mute_groups(ci.definition.entities, model, {MUTE_DESAT}, [{mn0}, {mn1}, {mn2}], {MUTE_ALPHA}) if ci.layer && MUTE_TAGS.include?(ci.layer.name)
 }}
 def scene(model, name, on)
   model.layers.each {{ |l| l.visible = (l.name == "Layer0" || l == model.layers[0] || on.include?(l.name)) }}
@@ -419,7 +449,7 @@ end
 scene(model, "Water System", ["Context","Walkway","Film Plane","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale"])
 scene(model, "Plumbing", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
 scene(model, "Plumbing (labeled)", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","Labels"])
-scene(model, "Plumbing + IBC", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","IBC","IBC Frame"])
+scene(model, "Plumbing + IBC", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","IBC","IBC Frame","Corridor Frame","Corridor Panel"])
 scene(model, "Overall", ["Context","Walkway","Film Plane","Processing Tray","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
 scene(model, "Labeled", ["Context","Walkway","Film Plane","Processing Tray","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains","Labels","Labels Context"])
 model.layers.each {{ |l| l.visible = true }}

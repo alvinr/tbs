@@ -273,14 +273,24 @@ def ball_valve(nm, px, py, pz, axis, color=None, hdir="+y"):
     return "\n".join(p)
 
 
-def sample_valve(nm, cx, cy, cz, h=60, color=None):
+def sample_valve(nm, cx, cy, cz, h=60, color=None, spout="z-"):
     """Sample / test tap: a small valve body + a downturned sample spout + a RED HANDWHEEL on top
-    (stem + flat disc) so it clearly reads as a valve.  `cz` = body base Z, `h` = body height."""
+    (stem + flat disc) so it clearly reads as a valve.  `cz` = body base Z, `h` = body height.
+    `spout`: "z-" drops straight down (default); an axis+sign like "-x" projects the spout OUT to that
+    side then turns down — use it when the valve sits in-line on a vertical riser (so the spout clears
+    the pipe and a cup fits under it)."""
     color = color or ov.C_VALVE
-    p = [ov.ruby_box(nm, cx - 25, cy - 25, cz, 50, 50, h, color=color),
-         ov.ruby_cylinder(nm + " spout", cx, cy, cz - 90, 6, 90, color=color, axis="z"),
-         ov.ruby_cylinder(nm + " handwheel stem", cx, cy, cz + h, 5, 16, color=C_HANDLE, axis="z"),
-         ov.ruby_cylinder(nm + " handwheel", cx, cy, cz + h + 16, 30, 10, color=C_HANDLE, axis="z")]
+    p = [ov.ruby_box(nm, cx - 25, cy - 25, cz, 50, 50, h, color=color)]
+    if spout == "z-":
+        p.append(ov.ruby_cylinder(nm + " spout", cx, cy, cz - 90, 6, 90, color=color, axis="z"))
+    else:                                  # project sideways (clear of an in-line riser) then turn DOWN
+        sa = "x" if "x" in spout else ("y" if "y" in spout else "z")
+        ss = -1 if "-" in spout else 1
+        way = {"x": [(cx, cy, cz + 12), (cx + ss * 58, cy, cz + 12), (cx + ss * 58, cy, cz - 60)],
+               "y": [(cx, cy, cz + 12), (cx, cy + ss * 58, cz + 12), (cx, cy + ss * 58, cz - 60)]}[sa]
+        p.append(ov.ruby_pipe_run(nm + " spout", way, 6, color=color))
+    p.append(ov.ruby_cylinder(nm + " handwheel stem", cx, cy, cz + h, 5, 16, color=C_HANDLE, axis="z"))
+    p.append(ov.ruby_cylinder(nm + " handwheel", cx, cy, cz + h + 16, 30, 10, color=C_HANDLE, axis="z"))
     return "\n".join(p)
 
 
@@ -328,7 +338,9 @@ BLANE = BACK_X + EQT + 60                                        # 5182 — back
 BL_P01, BL_P05, BL_P04 = 1115, 1145, 1175                        # IN-side suction back-lanes
 BL_P04OUT, BL_DVBR, BL_DVWST = 1195, 1225, 1250                  # OUT/top back-lanes (clear of far upright Yd1266)
 SV_Z   = 2020                              # SV-02 (on the P-04 discharge, above the stack)
-DV_Z   = 2160                              # 3W-DV-02 center Z (above the stack)
+DV_Z   = 2220                              # 3W-DV-02 center Z — raised the max clean headroom UNDER the
+#   frame top rail (z2246); a bigger raise (toward the requested +300) needs the feed/legs reworked to
+#   thread the ring opening — they currently drop/rise at the ring edges (Yd1103/1259) and clip the rails
 # ACC-01 — SeaFlo bladder accumulator: a single BOTTOM port, plumbed as a vertical DEAD-LEG teed
 # onto the Blue supply line (like the pumps/filters tee in, but the tank's only port is underneath).
 ACC_Z0, ACC_R = 540, 63.5                   # ACC-01 base Z (in the column, above P-01); Ø127 body
@@ -356,7 +368,12 @@ def equipment():
         y0 = (CTR_Y + ACC_R) if sd > 0 else (CTR_Y - ACC_R - 30)
         p.append(ov.ruby_cylinder(f"ACC-01 {tag} port", PXC, y0, ACC_PZ, RP, 30, color=CDK, axis="y"))
     # SV-02 sample tap on the P-04 discharge (+Yd manifold), above the stack — body + spout + handwheel
-    p.append(sample_valve("SV-02 sample valve", PXC, POY, SV_Z, h=60))
+    # SV-02 sample tap — TEED off the central feed riser out to the −X aisle so the valve body/handwheel
+    # are clear of the through-riser and the ±Yd diverter legs (spout drops straight for cup access)
+    sv_x = PXC - 95
+    p.append(tee("SV-02 tap tee", PXC, CTR_Y, SV_Z + 25, run="z", branch="x-"))
+    p.append(ov.ruby_pipe_run("SV-02 tap", [(PXC, CTR_Y, SV_Z + 25), (sv_x + 25, CTR_Y, SV_Z + 25)], RP, color=ov.C_VALVE))
+    p.append(sample_valve("SV-02 sample valve", sv_x, CTR_Y, SV_Z, h=60))
     # 3W-DV-02 — Stage-A diverter above the stack (input underside; run to Brown −Yd / Waste +Yd)
     p.append(diverter("3W-DV-02", PXC, CTR_Y, DV_Z, run="y", branch="z-", handle="x-", color=ov.C_VALVE))
     return "\n".join(p)
@@ -405,19 +422,22 @@ def plumbing():
     # P-04 OUT leaves convention-style: a short +Yd stub straight OUT of the +Yd-facing OUT port to a
     # front riser, up ABOVE the pumps (clear), then back in to SV-02 (in-line) and DV-02.
     pipe("P-04 -> SV-02 -> DV-02",
-         [pout("P-04"), (PXC, POY + 30, z04), (PXC, POY + 30, 1960), (PXC, POY, 1960),
-          (PXC, POY, DV_Z - tip), (PXC, CTR_Y, DV_Z - tip)], ov.C_IBC_BROWN)
+         [pout("P-04"), (PXC, POY + 30, z04), (PXC, POY + 30, 1960), (PXC, CTR_Y, 1960), (PXC, CTR_Y, DV_Z - tip)],
+         ov.C_IBC_BROWN)   # P-04 OUT → up → jog to the CENTRAL lane (CTR_Y) → SV-02 in-line → VERTICALLY
+    #   into the underside (z−) branch; central lane keeps the feed/SV-02 clear of the ±Yd diverter legs
     # DV-02 → IBC-3 Brown — drop just below the top rear-panel bracket, then behind the panel (own
     # lane) → down → front → tote entry.
     zpen = 2050                                          # penetrate clear of the top bracket band (2146–2206)
     _side_entry(p, "DV-02 -> IBC-3 (Brown)",   # no CV-3 — P-04 has an integral check valve (check=False)
-                [(PXC, dvm, DV_Z), (PXC, dvm, zpen), (PXC, BL_DVBR, zpen), (BLANE, BL_DVBR, zpen),
-                 (BLANE, BL_DVBR, bz), (PXC, BL_DVBR, bz), (xe, BL_DVBR, bz)], xe, YD_NEAR, bz, -1, ov.C_IBC_BROWN, check=False)
+                [(PXC, dvm, DV_Z), (PXC, dvm - 35, DV_Z), (PXC, dvm - 35, bz), (xe, dvm - 35, bz)],
+                xe, YD_NEAR, bz, -1, ov.C_IBC_BROWN, check=False, drop=-50)   # straight DOWN the front −Yd lane
+    #   (Yd1068, −Yd of the pump bodies & the central feed) — never crosses CTR_Y or the back lanes   # short 50mm dip tube inside the tote
     # DV-02 → IBC-4 merge — waste port → drop below the bracket → behind the panel (own lane) → down
     # → +X past the risers to the merge tee (jog to the merge Yd at x=MERGE, clear of the back verticals).
     pipe("DV-02 -> IBC-4 merge",
-         [(PXC, dvp, DV_Z), (PXC, dvp, zpen), (PXC, BL_DVWST, zpen), (BLANE, BL_DVWST, zpen),
-          (BLANE, BL_DVWST, wz), (MERGE4[0], BL_DVWST, wz), MERGE4], ov.C_IBC_WASTE)
+         [(PXC, dvp, DV_Z), (PXC, dvp + 35, DV_Z), (PXC, dvp + 35, zpen), (PXC, BL_DVWST, zpen), (BLANE, BL_DVWST, zpen),
+          (BLANE, BL_DVWST, wz), (BLANE, MERGE4[1], wz), MERGE4], ov.C_IBC_WASTE)   # arrive ALONG −x (run- port)
+    # 3-way merge: tote entry on +x (run), DV-02 waste on −x (run), DV-01 waste rises into the z− branch
     p.append(tee("IBC-4 waste merge tee", MERGE4[0], MERGE4[1], MERGE4[2], run="x", branch="z-"))
     xe4 = ov.IBC_COL_X + 700                              # 5374 — entry near the sealed end
     _side_entry(p, "IBC-4 (Waste)", [MERGE4, (xe4, MERGE4[1], wz)], xe4, YD_FAR, wz, +1, ov.C_IBC_WASTE, check=False)   # no CV-4 — P-02/P-04 have integral check valves

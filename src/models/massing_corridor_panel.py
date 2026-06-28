@@ -555,7 +555,7 @@ def drains_ports():
                    [(5200, YD_FAR - 120, bv6z), (5060, YD_FAR - 120, bv6z), (5060, PIY - 30, bv6z),
                     (PXC, PIY - 30, bv6z), (PXC, PIY - 30, p3i[2]), (PXC, PIY, p3i[2])])   # in past the upright,
     #   then ↑ riser (elbow faces ceiling) → BV-06 → +Yd into the IN port
-    p.append(ball_valve("BV-06 (P-03 suction)", PXC, PIY - 30, p3i[2] - 41, "z", hdir="-y"))   # vertical; handle faces the −Yd operator
+    p.append(ball_valve("BV-06 (P-03 suction)", PXC, PIY - 30, p3i[2] - 41, "z", hdir="-x"))   # vertical; handle faces the −X walkway/operator
     p.append(ov.ruby_cylinder("X4 Waste drain port (end wall)", ew - 60, COL_R, 1620, 22, 60, color=C_CHECK, axis="x"))
     pipe("P-03 -> X4 end-wall port",   # OUT leaves with a +Yd stub straight out of the OUT port
          [p3o, (PXC, POY + 30, p3o[2]), (5060, POY + 30, p3o[2]), (5060, COL_R, p3o[2]),

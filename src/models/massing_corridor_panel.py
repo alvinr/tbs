@@ -422,8 +422,9 @@ def plumbing():
     # P-04 OUT leaves convention-style: a short +Yd stub straight OUT of the +Yd-facing OUT port to a
     # front riser, up ABOVE the pumps (clear), then back in to SV-02 (in-line) and DV-02.
     pipe("P-04 -> SV-02 -> DV-02",
-         [pout("P-04"), (PXC, POY + 30, z04), (PXC, POY + 30, 1960), (PXC, CTR_Y, 1960), (PXC, CTR_Y, DV_Z - tip)],
-         ov.C_IBC_BROWN)   # P-04 OUT → up → jog to the CENTRAL lane (CTR_Y) → SV-02 in-line → VERTICALLY
+         [pout("P-04"), (PXC, POY + 50, z04), (PXC, POY + 50, 1960), (PXC, CTR_Y, 1960), (PXC, CTR_Y, DV_Z - tip)],
+         ov.C_IBC_BROWN)   # P-04 OUT → up its OWN +Yd lane (POY+50, clear of the pump-discharge lane POY+30)
+    #   → jog to the CENTRAL lane (CTR_Y) above the pumps → SV-02 tap → VERTICALLY
     #   into the underside (z−) branch; central lane keeps the feed/SV-02 clear of the ±Yd diverter legs
     # DV-02 → IBC-3 Brown — drop just below the top rear-panel bracket, then behind the panel (own
     # lane) → down → front → tote entry.

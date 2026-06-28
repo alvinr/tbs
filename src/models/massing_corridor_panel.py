@@ -230,6 +230,26 @@ def tee(nm, cx, cy, cz, run="x", branch="z-", color=None):
     return "\n".join(p)
 
 
+def cross(nm, cx, cy, cz, a1="x", a2="y", color=None):
+    """4-way CROSS fitting: two straight collinear runs (along `a1` and `a2`) intersecting at
+    (cx,cy,cz) — four coplanar ports — one fitting body with a raised socket cuff at all 4 ends.
+    Same construction as tee() but with a second through-run instead of a single branch."""
+    color = color or "#9AA0A8"
+    br, cr, cl = RP + 5, RP + 9, 12       # body radius, socket-cuff radius, cuff length
+    half = 30                             # run half-length
+    p = []
+    ends = []
+    for ax in (a1, a2):
+        a0 = {"x": (cx - half, cy, cz), "y": (cx, cy - half, cz), "z": (cx, cy, cz - half)}[ax]
+        p.append(ov.ruby_cylinder(nm + " run", a0[0], a0[1], a0[2], br, 2 * half, color=color, axis=ax))
+        ends += {"x": [(cx - half, cy, cz, "x"), (cx + half - cl, cy, cz, "x")],
+                 "y": [(cx, cy - half, cz, "y"), (cx, cy + half - cl, cz, "y")],
+                 "z": [(cx, cy, cz - half, "z"), (cx, cy, cz + half - cl, "z")]}[ax]
+    for ex, ey, ez, ax in ends:
+        p.append(ov.ruby_cylinder(nm + " socket cuff", ex, ey, ez, cr, cl, color=color, axis=ax))
+    return "\n".join(p)
+
+
 def check_valve(nm, px, py, pz, axis, color=None):
     """In-line one-way / check valve: a short barrel the pipe runs THROUGH, centered on the pipe
     centerline (px,py,pz) and oriented ALONG the run (`axis`).  Check valves are IN-LINE devices —
@@ -329,6 +349,10 @@ def _bottom_pickup(p, nm, x, yface, into, col, riser_path):
 PSTACK = {"P-01": 280, "P-04": 940, "P-05": 1340, "P-03": 1740}  # base Z
 PIY, POY = CTR_Y - (PVB_R + 30), CTR_Y + (PVB_R + 30)            # 1101 (IN) / 1261 (OUT) manifold Yd
 def _piz(key): return PSTACK[key] + PVB_H - 18                    # port Z for a stack key
+
+# X1 fresh-fill distribution fitting (top of the corridor, near the sealed end): a 4-WAY CROSS —
+# +X X1 inlet, ±Yd to both Blue totes (IBC-1/IBC-2), −X the DV-01 blue recycle return.
+X1_TEE_X, X1_TEE_Z = 5500, 2250
 # ── BACK-OF-PANEL routing: LONG vertical risers run BEHIND the rear panel (no pump ports there),
 #    penetrating the ply; SHORT interconnects stay on the front.  Each long riser gets a UNIQUE Yd
 #    lane, and the Yd-jog onto that lane is done on the FRONT (at x=PXC, unique z per port) BEFORE
@@ -506,11 +530,13 @@ def drains_ports():
 
     # ── X1 FILL: camlock → in-line one-way valve → STRAIGHT pipe → T-connector → BOTH Blue totes
     #    (IBC-1 / IBC-2).  ONE check on the inlet; no per-branch checks. ──
-    x1z, tx = 2250, 5500
+    x1z, tx = X1_TEE_Z, X1_TEE_X
     p.append(ov.ruby_cylinder("X1 fill camlock (end wall)", ew - 60, CTR_Y, x1z, 26, 60, color=ov.C_STEEL, axis="x"))
     p.append(check_valve("X1 one-way valve", ew - 200, CTR_Y, x1z, "x"))   # in-line, just after the camlock
-    pipe("X1 camlock -> one-way -> tee (straight)", [(ew - 60, CTR_Y, x1z), (tx, CTR_Y, x1z)], ov.C_BLUE)
-    p.append(tee("X1 fill tee", tx, CTR_Y, x1z, run="y", branch="x+"))   # inlet from +X, splits ±Yd to the blues
+    pipe("X1 camlock -> one-way -> cross (straight)", [(ew - 60, CTR_Y, x1z), (tx, CTR_Y, x1z)], ov.C_BLUE)
+    # 4-WAY CROSS: +X X1 inlet, ±Yd to the two Blue totes (IBC-1/IBC-2), −X the DV-01 blue
+    # recycle return (routed in along the pinhole wall / IBC face from the wet-end kit).
+    p.append(cross("X1 fill cross", tx, CTR_Y, x1z, "x", "y"))
     # each outlet runs STRAIGHT ±Yd off the tee's run port into its tote (no −X detour)
     for yface, into, nm in ((YD_NEAR, -1, "Blue #1 (IBC-1)"), (YD_FAR, +1, "Blue #2 (IBC-2)")):
         _side_entry(p, f"X1 fill -> {nm}", [(tx, CTR_Y, x1z)], tx, yface, x1z, into, ov.C_BLUE, check=False)

@@ -150,3 +150,16 @@ draw_pipe_path(ax, [x, x], [z_cross + _gap_half, z_end], rear_OD, rear_WALL, ...
 - [ ] Barb connections show ridged profile + hose clamp band
 - [ ] Pipe end-on shown as concentric circles
 - [ ] Flow direction arrows inside bore where helpful
+
+## Refactoring the 3D plumbing efficiently (corridor congestion)
+
+The `pinhole-wall-mount` branch took **84 commits** (≈31 position tweaks + 24 reroutes + 15 interference fixes) to detail the IBC plumbing corridor. Most of that churn is avoidable. Rules, learned the hard way:
+
+1. **Parameterize every position a pipe references; pipes reference the constant, never a literal.** A component/fitting/lane position is a named module constant (`DV02X`, `SUCT_XLANE`, `SUCT_SURF_Z`, `X1_TEE_X/Z` in `massing_corridor_panel.py`). Then "move it 75 mm" is a *one-line* edit and every connecting pipe follows. A bare literal in a waypoint (the `1960` feed jog, the `bz` entry) is a latent move/derivation bug — the same lesson as the generator-label literals in CLAUDE.md, applied to coordinates.
+2. **Single-source a shared lane.** Pipes that run parallel/stacked share ONE lane constant + a fixed per-pipe offset (brown `SUCT_SURF_Z`, blue `+30`, grey `+60`; all at `SUCT_XLANE`). They then move together and can't drift into each other.
+3. **Derive a position from the part's REAL extents — and verify against the built model.** The brown drain entered the *blue* tote because `bz` used `pallet + full-unit-height` instead of the brown bottle's actual top (`IBC_H_1000 − 20 = 1148`). When a value must sit inside/above/below a part, compute it from that part's queried z-extent and spot-check (`check_interference` + a one-off bounds query), don't trust an ad-hoc formula.
+4. **Run the pipe-on-pipe check after EVERY routing change.** `check_interference.py` now reports pipe-vs-solid AND pipe-on-pipe (two runs overlapping that don't share a junction). Solid-only checking read "0" for many commits while real crossings piled up unseen — the slowest kind of rework.
+5. **In a saturated zone, allocate lanes FIRST (a pipe rack); don't thread reactively.** The win came when the three pipes that can't pass under the IBC/grate were committed to one stacked surface-perimeter route — each its own Z (brown 205 / blue 235 / grey 262), shared X/Yd. Decide each pipe's lane/height up front; reactive one-pipe-at-a-time threading is where the commits piled up.
+6. **Locate the problem before a structural change.** The P-01↔ACC-01 swap was a hunch; the check showed the crossings were elsewhere (gap/wall, not the column), and the swap created a *new* tight ACC clearance. Measure where the contention actually is (the checker's coordinates) before moving structure.
+7. **Moving a connected fitting = one constant + its feed + every leg.** Parameterize the fitting position; the feed/legs jog to it. DV-02 → `DV02X` carried its feed and both diverter legs in one edit.
+8. **Verify with `view.zoom_extents` or `view.zoom(group_array)`, not hand-set `camera.set(eye,target)`.** Manual eye/target cameras repeatedly rendered empty and burned iterations; zoom-to-geometry is reliable.

@@ -156,7 +156,7 @@ C_CHECK = "#8A2BE2"                      # PURPLE — one-way / check valves (vs
 PVB_R, PVB_H, PCAP_H = 50, 180, 30       # vertical body radius / height, head/cap height
 PXC     = FACE_X - 120                    # 4984 — pump body center X (upright, in front of the panel)
 Z_ACC0  = 1780                            # ACC-01 BOTTOM — raised clear of the pipe runs below it
-MERGE4  = (ov.IBC_COL_X + 600, YD_FAR - 200, ov.IBC_PALLET_H + ov.IBC_H_1000 - 106)  # (5274,1116,1230)
+MERGE4  = (ov.IBC_COL_X + 730, YD_FAR - 200, ov.IBC_PALLET_H + ov.IBC_H_1000 - 106)  # (5404,1116,1230) — +130 toward sealed end
                                           # shared IBC-4 waste merge — moved BACK toward the sealed
                                           # end (behind the pumps/panel), so the grey riser clears
                                           # the pumps.  DV-01 (wall) + DV-02 join here → one entry.
@@ -435,12 +435,15 @@ def plumbing():
     #   (Yd1068, −Yd of the pump bodies & the central feed) — never crosses CTR_Y or the back lanes   # short 50mm dip tube inside the tote
     # DV-02 → IBC-4 merge — waste port → drop below the bracket → behind the panel (own lane) → down
     # → +X past the risers to the merge tee (jog to the merge Yd at x=MERGE, clear of the back verticals).
+    # leave the +Yd port, drop behind the panel (clear of the front feed-lane sweep + the corner upright),
+    # then ONE long straight +x into the relocated merge (arrive along −x). Front-drop isn't possible: the
+    # feed at Yd1311 jogs across Yd1181–1311 at z1960 and the far upright fills Yd1266–1316.
     pipe("DV-02 -> IBC-4 merge",
          [(PXC, dvp, DV_Z), (PXC, dvp + 35, DV_Z), (PXC, dvp + 35, zpen), (PXC, BL_DVWST, zpen), (BLANE, BL_DVWST, zpen),
-          (BLANE, BL_DVWST, wz), (BLANE, MERGE4[1], wz), MERGE4], ov.C_IBC_WASTE)   # arrive ALONG −x (run- port)
+          (BLANE, BL_DVWST, wz), (BLANE, MERGE4[1], wz), MERGE4], ov.C_IBC_WASTE)
     # 3-way merge: tote entry on +x (run), DV-02 waste on −x (run), DV-01 waste rises into the z− branch
     p.append(tee("IBC-4 waste merge tee", MERGE4[0], MERGE4[1], MERGE4[2], run="x", branch="z-"))
-    xe4 = ov.IBC_COL_X + 700                              # 5374 — entry near the sealed end
+    xe4 = ov.IBC_COL_X + 830                              # 5504 — entry +130 toward the sealed end
     _side_entry(p, "IBC-4 (Waste)", [MERGE4, (xe4, MERGE4[1], wz)], xe4, YD_FAR, wz, +1, ov.C_IBC_WASTE, check=False)   # no CV-4 — P-02/P-04 have integral check valves
 
     # BLUE #1 → P-01 suction: P-01 IN → front Yd-jog onto its back-lane → penetrate the panel →
@@ -457,8 +460,9 @@ def plumbing():
     #   upright (Yd≤1096) AND the pump bodies (Yd≥1131) the high run passes at z=blz
     _side_entry(p, "Blue #1 -> P-01 suction",   # flooded suction + P-01's integral check → no foot valve (check=False)
                 [pin("P-01"), (PXC, PIY - 30, z01), (bvx, PIY - 30, z01), (bvx, bvy, z01),
-                 (bvx, bvy, blz), (xe, bvy, blz)],
-                xe, YD_NEAR, blz, -1, ov.C_BLUE, check=False, drop=-50)   # short 50mm dip tube inside the tote
+                 (bvx, bvy, blz)],
+                bvx, YD_NEAR, blz, -1, ov.C_BLUE, check=False, drop=-50)   # entry aligned OVER BV-01's riser
+    #   (225mm closer to the walkway) — the suction rises straight into the tote, no +X jog   # short 50mm dip tube inside the tote
     p.append(ball_valve("BV-01 (P-01 suction)", bvx, bvy, 1000, "z", hdir="-x"))   # front vertical section, handle faces the −X walkway operator
     # Blue supply IN LINE through ACC-01 (like a filter in the chain): P-01 OUT → ACC IN (+Yd),
     # ACC OUT (−Yd) → trunk out the mouth to the spray bar.

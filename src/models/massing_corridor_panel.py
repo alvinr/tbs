@@ -541,7 +541,7 @@ def drains_ports():
          [(tx3 + 30, ty3, tz3), (rx, ty3, tz3), (rx, PIY - 30, tz3), (rx, PIY - 30, z05),
           (PXC, PIY - 30, z05), p5i],   # tee +X end → riser (BV-02) → −X on the −Yd lane → +Yd stub into IN port
          ov.C_IBC_BROWN)
-    p.append(ball_valve("BV-02 (P-05 suction)", rx, PIY - 30, z05 - 170, "z"))   # on the gap riser
+    p.append(ball_valve("BV-02 (P-05 suction)", rx, PIY - 30, z05 - 110, "z", hdir="-x"))   # on the gap riser; handle faces the −X walkway/operator (raised 60mm)
     p.append(ov.ruby_cylinder("X3 Brown drain port (end wall)", ew - 60, COL_L, 1700, 22, 60, color=C_CHECK, axis="x"))
     # P-05 OUT → behind the panel → +X to the end wall + a perpendicular ≥50mm bulkhead stub
     pipe("P-05 -> X3 end-wall port",   # OUT leaves with a +Yd stub straight out of the OUT port

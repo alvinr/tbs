@@ -224,8 +224,8 @@ def kit():
          ov.C_FILTER)
     # 5. DV-01 BLUE RECYCLE (run+, +X) → rise to the X1 fill CROSS at the corridor top — feeds both Blue
     #    totes alongside the X1 fresh fill (no direct tote entry, no CV-2; P-02 has an integral check).
-    xUp = cp.BACK_X + 110                          # 5214 — the 90° elbow only 110mm past the rear panel (was
-    #   ~336mm out at the cross's rise lane) so the rise sits ON the spine, between the two grey end-wall runs
+    xUp = cp.BACK_X + 135                          # 5239 — the 90° elbow 135mm past the rear panel (110 + a 25mm
+    #   nudge toward the sealed end to separate the rise from the grey X4-waste riser at x5200); ON the spine
     ryd = 1206 - rp                                # riser flush to the spine's −Yd face (1206) so it clamps to it
     pipe("DV-01 blue recycle -> X1 cross",
          [(DCX + tipd, DCY, DCZ), (DCX + tipd, cp.CTR_Y, DCZ),       # off the +X port, jog −Yd to the corridor center

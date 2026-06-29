@@ -1,18 +1,35 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
-# Plumbing Panel Report
+# Plumbing Report
+
+> **Two plumbing panels.** The water-handling equipment is split across two panels: the
+> **Corridor Plumbing Panel** (pumps P-01/P-03/P-04/P-05, accumulator ACC-01, diverter DV-02,
+> sample tap SV-02, pump-suction isolation valves — mounted in the IBC plumbing corridor) and the
+> **Pinhole Wall Plumbing Panel** (the wet-end filter loop: pump P-02, the 3-stage Big Blue filter,
+> diverter DV-01, sample tap SV-01 — mounted on the pinhole wall). This report covers both.
+
+## Interactive 3D model
+
+<div class="sketchfab-embed-wrapper" style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;margin-bottom:1em;">
+    <iframe title="TBS-001 Water System Model" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/1dae932430924e9b993e153a16f485fc/embed" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
+</div>
+<p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"><a href="https://sketchfab.com/3d-models/1dae932430924e9b993e153a16f485fc" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">TBS-001 Water System Model</a> by <a href="https://sketchfab.com/alvin91403" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">alvin91403</a> on <a href="https://sketchfab.com" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p>
 
 ## 1. Purpose
 
-The plumbing panel is an 18mm marine plywood board mounted vertically at the
-front (cargo-door-facing) mouth of the IBC plumbing corridor — for walkway reach-in
-access, mounting on the front-portal frame. It spans the full 270mm
-corridor width and 2,060mm in height. All pumps,
-filters, the pressure accumulator, diverter valves,
-and isolation valves mount on this single panel, concentrating the entire
-water-handling system in one accessible location within the IBC zone.
+The water-handling equipment mounts on **two plumbing panels**:
 
-The panel serves three functions:
+- The **Corridor Plumbing Panel** — an 18mm marine plywood board mounted vertically at the
+  front (cargo-door-facing) mouth of the IBC plumbing corridor on the front-portal frame
+  (270mm corridor width × 2,060mm tall). It carries the waste/recycle pumps
+  (P-01, P-03, P-04, P-05), the pressure accumulator (ACC-01), the Stage-A diverter (DV-02),
+  the pH sample tap (SV-02), and the pump-suction isolation valves.
+- The **Pinhole Wall Plumbing Panel** — the wet-end filter loop mounted on the pinhole wall:
+  pump P-02, the 3-stage Big Blue filter (F1/F2/F3), the filter-output diverter (DV-01), and the
+  pH sample tap (SV-01).
+
+Each panel concentrates its part of the system in one accessible location. The panels serve
+three functions:
 
 1. **Structural mounting surface** — provides a rigid, flat substrate for
    equipment that would otherwise require individual mounting brackets on the

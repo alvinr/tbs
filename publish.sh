@@ -82,7 +82,7 @@ MD_FILES=(
     "walkway-report.md"
     "right-walkway-cantilever-study.md"
     "process-comparison.md"
-    "plumbing-panel-report.md"
+    "plumbing-report.md"
     "ibc-stacking-report.md"
     "ventilation-report.md"
     "all-diagrams.md"

@@ -164,6 +164,11 @@ def rear_panel():
                          5460 - BACK_X, 18, 1920, color=ov.C_PLY))   # −Yd face at 1206 = the grey X4-waste
     #   riser's far edge, so it CLAMPS to the face (not embedded); bottom raised to 280 to clear the
     #   low waste pickup (z247-268)
+    # Support shelf for the brown P-05→X3 run (z≈1502, Yd≈1109) that passes ABOVE the merge T: a
+    # horizontal ply shelf cantilevered −Yd off the spine, top at the pipe's underside so it rests on
+    # it.  X5360-5440 is the clear gap above the merge (the DV-01 riser stops at the tee, z1230).
+    p.append(ov.ruby_box("X3 brown-pipe support shelf (18mm ply)", 5360, 1090, 1474,
+                         80, 1206 - 1090, 18, color=ov.C_PLY))
     return "\n".join(p)
 
 

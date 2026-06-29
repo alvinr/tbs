@@ -579,9 +579,9 @@ def draw_sheet1():
     # ── Legend ────────────────────────────────────────────────────────────────────
     # Boxes bottom-aligned with Blue/Brown system zones (system box bottom = Y=1.3)
     BOX_W = 4.5    # matches Blue/Brown System box width
-    BOX_H = 1.5
+    BOX_H = 2.05
     BOX_X = 0.3    # Blue System left edge
-    BOX_Y = 1.3    # bottom of system boxes
+    BOX_Y = 0.6    # bottom of system boxes
     lx = BOX_X + 0.1            # left margin for content
     ly = BOX_Y + BOX_H - 0.25   # top content Y (just inside box top)
 

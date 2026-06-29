@@ -67,19 +67,9 @@ P-02, the filter-output diverter DV-01, and the SV-01 sample tap — see [Water 
 
 Equipment is split across the two panels. The **Pinhole Wall Plumbing Panel** carries the
 3-stage filter skid and its feed pump P-02 (§3.1); the **Corridor Plumbing Panel** carries the
-four corridor pumps (P-01/P-03/P-04/P-05) and the accumulator (§3.2–§3.3).
-
-**Plumbing Panel Layout — Front elevation with pump zone, filter skid, valves, and full plumbing routing**
-![TBS-001 — Plumbing Panel Layout](assets/panel-layout.png)
-
-**Backside (corridor side section) — what is mounted on the *back* of the panel:**
-the drain-riser backing spine (18mm ply teed off the panel, with a lowered top
-and a capped shelf), the X3/X4 drain risers running from the P-05/P-03 discharges
-down to the sealed end-wall ports, and the Blue fill trunk resting on the shelf.
-Pumps mount on the front face; the drain/fill runs are on the back, in the
-corridor gap clear of both tote columns.
-
-![TBS-001 — Plumbing Panel Backside](assets/panel-layout-back.png)
+four corridor pumps (P-01/P-03/P-04/P-05) and the accumulator (§3.2–§3.3). Each panel has its
+own front-elevation drawing; the corridor backside (drain-riser spine + Circuit-C power) is a
+third sheet.
 
 ### 3.1 Pinhole Wall Plumbing Panel — Filter Skid + P-02
 
@@ -87,6 +77,9 @@ Three 4.5"×10" Big Blue filter housings mounted vertically (sump down) in a
 slotted angle frame. The housings stack vertically with 30mm gaps between them.
 Flow path: P-02 output → F-01 (top, coarsest) → F-02 (middle) → F-03 (bottom,
 finest) → SV-01 sample tap → 3W-DV-01.
+
+**Pinhole Wall Plumbing Panel — Front elevation: P-02, 3-stage filter stack, SV-01 sample tap, and DV-01 diverter**
+![TBS-001 — Pinhole Wall Plumbing Panel Layout](assets/pinhole-panel.png)
 
 | Component | Position (Z, mm) | Specification |
 |-----------|-----------------|---------------|
@@ -155,6 +148,18 @@ Shurflo's **internal demand/pressure switch** then runs the pump on demand. The 
 fuse covers a single pump with margin; simultaneous running is not intended.
 Switches and the distribution block sit **above the spill line**, IP-rated and sealed,
 with drip loops, per the wet-zone rules in [Electrical Report §7.5](electrical-report.md).
+
+**Corridor Plumbing Panel — Front elevation: four pumps, ACC-01, DV-02 diverter, SV-02 sample tap, and full pipe routing**
+![TBS-001 — Corridor Plumbing Panel Layout](assets/panel-layout.png)
+
+**Backside (corridor side section) — what is mounted on the *back* of the panel:**
+the drain-riser backing spine (18mm ply teed off the panel), the X3/X4 drain
+risers running from the P-05/P-03 discharges down to the sealed end-wall ports,
+and the Circuit-C pump-power distribution. Pumps mount on the front face; the
+drain runs are on the back, in the corridor gap clear of both tote columns.
+P-02 lives on the Pinhole Wall panel and shares Circuit C.
+
+![TBS-001 — Corridor Plumbing Panel Backside](assets/panel-layout-back.png)
 
 ### 3.3 Accumulator
 

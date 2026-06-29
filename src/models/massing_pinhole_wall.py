@@ -231,8 +231,8 @@ def kit():
     #    on the tee run, so the two legs make ONE tote entry).
     mx, my, mz = cp.MERGE4
     pipe("DV-01 -> IBC-4 merge",
-         [(DCX, DCY - tipd, DCZ), (mx, DCY - tipd, DCZ),              # off the −Yd branch, +X back across the corridor (under the ACC)
-          (mx, my, DCZ),                                              # −Yd to the merge column
+         [(DCX, DCY - tipd, DCZ), (DCX, my, DCZ),                     # leave the −Yd branch IN-LINE, then a 90° elbow
+          (mx, my, DCZ),                                              # +X back across the corridor (under the ACC) to the merge column
           (mx, my, mz)],                                              # rise into the merge tee's z− branch
          ov.C_IBC_WASTE)
     return "\n".join(p)

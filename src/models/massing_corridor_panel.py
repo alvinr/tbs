@@ -134,11 +134,20 @@ def tote_restraint():
 
 
 def rear_panel():
-    """The single 18mm marine-ply REAR panel, recessed into the back-wall opening (flush with
-    the back posts' −X inside face), cut to the inside-of-frame opening."""
+    """The 18mm marine-ply REAR panel (recessed into the back-wall opening, flush with the back
+    posts' −X inside face) PLUS the 25mm ply 'shirt' the pumps/ACC clamp to — a backing hard
+    behind the bodies (deepest = the ACC), tied back to the rear-frame ring across the chase.
+    The pumps' integral cam-clamps grip onto it; only short port→riser connectors penetrate it."""
     pz0, ph = S, (TOP_Z - S) - S
-    return ov.ruby_box("Rear panel (18mm marine ply)", BACK_X, YD_NEAR + S, pz0,
-                       EQT, (YD_FAR - S) - (YD_NEAR + S), ph, color=ov.C_PLY)
+    yw = (YD_FAR - S) - (YD_NEAR + S)
+    p = [ov.ruby_box("Rear panel (18mm marine ply)", BACK_X, YD_NEAR + S, pz0,
+                     EQT, yw, ph, color=ov.C_PLY)]
+    # 25mm ply pump-mount shirt: front face hard behind the ACC body (the deepest, back ≈ PXC+ACC_R),
+    # spanning the pump-column height; sits in the ~56mm chase between the bodies and the rear frame.
+    SHIRT_X = PXC + ACC_R + 1                        # ≈ 5049 — just clear of the ACC back
+    p.append(ov.ruby_box("Pump-mount ply shirt (25mm)", SHIRT_X, YD_NEAR + S, 240,
+                         25, yw, 1720, color=ov.C_PLY))
+    return "\n".join(p)
 
 
 # ── corridor-panel equipment placement (equipment hangs −X off the rear panel) ──

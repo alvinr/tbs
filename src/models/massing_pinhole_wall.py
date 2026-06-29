@@ -168,12 +168,15 @@ def kit():
     p2_out = cp.pump_out(p2cx, p2cy, p2cz0, "x")                  # OUT port — exits +X (→ F1)
     p2_in  = cp.pump_in(p2cx, p2cy, p2cz0, "x")                   # IN port — exits −X (suction)
 
-    # ── SV-01 sample tap (projects forward to yL for cup access) + flat-T 3W-DV-01 mounted
-    #    back on the plywood (yW), both at WAIST level for easy reach ──
-    svx, dvx = 4250, 4430
+    # ── SV-01 sample tap stays on the plywood at the wall (sample cup access at waist).  3W-DV-01 is
+    #    RELOCATED into the rear corridor so the filtered line runs as ONE pipe and only splits there ──
+    svx = 4250
     sv_y = yW + 75             # SV-01 projects only 75mm forward of the wall (cup access; was yL=230)
     p.append(cp.sample_valve("SV-01 sample valve", svx, sv_y, waist - 25, h=70))
-    p.append(diverter("3W-DV-01", dvx, yW, waist, run="x", branch="z-", color=ov.C_VALVE))
+    tipd = cp.DVB / 2 + cp.DVL                  # 33 — diverter port-stub tip reach
+    DCX, DCY, DCZ = 5230, cp.CTR_Y, 235        # DV-01 in the REAR corridor (behind the back-of-panel
+    #   risers at BLANE 5182, ahead of the IBC-4 merge at 5404), sitting on the surface lane
+    p.append(diverter("3W-DV-01", DCX, DCY, DCZ, run="x", branch="z+", handle="y-", color=ov.C_VALVE))
 
     # ── PLUMBING ──
     def pipe(nm, wp, col): p.append(ov.ruby_pipe_run(nm, wp, rp, color=col))
@@ -205,53 +208,31 @@ def kit():
          [f_out("F3"), (f_out("F3")[0], yW, tie), (svx, yW, tie), (svx, yW, waist), (svx, sv_y, waist)], ov.C_FILTER)
     # after SV-01 the run returns to the plywood (yW) BEFORE routing on to DV-01 — keeps the
     # narrow walkway clear (only SV-01's sample spout projects forward to yL)
-    pipe("SV-01 -> DV-01", [(svx, sv_y, waist), (svx, yW, waist), (dvx, yW, waist)], ov.C_FILTER)
-    # 5. DV-01 BLUE RECYCLE → the X1 fill CROSS (4-way) at the top of the corridor, + the Waste
-    #    leg → IBC-4 (off the UNDERSIDE branch, unchanged below).  The blue return shares the brown
-    #    tray-sump suction's SURFACE perimeter route around the IBC — run +X HORIZONTALLY along the
-    #    pinhole wall at waist, turn DOWN the wall to the surface lane, then +Yd along the IBC −X face
-    #    STACKED 30mm above the brown, +X across the corridor, and rise to the cross past the frame.
-    #    (No wall riser past the FP hanger.)  The cross distributes it to BOTH Blue totes alongside the
-    #    X1 fresh fill — no direct tote entry here, and no CV-2 (P-02 has an integral check valve).
-    sz    = cp.SUCT_SURF_Z + 30                   # 235 — STACKED 30mm above the brown suction surface run
-    xdrop = ov.RAIL_X_R - 17                      # 4632 — turn DOWN here, −X clear of the IBC-restraint wall
-                                                  # hanger (x4646+) that the brown (at Yd155) misses
-    xUp   = cp.X1_TEE_X - 60                       # 5440 — rise to cross height PAST the corridor frame (x>5104)
+    # 4b. SV-01 -> DV-01: ONE filtered line follows the shared surface-perimeter route across the
+    #     corridor (the path the blue+waste legs used to BOTH take, stacked) to the relocated DV-01 —
+    #     which now SPLITS in the rear corridor, collapsing the old pair of parallel runs into one.
+    sz    = cp.SUCT_SURF_Z + 30                   # 235 — surface perimeter lane
+    xdrop = ov.RAIL_X_R - 17                      # 4632 — turn DOWN the wall clear of the IBC hanger
+    pipe("SV-01 -> DV-01 (single filtered line)",
+         [(svx, sv_y, waist), (svx, yW, waist), (xdrop, yW, waist),   # SV-01 → wall → +X along the wall at waist
+          (xdrop, yW, sz),                                            # turn DOWN to the surface lane
+          (cp.SUCT_XLANE, yW, sz),                                    # step +X to the gap lane
+          (cp.SUCT_XLANE, cp.CTR_Y, sz),                             # +Yd along the IBC −X face into the corridor
+          (DCX - tipd, DCY, sz)],                                     # +X across the corridor floor to DV-01 IN (−X)
+         ov.C_FILTER)
+    # 5. DV-01 BLUE RECYCLE (run+, +X) → rise to the X1 fill CROSS at the corridor top — feeds both Blue
+    #    totes alongside the X1 fresh fill (no direct tote entry, no CV-2; P-02 has an integral check).
+    xUp = cp.X1_TEE_X - 60                         # 5440 — rise lane past the corridor frame
     pipe("DV-01 blue recycle -> X1 cross",
-         [(dvx, yW, waist), (xdrop, yW, waist),                  # leave DV-01 → +X HORIZONTAL along the pinhole wall
-          (xdrop, yW, sz),                                       # turn DOWN the wall to the surface lane
-          (cp.SUCT_XLANE, yW, sz),                               # step +X to the gap lane (aligns with the brown)
-          (cp.SUCT_XLANE, cp.CTR_Y, sz),                         # +Yd along the IBC −X face (stacked above brown)
-          (xUp, cp.CTR_Y, sz), (xUp, cp.CTR_Y, cp.X1_TEE_Z),     # +X across the corridor → rise to cross height
-          (cp.X1_TEE_X, cp.CTR_Y, cp.X1_TEE_Z)], ov.C_BLUE)      # +X into the cross's −X port
-    # Waste leg (off the underside branch) → Waste IBC (IBC-4, far-bottom).  Drops to the floor,
-    # runs UNDER the walkway into the PLUMBING CORRIDOR, and enters from the CORRIDOR side
-    # (Yd1316 face) — leg + 150mm penetration + drop ONE run, ORANGE check valve.
-    # routes to the SHARED IBC-4 merge tee (where DV-02's waste leg also arrives) so a SINGLE
-    # pipe makes the tote entry — see cp.MERGE4 / cp.plumbing()'s "IBC-4 (Waste)" entry.
-    # arrives at the merge tee from the −Yd side (the tee's run; DV-02 comes in on the branch) so
-    # the two waste legs do not overlap.
-    # crosses under the walkway at Z70 (clear of the IBC frame), runs +X along the corridor gap
-    # toward the SEALED END, and rises BEHIND the pumps/panel into the merge tee's underside branch
-    # (so it never passes through the pumps or the frame).
-    # DV-01 waste → AROUND the tray (Rule 5a): along the outside strip (Yd35) to the gap past the tray
-    # right edge, drop, cross to the corridor at the gap, and run low to the merge — never over the tray.
+         [(DCX + tipd, DCY, DCZ), (xUp, DCY, DCZ),                    # +X along the floor to the rise lane
+          (xUp, DCY, cp.X1_TEE_Z), (cp.X1_TEE_X, cp.CTR_Y, cp.X1_TEE_Z)], ov.C_BLUE)  # rise → into the cross −X port
+    # 6. DV-01 WASTE (branch, z+) → the shared IBC-4 merge tee's z− branch (DV-02's waste also lands here,
+    #    on the tee run, so the two legs make ONE tote entry).
     mx, my, mz = cp.MERGE4
-    # Waste leg → the IBC-4 merge tee.  To clear the UNDER-WALKWAY contention in the tray-IBC gap
-    # (it shared the low gap with the blue supply trunk + P-02 suction), route it ON the walkway
-    # SURFACE the same way as the brown suction / blue recycle — +X along the pinhole wall, down,
-    # +Yd along the IBC −X face STACKED above the blue (z262, threading the gap between the blue at
-    # z246 and the now-low ACC-01 body at z280), +X across the corridor, then up into the merge tee's
-    # z− branch.
-    gz = 262
     pipe("DV-01 -> IBC-4 merge",
-         [(dvx, yW, waist), (xdrop, yW, waist),     # +X horizontal along the pinhole wall
-          (xdrop, yW, gz),                          # turn DOWN to the grey surface lane (stacked)
-          (cp.SUCT_XLANE, yW, gz),                  # step to the gap lane
-          (cp.SUCT_XLANE, cp.CTR_Y, gz),            # +Yd along the IBC −X face (stacked above the blue)
-          (mx, cp.CTR_Y, gz),                       # +X across the corridor to the merge x
-          (mx, my, gz),                             # −Yd to the merge Yd
-          (mx, my, mz)],                            # rise into the merge tee's z− branch
+         [(DCX, DCY, DCZ + tipd), (DCX, DCY, 320),                    # up off the branch
+          (mx, DCY, 320), (mx, my, 320),                             # +X then −Yd to the merge column
+          (mx, my, mz)],                                              # rise into the merge tee's z− branch
          ov.C_IBC_WASTE)
     return "\n".join(p)
 

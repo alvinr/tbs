@@ -627,15 +627,21 @@ def drains_ports():
 
     # ── IBC-4 WASTE: own bottom pickup (bend points DOWN to floor) → P-03 → X4 end-wall port ──
     p3i = (PXC, PIY, _piz("P-03")); p3o = (PXC, POY, _piz("P-03"))
-    bv6z = p3i[2] - 82             # come up to just below the IN port, then a VERTICAL riser into BV-06 and
-    bvy  = 1110                    # BV-06 / panel-penetration Yd: clears the back upright (>1096) and the
-    #   P-03 body (<1131).  The suction leaves BV-06 and runs STRAIGHT +X through the shirt + panel and on
-    #   to the spine, making a SINGLE 90° turn at the spine riser — no chase turns, one fewer fitting (rule).
+    bv6z = p3i[2] - 82             # turn point, at the bottom of the BV-06 riser (the FAR side of BV-06)
+    #   BV-06 sits on the IN-port's own Yd lane (PIY) directly below the port: the riser rises STRAIGHT up
+    #   into the IN port with NO elbow between BV-06 and P-03.  The single 90° turn is on the far side of
+    #   BV-06 — at the bottom of the riser, where the suction turns +X and runs straight through the panel
+    #   + shirt to the spine (one crossing), turning again only at the spine riser.  (There is no upright on
+    #   the −Yd inlet side — it is open to the Blue tote — so the riser does not need the old >1096 lane.)
+    lane = 1115                    # clear crossing lane: the chase frame uprights are at Yd1046–1096 /
+    #   1266–1316, so the run must cross the panel + upright + shirt at >1106.  It steps DOWN onto the
+    #   inlet lane (PIY = 1101) only in the open space −X of the shirt — a clean 14mm orthogonal jog BELOW
+    #   BV-06, so the riser into the IN port stays straight (no elbow between BV-06 and P-03).
     _bottom_pickup(p, "X4 Waste (P-03)", 5200, YD_FAR, +1, ov.C_IBC_WASTE,
-                   [(5200, YD_FAR - 120, bv6z), (5200, bvy, bv6z),
-                    (PXC, bvy, bv6z), (PXC, bvy, p3i[2]), (PXC, PIY, p3i[2])])   # ONE turn at the spine riser,
-    #   then STRAIGHT horizontal through the panel + shirt → BV-06 → ↑ → −Yd stub into the IN port
-    p.append(ball_valve("BV-06 (P-03 suction)", PXC, bvy, p3i[2] - 41, "z", hdir="-x"))   # vertical; handle faces the −X walkway/operator
+                   [(5200, YD_FAR - 120, bv6z), (5200, lane, bv6z),
+                    (PXC, lane, bv6z), (PXC, PIY, bv6z), (PXC, PIY, p3i[2])])   # cross on the clear lane →
+    #   step to the inlet lane below BV-06 → STRAIGHT up the riser into the IN port
+    p.append(ball_valve("BV-06 (P-03 suction)", PXC, PIY, p3i[2] - 41, "z", hdir="-x"))   # vertical, inline below the IN port; handle faces the −X walkway/operator
     p.append(ov.ruby_cylinder("X4 Waste drain port (end wall)", ew - 60, COL_R, 1620, 22, 60, color=C_CHECK, axis="x"))
     pipe("P-03 -> X4 end-wall port",   # OUT leaves with a +Yd stub straight out of the OUT port
          [p3o, (PXC, POY + 30, p3o[2]), (5090, POY + 30, p3o[2]), (5090, COL_R, p3o[2]),

@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
 | 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,454 | $3,914 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $4,181 | $6,254 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $4,250 | $6,319 |
 | 6. Electrical — power, circuits, wiring | $2,110 | $2,660 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,385 | $2,070 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $855 | $1,430 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,210 | $2,980 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$21,161** | **~$31,721** |
+| **TOTAL (base build + 50-print run)** | **~$21,230** | **~$31,786** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -237,14 +237,14 @@ indicative low–high estimates — get quotes before ordering.
 | Pivot pin SS316 | 8 ea | McMaster-Carr | film | $64 |
 | Ratchet straps, 25mm | 2 ea | Home Depot | ventilation | $12 |
 | Self-tapping SS screws (8-pack) | 4 ea | McMaster-Carr | spray | $5 |
-| Shurflo pump mounting bracket | 4 ea | Amazon | water | $40 |
+| Shurflo pump mounting bracket | 5 ea | Amazon | water | $50 |
 | Southco C2-33 cam compression latch | 4 ea | Southco | panel | $60–$100 |
 | SS beam clamp plates (top + bottom) + spacers (40mm) | 4 ea | McMaster-Carr | spray | $10 |
 | SS/nylon retainer clips for 3/4" LDPE | 2 ea | Amazon | spray | $4 |
 | Stainless fasteners + nylon isolation washers | 1 lot | McMaster-Carr | lightlock | $30–$50 |
 | Top + bottom wall stays + 4-bolt anchor plates | 2 set | McMaster-Carr | swing | $90–$160 |
 | Transport latch (over-center/barrel) | 1 ea | Amazon | shelf | $8 |
-| **fasteners-hardware subtotal** | | | | **$1,297–$2,190** |
+| **fasteners-hardware subtotal** | | | | **$1,307–$2,200** |
 
 ### plastics-sheet
 
@@ -265,7 +265,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| 1" NPT spring check valve (CV1/CV3/CV4) | 3 ea | Amazon | water | $24–$42 |
+| 1" NPT spring check valve (CV1 — X1 gravity fill) | 1 ea | Amazon | water | $8–$14 |
 | 1" reinforced suction hose, 6 ft | 1 ea | Amazon | tray | $15 |
 | 1" SDR-11 HDPE pipe | 1 stick | Ferguson | water | $12–$18 |
 | 1" SS foot valve with strainer screen | 1 ea | Amazon | tray | $20 |
@@ -294,9 +294,10 @@ indicative low–high estimates — get quotes before ordering.
 | Distribution manifold, 1/2" → 7 barb outlets | 1 ea | Amazon | spray | $12 |
 | Flat-fan irrigation spray nozzles, barbed | 26 ea | Amazon | spray | $30–$50 |
 | pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | Amazon | water | $10–$18 |
+| pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | Amazon | water | $10–$18 |
 | S60×6 to 1" NPT adapter | 8 ea | Amazon | water | $64–$120 |
 | ½" HDPE pipe (tap relocation) | 1 lot | Irrigation supply | shelf | $10 |
-| **plumbing-fittings subtotal** | | | | **$622–$963** |
+| **plumbing-fittings subtotal** | | | | **$616–$953** |
 
 ### seals-gaskets
 
@@ -392,10 +393,12 @@ indicative low–high estimates — get quotes before ordering.
 | KDF-55 heavy-metal cartridge 4.5"×10" | 2 ea | Amazon | water | $40–$70 |
 | MPP 5-micron sediment cartridge 4.5"×10" | 3 ea | Amazon | water | $18–$30 |
 | SeaFlo accumulator (0.75 L) | 1 ea | Amazon | water | $35 |
-| Shurflo 2088-554-144 pump (P-01, P-02) | 2 ea | Amazon | water | $110–$140 |
+| Shurflo 2088-554-144 pump (P-01 Blue supply) | 1 ea | Amazon | water | $55–$70 |
+| Shurflo 2088-554-144 pump (P-02 filter loop) | 1 ea | Amazon | water | $55–$70 |
 | Shurflo 2088-554-144 pump (P-03 waste evacuation) | 1 ea | Amazon | water | $65 |
 | Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 1 ea | Amazon | water | $65 |
-| **water-equipment subtotal** | | | | **$877–$1,350** |
+| Shurflo 2088-554-144 pump (P-05 Brown drain) | 1 ea | Amazon | water | $65 |
+| **water-equipment subtotal** | | | | **$942–$1,415** |
 
 ## Supplier consolidation (largest orders first)
 
@@ -404,7 +407,7 @@ indicative low–high estimates — get quotes before ordering.
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 16 | adhesives-finishes, fabrication-labor, steel-structural | $1,946–$3,156 |
 | McMaster-Carr | 41 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets | $1,772–$2,715 |
-| Amazon | 72 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,120–$2,647 |
+| Amazon | 75 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,189–$2,712 |
 | Online Metals | 10 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,354–$1,885 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,291–$1,618 |

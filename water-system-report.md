@@ -354,9 +354,10 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | MPP 5-micron sediment cartridge 4.5"×10" | Melt-blown polypropylene depth filter (F-1 stage) | 3 ea | Amazon | $18–$30 |
 | KDF-55 heavy-metal cartridge 4.5"×10" | KDF-55 media for dissolved iron/metal removal (F-2 stage) | 2 ea | Amazon | $40–$70 |
 | CTO carbon block cartridge 4.5"×10" | Coconut shell activated carbon block (F-3 stage) | 3 ea | Amazon | $24–$45 |
-| Banjo V050FP ball valve 1/2" FNPT | PP full-port quarter-turn; BV-01, BV-02 + spares | 4 ea | Amazon | $24–$40 |
+| Banjo V050FP ball valve 1/2" FNPT | PP full-port quarter-turn; pump-suction isolation BV-01 (P-01), BV-02 (P-05), BV-06 (P-03) | 3 ea | Amazon | $18–$30 |
+| Banjo V050FP ball valve 1/2" FNPT | PP full-port quarter-turn; pump-suction isolation BV-03 (P-02) | 1 ea | Amazon | $6–$10 |
+| Banjo V050FP ball valve 1/2" FNPT | PP full-port; supply isolation BV-04 (TAP-01 chem tap), BV-05 (spray-bar feed) | 2 ea | Amazon | $12–$20 |
 | Banjo V100FP ball valve 1" FNPT | PP full-port; V1/V3/V4, VB1–VB3 (IBC fill/drain) | 6 ea | Amazon | $60–$96 |
-| Banjo V075FP ball valve 3/4" FNPT | PP full-port; BV-06 (chemistry tap shut-off) | 1 ea | Amazon | $8–$12 |
 | 3-way diverter valve 1/2" FNPT | L/T-port HDPE-compatible; 3W-DV-02 (tray drain) | 1 ea | Amazon | $12–$22 |
 | 3-way diverter valve 1" FNPT | L/T-port; 3W-DV-01 (filter output) | 1 ea | Amazon | $18–$30 |
 | pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | Filtered-water sample draw before 3W-DV-01; Banjo V050FP 1/2" PP ball valve + downturned 1/2" hose barb on a 1"×1/2" reducing branch tee, panel face above spill line | 1 ea | Amazon | $10–$18 |
@@ -365,7 +366,8 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | 1/2" NPT 90° elbow polypropylene | All pump-driven run bends | 14 ea | Amazon | $28–$56 |
 | Banjo EL100-90 elbow 1" NPT | PP 90°; IBC bends, filter outlet to DV-01 | 4 ea | Amazon | $12–$20 |
 | 1/2" NPT polypropylene tee | Blue suction/discharge tees, branches | 6 ea | Amazon | $12–$24 |
-| Banjo TEE100 equal tee 1" NPT | PP; IBC fill/drain tees | 4 ea | Amazon | $16–$24 |
+| Banjo TEE100 equal tee 1" NPT | PP; IBC drain tees (the X1 fill is now a 4-way cross) | 3 ea | Amazon | $12–$18 |
+| 1" NPT 4-way cross fitting | X1 fresh-fill 4-way: X1 inlet + IBC-1 + IBC-2 + DV-01 blue recycle return (was a 3-way tee). Cost est. | 1 ea | Amazon | $8–$14 |
 | 1/2" NPT polypropylene union | Maintenance disconnects on pump runs | 6 ea | Amazon | $24–$36 |
 | 1/2"×1" NPT bushing reducer | P-02 riser to F1 filter inlet | 1 ea | Amazon | $3–$5 |
 | S60×6 to 1" NPT adapter | IBC DN50 valve to 1" HDPE; PP S60×6 male × 1" NPT female | 8 ea | Amazon | $64–$120 |
@@ -385,7 +387,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bag | Amazon | $28 |
 | Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon | $20 |
 | Nitrile gloves, box of 100 | Size M/L | 2 box | Amazon | $28 |
-| **Water total** | | | | **$1,760–$2,550** |
+| **Water total** | | | | **$1,768–$2,566** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own

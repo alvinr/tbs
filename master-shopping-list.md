@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
 | 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,454 | $3,914 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $4,250 | $6,319 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $4,258 | $6,335 |
 | 6. Electrical — power, circuits, wiring | $2,110 | $2,660 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,385 | $2,070 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $855 | $1,430 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,210 | $2,980 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$21,230** | **~$31,786** |
+| **TOTAL (base build + 50-print run)** | **~$21,238** | **~$31,802** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -265,6 +265,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
+| 1" NPT 4-way cross fitting | 1 ea | Amazon | water | $8–$14 |
 | 1" NPT spring check valve (CV1 — X1 gravity fill) | 1 ea | Amazon | water | $8–$14 |
 | 1" reinforced suction hose, 6 ft | 1 ea | Amazon | tray | $15 |
 | 1" SDR-11 HDPE pipe | 1 stick | Ferguson | water | $12–$18 |
@@ -284,10 +285,11 @@ indicative low–high estimates — get quotes before ordering.
 | 3/4" LDPE irrigation poly pipe, 15 ft | 1 ea | Amazon | spray | $10 |
 | 3/4" SDR-11 HDPE pipe | 2 stick | Ferguson | water | $20–$30 |
 | Banjo EL100-90 elbow 1" NPT | 4 ea | Amazon | water | $12–$20 |
-| Banjo TEE100 equal tee 1" NPT | 4 ea | Amazon | water | $16–$24 |
+| Banjo TEE100 equal tee 1" NPT | 3 ea | Amazon | water | $12–$18 |
 | Banjo TEE100 equal tee, 1" HDPE NPT | 1 ea | Amazon | water | $4–$6 |
-| Banjo V050FP ball valve 1/2" FNPT | 4 ea | Amazon | water | $24–$40 |
-| Banjo V075FP ball valve 3/4" FNPT | 1 ea | Amazon | water | $8–$12 |
+| Banjo V050FP ball valve 1/2" FNPT | 3 ea | Amazon | water | $18–$30 |
+| Banjo V050FP ball valve 1/2" FNPT | 1 ea | Amazon | water | $6–$10 |
+| Banjo V050FP ball valve 1/2" FNPT | 2 ea | Amazon | water | $12–$20 |
 | Banjo V100FP ball valve 1" FNPT | 6 ea | Amazon | water | $60–$96 |
 | Barbed feed fittings, through beam top | 7 ea | Amazon | spray | $10 |
 | Bulkhead fitting 2" NPT (304 SS) | 3 ea | McMaster-Carr | water | $75–$120 |
@@ -297,7 +299,7 @@ indicative low–high estimates — get quotes before ordering.
 | pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | Amazon | water | $10–$18 |
 | S60×6 to 1" NPT adapter | 8 ea | Amazon | water | $64–$120 |
 | ½" HDPE pipe (tap relocation) | 1 lot | Irrigation supply | shelf | $10 |
-| **plumbing-fittings subtotal** | | | | **$616–$953** |
+| **plumbing-fittings subtotal** | | | | **$624–$969** |
 
 ### seals-gaskets
 
@@ -406,8 +408,8 @@ indicative low–high estimates — get quotes before ordering.
 |----------|-----------|-------|-----------|
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 16 | adhesives-finishes, fabrication-labor, steel-structural | $1,946–$3,156 |
+| Amazon | 77 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,197–$2,728 |
 | McMaster-Carr | 41 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets | $1,772–$2,715 |
-| Amazon | 75 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,189–$2,712 |
 | Online Metals | 10 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,354–$1,885 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,291–$1,618 |

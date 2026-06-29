@@ -79,7 +79,7 @@ energy — the cooling load is the real consumer.
 ## 6. Resupply Brown & Waste Pump-Out (per dump run — not daily)
 
 The Brown (IBC-3) and Waste (IBC-4) totes are evacuated to the sealed end-wall ports —
-**Brown → X3 via P-05**, **Waste → X4 via P-03** ([Plumbing Panel
+**Brown → X3 via P-05**, **Waste → X4 via P-03** ([Plumbing
 Report §4.3](plumbing-report.md), [Water System Report §6](water-system-report.md))
 — only at a **resupply / dump run**, when the clean-water supply is replenished. That
 service interval is set by the Blue water (~14 prints ≈ 4.7 days at 3/day, §8.2), so the

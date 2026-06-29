@@ -247,7 +247,7 @@ The near/far split stays close to balanced in all states (48.4–50.2% near). Th
 transport states lean slightly far (52% far) because the swung panel + drum carry
 their mass toward the far/pivot side. This is by
 design: equipment on the pinhole wall (near side) is lightweight (electrical
-panel, batteries totaling ~43 kg), the pump manifold is on the plumbing panel
+panel, batteries totaling ~43 kg), the pump manifold is on the Corridor Plumbing Panel
 centered in the IBC corridor (Yd=1,046), and the IBC stack is centered
 across the container width. The film plane carriage contributes ~33 kg to
 the far side but is offset by the tilt-swing board on the near side.

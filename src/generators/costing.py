@@ -163,9 +163,9 @@ WALKWAY = [
 WATER = [
     LineItem("Water storage (4× IBC totes, 3× bulkhead fittings, X1 fill tee)", 395, 558, 720),
     LineItem("IBC stacking frame (RHS restraint portal + feet + retaining bars + hangers + fab)", 955, 1205, 1455),
-    LineItem("Pumps and accumulator (P-01/P-02/P-04 manifold + P-03)", 315, 330, 345),
+    LineItem("Pumps and accumulator (P-01..P-05 + ACC-01, 5× mount brackets)", 390, 405, 420),
     LineItem("Filter skid (3× Big Blue housings + cartridges)", 282, 364, 445),
-    LineItem("Valves and fittings (S60×6 adapters, check valves CV1/CV3/CV4, SV-01 pH sample tap)", 343, 464, 585),
+    LineItem("Valves and fittings (S60×6 adapters, check valve CV1 only, SV-01 + SV-02 pH sample taps)", 337, 456, 575),
     LineItem("Pipe (HDPE, spray bar)", 80, 97, 114),
     LineItem("Processing tray (304 SS panels + fabrication, shim strips, sump pickup, liner, hardware)", 1300, 1660, 2015),
     LineItem("Spray bar assembly (beam, LDPE pipe, 26 nozzles, manifold + 7 feed tubes, 4 wheels, ball joint, arm, hose)", 235, 267, 299),
@@ -944,9 +944,9 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 909,  "total": 1210, "per_print": 24},  # 909 not 910: consistent ferri rounding ($104, not the doc's hand-rounded $105)
     "standard": {"chem": 1353, "total": 1650, "per_print": 33},
     "rich":     {"chem": 2681, "total": 2980, "per_print": 60},
-    "grand_total": (21211, 26902, 34661),  # +SV-01 pH sample tap ($10–18) in the water valves line
+    "grand_total": (21280, 26969, 34726),  # water rebalance: +P-05/+SV-02/+bracket/−2 CV (panel-split cascade)
     "walkway": (2000, 2488, 2975),   # §6a fab line raised so bracket scope matches walkway-report §10 ($742–$1,255 all-in)
-    "water": (4181, 5221, 6254),   # §8 lines (pumps/filter/valves/pipe/consumables) + SV-01 pH sample tap; reconciled to the report's itemized rows
+    "water": (4250, 5288, 6319),   # +P-05 pump, +SV-02 tap, +5th mount bracket, −2 redundant check valves (pumps have integral checks); panel-split cascade 2026-06-28
     "container": (2300, 3300, 4300),
     "lightlock": (1385, 1728, 2070),   # §6 = hinged-panel §8.2 (housing + drum) line items
     "swingpivot": (855, 1143, 1430),   # §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items

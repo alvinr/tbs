@@ -343,11 +343,13 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 |------|------|-----|----------|-----------|
 | [IBC tote (1,000 L caged)](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) | Caged composite tote, DN50 butterfly valve (S60×6 thread); side-entry fittings near top | 4 ea | Container Exchanger | $320–$600 |
 | [Bulkhead fitting 2" NPT (304 SS)](https://www.mcmaster.com/4464K115) (4464K115) | External fill/drain port, welded through container wall | 3 ea | McMaster-Carr | $75–$120 |
-| [Shurflo 2088-554-144 pump (P-01, P-02)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 2 ea | Amazon | $110–$140 |
+| [Shurflo 2088-554-144 pump (P-01 Blue supply)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 1 ea | Amazon | $55–$70 |
+| [Shurflo 2088-554-144 pump (P-02 filter loop)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 1 ea | Amazon | $55–$70 |
 | Shurflo 2088-554-144 pump (P-03 waste evacuation) | 12VDC, 3.5 GPM, 45 PSI; empties IBC-4 residual below X4 (~120L) | 1 ea | Amazon | $65 |
 | Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 12VDC, 3.5 GPM, 45 PSI; tray drain to IBC-3 (~900mm lift) | 1 ea | Amazon | $65 |
+| Shurflo 2088-554-144 pump (P-05 Brown drain) | 12VDC, 3.5 GPM, 45 PSI; evacuates IBC-3 (Brown) residual to the X3 end-wall port | 1 ea | Amazon | $65 |
 | [SeaFlo accumulator (0.75 L)](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) (SFAT-075-125-01) | 0.75 L, 125 PSI, 1/2" MNPT | 1 ea | Amazon | $35 |
-| Shurflo pump mounting bracket | Stainless, 2088 series (3× manifold + 1× IBC corridor for P-03) | 4 ea | Amazon | $40 |
+| Shurflo pump mounting bracket | Stainless, 2088 series — one per pump (P-01..P-05) | 5 ea | Amazon | $50 |
 | Big Blue filter housing (4.5"×10") | Ø184×333mm/housing, 1" NPT ports, integrated bracket (Express Water / Geekpure / iSpring) | 1 ea | Amazon | $200–$300 |
 | MPP 5-micron sediment cartridge 4.5"×10" | Melt-blown polypropylene depth filter (F-1 stage) | 3 ea | Amazon | $18–$30 |
 | KDF-55 heavy-metal cartridge 4.5"×10" | KDF-55 media for dissolved iron/metal removal (F-2 stage) | 2 ea | Amazon | $40–$70 |
@@ -358,6 +360,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | 3-way diverter valve 1/2" FNPT | L/T-port HDPE-compatible; 3W-DV-02 (tray drain) | 1 ea | Amazon | $12–$22 |
 | 3-way diverter valve 1" FNPT | L/T-port; 3W-DV-01 (filter output) | 1 ea | Amazon | $18–$30 |
 | pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | Filtered-water sample draw before 3W-DV-01; Banjo V050FP 1/2" PP ball valve + downturned 1/2" hose barb on a 1"×1/2" reducing branch tee, panel face above spill line | 1 ea | Amazon | $10–$18 |
+| pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | pH sample on the P-04 tray-drain discharge, before 3W-DV-02; same build as SV-01 | 1 ea | Amazon | $10–$18 |
 | 2" polypropylene camlock pairs (M+F) | External bulkhead connections (X1/X3/X4 + spare) | 4 pair | Amazon | $20–$32 |
 | 1/2" NPT 90° elbow polypropylene | All pump-driven run bends | 14 ea | Amazon | $28–$56 |
 | Banjo EL100-90 elbow 1" NPT | PP 90°; IBC bends, filter outlet to DV-01 | 4 ea | Amazon | $12–$20 |
@@ -366,7 +369,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | 1/2" NPT polypropylene union | Maintenance disconnects on pump runs | 6 ea | Amazon | $24–$36 |
 | 1/2"×1" NPT bushing reducer | P-02 riser to F1 filter inlet | 1 ea | Amazon | $3–$5 |
 | S60×6 to 1" NPT adapter | IBC DN50 valve to 1" HDPE; PP S60×6 male × 1" NPT female | 8 ea | Amazon | $64–$120 |
-| 1" NPT spring check valve (CV1/CV3/CV4) | PVC body, EPDM seal, 1" FNPT × FNPT | 3 ea | Amazon | $24–$42 |
+| 1" NPT spring check valve (CV1 — X1 gravity fill) | PVC body, EPDM seal, 1" FNPT × FNPT. Only CV-1 (X1 fill) remains — the Shurflo 2088 pumps have integral check valves, so CV-2/CV-3/CV-4 are redundant and dropped | 1 ea | Amazon | $8–$14 |
 | Thread seal tape (PTFE) | 1/2" wide, 260" roll | 4 roll | Home Depot | $8 |
 | [1/2" SDR-11 HDPE pipe](https://www.ferguson.com) | All pump-driven runs (80 ft); matches pump port size | 4 stick | Ferguson | $24–$40 |
 | 1" SDR-11 HDPE pipe | Food-safe blue-stripe 20 ft; filter outlet + IBC lines | 1 stick | Ferguson | $12–$18 |
@@ -382,7 +385,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bag | Amazon | $28 |
 | Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon | $20 |
 | Nitrile gloves, box of 100 | Size M/L | 2 box | Amazon | $28 |
-| **Water total** | | | | **$1,691–$2,485** |
+| **Water total** | | | | **$1,760–$2,550** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own

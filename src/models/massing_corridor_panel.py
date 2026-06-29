@@ -620,10 +620,15 @@ def drains_ports():
          ov.C_IBC_BROWN)
     p.append(ball_valve("BV-02 (P-05 suction)", rx, PIY - 30, z05 - 110, "z", hdir="-x"))   # on the gap riser; handle faces the −X walkway/operator (raised 60mm)
     p.append(ov.ruby_cylinder("X3 Brown drain port (end wall)", ew - 60, COL_L, 1700, 22, 60, color=C_CHECK, axis="x"))
-    # P-05 OUT → behind the panel → +X to the end wall + a perpendicular ≥50mm bulkhead stub
+    # P-05 OUT → +Yd stub → step onto a clear back lane (between the spine +Yd face 1224 and the far
+    # upright 1266; +Yd of the pump body 1231) — the −Yd step is done in the OPEN −X of the shirt, NOT in
+    # the chase — then STRAIGHT +X through the shirt + panel (round holes) and behind the panel all the way
+    # to the end wall (extending the straight run), then −Yd onto the X3 port lane past the spine, and down.
+    x3lane = 1245
     pipe("P-05 -> X3 end-wall port",   # OUT leaves with a +Yd stub straight out of the OUT port
-         [p5o, (PXC, POY + 30, p5o[2]), (5090, POY + 30, p5o[2]), (5090, COL_L, p5o[2]),
-          (ew - 130, COL_L, p5o[2]), (ew - 130, COL_L, 1700), (ew - 60, COL_L, 1700)], ov.C_IBC_BROWN)
+         [p5o, (PXC, POY + 15, p5o[2]), (5030, POY + 15, p5o[2]), (5030, x3lane, p5o[2]),
+          (ew - 130, x3lane, p5o[2]), (ew - 130, COL_L, p5o[2]),
+          (ew - 130, COL_L, 1700), (ew - 60, COL_L, 1700)], ov.C_IBC_BROWN)
 
     # ── IBC-4 WASTE: own bottom pickup (bend points DOWN to floor) → P-03 → X4 end-wall port ──
     p3i = (PXC, PIY, _piz("P-03")); p3o = (PXC, POY, _piz("P-03"))

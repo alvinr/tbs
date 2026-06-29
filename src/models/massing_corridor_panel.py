@@ -148,6 +148,20 @@ def rear_panel():
     p.append(ov.ruby_box("Pump-mount ply shirt (25mm)", SHIRT_X, YD_NEAR + S, 275,
                          25, yw, 1650, color=ov.C_PLY))   # bottom raised to 275 to clear the low brown
     #   suction elbow (z247-268); still backs the ACC (foot z280) and all four pumps
+    # Spacer/cleat blocks tying the shirt BACK to the rear panel (and thus the frame) across the
+    # ~27mm chase — placed at the two Yd edges in the clear Z windows BETWEEN the horizontal X3/X4
+    # port runs that cross the chase (those sit at z≈1500 / 1820 / 1900).
+    blk_x0, blk_d = SHIRT_X + 25, BACK_X - (SHIRT_X + 25)   # shirt back → rear-panel front
+    for byd in (YD_NEAR + S, YD_FAR - S - 40):              # near + far edges, 40mm wide
+        for bz in (320, 920, 1560):                        # all clear of the port runs (z1492+)
+            p.append(ov.ruby_box("Shirt-to-panel spacer block", blk_x0, byd, bz, blk_d, 40, 120, color=ov.C_PLY))
+    # Drain-riser backing SPINE — an 18mm ply fin teeing PERPENDICULAR off the rear panel into the
+    # rear corridor (matches the documented marine-ply spine), spanning the two tall back-of-panel
+    # risers (X4 waste at x≈5200, blue recycle at x≈5440) so they P-clip to it; tied to the frame
+    # top/bottom rings.  Placed at Yd1183 (between the two risers) — clear of the merge (Yd1116) and
+    # the X1 cross (x>5470).
+    p.append(ov.ruby_box("Drain-riser backing spine (18mm ply)", BACK_X, 1183, 250,
+                         5460 - BACK_X, 18, 1950, color=ov.C_PLY))
     return "\n".join(p)
 
 

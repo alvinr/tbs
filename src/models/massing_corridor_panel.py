@@ -176,7 +176,8 @@ def rear_panel():
 # ── corridor-panel equipment placement (equipment hangs −X off the rear panel) ──
 FACE_X = BACK_X                          # 5104 — rear-panel plane; equipment hangs −X toward the mouth
 COL_L  = YD_NEAR + 63                    # 1109 — left (Brown-side) pump column
-COL_R  = YD_FAR - 63                     # 1253 — right (Waste-side) pump column
+COL_R  = 1235                            # X4 grey waste run + port — clamps to the spine's +Yd face (1224 =
+#   spine Yd1206 + 18mm) plus a pipe radius, so the run mounts on the spine instead of floating beside it
 CTR_Y  = (YD_NEAR + YD_FAR) / 2          # 1181 — corridor center
 RP     = ov.PUMP_PIPE_OD / 2            # 1/2" pipe radius
 CDK    = "#3A3A42"                       # dark fittings / motor cans

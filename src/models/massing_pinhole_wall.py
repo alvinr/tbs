@@ -177,7 +177,7 @@ def kit():
     DCX, DCY, DCZ = 4700, cp.CTR_Y, 235        # DV-01 at the CORRIDOR-ENTRY TURN (just inside the mouth,
     #   reachable from the right walkway): the single filtered line turns in here and splits; blue +
     #   waste legs then run back across the corridor (low lane, under the ACC) to their destinations
-    p.append(diverter("3W-DV-01", DCX, DCY, DCZ, run="x", branch="z+", handle="y-", color=ov.C_VALVE))
+    p.append(diverter("3W-DV-01", DCX, DCY, DCZ, run="x", branch="y-", handle="z+", color=ov.C_VALVE))
 
     # ── PLUMBING ──
     def pipe(nm, wp, col): p.append(ov.ruby_pipe_run(nm, wp, rp, color=col))
@@ -231,8 +231,8 @@ def kit():
     #    on the tee run, so the two legs make ONE tote entry).
     mx, my, mz = cp.MERGE4
     pipe("DV-01 -> IBC-4 merge",
-         [(DCX, DCY, DCZ + tipd), (mx, DCY, DCZ + tipd),              # +X back across the corridor (under the ACC, z268<280)
-          (mx, my, DCZ + tipd),                                       # −Yd to the merge column
+         [(DCX, DCY - tipd, DCZ), (mx, DCY - tipd, DCZ),              # off the −Yd branch, +X back across the corridor (under the ACC)
+          (mx, my, DCZ),                                              # −Yd to the merge column
           (mx, my, mz)],                                              # rise into the merge tee's z− branch
          ov.C_IBC_WASTE)
     return "\n".join(p)

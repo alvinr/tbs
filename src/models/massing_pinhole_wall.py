@@ -226,13 +226,13 @@ def kit():
     #    totes alongside the X1 fresh fill (no direct tote entry, no CV-2; P-02 has an integral check).
     xUp = cp.BACK_X + 135                          # 5239 — the 90° elbow 135mm past the rear panel (110 + a 25mm
     #   nudge toward the sealed end to separate the rise from the grey X4-waste riser at x5200); ON the spine
-    ryd = 1206 - rp                                # riser flush to the spine's −Yd face (1206) so it clamps to it
+    ryd = cp.X1_TEE_Y                              # riser Yd = the X1 cross Yd (on the spine face), so the recycle
+    #   rises STRAIGHT into the cross's −X port — ONE elbow at the top, no jog (fewer connections, see skill)
     pipe("DV-01 blue recycle -> X1 cross",
          [(DCX + tipd, DCY, DCZ), (DCX + tipd, cp.CTR_Y, DCZ),       # off the +X port, jog −Yd to the corridor center
-          (xUp, cp.CTR_Y, DCZ), (xUp, ryd, DCZ),                     # +X 110mm past the panel → +Yd onto the spine
+          (xUp, cp.CTR_Y, DCZ), (xUp, ryd, DCZ),                     # +X past the panel → +Yd onto the spine
           (xUp, ryd, cp.X1_TEE_Z),                                   # RISE up the spine (between the grey pipes)
-          (xUp, cp.CTR_Y, cp.X1_TEE_Z),                              # at the ceiling, jog −Yd back to center
-          (cp.X1_TEE_X, cp.CTR_Y, cp.X1_TEE_Z)], ov.C_BLUE)           # +X into the cross −X port
+          (cp.X1_TEE_X, ryd, cp.X1_TEE_Z)], ov.C_BLUE)               # ONE elbow → +X straight into the cross −X port
     # 6. DV-01 WASTE (branch, z+) → the shared IBC-4 merge tee's z− branch (DV-02's waste also lands here,
     #    on the tee run, so the two legs make ONE tote entry).
     mx, my, mz = cp.MERGE4

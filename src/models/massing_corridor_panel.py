@@ -183,10 +183,11 @@ C_CHECK = "#8A2BE2"                      # PURPLE — one-way / check valves (vs
 PVB_R, PVB_H, PCAP_H = 50, 180, 30       # vertical body radius / height, head/cap height
 PXC     = FACE_X - 120                    # 4984 — pump body center X (upright, in front of the panel)
 Z_ACC0  = 1780                            # ACC-01 BOTTOM — raised clear of the pipe runs below it
-MERGE4  = (ov.IBC_COL_X + 730, YD_FAR - 200, ov.IBC_PALLET_H + ov.IBC_H_1000 - 106)  # (5404,1116,1230) — +130 toward sealed end
-                                          # shared IBC-4 waste merge — moved BACK toward the sealed
-                                          # end (behind the pumps/panel), so the grey riser clears
-                                          # the pumps.  DV-01 (wall) + DV-02 join here → one entry.
+MERGE4  = (ov.IBC_COL_X + 730, 1195, ov.IBC_PALLET_H + ov.IBC_H_1000 - 106)  # (5404,1195,1230)
+                                          # shared IBC-4 waste merge — now SURFACE-MOUNTED on the drain-riser
+                                          # spine (Yd1195 ≈ spine −Yd face 1206 − pipe radius), so the DV-01
+                                          # riser + DV-02 drop both clamp to the spine and only the tote-entry
+                                          # stub leaves it.  DV-01 (wall) + DV-02 join here → one entry.
 GAPX  = ov.PROC_TRAY_X_R + 12             # 4641 — in the gap between the tray right edge (4629) and the
                                           # frame upright (4654): the ONLY place to cross between the
                                           # outside-rim strip (Yd<80) and the corridor (Rule 5a, around the
@@ -508,8 +509,8 @@ def plumbing():
     #   horizontal approach seats on the −x run port as a clear run, not a stub right at the drop
     pipe("DV-02 -> IBC-4 merge",
          [(DV02X, dvp, DV_Z), (DV02X, dvp + 15, DV_Z), (DV02X, dvp + 15, DV_Z - 45),   # drop below the rear-panel
-          (dvwx, dvp + 15, DV_Z - 45), (dvwx, dvp + 15, wz),                            # bracket band (z2146+) before +X
-          (dvwx, MERGE4[1], wz), MERGE4], ov.C_IBC_WASTE)   # ~380mm toward the sealed end, drop, then
+          (dvwx, dvp + 15, DV_Z - 45), (dvwx, MERGE4[1], DV_Z - 45),                    # +X, then −Yd to the spine lane
+          (dvwx, MERGE4[1], wz), MERGE4], ov.C_IBC_WASTE)   # high (round-hole spine crossing); DROP on the spine, then
     #   a horizontal +x run that SEATS on the merge's −x run port (was dropping inside the tee body)
     # 3-way merge: tote entry on +x (run), DV-02 waste on −x (run), DV-01 waste rises into the z− branch
     p.append(tee("IBC-4 waste merge tee", MERGE4[0], MERGE4[1], MERGE4[2], run="x", branch="z-"))

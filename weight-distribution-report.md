@@ -69,7 +69,8 @@ UV-HDPE 950 kg/m³, water 1,000 kg/m³.
 | Electrical panel | 15 | 1,600–1,900 | 0–150 | Wall-mount distribution panel |
 | Battery bank | 13 | 1,810–2,310 | 0–150 | 1× 100Ah LiFePO4 @ 13 kg (standard build; +13 kg for the optional 2nd pack) |
 | Solar controller | 2 | 1,700–1,800 | 0–100 | MPPT charge controller |
-| Pump manifold | 5 | 4,800–5,580 | 1,046–1,173 | 4× 12V diaphragm pumps on plumbing panel |
+| Plumbing — Corridor panel | 5 | 4,760–4,874 | 1,046–1,160 | 4× Shurflo 2088 (P-01/P-03/P-04/P-05) + ACC-01 |
+| Plumbing — Pinhole Wall panel | 6 | 3,300–4,016 | 12–196 | P-02 + 3-stage Big Blue filter (dry); on the pinhole wall — est. |
 | Film plane carriage | 33 | 150–4,649 | 2,212–2,312 | Al angle frame (50.8×50.8×4.8mm) + 92 cam-lever clamps + 4 HGH20CA carriages |
 | Tilt-swing board | 30 | 2,089–2,709 | 0–100 | 620×620×45mm Al plate + spherical pivot + screws |
 | Fans (A+B) | 4 | End walls | Near corners | 2× 150mm axial panel fans |
@@ -79,16 +80,16 @@ UV-HDPE 950 kg/m³, water 1,000 kg/m³.
 | Brown IBC-3 (tote) | 65 | 4,674–5,893 | 30–1,046 | 1,000L caged composite tare (bottom tier, near) |
 | Waste IBC-4 (tote) | 65 | 4,674–5,893 | 1,316–2,332 | 1,000L caged composite tare (bottom tier, far) |
 | IBC restraint frame | 178 | 4,674–5,893 | 0–2,362 | 50×50×3mm RHS restraint-only frame (totes direct-stack cage-on-cage): full-height corridor + front-bay uprights + longitudinal ties + front retaining bars + 8 floor flange feet + 4 wall joist hangers (through-bolted to 4 exterior backing plates) + forward panel-mount frame ([Equipment Layout](equipment-layout-report.md) §5) |
-| **Equipment subtotal** | **546** | | | |
+| **Equipment subtotal** | **552** | | | |
 
 ### 3.4 Dry Weight Summary
 
 | Category | Weight (kg) | % of Dry Total |
 |----------|------------|---------------|
-| Container (shell + doors) | 2,200 | 66.2% |
+| Container (shell + doors) | 2,200 | 66.1% |
 | Structure | 578 | 17.4% |
-| Equipment | 546 | 16.4% |
-| **Total dry** | **3,324** | **100%** |
+| Equipment | 552 | 16.6% |
+| **Total dry** | **3,330** | **100%** |
 
 **Grating weight assumption:** 5/8" (15mm) molded GRP (fiberglass) grating,
 vinyl-ester resin with grit top, weighs approximately 11 kg/m² — vs ~26 kg/m²
@@ -116,7 +117,7 @@ during processing, not pre-loaded).
 | Blue IBC-2 water | 900 | 900 | X=4,674–5,893, Yd=1,316–2,332 | Top (Z=1,336–2,236) |
 | **Total liquid** | **1,800** | **1,800** | | |
 
-**Total loaded weight: 5,124 kg** (3,324 dry + 1,800 liquid)
+**Total loaded weight: 5,130 kg** (3,330 dry + 1,800 liquid)
 
 ### 4.2 Materials Exhausted (Ready for Resupply)
 
@@ -133,23 +134,23 @@ unrecovered residual — see [water-system report §4](water-system-report.md)).
 | Processing tray | — | 0 | Drained | — |
 | **Total liquid** | **1,260** | **1,260** | | |
 
-**Total exhausted weight: 4,584 kg** (3,324 dry + 1,260 liquid)
+**Total exhausted weight: 4,590 kg** (3,330 dry + 1,260 liquid)
 
 ### 4.3 State Comparison
 
 | State | Total (kg) | X_cg (mm) | Yd_cg (mm) | Z_cg (mm) | Front/Rear | Near/Far |
 |-------|-----------|-----------|------------|-----------|------------|----------|
-| Dry (Transport) | 3,324 | 2,798 | 1,196 | 1,099 | 52.8/47.2% | 48.4/51.6% |
-| Loaded Transport (Blue full) | 5,124 | 3,673 | 1,190 | 1,341 | 34.2/65.8% | 49.0/51.0% |
-| Camera Ready (Deployed) | 5,124 | 3,670 | 1,175 | 1,340 | 34.2/65.8% | 50.2/49.8% |
-| Materials Exhausted (Transport) | 4,584 | 3,483 | 1,191 | 930 | 38.3/61.7% | 48.9/51.1% |
+| Dry (Transport) | 3,330 | 2,802 | 1,194 | 1,099 | 52.7/47.3% | 48.5/51.5% |
+| Loaded Transport (Blue full) | 5,130 | 3,673 | 1,189 | 1,340 | 34.2/65.8% | 49.0/51.0% |
+| Camera Ready (Deployed) | 5,130 | 3,670 | 1,174 | 1,339 | 34.2/65.8% | 50.3/49.7% |
+| Materials Exhausted (Transport) | 4,590 | 3,483 | 1,190 | 930 | 38.2/61.8% | 48.9/51.1% |
 
 **Loaded Transport** is the camera-ready water load (full top-tier Blue IBCs,
 1,800 kg) carried in the *transport* configuration — panel swung in, cargo doors
 closed. The water sits in the **top** tier, so its vertical CG is **Z=1,341mm —
 411mm higher** than the exhausted state (930mm), making it the **highest-CG
 transport case** that governs road-transport stability (tie-down and cornering).
-The exhausted (return) state is both lighter — **4,584 kg**, since ~<!-- BEGIN fact:lost_l -->434<!-- END fact:lost_l --> kg of the
+The exhausted (return) state is both lighter — **4,590 kg**, since ~<!-- BEGIN fact:lost_l -->434<!-- END fact:lost_l --> kg of the
 processed water is lost to the open process rather than recovered — and lower-CG,
 so it is never the governing case. Even at the loaded worst case the static sideways
 tip threshold is **~41°** (½-width 1,181mm ÷ Z_cg 1,341mm), so the deliberate
@@ -164,7 +165,7 @@ that heavier load stays well within transport limits:
 
 | Loaded Transport | Gross mass | Z_cg | Static tip threshold |
 |------------------|-----------:|-----:|---------------------:|
-| Standard Blue fill (1,800L) | 5,124 kg | 1,341mm | 41.4° |
+| Standard Blue fill (1,800L) | 5,130 kg | 1,341mm | 41.4° |
 | **Max Blue fill (1,900L)** | **5,224 kg** | **1,358mm** | **41.0°** |
 
 The extra ~100 kg sits in the top tier, raising the worst-case vertical CG only 17mm and lowering
@@ -206,7 +207,7 @@ Quadrant weights show the rear-heavy bias from the IBC stack.
 Water has migrated from top-tier Blue IBCs to bottom-tier Brown/Waste IBCs, and ~<!-- BEGIN fact:lost_l -->434<!-- END fact:lost_l --> kg of it has
 been lost to the open process (evaporation, wet-print carryout, unrecovered residual — see
 [water-system report §4](water-system-report.md)), so only ~<!-- BEGIN fact:recovered_l -->1,260<!-- END fact:recovered_l --> kg is recovered. The hinged panel
-is swung ~56° about the pivot to its transport position. Total mass therefore drops to **4,584 kg**
+is swung ~56° about the pivot to its transport position. Total mass therefore drops to **4,590 kg**
 (~540 kg below the loaded state), and the vertical CG drops by 411mm (Z: 1,341 → 930mm) as the
 remaining water settles in the bottom tier. This is the lightest, lowest-CG transport state — never
 the governing case.
@@ -232,10 +233,10 @@ All four states are well within the ISO 24,000 kg maximum gross weight:
 
 | State | Total (kg) | Margin (kg) | Utilization |
 |-------|-----------|------------|-------------|
-| Dry | 3,324 | 20,681 | 13.8% |
-| Camera Ready | 5,124 | 18,876 | 21.3% |
-| Materials Exhausted | 4,584 | 19,416 | 19.1% |
-| Loaded Transport | 5,124 | 18,876 | 21.3% |
+| Dry | 3,330 | 20,670 | 13.9% |
+| Camera Ready | 5,130 | 18,870 | 21.4% |
+| Materials Exhausted | 4,590 | 19,410 | 19.1% |
+| Loaded Transport | 5,130 | 18,870 | 21.4% |
 
 The container operates at about 19–21% of its rated capacity in all states.
 There is no structural concern from a gross weight perspective.
@@ -283,7 +284,7 @@ The most significant finding is the **vertical CG migration** between states:
 This is an inherent self-stabilizing feature of the 2×2 IBC stack design.
 1,800 kg of clean water is loaded into the top-tier Blue IBCs and processed during a
 session; ~<!-- BEGIN fact:recovered_l -->1,260<!-- END fact:recovered_l --> kg is recovered into the bottom-tier Brown/Waste IBCs and ~<!-- BEGIN fact:lost_l -->434<!-- END fact:lost_l --> kg is
-lost to the open process, so total mass drops from 5,124 to **4,584 kg**. The water that
+lost to the open process, so total mass drops from 5,130 to **4,590 kg**. The water that
 remains migrates from the top tier to the bottom tier, dropping the center of gravity by
 410mm and improving stability through the session.
 

@@ -628,11 +628,14 @@ def drains_ports():
     # ── IBC-4 WASTE: own bottom pickup (bend points DOWN to floor) → P-03 → X4 end-wall port ──
     p3i = (PXC, PIY, _piz("P-03")); p3o = (PXC, POY, _piz("P-03"))
     bv6z = p3i[2] - 82             # come up to just below the IN port, then a VERTICAL riser into BV-06 and
-    _bottom_pickup(p, "X4 Waste (P-03)", 5200, YD_FAR, +1, ov.C_IBC_WASTE,   # a single elbow into the IN port
-                   [(5200, YD_FAR - 120, bv6z), (5090, YD_FAR - 120, bv6z), (5090, PIY - 30, bv6z),
-                    (PXC, PIY - 30, bv6z), (PXC, PIY - 30, p3i[2]), (PXC, PIY, p3i[2])])   # in past the upright,
-    #   then ↑ riser (elbow faces ceiling) → BV-06 → +Yd into the IN port
-    p.append(ball_valve("BV-06 (P-03 suction)", PXC, PIY - 30, p3i[2] - 41, "z", hdir="-x"))   # vertical; handle faces the −X walkway/operator
+    bvy  = 1110                    # BV-06 / panel-penetration Yd: clears the back upright (>1096) and the
+    #   P-03 body (<1131).  The suction leaves BV-06 and goes STRAIGHT +X through the shirt + panel here,
+    #   making its turns BEHIND the panel (x5130) — no turns in the tight shirt↔panel chase (fabrication).
+    _bottom_pickup(p, "X4 Waste (P-03)", 5200, YD_FAR, +1, ov.C_IBC_WASTE,
+                   [(5200, YD_FAR - 120, bv6z), (5130, YD_FAR - 120, bv6z), (5130, bvy, bv6z),
+                    (PXC, bvy, bv6z), (PXC, bvy, p3i[2]), (PXC, PIY, p3i[2])])   # behind-panel turns, then
+    #   STRAIGHT through the panel/shirt → ↑ riser → BV-06 → −Yd stub into the IN port
+    p.append(ball_valve("BV-06 (P-03 suction)", PXC, bvy, p3i[2] - 41, "z", hdir="-x"))   # vertical; handle faces the −X walkway/operator
     p.append(ov.ruby_cylinder("X4 Waste drain port (end wall)", ew - 60, COL_R, 1620, 22, 60, color=C_CHECK, axis="x"))
     pipe("P-03 -> X4 end-wall port",   # OUT leaves with a +Yd stub straight out of the OUT port
          [p3o, (PXC, POY + 30, p3o[2]), (5090, POY + 30, p3o[2]), (5090, COL_R, p3o[2]),

@@ -357,7 +357,7 @@ def _bottom_pickup(p, nm, x, yface, into, col, riser_path):
 # Pumps in a SINGLE vertical column (like the filter row) at (PXC, CTR_Y); IN −Yd / OUT +Yd.
 # Order bottom → top: [ACC-01 dead-leg], P-01, P-04, P-05, P-03 (ACC sits BELOW P-01 — swapped to
 # drop the blue ACC knot to the column foot and lift the P-01 suction clear).
-PSTACK = {"P-01": 540, "P-04": 940, "P-05": 1340, "P-03": 1740}  # base Z
+PSTACK = {"P-01": 615, "P-04": 940, "P-05": 1340, "P-03": 1740}  # base Z (P-01 raised +75mm)
 PIY, POY = CTR_Y - (PVB_R + 30), CTR_Y + (PVB_R + 30)            # 1101 (IN) / 1261 (OUT) manifold Yd
 def _piz(key): return PSTACK[key] + PVB_H - 18                    # port Z for a stack key
 
@@ -388,7 +388,7 @@ DV02X  = PXC - 75                          # 3W-DV-02 X — nudged 75mm toward t
 #   column centerline) to open up the brown tray-sump → P-04 suction route; feed + both legs follow it
 # ACC-01 — SeaFlo bladder accumulator: a single BOTTOM port, plumbed as a vertical DEAD-LEG teed
 # onto the Blue supply line (like the pumps/filters tee in, but the tank's only port is underneath).
-ACC_Z0, ACC_R = 280, 63.5                   # ACC-01 base Z (column FOOT, below P-01 — swapped); Ø127 body
+ACC_Z0, ACC_R = 355, 63.5                   # ACC-01 base Z (raised +75mm; column FOOT, below P-01 — swapped); Ø127 body
 ACC_PZ = ACC_Z0 + 28                        # ACC-01 IN/OUT port Z — at the BOTTOM of the body (the
                                             # SeaFlo's ports are underneath); pump-shaped, ports low
 def acc_in():  return (PXC, CTR_Y + ACC_R + 30, ACC_PZ)   # +Yd (from P-01 OUT)

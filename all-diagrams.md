@@ -156,9 +156,11 @@
 
 ## 14. Plumbing Panel & Plumbing
 
-![TBS-001 — Plumbing Panel Layout](assets/panel-layout.png)
+![TBS-001 — Corridor Plumbing Panel Layout](assets/panel-layout.png)
 
-![TBS-001 — Plumbing Panel Backside](assets/panel-layout-back.png)
+![TBS-001 — Pinhole Wall Plumbing Panel Layout](assets/pinhole-panel.png)
+
+![TBS-001 — Corridor Plumbing Panel Backside](assets/panel-layout-back.png)
 
 ---
 

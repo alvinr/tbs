@@ -98,7 +98,7 @@ leaves saturated to dry), **evaporation** from the open spray-wash tray, and **u
 (tray-surface film, the sump dead-volume below the P-04 pickup, hose/manifold hold-up). This loss is *why
 two <!-- BEGIN fact:collection_fill_l -->630<!-- END fact:collection_fill_l -->L collection totes balance the supply* — they are sized for the recovered fraction, not full
 throughput. (The [weight report](weight-distribution-report.md) carries the same ~<!-- BEGIN fact:recovered_l -->1,260<!-- END fact:recovered_l -->L recovered figure
-for its exhausted-state transport mass — 4,584 kg, ~540 kg below the loaded state.)
+for its exhausted-state transport mass — 4,590 kg, ~540 kg below the loaded state.)
 
 #### Extending capacity beyond 14 prints
 
@@ -136,15 +136,9 @@ IBC-2 (900L) ──┘                                                      │
 ```
 
 - Two IBC totes plumbed in parallel via 1" HDPE manifold with isolation valves
+- The two Blue totes are tied at the base by a **1" equalization cross-tie** (tank body to tank body, low on the totes) so their levels self-balance as P-01 draws and X1 refills
 - P-01: Shurflo 2088 12VDC diaphragm pump — 3.5 GPM, 45 PSI, self-priming
-<!-- TODO (check-valve design choice — write up + reconcile parts/cost): the Shurflo 2088-554-144
-     pumps have an INTEGRAL check valve (1-way, prevents reverse flow — see datasheet). Because
-     every return/drain leg is pump-driven, the dedicated anti-siphon check valves CV-2 (IBC-2
-     return), CV-3 (IBC-3 buffer return) and CV-4 (IBC-4 waste) are redundant and were DROPPED from
-     the schematic + 3D. Only CV-1 (the X1 gravity fill, the one path with no pump) remains. ACTION:
-     (1) state this rationale in §4.2/§4.3 prose with the Shurflo datasheet citation; (2) parts.py
-     check-valve qty 3→1 (drop CV3/CV4 from "1\" NPT spring check valve (CV1/CV3/CV4)" → just CV1);
-     (3) re-sum cost. -->
+- **Check valves:** only **CV-1** is fitted, on the X1 gravity fill — the single flow path with no pump. Every return and drain leg is pump-driven, and the Shurflo 2088 pumps carry an **integral 1-way check valve** ([2088-554-144 datasheet](https://www.pumpagents.com/pdf/ShurfloPumps/2088-554-144.pdf)), so dedicated anti-siphon checks on the IBC-2 return, IBC-3 buffer return and IBC-4 waste legs would be redundant and are not used
 
 - ACC-01: 0.75 L (23.5 oz) pressure accumulator — smooths pump cycling, maintains pressure when pump is off
 - Low-level float switch on IBC-2 alerts operator when Blue supply is low
@@ -157,6 +151,8 @@ IBC-2 (900L) ──┘                                                      │
 Processing tray sump (P-04 suction pickup)
         │
    P-04 (tray drain transfer pump — suction from sump, lifts ~900mm to IBC-3 side-entry)
+        │
+     SV-02 SAMPLE TAP (meter incoming used-water pH → set DV-02 routing)
         │
    3W-DV-02 ──────────────────────────────────────────→ (to IBC-4 waste if heavily loaded)
         │
@@ -190,7 +186,7 @@ The filter train uses a single 3-stage whole-house filter unit (a **4.5"×10"** 
 
 The 10" cartridges (~½ the media of a 20") were chosen to match the modeled housing size, so service intervals are correspondingly shorter (~½). The unit includes triple drain valves for flushing individual stages without disassembly. Equivalent 3-stage Big Blue units are available from Express Water, Geekpure, iSpring and others — any unit accepting standard 4.5"×10" cartridges with 1" NPT ports will work.
 
-**pH management:** Draw the post-filter sample at the **SV-01 sample tap** (½" valve + spout before 3W-DV-01) and meter it. If filtered water reads pH <6, do nothing — slightly acidic is preferred. If pH >7.5, add citric acid solution (10g citric acid in 1 liter water) via the dosing port in the IBC-3 outlet, stir, retest. Do not return water with pH >8 to the Blue system.
+**pH management:** Two pH sample taps are fitted. **SV-02** (½" valve + spout on the P-04 tray-drain discharge, before 3W-DV-02) lets the operator meter the incoming used water and choose the DV-02 routing — buffer to IBC-3 or divert straight to IBC-4 waste. **SV-01** confirms the cleaned water before it returns: draw the post-filter sample at the **SV-01 sample tap** (½" valve + spout before 3W-DV-01) and meter it. If filtered water reads pH <6, do nothing — slightly acidic is preferred. If pH >7.5, add citric acid solution (10g citric acid in 1 liter water) via the dosing port in the IBC-3 outlet, stir, retest. Do not return water with pH >8 to the Blue system.
 
 ### 4.3 Black System — Waste Containment
 
@@ -371,6 +367,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | 1/2" NPT polypropylene union | Maintenance disconnects on pump runs | 6 ea | Amazon | $24–$36 |
 | 1/2"×1" NPT bushing reducer | P-02 riser to F1 filter inlet | 1 ea | Amazon | $3–$5 |
 | S60×6 to 1" NPT adapter | IBC DN50 valve to 1" HDPE; PP S60×6 male × 1" NPT female | 8 ea | Amazon | $64–$120 |
+| 1" bulkhead tank-body fittings (Blue equalization cross-tie) | Low tank-body penetration in each Blue tote (IBC-1 + IBC-2) for the 1" equalization cross-tie that self-balances the two Blue levels (run made from the 1" HDPE stock). Cost est. | 2 ea | Amazon | $12–$24 |
 | 1" NPT spring check valve (CV1 — X1 gravity fill) | PVC body, EPDM seal, 1" FNPT × FNPT. Only CV-1 (X1 fill) remains — the Shurflo 2088 pumps have integral check valves, so CV-2/CV-3/CV-4 are redundant and dropped | 1 ea | Amazon | $8–$14 |
 | Thread seal tape (PTFE) | 1/2" wide, 260" roll | 4 roll | Home Depot | $8 |
 | [1/2" SDR-11 HDPE pipe](https://www.ferguson.com) | All pump-driven runs (80 ft); matches pump port size | 4 stick | Ferguson | $24–$40 |
@@ -387,7 +384,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bag | Amazon | $28 |
 | Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon | $20 |
 | Nitrile gloves, box of 100 | Size M/L | 2 box | Amazon | $28 |
-| **Water total** | | | | **$1,768–$2,566** |
+| **Water total** | | | | **$1,780–$2,590** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own

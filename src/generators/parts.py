@@ -801,6 +801,23 @@ def emit_system(sys: str) -> str:
     return "\n".join(rows)
 
 
+def emit_panel(panel: str) -> str:
+    """plumbing-report.md per-panel §Parts-List — the water-system equipment tagged to this plumbing
+    panel (Corridor / Pinhole Wall).  Panel-mounted equipment only; the full water BOM (pipe, totes,
+    external ports, consumables) lives in water-system-report.md's §Parts-List."""
+    items = [p for p in by_system("water") if p.panel == panel]
+    rows = ["| Item | Spec | Qty | Supplier | Est. cost |", "|------|------|-----|----------|-----------|"]
+    lo_t = hi_t = 0.0
+    for p in items:
+        lo, hi = line(p); lo_t += lo; hi_t += hi
+        cost = _money(lo) if round(lo) == round(hi) else f"{_money(lo)}–{_money(hi)}"
+        sup = canon_supplier(p.supplier) + (f" / {canon_supplier(p.supplier_alt)}" if p.supplier_alt else "")
+        rows.append(f"| {_item_cell(p)} | {_expand(p.spec) or '—'} | {p.qty:g} {p.unit} | {sup} | {cost} |")
+    tot = _money(lo_t) if round(lo_t) == round(hi_t) else f"{_money(lo_t)}–{_money(hi_t)}"
+    rows.append(f"| **{panel} Plumbing Panel total** | | | | **{tot}** |")
+    return "\n".join(rows)
+
+
 def emit_master() -> str:
     """The by-TYPE procurement BOM + the supplier-consolidation headline. Type sections and the rows
     within each are ordered ALPHABETICALLY (the table cuts across systems, so name is easiest to scan;
@@ -897,6 +914,9 @@ def _blocks() -> dict:
     # per-system §Parts-List blocks (Phase 2b) — only those already placed in their doc.
     for sys, doc in SYSTEM_DOC.items():
         b[sys] = (doc, lambda s=sys: emit_system(s))
+    # plumbing-report.md per-panel sub-lists (the two-panel split — water equipment by panel)
+    b["corridor-plumbing-panel"] = ("plumbing-report.md", lambda: emit_panel("Corridor"))
+    b["pinhole-wall-plumbing-panel"] = ("plumbing-report.md", lambda: emit_panel("Pinhole Wall"))
     return b
 
 

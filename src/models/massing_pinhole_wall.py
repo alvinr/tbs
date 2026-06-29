@@ -174,8 +174,9 @@ def kit():
     sv_y = yW + 75             # SV-01 projects only 75mm forward of the wall (cup access; was yL=230)
     p.append(cp.sample_valve("SV-01 sample valve", svx, sv_y, waist - 25, h=70))
     tipd = cp.DVB / 2 + cp.DVL                  # 33 — diverter port-stub tip reach
-    DCX, DCY, DCZ = 5230, cp.CTR_Y, 235        # DV-01 in the REAR corridor (behind the back-of-panel
-    #   risers at BLANE 5182, ahead of the IBC-4 merge at 5404), sitting on the surface lane
+    DCX, DCY, DCZ = 4700, cp.CTR_Y, 235        # DV-01 at the CORRIDOR-ENTRY TURN (just inside the mouth,
+    #   reachable from the right walkway): the single filtered line turns in here and splits; blue +
+    #   waste legs then run back across the corridor (low lane, under the ACC) to their destinations
     p.append(diverter("3W-DV-01", DCX, DCY, DCZ, run="x", branch="z+", handle="y-", color=ov.C_VALVE))
 
     # ── PLUMBING ──
@@ -230,8 +231,8 @@ def kit():
     #    on the tee run, so the two legs make ONE tote entry).
     mx, my, mz = cp.MERGE4
     pipe("DV-01 -> IBC-4 merge",
-         [(DCX, DCY, DCZ + tipd), (DCX, DCY, 320),                    # up off the branch
-          (mx, DCY, 320), (mx, my, 320),                             # +X then −Yd to the merge column
+         [(DCX, DCY, DCZ + tipd), (mx, DCY, DCZ + tipd),              # +X back across the corridor (under the ACC, z268<280)
+          (mx, my, DCZ + tipd),                                       # −Yd to the merge column
           (mx, my, mz)],                                              # rise into the merge tee's z− branch
          ov.C_IBC_WASTE)
     return "\n".join(p)

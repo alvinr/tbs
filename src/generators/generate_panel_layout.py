@@ -630,7 +630,7 @@ def _corridor_cross_section():
 #  Wide backing board with a HORIZONTAL filter bank high on the wall:
 #    P-02 (Brown recycle) + F-01/F-02/F-03 Big Blue filters, then SV-01 pH tap
 #    near the bottom-right; 3W-DV-01 lives off-board at the corridor mouth.
-#  Flow (left→right): IBC-3 Brown → BV-03 → P-02 → F-01 → F-02 → F-03 →
+#  Flow (right→left in this mirrored elevation): IBC-3 Brown → BV-03 → P-02 → F-01 → F-02 → F-03 →
 #                     SV-01 → 3W-DV-01 → (Blue recycle IBC-2 / Waste IBC-4).
 #  Matches the live 3D (massing_pinhole_wall.py: kit() + backing()).
 # ═══════════════════════════════════════════════════════════════════════════
@@ -641,7 +641,10 @@ def draw_pinhole_panel():
     PW_OX, PW_OZ = 90, 200             # drawing-unit origin offsets
     PW_KX = 0.62                       # X mm→unit (board ~1720mm → ~1066 units)
 
-    def pwx(x_mm): return PW_OX + (x_mm - PW_XL) * PW_KX
+    # MIRRORED X: +X (sealed end / corridor / DV-01) draws to the LEFT — this is
+    # the view standing INSIDE the container looking at the pinhole wall, so the
+    # filter train reads F-03→F-02→F-01 left-to-right and DV-01 exits off the left.
+    def pwx(x_mm): return PW_OX + (PW_XR - x_mm) * PW_KX
     def pwz(z_mm): return PW_OZ + (z_mm - PW_ZB)
 
     fig, ax_p = plt.subplots(1, 1, figsize=(16, 13), dpi=200)
@@ -651,8 +654,9 @@ def draw_pinhole_panel():
     ax_p.axis("off")
 
     def pw_rect(x, z, w, h, fc, ec=C_FRAME, lw=1.0, zorder=5, alpha=1.0):
+        # mirrored X: x+w is the LEFT screen edge (pwx decreases with x)
         ax_p.add_patch(mpatches.Rectangle(
-            (pwx(x), pwz(z)), w * PW_KX, h, fc=fc, ec=ec, lw=lw,
+            (pwx(x + w), pwz(z)), w * PW_KX, h, fc=fc, ec=ec, lw=lw,
             zorder=zorder, alpha=alpha))
 
     def pw_text(x, z, s, **kw):
@@ -726,9 +730,10 @@ def draw_pinhole_panel():
             va="center", fontsize=5, color=C_BROWN_EC, zorder=8)
 
     # ════════════════════════════════════════════════════════════════
-    #  FLOW — series, left→right along the head line at Z≈HEAD_Z
+    #  FLOW — series along the head line at Z≈HEAD_Z (P-02 right → F-01 → F-02 →
+    #  F-03 → SV-01 → DV-01 left, in this mirrored inside-the-container elevation)
     # ════════════════════════════════════════════════════════════════
-    EXIT_L = 2740                       # arrow/label margin on the left
+    EXIT_L = 2740                       # IBC-3 / BV-03 inlet margin (draws to the RIGHT, mirrored)
     F1_CX, F2_CX, F3_CX = 3300, 3638, 3976
     F1_XL, F1_XR = 3208, 3392
     F3_XR = 4068
@@ -764,21 +769,22 @@ def draw_pinhole_panel():
            "draw sample, meter, then set DV-01)",
            fs=6, color=C_BROWN, ha="left", va="bottom", font=FONT)
 
-    # SV-01 → 3W-DV-01: the filtered line leaves the board's bottom-right edge.
-    DV01_EDGE_X = BD_XR + 30            # just past the board right edge
+    # SV-01 → 3W-DV-01: the filtered line leaves the board's LEFT edge (mirrored
+    # view — the corridor mouth / DV-01 sits on the sealed-end/+X side).
+    DV01_EDGE_X = BD_XR + 40            # just past the board's (mirrored) left edge
     pw_pipe([SV01_X, DV01_EDGE_X], [SV01_Z, SV01_Z], C_FILTER, zorder=Z_BROWN)
     pw_arrow(DV01_EDGE_X - 30, SV01_Z, DV01_EDGE_X, SV01_Z, C_FILTER)
-    leader(ax_p, pwx(DV01_EDGE_X), pwz(SV01_Z), pwx(DV01_EDGE_X) + 24, pwz(SV01_Z),
-           "→ 3W-DV-01 (corridor mouth):\npH-gated split →\n"
+    leader(ax_p, pwx(DV01_EDGE_X), pwz(SV01_Z), pwx(DV01_EDGE_X) - 8, pwz(SV01_Z) - 150,
+           "3W-DV-01 (corridor mouth):\npH-gated split →\n"
            "Blue recycle (IBC-2) / Waste (IBC-4)",
-           fs=6, color=C_BROWN_EC, ha="left", va="center", font=FONT)
+           fs=6, color=C_BROWN_EC, ha="right", va="top", font=FONT)
 
     # ── DIMENSIONS ──────────────────────────────────────────────────
-    draw_dim_h(ax_p, pwx(BD_XL), pwx(BD_XR), pwz(BD_ZB - 50),
+    draw_dim_h(ax_p, pwx(BD_XR), pwx(BD_XL), pwz(BD_ZB - 50),
                f"{BD_XR - BD_XL}mm", offset=10, fs=7, color=C_DIM, font=FONT)
-    draw_dim_v(ax_p, pwx(BD_XL) - 36, pwz(BD_ZB), pwz(BD_ZT),
+    draw_dim_v(ax_p, pwx(BD_XL) + 40, pwz(BD_ZB), pwz(BD_ZT),
                f"{BD_ZT - BD_ZB}mm", offset=12, fs=7, color=C_DIM,
-               right=False, font=FONT)
+               right=True, font=FONT)
     ax_p.text(pwx(F3_CX) + 90, pwz(HEAD_Z) + 20,
               f"FILTER HEAD\nZ={int(HEAD_Z)}mm AFF", ha="left", va="bottom",
               fontsize=5.5, color=C_FILTER, zorder=10, **FONT)

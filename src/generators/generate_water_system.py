@@ -705,12 +705,12 @@ def draw_sheet2():
     EP_D_DU = 270 * SY                # ≈ 0.57 (corridor width)
     ax2.add_patch(plt.Rectangle((EP_X_DU, EP_Y_DU), EP_W_DU, EP_D_DU,
                   fc=C_FILT, ec="#F57F17", lw=2, zorder=2))
-    ax2.text(EP_X_DU + EP_W_DU/2, EP_Y_DU + EP_D_DU/2 + 0.08,
-             "EQUIPMENT PANEL", ha="center", fontsize=6.5,
-             fontweight="bold", color="#E65100", zorder=3)
-    ax2.text(EP_X_DU + EP_W_DU/2, EP_Y_DU + EP_D_DU/2 - 0.12,
-             "P-01–P-05, ACC-01, BV-01/02/07/08\nF1 → F2 → F3 (3-STAGE FILTER)",
-             ha="center", fontsize=5, color="#E65100", zorder=3)
+    # Panel box is a thin sliver between the IBC stacks — label it with a leader into
+    # the clear tray white space to the left so the text doesn't bury the IBC geometry.
+    leader(ax2, EP_X_DU, EP_Y_DU + EP_D_DU / 2,
+           EP_X_DU - 1.5, EP_Y_DU + EP_D_DU / 2 - 0.62,
+           "CORRIDOR PLUMBING PANEL\nP-01/P-03/P-04/P-05 · ACC-01\nDV-02 · SV-02 · BV-01/02/06",
+           fs=6, color="#E65100", ha="center")
 
     # Processing tray (304 SS, two panels, 50mm rim)
     TRAY_X0 = (FP_X_L + 20) * SX   # left edge in drawing units
@@ -1025,7 +1025,7 @@ def draw_sheet3():
 
     leader(ax3, (panel_local_x + 50), (panel_local_yd),
            (panel_local_x + 25), (panel_local_yd + 205),
-           "EQUIPMENT PANEL\n(P-04, FILTERS)", fs=6.5, color=C_PUMP)
+           "CORRIDOR PLUMBING PANEL\n(P-04 — tray drain)", fs=6.5, color=C_PUMP)
 
     ax3.text(((drain_local_x + corner_local_x) / 2), (pipe_rim_yd - 85),
              "P-04 SUCTION HOSE ALONG RIM EXTERIOR",
@@ -1372,7 +1372,7 @@ def draw_sheet4():
     ax4b.set_ylim((-66), (638))
 
     # Panel B title
-    ax4b.text((550), (650), "SECTION A-A — SUMP TO EQUIPMENT PANEL (AXES IN mm)",
+    ax4b.text((550), (650), "SECTION A-A — SUMP TO CORRIDOR PLUMBING PANEL (AXES IN mm)",
               ha="center", va="top", fontsize=10, fontweight="bold",
               color="#1A237E", zorder=10)
 
@@ -1482,7 +1482,7 @@ def draw_sheet4():
     # Destination leader
     leader(ax4b, (PANEL_YD), (EP_Z_TOP),
            (PANEL_YD + 80), (EP_Z_TOP + 30),
-           "EQUIPMENT PANEL (Yd=1046)\n"
+           "CORRIDOR PLUMBING PANEL (Yd=1046)\n"
            "P-04 Shurflo 2088 (Z=1400)\n"
            "3W-DV-02 diverter → IBC-3 / IBC-4",
            fs=6, color=C_PUMP, ha="left")
@@ -1579,7 +1579,7 @@ def draw_sheet4():
         EQPANEL_T / SC_C, 270 / SC_C,
         fc="#D4C8A0", ec="#A09060", lw=1.5, zorder=3))
     ax4c.text((EP_X + EQPANEL_T / 2), (CORRIDOR_YD_NEAR - 65),
-              f"EQUIPMENT PANEL (X={int(EQPANEL_X)})",
+              f"CORRIDOR PLUMBING PANEL (X={int(EQPANEL_X)})",
               ha="center", va="bottom", fontsize=5.5, color=C_PUMP,
               style="italic", zorder=4)
 
@@ -1615,7 +1615,7 @@ def draw_sheet4():
 
     leader(ax4c, (CORNER_X), ((RIM_EXT_YD_C + CORRIDOR_YD_NEAR) / 2),
            (CORNER_X + 60), (500),
-           "CROSSES TO\nEQUIPMENT PANEL\nAT TRAY CORNER", fs=6, color=C_BROWN)
+           "CROSSES TO\nCORRIDOR PLUMBING PANEL\nAT TRAY CORNER", fs=6, color=C_BROWN)
 
     # ── Dimensions ──────────────────────────────────────────────────────────────
     # Rim-to-panel Yd distance (vertical dim)
@@ -1639,7 +1639,7 @@ def draw_sheet4():
         "2. Tray floor raised to Z=20mm (sump depth).",
         "3. Shims taper 20-30mm (base + slope).",
         "4. Pickup tube lifts out for cleaning (no tools).",
-        "5. P-04: Shurflo 2088, 12V DC, self-priming, on equipment panel.",
+        "5. P-04: Shurflo 2088, 12V DC, self-priming, on the Corridor Plumbing Panel.",
         "6. Hose runs along tray rim exterior, P-clipped to rim.",
         "7. Tray slope exaggerated for clarity in elevation panels.",
     ]

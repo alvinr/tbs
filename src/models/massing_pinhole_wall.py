@@ -174,9 +174,10 @@ def kit():
     sv_y = yW + 75             # SV-01 projects only 75mm forward of the wall (cup access; was yL=230)
     p.append(cp.sample_valve("SV-01 sample valve", svx, sv_y, waist - 25, h=70))
     tipd = cp.DVB / 2 + cp.DVL                  # 33 — diverter port-stub tip reach
-    DCX, DCY, DCZ = 4700, cp.CTR_Y, 235        # DV-01 at the CORRIDOR-ENTRY TURN (just inside the mouth,
-    #   reachable from the right walkway): the single filtered line turns in here and splits; blue +
-    #   waste legs then run back across the corridor (low lane, under the ACC) to their destinations
+    DCX, DCY, DCZ = 4700, cp.CTR_Y + 60, 235   # DV-01 at the CORRIDOR-ENTRY TURN (just inside the mouth,
+    #   reachable from the right walkway), shifted +60mm AWAY from the pinhole wall (+Yd) — the practical
+    #   max at the mouth before the front-far frame upright (Yd1266+).  The single filtered line turns in
+    #   here and splits; blue + waste legs run back across the corridor (low lane, under the ACC)
     p.append(diverter("3W-DV-01", DCX, DCY, DCZ, run="x", branch="y-", handle="z+", color=ov.C_VALVE))
 
     # ── PLUMBING ──
@@ -218,15 +219,16 @@ def kit():
          [(svx, sv_y, waist), (svx, yW, waist), (xdrop, yW, waist),   # SV-01 → wall → +X along the wall at waist
           (xdrop, yW, sz),                                            # turn DOWN to the surface lane
           (cp.SUCT_XLANE, yW, sz),                                    # step +X to the gap lane
-          (cp.SUCT_XLANE, cp.CTR_Y, sz),                             # +Yd along the IBC −X face into the corridor
+          (cp.SUCT_XLANE, cp.CTR_Y, sz), (cp.SUCT_XLANE, DCY, sz),   # +Yd into the corridor, then +Yd to DV-01's lane
           (DCX - tipd, DCY, sz)],                                     # +X across the corridor floor to DV-01 IN (−X)
          ov.C_FILTER)
     # 5. DV-01 BLUE RECYCLE (run+, +X) → rise to the X1 fill CROSS at the corridor top — feeds both Blue
     #    totes alongside the X1 fresh fill (no direct tote entry, no CV-2; P-02 has an integral check).
     xUp = cp.X1_TEE_X - 60                         # 5440 — rise lane past the corridor frame
     pipe("DV-01 blue recycle -> X1 cross",
-         [(DCX + tipd, DCY, DCZ), (xUp, DCY, DCZ),                    # +X along the floor to the rise lane
-          (xUp, DCY, cp.X1_TEE_Z), (cp.X1_TEE_X, cp.CTR_Y, cp.X1_TEE_Z)], ov.C_BLUE)  # rise → into the cross −X port
+         [(DCX + tipd, DCY, DCZ), (DCX + tipd, cp.CTR_Y, DCZ),       # off the +X port, jog −Yd back to the corridor center
+          (xUp, cp.CTR_Y, DCZ), (xUp, cp.CTR_Y, cp.X1_TEE_Z),         # +X along the floor to the rise lane → rise
+          (cp.X1_TEE_X, cp.CTR_Y, cp.X1_TEE_Z)], ov.C_BLUE)           # → into the cross −X port
     # 6. DV-01 WASTE (branch, z+) → the shared IBC-4 merge tee's z− branch (DV-02's waste also lands here,
     #    on the tee run, so the two legs make ONE tote entry).
     mx, my, mz = cp.MERGE4

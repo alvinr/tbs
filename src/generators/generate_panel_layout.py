@@ -738,13 +738,17 @@ def draw_pinhole_panel():
     F1_XL, F1_XR = 3208, 3392
     F3_XR = 4068
 
-    # IBC-3 Brown → BV-03 → P-02 IN (left side of P-02, on the head line)
-    BV03_X = 2880
-    pw_pipe([EXIT_L, BV03_X, P2_XL], [HEAD_Z, HEAD_Z, HEAD_Z],
+    # IBC-3 Brown suction: the brown line drops from P-02's IN port straight DOWN
+    # to BV-03 (suction isolation, low at Z≈1000 in the 3D), then continues to the
+    # floor toward the IBC-3 (Brown) tote.  Flow is UPWARD (tote → BV-03 → P-02).
+    BV03_X = 2978                       # P-02 IN lane (3D X2960–2978)
+    BV03_Z = 1000                       # 3D BV-03 center Z≈1000
+    SUCT_FLOOR_Z = 250
+    pw_pipe([P2_XL, BV03_X, BV03_X], [HEAD_Z, HEAD_Z, SUCT_FLOOR_Z],
             C_BROWN, zorder=Z_BROWN)
-    pw_valve(BV03_X, HEAD_Z, "BV\n03", C_BROWN, half=18)
-    pw_arrow(EXIT_L, HEAD_Z, EXIT_L + 30, HEAD_Z, C_BROWN)
-    pw_text(EXIT_L - 8, HEAD_Z + 70, "FROM IBC-3\n(BROWN)", ha="center",
+    pw_valve(BV03_X, BV03_Z, "BV\n03", C_BROWN, half=18)
+    pw_arrow(BV03_X, SUCT_FLOOR_Z, BV03_X, SUCT_FLOOR_Z + 45, C_BROWN)
+    pw_text(BV03_X + 16, SUCT_FLOOR_Z + 4, "FROM IBC-3\n(BROWN)", ha="left",
             va="bottom", fontsize=6, color=C_BROWN, zorder=10)
 
     # P-02 OUT → F-01 IN, then F-01 → F-02 → F-03 (straight jumpers, head line)
@@ -901,6 +905,23 @@ def _pipe(xs, zs, fc, zorder=8):
                    zorder=zorder, sxf=_sid, szf=_sid)
 
 
+def _hpipe(z, x0, x1, fc, zorder=8, crosses=()):
+    """A horizontal back-of-panel run that CROSSES the spine risers without joining
+    them: gap-break the run at each riser X it passes (skill_plumbing_drawing §
+    crossings — the riser, in front on the spine, reads continuous)."""
+    g = 16
+    cuts = sorted(c for c in crosses if min(x0, x1) + g < c < max(x0, x1) - g)
+    a = x0
+    for c in cuts:
+        _pipe([a, c - g], [z, z], fc, zorder=zorder)
+        a = c + g
+    _pipe([a, x1], [z, z], fc, zorder=zorder)
+
+
+# spine riser X-lanes that the horizontal drain/recycle runs cross
+SPINE_RISERS = (5200, 5239, 5404)
+
+
 # ── Container shell context ──────────────────────────────────────────────
 _rect(4860, -90, 5933 - 4860, 90, C_WALLB, lw=0.8, z0=2, hatch="////")   # floor
 axb.text(4890, -45, "CONTAINER FLOOR", fontsize=6, va="center", color="#555", **FB)
@@ -977,12 +998,12 @@ DV01X = 4700                       # 3W-DV-01 X (corridor mouth, low ~Z235)
 # X4 WASTE — two grey runs: (a) the suction PICKUP riser climbs the spine from
 # the floor pickup to the pump; (b) the P-03 DISCHARGE runs high along the spine,
 # then drops to the X4 end-wall port (Z1620).
-_pipe([RX4, RX4, PUMP_BACK_X], [300, 1820, 1820], C_WASTEB, zorder=8)
-_pipe([PUMP_BACK_X, 5763, 5763, WALLX],
-      [1902, 1902, X4_PORT_Z, X4_PORT_Z], C_WASTEB, zorder=8)
+_pipe([RX4, RX4, PUMP_BACK_X], [300, 1820, 1820], C_WASTEB, zorder=11)   # suction riser (in front)
+_hpipe(1902, PUMP_BACK_X, 5763, C_WASTEB, zorder=6, crosses=SPINE_RISERS)   # discharge — gap-broken at risers
+_pipe([5763, 5763, WALLX], [1902, X4_PORT_Z, X4_PORT_Z], C_WASTEB, zorder=6)
 # X3 BROWN — P-05 discharge routed BEHIND the panel, rising to the X3 port (Z1700).
-_pipe([PUMP_BACK_X, 5763, 5763, WALLX],
-      [1502, 1502, X3_PORT_Z, X3_PORT_Z], C_BROWNB, zorder=9)
+_hpipe(1502, PUMP_BACK_X, 5763, C_BROWNB, zorder=6, crosses=SPINE_RISERS)   # gap-broken at risers
+_pipe([5763, 5763, WALLX], [1502, X3_PORT_Z, X3_PORT_Z], C_BROWNB, zorder=6)
 # DV-01 — pH-gated filter-output diverter, low at the corridor mouth; two legs:
 #   BLUE RECYCLE rises up the spine → X1 fill cross; WASTE → the IBC-4 merge tee.
 axb.add_patch(mpatches.Polygon(
@@ -991,8 +1012,8 @@ axb.add_patch(mpatches.Polygon(
 axb.text(DV01X, 305, "DV-01\n(corridor mouth)", fontsize=4.6, ha="center",
          va="bottom", color="#8A6D08", zorder=13, **FB)
 _pipe([DV01X, RX_BLUE, RX_BLUE, X1X],
-      [248, 248, X1_PORT_Z, X1_PORT_Z], C_BLUEB, zorder=7)
-_pipe([DV01X, MERGEX, MERGEX], [222, 222, 1214], C_WASTEB, zorder=6)
+      [248, 248, X1_PORT_Z, X1_PORT_Z], C_BLUEB, zorder=11)   # recycle riser (in front)
+_pipe([DV01X, MERGEX, MERGEX], [222, 222, 1214], C_WASTEB, zorder=11)   # DV-01 waste riser (in front)
 # X1 fill cross + the IBC-4 merge tee, both consolidated on the spine.
 axb.add_patch(mpatches.Circle((X1X, X1_PORT_Z), 16, facecolor="white",
               edgecolor=C_BLUEB, lw=1.4, zorder=12))
@@ -1009,8 +1030,9 @@ axb.add_patch(mpatches.Polygon(
     fc="white", ec="#B8860B", lw=1.4, zorder=12))
 axb.text(DV02X, 2145 + 30, "DV-02", fontsize=5, ha="center", va="bottom",
          color="#8A6D08", zorder=13, **FB)
-_pipe([DV02X, DV02X, MERGEX, MERGEX],
-      [2145 - 18, 1290, 1290, 1244], C_WASTEB, zorder=7)   # DV-02 waste → merge
+_pipe([DV02X, DV02X], [2145 - 18, 1290], C_WASTEB, zorder=6)              # DV-02 waste drop
+_hpipe(1290, DV02X, MERGEX, C_WASTEB, zorder=6, crosses=SPINE_RISERS)     # gap-broken at risers
+_pipe([MERGEX, MERGEX], [1290, 1244], C_WASTEB, zorder=11)                # into the merge tee
 # P-clips fastening the spine risers (suction pickup, blue recycle, DV-01 waste).
 for rx, zt in [(RX4, 1800), (RX_BLUE, X1_PORT_Z), (MERGEX, 1214)]:
     for i in range(4):

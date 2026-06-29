@@ -637,9 +637,10 @@ def drains_ports():
     #   then STRAIGHT horizontal through the panel + shirt → BV-06 → ↑ → −Yd stub into the IN port
     p.append(ball_valve("BV-06 (P-03 suction)", PXC, bvy, p3i[2] - 41, "z", hdir="-x"))   # vertical; handle faces the −X walkway/operator
     p.append(ov.ruby_cylinder("X4 Waste drain port (end wall)", ew - 60, COL_R, 1620, 22, 60, color=C_CHECK, axis="x"))
-    pipe("P-03 -> X4 end-wall port",   # OUT leaves with a +Yd stub straight out of the OUT port
-         [p3o, (PXC, POY + 30, p3o[2]), (5090, POY + 30, p3o[2]), (5090, COL_R, p3o[2]),
+    pipe("P-03 -> X4 end-wall port",   # OUT → ONE −Yd elbow at the pump onto the X4 spine lane, then STRAIGHT
+         [p3o, (PXC, COL_R, p3o[2]),   #   +X through the shirt + panel (round holes) and along the spine to the
           (ew - 130, COL_R, p3o[2]), (ew - 130, COL_R, 1620), (ew - 60, COL_R, 1620)], ov.C_IBC_WASTE)
+    #   end wall — no chase turn; the old route jogged out past the shirt and crossed only the panel
     return "\n".join(p)
 
 

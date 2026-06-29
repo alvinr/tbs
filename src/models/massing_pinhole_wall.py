@@ -383,7 +383,12 @@ def build():
                          ("Corridor rear panel", "Corridor Panel", cp.rear_panel()),
                          ("Corridor equipment", "Corridor Equipment", cp.equipment()),
                          ("Corridor plumbing", "Corridor Plumbing", cp.plumbing()),
-                         ("Corridor drains + X-ports", "Corridor Drains", cp.drains_ports())]:
+                         ("Corridor drains + X-ports", "Corridor Drains", cp.drains_ports()),
+                         # SOLID (non-ghost) copies of the two plywood panels, on their own tags — shown
+                         # only in the "Plumbing (labeled)" scene so the panels read full-color there while
+                         # the overview scenes keep the muted "Corridor Panel"/"Backing" versions.
+                         ("Corridor panel (solid)", "Corridor Panel Solid", cp.rear_panel()),
+                         ("Wall backing (solid)", "Backing Solid", backing())]:
         comps.append(ov.component(name, tag, b)); tags.add(tag)
     tags.add("Labels"); tags.add("Labels Context")
     body = "\n".join(comps)
@@ -449,7 +454,7 @@ def scene(model, name, on)
   pg
 end
 scene(model, "Plumbing", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
-scene(model, "Plumbing (labeled)", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","Labels"])
+scene(model, "Plumbing (labeled)", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","Labels","Corridor Panel Solid","Backing Solid"])
 scene(model, "Plumbing + IBC", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","IBC","IBC Frame","Corridor Frame","Corridor Panel"])
 scene(model, "Overall", ["Context","Walkway","Film Plane","Processing Tray","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
 scene(model, "Labeled", ["Context","Walkway","Film Plane","Processing Tray","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains","Labels","Labels Context"])

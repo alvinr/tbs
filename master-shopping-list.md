@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
 | 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,454 | $3,914 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $4,270 | $6,359 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $4,485 | $6,739 |
 | 6. Electrical — power, circuits, wiring | $2,110 | $2,660 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,385 | $2,070 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $855 | $1,430 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,210 | $2,980 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$21,250** | **~$31,826** |
+| **TOTAL (base build + 50-print run)** | **~$21,465** | **~$32,206** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -213,6 +213,7 @@ indicative low–high estimates — get quotes before ordering.
 | 316 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black | 1 ea | McMaster-Carr | panel | $20–$35 |
 | Cam-lever spring clamp | 92 ea | McMaster-Carr | clamp | $276–$736 |
 | Continuous (piano) hinge, 600 mm | 1 ea | McMaster-Carr | shelf | $20 |
+| Corridor panel mount hardware (brackets + fasteners) | 1 lot | Home Depot | water | $25–$50 |
 | Door & access upgrades | 1 lot | Home Depot | interior | $50–$100 |
 | Folding shelf stays/brackets | 2 ea | Amazon | shelf | $24 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
@@ -244,7 +245,7 @@ indicative low–high estimates — get quotes before ordering.
 | Stainless fasteners + nylon isolation washers | 1 lot | McMaster-Carr | lightlock | $30–$50 |
 | Top + bottom wall stays + 4-bolt anchor plates | 2 set | McMaster-Carr | swing | $90–$160 |
 | Transport latch (over-center/barrel) | 1 ea | Amazon | shelf | $8 |
-| **fasteners-hardware subtotal** | | | | **$1,307–$2,200** |
+| **fasteners-hardware subtotal** | | | | **$1,332–$2,250** |
 
 ### plastics-sheet
 
@@ -367,10 +368,12 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
+| Corridor plumbing-panel marine ply (18mm) | 1 sheet | marine plywood supplier | water | $120–$200 |
 | Exterior-grade plywood (Fan B mount band) | 1 2'×4' ¾" panel | Home Depot | panel | $30–$50 |
 | Phenolic-faced plywood (work surface) | 1 4'×8' ¾" sheet | Home Depot | shelf | $60 |
 | Plywood base plate (cooler stowage) | 1 2'×4' ½" panel | Home Depot | ventilation | $8 |
-| **timber-ply subtotal** | | | | **$98–$118** |
+| Pump-mount shirt marine ply (25mm) | 1 piece | marine plywood supplier | water | $70–$130 |
+| **timber-ply subtotal** | | | | **$288–$448** |
 
 ### tools-safety
 
@@ -417,7 +420,7 @@ indicative low–high estimates — get quotes before ordering.
 | McNichols | 3 | fasteners-hardware, plastics-sheet | $1,045–$1,365 |
 | Photographers' Formulary | 2 | chemistry-reagents | $1,195 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
-| Home Depot | 19 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety | $804–$984 |
+| Home Depot | 20 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety | $829–$1,034 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
 | Renogy | 3 | electrical-power | $829 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
@@ -426,6 +429,7 @@ indicative low–high estimates — get quotes before ordering.
 | Grimco | 1 | plastics-sheet | $510 |
 | Roton Products | 2 | bearings-motion | $428 |
 | altE Store | 2 | electrical-power | $350 |
+| marine plywood supplier | 2 | timber-ply | $190–$330 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | Victron | 1 | electrical-power | $275 |
 | Waytek Wire | 7 | electrical-distribution | $208 |

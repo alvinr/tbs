@@ -205,6 +205,8 @@ PARTS: list[Part] = [
          "water", 1, "ea", 3, 5, "Amazon", spec="P-02 riser to F1 filter inlet"),
     Part("s60-adapter", 'S60×6 to 1" NPT adapter', "plumbing-fittings",
          "water", 8, "ea", 8, 15, "Amazon", spec='IBC DN50 valve to 1" HDPE; PP S60×6 male × 1" NPT female'),
+    Part("blue-equalization-tie", '1" bulkhead tank-body fittings (Blue equalization cross-tie)', "plumbing-fittings",
+         "water", 2, "ea", 6, 12, "Amazon", spec='Low tank-body penetration in each Blue tote (IBC-1 + IBC-2) for the 1" equalization cross-tie that self-balances the two Blue levels (run made from the 1" HDPE stock). Cost est.'),
     Part("check-valve-1in", '1" NPT spring check valve (CV1 — X1 gravity fill)', "plumbing-fittings",
          "water", 1, "ea", 8, 14, "Amazon", spec='PVC body, EPDM seal, 1" FNPT × FNPT. Only CV-1 (X1 fill) remains — the Shurflo 2088 pumps have integral check valves, so CV-2/CV-3/CV-4 are redundant and dropped'),
     Part("ptfe-tape", "Thread seal tape (PTFE)", "adhesives-finishes",

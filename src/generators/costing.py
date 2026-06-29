@@ -165,7 +165,7 @@ WATER = [
     LineItem("IBC stacking frame (RHS restraint portal + feet + retaining bars + hangers + fab)", 955, 1205, 1455),
     LineItem("Pumps and accumulator (P-01..P-05 + ACC-01, 5× mount brackets)", 390, 405, 420),
     LineItem("Filter skid (3× Big Blue housings + cartridges)", 282, 364, 445),
-    LineItem("Valves and fittings (6× BV ball valves, X1 4-way cross, S60×6 adapters, CV1, SV-01 + SV-02 taps)", 345, 468, 591),
+    LineItem("Valves and fittings (6× BV ball valves, X1 4-way cross, S60×6 adapters, CV1, SV-01 + SV-02 taps, Blue equalization tie)", 357, 486, 615),
     LineItem("Pipe (HDPE, spray bar)", 80, 97, 114),
     LineItem("Processing tray (304 SS panels + fabrication, shim strips, sump pickup, liner, hardware)", 1300, 1660, 2015),
     LineItem("Spray bar assembly (beam, LDPE pipe, 26 nozzles, manifold + 7 feed tubes, 4 wheels, ball joint, arm, hose)", 235, 267, 299),
@@ -944,9 +944,9 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 909,  "total": 1210, "per_print": 24},  # 909 not 910: consistent ferri rounding ($104, not the doc's hand-rounded $105)
     "standard": {"chem": 1353, "total": 1650, "per_print": 33},
     "rich":     {"chem": 2681, "total": 2980, "per_print": 60},
-    "grand_total": (21288, 26981, 34742),  # water rebalance (panel-split cascade): +P-05/+SV-02/+bracket/−2 CV/+X1 cross/BV reconcile
+    "grand_total": (21300, 26999, 34766),  # + Blue equalization tie (2× 1" bulkhead tank fittings, +$12/+$24)
     "walkway": (2000, 2488, 2975),   # §6a fab line raised so bracket scope matches walkway-report §10 ($742–$1,255 all-in)
-    "water": (4258, 5300, 6335),   # panel-split cascade 2026-06-28: +P-05 pump, +SV-02, +5th bracket, −2 CV; +X1 4-way cross, BVs reconciled to the water-system sheet (6× 1/2" BV, drop stale 3/4")
+    "water": (4270, 5318, 6359),   # panel-split cascade 2026-06-28: +P-05 pump, +SV-02, +5th bracket, −2 CV; +X1 4-way cross, BVs reconciled to the water-system sheet (6× 1/2" BV, drop stale 3/4"); +Blue equalization tie
     "container": (2300, 3300, 4300),
     "lightlock": (1385, 1728, 2070),   # §6 = hinged-panel §8.2 (housing + drum) line items
     "swingpivot": (855, 1143, 1430),   # §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items

@@ -120,7 +120,7 @@ rated for a full upper tote.
 The frame carries **no vertical service load** (the totes stack on themselves), so there
 is no platform-beam bending case. The governing check is **transport restraint**: the
 front retaining bars + D-ring lashing must resist the totes' inertia under
-braking/cornering (loaded mass 5,124 kg, worst-case CG at Z=1,341mm — see the
+braking/cornering (loaded mass 5,130 kg, worst-case CG at Z=1,340mm — see the
 [weight-distribution report](weight-distribution-report.md)).
 
 - **Front retaining bars** (50×20×3 RHS) span wall→upright (~1,046mm) and take each tote's

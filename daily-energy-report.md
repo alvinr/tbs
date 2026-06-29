@@ -80,7 +80,7 @@ energy — the cooling load is the real consumer.
 
 The Brown (IBC-3) and Waste (IBC-4) totes are evacuated to the sealed end-wall ports —
 **Brown → X3 via P-05**, **Waste → X4 via P-03** ([Plumbing Panel
-Report §4.3](plumbing-panel-report.md), [Water System Report §6](water-system-report.md))
+Report §4.3](plumbing-report.md), [Water System Report §6](water-system-report.md))
 — only at a **resupply / dump run**, when the clean-water supply is replenished. That
 service interval is set by the Blue water (~14 prints ≈ 4.7 days at 3/day, §8.2), so the
 totes are emptied roughly **every ~4.7 days, not every evening** — the camera can sit on
@@ -192,7 +192,7 @@ all, that — not power or fresh water — becomes the hard stop.
 
 1. [Electrical Report §3](electrical-report.md) — power budget and the per-session itemized energy.
 2. [Water System Report §6](water-system-report.md) — pump runtimes, wash cycles, and the Brown/Waste drain-out path.
-3. [Plumbing Panel Report §4.3](plumbing-panel-report.md) — P-03 (Waste evac) and P-05 (Brown drain) duties; the ~120 L gravity-drain residual.
+3. [Plumbing Report §4.3](plumbing-report.md) — P-03 (Waste evac) and P-05 (Brown drain) duties; the ~120 L gravity-drain residual.
 4. [Cost Analysis](cost-analysis-report.md) — the manual-actuation decision (Circuit F unused in the standard build).
 
 *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

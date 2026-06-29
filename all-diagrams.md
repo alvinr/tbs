@@ -170,7 +170,7 @@
 
 ![TBS-001 IBC Stacking — Sheet 2: Fastening Details](assets/ibc-stacking-sheet2.png)
 
-![TBS-001 IBC Stacking — Sheet 3: External Plumbing Panel Elevation](assets/ibc-stacking-sheet3.png)
+![TBS-001 IBC Stacking — Sheet 3: External Bulkhead Ports Elevation](assets/ibc-stacking-sheet3.png)
 
 ![TBS-001 IBC Stacking — Sheet 4: Internal Plumbing Plan View](assets/ibc-stacking-sheet4.png)
 

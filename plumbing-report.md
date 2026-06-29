@@ -358,37 +358,45 @@ Pipes enter and exit the panel zone at the left and right panel edges:
 
 ## 9. Parts List
 
-| # | Item | Specification | Qty | Est. Cost |
-|---|------|--------------|-----|-----------|
-| 1 | Marine plywood panel | 18mm BS 1088, 270×2,060mm | 1 | $40–$65 |
-| 2 | Shurflo 2088-554-144 pump | 12VDC, 3.5 GPM, 45 PSI, self-priming diaphragm | 5 | $275–$350 |
-| 3 | Shurflo pump mounting bracket | Stainless steel, for 2088 series | 5 | $40–$60 |
-| 4 | Pressure accumulator (ACC-01) | 0.75L (23.5 oz), 1/2" NPT port | 1 | $25–$40 |
-| 5 | Big Blue filter housing 4.5"×10" | Standard 1" NPT head, with clamp and wrench | 3 | $60–$90 |
-| 6 | F-01 cartridge — 5μm MPP sediment | 4.5"×10" Big Blue format | 1 | $8–$15 |
-| 7 | F-02 cartridge — KDF-55 heavy metal | 4.5"×10" Big Blue format | 1 | $20–$35 |
-| 8 | F-03 cartridge — CTO carbon block | 4.5"×10" Big Blue format | 1 | $10–$18 |
-| 9 | Slotted angle frame | 25×25×3mm slotted steel angle, cut and bolted | 1 set | $20–$35 |
-| 10 | Filter backing board | 18mm plywood, within frame | 1 | $10–$15 |
-| 11 | U-bracket clamps (filter) | Steel, with HDPE spacer blocks | 3 sets | $15–$25 |
-| 12 | Ball valve BV-01 | 1/2" FNPT, full-port, quarter-turn | 1 | $8–$12 |
-| 13 | Ball valve BV-02 | 1/2" FNPT, full-port, quarter-turn | 1 | $8–$12 |
-| 14 | Ball valve BV-06 | 3/4" FNPT, polypropylene, quarter-turn | 1 | $8–$12 |
-| 15 | Ball valve BV-07 | 1/2" FNPT, full-port | 1 | $8–$12 |
-| 16 | Ball valve BV-08 | 1/2" FNPT, full-port | 1 | $8–$12 |
-| 17 | 3-way diverter valve 3W-DV-01 | 1" FNPT, L-port or T-port, HDPE compatible | 1 | $18–$30 |
-| 18 | 3-way diverter valve 3W-DV-02 | 1/2" FNPT, L-port or T-port, HDPE compatible | 1 | $12–$22 |
-| 19 | Check valve CV-1/CV-3/CV-4 | 1" NPT, PVC body, EPDM seal, spring-loaded | 3 | $24–$42 |
-| 20 | 1/2" HDPE pipe (Sch 40) | Pump suction/discharge runs, ~20m total | 1 lot | $30–$50 |
-| 21 | 1" HDPE pipe (Sch 40) | Filter inter-stage + IBC connections, ~8m | 1 lot | $25–$40 |
-| 22 | 1/2" HDPE fittings | Elbows, tees, couplings, adapters | 1 lot | $30–$50 |
-| 23 | 1" HDPE fittings | Elbows, tees, reducers (1"→1/2") | 1 lot | $20–$35 |
-| 24 | Banjo polypropylene fittings | Ball valves, elbows, tees (Banjo LE/V series) | 1 lot | $25–$40 |
-| 25 | 1/2" reinforced braided PVC hose | 4m, BV-02 to spray bar center feed | 1 | $12–$20 |
-| 26 | 1" reinforced suction hose | 6 ft, P-04 sump pickup over tray rim | 1 | $12–$20 |
-| 27 | Panel mounting L-brackets + M10 bolts | Connects panel to IBC frame uprights | 4 sets | $15–$25 |
-| 28 | Sample tap SV-01 | 1/2" PP ball valve + barb spout + 1"×1/2" branch tee, on the filtered line before DV-01 | 1 | $10–$18 |
-| | **Total** | | | **$835–$1,328** |
+The panel-mounted equipment for each plumbing panel is listed below — generated from the parts
+registry (firm low–high bands, April-2026 indicative basis). The **full** water-system BOM (pipe,
+fittings, IBC totes, external bulkhead ports, wiring, consumables) is in the
+[Water System Report](water-system-report.md) §Parts-List; the panel ply/backing and mounting
+hardware are sourced there and in the IBC stacking frame line.
+
+> **Ball valves (BV-0x) pending:** the pump-suction and supply isolation valves are not yet split
+> per panel — that inventory is being reconciled against the as-built model. They appear in the
+> Water System Report's valve line for now.
+
+### 9.1 Corridor Plumbing Panel
+
+<!-- BEGIN parts:corridor-plumbing-panel -->
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| [Shurflo 2088-554-144 pump (P-01 Blue supply)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 1 ea | Amazon | $55–$70 |
+| Shurflo 2088-554-144 pump (P-03 waste evacuation) | 12VDC, 3.5 GPM, 45 PSI; empties IBC-4 residual below X4 (~120L) | 1 ea | Amazon | $65 |
+| Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 12VDC, 3.5 GPM, 45 PSI; tray drain to IBC-3 (~900mm lift) | 1 ea | Amazon | $65 |
+| Shurflo 2088-554-144 pump (P-05 Brown drain) | 12VDC, 3.5 GPM, 45 PSI; evacuates IBC-3 (Brown) residual to the X3 end-wall port | 1 ea | Amazon | $65 |
+| [SeaFlo accumulator (0.75 L)](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) (SFAT-075-125-01) | 0.75 L, 125 PSI, 1/2" MNPT | 1 ea | Amazon | $35 |
+| 3-way diverter valve 1/2" FNPT | L/T-port HDPE-compatible; 3W-DV-02 (tray drain) | 1 ea | Amazon | $12–$22 |
+| pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | pH sample on the P-04 tray-drain discharge, before 3W-DV-02; same build as SV-01 | 1 ea | Amazon | $10–$18 |
+| **Corridor Plumbing Panel total** | | | | **$307–$340** |
+<!-- END parts:corridor-plumbing-panel -->
+
+### 9.2 Pinhole Wall Plumbing Panel
+
+<!-- BEGIN parts:pinhole-wall-plumbing-panel -->
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| [Shurflo 2088-554-144 pump (P-02 filter loop)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 1 ea | Amazon | $55–$70 |
+| Big Blue filter housing (4.5"×10") | Ø184×333mm/housing, 1" NPT ports, integrated bracket (Express Water / Geekpure / iSpring) | 1 ea | Amazon | $200–$300 |
+| MPP 5-micron sediment cartridge 4.5"×10" | Melt-blown polypropylene depth filter (F-1 stage) | 3 ea | Amazon | $18–$30 |
+| KDF-55 heavy-metal cartridge 4.5"×10" | KDF-55 media for dissolved iron/metal removal (F-2 stage) | 2 ea | Amazon | $40–$70 |
+| CTO carbon block cartridge 4.5"×10" | Coconut shell activated carbon block (F-3 stage) | 3 ea | Amazon | $24–$45 |
+| 3-way diverter valve 1" FNPT | L/T-port; 3W-DV-01 (filter output) | 1 ea | Amazon | $18–$30 |
+| pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | Filtered-water sample draw before 3W-DV-01; Banjo V050FP 1/2" PP ball valve + downturned 1/2" hose barb on a 1"×1/2" reducing branch tee, panel face above spill line | 1 ea | Amazon | $10–$18 |
+| **Pinhole Wall Plumbing Panel total** | | | | **$365–$563** |
+<!-- END parts:pinhole-wall-plumbing-panel -->
 
 ---
 

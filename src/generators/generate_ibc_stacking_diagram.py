@@ -302,7 +302,7 @@ def sheet1():
         f"4. {IBC_GAP}mm plumbing corridor between columns for internal pipe routing.",
         "5. Front retaining bars (4x, Z560 + Z1760) at the IBC front stop the totes sliding out; wall ends drop into Simpson-style joist hangers.",
         f"6. D-ring lashing holders on the front bars ({DRING_WLL}kg WLL); ratchet straps over each stack tie down to them.",
-        f"7. External plumbing panel moved forward to the corridor mouth for operator access (see Sheets 3-5).",
+        f"7. Corridor Plumbing Panel moved forward to the corridor mouth for operator access (see Sheets 3-5).",
     ]
     draw_notes(ax, notes, (C_WID), (Z_LO + 425), spacing=(22),
                fs=7, ha="left", font=FONT, width=1800)
@@ -530,7 +530,7 @@ def sheet2():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 3 — External Plumbing Panel Elevation
+# SHEET 3 — External Bulkhead Ports Elevation
 #
 # View from outside the container, looking at the sealed end wall.
 # Shows 3 ports stacked vertically on the container centerline:
@@ -735,7 +735,7 @@ def sheet3():
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
-        "EXTERNAL PLUMBING PANEL NOTES:",
+        "EXTERNAL BULKHEAD PORT NOTES:",
         "1. 3x 2\" NPT bulkhead unions through sealed end wall on container centerline.",
         "2. 6mm mild steel reinforcing plate welded to wall interior before penetrations.",
         "3. Type DC camlock fittings (2\" aluminum) on exterior face — quick-connect for fill hose (X1) and drain hose (X3/X4).",
@@ -749,7 +749,7 @@ def sheet3():
     # ── Title block ──────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 5",
                 drawing_title="IBC STACKING & SECURING",
-                subtitle="EXTERNAL PLUMBING PANEL — END WALL ELEVATION",
+                subtitle="EXTERNAL BULKHEAD PORTS — END WALL ELEVATION",
                 scale_note="Axes in mm - VIEW FROM OUTSIDE",
                 height=0.06)
 
@@ -2008,7 +2008,7 @@ if __name__ == "__main__":
     print("Generating IBC stacking diagrams...")
     sheet1()  # cross-section elevation -> ibc-stacking-sheet1.png
     sheet2()  # fastening details -> ibc-stacking-sheet2.png
-    sheet3()  # external plumbing panel -> ibc-stacking-sheet3.png
+    sheet3()  # external bulkhead ports -> ibc-stacking-sheet3.png
     sheet4()  # internal plumbing plan -> ibc-stacking-sheet4.png
     sheet5()  # internal plumbing elevation -> ibc-stacking-sheet5.png
     print("Done.")

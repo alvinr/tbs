@@ -368,7 +368,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Chemistry Prep Shelves](chemistry-prep-shelves.md) | Two fold-down shelves on pinhole wall for cyanotype chemistry mixing and materials staging |
 | [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) | 304 SS processing tray and telescoping spray bar gantry — construction, operation, and parts list |
 | [Hinged Light-Trap Panel](hinged-panel-report.md) | Stepped cargo-door panel with revolving drum light trap, ~56° transport swing about the pivot, and light seal design |
-| [IBC Stacking System](ibc-stacking-report.md) | 2×2 IBC stack with welded stacking frame, external plumbing panel, and internal pipe routing |
+| [IBC Stacking System](ibc-stacking-report.md) | 2×2 IBC stack with welded stacking frame, external bulkhead ports, and internal pipe routing |
 | [Perimeter Walkway](walkway-report.md) | 4-section walkway system — wall-cantilevered, right-end cantilever rectangle, and lift-out designs with zero tray contact |
 | [Right Walkway Cantilever (decision record)](right-walkway-cantilever-study.md) | Decision record (adopted, rev12): why the ceiling-hung right walkway was replaced by a cantilever rectangle tied to the IBC frame + side walls — and the first-order load check. As-built in [Walkway §4](walkway-report.md). |
 | [Process Comparison (alt processes)](process-comparison.md) | Cost comparison of the alternative photographic processes considered and rejected (gum bichromate, Van Dyke Brown, salt, Ilford RC, Liquid Light) vs the chosen cyanotype — the procurement is in the [Chemistry Shopping List](chemistry-shopping-list.md). |

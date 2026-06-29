@@ -1594,10 +1594,8 @@ def sheet5():
     _draw_valve_elev(ax, d3_yd,
                      drain_conn_z + (EXT_DRAIN_3_H - drain_conn_z) * 0.45,
                      C_PIPE_BROWN, "V3")
-    # CV3 check valve — prevents backflow from bulkhead into IBC-3
-    cv3_yd = cl_yd + bh_outer_r + 50
-    _draw_check_valve_h(ax, cv3_yd, EXT_DRAIN_3_H, C_PIPE_BROWN, "CV3",
-                        flow_dir="right")
+    # No discrete check valve on X3 — the P-05 Shurflo 2088 pump has an integral
+    # one-way check, so backflow into IBC-3 is already prevented (CV-3 dropped).
     # Flow arrow toward wall
     ax.annotate("", xy=((cl_yd - 5), (EXT_DRAIN_3_H)),
                 xytext=((cl_yd - 70), (EXT_DRAIN_3_H)),
@@ -1625,10 +1623,8 @@ def sheet5():
     _draw_valve_elev(ax, d4_yd,
                      drain_conn_z + (EXT_DRAIN_4_H - drain_conn_z) * 0.45,
                      C_PIPE_BLACK, "V4", lside="left")
-    # CV4 check valve — prevents backflow from bulkhead into IBC-4
-    cv4_yd = cl_yd - bh_outer_r - 50
-    _draw_check_valve_h(ax, cv4_yd, EXT_DRAIN_4_H, C_PIPE_BLACK, "CV4",
-                        flow_dir="left")
+    # No discrete check valve on X4 — the P-03 Shurflo 2088 pump has an integral
+    # one-way check, so backflow into IBC-4 is already prevented (CV-4 dropped).
     ax.annotate("", xy=((cl_yd + 5), (EXT_DRAIN_4_H)),
                 xytext=((cl_yd + 70), (EXT_DRAIN_4_H)),
                 arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BLACK, lw=1.5))
@@ -1827,7 +1823,7 @@ def sheet5():
             [y_cv - (cv_vs + 3), y_cv + (cv_vs + 3)],
             color=C_OUT, lw=1.8, zorder=16)
     ax.text(leg_x + (-10), y_cv,
-            "CHECK VALVE (1\" NPT spring — prevents backflow on all bulkhead lines)",
+            "CHECK VALVE (1\" NPT spring — CV-1 only, on the X1 gravity-fill line)",
             ha="left", va="center", fontsize=5.5, color=C_DIM,
             **FONT, zorder=15)
 
@@ -1862,7 +1858,8 @@ def sheet5():
         "7. Ball valves: Banjo V100FP 1\" polypropylene full-port, quarter-turn. All hand-operated.",
         "8. Drains are PUMPED: P-05 (Brown) → X3 (Z=400mm), P-03 (Waste) → X4 (Z=200mm) — gravity head is insufficient at these port heights.",
         "9. 90° elbows (Banjo LE100) at all bends. Flanges at all bulkhead and IBC connections.",
-        "10. Check valves CV1/CV3/CV4 (1\" NPT spring check) on all three bulkhead lines — prevents backflow through bulkhead unions.",
+        "10. Check valve CV-1 only (1\" NPT spring check) on the X1 gravity-fill line. The X3/X4 drains are pump-driven (P-05/P-03); the Shurflo",
+        "    2088 pumps have integral one-way checks, so no discrete CV is fitted there (CV-3/CV-4 dropped).",
         "11. RECYCLE: P-04 draws from the tray sump and feeds IBC-3 (Brown) via a SIDE-ENTRY near the top (3W-DV-02 selects IBC-3 or IBC-4). Brown",
         "    is then pumped (P-02) through the 3-stage filter; 3W-DV-01 recycles pH-OK filtrate to IBC-2 (Blue) via side-entry, else to IBC-4.",
         "12. ALL tote-top connections are SIDE-ENTRY near the top (fill, recycle return, reject, sump) — no top-cap access anywhere (52mm headroom).",

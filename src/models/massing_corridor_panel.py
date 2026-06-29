@@ -160,8 +160,10 @@ def rear_panel():
     # risers (X4 waste at x≈5200, blue recycle at x≈5440) so they P-clip to it; tied to the frame
     # top/bottom rings.  Placed at Yd1183 (between the two risers) — clear of the merge (Yd1116) and
     # the X1 cross (x>5470).
-    p.append(ov.ruby_box("Drain-riser backing spine (18mm ply)", BACK_X, 1183, 250,
-                         5460 - BACK_X, 18, 1950, color=ov.C_PLY))
+    p.append(ov.ruby_box("Drain-riser backing spine (18mm ply)", BACK_X, 1206, 280,
+                         5460 - BACK_X, 18, 1920, color=ov.C_PLY))   # −Yd face at 1206 = the grey X4-waste
+    #   riser's far edge, so it CLAMPS to the face (not embedded); bottom raised to 280 to clear the
+    #   low waste pickup (z247-268)
     return "\n".join(p)
 
 

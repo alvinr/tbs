@@ -104,7 +104,7 @@ fold the liner around the sump pickup tube.
 | Film plane rails at X=<!-- BEGIN fact:film_plane_left_x_mm -->150<!-- END fact:film_plane_left_x_mm --> and X=<!-- BEGIN fact:film_plane_right_x_mm -->4,649<!-- END fact:film_plane_right_x_mm --> | 20mm gap between tray edge and rail | Clear |
 | Spray bar (rides on tray floor beneath walkway grating) | Top clamp plate at Z=63mm (nut ~66mm), grating bottom at Z=75mm | Clear |
 | IBCs (X=4,674+, right end zone) | Tray ends at X=4,629 — 45mm gap | Clear |
-| Pump manifold (plumbing panel at Yd=1,046) | Suction hose routes over near rim exterior | Clear |
+| Pump manifold (Corridor Plumbing Panel at Yd=1,046) | Suction hose routes over near rim exterior | Clear |
 
 ### 2.6 Permanent Installation
 

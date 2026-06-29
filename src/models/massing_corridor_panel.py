@@ -165,11 +165,8 @@ def rear_panel():
     #   X4-waste riser's far edge, so it CLAMPS to the face; bottom at 280 (clears the low waste pickup
     #   z247-268).  Extended +X to 5560 (past the X1 cross at 5530) and UP to the rear-panel top
     #   (z=TOP_Z−S=2246) to also back the X1 fill cross, Blue equalization tie, and the high fill/recycle runs.
-    # Support shelf for the brown P-05→X3 run (z≈1502, Yd≈1109) that passes ABOVE the merge T: a
-    # horizontal ply shelf cantilevered −Yd off the spine, top at the pipe's underside so it rests on
-    # it.  X5360-5440 is the clear gap above the merge (the DV-01 riser stops at the tee, z1230).
-    p.append(ov.ruby_box("X3 brown-pipe support shelf (18mm ply)", 5360, 1090, 1474,
-                         80, 1206 - 1090, 18, color=ov.C_PLY))
+    # (The X3 brown-pipe support shelf was removed — the P-05→X3 discharge now runs behind the panel on
+    #  the Yd1245 lane, no longer crossing the rear corridor above the merge, so it needs no shelf.)
     return "\n".join(p)
 
 

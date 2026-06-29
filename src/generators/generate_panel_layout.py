@@ -985,8 +985,10 @@ leader(axb, busx - 24, db_z + 40, 4570, 2300,
        color=CWIRE, fs=5.3, ha="left", va="top", arrow_style="-|>", font=FB)
 
 # ── Drain-riser spine (18mm ply fin, teed off the rear panel into the corridor) ──
+# Drawn as an occluding plane: back-of-spine (+Yd) discharges sit BEHIND it
+# (zorder 7) and read faded; front-of-spine (−Yd) risers sit in front (zorder 11).
 _rect(PANX, SPINE_ZB, SPX1 - PANX, SPINE_ZT - SPINE_ZB, C_PLYB, lw=1.2,
-      z0=3, alpha=0.40)
+      z0=8, alpha=0.55)
 leader(axb, (PANX + SPX1) / 2, 1180, 5650, 1140,
        f"DRAIN-RISER SPINE\n18mm ply, teed perpendicular off the rear\n"
        f"panel (a T in plan) — X={PANX}–{SPX1}, Z={SPINE_ZB}–{SPINE_ZT};\n"
@@ -998,12 +1000,12 @@ DV01X = 4700                       # 3W-DV-01 X (corridor mouth, low ~Z235)
 # X4 WASTE — two grey runs: (a) the suction PICKUP riser climbs the spine from
 # the floor pickup to the pump; (b) the P-03 DISCHARGE runs high along the spine,
 # then drops to the X4 end-wall port (Z1620).
-_pipe([RX4, RX4, PUMP_BACK_X], [300, 1820, 1820], C_WASTEB, zorder=11)   # suction riser (in front)
-_hpipe(1902, PUMP_BACK_X, 5763, C_WASTEB, zorder=6, crosses=SPINE_RISERS)   # discharge — gap-broken at risers
-_pipe([5763, 5763, WALLX], [1902, X4_PORT_Z, X4_PORT_Z], C_WASTEB, zorder=6)
-# X3 BROWN — P-05 discharge routed BEHIND the panel, rising to the X3 port (Z1700).
-_hpipe(1502, PUMP_BACK_X, 5763, C_BROWNB, zorder=6, crosses=SPINE_RISERS)   # gap-broken at risers
-_pipe([5763, 5763, WALLX], [1502, X3_PORT_Z, X3_PORT_Z], C_BROWNB, zorder=6)
+_pipe([RX4, RX4, PUMP_BACK_X], [300, 1820, 1820], C_WASTEB, zorder=11)   # X4 suction pickup riser — FRONT (−Yd face)
+# X3/X4 DISCHARGES are clamped to the +Yd (BACK) face of the spine, so they run
+# BEHIND it (zorder below the spine) — the spine occludes/fades them through the
+# X5104–5560 span; they surface in the chase and past the spine to the end wall.
+_pipe([PUMP_BACK_X, 5763, 5763, WALLX], [1902, 1902, X4_PORT_Z, X4_PORT_Z], C_WASTEB, zorder=7)
+_pipe([PUMP_BACK_X, 5763, 5763, WALLX], [1502, 1502, X3_PORT_Z, X3_PORT_Z], C_BROWNB, zorder=7)
 # DV-01 — pH-gated filter-output diverter, low at the corridor mouth; two legs:
 #   BLUE RECYCLE rises up the spine → X1 fill cross; WASTE → the IBC-4 merge tee.
 axb.add_patch(mpatches.Polygon(
@@ -1030,8 +1032,8 @@ axb.add_patch(mpatches.Polygon(
     fc="white", ec="#B8860B", lw=1.4, zorder=12))
 axb.text(DV02X, 2145 + 30, "DV-02", fontsize=5, ha="center", va="bottom",
          color="#8A6D08", zorder=13, **FB)
-_pipe([DV02X, DV02X], [2145 - 18, 1290], C_WASTEB, zorder=6)              # DV-02 waste drop
-_hpipe(1290, DV02X, MERGEX, C_WASTEB, zorder=6, crosses=SPINE_RISERS)     # gap-broken at risers
+_pipe([DV02X, DV02X], [2145 - 18, 1290], C_WASTEB, zorder=11)             # DV-02 waste drop — FRONT
+_hpipe(1290, DV02X, MERGEX, C_WASTEB, zorder=11, crosses=SPINE_RISERS)    # FRONT; gap-broken at the front risers
 _pipe([MERGEX, MERGEX], [1290, 1244], C_WASTEB, zorder=11)                # into the merge tee
 # P-clips fastening the spine risers (suction pickup, blue recycle, DV-01 waste).
 for rx, zt in [(RX4, 1800), (RX_BLUE, X1_PORT_Z), (MERGEX, 1214)]:
@@ -1039,12 +1041,14 @@ for rx, zt in [(RX4, 1800), (RX_BLUE, X1_PORT_Z), (MERGEX, 1214)]:
         cz = 460 + i * 400
         if cz < zt - 80:
             _rect(rx - 8, cz - 11, 16, 22, C_STEEL, lw=0.6, z0=11)
-leader(axb, RX4, 1000, 5680, 900, "X4 SUCTION PICKUP RISER\n(waste pickup → P-03) — P-clips",
-       color="#555", fs=5.3, ha="left", va="top", arrow_style="-|>", font=FB)
-leader(axb, 5763, 1610, 6120, 1500, "X3 / X4 DISCHARGES\n(behind the panel → end-wall ports)",
-       color=C_BROWNB, fs=5.3, ha="left", va="center", arrow_style="-|>", font=FB)
+leader(axb, RX4, 1000, 5690, 880,
+       "FRONT of spine (−Yd face), P-clipped:\nX4 suction-pickup riser (→ P-03),\nblue-recycle + DV-01-waste risers",
+       color="#555", fs=5.2, ha="left", va="top", arrow_style="-|>", font=FB)
+leader(axb, 5640, 1700, 6120, 1820,
+       "BACK of spine (+Yd face) — behind it:\nX3 / X4 pump discharges → end-wall ports",
+       color=C_BROWNB, fs=5.2, ha="left", va="center", arrow_style="-|>", font=FB)
 leader(axb, RX_BLUE, 900, 4720, 740, "BLUE-RECYCLE RISER\n(DV-01 → up the spine → X1 cross)",
-       color=C_BLUEB, fs=5.3, ha="right", va="top", arrow_style="-|>", font=FB)
+       color=C_BLUEB, fs=5.2, ha="right", va="top", arrow_style="-|>", font=FB)
 
 # ── End-wall ports ───────────────────────────────────────────────────────
 for z, lab, col in [(X1_PORT_Z, "X1", C_BLUEB), (X3_PORT_Z, "X3", C_BROWNB),

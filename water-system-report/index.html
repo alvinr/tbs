@@ -16,7 +16,7 @@
         <link rel="prev" href="../equipment-layout-report/">
       
       
-        <link rel="next" href="../plumbing-panel-report/">
+        <link rel="next" href="../plumbing-report/">
       
       
         
@@ -1176,14 +1176,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../plumbing-panel-report/" class="md-nav__link">
+      <a href="../plumbing-report/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Plumbing Panel
+    Plumbing
   
 
     
@@ -2898,6 +2898,17 @@ IBC-2 (900L) ──┘                                                      │
 <ul>
 <li>Two IBC totes plumbed in parallel via 1" HDPE manifold with isolation valves</li>
 <li>P-01: Shurflo 2088 12VDC diaphragm pump — 3.5 GPM, 45 PSI, self-priming</li>
+</ul>
+<!-- TODO (check-valve design choice — write up + reconcile parts/cost): the Shurflo 2088-554-144
+     pumps have an INTEGRAL check valve (1-way, prevents reverse flow — see datasheet). Because
+     every return/drain leg is pump-driven, the dedicated anti-siphon check valves CV-2 (IBC-2
+     return), CV-3 (IBC-3 buffer return) and CV-4 (IBC-4 waste) are redundant and were DROPPED from
+     the schematic + 3D. Only CV-1 (the X1 gravity fill, the one path with no pump) remains. ACTION:
+     (1) state this rationale in §4.2/§4.3 prose with the Shurflo datasheet citation; (2) parts.py
+     check-valve qty 3→1 (drop CV3/CV4 from "1\" NPT spring check valve (CV1/CV3/CV4)" → just CV1);
+     (3) re-sum cost. -->
+
+<ul>
 <li>ACC-01: 0.75 L (23.5 oz) pressure accumulator — smooths pump cycling, maintains pressure when pump is off</li>
 <li>Low-level float switch on IBC-2 alerts operator when Blue supply is low</li>
 <li>Spray bar: gantry design — 40×40×3mm aluminum SHS beam spanning the open processing area (3,859mm) between walkway inner edges, with wheel carriages rolling on the tray floor beneath walkway grating. Beam bore serves as spray pipe (no separate HDPE tube). See §3.5 for full mechanical design</li>
@@ -2981,8 +2992,8 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <h3 id="44-processing-tray-and-spray-bar">4.4 Processing Tray and Spray Bar<a class="headerlink" href="#44-processing-tray-and-spray-bar" title="Permanent link">&para;</a></h3>
 <p>The processing tray and spray bar gantry are fully specified in the <a href="../processing-tray-and-spray-bar/">Processing Tray &amp; Spray Bar Report</a>. Their role in the water system is summarized here.</p>
 <p><strong>Processing tray:</strong> A permanently installed 4459 × 2,200mm stainless steel tray sits on the optical zone floor between the film plane rails. A 1:200 dual-axis slope drains wash water to a pressed sump well on the right side nearest the pinhole wall. P-04 draws from the sump via a suction pickup tube — no penetration of the tray floor or container floor.</p>
-<p><strong>Drain path:</strong> P-04 suction pickup → 1" flexible hose over near rim → P-04 pump on plumbing panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste).</p>
-<p><strong>External drain-out risers:</strong> The Brown (IBC-3) and Waste (IBC-4) totes are pumped out to the sealed end-wall ports — X3 via P-05, X4 via P-03. The two vertical drain risers run down the IBC corridor gap and are clamped at ~400mm centers to an 18mm marine-ply backing spine that tees perpendicular off the plumbing panel. Its top is capped with a horizontal ply shelf that the Blue fill trunk rests on — so both the drain risers and the fill trunk are supported at the T rather than free-hanging.</p>
+<p><strong>Drain path:</strong> P-04 suction pickup → 1" flexible hose over near rim → P-04 pump on the Corridor Plumbing Panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste).</p>
+<p><strong>External drain-out risers:</strong> The Brown (IBC-3) and Waste (IBC-4) totes are pumped out to the sealed end-wall ports — X3 via P-05, X4 via P-03. The two vertical drain risers run down the IBC corridor gap and are clamped at ~400mm centers to an 18mm marine-ply backing spine that tees perpendicular off the Corridor Plumbing Panel. Its top is capped with a horizontal ply shelf that the Blue fill trunk rests on — so both the drain risers and the fill trunk are supported at the T rather than free-hanging.</p>
 <p><strong>Spray bar:</strong> A 4,399mm aluminum SHS beam gantry rolls on the tray floor beneath the walkway grating. Water from P-01 (Blue supply) reaches the bar via BV-02 → 4m flexible hose → center feed bulkhead fitting → 38 × 3mm spray holes at 100mm centers.</p>
 <p><strong>Supply path:</strong> P-01 → ACC-01 → rigid 1/2" HDPE pipe along pinhole wall → BV-02 → coiled flexible hose → bulkhead fitting → beam bore → spray holes.</p>
 <p><strong>Containment liner:</strong> A fresh 6-mil black LDPE sheet is laid over the tray surface before each session to prevent direct stainless-to-print contact and simplify cleanup.</p>
@@ -3302,7 +3313,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tbody>
 </table>
 <p>All equipment clears the optical cone at every depth — shadow-free proof in <a href="../equipment-layout-report/">Equipment Layout Report</a>.</p>
-<p><strong>Hose routing:</strong> All pumps mount on the <strong>plumbing panel</strong> at the front of the IBC stack, reaching into the 270mm plumbing corridor between the two IBC columns — so the pump↔tote suction and return lines are <strong>short</strong>, running entirely within the corridor to the IBCs' corridor-facing DN50 valves. The longest run is the <strong>Blue supply to the spray bar</strong>: P-01 → ACC-01 → rigid 1/2" HDPE along the pinhole wall to the tray center → BV-02 → ~4m coiled flexible hose → the rolling beam in the optical zone. The <strong>tray drain</strong> returns the other way — P-04's sump pickup → 1" flexible hose over the near rim → P-04 on the panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste). <strong>Waste evacuation</strong> pumps P-05 (X3 / Brown) and P-03 (X4 / Waste) sit directly on the corridor drain risers, minimizing pipe to the external end-wall ports.</p>
+<p><strong>Hose routing:</strong> The corridor pumps (P-01, P-04, P-05, P-03) mount on the <strong>Corridor Plumbing Panel</strong> at the front of the IBC stack, reaching into the 270mm plumbing corridor between the two IBC columns — so the pump↔tote suction and return lines are <strong>short</strong>, running entirely within the corridor to the IBCs' corridor-facing DN50 valves. P-02 (Brown filter feed) and the 3-stage filter stack sit on the <strong>Pinhole Wall Plumbing Panel</strong> on the pinhole wall face. The longest run is the <strong>Blue supply to the spray bar</strong>: P-01 → ACC-01 → rigid 1/2" HDPE along the pinhole wall to the tray center → BV-05 → ~4m coiled flexible hose → the rolling beam in the optical zone. The <strong>tray drain</strong> returns the other way — P-04's sump pickup → 1" flexible hose over the near rim → P-04 on the panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste). <strong>Waste evacuation</strong> pumps P-05 (X3 / Brown) and P-03 (X4 / Waste) sit directly on the corridor drain risers, minimizing pipe to the external end-wall ports.</p>
 <p><strong>External fill/drain ports:</strong> Three 2" NPT bulkhead fittings with camlock fittings on the exterior are mounted on the container end wall centerline, stacked vertically:</p>
 <table>
 <thead>
@@ -3361,11 +3372,18 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td>$75–$120</td>
 </tr>
 <tr>
-<td><a href="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C">Shurflo 2088-554-144 pump (P-01, P-02)</a></td>
+<td><a href="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C">Shurflo 2088-554-144 pump (P-01 Blue supply)</a></td>
 <td>12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports</td>
-<td>2 ea</td>
+<td>1 ea</td>
 <td>Amazon</td>
-<td>$110–$140</td>
+<td>$55–$70</td>
+</tr>
+<tr>
+<td><a href="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C">Shurflo 2088-554-144 pump (P-02 filter loop)</a></td>
+<td>12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports</td>
+<td>1 ea</td>
+<td>Amazon</td>
+<td>$55–$70</td>
 </tr>
 <tr>
 <td>Shurflo 2088-554-144 pump (P-03 waste evacuation)</td>
@@ -3382,6 +3400,13 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td>$65</td>
 </tr>
 <tr>
+<td>Shurflo 2088-554-144 pump (P-05 Brown drain)</td>
+<td>12VDC, 3.5 GPM, 45 PSI; evacuates IBC-3 (Brown) residual to the X3 end-wall port</td>
+<td>1 ea</td>
+<td>Amazon</td>
+<td>$65</td>
+</tr>
+<tr>
 <td><a href="https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8">SeaFlo accumulator (0.75 L)</a> (SFAT-075-125-01)</td>
 <td>0.75 L, 125 PSI, 1/2" MNPT</td>
 <td>1 ea</td>
@@ -3390,10 +3415,10 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td>Shurflo pump mounting bracket</td>
-<td>Stainless, 2088 series (3× manifold + 1× IBC corridor for P-03)</td>
-<td>4 ea</td>
+<td>Stainless, 2088 series — one per pump (P-01..P-05)</td>
+<td>5 ea</td>
 <td>Amazon</td>
-<td>$40</td>
+<td>$50</td>
 </tr>
 <tr>
 <td>Big Blue filter housing (4.5"×10")</td>
@@ -3425,10 +3450,24 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td>Banjo V050FP ball valve 1/2" FNPT</td>
-<td>PP full-port quarter-turn; BV-01, BV-02 + spares</td>
-<td>4 ea</td>
+<td>PP full-port quarter-turn; pump-suction isolation BV-01 (P-01), BV-02 (P-05), BV-06 (P-03)</td>
+<td>3 ea</td>
 <td>Amazon</td>
-<td>$24–$40</td>
+<td>$18–$30</td>
+</tr>
+<tr>
+<td>Banjo V050FP ball valve 1/2" FNPT</td>
+<td>PP full-port quarter-turn; pump-suction isolation BV-03 (P-02)</td>
+<td>1 ea</td>
+<td>Amazon</td>
+<td>$6–$10</td>
+</tr>
+<tr>
+<td>Banjo V050FP ball valve 1/2" FNPT</td>
+<td>PP full-port; supply isolation BV-04 (TAP-01 chem tap), BV-05 (spray-bar feed)</td>
+<td>2 ea</td>
+<td>Amazon</td>
+<td>$12–$20</td>
 </tr>
 <tr>
 <td>Banjo V100FP ball valve 1" FNPT</td>
@@ -3436,13 +3475,6 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td>6 ea</td>
 <td>Amazon</td>
 <td>$60–$96</td>
-</tr>
-<tr>
-<td>Banjo V075FP ball valve 3/4" FNPT</td>
-<td>PP full-port; BV-06 (chemistry tap shut-off)</td>
-<td>1 ea</td>
-<td>Amazon</td>
-<td>$8–$12</td>
 </tr>
 <tr>
 <td>3-way diverter valve 1/2" FNPT</td>
@@ -3461,6 +3493,13 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <tr>
 <td>pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee</td>
 <td>Filtered-water sample draw before 3W-DV-01; Banjo V050FP 1/2" PP ball valve + downturned 1/2" hose barb on a 1"×1/2" reducing branch tee, panel face above spill line</td>
+<td>1 ea</td>
+<td>Amazon</td>
+<td>$10–$18</td>
+</tr>
+<tr>
+<td>pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee</td>
+<td>pH sample on the P-04 tray-drain discharge, before 3W-DV-02; same build as SV-01</td>
 <td>1 ea</td>
 <td>Amazon</td>
 <td>$10–$18</td>
@@ -3495,10 +3534,17 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td>Banjo TEE100 equal tee 1" NPT</td>
-<td>PP; IBC fill/drain tees</td>
-<td>4 ea</td>
+<td>PP; IBC drain tees (the X1 fill is now a 4-way cross)</td>
+<td>3 ea</td>
 <td>Amazon</td>
-<td>$16–$24</td>
+<td>$12–$18</td>
+</tr>
+<tr>
+<td>1" NPT 4-way cross fitting</td>
+<td>X1 fresh-fill 4-way: X1 inlet + IBC-1 + IBC-2 + DV-01 blue recycle return (was a 3-way tee). Cost est.</td>
+<td>1 ea</td>
+<td>Amazon</td>
+<td>$8–$14</td>
 </tr>
 <tr>
 <td>1/2" NPT polypropylene union</td>
@@ -3522,11 +3568,11 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td>$64–$120</td>
 </tr>
 <tr>
-<td>1" NPT spring check valve (CV1/CV3/CV4)</td>
-<td>PVC body, EPDM seal, 1" FNPT × FNPT</td>
-<td>3 ea</td>
+<td>1" NPT spring check valve (CV1 — X1 gravity fill)</td>
+<td>PVC body, EPDM seal, 1" FNPT × FNPT. Only CV-1 (X1 fill) remains — the Shurflo 2088 pumps have integral check valves, so CV-2/CV-3/CV-4 are redundant and dropped</td>
+<td>1 ea</td>
 <td>Amazon</td>
-<td>$24–$42</td>
+<td>$8–$14</td>
 </tr>
 <tr>
 <td>Thread seal tape (PTFE)</td>
@@ -3638,7 +3684,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td></td>
 <td></td>
 <td></td>
-<td><strong>$1,691–$2,485</strong></td>
+<td><strong>$1,768–$2,566</strong></td>
 </tr>
 </tbody>
 </table>

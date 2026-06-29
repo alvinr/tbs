@@ -144,9 +144,10 @@ def rear_panel():
                      EQT, yw, ph, color=ov.C_PLY)]
     # 25mm ply pump-mount shirt: front face hard behind the ACC body (the deepest, back ≈ PXC+ACC_R),
     # spanning the pump-column height; sits in the ~56mm chase between the bodies and the rear frame.
-    SHIRT_X = PXC + ACC_R + 1                        # ≈ 5049 — just clear of the ACC back
-    p.append(ov.ruby_box("Pump-mount ply shirt (25mm)", SHIRT_X, YD_NEAR + S, 240,
-                         25, yw, 1720, color=ov.C_PLY))
+    SHIRT_X = PXC + ACC_R + 4                        # ≈ 5049 — just clear of the ACC back
+    p.append(ov.ruby_box("Pump-mount ply shirt (25mm)", SHIRT_X, YD_NEAR + S, 275,
+                         25, yw, 1650, color=ov.C_PLY))   # bottom raised to 275 to clear the low brown
+    #   suction elbow (z247-268); still backs the ACC (foot z280) and all four pumps
     return "\n".join(p)
 
 
@@ -585,7 +586,8 @@ def drains_ports():
     # P-05 (Brown drain) suction: shared tap T → +X run end → rise to P-05 IN (−Yd manifold)
     p5i = (PXC, PIY, _piz("P-05")); p5o = (PXC, POY, _piz("P-05"))
     z05 = _piz("P-05")
-    rx = 5070   # BV-02 riser in the gap between the pump column (x5034) and the rear panel (x5104) — IN
+    rx = 5070   # BV-02 riser — STILL in the shirt band (see below): the valve must stay in the gap
+    #   behind the pumps for operator access, but that gap IS the shirt zone — OPEN ITEM, needs relocation
     pipe("Brown tap -> P-05 inlet",   # FRONT of the upright, so it comes straight in (no detour loop):
          [(tx3 + 30, ty3, tz3), (rx, ty3, tz3), (rx, PIY - 30, tz3), (rx, PIY - 30, z05),
           (PXC, PIY - 30, z05), p5i],   # tee +X end → riser (BV-02) → −X on the −Yd lane → +Yd stub into IN port
@@ -594,20 +596,20 @@ def drains_ports():
     p.append(ov.ruby_cylinder("X3 Brown drain port (end wall)", ew - 60, COL_L, 1700, 22, 60, color=C_CHECK, axis="x"))
     # P-05 OUT → behind the panel → +X to the end wall + a perpendicular ≥50mm bulkhead stub
     pipe("P-05 -> X3 end-wall port",   # OUT leaves with a +Yd stub straight out of the OUT port
-         [p5o, (PXC, POY + 30, p5o[2]), (5060, POY + 30, p5o[2]), (5060, COL_L, p5o[2]),
+         [p5o, (PXC, POY + 30, p5o[2]), (5090, POY + 30, p5o[2]), (5090, COL_L, p5o[2]),
           (ew - 130, COL_L, p5o[2]), (ew - 130, COL_L, 1700), (ew - 60, COL_L, 1700)], ov.C_IBC_BROWN)
 
     # ── IBC-4 WASTE: own bottom pickup (bend points DOWN to floor) → P-03 → X4 end-wall port ──
     p3i = (PXC, PIY, _piz("P-03")); p3o = (PXC, POY, _piz("P-03"))
     bv6z = p3i[2] - 82             # come up to just below the IN port, then a VERTICAL riser into BV-06 and
     _bottom_pickup(p, "X4 Waste (P-03)", 5200, YD_FAR, +1, ov.C_IBC_WASTE,   # a single elbow into the IN port
-                   [(5200, YD_FAR - 120, bv6z), (5060, YD_FAR - 120, bv6z), (5060, PIY - 30, bv6z),
+                   [(5200, YD_FAR - 120, bv6z), (5090, YD_FAR - 120, bv6z), (5090, PIY - 30, bv6z),
                     (PXC, PIY - 30, bv6z), (PXC, PIY - 30, p3i[2]), (PXC, PIY, p3i[2])])   # in past the upright,
     #   then ↑ riser (elbow faces ceiling) → BV-06 → +Yd into the IN port
     p.append(ball_valve("BV-06 (P-03 suction)", PXC, PIY - 30, p3i[2] - 41, "z", hdir="-x"))   # vertical; handle faces the −X walkway/operator
     p.append(ov.ruby_cylinder("X4 Waste drain port (end wall)", ew - 60, COL_R, 1620, 22, 60, color=C_CHECK, axis="x"))
     pipe("P-03 -> X4 end-wall port",   # OUT leaves with a +Yd stub straight out of the OUT port
-         [p3o, (PXC, POY + 30, p3o[2]), (5060, POY + 30, p3o[2]), (5060, COL_R, p3o[2]),
+         [p3o, (PXC, POY + 30, p3o[2]), (5090, POY + 30, p3o[2]), (5090, COL_R, p3o[2]),
           (ew - 130, COL_R, p3o[2]), (ew - 130, COL_R, 1620), (ew - 60, COL_R, 1620)], ov.C_IBC_WASTE)
     return "\n".join(p)
 

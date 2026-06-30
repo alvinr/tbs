@@ -1059,12 +1059,9 @@ def spine_view(side):
            "the back-of-panel drain risers P-clip to it",
            color=C_OUT, fs=6, ha=_ha("left"), va="center", arrow_style="-|>", font=FB)
 
-    # ── Fitting / valve / diverter landmarks (drawn in BOTH views) ───────────
-    DV01X = 4700                       # 3W-DV-01 X (corridor mouth, low ~Z235)
-    # DV-01 — pH-gated filter-output diverter, low at the corridor mouth.
-    valve_3way(axb, DV01X, 235, 16, "#8A6D08", ports=("left", "up", "down"))
-    axb.text(DV01X, 305, "DV-01\n(corridor mouth)", fontsize=4.6, ha="center",
-             va="bottom", color="#8A6D08", zorder=13, **FB)
+    # ── Fitting landmarks (drawn in BOTH views) ──────────────────────────────
+    # (DV-01 and DV-02 diverters are View-A-only — their recycle/waste/brown
+    #  legs all run on the −Yd intake face — so they live in the VIEW A block.)
     # X1 fill cross (4-way) on the spine + the end-wall X1 camlock + CV-1.
     _pipe([X1X, WALLX], [X1_PORT_Z, X1_PORT_Z], C_BLUEB, zorder=11)              # → end-wall X1 fill camlock
     # CV-1 (one-way / check valve) + the end-wall DC camlock on the X1 gravity-fill line.
@@ -1081,26 +1078,32 @@ def spine_view(side):
              va="bottom", color=C_BLUEB, zorder=14, **FB)
     axb.text(X1X, X1_PORT_Z - 152, "→ IBC-1 (X1) +\nIBC-2 (X2) fills", fontsize=4.4,
              ha="center", va="top", color=C_BLUEB, zorder=13, **FB)
-    # X1/X2 balance — Blue equalization cross-tie between IBC-1 ↔ IBC-2 (a circle).
-    axb.add_patch(mpatches.Circle((X1X, 1376), 13, facecolor="white",
-                  edgecolor=C_BLUEB, lw=1.3, zorder=13))
-    axb.text(X1X + 22, 1376, "X1/X2 BALANCE\n(Blue equalization tie)", fontsize=4.4,
-             ha=_ha("left"), va="center", color=C_BLUEB, zorder=14, **FB)
+    # X1/X2 balance — Blue equalization cross-tie between IBC-1 ↔ IBC-2: a 2"
+    # pipe running in Yd between the two totes, so it reads end-on as a pipe
+    # cross-section (2× the POD drain runs → OD ring + bore).
+    axb.add_patch(mpatches.Circle((X1X, 1376), POD, facecolor="white",
+                  edgecolor=C_BLUEB, lw=1.6, zorder=13))                        # 2" OD
+    axb.add_patch(mpatches.Circle((X1X, 1376), POD - 9, facecolor="white",
+                  edgecolor=C_BLUEB, lw=0.9, zorder=14))                        # bore
+    axb.text(X1X - POD - 6, 1376, "X1/X2 BALANCE\n(2\" Blue equalization tie)", fontsize=4.4,
+             ha=_ha("right"), va="center", color=C_BLUEB, zorder=14, **FB)
     # IBC-4 merge tee (a circle on the spine).
     axb.add_patch(mpatches.Circle((MERGEX, 1230), 16, facecolor="white",
                   edgecolor=C_WASTEB, lw=1.6, zorder=13))
     leader(axb, MERGEX, 1230, 5650, 1370,
            "IBC-4 MERGE TEE\n(DV-01 + DV-02 waste,\nconsolidated on the spine)",
            color="#555", fs=5.5, ha=_ha("left"), va="center", arrow_style="-|>", font=FB)
-    # DV-02 (above the pump column).
-    valve_3way(axb, DV02X, 2145, 18, "#B8860B", ports=("left", "right", "down"))
-    axb.text(DV02X, 2145 + 30, "DV-02", fontsize=5, ha="center", va="bottom",
-             color="#8A6D08", zorder=13, **FB)
 
     # ════════════════════════════════════════════════════════════════════════
     #  VIEW A ONLY — −Yd INTAKE face (suctions · recycle · fills · merge)
     # ════════════════════════════════════════════════════════════════════════
     if _NEAR == '-Yd':
+        # DV-01 — pH-gated filter-output diverter, low at the corridor mouth
+        # (its blue-recycle and waste legs are both on this −Yd intake face).
+        DV01X = 4700
+        valve_3way(axb, DV01X, 235, 16, "#8A6D08", ports=("left", "up", "down"))
+        axb.text(DV01X, 305, "DV-01\n(corridor mouth)", fontsize=4.6, ha="center",
+                 va="bottom", color="#8A6D08", zorder=13, **FB)
         # P-01 suction: P-01 IN → −X to BV-01 (front of the corridor, walkway-
         # reachable, Z≈1000) → up toward the Blue tote.
         BV01X = 4760
@@ -1119,18 +1122,28 @@ def spine_view(side):
         _pipe([DV01X, MERGEX, MERGEX], [222, 222, 1214], C_WASTEB, zorder=11)
         # → IBC-1 (X1) fill stub off the cross.
         _pipe([X1X - 14, X1X - 14], [X1_PORT_Z, X1_PORT_Z - 140], C_BLUEB, zorder=11)
-        # DV-02 BROWN output → IBC-3 (Brown) tote: drops on the FRONT at X4895.
-        _pipe([DV02X - 14, DV02X - 14], [2128, 1110], C_BROWNB, zorder=10)
-        axb.annotate("", xy=(DV02X - 14, 1095), xytext=(DV02X - 14, 1145),
+        # DV-02 — tray-drain diverter above the pump column.  Its input is the
+        # P-04 discharge (rear +Yd face, Spine View B); the two outputs sit on
+        # this −Yd face: BROWN drops to IBC-3 (down port), WASTE leaves the
+        # right port to the IBC-4 merge tee.  Symbol centred on the junction so
+        # both legs land on their ports.
+        valve_3way(axb, DV02X, 2145, 18, "#B8860B", ports=("left", "right", "down"))
+        axb.text(DV02X, 2145 + 32, "DV-02", fontsize=5, ha="center", va="bottom",
+                 color="#8A6D08", zorder=14, **FB)
+        axb.text(DV02X - 26, 2145, "← P-04\n(View B)", fontsize=3.8, ha="right",
+                 va="center", color="#999", zorder=13, **FB)
+        # DV-02 BROWN output → IBC-3 (Brown): drops straight off the DOWN port.
+        _pipe([DV02X, DV02X], [2127, 1110], C_BROWNB, zorder=10)
+        axb.annotate("", xy=(DV02X, 1095), xytext=(DV02X, 1145),
                      arrowprops=dict(arrowstyle="-|>", lw=1.2, mutation_scale=7, color=C_BROWNB), zorder=12)
-        axb.text(DV02X - 26, 1098, "→ IBC-3\n(Brown)", fontsize=4.2, ha="right", va="top",
+        axb.text(DV02X - 12, 1098, "→ IBC-3\n(Brown)", fontsize=4.2, ha="right", va="top",
                  color=C_BROWNB, zorder=13, **FB)
-        # DV-02 waste high horizontal — PENETRATES the rear panel near the spine
-        # top, then DROPS at X5290 (∥ blue riser) into the merge's LEFT side.
-        _hpipe(2127, DV02X, 5290, C_WASTEB, zorder=11, crosses=(PANX + 9, RX_BLUE))
-        axb.text(PANX + 9, 2160, "through\npanel", fontsize=4.0, ha="center", va="bottom",
+        # DV-02 WASTE output → leaves the RIGHT port, PENETRATES the rear panel
+        # near the spine top, then DROPS at X5290 into the merge tee's LEFT side.
+        _hpipe(2145, DV02X + 18, 5290, C_WASTEB, zorder=11, crosses=(PANX + 9, RX_BLUE))
+        axb.text(PANX + 9, 2178, "through\npanel", fontsize=4.0, ha="center", va="bottom",
                  color="#999", zorder=12, **FB)
-        _pipe([5290, 5290, MERGEX], [2127, 1230, 1230], C_WASTEB, zorder=11)
+        _pipe([5290, 5290, MERGEX], [2145, 1230, 1230], C_WASTEB, zorder=11)
         # IBC-4 (Waste) tote entry — the merge tee's RIGHT pipe.
         _pipe([MERGEX, 5494, 5494], [1230, 1230, 1085], C_WASTEB, zorder=11)
         axb.annotate("", xy=(5494, 1100), xytext=(5494, 1150),
@@ -1175,8 +1188,13 @@ def spine_view(side):
               C_BROWNB, zorder=13)
         # P-01 discharge → ACC-01 (short drop into the accumulator below P-01).
         _pipe([5012, 5012], [612, 558], C_BLUEB, zorder=9)
-        # P-04 tray-drain DISCHARGE → up the back (SV-02 sample tap) → DV-02.
+        # P-04 tray-drain DISCHARGE → up the back (SV-02 sample tap) → DV-02
+        # (the diverter itself is drawn on Spine View A).
         _pipe([5046, 5046, DV02X + 18], [1113, 2025, 2025], C_WASTEB, zorder=9)
+        axb.annotate("", xy=(DV02X + 18, 2090), xytext=(DV02X + 18, 2025),
+                     arrowprops=dict(arrowstyle="-|>", lw=1.1, mutation_scale=7, color=C_WASTEB), zorder=12)
+        axb.text(DV02X + 18, 2100, "→ DV-02\n(Spine View A)", fontsize=4.0, ha="center",
+                 va="bottom", color="#999", zorder=13, **FB)
         valve_ball(axb, 5046, 1150, 14, "#555", vert=True)
         axb.text(5066, 1150, "SV-02", fontsize=4.0, ha=_ha("left"), va="center", color="#555", zorder=13, **FB)
         # → IBC-2 (X2) fill stub off the cross.

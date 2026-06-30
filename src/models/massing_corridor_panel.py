@@ -144,10 +144,9 @@ def rear_panel():
                      EQT, yw, ph, color=ov.C_PLY)]
     # 25mm ply pump-mount shirt: front face hard behind the ACC body (the deepest, back ≈ PXC+ACC_R),
     # spanning the pump-column height; sits in the ~56mm chase between the bodies and the rear frame.
-    SHIRT_X = PXC + ACC_R + 4                        # ≈ 5049 — just clear of the ACC back
-    p.append(ov.ruby_box("Pump-mount ply shirt (25mm)", SHIRT_X, YD_NEAR + S, 275,
-                         25, yw, 1650, color=ov.C_PLY))   # bottom raised to 275 to clear the low brown
-    #   suction elbow (z247-268); still backs the ACC (foot z280) and all four pumps
+    p.append(ov.ruby_box("Pump-mount ply shirt (25mm)", SHIRT_X, YD_NEAR + S, 275,   # SHIRT_X: module constant
+                         25, yw, DV_Z + DVB - 275, color=ov.C_PLY))   # raised to z≈2191 to BACK/support DV-02 (z2145);
+    #   bottom 275 clears the low brown suction elbow (z247-268); still backs the ACC (foot z280) and all four pumps
     # Spacer/cleat blocks tying the shirt BACK to the rear panel (and thus the frame) across the
     # ~27mm chase — placed at the two Yd edges in the clear Z windows BETWEEN the horizontal X3/X4
     # port runs that cross the chase (those sit at z≈1500 / 1820 / 1900).
@@ -411,8 +410,7 @@ SV_Z   = 1150                              # SV-02 sample tap — low on the P-0
                                            # BETWEEN P-04 (top 1120) and P-05 (base 1340), ~1100mm for reach
 DV_Z   = 2145                              # 3W-DV-02 center Z — dropped 75mm (room above P-03, top z1950) to
 #   shorten the IBC-3 vertical drop; still well under the frame top rail (z2246) and above P-03
-DV02X  = PXC - 75                          # 3W-DV-02 X — nudged 75mm toward the −X walkway (off the pump
-#   column centerline) to open up the brown tray-sump → P-04 suction route; feed + both legs follow it
+# DV02X is derived from SHIRT_X below (DV-02 now mounts on the raised shirt) — both defined after ACC_R.
 # ACC-01 — SeaFlo bladder accumulator: a single BOTTOM port, plumbed as a vertical DEAD-LEG teed
 # onto the Blue supply line (like the pumps/filters tee in, but the tank's only port is underneath).
 ACC_Z0, ACC_R = 355, 63.5                   # ACC-01 base Z (raised +75mm; column FOOT, below P-01 — swapped); Ø127 body
@@ -420,6 +418,10 @@ ACC_PZ = ACC_Z0 + 28                        # ACC-01 IN/OUT port Z — at the BO
                                             # SeaFlo's ports are underneath); pump-shaped, ports low
 def acc_in():  return (PXC, CTR_Y + ACC_R + 30, ACC_PZ)   # +Yd (from P-01 OUT)
 def acc_out(): return (PXC, CTR_Y - ACC_R - 30, ACC_PZ)   # −Yd (to the supply trunk)
+
+SHIRT_X = PXC + ACC_R + 4                   # 5051.5 — pump-mount shirt front face (just clear of the ACC back)
+DV02X   = SHIRT_X - DVB / 2                  # 5028.5 — 3W-DV-02 box BACK mounts FLUSH on the (raised) shirt front
+#   face, so the shirt SUPPORTS DV-02; its feed + both run legs nudge +X to follow (toward the sealed end)
 
 
 def equipment():
@@ -506,11 +508,18 @@ def plumbing():
          ov.C_IBC_BROWN)   # P-04 OUT → up its OWN +Yd lane (POY+50, clear of the pump-discharge lane POY+30)
     #   → jog to the CENTRAL lane (CTR_Y) above the pumps → SV-02 tap → VERTICALLY
     #   into the underside (z−) branch; central lane keeps the feed/SV-02 clear of the ±Yd diverter legs
-    # DV-02 → IBC-3 Brown — straight down off the diverter: a short −Yd stub, a 90° elbow to a VERTICAL
-    # drop at DV02X (clear, −X of the pump bodies x4934), then a horizontal 90° into the tote.  Flange/
-    # entry at x=DV02X (+74mm from the old x4835) so the drop is directly below the diverter.
+    # DV-02 → IBC-3 Brown — LEAVE the −Yd run port collinear (a 60mm −Yd lead-out so the first elbow is a
+    # clean interior 90°, not a malformed sprout off the port) → +X to the panel → 90° turn +Yd (toward the
+    # film-plane wall) INTO the ~27mm SHIRT↔PANEL gap → drop DOWN the gap on the CTR_Y clear lane (Yd1180,
+    # BETWEEN the spacer-block columns Yd1096-1136/1226-1266 and clear of the X3/X4 port runs) → at the bottom
+    # −Yd along the gap to the entry lane (Yd1073, clears the P-04 head Yd1128 AND −Yd of the shirt edge 1096
+    # so the −X exit needs no shirt notch) → −X out to the tote entry.
+    cz = 5090   # chase centre X (shirt back 5076.5 ↔ panel front 5104)
     _side_entry(p, "DV-02 -> IBC-3 (Brown)",   # no CV-3 — P-04 has an integral check valve (check=False)
-                [(DV02X, dvm, DV_Z), (DV02X, dvm - 30, DV_Z), (DV02X, dvm - 30, bz)],
+                [(DV02X, dvm, DV_Z), (DV02X, dvm - 60, DV_Z),   # leave the −Yd run port collinear (clean elbow), then
+                 (cz, dvm - 60, DV_Z), (cz, CTR_Y, DV_Z),       # +X to the panel, then +Yd INTO the gap (toward the film-plane wall)
+                 (cz, CTR_Y, bz), (cz, dvm - 30, bz),           # DROP the gap on the clear lane, then −Yd to the entry lane (clears the head + the BV-02→P-05 inlet at Yd1078)
+                 (DV02X, dvm - 30, bz)],                        # −X out to the entry approach point
                 DV02X, YD_NEAR, bz, -1, ov.C_IBC_BROWN, check=False, drop=-50)   # short 50mm dip tube inside the tote
     # DV-02 → IBC-4 merge — waste port → drop below the bracket → behind the panel (own lane) → down
     # → +X past the risers to the merge tee (jog to the merge Yd at x=MERGE, clear of the back verticals).
@@ -519,8 +528,9 @@ def plumbing():
     dvwx = MERGE4[0] - 115                                # drop −x of the tee (top run 75mm shorter) so the
     #   horizontal approach seats on the −x run port as a clear run, not a stub right at the drop
     pipe("DV-02 -> IBC-4 merge",
-         [(DV02X, dvp, DV_Z), (DV02X, dvp + 15, DV_Z), (DV02X, dvp + 15, DV_Z - 45),   # drop below the rear-panel
-          (dvwx, dvp + 15, DV_Z - 45), (dvwx, MERGE4[1], DV_Z - 45),                    # +X, then −Yd to the spine lane
+         [(DV02X, dvp, DV_Z), (DV02X, dvp + 31, DV_Z), (DV02X, dvp + 31, DV_Z - 45),   # +Yd stub EXTENDED (+40) so the panel
+          #   penetration + the +X run clear the spine root (Yd1206-1224) at the panel-spine join, then drop below the rear-panel
+          (dvwx, dvp + 31, DV_Z - 45), (dvwx, MERGE4[1], DV_Z - 45),                    # +X, then −Yd to the spine lane
           (dvwx, MERGE4[1], wz), MERGE4], ov.C_IBC_WASTE)   # high (round-hole spine crossing); DROP on the spine, then
     #   a horizontal +x run that SEATS on the merge's −x run port (was dropping inside the tee body)
     # 3-way merge: tote entry on +x (run), DV-02 waste on −x (run), DV-01 waste rises into the z− branch
@@ -534,18 +544,23 @@ def plumbing():
     # the front of the body, up the threading lane (between body Yd1131+ and the near upright Yd≤1096)
     # behind the panel, to the tote.
     z01 = _piz("P-01")
-    # BV-01 must be reachable from the −X WALKWAY, so the suction comes FORWARD to a vertical section in the
-    # corridor front (bvx, just clear of the front upright x≤4704) instead of rising on the back BLANE riser:
-    # P-01 IN → −Yd stub → −X toward the walkway → UP the front vertical (BV-01 at reach height) → back +X
-    # and up to the Blue tote near-top.
-    bvx, bvy = FRONT_X + 106, YD_NEAR + 67       # 4760 / 1113 — corridor-front lane, clear of the front
-    #   upright (Yd≤1096) AND the pump bodies (Yd≥1131) the high run passes at z=blz
+    # BV-01 must be reachable from the −X WALKWAY, so the suction LOOPS forward to a short vertical section in
+    # the corridor front (bvx) — BV-01 at reach height, handle to the walkway — then turns +X BACK through the
+    # shirt + panel (round holes) and rises BEHIND the panel, OFF the operator's front zone, before jogging −Yd
+    # into Blue #1.  Relocating the tall riser to the rear declutters the front for access to the brown valves.
+    bvx, bvy = FRONT_X + 106, YD_NEAR + 67       # 4760 / 1113 — corridor-front access lane, clear of the front
+    #   upright (Yd≤1096) AND −Yd of the pump bodies (Yd≥1128) the +X return run passes
+    beh_x = 5200                                 # behind-panel riser X — flange (r36) clears the near upright (x≤5154)
+    #   and the riser/flange sit on the Yd1113/1038 lanes, −Yd-separated from the X4 waste riser's Yd1196 lane
+    loopz = 1210                                 # loop top — above BV-01 (z1000) AND the rear-panel bracket (z≤1178),
+    #   in the P-04↔P-05 gap; where the line turns +X to the rear
     _side_entry(p, "Blue #1 -> P-01 suction",   # flooded suction + P-01's integral check → no foot valve (check=False)
                 [pin("P-01"), (PXC, PIY - 30, z01), (bvx, PIY - 30, z01), (bvx, bvy, z01),
-                 (bvx, bvy, blz)],
-                bvx, YD_NEAR, blz, -1, ov.C_BLUE, check=False, drop=-50)   # entry aligned OVER BV-01's riser
-    #   (225mm closer to the walkway) — the suction rises straight into the tote, no +X jog   # short 50mm dip tube inside the tote
-    p.append(ball_valve("BV-01 (P-01 suction)", bvx, bvy, 1000, "z", hdir="-x"))   # front vertical section, handle faces the −X walkway operator
+                 (bvx, bvy, loopz),                          # UP the FRONT vertical (BV-01 on it, accessible)
+                 (beh_x, bvy, loopz),                        # +X BACK through the shirt + panel (round holes), −Yd of the pumps
+                 (beh_x, bvy, blz)],                         # UP the BEHIND-panel riser to the tote-entry height
+                beh_x, YD_NEAR, blz, -1, ov.C_BLUE, check=False, drop=-50)   # then −Yd into Blue #1 + 50mm dip tube
+    p.append(ball_valve("BV-01 (P-01 suction)", bvx, bvy, 1000, "z", hdir="-x"))   # FRONT vertical section, handle faces the −X walkway operator
     # Blue supply IN LINE through ACC-01 (like a filter in the chain): P-01 OUT → ACC IN (+Yd),
     # ACC OUT (−Yd) → trunk out the mouth to the spray bar.
     # The ACC-IN elbow goes OUT HORIZONTALLY (+Yd into the aisle, clear of the P-01 head below) before
@@ -643,10 +658,12 @@ def drains_ports():
     rx6 = 5070                     # BV-06 riser X (copied from BV-02)
     turn6 = 1700                   # turn partway down the riser below BV-06 — in the pump gap (z1520–1740)
     corr_x = 4900                  # −X reach in FRONT of the pump column (toward the walkway)
-    spine_yd = 1206                # spine grey-riser lane, between the chase frame uprights (Yd1096 / 1266)
+    spine_yd = YD_FAR - 120        # 1196 — grey-riser lane CLAMPED to the spine front face (1206); also the
+                                   #   bottom-pickup approach Yd, so the riser rises STRAIGHT up the spine
     grey_x = 5200                  # X4 grey pickup riser X (on the spine)
-    _bottom_pickup(p, "X4 Waste (P-03)", grey_x, spine_yd, +1, ov.C_IBC_WASTE,
-                   [(grey_x, spine_yd, turn6),                      # ↑ grey spine riser to the wrap level
+    # yface = YD_FAR so the pickup FLANGE sits on the corridor far face / IBC-4 (NOT the spine lane)
+    _bottom_pickup(p, "X4 Waste (P-03)", grey_x, YD_FAR, +1, ov.C_IBC_WASTE,
+                   [(grey_x, spine_yd, turn6),                      # ↑ grey spine riser (straight up the spine face) to the wrap level
                     (corr_x, spine_yd, turn6),                      # −X through panel+shirt (pump gap) into the corridor
                     (corr_x, BV02_YD, turn6),                       # −Yd to the BV-06 riser lane (in front of the pumps)
                     (rx6, BV02_YD, turn6),                          # +X back to the BV-06 riser (through the pump gap)

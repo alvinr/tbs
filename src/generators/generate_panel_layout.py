@@ -42,7 +42,8 @@ import matplotlib.patches as mpatches
 
 from tbs_constants import C_OUT, C_DIM, C_CL, C_STEEL, DIAGRAMS_DIR, PUMP_PIPE_OD, PUMP_PIPE_WALL, EQPANEL_X, EQPANEL_H
 from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_notes, hatch_rect,
-                         draw_pipe_path as _tbs_pipe_path)
+                         draw_pipe_path as _tbs_pipe_path,
+                         valve_ball, valve_3way, valve_check)
 from tbs_title_block import title_block
 
 # ── Panel geometry ────────────────────────────────────────────────────────
@@ -227,14 +228,50 @@ def draw_pipe_path(ax, x_pts, z_pts, od_mm, wall_mm,
                    sz=(szf if szf is not None else sz))
 
 
+def draw_symbol_key(ax_t, x, y_top, *, r=11, row=58, fs=6.5, w=300):
+    """P&ID valve symbol key/legend drawn in `ax_t` data coords.  `x, y_top` anchors
+    the SCREEN top-left corner; rows step DOWN by `row`.  Draws the box, a title, then
+    a ball / 3-way / check sample with its name.  Reversed-x axes (the mirrored spine
+    View B) are handled: all horizontal layout follows the screen reading direction so
+    the symbols+labels stay left-to-right and the check-valve arrow points right.."""
+    # +1 normal axis, -1 if the x-axis is reversed (xlim flipped) — every horizontal
+    # offset below is multiplied by `dxs` so layout is in SCREEN space.
+    xl = ax_t.get_xlim()
+    dxs = -1 if xl[0] > xl[1] else 1
+    flow_dir = "right" if dxs == 1 else "left"     # screen-rightward arrow
+    box_h = 4 * row + 18
+    ax_t.add_patch(mpatches.Rectangle((x, y_top - box_h), w * dxs, box_h,
+                   fc="#FAFAFA", ec=C_DIM, lw=0.8, zorder=14))
+    ax_t.text(x + dxs * w / 2, y_top - 14, "VALVE SYMBOL KEY",
+              ha="center", va="center", fontsize=fs + 1, color=C_OUT,
+              fontweight="bold", zorder=16, **FONT)
+    sym_x = x + dxs * 30
+    txt_x = x + dxs * 58
+    rows = [
+        ("ball",  "BALL VALVE"),
+        ("3way",  "3-WAY DIVERTER"),
+        ("check", "CHECK VALVE (CV)"),
+    ]
+    for i, (kind, name) in enumerate(rows):
+        cy = y_top - 40 - i * row
+        if kind == "ball":
+            valve_ball(ax_t, sym_x, cy, r, C_OUT, vert=False, zorder=15)
+        elif kind == "3way":
+            valve_3way(ax_t, sym_x, cy, r, C_OUT, ports=("left", "right", "down"),
+                       zorder=15)
+        else:
+            valve_check(ax_t, sym_x, cy, r, C_OUT, flow=flow_dir, zorder=15)
+        ax_t.text(txt_x, cy, name, ha="left", va="center", fontsize=fs,
+                  color=C_DIM, zorder=16, **FONT)
+
+
 def draw_ball_valve(x, z, label, color):
-    """Diamond valve symbol at (x, z) in panel mm coords."""
-    pts_x = [sx(x), sx(x + BV_R), sx(x), sx(x - BV_R)]
-    pts_z = [sz(z + BV_R), sz(z), sz(z - BV_R), sz(z)]
-    ax.add_patch(plt.Polygon(list(zip(pts_x, pts_z)),
-                             fc="white", ec=color, lw=1.5, zorder=12))
-    ax.text(sx(x), sz(z), label, ha="center", va="center",
-            fontsize=4.5, color=color, fontweight="bold", zorder=13, **FONT)
+    """P&ID ball valve (bowtie + centre ball) at (x, z) in panel mm coords, on a
+    vertical riser, with the label set just to the side (clear of the ball)."""
+    valve_ball(ax, sx(x), sz(z), BV_R, color, vert=True)
+    lbl = label.replace("\n", "-")
+    ax.text(sx(x + BV_R) + 4, sz(z), lbl, ha="left", va="center",
+            fontsize=5, color=color, fontweight="bold", zorder=14, **FONT)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -381,7 +418,10 @@ def draw_corridor_panel():
 
     # DV-02 (3-way diverter — tray sump → IBC-3 Brown / IBC-4 Waste), high up.
     _DV_IBC4_Z = DV02_Z - 70
-    draw_ball_valve(DV02_YD, DV02_Z, "DV\n02", C_BLACK_EC)
+    valve_3way(ax, sx(DV02_YD), sz(DV02_Z), BV_R, C_BLACK_EC,
+               ports=("left", "right", "down"))
+    ax.text(sx(DV02_YD + BV_R) + 4, sz(DV02_Z), "DV-02", ha="left", va="center",
+            fontsize=5, color=C_BLACK_EC, fontweight="bold", zorder=14, **FONT)
     # DV-02 Brown output → IBC-3: exits LEFT (brown)
     draw_pipe_path(ax,
         [EXIT_L, DV02_YD - BV_R],
@@ -523,6 +563,9 @@ def draw_corridor_panel():
     ]
     draw_notes(ax, notes, 575, 300, spacing=14,
                fs=6, width=470, color=C_DIM, title_color=C_NEW, font=FONT)
+
+    # ── SYMBOL KEY ──────────────────────────────────────────────────
+    draw_symbol_key(ax, 575, 2540, r=11, row=58, fs=6.5, w=300)
 
     # ── TITLE BLOCK ─────────────────────────────────────────────────
     title_block(ax, "CORRIDOR PANEL",
@@ -678,12 +721,10 @@ def draw_pinhole_panel():
                       arrowprops=dict(**_arrow_kw, color=color), zorder=11)
 
     def pw_valve(x, z, label, color, half=22):
-        pts_x = [pwx(x), pwx(x) + half, pwx(x), pwx(x) - half]
-        pts_z = [pwz(z) + half, pwz(z), pwz(z) - half, pwz(z)]
-        ax_p.add_patch(plt.Polygon(list(zip(pts_x, pts_z)),
-                       fc="white", ec=color, lw=1.5, zorder=12))
-        ax_p.text(pwx(x), pwz(z), label, ha="center", va="center",
-                  fontsize=4.5, color=color, fontweight="bold", zorder=13, **FONT)
+        valve_ball(ax_p, pwx(x), pwz(z), half, color, vert=True)
+        lbl = label.replace("\n", "-")
+        ax_p.text(pwx(x) + half + 6, pwz(z), lbl, ha="left", va="center",
+                  fontsize=6, color=color, fontweight="bold", zorder=14, **FONT)
 
     # Title above the board
     pw_text((PW_XL + PW_XR) / 2, PW_ZT + 60,
@@ -836,6 +877,9 @@ def draw_pinhole_panel():
     ]
     draw_notes(ax_p, notes, pwx(2700), pwz(1560), spacing=46,
                fs=7, width=560, color=C_DIM, title_color=C_NEW, font=FONT)
+
+    # ── SYMBOL KEY (clear left margin strip, X4500–5060) ────────────
+    draw_symbol_key(ax_p, 20, pwz(1900), r=13, row=70, fs=6.5, w=395)
 
     # ── TITLE BLOCK ─────────────────────────────────────────────────
     title_block(ax_p, "PINHOLE WALL PANEL",
@@ -1018,17 +1062,15 @@ def spine_view(side):
     # ── Fitting / valve / diverter landmarks (drawn in BOTH views) ───────────
     DV01X = 4700                       # 3W-DV-01 X (corridor mouth, low ~Z235)
     # DV-01 — pH-gated filter-output diverter, low at the corridor mouth.
-    axb.add_patch(mpatches.Polygon(
-        [(DV01X, 251), (DV01X + 16, 235), (DV01X, 219), (DV01X - 16, 235)],
-        fc="white", ec="#8A6D08", lw=1.3, zorder=12))
+    valve_3way(axb, DV01X, 235, 16, "#8A6D08", ports=("left", "up", "down"))
     axb.text(DV01X, 305, "DV-01\n(corridor mouth)", fontsize=4.6, ha="center",
              va="bottom", color="#8A6D08", zorder=13, **FB)
     # X1 fill cross (4-way) on the spine + the end-wall X1 camlock + CV-1.
     _pipe([X1X, WALLX], [X1_PORT_Z, X1_PORT_Z], C_BLUEB, zorder=11)              # → end-wall X1 fill camlock
     # CV-1 (one-way / check valve) + the end-wall DC camlock on the X1 gravity-fill line.
-    axb.add_patch(mpatches.Polygon(
-        [(5693, X1_PORT_Z + 15), (5710, X1_PORT_Z), (5693, X1_PORT_Z - 15), (5676, X1_PORT_Z)],
-        fc="white", ec=C_BLUEB, lw=1.2, zorder=14))
+    # Flow allowed toward lower X (the cross / IBC fills); keep data-space "left" so
+    # View B's reversed xlim flips the arrow with the rest of the drawing.
+    valve_check(axb, 5693, X1_PORT_Z, 15, C_BLUEB, flow="left")
     axb.text(5693, X1_PORT_Z + 22, "CV-1", fontsize=4.2, ha="center", va="bottom", color=C_BLUEB, zorder=15, **FB)
     _rect(5836, X1_PORT_Z - 16, 34, 32, "white", ec=C_BLUEB, lw=1.0, z0=14)      # 2" DC camlock (X1 fill)
     axb.text(5853, X1_PORT_Z - 26, "X1 camlock\n(end wall)", fontsize=4.0, ha="center", va="top",
@@ -1051,9 +1093,7 @@ def spine_view(side):
            "IBC-4 MERGE TEE\n(DV-01 + DV-02 waste,\nconsolidated on the spine)",
            color="#555", fs=5.5, ha=_ha("left"), va="center", arrow_style="-|>", font=FB)
     # DV-02 (above the pump column).
-    axb.add_patch(mpatches.Polygon(
-        [(DV02X, 2145 + 18), (DV02X + 18, 2145), (DV02X, 2145 - 18), (DV02X - 18, 2145)],
-        fc="white", ec="#B8860B", lw=1.4, zorder=12))
+    valve_3way(axb, DV02X, 2145, 18, "#B8860B", ports=("left", "right", "down"))
     axb.text(DV02X, 2145 + 30, "DV-02", fontsize=5, ha="center", va="bottom",
              color="#8A6D08", zorder=13, **FB)
 
@@ -1065,9 +1105,7 @@ def spine_view(side):
         # reachable, Z≈1000) → up toward the Blue tote.
         BV01X = 4760
         _pipe([PUMP_FRONT_X, BV01X, BV01X], [787, 787, 1380], C_BLUEB, zorder=11)
-        axb.add_patch(mpatches.Polygon(
-            [(BV01X, 1018), (BV01X + 18, 1000), (BV01X, 982), (BV01X - 18, 1000)],
-            fc="white", ec=C_BLUEB, lw=1.3, zorder=12))
+        valve_ball(axb, BV01X, 1000, 16, C_BLUEB, vert=True)
         axb.text(BV01X, 1404, "↑ Blue tote", fontsize=4.6, ha="center", va="bottom",
                  color=C_BLUEB, zorder=13, **FB)
         leader(axb, BV01X, 1000, 4600, 1140, "BV-01 (P-01 suction)\nfront · walkway-reachable",
@@ -1139,8 +1177,7 @@ def spine_view(side):
         _pipe([5012, 5012], [612, 558], C_BLUEB, zorder=9)
         # P-04 tray-drain DISCHARGE → up the back (SV-02 sample tap) → DV-02.
         _pipe([5046, 5046, DV02X + 18], [1113, 2025, 2025], C_WASTEB, zorder=9)
-        axb.add_patch(mpatches.Polygon([(5046, 1170), (5062, 1150), (5046, 1130), (5030, 1150)],
-                      fc="white", ec="#555", lw=1.0, zorder=12))
+        valve_ball(axb, 5046, 1150, 14, "#555", vert=True)
         axb.text(5066, 1150, "SV-02", fontsize=4.0, ha=_ha("left"), va="center", color="#555", zorder=13, **FB)
         # → IBC-2 (X2) fill stub off the cross.
         _pipe([X1X + 14, X1X + 14], [X1_PORT_Z, X1_PORT_Z - 140], C_BLUEB, zorder=11)
@@ -1181,6 +1218,10 @@ def spine_view(side):
         "9. X1 fill is a 4-way cross (X1 in + IBC-1 + IBC-2 + DV-01 recycle return) with CV-1 one-way valve + 2\" DC camlock at the end wall; X1/X2 balance = Blue equalization tank-body tie.",
         "10. PIPE: 1\" SDR-11 HDPE (IBC fill/drain + recycle) and 1/2\" HDPE (pump runs), PP/Banjo fittings; risers stainless P-clipped to the spine face.",
     ], mxa(6065), 2440, spacing=27, fs=9.3, ha="left", width=480, wrap=36, font=FB)
+
+    # ── SYMBOL KEY (top-left screen corner; mxa anchors the screen-left edge,
+    #    and draw_symbol_key lays out in screen space for the reversed View-B axis) ──
+    draw_symbol_key(axb, mxa(4570), 2470, r=15, row=82, fs=6, w=470)
 
     if _NEAR == '-Yd':
         dtitle = "CORRIDOR PLUMBING PANEL — SPINE VIEW A"

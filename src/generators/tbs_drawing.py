@@ -198,6 +198,49 @@ def draw_rect(ax, x, y, w, h, *, lw=1.8, color=C_OUT, fc="white", zorder=3):
     ax.add_patch(r)
 
 
+# ── P&ID valve symbols ───────────────────────────────────────────────────────
+
+def valve_ball(ax, cx, cy, r, color, *, vert=False, fc="white", lw=1.4, zorder=12):
+    """P&ID ball valve: bowtie (two triangles tip-to-tip) + centre circle (the ball)."""
+    if vert:
+        t1 = [(cx - r, cy - r), (cx + r, cy - r), (cx, cy)]
+        t2 = [(cx - r, cy + r), (cx + r, cy + r), (cx, cy)]
+    else:
+        t1 = [(cx - r, cy - r), (cx - r, cy + r), (cx, cy)]
+        t2 = [(cx + r, cy - r), (cx + r, cy + r), (cx, cy)]
+    for t in (t1, t2):
+        ax.add_patch(mpatches.Polygon(t, closed=True, fc=fc, ec=color, lw=lw, zorder=zorder))
+    ax.add_patch(mpatches.Circle((cx, cy), r * 0.46, fc=fc, ec=color, lw=lw, zorder=zorder + 1))
+
+
+def valve_3way(ax, cx, cy, r, color, *, ports=("left", "right", "down"), fc="white", lw=1.4, zorder=12):
+    """P&ID 3-way (diverter) valve: a triangle pointing inward from each of the three
+    port directions to the centre + a centre circle (ball / L-T port)."""
+    d = {"left": (-1, 0), "right": (1, 0), "up": (0, 1), "down": (0, -1)}
+    for p in ports:
+        ux, uy = d[p]
+        base = ([(cx + ux * r, cy - r), (cx + ux * r, cy + r)] if ux
+                else [(cx - r, cy + uy * r), (cx + r, cy + uy * r)])
+        ax.add_patch(mpatches.Polygon([base[0], base[1], (cx, cy)], closed=True,
+                     fc=fc, ec=color, lw=lw, zorder=zorder))
+    ax.add_patch(mpatches.Circle((cx, cy), r * 0.46, fc=fc, ec=color, lw=lw, zorder=zorder + 1))
+
+
+def valve_check(ax, cx, cy, r, color, *, flow="right", fc="white", lw=1.4, zorder=12):
+    """P&ID check (non-return) valve: a filled triangle pointing in the allowed flow
+    direction against a seat bar at its apex."""
+    if flow in ("right", "left"):
+        s = 1 if flow == "right" else -1
+        tri = [(cx - s * r, cy - r), (cx - s * r, cy + r), (cx + s * r, cy)]
+        seat = [(cx + s * r, cy - r * 1.15), (cx + s * r, cy + r * 1.15)]
+    else:
+        s = 1 if flow == "up" else -1
+        tri = [(cx - r, cy - s * r), (cx + r, cy - s * r), (cx, cy + s * r)]
+        seat = [(cx - r * 1.15, cy + s * r), (cx + r * 1.15, cy + s * r)]
+    ax.add_patch(mpatches.Polygon(tri, closed=True, fc=color, ec=color, lw=lw, alpha=0.85, zorder=zorder))
+    ax.plot([seat[0][0], seat[1][0]], [seat[0][1], seat[1][1]], color=color, lw=lw * 1.5, zorder=zorder + 1)
+
+
 # ── Bolt holes ───────────────────────────────────────────────────────────────
 
 def bolt_holes(ax, cx, cy, bc_r, n, d_r, *, color=C_OUT, lw=1.0,

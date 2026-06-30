@@ -1030,13 +1030,24 @@ axb.add_patch(mpatches.Polygon(
 axb.text(DV01X, 305, "DV-01\n(corridor mouth)", fontsize=4.6, ha="center",
          va="bottom", color="#8A6D08", zorder=13, **FB)
 _pipe([DV01X, RX_BLUE, RX_BLUE, X1X],
-      [248, 248, X1_PORT_Z, X1_PORT_Z], C_BLUEB, zorder=11)   # recycle riser (in front)
-_pipe([DV01X, MERGEX, MERGEX], [222, 222, 1214], C_WASTEB, zorder=11)   # DV-01 waste riser (in front)
-# X1 fill cross + the IBC-4 merge tee, both consolidated on the spine.
+      [276, 276, X1_PORT_Z, X1_PORT_Z], C_BLUEB, zorder=13)   # blue recycle — raised + IN FRONT of the brown
+_pipe([DV01X, MERGEX, MERGEX], [222, 222, 1214], C_WASTEB, zorder=11)   # DV-01 waste — lower, parallel lane
+# X1 fill cross (4-way) on the spine + its branches: → IBC-1 (X1) and IBC-2 (X2)
+# Blue-tote fills, → the end-wall X1 camlock, ← DV-01 blue recycle return.
+_pipe([X1X, WALLX], [X1_PORT_Z, X1_PORT_Z], C_BLUEB, zorder=11)              # → end-wall X1 fill camlock
+_pipe([X1X - 14, X1X - 14], [X1_PORT_Z, X1_PORT_Z - 140], C_BLUEB, zorder=11)   # → IBC-1 (X1) fill
+_pipe([X1X + 14, X1X + 14], [X1_PORT_Z, X1_PORT_Z - 140], C_BLUEB, zorder=11)   # → IBC-2 (X2) fill
+axb.text(X1X, X1_PORT_Z - 152, "→ IBC-1 (X1) +\nIBC-2 (X2) fills", fontsize=4.4,
+         ha="center", va="top", color=C_BLUEB, zorder=13, **FB)
 axb.add_patch(mpatches.Circle((X1X, X1_PORT_Z), 16, facecolor="white",
-              edgecolor=C_BLUEB, lw=1.4, zorder=12))
-axb.text(X1X, X1_PORT_Z + 60, "X1 FILL\nCROSS", fontsize=5, ha="center",
-         va="bottom", color=C_BLUEB, zorder=13, **FB)
+              edgecolor=C_BLUEB, lw=1.4, zorder=14))
+axb.text(X1X - 64, X1_PORT_Z + 36, "X1 FILL CROSS\n(4-way)", fontsize=5, ha="center",
+         va="bottom", color=C_BLUEB, zorder=14, **FB)
+# X1/X2 balance — Blue equalization cross-tie between IBC-1 ↔ IBC-2 (a circle).
+axb.add_patch(mpatches.Circle((X1X, 1376), 13, facecolor="white",
+              edgecolor=C_BLUEB, lw=1.3, zorder=13))
+axb.text(X1X + 22, 1376, "X1/X2 BALANCE\n(Blue equalization tie)", fontsize=4.4,
+         ha="left", va="center", color=C_BLUEB, zorder=14, **FB)
 axb.add_patch(mpatches.Circle((MERGEX, 1230), 16, facecolor="white",
               edgecolor=C_WASTEB, lw=1.6, zorder=13))
 leader(axb, MERGEX, 1230, 5650, 1370,
@@ -1048,9 +1059,12 @@ axb.add_patch(mpatches.Polygon(
     fc="white", ec="#B8860B", lw=1.4, zorder=12))
 axb.text(DV02X, 2145 + 30, "DV-02", fontsize=5, ha="center", va="bottom",
          color="#8A6D08", zorder=13, **FB)
-# DV-02 waste runs high off the panel to the LEFT, then DROPS at X5290 — parallel
-# to the blue-recycle riser (5239) — and turns into the merge tee's LEFT side.
-_hpipe(2127, DV02X, 5290, C_WASTEB, zorder=11, crosses=(RX_BLUE,))        # high horizontal; crosses the blue riser
+# DV-02 waste starts on the FRONT (facing) side, runs high, PENETRATES the rear
+# panel near the spine top (disappears, then reappears in the rear corridor), then
+# DROPS at X5290 — parallel to the blue-recycle riser — into the merge's LEFT side.
+_hpipe(2127, DV02X, 5290, C_WASTEB, zorder=11, crosses=(PANX + 9, RX_BLUE))   # gap = panel penetration (5113) + blue riser
+axb.text(PANX + 9, 2160, "through\npanel", fontsize=4.0, ha="center", va="bottom",
+         color="#999", zorder=12, **FB)
 _pipe([5290, 5290, MERGEX], [2127, 1230, 1230], C_WASTEB, zorder=11)      # drop ∥ blue riser → into merge (LEFT)
 # IBC-4 (Waste) tote entry — the merge tee's RIGHT pipe (+X off the merge, then
 # drops into the IBC-4 tote).
@@ -1059,6 +1073,25 @@ axb.annotate("", xy=(5494, 1100), xytext=(5494, 1150),
              arrowprops=dict(arrowstyle="-|>", lw=1.3, mutation_scale=8, color=C_WASTEB), zorder=12)
 axb.text(5506, 1120, "→ IBC-4\n(Waste tote)", fontsize=4.8, ha="left", va="top",
          color=C_WASTEB, zorder=13, **FB)
+# ── Remaining pump + ACC-01 connections ──────────────────────────────────
+# P-01 discharge → ACC-01 (short drop into the accumulator directly below P-01).
+_pipe([5012, 5012], [612, 558], C_BLUEB, zorder=9)
+# ACC-01 OUT → Blue supply trunk → spray bar / TAP-01 (down the corridor front).
+_pipe([PUMP_FRONT_X, 4655, 4655], [455, 455, 30], C_BLUEB, zorder=9)
+axb.text(4648, 8, "↓ Blue supply →\nspray bar / TAP-01", fontsize=4.2, ha="left",
+         va="bottom", color=C_BLUEB, zorder=12, **FB)
+# P-04 tray-drain DISCHARGE → up the back (SV-02 sample tap) → DV-02 at the top.
+_pipe([5046, 5046, DV02X + 18], [1113, 2025, 2025], C_WASTEB, zorder=9)
+axb.add_patch(mpatches.Polygon([(5046, 1170), (5062, 1150), (5046, 1130), (5030, 1150)],
+              fc="white", ec="#555", lw=1.0, zorder=12))
+axb.text(5066, 1150, "SV-02", fontsize=4.0, ha="left", va="center", color="#555", zorder=13, **FB)
+# P-04 tray-drain SUCTION (← from the tray sump, far −X).
+_pipe([4600, 4908, 4908, PUMP_FRONT_X], [205, 205, 1075, 1075], C_WASTEB, zorder=9)
+axb.text(4598, 165, "← tray sump", fontsize=4.2, ha="left", va="top", color="#555", zorder=12, **FB)
+# P-05 brown-drain SUCTION (← IBC-3 Brown tap via BV-02) up to P-05 IN.
+_pipe([4960, 5072, 5072, PUMP_BACK_X], [300, 300, 1500, 1500], C_BROWNB, zorder=9)
+axb.text(5076, 540, "← IBC-3\n(BV-02)", fontsize=4.0, ha="left", va="center",
+         color=C_BROWNB, zorder=12, **FB)
 # P-clips fastening the spine risers (suction pickup, blue recycle, DV-01 waste).
 for rx, zt in [(RX4, 1800), (RX_BLUE, X1_PORT_Z), (MERGEX, 1214)]:
     for i in range(4):

@@ -482,16 +482,17 @@ def plumbing():
     srz   = SUCT_SURF_Z                  # 205 — surface run: above the deck (130) AND the FP bottom rail (190)
     xlane = SUCT_XLANE                   # 4643 — tray–IBC gap lane, clear of the corridor-frame front upright
     xrise = PXC - 84                    # 4900 — rise lane −X of the pump column / ACC body & blue out-trunk (PXC)
-    ybr   = PIY - 4                     # 1097 — rise Yd, THREADED between the P-01 suction (Yd1071) and the
-                                        # ACC-01 body (Yd1117+); also clear of the stacked blue recycle (Yd1181)
+    ybr   = PIY - 4                     # 1097 — port-approach Yd into the −Yd-facing IN port (clear of the P-01 suction Yd1071)
+    gapyd = 1194                        # THREAD the rise through the GAP between the DV-01 grey-waste (Yd1147) and
+    #   blue-recycle (Yd1241) floor lanes — clear of the P-05 brown feed (Yd1101, z258) the old Yd1097 rise crossed.
     pipe("Tray sump -> P-04 suction",
          [(sumpX, sumpY, sumpZ), (sumpX, sumpY, srz),       # up from the sump to the walkway surface
           (xlane, sumpY, srz),                              # +X to the tray–IBC gap
-          (xlane, CTR_Y, srz),                              # +Yd along the walkway perimeter / IBC −X face into the corridor
-          (xrise, CTR_Y, srz),                              # +X across the corridor to the rise lane (x4900)
-          (xrise, ybr, srz),                                # −Yd to the threaded rise Yd
-          (xrise, ybr, z04),                                # RISE past the blue ACC-01 out-trunk + P-01 suction
-          (PXC, ybr, z04), pin("P-04")],                    # +X back to the pump → +Yd into the −Yd-facing IN port
+          (xlane, gapyd, srz),                              # +Yd along the walkway perimeter into the corridor GAP lane
+          (xrise, gapyd, srz),                              # +X across the corridor in the gap lane to the rise
+          (xrise, gapyd, z04),                              # RISE through the gap (between the grey + blue floor lanes)
+          (xrise, ybr, z04),                                # −Yd at the IN-port height to the port-approach lane
+          (PXC, ybr, z04), pin("P-04")],                    # +X straight into the −Yd-facing IN port
          ov.C_IBC_BROWN)
     p.append(ov.ruby_cylinder("Tray sump strainer foot", sumpX, sumpY, sumpZ, 14, 36, color=CDK, axis="z"))
     # P-04 DISCHARGE → up the BACK of the panel (clear of the OUT-port stack), back to the front

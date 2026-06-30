@@ -242,7 +242,7 @@ def draw_symbol_key(ax_t, x, y_top, *, r=11, row=58, fs=6.5, w=300):
     box_h = 4 * row + 18
     ax_t.add_patch(mpatches.Rectangle((x, y_top - box_h), w * dxs, box_h,
                    fc="#FAFAFA", ec=C_DIM, lw=0.8, zorder=14))
-    ax_t.text(x + dxs * w / 2, y_top - 14, "VALVE SYMBOL KEY",
+    ax_t.text(x + dxs * w / 2, y_top - 20, "VALVE SYMBOL KEY",
               ha="center", va="center", fontsize=fs + 1, color=C_OUT,
               fontweight="bold", zorder=16, **FONT)
     sym_x = x + dxs * 30
@@ -253,7 +253,7 @@ def draw_symbol_key(ax_t, x, y_top, *, r=11, row=58, fs=6.5, w=300):
         ("check", "CHECK VALVE (CV)"),
     ]
     for i, (kind, name) in enumerate(rows):
-        cy = y_top - 40 - i * row
+        cy = y_top - 60 - i * row
         if kind == "ball":
             valve_ball(ax_t, sym_x, cy, r, C_OUT, vert=False, zorder=15)
         elif kind == "3way":
@@ -1217,11 +1217,11 @@ def spine_view(side):
         "8. Spine riser X-lanes: X4 suction pickup 5200, blue-recycle 5239, DV-01-waste/merge 5404, X1 cross 5500. End-wall ports: X1 fill Z2250, X3 Z1700, X4 Z1620.",
         "9. X1 fill is a 4-way cross (X1 in + IBC-1 + IBC-2 + DV-01 recycle return) with CV-1 one-way valve + 2\" DC camlock at the end wall; X1/X2 balance = Blue equalization tank-body tie.",
         "10. PIPE: 1\" SDR-11 HDPE (IBC fill/drain + recycle) and 1/2\" HDPE (pump runs), PP/Banjo fittings; risers stainless P-clipped to the spine face.",
-    ], mxa(6065), 2440, spacing=27, fs=9.3, ha="left", width=480, wrap=36, font=FB)
+    ], mxa(6800), 2440, spacing=27, fs=9.3, ha="left", width=800, wrap=36, font=FB)
 
     # ── SYMBOL KEY (top-left screen corner; mxa anchors the screen-left edge,
     #    and draw_symbol_key lays out in screen space for the reversed View-B axis) ──
-    draw_symbol_key(axb, mxa(4570), 2470, r=15, row=82, fs=6, w=470)
+    draw_symbol_key(axb, mxa(4570), 2470, r=15, row=82, fs=6, w=280)
 
     if _NEAR == '-Yd':
         dtitle = "CORRIDOR PLUMBING PANEL — SPINE VIEW A"

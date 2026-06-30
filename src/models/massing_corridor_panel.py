@@ -632,19 +632,26 @@ def drains_ports():
           (ew - 130, x3lane, p5o[2]), (ew - 130, COL_L, p5o[2]),
           (ew - 130, COL_L, 1700), (ew - 60, COL_L, 1700)], ov.C_IBC_BROWN)
 
-    # ── IBC-4 WASTE: own bottom pickup (bend points DOWN to floor) → P-03 → X4 end-wall port ──
-    # BV-06 / P-03 suction is a COPY of the P-05 / BV-02 geometry (riser offset to rx6 on the shirt-edge
-    # lane BV02_YD, valve 110 below the port, 23.5mm bottom jog WELL below the valve so the elbow renders
-    # cleanly, −X + short +Yd stub into the IN port).  Starting point — to be fixed up (riser is collinear
-    # with the BV-02 riser for now; the X4-pickup feed is rough).
+    # ── IBC-4 WASTE: bottom pickup → grey SPINE riser → WRAP back through the panels → BV-06 → P-03 ──
+    # BV-06 valve geometry copies BV-02 (riser at rx6/BV02_YD, valve 110 below the port, −X + +Yd stub
+    # into the IN port).  Its X4 feed can't cross the chase frame upright on the IN-port lane, so it WRAPS:
+    # down off BV-06, −X toward the walkway THROUGH the pump gap (P-05 top z1520 ↔ P-03 base z1740), +Yd
+    # to the spine lane (1206, BETWEEN the two uprights 1096/1266), then +X back through the shirt + panel
+    # (perpendicular round holes) to the grey X4 pickup riser on the spine.
     p3i = (PXC, PIY, _piz("P-03")); p3o = (PXC, POY, _piz("P-03"))
     z03 = _piz("P-03")
-    rx6 = 5070                     # BV-06 riser X — copied from BV-02
-    bv6z = z03 - 300               # 1602 — riser bottom (above the BV-02 riser top so they don't overlap)
-    _bottom_pickup(p, "X4 Waste (P-03)", 5200, YD_FAR, +1, ov.C_IBC_WASTE,
-                   [(5200, YD_FAR - 120, bv6z), (5200, PIY, bv6z), (rx6, PIY, bv6z),
-                    (rx6, BV02_YD, bv6z), (rx6, BV02_YD, z03),
-                    (PXC, BV02_YD, z03), p3i])   # −X on PIY (clears upright) → 23.5mm jog → riser → −X → +Yd stub
+    rx6 = 5070                     # BV-06 riser X (copied from BV-02)
+    turn6 = 1700                   # turn partway down the riser below BV-06 — in the pump gap (z1520–1740)
+    corr_x = 4900                  # −X reach in FRONT of the pump column (toward the walkway)
+    spine_yd = 1206                # spine grey-riser lane, between the chase frame uprights (Yd1096 / 1266)
+    grey_x = 5200                  # X4 grey pickup riser X (on the spine)
+    _bottom_pickup(p, "X4 Waste (P-03)", grey_x, spine_yd, +1, ov.C_IBC_WASTE,
+                   [(grey_x, spine_yd, turn6),                      # ↑ grey spine riser to the wrap level
+                    (corr_x, spine_yd, turn6),                      # −X through panel+shirt (pump gap) into the corridor
+                    (corr_x, BV02_YD, turn6),                       # −Yd to the BV-06 riser lane (in front of the pumps)
+                    (rx6, BV02_YD, turn6),                          # +X back to the BV-06 riser (through the pump gap)
+                    (rx6, BV02_YD, z03),                            # ↑ through BV-06 to the IN-port height
+                    (PXC, BV02_YD, z03), p3i])                      # −X + short +Yd stub into the IN port
     p.append(ball_valve("BV-06 (P-03 suction)", rx6, BV02_YD, z03 - 110, "z", hdir="-x"))   # on the riser, like BV-02
     p.append(ov.ruby_cylinder("X4 Waste drain port (end wall)", ew - 60, COL_R, 1620, 22, 60, color=C_CHECK, axis="x"))
     pipe("P-03 -> X4 end-wall port",   # OUT leaves with a +Yd stub straight out of the OUT port

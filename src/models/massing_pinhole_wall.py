@@ -323,7 +323,7 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz) — (x,y,z) is the arrow TI
     (cp.DV02X, cp.CTR_Y, cp.DV_Z, "DV-02 (3-way)", -700, 0, 200),
     # ── ball valves (in-panel pump-suction isolation; BV-01/02 on the BACK-of-panel risers) ──
     (cp.FRONT_X + 106, cp.YD_NEAR + 67, 1000, "BV-01", -600, 0, 250),   # now on the front walkway-side riser
-    (5070, cp.PIY - 30, cp._piz("P-05") - 110, "BV-02", 350, 0, 250),   # gap riser behind P-05
+    (5070, cp.BV02_YD, cp._piz("P-05") - 110, "BV-02", 350, 0, 250),   # on the shirt-edge riser, P-05 suction
     (2960, 43, 1000, "BV-03", 0, 520, 200),                            # P-02 suction valve center
     (cp.PXC, cp.PIY, cp._piz("P-03") - 41, "BV-06", -1000, 0, 150),    # inline below the P-03 IN port
     # ── per-tank anti-siphon check valves ──

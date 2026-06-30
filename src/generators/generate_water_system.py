@@ -126,6 +126,36 @@ def valve(ax, x, y, color=C_BLUE, zorder=5, size=0.06, label="V"):
     ax.add_patch(tri1)
     ax.add_patch(tri2)
 
+def diverter(ax, x, y, color=C_BLUE, zorder=5, size=0.075, branch="up", label="DV"):
+    """Draw a 3-way diverter valve symbol — a ball-valve bowtie (two triangles
+    tip-to-tip in a white circle) PLUS a third triangle pointing to the branch
+    port, so it reads as a 3-port diverter rather than a 2-port ball valve.
+    branch in {"up","down","left","right"} selects the branch-port direction.
+    Drawn in the same style/scale as valve() (circle radius = size * 1.6)."""
+    r = size * 1.6
+    circ = plt.Circle((x, y), r, fc="white", ec=color, lw=2.0, zorder=zorder)
+    ax.add_patch(circ)
+    # Bowtie — the two through-port triangles (left+right, tips meeting at center)
+    tri1 = plt.Polygon([(x - size, y - size),
+                        (x - size, y + size),
+                        (x, y)],
+                       fc=color, ec=color, alpha=0.85, zorder=zorder + 1)
+    tri2 = plt.Polygon([(x + size, y - size),
+                        (x + size, y + size),
+                        (x, y)],
+                       fc=color, ec=color, alpha=0.85, zorder=zorder + 1)
+    ax.add_patch(tri1)
+    ax.add_patch(tri2)
+    # Third (branch) triangle — apex at center, base out at the branch port.
+    bdir = {"up": (0, 1), "down": (0, -1), "left": (-1, 0), "right": (1, 0)}[branch]
+    bx, by = bdir
+    px, py = -by, bx                    # perpendicular (base spread direction)
+    base1 = (x + bx*size + px*size, y + by*size + py*size)
+    base2 = (x + bx*size - px*size, y + by*size - py*size)
+    tri3 = plt.Polygon([base1, base2, (x, y)],
+                       fc=color, ec=color, alpha=0.85, zorder=zorder + 1)
+    ax.add_patch(tri3)
+
 def check_valve(ax, x, y, dx, dy, color=C_BROWN, zorder=6, size=0.085):
     """Check / non-return valve (anti-siphon): a triangle pointing DOWNSTREAM
     (the permitted flow direction) seated against a stop bar it cannot pass."""
@@ -451,7 +481,7 @@ def draw_sheet1():
     # ── DIVERTER VALVE after filter — back to Blue OR forward to Black ─────────────
     DVR = 0.075 * 1.6  # diverter valve circle radius = 0.12
     pipe(ax1, 9.4, 3.25, 9.7 - DVR, 3.25, C_BROWN)
-    valve(ax1, 9.7, 3.25, color="#777777", size=0.075)
+    diverter(ax1, 9.7, 3.25, color="#777777", size=0.075, branch="up")  # branch up = recycle to Blue; through L→R = to Black
     ax1.text(9.7, 2.9, "3W-DV-01\nDIVERTER", ha="center", fontsize=6, color="#444")
 
     # Path back to Blue IBC-2 — up at X=9.7, left at Y=9.2, into IBC-2 side-entry near top
@@ -543,7 +573,7 @@ def draw_sheet1():
     valve(ax1, 16.08, SV2_Y, color="#F9A825", size=0.05, label="SV")
     pipe(ax1, 16.08, SV2_Y - 0.08, 16.08, SV2_Y - 0.22, C_BROWN)   # downturned sample spout
     ax1.text(16.22, SV2_Y + 0.02, "SV-02", ha="left", fontsize=6, color="#E65100")
-    valve(ax1, 15.6, DV02_Y, color="#777777", size=0.075)
+    diverter(ax1, 15.6, DV02_Y, color="#777777", size=0.075, branch="left")  # branch left = recycle to brown; through top→bottom = to Black
     ax1.text(16.00, DV02_Y - 0.22, "3W-DV-02", ha="center", fontsize=6, color="#444")
 
     # to brown: short horizontal from valve left to brown return riser (dashed — return flow)

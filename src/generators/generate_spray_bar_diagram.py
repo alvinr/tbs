@@ -308,11 +308,34 @@ def draw_sheet1():
                  pipe_w, bv_z,
                  fc=C_BLUE, ec=C_FRAME, lw=0.8, alpha=0.4, zorder=11))
 
-    ax.add_patch(Rectangle((BV02_X - bv_size / 2, bv_z - bv_size / 2),
-                 bv_size, bv_size,
-                 fc=C_BLUE, ec=C_FRAME, lw=1.5, alpha=0.6, zorder=12))
-    ax.plot([BV02_X, BV02_X - 30], [bv_z, bv_z + 30],
-            color=C_FRAME, lw=2.0, zorder=12)
+    # BV-02 ball-valve symbol (bowtie inside white circle).
+    # Axis aspect is 4.0 (1 X data-unit renders 4x wider than 1 Z data-unit), so
+    # to make the symbol appear round/symmetric ON SCREEN every X extent is divided
+    # by AR. The P&ID bowtie is drawn spread HORIZONTALLY on screen (the two
+    # triangles meet tip-to-tip at center) so it reads as a ball valve regardless
+    # of the vertical through-pipe.
+    # This section axes has px-per-data X=0.285, Z=1.285 (≈1:4.5). To make the
+    # P&ID bowtie read as a horizontal ball-valve symbol (not a thin vertical
+    # lens) the data extents are sized from a target ON-SCREEN pixel size and
+    # divided by those ratios. Drawn ABOVE the telescoping pole (zorder 12).
+    PX_X, PX_Z = 0.2848, 1.2847             # px per data-unit on this axes
+    CIRC_R_PX = 17.0                        # circle radius on screen (px)
+    rx = CIRC_R_PX / PX_X                   # X data radius
+    rz = CIRC_R_PX / PX_Z                   # Z data radius
+    ax.add_patch(mpatches.Ellipse((BV02_X, bv_z), 2 * rx, 2 * rz,
+                 fc="white", ec=C_FRAME, lw=1.5, zorder=14))
+    # Horizontal bowtie: bases vertical at left/right circle edge, apexes meet
+    # at the center.  Triangle half-extents sized in screen px then converted.
+    _bx = (CIRC_R_PX * 0.92) / PX_X         # X data half-width (near circle edge)
+    _bh = (CIRC_R_PX * 0.78) / PX_Z         # Z data half-height (base height)
+    ax.add_patch(mpatches.Polygon([(BV02_X - _bx, bv_z - _bh),
+                                   (BV02_X - _bx, bv_z + _bh),
+                                   (BV02_X, bv_z)],
+                                  fc=C_BLUE, ec=C_BLUE, zorder=15))
+    ax.add_patch(mpatches.Polygon([(BV02_X + _bx, bv_z - _bh),
+                                   (BV02_X + _bx, bv_z + _bh),
+                                   (BV02_X, bv_z)],
+                                  fc=C_BLUE, ec=C_BLUE, zorder=15))
 
     leader(ax, BV02_X - 30, bv_z + 35,
            BV02_X - 375, bv_z + 80,

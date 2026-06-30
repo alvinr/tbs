@@ -437,12 +437,22 @@ draw_pipe_path(ax,
     [SUPPLY_Z, BV02_Z],
     OD_H, WALL_H, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=8)
 
-# BV-02 valve symbol (filled circle)
-ax.add_patch(plt.Circle((sx(BV02_X), sz(BV02_Z)), BV02_R,
-             fc=C_BLUE, ec=C_BLUE_EC, lw=1.5, zorder=12))
-ax.text(sx(BV02_X), sz(BV02_Z), "BV\n02",
-        ha="center", va="center", fontsize=4, fontweight="bold",
-        color="white", zorder=13, **FONT)
+# BV-02 ball-valve symbol (bowtie inside white circle)
+_bvx, _bvz = sx(BV02_X), sz(BV02_Z)
+ax.add_patch(plt.Circle((_bvx, _bvz), BV02_R,
+             fc="white", ec=C_BLUE_EC, lw=1.5, zorder=12))
+_bs = BV02_R * 0.62      # bowtie triangle half-size
+ax.add_patch(plt.Polygon([(_bvx - _bs, _bvz - _bs),
+                          (_bvx - _bs, _bvz + _bs),
+                          (_bvx, _bvz)],
+                         fc=C_BLUE, ec=C_BLUE, zorder=13))
+ax.add_patch(plt.Polygon([(_bvx + _bs, _bvz - _bs),
+                          (_bvx + _bs, _bvz + _bs),
+                          (_bvx, _bvz)],
+                         fc=C_BLUE, ec=C_BLUE, zorder=13))
+ax.text(_bvx, _bvz - BV02_R - 8, "BV-02",
+        ha="center", va="top", fontsize=4, fontweight="bold",
+        color=C_BLUE, zorder=13, **FONT)
 
 leader(ax, sx(BV02_X), sz(BV02_Z + BV02_R + 5),
        sx(BV02_X - 10), sz(BV02_Z + 80),
@@ -481,12 +491,23 @@ draw_pipe_path(ax,
     [TAP_BRANCH_Z, TAP_BRANCH_Z, TAP_Z],
     TAP_OD, TAP_WALL, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=7)
 
-# BV-06 valve symbol (filled circle with label) on the riser
-ax.add_patch(plt.Circle((sx(TAP_X), sz(BV06_Z)), 25,
+# BV-06 ball-valve symbol (bowtie inside white circle) on the riser
+_b6x, _b6z = sx(TAP_X), sz(BV06_Z)
+_b6r = 25
+ax.add_patch(plt.Circle((_b6x, _b6z), _b6r,
              fill=True, facecolor="white", edgecolor=C_OUT,
              linewidth=0.8, zorder=9))
-ax.text(sx(TAP_X), sz(BV06_Z), "BV\n06",
-        ha="center", va="center", fontsize=4, color=C_OUT,
+_b6s = _b6r * 0.62
+ax.add_patch(plt.Polygon([(_b6x - _b6s, _b6z - _b6s),
+                          (_b6x - _b6s, _b6z + _b6s),
+                          (_b6x, _b6z)],
+                         fc=C_BLUE, ec=C_BLUE, zorder=10))
+ax.add_patch(plt.Polygon([(_b6x + _b6s, _b6z - _b6s),
+                          (_b6x + _b6s, _b6z + _b6s),
+                          (_b6x, _b6z)],
+                         fc=C_BLUE, ec=C_BLUE, zorder=10))
+ax.text(_b6x + _b6r + 6, _b6z, "BV-06",
+        ha="left", va="center", fontsize=4, color=C_OUT,
         zorder=10, **FONT)
 
 # Tap spout symbol (at the gooseneck outlet, over the shelf)

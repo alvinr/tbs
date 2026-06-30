@@ -561,8 +561,8 @@ def draw_corridor_panel():
         "     at each pump port. Pumps + ACC cam-clamp to a 25mm ply shirt; 4-bolt brackets.",
         "12. Pump-base Z (AFF): ACC-01 355 · P-01 615 · P-04 940 · P-05 1340 · P-03 1740.",
     ]
-    draw_notes(ax, notes, 575, 300, spacing=14,
-               fs=6, width=470, color=C_DIM, title_color=C_NEW, font=FONT)
+    draw_notes(ax, notes, 575, 375, spacing=14,
+               fs=6, width=450, color=C_DIM, title_color=C_NEW, font=FONT)
 
     # ── SYMBOL KEY ──────────────────────────────────────────────────
     draw_symbol_key(ax, 575, 2540, r=11, row=58, fs=6.5, w=300)

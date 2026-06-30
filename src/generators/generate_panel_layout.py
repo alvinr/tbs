@@ -942,6 +942,13 @@ def spine_view(side):
     _NEAR so the _rect/_pipe/_hpipe helpers draw on this sheet's axes."""
     global axb, _NEAR
     _NEAR = '-Yd' if side == 'a' else '+Yd'
+    # ── side-aware annotation helpers (B mirrors via the reversed xlim, so any
+    #    hand-placed label/leader keeps its SCREEN side only if its ha is flipped;
+    #    mxa() mirrors a margin-anchor X so a standalone block stays in the same
+    #    screen corner) ──
+    _FLIP = {"left": "right", "right": "left", "center": "center"}
+    _ha = (lambda a: a) if side == 'a' else (lambda a: _FLIP.get(a, a))
+    mxa = (lambda x: x) if side == 'a' else (lambda x: 4560 + 6760 - x)
 
     figb, axb = plt.subplots(figsize=(12.6, 15.3))
     if side == 'a':
@@ -954,18 +961,18 @@ def spine_view(side):
 
     # ── Container shell context ──────────────────────────────────────────────
     _rect(4860, -90, 5933 - 4860, 90, C_WALLB, lw=0.8, z0=2, hatch="////")   # floor
-    axb.text(4890, -45, "CONTAINER FLOOR", fontsize=6, va="center", color="#555", **FB)
+    axb.text(4890, -45, "CONTAINER FLOOR", fontsize=6, ha=_ha("left"), va="center", color="#555", **FB)
     _rect(WALLX, 0, 40, C_HGT, C_WALLB, lw=0.8, z0=2, hatch="\\\\")           # sealed end wall
     axb.text(WALLX + 20, C_HGT - 60, f"SEALED\nEND WALL\n(X={int(C_LEN)})", fontsize=6,
              ha="center", va="top", color="#555", **FB)
     axb.plot([4860, WALLX], [C_HGT, C_HGT], color="#999", lw=0.8, ls=(0, (6, 4)), zorder=2)
-    axb.text(4890, C_HGT + 25, f"CEILING (Z={int(C_HGT)})", fontsize=6, color="#777", **FB)
+    axb.text(4890, C_HGT + 25, f"CEILING (Z={int(C_HGT)})", fontsize=6, ha=_ha("left"), color="#777", **FB)
 
     # ── Rear panel (edge-on) ─────────────────────────────────────────────────
     _rect(PANX, PAN_ZB, PANX1 - PANX, PAN_ZT - PAN_ZB, C_PLYB, lw=1.3, z0=6)
     leader(axb, PANX1, 640, 5640, 520,
            f"18mm REAR PANEL\n(edge-on)\nX={PANX}–{PANX1}\nZ={PAN_ZB}–{PAN_ZT}",
-           color=C_OUT, fs=6, ha="left", va="top", arrow_style="-|>", font=FB)
+           color=C_OUT, fs=6, ha=_ha("left"), va="top", arrow_style="-|>", font=FB)
 
     # ── 25mm pump-mount shirt (in FRONT of the rear panel, −X) ───────────────
     _rect(SHIRTX0, SHIRT_ZB, SHIRTX1 - SHIRTX0, SHIRT_ZT - SHIRT_ZB,
@@ -973,7 +980,7 @@ def spine_view(side):
     leader(axb, (SHIRTX0 + SHIRTX1) / 2, 480, 4570, 360,
            f"25mm PUMP-MOUNT SHIRT\nX={SHIRTX0}–{SHIRTX1}, Z={SHIRT_ZB}–{SHIRT_ZT}\n"
            "(pumps cam-clamp to it)",
-           color="#7A6A40", fs=5.5, ha="left", va="top", arrow_style="-|>", font=FB)
+           color="#7A6A40", fs=5.5, ha=_ha("left"), va="top", arrow_style="-|>", font=FB)
     # ~27mm chase gap (shirt back 5077 → panel front 5104) + 6 spacer blocks
     for bz in (320, 920, 1560):
         _rect(SHIRTX1, bz, PANX - SHIRTX1, 80, C_PLYB, ec=C_OUT, lw=0.6, z0=7)
@@ -995,7 +1002,7 @@ def spine_view(side):
                  bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none", alpha=0.85), **FB)
     leader(axb, PUMP_FRONT_X, 1830, 4570, 1980,
            "PUMP COLUMN + ACC-01\n(P-01/P-04/P-05/P-03 + ACC-01,\nsame stack as the front elevation)",
-           color="#777", fs=5.3, ha="left", va="center", arrow_style="-|>", font=FB)
+           color="#777", fs=5.3, ha=_ha("left"), va="center", arrow_style="-|>", font=FB)
 
     # ── Drain-riser spine (18mm ply fin, teed off the rear panel into the corridor) ──
     # The spine plane separates the two faces: VIEW A draws the −Yd intake runs,
@@ -1006,7 +1013,7 @@ def spine_view(side):
            f"DRAIN-RISER SPINE\n18mm ply, teed perpendicular off the rear\n"
            f"panel (a T in plan) — X={PANX}–{SPX1}, Z={SPINE_ZB}–{SPINE_ZT};\n"
            "the back-of-panel drain risers P-clip to it",
-           color=C_OUT, fs=6, ha="left", va="center", arrow_style="-|>", font=FB)
+           color=C_OUT, fs=6, ha=_ha("left"), va="center", arrow_style="-|>", font=FB)
 
     # ── Fitting / valve / diverter landmarks (drawn in BOTH views) ───────────
     DV01X = 4700                       # 3W-DV-01 X (corridor mouth, low ~Z235)
@@ -1036,13 +1043,13 @@ def spine_view(side):
     axb.add_patch(mpatches.Circle((X1X, 1376), 13, facecolor="white",
                   edgecolor=C_BLUEB, lw=1.3, zorder=13))
     axb.text(X1X + 22, 1376, "X1/X2 BALANCE\n(Blue equalization tie)", fontsize=4.4,
-             ha="left", va="center", color=C_BLUEB, zorder=14, **FB)
+             ha=_ha("left"), va="center", color=C_BLUEB, zorder=14, **FB)
     # IBC-4 merge tee (a circle on the spine).
     axb.add_patch(mpatches.Circle((MERGEX, 1230), 16, facecolor="white",
                   edgecolor=C_WASTEB, lw=1.6, zorder=13))
     leader(axb, MERGEX, 1230, 5650, 1370,
            "IBC-4 MERGE TEE\n(DV-01 + DV-02 waste,\nconsolidated on the spine)",
-           color="#555", fs=5.5, ha="left", va="center", arrow_style="-|>", font=FB)
+           color="#555", fs=5.5, ha=_ha("left"), va="center", arrow_style="-|>", font=FB)
     # DV-02 (above the pump column).
     axb.add_patch(mpatches.Polygon(
         [(DV02X, 2145 + 18), (DV02X + 18, 2145), (DV02X, 2145 - 18), (DV02X - 18, 2145)],
@@ -1134,12 +1141,12 @@ def spine_view(side):
         _pipe([5046, 5046, DV02X + 18], [1113, 2025, 2025], C_WASTEB, zorder=9)
         axb.add_patch(mpatches.Polygon([(5046, 1170), (5062, 1150), (5046, 1130), (5030, 1150)],
                       fc="white", ec="#555", lw=1.0, zorder=12))
-        axb.text(5066, 1150, "SV-02", fontsize=4.0, ha="left", va="center", color="#555", zorder=13, **FB)
+        axb.text(5066, 1150, "SV-02", fontsize=4.0, ha=_ha("left"), va="center", color="#555", zorder=13, **FB)
         # → IBC-2 (X2) fill stub off the cross.
         _pipe([X1X + 14, X1X + 14], [X1_PORT_Z, X1_PORT_Z - 140], C_BLUEB, zorder=11)
         leader(axb, 5640, 1700, 6120, 1820,
                "+Yd DISCHARGE face (near):\nX3 / X4 pump discharges → end-wall ports",
-               color=C_BROWNB, fs=5.2, ha="left", va="center", arrow_style="-|>", font=FB)
+               color=C_BROWNB, fs=5.2, ha=_ha("left"), va="center", arrow_style="-|>", font=FB)
 
     # ── End-wall ports ───────────────────────────────────────────────────────
     for z, lab, col in [(X1_PORT_Z, "X1", C_BLUEB), (X3_PORT_Z, "X3", C_BROWNB),
@@ -1173,7 +1180,7 @@ def spine_view(side):
         "8. Spine riser X-lanes: X4 suction pickup 5200, blue-recycle 5239, DV-01-waste/merge 5404, X1 cross 5500. End-wall ports: X1 fill Z2250, X3 Z1700, X4 Z1620.",
         "9. X1 fill is a 4-way cross (X1 in + IBC-1 + IBC-2 + DV-01 recycle return) with CV-1 one-way valve + 2\" DC camlock at the end wall; X1/X2 balance = Blue equalization tank-body tie.",
         "10. PIPE: 1\" SDR-11 HDPE (IBC fill/drain + recycle) and 1/2\" HDPE (pump runs), PP/Banjo fittings; risers stainless P-clipped to the spine face.",
-    ], 6065, 2440, spacing=46, fs=6.2, ha="left", width=640, font=FB)
+    ], mxa(6065), 2440, spacing=46, fs=6.2, ha="left", width=640, font=FB)
 
     if _NEAR == '-Yd':
         dtitle = "CORRIDOR PLUMBING PANEL — SPINE VIEW A"

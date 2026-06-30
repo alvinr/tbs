@@ -125,6 +125,10 @@ def other_equipment():
 C_HANDLE = cp.C_HANDLE
 diverter = cp.diverter
 
+# 3W-DV-01 center — single source for the geometry (kit()) AND the label anchor, so the
+# callout can never drift off the diverter again when DV-01 is relocated.
+DV01_CX, DV01_CY, DV01_CZ = 4700, cp.CTR_Y + 60, 235
+
 
 def kit():
     """Pinhole-wall FILTER sub-loop (Stage B, agreed labels).  Chain:
@@ -174,7 +178,7 @@ def kit():
     sv_y = yW + 75             # SV-01 projects only 75mm forward of the wall (cup access; was yL=230)
     p.append(cp.sample_valve("SV-01 sample valve", svx, sv_y, waist - 25, h=70))
     tipd = cp.DVB / 2 + cp.DVL                  # 33 — diverter port-stub tip reach
-    DCX, DCY, DCZ = 4700, cp.CTR_Y + 60, 235   # DV-01 at the CORRIDOR-ENTRY TURN (just inside the mouth,
+    DCX, DCY, DCZ = DV01_CX, DV01_CY, DV01_CZ   # DV-01 at the CORRIDOR-ENTRY TURN (just inside the mouth,
     #   reachable from the right walkway), shifted +60mm AWAY from the pinhole wall (+Yd) — the practical
     #   max at the mouth before the front-far frame upright (Yd1266+).  The single filtered line turns in
     #   here and splits; blue + waste legs run back across the corridor (low lane, under the ACC)
@@ -299,33 +303,35 @@ def right_walkway():
 
 
 # ── "Labeled" scene callouts (point-anchored on the kit; instance-anchored on pinhole/elec) ──
-LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz)
+_FILT_FCY = ov.BB_OD / 2 + 12              # 104 — filter / P-02 body center Yd (sump back near the wall)
+_FILT_CZ  = ov.C_HGT - 48 - ov.BB_H / 2    # 2170 — Big-Blue filter body center Z
+LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz) — (x,y,z) is the arrow TIP = component CENTER
     # ── pinhole-wall FILTER sub-loop (leaders point +Yd, out toward the operator) ──
-    (3058, 104, 2300, "P-02\n(filter feed)", 0, 520, 250),
-    (3300, 102, 2305, "F1 (50um)",   0, 560, 80),
-    (3638, 102, 2305, "F2 (KDF-55)", 0, 560, 80),
-    (3976, 102, 2305, "F3 (GAC)",    0, 560, 80),
+    (3058, _FILT_FCY, 2229, "P-02\n(filter feed)", 0, 520, 250),    # P-02 body center (cz0 2139 + PVB_H/2)
+    (3300, _FILT_FCY, _FILT_CZ, "F1 (50um)",   0, 560, 215),
+    (3638, _FILT_FCY, _FILT_CZ, "F2 (KDF-55)", 0, 560, 215),
+    (3976, _FILT_FCY, _FILT_CZ, "F3 (GAC)",    0, 560, 215),
     (4250, 110, 1000, "SV-01\n(sample)", 0, 430, 520),   # SV-01 now 75mm off the wall (yW+75)
-    (4430, 35,  1000, "DV-01\n(3-way)",  0, 430, 740),
+    (DV01_CX, DV01_CY, DV01_CZ, "DV-01\n(3-way)",  -700, 0, 650),   # relocated to the corridor mouth (see kit())
     # ── corridor plumbing panel: single-column pumps + ACC + Stage-A (leaders point −X, out the mouth) ──
-    (cp.PXC, cp.PIY, cp._piz("P-01") - 150, "P-01 (Blue supply)", -700, 0, -150),
-    (cp.PXC, cp.PIY, cp._piz("P-04") - 150, "P-04 (Tray drain)",  -800, 0, -150),
-    (cp.PXC, cp.PIY, cp._piz("P-05") - 150, "P-05 (Brown drain)", -900, 0,  150),
-    (cp.PXC, cp.PIY, cp._piz("P-03") - 150, "P-03 (Waste drain)", -1000, 0, 150),
-    (cp.PXC, cp.CTR_Y, cp.ACC_Z0 + 150, "ACC-01\n(accumulator)", -700, 0, 250),
+    (cp.PXC, cp.CTR_Y, cp.PSTACK["P-01"] + cp.PVB_H / 2, "P-01 (Blue supply)", -700, 0, -150),
+    (cp.PXC, cp.CTR_Y, cp.PSTACK["P-04"] + cp.PVB_H / 2, "P-04 (Tray drain)",  -800, 0, -150),
+    (cp.PXC, cp.CTR_Y, cp.PSTACK["P-05"] + cp.PVB_H / 2, "P-05 (Brown drain)", -900, 0,  150),
+    (cp.PXC, cp.CTR_Y, cp.PSTACK["P-03"] + cp.PVB_H / 2, "P-03 (Waste drain)", -1000, 0, 150),
+    (cp.PXC, cp.CTR_Y, cp.ACC_Z0 + 87, "ACC-01\n(accumulator)", -700, 0, 250),   # + acc_h/2 (body 174)
     (cp.PXC - 95, cp.POY + 50, cp.SV_Z, "SV-02\n(sample)", -600, 0, 120),   # teed off to the −X aisle (low, P-04↔P-05)
     (cp.DV02X, cp.CTR_Y, cp.DV_Z, "DV-02 (3-way)", -700, 0, 200),
     # ── ball valves (in-panel pump-suction isolation; BV-01/02 on the BACK-of-panel risers) ──
     (cp.FRONT_X + 106, cp.YD_NEAR + 67, 1000, "BV-01", -600, 0, 250),   # now on the front walkway-side riser
-    (cp.BLANE, cp.BL_P05, cp._piz("P-05") - 170, "BV-02", 350, 0, 250),
-    (2978, 80, 1000, "BV-03", 0, 520, 200),
-    (5022, cp.PIY, cp._piz("P-03"), "BV-06", -1000, 0, 150),
+    (5070, cp.PIY - 30, cp._piz("P-05") - 110, "BV-02", 350, 0, 250),   # gap riser behind P-05
+    (2960, 43, 1000, "BV-03", 0, 520, 200),                            # P-02 suction valve center
+    (cp.PXC, cp.PIY, cp._piz("P-03") - 41, "BV-06", -1000, 0, 150),    # inline below the P-03 IN port
     # ── per-tank anti-siphon check valves ──
-    (ov.C_LEN - 200, cp.CTR_Y, 2250, "CV-1\n(X1 fill)", -600, 300, 0),   # only CV-1 — the pumps' integral checks cover the returns
-    # ── end-wall bulkhead ports ──
-    (ov.C_LEN, cp.CTR_Y, 2250, "X1\n(fresh fill)", -550, 250, 0),
-    (ov.C_LEN, 1109, 1700, "X3\n(brown drain out)", -550, 0, 250),
-    (ov.C_LEN, 1253, 1620, "X4\n(waste drain out)", -550, 0, -250),
+    (ov.C_LEN - 200, cp.X1_TEE_Y, cp.X1_TEE_Z, "CV-1\n(X1 fill)", -600, 300, 0),   # only CV-1 — pumps' integral checks cover the returns
+    # ── end-wall bulkhead ports (tip at the port-body center, 30mm in from the wall) ──
+    (ov.C_LEN - 30, cp.X1_TEE_Y, cp.X1_TEE_Z, "X1\n(fresh fill)", -550, 250, 0),
+    (ov.C_LEN - 30, cp.COL_L, 1700, "X3\n(brown drain out)", -550, 0, 250),
+    (ov.C_LEN - 30, cp.COL_R, 1620, "X4\n(waste drain out)", -550, 0, -250),
 ]
 # Off-panel / context labels — shown ONLY in the full "Labeled" scene (Labels Context tag), kept
 # OUT of the "Plumbing (labeled)" scene so their leaders don't clutter the plumbing view.

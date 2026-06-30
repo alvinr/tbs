@@ -923,7 +923,8 @@ C_WALLB  = "#C8C8C8"
 PANX   = 5104                     # rear-panel front face (pumps hang -X off it)
 PANX1  = 5122                     # rear-panel rear face (18mm ply)
 SHIRTX0, SHIRTX1 = 5052, 5077     # 25mm pump-mount shirt (in FRONT of the panel)
-SHIRT_ZB, SHIRT_ZT = 275, 1925    # shirt Z extent
+SHIRT_ZB, SHIRT_ZT = 325, 2191    # shirt Z extent (bottom shortened to 325 to clear the
+                                  # raised P-05 inlet elbow; top raised to back DV-02 at DV_Z+DVB)
 SPX1   = 5560                     # drain-riser spine rear (X5104–5560)
 SPINE_ZB, SPINE_ZT = 280, 2246    # spine Z extent
 PAN_ZB, PAN_ZT = 50, 2246         # rear-panel Z extent
@@ -933,7 +934,7 @@ RX4    = 5200                     # X4 waste riser X (3D)
 RX_BLUE = 5239                    # blue-recycle riser X (onto the spine, to X1 cross)
 X1X    = 5500                     # X1 fill cross X (3D X1_TEE_X)
 MERGEX = 5404                     # IBC-4 merge tee X (3D MERGE4[0])
-DV02X  = 4909                     # 3W-DV-02 X (3D DV02X = PXC-75)
+DV02X  = 5028                     # 3W-DV-02 X (3D DV02X = SHIRT_X − DVB/2 = 5028.5; PXC mounts DV-02 on the shirt front)
 # End-wall port heights (3D drains_ports): X1 fill high, X3 Z1700, X4 Z1620
 X1_PORT_Z, X3_PORT_Z, X4_PORT_Z = EXT_FILL_1_H, 1700, 1620
 # Pump / ACC stack on the shirt front (single column, projected along Yd)
@@ -1119,13 +1120,17 @@ def spine_view(side):
         axb.text(DV01X, 258, "DV-01", fontsize=4.6, ha="center",
                  va="bottom", color="#8A6D08", zorder=13, **FB)
         # P-01 suction: P-01 IN → −X to BV-01 (front of the corridor, walkway-
-        # reachable, Z≈1000) → up toward the Blue tote.
-        BV01X = 4760
-        _pipe([PUMP_FRONT_X, BV01X, BV01X], [787, 787, 1380], C_BLUEB, zorder=11)
+        # reachable, Z≈1000) → UP the front vertical to the loop top → +X back
+        # through the shirt + panel → up the behind-panel riser to the Blue tote.
+        BV01X = 4875                                       # 3D bvx = FRONT_X+221
+        BLUE_BEHIND_X = 5200                               # 3D beh_x — behind-panel riser
+        BLUE_LOOPZ = 1210                                  # 3D loopz — loop top (P-04↔P-05 gap)
+        _pipe([PUMP_FRONT_X, BV01X, BV01X, BLUE_BEHIND_X, BLUE_BEHIND_X],
+              [777, 777, BLUE_LOOPZ, BLUE_LOOPZ, 1400], C_BLUEB, zorder=11)
         valve_ball(axb, BV01X, 1000, 16, C_BLUEB, vert=True)
-        _flowhead(BV01X, 1360, "down", C_BLUEB)            # suction: Blue #1 tote → P-01
-        axb.text(BV01X, 1404, "from Blue #1 tote", fontsize=4.6, ha="center", va="bottom",
-                 color=C_BLUEB, zorder=13, **FB)
+        _flowhead(BLUE_BEHIND_X, 1380, "down", C_BLUEB)    # suction: Blue #1 tote → P-01
+        axb.text(BLUE_BEHIND_X, 1424, "from Blue #1 tote\n(behind-panel riser)", fontsize=4.4,
+                 ha="center", va="bottom", color=C_BLUEB, zorder=13, **FB)
         leader(axb, BV01X, 1000, 4600, 1140, "BV-01 (P-01 suction)\nfront · walkway-reachable",
                color=C_BLUEB, fs=5, ha="right", va="center", arrow_style="-|>", font=FB)
         # X4 suction PICKUP riser climbs the spine from the floor pickup to P-03.
@@ -1144,56 +1149,72 @@ def spine_view(side):
         # → IBC-1 (X1) fill stub off the cross (water continues down to IBC-1, off-section).
         _pipe([X1X - 14, X1X - 14], [X1_PORT_Z, X1_PORT_Z - 140], C_BLUEB, zorder=11)
         _flowhead(X1X - 14, X1_PORT_Z - 140, "down", C_BLUEB)   # fill: → IBC-1 tote (below)
-        # DV-02 — tray-drain diverter above the pump column.  Its input is the
-        # P-04 discharge (rear +Yd face, Spine View B); the two outputs sit on
-        # this −Yd face: BROWN drops to IBC-3 (down port), WASTE leaves the
-        # right port to the IBC-4 merge tee.  Symbol centred on the junction so
-        # both legs land on their ports.
+        # DV-02 — tray-drain diverter above the pump column (3D: run along Yd,
+        # branch z−).  Its input is the P-04 discharge (rear +Yd face, Spine View
+        # B), arriving at the junction.  Both outputs sit on this −Yd face and
+        # leave toward +X: BROWN runs +X into the shirt↔panel chase then drops to
+        # IBC-3; WASTE runs +X then drops to the IBC-4 merge tee.  DV-02 is now
+        # mounted on the raised shirt front (X5028).  Symbol centred on the junction.
         valve_3way(axb, DV02X, 2145, 18, "#B8860B", ports=("left", "right", "down"))
         axb.text(DV02X, 2145 + 32, "DV-02", fontsize=5, ha="center", va="bottom",
                  color="#8A6D08", zorder=14, **FB)
         axb.text(DV02X - 26, 2145, "← P-04\n(View B)", fontsize=3.8, ha="right",
                  va="center", color="#999", zorder=13, **FB)
-        # DV-02 BROWN output → IBC-3 (Brown): drops straight off the DOWN port.
-        _pipe([DV02X, DV02X], [2127, 1110], C_BROWNB, zorder=10)
-        axb.annotate("", xy=(DV02X, 1115), xytext=(DV02X, 1165),
+        # DV-02 BROWN output → IBC-3 (Brown): leaves the −Yd run port, runs +X into
+        # the ~27mm shirt↔panel chase (X≈5090), then DROPS down the chase to the
+        # IBC-3 entry level. (3D: down off the run port, +X to the chase, drop.)
+        BROWN_CHASE_X = 5090
+        _pipe([DV02X, BROWN_CHASE_X, BROWN_CHASE_X], [2145, 2145, 1130], C_BROWNB, zorder=10)
+        axb.annotate("", xy=(BROWN_CHASE_X, 1135), xytext=(BROWN_CHASE_X, 1185),
                      arrowprops=dict(arrowstyle="-|>", lw=1.2, mutation_scale=7, color=C_BROWNB), zorder=12)
-        axb.text(DV02X - 24, 1150, "IBC-3\n(Brown)", fontsize=4.2, ha="right", va="top",
+        axb.text(BROWN_CHASE_X + 26, 1175, "IBC-3\n(Brown,\ndown chase)", fontsize=4.2, ha="left", va="top",
                  color=C_BROWNB, zorder=13, **FB)
-        # DV-02 WASTE output → leaves the RIGHT port, PENETRATES the rear panel
-        # near the spine top, then DROPS at X5290 into the merge tee's LEFT side.
-        _hpipe(2145, DV02X + 18, 5290, C_WASTEB, zorder=11, crosses=(PANX + 9, RX_BLUE))
+        # DV-02 WASTE output → leaves the +Yd run port, PENETRATES the rear panel
+        # near the spine top, then DROPS at X5289 (3D dvwx = MERGE4[0]−115) into the
+        # merge tee's LEFT side.
+        _hpipe(2145, DV02X + 18, 5289, C_WASTEB, zorder=11, crosses=(PANX + 9, RX_BLUE))
         axb.text(PANX + 9, 2178, "through\npanel", fontsize=4.0, ha="center", va="bottom",
                  color="#999", zorder=12, **FB)
-        # Lead the drop in from a short horizontal (from 5262, clear of the blue-
-        # riser crossing gap) so the top corner at (5290,2145) is an INTERIOR
+        # Lead the drop in from a short horizontal (from 5261, clear of the blue-
+        # riser crossing gap) so the top corner at (5289,2145) is an INTERIOR
         # vertex and draws an elbow fitting — the _hpipe ends there straight, so
         # without this the left turn into the DV-02 horizontal had no elbow.
-        _pipe([5262, 5290, 5290, MERGEX], [2145, 2145, 1230, 1230], C_WASTEB, zorder=11)
+        _pipe([5261, 5289, 5289, MERGEX], [2145, 2145, 1230, 1230], C_WASTEB, zorder=11)
         # IBC-4 (Waste) tote entry — the merge tee's RIGHT pipe.
         _pipe([MERGEX, 5494, 5494], [1230, 1230, 1085], C_WASTEB, zorder=11)
         axb.annotate("", xy=(5494, 1100), xytext=(5494, 1150),
                      arrowprops=dict(arrowstyle="-|>", lw=1.3, mutation_scale=8, color=C_WASTEB), zorder=12)
         axb.text(5506, 1120, "→ IBC-4\n(Waste tote)", fontsize=4.8, ha="left", va="top",
                  color=C_WASTEB, zorder=13, **FB)
-        # ACC-01 OUT → Blue supply trunk → spray bar / TAP-01.
-        _pipe([PUMP_FRONT_X, 4655, 4655], [455, 455, 30], C_BLUEB, zorder=9)
+        # ACC-01 OUT → Blue supply trunk → spray bar / TAP-01.  3D lowered the
+        # corridor-entry crossing to Z235 (DV-01's low lane) so the trunk is out
+        # of the operator's way at the mouth.
+        _pipe([PUMP_FRONT_X, 4655, 4655], [235, 235, 30], C_BLUEB, zorder=9)
         _flowhead(4655, 80, "down", C_BLUEB)              # supply: → spray bar / TAP-01 (off-section)
         axb.text(4648, -10, "Blue supply\nto spray bar / TAP-01", fontsize=4.2, ha="left",
                  va="bottom", color=C_BLUEB, zorder=12, **FB)
         # P-04 tray-drain SUCTION (← from the tray sump, far −X) up to P-04 IN.
-        # Gap-broken where it crosses the blue ACC-out / supply riser — at
-        # (4655,205) on the floor run and (4908,455) on the rise — so the blue
+        # Gap-broken where it crosses the blue supply trunk, now lowered to Z235:
+        # the floor run at Z205 crosses the blue VERTICAL drop at X4655, and the
+        # rise at X4908 crosses the blue HORIZONTAL trunk at Z235 — so the blue
         # reads continuous (skill_plumbing_drawing: the crossing run breaks).
-        _pipe([4600, 4655 - 16], [205, 205], C_WASTEB, zorder=9)
-        _pipe([4655 + 16, 4908, 4908], [205, 205, 455 - 16], C_WASTEB, zorder=9)
-        _pipe([4908, 4908, PUMP_FRONT_X], [455 + 16, 1075, 1075], C_WASTEB, zorder=9)
+        _pipe([4600, 4655 - 16], [205, 205], C_WASTEB, zorder=9)   # floor, before the blue drop at 4655
+        _pipe([4655 + 16, 4908], [205, 205], C_WASTEB, zorder=9)   # floor, after the blue drop
+        _pipe([4908, 4908], [205, 235 - 16], C_WASTEB, zorder=9)   # rise, up to the blue trunk crossing
+        _pipe([4908, 4908, PUMP_FRONT_X], [235 + 16, 1075, 1075], C_WASTEB, zorder=9)  # rise past blue, to P-04 IN
         _flowhead(4600, 205, "right", C_WASTEB)            # suction: tray sump → P-04
         axb.text(4546, 185, "from\ntray sump", fontsize=4.2, ha="left", va="top", color="#555", zorder=12, **FB)
         # P-05 brown-drain SUCTION (IBC-3 Brown tap via BV-02) up to P-05 IN.
-        _pipe([4960, 5072, 5072, PUMP_BACK_X], [300, 300, 1500, 1500], C_BROWNB, zorder=9)
-        _flowhead(4960, 300, "right", C_BROWNB)            # suction: IBC-3 (BV-02) → P-05
-        axb.text(5076, 540, "from IBC-3\n(BV-02)", fontsize=4.0, ha="left", va="center",
+        # 3D flipped the BV-02 riser to the OPERATOR side (X4898, was X5072 on the
+        # shirt); the shared brown tap also rose to Z308.  Tap → −X to the front
+        # riser (BV-02) → UP to the P-05 IN height → +X back into the pump.
+        BV02X = 4898                                       # 3D rx = PXC−86
+        _pipe([4870, BV02X, BV02X, PUMP_FRONT_X], [308, 308, 1502, 1502], C_BROWNB, zorder=9)
+        valve_ball(axb, BV02X, 1417, 16, C_BROWNB, vert=True)
+        axb.text(BV02X - 22, 1417, "BV-02", fontsize=4.6, ha="right", va="center",
+                 color=C_BROWNB, zorder=13, **FB)
+        _flowhead(4870, 308, "right", C_BROWNB)            # suction: IBC-3 tap → P-05
+        axb.text(4866, 340, "from IBC-3\n(shared tap)", fontsize=4.0, ha="left", va="bottom",
                  color=C_BROWNB, zorder=12, **FB)
         # P-clips fastening the −Yd-face spine risers.
         for rx, zt in [(RX4, 1800), (RX_BLUE, X1_PORT_Z), (MERGEX, 1214)]:
@@ -1260,7 +1281,7 @@ def spine_view(side):
     draw_notes(axb, [
         "CORRIDOR PLUMBING PANEL — SPINE SIDE SECTION (looking along Yd):",
         cross_note,
-        "1. Pumps + ACC-01 mount on the FRONT (−X) of the rear panel, cam-clamped to a 25mm pump-mount shirt that backs the bodies (X=5052–5077, Z=275–1925).",
+        "1. Pumps + ACC-01 mount on the FRONT (−X) of the rear panel, cam-clamped to a 25mm pump-mount shirt that backs the bodies (X=5052–5077, Z=325–2191); the shirt top backs DV-02.",
         "2. A ~27mm chase gap separates the shirt back (X=5077) and the rear-panel front (X=5104); six ply spacer blocks bridge it.",
         "3. Rear panel: 18mm ply, X=5104–5122, Z=50–2246. The drain-riser spine is an 18mm ply fin teed perpendicular off it into the rear corridor (X=5104–5560, Z=280–2246).",
         "4. View A (−Yd intake face): X4 suction-pickup riser, blue-recycle riser onto the spine into the X1 fill cross, DV-01-waste → merge, suctions, fills.",

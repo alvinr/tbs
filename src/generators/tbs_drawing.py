@@ -424,7 +424,7 @@ def hatch_rect(ax, x, y, w, h, *, color="#AAAAAA", hatch="///",
 def draw_notes(ax, notes, x, y_top, spacing, *, fs=7, title_fs=None,
                color=C_DIM, title_color=C_OUT, ha="left", pad_x=None,
                pad_y=None, width=None, border_color=C_OUT, border_lw=0.6,
-               zorder=15, font=None):
+               zorder=15, font=None, wrap=None):
     """Draw a bordered notes block with bold first line.
 
     Parameters
@@ -472,10 +472,25 @@ def draw_notes(ax, notes, x, y_top, spacing, *, fs=7, title_fs=None,
     if font is None:
         font = {}
 
-    # Draw text lines in data coords
-    for i, line in enumerate(notes):
-        is_title = (i == 0)
-        y = y_top - i * spacing
+    # Build display lines: optionally WORD-WRAP each note to `wrap` characters,
+    # with a HANGING INDENT so continuation lines align past a "N. " (digit +
+    # period + space) or bullet list prefix.  (Alignment is exact in monospace.)
+    if wrap:
+        import re as _re, textwrap as _tw
+        display = []   # (text, is_title)
+        for i, line in enumerate(notes):
+            is_title = (i == 0)
+            m = _re.match(r"^(\d+\.\s+|[-*•]\s+)", line)
+            indent = " " * len(m.group(1)) if m else ""
+            for piece in (_tw.wrap(line, width=wrap, subsequent_indent=indent,
+                                   break_long_words=False, break_on_hyphens=False) or [""]):
+                display.append((piece, is_title))
+    else:
+        display = [(line, i == 0) for i, line in enumerate(notes)]
+
+    # Draw display lines in data coords
+    for j, (line, is_title) in enumerate(display):
+        y = y_top - j * spacing
         ax.text(x, y, line, ha=ha, va="top",
                 fontsize=title_fs if is_title else fs,
                 color=title_color if is_title else color,
@@ -486,7 +501,7 @@ def draw_notes(ax, notes, x, y_top, spacing, *, fs=7, title_fs=None,
     if width is None:
         return  # no border when width not specified
 
-    n = len(notes)
+    n = len(display)
     box_top = y_top + pad_y
     box_bot = y_top - (n) * spacing - pad_y
     box_h = box_top - box_bot

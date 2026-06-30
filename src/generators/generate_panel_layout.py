@@ -1163,7 +1163,11 @@ def spine_view(side):
         _hpipe(2145, DV02X + 18, 5290, C_WASTEB, zorder=11, crosses=(PANX + 9, RX_BLUE))
         axb.text(PANX + 9, 2178, "through\npanel", fontsize=4.0, ha="center", va="bottom",
                  color="#999", zorder=12, **FB)
-        _pipe([5290, 5290, MERGEX], [2145, 1230, 1230], C_WASTEB, zorder=11)
+        # Lead the drop in from a short horizontal (from 5262, clear of the blue-
+        # riser crossing gap) so the top corner at (5290,2145) is an INTERIOR
+        # vertex and draws an elbow fitting — the _hpipe ends there straight, so
+        # without this the left turn into the DV-02 horizontal had no elbow.
+        _pipe([5262, 5290, 5290, MERGEX], [2145, 2145, 1230, 1230], C_WASTEB, zorder=11)
         # IBC-4 (Waste) tote entry — the merge tee's RIGHT pipe.
         _pipe([MERGEX, 5494, 5494], [1230, 1230, 1085], C_WASTEB, zorder=11)
         axb.annotate("", xy=(5494, 1100), xytext=(5494, 1150),

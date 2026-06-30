@@ -743,13 +743,16 @@ def draw_pinhole_panel():
     # floor toward the IBC-3 (Brown) tote.  Flow is UPWARD (tote → BV-03 → P-02).
     BV03_X = 2978                       # P-02 IN lane (3D X2960–2978)
     BV03_Z = 1000                       # 3D BV-03 center Z≈1000
-    SUCT_FLOOR_Z = 250
-    pw_pipe([P2_XL, BV03_X, BV03_X], [HEAD_Z, HEAD_Z, SUCT_FLOOR_Z],
-            C_BROWN, zorder=Z_BROWN)
+    SUCT_TURN_Z = 850                   # just BELOW the ply board bottom (BD_ZB=920)
+    SRC_X = BV03_X + 240                # toward the corridor / IBC-3 tote (+X draws left)
+    pw_pipe([P2_XL, BV03_X, BV03_X, SRC_X],
+            [HEAD_Z, HEAD_Z, SUCT_TURN_Z, SUCT_TURN_Z], C_BROWN, zorder=Z_BROWN)
     pw_valve(BV03_X, BV03_Z, "BV\n03", C_BROWN, half=18)
-    pw_arrow(BV03_X, SUCT_FLOOR_Z, BV03_X, SUCT_FLOOR_Z + 45, C_BROWN)
-    pw_text(BV03_X + 16, SUCT_FLOOR_Z + 4, "FROM IBC-3\n(BROWN)", ha="left",
-            va="bottom", fontsize=6, color=C_BROWN, zorder=10)
+    # 90° elbow where the brown suction drops below the ply panel; the blue flow
+    # arrow points from the source (IBC-3 Brown tote, out in the corridor) up to BV-03.
+    pw_arrow(SRC_X, SUCT_TURN_Z, SRC_X - 42, SUCT_TURN_Z, C_BLUE)
+    pw_text(SRC_X + 10, SUCT_TURN_Z, "FROM IBC-3 (BROWN)\ntote — corridor", ha="left",
+            va="center", fontsize=6, color=C_BROWN, zorder=10)
 
     # P-02 OUT → F-01 IN, then F-01 → F-02 → F-03 (straight jumpers, head line)
     pw_pipe([P2_XR, F1_XL], [HEAD_Z, HEAD_Z], C_BROWN, zorder=Z_BROWN)
@@ -960,11 +963,23 @@ for zb, h, lbl, hot in [(355, 200, "ACC-01", True), (615, 180, "P-01", False),
                         (1740, 180, "P-03", False)]:
     _rect(PUMP_FRONT_X, zb, PUMP_BACK_X - PUMP_FRONT_X, h,
           "#E6D9F0" if hot else "#EAEAEA", ec=C_OUT, lw=0.9, z0=5)
-    axb.text((PUMP_FRONT_X + PUMP_BACK_X) / 2, zb + h / 2, lbl, fontsize=5.5,
-             ha="center", va="center", color="#333", fontweight="bold", **FB)
-leader(axb, PUMP_FRONT_X, 1830, 4570, 1900,
-       "PUMP COLUMN + ACC-01\n(on the front of the shirt;\nsame stack as the front elevation)",
+    axb.text((PUMP_FRONT_X + PUMP_BACK_X) / 2, zb + h / 2, lbl, fontsize=6,
+             ha="center", va="center", color="#202020", fontweight="bold", zorder=15,
+             bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none", alpha=0.85), **FB)
+leader(axb, PUMP_FRONT_X, 1830, 4570, 1980,
+       "PUMP COLUMN + ACC-01\n(P-01/P-04/P-05/P-03 + ACC-01,\nsame stack as the front elevation)",
        color="#777", fs=5.3, ha="left", va="center", arrow_style="-|>", font=FB)
+# P-01 suction: P-01 IN → −X to BV-01 (front of the corridor, walkway-reachable,
+# Z≈1000) → up toward the Blue tote.
+BV01X = 4760
+_pipe([PUMP_FRONT_X, BV01X, BV01X], [787, 787, 1380], C_BLUEB, zorder=11)
+axb.add_patch(mpatches.Polygon(
+    [(BV01X, 1018), (BV01X + 18, 1000), (BV01X, 982), (BV01X - 18, 1000)],
+    fc="white", ec=C_BLUEB, lw=1.3, zorder=12))
+axb.text(BV01X, 1404, "↑ Blue tote", fontsize=4.6, ha="center", va="bottom",
+         color=C_BLUEB, zorder=13, **FB)
+leader(axb, BV01X, 1000, 4600, 1140, "BV-01 (P-01 suction)\nfront · walkway-reachable",
+       color=C_BLUEB, fs=5, ha="right", va="center", arrow_style="-|>", font=FB)
 
 # ── Circuit C pump power: feed → distribution block → pump switches ──────
 CWIRE = "#1565C0"
@@ -1001,11 +1016,12 @@ DV01X = 4700                       # 3W-DV-01 X (corridor mouth, low ~Z235)
 # the floor pickup to the pump; (b) the P-03 DISCHARGE runs high along the spine,
 # then drops to the X4 end-wall port (Z1620).
 _pipe([RX4, RX4, PUMP_BACK_X], [300, 1820, 1820], C_WASTEB, zorder=11)   # X4 suction pickup riser — FRONT (−Yd face)
-# X3/X4 DISCHARGES are clamped to the +Yd (BACK) face of the spine, so they run
-# BEHIND it (zorder below the spine) — the spine occludes/fades them through the
-# X5104–5560 span; they surface in the chase and past the spine to the end wall.
-_pipe([PUMP_BACK_X, 5763, 5763, WALLX], [1902, 1902, X4_PORT_Z, X4_PORT_Z], C_WASTEB, zorder=7)
-_pipe([PUMP_BACK_X, 5763, 5763, WALLX], [1502, 1502, X3_PORT_Z, X3_PORT_Z], C_BROWNB, zorder=7)
+# X3/X4 DISCHARGES are clamped to the +Yd (BACK) face of the spine and run HIDDEN
+# behind it — shown only where they EMERGE past the spine's rear edge (X=SPX1) and
+# turn to their end-wall ports.  Separate X-lanes at the ports; X3 (brown) in front.
+X4V, X3V = 5750, 5772
+_pipe([SPX1, X4V, X4V, WALLX], [1902, 1902, X4_PORT_Z, X4_PORT_Z], C_WASTEB, zorder=8)
+_pipe([SPX1, X3V, X3V, WALLX], [1502, 1502, X3_PORT_Z, X3_PORT_Z], C_BROWNB, zorder=12)
 # DV-01 — pH-gated filter-output diverter, low at the corridor mouth; two legs:
 #   BLUE RECYCLE rises up the spine → X1 fill cross; WASTE → the IBC-4 merge tee.
 axb.add_patch(mpatches.Polygon(
@@ -1032,9 +1048,17 @@ axb.add_patch(mpatches.Polygon(
     fc="white", ec="#B8860B", lw=1.4, zorder=12))
 axb.text(DV02X, 2145 + 30, "DV-02", fontsize=5, ha="center", va="bottom",
          color="#8A6D08", zorder=13, **FB)
-_pipe([DV02X, DV02X], [2145 - 18, 1290], C_WASTEB, zorder=11)             # DV-02 waste drop — FRONT
-_hpipe(1290, DV02X, MERGEX, C_WASTEB, zorder=11, crosses=SPINE_RISERS)    # FRONT; gap-broken at the front risers
-_pipe([MERGEX, MERGEX], [1290, 1244], C_WASTEB, zorder=11)                # into the merge tee
+# DV-02 waste runs high off the panel to the LEFT, then DROPS at X5290 — parallel
+# to the blue-recycle riser (5239) — and turns into the merge tee's LEFT side.
+_hpipe(2127, DV02X, 5290, C_WASTEB, zorder=11, crosses=(RX_BLUE,))        # high horizontal; crosses the blue riser
+_pipe([5290, 5290, MERGEX], [2127, 1230, 1230], C_WASTEB, zorder=11)      # drop ∥ blue riser → into merge (LEFT)
+# IBC-4 (Waste) tote entry — the merge tee's RIGHT pipe (+X off the merge, then
+# drops into the IBC-4 tote).
+_pipe([MERGEX, 5494, 5494], [1230, 1230, 1085], C_WASTEB, zorder=11)
+axb.annotate("", xy=(5494, 1100), xytext=(5494, 1150),
+             arrowprops=dict(arrowstyle="-|>", lw=1.3, mutation_scale=8, color=C_WASTEB), zorder=12)
+axb.text(5506, 1120, "→ IBC-4\n(Waste tote)", fontsize=4.8, ha="left", va="top",
+         color=C_WASTEB, zorder=13, **FB)
 # P-clips fastening the spine risers (suction pickup, blue recycle, DV-01 waste).
 for rx, zt in [(RX4, 1800), (RX_BLUE, X1_PORT_Z), (MERGEX, 1214)]:
     for i in range(4):

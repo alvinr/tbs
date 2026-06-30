@@ -875,7 +875,7 @@ def draw_pinhole_panel():
         "9. PIPE: 1\" SDR-11 HDPE (P-02 + filter loop) with PP/Banjo fittings; housings",
         "    on their integral brackets through-bolted to the ply board.",
     ]
-    draw_notes(ax_p, notes, pwx(2700), pwz(1560), spacing=46,
+    draw_notes(ax_p, notes, pwx(2600), pwz(1560), spacing=46,
                fs=7, width=560, color=C_DIM, title_color=C_NEW, font=FONT)
 
     # ── SYMBOL KEY (clear left margin strip, X4500–5060) ────────────

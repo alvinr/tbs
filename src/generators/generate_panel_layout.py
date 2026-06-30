@@ -22,11 +22,15 @@ train mounted on the pinhole wall:
   Flow: IBC-3 Brown → BV-03 → P-02 → F-01 → F-02 → F-03 → SV-01 → DV-01 →
         (Blue recycle / Waste).
 
-Plus a corridor-backside section (panel-layout-back.png) showing the
-drain-riser spine and Circuit-C pump power.
+Plus TWO corridor spine side-sections — opposite faces of the drain-riser
+spine, looking along Yd:
+  panel-spine-view-a.png — −Yd INTAKE face (suctions, recycle, fills, merge).
+  panel-spine-view-b.png — +Yd DISCHARGE face (pump discharges); a mirror of A.
+Both share all structure + fittings/valves/diverters as landmarks; each face's
+own pipe runs are drawn only on its own sheet.
 
 Outputs: diagrams/panel-layout.png, diagrams/pinhole-panel.png,
-         diagrams/panel-layout-back.png
+         diagrams/panel-spine-view-a.png, diagrams/panel-spine-view-b.png
 """
 
 import os
@@ -854,11 +858,13 @@ draw_pinhole_panel()
 
 
 # ═══════════════════════════════════════════════════════════════════════════
-#  SHEET 2 — BACKSIDE (corridor side section, looking along Yd)
-#  Shows what is mounted on the BACK of the panel (toward the sealed wall):
-#  the drain-riser spine and the X3/X4 drain risers running from the P-05/P-03
-#  discharges down to the end-wall ports. (v2: the over-the-top Blue fill trunk +
-#  its shelf are gone — the Blue fill now side-enters.) Absolute X/Z (mm) — matches the 3D model.
+#  SPINE SIDE-SECTIONS — two sheets, opposite faces of the drain-riser spine
+#  (corridor side section, looking along Yd).  Absolute X/Z (mm) — matches the 3D.
+#  VIEW A (−Yd INTAKE face): suctions, recycle, fills, merge.
+#  VIEW B (+Yd DISCHARGE face): pump discharges — a MIRROR image of A
+#    (matplotlib renders mirrored via a reversed xlim; text stays upright).
+#  Structure + all fittings/valves/diverters are landmarks drawn in BOTH; each
+#  face's own pipe runs are guarded to its own sheet via the _NEAR flag.
 # ═══════════════════════════════════════════════════════════════════════════
 from tbs_constants import (C_LEN, C_HGT, EXT_FILL_1_H)
 
@@ -891,11 +897,9 @@ PUMP_FRONT_X = 4934              # pump body front (PXC 4984 − radius 50)
 PUMP_BACK_X  = 5034             # pump body back  (PXC 4984 + radius 50)
 POD = 24                         # pipe OD (mm)
 
-figb, axb = plt.subplots(figsize=(12.6, 15.3))
-axb.set_xlim(4560, 6760)
-axb.set_ylim(-300, 2520)
-axb.set_aspect("equal")
-axb.axis("off")
+# `axb` is the current spine-view axes; spine_view() rebinds it per sheet.
+axb = None
+_NEAR = None       # which spine face this sheet shows: '-Yd' (A) or '+Yd' (B)
 
 
 def _rect(x, z, w, h, fc, ec=C_OUT, lw=1.0, z0=5, hatch=None, alpha=1.0):
@@ -932,238 +936,265 @@ def _hpipe(z, x0, x1, fc, zorder=8, crosses=()):
 SPINE_RISERS = (5200, 5239, 5404)
 
 
-# ── Container shell context ──────────────────────────────────────────────
-_rect(4860, -90, 5933 - 4860, 90, C_WALLB, lw=0.8, z0=2, hatch="////")   # floor
-axb.text(4890, -45, "CONTAINER FLOOR", fontsize=6, va="center", color="#555", **FB)
-_rect(WALLX, 0, 40, C_HGT, C_WALLB, lw=0.8, z0=2, hatch="\\\\")           # sealed end wall
-axb.text(WALLX + 20, C_HGT - 60, f"SEALED\nEND WALL\n(X={int(C_LEN)})", fontsize=6,
-         ha="center", va="top", color="#555", **FB)
-axb.plot([4860, WALLX], [C_HGT, C_HGT], color="#999", lw=0.8, ls=(0, (6, 4)), zorder=2)
-axb.text(4890, C_HGT + 25, f"CEILING (Z={int(C_HGT)})", fontsize=6, color="#777", **FB)
+def spine_view(side):
+    """Render one spine side-section sheet. side='a' (−Yd intake face) or
+    'b' (+Yd discharge face, a mirror of A). Rebinds the module globals axb +
+    _NEAR so the _rect/_pipe/_hpipe helpers draw on this sheet's axes."""
+    global axb, _NEAR
+    _NEAR = '-Yd' if side == 'a' else '+Yd'
 
-# ── Rear panel (edge-on) ─────────────────────────────────────────────────
-_rect(PANX, PAN_ZB, PANX1 - PANX, PAN_ZT - PAN_ZB, C_PLYB, lw=1.3, z0=6)
-leader(axb, PANX1, 640, 5640, 520,
-       f"18mm REAR PANEL\n(edge-on)\nX={PANX}–{PANX1}\nZ={PAN_ZB}–{PAN_ZT}",
-       color=C_OUT, fs=6, ha="left", va="top", arrow_style="-|>", font=FB)
+    figb, axb = plt.subplots(figsize=(12.6, 15.3))
+    if side == 'a':
+        axb.set_xlim(4560, 6760)
+    else:
+        axb.set_xlim(6760, 4560)   # reversed → whole drawing renders mirrored
+    axb.set_ylim(-300, 2520)
+    axb.set_aspect("equal")
+    axb.axis("off")
 
-# ── 25mm pump-mount shirt (in FRONT of the rear panel, −X) ───────────────
-_rect(SHIRTX0, SHIRT_ZB, SHIRTX1 - SHIRTX0, SHIRT_ZT - SHIRT_ZB,
-      C_PLYB, lw=1.2, z0=6, alpha=0.85)
-leader(axb, (SHIRTX0 + SHIRTX1) / 2, 480, 4570, 360,
-       f"25mm PUMP-MOUNT SHIRT\nX={SHIRTX0}–{SHIRTX1}, Z={SHIRT_ZB}–{SHIRT_ZT}\n"
-       "(pumps cam-clamp to it)",
-       color="#7A6A40", fs=5.5, ha="left", va="top", arrow_style="-|>", font=FB)
-# ~27mm chase gap (shirt back 5077 → panel front 5104) + 6 spacer blocks
-for bz in (320, 920, 1560):
-    _rect(SHIRTX1, bz, PANX - SHIRTX1, 80, C_PLYB, ec=C_OUT, lw=0.6, z0=7)
-draw_dim_h(axb, SHIRTX1, PANX, 60, f"{PANX - SHIRTX1}mm\nchase", offset=4,
-           fs=5, above=False, font=FB)
-axb.text(SHIRTX1 + (PANX - SHIRTX1) / 2, 1700,
-         "6× SPACER\nBLOCKS", fontsize=4.6, ha="center", va="center",
-         color="#7A6A40", zorder=10, **FB)
+    # ── Container shell context ──────────────────────────────────────────────
+    _rect(4860, -90, 5933 - 4860, 90, C_WALLB, lw=0.8, z0=2, hatch="////")   # floor
+    axb.text(4890, -45, "CONTAINER FLOOR", fontsize=6, va="center", color="#555", **FB)
+    _rect(WALLX, 0, 40, C_HGT, C_WALLB, lw=0.8, z0=2, hatch="\\\\")           # sealed end wall
+    axb.text(WALLX + 20, C_HGT - 60, f"SEALED\nEND WALL\n(X={int(C_LEN)})", fontsize=6,
+             ha="center", va="top", color="#555", **FB)
+    axb.plot([4860, WALLX], [C_HGT, C_HGT], color="#999", lw=0.8, ls=(0, (6, 4)), zorder=2)
+    axb.text(4890, C_HGT + 25, f"CEILING (Z={int(C_HGT)})", fontsize=6, color="#777", **FB)
 
-# ── Pump + ACC stack on the shirt front (single column, projected along Yd) ──
-# 3D bases (Z AFF): ACC 355, P-01 615, P-04 940, P-05 1340, P-03 1740.
-for zb, h, lbl, hot in [(355, 200, "ACC-01", True), (615, 180, "P-01", False),
-                        (940, 180, "P-04", True), (1340, 180, "P-05", True),
-                        (1740, 180, "P-03", False)]:
-    _rect(PUMP_FRONT_X, zb, PUMP_BACK_X - PUMP_FRONT_X, h,
-          "#E6D9F0" if hot else "#EAEAEA", ec=C_OUT, lw=0.9, z0=5)
-    axb.text((PUMP_FRONT_X + PUMP_BACK_X) / 2, zb + h / 2, lbl, fontsize=6,
-             ha="center", va="center", color="#202020", fontweight="bold", zorder=15,
-             bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none", alpha=0.85), **FB)
-leader(axb, PUMP_FRONT_X, 1830, 4570, 1980,
-       "PUMP COLUMN + ACC-01\n(P-01/P-04/P-05/P-03 + ACC-01,\nsame stack as the front elevation)",
-       color="#777", fs=5.3, ha="left", va="center", arrow_style="-|>", font=FB)
-# P-01 suction: P-01 IN → −X to BV-01 (front of the corridor, walkway-reachable,
-# Z≈1000) → up toward the Blue tote.
-BV01X = 4760
-_pipe([PUMP_FRONT_X, BV01X, BV01X], [787, 787, 1380], C_BLUEB, zorder=11)
-axb.add_patch(mpatches.Polygon(
-    [(BV01X, 1018), (BV01X + 18, 1000), (BV01X, 982), (BV01X - 18, 1000)],
-    fc="white", ec=C_BLUEB, lw=1.3, zorder=12))
-axb.text(BV01X, 1404, "↑ Blue tote", fontsize=4.6, ha="center", va="bottom",
-         color=C_BLUEB, zorder=13, **FB)
-leader(axb, BV01X, 1000, 4600, 1140, "BV-01 (P-01 suction)\nfront · walkway-reachable",
-       color=C_BLUEB, fs=5, ha="right", va="center", arrow_style="-|>", font=FB)
+    # ── Rear panel (edge-on) ─────────────────────────────────────────────────
+    _rect(PANX, PAN_ZB, PANX1 - PANX, PAN_ZT - PAN_ZB, C_PLYB, lw=1.3, z0=6)
+    leader(axb, PANX1, 640, 5640, 520,
+           f"18mm REAR PANEL\n(edge-on)\nX={PANX}–{PANX1}\nZ={PAN_ZB}–{PAN_ZT}",
+           color=C_OUT, fs=6, ha="left", va="top", arrow_style="-|>", font=FB)
 
-# ── Circuit C pump power: feed → distribution block → pump switches ──────
-CWIRE = "#1565C0"
-busx = PUMP_FRONT_X - 40                          # wiring bus, just −X of the pumps
-db_z = 2210                                       # distribution block, above the pumps
-axb.plot([busx, busx], [C_HGT, db_z], color=CWIRE, lw=1.4, zorder=12)     # feed
-_rect(busx - 42, db_z - 4, 66, 32, "#D9E8F7", ec=CWIRE, lw=1.0, z0=12)
-axb.text(busx - 9, db_z + 12, "Cct C\nDIST", fontsize=4.3, ha="center", va="center",
-         color=CWIRE, fontweight="bold", **FB)
-axb.plot([busx, busx], [db_z - 4, 705], color=CWIRE, lw=1.2, zorder=11)   # bus
-for zr in (705, 1030, 1430, 1830):
-    _rect(busx - 12, zr - 12, 24, 24, "white", ec=CWIRE, lw=0.9, z0=13)   # switch
-    axb.plot([busx + 12, PUMP_FRONT_X], [zr, zr], color=CWIRE, lw=1.0, zorder=12)
-leader(axb, busx - 24, db_z + 40, 4570, 2300,
-       "CIRCUIT C POWER — 12V feed → distribution\nblock → 5 IP-rated switches "
-       "(one per pump,\nP-01..P-05; run one at a time). P-02 is on\nthe Pinhole Wall "
-       "panel and shares Circuit C.",
-       color=CWIRE, fs=5.3, ha="left", va="top", arrow_style="-|>", font=FB)
+    # ── 25mm pump-mount shirt (in FRONT of the rear panel, −X) ───────────────
+    _rect(SHIRTX0, SHIRT_ZB, SHIRTX1 - SHIRTX0, SHIRT_ZT - SHIRT_ZB,
+          C_PLYB, lw=1.2, z0=6, alpha=0.85)
+    leader(axb, (SHIRTX0 + SHIRTX1) / 2, 480, 4570, 360,
+           f"25mm PUMP-MOUNT SHIRT\nX={SHIRTX0}–{SHIRTX1}, Z={SHIRT_ZB}–{SHIRT_ZT}\n"
+           "(pumps cam-clamp to it)",
+           color="#7A6A40", fs=5.5, ha="left", va="top", arrow_style="-|>", font=FB)
+    # ~27mm chase gap (shirt back 5077 → panel front 5104) + 6 spacer blocks
+    for bz in (320, 920, 1560):
+        _rect(SHIRTX1, bz, PANX - SHIRTX1, 80, C_PLYB, ec=C_OUT, lw=0.6, z0=7)
+    draw_dim_h(axb, SHIRTX1, PANX, 60, f"{PANX - SHIRTX1}mm\nchase", offset=4,
+               fs=5, above=False, font=FB)
+    axb.text(SHIRTX1 + (PANX - SHIRTX1) / 2, 1700,
+             "6× SPACER\nBLOCKS", fontsize=4.6, ha="center", va="center",
+             color="#7A6A40", zorder=10, **FB)
 
-# ── Drain-riser spine (18mm ply fin, teed off the rear panel into the corridor) ──
-# Drawn as an occluding plane: back-of-spine (+Yd) discharges sit BEHIND it
-# (zorder 7) and read faded; front-of-spine (−Yd) risers sit in front (zorder 11).
-_rect(PANX, SPINE_ZB, SPX1 - PANX, SPINE_ZT - SPINE_ZB, C_PLYB, lw=1.2,
-      z0=8, alpha=0.55)
-leader(axb, (PANX + SPX1) / 2, 1180, 5650, 1140,
-       f"DRAIN-RISER SPINE\n18mm ply, teed perpendicular off the rear\n"
-       f"panel (a T in plan) — X={PANX}–{SPX1}, Z={SPINE_ZB}–{SPINE_ZT};\n"
-       "the back-of-panel drain risers P-clip to it",
-       color=C_OUT, fs=6, ha="left", va="center", arrow_style="-|>", font=FB)
+    # ── Pump + ACC stack on the shirt front (single column, projected along Yd) ──
+    # 3D bases (Z AFF): ACC 355, P-01 615, P-04 940, P-05 1340, P-03 1740.
+    for zb, h, lbl, hot in [(355, 200, "ACC-01", True), (615, 180, "P-01", False),
+                            (940, 180, "P-04", True), (1340, 180, "P-05", True),
+                            (1740, 180, "P-03", False)]:
+        _rect(PUMP_FRONT_X, zb, PUMP_BACK_X - PUMP_FRONT_X, h,
+              "#E6D9F0" if hot else "#EAEAEA", ec=C_OUT, lw=0.9, z0=5)
+        axb.text((PUMP_FRONT_X + PUMP_BACK_X) / 2, zb + h / 2, lbl, fontsize=6,
+                 ha="center", va="center", color="#202020", fontweight="bold", zorder=15,
+                 bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none", alpha=0.85), **FB)
+    leader(axb, PUMP_FRONT_X, 1830, 4570, 1980,
+           "PUMP COLUMN + ACC-01\n(P-01/P-04/P-05/P-03 + ACC-01,\nsame stack as the front elevation)",
+           color="#777", fs=5.3, ha="left", va="center", arrow_style="-|>", font=FB)
 
-# ── Back-of-panel pipe runs (faithful X–Z routing from the live 3D) ───────
-DV01X = 4700                       # 3W-DV-01 X (corridor mouth, low ~Z235)
-# X4 WASTE — two grey runs: (a) the suction PICKUP riser climbs the spine from
-# the floor pickup to the pump; (b) the P-03 DISCHARGE runs high along the spine,
-# then drops to the X4 end-wall port (Z1620).
-_pipe([RX4, RX4, PUMP_BACK_X], [300, 1820, 1820], C_WASTEB, zorder=11)   # X4 suction pickup riser — FRONT (−Yd face)
-# X3/X4 DISCHARGES are clamped to the +Yd (BACK) face of the spine and run HIDDEN
-# behind it — shown only where they EMERGE past the spine's rear edge (X=SPX1) and
-# turn to their end-wall ports.  Separate X-lanes at the ports; X3 (brown) in front.
-X4V, X3V = 5750, 5772
-_pipe([SPX1, X4V, X4V, WALLX], [1902, 1902, X4_PORT_Z, X4_PORT_Z], C_WASTEB, zorder=8)
-_pipe([SPX1, X3V, X3V, WALLX], [1502, 1502, X3_PORT_Z, X3_PORT_Z], C_BROWNB, zorder=12)
-# DV-01 — pH-gated filter-output diverter, low at the corridor mouth; two legs:
-#   BLUE RECYCLE rises up the spine → X1 fill cross; WASTE → the IBC-4 merge tee.
-axb.add_patch(mpatches.Polygon(
-    [(DV01X, 251), (DV01X + 16, 235), (DV01X, 219), (DV01X - 16, 235)],
-    fc="white", ec="#8A6D08", lw=1.3, zorder=12))
-axb.text(DV01X, 305, "DV-01\n(corridor mouth)", fontsize=4.6, ha="center",
-         va="bottom", color="#8A6D08", zorder=13, **FB)
-_pipe([DV01X, RX_BLUE, RX_BLUE, X1X],
-      [276, 276, X1_PORT_Z, X1_PORT_Z], C_BLUEB, zorder=13)   # blue recycle — raised + IN FRONT of the brown
-_pipe([DV01X, MERGEX, MERGEX], [222, 222, 1214], C_WASTEB, zorder=11)   # DV-01 waste — lower, parallel lane
-# X1 fill cross (4-way) on the spine + its branches: → IBC-1 (X1) and IBC-2 (X2)
-# Blue-tote fills, → the end-wall X1 camlock, ← DV-01 blue recycle return.
-_pipe([X1X, WALLX], [X1_PORT_Z, X1_PORT_Z], C_BLUEB, zorder=11)              # → end-wall X1 fill camlock
-# CV-1 (one-way / check valve) + the end-wall DC camlock on the X1 gravity-fill line.
-axb.add_patch(mpatches.Polygon(
-    [(5693, X1_PORT_Z + 15), (5710, X1_PORT_Z), (5693, X1_PORT_Z - 15), (5676, X1_PORT_Z)],
-    fc="white", ec=C_BLUEB, lw=1.2, zorder=14))
-axb.text(5693, X1_PORT_Z + 22, "CV-1", fontsize=4.2, ha="center", va="bottom", color=C_BLUEB, zorder=15, **FB)
-_rect(5836, X1_PORT_Z - 16, 34, 32, "white", ec=C_BLUEB, lw=1.0, z0=14)      # 2" DC camlock (X1 fill)
-axb.text(5853, X1_PORT_Z - 26, "X1 camlock\n(end wall)", fontsize=4.0, ha="center", va="top",
-         color=C_BLUEB, zorder=15, **FB)
-_pipe([X1X - 14, X1X - 14], [X1_PORT_Z, X1_PORT_Z - 140], C_BLUEB, zorder=11)   # → IBC-1 (X1) fill
-_pipe([X1X + 14, X1X + 14], [X1_PORT_Z, X1_PORT_Z - 140], C_BLUEB, zorder=11)   # → IBC-2 (X2) fill
-axb.text(X1X, X1_PORT_Z - 152, "→ IBC-1 (X1) +\nIBC-2 (X2) fills", fontsize=4.4,
-         ha="center", va="top", color=C_BLUEB, zorder=13, **FB)
-axb.add_patch(mpatches.Circle((X1X, X1_PORT_Z), 16, facecolor="white",
-              edgecolor=C_BLUEB, lw=1.4, zorder=14))
-axb.text(X1X - 64, X1_PORT_Z + 36, "X1 FILL CROSS\n(4-way)", fontsize=5, ha="center",
-         va="bottom", color=C_BLUEB, zorder=14, **FB)
-# X1/X2 balance — Blue equalization cross-tie between IBC-1 ↔ IBC-2 (a circle).
-axb.add_patch(mpatches.Circle((X1X, 1376), 13, facecolor="white",
-              edgecolor=C_BLUEB, lw=1.3, zorder=13))
-axb.text(X1X + 22, 1376, "X1/X2 BALANCE\n(Blue equalization tie)", fontsize=4.4,
-         ha="left", va="center", color=C_BLUEB, zorder=14, **FB)
-axb.add_patch(mpatches.Circle((MERGEX, 1230), 16, facecolor="white",
-              edgecolor=C_WASTEB, lw=1.6, zorder=13))
-leader(axb, MERGEX, 1230, 5650, 1370,
-       "IBC-4 MERGE TEE\n(DV-01 + DV-02 waste,\nconsolidated on the spine)",
-       color="#555", fs=5.5, ha="left", va="center", arrow_style="-|>", font=FB)
-# DV-02 (above the pump column) waste leg → drops to the IBC-4 merge tee.
-axb.add_patch(mpatches.Polygon(
-    [(DV02X, 2145 + 18), (DV02X + 18, 2145), (DV02X, 2145 - 18), (DV02X - 18, 2145)],
-    fc="white", ec="#B8860B", lw=1.4, zorder=12))
-axb.text(DV02X, 2145 + 30, "DV-02", fontsize=5, ha="center", va="bottom",
-         color="#8A6D08", zorder=13, **FB)
-# DV-02 BROWN output (its 2nd leg) → IBC-3 (Brown) tote: drops on the FRONT at X4895.
-_pipe([DV02X - 14, DV02X - 14], [2128, 1110], C_BROWNB, zorder=10)
-axb.annotate("", xy=(DV02X - 14, 1095), xytext=(DV02X - 14, 1145),
-             arrowprops=dict(arrowstyle="-|>", lw=1.2, mutation_scale=7, color=C_BROWNB), zorder=12)
-axb.text(DV02X - 26, 1098, "→ IBC-3\n(Brown)", fontsize=4.2, ha="right", va="top",
-         color=C_BROWNB, zorder=13, **FB)
-# DV-02 waste starts on the FRONT (facing) side, runs high, PENETRATES the rear
-# panel near the spine top (disappears, then reappears in the rear corridor), then
-# DROPS at X5290 — parallel to the blue-recycle riser — into the merge's LEFT side.
-_hpipe(2127, DV02X, 5290, C_WASTEB, zorder=11, crosses=(PANX + 9, RX_BLUE))   # gap = panel penetration (5113) + blue riser
-axb.text(PANX + 9, 2160, "through\npanel", fontsize=4.0, ha="center", va="bottom",
-         color="#999", zorder=12, **FB)
-_pipe([5290, 5290, MERGEX], [2127, 1230, 1230], C_WASTEB, zorder=11)      # drop ∥ blue riser → into merge (LEFT)
-# IBC-4 (Waste) tote entry — the merge tee's RIGHT pipe (+X off the merge, then
-# drops into the IBC-4 tote).
-_pipe([MERGEX, 5494, 5494], [1230, 1230, 1085], C_WASTEB, zorder=11)
-axb.annotate("", xy=(5494, 1100), xytext=(5494, 1150),
-             arrowprops=dict(arrowstyle="-|>", lw=1.3, mutation_scale=8, color=C_WASTEB), zorder=12)
-axb.text(5506, 1120, "→ IBC-4\n(Waste tote)", fontsize=4.8, ha="left", va="top",
-         color=C_WASTEB, zorder=13, **FB)
-# ── Remaining pump + ACC-01 connections ──────────────────────────────────
-# P-01 discharge → ACC-01 (short drop into the accumulator directly below P-01).
-_pipe([5012, 5012], [612, 558], C_BLUEB, zorder=9)
-# ACC-01 OUT → Blue supply trunk → spray bar / TAP-01 (down the corridor front).
-_pipe([PUMP_FRONT_X, 4655, 4655], [455, 455, 30], C_BLUEB, zorder=9)
-axb.text(4648, 8, "↓ Blue supply →\nspray bar / TAP-01", fontsize=4.2, ha="left",
-         va="bottom", color=C_BLUEB, zorder=12, **FB)
-# P-04 tray-drain DISCHARGE → up the back (SV-02 sample tap) → DV-02 at the top.
-_pipe([5046, 5046, DV02X + 18], [1113, 2025, 2025], C_WASTEB, zorder=9)
-axb.add_patch(mpatches.Polygon([(5046, 1170), (5062, 1150), (5046, 1130), (5030, 1150)],
-              fc="white", ec="#555", lw=1.0, zorder=12))
-axb.text(5066, 1150, "SV-02", fontsize=4.0, ha="left", va="center", color="#555", zorder=13, **FB)
-# P-04 tray-drain SUCTION (← from the tray sump, far −X).
-_pipe([4600, 4908, 4908, PUMP_FRONT_X], [205, 205, 1075, 1075], C_WASTEB, zorder=9)
-axb.text(4598, 165, "← tray sump", fontsize=4.2, ha="left", va="top", color="#555", zorder=12, **FB)
-# P-05 brown-drain SUCTION (← IBC-3 Brown tap via BV-02) up to P-05 IN.
-_pipe([4960, 5072, 5072, PUMP_BACK_X], [300, 300, 1500, 1500], C_BROWNB, zorder=9)
-axb.text(5076, 540, "← IBC-3\n(BV-02)", fontsize=4.0, ha="left", va="center",
-         color=C_BROWNB, zorder=12, **FB)
-# P-clips fastening the spine risers (suction pickup, blue recycle, DV-01 waste).
-for rx, zt in [(RX4, 1800), (RX_BLUE, X1_PORT_Z), (MERGEX, 1214)]:
-    for i in range(4):
-        cz = 460 + i * 400
-        if cz < zt - 80:
-            _rect(rx - 8, cz - 11, 16, 22, C_STEEL, lw=0.6, z0=11)
-leader(axb, RX4, 1000, 5690, 880,
-       "FRONT of spine (−Yd face), P-clipped:\nX4 suction-pickup riser (→ P-03),\nblue-recycle + DV-01-waste risers",
-       color="#555", fs=5.2, ha="left", va="top", arrow_style="-|>", font=FB)
-leader(axb, 5640, 1700, 6120, 1820,
-       "BACK of spine (+Yd face) — behind it:\nX3 / X4 pump discharges → end-wall ports",
-       color=C_BROWNB, fs=5.2, ha="left", va="center", arrow_style="-|>", font=FB)
-leader(axb, RX_BLUE, 900, 4720, 740, "BLUE-RECYCLE RISER\n(DV-01 → up the spine → X1 cross)",
-       color=C_BLUEB, fs=5.2, ha="right", va="top", arrow_style="-|>", font=FB)
+    # ── Drain-riser spine (18mm ply fin, teed off the rear panel into the corridor) ──
+    # The spine plane separates the two faces: VIEW A draws the −Yd intake runs,
+    # VIEW B (mirror) draws the +Yd discharge runs.
+    _rect(PANX, SPINE_ZB, SPX1 - PANX, SPINE_ZT - SPINE_ZB, C_PLYB, lw=1.2,
+          z0=8, alpha=0.55)
+    leader(axb, (PANX + SPX1) / 2, 1180, 5650, 1140,
+           f"DRAIN-RISER SPINE\n18mm ply, teed perpendicular off the rear\n"
+           f"panel (a T in plan) — X={PANX}–{SPX1}, Z={SPINE_ZB}–{SPINE_ZT};\n"
+           "the back-of-panel drain risers P-clip to it",
+           color=C_OUT, fs=6, ha="left", va="center", arrow_style="-|>", font=FB)
 
-# ── End-wall ports ───────────────────────────────────────────────────────
-for z, lab, col in [(X1_PORT_Z, "X1", C_BLUEB), (X3_PORT_Z, "X3", C_BROWNB),
-                    (X4_PORT_Z, "X4", C_WASTEB)]:
-    axb.add_patch(mpatches.Circle((WALLX, z), 22, facecolor="white",
-                  edgecolor=col, lw=1.8, zorder=14))
-    axb.text(WALLX, z, lab, fontsize=6, ha="center", va="center",
-             fontweight="bold", color=col, zorder=15, **FB)
+    # ── Fitting / valve / diverter landmarks (drawn in BOTH views) ───────────
+    DV01X = 4700                       # 3W-DV-01 X (corridor mouth, low ~Z235)
+    # DV-01 — pH-gated filter-output diverter, low at the corridor mouth.
+    axb.add_patch(mpatches.Polygon(
+        [(DV01X, 251), (DV01X + 16, 235), (DV01X, 219), (DV01X - 16, 235)],
+        fc="white", ec="#8A6D08", lw=1.3, zorder=12))
+    axb.text(DV01X, 305, "DV-01\n(corridor mouth)", fontsize=4.6, ha="center",
+             va="bottom", color="#8A6D08", zorder=13, **FB)
+    # X1 fill cross (4-way) on the spine + the end-wall X1 camlock + CV-1.
+    _pipe([X1X, WALLX], [X1_PORT_Z, X1_PORT_Z], C_BLUEB, zorder=11)              # → end-wall X1 fill camlock
+    # CV-1 (one-way / check valve) + the end-wall DC camlock on the X1 gravity-fill line.
+    axb.add_patch(mpatches.Polygon(
+        [(5693, X1_PORT_Z + 15), (5710, X1_PORT_Z), (5693, X1_PORT_Z - 15), (5676, X1_PORT_Z)],
+        fc="white", ec=C_BLUEB, lw=1.2, zorder=14))
+    axb.text(5693, X1_PORT_Z + 22, "CV-1", fontsize=4.2, ha="center", va="bottom", color=C_BLUEB, zorder=15, **FB)
+    _rect(5836, X1_PORT_Z - 16, 34, 32, "white", ec=C_BLUEB, lw=1.0, z0=14)      # 2" DC camlock (X1 fill)
+    axb.text(5853, X1_PORT_Z - 26, "X1 camlock\n(end wall)", fontsize=4.0, ha="center", va="top",
+             color=C_BLUEB, zorder=15, **FB)
+    axb.add_patch(mpatches.Circle((X1X, X1_PORT_Z), 16, facecolor="white",
+                  edgecolor=C_BLUEB, lw=1.4, zorder=14))
+    axb.text(X1X - 64, X1_PORT_Z + 36, "X1 FILL CROSS\n(4-way)", fontsize=5, ha="center",
+             va="bottom", color=C_BLUEB, zorder=14, **FB)
+    axb.text(X1X, X1_PORT_Z - 152, "→ IBC-1 (X1) +\nIBC-2 (X2) fills", fontsize=4.4,
+             ha="center", va="top", color=C_BLUEB, zorder=13, **FB)
+    # X1/X2 balance — Blue equalization cross-tie between IBC-1 ↔ IBC-2 (a circle).
+    axb.add_patch(mpatches.Circle((X1X, 1376), 13, facecolor="white",
+                  edgecolor=C_BLUEB, lw=1.3, zorder=13))
+    axb.text(X1X + 22, 1376, "X1/X2 BALANCE\n(Blue equalization tie)", fontsize=4.4,
+             ha="left", va="center", color=C_BLUEB, zorder=14, **FB)
+    # IBC-4 merge tee (a circle on the spine).
+    axb.add_patch(mpatches.Circle((MERGEX, 1230), 16, facecolor="white",
+                  edgecolor=C_WASTEB, lw=1.6, zorder=13))
+    leader(axb, MERGEX, 1230, 5650, 1370,
+           "IBC-4 MERGE TEE\n(DV-01 + DV-02 waste,\nconsolidated on the spine)",
+           color="#555", fs=5.5, ha="left", va="center", arrow_style="-|>", font=FB)
+    # DV-02 (above the pump column).
+    axb.add_patch(mpatches.Polygon(
+        [(DV02X, 2145 + 18), (DV02X + 18, 2145), (DV02X, 2145 - 18), (DV02X - 18, 2145)],
+        fc="white", ec="#B8860B", lw=1.4, zorder=12))
+    axb.text(DV02X, 2145 + 30, "DV-02", fontsize=5, ha="center", va="bottom",
+             color="#8A6D08", zorder=13, **FB)
 
-# ── Dimensions ───────────────────────────────────────────────────────────
-draw_dim_h(axb, PANX, SPX1, 150, f"{SPX1 - PANX}mm spine depth", offset=4,
-           fs=5.5, above=False, font=FB)
+    # ════════════════════════════════════════════════════════════════════════
+    #  VIEW A ONLY — −Yd INTAKE face (suctions · recycle · fills · merge)
+    # ════════════════════════════════════════════════════════════════════════
+    if _NEAR == '-Yd':
+        # P-01 suction: P-01 IN → −X to BV-01 (front of the corridor, walkway-
+        # reachable, Z≈1000) → up toward the Blue tote.
+        BV01X = 4760
+        _pipe([PUMP_FRONT_X, BV01X, BV01X], [787, 787, 1380], C_BLUEB, zorder=11)
+        axb.add_patch(mpatches.Polygon(
+            [(BV01X, 1018), (BV01X + 18, 1000), (BV01X, 982), (BV01X - 18, 1000)],
+            fc="white", ec=C_BLUEB, lw=1.3, zorder=12))
+        axb.text(BV01X, 1404, "↑ Blue tote", fontsize=4.6, ha="center", va="bottom",
+                 color=C_BLUEB, zorder=13, **FB)
+        leader(axb, BV01X, 1000, 4600, 1140, "BV-01 (P-01 suction)\nfront · walkway-reachable",
+               color=C_BLUEB, fs=5, ha="right", va="center", arrow_style="-|>", font=FB)
+        # X4 suction PICKUP riser climbs the spine from the floor pickup to P-03.
+        _pipe([RX4, RX4, PUMP_BACK_X], [300, 1820, 1820], C_WASTEB, zorder=11)
+        # DV-01 BLUE RECYCLE rises up the spine → X1 fill cross.
+        _pipe([DV01X, RX_BLUE, RX_BLUE, X1X],
+              [276, 276, X1_PORT_Z, X1_PORT_Z], C_BLUEB, zorder=13)
+        # DV-01 WASTE → the IBC-4 merge tee (lower, parallel lane).
+        _pipe([DV01X, MERGEX, MERGEX], [222, 222, 1214], C_WASTEB, zorder=11)
+        # → IBC-1 (X1) fill stub off the cross.
+        _pipe([X1X - 14, X1X - 14], [X1_PORT_Z, X1_PORT_Z - 140], C_BLUEB, zorder=11)
+        # DV-02 BROWN output → IBC-3 (Brown) tote: drops on the FRONT at X4895.
+        _pipe([DV02X - 14, DV02X - 14], [2128, 1110], C_BROWNB, zorder=10)
+        axb.annotate("", xy=(DV02X - 14, 1095), xytext=(DV02X - 14, 1145),
+                     arrowprops=dict(arrowstyle="-|>", lw=1.2, mutation_scale=7, color=C_BROWNB), zorder=12)
+        axb.text(DV02X - 26, 1098, "→ IBC-3\n(Brown)", fontsize=4.2, ha="right", va="top",
+                 color=C_BROWNB, zorder=13, **FB)
+        # DV-02 waste high horizontal — PENETRATES the rear panel near the spine
+        # top, then DROPS at X5290 (∥ blue riser) into the merge's LEFT side.
+        _hpipe(2127, DV02X, 5290, C_WASTEB, zorder=11, crosses=(PANX + 9, RX_BLUE))
+        axb.text(PANX + 9, 2160, "through\npanel", fontsize=4.0, ha="center", va="bottom",
+                 color="#999", zorder=12, **FB)
+        _pipe([5290, 5290, MERGEX], [2127, 1230, 1230], C_WASTEB, zorder=11)
+        # IBC-4 (Waste) tote entry — the merge tee's RIGHT pipe.
+        _pipe([MERGEX, 5494, 5494], [1230, 1230, 1085], C_WASTEB, zorder=11)
+        axb.annotate("", xy=(5494, 1100), xytext=(5494, 1150),
+                     arrowprops=dict(arrowstyle="-|>", lw=1.3, mutation_scale=8, color=C_WASTEB), zorder=12)
+        axb.text(5506, 1120, "→ IBC-4\n(Waste tote)", fontsize=4.8, ha="left", va="top",
+                 color=C_WASTEB, zorder=13, **FB)
+        # ACC-01 OUT → Blue supply trunk → spray bar / TAP-01.
+        _pipe([PUMP_FRONT_X, 4655, 4655], [455, 455, 30], C_BLUEB, zorder=9)
+        axb.text(4648, 8, "↓ Blue supply →\nspray bar / TAP-01", fontsize=4.2, ha="left",
+                 va="bottom", color=C_BLUEB, zorder=12, **FB)
+        # P-04 tray-drain SUCTION (← from the tray sump, far −X).
+        _pipe([4600, 4908, 4908, PUMP_FRONT_X], [205, 205, 1075, 1075], C_WASTEB, zorder=9)
+        axb.text(4598, 165, "← tray sump", fontsize=4.2, ha="left", va="top", color="#555", zorder=12, **FB)
+        # P-05 brown-drain SUCTION (← IBC-3 Brown tap via BV-02) up to P-05 IN.
+        _pipe([4960, 5072, 5072, PUMP_BACK_X], [300, 300, 1500, 1500], C_BROWNB, zorder=9)
+        axb.text(5076, 540, "← IBC-3\n(BV-02)", fontsize=4.0, ha="left", va="center",
+                 color=C_BROWNB, zorder=12, **FB)
+        # P-clips fastening the −Yd-face spine risers.
+        for rx, zt in [(RX4, 1800), (RX_BLUE, X1_PORT_Z), (MERGEX, 1214)]:
+            for i in range(4):
+                cz = 460 + i * 400
+                if cz < zt - 80:
+                    _rect(rx - 8, cz - 11, 16, 22, C_STEEL, lw=0.6, z0=11)
+        leader(axb, RX4, 1000, 5690, 880,
+               "FRONT of spine (−Yd face), P-clipped:\nX4 suction-pickup riser (→ P-03),\nblue-recycle + DV-01-waste risers",
+               color="#555", fs=5.2, ha="left", va="top", arrow_style="-|>", font=FB)
+        leader(axb, RX_BLUE, 900, 4720, 740, "BLUE-RECYCLE RISER\n(DV-01 → up the spine → X1 cross)",
+               color=C_BLUEB, fs=5.2, ha="right", va="top", arrow_style="-|>", font=FB)
 
-# ── Notes (right margin) ─────────────────────────────────────────────────
-draw_notes(axb, [
-    "CORRIDOR PLUMBING PANEL — BACKSIDE (corridor side section, looking along Yd):",
-    "1. Pumps + ACC-01 mount on the FRONT (−X) of the rear panel, cam-clamped to a 25mm pump-mount shirt that backs the bodies (X=5052–5077, Z=275–1925).",
-    "2. A ~27mm chase gap separates the shirt back (X=5077) and the rear-panel front (X=5104); six ply spacer blocks bridge it.",
-    "3. Rear panel: 18mm ply, X=5104–5122, Z=50–2246. The drain-riser spine is an 18mm ply fin teed perpendicular off it into the rear corridor (X=5104–5560, Z=280–2246).",
-    "4. Back-of-panel risers P-clip to the spine: the X4 waste riser (P-03 → up the spine → X4 end-wall port @ Z=1620) and the blue-recycle riser climbing onto the spine into the X1 fill cross (high).",
-    "5. The X3 brown discharge (P-05) routes BEHIND the panel to the X3 end-wall port @ Z=1700.",
-    "6. DV-02 → IBC-3 / IBC-4; the IBC-4 merge tee (DV-01 + DV-02 waste) is consolidated on the spine.",
-    "7. Circuit C powers all 5 pumps (one IP switch each, run one at a time); P-02 lives on the Pinhole Wall panel and shares Circuit C.",
-    "8. Spine riser X-lanes: X4 suction pickup 5200, blue-recycle 5239, DV-01-waste/merge 5404, X1 cross 5500. End-wall ports: X1 fill Z2250, X3 Z1700, X4 Z1620.",
-    "9. X1 fill is a 4-way cross (X1 in + IBC-1 + IBC-2 + DV-01 recycle return) with CV-1 one-way valve + 2\" DC camlock at the end wall; X1/X2 balance = Blue equalization tank-body tie.",
-    "10. PIPE: 1\" SDR-11 HDPE (IBC fill/drain + recycle) and 1/2\" HDPE (pump runs), PP/Banjo fittings; risers stainless P-clipped to the spine face.",
-], 6065, 2440, spacing=46, fs=6.2, ha="left", width=640, font=FB)
+    # ════════════════════════════════════════════════════════════════════════
+    #  VIEW B ONLY — +Yd DISCHARGE face (pump discharges)
+    #  These are the NEAR face here, so each discharge is drawn FULL: pump →
+    #  along the spine → end-wall port (no spine occlusion).
+    # ════════════════════════════════════════════════════════════════════════
+    if _NEAR == '+Yd':
+        X4V, X3V = 5750, 5772
+        # X4 discharge (P-03 → X4 port): full run from the pump along the spine.
+        _pipe([PUMP_BACK_X, X4V, X4V, WALLX], [1902, 1902, X4_PORT_Z, X4_PORT_Z],
+              C_WASTEB, zorder=12)
+        # X3 discharge (P-05 → X3 port): full run from the pump along the spine.
+        _pipe([PUMP_BACK_X, X3V, X3V, WALLX], [1502, 1502, X3_PORT_Z, X3_PORT_Z],
+              C_BROWNB, zorder=13)
+        # P-01 discharge → ACC-01 (short drop into the accumulator below P-01).
+        _pipe([5012, 5012], [612, 558], C_BLUEB, zorder=9)
+        # P-04 tray-drain DISCHARGE → up the back (SV-02 sample tap) → DV-02.
+        _pipe([5046, 5046, DV02X + 18], [1113, 2025, 2025], C_WASTEB, zorder=9)
+        axb.add_patch(mpatches.Polygon([(5046, 1170), (5062, 1150), (5046, 1130), (5030, 1150)],
+                      fc="white", ec="#555", lw=1.0, zorder=12))
+        axb.text(5066, 1150, "SV-02", fontsize=4.0, ha="left", va="center", color="#555", zorder=13, **FB)
+        # → IBC-2 (X2) fill stub off the cross.
+        _pipe([X1X + 14, X1X + 14], [X1_PORT_Z, X1_PORT_Z - 140], C_BLUEB, zorder=11)
+        leader(axb, 5640, 1700, 6120, 1820,
+               "+Yd DISCHARGE face (near):\nX3 / X4 pump discharges → end-wall ports",
+               color=C_BROWNB, fs=5.2, ha="left", va="center", arrow_style="-|>", font=FB)
 
-title_block(axb, "CORRIDOR PANEL — BACKSIDE",
-            drawing_title="CORRIDOR PLUMBING PANEL — BACKSIDE",
-            subtitle="PUMP-MOUNT SHIRT · DRAIN-RISER SPINE · BEHIND-PANEL RISERS · END-WALL PORTS",
-            scale_note="CORRIDOR SIDE SECTION ALONG Yd · AXES IN mm",
-            doc_id="TBS-001 · Plumbing Panel",
-            height=0.05)
+    # ── End-wall ports ───────────────────────────────────────────────────────
+    for z, lab, col in [(X1_PORT_Z, "X1", C_BLUEB), (X3_PORT_Z, "X3", C_BROWNB),
+                        (X4_PORT_Z, "X4", C_WASTEB)]:
+        axb.add_patch(mpatches.Circle((WALLX, z), 22, facecolor="white",
+                      edgecolor=col, lw=1.8, zorder=14))
+        axb.text(WALLX, z, lab, fontsize=6, ha="center", va="center",
+                 fontweight="bold", color=col, zorder=15, **FB)
 
-outb = os.path.join(DIAGRAMS_DIR, "panel-layout-back.png")
-figb.savefig(outb, dpi=150, facecolor="white", edgecolor="none",
-             bbox_inches="tight", pad_inches=0.2)
-plt.close(figb)
-print(f"Panel backside → {outb}")
+    # ── Dimensions ───────────────────────────────────────────────────────────
+    draw_dim_h(axb, PANX, SPX1, 150, f"{SPX1 - PANX}mm spine depth", offset=4,
+               fs=5.5, above=False, font=FB)
+
+    # ── Notes (right margin) ─────────────────────────────────────────────────
+    if _NEAR == '-Yd':
+        cross_note = ("Pump discharges + IBC-2 fill are on Spine View B "
+                      "(+Yd face).")
+    else:
+        cross_note = ("Suctions, recycle, fills + merge are on Spine View A "
+                      "(−Yd face).")
+    draw_notes(axb, [
+        "CORRIDOR PLUMBING PANEL — SPINE SIDE SECTION (looking along Yd):",
+        cross_note,
+        "1. Pumps + ACC-01 mount on the FRONT (−X) of the rear panel, cam-clamped to a 25mm pump-mount shirt that backs the bodies (X=5052–5077, Z=275–1925).",
+        "2. A ~27mm chase gap separates the shirt back (X=5077) and the rear-panel front (X=5104); six ply spacer blocks bridge it.",
+        "3. Rear panel: 18mm ply, X=5104–5122, Z=50–2246. The drain-riser spine is an 18mm ply fin teed perpendicular off it into the rear corridor (X=5104–5560, Z=280–2246).",
+        "4. View A (−Yd intake face): X4 suction-pickup riser, blue-recycle riser onto the spine into the X1 fill cross, DV-01-waste → merge, suctions, fills.",
+        "5. View B (+Yd discharge face): the X3 brown (P-05 → Z=1700) and X4 grey (P-03 → Z=1620) pump discharges run full along the spine to the end-wall ports.",
+        "6. DV-02 → IBC-3 / IBC-4; the IBC-4 merge tee (DV-01 + DV-02 waste) is consolidated on the spine.",
+        "7. Circuit C powers all 5 pumps (one IP switch each, run one at a time); P-02 lives on the Pinhole Wall panel and shares Circuit C.",
+        "8. Spine riser X-lanes: X4 suction pickup 5200, blue-recycle 5239, DV-01-waste/merge 5404, X1 cross 5500. End-wall ports: X1 fill Z2250, X3 Z1700, X4 Z1620.",
+        "9. X1 fill is a 4-way cross (X1 in + IBC-1 + IBC-2 + DV-01 recycle return) with CV-1 one-way valve + 2\" DC camlock at the end wall; X1/X2 balance = Blue equalization tank-body tie.",
+        "10. PIPE: 1\" SDR-11 HDPE (IBC fill/drain + recycle) and 1/2\" HDPE (pump runs), PP/Banjo fittings; risers stainless P-clipped to the spine face.",
+    ], 6065, 2440, spacing=46, fs=6.2, ha="left", width=640, font=FB)
+
+    if _NEAR == '-Yd':
+        dtitle = "CORRIDOR PLUMBING PANEL — SPINE VIEW A"
+        subt = "SPINE VIEW A · −Yd INTAKE FACE (suctions · recycle · fills)"
+    else:
+        dtitle = "CORRIDOR PLUMBING PANEL — SPINE VIEW B"
+        subt = "SPINE VIEW B · +Yd DISCHARGE FACE (pump discharges)"
+    title_block(axb, "CORRIDOR PANEL — SPINE",
+                drawing_title=dtitle,
+                subtitle=subt,
+                scale_note="CORRIDOR SIDE SECTION ALONG Yd · AXES IN mm",
+                doc_id="TBS-001 · Plumbing Panel",
+                height=0.05)
+
+    os.makedirs(DIAGRAMS_DIR, exist_ok=True)
+    outb = os.path.join(DIAGRAMS_DIR, f"panel-spine-view-{side}.png")
+    figb.savefig(outb, dpi=150, facecolor="white", edgecolor="none",
+                 bbox_inches="tight", pad_inches=0.2)
+    plt.close(figb)
+    print(f"Spine view {side.upper()} → {outb}")
+
+
+spine_view('a')
+spine_view('b')

@@ -160,7 +160,9 @@
 
 ![TBS-001 — Pinhole Wall Plumbing Panel Layout](assets/pinhole-panel.png)
 
-![TBS-001 — Corridor Plumbing Panel Backside](assets/panel-layout-back.png)
+![TBS-001 — Corridor Plumbing Panel Spine View A (−Yd intake face)](assets/panel-spine-view-a.png)
+
+![TBS-001 — Corridor Plumbing Panel Spine View B (+Yd discharge face)](assets/panel-spine-view-b.png)
 
 ---
 

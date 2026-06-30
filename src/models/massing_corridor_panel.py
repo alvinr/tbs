@@ -548,7 +548,7 @@ def plumbing():
     # the corridor front (bvx) — BV-01 at reach height, handle to the walkway — then turns +X BACK through the
     # shirt + panel (round holes) and rises BEHIND the panel, OFF the operator's front zone, before jogging −Yd
     # into Blue #1.  Relocating the tall riser to the rear declutters the front for access to the brown valves.
-    bvx, bvy = FRONT_X + 106, YD_NEAR + 67       # 4760 / 1113 — corridor-front access lane, clear of the front
+    bvx, bvy = FRONT_X + 181, YD_NEAR + 67       # 4835 / 1113 — corridor-front access lane (+75 toward the sealed end), clear of the front
     #   upright (Yd≤1096) AND −Yd of the pump bodies (Yd≥1128) the +X return run passes
     beh_x = 5200                                 # behind-panel riser X — flange (r36) clears the near upright (x≤5154)
     #   and the riser/flange sit on the Yd1113/1038 lanes, −Yd-separated from the X4 waste riser's Yd1196 lane
@@ -657,7 +657,8 @@ def drains_ports():
     z03 = _piz("P-03")
     rx6 = 5070                     # BV-06 riser X (copied from BV-02)
     turn6 = 1700                   # turn partway down the riser below BV-06 — in the pump gap (z1520–1740)
-    corr_x = 4900                  # −X reach in FRONT of the pump column (toward the walkway)
+    corr_x = 5020                  # −Yd-jog X — pulled IN close to the shirt face (5051.5), just −X of it, so the
+    #   grey loop sits tight to the shirt instead of bulging toward the walkway (jog is in the P-05↔P-03 gap)
     spine_yd = YD_FAR - 120        # 1196 — grey-riser lane CLAMPED to the spine front face (1206); also the
                                    #   bottom-pickup approach Yd, so the riser rises STRAIGHT up the spine
     grey_x = 5200                  # X4 grey pickup riser X (on the spine)

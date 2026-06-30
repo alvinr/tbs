@@ -57,7 +57,7 @@ three functions:
 | Finish | Sealed with marine varnish or epoxy; white face for visibility |
 
 The table above is the **Corridor Plumbing Panel**. The **Pinhole Wall Plumbing Panel** is the
-wet-end board mounted on the pinhole wall (Yd0) carrying the 3-stage filter skid, its feed pump
+wet-end board mounted on the pinhole wall carrying the 3-stage filter skid, its feed pump
 P-02, the filter-output diverter DV-01, and the SV-01 sample tap — see [Water System Report](water-system-report.md)
 §3 for its location and the spray-bar/chemistry-tap supply it feeds.
 
@@ -160,12 +160,12 @@ P-02 lives on the Pinhole Wall panel and shares Circuit C. The two views share
 all structure + fittings as landmarks; each face's own pipe runs appear on its
 own sheet.
 
-**Spine View A — −Yd intake face:** suctions (BV-01 Blue, tray sump, IBC-3),
+**Spine View A — intake face:** suctions (BV-01 Blue, tray sump, IBC-3),
 the DV-01 blue-recycle riser climbing the spine into the X1 fill cross, the
 DV-01-waste → IBC-4 merge, and the IBC-1 / Blue-supply fills.
 ![TBS-001 — Corridor Plumbing Panel Spine View A (−Yd intake face)](assets/panel-spine-view-a.png)
 
-**Spine View B — +Yd discharge face (a mirror of A):** the X3 brown (P-05 →
+**Spine View B — discharge face (a mirror of A):** the X3 brown (P-05 →
 Z=1700) and X4 grey (P-03 → Z=1620) pump discharges running full along the
 spine to the sealed end-wall ports, the P-01 → ACC drop, the P-04 discharge
 through SV-02, and the IBC-2 fill.
@@ -240,7 +240,7 @@ The filter output has no usable sampling point without SV-01 — a capped tee
 cannot be drawn from. **SV-01** is a 1/2" PP quarter-turn ball valve (same Banjo
 family as the BV isolation valves) on a 1"×1/2" reducing branch tee, with a short
 downturned hose-barb spout. It sits on the panel face **above the spill line**,
-spout pointing toward the operator (−X) so a cup fits beneath it from the right
+spout pointing toward the operator so a cup fits beneath it from the right
 walkway.
 
 **Use:** run P-02 to pressurize the filtered line, crack SV-01 to catch ~50 ml in
@@ -336,8 +336,8 @@ through the backing board.
 
 Each Shurflo 2088 mounts on a stainless steel 4-bolt bracket (Shurflo OEM
 accessory). The bracket screws through the plywood panel. Pump body orientation
-is vertical (long axis along Z) with ports at the head (top), facing left and
-right (along Yd). This orientation minimizes the footprint on the 270mm-wide
+is vertical with ports at the head (top), facing left and
+right. This orientation minimizes the footprint on the 270mm-wide
 panel and allows gravity to assist with priming.
 
 ### 7.4 Panel Protrusion Envelope

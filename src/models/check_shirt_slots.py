@@ -19,7 +19,7 @@ import massing_corridor_panel as cp
 SX0 = cp.PXC + cp.ACC_R + 4
 SX1 = SX0 + 25
 SY0, SY1 = cp.YD_NEAR + cp.S, cp.YD_FAR - cp.S      # shirt Yd span
-SZ0, SZ1 = 275, 1925                                # shirt Z span (bottom raised to clear the low suction elbow)
+SZ0, SZ1 = 325, cp.DV_Z + cp.DVB                    # shirt Z span: bottom 325 (clears the raised brown inlet z298-318); top backs DV-02
 
 RUBY = r'''
 require 'json'

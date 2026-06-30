@@ -244,9 +244,10 @@ def kit():
     #    on the tee run, so the two legs make ONE tote entry).
     mx, my, mz = cp.MERGE4
     pipe("DV-01 -> IBC-4 merge",
-         [(DCX, DCY - tipd, DCZ), (DCX, 1147, DCZ),                   # SHORT −Yd exit off the branch → 90° elbow sooner
-          (mx, 1147, DCZ),                                            # +X across the corridor at Yd1147 (clears the brown IBC-3
-          #   suction below [Yd≤1123] and the blue recycle above [CTR_Y]) — was dropping to Yd1116 into the brown
+         [(DCX, DCY - tipd, DCZ), (DCX, 1165, DCZ),                   # SHORT −Yd exit off the branch → 90° elbow sooner
+          (mx, 1165, DCZ),                                            # +X across the corridor at Yd1165 — SHIFTED +Yd (toward the
+          #   film plane, was 1147) to open a lane for the blue supply trunk; still clears the brown P-02 riser below and
+          #   the blue recycle elbow above (−Yd edge 1185)
           (mx, my, DCZ),                                              # −Yd to the merge column at the far end
           (mx, my, mz)],                                              # rise into the merge tee's z− branch
          ov.C_IBC_WASTE)

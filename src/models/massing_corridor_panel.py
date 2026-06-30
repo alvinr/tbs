@@ -144,9 +144,9 @@ def rear_panel():
                      EQT, yw, ph, color=ov.C_PLY)]
     # 25mm ply pump-mount shirt: front face hard behind the ACC body (the deepest, back ≈ PXC+ACC_R),
     # spanning the pump-column height; sits in the ~56mm chase between the bodies and the rear frame.
-    p.append(ov.ruby_box("Pump-mount ply shirt (25mm)", SHIRT_X, YD_NEAR + S, 275,   # SHIRT_X: module constant
-                         25, yw, DV_Z + DVB - 275, color=ov.C_PLY))   # raised to z≈2191 to BACK/support DV-02 (z2145);
-    #   bottom 275 clears the low brown suction elbow (z247-268); still backs the ACC (foot z280) and all four pumps
+    p.append(ov.ruby_box("Pump-mount ply shirt (25mm)", SHIRT_X, YD_NEAR + S, 325,   # SHIRT_X: module constant
+                         25, yw, DV_Z + DVB - 325, color=ov.C_PLY))   # top z≈2191 BACKS/supports DV-02 (z2145);
+    #   bottom SHORTENED to 325 (was 275) to clear the brown P-05 inlet elbow now RAISED to z298-318; still backs the pumps
     # Spacer/cleat blocks tying the shirt BACK to the rear panel (and thus the frame) across the
     # ~27mm chase — placed at the two Yd edges in the clear Z windows BETWEEN the horizontal X3/X4
     # port runs that cross the chase (those sit at z≈1500 / 1820 / 1900).
@@ -200,8 +200,12 @@ GAPX  = ov.PROC_TRAY_X_R + 12             # 4641 — in the gap between the tray
                                           # outside-rim strip (Yd<80) and the corridor (Rule 5a, around the
                                           # tray).  Cross HORIZONTALLY here at a z clear of the FP rail (z510).
 TRAY_STRIP_Y = 60                         # outside the tray near rim (Yd80): the around-the-rim run lane
-GAP_CORR_Y = 1150                         # corridor-side approach Yd — clear of the front upright (Yd1046–1096)
-BROWN_TAP = (4880, CTR_Y - (PVB_R + 30), ov.IBC_PALLET_H + 90)   # (4880,1101,258) — the SINGLE shared
+GAP_CORR_Y = 1132                         # corridor-side approach Yd — sits in the clear window between the brown P-02
+                                          #   inlet riser (Yd≤1111) and the grey DV-01→IBC-4 merge run (shifted +Yd to
+                                          #   1165), ~10mm each side; the grey shift toward the film plane opened this lane
+BROWN_TAP = (4880, CTR_Y - (PVB_R + 30), ov.IBC_PALLET_H + 140)   # (4880,1101,308) — the SINGLE shared
+#   tap RAISED +50mm (was +90/z258) to lift the P-02/P-05 brown inlet runs clear of the blue supply trunk's
+#   low-lane crossing (z225-246); the dip tube below is extended +50mm to keep the same in-tote pickup depth
                                           # IBC-3 bottom tap T: run ALONG X (P-02 leaves −X to the
                                           # wall, P-05 leaves +X to the pump), dip on the −Yd branch.
                                           # Feeds BOTH P-02 (wall loop) and P-05 → one tote penetration.
@@ -573,7 +577,8 @@ def plumbing():
     # Leave the −Yd OUT port OUTWARD (−Yd), then run +Yd to the gap in the clear band BETWEEN the P-01 head
     # top (z490) and the ACC body bottom (z540) — z515 clears both by ~15mm.  (The old route ran +Yd at the
     # port's z568 and TUNNELED through the ACC body; z490 then grazed the P-01 head top.)
-    trz = (PSTACK["P-01"] + PVB_H + PCAP_H + ACC_Z0) // 2     # 515 — midway P-01 head-top↔ACC body-bottom
+    trz = 235     # corridor-entry crossing height — dropped to DV-01's low lane (DV01_CZ=235) so the trunk is
+    #   OUT of the operator's way at the mouth (was z515, mid-shin); −Yd of the ACC/pump bodies so it clears them
     pipe("Blue supply trunk -> spray bar / TAP-01 (off-panel)",
          [acc_out(), (PXC, CTR_Y - ACC_R - 50, ACC_PZ), (PXC, CTR_Y - ACC_R - 50, trz),
           (PXC, GAP_CORR_Y, trz), (4660, GAP_CORR_Y, trz), (4660, GAP_CORR_Y, 60)], ov.C_BLUE)
@@ -621,7 +626,7 @@ def drains_ports():
     tx3, ty3, tz3 = BROWN_TAP
     yin3 = YD_NEAR - 150                                  # 896 — penetration into the Brown tote
     p.append(ov.ruby_pipe_run("IBC-3 (Brown) bottom tap (shared P-02/P-05)",
-        [(tx3, yin3, tz3 - 50), (tx3, yin3, tz3), (tx3, ty3 - 36, tz3)], RP, color=ov.C_IBC_BROWN))  # into the tee's −Yd branch end
+        [(tx3, yin3, tz3 - 100), (tx3, yin3, tz3), (tx3, ty3 - 36, tz3)], RP, color=ov.C_IBC_BROWN))  # dip tube EXTENDED to tz3-100 (bottom stays z208) — into the tee's −Yd branch end
     p.append(ov.ruby_cylinder("IBC-3 (Brown) tap flange", tx3, YD_NEAR - 8, tz3, 36, 16, color=ov.C_STEEL, axis="y"))
     p.append(tee("IBC-3 (Brown) tap T", tx3, ty3, tz3, run="x", branch="y-"))   # dip on −Yd; P-02 −X / P-05 +X
     # (no check valve at the bottom tap — the schematic's CV-3 is at the IBC-3 buffer return TOP;

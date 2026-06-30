@@ -1035,6 +1035,14 @@ _pipe([DV01X, MERGEX, MERGEX], [222, 222, 1214], C_WASTEB, zorder=11)   # DV-01 
 # X1 fill cross (4-way) on the spine + its branches: → IBC-1 (X1) and IBC-2 (X2)
 # Blue-tote fills, → the end-wall X1 camlock, ← DV-01 blue recycle return.
 _pipe([X1X, WALLX], [X1_PORT_Z, X1_PORT_Z], C_BLUEB, zorder=11)              # → end-wall X1 fill camlock
+# CV-1 (one-way / check valve) + the end-wall DC camlock on the X1 gravity-fill line.
+axb.add_patch(mpatches.Polygon(
+    [(5693, X1_PORT_Z + 15), (5710, X1_PORT_Z), (5693, X1_PORT_Z - 15), (5676, X1_PORT_Z)],
+    fc="white", ec=C_BLUEB, lw=1.2, zorder=14))
+axb.text(5693, X1_PORT_Z + 22, "CV-1", fontsize=4.2, ha="center", va="bottom", color=C_BLUEB, zorder=15, **FB)
+_rect(5836, X1_PORT_Z - 16, 34, 32, "white", ec=C_BLUEB, lw=1.0, z0=14)      # 2" DC camlock (X1 fill)
+axb.text(5853, X1_PORT_Z - 26, "X1 camlock\n(end wall)", fontsize=4.0, ha="center", va="top",
+         color=C_BLUEB, zorder=15, **FB)
 _pipe([X1X - 14, X1X - 14], [X1_PORT_Z, X1_PORT_Z - 140], C_BLUEB, zorder=11)   # → IBC-1 (X1) fill
 _pipe([X1X + 14, X1X + 14], [X1_PORT_Z, X1_PORT_Z - 140], C_BLUEB, zorder=11)   # → IBC-2 (X2) fill
 axb.text(X1X, X1_PORT_Z - 152, "→ IBC-1 (X1) +\nIBC-2 (X2) fills", fontsize=4.4,
@@ -1059,6 +1067,12 @@ axb.add_patch(mpatches.Polygon(
     fc="white", ec="#B8860B", lw=1.4, zorder=12))
 axb.text(DV02X, 2145 + 30, "DV-02", fontsize=5, ha="center", va="bottom",
          color="#8A6D08", zorder=13, **FB)
+# DV-02 BROWN output (its 2nd leg) → IBC-3 (Brown) tote: drops on the FRONT at X4895.
+_pipe([DV02X - 14, DV02X - 14], [2128, 1110], C_BROWNB, zorder=10)
+axb.annotate("", xy=(DV02X - 14, 1095), xytext=(DV02X - 14, 1145),
+             arrowprops=dict(arrowstyle="-|>", lw=1.2, mutation_scale=7, color=C_BROWNB), zorder=12)
+axb.text(DV02X - 26, 1098, "→ IBC-3\n(Brown)", fontsize=4.2, ha="right", va="top",
+         color=C_BROWNB, zorder=13, **FB)
 # DV-02 waste starts on the FRONT (facing) side, runs high, PENETRATES the rear
 # panel near the spine top (disappears, then reappears in the rear corridor), then
 # DROPS at X5290 — parallel to the blue-recycle riser — into the merge's LEFT side.

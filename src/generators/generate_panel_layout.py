@@ -1134,9 +1134,11 @@ def spine_view(side):
         axb.text(RX4 + 135, 255, "from IBC-4 (waste pickup)", fontsize=4.0, ha="right",
                  va="top", color=C_WASTEB, zorder=12,
                  bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none", alpha=0.85), **FB)
-        # DV-01 BLUE RECYCLE rises up the spine → X1 fill cross.
+        # DV-01 BLUE RECYCLE — straight +X off the diverter, THROUGH the rear panel, up the spine to X1.
         _pipe([DV01X, RX_BLUE, RX_BLUE, X1X],
               [276, 276, X1_PORT_Z, X1_PORT_Z], C_BLUEB, zorder=13)
+        axb.text(PANX + 9, 300, "through\npanel", fontsize=4.0, ha="center", va="bottom",
+                 color="#999", zorder=14, **FB)
         # DV-01 WASTE → the IBC-4 merge tee (lower, parallel lane).
         _pipe([DV01X, MERGEX, MERGEX], [222, 222, 1214], C_WASTEB, zorder=11)
         # → IBC-1 (X1) fill stub off the cross (water continues down to IBC-1, off-section).

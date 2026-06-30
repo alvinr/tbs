@@ -166,7 +166,7 @@ DV-01-waste → IBC-4 merge, and the IBC-1 / Blue-supply fills.
 ![TBS-001 — Corridor Plumbing Panel Spine View A (−Yd intake face)](assets/panel-spine-view-a.png)
 
 **Spine View B — discharge face (a mirror of A):** the X3 brown (P-05 →
-Z=1700) and X4 grey (P-03 → Z=1620) pump discharges running full along the
+Z=1700) and X4 gray (P-03 → Z=1620) pump discharges running full along the
 spine to the sealed end-wall ports, the P-01 → ACC drop, the P-04 discharge
 through SV-02, and the IBC-2 fill.
 ![TBS-001 — Corridor Plumbing Panel Spine View B (+Yd discharge face)](assets/panel-spine-view-b.png)

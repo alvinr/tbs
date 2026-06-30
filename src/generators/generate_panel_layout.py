@@ -1180,7 +1180,7 @@ def spine_view(side):
         "8. Spine riser X-lanes: X4 suction pickup 5200, blue-recycle 5239, DV-01-waste/merge 5404, X1 cross 5500. End-wall ports: X1 fill Z2250, X3 Z1700, X4 Z1620.",
         "9. X1 fill is a 4-way cross (X1 in + IBC-1 + IBC-2 + DV-01 recycle return) with CV-1 one-way valve + 2\" DC camlock at the end wall; X1/X2 balance = Blue equalization tank-body tie.",
         "10. PIPE: 1\" SDR-11 HDPE (IBC fill/drain + recycle) and 1/2\" HDPE (pump runs), PP/Banjo fittings; risers stainless P-clipped to the spine face.",
-    ], mxa(6065), 2440, spacing=18, fs=6.2, ha="left", width=320, wrap=36, font=FB)
+    ], mxa(6065), 2440, spacing=27, fs=9.3, ha="left", width=480, wrap=36, font=FB)
 
     if _NEAR == '-Yd':
         dtitle = "CORRIDOR PLUMBING PANEL — SPINE VIEW A"

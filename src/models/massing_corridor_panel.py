@@ -634,7 +634,7 @@ def drains_ports():
 
     # ── IBC-4 WASTE: own bottom pickup (bend points DOWN to floor) → P-03 → X4 end-wall port ──
     p3i = (PXC, PIY, _piz("P-03")); p3o = (PXC, POY, _piz("P-03"))
-    bv6z = p3i[2] - 82             # turn point, at the bottom of the BV-06 riser (the FAR side of BV-06)
+    bv6z = p3i[2] - 142            # turn point, at the bottom of the BV-06 riser — dropped so there is enough
     #   BV-06 sits on the IN-port's own Yd lane (PIY) directly below the port: the riser rises STRAIGHT up
     #   into the IN port with NO elbow between BV-06 and P-03.  The single 90° turn is on the far side of
     #   BV-06 — at the bottom of the riser, where the suction turns +X and runs straight through the panel

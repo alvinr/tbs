@@ -177,6 +177,10 @@ COL_R  = 1235                            # X4 grey waste run + port — clamps t
 #   spine Yd1206 + 18mm) plus a pipe radius, so the run mounts on the spine instead of floating beside it
 CTR_Y  = (YD_NEAR + YD_FAR) / 2          # 1181 — corridor center
 RP     = ov.PUMP_PIPE_OD / 2            # 1/2" pipe radius
+BV02_YD = YD_NEAR + S - (RP + 8)        # 1077.5 — BV-02 brown-suction riser Yd: the VALVE BARREL
+#   (radius RP+8) sits FLUSH against the shirt's −Yd edge (1096) so nothing embeds in the ply (no slot
+#   to cut); the thinner pipe then stands ~8mm off and P-clips to the shirt for support.  Single source
+#   for the geometry AND the 3D callout anchor, so the label can't drift off the valve.
 CDK    = "#3A3A42"                       # dark fittings / motor cans
 DVB    = 46                              # diverter body cube
 DVL    = 10                              # diverter port socket length — real 1/2" socket 3-way ball valve
@@ -609,13 +613,13 @@ def drains_ports():
     # P-05 (Brown drain) suction: shared tap T → +X run end → rise to P-05 IN (−Yd manifold)
     p5i = (PXC, PIY, _piz("P-05")); p5o = (PXC, POY, _piz("P-05"))
     z05 = _piz("P-05")
-    rx = 5070   # BV-02 riser — STILL in the shirt band (see below): the valve must stay in the gap
-    #   behind the pumps for operator access, but that gap IS the shirt zone — OPEN ITEM, needs relocation
+    rx = 5070   # BV-02 riser X — inside the shirt's X-band (5051.5–5076.5); riser Yd = BV02_YD so its
+    #   far edge sits ON the shirt's −Yd edge and the pipe + valve P-clip to the shirt for support.
     pipe("Brown tap -> P-05 inlet",   # FRONT of the upright, so it comes straight in (no detour loop):
-         [(tx3 + 30, ty3, tz3), (rx, ty3, tz3), (rx, PIY - 30, tz3), (rx, PIY - 30, z05),
-          (PXC, PIY - 30, z05), p5i],   # tee +X end → riser (BV-02) → −X on the −Yd lane → +Yd stub into IN port
+         [(tx3 + 30, ty3, tz3), (rx, ty3, tz3), (rx, BV02_YD, tz3), (rx, BV02_YD, z05),
+          (PXC, BV02_YD, z05), p5i],   # tee +X end → riser (BV-02, on the shirt edge) → −X → short +Yd stub into IN port
          ov.C_IBC_BROWN)
-    p.append(ball_valve("BV-02 (P-05 suction)", rx, PIY - 30, z05 - 110, "z", hdir="-x"))   # on the gap riser; handle faces the −X walkway/operator (raised 60mm)
+    p.append(ball_valve("BV-02 (P-05 suction)", rx, BV02_YD, z05 - 110, "z", hdir="-x"))   # clamped to the shirt edge; handle faces the −X walkway/operator
     p.append(ov.ruby_cylinder("X3 Brown drain port (end wall)", ew - 60, COL_L, 1700, 22, 60, color=C_CHECK, axis="x"))
     # P-05 OUT → +Yd stub → step onto a clear back lane (between the spine +Yd face 1224 and the far
     # upright 1266; +Yd of the pump body 1231) — the −Yd step is done in the OPEN −X of the shirt, NOT in

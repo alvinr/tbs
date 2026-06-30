@@ -383,10 +383,6 @@ fittings, IBC totes, external bulkhead ports, wiring, consumables) is in the
 [Water System Report](water-system-report.md) §Parts-List; the panel ply/backing and mounting
 hardware are sourced there and in the IBC stacking frame line.
 
-> **Ball valves (BV-0x) pending:** the pump-suction and supply isolation valves are not yet split
-> per panel — that inventory is being reconciled against the as-built model. They appear in the
-> Water System Report's valve line for now.
-
 ### 9.1 Corridor Plumbing Panel
 
 <!-- BEGIN parts:corridor-plumbing-panel -->

@@ -994,11 +994,17 @@ def spine_view(side):
     _ha = (lambda a: a) if side == 'a' else (lambda a: _FLIP.get(a, a))
     mxa = (lambda x: x) if side == 'a' else (lambda x: 4560 + 6760 - x)
 
-    figb, axb = plt.subplots(figsize=(12.6, 15.3))
+    # Paper x-extent.  The drawing lives in D0–D1 (4560–6760); NOTE_MARGIN adds a
+    # right-hand column wide enough that the notes block sits ON the sheet — under
+    # the full-width title block — instead of hanging off its right edge.  The
+    # mirror map (mxa) pivots on the DRAWING-span center (D0+D1)/2, independent of
+    # the margin, so View B still mirrors with the notes in the same screen corner.
+    D0, D1, NOTE_MARGIN = 4560, 6760, 1120
+    figb, axb = plt.subplots(figsize=(12.6 * (D1 - D0 + NOTE_MARGIN) / (D1 - D0), 15.3))
     if side == 'a':
-        axb.set_xlim(4560, 6760)
+        axb.set_xlim(D0, D1 + NOTE_MARGIN)
     else:
-        axb.set_xlim(6760, 4560)   # reversed → whole drawing renders mirrored
+        axb.set_xlim(D1, D0 - NOTE_MARGIN)   # reversed → whole drawing renders mirrored
     axb.set_ylim(-300, 2520)
     axb.set_aspect("equal")
     axb.axis("off")
@@ -1235,7 +1241,7 @@ def spine_view(side):
         "8. Spine riser X-lanes: X4 suction pickup 5200, blue-recycle 5239, DV-01-waste/merge 5404, X1 cross 5500. End-wall ports: X1 fill Z2250, X3 Z1700, X4 Z1620.",
         "9. X1 fill is a 4-way cross (X1 in + IBC-1 + IBC-2 + DV-01 recycle return) with CV-1 one-way valve + 2\" DC camlock at the end wall; X1/X2 balance = Blue equalization tank-body tie.",
         "10. PIPE: 1\" SDR-11 HDPE (IBC fill/drain + recycle) and 1/2\" HDPE (pump runs), PP/Banjo fittings; risers stainless P-clipped to the spine face.",
-    ], mxa(6800), 2440, spacing=27, fs=9.3, ha="left", width=800, wrap=36, font=FB)
+    ], mxa(6800), 2440, spacing=27, fs=9.3, ha="left", width=900, wrap=42, font=FB)
 
     # ── SYMBOL KEY (top-left screen corner; mxa anchors the screen-left edge,
     #    and draw_symbol_key lays out in screen space for the reversed View-B axis) ──

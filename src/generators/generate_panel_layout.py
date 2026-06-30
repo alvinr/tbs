@@ -994,6 +994,15 @@ def spine_view(side):
     _ha = (lambda a: a) if side == 'a' else (lambda a: _FLIP.get(a, a))
     mxa = (lambda x: x) if side == 'a' else (lambda x: 4560 + 6760 - x)
 
+    def _flowhead(x, z, dxn, color, L=44):
+        """A flow-direction arrowhead drawn ON an off-section ('open') pipe end,
+        pointing the way the water actually moves (into the section for a
+        suction, out of it for a supply/fill/discharge)."""
+        v = {"up": (0, L), "down": (0, -L), "left": (-L, 0), "right": (L, 0)}[dxn]
+        axb.annotate("", xy=(x + v[0], z + v[1]), xytext=(x, z),
+                     arrowprops=dict(arrowstyle="-|>", lw=1.4, mutation_scale=9,
+                                     color=color), zorder=15)
+
     # Paper x-extent.  The drawing lives in D0–D1 (4560–6760); NOTE_MARGIN adds a
     # right-hand column wide enough that the notes block sits ON the sheet — under
     # the full-width title block — instead of hanging off its right edge.  The
@@ -1115,19 +1124,25 @@ def spine_view(side):
         BV01X = 4760
         _pipe([PUMP_FRONT_X, BV01X, BV01X], [787, 787, 1380], C_BLUEB, zorder=11)
         valve_ball(axb, BV01X, 1000, 16, C_BLUEB, vert=True)
-        axb.text(BV01X, 1404, "↑ Blue tote", fontsize=4.6, ha="center", va="bottom",
+        _flowhead(BV01X, 1340, "down", C_BLUEB)            # suction: Blue #1 tote → P-01
+        axb.text(BV01X, 1404, "from Blue #1 tote", fontsize=4.6, ha="center", va="bottom",
                  color=C_BLUEB, zorder=13, **FB)
         leader(axb, BV01X, 1000, 4600, 1140, "BV-01 (P-01 suction)\nfront · walkway-reachable",
                color=C_BLUEB, fs=5, ha="right", va="center", arrow_style="-|>", font=FB)
         # X4 suction PICKUP riser climbs the spine from the floor pickup to P-03.
         _pipe([RX4, RX4, PUMP_BACK_X], [300, 1820, 1820], C_WASTEB, zorder=11)
+        _flowhead(RX4, 360, "up", C_WASTEB)                # suction: IBC-4 waste pickup → P-03
+        axb.text(RX4 - 12, 250, "from IBC-4\n(waste pickup)", fontsize=4.0, ha="right",
+                 va="top", color=C_WASTEB, zorder=12,
+                 bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none", alpha=0.85), **FB)
         # DV-01 BLUE RECYCLE rises up the spine → X1 fill cross.
         _pipe([DV01X, RX_BLUE, RX_BLUE, X1X],
               [276, 276, X1_PORT_Z, X1_PORT_Z], C_BLUEB, zorder=13)
         # DV-01 WASTE → the IBC-4 merge tee (lower, parallel lane).
         _pipe([DV01X, MERGEX, MERGEX], [222, 222, 1214], C_WASTEB, zorder=11)
-        # → IBC-1 (X1) fill stub off the cross.
+        # → IBC-1 (X1) fill stub off the cross (water continues down to IBC-1, off-section).
         _pipe([X1X - 14, X1X - 14], [X1_PORT_Z, X1_PORT_Z - 140], C_BLUEB, zorder=11)
+        _flowhead(X1X - 14, X1_PORT_Z - 140, "down", C_BLUEB)   # fill: → IBC-1 tote (below)
         # DV-02 — tray-drain diverter above the pump column.  Its input is the
         # P-04 discharge (rear +Yd face, Spine View B); the two outputs sit on
         # this −Yd face: BROWN drops to IBC-3 (down port), WASTE leaves the
@@ -1158,14 +1173,22 @@ def spine_view(side):
                  color=C_WASTEB, zorder=13, **FB)
         # ACC-01 OUT → Blue supply trunk → spray bar / TAP-01.
         _pipe([PUMP_FRONT_X, 4655, 4655], [455, 455, 30], C_BLUEB, zorder=9)
-        axb.text(4648, 8, "↓ Blue supply →\nspray bar / TAP-01", fontsize=4.2, ha="left",
+        _flowhead(4655, 120, "down", C_BLUEB)              # supply: → spray bar / TAP-01 (off-section)
+        axb.text(4648, 8, "Blue supply\nto spray bar / TAP-01", fontsize=4.2, ha="left",
                  va="bottom", color=C_BLUEB, zorder=12, **FB)
-        # P-04 tray-drain SUCTION (← from the tray sump, far −X).
-        _pipe([4600, 4908, 4908, PUMP_FRONT_X], [205, 205, 1075, 1075], C_WASTEB, zorder=9)
-        axb.text(4598, 165, "← tray sump", fontsize=4.2, ha="left", va="top", color="#555", zorder=12, **FB)
-        # P-05 brown-drain SUCTION (← IBC-3 Brown tap via BV-02) up to P-05 IN.
+        # P-04 tray-drain SUCTION (← from the tray sump, far −X) up to P-04 IN.
+        # Gap-broken where it crosses the blue ACC-out / supply riser — at
+        # (4655,205) on the floor run and (4908,455) on the rise — so the blue
+        # reads continuous (skill_plumbing_drawing: the crossing run breaks).
+        _pipe([4600, 4655 - 16], [205, 205], C_WASTEB, zorder=9)
+        _pipe([4655 + 16, 4908, 4908], [205, 205, 455 - 16], C_WASTEB, zorder=9)
+        _pipe([4908, 4908, PUMP_FRONT_X], [455 + 16, 1075, 1075], C_WASTEB, zorder=9)
+        _flowhead(4600, 205, "right", C_WASTEB)            # suction: tray sump → P-04
+        axb.text(4596, 165, "from tray sump", fontsize=4.2, ha="left", va="top", color="#555", zorder=12, **FB)
+        # P-05 brown-drain SUCTION (IBC-3 Brown tap via BV-02) up to P-05 IN.
         _pipe([4960, 5072, 5072, PUMP_BACK_X], [300, 300, 1500, 1500], C_BROWNB, zorder=9)
-        axb.text(5076, 540, "← IBC-3\n(BV-02)", fontsize=4.0, ha="left", va="center",
+        _flowhead(4960, 300, "right", C_BROWNB)            # suction: IBC-3 (BV-02) → P-05
+        axb.text(5076, 540, "from IBC-3\n(BV-02)", fontsize=4.0, ha="left", va="center",
                  color=C_BROWNB, zorder=12, **FB)
         # P-clips fastening the −Yd-face spine risers.
         for rx, zt in [(RX4, 1800), (RX_BLUE, X1_PORT_Z), (MERGEX, 1214)]:
@@ -1203,8 +1226,9 @@ def spine_view(side):
                  va="bottom", color="#999", zorder=13, **FB)
         valve_ball(axb, 5046, 1150, 14, "#555", vert=True)
         axb.text(5066, 1150, "SV-02", fontsize=4.0, ha=_ha("left"), va="center", color="#555", zorder=13, **FB)
-        # → IBC-2 (X2) fill stub off the cross.
+        # → IBC-2 (X2) fill stub off the cross (water continues down to IBC-2, off-section).
         _pipe([X1X + 14, X1X + 14], [X1_PORT_Z, X1_PORT_Z - 140], C_BLUEB, zorder=11)
+        _flowhead(X1X + 14, X1_PORT_Z - 140, "down", C_BLUEB)   # fill: → IBC-2 tote (below)
         leader(axb, 5640, 1700, 6120, 1820,
                "+Yd DISCHARGE face (near):\nX3 / X4 pump discharges → end-wall ports",
                color=C_BROWNB, fs=5.2, ha=_ha("left"), va="center", arrow_style="-|>", font=FB)

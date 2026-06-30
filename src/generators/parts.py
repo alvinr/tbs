@@ -122,8 +122,7 @@ PARTS: list[Part] = [
 
     # ═══ water family (split per owning report; reconciled to costing.WATER lines — water-system §8
     # item-sums after the 2026 reconciliation). The §8 group ("water") = storage+pumps+filter+valves+
-    # pipe+wiring+consumables; the frame/tray/spray are SEPARATE systems (their own reports). The §8
-    # bundles below are placeholders pending full itemization (Increment 2). ═══
+    # pipe+wiring+consumables; the frame/tray/spray are SEPARATE systems (their own reports). ═══
     # — storage (395–720) —
     Part("ibc-tote-1000l", "IBC tote (1,000 L caged)", "water-equipment",
          "water", 4, "ea", 80, 150, "Container Exchanger",

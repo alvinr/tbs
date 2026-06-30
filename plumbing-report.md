@@ -152,14 +152,24 @@ with drip loops, per the wet-zone rules in [Electrical Report §7.5](electrical-
 **Corridor Plumbing Panel — Front elevation: four pumps, ACC-01, DV-02 diverter, SV-02 sample tap, and full pipe routing**
 ![TBS-001 — Corridor Plumbing Panel Layout](assets/panel-layout.png)
 
-**Backside (corridor side section) — what is mounted on the *back* of the panel:**
-the drain-riser backing spine (18mm ply teed off the panel), the X3/X4 drain
-risers running from the P-05/P-03 discharges down to the sealed end-wall ports,
-and the Circuit-C pump-power distribution. Pumps mount on the front face; the
-drain runs are on the back, in the corridor gap clear of both tote columns.
-P-02 lives on the Pinhole Wall panel and shares Circuit C.
+**Spine side-sections (corridor side section along Yd) — two sheets, opposite
+faces of the drain-riser spine** (18mm ply teed off the panel). Pumps mount on
+the front face; the drain runs hang on the spine in the corridor gap clear of
+both tote columns; the Circuit-C pump-power distribution feeds all five pumps.
+P-02 lives on the Pinhole Wall panel and shares Circuit C. The two views share
+all structure + fittings as landmarks; each face's own pipe runs appear on its
+own sheet.
 
-![TBS-001 — Corridor Plumbing Panel Backside](assets/panel-layout-back.png)
+**Spine View A — −Yd intake face:** suctions (BV-01 Blue, tray sump, IBC-3),
+the DV-01 blue-recycle riser climbing the spine into the X1 fill cross, the
+DV-01-waste → IBC-4 merge, and the IBC-1 / Blue-supply fills.
+![TBS-001 — Corridor Plumbing Panel Spine View A (−Yd intake face)](assets/panel-spine-view-a.png)
+
+**Spine View B — +Yd discharge face (a mirror of A):** the X3 brown (P-05 →
+Z=1700) and X4 grey (P-03 → Z=1620) pump discharges running full along the
+spine to the sealed end-wall ports, the P-01 → ACC drop, the P-04 discharge
+through SV-02, and the IBC-2 fill.
+![TBS-001 — Corridor Plumbing Panel Spine View B (+Yd discharge face)](assets/panel-spine-view-b.png)
 
 ### 3.3 Accumulator
 

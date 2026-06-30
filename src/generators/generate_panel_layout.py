@@ -1022,7 +1022,7 @@ def spine_view(side):
     _rect(4860, -90, 5933 - 4860, 90, C_WALLB, lw=0.8, z0=2, hatch="////")   # floor
     axb.text(4890, -45, "CONTAINER FLOOR", fontsize=6, ha=_ha("left"), va="center", color="#555", **FB)
     _rect(WALLX, 0, 40, C_HGT, C_WALLB, lw=0.8, z0=2, hatch="\\\\")           # sealed end wall
-    axb.text(WALLX + 20, C_HGT - 60, f"SEALED\nEND WALL\n(X={int(C_LEN)})", fontsize=6,
+    axb.text(WALLX + 120, C_HGT - 60, f"SEALED\nEND WALL\n(X={int(C_LEN)})", fontsize=6,
              ha="center", va="top", color="#555", **FB)
     axb.plot([4860, WALLX], [C_HGT, C_HGT], color="#999", lw=0.8, ls=(0, (6, 4)), zorder=2)
     axb.text(4890, C_HGT + 25, f"CEILING (Z={int(C_HGT)})", fontsize=6, ha=_ha("left"), color="#777", **FB)
@@ -1036,10 +1036,9 @@ def spine_view(side):
     # ── 25mm pump-mount shirt (in FRONT of the rear panel, −X) ───────────────
     _rect(SHIRTX0, SHIRT_ZB, SHIRTX1 - SHIRTX0, SHIRT_ZT - SHIRT_ZB,
           C_PLYB, lw=1.2, z0=6, alpha=0.85)
-    leader(axb, (SHIRTX0 + SHIRTX1) / 2, 480, 4570, 360,
-           f"25mm PUMP-MOUNT SHIRT\nX={SHIRTX0}–{SHIRTX1}, Z={SHIRT_ZB}–{SHIRT_ZT}\n"
-           "(pumps cam-clamp to it)",
-           color="#7A6A40", fs=5.5, ha=_ha("left"), va="top", arrow_style="-|>", font=FB)
+    leader(axb, (SHIRTX0 + SHIRTX1) / 2, 480, 4570, 345,
+           "25mm PUMP-MOUNT SHIRT",   # dims + cam-clamp detail live in Note 1
+           color="#7A6A40", fs=5.5, ha=_ha("left"), va="center", arrow_style="-|>", font=FB)
     # ~27mm chase gap (shirt back 5077 → panel front 5104) + 6 spacer blocks
     for bz in (320, 920, 1560):
         _rect(SHIRTX1, bz, PANX - SHIRTX1, 80, C_PLYB, ec=C_OUT, lw=0.6, z0=7)
@@ -1091,7 +1090,7 @@ def spine_view(side):
                   edgecolor=C_BLUEB, lw=1.4, zorder=14))
     axb.text(X1X - 64, X1_PORT_Z + 36, "X1 FILL CROSS\n(4-way)", fontsize=5, ha="center",
              va="bottom", color=C_BLUEB, zorder=14, **FB)
-    axb.text(X1X, X1_PORT_Z - 152, "→ IBC-1 (X1) +\nIBC-2 (X2) fills", fontsize=4.4,
+    axb.text(X1X, X1_PORT_Z - 182, "→ IBC-1 (X1) +\nIBC-2 (X2) fills", fontsize=4.4,
              ha="center", va="top", color=C_BLUEB, zorder=13, **FB)
     # X1/X2 balance — Blue equalization cross-tie between IBC-1 ↔ IBC-2: a 2"
     # pipe running in Yd between the two totes, so it reads end-on as a pipe
@@ -1117,7 +1116,7 @@ def spine_view(side):
         # (its blue-recycle and waste legs are both on this −Yd intake face).
         DV01X = 4700
         valve_3way(axb, DV01X, 235, 16, "#8A6D08", ports=("left", "up", "down"))
-        axb.text(DV01X, 305, "DV-01\n(corridor mouth)", fontsize=4.6, ha="center",
+        axb.text(DV01X, 258, "DV-01", fontsize=4.6, ha="center",
                  va="bottom", color="#8A6D08", zorder=13, **FB)
         # P-01 suction: P-01 IN → −X to BV-01 (front of the corridor, walkway-
         # reachable, Z≈1000) → up toward the Blue tote.

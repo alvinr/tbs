@@ -1020,7 +1020,7 @@ def spine_view(side):
 
     # ── Container shell context ──────────────────────────────────────────────
     _rect(4860, -90, 5933 - 4860, 90, C_WALLB, lw=0.8, z0=2, hatch="////")   # floor
-    axb.text(4890, -45, "CONTAINER FLOOR", fontsize=6, ha=_ha("left"), va="center", color="#555", **FB)
+    axb.text(4890, -125, "CONTAINER FLOOR", fontsize=6, ha=_ha("left"), va="center", color="#555", **FB)
     _rect(WALLX, 0, 40, C_HGT, C_WALLB, lw=0.8, z0=2, hatch="\\\\")           # sealed end wall
     axb.text(WALLX + 120, C_HGT - 60, f"SEALED\nEND WALL\n(X={int(C_LEN)})", fontsize=6,
              ha="center", va="top", color="#555", **FB)
@@ -1036,7 +1036,7 @@ def spine_view(side):
     # ── 25mm pump-mount shirt (in FRONT of the rear panel, −X) ───────────────
     _rect(SHIRTX0, SHIRT_ZB, SHIRTX1 - SHIRTX0, SHIRT_ZT - SHIRT_ZB,
           C_PLYB, lw=1.2, z0=6, alpha=0.85)
-    leader(axb, (SHIRTX0 + SHIRTX1) / 2, 480, 4570, 345,
+    leader(axb, (SHIRTX0 + SHIRTX1) / 2, 480, 4570, 545,
            "25mm PUMP-MOUNT SHIRT",   # dims + cam-clamp detail live in Note 1
            color="#7A6A40", fs=5.5, ha=_ha("left"), va="center", arrow_style="-|>", font=FB)
     # ~27mm chase gap (shirt back 5077 → panel front 5104) + 6 spacer blocks
@@ -1044,7 +1044,7 @@ def spine_view(side):
         _rect(SHIRTX1, bz, PANX - SHIRTX1, 80, C_PLYB, ec=C_OUT, lw=0.6, z0=7)
     draw_dim_h(axb, SHIRTX1, PANX, 60, f"{PANX - SHIRTX1}mm\nchase", offset=4,
                fs=5, above=False, font=FB)
-    axb.text(SHIRTX1 + (PANX - SHIRTX1) / 2, 1700,
+    axb.text(SHIRTX1 + (PANX - SHIRTX1) / 2 + 90, 1700,
              "6× SPACER\nBLOCKS", fontsize=4.6, ha="center", va="center",
              color="#7A6A40", zorder=10, **FB)
 
@@ -1084,13 +1084,13 @@ def spine_view(side):
     valve_check(axb, 5693, X1_PORT_Z, 15, C_BLUEB, flow="left")
     axb.text(5693, X1_PORT_Z + 22, "CV-1", fontsize=4.2, ha="center", va="bottom", color=C_BLUEB, zorder=15, **FB)
     _rect(5836, X1_PORT_Z - 16, 34, 32, "white", ec=C_BLUEB, lw=1.0, z0=14)      # 2" DC camlock (X1 fill)
-    axb.text(5853, X1_PORT_Z - 26, "X1 camlock\n(end wall)", fontsize=4.0, ha="center", va="top",
+    axb.text(5833, X1_PORT_Z - 26, "X1 camlock\n(end wall)", fontsize=4.0, ha="center", va="top",
              color=C_BLUEB, zorder=15, **FB)
     axb.add_patch(mpatches.Circle((X1X, X1_PORT_Z), 16, facecolor="white",
                   edgecolor=C_BLUEB, lw=1.4, zorder=14))
     axb.text(X1X - 64, X1_PORT_Z + 36, "X1 FILL CROSS\n(4-way)", fontsize=5, ha="center",
              va="bottom", color=C_BLUEB, zorder=14, **FB)
-    axb.text(X1X, X1_PORT_Z - 182, "→ IBC-1 (X1) +\nIBC-2 (X2) fills", fontsize=4.4,
+    axb.text(X1X, X1_PORT_Z - 182, "IBC-1 (X1) +\nIBC-2 (X2) fills", fontsize=4.4,
              ha="center", va="top", color=C_BLUEB, zorder=13, **FB)
     # X1/X2 balance — Blue equalization cross-tie between IBC-1 ↔ IBC-2: a 2"
     # pipe running in Yd between the two totes, so it reads end-on as a pipe
@@ -1123,15 +1123,15 @@ def spine_view(side):
         BV01X = 4760
         _pipe([PUMP_FRONT_X, BV01X, BV01X], [787, 787, 1380], C_BLUEB, zorder=11)
         valve_ball(axb, BV01X, 1000, 16, C_BLUEB, vert=True)
-        _flowhead(BV01X, 1340, "down", C_BLUEB)            # suction: Blue #1 tote → P-01
+        _flowhead(BV01X, 1360, "down", C_BLUEB)            # suction: Blue #1 tote → P-01
         axb.text(BV01X, 1404, "from Blue #1 tote", fontsize=4.6, ha="center", va="bottom",
                  color=C_BLUEB, zorder=13, **FB)
         leader(axb, BV01X, 1000, 4600, 1140, "BV-01 (P-01 suction)\nfront · walkway-reachable",
                color=C_BLUEB, fs=5, ha="right", va="center", arrow_style="-|>", font=FB)
         # X4 suction PICKUP riser climbs the spine from the floor pickup to P-03.
         _pipe([RX4, RX4, PUMP_BACK_X], [300, 1820, 1820], C_WASTEB, zorder=11)
-        _flowhead(RX4, 360, "up", C_WASTEB)                # suction: IBC-4 waste pickup → P-03
-        axb.text(RX4 - 12, 250, "from IBC-4\n(waste pickup)", fontsize=4.0, ha="right",
+        _flowhead(RX4, 330, "up", C_WASTEB)                # suction: IBC-4 waste pickup → P-03
+        axb.text(RX4 + 135, 255, "from IBC-4 (waste pickup)", fontsize=4.0, ha="right",
                  va="top", color=C_WASTEB, zorder=12,
                  bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none", alpha=0.85), **FB)
         # DV-01 BLUE RECYCLE rises up the spine → X1 fill cross.
@@ -1154,9 +1154,9 @@ def spine_view(side):
                  va="center", color="#999", zorder=13, **FB)
         # DV-02 BROWN output → IBC-3 (Brown): drops straight off the DOWN port.
         _pipe([DV02X, DV02X], [2127, 1110], C_BROWNB, zorder=10)
-        axb.annotate("", xy=(DV02X, 1095), xytext=(DV02X, 1145),
+        axb.annotate("", xy=(DV02X, 1115), xytext=(DV02X, 1165),
                      arrowprops=dict(arrowstyle="-|>", lw=1.2, mutation_scale=7, color=C_BROWNB), zorder=12)
-        axb.text(DV02X - 12, 1098, "→ IBC-3\n(Brown)", fontsize=4.2, ha="right", va="top",
+        axb.text(DV02X - 24, 1150, "IBC-3\n(Brown)", fontsize=4.2, ha="right", va="top",
                  color=C_BROWNB, zorder=13, **FB)
         # DV-02 WASTE output → leaves the RIGHT port, PENETRATES the rear panel
         # near the spine top, then DROPS at X5290 into the merge tee's LEFT side.
@@ -1172,8 +1172,8 @@ def spine_view(side):
                  color=C_WASTEB, zorder=13, **FB)
         # ACC-01 OUT → Blue supply trunk → spray bar / TAP-01.
         _pipe([PUMP_FRONT_X, 4655, 4655], [455, 455, 30], C_BLUEB, zorder=9)
-        _flowhead(4655, 120, "down", C_BLUEB)              # supply: → spray bar / TAP-01 (off-section)
-        axb.text(4648, 8, "Blue supply\nto spray bar / TAP-01", fontsize=4.2, ha="left",
+        _flowhead(4655, 80, "down", C_BLUEB)              # supply: → spray bar / TAP-01 (off-section)
+        axb.text(4648, -10, "Blue supply\nto spray bar / TAP-01", fontsize=4.2, ha="left",
                  va="bottom", color=C_BLUEB, zorder=12, **FB)
         # P-04 tray-drain SUCTION (← from the tray sump, far −X) up to P-04 IN.
         # Gap-broken where it crosses the blue ACC-out / supply riser — at
@@ -1183,7 +1183,7 @@ def spine_view(side):
         _pipe([4655 + 16, 4908, 4908], [205, 205, 455 - 16], C_WASTEB, zorder=9)
         _pipe([4908, 4908, PUMP_FRONT_X], [455 + 16, 1075, 1075], C_WASTEB, zorder=9)
         _flowhead(4600, 205, "right", C_WASTEB)            # suction: tray sump → P-04
-        axb.text(4596, 165, "from tray sump", fontsize=4.2, ha="left", va="top", color="#555", zorder=12, **FB)
+        axb.text(4546, 185, "from\ntray sump", fontsize=4.2, ha="left", va="top", color="#555", zorder=12, **FB)
         # P-05 brown-drain SUCTION (IBC-3 Brown tap via BV-02) up to P-05 IN.
         _pipe([4960, 5072, 5072, PUMP_BACK_X], [300, 300, 1500, 1500], C_BROWNB, zorder=9)
         _flowhead(4960, 300, "right", C_BROWNB)            # suction: IBC-3 (BV-02) → P-05
@@ -1219,9 +1219,9 @@ def spine_view(side):
         # P-04 tray-drain DISCHARGE → up the back (SV-02 sample tap) → DV-02
         # (the diverter itself is drawn on Spine View A).
         _pipe([5046, 5046, DV02X + 18], [1113, 2025, 2025], C_WASTEB, zorder=9)
-        axb.annotate("", xy=(DV02X + 18, 2090), xytext=(DV02X + 18, 2025),
+        axb.annotate("", xy=(DV02X + 25, 2025), xytext=(DV02X + 75, 2025),
                      arrowprops=dict(arrowstyle="-|>", lw=1.1, mutation_scale=7, color=C_WASTEB), zorder=12)
-        axb.text(DV02X + 18, 2100, "→ DV-02\n(Spine View A)", fontsize=4.0, ha="center",
+        axb.text(DV02X + 50, 2045, "DV-02\n(Spine View A)", fontsize=4.0, ha="center",
                  va="bottom", color="#999", zorder=13, **FB)
         valve_ball(axb, 5046, 1150, 14, "#555", vert=True)
         axb.text(5066, 1150, "SV-02", fontsize=4.0, ha=_ha("left"), va="center", color="#555", zorder=13, **FB)

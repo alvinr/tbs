@@ -232,11 +232,14 @@ def kit():
     #   nudge toward the sealed end to separate the rise from the grey X4-waste riser at x5200); ON the spine
     ryd = cp.X1_TEE_Y                              # riser Yd = the X1 cross Yd (on the spine face), so the recycle
     #   rises STRAIGHT into the cross's −X port — ONE elbow at the top, no jog (fewer connections, see skill)
+    # STRAIGHT +X off the recycle port, THROUGH the rear panel to the spine riser (no −Yd jog along the
+    # corridor floor) — this clears the corridor-floor lane so the brown BV-02 suction can thread through.
     pipe("DV-01 blue recycle -> X1 cross",
-         [(DCX + tipd, DCY, DCZ), (DCX + tipd, cp.CTR_Y, DCZ),       # off the +X port, jog −Yd to the corridor center
-          (xUp, cp.CTR_Y, DCZ), (xUp, ryd, DCZ),                     # +X past the panel → +Yd onto the spine
+         [(DCX + tipd, DCY, DCZ),                                    # off the +X port (Yd1241, z235)
+          (xUp, DCY, DCZ),                                           # STRAIGHT +X through the rear panel to the spine riser
+          (xUp, ryd, DCZ),                                           # short −Yd onto the spine riser lane (behind the panel)
           (xUp, ryd, cp.X1_TEE_Z),                                   # RISE up the spine (between the grey pipes)
-          (cp.X1_TEE_X, ryd, cp.X1_TEE_Z)], ov.C_BLUE)               # ONE elbow → +X straight into the cross −X port
+          (cp.X1_TEE_X, ryd, cp.X1_TEE_Z)], ov.C_BLUE)               # +X straight into the cross −X port
     # 6. DV-01 WASTE (branch, z+) → the shared IBC-4 merge tee's z− branch (DV-02's waste also lands here,
     #    on the tee run, so the two legs make ONE tote entry).
     mx, my, mz = cp.MERGE4

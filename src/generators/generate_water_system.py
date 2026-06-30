@@ -1673,7 +1673,7 @@ def draw_sheet4():
         "6. Hose runs along tray rim exterior, P-clipped to rim.",
         "7. Tray slope exaggerated for clarity in elevation panels.",
     ]
-    draw_notes(ax4_notes, notes4, 42, 9, spacing=1.1,
+    draw_notes(ax4_notes, notes4, 38, 9.25, spacing=1.1,
                fs=7, width=26, color=C_TEXT, title_color=C_TEXT,
                font={"fontfamily": "monospace"})
 
@@ -1686,7 +1686,7 @@ def draw_sheet4():
         "5. Default: lifts to IBC-3 side-entry (Brown, ~900mm head)",
         "6. Alt: divert to IBC-4 (Waste) when selected",
     ]
-    draw_notes(ax4_notes, flow_notes, 70, 9, spacing=1.1,
+    draw_notes(ax4_notes, flow_notes, 70, 9.25, spacing=1.1,
                fs=7, width=26, color=C_TEXT, title_color=C_TEXT,
                font={"fontfamily": "monospace"})
 

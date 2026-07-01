@@ -64,6 +64,7 @@ nav:
     - Water System:
       - "Processing System": water-system-report.md
       - "Plumbing": plumbing-report.md
+      - "Walkway Pipe Routing": walkway-routing-sections.md
       - "IBC Stacking System": ibc-stacking-report.md
       - "Processing Tray & Spray Bar": processing-tray-and-spray-bar.md
     - Electrical Systems:

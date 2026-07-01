@@ -164,6 +164,16 @@
 
 ![TBS-001 — Corridor Plumbing Panel Spine View B (+Yd discharge face)](assets/panel-spine-view-b.png)
 
+![TBS-001 — Walkway Routing Section B-B: near-rim strip under the right walkway](assets/walkway-sections-sheet1.png)
+
+![TBS-001 — Walkway Routing Section C-C: midway, mid-tray](assets/walkway-sections-sheet2.png)
+
+![TBS-001 — Walkway Routing Section D-D: through the near cantilever](assets/walkway-sections-sheet3.png)
+
+![TBS-001 — Walkway Routing Section E-E: corridor centre](assets/walkway-sections-sheet4.png)
+
+![TBS-001 — Walkway Routing Section F-F: through the far cantilever](assets/walkway-sections-sheet5.png)
+
 ---
 
 ## 15. IBC Stacking & Securing

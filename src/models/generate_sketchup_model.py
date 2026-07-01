@@ -307,7 +307,7 @@ def shared_mat_name(name, color, alpha):
 # to 0.0 so all current call sites are byte-identical (mute_hex returns the color unchanged at 0).
 # Pass `mute=MUTE_DESAT` (with `alpha=MUTE_ALPHA`) to build a component as quiet CONTEXT at source,
 # exactly as ibc_stack(mute=) already does.  This lets the post-build "mute_groups" re-coloring pass
-# in massing_pinhole_wall.py eventually be retired (build context muted at source instead).
+# in generate_pinhole_water_panel.py eventually be retired (build context muted at source instead).
 def ruby_box(name, x, y, z, w, d, h, color=None, alpha=None, both_sides=False, mute=0.0):
     """Generate Ruby to create a named box group inside the `ents` context.
 

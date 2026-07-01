@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""massing_pinhole_wall.py — EXPLORATORY massing (pinhole-wall-mount branch).
+"""generate_pinhole_water_panel.py — EXPLORATORY massing (pinhole-wall-mount branch).
 
 Block massing of the wet end (pumps + ACC + filters) wall-mounted on the PINHOLE
 WALL (Yd=0) in the clear band X2700-4674, arranged by the RAKE-BY-DEPTH principle:
@@ -7,14 +7,14 @@ the deepest items (Big Blue filters) ride HIGH, the shallow items (pumps, ACC) s
 LOW, keeping the torso band clear.  Includes the (widened) near-walkway deck and a
 1750mm person for scale.  No plumbing yet — geometry feasibility only.
 
-    python3 src/models/massing_pinhole_wall.py --send   # build in the live SketchUp doc
+    python3 src/models/generate_pinhole_water_panel.py --send   # build in the live SketchUp doc
 """
 import sys, os, argparse
 _HERE = os.path.dirname(os.path.abspath(__file__))
 _ROOT = os.path.dirname(os.path.dirname(_HERE))   # repo root (src/models -> src -> root)
 sys.path.insert(0, _HERE)
 import generate_sketchup_model as ov
-import massing_corridor_panel as cp        # the new corridor plumbing panel (same connected system)
+import generate_corridor_water_panel as cp        # the new corridor plumbing panel (same connected system)
 
 # ── band + wall ──────────────────────────────────────────────────────────────
 X0, X1 = 2700, 4674            # wet-end clear mounting band on the pinhole wall (Yd0)

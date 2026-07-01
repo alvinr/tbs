@@ -91,7 +91,7 @@ R_PORT_OUT = R_COL - PORT_HALF       # 145 — left (outlet/discharge)
 
 # ── CORRIDOR PANEL layout ────────────────────────────────────────────────
 # Single vertical column of four upright pumps + ACC-01 (matches the 3D
-# massing_corridor_panel.py).  All pumps centered on the corridor center
+# generate_corridor_water_panel.py).  All pumps centered on the corridor center
 # (3D Yd1181 → panel-Yd 135); IN/suction on the LEFT (panel-Yd 55 = 3D Yd1101,
 # faces -Yd / near wall), OUT/discharge on the RIGHT (panel-Yd 215 = 3D Yd1261).
 # Bottom→top: ACC-01 (dead-leg), P-01, P-04, P-05, P-03.  Panel-Z = (3D AFF Z) − 200.
@@ -682,7 +682,7 @@ def _corridor_cross_section():
 #    near the bottom-right; 3W-DV-01 lives off-board at the corridor mouth.
 #  Flow (right→left in this mirrored elevation): IBC-3 Brown → BV-03 → P-02 → F-01 → F-02 → F-03 →
 #                     SV-01 → 3W-DV-01 → (Blue recycle IBC-2 / Waste IBC-4).
-#  Matches the live 3D (massing_pinhole_wall.py: kit() + backing()).
+#  Matches the live 3D (generate_pinhole_water_panel.py: kit() + backing()).
 # ═══════════════════════════════════════════════════════════════════════════
 def draw_pinhole_panel():
     # Local X×Z scale (this elevation is wide, not the corridor panel-Yd strip).
@@ -919,7 +919,7 @@ C_WASTEB = "#8A8A8A"   # waste/grey drain
 C_BLUEB  = "#3A78C0"   # blue fill
 C_WALLB  = "#C8C8C8"
 
-# ── Geometry (matches massing_corridor_panel.py: BACK_X=5104 rear panel) ──
+# ── Geometry (matches generate_corridor_water_panel.py: BACK_X=5104 rear panel) ──
 PANX   = 5104                     # rear-panel front face (pumps hang -X off it)
 PANX1  = 5122                     # rear-panel rear face (18mm ply)
 SHIRTX0, SHIRTX1 = 5052, 5077     # 25mm pump-mount shirt (in FRONT of the panel)

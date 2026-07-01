@@ -22,7 +22,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
-from matplotlib.patches import Rectangle, Circle, FancyArrowPatch, Wedge
+from matplotlib.patches import Rectangle, Circle, FancyArrowPatch, Wedge, Polygon
 
 from tbs_constants import (
     C_OUT, C_CL, C_DIM, C_ALUM,
@@ -31,8 +31,12 @@ from tbs_constants import (
     PROC_TRAY_D, PROC_TRAY_RIM, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR,
     WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
     WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_FAR_YD,
-    PROC_OPEN_X_L, PROC_OPEN_X_R,
-    SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_T,
+    PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_TRAY_FLOOR_Z_LOW,
+    SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_W, SPRAY_BAR_BEAM_H, SPRAY_BAR_BEAM_T, SPRAY_BAR_BORE,
+    SPRAY_BAR_WHEEL_DIA, SPRAY_BAR_WHEEL_W, SPRAY_BAR_WHEELS_PER_SIDE, SPRAY_BAR_WHEEL_SP,
+    SPRAY_BAR_TRAY_FLOOR, SPRAY_BAR_AXLE_RISE, SPRAY_BAR_BRACKET_DROP,
+    SPRAY_BAR_BEAM_BOT_RISE, SPRAY_BAR_BEAM_TOP_RISE,
+    SPRAY_BAR_POLY_OD, SPRAY_BAR_POLY_ID,
     SPRAY_BAR_TRAVEL, SPRAY_BAR_HOLE_SP, SPRAY_BAR_N_NOZZLES,
     BV02_X, BV02_Z,
     SPRAY_BAR_SLIT_W,
@@ -56,26 +60,35 @@ C_NYLON  = "#E8E0D0"
 C_OPER   = "#555555"
 FONT     = dict(family="monospace")
 
-# ── Gantry carriage geometry ─────────────────────────────────────────────────
-WHEEL_DIA = 50
-WHEEL_WIDTH = 20
-N_WHEELS_PER_SIDE = 2
-WHEEL_SPACING_YD = 200
-TRAY_FLOOR_Z = 2
+# ── Gantry carriage geometry (rev10 — low-profile: Ø32 wheels, 40×25 SS RHS) ──
+# The carriage rides the RAISED, dual-axis-sloped tray floor.  The detail/section
+# sheets are cut at the near/low rim, so the LOCAL floor top sits at the low-corner
+# height (PROC_TRAY_FLOOR_Z_LOW = 20mm on the shims); the wheel/axle/beam Z's are
+# that floor + the floor-relative rises from tbs_constants.
+WHEEL_DIA = SPRAY_BAR_WHEEL_DIA          # 32 (was 50)
+WHEEL_WIDTH = SPRAY_BAR_WHEEL_W          # 20
+N_WHEELS_PER_SIDE = SPRAY_BAR_WHEELS_PER_SIDE
+WHEEL_SPACING_YD = SPRAY_BAR_WHEEL_SP    # 200
+TRAY_FLOOR_Z = SPRAY_BAR_TRAY_FLOOR      # 2 — tray sheet thickness
+FLOOR_LOCAL = PROC_TRAY_FLOOR_Z_LOW      # 20 — tray floor TOP at the near/low rim (raised on shims)
 
-WHEEL_AXLE_Z = TRAY_FLOOR_Z + WHEEL_DIA / 2
-BRACKET_DROP = 7
-BEAM_Z_BOT = WHEEL_AXLE_Z - BRACKET_DROP
-BEAM_Z_TOP = BEAM_Z_BOT + SPRAY_BAR_BEAM
-BEAM_W = SPRAY_BAR_BEAM
-BEAM_T = SPRAY_BAR_BEAM_T
-BEAM_BORE = BEAM_W - 2 * BEAM_T
+WHEEL_AXLE_Z = FLOOR_LOCAL + SPRAY_BAR_AXLE_RISE       # 36 — axle CL
+BRACKET_DROP = SPRAY_BAR_BRACKET_DROP                  # 7
+BEAM_Z_BOT = FLOOR_LOCAL + SPRAY_BAR_BEAM_BOT_RISE     # 29 — beam bottom
+BEAM_Z_TOP = FLOOR_LOCAL + SPRAY_BAR_BEAM_TOP_RISE     # 54 — beam top
+BEAM_W = SPRAY_BAR_BEAM_W                # 40 — beam width (X)
+BEAM_H = SPRAY_BAR_BEAM_H                # 25 — beam height (Z), laid flat
+BEAM_T = SPRAY_BAR_BEAM_T                # 3
+BEAM_BORE_W = BEAM_W - 2 * BEAM_T        # 34 — bore width
+BEAM_BORE_H = BEAM_H - 2 * BEAM_T        # 19 — bore height
+BEAM_BORE = BEAM_BORE_W                  # legacy alias
 
-# 19mm (3/4") LDPE irrigation poly pipe inside beam
-POLY_OD = 25.0
-POLY_ID = 19.0
+# 3/4" LDPE irrigation poly pipe — SIDE-mounted on the beam's inboard face (no longer housed inside)
+POLY_OD = SPRAY_BAR_POLY_OD              # 25
+POLY_ID = SPRAY_BAR_POLY_ID              # 19
 POLY_WALL = (POLY_OD - POLY_ID) / 2
 C_POLY = "#2A2A2A"
+C_SS   = "#B8BCC4"                        # 304 stainless RHS fill (cooler than the old alu blue)
 N_NOZZLES = SPRAY_BAR_N_NOZZLES   # flat-fan nozzles (=26 today; tbs_constants computes from tray opening / 150mm pitch)
 NOZZLE_BODY_W = 10
 NOZZLE_BODY_H = 6
@@ -205,17 +218,15 @@ def draw_sheet1():
     beam_vis_r = CUT_X
 
     ax.add_patch(Rectangle((beam_x_l, BEAM_Z_BOT),
-                 beam_vis_r - beam_x_l, BEAM_W,
-                 fc=C_ALUM_FILL, ec=C_FRAME, lw=1.5, zorder=9))
-    ax.add_patch(Rectangle((beam_x_l + 20, BEAM_Z_BOT + BEAM_T + 0.3),
-                 beam_vis_r - beam_x_l - 20, POLY_OD,
-                 fc=C_POLY, ec=C_FRAME, lw=0.5, alpha=0.5, zorder=9.3))
-    ax.add_patch(Rectangle((beam_x_l + 20, BEAM_Z_BOT + BEAM_T + 0.3 + POLY_WALL),
-                 beam_vis_r - beam_x_l - 20, POLY_ID,
-                 fc=C_WATER, ec="none", alpha=0.3, zorder=9.5))
+                 beam_vis_r - beam_x_l, BEAM_H,
+                 fc=C_SS, ec=C_FRAME, lw=1.5, zorder=9))
+    # SIDE-mounted poly manifold runs along the beam's inboard face — hidden behind
+    # the beam in this elevation, so shown as a dashed line at beam mid-height.
+    ax.plot([beam_x_l + 20, beam_vis_r], [BEAM_Z_BOT + BEAM_H / 2, BEAM_Z_BOT + BEAM_H / 2],
+            color=C_POLY, lw=1.0, ls=(0, (5, 3)), alpha=0.8, zorder=9.3)
 
     ax.text((beam_x_l + pole_x) / 2, BEAM_Z_TOP + 8,
-            f"40×40×3mm AL SHS — {beam_length}mm LONG — 3/4\" LDPE PIPE + {N_NOZZLES} NOZZLES",
+            f"40×25×3mm 304-SS RHS — {beam_length}mm LONG — SIDE 3/4\" LDPE MANIFOLD + {N_NOZZLES} NOZZLES",
             ha="center", va="bottom", fontsize=5.5, color=C_FRAME,
             fontweight="bold", **FONT, zorder=15)
 
@@ -408,11 +419,11 @@ def draw_sheet1():
     # ── Notes ────────────────────────────────────────────────────────────
     notes = [
         "GANTRY ELEVATION — SECTION THROUGH NEAR WALKWAY:",
-        f"1. 40×40×3mm AL SHS beam spans {BEAM_SPAN}mm. 3/4\" LDPE poly pipe inside.",
+        f"1. 40×25×3mm 304-SS RHS beam spans {BEAM_SPAN}mm. 3/4\" LDPE poly SIDE-mounted.",
         f"2. {SLIT_WIDTH}mm slit in walkway at beam center X for pole passage.",
         "3. BV-02 on pinhole wall at pinhole centerline, waist height → flex hose",
-        "   → manifold at ball joint → 7 irrigation tubes → barbed into poly pipe.",
-        f"4. {N_NOZZLES}× irrigation flat-fan nozzles, barbed into poly pipe through beam.",
+        "   → manifold at ball joint → 7 irrigation tubes → barbed into the side poly.",
+        f"4. {N_NOZZLES}× flat-fan nozzles side-tapped into the poly, spray down-and-in.",
     ]
     draw_notes(ax, notes, X_LO + 155, 520, spacing=14, fs=7, font=FONT, width=1500)
 
@@ -531,16 +542,33 @@ def draw_sheet2():
     ax2.add_patch(Rectangle((C_YD_LO, -20), C_YD_HI - C_YD_LO, 20,
                   fc="#E0E0D8", ec=C_OUT, lw=0.8, hatch="...", zorder=1))
 
-    # ── Processing tray floor and near rim ───────────────────────────────
+    # ── Processing tray — WELDED 304-SS PAN, lifted whole on a tapered shim ramp ──
+    #   The tray is fabricated as a complete rigid pan (2mm base + lip fully welded),
+    #   then the WHOLE pan is lifted and tilted on the HDPE shim ramp so the corner
+    #   sump bottom rests on the container floor.  The drainage slope IS the pan tilt
+    #   (rim tilts with it) — it is NOT an internal fall built up inside the tray.
     tray_yd_start = PROC_TRAY_YD_NEAR
+    shim_top = FLOOR_LOCAL - TRAY_FLOOR_Z                # 18 — shim stack top (pan base sits on it)
     ax2.add_patch(Rectangle((tray_yd_start, 0),
+                  C_YD_HI - tray_yd_start, shim_top,
+                  fc="#E6E0D2", ec=C_OUT, lw=0.6, hatch="xxx", zorder=3))
+    # welded pan: base sheet + up-turned lip (one rigid unit) sitting ON the shim ramp
+    ax2.add_patch(Rectangle((tray_yd_start, shim_top),
                   C_YD_HI - tray_yd_start, TRAY_FLOOR_Z,
-                  fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
-    ax2.add_patch(Rectangle((tray_yd_start - 3, 0), 6, PROC_TRAY_RIM,
+                  fc=C_TRAY, ec=C_OUT, lw=1.0, zorder=4))
+    ax2.add_patch(Rectangle((tray_yd_start - 3, shim_top), 6, FLOOR_LOCAL + PROC_TRAY_RIM - shim_top,
                   fc=C_TRAY, ec=C_OUT, lw=1.2, zorder=5))
-    ax2.text(340, TRAY_FLOOR_Z + 6,
-             "PROCESSING TRAY (304 SS)", ha="center", va="bottom",
+    # weld tick at the base↔lip junction
+    ax2.add_patch(Circle((tray_yd_start, shim_top + TRAY_FLOOR_Z), 2.6,
+                  fc="none", ec="#B03030", lw=1.0, zorder=6))
+    ax2.text(340, FLOOR_LOCAL + PROC_TRAY_RIM + 4,
+             "WELDED 304-SS PAN (base + lip welded) — lifted whole on the shim ramp",
+             ha="center", va="bottom",
              fontsize=6, color=C_DIM, style="italic", **FONT, zorder=10)
+    leader(ax2, (tray_yd_start + C_YD_HI) / 2, shim_top / 2,
+           (tray_yd_start + C_YD_HI) / 2 + 20, shim_top / 2 - 22,
+           "TAPERED HDPE SHIM RAMP\n(tilts the whole pan · dual-axis 1:200)",
+           fs=5.2, color=C_DIM, font=FONT, zorder=15)
 
     # ── Near walkway grating (Yd=0-300) ──────────────────────────────────
     wk_yd_l = 0
@@ -571,7 +599,7 @@ def draw_sheet2():
         ax2.add_patch(Circle((w_yd, WHEEL_AXLE_Z), WHEEL_DIA / 2,
                      fc=C_NYLON, ec=C_WHEEL, lw=2.0, zorder=6))
         ax2.plot([w_yd - WHEEL_WIDTH / 2, w_yd + WHEEL_WIDTH / 2],
-                 [TRAY_FLOOR_Z, TRAY_FLOOR_Z],
+                 [FLOOR_LOCAL, FLOOR_LOCAL],
                  color=C_WHEEL, lw=2.0, zorder=5)
 
     # ── Axle pin (Ø10mm, runs through wheel bore) ──────────────────
@@ -625,7 +653,7 @@ def draw_sheet2():
            fs=6, color=C_FRAME, font=FONT, zorder=15)
 
     # ── Spacer / U-clamp seat height (drawn after U-clamp variables below) ─
-    uc_seat_z = BEAM_Z_BOT + BEAM_W / 2 + brk_t_c / 2
+    uc_seat_z = BEAM_Z_BOT + BEAM_H / 2 + brk_t_c / 2
     spacer_h = uc_seat_z - plate_top_z
 
     # ── Axle-retention saddle clamps (curved conduit-style clamps; 2 either
@@ -660,26 +688,29 @@ def draw_sheet2():
            "SS SADDLE CLAMP\n(AXLE RETENTION)",
            fs=6, color=C_BOLT, font=FONT, zorder=15)
 
-    # ── Beam / SHS cross-section with PVC pipe ───────────────────────────
-    ax2.add_patch(Rectangle((c_beam_l, BEAM_Z_BOT), BEAM_W, BEAM_W,
-                  fc=C_ALUM_FILL, ec=C_FRAME, lw=2.5, zorder=8))
-    ax2.add_patch(Rectangle((CARRIAGE_YD_CENTER - BEAM_BORE / 2, BEAM_Z_BOT + BEAM_T),
-                  BEAM_BORE, BEAM_BORE,
+    # ── Beam cross-section: 40×25 304-SS RHS with SIDE-mounted poly manifold ──
+    ax2.add_patch(Rectangle((c_beam_l, BEAM_Z_BOT), BEAM_W, BEAM_H,
+                  fc=C_SS, ec=C_FRAME, lw=2.5, zorder=8))
+    ax2.add_patch(Rectangle((CARRIAGE_YD_CENTER - BEAM_BORE_W / 2, BEAM_Z_BOT + BEAM_T),
+                  BEAM_BORE_W, BEAM_BORE_H,
                   fc=C_BG, ec=C_FRAME, lw=0.8, zorder=8.5))
-    ax2.add_patch(Circle((CARRIAGE_YD_CENTER, BEAM_Z_BOT + BEAM_W / 2), POLY_OD / 2,
-                 fc=C_POLY, ec=C_FRAME, lw=1.0, alpha=0.7, zorder=8.7))
-    ax2.add_patch(Circle((CARRIAGE_YD_CENTER, BEAM_Z_BOT + BEAM_W / 2), POLY_ID / 2,
-                 fc=C_WATER, ec=C_FRAME, lw=0.5, alpha=0.4, zorder=8.8))
 
-    pipe_cz = BEAM_Z_BOT + BEAM_W / 2
-    pipe_od_bot_z = pipe_cz - POLY_OD / 2
-    FITTING_DIA = 8
-    ax2.add_patch(Rectangle((CARRIAGE_YD_CENTER - FITTING_DIA / 2, pipe_od_bot_z),
-                  FITTING_DIA, POLY_WALL,
-                  fc=C_NOZZLE, ec=C_FRAME, lw=0.5, zorder=9.1))
+    # 3/4" LDPE poly manifold clipped to the beam's INBOARD (tray-side, +Yd) face
+    poly_cy = c_beam_r + POLY_OD / 2
+    pipe_cz = BEAM_Z_BOT + BEAM_H / 2
+    ax2.add_patch(Circle((poly_cy, pipe_cz), POLY_OD / 2,
+                 fc=C_POLY, ec=C_FRAME, lw=1.0, alpha=0.8, zorder=8.7))
+    ax2.add_patch(Circle((poly_cy, pipe_cz), POLY_ID / 2,
+                 fc=C_WATER, ec=C_FRAME, lw=0.5, alpha=0.5, zorder=8.8))
+    # pipe clip strap holding the poly to the beam face
+    ax2.add_patch(Wedge((poly_cy, pipe_cz), POLY_OD / 2 + 1.6, 300, 60, width=1.6,
+                  fc=C_UCLAMP, ec=C_FRAME, lw=0.7, zorder=8.9))
+    leader(ax2, poly_cy + POLY_OD / 2, pipe_cz, poly_cy + 34, pipe_cz + 18,
+           '3/4" LDPE POLY MANIFOLD\n(SIDE-MOUNTED)',
+           fs=5.5, color=C_POLY, font=FONT, zorder=15)
 
     ax2.text(CARRIAGE_YD_CENTER, BEAM_Z_TOP + 4,
-             "40×40×3mm AL SHS\n+ 3/4\" LDPE PIPE", ha="center", va="bottom",
+             "40×25×3mm 304-SS RHS\n(laid flat — low profile)", ha="center", va="bottom",
              fontsize=6, color=C_FRAME, fontweight="bold", **FONT, zorder=15)
 
     # ── Beam clamp: a bottom plate under the beam + a top plate over it, drawn
@@ -700,43 +731,51 @@ def draw_sheet2():
         # solid spacer block between the plates, just outside the beam face
         sp_x0 = (CARRIAGE_YD_CENTER + BEAM_W / 2) if sign > 0 \
             else (CARRIAGE_YD_CENTER - BEAM_W / 2 - spacer_w)
-        ax2.add_patch(Rectangle((sp_x0, BEAM_Z_BOT), spacer_w, BEAM_W,
-                      fc=C_ALUM_FILL, ec=C_FRAME, lw=0.8, zorder=9.5))
-        # bolt through top plate + spacer + bottom plate, nut top & bottom
+        ax2.add_patch(Rectangle((sp_x0, BEAM_Z_BOT), spacer_w, BEAM_H,
+                      fc=C_SS, ec=C_FRAME, lw=0.8, zorder=9.5))
+        # bolt: COUNTERSUNK flat head flush in the bottom plate (nothing protrudes
+        #   below — reclaims grate clearance), tightened by a nut on TOP only
         bolt_yd = CARRIAGE_YD_CENTER + sign * clamp_bolt_yd
-        ax2.add_patch(Rectangle((bolt_yd - 2.5, BEAM_Z_BOT - clp_t - 3), 5,
-                      (BEAM_Z_TOP + clp_t + 3) - (BEAM_Z_BOT - clp_t - 3),
+        ax2.add_patch(Rectangle((bolt_yd - 2.5, BEAM_Z_BOT - clp_t), 5,
+                      (BEAM_Z_TOP + clp_t + 3) - (BEAM_Z_BOT - clp_t),
                       fc=C_BOLT, ec=C_FRAME, lw=0.5, zorder=11))
-        for nut_y in [BEAM_Z_TOP + clp_t, BEAM_Z_BOT - clp_t - 3]:
-            ax2.add_patch(Rectangle((bolt_yd - 4, nut_y), 8, 3,
-                          fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
+        # top nut
+        ax2.add_patch(Rectangle((bolt_yd - 4, BEAM_Z_TOP + clp_t), 8, 3,
+                      fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
+        # countersunk flat head, flush in the bottom plate underside (chamfered seat)
+        ax2.add_patch(Polygon([(bolt_yd - 4, BEAM_Z_BOT - clp_t),
+                               (bolt_yd + 4, BEAM_Z_BOT - clp_t),
+                               (bolt_yd + 2.5, BEAM_Z_BOT),
+                               (bolt_yd - 2.5, BEAM_Z_BOT)],
+                      closed=True, fc=C_BOLT, ec=C_FRAME, lw=0.4, zorder=11))
 
+    leader(ax2, CARRIAGE_YD_CENTER + clp_half, BEAM_Z_BOT - clp_t,
+           CARRIAGE_YD_CENTER + clp_half + 20, BEAM_Z_BOT - 24,
+           "M6 COUNTERSUNK (FLUSH\nUNDERSIDE — CLEARANCE)",
+           fs=4.5, color=C_BOLT, font=FONT, zorder=15)
     leader(ax2, CARRIAGE_YD_CENTER - clp_half, BEAM_Z_TOP + clp_t / 2,
            CARRIAGE_YD_CENTER - clp_half - 22, BEAM_Z_TOP + 12,
            "SS CLAMP PLATES\n(TOP + BOTTOM)\n+ SPACER + BOLTS",
            fs=4.5, color=C_BOLT, font=FONT, zorder=15)
 
-    # Nozzle fitting through beam floor + nozzle body
-    ax2.add_patch(Rectangle((CARRIAGE_YD_CENTER - FITTING_DIA / 2, BEAM_Z_BOT - 0.5),
-                  FITTING_DIA, BEAM_T + 1,
+    # Flat-fan nozzle: barbs into the SIDE poly manifold and sprays DOWN-AND-IN over
+    #   the tray (no vertical cost — the reason side-mounting lets the beam sit low).
+    FITTING_DIA = 8
+    nz_barb_y = poly_cy + POLY_OD / 2
+    ax2.add_patch(Rectangle((nz_barb_y, pipe_cz - FITTING_DIA / 2), 4, FITTING_DIA,
                   fc=C_NOZZLE, ec=C_FRAME, lw=0.5, zorder=9))
-    nz_bot = BEAM_Z_BOT - NOZZLE_BODY_H
-    ax2.add_patch(Rectangle((CARRIAGE_YD_CENTER - NOZZLE_BODY_W / 2, nz_bot),
-                  NOZZLE_BODY_W, NOZZLE_BODY_H,
+    nz_body_y = nz_barb_y + 4
+    nz_tip_z = pipe_cz - NOZZLE_BODY_W          # tip drops below the poly
+    ax2.add_patch(Rectangle((nz_body_y, nz_tip_z), NOZZLE_BODY_H, pipe_cz - nz_tip_z,
                   fc=C_NOZZLE, ec=C_FRAME, lw=1.0, zorder=9.2))
-    ax2.plot([CARRIAGE_YD_CENTER, CARRIAGE_YD_CENTER - 25],
-             [nz_bot, nz_bot - 20],
-             color=C_WATER, lw=0.8, alpha=0.5, zorder=9.3)
-    ax2.plot([CARRIAGE_YD_CENTER, CARRIAGE_YD_CENTER + 25],
-             [nz_bot, nz_bot - 20],
-             color=C_WATER, lw=0.8, alpha=0.5, zorder=9.3)
-    leader(ax2, CARRIAGE_YD_CENTER + FITTING_DIA / 2 + 1, pipe_od_bot_z + POLY_WALL / 2,
-           CARRIAGE_YD_CENTER + 28, pipe_od_bot_z - 6,
-           "BARBED INSERT",
+    # down-and-in flat-fan spray toward the tray floor
+    for dyd in (-40, 10):
+        ax2.plot([nz_body_y + NOZZLE_BODY_H / 2, nz_body_y + NOZZLE_BODY_H / 2 + dyd],
+                 [nz_tip_z, FLOOR_LOCAL + 2],
+                 color=C_WATER, lw=0.8, alpha=0.5, zorder=9.3)
+    leader(ax2, nz_barb_y + 2, pipe_cz, nz_barb_y + 30, pipe_cz - 20,
+           f"FLAT-FAN NOZZLE ×{N_NOZZLES}\n(SIDE-TAP BARB)",
            fs=4.5, color=C_NOZZLE, font=FONT, zorder=15)
-    ax2.text(CARRIAGE_YD_CENTER + 4, nz_bot - 3,
-             f"FLAT-FAN NOZZLE (TYP. ×{N_NOZZLES})",
-             ha="left", va="center", fontsize=4.5, color=C_NOZZLE, **FONT, zorder=15)
 
     # ── Detail C callout ─────────────────────────────────────────────────
     ax2.add_patch(Circle((wheel1_yd, WHEEL_AXLE_Z), WHEEL_DIA / 2 + 8,
@@ -915,10 +954,11 @@ def draw_sheet2():
     # ── Notes ────────────────────────────────────────────────────────────
     cs_notes = [
         "CROSS SECTION (COMPOSITE):",
-        f"1. Beam rides on Ø50mm nylon wheels; saddle clamps each side retain axle.",
-        "2. Top + bottom clamp plates sandwich beam, bolted through carriage plate.",
+        f"1. Beam rides on Ø{SPRAY_BAR_WHEEL_DIA}mm nylon wheels; saddle clamps each side retain axle.",
+        "2. Clamp plates sandwich beam; underside bolts COUNTERSUNK flush for clearance.",
         "3. Ball joint on plate wing → arm → pole through walkway slit.",
-        "4. Water: poly pipe → barbed fitting → irrigation nozzle → spray.",
+        "4. Water: SIDE poly manifold → side-tap barb → flat-fan nozzle → spray down-and-in.",
+        "5. Tray = welded 304-SS pan, lifted whole on the tapered shim ramp (slope = pan tilt).",
     ]
     draw_notes(ax2, cs_notes, C_YD_LO + 10, C_Z_HI - 260, spacing=5,
                fs=7, font=FONT, width=100)
@@ -1097,6 +1137,10 @@ def draw_sheet4():
     poly_id_h = POLY_ID / 2        # 9.5
     beam_half = BEAM_W / 2         # 20
     bore_half = BEAM_BORE / 2      # 17
+    CLIP_GAP = 3                                   # poly-to-beam pipe-clip gap
+    BOFF = poly_od_h + CLIP_GAP + beam_half        # 35.5 — beam shifted OFF the poly:
+    #   the poly + fold-back closure stay put; the beam rides above so the poly is
+    #   clipped to its OUTSIDE face (rev10 — poly no longer housed inside the bore).
 
     beam_end_x = 0
     pipe_past = FOLD_EXTEND         # pipe extends 40mm past beam end
@@ -1117,7 +1161,7 @@ def draw_sheet4():
     d_xl = _taper_x_pre - 20
     d_xr = 55
     d_yb = fold_leg_y - poly_od_h - 18
-    d_yt = beam_half + 8
+    d_yt = BOFF + beam_half + 8
     ax_a.set_xlim(d_xl, d_xr)
     ax_a.set_ylim(d_yb, d_yt)
 
@@ -1132,20 +1176,25 @@ def draw_sheet4():
 
     _bbox_a = dict(boxstyle="round,pad=0.3", fc="white", ec="none", alpha=0.85)
 
-    # ── SHS top wall (hatched section) ───────────────────────────────────
-    ax_a.add_patch(Rectangle((beam_end_x, bore_half), d_xr - beam_end_x, BEAM_T,
-                   fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
+    # ── SHS top wall (hatched section) — beam shifted UP by BOFF ──────────
+    ax_a.add_patch(Rectangle((beam_end_x, BOFF + bore_half), d_xr - beam_end_x, BEAM_T,
+                   fc=C_SS, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
     # ── SHS bottom wall ──────────────────────────────────────────────────
-    ax_a.add_patch(Rectangle((beam_end_x, -beam_half), d_xr - beam_end_x, BEAM_T,
-                   fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
+    ax_a.add_patch(Rectangle((beam_end_x, BOFF - beam_half), d_xr - beam_end_x, BEAM_T,
+                   fc=C_SS, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
 
     # ── Open beam end face ───────────────────────────────────────────────
-    ax_a.plot([beam_end_x, beam_end_x], [-beam_half, beam_half],
+    ax_a.plot([beam_end_x, beam_end_x], [BOFF - beam_half, BOFF + beam_half],
               color=C_FRAME, lw=1.5, zorder=5)
 
-    # ── Square bore inside beam ──────────────────────────────────────────
-    ax_a.add_patch(Rectangle((beam_end_x, -bore_half), d_xr - beam_end_x, BEAM_BORE,
+    # ── Hollow bore of the SS RHS (poly no longer inside) ─────────────────
+    ax_a.add_patch(Rectangle((beam_end_x, BOFF - bore_half), d_xr - beam_end_x, BEAM_BORE,
                    fc=C_BG, ec="none", zorder=3.5))
+
+    # ── Pipe clip: strap from the beam's lower face down around the poly ───
+    ax_a.add_patch(Rectangle((beam_end_x + 26, poly_od_h), 9,
+                             (BOFF - beam_half) - poly_od_h,
+                   fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=3.6))
 
     # ── Retainer clip position ──────────────────────────────────────────
     fold_leg_left = fold_apex_x + fold_leg_len
@@ -1229,9 +1278,9 @@ def draw_sheet4():
                    fc="#B0B0B8", ec=C_FRAME, lw=1.2, zorder=6))
 
     # ── Labels ───────────────────────────────────────────────────────────
-    leader(ax_a, beam_end_x + 8, bore_half + BEAM_T / 2,
+    leader(ax_a, beam_end_x + 8, BOFF + bore_half + BEAM_T / 2,
            beam_end_x + 25, d_yt - 6,
-           "40×40×3 AL SHS\n(OPEN END)",
+           "40×25×3 304-SS RHS\n(HOLLOW — POLY OUTSIDE)",
            fs=5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox_a)
 
     leader(ax_a, d_xr - 10, poly_od_h + 2,
@@ -1259,10 +1308,10 @@ def draw_sheet4():
                f"{protrusion:.0f}mm\nPROTRUSION",
                offset=2, fs=4.5, font=FONT)
 
-    draw_dim_v(ax_a, d_xr - 3, -bore_half, bore_half,
-               "34mm BORE", offset=1, fs=5, font=FONT, right=True)
+    draw_dim_v(ax_a, d_xr - 3, BOFF - bore_half, BOFF + bore_half,
+               f"{BEAM_BORE_W:.0f}mm BORE", offset=1, fs=5, font=FONT, right=True)
 
-    draw_dim_v(ax_a, d_xr - 8, bore_half, beam_half,
+    draw_dim_v(ax_a, d_xr - 8, BOFF + bore_half, BOFF + beam_half,
                "3mm\nWALL", offset=2, fs=4.5, font=FONT, right=True)
 
     draw_dim_v(ax_a, d_xl + 8, -poly_od_h, poly_od_h,
@@ -1318,10 +1367,11 @@ def draw_sheet5():
 
     # ── Beam through the central notch (along X) ──
     ax_w.add_patch(Rectangle((-BEAM_SHOW_LEN, -BEAM_W / 2), 2 * BEAM_SHOW_LEN,
-                   BEAM_W, fc=C_ALUM_FILL, ec=C_FRAME, lw=2.0, zorder=5))
-    ax_w.add_patch(Rectangle((-BEAM_SHOW_LEN, -POLY_OD / 2), 2 * BEAM_SHOW_LEN,
+                   BEAM_W, fc=C_SS, ec=C_FRAME, lw=2.0, zorder=5))
+    # SIDE-mounted poly manifold running along the beam's inboard (+Yd) face
+    ax_w.add_patch(Rectangle((-BEAM_SHOW_LEN, BEAM_W / 2), 2 * BEAM_SHOW_LEN,
                    POLY_OD, fc=C_POLY, ec=C_FRAME, lw=0.6, alpha=0.6, zorder=5.5))
-    ax_w.add_patch(Rectangle((-BEAM_SHOW_LEN, -POLY_ID / 2), 2 * BEAM_SHOW_LEN,
+    ax_w.add_patch(Rectangle((-BEAM_SHOW_LEN, BEAM_W / 2 + POLY_WALL), 2 * BEAM_SHOW_LEN,
                    POLY_ID, fc=C_WATER, ec="none", alpha=0.3, zorder=5.6))
     ax_w.plot([-BEAM_SHOW_LEN, BEAM_SHOW_LEN], [0, 0], color=C_FRAME, lw=0.3,
               ls="--", alpha=0.3, zorder=5.9)
@@ -1388,8 +1438,8 @@ def draw_sheet5():
            "CARRIAGE PLATE\n(5mm AL, NOTCHED FORK)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
-    leader(ax_w, 95, BEAM_W / 2, 115, BEAM_W / 2 + 18,
-           "40×40×3mm AL SHS\n+ 3/4\" LDPE PIPE",
+    leader(ax_w, 95, BEAM_W / 2 + POLY_OD, 115, BEAM_W / 2 + POLY_OD + 18,
+           "40×25×3mm 304-SS RHS\n+ SIDE 3/4\" LDPE MANIFOLD",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
     # ── Dimensions ───────────────────────────────────────────────────────
@@ -1447,14 +1497,15 @@ def draw_sheet6():
     # ── Beam (plan view) ─────────────────────────────────────────────────
     ax_d.add_patch(Rectangle((-BEAM_SHOW_LEN, -BEAM_W / 2),
                    2 * BEAM_SHOW_LEN, BEAM_W,
-                   fc=C_ALUM_FILL, ec=C_FRAME, lw=2.0, zorder=5))
+                   fc=C_SS, ec=C_FRAME, lw=2.0, zorder=5))
     ax_d.add_patch(Rectangle((-BEAM_SHOW_LEN, -BEAM_BORE / 2),
                    2 * BEAM_SHOW_LEN, BEAM_BORE,
                    fc=C_BG, ec=C_FRAME, lw=0.5, zorder=5.5))
-    ax_d.add_patch(Rectangle((-BEAM_SHOW_LEN, -POLY_OD / 2),
+    # SIDE-mounted poly manifold along the beam's inboard (+Yd) face
+    ax_d.add_patch(Rectangle((-BEAM_SHOW_LEN, BEAM_W / 2),
                    2 * BEAM_SHOW_LEN, POLY_OD,
                    fc=C_POLY, ec=C_FRAME, lw=0.6, alpha=0.6, zorder=5.7))
-    ax_d.add_patch(Rectangle((-BEAM_SHOW_LEN, -POLY_ID / 2),
+    ax_d.add_patch(Rectangle((-BEAM_SHOW_LEN, BEAM_W / 2 + POLY_WALL),
                    2 * BEAM_SHOW_LEN, POLY_ID,
                    fc=C_WATER, ec="none", alpha=0.3, zorder=5.8))
     for bx in [-BEAM_SHOW_LEN, BEAM_SHOW_LEN]:
@@ -1570,16 +1621,16 @@ def draw_sheet6():
            "M5 THROUGH-BOLT\n(2 PER C-CLAMP)",
            fs=5, color=C_BOLT, font=FONT, zorder=20)
 
-    # LDPE pipe
-    leader(ax_d, 30, POLY_OD / 2,
-           60, BEAM_W / 2 + 15,
-           "3/4\" LDPE PIPE",
+    # LDPE poly (side-mounted)
+    leader(ax_d, 30, BEAM_W / 2 + POLY_OD / 2,
+           60, BEAM_W / 2 + POLY_OD + 15,
+           "3/4\" LDPE POLY\n(SIDE MANIFOLD)",
            fs=5, color=C_POLY, font=FONT, zorder=20)
 
     # Beam
-    leader(ax_d, 100, BEAM_W / 2,
-           120, BEAM_W / 2 + 15,
-           "40×40×3mm AL SHS",
+    leader(ax_d, 100, -BEAM_W / 2,
+           120, -BEAM_W / 2 - 18,
+           "40×25×3mm 304-SS RHS",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
     # ── Dimensions ───────────────────────────────────────────────────────
@@ -1626,7 +1677,8 @@ def draw_sheet7():
     C_BRASS = "#C0A860"
 
     # Shared beam / pipe geometry (local Z: beam bottom = 0)
-    BEAM = SPRAY_BAR_BEAM           # 40
+    BEAM = SPRAY_BAR_BEAM           # 40 — beam width (Yd)
+    BEAMH = SPRAY_BAR_BEAM_H        # 25 — beam height (Z)
     WALL = SPRAY_BAR_BEAM_T         # 3
     BORE = BEAM - 2 * WALL          # 34
     poly_od_h = POLY_OD / 2         # 12.5
@@ -1668,25 +1720,14 @@ def draw_sheet7():
     # LEFT PANEL — CENTER FEED (barbed fitting through beam top)
     # ─────────────────────────────────────────────────────────────────────
     d_xl, d_xr = -50, 50
-    d_yb, d_yt = -10, 78
+    d_yb, d_yt = -26, 78
     ax_cf.set_xlim(d_xl, d_xr)
     ax_cf.set_ylim(d_yb, d_yt)
 
     sec_w = d_xr - d_xl - 10  # section width
 
-    # Beam SHS walls
-    ax_cf.add_patch(Rectangle((d_xl + 5, bore_top), sec_w, WALL,
-                    fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
-    ax_cf.add_patch(Rectangle((d_xl + 5, beam_bot), sec_w, WALL,
-                    fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
-    ax_cf.add_patch(Rectangle((d_xl + 5, bore_bot), sec_w, BORE,
-                    fc=C_BG, ec=C_FRAME, lw=0.5, zorder=2.5))
-
-    # Drill hole through beam top wall
-    ax_cf.add_patch(Rectangle((-DRILL_DIA / 2, bore_top), DRILL_DIA, WALL,
-                    fc=C_BG, ec=C_FRAME, lw=0.5, zorder=4))
-
-    # Poly pipe walls
+    # ── Poly manifold runs along X OUTSIDE the beam; barbed tee taps it from above ──
+    # Poly top wall (split around the tee hole)
     ax_cf.add_patch(Rectangle((d_xl + 5, poly_inner_top),
                     -DRILL_DIA / 2 - (d_xl + 5), poly_wall,
                     fc=C_POLY, ec=C_FRAME, lw=0.6, zorder=4))
@@ -1696,18 +1737,22 @@ def draw_sheet7():
     ax_cf.add_patch(Rectangle((d_xl + 5, poly_bot),
                     sec_w, poly_wall,
                     fc=C_POLY, ec=C_FRAME, lw=0.6, zorder=4))
-
-    # Drill hole through poly pipe top wall
-    ax_cf.add_patch(Rectangle((-DRILL_DIA / 2, poly_inner_top), DRILL_DIA, poly_wall,
-                    fc=C_BG, ec=C_FRAME, lw=0.5, zorder=4.5))
-
-    # Water inside poly bore
     ax_cf.add_patch(Rectangle((d_xl + 5, poly_inner_bot),
                     sec_w, POLY_ID,
                     fc=C_WATER, ec="none", alpha=0.15, zorder=3.8))
 
-    # Barbed fitting body (through beam wall + air gap + into poly pipe)
-    body_top = beam_top + WASHER_T
+    # ── Beam: solid SS RHS shifted BELOW the poly (poly clipped to its top face) ──
+    beam_top_z = poly_bot - 3                        # 3mm pipe-clip gap under the poly
+    beam_bot_z = beam_top_z - BEAMH
+    ax_cf.add_patch(Rectangle((d_xl + 5, beam_bot_z), sec_w, BEAMH,
+                    fc=C_SS, ec=C_FRAME, lw=1.0, zorder=3))
+    ax_cf.add_patch(Rectangle((d_xl + 8, beam_bot_z + WALL), sec_w - 6, BEAMH - 2 * WALL,
+                    fc=C_BG, ec=C_FRAME, lw=0.4, zorder=3.1))   # hollow bore
+    ax_cf.add_patch(Rectangle((d_xl + 22, beam_top_z), 8, poly_bot - beam_top_z,
+                    fc=C_UCLAMP, ec=C_FRAME, lw=0.7, zorder=3.4))   # pipe clip poly→beam
+
+    # Barbed tee body — barbs straight down into the poly (no beam wall to cross)
+    body_top = poly_top + 4
     body_bot = poly_inner_top - BARB_LEN
     body_h = body_top - body_bot
     ax_cf.add_patch(Rectangle((-FITTING_BODY_OD / 2, body_bot),
@@ -1725,14 +1770,8 @@ def draw_sheet7():
         ax_cf.plot([FITTING_BODY_OD / 2, FITTING_BODY_OD / 2 + 1.5],
                    [rz, rz + 2], color=C_FRAME, lw=0.8, zorder=5.5)
 
-    # Sealing washer
-    washer_bot = beam_top
-    ax_cf.add_patch(Rectangle((-WASHER_OD / 2, washer_bot),
-                    WASHER_OD, WASHER_T,
-                    fc="#D0D0D8", ec=C_FRAME, lw=0.8, zorder=5))
-
-    # Hose barb above beam
-    hbarb_bot = washer_bot + WASHER_T
+    # Hose barb above the tee
+    hbarb_bot = body_top
     ax_cf.add_patch(Rectangle((-HOSE_BARB_OD / 2, hbarb_bot),
                     HOSE_BARB_OD, HOSE_BARB_LEN,
                     fc=C_BRASS, ec=C_FRAME, lw=0.8, zorder=6))
@@ -1769,52 +1808,37 @@ def draw_sheet7():
                    arrowprops=arrow_props, zorder=8)
 
     # Labels
-    leader(ax_cf, d_xr - 10, bore_top + WALL / 2,
-           d_xr - 5, d_yt - 8,
-           "40×40×3mm AL SHS",
+    leader(ax_cf, 0, beam_bot_z + BEAMH / 2,
+           d_xl + 6, beam_bot_z + BEAMH / 2 - 3,
+           "40×25×3mm\n304-SS RHS",
            fs=5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox)
     leader(ax_cf, d_xr - 10, poly_top - poly_wall / 2,
            d_xr - 5, poly_ctr + 2,
-           f"3/4\" LDPE POLY\nOD {POLY_OD:.0f}mm",
+           f"3/4\" LDPE POLY\nMANIFOLD OD {POLY_OD:.0f}",
            fs=5, color=C_POLY, font=FONT, zorder=20, bbox=_bbox)
-    leader(ax_cf, FITTING_BODY_OD / 2 + 2, (bore_top + poly_inner_top) / 2,
-           d_xr - 5, bore_top - 2,
-           "BARBED FITTING\n(BRASS, 1/2\" NPT)",
-           fs=5, color=C_BRASS, font=FONT, zorder=20, bbox=_bbox)
-    leader(ax_cf, HOSE_BARB_OD / 2 + 1.5, hbarb_bot + HOSE_BARB_LEN / 2,
-           d_xr - 5, hbarb_bot + HOSE_BARB_LEN / 2 + 3,
-           "TUBE BARB",
+    leader(ax_cf, FITTING_BODY_OD / 2 + 2, (poly_top + body_top) / 2,
+           d_xr - 5, poly_top + 8,
+           "BARBED TEE\n(BRASS, 1/2\" NPT)",
            fs=5, color=C_BRASS, font=FONT, zorder=20, bbox=_bbox)
     leader(ax_cf, HOSE_OD / 2, hose_top - 3,
            d_xr - 5, hose_top,
            "IRRIGATION TUBE\n(FROM MANIFOLD)",
            fs=5, color=C_HOSE, font=FONT, zorder=20, bbox=_bbox)
-    leader(ax_cf, -WASHER_OD / 2, washer_bot + WASHER_T / 2,
-           d_xl + 5, beam_top + 3,
-           "SEALING\nWASHER",
-           fs=4.5, color="#808080", font=FONT, zorder=20, bbox=_bbox)
     ax_cf.text(d_xl + 15, poly_ctr, "WATER", ha="center", va="center",
                fontsize=5, color=C_WATER, fontweight="bold",
                bbox=_bbox, **FONT, zorder=15)
 
     # Dimensions
-    draw_dim_v(ax_cf, d_xl + 8, beam_bot, beam_top,
-               f"{BEAM}mm\nSHS", offset=2, fs=5, font=FONT)
-    draw_dim_h(ax_cf, -DRILL_DIA / 2, DRILL_DIA / 2, poly_inner_top - 2,
-               f"Ø{DRILL_DIA}mm",
-               offset=2, fs=4.5, font=FONT, above=False)
+    draw_dim_v(ax_cf, d_xl + 8, beam_bot_z, beam_top_z,
+               f"{BEAMH}mm\nRHS", offset=2, fs=5, font=FONT)
     draw_dim_v(ax_cf, d_xr - 8, poly_bot, poly_top,
                f"{POLY_OD:.0f}mm\nOD",
                offset=2, fs=4.5, font=FONT, right=True)
-    draw_dim_v(ax_cf, d_xl + 15, bore_top, beam_top,
-               f"{WALL}mm", offset=2, fs=4.5, font=FONT)
-    draw_dim_v(ax_cf, d_xl + 15, poly_top, bore_top,
-               f"{gap_top:.1f}\nGAP", offset=2, fs=4, font=FONT)
 
     ax_cf.text(0, d_yt - 1, "FEED CONNECTION (TYP. ×7)",
                ha="center", va="top", fontsize=7, color="#CC6600",
                fontweight="bold", **FONT, zorder=20)
-    ax_cf.text(0, d_yt - 5, "(MANIFOLD-FED — SECTION THROUGH BEAM TOP)",
+    ax_cf.text(0, d_yt - 5, "(BARBED TEE INTO THE SIDE POLY MANIFOLD)",
                ha="center", va="top", fontsize=5, color=C_DIM,
                **FONT, zorder=20)
 
@@ -1822,49 +1846,38 @@ def draw_sheet7():
     # RIGHT PANEL — NOZZLE CONNECTION (barbed fitting through beam bottom)
     # ─────────────────────────────────────────────────────────────────────
     n_xl, n_xr = -45, 45
-    n_yb, n_yt = -35, 55
+    n_yb, n_yt = -35, 64
     ax_nz.set_xlim(n_xl, n_xr)
     ax_nz.set_ylim(n_yb, n_yt)
 
     nsec_w = n_xr - n_xl - 10
 
-    # Beam SHS walls
-    ax_nz.add_patch(Rectangle((n_xl + 5, bore_top), nsec_w, WALL,
-                    fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
-    ax_nz.add_patch(Rectangle((n_xl + 5, beam_bot), nsec_w, WALL,
-                    fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
-    ax_nz.add_patch(Rectangle((n_xl + 5, bore_bot), nsec_w, BORE,
-                    fc=C_BG, ec=C_FRAME, lw=0.5, zorder=2.5))
-
-    # Drill hole through beam bottom wall
-    ax_nz.add_patch(Rectangle((-DRILL_DIA / 2, beam_bot), DRILL_DIA, WALL,
-                    fc=C_BG, ec=C_FRAME, lw=0.5, zorder=4))
-
-    # Poly pipe walls
+    # ── Poly manifold OUTSIDE the beam; nozzle barbs into it from below ──
     ax_nz.add_patch(Rectangle((n_xl + 5, poly_inner_top),
                     nsec_w, poly_wall,
                     fc=C_POLY, ec=C_FRAME, lw=0.6, zorder=4))
-    # Bottom wall (left of hole)
     ax_nz.add_patch(Rectangle((n_xl + 5, poly_bot),
                     -DRILL_DIA / 2 - (n_xl + 5), poly_wall,
                     fc=C_POLY, ec=C_FRAME, lw=0.6, zorder=4))
-    # Bottom wall (right of hole)
     ax_nz.add_patch(Rectangle((DRILL_DIA / 2, poly_bot),
                     n_xr - 5 - DRILL_DIA / 2, poly_wall,
                     fc=C_POLY, ec=C_FRAME, lw=0.6, zorder=4))
-
-    # Drill hole through poly pipe bottom wall
-    ax_nz.add_patch(Rectangle((-DRILL_DIA / 2, poly_bot), DRILL_DIA, poly_wall,
-                    fc=C_BG, ec=C_FRAME, lw=0.5, zorder=4.5))
-
-    # Water inside poly bore
     ax_nz.add_patch(Rectangle((n_xl + 5, poly_inner_bot),
                     nsec_w, POLY_ID,
                     fc=C_WATER, ec="none", alpha=0.15, zorder=3.8))
 
-    # Barbed fitting body (through beam bottom wall + air gap + into poly pipe)
+    # Beam: solid SS RHS shifted ABOVE the poly (poly clipped to its bottom face)
+    beam_bot_z = poly_top + 3                        # 3mm pipe-clip gap over the poly
+    ax_nz.add_patch(Rectangle((n_xl + 5, beam_bot_z), nsec_w, BEAMH,
+                    fc=C_SS, ec=C_FRAME, lw=1.0, zorder=3))
+    ax_nz.add_patch(Rectangle((n_xl + 8, beam_bot_z + WALL), nsec_w - 6, BEAMH - 2 * WALL,
+                    fc=C_BG, ec=C_FRAME, lw=0.4, zorder=3.1))   # hollow bore
+    ax_nz.add_patch(Rectangle((n_xl + 22, poly_top), 8, beam_bot_z - poly_top,
+                    fc=C_UCLAMP, ec=C_FRAME, lw=0.7, zorder=3.4))   # pipe clip poly→beam
+
+    # Barbed saddle-tee — barbs up into the poly bottom; nozzle hangs below
     nz_body_top = poly_inner_bot + BARB_LEN
-    nz_body_bot = beam_bot - NZ_THREAD_L
+    nz_body_bot = poly_bot - NZ_THREAD_L
     nz_body_h = nz_body_top - nz_body_bot
     ax_nz.add_patch(Rectangle((-FITTING_BODY_OD / 2, nz_body_bot),
                     FITTING_BODY_OD, nz_body_h,
@@ -1880,12 +1893,6 @@ def draw_sheet7():
                    [rz, rz + 2], color=C_FRAME, lw=0.8, zorder=5.5)
         ax_nz.plot([FITTING_BODY_OD / 2, FITTING_BODY_OD / 2 + 1.5],
                    [rz + 2, rz], color=C_FRAME, lw=0.8, zorder=5.5)
-
-    # Sealing washer on beam underside
-    nz_washer_top = beam_bot
-    ax_nz.add_patch(Rectangle((-WASHER_OD / 2, nz_washer_top - WASHER_T),
-                    WASHER_OD, WASHER_T,
-                    fc="#D0D0D8", ec=C_FRAME, lw=0.8, zorder=5))
 
     # Irrigation spray nozzle body
     nz_top = nz_body_bot
@@ -1917,43 +1924,36 @@ def draw_sheet7():
                    arrowprops=arrow_props, zorder=8)
 
     # Labels
-    leader(ax_nz, n_xr - 10, bore_top + WALL / 2,
-           n_xr - 5, n_yt - 5,
-           "40×40×3mm AL SHS",
+    leader(ax_nz, 0, beam_bot_z + BEAMH / 2,
+           n_xl + 6, beam_bot_z + BEAMH / 2 + 3,
+           "40×25×3mm\n304-SS RHS",
            fs=5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox)
     leader(ax_nz, n_xr - 10, poly_top - poly_wall / 2,
            n_xr - 5, poly_ctr + 2,
-           f"3/4\" LDPE POLY\nOD {POLY_OD:.0f}mm",
+           f"3/4\" LDPE POLY\nMANIFOLD OD {POLY_OD:.0f}",
            fs=5, color=C_POLY, font=FONT, zorder=20, bbox=_bbox)
-    leader(ax_nz, FITTING_BODY_OD / 2 + 2, (bore_bot + poly_bot) / 2,
-           n_xr - 5, bore_bot + 2,
-           "BARBED INSERT\n(BRASS)",
+    leader(ax_nz, FITTING_BODY_OD / 2 + 2, poly_bot - 3,
+           n_xr - 5, poly_bot - 6,
+           "BARBED SADDLE-TEE\n(BRASS)",
            fs=5, color=C_BRASS, font=FONT, zorder=20, bbox=_bbox)
     leader(ax_nz, NZ_BODY_OD / 2, nz_bot + NZ_BODY_H / 2,
            n_xr - 5, nz_bot + NZ_BODY_H / 2,
            "FLAT-FAN\nSPRAY NOZZLE",
            fs=5, color=C_NOZZLE, font=FONT, zorder=20, bbox=_bbox)
-    leader(ax_nz, -WASHER_OD / 2, nz_washer_top - WASHER_T / 2,
-           n_xl + 5, beam_bot - 3,
-           "SEALING\nWASHER",
-           fs=4.5, color="#808080", font=FONT, zorder=20, bbox=_bbox)
     ax_nz.text(n_xl + 12, poly_ctr, "WATER", ha="center", va="center",
                fontsize=5, color=C_WATER, fontweight="bold",
                bbox=_bbox, **FONT, zorder=15)
 
     # Dimensions
-    draw_dim_v(ax_nz, n_xl + 8, beam_bot, beam_top,
-               f"{BEAM}mm\nSHS", offset=2, fs=5, font=FONT)
-    draw_dim_h(ax_nz, -DRILL_DIA / 2, DRILL_DIA / 2, bore_bot + 1,
-               f"Ø{DRILL_DIA}mm",
-               offset=2, fs=4.5, font=FONT, above=True)
-    draw_dim_v(ax_nz, n_xl + 15, poly_bot, bore_bot,
-               f"{gap_bot:.1f}\nGAP", offset=2, fs=4, font=FONT)
+    draw_dim_v(ax_nz, n_xl + 8, beam_bot_z, beam_bot_z + BEAMH,
+               f"{BEAMH}mm\nRHS", offset=2, fs=5, font=FONT)
+    draw_dim_v(ax_nz, n_xr - 8, poly_bot, poly_top,
+               f"{POLY_OD:.0f}mm\nOD", offset=2, fs=4.5, font=FONT, right=True)
 
     ax_nz.text(0, n_yt - 1, "NOZZLE CONNECTION",
                ha="center", va="top", fontsize=7, color="#CC6600",
                fontweight="bold", **FONT, zorder=20)
-    ax_nz.text(0, n_yt - 5, f"(SECTION THROUGH BEAM BOTTOM — TYP. ×{N_NOZZLES})",
+    ax_nz.text(0, n_yt - 5, f"(SADDLE-TEE INTO THE SIDE POLY — TYP. ×{N_NOZZLES})",
                ha="center", va="top", fontsize=5, color=C_DIM,
                **FONT, zorder=20)
 

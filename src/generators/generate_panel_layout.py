@@ -940,6 +940,7 @@ X1_PORT_Z, X3_PORT_Z, X4_PORT_Z = EXT_FILL_1_H, 1700, 1620
 # Pump / ACC stack on the shirt front (single column, projected along Yd)
 PUMP_FRONT_X = 4934              # pump body front (PXC 4984 − radius 50)
 PUMP_BACK_X  = 5034             # pump body back  (PXC 4984 + radius 50)
+PXC          = 4984             # pump axis / IN-port X (upright pumps take suction at the top-centre)
 POD = 24                         # pipe OD (mm)
 
 # `axb` is the current spine-view axes; spine_view() rebinds it per sheet.
@@ -1122,20 +1123,31 @@ def spine_view(side):
         # P-01 suction: P-01 IN → −X to BV-01 (front of the corridor, walkway-
         # reachable, Z≈1000) → UP the front vertical to the loop top → +X back
         # through the shirt + panel → up the behind-panel riser to the Blue tote.
-        BV01X = 4875                                       # 3D bvx = FRONT_X+221
-        BLUE_BEHIND_X = 5200                               # 3D beh_x — behind-panel riser
+        BV01X = 4840                                       # drawn −X of its true X (3D bvx=4875) so the blue
+        #   suction reads CLEAR of the brown P-05 riser (X4898) — their 24mm pipe walls otherwise abut
+        BLUE_BEHIND_X = 5165                               # 3D beh_x=5200; drawn −X of the X4 riser (5200) so the
+        #   two read as SEPARATE risers (in 3D they share X5200 but sit on different Yd lanes / depths)
         BLUE_LOOPZ = 1210                                  # 3D loopz — loop top (P-04↔P-05 gap)
-        _pipe([PUMP_FRONT_X, BV01X, BV01X, BLUE_BEHIND_X, BLUE_BEHIND_X],
-              [777, 777, BLUE_LOOPZ, BLUE_LOOPZ, 1400], C_BLUEB, zorder=11)
+        # pump-front → −X to BV-01 → UP the front vertical to the loop top → +X (ONE pipe, so the elbow at the
+        # riser top IS drawn).  GAP-BROKEN where the +X run crosses the P-05 brown SHIRT riser (X5070) so it
+        # reads continuous (projection crossing — different Yd in 3D).
+        _pipe([PUMP_FRONT_X, BV01X, BV01X, 5070 - 16], [777, 777, BLUE_LOOPZ, BLUE_LOOPZ], C_BLUEB, zorder=11)
         valve_ball(axb, BV01X, 1000, 16, C_BLUEB, vert=True)
-        _flowhead(BLUE_BEHIND_X, 1380, "down", C_BLUEB)    # suction: Blue #1 tote → P-01
-        axb.text(BLUE_BEHIND_X, 1424, "from Blue #1 tote\n(behind-panel riser)", fontsize=4.4,
-                 ha="center", va="bottom", color=C_BLUEB, zorder=13, **FB)
+        _pipe([5070 + 16, BLUE_BEHIND_X, BLUE_BEHIND_X], [BLUE_LOOPZ, BLUE_LOOPZ, 1400], C_BLUEB, zorder=11)
+        _flowhead(BLUE_BEHIND_X, 1380, "down", C_BLUEB)    # suction: Blue #1 tote → down the riser → P-01
+        axb.text(BLUE_BEHIND_X + 60, 1370, "from Blue #1\n(behind-panel\nP-01 suction riser)", fontsize=4.2,
+                 ha="left", va="top", color=C_BLUEB, zorder=13, **FB)
         leader(axb, BV01X, 1000, 4600, 1140, "BV-01 (P-01 suction)\nfront · walkway-reachable",
                color=C_BLUEB, fs=5, ha="right", va="center", arrow_style="-|>", font=FB)
-        # X4 suction PICKUP riser climbs the spine from the floor pickup to P-03.
-        _pipe([RX4, RX4, PUMP_BACK_X], [300, 1820, 1820], C_WASTEB, zorder=11)
-        _flowhead(RX4, 330, "up", C_WASTEB)                # suction: IBC-4 waste pickup → P-03
+        # X4 suction PICKUP riser climbs the spine, then WRAPS −X to the forward BV-06 riser, up through
+        # BV-06, +X into the P-03 IN — BV-06 on a forward loop (operator side), same pattern as BV-02.
+        # The wrap gap-breaks where it crosses the DV-02→IBC-3 brown chase drop (X5090).
+        BV06X = 4898                                       # 3D rx6 = PXC−86 (forward)
+        _pipe([RX4, RX4, 5090 + 16], [300, 1700, 1700], C_WASTEB, zorder=11)                    # riser up → −X wrap
+        _pipe([5090 - 16, BV06X, BV06X, PXC], [1700, 1700, 1902, 1902], C_WASTEB, zorder=11)    # → BV-06 riser → up → +X into P-03 IN
+        valve_ball(axb, BV06X, 1792, 16, C_WASTEB, vert=True)
+        axb.text(BV06X - 22, 1792, "BV-06", fontsize=4.6, ha="right", va="center", color=C_WASTEB, zorder=13, **FB)
+        _flowhead(RX4, 330, "up", C_WASTEB)                # suction: IBC-4 waste pickup → up the spine → BV-06 → P-03
         axb.text(RX4 + 135, 255, "from IBC-4 (waste pickup)", fontsize=4.0, ha="right",
                  va="top", color=C_WASTEB, zorder=12,
                  bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none", alpha=0.85), **FB)
@@ -1164,7 +1176,11 @@ def spine_view(side):
         # the ~27mm shirt↔panel chase (X≈5090), then DROPS down the chase to the
         # IBC-3 entry level. (3D: down off the run port, +X to the chase, drop.)
         BROWN_CHASE_X = 5090
-        _pipe([DV02X, BROWN_CHASE_X, BROWN_CHASE_X], [2145, 2145, 1130], C_BROWNB, zorder=10)
+        # brown leaves at z2120 (below the waste run at 2145) so the two +X outputs read SEPARATELY
+        # near the diverter (in 3D they leave opposite Yd run ports — projection-coincident here).
+        # GAP-BROKEN where it crosses the X4 suction-pickup horizontal into P-03 (z1820) so that run reads continuous
+        _pipe([DV02X, DV02X, BROWN_CHASE_X, BROWN_CHASE_X], [2128, 2120, 2120, 1836], C_BROWNB, zorder=10)
+        _pipe([BROWN_CHASE_X, BROWN_CHASE_X], [1804, 1130], C_BROWNB, zorder=10)
         axb.annotate("", xy=(BROWN_CHASE_X, 1135), xytext=(BROWN_CHASE_X, 1185),
                      arrowprops=dict(arrowstyle="-|>", lw=1.2, mutation_scale=7, color=C_BROWNB), zorder=12)
         axb.text(BROWN_CHASE_X + 26, 1175, "IBC-3\n(Brown,\ndown chase)", fontsize=4.2, ha="left", va="top",
@@ -1201,21 +1217,24 @@ def spine_view(side):
         _pipe([4600, 4655 - 16], [205, 205], C_WASTEB, zorder=9)   # floor, before the blue drop at 4655
         _pipe([4655 + 16, 4908], [205, 205], C_WASTEB, zorder=9)   # floor, after the blue drop
         _pipe([4908, 4908], [205, 235 - 16], C_WASTEB, zorder=9)   # rise, up to the blue trunk crossing
-        _pipe([4908, 4908, PUMP_FRONT_X], [235 + 16, 1075, 1075], C_WASTEB, zorder=9)  # rise past blue, to P-04 IN
+        # rise past blue → +X back to the P-04 IN at the pump axis (PXC) — the forward-riser LOOP
+        _pipe([4908, 4908, PXC], [235 + 16, 1075, 1075], C_WASTEB, zorder=9)
         _flowhead(4600, 205, "right", C_WASTEB)            # suction: tray sump → P-04
         axb.text(4546, 185, "from\ntray sump", fontsize=4.2, ha="left", va="top", color="#555", zorder=12, **FB)
-        # P-05 brown-drain SUCTION (IBC-3 Brown tap via BV-02) up to P-05 IN.
-        # 3D flipped the BV-02 riser to the OPERATOR side (X4898, was X5072 on the
-        # shirt); the shared brown tap also rose to Z308.  Tap → −X to the front
-        # riser (BV-02) → UP to the P-05 IN height → +X back into the pump.
-        BV02X = 4898                                       # 3D rx = PXC−86
-        _pipe([4870, BV02X, BV02X, PUMP_FRONT_X], [308, 308, 1502, 1502], C_BROWNB, zorder=9)
+        # P-05 brown-drain SUCTION (IBC-3 Brown tap via BV-02).  3D: +X off the tee to the SHIRT riser
+        # (X5070, P-clipped for support — the down-route to the tap), UP the shirt, then −X (forward) to the
+        # BV-02 riser (X4898, operator side) through the P-04↔P-05 gap, up through BV-02, +X into the P-05 IN.
+        BV02X = 4898                                       # 3D rx = PXC−86 (BV-02 forward, operator side)
+        SHIRT_RX = 5070                                    # 3D shirt_rx — shirt riser, the down-route to the tap
+        ZLOOP = 1300                                       # 3D zloop — step −X from the shirt riser onto BV-02's
+        _pipe([4910, SHIRT_RX, SHIRT_RX, BV02X, BV02X, PXC],
+              [308, 308, ZLOOP, ZLOOP, 1502, 1502], C_BROWNB, zorder=9)
         valve_ball(axb, BV02X, 1417, 16, C_BROWNB, vert=True)
         axb.text(BV02X - 22, 1417, "BV-02", fontsize=4.6, ha="right", va="center",
                  color=C_BROWNB, zorder=13, **FB)
-        _flowhead(4870, 308, "right", C_BROWNB)            # suction: IBC-3 tap → P-05
-        axb.text(4866, 340, "from IBC-3\n(shared tap)", fontsize=4.0, ha="left", va="bottom",
-                 color=C_BROWNB, zorder=12, **FB)
+        _flowhead(SHIRT_RX, 700, "up", C_BROWNB)           # suction: IBC-3 shared tap → up the shirt riser → BV-02 → P-05
+        axb.text(4914, 296, "from IBC-3 (shared tap):\n+X to shirt riser, up, then\nforward loop to BV-02",
+                 fontsize=3.8, ha="left", va="top", color=C_BROWNB, zorder=12, **FB)
         # P-clips fastening the −Yd-face spine risers.
         for rx, zt in [(RX4, 1800), (RX_BLUE, X1_PORT_Z), (MERGEX, 1214)]:
             for i in range(4):
@@ -1245,10 +1264,10 @@ def spine_view(side):
         _pipe([5012, 5012], [612, 558], C_BLUEB, zorder=9)
         # P-04 tray-drain DISCHARGE → up the back (SV-02 sample tap) → DV-02
         # (the diverter itself is drawn on Spine View A).
-        _pipe([5046, 5046, DV02X + 18], [1113, 2025, 2025], C_WASTEB, zorder=9)
-        axb.annotate("", xy=(DV02X + 25, 2025), xytext=(DV02X + 75, 2025),
+        _pipe([5046, 5046, DV02X, DV02X], [1113, 2025, 2025, 2110], C_WASTEB, zorder=9)
+        axb.annotate("", xy=(DV02X, 2140), xytext=(DV02X, 2098),
                      arrowprops=dict(arrowstyle="-|>", lw=1.1, mutation_scale=7, color=C_WASTEB), zorder=12)
-        axb.text(DV02X + 50, 2045, "DV-02\n(Spine View A)", fontsize=4.0, ha="center",
+        axb.text(DV02X + 22, 2088, "→ DV-02\n(Spine View A)", fontsize=4.0, ha="left",
                  va="bottom", color="#999", zorder=13, **FB)
         valve_ball(axb, 5046, 1150, 14, "#555", vert=True)
         axb.text(5066, 1150, "SV-02", fontsize=4.0, ha=_ha("left"), va="center", color="#555", zorder=13, **FB)

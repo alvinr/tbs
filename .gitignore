@@ -24,6 +24,8 @@ models/*.dae
 
 # SketchUp auto-save backups (e.g. overview~.skp) — never commit
 *~.skp
+# scratch standalone corridor view (the combined water.skp is the tracked deliverable)
+models/corridor-panel.skp
 
 # Brainstorming visual-companion scratch dir
 .superpowers/

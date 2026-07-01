@@ -28,7 +28,7 @@ Modeled dimensions are the `tbs_constants.py` value(s) the generators draw. mm.
 |---|-----------|--------------------------|---------|---------|
 | 1 | IBC tote (1,000 L caged) | 1219×1016×1168 | `IBC_W/IBC_D/IBC_H_1000` | ✅ FIXED (v2) |
 | 2 | LiFePO4 battery, 100Ah 12V (Renogy Smart Lithium) | 330×172×214 — Renogy 12V 100Ah Smart Lithium | `BA_W/BA_D/BA_H` | ✅ FIXED |
-| 3 | Shurflo 2088-554-144 pump (P-01, P-02) | 216×127×114 — Shurflo 2088-554-144 | `PUMP_D×PUMP_YD_SPAN×Z` | ✅ FIXED (minor) — protrusion PUMP_D 100→114 |
+| 3 | Shurflo 2088-554-144 pump (P-01 Blue supply) | 216×127×114 — Shurflo 2088-554-144 | `PUMP_D×PUMP_YD_SPAN×Z` | ✅ FIXED (minor) — protrusion PUMP_D 100→114 |
 | 4 | Big Blue filter housing (4.5"×10") | Ø184×333 — Pentek 4.5×10 BB | `BB_OD/BB_H` | ✅ FIXED — BB_OD 130→184; BoM switched to 4.5×10 |
 | 5 | 150×150×50mm axial fans | 150×150×50 | `FAN_DIAM/FAN_BODY_D` | ✅ FIXED |
 | 6 | Evaporative cooler | 559×305×711 — Hessaire MC18M | `EVAP_W/EVAP_D/EVAP_H` | ✅ RESOLVED |
@@ -51,7 +51,7 @@ rigid ≈ 1491×699×35, varies by model — mounted externally, no container cl
 
 ### 3. Pump — Shurflo 2088-554-144 ❌
 - **Real:** 8.5"L × 5"W × 4.5"H = **216 × 127 × 114 mm**. [Fresh Water Systems](https://www.freshwatersystems.com/products/shurflo-2088-554-144-delivery-pump-3-5-gpm-45-psi-12vdc-no-cord) · [datasheet PDF](https://www.pumpagents.com/pdf/ShurfloPumps/2088-554-144.pdf)
-- **Modeled:** `PUMP_D`=100 (pump zone width). 4–5 pumps tile the plumbing panel.
+- **Modeled:** `PUMP_D`=100 (pump zone width). 4–5 pumps tile the Corridor Plumbing Panel.
 - **Problem:** a real 2088 is **216 mm long × 127 mm wide** — the panel pump columns are drawn ~half-size. With 5 of them plus the accumulator + 3× 594 mm filters, the **panel layout must be re-checked for fit** (panel face is 270 mm corridor × 2,060 mm tall).
 - **Action:** set the modeled pump footprint to ~216×127×114, re-lay-out the panel (`generate_panel_layout.py` + 3D `equipment_panel()`), re-check corridor depth.
 

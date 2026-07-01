@@ -302,7 +302,7 @@ def sheet1():
         f"4. {IBC_GAP}mm plumbing corridor between columns for internal pipe routing.",
         "5. Front retaining bars (4x, Z560 + Z1760) at the IBC front stop the totes sliding out; wall ends drop into Simpson-style joist hangers.",
         f"6. D-ring lashing holders on the front bars ({DRING_WLL}kg WLL); ratchet straps over each stack tie down to them.",
-        f"7. External plumbing panel moved forward to the corridor mouth for operator access (see Sheets 3-5).",
+        f"7. Corridor Plumbing Panel moved forward to the corridor mouth for operator access (see Sheets 3-5).",
     ]
     draw_notes(ax, notes, (C_WID), (Z_LO + 425), spacing=(22),
                fs=7, ha="left", font=FONT, width=1800)
@@ -530,7 +530,7 @@ def sheet2():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 3 — External Plumbing Panel Elevation
+# SHEET 3 — External Bulkhead Ports Elevation
 #
 # View from outside the container, looking at the sealed end wall.
 # Shows 3 ports stacked vertically on the container centerline:
@@ -735,7 +735,7 @@ def sheet3():
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
-        "EXTERNAL PLUMBING PANEL NOTES:",
+        "EXTERNAL BULKHEAD PORT NOTES:",
         "1. 3x 2\" NPT bulkhead unions through sealed end wall on container centerline.",
         "2. 6mm mild steel reinforcing plate welded to wall interior before penetrations.",
         "3. Type DC camlock fittings (2\" aluminum) on exterior face — quick-connect for fill hose (X1) and drain hose (X3/X4).",
@@ -749,7 +749,7 @@ def sheet3():
     # ── Title block ──────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 5",
                 drawing_title="IBC STACKING & SECURING",
-                subtitle="EXTERNAL PLUMBING PANEL — END WALL ELEVATION",
+                subtitle="EXTERNAL BULKHEAD PORTS — END WALL ELEVATION",
                 scale_note="Axes in mm - VIEW FROM OUTSIDE",
                 height=0.06)
 
@@ -1594,10 +1594,8 @@ def sheet5():
     _draw_valve_elev(ax, d3_yd,
                      drain_conn_z + (EXT_DRAIN_3_H - drain_conn_z) * 0.45,
                      C_PIPE_BROWN, "V3")
-    # CV3 check valve — prevents backflow from bulkhead into IBC-3
-    cv3_yd = cl_yd + bh_outer_r + 50
-    _draw_check_valve_h(ax, cv3_yd, EXT_DRAIN_3_H, C_PIPE_BROWN, "CV3",
-                        flow_dir="right")
+    # No discrete check valve on X3 — the P-05 Shurflo 2088 pump has an integral
+    # one-way check, so backflow into IBC-3 is already prevented (CV-3 dropped).
     # Flow arrow toward wall
     ax.annotate("", xy=((cl_yd - 5), (EXT_DRAIN_3_H)),
                 xytext=((cl_yd - 70), (EXT_DRAIN_3_H)),
@@ -1625,10 +1623,8 @@ def sheet5():
     _draw_valve_elev(ax, d4_yd,
                      drain_conn_z + (EXT_DRAIN_4_H - drain_conn_z) * 0.45,
                      C_PIPE_BLACK, "V4", lside="left")
-    # CV4 check valve — prevents backflow from bulkhead into IBC-4
-    cv4_yd = cl_yd - bh_outer_r - 50
-    _draw_check_valve_h(ax, cv4_yd, EXT_DRAIN_4_H, C_PIPE_BLACK, "CV4",
-                        flow_dir="left")
+    # No discrete check valve on X4 — the P-03 Shurflo 2088 pump has an integral
+    # one-way check, so backflow into IBC-4 is already prevented (CV-4 dropped).
     ax.annotate("", xy=((cl_yd + 5), (EXT_DRAIN_4_H)),
                 xytext=((cl_yd + 70), (EXT_DRAIN_4_H)),
                 arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BLACK, lw=1.5))
@@ -1827,7 +1823,7 @@ def sheet5():
             [y_cv - (cv_vs + 3), y_cv + (cv_vs + 3)],
             color=C_OUT, lw=1.8, zorder=16)
     ax.text(leg_x + (-10), y_cv,
-            "CHECK VALVE (1\" NPT spring — prevents backflow on all bulkhead lines)",
+            "CHECK VALVE (1\" NPT spring — CV-1 only, on the X1 gravity-fill line)",
             ha="left", va="center", fontsize=5.5, color=C_DIM,
             **FONT, zorder=15)
 
@@ -1862,7 +1858,8 @@ def sheet5():
         "7. Ball valves: Banjo V100FP 1\" polypropylene full-port, quarter-turn. All hand-operated.",
         "8. Drains are PUMPED: P-05 (Brown) → X3 (Z=400mm), P-03 (Waste) → X4 (Z=200mm) — gravity head is insufficient at these port heights.",
         "9. 90° elbows (Banjo LE100) at all bends. Flanges at all bulkhead and IBC connections.",
-        "10. Check valves CV1/CV3/CV4 (1\" NPT spring check) on all three bulkhead lines — prevents backflow through bulkhead unions.",
+        "10. Check valve CV-1 only (1\" NPT spring check) on the X1 gravity-fill line. The X3/X4 drains are pump-driven (P-05/P-03); the Shurflo",
+        "    2088 pumps have integral one-way checks, so no discrete CV is fitted there (CV-3/CV-4 dropped).",
         "11. RECYCLE: P-04 draws from the tray sump and feeds IBC-3 (Brown) via a SIDE-ENTRY near the top (3W-DV-02 selects IBC-3 or IBC-4). Brown",
         "    is then pumped (P-02) through the 3-stage filter; 3W-DV-01 recycles pH-OK filtrate to IBC-2 (Blue) via side-entry, else to IBC-4.",
         "12. ALL tote-top connections are SIDE-ENTRY near the top (fill, recycle return, reject, sump) — no top-cap access anywhere (52mm headroom).",
@@ -2008,7 +2005,7 @@ if __name__ == "__main__":
     print("Generating IBC stacking diagrams...")
     sheet1()  # cross-section elevation -> ibc-stacking-sheet1.png
     sheet2()  # fastening details -> ibc-stacking-sheet2.png
-    sheet3()  # external plumbing panel -> ibc-stacking-sheet3.png
+    sheet3()  # external bulkhead ports -> ibc-stacking-sheet3.png
     sheet4()  # internal plumbing plan -> ibc-stacking-sheet4.png
     sheet5()  # internal plumbing elevation -> ibc-stacking-sheet5.png
     print("Done.")

@@ -792,7 +792,7 @@ SPRAY_BAR_SLIT_W     = 30          # walkway slit width for pole passage (mm)
 # ── External fill/drain ports — far end wall bulkhead fittings (rev 5) ───────
 # 2" NPT bulkhead unions through container far end wall (X=C_LEN face).
 # Flat steel reinforcing plate welded over corrugation before drilling.
-# External plumbing panel — 3 ports (X1/X3/X4) stacked vertically on end wall centerline
+# External bulkhead ports — 3 ports (X1/X3/X4) stacked vertically on end wall centerline
 # X1 fill tees internally to BOTH Blue totes (parallel fill, no X2 port, no cross-connect)
 EXT_PANEL_YD = C_WID // 2   # = 1181mm — panel centered on container width
 EXT_FILL_1_H = 2250    # X1: Blue fill port height (mm) — feeds the Blue side-entry T near the top of both top-tier totes (~Z2150), gravity feed; gravity-linked across the corridor

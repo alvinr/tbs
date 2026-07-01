@@ -16,7 +16,13 @@ originSessionId: 54457a84-3dd4-4b25-a419-b2a4e2f11517
 
 4. **Connect at right angles.** A pipe, hose, tube, or duct must meet any fitting, manifold/box, appliance port, or wall penetration **perpendicular to that face**. The final segment before the connection is normal (90°) to the face it enters — never a diagonal or grazing approach. To reach a port from an off-axis source, route with orthogonal legs joined by elbows (e.g. riser → 90° elbow → horizontal stub into the port), not a single slanted segment.
 
-5. **Never route a pipe THROUGH another object — route around it.** A pipe/hose/tube/duct must not pass through any solid body it does not connect to (ball joints, sockets, brackets, frames, the beam wall except at a fitting, tanks, etc.). In the 3D models, check for interpenetration: if an obstacle is in the path, detour around it (a bypass lane offset in Yd/Z, or up and over) and keep the routing orthogonal. This has been gotten wrong repeatedly (pipes drawn straight through objects).
+5. **Never route a pipe THROUGH a solid object — route around it (penetrations are the only exception).** A pipe/hose/tube/duct must not pass through any solid body it does not connect to (pumps, valves, accumulators, filters, brackets, structural frames/uprights/rails, the beam wall, etc.). In the 3D models, check for interpenetration: if an obstacle is in the path, detour around it (a bypass lane offset in Yd/Z, or up and over) and keep the routing orthogonal. This has been gotten wrong repeatedly (pipes drawn straight through objects). **Permissible penetrations (granted exceptions):** a pipe MAY pass through an **IBC tank wall** (a tote side/top entry — that *is* the connection) and through a **plywood mounting panel / backing / spine** (a clean bored penetration). Everything else — especially equipment bodies (pumps/valves/tanks) and steel frame members — is OFF-LIMITS; route around them.
+
+5a. **The PROCESSING TRAY is a TOTAL EXCLUSION ZONE — route AROUND the outside of its rim, never through it or over it.** No transport pipe may cross the processing-tray footprint (`x PROC_TRAY_X_L..X_R`, `Yd PROC_TRAY_YD_NEAR..YD_FAR`) at deck level — the basin holds the print and wash water. Run pipes that traverse the optical zone along the **Yd < near-rim strip between the pinhole wall and the tray near rim**, and cross between that strip and the IBC/corridor side **only in the gap past the tray's right edge** (`x > PROC_TRAY_X_R`, before the tote/frame). The ONLY exceptions are the **sump drain** (it connects to the sump well, then must loop UP over the rim and back DOWN *outside* the rim — never straight across the basin) and the **spray bar** (it services the tray by design). `check_interference.py` enforces this with a synthetic tray-footprint exclusion box (the sump drain is the one excluded line). See `generate_corridor_water_panel.py` sump-pickup / `generate_pinhole_water_panel.tap01_supply` for the around-the-rim path, copied from `overview.skp`.
+
+6. **In-line valves go ON a straight run, oriented ALONG it.** A check / one-way valve, ball valve, or any in-line fitting is an **in-line device**: the pipe runs straight THROUGH it, so its body is centered on the pipe centerline and elongated **along the run axis** — placed on a STRAIGHT length of pipe, **never straddling an elbow** and never drawn as a right-angle block off to the side. To meter or protect a port (e.g. an anti-siphon check before a tank entry), put the valve on the straight approach run a short distance before the flange, not at the corner. (3D: a short barrel cylinder, radius ≈ pipe-OD + a little, length ≈ 2× OD, with `axis` = the local run direction.)
+
+7. **Minimize connections — every joint is an integrity/leak risk.** Each fitting (elbow, tee, cross, coupling, union, threaded joint) is a potential leak and failure point, so among valid orthogonal routings prefer the one with the **FEWEST fittings**. Concretely: a longer straight run beats a short run + two elbows + a jog; **align a junction/fitting to its incoming run so the pipe enters straight (one elbow), not offset into it (an offset = two elbows + a dead jog)**; place a tee/cross/manifold **ON** the line that feeds it. When a *small* move of a junction or component deletes a fitting, make the move (it's worth re-positioning the fitting to save the joint). *Example:* the X1 fill cross was shifted onto the blue-recycle riser's Yd (`X1_TEE_Y`) so the recycle rises **straight** into the cross's −X port — one elbow, replacing the old rise → −Yd jog → elbow (two fittings + a stub).
 
 ## Right-Angle Connections (applies to 2D diagrams AND 3D models)
 
@@ -46,10 +52,29 @@ This is the rule most often gotten wrong — it has had to be fixed repeatedly. 
 - Used for gradual direction changes or to avoid obstacles.
 - Same concentric arc drawing convention, just a smaller sweep angle.
 
-### Tee (T-joint)
-- T-intersection where a branch pipe meets the main run at 90°.
-- Rounded internal junction.
-- Three openings, each drawn with double parallel walls.
+### Tee (T-connector)
+A molded/cast tee fitting (e.g. a US-Plastics 1" socket tee) — **three ports**: a straight
+**RUN** (two collinear ports) plus one **BRANCH** port at 90° to the run, meeting at a common
+center. Codified geometry:
+
+- **Body is one fitting, fatter than the pipe.** The run + branch are a single fitting body whose
+  OD is larger than the pipe OD (the pipe sockets *into* the fitting). Don't draw a tee as a plain
+  box, and don't draw it as three pipes butted together — it is one fatter fitting body.
+- **Run is straight through.** The two run ports are collinear (one axis); the pipe passes straight
+  through. The **branch is perpendicular**, leaving the run centerline at 90° — never a Y, never a
+  slanted branch.
+- **Socket cuff at each of the 3 ends** — a short, slightly-larger raised ring (the socket the pipe
+  inserts into), so the fitting reads as a tee and not a coupling/cross.
+- **Pick the orientation so two of the three flows are collinear** (they become the run) and the odd
+  one out is the branch. A junction where all three legs are mutually perpendicular is an
+  *elbow-with-branch*, not a tee — re-route so two legs line up before placing the tee.
+- **2D section:** three openings each with double parallel walls; the run walls continue straight
+  through; the branch walls meet the run with a small rounded fillet at the internal corner.
+- **3D model:** use the `tee(nm, cx, cy, cz, run, branch, color)` helper in
+  `generate_corridor_water_panel.py` — `run` = the through axis (`"x"|"y"|"z"`), `branch` = the branch
+  port as axis+sign (e.g. `"x-"`, `"y+"`). It draws the run body + perpendicular branch body
+  (both pipe-OD + a margin) and a socket cuff at all three ends. (Reuse it; don't draw tees as
+  `ruby_box` cubes.)
 
 ### Straight Coupling
 - Short fitting joining two pipe ends.
@@ -118,8 +143,25 @@ draw_pipe_path(ax, [x, x], [z_cross + _gap_half, z_end], rear_OD, rear_WALL, ...
 - [ ] No gradual curves — only straight runs and fittings
 - [ ] Every direction change has a discrete elbow fitting drawn
 - [ ] Every connection to a box / manifold / fitting / penetration is a perpendicular stub (right-angle entry), not a diagonal — in 2D and 3D alike
+- [ ] In-line valves (check / one-way / ball) sit ON a straight run, body oriented ALONG the pipe axis — not a right-angle block, not on an elbow
+- [ ] **Ran `python3 src/models/check_interference.py` (3D models) and it reports 0 interferences.** Eyeballing renders is NOT enough — hand-routed waypoints in dense spaces reintroduce pipe-through-solid and pipe-on-pipe collisions every time. Run the checker after EVERY routing change; do not present until it is clean (permitted penetrations — IBC tank walls, ply panels — are already excluded).
+- [ ] Parallel pipes that must run together (a manifold) each get their OWN depth lane (distinct X or Yd) — a riser to one device's port must not pass through a neighbouring device's port/body that shares the same lane.
+- [ ] Under-deck / under-walkway crossings sit in a Z-band that clears BOTH the structure below (frame bottom ring) AND the cantilever beams above — check the actual member Z-ranges, don't assume.
 - [ ] No pipe/tube/duct passes through a solid object it doesn't connect to — detour around obstacles (check the 3D model for interpenetration)
 - [ ] Elbow fittings show concentric arcs (not sharp corners, not gradual bends)
 - [ ] Barb connections show ridged profile + hose clamp band
 - [ ] Pipe end-on shown as concentric circles
 - [ ] Flow direction arrows inside bore where helpful
+
+## Refactoring the 3D plumbing efficiently (corridor congestion)
+
+The `pinhole-wall-mount` branch took **84 commits** (≈31 position tweaks + 24 reroutes + 15 interference fixes) to detail the IBC plumbing corridor. Most of that churn is avoidable. Rules, learned the hard way:
+
+1. **Parameterize every position a pipe references; pipes reference the constant, never a literal.** A component/fitting/lane position is a named module constant (`DV02X`, `SUCT_XLANE`, `SUCT_SURF_Z`, `X1_TEE_X/Z` in `generate_corridor_water_panel.py`). Then "move it 75 mm" is a *one-line* edit and every connecting pipe follows. A bare literal in a waypoint (the `1960` feed jog, the `bz` entry) is a latent move/derivation bug — the same lesson as the generator-label literals in CLAUDE.md, applied to coordinates.
+2. **Single-source a shared lane.** Pipes that run parallel/stacked share ONE lane constant + a fixed per-pipe offset (brown `SUCT_SURF_Z`, blue `+30`, grey `+60`; all at `SUCT_XLANE`). They then move together and can't drift into each other.
+3. **Derive a position from the part's REAL extents — and verify against the built model.** The brown drain entered the *blue* tote because `bz` used `pallet + full-unit-height` instead of the brown bottle's actual top (`IBC_H_1000 − 20 = 1148`). When a value must sit inside/above/below a part, compute it from that part's queried z-extent and spot-check (`check_interference` + a one-off bounds query), don't trust an ad-hoc formula.
+4. **Run the pipe-on-pipe check after EVERY routing change.** `check_interference.py` now reports pipe-vs-solid AND pipe-on-pipe (two runs overlapping that don't share a junction). Solid-only checking read "0" for many commits while real crossings piled up unseen — the slowest kind of rework.
+5. **In a saturated zone, allocate lanes FIRST (a pipe rack); don't thread reactively.** The win came when the three pipes that can't pass under the IBC/grate were committed to one stacked surface-perimeter route — each its own Z (brown 205 / blue 235 / grey 262), shared X/Yd. Decide each pipe's lane/height up front; reactive one-pipe-at-a-time threading is where the commits piled up.
+6. **Locate the problem before a structural change.** The P-01↔ACC-01 swap was a hunch; the check showed the crossings were elsewhere (gap/wall, not the column), and the swap created a *new* tight ACC clearance. Measure where the contention actually is (the checker's coordinates) before moving structure.
+7. **Moving a connected fitting = one constant + its feed + every leg.** Parameterize the fitting position; the feed/legs jog to it. DV-02 → `DV02X` carried its feed and both diverter legs in one edit.
+8. **Verify with `view.zoom_extents` or `view.zoom(group_array)`, not hand-set `camera.set(eye,target)`.** Manual eye/target cameras repeatedly rendered empty and burned iterations; zoom-to-geometry is reliable.

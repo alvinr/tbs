@@ -63,7 +63,7 @@ nav:
     - "Equipment Layout": equipment-layout-report.md
     - Water System:
       - "Processing System": water-system-report.md
-      - "Plumbing Panel": plumbing-panel-report.md
+      - "Plumbing": plumbing-report.md
       - "IBC Stacking System": ibc-stacking-report.md
       - "Processing Tray & Spray Bar": processing-tray-and-spray-bar.md
     - Electrical Systems:

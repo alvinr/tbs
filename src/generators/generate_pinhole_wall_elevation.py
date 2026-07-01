@@ -437,12 +437,22 @@ draw_pipe_path(ax,
     [SUPPLY_Z, BV02_Z],
     OD_H, WALL_H, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=8)
 
-# BV-02 valve symbol (filled circle)
-ax.add_patch(plt.Circle((sx(BV02_X), sz(BV02_Z)), BV02_R,
-             fc=C_BLUE, ec=C_BLUE_EC, lw=1.5, zorder=12))
-ax.text(sx(BV02_X), sz(BV02_Z), "BV\n02",
-        ha="center", va="center", fontsize=4, fontweight="bold",
-        color="white", zorder=13, **FONT)
+# BV-02 ball-valve symbol (bowtie inside white circle)
+_bvx, _bvz = sx(BV02_X), sz(BV02_Z)
+ax.add_patch(plt.Circle((_bvx, _bvz), BV02_R,
+             fc="white", ec=C_BLUE_EC, lw=1.5, zorder=12))
+_bs = BV02_R * 0.62      # bowtie triangle half-size
+ax.add_patch(plt.Polygon([(_bvx - _bs, _bvz - _bs),
+                          (_bvx - _bs, _bvz + _bs),
+                          (_bvx, _bvz)],
+                         fc=C_BLUE, ec=C_BLUE, zorder=13))
+ax.add_patch(plt.Polygon([(_bvx + _bs, _bvz - _bs),
+                          (_bvx + _bs, _bvz + _bs),
+                          (_bvx, _bvz)],
+                         fc=C_BLUE, ec=C_BLUE, zorder=13))
+ax.text(_bvx, _bvz - BV02_R - 8, "BV-02",
+        ha="center", va="top", fontsize=4, fontweight="bold",
+        color=C_BLUE, zorder=13, **FONT)
 
 leader(ax, sx(BV02_X), sz(BV02_Z + BV02_R + 5),
        sx(BV02_X - 10), sz(BV02_Z + 80),
@@ -595,23 +605,23 @@ for ix_mm, ilabel in items:
 # 7. INTERFERENCE NOTES
 # ═══════════════════════════════════════════════════════════════════════════
 notes = [
-    "NOTES — REV 7 REORG",
-    f"1. Blue supply pipe: ½\" HDPE (OD=21mm) at Z={SUPPLY_Z} (below walkway grating),",
-    "   from IBC zone to spray bar. BV-02 riser at pinhole centerline to Z=900 (waist height).",
-    "   Chemistry tap branch (¾\") rises to shelf.",
+    "NOTES",
+    f"1. Blue supply pipe: ½\" HDPE (OD=21mm) at Z={SUPPLY_Z} (below walkway grating),"
+    " from IBC zone to spray bar. BV-02 riser at pinhole centerline to Z=900 (waist height)."
+    " Chemistry tap branch (¾\") rises to shelf.",
     f"2. Evap cooler relocated EXTERNAL — only Ø{EVAP_DUCT_D}mm duct penetration remains at X={EVAP_DUCT_X}, Z={EVAP_DUCT_Z}.",
-    "3. Pumps (P-01/P-02/P-04), ACC-01, filter housings (F1/F2/F3), DV-01, DV-02",
-    "   relocated to equipment panel in IBC plumbing corridor (Yd=1046). See panel layout detail.",
+    "3. Pumps (P-01/P-02/P-04), ACC-01, filter housings (F1/F2/F3), DV-01, DV-02"
+    " relocated to equipment panel in IBC plumbing corridor (Yd=1046). See panel layout detail.",
     "4. Ext. power panel (dashed) is flush-mount on EXTERIOR face — no interior conflict.",
     "5. Chemistry shelf (dashed) is ceiling-hung at Yd=300mm — behind near walkway plane.",
     "6. Shelf hanger rods pass through cable trunking zone — requires grommets/slots in trunking lid.",
-    "7. Battery bank: slim-profile 120mm depth (was 220mm). Right edge (X=2310) clears pinhole cone",
-    "   left boundary (X=2319 at Yd=0) by 9mm.",
+    "7. Battery bank: slim-profile 120mm depth (was 220mm). Right edge (X=2310) clears pinhole cone"
+    " left boundary (X=2319 at Yd=0) by 9mm.",
     "8. EP raised to Z=1600–2200 (was 900–1500) to clear widened walkway at 500mm.",
     "9. Processing tray sump relocated to X=4550 (IBC corner), slope to corner.",
 ]
-draw_notes(ax, notes, C_LEN - 70, 900, spacing=45,
-           fs=7, width=1640, color=C_DIM, title_color=C_DIM, font=FONT)
+draw_notes(ax, notes, C_LEN - 70, -210, spacing=45,
+           fs=7, width=3640, color=C_DIM, title_color=C_DIM, font=FONT)
 
 # ═══════════════════════════════════════════════════════════════════════════
 # 8. PLAN VIEW — NEAR WALKWAY ACCESS ANALYSIS

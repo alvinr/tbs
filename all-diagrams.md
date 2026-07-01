@@ -156,9 +156,13 @@
 
 ## 14. Plumbing Panel & Plumbing
 
-![TBS-001 — Plumbing Panel Layout](assets/panel-layout.png)
+![TBS-001 — Corridor Plumbing Panel Layout](assets/panel-layout.png)
 
-![TBS-001 — Plumbing Panel Backside](assets/panel-layout-back.png)
+![TBS-001 — Pinhole Wall Plumbing Panel Layout](assets/pinhole-panel.png)
+
+![TBS-001 — Corridor Plumbing Panel Spine View A (−Yd intake face)](assets/panel-spine-view-a.png)
+
+![TBS-001 — Corridor Plumbing Panel Spine View B (+Yd discharge face)](assets/panel-spine-view-b.png)
 
 ---
 
@@ -168,7 +172,7 @@
 
 ![TBS-001 IBC Stacking — Sheet 2: Fastening Details](assets/ibc-stacking-sheet2.png)
 
-![TBS-001 IBC Stacking — Sheet 3: External Plumbing Panel Elevation](assets/ibc-stacking-sheet3.png)
+![TBS-001 IBC Stacking — Sheet 3: External Bulkhead Ports Elevation](assets/ibc-stacking-sheet3.png)
 
 ![TBS-001 IBC Stacking — Sheet 4: Internal Plumbing Plan View](assets/ibc-stacking-sheet4.png)
 

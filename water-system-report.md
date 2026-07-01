@@ -98,7 +98,7 @@ leaves saturated to dry), **evaporation** from the open spray-wash tray, and **u
 (tray-surface film, the sump dead-volume below the P-04 pickup, hose/manifold hold-up). This loss is *why
 two <!-- BEGIN fact:collection_fill_l -->630<!-- END fact:collection_fill_l -->L collection totes balance the supply* — they are sized for the recovered fraction, not full
 throughput. (The [weight report](weight-distribution-report.md) carries the same ~<!-- BEGIN fact:recovered_l -->1,260<!-- END fact:recovered_l -->L recovered figure
-for its exhausted-state transport mass — 4,584 kg, ~540 kg below the loaded state.)
+for its exhausted-state transport mass — 4,590 kg, ~540 kg below the loaded state.)
 
 #### Extending capacity beyond 14 prints
 
@@ -136,11 +136,13 @@ IBC-2 (900L) ──┘                                                      │
 ```
 
 - Two IBC totes plumbed in parallel via 1" HDPE manifold with isolation valves
+- The two Blue totes are tied at the base by a **1" equalization cross-tie** (tank body to tank body, low on the totes) so their levels self-balance as P-01 draws and X1 refills
 - P-01: Shurflo 2088 12VDC diaphragm pump — 3.5 GPM, 45 PSI, self-priming
+- **Check valves:** only **CV-1** is fitted, on the X1 gravity fill — the single flow path with no pump. Every return and drain leg is pump-driven, and the Shurflo 2088 pumps carry an **integral 1-way check valve** ([2088-554-144 datasheet](https://www.pumpagents.com/pdf/ShurfloPumps/2088-554-144.pdf)), so dedicated anti-siphon checks on the IBC-2 return, IBC-3 buffer return and IBC-4 waste legs would be redundant and are not used
 - ACC-01: 0.75 L (23.5 oz) pressure accumulator — smooths pump cycling, maintains pressure when pump is off
 - Low-level float switch on IBC-2 alerts operator when Blue supply is low
 - Spray bar: gantry design — 40×40×3mm aluminum SHS beam spanning the open processing area (3,859mm) between walkway inner edges, with wheel carriages rolling on the tray floor beneath walkway grating. Beam bore serves as spray pipe (no separate HDPE tube). See §3.5 for full mechanical design
-- Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline (Yd=1,181mm) at Z=2,250mm — gravity feed, no pump required. Inside, an internal tee (near X1) splits to a SIDE entry near the top of BOTH Blue totes (no top-cap access — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom), filling them in parallel and gravity-linked — one external hose. Remote resupply from water bowser or tanker (no cargo door access required)
+- Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline — gravity feed, no pump required. Inside, an internal tee (near X1) splits to a SIDE entry near the top of BOTH Blue totes (no top-cap access — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom), filling them in parallel and gravity-linked — one external hose. Remote resupply from water bowser or tanker (no cargo door access required)
 
 ### 4.2 Brown System — Used Water Recycling
 
@@ -148,6 +150,8 @@ IBC-2 (900L) ──┘                                                      │
 Processing tray sump (P-04 suction pickup)
         │
    P-04 (tray drain transfer pump — suction from sump, lifts ~900mm to IBC-3 side-entry)
+        │
+     SV-02 SAMPLE TAP (meter incoming used-water pH → set DV-02 routing)
         │
    3W-DV-02 ──────────────────────────────────────────→ (to IBC-4 waste if heavily loaded)
         │
@@ -181,7 +185,7 @@ The filter train uses a single 3-stage whole-house filter unit (a **4.5"×10"** 
 
 The 10" cartridges (~½ the media of a 20") were chosen to match the modeled housing size, so service intervals are correspondingly shorter (~½). The unit includes triple drain valves for flushing individual stages without disassembly. Equivalent 3-stage Big Blue units are available from Express Water, Geekpure, iSpring and others — any unit accepting standard 4.5"×10" cartridges with 1" NPT ports will work.
 
-**pH management:** Draw the post-filter sample at the **SV-01 sample tap** (½" valve + spout before 3W-DV-01) and meter it. If filtered water reads pH <6, do nothing — slightly acidic is preferred. If pH >7.5, add citric acid solution (10g citric acid in 1 liter water) via the dosing port in the IBC-3 outlet, stir, retest. Do not return water with pH >8 to the Blue system.
+**pH management:** Two pH sample taps are fitted. **SV-02** (½" valve + spout on the P-04 tray-drain discharge, before 3W-DV-02) lets the operator meter the incoming used water and choose the DV-02 routing — buffer to IBC-3 or divert straight to IBC-4 waste. **SV-01** confirms the cleaned water before it returns: draw the post-filter sample at the **SV-01 sample tap** (½" valve + spout before 3W-DV-01) and meter it. If filtered water reads pH <6, do nothing — slightly acidic is preferred. If pH >7.5, add citric acid solution (10g citric acid in 1 liter water) via the dosing port in the IBC-3 outlet, stir, retest. Do not return water with pH >8 to the Blue system.
 
 ### 4.3 Black System — Waste Containment
 
@@ -208,9 +212,9 @@ The processing tray and spray bar gantry are fully specified in the [Processing 
 
 **Processing tray:** A permanently installed 4459 × 2,200mm stainless steel tray sits on the optical zone floor between the film plane rails. A 1:200 dual-axis slope drains wash water to a pressed sump well on the right side nearest the pinhole wall. P-04 draws from the sump via a suction pickup tube — no penetration of the tray floor or container floor.
 
-**Drain path:** P-04 suction pickup → 1" flexible hose over near rim → P-04 pump on plumbing panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste).
+**Drain path:** P-04 suction pickup → 1" flexible hose over near rim → P-04 pump on the Corridor Plumbing Panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste).
 
-**External drain-out risers:** The Brown (IBC-3) and Waste (IBC-4) totes are pumped out to the sealed end-wall ports — X3 via P-05, X4 via P-03. The two vertical drain risers run down the IBC corridor gap and are clamped at ~400mm centers to an 18mm marine-ply backing spine that tees perpendicular off the plumbing panel. Its top is capped with a horizontal ply shelf that the Blue fill trunk rests on — so both the drain risers and the fill trunk are supported at the T rather than free-hanging.
+**External drain-out risers:** The Brown (IBC-3) and Waste (IBC-4) totes are pumped out to the sealed end-wall ports — X3 via P-05, X4 via P-03. The two vertical drain risers run down the IBC corridor gap and are clamped at ~400mm centers to an 18mm marine-ply backing spine that tees perpendicular off the Corridor Plumbing Panel. Its top is capped with a horizontal ply shelf that the Blue fill trunk rests on — so both the drain risers and the fill trunk are supported at the T rather than free-hanging.
 
 **Spray bar:** A 4,399mm aluminum SHS beam gantry rolls on the tray floor beneath the walkway grating. Water from P-01 (Blue supply) reaches the bar via BV-02 → 4m flexible hose → center feed bulkhead fitting → 38 × 3mm spray holes at 100mm centers.
 
@@ -311,7 +315,7 @@ IBCs are arranged in a **2x2 stack** in the right end zone, right-justified to t
 
 All equipment clears the optical cone at every depth — shadow-free proof in [Equipment Layout Report](equipment-layout-report.md).
 
-**Hose routing:** All pumps mount on the **plumbing panel** at the front of the IBC stack, reaching into the 270mm plumbing corridor between the two IBC columns — so the pump↔tote suction and return lines are **short**, running entirely within the corridor to the IBCs' corridor-facing DN50 valves. The longest run is the **Blue supply to the spray bar**: P-01 → ACC-01 → rigid 1/2" HDPE along the pinhole wall to the tray center → BV-02 → ~4m coiled flexible hose → the rolling beam in the optical zone. The **tray drain** returns the other way — P-04's sump pickup → 1" flexible hose over the near rim → P-04 on the panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste). **Waste evacuation** pumps P-05 (X3 / Brown) and P-03 (X4 / Waste) sit directly on the corridor drain risers, minimizing pipe to the external end-wall ports.
+**Hose routing:** The corridor pumps (P-01, P-04, P-05, P-03) mount on the **Corridor Plumbing Panel** at the front of the IBC stack, reaching into the 270mm plumbing corridor between the two IBC columns — so the pump↔tote suction and return lines are **short**, running entirely within the corridor to the IBCs' corridor-facing DN50 valves. P-02 (Brown filter feed) and the 3-stage filter stack sit on the **Pinhole Wall Plumbing Panel** on the pinhole wall face. The longest run is the **Blue supply to the spray bar**: P-01 → ACC-01 → rigid 1/2" HDPE along the pinhole wall to the tray center → BV-05 → ~4m coiled flexible hose → the rolling beam in the optical zone. The **tray drain** returns the other way — P-04's sump pickup → 1" flexible hose over the near rim → P-04 on the panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste). **Waste evacuation** pumps P-05 (X3 / Brown) and P-03 (X4 / Waste) sit directly on the corridor drain risers, minimizing pipe to the external end-wall ports.
 
 **External fill/drain ports:** Three 2" NPT bulkhead fittings with camlock fittings on the exterior are mounted on the container end wall centerline, stacked vertically:
 
@@ -334,30 +338,39 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 |------|------|-----|----------|-----------|
 | [IBC tote (1,000 L caged)](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) | Caged composite tote, DN50 butterfly valve (S60×6 thread); side-entry fittings near top | 4 ea | Container Exchanger | $320–$600 |
 | [Bulkhead fitting 2" NPT (304 SS)](https://www.mcmaster.com/4464K115) (4464K115) | External fill/drain port, welded through container wall | 3 ea | McMaster-Carr | $75–$120 |
-| [Shurflo 2088-554-144 pump (P-01, P-02)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 2 ea | Amazon | $110–$140 |
+| [Shurflo 2088-554-144 pump (P-01 Blue supply)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 1 ea | Amazon | $55–$70 |
+| [Shurflo 2088-554-144 pump (P-02 filter loop)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 1 ea | Amazon | $55–$70 |
 | Shurflo 2088-554-144 pump (P-03 waste evacuation) | 12VDC, 3.5 GPM, 45 PSI; empties IBC-4 residual below X4 (~120L) | 1 ea | Amazon | $65 |
 | Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 12VDC, 3.5 GPM, 45 PSI; tray drain to IBC-3 (~900mm lift) | 1 ea | Amazon | $65 |
+| Shurflo 2088-554-144 pump (P-05 Brown drain) | 12VDC, 3.5 GPM, 45 PSI; evacuates IBC-3 (Brown) residual to the X3 end-wall port | 1 ea | Amazon | $65 |
 | [SeaFlo accumulator (0.75 L)](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) (SFAT-075-125-01) | 0.75 L, 125 PSI, 1/2" MNPT | 1 ea | Amazon | $35 |
-| Shurflo pump mounting bracket | Stainless, 2088 series (3× manifold + 1× IBC corridor for P-03) | 4 ea | Amazon | $40 |
+| Shurflo pump mounting bracket | Stainless, 2088 series — one per pump (P-01..P-05) | 5 ea | Amazon | $50 |
+| Corridor plumbing-panel marine ply (18mm) | 4×8 ft 18mm BS 1088 (or equivalent) marine plywood — rear backing board (~170×2196) + drain-riser backing spine (~456×1966) + spacer offcuts; ~1.3 m² used. Price est. | 1 sheet | marine plywood supplier / Home Depot | $120–$200 |
+| Pump-mount shirt marine ply (25mm) | 25mm BS 1088 (or equivalent) marine plywood, ~610×1650 cut piece — pump-mount shirt behind P-01..P-05 + 6× shirt-to-panel spacer blocks. Price est. | 1 piece | marine plywood supplier / Home Depot | $70–$130 |
+| Corridor panel mount hardware (brackets + fasteners) | 6× steel angle brackets (panel → IBC-frame front-portal uprights), shirt-to-panel screws, lag bolts. Price est. | 1 lot | Home Depot | $25–$50 |
 | Big Blue filter housing (4.5"×10") | Ø184×333mm/housing, 1" NPT ports, integrated bracket (Express Water / Geekpure / iSpring) | 1 ea | Amazon | $200–$300 |
 | MPP 5-micron sediment cartridge 4.5"×10" | Melt-blown polypropylene depth filter (F-1 stage) | 3 ea | Amazon | $18–$30 |
 | KDF-55 heavy-metal cartridge 4.5"×10" | KDF-55 media for dissolved iron/metal removal (F-2 stage) | 2 ea | Amazon | $40–$70 |
 | CTO carbon block cartridge 4.5"×10" | Coconut shell activated carbon block (F-3 stage) | 3 ea | Amazon | $24–$45 |
-| Banjo V050FP ball valve 1/2" FNPT | PP full-port quarter-turn; BV-01, BV-02 + spares | 4 ea | Amazon | $24–$40 |
+| Banjo V050FP ball valve 1/2" FNPT | PP full-port quarter-turn; pump-suction isolation BV-01 (P-01), BV-02 (P-05), BV-06 (P-03) | 3 ea | Amazon | $18–$30 |
+| Banjo V050FP ball valve 1/2" FNPT | PP full-port quarter-turn; pump-suction isolation BV-03 (P-02) | 1 ea | Amazon | $6–$10 |
+| Banjo V050FP ball valve 1/2" FNPT | PP full-port; supply isolation BV-04 (TAP-01 chem tap), BV-05 (spray-bar feed) | 2 ea | Amazon | $12–$20 |
 | Banjo V100FP ball valve 1" FNPT | PP full-port; V1/V3/V4, VB1–VB3 (IBC fill/drain) | 6 ea | Amazon | $60–$96 |
-| Banjo V075FP ball valve 3/4" FNPT | PP full-port; BV-06 (chemistry tap shut-off) | 1 ea | Amazon | $8–$12 |
 | 3-way diverter valve 1/2" FNPT | L/T-port HDPE-compatible; 3W-DV-02 (tray drain) | 1 ea | Amazon | $12–$22 |
 | 3-way diverter valve 1" FNPT | L/T-port; 3W-DV-01 (filter output) | 1 ea | Amazon | $18–$30 |
 | pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | Filtered-water sample draw before 3W-DV-01; Banjo V050FP 1/2" PP ball valve + downturned 1/2" hose barb on a 1"×1/2" reducing branch tee, panel face above spill line | 1 ea | Amazon | $10–$18 |
+| pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | pH sample on the P-04 tray-drain discharge, before 3W-DV-02; same build as SV-01 | 1 ea | Amazon | $10–$18 |
 | 2" polypropylene camlock pairs (M+F) | External bulkhead connections (X1/X3/X4 + spare) | 4 pair | Amazon | $20–$32 |
 | 1/2" NPT 90° elbow polypropylene | All pump-driven run bends | 14 ea | Amazon | $28–$56 |
 | Banjo EL100-90 elbow 1" NPT | PP 90°; IBC bends, filter outlet to DV-01 | 4 ea | Amazon | $12–$20 |
 | 1/2" NPT polypropylene tee | Blue suction/discharge tees, branches | 6 ea | Amazon | $12–$24 |
-| Banjo TEE100 equal tee 1" NPT | PP; IBC fill/drain tees | 4 ea | Amazon | $16–$24 |
+| Banjo TEE100 equal tee 1" NPT | PP; IBC drain tees (the X1 fill is now a 4-way cross) | 3 ea | Amazon | $12–$18 |
+| 1" NPT 4-way cross fitting | X1 fresh-fill 4-way: X1 inlet + IBC-1 + IBC-2 + DV-01 blue recycle return (was a 3-way tee). Cost est. | 1 ea | Amazon | $8–$14 |
 | 1/2" NPT polypropylene union | Maintenance disconnects on pump runs | 6 ea | Amazon | $24–$36 |
 | 1/2"×1" NPT bushing reducer | P-02 riser to F1 filter inlet | 1 ea | Amazon | $3–$5 |
 | S60×6 to 1" NPT adapter | IBC DN50 valve to 1" HDPE; PP S60×6 male × 1" NPT female | 8 ea | Amazon | $64–$120 |
-| 1" NPT spring check valve (CV1/CV3/CV4) | PVC body, EPDM seal, 1" FNPT × FNPT | 3 ea | Amazon | $24–$42 |
+| 1" bulkhead tank-body fittings (Blue equalization cross-tie) | Low tank-body penetration in each Blue tote (IBC-1 + IBC-2) for the 1" equalization cross-tie that self-balances the two Blue levels (run made from the 1" HDPE stock). Cost est. | 2 ea | Amazon | $12–$24 |
+| 1" NPT spring check valve (CV1 — X1 gravity fill) | PVC body, EPDM seal, 1" FNPT × FNPT. Only CV-1 (X1 fill) remains — the Shurflo 2088 pumps have integral check valves, so CV-2/CV-3/CV-4 are redundant and dropped | 1 ea | Amazon | $8–$14 |
 | Thread seal tape (PTFE) | 1/2" wide, 260" roll | 4 roll | Home Depot | $8 |
 | [1/2" SDR-11 HDPE pipe](https://www.ferguson.com) | All pump-driven runs (80 ft); matches pump port size | 4 stick | Ferguson | $24–$40 |
 | 1" SDR-11 HDPE pipe | Food-safe blue-stripe 20 ft; filter outlet + IBC lines | 1 stick | Ferguson | $12–$18 |
@@ -373,7 +386,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bag | Amazon | $28 |
 | Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon | $20 |
 | Nitrile gloves, box of 100 | Size M/L | 2 box | Amazon | $28 |
-| **Water total** | | | | **$1,691–$2,485** |
+| **Water total** | | | | **$1,995–$2,970** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own

@@ -81,7 +81,7 @@ MD_FILES = [
     ("walkway-report.md",                 (".",           "Walkway")),
     ("right-walkway-cantilever-study.md", (".",           "Right Walkway Cantilever (decision record)")),
     ("process-comparison.md",            (".",           "Process Comparison (alt processes)")),
-    ("plumbing-panel-report.md",         (".",           "Plumbing Panel")),
+    ("plumbing-report.md",              (".",           "Plumbing")),
     ("all-diagrams.md",                   (".",           "All Diagrams")),
     ("mini-tbs/mini-tbs-poc.md",          ("mini-tbs",    "Mini-TBS PoC")),
     ("mini-tbs/mini-tbs-shopping-list.md",("mini-tbs",    "Mini-TBS Shopping List")),
@@ -195,7 +195,9 @@ DIAG_IMAGE_FILES = [
     "shelf-sheet3.png",
     "pinhole-wall-elevation.png",
     "panel-layout.png",
-    "panel-layout-back.png",
+    "pinhole-panel.png",
+    "panel-spine-view-a.png",
+    "panel-spine-view-b.png",
     "spray-bar-sheet1.png",
     "spray-bar-sheet2.png",
     "spray-bar-sheet3.png",
@@ -367,11 +369,11 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Chemistry Prep Shelves](chemistry-prep-shelves.md) | Two fold-down shelves on pinhole wall for cyanotype chemistry mixing and materials staging |
 | [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) | 304 SS processing tray and telescoping spray bar gantry — construction, operation, and parts list |
 | [Hinged Light-Trap Panel](hinged-panel-report.md) | Stepped cargo-door panel with revolving drum light trap, ~56° transport swing about the pivot, and light seal design |
-| [IBC Stacking System](ibc-stacking-report.md) | 2×2 IBC stack with welded stacking frame, external plumbing panel, and internal pipe routing |
+| [IBC Stacking System](ibc-stacking-report.md) | 2×2 IBC stack with welded stacking frame, external bulkhead ports, and internal pipe routing |
 | [Perimeter Walkway](walkway-report.md) | 4-section walkway system — wall-cantilevered, right-end cantilever rectangle, and lift-out designs with zero tray contact |
 | [Right Walkway Cantilever (decision record)](right-walkway-cantilever-study.md) | Decision record (adopted, rev12): why the ceiling-hung right walkway was replaced by a cantilever rectangle tied to the IBC frame + side walls — and the first-order load check. As-built in [Walkway §4](walkway-report.md). |
 | [Process Comparison (alt processes)](process-comparison.md) | Cost comparison of the alternative photographic processes considered and rejected (gum bichromate, Van Dyke Brown, salt, Ilford RC, Liquid Light) vs the chosen cyanotype — the procurement is in the [Chemistry Shopping List](chemistry-shopping-list.md). |
-| [Plumbing Panel](plumbing-panel-report.md) | Plumbing panel in IBC corridor with 5 pumps, integrated 3-stage filter unit, accumulator, valves, and pipe routing |
+| [Plumbing](plumbing-report.md) | Two plumbing panels &mdash; the Corridor Plumbing Panel (pumps, accumulator, diverters, valves in the IBC corridor) and the Pinhole Wall Plumbing Panel (wet-end 3-stage filter loop), with pipe routing and the interactive 3D water model |
 | [All Diagrams](all-diagrams.md) | Complete visual gallery of every TBS-001 engineering diagram on a single page |
 
 """

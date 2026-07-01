@@ -629,12 +629,14 @@ def processing_tray_partial():
     yN, yF = ov.PROC_TRAY_YD_NEAR, ov.PROC_TRAY_YD_FAR
     w, d = PARTIAL_X - x0, yF - yN
     st, rt, rim = 2, 2, ov.PROC_TRAY_RIM
+    zc = ov.tray_floor_z(x0 + w / 2, (yN + yF) / 2)      # representative RAISED floor top at the cargo-door end
     return '\n'.join([
-        ruby_box("Processing Tray Floor (partial)", x0, yN, 0, w, d, st, color=ov.C_TRAY),
-        ruby_box("Tray Rim Near (partial)", x0, yN, st, w, rt, rim - st, color=ov.C_TRAY),
-        ruby_box("Tray Rim Far (partial)", x0, yF - rt, st, w, rt, rim - st, color=ov.C_TRAY),
-        ruby_box("Tray Rim Left (cargo end)", x0, yN, st, rt, d, rim - st, color=ov.C_TRAY),
-        ruby_box("Chemistry Bath (partial)", x0 + rt, yN + rt, st,
+        ruby_box("Tray Shim Base (partial)", x0, yN, 0, w, d, zc - st, color="#D8CFBC", alpha=0.6),
+        ruby_box("Processing Tray Floor (partial)", x0, yN, zc - st, w, d, st, color=ov.C_TRAY),
+        ruby_box("Tray Rim Near (partial)", x0, yN, zc, w, rt, rim - st, color=ov.C_TRAY),
+        ruby_box("Tray Rim Far (partial)", x0, yF - rt, zc, w, rt, rim - st, color=ov.C_TRAY),
+        ruby_box("Tray Rim Left (cargo end)", x0, yN, zc, rt, d, rim - st, color=ov.C_TRAY),
+        ruby_box("Chemistry Bath (partial)", x0 + rt, yN + rt, zc,
                  w - 2 * rt, d - 2 * rt, rim - st - 8, color=ov.C_BATH, alpha=0.45),
     ])
 

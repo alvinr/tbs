@@ -77,7 +77,7 @@ INCLUDE_ACTUATORS = False   # manual build is standard; set True to add Circuit 
 
 # End-of-day Brown + Waste pump-out (P-05 Brown→X3, P-03 Waste→X4). Gravity-assisted:
 # each tote gravity-drains through its low Z=200mm port; the pump lifts only the
-# ~120L residual below the port (plumbing-panel-report.md §4.3).
+# ~120L residual below the port (plumbing-report.md §4.3).
 PUMP_LPM          = 13.2    # 3.5 GPM Shurflo 2088
 DRAIN_RESIDUAL_L  = 120     # residual below the X3/X4 port, pumped per tote
 DRAIN_LIGHT_MIN   = 10      # white light during the ~20-min drain operation

@@ -21,7 +21,7 @@ generators:
   lighttrap_diagram: {script: src/generators/generate_lighttrap_diagram.py, outputs: [diagrams/lighttrap-sheet1.png, diagrams/lighttrap-sheet2.png]}
   line_of_sight: {script: src/generators/generate_line_of_sight.py, outputs: [diagrams/line-of-sight.png]}
   mini_tbs_diagram: {script: src/generators/generate_mini_tbs_diagram.py, outputs: [diagrams/mini-tbs-sheet1.png]}
-  panel_layout: {script: src/generators/generate_panel_layout.py, outputs: [diagrams/panel-layout.png, diagrams/panel-layout-back.png]}
+  panel_layout: {script: src/generators/generate_panel_layout.py, outputs: [diagrams/panel-layout.png, diagrams/pinhole-panel.png, diagrams/panel-spine-view-a.png, diagrams/panel-spine-view-b.png]}
   pinhole_wall_elevation: {script: src/generators/generate_pinhole_wall_elevation.py, outputs: [diagrams/pinhole-wall-elevation.png]}
   plate_drawing: {script: src/generators/generate_plate_drawing.py, outputs: [diagrams/plate-drawing-sheet1.png, diagrams/plate-drawing-sheet2.png]}
   portrait_viz: {script: src/generators/generate_portrait_viz.py, outputs: [diagrams/portrait-camera-schematic.png, diagrams/portrait-optimal-3m.png, diagrams/portrait-scale-comparison.png]}
@@ -41,3 +41,7 @@ models:
   film-plane: {script: src/models/generate_film_plane_model.py, outputs: [models/film-plane.skp, src/models/film-plane.rb]}
   lighttrap: {script: src/models/generate_lighttrap_model.py, outputs: [models/lighttrap.skp, src/models/lighttrap.rb]}
   electrical: {script: src/models/generate_electrical_model.py, outputs: [models/electrical.skp, src/models/electrical.rb]}
+  # water = the combined wet-end + IBC plumbing corridor (both plumbing panels). generate_pinhole_water_panel.py
+  # imports generate_corridor_water_panel.py; built via --send, saved via --save (no .rb). corridor-panel.skp
+  # is a scratch standalone corridor view (gitignored) — water.skp is the embedded deliverable.
+  water: {script: src/models/generate_pinhole_water_panel.py, outputs: [models/water.skp]}

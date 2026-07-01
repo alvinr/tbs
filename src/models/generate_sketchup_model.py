@@ -272,6 +272,22 @@ def hex_to_rgb(h):
     return (int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16))
 
 
+# Neutral that muted "context" colors blend toward — a light blue-grey matching the
+# GhostEquip ghost so faded context reads as a quiet wash, not a saturated volume.
+MUTE_NEUTRAL = (190, 190, 195)
+
+def mute_hex(h, f, neutral=MUTE_NEUTRAL):
+    """Blend a '#RRGGBB' color a fraction `f` toward `neutral` (0 = unchanged, 1 = full
+    neutral).  Used to desaturate ghosted context (e.g. IBC tanks) so strong circuit
+    colors don't bury the key components — matches the muted feel of overview.skp."""
+    if not f:
+        return h
+    r, g, b = hex_to_rgb(h)
+    nr, ng, nb = neutral
+    blend = lambda c, n: round(c * (1 - f) + n * f)
+    return "#%02X%02X%02X" % (blend(r, nr), blend(g, ng), blend(b, nb))
+
+
 # Web viewers (e.g. Sketchfab) cap material count at ~100. Dozens of elements
 # share a color, so materials are keyed by color+alpha and reused — the first
 # group to use a given color+alpha names the shared material. This collapses
@@ -285,7 +301,14 @@ def shared_mat_name(name, color, alpha):
     return _MAT_BY_COLOR.setdefault(key, name)
 
 
-def ruby_box(name, x, y, z, w, d, h, color=None, alpha=None, both_sides=False):
+# Ghost/context parameter: every drawing helper below (ruby_box / ruby_cylinder / ruby_tri /
+# ruby_arc_wall / tilted_slab / ruby_pipe / ruby_elbow and the composite pipe/flex/tee runs)
+# takes an optional `mute=0.0` that runs the fill color through mute_hex(color, mute) — DEFAULTING
+# to 0.0 so all current call sites are byte-identical (mute_hex returns the color unchanged at 0).
+# Pass `mute=MUTE_DESAT` (with `alpha=MUTE_ALPHA`) to build a component as quiet CONTEXT at source,
+# exactly as ibc_stack(mute=) already does.  This lets the post-build "mute_groups" re-coloring pass
+# in generate_pinhole_water_panel.py eventually be retired (build context muted at source instead).
+def ruby_box(name, x, y, z, w, d, h, color=None, alpha=None, both_sides=False, mute=0.0):
     """Generate Ruby to create a named box group inside the `ents` context.
 
     Parameters are in mm. x, y, z: origin corner (min X, min Yd, min Z).
@@ -311,6 +334,7 @@ def ruby_box(name, x, y, z, w, d, h, color=None, alpha=None, both_sides=False):
     ]
 
     if color:
+        color = mute_hex(color, mute)
         r, g, b = hex_to_rgb(color)
         # Reuse the material if it already exists so re-sends don't pile up
         # "Container Ceiling2", "Container Ceiling3", … duplicates.
@@ -375,7 +399,7 @@ def ruby_cone_wire(name, apex, base, tag):
 
 
 def ruby_cylinder(name, cx, cy, cz, radius, height, color=None, alpha=None,
-                  n=24, axis="z"):
+                  n=24, axis="z", mute=0.0):
     """Generate Ruby for a cylinder in `ents`, axis along +x/+y/+z.
 
     (cx, cy, cz): center of the base circle. radius/height in mm. Used for
@@ -394,6 +418,7 @@ def ruby_cylinder(name, cx, cy, cz, radius, height, color=None, alpha=None,
         f'  cface.pushpull({mm(height)})',
     ]
     if color:
+        color = mute_hex(color, mute)
         r, g, b = hex_to_rgb(color)
         mat_nm = shared_mat_name(name, color, alpha)
         lines.append(f'  mat = model.materials["{mat_nm}"] || '
@@ -1015,13 +1040,16 @@ def equipment_panel():
 
 # ── IBC stack (4× totes, 2×2) + support rack ─────────────────────────────────
 
-def ibc_stack(alpha=0.55):
+def ibc_stack(alpha=0.55, mute=0.0):
     """Four IBC totes in a 2×2 stack: pallet base + translucent bottle each.
 
     Near column (Yd=30): Brown developer below, Blue #1 on top.
     Far column (Yd=1316): Waste below, Blue #2 on top. X spans 4674–5893.
     ibc-reconfig-v2: 1000L caged composite totes (1168mm), direct-stacked to 2336mm.
     `alpha` sets the bottle translucency (lower = more transparent).
+    `mute` (0–1) desaturates the bottle/pallet colors toward neutral so the stack
+    reads as quiet CONTEXT (a faint tint) rather than saturated volumes — used where
+    the IBC stack is a backdrop to other key systems (e.g. the corridor plumbing view).
     """
     parts = []
     pal = IBC_PALLET_H
@@ -1037,15 +1065,15 @@ def ibc_stack(alpha=0.55):
     for nm, yd, z0, col in totes:
         parts.append(ruby_box(f"{nm} pallet",
                               IBC_COL_X, yd, z0, IBC_W, IBC_D, pal,
-                              color=C_PALLET))
+                              color=mute_hex(C_PALLET, mute), alpha=(alpha if mute else None)))
         parts.append(ruby_box(f"{nm} bottle",
                               IBC_COL_X + inset, yd + inset, z0 + pal,
                               IBC_W - 2 * inset, IBC_D - 2 * inset, bottle_h,
-                              color=col, alpha=alpha))
+                              color=mute_hex(col, mute), alpha=alpha))
     return '\n'.join(parts)
 
 
-def ruby_tri(name, p1, p2, p3, thick, color=None, alpha=None):
+def ruby_tri(name, p1, p2, p3, thick, color=None, alpha=None, mute=0.0):
     """Triangular plate: a face through p1,p2,p3 pushpulled by `thick` along its
     normal (used for gusset plates)."""
     face = ', '.join(f'[{mm(p[0])},{mm(p[1])},{mm(p[2])}]' for p in (p1, p2, p3))
@@ -1058,6 +1086,7 @@ def ruby_tri(name, p1, p2, p3, thick, color=None, alpha=None):
         f'  f.pushpull({mm(thick)})',
     ]
     if color:
+        color = mute_hex(color, mute)
         rr, gg, bb = hex_to_rgb(color)
         mat_nm = shared_mat_name(name, color, alpha)
         out.append(f'  mat = model.materials["{mat_nm}"] || model.materials.add("{mat_nm}")')
@@ -1252,7 +1281,7 @@ def film_plane_mechanism():
 # ── Light-trap drum (revolving entry) ────────────────────────────────────────
 
 def ruby_arc_wall(name, cx, cy, r, wall_t, height, gap_center_deg, gap_deg,
-                  color=None, alpha=None, n=48, z0=0):
+                  color=None, alpha=None, n=48, z0=0, mute=0.0):
     """Hollow curved wall (annular sector, extruded in +Z) with a gap.
 
     The gap (an opening of `gap_deg` centerd on `gap_center_deg`) reads as a
@@ -1281,6 +1310,7 @@ def ruby_arc_wall(name, cx, cy, r, wall_t, height, gap_center_deg, gap_deg,
         f'  face.pushpull({mm(height)})',
     ]
     if color:
+        color = mute_hex(color, mute)
         r_, g_, b_ = hex_to_rgb(color)
         mat_nm = shared_mat_name(name, color, alpha)
         lines.append(f'  mat = model.materials["{mat_nm}"] || '
@@ -1323,7 +1353,7 @@ def light_trap_bay():
 
 # ── Solar array (ground tilt frame, exterior) ────────────────────────────────
 
-def tilted_slab(name, x, y_near, z_base, w, length, t, tilt_deg, color, alpha=None):
+def tilted_slab(name, x, y_near, z_base, w, length, t, tilt_deg, color, alpha=None, mute=0.0):
     """Flat slab tilted up from its near-bottom edge, rising in +Z and -Y (faces
     away from the container, toward the sun). length runs up the tilt."""
     th = math.radians(tilt_deg)
@@ -1331,6 +1361,7 @@ def tilted_slab(name, x, y_near, z_base, w, length, t, tilt_deg, color, alpha=No
     corners = [(x, y_near, z_base), (x + w, y_near, z_base),
                (x + w, y_near + dy, z_base + dz), (x, y_near + dy, z_base + dz)]
     pts = ', '.join(f'[{mm(px)},{mm(py)},{mm(pz)}]' for px, py, pz in corners)
+    color = mute_hex(color, mute)
     r, g, b = hex_to_rgb(color)
     mat_nm = shared_mat_name(name, color, alpha)
     return '\n'.join([
@@ -2065,7 +2096,7 @@ def spray_bar_plumbing():
 
 # ── Water / waste plumbing network ───────────────────────────────────────────
 
-def ruby_pipe(name, p1, p2, r, color=None, alpha=None, n=16):
+def ruby_pipe(name, p1, p2, r, color=None, alpha=None, n=16, mute=0.0):
     """Straight cylindrical pipe between two arbitrary points p1, p2 (mm)."""
     x1, y1, z1 = p1
     x2, y2, z2 = p2
@@ -2081,6 +2112,7 @@ def ruby_pipe(name, p1, p2, r, color=None, alpha=None, n=16):
         f'  pf.pushpull(vec.length)',
     ]
     if color:
+        color = mute_hex(color, mute)
         rr, gg, bb = hex_to_rgb(color)
         mat_nm = shared_mat_name(name, color, alpha)
         lines.append(f'  mat = model.materials["{mat_nm}"] || '
@@ -2092,7 +2124,7 @@ def ruby_pipe(name, p1, p2, r, color=None, alpha=None, n=16):
     return '\n'.join(lines)
 
 
-def ruby_flex_duct(name, p1, p2, r, color=None, alpha=None, ribs=None):
+def ruby_flex_duct(name, p1, p2, r, color=None, alpha=None, ribs=None, mute=0.0):
     """Corrugated flex duct between p1 and p2 — a run of short pipe segments with
     alternating crest/valley radii so it reads as a ribbed flexible duct."""
     L = math.sqrt(sum((p2[i] - p1[i]) ** 2 for i in range(3)))
@@ -2104,12 +2136,12 @@ def ruby_flex_duct(name, p1, p2, r, color=None, alpha=None, ribs=None):
         a = tuple(p1[k] + (p2[k] - p1[k]) * t0 for k in range(3))
         b = tuple(p1[k] + (p2[k] - p1[k]) * t1 for k in range(3))
         rr = r if i % 2 == 0 else r * 0.8            # crest / valley
-        out.append(ruby_pipe(name, a, b, rr, color=color, alpha=alpha, n=14))
+        out.append(ruby_pipe(name, a, b, rr, color=color, alpha=alpha, n=14, mute=mute))
     return '\n'.join(out)
 
 
 def ruby_coil_cord(name, waypoints, r=5.0, color=None, alpha=None,
-                   coil_r=None, pitch=None, pts_per_turn=8):
+                   coil_r=None, pitch=None, pts_per_turn=8, mute=0.0):
     """A 'soft' flexible cord — the visual opposite of the rigid `ruby_pipe_run`:
     a thin conductor that runs as a HELICAL COIL ('curly cord') along each straight
     leg, with short straight stubs at the ends / at each waypoint for termination.
@@ -2131,7 +2163,7 @@ def ruby_coil_cord(name, waypoints, r=5.0, color=None, alpha=None,
         stub = min(max(0.10 * L, 3.0 * r), 0.30 * L)        # straight termination ends
         coil_L = L - 2.0 * stub
         p0 = _vadd(a, _vscale(d, stub))                     # coil start (on axis)
-        out.append(ruby_pipe(name, a, p0, r, color=color, alpha=alpha, n=10))
+        out.append(ruby_pipe(name, a, p0, r, color=color, alpha=alpha, n=10, mute=mute))
         if coil_L > pitch * 0.5:
             ref = (0.0, 0.0, 1.0) if abs(d[2]) < 0.9 else (1.0, 0.0, 0.0)
             u = _vunit(_vcross(d, ref))                      # perpendicular frame
@@ -2145,13 +2177,13 @@ def ruby_coil_cord(name, waypoints, r=5.0, color=None, alpha=None,
                 axial = _vadd(p0, _vscale(d, coil_L * t))
                 pt = _vadd(axial, _vadd(_vscale(u, coil_r * math.cos(ang)),
                                         _vscale(w, coil_r * math.sin(ang))))
-                out.append(ruby_pipe(name, prev, pt, r, color=color, alpha=alpha, n=6))
+                out.append(ruby_pipe(name, prev, pt, r, color=color, alpha=alpha, n=6, mute=mute))
                 prev = pt
             p1 = _vadd(p0, _vscale(d, coil_L))              # coil end (back on axis)
-            out.append(ruby_pipe(name, prev, p1, r, color=color, alpha=alpha, n=8))
-            out.append(ruby_pipe(name, p1, b, r, color=color, alpha=alpha, n=10))
+            out.append(ruby_pipe(name, prev, p1, r, color=color, alpha=alpha, n=8, mute=mute))
+            out.append(ruby_pipe(name, p1, b, r, color=color, alpha=alpha, n=10, mute=mute))
         else:
-            out.append(ruby_pipe(name, p0, b, r, color=color, alpha=alpha, n=10))
+            out.append(ruby_pipe(name, p0, b, r, color=color, alpha=alpha, n=10, mute=mute))
     return '\n'.join(out)
 
 
@@ -2169,7 +2201,7 @@ def _vunit(a):
 
 
 def ruby_elbow(name, A, O, Rc, normal, d_in, theta, r,
-               color=None, alpha=None, n=16, seg=8):
+               color=None, alpha=None, n=16, seg=8, mute=0.0):
     """Swept-torus elbow fitting: a pipe cross-section circle (radius r) at A is
     swept along an arc (centerline radius Rc, center O, plane normal `normal`,
     sweep `theta` rad) — a real 90deg/45deg elbow body, not a butt corner."""
@@ -2189,6 +2221,7 @@ def ruby_elbow(name, A, O, Rc, normal, d_in, theta, r,
         '  f.followme(arc)',
     ]
     if color:
+        color = mute_hex(color, mute)
         rr, gg, bb = hex_to_rgb(color)
         mat_nm = shared_mat_name(name, color, alpha)
         out.append(f'  mat = model.materials["{mat_nm}"] || model.materials.add("{mat_nm}")')
@@ -2200,7 +2233,7 @@ def ruby_elbow(name, A, O, Rc, normal, d_in, theta, r,
 
 
 def ruby_pipe_run(name, waypoints, r, color=None, alpha=None,
-                  elbow_r=None, n=16, seg=8):
+                  elbow_r=None, n=16, seg=8, mute=0.0):
     """Pipe run through axis-aligned `waypoints`: straight segments joined by a
     swept-torus elbow fitting at every interior vertex (short-radius elbow,
     centerline radius = 1x pipe diameter per skill_plumbing_drawing). Direction
@@ -2212,7 +2245,7 @@ def ruby_pipe_run(name, waypoints, r, color=None, alpha=None,
     for i in range(1, len(V)):
         if i == len(V) - 1:
             if _vlen(_vsub(V[i], start)) > 0.5:
-                out.append(ruby_pipe(name, start, V[i], r, color, alpha, n))
+                out.append(ruby_pipe(name, start, V[i], r, color, alpha, n, mute=mute))
             break
         d_in = _vunit(_vsub(V[i], V[i-1]))
         d_out = _vunit(_vsub(V[i+1], V[i]))
@@ -2229,15 +2262,15 @@ def ruby_pipe_run(name, waypoints, r, color=None, alpha=None,
         O = _vadd(A, _vscale(n_in, Rc))
         normal = _vunit(_vcross(d_in, d_out))
         if _vlen(_vsub(A, start)) > 0.5:
-            out.append(ruby_pipe(name, start, A, r, color, alpha, n))
+            out.append(ruby_pipe(name, start, A, r, color, alpha, n, mute=mute))
         out.append(ruby_elbow(name + " elbow", A, O, Rc, normal, d_in, theta,
-                              r, color, alpha, n, seg))
+                              r, color, alpha, n, seg, mute=mute))
         start = B
     return '\n'.join(out)
 
 
 def ruby_flex_run(name, waypoints, r, color=None, alpha=None,
-                  elbow_r=None, n=16, seg=8):
+                  elbow_r=None, n=16, seg=8, mute=0.0):
     """Like ruby_pipe_run but the straight legs are corrugated flex duct
     (ruby_flex_duct); bends use the same swept-torus elbow fitting so the run
     stays orthogonal (per skill_plumbing_drawing) — right-angle connections."""
@@ -2248,7 +2281,7 @@ def ruby_flex_run(name, waypoints, r, color=None, alpha=None,
     for i in range(1, len(V)):
         if i == len(V) - 1:
             if _vlen(_vsub(V[i], start)) > 0.5:
-                out.append(ruby_flex_duct(name, start, V[i], r, color, alpha))
+                out.append(ruby_flex_duct(name, start, V[i], r, color, alpha, mute=mute))
             break
         d_in = _vunit(_vsub(V[i], V[i-1]))
         d_out = _vunit(_vsub(V[i+1], V[i]))
@@ -2265,14 +2298,14 @@ def ruby_flex_run(name, waypoints, r, color=None, alpha=None,
         O = _vadd(A, _vscale(n_in, Rc))
         normal = _vunit(_vcross(d_in, d_out))
         if _vlen(_vsub(A, start)) > 0.5:
-            out.append(ruby_flex_duct(name, start, A, r, color, alpha))
+            out.append(ruby_flex_duct(name, start, A, r, color, alpha, mute=mute))
         out.append(ruby_elbow(name + " elbow", A, O, Rc, normal, d_in, theta,
-                              r, color, alpha, n, seg))
+                              r, color, alpha, n, seg, mute=mute))
         start = B
     return '\n'.join(out)
 
 
-def ruby_tee(name, node, run_dir, branch_dir, r, color=None, alpha=None, n=16):
+def ruby_tee(name, node, run_dir, branch_dir, r, color=None, alpha=None, n=16, mute=0.0):
     """Tee fitting body at a branch point: a fat run-through stub (along
     run_dir) plus a fat branch stub (along branch_dir), OD slightly larger than
     the pipe — a real tee, not a butt junction. The three pipe runs plug into
@@ -2284,8 +2317,8 @@ def ruby_tee(name, node, run_dir, branch_dir, r, color=None, alpha=None, n=16):
     a = _vadd(node, _vscale(ru, -L))
     b = _vadd(node, _vscale(ru, L))
     c = _vadd(node, _vscale(bu, L))
-    return '\n'.join([ruby_pipe(name, a, b, rt, color, alpha, n),
-                      ruby_pipe(name, node, c, rt, color, alpha, n)])
+    return '\n'.join([ruby_pipe(name, a, b, rt, color, alpha, n, mute=mute),
+                      ruby_pipe(name, node, c, rt, color, alpha, n, mute=mute)])
 
 
 def water_plumbing():

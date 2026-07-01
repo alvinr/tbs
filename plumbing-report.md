@@ -1,18 +1,35 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
-# Plumbing Panel Report
+# Plumbing Report
+
+> **Two plumbing panels.** The water-handling equipment is split across two panels: the
+> **Corridor Plumbing Panel** (pumps P-01/P-03/P-04/P-05, accumulator ACC-01, diverter DV-02,
+> sample tap SV-02, pump-suction isolation valves — mounted in the IBC plumbing corridor) and the
+> **Pinhole Wall Plumbing Panel** (the wet-end filter loop: pump P-02, the 3-stage Big Blue filter,
+> diverter DV-01, sample tap SV-01 — mounted on the pinhole wall). This report covers both.
+
+## Interactive 3D model
+
+<div class="sketchfab-embed-wrapper" style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;margin-bottom:1em;">
+    <iframe title="TBS-001 Water System Model" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/1dae932430924e9b993e153a16f485fc/embed" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
+</div>
+<p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"><a href="https://sketchfab.com/3d-models/1dae932430924e9b993e153a16f485fc" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">TBS-001 Water System Model</a> by <a href="https://sketchfab.com/alvin91403" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">alvin91403</a> on <a href="https://sketchfab.com" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p>
 
 ## 1. Purpose
 
-The plumbing panel is an 18mm marine plywood board mounted vertically at the
-front (cargo-door-facing) mouth of the IBC plumbing corridor — for walkway reach-in
-access, mounting on the front-portal frame. It spans the full 270mm
-corridor width and 2,060mm in height. All pumps,
-filters, the pressure accumulator, diverter valves,
-and isolation valves mount on this single panel, concentrating the entire
-water-handling system in one accessible location within the IBC zone.
+The water-handling equipment mounts on **two plumbing panels**:
 
-The panel serves three functions:
+- The **Corridor Plumbing Panel** — an 18mm marine plywood board mounted vertically at the
+  front (cargo-door-facing) mouth of the IBC plumbing corridor on the front-portal frame
+  (270mm corridor width × 2,060mm tall). It carries the waste/recycle pumps
+  (P-01, P-03, P-04, P-05), the pressure accumulator (ACC-01), the Stage-A diverter (DV-02),
+  the pH sample tap (SV-02), and the pump-suction isolation valves.
+- The **Pinhole Wall Plumbing Panel** — the wet-end filter loop mounted on the pinhole wall:
+  pump P-02, the 3-stage Big Blue filter (F1/F2/F3), the filter-output diverter (DV-01), and the
+  pH sample tap (SV-01).
+
+Each panel concentrates its part of the system in one accessible location. The panels serve
+three functions:
 
 1. **Structural mounting surface** — provides a rigid, flat substrate for
    equipment that would otherwise require individual mounting brackets on the
@@ -39,31 +56,30 @@ The panel serves three functions:
 | Mounting | L-brackets to the front-portal frame uprights, 4 points |
 | Finish | Sealed with marine varnish or epoxy; white face for visibility |
 
+The table above is the **Corridor Plumbing Panel**. The **Pinhole Wall Plumbing Panel** is the
+wet-end board mounted on the pinhole wall carrying the 3-stage filter skid, its feed pump
+P-02, the filter-output diverter DV-01, and the SV-01 sample tap — see [Water System Report](water-system-report.md)
+§3 for its location and the spray-bar/chemistry-tap supply it feeds.
+
 ---
 
 ## 3. Equipment Layout
 
-The panel face is divided into two zones: a filter skid at the bottom and a pump
-zone above, with equipment arranged in columns for pipe routing efficiency.
+Equipment is split across the two panels. The **Pinhole Wall Plumbing Panel** carries the
+3-stage filter skid and its feed pump P-02 (§3.1); the **Corridor Plumbing Panel** carries the
+four corridor pumps (P-01/P-03/P-04/P-05) and the accumulator (§3.2–§3.3). Each panel has its
+own front-elevation drawing; the corridor backside (drain-riser spine + Circuit-C power) is a
+third sheet.
 
-**Plumbing Panel Layout — Front elevation with pump zone, filter skid, valves, and full plumbing routing**
-![TBS-001 — Plumbing Panel Layout](assets/panel-layout.png)
-
-**Backside (corridor side section) — what is mounted on the *back* of the panel:**
-the drain-riser backing spine (18mm ply teed off the panel, with a lowered top
-and a capped shelf), the X3/X4 drain risers running from the P-05/P-03 discharges
-down to the sealed end-wall ports, and the Blue fill trunk resting on the shelf.
-Pumps mount on the front face; the drain/fill runs are on the back, in the
-corridor gap clear of both tote columns.
-
-![TBS-001 — Plumbing Panel Backside](assets/panel-layout-back.png)
-
-### 3.1 Filter Skid
+### 3.1 Pinhole Wall Plumbing Panel — Filter Skid + P-02
 
 Three 4.5"×10" Big Blue filter housings mounted vertically (sump down) in a
 slotted angle frame. The housings stack vertically with 30mm gaps between them.
 Flow path: P-02 output → F-01 (top, coarsest) → F-02 (middle) → F-03 (bottom,
 finest) → SV-01 sample tap → 3W-DV-01.
+
+**Pinhole Wall Plumbing Panel — Front elevation: P-02, 3-stage filter stack, SV-01 sample tap, and DV-01 diverter**
+![TBS-001 — Pinhole Wall Plumbing Panel Layout](assets/pinhole-panel.png)
 
 | Component | Position (Z, mm) | Specification |
 |-----------|-----------------|---------------|
@@ -93,28 +109,23 @@ integrated bracket. 1" NPT inlet/outlet; a single 1/2"→1" bushing reducer
 connects P-02 output to the unit inlet. See
 [Water System Report](water-system-report.md) §3.2 for sizing rationale.
 
-### 3.2 Pump Zone
+### 3.2 Corridor Plumbing Panel — Pump Zone
 
-Five Shurflo 2088 pumps in a 2-column layout above the filter stack:
+**Four** Shurflo 2088 pumps mount on the Corridor panel (P-02 lives on the Pinhole Wall
+panel with the filter loop, §3.1). The accumulator ACC-01 sits at the column foot (§3.3).
 
-| Pump | Column | Circuit | Function |
-|------|--------|---------|----------|
-| P-01 | Left | Blue | Clean water supply to spray bar |
-| P-04 | Left | Black/Brown | Tray drain transfer (sump → IBC-3 or IBC-4) |
-| P-02 | Right | Brown | Brown recycle (IBC-3 → filter train) |
-| P-03 | Right | Black | Waste evacuation (IBC-4 residual → external drain) |
-| P-05 | Right | Brown | Brown drain-out (IBC-3 → external drain) |
+| Pump | Circuit | Function |
+|------|---------|----------|
+| P-01 | Blue | Clean water supply to spray bar (via ACC-01) |
+| P-04 | Brown/Black | Tray drain transfer (sump → IBC-3 or IBC-4) |
+| P-03 | Black | Waste evacuation (IBC-4 residual → external drain X4) |
+| P-05 | Brown | Brown drain-out (IBC-3 → external drain X3) |
 
 All pumps are identical Shurflo 2088-554-144 units: 12VDC, 3.5 GPM, 45 PSI,
-self-priming diaphragm. Vertical mount orientation with ports at the head (top),
-127mm body width × 218mm body height × 100mm protrusion from panel. Each pump
-mounts on a stainless steel mounting bracket with 4 bolts through the plywood.
-
-**Left column** (near IBC side): P-01 and P-04 share suction from
-the near IBC column (Blue IBC-1/IBC-2 and tray sump respectively).
-
-**Right column** (far IBC side): P-02, P-03, and P-05 serve the
-Brown and Waste circuits from the far IBC column.
+self-priming diaphragm. Vertical mount, ports at the head, 127mm body width ×
+218mm body height × ~114mm protrusion. Each mounts on a stainless 4-bolt bracket
+through the plywood. They sit in a single vertical column in the 270mm corridor;
+P-01 and P-04 draw from the near IBC column, P-03 and P-05 from the far column.
 
 #### Pump electrical — Circuit C (one at a time)
 
@@ -138,17 +149,39 @@ fuse covers a single pump with margin; simultaneous running is not intended.
 Switches and the distribution block sit **above the spill line**, IP-rated and sealed,
 with drip loops, per the wet-zone rules in [Electrical Report §7.5](electrical-report.md).
 
+**Corridor Plumbing Panel — Front elevation: four pumps, ACC-01, DV-02 diverter, SV-02 sample tap, and full pipe routing**
+![TBS-001 — Corridor Plumbing Panel Layout](assets/panel-layout.png)
+
+**Spine side-sections (corridor side section along Yd) — two sheets, opposite
+faces of the drain-riser spine** (18mm ply teed off the panel). Pumps mount on
+the front face; the drain runs hang on the spine in the corridor gap clear of
+both tote columns; the Circuit-C pump-power distribution feeds all five pumps.
+P-02 lives on the Pinhole Wall panel and shares Circuit C. The two views share
+all structure + fittings as landmarks; each face's own pipe runs appear on its
+own sheet.
+
+**Spine View A — intake face:** suctions (BV-01 Blue, tray sump, IBC-3),
+the DV-01 blue-recycle riser climbing the spine into the X1 fill cross, the
+DV-01-waste → IBC-4 merge, and the IBC-1 / Blue-supply fills.
+![TBS-001 — Corridor Plumbing Panel Spine View A (−Yd intake face)](assets/panel-spine-view-a.png)
+
+**Spine View B — discharge face (a mirror of A):** the X3 brown (P-05 →
+Z=1700) and X4 gray (P-03 → Z=1620) pump discharges running full along the
+spine to the sealed end-wall ports, the P-01 → ACC drop, the P-04 discharge
+through SV-02, and the IBC-2 fill.
+![TBS-001 — Corridor Plumbing Panel Spine View B (+Yd discharge face)](assets/panel-spine-view-b.png)
+
 ### 3.3 Accumulator
 
 | Parameter | Value |
 |-----------|-------|
-| Model | SeaFlo or equivalent, 0.75L (23.5 oz) |
-| Dimensions | 127mm OD × 150mm length |
-| Position | Left column, above P-04 |
+| Model | SeaFlo SFAT-075-125-01, 0.75L (23.5 oz) |
+| Dimensions | 127mm OD × 200mm length |
+| Position | Corridor panel, at the column **foot** (below P-01 — the P-01/ACC order was swapped to drop the accumulator to the base) |
 | Port | 1/2" NPT, bottom |
-| Function | Smooths P-01 pump cycling, maintains pressure when pump is off |
+| Function | Smooths P-01 pump cycling, maintains pressure when the pump is off |
 
-ACC-01 sits inline on the Blue discharge path between P-01 outlet and BV-02.
+ACC-01 sits inline on the Blue discharge path between the P-01 outlet and the spray-bar supply trunk (BV-05).
 The accumulator's air bladder absorbs pressure pulsations from the diaphragm
 pump, providing steady flow to the spray bar.
 
@@ -158,17 +191,19 @@ pump, providing steady flow to the spray bar.
 
 ### 4.1 Ball Valves (Isolation)
 
-| Valve | Size | Position | Function |
-|-------|------|----------|----------|
-| BV-01 | 1/2" | P-01 suction header | Blue supply isolation — closes Blue circuit |
-| BV-02 | 1/2" | Blue discharge to spray bar | Operator control — open during wash passes |
-| BV-06 | 3/4" | Chemistry tap on pinhole wall | Shut-off for chemistry mixing water |
-| BV-07 | 1/2" | Above P-05 | Brown IBC-3 drain-out isolation |
-| BV-08 | 1/2" | P-03 suction | Waste IBC-4 drain-out isolation |
+| Valve | Size | Panel | Function |
+|-------|------|-------|----------|
+| BV-01 | 1/2" | Corridor | P-01 (Blue supply) suction isolation |
+| BV-02 | 1/2" | Corridor | P-05 (Brown drain) suction isolation |
+| BV-03 | 1/2" | Pinhole Wall | P-02 (filter loop) suction isolation |
+| BV-04 | 1/2" | supply | TAP-01 chemistry-tap isolation |
+| BV-05 | 1/2" | supply | Spray-bar feed isolation |
+| BV-06 | 1/2" | Corridor | P-03 (waste evacuation) suction isolation |
 
-BV-02 is the primary operator-controlled valve. It is mounted on the pinhole
-wall — waist height from the walkway deck,
-directly in front of the operator during spray bar wash passes.
+BV-01/BV-02/BV-06 are the Corridor panel pump-suction isolation valves; BV-03 the
+Pinhole Wall panel's. **BV-05** is the primary operator-controlled valve — on the
+spray-bar feed, opened during wash passes; **BV-04** isolates the TAP-01 chemistry
+tap. All six are 1/2" Banjo V050FP quarter-turn ball valves.
 
 ### 4.2 Diverter Valves (3-Way)
 
@@ -187,24 +222,25 @@ Blue (IBC-2) for recycling; if pH >7.5 or discolored, route to Black (IBC-4).
 
 | Valve | Size | Position | Function |
 |-------|------|----------|----------|
-| CV-1 | 1" NPT | X1 bulkhead fill line | Prevents backflow from IBC-1 to external port |
-| CV-3 | 1" NPT | X3 bulkhead drain line | Prevents backflow from external to IBC-3 |
-| CV-4 | 1" NPT | X4 bulkhead drain line | Prevents backflow from external to IBC-4 |
+| CV-1 | 1" NPT | X1 bulkhead fill line | Prevents backflow from the Blue totes to the external fill port |
 
-Spring-loaded inline check valves (PVC body, EPDM seal) on each external
-bulkhead line. Installed in the IBC zone, not on the plumbing panel.
+**Only CV-1 remains.** The Shurflo 2088 pumps have integral check valves, so the
+previously-specified CV-2/CV-3/CV-4 on the pump-driven return/drain lines are
+redundant and were dropped — CV-1 guards the single gravity (non-pumped) path, the
+X1 fresh-fill. Installed in the IBC zone, not on a panel.
 
 ### 4.4 Sample Tap (SV-01)
 
-| Valve | Size | Position | Function |
-|-------|------|----------|----------|
-| SV-01 | 1/2" | Filtered-Brown line, between the F-03 outlet and 3W-DV-01 | pH sample draw — lets the operator meter the filtered water before diverting |
+| Valve | Size | Panel | Function |
+|-------|------|-------|----------|
+| SV-01 | 1/2" | Pinhole Wall | Filtered-Brown line (F-03 outlet → 3W-DV-01) — pH sample before the Blue/Black diversion |
+| SV-02 | 1/2" | Corridor | P-04 tray-drain discharge (→ 3W-DV-02) — pH sample before the Brown/Black diversion |
 
 The filter output has no usable sampling point without SV-01 — a capped tee
 cannot be drawn from. **SV-01** is a 1/2" PP quarter-turn ball valve (same Banjo
 family as the BV isolation valves) on a 1"×1/2" reducing branch tee, with a short
 downturned hose-barb spout. It sits on the panel face **above the spill line**,
-spout pointing toward the operator (−X) so a cup fits beneath it from the right
+spout pointing toward the operator so a cup fits beneath it from the right
 walkway.
 
 **Use:** run P-02 to pressurize the filtered line, crack SV-01 to catch ~50 ml in
@@ -238,12 +274,12 @@ inlet (P-02 output to F-01 input).
 ### 6.1 Blue System — Clean Water Supply
 
 ```
-IBC-1/IBC-2 → BV-01 → P-01 → ACC-01 → BV-02 → spray bar
+IBC-1/IBC-2 → BV-01 → P-01 → ACC-01 → BV-05 → spray bar
 ```
 
 P-01 draws from the Blue IBC manifold (two IBCs plumbed in parallel via 1"
 HDPE with isolation valves), pressurizes through ACC-01 (0.75L accumulator),
-and delivers to BV-02 on the pinhole wall. A 4m flexible hose connects BV-02
+and delivers to BV-05 on the spray-bar feed. A 4m flexible hose connects BV-05
 to the spray bar center feed bulkhead.
 
 ### 6.2 Brown System — Used Water Recycling
@@ -300,8 +336,8 @@ through the backing board.
 
 Each Shurflo 2088 mounts on a stainless steel 4-bolt bracket (Shurflo OEM
 accessory). The bracket screws through the plywood panel. Pump body orientation
-is vertical (long axis along Z) with ports at the head (top), facing left and
-right (along Yd). This orientation minimizes the footprint on the 270mm-wide
+is vertical with ports at the head (top), facing left and
+right. This orientation minimizes the footprint on the 270mm-wide
 panel and allows gravity to assist with priming.
 
 ### 7.4 Panel Protrusion Envelope
@@ -341,37 +377,46 @@ Pipes enter and exit the panel zone at the left and right panel edges:
 
 ## 9. Parts List
 
-| # | Item | Specification | Qty | Est. Cost |
-|---|------|--------------|-----|-----------|
-| 1 | Marine plywood panel | 18mm BS 1088, 270×2,060mm | 1 | $40–$65 |
-| 2 | Shurflo 2088-554-144 pump | 12VDC, 3.5 GPM, 45 PSI, self-priming diaphragm | 5 | $275–$350 |
-| 3 | Shurflo pump mounting bracket | Stainless steel, for 2088 series | 5 | $40–$60 |
-| 4 | Pressure accumulator (ACC-01) | 0.75L (23.5 oz), 1/2" NPT port | 1 | $25–$40 |
-| 5 | Big Blue filter housing 4.5"×10" | Standard 1" NPT head, with clamp and wrench | 3 | $60–$90 |
-| 6 | F-01 cartridge — 5μm MPP sediment | 4.5"×10" Big Blue format | 1 | $8–$15 |
-| 7 | F-02 cartridge — KDF-55 heavy metal | 4.5"×10" Big Blue format | 1 | $20–$35 |
-| 8 | F-03 cartridge — CTO carbon block | 4.5"×10" Big Blue format | 1 | $10–$18 |
-| 9 | Slotted angle frame | 25×25×3mm slotted steel angle, cut and bolted | 1 set | $20–$35 |
-| 10 | Filter backing board | 18mm plywood, within frame | 1 | $10–$15 |
-| 11 | U-bracket clamps (filter) | Steel, with HDPE spacer blocks | 3 sets | $15–$25 |
-| 12 | Ball valve BV-01 | 1/2" FNPT, full-port, quarter-turn | 1 | $8–$12 |
-| 13 | Ball valve BV-02 | 1/2" FNPT, full-port, quarter-turn | 1 | $8–$12 |
-| 14 | Ball valve BV-06 | 3/4" FNPT, polypropylene, quarter-turn | 1 | $8–$12 |
-| 15 | Ball valve BV-07 | 1/2" FNPT, full-port | 1 | $8–$12 |
-| 16 | Ball valve BV-08 | 1/2" FNPT, full-port | 1 | $8–$12 |
-| 17 | 3-way diverter valve 3W-DV-01 | 1" FNPT, L-port or T-port, HDPE compatible | 1 | $18–$30 |
-| 18 | 3-way diverter valve 3W-DV-02 | 1/2" FNPT, L-port or T-port, HDPE compatible | 1 | $12–$22 |
-| 19 | Check valve CV-1/CV-3/CV-4 | 1" NPT, PVC body, EPDM seal, spring-loaded | 3 | $24–$42 |
-| 20 | 1/2" HDPE pipe (Sch 40) | Pump suction/discharge runs, ~20m total | 1 lot | $30–$50 |
-| 21 | 1" HDPE pipe (Sch 40) | Filter inter-stage + IBC connections, ~8m | 1 lot | $25–$40 |
-| 22 | 1/2" HDPE fittings | Elbows, tees, couplings, adapters | 1 lot | $30–$50 |
-| 23 | 1" HDPE fittings | Elbows, tees, reducers (1"→1/2") | 1 lot | $20–$35 |
-| 24 | Banjo polypropylene fittings | Ball valves, elbows, tees (Banjo LE/V series) | 1 lot | $25–$40 |
-| 25 | 1/2" reinforced braided PVC hose | 4m, BV-02 to spray bar center feed | 1 | $12–$20 |
-| 26 | 1" reinforced suction hose | 6 ft, P-04 sump pickup over tray rim | 1 | $12–$20 |
-| 27 | Panel mounting L-brackets + M10 bolts | Connects panel to IBC frame uprights | 4 sets | $15–$25 |
-| 28 | Sample tap SV-01 | 1/2" PP ball valve + barb spout + 1"×1/2" branch tee, on the filtered line before DV-01 | 1 | $10–$18 |
-| | **Total** | | | **$835–$1,328** |
+The panel-mounted equipment for each plumbing panel is listed below — generated from the parts
+registry (firm low–high bands, April-2026 indicative basis). The **full** water-system BOM (pipe,
+fittings, IBC totes, external bulkhead ports, wiring, consumables) is in the
+[Water System Report](water-system-report.md) §Parts-List; the panel ply/backing and mounting
+hardware are sourced there and in the IBC stacking frame line.
+
+### 9.1 Corridor Plumbing Panel
+
+<!-- BEGIN parts:corridor-plumbing-panel -->
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| [Shurflo 2088-554-144 pump (P-01 Blue supply)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 1 ea | Amazon | $55–$70 |
+| Shurflo 2088-554-144 pump (P-03 waste evacuation) | 12VDC, 3.5 GPM, 45 PSI; empties IBC-4 residual below X4 (~120L) | 1 ea | Amazon | $65 |
+| Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 12VDC, 3.5 GPM, 45 PSI; tray drain to IBC-3 (~900mm lift) | 1 ea | Amazon | $65 |
+| Shurflo 2088-554-144 pump (P-05 Brown drain) | 12VDC, 3.5 GPM, 45 PSI; evacuates IBC-3 (Brown) residual to the X3 end-wall port | 1 ea | Amazon | $65 |
+| [SeaFlo accumulator (0.75 L)](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) (SFAT-075-125-01) | 0.75 L, 125 PSI, 1/2" MNPT | 1 ea | Amazon | $35 |
+| Corridor plumbing-panel marine ply (18mm) | 4×8 ft 18mm BS 1088 (or equivalent) marine plywood — rear backing board (~170×2196) + drain-riser backing spine (~456×1966) + spacer offcuts; ~1.3 m² used. Price est. | 1 sheet | marine plywood supplier / Home Depot | $120–$200 |
+| Pump-mount shirt marine ply (25mm) | 25mm BS 1088 (or equivalent) marine plywood, ~610×1650 cut piece — pump-mount shirt behind P-01..P-05 + 6× shirt-to-panel spacer blocks. Price est. | 1 piece | marine plywood supplier / Home Depot | $70–$130 |
+| Corridor panel mount hardware (brackets + fasteners) | 6× steel angle brackets (panel → IBC-frame front-portal uprights), shirt-to-panel screws, lag bolts. Price est. | 1 lot | Home Depot | $25–$50 |
+| Banjo V050FP ball valve 1/2" FNPT | PP full-port quarter-turn; pump-suction isolation BV-01 (P-01), BV-02 (P-05), BV-06 (P-03) | 3 ea | Amazon | $18–$30 |
+| 3-way diverter valve 1/2" FNPT | L/T-port HDPE-compatible; 3W-DV-02 (tray drain) | 1 ea | Amazon | $12–$22 |
+| pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | pH sample on the P-04 tray-drain discharge, before 3W-DV-02; same build as SV-01 | 1 ea | Amazon | $10–$18 |
+| **Corridor Plumbing Panel total** | | | | **$540–$750** |
+<!-- END parts:corridor-plumbing-panel -->
+
+### 9.2 Pinhole Wall Plumbing Panel
+
+<!-- BEGIN parts:pinhole-wall-plumbing-panel -->
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| [Shurflo 2088-554-144 pump (P-02 filter loop)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 1 ea | Amazon | $55–$70 |
+| Big Blue filter housing (4.5"×10") | Ø184×333mm/housing, 1" NPT ports, integrated bracket (Express Water / Geekpure / iSpring) | 1 ea | Amazon | $200–$300 |
+| MPP 5-micron sediment cartridge 4.5"×10" | Melt-blown polypropylene depth filter (F-1 stage) | 3 ea | Amazon | $18–$30 |
+| KDF-55 heavy-metal cartridge 4.5"×10" | KDF-55 media for dissolved iron/metal removal (F-2 stage) | 2 ea | Amazon | $40–$70 |
+| CTO carbon block cartridge 4.5"×10" | Coconut shell activated carbon block (F-3 stage) | 3 ea | Amazon | $24–$45 |
+| Banjo V050FP ball valve 1/2" FNPT | PP full-port quarter-turn; pump-suction isolation BV-03 (P-02) | 1 ea | Amazon | $6–$10 |
+| 3-way diverter valve 1" FNPT | L/T-port; 3W-DV-01 (filter output) | 1 ea | Amazon | $18–$30 |
+| pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | Filtered-water sample draw before 3W-DV-01; Banjo V050FP 1/2" PP ball valve + downturned 1/2" hose barb on a 1"×1/2" reducing branch tee, panel face above spill line | 1 ea | Amazon | $10–$18 |
+| **Pinhole Wall Plumbing Panel total** | | | | **$371–$573** |
+<!-- END parts:pinhole-wall-plumbing-panel -->
 
 ---
 

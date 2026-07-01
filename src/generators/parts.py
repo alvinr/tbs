@@ -57,6 +57,8 @@ class Part:
     audit_status: str = ""    # ✅ FIXED | ⚠ OPEN | confirm
     # chemistry — folded-in cyanotype shopping (optional)
     tier: str = ""            # '' | 'lean' | 'standard' | 'rich'
+    # plumbing-panel split (water system only) — keyword-only so existing positional calls are unaffected
+    panel: str = ""           # '' | 'Corridor' | 'Pinhole Wall' — drives the per-panel sub-lists in plumbing-report.md
 
 
 def line(p: Part) -> tuple[float, float]:
@@ -120,8 +122,7 @@ PARTS: list[Part] = [
 
     # ═══ water family (split per owning report; reconciled to costing.WATER lines — water-system §8
     # item-sums after the 2026 reconciliation). The §8 group ("water") = storage+pumps+filter+valves+
-    # pipe+wiring+consumables; the frame/tray/spray are SEPARATE systems (their own reports). The §8
-    # bundles below are placeholders pending full itemization (Increment 2). ═══
+    # pipe+wiring+consumables; the frame/tray/spray are SEPARATE systems (their own reports). ═══
     # — storage (395–720) —
     Part("ibc-tote-1000l", "IBC tote (1,000 L caged)", "water-equipment",
          "water", 4, "ea", 80, 150, "Container Exchanger",
@@ -132,49 +133,72 @@ PARTS: list[Part] = [
          "water", 3, "ea", 25, 40, "McMaster-Carr", part_no="4464K115",
          url="https://www.mcmaster.com/4464K115", spec="External fill/drain port, welded through container wall"),
     # — pumps (315–345) —
-    Part("shurflo-2088-p12", "Shurflo 2088-554-144 pump (P-01, P-02)", "water-equipment",
-         "water", 2, "ea", 55, 70, "Amazon",
+    Part("shurflo-2088-p1", "Shurflo 2088-554-144 pump (P-01 Blue supply)", "water-equipment",
+         "water", 1, "ea", 55, 70, "Amazon",
          url="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C",
          spec='12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports',
          dims="216×127×114", datasheet="Shurflo 2088-554-144", modeled_const="PUMP_D×PUMP_YD_SPAN×Z",
-         audit_status="✅ FIXED (minor) — protrusion PUMP_D 100→114"),
+         audit_status="✅ FIXED (minor) — protrusion PUMP_D 100→114", panel="Corridor"),
+    Part("shurflo-2088-p2", "Shurflo 2088-554-144 pump (P-02 filter loop)", "water-equipment",
+         "water", 1, "ea", 55, 70, "Amazon",
+         url="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C",
+         spec='12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports', panel="Pinhole Wall"),
     Part("shurflo-2088-p3", "Shurflo 2088-554-144 pump (P-03 waste evacuation)", "water-equipment",
-         "water", 1, "ea", 65, 65, "Amazon", spec="12VDC, 3.5 GPM, 45 PSI; empties IBC-4 residual below X4 (~120L)"),
+         "water", 1, "ea", 65, 65, "Amazon", spec="12VDC, 3.5 GPM, 45 PSI; empties IBC-4 residual below X4 (~120L)", panel="Corridor"),
     Part("shurflo-2088-p4", "Shurflo 2088-554-144 pump (P-04 tray drain transfer)", "water-equipment",
-         "water", 1, "ea", 65, 65, "Amazon", spec="12VDC, 3.5 GPM, 45 PSI; tray drain to IBC-3 (~900mm lift)"),
+         "water", 1, "ea", 65, 65, "Amazon", spec="12VDC, 3.5 GPM, 45 PSI; tray drain to IBC-3 (~900mm lift)", panel="Corridor"),
+    Part("shurflo-2088-p5", "Shurflo 2088-554-144 pump (P-05 Brown drain)", "water-equipment",
+         "water", 1, "ea", 65, 65, "Amazon", spec="12VDC, 3.5 GPM, 45 PSI; evacuates IBC-3 (Brown) residual to the X3 end-wall port", panel="Corridor"),
     Part("seaflo-accumulator", "SeaFlo accumulator (0.75 L)", "water-equipment",
          "water", 1, "ea", 35, 35, "Amazon",
          url="https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8",
          spec='0.75 L, 125 PSI, 1/2" MNPT', part_no="SFAT-075-125-01",
          dims="200×127×125", datasheet="SeaFlo SFAT-075-125-01", modeled_const="Ø127×200 cyl",
-         audit_status="✅ FIXED — cylinder 150→200"),
+         audit_status="✅ FIXED — cylinder 150→200", panel="Corridor"),
     Part("shurflo-bracket", "Shurflo pump mounting bracket", "fasteners-hardware",
-         "water", 4, "ea", 10, 10, "Amazon", spec="Stainless, 2088 series (3× manifold + 1× IBC corridor for P-03)"),
+         "water", 5, "ea", 10, 10, "Amazon", spec="Stainless, 2088 series — one per pump (P-01..P-05)"),
+    # — corridor plumbing-panel structure (3D-derived marine ply; previously uncosted) —
+    Part("corridor-panel-ply-18", "Corridor plumbing-panel marine ply (18mm)", "timber-ply",
+         "water", 1, "sheet", 120, 200, "marine plywood supplier", "Home Depot",
+         spec='4×8 ft 18mm BS 1088 (or equivalent) marine plywood — rear backing board (~170×2196) + drain-riser backing spine (~456×1966) + spacer offcuts; ~1.3 m² used. Price est.',
+         panel="Corridor"),
+    Part("corridor-panel-ply-25", "Pump-mount shirt marine ply (25mm)", "timber-ply",
+         "water", 1, "piece", 70, 130, "marine plywood supplier", "Home Depot",
+         spec='25mm BS 1088 (or equivalent) marine plywood, ~610×1650 cut piece — pump-mount shirt behind P-01..P-05 + 6× shirt-to-panel spacer blocks. Price est.',
+         panel="Corridor"),
+    Part("corridor-panel-mount", "Corridor panel mount hardware (brackets + fasteners)", "fasteners-hardware",
+         "water", 1, "lot", 25, 50, "Home Depot",
+         spec='6× steel angle brackets (panel → IBC-frame front-portal uprights), shirt-to-panel screws, lag bolts. Price est.',
+         panel="Corridor"),
     # — filter (282–445) —
     Part("bigblue-3stage", 'Big Blue filter housing (4.5"×10")', "water-equipment",
          "water", 1, "ea", 200, 300, "Amazon", dims="Ø184×333",
          spec='Ø184×333mm/housing, 1" NPT ports, integrated bracket (Express Water / Geekpure / iSpring)',
          datasheet="Pentek 4.5×10 BB", modeled_const="BB_OD/BB_H",
-         audit_status="✅ FIXED — BB_OD 130→184; BoM switched to 4.5×10"),
+         audit_status="✅ FIXED — BB_OD 130→184; BoM switched to 4.5×10", panel="Pinhole Wall"),
     Part("cartridge-sediment", 'MPP 5-micron sediment cartridge 4.5"×10"', "water-equipment",
-         "water", 3, "ea", 6, 10, "Amazon", spec="Melt-blown polypropylene depth filter (F-1 stage)"),
+         "water", 3, "ea", 6, 10, "Amazon", spec="Melt-blown polypropylene depth filter (F-1 stage)", panel="Pinhole Wall"),
     Part("cartridge-kdf", 'KDF-55 heavy-metal cartridge 4.5"×10"', "water-equipment",
-         "water", 2, "ea", 20, 35, "Amazon", spec="KDF-55 media for dissolved iron/metal removal (F-2 stage)"),
+         "water", 2, "ea", 20, 35, "Amazon", spec="KDF-55 media for dissolved iron/metal removal (F-2 stage)", panel="Pinhole Wall"),
     Part("cartridge-carbon", 'CTO carbon block cartridge 4.5"×10"', "water-equipment",
-         "water", 3, "ea", 8, 15, "Amazon", spec="Coconut shell activated carbon block (F-3 stage)"),
+         "water", 3, "ea", 8, 15, "Amazon", spec="Coconut shell activated carbon block (F-3 stage)", panel="Pinhole Wall"),
     # — valves & fittings (333–567) —
-    Part("valve-v050fp", 'Banjo V050FP ball valve 1/2" FNPT', "plumbing-fittings",
-         "water", 4, "ea", 6, 10, "Amazon", spec="PP full-port quarter-turn; BV-01, BV-02 + spares"),
+    Part("valve-v050fp-corridor", 'Banjo V050FP ball valve 1/2" FNPT', "plumbing-fittings",
+         "water", 3, "ea", 6, 10, "Amazon", spec="PP full-port quarter-turn; pump-suction isolation BV-01 (P-01), BV-02 (P-05), BV-06 (P-03)", panel="Corridor"),
+    Part("valve-v050fp-wall", 'Banjo V050FP ball valve 1/2" FNPT', "plumbing-fittings",
+         "water", 1, "ea", 6, 10, "Amazon", spec="PP full-port quarter-turn; pump-suction isolation BV-03 (P-02)", panel="Pinhole Wall"),
+    Part("valve-v050fp-supply", 'Banjo V050FP ball valve 1/2" FNPT', "plumbing-fittings",
+         "water", 2, "ea", 6, 10, "Amazon", spec="PP full-port; supply isolation BV-04 (TAP-01 chem tap), BV-05 (spray-bar feed)"),
     Part("valve-v100fp", 'Banjo V100FP ball valve 1" FNPT', "plumbing-fittings",
          "water", 6, "ea", 10, 16, "Amazon", spec="PP full-port; V1/V3/V4, VB1–VB3 (IBC fill/drain)"),
-    Part("valve-v075fp", 'Banjo V075FP ball valve 3/4" FNPT', "plumbing-fittings",
-         "water", 1, "ea", 8, 12, "Amazon", spec="PP full-port; BV-06 (chemistry tap shut-off)"),
     Part("valve-3way-half", '3-way diverter valve 1/2" FNPT', "plumbing-fittings",
-         "water", 1, "ea", 12, 22, "Amazon", spec="L/T-port HDPE-compatible; 3W-DV-02 (tray drain)"),
+         "water", 1, "ea", 12, 22, "Amazon", spec="L/T-port HDPE-compatible; 3W-DV-02 (tray drain)", panel="Corridor"),
     Part("valve-3way-1in", '3-way diverter valve 1" FNPT', "plumbing-fittings",
-         "water", 1, "ea", 18, 30, "Amazon", spec="L/T-port; 3W-DV-01 (filter output)"),
+         "water", 1, "ea", 18, 30, "Amazon", spec="L/T-port; 3W-DV-01 (filter output)", panel="Pinhole Wall"),
     Part("sample-tap-sv01", 'pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee', "plumbing-fittings",
-         "water", 1, "ea", 10, 18, "Amazon", spec='Filtered-water sample draw before 3W-DV-01; Banjo V050FP 1/2" PP ball valve + downturned 1/2" hose barb on a 1"×1/2" reducing branch tee, panel face above spill line'),
+         "water", 1, "ea", 10, 18, "Amazon", spec='Filtered-water sample draw before 3W-DV-01; Banjo V050FP 1/2" PP ball valve + downturned 1/2" hose barb on a 1"×1/2" reducing branch tee, panel face above spill line', panel="Pinhole Wall"),
+    Part("sample-tap-sv02", 'pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee', "plumbing-fittings",
+         "water", 1, "ea", 10, 18, "Amazon", spec="pH sample on the P-04 tray-drain discharge, before 3W-DV-02; same build as SV-01", panel="Corridor"),
     Part("camlock-2in", '2" polypropylene camlock pairs (M+F)', "plumbing-fittings",
          "water", 4, "pair", 5, 8, "Amazon", spec="External bulkhead connections (X1/X3/X4 + spare)"),
     Part("elbow-half", '1/2" NPT 90° elbow polypropylene', "plumbing-fittings",
@@ -184,15 +208,19 @@ PARTS: list[Part] = [
     Part("tee-half", '1/2" NPT polypropylene tee', "plumbing-fittings",
          "water", 6, "ea", 2, 4, "Amazon", spec="Blue suction/discharge tees, branches"),
     Part("tee-100", 'Banjo TEE100 equal tee 1" NPT', "plumbing-fittings",
-         "water", 4, "ea", 4, 6, "Amazon", spec="PP; IBC fill/drain tees"),
+         "water", 3, "ea", 4, 6, "Amazon", spec="PP; IBC drain tees (the X1 fill is now a 4-way cross)"),
+    Part("cross-100", '1" NPT 4-way cross fitting', "plumbing-fittings",
+         "water", 1, "ea", 8, 14, "Amazon", spec="X1 fresh-fill 4-way: X1 inlet + IBC-1 + IBC-2 + DV-01 blue recycle return (was a 3-way tee). Cost est."),
     Part("union-half", '1/2" NPT polypropylene union', "plumbing-fittings",
          "water", 6, "ea", 4, 6, "Amazon", spec="Maintenance disconnects on pump runs"),
     Part("bushing-reducer", '1/2"×1" NPT bushing reducer', "plumbing-fittings",
          "water", 1, "ea", 3, 5, "Amazon", spec="P-02 riser to F1 filter inlet"),
     Part("s60-adapter", 'S60×6 to 1" NPT adapter', "plumbing-fittings",
          "water", 8, "ea", 8, 15, "Amazon", spec='IBC DN50 valve to 1" HDPE; PP S60×6 male × 1" NPT female'),
-    Part("check-valve-1in", '1" NPT spring check valve (CV1/CV3/CV4)', "plumbing-fittings",
-         "water", 3, "ea", 8, 14, "Amazon", spec='PVC body, EPDM seal, 1" FNPT × FNPT'),
+    Part("blue-equalization-tie", '1" bulkhead tank-body fittings (Blue equalization cross-tie)', "plumbing-fittings",
+         "water", 2, "ea", 6, 12, "Amazon", spec='Low tank-body penetration in each Blue tote (IBC-1 + IBC-2) for the 1" equalization cross-tie that self-balances the two Blue levels (run made from the 1" HDPE stock). Cost est.'),
+    Part("check-valve-1in", '1" NPT spring check valve (CV1 — X1 gravity fill)', "plumbing-fittings",
+         "water", 1, "ea", 8, 14, "Amazon", spec='PVC body, EPDM seal, 1" FNPT × FNPT. Only CV-1 (X1 fill) remains — the Shurflo 2088 pumps have integral check valves, so CV-2/CV-3/CV-4 are redundant and dropped'),
     Part("ptfe-tape", "Thread seal tape (PTFE)", "adhesives-finishes",
          "water", 4, "roll", 2, 2, "Home Depot", spec='1/2" wide, 260" roll'),
     # — pipe (80–114) —
@@ -791,6 +819,23 @@ def emit_system(sys: str) -> str:
     return "\n".join(rows)
 
 
+def emit_panel(panel: str) -> str:
+    """plumbing-report.md per-panel §Parts-List — the water-system equipment tagged to this plumbing
+    panel (Corridor / Pinhole Wall).  Panel-mounted equipment only; the full water BOM (pipe, totes,
+    external ports, consumables) lives in water-system-report.md's §Parts-List."""
+    items = [p for p in by_system("water") if p.panel == panel]
+    rows = ["| Item | Spec | Qty | Supplier | Est. cost |", "|------|------|-----|----------|-----------|"]
+    lo_t = hi_t = 0.0
+    for p in items:
+        lo, hi = line(p); lo_t += lo; hi_t += hi
+        cost = _money(lo) if round(lo) == round(hi) else f"{_money(lo)}–{_money(hi)}"
+        sup = canon_supplier(p.supplier) + (f" / {canon_supplier(p.supplier_alt)}" if p.supplier_alt else "")
+        rows.append(f"| {_item_cell(p)} | {_expand(p.spec) or '—'} | {p.qty:g} {p.unit} | {sup} | {cost} |")
+    tot = _money(lo_t) if round(lo_t) == round(hi_t) else f"{_money(lo_t)}–{_money(hi_t)}"
+    rows.append(f"| **{panel} Plumbing Panel total** | | | | **{tot}** |")
+    return "\n".join(rows)
+
+
 def emit_master() -> str:
     """The by-TYPE procurement BOM + the supplier-consolidation headline. Type sections and the rows
     within each are ordered ALPHABETICALLY (the table cuts across systems, so name is easiest to scan;
@@ -859,7 +904,7 @@ SYSTEM_DOC = {
 # component-dimension-audit.md §1 findings — generated from the parts carrying size data, in this
 # order. The registry IS the single source of the verified real-vs-modeled sizes; the doc's §2 detail
 # (sources, reasoning) + §3 catalog checklist + §4 decision log stay hand-maintained narrative.
-_AUDIT_ORDER = ["ibc-tote-1000l", "lifepo4-100ah", "shurflo-2088-p12", "bigblue-3stage",
+_AUDIT_ORDER = ["ibc-tote-1000l", "lifepo4-100ah", "shurflo-2088-p1", "bigblue-3stage",
                 "axial-fan-150", "evap-cooler-mc18m", "seaflo-accumulator", "spray-al-shs"]
 
 
@@ -887,6 +932,9 @@ def _blocks() -> dict:
     # per-system §Parts-List blocks (Phase 2b) — only those already placed in their doc.
     for sys, doc in SYSTEM_DOC.items():
         b[sys] = (doc, lambda s=sys: emit_system(s))
+    # plumbing-report.md per-panel sub-lists (the two-panel split — water equipment by panel)
+    b["corridor-plumbing-panel"] = ("plumbing-report.md", lambda: emit_panel("Corridor"))
+    b["pinhole-wall-plumbing-panel"] = ("plumbing-report.md", lambda: emit_panel("Pinhole Wall"))
     return b
 
 

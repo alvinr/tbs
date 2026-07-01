@@ -504,11 +504,19 @@ def build_components():
                   1700, 1800, 0, 100,
                   1200, 1400, color=C_BATT,
                   calc_note="MPPT charge controller"),
-        Component("Pump manifold", "equipment", 4.5,
+        # Plumbing equipment split across the two panels (the old single "Pump manifold" missed the
+        # filter loop entirely, and pre-dated the P-05 add / P-02→wall move):
+        Component("Plumbing — Corridor panel", "equipment", 4.5,
                   PUMP_X, PUMP_X + PUMP_W,
                   CORRIDOR_YD_NEAR, CORRIDOR_YD_NEAR + PUMP_D,
                   PUMP_H_LO, PUMP_H_HI, color=C_PUMP,
-                  calc_note="4× 12V diaphragm pumps on equipment panel"),
+                  calc_note="4× Shurflo 2088 pumps (P-01/P-03/P-04/P-05) + ACC-01 on the Corridor panel"),
+        Component("Plumbing — Pinhole Wall panel", "equipment", 6.0,
+                  3300, 4016,                    # wet-end filter kit X span (F1–F3 + housing)
+                  12, 196,                       # near the pinhole wall (low Yd)
+                  200, 1340, color=C_PUMP,
+                  calc_note="P-02 pump + 3-stage Big Blue filter (dry housings + cartridges) on the "
+                            "pinhole wall; ~6 kg dry est. (filled adds ~7.5 kg transient wash water)"),
         Component("Tilt-swing board", "equipment", 30.0,
                   PH_X - 310, PH_X + 310, 0, 100,
                   PH_H - 310, PH_H + 310, color="#CC6600",

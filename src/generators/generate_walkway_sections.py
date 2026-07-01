@@ -262,10 +262,12 @@ def sheet2():
                            (10, C_BROWN, "IBC-3 → P-02 brown return")]:
         ax.add_patch(Circle((GAPX, zz), OD / 2, facecolor=col, edgecolor=C_OUT, lw=0.8, zorder=11))
         ax.add_patch(Circle((GAPX, zz), OD * 0.21, facecolor="white", edgecolor=col, lw=0.5, zorder=12))
-    leader(ax, GAPX, 60, GAPX + 78, 210, "ACC-01 → spray-bar\nblue supply (crosses in Yd)",
-           color=C_BLUE, fs=5.8, ha="left", va="center", arrow_style="-|>", font=FONT)
-    leader(ax, GAPX, 10, GAPX + 78, 120, "IBC-3 → P-02 brown\nreturn (crosses in Yd)",
-           color=C_BROWN, fs=5.8, ha="left", va="center", arrow_style="-|>", font=FONT)
+    # Labels pulled LEFT into the clear zone (never over the IBC-3 tote — the
+    # crossers only touch the gap; a rightward leader falsely reads as a pipe INTO the tote).
+    leader(ax, GAPX, 60, GAPX - 120, 250, "ACC-01 → spray-bar\nblue supply (crosses in Yd)",
+           color=C_BLUE, fs=5.8, ha="right", va="center", arrow_style="-|>", font=FONT)
+    leader(ax, GAPX, 10, GAPX - 120, 150, "IBC-3 → P-02 brown\nreturn (crosses in Yd)",
+           color=C_BROWN, fs=5.8, ha="right", va="center", arrow_style="-|>", font=FONT)
 
     draw_dim_v(ax, X_HI - 40, 0, WALKWAY_H, f"deck\nZ{WALKWAY_H}", offset=5, fs=5.6, font=FONT)
     draw_dim_h(ax, TXR, IBC_COL_X, -46, f"{IBC_COL_X - TXR}mm\ngap", offset=4, fs=5.4, above=False, font=FONT)

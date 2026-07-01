@@ -1210,7 +1210,11 @@ def spine_view(side):
         circ_yd = PXC                                     # ACC OUT port projects to the body axis
         axb.add_patch(mpatches.Circle((circ_yd, ACC_OUT_Z), 6, facecolor="white",
                       edgecolor=C_BLUEB, lw=1.0, zorder=12))     # ACC-01 OUT port stub
-        _pipe([PXC, PXC, 4655, 4655], [ACC_OUT_Z, 235, 235, 30], C_BLUEB, zorder=9)
+        # Gap-broken at Z308 where the drop crosses the brown P-05 tap run (X4910–5070,
+        # a projection crossing — different Yd in 3D) so the blue does not read as
+        # teeing into the brown.
+        _pipe([PXC, PXC], [ACC_OUT_Z, 308 + 18], C_BLUEB, zorder=9)                  # port stub → down to the brown crossing
+        _pipe([PXC, PXC, 4655, 4655], [308 - 18, 235, 235, 30], C_BLUEB, zorder=9)   # below the crossing → −X → down to spray bar
         _flowhead(4655, 80, "down", C_BLUEB)              # supply: → spray bar / TAP-01 (off-section)
         axb.text(4648, -10, "Blue supply\nto spray bar / TAP-01", fontsize=4.2, ha="left",
                  va="bottom", color=C_BLUEB, zorder=12, **FB)

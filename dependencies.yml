@@ -30,6 +30,7 @@ generators:
   spray_bar_diagram: {script: src/generators/generate_spray_bar_diagram.py, outputs: [diagrams/spray-bar-sheet1.png]}
   tilt_swing_diagram: {script: src/generators/generate_tilt_swing_diagram.py, outputs: [diagrams/tilt-swing-sheet1.png, diagrams/tilt-swing-sheet2.png]}
   walkway_diagram: {script: src/generators/generate_walkway_diagram.py, outputs: [diagrams/walkway-sheet1.png, diagrams/walkway-sheet2.png, diagrams/walkway-sheet3.png, diagrams/walkway-sheet4.png, diagrams/walkway-sheet5.png, diagrams/walkway-sheet6.png, diagrams/walkway-sheet7.png, diagrams/walkway-sheet8.png, diagrams/walkway-sheet9.png]}
+  walkway_sections: {script: src/generators/generate_walkway_sections.py, outputs: [diagrams/walkway-sections-sheet1.png, diagrams/walkway-sections-sheet2.png, diagrams/walkway-sections-sheet3.png, diagrams/walkway-sections-sheet4.png, diagrams/walkway-sections-sheet5.png]}
   weight_analysis: {script: src/generators/generate_weight_analysis.py, outputs: [diagrams/weight-analysis-sheet1.png, diagrams/weight-analysis-sheet2.png, diagrams/weight-analysis-sheet3.png, diagrams/weight-analysis-sheet4.png, diagrams/weight-analysis-sheet5.png]}
 
 # SketchUp 3D models -> script + outputs (.skp built in-app via --send/save; .rb via --save).

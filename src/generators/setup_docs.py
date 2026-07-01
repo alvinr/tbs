@@ -82,6 +82,7 @@ MD_FILES = [
     ("right-walkway-cantilever-study.md", (".",           "Right Walkway Cantilever (decision record)")),
     ("process-comparison.md",            (".",           "Process Comparison (alt processes)")),
     ("plumbing-report.md",              (".",           "Plumbing")),
+    ("walkway-routing-sections.md",     (".",           "Walkway Pipe Routing")),
     ("all-diagrams.md",                   (".",           "All Diagrams")),
     ("mini-tbs/mini-tbs-poc.md",          ("mini-tbs",    "Mini-TBS PoC")),
     ("mini-tbs/mini-tbs-shopping-list.md",("mini-tbs",    "Mini-TBS Shopping List")),
@@ -198,6 +199,11 @@ DIAG_IMAGE_FILES = [
     "pinhole-panel.png",
     "panel-spine-view-a.png",
     "panel-spine-view-b.png",
+    "walkway-sections-sheet1.png",
+    "walkway-sections-sheet2.png",
+    "walkway-sections-sheet3.png",
+    "walkway-sections-sheet4.png",
+    "walkway-sections-sheet5.png",
     "spray-bar-sheet1.png",
     "spray-bar-sheet2.png",
     "spray-bar-sheet3.png",
@@ -374,6 +380,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Right Walkway Cantilever (decision record)](right-walkway-cantilever-study.md) | Decision record (adopted, rev12): why the ceiling-hung right walkway was replaced by a cantilever rectangle tied to the IBC frame + side walls — and the first-order load check. As-built in [Walkway §4](walkway-report.md). |
 | [Process Comparison (alt processes)](process-comparison.md) | Cost comparison of the alternative photographic processes considered and rejected (gum bichromate, Van Dyke Brown, salt, Ilford RC, Liquid Light) vs the chosen cyanotype — the procurement is in the [Chemistry Shopping List](chemistry-shopping-list.md). |
 | [Plumbing](plumbing-report.md) | Two plumbing panels &mdash; the Corridor Plumbing Panel (pumps, accumulator, diverters, valves in the IBC corridor) and the Pinhole Wall Plumbing Panel (wet-end 3-stage filter loop), with pipe routing and the interactive 3D water model |
+| [Walkway Pipe Routing](walkway-routing-sections.md) | Five cross-sections scanning pinhole wall &rarr; corridor, showing the pipe-routing envelope under and around the right walkway and the clearance/interference points they surface |
 | [All Diagrams](all-diagrams.md) | Complete visual gallery of every TBS-001 engineering diagram on a single page |
 
 """

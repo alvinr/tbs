@@ -233,7 +233,7 @@ def tray_ref_patch():
     only in the carriage-only scenes (the Combined / Processing Tray scenes have the
     REAL tray, so the ref patch would double up under the beam)."""
     return ov.ruby_box("Tray Floor (ref)",
-                       XL - 60, GY - half_band(), 0,
+                       XL - 60, GY - half_band(), ov.PROC_TRAY_FLOOR_Z_LOW - 2,
                        (XR - XL) + 120, 2 * half_band(), 2,
                        color=C_TRAY, alpha=0.25)
 
@@ -396,15 +396,17 @@ def build_tray():
     yn, yf = PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR
     w, d = xr - xl, yf - yn
     rim, ft, wt = PROC_TRAY_RIM, SPRAY_BAR_TRAY_FLOOR, 3   # rim height, floor + wall thickness
-    parts.append(ov.ruby_box("Tray Floor", xl, yn, 0, w, d, ft, color=C_TRAY, alpha=0.55))
-    parts.append(ov.ruby_box("Tray Rim Near", xl, yn, 0, w, wt, rim, color=C_TRAY, alpha=0.3))
-    parts.append(ov.ruby_box("Tray Rim Far", xl, yf - wt, 0, w, wt, rim, color=C_TRAY, alpha=0.3))
-    parts.append(ov.ruby_box("Tray Rim Left", xl, yn, 0, wt, d, rim, color=C_TRAY, alpha=0.3))
-    parts.append(ov.ruby_box("Tray Rim Right", xr - wt, yn, 0, wt, d, rim, color=C_TRAY, alpha=0.3))
-    # drain sump well, recessed below the floor at the near-rim low corner
+    zc = ov.PROC_TRAY_FLOOR_Z_LOW                         # 20 — pan RAISED so the sump bottom rests on Z0
+    parts.append(ov.ruby_box("Tray Shim Base", xl, yn, 0, w, d, zc - ft, color="#D8CFBC", alpha=0.4))
+    parts.append(ov.ruby_box("Tray Floor", xl, yn, zc - ft, w, d, ft, color=C_TRAY, alpha=0.55))
+    parts.append(ov.ruby_box("Tray Rim Near", xl, yn, zc - ft, w, wt, rim, color=C_TRAY, alpha=0.3))
+    parts.append(ov.ruby_box("Tray Rim Far", xl, yf - wt, zc - ft, w, wt, rim, color=C_TRAY, alpha=0.3))
+    parts.append(ov.ruby_box("Tray Rim Left", xl, yn, zc - ft, wt, d, rim, color=C_TRAY, alpha=0.3))
+    parts.append(ov.ruby_box("Tray Rim Right", xr - wt, yn, zc - ft, wt, d, rim, color=C_TRAY, alpha=0.3))
+    # drain sump well — bottom rests on the container floor (Z0), up to the raised pan floor
     parts.append(ov.ruby_box("Tray Sump",
                              PROC_TRAY_DRAIN_X - PROC_TRAY_SUMP_W / 2, PROC_TRAY_DRAIN_YD,
-                             -PROC_TRAY_SUMP_Z, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_D,
+                             0, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_D,
                              PROC_TRAY_SUMP_Z, color=C_TRAY, alpha=0.55))
     return '\n'.join(parts)
 

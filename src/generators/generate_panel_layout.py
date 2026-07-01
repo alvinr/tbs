@@ -1202,10 +1202,15 @@ def spine_view(side):
                      arrowprops=dict(arrowstyle="-|>", lw=1.3, mutation_scale=8, color=C_WASTEB), zorder=12)
         axb.text(5506, 1120, "→ IBC-4\n(Waste tote)", fontsize=4.8, ha="left", va="top",
                  color=C_WASTEB, zorder=13, **FB)
-        # ACC-01 OUT → Blue supply trunk → spray bar / TAP-01.  3D lowered the
-        # corridor-entry crossing to Z235 (DV-01's low lane) so the trunk is out
-        # of the operator's way at the mouth.
-        _pipe([PUMP_FRONT_X, 4655, 4655], [235, 235, 30], C_BLUEB, zorder=9)
+        # ACC-01 OUT → Blue supply trunk → spray bar / TAP-01.  The trunk teed onto
+        # the ACC-01 bottom OUT port (3D acc_out(), Z383 on the −Yd face) DROPS to
+        # the corridor-entry lane (Z235 = DV-01's low lane, out of the operator's
+        # way at the mouth), then −X to the tray-gap drop.
+        ACC_OUT_Z = 383                                   # 3D ACC_PZ = ACC_Z0 + 28 — bottom OUT port
+        circ_yd = PXC                                     # ACC OUT port projects to the body axis
+        axb.add_patch(mpatches.Circle((circ_yd, ACC_OUT_Z), 6, facecolor="white",
+                      edgecolor=C_BLUEB, lw=1.0, zorder=12))     # ACC-01 OUT port stub
+        _pipe([PXC, PXC, 4655, 4655], [ACC_OUT_Z, 235, 235, 30], C_BLUEB, zorder=9)
         _flowhead(4655, 80, "down", C_BLUEB)              # supply: → spray bar / TAP-01 (off-section)
         axb.text(4648, -10, "Blue supply\nto spray bar / TAP-01", fontsize=4.2, ha="left",
                  va="bottom", color=C_BLUEB, zorder=12, **FB)

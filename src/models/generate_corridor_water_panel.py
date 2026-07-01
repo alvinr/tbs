@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""massing_corridor_panel.py — EXPLORATORY (pinhole-wall-mount branch).
+"""generate_corridor_water_panel.py — EXPLORATORY (pinhole-wall-mount branch).
 
 The NEW corridor plumbing panel.  Starts from the deep-box IBC restraint/equipment frame
 as it stood at the fork, but with ONLY the REAR (far-wall) panel — the left/waste-wall
@@ -7,7 +7,7 @@ panel is gone (the filters moved to the pinhole wall).  The four returned pumps
 (P-01/P-03/P-04/P-05) + ACC-01 and the Stage-A tray-drain chain (SV-02 + DV-02) will mount
 on the rear panel facing the operator (added next).  Reuses generate_sketchup_model helpers.
 
-    python3 src/models/massing_corridor_panel.py --send --save   # build into the ACTIVE (blank) doc, save corridor-panel.skp
+    python3 src/models/generate_corridor_water_panel.py --send --save   # build into the ACTIVE (blank) doc, save corridor-panel.skp
 """
 import sys, os, argparse
 _HERE = os.path.dirname(os.path.abspath(__file__))

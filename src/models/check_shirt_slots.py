@@ -15,7 +15,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from sketchup_client import send_ruby
 
 # Shirt X-band (front..back).  Keep in sync with rear_panel()'s shirt: front ≈ PXC+ACC_R+4, 25mm thick.
-import massing_corridor_panel as cp
+import generate_corridor_water_panel as cp
 SX0 = cp.PXC + cp.ACC_R + 4
 SX1 = SX0 + 25
 SY0, SY1 = cp.YD_NEAR + cp.S, cp.YD_FAR - cp.S      # shirt Yd span

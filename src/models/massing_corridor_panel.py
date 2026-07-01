@@ -634,12 +634,17 @@ def drains_ports():
     # P-05 (Brown drain) suction: shared tap T → +X run end → rise to P-05 IN (−Yd manifold)
     p5i = (PXC, PIY, _piz("P-05")); p5o = (PXC, POY, _piz("P-05"))
     z05 = _piz("P-05")
-    rx = PXC - 86   # 4898 — BV-02 riser/valve offset FLIPPED 180° to the −X (operator) side of the P-05 IN port
-    #   (was PXC+86=5070 at the shirt) — same trick as BV-06: the loop carries BV-02 forward to the walkway, then
-    #   loops back +X to the pump.  Handle reaches ~4843, clear in front of the pump column (x≥4931).
+    rx = PXC - 86       # 4898 — BV-02 riser/valve X: FORWARD (operator side) of the P-05 IN port
+    shirt_rx = 5070     # shirt riser X (in the 5052-5077 band): the brown still routes +X off the tee and DOWN
+    #   the shirt (P-clipped for support) exactly as it did before the b492a2a9 flip; BV-02 then sits on a
+    #   FORWARD loop stepped −X off that shirt riser.  (The flip had dropped the shirt run and backtracked the
+    #   leg over the tee — this restores the clean tee join AND keeps BV-02 forward.)
+    zloop = 1300        # loop level (P-04↔P-05 gap): step −X from the shirt riser to the BV-02 riser, below the valve
     pipe("Brown tap -> P-05 inlet",
-         [(tx3 + 30, ty3, tz3), (rx, ty3, tz3), (rx, BV02_YD, tz3), (rx, BV02_YD, z05),
-          (PXC, BV02_YD, z05), p5i],   # tee +X end → FRONT riser (BV-02) → +X stub back to the IN port
+         [(tx3 + 30, ty3, tz3), (shirt_rx, ty3, tz3), (shirt_rx, BV02_YD, tz3), (shirt_rx, BV02_YD, zloop),
+          (rx, BV02_YD, zloop), (rx, BV02_YD, z05), (PXC, BV02_YD, z05), p5i],
+         #   tee +X end → +X to SHIRT riser → −Yd → up the shirt → −X (forward) to the BV-02 riser → up through
+         #   BV-02 → +X stub into the IN port
          ov.C_IBC_BROWN)
     p.append(ball_valve("BV-02 (P-05 suction)", rx, BV02_YD, z05 - 85, "z", hdir="-x"))   # FRONT of the pump column; handle faces the −X walkway/operator
     p.append(ov.ruby_cylinder("X3 Brown drain port (end wall)", ew - 60, COL_L, 1700, 22, 60, color=C_CHECK, axis="x"))

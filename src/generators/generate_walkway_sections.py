@@ -528,8 +528,8 @@ def sheet4():
     GAP_ENTRY_X = 4641
     _run(ax, [(GAP_ENTRY_X, UNDER_BEAM_Z), (GAP_ENTRY_X, 205), (4900, 205), (4900, Z_HI - 24)], C_BROWN)  # sump→P-04
     _run(ax, [(GAP_ENTRY_X + 22, UNDER_BEAM_Z), (GAP_ENTRY_X + 22, 235), (4984, 235)], C_BLUE)            # blue trunk
-    _run(ax, [(GAP_ENTRY_X + 44, UNDER_BEAM_Z), (GAP_ENTRY_X + 44, 259), (X_HI - 6, 259)], "#777777")     # grey DV-01 waste (raised +24)
-    _run(ax, [(GAP_ENTRY_X + 66, UNDER_BEAM_Z), (GAP_ENTRY_X + 66, 283), (X_HI - 6, 283)], C_BLUE)        # blue DV-01 recycle (raised +48)
+    _run(ax, [(GAP_ENTRY_X + 44, UNDER_BEAM_Z), (GAP_ENTRY_X + 44, 259), (X_HI - 6, 259)], C_BROWN)       # brown IBC-3 -> P-02 (raised +24)
+    _run(ax, [(GAP_ENTRY_X + 66, UNDER_BEAM_Z), (GAP_ENTRY_X + 66, 283), (X_HI - 6, 283)], C_BLUE)        # blue SV-01 -> DV-01 return (raised +48)
     ax.annotate("↑ P-04 IN", xy=(4900, Z_HI - 24), xytext=(4915, Z_HI - 70),
                 fontsize=5.6, ha="left", va="center", color=C_BROWN, zorder=13, **FONT)
     # mark the under-beam entry band (the four risers enter here from Z65)
@@ -542,12 +542,12 @@ def sheet4():
             color=C_OUT, fontweight="bold", zorder=14, **FONT)
     for i, (c, t) in enumerate([(C_BROWN, "brown tray-sump → P-04 — Z205 (rises into P-04)"),
                                 (C_BLUE, "blue supply trunk — Z235"),
-                                ("#777777", "grey DV-01 waste — Z235*"),
-                                (C_BLUE, "blue DV-01 recycle — Z235*")]):
+                                (C_BROWN, "brown IBC-3 → P-02 — Z235*"),
+                                (C_BLUE, "blue SV-01 → DV-01 return — Z235*")]):
         zz = lgz - 22 - i * 20
         ax.add_patch(Rectangle((lgx, zz - 7), 30, 13, facecolor=c, edgecolor=C_OUT, lw=0.6, zorder=14))
         ax.text(lgx + 40, zz, t, fontsize=5.4, ha="left", va="center", color=C_OUT, zorder=14, **FONT)
-    ax.text(lgx, lgz - 22 - 4 * 20 - 4, "* co-planar at Z235; waste/recycle raised +24/+48mm for clarity",
+    ax.text(lgx, lgz - 22 - 4 * 20 - 4, "* co-planar at Z235; the upper two lanes raised +24/+48mm for clarity",
             fontsize=4.8, ha="left", va="top", color=C_DIM, zorder=14, **FONT)
     draw_dim_v(ax, X_HI - 28, 50, 560, "corridor\nopen\n(no ring\nrail here)", offset=5, fs=5, font=FONT)
 
@@ -576,7 +576,7 @@ def sheet4():
 def sheet5():
     """SECTION F-F — through the FAR cantilever (Yd≈1286), X–Z looking +Yd.  Mirror of D-D:
     the far cantilever arm + far upright + far foot (also under the tray).  The ribbon loops
-    over the NEAR cantilever only; the blue DV-01 recycle corridor lane (Yd1241) is the
+    over the NEAR cantilever only; the blue SV-01 → DV-01 return corridor lane (Yd1241) is the
     nearest line, ghosted just -Yd."""
     X_LO, X_HI = 4245, 4880
     Z_LO, Z_HI = -80, 720
@@ -619,9 +619,9 @@ def sheet5():
     leader(ax, (UP_X0 + UP_X1) / 2, 500, UP_X1 + 22, 540, "corridor deep-box FAR upright\n(50×50 RHS, X4654)", color=C_DIM, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
     leader(ax, FOOT_X0 + 16, FOOT_ZT, PROC_TRAY_X_R - 175, -60, "far floor foot 150×150×12 —\nLEFT EDGE EXTENDS 25mm UNDER THE TRAY", color="#B03030", fs=5.5, ha="left", va="top", arrow_style="-|>", font=FONT)
     leader(ax, (RAIL_X0 + RAIL_X1) / 2, RAIL_ZT, RAIL_X1 + 24, RAIL_ZT + 40, "retaining bar (ring rail) Z560", color=C_DIM, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
-    # nearest corridor lane (blue recycle Yd1241) — ghost, -Yd of this plane
+    # nearest corridor lane (blue SV-01 → DV-01 return, Yd1241) — ghost, -Yd of this plane
     ax.add_patch(Circle((4772, 235), OD / 2, facecolor="none", edgecolor=C_BLUE, lw=1.4, ls="--", zorder=9))
-    ax.text(4772, 219, "blue DV-01 recycle\n(Yd1241, ghost, −Yd)", fontsize=4.8, ha="center", va="top", color=C_BLUE, zorder=10, **FONT)
+    ax.text(4772, 219, "blue SV-01 → DV-01 return\n(Yd1241, ghost, −Yd)", fontsize=4.8, ha="center", va="top", color=C_BLUE, zorder=10, **FONT)
 
     notes = (
         "SECTION F-F NOTES\n"
@@ -630,7 +630,7 @@ def sheet5():
         "   again extending 25mm UNDER the tray.\n"
         "2. The ribbon loops over the NEAR cantilever only and drops into the\n"
         "   corridor by Yd1120 — no line crosses this far cantilever.\n"
-        "3. The nearest corridor lane is the blue DV-01 recycle (Yd1241), just\n"
+        "3. The nearest corridor lane is the blue SV-01 → DV-01 return (Yd1241), just\n"
         "   −Yd of this plane — ghosted.  See E-E for the lanes in-plane."
     )
     ax.text(X_LO + 8, Z_HI - 60, notes, fontsize=6.0, ha="left", va="top", color=C_OUT,

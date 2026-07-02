@@ -15,9 +15,10 @@ positions are read off the 3D water model (`water.skp`) and drawn 1:1.
 
 ## How to read these
 
-All five sections are **longitudinal X–Z elevations, looking along +Yd** (down the length
-of the container), cut at increasing **Yd** depth — so together they scan from the pinhole
-wall (Yd 0) across to the plumbing corridor (Yd ≈ 1046–1316):
+The five sections **B‑B through F‑F** are **longitudinal X–Z elevations, looking along +Yd**
+(down the length of the container), cut at increasing **Yd** depth — so together they scan
+from the pinhole wall (Yd 0) across to the plumbing corridor (Yd ≈ 1046–1316). (Sections
+**G‑G / H‑H** below add the tray‑slope views — G‑G a Yd–Z cut, H‑H an X–Z cut.)
 
 | Section | Cut (Yd) | What it shows |
 |--------|---------|---------------|
@@ -100,7 +101,7 @@ since the fall is ~1:200). **G‑G** is a longitudinal Yd–Z cut at the sump co
 sump‑well bottom rests on the container floor, rising to ~Z31 at the far rim. **H‑H** is an X–Z
 cut at the far rim (the high corner of the dual slope) showing the level walkway grates over the
 sloped pan and the shrunk spray‑carriage (Ø32 wheels + 40×25 SS beam) with **~30 mm clearance**
-under the left grate — the recovery from the ~6 mm the old Ø50 / 40×40 carriage would have had.
+under the left grate.
 
 ## Interference & clearance findings
 
@@ -122,3 +123,10 @@ two remaining structural items the plan views do not reveal:
 5. **Cantilever‑arm reference** — the RWK cantilever arm clamps to the deep‑box front upright at
    **X4654** (overview's `ibc_rack` retired in favor of `cp.frame()`), so overview / ibc‑stack /
    walkway all reference the same upright.
+
+## See Also
+
+- [Plumbing](plumbing-report.md) — the corridor plumbing panel and the four-line topology these sections cut through.
+- [Walkway Report](walkway-report.md) §4 — the right-walkway cantilever rectangle the sections pass over.
+- [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) — the tray slope + spray-carriage clearance (G‑G / H‑H).
+- [Water System Report](water-system-report.md) — the Blue / Brown / Black circuit topology of the four ribbon lines.

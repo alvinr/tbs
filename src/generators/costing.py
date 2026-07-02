@@ -508,6 +508,7 @@ _FPM = "film-plane-mechanism-report.md"
 _FC  = "film-clamp-mechanism-report.md"
 _TSB = "tilt-swing-board-report.md"
 _HP  = "hinged-panel-report.md"
+_LTS = "light-trap-selection.md"
 
 
 def capital_mid() -> int:
@@ -769,8 +770,10 @@ def _inline_blocks() -> dict:
         # hinged-panel-report.md §8.1–8.5 — the panel's four assemblies (§6c / §6 / §6b-split) + total.
         "hp-panel-low":        (_HP, lambda: f"${total(PANEL)[0]:,}"),
         "hp-panel-high":       (_HP, lambda: f"${total(PANEL)[2]:,}"),
-        "hp-housing-low":      (_HP, lambda: f"${total(LIGHTLOCK)[0]:,}"),
-        "hp-housing-high":     (_HP, lambda: f"${total(LIGHTLOCK)[2]:,}"),
+        # LIGHTLOCK total (= §6) — owned by hinged-panel §8.2; also single-sources the custom-fab
+        # cost restated in light-trap-selection.md §3.3/§4.5/§6 (a key may live in several docs).
+        "hp-housing-low":      ((_HP, _LTS), lambda: f"${total(LIGHTLOCK)[0]:,}"),
+        "hp-housing-high":     ((_HP, _LTS), lambda: f"${total(LIGHTLOCK)[2]:,}"),
         "hp-swing-low":        (_HP, lambda: f"${_swing_only('low'):,}"),
         "hp-swing-high":       (_HP, lambda: f"${_swing_only('high'):,}"),
         "hp-doorframe-low":    (_HP, lambda: f"${_door_only('low'):,}"),

@@ -6,9 +6,9 @@
 
 Personnel access during operation is via a revolving light trap drum built into the panel. Operators can enter or exit at any time without opening the full panel or admitting daylight — for example, between coating of the photosensitive material, or while the exposure is being made.
 
-The cargo door end of TBS-001 is sealed by a stepped hinged panel (2,362mm wide × 2,388mm tall, 50×50mm RHS steel frame, 18mm ply skins). The panel has a stepped profile: 40mm thick at the corner zones (Yd=0–653mm and Yd=1,709–2,362mm) and 120mm thick at the center zone (Yd=653–1,709mm) where the Ø900 housed revolving-door light lock is permanently mounted. The panel swings open about its pivot to clear the door opening for loading IBC totes and equipment. When closed it is light-sealed at the perimeter by a 20mm EPDM compression gasket against a fixed welded door frame at X=0.
+The cargo door end of TBS-001 is sealed by a stepped hinged panel (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm wide × <!-- BEGIN fact:container_height_mm -->2,388<!-- END fact:container_height_mm -->mm tall). Its thick center zone permanently houses the Ø900mm revolving-door light lock; the thinner corner zones sit flush with the container walls. When closed, the panel is light-sealed at its perimeter by an EPDM compression gasket against a fixed welded door frame. The panel's frame, skins, thickness zones, pivot, and latches are specified in the [Hinged Panel Report](hinged-panel-report.md).
 
-Under rev 9 (B2) the Ø900 housing sits in a **punch-out bay** that offsets the drum to X=−400, clearing the X=150 film-plane rail (which is now continuous in operation). For transport (rev10) the panel + drum **SWING ~56° about a vertical Ø89×8mm CHS pivot post** (the reused film-plane far-left upright at X=175, Yd=2287) — carrying the punch-out bay inboard of the door plane (true min X +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm -->mm) so the cargo doors close. The two left film rails (TL + BL) lift out before the swing so the drum cage can transition the X=150 rail plane, then re-seat to the film datum. The housing/drum ride with the panel at Z=130, so they pass over the processing-tray rim (and the Z115 walkway brackets) rather than fouling them. Single-person operation (the swing is assisted, ~5 minutes per mode conversion). See [Equipment Layout Report](equipment-layout-report.md) §6 for the swing-mechanism specification.
+In operation the housing sits in a punch-out bay that offsets the drum clear of the film-plane rail, which stays continuous. For transport the panel and drum swing ~56° about a vertical CHS pivot post, carrying the bay inboard of the door plane so the cargo doors close (clearing the swung frame by +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm -->mm). The two left film rails lift out first so the drum cage can cross the rail plane, then re-seat to the film datum; the housing and drum ride high enough with the panel to pass over the processing-tray rim and walkway brackets. Mode conversion is single-person and assisted (~5 minutes). See [Equipment Layout Report](equipment-layout-report.md) §6 for the swing-mechanism specification.
 
 **Sheet 1 — Front Elevation (1:20): Panel Dimensions, Drum, Hinges, Latches (interior face)**
 ![TBS-001 Hinged Panel — Sheet 1: Front Elevation](assets/hingepanel-sheet1.png)
@@ -87,7 +87,7 @@ The Porta-Fab system is modular and more robust than the Vario range, but shares
 |-----------|-------|
 | Housing outer diameter | Ø900mm (fixed) + Ø864mm rotating drum, ~Ø850mm bore |
 | Height | 2,200mm (floor to upper bearing) |
-| Wall thickness | Hybrid plastic skin (rev 9 / B2): 5mm UV-HDPE housing + 4mm PP drum, rolled and extrusion-welded (was 3mm aluminum 5052-H32) |
+| Wall thickness | 5mm UV-HDPE housing + 4mm PP drum, rolled and extrusion-welded |
 | Surface finish | Black-pigmented sheet + flat-black touch-in at welds (interior); UV-stabilized sheet (exterior) — no primer |
 | Baffles | None — two 80° housing openings 180° apart + single-opening C-shell drum (see §4, §5) |
 | Top bearing | SKF 6215 sealed deep-groove ball bearing on 75mm steel stub shaft, bolted to the drum cap via a nylon-isolated hub |
@@ -95,34 +95,32 @@ The Porta-Fab system is modular and more robust than the Vario range, but shares
 | Drum seals (top/bottom) | Two-layer: closed-cell neoprene wiper + silicone bead — IP44 rated |
 | Handle | 100mm Ø SS grab rail, interior face only, at 900mm height |
 | Finish | Interior: flat black RAL 9005; exterior drum face: gray oxide |
-| Approximate cost | USD $1,465–$2,160 (local plastic fabrication shop) |
+| Approximate cost | USD <!-- BEGIN costing:hp-housing-low -->$1,385<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$2,070<!-- END costing:hp-housing-high --> (local plastic fabrication shop) |
 | Lead time | 2–3 weeks |
 
-**Assessment — Recommended (hybrid plastic skin, rev 9 / B2).**
+**Assessment — Recommended.**
 
-Custom fabrication is the correct choice for a field-deployed, transport-rated camera system — every specification can be set to exactly what is required (clear bore, panel-thickness interface, bearing grade, seal type, drum height). **rev 9 switches the shell material from 3mm aluminum (5052-H32) to a hybrid plastic skin: a 5mm UV-stabilized HDPE fixed housing and a 4mm polypropylene revolving drum.** Three things drive the change:
+Custom fabrication is the correct choice for a field-deployed, transport-rated camera system — every specification can be set to exactly what is required (clear bore, panel-thickness interface, bearing grade, seal type, drum height). The shell is a hybrid plastic skin: a 5mm UV-stabilized HDPE fixed housing and a 4mm polypropylene revolving drum. Three properties make plastic the right skin here:
 
-1. **Weight / center of gravity.** The plastic skin cuts the drum/housing shell mass from ~99 kg (aluminum) to ~60 kg (the steel shaft, bearings and grab rail set a floor the shell can't drop below). Because the whole assembly hangs off the swinging leaf and revolves ~56° about the pivot post for transport, lowering its mass reduces the swing cantilever moment on the pivot and keeps the container CG shift small.
-2. **No galvanic couple.** An aluminum shell bolted to the steel panel frame and steel bearing hardware needs a full nylon-isolation kit and is a perennial outdoor-corrosion risk. Plastic-to-steel has no galvanic couple — isolation reduces to plain nylon washers at the shaft only.
-3. **Cost and fabrication.** UV-HDPE / PP sheet is cheaper than 5052 aluminum, and hot-air / extrusion welding of a Ø900 cylinder is less skilled labor than aluminum TIG seam welding. Net build cost drops from ~$2,300–$3,150 to ~$1,465–$2,160.
+1. **Weight / center of gravity.** The plastic skin holds the drum/housing shell mass to ~60 kg (the steel shaft, bearings, and grab rail set a floor the shell cannot drop below). Because the whole assembly hangs off the swinging leaf and revolves ~56° about the pivot post for transport, low shell mass keeps the swing cantilever moment on the pivot — and the container CG shift — small.
+2. **No galvanic couple.** Plastic-to-steel has no galvanic couple, so isolation reduces to plain nylon washers at the shaft only — no full isolation kit, and no outdoor-corrosion risk at the panel-frame and bearing interfaces.
+3. **Cost and fabrication.** UV-HDPE / PP sheet is inexpensive, and hot-air / extrusion welding of a Ø900 cylinder is low-skill labor relative to metal seam welding.
 
-A 4–5mm plastic cylinder, edge-stiffened along the opening, is rigid as a freestanding shell without a surrounding wall frame, and bolts into the panel opening on 8 × M10 flush bolts (stainless, nylon-isolated). UV-stabilized HDPE/PP is inherently weatherproof and needs no primer or anodize; the drum is in the dry walk-through entry zone, not the chemistry zone, so only ambient/outdoor exposure applies. The trade-off is a higher coefficient of thermal expansion than aluminum, accommodated by the 15mm running gap between drum and housing.
+A 4–5mm plastic cylinder, edge-stiffened along the opening, is rigid as a freestanding shell without a surrounding wall frame, and bolts into the panel opening on 8 × M10 flush bolts (stainless, nylon-isolated). UV-stabilized HDPE/PP is inherently weatherproof and needs no primer or anodize; the drum is in the dry walk-through entry zone, not the chemistry zone, so only ambient/outdoor exposure applies. The trade-off is plastic's higher thermal expansion, accommodated by the 15mm running gap between drum and housing.
 
 The SKF 6215 sealed bearing is rated for radial loads to 52.7 kN and operates at 0–120°C — far beyond any field requirement. The neoprene/silicone top seal provides IP44 protection against splash and rain ingress. Black-pigmented sheet with flat-black touch-in at the welds is optically dead at visible wavelengths.
 
 ---
 
-## 4. Recommended Specification — Custom Housed Revolving Door (rev 9 / B2)
+## 4. Recommended Specification — Custom Housed Revolving Door
 
-> Replaces the earlier Ø750mm drum with **internal baffles**, which failed both
-> personnel-fit and rotation light-tightness. The light lock is now a **fixed
-> housing + single-opening C-shell drum** (no fins) — light-tight by geometry.
+The light lock is a **fixed housing + single-opening C-shell drum** (no internal fins) — light-tight by geometry (see §5).
 
 ### 4.1 Housing + Drum Body
 
 | Item | Specification |
 |------|--------------|
-| Fixed housing shell | 5mm UV-HDPE (LT_HOUSING_T), rolled to **Ø900mm OD**, extrusion-welded full height; bolted (isolated) into the panel center zone, set in the B2 punch-out bay |
+| Fixed housing shell | 5mm UV-HDPE (LT_HOUSING_T), rolled to **Ø900mm OD**, extrusion-welded full height; bolted (isolated) into the panel center zone, set in the punch-out bay |
 | Housing openings | Two, **80° arc each, 180° apart** (full height) — one facing the exterior, one facing the interior/walkway |
 | Rotating drum | 4mm PP C-shell (LT_DRUM_T), **Ø864mm OD** (~Ø850mm bore), single **80° opening**, edge-stiffened, rotates inside the housing on a 15mm running gap |
 | Internal baffles | **None** — light-tightness is by the fixed-housing geometry (openings <90°, 180° apart; see §5) |
@@ -160,16 +158,16 @@ The SKF 6215 sealed bearing is rated for radial loads to 52.7 kN and operates at
 
 | Item | Supplier | Part / Notes |
 |------|----------|-------------|
-| 5mm UV-HDPE sheet (housing, ~7 m²) + 4mm PP sheet (drum, ~7 m²) | [TAP Plastics](https://www.tapplastics.com/) / Curbell Plastics (SoCal); or Online Metals plastics | ~$330–$520 total (was 4 × aluminum sheet) |
-| SKF 6215-2RS1 bearing (×2) | Bearing World — Anaheim CA; or Applied Industrial Technologies | ~$45–$65 each |
+| 5mm UV-HDPE sheet (housing, ~7 m²) + 4mm PP sheet (drum, ~7 m²) | [TAP Plastics](https://www.tapplastics.com/) / Curbell Plastics (SoCal); or Online Metals plastics | Rolled + extrusion-welded cylinders |
+| SKF 6215-2RS1 bearing (×2) | Bearing World — Anaheim CA; or Applied Industrial Technologies | 75mm ID, sealed, C3 clearance |
 | 75mm × 150mm steel stub shaft (×2) | Pacific Coast Steel or any steel service center | 75mm Ø solid round bar, cut to length |
-| Closed-cell neoprene strip 12mm (3m) | McMaster-Carr #93855K6 | Closed-cell, pressure-sensitive adhesive back; ~$22 |
+| Closed-cell neoprene strip 12mm (3m) | McMaster-Carr #93855K6 | Closed-cell, pressure-sensitive adhesive back |
 | Silicone bead sealant | McMaster-Carr #7587A3 or equivalent | Black, UV-stable |
 | SS grab rail 100mm Ø (×1) | McMaster-Carr #4530T37 | 1" nominal; 400mm cut to length; interior face only |
-| Matte-black interior finish | Black-pigmented sheet; rattle-can / local shop | Touch-in at welds; ~$40–$70 |
-| Plastic fabrication (rolling, hot-air / extrusion welding, fitting) | Estimate 16–22 hrs labor at local plastic shop | $800–$1,150 depending on shop rate |
+| Matte-black interior finish | Black-pigmented sheet; rattle-can / local shop | Touch-in at welds |
+| Plastic fabrication (rolling, hot-air / extrusion welding, fitting) | Local plastic shop | Estimate 16–22 hrs labor |
 
-**Total custom housing+drum estimate: $1,465–$2,160.**
+**Total custom housing + drum estimate: <!-- BEGIN costing:hp-housing-low -->$1,385<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$2,070<!-- END costing:hp-housing-high -->** — priced line-item BOM in the [Project Cost Breakdown](project-cost-breakdown.md) §6 and [Hinged Panel Report](hinged-panel-report.md) §8.2.
 
 ---
 
@@ -191,16 +189,11 @@ exterior covered → no daylight enters.
 **Access.** With no internal fins, the whole **~Ø850mm bore** is clear standing
 space and the 80° opening gives a **~555mm passage** (sideways entry). The Ø850 bore
 meets the §2 standing-space intent; the opening itself is tighter than the nominal
-≥700mm and was accepted (rev 8) for occasional single-operator field use. Emergency egress remains the
+≥700mm and was accepted for occasional single-operator field use. Emergency egress remains the
 whole panel swinging open.
 
 See **Sheet 5** of the hinged-panel drawings (enter / transit / exit verification)
 and [Hinged Panel Report](hinged-panel-report.md) §3.3 / §3.6.
-
-> **Note.** This replaces the earlier Ø750 / 4-fin drum, whose static "S-path"
-> argument did not survive the two operational realities (a person could not fit a
-> 90° sector, and a finned drum with a person-sized opening bridged exterior and
-> interior at the transit angles). The fixed housing resolves both.
 
 ---
 
@@ -210,7 +203,7 @@ and [Hinged Panel Report](hinged-panel-report.md) §3.3 / §3.6.
 |---|---|---|---|
 | Clear bore / passage | 800mm | 750–900mm | **Ø850mm bore / ~555mm passage** |
 | Height | 2,000–2,200mm | 2,000mm | **2,200mm** |
-| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **$1,465–$2,160** |
+| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **<!-- BEGIN costing:hp-housing-low -->$1,385<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$2,070<!-- END costing:hp-housing-high -->** |
 | Weatherproofing | None | None | **IP44 (neoprene/silicone)** |
 | Panel integration | Requires surround wall | Requires panel-bay frame | **Direct bolt-in (120mm panel)** |
 | Transport-rated | No | No | **Yes (plastic skin, sealed bearings)** |
@@ -224,14 +217,14 @@ Custom fabrication is comparable to or below commercial alternatives while provi
 
 ## 7. Integration Notes
 
-- The drum is installed into the hinged panel before the panel is hung. Panel + drum combined weight: approximately **209 kg** (rev11 first-principles: 4mm-PP-skinned stepped panel — 18mm-ply Fan-B mount band + 3mm-Al corner cores + steel RHS center ~125 kg + plastic-skin Ø900 housing + C-shell drum ~60 kg + 4mm-PP B2 punch-out bay ~25 kg). The rev11 swap of the 18mm-ply skins for 4mm PP sheet cut ~72 kg off the panel. The Ø89 pivot post + bearings + cage (~38 kg) are separate transport hardware, not carried in the panel+drum lift. Still requires an engine crane or gantry hoist for hanging (beyond a two-person lift). See [Weight Distribution §3.2](weight-distribution-report.md) and [Hinged Panel Report §2.4–2.5](hinged-panel-report.md).
+- The drum is installed into the hinged panel before the panel is hung. The combined panel + drum weight (~209 kg; itemized breakdown in [Hinged Panel Report §2.4–2.5](hinged-panel-report.md) and [Weight Distribution §3.2](weight-distribution-report.md)) is beyond a two-person lift, so hanging requires an engine crane or gantry hoist. The pivot post, bearings, and cage are separate transport hardware, not carried in the panel + drum lift.
 - The lower bearing collar is bolted to the panel bottom rail with 8 × M10 stainless bolts. The upper bearing housing is bolted to the panel top rail with 6 × M10. Both connections can be disassembled with standard hex keys for maintenance.
 - The drum rotates freely in both directions; there is no rotation limit. The exterior face carries no handle — the operator pushes the bare drum wall to enter. An interior grab rail (100mm Ø SS, welded bracket, no through-hole) at 900mm height allows the operator to pull the drum closed from inside and brace during exit. This eliminates any through-bolt penetration of the drum wall on the exterior face, removing a potential light leak path.
 - Interior safelight (Circuit D, per [Electrical Report](electrical-report.md)) illuminates the drum interior during loading operations, allowing operators to orient themselves in darkness.
 - **Panel latches (×4 Southco C2-33 cam compression latches) are mounted on the interior face of the panel.** This is a deliberate safety design: if the revolving drum jams and prevents normal egress, an operator inside the container can release all four latches independently from the inside and push the panel open outward. The panel swings open about its left-edge pivot post, clearing the door opening. Latches appear as hidden (dashed) features in the exterior elevation drawing (Sheet 1).
-- **Stepped panel construction:** The panel has three thickness zones — 40mm at corners (18mm ply + 3mm aluminum plate + 18mm ply) and 120mm at center (18mm ply + 84mm steel RHS frame + 18mm ply). The step transitions occur at Yd=653mm and Yd=1,709mm. The 120mm center zone houses the drum; the 40mm corner zones are flush with the container walls.
-- **Swing pivot:** For transport the panel + drum revolve ~56° about a vertical Ø89×8mm CHS pivot post (the reused film-plane far-left upright at X=175, Yd=2287) on a thrust collar + top/bottom hub bearings. The vertical axis is balanced at any angle (no gravity torque). Locked at the swung position by top + bottom wall stays (hook + eye + turnbuckle). A fixed welded door frame (50×50×3mm RHS) at X=0 provides the EPDM seal landing for the perimeter + cut + lip seals, compressed by the cam latches in the closed position.
-- **Transport mode conversion** (single person, ~5 minutes, swing assisted): park + pin the drum → lift out the left walkway + door-end near-deck → strike the two left film rails (TL + BL) → release the cam latches → swing the frame ~56° inboard about the pivot → engage the top + bottom wall stays → close the container doors (they clear the swung frame by +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm -->mm; the door-end walkway brackets are cleared at Z, not struck). See [Equipment Layout Report](equipment-layout-report.md) §6 for full specification.
+- **Stepped panel construction:** The thick center zone houses the drum; the thinner corner zones sit flush with the container walls. Zone thicknesses, the step-transition positions, and the frame/skin build-up are specified in the [Hinged Panel Report](hinged-panel-report.md).
+- **Swing pivot:** For transport the panel + drum revolve ~56° about a vertical CHS pivot post (the reused film-plane far-left upright) on a thrust collar and top/bottom hub bearings. The vertical axis is balanced at any angle, so there is no gravity torque; the swung position is locked by top and bottom wall stays. A fixed welded door frame provides the EPDM seal landing for the perimeter, cut, and lip seals, compressed by the cam latches when closed. Full specification: [Equipment Layout Report](equipment-layout-report.md) §6.
+- **Transport mode conversion** (single person, ~5 minutes, swing assisted): park + pin the drum → lift out the left walkway + door-end near-deck → strike the two left film rails (TL + BL) → release the cam latches → swing the frame ~56° inboard about the pivot → engage the top + bottom wall stays → close the container doors (they clear the swung frame by +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm -->mm; the door-end walkway brackets are cleared in height, not struck). See [Equipment Layout Report](equipment-layout-report.md) §6 for full specification.
 
 ---
 

@@ -741,8 +741,8 @@ def _inline_blocks() -> dict:
         "ibc-frame-high":      (_IBC, lambda: f"${_ibc_frame().high:,}"),
         # processing-tray-and-spray-bar.md §6 BOM subtotals (from the WATER line items).
         # Shared across the dedicated report + the two docs that summarize/point to it.
-        "tray-low":            ([_PT, _WS], lambda: f"${_pt_line('Processing tray').low:,}"),
-        "tray-high":           ([_PT, _WS], lambda: f"${_pt_line('Processing tray').high:,}"),
+        "tray-low":            ([_PT, _WS, _CA], lambda: f"${_pt_line('Processing tray').low:,}"),
+        "tray-high":           ([_PT, _WS, _CA], lambda: f"${_pt_line('Processing tray').high:,}"),
         "spray-low":           ([_PT, _WS], lambda: f"${_pt_line('Spray bar').low:,}"),
         "spray-high":          ([_PT, _WS], lambda: f"${_pt_line('Spray bar').high:,}"),
         "tray-spray-total-low":  (_PT, lambda: f"${_pt_line('Processing tray').low + _pt_line('Spray bar').low:,}"),

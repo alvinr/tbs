@@ -955,7 +955,9 @@ def spray_bar():
 # now render the split Corridor / Pinhole-Wall panel design and stay in sync with
 # water.skp.  The functions below (equipment_panel / water_hookups / spray_bar_plumbing
 # / water_plumbing) are the OLD pre-corridor-refactor layout and are now UNUSED (kept
-# for reference; safe to delete).  ibc_rack() is still used by the cantilever study.
+# for reference; safe to delete).  ibc_rack() (old single-portal frame, X4734) is now referenced
+# ONLY by the ARCHIVED right-cantilever study (src/models/archive/) — the live models use the
+# deep-box cp.frame() (X4654); kept so the archived study still imports, but effectively dead.
 
 def equipment_panel():
     """18mm marine-ply panel in the IBC corridor carrying the wet end.
@@ -2558,6 +2560,7 @@ def generate_ruby():
         component("Fans A & B", "Fans", fans()),
         component("TAP-01 + Spray Supply", "Spray Bar", pw.tap01_supply()),
         component("Corridor Plumbing", "Water Plumbing", cp.plumbing()),
+        component("Ribbon Support Cross-beams", "Water Plumbing", cp.ribbon_supports()),
     ]
     body = '\n'.join(comps)
 
@@ -2644,14 +2647,9 @@ eye = ctr.offset(dir, bb.diagonal * 1.5)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
-# Overview — everything visible, Labels OFF.
+# Overview — everything visible, Labels OFF; listed first.
 model.layers["Labels"].visible = false if model.layers["Labels"]
 ovp = model.pages.add("Overview"); ovp.use_camera = true
-
-# Labeled — same view + callouts on the major system components.
-model.layers["Labels"].visible = true if model.layers["Labels"]
-olp = model.pages.add("Labeled"); olp.use_camera = true
-model.layers["Labels"].visible = false if model.layers["Labels"]
 
 # Grouped scenes — translucent Shell (context) + the group's subsystems.
 {scene_groups_ruby}.each {{ |name, tags|
@@ -2660,6 +2658,13 @@ model.layers["Labels"].visible = false if model.layers["Labels"]
   page.use_camera = true
 }}
 model.layers.each {{ |l| l.visible = true }}
+
+# Labeled — Overview view + callouts on the major system components, listed LAST.
+model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
+model.active_view.zoom_extents
+model.layers["Labels"].visible = true if model.layers["Labels"]
+olp = model.pages.add("Labeled"); olp.use_camera = true
+model.layers["Labels"].visible = false if model.layers["Labels"]
 
 model.commit_operation
 {{ success: true, model: "Overview",

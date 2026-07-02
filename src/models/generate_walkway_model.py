@@ -77,21 +77,22 @@ LC_STD, LC_WIDE, LC_YDS = k.LEFT_WK_CANT_STD_REACH, k.LEFT_WK_CANT_WIDE_REACH, k
 GRATE_Z = WK_H - GRATE_T          # 65 — grate underside / arm top
 
 TAGS = ["Container", "Processing Tray", "Walkways", "Cantilevers",
-        "Cantilever Types", "Right Cantilever", "Left Support", "Labels"]
+        "Cantilever Types", "Right Cantilever", "Film Plane", "IBC Frame", "Left Support", "Labels"]
 
 
-def right_anchor_context():
-    """Ghost stubs the right walkway cantilever anchors to — the IBC corridor uprights
-    (X4734, Yd1046/1266) + the bottom film rail (BR, X4649) — so the cantilever reads in
-    this focused model (the full frame + film plane live in the overview)."""
-    x_up = ov.IBC_COL_X + 60
-    parts = []
-    for yd in (ov.CORRIDOR_YD_NEAR, ov.CORRIDOR_YD_FAR - ov.IBC_FRAME_RHS):
-        parts.append(ruby_box("IBC corridor upright (ghost)", x_up, yd, 0,
-                              ov.IBC_FRAME_RHS, ov.IBC_FRAME_RHS, 1010, color=C_STEEL, alpha=0.3))
-    parts.append(ruby_box("Film rail BR (ghost)", ov.RAIL_X_R - 20, 0, ov.RAIL_OFF_BOT - 20,
-                          40, ov.C_WID, 40, color=C_STEEL, alpha=0.3))
-    return '\n'.join(parts)
+def film_plane_right_beams():
+    """The RIGHT-side film-plane support beams (R-bot + R-top, 40×40 rails, full Yd depth) that
+    the right-walkway cantilever's combined corner plate bolts to.  SOLID and single-sourced from
+    the SAME constants as pw.film_plane_beams()/overview (x = RAIL_X_R − rail = 4609, so the beam
+    ends at 4649 — clear of the corridor frame front at 4654).  The corner wall-seats are the
+    cantilever's COMBINED corner plate (drawn by right_walkway_cantilever), so no saddles here."""
+    rail = 40
+    x_right = ov.RAIL_X_R - rail                 # 4609 — matches overview/water (was a ghost at 4629)
+    z_top = ov.C_HGT - ov.RAIL_OFF - rail
+    p = []
+    for zl, rz in (("bot", ov.RAIL_OFF_BOT), ("top", z_top)):
+        p.append(ruby_box(f"FP support beam R-{zl}", x_right, 0, rz, rail, ov.C_WID, rail, color=C_STEEL))
+    return '\n'.join(p)
 
 
 # ── "Labeled" scene callouts (project rule: every .skp gets a Labeled scene) ──
@@ -447,6 +448,7 @@ def left_support():
 # ── Assemble the Ruby script ─────────────────────────────────────────────────
 
 def generate_ruby():
+    import generate_corridor_water_panel as cp   # late import (cp imports ov) — current deep-box corridor frame
     comps = [
         component("Container (ghost)", "Container", container_ghost()),
         component("Processing Tray", "Processing Tray", ov.processing_tray()),
@@ -455,7 +457,15 @@ def generate_ruby():
         component("Wall Cantilevers", "Cantilevers", cantilevers()),
         component("Cantilever Types", "Cantilever Types", cantilever_types()),
         component("Right Walkway (cantilever rectangle)", "Right Cantilever",
-                  ov.right_walkway_cantilever(include_grate=False) + "\n" + right_anchor_context()),
+                  ov.right_walkway_cantilever(include_grate=False)),
+        # Film-plane right support beams the cantilever bolts to — real position (X4609-4649),
+        # single-sourced with overview/water so it stays consistent (was a ghost at 4629-4669
+        # that intersected the corridor frame).
+        component("Film-Plane Right Support Beams", "Film Plane", film_plane_right_beams()),
+        # The real deep-box corridor frame the right walkway cantilevers off (solid, current
+        # design — front uprights X4654 → back X5104; the tote-retaining bars are intentionally
+        # omitted from this walkway-detail model).
+        component("IBC Corridor Frame (deep box)", "IBC Frame", cp.frame()),
         component("Left Walkway Support", "Left Support", left_support()),
     ]
     body = '\n'.join(comps)
@@ -466,10 +476,11 @@ def generate_ruby():
 
     # Scenes — Container stays on as context; scenes toggle the rest.
     scene_groups = [
-        ("Walkway", ["Walkways", "Right Cantilever", "Processing Tray"]),
+        ("Walkway", ["Walkways", "Right Cantilever", "Film Plane", "IBC Frame", "Processing Tray"]),
         ("Near/Far Cantilevers", ["Cantilevers", "Processing Tray"]),
-        # Right Cantilever — the cantilever-rectangle support + combined corner plate.
-        ("Right Cantilever", ["Right Cantilever", "Processing Tray"]),
+        # Right Cantilever — the cantilever-rectangle support + combined corner plate + the
+        # film-plane beams it bolts to + the deep-box frame it mounts off.
+        ("Right Cantilever", ["Right Cantilever", "Film Plane", "IBC Frame", "Processing Tray"]),
         ("Left Support", ["Left Support", "Processing Tray"]),
     ]
     scene_groups_ruby = '[' + ', '.join(
@@ -530,13 +541,8 @@ model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 model.active_view.zoom(0.72)   # pull back so callouts have margin (and read larger)
 
-# Combined — all subsystems, Labels + type-catalog OFF.
-model.pages.add("Combined")
-# Labeled — same view + callouts on the major parts.
-model.layers.each {{ |l| l.visible = true }}
-model.layers["Cantilever Types"].visible = false if model.layers["Cantilever Types"]
-model.pages.add("Labeled")
-model.layers["Labels"].visible = false if model.layers["Labels"]
+# Overview — all subsystems, Labels + type-catalog OFF; listed first.
+model.pages.add("Overview")
 {scene_groups_ruby}.each {{ |name, tags|
   model.layers.each {{ |l| l.visible = (l == default_layer || l.name == "Container" || tags.include?(l.name)) }}
   page = model.pages.add(name)
@@ -559,6 +565,14 @@ ctp.use_camera = true
 
 model.layers.each {{ |l| l.visible = true }}
 model.layers["Cantilever Types"].visible = false if model.layers["Cantilever Types"]
+
+# Labeled — Overview view + callouts on the major parts, listed LAST (project rule).
+model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
+model.active_view.zoom_extents
+model.active_view.zoom(0.72)
+model.layers["Labels"].visible = true if model.layers["Labels"]
+lpage = model.pages.add("Labeled"); lpage.use_camera = true
+model.layers["Labels"].visible = false if model.layers["Labels"]
 
 model.commit_operation
 {{ success: true, model: "Walkway + Cantilevers",

@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
 | 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,454 | $3,914 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $4,537 | $6,815 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $4,561 | $6,863 |
 | 6. Electrical — power, circuits, wiring | $2,110 | $2,660 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,385 | $2,070 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $855 | $1,430 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,210 | $2,980 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$21,517** | **~$32,282** |
+| **TOTAL (base build + 50-print run)** | **~$21,541** | **~$32,330** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -212,6 +212,7 @@ indicative low–high estimates — get quotes before ordering.
 | Cam-lever spring clamp | 92 ea | McMaster-Carr | clamp | $276–$736 |
 | Continuous (piano) hinge, 600 mm | 1 ea | McMaster-Carr | shelf | $20 |
 | Corridor panel mount hardware (brackets + fasteners) | 1 lot | Home Depot | water | $25–$50 |
+| Cushioned pipe clip | 16 ea | Amazon | water | $16–$32 |
 | Door & access upgrades | 1 lot | Home Depot | interior | $50–$100 |
 | Folding shelf stays/brackets | 2 ea | Amazon | shelf | $24 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
@@ -243,7 +244,7 @@ indicative low–high estimates — get quotes before ordering.
 | Stainless fasteners + nylon isolation washers | 1 lot | McMaster-Carr | lightlock | $30–$50 |
 | Top + bottom wall stays + 4-bolt anchor plates | 2 set | McMaster-Carr | swing | $90–$160 |
 | Transport latch (over-center/barrel) | 1 ea | Amazon | shelf | $8 |
-| **fasteners-hardware subtotal** | | | | **$1,332–$2,250** |
+| **fasteners-hardware subtotal** | | | | **$1,348–$2,282** |
 
 ### plastics-sheet
 
@@ -350,11 +351,12 @@ indicative low–high estimates — get quotes before ordering.
 | Right walkway cantilever frame | 1 lot | Metal Supermarkets | walkway | $28–$40 |
 | Shutter plate (⅛ steel 10×8) + slide channel | 1 ea | Local fab | optics | $25–$50 |
 | Steel backing plate 6×6×⅛ + welded frame | 1 ea | Metal Supermarkets | optics | $20–$40 |
+| Steel flat bar 25×3mm — ribbon support cross-brace | 4 ea | Home Depot | water | $8–$16 |
 | Transition bearing plate | 2 ea | Local fab | walkway | $5–$10 |
 | Wall cleat (left corners) | 2 ea | Local fab | walkway | $20–$35 |
 | Wall mounting cleat + anchors | 1 lot | Local fab | shelf | $18 |
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swing | $180–$300 |
-| **steel-structural subtotal** | | | | **$2,270–$3,355** |
+| **steel-structural subtotal** | | | | **$2,278–$3,371** |
 
 ### substrate-fabric
 
@@ -411,7 +413,7 @@ indicative low–high estimates — get quotes before ordering.
 |----------|-----------|-------|-----------|
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 16 | adhesives-finishes, fabrication-labor, steel-structural | $1,946–$3,156 |
-| Amazon | 78 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,209–$2,752 |
+| Amazon | 79 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,225–$2,784 |
 | McMaster-Carr | 41 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets | $1,772–$2,715 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |
@@ -419,7 +421,7 @@ indicative low–high estimates — get quotes before ordering.
 | McNichols | 3 | fasteners-hardware, plastics-sheet | $1,045–$1,365 |
 | Photographers' Formulary | 2 | chemistry-reagents | $1,195 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
-| Home Depot | 20 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety | $829–$1,034 |
+| Home Depot | 21 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety | $837–$1,050 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
 | Renogy | 3 | electrical-power | $829 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |

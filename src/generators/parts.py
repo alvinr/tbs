@@ -221,6 +221,10 @@ PARTS: list[Part] = [
          "water", 2, "ea", 6, 12, "Amazon", spec='Low tank-body penetration in each Blue tote (IBC-1 + IBC-2) for the 1" equalization cross-tie that self-balances the two Blue levels (run made from the 1" HDPE stock). Cost est.'),
     Part("check-valve-1in", '1" NPT spring check valve (CV1 — X1 gravity fill)', "plumbing-fittings",
          "water", 1, "ea", 8, 14, "Amazon", spec='PVC body, EPDM seal, 1" FNPT × FNPT. Only CV-1 (X1 fill) remains — the Shurflo 2088 pumps have integral check valves, so CV-2/CV-3/CV-4 are redundant and dropped'),
+    Part("ribbon-support-beam", "Steel flat bar 25×3mm — ribbon support cross-brace", "steel-structural",
+         "water", 4, "ea", 2, 4, "Home Depot", spec="Welded between the two right-walkway long bearers at 4 stations to carry the under-walkway pipe ribbon (the four corridor↔pinhole lines); ~300mm each", panel="Corridor"),
+    Part("ribbon-pipe-clip", "Cushioned pipe clip", "fasteners-hardware",
+         "water", 16, "ea", 1, 2, "Amazon", spec="Secures the four under-walkway ribbon lines to the support cross-braces (4 lines × 4 supports)", panel="Corridor"),
     Part("ptfe-tape", "Thread seal tape (PTFE)", "adhesives-finishes",
          "water", 4, "roll", 2, 2, "Home Depot", spec='1/2" wide, 260" roll'),
     # — pipe (80–114) —

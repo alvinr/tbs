@@ -9,7 +9,7 @@ capital from recurring/consumable spend, and ranks the realistic savings levers.
 
 All figures are the **mid-column** estimates from the
 [Cost Breakdown](project-cost-breakdown.md) (the itemized source of truth); the build
-mid-total is **~<!-- BEGIN costing:ca-mid-total -->$27,361<!-- END costing:ca-mid-total -->**.
+mid-total is **~<!-- BEGIN costing:ca-mid-total -->$27,397<!-- END costing:ca-mid-total -->**.
 
 ---
 
@@ -22,13 +22,13 @@ recurs or is consumed — savings strategy is different for each.
 <!-- BEGIN costing:ca-buckets -->
 | Bucket | Mid | What it is |
 |---|--:|---|
-| **Capital build** (one-time hardware) | **$24,171** | The systems you build once — this is where build-savings live |
+| **Capital build** (one-time hardware) | **$24,207** | The systems you build once — this is where build-savings live |
 | Consumable (per 50-print batch) | $1,650 | Cyanotype chemistry + substrate (Standard ½-Ware) — recurs every batch |
 | Recurring (per deployment) | $750 | Commercial-hire transport |
 | Soft / regulatory | $790 | Licenses & permits |
 <!-- END costing:ca-buckets -->
 
-Build-savings work on the **<!-- BEGIN costing:ca-capital -->$24,171<!-- END costing:ca-capital --> capital**. The <!-- BEGIN costing:ca-consumable -->$1,650<!-- END costing:ca-consumable --> consumable is attacked
+Build-savings work on the **<!-- BEGIN costing:ca-capital -->$24,207<!-- END costing:ca-capital --> capital**. The <!-- BEGIN costing:ca-consumable -->$1,650<!-- END costing:ca-consumable --> consumable is attacked
 separately (bulk chemistry, cheaper substrate) because it repeats every batch and
 quickly dominates lifetime cost.
 
@@ -41,7 +41,7 @@ Capital systems ranked by mid cost:
 <!-- BEGIN costing:ca-ranking -->
 | System | Mid | % of capital | Notes |
 |---|--:|--:|---|
-| **Processing water system** | $5,680 | 23% | Tray (304 SS) + IBC frame dominate |
+| **Processing water system** | $5,716 | 24% | Tray (304 SS) + IBC frame dominate |
 | **Film-plane mechanism** | $3,684 | 15% | Carriages, Option-A cross-slides, cam-lever clamps, wall-seat saddles |
 | **Container + delivery** | $3,300 | 14% | Grade-dependent (CW vs WWT) |
 | **Perimeter walkway** | $2,488 | 10% | GRP grating + steel cantilevers |
@@ -55,7 +55,7 @@ Capital systems ranked by mid cost:
 | **Optics — pinhole** | $165 | 0.7% | Trivial (it is a pinhole) |
 <!-- END costing:ca-ranking -->
 
-The **water system is <!-- BEGIN costing:ca-water-pct -->23<!-- END costing:ca-water-pct -->% of the capital build** and the **304 SS processing tray is its
+The **water system is <!-- BEGIN costing:ca-water-pct -->24<!-- END costing:ca-water-pct -->% of the capital build** and the **304 SS processing tray is its
 single biggest line** (~$1,177–1,857) — the same item that topped the weight study.
 
 ---

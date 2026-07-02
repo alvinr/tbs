@@ -64,7 +64,7 @@ GAPX    = PROC_TRAY_X_R + 12                  # 4641 — turn-up in the tray↔I
 # ── Cantilever-zone members (diagram-of-record detail dims, verified against live water.skp) ──
 # water.skp restraint = cp.frame() DEEP 4-leg box: FRONT upright X4654, front foot X4604-4754
 # (the foot's left edge sits 25mm UNDER the tray right edge X4629).
-ARM_X0, ARM_X1, ARM_ZB, ARM_ZT = WALKWAY_RIGHT_X, 4734, 70, 115   # RWK cantilever arm (reaches X4734)
+ARM_X0, ARM_X1, ARM_ZB, ARM_ZT = WALKWAY_RIGHT_X, 4654, 70, 115   # RWK cantilever arm — clamps to the deep-box upright X4654 (reconciled from 4734)
 UP_X0, UP_X1 = 4654, 4704            # corridor deep-box FRONT upright (50×50 RHS)
 FOOT_X0, FOOT_X1, FOOT_ZT = 4604, 4754, 12                        # front floor foot 150×150×12 — EXTENDS under the tray
 M12_XS = [4629, 4729]                # 4× M12 on 100 PCD (cx 4679 ± 50)
@@ -359,7 +359,7 @@ def sheet3():
         _rect(ax, bx, 80, BEAM_W, DECK_ZB - 80, C_STEEL, ec="#3A3A40", lw=1.0, z0=6, hatch="\\\\\\\\")
     _rect(ax, WALKWAY_RIGHT_X, DECK_ZB, WALKWAY_RIGHT_W, WALKWAY_GRATE_T, C_GRATE, lw=1.0, z0=7)  # deck
     leader(ax, 4500, ARM_ZB, 4358, -58,
-           "walkway support: cantilever arm (Z70–115)\n+ long bearers (Z80–115, hatched)\n[arm reaches X4734 — NB vs upright X4654]",
+           "walkway support: cantilever arm (Z70–115)\n+ long bearers (Z80–115, hatched)\n[arm clamps to the deep-box upright X4654]",
            color="#3A3A40", fs=5.2, ha="left", va="top", arrow_style="-|>", font=FONT)
     leader(ax, WALKWAY_RIGHT_X + 90, WALKWAY_H, 4358, 260, "right walkway grate deck (Z115–130)",
            color=C_OUT, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
@@ -431,9 +431,9 @@ def sheet3():
         "   ≈1.5mm (rim) / ≈2.5mm (upright), a pinch the plan views don't show.\n"
         "4. The corridor lanes (blue trunk, grey waste, blue recycle) run in X\n"
         "   past the upright (Yd1101–1241) — in-plane in E-E.\n"
-        "5. FLAGS to verify in 3D: (a) front foot / M12 vs tray basin at\n"
-        "   X4604–4629; (b) RWK cantilever-arm end (X4734) vs upright (X4654);\n"
-        "   (c) blue TAP-01 crosser (Z60, top Z70.5) GRAZES the arm soffit (Z70)."
+        "5. STATUS: (a) front foot / M12 now CLEARS under the raised tray pan;\n"
+        "   (b) RWK cantilever arm reconciled to the deep-box upright (X4654);\n"
+        "   (c) blue TAP-01 crosser (Z60, top Z70.5) still GRAZES the arm soffit (Z70) — OPEN."
     )
     ax.text(X_LO + 8, Z_HI - 60, notes, fontsize=6.2, ha="left", va="top", color=C_OUT,
             family="monospace", zorder=15,

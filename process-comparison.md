@@ -11,20 +11,28 @@ size 50 prints; substrate as in the shopping list. Prices are April-2026 estimat
 
 | Process | Chemistry total | Substrate total | **50-print total** | **Per print** |
 |---|---|---|---|---|
-| **Cyanotype (Ware formula)** | ~$887 | ~$300 | **~$1,187** | **~$24** |
+| **Cyanotype (Ware, lean)** | ~$887 | ~$300 | **~$1,187** | **~$24** |
 | **Gum bichromate** | ~$2,159 | ~$300 | **~$2,459** | **~$49** |
 | **Van Dyke Brown** | ~$6,553 | ~$300 | **~$6,853** | **~$137** |
 | **Ilford RC paper** | ~$1,275 (chemistry) | ~$13,500 (paper) | **~$14,775** | **~$296** |
 | **Liquid Light** | ~$900 (chemistry) | ~$14,090 (emulsion+substrate) | **~$14,990** | **~$300** |
 | **Salt print** | ~$18,522 | ~$300 | **~$18,822** | **~$376** |
 
-Silver nitrate is the cost driver for salt print and Van Dyke Brown. Cyanotype is the only process where 50 prints can be made for under $2,000 total; gum bichromate remains under $3,500.
+Silver nitrate is the cost driver for salt print and Van Dyke Brown. Cyanotype is the only process where 50 prints can be made for under $2,000 total; gum bichromate remains under $2,500.
+
+---
+
+## Process 1: Cyanotype (the chosen process)
+
+Cyanotype (Mike Ware's New Cyanotype) is the process TBS-001 uses; its full procurement, tiered recipe, and quantities live in the [Chemistry Shopping List](chemistry-shopping-list.md) and [Operating Manual](operating-manual.md). It appears here only as the cost baseline the rejected alternatives are measured against.
+
+**Cost basis:** this document compares each process at its economical single-application formulation — for cyanotype that is the **lean tier (~$24/print)**. The project's as-built consumable budget instead uses **Standard ½-Ware (~$33/print, ~$1,650 per 50-print batch)**, per the [Cost Breakdown](project-cost-breakdown.md); the ~$24 here is cyanotype's floor, not a conflicting figure.
 
 ---
 
 ## Process 2: Gum Bichromate
 
-**50-print total: ~$3,154 | Per print: ~$63**
+**50-print total: ~$2,459 | Per print: ~$49**
 
 ### Chemistry quantities
 
@@ -200,7 +208,7 @@ At 1:4 dilution: 5 L concentrate → 25 L working. 34 bottles × 25 L = 850 L wo
 
 | Process | AmFe / FAC | KFe | AgNO₃ | Amm. dichromate | Gum arabic | Na thiosulfate | Fabric/paper | Chemistry | **Total** |
 |---|---|---|---|---|---|---|---|---|---|
-| Cyanotype (Ware) | 8.45 kg AmFe | 3.95 kg | — | 0.45 kg | — | — | ~445 yd muslin | ~$887 | **~$1,187** |
+| Cyanotype (Ware, lean) | 8.45 kg AmFe | 3.95 kg | — | 0.45 kg | — | — | ~445 yd muslin | ~$887 | **~$1,187** |
 | Gum bichromate | — | — | — | 9.3 kg | 29.3 kg | — | ~445 yd muslin | ~$2,159 | **~$2,459** |
 | Van Dyke Brown | 5.9 kg FAC | — | 2.3 kg | — | — | 20.85 kg | ~445 yd muslin | ~$6,553 | **~$6,853** |
 | Salt print | — | — | 7.05 kg | — | — | 41.65 kg | ~445 yd muslin | ~$18,522 | **~$18,822** |
@@ -215,7 +223,7 @@ At 1:4 dilution: 5 L concentrate → 25 L working. 34 bottles × 25 L = 850 L wo
 Any US purchase of silver nitrate above certain thresholds requires completion of a **DEA Form 224** (New Application for Registration). Silver nitrate is listed as a DEA List I Chemical due to its use in methamphetamine precursor chemistry. Photographers' Formulary states this explicitly on their product page. Allow 2–4 weeks for DEA registration approval before ordering. Form available at dea.gov.
 
 ### 2. Ammonium dichromate — hazmat shipping
-Ammonium dichromate is a UN Class 5.1 oxidiser. Cannot be shipped by air. UPS Ground only within the continental US. Both Photographers' Formulary and Chem-Impex state ground-only shipping at checkout. It is also a Category 1A human carcinogen. Proper storage away from flammables is required; the material is capable of self-sustaining decomposition if ignited.
+Ammonium dichromate is a UN Class 5.1 oxidizer. Cannot be shipped by air. UPS Ground only within the continental US. Both Photographers' Formulary and Chem-Impex state ground-only shipping at checkout. It is also a Category 1A human carcinogen. Proper storage away from flammables is required; the material is capable of self-sustaining decomposition if ignited.
 
 ### 3. Silver nitrate price volatility
 Silver nitrate is 63–68% silver by weight. The silver spot price (approximately $30–35/troy oz as of early 2026) directly sets the floor for AgNO₃ cost. A 20% increase in silver price increases salt print chemistry cost by approximately $4,950 on a 50-print run. Lock in pricing before committing to this process.
@@ -227,7 +235,7 @@ At the volume required for 50 prints (7,900 oz / ~234 liters), retail ordering i
 Ammonium iron(III) oxalate (AmFe) requires **warm water (50–60°C)** to dissolve fully. Prepare Part A by adding AmFe to warm water and stirring until completely clear — a pale green-yellow solution. Do not use boiling water. Allow to cool before mixing with Part B. AmFe has a shelf life of 6–12 months in a sealed dark bottle at room temperature. If the traditional FAC formula is substituted: use only the **green grade** of ferric ammonium citrate (Fe³⁺, light-sensitive) — the brown grade (Fe²⁺) is not light-sensitive for cyanotype.
 
 ### 6. Muslin pre-treatment
-Regardless of process, all muslin must be pre-washed twice to remove commercial sizing. Sizing is a starch/synthetic compound applied by fabric mills that repels water-based sensitisers. If not removed, the sensitiser will bead off the fabric rather than absorbing. Test a small piece before processing the full batch.
+Regardless of process, all muslin must be pre-washed twice to remove commercial sizing. Sizing is a starch/synthetic compound applied by fabric mills that repels water-based sensitizers. If not removed, the sensitizer will bead off the fabric rather than absorbing. Test a small piece before processing the full batch.
 
 ### 7. Bulk muslin ordering — consider width carefully
 The active film plane is 14'9" × 7'10" (<!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm). The image plane is 7'10" (2,388mm) tall. 60" (1,524mm) muslin requires multiple widths joined in the height direction. For the 14'9" × 7'10" active plane, the most efficient lay is: fabric width = 7'10" height (requires ~96" / 240cm wide fabric), which is not commercially common. At 60" wide, 4 strips of 60"×177" are cut and joined to cover the 14'9" width. Alternatively, buy 120" (10ft) wide muslin from theatrical/backdrop suppliers and cut a single panel per print — at 14'9" wide, two widths of 120" fabric joined give exactly the right width with minimal waste. This eliminates all but one vertical seam.
@@ -253,3 +261,16 @@ The active film plane is 14'9" × 7'10" (<!-- BEGIN fact:film_plane_width_mm -->
 | **Adorama** | Ilford paper rolls, Rockland Liquid Light, Dektol | [adorama.com](https://www.adorama.com) |
 | **Rockland Colloid** | Liquid Light emulsion — contact for bulk pricing | [rockaloid.com](https://www.rockaloid.com) |
 | **Freestyle Photo** | Alternative process chemicals, Arista developer | [freestylephoto.biz](https://www.freestylephoto.biz) |
+
+---
+
+## See Also
+
+- [Chemistry Shopping List](chemistry-shopping-list.md) — procurement for cyanotype, the chosen process.
+- [Photosensitive Plane Options](photosensitive-plane-options.md) — the process-selection analysis that chose cyanotype.
+- [Operating Manual](operating-manual.md) — cyanotype recipe tiers and chemistry preparation.
+- [Cost Breakdown](project-cost-breakdown.md) — the project's as-built cyanotype consumable budget (Standard ½-Ware).
+
+Per-item supplier links are inline in each process section and consolidated in the Supplier Directory above.
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

@@ -2720,17 +2720,17 @@ control it. Scripts should import from <code>tbs_constants</code> rather than ha
 <tbody>
 <tr>
 <td>Interior length (long axis X)</td>
-<td>5,893mm</td>
+<td><!-- BEGIN cdm:C_LEN -->5,893<!-- END cdm:C_LEN -->mm</td>
 <td><code>C_LEN</code></td>
 </tr>
 <tr>
 <td>Interior width (optical depth Y)</td>
-<td>2,362mm</td>
+<td><!-- BEGIN cdm:C_WID -->2,362<!-- END cdm:C_WID -->mm</td>
 <td><code>C_WID</code></td>
 </tr>
 <tr>
 <td>Interior height Z</td>
-<td>2,388mm</td>
+<td><!-- BEGIN cdm:C_HGT -->2,388<!-- END cdm:C_HGT -->mm</td>
 <td><code>C_HGT</code></td>
 </tr>
 </tbody>
@@ -2749,17 +2749,17 @@ bamboo floor, corner castings, corner posts, structural corrugation ribs.</em></
 <tbody>
 <tr>
 <td>Pinhole X position (long axis)</td>
-<td>2,399mm</td>
+<td><!-- BEGIN cdm:PH_X -->2,399<!-- END cdm:PH_X -->mm</td>
 <td><code>PH_X</code></td>
 </tr>
 <tr>
 <td>Pinhole center height</td>
-<td>1,194mm</td>
+<td><!-- BEGIN cdm:PH_H -->1,194<!-- END cdm:PH_H -->mm</td>
 <td><code>PH_H</code></td>
 </tr>
 <tr>
 <td>Pinhole diameter</td>
-<td>Ø2.17mm</td>
+<td>Ø<!-- BEGIN cdm:PH_D -->2.17<!-- END cdm:PH_D -->mm</td>
 <td><code>PH_D</code></td>
 </tr>
 <tr>
@@ -2772,10 +2772,36 @@ bamboo floor, corner castings, corner posts, structural corrugation ribs.</em></
 <td><!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm</td>
 <td><code>PH_F</code> (= <code>C_WID</code>)</td>
 </tr>
+<tr>
+<td>Wall frame / plate outer dim (square)</td>
+<td><!-- BEGIN cdm:PLATE_OD -->600<!-- END cdm:PLATE_OD -->mm</td>
+<td><code>PLATE_OD</code></td>
+</tr>
+<tr>
+<td>Aluminum plate thickness</td>
+<td><!-- BEGIN cdm:PLATE_THK -->15<!-- END cdm:PLATE_THK -->mm</td>
+<td><code>PLATE_THK</code></td>
+</tr>
+<tr>
+<td>Wall frame steel thickness</td>
+<td><!-- BEGIN cdm:WALL_FRAME_T -->6<!-- END cdm:WALL_FRAME_T -->mm</td>
+<td><code>WALL_FRAME_T</code></td>
+</tr>
+<tr>
+<td>Pinhole disc diameter</td>
+<td>Ø<!-- BEGIN cdm:PINHOLE_DISC_D -->50<!-- END cdm:PINHOLE_DISC_D -->mm</td>
+<td><code>PINHOLE_DISC_D</code></td>
+</tr>
+<tr>
+<td>Pinhole disc thickness</td>
+<td><!-- BEGIN cdm:PINHOLE_DISC_T -->0.1<!-- END cdm:PINHOLE_DISC_T -->mm</td>
+<td><code>PINHOLE_DISC_T</code></td>
+</tr>
 </tbody>
 </table>
-<p><em>Components: wall frame (600×600mm, 6mm steel), pinhole plate (ICP-02 / interchangeable
-Ø50mm SS-302 disc, 0.1mm, Lenox Laser laser-drilled), lens plate, shutter plate and channel.</em></p>
+<p><em>Components: wall frame (S275 steel), interchangeable pinhole plate (ICP-02 / SS-302 disc,
+Lenox Laser laser-drilled), lens plate, shutter plate and channel. Frame, plate, and disc
+dimensions are single-sourced in the table above (<code>generate_plate_drawing.py</code> reads the same constants).</em></p>
 <h3 id="13-film-plane-mechanism">1.3 Film Plane Mechanism<a class="headerlink" href="#13-film-plane-mechanism" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2788,62 +2814,62 @@ bamboo floor, corner castings, corner posts, structural corrugation ribs.</em></
 <tbody>
 <tr>
 <td>Film plane left edge X</td>
-<td>150mm</td>
+<td><!-- BEGIN cdm:FP_X_L -->150<!-- END cdm:FP_X_L -->mm</td>
 <td><code>FP_X_L</code></td>
 </tr>
 <tr>
 <td>Film plane right edge X</td>
-<td>4,649mm</td>
+<td><!-- BEGIN cdm:FP_X_R -->4,649<!-- END cdm:FP_X_R -->mm</td>
 <td><code>FP_X_R</code></td>
 </tr>
 <tr>
 <td>Film plane width</td>
-<td>4,499mm</td>
+<td><!-- BEGIN cdm:FP_W -->4,499<!-- END cdm:FP_W -->mm</td>
 <td><code>FP_W</code></td>
 </tr>
 <tr>
 <td>Film plane height</td>
-<td>2,388mm</td>
+<td><!-- BEGIN cdm:FP_H -->2,388<!-- END cdm:FP_H -->mm</td>
 <td><code>FP_H</code></td>
 </tr>
 <tr>
 <td>Nominal depth from pinhole wall</td>
-<td>2,262mm</td>
+<td><!-- BEGIN cdm:FP_Y -->2,262<!-- END cdm:FP_Y -->mm</td>
 <td><code>FP_Y</code></td>
 </tr>
 <tr>
 <td>Minimum carriage depth</td>
-<td>100mm</td>
+<td><!-- BEGIN cdm:FP_Y_MIN -->100<!-- END cdm:FP_Y_MIN -->mm</td>
 <td><code>FP_Y_MIN</code></td>
 </tr>
 <tr>
 <td>Left rail X</td>
-<td>150mm</td>
+<td><!-- BEGIN cdm:RAIL_X_L -->150<!-- END cdm:RAIL_X_L -->mm</td>
 <td><code>RAIL_X_L</code></td>
 </tr>
 <tr>
 <td>Right rail X</td>
-<td>4,649mm</td>
+<td><!-- BEGIN cdm:RAIL_X_R -->4,649<!-- END cdm:RAIL_X_R -->mm</td>
 <td><code>RAIL_X_R</code></td>
 </tr>
 <tr>
 <td>Rail span</td>
-<td>4,499mm</td>
+<td><!-- BEGIN cdm:RAIL_SPAN -->4,499<!-- END cdm:RAIL_SPAN -->mm</td>
 <td><code>RAIL_SPAN</code></td>
 </tr>
 <tr>
 <td>Rail length (Y travel)</td>
-<td>2,200mm</td>
+<td><!-- BEGIN cdm:RAIL_LEN -->2,200<!-- END cdm:RAIL_LEN -->mm</td>
 <td><code>RAIL_LEN</code></td>
 </tr>
 <tr>
 <td>Max tilt (single-axis, Option A)</td>
-<td>±40°</td>
+<td>±<!-- BEGIN cdm:MAX_TILT_DEG -->40<!-- END cdm:MAX_TILT_DEG -->°</td>
 <td><code>MAX_TILT_DEG</code></td>
 </tr>
 <tr>
 <td>Max swing (single-axis, Option A)</td>
-<td>±28°</td>
+<td>±<!-- BEGIN cdm:MAX_SWING_DEG -->28<!-- END cdm:MAX_SWING_DEG -->°</td>
 <td><code>MAX_SWING_DEG</code></td>
 </tr>
 <tr>
@@ -2858,12 +2884,12 @@ bamboo floor, corner castings, corner posts, structural corrugation ribs.</em></
 </tr>
 <tr>
 <td>Cross-slide stroke (spec)</td>
-<td>300mm</td>
+<td><!-- BEGIN cdm:XSLIDE_STROKE -->300<!-- END cdm:XSLIDE_STROKE -->mm</td>
 <td><code>XSLIDE_STROKE</code></td>
 </tr>
 <tr>
 <td>Cross-slides total (2/corner)</td>
-<td>8</td>
+<td><!-- BEGIN cdm:XSLIDE_N -->8<!-- END cdm:XSLIDE_N --></td>
 <td><code>XSLIDE_N</code></td>
 </tr>
 </tbody>
@@ -2889,12 +2915,12 @@ so the old ±42°/±25.7° stretch-mechanism stops and the compound-twist config
 <tbody>
 <tr>
 <td>Pinhole X (board centers here)</td>
-<td>2,399mm</td>
+<td><!-- BEGIN cdm:PH_X -->2,399<!-- END cdm:PH_X -->mm</td>
 <td><code>PH_X</code></td>
 </tr>
 <tr>
 <td>Max tilt/swing</td>
-<td>±5.3°</td>
+<td>±<!-- BEGIN cdm:FRONT_BOARD_MAX_DEG -->5.3<!-- END cdm:FRONT_BOARD_MAX_DEG -->°</td>
 <td><code>FRONT_BOARD_MAX_DEG</code> (computed from arm + travel)</td>
 </tr>
 <tr>
@@ -2920,12 +2946,12 @@ bellows (4-pleat, Ø290 ID → Ø360 OD).</em></p>
 <tbody>
 <tr>
 <td>Light-lock center X (cargo door end wall)</td>
-<td>0mm</td>
+<td><!-- BEGIN cdm:DRUM_CX -->-400<!-- END cdm:DRUM_CX -->mm</td>
 <td><code>DRUM_CX</code></td>
 </tr>
 <tr>
 <td>Fixed housing outer diameter</td>
-<td>900mm</td>
+<td><!-- BEGIN cdm:DRUM_D -->900<!-- END cdm:DRUM_D -->mm</td>
 <td><code>DRUM_D</code></td>
 </tr>
 <tr>
@@ -2935,17 +2961,17 @@ bellows (4-pleat, Ø290 ID → Ø360 OD).</em></p>
 </tr>
 <tr>
 <td>Drum outer radius (rotating)</td>
-<td>432mm</td>
+<td><!-- BEGIN cdm:LT_DRUM_OR -->432<!-- END cdm:LT_DRUM_OR -->mm</td>
 <td><code>LT_DRUM_OR</code></td>
 </tr>
 <tr>
 <td>Opening arc (each)</td>
-<td>80°</td>
+<td><!-- BEGIN cdm:LT_OPENING_DEG -->80<!-- END cdm:LT_OPENING_DEG -->°</td>
 <td><code>LT_OPENING_DEG</code></td>
 </tr>
 <tr>
-<td>Height</td>
-<td>2,200mm</td>
+<td>Top Z (walkway-lifted)</td>
+<td><!-- BEGIN cdm:DRUM_H_LT -->2,250<!-- END cdm:DRUM_H_LT -->mm</td>
 <td><code>DRUM_H_LT</code></td>
 </tr>
 </tbody>
@@ -2967,12 +2993,12 @@ neoprene compression strip. Replaces the failed Ø750 4-fin drum.</em></p>
 <tbody>
 <tr>
 <td>Panel width</td>
-<td>2,362mm</td>
+<td><!-- BEGIN cdm:C_WID -->2,362<!-- END cdm:C_WID -->mm</td>
 <td><code>C_WID</code></td>
 </tr>
 <tr>
 <td>Panel height</td>
-<td>2,388mm</td>
+<td><!-- BEGIN cdm:C_HGT -->2,388<!-- END cdm:C_HGT -->mm</td>
 <td><code>C_HGT</code></td>
 </tr>
 <tr>
@@ -3000,62 +3026,61 @@ B2 punch-out bay.</em></p>
 <tbody>
 <tr>
 <td>Fan diameter (both fans)</td>
-<td>150mm</td>
+<td><!-- BEGIN cdm:FAN_DIAM -->150<!-- END cdm:FAN_DIAM -->mm</td>
 <td><code>FAN_DIAM</code></td>
 </tr>
 <tr>
 <td>Panel fan body depth</td>
-<td>50mm</td>
+<td><!-- BEGIN cdm:FAN_BODY_D -->50<!-- END cdm:FAN_BODY_D -->mm</td>
 <td><code>FAN_BODY_D</code></td>
 </tr>
 <tr>
 <td>Fan A center height AFF (below X1, in corridor)</td>
-<td>2,000mm</td>
+<td><!-- BEGIN cdm:FAN_A_H -->2,000<!-- END cdm:FAN_A_H -->mm</td>
 <td><code>FAN_A_H</code></td>
 </tr>
 <tr>
 <td>Fan B center height AFF (low)</td>
-<td>600mm</td>
+<td><!-- BEGIN cdm:FAN_B_H -->600<!-- END cdm:FAN_B_H -->mm</td>
 <td><code>FAN_B_H</code></td>
 </tr>
 <tr>
 <td>Fan A Yd position (below the X1 fill port, plumbing corridor)</td>
-<td>1,181mm</td>
+<td><!-- BEGIN cdm:FAN_A_YD -->1,181<!-- END cdm:FAN_A_YD -->mm</td>
 <td><code>FAN_A_YD</code></td>
 </tr>
 <tr>
 <td>Fan B Yd position (near pinhole wall, near corner — rev9/B2 swap)</td>
-<td>365mm</td>
+<td><!-- BEGIN cdm:FAN_B_YD -->365<!-- END cdm:FAN_B_YD -->mm</td>
 <td><code>FAN_B_YD</code></td>
 </tr>
 <tr>
 <td>Baffle duct depth</td>
-<td>300mm</td>
+<td><!-- BEGIN cdm:DUCT_DEPTH -->300<!-- END cdm:DUCT_DEPTH -->mm</td>
 <td><code>DUCT_DEPTH</code></td>
 </tr>
 <tr>
 <td>Baffle duct height</td>
-<td>200mm</td>
+<td><!-- BEGIN cdm:DUCT_HEIGHT -->200<!-- END cdm:DUCT_HEIGHT -->mm</td>
 <td><code>DUCT_HEIGHT</code></td>
 </tr>
 <tr>
 <td>Fan A shadow margin (from cone)</td>
-<td>869mm</td>
+<td><!-- BEGIN cdm:FAN_A_MARGIN -->869<!-- END cdm:FAN_A_MARGIN -->mm</td>
 <td><code>FAN_A_MARGIN</code></td>
 </tr>
 <tr>
 <td>Fan B shadow margin (from cone)</td>
-<td>40mm</td>
+<td><!-- BEGIN cdm:FAN_B_MARGIN -->40<!-- END cdm:FAN_B_MARGIN -->mm</td>
 <td><code>FAN_B_MARGIN</code></td>
 </tr>
 </tbody>
 </table>
-<p><em>Components: Fan A — 150mm compact axial panel fan, sealed end wall (X=C_LEN), exhaust, Circuit A,
-in the 270mm plumbing corridor directly </em><em>below the X1 fill port</em><em> (Yd=1181, Z=2,000mm) — the only
-full-height clear channel past the v2 1,000L direct-stack (totes reach Z=2,336mm in both flanking
-columns; the old high spot at Yd1996/Z2200 was buried — RESOLVED, see [[project-fan-a-ibc-clash]]). Fan B —
-identical fan, mounted on hinged panel (near corner zone by the pinhole wall, Yd=365mm — rev9/B2
-swap so its conduit runs along the pinhole wall near the pivot side), intake,
+<p><em>Components: Fan A — 150mm compact axial panel fan, sealed end wall, exhaust, Circuit A,
+in the 270mm plumbing corridor directly </em><em>below the X1 fill port</em><em> — the only
+full-height clear channel past the 1,000L direct-stack. Fan B —
+identical fan, mounted on hinged panel (near corner zone by the pinhole wall,
+ so its conduit runs along the pinhole wall near the pivot side), intake,
 Circuit B, low position. Fan A mounts on interior face of a 300mm deep light-safe baffle duct with 2 offset
 steel baffles (65% height each, horizontal S-path); exterior face has a passive weatherproof louvre grille.
 Fan B has the same baffle duct protruding from the panel exterior face — draws fresh air from the
@@ -3075,17 +3100,17 @@ flexible coiled cable (with swing slack) from the fixed door frame (Circuit B).<
 <tbody>
 <tr>
 <td>Duct penetration X</td>
-<td>1,000mm</td>
+<td><!-- BEGIN cdm:EVAP_DUCT_X -->1,000<!-- END cdm:EVAP_DUCT_X -->mm</td>
 <td><code>EVAP_DUCT_X</code></td>
 </tr>
 <tr>
 <td>Duct penetration Z</td>
-<td>1,900mm</td>
+<td><!-- BEGIN cdm:EVAP_DUCT_Z -->1,900<!-- END cdm:EVAP_DUCT_Z -->mm</td>
 <td><code>EVAP_DUCT_Z</code></td>
 </tr>
 <tr>
 <td>Duct diameter</td>
-<td>200mm</td>
+<td><!-- BEGIN cdm:EVAP_DUCT_D -->200<!-- END cdm:EVAP_DUCT_D -->mm</td>
 <td><code>EVAP_DUCT_D</code></td>
 </tr>
 <tr>
@@ -3095,7 +3120,7 @@ flexible coiled cable (with swing slack) from the fixed door frame (Circuit B).<
 </tr>
 <tr>
 <td>Stow left edge X</td>
-<td>1,450mm</td>
+<td><!-- BEGIN cdm:EVAP_STOW_X -->1,450<!-- END cdm:EVAP_STOW_X -->mm</td>
 <td><code>EVAP_STOW_X</code></td>
 </tr>
 <tr>
@@ -3113,8 +3138,7 @@ flexible coiled cable (with swing slack) from the fixed door frame (Circuit B).<
 <p><em>Component: </em><em>Hessaire MC18M</em><em> evaporative cooler (120V AC, <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W, 1,300 CFM run on low, 4.8 gal
 reservoir), ground-placed outside on Circuit E. Powered by an </em><em>interior 12V→120V pure-sine
 inverter (Victron Phoenix 12/375 GFCI)</em><em> wall-mounted below the EP; ~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on the 12V bus. Cooled
-air enters through a Ø200mm insulated flex duct to a wall penetration with light-safe baffle at
-Z=1,900mm. Replaces the fictional "Portacool Jetstream 110 12V DC" (<a href="../component-dimension-audit/">dimension audit</a>).
+air enters through a Ø200mm insulated flex duct to a wall penetration with light-safe baffle.
 AC isolation/GFCI/equipotential-bonding: <a href="../electrical-report/#ac-safety">Electrical §7.6</a>.</em></p>
 <p><em>Reports: <a href="../ventilation-report/">Ventilation &amp; Cooling</a> §5 (cooler spec + duct + stowage); <a href="../electrical-report/">Electrical</a> §3/§5.4/§7.6 (Circuit E inverter, power panel AC outlet, AC safety).</em></p>
 <p><em>Diagrams: lighttrap sheet 1 (LT), electrical sheet 1 wiring (ES), floor plan (FP), assembly overview (AO), assembly fabrication (AF).</em></p>
@@ -3130,12 +3154,12 @@ AC isolation/GFCI/equipotential-bonding: <a href="../electrical-report/#ac-safet
 <tbody>
 <tr>
 <td>Electrical panel left edge X</td>
-<td>1,910mm</td>
+<td><!-- BEGIN cdm:EP_X -->1,910<!-- END cdm:EP_X -->mm</td>
 <td><code>EP_X</code></td>
 </tr>
 <tr>
 <td>Panel width</td>
-<td>300mm</td>
+<td><!-- BEGIN cdm:EP_W -->300<!-- END cdm:EP_W -->mm</td>
 <td><code>EP_W</code></td>
 </tr>
 <tr>
@@ -3145,12 +3169,12 @@ AC isolation/GFCI/equipotential-bonding: <a href="../electrical-report/#ac-safet
 </tr>
 <tr>
 <td>Battery bank left edge X</td>
-<td>1,810mm</td>
+<td><!-- BEGIN cdm:BA_X -->1,540<!-- END cdm:BA_X -->mm</td>
 <td><code>BA_X</code></td>
 </tr>
 <tr>
 <td>Battery bank width</td>
-<td>500mm</td>
+<td><!-- BEGIN cdm:BA_W -->680<!-- END cdm:BA_W -->mm</td>
 <td><code>BA_W</code></td>
 </tr>
 <tr>
@@ -3180,12 +3204,12 @@ C — water pumps P-01–P-04 (P-03 in IBC corridor); D — safelight vestibule;
 <tbody>
 <tr>
 <td>Left edge X</td>
-<td>4,800mm</td>
+<td><!-- BEGIN cdm:PUMP_X -->4,760<!-- END cdm:PUMP_X -->mm</td>
 <td><code>PUMP_X</code></td>
 </tr>
 <tr>
-<td>Width</td>
-<td>780mm</td>
+<td>Pump-zone width (X, elevation)</td>
+<td><!-- BEGIN cdm:PUMP_W -->114<!-- END cdm:PUMP_W -->mm</td>
 <td><code>PUMP_W</code></td>
 </tr>
 <tr>
@@ -3200,7 +3224,7 @@ C — water pumps P-01–P-04 (P-03 in IBC corridor); D — safelight vestibule;
 </tr>
 <tr>
 <td>Protrusion from panel</td>
-<td>127mm</td>
+<td><!-- BEGIN cdm:PUMP_D -->114<!-- END cdm:PUMP_D -->mm</td>
 <td><code>PUMP_D</code></td>
 </tr>
 </tbody>
@@ -3209,7 +3233,7 @@ C — water pumps P-01–P-04 (P-03 in IBC corridor); D — safelight vestibule;
 P-02 Brown recycle via filter, P-03 waste evacuation, P-04 tray sump pickup),
 1-gal pressure accumulator ACC-01, DN50 butterfly valves V1–V4 (S60×6 thread) at IBC outlets,
 manifold ball valves VB1/VB2/VB3, check valves CV1/CV3/CV4 on bulkhead lines X1/X3/X4, X1 fill tee (splits to IBC-1 &amp; IBC-2), Circuit C.
-Mounted on 18mm marine ply plumbing panel at Yd=1,046 (near IBC column face), in the IBC plumbing corridor.</em></p>
+Mounted on 18mm marine ply plumbing panel (near IBC column face), in the IBC plumbing corridor.</em></p>
 <h3 id="111-water-system-blue-circuit">1.11 Water System — Blue Circuit<a class="headerlink" href="#111-water-system-blue-circuit" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3222,42 +3246,42 @@ Mounted on 18mm marine ply plumbing panel at Yd=1,046 (near IBC column face), in
 <tbody>
 <tr>
 <td>IBC column left edge X</td>
-<td>4,674mm</td>
+<td><!-- BEGIN cdm:IBC_COL_X -->4,674<!-- END cdm:IBC_COL_X -->mm</td>
 <td><code>IBC_COL_X</code></td>
 </tr>
 <tr>
 <td>IBC footprint width</td>
-<td>1,219mm</td>
+<td><!-- BEGIN cdm:IBC_W -->1,219<!-- END cdm:IBC_W -->mm</td>
 <td><code>IBC_W</code></td>
 </tr>
 <tr>
 <td>IBC footprint depth</td>
-<td>1,016mm</td>
+<td><!-- BEGIN cdm:IBC_D -->1,016<!-- END cdm:IBC_D -->mm</td>
 <td><code>IBC_D</code></td>
 </tr>
 <tr>
 <td>Single tote height (1,000L caged)</td>
-<td>1,168mm</td>
+<td><!-- BEGIN cdm:IBC_H_1000 -->1,168<!-- END cdm:IBC_H_1000 -->mm</td>
 <td><code>IBC_H_1000</code></td>
 </tr>
 <tr>
 <td>Stacked height (2× 1,000L, direct-stack)</td>
-<td>2,336mm</td>
+<td><!-- BEGIN cdm:IBC_H_STK_1000 -->2,336<!-- END cdm:IBC_H_STK_1000 -->mm</td>
 <td><code>IBC_H_STK_1000</code></td>
 </tr>
 <tr>
 <td>Near-column front depth from pinhole wall</td>
-<td>30mm</td>
+<td><!-- BEGIN cdm:BLUE_IBC_Y -->30<!-- END cdm:BLUE_IBC_Y -->mm</td>
 <td><code>BLUE_IBC_Y</code></td>
 </tr>
 <tr>
 <td>Far-column front depth from pinhole wall</td>
-<td>1,316mm</td>
+<td><!-- BEGIN cdm:IBC_FAR_Y -->1,316<!-- END cdm:IBC_FAR_Y -->mm</td>
 <td><code>IBC_FAR_Y</code></td>
 </tr>
 </tbody>
 </table>
-<p><em>Components (<code>ibc-reconfig-v2</code>): </em><em>4× 1,000L caged composite IBC totes</em><em> (1219×1016×1168), </em><em>direct-stacked</em><em>
+<p><em>Components: </em><em>4× 1,000L caged composite IBC totes</em><em> (1219×1016×1168), </em><em>direct-stacked</em><em>
 cage-on-cage in two columns (near: Brown developer + Blue #1; far: Waste + Blue #2) — Blue-on-top layout
 kept. Held by a </em><em>restraint FRONT PORTAL</em><em> at the corridor mouth (50×50×3 RHS uprights + 50×20×3 front
 retaining bars in the 25mm tote↔film-rail gap + Simpson wall joist-hangers + D-ring lashing + floor feet) —
@@ -3277,7 +3301,7 @@ for the few generators not yet repointed (overview Blue-trunk shelf, walkway/wei
 <tbody>
 <tr>
 <td>Brown IBC front depth</td>
-<td>30mm</td>
+<td><!-- BEGIN cdm:BROWN_IBC_Y -->30<!-- END cdm:BROWN_IBC_Y -->mm</td>
 <td><code>BROWN_IBC_Y</code></td>
 </tr>
 <tr>
@@ -3304,12 +3328,12 @@ Filled via side-entry near the top from the P-04 tray-sump pickup pump (no top-c
 <tbody>
 <tr>
 <td>Waste IBC front depth</td>
-<td>1,316mm</td>
+<td><!-- BEGIN cdm:WASTE_IBC_Y -->1,316<!-- END cdm:WASTE_IBC_Y -->mm</td>
 <td><code>WASTE_IBC_Y</code></td>
 </tr>
 <tr>
 <td>IBC far column start Y</td>
-<td>1,316mm</td>
+<td><!-- BEGIN cdm:IBC_FAR_Y -->1,316<!-- END cdm:IBC_FAR_Y -->mm</td>
 <td><code>IBC_FAR_Y</code></td>
 </tr>
 <tr>
@@ -3335,12 +3359,12 @@ P-03 waste evacuation pump (mounted in IBC plumbing corridor on X4 drain run). F
 <tbody>
 <tr>
 <td>Left end zone boundary (right edge)</td>
-<td>X = 150mm</td>
+<td>X = <!-- BEGIN cdm:ZONE_L_END -->150<!-- END cdm:ZONE_L_END -->mm</td>
 <td><code>ZONE_L_END</code></td>
 </tr>
 <tr>
 <td>Right end zone boundary (left edge)</td>
-<td>X = 4,649mm</td>
+<td>X = <!-- BEGIN cdm:ZONE_R_START -->4,649<!-- END cdm:ZONE_R_START -->mm</td>
 <td><code>ZONE_R_START</code></td>
 </tr>
 <tr>
@@ -3357,8 +3381,8 @@ P-03 waste evacuation pump (mounted in IBC plumbing corridor on X4 drain run). F
 </table>
 <p><em>Derived rule: any equipment with X &lt; ZONE_L_END is shadow-free at all depths.
 Any equipment with X &gt; ZONE_R_START is shadow-free at all depths.
-Equipment at Yd = 0 (pinhole wall face) is always shadow-free.
-Equipment in the IBC corridor (X &gt; ZONE_R_START) at any Yd is shadow-free.</em></p>
+Equipment at pinhole wall face - always shadow-free.
+Equipment in the IBC corridor is shadow-free.</em></p>
 <h3 id="115-panel-swing-pivot">1.15 Panel Swing Pivot<a class="headerlink" href="#115-panel-swing-pivot" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3371,7 +3395,7 @@ Equipment in the IBC corridor (X &gt; ZONE_R_START) at any Yd is shadow-free.</e
 <tbody>
 <tr>
 <td>Transport swing angle</td>
-<td>56°</td>
+<td><!-- BEGIN cdm:SWING_LOCK_DEG -->56<!-- END cdm:SWING_LOCK_DEG -->°</td>
 <td><code>SWING_LOCK_DEG</code></td>
 </tr>
 <tr>
@@ -3398,8 +3422,7 @@ Equipment in the IBC corridor (X &gt; ZONE_R_START) at any Yd is shadow-free.</e
 </table>
 <p><em>Components: Ø89×8mm CHS pivot post on a thrust collar + top/bottom hub bearings (Ø220 thrust +
 2× Ø90 journal), drum support cage (40×40×3mm SHS), top + bottom wall stays + 4-bolt wall anchor
-plates, 4× drop-in rail saddles + tapered dowels (for the removable left film rails). rev10 —
-supersedes the HGR20 slide carriage + ceiling-rail suspension.</em></p>
+plates, 4× drop-in rail saddles + tapered dowels (for the removable left film rails).</em></p>
 <p><em>Diagrams: container floor plan (FP), assembly overview plan view (AO), hinged panel sheet 4 (HP).</em></p>
 <h3 id="116-processing-tray">1.16 Processing Tray<a class="headerlink" href="#116-processing-tray" title="Permanent link">&para;</a></h3>
 <table>
@@ -3413,52 +3436,52 @@ supersedes the HGR20 slide carriage + ceiling-rail suspension.</em></p>
 <tbody>
 <tr>
 <td>Tray left edge X</td>
-<td>170mm</td>
+<td><!-- BEGIN cdm:PROC_TRAY_X_L -->170<!-- END cdm:PROC_TRAY_X_L -->mm</td>
 <td><code>PROC_TRAY_X_L</code></td>
 </tr>
 <tr>
 <td>Tray right edge X</td>
-<td>4,629mm</td>
+<td><!-- BEGIN cdm:PROC_TRAY_X_R -->4,629<!-- END cdm:PROC_TRAY_X_R -->mm</td>
 <td><code>PROC_TRAY_X_R</code></td>
 </tr>
 <tr>
 <td>Tray width</td>
-<td>4,459mm</td>
+<td><!-- BEGIN cdm:PROC_TRAY_W -->4,459<!-- END cdm:PROC_TRAY_W -->mm</td>
 <td><code>PROC_TRAY_W</code></td>
 </tr>
 <tr>
 <td>Tray depth</td>
-<td>2,200mm</td>
+<td><!-- BEGIN cdm:PROC_TRAY_D -->2,200<!-- END cdm:PROC_TRAY_D -->mm</td>
 <td><code>PROC_TRAY_D</code></td>
 </tr>
 <tr>
 <td>Tray near edge Yd</td>
-<td>80mm</td>
+<td><!-- BEGIN cdm:PROC_TRAY_YD_NEAR -->80<!-- END cdm:PROC_TRAY_YD_NEAR -->mm</td>
 <td><code>PROC_TRAY_YD_NEAR</code></td>
 </tr>
 <tr>
 <td>Tray far edge Yd</td>
-<td>2,280mm</td>
+<td><!-- BEGIN cdm:PROC_TRAY_YD_FAR -->2,280<!-- END cdm:PROC_TRAY_YD_FAR -->mm</td>
 <td><code>PROC_TRAY_YD_FAR</code></td>
 </tr>
 <tr>
 <td>Rim height</td>
-<td>50mm</td>
+<td><!-- BEGIN cdm:PROC_TRAY_RIM -->50<!-- END cdm:PROC_TRAY_RIM -->mm</td>
 <td><code>PROC_TRAY_RIM</code></td>
 </tr>
 <tr>
 <td>Dual-axis pitch</td>
-<td>1:200 (10mm fall)</td>
+<td>1:200 (<!-- BEGIN cdm:PROC_TRAY_PITCH -->10<!-- END cdm:PROC_TRAY_PITCH -->mm fall)</td>
 <td><code>PROC_TRAY_PITCH</code></td>
 </tr>
 <tr>
 <td>Sump X</td>
-<td>2,399mm</td>
+<td><!-- BEGIN cdm:PROC_TRAY_DRAIN_X -->4,550<!-- END cdm:PROC_TRAY_DRAIN_X -->mm</td>
 <td><code>PROC_TRAY_DRAIN_X</code></td>
 </tr>
 <tr>
 <td>Sump Yd</td>
-<td>80mm</td>
+<td><!-- BEGIN cdm:PROC_TRAY_DRAIN_YD -->80<!-- END cdm:PROC_TRAY_DRAIN_YD -->mm</td>
 <td><code>PROC_TRAY_DRAIN_YD</code></td>
 </tr>
 <tr>
@@ -3486,37 +3509,37 @@ Permanently installed — no removal for transport mode conversion.</em></p>
 <tbody>
 <tr>
 <td>Walkway width</td>
-<td>300mm</td>
+<td><!-- BEGIN cdm:WALKWAY_W -->300<!-- END cdm:WALKWAY_W -->mm</td>
 <td><code>WALKWAY_W</code></td>
 </tr>
 <tr>
 <td>Deck height</td>
-<td>130mm</td>
+<td><!-- BEGIN cdm:WALKWAY_H -->130<!-- END cdm:WALKWAY_H -->mm</td>
 <td><code>WALKWAY_H</code></td>
 </tr>
 <tr>
 <td>Grate thickness (all sections)</td>
-<td>25mm</td>
+<td><!-- BEGIN cdm:WALKWAY_GRATE_T -->15<!-- END cdm:WALKWAY_GRATE_T -->mm</td>
 <td><code>WALKWAY_GRATE_T</code></td>
 </tr>
 <tr>
 <td>Bracket vertical leg</td>
-<td>150mm</td>
+<td><!-- BEGIN cdm:WALKWAY_BRACKET_H -->150<!-- END cdm:WALKWAY_BRACKET_H -->mm</td>
 <td><code>WALKWAY_BRACKET_H</code></td>
 </tr>
 <tr>
 <td>Bracket plate thickness</td>
-<td>8mm</td>
+<td><!-- BEGIN cdm:WALKWAY_BRACKET_T -->8<!-- END cdm:WALKWAY_BRACKET_T -->mm</td>
 <td><code>WALKWAY_BRACKET_T</code></td>
 </tr>
 <tr>
 <td>Bracket spacing</td>
-<td>457mm</td>
+<td><!-- BEGIN cdm:WALKWAY_BRACKET_SPACING -->457<!-- END cdm:WALKWAY_BRACKET_SPACING -->mm</td>
 <td><code>WALKWAY_BRACKET_SPACING</code></td>
 </tr>
 <tr>
 <td>Container rib spacing</td>
-<td>457mm</td>
+<td><!-- BEGIN cdm:CONTAINER_RIB_SPACING -->457<!-- END cdm:CONTAINER_RIB_SPACING -->mm</td>
 <td><code>CONTAINER_RIB_SPACING</code></td>
 </tr>
 <tr>
@@ -3526,39 +3549,39 @@ Permanently installed — no removal for transport mode conversion.</em></p>
 </tr>
 <tr>
 <td>Near walkway Yd</td>
-<td>0mm</td>
+<td><!-- BEGIN cdm:WALKWAY_NEAR_YD -->0<!-- END cdm:WALKWAY_NEAR_YD -->mm</td>
 <td><code>WALKWAY_NEAR_YD</code></td>
 </tr>
 <tr>
 <td>Far walkway Yd</td>
-<td>2,062mm</td>
+<td><!-- BEGIN cdm:WALKWAY_FAR_YD -->2,062<!-- END cdm:WALKWAY_FAR_YD -->mm</td>
 <td><code>WALKWAY_FAR_YD</code></td>
 </tr>
 <tr>
 <td>Left walkway X</td>
-<td>170mm</td>
+<td><!-- BEGIN cdm:WALKWAY_LEFT_X -->170<!-- END cdm:WALKWAY_LEFT_X -->mm</td>
 <td><code>WALKWAY_LEFT_X</code></td>
 </tr>
 <tr>
 <td>Left walkway unsupported span</td>
-<td>1,762mm</td>
+<td><!-- BEGIN cdm:WALKWAY_LEFT_SPAN -->1,762<!-- END cdm:WALKWAY_LEFT_SPAN -->mm</td>
 <td><code>WALKWAY_LEFT_SPAN</code></td>
 </tr>
 <tr>
 <td>Right walkway X</td>
-<td>4,329mm</td>
+<td><!-- BEGIN cdm:WALKWAY_RIGHT_X -->4,329<!-- END cdm:WALKWAY_RIGHT_X -->mm</td>
 <td><code>WALKWAY_RIGHT_X</code></td>
 </tr>
 </tbody>
 </table>
-<p><em>Components: Near/far: 15mm grating on 8mm gusset brackets bolted to corrugated wall ribs.
-Right (rev12): cantilever rectangle — a closed 40×40×3mm SHS frame (2 long beams at X=4329/4629 +
+<p>*Components: Near/far: 15mm grating on 8mm gusset brackets bolted to corrugated wall ribs.</p>
+<p>Right: cantilever rectangle — a closed 40×40×3mm SHS frame (2 long beams at X=4329/4629 +
 2 end beams) picked up at mid-span by 2 arms cantilevering off the IBC corridor uprights (half-lapped
 where the long beams cross), on wall cleats at the left corners and combined corner plates (shared with
-the bottom film rail BR) at the right corners. No floor contact, no roof penetrations — clears IBC stack entirely.
-Left: removable lift-out, 15mm grating resting on butt joints (no brackets —
+the bottom film rail BR) at the right corners. No floor contact, no roof penetrations — clears IBC stack entirely.</p>
+<p>Left: removable lift-out, 15mm grating resting on butt joints (no brackets —
 panel conflict, must remove before the panel swings to transport). No floor contact on
-any section. 4 removable sections.</em></p>
+any section. 4 removable sections.*</p>
 <p><em>Diagrams: walkway sheet 1 cross-section (WK), walkway sheet 2 plan view (WK), container floor plan (FP).</em></p>
 <hr />
 <h2 id="2-script-and-diagram-index">2. Script and Diagram Index<a class="headerlink" href="#2-script-and-diagram-index" title="Permanent link">&para;</a></h2>
@@ -3666,7 +3689,7 @@ any section. 4 removable sections.</em></p>
 </tbody>
 </table>
 <blockquote>
-<p><strong>FPM / FPD redrawn for Option A (2026-06-06):</strong> the film-plane mechanism sheets and optical-distortion renders now show the <strong>fixed-size rigid plane on floating-corner cross-slides</strong> — <strong>axis tilt/swing</strong> about the plane center (foreshortening, not growth), tilt ±40° / swing ±28°, single rigid ACM backing, cross-slides at each corner, and the compound twist dropped (FPD now C0–C5). <code>generate_film_plane_mechanism.py</code> uses <code>rigid_corners3d</code>/<code>tilt_edge</code>/<code>swing_edge</code> (asin, not atan) and reads <code>MAX_TILT_DEG</code>/<code>MAX_SWING_DEG</code> from <code>tbs_constants.py</code>. Consistent with <code>film-plane-mechanism-report.md</code>, <code>master-shopping-list.md</code>, <code>project-cost-breakdown.md</code>, and <code>models/film-plane.skp</code>.</p>
+<p><strong>FPM / FPD redrawn for Option A:</strong> the film-plane mechanism sheets and optical-distortion renders now show the <strong>fixed-size rigid plane on floating-corner cross-slides</strong> — <strong>axis tilt/swing</strong> about the plane center (foreshortening, not growth), tilt ±40° / swing ±28°, single rigid ACM backing, cross-slides at each corner, and the compound twist dropped (FPD now C0–C5). <code>generate_film_plane_mechanism.py</code> uses <code>rigid_corners3d</code>/<code>tilt_edge</code>/<code>swing_edge</code> (asin, not atan) and reads <code>MAX_TILT_DEG</code>/<code>MAX_SWING_DEG</code> from <code>tbs_constants.py</code>. Consistent with <code>film-plane-mechanism-report.md</code>, <code>master-shopping-list.md</code>, <code>project-cost-breakdown.md</code>, and <code>models/film-plane.skp</code>.</p>
 </blockquote>
 <hr />
 <h2 id="3-dependency-matrix">3. Dependency Matrix<a class="headerlink" href="#3-dependency-matrix" title="Permanent link">&para;</a></h2>

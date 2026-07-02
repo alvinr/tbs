@@ -2407,10 +2407,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#2-battery-renogy-12-v-100-ah-lifepo4" class="md-nav__link">
+  <a href="#2-battery-renogy-12-v-100-ah-lifepo4-resolved-4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Battery — Renogy 12 V 100 Ah LiFePO4 ❌
+        2. Battery — Renogy 12 V 100 Ah LiFePO4 ✅ RESOLVED (§4)
       
     </span>
   </a>
@@ -2418,10 +2418,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-pump-shurflo-2088-554-144" class="md-nav__link">
+  <a href="#3-pump-shurflo-2088-554-144-resolved-4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Pump — Shurflo 2088-554-144 ❌
+        3. Pump — Shurflo 2088-554-144 ✅ RESOLVED (§4)
       
     </span>
   </a>
@@ -2429,10 +2429,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-filter-housing-big-blue-45-20" class="md-nav__link">
+  <a href="#4-filter-housing-big-blue-45-20-resolved-4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Filter housing — Big Blue 4.5" × 20" ❌
+        4. Filter housing — Big Blue 4.5" × 20" ✅ RESOLVED (§4)
       
     </span>
   </a>
@@ -2440,10 +2440,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-fan-ac-infinity-cloudline-s6" class="md-nav__link">
+  <a href="#5-fan-ac-infinity-cloudline-s6-resolved-4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Fan — AC Infinity Cloudline S6 ❌
+        5. Fan — AC Infinity Cloudline S6 ✅ RESOLVED (§4)
       
     </span>
   </a>
@@ -2451,10 +2451,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#6-evaporative-cooler-portacool-jetstream-110-12-v-dc-resolved" class="md-nav__link">
+  <a href="#6-evaporative-cooler-assumed-a-nonexistent-12-v-dc-unit-resolved" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Evaporative cooler — "Portacool Jetstream 110, 12 V DC" ✅ RESOLVED
+        6. Evaporative cooler — assumed a nonexistent 12 V DC unit ✅ RESOLVED
       
     </span>
   </a>
@@ -2462,10 +2462,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#7-accumulator-seaflo-075-l-sfat-075-125-01" class="md-nav__link">
+  <a href="#7-accumulator-seaflo-075-l-sfat-075-125-01-resolved-4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. Accumulator — SeaFlo 0.75 L (SFAT-075-125-01) ⚠
+        7. Accumulator — SeaFlo 0.75 L (SFAT-075-125-01) ✅ RESOLVED (§4)
       
     </span>
   </a>
@@ -2473,10 +2473,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#8-spray-bar-beam-naming" class="md-nav__link">
+  <a href="#8-spray-bar-beam-resolved-4-naming" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. Spray-bar beam ⚠ (naming)
+        8. Spray-bar beam ✅ RESOLVED (§4 — naming)
       
     </span>
   </a>
@@ -2638,47 +2638,50 @@ Modeled dimensions are the <code>tbs_constants.py</code> value(s) the generators
 rigid ≈ 1491×699×35, varies by model — mounted externally, no container clash).</p>
 <hr />
 <h2 id="2-detail-sources">2. Detail + sources<a class="headerlink" href="#2-detail-sources" title="Permanent link">&para;</a></h2>
-<h3 id="2-battery-renogy-12-v-100-ah-lifepo4">2. Battery — Renogy 12 V 100 Ah LiFePO4 ❌<a class="headerlink" href="#2-battery-renogy-12-v-100-ah-lifepo4" title="Permanent link">&para;</a></h3>
+<p><em>All items below are now resolved (see the §1 summary and §4 remediation); each entry
+is retained as the </em><em>as-found</em><em> audit record — the Problem/Action text describes the
+discrepancy and the fix that was applied.</em></p>
+<h3 id="2-battery-renogy-12-v-100-ah-lifepo4-resolved-4">2. Battery — Renogy 12 V 100 Ah LiFePO4 ✅ RESOLVED (§4)<a class="headerlink" href="#2-battery-renogy-12-v-100-ah-lifepo4-resolved-4" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Real:</strong> 330 × 172 × 214 mm (L×W×H). <a href="https://www.renogy.com/12v-100ah-smart-lithium-iron-phosphate-battery/">Renogy product page</a> · spec via <a href="https://www.renogy.com/pages/12v-100ah-smart-lithium-iron-phosphate-battery-rbt100lfp12s-html">Renogy spec listing</a></li>
 <li><strong>Modeled:</strong> <code>BA_X</code>=1810, <code>BA_W</code>=500, <code>BA_D</code>=120, <code>BA_H_LO</code>=150, <code>BA_H_HI</code>=650 → bank 500(X)×120(Yd)×500(Z); each of 2 packs ~240×120×500.</li>
 <li><strong>Problem:</strong> the modeled pack is <strong>500 mm tall and only 120 mm deep</strong>; the real pack is <strong>214 mm tall and 172 mm deep</strong>. Two packs side-by-side along X are 2×330 = <strong>660 mm</strong> (vs modeled 500), or stacked are 428 mm tall (vs 500). The battery-bank footprint on the pinhole wall and its clearances (electrical panel above, cable runs) are all drawn against the wrong box.</li>
 <li><strong>Action:</strong> set <code>BA_*</code> to two real 330×172×214 packs (decide side-by-side vs stacked), re-render electrical/floorplan/assembly + the film-plane near-wall ghost, re-check EP-above-battery clearance.</li>
 </ul>
-<h3 id="3-pump-shurflo-2088-554-144">3. Pump — Shurflo 2088-554-144 ❌<a class="headerlink" href="#3-pump-shurflo-2088-554-144" title="Permanent link">&para;</a></h3>
+<h3 id="3-pump-shurflo-2088-554-144-resolved-4">3. Pump — Shurflo 2088-554-144 ✅ RESOLVED (§4)<a class="headerlink" href="#3-pump-shurflo-2088-554-144-resolved-4" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Real:</strong> 8.5"L × 5"W × 4.5"H = <strong>216 × 127 × 114 mm</strong>. <a href="https://www.freshwatersystems.com/products/shurflo-2088-554-144-delivery-pump-3-5-gpm-45-psi-12vdc-no-cord">Fresh Water Systems</a> · <a href="https://www.pumpagents.com/pdf/ShurfloPumps/2088-554-144.pdf">datasheet PDF</a></li>
 <li><strong>Modeled:</strong> <code>PUMP_D</code>=100 (pump zone width). 4–5 pumps tile the Corridor Plumbing Panel.</li>
 <li><strong>Problem:</strong> a real 2088 is <strong>216 mm long × 127 mm wide</strong> — the panel pump columns are drawn ~half-size. With 5 of them plus the accumulator + 3× 594 mm filters, the <strong>panel layout must be re-checked for fit</strong> (panel face is 270 mm corridor × 2,060 mm tall).</li>
 <li><strong>Action:</strong> set the modeled pump footprint to ~216×127×114, re-lay-out the panel (<code>generate_panel_layout.py</code> + 3D <code>equipment_panel()</code>), re-check corridor depth.</li>
 </ul>
-<h3 id="4-filter-housing-big-blue-45-20">4. Filter housing — Big Blue 4.5" × 20" ❌<a class="headerlink" href="#4-filter-housing-big-blue-45-20" title="Permanent link">&para;</a></h3>
+<h3 id="4-filter-housing-big-blue-45-20-resolved-4">4. Filter housing — Big Blue 4.5" × 20" ✅ RESOLVED (§4)<a class="headerlink" href="#4-filter-housing-big-blue-45-20-resolved-4" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Real:</strong> Pentek 20×4.5 BB = 23⅜" × 7¼" = <strong>594 mm tall × Ø184 mm</strong>. <a href="https://www.filterwater.com/p-541-pentek-20-big-blue-water-filter-housing-15-inch.aspx">Pentek 20" BB</a> · <a href="https://www.allfilters.com/filterhousings/20x4.5/20-bb-housing">allfilters 20×4.5</a></li>
 <li><strong>Modeled:</strong> <code>BB_OD</code>=130, <code>BB_H</code>=340 (a 10" housing).</li>
 <li><strong>Problem:</strong> the BoM specifies <strong>4.5"×20"</strong> cartridges (Purcooflow WHF2045B302), but the model draws <strong>10"</strong> housings — ~250 mm shorter and 54 mm narrower each. Three of them stacked is the panel's biggest vertical run.</li>
 <li><strong>Action:</strong> either set <code>BB_OD</code>=184 / <code>BB_H</code>=594 to match the 20" spec <strong>or</strong> down-spec the purchase to 4.5"×10" housings/cartridges — then re-render the panel + re-sum filter cost. <strong>Decision needed:</strong> keep 20" (more media life, taller panel) or switch to 10".</li>
 </ul>
-<h3 id="5-fan-ac-infinity-cloudline-s6">5. Fan — AC Infinity Cloudline S6 ❌<a class="headerlink" href="#5-fan-ac-infinity-cloudline-s6" title="Permanent link">&para;</a></h3>
+<h3 id="5-fan-ac-infinity-cloudline-s6-resolved-4">5. Fan — AC Infinity Cloudline S6 ✅ RESOLVED (§4)<a class="headerlink" href="#5-fan-ac-infinity-cloudline-s6-resolved-4" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Real:</strong> 6" (152 mm) duct; unit 7.9×12.6×8.4" = <strong>200 × 320 × 213 mm</strong>, an <strong>inline duct fan</strong>. <a href="https://acinfinity.com/cloudline-s6-quiet-inline-fan-6-with-speed-controller/">AC Infinity S6</a></li>
 <li><strong>Modeled:</strong> <code>FAN_DIAM</code>=150 (≈ the 152 duct ✓) but <code>FAN_BODY_D</code>=50 — drawn as a <strong>thin axial panel fan</strong> in a 300 mm baffle duct (<code>DUCT_DEPTH</code>=300).</li>
 <li><strong>Problem:</strong> the S6 is <strong>320 mm long</strong> — it won't sit flush ("fan bodies do not protrude beyond the panel face" is false for an S6) and it <strong>exceeds the 300 mm baffle-duct depth</strong>. The design intends a compact 150 mm axial <strong>panel</strong> fan; the S6 is a different form factor.</li>
 <li><strong>Action (decision needed):</strong> either (a) spec a thin 150 mm 12 V <strong>axial panel fan</strong> (matches the drawing) and drop "AC Infinity S6", or (b) keep an inline fan and redesign the baffle-duct housing to accept a ~320 mm inline body.</li>
 </ul>
-<h3 id="6-evaporative-cooler-portacool-jetstream-110-12-v-dc-resolved">6. Evaporative cooler — "Portacool Jetstream 110, 12 V DC" ✅ RESOLVED<a class="headerlink" href="#6-evaporative-cooler-portacool-jetstream-110-12-v-dc-resolved" title="Permanent link">&para;</a></h3>
+<h3 id="6-evaporative-cooler-assumed-a-nonexistent-12-v-dc-unit-resolved">6. Evaporative cooler — assumed a nonexistent 12 V DC unit ✅ RESOLVED<a class="headerlink" href="#6-evaporative-cooler-assumed-a-nonexistent-12-v-dc-unit-resolved" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Was:</strong> <strong>There is no Portacool Jetstream 110.</strong> The Jetstream line is 220/230/240/250/260/270 and runs on <strong>120 V AC</strong>, not 12 V DC. <a href="https://www.portacool.com/legacy-evaporative-coolers/jetstream-series/">Portacool Jetstream series</a></li>
+<li><strong>Was:</strong> the model assumed a <strong>12 V DC "Jetstream 110"</strong> ground cooler that <strong>does not exist</strong> — <a href="https://www.portacool.com/legacy-evaporative-coolers/jetstream-series/">Portacool</a>'s real Jetstream line (models 220–270) runs on <strong>120 V AC</strong>, not 12 V DC.</li>
 <li><strong>Market reality (researched):</strong> there is <strong>no good native-12 V DC ground-placed</strong> evap cooler. The only 12 V options are RV-<strong>roof</strong> units (TurboKool 2B-0001, ~$300 — rejected: roof penetration, roof-coupled vibration, transport conflict), a too-weak personal spot cooler (Transcool E3), or the premium <a href="https://www.southwest-solar.com/stainless-steel-solar-chill-coolers">Solar Chill</a> line (native 12 V, ground, but $1,100+ and sole-source).</li>
 <li><strong>Decision:</strong> a <strong>commodity 120 V AC swamp cooler (Hessaire MC18M, ~$130)</strong> on a <strong>dedicated 12V→120V pure-sine inverter (Victron Phoenix 12/375 GFCI, ~$210)</strong>. Keeps the cooler a swappable multi-vendor part; the inverter is general-purpose. Trade-off accepted: +inverter complexity and a 4-print day now needs solar (already within the published envelope).</li>
 <li><strong>Done:</strong> <code>EVAP_*</code> → 559×305×711 (real Hessaire MC18M); <code>INVERTER_*</code> constants added; Circuit E re-based <strong>80 W → <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V bus</strong> (<!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac --> W AC ÷ 0.88) in <code>calculate_energy_budget.py</code>; energy/cost/shopping/ventilation/electrical reports re-summed; stow zone re-checked (cooler X1450–2009, clear); AC <strong>isolation/GFCI/equipotential-bonding</strong> design added in <a href="../electrical-report/#ac-safety">Electrical §7.6</a>.</li>
 </ul>
-<h3 id="7-accumulator-seaflo-075-l-sfat-075-125-01">7. Accumulator — SeaFlo 0.75 L (SFAT-075-125-01) ⚠<a class="headerlink" href="#7-accumulator-seaflo-075-l-sfat-075-125-01" title="Permanent link">&para;</a></h3>
+<h3 id="7-accumulator-seaflo-075-l-sfat-075-125-01-resolved-4">7. Accumulator — SeaFlo 0.75 L (SFAT-075-125-01) ✅ RESOLVED (§4)<a class="headerlink" href="#7-accumulator-seaflo-075-l-sfat-075-125-01-resolved-4" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Real:</strong> ~200 × 127 × 125 mm. <a href="https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8">Amazon B01MUYL8F8</a> · <a href="https://environmentalmarine.com/seaflo/fresh-water-pumps-accumulators/seaflo-1-gallon-accumulator-tank-sfat-075-125-01/">environmentalmarine SFAT-075</a></li>
 <li><strong>Modeled:</strong> Ø127 × 150 cylinder. Ø matches; tweak length to ~200 when the panel is re-laid-out.</li>
 </ul>
-<h3 id="8-spray-bar-beam-naming">8. Spray-bar beam ⚠ (naming)<a class="headerlink" href="#8-spray-bar-beam-naming" title="Permanent link">&para;</a></h3>
+<h3 id="8-spray-bar-beam-resolved-4-naming">8. Spray-bar beam ✅ RESOLVED (§4 — naming)<a class="headerlink" href="#8-spray-bar-beam-resolved-4-naming" title="Permanent link">&para;</a></h3>
 <ul>
 <li>BoM line says <strong>1½"×1½"×⅛"</strong> (= 38.1×38.1×3.2 mm); the spec/model use <strong>40×40×3 mm</strong>. Pick one — they differ by ~2 mm and the carriage saddle clamps are cut to the chosen section.</li>
 </ul>
@@ -2818,16 +2821,18 @@ listed for completeness; confirm the drawn size equals the catalog dimension:</p
 </tr>
 </tbody>
 </table>
-<p><strong>3D re-sends:</strong> overview (filter Ø + ACC + <strong>evap box re-dim + inverter</strong>), ibc-stack, film-plane.
-The earlier audit batch (filter/ACC/battery) was sent 2026-06-15; the <strong>evap/inverter re-send is
-pending</strong> an interactive SketchUp session. Sketchfab re-uploads are the manual step.</p>
+<p><strong>3D re-sends — done.</strong> The earlier audit batch (filter Ø + ACC + battery) was sent and
+<code>overview.skp</code> re-saved 2026-06-15; the evap-box re-dimension (Hessaire MC18M) + Circuit-E
+inverter box followed (overview re-saved in <code>1872583b</code>, inverter leader label in <code>99ec629c</code>).
+<code>generate_sketchup_model.py</code> builds the evap at <code>EVAP_W×EVAP_D×EVAP_H</code> + the inverter. Only the
+manual Sketchfab re-uploads (Alvin's step, same model IDs) may remain.</p>
 <p><strong>Cost re-sum CLOSED (2026-06-15):</strong> the held bundle (fan −~$70, filter, evap cooler + inverter)
 is now re-summed. Cooler subsystem (cooler $130 + inverter $210 + DC protection $40 + AC outlet $25)
 lands in cost-breakdown <strong>5b</strong> ($769→$830 mid); the new fan ($50) is folded in; grand total
 $25,399→<strong>$25,460</strong> mid; Scenario A $19,882→<strong>$19,952</strong>, Scenario B $25,322→<strong>$25,383</strong>. (The
 cost-breakdown's water-system filter estimate already reflected a 10″-class figure, so no separate
-cat-5 filter adjustment was needed; the master-shopping-list BOM filter $282–445 is authoritative.)</p>
-<p><em>This document is the source of truth for the purchased-part dimensional reconciliation.</em></p>
+cat-5 filter adjustment was needed; the master-shopping-list BOM filter $282–445 is authoritative.)
+<em>(These totals are the 2026-06-15 remediation deltas — a dated snapshot; the current build total is generated in the <a href="../project-cost-breakdown/">Cost Breakdown</a>.)</em></p>
 <p><em>This document is the source of truth for the purchased-part dimensional reconciliation; update it as each component is resolved.</em></p>
 
 

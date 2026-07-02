@@ -91,7 +91,7 @@ Cyanotype (Mike Ware's New Cyanotype) is the process TBS-001 uses; its full proc
 **Process total: ~$6,853 (chemistry $6,553 + $300 muslin); silver nitrate cost varies ±20–30% by source — see procurement note**
 
 **Critical procurement note — silver nitrate:**
-- Silver nitrate is a DEA List I Chemical (used in drug synthesis). US purchases require a **DEA Form 224 registration** for quantities above threshold (typically >400g). Photographers' Formulary explicitly states "DEA Form Required" on their listing.
+- Silver nitrate is a DEA List I Chemical. US purchases require a **DEA Form 224 registration** for quantities above threshold (typically >400g). Photographers' Formulary explicitly states "DEA Form Required" on their listing.
 - Silver price is volatile. AgNO₃ is ~68% silver by weight; the silver market price directly affects the cost. Verify current pricing before ordering — it can shift 20–30% within weeks.
 - Silver nitrate permanently and irreversibly stains skin, clothing, and surfaces black. Nitrile gloves, lab coat, and eye protection mandatory for all handling.
 - Ships UPS Ground only (UN hazmat). No air freight.
@@ -150,7 +150,7 @@ Cyanotype (Mike Ware's New Cyanotype) is the process TBS-001 uses; its full proc
 **Notes on paper rolls:**
 - Ilford MGRC 50"×98' confirmed listed at B&H Photo (product #ILMG50981P). Price is not shown publicly — call B&H at 800-606-6969 or log in for current pricing.
 - 50" width × 98' length yields 4 strips of 50" × 94" per print (4 × 1,270mm = 5,080mm covers the 4,499mm active width with 581mm spare; each strip height = 2,388mm = 94"). 12 strips per roll ÷ 4 strips per print = **3 prints per roll**.
-- Paper must be cut and handled in **complete darkness**. A changing tent large enough for an 8-foot wide roll is required, or a light-tight room.
+- Paper must be cut and handled in **sfaelight conditions**.
 
 ---
 

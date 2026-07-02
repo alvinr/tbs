@@ -295,6 +295,7 @@ DIAG_FILES=(
     "walkway-sections-sheet3.png"
     "walkway-sections-sheet4.png"
     "walkway-sections-sheet5.png"
+    "walkway-sections-sheet6.png"
     "spray-bar-sheet1.png"
     "spray-bar-sheet2.png"
     "spray-bar-sheet3.png"

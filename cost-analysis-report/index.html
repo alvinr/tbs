@@ -2657,7 +2657,7 @@ single biggest line</strong> (<!-- BEGIN costing:tray-low -->$1,300<!-- END cost
 <td>1</td>
 <td><strong>Container grade CW → WWT</strong> (wind-water-tight used vs cargo-worthy — fine for a stationary darkroom)</td>
 <td>Container</td>
-<td style="text-align: right;">~$1,350</td>
+<td style="text-align: right;">~<!-- BEGIN costing:ca-lever-container -->$1,350<!-- END costing:ca-lever-container --></td>
 <td>Easy, low risk</td>
 <td>Available</td>
 </tr>
@@ -2665,7 +2665,7 @@ single biggest line</strong> (<!-- BEGIN costing:tray-low -->$1,300<!-- END cost
 <td>2</td>
 <td><strong>Drop film-plane electric actuation → manual</strong> (the mechanism already supports manual tilt/swing)</td>
 <td>Film plane</td>
-<td style="text-align: right;">~$827</td>
+<td style="text-align: right;">~<!-- BEGIN costing:ca-lever-film -->$827<!-- END costing:ca-lever-film --></td>
 <td>Easy, if manual is acceptable</td>
 <td><strong>Actioned 2026-06-13</strong> — manual is now the standard build; electric is a documented upgrade only (<a href="../project-cost-breakdown/">Cost Breakdown §4.4</a>)</td>
 </tr>
@@ -2673,7 +2673,7 @@ single biggest line</strong> (<!-- BEGIN costing:tray-low -->$1,300<!-- END cost
 <td>3</td>
 <td><strong>Processing tray: 304 SS → poly / thinner gauge</strong></td>
 <td>Water</td>
-<td style="text-align: right;">~$600–1,000</td>
+<td style="text-align: right;">~<!-- BEGIN costing:ca-lever-tray-low -->$600<!-- END costing:ca-lever-tray-low -->–<!-- BEGIN costing:ca-lever-tray-high -->$1,000<!-- END costing:ca-lever-tray-high --></td>
 <td>Medium — chem-compat + stiffness check</td>
 <td>Available (win-win — also cuts weight)</td>
 </tr>
@@ -2681,7 +2681,7 @@ single biggest line</strong> (<!-- BEGIN costing:tray-low -->$1,300<!-- END cost
 <td>4</td>
 <td><strong>Battery 200 Ah → 100 Ah</strong> (<a href="../water-system-report/">Water System Report</a>: 1×100 Ah ≈ 25+ prints/charge)</td>
 <td>Power</td>
-<td style="text-align: right;">~$350</td>
+<td style="text-align: right;">~<!-- BEGIN costing:ca-lever-battery -->$350<!-- END costing:ca-lever-battery --></td>
 <td>Easy, if fewer sessions/charge is OK</td>
 <td>Available</td>
 </tr>
@@ -2689,7 +2689,7 @@ single biggest line</strong> (<!-- BEGIN costing:tray-low -->$1,300<!-- END cost
 <td>5</td>
 <td><strong>Solar 3 → 2 panels</strong> (if the power budget allows)</td>
 <td>Power</td>
-<td style="text-align: right;">~$130</td>
+<td style="text-align: right;">~<!-- BEGIN costing:ca-lever-solar -->$130<!-- END costing:ca-lever-solar --></td>
 <td>Easy</td>
 <td>Available</td>
 </tr>
@@ -2697,14 +2697,25 @@ single biggest line</strong> (<!-- BEGIN costing:tray-low -->$1,300<!-- END cost
 <td>6</td>
 <td><strong>Valves / fittings value-engineering</strong></td>
 <td>Water</td>
-<td style="text-align: right;">~$100–200</td>
+<td style="text-align: right;">~<!-- BEGIN costing:ca-lever-valves-low -->$100<!-- END costing:ca-lever-valves-low -->–<!-- BEGIN costing:ca-lever-valves-high -->$200<!-- END costing:ca-lever-valves-high --></td>
 <td>Medium</td>
 <td>Available</td>
 </tr>
 </tbody>
 </table>
-<p>Levers 1–5 together trim <strong>~$3,250–3,650</strong> off the <!-- BEGIN costing:ca-capital -->$24,207<!-- END costing:ca-capital --> capital build (<strong>~13–15%</strong>) without
+<p>Levers 1–5 together trim <strong>~<!-- BEGIN costing:ca-savings-low -->$3,250<!-- END costing:ca-savings-low -->–<!-- BEGIN costing:ca-savings-high -->$3,650<!-- END costing:ca-savings-high --></strong> off the <!-- BEGIN costing:ca-capital -->$24,207<!-- END costing:ca-capital --> capital build (<strong>~<!-- BEGIN costing:ca-savings-pct-low -->13<!-- END costing:ca-savings-pct-low -->–<!-- BEGIN costing:ca-savings-pct-high -->15<!-- END costing:ca-savings-pct-high -->%</strong>) without
 touching the core optical or structural design.</p>
+<blockquote>
+<p><strong>Derivation note.</strong> Lever 1 (container grade) and the roll-up total + percentage are
+computed in <code>costing.py</code> — the container saving is a true CW − WWT subtraction off the
+scenario layer, and the roll-up is the summed levers over the capital build, so both
+cascade on any cost change. Levers 2–5 are single-sourced estimates, <strong>not yet</strong> true
+<code>as-built − alternative</code> subtractions: that needs each alternative <em>configuration</em>
+modeled — a WWT-grade container line, an itemized electrical BOM (for the 100 Ah battery
+and 2-panel solar options), a costed poly-tray and galvanized-grating alternative, and the
+electric-actuation upgrade kit. Lever 2 is already actioned into the manual build, so once
+modeled it should move out of the live roll-up.</p>
+</blockquote>
 <hr />
 <h2 id="5-the-costweight-tension">5. The Cost–Weight Tension<a class="headerlink" href="#5-the-costweight-tension" title="Permanent link">&para;</a></h2>
 <p>Cost and weight do not always move together — some weight savings <em>cost</em> money, and vice
@@ -2722,7 +2733,7 @@ versa. Worth keeping in view when prioritizing:</p>
 <ul>
 <li><strong>Container shell</strong> — already the cheapest large steel box; only the <em>grade</em> is a lever
   (#1).</li>
-<li><strong>Light lock</strong> — already the cheap custom option (~$1,800 vs $2,500–4,500 for a
+<li><strong>Light lock</strong> — already the cheap custom option (<!-- BEGIN costing:ca-lightlock-mid -->$1,728<!-- END costing:ca-lightlock-mid --> mid vs $2,500–4,500 for a
   commercial darkroom door).</li>
 <li><strong>Swing pivot, ventilation, optics</strong> — small absolute spend; diminishing returns.</li>
 <li><strong>IBC frame, pumps, filters</strong> — load-bearing or commodity; little to cut safely.</li>

@@ -6,7 +6,7 @@
 
 ## 1. Why
 
-The right walkway (IBC-end access, X4329–4629, spanning the full width Yd 0–2362) was originally **ceiling-hung** — five M10 rod-pairs from the deck up to the roof. The film-plane rework (wall-seat saddles, rails now running the full width to X4649) exposed a conflict: **those vertical rods sit in the film plane's X-footprint (X4329–4629 ⊂ X150–4649) and in the volume the tilting plane sweeps** — the plane's right corner reaches Yd1760 at 28° tilt and Yd1575 at 40°, colliding with the hangers at Yd1828/1371 — plus the rods sit in the optical band (shadow risk). See [Film Plane Report](film-plane-mechanism-report.md) and the corner analysis.
+The right walkway (IBC-end access, X4329–4629, spanning the full width Yd 0–2362) was originally **ceiling-hung** — five M10 rod-pairs from the deck up to the roof. The film-plane rework (wall-seat saddles, rails now running the full width to X4649) exposed a conflict: **those vertical rods sit in the film plane's X-footprint (X4329–4629 ⊂ X150–4649) and in the volume the tilting plane sweeps** — the plane's right corner reaches Yd1760 at <!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing and Yd1575 at <!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt, colliding with the hangers at Yd1828/1371 — plus the rods sit in the optical band (shadow risk). See [Film Plane Report](film-plane-mechanism-report.md) and the corner analysis.
 
 **Key insight:** the **deck itself was never the problem** — it sits at Z130, tucked *under* the film-frame bottom (Z150). Only the **vertical rods** intrude. Remove the rods and the film-plane conflict disappears, **with no reduction in film size and the same swing range on both sides**.
 
@@ -30,7 +30,7 @@ Plus a **45mm gap (X4629–4674)** between the tray's right edge and the IBC fra
 
 The IBC stacking frame only has uprights at the **corridor (Yd 1046 / 1266, at X4654)** — there is **nothing at the perimeter (Yd0 / 2362)** to bolt to. So the support is split:
 
-- **2 inner cantilever arms** — off the **IBC corridor uprights** (X4654, deep-box front upright). A U-clamp grips each upright with 2× M12; the arm (40×45 SHS) reaches ~405mm back to the deck's left edge (X4329).
+- **2 inner cantilever arms** — off the **IBC corridor uprights** (X4654, deep-box front upright). A U-clamp grips each upright with 2× M12; the arm (40×40 SHS) reaches ~325mm back to the deck's left edge (X4329).
 - **2 outer wall-mounted ledgers** — on the **near (Yd0) and far (Yd2362) container walls**, each **through-bolted** (interior + exterior plate, 2 bolts) at 2 X stations along the deck width. These carry the deck's ends, where the frame can't reach.
 - **2 longitudinal bearers** (Yd-running, at X4329 + X4629) ride the arms + ledgers; the grate spans the ≤1,046mm between supports.
 - All members sit at **Z70–115** — ~10mm above the spray-bar top at the (low-side) cantilever stations, below the film frame (Z150). **No ceiling rods. Nothing into the tray. Nothing in the optical band above the deck.**
@@ -43,13 +43,13 @@ The IBC stacking frame only has uprights at the **corridor (Yd 1046 / 1266, at X
 |---|---|---|
 | Deck self-weight | ~0.45 kN | right walkway ≈ 46 kg ([Weight Dist. §3.2](weight-distribution-report.md)) |
 | Live load (one person) | 1.0 kN | ~100 kg |
-| Worst cantilever arm | 345mm | person at the far deck edge, over one arm |
-| **Worst single-arm moment** | **~0.35 kN·m** | 1.0 kN × 0.345 m (conservative; normally shared 2 arms) |
-| Arm bending stress (40×40×3 SHS, Z≈4.0 cm³) | ~86 MPa | vs 250 MPa yield → **SF ≈ 3** (upsize to 50×50 for SF≈5) |
-| Added stress on IBC upright (50×50×3, Z≈7.9 cm³) | ~44 MPa | small vs the frame's stack duty |
-| Anchor bolt force (2 bolts @ ~100mm) | ~3.5 kN/bolt | vs ~15–20 kN M12 capacity → **SF ≈ 5** |
+| Worst cantilever arm | 325mm | person at the far deck edge, over one arm |
+| **Worst single-arm moment** | **~0.33 kN·m** | 1.0 kN × 0.325 m (conservative; normally shared 2 arms) |
+| Arm bending stress (40×40×3 SHS, Z≈4.0 cm³) | ~81 MPa | vs 250 MPa yield → **SF ≈ 3** (upsize to 50×50 for SF≈5) |
+| Added stress on IBC upright (50×50×3, Z≈7.9 cm³) | ~41 MPa | small vs the frame's stack duty |
+| Anchor bolt force (2 bolts @ ~100mm) | ~3.3 kN/bolt | vs ~15–20 kN M12 capacity → **SF ≈ 5** |
 
-The IBC frame already carries the 2×2 IBC stack and is anchored to floor + walls; the added ~0.35 kN·m cantilever is minor. **Recommend a structural sign-off on the gusset connection**, but first-order it's comfortable.
+The IBC frame already carries the 2×2 IBC stack and is anchored to floor + walls; the added ~0.33 kN·m cantilever is minor. **Recommend a structural sign-off on the gusset connection**, but first-order it's comfortable.
 
 ## 5. What it resolves / what stays separate
 

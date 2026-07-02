@@ -77,11 +77,11 @@ also a `tbs_constants` value or a `costing.py`/`facts.yml` fact, prefer the refe
 
 ## E. Meta / index / skill (NOT report content — likely SKIP or treat separately)
 
-- [ ] CLAUDE.md  — project instructions (not a report)
+- [x] CLAUDE.md  — *EXCLUDED from editorial review (Alvin 2026-07-02): project instructions, not report content.*
 - [x] component-dependency-map.md  — *DONE (2026-07-02): §1 registry had 9 stale constant values vs tbs_constants.py (WALKWAY_GRATE_T 25→15, PROC_TRAY_DRAIN_X 2,399→4,550, DRUM_CX 0→-400, BA_X/BA_W, PUMP_X/D, DRUM_H_LT relabeled Height→Top Z, PUMP_W relabeled Width→pump-zone) — fixed, and BUILT `inject_dependency_map.py` (cdm: blocks, lint-gated `dependency-map registry`) so the whole §1 Value column injects from tbs_constants and can't drift (85 rows wrapped). Then Option A on §1.2: promoted the pinhole plate/frame specs (600/15/6/Ø50/0.1) from generate_plate_drawing.py locals into tbs_constants (PLATE_OD/PLATE_THK/WALL_FRAME_T/PINHOLE_DISC_D/PINHOLE_DISC_T), repointed the generator, added 5 cdm rows, slimmed the prose (+fixed PH_APT dup→PH_D). Commits f72cb67e + 16dcb142; [[project_depmap_injector]]. **Deferred (advisory, still flagged):** the Portacool corrected-mistake note (§1.8) + missing See Also — §3.1 rev-narrative intentionally kept as dev rationale. NOT yet published.*
 - [x] all-diagrams.md  — *DONE (2026-06-23): audited the gallery against every generated `diagrams/*.png` — 3 sheets were referenced nowhere (electrical-sheet4 Pump Power/Circuit C + sheet5 Main Enclosure Panel Layout; hingepanel-sheet6 Interior Pull Handle), all added in sheet order. No broken refs. Added a standing rule (every new diagram PNG → all-diagrams.md, incl. new sheets on existing generators) to CLAUDE.md workflow + skill_diagram_structure, ENFORCED by a new lint.py warning 'all-diagrams gallery covers every generated diagram PNG'. Gallery is a complete index; no owned figures to single-source (it carries captions only).*
 - [x] engineering-diagrams.md  — *DONE (2026-06-21): index/overview page — SKIP for value substitution (carries no owned figures; all numbers live in the linked detail reports). Copy-edited prose typos and refreshed the system/area lists (solar sub-system, walkway in all three areas, ventilation path).*
-- [ ] skill_label_placement.md  — drawing skill
+- [x] skill_label_placement.md  — *EXCLUDED from editorial review (Alvin 2026-07-02): drawing skill, not report content.*
 
 ## F. PoC (TBS-002)
 

@@ -43,41 +43,45 @@ rigid ≈ 1491×699×35, varies by model — mounted externally, no container cl
 
 ## 2. Detail + sources
 
-### 2. Battery — Renogy 12 V 100 Ah LiFePO4 ❌
+*All items below are now resolved (see the §1 summary and §4 remediation); each entry
+is retained as the **as-found** audit record — the Problem/Action text describes the
+discrepancy and the fix that was applied.*
+
+### 2. Battery — Renogy 12 V 100 Ah LiFePO4 ✅ RESOLVED (§4)
 - **Real:** 330 × 172 × 214 mm (L×W×H). [Renogy product page](https://www.renogy.com/12v-100ah-smart-lithium-iron-phosphate-battery/) · spec via [Renogy spec listing](https://www.renogy.com/pages/12v-100ah-smart-lithium-iron-phosphate-battery-rbt100lfp12s-html)
 - **Modeled:** `BA_X`=1810, `BA_W`=500, `BA_D`=120, `BA_H_LO`=150, `BA_H_HI`=650 → bank 500(X)×120(Yd)×500(Z); each of 2 packs ~240×120×500.
 - **Problem:** the modeled pack is **500 mm tall and only 120 mm deep**; the real pack is **214 mm tall and 172 mm deep**. Two packs side-by-side along X are 2×330 = **660 mm** (vs modeled 500), or stacked are 428 mm tall (vs 500). The battery-bank footprint on the pinhole wall and its clearances (electrical panel above, cable runs) are all drawn against the wrong box.
 - **Action:** set `BA_*` to two real 330×172×214 packs (decide side-by-side vs stacked), re-render electrical/floorplan/assembly + the film-plane near-wall ghost, re-check EP-above-battery clearance.
 
-### 3. Pump — Shurflo 2088-554-144 ❌
+### 3. Pump — Shurflo 2088-554-144 ✅ RESOLVED (§4)
 - **Real:** 8.5"L × 5"W × 4.5"H = **216 × 127 × 114 mm**. [Fresh Water Systems](https://www.freshwatersystems.com/products/shurflo-2088-554-144-delivery-pump-3-5-gpm-45-psi-12vdc-no-cord) · [datasheet PDF](https://www.pumpagents.com/pdf/ShurfloPumps/2088-554-144.pdf)
 - **Modeled:** `PUMP_D`=100 (pump zone width). 4–5 pumps tile the Corridor Plumbing Panel.
 - **Problem:** a real 2088 is **216 mm long × 127 mm wide** — the panel pump columns are drawn ~half-size. With 5 of them plus the accumulator + 3× 594 mm filters, the **panel layout must be re-checked for fit** (panel face is 270 mm corridor × 2,060 mm tall).
 - **Action:** set the modeled pump footprint to ~216×127×114, re-lay-out the panel (`generate_panel_layout.py` + 3D `equipment_panel()`), re-check corridor depth.
 
-### 4. Filter housing — Big Blue 4.5" × 20" ❌
+### 4. Filter housing — Big Blue 4.5" × 20" ✅ RESOLVED (§4)
 - **Real:** Pentek 20×4.5 BB = 23⅜" × 7¼" = **594 mm tall × Ø184 mm**. [Pentek 20" BB](https://www.filterwater.com/p-541-pentek-20-big-blue-water-filter-housing-15-inch.aspx) · [allfilters 20×4.5](https://www.allfilters.com/filterhousings/20x4.5/20-bb-housing)
 - **Modeled:** `BB_OD`=130, `BB_H`=340 (a 10" housing).
 - **Problem:** the BoM specifies **4.5"×20"** cartridges (Purcooflow WHF2045B302), but the model draws **10"** housings — ~250 mm shorter and 54 mm narrower each. Three of them stacked is the panel's biggest vertical run.
 - **Action:** either set `BB_OD`=184 / `BB_H`=594 to match the 20" spec **or** down-spec the purchase to 4.5"×10" housings/cartridges — then re-render the panel + re-sum filter cost. **Decision needed:** keep 20" (more media life, taller panel) or switch to 10".
 
-### 5. Fan — AC Infinity Cloudline S6 ❌
+### 5. Fan — AC Infinity Cloudline S6 ✅ RESOLVED (§4)
 - **Real:** 6" (152 mm) duct; unit 7.9×12.6×8.4" = **200 × 320 × 213 mm**, an **inline duct fan**. [AC Infinity S6](https://acinfinity.com/cloudline-s6-quiet-inline-fan-6-with-speed-controller/)
 - **Modeled:** `FAN_DIAM`=150 (≈ the 152 duct ✓) but `FAN_BODY_D`=50 — drawn as a **thin axial panel fan** in a 300 mm baffle duct (`DUCT_DEPTH`=300).
 - **Problem:** the S6 is **320 mm long** — it won't sit flush ("fan bodies do not protrude beyond the panel face" is false for an S6) and it **exceeds the 300 mm baffle-duct depth**. The design intends a compact 150 mm axial **panel** fan; the S6 is a different form factor.
 - **Action (decision needed):** either (a) spec a thin 150 mm 12 V **axial panel fan** (matches the drawing) and drop "AC Infinity S6", or (b) keep an inline fan and redesign the baffle-duct housing to accept a ~320 mm inline body.
 
-### 6. Evaporative cooler — "Portacool Jetstream 110, 12 V DC" ✅ RESOLVED
-- **Was:** **There is no Portacool Jetstream 110.** The Jetstream line is 220/230/240/250/260/270 and runs on **120 V AC**, not 12 V DC. [Portacool Jetstream series](https://www.portacool.com/legacy-evaporative-coolers/jetstream-series/)
+### 6. Evaporative cooler — assumed a nonexistent 12 V DC unit ✅ RESOLVED
+- **Was:** the model assumed a **12 V DC "Jetstream 110"** ground cooler that **does not exist** — [Portacool](https://www.portacool.com/legacy-evaporative-coolers/jetstream-series/)'s real Jetstream line (models 220–270) runs on **120 V AC**, not 12 V DC.
 - **Market reality (researched):** there is **no good native-12 V DC ground-placed** evap cooler. The only 12 V options are RV-**roof** units (TurboKool 2B-0001, ~$300 — rejected: roof penetration, roof-coupled vibration, transport conflict), a too-weak personal spot cooler (Transcool E3), or the premium [Solar Chill](https://www.southwest-solar.com/stainless-steel-solar-chill-coolers) line (native 12 V, ground, but $1,100+ and sole-source).
 - **Decision:** a **commodity 120 V AC swamp cooler (Hessaire MC18M, ~$130)** on a **dedicated 12V→120V pure-sine inverter (Victron Phoenix 12/375 GFCI, ~$210)**. Keeps the cooler a swappable multi-vendor part; the inverter is general-purpose. Trade-off accepted: +inverter complexity and a 4-print day now needs solar (already within the published envelope).
 - **Done:** `EVAP_*` → 559×305×711 (real Hessaire MC18M); `INVERTER_*` constants added; Circuit E re-based **80 W → <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V bus** (<!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac --> W AC ÷ 0.88) in `calculate_energy_budget.py`; energy/cost/shopping/ventilation/electrical reports re-summed; stow zone re-checked (cooler X1450–2009, clear); AC **isolation/GFCI/equipotential-bonding** design added in [Electrical §7.6](electrical-report.md#ac-safety).
 
-### 7. Accumulator — SeaFlo 0.75 L (SFAT-075-125-01) ⚠
+### 7. Accumulator — SeaFlo 0.75 L (SFAT-075-125-01) ✅ RESOLVED (§4)
 - **Real:** ~200 × 127 × 125 mm. [Amazon B01MUYL8F8](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) · [environmentalmarine SFAT-075](https://environmentalmarine.com/seaflo/fresh-water-pumps-accumulators/seaflo-1-gallon-accumulator-tank-sfat-075-125-01/)
 - **Modeled:** Ø127 × 150 cylinder. Ø matches; tweak length to ~200 when the panel is re-laid-out.
 
-### 8. Spray-bar beam ⚠ (naming)
+### 8. Spray-bar beam ✅ RESOLVED (§4 — naming)
 - BoM line says **1½"×1½"×⅛"** (= 38.1×38.1×3.2 mm); the spec/model use **40×40×3 mm**. Pick one — they differ by ~2 mm and the carriage saddle clamps are cut to the chosen section.
 
 ---
@@ -122,7 +126,6 @@ lands in cost-breakdown **5b** ($769→$830 mid); the new fan ($50) is folded in
 $25,399→**$25,460** mid; Scenario A $19,882→**$19,952**, Scenario B $25,322→**$25,383**. (The
 cost-breakdown's water-system filter estimate already reflected a 10″-class figure, so no separate
 cat-5 filter adjustment was needed; the master-shopping-list BOM filter $282–445 is authoritative.)
-
-*This document is the source of truth for the purchased-part dimensional reconciliation.*
+*(These totals are the 2026-06-15 remediation deltas — a dated snapshot; the current build total is generated in the [Cost Breakdown](project-cost-breakdown.md).)*
 
 *This document is the source of truth for the purchased-part dimensional reconciliation; update it as each component is resolved.*

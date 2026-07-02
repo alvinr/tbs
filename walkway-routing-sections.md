@@ -79,7 +79,8 @@ Having dropped through the grate past the cantilever, each line crosses **under 
 beam at Z ≈ 65** — between the frame rail top (Z50) and the beam bottom (Z80) — through the gap
 over the tray edge (X4629–4654, clear Z16–150), then **rises inside the corridor** to its lane
 height and runs in X toward the pump column: the brown tray‑sump → P‑04 (Z205, rising into P‑04)
-and the blue trunk / gray waste / blue recycle (all co‑planar at Z235, drawn stacked for clarity).
+and the other three ribbon lines — brown IBC‑3 → P‑02, blue Blue trunk → TAP‑01, and blue
+SV‑01 → DV‑01 return (co‑planar around Z235, drawn stacked for clarity).
 No IBC ring rail crosses this span, so the corridor is open above the bottom rail.
 
 ## Section F‑F — through the far cantilever
@@ -89,7 +90,7 @@ No IBC ring rail crosses this span, so the corridor is open above the bottom rai
 The mirror of D‑D on the far side of the corridor (Yd ≈ 1286): the far cantilever arm and far
 foot (again extending under the tray). The ribbon loops over the **near** cantilever only and has
 dropped into the corridor by Yd 1120, so no line crosses this far cantilever; the nearest line is
-the blue DV‑01 recycle lane (Yd 1241), ghosted just −Yd of the plane.
+the blue SV‑01 → DV‑01 return lane (Yd 1241), ghosted just −Yd of the plane.
 
 ## Sections G‑G / H‑H — tray slope, support & spray‑carriage clearance
 

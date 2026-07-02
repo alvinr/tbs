@@ -77,16 +77,22 @@ LC_STD, LC_WIDE, LC_YDS = k.LEFT_WK_CANT_STD_REACH, k.LEFT_WK_CANT_WIDE_REACH, k
 GRATE_Z = WK_H - GRATE_T          # 65 — grate underside / arm top
 
 TAGS = ["Container", "Processing Tray", "Walkways", "Cantilevers",
-        "Cantilever Types", "Right Cantilever", "IBC Frame", "Left Support", "Labels"]
+        "Cantilever Types", "Right Cantilever", "Film Plane", "IBC Frame", "Left Support", "Labels"]
 
 
-def right_anchor_context():
-    """The bottom film rail (BR, X4649) that the right-walkway cantilever's combined corner
-    plate also anchors to — ghosted for context (the full film plane lives in the overview).
-    The IBC corridor frame the cantilever mounts off is now the REAL deep-box frame component
-    (cp.frame(), solid), not a ghost stub — see generate_ruby()."""
-    return ruby_box("Film rail BR (ghost)", ov.RAIL_X_R - 20, 0, ov.RAIL_OFF_BOT - 20,
-                    40, ov.C_WID, 40, color=C_STEEL, alpha=0.3)
+def film_plane_right_beams():
+    """The RIGHT-side film-plane support beams (R-bot + R-top, 40×40 rails, full Yd depth) that
+    the right-walkway cantilever's combined corner plate bolts to.  SOLID and single-sourced from
+    the SAME constants as pw.film_plane_beams()/overview (x = RAIL_X_R − rail = 4609, so the beam
+    ends at 4649 — clear of the corridor frame front at 4654).  The corner wall-seats are the
+    cantilever's COMBINED corner plate (drawn by right_walkway_cantilever), so no saddles here."""
+    rail = 40
+    x_right = ov.RAIL_X_R - rail                 # 4609 — matches overview/water (was a ghost at 4629)
+    z_top = ov.C_HGT - ov.RAIL_OFF - rail
+    p = []
+    for zl, rz in (("bot", ov.RAIL_OFF_BOT), ("top", z_top)):
+        p.append(ruby_box(f"FP support beam R-{zl}", x_right, 0, rz, rail, ov.C_WID, rail, color=C_STEEL))
+    return '\n'.join(p)
 
 
 # ── "Labeled" scene callouts (project rule: every .skp gets a Labeled scene) ──
@@ -451,7 +457,11 @@ def generate_ruby():
         component("Wall Cantilevers", "Cantilevers", cantilevers()),
         component("Cantilever Types", "Cantilever Types", cantilever_types()),
         component("Right Walkway (cantilever rectangle)", "Right Cantilever",
-                  ov.right_walkway_cantilever(include_grate=False) + "\n" + right_anchor_context()),
+                  ov.right_walkway_cantilever(include_grate=False)),
+        # Film-plane right support beams the cantilever bolts to — real position (X4609-4649),
+        # single-sourced with overview/water so it stays consistent (was a ghost at 4629-4669
+        # that intersected the corridor frame).
+        component("Film-Plane Right Support Beams", "Film Plane", film_plane_right_beams()),
         # The real deep-box corridor frame the right walkway cantilevers off (solid, current
         # design — front uprights X4654 → back X5104; the tote-retaining bars are intentionally
         # omitted from this walkway-detail model).
@@ -466,11 +476,11 @@ def generate_ruby():
 
     # Scenes — Container stays on as context; scenes toggle the rest.
     scene_groups = [
-        ("Walkway", ["Walkways", "Right Cantilever", "IBC Frame", "Processing Tray"]),
+        ("Walkway", ["Walkways", "Right Cantilever", "Film Plane", "IBC Frame", "Processing Tray"]),
         ("Near/Far Cantilevers", ["Cantilevers", "Processing Tray"]),
         # Right Cantilever — the cantilever-rectangle support + combined corner plate + the
-        # deep-box frame it mounts off.
-        ("Right Cantilever", ["Right Cantilever", "IBC Frame", "Processing Tray"]),
+        # film-plane beams it bolts to + the deep-box frame it mounts off.
+        ("Right Cantilever", ["Right Cantilever", "Film Plane", "IBC Frame", "Processing Tray"]),
         ("Left Support", ["Left Support", "Processing Tray"]),
     ]
     scene_groups_ruby = '[' + ', '.join(

@@ -429,12 +429,12 @@ def generate_ruby():
     full = ["Beam", "Carriage L", "Carriage R", "Feed & Pole", "Tray"]  # no Tray Ref
     # (name, visible tags, optional close-up target [x,y,z,standoff] mm or None)
     scenes = [
+        ("Overview", full, None),   # full assembly — listed first (was "Combined")
         ("Beam", ["Beam"], None),
         ("Carriage Assembly", ["Beam", "Carriage L", "Carriage R", "Tray Ref"], None),
         ("One Carriage", ["Carriage L"], (XL, GY, 55, 480)),
         ("Pole & Ball Joint", ["Beam", "Feed & Pole"], None),
         ("Processing Tray", ["Tray", "Beam", "Carriage L", "Carriage R"], None),
-        ("Combined", full, None),
         ("Labeled", full + ["Labels"], None),
     ]
 

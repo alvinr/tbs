@@ -397,7 +397,7 @@ MRBF_D, MRBF_H = 40, 38  # terminal-mount MRBF main fuse (on the battery + post)
 # Contains pumps (P-01, P-02, P-04), ACC-01, and 3× Big Blue filter housings.
 # Pumps on near-wall side (Yd=1046–1173), filters on far-wall side (Yd=1186–1316).
 # Filters at bottom of panel (Z=200–1280), pumps at top (Z=1320–2220).
-EQPANEL_X       = 4874    # panel face X (mm) — ibc-reconfig-v2: moved FORWARD (was 5240) to the corridor front for walkway/operator reach-in access; ply X=4874–4892, equipment hangs toward -X (tip ~4744, clear of the film rail X=4649). Mounts on the front-portal frame (~X4734).
+EQPANEL_X       = 4874    # panel face X (mm) — ibc-reconfig-v2: moved FORWARD (was 5240) to the corridor front for walkway/operator reach-in access; ply X=4874–4892, equipment hangs toward -X (tip ~4744, clear of the film rail X=4649). Mounts on the deep-box corridor frame (front upright ~X4654).
 EQPANEL_T       = 18      # panel thickness in X (mm) — ply extends toward sealed end (X=4874–4892)
 EQPANEL_Z_LO    = 250     # panel bottom Z (mm) — keeps ~120mm above the raised walkway deck [+50 raise; was 200]
 EQPANEL_Z_HI    = 2310    # panel top Z (mm) — in the plumbing corridor (no totes there), below ceiling (2388); IBC stack is 2336mm in the flanking columns
@@ -573,11 +573,14 @@ PROC_TRAY_YD_NEAR = 80           # tray near edge Yd (mm) — clearance from pin
 PROC_TRAY_YD_FAR  = PROC_TRAY_YD_NEAR + PROC_TRAY_D  # = 2280mm
 PROC_TRAY_RIM  = 50              # rim height (mm)
 PROC_TRAY_PITCH = 10             # fall over tray depth for drainage (mm), 1:200
-# Dual-axis pitch: tray slopes toward the low corner (near-pinhole, IBC end).
-# Primary slope: Yd direction, falling toward Yd=0 (pinhole wall).
-# Secondary slope: X direction, falling toward X=4550 (IBC corner).
-# Slope is achieved by tapered HDPE shim strips bonded to container floor
-# under the tray (high end ~10mm thick, feathered to zero at drain end).
+# DUAL-AXIS drainage slope: the tray floor is a rigid formed pan tilted so water walks
+# diagonally to the single corner sump.  A single-axis (Yd-only) fall would just pond the
+# wash along the whole near-pinhole rim, so BOTH axes must fall toward the low corner:
+#   Primary slope:  Yd direction, falling toward the NEAR rim (Yd=PROC_TRAY_YD_NEAR).
+#   Secondary slope: X direction, falling toward the IBC/right side (the sump, X≈4550).
+# The pan sits on tapered HDPE shim strips bonded to the container floor; the LOW corner is
+# RAISED to Z=PROC_TRAY_SUMP_Z so the sump well bottom rests ON the container floor (Z0) —
+# the floor is never at Z0.  See PROC_TRAY_FLOOR_Z_LOW / tray_floor_z() below (single source).
 PROC_TRAY_SHIM_H   = 10         # shim strip max height at far rim (mm) = PITCH
 PROC_TRAY_SHIM_W   = 50         # shim strip width (mm) — HDPE flat bar
 PROC_TRAY_SHIM_N   = 5          # number of shim strips across tray depth
@@ -592,6 +595,30 @@ BV02_Z             = 950         # BV-02 height on pinhole wall (mm AFF) — wai
 PROC_TRAY_SUMP_W   = 150        # sump well width in X (mm)
 PROC_TRAY_SUMP_D   = 100        # sump well depth in Yd (mm)
 PROC_TRAY_SUMP_Z   = 20         # sump well depth below tray floor (mm)
+
+# ── Tray floor surface — SINGLE SOURCE for the raised, dual-axis-sloped basin ────────
+# The basin floor is NOT flat at Z0.  Its low corner is RAISED to Z=PROC_TRAY_SUMP_Z so the
+# sump well bottom rests on the container floor, and from there it rises 1:200 in BOTH X and
+# Yd toward the far-left corner.  Every clearance (walkway deck, spray-bar carriage, corridor
+# frame foot, hinged panel) must be measured against tray_floor_z(x, yd) — NOT a flat Z0.
+PROC_TRAY_FLOOR_Z_LOW = PROC_TRAY_SUMP_Z          # = 20mm — floor top at the low (sump) corner
+PROC_TRAY_SLOPE       = 1.0 / 200                  # fall per mm of plan run, EACH axis (1:200)
+
+def tray_floor_z(x, yd):
+    """Top-of-floor Z (mm) at plan position (x, yd) for the dual-axis 1:200 drainage slope.
+    Low corner = (PROC_TRAY_X_R, PROC_TRAY_YD_NEAR) ≈ the corner sump (Z=PROC_TRAY_FLOOR_Z_LOW);
+    the floor rises toward (PROC_TRAY_X_L, PROC_TRAY_YD_FAR).  The pan is rigid, so the rim top
+    tilts with it: use tray_rim_top_z(x, yd)."""
+    dx  = PROC_TRAY_X_R - x               # 0 at the right/low edge, +W toward the left
+    dyd = yd - PROC_TRAY_YD_NEAR          # 0 at the near/low rim, +D toward the far rim
+    return PROC_TRAY_FLOOR_Z_LOW + (dx + dyd) * PROC_TRAY_SLOPE
+
+def tray_rim_top_z(x, yd):
+    """Top-of-rim Z (mm) — the rigid pan's 50mm wall rides on the sloped floor."""
+    return tray_floor_z(x, yd) + PROC_TRAY_RIM
+
+# Convenience extremes (for labels / quick clearance checks):
+PROC_TRAY_FLOOR_Z_HIGH = PROC_TRAY_FLOOR_Z_LOW + (PROC_TRAY_W + PROC_TRAY_D) * PROC_TRAY_SLOPE  # far-left corner ≈ 53.3mm
 
 # ── Water throughput — prints per resupply (COMPUTED, never transcribed) ──────
 # "~13 prints per resupply" (and the ~32 gal/print, ~121 L/print, ~4.4 days figures derived from it)
@@ -760,33 +787,52 @@ PROC_OPEN_YD_F = WALKWAY_FAR_YD               # = 1962mm
 PROC_OPEN_AREA = (PROC_OPEN_X_R - PROC_OPEN_X_L) * (PROC_OPEN_YD_F - PROC_OPEN_YD_N) / 1e6
                                                # = 6.42 m² open processing area
 
-# ── Spray bar — gantry design: beam-as-pipe, wheel carriages (rev 9) ────────
-# Beam spans open processing area between walkway inner edges.
-# Wheel carriages roll on the tray floor beneath the walkway grating.
-# The 40×40 SHS beam HOUSES a 3/4" LDPE irrigation poly pipe; flat-fan spray
-# nozzles barb into the poly pipe and spray down through holes in the beam wall.
+# ── Spray bar — gantry design: LOW-PROFILE wheel carriages (rev 10) ─────────
+# Beam spans the open processing area between the walkway inner edges; wheel
+# carriages roll on the tray floor beneath the walkway grating.  rev10 SHRINKS
+# the carriage to recover head-room under the LEVEL grate now that the tray floor
+# is raised + dual-axis-sloped (up to ~Z53 at the far-left corner — see
+# tray_floor_z()): the old Ø50-wheel / 40×40 assembly topped out ~6mm under the
+# far-left grate.  Two levers: (1) Ø50→Ø32 nylon wheels (−9mm); (2) a shallower
+# 40×25 304-SS RHS beam (SS stiffness offsets the depth so mid-span sag stays
+# ≈ the old 7mm) with the poly manifold moved to the beam's inboard SIDE and the
+# flat-fan nozzles side-mounted (spray down-and-in) — so the beam profile drops
+# 40→25mm (−15mm) with no vertical cost for the nozzles.  Net ≈ −24mm.
 SPRAY_BAR_SPAN       = PROC_OPEN_X_R - PROC_OPEN_X_L  # beam span between walkway inner edges (mm)
-SPRAY_BAR_BEAM       = 40          # 40×40×3mm 6061-T6 aluminum SHS (1-1/2"×1-1/2"×1/8")
+SPRAY_BAR_BEAM_W     = 40          # beam WIDTH in X (mm) — 40×25×3mm 304-SS RHS, laid flat
+SPRAY_BAR_BEAM_H     = 25          # beam HEIGHT in Z (mm) — shallower than the old 40×40; SS offsets stiffness
+SPRAY_BAR_BEAM       = SPRAY_BAR_BEAM_W   # legacy alias (was the square 40) → now the width; 3D/other sheets update in the cascade
 SPRAY_BAR_BEAM_T     = 3           # wall thickness (mm)
-SPRAY_BAR_BORE       = SPRAY_BAR_BEAM - 2 * SPRAY_BAR_BEAM_T  # = 34mm internal bore
-SPRAY_BAR_POLY_OD    = 25          # 3/4" LDPE irrigation poly pipe OD (mm) — inside the bore
+SPRAY_BAR_BORE       = SPRAY_BAR_BEAM_W - 2 * SPRAY_BAR_BEAM_T  # = 34mm internal bore (poly no longer housed here)
+SPRAY_BAR_POLY_OD    = 25          # 3/4" LDPE irrigation poly pipe OD (mm) — SIDE-mounted on the beam's inboard face
 SPRAY_BAR_POLY_ID    = 19          # poly pipe ID (mm)
-SPRAY_BAR_WHEEL_DIA  = 50          # nylon wheel diameter (mm) — matches tray rim height
+SPRAY_BAR_WHEEL_DIA  = 32          # nylon wheel diameter (mm) — shrunk from 50 for grate clearance on the raised tray
 SPRAY_BAR_WHEEL_W    = 20          # wheel width (mm)
 SPRAY_BAR_WHEELS_PER_SIDE = 2      # wheels per carriage (spaced in Yd direction) — reserved (spec; 2D/3D draw wheels via WHEEL_SP)
 SPRAY_BAR_WHEEL_SP   = 200         # wheel center-to-center spacing in Yd (mm)
 SPRAY_BAR_TRAY_FLOOR = 2           # tray sheet metal thickness on container floor (mm)
-SPRAY_BAR_AXLE_Z     = SPRAY_BAR_TRAY_FLOOR + SPRAY_BAR_WHEEL_DIA // 2  # = 27mm
-SPRAY_BAR_BRACKET_DROP = 7         # axle CL to beam bottom (mm) — matches carriage Detail C/D
-SPRAY_BAR_Z_BOT      = SPRAY_BAR_AXLE_Z - SPRAY_BAR_BRACKET_DROP  # = 20mm beam bottom
-SPRAY_BAR_Z_TOP      = SPRAY_BAR_Z_BOT + SPRAY_BAR_BEAM           # = 60mm beam top
+# Carriage vertical stack is now FLOOR-RELATIVE: the wheels ride the LOCAL (sloped) floor,
+# so absolute Z = tray_floor_z(x, yd) + rise.  Use spray_beam_bot_z / spray_beam_top_z.
+SPRAY_BAR_AXLE_RISE    = SPRAY_BAR_WHEEL_DIA // 2                        # = 16mm — axle CL above the local floor
+SPRAY_BAR_BRACKET_DROP = 7                                              # axle CL to beam bottom (mm)
+SPRAY_BAR_BEAM_BOT_RISE = SPRAY_BAR_AXLE_RISE - SPRAY_BAR_BRACKET_DROP  # = 9mm — beam bottom above the local floor
+SPRAY_BAR_BEAM_TOP_RISE = SPRAY_BAR_BEAM_BOT_RISE + SPRAY_BAR_BEAM_H    # = 34mm — beam top above the local floor
+
+def spray_beam_bot_z(x, yd): return tray_floor_z(x, yd) + SPRAY_BAR_BEAM_BOT_RISE
+def spray_beam_top_z(x, yd): return tray_floor_z(x, yd) + SPRAY_BAR_BEAM_TOP_RISE
+
+# Legacy ABSOLUTE Z references, evaluated at the LOW (sump) corner (floor = PROC_TRAY_FLOOR_Z_LOW).
+# The beam actually rides the local floor — these are the low-corner values for context/labels.
+SPRAY_BAR_AXLE_Z     = PROC_TRAY_FLOOR_Z_LOW + SPRAY_BAR_AXLE_RISE      # = 36mm (was 27)
+SPRAY_BAR_Z_BOT      = PROC_TRAY_FLOOR_Z_LOW + SPRAY_BAR_BEAM_BOT_RISE  # = 29mm beam bottom @ low corner (was 20)
+SPRAY_BAR_Z_TOP      = PROC_TRAY_FLOOR_Z_LOW + SPRAY_BAR_BEAM_TOP_RISE  # = 54mm beam top @ low corner (was 60)
 SPRAY_BAR_TRAVEL     = PROC_TRAY_D  # = 2200mm (Yd travel, near rim to far rim)
-SPRAY_BAR_HOLE_DIA   = 8           # nozzle through-hole in beam wall (mm) — reserved (spec; not yet drawn)
+SPRAY_BAR_HOLE_DIA   = 8           # nozzle barb bore (mm) — side-tap into the poly manifold (was a beam-wall through-hole)
 SPRAY_BAR_NOZZLE_PITCH = 150       # nozzle center-to-center pitch along the beam (mm)
 SPRAY_BAR_N_NOZZLES  = (PROC_OPEN_X_R - PROC_OPEN_X_L) // SPRAY_BAR_NOZZLE_PITCH + 1  # = 26 @ 150mm
 SPRAY_BAR_HOLE_SP    = SPRAY_BAR_NOZZLE_PITCH  # legacy hole-pitch ref (mm)
 SPRAY_BAR_HOSE_L     = 4000        # flexible hose length BV-02 to bar (mm) — reserved (spec; shopping-list ref)
-SPRAY_BAR_FEED_Z     = SPRAY_BAR_Z_BOT + SPRAY_BAR_BEAM // 2  # = 40mm — feed end cap center
+SPRAY_BAR_FEED_Z     = SPRAY_BAR_Z_BOT + SPRAY_BAR_BEAM_H // 2  # = 41mm — feed end cap center @ low corner
 SPRAY_BAR_SLIT_W     = 30          # walkway slit width for pole passage (mm)
 
 # ── External fill/drain ports — far end wall bulkhead fittings (rev 5) ───────

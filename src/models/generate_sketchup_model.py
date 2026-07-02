@@ -40,7 +40,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "generators"))
 from tbs_constants import (
     C_LEN, C_WID, C_HGT, WALL_T,
     PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR,
-    PROC_TRAY_RIM,
+    PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, tray_rim_top_z,
     WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
     WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W,
     WALKWAY_LEFT_X,
@@ -474,38 +474,42 @@ def container_shell():
 # ── Processing tray ──────────────────────────────────────────────────────────
 
 def processing_tray():
-    """Processing tray — 304 SS basin (floor + rim) holding a translucent
-    chemistry bath, so it reads clearly against the off-white shell."""
-    tray_w = PROC_TRAY_X_R - PROC_TRAY_X_L
-    tray_d = PROC_TRAY_YD_FAR - PROC_TRAY_YD_NEAR
-    sheet_t = 2
-    rim_t = 2
+    """Processing tray — RAISED, dual-axis-sloped 304 SS welded pan (tilted floor + rim)
+    on a tapered HDPE shim base, holding a translucent chemistry bath.  The low corner
+    (near-right / IBC side = the sump) sits at Z=PROC_TRAY_FLOOR_Z_LOW so the sump bottom
+    rests on the container floor; the pan rises 1:200 in BOTH axes to the far-left corner
+    (see tray_floor_z / tray_rim_top_z)."""
+    xl, xr = PROC_TRAY_X_L, PROC_TRAY_X_R
+    yn, yf = PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR
+    tray_w, tray_d = xr - xl, yf - yn
+    sheet_t, rim_t = 2, 2
+    zc = PROC_TRAY_FLOOR_Z_LOW                       # low-corner floor top = shim base top
 
     parts = []
-
-    parts.append(ruby_box("Processing Tray Floor",
-                          PROC_TRAY_X_L, PROC_TRAY_YD_NEAR, 0,
-                          tray_w, tray_d, sheet_t, color=C_TRAY))
-
-    parts.append(ruby_box("Tray Rim Near",
-                          PROC_TRAY_X_L, PROC_TRAY_YD_NEAR, sheet_t,
-                          tray_w, rim_t, PROC_TRAY_RIM - sheet_t, color=C_TRAY))
-    parts.append(ruby_box("Tray Rim Far",
-                          PROC_TRAY_X_L, PROC_TRAY_YD_FAR - rim_t, sheet_t,
-                          tray_w, rim_t, PROC_TRAY_RIM - sheet_t, color=C_TRAY))
-    parts.append(ruby_box("Tray Rim Left",
-                          PROC_TRAY_X_L, PROC_TRAY_YD_NEAR, sheet_t,
-                          rim_t, tray_d, PROC_TRAY_RIM - sheet_t, color=C_TRAY))
-    parts.append(ruby_box("Tray Rim Right",
-                          PROC_TRAY_X_R - rim_t, PROC_TRAY_YD_NEAR, sheet_t,
-                          rim_t, tray_d, PROC_TRAY_RIM - sheet_t, color=C_TRAY))
-
-    # Translucent chemistry bath inside the rims.
+    # Tapered HDPE shim base — raises the pan so the 20mm sump well bottom rests on Z0
+    parts.append(ruby_box("Tray Shim Base",
+                          xl, yn, 0, tray_w, tray_d, zc - sheet_t,
+                          color="#D8CFBC", alpha=0.9))
+    # Welded pan FLOOR — dual-axis-tilted plane (two triangles at the true corner Z's)
+    c_nl = [xl, yn, tray_floor_z(xl, yn)]
+    c_nr = [xr, yn, tray_floor_z(xr, yn)]
+    c_fr = [xr, yf, tray_floor_z(xr, yf)]
+    c_fl = [xl, yf, tray_floor_z(xl, yf)]
+    parts.append(ruby_tri("Processing Tray Floor A", c_nl, c_nr, c_fr, -sheet_t, color=C_TRAY))
+    parts.append(ruby_tri("Processing Tray Floor B", c_nl, c_fr, c_fl, -sheet_t, color=C_TRAY))
+    # Rims — walls on the raised, tilted pan (each placed at the local floor Z for its edge)
+    znr = tray_floor_z((xl + xr) / 2, yn); zfr = tray_floor_z((xl + xr) / 2, yf)
+    zlr = tray_floor_z(xl, (yn + yf) / 2); zrr = tray_floor_z(xr, (yn + yf) / 2)
+    parts.append(ruby_box("Tray Rim Near", xl, yn, znr, tray_w, rim_t, PROC_TRAY_RIM, color=C_TRAY))
+    parts.append(ruby_box("Tray Rim Far",  xl, yf - rim_t, zfr, tray_w, rim_t, PROC_TRAY_RIM, color=C_TRAY))
+    parts.append(ruby_box("Tray Rim Left", xl, yn, zlr, rim_t, tray_d, PROC_TRAY_RIM, color=C_TRAY))
+    parts.append(ruby_box("Tray Rim Right", xr - rim_t, yn, zrr, rim_t, tray_d, PROC_TRAY_RIM, color=C_TRAY))
+    # Translucent chemistry bath inside the rims (at the raised level)
+    zb = tray_floor_z((xl + xr) / 2, (yn + yf) / 2)
     parts.append(ruby_box("Chemistry Bath",
-                          PROC_TRAY_X_L + rim_t, PROC_TRAY_YD_NEAR + rim_t, sheet_t,
+                          xl + rim_t, yn + rim_t, zb,
                           tray_w - 2 * rim_t, tray_d - 2 * rim_t,
                           PROC_TRAY_RIM - sheet_t - 8, color=C_BATH, alpha=0.45))
-
     return '\n'.join(parts)
 
 
@@ -526,7 +530,7 @@ RWK_HL = 95                                           # half-lap line
 RWK_BEARER_W = 40
 RWK_BEARER_XS = (RWK_X_L, RWK_X_R - RWK_BEARER_W)      # 4329, 4589 — long-beam left edges
 RWK_BEARER_Z0 = RWK_ARM_TOP - 35                       # 80 — beam bottom
-RWK_X_UP = IBC_COL_X + 60                              # 4734 — IBC corridor upright X station
+RWK_X_UP = IBC_COL_X - 20                              # 4654 — deep-box FRONT upright (= cp.FRONT_X); reconciled from the stale +60/4734 portal (flag 4)
 RWK_UP_YDS = (CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR - IBC_FRAME_RHS)   # 1046, 1266
 
 
@@ -931,11 +935,12 @@ def panel_pivot():
 
 def spray_bar():
     """Spray-bar gantry — reuses the detailed spray-bar model builders so the
-    overview stays in sync with models/spraybar.skp: 40×40 SHS beam housing a 3/4"
-    LDPE pipe + 26 flat-fan nozzles, two-wheel carriages (curved saddle axle clamps
-    + top/bottom beam clamp plates), flange-base ball joint, distribution manifold
-    + 7 irrigation feed tubes, and the push pole bound to the supply hose with
-    zip ties. The tray-floor ref patch is omitted (overview has its own tray)."""
+    overview stays in sync with models/spraybar.skp: 40×25 304-SS RHS beam (laid flat)
+    with a SIDE-mounted 3/4" LDPE manifold + 26 side-tapped flat-fan nozzles, two-wheel
+    Ø32 carriages (curved saddle axle clamps + top/bottom beam clamp plates), flange-base
+    ball joint, distribution manifold + 7 irrigation feed tubes, and the push pole bound
+    to the supply hose with zip ties. The tray-floor ref patch is omitted (overview has
+    its own tray)."""
     import generate_spraybar_model as sb
     return '\n'.join([sb.build_beam(),
                       sb.build_carriages(include_floor=False),
@@ -943,6 +948,14 @@ def spray_bar():
 
 
 # ── Plumbing panel (pumps · filters · accumulator) ──────────────────────────
+#
+# RESOLVED (2026-07-01): overview + ibc-stack were rewired in generate_ruby() to reuse
+# the CURRENT water builders — cp.frame/tote_restraint/rear_panel/equipment/plumbing/
+# drains_ports + pw.kit/other_equipment/tap01_supply (the water.skp source) — so they
+# now render the split Corridor / Pinhole-Wall panel design and stay in sync with
+# water.skp.  The functions below (equipment_panel / water_hookups / spray_bar_plumbing
+# / water_plumbing) are the OLD pre-corridor-refactor layout and are now UNUSED (kept
+# for reference; safe to delete).  ibc_rack() is still used by the cantilever study.
 
 def equipment_panel():
     """18mm marine-ply panel in the IBC corridor carrying the wet end.
@@ -2511,6 +2524,10 @@ def water_plumbing():
 
 def generate_ruby():
     """Build the complete Ruby script for the Overview model."""
+    # Reuse the CURRENT water-system builders (water.skp source) so overview stays in
+    # sync with the corridor + pinhole-wall panel design (late import — cp/pw import ov).
+    import generate_corridor_water_panel as cp
+    import generate_pinhole_water_panel as pw
     comps = [
         component("Container Shell", "Shell", container_shell()),
         component("Walkways", "Walkways", walkways()),
@@ -2521,9 +2538,13 @@ def generate_ruby():
         component("FP Combined Corner Plates", "Combined Plate", fp_combined_corner_plates()),
         component("Panel & Pivot Axle", "Pivot Axle", panel_pivot()),
         component("Spray Bar", "Spray Bar", spray_bar()),
-        component("Plumbing Panel", "Plumbing Panel", equipment_panel()),
+        component("Corridor Frame (deep box)", "IBC Rack", cp.frame()),
+        component("IBC Tote Restraint", "IBC Rack", cp.tote_restraint()),
+        component("Corridor Rear Panel", "Plumbing Panel", cp.rear_panel()),
+        component("Corridor Equipment", "Plumbing Panel", cp.equipment()),
+        component("Pinhole-Wall Kit", "Plumbing Panel", pw.kit()),
+        component("Pinhole-Wall Equipment", "Plumbing Panel", pw.other_equipment()),
         component("IBC Stack", "IBC Stack", ibc_stack()),
-        component("IBC Rack", "IBC Rack", ibc_rack()),
         component("Light-Trap Drum", "Light Trap", light_trap_drum()),
         component("Light-Trap Bay", "Light Trap", light_trap_bay()),
         component("Electrical", "Electrical", electrical()),
@@ -2533,10 +2554,10 @@ def generate_ruby():
         component("Light Seal & Hinges", "Light Seal", light_seal()),
         component("Lighting & Wiring", "Lighting", lighting_wiring()),
         component("Evap Cooler & Duct", "Evap Cooler", evap_cooler()),
-        component("Water/Waste Hookups", "Water Hookups", water_hookups()),
+        component("Corridor Drains + X-ports", "Water Hookups", cp.drains_ports()),
         component("Fans A & B", "Fans", fans()),
-        component("Spray Bar Plumbing", "Spray Bar", spray_bar_plumbing()),
-        component("Water Plumbing", "Water Plumbing", water_plumbing()),
+        component("TAP-01 + Spray Supply", "Spray Bar", pw.tap01_supply()),
+        component("Corridor Plumbing", "Water Plumbing", cp.plumbing()),
     ]
     body = '\n'.join(comps)
 

@@ -84,21 +84,34 @@ The mirror of D‑D on the far side of the corridor (Yd ≈ 1286): the far canti
 foot (again extending under the tray). No under‑deck crossers reach this far — they turn up by
 Yd 1132–1170 — so the nearest lane is the blue DV‑01 recycle, ghosted just −Yd of the plane.
 
+## Sections G‑G / H‑H — tray slope, support & spray‑carriage clearance
+
+![TBS-001 — Walkway Routing Section G-G/H-H: tray drainage slope, welded-pan support, and spray-carriage clearance](assets/walkway-sections-sheet6.png)
+
+These two sections make the tray's raised, sloped floor explicit (6× vertical exaggeration,
+since the fall is ~1:200). **G‑G** is a longitudinal Yd–Z cut at the sump column: the welded
+304‑SS pan sits on a **tapered HDPE shim ramp** with its low corner raised to Z20 so the 20 mm
+sump‑well bottom rests on the container floor, rising to ~Z31 at the far rim. **H‑H** is an X–Z
+cut at the far rim (the high corner of the dual slope) showing the level walkway grates over the
+sloped pan and the shrunk spray‑carriage (Ø32 wheels + 40×25 SS beam) with **~30 mm clearance**
+under the left grate — the recovery from the ~6 mm the old Ø50 / 40×40 carriage would have had.
+
 ## Interference & clearance findings
 
 Drawing these sections at 1:1 against `water.skp` surfaced four tight‑clearance / interference
-items that the plan views do not reveal. Each is a **3D‑model follow‑up to verify or resolve**:
+items the plan views do not reveal. Status after the tray‑datum correction + spray‑carriage
+shrink (branch `water-walkway-integration`):
 
-1. **Blue TAP‑01 crosser grazes the cantilever‑arm soffit.** At the near cantilever the blue
-   supply/TAP‑01 line runs at Z60; its top (Z70.5) meets the cantilever‑arm soffit (Z70). The
-   line runs at Z40 in the near‑rim strip (B‑B), so there is headroom to drop it a few mm
-   through the gap.
-2. **Low crossers pinch the tray‑rim ↔ upright gap.** The two under‑deck lines thread the
-   25 mm gap between the tray rim (X4629) and the front upright (X4654) with only ≈ 1.5 mm
-   (to the rim) and ≈ 2.5 mm (to the upright).
-3. **Front foot + M12 anchor under the tray basin.** The deep‑box front foot (X4604–4754) and
-   its inner M12 anchor row (≈ X4629) sit under the tray at X4604–4629 — confirm there is no
-   clash with the tray basin.
-4. **Stale cantilever‑arm reference.** The right‑walkway cantilever arm reaches X4734
-   (`RWK_X_UP`), which references the *old* IBC upright position; the deep‑box frame upright is
-   now at X4654. Reconcile the arm's attachment.
+1. **Blue TAP‑01 crosser grazes the cantilever‑arm soffit** — *OPEN.* At the near cantilever the
+   blue supply/TAP‑01 line runs at Z60; its top (Z70.5) meets the cantilever‑arm soffit (Z70). It
+   runs at Z40 in the near‑rim strip (B‑B), so there is headroom to drop it through the gap — not
+   yet applied to `water.skp`.
+2. **Low crossers pinch the tray‑rim ↔ upright gap** — *DEFERRED.* The two under‑deck lines thread
+   the 25 mm gap (tray rim X4629 ↔ front upright X4654) with only ≈ 1.5 mm / ≈ 2.5 mm; the 21 mm
+   pipe fits with ~2 mm/side when centered. Accepted for now; revisit if the routing changes.
+3. **Front foot + M12 anchor under the tray basin** — **RESOLVED.** The tray‑datum correction
+   raises the welded pan onto the shim ramp (floor bottom ≈ Z23–24 at the corridor foot stations),
+   so the 12 mm front foot now clears **~11 mm** *under* the pan (see G‑G). No foot change needed.
+4. **Stale cantilever‑arm reference** — **RESOLVED.** `RWK_X_UP` reconciled 4734 → **X4654**
+   (the deep‑box front upright); overview's `ibc_rack` retired in favor of `cp.frame()`, so
+   overview / ibc-stack / walkway now clamp the arm to the same X4654 upright.

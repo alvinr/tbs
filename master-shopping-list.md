@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
 | 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,454 | $3,914 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $4,485 | $6,739 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $4,537 | $6,815 |
 | 6. Electrical — power, circuits, wiring | $2,110 | $2,660 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,385 | $2,070 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $855 | $1,430 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,210 | $2,980 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$21,465** | **~$32,206** |
+| **TOTAL (base build + 50-print run)** | **~$21,517** | **~$32,282** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -65,18 +65,16 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| 30×30mm AL solid bar, 150mm | 1 ea | Online Metals | spray | $8–$12 |
 | 3mm aluminum plate (1220 × 2,440mm) | 2 ea | Online Metals | panel | $360–$460 |
 | 6061-T6 AL plate 3/16" (5mm) | 1 ea | Online Metals | spray | $16–$28 |
 | 6061-T6 AL round tube 25mm OD × 2mm wall, 500mm | 1 ea | Online Metals | spray | $6 |
-| 6061-T6 AL SHS 1-1/2"×1-1/2"×1/8", 8 ft | 2 ea | Online Metals | spray | $36–$56 |
 | Aluminum angle 2"×2"×3/16" | 10 ea | Metal Supermarkets | film | $220 |
 | Aluminum face plate 340×240×3mm (flush power panel) | 1 ea | Online Metals | electrical | $18 |
 | Aluminum U-channel (per meter) | 40 m | Online Metals | panel | $120–$200 |
 | Corner bracket L-plate | 4 ea | Metal Supermarkets | film | $80 |
 | Cross-slide intermediate plate (Option A) | 4 ea | Metal Supermarkets | film | $60 |
 | Telescoping aluminum pool pole, 4–8 ft | 1 ea | Amazon | spray | $15 |
-| **aluminum subtotal** | | | | **$939–$1,155** |
+| **aluminum subtotal** | | | | **$895–$1,087** |
 
 ### bearings-motion
 
@@ -90,7 +88,7 @@ indicative low–high estimates — get quotes before ordering.
 | Handwheel 8" dia | 4 ea | Grainger | film | $140 |
 | Linear guide rail HGR20 | 4 ea | Automation Overstock | film | $180 |
 | Locking collar SS316 | 4 ea | McMaster-Carr | film | $48 |
-| Nylon skate wheel, 50mm × 20mm, 10mm bore | 4 ea | McMaster-Carr | spray | $12–$20 |
+| Nylon skate wheel, 32mm × 20mm, 8mm bore | 4 ea | McMaster-Carr | spray | $12–$20 |
 | Rail carriage HGH20CA | 8 ea | Automation Overstock | film | $144 |
 | Rod-end spherical bearing | 8 ea | McMaster-Carr | film | $176 |
 | SKF 6215-2RS1 sealed bearing | 2 ea | Bearing World | lightlock | $90–$130 |
@@ -240,7 +238,7 @@ indicative low–high estimates — get quotes before ordering.
 | Self-tapping SS screws (8-pack) | 4 ea | McMaster-Carr | spray | $5 |
 | Shurflo pump mounting bracket | 5 ea | Amazon | water | $50 |
 | Southco C2-33 cam compression latch | 4 ea | Southco | panel | $60–$100 |
-| SS beam clamp plates (top + bottom) + spacers (40mm) | 4 ea | McMaster-Carr | spray | $10 |
+| SS beam clamp plates (top + bottom) + spacers (25mm) | 4 ea | McMaster-Carr | spray | $10 |
 | SS/nylon retainer clips for 3/4" LDPE | 2 ea | Amazon | spray | $4 |
 | Stainless fasteners + nylon isolation washers | 1 lot | McMaster-Carr | lightlock | $30–$50 |
 | Top + bottom wall stays + 4-bolt anchor plates | 2 set | McMaster-Carr | swing | $90–$160 |
@@ -293,7 +291,7 @@ indicative low–high estimates — get quotes before ordering.
 | Banjo V050FP ball valve 1/2" FNPT | 1 ea | Amazon | water | $6–$10 |
 | Banjo V050FP ball valve 1/2" FNPT | 2 ea | Amazon | water | $12–$20 |
 | Banjo V100FP ball valve 1" FNPT | 6 ea | Amazon | water | $60–$96 |
-| Barbed feed fittings, through beam top | 7 ea | Amazon | spray | $10 |
+| Barbed tees, tube into the side poly manifold | 7 ea | Amazon | spray | $10 |
 | Bulkhead fitting 2" NPT (304 SS) | 3 ea | McMaster-Carr | water | $75–$120 |
 | Distribution manifold, 1/2" → 7 barb outlets | 1 ea | Amazon | spray | $12 |
 | Flat-fan irrigation spray nozzles, barbed | 26 ea | Amazon | spray | $30–$50 |
@@ -330,6 +328,7 @@ indicative low–high estimates — get quotes before ordering.
 |------|-----|----------|---------|-----------|
 | 12mm steel plate, 150 × 150 cut | 2 ea | Metal Supermarkets | ibc-frame | $10–$20 |
 | 25×25×3 mm steel SHS | 1 lot | Online Metals | shelf | $30 |
+| 304 SS RHS 40×25×3mm, 8 ft * | 2 ea | Online Metals | spray | $96–$144 |
 | 3mm steel plate/angle (~110mm × ~4 m) | 1 lot | Metal Supermarkets | door | $45–$80 |
 | 4mm folded plate | 4 ea | Local fab | ibc-frame | $30–$50 |
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | 4 ea | Metal Supermarkets | ibc-frame | $120–$180 |
@@ -355,7 +354,7 @@ indicative low–high estimates — get quotes before ordering.
 | Wall cleat (left corners) | 2 ea | Local fab | walkway | $20–$35 |
 | Wall mounting cleat + anchors | 1 lot | Local fab | shelf | $18 |
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swing | $180–$300 |
-| **steel-structural subtotal** | | | | **$2,174–$3,211** |
+| **steel-structural subtotal** | | | | **$2,270–$3,355** |
 
 ### substrate-fabric
 
@@ -414,7 +413,7 @@ indicative low–high estimates — get quotes before ordering.
 | Local fab | 16 | adhesives-finishes, fabrication-labor, steel-structural | $1,946–$3,156 |
 | Amazon | 78 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,209–$2,752 |
 | McMaster-Carr | 41 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets | $1,772–$2,715 |
-| Online Metals | 10 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,354–$1,885 |
+| Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,291–$1,618 |
 | McNichols | 3 | fasteners-hardware, plastics-sheet | $1,045–$1,365 |

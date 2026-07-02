@@ -17,8 +17,8 @@ The earlier design went ceiling-hung because there was thought to be no room for
 | Element | Z | Note |
 |---|---|---|
 | Tray rim | 50 | |
-| **Spray-bar gantry (top)** | **60** | rides on Ø50 wheels in the tray — *low* |
-| **Clear band under the grate** | **60 → 115 (55mm)** | newly free |
+| **Spray-bar gantry (top)** | **~54–85** | Ø32 wheels + 40×25 SS beam, rides the raised/sloped floor — *low* |
+| **Clear band under the grate** | **~30mm (worst, far-left)** | see [Walkway Routing Sections §H-H](walkway-routing-sections.md) |
 | Walkway grate | 115–130 | |
 | Film-frame bottom rail | 150 | deck clears it by 20mm |
 
@@ -28,12 +28,12 @@ Plus a **45mm gap (X4629–4674)** between the tray's right edge and the IBC fra
 
 *As-built (rev12): refined into a closed cantilever rectangle — see [Walkway Report §4](walkway-report.md). The support strategy below is what was built: cantilever off the IBC frame + wall anchors, no ceiling rods.*
 
-The IBC stacking frame only has uprights at the **corridor (Yd 1046 / 1266, at X4734)** — there is **nothing at the perimeter (Yd0 / 2362)** to bolt to. So the support is split:
+The IBC stacking frame only has uprights at the **corridor (Yd 1046 / 1266, at X4654)** — there is **nothing at the perimeter (Yd0 / 2362)** to bolt to. So the support is split:
 
-- **2 inner cantilever arms** — off the **IBC corridor uprights** (X4734). A U-clamp grips each upright with 2× M12; the arm (40×45 SHS) reaches ~405mm back to the deck's left edge (X4329).
+- **2 inner cantilever arms** — off the **IBC corridor uprights** (X4654, deep-box front upright). A U-clamp grips each upright with 2× M12; the arm (40×45 SHS) reaches ~405mm back to the deck's left edge (X4329).
 - **2 outer wall-mounted ledgers** — on the **near (Yd0) and far (Yd2362) container walls**, each **through-bolted** (interior + exterior plate, 2 bolts) at 2 X stations along the deck width. These carry the deck's ends, where the frame can't reach.
 - **2 longitudinal bearers** (Yd-running, at X4329 + X4629) ride the arms + ledgers; the grate spans the ≤1,046mm between supports.
-- All members sit at **Z70–115** — 10mm above the spray bar (Z60), below the film frame (Z150). **No ceiling rods. Nothing into the tray. Nothing in the optical band above the deck.**
+- All members sit at **Z70–115** — ~10mm above the spray-bar top at the (low-side) cantilever stations, below the film frame (Z150). **No ceiling rods. Nothing into the tray. Nothing in the optical band above the deck.**
 
 3D study model: `src/models/generate_right_cantilever_study.py` (scenes: Combined / **Anchors (frame + walls)** / Clearance / Labeled — the Anchors scene shows both the upright U-clamps and the wall ledgers).
 

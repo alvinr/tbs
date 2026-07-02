@@ -97,7 +97,7 @@ for the previously-specified 15mm galvanized steel grate. The GRP swap removes
 **~62 kg** from the dry build (4.14 m² of deck) and eliminates the steel grate's
 corrosion exposure in the wet photo-chemistry environment, at a cost premium of
 ~$720–$890 (see [cost breakdown §6a](project-cost-breakdown.md)). The 15mm depth
-is retained so the lowered deck and the 15mm spray-bar clearance under the left
+is retained so the lowered deck and the spray-bar carriage clearance under the left
 cantilever arms are unchanged. Confirm the final product's kg/m² against its
 datasheet; a 1"/25mm GRP would weigh more and force a deck-height redesign.
 
@@ -296,8 +296,9 @@ now 15mm molded GRP (fiberglass) at ≈11 kg/m² — is still the largest single
 in the walkway, but the GRP swap (from 15mm galvanized steel at ≈26 kg/m²) removed
 **~62 kg** and, more importantly, eliminated the steel grate's corrosion exposure
 in the wet photo-chemistry environment. The GRP is vinyl-ester resin with a grit
-top for slip resistance; the 15mm depth is kept so the lowered deck and spray-bar
-clearance are unchanged.
+top for slip resistance; the 15mm grate depth is kept so the lowered deck height is
+unchanged (the spray-bar carriage clearance beneath it is set by the Ø32-wheel /
+40×25-SS-beam shrink — see the [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) report).
 
 ---
 

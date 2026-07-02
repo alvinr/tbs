@@ -58,7 +58,7 @@ directly on the shims to flow the water into the bottom right for pickup by the 
 | Material | HDPE flat bar, 50mm wide |
 | Quantity | 5 strips running full tray depth |
 | Spacing | ~1,000mm apart across tray width (X direction) |
-| Profile | Tapered: 0mm at near rim (Yd=80, drain end) → 10mm at far rim (Yd=2,280) |
+| Profile | Tapered: ~20mm at near rim (Yd=80, drain end — raised so the 20mm sump well bottom rests on the container floor) → ~30mm at far rim (Yd=2,280) |
 | Attachment | Construction adhesive (Loctite PL Premium or equivalent) to container floor |
 | Function | Creates the Yd-axis slope; X-axis slope is formed into the tray panels during fabrication (pressed crown) |
 
@@ -102,7 +102,7 @@ fold the liner around the sump pickup tube.
 |------------|-----------|--------|
 | Film plane carriage blocks (Z=140mm at max tilt) | 90mm above tray rim (140 − 50) | Clear |
 | Film plane rails at X=<!-- BEGIN fact:film_plane_left_x_mm -->150<!-- END fact:film_plane_left_x_mm --> and X=<!-- BEGIN fact:film_plane_right_x_mm -->4,649<!-- END fact:film_plane_right_x_mm --> | 20mm gap between tray edge and rail | Clear |
-| Spray bar (rides on tray floor beneath walkway grating) | Top clamp plate at Z=63mm (nut ~66mm), grating bottom at Z=75mm | Clear |
+| Spray-bar carriage (rides on the raised/sloped tray floor beneath the walkway grating) | ~30mm at the worst (far-left) carriage — Ø32 wheels + 40×25 SS beam, top ~Z85 vs level grate bottom Z115 (see [Walkway Routing Sections](walkway-routing-sections.md) §H-H) | Clear |
 | IBCs (X=4,674+, right end zone) | Tray ends at X=4,629 — 45mm gap | Clear |
 | Pump manifold (Corridor Plumbing Panel at Yd=1,046) | Suction hose routes over near rim exterior | Clear |
 
@@ -127,11 +127,11 @@ toward the pinhole wall), flooding the print surface progressively.
 ![Sheet 1 — Gantry Elevation](assets/spray-bar-sheet1.png)
 
 The beam spans <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm between the inner edges of the left and right walkways, extending under the walkway grating at each end. At each end, a
-two-wheel carriage rolls on the processing tray floor beneath the grating. A 3/4" LDPE
-irrigation poly pipe inside the aluminum SHS bore serves as the spray pipe — the supply
-hose terminates at a distribution manifold by the ball joint, which feeds seven irrigation
-tubes that barb into the poly pipe at points along the beam; water then exits through
-twenty-six barbed flat-fan irrigation nozzles at 150mm pitch along the beam bottom face.
+two-wheel carriage rolls on the processing tray floor beneath the grating. A 3/4" LDPE irrigation poly pipe clipped to the beam's inboard side face serves as the
+spray manifold — the supply hose terminates at a distribution manifold by the ball joint,
+which feeds seven irrigation tubes that barb into the poly manifold along the beam; water
+then exits through twenty-six barbed flat-fan nozzles that side-tap the manifold and spray
+down-and-in, at 150mm pitch along the beam.
 
 ![Sheet 2 — Cross Section: Beam Assembly](assets/spray-bar-sheet2.png)
 
@@ -148,18 +148,18 @@ twenty-six barbed flat-fan irrigation nozzles at 150mm pitch along the beam bott
 
 | Component | Specification | Qty | Purpose |
 |-----------|--------------|-----|---------|
-| Beam | 6061-T6 AL SHS, 40×40×3mm, <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm long (two 8 ft lengths joined with splice sleeve) | 1 | Structural beam housing internal spray pipe |
-| Internal spray pipe | 3/4" LDPE irrigation poly pipe (OD 25mm, ID 19mm) | 1 | Water distribution inside beam bore |
-| Flat-fan spray nozzles | Barbed inlet, irrigation-type, 180° fan pattern | 26 | Spray distribution through beam bottom wall (150mm pitch) |
+| Beam | 304 SS RHS, 40×25×3mm (laid flat), <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm long (two 8 ft lengths butt-welded); ~15mm pre-camber | 1 | Low-profile structural beam; carries the side manifold |
+| Side spray manifold | 3/4" LDPE irrigation poly pipe (OD 25mm, ID 19mm) | 1 | Water distribution; clipped to the beam's inboard side face |
+| Flat-fan spray nozzles | Barbed saddle-tee inlet, irrigation-type, 180° fan pattern | 26 | Side-tapped into the manifold, spray down-and-in (150mm pitch) |
 | Distribution manifold | 1/2" inlet → 7 barbed outlets, mounted at the ball joint | 1 | Splits the supply hose to the 7 feed tubes |
 | Irrigation feed tubes | 1/4" poly/vinyl tube, manifold to beam feed points | 7 | Distribute water along the beam (~7m total) |
-| Barbed feed fittings | Barbed insert through beam top wall into poly pipe | 7 | Feed points (~550mm pitch) into the poly pipe |
+| Barbed feed fittings | Barbed tee, feed tube into the side manifold | 7 | Feed points (~550mm pitch) into the manifold |
 | Retainer clips | SS or nylon, for 3/4" LDPE fold-back closure | 2 | Seal both ends of poly pipe (fold-back termination) |
-| [Nylon skate wheels](https://www.mcmaster.com/products/rollers/skate-wheels-1~/) | 50mm OD × 20mm wide, 10mm bore, flat tread | 4 | Roll on tray floor beneath walkway grating (2 per carriage, 200mm Yd spacing) |
+| [Nylon skate wheels](https://www.mcmaster.com/products/rollers/skate-wheels-1~/) | 32mm OD × 20mm wide, 8mm bore, flat tread | 4 | Low-profile, roll on tray floor beneath walkway grating (2 per carriage, 200mm Yd spacing) |
 | [Axle pins (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | 10mm × 60mm 304 SS axle pin, flat head | 4 (1 pack) | Wheel spindles |
 | [Axle retention saddle clamps (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | 304 SS, curved conduit-style saddle, 10mm, two bolt holes | 8 | Retain the wheel axles — bolted to the carriage plate underside |
 | Carriage plates | 6061-T6 AL plate 5mm, wings extend in to meet beam faces | 2 | Carry wheels; captured between beam clamp plates |
-| Beam clamp plates | SS, top + bottom plate (~3mm) sandwiching the 40mm SHS | 4 (2 per carriage) | Clamp beam to carriage plate, bolted vertically |
+| Beam clamp plates | SS, top + bottom plate (~3mm) sandwiching the 25mm RHS; countersunk underside bolts | 4 (2 per carriage) | Clamp beam to carriage plate, bolted vertically |
 | Spacer blocks | 6061-T6 AL, between top & bottom clamp plates, one each side of beam | 4 | Set clamp gap to beam height so bolts grip the beam rather than bend the plates |
 | Ball joint | Ø20mm SS ball, zinc socket, M12 stud, 50mm flange base | 1 | Multi-axis arm articulation on beam top face |
 | Self-tapping screws | SS thread-forming, into 3mm SHS top wall (no internal access for nuts) | 4 | Fasten the ball-joint flange to the beam |
@@ -171,22 +171,24 @@ twenty-six barbed flat-fan irrigation nozzles at 150mm pitch along the beam bott
 
 ### 3.3 Beam / Spray Pipe
 
-The structural beam houses a 3/4" LDPE irrigation poly pipe for water distribution. A single 6061-T6 aluminum
-SHS (40×40×3mm, imperial 1-1/2" × 1-1/2" × 1/8") spans <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm between the inner
+The structural beam carries a 3/4" LDPE irrigation poly manifold clipped to its inboard side face. A 304 SS
+RHS (40×25×3mm, laid flat) spans <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm between the inner
 edges of the left and right walkways.
 
 **Beam properties:**
 
 | Property | Value |
 |----------|-------|
-| Material | 6061-T6 aluminum alloy |
-| Section | 40×40×3mm SHS (1-1/2" × 1-1/2" × 1/8") |
-| Internal bore | 34×34mm |
+| Material | 304 stainless steel |
+| Section | 40×25×3mm RHS, laid flat (low profile for grate clearance) |
+| Internal bore | 34×19mm |
 | Span | <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm (X=470 to X=4,329) |
-| Second moment of area (I) | 101,972mm⁴ |
-| Cross-sectional area | 444mm² |
-| Linear mass (beam only) | 1.20 kg/m |
-| Beam mass (<!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm) | 4.63 kg |
+| Second moment of area (I) | 32,650mm⁴ |
+| Cross-sectional area | 354mm² |
+| Linear mass (beam only) | 2.83 kg/m |
+| Beam mass (<!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm) | 10.9 kg |
+| Bending stiffness (EI) | 6.30×10⁹ N·mm² (≈ the former 40×40 alu beam's 7.04×10⁹ — SS modulus offsets the shallower depth) |
+| Pre-camber | ~15mm up at mid-span (offsets the self-weight sag, L/257, so the beam runs flat under load) |
 
 **Sourcing:** Standard 8 ft (2,438mm) lengths are widely stocked at Home Depot, Online
 Metals, and metals suppliers. Two 8 ft lengths are required; see §3.8 for splice joint.
@@ -199,24 +201,23 @@ Metals, and metals suppliers. Two 8 ft lengths are required; see §3.8 for splic
 | Number of nozzles | 26 |
 | Nozzle spacing | 150mm center-to-center |
 | Spray pattern | 180° flat fan |
-| Pipe OD / ID | 25mm / 19mm (3/4" LDPE) |
-| Bore clearance | 4.5mm per side (pipe loose in 34mm bore) |
+| Manifold OD / ID | 25mm / 19mm (3/4" LDPE) |
+| Manifold mounting | Clipped to the beam's inboard side face (cushioned pipe clips + the nozzle saddle-tees) |
 
-The twenty-six nozzle fittings (bottom) plus the seven feed fittings (top) pass through
-drilled holes in the beam wall and grip the LDPE pipe by their barb ridges. These
-thirty-three through-wall fittings act as locating pins, preventing the poly pipe from
-sliding or rotating inside the oversized bore — no additional pipe restraint is needed.
+The twenty-six nozzle saddle-tees plus the seven feed tees tap directly into the side
+manifold and grip it by their barb ridges. Because the manifold is external, no beam-wall
+drilling is needed; the tees plus cushioned pipe clips locate the manifold along the beam.
 
 **Beam ends (open):**
 
-The aluminum SHS ends are left open — no end caps or welding. The internal 3/4" LDPE
-poly pipe terminates at each beam end with a standard fold-back closure: the pipe
+The SS RHS ends are simply capped (welded or plug). The side 3/4" LDPE manifold
+terminates just outside each beam end with a standard fold-back closure: the pipe
 folds 180° back on itself and is secured with a stainless steel or nylon retainer
 clip (see Sheet 4, Detail A). The fold-back and retainer clip provide a watertight
-seal; the aluminum SHS serves only as structural housing.
+seal; the SS beam is purely structural.
 
-- **Feed points (7, ~550mm pitch):** Barbed feed fittings installed through the beam
-  top wall — each connects an irrigation tube from the ball-joint manifold to the poly
+- **Feed points (7, ~550mm pitch):** Barbed feed tees installed into the side manifold
+  — each connects an irrigation tube from the ball-joint manifold to the poly
   pipe bore, distributing the supply evenly along the pipe.
 - **Both ends (X=470 and X=4,329):** LDPE fold-back with retainer clip — fully sealed.
 
@@ -330,7 +331,7 @@ carriage plate underside. The saddle cradles the 10mm axle pin with 1mm clearanc
 
 | Step | Operation |
 |------|-----------|
-| 1 | Place nylon wheel (50mm × 20mm, 10mm bore) in position under the carriage plate |
+| 1 | Place nylon wheel (32mm × 20mm, 8mm bore) in position under the carriage plate |
 | 2 | Insert 10mm SS axle pin through wheel bore |
 | 3 | Position the saddle clamp over the axle, feet against the plate underside |
 | 4 | Insert 2× M5 bolts up through the saddle feet and carriage plate; secure with nyloc nuts on top |
@@ -373,59 +374,62 @@ the top plate, spacer, carriage plate wing, and bottom plate, with nuts top and 
 
 | Component | Linear mass (kg/m) | Linear weight (N/m) |
 |-----------|-------------------|---------------------|
-| Beam (6061-T6 AL, 40×40×3mm SHS) | 1.199 | 11.76 |
-| LDPE pipe (OD 25mm, ID 19mm, wall 3mm) | 0.193 | 1.89 |
-| Water in pipe (19mm ID bore) | 0.283 | 2.78 |
-| **Total UDL** | **1.675** | **16.43** |
+| Beam (304 SS, 40×25×3mm RHS) | 2.83 | 27.76 |
+| LDPE side manifold (OD 25mm, ID 19mm, wall 3mm) | 0.193 | 1.89 |
+| Water in manifold (19mm ID bore) | 0.283 | 2.78 |
+| **Total UDL** | **3.306** | **32.43** |
 
-Water volume in pipe: π × 9.5² × 3,859 = 1.09 L (1.09 kg). The water is contained
-within the LDPE pipe bore, not the full SHS bore.
+Water volume in the manifold: π × 9.5² × 3,859 = 1.09 L (1.09 kg), carried in the LDPE
+manifold, not the beam.
 
-**Deflection — δ = 5wL⁴ / 384EI, E = 68,900 MPa:**
+**Deflection — δ = 5wL⁴ / 384EI, E = 193,000 MPa (304 SS), I = 32,650mm⁴:**
 
 | Condition | w (N/m) | δ center (mm) | Span ratio |
 |-----------|---------|---------------|------------|
-| Dry (beam only) | 11.76 | 4.8 | L/799 |
-| Dry (beam + pipe) | 13.65 | 5.6 | L/689 |
-| Wet (beam + pipe + water) | 16.43 | 6.8 | L/568 |
+| Dry (beam only) | 27.76 | 12.7 | L/304 |
+| Dry (beam + manifold) | 29.66 | 13.6 | L/284 |
+| Wet (beam + manifold + water) | 32.43 | 14.9 | L/259 |
 
-The L/568 span ratio under full water load is acceptable for a spray bar application —
-no foot traffic, precision loads, or dynamic impact. The deflection is entirely elastic
-and fully recoverable. With 18mm beam-to-floor clearance at the supports, midspan
-clearance under full load is approximately 11mm.
+The 40×25 SS section has almost the same **bending stiffness** as the former 40×40 alu
+beam (EI ≈ 6.30 vs 7.04×10⁹ N·mm²), but SS's higher density roughly **doubles the
+self-weight**, so the raw wet deflection is ~15mm (L/259) rather than the former ~7mm.
+This is a beam-flatness matter only — it does not affect the **carriage-to-grate
+clearance** (deflection is zero at the supports, where the ~30mm clearance is measured),
+and the sagged midspan beam bottom still clears the thin wash film.
 
-**Pre-camber recommendation:** Apply 3mm upward pre-camber during fabrication to offset
-roughly half the wet deflection. Method: introduce the camber at the midspan splice
-joint (§3.8) — shim the sleeve 3mm off-axis during set-screw tightening so the two SHS
-halves meet at a shallow upward angle.
+**Pre-camber (required):** Fabricate the beam with **~15mm upward pre-camber** at midspan
+so it deflects to flat under full water load. Method: hold the two halves at a shallow
+upward angle in a jig while butt-welding the midspan joint (§3.8). With ~9mm beam-to-floor
+clearance at the supports and the camber applied, the beam runs level under load.
 
 **Weight summary:**
 
 | Component | Mass (kg) |
 |-----------|-----------|
-| Beam (40×40×3mm × <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm) | 4.63 |
-| LDPE pipe (OD 25mm × <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm) | 0.74 |
-| Water in pipe | 1.09 |
+| Beam (40×25×3mm 304 SS × <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm) | 10.9 |
+| LDPE manifold (OD 25mm × <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm) | 0.74 |
+| Water in manifold | 1.09 |
 | Carriage plates (2×) | 0.35 |
-| Wheel assemblies (4× wheel + axle + 8 saddle clamps) | 0.50 |
+| Wheel assemblies (4× Ø32 wheel + axle + 8 saddle clamps) | 0.45 |
 | Nozzles (26×) + feed manifold/tubes/fittings | 0.50 |
 | Hardware (bolts, clips, clamp plates) | 0.35 |
-| **Dry total** | **~7.1 kg** |
-| **Wet total (operating)** | **~8.2 kg** |
+| **Dry total** | **~13.3 kg** |
+| **Wet total (operating)** | **~14.4 kg** |
 
-Per wheel load (wet): 8.2 / 4 = 2.1 kg — well within any small nylon wheel's rating.
+Per wheel load (wet): 14.4 / 4 = 3.6 kg — well within any small nylon wheel's rating.
+The +6.3 kg beam-mass increase (vs the former alu beam) is carried into the walkway/CG
+budget in [Weight Distribution](weight-distribution-report.md).
 
 ### 3.8 Beam Splice Joint
 
-Two 8 ft (2,438mm) SHS lengths are joined with an internal sleeve splice at midspan:
+Two 8 ft (2,438mm) SS RHS lengths are **butt-welded** at midspan (304 SS is readily TIG-welded):
 
-- **Sleeve:** 150mm of 30×30mm solid aluminum bar stock, inserted into the 34×34mm bore (2mm clearance per side)
-- **Sealant:** Marine-grade RTV silicone on sleeve exterior — watertight, allows future disassembly with heat
-- **Fastening:** 2× M5 set screws through SHS wall on each side (4 total), engaging dimples in sleeve
-- **Location:** Midspan (1,930mm from each end). The solid bar has higher I than the hollow beam wall, so the splice is not the weak point.
+- **Joint:** square butt weld, full-penetration, ground flush; the ~15mm camber is set in the welding jig
+- **Finish:** passivate the weld zone (citric or nitric) to restore corrosion resistance in the wash environment
+- **Location:** Midspan (1,930mm from each end), the point of maximum moment — a full-penetration weld develops the full section, so the splice is not the weak point.
 
 **Alternative:** Source a single 16 ft or 20 ft length by special order to eliminate
-the splice entirely.
+the splice (and set the camber over the full length).
 
 ### 3.9 Flow Analysis
 
@@ -548,29 +552,28 @@ tray drainage plan and sump cross-section).
 <!-- BEGIN parts:spray -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| 6061-T6 AL SHS 1-1/2"×1-1/2"×1/8", 8 ft | 40×40×3mm, joined with internal sleeve | 2 ea | Online Metals | $36–$56 |
+| 304 SS RHS 40×25×3mm, 8 ft * | 40×25×3mm rectangular tube, laid flat (low profile); 2 sticks butt-welded to span | 2 ea | Online Metals | $96–$144 |
 | 6061-T6 AL plate 3/16" (5mm) | Carriage plates + spacer blocks (~300 × 500mm sheet) | 1 ea | Online Metals | $16–$28 |
-| 30×30mm AL solid bar, 150mm | Internal splice sleeve | 1 ea | Online Metals | $8–$12 |
-| 3/4" LDPE irrigation poly pipe, 15 ft | Internal spray pipe (OD 25mm, ID 19mm) | 1 ea | Amazon | $10 |
-| Flat-fan irrigation spray nozzles, barbed | 180° fan pattern, barbed inlet | 26 ea | Amazon | $30–$50 |
+| 3/4" LDPE irrigation poly pipe, 15 ft | Side-mounted spray manifold, clipped to the beam's inboard face (OD 25mm, ID 19mm) | 1 ea | Amazon | $10 |
+| Flat-fan irrigation spray nozzles, barbed | 180° fan pattern; side-tapped into the poly manifold, spray down-and-in | 26 ea | Amazon | $30–$50 |
 | Distribution manifold, 1/2" → 7 barb outlets | Mounted at ball joint, splits feed to tubes | 1 ea | Amazon | $12 |
 | 1/4" irrigation poly tube | Manifold to beam feed points (~7m total) | 1 ea | Amazon | $6 |
-| Barbed feed fittings, through beam top | Tube to poly pipe, 7 feed points | 7 ea | Amazon | $10 |
+| Barbed tees, tube into the side poly manifold | Feed tube to the side poly manifold, 7 feed points | 7 ea | Amazon | $10 |
 | SS/nylon retainer clips for 3/4" LDPE | Fold-back end closures | 2 ea | Amazon | $4 |
-| [Nylon skate wheel, 50mm × 20mm, 10mm bore](https://www.mcmaster.com/products/rollers/skate-wheels-1~/) | Flat tread, ≥25 kg rated (2 per carriage) | 4 ea | McMaster-Carr | $12–$20 |
+| [Nylon skate wheel, 32mm × 20mm, 8mm bore](https://www.mcmaster.com/products/rollers/skate-wheels-1~/) | Flat tread, ≥25 kg rated (2 per carriage) — low-profile for grate clearance | 4 ea | McMaster-Carr | $12–$20 |
 | 1/2" barb × 1/2" hose barb, brass | Flex hose to manifold inlet | 1 ea | Amazon | $4 |
 | Telescoping aluminum pool pole, 4–8 ft | Standard pool skimmer handle | 1 ea | Amazon | $15 |
 | 1/2" reinforced braided PVC hose, 15 ft | BV-02 to beam feed (4 m coiled) | 1 ea | Amazon | $15 |
 | [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | Wheel axle pins | 1 pack | Amazon | $5 |
 | [304 SS saddle clamp, 10mm (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | Axle retention, bolted to plate underside | 8 ea | Amazon | $10 |
-| M6×20 SS bolts + nyloc nuts | Carriage plate, beam clamp, saddle, splice fasteners | 16 ea | McMaster-Carr | $7 |
+| M6×20 SS bolts + nyloc nuts | Carriage plate, beam clamp, saddle fasteners | 16 ea | McMaster-Carr | $7 |
 | Self-tapping SS screws (8-pack) | Ball-joint flange to beam top wall | 4 ea | McMaster-Carr | $5 |
 | Ø20mm ball joint, zinc socket, M12 stud | Multi-axis arm articulation | 1 ea | Amazon | $12 |
-| SS beam clamp plates (top + bottom) + spacers (40mm) | Beam to carriage plate (sandwich, bolted) | 4 ea | McMaster-Carr | $10 |
+| SS beam clamp plates (top + bottom) + spacers (25mm) | Beam to carriage plate (sandwich, countersunk underside bolts) | 4 ea | McMaster-Carr | $10 |
 | 6061-T6 AL round tube 25mm OD × 2mm wall, 500mm | Arm tube | 1 ea | Online Metals | $6 |
 | M6 SS hex bolt + nut | Pinch bolt for arm tube | 1 ea | McMaster-Carr | $1 |
 | Nylon zip ties, 200mm | Hose to arm tube | 6 ea | Amazon | $1 |
-| **Spray total** | | | | **$235–$299** |
+| **Spray total** | | | | **$287–$375** |
 <!-- END parts:spray -->
 
 ### 6.3 Combined Total
@@ -578,8 +581,8 @@ tray drainage plan and sump cross-section).
 | Subsystem | Cost Range |
 |-----------|-----------|
 | Processing tray | <!-- BEGIN costing:tray-low -->$1,300<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,015<!-- END costing:tray-high --> |
-| Spray bar assembly | <!-- BEGIN costing:spray-low -->$235<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$299<!-- END costing:spray-high --> |
-| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,535<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,314<!-- END costing:tray-spray-total-high -->** |
+| Spray bar assembly | <!-- BEGIN costing:spray-low -->$287<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$375<!-- END costing:spray-high --> |
+| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,587<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,390<!-- END costing:tray-spray-total-high -->** |
 
 ---
 
@@ -599,7 +602,7 @@ tray drainage plan and sump cross-section).
 ## 8. Source References
 
 - [Shurflo 2088 Series datasheet](https://www.shurflo.com/products/2088-series) — SHURflo / Pentair. Performance curves, priming capability, electrical specifications.
-- [6061-T6 aluminum SHS](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-tube) — Metals Depot / Online Metals catalog. Mechanical properties per [ASTM B221](https://www.astm.org/b0221-21.html).
+- [304 stainless steel rectangular tube](https://www.onlinemetals.com/en/buy/stainless-steel/stainless-steel-rectangle-tube-304) — Online Metals / Metal Supermarkets catalog (spray-bar beam). Mechanical properties per [ASTM A554](https://www.astm.org/a0554-21.html). Aluminum plate/pole per [6061-T6](https://www.onlinemetals.com/en/buy/aluminum) ([ASTM B221](https://www.astm.org/b0221-21.html)).
 - [304 stainless steel sheet](https://www.onlinemetals.com/en/buy/stainless-steel/304-stainless-steel-sheet) — AK Steel Product Data Bulletin. Chemical resistance, mechanical properties per [ASTM A240](https://www.astm.org/a0240_a0240m-22a.html).
 - [HDPE chemical resistance](https://www.cpchem.com/what-we-do/solutions/polyethylene/polyethylene-resources) — Chevron Phillips Chemical Company. Flat bar available from [McMaster-Carr (catalog #8619K)](https://www.mcmaster.com/8619K).
 - **Cyanotype chemistry** — Ware, Mike. [*Cyanotype: The History, Science & Art of Photographic Printing in Prussian Blue*](https://www.mikeware.co.uk/mikeware/Cyanotype_Monograph.html) (2014). Wash water composition and pH requirements.

@@ -119,7 +119,7 @@ only restrains them for transport (front retaining bars + D-ring lashing).
 |------|--------------|
 | Frame material | 50×50×3mm RHS mild steel |
 | Frame type | RESTRAINT-ONLY single **front portal** — the 1,000L caged totes direct-stack cage-on-cage (no load-bearing deck), so the frame only restrains them |
-| Uprights | 2 full-height corridor uprights (Yd 1046/1266) at the IBC front (X≈4734) on 150×150×12mm floor flange feet (4× M12 each); define the 270mm plumbing corridor |
+| Uprights | 2 full-height corridor uprights (Yd 1046/1266) at the IBC front (X≈4654, deep-box front upright) on 150×150×12mm floor flange feet (4× M12 each); define the 270mm plumbing corridor |
 | Front retaining bars | 4× 50×20×3 RHS at the IBC front (Z560 + Z1760), seated in the 25mm gap to the film rail — stop the totes sliding out the front; each bar's wall end drops into a Simpson-style joist hanger (×4) |
 | Wall attachment | each joist hanger is through-bolted (4× M12) to a 100×135×8mm **exterior** backing plate (×4, hex heads outside) that spreads the load into the thin corrugated side wall |
 | Lashing points | 25mm D-ring holders on the front bars (1,100kg WLL); ratchet straps pass over each stack and tie down to them |

@@ -27,7 +27,15 @@ from tbs_drawing import draw_dim_h, draw_dim_v, leader
 from tbs_constants import (
     IBC_COL_X, IBC_H_1000,
     WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W,
+    WALKWAY_LEFT_X, WALKWAY_W,
     PROC_TRAY_X_R, PROC_TRAY_X_L, PROC_TRAY_RIM,
+    PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_D,
+    PROC_TRAY_SUMP_Z, PROC_TRAY_SUMP_W, PROC_TRAY_DRAIN_X,
+    PROC_TRAY_FLOOR_Z_LOW, PROC_TRAY_FLOOR_Z_HIGH, PROC_TRAY_SLOPE,
+    tray_floor_z, tray_rim_top_z,
+    SPRAY_BAR_WHEEL_DIA, SPRAY_BAR_BEAM_W, SPRAY_BAR_BEAM_H,
+    SPRAY_BAR_BEAM_BOT_RISE, SPRAY_BAR_BEAM_TOP_RISE,
+    spray_beam_top_z,
     DIAGRAMS_DIR,
 )
 
@@ -56,7 +64,7 @@ GAPX    = PROC_TRAY_X_R + 12                  # 4641 — turn-up in the tray↔I
 # ── Cantilever-zone members (diagram-of-record detail dims, verified against live water.skp) ──
 # water.skp restraint = cp.frame() DEEP 4-leg box: FRONT upright X4654, front foot X4604-4754
 # (the foot's left edge sits 25mm UNDER the tray right edge X4629).
-ARM_X0, ARM_X1, ARM_ZB, ARM_ZT = WALKWAY_RIGHT_X, 4734, 70, 115   # RWK cantilever arm (reaches X4734)
+ARM_X0, ARM_X1, ARM_ZB, ARM_ZT = WALKWAY_RIGHT_X, 4654, 70, 115   # RWK cantilever arm — clamps to the deep-box upright X4654 (reconciled from 4734)
 UP_X0, UP_X1 = 4654, 4704            # corridor deep-box FRONT upright (50×50 RHS)
 FOOT_X0, FOOT_X1, FOOT_ZT = 4604, 4754, 12                        # front floor foot 150×150×12 — EXTENDS under the tray
 M12_XS = [4629, 4729]                # 4× M12 on 100 PCD (cx 4679 ± 50)
@@ -254,10 +262,12 @@ def sheet2():
                            (10, C_BROWN, "IBC-3 → P-02 brown return")]:
         ax.add_patch(Circle((GAPX, zz), OD / 2, facecolor=col, edgecolor=C_OUT, lw=0.8, zorder=11))
         ax.add_patch(Circle((GAPX, zz), OD * 0.21, facecolor="white", edgecolor=col, lw=0.5, zorder=12))
-    leader(ax, GAPX, 60, GAPX + 78, 210, "ACC-01 → spray-bar\nblue supply (crosses in Yd)",
-           color=C_BLUE, fs=5.8, ha="left", va="center", arrow_style="-|>", font=FONT)
-    leader(ax, GAPX, 10, GAPX + 78, 120, "IBC-3 → P-02 brown\nreturn (crosses in Yd)",
-           color=C_BROWN, fs=5.8, ha="left", va="center", arrow_style="-|>", font=FONT)
+    # Labels pulled LEFT into the clear zone (never over the IBC-3 tote — the
+    # crossers only touch the gap; a rightward leader falsely reads as a pipe INTO the tote).
+    leader(ax, GAPX, 60, GAPX - 120, 250, "ACC-01 → spray-bar\nblue supply (crosses in Yd)",
+           color=C_BLUE, fs=5.8, ha="right", va="center", arrow_style="-|>", font=FONT)
+    leader(ax, GAPX, 10, GAPX - 120, 150, "IBC-3 → P-02 brown\nreturn (crosses in Yd)",
+           color=C_BROWN, fs=5.8, ha="right", va="center", arrow_style="-|>", font=FONT)
 
     draw_dim_v(ax, X_HI - 40, 0, WALKWAY_H, f"deck\nZ{WALKWAY_H}", offset=5, fs=5.6, font=FONT)
     draw_dim_h(ax, TXR, IBC_COL_X, -46, f"{IBC_COL_X - TXR}mm\ngap", offset=4, fs=5.4, above=False, font=FONT)
@@ -349,7 +359,7 @@ def sheet3():
         _rect(ax, bx, 80, BEAM_W, DECK_ZB - 80, C_STEEL, ec="#3A3A40", lw=1.0, z0=6, hatch="\\\\\\\\")
     _rect(ax, WALKWAY_RIGHT_X, DECK_ZB, WALKWAY_RIGHT_W, WALKWAY_GRATE_T, C_GRATE, lw=1.0, z0=7)  # deck
     leader(ax, 4500, ARM_ZB, 4358, -58,
-           "walkway support: cantilever arm (Z70–115)\n+ long bearers (Z80–115, hatched)\n[arm reaches X4734 — NB vs upright X4654]",
+           "walkway support: cantilever arm (Z70–115)\n+ long bearers (Z80–115, hatched)\n[arm clamps to the deep-box upright X4654]",
            color="#3A3A40", fs=5.2, ha="left", va="top", arrow_style="-|>", font=FONT)
     leader(ax, WALKWAY_RIGHT_X + 90, WALKWAY_H, 4358, 260, "right walkway grate deck (Z115–130)",
            color=C_OUT, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
@@ -421,9 +431,9 @@ def sheet3():
         "   ≈1.5mm (rim) / ≈2.5mm (upright), a pinch the plan views don't show.\n"
         "4. The corridor lanes (blue trunk, grey waste, blue recycle) run in X\n"
         "   past the upright (Yd1101–1241) — in-plane in E-E.\n"
-        "5. FLAGS to verify in 3D: (a) front foot / M12 vs tray basin at\n"
-        "   X4604–4629; (b) RWK cantilever-arm end (X4734) vs upright (X4654);\n"
-        "   (c) blue TAP-01 crosser (Z60, top Z70.5) GRAZES the arm soffit (Z70)."
+        "5. STATUS: (a) front foot / M12 now CLEARS under the raised tray pan;\n"
+        "   (b) RWK cantilever arm reconciled to the deep-box upright (X4654);\n"
+        "   (c) blue TAP-01 crosser (Z60, top Z70.5) still GRAZES the arm soffit (Z70) — OPEN."
     )
     ax.text(X_LO + 8, Z_HI - 60, notes, fontsize=6.2, ha="left", va="top", color=C_OUT,
             family="monospace", zorder=15,
@@ -576,12 +586,108 @@ def sheet5():
     print(f"Walkway section F-F (far cantilever) → {out}")
 
 
+def sheet6():
+    """SECTION G-G / H-H — tray drainage slope, welded-pan support, and the
+    spray-carriage clearance under the walkway on the raised/sloped floor."""
+    EXAG = 6.0                                    # vertical exaggeration (slopes ~1:200)
+    def zx(z): return z * EXAG
+
+    fig = plt.figure(figsize=(13.5, 12.0))
+    fig.patch.set_facecolor(BG)
+
+    # ── Panel A — LONGITUDINAL Yd–Z along the sump column (slope + support) ──
+    axA = fig.add_axes([0.07, 0.55, 0.90, 0.40]); axA.set_facecolor(BG); axA.axis("off")
+    YL, YH = -80, 2380
+    axA.set_xlim(YL, YH); axA.set_ylim(zx(-30), zx(122))
+    Xd = PROC_TRAY_DRAIN_X
+    axA.text((YL + YH) / 2, zx(120), "SECTION G-G · TRAY DRAINAGE SLOPE & WELDED-PAN SUPPORT",
+             ha="center", va="top", fontsize=10.5, fontweight="bold", color=C_OUT, **FONT)
+    axA.text((YL + YH) / 2, zx(110),
+             f"longitudinal Yd–Z at the sump column (X≈{Xd}) · vertical exaggeration {EXAG:.0f}× · dual-axis 1:200 fall",
+             ha="center", va="top", fontsize=7, color=C_DIM, **FONT)
+    axA.add_patch(Rectangle((YL, zx(-25)), YH - YL, zx(25), fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="////", zorder=2))
+    axA.text(YL + 20, zx(-14), "container floor (Z0)", fontsize=6, ha="left", va="center", color=C_DIM, **FONT)
+    yds = [PROC_TRAY_YD_NEAR + i * PROC_TRAY_D / 40 for i in range(41)]
+    ptop = [tray_floor_z(Xd, y) for y in yds]
+    pbot = [t - 2 for t in ptop]
+    axA.fill_between(yds, [zx(0)] * len(yds), [zx(b) for b in pbot], fc="#E6E0D2", ec=C_OUT, lw=0.4, hatch="xx", zorder=3)
+    axA.fill_between(yds, [zx(b) for b in pbot], [zx(t) for t in ptop], fc=C_TRAY, ec=C_OUT, lw=0.6, zorder=4)
+    axA.fill_between(yds, [zx(t) for t in ptop], [zx(t + 4) for t in ptop], fc="#BFD8EA", ec="none", alpha=0.6, zorder=4.1)
+    axA.add_patch(Rectangle((PROC_TRAY_YD_NEAR - 6, zx(ptop[0])), 6, zx(PROC_TRAY_RIM), fc=C_TRAY, ec=C_OUT, lw=1.0, zorder=5))
+    axA.add_patch(Rectangle((PROC_TRAY_YD_FAR, zx(ptop[-1])), 6, zx(PROC_TRAY_RIM), fc=C_TRAY, ec=C_OUT, lw=1.0, zorder=5))
+    axA.add_patch(Rectangle((PROC_TRAY_YD_NEAR, zx(0)), PROC_TRAY_SUMP_W, zx(PROC_TRAY_SUMP_Z),
+                            fc="#BFD8EA", ec=C_OUT, lw=1.0, zorder=6))
+    leader(axA, PROC_TRAY_YD_NEAR + PROC_TRAY_SUMP_W / 2, zx(4), PROC_TRAY_YD_NEAR + 340, zx(46),
+           f"corner SUMP (low point) — well {PROC_TRAY_SUMP_Z}mm deep,\nbottom rests ON the container floor (Z0)",
+           color="#2A6", fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
+    leader(axA, 1500, zx(ptop[26] - 1), 1500, zx(ptop[26] - 22),
+           "tapered HDPE shim ramp\n(carries the welded pan)", color=C_DIM, fs=6, ha="center", va="top",
+           arrow_style="-|>", font=FONT)
+    leader(axA, 1900, zx(ptop[33] + 2), 1900, zx(ptop[33] + 34),
+           f"welded 304-SS pan floor rises\nZ{PROC_TRAY_FLOOR_Z_LOW:.0f} (near) → Z{tray_floor_z(Xd, PROC_TRAY_YD_FAR):.0f} (far)",
+           color="#3C5A6E", fs=6, ha="center", va="bottom", arrow_style="-|>", font=FONT)
+
+    # ── Panel B — CROSS X–Z at the FAR rim: worst spray-carriage clearance ──
+    axB = fig.add_axes([0.07, 0.06, 0.90, 0.42]); axB.set_facecolor(BG); axB.axis("off")
+    XL, XH = 40, 4780
+    axB.set_xlim(XL, XH); axB.set_ylim(zx(-30), zx(155))
+    ydc = PROC_TRAY_YD_FAR
+    axB.text((XL + XH) / 2, zx(153), "SECTION H-H · SPRAY-CARRIAGE CLEARANCE AT THE FAR RIM (X–Z)",
+             ha="center", va="top", fontsize=10.5, fontweight="bold", color=C_OUT, **FONT)
+    axB.text((XL + XH) / 2, zx(143),
+             f"far rim (Yd{ydc}) — the high corner of the dual slope · vertical exaggeration {EXAG:.0f}×",
+             ha="center", va="top", fontsize=7, color=C_DIM, **FONT)
+    axB.add_patch(Rectangle((XL, zx(-25)), XH - XL, zx(25), fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="////", zorder=2))
+    xs = [PROC_TRAY_X_L + i * (PROC_TRAY_X_R - PROC_TRAY_X_L) / 60 for i in range(61)]
+    ttop = [tray_floor_z(x, ydc) for x in xs]
+    tbot = [t - 2 for t in ttop]
+    axB.fill_between(xs, [zx(0)] * len(xs), [zx(b) for b in tbot], fc="#E6E0D2", ec=C_OUT, lw=0.4, hatch="xx", zorder=3)
+    axB.fill_between(xs, [zx(b) for b in tbot], [zx(t) for t in ttop], fc=C_TRAY, ec=C_OUT, lw=0.6, zorder=4)
+    axB.add_patch(Rectangle((PROC_TRAY_X_L, zx(ttop[0])), 6, zx(PROC_TRAY_RIM), fc=C_TRAY, ec=C_OUT, lw=1.0, zorder=5))
+    axB.add_patch(Rectangle((PROC_TRAY_X_R - 6, zx(ttop[-1])), 6, zx(PROC_TRAY_RIM), fc=C_TRAY, ec=C_OUT, lw=1.0, zorder=5))
+    # level walkway grate decks at both tray edges
+    for (wx0, ww) in [(WALKWAY_LEFT_X, WALKWAY_W), (WALKWAY_RIGHT_X, WALKWAY_RIGHT_W)]:
+        axB.add_patch(Rectangle((wx0, zx(DECK_ZB)), ww, zx(WALKWAY_GRATE_T), fc=C_GRATE, ec=C_OUT, lw=0.8, zorder=7))
+    axB.text(WALKWAY_LEFT_X + WALKWAY_W / 2, zx(DECK_ZB + WALKWAY_GRATE_T + 3), "LEFT WALKWAY GRATE (LEVEL Z%d)" % DECK_ZB,
+             fontsize=5.6, ha="center", va="bottom", color=C_DIM, **FONT)
+    # spray carriage under the LEFT walkway (worst case) — envelope box floor→beam-top
+    cx = WALKWAY_LEFT_X + WALKWAY_W                      # 570 — beam inner end at the walkway edge
+    fz = tray_floor_z(cx, ydc)
+    top_new = spray_beam_top_z(cx, ydc)
+    top_old = fz + 58                                    # old Ø50 / 40×40 assembly
+    # old envelope (ghost)
+    axB.add_patch(Rectangle((cx - 40, zx(fz)), 150, zx(top_old - fz), fc="none", ec="#B03030",
+                            lw=0.9, ls=(0, (4, 2)), zorder=8))
+    axB.text(cx + 190, zx(top_old), "old Ø50 / 40×40 carriage\n(top Z%.0f → only %.0fmm clear)" % (top_old, DECK_ZB - top_old),
+             fontsize=5.6, ha="left", va="center", color="#B03030", **FONT)
+    # new (shrunk) carriage envelope
+    axB.add_patch(Rectangle((cx - 40, zx(fz)), 150, zx(top_new - fz), fc="#C9D6E4", ec=C_OUT, lw=1.1, zorder=9))
+    axB.text(cx + 55, zx(fz + (top_new - fz) / 2), "Ø32 wheels +\n40×25 SS beam", fontsize=5.6,
+             ha="left", va="center", color=C_OUT, **FONT)
+    # clearance dimension (new)
+    draw_dim_v(axB, cx + 130, zx(top_new), zx(DECK_ZB), f"{DECK_ZB - top_new:.0f}mm CLEAR", offset=3, fs=7, font=FONT)
+    leader(axB, PROC_TRAY_X_L + 3, zx(ttop[0] + PROC_TRAY_RIM), PROC_TRAY_X_L + 380, zx(ttop[0] + PROC_TRAY_RIM + 26),
+           f"pan/rim highest at the far-left corner\n(floor Z{ttop[0]:.0f}, rim top Z{tray_rim_top_z(PROC_TRAY_X_L, ydc):.0f})",
+           color="#3C5A6E", fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
+
+    axTB = fig.add_axes([0.07, 0.005, 0.90, 0.045])
+    axTB.set_xlim(0, 1); axTB.set_ylim(0, 1); axTB.axis("off")
+    title_block(axTB, "SHEET 6 OF 6",
+                drawing_title="THE BIG SHOEBOX PROJECT · TBS-001",
+                subtitle="WALKWAY ROUTING SECTIONS — G-G TRAY SLOPE/SUPPORT · H-H CARRIAGE CLEARANCE")
+    out = os.path.join(DIAGRAMS_DIR, "walkway-sections-sheet6.png")
+    fig.savefig(out, dpi=150, facecolor=BG, bbox_inches="tight", pad_inches=0.15)
+    plt.close(fig)
+    print(f"Walkway section G-G/H-H (tray slope + carriage clearance) → {out}")
+
+
 def main():
     sheet1()
     sheet2()
     sheet3()
     sheet4()
     sheet5()
+    sheet6()
 
 
 if __name__ == "__main__":

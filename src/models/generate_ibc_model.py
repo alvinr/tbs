@@ -52,20 +52,10 @@ IBC_POINT_LABELS = [
     (5893, 1181, 2250, "X1 (fresh fill)",            1007, -400,  450),
     (5893, 1181,  400, "X3 (Brown drain-out)",       1007, -500,  -50),
     (5893, 1181,  200, "X4 (Waste drain-out)",       1007, -500, -100),
-    # ── Wet-end panel equipment (v2: panel moved FORWARD to X≈4814-4854) — pulled
-    #    out the CONTAINER (front) side, laid out the way the panel reads: two pump
-    #    columns + three filters below (no pipes/valves).  Left column (Yd 1109): ──
-    (4814, 1109, 2021, "ACC-01 (accumulator)",       -227, -1759,  329),
-    (4814, 1109, 1687, "P-04 (Tray-drain pump)",     -240, -1759,  263),
-    (4814, 1109, 1429, "P-01 (Blue-feed pump)",      -240, -1759,  121),
-    # Right column (Yd 1253):
-    (4854, 1253, 2055, "P-05 (Brown drain pump)",     260, -1903,  295),
-    (4854, 1253, 1687, "P-03 (Waste-evac pump)",      260, -1903,  263),
-    (4854, 1253, 1429, "P-02 (Brown pump)",           260, -1903,  121),
-    # Filters (centered below the pumps):
-    (4809, 1181, 1110, "F3 (GAC filter)",               5, -1831,   40),
-    (4809, 1181,  740, "F2 (5um filter)",               5, -1831,   60),
-    (4809, 1181,  370, "F1 (50um filter)",              5, -1831,   80),
+    # NB: the wet-end panel-equipment label anchors (P-01..P-05, F1-F3, ACC-01) were
+    # removed with the corridor/pinhole-panel rewire (2026-07-01) — their old positions
+    # no longer match cp.equipment()/pw.kit(). Re-anchor to the current part centers if
+    # panel-equipment callouts are wanted again.
 ]
 
 
@@ -125,13 +115,21 @@ def spray_wall_trunk():
 
 def generate_ruby():
     """Build the Ruby script for the IBC Stack model, reusing Overview parts."""
+    # Current water-system builders (water.skp source) — corridor + pinhole-wall panels
+    import generate_corridor_water_panel as cp
+    import generate_pinhole_water_panel as pw
     comps = [
         ov.component("Container (ghost)", "Context", context()),
         ov.component("IBC Tanks", "IBC Tanks", ov.ibc_stack(alpha=0.25)),
-        ov.component("IBC Frame", "IBC Frame", ov.ibc_rack()),
-        ov.component("Plumbing Panel", "Plumbing & Panel", ov.equipment_panel()),
-        ov.component("Water Plumbing", "Plumbing & Panel", ov.water_plumbing() + "\n" + spray_wall_trunk()),
-        ov.component("Water/Waste Hookups", "Plumbing & Panel", ov.water_hookups()),
+        ov.component("Corridor Frame (deep box)", "IBC Frame", cp.frame()),
+        ov.component("IBC Tote Restraint", "IBC Frame", cp.tote_restraint()),
+        ov.component("Corridor Rear Panel", "Plumbing & Panel", cp.rear_panel()),
+        ov.component("Corridor Equipment", "Plumbing & Panel", cp.equipment()),
+        ov.component("Pinhole-Wall Kit", "Plumbing & Panel", pw.kit()),
+        ov.component("Pinhole-Wall Equipment", "Plumbing & Panel", pw.other_equipment()),
+        ov.component("Corridor Plumbing", "Plumbing & Panel", cp.plumbing()),
+        ov.component("Corridor Drains + X-ports", "Plumbing & Panel", cp.drains_ports()),
+        ov.component("TAP-01 + Spray Supply", "Plumbing & Panel", pw.tap01_supply()),
         ov.component("Walkway Cantilever Arms", "Walkway Cantilever",
                      '\n'.join(ov.ibc_cantilever_arms())),
     ]

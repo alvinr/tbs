@@ -478,7 +478,7 @@ def generate_ruby():
 
     comp_tags = [t for t in TAGS if t != "Labels"]
     scenes = [
-        ("Combined", comp_tags),
+        ("Overview", comp_tags),
         ("Power Core", ["Power Core", "Battery", "Inverter"]),
         ("Distribution", ["Circuit Runs", "Power Core", "Battery"]),
         ("External Panel", ["External Panel", "Solar Array"]),

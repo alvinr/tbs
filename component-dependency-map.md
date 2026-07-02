@@ -142,12 +142,11 @@ B2 punch-out bay.*
 | Fan A shadow margin (from cone) | <!-- BEGIN cdm:FAN_A_MARGIN -->869<!-- END cdm:FAN_A_MARGIN -->mm | `FAN_A_MARGIN` |
 | Fan B shadow margin (from cone) | <!-- BEGIN cdm:FAN_B_MARGIN -->40<!-- END cdm:FAN_B_MARGIN -->mm | `FAN_B_MARGIN` |
 
-*Components: Fan A — 150mm compact axial panel fan, sealed end wall (X=C_LEN), exhaust, Circuit A,
-in the 270mm plumbing corridor directly **below the X1 fill port** (Yd=1181, Z=2,000mm) — the only
-full-height clear channel past the v2 1,000L direct-stack (totes reach Z=2,336mm in both flanking
-columns; the old high spot at Yd1996/Z2200 was buried — RESOLVED, see [[project-fan-a-ibc-clash]]). Fan B —
-identical fan, mounted on hinged panel (near corner zone by the pinhole wall, Yd=365mm — rev9/B2
-swap so its conduit runs along the pinhole wall near the pivot side), intake,
+*Components: Fan A — 150mm compact axial panel fan, sealed end wall, exhaust, Circuit A,
+in the 270mm plumbing corridor directly **below the X1 fill port** — the only
+full-height clear channel past the 1,000L direct-stack. Fan B —
+identical fan, mounted on hinged panel (near corner zone by the pinhole wall,
+ so its conduit runs along the pinhole wall near the pivot side), intake,
 Circuit B, low position. Fan A mounts on interior face of a 300mm deep light-safe baffle duct with 2 offset
 steel baffles (65% height each, horizontal S-path); exterior face has a passive weatherproof louvre grille.
 Fan B has the same baffle duct protruding from the panel exterior face — draws fresh air from the

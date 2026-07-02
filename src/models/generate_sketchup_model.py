@@ -955,7 +955,9 @@ def spray_bar():
 # now render the split Corridor / Pinhole-Wall panel design and stay in sync with
 # water.skp.  The functions below (equipment_panel / water_hookups / spray_bar_plumbing
 # / water_plumbing) are the OLD pre-corridor-refactor layout and are now UNUSED (kept
-# for reference; safe to delete).  ibc_rack() is still used by the cantilever study.
+# for reference; safe to delete).  ibc_rack() (old single-portal frame, X4734) is now referenced
+# ONLY by the ARCHIVED right-cantilever study (src/models/archive/) — the live models use the
+# deep-box cp.frame() (X4654); kept so the archived study still imports, but effectively dead.
 
 def equipment_panel():
     """18mm marine-ply panel in the IBC corridor carrying the wet end.

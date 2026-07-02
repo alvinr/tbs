@@ -178,8 +178,7 @@ flexible coiled cable (with swing slack) from the fixed door frame (Circuit B).*
 *Component: **Hessaire MC18M** evaporative cooler (120V AC, <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W, 1,300 CFM run on low, 4.8 gal
 reservoir), ground-placed outside on Circuit E. Powered by an **interior 12V→120V pure-sine
 inverter (Victron Phoenix 12/375 GFCI)** wall-mounted below the EP; ~<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on the 12V bus. Cooled
-air enters through a Ø200mm insulated flex duct to a wall penetration with light-safe baffle at
-Z=1,900mm. Replaces the fictional "Portacool Jetstream 110 12V DC" ([dimension audit](component-dimension-audit.md)).
+air enters through a Ø200mm insulated flex duct to a wall penetration with light-safe baffle.
 AC isolation/GFCI/equipotential-bonding: [Electrical §7.6](electrical-report.md#ac-safety).*
 
 *Reports: [Ventilation & Cooling](ventilation-report.md) §5 (cooler spec + duct + stowage); [Electrical](electrical-report.md) §3/§5.4/§7.6 (Circuit E inverter, power panel AC outlet, AC safety).*
@@ -221,7 +220,7 @@ C — water pumps P-01–P-04 (P-03 in IBC corridor); D — safelight vestibule;
 P-02 Brown recycle via filter, P-03 waste evacuation, P-04 tray sump pickup),
 1-gal pressure accumulator ACC-01, DN50 butterfly valves V1–V4 (S60×6 thread) at IBC outlets,
 manifold ball valves VB1/VB2/VB3, check valves CV1/CV3/CV4 on bulkhead lines X1/X3/X4, X1 fill tee (splits to IBC-1 & IBC-2), Circuit C.
-Mounted on 18mm marine ply plumbing panel at Yd=1,046 (near IBC column face), in the IBC plumbing corridor.*
+Mounted on 18mm marine ply plumbing panel (near IBC column face), in the IBC plumbing corridor.*
 
 ### 1.11 Water System — Blue Circuit
 
@@ -235,7 +234,7 @@ Mounted on 18mm marine ply plumbing panel at Yd=1,046 (near IBC column face), in
 | Near-column front depth from pinhole wall | <!-- BEGIN cdm:BLUE_IBC_Y -->30<!-- END cdm:BLUE_IBC_Y -->mm | `BLUE_IBC_Y` |
 | Far-column front depth from pinhole wall | <!-- BEGIN cdm:IBC_FAR_Y -->1,316<!-- END cdm:IBC_FAR_Y -->mm | `IBC_FAR_Y` |
 
-*Components (`ibc-reconfig-v2`): **4× 1,000L caged composite IBC totes** (1219×1016×1168), **direct-stacked**
+*Components: **4× 1,000L caged composite IBC totes** (1219×1016×1168), **direct-stacked**
 cage-on-cage in two columns (near: Brown developer + Blue #1; far: Waste + Blue #2) — Blue-on-top layout
 kept. Held by a **restraint FRONT PORTAL** at the corridor mouth (50×50×3 RHS uprights + 50×20×3 front
 retaining bars in the 25mm tote↔film-rail gap + Simpson wall joist-hangers + D-ring lashing + floor feet) —
@@ -281,8 +280,8 @@ P-03 waste evacuation pump (mounted in IBC plumbing corridor on X4 drain run). F
 
 *Derived rule: any equipment with X < ZONE_L_END is shadow-free at all depths.
 Any equipment with X > ZONE_R_START is shadow-free at all depths.
-Equipment at Yd = 0 (pinhole wall face) is always shadow-free.
-Equipment in the IBC corridor (X > ZONE_R_START) at any Yd is shadow-free.*
+Equipment at pinhole wall face - always shadow-free.
+Equipment in the IBC corridor is shadow-free.*
 
 ### 1.15 Panel Swing Pivot
 
@@ -296,8 +295,7 @@ Equipment in the IBC corridor (X > ZONE_R_START) at any Yd is shadow-free.*
 
 *Components: Ø89×8mm CHS pivot post on a thrust collar + top/bottom hub bearings (Ø220 thrust +
 2× Ø90 journal), drum support cage (40×40×3mm SHS), top + bottom wall stays + 4-bolt wall anchor
-plates, 4× drop-in rail saddles + tapered dowels (for the removable left film rails). rev10 —
-supersedes the HGR20 slide carriage + ceiling-rail suspension.*
+plates, 4× drop-in rail saddles + tapered dowels (for the removable left film rails).*
 
 *Diagrams: container floor plan (FP), assembly overview plan view (AO), hinged panel sheet 4 (HP).*
 
@@ -344,10 +342,12 @@ Permanently installed — no removal for transport mode conversion.*
 | Right walkway X | <!-- BEGIN cdm:WALKWAY_RIGHT_X -->4,329<!-- END cdm:WALKWAY_RIGHT_X -->mm | `WALKWAY_RIGHT_X` |
 
 *Components: Near/far: 15mm grating on 8mm gusset brackets bolted to corrugated wall ribs.
-Right (rev12): cantilever rectangle — a closed 40×40×3mm SHS frame (2 long beams at X=4329/4629 +
+
+Right: cantilever rectangle — a closed 40×40×3mm SHS frame (2 long beams at X=4329/4629 +
 2 end beams) picked up at mid-span by 2 arms cantilevering off the IBC corridor uprights (half-lapped
 where the long beams cross), on wall cleats at the left corners and combined corner plates (shared with
 the bottom film rail BR) at the right corners. No floor contact, no roof penetrations — clears IBC stack entirely.
+
 Left: removable lift-out, 15mm grating resting on butt joints (no brackets —
 panel conflict, must remove before the panel swings to transport). No floor contact on
 any section. 4 removable sections.*
@@ -378,7 +378,7 @@ Every generator script, its output PNGs, and the subsystems it renders.
 | **WK** | `generate_walkway_diagram.py` | `diagrams/walkway-sheet1.png`<br>`diagrams/walkway-sheet2.png`<br>`diagrams/walkway-sheet3.png`<br>`diagrams/walkway-sheet4.png`<br>`diagrams/walkway-sheet5.png`<br>`diagrams/walkway-sheet6.png` | 1, 16, 17 |
 | **SC** | `generate_schematic.py`<br>`generate_portrait_viz.py` | `diagrams/portrait-camera-schematic.png`<br>`diagrams/portrait-optimal-3m.png`<br>`diagrams/portrait-scale-comparison.png` | 1, 2 (optical visualization) |
 
-> **FPM / FPD redrawn for Option A (2026-06-06):** the film-plane mechanism sheets and optical-distortion renders now show the **fixed-size rigid plane on floating-corner cross-slides** — **axis tilt/swing** about the plane center (foreshortening, not growth), tilt ±40° / swing ±28°, single rigid ACM backing, cross-slides at each corner, and the compound twist dropped (FPD now C0–C5). `generate_film_plane_mechanism.py` uses `rigid_corners3d`/`tilt_edge`/`swing_edge` (asin, not atan) and reads `MAX_TILT_DEG`/`MAX_SWING_DEG` from `tbs_constants.py`. Consistent with `film-plane-mechanism-report.md`, `master-shopping-list.md`, `project-cost-breakdown.md`, and `models/film-plane.skp`.
+> **FPM / FPD redrawn for Option A:** the film-plane mechanism sheets and optical-distortion renders now show the **fixed-size rigid plane on floating-corner cross-slides** — **axis tilt/swing** about the plane center (foreshortening, not growth), tilt ±40° / swing ±28°, single rigid ACM backing, cross-slides at each corner, and the compound twist dropped (FPD now C0–C5). `generate_film_plane_mechanism.py` uses `rigid_corners3d`/`tilt_edge`/`swing_edge` (asin, not atan) and reads `MAX_TILT_DEG`/`MAX_SWING_DEG` from `tbs_constants.py`. Consistent with `film-plane-mechanism-report.md`, `master-shopping-list.md`, `project-cost-breakdown.md`, and `models/film-plane.skp`.
 
 ---
 

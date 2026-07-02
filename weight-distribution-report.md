@@ -145,13 +145,13 @@ unrecovered residual — see [water-system report §4](water-system-report.md)).
 
 **Loaded Transport** is the camera-ready water load (full top-tier Blue IBCs,
 1,800 kg) carried in the *transport* configuration — panel swung in, cargo doors
-closed. The water sits in the **top** tier, so its vertical CG is **Z=1,340mm —
-410mm higher** than the exhausted state (930mm), making it the **highest-CG
+closed. The water sits in the **top** tier, so its vertical CG is **Z=<!-- BEGIN weight:wt-loadedtx-z -->1,340<!-- END weight:wt-loadedtx-z -->mm —
+<!-- BEGIN weight:wt-mig-dz -->410<!-- END weight:wt-mig-dz -->mm higher** than the exhausted state (<!-- BEGIN weight:wt-exhausted-z -->930<!-- END weight:wt-exhausted-z -->mm), making it the **highest-CG
 transport case** that governs road-transport stability (tie-down and cornering).
-The exhausted (return) state is both lighter — **4,590 kg**, since ~<!-- BEGIN fact:lost_l -->434<!-- END fact:lost_l --> kg of the
+The exhausted (return) state is both lighter — **<!-- BEGIN weight:wt-total-exhausted -->4,590<!-- END weight:wt-total-exhausted --> kg**, since ~<!-- BEGIN fact:lost_l -->434<!-- END fact:lost_l --> kg of the
 processed water is lost to the open process rather than recovered — and lower-CG,
 so it is never the governing case. Even at the loaded worst case the static sideways
-tip threshold is **~41°** (½-width 1,181mm ÷ Z_cg 1,340mm), so the deliberate
+tip threshold is **~41°** (½-width 1,181mm ÷ Z_cg <!-- BEGIN weight:wt-loadedtx-z -->1,340<!-- END weight:wt-loadedtx-z -->mm), so the deliberate
 Blue-on-top layout stays comfortably stable.
 
 ### 4.4 Optional Max-Blue-Fill Transport Case
@@ -195,7 +195,7 @@ is the densest zone.
 
 Weight distribution with full Blue IBCs (top tier) and hinged panel
 deployed to its operational position at the cargo door end (X=0–80).
-CG marker shows the loaded center of gravity at X=3,670, Yd=1,175.
+CG marker shows the loaded center of gravity at X=<!-- BEGIN weight:wt-ready-x -->3,670<!-- END weight:wt-ready-x -->, Yd=<!-- BEGIN weight:wt-ready-yd -->1,174<!-- END weight:wt-ready-yd -->.
 Quadrant weights show the rear-heavy bias from the IBC stack.
 
 ![TBS-001 — Weight Analysis: Camera Ready](assets/weight-analysis-sheet3.png)
@@ -252,14 +252,14 @@ the far side but is offset by the tilt-swing board on the near side.
 
 ### 6.3 Front-Rear Balance
 
-The dry/transport state has a front-biased split (52.7/47.3%), with CG at
-X=2,802mm. This front bias comes from the cargo doors (280 kg total) being
+The dry/transport state has a front-biased split (<!-- BEGIN weight:wt-dry-fr -->52.7<!-- END weight:wt-dry-fr -->/<!-- BEGIN weight:wt-dry-rr -->47.3<!-- END weight:wt-dry-rr -->%), with CG at
+X=<!-- BEGIN weight:wt-dry-x -->2,802<!-- END weight:wt-dry-x -->mm. This front bias comes from the cargo doors (280 kg total) being
 in their closed position at X≈−70mm, pulling the CG toward the cargo door
 end. The hinged panel is also swung ~56° about the pivot, keeping its mass
 in the front (door-end) half.
 
 When liquids are added and the panel and doors are deployed (camera ready),
-the CG shifts rearward to X=3,670mm (~870mm past the dry CG). The doors
+the CG shifts rearward to X=<!-- BEGIN weight:wt-ready-x -->3,670<!-- END weight:wt-ready-x -->mm (~870mm past the dry CG). The doors
 swing open flat against the side walls (X=0–1,221mm), redistributing
 280 kg from X≈−70 to X≈610, while 1,800 kg of water loads in the IBC stack
 zone (X=4,674–5,893mm). This creates a 34.2/65.8% front/rear split — the heavy

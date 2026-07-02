@@ -3,7 +3,7 @@
 # Transportation Options
 ## 20 ft and 40 ft — Hauling Methods, Trailer Requirements, License Requirements, and Pricing
 
-*For the Giant Pinhole Camera project. Containers in this context are used as the camera body and transported empty or with lightweight interior fittings.*
+*For The Big Shoebox Project (TBS-001). Containers in this context are used as the camera body and transported empty or with lightweight interior fittings.*
 
 ---
 
@@ -13,7 +13,7 @@ Understanding the base weights is critical for selecting a legal and practical t
 
 | Specification | 20 ft Standard | 40 ft Standard | 40 ft High Cube |
 |---------------|---------------|----------------|-----------------|
-| Tare weight (empty) | 4,850 lb (2,200 kg) | 8,380 lb (3,800 kg) | 8,598 lb (3,900 kg) |
+| Tare weight (empty) | 4,850 lbs (2,200 kg) | 8,380 lbs (3,800 kg) | 8,598 lbs (3,900 kg) |
 | External length | 20 ft 0 in | 40 ft 0 in | 40 ft 0 in |
 | External width | 8 ft 0 in | 8 ft 0 in | 8 ft 0 in |
 | External height | 8 ft 6 in | 8 ft 6 in | 9 ft 6 in |
@@ -21,7 +21,7 @@ Understanding the base weights is critical for selecting a legal and practical t
 
 A standard lane width is 12 ft — no wide-load permit is required for either container size when centered on a flatbed. Height of 8 ft 6 in–9 ft 6 in is within the US legal limit of 13 ft 6 in.
 
-**For this project:** The container is transported empty. The 20 ft empty weight of ~4,850 lb is the governing figure for self-haul calculations. The 40 ft at ~8,380 lb empty requires professional transport.
+**For this project:** The container is transported empty. The 20 ft empty weight of ~4,850 lbs is the governing figure for self-haul calculations. The 40 ft at ~8,380 lbs empty requires professional transport.
 
 ---
 
@@ -78,7 +78,7 @@ If you already own a suitable Class 5+ truck, a tilt-bed body can be installed w
 
 | Product | Capacity | Approximate price | Notes |
 |---------|----------|------------------|-------|
-| [QuickLoadz 20k Super Bed](https://quickloadz.com/quickloadz-20-ft-container-moving-trucks-and-beds/) | 20,000 lb | ~$30,000–$45,000 (bed only) | Hydraulic, self-loading, remote-controlled; mounts on Class 5–6 truck |
+| [QuickLoadz 20k Super Bed](https://quickloadz.com/quickloadz-20-ft-container-moving-trucks-and-beds/) | 20,000 lbs | ~$30,000–$45,000 (bed only) | Hydraulic, self-loading, remote-controlled; mounts on Class 5–6 truck |
 | [ChassisKing hydraulic tilt-bed trailer](http://www.chassisking.com/products/self-loading-container-delivery-trailers/hydraulic-tilt-bed-container-delivery-trailers/) | 20 ft container | ~$15,000–$30,000 | Trailer unit, pulled by semi or HD pickup |
 | Standard rollback body (aftermarket) | Varies | ~$12,000–$25,000 | Fabricated/fitted by local body shop; not container-specific |
 
@@ -144,7 +144,7 @@ You rent a container chassis (an intermodal trailer specifically designed to car
 | Provider | Type | Day rate | Week rate | Notes |
 |----------|------|----------|-----------|-------|
 | [XTRA Lease](https://www.xtralease.com/get-trailer/trailer-rental/chassis-rental) | 20 ft / 40 ft chassis | Quote required | Quote required | National footprint |
-| [FlexiVan FlexiDay](https://flexivan.com/daily-rentals/) | 20 ft / 40 ft chassis | ~$30–$60/day | ~$175–$350/wk | Day rental programme |
+| [FlexiVan FlexiDay](https://flexivan.com/daily-rentals/) | 20 ft / 40 ft chassis | ~$30–$60/day | ~$175–$350/wk | Day rental program |
 | [COOP by Ryder](https://www.coop.com/trailer-rentals/chassis) | 20 ft / 40 ft chassis | Quote required | Quote required | P2P chassis marketplace |
 | [Metro Trailer Leasing](https://metrotrailer.com/road-cartage-trailers/specialty-trailers/) | Specialty/container | Quote required | Quote required | Regional |
 | [River-Roads](https://www.river-roads.com/trailer-and-chassis-rental.htm) | Flatbed & chassis | Quote required | Quote required | St. Louis / Midwest |
@@ -182,11 +182,11 @@ This option is only viable for an **empty 20 ft container (~4,850 lbs)**. A load
 | Spec | Minimum | Recommended |
 |------|---------|-------------|
 | Towing capacity | 18,000 lbs | 30,000+ lbs |
-| Payload rating | 3,000 lb | 4,000+ lb |
+| Payload rating | 3,000 lbs | 4,000+ lb |
 | Hitch receiver | 2½" or gooseneck ball | Gooseneck ball (2⁵⁄₁₆") |
 | Example vehicle | Ford F-450 Super Duty | Ford F-550, Ram 5500 |
 
-*A standard F-150 or F-250 cannot safely tow a 20 ft container — tare weight alone (~4,850 lb) exceeds their container-on-trailer capacity when the trailer weight (~5,000–6,000 lb for a gooseneck) is added.*
+*A standard F-150 or F-250 cannot safely tow a 20 ft container — tare weight alone (~4,850 lbs) exceeds their container-on-trailer capacity when the trailer weight (~5,000–6,000 lbs for a gooseneck) is added.*
 
 ### Trailer options for 20 ft containers
 
@@ -206,7 +206,7 @@ This option is only viable for an **empty 20 ft container (~4,850 lbs)**. A load
 | Pickup + container chassis, total rig GVWR >26,001 lbs | **CDL Class A** |
 | Any commercial use (hired to haul for others) | **CDL Class A + operating authority** |
 
-**Calculating your GVWR:** Add truck GVWR (e.g. F-550 = 19,500 lbs) + trailer GVWR (typically 20,000–25,000 lb for a container chassis). Most combinations will **exceed 26,001 lbs** even empty — CDL likely required. Verify with your state DMV.
+**Calculating your GVWR:** Add truck GVWR (e.g. F-550 = 19,500 lbs) + trailer GVWR (typically 20,000–25,000 lbs for a container chassis). Most combinations will **exceed 26,001 lbs** even empty — CDL likely required. Verify with your state DMV.
 
 *For non-commercial, private use on a short trip, some states allow an exemption below a certain weight — but this varies. Check with your state DMV before assuming no CDL is needed.*
 
@@ -246,7 +246,7 @@ These products eliminate the crane/forklift requirement by using hydraulics or a
 | Axle configuration | Max weight |
 |-------------------|-----------|
 | Single axle | 20,000 lbs |
-| Tandem axle | 34,000 lb |
+| Tandem axle | 34,000 lbs |
 | Gross vehicle weight | **80,000 lbs** |
 
 An empty container on a flatbed trailer is well within federal limits. No oversize/overweight permit is required for an empty standard container.
@@ -254,9 +254,9 @@ An empty container on a flatbed trailer is well within federal limits. No oversi
 ### CDL trigger thresholds (FMCSA 49 CFR §383)
 | Situation | CDL required? |
 |-----------|--------------|
-| Single vehicle GVWR ≤26,000 lb | No |
-| Single vehicle GVWR >26,001 lb | Class B or C |
-| Combination vehicle GVWR >26,001 lb + towed >10,000 lb | **Class A** |
+| Single vehicle GVWR ≤26,000 lbs | No |
+| Single vehicle GVWR >26,001 lbs | Class B or C |
+| Combination vehicle GVWR >26,001 lbs + towed >10,000 lbs | **Class A** |
 | Transporting 16+ passengers | Class B |
 | Hazardous materials requiring placards | Hazmat endorsement |
 
@@ -355,7 +355,7 @@ California imposes its own BTW minimums on top of federal ELDT:
 | Class A | **15 hours** | At least 10 hours |
 | Class B | **15 hours** | At least 10 hours |
 
-*Most accredited schools far exceed this minimum. Industry standard for adequate preparation is 60–100 hours BTW (see school programmes below).*
+*Most accredited schools far exceed this minimum. Industry standard for adequate preparation is 60–100 hours BTW (see school programs below).*
 
 Your school must complete **Form DL 1236** (California Commercial Driver Behind-the-Wheel Training Certification) and you must submit it to the DMV before your CDL is issued.
 
@@ -467,14 +467,14 @@ Scored on observation, lane control, intersections, turns, and speed management:
 |----------|--------------------|---------------|
 | One-off delivery, 20 ft, <100 miles | **Option A — tilt-bed commercial hire** | $300–$1,200 |
 | One-off delivery, 40 ft, any distance | **Option B — semi flatbed commercial hire** | $900–$5,000+ |
-| Long-distance move, either size | **Option B — semi flatbed commercial hire** | $2.95–$3.60/mile |
+| Long-distance move, either size | **Option B — semi flatbed commercial hire** | $2.95–$3.32/mile |
 | Frequent repositioning, have CDL | **Option C — semi tractor + chassis rental** | $400–$800/day |
 | Occasional self-haul, 20 ft empty, have HD truck | **Option D — gooseneck + container chassis** | $30–$150/day trailer rental |
 | Self-haul with no crane needed, budget available | **Option E — QuickLoadz** | $30,000–$40,000 purchase |
 
 ---
 
-## 10. Sources
+## 11. Sources
 
 - [Midstate Containers — Shipping Container Transport Cost 2026](https://midstatecontainers.com/blogs/news/shipping-container-transport-cost-calculator-pricing-chart)
 - [Conexwest — Container Transport Cost 2025 Calculator](https://www.conexwest.com/blog/shipping-container-transport-cost-2025-calculator-chart)

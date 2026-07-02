@@ -26,6 +26,62 @@ EQT     = ov.EQPANEL_T                    # 18mm ply
 C_BOLT  = "#3A3A42"
 C_HANDLE = "#C0202A"                      # red diverter handle
 
+# ── Under-walkway pipe RIBBON (rev11) ────────────────────────────────────────
+# The four corridor↔pinhole-wall lines (brown→P-02, blue filter return, brown sump
+# pickup, blue→TAP-01) used to stack at different Z in the congested tray↔IBC gap
+# (choked by the deep-box feet + the two cantilever arms).  They now run as a FLAT
+# RIBBON — side-by-side in X, hugged to the tray's outer/right rim — in the dead space
+# UNDER the right-walkway grate.  At the first cantilever (nearest the pinhole wall) each
+# lane makes a staggered turn to a grate SLOT on the IBC edge, rises through it, and turns
+# into the corridor.  ribbon_run() returns the traverse; callers add each line's end stubs.
+RIBBON_Z       = 98                             # ribbon Z — under the grate (Z115), above the tray rim
+RIBBON_LANE_X  = [4556, 4530, 4504, 4478]       # 4 flat lanes in the clear channel BETWEEN the walkway long beams
+#   (inner X4329-4369, outer X4589-4629) — outer lane + its up-turn elbow clear the outer beam at 4589 (26mm pitch)
+RIBBON_YD_UP   = 1000                           # up-through-grate Yd — just BEFORE the first cantilever (Yd1046-1086)
+RIBBON_YD_DOWN = 1120                           # down-through-grate Yd — just PAST the cantilever (Yd1086)
+RIBBON_OVER_Z  = ov.WALKWAY_H + 12              # 142 — loop crest, just above the grate (130) / cantilever top (115) — kept low
+RIBBON_SUP_YD  = [200, 450, 700, 950]           # welded cross-beam supports along the under-grate ribbon span
+
+def ribbon_run(i, corridor_pt, near_pt, up_yd=None):
+    """Waypoints for ribbon lane i (0..3), from the CORRIDOR connection (past the first
+    cantilever, X in the corridor) to the pinhole-wall (near-rim) connection.  The line comes
+    in to the lane UNDER the walkway beam, LOOPS UP over the first cantilever (never through it —
+    Rule 5), drops back into the under-grate ribbon channel, and runs −Yd to the near rim.
+    corridor_pt Yd must be past the cantilever end (>1086).  up_yd (default = corridor_pt Yd)
+    sets where the loop-over rises on the corridor side — pass a value near the cantilever to keep
+    the over-run SHORT for a deep corridor feature (the reduction is made up under the walkway)."""
+    lx, oz = RIBBON_LANE_X[i], RIBBON_OVER_Z
+    cy, cz = corridor_pt[1], corridor_pt[2]
+    uc = up_yd if up_yd is not None else cy        # loop-over rise Yd on the corridor side
+    ny = near_pt[1]                                 # this line's own near-end Yd
+    pts = [corridor_pt,
+           (lx, cy, cz),                           # to the lane X at the corridor Yd/Z (under the beam)
+           (lx, uc, cz),                           # −Yd UNDER the grate to the loop-over rise (shortens the over-run)
+           (lx, uc, oz),                           # UP to the over-crest height
+           (lx, RIBBON_YD_UP, oz),                 # −Yd OVER the first cantilever to just before it
+           (lx, RIBBON_YD_UP, RIBBON_Z),           # DOWN through the grate into the ribbon channel
+           (lx, ny, RIBBON_Z),                     # −Yd along the ribbon (under the grate) to the near-end Yd
+           (lx, ny, near_pt[2]),                   # to the near-end Z
+           near_pt]                                # to this line's pinhole-wall connection
+    out = [pts[0]]                                 # drop consecutive duplicates (near_pt may sit on the lane)
+    for q in pts[1:]:
+        if q != out[-1]:
+            out.append(q)
+    return out
+
+
+def ribbon_supports():
+    """Welded cross-beams spanning between the two right-walkway long bearers, carrying the
+    under-walkway pipe ribbon (the four lines clip to them).  Small flat bars at intervals
+    in Yd, their tops just under the ribbon Z."""
+    p = []
+    x0, x1 = ov.RWK_X_L, ov.RWK_X_R              # bearer span across the walkway (4329..4629)
+    ztop = RIBBON_Z - 8                          # 90 — bar top just below the pipes (ribbon Z98)
+    for yd in RIBBON_SUP_YD:
+        p.append(ov.ruby_box("Ribbon support cross-beam (welded 40x10)",
+                             x0, yd - 3, ztop - 10, x1 - x0, 6, 10, color=ov.C_STEEL))
+    return "\n".join(p)
+
 
 def _arm(nm, cx, cy, cz, axis, sd, body, L, r, color):
     """One port stub of a fitting — a cylinder from the body face outward along an axis."""
@@ -491,14 +547,30 @@ def plumbing():
     ybr   = PIY - 4                     # 1097 — port-approach Yd into the −Yd-facing IN port (clear of the P-01 suction Yd1071)
     gapyd = 1194                        # THREAD the rise through the GAP between the DV-01 grey-waste (Yd1147) and
     #   blue-recycle (Yd1241) floor lanes — clear of the P-05 brown feed (Yd1101, z258) the old Yd1097 rise crossed.
+    # Sump pickup: straight UP from the sump, then LOOP back down UNDER the walkway into ribbon lane 1
+    # (the brown line runs in the ribbon).  At the corridor it rises up to the ORIGINAL P-04 path —
+    # the rise at xrise/gapyd + the port approach (the right-angle by DV-01 we keep) — so we only
+    # re-route from the ribbon up to that point.
+    slx = RIBBON_LANE_X[1]                              # lane-1 X
+    loop_yd = 328                                       # extend the surface loop +Yd toward the film plane, out of
+    #                                                    the cramped sump corner, before dropping under the walkway
+    loop_z  = ov.WALKWAY_H + 5                           # 135 — first loop crest kept low, just over the walkway deck
     pipe("Tray sump -> P-04 suction",
-         [(sumpX, sumpY, sumpZ), (sumpX, sumpY, srz),       # up from the sump to the walkway surface
-          (xlane, sumpY, srz),                              # +X to the tray–IBC gap
-          (xlane, gapyd, srz),                              # +Yd along the walkway perimeter into the corridor GAP lane
-          (xrise, gapyd, srz),                              # +X across the corridor in the gap lane to the rise
-          (xrise, gapyd, z04),                              # RISE through the gap (between the grey + blue floor lanes)
-          (xrise, ybr, z04),                                # −Yd at the IN-port height to the port-approach lane
-          (PXC, ybr, z04), pin("P-04")],                    # +X straight into the −Yd-facing IN port
+         [(slx, sumpY, sumpZ), (slx, sumpY, loop_z),    # straight UP at the ribbon-lane X (nudged to align with the
+          #                                               brown pipe in the ribbon — no over-jog), crest just over the walkway
+          (slx, loop_yd, loop_z),                       # extend +Yd toward the film plane, just over the walkway (uncramp)
+          (slx, loop_yd, RIBBON_Z),                     # LOOP back down UNDER the walkway to the ribbon
+          (slx, RIBBON_YD_UP, RIBBON_Z),                # +Yd in the ribbon to just before the first cantilever
+          (slx, RIBBON_YD_UP, RIBBON_OVER_Z),           # UP through the grate, OVER the cantilever (Rule 5)
+          (slx, RIBBON_YD_DOWN, RIBBON_OVER_Z),         # +Yd over the cantilever, past it
+          (slx, RIBBON_YD_DOWN, RIBBON_Z),              # DOWN through the grate into the corridor
+          (slx, gapyd, RIBBON_Z),                       # +Yd to the corridor Yd (under the grate)
+          (slx, gapyd, 65),                             # DOWN to the under-beam crossing height (Z65, like the other lines)
+          (xrise, gapyd, 65),                           # +X UNDER the walkway beam (in the gap) to the rise lane
+          # ---- ORIGINAL P-04 port approach (rise + port) ----
+          (xrise, gapyd, z04),                          # RISE to the IN-port height
+          (xrise, ybr, z04),                            # −Yd at the IN-port height to the port-approach lane
+          (PXC, ybr, z04), pin("P-04")],                # +X straight into the −Yd-facing IN port
          ov.C_IBC_BROWN)
     p.append(ov.ruby_cylinder("Tray sump strainer foot", sumpX, sumpY, sumpZ, 14, 36, color=CDK, axis="z"))
     # P-04 DISCHARGE → up the BACK of the panel (clear of the OUT-port stack), back to the front

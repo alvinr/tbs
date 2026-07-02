@@ -68,6 +68,13 @@ def gate_energy_blocks() -> tuple[bool, list[str]]:
     return r.returncode == 0, [(r.stdout + r.stderr).strip()]
 
 
+# ── GATE: weight doc-blocks match generate_weight_analysis.py (the block injector) ──
+def gate_weight_blocks() -> tuple[bool, list[str]]:
+    r = subprocess.run([sys.executable, os.path.join(HERE, "generate_weight_analysis.py"), "--check-blocks"],
+                       capture_output=True, text=True)
+    return r.returncode == 0, [(r.stdout + r.stderr).strip()]
+
+
 # ── WARNING: facts-registry agreement (facts.py vs every doc) ────────────────
 def warn_facts() -> tuple[bool, list[str]]:
     sys.path.insert(0, HERE)
@@ -627,6 +634,7 @@ GATES = [
     ("costing doc-blocks (generated == doc)", gate_blocks),
     ("fact placeholders (generated == doc)", gate_fact_blocks),
     ("energy doc-blocks (generated == doc)", gate_energy_blocks),
+    ("weight doc-blocks (generated == doc)", gate_weight_blocks),
     ("parts doc-blocks (generated == doc)", gate_parts_blocks),
     ("section totals reconcile with parts registry (source of record)", gate_registry_reconcile),
 ]

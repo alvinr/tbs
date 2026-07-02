@@ -18,16 +18,25 @@ diagrams/weight-analysis-sheet5.png  — Loaded Transport (full Blue IBCs)
 """
 
 import os
+import math
 from dataclasses import dataclass, field
 
-import matplotlib
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
-from matplotlib.patches import Circle, FancyBboxPatch, Rectangle
-import numpy as np
+try:                                    # drawing deps are OPTIONAL so the value injector
+    import matplotlib                   # (--inject / --check-blocks) runs dependency-free
+    matplotlib.use("Agg")              # under lint's python (no matplotlib/numpy needed).
+    import matplotlib.pyplot as plt
+    import matplotlib.patches as mpatches
+    from matplotlib.patches import Circle, FancyBboxPatch, Rectangle
+    import numpy as np
+    _HAS_DRAW = True
+except ModuleNotFoundError:
+    np = None
+    _HAS_DRAW = False
 
-from tbs_drawing import leader
+try:                                    # drawing helper (imports numpy) — optional, see above
+    from tbs_drawing import leader
+except ModuleNotFoundError:
+    leader = None
 from tbs_constants import (
     C_LEN, C_WID, C_HGT,
     FP_X_L, FP_X_R, FP_W, FP_Y, FP_H,
@@ -66,7 +75,10 @@ from tbs_constants import (
     DIAGRAMS_DIR,
     CONTAINER_RIB_SPACING,
 )
-from tbs_title_block import title_block
+try:                                    # drawing helper (imports matplotlib) — optional, see above
+    from tbs_title_block import title_block
+except ModuleNotFoundError:
+    title_block = None
 
 # ── Material densities (kg/m³) ──────────────────────────────────────────────
 RHO_STEEL  = 7850     # mild / Corten steel
@@ -134,7 +146,7 @@ def swing_bbox(x0, x1, y0, y1, deg=SWING_LOCK_DEG):
     """Axis-aligned bounding box of an (X, Yd) footprint after the cargo panel
     swings `deg` about the Ø89 pivot post (PIVOT_X, PIVOT_YD). Used to place the
     transport-state panel/drum at their SWUNG position (rev10 — no slide)."""
-    t = np.radians(deg); c, s = np.cos(t), np.sin(t)
+    t = math.radians(deg); c, s = math.cos(t), math.sin(t)
     pts = [(x0, y0), (x1, y0), (x1, y1), (x0, y1)]
     xs = [PIVOT_X + (px - PIVOT_X) * c - (py - PIVOT_YD) * s for px, py in pts]
     ys = [PIVOT_YD + (px - PIVOT_X) * s + (py - PIVOT_YD) * c for px, py in pts]
@@ -192,19 +204,19 @@ def _lighttrap_weight():
     open_frac = LT_OPENING_DEG / 360.0             # 80° opening fraction
     # Rotating drum: PP C-shell Ø864 (one 80° opening) + 2 C-shaped caps
     t_d = LT_DRUM_T / 1000.0
-    drum_circ = np.pi * (2 * LT_DRUM_OR / 1000.0)
+    drum_circ = math.pi * (2 * LT_DRUM_OR / 1000.0)
     drum_shell_kg = drum_circ * (1 - open_frac) * H * t_d * RHO_PP
-    cap_area = np.pi * (LT_DRUM_OR / 1000.0) ** 2 * (1 - open_frac)
+    cap_area = math.pi * (LT_DRUM_OR / 1000.0) ** 2 * (1 - open_frac)
     drum_cap_kg = 2 * cap_area * t_d * RHO_PP
     # Steel stub shafts (Ø75×150, bearing fit) + 2 sealed bearings; plastic
     # edge stiffeners on the opening + grab rail + brush seals
-    shaft_kg = 2 * np.pi * (0.0375 ** 2) * 0.150 * RHO_STEEL
+    shaft_kg = 2 * math.pi * (0.0375 ** 2) * 0.150 * RHO_STEEL
     edge_stiff_kg = 2 * H * 0.30            # 2× PP edge stiffener (~0.30 kg/m)
     drum_hw_kg = shaft_kg + 2 * 1.3 + edge_stiff_kg + 4.0
     drum_kg = drum_shell_kg + drum_cap_kg + drum_hw_kg
     # Fixed UV-HDPE housing: Ø900 cylinder minus two 80° openings
     t_h = LT_HOUSING_T / 1000.0
-    house_circ = np.pi * (2 * LT_HOUSING_R / 1000.0)
+    house_circ = math.pi * (2 * LT_HOUSING_R / 1000.0)
     housing_kg = house_circ * (1 - 2 * open_frac) * H * t_h * RHO_HDPE
     housing_kg += 6.0   # steel bolt flange/hub inserts + bearing mounts + isolation
     return drum_kg, housing_kg
@@ -320,7 +332,7 @@ def _bay_weight():
     depth = (BAY_BACK_X - BAY_FRONT_X) / 1000.0          # ≈ 0.890 m (X protrusion)
     width = (DRUM_CAGE_YD_R - DRUM_CAGE_YD_L) / 1000.0   # ≈ 0.962 m (Yd)
     height = (DRUM_H_LT - PANEL_FLOOR_GAP) / 1000.0      # ≈ 2.12 m
-    aperture = np.pi * (LT_HOUSING_R / 1000.0) ** 2      # Ø900 opening in front face
+    aperture = math.pi * (LT_HOUSING_R / 1000.0) ** 2      # Ø900 opening in front face
     area = 2 * (depth * height) + 2 * (depth * width) + max(width * height - aperture, 0)
     return area * (PANEL_SKIN_T / 1000.0) * RHO_PP        # rev11: 4mm PP (was 6mm ply); ≈ 25 kg, weight-neutral
 
@@ -1213,6 +1225,100 @@ def sheet_summary(components):
 # Main
 # ═══════════════════════════════════════════════════════════════════════════
 
+# ═══════════════════════════════════════════════════════════════════════════
+# Value injector — make weight-distribution-report.md a true OUTPUT of this
+# generator. Fills `<!-- BEGIN weight:KEY -->value<!-- END weight:KEY -->` inline
+# markers so every computed weight / CG / split / margin in the report is generated,
+# not hand-transcribed (mirrors facts.py / costing.py / calculate_energy_budget.py).
+# Runs dependency-free (no matplotlib/numpy) so lint.py can gate it via subprocess.
+# ═══════════════════════════════════════════════════════════════════════════
+import re as _re
+
+_REPORT = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+    "weight-distribution-report.md")
+
+_STATES = {"dry": "dry", "loaded_transport": "loadedtx",
+           "ready": "ready", "exhausted": "exhausted"}
+
+
+def _rhu(x):
+    """Round half up (positive) — matches the report's displayed integers."""
+    return int(math.floor(x + 0.5))
+
+
+def weight_values():
+    """Every generated figure in weight-distribution-report.md, keyed by marker.
+    Subtotals/totals are sums of the ROUNDED component weights (so the tables add
+    up); CG and splits come from compute_cg / compute_splits on the true weights."""
+    comps = build_components()
+    v = {}
+
+    # §3.2/§3.3/§3.4 — dry category subtotals (sum of rounded components)
+    dry = filter_state(comps, "dry")
+    cat = {}
+    for c in dry:
+        cat[c.category] = cat.get(c.category, 0) + _rhu(c.weight_kg)
+    total_dry = cat["container"] + cat["structure"] + cat["equipment"]
+    v["wt-cat-container"] = f"{cat['container']:,}"
+    v["wt-cat-structure"] = f"{cat['structure']:,}"
+    v["wt-cat-equipment"] = f"{cat['equipment']:,}"
+    v["wt-total-dry"]     = f"{total_dry:,}"
+    v["wt-pct-container"] = f"{100 * cat['container'] / total_dry:.1f}"
+    v["wt-pct-structure"] = f"{100 * cat['structure'] / total_dry:.1f}"
+    v["wt-pct-equipment"] = f"{100 * cat['equipment'] / total_dry:.1f}"
+
+    # §4.3 state table + §6.1 ISO compliance — per state
+    z_of = {}
+    for st, k in _STATES.items():
+        fs = filter_state(comps, st)
+        total = sum(_rhu(c.weight_kg) for c in fs)
+        true_total, x, yd, z = compute_cg(fs)
+        sp = compute_splits(compute_quadrants(fs), true_total)
+        z_of[st] = _rhu(z)
+        v[f"wt-{k}-total"] = f"{total:,}"
+        v[f"wt-{k}-x"]     = f"{_rhu(x):,}"
+        v[f"wt-{k}-yd"]    = f"{_rhu(yd):,}"
+        v[f"wt-{k}-z"]     = f"{_rhu(z):,}"
+        v[f"wt-{k}-fr"]    = f"{sp['front_pct']:.1f}"
+        v[f"wt-{k}-rr"]    = f"{sp['rear_pct']:.1f}"
+        v[f"wt-{k}-nr"]    = f"{sp['near_pct']:.1f}"
+        v[f"wt-{k}-fa"]    = f"{sp['far_pct']:.1f}"
+        v[f"wt-iso-{k}-margin"] = f"{24000 - total:,}"
+        v[f"wt-iso-{k}-util"]   = f"{100 * total / 24000:.1f}"
+
+    # §4.1/§4.2 liquid + loaded/exhausted totals; §6.4 CG migration
+    v["wt-liquid-loaded"]   = f"{int(v['wt-loadedtx-total'].replace(',', '')) - total_dry:,}"
+    v["wt-total-loaded"]    = v["wt-loadedtx-total"]
+    v["wt-total-exhausted"] = v["wt-exhausted-total"]
+    v["wt-mig-dz"] = f"{z_of['loaded_transport'] - z_of['exhausted']:,}"
+    return v
+
+
+def _wt_pat(key):
+    return _re.compile(r"(<!-- BEGIN weight:" + _re.escape(key) + r" -->)([^\n]*?)"
+                       r"(<!-- END weight:" + _re.escape(key) + r" -->)")
+
+
+def inject_blocks(write=True):
+    """Fill every weight marker in the report. Returns [(key, 'ok'|'STALE'), …]."""
+    vals = weight_values()
+    text = open(_REPORT, encoding="utf-8").read()
+    new, results = text, []
+    for key, val in vals.items():
+        pat = _wt_pat(key)
+        for m in pat.finditer(text):
+            results.append((key, "ok" if m.group(2) == val else "STALE"))
+        new = pat.sub(lambda m, val=val: m.group(1) + val + m.group(3), new)
+    if write and new != text:
+        open(_REPORT, "w", encoding="utf-8").write(new)
+    return results
+
+
+def check_blocks():
+    return [f"weight:{k} -> {st}" for k, st in inject_blocks(write=False) if st != "ok"]
+
+
 def main():
     os.makedirs(DIAGRAMS_DIR, exist_ok=True)
 
@@ -1277,4 +1383,17 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    if "--inject" in sys.argv:
+        for k, st in inject_blocks(True):
+            print(f"  [{st:>5}] weight:{k}")
+    elif "--check-blocks" in sys.argv:
+        probs = check_blocks()
+        if probs:
+            print("✗ weight blocks out of sync (run: generate_weight_analysis.py --inject):")
+            for p in probs:
+                print("   -", p)
+            sys.exit(1)
+        print("✓ all weight blocks match the generator")
+    else:
+        main()

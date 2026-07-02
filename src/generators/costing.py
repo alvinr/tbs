@@ -521,6 +521,50 @@ def _pct(mid: int, cap: int) -> str:
     return f"{round(p)}%" if p >= 1 else f"{p:.1f}%"
 
 
+# ── §4 (cost-analysis-report.md) savings levers ──────────────────────────────
+# Each lever's saving is a DELTA (as-built − alternative). Bucket A (done): the container-grade
+# lever is a true computed subtraction (CW − WWT, straight off the scenario layer), and the §4
+# roll-up + percentage are computed sums of the levers below; the remaining bands are single-
+# sourced here as declared estimates (they were hand-typed in the report). This ends the
+# duplication and lets the roll-up cascade.
+#   Bucket B (TODO): model each alternative CONFIGURATION so levers 2–5 become real
+#   `as_built − alternative` subtractions instead of declared bands — a WWT-grade container line,
+#   a 100 Ah battery + a 2-panel solar option (the electrical BOM is only carried at subtotal
+#   level today, §5a), a galvanized-steel walkway-grating alt (§5 GRP premium), and the
+#   electric-actuation upgrade kit (lever #2 — which, being already ACTIONED into the manual
+#   build, is arguably a banked saving the roll-up double-counts; resolve when modeled).
+def _lever_container() -> int:
+    return SCEN_B["container"] - SCEN_A["container"]     # CW − WWT grade delta (computed)
+
+
+# (id, low, high, in_rollup) — levers 1–5 feed the §4 roll-up; #6 (valves) is listed, not rolled up.
+SAVINGS_LEVERS = [
+    ("container", _lever_container(), _lever_container(), True),
+    ("film",      827,  827,  True),      # B: electric-actuation upgrade kit (already actioned)
+    ("tray",      600,  1000, True),      # B: needs a costed poly-tray alternative
+    ("battery",   350,  350,  True),      # B: needs the electrical BOM itemized (200→100 Ah)
+    ("solar",     130,  130,  True),      # B: needs the electrical BOM itemized (3→2 panels)
+    ("valves",    100,  200,  False),     # estimate — no specced alternative
+]
+
+
+def _lever(name: str) -> tuple:
+    return next((lo, hi) for n, lo, hi, _ in SAVINGS_LEVERS if n == name)
+
+
+def _savings_rollup() -> tuple:
+    lo = sum(lo for _, lo, _, inc in SAVINGS_LEVERS if inc)
+    hi = sum(hi for _, _, hi, inc in SAVINGS_LEVERS if inc)
+    return (round(lo / 50) * 50, round(hi / 50) * 50)   # ~rounded to $50 (levers are estimates)
+
+
+def _savings_pct() -> tuple:
+    lo = sum(lo for _, lo, _, inc in SAVINGS_LEVERS if inc)
+    hi = sum(hi for _, _, hi, inc in SAVINGS_LEVERS if inc)
+    cap = capital_mid()
+    return (round(100 * lo / cap), round(100 * hi / cap))
+
+
 def emit_ca_buckets() -> str:
     return "\n".join([
         "| Bucket | Mid | What it is |",
@@ -743,6 +787,20 @@ def _inline_blocks() -> dict:
         # Shared across the dedicated report + the two docs that summarize/point to it.
         "tray-low":            ([_PT, _WS, _CA], lambda: f"${_pt_line('Processing tray').low:,}"),
         "tray-high":           ([_PT, _WS, _CA], lambda: f"${_pt_line('Processing tray').high:,}"),
+        # cost-analysis-report.md §4 savings levers (bucket A — see SAVINGS_LEVERS) + §6 light lock
+        "ca-lever-container":  (_CA, lambda: f"${_lever('container')[0]:,}"),
+        "ca-lever-film":       (_CA, lambda: f"${_lever('film')[0]:,}"),
+        "ca-lever-tray-low":   (_CA, lambda: f"${_lever('tray')[0]:,}"),
+        "ca-lever-tray-high":  (_CA, lambda: f"${_lever('tray')[1]:,}"),
+        "ca-lever-battery":    (_CA, lambda: f"${_lever('battery')[0]:,}"),
+        "ca-lever-solar":      (_CA, lambda: f"${_lever('solar')[0]:,}"),
+        "ca-lever-valves-low": (_CA, lambda: f"${_lever('valves')[0]:,}"),
+        "ca-lever-valves-high":(_CA, lambda: f"${_lever('valves')[1]:,}"),
+        "ca-savings-low":      (_CA, lambda: f"${_savings_rollup()[0]:,}"),
+        "ca-savings-high":     (_CA, lambda: f"${_savings_rollup()[1]:,}"),
+        "ca-savings-pct-low":  (_CA, lambda: f"{_savings_pct()[0]}"),
+        "ca-savings-pct-high": (_CA, lambda: f"{_savings_pct()[1]}"),
+        "ca-lightlock-mid":    (_CA, lambda: f"${total(LIGHTLOCK)[1]:,}"),
         "spray-low":           ([_PT, _WS], lambda: f"${_pt_line('Spray bar').low:,}"),
         "spray-high":          ([_PT, _WS], lambda: f"${_pt_line('Spray bar').high:,}"),
         "tray-spray-total-low":  (_PT, lambda: f"${_pt_line('Processing tray').low + _pt_line('Spray bar').low:,}"),

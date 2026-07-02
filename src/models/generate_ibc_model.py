@@ -126,11 +126,13 @@ def generate_ruby():
         ov.component("Corridor Rear Panel", "Plumbing & Panel", cp.rear_panel()),
         ov.component("Corridor Equipment", "Plumbing & Panel", cp.equipment()),
         ov.component("Pinhole-Wall Kit", "Plumbing & Panel", pw.kit()),
-        ov.component("Pinhole-Wall Equipment", "Plumbing & Panel", pw.other_equipment()),
+        # NB: "Pinhole-Wall Equipment" (ov.electrical() — EP + external power panel + batteries)
+        #     removed from this model — electrical is not of interest in the IBC/plumbing view.
         ov.component("Corridor Plumbing", "Plumbing & Panel", cp.plumbing()),
         ov.component("Corridor Drains + X-ports", "Plumbing & Panel", cp.drains_ports()),
         ov.component("TAP-01 + Spray Supply", "Plumbing & Panel", pw.tap01_supply()),
-        ov.component("Ribbon Support Cross-beams", "Plumbing & Panel", cp.ribbon_supports()),
+        # NB: "Ribbon Support Cross-beams" (cp.ribbon_supports() — the 4 welded under-grate
+        #     cross-beams) removed — not of interest in this model.
         ov.component("Walkway Cantilever Arms", "Walkway Cantilever",
                      '\n'.join(ov.ibc_cantilever_arms())),
     ]

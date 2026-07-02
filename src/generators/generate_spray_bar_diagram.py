@@ -943,10 +943,11 @@ def draw_sheet2():
                f"{clearance_c:.0f}mm\nCLR", offset=6, fs=5, font=FONT, right=True)
 
     # OVERALL carriage height — raised tray floor to the highest part (the missing dim;
-    # datum relocated to FLOOR_LOCAL when the tray slope was added)
-    draw_dim_v(ax2, c_beam_l - 40, FLOOR_LOCAL, carriage_top_z,
+    # datum relocated to FLOOR_LOCAL when the tray slope was added). Placed on the RIGHT so
+    # it chains under CLR: floor -> carriage top -> grate reads as one clear stack.
+    draw_dim_v(ax2, c_beam_r + 10, FLOOR_LOCAL, carriage_top_z,
                f"{carriage_top_z - FLOOR_LOCAL:.0f}mm\nCARRIAGE HT",
-               offset=6, fs=4.5, font=FONT)
+               offset=6, fs=4.5, font=FONT, right=True)
 
     # beam-bottom clearance above the (raised) tray floor — was measured from the sheet
     # thickness TRAY_FLOOR_Z(2) instead of the floor top FLOOR_LOCAL(20)

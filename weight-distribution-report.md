@@ -241,13 +241,13 @@ There is no structural concern from a gross weight perspective.
 
 ### 6.2 Left-Right Balance (Near/Far)
 
-The near/far split stays close to balanced in all states (48.5–50.3% near). The
-transport states lean slightly far (52% far) because the swung panel + drum carry
+The near/far split stays close to balanced in all states (<!-- BEGIN weight:wt-near-lo -->48.5<!-- END weight:wt-near-lo -->–<!-- BEGIN weight:wt-near-hi -->50.3<!-- END weight:wt-near-hi -->% near). The
+transport states lean slightly far (up to ~<!-- BEGIN weight:wt-far-hi -->51.5<!-- END weight:wt-far-hi -->% far) because the swung panel + drum carry
 their mass toward the far/pivot side. This is by
 design: equipment on the pinhole wall (near side) is lightweight (electrical
-panel, batteries totaling ~43 kg), the pump manifold is on the Corridor Plumbing Panel
+panel, battery, and solar controller totaling ~<!-- BEGIN weight:wt-near-elec -->30<!-- END weight:wt-near-elec --> kg), the pump manifold is on the Corridor Plumbing Panel
 centered in the IBC corridor (Yd=1,046), and the IBC stack is centered
-across the container width. The film plane carriage contributes ~33 kg to
+across the container width. The film plane carriage contributes ~<!-- BEGIN weight:wt-comp-film -->33<!-- END weight:wt-comp-film --> kg to
 the far side but is offset by the tilt-swing board on the near side.
 
 ### 6.3 Front-Rear Balance

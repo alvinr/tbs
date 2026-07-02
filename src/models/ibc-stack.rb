@@ -2056,7 +2056,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "P-01 → Spray Bar"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -1080.9525.mm, 0.mm)
+  vec = Geom::Vector3d.new(0.mm, -1081.4425.mm, 0.mm)
   circle = ge.add_circle([4649.mm,1102.7525.mm,60.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -2070,8 +2070,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "P-01 → Spray Bar elbow"
   ge = grp.entities
-  arc = ge.add_arc([4649.mm,21.8.mm,50.199999999999996.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 9.800000000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4649.mm,21.8.mm,60.mm], [0.000000,-1.000000,0.000000], 12.mm, 16)
+  arc = ge.add_arc([4649.mm,21.310000000000002.mm,50.69.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 9.310000000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4649.mm,21.310000000000002.mm,60.mm], [0.000000,-1.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["X1 Blue Fill Trunk"] || model.materials.add("X1 Blue Fill Trunk")
@@ -2083,8 +2083,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "P-01 → Spray Bar"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -10.200000000000003.mm)
-  circle = ge.add_circle([4649.mm,12.mm,50.2.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -9.689999999999998.mm)
+  circle = ge.add_circle([4649.mm,12.mm,50.69.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2398,7 +2398,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Blue Supply Trunk (along pinhole wall)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-349.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4649.mm,12.mm,40.mm], vec, 10.5.mm, 16)
+  circle = ge.add_circle([4649.mm,12.mm,41.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

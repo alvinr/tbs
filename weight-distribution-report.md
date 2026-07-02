@@ -178,7 +178,7 @@ optional max-Blue-fill top-up is therefore transport-validated.
 ### 1 — Summary Comparison
 
 Three-state side-by-side comparison with CG positions and summary table.
-The dry state is nearly balanced; the camera-ready/loaded states shift the CG rearward by ~870mm (the lighter exhausted return state by ~685mm).
+The dry state is nearly balanced; the camera-ready/loaded states shift the CG rearward by ~<!-- BEGIN weight:wt-cg-shift -->870<!-- END weight:wt-cg-shift -->mm (the lighter exhausted return state by ~<!-- BEGIN weight:wt-cg-shift-ex -->680<!-- END weight:wt-cg-shift-ex -->mm).
 
 ![TBS-001 — Weight Analysis: Summary Comparison](assets/weight-analysis-sheet1.png)
 
@@ -206,7 +206,7 @@ Water has migrated from top-tier Blue IBCs to bottom-tier Brown/Waste IBCs, and 
 been lost to the open process (evaporation, wet-print carryout, unrecovered residual — see
 [water-system report §4](water-system-report.md)), so only ~<!-- BEGIN fact:recovered_l -->1,260<!-- END fact:recovered_l --> kg is recovered. The hinged panel
 is swung ~56° about the pivot to its transport position. Total mass therefore drops to **<!-- BEGIN weight:wt-total-exhausted -->4,590<!-- END weight:wt-total-exhausted --> kg**
-(~540 kg below the loaded state), and the vertical CG drops by <!-- BEGIN weight:wt-mig-dz -->410<!-- END weight:wt-mig-dz -->mm (Z: <!-- BEGIN weight:wt-loadedtx-z -->1,340<!-- END weight:wt-loadedtx-z --> → <!-- BEGIN weight:wt-exhausted-z -->930<!-- END weight:wt-exhausted-z -->mm) as the
+(~<!-- BEGIN weight:wt-mass-drop -->540<!-- END weight:wt-mass-drop --> kg below the loaded state), and the vertical CG drops by <!-- BEGIN weight:wt-mig-dz -->410<!-- END weight:wt-mig-dz -->mm (Z: <!-- BEGIN weight:wt-loadedtx-z -->1,340<!-- END weight:wt-loadedtx-z --> → <!-- BEGIN weight:wt-exhausted-z -->930<!-- END weight:wt-exhausted-z -->mm) as the
 remaining water settles in the bottom tier. This is the lightest, lowest-CG transport state — never
 the governing case.
 
@@ -253,20 +253,20 @@ the far side but is offset by the tilt-swing board on the near side.
 ### 6.3 Front-Rear Balance
 
 The dry/transport state has a front-biased split (<!-- BEGIN weight:wt-dry-fr -->52.7<!-- END weight:wt-dry-fr -->/<!-- BEGIN weight:wt-dry-rr -->47.3<!-- END weight:wt-dry-rr -->%), with CG at
-X=<!-- BEGIN weight:wt-dry-x -->2,802<!-- END weight:wt-dry-x -->mm. This front bias comes from the cargo doors (280 kg total) being
+X=<!-- BEGIN weight:wt-dry-x -->2,802<!-- END weight:wt-dry-x -->mm. This front bias comes from the cargo doors (<!-- BEGIN weight:wt-doors-total -->280<!-- END weight:wt-doors-total --> kg total) being
 in their closed position at X≈−70mm, pulling the CG toward the cargo door
 end. The hinged panel is also swung ~56° about the pivot, keeping its mass
 in the front (door-end) half.
 
 When liquids are added and the panel and doors are deployed (camera ready),
-the CG shifts rearward to X=<!-- BEGIN weight:wt-ready-x -->3,670<!-- END weight:wt-ready-x -->mm (~870mm past the dry CG). The doors
+the CG shifts rearward to X=<!-- BEGIN weight:wt-ready-x -->3,670<!-- END weight:wt-ready-x -->mm (~<!-- BEGIN weight:wt-cg-shift -->870<!-- END weight:wt-cg-shift -->mm past the dry CG). The doors
 swing open flat against the side walls (X=0–1,221mm), redistributing
-280 kg from X≈−70 to X≈610, while 1,800 kg of water loads in the IBC stack
-zone (X=4,674–5,893mm). This creates a 34.2/65.8% front/rear split — the heavy
+<!-- BEGIN weight:wt-doors-total -->280<!-- END weight:wt-doors-total --> kg from X≈−70 to X≈610, while 1,800 kg of water loads in the IBC stack
+zone (X=4,674–5,893mm). This creates a <!-- BEGIN weight:wt-ready-fr -->34.2<!-- END weight:wt-ready-fr -->/<!-- BEGIN weight:wt-ready-rr -->65.8<!-- END weight:wt-ready-rr -->% front/rear split — the heavy
 1,000L totes sit at the sealed end.
 
 **Transport implication:** When loaded for transport (materials exhausted,
-doors closed), the container's CG is at 59.1% of the length from the cargo
+doors closed), the container's CG is at <!-- BEGIN weight:wt-cg-lengthpct -->59.1<!-- END weight:wt-cg-lengthpct -->% of the length from the cargo
 door end. For trailer placement, the container
 should be positioned so the rear (sealed) end sits over or near the trailer
 axle(s) to balance the load.
@@ -288,7 +288,7 @@ remains migrates from the top tier to the bottom tier, dropping the center of gr
 
 ### 6.5 Walkway Weight Sensitivity
 
-The walkway system contributes 143 kg (4.4% of dry weight), making it the
+The walkway system contributes <!-- BEGIN weight:wt-walkway-total -->143<!-- END weight:wt-walkway-total --> kg (<!-- BEGIN weight:wt-walkway-pct -->4.3<!-- END weight:wt-walkway-pct -->% of dry weight), making it the
 second-largest structural subsystem after the hinged panel. The deck grating —
 15mm molded GRP (fiberglass) at ≈11 kg/m² — is the largest single line in the
 walkway; GRP is specified for corrosion immunity in the wet photo-chemistry

@@ -56,7 +56,7 @@ Capital systems ranked by mid cost:
 <!-- END costing:ca-ranking -->
 
 The **water system is <!-- BEGIN costing:ca-water-pct -->24<!-- END costing:ca-water-pct -->% of the capital build** and the **304 SS processing tray is its
-single biggest line** (~$1,177–1,857) — the same item that topped the weight study.
+single biggest line** (<!-- BEGIN costing:tray-low -->$1,300<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,015<!-- END costing:tray-high -->) — the same item that topped the weight study.
 
 ---
 
@@ -73,7 +73,7 @@ Ranked by dollar potential and ease. Status is updated as levers are actioned.
 | 5 | **Solar 3 → 2 panels** (if the power budget allows) | Power | ~$130 | Easy | Available |
 | 6 | **Valves / fittings value-engineering** | Water | ~$100–200 | Medium | Available |
 
-Levers 1–5 together trim **~$3,250–3,650** off the ~$22k capital build (**~15%**) without
+Levers 1–5 together trim **~$3,250–3,650** off the <!-- BEGIN costing:ca-capital -->$24,207<!-- END costing:ca-capital --> capital build (**~13–15%**) without
 touching the core optical or structural design.
 
 ---

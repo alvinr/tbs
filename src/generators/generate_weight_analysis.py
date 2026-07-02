@@ -1308,6 +1308,19 @@ def weight_values():
         return sum(_rhu(c.weight_kg) for c in comps if c.name == name)
     v["wt-near-elec"] = f"{_cw('Electrical panel') + _cw('Battery bank') + _cw('Solar controller')}"
     v["wt-comp-film"] = f"{_cw('Film plane carriage')}"
+
+    # §5/§6.3 CG-shift deltas (rounded to 5mm — descriptive), §6.3 length ratio + door total,
+    # §6.5 walkway subsystem total + % of dry
+    x_of = {s: compute_cg(filter_state(comps, s))[1] for s in _STATES}
+    v["wt-cg-shift"]     = f"{round((x_of['ready'] - x_of['dry']) / 5) * 5:,}"
+    v["wt-cg-shift-ex"]  = f"{round((x_of['exhausted'] - x_of['dry']) / 5) * 5:,}"
+    v["wt-cg-lengthpct"] = f"{x_of['exhausted'] / C_LEN * 100:.1f}"
+    v["wt-doors-total"]  = f"{sum(_rhu(c.weight_kg) for c in filter_state(comps, 'dry') if 'door' in c.name.lower()):,}"
+    wk = sum(_rhu(c.weight_kg) for c in comps
+             if c.category == 'structure' and 'walkway' in c.name.lower())
+    v["wt-walkway-total"] = f"{wk:,}"
+    v["wt-walkway-pct"]   = f"{100 * wk / total_dry:.1f}"
+    v["wt-mass-drop"] = f"{int(v['wt-loadedtx-total'].replace(',', '')) - int(v['wt-exhausted-total'].replace(',', '')):,}"
     return v
 
 

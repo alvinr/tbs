@@ -2,10 +2,13 @@
 
 The corridor plumbing threads a tight zone at the IBC end of the container, where the
 **right walkway**, the **processing tray**, the **IBC restraint frame** and the **pump
-column** all compete for space. This document is a set of **cross‑sections** that walk
-from the pinhole wall across to the plumbing corridor, so the clear routing envelope a
-pipe actually has at each depth is legible — and so the points where a pipe shares space
-with structure are visible.
+column** all compete for space. The four lines that connect the plumbing corridor to the
+pinhole‑wall panel — IBC‑3 → P‑02, the filtered return SV‑01 → DV‑01, the tray‑sump → P‑04
+pickup, and the Blue supply trunk → TAP‑01 — run together as a flat **ribbon** in the dead
+space **under the right‑walkway grate**, in the clear channel between the two walkway long
+beams. This document is a set of **cross‑sections** that walk from the pinhole wall across to
+the plumbing corridor, so the clear routing envelope the ribbon actually has at each depth is
+legible — and so the points where it shares space with structure are visible.
 
 These sections are the companion to the [Plumbing](plumbing-report.md) report; the pipe
 positions are read off the 3D water model (`water.skp`) and drawn 1:1.
@@ -18,33 +21,37 @@ wall (Yd 0) across to the plumbing corridor (Yd ≈ 1046–1316):
 
 | Section | Cut (Yd) | What it shows |
 |--------|---------|---------------|
-| **B‑B** | ≈ 62 (near‑rim strip) | the two supply/return lines running *under* the deck, ducking the support beams |
-| **C‑C** | ≈ 523 (mid‑tray) | the tray is a no‑route zone — pipes only *cross* the plane at the gap |
-| **D‑D** | ≈ 1066 (near cantilever) | the available space, the foot under the tray, and the four pipes crossing the perimeter/gap |
-| **E‑E** | ≈ 1130–1245 (corridor centre) | the four corridor lanes as real in‑plane runs toward the pumps |
-| **F‑F** | ≈ 1286 (far cantilever) | the far cantilever, mirroring D‑D |
+| **B‑B** | ≈ 62 (near end) | the four ribbon lanes in the channel between the long beams, near their pinhole‑wall end |
+| **C‑C** | ≈ 450 (mid‑tray) | the ribbon passing above the tray, under the grate — a sanctioned pass over the exclusion zone |
+| **D‑D** | ≈ 1066 (near cantilever) | the ribbon looping *over* the cantilever, and the foot under the tray |
+| **E‑E** | ≈ 1130–1245 (corridor center) | the lines entering under the beam and rising into the four corridor lanes |
+| **F‑F** | ≈ 1286 (far cantilever) | the far cantilever, mirroring D‑D (no line crosses it) |
 
 Coordinate system (per the drawing standard): **X** = length (0 at the cargo‑door end wall,
 5893 at the sealed end), **Yd** = depth from the pinhole wall (0) into the container, **Z** =
 height above the floor.
 
-## Section B‑B — near‑rim strip, under the walkway
+## Section B‑B — near end of the ribbon
 
-![TBS-001 — Walkway Routing Section B-B: near-rim strip under the right walkway](assets/walkway-sections-sheet1.png)
+![TBS-001 — Walkway Routing Section B-B: near-end ribbon under the right walkway](assets/walkway-sections-sheet1.png)
 
-Cut through the **Yd ≈ 56–69 strip** butted under the tray near rim, where two lines run the
-length of the container **beneath the walkway grate**: the **ACC‑01 → spray‑bar blue supply**
-(Z40) and the **IBC‑3 → P‑02 brown return** (Z10). Both clear under the deck's two 40 × 40
-Yd‑running support beams (Z80–115), and turn up into the corridor at the tray↔IBC gap.
+Cut near the **pinhole‑wall end of the ribbon (Yd ≈ 62)**. The four lanes run side‑by‑side on
+a 26 mm pitch at **Z98**, in the clear channel between the two 40 × 40 long beams (X4369–4589),
+sitting **above the tray rim (Z50)** and **clear under the grate deck (Z115–130)**. A welded
+40 × 10 cross‑brace between the beams (top Z90) carries the ribbon at each support station.
+Off‑section (−Yd) each lane drops to its wall feature — the two blue lanes to TAP‑01 and the
+SV‑01 filtered return, the two brown lanes on toward the near‑rim taps.
 
 ## Section C‑C — midway (pinhole wall ↔ corridor)
 
 ![TBS-001 — Walkway Routing Section C-C: midway, mid-tray](assets/walkway-sections-sheet2.png)
 
-The same cut moved to mid‑tray depth (Yd ≈ 523). Here the plane is **inside the processing
-tray**, which is a no‑route exclusion zone — so no pipe runs along the length. The only pipes
-present are the two that **cross the plane in Yd at the tray↔IBC gap (X4641)**, reading as
-cross‑section circles. They are the same two lines that run in‑plane in B‑B.
+The same cut moved to mid‑tray depth (Yd ≈ 450), at a ribbon support station. The plane is
+**inside the processing tray** — the basin and wash water are cut — but the four ribbon lanes
+run **in‑plane** here, in the channel between the long beams at Z98. This is a **sanctioned
+pass over the tray exclusion zone**: the ribbon runs above the tray rim, under the grate, clear
+of the print and wash water, and never sits in the basin. The welded cross‑brace (top Z90)
+carries it at this station.
 
 ## Section D‑D — through the near cantilever
 
@@ -55,34 +62,33 @@ its **front upright is at X4654** and its **front foot (150 × 150) runs X4604�
 25 mm under the tray**. The walkway support (cantilever arm at Z70–115 plus the hatched long
 bearers at Z80–115) carries the deck.
 
-Four pipes cross this plane at the perimeter/gap, with the deck between them:
+The ribbon **loops up over the cantilever** here. It rises through the grate at Yd 1000, crests
+at **Z142** — passing over the arm top (Z115) and the grate (Z130), clearing the arm by ≈ 16 mm
+— and drops back through the grate past Yd 1120, so it never passes through the cantilever steel.
+No line threads the tray‑rim↔upright gap at this plane. Past the cantilever the lanes drop under
+the outer beam into the corridor and run in X to the pumps (Yd 1130–1245) — they appear in‑plane
+in E‑E.
 
-- **Above the deck** — blue filtered return (SV‑01 → DV‑01, Z235) and brown sump return
-  (tray sump → P‑04, Z205), riding proud of the grate;
-- **Below the deck** — blue → TAP‑01 (Z60) and brown → P‑02 / BV‑03 (Z25), threading the
-  **tight 25 mm gap between the tray rim (X4629) and the front upright (X4654)** with only
-  ≈ 1.5 mm and ≈ 2.5 mm clearance.
+## Section E‑E — corridor center
 
-The corridor lanes (blue trunk, grey waste, blue recycle) run *in X* down the corridor at
-Yd 1101–1241 — they appear in‑plane in E‑E.
+![TBS-001 — Walkway Routing Section E-E: corridor center, between the frame uprights](assets/walkway-sections-sheet4.png)
 
-## Section E‑E — corridor centre
-
-![TBS-001 — Walkway Routing Section E-E: corridor centre, between the frame uprights](assets/walkway-sections-sheet4.png)
-
-A thick‑slab section through the **clear span between the frame uprights (Yd ≈ 1130–1245)**,
-where the four corridor lanes run in X toward the pump column: the brown P‑04 suction (Z205,
-rising into P‑04) and the blue trunk / grey waste / blue recycle (all co‑planar at Z235, drawn
-stacked for clarity). No IBC ring rail crosses this span, so the corridor is open above the
-bottom rail.
+A thick‑slab section through the **clear span between the frame uprights (Yd ≈ 1130–1245)**.
+Having dropped through the grate past the cantilever, each line crosses **under the outer walkway
+beam at Z ≈ 65** — between the frame rail top (Z50) and the beam bottom (Z80) — through the gap
+over the tray edge (X4629–4654, clear Z16–150), then **rises inside the corridor** to its lane
+height and runs in X toward the pump column: the brown tray‑sump → P‑04 (Z205, rising into P‑04)
+and the blue trunk / gray waste / blue recycle (all co‑planar at Z235, drawn stacked for clarity).
+No IBC ring rail crosses this span, so the corridor is open above the bottom rail.
 
 ## Section F‑F — through the far cantilever
 
 ![TBS-001 — Walkway Routing Section F-F: through the far cantilever](assets/walkway-sections-sheet5.png)
 
 The mirror of D‑D on the far side of the corridor (Yd ≈ 1286): the far cantilever arm and far
-foot (again extending under the tray). No under‑deck crossers reach this far — they turn up by
-Yd 1132–1170 — so the nearest lane is the blue DV‑01 recycle, ghosted just −Yd of the plane.
+foot (again extending under the tray). The ribbon loops over the **near** cantilever only and has
+dropped into the corridor by Yd 1120, so no line crosses this far cantilever; the nearest line is
+the blue DV‑01 recycle lane (Yd 1241), ghosted just −Yd of the plane.
 
 ## Sections G‑G / H‑H — tray slope, support & spray‑carriage clearance
 
@@ -98,20 +104,21 @@ under the left grate — the recovery from the ~6 mm the old Ø50 / 40×40 carri
 
 ## Interference & clearance findings
 
-Drawing these sections at 1:1 against `water.skp` surfaced four tight‑clearance / interference
-items the plan views do not reveal. Status after the tray‑datum correction + spray‑carriage
-shrink (branch `water-walkway-integration`):
+Drawing these sections at 1:1 against `water.skp` confirms the ribbon's key clearances and the
+two remaining structural items the plan views do not reveal:
 
-1. **Blue TAP‑01 crosser grazes the cantilever‑arm soffit** — *OPEN.* At the near cantilever the
-   blue supply/TAP‑01 line runs at Z60; its top (Z70.5) meets the cantilever‑arm soffit (Z70). It
-   runs at Z40 in the near‑rim strip (B‑B), so there is headroom to drop it through the gap — not
-   yet applied to `water.skp`.
-2. **Low crossers pinch the tray‑rim ↔ upright gap** — *DEFERRED.* The two under‑deck lines thread
-   the 25 mm gap (tray rim X4629 ↔ front upright X4654) with only ≈ 1.5 mm / ≈ 2.5 mm; the 21 mm
-   pipe fits with ~2 mm/side when centered. Accepted for now; revisit if the routing changes.
-3. **Front foot + M12 anchor under the tray basin** — **RESOLVED.** The tray‑datum correction
-   raises the welded pan onto the shim ramp (floor bottom ≈ Z23–24 at the corridor foot stations),
-   so the 12 mm front foot now clears **~11 mm** *under* the pan (see G‑G). No foot change needed.
-4. **Stale cantilever‑arm reference** — **RESOLVED.** `RWK_X_UP` reconciled 4734 → **X4654**
-   (the deep‑box front upright); overview's `ibc_rack` retired in favor of `cp.frame()`, so
-   overview / ibc-stack / walkway now clamp the arm to the same X4654 upright.
+1. **Ribbon clear under the grate** — the four lanes sit at Z98, giving ≈ 7 mm from the top of the
+   21 mm pipe to the grate underside (Z115) and 48 mm above the tray rim (Z50). Tight but positive;
+   the welded cross‑braces (top Z90) keep the lanes off the tray.
+2. **Loop‑over clears the cantilever** — the crest at Z142 clears the cantilever‑arm top (Z115) by
+   ≈ 16 mm and passes just over the grate (Z130); the loop keeps the lines out of the cantilever
+   steel entirely (D‑D).
+3. **Under‑beam corridor entry** — past the cantilever each line crosses under the outer walkway
+   beam at Z ≈ 65, in the 30 mm band between the frame rail top (Z50) and the beam bottom (Z80),
+   through the gap over the tray edge (clear Z16–150). No pinch remains at the tray‑rim↔upright gap.
+4. **Front foot + M12 anchor under the tray basin** — the tray‑datum correction raises the welded
+   pan onto the shim ramp (floor bottom ≈ Z23–24 at the corridor foot stations), so the 12 mm front
+   foot clears **~11 mm** *under* the pan (see G‑G). No foot change needed.
+5. **Cantilever‑arm reference** — the RWK cantilever arm clamps to the deep‑box front upright at
+   **X4654** (overview's `ibc_rack` retired in favor of `cp.frame()`), so overview / ibc‑stack /
+   walkway all reference the same upright.

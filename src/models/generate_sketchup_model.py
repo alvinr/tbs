@@ -2558,6 +2558,7 @@ def generate_ruby():
         component("Fans A & B", "Fans", fans()),
         component("TAP-01 + Spray Supply", "Spray Bar", pw.tap01_supply()),
         component("Corridor Plumbing", "Water Plumbing", cp.plumbing()),
+        component("Ribbon Support Cross-beams", "Water Plumbing", cp.ribbon_supports()),
     ]
     body = '\n'.join(comps)
 

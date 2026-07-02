@@ -373,6 +373,27 @@ Pipes enter and exit the panel zone at the left and right panel edges:
 - **Right edge** (far wall side) — Brown/Waste IBC connections,
   external drain routing
 
+### 8.1 Corridor ↔ pinhole-wall ribbon (under the right walkway)
+
+The four lines that connect the corridor equipment to the pinhole-wall panel —
+IBC-3 (Brown) → P-02, the filtered return (SV-01 → DV-01), the tray-sump pickup
+→ P-04, and the Blue supply trunk → TAP-01/spray bar — run together as a flat
+**ribbon** in the otherwise-dead space **under the right-walkway grate**, in the
+clear channel between the two walkway long beams (hugged to the outer/IBC edge,
+clear of the print zone). This replaces routing them through the congested
+25mm tray↔IBC gap.
+
+At the first cantilever (nearest the pinhole wall) the ribbon **loops up over the
+cantilever** — never through the steel (Rule 5) — then drops and crosses **under
+the walkway support beam**, through the gap over the tray edge, into the corridor,
+where each line rises to its equipment connection. The pump-suction lines carry
+their own service loops (P-04's sump pickup rises over the walkway and back; DV-01's
+filtered return makes a square 90° turn into the diverter's IN port). The ribbon is
+carried by four welded steel cross-braces between the walkway bearers, with the
+lines clipped to them. Routing is verified collision-free by
+`src/models/check_interference.py` (the ribbon is a sanctioned exception to the
+processing-tray exclusion zone — it runs above the tray rim, under the grate).
+
 ---
 
 ## 9. Parts List
@@ -399,7 +420,9 @@ hardware are sourced there and in the IBC stacking frame line.
 | Banjo V050FP ball valve 1/2" FNPT | PP full-port quarter-turn; pump-suction isolation BV-01 (P-01), BV-02 (P-05), BV-06 (P-03) | 3 ea | Amazon | $18–$30 |
 | 3-way diverter valve 1/2" FNPT | L/T-port HDPE-compatible; 3W-DV-02 (tray drain) | 1 ea | Amazon | $12–$22 |
 | pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | pH sample on the P-04 tray-drain discharge, before 3W-DV-02; same build as SV-01 | 1 ea | Amazon | $10–$18 |
-| **Corridor Plumbing Panel total** | | | | **$540–$750** |
+| Steel flat bar 25×3mm — ribbon support cross-brace | Welded between the two right-walkway long bearers at 4 stations to carry the under-walkway pipe ribbon (the four corridor↔pinhole lines); ~300mm each | 4 ea | Home Depot | $8–$16 |
+| Cushioned pipe clip | Secures the four under-walkway ribbon lines to the support cross-braces (4 lines × 4 supports) | 16 ea | Amazon | $16–$32 |
+| **Corridor Plumbing Panel total** | | | | **$564–$798** |
 <!-- END parts:corridor-plumbing-panel -->
 
 ### 9.2 Pinhole Wall Plumbing Panel

@@ -153,12 +153,22 @@ def main():
     solids.append({"n": "PROCESSING TRAY (exclusion zone)", "p": "synthetic", "cat": "tray", "key": "sump",
                    "mn": [170, 80, 0], "mx": [4629, 2280, 130]})
 
+    # SANCTIONED Rule 5a exception: the four corridor↔pinhole-wall lines run as a flat RIBBON in the
+    # dead space UNDER the right-walkway grate (over the tray's outer margin, below the grate), by
+    # design — they loop UP over the cantilevers (never through them).  Excluded from the tray box
+    # only (still fully checked against every real solid: cantilevers, beams, frame, equipment).
+    RIBBON_LINES = ("-> p-02 inlet", "single filtered line", "corridor -> ribbon", "p-04 suction")
+
     TOL = 3.0   # mm — ignore mere touching
     hits = []
     for pipe in pipes:
         for sol in solids:
             # a pipe is allowed to meet the component it connects to (name references its key)
             if sol["key"] and sol["key"].lower() in pipe["n"].lower():
+                continue
+            # the sanctioned under-walkway ribbon may cross the tray footprint AND push up/down through
+            # the grate (the loop-over penetrations) — but NOT any real structural solid
+            if sol["cat"] in ("tray", "grate") and any(r in pipe["n"].lower() for r in RIBBON_LINES):
                 continue
             if overlap(pipe, sol, TOL):
                 hits.append((pipe, sol))

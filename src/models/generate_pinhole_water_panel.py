@@ -127,7 +127,7 @@ diverter = cp.diverter
 
 # 3W-DV-01 center — single source for the geometry (kit()) AND the label anchor, so the
 # callout can never drift off the diverter again when DV-01 is relocated.
-DV01_CX, DV01_CY, DV01_CZ = 4700, cp.CTR_Y + 60, 235
+DV01_CX, DV01_CY, DV01_CZ = 4800, cp.CTR_Y + 60, 235   # +100mm toward the sealed (high-X) end so the port turns run square
 
 
 def kit():
@@ -191,12 +191,13 @@ def kit():
     #    wall base (Yd80, clear of the grey DV-01 waste drop at yW=35), up to P-02's +Yd IN port.
     yB = 80
     tx, ty, tz = cp.BROWN_TAP
-    pipe("IBC-3 (Brown) tap -> P-02 inlet",   # AROUND + UNDER the walkway (Rule 5a): drop clear of the FP
-         [(tx - 30, ty, tz), (4720, ty, tz), (4720, ty, cp.SUCT_SURF_Z - 10), (4720, 1170, cp.SUCT_SURF_Z - 10),
-          (4720, 1170, 82),   # ^ drop to z195 (BELOW the surface stack at z205+) BEFORE the +Yd, so this
-          #   suction passes UNDER the brown/blue/grey perimeter routes instead of crossing them at x4720
-          (cp.GAPX, 1170, 82), (cp.GAPX, 1170, 25), (cp.GAPX, 900, 25), (cp.GAPX, 900, 10),
-          (cp.GAPX, 56, 10), (2960, 56, 10), (2960, 43, 10), (2960, 43, p2_in[2]), (2960, p2cy, p2_in[2]), p2_in], ov.C_IBC_BROWN)
+    # UNDER-WALKWAY RIBBON (lane 0): IBC-3 tap (corridor) → loop UP over the first cantilever →
+    # down into the ribbon channel → −Yd to the near-rim strip → rise up the wall to P-02's IN port.
+    pipe("IBC-3 (Brown) tap -> P-02 inlet",
+         [(tx - 30, ty, tz), (4720, ty, tz), (4720, ty, 65)]                       # tap → −X → descend to the under-beam height
+         + cp.ribbon_run(0, (4720, 1110, 65), (2960, 55, 25))                      # +Yd to 1110 (clear of the frame upright/clamp cluster), cross UNDER the beam, loop over
+         + [(2960, 55, p2_in[2]), (2960, p2cy, p2_in[2]), p2_in],                  # rise to P-02 IN
+         ov.C_IBC_BROWN)
     # ^ OFF the tee's −X end; descent OFFSET from the blue trunk (Yd1170 not 1150); −Yd at z25 OVER the
     #   corridor foot-plate, then step DOWN to z10 (2 elbows) to pass UNDER the blue trunk; strip z10 to P-02.
     #   At x2960 the riser is nudged back to Yd43 (off the strip's Yd56) so it clears the Yd69 supply trunk
@@ -219,12 +220,16 @@ def kit():
     #     which now SPLITS in the rear corridor, collapsing the old pair of parallel runs into one.
     sz    = cp.SUCT_SURF_Z + 30                   # 235 — surface perimeter lane
     xdrop = ov.RAIL_X_R - 17                      # 4632 — turn DOWN the wall clear of the IBC hanger
+    # UNDER-WALKWAY RIBBON (lane 3): SV-01 → down the wall → −Yd along the ribbon → grate slot
+    # → across the corridor to DV-01's IN port.
+    # Drop SV-01 straight down the wall to a LOW strip level and run under the walkway beams (like the
+    # other three lines).  On the corridor side it comes back DOWN just past the cantilever (like the
+    # sump), runs under the grate to DV-01's Yd, then rises into DV-01's IN port.
     pipe("SV-01 -> DV-01 (single filtered line)",
-         [(svx, sv_y, waist), (svx, yW, waist), (xdrop, yW, waist),   # SV-01 → wall → +X along the wall at waist
-          (xdrop, yW, sz),                                            # turn DOWN to the surface lane
-          (cp.SUCT_XLANE, yW, sz),                                    # step +X to the gap lane
-          (cp.SUCT_XLANE, cp.CTR_Y, sz), (cp.SUCT_XLANE, DCY, sz),   # +Yd into the corridor, then +Yd to DV-01's lane
-          (DCX - tipd, DCY, sz)],                                     # +X across the corridor floor to DV-01 IN (−X)
+         [(svx, sv_y, waist), (svx, yW, waist), (svx, yW, 50), (svx, 60, 50)]         # SV-01 → wall → DROP low → +Yd
+         + cp.ribbon_run(3, (DCX - 100, DCY, 65), (svx, 60, 50), up_yd=1120)[::-1][1:]  # cross UNDER the beam; loop-over rises near the cantilever (short over-run, rest under the walkway)
+         + [(DCX - 100, DCY, DCZ),                                                      # rise −X of the port to the IN-port height
+            (DCX - tipd, DCY, DCZ)],                                                    # +X 90° turn horizontally into DV-01's −X IN port
          ov.C_FILTER)
     # 5. DV-01 BLUE RECYCLE (run+, +X) → rise to the X1 fill CROSS at the corridor top — feeds both Blue
     #    totes alongside the X1 fresh fill (no direct tote entry, no CV-2; P-02 has an integral check).
@@ -262,12 +267,12 @@ def tap01_supply():
     yd, fz = ov.PROC_TRAY_YD_NEAR - 11, ov.SPRAY_BAR_FEED_Z   # 69 — butt the tray near rim (Yd80), under the triangle
     pr, tr = ov.PUMP_PIPE_OD / 2, ov.TAP_PIPE_OD / 2
     p = []
-    # AROUND the tray (Rule 5a): the corridor trunk ends at the gap (GAPX, CTR_Y, z60); cross to the
-    # outside-rim strip there, drop to the trunk height, then the wall trunk runs along the strip (Yd12).
-    p.append(ov.ruby_pipe_run("Blue trunk: corridor -> outside-rim strip",
-        [(4660, cp.GAP_CORR_Y, 60), (cp.GAPX, cp.GAP_CORR_Y, 60), (cp.GAPX, yd, 60), (cp.GAPX, yd, fz)], pr, color=ov.C_BLUE))
-    p.append(ov.ruby_cylinder("Blue Supply Trunk (1/2in HDPE)",
-        ov.TAP_X, yd, fz, pr, cp.GAPX - ov.TAP_X, color=ov.C_BLUE, axis="x"))
+    # UNDER-WALKWAY RIBBON (lane 2): the corridor blue trunk (X4660, Yd~1132, z60) drops through the
+    # grate slot and runs −Yd along the ribbon to the outside-rim strip, where the wall trunk continues.
+    p.append(ov.ruby_pipe_run("Blue trunk: corridor -> ribbon -> outside-rim strip",
+        cp.ribbon_run(2, (4660, cp.GAP_CORR_Y, 60), (cp.RIBBON_LANE_X[2], yd, fz)), pr, color=ov.C_BLUE))
+    p.append(ov.ruby_cylinder("Blue Supply Trunk (1/2in HDPE)",   # trunk ends at the ribbon lane (clear of the saddle gusset)
+        ov.TAP_X, yd, fz, pr, cp.RIBBON_LANE_X[2] - ov.TAP_X, color=ov.C_BLUE, axis="x"))
     # BV-05 spray-bar isolation (riser + valve at the pinhole centerline)
     p.append(ov.ruby_cylinder("BV-05 Riser", ov.BV02_X, yd, fz, pr, ov.BV02_Z - fz, color=ov.C_BLUE, axis="z"))
     p.append(cp.ball_valve("BV-05 (spray-bar isolation)", ov.BV02_X, yd, ov.BV02_Z, "z"))
@@ -398,6 +403,7 @@ def build():
                          ("Corridor equipment", "Corridor Equipment", cp.equipment()),
                          ("Corridor plumbing", "Corridor Plumbing", cp.plumbing()),
                          ("Corridor drains + X-ports", "Corridor Drains", cp.drains_ports()),
+                         ("Ribbon support cross-beams", "Ribbon Supports", cp.ribbon_supports()),
                          # SOLID (non-ghost) copies of the two plywood panels, on their own tags — shown
                          # only in the "Plumbing (labeled)" scene so the panels read full-color there while
                          # the overview scenes keep the muted "Corridor Panel"/"Backing" versions.
@@ -467,10 +473,10 @@ def scene(model, name, on)
   pg.use_hidden_layers = true rescue nil
   pg
 end
-scene(model, "Overall", ["Context","Walkway","Film Plane","Processing Tray","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
+scene(model, "Overview", ["Context","Walkway","Film Plane","Processing Tray","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
 scene(model, "Plumbing", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains"])
 scene(model, "Plumbing (labeled)", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","Labels","Corridor Panel Solid","Backing Solid"])
-scene(model, "Plumbing + IBC", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","IBC","IBC Frame","Corridor Frame","Corridor Panel"])
+scene(model, "Plumbing + IBC", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","IBC","IBC Frame","Corridor Frame","Corridor Panel","Walkway"])
 scene(model, "Labeled", ["Context","Walkway","Film Plane","Processing Tray","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains","Labels","Labels Context"])
 model.layers.each {{ |l| l.visible = true }}
 model.commit_operation

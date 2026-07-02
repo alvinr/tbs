@@ -371,6 +371,8 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | S60×6 to 1" NPT adapter | IBC DN50 valve to 1" HDPE; PP S60×6 male × 1" NPT female | 8 ea | Amazon | $64–$120 |
 | 1" bulkhead tank-body fittings (Blue equalization cross-tie) | Low tank-body penetration in each Blue tote (IBC-1 + IBC-2) for the 1" equalization cross-tie that self-balances the two Blue levels (run made from the 1" HDPE stock). Cost est. | 2 ea | Amazon | $12–$24 |
 | 1" NPT spring check valve (CV1 — X1 gravity fill) | PVC body, EPDM seal, 1" FNPT × FNPT. Only CV-1 (X1 fill) remains — the Shurflo 2088 pumps have integral check valves, so CV-2/CV-3/CV-4 are redundant and dropped | 1 ea | Amazon | $8–$14 |
+| Steel flat bar 25×3mm — ribbon support cross-brace | Welded between the two right-walkway long bearers at 4 stations to carry the under-walkway pipe ribbon (the four corridor↔pinhole lines); ~300mm each | 4 ea | Home Depot | $8–$16 |
+| Cushioned pipe clip | Secures the four under-walkway ribbon lines to the support cross-braces (4 lines × 4 supports) | 16 ea | Amazon | $16–$32 |
 | Thread seal tape (PTFE) | 1/2" wide, 260" roll | 4 roll | Home Depot | $8 |
 | [1/2" SDR-11 HDPE pipe](https://www.ferguson.com) | All pump-driven runs (80 ft); matches pump port size | 4 stick | Ferguson | $24–$40 |
 | 1" SDR-11 HDPE pipe | Food-safe blue-stripe 20 ft; filter outlet + IBC lines | 1 stick | Ferguson | $12–$18 |
@@ -386,7 +388,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bag | Amazon | $28 |
 | Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon | $20 |
 | Nitrile gloves, box of 100 | Size M/L | 2 box | Amazon | $28 |
-| **Water total** | | | | **$1,995–$2,970** |
+| **Water total** | | | | **$2,019–$3,018** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own

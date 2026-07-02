@@ -75,6 +75,13 @@ def gate_weight_blocks() -> tuple[bool, list[str]]:
     return r.returncode == 0, [(r.stdout + r.stderr).strip()]
 
 
+# ── GATE: dependency-map §1 registry matches tbs_constants.py (the block injector) ──
+def gate_depmap_blocks() -> tuple[bool, list[str]]:
+    r = subprocess.run([sys.executable, os.path.join(HERE, "inject_dependency_map.py"), "--check-blocks"],
+                       capture_output=True, text=True)
+    return r.returncode == 0, [(r.stdout + r.stderr).strip()]
+
+
 # ── WARNING: facts-registry agreement (facts.py vs every doc) ────────────────
 def warn_facts() -> tuple[bool, list[str]]:
     sys.path.insert(0, HERE)
@@ -635,6 +642,7 @@ GATES = [
     ("fact placeholders (generated == doc)", gate_fact_blocks),
     ("energy doc-blocks (generated == doc)", gate_energy_blocks),
     ("weight doc-blocks (generated == doc)", gate_weight_blocks),
+    ("dependency-map registry (generated == doc)", gate_depmap_blocks),
     ("parts doc-blocks (generated == doc)", gate_parts_blocks),
     ("section totals reconcile with parts registry (source of record)", gate_registry_reconcile),
 ]

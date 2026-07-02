@@ -26,7 +26,7 @@ changes during a photographic session.
 | Tare weight (empty container) | 2,200 kg (4,850 lbs) | Hapag-Lloyd Container Spec |
 | Max gross weight | 24,000 kg (52,910 lbs) | ISO 668 |
 | Max payload | 21,800 kg (48,060 lbs) | Gross − tare |
-| Interior dimensions | 5,893 × 2362 × 2,388mm | ISO 668 |
+| Interior dimensions | 5,893 × 2,362 × 2,388mm | ISO 668 |
 
 ---
 
@@ -50,16 +50,16 @@ UV-HDPE 950 kg/m³, water 1,000 kg/m³.
 
 | Component | Weight (kg) | X Range (mm) | Yd Range (mm) | Calculation Basis |
 |-----------|------------|-------------|---------------|-------------------|
-| Hinged panel (incl. Ø900 housing + B2 punch-out bay) | 171 | 0–80 (deployed); swung ~56° about the pivot (transport) | 0–2,362 | rev11 framed panel: 4mm-PP plastic skins + 18mm-ply Fan-B mount band + 3mm-Al corner cores + 50×50×3 steel RHS center ≈ 125 kg + bolted 5mm-HDPE Ø900 housing ≈ 22 kg + 4mm-PP B2 punch-out bay ≈ 25 kg. First-principles, no scaling pin. The PP-skin swap cut ~72 kg vs the 18mm-ply build. The Ø89 pivot post + bearings + cage are counted under "Swing pivot + cage hardware". See [Hinged Panel Report §2.4–2.5](hinged-panel-report.md) for the movable-assembly breakdown + the skin trade study |
-| Light-trap drum (rotating) | 38 | 0–40 (deployed); swung ~56° about the pivot (transport) | 653–1,709 | Ø864 C-shell, 4mm PP plastic skin (rev 9 / B2), no fins (suspended with panel) + PP end caps + steel Ø75 stub shafts + 2× SKF 6215 bearings |
+| Hinged panel (incl. Ø900 housing + punch-out bay) | 171 | 0–80 (deployed); swung ~56° about the pivot (transport) | 0–2,362 | Framed panel: 4mm-PP plastic skins + 18mm-ply Fan-B mount band + 3mm-Al corner cores + 50×50×3 steel RHS center ≈ 125 kg + bolted 5mm-HDPE Ø900 housing ≈ 22 kg + 4mm-PP punch-out bay ≈ 25 kg (first-principles). The Ø89 pivot post + bearings + cage are counted under "Swing pivot + cage hardware". See [Hinged Panel Report §2.4–2.5](hinged-panel-report.md) for the full movable-assembly breakdown |
+| Light-trap drum (rotating) | 38 | 0–40 (deployed); swung ~56° about the pivot (transport) | 653–1,709 | Ø864 C-shell, 4mm PP plastic skin, no fins (suspended with panel) + PP end caps + steel Ø75 stub shafts + 2× SKF 6215 bearings |
 | Processing tray | 116 | 170–4,629 | 80–2,280 | 304 SS 1.5mm, 2 panels × 58 kg ([Water System Report](water-system-report.md) §4) |
 | Near walkway | 37 | 470–4,629 | 0–300 | 10 brackets @ ~2.7 kg + 11 kg/m² GRP grating |
 | Far walkway | 37 | 470–4,629 | 2,062–2,362 | Same as near walkway |
-| Right walkway | 44 | 4,329–4,629 | 0–2,362 | rev12 cantilever-rectangle: closed frame (2 long + 2 end beams) + 2 center cantilever arms off the IBC uprights (40×40×3 SHS) + wall cleats + combined corner plates (shared with the BR film rail) + GRP grating |
+| Right walkway | 44 | 4,329–4,629 | 0–2,362 | Cantilever-rectangle: closed frame (2 long + 2 end beams) + 2 center cantilever arms off the IBC uprights (40×40×3 SHS) + wall cleats + combined corner plates (shared with the BR film rail) + GRP grating |
 | Left walkway | 25 | 170–470 | 0–2,362 | Removable lift-out: GRP grating + 5 floor-leg cantilever brackets (50×50 post + arm on bare floor outside the tray) + drum-exit punch-out (deeper grating) |
-| Swing pivot + cage hardware | 38 | 0–400 | 700–2,287 | rev10 rotation transport hardware (replaces the retired HGR20 ceiling rails): pivot bearings + collar + drum cage + wall stays + rail saddles, at the cargo-door end. Estimate — refine vs the rotation-hardware BOM |
+| Swing pivot + cage hardware | 38 | 0–400 | 700–2,287 | Rotation transport hardware: pivot bearings + collar + drum cage + wall stays + rail saddles, at the cargo-door end. Estimate — refine vs the rotation-hardware BOM |
 | Container mods | 65 | Distributed | Distributed | Light seal foam + reinforcement plates (estimate) |
-| Chem-prep shelf (fold-down, stowed) | 7 | 1,180–1,780 | 0–22 | rev13 wall-hinged fold-down: 18mm phenolic ply + 2" Al angle frame + spill lip + continuous piano hinge + 2 stays ≈ 7 kg. Modeled **stowed** (folded up vs the pinhole wall, Z=1,075–1,375) in all states; the ~25 kg deployed mixing load is a transient prep case (film plane parked) — see [Chemistry Prep Shelves §3](chemistry-prep-shelves.md) |
+| Chem-prep shelf (fold-down, stowed) | 7 | 1,180–1,780 | 0–22 | Wall-hinged fold-down: 18mm phenolic ply + 2" Al angle frame + spill lip + continuous piano hinge + 2 stays ≈ 7 kg. Modeled **stowed** (folded up vs the pinhole wall, Z=1,075–1,375) in all states; the ~25 kg deployed mixing load is a transient prep case (film plane parked) — see [Chemistry Prep Shelves §3](chemistry-prep-shelves.md) |
 | **Structure subtotal** | **578** | | | |
 
 ### 3.3 Equipment
@@ -92,13 +92,11 @@ UV-HDPE 950 kg/m³, water 1,000 kg/m³.
 | **Total dry** | **3,330** | **100%** |
 
 **Grating weight assumption:** 5/8" (15mm) molded GRP (fiberglass) grating,
-vinyl-ester resin with grit top, weighs approximately 11 kg/m² — vs ~26 kg/m²
-for the previously-specified 15mm galvanized steel grate. The GRP swap removes
-**~62 kg** from the dry build (4.14 m² of deck) and eliminates the steel grate's
-corrosion exposure in the wet photo-chemistry environment, at a cost premium of
-~$720–$890 (see [cost breakdown §6a](project-cost-breakdown.md)). The 15mm depth
-is retained so the lowered deck and the spray-bar carriage clearance under the left
-cantilever arms are unchanged. Confirm the final product's kg/m² against its
+vinyl-ester resin with grit top, weighs approximately 11 kg/m² over the 4.14 m²
+of deck. GRP is specified for corrosion immunity in the wet photo-chemistry
+environment, at a cost premium of ~$720–$890 (see [cost breakdown §6a](project-cost-breakdown.md)).
+The 15mm depth keeps the lowered deck and the spray-bar carriage clearance under
+the left cantilever arms unchanged. Confirm the final product's kg/m² against its
 datasheet; a 1"/25mm GRP would weigh more and force a deck-height redesign.
 
 ---
@@ -147,13 +145,13 @@ unrecovered residual — see [water-system report §4](water-system-report.md)).
 
 **Loaded Transport** is the camera-ready water load (full top-tier Blue IBCs,
 1,800 kg) carried in the *transport* configuration — panel swung in, cargo doors
-closed. The water sits in the **top** tier, so its vertical CG is **Z=1,341mm —
-411mm higher** than the exhausted state (930mm), making it the **highest-CG
+closed. The water sits in the **top** tier, so its vertical CG is **Z=1,340mm —
+410mm higher** than the exhausted state (930mm), making it the **highest-CG
 transport case** that governs road-transport stability (tie-down and cornering).
 The exhausted (return) state is both lighter — **4,590 kg**, since ~<!-- BEGIN fact:lost_l -->434<!-- END fact:lost_l --> kg of the
 processed water is lost to the open process rather than recovered — and lower-CG,
 so it is never the governing case. Even at the loaded worst case the static sideways
-tip threshold is **~41°** (½-width 1,181mm ÷ Z_cg 1,341mm), so the deliberate
+tip threshold is **~41°** (½-width 1,181mm ÷ Z_cg 1,340mm), so the deliberate
 Blue-on-top layout stays comfortably stable.
 
 ### 4.4 Optional Max-Blue-Fill Transport Case
@@ -165,8 +163,8 @@ that heavier load stays well within transport limits:
 
 | Loaded Transport | Gross mass | Z_cg | Static tip threshold |
 |------------------|-----------:|-----:|---------------------:|
-| Standard Blue fill (1,800L) | 5,130 kg | 1,341mm | 41.4° |
-| **Max Blue fill (1,900L)** | **5,224 kg** | **1,358mm** | **41.0°** |
+| Standard Blue fill (1,800L) | 5,130 kg | 1,340mm | 41.4° |
+| **Max Blue fill (1,900L)** | **5,224 kg** | **1,357mm** | **41.0°** |
 
 The extra ~100 kg sits in the top tier, raising the worst-case vertical CG only 17mm and lowering
 the static sideways tip threshold ~0.4° (to 41.0° — still far above any rollover concern). Gross
@@ -208,7 +206,7 @@ Water has migrated from top-tier Blue IBCs to bottom-tier Brown/Waste IBCs, and 
 been lost to the open process (evaporation, wet-print carryout, unrecovered residual — see
 [water-system report §4](water-system-report.md)), so only ~<!-- BEGIN fact:recovered_l -->1,260<!-- END fact:recovered_l --> kg is recovered. The hinged panel
 is swung ~56° about the pivot to its transport position. Total mass therefore drops to **4,590 kg**
-(~540 kg below the loaded state), and the vertical CG drops by 411mm (Z: 1,341 → 930mm) as the
+(~540 kg below the loaded state), and the vertical CG drops by 410mm (Z: 1,340 → 930mm) as the
 remaining water settles in the bottom tier. This is the lightest, lowest-CG transport state — never
 the governing case.
 
@@ -218,7 +216,7 @@ the governing case.
 
 The camera-ready water load (1,800 kg in the top-tier Blue IBCs) carried in
 transport configuration — panel swung in, cargo doors closed. The water is in
-the **top** tier, raising the vertical CG to **Z=1,341mm** (+411mm vs the lighter
+the **top** tier, raising the vertical CG to **Z=1,340mm** (+410mm vs the lighter
 exhausted state at 930mm). This is the worst-case transport vertical CG.
 
 ![TBS-001 — Weight Analysis: Loaded Transport](assets/weight-analysis-sheet5.png)
@@ -243,7 +241,7 @@ There is no structural concern from a gross weight perspective.
 
 ### 6.2 Left-Right Balance (Near/Far)
 
-The near/far split stays close to balanced in all states (48.4–50.2% near). The
+The near/far split stays close to balanced in all states (48.5–50.3% near). The
 transport states lean slightly far (52% far) because the swung panel + drum carry
 their mass toward the far/pivot side. This is by
 design: equipment on the pinhole wall (near side) is lightweight (electrical
@@ -254,8 +252,8 @@ the far side but is offset by the tilt-swing board on the near side.
 
 ### 6.3 Front-Rear Balance
 
-The dry/transport state has a front-biased split (52.8/47.2%), with CG at
-X=2,798mm. This front bias comes from the cargo doors (280 kg total) being
+The dry/transport state has a front-biased split (52.7/47.3%), with CG at
+X=2,802mm. This front bias comes from the cargo doors (280 kg total) being
 in their closed position at X≈−70mm, pulling the CG toward the cargo door
 end. The hinged panel is also swung ~56° about the pivot, keeping its mass
 in the front (door-end) half.
@@ -264,8 +262,8 @@ When liquids are added and the panel and doors are deployed (camera ready),
 the CG shifts rearward to X=3,670mm (~870mm past the dry CG). The doors
 swing open flat against the side walls (X=0–1,221mm), redistributing
 280 kg from X≈−70 to X≈610, while 1,800 kg of water loads in the IBC stack
-zone (X=4,674–5,893mm). This creates a 34.2/65.8% front/rear split — more
-rear-biased than the 600L design (the heavier 1,000L totes sit at the sealed end).
+zone (X=4,674–5,893mm). This creates a 34.2/65.8% front/rear split — the heavy
+1,000L totes sit at the sealed end.
 
 **Transport implication:** When loaded for transport (materials exhausted,
 doors closed), the container's CG is at 59.1% of the length from the cargo
@@ -292,11 +290,10 @@ remains migrates from the top tier to the bottom tier, dropping the center of gr
 
 The walkway system contributes 143 kg (4.4% of dry weight), making it the
 second-largest structural subsystem after the hinged panel. The deck grating —
-now 15mm molded GRP (fiberglass) at ≈11 kg/m² — is still the largest single line
-in the walkway, but the GRP swap (from 15mm galvanized steel at ≈26 kg/m²) removed
-**~62 kg** and, more importantly, eliminated the steel grate's corrosion exposure
-in the wet photo-chemistry environment. The GRP is vinyl-ester resin with a grit
-top for slip resistance; the 15mm grate depth is kept so the lowered deck height is
+15mm molded GRP (fiberglass) at ≈11 kg/m² — is the largest single line in the
+walkway; GRP is specified for corrosion immunity in the wet photo-chemistry
+environment. The GRP is vinyl-ester resin with a grit
+top for slip resistance; the 15mm grate depth keeps the lowered deck height
 unchanged (the spray-bar carriage clearance beneath it is set by the Ø32-wheel /
 40×25-SS-beam shrink — see the [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) report).
 

@@ -116,9 +116,11 @@ listed for completeness; confirm the drawn size equals the catalog dimension:
 | **Spray beam** | metric | 40×25×3 (304 SS RHS) | none | alu SHS 40×40 → SS RHS 40×25 (carriage shrink, 2026-07-01) | ✅ done |
 | **Evap cooler** | 120 V AC cooler + 12V→120V inverter (no good 12 V DC ground unit exists) | 559×305×711 (Hessaire MC18M) | `EVAP_*` 600×350×800→559×305×711; `INVERTER_*` added | Circuit E re-based 80→<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W; AC isolation/GFCI/bonding [Electrical §7.6](electrical-report.md#ac-safety) | ✅ done |
 
-**3D re-sends:** overview (filter Ø + ACC + **evap box re-dim + inverter**), ibc-stack, film-plane.
-The earlier audit batch (filter/ACC/battery) was sent 2026-06-15; the **evap/inverter re-send is
-pending** an interactive SketchUp session. Sketchfab re-uploads are the manual step.
+**3D re-sends — done.** The earlier audit batch (filter Ø + ACC + battery) was sent and
+`overview.skp` re-saved 2026-06-15; the evap-box re-dimension (Hessaire MC18M) + Circuit-E
+inverter box followed (overview re-saved in `1872583b`, inverter leader label in `99ec629c`).
+`generate_sketchup_model.py` builds the evap at `EVAP_W×EVAP_D×EVAP_H` + the inverter. Only the
+manual Sketchfab re-uploads (Alvin's step, same model IDs) may remain.
 
 **Cost re-sum CLOSED (2026-06-15):** the held bundle (fan −~$70, filter, evap cooler + inverter)
 is now re-summed. Cooler subsystem (cooler $130 + inverter $210 + DC protection $40 + AC outlet $25)

@@ -22,6 +22,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Cantilevers") unless model.layers["Cantilevers"]
   model.layers.add("Cantilever Types") unless model.layers["Cantilever Types"]
   model.layers.add("Right Cantilever") unless model.layers["Right Cantilever"]
+  model.layers.add("Film Plane") unless model.layers["Film Plane"]
   model.layers.add("IBC Frame") unless model.layers["IBC Frame"]
   model.layers.add("Left Support") unless model.layers["Left Support"]
   model.layers.add("Labels") unless model.layers["Labels"]
@@ -3342,20 +3343,38 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Film rail BR (ghost)
-  grp = ents.add_group
-  grp.name = "Film rail BR (ghost)"
-  face = grp.entities.add_face([4629.mm,0.mm,130.mm], [4669.mm,0.mm,130.mm], [4669.mm,2362.mm,130.mm], [4629.mm,2362.mm,130.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Film rail BR (ghost)"] || model.materials.add("Film rail BR (ghost)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 0.3
-  grp.material = mat
-
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Right Walkway (cantilever rectangle)"
   inst.layer = model.layers["Right Cantilever"]
+
+  # ═══ Film-Plane Right Support Beams ═══
+  defn = model.definitions.add("Film-Plane Right Support Beams")
+  ents = defn.entities
+  # FP support beam R-bot
+  grp = ents.add_group
+  grp.name = "FP support beam R-bot"
+  face = grp.entities.add_face([4609.mm,0.mm,150.mm], [4649.mm,0.mm,150.mm], [4649.mm,2362.mm,150.mm], [4609.mm,2362.mm,150.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP support beam R-top
+  grp = ents.add_group
+  grp.name = "FP support beam R-top"
+  face = grp.entities.add_face([4609.mm,0.mm,2248.mm], [4649.mm,0.mm,2248.mm], [4649.mm,2362.mm,2248.mm], [4609.mm,2362.mm,2248.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Film-Plane Right Support Beams"
+  inst.layer = model.layers["Film Plane"]
 
   # ═══ IBC Corridor Frame (deep box) ═══
   defn = model.definitions.add("IBC Corridor Frame (deep box)")
@@ -4072,7 +4091,7 @@ model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Container", "Processing Tray", "Walkways", "Cantilevers", "Cantilever Types", "Right Cantilever", "IBC Frame", "Left Support", "Labels"]
+keep_tags = ["Container", "Processing Tray", "Walkways", "Cantilevers", "Cantilever Types", "Right Cantilever", "Film Plane", "IBC Frame", "Left Support", "Labels"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -4093,7 +4112,7 @@ model.active_view.zoom(0.72)   # pull back so callouts have margin (and read lar
 
 # Overview — all subsystems, Labels + type-catalog OFF; listed first.
 model.pages.add("Overview")
-[["Walkway", ["Walkways", "Right Cantilever", "IBC Frame", "Processing Tray"]], ["Near/Far Cantilevers", ["Cantilevers", "Processing Tray"]], ["Right Cantilever", ["Right Cantilever", "IBC Frame", "Processing Tray"]], ["Left Support", ["Left Support", "Processing Tray"]]].each { |name, tags|
+[["Walkway", ["Walkways", "Right Cantilever", "Film Plane", "IBC Frame", "Processing Tray"]], ["Near/Far Cantilevers", ["Cantilevers", "Processing Tray"]], ["Right Cantilever", ["Right Cantilever", "Film Plane", "IBC Frame", "Processing Tray"]], ["Left Support", ["Left Support", "Processing Tray"]]].each { |name, tags|
   model.layers.each { |l| l.visible = (l == default_layer || l.name == "Container" || tags.include?(l.name)) }
   page = model.pages.add(name)
   page.use_camera = true

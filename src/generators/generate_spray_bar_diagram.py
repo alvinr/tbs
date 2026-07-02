@@ -925,19 +925,33 @@ def draw_sheet2():
            fs=5, color=C_HOSE, font=FONT, zorder=20)
 
     # ── Dimensions ───────────────────────────────────────────────────────
+    # Carriage TOP = the clamp-bolt top nut, proud of the top clamp plate (BEAM_Z_TOP +
+    # clp_t + 3) — the highest part; this is what governs the under-grate clearance and the
+    # ribbon/carriage interference check.
+    carriage_top_z = BEAM_Z_TOP + clp_t + 3
+
     draw_dim_v(ax2, c_beam_l - 10, BEAM_Z_BOT, BEAM_Z_TOP,
-               f"{BEAM_W}mm", offset=6, fs=5.5, font=FONT)
+               f"{BEAM_H}mm", offset=6, fs=5.5, font=FONT)
 
     draw_dim_h(ax2, wheel1_yd, wheel2_yd, TRAY_FLOOR_Z + WHEEL_DIA + 8,
                f"{WHEEL_SPACING_YD}mm WHEEL SPACING",
                offset=6, fs=5, font=FONT)
 
-    clearance_c = GRATE_Z_BOT - plate_top_z
-    draw_dim_v(ax2, c_beam_r + 10, plate_top_z, GRATE_Z_BOT,
+    # under-grate clearance — measured from the carriage's HIGHEST part (was the wheel plate)
+    clearance_c = GRATE_Z_BOT - carriage_top_z
+    draw_dim_v(ax2, c_beam_r + 10, carriage_top_z, GRATE_Z_BOT,
                f"{clearance_c:.0f}mm\nCLR", offset=6, fs=5, font=FONT, right=True)
 
-    draw_dim_v(ax2, c_beam_l - 22, TRAY_FLOOR_Z, BEAM_Z_BOT,
-               f"{BEAM_Z_BOT - TRAY_FLOOR_Z:.0f}mm\nSPRAY",
+    # OVERALL carriage height — raised tray floor to the highest part (the missing dim;
+    # datum relocated to FLOOR_LOCAL when the tray slope was added)
+    draw_dim_v(ax2, c_beam_l - 40, FLOOR_LOCAL, carriage_top_z,
+               f"{carriage_top_z - FLOOR_LOCAL:.0f}mm\nCARRIAGE HT",
+               offset=6, fs=4.5, font=FONT)
+
+    # beam-bottom clearance above the (raised) tray floor — was measured from the sheet
+    # thickness TRAY_FLOOR_Z(2) instead of the floor top FLOOR_LOCAL(20)
+    draw_dim_v(ax2, c_beam_l - 22, FLOOR_LOCAL, BEAM_Z_BOT,
+               f"{BEAM_Z_BOT - FLOOR_LOCAL:.0f}mm\nSPRAY",
                offset=6, fs=4.5, font=FONT)
 
     draw_dim_h(ax2, wk_yd_l, wk_yd_r, GRATE_Z_TOP + 18,

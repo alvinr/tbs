@@ -935,11 +935,12 @@ def panel_pivot():
 
 def spray_bar():
     """Spray-bar gantry — reuses the detailed spray-bar model builders so the
-    overview stays in sync with models/spraybar.skp: 40×40 SHS beam housing a 3/4"
-    LDPE pipe + 26 flat-fan nozzles, two-wheel carriages (curved saddle axle clamps
-    + top/bottom beam clamp plates), flange-base ball joint, distribution manifold
-    + 7 irrigation feed tubes, and the push pole bound to the supply hose with
-    zip ties. The tray-floor ref patch is omitted (overview has its own tray)."""
+    overview stays in sync with models/spraybar.skp: 40×25 304-SS RHS beam (laid flat)
+    with a SIDE-mounted 3/4" LDPE manifold + 26 side-tapped flat-fan nozzles, two-wheel
+    Ø32 carriages (curved saddle axle clamps + top/bottom beam clamp plates), flange-base
+    ball joint, distribution manifold + 7 irrigation feed tubes, and the push pole bound
+    to the supply hose with zip ties. The tray-floor ref patch is omitted (overview has
+    its own tray)."""
     import generate_spraybar_model as sb
     return '\n'.join([sb.build_beam(),
                       sb.build_carriages(include_floor=False),
@@ -947,6 +948,16 @@ def spray_bar():
 
 
 # ── Plumbing panel (pumps · filters · accumulator) ──────────────────────────
+#
+# TODO (2026-07-01): overview.skp's WATER/PLUMBING geometry is STALE — it still
+# renders the OLD pre-corridor-refactor layout.  The pinhole-wall-mount merge
+# (210f01cd, 2026-06-30) rebuilt the wet end into the split Corridor / Pinhole-Wall
+# plumbing panels in water.skp (generate_corridor_water_panel.py /
+# generate_pinhole_water_panel.py), but overview's own equipment_panel() /
+# water_hookups() / spray_bar_plumbing() / water_plumbing() were NEVER cascaded, so
+# re-sending overview reproduces the old design.  Cascade the current corridor/pinhole
+# panel layout into these functions (or import the panel builders) and re-send overview.
+# [carriage/tray-datum work of this branch left this untouched — separate task.]
 
 def equipment_panel():
     """18mm marine-ply panel in the IBC corridor carrying the wet end.

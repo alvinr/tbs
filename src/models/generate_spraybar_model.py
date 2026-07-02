@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Generate the TBS-001 Spray-Bar Gantry SketchUp model (logical model: spraybar).
 
-A focused model of the spray-bar gantry: the 40×40×3mm aluminum SHS beam (its
-34mm bore carries the wash water — no separate pipe), the two wheel carriages
+A focused model of the spray-bar gantry: the 40×25×3mm 304-SS RHS beam (its
+side-mounted 3/4" LDPE manifold carries the wash water), the two wheel carriages
 that roll on the tray floor, the spray jets, the feed hose, and the telescoping
 push pole. REUSES the ruby helpers from the Overview generator
 (generate_sketchup_model.py). Three scenes:
@@ -23,7 +23,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov          # ruby helpers + component()
 
 from tbs_constants import (
-    PROC_OPEN_X_L, PROC_OPEN_X_R, SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_T,
+    PROC_OPEN_X_L, PROC_OPEN_X_R, SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_W, SPRAY_BAR_BEAM_H, SPRAY_BAR_BEAM_T,
     SPRAY_BAR_BORE, SPRAY_BAR_POLY_OD, SPRAY_BAR_POLY_ID,
     SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, SPRAY_BAR_WHEEL_DIA, SPRAY_BAR_WHEEL_W,
     SPRAY_BAR_WHEEL_SP, SPRAY_BAR_AXLE_Z, SPRAY_BAR_N_NOZZLES,
@@ -44,8 +44,9 @@ C_STEEL  = "#B0B0B8"   # carriage plate / clamps
 C_NYLON  = "#33343A"   # nylon wheels
 C_WATER  = "#2060C0"   # feed hose / water in pipe
 C_TRAY   = "#9FB8C8"   # tray-floor reference patch
-C_POLY   = "#2A2A2A"   # LDPE irrigation poly pipe (inside the bore)
+C_POLY   = "#2A2A2A"   # LDPE irrigation poly pipe (side-mounted manifold)
 C_NOZZLE = "#3B7A3B"   # flat-fan spray nozzles
+C_SS     = "#B8BCC4"   # 304 stainless RHS beam
 C_CLAMP  = "#C0C0C8"   # saddle / U-clamps
 C_BOLT   = "#80808A"   # axle + bolts
 
@@ -55,8 +56,8 @@ C_BOLT   = "#80808A"   # axle + bolts
 # the 3D beam previously used PROC_OPEN_X and fell 300mm short of the tray each side.)
 XL, XR = PROC_TRAY_X_L + 30, PROC_TRAY_X_R - 30          # beam span = tray width (200..4599)
 NXL, NXR = PROC_OPEN_X_L, PROC_OPEN_X_R                  # nozzle span = print open zone
-S = SPRAY_BAR_BEAM                                       # 40
-ZB, ZT = SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP               # 20 .. 60
+S = SPRAY_BAR_BEAM                                       # 40 (Yd width)
+ZB, ZT = SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP               # 29 .. 54 (@ low corner)
 
 
 def ruby_saddle(name, xc, sw, cy, cz, ri, t, a0_deg, a1_deg, color, n=24):
@@ -97,35 +98,34 @@ def ruby_saddle(name, xc, sw, cy, cz, ri, t, a0_deg, a1_deg, color, n=24):
 
 def build_beam():
     parts = []
-    bore_cz = ZB + S / 2                   # bore / poly-pipe center Z (= 40)
-    # 40x40 SHS beam — translucent so the internal irrigation pipe reads
-    parts.append(ov.ruby_box("Spray Beam 40x40x3 Al SHS",
-                             XL, GY - S / 2, ZB, XR - XL, S, S,
-                             color=C_ALUM, alpha=0.45))
+    BH = SPRAY_BAR_BEAM_H                       # 25 — beam height in Z (laid flat)
+    poly_cy = GY + S / 2 + SPRAY_BAR_POLY_OD / 2   # poly on the beam's inboard (+Yd) side face
+    poly_cz = ZB + BH / 2                          # poly center at beam mid-height
+    # 40×25×3 304-SS RHS beam (laid flat — low profile for grate clearance)
+    parts.append(ov.ruby_box("Spray Beam 40x25x3 304-SS RHS",
+                             XL, GY - S / 2, ZB, XR - XL, S, BH, color=C_SS))
     # end caps (left = feed end)
     parts.append(ov.ruby_box("Beam End Cap (feed)",
-                             XL - 4, GY - S / 2, ZB, 4, S, S, color=C_ALUM))
+                             XL - 4, GY - S / 2, ZB, 4, S, BH, color=C_SS))
     parts.append(ov.ruby_box("Beam End Cap",
-                             XR, GY - S / 2, ZB, 4, S, S, color=C_ALUM))
-    # 3/4" LDPE irrigation poly pipe inside the bore (+ translucent water core)
-    parts.append(ov.ruby_cylinder("Irrigation Poly Pipe (3/4 LDPE)",
-                                  XL, GY, bore_cz, SPRAY_BAR_POLY_OD / 2, XR - XL,
+                             XR, GY - S / 2, ZB, 4, S, BH, color=C_SS))
+    # 3/4" LDPE poly manifold — SIDE-mounted on the beam's inboard face (+ water core)
+    parts.append(ov.ruby_cylinder("Side Poly Manifold (3/4 LDPE)",
+                                  XL, poly_cy, poly_cz, SPRAY_BAR_POLY_OD / 2, XR - XL,
                                   color=C_POLY, axis="x"))
-    parts.append(ov.ruby_cylinder("Water in Pipe",
-                                  XL, GY, bore_cz, SPRAY_BAR_POLY_ID / 2, XR - XL,
+    parts.append(ov.ruby_cylinder("Water in Manifold",
+                                  XL, poly_cy, poly_cz, SPRAY_BAR_POLY_ID / 2, XR - XL,
                                   color=C_WATER, axis="x", alpha=0.55))
-    # flat-fan nozzles barbed into the poly pipe, spraying down through the beam
-    # (true 150mm pitch, centerd on the span)
+    # flat-fan nozzles — side-tapped (saddle-tee) into the poly manifold, spray down-and-in
+    # (true 150mm pitch, centered on the span)
     sp = 150
     margin = ((NXR - NXL) - (SPRAY_BAR_N_NOZZLES - 1) * sp) / 2
     for i in range(SPRAY_BAR_N_NOZZLES):
         nx = NXL + margin + i * sp
-        # threaded body: barbs UP from the beam bottom through the poly pipe BOTTOM
-        # wall, tip ending inside the bore (one wall only — not through the top wall)
-        parts.append(ov.ruby_cylinder("Nozzle Body", nx, GY, ZB, 4,
-                                      bore_cz - ZB, color=C_NOZZLE, axis="z"))
-        # flat-fan nozzle below the beam, seated FLUSH against the beam bottom
-        parts.append(ov.ruby_cylinder("Nozzle Tip", nx, GY, ZB - 6, 6.5, 6,
+        # saddle-tee barb into the poly + nozzle body hanging below it
+        parts.append(ov.ruby_cylinder("Nozzle Body", nx, poly_cy, poly_cz - 12, 4, 12,
+                                      color=C_NOZZLE, axis="z"))
+        parts.append(ov.ruby_cylinder("Nozzle Tip", nx, poly_cy, poly_cz - 18, 6.5, 6,
                                       color=C_NOZZLE, axis="z"))
     return '\n'.join(parts)
 
@@ -133,11 +133,11 @@ def build_beam():
 def _carriage(xend, side, din):
     """One wheel carriage (2D Detail C/D). The carriage is the full beam width in
     X with its OUTER edge flush with the beam end (`din` = +1 left end, -1 right).
-    Notched 5mm Al plate (two wings) + two Ø50 nylon wheels on Ø10 through-axles
+    Notched 5mm Al plate (two wings) + two Ø32 nylon wheels on Ø8 through-axles
     (saddle clamps + M5 bolts); the beam is sandwiched by TWO flat C-clamps (one
     per face) that hook over the beam top and bolt down through the plate."""
     parts = []
-    ww, wd, az = SPRAY_BAR_WHEEL_W, SPRAY_BAR_WHEEL_DIA, SPRAY_BAR_AXLE_Z  # 20, 50, 27
+    ww, wd, az = SPRAY_BAR_WHEEL_W, SPRAY_BAR_WHEEL_DIA, SPRAY_BAR_AXLE_Z  # 20, 32, 36
     half = SPRAY_BAR_WHEEL_SP / 2          # 100 — wheel offset in Yd
     plate_z = az + 2                        # 29 — plate bottom (2mm above axle)
     plate_t = 5                             # 5mm Al plate
@@ -155,7 +155,7 @@ def _carriage(xend, side, din):
                              cx0, GY + notch, plate_z,
                              CW, (GY + half + 18) - (GY + notch), plate_t, color=C_ALUM))
 
-    # ── each wheel: Ø50 nylon on a Ø10 through-axle (centerd on the wing). The
+    # ── each wheel: Ø32 nylon on a Ø8 through-axle (centerd on the wing). The
     # axle is retained by a curved saddle clamp on EACH side of the wheel (like a
     # conduit/pipe saddle), each bolted down through the plate with two bolts
     # straddling the axle — two bolts either side of the wheel. ──
@@ -319,8 +319,8 @@ def build_feed_pole():
 
     # ── water feed: the blue hose runs down the pole and terminates at a manifold
     #    by the ball joint; a series of irrigation tubes branch from it along the
-    #    beam top to feed points, each barbed through the beam wall into the
-    #    internal poly pipe (per Sheet 7 connection detail) ──
+    #    beam top to feed points, each barbed via a saddle-tee into the SIDE
+    #    poly manifold (per Sheet 7 connection detail) ──
     # distribution manifold on the beam top, beside the ball joint
     man_cx, man_z = cx + 38, ZT + 4
     man_top = man_z + 18
@@ -364,27 +364,29 @@ def build_feed_pole():
             for k in range(10):
                 parts.append(ov.ruby_pipe("Zip Tie", loop[k], loop[(k + 1) % 10], 1.2,
                                           color="#888888", n=6))
-    # 7 irrigation tubes + barbed fittings into the poly pipe. Tubes that must pass
+    # 7 irrigation tubes + barbed tees into the SIDE poly manifold. Tubes that must pass
     # the ball joint detour along the beam BACK edge so they go AROUND the socket —
     # never through it (no pipes through objects). The center feed is nudged clear
     # of the ball joint footprint.
     nfeed = 7
-    bore_cz = ZB + S / 2
+    BH = SPRAY_BAR_BEAM_H
+    poly_cy = GY + S / 2 + SPRAY_BAR_POLY_OD / 2     # side manifold Yd (inboard face)
+    poly_cz = ZB + BH / 2                            # side manifold Z (beam mid-height)
     rear = by + 30                                   # back-edge bypass lane (clear of socket + U-bolt)
     fz = man_z + 9                                   # tube routing height
     for j in range(nfeed):
         fx = XL + (j + 0.5) / nfeed * (XR - XL)
         if j == (nfeed - 1) / 2:                     # center slot lands on the ball joint
             fx = cx + 80                             # nudge clear of the Ø36 socket
-        if fx > cx + 30:                             # clear of the joint — route directly (one elbow)
-            wp = [(man_cx + 14, by, fz), (fx, by, fz), (fx, by, ZT + 6)]
+        if fx > cx + 30:                             # clear of the joint — route directly
+            wp = [(man_cx + 14, by, fz), (fx, by, fz), (fx, poly_cy, fz), (fx, poly_cy, poly_cz + 14)]
         else:                                        # left — detour around the joint via the back edge
             wp = [(man_cx, by + 12, fz), (man_cx, rear, fz),
-                  (fx, rear, fz), (fx, by, fz), (fx, by, ZT + 6)]
+                  (fx, rear, fz), (fx, poly_cy, fz), (fx, poly_cy, poly_cz + 14)]
         # orthogonal run with swept-torus elbow fittings at every bend (per the rule)
         parts.append(ov.ruby_pipe_run("Feed Tube", wp, 3.0, color=C_WATER, elbow_r=5))
-        parts.append(ov.ruby_cylinder("Feed Barb Fitting",
-                     fx, by, bore_cz - 2, 4, (ZT + 6) - (bore_cz - 2), color=C_NOZZLE, axis="z"))
+        parts.append(ov.ruby_cylinder("Feed Barb Tee", fx, poly_cy, poly_cz - 2, 4, 16,
+                     color=C_NOZZLE, axis="z"))
     return '\n'.join(parts)
 
 

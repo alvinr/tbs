@@ -4,9 +4,9 @@
 
 ## The Big Shoebox Project — TBS-001
 
-**Copyright © 2026 Alvin Richards. All rights reserved.**
+**Copyright © 2026 Alvin Richards.**
 
-This project is released as open-source software under the **GNU Affero General Public License, Version 3** (GNU AGPLv3).
+This project is released as open-source software under the **[GNU Affero General Public License, Version 3](https://www.gnu.org/licenses/agpl-3.0.html)** (GNU AGPLv3).
 
 The full license text is available in the [`LICENSE`](https://github.com/alvinr/tbs/blob/main/LICENSE) file in the project repository.
 
@@ -36,3 +36,10 @@ Full source — Markdown documents, Python diagram generators, and build scripts
 ## Contact
 
 Alvin Richards — project correspondence via the GitHub repository linked above.
+
+---
+
+## Source References
+
+1. [GNU Affero General Public License v3.0 — official text](https://www.gnu.org/licenses/agpl-3.0.html) — the formal license this project is released under.
+2. [`LICENSE` file (project repository)](https://github.com/alvinr/tbs/blob/main/LICENSE) — the AGPLv3 copy distributed with the source.

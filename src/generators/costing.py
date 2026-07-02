@@ -169,7 +169,7 @@ WATER = [
     LineItem("Valves and fittings (6× BV ball valves, X1 4-way cross, S60×6 adapters, CV1, SV-01 + SV-02 taps, Blue equalization tie)", 357, 486, 615),
     LineItem("Pipe (HDPE, spray bar)", 80, 97, 114),
     LineItem("Processing tray (304 SS panels + fabrication, shim strips, sump pickup, liner, hardware)", 1300, 1660, 2015),
-    LineItem("Spray bar assembly (beam, LDPE pipe, 26 nozzles, manifold + 7 feed tubes, 4 wheels, ball joint, arm, hose)", 235, 267, 299),
+    LineItem("Spray bar assembly (40×25 SS RHS beam, side LDPE manifold, 26 nozzles, manifold + 7 feed tubes, 4 Ø32 wheels, ball joint, arm, hose)", 287, 331, 375),
     LineItem("Electrical (wiring only — fuse block in Electrical Report)", 35, 35, 35),
     LineItem("Processing consumables (6-mil poly, pH meter, citric acid)", 241, 241, 241),
 ]
@@ -945,9 +945,9 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 909,  "total": 1210, "per_print": 24},  # 909 not 910: consistent ferri rounding ($104, not the doc's hand-rounded $105)
     "standard": {"chem": 1353, "total": 1650, "per_print": 33},
     "rich":     {"chem": 2681, "total": 2980, "per_print": 60},
-    "grand_total": (21515, 27297, 35146),  # + corridor plumbing-panel structure (marine ply backing board + spine + shirt + mount brackets, +$215/+$380 — previously uncosted)
+    "grand_total": (21567, 27361, 35222),  # spray-bar carriage shrink 2026-07-01 (+$52/+$64/+$76, SS beam). Prior: + corridor plumbing-panel structure (marine ply backing board + spine + shirt + mount brackets, +$215/+$380 — previously uncosted)
     "walkway": (2000, 2488, 2975),   # §6a fab line raised so bracket scope matches walkway-report §10 ($742–$1,255 all-in)
-    "water": (4485, 5616, 6739),   # + corridor plumbing-panel structure (marine ply board + drain-riser spine + pump-mount shirt + mount brackets, +$215/+$298/+$380 — was uncosted). Prior: panel-split cascade 2026-06-28 (+P-05 pump, +SV-02, +5th bracket, −2 CV, +X1 4-way cross, BVs reconciled, +Blue equalization tie)
+    "water": (4537, 5680, 6815),   # spray-bar carriage shrink 2026-07-01: 40×40 alu SHS → 40×25 304-SS RHS + Ø32 wheels (−sleeve), spray line 235/267/299 → 287/331/375 (+$52/+$64/+$76). Prior: + corridor plumbing-panel structure (marine ply board + drain-riser spine + pump-mount shirt + mount brackets, +$215/+$298/+$380 — was uncosted). Prior: panel-split cascade 2026-06-28 (+P-05 pump, +SV-02, +5th bracket, −2 CV, +X1 4-way cross, BVs reconciled, +Blue equalization tie)
     "container": (2300, 3300, 4300),
     "lightlock": (1385, 1728, 2070),   # §6 = hinged-panel §8.2 (housing + drum) line items
     "swingpivot": (855, 1143, 1430),   # §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items

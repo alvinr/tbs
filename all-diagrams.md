@@ -174,6 +174,8 @@
 
 ![TBS-001 — Walkway Routing Section F-F: through the far cantilever](assets/walkway-sections-sheet5.png)
 
+![TBS-001 — Walkway Routing Section G-G/H-H: tray drainage slope, welded-pan support, and spray-carriage clearance](assets/walkway-sections-sheet6.png)
+
 ---
 
 ## 15. IBC Stacking & Securing

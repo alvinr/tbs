@@ -344,10 +344,21 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # ═══ Processing Tray (partial) ═══
   defn = model.definitions.add("Processing Tray (partial)")
   ents = defn.entities
+  # Tray Shim Base (partial)
+  grp = ents.add_group
+  grp.name = "Tray Shim Base (partial)"
+  face = grp.entities.add_face([170.mm,80.mm,0.mm], [1600.mm,80.mm,0.mm], [1600.mm,2280.mm,0.mm], [170.mm,2280.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(42.22.mm)
+  mat = model.materials["Tray Shim Base (partial)"] || model.materials.add("Tray Shim Base (partial)")
+  mat.color = Sketchup::Color.new(216, 207, 188)
+  mat.alpha = 0.6
+  grp.material = mat
+
   # Processing Tray Floor (partial)
   grp = ents.add_group
   grp.name = "Processing Tray Floor (partial)"
-  face = grp.entities.add_face([170.mm,80.mm,0.mm], [1600.mm,80.mm,0.mm], [1600.mm,2280.mm,0.mm], [170.mm,2280.mm,0.mm])
+  face = grp.entities.add_face([170.mm,80.mm,42.22.mm], [1600.mm,80.mm,42.22.mm], [1600.mm,2280.mm,42.22.mm], [170.mm,2280.mm,42.22.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
   mat = model.materials["Processing Tray Floor (partial)"] || model.materials.add("Processing Tray Floor (partial)")
@@ -358,7 +369,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Tray Rim Near (partial)
   grp = ents.add_group
   grp.name = "Tray Rim Near (partial)"
-  face = grp.entities.add_face([170.mm,80.mm,2.mm], [1600.mm,80.mm,2.mm], [1600.mm,82.mm,2.mm], [170.mm,82.mm,2.mm])
+  face = grp.entities.add_face([170.mm,80.mm,44.22.mm], [1600.mm,80.mm,44.22.mm], [1600.mm,82.mm,44.22.mm], [170.mm,82.mm,44.22.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
   mat = model.materials["Processing Tray Floor (partial)"] || model.materials.add("Processing Tray Floor (partial)")
@@ -369,7 +380,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Tray Rim Far (partial)
   grp = ents.add_group
   grp.name = "Tray Rim Far (partial)"
-  face = grp.entities.add_face([170.mm,2278.mm,2.mm], [1600.mm,2278.mm,2.mm], [1600.mm,2280.mm,2.mm], [170.mm,2280.mm,2.mm])
+  face = grp.entities.add_face([170.mm,2278.mm,44.22.mm], [1600.mm,2278.mm,44.22.mm], [1600.mm,2280.mm,44.22.mm], [170.mm,2280.mm,44.22.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
   mat = model.materials["Processing Tray Floor (partial)"] || model.materials.add("Processing Tray Floor (partial)")
@@ -380,7 +391,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Tray Rim Left (cargo end)
   grp = ents.add_group
   grp.name = "Tray Rim Left (cargo end)"
-  face = grp.entities.add_face([170.mm,80.mm,2.mm], [172.mm,80.mm,2.mm], [172.mm,2280.mm,2.mm], [170.mm,2280.mm,2.mm])
+  face = grp.entities.add_face([170.mm,80.mm,44.22.mm], [172.mm,80.mm,44.22.mm], [172.mm,2280.mm,44.22.mm], [170.mm,2280.mm,44.22.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
   mat = model.materials["Processing Tray Floor (partial)"] || model.materials.add("Processing Tray Floor (partial)")
@@ -391,7 +402,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Chemistry Bath (partial)
   grp = ents.add_group
   grp.name = "Chemistry Bath (partial)"
-  face = grp.entities.add_face([172.mm,82.mm,2.mm], [1598.mm,82.mm,2.mm], [1598.mm,2278.mm,2.mm], [172.mm,2278.mm,2.mm])
+  face = grp.entities.add_face([172.mm,82.mm,44.22.mm], [1598.mm,82.mm,44.22.mm], [1598.mm,2278.mm,44.22.mm], [172.mm,2278.mm,44.22.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Chemistry Bath (partial)"] || model.materials.add("Chemistry Bath (partial)")
@@ -1416,7 +1427,7 @@ ents = defn.entities
   grp = ents.add_group
   grp.name = "LT Drum opening brush seal"
   ge = grp.entities
-  circle = ge.add_circle([-735.9104883076718.mm,899.1376331524525.mm,130.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([-735.9104883076719.mm,899.1376331524525.mm,130.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2120.mm)
@@ -2076,7 +2087,7 @@ ents = sr_defn.entities
   circle = ge.add_circle([1795.mm,60.mm,500.mm], [0,1,0], 8.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
-  cface.pushpull(406.91679805254313.mm)
+  cface.pushpull(406.916798052543.mm)
   mat = model.materials["Stay rod (eye side)"] || model.materials.add("Stay rod (eye side)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -2086,7 +2097,7 @@ ents = sr_defn.entities
   grp = ents.add_group
   grp.name = "Turnbuckle barrel"
   ge = grp.entities
-  circle = ge.add_circle([1795.mm,466.91679805254313.mm,500.mm], [0,1,0], 14.mm, 24)
+  circle = ge.add_circle([1795.mm,466.916798052543.mm,500.mm], [0,1,0], 14.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(120.mm)
@@ -2102,7 +2113,7 @@ ents = sr_defn.entities
   circle = ge.add_circle([1795.mm,586.9167980525431.mm,500.mm], [0,1,0], 8.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
-  cface.pushpull(377.3427531753305.mm)
+  cface.pushpull(377.34275317533024.mm)
   mat = model.materials["Stay rod (eye side)"] || model.materials.add("Stay rod (eye side)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -2111,7 +2122,7 @@ ents = sr_defn.entities
   # Stay clevis (hook end)
   grp = ents.add_group
   grp.name = "Stay clevis (hook end)"
-  face = grp.entities.add_face([1783.mm,964.2595512278735.mm,488.mm], [1807.mm,964.2595512278735.mm,488.mm], [1807.mm,988.2595512278735.mm,488.mm], [1783.mm,988.2595512278735.mm,488.mm])
+  face = grp.entities.add_face([1783.mm,964.2595512278733.mm,488.mm], [1807.mm,964.2595512278733.mm,488.mm], [1807.mm,988.2595512278733.mm,488.mm], [1783.mm,988.2595512278733.mm,488.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -2137,7 +2148,7 @@ ents = sr_defn.entities
   circle = ge.add_circle([1795.mm,60.mm,2050.mm], [0,1,0], 8.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
-  cface.pushpull(406.91679805254313.mm)
+  cface.pushpull(406.916798052543.mm)
   mat = model.materials["Stay rod (eye side)"] || model.materials.add("Stay rod (eye side)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -2147,7 +2158,7 @@ ents = sr_defn.entities
   grp = ents.add_group
   grp.name = "Turnbuckle barrel"
   ge = grp.entities
-  circle = ge.add_circle([1795.mm,466.91679805254313.mm,2050.mm], [0,1,0], 14.mm, 24)
+  circle = ge.add_circle([1795.mm,466.916798052543.mm,2050.mm], [0,1,0], 14.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(120.mm)
@@ -2163,7 +2174,7 @@ ents = sr_defn.entities
   circle = ge.add_circle([1795.mm,586.9167980525431.mm,2050.mm], [0,1,0], 8.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
-  cface.pushpull(377.3427531753305.mm)
+  cface.pushpull(377.34275317533024.mm)
   mat = model.materials["Stay rod (eye side)"] || model.materials.add("Stay rod (eye side)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -2172,7 +2183,7 @@ ents = sr_defn.entities
   # Stay clevis (hook end)
   grp = ents.add_group
   grp.name = "Stay clevis (hook end)"
-  face = grp.entities.add_face([1783.mm,964.2595512278735.mm,2038.mm], [1807.mm,964.2595512278735.mm,2038.mm], [1807.mm,988.2595512278735.mm,2038.mm], [1783.mm,988.2595512278735.mm,2038.mm])
+  face = grp.entities.add_face([1783.mm,964.2595512278733.mm,2038.mm], [1807.mm,964.2595512278733.mm,2038.mm], [1807.mm,988.2595512278733.mm,2038.mm], [1783.mm,988.2595512278733.mm,2038.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -2793,7 +2804,7 @@ anc = Geom::Point3d.new(170.mm, 1181.mm, 2268.mm)
 txt = entities.add_text("FILM-PLANE RAILS
 (left pair removable)", anc, Geom::Vector3d.new(1400.mm, 0.mm, 300.mm))
 txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(1814.3813260216311.mm, 0.mm, 1075.mm)
+anc = Geom::Point3d.new(1814.381326021631.mm, 0.mm, 1075.mm)
 txt = entities.add_text("TRANSPORT STAY anchor
 (bolted plates; rod→wall when swung)", anc, Geom::Vector3d.new(300.mm, -300.mm, 700.mm))
 txt.layer = model.layers["Labels"] rescue nil

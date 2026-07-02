@@ -1110,8 +1110,8 @@ def sheet3():
     WK_L_X    = WALKWAY_RIGHT_X               # 4329 — left long beam
     WK_R_X    = WALKWAY_RIGHT_X + WALKWAY_W   # 4629 — right long beam
     WALL_X    = RAIL_X_R                      # 4649 — right side-wall station (film rail / combined plate)
-    UP_X0     = IBC_COL_X                     # 4674 — IBC corridor upright near X
-    ARM_X     = IBC_COL_X + 60                # 4734 — arm root station
+    UP_X0     = IBC_COL_X - 20                # 4654 — deep-box FRONT upright (arm clamps here; reconciled from tote-col 4674)
+    ARM_X     = IBC_COL_X - 20                # 4654 — arm root station (= RWK_X_UP; reconciled from 4734)
     UP_YDS    = [(CORRIDOR_YD_NEAR, CORRIDOR_YD_NEAR + IBC_FRAME_RHS),  # near upright 1046–1096
                  (CORRIDOR_YD_FAR - IBC_FRAME_RHS, CORRIDOR_YD_FAR)]     # far  upright 1266–1316
     ARM_YDS   = [yc + IBC_FRAME_RHS / 2 for (yc, _) in UP_YDS]           # arm centerlines
@@ -1342,7 +1342,7 @@ def sheet4():
     leader(ax, (legx), (grate_bot * 0.5), (legx - 70), (grate_bot * 0.5),
            "FLOOR-LEG CANTILEVER\nBRACKET (x5) - 50x50 post\non bare floor + arm to X470\n(SEE SHEET 6)",
            color=C_SUPPORT, fs=5, ha="center", va="center", arrow_style="-|>", font=FONT)
-    # Spray bar passes under the arm tip (Z20-60, stays at floor level)
+    # Spray bar passes under the arm tip (40×25 SS, rides the sloped tray floor)
     ax.add_patch(Rectangle(((LEFT_WK_R), (SPRAY_BAR_Z_BOT)), (40),
                             (SPRAY_BAR_Z_TOP - SPRAY_BAR_Z_BOT), fc="#C8D8E8", ec=C_OUT, lw=1.0, zorder=4))
 
@@ -1542,7 +1542,7 @@ def sheet5():
 
     # Spray-bar travel zone (X>=470, under the grate)
     ax.add_patch(Rectangle((0, std), C_WID, 980 - std, fc="#EAF2FA", ec="none", zorder=1))
-    ax.text(2080, (std + wide) / 2, "SPRAY BAR travels here\n(under the grate, Z20-60)",
+    ax.text(2080, (std + wide) / 2, "SPRAY BAR travels here\n(under the grate, on the sloped floor)",
             ha="center", va="center", fontsize=6, color="#3A7AB0", style="italic", zorder=2)
     # Tray rim line at X=170
     ax.plot([0, C_WID], [tray_x, tray_x], color=C_TRAY, lw=1.6, zorder=3)
@@ -1644,7 +1644,7 @@ def sheet6():
     std_reach = LEFT_WK_CANT_STD_REACH       # 470
     arm_x0 = legx + post / 2                 # 165
     rim = PROC_TRAY_RIM                      # 50
-    sb0, sb1 = SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP   # 20, 60
+    sb0, sb1 = SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP   # 29, 54 @ low corner (floor-relative)
     nb = LEFT_WK_CANT_FOOT_BOLT_N            # 4
 
     fig, (axA, axB) = plt.subplots(1, 2, figsize=(18, 10),
@@ -1684,13 +1684,13 @@ def sheet6():
                             fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="xx", alpha=0.85, zorder=8))
     leader(axA, 430, grate_top, 445, grate_top + 30, "15mm GRATE (lift-out)",
            color=C_OUT, fs=5.5, ha="center", va="bottom", arrow_style="-|>", font=FONT)
-    # Spray bar (passes UNDER the arm tip — at X470, Z20-60, stays at floor level)
+    # Spray bar (passes UNDER the arm tip — 40×25 SS RHS, rides the sloped tray floor)
     axA.add_patch(Rectangle((std_reach, sb0), 40, sb1 - sb0, fc=C_SB, ec=C_OUT, lw=1.2, zorder=5))
     leader(axA, std_reach + 20, sb1, std_reach + 60, sb1 + 30,
-           "SPRAY BAR Z20-60\n(stays at floor level)",
+           "SPRAY BAR (40×25 SS)\n(rides the sloped floor)",
            color=C_OUT, fs=5.5, ha="left", va="bottom", arrow_style="-|>", font=FONT)
-    # The key clearance: arm underside (Z75) over the spray-bar top (Z60) = 15mm
-    draw_dim_v(axA, std_reach - 18, sb1, arm_z0, "15", offset=5, fs=6, right=False, font=FONT)
+    # The key clearance: arm underside over the spray-bar top (computed from the constants)
+    draw_dim_v(axA, std_reach - 18, sb1, arm_z0, f"{arm_z0 - sb1:.0f}", offset=5, fs=6, right=False, font=FONT)
     axA.text(std_reach - 52, (sb1 + arm_z0) / 2, "SPRAY-BAR\nCLEARANCE", ha="right", va="center",
              fontsize=5, color="#208020", fontweight="bold", **FONT)
     # Floor anchors (4x M10 through the foot plate; 2 visible in this section).
@@ -2544,7 +2544,7 @@ def sheet9():
     # Spray-bar travel zone (X>=470) under the deck
     ax.add_patch(Rectangle((BEARER_X, yL - 60), (OUTER_X + 150) - BEARER_X, (yR + 60) - (yL - 60),
                            fc="#EAF2FA", ec="none", zorder=1))
-    ax.text(OUTER_X + 40, (yL + yR) / 2, "SPRAY BAR travels here\n(under the deck, Z20-60)",
+    ax.text(OUTER_X + 40, (yL + yR) / 2, "SPRAY BAR travels here\n(under the deck, on the sloped floor)",
             ha="left", va="center", fontsize=5.5, color="#3A7AB0", style="italic", zorder=2)
     for cy in punch_yds:
         ax.add_patch(Rectangle((arm_x0, cy - 16), OUTER_X - arm_x0, 32,

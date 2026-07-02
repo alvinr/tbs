@@ -1427,7 +1427,7 @@ ents = defn.entities
   grp = ents.add_group
   grp.name = "LT Drum opening brush seal"
   ge = grp.entities
-  circle = ge.add_circle([-735.9104883076719.mm,899.1376331524525.mm,130.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([-735.9104883076718.mm,899.1376331524525.mm,130.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2120.mm)
@@ -2087,7 +2087,7 @@ ents = sr_defn.entities
   circle = ge.add_circle([1795.mm,60.mm,500.mm], [0,1,0], 8.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
-  cface.pushpull(406.916798052543.mm)
+  cface.pushpull(406.91679805254313.mm)
   mat = model.materials["Stay rod (eye side)"] || model.materials.add("Stay rod (eye side)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -2097,7 +2097,7 @@ ents = sr_defn.entities
   grp = ents.add_group
   grp.name = "Turnbuckle barrel"
   ge = grp.entities
-  circle = ge.add_circle([1795.mm,466.916798052543.mm,500.mm], [0,1,0], 14.mm, 24)
+  circle = ge.add_circle([1795.mm,466.91679805254313.mm,500.mm], [0,1,0], 14.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(120.mm)
@@ -2113,7 +2113,7 @@ ents = sr_defn.entities
   circle = ge.add_circle([1795.mm,586.9167980525431.mm,500.mm], [0,1,0], 8.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
-  cface.pushpull(377.34275317533024.mm)
+  cface.pushpull(377.3427531753305.mm)
   mat = model.materials["Stay rod (eye side)"] || model.materials.add("Stay rod (eye side)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -2122,7 +2122,7 @@ ents = sr_defn.entities
   # Stay clevis (hook end)
   grp = ents.add_group
   grp.name = "Stay clevis (hook end)"
-  face = grp.entities.add_face([1783.mm,964.2595512278733.mm,488.mm], [1807.mm,964.2595512278733.mm,488.mm], [1807.mm,988.2595512278733.mm,488.mm], [1783.mm,988.2595512278733.mm,488.mm])
+  face = grp.entities.add_face([1783.mm,964.2595512278735.mm,488.mm], [1807.mm,964.2595512278735.mm,488.mm], [1807.mm,988.2595512278735.mm,488.mm], [1783.mm,988.2595512278735.mm,488.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -2148,7 +2148,7 @@ ents = sr_defn.entities
   circle = ge.add_circle([1795.mm,60.mm,2050.mm], [0,1,0], 8.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
-  cface.pushpull(406.916798052543.mm)
+  cface.pushpull(406.91679805254313.mm)
   mat = model.materials["Stay rod (eye side)"] || model.materials.add("Stay rod (eye side)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -2158,7 +2158,7 @@ ents = sr_defn.entities
   grp = ents.add_group
   grp.name = "Turnbuckle barrel"
   ge = grp.entities
-  circle = ge.add_circle([1795.mm,466.916798052543.mm,2050.mm], [0,1,0], 14.mm, 24)
+  circle = ge.add_circle([1795.mm,466.91679805254313.mm,2050.mm], [0,1,0], 14.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(120.mm)
@@ -2174,7 +2174,7 @@ ents = sr_defn.entities
   circle = ge.add_circle([1795.mm,586.9167980525431.mm,2050.mm], [0,1,0], 8.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
-  cface.pushpull(377.34275317533024.mm)
+  cface.pushpull(377.3427531753305.mm)
   mat = model.materials["Stay rod (eye side)"] || model.materials.add("Stay rod (eye side)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -2183,7 +2183,7 @@ ents = sr_defn.entities
   # Stay clevis (hook end)
   grp = ents.add_group
   grp.name = "Stay clevis (hook end)"
-  face = grp.entities.add_face([1783.mm,964.2595512278733.mm,2038.mm], [1807.mm,964.2595512278733.mm,2038.mm], [1807.mm,988.2595512278733.mm,2038.mm], [1783.mm,988.2595512278733.mm,2038.mm])
+  face = grp.entities.add_face([1783.mm,964.2595512278735.mm,2038.mm], [1807.mm,964.2595512278735.mm,2038.mm], [1807.mm,988.2595512278735.mm,2038.mm], [1783.mm,988.2595512278735.mm,2038.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -2804,7 +2804,7 @@ anc = Geom::Point3d.new(170.mm, 1181.mm, 2268.mm)
 txt = entities.add_text("FILM-PLANE RAILS
 (left pair removable)", anc, Geom::Vector3d.new(1400.mm, 0.mm, 300.mm))
 txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(1814.381326021631.mm, 0.mm, 1075.mm)
+anc = Geom::Point3d.new(1814.3813260216311.mm, 0.mm, 1075.mm)
 txt = entities.add_text("TRANSPORT STAY anchor
 (bolted plates; rod→wall when swung)", anc, Geom::Vector3d.new(300.mm, -300.mm, 700.mm))
 txt.layer = model.layers["Labels"] rescue nil
@@ -2857,13 +2857,9 @@ eye = ctr.offset(dir, bb.diagonal * 1.5)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 model.active_view.zoom(0.62)   # pull back so callouts have margin (and read larger)
-# Main interactive scene — Labels OFF.
-page = model.pages.add("Light Trap — click panel to swing")
+# Overview — main interactive scene (Labels OFF), listed first.
+page = model.pages.add("Overview")
 page.use_camera = true
-# Labeled — same view + component callouts.
-model.layers["Labels"].visible = true if model.layers["Labels"]
-lpage = model.pages.add("Labeled"); lpage.use_camera = true
-model.layers["Labels"].visible = false if model.layers["Labels"]
 
 # ── "Handle · Frame · Pivot" scene — isolate the swinging panel (frame + interior pull
 #    handle) and the Ø89 pivot post, hiding the container/tray/walkway clutter so the
@@ -2886,6 +2882,13 @@ model.active_view.zoom(hf_focus) unless hf_focus.empty?   # fit the isolated pan
 model.active_view.zoom(0.9)                               # small margin around the assembly
 hfpage = model.pages.add("Handle · Frame · Pivot"); hfpage.use_camera = true
 model.layers.each { |l| l.visible = true }      # restore for the default state
+model.layers["Labels"].visible = false if model.layers["Labels"]
+
+# Labeled — Overview view + component callouts, listed LAST (project rule: every .skp gets a Labeled scene).
+model.active_view.zoom_extents
+model.active_view.zoom(0.62)
+model.layers["Labels"].visible = true if model.layers["Labels"]
+lpage = model.pages.add("Labeled"); lpage.use_camera = true
 model.layers["Labels"].visible = false if model.layers["Labels"]
 
 model.commit_operation

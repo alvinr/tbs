@@ -981,13 +981,9 @@ eye = ctr.offset(dir, bb.diagonal * 1.5)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 model.active_view.zoom(0.62)   # pull back so callouts have margin (and read larger)
-# Main interactive scene — Labels OFF.
-page = model.pages.add("Light Trap — click panel to swing")
+# Overview — main interactive scene (Labels OFF), listed first.
+page = model.pages.add("Overview")
 page.use_camera = true
-# Labeled — same view + component callouts.
-model.layers["Labels"].visible = true if model.layers["Labels"]
-lpage = model.pages.add("Labeled"); lpage.use_camera = true
-model.layers["Labels"].visible = false if model.layers["Labels"]
 
 # ── "Handle · Frame · Pivot" scene — isolate the swinging panel (frame + interior pull
 #    handle) and the Ø89 pivot post, hiding the container/tray/walkway clutter so the
@@ -1010,6 +1006,13 @@ model.active_view.zoom(hf_focus) unless hf_focus.empty?   # fit the isolated pan
 model.active_view.zoom(0.9)                               # small margin around the assembly
 hfpage = model.pages.add("Handle · Frame · Pivot"); hfpage.use_camera = true
 model.layers.each {{ |l| l.visible = true }}      # restore for the default state
+model.layers["Labels"].visible = false if model.layers["Labels"]
+
+# Labeled — Overview view + component callouts, listed LAST (project rule: every .skp gets a Labeled scene).
+model.active_view.zoom_extents
+model.active_view.zoom(0.62)
+model.layers["Labels"].visible = true if model.layers["Labels"]
+lpage = model.pages.add("Labeled"); lpage.use_camera = true
 model.layers["Labels"].visible = false if model.layers["Labels"]
 
 model.commit_operation

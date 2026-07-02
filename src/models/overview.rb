@@ -25676,14 +25676,9 @@ eye = ctr.offset(dir, bb.diagonal * 1.5)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
-# Overview — everything visible, Labels OFF.
+# Overview — everything visible, Labels OFF; listed first.
 model.layers["Labels"].visible = false if model.layers["Labels"]
 ovp = model.pages.add("Overview"); ovp.use_camera = true
-
-# Labeled — same view + callouts on the major system components.
-model.layers["Labels"].visible = true if model.layers["Labels"]
-olp = model.pages.add("Labeled"); olp.use_camera = true
-model.layers["Labels"].visible = false if model.layers["Labels"]
 
 # Grouped scenes — translucent Shell (context) + the group's subsystems.
 [["Film Plane & Pinhole", ["Pinhole", "Optical Cone", "Film Plane", "Combined Plate"]], ["Water Systems", ["Processing Tray", "Spray Bar", "Plumbing Panel", "IBC Stack", "IBC Rack", "Shelf", "Water Hookups", "Water Plumbing"]], ["Electrical Systems", ["Electrical", "Lighting", "Solar Array"]], ["Hinge Panel & Drum", ["Light Trap", "Light Seal", "Pivot Axle"]], ["Ventilation", ["Evap Cooler", "Fans"]], ["Walkways", ["Walkways", "Combined Plate"]]].each { |name, tags|
@@ -25692,6 +25687,13 @@ model.layers["Labels"].visible = false if model.layers["Labels"]
   page.use_camera = true
 }
 model.layers.each { |l| l.visible = true }
+
+# Labeled — Overview view + callouts on the major system components, listed LAST.
+model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
+model.active_view.zoom_extents
+model.layers["Labels"].visible = true if model.layers["Labels"]
+olp = model.pages.add("Labeled"); olp.use_camera = true
+model.layers["Labels"].visible = false if model.layers["Labels"]
 
 model.commit_operation
 { success: true, model: "Overview",

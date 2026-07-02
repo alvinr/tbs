@@ -1292,6 +1292,22 @@ def weight_values():
     v["wt-total-loaded"]    = v["wt-loadedtx-total"]
     v["wt-total-exhausted"] = v["wt-exhausted-total"]
     v["wt-mig-dz"] = f"{z_of['loaded_transport'] - z_of['exhausted']:,}"
+
+    # §6.2 near/far balance — range of the near% column + max far%; near-side clusters
+    nrs = [compute_splits(compute_quadrants(filter_state(comps, s)),
+                          sum(c.weight_kg for c in filter_state(comps, s)))["near_pct"]
+           for s in _STATES]
+    fas = [compute_splits(compute_quadrants(filter_state(comps, s)),
+                          sum(c.weight_kg for c in filter_state(comps, s)))["far_pct"]
+           for s in _STATES]
+    v["wt-near-lo"] = f"{min(nrs):.1f}"
+    v["wt-near-hi"] = f"{max(nrs):.1f}"
+    v["wt-far-hi"]  = f"{max(fas):.1f}"
+
+    def _cw(name):
+        return sum(_rhu(c.weight_kg) for c in comps if c.name == name)
+    v["wt-near-elec"] = f"{_cw('Electrical panel') + _cw('Battery bank') + _cw('Solar controller')}"
+    v["wt-comp-film"] = f"{_cw('Film plane carriage')}"
     return v
 
 

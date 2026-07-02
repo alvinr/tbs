@@ -22,6 +22,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Cantilevers") unless model.layers["Cantilevers"]
   model.layers.add("Cantilever Types") unless model.layers["Cantilever Types"]
   model.layers.add("Right Cantilever") unless model.layers["Right Cantilever"]
+  model.layers.add("IBC Frame") unless model.layers["IBC Frame"]
   model.layers.add("Left Support") unless model.layers["Left Support"]
   model.layers.add("Labels") unless model.layers["Labels"]
 
@@ -3341,35 +3342,13 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # IBC corridor upright (ghost)
-  grp = ents.add_group
-  grp.name = "IBC corridor upright (ghost)"
-  face = grp.entities.add_face([4734.mm,1046.mm,0.mm], [4784.mm,1046.mm,0.mm], [4784.mm,1096.mm,0.mm], [4734.mm,1096.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(1010.mm)
-  mat = model.materials["IBC corridor upright (ghost)"] || model.materials.add("IBC corridor upright (ghost)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 0.3
-  grp.material = mat
-
-  # IBC corridor upright (ghost)
-  grp = ents.add_group
-  grp.name = "IBC corridor upright (ghost)"
-  face = grp.entities.add_face([4734.mm,1266.mm,0.mm], [4784.mm,1266.mm,0.mm], [4784.mm,1316.mm,0.mm], [4734.mm,1316.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(1010.mm)
-  mat = model.materials["IBC corridor upright (ghost)"] || model.materials.add("IBC corridor upright (ghost)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 0.3
-  grp.material = mat
-
   # Film rail BR (ghost)
   grp = ents.add_group
   grp.name = "Film rail BR (ghost)"
   face = grp.entities.add_face([4629.mm,0.mm,130.mm], [4669.mm,0.mm,130.mm], [4669.mm,2362.mm,130.mm], [4629.mm,2362.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["IBC corridor upright (ghost)"] || model.materials.add("IBC corridor upright (ghost)")
+  mat = model.materials["Film rail BR (ghost)"] || model.materials.add("Film rail BR (ghost)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 0.3
   grp.material = mat
@@ -3377,6 +3356,463 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Right Walkway (cantilever rectangle)"
   inst.layer = model.layers["Right Cantilever"]
+
+  # ═══ IBC Corridor Frame (deep box) ═══
+  defn = model.definitions.add("IBC Corridor Frame (deep box)")
+  ents = defn.entities
+  # Frame upright
+  grp = ents.add_group
+  grp.name = "Frame upright"
+  face = grp.entities.add_face([4654.mm,1046.mm,0.mm], [4704.mm,1046.mm,0.mm], [4704.mm,1096.mm,0.mm], [4654.mm,1096.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2296.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Frame upright
+  grp = ents.add_group
+  grp.name = "Frame upright"
+  face = grp.entities.add_face([4654.mm,1266.mm,0.mm], [4704.mm,1266.mm,0.mm], [4704.mm,1316.mm,0.mm], [4654.mm,1316.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2296.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Frame upright
+  grp = ents.add_group
+  grp.name = "Frame upright"
+  face = grp.entities.add_face([5104.mm,1046.mm,0.mm], [5154.mm,1046.mm,0.mm], [5154.mm,1096.mm,0.mm], [5104.mm,1096.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2296.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Frame upright
+  grp = ents.add_group
+  grp.name = "Frame upright"
+  face = grp.entities.add_face([5104.mm,1266.mm,0.mm], [5154.mm,1266.mm,0.mm], [5154.mm,1316.mm,0.mm], [5104.mm,1316.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2296.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Frame rail (Yd)
+  grp = ents.add_group
+  grp.name = "Frame rail (Yd)"
+  face = grp.entities.add_face([4654.mm,1096.mm,0.mm], [4704.mm,1096.mm,0.mm], [4704.mm,1266.mm,0.mm], [4654.mm,1266.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Frame rail (Yd)
+  grp = ents.add_group
+  grp.name = "Frame rail (Yd)"
+  face = grp.entities.add_face([5104.mm,1096.mm,0.mm], [5154.mm,1096.mm,0.mm], [5154.mm,1266.mm,0.mm], [5104.mm,1266.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Frame rail (X)
+  grp = ents.add_group
+  grp.name = "Frame rail (X)"
+  face = grp.entities.add_face([4704.mm,1046.mm,0.mm], [5104.mm,1046.mm,0.mm], [5104.mm,1096.mm,0.mm], [4704.mm,1096.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Frame rail (X)
+  grp = ents.add_group
+  grp.name = "Frame rail (X)"
+  face = grp.entities.add_face([4704.mm,1266.mm,0.mm], [5104.mm,1266.mm,0.mm], [5104.mm,1316.mm,0.mm], [4704.mm,1316.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Frame rail (Yd)
+  grp = ents.add_group
+  grp.name = "Frame rail (Yd)"
+  face = grp.entities.add_face([4654.mm,1096.mm,2246.mm], [4704.mm,1096.mm,2246.mm], [4704.mm,1266.mm,2246.mm], [4654.mm,1266.mm,2246.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Frame rail (Yd)
+  grp = ents.add_group
+  grp.name = "Frame rail (Yd)"
+  face = grp.entities.add_face([5104.mm,1096.mm,2246.mm], [5154.mm,1096.mm,2246.mm], [5154.mm,1266.mm,2246.mm], [5104.mm,1266.mm,2246.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Frame rail (X)
+  grp = ents.add_group
+  grp.name = "Frame rail (X)"
+  face = grp.entities.add_face([4704.mm,1046.mm,2246.mm], [5104.mm,1046.mm,2246.mm], [5104.mm,1096.mm,2246.mm], [4704.mm,1096.mm,2246.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Frame rail (X)
+  grp = ents.add_group
+  grp.name = "Frame rail (X)"
+  face = grp.entities.add_face([4704.mm,1266.mm,2246.mm], [5104.mm,1266.mm,2246.mm], [5104.mm,1316.mm,2246.mm], [4704.mm,1316.mm,2246.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Foot plate
+  grp = ents.add_group
+  grp.name = "Foot plate"
+  face = grp.entities.add_face([4604.mm,996.mm,0.mm], [4754.mm,996.mm,0.mm], [4754.mm,1146.mm,0.mm], [4604.mm,1146.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Foot anchor M12
+  grp = ents.add_group
+  grp.name = "Foot anchor M12"
+  ge = grp.entities
+  circle = ge.add_circle([4629.mm,1021.mm,0.mm], [0,0,1], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Foot anchor M12
+  grp = ents.add_group
+  grp.name = "Foot anchor M12"
+  ge = grp.entities
+  circle = ge.add_circle([4629.mm,1121.mm,0.mm], [0,0,1], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Foot anchor M12
+  grp = ents.add_group
+  grp.name = "Foot anchor M12"
+  ge = grp.entities
+  circle = ge.add_circle([4729.mm,1021.mm,0.mm], [0,0,1], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Foot anchor M12
+  grp = ents.add_group
+  grp.name = "Foot anchor M12"
+  ge = grp.entities
+  circle = ge.add_circle([4729.mm,1121.mm,0.mm], [0,0,1], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Foot plate
+  grp = ents.add_group
+  grp.name = "Foot plate"
+  face = grp.entities.add_face([4604.mm,1216.mm,0.mm], [4754.mm,1216.mm,0.mm], [4754.mm,1366.mm,0.mm], [4604.mm,1366.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Foot anchor M12
+  grp = ents.add_group
+  grp.name = "Foot anchor M12"
+  ge = grp.entities
+  circle = ge.add_circle([4629.mm,1241.mm,0.mm], [0,0,1], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Foot anchor M12
+  grp = ents.add_group
+  grp.name = "Foot anchor M12"
+  ge = grp.entities
+  circle = ge.add_circle([4629.mm,1341.mm,0.mm], [0,0,1], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Foot anchor M12
+  grp = ents.add_group
+  grp.name = "Foot anchor M12"
+  ge = grp.entities
+  circle = ge.add_circle([4729.mm,1241.mm,0.mm], [0,0,1], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Foot anchor M12
+  grp = ents.add_group
+  grp.name = "Foot anchor M12"
+  ge = grp.entities
+  circle = ge.add_circle([4729.mm,1341.mm,0.mm], [0,0,1], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Foot plate
+  grp = ents.add_group
+  grp.name = "Foot plate"
+  face = grp.entities.add_face([5054.mm,996.mm,0.mm], [5204.mm,996.mm,0.mm], [5204.mm,1146.mm,0.mm], [5054.mm,1146.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Foot anchor M12
+  grp = ents.add_group
+  grp.name = "Foot anchor M12"
+  ge = grp.entities
+  circle = ge.add_circle([5079.mm,1021.mm,0.mm], [0,0,1], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Foot anchor M12
+  grp = ents.add_group
+  grp.name = "Foot anchor M12"
+  ge = grp.entities
+  circle = ge.add_circle([5079.mm,1121.mm,0.mm], [0,0,1], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Foot anchor M12
+  grp = ents.add_group
+  grp.name = "Foot anchor M12"
+  ge = grp.entities
+  circle = ge.add_circle([5179.mm,1021.mm,0.mm], [0,0,1], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Foot anchor M12
+  grp = ents.add_group
+  grp.name = "Foot anchor M12"
+  ge = grp.entities
+  circle = ge.add_circle([5179.mm,1121.mm,0.mm], [0,0,1], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Foot plate
+  grp = ents.add_group
+  grp.name = "Foot plate"
+  face = grp.entities.add_face([5054.mm,1216.mm,0.mm], [5204.mm,1216.mm,0.mm], [5204.mm,1366.mm,0.mm], [5054.mm,1366.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Foot anchor M12
+  grp = ents.add_group
+  grp.name = "Foot anchor M12"
+  ge = grp.entities
+  circle = ge.add_circle([5079.mm,1241.mm,0.mm], [0,0,1], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Foot anchor M12
+  grp = ents.add_group
+  grp.name = "Foot anchor M12"
+  ge = grp.entities
+  circle = ge.add_circle([5079.mm,1341.mm,0.mm], [0,0,1], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Foot anchor M12
+  grp = ents.add_group
+  grp.name = "Foot anchor M12"
+  ge = grp.entities
+  circle = ge.add_circle([5179.mm,1241.mm,0.mm], [0,0,1], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Foot anchor M12
+  grp = ents.add_group
+  grp.name = "Foot anchor M12"
+  ge = grp.entities
+  circle = ge.add_circle([5179.mm,1341.mm,0.mm], [0,0,1], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rear-panel bracket
+  grp = ents.add_group
+  grp.name = "Rear-panel bracket"
+  face = grp.entities.add_face([5122.mm,1096.mm,90.mm], [5152.mm,1096.mm,90.mm], [5152.mm,1136.mm,90.mm], [5122.mm,1136.mm,90.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(60.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rear-panel bracket
+  grp = ents.add_group
+  grp.name = "Rear-panel bracket"
+  face = grp.entities.add_face([5122.mm,1096.mm,1118.mm], [5152.mm,1096.mm,1118.mm], [5152.mm,1136.mm,1118.mm], [5122.mm,1136.mm,1118.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(60.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rear-panel bracket
+  grp = ents.add_group
+  grp.name = "Rear-panel bracket"
+  face = grp.entities.add_face([5122.mm,1096.mm,2146.mm], [5152.mm,1096.mm,2146.mm], [5152.mm,1136.mm,2146.mm], [5122.mm,1136.mm,2146.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(60.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rear-panel bracket
+  grp = ents.add_group
+  grp.name = "Rear-panel bracket"
+  face = grp.entities.add_face([5122.mm,1226.mm,90.mm], [5152.mm,1226.mm,90.mm], [5152.mm,1266.mm,90.mm], [5122.mm,1266.mm,90.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(60.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rear-panel bracket
+  grp = ents.add_group
+  grp.name = "Rear-panel bracket"
+  face = grp.entities.add_face([5122.mm,1226.mm,1118.mm], [5152.mm,1226.mm,1118.mm], [5152.mm,1266.mm,1118.mm], [5122.mm,1266.mm,1118.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(60.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rear-panel bracket
+  grp = ents.add_group
+  grp.name = "Rear-panel bracket"
+  face = grp.entities.add_face([5122.mm,1226.mm,2146.mm], [5152.mm,1226.mm,2146.mm], [5152.mm,1266.mm,2146.mm], [5122.mm,1266.mm,2146.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(60.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "IBC Corridor Frame (deep box)"
+  inst.layer = model.layers["IBC Frame"]
 
   # ═══ Left Walkway Support ═══
   defn = model.definitions.add("Left Walkway Support")
@@ -3636,7 +4072,7 @@ model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Container", "Processing Tray", "Walkways", "Cantilevers", "Cantilever Types", "Right Cantilever", "Left Support", "Labels"]
+keep_tags = ["Container", "Processing Tray", "Walkways", "Cantilevers", "Cantilever Types", "Right Cantilever", "IBC Frame", "Left Support", "Labels"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -3655,14 +4091,9 @@ model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 model.active_view.zoom(0.72)   # pull back so callouts have margin (and read larger)
 
-# Combined — all subsystems, Labels + type-catalog OFF.
-model.pages.add("Combined")
-# Labeled — same view + callouts on the major parts.
-model.layers.each { |l| l.visible = true }
-model.layers["Cantilever Types"].visible = false if model.layers["Cantilever Types"]
-model.pages.add("Labeled")
-model.layers["Labels"].visible = false if model.layers["Labels"]
-[["Walkway", ["Walkways", "Right Cantilever", "Processing Tray"]], ["Near/Far Cantilevers", ["Cantilevers", "Processing Tray"]], ["Right Cantilever", ["Right Cantilever", "Processing Tray"]], ["Left Support", ["Left Support", "Processing Tray"]]].each { |name, tags|
+# Overview — all subsystems, Labels + type-catalog OFF; listed first.
+model.pages.add("Overview")
+[["Walkway", ["Walkways", "Right Cantilever", "IBC Frame", "Processing Tray"]], ["Near/Far Cantilevers", ["Cantilevers", "Processing Tray"]], ["Right Cantilever", ["Right Cantilever", "IBC Frame", "Processing Tray"]], ["Left Support", ["Left Support", "Processing Tray"]]].each { |name, tags|
   model.layers.each { |l| l.visible = (l == default_layer || l.name == "Container" || tags.include?(l.name)) }
   page = model.pages.add(name)
   page.use_camera = true
@@ -3684,6 +4115,14 @@ ctp.use_camera = true
 
 model.layers.each { |l| l.visible = true }
 model.layers["Cantilever Types"].visible = false if model.layers["Cantilever Types"]
+
+# Labeled — Overview view + callouts on the major parts, listed LAST (project rule).
+model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
+model.active_view.zoom_extents
+model.active_view.zoom(0.72)
+model.layers["Labels"].visible = true if model.layers["Labels"]
+lpage = model.pages.add("Labeled"); lpage.use_camera = true
+model.layers["Labels"].visible = false if model.layers["Labels"]
 
 model.commit_operation
 { success: true, model: "Walkway + Cantilevers",

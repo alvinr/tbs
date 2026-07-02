@@ -397,7 +397,7 @@ MRBF_D, MRBF_H = 40, 38  # terminal-mount MRBF main fuse (on the battery + post)
 # Contains pumps (P-01, P-02, P-04), ACC-01, and 3× Big Blue filter housings.
 # Pumps on near-wall side (Yd=1046–1173), filters on far-wall side (Yd=1186–1316).
 # Filters at bottom of panel (Z=200–1280), pumps at top (Z=1320–2220).
-EQPANEL_X       = 4874    # panel face X (mm) — ibc-reconfig-v2: moved FORWARD (was 5240) to the corridor front for walkway/operator reach-in access; ply X=4874–4892, equipment hangs toward -X (tip ~4744, clear of the film rail X=4649). Mounts on the front-portal frame (~X4734).
+EQPANEL_X       = 4874    # panel face X (mm) — ibc-reconfig-v2: moved FORWARD (was 5240) to the corridor front for walkway/operator reach-in access; ply X=4874–4892, equipment hangs toward -X (tip ~4744, clear of the film rail X=4649). Mounts on the deep-box corridor frame (front upright ~X4654).
 EQPANEL_T       = 18      # panel thickness in X (mm) — ply extends toward sealed end (X=4874–4892)
 EQPANEL_Z_LO    = 250     # panel bottom Z (mm) — keeps ~120mm above the raised walkway deck [+50 raise; was 200]
 EQPANEL_Z_HI    = 2310    # panel top Z (mm) — in the plumbing corridor (no totes there), below ceiling (2388); IBC stack is 2336mm in the flanking columns

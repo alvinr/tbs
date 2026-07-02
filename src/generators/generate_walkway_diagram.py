@@ -1110,8 +1110,8 @@ def sheet3():
     WK_L_X    = WALKWAY_RIGHT_X               # 4329 — left long beam
     WK_R_X    = WALKWAY_RIGHT_X + WALKWAY_W   # 4629 — right long beam
     WALL_X    = RAIL_X_R                      # 4649 — right side-wall station (film rail / combined plate)
-    UP_X0     = IBC_COL_X                     # 4674 — IBC corridor upright near X
-    ARM_X     = IBC_COL_X + 60                # 4734 — arm root station
+    UP_X0     = IBC_COL_X - 20                # 4654 — deep-box FRONT upright (arm clamps here; reconciled from tote-col 4674)
+    ARM_X     = IBC_COL_X - 20                # 4654 — arm root station (= RWK_X_UP; reconciled from 4734)
     UP_YDS    = [(CORRIDOR_YD_NEAR, CORRIDOR_YD_NEAR + IBC_FRAME_RHS),  # near upright 1046–1096
                  (CORRIDOR_YD_FAR - IBC_FRAME_RHS, CORRIDOR_YD_FAR)]     # far  upright 1266–1316
     ARM_YDS   = [yc + IBC_FRAME_RHS / 2 for (yc, _) in UP_YDS]           # arm centerlines

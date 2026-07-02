@@ -112,7 +112,6 @@ shrink (branch `water-walkway-integration`):
 3. **Front foot + M12 anchor under the tray basin** — **RESOLVED.** The tray‑datum correction
    raises the welded pan onto the shim ramp (floor bottom ≈ Z23–24 at the corridor foot stations),
    so the 12 mm front foot now clears **~11 mm** *under* the pan (see G‑G). No foot change needed.
-4. **Stale cantilever‑arm reference** — *OPEN.* The right‑walkway cantilever arm still reaches
-   X4734 (`RWK_X_UP`); the settled datum is the deep‑box front upright at X4654. Reconciling the
-   arm's attachment (and the OVERVIEW `ibc_rack` X4734 vs WATER deep‑box X4654 mismatch) is a
-   separate structural follow‑up.
+4. **Stale cantilever‑arm reference** — **RESOLVED.** `RWK_X_UP` reconciled 4734 → **X4654**
+   (the deep‑box front upright); overview's `ibc_rack` retired in favor of `cp.frame()`, so
+   overview / ibc-stack / walkway now clamp the arm to the same X4654 upright.

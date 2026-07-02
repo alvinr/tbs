@@ -530,7 +530,7 @@ RWK_HL = 95                                           # half-lap line
 RWK_BEARER_W = 40
 RWK_BEARER_XS = (RWK_X_L, RWK_X_R - RWK_BEARER_W)      # 4329, 4589 — long-beam left edges
 RWK_BEARER_Z0 = RWK_ARM_TOP - 35                       # 80 — beam bottom
-RWK_X_UP = IBC_COL_X + 60                              # 4734 — IBC corridor upright X station
+RWK_X_UP = IBC_COL_X - 20                              # 4654 — deep-box FRONT upright (= cp.FRONT_X); reconciled from the stale +60/4734 portal (flag 4)
 RWK_UP_YDS = (CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR - IBC_FRAME_RHS)   # 1046, 1266
 
 
@@ -949,15 +949,13 @@ def spray_bar():
 
 # ── Plumbing panel (pumps · filters · accumulator) ──────────────────────────
 #
-# TODO (2026-07-01): overview.skp's WATER/PLUMBING geometry is STALE — it still
-# renders the OLD pre-corridor-refactor layout.  The pinhole-wall-mount merge
-# (210f01cd, 2026-06-30) rebuilt the wet end into the split Corridor / Pinhole-Wall
-# plumbing panels in water.skp (generate_corridor_water_panel.py /
-# generate_pinhole_water_panel.py), but overview's own equipment_panel() /
-# water_hookups() / spray_bar_plumbing() / water_plumbing() were NEVER cascaded, so
-# re-sending overview reproduces the old design.  Cascade the current corridor/pinhole
-# panel layout into these functions (or import the panel builders) and re-send overview.
-# [carriage/tray-datum work of this branch left this untouched — separate task.]
+# RESOLVED (2026-07-01): overview + ibc-stack were rewired in generate_ruby() to reuse
+# the CURRENT water builders — cp.frame/tote_restraint/rear_panel/equipment/plumbing/
+# drains_ports + pw.kit/other_equipment/tap01_supply (the water.skp source) — so they
+# now render the split Corridor / Pinhole-Wall panel design and stay in sync with
+# water.skp.  The functions below (equipment_panel / water_hookups / spray_bar_plumbing
+# / water_plumbing) are the OLD pre-corridor-refactor layout and are now UNUSED (kept
+# for reference; safe to delete).  ibc_rack() is still used by the cantilever study.
 
 def equipment_panel():
     """18mm marine-ply panel in the IBC corridor carrying the wet end.
@@ -2526,6 +2524,10 @@ def water_plumbing():
 
 def generate_ruby():
     """Build the complete Ruby script for the Overview model."""
+    # Reuse the CURRENT water-system builders (water.skp source) so overview stays in
+    # sync with the corridor + pinhole-wall panel design (late import — cp/pw import ov).
+    import generate_corridor_water_panel as cp
+    import generate_pinhole_water_panel as pw
     comps = [
         component("Container Shell", "Shell", container_shell()),
         component("Walkways", "Walkways", walkways()),
@@ -2536,9 +2538,13 @@ def generate_ruby():
         component("FP Combined Corner Plates", "Combined Plate", fp_combined_corner_plates()),
         component("Panel & Pivot Axle", "Pivot Axle", panel_pivot()),
         component("Spray Bar", "Spray Bar", spray_bar()),
-        component("Plumbing Panel", "Plumbing Panel", equipment_panel()),
+        component("Corridor Frame (deep box)", "IBC Rack", cp.frame()),
+        component("IBC Tote Restraint", "IBC Rack", cp.tote_restraint()),
+        component("Corridor Rear Panel", "Plumbing Panel", cp.rear_panel()),
+        component("Corridor Equipment", "Plumbing Panel", cp.equipment()),
+        component("Pinhole-Wall Kit", "Plumbing Panel", pw.kit()),
+        component("Pinhole-Wall Equipment", "Plumbing Panel", pw.other_equipment()),
         component("IBC Stack", "IBC Stack", ibc_stack()),
-        component("IBC Rack", "IBC Rack", ibc_rack()),
         component("Light-Trap Drum", "Light Trap", light_trap_drum()),
         component("Light-Trap Bay", "Light Trap", light_trap_bay()),
         component("Electrical", "Electrical", electrical()),
@@ -2548,10 +2554,10 @@ def generate_ruby():
         component("Light Seal & Hinges", "Light Seal", light_seal()),
         component("Lighting & Wiring", "Lighting", lighting_wiring()),
         component("Evap Cooler & Duct", "Evap Cooler", evap_cooler()),
-        component("Water/Waste Hookups", "Water Hookups", water_hookups()),
+        component("Corridor Drains + X-ports", "Water Hookups", cp.drains_ports()),
         component("Fans A & B", "Fans", fans()),
-        component("Spray Bar Plumbing", "Spray Bar", spray_bar_plumbing()),
-        component("Water Plumbing", "Water Plumbing", water_plumbing()),
+        component("TAP-01 + Spray Supply", "Spray Bar", pw.tap01_supply()),
+        component("Corridor Plumbing", "Water Plumbing", cp.plumbing()),
     ]
     body = '\n'.join(comps)
 

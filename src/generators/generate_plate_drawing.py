@@ -14,15 +14,16 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
 import os
-from tbs_constants import DIAGRAMS_DIR
+from tbs_constants import (DIAGRAMS_DIR, PH_D,
+                           PLATE_OD, PLATE_THK, WALL_FRAME_T, PINHOLE_DISC_D, PINHOLE_DISC_T)
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v, draw_cl, draw_circle,
                          draw_rect, leader, bolt_holes, hatch_rect, draw_notes)
 
 # ── Real dimensions (mm) ─────────────────────────────────────────────────────
-PL_OD      = 600      # plate outer dimension (square)
-PL_THICK   = 15       # aluminum plate thickness
-FR_THICK   = 6        # wall frame steel thickness
+PL_OD      = PLATE_OD        # plate outer dimension (square) — tbs_constants
+PL_THICK   = PLATE_THK       # aluminum plate thickness — tbs_constants
+FR_THICK   = WALL_FRAME_T    # wall frame steel thickness — tbs_constants
 FR_APT_D   = 350      # wall frame circular aperture diameter
 BOLT_BC    = 540      # bolt circle diameter
 BOLT_D     = 13       # bolt hole clearance diameter
@@ -39,9 +40,9 @@ TRAP_DEP   = 5        # rebate depth
 PH_BORE    = 90       # light-admission taper bore (exterior face)
 PH_CB_D    = 52       # pinhole disc counterbore diameter (interior face)
 PH_CB_DEP  = 3        # counterbore depth
-PH_DISC_D  = 50       # pinhole disc OD (Lenox Laser supply)
-PH_DISC_T  = 0.1      # pinhole disc thickness (SS)
-PH_APT     = 2.17     # pinhole aperture
+PH_DISC_D  = PINHOLE_DISC_D  # pinhole disc OD (Lenox Laser supply) — tbs_constants
+PH_DISC_T  = PINHOLE_DISC_T  # pinhole disc thickness (SS) — tbs_constants
+PH_APT     = PH_D            # pinhole aperture — tbs_constants (= PH_D)
 # Lens plate
 LB_D       = 175      # lens bore diameter (H7)
 LT_OD      = 174.5    # lens tube OD (g6 fit)

@@ -47,9 +47,15 @@ bamboo floor, corner castings, corner posts, structural corrugation ribs.*
 | Pinhole diameter | Ø<!-- BEGIN cdm:PH_D -->2.17<!-- END cdm:PH_D -->mm | `PH_D` |
 | f-number | f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> | `PH_FNO` |
 | Focal length | <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm | `PH_F` (= `C_WID`) |
+| Wall frame / plate outer dim (square) | <!-- BEGIN cdm:PLATE_OD -->600<!-- END cdm:PLATE_OD -->mm | `PLATE_OD` |
+| Aluminum plate thickness | <!-- BEGIN cdm:PLATE_THK -->15<!-- END cdm:PLATE_THK -->mm | `PLATE_THK` |
+| Wall frame steel thickness | <!-- BEGIN cdm:WALL_FRAME_T -->6<!-- END cdm:WALL_FRAME_T -->mm | `WALL_FRAME_T` |
+| Pinhole disc diameter | Ø<!-- BEGIN cdm:PINHOLE_DISC_D -->50<!-- END cdm:PINHOLE_DISC_D -->mm | `PINHOLE_DISC_D` |
+| Pinhole disc thickness | <!-- BEGIN cdm:PINHOLE_DISC_T -->0.1<!-- END cdm:PINHOLE_DISC_T -->mm | `PINHOLE_DISC_T` |
 
-*Components: wall frame (600×600mm, 6mm steel), pinhole plate (ICP-02 / interchangeable
-Ø50mm SS-302 disc, 0.1mm, Lenox Laser laser-drilled), lens plate, shutter plate and channel.*
+*Components: wall frame (S275 steel), interchangeable pinhole plate (ICP-02 / SS-302 disc,
+Lenox Laser laser-drilled), lens plate, shutter plate and channel. Frame, plate, and disc
+dimensions are single-sourced in the table above (`generate_plate_drawing.py` reads the same constants).*
 
 ### 1.3 Film Plane Mechanism
 

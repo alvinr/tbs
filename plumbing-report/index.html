@@ -1191,6 +1191,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="8. Pipe Routing Conventions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-corridor-pinhole-wall-ribbon-under-the-right-walkway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Corridor ↔ pinhole-wall ribbon (under the right walkway)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3414,6 +3431,24 @@ of different system colors, and the bridge-arc method for same-color crossings.<
   riser to pinhole wall
 - <strong>Right edge</strong> (far wall side) — Brown/Waste IBC connections,
   external drain routing</p>
+<h3 id="81-corridor-pinhole-wall-ribbon-under-the-right-walkway">8.1 Corridor ↔ pinhole-wall ribbon (under the right walkway)<a class="headerlink" href="#81-corridor-pinhole-wall-ribbon-under-the-right-walkway" title="Permanent link">&para;</a></h3>
+<p>The four lines that connect the corridor equipment to the pinhole-wall panel —
+IBC-3 (Brown) → P-02, the filtered return (SV-01 → DV-01), the tray-sump pickup
+→ P-04, and the Blue supply trunk → TAP-01/spray bar — run together as a flat
+<strong>ribbon</strong> in the otherwise-dead space <strong>under the right-walkway grate</strong>, in the
+clear channel between the two walkway long beams (hugged to the outer/IBC edge,
+clear of the print zone). This replaces routing them through the congested
+25mm tray↔IBC gap.</p>
+<p>At the first cantilever (nearest the pinhole wall) the ribbon <strong>loops up over the
+cantilever</strong> — never through the steel (Rule 5) — then drops and crosses <strong>under
+the walkway support beam</strong>, through the gap over the tray edge, into the corridor,
+where each line rises to its equipment connection. The pump-suction lines carry
+their own service loops (P-04's sump pickup rises over the walkway and back; DV-01's
+filtered return makes a square 90° turn into the diverter's IN port). The ribbon is
+carried by four welded steel cross-braces between the walkway bearers, with the
+lines clipped to them. Routing is verified collision-free by
+<code>src/models/check_interference.py</code> (the ribbon is a sanctioned exception to the
+processing-tray exclusion zone — it runs above the tray rim, under the grate).</p>
 <hr />
 <h2 id="9-parts-list">9. Parts List<a class="headerlink" href="#9-parts-list" title="Permanent link">&para;</a></h2>
 <p>The panel-mounted equipment for each plumbing panel is listed below — generated from the parts
@@ -3512,11 +3547,25 @@ hardware are sourced there and in the IBC stacking frame line.</p>
 <td>$10–$18</td>
 </tr>
 <tr>
+<td>Steel flat bar 25×3mm — ribbon support cross-brace</td>
+<td>Welded between the two right-walkway long bearers at 4 stations to carry the under-walkway pipe ribbon (the four corridor↔pinhole lines); ~300mm each</td>
+<td>4 ea</td>
+<td>Home Depot</td>
+<td>$8–$16</td>
+</tr>
+<tr>
+<td>Cushioned pipe clip</td>
+<td>Secures the four under-walkway ribbon lines to the support cross-braces (4 lines × 4 supports)</td>
+<td>16 ea</td>
+<td>Amazon</td>
+<td>$16–$32</td>
+</tr>
+<tr>
 <td><strong>Corridor Plumbing Panel total</strong></td>
 <td></td>
 <td></td>
 <td></td>
-<td><strong>$540–$750</strong></td>
+<td><strong>$564–$798</strong></td>
 </tr>
 </tbody>
 </table>

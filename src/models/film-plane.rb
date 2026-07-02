@@ -2715,7 +2715,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # RWk center cantilever Yd1046 lower
   grp = ents.add_group
   grp.name = "RWk center cantilever Yd1046 lower"
-  face = grp.entities.add_face([4329.mm,1046.mm,70.mm], [4734.mm,1046.mm,70.mm], [4734.mm,1086.mm,70.mm], [4329.mm,1086.mm,70.mm])
+  face = grp.entities.add_face([4329.mm,1046.mm,70.mm], [4654.mm,1046.mm,70.mm], [4654.mm,1086.mm,70.mm], [4329.mm,1086.mm,70.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
@@ -2737,7 +2737,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # RWk center cantilever Yd1046 upper
   grp = ents.add_group
   grp.name = "RWk center cantilever Yd1046 upper"
-  face = grp.entities.add_face([4629.mm,1046.mm,95.mm], [4734.mm,1046.mm,95.mm], [4734.mm,1086.mm,95.mm], [4629.mm,1086.mm,95.mm])
+  face = grp.entities.add_face([4629.mm,1046.mm,95.mm], [4654.mm,1046.mm,95.mm], [4654.mm,1086.mm,95.mm], [4629.mm,1086.mm,95.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
@@ -2748,7 +2748,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # RWk upright clamp Yd1046 Y1038
   grp = ents.add_group
   grp.name = "RWk upright clamp Yd1046 Y1038"
-  face = grp.entities.add_face([4730.mm,1038.mm,45.mm], [4788.mm,1038.mm,45.mm], [4788.mm,1046.mm,45.mm], [4730.mm,1046.mm,45.mm])
+  face = grp.entities.add_face([4650.mm,1038.mm,45.mm], [4708.mm,1038.mm,45.mm], [4708.mm,1046.mm,45.mm], [4650.mm,1046.mm,45.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(100.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
@@ -2759,7 +2759,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # RWk upright clamp Yd1046 Y1086
   grp = ents.add_group
   grp.name = "RWk upright clamp Yd1046 Y1086"
-  face = grp.entities.add_face([4730.mm,1086.mm,45.mm], [4788.mm,1086.mm,45.mm], [4788.mm,1094.mm,45.mm], [4730.mm,1094.mm,45.mm])
+  face = grp.entities.add_face([4650.mm,1086.mm,45.mm], [4708.mm,1086.mm,45.mm], [4708.mm,1094.mm,45.mm], [4650.mm,1094.mm,45.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(100.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
@@ -2771,7 +2771,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "RWk upright bolt M12 Yd1046 Z76"
   ge = grp.entities
-  circle = ge.add_circle([4759.mm,1034.mm,76.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4679.mm,1034.mm,76.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(64.mm)
@@ -2784,7 +2784,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "RWk upright bolt M12 Yd1046 Z133"
   ge = grp.entities
-  circle = ge.add_circle([4759.mm,1034.mm,133.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4679.mm,1034.mm,133.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(64.mm)
@@ -2796,7 +2796,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # RWk center cantilever Yd1266 lower
   grp = ents.add_group
   grp.name = "RWk center cantilever Yd1266 lower"
-  face = grp.entities.add_face([4329.mm,1266.mm,70.mm], [4734.mm,1266.mm,70.mm], [4734.mm,1306.mm,70.mm], [4329.mm,1306.mm,70.mm])
+  face = grp.entities.add_face([4329.mm,1266.mm,70.mm], [4654.mm,1266.mm,70.mm], [4654.mm,1306.mm,70.mm], [4329.mm,1306.mm,70.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
@@ -2818,7 +2818,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # RWk center cantilever Yd1266 upper
   grp = ents.add_group
   grp.name = "RWk center cantilever Yd1266 upper"
-  face = grp.entities.add_face([4629.mm,1266.mm,95.mm], [4734.mm,1266.mm,95.mm], [4734.mm,1306.mm,95.mm], [4629.mm,1306.mm,95.mm])
+  face = grp.entities.add_face([4629.mm,1266.mm,95.mm], [4654.mm,1266.mm,95.mm], [4654.mm,1306.mm,95.mm], [4629.mm,1306.mm,95.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
@@ -2829,7 +2829,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # RWk upright clamp Yd1266 Y1258
   grp = ents.add_group
   grp.name = "RWk upright clamp Yd1266 Y1258"
-  face = grp.entities.add_face([4730.mm,1258.mm,45.mm], [4788.mm,1258.mm,45.mm], [4788.mm,1266.mm,45.mm], [4730.mm,1266.mm,45.mm])
+  face = grp.entities.add_face([4650.mm,1258.mm,45.mm], [4708.mm,1258.mm,45.mm], [4708.mm,1266.mm,45.mm], [4650.mm,1266.mm,45.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(100.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
@@ -2840,7 +2840,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # RWk upright clamp Yd1266 Y1306
   grp = ents.add_group
   grp.name = "RWk upright clamp Yd1266 Y1306"
-  face = grp.entities.add_face([4730.mm,1306.mm,45.mm], [4788.mm,1306.mm,45.mm], [4788.mm,1314.mm,45.mm], [4730.mm,1314.mm,45.mm])
+  face = grp.entities.add_face([4650.mm,1306.mm,45.mm], [4708.mm,1306.mm,45.mm], [4708.mm,1314.mm,45.mm], [4650.mm,1314.mm,45.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(100.mm)
   mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
@@ -2852,7 +2852,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "RWk upright bolt M12 Yd1266 Z76"
   ge = grp.entities
-  circle = ge.add_circle([4759.mm,1254.mm,76.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4679.mm,1254.mm,76.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(64.mm)
@@ -2865,7 +2865,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "RWk upright bolt M12 Yd1266 Z133"
   ge = grp.entities
-  circle = ge.add_circle([4759.mm,1254.mm,133.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4679.mm,1254.mm,133.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(64.mm)
@@ -3750,7 +3750,7 @@ if inst
   txt = entities.add_text("WALKWAYS", anc, Geom::Vector3d.new(-1600.mm, -450.mm, 700.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
-anc = Geom::Point3d.new(4531.5.mm, 1046.mm, 115.mm)
+anc = Geom::Point3d.new(4491.5.mm, 1046.mm, 115.mm)
 txt = entities.add_text("RIGHT-WALKWAY CANTILEVER ARMS
 (off the IBC corridor uprights —
 share the BR combined corner plate)", anc, Geom::Vector3d.new(-700.mm, -350.mm, 650.mm))
@@ -3775,7 +3775,7 @@ eye = ctr.offset(dir, bb.diagonal * 1.4)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
-[["Combined", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "IBC Cantilever"], nil, 0], ["Labeled", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "IBC Cantilever", "Labels"], nil, 0], ["No Container", ["Film Plane", "Corner Mechanism", "Processing Tray"], nil, 0], ["Corner detail (TR)", ["Corner Detail"], [1814.2397223474154.mm, 1295.5260461149314.mm, 2255.765705810068.mm], 350]].each { |name, tags, tgt, so|
+[["Overview", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "IBC Cantilever"], nil, 0], ["No Container", ["Film Plane", "Corner Mechanism", "Processing Tray"], nil, 0], ["Corner detail (TR)", ["Corner Detail"], [1814.2397223474154.mm, 1295.5260461149314.mm, 2255.765705810068.mm], 350], ["Labeled", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "IBC Cantilever", "Labels"], nil, 0]].each { |name, tags, tgt, so|
   model.layers.each { |l| l.visible = (l == dl || tags.include?(l.name)) }
   if tgt
     t = Geom::Point3d.new(tgt[0], tgt[1], tgt[2])

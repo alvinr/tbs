@@ -596,10 +596,10 @@ def generate_ruby():
     # scenes: name, visible tags, target point (mm) or None, standoff(inches) or 0=extents
     main = ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "IBC Cantilever"]
     noghost = ["Film Plane", "Corner Mechanism", "Processing Tray"]
-    scenes = [("Combined", main, None, 0),
-              ("Labeled", main + ["Labels"], None, 0),
+    scenes = [("Overview", main, None, 0),
               ("No Container", noghost, None, 0),
-              ("Corner detail (TR)", ["Corner Detail"], cd_tgt, 350)]
+              ("Corner detail (TR)", ["Corner Detail"], cd_tgt, 350),
+              ("Labeled", main + ["Labels"], None, 0)]   # Labeled listed last (project rule)
 
     def slit(s):
         name, tags, tgt, so = s

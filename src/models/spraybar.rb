@@ -3847,7 +3847,7 @@ model.layers.to_a.each { |l|
 
 dir = Geom::Vector3d.new(0.5, -0.78, 0.38); dir.normalize!
 
-[["Beam", ["Beam"], nil], ["Carriage Assembly", ["Beam", "Carriage L", "Carriage R", "Tray Ref"], nil], ["One Carriage", ["Carriage L"], [200.mm, 1180.mm, 55.mm, 480.mm]], ["Pole & Ball Joint", ["Beam", "Feed & Pole"], nil], ["Processing Tray", ["Tray", "Beam", "Carriage L", "Carriage R"], nil], ["Combined", ["Beam", "Carriage L", "Carriage R", "Feed & Pole", "Tray"], nil], ["Labeled", ["Beam", "Carriage L", "Carriage R", "Feed & Pole", "Tray", "Labels"], nil]].each { |name, tags, tgt|
+[["Overview", ["Beam", "Carriage L", "Carriage R", "Feed & Pole", "Tray"], nil], ["Beam", ["Beam"], nil], ["Carriage Assembly", ["Beam", "Carriage L", "Carriage R", "Tray Ref"], nil], ["One Carriage", ["Carriage L"], [200.mm, 1180.mm, 55.mm, 480.mm]], ["Pole & Ball Joint", ["Beam", "Feed & Pole"], nil], ["Processing Tray", ["Tray", "Beam", "Carriage L", "Carriage R"], nil], ["Labeled", ["Beam", "Carriage L", "Carriage R", "Feed & Pole", "Tray", "Labels"], nil]].each { |name, tags, tgt|
   model.layers.each { |l| l.visible = (l == default_layer || tags.include?(l.name)) }
   if tgt
     # close-up: aim at the target with a tight standoff (no zoom_extents); use a

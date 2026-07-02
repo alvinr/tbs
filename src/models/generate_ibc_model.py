@@ -130,6 +130,7 @@ def generate_ruby():
         ov.component("Corridor Plumbing", "Plumbing & Panel", cp.plumbing()),
         ov.component("Corridor Drains + X-ports", "Plumbing & Panel", cp.drains_ports()),
         ov.component("TAP-01 + Spray Supply", "Plumbing & Panel", pw.tap01_supply()),
+        ov.component("Ribbon Support Cross-beams", "Plumbing & Panel", cp.ribbon_supports()),
         ov.component("Walkway Cantilever Arms", "Walkway Cantilever",
                      '\n'.join(ov.ibc_cantilever_arms())),
     ]
@@ -142,10 +143,10 @@ def generate_ruby():
     # Focused subsystems, a combined view, then a fully-labeled view (per rule).
     comp_tags = [t for t in TAGS if t != "Labels"]
     scenes = [
+        ("Overview", comp_tags),  # combined view of all subsystems — listed first
         ("IBC Tanks", ["IBC Tanks"]),
         ("IBC Frame", ["IBC Frame", "Walkway Cantilever"]),  # frame + the attached walkway cantilever arms
         ("Plumbing & Panel", ["Plumbing & Panel"]),
-        ("Combined", comp_tags),
         ("Labeled", TAGS),  # all components + the Labels tag
     ]
     scenes_ruby = '[' + ', '.join(

@@ -415,7 +415,7 @@ def draw_sheet1():
                 linespacing=1.25, zorder=4)
 
     # ── Title block ──────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 6",
+    title_block(ax, "SHEET 1 OF 7",
                 drawing_title="SYSTEM ONE-LINE DIAGRAM",
                 subtitle="Power flow  ·  Component specifications  ·  Circuit fuse ratings  ·  Wire gauges",
                 scale_note="Not to scale",
@@ -976,7 +976,7 @@ def draw_sheet2():
                fs=7, width=4250, font={"fontfamily": "monospace"})
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 6",
+    title_block(ax, "SHEET 2 OF 7",
                 drawing_title="CONTAINER FLOOR PLAN & WIRING LAYOUT",
                 subtitle="Top-down plan  ·  End-zone layout  ·  Optical cone clear",
                 scale_note="Axes in mm  (approx 1:500)",
@@ -1397,7 +1397,7 @@ def draw_sheet3():
                fs=7, width=3400, font={"fontfamily": "monospace"})
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 3 OF 6",
+    title_block(ax, "SHEET 3 OF 7",
                 drawing_title="PINHOLE WALL INTERIOR ELEVATION",
                 subtitle="Equipment mounting  ·  Cable trunking & drop conduits  ·  Pull-cord switches  ·  LED panels",
                 scale_note="Axes in mm  (approx 1:40)",
@@ -1509,7 +1509,7 @@ def draw_sheet4():
         "See Plumbing Panel report §3.2 / Electrical §7.3.",
     ], -140, -80, spacing=44, fs=6.6, width=1010)
 
-    title_block(ax, "SHEET 4 OF 6",
+    title_block(ax, "SHEET 4 OF 7",
                 drawing_title="PUMP POWER",
                 subtitle="Circuit C · scale elevation",
                 scale_note="1:8 · mm",
@@ -1635,7 +1635,7 @@ def draw_sheet5():
     ax.set_xlim(-70, 1230)
     ax.set_ylim(1330, 2250)
 
-    title_block(ax, "SHEET 5 OF 6",
+    title_block(ax, "SHEET 5 OF 7",
                 drawing_title="MAIN ENCLOSURE — PANEL LAYOUT",
                 subtitle="True-scale front elevation · feed one-line · fuse schedule",
                 scale_note="True scale · mm (equal aspect)",
@@ -2204,7 +2204,7 @@ def draw_sheet6():
     ax_tb.set_xlim(0, 1)
     ax_tb.set_ylim(0, 1)
     ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 6 OF 6",
+    title_block(ax_tb, "SHEET 6 OF 7",
                 drawing_title="EXTERNAL POWER PANEL — FLUSH MOUNT",
                 subtitle="SOLAR + SHORE INPUT · COOLER DC OUTPUT · WIRING SCHEMATIC",
                 scale_note="AXES IN mm",
@@ -2216,6 +2216,184 @@ def draw_sheet6():
     print("  → electrical-sheet6.png  Done.")
 
 
+def draw_sheet7():
+    """SHEET 7 — Symbol-based system schematic (traditional EE wiring diagram).
+
+    Complements the Sheet-1 block one-line with a standard-symbol schematic of the
+    whole 12V DC system: PV → disconnect → MPPT → 60A fuse → battery → 200A MRBF →
+    contactor → main disconnect → fuse block → the seven load circuits (A–G, each a
+    fuse + load symbol) → negative bus → battery. The contactor coil (K1) is held in
+    by the two E-stops (NC) in series; a shore charger feeds the battery; the negative
+    bus is bonded to chassis earth. Not to scale — a connection schematic.
+    """
+    from tbs_constants import DIAGRAMS_DIR
+    FT = {"fontfamily": "monospace"}
+    LN, RED, BLU, GRN = "#1A1A1A", "#C0392B", "#2471A3", "#2E7D32"
+    fig, ax = plt.subplots(figsize=(18, 11))
+    ax.set_aspect("equal"); ax.axis("off")
+    ax.set_xlim(0, 2060); ax.set_ylim(-60, 1340)
+    R = mpatches.Rectangle
+
+    def wire(pts, c=LN, lw=1.7, z=3):
+        ax.plot([p[0] for p in pts], [p[1] for p in pts], color=c, lw=lw, zorder=z,
+                solid_capstyle="round", solid_joinstyle="round")
+    def dot(x, y, c=LN):
+        ax.add_patch(mpatches.Circle((x, y), 6.5, fc=c, ec=c, zorder=6))
+    def txt(x, y, t, fs=7, ha="center", va="center", c=LN, w="normal"):
+        ax.text(x, y, t, ha=ha, va=va, fontsize=fs, color=c, zorder=8, fontweight=w, **FT)
+    def box(x, y, w, h, label, sub="", fc="white", fs=7.5):
+        ax.add_patch(mpatches.FancyBboxPatch((x - w / 2, y - h / 2), w, h,
+                     boxstyle="round,pad=0,rounding_size=7", fc=fc, ec=LN, lw=1.6, zorder=4))
+        txt(x, y + (11 if sub else 0), label, fs=fs, w="bold")
+        if sub:
+            txt(x, y - 13, sub, fs=5.5, c="#444")
+
+    # ── symbols ──────────────────────────────────────────────────────────────
+    def fuse(x, y, rating, vert=True, lab_side="right"):
+        if vert:
+            ax.add_patch(R((x - 13, y - 26), 26, 52, fc="white", ec=LN, lw=1.6, zorder=5))
+            ax.plot([x, x], [y - 26, y + 26], color=LN, lw=1.1, zorder=6)
+            dx = 20 if lab_side == "right" else -20
+            txt(x + dx, y, rating, fs=6.4, ha=("left" if lab_side == "right" else "right"), w="bold", c=RED)
+        else:
+            ax.add_patch(R((x - 26, y - 13), 52, 26, fc="white", ec=LN, lw=1.6, zorder=5))
+            ax.plot([x - 26, x + 26], [y, y], color=LN, lw=1.1, zorder=6)
+            txt(x, y + 22, rating, fs=6.4, w="bold", c=RED)
+    def disconnect(x, y, label=""):                       # open-able isolator (vertical)
+        dot(x, y - 22); ax.plot([x, x - 18], [y - 22, y + 20], color=LN, lw=2.0, zorder=5); dot(x, y + 22)
+        if label:
+            txt(x - 28, y, label, fs=6, ha="right")
+    def contactor(x, y):                                  # NO power contact of K1 (vertical)
+        dot(x, y - 22); ax.plot([x, x - 18], [y - 22, y + 20], color=LN, lw=2.0, zorder=5); dot(x, y + 22)
+        ax.plot([x - 9, x - 9], [y - 4, y + 8], color=LN, lw=0.9, ls=(0, (2, 2)), zorder=5)  # actuation tie
+        txt(x - 30, y + 26, "K1", fs=6.3, ha="right", w="bold")
+    def battery(x, y):
+        yy = y + 34
+        for w, lw in [(38, 1.2), (18, 3.2), (38, 1.2), (18, 3.2)]:
+            ax.plot([x - w / 2, x + w / 2], [yy, yy], color=LN, lw=lw, zorder=5); yy -= 19
+        wire([(x, y + 34), (x, y + 60)]); wire([(x, y - 40), (x, y - 62)])
+        txt(x + 34, y + 50, "+", fs=11, w="bold"); txt(x + 34, y - 52, "−", fs=11, w="bold")
+        txt(x, y - 96, "BATTERY", fs=7, w="bold"); txt(x, y - 114, "100Ah 12V LiFePO₄", fs=5.6, c="#444")
+    def estop(x, y):                                      # NC pushbutton (horizontal contact)
+        dot(x - 22, y); dot(x + 22, y)
+        ax.plot([x - 22, x + 14], [y, y + 12], color=LN, lw=2.0, zorder=5)   # NC blade (opens on push)
+        ax.plot([x, x], [y + 8, y + 30], color=RED, lw=1.7, zorder=5)        # actuator stem
+        ax.add_patch(mpatches.FancyBboxPatch((x - 17, y + 30), 34, 11, boxstyle="round,pad=0,rounding_size=5",
+                     fc=RED, ec=LN, lw=1.0, zorder=6))
+    def coil(x, y, label="K1"):
+        ax.add_patch(R((x - 17, y - 22), 34, 44, fc="white", ec=LN, lw=1.6, zorder=5))
+        txt(x, y, label, fs=7, w="bold")
+    def motor(x, y, letter="M", fc="white"):
+        ax.add_patch(mpatches.Circle((x, y), 27, fc=fc, ec=LN, lw=1.6, zorder=5)); txt(x, y, letter, fs=9.5, w="bold")
+    def lamp(x, y):
+        ax.add_patch(mpatches.Circle((x, y), 27, fc="#FFF6C8", ec=LN, lw=1.6, zorder=5))
+        ax.plot([x - 19, x + 19], [y - 19, y + 19], color=LN, lw=1.2, zorder=6)
+        ax.plot([x - 19, x + 19], [y + 19, y - 19], color=LN, lw=1.2, zorder=6)
+    def ground(x, y):
+        wire([(x, y), (x, y - 20)])
+        for i, w in enumerate([30, 19, 9]):
+            ax.plot([x - w / 2, x + w / 2], [y - 20 - i * 7, y - 20 - i * 7], color=LN, lw=2.0, zorder=5)
+
+    # ── title ──────────────────────────────────────────────────────────────
+    txt(1030, 1305, "SYSTEM SCHEMATIC — 12V DC OFF-GRID (SYMBOL DIAGRAM)", fs=13, w="bold", c=BLU)
+    txt(1030, 1275, "TBS-001 · negative-grounded · one battery bank shown · all loads 12V DC (Circuit E via inverter)", fs=7, c="#444")
+
+    # ═══ GENERATION + CHARGE CHAIN (left, vertical) ═══
+    GX = 210
+    box(GX, 1150, 150, 74, "PV ARRAY", "3×200W · Isc 30A", fc="#DFF0D8")
+    wire([(GX, 1113), (GX, 1076)]); disconnect(GX, 1054, "PV\nDISC")
+    txt(GX + 26, 1054, "50A", fs=6, ha="left", c=RED)
+    wire([(GX, 1032), (GX, 992)]); box(GX, 950, 150, 66, "MPPT", "Victron 100/50", fc="#FCF3CF")
+    wire([(GX, 917), (GX, 852)]); fuse(GX, 826, "60A")
+    wire([(GX, 800), (GX, 726)]); txt(GX - 90, 763, "6 AWG", fs=5.6, ha="right", c="#666")
+
+    # ═══ BATTERY + PROTECTION (center) ═══
+    BX, BY = 470, 640
+    battery(BX, BY)
+    # charge line: 60A fuse → battery +
+    wire([(GX, 726), (GX, 700), (BX, 700)]); dot(BX, 700); wire([(BX, 700), (BX, BY + 60)])
+    # discharge / protection chain along the top of the battery + (horizontal)
+    PY = 700
+    wire([(BX, PY), (610, PY)]); fuse(636, PY, "200A", vert=False)
+    txt(636, PY + 40, "MRBF", fs=5.6, c="#666")
+    wire([(662, PY), (742, PY)]); contactor(768, PY)
+    wire([(794, PY), (874, PY)]); disconnect(900, PY, "MAIN")
+    wire([(926, PY), (1000, PY)]); dot(1000, PY)
+    wire([(1000, PY), (1000, 1150)])                        # rise to the positive bus
+    # negative return
+    wire([(BX, BY - 62), (BX, 250)]); dot(BX, 250)
+    ground(BX + 130, 250); wire([(BX, 250), (BX + 130, 250)]); dot(BX + 130, 250)
+    txt(BX + 150, 232, "CHASSIS EARTH\n8ft stake + body bond", fs=5.6, ha="left", va="top")
+
+    # ═══ E-STOP CONTROL LOOP (holds K1 coil in) ═══
+    CLY = 470
+    wire([(768, PY), (768, CLY + 22)])                     # tap control power near the contactor
+    wire([(768, CLY + 22), (768, CLY)]); dot(768, CLY - 0)
+    estop(720, CLY); estop(632, CLY)
+    wire([(768, CLY), (742, CLY)]); wire([(698, CLY), (654, CLY)]); wire([(610, CLY), (556, CLY)])
+    coil(556, CLY, "K1"); wire([(556, CLY - 22), (556, 250), (BX, 250)])
+    txt(540, 402, "E-STOP LOOP — 2× NC in series;\neither press drops K1 (opens the contactor)",
+        fs=5.6, c=RED, w="bold", ha="left", va="top")
+
+    # ═══ SHORE CHARGER (optional AC backup) ═══
+    box(230, 470, 190, 66, "SHORE CHARGER", "Victron IP65 12/15", fc="#F5E9C8")
+    txt(120, 470, "AC~", fs=8, w="bold"); wire([(135, 470), (135, 470)]); dot(135, 470); wire([(135, 470), (135, 470)])
+    ax.plot([128, 142], [470, 470], color=LN, lw=1.6, zorder=3)
+    wire([(325, 470), (360, 470), (360, 700)]); dot(360, 700)   # DC out → charge node
+
+    # ═══ POSITIVE BUS + FUSE BLOCK + 7 LOAD CIRCUITS (right) ═══
+    BUS_Y, NEG_Y = 1150, 250
+    BUS_X0, BUS_X1 = 1000, 1980
+    wire([(BUS_X0, BUS_Y), (BUS_X1, BUS_Y)], lw=2.4)        # positive bus
+    wire([(BX + 130, NEG_Y), (BUS_X1, NEG_Y)], lw=2.4)      # negative bus
+    txt(BUS_X0 + 6, BUS_Y + 20, "BLUE SEA 5026 FUSE BLOCK  (+ bus)", fs=6.4, ha="left", w="bold")
+    txt(BUS_X1, NEG_Y - 20, "NEGATIVE BUS  (− return)", fs=6.4, ha="right")
+    circuits = [
+        ("A", "5A", "16", "EXHAUST FAN", "M"), ("B", "5A", "16", "INTAKE FAN", "M"),
+        ("C", "15A", "14", "PUMPS (panel)", "M"), ("D", "5A", "18", "SAFELIGHT", "L"),
+        ("E", "40A", "10", "EVAP COOLER", "INV"), ("F", "20A", "12", "FP ACTUATORS", "M"),
+        ("G", "10A", "16", "WHITE LED", "L"),
+    ]
+    xs = [1110, 1235, 1360, 1485, 1610, 1735, 1860]
+    for (c, fu, awg, name, kind), x in zip(circuits, xs):
+        dot(x, BUS_Y)
+        wire([(x, BUS_Y), (x, 1090)]); fuse(x, 1064, fu)
+        txt(x, 1112, c, fs=9, w="bold", c=BLU)
+        wire([(x, 1038), (x, 690)])
+        txt(x + 16, 950, f"{awg} AWG", fs=5.2, ha="left", c="#666")
+        if kind == "M":
+            motor(x, 640); nb = 613
+        elif kind == "L":
+            lamp(x, 640); nb = 613
+        else:                                               # inverter → AC load
+            box(x, 700, 96, 44, "INV", "12→120V", fc="#EBF5FB", fs=6); motor(x, 590, "M", fc="#EBF5FB"); nb = 563
+            wire([(x, 678), (x, 617)])
+        wire([(x, 640 if kind != "INV" else 590), (x, 640 if kind != "INV" else 590)])
+        wire([(x, nb), (x, NEG_Y)]); dot(x, NEG_Y)
+        txt(x, 686 if kind != "INV" else 740, name, fs=5.4, va="bottom")
+
+    # ── legend of symbols ──
+    lx, ly = 70, 150
+    ax.add_patch(R((lx - 20, ly - 130), 470, 150, fc="#FBFBFB", ec="#BBB", lw=1.0, zorder=2))
+    txt(lx - 10, ly + 2, "SYMBOLS:", fs=6.6, ha="left", w="bold")
+    fuse(lx + 20, ly - 34, "", vert=True); txt(lx + 44, ly - 34, "fuse", fs=6, ha="left")
+    disconnect(lx + 150, ly - 34); txt(lx + 172, ly - 34, "isolator", fs=6, ha="left")
+    contactor(lx + 300, ly - 34); txt(lx + 322, ly - 34, "contactor K1", fs=6, ha="left")
+    motor(lx + 30, ly - 96, "M"); txt(lx + 66, ly - 96, "motor (fan/pump)", fs=6, ha="left")
+    lamp(lx + 260, ly - 96); txt(lx + 296, ly - 96, "lamp (LED/safelight)", fs=6, ha="left")
+
+    # title block
+    ax_tb = fig.add_axes([0.05, -0.02, 0.9, 0.06])
+    ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 7 OF 7", drawing_title="SYSTEM SCHEMATIC (SYMBOL DIAGRAM)",
+                subtitle="Full-system EE schematic · protection · E-stop loop · 7 load circuits",
+                scale_note="Not to scale", height=0.85)
+    fig.savefig(f"{DIAGRAMS_DIR}/electrical-sheet7.png", dpi=150, bbox_inches="tight",
+                pad_inches=0.12, facecolor="white")
+    plt.close(fig)
+    print("  → electrical-sheet7.png  Done.")
+
+
 if __name__ == "__main__":
     print("Generating TBS-001 Electrical & Systems diagrams...")
     draw_sheet1()
@@ -2224,4 +2402,5 @@ if __name__ == "__main__":
     draw_sheet4()
     draw_sheet5()
     draw_sheet6()
+    draw_sheet7()
     print("Done.")

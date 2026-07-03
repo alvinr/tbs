@@ -106,6 +106,8 @@
 
 ![TBS-001 — External Power Panel Detail](assets/electrical-sheet6.png)
 
+![TBS-001 Electrical — Sheet 7: System Schematic (Symbol Diagram)](assets/electrical-sheet7.png)
+
 ---
 
 ## 11. Light Trap Ventilation

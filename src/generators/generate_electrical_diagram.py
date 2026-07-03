@@ -30,7 +30,7 @@ from tbs_constants import (
 )
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_notes,
-                         draw_rect, draw_circle, hatch_rect)
+                         draw_rect, draw_circle, hatch_rect, draw_pipe_path)
 
 # ── Palette ───────────────────────────────────────────────────────────────────
 C_OUT   = "#1A1A1A"
@@ -1412,92 +1412,108 @@ def draw_sheet3():
 # ─────────────────────────────────────────────────────────────────────────────
 
 def draw_sheet4():
-    """SHEET 4 — Plumbing-Panel Pump Power (Circuit C), frontal elevation.
+    """SHEET 4 — Corridor Plumbing-Panel Pump Power (Circuit C), scale elevation.
 
-    Flat 2D companion to the electrical 3D model's pump distribution (kept
-    consistent with the other electrical sheets): the Circuit-C feed → 12V
-    distribution wireway → 5 IP-rated switches → the 5 Shurflo pumps (P-01..P-05,
-    two columns), run one at a time.
+    Engineering elevation of the corridor plumbing panel (matches panel-layout.png):
+    the single vertical pump column (ACC-01 + P-01/P-04/P-05/P-03) drawn to scale,
+    powered from ONE master switch → 12V distribution block → curved-elbow branches
+    to each pump. No per-pump switches — each Shurflo runs on its internal pressure
+    switch; the master switch is the single manual cutoff. P-02 (Brown recycle) is on
+    the pinhole-wall panel, shown as an off-panel branch. Routing follows pipe
+    conventions (parallel-wall conduit + curved elbow fittings, never hard corners).
     """
     from tbs_constants import DIAGRAMS_DIR
+    import generate_panel_layout as pl
     R = mpatches.Rectangle
-    CC = "#2980B9"                                       # Circuit C blue
+    CC, CDK = "#2980B9", "#1B5A82"                       # Circuit-C blue + darker edge
 
-    fig, ax = plt.subplots(figsize=(8.6, 12))
+    fig, ax = plt.subplots(figsize=(7.6, 12.4))
     ax.set_aspect("equal")
     ax.axis("off")
 
-    # Frontal elevation: horizontal = panel width (Yd), vertical = height (Z).
-    PW = 440                                             # panel width (schematic)
-    lcol, rcol, wy = 95, 345, 220                        # column centres + wireway
-    rb, rm, rt = 1100, 1420, 1740                        # pump row bottoms
-    ph, pw = 200, 120                                    # pump body H × W
-    z_lo, z_hi = 1000, 2060
+    PW, PH = pl.PANEL_W, pl.PANEL_H                       # 270 × 2060 (to scale)
+    pcx, pw, ph = pl.PUMP_COL_C, pl.PUMP_W, pl.PUMP_H     # column center 135, body 127 × 218
+    p_left = pcx - pw / 2                                 # 71.5 — pump left edge
 
-    # ── Plumbing panel ──
-    ax.add_patch(R((-40, z_lo), PW + 80, z_hi - z_lo, fc="#EFE6CC", ec=C_OUT, lw=1.6,
-                   zorder=2))
-    leader(ax, -40, z_hi - 70, -210, z_hi + 30,
-           "PLUMBING PANEL\n(18mm ply, edge-on T\nacross IBC corridor)",
-           fs=6.5, color=C_OUT, ha="right")
+    # ── Panel (to scale) ──
+    ax.add_patch(R((0, 0), PW, PH, fc="#EFE6CC", ec=C_OUT, lw=1.6, zorder=2))
+    leader(ax, 0, PH - 55, -95, PH + 15,
+           "CORRIDOR PLUMBING\nPANEL — 18mm ply\n270 × 2060mm", fs=6.2, color=C_OUT, ha="right")
 
-    # ── Distribution wireway (vertical, between the columns) ──
-    ax.add_patch(R((wy - 16, rb - 60), 32, (z_hi - 20) - (rb - 60), fc="#2B2B30",
-                   ec=C_OUT, lw=1.1, zorder=4))
-    leader(ax, wy - 16, 1300, -90, 1300, "DISTRIBUTION\nWIREWAY (12V + / − bus)",
-           fs=6.5, color="#2B2B30", ha="right")
+    # ── ACC-01 (passive accumulator — unpowered, drawn for context) ──
+    ax.add_patch(mpatches.FancyBboxPatch((pl.ACC_YD - pl.ACC_OD / 2, pl.ACC_Z), pl.ACC_OD, pl.ACC_LEN,
+                 boxstyle="round,pad=0,rounding_size=16", fc="#AEB6BE", ec=C_OUT, lw=1.1, zorder=6))
+    ax.text(pl.ACC_YD, pl.ACC_Z + pl.ACC_LEN / 2, "ACC-01", ha="center", va="center",
+            fontsize=6.6, fontweight="bold", zorder=8)
 
-    # ── Pumps + switches + Circuit-C branches ──
-    pumps = [("P-01", lcol, rb), ("P-04", lcol, rm),
-             ("P-02", rcol, rb), ("P-03", rcol, rm), ("P-05", rcol, rt)]
-    for nm, xc, yb in pumps:
-        ax.add_patch(R((xc - pw / 2, yb), pw, ph, fc="#B4B4BC", ec=C_OUT, lw=1.3,
-                       zorder=6))
-        ax.text(xc, yb + ph / 2, nm, ha="center", va="center", fontsize=10,
-                fontweight="bold", zorder=8)
-        # switch on the panel face, just above the pump
-        sy = yb + ph + 34
-        ax.add_patch(R((xc - 22, sy - 20), 44, 40, fc="#242424", ec=C_OUT, lw=1.0,
-                       zorder=7))
-        # branch: wireway → switch (horizontal at switch height), then down to pump
-        ax.plot([wy, xc], [sy, sy], color=CC, lw=2.6, zorder=5, solid_capstyle="round")
-        ax.plot([xc, xc], [sy - 20, yb + ph], color=CC, lw=2.6, zorder=5)
+    # ── Pumps (single vertical column, real Z) + electrical terminals ──
+    pumps = [("P-01", pl.P01_Z, "Blue supply"), ("P-04", pl.P04_Z, "Tray drain"),
+             ("P-05", pl.P05_Z, "Brown drain"), ("P-03", pl.P03_Z, "Waste drain")]
+    term = {}
+    for nm, zb, sub in pumps:
+        ax.add_patch(R((p_left, zb), pw, ph, fc="#B4B4BC", ec=C_OUT, lw=1.3, zorder=6))
+        ax.text(pcx, zb + ph / 2 + 14, nm, ha="center", va="center", fontsize=9, fontweight="bold", zorder=8)
+        ax.text(pcx, zb + ph / 2 - 20, sub, ha="center", va="center", fontsize=5.4, color="#444", zorder=8)
+        tz = zb + ph / 2
+        ax.add_patch(R((p_left - 15, tz - 13), 15, 26, fc="#242424", ec=C_OUT, lw=0.8, zorder=7))
+        term[nm] = (p_left - 15, tz)                      # terminal left face (branch lands here)
 
-    # ── Circuit-C feed from the ceiling trunking into the wireway top ──
-    ax.plot([wy, wy], [z_hi + 330, z_hi - 20], color=CC, lw=3.4, zorder=9)
-    ax.text(wy, z_hi + 360, "CIRCUIT C  ·  14 AWG · 15A\n(from fuse block / ceiling trunking)",
-            ha="center", va="bottom", fontsize=7.2, color=CC, fontweight="bold")
+    # ── Master switch + 12V distribution block: full-width header bars above P-03 ──
+    mcx = PW / 2
+    ax.add_patch(R((6, 1978), PW - 12, 68, fc="#3A3A42", ec=C_OUT, lw=1.2, zorder=7))
+    ax.text(mcx, 2012, "MASTER SWITCH", ha="center", va="center", fontsize=5.8,
+            color="white", fontweight="bold", zorder=9)
+    ax.add_patch(R((6, 1866), PW - 12, 82, fc="#5A5A64", ec=C_OUT, lw=1.2, zorder=7))
+    ax.text(mcx, 1907, "12V DIST. BLOCK", ha="center", va="center", fontsize=5.8,
+            color="white", fontweight="bold", zorder=9)
+    draw_pipe_path(ax, [mcx, mcx], [1978, 1948], 12, 2.0, fc=CC, ec=CDK, zorder=5)   # switch → block
+
+    # ── Circuit-C feed from ceiling trunking into the master switch ──
+    draw_pipe_path(ax, [mcx, mcx], [PH + 300, 2046], 17, 2.5, fc=CC, ec=CDK, zorder=5)
+    ax.text(mcx, PH + 330, "CIRCUIT C · 14 AWG · 15A\n(ceiling trunking / fuse block)",
+            ha="center", va="bottom", fontsize=6.4, color=CC, fontweight="bold")
+
+    # ── Curved-elbow branch conduits: block → each pump terminal. Own lane each, longest
+    #    drop = outermost, so runs never cross (each stops at its pump). ──
+    lanes = {"P-01": 16, "P-04": 26, "P-05": 36, "P-03": 46}
+    for nm, zb, sub in pumps:
+        ln = lanes[nm]
+        tx, tz = term[nm]
+        draw_pipe_path(ax, [ln, ln, tx], [1866, tz, tz], 12, 1.8, fc=CC, ec=CDK, zorder=4)
+
+    # ── P-02 branch leaving the panel toward the pinhole-wall panel (short tag; detail at right) ──
+    draw_pipe_path(ax, [12, -60], [1907, 1907], 12, 1.8, fc=CC, ec=CDK, zorder=4)
+    ax.text(-70, 1907, "→ P-02", ha="right", va="center", fontsize=6.4, color=CDK, fontweight="bold")
 
     # ── Right-side callouts ──
-    ax.annotate("5× IP-RATED PUMP SWITCHES\n(one per pump — black)",
-                xy=(rcol + 22, rt + ph + 34), xytext=(PW + 70, rt + 150),
-                fontsize=6.8, ha="left", va="center", color="#202020",
-                fontweight="bold", arrowprops=dict(arrowstyle="-|>", color="#202020", lw=1.0))
-    ax.text(PW + 70, rm + ph - 10,
-            "LEFT col: P-01 / P-04\nRIGHT col: P-02 / P-03 / P-05\n\n"
-            "Switch → pump branch: 16 AWG\nPumps run ONE AT A TIME",
-            fontsize=6.8, ha="left", va="top", color="#333")
+    ax.text(PW + 90, 1500,
+            "MASTER SWITCH — one manual cutoff\nfor the whole pump circuit (no per-\npump switches). Each Shurflo 2088\n"
+            "then runs on its internal pressure\nswitch when its valves open.\n\n"
+            "16 AWG branches — curved elbow\nfittings (pipe convention), one per\npump.\n\n"
+            "P-02 (Brown recycle) is fed by a\nCircuit-C branch off this block, on\nthe Pinhole-Wall panel.\n\n"
+            "ACC-01 is a passive accumulator —\nunpowered.",
+            fontsize=6.2, ha="left", va="top", color="#333")
 
-    ax.set_xlim(-280, PW + 360)
-    ax.set_ylim(330, z_hi + 470)
+    ax.set_xlim(-210, PW + 940)
+    ax.set_ylim(-820, PH + 470)
 
-    # ── Notes + title block (in the clear band below the panel, above the block) ──
+    # ── Notes + title block (clear band below the panel) ──
     draw_notes(ax, [
-        "CIRCUIT C — PUMP POWER (one feed, five pumps):",
-        "One 14 AWG / 15A Circuit-C feed → 12V distribution wireway → 5 IP-rated rocker",
-        "switches (one per pump) → 16 AWG branch to each pump. Pumps run ONE AT A",
-        "TIME — the operator enables the pump for the current task; each Shurflo 2088 then",
-        "runs on its internal pressure switch. 15A fuse covers a single pump (7.5A) with",
-        "margin.",
-        "Wet zone: sealed, above the spill line. See Plumbing Panel report",
-        "§3.2 / Electrical §7.3.",
-    ], -240, 910, spacing=40, fs=7.0, width=970)
+        "CIRCUIT C — PUMP POWER (one feed, one master switch, four panel pumps):",
+        "One 14 AWG / 15A Circuit-C feed → MASTER pump switch → 12V distribution block → 16 AWG",
+        "branch to each pump. The four corridor pumps stack in a single column (bottom→top: ACC-01,",
+        "P-01, P-04, P-05, P-03); P-02 (Brown recycle) is fed on the Pinhole-Wall panel. No per-pump",
+        "switches — the master switch is the single cutoff and each Shurflo 2088 runs on its internal",
+        "pressure switch. 15A fuse covers a single pump (7.5A) with margin. Conduit branches use curved",
+        "elbow fittings (pipe convention). Wet zone: sealed, above the spill line.",
+        "See Plumbing Panel report §3.2 / Electrical §7.3.",
+    ], -140, -80, spacing=44, fs=6.6, width=1010)
 
     title_block(ax, "SHEET 4 OF 6",
-                drawing_title="PUMP POWER — CIRCUIT C",
-                subtitle="Frontal · feed → wireway → 5 switches → pumps",
-                scale_note="Approx 1:8 · mm",
-                doc_id="TBS-ELEC", height=0.06, portrait=True)
+                drawing_title="PUMP POWER",
+                subtitle="Circuit C · scale elevation",
+                scale_note="1:8 · mm",
+                doc_id="TBS-ELEC", height=0.075, portrait=True)
 
     plt.savefig(f"{DIAGRAMS_DIR}/electrical-sheet4.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")

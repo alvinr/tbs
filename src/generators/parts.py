@@ -406,7 +406,7 @@ PARTS: list[Part] = [
     Part("wet-zone-connectors", "Sealed wet-zone connectors — Deutsch DT / adhesive heat-shrink",
          "electrical-distribution", "electrical", 1, "lot", 25, 25, "Waytek Wire"),
     Part("pump-switches", "Master pump switch (Circuit C) — IP67 sealed rocker/disconnect 12V 16A", "electrical-distribution",
-         "electrical", 1, "ea", 10, 10, "Amazon", "Waytek Wire", spec="One manual cutoff for the whole pump circuit (per-pump switches removed; each Shurflo runs on its internal pressure switch)"),
+         "electrical", 1, "ea", 10, 10, "Amazon", "Waytek Wire", spec="One manual cutoff for the whole pump circuit, mounted on the EP (per-pump switches removed; each Shurflo runs on its internal pressure switch)"),
     Part("pump-dist-block", "Pump distribution block — 12V DC + / − bus, 6-way", "electrical-distribution",
          "electrical", 1, "ea", 15, 15, "Blue Sea", "Amazon"),
     Part("dielectric-grease", "Dielectric grease, marine-grade (terminal protection)", "adhesives-finishes",

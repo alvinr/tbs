@@ -239,6 +239,7 @@ DIAG_FILES=(
     "electrical-sheet4.png"
     "electrical-sheet5.png"
     "electrical-sheet6.png"
+    "electrical-sheet7.png"
     "lighttrap-sheet1.png"
     "lighttrap-sheet2.png"
     "hingepanel-sheet1.png"

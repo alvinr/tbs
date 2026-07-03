@@ -287,6 +287,11 @@ Front elevation of the IP65 enclosure interior (the 2D companion to the electric
 
 ![TBS-ELEC Sheet 5 — Main Enclosure Panel Layout + Fuse Schedule](assets/electrical-sheet5.png)
 
+**Sheet 7 — System Schematic (Symbol Diagram)**
+The whole 12V DC system drawn as a traditional **symbol-based electrical schematic** — the companion to the Sheet-1 block one-line. Standard symbols (battery cells, fuse, isolator, contactor, NC E-stop, motor, lamp, ground) trace every conductor: PV array → PV isolator → MPPT → 60A charge fuse → battery → 200A MRBF → contactor **K1** → main disconnect → the Blue Sea 5026 positive bus → the seven load circuits (A–G, each a fuse + load) → negative bus → chassis earth. The **E-stop loop** (2× NC in series holding the K1 coil) and the shore charger are shown explicitly. Not to scale — a connection schematic. See §7.5 (protection) and §7.6 (AC isolation).
+
+![TBS-ELEC Sheet 7 — System Schematic (Symbol Diagram)](assets/electrical-sheet7.png)
+
 ### 7.5 Circuit Protection & Electrical Safety
 
 This is a 12 V DC (extra-low-voltage) system whose **only** 120 V AC element is the

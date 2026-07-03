@@ -124,6 +124,15 @@ The 2D diagram generators (`src/generators/`) and the SketchUp 3D models
 (`src/models/`) both read spatial constants from `tbs_constants.py`, so changes
 ripple into both.
 
+- **HARD RULE — models are ALWAYS generated from code; never hand-edit the live model.**
+  A `.skp` is a build artifact, not a source of truth. Do **not** move/nudge/transform/delete
+  geometry directly in the live model via `eval_ruby` to "fix" a position — that diverges the
+  model from the generator and is silently overwritten on the next regen. Every geometry change
+  goes in the generating Python (`src/models/*.py`) → regenerate → `--send` → verify → ALVIN
+  saves. **`eval_ruby` is for READ-ONLY inspection/verification only** (querying bounds/positions),
+  never mutation. If the live model looks wrong, either the code is wrong (fix it) or the model
+  is stale (re-send it) — never patch the model by hand.
+
 - **When a change touches `tbs_constants.py` (or otherwise alters a system
   component's geometry), re-run every SketchUp model that contains the affected
   component** — regenerate, re-send, and re-save it:

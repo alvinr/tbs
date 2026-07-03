@@ -958,7 +958,7 @@ def sheet4():
     ep_back_x = ep_face_x + EQPANEL_T          # 4892 — plywood back face
     ep_yd_near = EQPANEL_YD                    # 1046
     ep_yd_far  = EQPANEL_YD + CORRIDOR_W       # 1316
-    ep_depth_x = ep_face_x - BB_OD             # 4870 — deepest protrusion (filters)
+    ep_depth_x = ep_face_x - 130               # deepest protrusion is now the pumps/ACC-01 (~130) — filters relocated to the Pinhole Wall panel
 
     # Full panel assembly footprint (backing board + equipment depth)
     ax.add_patch(Rectangle(((ep_depth_x), (ep_yd_near)),
@@ -973,12 +973,11 @@ def sheet4():
     # Leader with panel contents
     leader(ax, (ep_face_x - BB_OD / 2), (ep_yd_near),
            (ep_face_x - 260), (ep_yd_near - 220),
-           "EQUIPMENT PANEL\n"
+           "CORRIDOR PLUMBING PANEL\n"
            "Backing Board (18mm marine ply)\n"
-           "P-01/P-02/P-03/P-04 pumps (Shurflo 2088)\n"
-           "ACC-01 accumulator (125 PSI)\n"
-           "F1 (50μ) / F2 (5μ) / F3 (GAC) filters\n"
-           "3× Big Blue 4.5\"×10\" housings, stacked",
+           "P-01/P-03/P-04/P-05 pumps (Shurflo 2088)\n"
+           "ACC-01 accumulator (125 PSI); DV-02 + SV-02\n"
+           "(3-stage filter bank → Pinhole Wall panel)",
            fs=5.5, color="#A09060", ha="left", font=FONT)
 
     # ── Pipe fitting helpers (matching sheet 5 conventions) ────────────────
@@ -1223,17 +1222,14 @@ def sheet4():
                             fc=C_PUMP, ec=C_OUT, lw=0.5, alpha=0.25,
                             ls="--", zorder=15))
     ax.text(leg_x + (70), y_ep,
-            "EQUIPMENT PANEL P-01/P-02/P-03/P-04 pumps ACC-01 (18mm marine ply)",
+            "CORRIDOR PLUMBING PANEL — P-01/P-03/P-04/P-05 pumps + ACC-01 (18mm marine ply)",
             ha="left", va="center", fontsize=5.5, color="#A09060",
             **FONT, zorder=15)
 
-    # Filter housing legend
+    # Filter relocation note (the 3-stage filter bank is on the Pinhole Wall panel, not here)
     y_fl = y_ep - leg_sp
-    ax.add_patch(Circle((leg_x + (30), y_fl),
-                 (10), fc="#4A7A4A", ec=C_OUT, lw=1.0,
-                 alpha=0.3, zorder=15))
     ax.text(leg_x + (70), y_fl,
-            "BIG BLUE FILTER HOUSING — 4.5\"×10\" (F1=50μ, F2=5μ, F3=GAC)",
+            "3-stage Big Blue filter bank (4.5\"×20\") → on the Pinhole Wall panel",
             ha="left", va="center", fontsize=5.5, color="#2A5A2A",
             **FONT, zorder=15)
 
@@ -1279,9 +1275,9 @@ def sheet4():
         "   behind the panel support frame (clear of uprights).",
         "7. X1 fill tees to BOTH Blue totes (IBC-1 & IBC-2), each branch",
         "   SIDE-ENTERING the tote's corridor face near the top (no cap drop).",
-        f"8. Equipment panel (18mm marine ply) at X={EQPANEL_X},",
-        "   butting the panel support frame: pumps + filters.",
-        f"9. Portal frame: seat brackets + corridor uprights. ~{FRAME_WEIGHT}kg.",
+        f"8. Corridor plumbing panel (18mm marine ply) at X={EQPANEL_X}: pumps",
+        "   P-01/P-03/P-04/P-05 + ACC-01 (filters on the Pinhole Wall panel).",
+        f"9. Deep 4-leg box frame: seat brackets + corridor uprights. ~{FRAME_WEIGHT}kg.",
     ]
     draw_notes(ax, notes, leg_x, leg_box_bot - (55), spacing=(18),
                fs=7, font=FONT, width=850)

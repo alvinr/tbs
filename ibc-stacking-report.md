@@ -72,7 +72,7 @@ panel.
 
 ---
 
-## 3. Stacking Frame — Restraint-Only Front Portal
+## 3. Stacking Frame — Restraint-Only Deep 4-Leg Box
 
 ### 3.1 General Arrangement
 
@@ -82,8 +82,10 @@ There is no room for (and no need for) a load-bearing platform deck between tier
 the frame is **restraint-only**: it carries no vertical service load, it only keeps the
 totes from moving during transport.
 
-The frame is a **single front portal** at the IBC front: two full-height 50×50×3 RHS
-uprights at the corridor edges on floor flange feet. Transport restraint is provided by:
+The frame is a **deep 4-leg box** at the IBC front, spanning the plumbing corridor: a
+**front pair** of full-height 50×50×3 RHS uprights at the corridor mouth and a **back pair**
+~450mm behind, tied by butt-jointed top and bottom rings, on four floor-flange feet (the
+front feet reach ~25mm under the tray edge). Transport restraint is provided by:
 
 - **front retaining bars** across each column at the IBC front that stop
   the totes sliding out the open front, their wall ends dropped into Simpson-style joist
@@ -91,22 +93,23 @@ uprights at the corridor edges on floor flange feet. Transport restraint is prov
 - **D-ring lashing** holders on the front bars, with ratchet straps over each stack;
 - the totes are otherwise trapped by the container side walls (30mm gap) and sealed end wall.
 
-The front portal also gives the right-walkway cantilever arms their clamp point and
-mounts the (forward) Corridor Plumbing Panel.
+The box carries the **Corridor Plumbing Panel** (pumps) and its **drain-riser backing spine**
+on the back uprights, and gives the right-walkway cantilever arms their clamp point on the
+front uprights.
 
 ### 3.2 Frame Specification
 
 | Parameter | Value |
 |-----------|-------|
 | Material | 50 × 50 × 3mm RHS mild steel (A500 Grade B) |
-| Front-portal uprights | 2 full-height at the IBC front |
-| Floor anchorage | 2 × 150 × 150 × 12mm flange-plate feet, 4 × M12 anchors each |
+| Uprights | 4 full-height (deep 4-leg box: front pair at the corridor mouth + back pair ~450mm behind), tied by butt-jointed top + bottom rings |
+| Floor anchorage | 4 × 150 × 150 × 12mm flange-plate feet, 4 × M12 anchors each (front feet reach ~25mm under the tray) |
 | Front retaining bars | 4 × 50×20×3 RHS at the IBC front (seated in the 25mm gap to the film rail), wall → upright per column |
 | Wall joist hangers | 4 × Simpson-style U-pocket receiving the front-bar wall ends, **through-bolted (4 × M12 each) to an exterior backing plate** |
 | Exterior backing plates | 4 × 100 × 135 × 8mm steel, on the **outside** of the container side walls (hex heads outside) — spread the totes' transport thrust into the thin corrugated wall so the bolts can't pull through |
 | D-ring lashing | holders on the front bars, 1,100 kg WLL |
-| Panel mount | the portal carries the forward wet-end panel + the right-walkway cantilever arms |
-| Frame weight | ~178 kg (uprights + feet + front bars + hangers + exterior plates + panel mount) |
+| Panel mount | the box carries the Corridor (pump) Plumbing Panel + drain-riser spine on the back uprights, and the right-walkway cantilever arms on the front uprights |
+| Frame weight | ~178 kg (4 uprights + rings + feet + front bars + hangers + exterior plates + panel/spine mount — see [weight report](weight-distribution-report.md)) |
 | Joints | Welded (fillet weld throughout) |
 
 ### 3.3 Direct-Stack Junction
@@ -205,8 +208,8 @@ and the recycle returns), and the valve schedule are specified in the
 [Water System Report](water-system-report.md) §4–§5 and §7. The pumps and
 diverter valves that drive those circuits — on the **Corridor Plumbing Panel**
 (plywood, at the front (cargo-door) mouth of the corridor, bolted to the
-front-portal frame, see [§3.2](#32-frame-specification)) — together with the
-3-stage filter stack on the **Pinhole Wall Plumbing Panel** are specified in the
+deep-box frame, see [§3.2](#32-frame-specification)) — together with the
+3-stage filter bank on the **Pinhole Wall Plumbing Panel** are specified in the
 [Plumbing Report](plumbing-report.md). This report treats the corridor plumbing
 and both panels only as loads the stacking frame carries.
 
@@ -244,6 +247,11 @@ Eight construction drawings cover the IBC system across two drawing sets:
 **Sheet 3 — Plan view: front portal + retaining bars + floor feet + IBC footprints + corridor + walkway arms**
 ![TBS-001 IBC Frame — Sheet 3](assets/ibc-frame-sheet3.png)
 
+> **Note:** the three frame-fabrication sheets (and the Stacking Sheet 1 cross-section) still
+> depict the **legacy single front-portal** frame; they are pending a redraw to the **deep 4-leg
+> box** described in §3 (front + back upright pairs tied by rings). The narrative, BOM (§9), and
+> the 3D model are the current source of record until those sheets are regenerated.
+
 Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §15
 (stacking) and §17 (frame fabrication).
 
@@ -256,16 +264,16 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 <!-- BEGIN parts:ibc-frame -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| 50 × 50 × 3mm RHS mild steel (6 m lengths) | Front-portal uprights + front retaining bars + panel-mount rail | 4 ea | Metal Supermarkets | $120–$180 |
-| 12mm steel plate, 150 × 150 cut | Upright floor flange feet | 2 ea | Metal Supermarkets | $10–$20 |
+| 50 × 50 × 3mm RHS mild steel (6 m lengths) | Deep 4-leg box uprights (front + back pair) + top/bottom rings + front retaining bars + panel-mount rail (~19.5 m) | 4 ea | Metal Supermarkets | $120–$180 |
+| 12mm steel plate, 150 × 150 cut | Deep-box upright floor flange feet (one per leg; front feet reach under the tray) | 4 ea | Metal Supermarkets | $20–$40 |
 | 4mm folded plate | Simpson-style wall joist hangers | 4 ea | Local fab | $30–$50 |
 | 25mm welded D-ring (3641T29) | Lashing holders on the front bars, 6mm mount plates | 4 ea | McMaster-Carr | $20–$35 |
 | 25mm ratchet strap, 1,100 kg WLL | Transport securing, over each stack | 4 ea | Amazon | $30–$50 |
-| M12 floor anchor (wedge/sleeve, container floor) | Upright flange feet, 4 each | 8 ea | McMaster-Carr | $15–$30 |
+| M12 floor anchor (wedge/sleeve, container floor) | 4 deep-box flange feet × 4 anchors each | 16 ea | McMaster-Carr | $30–$60 |
 | M12 × 40 bolt, Grade 8.8 | Wall hangers (2 each) + front-bar cleats | 12 ea | McMaster-Carr | $12–$22 |
-| Welding / fabrication (frame assembly) | ~14–20 hrs labor (single front portal) | 1 lot | Local fab | $688–$1,018 |
+| Welding / fabrication (frame assembly) | ~14–20 hrs labor (deep 4-leg box — the ring/back-upright welds sit at the upper end of the range) | 1 lot | Local fab | $688–$1,018 |
 | Primer + paint | Anti-corrosion coating | 1 lot | Hardware store | $30–$50 |
-| **Ibc-Frame total** | | | | **$955–$1,455** |
+| **Ibc-Frame total** | | | | **$980–$1,505** |
 <!-- END parts:ibc-frame -->
 
 ### 9.2 IBC Totes
@@ -285,7 +293,7 @@ the stacking structure and the totes it restrains.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Stacking frame (restraint front portal) | <!-- BEGIN costing:ibc-frame-low -->$955<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,455<!-- END costing:ibc-frame-high --> |
+| Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$980<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,505<!-- END costing:ibc-frame-high --> |
 | IBC totes (4×) | $300 | $900 |
 | **Total** | **$1,255** | **$2,355** |
 

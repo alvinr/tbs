@@ -608,6 +608,13 @@ def generate_ruby():
         return f'["{name}", {tg}, {cam}, {so}]'
     scenes_ruby = '[' + ', '.join(slit(s) for s in scenes) + ']'
 
+    sf_meta = ov.sketchfab_meta_ruby(
+        "TBS-001 Film Plane Model",
+        "The configuration the photosensitive film plane is flush against one of the 20ft long-side "
+        "walls of the container. This has a **view-camera-style moveable film plane** — a mechanism "
+        "with **four independently actuated corners**",
+        "bb5394a8983a491fa541088b901c24f8", "sketchup")
+
     return f'''model = Sketchup.active_model
 model.start_operation("TBS-001 Film Plane (Option A)", true)
 entities = model.active_entities
@@ -618,6 +625,7 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 
+{sf_meta}
 {tags_ruby}
 
 {body}

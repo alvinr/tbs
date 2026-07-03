@@ -788,6 +788,13 @@ def generate_ruby():
         f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
     keep_tags_ruby = '[' + ', '.join(f'"{t}"' for t in TAGS) + ']'
 
+    sf_meta = ov.sketchfab_meta_ruby(
+        "TBS-001 Lighttrap Model",
+        "Personnel access during operation is via a revolving light trap drum built into the panel. "
+        "Operators can enter or exit at any time without opening the full panel or admitting daylight "
+        "— for example, between coating of the photosensitive material, or while the exposure is being made.",
+        "a4f73191b8bb4d17a6e764585ca695be", "sketchup")
+
     return f'''model = Sketchup.active_model
 model.start_operation("TBS-001 Light Trap (dynamic swing)", true)
 entities = model.active_entities
@@ -805,6 +812,7 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 
+{sf_meta}
 # ── Tags (layers) ──
 {tags_ruby}
 

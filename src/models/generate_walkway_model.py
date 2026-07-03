@@ -487,6 +487,12 @@ def generate_ruby():
         '["%s", [%s]]' % (n, ', '.join(f'"{t}"' for t in tags))
         for n, tags in scene_groups) + ']'
 
+    sf_meta = ov.sketchfab_meta_ruby(
+        "TBS-001 Walkway Model",
+        "The perimeter walkway provides dry-foot operator access around all four sides of the "
+        "processing tray without wading through chemical solution.",
+        "96b3d0e5fc8b4fc18c528f64bda028bc", "sketchup")
+
     return f'''model = Sketchup.active_model
 model.start_operation("TBS-001 Walkway + Cantilevers", true)
 entities = model.active_entities
@@ -504,6 +510,7 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 
+{sf_meta}
 # ── Tags (layers) ──
 {tags_ruby}
 

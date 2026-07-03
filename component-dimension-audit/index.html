@@ -2597,10 +2597,10 @@ Modeled dimensions are the <code>tbs_constants.py</code> value(s) the generators
 </tr>
 <tr>
 <td>4</td>
-<td>Big Blue filter housing (4.5"×10")</td>
-<td>Ø184×333 — Pentek 4.5×10 BB</td>
+<td>Big Blue filter housing (4.5"×20")</td>
+<td>Ø184×594 — Pentek 4.5×20 BB</td>
 <td><code>BB_OD/BB_H</code></td>
-<td>✅ FIXED — BB_OD 130→184; BoM switched to 4.5×10</td>
+<td>✅ FIXED — BB_OD 130→184; BoM 4.5×10 → 4.5×20 (2× media/interval; heads pinned at ceiling, sumps hang to ~Z1746)</td>
 </tr>
 <tr>
 <td>5</td>
@@ -2658,9 +2658,9 @@ discrepancy and the fix that was applied.</em></p>
 <h3 id="4-filter-housing-big-blue-45-20-resolved-4">4. Filter housing — Big Blue 4.5" × 20" ✅ RESOLVED (§4)<a class="headerlink" href="#4-filter-housing-big-blue-45-20-resolved-4" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Real:</strong> Pentek 20×4.5 BB = 23⅜" × 7¼" = <strong>594 mm tall × Ø184 mm</strong>. <a href="https://www.filterwater.com/p-541-pentek-20-big-blue-water-filter-housing-15-inch.aspx">Pentek 20" BB</a> · <a href="https://www.allfilters.com/filterhousings/20x4.5/20-bb-housing">allfilters 20×4.5</a></li>
-<li><strong>Modeled:</strong> <code>BB_OD</code>=130, <code>BB_H</code>=340 (a 10" housing).</li>
-<li><strong>Problem:</strong> the BoM specifies <strong>4.5"×20"</strong> cartridges (Purcooflow WHF2045B302), but the model draws <strong>10"</strong> housings — ~250 mm shorter and 54 mm narrower each. Three of them stacked is the panel's biggest vertical run.</li>
-<li><strong>Action:</strong> either set <code>BB_OD</code>=184 / <code>BB_H</code>=594 to match the 20" spec <strong>or</strong> down-spec the purchase to 4.5"×10" housings/cartridges — then re-render the panel + re-sum filter cost. <strong>Decision needed:</strong> keep 20" (more media life, taller panel) or switch to 10".</li>
+<li><strong>Modeled:</strong> <code>BB_OD</code>=184, <code>BB_H</code>=594 (a 4.5×20 housing — matches the real dimension above).</li>
+<li><strong>As found:</strong> <code>BB_OD</code>=130, <code>BB_H</code>=340 drew a <strong>10"</strong> housing while the BoM specified <strong>4.5"×20"</strong> cartridges.</li>
+<li><strong>Resolution:</strong> kept <strong>4.5"×20"</strong> for the media life (~2× the interval between changes). The model was set to <code>BB_OD</code>=184 / <code>BB_H</code>=594; the housings hang as a <strong>horizontal bank high on the pinhole wall</strong> (heads pinned near the ceiling, sumps to ~Z1746), not a vertical stack, so the extra length costs walkway head clearance (shoulder height) rather than a tall panel run. Panel re-rendered, filter cost re-summed. Reversible to 4.5"×10" (same heads/ports) if the clearance becomes an operational issue.</li>
 </ul>
 <h3 id="5-fan-ac-infinity-cloudline-s6-resolved-4">5. Fan — AC Infinity Cloudline S6 ✅ RESOLVED (§4)<a class="headerlink" href="#5-fan-ac-infinity-cloudline-s6-resolved-4" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2773,10 +2773,10 @@ listed for completeness; confirm the drawn size equals the catalog dimension:</p
 </tr>
 <tr>
 <td><strong>Filter</strong></td>
-<td>switch the purchase to <strong>4.5"×10"</strong></td>
-<td>333 × Ø184</td>
-<td><code>BB_OD</code> 130 → 184</td>
-<td>spec 4.5×20 → 4.5×10; cost ~$470–652 → ~$282–445; cartridge intervals ~½</td>
+<td>keep <strong>4.5"×20"</strong> (media life)</td>
+<td>594 × Ø184</td>
+<td><code>BB_OD</code> 130 → 184, <code>BB_H</code> 340 → 594</td>
+<td>spec/model = 4.5×20; cost ~$336–550; cartridge intervals ~2×</td>
 <td>✅ done</td>
 </tr>
 <tr>

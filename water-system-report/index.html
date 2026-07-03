@@ -2960,12 +2960,12 @@ IBC-2 (900L) ──┘                                                      │
         └──→ pH drift / discolored: FORWARD TO IBC-4 (waste)
 </code></pre></div>
 <p><strong>Filter train sizing:</strong></p>
-<p>The filter train uses a single 3-stage whole-house filter unit (a <strong>4.5"×10"</strong> Big Blue 3-stage; Express Water / Geekpure / iSpring 10") with <strong>Ø184 × 333mm</strong> housings. <em>(Switched from 4.5"×20" to match the modeled BB_OD=184/BB_H=340 — see <a href="../component-dimension-audit/">component-dimension-audit.md</a>.)</em>. 1" NPT inlet/outlet; a single 1/2"→1" bushing reducer connects P-02 output to the unit inlet.</p>
+<p>The filter train uses a single 3-stage whole-house filter (a <strong>4.5"×20"</strong> Big Blue 3-stage; Express Water / Geekpure / iSpring) with <strong>Ø184 × 594mm</strong> housings, mounted as a horizontal bank high on the pinhole wall (heads pinned near the ceiling, sumps hanging below). 1" NPT inlet/outlet; a single 1/2"→1" bushing reducer connects P-02 output to the unit inlet.</p>
 <table>
 <thead>
 <tr>
 <th>Stage</th>
-<th>Cartridge (4.5"×10")</th>
+<th>Cartridge (4.5"×20")</th>
 <th>Removes</th>
 <th>Replace interval</th>
 </tr>
@@ -2975,23 +2975,23 @@ IBC-2 (900L) ──┘                                                      │
 <td>F-1</td>
 <td>MPP 5-micron melt-blown polypropylene sediment</td>
 <td>Gross sediment, fiber lint, Prussian blue particles</td>
-<td>~Every 14 prints</td>
+<td>~Every 28 prints</td>
 </tr>
 <tr>
 <td>F-2</td>
 <td>KDF-55 heavy metal removal</td>
 <td>Dissolved iron compounds from ferricyanide wash water</td>
-<td>~Every 15 prints</td>
+<td>~Every 30 prints</td>
 </tr>
 <tr>
 <td>F-3</td>
 <td>CTO coconut shell activated carbon block</td>
 <td>Residual organics, color</td>
-<td>~Every 10 prints</td>
+<td>~Every 20 prints</td>
 </tr>
 </tbody>
 </table>
-<p>The 10" cartridges (~½ the media of a 20") were chosen to match the modeled housing size, so service intervals are correspondingly shorter (~½). The unit includes triple drain valves for flushing individual stages without disassembly. Equivalent 3-stage Big Blue units are available from Express Water, Geekpure, iSpring and others — any unit accepting standard 4.5"×10" cartridges with 1" NPT ports will work.</p>
+<p>The 20" cartridges carry ~2× the media of a 10", so service intervals run correspondingly longer — see <a href="../plumbing-report/">Plumbing Report</a> §3.1 for the per-stage detail. The unit includes triple drain valves for flushing individual stages without disassembly. Equivalent 3-stage Big Blue units are available from Express Water, Geekpure, iSpring and others — any unit accepting standard 4.5"×20" cartridges with 1" NPT ports will work.</p>
 <p><strong>pH management:</strong> Two pH sample taps are fitted. <strong>SV-02</strong> (½" valve + spout on the P-04 tray-drain discharge, before 3W-DV-02) lets the operator meter the incoming used water and choose the DV-02 routing — buffer to IBC-3 or divert straight to IBC-4 waste. <strong>SV-01</strong> confirms the cleaned water before it returns: draw the post-filter sample at the <strong>SV-01 sample tap</strong> (½" valve + spout before 3W-DV-01) and meter it. If filtered water reads pH &lt;6, do nothing — slightly acidic is preferred. If pH &gt;7.5, add citric acid solution (10g citric acid in 1 liter water) via the dosing port in the IBC-3 outlet, stir, retest. Do not return water with pH &gt;8 to the Blue system.</p>
 <h3 id="43-black-system-waste-containment">4.3 Black System — Waste Containment<a class="headerlink" href="#43-black-system-waste-containment" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>FROM 3W-DV-01 (rejected filter output — pH out of range)
@@ -3463,32 +3463,32 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td>$25–$50</td>
 </tr>
 <tr>
-<td>Big Blue filter housing (4.5"×10")</td>
-<td>Ø184×333mm/housing, 1" NPT ports, integrated bracket (Express Water / Geekpure / iSpring)</td>
+<td>Big Blue filter housing (4.5"×20")</td>
+<td>Ø184×594mm/housing (4.5×20), 1" NPT ports, integrated bracket (Express Water / Geekpure / iSpring)</td>
 <td>1 ea</td>
 <td>Amazon</td>
-<td>$200–$300</td>
+<td>$240–$380</td>
 </tr>
 <tr>
-<td>MPP 5-micron sediment cartridge 4.5"×10"</td>
-<td>Melt-blown polypropylene depth filter (F-1 stage)</td>
-<td>3 ea</td>
-<td>Amazon</td>
-<td>$18–$30</td>
-</tr>
-<tr>
-<td>KDF-55 heavy-metal cartridge 4.5"×10"</td>
-<td>KDF-55 media for dissolved iron/metal removal (F-2 stage)</td>
+<td>MPP 5-micron sediment cartridge 4.5"×20"</td>
+<td>Melt-blown polypropylene depth filter (F-1 stage); ~50-print interval</td>
 <td>2 ea</td>
+<td>Amazon</td>
+<td>$24–$40</td>
+</tr>
+<tr>
+<td>KDF-55 heavy-metal cartridge 4.5"×20"</td>
+<td>KDF-55 media for dissolved iron/metal removal (F-2 stage); ~60-print interval</td>
+<td>1 ea</td>
 <td>Amazon</td>
 <td>$40–$70</td>
 </tr>
 <tr>
-<td>CTO carbon block cartridge 4.5"×10"</td>
-<td>Coconut shell activated carbon block (F-3 stage)</td>
-<td>3 ea</td>
+<td>CTO carbon block cartridge 4.5"×20"</td>
+<td>Coconut shell activated carbon block (F-3 stage); ~40-print interval</td>
+<td>2 ea</td>
 <td>Amazon</td>
-<td>$24–$45</td>
+<td>$32–$60</td>
 </tr>
 <tr>
 <td>Banjo V050FP ball valve 1/2" FNPT</td>
@@ -3747,7 +3747,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td></td>
 <td></td>
 <td></td>
-<td><strong>$2,019–$3,018</strong></td>
+<td><strong>$2,073–$3,123</strong></td>
 </tr>
 </tbody>
 </table>

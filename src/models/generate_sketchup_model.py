@@ -370,6 +370,26 @@ def component(defn_name, tag, body):
 '''
 
 
+def sketchfab_meta_ruby(title, description, model_id, tags="tbs sketchup"):
+    """Ruby that stamps the Sketchfab upload metadata onto the active model so a
+    `--send` regen carries its identity — the `sketchfab` attribute dict (title,
+    description, tags, and the stable `model_id`) plus model.name/description.
+
+    Setting `model_id` is what makes the manual Sketchfab re-upload REUSE the same
+    model (stable UID → the embedded iframe never has to change); without it a fresh
+    doc uploads as a brand-new model and the name/description come up empty.
+    """
+    import json
+    t, d, mid, tg = (json.dumps(x) for x in (title, description, model_id, tags))
+    return ("# ── Sketchfab upload metadata (stamped every regen; keeps the stable model UID) ──\n"
+            f"model.name = {t}\n"
+            f"model.description = {d}\n"
+            f'model.set_attribute("sketchfab", "model_title", {t})\n'
+            f'model.set_attribute("sketchfab", "model_description", {d})\n'
+            f'model.set_attribute("sketchfab", "model_id", {mid})\n'
+            f'model.set_attribute("sketchfab", "model_tags", {tg})\n')
+
+
 def ruby_cone_wire(name, apex, base, tag):
     """Generate Ruby for a wireframe pyramid (edges only) in `ents`.
 

@@ -495,6 +495,15 @@ def generate_ruby():
         '"%s" => [%s, %s, %s, %s]' % (n, ov.mm(x), ov.mm(y), ov.mm(z), ov.mm(d))
         for n, (x, y, z, d) in zoom.items()) + '}'
 
+    sf_meta = ov.sketchfab_meta_ruby(
+        "TBS-001 Electrical Model",
+        "There are a number of discrete systems, color-coded in the diagram below. This view is "
+        "shown from the optical axis, looking through the container wall. Each of these sub-systems, "
+        "has a detailed breakdown of construction, schematic and other diagrams to show how each "
+        "system it built, installed, used and maintained. The 3d model below provides a simply way "
+        "to view the whole system.",
+        "6930c96be025469fb8ef702393d7c35f", "sketchup")
+
     return f'''model = Sketchup.active_model
 model.start_operation("TBS-001 Electrical", true)
 entities = model.active_entities
@@ -512,6 +521,7 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 
+{sf_meta}
 # ── Tags ──
 {tags_ruby}
 

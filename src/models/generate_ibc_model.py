@@ -155,6 +155,11 @@ def generate_ruby():
         '["%s", [%s]]' % (n, ', '.join(f'"{t}"' for t in tags))
         for n, tags in scenes) + ']'
 
+    sf_meta = ov.sketchfab_meta_ruby(
+        "TBS-001 IBC Model",
+        "Details of the IBC stack, frame and plumbing panel.",
+        "8d091c60e93848f38e26c9c89a08cbc8", "sketchup")   # correct IBC UID (the .skp had the overview's e624e210 by mistake)
+
     return f'''model = Sketchup.active_model
 model.start_operation("TBS-001 IBC Stack", true)
 entities = model.active_entities
@@ -174,6 +179,7 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 
+{sf_meta}
 # ── Tags (layers) ──
 {tags_ruby}
 

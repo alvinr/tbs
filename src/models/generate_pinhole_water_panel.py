@@ -414,7 +414,7 @@ def panel_power():
     fr = ov.BB_OD / 2
     p2x = (3300 - (fr + 30)) - (cp.PVB_R + 30) - 40  # P-02 body-center X on the pinhole wall
     epx = 1979                                       # EP fuse-block C X (electrical.skp)
-    swx = epx + 150                                  # 2129 — master switch 150mm toward the IBC end (clear of the EP kit)
+    swx = epx + 200                                  # 2179 — master switch 200mm toward the IBC end (clear of the EP kit)
     z_lo = cp.PSTACK['P-01'] + 90                     # 705  — lowest pump tap
     z_hi = cp.PSTACK['P-03'] + 90                     # 1830 — highest pump tap
     zc   = (z_lo + z_hi) / 2                          # 1268 — vertical center of the pump column
@@ -437,10 +437,14 @@ def panel_power():
              [(p2x, TY, TZ), (p2x, p2ty, TZ), (p2x, p2ty, p2z)], cr, color=PWR))
     # ── 12V DISTRIBUTION BLOCK on the REVERSE of the corridor panel + bus + back-taps to pumps ──
     p.append(ov.ruby_box("12V distribution block (Cct C, rear)", BKX - 24, by - 30, zc - 45, 48, 60, 90, color="#3A3A42"))
-    p.append(ov.ruby_pipe_run("Cct C power bus (rear of panel)", [(BKX, by, z_hi), (BKX, by, z_lo)], cr, color=PWR))
-    for key in ("P-01", "P-04", "P-05", "P-03"):
+    # power bus down the back, with SMOOTH elbows turning into the TOP (P-03) and BOTTOM (P-01)
+    # pumps as one continuous run; the two middle pumps tee off the bus.
+    xin = cp.PXC + cp.PVB_R - 10                      # 5024 — tap tip, 10mm into each pump back
+    p.append(ov.ruby_pipe_run("Cct C bus + P-03/P-01 elbow taps (rear)",
+             [(xin, by, z_hi), (BKX, by, z_hi), (BKX, by, z_lo), (xin, by, z_lo)], cr, color=PWR))
+    for key in ("P-04", "P-05"):
         z = cp.PSTACK[key] + 90
-        p.append(ov.ruby_pipe_run(f"Cct C branch {key}", [(BKX, by, z), (cp.PXC + cp.PVB_R - 10, by, z)], cr, color=PWR))
+        p.append(ov.ruby_pipe_run(f"Cct C branch {key}", [(BKX, by, z), (xin, by, z)], cr, color=PWR))
     return "\n".join(p)
 
 

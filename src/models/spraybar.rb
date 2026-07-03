@@ -3781,7 +3781,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Tray Sump
   grp = ents.add_group
   grp.name = "Tray Sump"
-  face = grp.entities.add_face([4475.mm,80.mm,0.mm], [4625.mm,80.mm,0.mm], [4625.mm,180.mm,0.mm], [4475.mm,180.mm,0.mm])
+  face = grp.entities.add_face([4471.mm,80.mm,0.mm], [4629.mm,80.mm,0.mm], [4629.mm,180.mm,0.mm], [4471.mm,180.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
   mat = model.materials["Tray Floor"] || model.materials.add("Tray Floor")

@@ -532,6 +532,27 @@ RWK_BEARER_XS = (RWK_X_L, RWK_X_R - RWK_BEARER_W)      # 4329, 4589 — long-bea
 RWK_BEARER_Z0 = RWK_ARM_TOP - 35                       # 80 — beam bottom
 RWK_X_UP = IBC_COL_X - 20                              # 4654 — deep-box FRONT upright (= cp.FRONT_X); reconciled from the stale +60/4734 portal (flag 4)
 RWK_UP_YDS = (CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR - IBC_FRAME_RHS)   # 1046, 1266
+# Outer long beam (X4589) OPEN-TOP NOTCHES — one per under-walkway ribbon lane where the FLUSH pipe crosses
+# the beam into the corridor.  The carriage crown (Z66) to beam soffit (Z80) gap is too tight for the pipe to
+# pass under, so the beam's top web is slotted instead (Z92-115), leaving the Z80-92 bottom web intact.  These
+# Yds are the single source the corridor pipe routing (cp.ribbon_run / the sump line) reads back for its
+# crossing Yd, so the notches and the pipes can't drift apart.
+RWK_RIBBON_NOTCH_YDS = [1110, 1132, 1194, 1241]        # lanes 0,1,2,3 corridor-crossing Yd (index-matched to cp.RIBBON_LANE_X)
+RWK_RIBBON_NOTCH_W   = 34                              # Yd width per notch (pipe OD 21 + clearance)
+RWK_NOTCH_FLOOR      = RWK_GRATE_Z - PUMP_PIPE_OD - 2  # 92 — notch floor, 2mm below the flush pipe soffit (Z94)
+
+
+def _yd_split(y0, y1, cuts):
+    """Sub-intervals of [y0,y1] with each (cy0,cw) in `cuts` removed (used to segment a long
+    beam around arm half-laps and pipe notches)."""
+    segs, ys = [], y0
+    for cy0, cw in sorted(cuts):
+        if cy0 > ys:
+            segs.append((ys, cy0))
+        ys = max(ys, cy0 + cw)
+    if ys < y1:
+        segs.append((ys, y1))
+    return segs
 
 
 def _rwk_xbeam(name, yd, x0, x1):
@@ -550,19 +571,22 @@ def _rwk_xbeam(name, yd, x0, x1):
     return out
 
 
-def _rwk_long_beam(x, cross_ranges):
-    """Yd long beam half-lapped at the arms it crosses: continuous UPPER half + LOWER half cut
-    away at each crossing (cross_ranges = (yd0, w))."""
-    out = [ruby_box(f"RWk Long beam X{int(x)} upper", x, 0, RWK_HL, RWK_BEARER_W, C_WID, RWK_ARM_TOP - RWK_HL, color=C_STEEL)]
-    ys, segs = 0, []
-    for cy0, cw in sorted(cross_ranges):
-        if cy0 > ys:
-            segs.append((ys, cy0))
-        ys = cy0 + cw
-    if ys < C_WID:
-        segs.append((ys, C_WID))
-    for s0, s1 in segs:
+def _rwk_long_beam(x, cross_ranges, notches=()):
+    """Yd long beam half-lapped at the arms it crosses (cross_ranges = (yd0, w)): continuous UPPER
+    half + LOWER half cut away at each crossing.  `notches` = (yd0, w) OPEN-TOP pipe slots (outer beam
+    only): the UPPER web is cut away and the lower web dropped to RWK_NOTCH_FLOOR so a flush ribbon pipe
+    crosses through the top of the beam."""
+    out = []
+    # UPPER half (Z95-115): full Yd, minus the pipe notches (an open-top notch removes the upper web)
+    for s0, s1 in _yd_split(0, C_WID, list(notches)):
+        out.append(ruby_box(f"RWk Long beam X{int(x)} upper", x, s0, RWK_HL, RWK_BEARER_W, s1 - s0, RWK_ARM_TOP - RWK_HL, color=C_STEEL))
+    # LOWER web (Z80-95): removed at arm half-laps AND at notches (a reduced-height web fills the notch below)
+    for s0, s1 in _yd_split(0, C_WID, list(cross_ranges) + list(notches)):
         out.append(ruby_box(f"RWk Long beam X{int(x)} lower", x, s0, RWK_BEARER_Z0, RWK_BEARER_W, s1 - s0, RWK_HL - RWK_BEARER_Z0, color=C_STEEL))
+    # at each notch: the surviving Z80-NOTCH_FLOOR bottom web (skip where an arm half-lap already removed it)
+    for n0, nw in notches:
+        for s0, s1 in _yd_split(n0, n0 + nw, list(cross_ranges)):
+            out.append(ruby_box(f"RWk Long beam X{int(x)} notch web", x, s0, RWK_BEARER_Z0, RWK_BEARER_W, s1 - s0, RWK_NOTCH_FLOOR - RWK_BEARER_Z0, color=C_STEEL))
     return out
 
 
@@ -655,8 +679,9 @@ def right_walkway_cantilever(include_combined=True, include_grate=True):
     parts = []
     lx, rx = RWK_X_L, RWK_X_R - RWK_BEARER_W
     arm_ranges = [(yd, RWK_ARM_W) for yd in RWK_UP_YDS]
-    parts += _rwk_long_beam(lx, arm_ranges)
-    parts += _rwk_long_beam(rx, arm_ranges)
+    notch_ranges = [(cy - RWK_RIBBON_NOTCH_W / 2, RWK_RIBBON_NOTCH_W) for cy in RWK_RIBBON_NOTCH_YDS]
+    parts += _rwk_long_beam(lx, arm_ranges)                    # inner beam — no pipe notches (ribbon exits the OUTER beam)
+    parts += _rwk_long_beam(rx, arm_ranges, notch_ranges)     # outer beam — open-top notch at each ribbon lane
     for ey in (0, C_WID - RWK_BEARER_W):
         parts.append(ruby_box(f"RWk end beam Yd{int(ey)}", lx, ey, RWK_BEARER_Z0, (rx + RWK_BEARER_W) - lx, RWK_BEARER_W, RWK_ARM_TOP - RWK_BEARER_Z0, color=C_STEEL))
     parts += ibc_cantilever_arms()

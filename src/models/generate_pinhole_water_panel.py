@@ -194,8 +194,8 @@ def kit():
     # UNDER-WALKWAY RIBBON (lane 0): IBC-3 tap (corridor) → loop UP over the first cantilever →
     # down into the ribbon channel → −Yd to the near-rim strip → rise up the wall to P-02's IN port.
     pipe("IBC-3 (Brown) tap -> P-02 inlet",
-         [(tx - 30, ty, tz), (4720, ty, tz), (4720, ty, 65)]                       # tap → −X → descend to the under-beam height
-         + cp.ribbon_run(0, (4720, 1110, 65), (2960, 55, 25))                      # +Yd to 1110 (clear of the frame upright/clamp cluster), cross UNDER the beam, loop over
+         [(tx - 30, ty, tz), (4720, ty, tz), (4720, ty, 65)]                       # tap → −X → down to the corridor pickup (past the tray edge)
+         + cp.ribbon_run(0, (4720, ov.RWK_RIBBON_NOTCH_YDS[0], 65), (2960, 55, 25))  # rise to flush, cross the NOTCHED beam (lane-0 Yd), loop over the cantilever
          + [(2960, 55, p2_in[2]), (2960, p2cy, p2_in[2]), p2_in],                  # rise to P-02 IN
          ov.C_IBC_BROWN)
     # ^ OFF the tee's −X end; descent OFFSET from the blue trunk (Yd1170 not 1150); −Yd at z25 OVER the
@@ -227,7 +227,7 @@ def kit():
     # sump), runs under the grate to DV-01's Yd, then rises into DV-01's IN port.
     pipe("SV-01 -> DV-01 (single filtered line)",
          [(svx, sv_y, waist), (svx, yW, waist), (svx, yW, 50), (svx, 60, 50)]         # SV-01 → wall → DROP low → +Yd
-         + cp.ribbon_run(3, (DCX - 100, DCY, 65), (svx, 60, 50), up_yd=1120)[::-1][1:]  # cross UNDER the beam; loop-over rises near the cantilever (short over-run, rest under the walkway)
+         + cp.ribbon_run(3, (DCX - 100, DCY, 65), (svx, 60, 50), up_yd=1120)[::-1][1:]  # flush across the notched beam; loop-over rises near the cantilever (short over-run, rest under the walkway)
          + [(DCX - 100, DCY, DCZ),                                                      # rise −X of the port to the IN-port height
             (DCX - tipd, DCY, DCZ)],                                                    # +X 90° turn horizontally into DV-01's −X IN port
          ov.C_FILTER)
@@ -267,12 +267,14 @@ def tap01_supply():
     yd, fz = ov.PROC_TRAY_YD_NEAR - 11, ov.SPRAY_BAR_FEED_Z   # 69 — butt the tray near rim (Yd80), under the triangle
     pr, tr = ov.PUMP_PIPE_OD / 2, ov.TAP_PIPE_OD / 2
     p = []
-    # UNDER-WALKWAY RIBBON (lane 2): the corridor blue trunk (X4660, Yd~1132, z60) drops through the
-    # grate slot and runs −Yd along the ribbon to the outside-rim strip, where the wall trunk continues.
+    # UNDER-WALKWAY RIBBON (lane 1): the corridor blue trunk (dropped clear of the FP rail at X4670, Yd~1132,
+    # z60) rises to FLUSH in the tray-edge slot, crosses the notched outer beam, runs −Yd along the ribbon to
+    # the outside-rim strip, where the wall trunk continues.  (Moved from lane 2 → lane 1: the middle two lanes
+    # swapped so the blue TAP-01 trunk and the brown tray-sump alternate, and the blue/brown no longer cross.)
     p.append(ov.ruby_pipe_run("Blue trunk: corridor -> ribbon -> outside-rim strip",
-        cp.ribbon_run(2, (4660, cp.GAP_CORR_Y, 60), (cp.RIBBON_LANE_X[2], yd, fz)), pr, color=ov.C_BLUE))
+        cp.ribbon_run(1, (cp.BLUE_TRUNK_HANDOFF_X, cp.GAP_CORR_Y, 60), (cp.RIBBON_LANE_X[1], yd, fz)), pr, color=ov.C_BLUE))
     p.append(ov.ruby_cylinder("Blue Supply Trunk (1/2in HDPE)",   # trunk ends at the ribbon lane (clear of the saddle gusset)
-        ov.TAP_X, yd, fz, pr, cp.RIBBON_LANE_X[2] - ov.TAP_X, color=ov.C_BLUE, axis="x"))
+        ov.TAP_X, yd, fz, pr, cp.RIBBON_LANE_X[1] - ov.TAP_X, color=ov.C_BLUE, axis="x"))
     # BV-05 spray-bar isolation (riser + valve at the pinhole centerline)
     p.append(ov.ruby_cylinder("BV-05 Riser", ov.BV02_X, yd, fz, pr, ov.BV02_Z - fz, color=ov.C_BLUE, axis="z"))
     p.append(cp.ball_valve("BV-05 (spray-bar isolation)", ov.BV02_X, yd, ov.BV02_Z, "z"))

@@ -25,7 +25,7 @@ from the pinhole wall (Yd 0) across to the plumbing corridor (Yd ≈ 1046–1316
 | **B‑B** | ≈ 62 (near end) | the four ribbon lanes in the channel between the long beams, near their pinhole‑wall end |
 | **C‑C** | ≈ 450 (mid‑tray) | the ribbon passing above the tray, under the grate — a sanctioned pass over the exclusion zone |
 | **D‑D** | ≈ 1066 (near cantilever) | the ribbon looping *over* the cantilever, and the foot under the tray |
-| **E‑E** | ≈ 1130–1245 (corridor center) | the lines entering under the beam and rising into the four corridor lanes |
+| **E‑E** | ≈ 1130–1245 (corridor center) | the lines crossing the notched beam flush, dropping the tray‑edge slot, and rising into the four corridor lanes |
 | **F‑F** | ≈ 1286 (far cantilever) | the far cantilever, mirroring D‑D (no line crosses it) |
 
 Coordinate system (per the drawing standard): **X** = length (0 at the cargo‑door end wall,
@@ -37,8 +37,10 @@ height above the floor.
 ![TBS-001 — Walkway Routing Section B-B: near-end ribbon under the right walkway](assets/walkway-sections-sheet1.png)
 
 Cut near the **pinhole‑wall end of the ribbon (Yd ≈ 62)**. The four lanes run side‑by‑side on
-a 26 mm pitch at **Z98**, in the clear channel between the two 40 × 40 long beams (X4369–4589),
-sitting **above the tray rim (Z50)** and **clear under the grate deck (Z115–130)**. A welded
+a 26 mm pitch at **Z104.5 — flush**, their crowns at the grate underside (Z115), in the clear
+channel between the two 40 × 40 long beams (X4369–4589), sitting **above the tray rim (Z50)**.
+The two middle lanes are **swapped** (the blue TAP‑01 trunk and the brown tray‑sump exchange
+lanes) so blue and brown alternate and no longer cross on the way into the corridor. A welded
 40 × 10 cross‑brace between the beams (top Z90) carries the ribbon at each support station.
 Off‑section (−Yd) each lane drops to its wall feature — the two blue lanes to TAP‑01 and the
 SV‑01 filtered return, the two brown lanes on toward the near‑rim taps.
@@ -65,19 +67,22 @@ bearers at Z80–115) carries the deck.
 
 The ribbon **loops up over the cantilever** here. It rises through the grate at Yd 1000, crests
 at **Z142** — passing over the arm top (Z115) and the grate (Z130), clearing the arm by ≈ 16 mm
-— and drops back through the grate past Yd 1120, so it never passes through the cantilever steel.
-No line threads the tray‑rim↔upright gap at this plane. Past the cantilever the lanes drop under
-the outer beam into the corridor and run in X to the pumps (Yd 1130–1245) — they appear in‑plane
-in E‑E.
+— and drops back to the **flush ribbon height (Z104.5)**, so it never passes through the
+cantilever steel and never dips toward the tray. No line threads the tray‑rim↔upright gap at this
+plane. Past the cantilever each lane stays flush, crosses the **outer beam through an open‑top
+notch**, and only then drops the tray‑edge slot into the corridor to run in X to the pumps
+(Yd 1130–1245) — they appear in‑plane in E‑E.
 
 ## Section E‑E — corridor center
 
 ![TBS-001 — Walkway Routing Section E-E: corridor center, between the frame uprights](assets/walkway-sections-sheet4.png)
 
 A thick‑slab section through the **clear span between the frame uprights (Yd ≈ 1130–1245)**.
-Having dropped through the grate past the cantilever, each line crosses **under the outer walkway
-beam at Z ≈ 65** — between the frame rail top (Z50) and the beam bottom (Z80) — through the gap
-over the tray edge (X4629–4654, clear Z16–150), then **rises inside the corridor** to its lane
+Past the cantilever each line stays **flush (Z104.5)** and crosses the **outer long beam through
+an open‑top notch** (the beam's top web, Z92–115, is slotted at each lane so the pipe passes
+through without dipping). It then **drops the tray‑edge slot** (X4629–4654, clear Z16–150) —
+which sits **past the spray‑carriage travel** (the carriage reaches only X4599) — to the Z65
+corridor entry, where the **existing corridor routing (unchanged)** rises each line to its lane
 height and runs in X toward the pump column: the brown tray‑sump → P‑04 (Z205, rising into P‑04)
 and the other three ribbon lines — brown IBC‑3 → P‑02, blue Blue trunk → TAP‑01, and blue
 SV‑01 → DV‑01 return (co‑planar around Z235, drawn stacked for clarity).
@@ -109,15 +114,20 @@ under the left grate.
 Drawing these sections at 1:1 against `water.skp` confirms the ribbon's key clearances and the
 two remaining structural items the plan views do not reveal:
 
-1. **Ribbon clear under the grate** — the four lanes sit at Z98, giving ≈ 7 mm from the top of the
-   21 mm pipe to the grate underside (Z115) and 48 mm above the tray rim (Z50). Tight but positive;
-   the welded cross‑braces (top Z90) keep the lanes off the tray.
+1. **Ribbon flush under the grate, clear of the carriage** — the four lanes ride **flush at Z104.5**
+   (pipe crown at the grate underside, Z115) and 54 mm above the tray rim (Z50). Flush is what keeps
+   the whole over‑tray run **above the spray‑carriage crown (Z66) by ≈ 28 mm** — the carriage sweeps
+   the full tray width (to X4599) and length, so the ribbon must clear it everywhere it is over the
+   tray. The welded cross‑braces (top ≈ Z96) keep the lanes off the tray.
 2. **Loop‑over clears the cantilever** — the crest at Z142 clears the cantilever‑arm top (Z115) by
    ≈ 16 mm and passes just over the grate (Z130); the loop keeps the lines out of the cantilever
-   steel entirely (D‑D).
-3. **Under‑beam corridor entry** — past the cantilever each line crosses under the outer walkway
-   beam at Z ≈ 65, in the 30 mm band between the frame rail top (Z50) and the beam bottom (Z80),
-   through the gap over the tray edge (clear Z16–150). No pinch remains at the tray‑rim↔upright gap.
+   steel entirely (D‑D). Past the cantilever each line returns to the flush Z104.5 — never dipping.
+3. **Notched‑beam corridor entry** — a flush pipe cannot pass *under* the outer long beam (the
+   carriage crown at Z66 to the beam soffit at Z80 leaves only 14 mm, less than the 21 mm pipe), so
+   the beam's top web is **slotted with an open‑top notch (Z92–115) at each lane**, leaving the
+   Z80–92 bottom web intact. Each line crosses the notch flush, then **drops the tray‑edge slot**
+   (X4629–4654) — which sits **past the carriage travel** (X ≤ 4599) — into the corridor, where the
+   existing routing (unchanged) rises it to the pumps. No pinch remains at the tray‑rim↔upright gap.
 4. **Front foot + M12 anchor under the tray basin** — the tray‑datum correction raises the welded
    pan onto the shim ramp (floor bottom ≈ Z23–24 at the corridor foot stations), so the 12 mm front
    foot clears **~11 mm** *under* the pan (see G‑G). No foot change needed.

@@ -37,8 +37,7 @@ three functions:
 2. **Plumbing coordination** — all pump suction and discharge lines, filter
    connections, and valve positions are organized on one face, minimizing pipe
    runs and simplifying maintenance.
-3. **Accessibility** — the panel faces the open end of the container (-X
-   direction). The operator approaches from the right walkway
+3. **Accessibility** — the panel faces the open end of the container. The operator approaches from the right walkway
    and reaches into the 270mm corridor to access valves and pump switches.
 
 ---
@@ -65,7 +64,7 @@ P-02, the filter-output diverter DV-01, and the SV-01 sample tap — see [Water 
 
 ## 3. Equipment Layout
 
-Equipment is split across the two panels. The **Pinhole Wall Plumbing Panel** carries the
+The **Pinhole Wall Plumbing Panel** carries the
 3-stage filter skid and its feed pump P-02 (§3.1); the **Corridor Plumbing Panel** carries the
 four corridor pumps (P-01/P-03/P-04/P-05) and the accumulator (§3.2–§3.3). Each panel has its
 own front-elevation drawing; the corridor backside (drain-riser spine + Circuit-C power) is a
@@ -152,7 +151,7 @@ with drip loops, per the wet-zone rules in [Electrical Report §7.5](electrical-
 **Corridor Plumbing Panel — Front elevation: four pumps, ACC-01, DV-02 diverter, SV-02 sample tap, and full pipe routing**
 ![TBS-001 — Corridor Plumbing Panel Layout](assets/panel-layout.png)
 
-**Spine side-sections (corridor side section along Yd) — two sheets, opposite
+**Spine side-sections (corridor side section) — two sheets, opposite
 faces of the drain-riser spine** (18mm ply teed off the panel). Pumps mount on
 the front face; the drain runs hang on the spine in the corridor gap clear of
 both tote columns; the Circuit-C pump-power distribution feeds all five pumps.
@@ -385,7 +384,7 @@ middle lanes alternate (Blue trunk / Brown sump) so the blue and brown lines nev
 cross. This replaces routing them through the congested tray↔IBC gap.
 
 At the first cantilever (nearest the pinhole wall) each line **loops up over the
-cantilever** — never through the steel (Rule 5) — then returns to the flush ribbon
+cantilever** — then returns to the flush ribbon
 height. Rather than dipping under the walkway support beam (which would foul the
 spray carriage), each line crosses the **outer long beam through an open-top notch**
 and drops the **tray-edge slot** — clear of the carriage travel — into the corridor,

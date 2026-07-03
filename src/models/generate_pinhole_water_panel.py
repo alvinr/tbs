@@ -17,15 +17,18 @@ import generate_sketchup_model as ov
 import generate_corridor_water_panel as cp        # the new corridor plumbing panel (same connected system)
 
 # ── Sketchfab upload metadata (stamped onto the model on every --send) ────────
-SF_TITLE = "TBS-001 Water System Model"
+#    Read from the live water.skp 2026-07-03 (the model's own current title/description).
+SF_TITLE = "TBS-001 Water Model"
 SF_ID    = "1dae932430924e9b993e153a16f485fc"   # stable Sketchfab UID — re-uploads REPLACE this model
-SF_TAGS  = "tbs pinhole camera water plumbing sketchup"
+SF_TAGS  = "sketchup"
 SF_DESC  = (
-    "TBS-001 (The Big Shoebox pinhole camera) self-contained three-circuit water system: "
-    "Blue clean supply, Brown wash-water recycle through a 3-stage filter train, and sealed "
-    "Waste, across the Pinhole Wall pump/filter panel and the Corridor plumbing panel, feeding "
-    "four 1000L IBC totes. Runs on 12V DC for solar/battery off-grid operation. "
-    "See the TBS plumbing and water-system reports."
+    "The camera operates in remote locations with no municipal water or drainage. "
+    "This document specifies a self-contained three-circuit water system that:\n\n"
+    "Stores sufficient clean water for 9–14 full-size prints between resupply runs on "
+    "fresh Blue alone (~14 prints once Brown wash-2 recycling is counted — see §below) "
+    "Recycles used wash water through a three-stage filter train, extending usable supply by "
+    "approximately 40% Contains all waste water in a closed, transportable IBC for proper "
+    "off-site disposal Runs entirely on 12V DC, compatible with a solar/battery off-grid power system."
 )
 
 # ── band + wall ──────────────────────────────────────────────────────────────

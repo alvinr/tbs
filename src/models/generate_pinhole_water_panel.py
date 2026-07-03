@@ -404,38 +404,43 @@ def panel_power():
     bodies. Ceiling feed → master switch + 12V distribution block in the chase → vertical bus
     down the chase → short back-taps to each pump (behind the body). One branch runs along the
     ceiling (in the tote-free corridor lane) to the Pinhole-Wall panel → P-02."""
-    CC = "#2980B9"                                  # Circuit-C blue conduit
+    PWR = "#8E44AD"                                 # unique POWER conduit color (purple) — distinct from all water pipes
     cr = 7                                          # conduit radius (14mm OD)
     p = []
+    TY, TZ = 20, ov.C_HGT - 13                       # pinhole-wall ceiling trunking line (Yd20), per electrical.skp
     ptop = cp.PSTACK['P-03'] + cp.PVB_H              # 1920 — top of the pump column
     FRX = cp.SHIRT_X - 12                            # ~5040 — breaker front face (corridor-accessible)
     BKX = cp.BACK_X + cp.EQT + 24                    # ~5146 — bus/block on the REVERSE of the panel (clear)
     by  = cp.CTR_Y                                    # 1181 — corridor center (tote-free, between back uprights)
     fy  = cp.YD_NEAR + 30                            # 1076 — near-edge lane, clear of the pump column
     swz = ptop + 96
-    # MASTER SWITCH / breaker — on the FRONT of the panel, near-edge, above the pumps (accessible)
-    p.append(ov.ruby_box("Master pump switch (Cct C, front)", FRX - 26, fy - 25, swz, 52, 50, 56, color="#202020"))
-    p.append(ov.ruby_pipe_run("Cct C feed -> master switch", [(FRX, fy, ov.C_HGT), (FRX, fy, swz + 56)], cr, color=CC))
-    # breaker → THROUGH the panel → the distribution block on the reverse side
-    p.append(ov.ruby_pipe_run("Cct C switch -> rear block", [(FRX, fy, swz + 20), (BKX, fy, swz + 20), (BKX, by, swz + 20)], cr, color=CC))
-    # 12V DISTRIBUTION BLOCK — on the REVERSE (back) of the panel, clear of all front plumbing
-    p.append(ov.ruby_box("12V distribution block (Cct C, rear)", BKX - 24, by - 30, ptop - 40, 48, 60, 90, color="#3A3A42"))
-    # vertical power bus down the BACK of the panel (clear corridor space)
-    p.append(ov.ruby_pipe_run("Cct C power bus (rear of panel)", [(BKX, by, ptop - 40), (BKX, by, cp.PSTACK['P-01'] + 90)], cr, color=CC))
-    # short branch penetrating the panel to each pump's BACK terminal (behind the body)
-    for key in ("P-01", "P-04", "P-05", "P-03"):
-        z = cp.PSTACK[key] + 90
-        p.append(ov.ruby_pipe_run(f"Cct C branch {key}", [(BKX, by, z), (cp.PXC + cp.PVB_R + 4, by, z)], cr, color=CC))
-    # branch to the Pinhole-Wall panel → P-02: up from the rear block, along the ceiling
-    # (well above the totes/plumbing), then clear of the IBCs at low X, down to P-02.
-    fr, cap_h = ov.BB_OD / 2, 78
+    fr = ov.BB_OD / 2
+    p2x = (3300 - (fr + 30)) - (cp.PVB_R + 30) - 40  # P-02 body-center X on the pinhole wall
+    # ── Circuit-C trunk: from the EP, up to the Yd20 ceiling trunking line, ALONG the ceiling
+    #    (clear of the center LED fixtures at Yd731–1331), then a cross+drop to the corridor
+    #    master switch — same route electrical.skp uses. ──
+    epx = 1979                                       # EP fuse-block C X (electrical.skp origin)
+    p.append(ov.ruby_pipe_run("Cct C feed (EP -> ceiling trunk -> corridor)",
+             [(epx, 45, 1900), (epx, 45, TZ), (epx, TY, TZ), (p2x, TY, TZ), (FRX, TY, TZ),
+              (FRX, fy, TZ), (FRX, fy, swz + 56)], cr, color=PWR))
+    # ── drop to the Pinhole-Wall panel → P-02 (taps off the Yd20 trunk at P-02's X) ──
+    cap_h = 78
     cap_z = ((ov.C_HGT - 48) - ov.BB_H) + ov.BB_H - cap_h / 2
-    p2x = (3300 - (fr + 30)) - (cp.PVB_R + 30) - 40
     p2ty = (fr + 12) + cp.PVB_R + 8
     p2z = (cap_z - (cp.PVB_H - 18)) + cp.PVB_H / 2
-    cz = ov.C_HGT - 22
     p.append(ov.ruby_pipe_run("Cct C branch P-02 (Pinhole-Wall panel)",
-             [(BKX, by, ptop + 30), (BKX, by, cz), (p2x, by, cz), (p2x, p2ty, cz), (p2x, p2ty, p2z)], cr, color=CC))
+             [(p2x, TY, TZ), (p2x, p2ty, TZ), (p2x, p2ty, p2z)], cr, color=PWR))
+    # ── MASTER SWITCH / breaker — on the FRONT of the corridor panel (accessible) ──
+    p.append(ov.ruby_box("Master pump switch (Cct C, front)", FRX - 26, fy - 25, swz, 52, 50, 56, color="#202020"))
+    # breaker → THROUGH the panel → the distribution block on the reverse side
+    p.append(ov.ruby_pipe_run("Cct C switch -> rear block", [(FRX, fy, swz + 20), (BKX, fy, swz + 20), (BKX, by, swz + 20)], cr, color=PWR))
+    # 12V DISTRIBUTION BLOCK — on the REVERSE (back) of the panel, clear of all front plumbing
+    p.append(ov.ruby_box("12V distribution block (Cct C, rear)", BKX - 24, by - 30, ptop - 40, 48, 60, 90, color="#3A3A42"))
+    # vertical power bus down the BACK of the panel + short back-tap to each pump
+    p.append(ov.ruby_pipe_run("Cct C power bus (rear of panel)", [(BKX, by, ptop - 40), (BKX, by, cp.PSTACK['P-01'] + 90)], cr, color=PWR))
+    for key in ("P-01", "P-04", "P-05", "P-03"):
+        z = cp.PSTACK[key] + 90
+        p.append(ov.ruby_pipe_run(f"Cct C branch {key}", [(BKX, by, z), (cp.PXC + cp.PVB_R + 4, by, z)], cr, color=PWR))
     return "\n".join(p)
 
 

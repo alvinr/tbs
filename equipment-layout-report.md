@@ -127,7 +127,7 @@ only restrains them for transport (front retaining bars + D-ring lashing).
 | Panel mount | the front portal also carries the (forward) Corridor Plumbing Panel and the right-walkway cantilever arms |
 | Surface finish | Gray oxide primer + flat black powder coat (interior) |
 | Approx. weight | ~178kg (uprights + feet + front bars + hangers + exterior wall plates + panel mount) |
-| Approx. cost | USD <!-- BEGIN costing:eq-ibc-frame-cost -->$955–$1,455<!-- END costing:eq-ibc-frame-cost --> (local mild steel fabrication) |
+| Approx. cost | USD <!-- BEGIN costing:eq-ibc-frame-cost -->$980–$1,505<!-- END costing:eq-ibc-frame-cost --> (local mild steel fabrication) |
 
 **Why 1,000L caged composite (all four totes):**
 

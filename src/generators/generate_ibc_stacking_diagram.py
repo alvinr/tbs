@@ -218,6 +218,17 @@ def sheet1():
         ax.add_patch(Rectangle(((uyd), (0)), (FRAME_RHS), (top_z),
                                fc=C_FRAME, ec=C_OUT, lw=1.2, zorder=7, alpha=0.85))
 
+    # Top + bottom rings tie the near & far uprights (deep-box front ring pair, seen edge-on).
+    ring_y0 = near_col_r + FRAME_RHS
+    ring_w  = (far_col_l - FRAME_RHS) - ring_y0
+    for rz in (0, top_z - FRAME_RHS):
+        ax.add_patch(Rectangle(((ring_y0), (rz)), (ring_w), (FRAME_RHS),
+                               fc=C_FRAME, ec=C_OUT, lw=1.2, zorder=7, alpha=0.8))
+    leader(ax, ((ring_y0 + far_col_l - FRAME_RHS) / 2), (top_z - FRAME_RHS / 2),
+           (far_col_l + 170), (top_z - 430),
+           "TOP + BOTTOM RINGS\n50x50x3 RHS — tie the near +\nfar uprights (back pair too)",
+           color=C_FRAME, fs=6, ha="left", va="bottom", arrow_style="-|>", font=FONT)
+
     # Floor flange feet under each upright.
     foot_half = IBC_FOOT_PLATE / 2
     for uyd in corridor_uprights:

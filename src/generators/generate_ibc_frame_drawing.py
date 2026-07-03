@@ -401,6 +401,12 @@ def sheet1():
     for uyd in (POST_NEAR_YD, POST_FAR_YD):
         _rhs_rect(ax, uyd, 0, FRAME_RHS, TOP_Z, alpha=0.85, hatch="///")
 
+    # Top + bottom rings tie the near & far uprights across the corridor (front ring pair).
+    for rz in (0, TOP_Z - FRAME_RHS):
+        _rhs_rect(ax, POST_NEAR_YD + FRAME_RHS, rz,
+                  POST_FAR_YD - (POST_NEAR_YD + FRAME_RHS), FRAME_RHS,
+                  fc=C_FRAME, alpha=0.7, lw=1.2, zo=6)
+
     # Floor flange feet under the two uprights.
     for uyd in (POST_NEAR_YD, POST_FAR_YD):
         _foot_elev(ax, uyd + FRAME_RHS / 2)

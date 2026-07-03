@@ -652,22 +652,22 @@ def sheet3():
                 ha="center", va="center", fontsize=6, color=color,
                 alpha=0.55, fontweight="bold", **FONT, zorder=2.7)
 
-    # Stacking frame — platform beams (ghost)
-    for pl, pr in [(near_ext_l - FRAME_RHS, near_ext_l + IBC_D + 5),
-                    (far_ext_l - 5,          far_ext_l + IBC_D + FRAME_RHS)]:
-        ax.add_patch(Rectangle(((pl), (platform_z)),
-                                (pr - pl), (FRAME_RHS),
-                                fc=C_FRAME, ec=C_FRAME, lw=1.5, ls=(0, (6, 3)),
-                                alpha=0.2, zorder=2.5))
-
-    # Corridor uprights (ghost) — internal Yd 1046–1096 and 1266–1316
-    # External: 1266–1316 and 1046–1096
-    for uyd in [C_WID - (BLUE_IBC_Y + IBC_D + FRAME_RHS),
-                C_WID - IBC_FAR_Y]:
+    # Stacking frame (ghost) — deep-box BACK uprights + top/bottom rings (no platform beam;
+    # the totes direct-stack). Yd mirrored for the exterior (sealed-end) view.
+    fr_top_z = IBC_H_STK_1000 - 40           # 2296 (matches cp.frame)
+    ghost_uyds = [C_WID - (BLUE_IBC_Y + IBC_D + FRAME_RHS),   # 1266 (mirrored)
+                  C_WID - IBC_FAR_Y]                          # 1046 (mirrored)
+    for uyd in ghost_uyds:
         ax.add_patch(Rectangle(((uyd), (0)),
-                                (FRAME_RHS), (IBC_H_STK_1000 + FRAME_RHS),
+                                (FRAME_RHS), (fr_top_z),
                                 fc=C_FRAME, ec=C_FRAME, lw=1.2, ls=(0, (6, 3)),
                                 alpha=0.18, zorder=2.5))
+    ring_gl, ring_gr = min(ghost_uyds), max(ghost_uyds)      # 1046, 1266
+    for rz in (0, fr_top_z - FRAME_RHS):
+        ax.add_patch(Rectangle(((ring_gl + FRAME_RHS), (rz)),
+                                (ring_gr - (ring_gl + FRAME_RHS)), (FRAME_RHS),
+                                fc=C_FRAME, ec=C_FRAME, lw=1.5, ls=(0, (6, 3)),
+                                alpha=0.2, zorder=2.5))
 
     # Ghost label
     ax.text((C_WID / 2), (IBC_H_STK_1000 + FRAME_RHS + 30),
@@ -1463,18 +1463,18 @@ def sheet5():
                 ha="center", va="center", fontsize=6.5, color=C_OUT,
                 fontweight="bold", **FONT, zorder=10)
 
-    # ── Platform beam (between tiers, one per column) ────────────────────────
-    for col_l, col_r in [(BLUE_IBC_Y - 5, near_col_r + FRAME_RHS),
-                          (far_col_l - FRAME_RHS, IBC_FAR_Y + IBC_D + 5)]:
-        ax.add_patch(Rectangle(((col_l), (platform_z)),
-                                (col_r - col_l), (FRAME_RHS),
-                                fc=C_FRAME, ec=C_OUT, lw=1.2, zorder=6, alpha=0.7))
-
-    # ── Corridor uprights ────────────────────────────────────────────────────
+    # ── Deep 4-leg box: corridor uprights (front pair, edge-on) tied by rings ──
+    #    The totes direct-stack (no deck), so there is NO inter-tier platform beam.
+    fr_top_z = IBC_H_STK_1000 - 40           # 2296 — restraint frame top (matches cp.frame)
     for uyd in [near_col_r, far_col_l - FRAME_RHS]:
         ax.add_patch(Rectangle(((uyd), (0)),
-                                (FRAME_RHS), (IBC_H_STK_1000 + FRAME_RHS),
+                                (FRAME_RHS), (fr_top_z),
                                 fc=C_FRAME, ec=C_OUT, lw=1.0, zorder=6, alpha=0.6))
+    # top + bottom rings tie the near & far uprights (front ring pair, seen edge-on)
+    for rz in (0, fr_top_z - FRAME_RHS):
+        ax.add_patch(Rectangle(((near_col_r + FRAME_RHS), (rz)),
+                                ((far_col_l - FRAME_RHS) - (near_col_r + FRAME_RHS)), (FRAME_RHS),
+                                fc=C_FRAME, ec=C_OUT, lw=1.0, zorder=6, alpha=0.55))
 
     # ── Corridor shading ────────────────────────────────────────────────────
     corr_l = near_col_r + FRAME_RHS

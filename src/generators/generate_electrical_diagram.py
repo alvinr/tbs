@@ -1416,9 +1416,10 @@ def draw_sheet4():
 
     Engineering elevation of the corridor plumbing panel (matches panel-layout.png):
     the single vertical pump column (ACC-01 + P-01/P-04/P-05/P-03) drawn to scale,
-    powered from ONE master switch → 12V distribution block → curved-elbow branches
-    to each pump. No per-pump switches — each Shurflo runs on its internal pressure
-    switch; the master switch is the single manual cutoff. P-02 (Brown recycle) is on
+    powered from a 12V distribution block that is fed from the MASTER pump switch on
+    the EP (electrical panel) via the ceiling trunk → curved-elbow branches to each
+    pump. No per-pump switches — each Shurflo runs on its internal pressure switch;
+    the EP master switch is the single manual cutoff. P-02 (Brown recycle) is on
     the pinhole-wall panel, shown as an off-panel branch. Routing follows pipe
     conventions (parallel-wall conduit + curved elbow fittings, never hard corners).
     """
@@ -1458,19 +1459,17 @@ def draw_sheet4():
         ax.add_patch(R((p_left - 15, tz - 13), 15, 26, fc="#242424", ec=C_OUT, lw=0.8, zorder=7))
         term[nm] = (p_left - 15, tz)                      # terminal left face (branch lands here)
 
-    # ── Master switch + 12V distribution block: full-width header bars above P-03 ──
+    # ── 12V distribution block: full-width header bar (fed from the EP master switch) ──
     mcx = PW / 2
-    ax.add_patch(R((6, 1978), PW - 12, 68, fc="#3A3A42", ec=C_OUT, lw=1.2, zorder=7))
-    ax.text(mcx, 2012, "MASTER SWITCH", ha="center", va="center", fontsize=5.8,
+    ax.add_patch(R((6, 1866), PW - 12, 96, fc="#5A5A64", ec=C_OUT, lw=1.2, zorder=7))
+    ax.text(mcx, 1930, "12V DIST. BLOCK", ha="center", va="center", fontsize=6.0,
             color="white", fontweight="bold", zorder=9)
-    ax.add_patch(R((6, 1866), PW - 12, 82, fc="#5A5A64", ec=C_OUT, lw=1.2, zorder=7))
-    ax.text(mcx, 1907, "12V DIST. BLOCK", ha="center", va="center", fontsize=5.8,
-            color="white", fontweight="bold", zorder=9)
-    draw_pipe_path(ax, [mcx, mcx], [1978, 1948], 12, 2.0, fc=CC, ec=CDK, zorder=5)   # switch → block
+    ax.text(mcx, 1892, "from EP master sw", ha="center", va="center", fontsize=5.0,
+            color="#DADADA", zorder=9)
 
-    # ── Circuit-C feed from ceiling trunking into the master switch ──
-    draw_pipe_path(ax, [mcx, mcx], [PH + 300, 2046], 17, 2.5, fc=CC, ec=CDK, zorder=5)
-    ax.text(mcx, PH + 330, "CIRCUIT C · 14 AWG · 15A\n(ceiling trunking / fuse block)",
+    # ── Circuit-C feed (switched at the EP master switch) into the block ──
+    draw_pipe_path(ax, [mcx, mcx], [PH + 300, 1962], 17, 2.5, fc=CC, ec=CDK, zorder=5)
+    ax.text(mcx, PH + 330, "CIRCUIT C · 14 AWG · 15A\n(switched at the EP master switch,\nvia ceiling trunk)",
             ha="center", va="bottom", fontsize=6.4, color=CC, fontweight="bold")
 
     # ── Curved-elbow branch conduits: block → each pump terminal. Own lane each, longest
@@ -1487,8 +1486,9 @@ def draw_sheet4():
 
     # ── Right-side callouts ──
     ax.text(PW + 90, 1500,
-            "MASTER SWITCH — one manual cutoff\nfor the whole pump circuit (no per-\npump switches). Each Shurflo 2088\n"
-            "then runs on its internal pressure\nswitch when its valves open.\n\n"
+            "12V DIST. BLOCK — the switched\nCircuit-C feed lands here. The MASTER\npump switch (one manual cutoff for the\n"
+            "whole circuit) is on the EP — see\nSheet 5. No per-pump switches; each\nShurflo 2088 runs on its internal\n"
+            "pressure switch when its valves open.\n\n"
             "16 AWG branches — curved elbow\nfittings (pipe convention), one per\npump.\n\n"
             "P-02 (Brown recycle) is fed by a\nCircuit-C branch off this block, on\nthe Pinhole-Wall panel.\n\n"
             "ACC-01 is a passive accumulator —\nunpowered.",
@@ -1499,11 +1499,12 @@ def draw_sheet4():
 
     # ── Notes + title block (clear band below the panel) ──
     draw_notes(ax, [
-        "CIRCUIT C — PUMP POWER (one feed, one master switch, four panel pumps):",
-        "One 14 AWG / 15A Circuit-C feed → MASTER pump switch → 12V distribution block → 16 AWG",
-        "branch to each pump. The four corridor pumps stack in a single column (bottom→top: ACC-01,",
-        "P-01, P-04, P-05, P-03); P-02 (Brown recycle) is fed on the Pinhole-Wall panel. No per-pump",
-        "switches — the master switch is the single cutoff and each Shurflo 2088 runs on its internal",
+        "CIRCUIT C — PUMP POWER (one feed, master switch on the EP, four panel pumps):",
+        "The 14 AWG / 15A Circuit-C feed is switched at the MASTER pump switch on the EP (Sheet 5),",
+        "runs the ceiling trunk to this panel's 12V distribution block, then a 16 AWG branch to each",
+        "pump. The four corridor pumps stack in a single column (bottom→top: ACC-01, P-01, P-04, P-05,",
+        "P-03); P-02 (Brown recycle) taps the switched feed on the Pinhole-Wall panel. No per-pump",
+        "switches — the EP master switch is the single cutoff and each Shurflo 2088 runs on its internal",
         "pressure switch. 15A fuse covers a single pump (7.5A) with margin. Conduit branches use curved",
         "elbow fittings (pipe convention). Wet zone: sealed, above the spill line.",
         "See Plumbing Panel report §3.2 / Electrical §7.3.",
@@ -1526,8 +1527,8 @@ def draw_sheet5():
 
     TRUE-SCALE front elevation (mm, equal aspect) of the IP65 enclosure interior —
     mirrors the 3D model's `power_core` arrangement (MPPT, the A-G blade-fuse stack,
-    +/- busbars, rotary main disconnect) — with the internal feed one-line and a fuse
-    schedule. BOTH axes are real mm: enclosure-relative X (0 = enclosure left = EP_X),
+    +/- busbars, rotary main disconnect, Circuit-C master pump switch) — with the
+    internal feed one-line and a fuse schedule. BOTH axes are real mm: enclosure-relative X (0 = enclosure left = EP_X),
     Z = real height. Component sizes/positions read from tbs_constants (same as the 3D).
     """
     from tbs_constants import (EP_H_LO, EP_H_HI, EP_W, MPPT_W, MPPT_H,
@@ -1537,7 +1538,7 @@ def draw_sheet5():
     CIRCUITS5 = [
         ("A", "Vent fan — exhaust",  "5A",  "16 AWG", "60 W",   "#C0392B"),
         ("B", "Vent fan — intake",   "5A",  "16 AWG", "60 W",   "#E67E22"),
-        ("C", "Equip panel (pumps)", "15A", "14 AWG", "100 W",  "#2980B9"),
+        ("C", "Plumbing panel (pumps)", "15A", "14 AWG", "100 W",  "#2980B9"),
         ("D", "Safelight",           "5A",  "18 AWG", "15 W",   "#8E44AD"),
         ("E", "Evap cooler (inv.)",  "40A", "10 AWG", f"{EVAP_COOLER_W_BUS} W",   "#16A085"),
         ("F", "Actuators (spare)",   "20A", "12 AWG", "≤100 W", "#7F8C8D"),
@@ -1606,6 +1607,24 @@ def draw_sheet5():
     varrow(ax, 45, bbn, eh0 + 4, col="#2C2C2C", lw=1.5)              # (−) return
     ax.text(45, eh0 - 6, "(−) return", ha="center", va="top", fontsize=5.4, color="#2C2C2C", fontweight="bold")
 
+    # ── Circuit-C MASTER PUMP SWITCH — single manual cutoff for the whole pump circuit,
+    #    mounted here on the EP (relocated from the corridor panel). Red-lever IP disconnect:
+    #    the Circuit-C fuse output is switched here before leaving for the pumps (Sheet 4). ──
+    cc = "#2980B9"
+    msw_x, msw_z, msw_w, msw_h = 214, 1944, 72, 82
+    c_cx = fb_x0 + 2.5 * pitch                            # Circuit-C blade center
+    c_top = base_z + fbase_h + fuse_h + 36               # top of the C blade up-line
+    ax.plot([c_cx, c_cx, msw_x], [c_top, msw_z + 22, msw_z + 22], color=cc, lw=1.5, zorder=4)  # Cct-C fuse → switch
+    ax.add_patch(R((msw_x, msw_z), msw_w, msw_h, fc="#202020", ec=C_OUT, lw=1.2, zorder=6))
+    ax.add_patch(R((msw_x + msw_w / 2 - 9, msw_z + 12), 18, 42, fc="#C0202A", ec=C_OUT, lw=0.8, zorder=7))  # red lever
+    ax.text(msw_x + msw_w / 2, msw_z + msw_h - 11, "MASTER", ha="center", va="center", fontsize=4.5,
+            color="white", fontweight="bold", zorder=8)
+    ax.text(msw_x + msw_w / 2, msw_z - 10, "PUMP SW · Cct C", ha="center", va="top", fontsize=5.0,
+            color="#C0202A", fontweight="bold", zorder=8)
+    varrow(ax, msw_x + msw_w / 2, msw_z + msw_h, eh1 + 34, col=cc, lw=1.8)       # switch → out to trunk
+    ax.text(msw_x + msw_w / 2 + 10, eh1 + 30, "→ ceiling trunk → pumps (Sheet 4)", ha="left", va="top",
+            fontsize=5.4, color=cc, fontweight="bold")
+
     # ── Fuse schedule table (right, same mm coordinate space) ──
     tx = 400
     th = eh1 - 50                                        # header Z
@@ -1629,6 +1648,7 @@ def draw_sheet5():
     ax.plot([tx - 20, tx + 790], [botline, botline], color=C_OUT, lw=0.8)
     ax.text(tx, botline - 44,
             "Feed: Battery (+) → 200A MRBF → main disconnect (Blue Sea m-Series) → (+) busbar → fuse block.\n"
+            "Circuit C is switched at the on-panel MASTER PUMP SWITCH before it leaves for the pumps (Sheet 4).\n"
             "Charge: PV array → MPPT 100/50 → busbars.  Layout mirrors the 3D model; ratings per Sheet 1.",
             ha="left", va="top", fontsize=6.2, color="#333")
 

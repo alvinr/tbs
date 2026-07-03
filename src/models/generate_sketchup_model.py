@@ -1535,6 +1535,15 @@ def electrical():
         parts.append(ruby_box(f"Fuse {c} ({ep_fuse_rating[c]} — {ep_load[c]})",
                               cx - fuse_w / 2, fuse_yd, fblk_z0 + fbase_h,
                               fuse_w, fuse_t, fuse_h, color=ep_cct[c]))
+    # Circuit-C MASTER PUMP SWITCH — single cutoff for the whole pump circuit, on the EP front
+    # at the Circuit-C fuse (relocated from the corridor panel). Red-lever disconnect; mirrors
+    # electrical.skp. The switched Cct-C then runs the ceiling trunk to the pump panel.
+    msw_cx = fblk_x0 + 2.5 * fuse_pitch
+    msw_z = fblk_z0 + fbase_h + fuse_h - 44
+    parts.append(ruby_box("Master pump switch (Cct C, on EP)",
+                          msw_cx - 25, ENCL_SHELL_D, msw_z, 50, 46, 84, color="#202020"))
+    parts.append(ruby_box("Master switch lever (OFF cutoff)",
+                          msw_cx - 8, ENCL_SHELL_D + 46, msw_z + 40, 16, 34, 16, color="#C0202A"))
     # +/- distribution busbars.
     parts.append(ruby_box("Busbar (+)", EP_X + 15, 30, ez + 205,
                           BUSBAR_L, BUSBAR_W, BUSBAR_H, color="#C0392B"))

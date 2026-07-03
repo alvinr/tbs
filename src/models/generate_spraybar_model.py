@@ -445,6 +445,12 @@ def generate_ruby():
         return f'["{n}", {tg}, {cam}]'
     scenes_ruby = '[' + ', '.join(scene_lit(*s) for s in scenes) + ']'
 
+    sf_meta = ov.sketchfab_meta_ruby(
+        "TBS-001 Spraybar Model",
+        "The processing tray provides the containment surface and the spray bar delivers even "
+        "water distribution across the full print width.",
+        "18fb381fbf48459cac25dcaa23958387", "sketchup")
+
     return f'''model = Sketchup.active_model
 model.start_operation("TBS-001 Spray-Bar Gantry", true)
 entities = model.active_entities
@@ -462,6 +468,7 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 
+{sf_meta}
 {tags_ruby}
 
 {body}

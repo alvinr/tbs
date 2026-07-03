@@ -317,7 +317,7 @@ VENTILATION = [
 # §5b ventilation items, so we own the two authoritative subtotals rather than re-entering it.
 POWER = [
     point("Solar & battery (3× 200W panels, MPPT 100/50, 1× 100Ah LiFePO4, shore charger, mounts, PV cabling, PV disconnect, panel)", 1335),
-    point("Distribution & wiring (fuse block, disconnect, contactor, 2× E-stop, charge/shore fuses, protection, conduit, LED, pump switches)", 1015),
+    point("Distribution & wiring (fuse block, disconnect, contactor, 2× E-stop, charge/shore fuses, protection, conduit, LED, master pump switch)", 989),
 ]
 
 
@@ -427,7 +427,7 @@ def _scenario_a_rows() -> list:
         ("Pinhole plate", _sec("3").low),
         ("Film plane mechanism (manual Option A, incl. wall-seat saddles + cross-slides)", _sec("4").low),
         ("Water system (incl. processing tray, spray bar, IBC stacking frame)", _sec("5").low),
-        ("Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · pump switches)", _sec("5a").low),
+        ("Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch)", _sec("5a").low),
         ("Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy)", _sec("5b").low),
         ("Revolving drum light trap (plastic-skin custom fabrication)", _sec("6").low),
         ("Perimeter walkway (4 sections, removable, GRP grating)", _sec("6a").low),
@@ -447,7 +447,7 @@ def _scenario_b_rows() -> list:
         ("Pinhole plate", _sec("3").mid),
         ("Film plane mechanism (manual Option A + wall-seat saddles + cross-slides)", _sec("4").mid),
         ("Water system (incl. processing tray, spray bar, IBC stacking frame)", _sec("5").mid),
-        ("Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · pump switches)", _sec("5a").mid),
+        ("Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch)", _sec("5a").mid),
         ("Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy)", _sec("5b").mid),
         ("Revolving drum light trap (plastic-skin custom fabrication)", _sec("6").mid),
         ("Perimeter walkway (4 sections, removable, GRP grating)", _sec("6a").mid),
@@ -640,7 +640,7 @@ SECTIONS = [
     Section("3",  "Optics — pinhole plate", *total(OPTICS)),
     Section("4",  "Film plane mechanism (4-corner Option A, incl. wall-seat saddles + cross-slides)", *total(FILM)),
     Section("5",  "Processing water system (incl. tray, spray bar, IBC stacking frame)", *total(WATER)),
-    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · pump switches)", 2110, 2350, 2660),
+    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 2084, 2324, 2634),
     Section("5b", "Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)",
             total(VENTILATION)[0], total(VENTILATION)[0] + 60, total(VENTILATION)[0] + 150),
     Section("6",  "Housed revolving-door light lock (plastic-skin custom fabrication)", *total(LIGHTLOCK)),
@@ -1007,7 +1007,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 909,  "total": 1210, "per_print": 24},  # 909 not 910: consistent ferri rounding ($104, not the doc's hand-rounded $105)
     "standard": {"chem": 1353, "total": 1650, "per_print": 33},
     "rich":     {"chem": 2681, "total": 2980, "per_print": 60},
-    "grand_total": (21670, 27514, 35425),  # IBC frame deep 4-leg box (+$25/+$38/+$50). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (+$52/+$64/+$76, SS beam); + corridor plumbing-panel structure (+$215/+$380 — previously uncosted)
+    "grand_total": (21644, 27488, 35399),  # pump switches 5→1 master (−$26 §5a). IBC frame deep 4-leg box (+$25/+$38/+$50). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (+$52/+$64/+$76, SS beam); + corridor plumbing-panel structure (+$215/+$380 — previously uncosted)
     "walkway": (2000, 2488, 2975),   # §6a fab line raised so bracket scope matches walkway-report §10 ($742–$1,255 all-in)
     "water": (4640, 5833, 7018),   # IBC frame portal → deep 4-leg box (+$25/+$38/+$50: 4 feet + 16 anchors). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105: 20" housings + cartridges). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (40×40 alu → 40×25 304-SS + Ø32 wheels, spray line +$52/+$64/+$76); + corridor plumbing-panel structure (+$215/+$298/+$380 — was uncosted); panel-split cascade 2026-06-28 (+P-05, +SV-02, +5th bracket, −2 CV, +X1 4-way cross, BVs, +Blue equalization tie)
     "container": (2300, 3300, 4300),
@@ -1019,7 +1019,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "optics": (95, 165, 240),
     "film": (3454, 3684, 3914),   # saddles ×8→×6 (rev12: 2 BR ends are walkway combined plates) + fasteners 150→122 + clamp-mounting 70→76
     "ventilation": (824, 824, 824),   # §5b BOM (point estimates); report total was stale at $769
-    "power": (2350, 2350, 2350),       # §5a authoritative subtotal ($1,335 + $1,015)
+    "power": (2324, 2324, 2324),       # §5a authoritative subtotal (pump switches 5→1 master: −$26)
 }
 
 

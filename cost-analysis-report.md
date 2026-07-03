@@ -9,7 +9,7 @@ capital from recurring/consumable spend, and ranks the realistic savings levers.
 
 All figures are the **mid-column** estimates from the
 [Cost Breakdown](project-cost-breakdown.md) (the itemized source of truth); the build
-mid-total is **~<!-- BEGIN costing:ca-mid-total -->$27,514<!-- END costing:ca-mid-total -->**.
+mid-total is **~<!-- BEGIN costing:ca-mid-total -->$27,488<!-- END costing:ca-mid-total -->**.
 
 ---
 
@@ -22,13 +22,13 @@ recurs or is consumed — savings strategy is different for each.
 <!-- BEGIN costing:ca-buckets -->
 | Bucket | Mid | What it is |
 |---|--:|---|
-| **Capital build** (one-time hardware) | **$24,324** | The systems you build once — this is where build-savings live |
+| **Capital build** (one-time hardware) | **$24,298** | The systems you build once — this is where build-savings live |
 | Consumable (per 50-print batch) | $1,650 | Cyanotype chemistry + substrate (Standard ½-Ware) — recurs every batch |
 | Recurring (per deployment) | $750 | Commercial-hire transport |
 | Soft / regulatory | $790 | Licenses & permits |
 <!-- END costing:ca-buckets -->
 
-Build-savings work on the **<!-- BEGIN costing:ca-capital -->$24,324<!-- END costing:ca-capital --> capital**. The <!-- BEGIN costing:ca-consumable -->$1,650<!-- END costing:ca-consumable --> consumable is attacked
+Build-savings work on the **<!-- BEGIN costing:ca-capital -->$24,298<!-- END costing:ca-capital --> capital**. The <!-- BEGIN costing:ca-consumable -->$1,650<!-- END costing:ca-consumable --> consumable is attacked
 separately (bulk chemistry, cheaper substrate) because it repeats every batch and
 quickly dominates lifetime cost.
 
@@ -45,7 +45,7 @@ Capital systems ranked by mid cost:
 | **Film-plane mechanism** | $3,684 | 15% | Carriages, Option-A cross-slides, cam-lever clamps, wall-seat saddles |
 | **Container + delivery** | $3,300 | 14% | Grade-dependent (CW vs WWT) |
 | **Perimeter walkway** | $2,488 | 10% | GRP grating + steel cantilevers |
-| **Power & electrical** | $2,350 | 10% | Battery + solar + distribution + protection |
+| **Power & electrical** | $2,324 | 10% | Battery + solar + distribution + protection |
 | **Light lock** | $1,728 | 7% | Plastic-skin custom fabrication |
 | **Hinged panel structure** | $1,408 | 6% | Stepped frame + PP skins + Al core + EPDM + latches + B2 bay |
 | **Swing pivot** | $1,143 | 5% | Pivot post + bearings + cage + fixed RHS door frame |
@@ -73,7 +73,7 @@ Ranked by dollar potential and ease. Status is updated as levers are actioned.
 | 5 | **Solar 3 → 2 panels** (if the power budget allows) | Power | ~<!-- BEGIN costing:ca-lever-solar -->$130<!-- END costing:ca-lever-solar --> | Easy | Available |
 | 6 | **Valves / fittings value-engineering** | Water | ~<!-- BEGIN costing:ca-lever-valves-low -->$100<!-- END costing:ca-lever-valves-low -->–<!-- BEGIN costing:ca-lever-valves-high -->$200<!-- END costing:ca-lever-valves-high --> | Medium | Available |
 
-Levers 1–5 together trim **~<!-- BEGIN costing:ca-savings-low -->$3,250<!-- END costing:ca-savings-low -->–<!-- BEGIN costing:ca-savings-high -->$3,650<!-- END costing:ca-savings-high -->** off the <!-- BEGIN costing:ca-capital -->$24,324<!-- END costing:ca-capital --> capital build (**~<!-- BEGIN costing:ca-savings-pct-low -->13<!-- END costing:ca-savings-pct-low -->–<!-- BEGIN costing:ca-savings-pct-high -->15<!-- END costing:ca-savings-pct-high -->%**) without
+Levers 1–5 together trim **~<!-- BEGIN costing:ca-savings-low -->$3,250<!-- END costing:ca-savings-low -->–<!-- BEGIN costing:ca-savings-high -->$3,650<!-- END costing:ca-savings-high -->** off the <!-- BEGIN costing:ca-capital -->$24,298<!-- END costing:ca-capital --> capital build (**~<!-- BEGIN costing:ca-savings-pct-low -->13<!-- END costing:ca-savings-pct-low -->–<!-- BEGIN costing:ca-savings-pct-high -->15<!-- END costing:ca-savings-pct-high -->%**) without
 touching the core optical or structural design.
 
 > **Derivation note.** Lever 1 (container grade) and the roll-up total + percentage are

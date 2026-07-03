@@ -2629,6 +2629,15 @@ def generate_ruby():
         '["%s", [%s]]' % (n, ', '.join(f'"{t}"' for t in tags))
         for n, tags in scene_groups) + ']'
 
+    sf_meta = sketchfab_meta_ruby(
+        "TBS-001 Overview",
+        "A fully operational pinhole camera built inside a standard 20-foot ISO shipping "
+        "container. It makes photographs — real, large-format photographs — on contact-scale "
+        "cyanotype prints measuring approximately 15 feet wide by 8 feet tall. It is transportable, "
+        "deployable in remote locations, and self-sufficient for water and processing. It is not an "
+        "installation that resembles a camera. It is a camera.",
+        "e624e210bf3d4de08b1a7b7261a66c45", "sketchup")
+
     return f'''model = Sketchup.active_model
 model.start_operation("TBS-001 Overview", true)
 entities = model.active_entities
@@ -2649,6 +2658,7 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 
+{sf_meta}
 # ── Tags (layers) ──
 {tags_ruby}
 

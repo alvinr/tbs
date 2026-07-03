@@ -34,29 +34,45 @@ C_HANDLE = "#C0202A"                      # red diverter handle
 # UNDER the right-walkway grate.  At the first cantilever (nearest the pinhole wall) each
 # lane makes a staggered turn to a grate SLOT on the IBC edge, rises through it, and turns
 # into the corridor.  ribbon_run() returns the traverse; callers add each line's end stubs.
-RIBBON_Z       = 98                             # ribbon Z — under the grate (Z115), above the tray rim
+RIBBON_Z       = ov.WALKWAY_H - ov.WALKWAY_GRATE_T - ov.PUMP_PIPE_OD / 2   # 104.5 — FLUSH: pipe crown at the
+#   deck underside (Z115).  RAISED from the old Z98 so the corridor exit never has to dip toward the tray floor —
+#   the whole over-tray run now clears the spray-carriage crown (Z66) by ~28mm the entire way to the corridor.
 RIBBON_LANE_X  = [4556, 4530, 4504, 4478]       # 4 flat lanes in the clear channel BETWEEN the walkway long beams
 #   (inner X4329-4369, outer X4589-4629) — outer lane + its up-turn elbow clear the outer beam at 4589 (26mm pitch)
 RIBBON_YD_UP   = 1000                           # up-through-grate Yd — just BEFORE the first cantilever (Yd1046-1086)
 RIBBON_YD_DOWN = 1120                           # down-through-grate Yd — just PAST the cantilever (Yd1086)
 RIBBON_OVER_Z  = ov.WALKWAY_H + 12              # 142 — loop crest, just above the grate (130) / cantilever top (115) — kept low
 RIBBON_SUP_YD  = [200, 450, 700, 950]           # welded cross-beam supports along the under-grate ribbon span
+# Corridor exit: the flush ribbon crosses the OUTER long beam (X4589-4629, Z80-115) through an OPEN-TOP NOTCH at
+# each lane (the beam's grate-bearing web is kept; a shallow slot from the top clears the OD21 pipe at RIBBON_Z),
+# stays flush PAST the tray edge, and only THEN drops down the tray-edge↔upright slot (clear of the carriage,
+# which ends at X4599) into the corridor.  A flush under-beam crossing is impossible — the carriage crown (Z66)
+# to beam soffit (Z80) gap is 14mm < the 21mm pipe — so the beam is notched rather than the pipe dipped.
+RIBBON_BEAM_X  = (ov.RWK_X_R - 40, ov.RWK_X_R)  # 4589-4629 — outer long beam span (the notched member)
+RIBBON_SLOT_X  = ov.PROC_TRAY_X_R + 12          # 4641 — drop lane in the tray-edge↔upright gap (X4629-4654,
+#   clear Z16-150), PAST the carriage travel (X≤4599); each corridor exit drops here, never over the tray.
+BLUE_TRUNK_HANDOFF_X = ov.RAIL_X_R + 21         # 4670 — where the corridor blue trunk drops to meet the ribbon:
+#   PAST the film-plane bottom rail (a 40×40 tube ending at RAIL_X_R=4649) by a pipe radius + ~10mm, so the
+#   vertical drop clears the FP rail (the old X4660 grazed the rail edge by 0.5mm).  ribbon_run(1) picks up here.
 
 def ribbon_run(i, corridor_pt, near_pt, up_yd=None):
-    """Waypoints for ribbon lane i (0..3), from the CORRIDOR connection (past the first
-    cantilever, X in the corridor) to the pinhole-wall (near-rim) connection.  The line comes
-    in to the lane UNDER the walkway beam, LOOPS UP over the first cantilever (never through it —
-    Rule 5), drops back into the under-grate ribbon channel, and runs −Yd to the near rim.
-    corridor_pt Yd must be past the cantilever end (>1086).  up_yd (default = corridor_pt Yd)
-    sets where the loop-over rises on the corridor side — pass a value near the cantilever to keep
-    the over-run SHORT for a deep corridor feature (the reduction is made up under the walkway)."""
+    """Waypoints for ribbon lane i (0..3), from the CORRIDOR connection (X in the corridor, past
+    the tray edge) to the pinhole-wall (near-rim) connection.  On the corridor side the line stays
+    FLUSH under the deck: it comes off its downstream pickup, jogs into the tray-edge↔upright drop
+    slot (X4641, clear of the spray-carriage which ends at X4599), RISES to the flush ribbon Z, then
+    crosses the OUTER long beam through an OPEN-TOP NOTCH into the lane (never dipping toward the
+    tray).  It then LOOPS UP over the first cantilever (never through it — Rule 5), drops back into
+    the under-grate ribbon channel, and runs −Yd to the near rim.  corridor_pt Yd must be past the
+    cantilever end (>1086).  up_yd (default = corridor_pt Yd) sets where the loop-over rises."""
     lx, oz = RIBBON_LANE_X[i], RIBBON_OVER_Z
     cy, cz = corridor_pt[1], corridor_pt[2]
     uc = up_yd if up_yd is not None else cy        # loop-over rise Yd on the corridor side
     ny = near_pt[1]                                 # this line's own near-end Yd
     pts = [corridor_pt,
-           (lx, cy, cz),                           # to the lane X at the corridor Yd/Z (under the beam)
-           (lx, uc, cz),                           # −Yd UNDER the grate to the loop-over rise (shortens the over-run)
+           (RIBBON_SLOT_X, cy, cz),                # to the drop slot X, in the corridor PAST the tray edge (still at the pickup Z)
+           (RIBBON_SLOT_X, cy, RIBBON_Z),          # RISE up the slot to FLUSH under the deck (X>4599 → clear of the carriage)
+           (lx, cy, RIBBON_Z),                     # −X through the OPEN-TOP NOTCH in the outer beam to the lane, at flush
+           (lx, uc, RIBBON_Z),                     # −Yd (flush under the grate) to the loop-over rise Yd
            (lx, uc, oz),                           # UP to the over-crest height
            (lx, RIBBON_YD_UP, oz),                 # −Yd OVER the first cantilever to just before it
            (lx, RIBBON_YD_UP, RIBBON_Z),           # DOWN through the grate into the ribbon channel
@@ -76,7 +92,7 @@ def ribbon_supports():
     in Yd, their tops just under the ribbon Z."""
     p = []
     x0, x1 = ov.RWK_X_L, ov.RWK_X_R              # bearer span across the walkway (4329..4629)
-    ztop = RIBBON_Z - 8                          # 90 — bar top just below the pipes (ribbon Z98)
+    ztop = RIBBON_Z - 8                          # ~96 — bar top just under the flush pipes (ribbon Z104.5)
     for yd in RIBBON_SUP_YD:
         p.append(ov.ruby_box("Ribbon support cross-beam (welded 40x10)",
                              x0, yd - 3, ztop - 10, x1 - x0, 6, 10, color=ov.C_STEEL))
@@ -456,7 +472,7 @@ X1_TEE_Y = 1206 - ov.PUMP_PIPE_OD / 2   # on the spine face, aligned with the bl
 # IBC −X face, STACKED in Z.  The lane sits above the FP bottom rail (z190) and just clear of the
 # corridor-frame front upright (x4654).
 SUCT_SURF_Z = ov.WALKWAY_H + 75            # 205 — brown suction height; blue recycle stacks +30 above
-SUCT_XLANE  = ov.RAIL_X_R - 14             # 4635 — tray–IBC gap lane (−X clear of the blue supply-trunk drop at x4660)
+SUCT_XLANE  = ov.RAIL_X_R - 14             # 4635 — tray–IBC gap lane (−X clear of the blue supply-trunk drop at X4670)
 # ── BACK-OF-PANEL routing: LONG vertical risers run BEHIND the rear panel (no pump ports there),
 #    penetrating the ply; SHORT interconnects stay on the front.  Each long riser gets a UNIQUE Yd
 #    lane, and the Yd-jog onto that lane is done on the FRONT (at x=PXC, unique z per port) BEFORE
@@ -539,40 +555,46 @@ def plumbing():
     # sump, +X to the tray–IBC gap, then +Yd along the IBC −X face into the corridor, across (below the
     # pump bodies) and up into P-04.  The surface run sits ABOVE the FP bottom rail (z190), so it stands
     # ~75mm proud of the deck and the operator steps over it.
-    sumpX, sumpY, sumpZ = ov.PROC_TRAY_DRAIN_X, ov.PROC_TRAY_DRAIN_YD + 75, ov.PROC_TRAY_SUMP_Z  # 4550,155,20
+    sumpX, sumpY = ov.PROC_TRAY_DRAIN_X, ov.PROC_TRAY_DRAIN_YD + 75          # 4550,155 — sump-well center (the tray drain)
+    sump_foot_z  = ov.PROC_TRAY_FLOOR_Z_LOW - ov.PROC_TRAY_SUMP_Z + 3        # 3 — pickup foot near the sump-well bottom (Z0),
+    #   so the suction actually evacuates the 20mm-deep well (was Z20 = the floor lip, above the well)
     z04   = _piz("P-04")
     srz   = SUCT_SURF_Z                  # 205 — surface run: above the deck (130) AND the FP bottom rail (190)
     xlane = SUCT_XLANE                   # 4643 — tray–IBC gap lane, clear of the corridor-frame front upright
     xrise = PXC - 84                    # 4900 — rise lane −X of the pump column / ACC body & blue out-trunk (PXC)
     ybr   = PIY - 4                     # 1097 — port-approach Yd into the −Yd-facing IN port (clear of the P-01 suction Yd1071)
-    gapyd = 1194                        # THREAD the rise through the GAP between the DV-01 grey-waste (Yd1147) and
-    #   blue-recycle (Yd1241) floor lanes — clear of the P-05 brown feed (Yd1101, z258) the old Yd1097 rise crossed.
-    # Sump pickup: straight UP from the sump, then LOOP back down UNDER the walkway into ribbon lane 1
-    # (the brown line runs in the ribbon).  At the corridor it rises up to the ORIGINAL P-04 path —
-    # the rise at xrise/gapyd + the port approach (the right-angle by DV-01 we keep) — so we only
-    # re-route from the ribbon up to that point.
-    slx = RIBBON_LANE_X[1]                              # lane-1 X
+    gapyd = ov.RWK_RIBBON_NOTCH_YDS[2]  # 1194 — the lane-2 outer-beam notch Yd (single-sourced so the pipe crosses
+    #   exactly where the beam is slotted); threads the GAP between the DV-01 grey-waste (Yd1147) and blue-recycle
+    #   (Yd1241) floor lanes — clear of the P-05 brown feed (Yd1101, z258).
+    # Sump pickup: the foot sits DOWN IN the (widened) sump well at the ribbon-lane X (slx) with the strainer
+    # on it; the pipe rises STRAIGHT up out of the sump (NO jog — the depression was widened LEFT to reach the
+    # relocated lane, so the pipe never crosses the other lanes) and LOOPS back down UNDER the walkway into the
+    # ribbon (the brown sump line runs in the ribbon — the middle two lanes swapped so blue TAP-01 and brown
+    # sump alternate).  At the corridor it stays FLUSH, crosses the notched outer beam, drops in the tray-edge
+    # slot, and rejoins the ORIGINAL P-04 rise/port approach — we only re-route up to the drop.
+    slx = RIBBON_LANE_X[2]                              # lane-2 X (was lane-1; swapped with the blue TAP-01 trunk)
     loop_yd = 328                                       # extend the surface loop +Yd toward the film plane, out of
     #                                                    the cramped sump corner, before dropping under the walkway
     loop_z  = ov.WALKWAY_H + 5                           # 135 — first loop crest kept low, just over the walkway deck
     pipe("Tray sump -> P-04 suction",
-         [(slx, sumpY, sumpZ), (slx, sumpY, loop_z),    # straight UP at the ribbon-lane X (nudged to align with the
-          #                                               brown pipe in the ribbon — no over-jog), crest just over the walkway
+         [(slx, sumpY, sump_foot_z),                   # pickup foot DOWN IN the (widened) sump well, at the ribbon-lane X — STRAIGHT down, no jog
+          (slx, sumpY, loop_z),                         # straight UP out of the sump, crest just over the walkway
           (slx, loop_yd, loop_z),                       # extend +Yd toward the film plane, just over the walkway (uncramp)
           (slx, loop_yd, RIBBON_Z),                     # LOOP back down UNDER the walkway to the ribbon
           (slx, RIBBON_YD_UP, RIBBON_Z),                # +Yd in the ribbon to just before the first cantilever
           (slx, RIBBON_YD_UP, RIBBON_OVER_Z),           # UP through the grate, OVER the cantilever (Rule 5)
           (slx, RIBBON_YD_DOWN, RIBBON_OVER_Z),         # +Yd over the cantilever, past it
           (slx, RIBBON_YD_DOWN, RIBBON_Z),              # DOWN through the grate into the corridor
-          (slx, gapyd, RIBBON_Z),                       # +Yd to the corridor Yd (under the grate)
-          (slx, gapyd, 65),                             # DOWN to the under-beam crossing height (Z65, like the other lines)
-          (xrise, gapyd, 65),                           # +X UNDER the walkway beam (in the gap) to the rise lane
+          (slx, gapyd, RIBBON_Z),                       # +Yd to the corridor Yd (FLUSH under the grate)
+          (RIBBON_SLOT_X, gapyd, RIBBON_Z),             # +X through the OPEN-TOP NOTCH in the outer beam to the drop slot, at flush
+          (RIBBON_SLOT_X, gapyd, 65),                   # DOWN the tray-edge↔upright slot (X>4599 → clear of the carriage) to the corridor entry Z
+          (xrise, gapyd, 65),                           # +X to the rise lane (existing corridor routing — unchanged from here)
           # ---- ORIGINAL P-04 port approach (rise + port) ----
           (xrise, gapyd, z04),                          # RISE to the IN-port height
           (xrise, ybr, z04),                            # −Yd at the IN-port height to the port-approach lane
           (PXC, ybr, z04), pin("P-04")],                # +X straight into the −Yd-facing IN port
          ov.C_IBC_BROWN)
-    p.append(ov.ruby_cylinder("Tray sump strainer foot", sumpX, sumpY, sumpZ, 14, 36, color=CDK, axis="z"))
+    p.append(ov.ruby_cylinder("Tray sump strainer foot", slx, sumpY, sump_foot_z, 14, 36, color=CDK, axis="z"))
     # P-04 DISCHARGE → up the BACK of the panel (clear of the OUT-port stack), back to the front
     # ABOVE the pumps where it's clear → SV-02 (in-line) → DV-02 underside branch.
     # P-04 OUT leaves convention-style: a short +Yd stub straight OUT of the +Yd-facing OUT port to a
@@ -653,7 +675,8 @@ def plumbing():
     #   OUT of the operator's way at the mouth (was z515, mid-shin); −Yd of the ACC/pump bodies so it clears them
     pipe("Blue supply trunk -> spray bar / TAP-01 (off-panel)",
          [acc_out(), (PXC, CTR_Y - ACC_R - 50, ACC_PZ), (PXC, CTR_Y - ACC_R - 50, trz),
-          (PXC, GAP_CORR_Y, trz), (4660, GAP_CORR_Y, trz), (4660, GAP_CORR_Y, 60)], ov.C_BLUE)
+          (PXC, GAP_CORR_Y, trz), (BLUE_TRUNK_HANDOFF_X, GAP_CORR_Y, trz),
+          (BLUE_TRUNK_HANDOFF_X, GAP_CORR_Y, 60)], ov.C_BLUE)   # drop PAST the FP bottom rail (clears it)
     return "\n".join(p)
 
 

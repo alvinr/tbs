@@ -67,20 +67,24 @@ GAPX    = PROC_TRAY_X_R + 12                  # 4641 — under-beam crossing in 
 
 # ── Under-walkway pipe RIBBON (single-sourced from generate_corridor_water_panel `cp`) ──
 # Four lanes side-by-side in X (26mm pitch) in the clear channel BETWEEN the two long beams,
-# at Z=cp.RIBBON_Z (98) under the grate (Z115-130), above the tray rim (Z50).  Lane order (from
-# the outer/IBC beam inward) + which line each carries + its color.
-RIBBON_LANES = [   # (X, color, tag)
+# at Z=cp.RIBBON_Z (104.5 — FLUSH: pipe crown at the deck underside) under the grate (Z115-130),
+# above the tray rim (Z50).  The middle two lanes were SWAPPED (blue TAP-01 trunk ↔ brown tray-sump)
+# so the blue/brown lines alternate and no longer cross on the way into the corridor.  Lane order
+# (from the outer/IBC beam inward) + which line each carries + its color.
+RIBBON_LANES = [   # (X, color, tag)  — index-matched to cp.RIBBON_LANE_X
     (cp.RIBBON_LANE_X[0], C_BROWN, "IBC-3 → P-02"),
-    (cp.RIBBON_LANE_X[1], C_BROWN, "tray sump → P-04"),
-    (cp.RIBBON_LANE_X[2], C_BLUE,  "Blue trunk → TAP-01"),
+    (cp.RIBBON_LANE_X[1], C_BLUE,  "Blue trunk → TAP-01"),
+    (cp.RIBBON_LANE_X[2], C_BROWN, "tray sump → P-04"),
     (cp.RIBBON_LANE_X[3], C_BLUE,  "SV-01 → DV-01 return"),
 ]
-RIBBON_Z      = cp.RIBBON_Z            # 98 — under grate, above tray rim
+RIBBON_Z      = cp.RIBBON_Z            # 104.5 — FLUSH under the grate (pipe crown at deck underside Z115)
 RIBBON_OVER_Z = cp.RIBBON_OVER_Z       # 142 — loop crest just above the grate (over the cantilever)
 RIBBON_YD_UP  = cp.RIBBON_YD_UP        # 1000 — where the ribbon rises to loop over the first cantilever
 CHAN_X0 = BEAM_XS[0] + BEAM_W          # 4369 — inner edge of the channel (inner beam)
 CHAN_X1 = BEAM_XS[1]                   # 4589 — outer edge of the channel (outer beam)
-UNDER_BEAM_Z = 65                      # ribbon drop height under the outer beam into the corridor gap
+NOTCH_FLOOR = cp.ov.RWK_NOTCH_FLOOR    # 92 — open-top beam-notch floor (outer beam is slotted here so the flush ribbon crosses)
+UNDER_BEAM_Z = 65                      # corridor-entry Z where the EXISTING corridor routing picks up (reached now
+#                                        via the tray-edge slot drop from the flush ribbon, not an under-beam crossing)
 
 
 def _ribbon_circles(ax, z=None, r=None, z0=12, label=False, fs=5.4):
@@ -179,29 +183,21 @@ def sheet1():
            "ribbon support cross-brace\n(welded 40×10, top Z90 — carries the ribbon)",
            color=C_DIM, fs=5.6, ha="right", va="top", arrow_style="-|>", font=FONT)
 
-    # ── The four ribbon lanes IN-PLANE here, in the channel between the beams (Z98) ──
+    # ── The four ribbon lanes IN-PLANE here, in the channel between the beams (Z104.5, flush) ──
     # At the near end the lines are still in the ribbon; each drops off-section to its wall feature.
     _ribbon_circles(ax, z=RIBBON_Z, z0=12)
-    leader(ax, RIBBON_LANES[0][0], RIBBON_Z, CHAN_X0 - 30, 355,
-           "IBC-3 → P-02 (brown)", color=C_BROWN, fs=5.6, ha="right", va="center",
-           arrow_style="-|>", font=FONT)
-    leader(ax, RIBBON_LANES[1][0], RIBBON_Z, CHAN_X0 - 30, 315,
-           "tray sump → P-04 (brown)", color=C_BROWN, fs=5.6, ha="right", va="center",
-           arrow_style="-|>", font=FONT)
-    leader(ax, RIBBON_LANES[2][0], RIBBON_Z, CHAN_X0 - 30, 200,
-           "Blue trunk → TAP-01 (blue)", color=C_BLUE, fs=5.6, ha="right", va="center",
-           arrow_style="-|>", font=FONT)
-    leader(ax, RIBBON_LANES[3][0], RIBBON_Z, CHAN_X0 - 30, 160,
-           "SV-01 → DV-01 filtered return (blue)", color=C_BLUE, fs=5.6, ha="right",
-           va="center", arrow_style="-|>", font=FONT)
+    for (xx, col, tag), lz in zip(RIBBON_LANES, (355, 315, 200, 160)):
+        cn = "blue" if col == C_BLUE else "brown"
+        leader(ax, xx, RIBBON_Z, CHAN_X0 - 30, lz, f"{tag} ({cn})", color=col, fs=5.6,
+               ha="right", va="center", arrow_style="-|>", font=FONT)
     ax.text((CHAN_X0 + CHAN_X1) / 2, RIBBON_Z + 30,
-            "4-lane ribbon\n(26mm pitch, Z98)", fontsize=5.4, ha="center", va="bottom",
+            f"4-lane ribbon\n(26mm pitch, Z{RIBBON_Z:g} — flush)", fontsize=5.4, ha="center", va="bottom",
             color=C_OUT, zorder=13, **FONT)
 
     # ── Clearance dimensions (the point of the section) ──────────────────────
-    # ≈7mm pipe-top → grate is <30mm — a leader, not a dim (label rule 7).
+    # pipe crown sits at the deck underside (flush) — a leader, not a dim (label rule 7).
     leader(ax, CHAN_X1 - 6, (RIBBON_Z + OD / 2 + DECK_ZB) / 2, CHAN_X1 + 42, 175,
-           f"{DECK_ZB - int(RIBBON_Z + OD/2)}mm pipe-top → grate", color=C_DIM, fs=5.4,
+           "pipe crown FLUSH\nwith deck underside (Z%d)" % DECK_ZB, color=C_DIM, fs=5.4,
            ha="left", va="center", arrow_style="-|>", font=FONT)
     draw_dim_v(ax, X_HI - 40, 0, WALKWAY_H, f"deck\nZ{WALKWAY_H}", offset=5, fs=5.6, font=FONT)
     draw_dim_v(ax, BEAM_XS[0] - 20, PROC_TRAY_RIM, RIBBON_Z, f"{RIBBON_Z - PROC_TRAY_RIM}mm\nabove rim",
@@ -215,12 +211,14 @@ def sheet1():
         "1. X–Z elevation looking +Yd near the pinhole-wall END of the ribbon\n"
         "   (Yd≈62), where the four corridor↔pinhole-wall lines run TOGETHER as a\n"
         "   flat ribbon under the right-walkway grate.\n"
-        "2. The four lanes (26mm pitch, Z98) sit in the clear channel BETWEEN the\n"
-        "   two 40×40 long beams (X4369–4589), above the tray rim (Z50) and clear\n"
-        "   under the grate deck (Z115–130).\n"
+        "2. The four lanes (26mm pitch, Z104.5 — FLUSH, pipe crown at the deck\n"
+        "   underside Z115) sit in the clear channel BETWEEN the two 40×40 long\n"
+        "   beams (X4369–4589), above the tray rim (Z50), tucked under the grate.\n"
         "3. A welded 40×10 cross-brace between the beams (top Z90) carries the\n"
         "   ribbon at each support station.\n"
-        "4. Off-section (−Yd) each lane drops to its wall feature: the two blue\n"
+        "4. The two middle lanes were SWAPPED (blue TAP-01 trunk ↔ brown tray-sump)\n"
+        "   so blue/brown alternate and no longer cross into the corridor.\n"
+        "5. Off-section (−Yd) each lane drops to its wall feature: the two blue\n"
         "   lanes to TAP-01 / the SV-01 filtered return, the two brown lanes on\n"
         "   toward the near-rim taps."
     )
@@ -243,7 +241,7 @@ def sheet2():
 
     The SAME cut as B-B, moved to mid-tray depth, at a ribbon support station (Yd450).  The
     four ribbon lanes run IN-PLANE here (four cross-section circles in the channel between the
-    walkway long beams, at Z98 — above the tray/wash water, under the grate), carried by a
+    walkway long beams, at Z104.5 (FLUSH, crown at the deck underside) — above the tray/wash water, under the grate), carried by a
     welded cross-brace.  Confirms the sanctioned routing: the ribbon passes ABOVE the tray,
     under the grate, clear of the print/water — it never sits in the basin.
     """
@@ -305,25 +303,17 @@ def sheet2():
     # ── The four ribbon lanes IN-PLANE here (they run the length under the grate) ──
     _ribbon_circles(ax, z=RIBBON_Z, z0=12)
     # Labels pulled LEFT into the clear zone above the tray, never over the IBC-3 tote.
-    leader(ax, RIBBON_LANES[0][0], RIBBON_Z, CHAN_X0 - 30, 355,
-           "IBC-3 → P-02 (brown)", color=C_BROWN, fs=5.6, ha="right", va="center",
-           arrow_style="-|>", font=FONT)
-    leader(ax, RIBBON_LANES[1][0], RIBBON_Z, CHAN_X0 - 30, 315,
-           "tray sump → P-04 (brown)", color=C_BROWN, fs=5.6, ha="right", va="center",
-           arrow_style="-|>", font=FONT)
-    leader(ax, RIBBON_LANES[2][0], RIBBON_Z, CHAN_X0 - 30, 200,
-           "Blue trunk → TAP-01 (blue)", color=C_BLUE, fs=5.6, ha="right", va="center",
-           arrow_style="-|>", font=FONT)
-    leader(ax, RIBBON_LANES[3][0], RIBBON_Z, CHAN_X0 - 30, 160,
-           "SV-01 → DV-01 filtered return (blue)", color=C_BLUE, fs=5.6, ha="right",
-           va="center", arrow_style="-|>", font=FONT)
+    for (xx, col, tag), lz in zip(RIBBON_LANES, (355, 315, 200, 160)):
+        cn = "blue" if col == C_BLUE else "brown"
+        leader(ax, xx, RIBBON_Z, CHAN_X0 - 30, lz, f"{tag} ({cn})", color=col, fs=5.6,
+               ha="right", va="center", arrow_style="-|>", font=FONT)
     ax.text((CHAN_X0 + CHAN_X1) / 2, RIBBON_Z + 30,
-            "4-lane ribbon\n(26mm pitch, Z98)", fontsize=5.4, ha="center", va="bottom",
+            f"4-lane ribbon\n(26mm pitch, Z{RIBBON_Z:g} — flush)", fontsize=5.4, ha="center", va="bottom",
             color=C_OUT, zorder=13, **FONT)
 
-    # ≈7mm pipe-top → grate is <30mm — a leader, not a dim (label rule 7).
+    # pipe crown sits at the deck underside (flush) — a leader, not a dim (label rule 7).
     leader(ax, CHAN_X1 - 6, (RIBBON_Z + OD / 2 + DECK_ZB) / 2, CHAN_X1 + 42, 175,
-           f"{DECK_ZB - int(RIBBON_Z + OD/2)}mm pipe-top → grate", color=C_DIM, fs=5.4,
+           "pipe crown FLUSH\nwith deck underside (Z%d)" % DECK_ZB, color=C_DIM, fs=5.4,
            ha="left", va="center", arrow_style="-|>", font=FONT)
     draw_dim_v(ax, BEAM_XS[0] - 20, PROC_TRAY_RIM, RIBBON_Z, f"{RIBBON_Z - PROC_TRAY_RIM}mm\nabove rim",
                offset=5, fs=5.4, font=FONT)
@@ -337,7 +327,7 @@ def sheet2():
         "   ribbon support station.\n"
         "2. Here the plane is INSIDE the processing tray — the basin + wash\n"
         "   water are cut; the walkway deck spans over the tray.\n"
-        "3. The four ribbon lanes (Z98, 26mm pitch) run IN-PLANE here, in the\n"
+        "3. The four ribbon lanes (Z104.5 flush, 26mm pitch) run IN-PLANE here, in\n"
         "   channel BETWEEN the long beams (X4369–4589) — a SANCTIONED pass\n"
         "   ABOVE the tray rim, under the grate, clear of the print/water.\n"
         "4. A welded 40×10 cross-brace (top Z90) carries the ribbon at this\n"
@@ -442,19 +432,15 @@ def sheet3():
     _ribbon_circles(ax, z=RIBBON_OVER_Z, z0=12)
     ax.text((CHAN_X0 + CHAN_X1) / 2, RIBBON_OVER_Z + OD, "4-lane ribbon LOOPING OVER\nthe cantilever (crest Z142)",
             fontsize=5.6, ha="center", va="bottom", color=C_OUT, fontweight="bold", zorder=13, **FONT)
-    leader(ax, RIBBON_LANES[0][0], RIBBON_OVER_Z, CHAN_X0 - 30, 430,
-           "IBC-3 → P-02 (brown)", color=C_BROWN, fs=5.4, ha="right", va="center", arrow_style="-|>", font=FONT)
-    leader(ax, RIBBON_LANES[1][0], RIBBON_OVER_Z, CHAN_X0 - 30, 390,
-           "tray sump → P-04 (brown)", color=C_BROWN, fs=5.4, ha="right", va="center", arrow_style="-|>", font=FONT)
-    leader(ax, RIBBON_LANES[2][0], RIBBON_OVER_Z, CHAN_X0 - 30, 300,
-           "Blue trunk → TAP-01 (blue)", color=C_BLUE, fs=5.4, ha="right", va="center", arrow_style="-|>", font=FONT)
-    leader(ax, RIBBON_LANES[3][0], RIBBON_OVER_Z, CHAN_X0 - 30, 260,
-           "SV-01 → DV-01 return (blue)", color=C_BLUE, fs=5.4, ha="right", va="center", arrow_style="-|>", font=FONT)
+    for (xx, col, tag), lz in zip(RIBBON_LANES, (430, 390, 300, 260)):
+        cn = "blue" if col == C_BLUE else "brown"
+        leader(ax, xx, RIBBON_OVER_Z, CHAN_X0 - 30, lz, f"{tag} ({cn})", color=col, fs=5.4,
+               ha="right", va="center", arrow_style="-|>", font=FONT)
     # crest clears the arm top
     draw_dim_v(ax, CHAN_X1 + 8, ARM_ZT, RIBBON_OVER_Z - OD / 2, f"{int(RIBBON_OVER_Z - OD/2 - ARM_ZT)}mm\nover arm top",
                offset=5, fs=5.2, font=FONT)
-    # the corridor lanes drop past this plane to the pumps — shown in-plane in E-E
-    ax.text((UP_X1 + X_HI) / 2, 235, "(past the cantilever the lanes\ndrop UNDER the outer beam into\nthe corridor — in-plane in E-E)",
+    # past the cantilever each lane comes back to FLUSH and crosses the notched outer beam into the corridor
+    ax.text((UP_X1 + X_HI) / 2, 235, "(past the cantilever the lanes stay\nFLUSH, cross the NOTCHED outer beam,\nthen drop the tray-edge slot — in-plane in E-E)",
             fontsize=5.0, ha="center", va="center", color=C_DIM, zorder=10, **FONT)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
@@ -473,11 +459,13 @@ def sheet3():
         "   the steel (Rule 5).  It drops back through the grate past Yd1120.\n"
         "3. No pipe threads the tray-rim↔upright gap at this plane — the old\n"
         "   low-crosser pinch is designed out by the loop-over.\n"
-        "4. Past the cantilever the lanes drop UNDER the outer beam into the\n"
-        "   corridor and run in X to the pumps (Yd1130–1245) — in-plane in E-E.\n"
+        "4. Past the cantilever each lane stays FLUSH (Z104.5), crosses the OUTER\n"
+        "   beam through an open-top NOTCH, and only THEN drops the tray-edge slot\n"
+        "   (X4629–4654, clear of the carriage) into the corridor — in-plane in E-E.\n"
         "5. STATUS: (a) front foot / M12 CLEARS under the raised tray pan;\n"
         "   (b) RWK cantilever arm reconciled to the deep-box upright (X4654);\n"
-        "   (c) the ribbon crest clears the arm top — no soffit graze."
+        "   (c) the ribbon crest clears the arm top — no soffit graze;\n"
+        "   (d) the flush ribbon clears the spray-carriage crown (Z66) by ~28mm."
     )
     ax.text(X_LO + 8, Z_HI - 60, notes, fontsize=6.2, ha="left", va="top", color=C_OUT,
             family="monospace", zorder=15,
@@ -510,9 +498,10 @@ def sheet4():
 
     _rect(ax, X_LO, -40, X_HI - X_LO, 40, C_FLOOR, lw=1.0, hatch="////", z0=2)                 # floor
     _rect(ax, X_LO, DECK_ZB, PROC_TRAY_X_R - X_LO, WALKWAY_GRATE_T, C_GRATE, lw=1.0, z0=7)     # deck right edge
-    _rect(ax, BEAM_XS[1], 80, BEAM_W, DECK_ZB - 80, C_STEEL, ec="#3A3A40", lw=1.0, z0=6, hatch="\\\\\\\\")  # long bearer (no arm in this span)
-    ax.text(X_LO + 6, WALKWAY_H + 6, "walkway deck (ends X4629) + bearer Z80–115 (no arm in this span)",
-            fontsize=5.2, ha="left", va="bottom", color=C_DIM, **FONT)
+    _rect(ax, BEAM_XS[1], 80, BEAM_W, NOTCH_FLOOR - 80, C_STEEL, ec="#3A3A40", lw=1.0, z0=6, hatch="\\\\\\\\")   # outer bearer — surviving Z80–92 web
+    _rect(ax, BEAM_XS[1], NOTCH_FLOOR, BEAM_W, DECK_ZB - NOTCH_FLOOR, "none", ec="#B03030", lw=0.9, z0=6, ls=(0, (3, 2)))  # notched-away top (Z92–115)
+    ax.text(X_LO + 6, WALKWAY_H + 6, "walkway deck (ends X4629); OUTER beam OPEN-TOP NOTCHED\n(Z%d–115 removed at each lane so the flush ribbon crosses)" % int(NOTCH_FLOOR),
+            fontsize=5.0, ha="left", va="bottom", color=C_DIM, **FONT)
     _rect(ax, UP_X0, 0, UP_X1 - UP_X0, 50, C_STEEL, lw=0.9, z0=6)                              # front bottom Yd-rail
     _rect(ax, 5104, 0, 50, 50, C_STEEL, lw=0.9, z0=6)                                          # back bottom Yd-rail
     for ux, tag in ((UP_X0, "front"), (5104, "back")):                                          # uprights (ghost, slab edges)
@@ -521,21 +510,20 @@ def sheet4():
     _rect(ax, 4934, 355, 100, Z_HI - 355, C_GHOST, ec=C_GHOST, lw=0.8, z0=2, alpha=0.12, ls="--")  # pump column ghost
     ax.text(4984, 470, "pump column\n(P-01/04/05/03)\nghost, Yd≤1131", fontsize=4.8, ha="center", va="center", color=C_GHOST, **FONT)
 
-    # ── The four lines ENTER the corridor at the gap (under the outer beam, Z65), then RISE + run in X ──
-    # Past the cantilever the ribbon dropped through the grate; each line crosses UNDER the outer walkway
-    # beam (bottom Z80) at Z≈65, through the gap over the tray edge (X4629–4654, clear Z16–150), then rises
-    # to its lane height and runs in X to the pump column.
+    # ── Past the cantilever each line comes back to FLUSH (Z104.5), crosses the NOTCHED outer beam, and drops ──
+    # ── the tray-edge SLOT (X4629-4654, clear of the carriage) into the corridor, where the EXISTING routing ──
+    # ── (unchanged — "reconnect at the right edge onwards") rises it to its lane and runs in X to the pumps. ──
     GAP_ENTRY_X = 4641
-    _run(ax, [(GAP_ENTRY_X, UNDER_BEAM_Z), (GAP_ENTRY_X, 205), (4900, 205), (4900, Z_HI - 24)], C_BROWN)  # sump→P-04
-    _run(ax, [(GAP_ENTRY_X + 22, UNDER_BEAM_Z), (GAP_ENTRY_X + 22, 235), (4984, 235)], C_BLUE)            # blue trunk
-    _run(ax, [(GAP_ENTRY_X + 44, UNDER_BEAM_Z), (GAP_ENTRY_X + 44, 259), (X_HI - 6, 259)], C_BROWN)       # brown IBC-3 -> P-02 (raised +24)
-    _run(ax, [(GAP_ENTRY_X + 66, UNDER_BEAM_Z), (GAP_ENTRY_X + 66, 283), (X_HI - 6, 283)], C_BLUE)        # blue SV-01 -> DV-01 return (raised +48)
+    _run(ax, [(GAP_ENTRY_X, RIBBON_Z), (GAP_ENTRY_X, UNDER_BEAM_Z), (GAP_ENTRY_X, 205), (4900, 205), (4900, Z_HI - 24)], C_BROWN)      # sump→P-04
+    _run(ax, [(GAP_ENTRY_X + 22, RIBBON_Z), (GAP_ENTRY_X + 22, UNDER_BEAM_Z), (GAP_ENTRY_X + 22, 235), (4984, 235)], C_BLUE)           # blue trunk
+    _run(ax, [(GAP_ENTRY_X + 44, RIBBON_Z), (GAP_ENTRY_X + 44, UNDER_BEAM_Z), (GAP_ENTRY_X + 44, 259), (X_HI - 6, 259)], C_BROWN)      # brown IBC-3 -> P-02
+    _run(ax, [(GAP_ENTRY_X + 66, RIBBON_Z), (GAP_ENTRY_X + 66, UNDER_BEAM_Z), (GAP_ENTRY_X + 66, 283), (X_HI - 6, 283)], C_BLUE)       # blue SV-01 -> DV-01
     ax.annotate("↑ P-04 IN", xy=(4900, Z_HI - 24), xytext=(4915, Z_HI - 70),
                 fontsize=5.6, ha="left", va="center", color=C_BROWN, zorder=13, **FONT)
-    # mark the under-beam entry band (the four risers enter here from Z65)
-    leader(ax, GAP_ENTRY_X + 33, UNDER_BEAM_Z, GAP_ENTRY_X + 15, 315,
-           f"the four lines enter the corridor\nat Z≈{UNDER_BEAM_Z} — they crossed UNDER\nthe outer beam (between rail-top Z50 &\nbeam-bottom Z80), then RISE to lane height",
-           color="#B03030", fs=5.4, ha="left", va="bottom", arrow_style="-|>", font=FONT)
+    # mark the flush arrival + slot drop
+    leader(ax, GAP_ENTRY_X + 33, RIBBON_Z, GAP_ENTRY_X + 70, 372,
+           "the four lines arrive FLUSH (Z%d) across the\nnotched beam, drop the tray-edge SLOT (past the\ncarriage) to the corridor entry (Z%d), then RISE" % (int(RIBBON_Z), UNDER_BEAM_Z),
+           color="#B03030", fs=5.2, ha="left", va="bottom", arrow_style="-|>", font=FONT)
     # legend (identifies the four lanes) — in the open band below the lanes, well right of the risers
     lgx, lgz = 4900, 150
     ax.text(lgx, lgz, "CORRIDOR LANES (→ toward the pumps):", fontsize=6, ha="left", va="top",
@@ -555,11 +543,11 @@ def sheet4():
         "SECTION E-E NOTES\n"
         "1. Cut in the CLEAR SPAN between the frame uprights (Yd1096–1266); the\n"
         "   uprights + pump column are just outside the slab, ghosted.\n"
-        "2. Past the cantilever the ribbon dropped through the grate; each line\n"
-        "   crosses UNDER the outer walkway beam at Z≈65 (between rail-top Z50 &\n"
-        "   beam-bottom Z80), through the gap over the tray edge (X4629–4654).\n"
-        "3. Inside the corridor each line RISES to its lane height and runs in X\n"
-        "   toward the pump column — riding the Z205–235 band.\n"
+        "2. Past the cantilever each line stays FLUSH (Z104.5) and crosses the\n"
+        "   OUTER beam through an OPEN-TOP NOTCH (Z92–115 removed), then drops the\n"
+        "   tray-edge SLOT (X4629–4654) — PAST the carriage (ends X4599) — to Z65.\n"
+        "3. From that Z65 corridor entry the EXISTING routing (unchanged) rises\n"
+        "   each line to its lane and runs in X toward the pumps (Z205–235 band).\n"
         "4. No IBC ring rail crosses this span, so the corridor is open above\n"
         "   the bottom rail (Z50)."
     )

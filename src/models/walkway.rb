@@ -2808,7 +2808,40 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # RWk Long beam X4589 upper
   grp = ents.add_group
   grp.name = "RWk Long beam X4589 upper"
-  face = grp.entities.add_face([4589.mm,0.mm,95.mm], [4629.mm,0.mm,95.mm], [4629.mm,2362.mm,95.mm], [4589.mm,2362.mm,95.mm])
+  face = grp.entities.add_face([4589.mm,0.mm,95.mm], [4629.mm,0.mm,95.mm], [4629.mm,1093.mm,95.mm], [4589.mm,1093.mm,95.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(20.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk Long beam X4589 upper
+  grp = ents.add_group
+  grp.name = "RWk Long beam X4589 upper"
+  face = grp.entities.add_face([4589.mm,1149.mm,95.mm], [4629.mm,1149.mm,95.mm], [4629.mm,1177.mm,95.mm], [4589.mm,1177.mm,95.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(20.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk Long beam X4589 upper
+  grp = ents.add_group
+  grp.name = "RWk Long beam X4589 upper"
+  face = grp.entities.add_face([4589.mm,1211.mm,95.mm], [4629.mm,1211.mm,95.mm], [4629.mm,1224.mm,95.mm], [4589.mm,1224.mm,95.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(20.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk Long beam X4589 upper
+  grp = ents.add_group
+  grp.name = "RWk Long beam X4589 upper"
+  face = grp.entities.add_face([4589.mm,1258.mm,95.mm], [4629.mm,1258.mm,95.mm], [4629.mm,2362.mm,95.mm], [4589.mm,2362.mm,95.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -2830,7 +2863,40 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # RWk Long beam X4589 lower
   grp = ents.add_group
   grp.name = "RWk Long beam X4589 lower"
-  face = grp.entities.add_face([4589.mm,1086.mm,80.mm], [4629.mm,1086.mm,80.mm], [4629.mm,1266.mm,80.mm], [4589.mm,1266.mm,80.mm])
+  face = grp.entities.add_face([4589.mm,1086.mm,80.mm], [4629.mm,1086.mm,80.mm], [4629.mm,1093.mm,80.mm], [4589.mm,1093.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk Long beam X4589 lower
+  grp = ents.add_group
+  grp.name = "RWk Long beam X4589 lower"
+  face = grp.entities.add_face([4589.mm,1149.mm,80.mm], [4629.mm,1149.mm,80.mm], [4629.mm,1177.mm,80.mm], [4589.mm,1177.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk Long beam X4589 lower
+  grp = ents.add_group
+  grp.name = "RWk Long beam X4589 lower"
+  face = grp.entities.add_face([4589.mm,1211.mm,80.mm], [4629.mm,1211.mm,80.mm], [4629.mm,1224.mm,80.mm], [4589.mm,1224.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk Long beam X4589 lower
+  grp = ents.add_group
+  grp.name = "RWk Long beam X4589 lower"
+  face = grp.entities.add_face([4589.mm,1258.mm,80.mm], [4629.mm,1258.mm,80.mm], [4629.mm,1266.mm,80.mm], [4589.mm,1266.mm,80.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -2844,6 +2910,50 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4589.mm,1306.mm,80.mm], [4629.mm,1306.mm,80.mm], [4629.mm,2362.mm,80.mm], [4589.mm,2362.mm,80.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk Long beam X4589 notch web
+  grp = ents.add_group
+  grp.name = "RWk Long beam X4589 notch web"
+  face = grp.entities.add_face([4589.mm,1093.mm,80.mm], [4629.mm,1093.mm,80.mm], [4629.mm,1266.mm,80.mm], [4589.mm,1266.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk Long beam X4589 notch web
+  grp = ents.add_group
+  grp.name = "RWk Long beam X4589 notch web"
+  face = grp.entities.add_face([4589.mm,1115.mm,80.mm], [4629.mm,1115.mm,80.mm], [4629.mm,1266.mm,80.mm], [4589.mm,1266.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk Long beam X4589 notch web
+  grp = ents.add_group
+  grp.name = "RWk Long beam X4589 notch web"
+  face = grp.entities.add_face([4589.mm,1177.mm,80.mm], [4629.mm,1177.mm,80.mm], [4629.mm,1266.mm,80.mm], [4589.mm,1266.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk Long beam X4589 notch web
+  grp = ents.add_group
+  grp.name = "RWk Long beam X4589 notch web"
+  face = grp.entities.add_face([4589.mm,1224.mm,80.mm], [4629.mm,1224.mm,80.mm], [4629.mm,1266.mm,80.mm], [4589.mm,1266.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0

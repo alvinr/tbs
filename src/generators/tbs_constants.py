@@ -599,7 +599,9 @@ PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at near rim (low point of Y
 BV02_X             = PH_X         # BV-02 X on pinhole wall — at pinhole centerline, arm's reach from operator during wash pass
 BV02_YD            = 0           # BV-02 on pinhole wall (Yd=0) — reserved (spec; not yet drawn)
 BV02_Z             = 950         # BV-02 height on pinhole wall (mm AFF) — waist height from the raised walkway deck [+50 raise; was 900]
-PROC_TRAY_SUMP_W   = 150        # sump well width in X (mm)
+PROC_TRAY_SUMP_W   = 2 * (PROC_TRAY_X_R - PROC_TRAY_DRAIN_X)   # 158 — WIDENED (was 150): the well now spans from the
+#   drain center OUT to the tray's low-drainage corner (X_R=4629) and back, so it reaches the true low point AND
+#   hosts the relocated sump pickup (brown P-04 suction moved to ribbon lane 2, X≈4504) with the strainer inside.
 PROC_TRAY_SUMP_D   = 100        # sump well depth in Yd (mm)
 PROC_TRAY_SUMP_Z   = 20         # sump well depth below tray floor (mm)
 

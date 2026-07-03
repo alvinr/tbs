@@ -141,7 +141,7 @@ ELEC_POINT_LABELS = [
     (EVAP_DUCT_X, -WALL - EVAP_D / 2 - 120, EVAP_H,
      "EVAP COOLER\n(Hessaire MC18M, Cct E)", -260, -520, 520),
     (EQPANEL_X, EQPANEL_YD + EQPANEL_YD_SPAN / 2, PUMP_H_HI - 40,
-     "CCT-C PUMP DISTRIBUTION\n5 switches — P-01..P-05 (one at a time)", -350, -700, 250),
+     "CCT-C PUMP DISTRIBUTION\nmaster switch → pumps (one at a time)", -350, -700, 250),
     (PWR_PANEL_X + 0.42 * PWR_PANEL_W, 35, PWR_PANEL_Z + 0.07 * PWR_PANEL_H,
      "PV DISCONNECT\n(load-break, array->MPPT)", 300, -560, 320),
     (EP_X + 40, 95, EP_H_LO + 215, "60A CHARGE FUSE\n(MPPT -> battery)", 440, -680, 160),
@@ -412,9 +412,11 @@ def inverter():
 
 
 def _pump_circuit():
-    """Circuit C: feed → drop to a 12V distribution block on the equipment panel →
-    5 individual pump switches → the 5 Shurflo pumps (one at a time). Per the
-    Equipment Panel report: left column P-01/P-04, right column P-02/P-03/P-05."""
+    """Circuit C: feed → ONE master pump switch + 12V distribution block on the equipment
+    panel → a 16 AWG branch DIRECTLY to each Shurflo pump. No per-pump switches — each pump
+    runs on its internal demand/pressure switch; the master switch is the single manual cutoff.
+    (NB: pump reference positions here are still the legacy 2-column layout — the single-column
+    re-org to match panel-layout.png is a separate follow-up.)"""
     col = CCT["C"][0]
     lcol, rcol = EQPANEL_YD + 63, EQPANEL_YD + 207     # column centres (panel report)
     pumps = [("P-01", lcol, 1229), ("P-04", lcol, 1487),
@@ -422,17 +424,19 @@ def _pump_circuit():
     cy = EQPANEL_YD + EQPANEL_YD_SPAN / 2              # wireway Yd centre
     way_top = PUMP_H_HI                                 # feed enters the top
     way_bot = min(z for _, _, z in pumps) - 20         # extends DOWN past the lowest pump
-    # Distribution WIREWAY — a vertical channel down the panel that covers every branch
-    # tap (the 5 power drops), instead of a single block floating above them.
+    # Distribution WIREWAY — a vertical channel down the panel that covers every branch tap.
     p = [ov.ruby_box("Cct C distribution wireway", EQPANEL_X - 25, cy - 35, way_bot,
                      50, 70, way_top - way_bot, color="#2B2B30")]
     p.append(_run("C", (EQPANEL_X, cy, way_top - 25)))   # feed → top of the wireway
+    # ONE master pump switch on the panel face (-X), near the top of the wireway.
+    swx, msz = EQPANEL_X - 120, way_top - 110
+    p.append(ov.ruby_box("Master pump switch (Cct C)", swx - 25, cy - 25, msz, 50, 50, 50,
+                         color="#202020"))
+    p.append(ov.ruby_pipe_run("Cct C master-switch tap",
+             _dedup([(EQPANEL_X, cy, msz + 25), (swx, cy, msz + 25)]), 6, color=col))
     for nm, yd, z in pumps:
-        swx = EQPANEL_X - 120                           # switch on the panel face (-X)
-        p.append(ov.ruby_box(f"Pump switch {nm} (Cct C)", swx - 20, yd - 20, z + 40,
-                             40, 40, 40, color="#202020"))
-        # branch taps the wireway at THIS pump's level → switch → pump (orthogonal)
-        br = _dedup([(EQPANEL_X, cy, z + 60), (swx, cy, z + 60), (swx, yd, z + 60)])
+        # branch taps the wireway at THIS pump's level → straight to the pump (no per-pump switch)
+        br = _dedup([(EQPANEL_X, cy, z + 60), (EQPANEL_X, yd, z + 60)])
         p.append(ov.ruby_pipe_run(f"Cct C branch {nm}", br, 6, color=col))
     return '\n'.join(p)
 
@@ -450,7 +454,7 @@ def circuit_runs():
                      25, color=ov.C_TRUNK)]
     for cct in ("A", "B", "E"):
         p.append(_run(cct, LOADS[cct]))
-    p.append(_pump_circuit())              # Cct C: distribution block + 5 pump switches
+    p.append(_pump_circuit())              # Cct C: master switch + distribution block → pumps
     p.append(_multi_run("G", LED_ENDS))    # 3× white LED (incl. rotated IBC-end panel)
     p.append(_multi_run("D", SAFE_ENDS))   # 3× safelight
     # Fan B flexible connector (wall box -> fan on the swing panel) — the SOFT jumper that is

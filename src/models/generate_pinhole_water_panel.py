@@ -16,6 +16,18 @@ sys.path.insert(0, _HERE)
 import generate_sketchup_model as ov
 import generate_corridor_water_panel as cp        # the new corridor plumbing panel (same connected system)
 
+# ── Sketchfab upload metadata (stamped onto the model on every --send) ────────
+SF_TITLE = "TBS-001 Water System Model"
+SF_ID    = "1dae932430924e9b993e153a16f485fc"   # stable Sketchfab UID — re-uploads REPLACE this model
+SF_TAGS  = "tbs pinhole camera water plumbing sketchup"
+SF_DESC  = (
+    "TBS-001 (The Big Shoebox pinhole camera) self-contained three-circuit water system: "
+    "Blue clean supply, Brown wash-water recycle through a 3-stage filter train, and sealed "
+    "Waste, across the Pinhole Wall pump/filter panel and the Corridor plumbing panel, feeding "
+    "four 1000L IBC totes. Runs on 12V DC for solar/battery off-grid operation. "
+    "See the TBS plumbing and water-system reports."
+)
+
 # ── band + wall ──────────────────────────────────────────────────────────────
 X0, X1 = 2700, 4674            # wet-end clear mounting band on the pinhole wall (Yd0)
 WALL_X0, WALL_X1 = 0, ov.C_LEN # 0..5893 — the FULL pinhole wall (context spans the whole length)
@@ -425,6 +437,7 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each {{ |pg| model.pages.erase(pg) }}
 opts = model.options["UnitsOptions"]; opts["LengthUnit"]=2; opts["LengthFormat"]=0
+{ov.sketchfab_meta_ruby(SF_TITLE, SF_DESC, SF_ID, SF_TAGS)}
 {tags_ruby}{body}
 # remove the FAR walkway deck AND its cantilever brackets (not wanted in this view)
 model.definitions.each {{ |d| d.entities.grep(Sketchup::Group).each {{ |g| g.erase! if g.valid? && g.name =~ /^Walkway Far/ }} }}

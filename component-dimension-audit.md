@@ -29,7 +29,7 @@ Modeled dimensions are the `tbs_constants.py` value(s) the generators draw. mm.
 | 1 | IBC tote (1,000 L caged) | 1219×1016×1168 | `IBC_W/IBC_D/IBC_H_1000` | ✅ FIXED (v2) |
 | 2 | LiFePO4 battery, 100Ah 12V (Renogy Smart Lithium) | 330×172×214 — Renogy 12V 100Ah Smart Lithium | `BA_W/BA_D/BA_H` | ✅ FIXED |
 | 3 | Shurflo 2088-554-144 pump (P-01 Blue supply) | 216×127×114 — Shurflo 2088-554-144 | `PUMP_D×PUMP_YD_SPAN×Z` | ✅ FIXED (minor) — protrusion PUMP_D 100→114 |
-| 4 | Big Blue filter housing (4.5"×10") | Ø184×333 — Pentek 4.5×10 BB | `BB_OD/BB_H` | ✅ FIXED — BB_OD 130→184; BoM switched to 4.5×10 |
+| 4 | Big Blue filter housing (4.5"×20") | Ø184×594 — Pentek 4.5×20 BB | `BB_OD/BB_H` | ✅ FIXED — BB_OD 130→184; BoM 4.5×10 → 4.5×20 (2× media/interval; heads pinned at ceiling, sumps hang to ~Z1746) |
 | 5 | 150×150×50mm axial fans | 150×150×50 | `FAN_DIAM/FAN_BODY_D` | ✅ FIXED |
 | 6 | Evaporative cooler | 559×305×711 — Hessaire MC18M | `EVAP_W/EVAP_D/EVAP_H` | ✅ RESOLVED |
 | 7 | SeaFlo accumulator (0.75 L) | 200×127×125 — SeaFlo SFAT-075-125-01 | `Ø127×200 cyl` | ✅ FIXED — cylinder 150→200 |
@@ -61,9 +61,9 @@ discrepancy and the fix that was applied.*
 
 ### 4. Filter housing — Big Blue 4.5" × 20" ✅ RESOLVED (§4)
 - **Real:** Pentek 20×4.5 BB = 23⅜" × 7¼" = **594 mm tall × Ø184 mm**. [Pentek 20" BB](https://www.filterwater.com/p-541-pentek-20-big-blue-water-filter-housing-15-inch.aspx) · [allfilters 20×4.5](https://www.allfilters.com/filterhousings/20x4.5/20-bb-housing)
-- **Modeled:** `BB_OD`=130, `BB_H`=340 (a 10" housing).
-- **Problem:** the BoM specifies **4.5"×20"** cartridges (Purcooflow WHF2045B302), but the model draws **10"** housings — ~250 mm shorter and 54 mm narrower each. Three of them stacked is the panel's biggest vertical run.
-- **Action:** either set `BB_OD`=184 / `BB_H`=594 to match the 20" spec **or** down-spec the purchase to 4.5"×10" housings/cartridges — then re-render the panel + re-sum filter cost. **Decision needed:** keep 20" (more media life, taller panel) or switch to 10".
+- **Modeled:** `BB_OD`=184, `BB_H`=594 (a 4.5×20 housing — matches the real dimension above).
+- **As found:** `BB_OD`=130, `BB_H`=340 drew a **10"** housing while the BoM specified **4.5"×20"** cartridges.
+- **Resolution:** kept **4.5"×20"** for the media life (~2× the interval between changes). The model was set to `BB_OD`=184 / `BB_H`=594; the housings hang as a **horizontal bank high on the pinhole wall** (heads pinned near the ceiling, sumps to ~Z1746), not a vertical stack, so the extra length costs walkway head clearance (shoulder height) rather than a tall panel run. Panel re-rendered, filter cost re-summed. Reversible to 4.5"×10" (same heads/ports) if the clearance becomes an operational issue.
 
 ### 5. Fan — AC Infinity Cloudline S6 ✅ RESOLVED (§4)
 - **Real:** 6" (152 mm) duct; unit 7.9×12.6×8.4" = **200 × 320 × 213 mm**, an **inline duct fan**. [AC Infinity S6](https://acinfinity.com/cloudline-s6-quiet-inline-fan-6-with-speed-controller/)
@@ -109,7 +109,7 @@ listed for completeness; confirm the drawn size equals the catalog dimension:
 | Component | Decision | Real dim used | Model change | BoM change | Status |
 |-----------|----------|---------------|--------------|------------|--------|
 | **Fan** | keep the drawn 150 mm axial **panel** fan; swap the product | 150×150×50 | none (model already 150×50) | "AC Infinity S6" → 150×150×50 mm 12 V DC axial fan ([15050-12V](https://www.coolingfanfactory.com/product/DC-Fan-15050-12V-24V-48V-150mm.html)) | ✅ done |
-| **Filter** | switch the purchase to **4.5"×10"** | 333 × Ø184 | `BB_OD` 130 → 184 | spec 4.5×20 → 4.5×10; cost ~$470–652 → ~$282–445; cartridge intervals ~½ | ✅ done |
+| **Filter** | keep **4.5"×20"** (media life) | 594 × Ø184 | `BB_OD` 130 → 184, `BB_H` 340 → 594 | spec/model = 4.5×20; cost ~$336–550; cartridge intervals ~2× | ✅ done |
 | **Battery** | resize to real pack, **side-by-side** | 2× 330×172×214 | `BA_D`172/`BA_H_HI`364/`BA_W`680/`BA_X`1540 | dims added | ✅ done (line-of-sight passes) |
 | **Pump** | resize | 216×127×114 | `PUMP_D` 100→114 (W/L already matched) | dims added | ✅ done |
 | **Accumulator** | minor | 200×127×125 | cyl 150→200 | dims added | ✅ done |

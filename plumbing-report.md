@@ -72,40 +72,46 @@ third sheet.
 
 ### 3.1 Pinhole Wall Plumbing Panel — Filter Skid + P-02
 
-Three 4.5"×10" Big Blue filter housings mounted vertically (sump down) in a
-slotted angle frame. The housings stack vertically with 30mm gaps between them.
-Flow path: P-02 output → F-01 (top, coarsest) → F-02 (middle) → F-03 (bottom,
-finest) → SV-01 sample tap → 3W-DV-01.
+Three 4.5"×20" Big Blue filter housings in a **horizontal bank mounted high on
+the pinhole wall** — the heads (with the 1" NPT ports) pinned just below the
+ceiling, the sump bowls hanging below — so the walkway stays clear and the
+operator reaches up to service them. Flow path: P-02 output → F-01 (5μm sediment)
+→ F-02 (KDF-55) → F-03 (carbon) → SV-01 sample tap → 3W-DV-01.
 
-**Pinhole Wall Plumbing Panel — Front elevation: P-02, 3-stage filter stack, SV-01 sample tap, and DV-01 diverter**
+**Pinhole Wall Plumbing Panel — Front elevation: P-02, 3-stage filter bank, SV-01 sample tap, and DV-01 diverter**
 ![TBS-001 — Pinhole Wall Plumbing Panel Layout](assets/pinhole-panel.png)
 
-| Component | Position (Z, mm) | Specification |
-|-----------|-----------------|---------------|
-| F-01 (sediment) | 940–1,280 | 4.5"×10" Big Blue, 50μm MPP melt-blown polypropylene |
-| F-02 (heavy metal) | 570–910 | 4.5"×10" Big Blue, KDF-55 heavy metal removal |
-| F-03 (carbon) | 200–540 | 4.5"×10" Big Blue, CTO coconut shell activated carbon |
-| Slotted angle frame | 200–1,280 | 25×25×3mm slotted steel angle, 130mm wide |
+| Stage | Media | Housing |
+|-------|-------|---------|
+| F-01 (sediment) | 50μm MPP melt-blown polypropylene | 4.5"×20" Big Blue |
+| F-02 (heavy metal) | KDF-55 heavy-metal removal | 4.5"×20" Big Blue |
+| F-03 (carbon) | CTO coconut-shell activated carbon | 4.5"×20" Big Blue |
 
-Each housing has 1" NPT inlet and outlet ports on the head (top). Inter-housing
-piping connects F-01 OUT → F-02 IN and F-02 OUT → F-03 IN using 1" HDPE pipe
-with 90° elbows routed outside the housing bodies. Housings mount to an 18mm
-plywood backing board within the slotted angle frame via U-bracket clamps with
-25mm HDPE spacer blocks for sump-bowl clearance.
+Each housing has 1" NPT inlet and outlet on the head; the heads sit on a common
+line and the sumps hang below on a shared 25×25×3mm slotted-angle backing frame.
+Inter-housing piping connects F-01 OUT → F-02 IN and F-02 OUT → F-03 IN using
+1" HDPE pipe with 90° elbows routed outside the housing bodies. U-bracket clamps
+with 25mm HDPE spacer blocks hold each housing to the 18mm ply backing and give
+sump-bowl clearance.
 
-**Replacement interval:**
+**Head clearance:** the 20" sumps hang ~250mm lower than a 10" housing would —
+to roughly shoulder height for the 1.75m scale operator — in exchange for ~2× the
+interval between cartridge changes. If the lower bank proves an operational
+nuisance, the housings swap directly to 4.5"×10" (same heads and ports, shorter
+sumps, half the interval).
+
+**Replacement interval** (4.5"×20" cartridges — roughly 2× the 10" life):
 
 | Stage | Cartridge | Removes | Replace every |
 |-------|-----------|---------|--------------|
-| F-01 | 5μm MPP sediment | Gross sediment, fiber lint, Prussian blue particles | 25 prints |
-| F-02 | KDF-55 | Dissolved iron from ferricyanide wash water | 30 prints |
-| F-03 | CTO carbon block | Residual organics, color | 20 prints |
+| F-01 | 5μm MPP sediment | Gross sediment, fiber lint, Prussian blue particles | ~50 prints |
+| F-02 | KDF-55 | Dissolved iron from ferricyanide wash water | ~60 prints |
+| F-03 | CTO carbon block | Residual organics, color | ~40 prints |
 
 **Alternative:** A single 3-stage combo unit (e.g. Purcooflow WHF2045B302 or
-iSpring WGB32B) with 4.5"×20" cartridges eliminates inter-housing plumbing and
-the separate frame. The combo unit mounts directly to the panel with its
-integrated bracket. 1" NPT inlet/outlet; a single 1/2"→1" bushing reducer
-connects P-02 output to the unit inlet. See
+iSpring WGB32B) with 4.5"×20" cartridges eliminates the inter-housing plumbing
+and the separate frame — one integrated bracket, 1" NPT inlet/outlet, a single
+1/2"→1" bushing at the P-02 feed. See
 [Water System Report](water-system-report.md) §3.2 for sizing rationale.
 
 ### 3.2 Corridor Plumbing Panel — Pump Zone
@@ -343,7 +349,7 @@ panel and allows gravity to assist with priming.
 | Component | Protrusion from panel face (-X) |
 |-----------|-------------------------------|
 | Pump body (Shurflo 2088) | 100mm |
-| Filter housing (Big Blue 4.5"×10") | 130mm |
+| Filter housing (Big Blue 4.5"×20") | 130mm |
 | Accumulator (ACC-01) | 127mm |
 | Pipe fittings + valves | ~50mm |
 
@@ -436,14 +442,14 @@ hardware are sourced there and in the IBC stacking frame line.
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | [Shurflo 2088-554-144 pump (P-02 filter loop)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 1 ea | Amazon | $55–$70 |
-| Big Blue filter housing (4.5"×10") | Ø184×333mm/housing, 1" NPT ports, integrated bracket (Express Water / Geekpure / iSpring) | 1 ea | Amazon | $200–$300 |
-| MPP 5-micron sediment cartridge 4.5"×10" | Melt-blown polypropylene depth filter (F-1 stage) | 3 ea | Amazon | $18–$30 |
-| KDF-55 heavy-metal cartridge 4.5"×10" | KDF-55 media for dissolved iron/metal removal (F-2 stage) | 2 ea | Amazon | $40–$70 |
-| CTO carbon block cartridge 4.5"×10" | Coconut shell activated carbon block (F-3 stage) | 3 ea | Amazon | $24–$45 |
+| Big Blue filter housing (4.5"×20") | Ø184×594mm/housing (4.5×20), 1" NPT ports, integrated bracket (Express Water / Geekpure / iSpring) | 1 ea | Amazon | $240–$380 |
+| MPP 5-micron sediment cartridge 4.5"×20" | Melt-blown polypropylene depth filter (F-1 stage); ~50-print interval | 2 ea | Amazon | $24–$40 |
+| KDF-55 heavy-metal cartridge 4.5"×20" | KDF-55 media for dissolved iron/metal removal (F-2 stage); ~60-print interval | 1 ea | Amazon | $40–$70 |
+| CTO carbon block cartridge 4.5"×20" | Coconut shell activated carbon block (F-3 stage); ~40-print interval | 2 ea | Amazon | $32–$60 |
 | Banjo V050FP ball valve 1/2" FNPT | PP full-port quarter-turn; pump-suction isolation BV-03 (P-02) | 1 ea | Amazon | $6–$10 |
 | 3-way diverter valve 1" FNPT | L/T-port; 3W-DV-01 (filter output) | 1 ea | Amazon | $18–$30 |
 | pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | Filtered-water sample draw before 3W-DV-01; Banjo V050FP 1/2" PP ball valve + downturned 1/2" hose barb on a 1"×1/2" reducing branch tee, panel face above spill line | 1 ea | Amazon | $10–$18 |
-| **Pinhole Wall Plumbing Panel total** | | | | **$371–$573** |
+| **Pinhole Wall Plumbing Panel total** | | | | **$425–$678** |
 <!-- END parts:pinhole-wall-plumbing-panel -->
 
 ---
@@ -459,9 +465,9 @@ hardware are sourced there and in the IBC stacking frame line.
 | Monthly | Inspect all pipe joints for leaks; tighten compression fittings if needed |
 | Monthly | Check pump mounting bracket bolts for tightness |
 | Monthly | Inspect filter housing clamp bands and U-bracket bolts |
-| Every 20 prints | Replace F-03 (CTO carbon block) cartridge |
-| Every 25 prints | Replace F-01 (5μm sediment) cartridge |
-| Every 30 prints | Replace F-02 (KDF-55) cartridge |
+| Every ~40 prints | Replace F-03 (CTO carbon block) cartridge |
+| Every ~50 prints | Replace F-01 (5μm sediment) cartridge |
+| Every ~60 prints | Replace F-02 (KDF-55) cartridge |
 | Quarterly | Check accumulator pre-charge pressure (should hold 30 PSI) |
 | Quarterly | Inspect check valve CV-1 (X1 fill line) for proper seating |
 | Annually | Inspect plywood panel for delamination or moisture damage; reseal if needed |
@@ -478,8 +484,8 @@ minute to flush; check for leaks.
 
 1. [Shurflo 2088-554-144 datasheet](https://www.shurflo.com/products/2088-series) — 12VDC diaphragm pump, 3.5 GPM, 45 PSI,
    self-priming. 127mm × 218mm × 100mm body dimensions, 1/2"-14 NPSM ports.
-2. [Pentek Big Blue 4.5"×10" housing specifications](https://www.pentair.com/en-us/water-treatment-components/filter-housings/big_blue_heavy_duty_series.html) — 1" NPT inlet/outlet,
-   130mm OD, 340mm total height, polypropylene head.
+2. [Pentek Big Blue 4.5"×20" housing specifications](https://www.pentair.com/en-us/water-treatment-components/filter-housings/big_blue_heavy_duty_series.html) — 1" NPT inlet/outlet,
+   184mm OD, ~594mm total height, polypropylene head.
 3. [SeaFlo accumulator specifications](https://www.seaflo.com/products/accumulator-tank) — 0.75L capacity, 125 PSI max, 1/2" NPT
    port, 127mm OD × 200mm length.
 4. [Purcooflow WHF2045B302](https://www.purcooflow.com/products/whf2045b302-3-stage-kdf-heavy-metal-water-filter) — 3-stage whole-house filter, 4.5"×20" Big Blue

@@ -478,8 +478,10 @@ TAP_WALL_T     = 3       # branch pipe wall thickness (mm) — reserved (spec; n
 # Flow: IBC-3 → P-02 → F1 → F2 → F3 → pH test → DV-01.
 
 # Big Blue 4.5"×10" housings (physical dimensions — 3× separate units)
-BB_OD          = 184     # housing outer diameter (mm) — real Big Blue 4.5x10 housing is Ø7.25"=184 (was 130); BB_H=340 ≈ 333 (10" housing) ✓
-BB_H           = 340     # housing total height (mm) — head + sump bowl (10" sump)
+BB_OD          = 184     # housing outer diameter (mm) — real Big Blue 4.5x20 housing is Ø7.25"=184 (diameter is the same 10"↔20"; only length changes)
+BB_H           = 594     # housing total height (mm) — head + sump bowl (4.5×20 Big Blue = 23⅜"; per component-dimension-audit); was 340 for the 10" housing.
+#   Heads are pinned near the ceiling (Z2340), so the extra length hangs DOWN — the sump bottom drops to ~Z1746
+#   (~1,616mm walkway headroom, shoulder height for the 1.75m operator). Doubles filter media / interval; revert to 340 if the head clearance becomes an operational issue.
 
 FSKID_X        = EQPANEL_X - BB_OD  # = 4870 — filter zone left edge X for elevation views
 FSKID_YD       = CORRIDOR_YD_NEAR + PUMP_YD_SPAN + 13  # = 1186 — filter near edge Yd (13mm gap past pumps)

@@ -8633,10 +8633,10 @@ end
   grp = ents.add_group
   grp.name = "Filter F1 sump"
   ge = grp.entities
-  circle = ge.add_circle([3300.mm,104.mm,2000.mm], [0,0,1], 92.mm, 24)
+  circle = ge.add_circle([3300.mm,104.mm,1746.mm], [0,0,1], 92.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(262.mm)
+  cface.pushpull(516.mm)
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
   mat.color = Sketchup::Color.new(58, 110, 165)
   mat.alpha = 1.0
@@ -8700,10 +8700,10 @@ end
   grp = ents.add_group
   grp.name = "Filter F2 sump"
   ge = grp.entities
-  circle = ge.add_circle([3638.mm,104.mm,2000.mm], [0,0,1], 92.mm, 24)
+  circle = ge.add_circle([3638.mm,104.mm,1746.mm], [0,0,1], 92.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(262.mm)
+  cface.pushpull(516.mm)
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
   mat.color = Sketchup::Color.new(58, 110, 165)
   mat.alpha = 1.0
@@ -8767,10 +8767,10 @@ end
   grp = ents.add_group
   grp.name = "Filter F3 sump"
   ge = grp.entities
-  circle = ge.add_circle([3976.mm,104.mm,2000.mm], [0,0,1], 92.mm, 24)
+  circle = ge.add_circle([3976.mm,104.mm,1746.mm], [0,0,1], 92.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(262.mm)
+  cface.pushpull(516.mm)
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
   mat.color = Sketchup::Color.new(58, 110, 165)
   mat.alpha = 1.0

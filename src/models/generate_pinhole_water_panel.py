@@ -397,6 +397,40 @@ def labels_ruby():
     return '\n'.join(rows)
 
 
+def panel_power():
+    """Circuit-C power + cabling to the TWO plumbing panels ONLY (no other electrical shown).
+    Ceiling drop → master switch + 12V distribution block on the corridor panel → curved-elbow
+    conduit branches to the four corridor pumps, plus one branch routed along the ceiling to the
+    Pinhole-Wall panel → P-02. Conduit follows the pipe-drawing convention (elbowed runs)."""
+    CC = "#2980B9"                                  # Circuit-C blue conduit
+    cr = 7                                          # conduit radius (14mm OD)
+    p = []
+    swx, busy = cp.FACE_X - 67, cp.CTR_Y - 95       # switch/bus X (front of the panel), bus Yd lane
+    # master switch + 12V distribution block, mounted at the top of the corridor panel
+    p.append(ov.ruby_box("Master pump switch (Cct C)", swx - 27, busy - 25, 2024, 54, 50, 54, color="#202020"))
+    p.append(ov.ruby_box("12V distribution block (Cct C)", swx - 30, busy - 30, 1912, 66, 66, 78, color="#3A3A42"))
+    # ceiling feed drop into the master switch
+    p.append(ov.ruby_pipe_run("Cct C feed -> corridor panel", [(swx, busy, ov.C_HGT), (swx, busy, 2078)], cr, color=CC))
+    # vertical power bus down the panel, beside the pump column
+    p.append(ov.ruby_pipe_run("Cct C power bus (corridor)",
+             [(swx, busy, 1912), (swx, busy, cp.PSTACK['P-01'] + 90)], cr, color=CC))
+    # curved-elbow branch to each corridor pump terminal
+    for key in ("P-01", "P-04", "P-05", "P-03"):
+        z = cp.PSTACK[key] + 90
+        p.append(ov.ruby_pipe_run(f"Cct C branch {key}",
+                 [(swx, busy, z), (cp.PXC, busy, z), (cp.PXC, cp.CTR_Y - cp.PVB_R - 8, z)], cr, color=CC))
+    # branch to the Pinhole-Wall panel → P-02 (P-02 body center recomputed from the kit geometry)
+    fr, cap_h = ov.BB_OD / 2, 78
+    cap_z = ((ov.C_HGT - 48) - ov.BB_H) + ov.BB_H - cap_h / 2
+    p2x = (3300 - (fr + 30)) - (cp.PVB_R + 30) - 40
+    p2ty = (fr + 12) + cp.PVB_R + 8
+    p2z = (cap_z - (cp.PVB_H - 18)) + cp.PVB_H / 2
+    cz = ov.C_HGT - 40
+    p.append(ov.ruby_pipe_run("Cct C branch P-02 (Pinhole-Wall panel)",
+             [(swx, busy, 1960), (swx, busy, cz), (p2x, busy, cz), (p2x, p2ty, cz), (p2x, p2ty, p2z)], cr, color=CC))
+    return "\n".join(p)
+
+
 def build():
     # Limited-depth view of the FULL pinhole wall: the wet-end kit + the OTHER wall-mounted
     # equipment (own layer/scene) + a shallow context slice (wall + floor/ceiling out to
@@ -420,6 +454,7 @@ def build():
                          ("Corridor equipment", "Corridor Equipment", cp.equipment()),
                          ("Corridor plumbing", "Corridor Plumbing", cp.plumbing()),
                          ("Corridor drains + X-ports", "Corridor Drains", cp.drains_ports()),
+                         ("Circuit-C power + cabling (both panels)", "Power", panel_power()),
                          ("Ribbon support cross-beams", "Ribbon Supports", cp.ribbon_supports()),
                          # SOLID (non-ghost) copies of the two plywood panels, on their own tags — shown
                          # only in the "Plumbing (labeled)" scene so the panels read full-color there while

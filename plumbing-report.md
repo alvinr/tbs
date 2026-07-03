@@ -50,8 +50,8 @@ three functions:
 | Material | 18mm marine plywood (BS 1088 or equivalent) |
 | Face dimensions | 270mm wide (Yd) × 2,060mm tall (Z) |
 | Orientation | Vertical, perpendicular to sealed end wall |
-| Bottom edge Z | 250mm (120mm above walkway deck) |
-| Top edge Z | 2,310mm (78mm below ceiling of 2,388mm) |
+| Bottom edge | Just above the walkway deck (clear of the spill line) |
+| Top edge | Just below the container ceiling |
 | Corridor width | 270mm (between near and far IBC columns) |
 | Mounting | L-brackets to the front-portal frame uprights, 4 points |
 | Finish | Sealed with marine varnish or epoxy; white face for visibility |
@@ -165,10 +165,9 @@ the DV-01 blue-recycle riser climbing the spine into the X1 fill cross, the
 DV-01-waste → IBC-4 merge, and the IBC-1 / Blue-supply fills.
 ![TBS-001 — Corridor Plumbing Panel Spine View A (−Yd intake face)](assets/panel-spine-view-a.png)
 
-**Spine View B — discharge face (a mirror of A):** the X3 brown (P-05 →
-Z=1700) and X4 gray (P-03 → Z=1620) pump discharges running full along the
-spine to the sealed end-wall ports, the P-01 → ACC drop, the P-04 discharge
-through SV-02, and the IBC-2 fill.
+**Spine View B — discharge face (a mirror of A):** the X3 brown (P-05) and X4
+gray (P-03) pump discharges running full along the spine to the sealed end-wall
+ports, the P-01 → ACC drop, the P-04 discharge through SV-02, and the IBC-2 fill.
 ![TBS-001 — Corridor Plumbing Panel Spine View B (+Yd discharge face)](assets/panel-spine-view-b.png)
 
 ### 3.3 Accumulator
@@ -260,7 +259,7 @@ or Black-waste (pH drift / discolored).
 | Filter outlet → DV-01 | Sch 40 | 1" | 33 | HDPE | Gravity flow, lower restriction |
 | IBC fill/drain (internal) | Sch 40 | 1" | 33 | HDPE | IBC valve to corridor |
 | IBC fill/drain (external bulkhead) | Sch 40 | 2" | — | Steel/brass | Bulkhead unions with camlock |
-| Spray bar flex hose | — | 1/2" | — | Reinforced braided PVC | ~4m coiled, BV-02 to beam center feed |
+| Spray bar flex hose | — | 1/2" | — | Reinforced braided PVC | ~4m coiled, BV-05 to beam center feed |
 
 All pump-driven internal runs use 1/2" pipe, matching the Shurflo 2088 pump
 ports (1/2"-14 male parallel thread). This eliminates reducer fittings at pump
@@ -380,19 +379,26 @@ IBC-3 (Brown) → P-02, the filtered return (SV-01 → DV-01), the tray-sump pic
 → P-04, and the Blue supply trunk → TAP-01/spray bar — run together as a flat
 **ribbon** in the otherwise-dead space **under the right-walkway grate**, in the
 clear channel between the two walkway long beams (hugged to the outer/IBC edge,
-clear of the print zone). This replaces routing them through the congested
-25mm tray↔IBC gap.
+clear of the print zone). The lanes ride **flush against the grate underside** so
+the whole over-tray run clears the spray-bar carriage beneath it, and the two
+middle lanes alternate (Blue trunk / Brown sump) so the blue and brown lines never
+cross. This replaces routing them through the congested tray↔IBC gap.
 
-At the first cantilever (nearest the pinhole wall) the ribbon **loops up over the
-cantilever** — never through the steel (Rule 5) — then drops and crosses **under
-the walkway support beam**, through the gap over the tray edge, into the corridor,
-where each line rises to its equipment connection. The pump-suction lines carry
-their own service loops (P-04's sump pickup rises over the walkway and back; DV-01's
-filtered return makes a square 90° turn into the diverter's IN port). The ribbon is
-carried by four welded steel cross-braces between the walkway bearers, with the
-lines clipped to them. Routing is verified collision-free by
-`src/models/check_interference.py` (the ribbon is a sanctioned exception to the
-processing-tray exclusion zone — it runs above the tray rim, under the grate).
+At the first cantilever (nearest the pinhole wall) each line **loops up over the
+cantilever** — never through the steel (Rule 5) — then returns to the flush ribbon
+height. Rather than dipping under the walkway support beam (which would foul the
+spray carriage), each line crosses the **outer long beam through an open-top notch**
+and drops the **tray-edge slot** — clear of the carriage travel — into the corridor,
+where it rises to its equipment connection. The pump-suction lines carry their own
+service loops (P-04's sump pickup rises out of the widened sump well and loops back
+into the ribbon; DV-01's filtered return makes a square 90° turn into the diverter's
+IN port). The ribbon is carried by four welded steel cross-braces between the walkway
+bearers, with the lines clipped to them. The full set of cross-sections — routing
+envelope, clearances, and the beam notch — is in
+[Walkway Pipe Routing](walkway-routing-sections.md); routing is verified
+collision-free by `src/models/check_interference.py` (the ribbon is a sanctioned
+exception to the processing-tray exclusion zone — it runs above the tray rim, under
+the grate).
 
 ---
 
@@ -458,7 +464,7 @@ hardware are sourced there and in the IBC stacking frame line.
 | Every 25 prints | Replace F-01 (5μm sediment) cartridge |
 | Every 30 prints | Replace F-02 (KDF-55) cartridge |
 | Quarterly | Check accumulator pre-charge pressure (should hold 30 PSI) |
-| Quarterly | Inspect check valves CV-1/CV-3/CV-4 for proper seating |
+| Quarterly | Inspect check valve CV-1 (X1 fill line) for proper seating |
 | Annually | Inspect plywood panel for delamination or moisture damage; reseal if needed |
 
 **Filter replacement procedure:** Close P-02 supply valve. Place bucket under
@@ -486,6 +492,9 @@ minute to flush; check for leaks.
 7. [IBC Stacking Report](ibc-stacking-report.md) — IBC arrangement, stacking
    frame, external bulkhead ports, internal pipe routing.
 8. [Processing Tray & Spray Bar Report](processing-tray-and-spray-bar.md) —
-   Tray sump, P-04 suction pickup, spray bar connection to BV-02.
+   Tray sump, P-04 suction pickup, spray bar connection to BV-05.
+9. [Walkway Pipe Routing](walkway-routing-sections.md) — Cross-sections of the
+   corridor↔pinhole-wall ribbon under the right walkway: routing envelope,
+   clearances, the beam notch, and the spray-carriage clearance (§8.1).
 
 *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

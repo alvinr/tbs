@@ -15,6 +15,14 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each { |p| model.pages.erase(p) }
 
+# ── Sketchfab upload metadata (stamped every regen; keeps the stable model UID) ──
+model.name = "TBS-001 Electrical Model"
+model.description = "There are a number of discrete systems, color-coded in the diagram below. This view is shown from the optical axis, looking through the container wall. Each of these sub-systems, has a detailed breakdown of construction, schematic and other diagrams to show how each system it built, installed, used and maintained. The 3d model below provides a simply way to view the whole system."
+model.set_attribute("sketchfab", "model_title", "TBS-001 Electrical Model")
+model.set_attribute("sketchfab", "model_description", "There are a number of discrete systems, color-coded in the diagram below. This view is shown from the optical axis, looking through the container wall. Each of these sub-systems, has a detailed breakdown of construction, schematic and other diagrams to show how each system it built, installed, used and maintained. The 3d model below provides a simply way to view the whole system.")
+model.set_attribute("sketchfab", "model_id", "6930c96be025469fb8ef702393d7c35f")
+model.set_attribute("sketchfab", "model_tags", "sketchup")
+
 # ── Tags ──
   model.layers.add("Context") unless model.layers["Context"]
   model.layers.add("Solar Array") unless model.layers["Solar Array"]
@@ -8543,6 +8551,28 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # Master pump switch (Cct C, on EP)
+  grp = ents.add_group
+  grp.name = "Master pump switch (Cct C, on EP)"
+  face = grp.entities.add_face([1953.5714285714287.mm,175.mm,1796.mm], [2003.5714285714287.mm,175.mm,1796.mm], [2003.5714285714287.mm,221.mm,1796.mm], [1953.5714285714287.mm,221.mm,1796.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(84.mm)
+  mat = model.materials["Battery − cable (2/0 AWG)"] || model.materials.add("Battery − cable (2/0 AWG)")
+  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Master switch lever (OFF cutoff)
+  grp = ents.add_group
+  grp.name = "Master switch lever (OFF cutoff)"
+  face = grp.entities.add_face([1970.5714285714287.mm,221.mm,1836.mm], [1986.5714285714287.mm,221.mm,1836.mm], [1986.5714285714287.mm,255.mm,1836.mm], [1970.5714285714287.mm,255.mm,1836.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Master switch lever (OFF cutoff)"] || model.materials.add("Master switch lever (OFF cutoff)")
+  mat.color = Sketchup::Color.new(192, 32, 42)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Circuit C (water pumps)
   grp = ents.add_group
   grp.name = "Circuit C (water pumps)"
@@ -8692,22 +8722,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Pump switch P-01 (Cct C)
-  grp = ents.add_group
-  grp.name = "Pump switch P-01 (Cct C)"
-  face = grp.entities.add_face([4734.mm,1089.mm,1269.mm], [4774.mm,1089.mm,1269.mm], [4774.mm,1129.mm,1269.mm], [4734.mm,1129.mm,1269.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Battery − cable (2/0 AWG)"] || model.materials.add("Battery − cable (2/0 AWG)")
-  mat.color = Sketchup::Color.new(32, 32, 32)
-  mat.alpha = 1.0
-  grp.material = mat
-
   # Cct C branch P-01
   grp = ents.add_group
   grp.name = "Cct C branch P-01"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-108.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(0.mm, -72.mm, 0.mm)
   circle = ge.add_circle([4874.mm,1181.mm,1289.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -8717,49 +8736,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cct C branch P-01 elbow
-  grp = ents.add_group
-  grp.name = "Cct C branch P-01 elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4766.mm,1169.mm,1289.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 12.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4766.mm,1181.mm,1289.mm], [-1.000000,0.000000,0.000000], 6.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-01
-  grp = ents.add_group
-  grp.name = "Cct C branch P-01"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -60.mm, 0.mm)
-  circle = ge.add_circle([4754.mm,1169.mm,1289.mm], vec, 6.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pump switch P-04 (Cct C)
-  grp = ents.add_group
-  grp.name = "Pump switch P-04 (Cct C)"
-  face = grp.entities.add_face([4734.mm,1089.mm,1527.mm], [4774.mm,1089.mm,1527.mm], [4774.mm,1129.mm,1527.mm], [4734.mm,1129.mm,1527.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Battery − cable (2/0 AWG)"] || model.materials.add("Battery − cable (2/0 AWG)")
-  mat.color = Sketchup::Color.new(32, 32, 32)
-  mat.alpha = 1.0
-  grp.material = mat
-
   # Cct C branch P-04
   grp = ents.add_group
   grp.name = "Cct C branch P-04"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-108.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(0.mm, -72.mm, 0.mm)
   circle = ge.add_circle([4874.mm,1181.mm,1547.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -8769,49 +8750,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cct C branch P-04 elbow
-  grp = ents.add_group
-  grp.name = "Cct C branch P-04 elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4766.mm,1169.mm,1547.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 12.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4766.mm,1181.mm,1547.mm], [-1.000000,0.000000,0.000000], 6.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-04
-  grp = ents.add_group
-  grp.name = "Cct C branch P-04"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -60.mm, 0.mm)
-  circle = ge.add_circle([4754.mm,1169.mm,1547.mm], vec, 6.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pump switch P-02 (Cct C)
-  grp = ents.add_group
-  grp.name = "Pump switch P-02 (Cct C)"
-  face = grp.entities.add_face([4734.mm,1233.mm,1269.mm], [4774.mm,1233.mm,1269.mm], [4774.mm,1273.mm,1269.mm], [4734.mm,1273.mm,1269.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Battery − cable (2/0 AWG)"] || model.materials.add("Battery − cable (2/0 AWG)")
-  mat.color = Sketchup::Color.new(32, 32, 32)
-  mat.alpha = 1.0
-  grp.material = mat
-
   # Cct C branch P-02
   grp = ents.add_group
   grp.name = "Cct C branch P-02"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-108.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(0.mm, 72.mm, 0.mm)
   circle = ge.add_circle([4874.mm,1181.mm,1289.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -8821,93 +8764,17 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cct C branch P-02 elbow
-  grp = ents.add_group
-  grp.name = "Cct C branch P-02 elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4766.mm,1193.mm,1289.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,-1.000000], 12.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4766.mm,1181.mm,1289.mm], [-1.000000,0.000000,0.000000], 6.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-02
-  grp = ents.add_group
-  grp.name = "Cct C branch P-02"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 60.mm, 0.mm)
-  circle = ge.add_circle([4754.mm,1193.mm,1289.mm], vec, 6.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pump switch P-03 (Cct C)
-  grp = ents.add_group
-  grp.name = "Pump switch P-03 (Cct C)"
-  face = grp.entities.add_face([4734.mm,1233.mm,1527.mm], [4774.mm,1233.mm,1527.mm], [4774.mm,1273.mm,1527.mm], [4734.mm,1273.mm,1527.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Battery − cable (2/0 AWG)"] || model.materials.add("Battery − cable (2/0 AWG)")
-  mat.color = Sketchup::Color.new(32, 32, 32)
-  mat.alpha = 1.0
-  grp.material = mat
-
   # Cct C branch P-03
   grp = ents.add_group
   grp.name = "Cct C branch P-03"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-108.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(0.mm, 72.mm, 0.mm)
   circle = ge.add_circle([4874.mm,1181.mm,1547.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-03 elbow
-  grp = ents.add_group
-  grp.name = "Cct C branch P-03 elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4766.mm,1193.mm,1547.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,-1.000000], 12.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4766.mm,1181.mm,1547.mm], [-1.000000,0.000000,0.000000], 6.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-03
-  grp = ents.add_group
-  grp.name = "Cct C branch P-03"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 60.mm, 0.mm)
-  circle = ge.add_circle([4754.mm,1193.mm,1547.mm], vec, 6.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pump switch P-05 (Cct C)
-  grp = ents.add_group
-  grp.name = "Pump switch P-05 (Cct C)"
-  face = grp.entities.add_face([4734.mm,1233.mm,1895.mm], [4774.mm,1233.mm,1895.mm], [4774.mm,1273.mm,1895.mm], [4734.mm,1273.mm,1895.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Battery − cable (2/0 AWG)"] || model.materials.add("Battery − cable (2/0 AWG)")
-  mat.color = Sketchup::Color.new(32, 32, 32)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8915,35 +8782,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Cct C branch P-05"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-108.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(0.mm, 72.mm, 0.mm)
   circle = ge.add_circle([4874.mm,1181.mm,1915.mm], vec, 6.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-05 elbow
-  grp = ents.add_group
-  grp.name = "Cct C branch P-05 elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4766.mm,1193.mm,1915.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,-1.000000], 12.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4766.mm,1181.mm,1915.mm], [-1.000000,0.000000,0.000000], 6.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-05
-  grp = ents.add_group
-  grp.name = "Cct C branch P-05"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 60.mm, 0.mm)
-  circle = ge.add_circle([4754.mm,1193.mm,1915.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9841,7 +9681,7 @@ txt = entities.add_text("EVAP COOLER
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(4874.mm, 1181.mm, 2230.mm)
 txt = entities.add_text("CCT-C PUMP DISTRIBUTION
-5 switches — P-01..P-05 (one at a time)", anc, Geom::Vector3d.new(-350.mm, -700.mm, 250.mm))
+dist block → pumps (master sw on EP)", anc, Geom::Vector3d.new(-350.mm, -700.mm, 250.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(1392.8.mm, 35.mm, 1846.8.mm)
 txt = entities.add_text("PV DISCONNECT

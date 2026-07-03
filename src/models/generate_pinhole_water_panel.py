@@ -399,35 +399,38 @@ def labels_ruby():
 
 def panel_power():
     """Circuit-C power + cabling to the TWO plumbing panels ONLY (no other electrical shown).
-    Ceiling drop → master switch + 12V distribution block on the corridor panel → curved-elbow
-    conduit branches to the four corridor pumps, plus one branch routed along the ceiling to the
-    Pinhole-Wall panel → P-02. Conduit follows the pipe-drawing convention (elbowed runs)."""
+    Routed to NEVER cross a pipe (plumbing-skill rule): the corridor run lives in the CHASE
+    between the pump-mount shirt and the rear panel — a clear vertical channel behind the pump
+    bodies. Ceiling feed → master switch + 12V distribution block in the chase → vertical bus
+    down the chase → short back-taps to each pump (behind the body). One branch runs along the
+    ceiling (in the tote-free corridor lane) to the Pinhole-Wall panel → P-02."""
     CC = "#2980B9"                                  # Circuit-C blue conduit
     cr = 7                                          # conduit radius (14mm OD)
     p = []
-    swx, busy = cp.FACE_X - 67, cp.CTR_Y - 95       # switch/bus X (front of the panel), bus Yd lane
-    # master switch + 12V distribution block, mounted at the top of the corridor panel
-    p.append(ov.ruby_box("Master pump switch (Cct C)", swx - 27, busy - 25, 2024, 54, 50, 54, color="#202020"))
-    p.append(ov.ruby_box("12V distribution block (Cct C)", swx - 30, busy - 30, 1912, 66, 66, 78, color="#3A3A42"))
-    # ceiling feed drop into the master switch
-    p.append(ov.ruby_pipe_run("Cct C feed -> corridor panel", [(swx, busy, ov.C_HGT), (swx, busy, 2078)], cr, color=CC))
-    # vertical power bus down the panel, beside the pump column
-    p.append(ov.ruby_pipe_run("Cct C power bus (corridor)",
-             [(swx, busy, 1912), (swx, busy, cp.PSTACK['P-01'] + 90)], cr, color=CC))
-    # curved-elbow branch to each corridor pump terminal
+    CX = (cp.SHIRT_X + 25 + cp.BACK_X) / 2          # ≈5090 — chase center X (shirt back ↔ rear panel)
+    by = cp.CTR_Y                                    # corridor center Yd (clear of the edge cleats)
+    ptop = cp.PSTACK['P-03'] + cp.PVB_H              # 1920 — top of the pump column
+    # master switch + 12V distribution block, in the chase above the pump column
+    p.append(ov.ruby_box("Master pump switch (Cct C)", CX - 22, by - 25, ptop + 104, 44, 50, 54, color="#202020"))
+    p.append(ov.ruby_box("12V distribution block (Cct C)", CX - 24, by - 30, ptop - 8, 48, 60, 78, color="#3A3A42"))
+    # ceiling feed drop into the master switch (down the chase)
+    p.append(ov.ruby_pipe_run("Cct C feed -> corridor panel", [(CX, by, ov.C_HGT), (CX, by, ptop + 158)], cr, color=CC))
+    # vertical power bus down the chase
+    p.append(ov.ruby_pipe_run("Cct C power bus (chase)", [(CX, by, ptop - 8), (CX, by, cp.PSTACK['P-01'] + 90)], cr, color=CC))
+    # short back-tap to each pump — behind the body, in the chase; never crosses the front plumbing
     for key in ("P-01", "P-04", "P-05", "P-03"):
         z = cp.PSTACK[key] + 90
-        p.append(ov.ruby_pipe_run(f"Cct C branch {key}",
-                 [(swx, busy, z), (cp.PXC, busy, z), (cp.PXC, cp.CTR_Y - cp.PVB_R - 8, z)], cr, color=CC))
-    # branch to the Pinhole-Wall panel → P-02 (P-02 body center recomputed from the kit geometry)
+        p.append(ov.ruby_pipe_run(f"Cct C branch {key}", [(CX, by, z), (cp.PXC + cp.PVB_R + 4, by, z)], cr, color=CC))
+    # branch to the Pinhole-Wall panel → P-02: up out of the chase, along the ceiling (in the
+    # tote-free corridor lane, then clear of the IBCs at low X), down to P-02.
     fr, cap_h = ov.BB_OD / 2, 78
     cap_z = ((ov.C_HGT - 48) - ov.BB_H) + ov.BB_H - cap_h / 2
     p2x = (3300 - (fr + 30)) - (cp.PVB_R + 30) - 40
     p2ty = (fr + 12) + cp.PVB_R + 8
     p2z = (cap_z - (cp.PVB_H - 18)) + cp.PVB_H / 2
-    cz = ov.C_HGT - 40
+    cz = ov.C_HGT - 28
     p.append(ov.ruby_pipe_run("Cct C branch P-02 (Pinhole-Wall panel)",
-             [(swx, busy, 1960), (swx, busy, cz), (p2x, busy, cz), (p2x, p2ty, cz), (p2x, p2ty, p2z)], cr, color=CC))
+             [(CX, by, ptop + 40), (CX, by, cz), (p2x, by, cz), (p2x, p2ty, cz), (p2x, p2ty, p2z)], cr, color=CC))
     return "\n".join(p)
 
 

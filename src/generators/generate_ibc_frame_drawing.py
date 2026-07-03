@@ -14,18 +14,17 @@ Sheet 3 — Plan View (looking down at platform level)
 
 Each sheet includes dimensional callouts and assembly detail insets.
 
-Frame concept (rev 10 — simple-span retrofit):
-  A portal spine along the 270mm plumbing corridor.  The upper-tier platform
-  cross-beams are SIMPLY SUPPORTED wall-to-wall: propped at the two corridor
-  uprights AND at the container side walls by welded seat brackets — no longer
-  cantilevered.  Three bays along X (front/mid/back uprights at 642mm centers).
-  Each of the 6 corridor uprights is anchored to the floor by a 150×150×12
-  flange plate with 4× M12 bolts.  Each platform-beam outer end lands on a
-  welded wall seat bracket (back-plate + seat + triangular gusset web, 4× M12
-  to the wall).  The MIDDLE bay's corridor uprights extend up to the wet-end
-  panel top (Z=2260) and close into a rectangle (top rail + floor-level beam)
-  that the equipment panel butts and bolts to.  No X-end posts — IBCs are
-  loaded from above.
+Frame concept (ibc-reconfig-v2 — restraint-only deep 4-leg box):
+  The 1000L caged totes DIRECT-STACK cage-on-cage (52mm headroom, no load-bearing
+  deck), so the frame only RESTRAINS.  It is a DEEP 4-LEG BOX at the corridor mouth:
+  a FRONT upright pair (X4654) + a BACK pair 450mm behind (X5104), each column at
+  Yd 1046/1266, tied by butt-jointed top + bottom rings.  Each of the 4 legs is
+  anchored to the floor by a 150×150×12 flange plate with 4× M12 bolts; the front
+  feet reach ~25mm under the tray edge.  The box carries the Corridor pump panel +
+  drain-riser spine on its BACK uprights.  Transport restraint is by front retaining
+  bars (Z560 + Z1760) whose wall ends drop into Simpson-style joist hangers through-
+  bolted to exterior backing plates, plus D-ring lashing.  Geometry matches the 3D
+  cp.frame() (generate_corridor_water_panel.py).
 
   rev 12: the right walkway's 2 support arms cantilever off the corridor uprights
   (at Yd 1046/1266) and project off the FRONT of the frame toward the walkway —
@@ -75,7 +74,7 @@ FONT     = {"fontfamily": "monospace"}
 FRAME_RHS  = 50            # section size: 50×50×3mm RHS
 FRAME_T    = 3             # RHS wall thickness
 FRAME_FOOTPRINT_W = C_WID  # 2362mm wall-to-wall
-FRAME_FOOTPRINT_D = 1284   # depth along X
+FRAME_FOOTPRINT_D = 450    # depth along X — deep 4-leg box (cp.frame DEPTH: front X4654 → back X5104)
 MAT_T      = 12            # anti-slip rubber mat thickness
 
 # Derived positions (Yd, container coordinates)
@@ -92,12 +91,12 @@ PLATFORM_Z = IBC_H_1000                # 1168 — direct-stack junction (cage-on
 STACK_Z    = IBC_H_STK_1000            # 2336 — stack top
 TOP_Z      = IBC_H_STK_1000 - 40       # 2296 — restraint frame top
 
-# Frame X positions (frame-local, 0 = front/IBC face). ibc-reconfig-v2: a SINGLE
-# FRONT PORTAL (the deep mid/back stations of the old load-bearing rack are dropped).
+# Frame X positions (frame-local, 0 = front/IBC-corridor mouth). Deep 4-leg box: a
+# FRONT pair (X4654) + a BACK pair 450mm behind (X5104), tied by top + bottom rings.
 FX_FRONT = 0
-FX_MID   = FRAME_FOOTPRINT_D // 2     # legacy alias (side/plan views)
-FX_BACK  = FRAME_FOOTPRINT_D          # legacy alias
-FX_POSTS = [FX_FRONT]
+FX_BACK  = FRAME_FOOTPRINT_D          # 450 — back upright pair
+FX_MID   = FRAME_FOOTPRINT_D // 2     # legacy alias (unused)
+FX_POSTS = [FX_FRONT, FX_BACK]        # front + back upright stations
 
 # Anti-rotation lip
 LIP_H = 40    # height above platform
@@ -397,8 +396,8 @@ def sheet1():
     _ghost_ibc_elev_far(ax, IBC_FAR_Y, plat_top, IBC_D, 
                         label="IBC-2\n(BLUE, TOP FAR)")
 
-    # ── Single FRONT PORTAL — two full-height corridor uprights (the deep
-    #    mid/back stations + load-bearing platform of the old rack are dropped). ──
+    # ── Front pair of the deep 4-leg box — two full-height corridor uprights.
+    #    A matching BACK pair sits 450mm behind (occluded in this front view). ──
     for uyd in (POST_NEAR_YD, POST_FAR_YD):
         _rhs_rect(ax, uyd, 0, FRAME_RHS, TOP_Z, alpha=0.85, hatch="///")
 
@@ -499,13 +498,13 @@ def sheet1():
     # ── Member labels (restraint frame — lighter callouts) ──────────────────
     leader(ax, (NEAR_COL_R + FRAME_RHS / 2), (TOP_Z * 0.7),
            (NEAR_COL_R - 70), (TOP_Z * 0.7 + 30),
-           "FRONT PORTAL UPRIGHT\n50×50×3 RHS (×2,\nfull height, single station)",
+           "DEEP-BOX UPRIGHTS\n50×50×3 RHS (front pair ×2;\nmatching back pair 450mm behind)",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
 
     leader(ax, (POST_NEAR_YD - FRAME_RHS * 0.3), (FOOT_PLATE_T / 2),
            (POST_NEAR_YD - 220), (140),
-           "FLOOR FLANGE FOOT\n150×150×12, 4× M12\n(×2, under each upright)",
+           "FLOOR FLANGE FOOT\n150×150×12, 4× M12\n(×4, one per leg)",
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
@@ -555,8 +554,8 @@ def sheet1():
         "MATERIAL & FABRICATION NOTES (RESTRAINT-ONLY FRAME):",
         f"1. All RHS members: 50×50×3mm mild steel, A500 Grade B. Joints fillet welded (5mm leg), continuous.",
         f"2. RESTRAINT, not load-bearing: the 1000L caged totes DIRECT-STACK cage-on-cage (52mm headroom — no deck between tiers).",
-        f"   A SINGLE FRONT PORTAL (×2 full-height uprights) at the IBC front restrains them; the deep mid/back corridor stations are dropped.",
-        f"3. Floor flange feet (×2): 150×150×12mm plate fillet welded to each upright base; 4× M12 anchors into the floor (uplift + lateral restraint).",
+        f"   A DEEP 4-LEG BOX (front + back upright pairs, 450mm apart, tied by top + bottom rings) at the IBC front restrains them.",
+        f"3. Floor flange feet (×4): 150×150×12mm plate fillet welded to each leg base; 4× M12 anchors into the floor (uplift + lateral restraint). Front feet reach ~25mm under the tray edge.",
         f"4. Front retaining bars (×4, Z560 + Z1760): stop the totes sliding out the front; each bar's wall end drops into a Simpson-style wall joist",
         f"   hanger (×4), through-bolted (4× M12) to a 100×135×8mm EXTERIOR backing plate (hex heads outside) that spreads the load into the thin corrugated wall.",
         f"5. D-ring lashing holders on the front bars (1,100 kg WLL); ratchet straps over each stack tie down to them.",
@@ -631,9 +630,14 @@ def sheet2():
     _ghost_ibc_elev(ax, ibc_x_offset, plat_top, IBC_W, 
                     label="TOP TIER\n(IBC-1 OR IBC-2)")
 
-    # ── Uprights (3 bays: front, mid, back) ─────────────────────────────────
+    # ── Uprights (deep 4-leg box: front pair + back pair, 450mm apart) ───────
     for fx in FX_POSTS:
         _rhs_rect(ax, fx, 0, FRAME_RHS, TOP_Z, alpha=0.8)
+
+    # ── Top + bottom rings tying the front and back uprights (butt-jointed) ──
+    for rz in (0, TOP_Z - FRAME_RHS):
+        _rhs_rect(ax, FX_FRONT + FRAME_RHS, rz, FRAME_FOOTPRINT_D - FRAME_RHS, FRAME_RHS,
+                  fc=C_FRAME, alpha=0.5, lw=1.2, zo=4)
 
     # ── Floor flange feet under each upright ─────────────────────────────────
     for fx in FX_POSTS:
@@ -693,7 +697,7 @@ def sheet2():
     # Short leader into the open upper-tier face just right of the post (rule 67).
     leader(ax, (FX_FRONT + FRAME_RHS), (TOP_Z * 0.62),
            (FX_FRONT + FRAME_RHS + 55), (TOP_Z * 0.62 + 25),
-           "FRONT PORTAL UPRIGHT\n50×50×3 RHS, floor to top\n(single station, ×2 across Yd)",
+           "DEEP-BOX UPRIGHTS\n50×50×3 RHS, floor to top\n(front + back pair, ×2 across Yd = 4 legs)",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
 
@@ -706,16 +710,18 @@ def sheet2():
     # ── Notes ───────────────────────────────────────────────────────────────
     notes = [
         "SIDE ELEVATION NOTES (RESTRAINT-ONLY FRAME):",
-         "1. SINGLE FRONT PORTAL at the IBC front (2 full-height uprights across",
-         "   Yd). The deep mid/back bays + X-braces of the old load-bearing rack",
-         "   are dropped — the direct-stacked totes need only restraint.",
+         "1. DEEP 4-LEG BOX at the IBC front: a FRONT upright pair at the corridor",
+        f"   mouth + a BACK pair {FRAME_FOOTPRINT_D}mm behind, tied by top + bottom",
+         "   rings. It carries the Corridor pump panel + drain-riser spine on the",
+         "   back uprights; the direct-stacked totes need only restraint.",
         f"2. Totes DIRECT-STACK cage-on-cage at Z={PLATFORM_Z}mm (no deck, 52mm",
-         "   headroom). Restraint = portal + front retaining bars + lashing.",
-         "3. Each upright base: 150×150×12mm floor flange plate, 4× M12 anchors.",
+         "   headroom). Restraint = box + front retaining bars + lashing.",
+         "3. Each upright base (×4): 150×150×12mm floor flange plate, 4× M12 anchors;",
+         "   the front feet reach ~25mm under the tray edge.",
          "4. Front retaining bars (Z560 + Z1760) stop the totes sliding out the",
          "   front; wall ends drop into Simpson-style joist hangers.",
         f"5. RIGHT-WALKWAY CANTILEVER ARMS (rev12): 2× 40×40×3 SHS clamp to the",
-         "   front-portal uprights and project off the front to carry the walkway.",
+         "   FRONT box uprights and project off the front to carry the walkway.",
     ]
     draw_notes(ax, notes, (X_LO + 20), (Z_HI - 100), spacing=(20),
                fs=6.5, font=FONT, width=(825))
@@ -723,7 +729,7 @@ def sheet2():
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 3",
                 drawing_title="IBC SUPPORT FRAME",
-                subtitle="SIDE ELEVATION — SINGLE FRONT PORTAL (RESTRAINT)",
+                subtitle="SIDE ELEVATION — DEEP 4-LEG BOX (RESTRAINT)",
                 scale_note="Axes in mm — VIEW ALONG Yd",
                 height=0.04)
 
@@ -744,7 +750,7 @@ def sheet3():
     """Sheet 3 — Plan view of IBC support frame at platform level."""
 
     X_LO = -300
-    X_HI = FRAME_FOOTPRINT_D + 300
+    X_HI = IBC_W + 320                 # totes extend back past the 450mm box, at the corridor mouth
     YD_LO = -750
     YD_HI = FRAME_FOOTPRINT_W + 300
 
@@ -756,25 +762,34 @@ def sheet3():
     ax.set_aspect("equal")
     ax.axis("off")
 
-    ax.text((FRAME_FOOTPRINT_D / 2), (FRAME_FOOTPRINT_W + 200),
-            "PLAN VIEW — LOOKING DOWN (FRONT PORTAL + RETAINING BARS)",
+    ax.text((IBC_W / 2), (FRAME_FOOTPRINT_W + 200),
+            "PLAN VIEW — LOOKING DOWN (DEEP 4-LEG BOX + RETAINING BARS)",
             ha="center", va="bottom", fontsize=9, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
 
-    # ── Single FRONT PORTAL (plan): 2 uprights at the front station + front
-    #    retaining bars. The load-bearing platform/lip/mats are dropped. ──
+    # ── Deep 4-leg box (plan): 4 uprights (front + back × near/far Yd) tied by
+    #    top/bottom rings (shown as the box perimeter) + front retaining bars. ──
     near_mat_yd = BLUE_IBC_Y
     far_mat_yd = IBC_FAR_Y
+    # ring perimeter (top + bottom rings project together): X-rails front↔back + Yd-rails near↔far
     for post_yd in (POST_NEAR_YD, POST_FAR_YD):
-        _rhs_rect(ax, FX_FRONT, post_yd, FRAME_RHS, FRAME_RHS, 
-                  fc=C_FRAME, alpha=0.85, lw=1.4)
+        _rhs_rect(ax, FX_FRONT + FRAME_RHS, post_yd, FRAME_FOOTPRINT_D - FRAME_RHS, FRAME_RHS,
+                  fc=C_FRAME, alpha=0.4, lw=1.0, zo=4)
+    for fx in FX_POSTS:
+        _rhs_rect(ax, fx, POST_NEAR_YD + FRAME_RHS, FRAME_RHS, POST_FAR_YD - (POST_NEAR_YD + FRAME_RHS),
+                  fc=C_FRAME, alpha=0.4, lw=1.0, zo=4)
+    # 4 uprights at the box corners
+    for fx in FX_POSTS:
+        for post_yd in (POST_NEAR_YD, POST_FAR_YD):
+            _rhs_rect(ax, fx, post_yd, FRAME_RHS, FRAME_RHS,
+                      fc=C_FRAME, alpha=0.85, lw=1.4)
     # Front retaining bars run in Yd at the IBC front (wall -> upright per column).
     for y0, y1 in ((0, POST_NEAR_YD + FRAME_RHS), (POST_FAR_YD, FRAME_FOOTPRINT_W)):
         _rhs_rect(ax, FX_FRONT, y0, FRAME_RHS, y1 - y0, 
                   fc=C_STEEL, alpha=0.55, lw=1.0)
 
     # ── IBC footprint ghost outlines (with cage/pallet anatomy) ──────────────
-    ibc_x = (FRAME_FOOTPRINT_D - IBC_W) / 2 + FX_FRONT + 250 # centered in frame
+    ibc_x = FX_FRONT + 20              # tote front ~20mm behind the box front (corridor mouth); totes extend back
     _ghost_ibc_plan(ax, ibc_x, near_mat_yd, IBC_W, IBC_D, 
                     label="IBC PALLET\nFOOTPRINT")
     _ghost_ibc_plan(ax, ibc_x, far_mat_yd, IBC_W, IBC_D, 
@@ -806,7 +821,7 @@ def sheet3():
            "RIGHT-WALKWAY\nCANTILEVER ARMS (×2)\n40×40×3 SHS\n(off-frame, toward −X)",
            color=C_ARM, fs=5.5, ha="left", va="top", arrow_style="-|>", font=FONT)
 
-    # ── Floor flange feet (projected, under the 6 corridor uprights) ─────────
+    # ── Floor flange feet (projected, under the 4 box legs: front + back) ────
     for fx in FX_POSTS:
         for post_yd in [POST_NEAR_YD, POST_FAR_YD]:
             _foot_plan(ax, fx + FRAME_RHS / 2, post_yd + FRAME_RHS / 2)
@@ -818,7 +833,7 @@ def sheet3():
                offset=(8), fs=6, font=FONT)
 
     # Overall width
-    dim_x = FRAME_FOOTPRINT_D + 80
+    dim_x = IBC_W + 60                 # right of the tote footprints (box is only 450 deep)
     draw_dim_v(ax, (dim_x + 50), (0), (FRAME_FOOTPRINT_W),
                f"{FRAME_FOOTPRINT_W}mm FRAME WIDTH",
                offset=(8), fs=6, right=True, font=FONT)
@@ -951,15 +966,15 @@ def sheet3():
     # ── Notes ───────────────────────────────────────────────────────────────
     notes = [
         "PLAN VIEW NOTES (RESTRAINT-ONLY FRAME):",
-        "1. SINGLE FRONT PORTAL: 2 uprights at the IBC front (Yd 1046/1266) on 150×150×12",
-        "floor flange feet (4× M12 each). The deep mid/back stations + load-bearing platform",
-        "of the old rack are dropped — the direct-stacked totes need only restraint.",
+        "1. DEEP 4-LEG BOX: 4 uprights (front + back pair, 450mm apart) at Yd 1046/1266 on",
+        "150×150×12 floor flange feet (4× M12 each), tied by top + bottom rings. It carries the",
+        "Corridor pump panel + drain-riser spine on the back uprights; totes need only restraint.",
         "2. Front retaining bars run in Yd at the IBC front (wall -> upright per column) — they",
         "stop the totes sliding out the front; wall ends drop into Simpson-style joist hangers.",
         "3. 270mm plumbing corridor (Yd 1046-1316) stays clear between the IBC columns.",
         f"4. IBC ghost outline shows pallet footprint (brown), bottle inset (blue), cage corner",
         f"tubes ({IBC_CAGE_TUBE_D}mm Ø, gray circles). v2 layout: Brown/Waste bottom, Blue top.",
-        "5. RIGHT-WALKWAY CANTILEVER ARMS (rev12): 2× 40×40×3 SHS clamp to the front-portal",
+        "5. RIGHT-WALKWAY CANTILEVER ARMS (rev12): 2× 40×40×3 SHS clamp to the FRONT box",
         "uprights (Yd 1046/1266), projecting off the front (−X) to carry the right walkway.",
     ]
     draw_notes(ax, notes, (X_HI * 0.32), (YD_LO + 510), spacing=(20),
@@ -968,7 +983,7 @@ def sheet3():
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 3",
                 drawing_title="IBC SUPPORT FRAME",
-                subtitle="PLAN VIEW — FRONT PORTAL + RETAINING BARS",
+                subtitle="PLAN VIEW — DEEP 4-LEG BOX + RETAINING BARS",
                 scale_note="Axes in mm — VIEW LOOKING DOWN",
                 height=0.04)
 

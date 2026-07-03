@@ -74,7 +74,7 @@ FRAME_PLATFORM_H  = 1060  # platform height (1010 + 50mm clearance plate)
 FRAME_PLATFORM_T  = FRAME_RHS  # platform beam depth = RHS size
 FRAME_LIP_H    = 40     # anti-rotation lip height above platform
 FRAME_LIP_T    = 5      # lip thickness (steel plate)
-FRAME_WEIGHT   = 178    # kg (restraint front portal: uprights + feet + front bars + hangers + exterior wall plates)
+FRAME_WEIGHT   = 178    # kg (restraint deep 4-leg box: uprights + rings + feet + front bars + hangers + exterior wall plates)
 
 # D-ring lashing
 DRING_SIZE     = 25     # D-ring strap width (mm)
@@ -200,7 +200,7 @@ def sheet1():
                 ha="center", va="center", fontsize=7, color=C_OUT,
                 fontweight="bold", **FONT, zorder=10)
 
-    # ── Restraint frame (v2: single front portal — direct-stack, no platform) ──
+    # ── Restraint frame (deep 4-leg box — direct-stack, no platform) ──
     near_col_r = BLUE_IBC_Y + IBC_D          # 1046 — near corridor edge
     far_col_l  = IBC_FAR_Y                   # 1316 — far corridor edge
     junction_z = IBC_H_1000                  # 1168 — direct-stack junction
@@ -208,7 +208,7 @@ def sheet1():
     C_BOLT = "#3A3A42"
     corridor_uprights = [near_col_r, far_col_l - FRAME_RHS]
 
-    # Full-height corridor uprights (the front portal, seen edge-on in section).
+    # Full-height corridor uprights (the deep-box FRONT pair, seen edge-on in section).
     for uyd in corridor_uprights:
         ax.add_patch(Rectangle(((uyd), (0)), (FRAME_RHS), (top_z),
                                fc=C_FRAME, ec=C_OUT, lw=1.2, zorder=7, alpha=0.85))
@@ -246,7 +246,7 @@ def sheet1():
             ha="center", va="center", fontsize=6.5, color=C_CL, fontweight="bold", **FONT, zorder=15)
     leader(ax, (near_col_r + FRAME_RHS / 2), (top_z * 0.72),
            (near_col_r - 90), (top_z * 0.72 + 40),
-           "FRONT PORTAL UPRIGHT\n50x50x3 RHS (x2, full height)\non floor flange feet",
+           "DEEP-BOX FRONT UPRIGHTS\n50x50x3 RHS (x2, full height)\non flange feet (back pair 450mm behind)",
            color=C_FRAME, fs=6, ha="left", va="bottom", arrow_style="-|>", font=FONT)
     leader(ax, (near_col_r + FRAME_RHS), (1760 + FRAME_RHS / 2),
            (near_col_r - 90), (1980),
@@ -297,7 +297,7 @@ def sheet1():
         "CROSS-SECTION NOTES:",
         "1. Section through IBC stack, looking +X toward sealed end (near/pinhole wall at right, far wall at left).",
         f"2. 4x identical 275-gal (~1000 L) caged composite IBCs. Each: 65kg tare, {IBC_W}x{IBC_D}x{IBC_H_1000}mm. v2 layout: Brown/Waste bottom, Blue on top (clean supply, 1600 L total).",
-        f"3. RESTRAINT-ONLY frame: a SINGLE FRONT PORTAL (2 full-height 50x50x3 RHS uprights at the corridor edges) on {IBC_FOOT_PLATE}x{IBC_FOOT_PLATE}x{IBC_FOOT_PLATE_T} floor flange feet",
+        f"3. RESTRAINT-ONLY frame: a DEEP 4-LEG BOX (front + back upright pairs, 450mm apart, tied by top + bottom rings) on {IBC_FOOT_PLATE}x{IBC_FOOT_PLATE}x{IBC_FOOT_PLATE_T} floor flange feet",
         f"   ({IBC_FOOT_BOLT_N}x M12 each). The totes DIRECT-STACK (no deck) so no platform/wall-seat brackets are needed. ~{FRAME_WEIGHT}kg.",
         f"4. {IBC_GAP}mm plumbing corridor between columns for internal pipe routing.",
         "5. Front retaining bars (4x, Z560 + Z1760) at the IBC front stop the totes sliding out; wall ends drop into Simpson-style joist hangers.",
@@ -310,7 +310,7 @@ def sheet1():
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 5",
                 drawing_title="IBC STACKING & SECURING",
-                subtitle="CROSS-SECTION — 2x2 DIRECT-STACK, RESTRAINT FRONT PORTAL",
+                subtitle="CROSS-SECTION — 2x2 DIRECT-STACK, RESTRAINT DEEP 4-LEG BOX",
                 scale_note="Axes in mm - SECTION LOOKING +X (PINHOLE WALL AT RIGHT)",
                 height=0.06)
 
@@ -894,7 +894,7 @@ def sheet4():
                                     (FRAME_RHS), (8),
                                     fc=C_FRAME, ec=C_OUT, lw=0.5, zorder=6, alpha=0.4))
 
-    # ── Panel support frame (mid-bay): rectangle the wet-end panel bolts to ──
+    # ── Panel support frame = the deep box's BACK uprights: the Corridor pump panel bolts to it ──
     ax.add_patch(Rectangle(((PANEL_FRAME_X), (near_col_r)),
                             (IBC_FRAME_RHS), (far_col_l - near_col_r),
                             fc=C_FRAME, ec=C_OUT, lw=1.0, alpha=0.55, zorder=7))

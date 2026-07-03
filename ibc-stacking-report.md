@@ -221,7 +221,7 @@ Eight construction drawings cover the IBC system across two drawing sets:
 
 ### IBC Stacking & Securing (5 sheets)
 
-**Sheet 1 — Cross-section elevation: 2-tier direct-stack, restraint front portal, front retaining bars + wall hangers, direct-stack junction, <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm clearance**
+**Sheet 1 — Cross-section elevation: 2-tier direct-stack, restraint deep 4-leg box, front retaining bars + wall hangers, direct-stack junction, <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm clearance**
 ![TBS-001 IBC Stacking — Sheet 1](assets/ibc-stacking-sheet1.png)
 
 **Sheet 2 — Fastening details: front-bar→upright cleat + lash eye, wall joist hanger, ratchet lashing over the stack**
@@ -238,19 +238,14 @@ Eight construction drawings cover the IBC system across two drawing sets:
 
 ### IBC Support Frame Fabrication (3 sheets)
 
-**Sheet 1 — Front elevation: front portal uprights, floor feet, front retaining bars + wall hangers + D-ring holders, direct-stack junction**
+**Sheet 1 — Front elevation: deep-box uprights (front pair, back pair 450mm behind), floor feet, front retaining bars + wall hangers + D-ring holders, direct-stack junction**
 ![TBS-001 IBC Frame — Sheet 1](assets/ibc-frame-sheet1.png)
 
-**Sheet 2 — Side elevation: single front portal + front bars (end-on) + walkway cantilever arm**
+**Sheet 2 — Side elevation: deep 4-leg box (front + back uprights + top/bottom rings) + front bars (end-on) + walkway cantilever arm**
 ![TBS-001 IBC Frame — Sheet 2](assets/ibc-frame-sheet2.png)
 
-**Sheet 3 — Plan view: front portal + retaining bars + floor feet + IBC footprints + corridor + walkway arms**
+**Sheet 3 — Plan view: deep 4-leg box (4 legs + ring perimeter) + retaining bars + 4 floor feet + IBC footprints + corridor + walkway arms**
 ![TBS-001 IBC Frame — Sheet 3](assets/ibc-frame-sheet3.png)
-
-> **Note:** the three frame-fabrication sheets (and the Stacking Sheet 1 cross-section) still
-> depict the **legacy single front-portal** frame; they are pending a redraw to the **deep 4-leg
-> box** described in §3 (front + back upright pairs tied by rings). The narrative, BOM (§9), and
-> the 3D model are the current source of record until those sheets are regenerated.
 
 Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §15
 (stacking) and §17 (frame fabrication).

@@ -43,6 +43,11 @@ from tbs_constants import (
     BB_OD, FSKID_YD,
     DIAGRAMS_DIR,
 )
+sys_models = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "models")
+if sys_models not in os.sys.path:
+    os.sys.path.insert(0, sys_models)
+import generate_corridor_water_panel as cp   # deep-box frame geometry (single source: cp.frame)
+
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_notes,
                          bolt_holes,
@@ -868,49 +873,37 @@ def sheet4():
                     ha="center", va="top", fontsize=5, color=color,
                     style="italic", **FONT, zorder=10)
 
-    # ── Portal frame (corridor uprights, column beams, wall brackets) ────────
-    frame_x_l = IBC_COL_X - 65
-    frame_x_r = min(IBC_COL_X + IBC_W + 65, C_LEN)
-    for uyd in [near_col_r, far_col_l - FRAME_RHS]:
-        for ux in [frame_x_l, frame_x_r - FRAME_RHS]:
-            ax.add_patch(Rectangle(((ux), (uyd)),
-                                    (FRAME_RHS), (FRAME_RHS),
-                                    fc=C_FRAME, ec=C_OUT, lw=0.8, zorder=6, alpha=0.6))
-    for col_yd_l, col_yd_r in [(BLUE_IBC_Y - 5, near_col_r + FRAME_RHS),
-                                (far_col_l - FRAME_RHS, IBC_FAR_Y + IBC_D + 5)]:
-        for bx in [frame_x_l, frame_x_r - FRAME_RHS]:
-            ax.add_patch(Rectangle(((bx), (col_yd_l)),
-                                    (FRAME_RHS), (col_yd_r - col_yd_l),
-                                    fc=C_FRAME, ec=C_OUT, lw=0.6, zorder=6, alpha=0.4))
-    corr_beam_l = near_col_r + FRAME_RHS
-    corr_beam_r = far_col_l - FRAME_RHS
-    for bx in [frame_x_l, frame_x_r - FRAME_RHS]:
-        ax.add_patch(Rectangle(((bx), (corr_beam_l)),
-                                (FRAME_RHS), (corr_beam_r - corr_beam_l),
-                                fc=C_FRAME, ec=C_OUT, lw=0.5, zorder=6, alpha=0.3))
-    for wyd in [0, C_WID - 8]:
-        for bx in [frame_x_l, frame_x_r - FRAME_RHS]:
-            ax.add_patch(Rectangle(((bx), (wyd)),
-                                    (FRAME_RHS), (8),
-                                    fc=C_FRAME, ec=C_OUT, lw=0.5, zorder=6, alpha=0.4))
+    # ── Deep 4-leg box frame (plan): 4 uprights (front X4654 + back X5104) tied
+    #    by top + bottom rings — the horizontal ring perimeter — per cp.frame(). ──
+    box_front_x = cp.FRONT_X                 # 4654 — front upright pair (corridor mouth; walkway arms clamp here)
+    box_back_x  = cp.BACK_X                  # 5104 — back upright pair (carries the corridor pump panel + spine)
+    box_yds = [near_col_r, far_col_l - FRAME_RHS]   # 1046 / 1266 — near + far corridor edges
+    # ring perimeter (top + bottom rings project together in plan): X-rails front↔back + Yd-rails near↔far
+    for uyd in box_yds:                      # X-rails (front→back) along each corridor edge
+        ax.add_patch(Rectangle(((box_front_x + FRAME_RHS), (uyd)),
+                                (box_back_x - (box_front_x + FRAME_RHS)), (FRAME_RHS),
+                                fc=C_FRAME, ec=C_OUT, lw=1.0, zorder=6, alpha=0.55))
+    for ux in [box_front_x, box_back_x]:     # Yd-rails (near→far) at the front + back
+        ax.add_patch(Rectangle(((ux), (near_col_r + FRAME_RHS)),
+                                (FRAME_RHS), (far_col_l - FRAME_RHS) - (near_col_r + FRAME_RHS),
+                                fc=C_FRAME, ec=C_OUT, lw=1.0, zorder=6, alpha=0.55))
+    # 4 uprights at the box corners (front + back × near + far)
+    for ux in [box_front_x, box_back_x]:
+        for uyd in box_yds:
+            ax.add_patch(Rectangle(((ux), (uyd)), (FRAME_RHS), (FRAME_RHS),
+                                    fc=C_FRAME, ec=C_OUT, lw=1.3, zorder=7, alpha=0.9))
+    leader(ax, (box_front_x + FRAME_RHS / 2), (far_col_l - FRAME_RHS),
+           (box_front_x + 30), (far_col_l + 380),
+           f"DEEP 4-LEG BOX FRAME\n50x50x3 RHS — 4 uprights + top/bottom rings\n(front X{box_front_x} + back X{box_back_x}, {cp.DEPTH}mm deep)",
+           color=C_FRAME, fs=5.5, ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
-    # ── Panel support frame = the deep box's BACK uprights: the Corridor pump panel bolts to it ──
-    ax.add_patch(Rectangle(((PANEL_FRAME_X), (near_col_r)),
-                            (IBC_FRAME_RHS), (far_col_l - near_col_r),
-                            fc=C_FRAME, ec=C_OUT, lw=1.0, alpha=0.55, zorder=7))
-    ax.text((PANEL_FRAME_X + IBC_FRAME_RHS + 150), (near_col_r - 22),
-            "PANEL SUPPORT FRAME\n(uprights to Z=2310\n+ top rail + floor beam)",
-            ha="left", va="top", fontsize=5, color=C_FRAME,
-            fontweight="bold", **FONT, zorder=10)
-
-    # ── D-ring lashing points ────────────────────────────────────────────────
+    # ── D-ring lashing points (on the FRONT retaining bars, at the box front) ──
     dring_color = "#D0A030"
-    for dyd in [near_col_r + FRAME_RHS / 2, far_col_l - FRAME_RHS / 2]:
-        for dx in [frame_x_l + FRAME_RHS / 2, frame_x_r - FRAME_RHS / 2]:
-            ax.add_patch(Circle(((dx), (dyd)),
-                                 (10), fc=dring_color, ec=C_OUT,
-                                 lw=0.8, zorder=11))
-    ax.text((frame_x_l - 10), (near_col_r + FRAME_RHS / 2 - 25),
+    for dyd in [520, near_col_r - 40, far_col_l + 40, C_WID - 520]:
+        ax.add_patch(Circle(((box_front_x + FRAME_RHS / 2), (dyd)),
+                             (10), fc=dring_color, ec=C_OUT,
+                             lw=0.8, zorder=11))
+    ax.text((box_front_x - 10), (520 - 25),
             "D-RING (TYP. 8x)", ha="right", va="top",
             fontsize=5, color=dring_color, fontweight="bold", **FONT, zorder=15)
 
@@ -1256,7 +1249,7 @@ def sheet4():
                f"{IBC_W}mm IBC WIDTH", offset=(5), fs=6, font=FONT)
 
     # Container width (wall to wall)
-    draw_dim_v(ax, (frame_x_r + 225), (0), (C_WID),
+    draw_dim_v(ax, (C_LEN + 225), (0), (C_WID),
                f"{C_WID}mm (WALL TO WALL)", offset=(10), fs=6, right=True, font=FONT)
 
     # ── Notes (single block, in the right margin directly under the legend) ──
@@ -1277,7 +1270,7 @@ def sheet4():
         "   SIDE-ENTERING the tote's corridor face near the top (no cap drop).",
         f"8. Corridor plumbing panel (18mm marine ply) at X={EQPANEL_X}: pumps",
         "   P-01/P-03/P-04/P-05 + ACC-01 (filters on the Pinhole Wall panel).",
-        f"9. Deep 4-leg box frame: seat brackets + corridor uprights. ~{FRAME_WEIGHT}kg.",
+        f"9. Deep 4-leg box frame: 4 uprights (front X{int(cp.FRONT_X)} + back X{int(cp.BACK_X)}) + top/bottom rings + 4 flange feet. ~{FRAME_WEIGHT}kg.",
     ]
     draw_notes(ax, notes, leg_x, leg_box_bot - (55), spacing=(18),
                fs=7, font=FONT, width=850)

@@ -70,9 +70,9 @@ PORT_HALF = 30   # half of port-to-port spacing (mm)
 ACC_OD  = 127    # body OD (mm)
 ACC_LEN = 200    # body length (mm) — real SeaFlo 0.75L ~200; KEEP IN SYNC with the 3D equipment_panel() ACC cylinder
 
-# ── Filter housing (separate, 4.5"×10") ──────────────────────────────────
-FILT_OD  = 184   # housing OD (mm) — = tbs_constants BB_OD (real Big Blue 4.5x10 = Ø184); KEEP IN SYNC
-FILT_H   = 340   # total height (mm) — head + sump, hung vertically
+# ── Filter housing (separate, 4.5"×20") ──────────────────────────────────
+FILT_OD  = 184   # housing OD (mm) — = tbs_constants BB_OD (real Big Blue 4.5×20 = Ø184; diameter same 10↔20"); KEEP IN SYNC
+FILT_H   = 594   # total height (mm) — head + sump (4.5×20) — = tbs_constants BB_H; KEEP IN SYNC
 FILT_GAP = 30    # gap between housings (mm)
 FILT_HEAD = 70   # head section height (mm)
 
@@ -741,9 +741,9 @@ def draw_pinhole_panel():
             f"{BD_XR - BD_XL} × {BD_ZT - BD_ZB}mm\n18mm MARINE PLY\n(pinhole wall)",
             ha="center", va="center", fontsize=6.5, color=C_PLY_EC, zorder=4)
 
-    # ── Filter geometry (Big Blue 4.5x10: head block + Ø184 sump below) ────
-    HEAD_ZB, HEAD_ZT = 2262, 2340      # head block Z band
-    SUMP_ZB, SUMP_ZT = 2000, 2262      # cylindrical sump hanging below
+    # ── Filter geometry (Big Blue 4.5×20: head block + Ø184 sump below) ────
+    HEAD_ZB, HEAD_ZT = 2262, 2340      # head block Z band (pinned near the ceiling)
+    SUMP_ZB, SUMP_ZT = 1746, 2262      # cylindrical sump hanging below (4.5×20 — drops ~230mm lower than the 10")
     HEAD_Z = (HEAD_ZB + HEAD_ZT) / 2   # head-line port height
     filters = [
         ("F-01", "5µm\nSEDIMENT", 3208, 3392),
@@ -852,7 +852,7 @@ def draw_pinhole_panel():
            "P-02 Shurflo 2088\n12V · 3.5 GPM · 45 PSI\n(Brown recycle, upright)",
            fs=6, color=C_PUMP_EC, ha="left", va="center", font=FONT)
     leader(ax_p, pwx(F2_CX), pwz(SUMP_ZB + 40), pwx(3500), pwz(1640),
-           "Big Blue 4.5\"×10\" housing\n(Ø184 sump, head Z2262–2340;\n"
+           "Big Blue 4.5\"×20\" housing\n(Ø184 sump to Z1746, head Z2262–2340;\n"
            "F-01 5µm → F-02 KDF-55 → F-03 GAC)",
            fs=6, color=C_FILTER, ha="left", va="center", font=FONT)
 
@@ -863,7 +863,7 @@ def draw_pinhole_panel():
         "    X=2780–4500, Z=920–2360mm AFF.",
         "2. P-02 (Brown recycle pump) pulls IBC-3 Brown through the 3-stage filter bank.",
         "3. HORIZONTAL filter bank high on the wall: F-01 (5µm sediment) →",
-        "    F-02 (KDF-55) → F-03 (carbon/GAC); Big Blue 4.5\"×10\" housings.",
+        "    F-02 (KDF-55) → F-03 (carbon/GAC); Big Blue 4.5\"×20\" housings.",
         "4. BV-03: P-02 suction isolation (manual ball valve).",
         "5. SV-01: pH sample tap on the filtered line, before DV-01 (cup spout, near bottom-right).",
         "6. 3W-DV-01 is PHYSICALLY at the corridor mouth (off this wall) — the filtered",
@@ -871,7 +871,7 @@ def draw_pinhole_panel():
         "    recycle (IBC-2) or Waste (IBC-4).",
         "7. Flow: IBC-3 → BV-03 → P-02 → F-01 → F-02 → F-03 → SV-01 → 3W-DV-01.",
         "8. Filters at 338mm centres (X3300/3638/3976); heads Z≈2300, sump bottoms",
-        "    Z≈2000 AFF. BV-03 at Z≈1000; SV-01 at Z≈1010.",
+        "    Z≈1746 AFF (4.5×20). BV-03 at Z≈1000; SV-01 at Z≈1010.",
         "9. PIPE: 1\" SDR-11 HDPE (P-02 + filter loop) with PP/Banjo fittings; housings",
         "    on their integral brackets through-bolted to the ply board.",
     ]

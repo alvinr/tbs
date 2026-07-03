@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
 | 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,454 | $3,914 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $4,561 | $6,863 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $4,615 | $6,968 |
 | 6. Electrical — power, circuits, wiring | $2,110 | $2,660 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,385 | $2,070 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $855 | $1,430 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,210 | $2,980 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$21,541** | **~$32,330** |
+| **TOTAL (base build + 50-print run)** | **~$21,595** | **~$32,435** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -394,18 +394,18 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| Big Blue filter housing (4.5"×10") | 1 ea | Amazon | water | $200–$300 |
-| CTO carbon block cartridge 4.5"×10" | 3 ea | Amazon | water | $24–$45 |
+| Big Blue filter housing (4.5"×20") | 1 ea | Amazon | water | $240–$380 |
+| CTO carbon block cartridge 4.5"×20" | 2 ea | Amazon | water | $32–$60 |
 | IBC tote (1,000 L caged) | 4 ea | Container Exchanger | water | $320–$600 |
-| KDF-55 heavy-metal cartridge 4.5"×10" | 2 ea | Amazon | water | $40–$70 |
-| MPP 5-micron sediment cartridge 4.5"×10" | 3 ea | Amazon | water | $18–$30 |
+| KDF-55 heavy-metal cartridge 4.5"×20" | 1 ea | Amazon | water | $40–$70 |
+| MPP 5-micron sediment cartridge 4.5"×20" | 2 ea | Amazon | water | $24–$40 |
 | SeaFlo accumulator (0.75 L) | 1 ea | Amazon | water | $35 |
 | Shurflo 2088-554-144 pump (P-01 Blue supply) | 1 ea | Amazon | water | $55–$70 |
 | Shurflo 2088-554-144 pump (P-02 filter loop) | 1 ea | Amazon | water | $55–$70 |
 | Shurflo 2088-554-144 pump (P-03 waste evacuation) | 1 ea | Amazon | water | $65 |
 | Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 1 ea | Amazon | water | $65 |
 | Shurflo 2088-554-144 pump (P-05 Brown drain) | 1 ea | Amazon | water | $65 |
-| **water-equipment subtotal** | | | | **$942–$1,415** |
+| **water-equipment subtotal** | | | | **$996–$1,520** |
 
 ## Supplier consolidation (largest orders first)
 
@@ -413,7 +413,7 @@ indicative low–high estimates — get quotes before ordering.
 |----------|-----------|-------|-----------|
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 16 | adhesives-finishes, fabrication-labor, steel-structural | $1,946–$3,156 |
-| Amazon | 79 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,225–$2,784 |
+| Amazon | 79 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,279–$2,889 |
 | McMaster-Carr | 41 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets | $1,772–$2,715 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |

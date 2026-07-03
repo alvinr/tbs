@@ -570,7 +570,7 @@ def sheet1():
         f"   v2 layout: Brown/Waste bottom, Blue on top.",
         f"8. Cage top rail ({IBC_CAGE_TUBE_D}mm Ø tube) is the highest point; lashing straps bear on it.",
         f"9. IBC valve face (DN50, S60×6) points toward the corridor. Valve CL at Z={IBC_VALVE_Z}mm above each tote base.",
-        f"10. Total frame weight: ~178 kg (incl. feet + front bars + hangers + exterior wall plates + panel-mount).",
+        f"10. Total frame weight: ~90 kg (incl. 4 feet + rings + front bars + hangers + exterior wall plates + rear-panel brackets).",
     ]
     draw_notes(ax, notes, (2500), (TOP_Z + 600), spacing=(23),
                fs=7, font=FONT, width=(1800))

@@ -109,7 +109,7 @@ front uprights.
 | Exterior backing plates | 4 × 100 × 135 × 8mm steel, on the **outside** of the container side walls (hex heads outside) — spread the totes' transport thrust into the thin corrugated wall so the bolts can't pull through |
 | D-ring lashing | holders on the front bars, 1,100 kg WLL |
 | Panel mount | the box carries the Corridor (pump) Plumbing Panel + drain-riser spine on the back uprights, and the right-walkway cantilever arms on the front uprights |
-| Frame weight | ~178 kg (4 uprights + rings + feet + front bars + hangers + exterior plates + panel/spine mount — see [weight report](weight-distribution-report.md)) |
+| Frame weight | ~90 kg (4 uprights + rings + 4 feet + front bars + hangers + exterior plates + rear-panel brackets — see [weight report](weight-distribution-report.md)) |
 | Joints | Welded (fillet weld throughout) |
 
 ### 3.3 Direct-Stack Junction
@@ -123,7 +123,7 @@ rated for a full upper tote.
 The frame carries **no vertical service load** (the totes stack on themselves), so there
 is no platform-beam bending case. The governing check is **transport restraint**: the
 front retaining bars + D-ring lashing must resist the totes' inertia under
-braking/cornering (loaded mass 5,130 kg, worst-case CG at Z=1,340mm — see the
+braking/cornering (loaded mass 5,044 kg, worst-case CG at Z=1,345mm — see the
 [weight-distribution report](weight-distribution-report.md)).
 
 - **Front retaining bars** (50×20×3 RHS) span wall→upright (~1,046mm) and take each tote's

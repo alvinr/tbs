@@ -2947,9 +2947,9 @@ IBC-2 (900L) ──┘                                                      │
         │
        P-02
         │
-       F-1 (50-micron sediment)
+       F-1 (5-micron MPP sediment)
         │
-       F-2 (5-micron sediment)
+       F-2 (KDF-55 heavy-metal)
         │
        F-3 (GAC carbon block)
         │
@@ -2960,14 +2960,13 @@ IBC-2 (900L) ──┘                                                      │
         └──→ pH drift / discolored: FORWARD TO IBC-4 (waste)
 </code></pre></div>
 <p><strong>Filter train sizing:</strong></p>
-<p>The filter train uses a single 3-stage whole-house filter (a <strong>4.5"×20"</strong> Big Blue 3-stage; Express Water / Geekpure / iSpring) with <strong>Ø184 × 594mm</strong> housings, mounted as a horizontal bank high on the pinhole wall (heads pinned near the ceiling, sumps hanging below). 1" NPT inlet/outlet; a single 1/2"→1" bushing reducer connects P-02 output to the unit inlet.</p>
+<p>The filter train is <strong>three separate 4.5"×20" Big Blue housings</strong> (Ø184 × 594mm each; Express Water / Geekpure / iSpring), mounted as a horizontal bank high on the pinhole wall — heads pinned near the ceiling, sumps hanging below. Each has 1" NPT inlet/outlet; a single 1/2"→1" bushing reducer matches P-02's 1/2" output to F-1, and F-1 → F-2 → F-3 connect by short 1" HDPE jumpers with 90° elbows outside the bodies (full mechanical detail in <a href="../plumbing-report/">Plumbing Report</a> §3.1).</p>
 <table>
 <thead>
 <tr>
 <th>Stage</th>
 <th>Cartridge (4.5"×20")</th>
 <th>Removes</th>
-<th>Replace interval</th>
 </tr>
 </thead>
 <tbody>
@@ -2975,23 +2974,20 @@ IBC-2 (900L) ──┘                                                      │
 <td>F-1</td>
 <td>MPP 5-micron melt-blown polypropylene sediment</td>
 <td>Gross sediment, fiber lint, Prussian blue particles</td>
-<td>~Every 28 prints</td>
 </tr>
 <tr>
 <td>F-2</td>
-<td>KDF-55 heavy metal removal</td>
+<td>KDF-55 heavy-metal removal</td>
 <td>Dissolved iron compounds from ferricyanide wash water</td>
-<td>~Every 30 prints</td>
 </tr>
 <tr>
 <td>F-3</td>
-<td>CTO coconut shell activated carbon block</td>
+<td>CTO coconut-shell activated carbon block</td>
 <td>Residual organics, color</td>
-<td>~Every 20 prints</td>
 </tr>
 </tbody>
 </table>
-<p>The 20" cartridges carry ~2× the media of a 10", so service intervals run correspondingly longer — see <a href="../plumbing-report/">Plumbing Report</a> §3.1 for the per-stage detail. The unit includes triple drain valves for flushing individual stages without disassembly. Equivalent 3-stage Big Blue units are available from Express Water, Geekpure, iSpring and others — any unit accepting standard 4.5"×20" cartridges with 1" NPT ports will work.</p>
+<p>The 4.5"×20" cartridges carry ~2× the media of a 10", so service intervals run correspondingly longer; the per-stage replacement intervals live in <a href="../plumbing-report/">Plumbing Report</a> §3.1. A single 3-stage combo unit (4.5"×20" cartridges, 1" NPT) is an equivalent alternative that eliminates the inter-housing jumpers — any unit accepting standard 4.5"×20" cartridges with 1" NPT ports will work.</p>
 <p><strong>pH management:</strong> Two pH sample taps are fitted. <strong>SV-02</strong> (½" valve + spout on the P-04 tray-drain discharge, before 3W-DV-02) lets the operator meter the incoming used water and choose the DV-02 routing — buffer to IBC-3 or divert straight to IBC-4 waste. <strong>SV-01</strong> confirms the cleaned water before it returns: draw the post-filter sample at the <strong>SV-01 sample tap</strong> (½" valve + spout before 3W-DV-01) and meter it. If filtered water reads pH &lt;6, do nothing — slightly acidic is preferred. If pH &gt;7.5, add citric acid solution (10g citric acid in 1 liter water) via the dosing port in the IBC-3 outlet, stir, retest. Do not return water with pH &gt;8 to the Blue system.</p>
 <h3 id="43-black-system-waste-containment">4.3 Black System — Waste Containment<a class="headerlink" href="#43-black-system-waste-containment" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>FROM 3W-DV-01 (rejected filter output — pH out of range)
@@ -3022,7 +3018,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <hr />
 <h2 id="5-plumbing-specification">5. Plumbing Specification<a class="headerlink" href="#5-plumbing-specification" title="Permanent link">&para;</a></h2>
 <h3 id="pipe-sizing">Pipe sizing<a class="headerlink" href="#pipe-sizing" title="Permanent link">&para;</a></h3>
-<p>All pump-driven internal runs use <strong>1/2" pipe</strong>, matching the Shurflo 2088 pump ports (1/2"-14 male parallel thread). This eliminates trunk-to-manifold reducer fittings entirely. The 3-stage combo filter unit has 1" NPT ports, requiring a single 1/2"→1" bushing reducer at the inlet; the outlet connects directly to DV-01 (1" FNPT). No inter-housing plumbing is needed — all filter-to-filter flow is internal to the combo unit. Larger pipe (1" or 2") is used only for the IBC fill/drain lines at the external bulkhead ports and the short filter outlet to DV-01, where gravity flow requires lower restriction. P-03 is mounted separately in the IBC plumbing corridor on the X4 waste drain run.</p>
+<p>All pump-driven internal runs use <strong>1/2" pipe</strong>, matching the Shurflo 2088 pump ports (1/2"-14 male parallel thread). This eliminates trunk-to-manifold reducer fittings entirely. The three Big Blue filter housings have 1" NPT ports: a single 1/2"→1" bushing reducer feeds F-1, the F-1→F-2 and F-2→F-3 jumpers are short 1" HDPE with 90° elbows, and the F-3 outlet connects to DV-01 (1" FNPT). Larger pipe (1" or 2") is used only for the IBC fill/drain lines at the external bulkhead ports and the short filter outlet to DV-01, where gravity flow requires lower restriction. P-03 is mounted separately in the IBC plumbing corridor on the X4 waste drain run.</p>
 <p><strong>Internal runs (1/2" HDPE Sch 40):</strong></p>
 <table>
 <thead>
@@ -3113,7 +3109,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </thead>
 <tbody>
 <tr>
-<td>Combo filter outlet → SV-01 sample tap → DV-01</td>
+<td>Filter train (F-3) outlet → SV-01 sample tap → DV-01</td>
 <td>Sch 40</td>
 <td>1" nominal (OD 33mm)</td>
 <td>100 PSI min</td>
@@ -3175,7 +3171,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td>1" NPT threaded</td>
-<td>Combo filter outlet → DV-01, IBC fill/drain lines</td>
+<td>Filter (F-3) outlet → DV-01, inter-housing jumpers, IBC fill/drain lines</td>
 <td>HDPE or brass</td>
 </tr>
 <tr>
@@ -3305,21 +3301,21 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td>Pinhole wall face</td>
-<td>Pump manifold (P-01, P-02, P-04)</td>
-<td>2,400–2,700</td>
-<td>Y=0</td>
-<td>200–600</td>
+<td>Pinhole Wall panel — P-02 + 3-stage filter bank (high, sumps hanging)</td>
+<td>3,300–3,976</td>
+<td>~100</td>
+<td>1,746–2,340</td>
 </tr>
 <tr>
 <td>IBC plumbing corridor</td>
-<td>P-03 waste pump (on X4 drain run)</td>
-<td>4,674–5,893</td>
+<td>Corridor panel — P-01/P-03/P-04/P-05 + ACC-01</td>
+<td>4,654–5,104</td>
 <td>1,046–1,316</td>
-<td>~200</td>
+<td>355–1,930</td>
 </tr>
 <tr>
 <td>Optical zone floor</td>
-<td>Processing tray (2 panels)</td>
+<td>Processing tray</td>
 <td>170–4,629</td>
 <td>60–2,300</td>
 <td>0–50</td>
@@ -3334,7 +3330,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tbody>
 </table>
 <p>All equipment clears the optical cone at every depth — shadow-free proof in <a href="../equipment-layout-report/">Equipment Layout Report</a>.</p>
-<p><strong>Hose routing:</strong> The corridor pumps (P-01, P-04, P-05, P-03) mount on the <strong>Corridor Plumbing Panel</strong> at the front of the IBC stack, reaching into the 270mm plumbing corridor between the two IBC columns — so the pump↔tote suction and return lines are <strong>short</strong>, running entirely within the corridor to the IBCs' corridor-facing DN50 valves. P-02 (Brown filter feed) and the 3-stage filter stack sit on the <strong>Pinhole Wall Plumbing Panel</strong> on the pinhole wall face. The longest run is the <strong>Blue supply to the spray bar</strong>: P-01 → ACC-01 → rigid 1/2" HDPE along the pinhole wall to the tray center → BV-05 → ~4m coiled flexible hose → the rolling beam in the optical zone. The <strong>tray drain</strong> returns the other way — P-04's sump pickup → 1" flexible hose over the near rim → P-04 on the panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste). <strong>Waste evacuation</strong> pumps P-05 (X3 / Brown) and P-03 (X4 / Waste) sit directly on the corridor drain risers, minimizing pipe to the external end-wall ports.</p>
+<p><strong>Hose routing:</strong> The corridor pumps (P-01, P-04, P-05, P-03) mount on the <strong>Corridor Plumbing Panel</strong> at the front of the IBC stack, reaching into the 270mm plumbing corridor between the two IBC columns — so the pump↔tote suction and return lines are <strong>short</strong>, running entirely within the corridor to the IBCs' corridor-facing DN50 valves. P-02 (Brown filter feed) and the 3-stage filter stack sit on the <strong>Pinhole Wall Plumbing Panel</strong> on the pinhole wall face. The longest run is the <strong>Blue supply to the spray bar</strong>: P-01 → ACC-01 → rigid 1/2" HDPE along the pinhole wall to the tray center → BV-05 → ~4m coiled flexible hose → the rolling beam in the optical zone. The <strong>tray drain</strong> returns the other way — P-04's sump pickup → 1" flexible hose over the near rim → P-04 on the panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste). <strong>Waste evacuation</strong> pumps P-05 (X3 / Brown) and P-03 (X4 / Waste) sit directly on the corridor drain risers, minimizing pipe to the external end-wall ports. The four lines that connect the corridor equipment to the Pinhole Wall panel run together as a flat <strong>ribbon</strong> in the dead space under the right-walkway grate — see <a href="../plumbing-report/">Plumbing Report</a> §8.1 and <a href="../walkway-routing-sections/">Walkway Pipe Routing</a>.</p>
 <p><strong>External fill/drain ports:</strong> Three 2" NPT bulkhead fittings with camlock fittings on the exterior are mounted on the container end wall centerline, stacked vertically:</p>
 <table>
 <thead>
@@ -3768,29 +3764,9 @@ reports — <a href="../processing-tray-and-spray-bar/">Processing Tray &amp; Sp
 </thead>
 <tbody>
 <tr>
-<td>Water storage (4x IBC totes + bulkhead fittings)</td>
-<td>$420</td>
-<td>$760</td>
-</tr>
-<tr>
-<td>Pumps and accumulator (P-01, P-02, P-04 manifold + P-03 IBC corridor)</td>
-<td>$305</td>
-<td>$355</td>
-</tr>
-<tr>
-<td>Filter unit (3-stage combo + cartridges)</td>
-<td>$470</td>
-<td>$652</td>
-</tr>
-<tr>
-<td>Valves and fittings (incl. S60×6 adapters, check valves)</td>
-<td>$414</td>
-<td>$660</td>
-</tr>
-<tr>
-<td>Pipe</td>
-<td>$76</td>
-<td>$108</td>
+<td>Water equipment — §8 BOM (IBC storage, pumps + accumulator, 3-stage filter train, valves &amp; fittings, pipe, wiring, consumables)</td>
+<td>$2,073</td>
+<td>$3,123</td>
 </tr>
 <tr>
 <td>Processing tray (see <a href="../processing-tray-and-spray-bar/">Processing Tray report</a> §6.1)</td>
@@ -3803,22 +3779,13 @@ reports — <a href="../processing-tray-and-spray-bar/">Processing Tray &amp; Sp
 <td><!-- BEGIN costing:spray-high -->$375<!-- END costing:spray-high --></td>
 </tr>
 <tr>
-<td>Electrical (wiring only — fuse block in <a href="../electrical-report/">Electrical Report</a>)</td>
-<td>$35</td>
-<td>$35</td>
-</tr>
-<tr>
-<td>Processing consumables</td>
-<td>$231</td>
-<td>$278</td>
-</tr>
-<tr>
 <td><strong>TOTAL</strong></td>
-<td><strong>$3,486</strong></td>
-<td><strong>$5,162</strong></td>
+<td><strong>$3,660</strong></td>
+<td><strong>$5,513</strong></td>
 </tr>
 </tbody>
 </table>
+<p><em>The Water-equipment row is the generated §8 <code>parts:water</code> BOM total (single source of record for the water subsystem — storage/pumps/filters/valves/pipe/consumables); the tray and spray-bar rows are <code>costing.py</code> blocks. The TOTAL is a hand sum of the three and should itself become a generated block (Phase-1 backlog).</em></p>
 <p><em>Used IBC totes drive significant savings vs. new. The parts list consolidates to 4 primary suppliers: </em><em>Amazon</em><em> (~30 line items — qualifies for bulk/subscribe discounts), </em><em>McMaster-Carr</em><em> (tray hardware — single order, fast shipping), </em><em>Ferguson</em><em> (HDPE pipe — call for contractor pricing), and </em><em>Online Metals</em><em> (SS sheet). Obtain quotes from Ferguson before ordering pipe from Amazon — trade counter pricing is typically 20–30% below retail.</em></p>
 <hr />
 <h2 id="9-maintenance">9. Maintenance<a class="headerlink" href="#9-maintenance" title="Permanent link">&para;</a></h2>
@@ -3832,18 +3799,18 @@ reports — <a href="../processing-tray-and-spray-bar/">Processing Tray &amp; Sp
 </thead>
 <tbody>
 <tr>
-<td>Replace F-1 (50-micron cartridge)</td>
-<td>~Every 10 prints</td>
-<td>Visually inspect — replace sooner if heavily discolored</td>
+<td>Replace F-1 (5-micron MPP sediment)</td>
+<td>~Every 50 prints</td>
+<td>Visually inspect — replace sooner if heavily discolored (intervals: <a href="../plumbing-report/">plumbing §3.1</a>)</td>
 </tr>
 <tr>
-<td>Replace F-2 (5-micron cartridge)</td>
-<td>Every 10 prints</td>
+<td>Replace F-2 (KDF-55 heavy-metal)</td>
+<td>~Every 60 prints</td>
 <td>Replace sooner if flow rate drops</td>
 </tr>
 <tr>
-<td>Replace F-3 (GAC carbon)</td>
-<td>Every 15 prints</td>
+<td>Replace F-3 (GAC carbon block)</td>
+<td>~Every 40 prints</td>
 <td>Replace if taste/odor test fails</td>
 </tr>
 <tr>

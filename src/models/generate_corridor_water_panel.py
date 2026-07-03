@@ -576,8 +576,9 @@ def plumbing():
     loop_yd = 328                                       # extend the surface loop +Yd toward the film plane, out of
     #                                                    the cramped sump corner, before dropping under the walkway
     loop_z  = ov.WALKWAY_H + 5                           # 135 — first loop crest kept low, just over the walkway deck
+    sump_foot = (slx, sumpY, sump_foot_z)               # pipe intake == strainer point: SINGLE SOURCE so the strainer stays welded to the pipe's foot
     pipe("Tray sump -> P-04 suction",
-         [(slx, sumpY, sump_foot_z),                   # pickup foot DOWN IN the (widened) sump well, at the ribbon-lane X — STRAIGHT down, no jog
+         [sump_foot,                                   # pickup foot DOWN IN the (widened) sump well, at the ribbon-lane X — STRAIGHT down, no jog
           (slx, sumpY, loop_z),                         # straight UP out of the sump, crest just over the walkway
           (slx, loop_yd, loop_z),                       # extend +Yd toward the film plane, just over the walkway (uncramp)
           (slx, loop_yd, RIBBON_Z),                     # LOOP back down UNDER the walkway to the ribbon
@@ -594,7 +595,7 @@ def plumbing():
           (xrise, ybr, z04),                            # −Yd at the IN-port height to the port-approach lane
           (PXC, ybr, z04), pin("P-04")],                # +X straight into the −Yd-facing IN port
          ov.C_IBC_BROWN)
-    p.append(ov.ruby_cylinder("Tray sump strainer foot", slx, sumpY, sump_foot_z, 14, 36, color=CDK, axis="z"))
+    p.append(ov.ruby_cylinder("Tray sump strainer foot", *sump_foot, 14, 36, color=CDK, axis="z"))
     # P-04 DISCHARGE → up the BACK of the panel (clear of the OUT-port stack), back to the front
     # ABOVE the pumps where it's clear → SV-02 (in-line) → DV-02 underside branch.
     # P-04 OUT leaves convention-style: a short +Yd stub straight OUT of the +Yd-facing OUT port to a

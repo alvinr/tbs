@@ -79,7 +79,7 @@ FRAME_PLATFORM_H  = 1060  # platform height (1010 + 50mm clearance plate)
 FRAME_PLATFORM_T  = FRAME_RHS  # platform beam depth = RHS size
 FRAME_LIP_H    = 40     # anti-rotation lip height above platform
 FRAME_LIP_T    = 5      # lip thickness (steel plate)
-FRAME_WEIGHT   = 178    # kg (restraint deep 4-leg box: uprights + rings + feet + front bars + hangers + exterior wall plates)
+FRAME_WEIGHT   = 90     # kg (restraint deep 4-leg box: 4 uprights + rings + 4 feet + front bars + hangers + exterior wall plates); see weight-distribution-report §3.3
 
 # D-ring lashing
 DRING_SIZE     = 25     # D-ring strap width (mm)

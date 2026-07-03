@@ -350,33 +350,39 @@ def _swing_hardware_weight():
 
 
 def _ibc_stacking_frame_weight():
-    """Steel 50×50×3mm RHS RESTRAINT-ONLY frame for the direct-stacked 2×2 IBC
-    stack (ibc-reconfig-v2).
+    """Steel RESTRAINT-ONLY frame for the direct-stacked 2×2 IBC stack
+    (ibc-reconfig-v2) — a DEEP 4-LEG BOX (matches cp.frame() + cp.tote_restraint()).
 
     The 1000L caged totes stack cage-on-cage (no room for a load-bearing deck —
-    ~52mm headroom), so the frame only RESTRAINS:
-      • full-height corridor uprights (6) + 2 front-bay uprights, ~2.30m, 50×50×3 RHS
-      • longitudinal ties (2 lines × 2 levels) along X
-      • front retaining bars (4: 2 columns × 2 heights) + short frame ties
-      • 8 floor flange feet, 150×150×12mm + ~40 M12 anchors
+    ~52mm headroom), so the frame only RESTRAINS. It is a deep 4-leg box at the
+    corridor mouth:
+      • 4 full-height uprights — a FRONT pair (X4654) + a BACK pair 450mm behind
+        (X5104), ~2.30m, 50×50×3 RHS
+      • top + bottom rings (butt-jointed Yd-rails + X-rails tying the 4 legs)
+      • 4 floor flange feet, 150×150×12mm + 16 M12 anchors (front feet under the tray)
+      • 6 rear-panel mount brackets on the back uprights
+      • front retaining bars (4: 2 columns × 2 tiers, 50×20×3 RHS) trap the totes
       • 4 Simpson-style wall joist hangers (carry the front-bar wall ends),
         through-bolted to 4 exterior backing plates (100×135×8mm) + 16 M12 bolts
-      • forward panel-mount frame (2 uprights + top rail + floor beam) — this frame
-        also carries the right walkway (replaces the old IBC-upright cantilever)
-    Total ≈ 175 kg.
+    Total ≈ 90 kg (was ~178 kg for the retired 8-upright load-bearing rack).
     """
-    rhs = 4.25                                    # 50×50×3 RHS, kg/m
-    up_h = (IBC_H_STK_1000 - 40) / 1000.0         # 2.296 m full-height upright
-    uprights_kg = 8 * up_h * rhs                  # 6 corridor + 2 front
-    ties_kg = 4 * 1.28 * rhs                      # 2 lines × 2 levels, ~1.28m
-    front_bars_kg = 4 * 1.1 * rhs + 4 * 0.4 * rhs # 4 bars + short frame ties
-    feet_kg = 8 * (0.150 * 0.150 * 0.012) * RHO_STEEL
-    hangers_kg = 4 * 1.1                          # folded 4mm-plate joist hangers
+    rhs   = 4.25                                   # 50×50×3 RHS, kg/m
+    barhs = 3.07                                   # 50×20×3 RHS front bars, kg/m
+    up_h  = (IBC_H_STK_1000 - 40) / 1000.0         # 2.296 m full-height upright
+    # cp.frame(): the deep 4-leg box
+    uprights_kg = 4 * up_h * rhs                   # front pair + back pair
+    yd_rail, x_rail = 0.170, 0.400                 # ring rails (cp.frame geometry, m)
+    rings_kg = 2 * (2 * yd_rail + 2 * x_rail) * rhs   # bottom + top rings
+    feet_kg = 4 * (0.150 * 0.150 * 0.012) * RHO_STEEL
+    brackets_kg = 6 * 0.30                         # rear-panel mount brackets
+    # cp.tote_restraint(): front bars + wall hangers + exterior plates
+    front_bars_kg = 4 * 1.096 * barhs
+    hangers_kg = 4 * 1.1                           # folded 4mm-plate joist hangers
     ext_plates_kg = 4 * (0.100 * 0.135 * 0.008) * RHO_STEEL  # exterior wall backing plates
-    anchors_kg = (40 + 16) * 0.10                 # floor anchors + 16 M12 wall through-bolts
-    panel_frame_kg = (2 * 2.30 + 0.27 + 0.27) * rhs
-    return (uprights_kg + ties_kg + front_bars_kg + feet_kg
-            + hangers_kg + ext_plates_kg + anchors_kg + panel_frame_kg)
+    anchors_kg = (16 + 16) * 0.10                  # 16 floor + 16 wall M12
+    steel = (uprights_kg + rings_kg + feet_kg + brackets_kg
+             + front_bars_kg + hangers_kg + ext_plates_kg + anchors_kg)
+    return steel * 1.08                            # +8% weld metal / gussets / primer
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -566,11 +572,12 @@ def build_components():
                   calc_note="1000L caged composite tare (bottom tier)"),
         Component("IBC restraint frame", "equipment",
                   _ibc_stacking_frame_weight(),
-                  IBC_COL_X, IBC_COL_X + IBC_W,
-                  BLUE_IBC_Y, IBC_FAR_Y + IBC_D,
+                  IBC_COL_X - 20, IBC_COL_X - 20 + 450,   # 4654–5104: deep-box front↔back (cp.frame)
+                  BLUE_IBC_Y + IBC_D, IBC_FAR_Y,          # 1046–1316: the plumbing-corridor box
                   0, IBC_H_STK_1000 - 40, color=C_STEEL,
-                  calc_note="50×50×3mm RHS restraint frame: uprights + ties + "
-                            "feet + front bars + wall hangers + panel frame"),
+                  calc_note="50×50×3mm RHS restraint deep 4-leg box: 4 uprights "
+                            "(front + back pair) + top/bottom rings + 4 feet + front "
+                            "bars + wall hangers + exterior backing plates"),
 
         # ── Liquids — Camera Ready state (water in top-tier Blue IBCs) ───
         # Blue holds 1800L TOTAL across the two top totes (~900L each). Water

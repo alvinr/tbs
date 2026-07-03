@@ -126,7 +126,7 @@ only restrains them for transport (front retaining bars + D-ring lashing).
 | Total stacked height | 2,336mm (2× 1,168mm direct-stack) — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm ceiling clearance |
 | Panel mount | the deep box carries the (forward) Corridor Plumbing Panel + drain-riser spine on its back uprights, and the right-walkway cantilever arms on its front uprights |
 | Surface finish | Gray oxide primer + flat black powder coat (interior) |
-| Approx. weight | ~178kg (uprights + feet + front bars + hangers + exterior wall plates + panel mount) |
+| Approx. weight | ~90kg (4 uprights + rings + 4 feet + front bars + hangers + exterior wall plates + rear-panel brackets) |
 | Approx. cost | USD <!-- BEGIN costing:eq-ibc-frame-cost -->$980–$1,505<!-- END costing:eq-ibc-frame-cost --> (local mild steel fabrication) |
 
 **Why 1,000L caged composite (all four totes):**

@@ -3022,9 +3022,9 @@ P-01 and P-04 draw from the near IBC column, P-03 and P-05 from the far column.<
 <h4 id="pump-electrical-circuit-c-one-at-a-time">Pump electrical — Circuit C (one at a time)<a class="headerlink" href="#pump-electrical-circuit-c-one-at-a-time" title="Permanent link">&para;</a></h4>
 <p>All five pumps run from the <strong>single Circuit C feed</strong> (12V DC, 15A fuse, 14 AWG
 from the Blue Sea fuse block — see <a href="../electrical-report/">Electrical Report §7.2–7.3</a>).
-At the panel the feed lands on a <strong>12V DC distribution block</strong> (positive + shared
-negative bus) at the top of the pump zone; from it, <strong>five individual IP-rated rocker
-switches — one per pump</strong> — fan out, each feeding its pump on a short 16 AWG branch.</p>
+At the panel the feed lands on a <strong>master pump switch</strong> (one IP-rated cutoff for the
+whole pump circuit), then a <strong>12V DC distribution block</strong> (positive + shared negative
+bus) at the top of the pump zone; from it a short 16 AWG branch feeds each pump directly.</p>
 <table>
 <thead>
 <tr>
@@ -3038,23 +3038,23 @@ switches — one per pump</strong> — fan out, each feeding its pump on a short
 <td>Circuit C, 14 AWG, 15A fuse (one feed for all five pumps)</td>
 </tr>
 <tr>
+<td>Master switch</td>
+<td>1 × IP-rated sealed rocker/disconnect (12V, 16A), panel-face-mounted — single cutoff; no per-pump switches (each Shurflo runs on its internal pressure switch)</td>
+</tr>
+<tr>
 <td>Distribution</td>
 <td>12V DC + / − bus block at the pump-zone top</td>
 </tr>
 <tr>
-<td>Switches</td>
-<td>5 × IP-rated sealed rocker (12V, 16A), panel-face-mounted by each pump for corridor access</td>
-</tr>
-<tr>
 <td>Branches</td>
-<td>16 AWG, ~0.5–1m, switch → pump + (7.5A / 90W per pump)</td>
+<td>16 AWG, ~0.5–1m, block → pump, curved-elbow conduit (7.5A / 90W per pump)</td>
 </tr>
 </tbody>
 </table>
-<p>The pumps are operated <strong>one at a time</strong>: the operator enables the pump for the
-current task at its switch (others off), opens the relevant ball valves, and the
-Shurflo's <strong>internal demand/pressure switch</strong> then runs the pump on demand. The 15A
-fuse covers a single pump with margin; simultaneous running is not intended.
+<p>The pumps are operated <strong>one at a time</strong>: with the master switch on, the operator
+opens the relevant ball valves for the current task (others closed), and that pump's
+Shurflo <strong>internal demand/pressure switch</strong> then runs it on demand. The 15A fuse
+covers a single pump with margin; simultaneous running is not intended.
 Switches and the distribution block sit <strong>above the spill line</strong>, IP-rated and sealed,
 with drip loops, per the wet-zone rules in <a href="../electrical-report/">Electrical Report §7.5</a>.</p>
 <p><strong>Corridor Plumbing Panel — Front elevation: four pumps, ACC-01, DV-02 diverter, SV-02 sample tap, and full pipe routing</strong>

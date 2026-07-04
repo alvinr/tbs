@@ -29,7 +29,7 @@ Modeled dimensions are the `tbs_constants.py` value(s) the generators draw. mm.
 | 1 | IBC tote (1,000 L caged) | 1219×1016×1168 | `IBC_W/IBC_D/IBC_H_1000` | ✅ FIXED (v2) |
 | 2 | LiFePO4 battery, 100Ah 12V (Renogy Smart Lithium) | 330×172×214 — Renogy 12V 100Ah Smart Lithium | `BA_W/BA_D/BA_H` | ✅ FIXED |
 | 3 | Shurflo 2088-554-144 pump (P-01 Blue supply) | 216×127×114 — Shurflo 2088-554-144 | `PUMP_D×PUMP_YD_SPAN×Z` | ✅ FIXED (minor) — protrusion PUMP_D 100→114 |
-| 4 | Big Blue filter housing (4.5"×20") | Ø184×594 — Pentek 4.5×20 BB | `BB_OD/BB_H` | ✅ FIXED — BB_OD 130→184; BoM 4.5×10 → 4.5×20 (2× media/interval; heads pinned at ceiling, sumps hang to ~Z1746) |
+| 4 | Big Blue filter housing 4.5"×20" (separate) | Ø184×594 — Pentek 4.5×20 BB | `BB_OD/BB_H` | 3-separate design of record (2026-07): combo → 3 separate housings + frame per plumbing-report §3.1/§7.2. Prices indicative — firm at the Aug-2026 re-price. |
 | 5 | 150×150×50mm axial fans | 150×150×50 | `FAN_DIAM/FAN_BODY_D` | ✅ FIXED |
 | 6 | Evaporative cooler | 559×305×711 — Hessaire MC18M | `EVAP_W/EVAP_D/EVAP_H` | ✅ RESOLVED |
 | 7 | SeaFlo accumulator (0.75 L) | 200×127×125 — SeaFlo SFAT-075-125-01 | `Ø127×200 cyl` | ✅ FIXED — cylinder 150→200 |

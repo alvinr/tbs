@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
 | 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,454 | $3,914 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $4,640 | $7,018 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $4,590 | $6,953 |
 | 6. Electrical — power, circuits, wiring | $2,084 | $2,634 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,385 | $2,070 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $855 | $1,430 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,210 | $2,980 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$21,594** | **~$32,459** |
+| **TOTAL (base build + 50-print run)** | **~$21,544** | **~$32,394** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -266,6 +266,7 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | 1" bulkhead tank-body fittings (Blue equalization cross-tie) | 2 ea | Amazon | water | $12–$24 |
+| 1" HDPE inter-housing jumpers | 1 lot | Ferguson | water | $18–$32 |
 | 1" NPT 4-way cross fitting | 1 ea | Amazon | water | $8–$14 |
 | 1" NPT spring check valve (CV1 — X1 gravity fill) | 1 ea | Amazon | water | $8–$14 |
 | 1" reinforced suction hose, 6 ft | 1 ea | Amazon | tray | $15 |
@@ -300,7 +301,7 @@ indicative low–high estimates — get quotes before ordering.
 | pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | Amazon | water | $10–$18 |
 | S60×6 to 1" NPT adapter | 8 ea | Amazon | water | $64–$120 |
 | ½" HDPE pipe (tap relocation) | 1 lot | Irrigation supply | shelf | $10 |
-| **plumbing-fittings subtotal** | | | | **$636–$993** |
+| **plumbing-fittings subtotal** | | | | **$654–$1,025** |
 
 ### seals-gaskets
 
@@ -394,8 +395,9 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| Big Blue filter housing (4.5"×20") | 1 ea | Amazon | water | $240–$380 |
+| Big Blue filter housing 4.5"×20" (separate) | 3 ea | Amazon | water | $114–$186 |
 | CTO carbon block cartridge 4.5"×20" | 2 ea | Amazon | water | $32–$60 |
+| HDPE spacer blocks 25mm (filter skid) | 1 lot | McMaster-Carr | water | $12–$22 |
 | IBC tote (1,000 L caged) | 4 ea | Container Exchanger | water | $320–$600 |
 | KDF-55 heavy-metal cartridge 4.5"×20" | 1 ea | Amazon | water | $40–$70 |
 | MPP 5-micron sediment cartridge 4.5"×20" | 2 ea | Amazon | water | $24–$40 |
@@ -405,7 +407,9 @@ indicative low–high estimates — get quotes before ordering.
 | Shurflo 2088-554-144 pump (P-03 waste evacuation) | 1 ea | Amazon | water | $65 |
 | Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 1 ea | Amazon | water | $65 |
 | Shurflo 2088-554-144 pump (P-05 Brown drain) | 1 ea | Amazon | water | $65 |
-| **water-equipment subtotal** | | | | **$996–$1,520** |
+| Slotted steel angle frame 25×25×3mm (filter skid) | 1 lot | Home Depot | water | $25–$45 |
+| Steel U-bracket (filter housing) | 3 ea | McMaster-Carr | water | $21–$30 |
+| **water-equipment subtotal** | | | | **$928–$1,423** |
 
 ## Supplier consolidation (largest orders first)
 
@@ -413,15 +417,15 @@ indicative low–high estimates — get quotes before ordering.
 |----------|-----------|-------|-----------|
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 16 | adhesives-finishes, fabrication-labor, steel-structural | $1,946–$3,156 |
-| Amazon | 80 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,271–$2,889 |
-| McMaster-Carr | 40 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets | $1,775–$2,725 |
+| McMaster-Carr | 42 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, water-equipment | $1,808–$2,777 |
+| Amazon | 80 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,145–$2,695 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,301–$1,638 |
 | McNichols | 3 | fasteners-hardware, plastics-sheet | $1,045–$1,365 |
 | Photographers' Formulary | 2 | chemistry-reagents | $1,195 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
-| Home Depot | 21 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety | $837–$1,050 |
+| Home Depot | 22 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $862–$1,095 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
 | Renogy | 3 | electrical-power | $829 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
@@ -440,10 +444,10 @@ indicative low–high estimates — get quotes before ordering.
 | Grainger | 1 | bearings-motion | $140 |
 | Hessaire | 1 | ducting-ventilation | $130 |
 | Bearing World | 1 | bearings-motion | $90–$130 |
+| Ferguson | 4 | plumbing-fittings | $74–$120 |
 | Southco | 1 | fasteners-hardware | $60–$100 |
 | AutomationDirect | 3 | electrical-distribution, electrical-power | $95 |
 | B&H Photo | 1 | fabric-textile | $95 |
-| Ferguson | 3 | plumbing-fittings | $56–$88 |
 | Hardware store | 2 | adhesives-finishes | $42–$62 |
 | VXB | 1 | bearings-motion | $40–$60 |
 | Steel service center | 1 | steel-structural | $30–$50 |

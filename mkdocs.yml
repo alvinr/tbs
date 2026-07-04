@@ -84,7 +84,6 @@ nav:
   - Shopping:
     - "Master Shopping List": master-shopping-list.md
     - "Chem Shopping List": chemistry-shopping-list.md
-    - "Sensitizer Trials": sensitizer-trials.md
   - "PoC":
     - "TBS-002 Design": mini-tbs/mini-tbs-poc.md
     - "TBS-002 Shopping List": mini-tbs/mini-tbs-shopping-list.md
@@ -95,6 +94,7 @@ nav:
     - "Lens vs Pinhole": lens-vs-pinhole-exposure.md
     - "Lens Options": lens-options.md
     - "Photosensitive Materials": photosensitive-plane-options.md
+    - "Sensitizer Trials": sensitizer-trials.md
     - "Distortion Renders": distortion-renders.md
     - "Tilt & Swing Distortion Renders": tilt-swing-board-analysis.md
     - "Light Trap Selection": light-trap-selection.md

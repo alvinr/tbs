@@ -76,7 +76,7 @@ Each bracket is a three-piece welded 8mm steel plate assembly:
 **Attachment:** 3× M12 through-bolts per bracket in a triangular pattern,
 passing through the full wall assembly: hex head → reinforcing plate (6mm) →
 exterior panel (1.6mm Corten) → air gap → rib interior face (1.6mm) →
-bracket vertical plate (8mm) → nut. Two lower bolts at Z=35mm straddle
+bracket vertical plate (8mm) → nut. Two lower bolts straddle
 the 8mm gusset plate at ±27mm from the plate centerline in X (centered
 between plate edge and gusset). One upper bolt (just above the bracket
 arm, near the top of the mounting plate) is centered on the gusset
@@ -89,8 +89,7 @@ provide a bearing surface for the bolt heads and washers. See View B for the bol
 
 ### 3.2 Near Walkway Widened Section
 
-The near walkway widens from 300mm to 500mm between X≈1,155mm and X≈2,629mm
-(1,474mm length), extending past the spray bar slit to the next rib position.
+The near walkway widens from 300mm to 500mm, extending past the spray bar slit to the next rib position.
 This widened section provides additional standing room in front of the
 electrical panel, battery bank, and
 through the spray bar slit zone. These wall-mounted equipment
@@ -236,7 +235,7 @@ edge. The +50mm deck raise lifts these arms clear of the floor-level spray bar.
 | Floor-leg cantilever bracket (×5) | 50×50×3mm steel SHS post (~115mm, floor to grate bottom) + 40×40×3mm SHS arm (40mm deep) + 128×60×8mm foot plate | 5 brackets (outside the tray) |
 | Floor anchors | 4× M10 wedge anchors per foot plate (20 total) | Sealed penetrations into the container floor |
 | Standard arm reach | Arm reaches the grate inner edge | 2 brackets |
-| Extended arm reach | Arm extends to X=770mm under the drum-exit punch-out | 3 brackets |
+| Extended arm reach | Arm extends under the drum-exit punch-out | 3 brackets |
 
 The grate rests on the cantilever arms and lifts straight out — no fasteners, no
 kerb. The operator load travels grating → 40×40×3 cantilever arm → 50×50×3 post →
@@ -259,29 +258,28 @@ edge-beam scheme — it is simpler and lighter and needs no through-wall seats.
 The operator steps out of the revolving-door light lock at its interior face, but the standard 300mm walkway
 ends — leaving only ~20mm of
 landing in front of the drum opening, with the processing-tray basin immediately
-beyond. The left walkway is therefore **deepened to 600mm (X=170–770mm) over the
+beyond. The left walkway is therefore **deepened to 600mm over the
 drum-opening span** — a ~600 × 760mm landing centered on the exit
 (the same approach as the near-walkway widened section on the pinhole side).
 
 **Optical clearance.** The punch-out is inside the active image
 zone (X≥150mm) — so it was checked against the optical cone. At the drum-exit depth
-(Yd 800–1,560mm) the cone's left boundary lies at **X≈914–1,535mm** (the cone narrows
-toward the pinhole at X=2,399mm), so the punch-out is entirely **left of the cone**:
-every pinhole sight line through it lands at X≤37mm on the film plane, ~113mm clear
+the cone's left boundary, so the punch-out is entirely **left of the cone**:
+every pinhole sight line through it lands ~113mm clear
 of the image edge. Confirmed by `generate_line_of_sight.py` (no equipment intersects
 the cone).
 
 **Support.** The 600mm punch-out is carried by the **3 middle
 floor-leg brackets** — the same posts that carry the
-standard left walkway, but with their arms **extended to X=770mm** (vs 470mm for
-the two end brackets). Each arm cantilevers the full ~630mm over the tray from its
-X=140mm post on bare floor, with **zero tray contact**, and lifts out with the rest
+standard left walkway, but with their arms **extended to X=770mm**.
+Each arm cantilevers the full ~630mm over the tray from its
+post on bare floor, with **zero tray contact**, and lifts out with the rest
 of the left walkway for transport. No separate sub-frame, edge beam, or bearing
 strip is needed.
 
 **Sheet 9 — Detail E: Drum-Exit Punch-Out Support (plan).** How the deeper
-landing is supported — the 3 middle floor-leg brackets with arms extended to
-X=770mm, cantilevering over the tray with zero tray contact. See also **Sheet 6
+landing is supported — the 3 middle floor-leg brackets with arms extended,
+cantilevering over the tray with zero tray contact. See also **Sheet 6
 (Detail D)** for the floor-leg bracket itself.
 
 ![TBS-001 Walkway — Sheet 9: Drum-Exit Punch-Out Support](assets/walkway-sheet9.png)
@@ -298,7 +296,7 @@ contact.
 |-----------|--------------|
 | Post | 50×50×3mm steel SHS, ~115mm tall (floor to grate bottom), on bare floor at X=140mm |
 | Foot plate | 128×60×8mm steel plate, with **4× M10 wedge anchors** into the container floor (sealed) |
-| Arm | 40×40×3mm steel SHS, Z75–115 (40mm deep), reaching X=470mm (2 brackets) or extended to X=770mm (3 brackets, under the punch-out) |
+| Arm | 40×40×3mm steel SHS, reaching X=470mm (2 brackets) or extended to X=770mm (3 brackets, under the punch-out) |
 | Overturning reaction | reacted by the foot-plate anchors; ~1kN footfall at the arm tip is the worst case |
 
 The grate simply rests on the cantilever arms — located laterally by butting the
@@ -321,9 +319,9 @@ The left walkway grate — together with the door-end near-deck lift-out
 section — must be lifted out before the panel can swing (the 5 floor-leg posts stay
 bolted to the floor). As the panel + drum swing ~56° about the pivot, the cage sweeps past
 the butt joint into the vacated zone, **riding the Z=130mm floor gap over the
-Z115 door-end brackets** — so no walkway bracket is struck (the swing clears them at Z).
+Z115 door-end brackets** — so no walkway bracket is struck (the swing clears).
 The relevant standing clearance is vertical: the panel/cage bottom edge sits at the
-grate-top level (Z=130mm), clearing the tray rim and the bracket tops.
+grate-top level, clearing the tray rim and the bracket tops.
 
 ---
 

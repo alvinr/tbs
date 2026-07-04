@@ -44,7 +44,7 @@ Overall floorplan can be seen below. Its essentially split into three areas, lef
 |------|--------|--------|-------|
 | Evaporative cooler | 700–1,300 | ground | Hessaire MC18M, 120V AC <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W (<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus via inverter); ground-placed outside, flex duct to wall stub at Z=1,900mm |
 | Cooler inverter (Cct E) | 1,910–2,030 | 1,180–1,415 | Victron Phoenix 12/375 GFCI, wall-mounted below the EP (12V→120V for the cooler) |
-| Electrical panel | 1,910–2,210 | 1,500–2,100 | IP65, wall-mount (stacked above the battery bank; clears the upper transport-stay anchor). rev11: dropped 150mm (was Z1,650–2,250) — originally to clear the film-plane brace top beam; that brace cage is now retired for wall-seat saddles, but the EP is kept at this height |
+| Electrical panel | 1,910–2,210 | 1,500–2,100 | IP65, wall-mount (stacked above the battery bank; clears the upper transport-stay anchor) |
 | Battery bank (2× 100Ah LiFePO4, each 330×172×214mm) | 1,540–2,220 | 150–364 | Wall shelf below panel; side-by-side, clears the optical cone |
 | Solar charge controller | Within panel | — | Mounted inside enclosure |
 | Cable trunking | Along wall face, H=1,800mm | — | Full length |
@@ -97,8 +97,8 @@ in a 2×2 arrangement (two columns along Y, two tiers high).
 
 | Arrangement | X span used | Max Y depth |
 |-------------|------------|------------|
-| Old (side-by-side X) | 2,400mm | 1,116mm |
-| **New (Y-stacked, right-justified)** | **1,219mm** | **2,302mm** |
+| Side-by-side (X-spread) | 2,400mm | 1,116mm |
+| **Y-stacked, right-justified (chosen)** | **1,219mm** | **2,302mm** |
 
 The 2×2 stack gives a 1,219mm X footprint (= IBC cage width), right-justified to
 the far end wall. The zone itself is only 1,244mm wide (X=4,649–5,893mm), so the
@@ -203,7 +203,7 @@ The evaporative cooler (**Hessaire MC18M**, 559×305×711mm) sits on the ground 
 | Weight (dry) | ~7.3 kg (16 lb) |
 | Securing | 2× ratchet straps to bracket arms |
 | Base plate | 12mm ply, 559×305mm |
-| Clearance to panel swing sweep | ~55mm (the swing reaches X≈1,395 in the near-walkway zone; the cooler starts at X=1,450 — moved deeper from X=1,200 in rev10 to clear the deeper swing) |
+| Clearance to panel swing sweep | ~55mm (the swing reaches X≈1,395 in the near-walkway zone; the cooler at X=1,450 clears it) |
 
 See [Walkway Diagram — Sheet 1](engineering-diagrams.md) for stowage position in plan view.
 
@@ -224,10 +224,11 @@ drain returns from the sump to P-04 on the panel. P-02 (Brown filter feed) and t
 3-stage filter stack are on the **Pinhole Wall Plumbing Panel** on the pinhole wall
 face. See the [Plumbing Report](plumbing-report.md) for the full plumbing layout.
 
-**Electrical conduit:** 25mm PVC trunking along the
+**Electrical conduit:** 40×25mm PVC trunking along the
 full container length on the pinhole wall face. Branch drops at each circuit
 termination. All circuits ≤ 9m — within voltage-drop budget for 12V DC with
-10 AWG wire.
+10 AWG wire. The pump circuit (C) is switched at the master pump switch on the
+EP; the corridor panel carries only its 12V distribution block.
 
 **Solar inlet + shore power:** NEMA 5-15R weatherproof inlet on exterior of
 pinhole wall at X=2,399mm (pinhole side), H=400mm.
@@ -291,7 +292,7 @@ The panel + drum swing about the Ø89 pivot — ~56° inboard for transport (the
 | Component | Position | In swing path? |
 |-----------|----------|---------------|
 | Light trap drum | Panel-mounted (center zone) | Moves with the panel |
-| Fan B intake duct | Panel-mounted, Yd=365, H=600 (rev9/B2 swap — near pinhole wall) | Moves with the panel |
+| Fan B intake duct | Panel-mounted, Yd=365, H=600 (near pinhole wall) | Moves with the panel |
 | Fan B cable | 1m coiled cable, ceiling service loop | Accommodates the ~56° panel swing (with slack) |
 | Evap cooler duct stub | X=1,000, Yd=0 (wall penetration) | No — flush with wall |
 | Electrical panel | X=1,910–2,210 | No — inboard of the X≈1,395 swing sweep |

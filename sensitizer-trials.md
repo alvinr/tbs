@@ -32,9 +32,12 @@ coats** (§2.5). The per-print chemistry therefore scales as
   ~8× the paper chemistry density, so fabric work runs **Ware's 3:1 ratio at a diluted
   strength.** How dilute (and still give adequate Dmax) is the open question.
 
-**Impact:** at the corrected two-coat figures, the planned **8.45 kg AmFe order yields only
-~11–32 prints, not 50** (see the operating-manual §0.2 table). Picking the wrong tier mis-sizes
-the chemistry order — and its ~$900 cost — by up to **4.6×.**
+**Impact:** these two unknowns set the chemistry order size directly. For the 50-print run the
+AmFe order swings **~3× across the concentration tiers** (Lean ⅓-Ware → Rich full-Ware), and
+coverage is still unmeasured on our muslin, so the real yield could sit further off still. The
+per-tier masses and their cost band live in the [operating-manual §0.2 table](operating-manual.md)
+and the [cost breakdown](project-cost-breakdown.md); the trials below pin which tier applies
+before the bulk order commits.
 
 ---
 
@@ -78,3 +81,11 @@ A tier and dichromate level are "locked" when T2/T3 show acceptable Dmax + contr
 production muslin, and T1 fixes the coverage. On sign-off, cascade the numbers into
 operating-manual §0.2/§0.3/§2.1, the master shopping list, and the cost breakdown, and
 mark this page **CLOSED** with the chosen values recorded.
+
+---
+
+## Source References
+
+1. [AlternativePhotography — Cyanotypes on Fabric: Preparing the Fabric (Ruth Brown)](https://www.alternativephotography.com/cyanotypes-on-fabric-preparing-the-fabric/) — fabric coverage rate (~123 ml/m² on medium cotton).
+2. [Jacquard Cyanotype Sensitizer Set (Dick Blick)](https://www.dickblick.com/products/jacquard-cyanotype-sensitizer-set/) — coverage cross-check (~183 ml/m² over ~50 8×10 fabric prints).
+3. [Mike Ware — The New Cyanotype Process](https://www.mikeware.co.uk/mikeware/New_Cyanotype_Process.html) — AmFe sensitizer chemistry, the 3:1 ratio, and dichromate contrast control.

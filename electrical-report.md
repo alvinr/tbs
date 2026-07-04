@@ -278,7 +278,7 @@ Interior elevation of the pinhole wall face, looking from inside the container. 
 ![TBS-ELEC Sheet 3 — Pinhole Wall Interior Elevation](assets/electrical-sheet3.png)
 
 **Sheet 4 — Plumbing-Panel Pump Power (Circuit C)**
-Scale engineering elevation of the Circuit-C pump distribution on the corridor plumbing panel (matches the [panel-layout](panel-layout.md) elevation): the switched 14 AWG / 15A feed (from the **master pump switch on the EP** — Sheet 5) → 12V distribution block → a 16 AWG **curved-elbow** branch to each of the four column pumps (bottom→top ACC-01, P-01, P-04, P-05, P-03; P-02 is fed on the Pinhole-Wall panel). No per-pump switches — the EP master switch is the single cutoff and each Shurflo runs on its internal pressure switch. See §7.3 (Circuit C) and the [Plumbing Panel report §3.2](plumbing-report.md).
+Scale engineering elevation of the Circuit-C pump distribution on the corridor plumbing panel (matches the panel-layout elevation in the [Plumbing Panel report §3.2](plumbing-report.md)): the switched 14 AWG / 15A feed (from the **master pump switch on the EP** — Sheet 5) → 12V distribution block → a 16 AWG **curved-elbow** branch to each of the four column pumps (bottom→top ACC-01, P-01, P-04, P-05, P-03; P-02 is fed on the Pinhole-Wall panel). No per-pump switches — the EP master switch is the single cutoff and each Shurflo runs on its internal pressure switch. See §7.3 (Circuit C) and the [Plumbing Panel report §3.2](plumbing-report.md).
 
 ![TBS-ELEC Sheet 4 — Plumbing-Panel Pump Power (Circuit C)](assets/electrical-sheet4.png)
 

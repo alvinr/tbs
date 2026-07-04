@@ -20,8 +20,6 @@ Cyanotype is the chosen process. For the cost of the alternatives considered (gu
 
 All iron/silver processes use unbleached cotton muslin as the substrate. 50 prints at ~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft each, plus 15% waste = ~6,670 sq ft total; at 60" (5 ft) wide fabric that is 6,670 ÷ 5 = **~1,334 linear feet ≈ 445 linear yards**.
 
-> **Correction (2026-06-18):** an earlier version of this section read "~1,340 linear **yards**" — that figure was 1,334 linear **feet** mis-labelled as yards (a 3× over-count). The corrected requirement is **~445 yd = 3 × 150-yd rolls ≈ $300**, not 9 rolls / $900 (the summary's "$1,014" was the same 1,340 yd priced by-the-yard). Every muslin-bearing process total below — and the executive summary and comparative tables — has now been re-summed at **$300 substrate** (each dropped ~$600, except Ilford, which is paper). The [cost breakdown §7](project-cost-breakdown.md) matches.
-
 | Item | Qty | Supplier | Unit | Units needed | Unit price | Total |
 |---|---|---|---|---|---|---|
 | Unbleached cotton muslin, 60" wide | ~445 yd | **Fabric Direct** | 150-yd roll | 3 rolls | ~$100/roll | ~$300 |
@@ -39,26 +37,24 @@ URL: [fabricwholesaledirect.com](https://fabricwholesaledirect.com/products/cott
 
 ## Process 1: Cyanotype
 
-**50-print total: ~$1,915 | Per print: ~$38**
+**50-print total (Standard ½-Ware default): ~$1,653 · ~$33/print** — the full Lean/Rich per-tier breakdown is in the shopping list below.
 
 Cyanotype uses the **Mike Ware New Cyanotype formula** (1994) as the primary sensitizer. This replaces the traditional Herschel ferric ammonium citrate (FAC) formula with ammonium iron(III) oxalate (AmFe) and achieves **4–8× faster exposures** (baseline ~30–45 min in full sun vs 2+ hours for traditional) with denser shadows and finer tonal gradation.
 
-**Source:** Ware, M., *Cyanotype: The History, Science and Art of Photographic Printing in Prussian Blue*, Science Museum, 1999. Formula and technical notes: mikeware.co.uk/mikeware/New_Cyanotype_Process.html (free).
+**Source:** Ware, M., *Cyanotype: The History, Science and Art of Photographic Printing in Prussian Blue*, Science Museum, 1999. Formula and technical notes: [mikeware.co.uk/mikeware/New_Cyanotype_Process.html](https://www.mikeware.co.uk/mikeware/New_Cyanotype_Process.html) (free).
 
 ### Chemistry quantities — Ware New Cyanotype formula
 
-| Reagent | Per print | × 50 prints | Order qty | Notes |
-|---|---|---|---|---|
-| Ammonium iron(III) oxalate (AmFe) | 169 g | **8.45 kg** | 9 kg | Part A; requires warm water to dissolve |
-| Potassium ferricyanide | 79 g | **3.95 kg** | 4 kg | Part B |
-| Ammonium dichromate | 9 g | **450 g** | 500 g | Part B additive; contrast enhancer — handle with care |
-| Distilled / DI water | ~1.7 L | ~85 L | Tap water + DI filter adequate | Part A requires warm water (50–60°C) |
+The sensitizer is Ware's AmFe : potassium ferricyanide (Part A / Part B) with an ammonium-dichromate contrast additive:
 
-> **⚠ Under revision (cyanotype) — see [Sensitizer Trials](sensitizer-trials.md).** These per-print
-> figures predate that review, which corrects (a) the coat count to **two wet-on-wet coats** (not one)
-> and (b) the ratio to **Ware 3:1** (AmFe:ferricyanide). At the corrected figures the per-print AmFe is
-> **~260–780 g** (concentration-tier dependent), so this **8.45 kg order makes ~11–32 prints, not 50** —
-> the order size and cost (~$887) will be re-set once a trial tier is locked. See [operating-manual §0.2](operating-manual.md).
+| Reagent | Role | Notes |
+|---|---|---|
+| Ammonium iron(III) oxalate (AmFe) | Part A | requires warm water (50–60°C) to dissolve |
+| Potassium ferricyanide | Part B | mixed with AmFe at Ware's 3:1 ratio |
+| Ammonium dichromate | Part B additive | contrast enhancer — carcinogen, handle with care (see below) |
+| Distilled / DI water | solvent | tap water + DI filter adequate; warm for Part A |
+
+The **per-print masses are under trial** — two wet-on-wet coats at a diluted Ware strength, concentration-tier dependent — so they are not yet pinned; see [Sensitizer Trials](sensitizer-trials.md). The **per-tier order quantities and cost** (Lean / Standard / Rich) are in the shopping list below.
 
 > **⚠ Ammonium dichromate** is a known carcinogen (Category 1A) and oxidizer. Quantities here are small (~10g per print, 1 kg for 50 prints). Wear nitrile gloves and mix in ventilated area. Store away from flammables. No hazmat shipping at this quantity (< 1 kg per shipment from Photographers' Formulary).
 
@@ -80,8 +76,6 @@ Cyanotype uses the **Mike Ware New Cyanotype formula** (1994) as the primary sen
 
 *No fixer required. Development in plain cold water. No darkroom required for processing.*
 
-*Note: No fixer required. Development in plain cold water. No darkroom required for processing.*
-
 ### Traditional Herschel formula (alternative — if AmFe unavailable)
 
 Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at room temperature.
@@ -93,3 +87,9 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 
 ---
 
+## Source References
+
+1. [Mike Ware — The New Cyanotype Process](https://www.mikeware.co.uk/mikeware/New_Cyanotype_Process.html) — AmFe sensitizer formula, the 3:1 ratio, and dichromate contrast (also Ware, M., *Cyanotype: The History, Science and Art of Photographic Printing in Prussian Blue*, Science Museum, 1999).
+2. Muslin: [Fabric Direct](https://www.fabricdirect.com/shop/craft-fabric/broadcloth-and-muslin-fabric/essence-60-medium-weight-muslin-fabric-unbleached-150-yard-roll/) (150-yd rolls) · [Fabric Wholesale Direct](https://fabricwholesaledirect.com/products/cotton-muslin-fabric-60-inches) (by the yard).
+3. Reagents: [Photographers' Formulary](https://stores.photoformulary.com/) (AmFe, ammonium dichromate, FAC) · Bostick & Sullivan (potassium ferricyanide).
+4. [Process Comparison](process-comparison.md) — cost of the rejected alternative processes.

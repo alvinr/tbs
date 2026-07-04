@@ -28,7 +28,7 @@ PRINTS = 50            # edition size every per-run figure is based on
 PER_PRINT_CONSUMABLES = 3   # §7.3 all-in basis: water/citric/pH per print BEYOND §7.1 chem+substrate
 
 # ── Unit prices (USD) — each carries its source for traceability ─────────────
-PRICE_AMFE_PER_KG  = 60.00     # Bostick & Sullivan — ammonium iron(III) oxalate (AmFe)
+PRICE_AMFE_PER_KG  = 60.00     # Photographers' Formulary — ammonium iron(III) oxalate (AmFe)
 PRICE_FERRI_PER_KG = 24.29     # Bostick & Sullivan — potassium ferricyanide
 DICHROMATE_RUN     = 25.00     # ammonium dichromate — trace contrast agent, per run
 MUSLIN_ROLL_PRICE  = 100.00    # Fabric Direct — 60" x 150-yd unbleached muslin roll
@@ -95,7 +95,7 @@ def emit_cost_breakdown_7_1() -> str:
         "|---|---|---|---|---|",
         f"| Ammonium iron(III) oxalate (AmFe) | {TIERS[0].amfe_kg:g} kg / ~{dollars(L['amfe'],10)} "
         f"| **{TIERS[1].amfe_kg:g} kg / ~{dollars(S['amfe'],10)}** | {TIERS[2].amfe_kg:g} kg / ~{dollars(R['amfe'],10)} "
-        f"| Bostick & Sullivan (~${PRICE_AMFE_PER_KG:.0f}/kg) |",
+        f"| Photographers' Formulary (~${PRICE_AMFE_PER_KG:.0f}/kg) |",
         f"| Potassium ferricyanide (3:1 ratio) | {TIERS[0].ferri_kg:g} kg / ~{dollars(L['ferri'])} "
         f"| **{TIERS[1].ferri_kg:g} kg / ~{dollars(S['ferri'])}** | {TIERS[2].ferri_kg:g} kg / ~{dollars(R['ferri'])} "
         f"| Bostick & Sullivan (${PRICE_FERRI_PER_KG}/kg) |",

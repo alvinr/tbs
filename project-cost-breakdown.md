@@ -280,11 +280,11 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 |----------|------|-------|
 | Water storage (4× IBC totes, 3× bulkhead fittings, X1 fill tee) | $395 | $720 |
 | IBC stacking frame (50×50×3mm RHS restraint deep 4-leg box + 4 floor feet + 50×20 front retaining bars + wall joist hangers through-bolted to exterior backing plates + fabrication, per [Stacking §9.1](ibc-stacking-report.md)) | $980 | $1,505 |
-| Pumps and accumulator (P-01, P-02, P-04 manifold + P-03 IBC corridor) | $390 | $420 |
+| Pumps and accumulator (P-01, P-02, P-04 manifold + P-03, P-05 IBC corridor) | $390 | $420 |
 | Corridor plumbing panel structure (18mm marine-ply backing board + drain-riser spine, 25mm pump-mount shirt, mount brackets + fasteners) | $215 | $380 |
 | Under-walkway pipe-ribbon supports (4× welded cross-braces + 16 pipe clips) | $24 | $48 |
 | Filter skid (3× Big Blue housings + cartridges) | $336 | $550 |
-| Valves and fittings (incl. S60×6 adapters, check valves CV1/CV3/CV4) | $357 | $615 |
+| Valves and fittings (incl. S60×6 adapters, check valve CV-1 (pumps have integral checks)) | $357 | $615 |
 | Pipe (HDPE, spray bar) | $80 | $114 |
 | Processing tray (304 SS, fabricated, 2 panels) | $1,300 | $2,015 |
 | Spray bar assembly (gantry: beam, LDPE pipe, 26 nozzles, manifold + 7 feed tubes, 4 wheels, ball joint, arm, hose) | $287 | $375 |
@@ -399,7 +399,7 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 <!-- BEGIN costing:chemistry-7-1 -->
 | Item (50 prints) | Lean (⅓-Ware) | **Standard (½-Ware) — default** | Rich (full-Ware) | Source |
 |---|---|---|---|---|
-| Ammonium iron(III) oxalate (AmFe) | 13 kg / ~$780 | **19.5 kg / ~$1,170** | 39 kg / ~$2,340 | Bostick & Sullivan (~$60/kg) |
+| Ammonium iron(III) oxalate (AmFe) | 13 kg / ~$780 | **19.5 kg / ~$1,170** | 39 kg / ~$2,340 | Photographers' Formulary (~$60/kg) |
 | Potassium ferricyanide (3:1 ratio) | 4.3 kg / ~$104 | **6.5 kg / ~$158** | 13 kg / ~$316 | Bostick & Sullivan ($24.29/kg) |
 | Ammonium dichromate (contrast, 0.1–0.4%) | ~$25 | **~$25** | ~$25 | Photographers' Formulary |
 | Unbleached cotton muslin, 60″ — 3 × 150-yd rolls (~445 yd) | ~$300 | **~$300** | ~$300 | Fabric Direct (~$100/roll) |

@@ -83,7 +83,7 @@ operator reaches up to service them. Flow path: P-02 output → F-01 (5μm sedim
 
 | Stage | Media | Housing |
 |-------|-------|---------|
-| F-01 (sediment) | 50μm MPP melt-blown polypropylene | 4.5"×20" Big Blue |
+| F-01 (sediment) | 5μm MPP melt-blown polypropylene | 4.5"×20" Big Blue |
 | F-02 (heavy metal) | KDF-55 heavy-metal removal | 4.5"×20" Big Blue |
 | F-03 (carbon) | CTO coconut-shell activated carbon | 4.5"×20" Big Blue |
 

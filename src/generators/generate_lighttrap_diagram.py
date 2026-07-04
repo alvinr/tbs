@@ -143,7 +143,7 @@ def draw_sheet1():
                 xytext=(pf_a_x0 + PF_T + 0.65, FA_Y),
                 arrowprops=dict(arrowstyle="-|>", color="#D32F2F", lw=1.2, alpha=0.6), zorder=6)
 
-    ann(ax, f"Cct A  |  {FAN_DIAM}mm compact axial panel fan\n3A / 16AWG / 40W / 150+ CFM\n~50mm body depth",
+    ann(ax, f"Cct A  |  {FAN_DIAM}mm compact axial panel fan\n5A / 16AWG / 60W / 150+ CFM\n~50mm body depth",
         (FA_X, FA_Y - R_PF), (FA_X + 1.4, FA_Y - 2.2), size=7.5)
     ann(ax, "HIGH POSITION\n~2000mm AFF",
         (FA_X, FA_Y - R_PF), (FA_X + 1.2, FA_Y - 1.0), size=7.5)
@@ -192,7 +192,7 @@ def draw_sheet1():
                 xytext=(pf_x0 - 0.05, FB_Y),
                 arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=1.2, alpha=0.6), zorder=6)
 
-    ann(ax, f"Cct B  |  {FAN_DIAM}mm compact axial panel fan\n3A / 16AWG / 40W / 150+ CFM\n~50mm body depth  ·  275mm cone margin",
+    ann(ax, f"Cct B  |  {FAN_DIAM}mm compact axial panel fan\n5A / 16AWG / 60W / 150+ CFM\n~50mm body depth  ·  275mm cone margin",
         (FB_X, FB_Y + R_PF), (FB_X - 2.0, FB_Y + 2.2), size=7.5)
     ann(ax, "LOW POSITION\n~600mm AFF",
         (FB_X, FB_Y + R_PF), (FB_X - 1.2, FB_Y + 1.0), size=7.5)
@@ -533,7 +533,7 @@ def draw_sheet2():
 
     ax.text(520, FCZ + PF_R - 20,
             f"{FAN_DIAM}mm COMPACT AXIAL PANEL FAN  ·  Fan A (exhaust) and Fan B (intake) — identical\n"
-            "Cct A/B  ·  40W  ·  150+ CFM  ·  ~50mm body depth  ·  Interior-mounted",
+            "Cct A/B  ·  60W  ·  150+ CFM  ·  ~50mm body depth  ·  Interior-mounted",
             ha="center", va="top", fontsize=8.0, fontweight="bold", color=C_OUT, zorder=10)
 
     # ── Airflow arrows ────────────────────────────────────────────────────────

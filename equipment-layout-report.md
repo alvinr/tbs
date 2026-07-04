@@ -36,7 +36,7 @@ Overall floorplan can be seen below. Its essentially split into three areas, lef
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
 | Hinged panel (stepped) | 0–40 (corner) / 0–120 (center) | 0–2,362 | 0–<!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm --> | Stepped profile: 40mm corners, 120mm center (drum housing). Swings ~56° about the Ø89 pivot for transport. |
-| Light trap drum | −375–375 | 806–1,556 (centered at CW/2=1,181mm) | 0–2,200 | Centered at X=0 (spans container wall); integrated into panel center zone; rotary drum entry |
+| Light trap drum | −850–50 | 731–1,631 (centered at CW/2=1,181mm) | 130–2,250 | Centered at X=−400 (offset into container); integrated into panel center zone; rotary drum entry |
 
 ### 2.2 Pinhole Wall Face
 

@@ -31,14 +31,14 @@ Overall floorplan can be seen below. Its essentially split into three areas, lef
 **Floor plan**
 ![TBS-001 Container Floor Plan — End-Zone Layout](assets/container-floorplan.png)
 
-### 2.1 Left End Zone — X=0–150mm
+### 2.1 Left End Zone
 
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
 | Hinged panel (stepped) | 0–40 (corner) / 0–120 (center) | 0–2,362 | 0–<!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm --> | Stepped profile: 40mm corners, 120mm center (drum housing). Swings ~56° about the Ø89 pivot for transport. |
 | Light trap drum | −375–375 | 806–1,556 (centered at CW/2=1,181mm) | 0–2,200 | Centered at X=0 (spans container wall); integrated into panel center zone; rotary drum entry |
 
-### 2.2 Pinhole Wall Face — Y=0 surface mounted
+### 2.2 Pinhole Wall Face
 
 | Item | X (mm) | H (mm) | Notes |
 |------|--------|--------|-------|
@@ -50,19 +50,19 @@ Overall floorplan can be seen below. Its essentially split into three areas, lef
 | Cable trunking | Along wall face, H=1,800mm | — | Full length |
 | Blue supply pipe → spray bar | along wall to X=2,399 | — | Rigid 1/2" HDPE from the corridor pump panel to the spray-bar feed; pumps themselves are on the plumbing panel in the IBC corridor (§2.4 / [Plumbing Report](plumbing-report.md)) |
 
-### 2.3 Optical Zone — X=150–4,649mm
+### 2.3 Optical Zone
 
-Rail slots in floor/ceiling at X=150 and X=4,649. Film plane frame
-spans this zone at depth Y=2,262mm (nominal far position).
+Rail slots in floor/ceiling. Film plane frame
+spans this zone (nominal far position).
 
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
 | Processing tray (2 panels, 304 SS) | 170–4,629 | 80–2,280 | 0–50 | 50mm rim; 20mm clearance to film plane rails; sump well at X=2,399, Yd=80 with P-04 suction pickup to 3W-DV-02. On tapered HDPE shim strips. Permanently installed. |
 | Perimeter walkway (4 sections, removable) | 170–4,629 | 0–300 / 2,062–2,362 | 0–130 | 300mm wide, 130mm deck height (raised +50; 115mm support + 15mm grate). Near/far: wall-cantilevered 8mm gusset brackets at 457mm centers. Right: brackets on angle iron welded to end wall. Left: removable lift-out grate on 5 floor-leg cantilever brackets bolted to bare floor outside the tray (arms to X=470, 3 extended to X=770 on the punch-out; the panel occupies this end wall), 15mm grating. Left corners: butt joint (no miter). No tray contact (left brackets bolt to bare floor outside the tray). Floor-leg arm (Z=75–115) clears the 50mm tray rim and the Z60 spray bar by 15mm. |
 
-The processing tray sits below the film plane carriage blocks (minimum Z=140mm at maximum 40° tilt; the lower max angle only increases clearance), providing 90mm clearance above the tray rim. The tray does not contact or interfere with the HGR20 rail channels at X=150 and X=4,649.
+The processing tray sits below the film plane carriage blocks (minimum Z=140mm at maximum 40° tilt; the lower max angle only increases clearance), providing 90mm clearance above the tray rim. The tray does not contact or interfere with the HGR20 rail channels.
 
-### 2.4 Right End Zone — X=4,649–5,893mm
+### 2.4 Right End Zone
 
 2×2 IBC stack — right-justified flush to the far end wall. Four IBCs in two
 columns (25mm clearance from zone boundary), separated by a
@@ -101,7 +101,7 @@ in a 2×2 arrangement (two columns along Y, two tiers high).
 | **Y-stacked, right-justified (chosen)** | **1,219mm** | **2,302mm** |
 
 The 2×2 stack gives a 1,219mm X footprint (= IBC cage width), right-justified to
-the far end wall. The zone itself is only 1,244mm wide (X=4,649–5,893mm), so the
+the far end wall. The zone itself is only 1,244mm wide, so the
 IBCs fit with 25mm clearance on the zone boundary side. The two columns are
 separated by a 270mm plumbing corridor, with
 30mm wall clearance on each side.
@@ -166,8 +166,7 @@ The hinged panel has a stepped profile: 40mm thick at the corner zones and 120mm
 where the light trap drum is mounted. For transport the panel + drum SWING ~56° about a
 vertical Ø89×8mm CHS pivot post (sharing the film-plane far-left upright),
 carrying the punch-out bay inboard of the door plane. Two narrow strips stay fixed at the
-door plane; the cargo doors close
-outboard of the fixed near strip.
+door plane; the cargo doors close outboard of the fixed near strip.
 
 | Position | Description | Doors clear? |
 |----------|-------------|-------------|
@@ -189,9 +188,9 @@ per-path seal table and the dark-adaptation verification check.
 
 ### 6.2 Evaporative Cooler Transport Stowage
 
-The evaporative cooler (**Hessaire MC18M**, 559×305×711mm) sits on the ground outside the container during operation, connected to the wall penetration via Ø200mm flex cord and powered from the interior inverter (Circuit E, 120V AC). It must be stowed inside the container for transport.
+The evaporative cooler (**Hessaire MC18M**) sits on the ground outside the container during operation, connected to the wall penetration via Ø200mm flex cord and powered from the interior inverter (Circuit E, 120V AC). It must be stowed inside the container for transport.
 
-**Stowage position:** On the near walkway grating in the wide section. The cooler sits on a 12mm plywood base plate (559×305mm) that distributes the load across the grating and prevents the housing from catching in the grate openings. The wide section (500mm) fully contains the 305mm cooler depth with ~195mm clearance — no overhang into the processing tray zone. The lighter (16 lb) unit also eases the handling.
+**Stowage position:** On the near walkway grating in the wide section. The cooler sits on a 12mm plywood base plate (559×305mm) that distributes the load across the grating and prevents the housing from catching in the grate openings. The wide section fully contains the cooler depth with ~195mm clearance — no overhang into the processing tray zone. The lighter (16 lb) unit also eases the handling.
 
 **Securing:** Two 25mm ratchet straps loop over the cooler and hook to the nearest cantilever bracket arms. Two aluminum angle cleats (25×25×3mm, 100mm long) screwed to the base plate prevent lateral sliding.
 
@@ -230,8 +229,7 @@ termination. All circuits ≤ 9m — within voltage-drop budget for 12V DC with
 10 AWG wire. The pump circuit (C) is switched at the master pump switch on the
 EP; the corridor panel carries only its 12V distribution block.
 
-**Solar inlet + shore power:** NEMA 5-15R weatherproof inlet on exterior of
-pinhole wall at X=2,399mm (pinhole side), H=400mm.
+**Solar inlet + shore power:** NEMA 5-15R weatherproof inlet on exterior of pinhole wall.
 
 ---
 
@@ -289,21 +287,21 @@ zone provides completely unobstructed access to the cargo doors.
 
 The panel + drum swing about the Ø89 pivot — ~56° inboard for transport (the swing sweep reaches X≈1,395 near the door end) and open about the pivot for loading/egress. All fixed interior equipment sits inboard of the door-end swing sweep:
 
-| Component | Position | In swing path? |
-|-----------|----------|---------------|
-| Light trap drum | Panel-mounted (center zone) | Moves with the panel |
-| Fan B intake duct | Panel-mounted, Yd=365, H=600 (near pinhole wall) | Moves with the panel |
-| Fan B cable | 1m coiled cable, ceiling service loop | Accommodates the ~56° panel swing (with slack) |
-| Evap cooler duct stub | X=1,000, Yd=0 (wall penetration) | No — flush with wall |
-| Electrical panel | X=1,910–2,210 | No — inboard of the X≈1,395 swing sweep |
-| Battery bank | X=1,810–2,310 | No — inboard of the swing sweep |
-| Pump manifold | X=5,140–5,240 (IBC corridor) | No — far inboard (IBC end) |
-| Water lines | Pinhole wall (Yd=0), X=2,400+ | No — far inboard |
+| Component  | In swing path? |
+|------------|----------------|
+| Light trap drum | Moves with the panel |
+| Fan B intake duct | Moves with the panel |
+| Fan B cable | Accommodates the ~56° panel swing (with slack) |
+| Evap cooler duct stub | No — flush with wall |
+| Electrical panel | No — inboard of the X≈1,395 swing sweep |
+| Battery bank | No — inboard of the swing sweep |
+| Pump manifold | No — far inboard (IBC end) |
+| Water lines | No — far inboard |
 
 **Cargo door egress detail — panel open 180° outward:**
 ![TBS-001 Cargo Door Egress Detail](assets/container-floorplan-sheet2.png)
 
-The light trap drum (900mm dia, center ~1,181mm from hinge axis) sweeps through exterior space during 180° rotation. No interior equipment exists in the left end zone floor area.
+The light trap drum sweeps through exterior space during 180° rotation. No interior equipment exists in the left end zone floor area.
 
 **Conclusion:** No components obstruct egress. The left end zone is entirely clear at floor level, providing unobstructed single-person egress and full swing clearance at the cargo door end.
 

@@ -58,7 +58,7 @@ directly on the shims to flow the water into the bottom right for pickup by the 
 | Material | HDPE flat bar, 50mm wide |
 | Quantity | 5 strips running full tray depth |
 | Spacing | ~1,000mm apart across tray width (X direction) |
-| Profile | Tapered: ~20mm at near rim (Yd=80, drain end — raised so the 20mm sump well bottom rests on the container floor) → ~30mm at far rim (Yd=2,280) |
+| Profile | Tapered: ~20mm at near rim (drain end — raised so the 20mm sump well bottom rests on the container floor) → ~30mm at far rim |
 | Attachment | Construction adhesive (Loctite PL Premium or equivalent) to container floor |
 | Function | Creates the Yd-axis slope; X-axis slope is formed into the tray panels during fabrication (pressed crown) |
 
@@ -155,7 +155,7 @@ down-and-in, at 150mm pitch along the beam.
 | Irrigation feed tubes | 1/4" poly/vinyl tube, manifold to beam feed points | 7 | Distribute water along the beam (~7m total) |
 | Barbed feed fittings | Barbed tee, feed tube into the side manifold | 7 | Feed points (~550mm pitch) into the manifold |
 | Retainer clips | SS or nylon, for 3/4" LDPE fold-back closure | 2 | Seal both ends of poly pipe (fold-back termination) |
-| [Nylon skate wheels](https://www.mcmaster.com/products/rollers/skate-wheels-1~/) | 32mm OD × 20mm wide, 8mm bore, flat tread | 4 | Low-profile, roll on tray floor beneath walkway grating (2 per carriage, 200mm Yd spacing) |
+| [Nylon skate wheels](https://www.amazon.com/uxcell-Plastic-Roller-Bearings-Guiding/dp/B0GXVT88Y5) | 32mm OD × 20mm wide, 10mm bore, flat tread | 4 | Low-profile, roll on tray floor beneath walkway grating (2 per carriage, 200mm Yd spacing) |
 | [Axle pins (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | 10mm × 60mm 304 SS axle pin, flat head | 4 (1 pack) | Wheel spindles |
 | [Axle retention saddle clamps (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | 304 SS, curved conduit-style saddle, 10mm, two bolt holes | 8 | Retain the wheel axles — bolted to the carriage plate underside |
 | Carriage plates | 6061-T6 AL plate 5mm, wings extend in to meet beam faces | 2 | Carry wheels; captured between beam clamp plates |
@@ -234,7 +234,7 @@ wheels spaced 200mm apart in the Yd direction for stability against tipping.
 | Type | Fixed (non-swivel) nylon wheel |
 | Diameter | 32mm |
 | Width | 20mm |
-| Bore | 8mm |
+| Bore | 10mm |
 | Load rating | ≥25 kg per wheel (actual load ~2.6 kg per wheel wet) |
 | Tread profile | Flat (rolls on the stainless tray floor, raised on the shim ramp) |
 | Material | Glass-filled nylon or Delrin |
@@ -331,7 +331,7 @@ carriage plate underside. The saddle cradles the 10mm axle pin with 1mm clearanc
 
 | Step | Operation |
 |------|-----------|
-| 1 | Place nylon wheel (32mm × 20mm, 8mm bore) in position under the carriage plate |
+| 1 | Place nylon wheel (32mm × 20mm, 10mm bore) in position under the carriage plate |
 | 2 | Insert 10mm SS axle pin through wheel bore |
 | 3 | Position the saddle clamp over the axle, feet against the plate underside |
 | 4 | Insert 2× M5 bolts up through the saddle feet and carriage plate; secure with nyloc nuts on top |
@@ -560,7 +560,7 @@ tray drainage plan and sump cross-section).
 | 1/4" irrigation poly tube | Manifold to beam feed points (~7m total) | 1 ea | Amazon | $6 |
 | Barbed tees, tube into the side poly manifold | Feed tube to the side poly manifold, 7 feed points | 7 ea | Amazon | $10 |
 | SS/nylon retainer clips for 3/4" LDPE | Fold-back end closures | 2 ea | Amazon | $4 |
-| [Nylon skate wheel, 32mm × 20mm, 8mm bore](https://www.mcmaster.com/products/rollers/skate-wheels-1~/) | Flat tread, ≥25 kg rated (2 per carriage) — low-profile for grate clearance | 4 ea | McMaster-Carr | $12–$20 |
+| [Nylon skate wheel, 32mm × 20mm, 10mm bore](https://www.amazon.com/uxcell-Plastic-Roller-Bearings-Guiding/dp/B0GXVT88Y5) | Flat tread, ≥25 kg rated (2 per carriage) — low-profile for grate clearance; 10mm bore takes the 10mm axle | 4 ea | Amazon | $12–$20 |
 | 1/2" barb × 1/2" hose barb, brass | Flex hose to manifold inlet | 1 ea | Amazon | $4 |
 | Telescoping aluminum pool pole, 4–8 ft | Standard pool skimmer handle | 1 ea | Amazon | $15 |
 | 1/2" reinforced braided PVC hose, 15 ft | BV-02 to beam feed (4 m coiled) | 1 ea | Amazon | $15 |

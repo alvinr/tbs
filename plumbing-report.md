@@ -128,7 +128,7 @@ panel with the filter loop, §3.1). The accumulator ACC-01 sits at the column fo
 
 All pumps are identical Shurflo 2088-554-144 units: 12VDC, 3.5 GPM, 45 PSI,
 self-priming diaphragm. Vertical mount, ports at the head, 127mm body width ×
-218mm body height × ~114mm protrusion. Each mounts on a stainless 4-bolt bracket
+216mm body height × ~114mm protrusion. Each mounts on a stainless 4-bolt bracket
 through the plywood. They sit in a single vertical column in the 270mm corridor;
 P-01 and P-04 draw from the near IBC column, P-03 and P-05 from the far column.
 
@@ -350,7 +350,7 @@ panel and allows gravity to assist with priming.
 
 | Component | Protrusion from panel face (-X) |
 |-----------|-------------------------------|
-| Pump body (Shurflo 2088) | 100mm |
+| Pump body (Shurflo 2088) | 114mm |
 | Filter housing (Big Blue 4.5"×20") | 130mm |
 | Accumulator (ACC-01) | 127mm |
 | Pipe fittings + valves | ~50mm |
@@ -485,7 +485,7 @@ minute to flush; check for leaks.
 ## 11. Source References
 
 1. [Shurflo 2088-554-144 datasheet](https://www.shurflo.com/products/2088-series) — 12VDC diaphragm pump, 3.5 GPM, 45 PSI,
-   self-priming. 127mm × 218mm × 100mm body dimensions, 1/2"-14 NPSM ports.
+   self-priming. 127mm × 216mm × 114mm body dimensions, 1/2"-14 NPSM ports.
 2. [Pentek Big Blue 4.5"×20" housing specifications](https://www.pentair.com/en-us/water-treatment-components/filter-housings/big_blue_heavy_duty_series.html) — 1" NPT inlet/outlet,
    184mm OD, ~594mm total height, polypropylene head.
 3. [SeaFlo accumulator specifications](https://www.seaflo.com/products/accumulator-tank) — 0.75L capacity, 125 PSI max, 1/2" NPT

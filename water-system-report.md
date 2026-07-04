@@ -128,7 +128,7 @@ return-haul limit). See the [Operating Manual](operating-manual.md) for the top-
 
 ```
 IBC-1 (900L) ──┐
-                ├──→ Manifold → BV-01 → P-01 → ACC-01 → BV-02 → Distribution
+                ├──→ Manifold → BV-01 → P-01 → ACC-01 → BV-05 → Distribution
 IBC-2 (900L) ──┘                                                      │
                                                                           ↓
                                                               FLOOD/SPRAY BAR
@@ -216,9 +216,9 @@ The processing tray and spray bar gantry are fully specified in the [Processing 
 
 **External drain-out risers:** The Brown (IBC-3) and Waste (IBC-4) totes are pumped out to the sealed end-wall ports — X3 via P-05, X4 via P-03. The two vertical drain risers run down the IBC corridor gap and are clamped at ~400mm centers to an 18mm marine-ply backing spine that tees perpendicular off the Corridor Plumbing Panel. Its top is capped with a horizontal ply shelf that the Blue fill trunk rests on — so both the drain risers and the fill trunk are supported at the T rather than free-hanging.
 
-**Spray bar:** A 3,859mm span 304 SS RHS beam gantry (40×25×3mm, laid flat) rolls on the raised/sloped tray floor beneath the walkway grating. Water from P-01 (Blue supply) reaches the bar via BV-02 → 4m flexible hose → ball-joint manifold → 7 feed tubes into the side LDPE manifold → 26 flat-fan nozzles at 150mm centers, spraying down-and-in.
+**Spray bar:** A 3,859mm span 304 SS RHS beam gantry (40×25×3mm, laid flat) rolls on the raised/sloped tray floor beneath the walkway grating. Water from P-01 (Blue supply) reaches the bar via BV-05 → 4m flexible hose → ball-joint manifold → 7 feed tubes into the side LDPE manifold → 26 flat-fan nozzles at 150mm centers, spraying down-and-in.
 
-**Supply path:** P-01 → ACC-01 → rigid 1/2" HDPE pipe along pinhole wall → BV-02 → coiled flexible hose → bulkhead fitting → beam bore → spray holes.
+**Supply path:** P-01 → ACC-01 → rigid 1/2" HDPE pipe along pinhole wall → BV-05 → coiled flexible hose → bulkhead fitting → beam bore → spray holes.
 
 **Containment liner:** A fresh 6-mil black LDPE sheet is laid over the tray surface before each session to prevent direct stainless-to-print contact and simplify cleanup.
 
@@ -237,7 +237,7 @@ All pump-driven internal runs use **1/2" pipe**, matching the Shurflo 2088 pump 
 | Circuit | Pipe | Size | Pressure rating | Material |
 |---------|------|------|----------------|---------|
 | Blue supply (IBC → BV-01 → P-01) | Sch 40 / SDR-11 | 1/2" nominal (OD 21mm) | 100 PSI min | HDPE |
-| Blue discharge (P-01 → ACC-01 → BV-02 → spray bar) | Sch 40 / SDR-11 | 1/2" nominal (OD 21mm) | 100 PSI min | HDPE |
+| Blue discharge (P-01 → ACC-01 → BV-05 → spray bar) | Sch 40 / SDR-11 | 1/2" nominal (OD 21mm) | 100 PSI min | HDPE |
 | Brown suction (IBC-3 → P-02) | Sch 40 / SDR-11 | 1/2" nominal (OD 21mm) | 100 PSI min | HDPE |
 | Brown riser (P-02 → F1 inlet) | Sch 40 | 1/2" nominal (OD 21mm) | 100 PSI min | HDPE |
 | Tray drain suction (sump → P-04) | Reinforced flex hose | 1/2" nominal | pump suction | HDPE/PVC braid |

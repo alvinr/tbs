@@ -3,7 +3,7 @@
 # Depth of Field, Magnification & Minimum Focal Distance
 ### 20-foot Standard Container, Side-to-Side Orientation
 
-**Preceding documents:** [Optics: Technical Reference](pinhole-optics-report.md), [Container Selection & Construction Proposals](pinhole-camera-construction.md)
+**Preceding documents:** [Optics: Technical Reference](pinhole-optics-report.md), [Container Selection & Construction](container-report.md)
 **Date:** April 2026
 
 ---

@@ -46,7 +46,7 @@
 
 ## 1. Container Purchase & Delivery
 
-**Source document:** `pinhole-camera-construction.md`
+**Source document:** `container-report.md`
 
 The 20 ft standard container is the camera body. Minimum acceptable grade is Wind & Watertight (WWT); Cargo Worthy (CW) is recommended.
 
@@ -72,7 +72,7 @@ The 20 ft standard container is the camera body. Minimum acceptable grade is Win
 
 ## 2. Interior Conversion
 
-**Source document:** `pinhole-camera-construction.md`
+**Source document:** `container-report.md`
 
 Converting the container interior from cargo hold to pinhole camera. Includes light-sealing, interior painting, flat image-plane backing, door upgrades, and ventilation.
 
@@ -146,7 +146,7 @@ Converting the container interior from cargo hold to pinhole camera. Includes li
 
 ## 3. Optics — Pinhole Plate
 
-**Source document:** `pinhole-camera-construction.md`, `pinhole-optics-report.md`
+**Source document:** `container-report.md`, `pinhole-optics-report.md`
 
 The precision aperture is the optical heart of the camera. Optimal diameter for this focal length: **2.17mm** (Rayleigh formula, λ = 550 nm).
 

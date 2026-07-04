@@ -71,7 +71,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 |----------|-------------|
 | [Pinhole Optics Report](pinhole-optics-report.md) | Lord Rayleigh formula, f-numbers, exposure calculations |
 | [Container Optics](pinhole-option-b-optics.md) | Detailed optics for the shipping container configuration |
-| [Construction Guide](pinhole-camera-construction.md) | Light-sealing, pinhole plate fabrication, image plane loading |
+| [Container Selection & Construction](container-report.md) | Container options, US transport compliance, interior conversion, light-sealing |
 | [Lens Options](lens-options.md) | Coverage problem, thin lens equations, DoF, distortion, recommendations |
 | [Lens vs Pinhole](lens-vs-pinhole-exposure.md) | Why the exposure difference is ~5,500× — full derivation |
 | [Photosensitive Materials](photosensitive-plane-options.md) | All process options, ISO equivalents, spectral response, per-image costs |

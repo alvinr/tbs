@@ -73,7 +73,7 @@ no penetration of the tray floor or the container floor.
 | Parameter | Value |
 |-----------|-------|
 | Sump dimensions | 150mm (X) × 100mm (Yd) × 20mm deep |
-| Sump location | X=4,550 (IBC-end corner), Yd=80 (near rim, low point) |
+| Sump location | IBC-end corner (near rim, low point) |
 | Forming | Pressed/stamped into tray panel during fabrication |
 | Pickup tube | 1" HDPE dip tube, stainless foot valve with strainer screen |
 | Pickup height | Tube bottom 5mm above sump floor (leaves ~0.75 L residual) |
@@ -100,11 +100,11 @@ fold the liner around the sump pickup tube.
 
 | Constraint | Clearance | Status |
 |------------|-----------|--------|
-| Film plane carriage blocks (Z=140mm at max tilt) | 90mm above tray rim (140 − 50) | Clear |
+| Film plane carriage blocks | 90mm above tray rim (140 − 50) | Clear |
 | Film plane rails at X=<!-- BEGIN fact:film_plane_left_x_mm -->150<!-- END fact:film_plane_left_x_mm --> and X=<!-- BEGIN fact:film_plane_right_x_mm -->4,649<!-- END fact:film_plane_right_x_mm --> | 20mm gap between tray edge and rail | Clear |
-| Spray-bar carriage (rides on the raised/sloped tray floor beneath the walkway grating) | ~30mm at the worst (far-left) carriage — Ø32 wheels + 40×25 SS beam, top ~Z85 vs level grate bottom Z115 (see [Walkway Routing Sections](walkway-routing-sections.md) §H-H) | Clear |
-| IBCs (X=4,674+, right end zone) | Tray ends at X=4,629 — 45mm gap | Clear |
-| Pump manifold (Corridor Plumbing Panel at Yd=1,046) | Suction hose routes over near rim exterior | Clear |
+| Spray-bar carriage (rides on the raised/sloped tray floor beneath the walkway grating) | ~30mm at the worst (far-left) carriage — Ø32 wheels + 40×25 SS beam, (see [Walkway Routing Sections](walkway-routing-sections.md) §H-H) | Clear |
+| IBCs (X=4,674+, right end zone) | Tray ends — 45mm gap | Clear |
+| Pump manifold (Corridor Plumbing Panel) | Suction hose routes over near rim exterior | Clear |
 
 ### 2.6 Permanent Installation
 
@@ -137,10 +137,10 @@ down-and-in, at 150mm pitch along the beam.
 
 **Design constraints:**
 
-- Carriage plate top must clear walkway grating underside (Z=75mm) — no contact during travel
+- Carriage plate top must clear walkway grating underside — no contact during travel
 - Wheels must fit within the 50mm tray rim height, rolling on the tray floor beneath walkways
 - Single-operator use — push/pull from the near walkway via telescoping pole through a 30mm slit
-- Must travel 2,200mm along Yd (tray depth, near rim to far rim)
+- Must travel 2,200mm (tray depth, near rim to far rim)
 - Tray rim walls provide lateral guidance — no separate guide rails required
 - Must accommodate a flexible water connection that follows the bar as it moves
 
@@ -273,10 +273,10 @@ carriage plate to lock the axle in position.
 
 ### 3.5 Carriage Plate Design
 
-Each carriage uses a flat aluminum plate positioned 2mm above the wheel axle (Z=38–43mm).
+Each carriage uses a flat aluminum plate positioned 2mm above the wheel axle.
 The plate wings extend inward to meet the beam faces; the beam is gripped by a top and
 bottom clamp plate that sandwich it vertically, with the carriage plate wing captured in
-the same bolted stack. The beam stays at its design height (Z=29–54mm).
+the same bolted stack. The beam stays at its design height.
 
 Formed from 5mm 6061-T6 aluminum plate:
 
@@ -285,14 +285,14 @@ Formed from 5mm 6061-T6 aluminum plate:
   overhang on each side; the outer edge is flush with the beam end.
 - **Center notch:** The wings butt against the 40mm beam faces (no gap), so the
   carriage and beam read as one continuous body.
-- **Beam clamp:** A bottom clamp plate (under the beam, Z=26–29mm) and a top clamp
-  plate (over the beam, Z=54–57mm) are drawn together by bolts on each side of the
+- **Beam clamp:** A bottom clamp plate (under the beam) and a top clamp
+  plate (over the beam) are drawn together by bolts on each side of the
   beam. A solid aluminum spacer block beside each beam face fills the gap between the
   plates so tightening grips the beam instead of bending the plates.
-- **Ball joint mount:** The ball joint flange is fastened to the beam top face (Z=54mm) with self-tapping screws,
-  keeping the socket housing below grating level (Z=75mm).
+- **Ball joint mount:** The ball joint flange is fastened to the beam top face with self-tapping screws,
+  keeping the socket housing below grating level).
 
-**Lateral guidance:** The tray rim walls (50mm high, at X=170 and X=4,629) act as
+**Lateral guidance:** The tray rim walls (50mm high) act as
 lateral guides. The wheel carriages roll between the tray rim and the walkway support
 structure. The 200mm wheel spacing in Yd prevents significant skew.
 
@@ -308,7 +308,7 @@ required (left end and right end of beam).
 #### 3.6.1 Carriage Plate Fabrication (2 required)
 
 Each carriage plate is a flat 5mm 6061-T6 aluminum plate whose wings meet the beam
-faces. The plate sits 2mm above the wheel axle (Z=38–43mm); the beam clamp bolts pass
+faces. The plate sits 2mm above the wheel axle; the beam clamp bolts pass
 through it, capturing the plate between the top and bottom clamp plates.
 
 **Blank:** Cut two pieces from 5mm plate, each 280mm long × 60mm wide.
@@ -366,7 +366,7 @@ the top plate, spacer, carriage plate wing, and bottom plate, with nuts top and 
 | 4 | Lay the top clamp plate over the beam, aligning the bolt holes with the bottom plate |
 | 5 | Pass four bolts down through top plate + spacer + carriage wing + bottom plate; thread nuts top and bottom and tighten evenly until the beam is gripped |
 | 6 | Set the assembled spray bar on the processing tray floor. Confirm the top clamp plate clears the walkway grating bottom. Confirm all wheels roll freely on the tray floor |
-| 7 | Push the bar through its full 2,200mm Yd travel to verify it tracks straight between the tray rim walls without binding |
+| 7 | Push the bar through its full travel to verify it tracks straight between the tray rim walls without binding |
 
 ### 3.7 Structural Analysis
 

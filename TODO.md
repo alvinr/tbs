@@ -16,10 +16,19 @@ _**Progress (2026-07-04):** the mechanical debt is cleared — buckets ④⑤⑥
 
 - [~] **① 3 high-severity contradictions — 2 of 3 DONE (G1):** BV-05 valve fixed, pump 100→114 fixed. **Open (decision):** the **pinhole disc retaining ring** — the drawing makes a part the report says doesn't exist; decide counterbore vs ring before anyone machines it.
 - [ ] **② Datasheet blockers (settle before POs)** — spray skate wheel (cited part is 40mm wide vs 20mm + PE/carbon-steel bearings corrode in the wash); film-plane pivot pin (1″ won't fit the 25mm rod-end bore); evap cooler ~51mm oversize vs Hessaire MC18M (resize → 3D re-send → stow re-verify); spray saddle strap 2→0.5mm (0.5mm structurally thin — re-source vs match); Powerpole connector count 4 vs 5 (wiring-design dependent).
-- [ ] **③ Design-of-record decisions** — filter housings: 3 separate + slotted-angle frame vs 1 integrated combo (gates the BOM / frame hardware / cost); D-ring count 8 vs 4.
+- [~] **③ Design-of-record — filter DONE** (Alvin chose **3 separate + slotted-angle frame**; registry itemized + cost cascaded, −$50/−$65, gates green). **Open:** D-ring count **8** (§4.1) vs **4** (registry / §9.1 BOM / drawing) — the strap routing (4 straps, D-ring to D-ring over the IBC top) implies **8**; confirm, then set `parts.py ibcf-dring` so §9.1 re-injects and fix §4.1, the drawing loop, and the cost line.
 - [x] **④ Big cascade repair — DONE (G2/G3).** Drum +50 top-position refs → Z2250 (the drum *body* height correctly stays 2200 — the audit's `DRUM_H` bump was a false positive caught on re-render); RWK arm 405→325, walkway open-area 1,662→1,762, Fan A 2200→2000, F-01 50→5μm, LED 3rd panel, ext-panel-X, drum footprint.
 - [x] **⑤ Hand-maintained-table sweep — DONE (G4).** weight-report battery/EP/plumbing rows + battery-Z constant (CG re-injected), ibc §9.3 total, cost-breakdown AmFe supplier/CV/P-05, ventilation Circuit E, fan labels.
 - [x] **⑥ Low-severity comment refreshes — DONE (G6).** far-Yd/Z60/6-uprights comments, spraybar Ø8→Ø10, pinhole X=2874→2399, cost bands; + 2D derivations (evap-duct X, shelf evap-Z). *(dead `IBC_WBKT`/`BRACKET_*` constants → folded into the unused-imports cleanup below.)*
+
+### ② Datasheet blockers — work through one by one
+_Each needs a call (or a re-source), then the noted cascade. Independent — take them in any order._
+
+- [ ] **②·1 Spray skate wheel** — cited part (uxcell `B0GXVT88Y5`) is **40mm wide** (design specs 20mm) and is **PE body + carbon-steel ball bearings** (corrode in the ferricyanide/citric wash), not the nylon/Delrin plain-bore the report claims. **Decide:** re-source a genuine 32 OD × 20 wide × 10 bore **solid nylon/Delrin plain-bore** wheel *(recommended)*, or accept 40mm + carbon-steel and cascade axle-pin length / saddle / carriage-plate width. → `parts.py` wheel spec (+ `SPRAY_BAR_WHEEL_W` + 2D/3D regen if width changes).
+- [ ] **②·2 Film-plane pivot pin** — pin spec'd **1″ (25.4mm)** but the rod-end bore is **25.0mm** → 0.4mm interference, cannot assemble. **Decide:** spec a **25mm (or under) pin** *(recommended)*, or pick a rod end with a 25.4mm bore. → `parts.py` pin spec + film-plane §4/table.
+- [ ] **②·3 Evap cooler** — modeled/reported **~51mm oversize** (W & D) vs the **Hessaire MC18M** datasheet (508×254×711); the part was also PARKED on a non-existent "Portacool Jetstream 110." **Confirm the cooler part**, then set `EVAP_W=508` / `EVAP_D=254` (keep `EVAP_H=711`), fix "22×12×28 in"→"20×10×28 in", **regenerate overview + lighttrap 3D → `--send` → re-verify stow clearance**.
+- [ ] **②·4 Spray saddle strap** — report says **2mm** SS strap; the sourced part is **0.5mm** (structurally thin for an axle retainer). **Decide:** re-source a heavier gauge (~1.5–2mm) and keep the design *(recommended)*, or accept 0.5mm + verify it holds. → processing-tray §3.4 + `parts.py`.
+- [ ] **②·5 Powerpole connector count** — BOM has **4 pair** for **5 pumps**. **Decide:** one pair per pump (→5, +$2 cost cascade) or a shared Circuit-C feed (→fewer). → `parts.py water-powerpole` qty + costing water section.
 
 ---
 

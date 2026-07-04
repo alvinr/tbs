@@ -49,7 +49,7 @@ tray's watertight seal.
 | Bracket spacing (near/far) | 457mm (18") — aligned to container rib spacing |
 | Container rib spacing | 457mm (18") — ISO standard corrugation pitch |
 | Near walkway widened section | 500mm at X≈1,155–2,629mm |
-| Open processing area | <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->×1,662mm = 6.41 m² |
+| Open processing area | <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->×1,762mm = 6.80 m² |
 | Spray bar slit width | 30mm (near and far walkways) |
 | Total walkway sections | 4 (all removable) |
 
@@ -438,7 +438,7 @@ bounces noticeably less than the rod-hung version it replaces.
 | M12×80mm through-bolt kit | Hex bolt + 2× washers + nut, grade 8.8 (3 per std + 4 per widened) | 58 ea | McMaster-Carr | $87–$145 |
 | Reinforcing plate (exterior) | 6mm steel: 100×180mm std (×14) + 120×220mm widened (×4) | 18 ea | Local fab | $75–$130 |
 | Transition bearing plate | 40×500×5mm flat bar, welded to bracket arm top at width transitions | 2 ea | Local fab | $5–$10 |
-| Right walkway cantilever frame | 40×40×3mm SHS — 2 long beams (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) + 2 end beams (300mm) + 2 center arms (405mm), ~8 m | 1 lot | Metal Supermarkets | $28–$40 |
+| Right walkway cantilever frame | 40×40×3mm SHS — 2 long beams (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) + 2 end beams (300mm) + 2 center arms (325mm), ~8 m | 1 lot | Metal Supermarkets | $28–$40 |
 | Wall cleat (left corners) | 8mm steel: back-plate + exterior plate + shelf, through-bolted to the wall | 2 ea | Local fab | $20–$35 |
 | Combined corner plate (right corners) | 10mm steel, 150mm wide — carries the walkway right beam AND the bottom film rail | 2 ea | Local fab | $50–$80 |
 | M12 through-bolt kit (right walkway) | Wall cleats + combined plates + 2 center-arm U-clamps to the IBC uprights | 24 ea | McMaster-Carr | $30–$50 |

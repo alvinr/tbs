@@ -164,7 +164,7 @@ The solar PV inputs, shore power inlet, and the evaporative cooler's **120V AC o
 | Shore power | 1 × NEMA 5-15R weatherproof inlet |
 | Cooler output | 1 × NEMA 5-15R **GFCI-fed** weatherproof outlet with in-use (bubble) cover (Circuit E — fed from the interior inverter; the cooler plugs in here) |
 | Mounting | 4 × M6 bolts through plate, gasket, and wall |
-| Location | Pinhole wall, X ≈ 1,250–1,550mm (just left of EP) |
+| Location | Pinhole wall, X ≈ 1,250–1,590mm (just left of EP) |
 | Approximate cost | ~$75 (plate $15 + gasket $5 + hardware $5 + MC4 bulkheads $25 + GFCI-fed AC outlet + in-use cover $25) |
 
 The panel face sits flush with the exterior wall surface. A 280×180mm cutout allows all connector bodies to protrude directly into the container interior — no cable gland or junction box is needed. PV cables route to the MPPT charge controller; the shore inlet routes to the shore charger; the **cooler AC outlet is fed from the interior 12V→120V inverter** (Circuit E) whose output is GFCI-protected (§7.6). The IP67 MC4 connectors, weatherproof NEMA inlet, and the in-use-covered GFCI-fed outlet, combined with the perimeter neoprene gasket, provide a fully sealed exterior face. The cooler is unplugged and the cord stowed inside for transport. See the power panel detail drawing below.
@@ -191,7 +191,7 @@ The two circuits are independently switched — they are **not** interlocked, so
 | Luminous output | ~1,800 lumens per panel (5,400 lm total) |
 | Size | ~300 × 600mm |
 | Mounting | Ceiling-mounted, centered across container width |
-| Positions | X ≈ 1,000mm, X ≈ 2,900mm, X ≈ 4,800mm (evenly spaced along length) |
+| Positions | X ≈ 1,000mm, X ≈ 2,900mm, X ≈ 4,424mm (3rd panel rotated 90° at the EP) |
 | Circuit | G (10A fuse, 16 AWG) |
 | Approximate cost | ~$25 each, ~$75 total |
 

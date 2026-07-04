@@ -180,7 +180,7 @@ The shade canopy is the most effective single mitigation — it eliminates direc
 |---------|--------|------|-----------|-----------|
 | A | Ventilation fan — exhaust (6", sealed end wall, corridor below X1) | 5A | 16 AWG | ~2.5m |
 | B | Ventilation fan — intake (6", panel-mounted, low) | 5A | 16 AWG | ~8m + flex connector |
-| E | Evaporative cooler | 10A | 14 AWG | ~4m |
+| E | Evaporative cooler (inverter DC feed) | 40A | 10 AWG | ~1m |
 
 All circuits originate from the Blue Sea 5026 fuse block in the main electrical enclosure. See [Electrical Report](electrical-report.md) §10 for full wiring specification.
 

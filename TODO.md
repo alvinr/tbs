@@ -9,6 +9,18 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ---
 
+## Full audit (2026-07-04) — 53 confirmed findings → [audit-2026-07.md](audit-2026-07.md)
+_Multi-agent audit across all subsystems × 5 dimensions (3 high / 28 med / 22 low), every finding independently verified. Verdict: **design is sound — no structural/optical defect**; the debt is documentation cascade-leakage. Full detail + per-finding fixes in the linked report; fix in priority order:_
+
+- [ ] **① 3 high-severity contradictions** — spray-bar feed valve **BV-05 vs BV-02** (water-system report contradicts its own parts list — a wrong valve ID on a flow diagram); **pinhole disc retaining ring** the drawing makes but the report says doesn't exist (decide counterbore vs ring before anyone machines it); **pump protrusion 100 vs 114mm** (2 stale report cells, clearance-relevant).
+- [ ] **② Datasheet blockers (settle before POs)** — spray skate wheel (cited part is 40mm wide vs 20mm + PE/carbon-steel bearings corrode in the wash); film-plane pivot pin (1″ won't fit the 25mm rod-end bore); evap cooler modeled ~51mm oversize vs the Hessaire MC18M datasheet.
+- [ ] **③ Design-of-record decisions** — filter housings: 3 separate + slotted-angle frame vs 1 integrated combo (gates the BOM / frame hardware / cost); D-ring count 8 vs 4.
+- [ ] **④ Big cascade repair (one commit)** — drum +50 lift Z2200→2250 (6 files incl. drawn 2D labels; import `DRUM_H_LT`). Batch the shared-root stragglers: RWK arm 405→325, walkway open-area 1,662→1,762, Fan A 2200→2000, evap resize.
+- [ ] **⑤ Hand-maintained-table sweep (no gate polices these)** — weight-report battery/EP/plumbing-panel rows, ibc §9.3 total ($1,280/$2,405), cost-breakdown CV/P-05 cells, ventilation Circuit E (→40A/10AWG), fan labels (3A/40W→5A/60W). Convert to injected placeholders where possible so they can't drift again.
+- [ ] **⑥ Low-severity comment refreshes** — stale inline comments (`tbs_constants` far-Yd 1962/570/4429/6.42, spraybar Ø8, Z60, pinhole X=2874, "6 uprights", cost 235–299) — latent seeds for the next cascade.
+
+---
+
 ## Manual (Alvin) — Sketchfab re-uploads
 _3D models embed as Sketchfab iframes; Alvin re-uploads manually reusing the same model ID._
 

@@ -120,6 +120,21 @@ for f in "${MD_FILES[@]}"; do
     fi
 done
 
+# ── Prune orphaned docs: drop published/*.md no longer listed in MD_FILES ──────
+# publish.sh only ever COPIES MD_FILES into published/; without this a retired or
+# renamed doc lingers there and mkdocs builds it as an unlisted (orphan) page that
+# stays reachable by URL. index.md is the generated home page, so it is kept.
+KEEP_LIST="index.md"
+for f in "${MD_FILES[@]}"; do KEEP_LIST="$KEEP_LIST"$'\n'"$f"; done
+while IFS= read -r existing; do
+    rel="${existing#"$DOCS_DIR"/}"
+    if ! grep -qxF -- "$rel" <<<"$KEEP_LIST"; then
+        rm -f "$existing"
+        echo "    pruned (retired — not in MD_FILES): $rel"
+        CHANGED=$((CHANGED + 1))
+    fi
+done < <(find "$DOCS_DIR" -name '*.md' -type f)
+
 # ── Write the tablesort init (makes every doc table click-sortable) ───────────
 mkdir -p "$DOCS_DIR/javascripts"
 cat > "$DOCS_DIR/javascripts/tablesort.js" <<'JS'

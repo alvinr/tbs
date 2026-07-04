@@ -176,7 +176,7 @@ The panel face sits flush with the exterior wall surface. A 280×180mm cutout al
 ### 6.1 Two-Circuit Lighting Design
 TBS-001 requires two mutually exclusive lighting modes:
 
-- **Safelight (Circuit D):** Three red LED strips ceiling-mounted running north–south (across the container width), plus a strip on the inner drum face. Each strip runs from the pinhole wall and is shortened to stay clear of the optical cone at its X position: the near-door strip (X=600) stops at Yd≈1,800mm; the other two stop at Yd≈2,100mm. Used during loading and development when photosensitive material is present. 15W, always available.
+- **Safelight (Circuit D):** Three red LED strips ceiling-mounted running north–south (across the container width), plus a strip on the inner drum face. Each strip runs from the pinhole wall and is shortened to stay clear of the optical cone. Used during loading and development when photosensitive material is present. 15W, always available.
 - **White light (Circuit G):** General-purpose white/natural LED panels for setup, maintenance, cleaning, and any non-operational work. 60W total. Must be switched off before any photosensitive material is exposed.
 
 The two circuits are independently switched — they are **not** interlocked, so the operator is responsible for ensuring Circuit G is off during operational phases. The pull-cord switches are positioned side by side for easy identification.

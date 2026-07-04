@@ -47,7 +47,6 @@ MD_FILES=(
     "container-report.md"
     "pinhole-optics-report.md"
     "pinhole-option-b-optics.md"
-    "pinhole-camera-construction.md"
     "lens-options.md"
     "lens-vs-pinhole-exposure.md"
     "photosensitive-plane-options.md"

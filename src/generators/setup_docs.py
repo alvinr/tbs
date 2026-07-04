@@ -57,7 +57,6 @@ MD_FILES = [
     ("film-clamp-mechanism-report.md",   (".",           "Film Clamp Mechanism")),
     ("tilt-swing-board-report.md",       (".",           "Tilt-Swing Front Board")),
     ("tilt-swing-board-analysis.md",     (".",           "Tilt & Swing Distortion Renders")),
-    ("pinhole-camera-construction.md",   (".",           "Construction Guide")),
     ("chemistry-shopping-list.md",       (".",           "Chem Shopping List")),
     ("sensitizer-trials.md",             (".",           "Sensitizer Trials")),
     ("operating-manual.md",             (".",           "Operating Manual")),
@@ -353,8 +352,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Tilt-Swing Front Board](tilt-swing-board-report.md) | Spherical-pivot mechanism — design, drawings, combined distortion renders |
 | [Tilt & Swing Distortion Renders](tilt-swing-board-analysis.md) | Ray-traced projection renders for all combined board + film plane configurations |
 | [Pinhole Report](pinhole-report.md) | Interchangeable plate system — wall frame, pinhole plate, lens plate |
-| [Construction Guide](pinhole-camera-construction.md) | Light-sealing, pinhole plate fabrication, image plane loading |
-| [Pinhole Report](pinhole-report.md) | Interchangeable plate system — wall frame, pinhole plate, lens plate |
+| [Container Selection & Construction](container-report.md) | Container options, US transport compliance, interior conversion, light-sealing |
 | [Cost Breakdown](project-cost-breakdown.md) | Full itemized build cost — three scenarios, all sources cited |
 | [Cost Analysis](cost-analysis-report.md) | Where the cost sits by system, capital vs consumable, and the ranked savings levers |
 | [Chem Shopping List](chemistry-shopping-list.md) | 50-print quantities with supplier URLs and confirmed prices |

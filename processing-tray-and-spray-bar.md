@@ -232,11 +232,11 @@ wheels spaced 200mm apart in the Yd direction for stability against tipping.
 | Property | Value |
 |----------|-------|
 | Type | Fixed (non-swivel) nylon wheel |
-| Diameter | 50mm |
+| Diameter | 32mm |
 | Width | 20mm |
-| Bore | 10mm |
+| Bore | 8mm |
 | Load rating | ≥25 kg per wheel (actual load ~2.6 kg per wheel wet) |
-| Tread profile | Flat (rolls on flat stainless tray floor) |
+| Tread profile | Flat (rolls on the stainless tray floor, raised on the shim ramp) |
 | Material | Glass-filled nylon or Delrin |
 
 **Vertical geometry (all dimensions mm above finished floor):**
@@ -244,27 +244,27 @@ wheels spaced 200mm apart in the Yd direction for stability against tipping.
 | Reference point | Z (mm AFF) |
 |-----------------|------------|
 | Container floor | 0 |
-| Bottom clamp plate (under beam) | 17–20 |
-| Nozzle bottom (6mm body) | 14 |
-| Beam bottom | 20 |
-| Wheel axle centerline | 27 |
-| Carriage plate bottom | 29 |
-| Carriage plate top | 34 |
-| Tray rim top | 50 |
+| Raised tray floor (near/low rim, on the shim ramp) — the wheels roll here | 20 |
+| Bottom clamp plate (under beam) | 26–29 |
+| Beam bottom | 29 |
+| Wheel axle centerline | 36 |
+| Carriage plate (2mm above axle) | 38–43 |
 | Wheel top | 52 |
-| Beam top | 60 |
-| Top clamp plate (+ bolt nut) | 60–63 (66) |
+| Beam top | 54 |
+| Top clamp plate | 54–57 |
 | Left-walkway support arm bottom (over spray bar) | 75 |
+| Walkway grating bottom | 115 |
 | Walkway grating top (deck surface) | 130 |
+
+(Full stack-up — clamp plates, carriage plate, side manifold/nozzle — is drawn on Sheet 2; the poly manifold is side-mounted per §3.3.)
 
 **Clearances:**
 
 | Interface | Gap | Notes |
 |-----------|-----|-------|
-| Top clamp plate nut → grating bottom | ~9mm | Clears grating; the top clamp plate is now the highest carriage point |
-| Beam bottom → tray floor | 18mm | Reduces to ~11mm at midspan under full water load (see §3.7) |
-| Nozzle bottom → tray floor | 12mm | Nozzle body clears floor at all carriage positions |
-| Wheel top → grating bottom | 23mm | Wheels roll freely under grating |
+| Beam bottom → tray floor | 9mm | Spray gap; pre-camber offsets the self-weight sag so the beam runs flat under load (§3.3) |
+| Wheel top → left-walkway support arm bottom | 23mm | Wheels roll freely beneath the walkway structure |
+| Carriage stack → walkway grating bottom | ~30mm at the worst (far-left) carriage | See §2.5 and [Walkway Routing Sections](walkway-routing-sections.md) §H-H |
 
 **Axle retention:** Each wheel axle (10mm SS axle pin) is held by a curved conduit-style
 saddle clamp (2mm SS strap) bolted to the underside of the carriage plate. The saddle
@@ -273,10 +273,10 @@ carriage plate to lock the axle in position.
 
 ### 3.5 Carriage Plate Design
 
-Each carriage uses a flat aluminum plate positioned 2mm above the wheel axle (Z=29–34mm).
+Each carriage uses a flat aluminum plate positioned 2mm above the wheel axle (Z=38–43mm).
 The plate wings extend inward to meet the beam faces; the beam is gripped by a top and
 bottom clamp plate that sandwich it vertically, with the carriage plate wing captured in
-the same bolted stack. The beam stays at its design height (Z=20–60mm).
+the same bolted stack. The beam stays at its design height (Z=29–54mm).
 
 Formed from 5mm 6061-T6 aluminum plate:
 
@@ -285,11 +285,11 @@ Formed from 5mm 6061-T6 aluminum plate:
   overhang on each side; the outer edge is flush with the beam end.
 - **Center notch:** The wings butt against the 40mm beam faces (no gap), so the
   carriage and beam read as one continuous body.
-- **Beam clamp:** A bottom clamp plate (under the beam, Z=17–20mm) and a top clamp
-  plate (over the beam, Z=60–63mm) are drawn together by bolts on each side of the
+- **Beam clamp:** A bottom clamp plate (under the beam, Z=26–29mm) and a top clamp
+  plate (over the beam, Z=54–57mm) are drawn together by bolts on each side of the
   beam. A solid aluminum spacer block beside each beam face fills the gap between the
   plates so tightening grips the beam instead of bending the plates.
-- **Ball joint mount:** The ball joint flange is fastened to the beam top face (Z=60mm) with self-tapping screws,
+- **Ball joint mount:** The ball joint flange is fastened to the beam top face (Z=54mm) with self-tapping screws,
   keeping the socket housing below grating level (Z=75mm).
 
 **Lateral guidance:** The tray rim walls (50mm high, at X=170 and X=4,629) act as
@@ -308,7 +308,7 @@ required (left end and right end of beam).
 #### 3.6.1 Carriage Plate Fabrication (2 required)
 
 Each carriage plate is a flat 5mm 6061-T6 aluminum plate whose wings meet the beam
-faces. The plate sits 2mm above the wheel axle (Z=29–34mm); the beam clamp bolts pass
+faces. The plate sits 2mm above the wheel axle (Z=38–43mm); the beam clamp bolts pass
 through it, capturing the plate between the top and bottom clamp plates.
 
 **Blank:** Cut two pieces from 5mm plate, each 280mm long × 60mm wide.

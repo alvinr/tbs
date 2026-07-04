@@ -1802,7 +1802,7 @@ def lighting_wiring():
     # Right-hand panel rotated 90° (300 X × 600 Yd) and shifted clear of the
     # equipment-panel conduits: its IBC-end edge sits 150mm left of the panel
     # face (X=EQPANEL_X), so its feed conduit no longer crosses Circuit C.
-    rled_x0 = EQPANEL_X - 150 - led_d      # 4550 — span X 4550–4850
+    rled_x0 = EQPANEL_X - 150 - led_d      # 4424 — span X 4424–4724
     rled_y0 = C_WID / 2 - led_w / 2        # 881  — span Yd 881–1481, centered
     parts.append(ruby_box("White LED Panel (Cct G)",
                           rled_x0, rled_y0, cz - 40, led_d, led_w, 40,

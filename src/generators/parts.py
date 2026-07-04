@@ -647,7 +647,7 @@ PARTS: list[Part] = [
          "walkway", 2, "ea", 2.5, 5, "Local fab", spec="40×500×5mm flat bar, welded to bracket arm top at width transitions"),
     Part("walkway-cantilever-frame", "Right walkway cantilever frame", "steel-structural",
          "walkway", 1, "lot", 28, 40, "Metal Supermarkets",
-         spec="40×40×3mm SHS — 2 long beams ({{fact:container_width_mm}}mm) + 2 end beams (300mm) + 2 center arms (405mm), ~8 m"),
+         spec="40×40×3mm SHS — 2 long beams ({{fact:container_width_mm}}mm) + 2 end beams (300mm) + 2 center arms (325mm), ~8 m"),
     Part("walkway-right-cleats", "Wall cleat (left corners)", "steel-structural",
          "walkway", 2, "ea", 10, 17.5, "Local fab", spec="8mm steel: back-plate + exterior plate + shelf, through-bolted to the wall"),
     Part("walkway-corner-plates", "Combined corner plate (right corners)", "steel-structural",

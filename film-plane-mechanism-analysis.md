@@ -2,7 +2,15 @@
 <!-- © 2026 Alvin Richards -->
 # Moveable Film Plane — Mechanism Design & Optical Distortion Analysis
 
-> **Superseded by Option A (2026-06-06).** This internal analysis still describes the earlier *stretching* four-corner kinematic (independent corner depths, ±42° tilt / ±25.7° swing, compound twist, growing plane + folding backing). The current design is a **fixed-size rigid plane on floating-corner cross-slides** (tilt ±40° / swing ±28°, no twist, single rigid backing) — see [`film-plane-mechanism-report.md`](film-plane-mechanism-report.md) for the governing text. This doc is unpublished and retained for its distortion-physics derivation; its mechanism + envelope figures are out of date pending a rewrite.
+> ## Decision record — superseded design (Option A adopted 2026-06-06)
+>
+> **What this document is.** The original analysis of a *stretching* four-corner moveable film plane — four independently actuated corner **depths** giving ±42° tilt / ±25.7° swing, with **compound twist** (the plane bends into a ruled surface) and a plane that **grows** as the corners move, requiring a **folding two-panel backing**.
+>
+> **Why it was abandoned.** Independent corner depths let the frame twist and change size. That forced (a) a folding hinged backing to take up the growing/twisting plane, (b) a compound-twist envelope that is hard to control and to model, and (c) complex light sealing on a non-flat surface.
+>
+> **What replaced it — Option A (the built design).** A **fixed-size rigid plane** (<!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm) that tilts/swings as a true **rigid-body rotation**. Each corner rides a **2-axis X–Z cross-slide** (absorbing the arc travel) through a **rod-end spherical bearing** (taking the angle), so the plane never grows or twists — it stays flat at every angle. This buys a **single rigid ACM backing** (no folding), predictable pure-tilt / pure-swing distortion (no twist), simpler sealing, and a buildable mechanism — for **~+$300** net and a slightly tighter envelope (**tilt ±40° / swing ±28°** vs ±42° / ±25.7°). Governing text: [`film-plane-mechanism-report.md`](film-plane-mechanism-report.md).
+>
+> **Why it's kept.** The **§6 optical-distortion derivation** — the physics of tilted-plane projection and the per-configuration distortion effects — is the durable value here. The mechanism sections (§1, §3–§5, §8) and the movement-envelope figures describe the abandoned stretching design and are retained as the **historical record**, not the current spec.
 
 ## 1. Purpose
 
@@ -14,10 +22,10 @@ The Giant Pinhole Camera uses a 20ft ISO shipping container as its light-tight b
 
 | Dimension | Value | Notes |
 |-----------|-------|-------|
-| Interior length | 5893mm (19 ft 4 in) | Film plane spans this direction |
-| Interior width | 2362mm (7 ft 9 in) | **Optical axis = focal length** |
-| Interior height | 2388mm (7 ft 10 in) | Film plane height |
-| Pinhole position | Centre of one 20ft long-side wall | |
+| Interior length | 5,893mm (19 ft 4 in) | Film plane spans this direction |
+| Interior width | 2,362mm (7 ft 9 in) | **Optical axis = focal length** |
+| Interior height | 2,388mm (7 ft 10 in) | Film plane height |
+| Pinhole position | Center of one 20ft long-side wall | |
 | Nominal film plane | Opposite 20ft long-side wall | flush to wall |
 | Structural ribs | Every 457mm (18 in) along length | Rail mounting points |
 
@@ -29,12 +37,12 @@ The four-corner mechanism supports all view-camera movements. Corners are labell
 
 | Axis | Corners Controlled | Max Travel | Effect |
 |------|--------------------|-----------|--------|
-| **Tilt (top)** | TL + TR together | 100–2262mm | Perspective convergence, keystone |
-| **Tilt (bottom)** | BL + BR together | 100–2262mm | Perspective convergence, keystone |
-| **Swing (left)** | TL + BL together | 100–2262mm | Left-right perspective skew |
-| **Swing (right)** | TR + BR together | 100–2262mm | Left-right perspective skew |
-| **Compound** | All 4 independently | 100–2262mm | Twisted plane — no lines remain parallel |
-| **Back focus** | All 4 together | 100–2262mm | Uniform magnification change |
+| **Tilt (top)** | TL + TR together | 100–2,262mm | Perspective convergence, keystone |
+| **Tilt (bottom)** | BL + BR together | 100–2,262mm | Perspective convergence, keystone |
+| **Swing (left)** | TL + BL together | 100–2,262mm | Left-right perspective skew |
+| **Swing (right)** | TR + BR together | 100–2,262mm | Left-right perspective skew |
+| **Compound** | All 4 independently | 100–2,262mm | Twisted plane — no lines remain parallel |
+| **Back focus** | All 4 together | 100–2,262mm | Uniform magnification change |
 | **Rise / Fall** | All 4 together, offset vertically | ±200mm | Horizon shift |
 | **Shift** | All 4 together, offset horizontally | ±300mm | Left/right perspective offset |
 
@@ -42,9 +50,9 @@ The four-corner mechanism supports all view-camera movements. Corners are labell
 
 **Maximum swing angle** (left vs right): arctan((2,262 − 100) / 4,499) ≈ **25.7°**
 
-(Swing angle is smaller than tilt angle because the active film plane is 4499mm wide — the left rail sits at X=150mm and the right rail at X=4649mm. The same Y-axis depth difference over a wider span produces a shallower angle.)
+(Swing angle is smaller than tilt angle because the active film plane is 4,499mm wide — the left rail sits at X=150mm and the right rail at X=4,649mm. The same Y-axis depth difference over a wider span produces a shallower angle.)
 
-When tilted at maximum, the film plane's physical height increases from 2268mm to approximately **3180mm** — 40% longer than when flat. The backing panel accommodates this with the hinged two-panel system described below.
+When tilted at maximum, the film plane's physical height increases from 2,268mm to approximately **3,180mm** — 40% longer than when flat. The backing panel accommodates this with the hinged two-panel system described below.
 
 ---
 
@@ -60,19 +68,19 @@ CEILING ────────────────────────
    corner TL (leadscrew A)              corner TR (leadscrew B)
         │                                       │
         │            FILM PLANE FRAME           │
-        │      4499mm wide × 2388mm tall    │
+        │      4,499mm wide × 2,388mm tall    │
         │       ROD-END BEARING each corner     │
    corner BL (leadscrew C)              corner BR (leadscrew D)
    [FLOOR RAIL — LEFT]                  [FLOOR RAIL — RIGHT]
 FLOOR ───────────────────────────────────────────────────────────
 ```
 
-- **4 linear rails** — HiWin HGR20 profile, 2200mm length, mounted at X=150mm (left pair) and X=4649mm (right pair) on ceiling and floor. Rails run along the 2362mm optical axis direction.
+- **4 linear rails** — HiWin HGR20 profile, 2,200mm length, mounted at X=150mm (left pair) and X=4,649mm (right pair) on ceiling and floor. Rails run along the 2,362mm optical axis direction.
 - **8 carriages** — HGH20CA flanged blocks, 2 per rail, joined by an L-bracket at each corner. Each corner moves as a single independent unit.
-- **4 leadscrews** — ¾"-6 Acme, 8 ft (2438mm) length, one per corner (TL, TR, BL, BR). Each turns in a bronze Acme nut fixed to the corner bracket.
-- **Film plane frame** — welded 2"×2"×3/16" aluminium angle, **4499mm × 2388mm** (rail span × container height). Connected to each corner bracket via a **rod-end spherical bearing** (GIR25-DO or equivalent, 25mm bore) to allow free rotation in all axes when the plane is twisted.
+- **4 leadscrews** — ¾"-6 Acme, 8 ft (2,438mm) length, one per corner (TL, TR, BL, BR). Each turns in a bronze Acme nut fixed to the corner bracket.
+- **Film plane frame** — welded 2"×2"×3/16" aluminum angle, **4,499mm × 2,388mm** (rail span × container height). Connected to each corner bracket via a **rod-end spherical bearing** (GIR25-DO or equivalent, 25mm bore) to allow free rotation in all axes when the plane is twisted.
 
-The critical difference from the two-beam design: without spanning beams, the left and right ends of the top edge (TL and TR) are completely independent. Setting TL to 800mm and TR to 2262mm produces a 20.0° swing. Setting TL=100, TR=2262, BL=2262, BR=100 produces a compound twisted plane with no parallel lines.
+The critical difference from the two-beam design: without spanning beams, the left and right ends of the top edge (TL and TR) are completely independent. Setting TL to 800mm and TR to 2,262mm produces a 20.0° swing. Setting TL=100, TR=2262, BL=2262, BR=100 produces a compound twisted plane with no parallel lines.
 
 ### Why Rod-End Spherical Bearings
 
@@ -92,11 +100,11 @@ Each of the four leadscrews is turned by an **8" cast aluminum handwheel** (¾" 
 
 ### Variable Geometry Accommodation
 
-As the film plane tilts (tilt axis), its along-plane height grows from 2268mm at 0° to approximately 3180mm at maximum 42° tilt. Swing has a smaller effect on plane size (the container is much longer than it is tall).
+As the film plane tilts (tilt axis), its along-plane height grows from 2,268mm at 0° to approximately 3,180mm at maximum 42° tilt. Swing has a smaller effect on plane size (the container is much longer than it is tall).
 
 **Hinged two-panel ACM system:**
 
-The backing panel is two equal ACM (aluminum composite material) sections, each ~1600mm × 2388mm, joined along the horizontal centerline with a full-width 2" aluminum piano hinge. When flat, the panels lie flush. As the plane tilts, the upper panel folds back on the hinge, maintaining full coverage at any tilt angle.
+The backing panel is two equal ACM (aluminum composite material) sections, each ~1,600mm × 2,388mm, joined along the horizontal centerline with a full-width 2" aluminum piano hinge. When flat, the panels lie flush. As the plane tilts, the upper panel folds back on the hinge, maintaining full coverage at any tilt angle.
 
 For compound tilt+swing, the film plane is a ruled surface (slightly twisted, not flat). The backing panels accommodate this because the hinge allows both fore-aft fold and a small amount of left-right twist.
 
@@ -114,16 +122,16 @@ The tilted or swung film plane creates voids where it no longer contacts the con
 
 | Config | Name | TL | TR | BL | BR | Tilt | Swing | Film Height |
 |--------|------|----|----|----|----|------|-------|-------------|
-| C0 | Flat | 2,262 | 2,262 | 2,262 | 2,262 | 0° | 0° | 2388mm |
-| C1 | Mild tilt | 1,800 | 1,800 | 2,262 | 2,262 | 11.0° | 0° | 2434mm |
-| C2 | Strong tilt | 800 | 800 | 2,262 | 2,262 | 31.5° | 0° | 2724mm |
-| C3 | Max tilt | 100 | 100 | 2,262 | 2,262 | 42.1° | 0° | 3184mm |
-| C4 | Mild swing | 2,262 | 1,800 | 2,262 | 1,800 | 0° | 6.6° | 2388mm |
-| C5 | Strong swing | 2,262 | 800 | 2,262 | 800 | 0° | 20.0° | 2388mm |
-| C6 | Max swing | 2,262 | 100 | 2,262 | 100 | 0° | 28.3° | 2388mm |
+| C0 | Flat | 2,262 | 2,262 | 2,262 | 2,262 | 0° | 0° | 2,388mm |
+| C1 | Mild tilt | 1,800 | 1,800 | 2,262 | 2,262 | 11.0° | 0° | 2,434mm |
+| C2 | Strong tilt | 800 | 800 | 2,262 | 2,262 | 31.5° | 0° | 2,724mm |
+| C3 | Max tilt | 100 | 100 | 2,262 | 2,262 | 42.1° | 0° | 3,184mm |
+| C4 | Mild swing | 2,262 | 1,800 | 2,262 | 1,800 | 0° | 6.6° | 2,388mm |
+| C5 | Strong swing | 2,262 | 800 | 2,262 | 800 | 0° | 20.0° | 2,388mm |
+| C6 | Max swing | 2,262 | 100 | 2,262 | 100 | 0° | 28.3° | 2,388mm |
 | C7 | Compound | 100 | 2,262 | 2,262 | 100 | 42.1° | 28.3° | — |
 
-*All depths measured from the pinhole wall. Swing angles calculated for 4499mm rail span (arctan(Δd/span)). Rail positions: left X=150mm, right X=4649mm.*
+*All depths measured from the pinhole wall. Swing angles calculated for 4,499mm rail span (arctan(Δd/span)). Rail positions: left X=150mm, right X=4,649mm.*
 
 The compound config (C7) places TL and BR at near position, TR and BL at far — a diagonal twist. The film plane is no longer a flat rectangle; it is a ruled surface. No lines in the scene project to straight parallel lines anywhere in the image.
 
@@ -192,7 +200,7 @@ The inverse of C3. Ground plane is compressed, sky dominates. Standing subjects 
 ![C4 reverse tilt](assets/film-plane-distortion-c4.png)
 
 **C5 — Both edges near (uniform close):**
-The entire film plane is 100mm from the pinhole. Effective focal length drops from 2362mm to ~100mm — a 23.6× reduction. Field of view becomes enormous.
+The entire film plane is 100mm from the pinhole. Effective focal length drops from 2,362mm to ~100mm — a 23.6× reduction. Field of view becomes enormous.
 
 ![C5 both near](assets/film-plane-distortion-c5.png)
 
@@ -200,7 +208,7 @@ The entire film plane is 100mm from the pinhole. Effective focal length drops fr
 
 ### Summary Comparison
 
-The six achievable flat configurations on a checker grid (D = 8000mm):
+The six achievable flat configurations on a checker grid (D = 8,000mm):
 
 ![Distortion summary](assets/film-plane-distortion-summary.png)
 
@@ -224,7 +232,7 @@ The six achievable flat configurations on a checker grid (D = 8000mm):
 ![Sheet 4 — Specification table](assets/film-plane-sheet4.png)
 
 **System context — container floor plan:**
-The floor plan below shows the film plane rail positions (at Y=2262mm, X=150–4649mm) in the context of the complete TBS-001 interior, including left end zone (light trap), processing tray and perimeter walkway in the optical zone, and right end zone (4× IBCs in 2×2 stack, pump manifold on the Corridor Plumbing Panel and the filter skid on the Pinhole Wall Plumbing Panel).
+The floor plan below shows the film plane rail positions (at Y=2,262mm, X=150–4,649mm) in the context of the complete TBS-001 interior, including left end zone (light trap), processing tray and perimeter walkway in the optical zone, and right end zone (4× IBCs in 2×2 stack, pump manifold on the Corridor Plumbing Panel and the filter skid on the Pinhole Wall Plumbing Panel).
 
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 
@@ -238,7 +246,7 @@ All items ship within the United States. Local Southern California pickup noted 
 
 | Item | Spec | Qty | Source A | Source B | Est. Unit |
 |------|------|-----|---------|---------|-----------|
-| Linear guide rail HGR20 | 2200mm | 4 | Automation Overstock, Gardena CA | McMaster-Carr #5901T777 | $45 |
+| Linear guide rail HGR20 | 2,200mm | 4 | Automation Overstock, Gardena CA | McMaster-Carr #5901T777 | $45 |
 | Rail carriage HGH20CA | Flanged block | 8 | Automation Overstock / Amazon | McMaster-Carr | $18 |
 | Acme leadscrew ¾"-6 | 8 ft length | **4** | Roton Products (LA area) | McMaster-Carr #6289K36 | $95 |
 | Acme nut bronze ¾"-6 | — | 4 | Roton Products | McMaster-Carr #6289K512 | $12 |
@@ -248,7 +256,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | Rod-end spherical bearing | GIR25-DO or equiv., 25mm bore | 8 | McMaster-Carr #60645K73 | Amazon Industrial | $22 |
 | Pivot pin SS316 | 1" dia × 8" long | 8 | McMaster-Carr #98173A150 | Fastenal (SoCal branches) | $8 |
 
-*Items in **bold** changed quantity vs the earlier two-beam design. The two 5893mm T-slot beams have been removed.*
+*Items in **bold** changed quantity vs the earlier two-beam design. The two 5,893mm T-slot beams have been removed.*
 
 ### Film Plane Frame
 
@@ -290,7 +298,7 @@ The cam-lever design provides tactile snap-open/snap-closed feedback, critical f
 | DPDT momentary rocker | Panel-mount, 20A | **4** | Mouser | Grainger | $8 |
 
 **Estimated materials total (manual actuation): ~$2,400**  
-*Excludes fasteners, fabrication labour, and electric actuation option.*  
+*Excludes fasteners, fabrication labor, and electric actuation option.*  
 *Net change vs two-beam design: removed 2× T-slot beams (–$416), added 2 leadscrews +$190, 2 handwheels +$70, 4 rod-end bearings +$88, 4 corner brackets +$80, 2 locking collars +$24 → net +$36.*
 
 ### Local SoCal Metal Sourcing

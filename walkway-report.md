@@ -164,7 +164,7 @@ assembly details.
 
 ---
 
-## 4. Right Walkway — Cantilever Rectangle (rev12)
+## 4. Right Walkway — Cantilever Rectangle
 
 The right walkway at the IBC end cannot use wall-cantilevered
 brackets because the IBC stack occupies the floor below.
@@ -203,13 +203,16 @@ rail on a 150mm seat.
 
 ### 4.4 Design Rationale
 
-The cantilever rectangle achieves four goals:
+The cantilever rectangle achieves three goals:
 
 1. **Zero floor contact** — clears the IBC stack entirely; no legs on the floor in
    the IBC zone.
 2. **Zero tray contact** — the rectangle floats above the processing tray.
 3. **Consolidated film-rail anchor** — the combined corner plate does double duty,
    removing a separate BR saddle.
+
+The pipe-routing space under this walkway — past the IBC frame feet, the tray rims,
+and the cantilever arms — is detailed in the [Walkway Routing Sections](walkway-routing-sections.md).
 
 ---
 
@@ -307,7 +310,7 @@ floor-bolted posts stay in place. No through-wall hardware at all.
 
 | Parameter | Value |
 |-----------|-------|
-| Panel transport motion | SWING ~56° about the Ø89 pivot (rev10 — supersedes the linear slide) |
+| Panel transport motion | SWING ~56° about the Ø89 pivot |
 | Swing sweep reach (near-walkway zone) | X≈1,395mm |
 | Butt joint / near-far walkway start | X=470mm |
 | Panel / cage bottom edge | Z=130mm (grate-top level) |
@@ -486,6 +489,8 @@ bounces noticeably less than the rod-hung version it replaces.
    dimensions at cargo door end.
 9. [IBC Stacking Report](ibc-stacking-report.md) — IBC stack dimensions and
    floor zone clearance requirements.
+10. [Walkway Routing Sections](walkway-routing-sections.md) — Under-walkway
+    pipe-routing cross-sections and clearances at each junction.
 
    *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*
 

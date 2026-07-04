@@ -208,3 +208,7 @@ Standing permission to commit and redeploy on every request in this project.
 ## Releases
 
 `RELEASE.md` is the curated changelog. **As notable changes land, add a bullet under its `[Unreleased]` section** — that running list is what each release summarizes from. Cutting a release is **gated** on it: `bash release.sh <version>` promotes `[Unreleased]` → a dated `## [X.Y]` section, commits, tags, and runs `gh release create` — and **refuses to run if `[Unreleased]` is empty**. Keep `[Unreleased]` current; a release must never ship without a changelog entry.
+
+## Tracking
+
+`TODO.md` is the **single record** of outstanding actions/TODOs (repo-only, not published). Add new items there rather than scattering `# TODO` comments through the code; review and tick them off as they're done. `editorial-review-todo.md` (complete) and `unused-imports-todo.md` are detailed sub-trackers linked from it.

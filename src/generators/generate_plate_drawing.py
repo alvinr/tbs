@@ -105,8 +105,8 @@ def draw_sheet1():
         '5. LENS PLATE          • Al 6061-T6, 15mm (×1)            • black anodize; Ø175 bore H7; interior faces matt black',
         '6. LENS TUBE           • Al 6061-T6 (×1)                  • Ø174.5g6 × Ø165 bore × 100L; 3× M8 set screws at 120°',
         '7. LOCATING DOWEL PIN  • SS-303 Ø8 m6 × 40L (×2)          • press fit to wall frame (H7 reamed holes)',
-        '8. SOCKET HEAD BOLT    • M12 × 40mm grade 8.8 (×8)        • with M12 flat washer each; torque to 65 Nm',
-        '9. NEOPRENE CORD SEAL  • Ø4mm neoprene, 70 Shore (×1)     •  Ø420mm loop in 3×3 groove on wall frame face',
+        '8. SOCKET HEAD BOLT    • M12 × 40mm A2-70 stainless (×8)  • with M12 flat washer each; torque to 43 Nm',
+        '9. NEOPRENE CORD SEAL  • Ø3mm neoprene, 70 Shore (×1)     •  Ø420mm loop in 3×3 groove on wall frame face',
     ]
     draw_notes(ax1, parts_notes, 550, 550, spacing=38, fs=7, width=1400,
                font={"fontfamily": "monospace"})

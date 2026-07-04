@@ -129,10 +129,10 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| 10A blade fuses (pack) | 1 pack | Amazon | water | $5 |
 | 10mm corrugated conduit, drop runs (McMaster 7828K48) | 10 m | McMaster-Carr | electrical | $30 |
 | 12V LED flat panel 300×600mm, 20W 4000K | 3 ea | Amazon | electrical | $75 |
 | 14 AWG duplex marine wire | 1 roll | Amazon | water | $22 |
+| 15A blade fuse | 1 ea | Amazon | water | $5 |
 | 16 AWG silicone coiled cable | 1 ea | Waytek Wire | ventilation | $15 |
 | 2/0 AWG battery cable, 3ft (battery–fuse–busbar) | 1 lot | Amazon | electrical | $30 |
 | 200A main fuse — MRBF terminal-mount (ABYC E-11) | 1 ea | Amazon | electrical | $25 |

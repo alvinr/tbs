@@ -282,9 +282,10 @@ At 3.5 GPM, flow velocity in 1/2" pipe (ID ~15.8mm) is approximately 1.1 m/s —
 | Item | Current draw | Hours/print | Wh/print |
 |------|-------------|-------------|---------|
 | P-01 Blue pump (Shurflo 2088) | 7.5 A @ 12V | 0.25 hr (15 min run) | 22.5 Wh |
-| P-02 Brown pump (Shurflo 2088) | 7.5 A @ 12V | 0.17 hr (10 min run) | 15.2 Wh |
+| P-02 Filter-loop feed pump (Shurflo 2088) | 7.5 A @ 12V | 0.17 hr (10 min run) | 15.2 Wh |
 | P-03 Waste pump (Shurflo 2088) — *IBC corridor* | 7.5 A @ 12V | intermittent (waste disposal only) | — |
 | P-04 Tray drain transfer pump (Shurflo 2088) | 7.5 A @ 12V | 0.08 hr (5 min run) | 7.5 Wh |
+| P-05 Brown drain-out pump (Shurflo 2088) — *IBC corridor* | 7.5 A @ 12V | intermittent (drain-out only) | — |
 | pH meter | <0.1 A | — | <1 Wh |
 | **Total per print** | | | **~46 Wh** |
 
@@ -381,7 +382,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | 1/2" ID reinforced braided PVC hose | Pump inlet flexible connection, 6 ft per pump | 2 length | Amazon | $20 |
 | 14 AWG duplex marine wire | Tinned copper, 25 ft | 1 roll | Amazon | $22 |
 | Anderson Powerpole connectors 30A | Pump connections | 4 pair | Amazon | $8 |
-| 10A blade fuses (pack) | Pump circuits (C1–C4) | 1 pack | Amazon | $5 |
+| 15A blade fuse | Pump Circuit C (single feed, all pumps) | 1 ea | Amazon | $5 |
 | 6-mil black LDPE sheeting | 20 ft × 100 ft roll | 1 roll | Home Depot | $100 |
 | [Apera Instruments AI311 PH60 pH meter](https://www.amazon.com/Apera-Instruments-AI311-Replaceable-2-00-16-00/dp/B01ENFOIQE) | Waterproof, 0–16 range, ±0.01 accuracy | 1 ea | Amazon | $55 |
 | pH calibration solution set | pH 4 + pH 7 buffer sachets | 1 set | Amazon | $10 |
@@ -436,7 +437,7 @@ reports — [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) and
 
 4. **IBC-4 waste transport:** Ensure IBC cap is sealed and ball valve is closed before transport. Label contents before transport. The liquid is not classified as DOT hazardous material at these concentrations, but label clearly and keep upright. Drain remotely via external bulkhead port to a disposal tanker.
 
-5. **Electrical:** Both pumps draw 7.5A each at 12V. The fuse block must be rated to handle simultaneous operation. Do not run pumps from the same fused circuit.
+5. **Electrical:** Each pump draws 7.5A at 12V. All five pumps share a single **Circuit C** (12V, 15A fuse, 14 AWG) and run **one at a time**, so the single feed carries them — see [Plumbing Report §3.2](plumbing-report.md).
 
 ---
 

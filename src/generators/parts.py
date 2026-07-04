@@ -244,8 +244,8 @@ PARTS: list[Part] = [
          "water", 1, "roll", 22, 22, "Amazon", spec="Tinned copper, 25 ft"),
     Part("water-powerpole", "Anderson Powerpole connectors 30A", "electrical-distribution",
          "water", 4, "pair", 2, 2, "Amazon", spec="Pump connections"),
-    Part("water-blade-fuses", "10A blade fuses (pack)", "electrical-distribution",
-         "water", 1, "pack", 5, 5, "Amazon", spec="Pump circuits (C1–C4)"),
+    Part("water-blade-fuses", "15A blade fuse", "electrical-distribution",
+         "water", 1, "ea", 5, 5, "Amazon", spec="Pump Circuit C (single feed, all pumps)"),
     # — processing consumables (241) —
     Part("ldpe-sheeting", "6-mil black LDPE sheeting", "tools-safety",
          "water", 1, "roll", 100, 100, "Home Depot", spec="20 ft × 100 ft roll"),

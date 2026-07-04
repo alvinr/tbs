@@ -11,7 +11,7 @@ size 50 prints; substrate as in the shopping list. Prices are April-2026 estimat
 
 | Process | Chemistry total | Substrate total | **50-print total** | **Per print** |
 |---|---|---|---|---|
-| **Cyanotype (Ware, lean)** | ~$887 | ~$300 | **~$1,187** | **~$24** |
+| **Cyanotype (Ware, lean)** | ~$909 | ~$300 | **~$1,209** | **~$24** |
 | **Gum bichromate** | ~$2,159 | ~$300 | **~$2,459** | **~$49** |
 | **Van Dyke Brown** | ~$6,553 | ~$300 | **~$6,853** | **~$137** |
 | **Ilford RC paper** | ~$1,275 (chemistry) | ~$13,500 (paper) | **~$14,775** | **~$296** |
@@ -208,7 +208,7 @@ At 1:4 dilution: 5 L concentrate → 25 L working. 34 bottles × 25 L = 850 L wo
 
 | Process | AmFe / FAC | KFe | AgNO₃ | Amm. dichromate | Gum arabic | Na thiosulfate | Fabric/paper | Chemistry | **Total** |
 |---|---|---|---|---|---|---|---|---|---|
-| Cyanotype (Ware, lean) | 8.45 kg AmFe | 3.95 kg | — | 0.45 kg | — | — | ~445 yd muslin | ~$887 | **~$1,187** |
+| Cyanotype (Ware, lean) | 13 kg AmFe | 4.3 kg | — | 0.45 kg | — | — | ~445 yd muslin | ~$909 | **~$1,209** |
 | Gum bichromate | — | — | — | 9.3 kg | 29.3 kg | — | ~445 yd muslin | ~$2,159 | **~$2,459** |
 | Van Dyke Brown | 5.9 kg FAC | — | 2.3 kg | — | — | 20.85 kg | ~445 yd muslin | ~$6,553 | **~$6,853** |
 | Salt print | — | — | 7.05 kg | — | — | 41.65 kg | ~445 yd muslin | ~$18,522 | **~$18,822** |

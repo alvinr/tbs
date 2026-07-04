@@ -136,7 +136,7 @@ The plane stays flat at all times, so it is always a single tilt **or** swing (o
 
 ## 6. Optical Distortion Summary
 
-The six achievable flat configurations (C0–C5) on a checker grid (D = 8,000mm). Because Option A's plane is always flat, each render is a pure tilt or swing; the former compound *twist* is no longer producible:
+The six achievable flat configurations (C0–C5) on a checker grid (D = 8,000mm). Because Option A's plane is always flat, each render is a pure tilt or swing; the former compound *twist* is no longer producible (the C0–C5 labels here index the render set only — independent of the §5 mechanism configuration numbers):
 
 ![Distortion summary](assets/film-plane-distortion-summary.png)
 

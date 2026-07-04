@@ -88,7 +88,7 @@ indicative low–high estimates — get quotes before ordering.
 | Handwheel 8" dia | 4 ea | Grainger | film | $140 |
 | Linear guide rail HGR20 | 4 ea | Automation Overstock | film | $180 |
 | Locking collar SS316 | 4 ea | McMaster-Carr | film | $48 |
-| Nylon skate wheel, 32mm × 20mm, 8mm bore | 4 ea | McMaster-Carr | spray | $12–$20 |
+| Nylon skate wheel, 32mm × 20mm, 10mm bore | 4 ea | Amazon | spray | $12–$20 |
 | Rail carriage HGH20CA | 8 ea | Automation Overstock | film | $144 |
 | Rod-end spherical bearing | 8 ea | McMaster-Carr | film | $176 |
 | SKF 6215-2RS1 sealed bearing | 2 ea | Bearing World | lightlock | $90–$130 |
@@ -413,8 +413,8 @@ indicative low–high estimates — get quotes before ordering.
 |----------|-----------|-------|-----------|
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 16 | adhesives-finishes, fabrication-labor, steel-structural | $1,946–$3,156 |
-| Amazon | 79 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,259–$2,869 |
-| McMaster-Carr | 41 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets | $1,787–$2,745 |
+| Amazon | 80 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,271–$2,889 |
+| McMaster-Carr | 40 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets | $1,775–$2,725 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,301–$1,638 |

@@ -86,7 +86,7 @@ The Porta-Fab system is modular and more robust than the Vario range, but shares
 | Parameter | Value |
 |-----------|-------|
 | Housing outer diameter | Ø900mm (fixed) + Ø864mm rotating drum, ~Ø850mm bore |
-| Height | 2,200mm (floor to upper bearing) |
+| Height | 2,250mm (floor to upper bearing) |
 | Wall thickness | 5mm UV-HDPE housing + 4mm PP drum, rolled and extrusion-welded |
 | Surface finish | Black-pigmented sheet + flat-black touch-in at welds (interior); UV-stabilized sheet (exterior) — no primer |
 | Baffles | None — two 80° housing openings 180° apart + single-opening C-shell drum (see §4, §5) |

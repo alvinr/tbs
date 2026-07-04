@@ -195,7 +195,7 @@ def housing_surround_seal():
     housing rather than on the fixed frame."""
     gw_h, gt_h = 40, 20                    # gasket face width, X-thickness
     hx0 = -gt_h                            # exterior face (X=-20..0)
-    hz0, hz1 = PANEL_FLOOR_GAP, DRUM_H     # housing footprint Z (80..2200)
+    hz0, hz1 = PANEL_FLOOR_GAP, DRUM_H     # housing footprint Z (130..2250)
     parts = [
         ruby_box("Housing surround seal bottom", hx0, APER_L, hz0,
                  gt_h, APER_R - APER_L, gw_h, color=C_GASKT),
@@ -339,7 +339,7 @@ def drum_housing(cx, cy):
     H, ZB, od = DRUM_H, PANEL_Z_BOT, OPENING_DEG
     parts = []
     # Fixed HOUSING — two solid arcs leaving two od=80° openings (exterior 180° +
-    # interior 0°). Suspended: spans Z 80..2200 (bottom at the panel bottom rail).
+    # interior 0°). Suspended: spans Z 130..2250 (bottom at the panel bottom rail).
     parts.append(ov.ruby_arc_wall("LT Housing arc (near Yd)", cx, cy, HOUSING_R,
                                   HOUSING_T, H - ZB, gap_center_deg=270, gap_deg=180 + od,
                                   color=C_ALUM, alpha=0.5, z0=ZB))

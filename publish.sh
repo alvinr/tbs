@@ -55,6 +55,7 @@ MD_FILES=(
     "container-transport-options.md"
     "water-system-report.md"
     "film-plane-mechanism-report.md"
+    "film-plane-mechanism-analysis.md"
     "film-clamp-mechanism-report.md"
     "project-cost-breakdown.md"
     "cost-analysis-report.md"

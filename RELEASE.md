@@ -28,4 +28,4 @@ _Nothing yet — add a bullet per notable change here as work lands._
 
 ## [0.1] — 2026-07-03
 
-Initial.
+Initial release of the basic design of all system components, and their integration

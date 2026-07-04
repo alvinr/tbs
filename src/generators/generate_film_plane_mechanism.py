@@ -196,7 +196,7 @@ def sheet1():
         ax.add_patch(Rectangle((xw[0], xw[1]), xw[2], xw[3],
                                fc=STRUCT, ec=WHITE, lw=1.0, zorder=4))
 
-    # Pinhole (X=2874mm in new layout, recenterd on new film plane)
+    # Pinhole (X=2399mm, centered on the film plane)
     ph_x = PH_X_C
     ax.add_patch(Circle((ph_x, 0), 60, fc=PINHOLE, ec=WHITE, lw=1.5, zorder=6))
     ax.add_patch(Circle((ph_x, 0), 20, fc=BG, ec=WHITE, lw=1.0, zorder=7))
@@ -577,7 +577,7 @@ def sheet2():
         ax.add_patch(Rectangle((xw[0], xw[1]), xw[2], xw[3],
                                fc=STRUCT, ec=WHITE, lw=1.0, zorder=4))
 
-    # Pinhole (recenterd at X=2874 on new film plane)
+    # Pinhole (centered at X=2399 on the film plane)
     ax.add_patch(Circle((PH_X_C, 0), 55, fc=PINHOLE, ec=WHITE, lw=1.5, zorder=6))
     ax.add_patch(Circle((PH_X_C, 0), 18, fc=BG, ec=WHITE, lw=1.0, zorder=7))
 

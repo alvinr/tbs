@@ -18,7 +18,7 @@ import os
 from tbs_constants import (
     C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL,
     FAN_DIAM, DUCT_DEPTH, DUCT_HEIGHT,
-    EVAP_DUCT_Z, C_HGT,
+    EVAP_DUCT_Z, EVAP_DUCT_X, C_HGT, C_LEN,
     DIAGRAMS_DIR,
     SWUNG_DOOR_CLEARANCE_MM,
 )
@@ -197,11 +197,11 @@ def draw_sheet1():
     ann(ax, "LOW POSITION\n~600mm AFF",
         (FB_X, FB_Y + R_PF), (FB_X - 1.2, FB_Y + 1.0), size=7.5)
 
-    # ── EVAP COOLER (ground-placed outside, pinhole wall at X=1200mm) ────────
+    # ── EVAP COOLER (ground-placed outside, pinhole wall at X=EVAP_DUCT_X=1000mm) ──
     # Left wall = far end (X=5893), right wall = door end (X=0).
-    # X=1200 → fraction from left = (5893-1200)/5893 ≈ 0.80
+    # X=EVAP_DUCT_X(1000) → fraction from left = (C_LEN-1000)/C_LEN ≈ 0.83
     # Cooler sits on ground outside; flex duct connects to baffled wall stub.
-    EC_WALL_X = CX + CW * 0.80
+    EC_WALL_X = CX + CW * ((C_LEN - EVAP_DUCT_X) / C_LEN)
     # Duct penetrates HIGH on the wall face at Z=EVAP_DUCT_Z (not the floor).
     ec_z = CY + WT + (CH - 2 * WT) * (EVAP_DUCT_Z / C_HGT)   # high penetration Z
     # Baffled duct stub on the wall face, high up — Ø200 duct seen end-on (round).

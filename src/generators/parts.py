@@ -170,12 +170,20 @@ PARTS: list[Part] = [
          "water", 1, "lot", 25, 50, "Home Depot",
          spec='6× steel angle brackets (panel → IBC-frame front-portal uprights), shirt-to-panel screws, lag bolts. Price est.',
          panel="Corridor"),
-    # — filter (336–550) —
-    Part("bigblue-3stage", 'Big Blue filter housing (4.5"×20")', "water-equipment",
-         "water", 1, "ea", 240, 380, "Amazon", dims="Ø184×594",
-         spec='Ø184×594mm/housing (4.5×20), 1" NPT ports, integrated bracket (Express Water / Geekpure / iSpring)',
+    # — filter (286–485): 3 separate 4.5×20 housings on a slotted-angle skid frame (§3.1/§7.2) —
+    Part("bigblue-housing", 'Big Blue filter housing 4.5"×20" (separate)', "water-equipment",
+         "water", 3, "ea", 38, 62, "Amazon", dims="Ø184×594",
+         spec='Ø184×594mm/housing (4.5×20), 1" NPT ports — three SEPARATE housings on the slotted-angle skid frame (Pentek / iSpring / Geekpure)',
          datasheet="Pentek 4.5×20 BB", modeled_const="BB_OD/BB_H",
-         audit_status="✅ FIXED — BB_OD 130→184; BoM 4.5×10 → 4.5×20 (2× media/interval; heads pinned at ceiling, sumps hang to ~Z1746)", panel="Pinhole Wall"),
+         audit_status="3-separate design of record (2026-07): combo → 3 separate housings + frame per plumbing-report §3.1/§7.2. Prices indicative — firm at the Aug-2026 re-price.", panel="Pinhole Wall"),
+    Part("filter-skid-frame", "Slotted steel angle frame 25×25×3mm (filter skid)", "water-equipment",
+         "water", 1, "lot", 25, 45, "Home Depot", spec="~2.5 m 25×25×3mm slotted steel angle + fasteners; bolts to the 18mm ply backing (adjustable housing height)", panel="Pinhole Wall"),
+    Part("filter-ubracket", "Steel U-bracket (filter housing)", "water-equipment",
+         "water", 3, "ea", 7, 10, "McMaster-Carr", spec="Wraps the housing head; 2 bolts/bracket through the backing board", panel="Pinhole Wall"),
+    Part("filter-hdpe-spacer", "HDPE spacer blocks 25mm (filter skid)", "water-equipment",
+         "water", 1, "lot", 12, 22, "McMaster-Carr", spec="25mm HDPE blocks between U-bracket and backing board — sump-bowl hang clearance", panel="Pinhole Wall"),
+    Part("filter-jumper", '1" HDPE inter-housing jumpers', "plumbing-fittings",
+         "water", 1, "lot", 18, 32, "Ferguson", spec='F-01 OUT→F-02 IN, F-02 OUT→F-03 IN — 1" HDPE + 90° elbows routed outside the bodies', panel="Pinhole Wall"),
     Part("cartridge-sediment", 'MPP 5-micron sediment cartridge 4.5"×20"', "water-equipment",
          "water", 2, "ea", 12, 20, "Amazon", spec="Melt-blown polypropylene depth filter (F-1 stage); ~50-print interval", panel="Pinhole Wall"),
     Part("cartridge-kdf", 'KDF-55 heavy-metal cartridge 4.5"×20"', "water-equipment",
@@ -907,7 +915,7 @@ SYSTEM_DOC = {
 # component-dimension-audit.md §1 findings — generated from the parts carrying size data, in this
 # order. The registry IS the single source of the verified real-vs-modeled sizes; the doc's §2 detail
 # (sources, reasoning) + §3 catalog checklist + §4 decision log stay hand-maintained narrative.
-_AUDIT_ORDER = ["ibc-tote-1000l", "lifepo4-100ah", "shurflo-2088-p1", "bigblue-3stage",
+_AUDIT_ORDER = ["ibc-tote-1000l", "lifepo4-100ah", "shurflo-2088-p1", "bigblue-housing",
                 "axial-fan-150", "evap-cooler-mc18m", "seaflo-accumulator", "spray-al-shs"]
 
 

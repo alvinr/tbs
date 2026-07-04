@@ -1911,34 +1911,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../sensitizer-trials/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Sensitizer Trials
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -2288,6 +2260,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../sensitizer-trials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sensitizer Trials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../distortion-renders/" class="md-nav__link">
         
   
@@ -2324,6 +2324,34 @@
     
   
     Tilt & Swing Distortion Renders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../film-plane-mechanism-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Film Plane Distortion Analysis (superseded)
   
 
     
@@ -3169,7 +3197,7 @@ Complete power flow from solar panels through controller, battery bank, fuse blo
 <h3 id="61-two-circuit-lighting-design">6.1 Two-Circuit Lighting Design<a class="headerlink" href="#61-two-circuit-lighting-design" title="Permanent link">&para;</a></h3>
 <p>TBS-001 requires two mutually exclusive lighting modes:</p>
 <ul>
-<li><strong>Safelight (Circuit D):</strong> Three red LED strips ceiling-mounted running north–south (across the container width), plus a strip on the inner drum face. Each strip runs from the pinhole wall and is shortened to stay clear of the optical cone at its X position: the near-door strip (X=600) stops at Yd≈1,800mm; the other two stop at Yd≈2,100mm. Used during loading and development when photosensitive material is present. 15W, always available.</li>
+<li><strong>Safelight (Circuit D):</strong> Three red LED strips ceiling-mounted running north–south (across the container width), plus a strip on the inner drum face. Each strip runs from the pinhole wall and is shortened to stay clear of the optical cone. Used during loading and development when photosensitive material is present. 15W, always available.</li>
 <li><strong>White light (Circuit G):</strong> General-purpose white/natural LED panels for setup, maintenance, cleaning, and any non-operational work. 60W total. Must be switched off before any photosensitive material is exposed.</li>
 </ul>
 <p>The two circuits are independently switched — they are <strong>not</strong> interlocked, so the operator is responsible for ensuring Circuit G is off during operational phases. The pull-cord switches are positioned side by side for easy identification.</p>
@@ -3403,7 +3431,7 @@ Interior elevation of the pinhole wall face, looking from inside the container. 
 Scale engineering elevation of the Circuit-C pump distribution on the corridor plumbing panel (matches the <a href="panel-layout.md">panel-layout</a> elevation): the switched 14 AWG / 15A feed (from the <strong>master pump switch on the EP</strong> — Sheet 5) → 12V distribution block → a 16 AWG <strong>curved-elbow</strong> branch to each of the four column pumps (bottom→top ACC-01, P-01, P-04, P-05, P-03; P-02 is fed on the Pinhole-Wall panel). No per-pump switches — the EP master switch is the single cutoff and each Shurflo runs on its internal pressure switch. See §7.3 (Circuit C) and the <a href="../plumbing-report/">Plumbing Panel report §3.2</a>.</p>
 <p><img alt="TBS-ELEC Sheet 4 — Plumbing-Panel Pump Power (Circuit C)" src="../assets/electrical-sheet4.png" /></p>
 <p><strong>Sheet 5 — Main Enclosure Panel Layout</strong>
-Front elevation of the IP65 enclosure interior (the 2D companion to the electrical 3D model's <code>power_core</code>): MPPT on top, the color-coded A–G blade-fuse stack on the Blue Sea 5026, the +/− busbars, the rotary main disconnect, and the <strong>Circuit-C master pump switch</strong> (the single pump cutoff, relocated here from the corridor panel — red-lever IP disconnect), with the internal feed one-line (Battery(+) → 200A MRBF → main disconnect → (+) busbar → fuse stack → circuits) and the PV-charge path. Includes a fuse schedule (position / circuit / rating / wire / load). See §7.1 and §7.3.</p>
+Front elevation of the IP65 enclosure interior (the 2D companion to the electrical 3D model's <code>power_core</code>): MPPT on top, the color-coded A–G blade-fuse stack on the Blue Sea 5026, the +/− busbars, the rotary main disconnect, and the <strong>Circuit-C master pump switch</strong> (the single pump cutoff — red-lever IP disconnect), with the internal feed one-line (Battery(+) → 200A MRBF → main disconnect → (+) busbar → fuse stack → circuits) and the PV-charge path. Includes a fuse schedule (position / circuit / rating / wire / load). See §7.1 and §7.3.</p>
 <p><img alt="TBS-ELEC Sheet 5 — Main Enclosure Panel Layout + Fuse Schedule" src="../assets/electrical-sheet5.png" /></p>
 <p><strong>Sheet 7 — System Schematic (Symbol Diagram)</strong>
 The whole 12V DC system drawn as a traditional <strong>symbol-based electrical schematic</strong> — the companion to the Sheet-1 block one-line. Standard symbols (battery cells, fuse, isolator, contactor, NC E-stop, motor, lamp, ground) trace every conductor: PV array → PV isolator → MPPT → 60A charge fuse → battery → 200A MRBF → contactor <strong>K1</strong> → main disconnect → the Blue Sea 5026 positive bus → the seven load circuits (A–G, each a fuse + load) → negative bus → chassis earth. The <strong>E-stop loop</strong> (2× NC in series holding the K1 coil) and the shore charger are shown explicitly. Not to scale — a connection schematic. See §7.5 (protection) and §7.6 (AC isolation).</p>

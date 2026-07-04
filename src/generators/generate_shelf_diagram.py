@@ -154,7 +154,7 @@ def sheet2():
     # evap cooler ghost (slides under)
     ax.add_patch(Rectangle((0, EVAP_STOW_Z), EVAP_D, EVAP_H, fc=C_EVAP, ec=C_OUT, lw=0.6,
                            ls="--", alpha=0.25, zorder=2))
-    ax.text(EVAP_D / 2, EVAP_STOW_Z + EVAP_H - 40, "EVAP COOLER\n(slides under,\ntop Z950)",
+    ax.text(EVAP_D / 2, EVAP_STOW_Z + EVAP_H - 40, f"EVAP COOLER\n(slides under,\ntop Z{EVAP_STOW_Z + EVAP_H})",
             fontsize=5, color="#3a5060", ha="center", va="top", **FONT)
 
     # DEPLOYED shelf (horizontal at Z = SHELF_H)

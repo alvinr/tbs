@@ -170,7 +170,7 @@ PARTS: list[Part] = [
          "water", 1, "lot", 25, 50, "Home Depot",
          spec='6× steel angle brackets (panel → IBC-frame front-portal uprights), shirt-to-panel screws, lag bolts. Price est.',
          panel="Corridor"),
-    # — filter (282–445) —
+    # — filter (336–550) —
     Part("bigblue-3stage", 'Big Blue filter housing (4.5"×20")', "water-equipment",
          "water", 1, "ea", 240, 380, "Amazon", dims="Ø184×594",
          spec='Ø184×594mm/housing (4.5×20), 1" NPT ports, integrated bracket (Express Water / Geekpure / iSpring)',
@@ -299,7 +299,7 @@ PARTS: list[Part] = [
          "tray", 12, "ea", 1, 1, "McMaster-Carr", spec="Panel flange bolts"),
     Part("tray-liner", "6-mil black LDPE sheet, 10 ft × 8 ft", "tools-safety",
          "tray", 1, "ea", 8, 8, "Home Depot", spec="Containment liner (consumable, per session)"),
-    # — spray (processing-tray-and-spray-bar §6.2) — itemized, sums to costing spray (235–299;
+    # — spray (processing-tray-and-spray-bar §6.2) — itemized, sums to costing spray (287–375;
     #   the $1/$3 report-subtotal rounding is absorbed into the AL-plate estimate so the block total
     #   matches the canonical figure) —
     Part("spray-al-shs", '304 SS RHS 40×25×3mm, 8 ft *', "steel-structural",

@@ -549,7 +549,7 @@ WASTE_IBC_Y = IBC_FAR_Y   # Waste is directly below Blue #2 (same Y column)
 # These mirror src/models/generate_sketchup_model.py → ibc_rack().
 IBC_FRAME_RHS      = 50    # 50×50×3mm RHS section size (mm)
 IBC_FRAME_T        = 3     # RHS wall thickness (mm) — reserved (spec; not yet drawn)
-# Floor feet — one under each of the 6 corridor uprights
+# Floor feet — one under each of the 4 corridor uprights
 IBC_FOOT_PLATE     = 150   # square floor flange plate side (mm)
 IBC_FOOT_PLATE_T   = 12    # flange plate thickness (mm)
 IBC_FOOT_BOLT_D    = 12    # M12 floor anchor bolt
@@ -700,7 +700,7 @@ LOST_L                = PRINTS_PER_RESUPPLY * LOSS_PER_PRINT_L         # = 434 L
 WALKWAY_W       = 300    # walkway width (mm) — bracket arm cantilever distance
 WALKWAY_H       = 130    # deck height above floor (mm) — RAISED +50 (was 80) for buildable
 #       clearances: 15mm grate, bottom at Z=115. The floor-leg cantilever arm (Z=75–115,
-#       40mm deep) clears the 50mm tray rim AND the Z=60 spray-bar top by 15mm. The tray,
+#       40mm deep) clears the 50mm tray rim AND the Z=54 spray-bar top by 21mm. The tray,
 #       bath and spray bar do NOT rise (they stay at floor level — that is what opens the
 #       gap); only the walkway + walkway-relative gear rise +50. Costs ~50mm of film-plane
 #       bottom (≈2.3% image). (History: 65→80 lowered for film clearance, then +50 raised.)
@@ -735,7 +735,7 @@ WALKWAY_RIGHT_W = WALKWAY_W  # 300mm — same width as near/far
 # Near walkway (pinhole side): X=tray_L to tray_R, Yd=0 to WALKWAY_W
 WALKWAY_NEAR_YD = 0                          # near edge against pinhole wall
 # Far walkway (film plane side): X=tray_L to tray_R, Yd=C_WID-WALKWAY_W to C_WID
-WALKWAY_FAR_YD  = C_WID - WALKWAY_W         # = 1962mm
+WALKWAY_FAR_YD  = C_WID - WALKWAY_W         # = 2062mm
 # Left walkway (cargo door end): X=tray_L to tray_L+WALKWAY_W, Yd=0 to C_WID
 # REMOVABLE — must be lifted out before the panel swings to its transport position.
 # Supported by FLOOR-LEG CANTILEVER brackets on the cargo-door side (rev 2026-06-07,
@@ -768,7 +768,7 @@ LEFT_WK_CANT_POST_W   = 60    # bracket width in Yd (mm)
 LEFT_WK_CANT_FOOT     = (128, 60, 8)  # foot plate L(X)×W(Yd)×T (mm) — spans X≈38..166 (outboard of tray rim)
 LEFT_WK_CANT_FOOT_X0  = 38    # foot plate left edge X (mm) — all < 170 (bare floor)
 LEFT_WK_CANT_FOOT_BOLT_N = 4  # M10 floor anchors per foot (sealed penetrations)
-LEFT_WK_CANT_ARM_Z0   = 75    # arm underside Z (mm) — 15mm above spray-bar top (Z60); top = grate bottom (115) => 40mm deep
+LEFT_WK_CANT_ARM_Z0   = 75    # arm underside Z (mm) — 21mm above spray-bar top (Z54); top = grate bottom (115) => 40mm deep
 LEFT_WK_CANT_ARM_W    = 40    # standard arm width in Yd (mm)
 LEFT_WK_CANT_ARM_W_WIDE = 60  # widened (punch-out) arm width in Yd (mm)
 LEFT_WK_CANT_STD_REACH  = WALKWAY_LEFT_X + WALKWAY_W            # = 470 — standard arm tip (grate inner edge)
@@ -791,12 +791,12 @@ WALKWAY_NEAR_WIDE_X_R = _SLIT_CX + CONTAINER_RIB_SPACING // 2 + 2  # past slit t
 WALKWAY_WIDE_BRACKET_T = 10             # widened bracket plate thickness (mm) — heavier than std 8mm
 WALKWAY_WIDE_BRACKET_H = 200            # widened bracket vertical leg height (mm) — taller for 4-bolt pattern
 # Open processing area (center, clear of walkways):
-PROC_OPEN_X_L  = WALKWAY_LEFT_X + WALKWAY_W   # = 570mm
-PROC_OPEN_X_R  = WALKWAY_RIGHT_X              # = 4429mm
+PROC_OPEN_X_L  = WALKWAY_LEFT_X + WALKWAY_W   # = 470mm
+PROC_OPEN_X_R  = WALKWAY_RIGHT_X              # = 4329mm
 PROC_OPEN_YD_N = WALKWAY_W                    # = 300mm
-PROC_OPEN_YD_F = WALKWAY_FAR_YD               # = 1962mm
+PROC_OPEN_YD_F = WALKWAY_FAR_YD               # = 2062mm
 PROC_OPEN_AREA = (PROC_OPEN_X_R - PROC_OPEN_X_L) * (PROC_OPEN_YD_F - PROC_OPEN_YD_N) / 1e6
-                                               # = 6.42 m² open processing area
+                                               # = 6.80 m² open processing area
 
 # ── Spray bar — gantry design: LOW-PROFILE wheel carriages (rev 10) ─────────
 # Beam spans the open processing area between the walkway inner edges; wheel

@@ -283,7 +283,7 @@ Scale engineering elevation of the Circuit-C pump distribution on the corridor p
 ![TBS-ELEC Sheet 4 — Plumbing-Panel Pump Power (Circuit C)](assets/electrical-sheet4.png)
 
 **Sheet 5 — Main Enclosure Panel Layout**
-Front elevation of the IP65 enclosure interior (the 2D companion to the electrical 3D model's `power_core`): MPPT on top, the color-coded A–G blade-fuse stack on the Blue Sea 5026, the +/− busbars, the rotary main disconnect, and the **Circuit-C master pump switch** (the single pump cutoff, relocated here from the corridor panel — red-lever IP disconnect), with the internal feed one-line (Battery(+) → 200A MRBF → main disconnect → (+) busbar → fuse stack → circuits) and the PV-charge path. Includes a fuse schedule (position / circuit / rating / wire / load). See §7.1 and §7.3.
+Front elevation of the IP65 enclosure interior (the 2D companion to the electrical 3D model's `power_core`): MPPT on top, the color-coded A–G blade-fuse stack on the Blue Sea 5026, the +/− busbars, the rotary main disconnect, and the **Circuit-C master pump switch** (the single pump cutoff — red-lever IP disconnect), with the internal feed one-line (Battery(+) → 200A MRBF → main disconnect → (+) busbar → fuse stack → circuits) and the PV-charge path. Includes a fuse schedule (position / circuit / rating / wire / load). See §7.1 and §7.3.
 
 ![TBS-ELEC Sheet 5 — Main Enclosure Panel Layout + Fuse Schedule](assets/electrical-sheet5.png)
 

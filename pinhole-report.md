@@ -113,13 +113,13 @@ Front elevation of all three components at 1:8 scale, showing bolt patterns, ape
 
 | Item | Spec | Qty | Source |
 |------|------|-----|--------|
-| 1 — Wall Frame | Q275 steel 6mm (+1), 600 × 600mm | 1 | Weld to container wall; machine face after welding |
+| 1 — Wall Frame | S275 steel 6mm (+1), 600 × 600mm | 1 | Weld to container wall; machine face after welding |
 | 2 — Pinhole Plate | 6061-T6 Al, 600 × 600 × 15mm | 1 | Machined; matt black anodize; interior faces matt black |
 | 3 — Lens Plate | 6061-T6 Al, 600 × 600 × 15mm | 1 | Machined; Ø175 H7 bore; interior faces matt black |
 | 4 — Pinhole Disc | Ø50 × 0.1mm SS-302, Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm aperture | 1 | [Lenox Laser](https://lenoxlaser.com) |
 | 5 — Lens Tube | Ø174.5 g6 × Ø165 ID × 100mm, 6061-T6 | 1 | Machined; black anodize |
 | 6 — Mounting Bolts | M12 × 40mm, A2 stainless | 8 | McMaster-Carr / Bolt Depot |
-| 7 — Dowel Pins | Ø8 × 25mm, hardened | 2 | McMaster-Carr |
+| 7 — Dowel Pins | Ø8 × 40mm, hardened | 2 | McMaster-Carr |
 | 8 — O-ring Cord | Neoprene, 3mm Ø, ~1,320mm length (Ø420mm circle) | 1 | McMaster-Carr |
 | 9 — Set Screws | M8 × 8mm, cup point, A2 stainless | 3 | McMaster-Carr / Bolt Depot |
 | 10 — Shutter Panel | 175 × 55 × 3mm, black aluminum | 1 | Guide rails spring-loaded to closed |

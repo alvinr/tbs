@@ -42,8 +42,7 @@ The water system has three circuits (Blue/Brown/Black), pumps on the plumbing pa
 > **Mike Ware New Cyanotype** ratio (AmFe : ferricyanide = **3 : 1**) over the **10.74 m² active
 > plane, TWO wet-on-wet coats** (§2.5), at the sourced muslin coverage **~120 ml/m²/coat →
 > ~2.6 L working sensitizer per print**. The **concentration tier is the open variable** — it
-> swings chemistry cost and print count by up to **4.6×** (e.g. the 8.45 kg AmFe bulk order makes
-> only ~11–32 prints, not 50). Three alternatives are given for costing/trialling.
+> swings chemistry cost and print count by **~3×** across the three tiers. Three alternatives are given for costing/trialling.
 > **Default: Standard (½-Ware)** until the trial decides.
 
 Prepare Part A in **warm water (50–60°C)** — AmFe does not dissolve cold. Part A holds all the

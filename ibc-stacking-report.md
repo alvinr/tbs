@@ -147,7 +147,7 @@ braking/cornering (loaded mass 5,044 kg, worst-case CG at Z=1,345mm — see the
 | Quantity | 8 total (4 per tier) |
 | Type | 25mm welded D-ring on 6mm mounting plate |
 | Working load limit | 1,100 kg per ring |
-| Mounting | Fillet-welded to corridor-facing frame uprights |
+| Mounting | Fillet-welded to the front retaining bars |
 | Supplier | McMaster-Carr #3641T29 |
 
 ### 4.2 Ratchet Straps

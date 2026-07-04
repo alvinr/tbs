@@ -167,7 +167,7 @@ adhesive/fasteners; panel BOM rises ~$100, see §8.1).
 | Bearing model (×2) | SKF 6215-2RS1 sealed deep-groove ball bearing |
 | Bore | 75mm ID, 130mm OD, 25mm wide |
 | Clearance | C3 |
-| Radial load rating | 52.7 kN (static) |
+| Radial load rating | 52.7 kN (basic dynamic C) |
 | Operating temperature | 0–120°C |
 | Stub shafts | 75mm Ø × 150mm steel, bolted through an isolated steel hub to the aluminum drum caps (dissimilar-metal joint) |
 | Axial retention | Circlip on stub shaft each side |
@@ -511,7 +511,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 
 | Item | Source |
 |------|--------|
-| SKF 6215-2RS1 bearing specification | [SKF Product Catalog](https://www.skf.com/group/products/rolling-bearings/ball-bearings/deep-groove-ball-bearings/productid-6215-2RS1) — radial load 52.7 kN static, sealed, C3 clearance |
+| SKF 6215-2RS1 bearing specification | [SKF Product Catalog](https://www.skf.com/group/products/rolling-bearings/ball-bearings/deep-groove-ball-bearings/productid-6215-2RS1) — radial load 52.7 kN basic dynamic (C), sealed, C3 clearance |
 | Southco C2-33 cam latch | [Southco catalog](https://southco.com/en_us_int/c2-33-11) — flush-mount cam compression latch |
 | Turnbuckle + eye/hook (wall stays) | [McMaster-Carr turnbuckles](https://www.mcmaster.com/turnbuckles/) — drop-forged jaw/eye turnbuckles for the transport lock |
 | Turntable / slewing thrust bearing | [VXB Bearings — turntable bearings](https://www.vxb.com/Turntable-Bearings-s/1869.htm) — heavy-duty flat thrust/turntable bearing for the pivot base |

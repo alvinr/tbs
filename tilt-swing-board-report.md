@@ -115,7 +115,7 @@ Mechanical hard stop:                 ±12mm travel = ±<!-- BEGIN fact:front_bo
 The bellows (ICP-10) is the primary seal — zero friction, zero wear, accommodates the full angular range with no light leakage:
 
 - 4-pleat accordion geometry tolerates ±13.9mm asymmetric compression at ±5° tilt (left side compresses, right side extends by equal amounts)
-- Inner and outer attachment flanges are sealed with Ø4mm neoprene cord gaskets — same specification as the wall-frame seal used on all plates
+- Inner and outer attachment flanges are sealed with Ø3mm neoprene cord gaskets — same specification as the wall-frame seal used on all plates
 - The ICP-01 bore has a 3-step machined labyrinth (Ø382 / Ø390 / Ø400mm, 5mm deep each) — secondary seal preventing any direct light path even if the bellows flange lifts at extreme angles
 
 **Why bellows over EPDM wiper seal:** A wiper seal pressed against the tilting disc edge creates variable friction at different angles, giving inconsistent feel. Bellows are zero-friction, standard photographic practice, and self-certify light-tightness by construction.
@@ -236,7 +236,7 @@ Detailed renders can be found [in the full analysis](tilt-swing-board-analysis.m
 | Item | Spec | Source A | Source B | Est. cost |
 |------|------|---------|---------|----------|
 | Photographic bellows (custom) | Ø290 ID × Ø360 OD × 60mm, 4-pleat, matte black neoprene | Micro-Tools (microtools.com) — custom order | Ames Camera Repair (custom bellows) | ~$80–150 |
-| Neoprene cord seal Ø4mm | 70 Shore, 1.5m (for Ø420 loop + flange gaskets) | McMaster-Carr (#1834K22) | Grainger (LA branches) | ~$18 |
+| Neoprene cord seal Ø3mm | 70 Shore, 1.5m (for Ø420 loop + flange gaskets) | McMaster-Carr (#1834K22) | Grainger (LA branches) | ~$18 |
 
 ### 12.3 Finishing & Fabrication
 

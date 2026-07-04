@@ -45,7 +45,7 @@ tray's watertight seal.
 | Deck height (floor to grate top) | 130mm (raised +50 to clear the floor-level spray bar) |
 | Grating | 15mm molded GRP (fiberglass), vinyl-ester, grit top (thin grate, lowered deck; corrosion-proof in the chemistry zone) |
 | Grating bearing bars | 15×3mm at 34.2mm pitch |
-| Bracket arm height | 65mm above finished floor |
+| Bracket arm height | 115mm above finished floor |
 | Bracket spacing (near/far) | 457mm (18") — aligned to container rib spacing |
 | Container rib spacing | 457mm (18") — ISO standard corrugation pitch |
 | Near walkway widened section | 500mm at X≈1,155–2,629mm |

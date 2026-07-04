@@ -145,7 +145,7 @@ def draw_sheet1():
 
     ann(ax, f"Cct A  |  {FAN_DIAM}mm compact axial panel fan\n3A / 16AWG / 40W / 150+ CFM\n~50mm body depth",
         (FA_X, FA_Y - R_PF), (FA_X + 1.4, FA_Y - 2.2), size=7.5)
-    ann(ax, "HIGH POSITION\n~2200mm AFF",
+    ann(ax, "HIGH POSITION\n~2000mm AFF",
         (FA_X, FA_Y - R_PF), (FA_X + 1.2, FA_Y - 1.0), size=7.5)
 
     # ── INTAKE FAN B (right end wall — cargo door panel, identical compact axial panel fan, low position)

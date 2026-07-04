@@ -771,13 +771,14 @@ def draw_sheet2():
     LED_W_MM = 600    # panel width along X
     LED_D_MM = 300    # panel depth along Yd
     LED_YD   = C_WID / 2 - LED_D_MM / 2   # centered across width
-    LED_POSITIONS = [1000, 2900, 4800]     # X positions (mm)
+    LED_POSITIONS = [1000, 2900, 4424]     # X positions (mm) — 3rd rotated 90° at the EP (matches 3D EQPANEL_X)
     C_LED = "#FFFFF0"
-    for lp_x in LED_POSITIONS:
+    for li, lp_x in enumerate(LED_POSITIONS):
+        rot = (li == 2)                    # 3rd panel is rotated 90° (300 across X, 600 along Yd)
         lx = ix(lp_x)
         ly = OY + wt + LED_YD * S_yd
-        lw = LED_W_MM * S_xi
-        ld = LED_D_MM * S_yd
+        lw = (LED_D_MM if rot else LED_W_MM) * S_xi
+        ld = (LED_W_MM if rot else LED_D_MM) * S_yd
         ax.add_patch(mpatches.Rectangle((lx, ly), lw, ld,
                      fc=C_LED, ec=C_OUT, lw=0.8, zorder=5, alpha=0.85))
         ax.text(lx + lw / 2, ly + ld / 2, "G",

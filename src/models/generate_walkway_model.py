@@ -313,7 +313,7 @@ def _rwk_arm_type_parts(x0):
     40x40 SHS arm cantilevering off it (toward -X) + the upright clamp + an M12 bolt."""
     armb, armt, aw = ov.RWK_ARM_BOT, ov.RWK_ARM_TOP, ov.RWK_ARM_W   # 70, 115, 40
     s = ov.IBC_FRAME_RHS                                            # 50 upright RHS
-    reach = 405
+    reach = ov.RWK_X_UP - ov.RWK_X_L   # 325 (was hardcoded 405, stale from the retired 4734 portal)
     return [
         ov.ruby_box("Type RWk IBC upright (50x50 RHS)", x0, 0, 0, s, s, armt + 220, color=ov.C_STEEL),
         ov.ruby_box("Type RWk cantilever arm (40x40 SHS)", x0 - reach, 0, armb, reach, aw, armt - armb, color=ov.C_STEEL),

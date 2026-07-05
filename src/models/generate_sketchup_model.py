@@ -35,6 +35,7 @@ import os
 import sys
 import math
 import argparse
+import contextlib
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "generators"))
 from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_W, FP_H, FP_Y, FP_Y_MIN, RAIL_X_L, RAIL_X_R, RAIL_LEN, RAIL_OFF, RAIL_OFF_BOT, FP_ANGLE_LEG, BRACE_RHS, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, PUMP_W, PUMP_H_LO, PUMP_H_HI, PUMP_YD_SPAN, F1_Z, F2_Z, F3_Z, EQPANEL_X, EQPANEL_T, EQPANEL_Z_LO, EQPANEL_Z_HI, EQPANEL_YD, EQPANEL_YD_SPAN, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_PALLET_H, IBC_BOTTLE_INSET, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y, IBC_FRAME_RHS, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_WBKT_PLATE_W, IBC_WBKT_PLATE_T, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, MRBF_D, MRBF_H, BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG, SOLAR_GAP, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SOLAR_ARRAY_Z, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, PULL_CORD_BOTTOM_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, EXT_FILL_H, EXT_FILL_YD, EXT_DRAIN_H, EXT_DRAIN_3_H, EXT_DRAIN_YD, FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV02_X, BV02_Z, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, EQPANEL_YD_FAR, IBC_VALVE_Z, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z
@@ -244,14 +245,33 @@ def shared_mat_name(name, color, alpha):
     return _MAT_BY_COLOR.setdefault(key, name)
 
 
-# Ghost/context parameter: every drawing helper below (ruby_box / ruby_cylinder / ruby_tri /
-# ruby_arc_wall / tilted_slab / ruby_pipe / ruby_elbow and the composite pipe/flex/tee runs)
-# takes an optional `mute=0.0` that runs the fill color through mute_hex(color, mute) — DEFAULTING
-# to 0.0 so all current call sites are byte-identical (mute_hex returns the color unchanged at 0).
-# Pass `mute=MUTE_DESAT` (with `alpha=MUTE_ALPHA`) to build a component as quiet CONTEXT at source,
-# exactly as ibc_stack(mute=) already does.  This lets the post-build "mute_groups" re-coloring pass
-# in generate_pinhole_water_panel.py eventually be retired (build context muted at source instead).
-def ruby_box(name, x, y, z, w, d, h, color=None, alpha=None, both_sides=False, mute=0.0):
+# Build-time MUTE CONTEXT.  Every drawing helper below takes `mute`/`alpha` that DEFAULT to `None`
+# and resolve against the current muted() context (below) — so wrapping a builder in
+# `with muted(MUTE_DESAT, MUTE_ALPHA): ...` builds all its geometry desaturated + translucent AT
+# SOURCE (color run through mute_hex(color, mute)).  Outside a context the defaults are 0.0 / opaque,
+# byte-identical to before.  This replaces the old post-build "mute_groups" re-coloring pass +
+# MUTE_TAGS allow-list that generate_pinhole_water_panel.py used to maintain.
+_CTX_MUTE, _CTX_ALPHA = 0.0, None
+
+
+@contextlib.contextmanager
+def muted(mute, alpha):
+    """Within this block, drawing helpers build muted CONTEXT/backdrop geometry at source."""
+    global _CTX_MUTE, _CTX_ALPHA
+    prev = (_CTX_MUTE, _CTX_ALPHA)
+    _CTX_MUTE, _CTX_ALPHA = mute, alpha
+    try:
+        yield
+    finally:
+        _CTX_MUTE, _CTX_ALPHA = prev
+
+
+def _mute_ctx(mute, alpha):
+    """Resolve a helper's mute/alpha against the current muted() context (idempotent)."""
+    return (_CTX_MUTE if mute is None else mute, _CTX_ALPHA if alpha is None else alpha)
+
+
+def ruby_box(name, x, y, z, w, d, h, color=None, alpha=None, both_sides=False, mute=None):
     """Generate Ruby to create a named box group inside the `ents` context.
 
     Parameters are in mm. x, y, z: origin corner (min X, min Yd, min Z).
@@ -260,6 +280,7 @@ def ruby_box(name, x, y, z, w, d, h, color=None, alpha=None, both_sides=False, m
     `both_sides` paints the back faces too (so interior + exterior read the
     same — used for the container shell).
     """
+    mute, alpha = _mute_ctx(mute, alpha)
     # Sum in millimeters first, then render each corner with the `.mm` suffix.
     x0, y0, z0 = mm(x), mm(y), mm(z)
     x1, y1 = mm(x + w), mm(y + d)
@@ -362,12 +383,13 @@ def ruby_cone_wire(name, apex, base, tag):
 
 
 def ruby_cylinder(name, cx, cy, cz, radius, height, color=None, alpha=None,
-                  n=24, axis="z", mute=0.0):
+                  n=24, axis="z", mute=None):
     """Generate Ruby for a cylinder in `ents`, axis along +x/+y/+z.
 
     (cx, cy, cz): center of the base circle. radius/height in mm. Used for
     round bodies (filters, drum, ducts, pipe stubs, fans).
     """
+    mute, alpha = _mute_ctx(mute, alpha)
     normal = {"z": "[0,0,1]", "y": "[0,1,0]", "x": "[1,0,0]"}[axis]
     lines = [
         f'  # {name}',
@@ -1076,9 +1098,10 @@ def ibc_stack(alpha=0.55, mute=0.0):
     return '\n'.join(parts)
 
 
-def ruby_tri(name, p1, p2, p3, thick, color=None, alpha=None, mute=0.0):
+def ruby_tri(name, p1, p2, p3, thick, color=None, alpha=None, mute=None):
     """Triangular plate: a face through p1,p2,p3 pushpulled by `thick` along its
     normal (used for gusset plates)."""
+    mute, alpha = _mute_ctx(mute, alpha)
     face = ', '.join(f'[{mm(p[0])},{mm(p[1])},{mm(p[2])}]' for p in (p1, p2, p3))
     out = [
         f'  # {name}',

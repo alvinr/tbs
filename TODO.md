@@ -38,7 +38,7 @@ _3D models embed as Sketchfab iframes; Alvin re-uploads manually reusing the sam
 - [ ] Re-upload the `.skp` models changed recently, same model IDs:
   - **overview** — master switch on the EP + audit D-rings (SENT + verified 8 in live model) → **save + re-upload**.
   - **ibc-stack** — metadata/rename + audit D-rings (SENT + verified 8 in live model) → **save + re-upload**.
-  - **water** — Circuit-C power cabling + audit D-rings (shared `tote_restraint`) → open, `--send`, verify, save, re-upload.
+  - **water** — Circuit-C power cabling + audit D-rings (SENT + verified 8 in live model) → **save + re-upload**.
   - **electrical** — master switch on the EP → save + re-upload.
   - **walkway** — audit G3: RWK center-arm reach 405→325 (geometry) → regenerate + `--send` + save + re-upload.
 - [ ] Older pending re-uploads: the **light-trap** interactive DC model (B2 refactor); the

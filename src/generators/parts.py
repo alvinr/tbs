@@ -504,7 +504,7 @@ PARTS: list[Part] = [
     Part("rod-end-bearing", "Rod-end spherical bearing", "bearings-motion",
          "film", 8, "ea", 22, 22, "McMaster-Carr", "Amazon Industrial", part_no="60645K73", spec="GIR25-DO or equiv., 25mm bore"),
     Part("pivot-pin", "Pivot pin SS316", "fasteners-hardware",
-         "film", 8, "ea", 8, 8, "McMaster-Carr", "Fastenal", part_no="98173A150", spec='1" dia × 8" long'),
+         "film", 8, "ea", 8, 8, "McMaster-Carr", "Fastenal", spec='Ø25mm × 200mm — slip-fit in the 25mm rod-end bore (a 1\"/25.4mm pin is 0.4mm oversize and will not enter). Metric Ø25 SS precision shaft/clevis pin; confirm exact SKU at order.'),
     # — Film Plane Frame (1,046) —
     Part("alu-angle-2x2", 'Aluminum angle 2"×2"×3/16"', "aluminum",
          "film", 10, "ea", 22, 22, "Metal Supermarkets", "Online Metals", spec="8 ft lengths"),

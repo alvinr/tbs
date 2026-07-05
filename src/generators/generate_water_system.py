@@ -21,26 +21,9 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
-from matplotlib.patches import FancyArrowPatch, FancyBboxPatch, Arc
-from matplotlib.lines import Line2D
+from matplotlib.patches import FancyBboxPatch
 from matplotlib.gridspec import GridSpec
-from tbs_constants import (
-    C_LEN, C_WID, C_HGT, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000,
-    ZONE_L_END, ZONE_R_START,
-    FP_X_L, FP_X_R, PH_X,
-    BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y,
-    PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI, PUMP_D,
-    EQPANEL_X, EQPANEL_W, EQPANEL_T, CORRIDOR_YD_NEAR,
-    PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D,
-    PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_PITCH,
-    PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD,
-    PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_D, PROC_TRAY_SUMP_Z,
-    PROC_TRAY_SHIM_H, PROC_TRAY_SHIM_W, PROC_TRAY_SHIM_N,
-    WALKWAY_W, WALKWAY_NEAR_YD, WALKWAY_FAR_YD,
-    C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_PUMP, C_WALL,
-    DIAGRAMS_DIR,
-)
+from tbs_constants import C_LEN, C_HGT, IBC_COL_X, IBC_W, IBC_D, ZONE_L_END, ZONE_R_START, FP_X_L, FP_X_R, BLUE_IBC_Y, IBC_FAR_Y, PUMP_X, PUMP_W, PUMP_H_LO, PUMP_D, EQPANEL_X, EQPANEL_W, EQPANEL_T, CORRIDOR_YD_NEAR, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_PITCH, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_D, PROC_TRAY_SUMP_Z, PROC_TRAY_SHIM_H, PROC_TRAY_SHIM_W, WALKWAY_W, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_PUMP, DIAGRAMS_DIR
 import os
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_notes,

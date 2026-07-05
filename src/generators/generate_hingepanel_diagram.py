@@ -26,25 +26,11 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Arc, Polygon, Ellipse, Wedge
-from matplotlib.lines import Line2D
+from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Arc, Ellipse
 import os
-from tbs_constants import (
-    C_LT_DRUM,
-    WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
-    WALKWAY_BRACKET_H, WALKWAY_BRACKET_T,
-    DIAGRAMS_DIR,
-    DRUM_D as LT_HOUSING_D,                       # Ø900 fixed housing OD (rev8)
-    PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,         # widened center-zone step lines
-    LT_DRUM_OR, LT_OPENING_DEG,
-    RAIL_X_L,                                    # film-plane left rail (now continuous, B2)
-    FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_WALL_T, PANEL_SKIN_T,
-    SWUNG_DOOR_CLEARANCE_MM,
-)
+from tbs_constants import C_LT_DRUM, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_T, DIAGRAMS_DIR, DRUM_D as LT_HOUSING_D, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, LT_DRUM_OR, LT_OPENING_DEG, RAIL_X_L, FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_WALL_T, PANEL_SKIN_T, SWUNG_DOOR_CLEARANCE_MM
 from tbs_title_block import title_block
-from tbs_drawing import (draw_dim_h, draw_dim_v,
-                         leader as _leader_shared, hatch_rect, draw_notes,
-                         draw_legend)
+from tbs_drawing import draw_dim_h, draw_dim_v, leader as _leader_shared, draw_notes, draw_legend
 
 # ── Palette (white engineering) ───────────────────────────────────────────────
 BG      = "#FFFFFF"   # white background

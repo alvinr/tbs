@@ -10,7 +10,6 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
-import os
 
 F  = 2362.0   # focal length (container interior width), mm
 IW = 5893.0   # image plane width, mm (19'4")

@@ -17,8 +17,7 @@ import os
 from tbs_constants import (DIAGRAMS_DIR, PH_D,
                            PLATE_OD, PLATE_THK, WALL_FRAME_T, PINHOLE_DISC_D, PINHOLE_DISC_T)
 from tbs_title_block import title_block
-from tbs_drawing import (draw_dim_h, draw_dim_v, draw_cl, draw_circle,
-                         draw_rect, leader, bolt_holes, hatch_rect, draw_notes)
+from tbs_drawing import draw_dim_h, draw_dim_v, draw_cl, draw_circle, draw_rect, leader, bolt_holes, draw_notes
 
 # ── Real dimensions (mm) ─────────────────────────────────────────────────────
 PL_OD      = PLATE_OD        # plate outer dimension (square) — tbs_constants

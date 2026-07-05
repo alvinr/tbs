@@ -24,6 +24,14 @@ if git rev-parse -q --verify "refs/tags/$VERSION" >/dev/null 2>&1; then
     echo "error: tag '$VERSION' already exists" >&2; exit 1
 fi
 
+# ── GATE: no unused imports (code hygiene must not drift back in) ─────────────
+if ! python3 src/generators/check_unused_imports.py >/dev/null 2>&1; then
+    echo "GATE FAILED — unused imports present. Run to fix:" >&2
+    echo "    python3 src/generators/check_unused_imports.py --fix" >&2
+    python3 src/generators/check_unused_imports.py >&2 || true
+    exit 1
+fi
+
 # ── GATE: the [Unreleased] section must carry real content ────────────────────
 unreleased="$(awk '/^## \[Unreleased\]/{f=1; next} f && /^## /{exit} f{print}' "$RL" \
     | sed '/^[[:space:]]*$/d; /^_.*_[[:space:]]*$/d')"     # drop blank lines + the italic placeholder

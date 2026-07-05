@@ -16,8 +16,7 @@ import os
 from tbs_constants import (DIAGRAMS_DIR, FRONT_BOARD_MAX_DEG, FRONT_BOARD_CLICK_DEG,
                            FRONT_BOARD_TRAVEL_MM, FRONT_BOARD_ARM_MM, FRONT_BOARD_DETENTS)
 from tbs_title_block import title_block
-from tbs_drawing import (draw_dim_h, draw_dim_v, draw_cl, draw_circle,
-                         draw_rect, leader, bolt_holes, hatch_rect, draw_notes)
+from tbs_drawing import draw_dim_h, draw_dim_v, draw_cl, draw_circle, draw_rect, leader, draw_notes
 
 # ── Real dimensions (mm) ────────────────────────────────────────────────────
 # ICP-01 Outer adapter frame

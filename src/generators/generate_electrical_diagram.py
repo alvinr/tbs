@@ -18,16 +18,9 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
-from matplotlib.patches import FancyBboxPatch, Arc
+from matplotlib.patches import FancyBboxPatch
 import os
-from tbs_constants import (
-    C_WASTE_IBC, C_BLUE_IBC, C_BROWN_IBC,
-    C_EVAP, C_ELEC, C_BATT, C_PUMP,
-    DIAGRAMS_DIR,
-    PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_D,          # Sheet 6 (external power panel, folded in)
-    PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H,
-    EVAP_COOLER_W_AC, EVAP_COOLER_W_BUS,            # Circuit E cooler power (AC draw / 12V-bus draw)
-)
+from tbs_constants import C_BLUE_IBC, C_EVAP, C_ELEC, C_BATT, C_PUMP, DIAGRAMS_DIR, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_D, PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H, EVAP_COOLER_W_AC, EVAP_COOLER_W_BUS
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_notes,
                          draw_rect, draw_circle, hatch_rect, draw_pipe_path)
@@ -445,20 +438,7 @@ def draw_sheet1():
 
 def draw_sheet2():
     from matplotlib.patches import Polygon as MplPolygon
-    from tbs_constants import (
-        C_LEN as TBS_C_LEN, C_WID as TBS_C_WID, FP_H,
-        PH_X as TBS_PH_X, PH_D, PH_FNO,
-        FP_X_L, FP_X_R,
-        ZONE_L_END, ZONE_R_START,
-        EVAP_DUCT_X, EVAP_DUCT_D,
-        EP_X, EP_W, BA_X, BA_W,
-        CORRIDOR_YD_NEAR, CORRIDOR_W, EQPANEL_X, EQPANEL_W, FSKID_X,
-        IBC_COL_X, IBC_W, IBC_D,
-        BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y,
-        DRUM_CX, DRUM_D, DRUM_R,
-        FAN_A_YD, FAN_B_YD,
-        DIAGRAMS_DIR,
-    )
+    from tbs_constants import C_LEN as TBS_C_LEN, C_WID as TBS_C_WID, FP_H, PH_X as TBS_PH_X, PH_D, PH_FNO, FP_X_L, FP_X_R, ZONE_L_END, ZONE_R_START, EVAP_DUCT_X, EVAP_DUCT_D, EP_X, EP_W, BA_X, BA_W, CORRIDOR_YD_NEAR, CORRIDOR_W, EQPANEL_W, FSKID_X, IBC_COL_X, IBC_W, IBC_D, BLUE_IBC_Y, IBC_FAR_Y, DRUM_D, DRUM_R, FAN_A_YD, FAN_B_YD, DIAGRAMS_DIR
 
     # ── mm-first coordinate system ───────────────────────────────────────────
     # Axes show mm directly.  Interior: X 0→C_LEN, Yd 0→C_WID.

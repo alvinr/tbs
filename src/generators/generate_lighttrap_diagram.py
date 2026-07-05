@@ -13,7 +13,6 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
-from matplotlib.patches import FancyBboxPatch
 import os
 from tbs_constants import (
     C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL,
@@ -22,9 +21,7 @@ from tbs_constants import (
     DIAGRAMS_DIR,
     SWUNG_DOOR_CLEARANCE_MM,
 )
-from tbs_drawing import (
-    draw_dim_h, draw_dim_v, draw_rect, draw_circle, leader, draw_notes,
-)
+from tbs_drawing import draw_dim_h, draw_dim_v, draw_rect, leader, draw_notes
 from tbs_title_block import title_block
 
 # ── Local palette (not in tbs_constants — specific to this diagram) ──────────
@@ -97,7 +94,6 @@ def draw_sheet1():
     # ── EXHAUST FAN A (left end wall — far / IBC end, compact axial panel fan, high position) ──
     # Both fans are identical: 150mm compact axial panel fan, ~50mm body depth.
     # Same part, same mounting flange, same baffle duct — simplified procurement.
-    import math
     PF_T  = 0.16   # panel fan body thickness in drawing units (~50mm, schematic)
     R_PF  = 0.38   # panel fan impeller radius (150mm dia, schematic)
     BD_W  = 0.80   # baffle duct schematic depth
@@ -376,7 +372,6 @@ def draw_sheet1():
 # ─────────────────────────────────────────────────────────────────────────────
 
 def draw_sheet2():
-    import math
 
     # ── Physical dimensions (mm) ─────────────────────────────────────────────
     WALL_T  = 25                     # container wall (exaggerated — real ~2-3mm)

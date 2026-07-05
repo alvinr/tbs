@@ -21,7 +21,6 @@ After running, use publish.sh for subsequent refreshes.
 import subprocess
 import sys
 import shutil
-import os
 from pathlib import Path
 
 # ── Configuration ────────────────────────────────────────────────────────────

@@ -19,24 +19,9 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Arc, Polygon
-from matplotlib.lines import Line2D
-import matplotlib.patheffects as pe
+from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Arc
 
-from tbs_constants import (
-    FP_X_L, FP_X_R, FP_Y, FP_Y_MIN, FP_W, FP_H,
-    PH_X as PH_X_C, PH_H as PH_H_C,
-    MAX_TILT_DEG, MAX_SWING_DEG, RAIL_SPAN, DIAGRAMS_DIR,
-    FP_ANGLE_LEG, FP_ANGLE_T,
-    CLAMP_SPACING, CLAMP_BASE_W, CLAMP_BASE_H, CLAMP_BASE_T,
-    CLAMP_LEVER_L, CLAMP_JAW_W, CLAMP_JAW_H, CLAMP_JAW_T,
-    CLAMP_OPEN_GAP, CLAMP_SPRING_F,
-    CLAMP_N_HORIZ, CLAMP_N_VERT, CLAMP_N_TOTAL,
-    BRACE_RHS, BRACE_T, BRACE_Z_BOT, BRACE_Z_TOP,
-    C_WID, WALL_T,
-    IBC_WBKT_PLATE_W, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T,
-    DRUM_CY, DRUM_R, DRUM_CX, DRUM_D,
-)
+from tbs_constants import FP_X_L, FP_X_R, FP_Y, FP_Y_MIN, FP_W, FP_H, PH_X as PH_X_C, MAX_TILT_DEG, MAX_SWING_DEG, DIAGRAMS_DIR, FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_SPACING, CLAMP_BASE_W, CLAMP_BASE_H, CLAMP_BASE_T, CLAMP_LEVER_L, CLAMP_JAW_W, CLAMP_JAW_H, CLAMP_JAW_T, CLAMP_OPEN_GAP, CLAMP_SPRING_F, CLAMP_N_TOTAL, BRACE_Z_BOT, BRACE_Z_TOP, C_WID, WALL_T, IBC_WBKT_PLATE_W, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, DRUM_CY, DRUM_R, DRUM_CX, DRUM_D
 from tbs_title_block import title_block
 from tbs_drawing import leader, draw_notes, draw_dim_h, draw_dim_v
 
@@ -1032,7 +1017,6 @@ def sheet5():
         CLAMP_BASE_T, CLAMP_LEVER_L, CLAMP_JAW_W, CLAMP_JAW_H, CLAMP_JAW_T,
         CLAMP_OPEN_GAP, CLAMP_SPRING_F, CLAMP_N_TOTAL,
     )
-    from tbs_drawing import hatch_rect
 
     C_ALUM    = "#C8D8E8"   # aluminum section fill
     C_CLAMP   = "#D4522A"   # clamp mechanism (burnt orange)

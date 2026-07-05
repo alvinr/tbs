@@ -16,7 +16,7 @@ _**Progress (2026-07-04):** the mechanical debt is cleared — buckets ④⑤⑥
 
 - [~] **① 3 high-severity contradictions — 2 of 3 DONE (G1):** BV-05 valve fixed, pump 100→114 fixed. **Open (decision):** the **pinhole disc retaining ring** — the drawing makes a part the report says doesn't exist; decide counterbore vs ring before anyone machines it.
 - [ ] **② Datasheet blockers (settle before POs)** — spray skate wheel (cited part is 40mm wide vs 20mm + PE/carbon-steel bearings corrode in the wash); film-plane pivot pin (1″ won't fit the 25mm rod-end bore); evap cooler ~51mm oversize vs Hessaire MC18M (resize → 3D re-send → stow re-verify); spray saddle strap 2→0.5mm (0.5mm structurally thin — re-source vs match); Powerpole connector count 4 vs 5 (wiring-design dependent).
-- [x] **③ Design-of-record — DONE.** **Filter** = 3 separate + slotted-angle frame (registry itemized, −$50/−$65). **D-ring count = 8** (Alvin, matches §4.1 + the 4-strap routing): `parts.py` qty 4→8, the 2D drawing + 3D overview loops now draw 4/tier (8 total, verified on re-render), §9.1 BOM re-injects to 8 ea/$40–70, cost cascaded (+$20/+$35). **overview.skp needs a re-send** (D-ring geometry changed).
+- [x] **③ Design-of-record — DONE.** **Filter** = 3 separate + slotted-angle frame (registry itemized, −$50/−$65). **D-ring count = 8** (Alvin, matches §4.1 + the 4-strap routing): `parts.py` qty 4→8, the **2D frame drawing** now draws 4/tier (8 total, verified on re-render), §9.1 BOM re-injects to 8 ea/$40–70, cost cascaded (+$20/+$35). *(The 3D overview does **not** model D-rings — that code was in the retired dead `ibc_rack()`; the live `cp.tote_restraint()` builds bars + hangers only, so **no overview re-send is needed** for this. See the 2D↔3D-parity follow-up below.)*
 - [x] **④ Big cascade repair — DONE (G2/G3).** Drum +50 top-position refs → Z2250 (the drum *body* height correctly stays 2200 — the audit's `DRUM_H` bump was a false positive caught on re-render); RWK arm 405→325, walkway open-area 1,662→1,762, Fan A 2200→2000, F-01 50→5μm, LED 3rd panel, ext-panel-X, drum footprint.
 - [x] **⑤ Hand-maintained-table sweep — DONE (G4).** weight-report battery/EP/plumbing rows + battery-Z constant (CG re-injected), ibc §9.3 total, cost-breakdown AmFe supplier/CV/P-05, ventilation Circuit E, fan labels.
 - [x] **⑥ Low-severity comment refreshes — DONE (G6).** far-Yd/Z60/6-uprights comments, spraybar Ø8→Ø10, pinhole X=2874→2399, cost bands; + 2D derivations (evap-duct X, shelf evap-Z). *(dead `IBC_WBKT`/`BRACKET_*` constants → folded into the unused-imports cleanup below.)*
@@ -36,7 +36,7 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
 _3D models embed as Sketchfab iframes; Alvin re-uploads manually reusing the same model ID._
 
 - [ ] Re-upload the `.skp` models changed recently, same model IDs: **water** (Circuit-C power cabling),
-  **electrical** + **overview** (master switch on the EP; overview also: audit — D-ring 4→8), **ibc-stack** (metadata/rename),
+  **electrical** + **overview** (master switch on the EP), **ibc-stack** (metadata/rename),
   **walkway** (audit G3: RWK center-arm reach 405→325 — geometry change, needs regenerate + `--send` + re-save).
 - [ ] Older pending re-uploads: the **light-trap** interactive DC model (B2 refactor); the
   plumbing-panel-rename re-uploads (overview / ibc-stack).
@@ -54,6 +54,7 @@ _3D models embed as Sketchfab iframes; Alvin re-uploads manually reusing the sam
 - [ ] **3D electrical pump positions** — still the legacy 2-column layout in `generate_electrical_model.py`
   `_pump_circuit()`; re-org to a single column to match `panel-layout.png` / the 2D sheet4.
 - [ ] **Film-plane click-DC** — multi-attribute DC + 2D FPM/FPD diagram redraw (foreshortening geometry).
+- [ ] **3D overview doesn't model the D-rings** (2D↔3D gap surfaced during audit ③) — the live `cp.tote_restraint()` builds front bars + wall hangers only; the 8 D-rings exist in the 2D frame drawing + registry but not the 3D. Add 8 D-ring cylinders to `cp.tote_restraint()` (4/tier on the front bars) if 2D↔3D parity is wanted → then overview.skp re-send. *(The old D-ring code in `ibc_rack()` is dead/retired — safe to delete in a cleanup.)*
 
 ## Cost / data modeling
 - [ ] **Cost-analysis Bucket B** — model the alternative *configurations* (WWT container, itemized

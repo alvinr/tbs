@@ -453,37 +453,41 @@ def build():
     # equipment (own layer/scene) + a shallow context slice (wall + floor/ceiling out to
     # 300mm past the walkway) + scale figure.  Two scenes: wet end / other equipment.
     comps, tags = [], set()
-    for name, tag, b in [("Context", "Context", context()),
-                         ("Walkways + cantilevers + brackets", "Walkway", walkway_full()),
-                         ("Film-plane support beams", "Film Plane", film_plane_beams()),
-                         ("Processing tray (ghost)", "Processing Tray", ov.processing_tray()),
-                         ("IBC Tanks (full)", "IBC", ov.ibc_stack(alpha=MUTE_ALPHA, mute=MUTE_DESAT)),
-                         ("IBC restraint (bars + wall anchors)", "IBC Frame", cp.tote_restraint()),
-                         ("End wall (context)", "Context", cp.end_wall()),
-                         ("Pinhole Assembly", "Pinhole", ov.pinhole_assembly()),
-                         ("Wall backing (ply)", "Backing", backing()),
-                         ("TAP-01 + spray-bar supply", "Supply", tap01_supply()),
-                         ("Wet-end kit (raked)", "Kit", kit()),
-                         ("Person (scale)", "Scale", person()),
-                         ("Other pinhole-wall equipment", "Pinhole Equipment", other_equipment()),
-                         ("Corridor frame (deep box)", "Corridor Frame", cp.frame()),
-                         ("Corridor rear panel", "Corridor Panel", cp.rear_panel()),
-                         ("Corridor equipment", "Corridor Equipment", cp.equipment()),
-                         ("Corridor plumbing", "Corridor Plumbing", cp.plumbing()),
-                         ("Corridor drains + X-ports", "Corridor Drains", cp.drains_ports()),
-                         ("Circuit-C power + cabling (both panels)", "Power", panel_power()),
-                         ("Ribbon support cross-beams", "Ribbon Supports", cp.ribbon_supports()),
+    # (name, tag, builder) — builders whose tag is in MUTE_TAGS build muted at source via ov.muted().
+    for name, tag, builder in [("Context", "Context", context),
+                         ("Walkways + cantilevers + brackets", "Walkway", walkway_full),
+                         ("Film-plane support beams", "Film Plane", film_plane_beams),
+                         ("Processing tray (ghost)", "Processing Tray", ov.processing_tray),
+                         ("IBC Tanks (full)", "IBC", lambda: ov.ibc_stack(alpha=MUTE_ALPHA, mute=MUTE_DESAT)),
+                         ("IBC restraint (bars + wall anchors)", "IBC Frame", cp.tote_restraint),
+                         ("End wall (context)", "Context", cp.end_wall),
+                         ("Pinhole Assembly", "Pinhole", ov.pinhole_assembly),
+                         ("Wall backing (ply)", "Backing", backing),
+                         ("TAP-01 + spray-bar supply", "Supply", tap01_supply),
+                         ("Wet-end kit (raked)", "Kit", kit),
+                         ("Person (scale)", "Scale", person),
+                         ("Other pinhole-wall equipment", "Pinhole Equipment", other_equipment),
+                         ("Corridor frame (deep box)", "Corridor Frame", cp.frame),
+                         ("Corridor rear panel", "Corridor Panel", cp.rear_panel),
+                         ("Corridor equipment", "Corridor Equipment", cp.equipment),
+                         ("Corridor plumbing", "Corridor Plumbing", cp.plumbing),
+                         ("Corridor drains + X-ports", "Corridor Drains", cp.drains_ports),
+                         ("Circuit-C power + cabling (both panels)", "Power", panel_power),
+                         ("Ribbon support cross-beams", "Ribbon Supports", cp.ribbon_supports),
                          # SOLID (non-ghost) copies of the two plywood panels, on their own tags — shown
                          # only in the "Plumbing (labeled)" scene so the panels read full-color there while
                          # the overview scenes keep the muted "Corridor Panel"/"Backing" versions.
-                         ("Corridor panel (solid)", "Corridor Panel Solid", cp.rear_panel()),
-                         ("Wall backing (solid)", "Backing Solid", backing())]:
+                         ("Corridor panel (solid)", "Corridor Panel Solid", cp.rear_panel),
+                         ("Wall backing (solid)", "Backing Solid", backing)]:
+        if tag in MUTE_TAGS:
+            with ov.muted(MUTE_DESAT, MUTE_ALPHA):
+                b = builder()
+        else:
+            b = builder()
         comps.append(ov.component(name, tag, b)); tags.add(tag)
     tags.add("Labels"); tags.add("Labels Context")
     body = "\n".join(comps)
     tags_ruby = "".join(f'  model.layers.add({t!r}) unless model.layers[{t!r}]\n' for t in sorted(tags))
-    mute_tags_ruby = "[" + ", ".join(f'"{t}"' for t in MUTE_TAGS) + "]"
-    mn0, mn1, mn2 = ov.MUTE_NEUTRAL
     return f'''model = Sketchup.active_model
 model.start_operation("Pinhole-wall layout", true)
 entities = model.active_entities
@@ -500,43 +504,10 @@ model.definitions.each {{ |d| d.entities.grep(Sketchup::Group).each {{ |g| g.era
 {labels_ruby()}
 v = model.active_view
 v.camera = Sketchup::Camera.new(Geom::Point3d.new(800.mm, 6000.mm, 2300.mm), Geom::Point3d.new(2950.mm, 200.mm, 1100.mm), Geom::Vector3d.new(0,0,1), false, 52)
-# Mute the ghosted CONTEXT in place: desaturate each group's OWN color toward a light
-# neutral (keeping a faint tint) and drop alpha — the SAME treatment as the IBC tanks
-# (ov.ibc_stack mute=), so every context system reads as a quiet backdrop rather than a
-# saturated volume.  New per-source-color "Mute_*" materials are created (never the shared
-# originals, so KEY components that happen to share a color are untouched).  A global X-ray
-# render mode "sticks" across scene changes and leaks into every scene; per-geometry
-# materials do not — so ModelTransparency stays OFF everywhere.
-#
-# TODO(refactor): the clean fix is to give the drawing helpers themselves
-# (ruby_box / ruby_cylinder / ruby_pipe_run / … in generate_sketchup_model.py) a `mute=`
-# parameter (and matching `alpha=`) DEFAULTING to the current opaque/full-color value, so
-# any component can be built muted at source — exactly like ov.ibc_stack(mute=) already is.
-# Then every component behaves identically and we can retire this post-build re-coloring
-# pass instead of maintaining the MUTE_TAGS allow-list.
+# Context/backdrop is built muted AT SOURCE (ov.muted() wraps the MUTE_TAGS builders above), so no
+# post-build re-coloring pass is needed.  Keep ModelTransparency OFF so the per-material alpha renders
+# as translucency (not a global X-ray that would leak across scenes).
 model.rendering_options["ModelTransparency"] = false
-def mute_groups(ents, model, f, n, a)
-  ents.each {{ |e|
-    if e.is_a?(Sketchup::Group)
-      m = e.material
-      if m && !m.name.start_with?("Mute_")
-        c = m.color
-        key = "Mute_#{{c.red}}_#{{c.green}}_#{{c.blue}}"
-        mm = model.materials[key] || model.materials.add(key)
-        mm.color = Sketchup::Color.new((c.red*(1-f)+n[0]*f).round, (c.green*(1-f)+n[1]*f).round, (c.blue*(1-f)+n[2]*f).round)
-        mm.alpha = a
-        e.material = mm
-      end
-      mute_groups(e.entities, model, f, n, a)
-    elsif e.is_a?(Sketchup::ComponentInstance)
-      mute_groups(e.definition.entities, model, f, n, a)
-    end
-  }}
-end
-MUTE_TAGS = {mute_tags_ruby}
-model.entities.grep(Sketchup::ComponentInstance).each {{ |ci|
-  mute_groups(ci.definition.entities, model, {MUTE_DESAT}, [{mn0}, {mn1}, {mn2}], {MUTE_ALPHA}) if ci.layer && MUTE_TAGS.include?(ci.layer.name)
-}}
 def scene(model, name, on)
   model.layers.each {{ |l| l.visible = (l.name == "Layer0" || l == model.layers[0] || on.include?(l.name)) }}
   pg = model.pages.add(name, 4095)

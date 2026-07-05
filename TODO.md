@@ -73,8 +73,7 @@ _3D models embed as Sketchfab iframes; Alvin re-uploads manually reusing the sam
   but still carries its 2026-06-22 editorial "done" mark.
 
 ## Code hygiene
-- [ ] **Unused imports** — 215 "imported but unused" warnings across 29 files (nothing broken). Detail +
-  file list: [unused-imports-todo.md](unused-imports-todo.md).
+- [x] **Unused imports — DONE.** Removed **181** unused imports across 31 files (verified every generator + model runs clean, gates green, no output change). New stdlib checker `src/generators/check_unused_imports.py` (re-export-aware, `--fix`) is a **release gate** in `release.sh` so it can't drift back.
 - [ ] **`generate_pinhole_water_panel.py:511`** — drawing-helper refactor TODO.
 
 ## Paused directions

@@ -1,5 +1,14 @@
 <!-- Working/internal TODO — NOT registered in publish.sh (not published). -->
-# TODO — unused-import cleanup (deferred from the 2026-06 import audit)
+# TODO — unused-import cleanup (deferred from the 2026-06 import audit) — ✅ DONE 2026-07-05
+
+**✅ RESOLVED.** Removed **181** unused imports across 31 generator/model files with the new stdlib
+tool `src/generators/check_unused_imports.py` (`--fix`), verified every generator (2D) and model
+(`--save`) runs clean with zero false positives, all drift gates green, no output changed. The tool is
+now a **release gate** (`release.sh`) — re-export-aware (a name reached via `alias.NAME`, e.g. `ov.X`,
+counts as used), so cruft cannot drift back in. Run `python3 src/generators/check_unused_imports.py`
+to check, `--fix` to clean. *(Original note below, for history.)*
+
+---
 
 `pyflakes` found **215 'imported but unused'** warnings across **29 files**. These are code-hygiene cruft (the *opposite* of a missing import — nothing is broken), deferred from the import audit so the audit could stay focused on real gaps. Clear them when convenient.
 

@@ -254,7 +254,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | Locking collar SS316 | ¾" bore | **4** | McMaster-Carr #6436K12 | Fastenal (SoCal) | $12 |
 | Corner bracket L-plate | ¼" alum. plate, 6"×8" | 4 | Metal Supermarkets SoCal | Online Metals | $20 |
 | Rod-end spherical bearing | GIR25-DO or equiv., 25mm bore | 8 | McMaster-Carr #60645K73 | Amazon Industrial | $22 |
-| Pivot pin SS316 | 1" dia × 8" long | 8 | McMaster-Carr #98173A150 | Fastenal (SoCal branches) | $8 |
+| Pivot pin SS316 | Ø25mm × 200mm (slip-fit in 25mm bore) | 8 | McMaster-Carr (metric Ø25 SS shaft) | Fastenal (SoCal branches) | $8 |
 
 *Items in **bold** changed quantity vs the earlier two-beam design. The two 5,893mm T-slot beams have been removed.*
 

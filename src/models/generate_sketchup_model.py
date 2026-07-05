@@ -1205,8 +1205,8 @@ def ibc_rack():
         for bz in bar_zs:
             parts.append(ruby_box("Front Bar Stub", front_x, yd, bz, fx - front_x + s, s, s, color=C_STEEL))
 
-    # D-ring lashing holders on the front bars (4 per tier, 8 total).
-    for ydh in (520, 940, 1422, C_WID - 520):
+    # D-ring lashing holders on the front bars.
+    for ydh in (520, C_WID - 520):
         for bz in bar_zs:
             parts.append(ruby_cylinder("D-Ring Holder", front_x - 6, ydh, bz + s / 2, 16, 10, color=C_STEEL, axis="x"))
 

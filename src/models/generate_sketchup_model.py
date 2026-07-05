@@ -1928,7 +1928,7 @@ def evap_cooler():
     """
     parts = []
     ext = -WALL_T
-    cw, cd, ch = EVAP_W, EVAP_D, EVAP_H          # 559 × 305 × 711 (Hessaire MC18M)
+    cw, cd, ch = EVAP_W, EVAP_D, EVAP_H          # 508 × 254 × 711 (Hessaire MC18M)
     # Cooler unit standing on the GROUND outside the pinhole wall.
     parts.append(ruby_box("Evap Cooler (on ground)",
                           EVAP_DUCT_X - cw / 2, ext - cd - 100, 0,

@@ -308,13 +308,13 @@ SWUNG_DOOR_CLEARANCE_MM = round(
 # through pinhole wall, Z-centered with ext power panel, 150mm gap to its left.
 # PRODUCT (dimension-audit resolution): Hessaire MC18M, 120V AC 85W / 1300 CFM
 # (run on LOW to match the Ø200 duct), fed by an internal 12V→120V inverter on
-# Circuit E.  Replaces the fictional "Portacool Jetstream 110 12V DC". 559×305×711.
+# Circuit E.  Replaces the fictional "Portacool Jetstream 110 12V DC". 508×254×711.
 EVAP_DUCT_X  = 1000    # duct penetration center X (mm) — 150mm left of ext power panel edge
 EVAP_DUCT_Z  = 1900    # duct penetration center Z (mm) — Z-centered with ext power panel
 EVAP_DUCT_D  = 200     # duct outer diameter (mm)
 # Physical dimensions (used for transport stowage sizing) — real Hessaire MC18M
-EVAP_W     = 559     # cooler width along X (mm)  — 22 in
-EVAP_D     = 305     # cooler depth along Yd (mm) — 12 in
+EVAP_W     = 508     # cooler width along X (mm)  — 20 in
+EVAP_D     = 254     # cooler depth along Yd (mm) — 10 in
 EVAP_H     = 711     # cooler height (mm)         — 28 in
 EVAP_CFM_RATED = 1300  # Hessaire MC18M rated airflow (CFM); run on LOW to match the Ø200 duct
 # Transport stowage — on near walkway grating, in the widened section.

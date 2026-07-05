@@ -170,7 +170,7 @@ flexible coiled cable (with swing slack) from the fixed door frame (Circuit B).*
 | Duct penetration X | <!-- BEGIN cdm:EVAP_DUCT_X -->1,000<!-- END cdm:EVAP_DUCT_X -->mm | `EVAP_DUCT_X` |
 | Duct penetration Z | <!-- BEGIN cdm:EVAP_DUCT_Z -->1,900<!-- END cdm:EVAP_DUCT_Z -->mm | `EVAP_DUCT_Z` |
 | Duct diameter | <!-- BEGIN cdm:EVAP_DUCT_D -->200<!-- END cdm:EVAP_DUCT_D -->mm | `EVAP_DUCT_D` |
-| Cooler body W×D×H | 559×305×711mm | `EVAP_W`/`EVAP_D`/`EVAP_H` |
+| Cooler body W×D×H | 508×254×711mm | `EVAP_W`/`EVAP_D`/`EVAP_H` |
 | Stow left edge X | <!-- BEGIN cdm:EVAP_STOW_X -->1,450<!-- END cdm:EVAP_STOW_X -->mm | `EVAP_STOW_X` |
 | Inverter mount X / Z | 1910 / 1,180mm | `INVERTER_X`/`INVERTER_Z` |
 | Inverter W×H×D | 120×235×72mm | `INVERTER_W`/`INVERTER_H`/`INVERTER_D` |

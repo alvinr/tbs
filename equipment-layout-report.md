@@ -190,18 +190,18 @@ per-path seal table and the dark-adaptation verification check.
 
 The evaporative cooler (**Hessaire MC18M**) sits on the ground outside the container during operation, connected to the wall penetration via Ø200mm flex cord and powered from the interior inverter (Circuit E, 120V AC). It must be stowed inside the container for transport.
 
-**Stowage position:** On the near walkway grating in the wide section. The cooler sits on a 12mm plywood base plate (559×305mm) that distributes the load across the grating and prevents the housing from catching in the grate openings. The wide section fully contains the cooler depth with ~195mm clearance — no overhang into the processing tray zone. The lighter (16 lb) unit also eases the handling.
+**Stowage position:** On the near walkway grating in the wide section. The cooler sits on a 12mm plywood base plate (508×254mm) that distributes the load across the grating and prevents the housing from catching in the grate openings. The wide section fully contains the cooler depth with ~246mm clearance — no overhang into the processing tray zone. The lighter (16 lb) unit also eases the handling.
 
 **Securing:** Two 25mm ratchet straps loop over the cooler and hook to the nearest cantilever bracket arms. Two aluminum angle cleats (25×25×3mm, 100mm long) screwed to the base plate prevent lateral sliding.
 
 | Parameter | Value |
 |-----------|-------|
 | Stowage zone | X=1,450–2,009mm, Yd=0–305mm (near walkway wide section) |
-| Cooler footprint | 559×305mm (long axis along X) |
+| Cooler footprint | 508×254mm (long axis along X) |
 | Cooler height on grating | 711mm (top at Z=861mm) |
 | Weight (dry) | ~7.3 kg (16 lb) |
 | Securing | 2× ratchet straps to bracket arms |
-| Base plate | 12mm ply, 559×305mm |
+| Base plate | 12mm ply, 508×254mm |
 | Clearance to panel swing sweep | ~55mm (the swing reaches X≈1,395 in the near-walkway zone; the cooler at X=1,450 clears it) |
 
 See [Walkway Diagram — Sheet 1](engineering-diagrams.md) for stowage position in plan view.

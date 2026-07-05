@@ -88,7 +88,7 @@ PARTS: list[Part] = [
          "ventilation", 1, "ea", 130, 130, "Hessaire", "Amazon",
          url="https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler",
          spec="Hessaire MC18M, 120V AC, {{fact:cooler_cfm_rated}} CFM (run low), {{fact:evap_cooler_w_ac}}W",
-         dims="559×305×711", datasheet="Hessaire MC18M", modeled_const="EVAP_W/EVAP_D/EVAP_H",
+         dims="508×254×711", datasheet="Hessaire MC18M", modeled_const="EVAP_W/EVAP_D/EVAP_H",
          audit_status="✅ RESOLVED"),
     Part("cooler-inverter", "Cooler inverter", "electrical-power", "ventilation", 1, "ea", 275, 275,
          "Victron", "Amazon", spec="Victron Phoenix 12/375 GFCI (12V→120V) + DC fuse/disconnect + GFCI AC outlet"),

@@ -35,9 +35,12 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
 ## Manual (Alvin) — Sketchfab re-uploads
 _3D models embed as Sketchfab iframes; Alvin re-uploads manually reusing the same model ID._
 
-- [ ] Re-upload the `.skp` models changed recently, same model IDs: **water** (Circuit-C power cabling),
-  **electrical** + **overview** (master switch on the EP), **ibc-stack** (metadata/rename),
-  **walkway** (audit G3: RWK center-arm reach 405→325 — geometry change, needs regenerate + `--send` + re-save).
+- [ ] Re-upload the `.skp` models changed recently, same model IDs:
+  - **overview** — master switch on the EP + audit D-rings (SENT + verified 8 in live model) → **save + re-upload**.
+  - **ibc-stack** — metadata/rename + audit D-rings (shared `tote_restraint`) → open, `--send`, verify, save, re-upload.
+  - **water** — Circuit-C power cabling + audit D-rings (shared `tote_restraint`) → open, `--send`, verify, save, re-upload.
+  - **electrical** — master switch on the EP → save + re-upload.
+  - **walkway** — audit G3: RWK center-arm reach 405→325 (geometry) → regenerate + `--send` + save + re-upload.
 - [ ] Older pending re-uploads: the **light-trap** interactive DC model (B2 refactor); the
   plumbing-panel-rename re-uploads (overview / ibc-stack).
 
@@ -54,7 +57,7 @@ _3D models embed as Sketchfab iframes; Alvin re-uploads manually reusing the sam
 - [ ] **3D electrical pump positions** — still the legacy 2-column layout in `generate_electrical_model.py`
   `_pump_circuit()`; re-org to a single column to match `panel-layout.png` / the 2D sheet4.
 - [ ] **Film-plane click-DC** — multi-attribute DC + 2D FPM/FPD diagram redraw (foreshortening geometry).
-- [ ] **3D overview doesn't model the D-rings** (2D↔3D gap surfaced during audit ③) — the live `cp.tote_restraint()` builds front bars + wall hangers only; the 8 D-rings exist in the 2D frame drawing + registry but not the 3D. Add 8 D-ring cylinders to `cp.tote_restraint()` (4/tier on the front bars) if 2D↔3D parity is wanted → then overview.skp re-send. *(The old D-ring code in `ibc_rack()` is dead/retired — safe to delete in a cleanup.)*
+- [x] **3D D-rings added — DONE.** Added 8 D-ring cylinders to the shared `cp.tote_restraint()` (4/tier on the front bars, mirroring the 2D). Overview sent + **verified 8 in the live model** (4/4 by tier). Shared function → the **ibc-stack + water** models pick them up on their next send. *(Dead `ibc_rack()` D-ring code left for a future delete.)*
 
 ## Cost / data modeling
 - [ ] **Cost-analysis Bucket B** — model the alternative *configurations* (WWT container, itemized

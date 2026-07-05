@@ -183,6 +183,12 @@ def tote_restraint():
     for y0, y1 in ((0, YD_NEAR + S), (YD_FAR - S, ov.C_WID)):
         for bz in bar_zs:
             p.append(ov.ruby_box("Front Retaining Bar", front_x, y0, bz, bar_d, y1 - y0, S, color=ov.C_STEEL))
+    # D-ring lashing holders on the front bars — 4 per tier × 2 tiers = 8 (matches ibc-frame drawing §4.1);
+    # 2 per bar segment, straddling the central plumbing-corridor gap.
+    for ydh in (520, 940, 1422, ov.C_WID - 520):
+        for bz in bar_zs:
+            p.append(ov.ruby_cylinder("D-Ring Holder", front_x - 6, ydh, bz + S / 2, 16, 10,
+                                      color=ov.C_STEEL, axis="x"))
     # Wall joist hangers + exterior backing plates (4× M12 through-bolts) at each bar wall-end.
     ext_pt, ext_pw, ext_ph = 8, 100, 135
     for wall_yd, din in ((0, 1), (ov.C_WID, -1)):

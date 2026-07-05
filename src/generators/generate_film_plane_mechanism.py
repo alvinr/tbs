@@ -4,8 +4,9 @@
 """
 generate_film_plane_mechanism.py
 Moveable film plane mechanism — engineering drawings (6 sheets)
-4-CORNER INDEPENDENT DESIGN: TL, TR, BL, BR each driven by its own leadscrew.
-Supports full tilt, swing, and compound tilt+swing independently.
+OPTION A — RIGID PLANE: a fixed-size rigid rectangle whose ANGLE changes. The 4 corners ride
+carriages on 4 rails, driven in COORDINATED PAIRS — single-axis tilt (top vs bottom) or swing
+(left vs right); limited combined; NO compound twist (a rigid plane cannot warp).
 
 Sheet 1 — Plan view (top-down): 4-corner rail layout, example configs
 Sheet 2 — Elevations: side elevation (tilt) + plan cross-section (swing)
@@ -36,7 +37,7 @@ WHITE   = "#1A1A1A"   # outlines / text (was white-on-dark; now dark-on-white)
 C_FLAT  = "#2060A0"   # flat position line (blue)
 C_T1    = "#1A7A1A"   # tilt config (dark green)
 C_T2    = "#B07010"   # swing config (amber)
-C_T3    = "#CC2020"   # compound config (red)
+C_T3    = "#CC2020"   # combined tilt+swing config (red)
 RAIL    = "#5A3E00"   # rail (dark brown-gold — dark enough for white text labels)
 MECH    = "#2A6B2A"   # mechanism/carriage (dark green — dark enough for white text)
 PINHOLE = "#CC6600"   # pinhole aperture (orange, visible on white)
@@ -60,7 +61,7 @@ CONFIGS = [
     ("Flat  0°",            0.0,  0.0,  C_FLAT, "-"),
     ("Tilt  20°",          20.0,  0.0,  C_T1,   "--"),
     ("Swing 14°",           0.0, 14.0,  C_T2,   "-."),
-    ("Tilt+Swing\n(comb.)", 14.0, 10.0, C_T3,   ":"),
+    ("Tilt+Swing\n(limited)", 14.0, 10.0, C_T3,   ":"),
 ]
 
 FONT = {"fontfamily": "monospace"}
@@ -187,7 +188,7 @@ def sheet1():
     ax.add_patch(Circle((ph_x, 0), 20, fc=BG, ec=WHITE, lw=1.0, zorder=7))
     ax.text(ph_x + 130, 75, f"PINHOLE  X={ph_x}mm  Ø2.17mm", color=PINHOLE, fontsize=7, **FONT)
 
-    # ── 4 INDEPENDENT RAILS — one at each corner ──────────────────────────────
+    # ── 4 RAILS — one at each corner (Option A: rigid plane, coordinated pairs) ──────────────────────────────
     # Left rails: at X=RAIL_X_L (ceiling = label TL/BL, floor = label TL/BL)
     # Right rails: at X=RAIL_X_R (ceiling = label TR/BR, floor = label TR/BR)
     # In plan view both ceiling and floor rails project to same X position.
@@ -359,7 +360,7 @@ def sheet1():
     ax.text(L/2, W+580, "SHEET 1 — PLAN VIEW  (TOP DOWN, LOOKING AT CONTAINER FLOOR)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
     ax.text(L/2, W+470,
-            "4 INDEPENDENT CORNER CARRIAGES  ·  TILT = CEILING vs FLOOR  ·  SWING = LEFT SIDE vs RIGHT SIDE",
+            "4 CORNER CARRIAGES (RIGID PLANE, COORDINATED PAIRS)  ·  TILT = CEILING vs FLOOR  ·  SWING = LEFT vs RIGHT",
             color=DIM, fontsize=7, ha="center", **FONT)
     ax.text(L/2, W+370,
             "IN THIS VIEW: SWING IS VISIBLE AS DIAGONAL  ·  TILT IS HIDDEN (HEIGHT AXIS = INTO PAGE)",
@@ -379,7 +380,7 @@ def sheet1():
 
     # Title block
     title_block(ax, "SHEET 1 OF 6",
-                drawing_title="MOVEABLE FILM PLANE (4-CORNER)",
+                drawing_title="MOVEABLE FILM PLANE (OPTION A)",
                 subtitle="Plan view — 4-corner rail layout",
                 scale_note="Proportional (mm)",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
@@ -436,11 +437,11 @@ def sheet2():
     RAIL_H = 28
     ax.add_patch(Rectangle((0, 0), C_WID, RAIL_H,
                            fc=RAIL, ec=WHITE, lw=0.8, zorder=5, alpha=0.9))
-    ax.text(W/2, RAIL_H/2, "FLOOR RAIL  HGR20  ×2  (BL  +  BR — independent leadscrews)",
+    ax.text(W/2, RAIL_H/2, "FLOOR RAIL  HGR20  ×2  (BL  +  BR — leadscrew per corner, driven as a pair)",
             color=BG, fontsize=5.5, ha="center", va="center", **FONT, zorder=6)
     ax.add_patch(Rectangle((0, H-RAIL_H), C_WID, RAIL_H,
                            fc=RAIL, ec=WHITE, lw=0.8, zorder=5, alpha=0.9))
-    ax.text(W/2, H-RAIL_H/2, "CEILING RAIL  HGR20  ×2  (TL  +  TR — independent leadscrews)",
+    ax.text(W/2, H-RAIL_H/2, "CEILING RAIL  HGR20  ×2  (TL  +  TR — leadscrew per corner, driven as a pair)",
             color=BG, fontsize=5.5, ha="center", va="center", **FONT, zorder=6)
 
     # ── WALL-SEAT SADDLES — side elevation (Yd on X-axis, Z on Y-axis), rev11/12 ──
@@ -537,7 +538,7 @@ def sheet2():
 
     ax.text(W/2, H+255, "VIEW A — SIDE ELEVATION  (TILT)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
-    ax.text(W/2, H+215, "Section through centerline  ·  each corner carriage moves independently",
+    ax.text(W/2, H+215, "Section through centerline  ·  corner carriages move in coordinated pairs (rigid plane)",
             color=DIM, fontsize=6.5, ha="center", **FONT)
 
     # ── RIGHT PANEL: PLAN CROSS-SECTION — SWING ───────────────────────────────
@@ -625,7 +626,7 @@ def sheet2():
 
     ax.text(L/2, W+455, "VIEW B — CEILING CROSS-SECTION  (SWING)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
-    ax.text(L/2, W+375, "Section at ceiling height  ·  left and right corner carriages move independently",
+    ax.text(L/2, W+375, "Section at ceiling height  ·  left/right carriages move as pairs (rigid single-axis swing)",
             color=DIM, fontsize=6.5, ha="center", **FONT)
 
     # Combined title
@@ -636,7 +637,7 @@ def sheet2():
     ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
     ax_tb.axis("off")
     title_block(ax_tb, "SHEET 2 OF 6",
-                drawing_title="MOVEABLE FILM PLANE (4-CORNER)",
+                drawing_title="MOVEABLE FILM PLANE (OPTION A)",
                 subtitle="Tilt elevation & Swing cross-section",
                 scale_note="Proportional (mm)",
                 doc_id="TBS-FM01 · Film Plane Mechanism")
@@ -647,7 +648,7 @@ def sheet2():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 3 — FRAME & HARDWARE DETAIL (4-corner design)
+# SHEET 3 — FRAME & HARDWARE DETAIL (Option A — rigid plane)
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet3():
     fig = plt.figure(figsize=(16, 12))
@@ -844,15 +845,15 @@ def sheet3():
             "PANEL: DIBOND 4mm  ·  the plane never grows, so no folding two-panel system is needed",
             color=DIM, fontsize=6.5, ha="center", **FONT)
 
-    fig.text(0.5, 0.97, "SHEET 3 — FRAME & HARDWARE DETAILS  (4-CORNER INDEPENDENT DESIGN)",
+    fig.text(0.5, 0.97, "SHEET 3 — FRAME & HARDWARE DETAILS  (OPTION A — RIGID PLANE)",
              color=WHITE, fontsize=11, ha="center", fontweight="bold", **FONT)
 
     # Title block (full-figure overlay for multi-subplot sheet)
     ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
     ax_tb.axis("off")
     title_block(ax_tb, "SHEET 3 OF 6",
-                drawing_title="MOVEABLE FILM PLANE (4-CORNER)",
-                subtitle="Frame & hardware details — 4-corner design",
+                drawing_title="MOVEABLE FILM PLANE (OPTION A)",
+                subtitle="Frame & hardware details — Option A rigid plane",
                 scale_note="As noted",
                 doc_id="TBS-FM01 · Film Plane Mechanism")
 
@@ -862,7 +863,7 @@ def sheet3():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 4 — MOVEMENT SPECIFICATION TABLE & BOM (4-corner design)
+# SHEET 4 — MOVEMENT SPECIFICATION TABLE & BOM (Option A — rigid plane)
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet4():
     fig, ax = plt.subplots(figsize=(16, 13))
@@ -873,7 +874,7 @@ def sheet4():
     ax.text(0.5, 0.968, "SHEET 4 — MOVEMENT SPECIFICATION",
             transform=ax.transAxes, color=WHITE, fontsize=13, ha="center",
             fontweight="bold", **FONT)
-    ax.text(0.5, 0.948, f"TBS-001  ·  MOVEABLE FILM PLANE (4-CORNER)  ·  RAILS: X={RAIL_X_L}–{RAIL_X_R}mm  SPAN={RAIL_X_R-RAIL_X_L}mm  MAX SWING={MAX_SWING_DEG:.1f}deg",
+    ax.text(0.5, 0.948, f"TBS-001  ·  MOVEABLE FILM PLANE (OPTION A)  ·  RAILS: X={RAIL_X_L}–{RAIL_X_R}mm  SPAN={RAIL_X_R-RAIL_X_L}mm  MAX SWING={MAX_SWING_DEG:.1f}deg",
             transform=ax.transAxes, color=DIM, fontsize=8.5, ha="center", **FONT)
 
     # row_h=0.022 fits 31 rows across 3 tables in the available page height.
@@ -907,7 +908,7 @@ def sheet4():
     # ── Table 1: Axis movement summary ────────────────────────────────────────
     # label sits 0.012 above header top: label_y = y0 + row_h*1.2 + 0.012
     # y0=0.895 → header top=0.895+0.026=0.921 → label at 0.933
-    ax.text(0.05, 0.933, "TABLE 1 — MOVEMENT AXES  (4-CORNER INDEPENDENT DESIGN)",
+    ax.text(0.05, 0.933, "TABLE 1 — MOVEMENT AXES  (OPTION A — RIGID PLANE, COORDINATED CORNERS)",
             transform=ax.transAxes, color=DIM, fontsize=8, fontweight="bold", **FONT)
 
     axes_headers = ["AXIS", "DESCRIPTION", "CORNERS\nCONTROLLED", "MAX TRAVEL", "ACTUATOR", "LOCK"]
@@ -916,7 +917,7 @@ def sheet4():
         ["TILT (bottom)", "Both bottom corners move equally",   "BL + BR together", f"0–{FP_Y}mm", "2× leadscrew — turn both", "2 locking collars"],
         ["SWING (left)",  "Both left corners move equally",     "TL + BL together", f"0–{FP_Y}mm", "2× leadscrew — turn both", "2 locking collars"],
         ["SWING (right)", "Both right corners move equally",    "TR + BR together", f"0–{FP_Y}mm", "2× leadscrew — turn both", "2 locking collars"],
-        ["COMPOUND",      "Limited tilt+swing — plane stays FLAT", "TL, TR, BL, BR", f"0–{FP_Y}mm", "4× leadscrews independently","4 locking collars"],
+        ["COMBINED",      "Limited tilt+swing — rigid, stays FLAT", "TL, TR, BL, BR", f"0–{FP_Y}mm", "4 leadscrews, coordinated","4 locking collars"],
         ["BACK FOCUS",    "All 4 corners together",             "All",              f"{FP_Y_MIN}–{FP_Y}mm","All 4 leadscrews together", "All 4 locks"],
         ["MAX TILT",      "Top=414mm, Bot=1948mm (axis tilt)",  "TL=TR, BL=BR",     f"{MAX_TILT_DEG:.0f}deg (xslide-lim.)",  "Top+top / Bot+bot",        "All 4 locks"],
         ["MAX SWING",     "Left=125mm, Right=2237mm (axis swing)","TL=BL, TR=BR",    f"{MAX_SWING_DEG:.0f}deg (rail-lim.)", "Left+left / Right+right",  "All 4 locks"],
@@ -941,7 +942,7 @@ def sheet4():
         ("Swing mild",      0.0, 11.0,  "diagonal slant"),
         ("Swing strong",    0.0, 22.0,  "strong left-right skew"),
         ("Swing max",       0.0, 28.0,  "max swing (rail-depth limited)"),
-        ("Tilt+Swing",     14.0, 10.0,  "combined — plane stays FLAT"),
+        ("Tilt+Swing",     14.0, 10.0,  "limited combined — rigid, stays flat"),
     ]
 
     cfg_headers = ["CONFIG", "TL mm", "TR mm", "BL mm", "BR mm",
@@ -993,7 +994,7 @@ def sheet4():
 
     # Title block
     title_block(ax, "SHEET 4 OF 6",
-                drawing_title="MOVEABLE FILM PLANE (4-CORNER)",
+                drawing_title="MOVEABLE FILM PLANE (OPTION A)",
                 subtitle="Movement specification & BOM",
                 scale_note="Not to scale",
                 doc_id="TBS-FM01 · Film Plane Mechanism")
@@ -1567,7 +1568,7 @@ def sheet5():
     ax_tb.set_ylim(0, 1)
     ax_tb.axis("off")
     title_block(ax_tb, "SHEET 5 OF 6",
-                drawing_title="MOVEABLE FILM PLANE (4-CORNER)",
+                drawing_title="MOVEABLE FILM PLANE (OPTION A)",
                 subtitle="Muslin clamp detail — cam-lever spring clamp",
                 scale_note="MULTIPLE SCALES — SEE INDIVIDUAL PANELS",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
@@ -1836,12 +1837,12 @@ def sheet6():
             "SHEET 6 — SYSTEM SCHEMATIC  (FRONT ELEVATION — LOOKING FROM PINHOLE SIDE)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
     ax.text(FW / 2, FH + 290,
-            "4 INDEPENDENT CORNER CARRIAGES  ·  4 LEADSCREWS  ·  4 HANDWHEELS  ·  ROD-END + X-Z CROSS-SLIDE AT EACH CORNER (Option A)",
+            "4 CORNER CARRIAGES (COORDINATED PAIRS)  ·  4 LEADSCREWS  ·  4 HANDWHEELS  ·  ROD-END + X-Z CROSS-SLIDE AT EACH CORNER (Option A)",
             color=DIM, fontsize=7, ha="center", **FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 6 OF 6",
-                drawing_title="MOVEABLE FILM PLANE (4-CORNER)",
+                drawing_title="MOVEABLE FILM PLANE (OPTION A)",
                 subtitle="System schematic — four-corner frame front elevation",
                 scale_note="Schematic — not to scale",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
@@ -1854,7 +1855,7 @@ def sheet6():
 
 # ── Run all sheets ─────────────────────────────────────────────────────────────
 if __name__ == "__main__":
-    print("Generating film plane mechanism drawings (4-corner design)...")
+    print("Generating film plane mechanism drawings (Option A rigid plane)...")
     sheet1()
     sheet2()
     sheet3()

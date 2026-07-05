@@ -37,13 +37,10 @@ import os
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-import math
 import matplotlib.patches as mpatches
 
-from tbs_constants import C_OUT, C_DIM, C_CL, C_STEEL, DIAGRAMS_DIR, PUMP_PIPE_OD, PUMP_PIPE_WALL, EQPANEL_X, EQPANEL_H
-from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_notes, hatch_rect,
-                         draw_pipe_path as _tbs_pipe_path,
-                         valve_ball, valve_3way, valve_check)
+from tbs_constants import C_OUT, C_DIM, C_STEEL, DIAGRAMS_DIR, PUMP_PIPE_OD, PUMP_PIPE_WALL, EQPANEL_X, EQPANEL_H
+from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_pipe_path as _tbs_pipe_path, valve_ball, valve_3way, valve_check
 from tbs_title_block import title_block
 
 # ── Panel geometry ────────────────────────────────────────────────────────

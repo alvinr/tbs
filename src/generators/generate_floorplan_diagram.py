@@ -31,8 +31,7 @@ from tbs_title_block import title_block
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle, Circle, FancyArrowPatch, Arc
-from matplotlib.lines import Line2D
+from matplotlib.patches import Rectangle, Circle, Arc
 import matplotlib.patches
 
 from tbs_constants import *

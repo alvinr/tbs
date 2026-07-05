@@ -38,26 +38,11 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle, Polygon, FancyArrowPatch, Circle
-import matplotlib.patches as mpatches
+from matplotlib.patches import Rectangle, Circle
 
-from tbs_constants import (
-    C_LEN, C_WID, C_HGT,
-    IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000,
-    BLUE_IBC_Y, IBC_FAR_Y,
-    IBC_PALLET_H, IBC_CAGE_TUBE_D, IBC_CAGE_RAIL_W,
-    IBC_CAGE_INSET, IBC_BOTTLE_INSET, IBC_VALVE_Z,
-    IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_D,
-    IBC_FOOT_BOLT_PCD, IBC_FOOT_BOLT_N,
-    IBC_WBKT_PLATE_W, IBC_WBKT_PLATE_T, IBC_WBKT_SEAT_PROJ,
-    IBC_WBKT_SEAT_T, IBC_WBKT_GUSSET_H, IBC_WBKT_BOLT_D, IBC_WBKT_BOLT_N,
-    PANEL_FRAME_TOP_Z,
-    WALKWAY_RIGHT_X, WALKWAY_H, WALKWAY_GRATE_T,
-    CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS,
-    DIAGRAMS_DIR,
-)
+from tbs_constants import C_WID, C_HGT, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000, BLUE_IBC_Y, IBC_FAR_Y, IBC_PALLET_H, IBC_CAGE_TUBE_D, IBC_CAGE_RAIL_W, IBC_CAGE_INSET, IBC_BOTTLE_INSET, IBC_VALVE_Z, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_D, IBC_FOOT_BOLT_PCD, IBC_FOOT_BOLT_N, IBC_WBKT_PLATE_W, IBC_WBKT_PLATE_T, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, IBC_WBKT_GUSSET_H, IBC_WBKT_BOLT_D, IBC_WBKT_BOLT_N, PANEL_FRAME_TOP_Z, WALKWAY_RIGHT_X, WALKWAY_H, WALKWAY_GRATE_T, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, DIAGRAMS_DIR
 from tbs_title_block import title_block
-from tbs_drawing import draw_dim_h, draw_dim_v, leader, hatch_rect, draw_notes
+from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
 
 # ── Palette ──────────────────────────────────────────────────────────────────
 BG       = "#FFFFFF"

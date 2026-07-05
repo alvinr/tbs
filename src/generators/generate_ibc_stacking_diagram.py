@@ -18,31 +18,12 @@ Sheet 2 — Fastening details:
 """
 
 import os
-import math
-import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle, Polygon, FancyArrowPatch, Circle
-import matplotlib.patches as mpatches
+from matplotlib.patches import Rectangle, Polygon, Circle
 
-from tbs_constants import (
-    C_LEN, C_WID, C_HGT,
-    IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000,
-    BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y,
-    WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
-    WALKWAY_RIGHT_X,
-    C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_PUMP,
-    PROC_TRAY_RIM,
-    EXT_PANEL_YD, EXT_FILL_1_H, EXT_DRAIN_3_H, EXT_DRAIN_4_H,
-    EQPANEL_X, EQPANEL_T, EQPANEL_YD,
-    PANEL_FRAME_X, PANEL_FRAME_TOP_Z, IBC_FRAME_RHS,
-    IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_FOOT_BOLT_N,
-    IBC_WBKT_PLATE_T, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, IBC_WBKT_GUSSET_H,
-    PUMP_D, PUMP_YD, PUMP_YD_SPAN,
-    BB_OD, FSKID_YD,
-    DIAGRAMS_DIR,
-)
+from tbs_constants import C_LEN, C_WID, C_HGT, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000, BLUE_IBC_Y, IBC_FAR_Y, WALKWAY_W, WALKWAY_RIGHT_X, C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_PUMP, EXT_FILL_1_H, EXT_DRAIN_3_H, EXT_DRAIN_4_H, EQPANEL_X, EQPANEL_T, EQPANEL_YD, PANEL_FRAME_X, IBC_FRAME_RHS, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_FOOT_BOLT_N, BB_OD, DIAGRAMS_DIR
 sys_models = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "models")
 if sys_models not in os.sys.path:
     os.sys.path.insert(0, sys_models)

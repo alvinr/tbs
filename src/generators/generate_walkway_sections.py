@@ -28,20 +28,7 @@ from tbs_drawing import draw_dim_h, draw_dim_v, leader
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                 "..", "models"))
 import generate_corridor_water_panel as cp   # ribbon geometry (single source)
-from tbs_constants import (
-    IBC_COL_X, IBC_H_1000,
-    WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W,
-    WALKWAY_LEFT_X, WALKWAY_W,
-    PROC_TRAY_X_R, PROC_TRAY_X_L, PROC_TRAY_RIM,
-    PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_D,
-    PROC_TRAY_SUMP_Z, PROC_TRAY_SUMP_W, PROC_TRAY_DRAIN_X,
-    PROC_TRAY_FLOOR_Z_LOW, PROC_TRAY_FLOOR_Z_HIGH, PROC_TRAY_SLOPE,
-    tray_floor_z, tray_rim_top_z,
-    SPRAY_BAR_WHEEL_DIA, SPRAY_BAR_BEAM_W, SPRAY_BAR_BEAM_H,
-    SPRAY_BAR_BEAM_BOT_RISE, SPRAY_BAR_BEAM_TOP_RISE,
-    spray_beam_top_z,
-    DIAGRAMS_DIR,
-)
+from tbs_constants import IBC_COL_X, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_W, PROC_TRAY_X_R, PROC_TRAY_X_L, PROC_TRAY_RIM, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_D, PROC_TRAY_SUMP_Z, PROC_TRAY_SUMP_W, PROC_TRAY_DRAIN_X, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, tray_rim_top_z, spray_beam_top_z, DIAGRAMS_DIR
 
 # ── Palette ────────────────────────────────────────────────────────────────────
 BG      = "#FFFFFF"

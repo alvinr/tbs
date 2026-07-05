@@ -18,8 +18,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.patches import (FancyBboxPatch, Circle, Rectangle,
-                                 Ellipse, Arc)
+from matplotlib.patches import FancyBboxPatch, Circle, Rectangle, Ellipse
 from matplotlib.colors import LinearSegmentedColormap
 from tbs_constants import C_WID, PROJECT_ROOT
 

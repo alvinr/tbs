@@ -15,7 +15,6 @@ Sheet 2 — Section (Yd-Z): the fold-down mechanism — deployed + stowed positi
 Sheet 3 — Detail: the piano hinge (wall mount) + the stay.
 """
 import os
-import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -23,20 +22,7 @@ from matplotlib.patches import Rectangle, Circle
 
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
-from tbs_constants import (
-    C_WID, C_HGT,
-    WALKWAY_H, WALKWAY_GRATE_T,
-    WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_NEAR_WIDE_W,
-    SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_YD_NEAR, SHELF_YD_FAR,
-    SHELF_DEPTH, SHELF_H, SHELF_T, SHELF_STOW_TOP_Z, SHELF_STAY_N,
-    TAP_X, TAP_Z,
-    BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D,
-    EP_X, EP_W, EP_H_LO, EP_H_HI,
-    EVAP_STOW_X, EVAP_W, EVAP_D, EVAP_H, EVAP_STOW_Z,
-    cone_left,
-    C_OUT, C_DIM, C_STEEL, C_CL,
-    DIAGRAMS_DIR,
-)
+from tbs_constants import WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_NEAR_WIDE_W, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_DEPTH, SHELF_H, SHELF_T, SHELF_STOW_TOP_Z, SHELF_STAY_N, TAP_X, TAP_Z, BA_X, BA_W, BA_D, EP_X, EP_W, EVAP_STOW_X, EVAP_W, EVAP_D, EVAP_H, EVAP_STOW_Z, cone_left, C_OUT, C_DIM, DIAGRAMS_DIR
 
 BG        = "#FFFFFF"
 C_SHELF   = "#C8B06A"    # phenolic ply — warm tan

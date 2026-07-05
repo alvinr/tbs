@@ -18,7 +18,6 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle
 import os
 from tbs_constants import FP_W, FP_H, C_WID, FP_Y_MIN, DIAGRAMS_DIR
 from tbs_title_block import title_block

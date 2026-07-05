@@ -16,11 +16,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 _PROJECT_ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
-import matplotlib.patches as mpatches
-from matplotlib.patches import FancyBboxPatch, Circle, Rectangle, Ellipse, Wedge, Arc
-from matplotlib.path import Path
-import matplotlib.patheffects as pe
-import matplotlib.transforms as transforms
+from matplotlib.patches import FancyBboxPatch, Circle, Rectangle, Ellipse, Arc
 from tbs_constants import C_WID, PH_FNO
 
 # ── Shared helpers ────────────────────────────────────────────────────────────

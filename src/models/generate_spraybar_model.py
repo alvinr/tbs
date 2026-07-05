@@ -41,7 +41,7 @@ GY = (PROC_TRAY_YD_NEAR + PROC_TRAY_YD_FAR) // 2        # 1180
 # Colors
 C_ALUM   = "#C8D8E8"   # aluminum SHS beam + pole
 C_STEEL  = "#B0B0B8"   # carriage plate / clamps
-C_NYLON  = "#33343A"   # nylon wheels
+C_NYLON  = "#33343A"   # acetal (Delrin) wheels
 C_WATER  = "#2060C0"   # feed hose / water in pipe
 C_TRAY   = "#9FB8C8"   # tray-floor reference patch
 C_POLY   = "#2A2A2A"   # LDPE irrigation poly pipe (side-mounted manifold)
@@ -133,7 +133,7 @@ def build_beam():
 def _carriage(xend, side, din):
     """One wheel carriage (2D Detail C/D). The carriage is the full beam width in
     X with its OUTER edge flush with the beam end (`din` = +1 left end, -1 right).
-    Notched 5mm Al plate (two wings) + two Ø32 nylon wheels on Ø10 through-axles
+    Notched 5mm Al plate (two wings) + two Ø32 acetal wheels on Ø10 through-axles
     (saddle clamps + M5 bolts); the beam is sandwiched by TWO flat C-clamps (one
     per face) that hook over the beam top and bolt down through the plate."""
     parts = []
@@ -155,7 +155,7 @@ def _carriage(xend, side, din):
                              cx0, GY + notch, plate_z,
                              CW, (GY + half + 18) - (GY + notch), plate_t, color=C_ALUM))
 
-    # ── each wheel: Ø32 nylon on a Ø10 through-axle (centerd on the wing). The
+    # ── each wheel: Ø32 acetal on a Ø10 through-axle (centerd on the wing). The
     # axle is retained by a curved saddle clamp on EACH side of the wheel (like a
     # conduit/pipe saddle), each bolted down through the plate with two bolts
     # straddling the axle — two bolts either side of the wheel. ──

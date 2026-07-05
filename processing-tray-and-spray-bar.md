@@ -155,7 +155,7 @@ down-and-in, at 150mm pitch along the beam.
 | Irrigation feed tubes | 1/4" poly/vinyl tube, manifold to beam feed points | 7 | Distribute water along the beam (~7m total) |
 | Barbed feed fittings | Barbed tee, feed tube into the side manifold | 7 | Feed points (~550mm pitch) into the manifold |
 | Retainer clips | SS or nylon, for 3/4" LDPE fold-back closure | 2 | Seal both ends of poly pipe (fold-back termination) |
-| [Nylon skate wheels](https://www.amazon.com/uxcell-Plastic-Roller-Bearings-Guiding/dp/B0GXVT88Y5) | 32mm OD × 20mm wide, 10mm bore, flat tread | 4 | Low-profile, roll on tray floor beneath walkway grating (2 per carriage, 200mm Yd spacing) |
+| [Acetal (Delrin) roller wheels](https://www.mcmaster.com/products/acetal-round-stock/) | Ø32 × 20mm wide, Ø10 plain bore, flat tread | 4 | Low-profile, roll on tray floor beneath walkway grating (2 per carriage, 200mm Yd spacing) |
 | [Axle pins (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | 10mm × 60mm 304 SS axle pin, flat head | 4 (1 pack) | Wheel spindles |
 | [Axle retention saddle clamps (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | 304 SS, curved conduit-style saddle, 10mm, two bolt holes | 8 | Retain the wheel axles — bolted to the carriage plate underside |
 | Carriage plates | 6061-T6 AL plate 5mm, wings extend in to meet beam faces | 2 | Carry wheels; captured between beam clamp plates |
@@ -231,13 +231,13 @@ wheels spaced 200mm apart in the Yd direction for stability against tipping.
 
 | Property | Value |
 |----------|-------|
-| Type | Fixed (non-swivel) nylon wheel |
+| Type | Fixed (non-swivel) acetal (Delrin) wheel |
 | Diameter | 32mm |
 | Width | 20mm |
 | Bore | 10mm |
-| Load rating | ≥25 kg per wheel (actual load ~2.6 kg per wheel wet) |
+| Load rating | Light-duty — actual load ~2.6 kg per wheel wet (a solid acetal wheel carries this easily) |
 | Tread profile | Flat (rolls on the stainless tray floor, raised on the shim ramp) |
-| Material | Glass-filled nylon or Delrin |
+| Material | Solid acetal (Delrin), plain bore — corrosion-immune, self-lubricating on the 304 SS axle (no carbon-steel bearings for the wet wash) |
 
 **Vertical geometry (all dimensions mm above finished floor):**
 
@@ -560,7 +560,7 @@ tray drainage plan and sump cross-section).
 | 1/4" irrigation poly tube | Manifold to beam feed points (~7m total) | 1 ea | Amazon | $6 |
 | Barbed tees, tube into the side poly manifold | Feed tube to the side poly manifold, 7 feed points | 7 ea | Amazon | $10 |
 | SS/nylon retainer clips for 3/4" LDPE | Fold-back end closures | 2 ea | Amazon | $4 |
-| [Nylon skate wheel, 32mm × 20mm, 10mm bore](https://www.amazon.com/uxcell-Plastic-Roller-Bearings-Guiding/dp/B0GXVT88Y5) | Flat tread, ≥25 kg rated (2 per carriage) — low-profile for grate clearance; 10mm bore takes the 10mm axle | 4 ea | Amazon | $12–$20 |
+| [Acetal (Delrin) roller wheel, Ø32 × 20mm, Ø10 plain bore](https://www.mcmaster.com/products/acetal-round-stock/) | Solid acetal (Delrin), flat tread, plain bore — corrosion-immune + self-lubricating on the Ø10 304 SS axle (no carbon-steel ball bearings; the ferricyanide/citric wash rules those out). Turned from acetal rod or an equivalent POM plain-bore roller. Light-duty (~2.6 kg/wheel wet); 2 per carriage, low-profile for grate clearance. | 4 ea | McMaster-Carr | $12–$20 |
 | 1/2" barb × 1/2" hose barb, brass | Flex hose to manifold inlet | 1 ea | Amazon | $4 |
 | Telescoping aluminum pool pole, 4–8 ft | Standard pool skimmer handle | 1 ea | Amazon | $15 |
 | 1/2" reinforced braided PVC hose, 15 ft | BV-02 to beam feed (4 m coiled) | 1 ea | Amazon | $15 |

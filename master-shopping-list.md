@@ -80,6 +80,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
+| Acetal (Delrin) roller wheel, Ø32 × 20mm, Ø10 plain bore | 4 ea | McMaster-Carr | spray | $12–$20 |
 | Acme leadscrew ¾"-6 | 4 ea | Roton Products | film | $380 |
 | Acme nut bronze ¾"-6 | 4 ea | Roton Products | film | $48 |
 | Cross-slide carriage HGH15CA (Option A) | 8 ea | Automation Overstock | film | $96 |
@@ -88,7 +89,6 @@ indicative low–high estimates — get quotes before ordering.
 | Handwheel 8" dia | 4 ea | Grainger | film | $140 |
 | Linear guide rail HGR20 | 4 ea | Automation Overstock | film | $180 |
 | Locking collar SS316 | 4 ea | McMaster-Carr | film | $48 |
-| Nylon skate wheel, 32mm × 20mm, 10mm bore | 4 ea | Amazon | spray | $12–$20 |
 | Rail carriage HGH20CA | 8 ea | Automation Overstock | film | $144 |
 | Rod-end spherical bearing | 8 ea | McMaster-Carr | film | $176 |
 | SKF 6215-2RS1 sealed bearing | 2 ea | Bearing World | lightlock | $90–$130 |
@@ -417,8 +417,8 @@ indicative low–high estimates — get quotes before ordering.
 |----------|-----------|-------|-----------|
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 16 | adhesives-finishes, fabrication-labor, steel-structural | $1,946–$3,156 |
-| McMaster-Carr | 42 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, water-equipment | $1,808–$2,777 |
-| Amazon | 80 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,145–$2,695 |
+| McMaster-Carr | 43 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, water-equipment | $1,820–$2,797 |
+| Amazon | 79 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,133–$2,675 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,301–$1,638 |

@@ -262,13 +262,13 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | Deep 4-leg box uprights (front + back pair) + top/bottom rings + front retaining bars + panel-mount rail (~19.5 m) | 4 ea | Metal Supermarkets | $120–$180 |
 | 12mm steel plate, 150 × 150 cut | Deep-box upright floor flange feet (one per leg; front feet reach under the tray) | 4 ea | Metal Supermarkets | $20–$40 |
 | 4mm folded plate | Simpson-style wall joist hangers | 4 ea | Local fab | $30–$50 |
-| 25mm welded D-ring (3641T29) | Lashing holders on the front bars, 6mm mount plates | 4 ea | McMaster-Carr | $20–$35 |
+| 25mm welded D-ring (3641T29) | Lashing holders on the front bars (4 per tier × 2 tiers), 6mm mount plates | 8 ea | McMaster-Carr | $40–$70 |
 | 25mm ratchet strap, 1,100 kg WLL | Transport securing, over each stack | 4 ea | Amazon | $30–$50 |
 | M12 floor anchor (wedge/sleeve, container floor) | 4 deep-box flange feet × 4 anchors each | 16 ea | McMaster-Carr | $30–$60 |
 | M12 × 40 bolt, Grade 8.8 | Wall hangers (2 each) + front-bar cleats | 12 ea | McMaster-Carr | $12–$22 |
 | Welding / fabrication (frame assembly) | ~14–20 hrs labor (deep 4-leg box — the ring/back-upright welds sit at the upper end of the range) | 1 lot | Local fab | $688–$1,018 |
 | Primer + paint | Anti-corrosion coating | 1 lot | Hardware store | $30–$50 |
-| **Ibc-Frame total** | | | | **$980–$1,505** |
+| **Ibc-Frame total** | | | | **$1,000–$1,540** |
 <!-- END parts:ibc-frame -->
 
 ### 9.2 IBC Totes
@@ -288,7 +288,7 @@ the stacking structure and the totes it restrains.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$980<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,505<!-- END costing:ibc-frame-high --> |
+| Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$1,000<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,540<!-- END costing:ibc-frame-high --> |
 | IBC totes (4×) | $300 | $900 |
 | **Total** | **$1,280** | **$2,405** |
 

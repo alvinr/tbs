@@ -425,7 +425,7 @@ def sheet1():
         for wyd, din in ((0, 1), (C_WID, -1)):   # wall joist hangers (U-pocket)
             _rhs_rect(ax, min(wyd, wyd + din * 60), bz - 8, 60, FRAME_RHS + 16, 
                       fc=C_STEEL, lw=1.0, zo=10)
-    for ydh in (520, C_WID - 520):               # D-ring lashing holders
+    for ydh in (520, 940, 1422, C_WID - 520):    # D-ring lashing holders (4 per tier, 8 total)
         for bz in (560, 1760):
             ax.add_patch(Circle(((ydh), (bz + FRAME_RHS / 2)), (15),
                                 fc="none", ec=C_STEEL, lw=2.0, zorder=11))

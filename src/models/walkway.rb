@@ -15,6 +15,14 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each { |p| model.pages.erase(p) }
 
+# ── Sketchfab upload metadata (stamped every regen; keeps the stable model UID) ──
+model.name = "TBS-001 Walkway Model"
+model.description = "The perimeter walkway provides dry-foot operator access around all four sides of the processing tray without wading through chemical solution."
+model.set_attribute("sketchfab", "model_title", "TBS-001 Walkway Model")
+model.set_attribute("sketchfab", "model_description", "The perimeter walkway provides dry-foot operator access around all four sides of the processing tray without wading through chemical solution.")
+model.set_attribute("sketchfab", "model_id", "96b3d0e5fc8b4fc18c528f64bda028bc")
+model.set_attribute("sketchfab", "model_tags", "sketchup")
+
 # ── Tags (layers) ──
   model.layers.add("Container") unless model.layers["Container"]
   model.layers.add("Processing Tray") unless model.layers["Processing Tray"]
@@ -2722,7 +2730,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Type RWk cantilever arm (40x40 SHS)
   grp = ents.add_group
   grp.name = "Type RWk cantilever arm (40x40 SHS)"
-  face = grp.entities.add_face([7595.mm,0.mm,70.mm], [8000.mm,0.mm,70.mm], [8000.mm,40.mm,70.mm], [7595.mm,40.mm,70.mm])
+  face = grp.entities.add_face([7675.mm,0.mm,70.mm], [8000.mm,0.mm,70.mm], [8000.mm,40.mm,70.mm], [7675.mm,40.mm,70.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(45.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")

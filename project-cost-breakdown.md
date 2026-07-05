@@ -18,7 +18,7 @@
 | **2. Interior conversion** | $950 | $1,138 | $1,350 |
 | **3. Optics — pinhole plate** | $95 | $165 | $240 |
 | **4. Film plane mechanism (4-corner Option A, incl. wall-seat saddles + cross-slides)** | $3,454 | $3,684 | $3,914 |
-| **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $4,590 | $5,775 | $6,953 |
+| **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $4,592 | $5,777 | $6,955 |
 | **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)** | $2,084 | $2,324 | $2,634 |
 | **5b. Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)** | $824 | $884 | $974 |
 | **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $1,385 | $1,728 | $2,070 |
@@ -29,7 +29,7 @@
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,210 | $1,650 | $2,980 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licenses & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$21,594** | **$27,430** | **$35,334** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$21,596** | **$27,432** | **$35,336** |
 <!-- END costing:scenario -->
 
 *Line 7 (cyanotype printmaking) is now re-summed into the TOTAL on the **Mike Ware AmFe** chemistry + corrected ~$300 substrate: **Low = Lean ⅓-Ware ($1,210), Mid = Standard ½-Ware ($1,650), High = Rich full-Ware ($2,980)** — matching §7.1 and the master shopping list §9. The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md).*
@@ -288,9 +288,9 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 | Pipe (HDPE, spray bar) | $80 | $114 |
 | Processing tray (304 SS, fabricated, 2 panels) | $1,300 | $2,015 |
 | Spray bar assembly (gantry: beam, LDPE pipe, 26 nozzles, manifold + 7 feed tubes, 4 wheels, ball joint, arm, hose) | $287 | $375 |
-| Electrical (wiring only — fuse block in Electrical Report) | $35 | $35 |
+| Electrical (wiring only — fuse block in Electrical Report) | $37 | $37 |
 | Processing consumables (6-mil poly, pH meter, citric acid) | $241 | $241 |
-| **Water system total** | **$4,590** | **$6,953** |
+| **Water system total** | **$4,592** | **$6,955** |
 <!-- END costing:water -->
 
 *Used IBC totes (available locally, ~$80–$150 each from Container Exchanger CA) drive significant savings vs. new.*
@@ -558,7 +558,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Interior conversion (minimal) | $950 |
 | Pinhole plate | $95 |
 | Film plane mechanism (manual Option A, incl. wall-seat saddles + cross-slides) | $3,454 |
-| Water system (incl. processing tray, spray bar, IBC stacking frame) | $4,590 |
+| Water system (incl. processing tray, spray bar, IBC stacking frame) | $4,592 |
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $2,084 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $824 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,385 |
@@ -569,7 +569,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Cyanotype chemistry + substrate (50 prints) | $1,210 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$21,024** |
+| **Scenario A total** | **~$21,026** |
 <!-- END costing:scenario-a -->
 
 ### Scenario B — Recommended build, regional deployment
@@ -581,7 +581,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Interior conversion (full) | $1,138 |
 | Pinhole plate | $165 |
 | Film plane mechanism (manual Option A + wall-seat saddles + cross-slides) | $3,684 |
-| Water system (incl. processing tray, spray bar, IBC stacking frame) | $5,775 |
+| Water system (incl. processing tray, spray bar, IBC stacking frame) | $5,777 |
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $2,324 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $884 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,728 |
@@ -593,7 +593,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Rodenstock Apo-Ronar 1,200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$27,740** |
+| **Scenario B total (excl. CDL)** | **~$27,742** |
 <!-- END costing:scenario-b -->
 
 ### Scenario C — Full production, own transport, CDL
@@ -601,11 +601,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 <!-- BEGIN costing:scenario-c -->
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $26,840 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $26,842 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$116,340–$146,340** |
+| **Scenario C total** | **~$116,342–$146,342** |
 <!-- END costing:scenario-c -->
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*

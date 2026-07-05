@@ -171,7 +171,7 @@ WATER = [
     LineItem("Pipe (HDPE, spray bar)", 80, 97, 114),
     LineItem("Processing tray (304 SS panels + fabrication, shim strips, sump pickup, liner, hardware)", 1300, 1660, 2015),
     LineItem("Spray bar assembly (40×25 SS RHS beam, side LDPE manifold, 26 nozzles, manifold + 7 feed tubes, 4 Ø32 wheels, ball joint, arm, hose)", 287, 331, 375),
-    LineItem("Electrical (wiring only — fuse block in Electrical Report)", 35, 35, 35),
+    LineItem("Electrical (wiring only — fuse block in Electrical Report)", 37, 37, 37),
     LineItem("Processing consumables (6-mil poly, pH meter, citric acid)", 241, 241, 241),
 ]
 
@@ -1007,9 +1007,9 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 909,  "total": 1210, "per_print": 24},  # 909 not 910: consistent ferri rounding ($104, not the doc's hand-rounded $105)
     "standard": {"chem": 1353, "total": 1650, "per_print": 33},
     "rich":     {"chem": 2681, "total": 2980, "per_print": 60},
-    "grand_total": (21594, 27430, 35334),  # audit 2026-07: filter 3-separate design (−$50/−$65). pump switches 5→1 master (−$26 §5a). IBC frame deep 4-leg box (+$25/+$38/+$50). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (+$52/+$64/+$76, SS beam); + corridor plumbing-panel structure (+$215/+$380 — previously uncosted)
+    "grand_total": (21596, 27432, 35336),  # audit 2026-07: +$2 Powerpole (1/pump); filter 3-separate design (−$50/−$65). pump switches 5→1 master (−$26 §5a). IBC frame deep 4-leg box (+$25/+$38/+$50). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (+$52/+$64/+$76, SS beam); + corridor plumbing-panel structure (+$215/+$380 — previously uncosted)
     "walkway": (2000, 2488, 2975),   # §6a fab line raised so bracket scope matches walkway-report §10 ($742–$1,255 all-in)
-    "water": (4590, 5775, 6953),   # audit 2026-07: filter combo → 3 separate housings + frame (−$50/−$65). IBC frame portal → deep 4-leg box (+$25/+$38/+$50: 4 feet + 16 anchors). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105: 20" housings + cartridges). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (40×40 alu → 40×25 304-SS + Ø32 wheels, spray line +$52/+$64/+$76); + corridor plumbing-panel structure (+$215/+$298/+$380 — was uncosted); panel-split cascade 2026-06-28 (+P-05, +SV-02, +5th bracket, −2 CV, +X1 4-way cross, BVs, +Blue equalization tie)
+    "water": (4592, 5777, 6955),   # audit 2026-07: +$2 Powerpole 5 pair (1/pump); filter combo → 3 separate housings + frame (−$50/−$65). IBC frame portal → deep 4-leg box (+$25/+$38/+$50: 4 feet + 16 anchors). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105: 20" housings + cartridges). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (40×40 alu → 40×25 304-SS + Ø32 wheels, spray line +$52/+$64/+$76); + corridor plumbing-panel structure (+$215/+$298/+$380 — was uncosted); panel-split cascade 2026-06-28 (+P-05, +SV-02, +5th bracket, −2 CV, +X1 4-way cross, BVs, +Blue equalization tie)
     "container": (2300, 3300, 4300),
     "lightlock": (1385, 1728, 2070),   # §6 = hinged-panel §8.2 (housing + drum) line items
     "swingpivot": (855, 1143, 1430),   # §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items

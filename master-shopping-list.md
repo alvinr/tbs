@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
 | 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,454 | $3,914 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $4,590 | $6,953 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $4,592 | $6,955 |
 | 6. Electrical — power, circuits, wiring | $2,084 | $2,634 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,385 | $2,070 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $855 | $1,430 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,210 | $2,980 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$21,544** | **~$32,394** |
+| **TOTAL (base build + 50-print run)** | **~$21,546** | **~$32,396** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -139,7 +139,7 @@ indicative low–high estimates — get quotes before ordering.
 | 4 AWG ground wire, green/yellow, 3m | 1 lot | Amazon | electrical | $15 |
 | 40×25mm PVC cable trunking, 5m | 4 ea | McMaster-Carr | electrical | $40 |
 | Anderson Powerpole 30A connectors, 50 pairs | 1 kit | Powerwerx | electrical | $40 |
-| Anderson Powerpole connectors 30A | 4 pair | Amazon | water | $8 |
+| Anderson Powerpole connectors 30A | 5 pair | Amazon | water | $10 |
 | Battery main disconnect — Blue Sea m-Series 300A isolator | 1 ea | West Marine | electrical | $40 |
 | Battery terminal covers (pair), insulating boots | 1 pair | Amazon | electrical | $10 |
 | Blue Sea 5026 fuse block, 12-circuit ST-blade | 1 ea | Amazon | electrical | $55 |
@@ -165,7 +165,7 @@ indicative low–high estimates — get quotes before ordering.
 | Shore-charger output fuse — 20A inline | 1 ea | Amazon | electrical | $5 |
 | Tinned marine wire 14/16 AWG, ~25ft (wet-zone runs) | 1 lot | Waytek Wire | electrical | $30 |
 | Wiring kit — 12/14/16/18 AWG tinned, 50ft/color | 1 kit | Waytek Wire | electrical | $80 |
-| **electrical-distribution subtotal** | | | | **$1,144** |
+| **electrical-distribution subtotal** | | | | **$1,146** |
 
 ### electrical-power
 
@@ -418,7 +418,7 @@ indicative low–high estimates — get quotes before ordering.
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 16 | adhesives-finishes, fabrication-labor, steel-structural | $1,946–$3,156 |
 | McMaster-Carr | 44 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, water-equipment | $1,830–$2,807 |
-| Amazon | 78 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,123–$2,665 |
+| Amazon | 78 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,125–$2,667 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,301–$1,638 |

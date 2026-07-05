@@ -31,7 +31,7 @@ Modeled dimensions are the `tbs_constants.py` value(s) the generators draw. mm.
 | 3 | Shurflo 2088-554-144 pump (P-01 Blue supply) | 216×127×114 — Shurflo 2088-554-144 | `PUMP_D×PUMP_YD_SPAN×Z` | ✅ FIXED (minor) — protrusion PUMP_D 100→114 |
 | 4 | Big Blue filter housing 4.5"×20" (separate) | Ø184×594 — Pentek 4.5×20 BB | `BB_OD/BB_H` | 3-separate design of record (2026-07): combo → 3 separate housings + frame per plumbing-report §3.1/§7.2. Prices indicative — firm at the Aug-2026 re-price. |
 | 5 | 150×150×50mm axial fans | 150×150×50 | `FAN_DIAM/FAN_BODY_D` | ✅ FIXED |
-| 6 | Evaporative cooler | 559×305×711 — Hessaire MC18M | `EVAP_W/EVAP_D/EVAP_H` | ✅ RESOLVED |
+| 6 | Evaporative cooler | 508×254×711 — Hessaire MC18M | `EVAP_W/EVAP_D/EVAP_H` | ✅ RESOLVED |
 | 7 | SeaFlo accumulator (0.75 L) | 200×127×125 — SeaFlo SFAT-075-125-01 | `Ø127×200 cyl` | ✅ FIXED — cylinder 150→200 |
 | 8 | 304 SS RHS 40×25×3mm, 8 ft * | 40×25×3 | `(model uses 40×25×3)` |  |
 <!-- END parts:dimension-audit -->
@@ -75,7 +75,7 @@ discrepancy and the fix that was applied.*
 - **Was:** the model assumed a **12 V DC "Jetstream 110"** ground cooler that **does not exist** — [Portacool](https://www.portacool.com/legacy-evaporative-coolers/jetstream-series/)'s real Jetstream line (models 220–270) runs on **120 V AC**, not 12 V DC.
 - **Market reality (researched):** there is **no good native-12 V DC ground-placed** evap cooler. The only 12 V options are RV-**roof** units (TurboKool 2B-0001, ~$300 — rejected: roof penetration, roof-coupled vibration, transport conflict), a too-weak personal spot cooler (Transcool E3), or the premium [Solar Chill](https://www.southwest-solar.com/stainless-steel-solar-chill-coolers) line (native 12 V, ground, but $1,100+ and sole-source).
 - **Decision:** a **commodity 120 V AC swamp cooler (Hessaire MC18M, ~$130)** on a **dedicated 12V→120V pure-sine inverter (Victron Phoenix 12/375 GFCI, ~$210)**. Keeps the cooler a swappable multi-vendor part; the inverter is general-purpose. Trade-off accepted: +inverter complexity and a 4-print day now needs solar (already within the published envelope).
-- **Done:** `EVAP_*` → 559×305×711 (real Hessaire MC18M); `INVERTER_*` constants added; Circuit E re-based **80 W → <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V bus** (<!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac --> W AC ÷ 0.88) in `calculate_energy_budget.py`; energy/cost/shopping/ventilation/electrical reports re-summed; stow zone re-checked (cooler X1450–2009, clear); AC **isolation/GFCI/equipotential-bonding** design added in [Electrical §7.6](electrical-report.md#ac-safety).
+- **Done:** `EVAP_*` → 508×254×711 (real Hessaire MC18M, official 20×10×28 in); `INVERTER_*` constants added; Circuit E re-based **80 W → <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V bus** (<!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac --> W AC ÷ 0.88) in `calculate_energy_budget.py`; energy/cost/shopping/ventilation/electrical reports re-summed; stow zone re-checked (cooler X1450–1958, clear — 51mm roomier after the datasheet correction); AC **isolation/GFCI/equipotential-bonding** design added in [Electrical §7.6](electrical-report.md#ac-safety).
 
 ### 7. Accumulator — SeaFlo 0.75 L (SFAT-075-125-01) ✅ RESOLVED (§4)
 - **Real:** ~200 × 127 × 125 mm. [Amazon B01MUYL8F8](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) · [environmentalmarine SFAT-075](https://environmentalmarine.com/seaflo/fresh-water-pumps-accumulators/seaflo-1-gallon-accumulator-tank-sfat-075-125-01/)
@@ -114,7 +114,7 @@ listed for completeness; confirm the drawn size equals the catalog dimension:
 | **Pump** | resize | 216×127×114 | `PUMP_D` 100→114 (W/L already matched) | dims added | ✅ done |
 | **Accumulator** | minor | 200×127×125 | cyl 150→200 | dims added | ✅ done |
 | **Spray beam** | metric | 40×25×3 (304 SS RHS) | none | alu SHS 40×40 → SS RHS 40×25 (carriage shrink, 2026-07-01) | ✅ done |
-| **Evap cooler** | 120 V AC cooler + 12V→120V inverter (no good 12 V DC ground unit exists) | 559×305×711 (Hessaire MC18M) | `EVAP_*` 600×350×800→559×305×711; `INVERTER_*` added | Circuit E re-based 80→<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W; AC isolation/GFCI/bonding [Electrical §7.6](electrical-report.md#ac-safety) | ✅ done |
+| **Evap cooler** | 120 V AC cooler + 12V→120V inverter (no good 12 V DC ground unit exists) | 508×254×711 (Hessaire MC18M) | `EVAP_*` 600×350×800→508×254×711; `INVERTER_*` added | Circuit E re-based 80→<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W; AC isolation/GFCI/bonding [Electrical §7.6](electrical-report.md#ac-safety) | ✅ done |
 
 **3D re-sends — done.** The earlier audit batch (filter Ø + ACC + battery) was sent and
 `overview.skp` re-saved 2026-06-15; the evap-box re-dimension (Hessaire MC18M) + Circuit-E

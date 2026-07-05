@@ -49,7 +49,7 @@ NAV_SOURCE_OVERRIDE = {"index.md": "project-summary.md"}
 
 # Pages that appear in the site nav but are intentionally omitted from the
 # brochure PDF (developer reference, not part of the printed engineering set).
-BROCHURE_EXCLUDE = {"component-dependency-map.md"}
+BROCHURE_EXCLUDE = {"component-dependency-map.md", "all-diagrams.md"}  # gallery = web-only, not PDF
 
 # Unicode font path (macOS system font with broad Unicode coverage)
 # fpdf2 needs a TTF font for characters outside Latin-1

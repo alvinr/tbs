@@ -266,8 +266,8 @@ wheels spaced 200mm apart in the Yd direction for stability against tipping.
 | Wheel top → left-walkway support arm bottom | 23mm | Wheels roll freely beneath the walkway structure |
 | Carriage stack → walkway grating bottom | ~30mm at the worst (far-left) carriage | See §2.5 and [Walkway Routing Sections](walkway-routing-sections.md) §H-H |
 
-**Axle retention:** Each wheel axle (10mm SS axle pin) is held by a curved conduit-style
-saddle clamp (2mm SS strap) bolted to the underside of the carriage plate. The saddle
+**Axle retention:** Each wheel axle (10mm SS axle pin) is held by a curved 2mm 304 SS
+saddle strap (formed from flat bar) bolted to the underside of the carriage plate. The saddle
 cradles the axle pin with 1mm clearance; two bolts pass up through the saddle feet and
 carriage plate to lock the axle in position.
 
@@ -326,7 +326,7 @@ through it, capturing the plate between the top and bottom clamp plates.
 
 ![Sheet 5 — Detail C: Wheel Attachment](assets/spray-bar-sheet5.png)
 
-Each wheel axle is retained by a curved SS saddle clamp (2mm strap) bolted to the
+Each wheel axle is retained by a curved 2mm 304 SS saddle strap (formed) bolted to the
 carriage plate underside. The saddle cradles the 10mm axle pin with 1mm clearance.
 
 | Step | Operation |
@@ -565,7 +565,7 @@ tray drainage plan and sump cross-section).
 | Telescoping aluminum pool pole, 4–8 ft | Standard pool skimmer handle | 1 ea | Amazon | $15 |
 | 1/2" reinforced braided PVC hose, 15 ft | BV-02 to beam feed (4 m coiled) | 1 ea | Amazon | $15 |
 | [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | Wheel axle pins | 1 pack | Amazon | $5 |
-| [304 SS saddle clamp, 10mm (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | Axle retention, bolted to plate underside | 8 ea | Amazon | $10 |
+| [Formed 2mm 304 SS saddle clamp (axle retainer)](https://www.mcmaster.com/products/multipurpose-304-stainless-steel/) | Axle retention — 2mm 304 SS flat bar formed to a saddle over the Ø10 axle (1mm cradle clearance), 2 bolt feet through the carriage plate. A stamped conduit saddle clamp is only ~0.5mm — too thin for a rolling-carriage axle retainer. Alt: 304 SS + EPDM Adel loop clamp ~3/8–7/16" ID. | 8 ea | McMaster-Carr | $10 |
 | M6×20 SS bolts + nyloc nuts | Carriage plate, beam clamp, saddle fasteners | 16 ea | McMaster-Carr | $7 |
 | Self-tapping SS screws (8-pack) | Ball-joint flange to beam top wall | 4 ea | McMaster-Carr | $5 |
 | Ø20mm ball joint, zinc socket, M12 stud | Multi-axis arm articulation | 1 ea | Amazon | $12 |

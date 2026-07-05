@@ -39,8 +39,8 @@ _3D models embed as Sketchfab iframes; Alvin re-uploads manually reusing the sam
   - **overview** — master switch on the EP + audit D-rings (sent, verified, **saved + committed**) → **re-upload to Sketchfab**.
   - **ibc-stack** — metadata + audit D-rings (sent, verified, **saved + committed**) → **re-upload to Sketchfab**.
   - **water** — Circuit-C power cabling + audit D-rings + title/description restored (sent, verified, **saved + committed**) → **re-upload to Sketchfab**.
-  - **electrical** — master switch on the EP → save + re-upload.
-  - **walkway** — audit G3: RWK center-arm reach 405→325 (geometry) → regenerate + `--send` + save + re-upload.
+  - **electrical** — master switch on the EP (already saved + committed, `291f7a04`; no re-send needed) → **re-upload to Sketchfab**.
+  - **walkway** — RWK arm reach 405→325 (sent, verified 325 mm, **saved + committed**) → **re-upload to Sketchfab**.
 - [ ] Older pending re-uploads: the **light-trap** interactive DC model (B2 refactor); the
   plumbing-panel-rename re-uploads (overview / ibc-stack).
 

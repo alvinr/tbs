@@ -51,10 +51,6 @@ _3D models embed as Sketchfab iframes; Alvin re-uploads manually reusing the sam
   re-proves. (Reminder block lives atop `parts.py`.)
 
 ## Design / 3D (deferred)
-- [ ] **Fan A ↔ IBC clash** — the 1000L stack (top Z2336) buries Fan A's old high exhaust spot; only
-  ~52mm headroom. Likely fix: relocate Fan A into the 270mm plumbing-corridor gap.
-- [ ] **Evap cooler part is PARKED** — "Portacool Jetstream 110" doesn't exist. Pick a real replacement
-  spec (see `component-dimension-audit.md`), then 3D re-send + cost re-sum.
 - [ ] **3D electrical pump positions** — still the legacy 2-column layout in `generate_electrical_model.py`
   `_pump_circuit()`; re-org to a single column to match `panel-layout.png` / the 2D sheet4.
 - [ ] **Film-plane click-DC** — multi-attribute DC + 2D FPM/FPD diagram redraw (foreshortening geometry).
@@ -69,8 +65,7 @@ _3D models embed as Sketchfab iframes; Alvin re-uploads manually reusing the sam
   Per candidate: find owner → add constant + fact → wrap the restatements.
 
 ## Docs / gallery
-- [ ] **Gallery-only diagrams** — ~11 PNGs in `all-diagrams.md` with no owning report; decide
-  embed/leave/retire each. Strongest action: `tilt-swing-board-sheet1/2/3` → into `tilt-swing-board-report`.
+- [x] **Gallery-only diagrams — DONE (won't-do).** Gallery-only PNGs are fine without a dedicated owning report — they live in the `all-diagrams.md` visual index. That gallery is now **excluded from the brochure PDF** (`BROCHURE_EXCLUDE`) so the 100+ images don't bloat it.
 - [ ] **`tilt-swing-board-analysis.md` §4** — the combined C0–C8 renders duplicate `distortion-renders.md`
   §3 with extra commentary; merge the two docs or point §4 to the gallery. (Inline TODO in the doc.)
 - [ ] **`component-dependency-map.md`** — the "Portacool note + See Also" section still open.
@@ -83,6 +78,4 @@ _3D models embed as Sketchfab iframes; Alvin re-uploads manually reusing the sam
 - [ ] **`generate_pinhole_water_panel.py:511`** — drawing-helper refactor TODO.
 
 ## Paused directions
-- [ ] **`ibc-reconfig-v2`** — recorded restart direction for the IBC layout (keep Blue-on-top, capacity
-  from 1000L sizing, direct-stack restraint frame, Blue=1600L, plumbing-panel frame also carries the right
-  walkway). Not started; v1 `ibc-reconfig` abandoned but kept for cherry-pick.
+- [x] **`ibc-reconfig-v2` — DONE.** The IBC-layout redesign was resolved — the deep 4-leg direct-stack restraint box is the current design (reflected in `tbs_constants`, ibc-stacking-report, and the models).

@@ -207,7 +207,6 @@ indicative low–high estimates — get quotes before ordering.
 | 10mm × 60mm 304 SS axle pin (4-pack) | 1 pack | Amazon | spray | $5 |
 | 25mm ratchet strap, 1,100 kg WLL | 4 ea | Amazon | ibc-frame | $30–$50 |
 | 25mm welded D-ring | 4 ea | McMaster-Carr | ibc-frame | $20–$35 |
-| 304 SS saddle clamp, 10mm (10-pack) | 8 ea | Amazon | spray | $10 |
 | 316 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black | 1 ea | McMaster-Carr | panel | $20–$35 |
 | Cam-lever spring clamp | 92 ea | McMaster-Carr | clamp | $276–$736 |
 | Continuous (piano) hinge, 600 mm | 1 ea | McMaster-Carr | shelf | $20 |
@@ -215,6 +214,7 @@ indicative low–high estimates — get quotes before ordering.
 | Cushioned pipe clip | 16 ea | Amazon | water | $16–$32 |
 | Door & access upgrades | 1 lot | Home Depot | interior | $50–$100 |
 | Folding shelf stays/brackets | 2 ea | Amazon | shelf | $24 |
+| Formed 2mm 304 SS saddle clamp (axle retainer) | 8 ea | McMaster-Carr | spray | $10 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
 | M10 wedge floor anchors | 20 ea | McMaster-Carr | walkway | $25–$45 |
 | M12 floor anchor (wedge/sleeve, container floor) | 16 ea | McMaster-Carr | ibc-frame | $30–$60 |
@@ -417,8 +417,8 @@ indicative low–high estimates — get quotes before ordering.
 |----------|-----------|-------|-----------|
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 16 | adhesives-finishes, fabrication-labor, steel-structural | $1,946–$3,156 |
-| McMaster-Carr | 43 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, water-equipment | $1,820–$2,797 |
-| Amazon | 79 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,133–$2,675 |
+| McMaster-Carr | 44 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, water-equipment | $1,830–$2,807 |
+| Amazon | 78 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,123–$2,665 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,301–$1,638 |

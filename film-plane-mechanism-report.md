@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-The configuration the photosensitive film plane is flush against one of the 20ft long-side walls of the container. This report describes a **view-camera-style moveable film plane** — a mechanism with **four independently actuated corners** (TL, TR, BL, BR) carrying a **fixed-size rigid** plane (Option A), allowing tilt, swing, and limited compound movements comparable to a large-format view camera's rear standard.
+The configuration the photosensitive film plane is flush against one of the 20ft long-side walls of the container. This report describes a **view-camera-style moveable film plane** — a mechanism with **four corner carriages** (TL, TR, BL, BR) driven in **coordinated pairs**, carrying a **fixed-size rigid** plane (Option A) that changes only its angle — allowing tilt, swing, and limited combined movements comparable to a large-format view camera's rear standard.
 
 **System context — container floor plan:**
 The floor plan below shows the film plane rail positions in the context of the complete TBS-001 interior, including left end zone (light trap), processing tray and perimeter walkway in the optical zone, and right end zone (4× IBCs in 2×2 stack, pump manifold on the Corridor Plumbing Panel and the filter skid on the Pinhole Wall Plumbing Panel).
@@ -66,7 +66,7 @@ Because the plane is a **fixed-size rigid rectangle**, its physical height stays
 
 ### Four-Corner Frame
 
-Each corner of the film plane frame rides on its own independent carriage assembly:
+Each corner of the film plane frame rides on its own carriage assembly (driven in coordinated pairs, not independently — a rigid plane cannot warp):
 
 ![Sheet 6 — System Schematic: Four-Corner Frame Front Elevation](assets/film-plane-sheet6.png)
 
@@ -102,7 +102,7 @@ Each of the four leadscrews is turned by an **8" cast aluminum handwheel** (¾" 
 - **Pure tilt**: turn TL and TR handwheels together by the same amount; turn BL and BR by the same amount (different from TL/TR).
 - **Pure swing**: turn TL and BL together; turn TR and BR together.
 - **Back focus**: turn all four handwheels by the same amount.
-- **Compound**: turn all four independently.
+- **Compound (limited)**: turn all four to a coordinated set of depths — the rigid plane stays flat (no twist).
 
 **Optional electric actuation:** replace the handwheels with **Progressive Automations PA-14** 12V linear actuators (20" / 508mm stroke, 150 lb force rating). Four actuators, one per corner, each controlled by a panel-mount DPDT momentary switch. A labeled panel outside the container allows full repositioning without entry.
 

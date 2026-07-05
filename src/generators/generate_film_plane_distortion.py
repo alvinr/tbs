@@ -320,10 +320,10 @@ def render_summary():
     for i, (label, name, d_top, d_bot, desc) in enumerate(CONFIGS):
         row, col = divmod(i, ncols)
         ax = axes[row][col]
-        swing = 15.0 if "Compound" in name else 0.0
+        # Option A: every config is a single-axis flat tilt (no compound twist).
         img = project_onto_tilted_plane(d_top, d_bot, checker_scene, 8000,
                                         out_w=560, out_h=373,
-                                        swing_deg=swing)
+                                        swing_deg=0.0)
         ax.imshow(img, origin="upper", aspect="auto")
         ax.set_title(f"{label} · {name}", color="#111111",
                      fontsize=8.5, fontfamily="monospace", pad=3)

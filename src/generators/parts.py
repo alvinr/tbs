@@ -251,7 +251,7 @@ PARTS: list[Part] = [
     Part("water-wire-14awg", "14 AWG duplex marine wire", "electrical-distribution",
          "water", 1, "roll", 22, 22, "Amazon", spec="Tinned copper, 25 ft"),
     Part("water-powerpole", "Anderson Powerpole connectors 30A", "electrical-distribution",
-         "water", 4, "pair", 2, 2, "Amazon", spec="Pump connections"),
+         "water", 5, "pair", 2, 2, "Amazon", spec="Pump connections — one pair per pump (P-01..P-05)"),
     Part("water-blade-fuses", "15A blade fuse", "electrical-distribution",
          "water", 1, "ea", 5, 5, "Amazon", spec="Pump Circuit C (single feed, all pumps)"),
     # — processing consumables (241) —

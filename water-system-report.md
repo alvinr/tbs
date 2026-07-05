@@ -385,7 +385,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | 3/4" SDR-11 HDPE pipe | Spray bar run, 20 ft sticks | 2 stick | Ferguson | $20–$30 |
 | 1/2" ID reinforced braided PVC hose | Pump inlet flexible connection, 6 ft per pump | 2 length | Amazon | $20 |
 | 14 AWG duplex marine wire | Tinned copper, 25 ft | 1 roll | Amazon | $22 |
-| Anderson Powerpole connectors 30A | Pump connections | 4 pair | Amazon | $8 |
+| Anderson Powerpole connectors 30A | Pump connections — one pair per pump (P-01..P-05) | 5 pair | Amazon | $10 |
 | 15A blade fuse | Pump Circuit C (single feed, all pumps) | 1 ea | Amazon | $5 |
 | 6-mil black LDPE sheeting | 20 ft × 100 ft roll | 1 roll | Home Depot | $100 |
 | [Apera Instruments AI311 PH60 pH meter](https://www.amazon.com/Apera-Instruments-AI311-Replaceable-2-00-16-00/dp/B01ENFOIQE) | Waterproof, 0–16 range, ±0.01 accuracy | 1 ea | Amazon | $55 |
@@ -393,7 +393,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bag | Amazon | $28 |
 | Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon | $20 |
 | Nitrile gloves, box of 100 | Size M/L | 2 box | Amazon | $28 |
-| **Water total** | | | | **$2,023–$3,058** |
+| **Water total** | | | | **$2,025–$3,060** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own

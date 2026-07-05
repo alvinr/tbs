@@ -8543,9 +8543,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   # Cct C distribution wireway
   grp = ents.add_group
   grp.name = "Cct C distribution wireway"
-  face = grp.entities.add_face([4849.mm,1146.mm,1209.mm], [4899.mm,1146.mm,1209.mm], [4899.mm,1216.mm,1209.mm], [4849.mm,1216.mm,1209.mm])
+  face = grp.entities.add_face([4849.mm,1146.mm,595.mm], [4899.mm,1146.mm,595.mm], [4899.mm,1216.mm,595.mm], [4849.mm,1216.mm,595.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(1061.mm)
+  face.pushpull(1675.mm)
   mat = model.materials["Fuse Block base (Blue Sea 5026)"] || model.materials.add("Fuse Block base (Blue Sea 5026)")
   mat.color = Sketchup::Color.new(43, 43, 48)
   mat.alpha = 1.0
@@ -8727,7 +8727,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "Cct C branch P-01"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -72.mm, 0.mm)
-  circle = ge.add_circle([4874.mm,1181.mm,1289.mm], vec, 6.mm, 16)
+  circle = ge.add_circle([4874.mm,1181.mm,675.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -8741,7 +8741,35 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "Cct C branch P-04"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -72.mm, 0.mm)
-  circle = ge.add_circle([4874.mm,1181.mm,1547.mm], vec, 6.mm, 16)
+  circle = ge.add_circle([4874.mm,1181.mm,1000.mm], vec, 6.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
+  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C branch P-05
+  grp = ents.add_group
+  grp.name = "Cct C branch P-05"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -72.mm, 0.mm)
+  circle = ge.add_circle([4874.mm,1181.mm,1400.mm], vec, 6.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
+  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C branch P-03
+  grp = ents.add_group
+  grp.name = "Cct C branch P-03"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -72.mm, 0.mm)
+  circle = ge.add_circle([4874.mm,1181.mm,1800.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -8755,35 +8783,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "Cct C branch P-02"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 72.mm, 0.mm)
-  circle = ge.add_circle([4874.mm,1181.mm,1289.mm], vec, 6.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-03
-  grp = ents.add_group
-  grp.name = "Cct C branch P-03"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 72.mm, 0.mm)
-  circle = ge.add_circle([4874.mm,1181.mm,1547.mm], vec, 6.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-05
-  grp = ents.add_group
-  grp.name = "Cct C branch P-05"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 72.mm, 0.mm)
-  circle = ge.add_circle([4874.mm,1181.mm,1915.mm], vec, 6.mm, 16)
+  circle = ge.add_circle([4874.mm,1181.mm,1200.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

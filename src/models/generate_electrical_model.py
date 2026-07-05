@@ -405,12 +405,14 @@ def _pump_circuit():
     everything); the switched feed runs the ceiling trunk to a 12V distribution wireway/block
     on the equipment panel → a 16 AWG branch DIRECTLY to each Shurflo pump. No per-pump switches
     — each pump runs on its internal demand/pressure switch.
-    (NB: pump reference positions here are still the legacy 2-column layout — the single-column
-    re-org to match panel-layout.png is a separate follow-up.)"""
+    Pump reference positions match panel-layout.png: the four corridor pumps in a SINGLE vertical
+    column (AFF base Z, bottom->top P-01/P-04/P-05/P-03); P-02 is the pinhole-wall filter-loop pump,
+    drawn offset +Yd to read as the separate wall unit."""
     col = CCT["C"][0]
-    lcol, rcol = EQPANEL_YD + 63, EQPANEL_YD + 207     # column centres (panel report)
-    pumps = [("P-01", lcol, 1229), ("P-04", lcol, 1487),
-             ("P-02", rcol, 1229), ("P-03", rcol, 1487), ("P-05", rcol, 1855)]
+    pcol = EQPANEL_YD + 63                              # single corridor pump column (panel-layout)
+    pumps = [("P-01", pcol, 615), ("P-04", pcol, 940),
+             ("P-05", pcol, 1340), ("P-03", pcol, 1740),
+             ("P-02", EQPANEL_YD + 207, 1140)]          # pinhole-wall filter pump (offset)
     cy = EQPANEL_YD + EQPANEL_YD_SPAN / 2              # wireway Yd centre
     way_top = PUMP_H_HI                                 # feed enters the top
     way_bot = min(z for _, _, z in pumps) - 20         # extends DOWN past the lowest pump

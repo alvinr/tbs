@@ -12,7 +12,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 |------|-----|------|
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
-| 3. Pinhole optics plate | $95 | $240 |
+| 3. Pinhole optics plate | $110 | $265 |
 | 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,454 | $3,914 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $4,612 | $6,990 |
 | 6. Electrical — power, circuits, wiring | $2,084 | $2,634 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,210 | $2,980 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$21,566** | **~$32,431** |
+| **TOTAL (base build + 50-print run)** | **~$21,581** | **~$32,456** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -73,8 +73,9 @@ indicative low–high estimates — get quotes before ordering.
 | Aluminum U-channel (per meter) | 40 m | Online Metals | panel | $120–$200 |
 | Corner bracket L-plate | 4 ea | Metal Supermarkets | film | $80 |
 | Cross-slide intermediate plate (Option A) | 4 ea | Metal Supermarkets | film | $60 |
+| Disc retaining ring (Al 6061-T6, M52×0.75) | 1 ea | Local fab | optics | $15–$25 |
 | Telescoping aluminum pool pole, 4–8 ft | 1 ea | Amazon | spray | $15 |
-| **aluminum subtotal** | | | | **$895–$1,087** |
+| **aluminum subtotal** | | | | **$910–$1,112** |
 
 ### bearings-motion
 
@@ -416,7 +417,7 @@ indicative low–high estimates — get quotes before ordering.
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
 | containermgt.com | 1 | container | $2,000–$3,500 |
-| Local fab | 16 | adhesives-finishes, fabrication-labor, steel-structural | $1,946–$3,156 |
+| Local fab | 17 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,961–$3,181 |
 | McMaster-Carr | 44 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, water-equipment | $1,850–$2,842 |
 | Amazon | 78 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,125–$2,667 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |

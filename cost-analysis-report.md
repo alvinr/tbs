@@ -9,7 +9,7 @@ capital from recurring/consumable spend, and ranks the realistic savings levers.
 
 All figures are the **mid-column** estimates from the
 [Cost Breakdown](project-cost-breakdown.md) (the itemized source of truth); the build
-mid-total is **~<!-- BEGIN costing:ca-mid-total -->$27,459<!-- END costing:ca-mid-total -->**.
+mid-total is **~<!-- BEGIN costing:ca-mid-total -->$27,479<!-- END costing:ca-mid-total -->**.
 
 ---
 
@@ -22,13 +22,13 @@ recurs or is consumed — savings strategy is different for each.
 <!-- BEGIN costing:ca-buckets -->
 | Bucket | Mid | What it is |
 |---|--:|---|
-| **Capital build** (one-time hardware) | **$24,269** | The systems you build once — this is where build-savings live |
+| **Capital build** (one-time hardware) | **$24,289** | The systems you build once — this is where build-savings live |
 | Consumable (per 50-print batch) | $1,650 | Cyanotype chemistry + substrate (Standard ½-Ware) — recurs every batch |
 | Recurring (per deployment) | $750 | Commercial-hire transport |
 | Soft / regulatory | $790 | Licenses & permits |
 <!-- END costing:ca-buckets -->
 
-Build-savings work on the **<!-- BEGIN costing:ca-capital -->$24,269<!-- END costing:ca-capital --> capital**. The <!-- BEGIN costing:ca-consumable -->$1,650<!-- END costing:ca-consumable --> consumable is attacked
+Build-savings work on the **<!-- BEGIN costing:ca-capital -->$24,289<!-- END costing:ca-capital --> capital**. The <!-- BEGIN costing:ca-consumable -->$1,650<!-- END costing:ca-consumable --> consumable is attacked
 separately (bulk chemistry, cheaper substrate) because it repeats every batch and
 quickly dominates lifetime cost.
 
@@ -52,7 +52,7 @@ Capital systems ranked by mid cost:
 | **Interior conversion** | $1,138 | 5% | Insulation, sealing, safelight |
 | **Ventilation & cooling** | $884 | 4% | Fans + cooler + inverter + baffle-duct fab + canopy |
 | **Chemistry prep shelf** | $203 | 0.8% | Fold-down phenolic board + frame + hinge/stays + tap extension |
-| **Optics — pinhole** | $165 | 0.7% | Trivial (it is a pinhole) |
+| **Optics — pinhole** | $185 | 0.8% | Trivial (it is a pinhole) |
 <!-- END costing:ca-ranking -->
 
 The **water system is <!-- BEGIN costing:ca-water-pct -->24<!-- END costing:ca-water-pct -->% of the capital build** and the **304 SS processing tray is its
@@ -73,7 +73,7 @@ Ranked by dollar potential and ease. Status is updated as levers are actioned.
 | 5 | **Solar 3 → 2 panels** (if the power budget allows) | Power | ~<!-- BEGIN costing:ca-lever-solar -->$130<!-- END costing:ca-lever-solar --> | Easy | Available |
 | 6 | **Valves / fittings value-engineering** | Water | ~<!-- BEGIN costing:ca-lever-valves-low -->$100<!-- END costing:ca-lever-valves-low -->–<!-- BEGIN costing:ca-lever-valves-high -->$200<!-- END costing:ca-lever-valves-high --> | Medium | Available |
 
-Levers 1–5 together trim **~<!-- BEGIN costing:ca-savings-low -->$3,250<!-- END costing:ca-savings-low -->–<!-- BEGIN costing:ca-savings-high -->$3,650<!-- END costing:ca-savings-high -->** off the <!-- BEGIN costing:ca-capital -->$24,269<!-- END costing:ca-capital --> capital build (**~<!-- BEGIN costing:ca-savings-pct-low -->13<!-- END costing:ca-savings-pct-low -->–<!-- BEGIN costing:ca-savings-pct-high -->15<!-- END costing:ca-savings-pct-high -->%**) without
+Levers 1–5 together trim **~<!-- BEGIN costing:ca-savings-low -->$3,250<!-- END costing:ca-savings-low -->–<!-- BEGIN costing:ca-savings-high -->$3,650<!-- END costing:ca-savings-high -->** off the <!-- BEGIN costing:ca-capital -->$24,289<!-- END costing:ca-capital --> capital build (**~<!-- BEGIN costing:ca-savings-pct-low -->13<!-- END costing:ca-savings-pct-low -->–<!-- BEGIN costing:ca-savings-pct-high -->15<!-- END costing:ca-savings-pct-high -->%**) without
 touching the core optical or structural design.
 
 > **Derivation note.** Lever 1 (container grade) and the roll-up total + percentage are

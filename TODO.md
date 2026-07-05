@@ -57,7 +57,14 @@ _3D models embed as Sketchfab iframes; Alvin re-uploads manually reusing the sam
   pinhole-wall pump). Was the only LIVE 2-column layout — overview/ibc-stack already use the `cp.*`
   single-column builders (overview's `equipment_panel`/`water_plumbing` are documented dead code).
   `electrical.rb` regenerated; **electrical.skp re-send pending** (see re-upload list — model not open).
-- [ ] **Film-plane click-DC** — multi-attribute DC + 2D FPM/FPD diagram redraw (foreshortening geometry).
+- [x] **Film-plane 2D redraw (Option A) — DONE.** DC left as-is (2026-07-05 decision — a rigid DC can't
+  animate the cross-slides). Redrew all 6 FPM sheets from the stale "4-CORNER INDEPENDENT / compound
+  tilt+swing independently" framing to **Option A** (rigid plane, coordinated pairs; titles → OPTION A;
+  Table 1 COMPOUND→COMBINED "limited, coordinated"; combined config kept but relabelled "(limited)" since
+  the constants allow limited combined rigid rotation — only C7 compound *twist* is dropped). FPD dead
+  compound special-case removed (output unchanged). Report's 3 prose phrasings aligned to "coordinated
+  pairs". Verified visually (sheets 1/4/6); drift gates green. *(Analysis doc left as-is — it's the
+  labelled historical analysis of the old stretching design.)*
 - [x] **3D D-rings added — DONE.** Added 8 D-ring cylinders to the shared `cp.tote_restraint()` (4/tier on the front bars, mirroring the 2D). Overview sent + **verified 8 in the live model** (4/4 by tier). Shared function → the **ibc-stack + water** models pick them up on their next send. *(Dead `ibc_rack()` D-ring code left for a future delete.)*
 
 ## Cost / data modeling

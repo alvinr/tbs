@@ -26,7 +26,7 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
 
 - [x] **②·1 Spray skate wheel — DONE.** Re-spec'd to a **solid acetal (Delrin) Ø32×20×Ø10 plain-bore wheel** riding on the existing Ø10 **304 SS** axle — corrosion-immune + self-lubricating, no carbon-steel ball bearings (the ferricyanide/citric wash ruled the uxcell PE-body/steel-bearing part out). Kept the exact design geometry (Ø32×20×10) so **no cost/2D/3D cascade**; dropped the unsupported ≥25 kg rating (actual ~2.6 kg/wheel). Turned from McMaster acetal rod or an equivalent POM plain-bore roller. Every off-the-shelf 32-OD idler was confirmed 40mm-wide + steel-bearing, so a solid plain-bore wheel is the corrosion-safe route (316 SS bearing Ø30×9 was the no-machining alternative but changes geometry + is metal-on-tray).
 - [x] **②·2 Film-plane pivot pin — DONE.** Pin was **1″ (25.4mm)** — 0.4mm too big to enter the metric `GIR25-DO` rod-end's **25.0mm** bore. Kept the well-specced metric rod-end and swapped the pin to **Ø25mm × 200mm SS316, slip-fit** (a metric Ø25 SS precision shaft/clevis pin; dropped the wrong McMaster #98173A150 1″ SKU — confirm the 25mm SKU at order). Same $8/qty-8 → no cost cascade; 0.4mm is below drawing resolution → no 2D/3D regen. Fixed the registry + the injected `parts:film` block + both hand-maintained BOM rows (cost-breakdown, analysis doc).
-- [~] **②·3 Evap cooler — datasheet resize DONE (constants + 2D + reports, committed).** The MC18M was modeled 22×12×28in (559×305×711) but the official Hessaire spec is **20×10×28in (508×254×711)** — web-verified; the 22×12 was a retailer overstatement. `EVAP_W 559→508`, `EVAP_D 305→254` (H unchanged). Same part/$130/85W → **no cost or weight cascade**. Stow re-verified (X1450–1958, 51mm roomier). *(Part identity was already settled as Hessaire MC18M back on 2026-06-15 — the "Portacool doesn't exist" note was stale.)* **Open:** 3D re-sends — **overview + electrical** both draw the cooler box → `--send` + verify + save + re-upload. (lighttrap does NOT draw the cooler — no re-send.)
+- [x] **②·3 Evap cooler — DONE.** MC18M was modeled 22×12×28in (559×305×711); official Hessaire spec is **20×10×28in (508×254×711)** — web-verified (the 22×12 was a retailer overstatement). `EVAP_W 559→508`, `EVAP_D 305→254`. Same part/$130/85W → **no cost or weight cascade**. Stow re-verified (X1450–1958, 51mm roomier). Constants + 2D + reports committed; **overview + electrical 3D re-sent, verified (cooler box 508×254×711), saved + committed.** *(Part identity was already Hessaire MC18M since 2026-06-15 — the "Portacool" note was stale.)*
 - [x] **②·4 Spray saddle strap — DONE.** The report's **2mm** was the right design for a rolling-carriage axle retainer; the *cited part* (Amazon Boxonly stamped conduit clamp) was the flimsy ~0.5mm one. Re-spec'd to a **formed 2mm 304 SS saddle** (bent from McMaster multipurpose-304 flat bar, 2 bolt feet over the Ø10 axle) — matches the report, corrosion-safe, robust. Noted a 304 SS + EPDM **Adel loop clamp** (~3/8–7/16″ ID) as the off-the-shelf alternative. Same cost/qty → no cascade; dropped "conduit-style" from §3.4 wording.
 - [x] **②·5 Powerpole connector count — DONE.** Alvin: **one pair per pump** → 4 → **5 pair** (P-01..P-05). +$2 cascaded through the costing WATER "Electrical (wiring only)" line, §5 EXPECTED, and grand total; BOM now 5 pair / $10; all gates green.
 
@@ -36,12 +36,12 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
 _3D models embed as Sketchfab iframes; Alvin re-uploads manually reusing the same model ID._
 
 - [ ] Re-upload the `.skp` models changed recently, same model IDs:
-  - **overview** — master switch on the EP + audit D-rings (sent, verified, **saved + committed**) → **re-upload to Sketchfab**.
-  - **ibc-stack** — metadata + audit D-rings (sent, verified, **saved + committed**) → **re-upload to Sketchfab**.
-  - **water** — Circuit-C power cabling + audit D-rings + title/description restored (sent, verified, **saved + committed**) → **re-upload to Sketchfab**.
-  - **electrical** — master switch on the EP + **②·3 evap resize** (now needs a `--send`) → send, verify, save, re-upload.
-  - **overview** (again) — **②·3 evap resize** (draws the cooler box) → send, verify, save, re-upload.
-  - **walkway** — RWK arm reach 405→325 (sent, verified 325 mm, **saved + committed**) → **re-upload to Sketchfab**.
+  _All five are sent, verified, **saved + committed** — only the manual re-upload remains:_
+  - **overview** — master switch on the EP + D-rings + evap resize (508×254×711).
+  - **ibc-stack** — metadata + D-rings.
+  - **water** — Circuit-C power cabling + D-rings + title/description restored.
+  - **walkway** — RWK arm reach 325.
+  - **electrical** — master switch on the EP + evap resize (508×254×711).
 - [ ] Older pending re-uploads: the **light-trap** interactive DC model (B2 refactor); the
   plumbing-panel-rename re-uploads (overview / ibc-stack).
 

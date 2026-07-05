@@ -15,7 +15,7 @@ Three components bolt together at the pinhole wall:
 | Item | Material | Size | Function |
 |------|----------|------|----------|
 | 1 — Wall Frame | 6mm steel | 600 × 600mm | Permanent mount, welded to container wall. Ø350mm circular aperture. |
-| 2 — Pinhole Plate | 15mm aluminum | 600 × 600mm | Default optic. Ø90mm tapered bore → Ø52mm counterbore holding Ø50mm pinhole disc (Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm aperture). |
+| 2 — Pinhole Plate | 15mm aluminum | 600 × 600mm | Default optic. Ø90mm tapered bore → Ø52mm threaded counterbore + retaining ring holding the Ø50mm pinhole disc (Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm aperture). |
 | 3 — Lens Plate | 15mm aluminum | 600 × 600mm | Alternate optic. Ø175mm H7 bore accepting Ø174.5mm g6 lens tube in sliding fit. |
 
 Both plates share the same bolt pattern (8× M12 on Ø540mm BC), dowel pin registration (2× Ø8mm), neoprene O-ring seal (Ø420mm groove), and 490mm square light-trap rebate — making them fully interchangeable.
@@ -40,11 +40,11 @@ The frame is the only component that touches the container wall. All alignment r
 The default plate for camera obscura operation:
 
 - **Ø90mm tapered bore** on the exterior (scene) face — admits a wide cone of light
-- **Ø52mm × 3mm deep counterbore** on the interior (camera) face — seats the pinhole disc
+- **Ø52mm × 3mm deep counterbore** (M52×0.75 internal thread) on the interior (camera) face — seats the pinhole disc
 - **Ø50mm × 0.1mm SS-302 pinhole disc** (Lenox Laser) — Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm aperture (Rayleigh optimal for f=<!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm, λ=550nm)
 - **Light-trap rebate** — 490mm square, 5mm wide × 5mm deep step on the mating face prevents stray light leaking past the O-ring seal
 
-The pinhole disc is retained by the counterbore geometry — no separate retaining ring is needed. Procurement: [Lenox Laser](https://lenoxlaser.com) custom pinhole discs, specify SS-302 Ø50mm substrate, Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm ±0.025mm aperture.
+The pinhole disc is clamped by an aluminum **retaining ring** (M52×0.75 thread) that screws into the counterbore over the disc, holding it flat against the seat; 3× M4 grub screws lock the ring. It unscrews so the disc can be cleaned or swapped without disturbing the plate. Procurement: [Lenox Laser](https://lenoxlaser.com) custom pinhole discs, specify SS-302 Ø50mm substrate, Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm ±0.025mm aperture.
 
 ---
 
@@ -101,7 +101,7 @@ Front elevation of all three components at 1:8 scale, showing bolt patterns, ape
 | View | Scale | Content |
 |------|-------|---------|
 | Section A-A | 1:4 | Cross-section through the full stack: container wall → frame → plate → bore |
-| Detail B — Disc Seat | 2:1 | Pinhole disc counterbore geometry and disc seating |
+| Detail B — Disc Seat | 2:1 | Pinhole disc counterbore, threaded retaining ring, and disc seating |
 | Detail C — Light Trap | 10:1 | Light-trap rebate cross-section showing labyrinth seal path |
 | Detail D — Lens Focuser | 1:2 | Lens tube in bore with H7/g6 fit, set screw locking, and focus travel |
 
@@ -123,6 +123,7 @@ Front elevation of all three components at 1:8 scale, showing bolt patterns, ape
 | 8 — O-ring Cord | Neoprene, 3mm Ø, ~1,320mm length (Ø420mm circle) | 1 | McMaster-Carr |
 | 9 — Set Screws | M8 × 8mm, cup point, A2 stainless | 3 | McMaster-Carr / Bolt Depot |
 | 10 — Shutter Panel | 175 × 55 × 3mm, black aluminum | 1 | Guide rails spring-loaded to closed |
+| 11 — Disc Retaining Ring | Al 6061-T6, Ø52 bore × M52×0.75 thread, 3× M4 grub screws | 1 | Machined (local fab) — clamps the disc; unscrews for swap/clean |
 
 ---
 

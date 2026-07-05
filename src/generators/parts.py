@@ -477,6 +477,8 @@ PARTS: list[Part] = [
          "optics", 1, "ea", 20, 40, "Metal Supermarkets", "local fab"),
     Part("shutter-plate", "Shutter plate (⅛ steel 10×8) + slide channel", "steel-structural",
          "optics", 1, "ea", 25, 50, "local fab"),
+    Part("pinhole-retaining-ring", "Disc retaining ring (Al 6061-T6, M52×0.75)", "aluminum",
+         "optics", 1, "ea", 15, 25, "local fab", spec="Ø52 bore × M52×0.75 external thread, 3× M4 grub screws — screws into the plate counterbore to clamp the Ø50 pinhole disc flat; removable for swap/clean"),
 
     # ═══ film (film-plane-mechanism-report §7) — itemized; structural+frame+saddles, sums to costing
     # FILM minus the clamp lines (= 3,102). The muslin clamps are the separate 'clamp' system below. ═══

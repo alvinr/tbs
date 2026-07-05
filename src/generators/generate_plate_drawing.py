@@ -212,7 +212,7 @@ def draw_sheet1():
     leader(ax1, cx2 + s(PH_BORE/2)*0.6, cy2 + s(PH_BORE/2)*0.6,
            cx2 + 112, cy2 + 96, 'Ø90\nBORE THRU', fs=5.5, color=C_DIM)
     leader(ax1, cx2 + s(PH_CB_D/2)*0.6, cy2 - s(PH_CB_D/2)*0.6,
-           cx2 + 128, cy2 - 80, 'Ø52×3\nC\'BORE\n(INT FACE)', fs=4.8, color=C_DIM)
+           cx2 + 128, cy2 - 80, 'Ø52×3 C\'BORE\nM52×0.75 THD\n(RING ITEM 4)', fs=4.8, color=C_DIM)
     leader(ax1, cx2, cy2,
            cx2 - 144, cy2 + 40, 'Ø2.17\nPINHOLE\n(DISC)', fs=5.0, color=C_DIM)
     leader(ax1, cx2 - trap_h, cy2 - trap_h + 16,
@@ -456,7 +456,7 @@ def draw_sheet2():
     ax2.annotate('', xy=(pl_right, scy + cb_half),
                  xytext=(pl_right, scy - cb_half),
                  arrowprops=dict(arrowstyle='<->', color=C_DIM, lw=LW_DIM, mutation_scale=5))
-    ax2.text(pl_right + 16, scy + 48, 'Ø52\n×3\nDEEP', ha='left', fontsize=5, color=C_DIM)
+    ax2.text(pl_right + 16, scy + 48, 'Ø52×3 DEEP\nM52×0.75\nTHD', ha='left', fontsize=5, color=C_DIM)
 
     ax2.text(pl_left + ss(PL_THICK)*0.5, scy - pl_half + 24, '2', ha='center', va='center',
              fontsize=8, fontweight='bold', color='white',

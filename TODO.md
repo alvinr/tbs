@@ -36,9 +36,9 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
 _3D models embed as Sketchfab iframes; Alvin re-uploads manually reusing the same model ID._
 
 - [ ] Re-upload the `.skp` models changed recently, same model IDs:
-  - **overview** — master switch on the EP + audit D-rings (SENT + verified 8 in live model) → **save + re-upload**.
-  - **ibc-stack** — metadata/rename + audit D-rings (SENT + verified 8 in live model) → **save + re-upload**.
-  - **water** — Circuit-C power cabling + audit D-rings (SENT + verified 8 in live model) → **save + re-upload**.
+  - **overview** — master switch on the EP + audit D-rings (sent, verified, **saved + committed**) → **re-upload to Sketchfab**.
+  - **ibc-stack** — metadata + audit D-rings (sent, verified, **saved + committed**) → **re-upload to Sketchfab**.
+  - **water** — Circuit-C power cabling + audit D-rings + title/description restored (sent, verified, **saved + committed**) → **re-upload to Sketchfab**.
   - **electrical** — master switch on the EP → save + re-upload.
   - **walkway** — audit G3: RWK center-arm reach 405→325 (geometry) → regenerate + `--send` + save + re-upload.
 - [ ] Older pending re-uploads: the **light-trap** interactive DC model (B2 refactor); the

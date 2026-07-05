@@ -41,7 +41,8 @@ _3D models embed as Sketchfab iframes; Alvin re-uploads manually reusing the sam
   - **ibc-stack** — metadata + D-rings.
   - **water** — Circuit-C power cabling + D-rings + title/description restored.
   - **walkway** — RWK arm reach 325.
-  - **electrical** — master switch on the EP + evap resize (508×254×711).
+  - **electrical** — master switch on the EP + evap resize (508×254×711); **+ NEW: needs re-send** for
+    the pump refs single-column re-org (`.rb` regenerated, `.skp` not yet re-sent — open it and I'll send).
 - [ ] Older pending re-uploads: the **light-trap** interactive DC model (B2 refactor); the
   plumbing-panel-rename re-uploads (overview / ibc-stack).
 
@@ -51,8 +52,11 @@ _3D models embed as Sketchfab iframes; Alvin re-uploads manually reusing the sam
   re-proves. (Reminder block lives atop `parts.py`.)
 
 ## Design / 3D (deferred)
-- [ ] **3D electrical pump positions** — still the legacy 2-column layout in `generate_electrical_model.py`
-  `_pump_circuit()`; re-org to a single column to match `panel-layout.png` / the 2D sheet4.
+- [x] **3D electrical pump positions — DONE.** `_pump_circuit()` re-org'd 2-column → single vertical
+  column (4 corridor pumps at real AFF Z 615/940/1340/1740 per `panel-layout.png`; P-02 offset as the
+  pinhole-wall pump). Was the only LIVE 2-column layout — overview/ibc-stack already use the `cp.*`
+  single-column builders (overview's `equipment_panel`/`water_plumbing` are documented dead code).
+  `electrical.rb` regenerated; **electrical.skp re-send pending** (see re-upload list — model not open).
 - [ ] **Film-plane click-DC** — multi-attribute DC + 2D FPM/FPD diagram redraw (foreshortening geometry).
 - [x] **3D D-rings added — DONE.** Added 8 D-ring cylinders to the shared `cp.tote_restraint()` (4/tier on the front bars, mirroring the 2D). Overview sent + **verified 8 in the live model** (4/4 by tier). Shared function → the **ibc-stack + water** models pick them up on their next send. *(Dead `ibc_rack()` D-ring code left for a future delete.)*
 

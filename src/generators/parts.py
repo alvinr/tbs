@@ -277,7 +277,7 @@ PARTS: list[Part] = [
     Part("ibcf-hangers", "4mm folded plate", "steel-structural",
          "ibc-frame", 4, "ea", 7.5, 12.5, "local fab", spec="Simpson-style wall joist hangers"),
     Part("ibcf-dring", "25mm welded D-ring", "fasteners-hardware",
-         "ibc-frame", 4, "ea", 5, 8.75, "McMaster-Carr", part_no="3641T29", spec="Lashing holders on the front bars, 6mm mount plates"),
+         "ibc-frame", 8, "ea", 5, 8.75, "McMaster-Carr", part_no="3641T29", spec="Lashing holders on the front bars (4 per tier × 2 tiers), 6mm mount plates"),
     Part("ibcf-strap", "25mm ratchet strap, 1,100 kg WLL", "fasteners-hardware",
          "ibc-frame", 4, "ea", 7.5, 12.5, "Amazon", spec="Transport securing, over each stack"),
     Part("ibcf-floor-anchor", "M12 floor anchor (wedge/sleeve, container floor)", "fasteners-hardware",

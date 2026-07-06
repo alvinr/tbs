@@ -48,11 +48,12 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
   1"/25mm — McNichols MS-S-100, 2.60 lb/sf). At the real 25mm a 100kg operator mid-span (457mm) deflects
   ~2.5mm — well within the ¼" (6mm) pedestrian limit (MS-S-100 ΔC datasheet); the 100mm overhang is
   negligible (short cantilever). Grate corrected to 25mm + deck raised 130→140 (Option A).
-- [ ] **Film-plane tilted corner vs the raised deck — verify.** At tilt (±) the film-plane bottom corner
-  sits ~5mm below the walkway deck top (Z135 vs Z140 at 20°). The deck (130→140) and the film plane
-  (`RAIL_OFF_BOT` 150→160) both rose 10mm so the relationship is UNCHANGED (not a new clash), but confirm
-  the tilted film plane actually clears the walkway grate across its Yd travel — it may only tilt where
-  it's clear of the near/far walkways, or need a small local clearance. Verify in the film-plane + walkway 3D.
+- [x] **Film-plane tilted corner vs the raised deck — RESOLVED (clears).** The Option-A film plane rides its
+  corners on FIXED-Z rails (bottom rail = `RAIL_OFF_BOT` 160); tilt/swing move the corners in DEPTH (Yd),
+  not Z, so the plane's bottom EDGE stays at Z160 across its full width — 20mm above the Z140 deck at every
+  tilt/swing. The only element that dips lower (the corner carriage/rod-end, ~Z135) rides the FP rail lines
+  (X150 / X4649), which are OUTSIDE the walkway X span (470–4629). So the film plane clears the walkway grate
+  everywhere across its Yd travel + full tilt/swing range — no notch needed. (Also fixed a stale RZ_BOT comment.)
 - [x] **Overview / assembly-overview / electrical-diagram corridor-filter staleness — DONE.**
   assembly-overview (relabel corridor zone → pumps+ACC, ADD pinhole-wall Filter panel zone, legend) and
   electrical-diagram (every "pumps+filters" → "water pumps"; P-01/03/04/05 corridor + P-02 wall) fixed.

@@ -365,11 +365,23 @@ EP_H_LO    = 1500    # electrical panel bottom Z (mm) [rev11: DROPPED 150 (1650�
                      # for wall-seat saddles, but the EP is KEPT at this height. was 1650/1600/900]
 EP_H_HI    = 2100    # electrical panel top Z (mm)   [rev11: 2250→2100]
 
-BA_X       = 1540    # battery bank left edge X (mm) — set so the 680-wide bank's right edge (2220) clears the optical-cone left boundary at the 172mm battery depth (X_left(172)=2228). [dimension-audit: real Renogy 100Ah]
-BA_W       = 680     # battery bank width (mm) — 2× Renogy 100Ah (330 long each) side-by-side + 20mm gap → right edge 2220
+BA_X       = EP_X    # battery bank left edge X (mm) — in the EP skinny column (= EP_X); the 2 packs STACK vertically (was 1540, 680-wide side-by-side, before the skinny-column reorg)
+BA_W       = 330     # battery bank width (mm) — 1× Renogy 100Ah (330 long); the 2 packs now STACK vertically (BA_STACK_Z2), not side-by-side
 BA_H_LO    = 150     # battery bank bottom Z (mm) — sits ON the raised grate [+50 walkway raise; was 100]
-BA_H_HI    = 364     # battery bank top Z (mm) = 150 + 214 (real Renogy 100Ah height); was 650 (assumed tall slim pack)
+BA_H_HI    = 364     # LOWER pack top Z (mm) = 150 + 214 (real Renogy 100Ah height); the upper pack stacks above (BA_STACK_TOP)
 BA_D       = 172     # battery bank depth from wall (mm) — real Renogy 100Ah width (the rev7 'slim-profile 120mm' assumption was wrong — see component-dimension-audit.md)
+
+# ── EP skinny-column layout (2026-07-06) — the EP is a tall NARROW column in the one clear band
+# between the transport-stay anchor (X1895) and the pinhole (X2399): it can't shift +X (pinhole) or
+# stay wide (chem shelf X1180-1780 + anchor). The two battery packs STACK vertically (BA_W wide).
+EP_COL_W     = 340                         # EP column width (mm) — fits one stacked battery pack
+BA_STACK_Z2  = BA_H_HI + 16                # 380 — upper (2nd) pack bottom Z (stacked on the lower pack)
+BA_STACK_TOP = BA_STACK_Z2 + (BA_H_HI - BA_H_LO)  # 594 — battery stack top Z
+EP_POST_Z    = BA_STACK_TOP + 20           # 614 — contactor / MRBF sit above the battery stack
+EP_RISE_X_P  = EP_X + 260                  # 2170 — (+) 2/0 cable riser lane (right of the PV disconnect)
+EP_RISE_X_M  = EP_X + 140                  # 2050 — (−) 2/0 cable riser lane (inverter ↔ PV disconnect gap)
+PV_DISC_X    = EP_X + 165                  # 2075 — PV array-disconnect X (operator-reach switch)
+PV_DISC_Z    = 1080                        # PV array-disconnect bottom Z — operator reach
 
 # ── Solar array — 3× 200W mono on a 30° ground tilt frame (electrical 3D model) ──
 # Ground-placed on the pinhole-wall exterior side (Yd<0), toward the door end so the

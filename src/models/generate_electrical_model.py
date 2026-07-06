@@ -33,7 +33,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov   # helpers + conventions (Overview)
-from tbs_constants import EP_X, EP_W, EP_H_LO, EP_H_HI, BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H, EQPANEL_X, EQPANEL_YD, EQPANEL_YD_SPAN, PUMP_H_HI, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, FAN_BODY_D, DUCT_DEPTH, DUCT_HEIGHT, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, PWP_P02_X, PWP_P02_Z0, PWP_P02_H
+from tbs_constants import EP_X, EP_W, EP_H_LO, EP_H_HI, EP_COL_W, BA_STACK_Z2, BA_STACK_TOP, EP_POST_Z, EP_RISE_X_P, EP_RISE_X_M, PV_DISC_X, PV_DISC_Z, BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H, EQPANEL_X, EQPANEL_YD, EQPANEL_YD_SPAN, PUMP_H_HI, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, FAN_BODY_D, DUCT_DEPTH, DUCT_HEIGHT, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, PWP_P02_X, PWP_P02_Z0, PWP_P02_H
 
 TAGS = ["Context", "Solar Array", "Power Core", "Battery", "External Panel",
         "Inverter", "Circuit Runs", "Labels"]
@@ -113,28 +113,6 @@ FUSE_POS = {c: (_fuse_cx(i), _FUSE_YD + _FUSE_T / 2, FUSE_TOP_Z)
 TRUNK_YD = 20                  # conductors hug the pinhole-wall ceiling line
 TRUNK_Z = ov.C_HGT - 13
 
-# ── SKINNY-PANEL PROTOTYPE (2026-07-06, LOCAL — not yet in tbs_constants) ─────────────────────
-# The panel can't shift +X (pinhole X2399 / Z1194) or stay wide (chem shelf X1180-1780 + transport-
-# stay anchor X1695-1895), so the EP is reorganized into a tall NARROW COLUMN in the one clear band:
-# X1910-2250 (between the anchor's right edge X1895 and the pinhole X2399). The two battery packs
-# re-STACK vertically (330 wide, not 680 side-by-side); every component + all wiring live in the
-# column. Prototyped LOCALLY so the 2D + reports stay put until the 3D layout is signed off, then it
-# formalizes into tbs_constants and cascades.
-SK_X0    = 1910                     # column left edge (15mm right of the transport-stay anchor)
-SK_W     = 340                      # column width (fits one battery pack)
-SK_BW    = (BA_W - 20) / 2          # 330 — one pack width (stacked)
-SK_BH    = BA_H_HI - BA_H_LO        # 214 — one pack height
-SK_B1Z   = BA_H_LO                  # 150 — lower pack bottom
-SK_B2Z   = SK_B1Z + SK_BH + 16      # 380 — upper pack bottom
-SK_BTOP  = SK_B2Z + SK_BH           # 594 — battery stack top
-SK_POSTZ = SK_BTOP + 20             # 614 — contactor / MRBF above the stack
-# right-of-column lanes at operator height, kept apart so nothing overlaps:
-#   inverter X1910-2030 | (−) riser 2050 | PV disconnect 2080-2150 | (+) riser 2170
-SK_RISEX  = SK_X0 + 260             # 2170 — (+) cable riser (right edge, clear of the PV disconnect)
-SK_RISEX2 = SK_X0 + 140            # 2050 — (−) cable riser (between the inverter and the PV disconnect)
-SK_PVX    = SK_X0 + 165            # 2075 — PV disconnect X (box centered on the green cables)
-SK_PVZ    = 1080                    # PV disconnect bottom Z — operator reach
-
 
 # ── Labels (project rule: every .skp gets a Labeled scene) ───────────────────
 ELEC_POINT_LABELS = [
@@ -144,8 +122,8 @@ ELEC_POINT_LABELS = [
     (EP_X + 90, 40, FUSE_TOP_Z, "FUSE STACK A-G\n5/5/15/5/40/20/10 A", 420, 700, 240),
     (EP_X + 90, 40, EP_H_LO + 210, "+/- BUSBARS",                 420, 640, -120),
     (EP_X + 240, 0, EP_H_LO + 120, "MAIN DISCONNECT", 360, 760, -260),
-    (SK_X0 + 60, 40, SK_POSTZ + 60, "BATTERY CONTACTOR\n+ MRBF main fuse", -300, 760, 900),
-    (SK_X0 + 150, 60, SK_B1Z + 100, "BATTERY 1x 100Ah\n(2nd pack ghosted)", -320, 640, 760),
+    (EP_X + 60, 40, EP_POST_Z + 60, "BATTERY CONTACTOR\n+ MRBF main fuse", -300, 760, 900),
+    (EP_X + 150, 60, BA_H_LO + 100, "BATTERY 1x 100Ah\n(2nd pack ghosted)", -320, 640, 760),
     (INVERTER_X + INVERTER_W / 2, INVERTER_D / 2, INVERTER_Z + INVERTER_H,
      "CCT-E INVERTER\n12->120V AC (cooler)", -430, 820, 480),
     (PWR_PANEL_X + PWR_PANEL_W / 2, -WALL - 40, PWR_PANEL_Z + PWR_PANEL_H + 20,
@@ -154,10 +132,10 @@ ELEC_POINT_LABELS = [
      "EVAP COOLER\n(Hessaire MC18M, Cct E)", -260, -520, 520),
     (EQPANEL_X, EQPANEL_YD + EQPANEL_YD_SPAN / 2, PUMP_H_HI - 40,
      "CCT-C PUMP DISTRIBUTION\ndist block → pumps (master sw on EP)", -350, -700, 250),
-    (SK_PVX + 35, 22, SK_PVZ + 35,
+    (PV_DISC_X + 35, 22, PV_DISC_Z + 35,
      "PV DISCONNECT\n(load-break, array->MPPT)", 300, 560, 320),
     (EP_X + 40, 95, EP_H_LO + 215, "60A CHARGE FUSE\n(MPPT -> battery)", 440, 680, 160),
-    (SK_X0 + 50, 20, 1000,
+    (EP_X + 50, 20, 1000,
      "INTERIOR E-STOP\n(parallel)", -340, 560, -160),
 ]
 
@@ -265,8 +243,8 @@ def power_core():
     # Plywood backing panel (18mm) — a single tall NARROW board (the panel is now a skinny column in
     # the clear band, right of the external panel, so no step is needed). The DC gear sits inside a
     # ghosted IP65 enclosure (added below) whose back panel is this plywood.
-    _ply_x0 = SK_X0 - 12
-    _ply_r = SK_X0 + SK_W + 12
+    _ply_x0 = EP_X - 12
+    _ply_r = EP_X + EP_COL_W + 12
     _ply_h = (EP_H_HI + 12) - (BA_H_LO - 12)
     p.append(ov.ruby_box("EP plywood backing panel (18mm)", _ply_x0, -18, BA_H_LO - 12,
                          _ply_r - _ply_x0, 18, _ply_h, color=ov.C_PLY))
@@ -299,8 +277,8 @@ def power_core():
     mc4_z = PWR_PANEL_Z + 0.225 * PWR_PANEL_H
     # PV feed: MC4 (external) -> across ABOVE the chem shelf into the column -> down THROUGH the array
     # disconnect (now at operator height) -> up to the MPPT PV input.
-    _pvx = SK_PVX + 35   # box center — the green cables land aligned in the disconnect box
-    _dtop = SK_PVZ + 70                        # disconnect box TOP — BOTH green cables land here
+    _pvx = PV_DISC_X + 35   # box center — the green cables land aligned in the disconnect box
+    _dtop = PV_DISC_Z + 70                        # disconnect box TOP — BOTH green cables land here
     # array -> disconnect: drops into the TOP of the disconnect (line terminal)
     p.append(ov.ruby_pipe_run("PV feed (MC4 -> array disconnect, top)",
                               _dedup([(mc4_x, 22, mc4_z),
@@ -347,7 +325,7 @@ def power_core():
     # Interior E-stop — red mushroom on the panel, paralleled with the exterior one (D5). Relocated to
     # a CLEAR spot (left-center, in the gap between the contactor top ~Z714 and the inverter ~Z1180,
     # left of the wiring risers) so it isn't buried under the cables.
-    ies_cx, ies_cz = SK_X0 + 50, 1000
+    ies_cx, ies_cz = EP_X + 50, 1000
     p.append(ov.ruby_cylinder("Interior E-stop collar (safety yellow)",
                               ies_cx, 0, ies_cz, 30, 12, color="#F2C200", axis="y"))
     p.append(ov.ruby_cylinder("Interior E-stop button (red mushroom)",
@@ -357,7 +335,7 @@ def power_core():
     # (interior -> exterior via the external panel) so pressing EITHER drops the contactor.
     # In the skinny column the contactor sits at X1920-2040 (right of the transport anchor X1695-1895),
     # so the trip line runs straight up the column to the interior E-stop — no anchor dodge needed.
-    _ctc_x, _ctc_z = SK_X0 + 10 + CONTACTOR_W / 2, SK_POSTZ + CONTACTOR_H    # contactor coil top (skinny column)
+    _ctc_x, _ctc_z = EP_X + 10 + CONTACTOR_W / 2, EP_POST_Z + CONTACTOR_H    # contactor coil top (skinny column)
     _ext_x, _ext_z = PWR_PANEL_X + PWR_PANEL_W / 2, PWR_PANEL_Z + PWR_PANEL_H / 2  # exterior E-stop
     p.append(ov.ruby_pipe_run("E-stop trip line (contactor coil -> interior E-stop)",
                               _dedup([(_ctc_x, 45, _ctc_z), (_ctc_x, 10, _ctc_z + 20),
@@ -374,32 +352,32 @@ def power_core():
 
 def battery():
     """2x 100Ah packs RE-STACKED vertically in the skinny column (2nd ghosted) + contactor + MRBF
-    above the stack. Both 2/0 cables run up the RIGHT of the column (SK_RISEX) — clear of the chem
+    above the stack. Both 2/0 cables run up the RIGHT of the column (EP_RISE_X_P) — clear of the chem
     shelf, transport-stay anchor and pinhole. Skinny-panel prototype — see SK_* above."""
     p = []
-    for bz, nm, al in [(SK_B1Z, "Battery 1 (12V 100Ah LiFePO4)", 1.0),
-                       (SK_B2Z, "Battery 2 (optional 2nd pack, ghosted)", 0.28)]:
-        p.append(ov.ruby_box(nm, SK_X0, 0, bz, SK_BW, BA_D, SK_BH, color=ov.C_BATT, alpha=al))
-    p.append(ov.ruby_box("Battery Contactor (ML-RBS)", SK_X0 + 10, 15, SK_POSTZ,
+    for bz, nm, al in [(BA_H_LO, "Battery 1 (12V 100Ah LiFePO4)", 1.0),
+                       (BA_STACK_Z2, "Battery 2 (optional 2nd pack, ghosted)", 0.28)]:
+        p.append(ov.ruby_box(nm, EP_X, 0, bz, BA_W, BA_D, (BA_H_HI - BA_H_LO), color=ov.C_BATT, alpha=al))
+    p.append(ov.ruby_box("Battery Contactor (ML-RBS)", EP_X + 10, 15, EP_POST_Z,
                          CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, color="#C42B1C"))
-    _mrbf_x = SK_X0 + CONTACTOR_W + 30
-    p.append(ov.ruby_box("MRBF Main Fuse (on + post)", _mrbf_x, 20, SK_POSTZ,
+    _mrbf_x = EP_X + CONTACTOR_W + 30
+    p.append(ov.ruby_box("MRBF Main Fuse (on + post)", _mrbf_x, 20, EP_POST_Z,
                          MRBF_D, MRBF_D, MRBF_H, color="#222222"))
     disc_x, disc_z = EP_X + 240, EP_H_LO + 120          # main disconnect centre (matches power_core)
     bus_x = EP_X + 20
-    # + leaves the MRBF and runs UP the right lane (SK_RISEX, clear of the inverter X1910-2030 and the
+    # + leaves the MRBF and runs UP the right lane (EP_RISE_X_P, clear of the inverter X1910-2030 and the
     # transport anchor) to the disconnect LINE terminal; − runs up the same lane to the (−) busbar.
     p.append(ov.ruby_pipe_run("Battery + cable (2/0 AWG, MRBF → main disconnect)",
-                              _dedup([(_mrbf_x + MRBF_D / 2, 45, SK_POSTZ + MRBF_H),
-                                      (SK_RISEX, 45, SK_POSTZ + MRBF_H),
-                                      (SK_RISEX, 45, disc_z - 35),
+                              _dedup([(_mrbf_x + MRBF_D / 2, 45, EP_POST_Z + MRBF_H),
+                                      (EP_RISE_X_P, 45, EP_POST_Z + MRBF_H),
+                                      (EP_RISE_X_P, 45, disc_z - 35),
                                       (disc_x, 45, disc_z - 35),
                                       (disc_x, 30, disc_z - 35)]),   # lands ON the disconnect LINE terminal
                               11, color="#8B1A1A"))
     p.append(ov.ruby_pipe_run("Battery − cable (2/0 AWG)",
-                              _dedup([(SK_X0 + 40, 60, SK_BTOP),
-                                      (SK_RISEX2, 60, SK_BTOP),
-                                      (SK_RISEX2, 60, EP_H_LO + 186),
+                              _dedup([(EP_X + 40, 60, BA_STACK_TOP),
+                                      (EP_RISE_X_M, 60, BA_STACK_TOP),
+                                      (EP_RISE_X_M, 60, EP_H_LO + 186),
                                       (bus_x + 20, 60, EP_H_LO + 186)]),
                               11, color="#202020"))
     return '\n'.join(p)
@@ -436,10 +414,10 @@ def external_panel():
     p.append(ov.ruby_cylinder("E-stop button (red mushroom)", es_cx, face_y - 40,
                               es_cz, 26, 28, color="#C42B1C", axis="y"))
     # PV array disconnect — DC load-break isolator on the PV path (array -> MPPT), on the skinny column
-    # at OPERATOR REACH (SK_PVZ), with a red switch LEVER on its face so it reads as a switch (NEC 690.13).
+    # at OPERATOR REACH (PV_DISC_Z), with a red switch LEVER on its face so it reads as a switch (NEC 690.13).
     p.append(ov.ruby_box("PV Array Disconnect (load-break isolator)",
-                         SK_PVX, 0, SK_PVZ, 70, 45, 70, color="#D43A2F"))
-    p.append(ov.ruby_box("PV disconnect lever (red switch)", SK_PVX + 28, 45, SK_PVZ + 20,
+                         PV_DISC_X, 0, PV_DISC_Z, 70, 45, 70, color="#D43A2F"))
+    p.append(ov.ruby_box("PV disconnect lever (red switch)", PV_DISC_X + 28, 45, PV_DISC_Z + 20,
                          14, 40, 14, color="#C0202A"))
 
     # Evap cooler (Hessaire MC18M) — external, ground-placed off the pinhole wall — and

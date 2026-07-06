@@ -38,10 +38,15 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
   re-proves. (Reminder block lives atop `parts.py`.)
 
 ## Design / 3D (deferred)
-- [ ] **Walkway widened-band 100mm grate overhang — deflection check.** The near widened band (X1055–2169)
-  cantilevers the grate ≤100mm past the outer widened brackets (ribs 1155/2069) at each end
-  (`WALKWAY_MAX_OVERHANG=100`). Verify grate deflection at that overhang for the walkway load (bar depth /
-  person edge-load); tighten the cap or add an end bracket if it fails.
+- [x] **Walkway grate deflection — RESOLVED.** The 15mm grate was a bogus spec (molded FRP's thinnest is
+  1"/25mm — McNichols MS-S-100, 2.60 lb/sf). At the real 25mm a 100kg operator mid-span (457mm) deflects
+  ~2.5mm — well within the ¼" (6mm) pedestrian limit (MS-S-100 ΔC datasheet); the 100mm overhang is
+  negligible (short cantilever). Grate corrected to 25mm + deck raised 130→140 (Option A).
+- [ ] **Film-plane tilted corner vs the raised deck — verify.** At tilt (±) the film-plane bottom corner
+  sits ~5mm below the walkway deck top (Z135 vs Z140 at 20°). The deck (130→140) and the film plane
+  (`RAIL_OFF_BOT` 150→160) both rose 10mm so the relationship is UNCHANGED (not a new clash), but confirm
+  the tilted film plane actually clears the walkway grate across its Yd travel — it may only tilt where
+  it's clear of the near/far walkways, or need a small local clearance. Verify in the film-plane + walkway 3D.
 - [x] **Overview / assembly-overview / electrical-diagram corridor-filter staleness — DONE.**
   assembly-overview (relabel corridor zone → pumps+ACC, ADD pinhole-wall Filter panel zone, legend) and
   electrical-diagram (every "pumps+filters" → "water pumps"; P-01/03/04/05 corridor + P-02 wall) fixed.

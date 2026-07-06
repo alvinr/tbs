@@ -264,9 +264,13 @@ def power_core():
     # block at Yd 25-70). Duplicated in the overview's electrical() — keep in sync.
     mc4_x = PWR_PANEL_X + 0.23 * PWR_PANEL_W
     mc4_z = PWR_PANEL_Z + 0.225 * PWR_PANEL_H
-    p.append(ov.ruby_pipe_run("PV feed (MC4 bulkheads -> MPPT)",
-                              _dedup([(mc4_x, 22, mc4_z), (mc4_x, 120, mc4_z),
-                                      (EP_X + 40, 120, mc4_z),
+    dsx = EP_X - 300              # PV array-disconnect X (on the plywood) — feed runs IN-LINE through it
+    p.append(ov.ruby_pipe_run("PV feed (MC4 -> array disconnect -> MPPT)",
+                              _dedup([(mc4_x, 22, mc4_z),
+                                      (dsx, 22, mc4_z),            # in at the disconnect LINE terminal (array side)
+                                      (dsx + 70, 22, mc4_z),       # out the LOAD terminal — in-line THROUGH the isolator
+                                      (dsx + 70, 120, mc4_z),      # forward to the MPPT-panel plane
+                                      (EP_X + 40, 120, mc4_z),     # across to under the MPPT
                                       (EP_X + 40, 120, EP_H_HI - MPPT_H - 32),   # rise FLUSH up the ply panel (Yd120)
                                       (EP_X + 40, 155, EP_H_HI - MPPT_H - 22)]),  # elbow forward into the MPPT PV input
                               9, color="#2D7A2D"))

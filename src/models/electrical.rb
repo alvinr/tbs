@@ -5985,11 +5985,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 bulkheads -> MPPT)
+  # PV feed (MC4 -> array disconnect -> MPPT)
   grp = ents.add_group
-  grp.name = "PV feed (MC4 bulkheads -> MPPT)"
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 80.mm, 0.mm)
+  vec = Geom::Vector3d.new(333.79999999999995.mm, 0.mm, 0.mm)
   circle = ge.add_circle([1328.2.mm,22.mm,1884.mm], vec, 9.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -5999,12 +5999,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 bulkheads -> MPPT) elbow
+  # PV feed (MC4 -> array disconnect -> MPPT) elbow
   grp = ents.add_group
-  grp.name = "PV feed (MC4 bulkheads -> MPPT) elbow"
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1346.2.mm,102.mm,1884.mm], [-1.000000,0.000000,0.000000], [0.000000,0.000000,-1.000000], 18.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1328.2.mm,102.mm,1884.mm], [0.000000,1.000000,0.000000], 9.mm, 16)
+  arc = ge.add_arc([1662.mm,40.mm,1884.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 18.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1662.mm,22.mm,1884.mm], [1.000000,0.000000,0.000000], 9.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
@@ -6012,12 +6012,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 bulkheads -> MPPT)
+  # PV feed (MC4 -> array disconnect -> MPPT)
   grp = ents.add_group
-  grp.name = "PV feed (MC4 bulkheads -> MPPT)"
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(585.8.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1346.2.mm,120.mm,1884.mm], vec, 9.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 62.mm, 0.mm)
+  circle = ge.add_circle([1680.mm,40.mm,1884.mm], vec, 9.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6026,9 +6026,36 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 bulkheads -> MPPT) elbow
+  # PV feed (MC4 -> array disconnect -> MPPT) elbow
   grp = ents.add_group
-  grp.name = "PV feed (MC4 bulkheads -> MPPT) elbow"
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1698.mm,102.mm,1884.mm], [-1.000000,0.000000,0.000000], [0.000000,0.000000,-1.000000], 18.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1680.mm,102.mm,1884.mm], [0.000000,1.000000,0.000000], 9.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV feed (MC4 -> array disconnect -> MPPT)
+  grp = ents.add_group
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(234.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1698.mm,120.mm,1884.mm], vec, 9.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV feed (MC4 -> array disconnect -> MPPT) elbow
+  grp = ents.add_group
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT) elbow"
   ge = grp.entities
   arc = ge.add_arc([1932.mm,120.mm,1902.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 18.mm, 0.0, 1.570796, 8)
   circle = ge.add_circle([1932.mm,120.mm,1884.mm], [1.000000,0.000000,0.000000], 9.mm, 16)
@@ -6039,9 +6066,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 bulkheads -> MPPT)
+  # PV feed (MC4 -> array disconnect -> MPPT)
   grp = ents.add_group
-  grp.name = "PV feed (MC4 bulkheads -> MPPT)"
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, 52.4225745704216.mm)
   circle = ge.add_circle([1950.mm,120.mm,1902.mm], vec, 9.mm, 16)
@@ -6053,9 +6080,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 bulkheads -> MPPT) elbow
+  # PV feed (MC4 -> array disconnect -> MPPT) elbow
   grp = ents.add_group
-  grp.name = "PV feed (MC4 bulkheads -> MPPT) elbow"
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT) elbow"
   ge = grp.entities
   arc = ge.add_arc([1950.mm,138.mm,1954.4225745704216.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 18.mm, 0.0, 1.292497, 8)
   circle = ge.add_circle([1950.mm,120.mm,1954.4225745704216.mm], [0.000000,0.000000,1.000000], 9.mm, 16)
@@ -6066,9 +6093,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 bulkheads -> MPPT)
+  # PV feed (MC4 -> array disconnect -> MPPT)
   grp = ents.add_group
-  grp.name = "PV feed (MC4 bulkheads -> MPPT)"
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 21.9449803021528.mm, 6.269994372043584.mm)
   circle = ge.add_circle([1950.mm,133.0550196978472.mm,1971.7300056279564.mm], vec, 9.mm, 16)

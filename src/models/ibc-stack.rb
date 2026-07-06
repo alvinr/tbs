@@ -2238,7 +2238,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-56.75395000000026.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(-54.12895000000026.mm, 0.mm, 0.mm)
   circle = ge.add_circle([4631.12895.mm,1110.mm,104.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -2252,8 +2252,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
   ge = grp.entities
-  arc = ge.add_arc([4574.375.mm,1110.mm,122.875.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 18.375000000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4574.375.mm,1110.mm,104.5.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4577.mm,1110.mm,125.5.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4577.mm,1110.mm,104.5.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
@@ -2265,8 +2265,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 9.753749999999997.mm)
-  circle = ge.add_circle([4556.mm,1110.mm,122.875.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 13.514999999999986.mm)
+  circle = ge.add_circle([4556.mm,1110.mm,125.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2279,8 +2279,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
   ge = grp.entities
-  arc = ge.add_arc([4556.mm,1100.62875.mm,132.62875.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 9.371250000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4556.mm,1110.mm,132.62875.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4556.mm,1097.015.mm,139.015.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4556.mm,1110.mm,139.015.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
@@ -2292,8 +2292,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -82.25375000000008.mm, 0.mm)
-  circle = ge.add_circle([4556.mm,1100.62875.mm,142.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -76.0150000000001.mm, 0.mm)
+  circle = ge.add_circle([4556.mm,1097.015.mm,152.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2306,8 +2306,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
   ge = grp.entities
-  arc = ge.add_arc([4556.mm,1018.375.mm,123.625.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 18.375000000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4556.mm,1018.375.mm,142.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4556.mm,1021.mm,131.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4556.mm,1021.mm,152.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
@@ -2319,8 +2319,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -9.753749999999997.mm)
-  circle = ge.add_circle([4556.mm,1000.mm,123.625.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -13.515.mm)
+  circle = ge.add_circle([4556.mm,1000.mm,131.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2333,8 +2333,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
   ge = grp.entities
-  arc = ge.add_arc([4556.mm,990.62875.mm,113.87125.mm], [0.000000,1.000000,0.000000], [-1.000000,-0.000000,-0.000000], 9.371250000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4556.mm,1000.mm,113.87125.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4556.mm,987.015.mm,117.485.mm], [0.000000,1.000000,0.000000], [-1.000000,-0.000000,-0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4556.mm,1000.mm,117.485.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
@@ -2346,8 +2346,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -914.62875.mm, 0.mm)
-  circle = ge.add_circle([4556.mm,990.62875.mm,104.5.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -911.015.mm, 0.mm)
+  circle = ge.add_circle([4556.mm,987.015.mm,104.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2804,7 +2804,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "SV-01 -> DV-01 (single filtered line)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 905.21.mm, 0.mm)
+  vec = Geom::Vector3d.new(0.mm, 902.585.mm, 0.mm)
   circle = ge.add_circle([4478.mm,76.41499999999999.mm,104.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -2818,8 +2818,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
   ge = grp.entities
-  arc = ge.add_arc([4478.mm,981.625.mm,122.875.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 18.375000000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4478.mm,981.625.mm,104.5.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4478.mm,979.mm,125.5.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4478.mm,979.mm,104.5.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
@@ -2831,8 +2831,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "SV-01 -> DV-01 (single filtered line)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 9.753749999999997.mm)
-  circle = ge.add_circle([4478.mm,1000.mm,122.875.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 13.514999999999986.mm)
+  circle = ge.add_circle([4478.mm,1000.mm,125.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2845,8 +2845,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
   ge = grp.entities
-  arc = ge.add_arc([4478.mm,1009.37125.mm,132.62875.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 9.371250000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4478.mm,1000.mm,132.62875.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4478.mm,1012.985.mm,139.015.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4478.mm,1000.mm,139.015.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
@@ -2858,8 +2858,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "SV-01 -> DV-01 (single filtered line)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 92.25374999999997.mm, 0.mm)
-  circle = ge.add_circle([4478.mm,1009.37125.mm,142.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 86.01499999999999.mm, 0.mm)
+  circle = ge.add_circle([4478.mm,1012.985.mm,152.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2872,8 +2872,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
   ge = grp.entities
-  arc = ge.add_arc([4478.mm,1101.625.mm,123.625.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 18.375000000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4478.mm,1101.625.mm,142.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4478.mm,1099.mm,131.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4478.mm,1099.mm,152.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
@@ -2885,8 +2885,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "SV-01 -> DV-01 (single filtered line)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -9.753749999999997.mm)
-  circle = ge.add_circle([4478.mm,1120.mm,123.625.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -13.515.mm)
+  circle = ge.add_circle([4478.mm,1120.mm,131.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2899,8 +2899,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
   ge = grp.entities
-  arc = ge.add_arc([4478.mm,1129.37125.mm,113.87125.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 9.371250000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4478.mm,1120.mm,113.87125.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4478.mm,1132.985.mm,117.485.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4478.mm,1120.mm,117.485.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
@@ -2912,8 +2912,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "SV-01 -> DV-01 (single filtered line)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 90.62875000000008.mm, 0.mm)
-  circle = ge.add_circle([4478.mm,1129.37125.mm,104.5.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 87.0150000000001.mm, 0.mm)
+  circle = ge.add_circle([4478.mm,1132.985.mm,104.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3258,7 +3258,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 111.mm)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 121.mm)
   circle = ge.add_circle([4504.mm,155.mm,3.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -3272,8 +3272,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction elbow"
   ge = grp.entities
-  arc = ge.add_arc([4504.mm,176.mm,114.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4504.mm,155.mm,114.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4504.mm,176.mm,124.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4504.mm,155.mm,124.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
@@ -3285,8 +3285,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 137.055.mm, 0.mm)
-  circle = ge.add_circle([4504.mm,176.mm,135.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 132.15499999999997.mm, 0.mm)
+  circle = ge.add_circle([4504.mm,176.mm,145.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3299,8 +3299,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction elbow"
   ge = grp.entities
-  arc = ge.add_arc([4504.mm,313.055.mm,120.05499999999999.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 14.945000000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4504.mm,313.055.mm,135.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4504.mm,308.155.mm,125.155.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 19.845000000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4504.mm,308.155.mm,145.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
@@ -3312,8 +3312,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -7.933050000000009.mm)
-  circle = ge.add_circle([4504.mm,328.mm,120.055.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -10.534050000000008.mm)
+  circle = ge.add_circle([4504.mm,328.mm,125.155.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3326,8 +3326,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction elbow"
   ge = grp.entities
-  arc = ge.add_arc([4504.mm,335.62195.mm,112.12195.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 7.621950000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4504.mm,328.mm,112.12195.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4504.mm,338.12095.mm,114.62095.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 10.120950000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4504.mm,328.mm,114.62095.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
@@ -3339,8 +3339,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 646.00305.mm, 0.mm)
-  circle = ge.add_circle([4504.mm,335.62195.mm,104.5.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 640.87905.mm, 0.mm)
+  circle = ge.add_circle([4504.mm,338.12095.mm,104.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3353,8 +3353,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction elbow"
   ge = grp.entities
-  arc = ge.add_arc([4504.mm,981.625.mm,122.875.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 18.375000000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4504.mm,981.625.mm,104.5.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4504.mm,979.mm,125.5.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4504.mm,979.mm,104.5.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
@@ -3366,8 +3366,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 9.753749999999997.mm)
-  circle = ge.add_circle([4504.mm,1000.mm,122.875.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 13.514999999999986.mm)
+  circle = ge.add_circle([4504.mm,1000.mm,125.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3380,8 +3380,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction elbow"
   ge = grp.entities
-  arc = ge.add_arc([4504.mm,1009.37125.mm,132.62875.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 9.371250000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4504.mm,1000.mm,132.62875.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4504.mm,1012.985.mm,139.015.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4504.mm,1000.mm,139.015.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
@@ -3393,8 +3393,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 92.25374999999997.mm, 0.mm)
-  circle = ge.add_circle([4504.mm,1009.37125.mm,142.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 86.01499999999999.mm, 0.mm)
+  circle = ge.add_circle([4504.mm,1012.985.mm,152.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3407,8 +3407,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction elbow"
   ge = grp.entities
-  arc = ge.add_arc([4504.mm,1101.625.mm,123.625.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 18.375000000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4504.mm,1101.625.mm,142.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4504.mm,1099.mm,131.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4504.mm,1099.mm,152.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
@@ -3420,8 +3420,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -9.753749999999997.mm)
-  circle = ge.add_circle([4504.mm,1120.mm,123.625.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -13.515.mm)
+  circle = ge.add_circle([4504.mm,1120.mm,131.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3434,8 +3434,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction elbow"
   ge = grp.entities
-  arc = ge.add_arc([4504.mm,1129.37125.mm,113.87125.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 9.371250000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4504.mm,1120.mm,113.87125.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4504.mm,1132.985.mm,117.485.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4504.mm,1120.mm,117.485.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
@@ -3447,8 +3447,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 43.62875000000008.mm, 0.mm)
-  circle = ge.add_circle([4504.mm,1129.37125.mm,104.5.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 40.0150000000001.mm, 0.mm)
+  circle = ge.add_circle([4504.mm,1132.985.mm,104.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6036,7 +6036,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-77.78290000000015.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(-75.15790000000015.mm, 0.mm, 0.mm)
   circle = ge.add_circle([4626.1579.mm,1132.mm,104.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -6050,8 +6050,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip elbow"
   ge = grp.entities
-  arc = ge.add_arc([4548.375.mm,1132.mm,122.875.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 18.375000000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4548.375.mm,1132.mm,104.5.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4551.mm,1132.mm,125.5.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4551.mm,1132.mm,104.5.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
@@ -6063,8 +6063,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 9.753749999999997.mm)
-  circle = ge.add_circle([4530.mm,1132.mm,122.875.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 13.514999999999986.mm)
+  circle = ge.add_circle([4530.mm,1132.mm,125.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6077,8 +6077,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip elbow"
   ge = grp.entities
-  arc = ge.add_arc([4530.mm,1122.62875.mm,132.62875.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 9.371250000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4530.mm,1132.mm,132.62875.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4530.mm,1119.015.mm,139.015.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4530.mm,1132.mm,139.015.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
@@ -6090,8 +6090,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -104.25375000000008.mm, 0.mm)
-  circle = ge.add_circle([4530.mm,1122.62875.mm,142.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -98.0150000000001.mm, 0.mm)
+  circle = ge.add_circle([4530.mm,1119.015.mm,152.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6104,8 +6104,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip elbow"
   ge = grp.entities
-  arc = ge.add_arc([4530.mm,1018.375.mm,123.625.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 18.375000000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4530.mm,1018.375.mm,142.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4530.mm,1021.mm,131.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4530.mm,1021.mm,152.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
@@ -6117,8 +6117,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -9.753749999999997.mm)
-  circle = ge.add_circle([4530.mm,1000.mm,123.625.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -13.515.mm)
+  circle = ge.add_circle([4530.mm,1000.mm,131.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6131,8 +6131,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip elbow"
   ge = grp.entities
-  arc = ge.add_arc([4530.mm,990.62875.mm,113.87125.mm], [0.000000,1.000000,0.000000], [-1.000000,-0.000000,-0.000000], 9.371250000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4530.mm,1000.mm,113.87125.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4530.mm,987.015.mm,117.485.mm], [0.000000,1.000000,0.000000], [-1.000000,-0.000000,-0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4530.mm,1000.mm,117.485.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
@@ -6144,8 +6144,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -900.62875.mm, 0.mm)
-  circle = ge.add_circle([4530.mm,990.62875.mm,104.5.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -897.015.mm, 0.mm)
+  circle = ge.add_circle([4530.mm,987.015.mm,104.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6248,7 +6248,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "TAP-01 Branch (3/4in)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 1309.mm)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 1234.mm)
   circle = ge.add_circle([1130.mm,69.mm,41.mm], vec, 12.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -6262,8 +6262,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "TAP-01 Branch (3/4in) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1130.mm,94.mm,1350.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 25.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1130.mm,69.mm,1350.mm], [0.000000,0.000000,1.000000], 12.5.mm, 16)
+  arc = ge.add_arc([1130.mm,94.mm,1275.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 25.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1130.mm,69.mm,1275.mm], [0.000000,0.000000,1.000000], 12.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
@@ -6276,7 +6276,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "TAP-01 Branch (3/4in)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 50.mm, 0.mm)
-  circle = ge.add_circle([1130.mm,94.mm,1375.mm], vec, 12.5.mm, 16)
+  circle = ge.add_circle([1130.mm,94.mm,1300.mm], vec, 12.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6289,8 +6289,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "TAP-01 Branch (3/4in) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1130.mm,144.mm,1350.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 25.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1130.mm,144.mm,1375.mm], [0.000000,1.000000,0.000000], 12.5.mm, 16)
+  arc = ge.add_arc([1130.mm,144.mm,1275.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 25.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1130.mm,144.mm,1300.mm], [0.000000,1.000000,0.000000], 12.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
@@ -6302,8 +6302,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "TAP-01 Branch (3/4in)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -200.mm)
-  circle = ge.add_circle([1130.mm,169.mm,1350.mm], vec, 12.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -125.mm)
+  circle = ge.add_circle([1130.mm,169.mm,1275.mm], vec, 12.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

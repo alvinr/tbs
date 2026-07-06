@@ -330,7 +330,7 @@ EVAP_STOW_Z    = 150     # sits on raised grating surface (WALKWAY_H 130 + 20mm 
 # INSIDE the container on the pinhole wall, below the electrical panel (EP) and
 # above the battery bank — short DC run to the battery, GFCI AC out to the
 # external power panel.  See electrical-report.md §AC isolation & safety.
-INVERTER_X   = 1910    # left edge X (mm) — under the EP (X1910–2210)
+INVERTER_X   = 1829    # left edge X (mm) — at the EP column left; keep synced with EP_X (defined below, so can't reference it here)
 INVERTER_Z   = 1180    # bottom Z (mm) — above battery top (364), below EP bottom (1500); 235 tall → top 1415
 INVERTER_W   = 120     # width along X (mm)
 INVERTER_H   = 235     # height (mm)
@@ -354,11 +354,11 @@ PWR_PANEL_CUTOUT_W = 280   # wall cutout width (mm) — 30mm overlap each side
 PWR_PANEL_CUTOUT_H = 180   # wall cutout height (mm)
 
 # ── Pinhole wall face (Y = 0, shadow-free) ────────────────────────────────────
-EP_X       = 1910    # electrical panel left edge X (mm) — stacked above the battery bank
-                     # (X1810–2310), centered over it; clears the pinhole (X2399). The upper
-                     # transport-stay anchor was relocated (hooks → swinging-panel perimeter
-                     # stile, structural fix); `wall_anchors()` now clamps the anchor's right
-                     # edge to ≤ EP_X−15 (X≤1895) so it still clears the EP. [rev10/stay-relocate]
+EP_X       = 1829    # electrical panel/column left edge X (mm) — set so the column right edge
+                     # (EP_X + EP_COL_W = 2169) sits at the widened-walkway right overhang limit
+                     # (cantilever X2069 + 100mm max grate overhang); clears the pinhole (X2399).
+                     # The transport-stay anchor follows: `wall_anchors()` clamps its right edge
+                     # to ≤ EP_X−15 (X≤1814) so it stays clear of the column. [walkway-punchout fit]
 EP_W       = 300     # electrical panel width (mm)
 EP_H_LO    = 1500    # electrical panel bottom Z (mm) [rev11: DROPPED 150 (1650→1500); originally to
                      # clear the film-plane brace top beam — that brace cage has since been retired
@@ -371,9 +371,9 @@ BA_H_LO    = 150     # battery bank bottom Z (mm) — sits ON the raised grate [
 BA_H_HI    = 364     # LOWER pack top Z (mm) = 150 + 214 (real Renogy 100Ah height); the upper pack stacks above (BA_STACK_TOP)
 BA_D       = 172     # battery bank depth from wall (mm) — real Renogy 100Ah width (the rev7 'slim-profile 120mm' assumption was wrong — see component-dimension-audit.md)
 
-# ── EP skinny-column layout (2026-07-06) — the EP is a tall NARROW column in the one clear band
-# between the transport-stay anchor (X1895) and the pinhole (X2399): it can't shift +X (pinhole) or
-# stay wide (chem shelf X1180-1780 + anchor). The two battery packs STACK vertically (BA_W wide).
+# ── EP skinny-column layout (2026-07-06) — the EP is a tall NARROW column shifted left so it fits
+# inside the cantilever-limited widened walkway (column right edge = cantilever X2069 + 100mm = X2169);
+# the transport-stay anchor (X≤1814) follows it, the pinhole is at X2399. Packs STACK vertically (BA_W wide).
 EP_COL_W     = 340                         # EP column width (mm) — fits one stacked battery pack
 BA_STACK_Z2  = BA_H_HI + 16                # 380 — upper (2nd) pack bottom Z (stacked on the lower pack)
 BA_STACK_TOP = BA_STACK_Z2 + (BA_H_HI - BA_H_LO)  # 594 — battery stack top Z
@@ -463,8 +463,8 @@ SHELF_X_L      = 1180    # shelf left edge X (mm) — widened walkway, left of t
 SHELF_X_R      = 1780    # shelf right edge X (mm)
 SHELF_W        = 600     # shelf width along X (mm)
 SHELF_YD_NEAR  = 0       # back edge — hinged on the pinhole wall (Yd0)
-SHELF_YD_FAR   = 300     # front edge when deployed (300mm into the walkway)
-SHELF_DEPTH    = 300     # shelf depth in Yd (deployed projection into the 500mm walkway)
+SHELF_DEPTH    = 225     # shelf depth in Yd (deployed projection) — reduced 300→225 for more walk-around clearance at the chem shelf (275mm past the shelf back to the widened deck edge)
+SHELF_YD_FAR   = SHELF_YD_NEAR + SHELF_DEPTH   # front edge when deployed (= 225; derived so it can't drift from SHELF_DEPTH)
 SHELF_H        = 1075    # deployed work-surface height AFF (mm) — 945mm above the walkway deck
 SHELF_T        = 22      # shelf total thickness (mm) — 18mm ply + 4mm frame
 SHELF_STAY_N   = 2       # support stays (wall-above to front corners; carry the load)
@@ -798,20 +798,19 @@ LEFT_WK_CANT_STD_REACH  = WALKWAY_LEFT_X + WALKWAY_W            # = 470 — stan
 LEFT_WK_CANT_WIDE_REACH = WALKWAY_LEFT_X + WALKWAY_LEFT_WIDE_W  # = 770 — widened arm tip (punch-out inner edge)
 # Right walkway (IBC end): ceiling-hung, same 300mm width as near/far
 WALKWAY_RIGHT_X = PROC_TRAY_X_R - WALKWAY_RIGHT_W  # = 4329mm (grating inner edge)
-# Near walkway widened section — 500mm-wide access band over the EP/battery/slit zone.
-# EP skinny-column reorg (2026-07-06) slid the battery bank +370mm right (X1540→1910 = BA_X); the
-# access band tracks it, so BOTH edges shift by that same amount to stay in front of the EP.
-# Deeper cantilever brackets (500mm arm) with heavier gussets in this section.
-# Shifted zone ≈1525–2999 (still spans the spray-bar slit at ≈2399); widened brackets now at ribs
-# ≈1612, 2069, 2526, 2983. The slit cuts only to the tray lip (Yd=80), not the full walkway depth.
+# Near walkway widened section — 500mm-wide access band for the chem shelf + EP column. The band is
+# CANTILEVER-LIMITED: the grate may overhang the outer widened brackets by at most WALKWAY_MAX_OVERHANG,
+# so it runs from cantilever X1155−100 to cantilever X2069+100 (X1055–2169). The EP column is placed so
+# its right edge (EP_X + EP_COL_W = 2169) lands exactly at that right limit; the chem shelf (X1180-1780)
+# sits inside with a 125mm margin on its left. The slit cuts only to the tray lip (Yd=80), not the full depth.
 WALKWAY_NEAR_WIDE_W   = 500             # widened section width (mm)
+WALKWAY_MAX_OVERHANG  = 100             # max grate cantilever past an end bracket (deflection to be checked)
 _NX0 = WALKWAY_LEFT_X + WALKWAY_W                       # near walkway start = 470
-_FIRST_RIB = _NX0 + CONTAINER_RIB_SPACING // 2          # first bracket ≈ 698
-_EP_ACCESS_SHIFT = 370                                  # battery bank's rightward move into the skinny column (X1540→1910)
-WALKWAY_NEAR_WIDE_X_L = _FIRST_RIB + CONTAINER_RIB_SPACING + _EP_ACCESS_SHIFT  # ≈ 1525
+_CANT0 = _NX0 + CONTAINER_RIB_SPACING // 2             # first cantilever station ≈ 698
 _SLIT_CX = (_NX0 + WALKWAY_RIGHT_X) // 2                # spray bar slit center X ≈ 2399
 SPRAY_BEAM_SPAN = WALKWAY_RIGHT_X - _NX0                # = 3859mm — spray-bar beam span (left↔right walkway inner edges)
-WALKWAY_NEAR_WIDE_X_R = _SLIT_CX + CONTAINER_RIB_SPACING // 2 + 2 + _EP_ACCESS_SHIFT  # ≈ 2999
+WALKWAY_NEAR_WIDE_X_L = _CANT0 + CONTAINER_RIB_SPACING - WALKWAY_MAX_OVERHANG      # 1055 = cantilever 1155 − 100
+WALKWAY_NEAR_WIDE_X_R = _CANT0 + 3 * CONTAINER_RIB_SPACING + WALKWAY_MAX_OVERHANG  # 2169 = cantilever 2069 + 100
 WALKWAY_WIDE_BRACKET_T = 10             # widened bracket plate thickness (mm) — heavier than std 8mm
 WALKWAY_WIDE_BRACKET_H = 200            # widened bracket vertical leg height (mm) — taller for 4-bolt pattern
 # Open processing area (center, clear of walkways):

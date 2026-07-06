@@ -215,10 +215,10 @@ AC isolation/GFCI/equipotential-bonding: [Electrical §7.6](electrical-report.md
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Electrical panel left edge X | <!-- BEGIN cdm:EP_X -->1,910<!-- END cdm:EP_X -->mm | `EP_X` |
+| Electrical panel left edge X | <!-- BEGIN cdm:EP_X -->1,829<!-- END cdm:EP_X -->mm | `EP_X` |
 | Panel width | <!-- BEGIN cdm:EP_W -->300<!-- END cdm:EP_W -->mm | `EP_W` |
 | Panel height range | 900–1,500mm | `EP_H_LO`, `EP_H_HI` |
-| Battery bank left edge X | <!-- BEGIN cdm:BA_X -->1,910<!-- END cdm:BA_X -->mm | `BA_X` |
+| Battery bank left edge X | <!-- BEGIN cdm:BA_X -->1,829<!-- END cdm:BA_X -->mm | `BA_X` |
 | Battery bank width | <!-- BEGIN cdm:BA_W -->330<!-- END cdm:BA_W -->mm | `BA_W` |
 | Battery bank height range | 100–600mm | `BA_H_LO`, `BA_H_HI` |
 

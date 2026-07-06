@@ -1506,7 +1506,7 @@ def lighting_wiring():
                                    6, 16, color=C_CORD, axis="z", n=10))
 
     # Conduit drop (10mm) from trunking down to the stacked battery bank + EP, which
-    # are co-located at X≈1810–2310 (the EP sits above the battery). A single drop at
+    # are co-located at X≈1910–2240 (the EP column stacks above the battery). A single drop at
     # X2060 runs down the EP center face (Z1500–2100) and continues to the battery top.
     # (rev: the old second drop at X1750 was removed — the EP moved to X1910, leaving
     #  that drop orphaned over the swing-panel transport-lock stay plate.)

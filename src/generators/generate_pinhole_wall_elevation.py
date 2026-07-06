@@ -34,7 +34,7 @@ WK_X_L = PROC_TRAY_X_L + WALKWAY_W   # 470mm — near walkway left edge (past le
 WK_X_R = PROC_TRAY_X_R               # 4629mm — near walkway right edge
 
 # Pull-cord switches — ceiling-mounted, left of the electrical panel (cleared)
-PS_X_D = 1450               # switch D — left of EP (EP now starts at X=1910)
+PS_X_D = 1450               # switch D — left of EP (EP now starts at X=1829)
 PS_X_G = 1530               # switch G
 PS_Z = C_HGT - 30           # 2358mm — ceiling-mounted switch body Z
 CORD_HANG_Z = PULL_CORD_BOTTOM_Z   # 1180 — cord bottom; clears the deployed chem shelf below
@@ -612,11 +612,11 @@ notes = [
     " high under the ceiling, and SV-01. Corridor pumps P-01/P-03/P-04/P-05 + ACC-01 + DV-01/DV-02 are"
     " in the IBC corridor (Yd=1046). See panel-layout / pinhole-panel detail.",
     "4. Ext. power panel (dashed) is flush-mount on EXTERIOR face — no interior conflict.",
-    "5. Chemistry shelf (dashed) is ceiling-hung at Yd=300mm — behind near walkway plane.",
+    f"5. Chemistry shelf (dashed) is ceiling-hung, projecting Yd0–{SHELF_DEPTH}mm into the near walkway zone.",
     "6. Shelf hanger rods pass through cable trunking zone — requires grommets/slots in trunking lid.",
-    "7. Battery bank: slim-profile 120mm depth (was 220mm). Right edge (X=2310) clears pinhole cone"
-    " left boundary (X=2319 at Yd=0) by 9mm.",
-    "8. EP raised to Z=1600–2200 (was 900–1500) to clear widened walkway at 500mm.",
+    f"7. Battery bank: 2×100Ah LiFePO4 stacked, {BA_D}mm deep. Right edge (X={BA_X + BA_W}) clears the pinhole cone"
+    f" left boundary (X=2319 at Yd=0) by {2319 - (BA_X + BA_W)}mm.",
+    f"8. EP gear mounted high (Z={EP_H_LO}–{EP_H_HI}) to clear the {WALKWAY_NEAR_WIDE_W}mm widened walkway below.",
     "9. Processing tray sump relocated to X=4550 (IBC corner), slope to corner.",
 ]
 draw_notes(ax, notes, C_LEN - 70, -210, spacing=45,

@@ -40,6 +40,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
 from tbs_constants import C_OUT, C_DIM, C_STEEL, DIAGRAMS_DIR, PUMP_PIPE_OD, PUMP_PIPE_WALL, EQPANEL_X, EQPANEL_H
+from tbs_constants import BB_OD, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_BOT_Z, PWP_FILTER_HEAD_Z, PWP_SV01_X
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_pipe_path as _tbs_pipe_path, valve_ball, valve_3way, valve_check
 from tbs_title_block import title_block
 
@@ -739,13 +740,13 @@ def draw_pinhole_panel():
             ha="center", va="center", fontsize=6.5, color=C_PLY_EC, zorder=4)
 
     # ── Filter geometry (Big Blue 4.5×20: head block + Ø184 sump below) ────
-    HEAD_ZB, HEAD_ZT = 2262, 2340      # head block Z band (pinned near the ceiling)
-    SUMP_ZB, SUMP_ZT = 1746, 2262      # cylindrical sump hanging below (4.5×20 — drops ~230mm lower than the 10")
+    HEAD_ZB, HEAD_ZT = PWP_FILTER_HEAD_Z, PWP_FILTER_TOP_Z      # head block Z band (pinned near the ceiling)
+    SUMP_ZB, SUMP_ZT = PWP_FILTER_BOT_Z, PWP_FILTER_HEAD_Z      # cylindrical sump hanging below (4.5×20 — drops ~230mm lower than the 10")
     HEAD_Z = (HEAD_ZB + HEAD_ZT) / 2   # head-line port height
     filters = [
-        ("F-01", "5µm\nSEDIMENT", 3208, 3392),
-        ("F-02", "KDF-55",        3546, 3730),
-        ("F-03", "CARBON\n(GAC)", 3884, 4068),
+        ("F-01", "5µm\nSEDIMENT", PWP_FILTER_X1 - BB_OD // 2, PWP_FILTER_X1 + BB_OD // 2),
+        ("F-02", "KDF-55",        PWP_FILTER_X2 - BB_OD // 2, PWP_FILTER_X2 + BB_OD // 2),
+        ("F-03", "CARBON\n(GAC)", PWP_FILTER_X3 - BB_OD // 2, PWP_FILTER_X3 + BB_OD // 2),
     ]
     for fname, fdesc, fxl, fxr in filters:
         fcx = (fxl + fxr) / 2
@@ -779,9 +780,9 @@ def draw_pinhole_panel():
     #  F-03 → SV-01 → DV-01 left, in this mirrored inside-the-container elevation)
     # ════════════════════════════════════════════════════════════════
     EXIT_L = 2740                       # IBC-3 / BV-03 inlet margin (draws to the RIGHT, mirrored)
-    F1_CX, F2_CX, F3_CX = 3300, 3638, 3976
-    F1_XL, F1_XR = 3208, 3392
-    F3_XR = 4068
+    F1_CX, F2_CX, F3_CX = PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3
+    F1_XL, F1_XR = PWP_FILTER_X1 - BB_OD // 2, PWP_FILTER_X1 + BB_OD // 2
+    F3_XR = PWP_FILTER_X3 + BB_OD // 2
 
     # IBC-3 Brown suction: the brown line drops from P-02's IN port straight DOWN
     # to BV-03 (suction isolation, low at Z≈1000 in the 3D), then continues to the
@@ -801,11 +802,11 @@ def draw_pinhole_panel():
 
     # P-02 OUT → F-01 IN, then F-01 → F-02 → F-03 (straight jumpers, head line)
     pw_pipe([P2_XR, F1_XL], [HEAD_Z, HEAD_Z], C_BROWN, zorder=Z_BROWN)
-    pw_pipe([3392, 3546], [HEAD_Z, HEAD_Z], C_BROWN, zorder=Z_BROWN)   # F1→F2
-    pw_pipe([3730, 3884], [HEAD_Z, HEAD_Z], C_BROWN, zorder=Z_BROWN)   # F2→F3
+    pw_pipe([PWP_FILTER_X1 + BB_OD // 2, PWP_FILTER_X2 - BB_OD // 2], [HEAD_Z, HEAD_Z], C_BROWN, zorder=Z_BROWN)   # F1→F2
+    pw_pipe([PWP_FILTER_X2 + BB_OD // 2, PWP_FILTER_X3 - BB_OD // 2], [HEAD_Z, HEAD_Z], C_BROWN, zorder=Z_BROWN)   # F2→F3
 
     # F-03 OUT → drops down at X≈4090 → SV-01 (pH sample tap, bottom-right)
-    SV01_X = 4250
+    SV01_X = PWP_SV01_X
     SV01_Z = 1071                       # valve center (3D body z975 + ~96)
     F3_OUT_X = 4090
     pw_pipe([F3_XR, F3_OUT_X, F3_OUT_X, SV01_X, SV01_X],

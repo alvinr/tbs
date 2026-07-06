@@ -32,7 +32,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov   # helpers + conventions (Overview)
-from tbs_constants import EP_X, EP_W, EP_H_LO, EP_H_HI, BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H, EQPANEL_X, EQPANEL_YD, EQPANEL_YD_SPAN, PUMP_H_HI, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, FAN_BODY_D, DUCT_DEPTH, DUCT_HEIGHT, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X
+from tbs_constants import EP_X, EP_W, EP_H_LO, EP_H_HI, BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H, EQPANEL_X, EQPANEL_YD, EQPANEL_YD_SPAN, PUMP_H_HI, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, FAN_BODY_D, DUCT_DEPTH, DUCT_HEIGHT, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, PWP_P02_X, PWP_P02_Z0, PWP_P02_H
 
 TAGS = ["Context", "Solar Array", "Power Core", "Battery", "External Panel",
         "Inverter", "Circuit Runs", "Labels"]
@@ -437,7 +437,7 @@ def _pump_circuit():
     # feed where the ceiling trunk passes over it (electrical-report §7.3); the feed runs the ceiling
     # from the EP master switch to the corridor block, so it IS overhead here. X/Z match the
     # pinhole-water-panel model + pinhole-wall-elevation.
-    p02x, p02_yd, p02z0, p02z1 = 3058, 100, 2139, 2319
+    p02x, p02_yd, p02z0, p02z1 = PWP_P02_X, 100, PWP_P02_Z0, PWP_P02_Z0 + PWP_P02_H
     p.append(ov.ruby_box("P-02 (Brown recycle - Pinhole-Wall filter pump)",
                          p02x - 25, p02_yd - 30, p02z0, 50, 60, p02z1 - p02z0, color="#6B4423"))
     p.append(ov.ruby_pipe_run("Cct C branch P-02 (taps ceiling feed - Pinhole-Wall panel)",

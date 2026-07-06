@@ -493,6 +493,29 @@ F1_Z           = FSKID_Z_LO  # = 250 — F1 sump bottom Z (mm) — 50μ sediment
 F2_Z           = F1_Z + BB_H + 30  # = 620 — F2 sump bottom Z (mm) — 5μ sediment
 F3_Z           = F2_Z + BB_H + 30  # = 990 — F3 sump bottom Z (mm) — GAC carbon (highest)
 
+# ── Pinhole Wall Plumbing Panel — wet-end filter loop positions (SINGLE SOURCE) ──────────────
+# The pinhole-wall-mount refactor put the filter loop on the PINHOLE WALL (Yd≈0 side): the 3-stage
+# Big Blue bank rides HIGH under the ceiling; P-02 sits to its left (low-X, furthest from the IBCs);
+# SV-01 drops to waist.  These constants are the ONE home for those X/Z positions — consumed by
+# generate_pinhole_water_panel.kit() (3D), generate_panel_layout (pinhole-panel 2D),
+# generate_pinhole_wall_elevation (elevation) and generate_electrical_model (P-02 feed tap).
+# (The FSKID_X/F1_Z/F2_Z/F3_Z block ABOVE is the OLD corridor layout — still consumed by the overview /
+#  assembly-overview / electrical-diagram, which have NOT yet moved to the pinhole-wall design.)
+PWP_FILTER_X1     = 3300                        # F-01 center X (mm)
+PWP_FILTER_PITCH  = 338                         # F-01 -> F-02 -> F-03 center-to-center X spacing
+PWP_FILTER_X2     = PWP_FILTER_X1 + PWP_FILTER_PITCH        # = 3638
+PWP_FILTER_X3     = PWP_FILTER_X1 + 2 * PWP_FILTER_PITCH    # = 3976
+PWP_FILTER_TOP_Z  = C_HGT - 48                  # = 2340 — filter head top (pinned just under the ceiling)
+PWP_FILTER_BOT_Z  = PWP_FILTER_TOP_Z - BB_H     # = 1746 — filter sump bottom
+PWP_FILTER_HEAD_Z = PWP_FILTER_TOP_Z - 78       # = 2262 — head/sump split (cap height 78)
+PWP_FILTER_CAP_Z  = PWP_FILTER_TOP_Z - 39       # = 2301 — in-line port centerline (cap_h/2)
+PWP_FILTER_YD     = BB_OD // 2 + 12             # = 104 — filter center Yd (sump back near the wall)
+PWP_P02_X         = PWP_FILTER_X1 - (BB_OD // 2 + 30) - 120  # = 3058 — P-02 center (OUT tip 40mm before F-01 IN)
+PWP_P02_H         = 180                          # P-02 body height (matches cp.PVB_H)
+PWP_P02_Z0        = PWP_FILTER_CAP_Z - (PWP_P02_H - 18)      # = 2139 — P-02 body bottom (port at cap level)
+PWP_SV01_X        = 4250                         # SV-01 pH sample tap X
+PWP_WAIST_Z       = 1000                         # SV-01 / DV-01 reach height (waist)
+
 # Pump manifold pipe (1/2" HDPE Sch40)
 PUMP_PIPE_OD   = 21      # 1/2" nominal HDPE OD (mm)
 PUMP_PIPE_WALL = 3       # pipe wall thickness (mm)

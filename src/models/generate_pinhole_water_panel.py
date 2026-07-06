@@ -154,18 +154,18 @@ def kit():
     p = []
     fr = ov.BB_OD / 2          # 92
     BB_H, cap_h = ov.BB_H, 78
-    f_top = C_HGT - 48
+    f_top = ov.PWP_FILTER_TOP_Z
     f_bot = f_top - BB_H       # 2000 — the high tier
-    fcy = fr + 12              # 104 — filter center Yd (sump back near the wall)
+    fcy = ov.PWP_FILTER_YD     # 104 — filter center Yd (sump back near the wall)
     cap_z = f_bot + BB_H - cap_h / 2   # 2301 — filter cap port centerline
     tie = cap_z                # ports are STRAIGHT/horizontal (in-line filter) — no down-elbow
     rp = ov.PUMP_PIPE_OD / 2   # 10.5
     yL, yS = 230, 295          # feed lane / suction+exit lane (clear of the bodies, Yd ≤ 196)
     yW = 35                    # wall plane — pipes/valves mounted on the plywood backing
-    waist = 1000               # SV-01 + DV-01 reach height
+    waist = ov.PWP_WAIST_Z     # SV-01 + DV-01 reach height
     cdk = "#222228"
 
-    FX = {"F1": 3300, "F2": 3638, "F3": 3976}                      # spacing tightened (jumper −40%)
+    FX = {"F1": ov.PWP_FILTER_X1, "F2": ov.PWP_FILTER_X2, "F3": ov.PWP_FILTER_X3}   # single-source (tbs_constants)
     def f_in(nm):  return (FX[nm] - (fr + 30), fcy, tie)           # IN  port (−X)
     def f_out(nm): return (FX[nm] + (fr + 30), fcy, tie)           # OUT port (+X)
 
@@ -180,7 +180,7 @@ def kit():
 
     # ── P-02 — UPRIGHT, IN/OUT on OPPOSITE sides along X (same pattern as the filters): OUT (+X)
     #    feeds straight into F1; IN (−X) takes the suction from the shared Brown tap. ──
-    p2cx  = f_in("F1")[0] - (cp.PVB_R + 30) - 40                   # body center: OUT tip 40mm before F1
+    p2cx  = ov.PWP_P02_X                                          # body center: OUT tip 40mm before F1
     p2cy  = fcy                                                    # same Yd lane as the filters
     p2cz0 = cap_z - (cp.PVB_H - 18)                               # OUT/IN port height at the cap level
     p += cp.pump_unit("Pump P-02 (Brown)", p2cx, p2cy, p2cz0, axis="x", color=ov.C_PUMP)
@@ -189,7 +189,7 @@ def kit():
 
     # ── SV-01 sample tap stays on the plywood at the wall (sample cup access at waist).  3W-DV-01 is
     #    RELOCATED into the rear corridor so the filtered line runs as ONE pipe and only splits there ──
-    svx = 4250
+    svx = ov.PWP_SV01_X
     sv_y = yW + 75             # SV-01 projects only 75mm forward of the wall (cup access; was yL=230)
     p.append(cp.sample_valve("SV-01 sample valve", svx, sv_y, waist - 25, h=70))
     tipd = cp.DVB / 2 + cp.DVL                  # 33 — diverter port-stub tip reach

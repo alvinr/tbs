@@ -105,7 +105,7 @@ def _fuse_cx(i):
 
 
 FUSE_TOP_Z = _FBLK_Z0 + _FBASE_H + _FUSE_H            # cable exits each blade's top terminal
-ENCL_FRONT_YD = ENCL_SHELL_D + 10                    # risers run up the enclosure front (clears MPPT)
+ENCL_FRONT_YD = ENCL_SHELL_D + 10                    # risers run up the enclosure front (MPPT now sits forward of them, clear)
 # per-circuit fuse terminal (cable origin) = top-centre of that circuit's blade
 FUSE_POS = {c: (_fuse_cx(i), _FUSE_YD + _FUSE_T / 2, FUSE_TOP_Z)
             for i, c in enumerate(FUSE_ORDER)}
@@ -170,7 +170,7 @@ def _run(cct, load):
         (lx, lyd, TRUNK_Z),         # cross out toward the load (Yd)
         (lx, lyd, lz),              # drop perpendicular to the load (Z)
     ])
-    return ov.ruby_pipe_run(f"Circuit {cct} ({CCT[cct][1]})", pts, 8, color=CCT[cct][0])
+    return ov.ruby_pipe_run(f"Circuit {cct} ({CCT[cct][1]})", pts, 6, color=CCT[cct][0])
 
 
 def _multi_run(cct, ends):
@@ -183,16 +183,16 @@ def _multi_run(cct, ends):
         ov.ruby_pipe_run(f"Circuit {cct} feed ({CCT[cct][1]})",
                          _dedup([(fx, fy, fz), (fx, ENCL_FRONT_YD, fz),
                                  (fx, ENCL_FRONT_YD, TRUNK_Z), (fx, TRUNK_YD, TRUNK_Z)]),
-                         8, color=col),
+                         6, color=col),
         ov.ruby_pipe_run(f"Circuit {cct} ceiling spine ({CCT[cct][1]})",
                          [(min(xs), TRUNK_YD, TRUNK_Z), (max(xs), TRUNK_YD, TRUNK_Z)],
-                         8, color=col),
+                         6, color=col),
     ]
     for x, yd, z in ends:
         br = _dedup([(x, TRUNK_YD, TRUNK_Z), (x, yd, TRUNK_Z), (x, yd, z)])
         if len(br) > 1:
             p.append(ov.ruby_pipe_run(f"Circuit {cct} drop X{int(x)} ({CCT[cct][1]})",
-                                      br, 8, color=col))
+                                      br, 6, color=col))
     return '\n'.join(p)
 
 
@@ -240,7 +240,7 @@ def power_core():
     p.append(ov.ruby_box("Enclosure (IP65, ghosted)", EP_X - 12, 0, ez - 12,
                          EP_W + 24, ENCL_SHELL_D + 6, eh + 24,
                          color=ov.C_STEEL, alpha=0.12))
-    p.append(ov.ruby_box("MPPT Controller (100/50)", EP_X + 15, 25,
+    p.append(ov.ruby_box("MPPT Controller (100/50)", EP_X + 15, 120,
                          EP_H_HI - MPPT_H - 30, MPPT_W, MPPT_D, MPPT_H, color="#3A5BA0"))
     # PV interior feed: external-panel MC4 bulkheads -> MPPT PV input (the conductor from
     # the interior side of the MC4 connectors; the exterior array->panel run is ov.solar_array()).
@@ -250,8 +250,8 @@ def power_core():
     mc4_x = PWR_PANEL_X + 0.23 * PWR_PANEL_W
     mc4_z = PWR_PANEL_Z + 0.225 * PWR_PANEL_H
     p.append(ov.ruby_pipe_run("PV feed (MC4 bulkheads -> MPPT)",
-                              _dedup([(mc4_x, 22, mc4_z), (mc4_x, 85, mc4_z),
-                                      (EP_X + 40, 85, mc4_z), (EP_X + 40, 85, EP_H_HI - MPPT_H - 32)]),
+                              _dedup([(mc4_x, 22, mc4_z), (mc4_x, 120, mc4_z),
+                                      (EP_X + 40, 120, mc4_z), (EP_X + 40, 120, EP_H_HI - MPPT_H - 32)]),
                               9, color="#2D7A2D"))
     # Blue Sea 5026: the block base + a standing row of 7 blade fuses (one per circuit A-G,
     # coloured to its circuit). Each blade's top is the cable origin for that circuit.

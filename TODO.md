@@ -69,9 +69,13 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
 - [x] **3D D-rings added — DONE.** Added 8 D-ring cylinders to the shared `cp.tote_restraint()` (4/tier on the front bars, mirroring the 2D). Overview sent + **verified 8 in the live model** (4/4 by tier). Shared function → the **ibc-stack + water** models pick them up on their next send. *(Dead `ibc_rack()` D-ring code left for a future delete.)*
 
 ## Cost / data modeling
-- [ ] **Cost-analysis Bucket B** — model the alternative *configurations* (WWT container, itemized
-  battery/solar BOM, poly-tray, galvanized grating, electric-upgrade kit) so savings levers 2–5 become
-  real subtractions, not roll-ups. (`costing.py:530`; `cost-analysis-report.md` §4.)
+- [ ] **Cost-analysis Bucket B** — mostly DONE (2026-07-05): **solar** lever now computed (drop 1×
+  `solar-panel-200w`); modeling surfaced two **phantom levers** — film (already banked into the manual
+  standard) + battery (already 1×100Ah; 2nd pack is a +$375 upgrade) — both dropped from the roll-up
+  (honest available savings now ~$2,100–2,500 vs the old double-counted ~$3,250–3,650). **STILL OPEN:**
+  a costed chem-compatible **poly-tray** alternative for lever #3 (the only remaining declared band),
+  and — not a §4 lever — a **galvanized-steel walkway-grating** alt vs the §5 GRP premium. (`costing.py`
+  SAVINGS_LEVERS; `cost-analysis-report.md` §4.)
 - [ ] **Un-registered values audit** — ~35 values restated across ≥3 docs with no `tbs_constants` /
   `facts.yml` owner (59mm door clearance ×8, 97/85 W cooler, 52mm headroom, the 1260/630/430 L cascade…).
   Per candidate: find owner → add constant + fact → wrap the restatements.

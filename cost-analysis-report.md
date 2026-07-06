@@ -68,13 +68,12 @@ Ranked by dollar potential and ease. Status is updated as levers are actioned.
 |---|---|---|--:|---|---|
 | 1 | **Container grade CW → WWT** (wind-water-tight used vs cargo-worthy — fine for a stationary darkroom) | Container | ~<!-- BEGIN costing:ca-lever-container -->$1,350<!-- END costing:ca-lever-container --> | Easy, low risk | Available |
 | 2 | **Drop film-plane electric actuation → manual** (the mechanism already supports manual tilt/swing) | Film plane | ~<!-- BEGIN costing:ca-lever-film -->$827<!-- END costing:ca-lever-film --> | Easy, if manual is acceptable | **Actioned 2026-06-13 (banked)** — manual is the standard build, so this is already realized, not a still-available saving; electric is a documented upgrade only ([Cost Breakdown §4.4](project-cost-breakdown.md)) |
-| 3 | **Processing tray: 304 SS → poly / thinner gauge** | Water | ~<!-- BEGIN costing:ca-lever-tray-low -->$600<!-- END costing:ca-lever-tray-low -->–<!-- BEGIN costing:ca-lever-tray-high -->$1,000<!-- END costing:ca-lever-tray-high --> | Medium — chem-compat + stiffness check | Available (win-win — also cuts weight) |
+| 3 | **Processing tray: 304 SS → poly** (poly needs a support frame over the 4.5 m span + poly-weld fab) | Water | ~<!-- BEGIN costing:ca-lever-tray-low -->$600<!-- END costing:ca-lever-tray-low -->–<!-- BEGIN costing:ca-lever-tray-high -->$1,000<!-- END costing:ca-lever-tray-high --> | Medium | **Decided 2026-07-05 — keep 304 SS** (self-supporting + durable; not revisiting) |
 | 4 | **Battery — already 1×100 Ah** (the lean config; [Water System Report](water-system-report.md): 1×100 Ah ≈ 25+ prints/charge). A 2nd pack is a +<!-- BEGIN costing:ca-lever-battery -->$375<!-- END costing:ca-lever-battery --> optional **upgrade**, not a saving. | Power | +$375 (add) | — | **Not a saving** — 100 Ah is the standard |
 | 5 | **Solar 3 → 2 panels** (if the power budget allows) | Power | ~<!-- BEGIN costing:ca-lever-solar -->$133<!-- END costing:ca-lever-solar --> | Easy | Available — computed (drop 1× 200W panel) |
 | 6 | **Valves / fittings value-engineering** | Water | ~<!-- BEGIN costing:ca-lever-valves-low -->$100<!-- END costing:ca-lever-valves-low -->–<!-- BEGIN costing:ca-lever-valves-high -->$200<!-- END costing:ca-lever-valves-high --> | Medium | Available |
 
-The still-**available** levers (1 container, 3 tray, 5 solar) trim **~<!-- BEGIN costing:ca-savings-low -->$2,100<!-- END costing:ca-savings-low -->–<!-- BEGIN costing:ca-savings-high -->$2,500<!-- END costing:ca-savings-high -->** off the <!-- BEGIN costing:ca-capital -->$24,289<!-- END costing:ca-capital --> capital build (**~<!-- BEGIN costing:ca-savings-pct-low -->9<!-- END costing:ca-savings-pct-low -->–<!-- BEGIN costing:ca-savings-pct-high -->10<!-- END costing:ca-savings-pct-high -->%**) without
-touching the core optical or structural design. (Lever 2's $827 is already **banked** into the manual standard build and the battery is already at the lean 1×100 Ah, so neither is a still-available saving — both are excluded from the roll-up.)
+After the material decisions, the only still-**available** build-savings levers are **1 (container grade) + 5 (solar)** — together **~<!-- BEGIN costing:ca-savings-low -->$1,500<!-- END costing:ca-savings-low -->** off the <!-- BEGIN costing:ca-capital -->$24,289<!-- END costing:ca-capital --> capital build (**~<!-- BEGIN costing:ca-savings-pct-low -->6<!-- END costing:ca-savings-pct-low -->%**), plus ~$100–200 of valve value-engineering (#6). Everything else is settled: lever 2 **banked** (manual is the standard build), lever 3 **kept 304 SS** (decision), lever 4 **already 1×100 Ah**.
 
 > **Derivation note.** Lever 1 (container grade), lever 5 (solar), and the roll-up total +
 > percentage are computed in `costing.py` — container is a true CW − WWT subtraction off the
@@ -83,8 +82,8 @@ touching the core optical or structural design. (Lever 2's $827 is already **ban
 > Bucket-B finding (2026-07-05): modeling each option against the as-built BOM showed lever 2 (film)
 > is already **banked** — manual is the standard build — and lever 4 (battery) is moot — the standard
 > is already 1×100 Ah, and its 2nd pack is a +$375 **upgrade**, not a saving — so both were dropped
-> from the roll-up. Lever 3 (tray) stays a declared band until a chem-compatible poly-tray
-> alternative is costed.
+> from the roll-up. Lever 3 (tray) is now **decided** too — 304 SS kept (over the 4.5 m span a poly
+> tray needs a support frame that erodes the saving, plus poly-weld fab) — so it also leaves the roll-up.
 
 ---
 
@@ -93,12 +92,12 @@ touching the core optical or structural design. (Lever 2's $827 is already **ban
 Cost and weight do not always move together — some weight savings *cost* money, and vice
 versa. Worth keeping in view when prioritizing:
 
-- The **GRP walkway grating** (specified for corrosion immunity in the chemistry zone)
-  *added* ~$720–890 to save 62 kg. If cost now outranks weight, **reverting GRP →
-  galvanized steel recovers ~$800** — at the cost of the corrosion immunity and the 62 kg.
-- The **processing tray** (lever #3) is the rare **win-win**: SS → poly cuts *both* cost
-  *and* weight, and is corrosion-proof. It is the highest-value single move across both
-  studies.
+- The **GRP walkway grating** (corrosion immunity in the chemistry zone) *added* ~$720–890 to
+  save 62 kg. **Decided 2026-07-05 — keep molded GRP:** the 62 kg weight saving + corrosion
+  immunity are worth the premium; the ~$800 galvanized-steel alternative is **not** being taken.
+- The **processing tray** (lever #3): SS → poly would cut *both* cost and weight, but **decided
+  2026-07-05 to keep 304 SS** — over the 4.5 m span a poly tray needs a support frame (eroding the
+  saving) plus poly-weld fabrication; 304 SS is self-supporting and durable.
 
 ---
 

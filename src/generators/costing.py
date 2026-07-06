@@ -550,7 +550,7 @@ def _lever_container() -> int:
 SAVINGS_LEVERS = [
     ("container", _lever_container(), _lever_container(), True),
     ("film",      827,  827,  False),     # #2 ACTIONED — $827 electric kit is BANKED into the manual standard, not available
-    ("tray",      600,  1000, True),      # #3 estimate — poly-tray alternative not yet costed (bucket B still open)
+    ("tray",      600,  1000, False),     # #3 DECIDED 2026-07-05: KEEP 304 SS (poly needs a support frame over the 4.5m span + poly-weld fab; SS is self-supporting + durable) — declined, out of the roll-up
     ("battery",   375,  375,  False),     # #4 standard is 1×100Ah; the 2nd pack is a +$375 UPGRADE, not a saving
     ("solar",     133,  133,  True),      # #5 computed: drop 1× solar-panel-200w ($133 low=high, parts.py)
     ("valves",    100,  200,  False),     # #6 estimate — no specced alternative
@@ -805,10 +805,9 @@ def _inline_blocks() -> dict:
         "ca-lever-solar":      (_CA, lambda: f"${_lever('solar')[0]:,}"),
         "ca-lever-valves-low": (_CA, lambda: f"${_lever('valves')[0]:,}"),
         "ca-lever-valves-high":(_CA, lambda: f"${_lever('valves')[1]:,}"),
+        # roll-up is flat now (container + solar, both fixed values) — low==high, so a single emitter
         "ca-savings-low":      (_CA, lambda: f"${_savings_rollup()[0]:,}"),
-        "ca-savings-high":     (_CA, lambda: f"${_savings_rollup()[1]:,}"),
         "ca-savings-pct-low":  (_CA, lambda: f"{_savings_pct()[0]}"),
-        "ca-savings-pct-high": (_CA, lambda: f"{_savings_pct()[1]}"),
         "ca-lightlock-mid":    (_CA, lambda: f"${total(LIGHTLOCK)[1]:,}"),
         "spray-low":           ([_PT, _WS], lambda: f"${_pt_line('Spray bar').low:,}"),
         "spray-high":          ([_PT, _WS], lambda: f"${_pt_line('Spray bar').high:,}"),

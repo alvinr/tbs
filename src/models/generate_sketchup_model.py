@@ -1370,10 +1370,10 @@ def electrical():
 
     # ── EP internals — detail ported from the electrical model's "Power Core"
     # (generate_electrical_model.py power_core()); DUPLICATED geometry, keep the two
-    # in sync (cf. the walkway-bracket duplication). The old single solid EP box is
-    # replaced by a ghosted IP65 enclosure exposing the MPPT, the Blue Sea 5026 fuse
-    # stack (7 blades A–G, one per circuit), the +/- busbars and the rotary main
-    # disconnect — so the overview's EP conforms to the electrical schematic. ────────
+    # in sync (cf. the walkway-bracket duplication). Every component surface-mounts on a stepped
+    # PLYWOOD BACKING PANEL (no enclosure box): the MPPT (on a forward sub-panel, clear of the
+    # fuse-stack risers), the Blue Sea 5026 fuse stack (7 blades A–G), the +/- busbars, the rotary
+    # main disconnect and the PV array disconnect — so the overview's EP mirrors the electrical model. ─
     ez, eh = EP_H_LO, EP_H_HI - EP_H_LO
 
     # circuit color + fuse rating per branch A–G (matches generate_electrical_model CCT)
@@ -1391,14 +1391,25 @@ def electrical():
     fuse_pitch = FUSEBLK_W / len(ep_fuse_order)
     fuse_yd = fblk_yd + (FUSEBLK_D - fuse_t) / 2
 
-    # Ghosted IP65 enclosure (was the solid "Electrical Panel (EP)" box).
-    parts.append(ruby_box("Electrical Panel (EP enclosure, IP65)",
-                          EP_X - 12, 0, ez - 12,
-                          EP_W + 24, ENCL_SHELL_D + 6, eh + 24, color=C_ELEC, alpha=0.14))
-    # Victron SmartSolar 100/50 MPPT (top of the enclosure).
+    # Plywood backing panel (18mm) — every EP component surface-mounts on it. STEPPED: full width low
+    # down (backs the wide battery bank) but narrowed up top to clear the external power panel. (Was a
+    # ghosted IP65 enclosure box.) Mirrors the electrical model's power_core().
+    ply_x0 = BA_X - 12
+    ply_x0_top = PWR_PANEL_X + PWR_PANEL_W + 10
+    ply_step_z = PWR_PANEL_Z - 20
+    ply_r = EP_X + EP_W + 12
+    parts.append(ruby_box("EP plywood backing panel (lower, 18mm)", ply_x0, -18, BA_H_LO - 12,
+                          ply_r - ply_x0, 18, ply_step_z - (BA_H_LO - 12), color=C_PLY))
+    parts.append(ruby_box("EP plywood backing panel (upper, 18mm)", ply_x0_top, -18, ply_step_z,
+                          ply_r - ply_x0_top, 18, (EP_H_HI + 12) - ply_step_z, color=C_PLY))
+    # Victron SmartSolar 100/50 MPPT — pulled FORWARD (Yd120) to clear the fuse-stack risers, on its
+    # own plywood sub-panel. Mirrors the electrical model.
     parts.append(ruby_box("MPPT Controller (Victron 100/50)",
-                          EP_X + 15, 25, EP_H_HI - MPPT_H - 30,
+                          EP_X + 15, 120, EP_H_HI - MPPT_H - 30,
                           MPPT_W, MPPT_D, MPPT_H, color="#3A5BA0"))
+    parts.append(ruby_box("MPPT backing panel (18mm ply)",
+                          EP_X + 8, 102, EP_H_HI - MPPT_H - 132,
+                          MPPT_W + 20, 18, MPPT_H + 132, color=C_PLY))
     # Blue Sea 5026 block base + a standing row of 7 blade fuses, coloured per circuit.
     parts.append(ruby_box("Fuse Block base (Blue Sea 5026)",
                           fblk_x0, fblk_yd, fblk_z0, FUSEBLK_W, FUSEBLK_D, fbase_h,
@@ -1433,7 +1444,7 @@ def electrical():
                                DISCONNECT_D / 2, DISCONNECT_H, color="#D43A2F", axis="y"))
     # Disconnect LOAD terminal → busbar(+) link (so the bank isolates when the knob is OFF).
     parts.append(ruby_pipe_run("Main feed (disconnect -> busbar +)",
-                               [(disc_x, 130, ez + 155), (disc_x, 45, ez + 155),
+                               [(disc_x, 170, ez + 155), (disc_x, 45, ez + 155),
                                 (disc_x, 45, ez + 205), (EP_X + 15 + BUSBAR_L, 45, ez + 205)],
                                11, color="#8B1A1A"))
 
@@ -1479,7 +1490,7 @@ def electrical():
                                [(BA_X + CONTACTOR_W + 55, 45, BA_H_HI + MRBF_H),
                                 (BA_X + CONTACTOR_W + 55, 45, disc_z - 35),
                                 (disc_x, 45, disc_z - 35),
-                                (disc_x, 130, disc_z - 35)],
+                                (disc_x, 170, disc_z - 35)],
                                11, color="#8B1A1A"))
     parts.append(ruby_pipe_run("Battery - cable (2/0 AWG -> busbar -)",
                                [(BA_X + 220, 60, BA_H_HI),
@@ -1546,10 +1557,10 @@ def electrical():
                                _px(0.767), face_y - 20, _pz(0.325),
                                10, 20, color="#E8884A", axis="y"))
 
-    # PV array disconnect — DC load-break isolator on the PV path (array -> MPPT),
-    # panel-mounted (interior), readily accessible (NEC 690.13).
+    # PV array disconnect — DC load-break isolator on the PV path. Brought IN onto the EP plywood
+    # (interior, still readily accessible per NEC 690.13); the PV feed runs in-line through it.
     parts.append(ruby_box("PV Array Disconnect (load-break isolator)",
-                          _px(0.40), 22, _pz(0.02), 70, 45, 70, color="#D43A2F"))
+                          EP_X - 300, 0, EP_H_LO + 350, 70, 45, 70, color="#D43A2F"))
 
     # PV interior feed: MC4 bulkheads (panel interior face) -> MPPT PV input. The exterior
     # PV run (solar_array()) lands on the MC4 connectors; this is the conductor from their
@@ -1561,11 +1572,15 @@ def electrical():
     mc4_z = _pz(0.225)                         # bottom MC4 pair (below the stay anchor)
     mppt_in_x = EP_X + 40
     mppt_in_z = EP_H_HI - MPPT_H - 32          # just under the MPPT bottom (PV input)
-    parts.append(ruby_pipe_run("PV feed (MC4 bulkheads -> MPPT)",
+    dsx = EP_X - 300
+    parts.append(ruby_pipe_run("PV feed (MC4 -> array disconnect -> MPPT)",
                                [(mc4_x, 22, mc4_z),
-                                (mc4_x, 85, mc4_z),
-                                (mppt_in_x, 85, mc4_z),
-                                (mppt_in_x, 85, mppt_in_z)],
+                                (dsx, 22, mc4_z),                 # in at the disconnect LINE terminal
+                                (dsx + 70, 22, mc4_z),            # out the LOAD terminal (in-line)
+                                (dsx + 70, 120, mc4_z),
+                                (mppt_in_x, 120, mc4_z),
+                                (mppt_in_x, 120, mppt_in_z),      # rise flush up the ply
+                                (mppt_in_x, 155, EP_H_HI - MPPT_H - 22)],  # elbow into the MPPT
                                9, color="#2D7A2D"))
 
     return '\n'.join(parts)

@@ -5963,6 +5963,17 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
+  # MPPT backing panel (18mm ply)
+  grp = ents.add_group
+  grp.name = "MPPT backing panel (18mm ply)"
+  face = grp.entities.add_face([1918.mm,102.mm,1868.mm], [2123.mm,102.mm,1868.mm], [2123.mm,120.mm,1868.mm], [1918.mm,120.mm,1868.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(232.mm)
+  mat = model.materials["MPPT backing panel (18mm ply)"] || model.materials.add("MPPT backing panel (18mm ply)")
+  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # PV feed (MC4 bulkheads -> MPPT)
   grp = ents.add_group
   grp.name = "PV feed (MC4 bulkheads -> MPPT)"
@@ -6021,8 +6032,35 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "PV feed (MC4 bulkheads -> MPPT)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 66.mm)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 52.4225745704216.mm)
   circle = ge.add_circle([1950.mm,120.mm,1902.mm], vec, 9.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV feed (MC4 bulkheads -> MPPT) elbow
+  grp = ents.add_group
+  grp.name = "PV feed (MC4 bulkheads -> MPPT) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1950.mm,138.mm,1954.4225745704216.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 18.mm, 0.0, 1.292497, 8)
+  circle = ge.add_circle([1950.mm,120.mm,1954.4225745704216.mm], [0.000000,0.000000,1.000000], 9.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV feed (MC4 bulkheads -> MPPT)
+  grp = ents.add_group
+  grp.name = "PV feed (MC4 bulkheads -> MPPT)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 21.9449803021528.mm, 6.269994372043584.mm)
+  circle = ge.add_circle([1950.mm,133.0550196978472.mm,1971.7300056279564.mm], vec, 9.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

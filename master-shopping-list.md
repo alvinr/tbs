@@ -153,7 +153,6 @@ indicative low–high estimates — get quotes before ordering.
 | Equipotential bonding kit — 6 AWG + ring lugs | 1 ea | Amazon | electrical | $20 |
 | External emergency cut-off — red mushroom IP66 + control loop | 1 ea | AutomationDirect | electrical | $30 |
 | Interior emergency cut-off — red mushroom IP65 (paralleled to exterior) | 1 ea | AutomationDirect | electrical | $25 |
-| IP65 enclosure 300×200×130mm (fuse block + MPPT) | 1 ea | Amazon | electrical | $60 |
 | Master pump switch (Circuit C) — IP67 sealed rocker/disconnect 12V 16A | 1 ea | Amazon | electrical | $10 |
 | MC4 bulkhead connector pairs, IP67 panel-mount | 3 pair | Amazon | electrical | $25 |
 | MPPT charge-line fuse — 60A ANL/MIDI + holder | 1 ea | Blue Sea | electrical | $15 |
@@ -166,7 +165,7 @@ indicative low–high estimates — get quotes before ordering.
 | Shore-charger output fuse — 20A inline | 1 ea | Amazon | electrical | $5 |
 | Tinned marine wire 14/16 AWG, ~25ft (wet-zone runs) | 1 lot | Waytek Wire | electrical | $30 |
 | Wiring kit — 12/14/16/18 AWG tinned, 50ft/color | 1 kit | Waytek Wire | electrical | $80 |
-| **electrical-distribution subtotal** | | | | **$1,146** |
+| **electrical-distribution subtotal** | | | | **$1,086** |
 
 ### electrical-power
 
@@ -372,11 +371,12 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | Corridor plumbing-panel marine ply (18mm) | 1 sheet | marine plywood supplier | water | $120–$200 |
+| EP plywood backing panel (18mm, ~700×2000mm) | 1 sheet | Home Depot | electrical | $60 |
 | Exterior-grade plywood (Fan B mount band) | 1 2'×4' ¾" panel | Home Depot | panel | $30–$50 |
 | Phenolic-faced plywood (work surface) | 1 4'×8' ¾" sheet | Home Depot | shelf | $60 |
 | Plywood base plate (cooler stowage) | 1 2'×4' ½" panel | Home Depot | ventilation | $8 |
 | Pump-mount shirt marine ply (25mm) | 1 piece | marine plywood supplier | water | $70–$130 |
-| **timber-ply subtotal** | | | | **$288–$448** |
+| **timber-ply subtotal** | | | | **$348–$508** |
 
 ### tools-safety
 
@@ -419,14 +419,14 @@ indicative low–high estimates — get quotes before ordering.
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 17 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,961–$3,181 |
 | McMaster-Carr | 44 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, water-equipment | $1,850–$2,842 |
-| Amazon | 78 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,125–$2,667 |
+| Amazon | 77 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,065–$2,607 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,301–$1,638 |
 | McNichols | 3 | fasteners-hardware, plastics-sheet | $1,045–$1,365 |
 | Photographers' Formulary | 2 | chemistry-reagents | $1,195 |
+| Home Depot | 23 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $922–$1,155 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
-| Home Depot | 22 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $862–$1,095 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
 | Renogy | 3 | electrical-power | $829 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |

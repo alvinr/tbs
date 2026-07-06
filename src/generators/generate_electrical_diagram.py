@@ -9,7 +9,7 @@ Sheet 1: System one-line diagram (power flow, components, fuse ratings)
 Sheet 2: Container floor plan with wiring layout  (scale 1:500)
 Sheet 3: Pinhole-wall interior elevation
 Sheet 4: Plumbing-panel pump power (Circuit C)
-Sheet 5: Main enclosure panel layout + fuse schedule
+Sheet 5: Main panel layout + fuse schedule
 """
 
 import textwrap
@@ -173,7 +173,7 @@ def draw_sheet1():
     # 5. Fuse block  y=5.4–6.55
     rbox(ax, LX, 5.4, LW, 1.15,
          "BLUE SEA 5026 FUSE BLOCK",
-         "12-circuit ST-blade  |  Positive + negative busbars  |  In IP65 enclosure",
+         "12-circuit ST-blade  |  Positive + negative busbars  |  On the EP plywood panel",
          fc=C_WARN, ts=10.0, ss=8.0)
     varrow(ax, CX, 6.66, 6.55, col=C_OUT)
     wlabel(ax, CX + 0.18, 6.605, "2/0 AWG", size=6.8)
@@ -905,7 +905,7 @@ def draw_sheet2():
 
     key_rows = [
         ("EP",    C_ELEC,    "ELECTRICAL PANEL (EP)",
-         f"IP65 enclosure  |  MPPT + fuse block  |  Pinhole wall face, X={EP_X}mm"),
+         f"EP plywood panel  |  MPPT + fuse block  |  Pinhole wall face, X={EP_X}mm"),
         ("BAT",   C_BATT,    "BATTERY BANK (BAT)",
          f"2×100Ah LiFePO4 12V  |  2,400Wh  |  Pinhole wall face, X={BA_X}mm"),
         ("A",     C_ALUM,    "EXHAUST FAN — Cct A",
@@ -1504,12 +1504,12 @@ def draw_sheet4():
 
 
 def draw_sheet5():
-    """SHEET 5 — Main Enclosure Panel Layout + Fuse Schedule.
+    """SHEET 5 — Main Panel Layout + Fuse Schedule.
 
-    TRUE-SCALE front elevation (mm, equal aspect) of the IP65 enclosure interior —
+    TRUE-SCALE front elevation (mm, equal aspect) of the EP plywood panel —
     mirrors the 3D model's `power_core` arrangement (MPPT, the A-G blade-fuse stack,
     +/- busbars, rotary main disconnect, Circuit-C master pump switch) — with the
-    internal feed one-line and a fuse schedule. BOTH axes are real mm: enclosure-relative X (0 = enclosure left = EP_X),
+    internal feed one-line and a fuse schedule. BOTH axes are real mm: panel-relative X (0 = panel left = EP_X),
     Z = real height. Component sizes/positions read from tbs_constants (same as the 3D).
     """
     from tbs_constants import (EP_H_LO, EP_H_HI, EP_W, MPPT_W, MPPT_H,
@@ -1531,10 +1531,10 @@ def draw_sheet5():
     ax.axis("off")
 
     eh0, eh1 = EP_H_LO, EP_H_HI                          # 1500, 2100
-    # ── Enclosure shell — real 300 × 600 mm, dimensioned ──
+    # ── Panel outline — real 300 × 600 mm, dimensioned ──
     ax.add_patch(FancyBboxPatch((0, eh0), EP_W, eh1 - eh0, boxstyle="round,pad=2",
                                 fc="#F4F6F8", ec=C_OUT, lw=1.8, zorder=2))
-    ax.text(EP_W / 2, eh1 + 80, "IP65 ENCLOSURE — INTERIOR\n(front elevation · true scale)",
+    ax.text(EP_W / 2, eh1 + 80, "EP PLYWOOD PANEL — FRONT ELEVATION\n(true scale)",
             ha="center", va="bottom", fontsize=8.5, fontweight="bold", color=TITLE_COL)
     draw_dim_v(ax, EP_W + 48, eh0, eh1, f"{eh1 - eh0}mm")
     draw_dim_h(ax, 0, EP_W, eh0 - 25, f"{EP_W}mm", above=False)
@@ -1579,7 +1579,7 @@ def draw_sheet5():
     dz = eh0 + 120                                       # 1620
     ax.add_patch(mpatches.Circle((240, dz), DISCONNECT_D / 2, fc="#D43A2F", ec=C_OUT, lw=1.1, zorder=4))
     ax.text(240, dz, "MAIN\nDISC.", ha="center", va="center", fontsize=4.6, fontweight="bold", color="white", zorder=5)
-    # feed: battery(+) in from below the enclosure → disconnect; disconnect → (+) busbar
+    # feed: battery(+) in from below the panel → disconnect; disconnect → (+) busbar
     varrow(ax, 240, eh0 - 50, dz - DISCONNECT_D / 2, col="#8B1A1A", lw=1.8)
     ax.text(150, eh0 - 58, "FROM BATTERY (+) · 2/0 AWG · MRBF 200A", ha="center", va="top",
             fontsize=5.6, color="#8B1A1A", fontweight="bold")
@@ -1637,7 +1637,7 @@ def draw_sheet5():
     ax.set_ylim(1330, 2250)
 
     title_block(ax, "SHEET 5 OF 7",
-                drawing_title="MAIN ENCLOSURE — PANEL LAYOUT",
+                drawing_title="MAIN PANEL — LAYOUT",
                 subtitle="True-scale front elevation · feed one-line · fuse schedule",
                 scale_note="True scale · mm (equal aspect)",
                 doc_id="TBS-ELEC", height=0.07)

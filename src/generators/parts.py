@@ -425,8 +425,12 @@ PARTS: list[Part] = [
          "electrical", 1, "lot", 15, 15, "McMaster-Carr"),
     Part("bonding-kit", "Equipotential bonding kit — 6 AWG + ring lugs", "electrical-distribution",
          "electrical", 1, "ea", 20, 20, "Amazon"),
-    Part("ip65-enclosure", "IP65 enclosure 300×200×130mm (fuse block + MPPT)", "electrical-distribution",
-         "electrical", 1, "ea", 60, 60, "Amazon"),
+    Part("ep-backing-panel", "EP plywood backing panel (18mm, ~700×2000mm)", "timber-ply",
+         "electrical", 1, "sheet", 60, 60, "Home Depot", "Lumber yard",
+         spec='18mm sealed plywood backboard, ~700×2000mm cut from a 4×8 sheet — every EP component '
+              'surface-mounts on it (MPPT on its forward sub-panel + fuse block, busbars, main + PV '
+              'disconnects, inverter, battery bank). Replaces the IP65 enclosure; add DIN rail + '
+              'standoffs for the DIN-mount gear. Interior dry mount — no weatherproof rating.'),
     Part("wiring-kit", "Wiring kit — 12/14/16/18 AWG tinned, 50ft/color", "electrical-distribution",
          "electrical", 1, "kit", 80, 80, "Waytek Wire", "Amazon"),
     Part("battery-cable-2-0", "2/0 AWG battery cable, 3ft (battery–fuse–busbar)", "electrical-distribution",

@@ -24,6 +24,13 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **EP skinny-column reorg** — the EP was reorganized into a tall narrow **vertical column** (battery
+  packs re-stacked vertically, gear above, PV array disconnect dropped to operator reach) to fit the one
+  clear wall band between the pinhole, chem shelf, and transport-stay anchors; the layout is formalized
+  into `tbs_constants`. The overview's EP now **delegates to the electrical model's builders**, eliminating
+  the hand-maintained duplicate that kept drifting. Cascaded to the 2D (battery drawn as the stacked pair;
+  Sheet-5 panel layout redrawn as the full column) and the weight CG. As a side effect, the near-walkway
+  500mm **widened access band shifted +370mm** (X1155–2629 → X1525–2999) to stay in front of the relocated EP.
 - **Electrical panel (EP) rework** — reworked the EP across the electrical + overview 3D models, the 2D
   electrical diagrams, and the parts/cost/report: the IP65 enclosure box is replaced by an open **plywood
   backing panel** (every component surface-mounts on it — MPPT on a forward sub-panel, fuse block, busbars,

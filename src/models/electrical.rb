@@ -70,39 +70,6 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 0.1
   grp.material = mat
 
-  # Far Wall (context)
-  grp = ents.add_group
-  grp.name = "Far Wall (context)"
-  face = grp.entities.add_face([0.mm,2362.mm,0.mm], [5893.mm,2362.mm,0.mm], [5893.mm,2402.mm,0.mm], [0.mm,2402.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(2388.mm)
-  mat = model.materials["Far Wall (context)"] || model.materials.add("Far Wall (context)")
-  mat.color = Sketchup::Color.new(239, 237, 228)
-  mat.alpha = 0.14
-  grp.material = mat
-
-  # End Wall door (context)
-  grp = ents.add_group
-  grp.name = "End Wall door (context)"
-  face = grp.entities.add_face([-40.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,2362.mm,0.mm], [-40.mm,2362.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(2388.mm)
-  mat = model.materials["Far Wall (context)"] || model.materials.add("Far Wall (context)")
-  mat.color = Sketchup::Color.new(239, 237, 228)
-  mat.alpha = 0.14
-  grp.material = mat
-
-  # End Wall sealed (context)
-  grp = ents.add_group
-  grp.name = "End Wall sealed (context)"
-  face = grp.entities.add_face([5893.mm,0.mm,0.mm], [5933.mm,0.mm,0.mm], [5933.mm,2362.mm,0.mm], [5893.mm,2362.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(2388.mm)
-  mat = model.materials["Far Wall (context)"] || model.materials.add("Far Wall (context)")
-  mat.color = Sketchup::Color.new(239, 237, 228)
-  mat.alpha = 0.14
-  grp.material = mat
-
   # Fan A ghost (exhaust)
   grp = ents.add_group
   grp.name = "Fan A ghost (exhaust)"

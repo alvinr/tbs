@@ -200,6 +200,9 @@ def context():
     """Full-length ghost container shell + faint ghost loads (the circuit endpoints
     that aren't modeled as their own components: fans, pump cluster, LED, safelight)."""
     t = WALL
+    # Shell reduced to Floor + Ceiling + Pinhole Wall only — the Far (film-plane) wall and both end
+    # walls (cargo-door + sealed) are dropped so the model orbits freely without those walls occluding
+    # the electrical gear, which all lives on the pinhole wall.
     p = [
         ov.ruby_box("Floor (context)", 0, 0, -t, ov.C_LEN, ov.C_WID, t,
                     color=ov.C_SHELL, alpha=0.22),
@@ -207,12 +210,6 @@ def context():
                     color=ov.C_SHELL, alpha=0.08),
         ov.ruby_box("Pinhole Wall (context)", 0, -t, 0, ov.C_LEN, t, ov.C_HGT,
                     color=ov.C_SHELL, alpha=0.10),
-        ov.ruby_box("Far Wall (context)", 0, ov.C_WID, 0, ov.C_LEN, t, ov.C_HGT,
-                    color=ov.C_SHELL, alpha=0.14),
-        ov.ruby_box("End Wall door (context)", -t, 0, 0, t, ov.C_WID, ov.C_HGT,
-                    color=ov.C_SHELL, alpha=0.14),
-        ov.ruby_box("End Wall sealed (context)", ov.C_LEN, 0, 0, t, ov.C_WID, ov.C_HGT,
-                    color=ov.C_SHELL, alpha=0.14),
     ]
     # Ghost loads (faint) — geometry identical to the overview's lighting_wiring().
     p.append(ov.ruby_box("Fan A ghost (exhaust)", _FAN_A_X - 60, FAN_A_YD - 75,

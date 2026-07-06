@@ -2945,7 +2945,7 @@ return-haul limit). See the <a href="../operating-manual/">Operating Manual</a> 
 <h2 id="4-system-architecture">4. System Architecture<a class="headerlink" href="#4-system-architecture" title="Permanent link">&para;</a></h2>
 <h3 id="41-blue-system-clean-water-supply">4.1 Blue System — Clean Water Supply<a class="headerlink" href="#41-blue-system-clean-water-supply" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>IBC-1 (900L) ──┐
-                ├──→ Manifold → BV-01 → P-01 → ACC-01 → BV-02 → Distribution
+                ├──→ Manifold → BV-01 → P-01 → ACC-01 → BV-05 → Distribution
 IBC-2 (900L) ──┘                                                      │
                                                                           ↓
                                                               FLOOD/SPRAY BAR
@@ -3039,8 +3039,8 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <p><strong>Processing tray:</strong> A permanently installed 4459 × 2,200mm stainless steel tray sits on the optical zone floor between the film plane rails. A 1:200 dual-axis slope drains wash water to a pressed sump well on the right side nearest the pinhole wall. P-04 draws from the sump via a suction pickup tube — no penetration of the tray floor or container floor.</p>
 <p><strong>Drain path:</strong> P-04 suction pickup → 1" flexible hose over near rim → P-04 pump on the Corridor Plumbing Panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste).</p>
 <p><strong>External drain-out risers:</strong> The Brown (IBC-3) and Waste (IBC-4) totes are pumped out to the sealed end-wall ports — X3 via P-05, X4 via P-03. The two vertical drain risers run down the IBC corridor gap and are clamped at ~400mm centers to an 18mm marine-ply backing spine that tees perpendicular off the Corridor Plumbing Panel. Its top is capped with a horizontal ply shelf that the Blue fill trunk rests on — so both the drain risers and the fill trunk are supported at the T rather than free-hanging.</p>
-<p><strong>Spray bar:</strong> A 3,859mm span 304 SS RHS beam gantry (40×25×3mm, laid flat) rolls on the raised/sloped tray floor beneath the walkway grating. Water from P-01 (Blue supply) reaches the bar via BV-02 → 4m flexible hose → ball-joint manifold → 7 feed tubes into the side LDPE manifold → 26 flat-fan nozzles at 150mm centers, spraying down-and-in.</p>
-<p><strong>Supply path:</strong> P-01 → ACC-01 → rigid 1/2" HDPE pipe along pinhole wall → BV-02 → coiled flexible hose → bulkhead fitting → beam bore → spray holes.</p>
+<p><strong>Spray bar:</strong> A 3,859mm span 304 SS RHS beam gantry (40×25×3mm, laid flat) rolls on the raised/sloped tray floor beneath the walkway grating. Water from P-01 (Blue supply) reaches the bar via BV-05 → 4m flexible hose → ball-joint manifold → 7 feed tubes into the side LDPE manifold → 26 flat-fan nozzles at 150mm centers, spraying down-and-in.</p>
+<p><strong>Supply path:</strong> P-01 → ACC-01 → rigid 1/2" HDPE pipe along pinhole wall → BV-05 → coiled flexible hose → bulkhead fitting → beam bore → spray holes.</p>
 <p><strong>Containment liner:</strong> A fresh 6-mil black LDPE sheet is laid over the tray surface before each session to prevent direct stainless-to-print contact and simplify cleanup.</p>
 <p>For full construction details, structural analysis, parts list, and engineering drawings, see <a href="../processing-tray-and-spray-bar/">Processing Tray &amp; Spray Bar</a>.</p>
 <hr />
@@ -3067,7 +3067,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td>HDPE</td>
 </tr>
 <tr>
-<td>Blue discharge (P-01 → ACC-01 → BV-02 → spray bar)</td>
+<td>Blue discharge (P-01 → ACC-01 → BV-05 → spray bar)</td>
 <td>Sch 40 / SDR-11</td>
 <td>1/2" nominal (OD 21mm)</td>
 <td>100 PSI min</td>
@@ -3243,7 +3243,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td>22.5 Wh</td>
 </tr>
 <tr>
-<td>P-02 Brown pump (Shurflo 2088)</td>
+<td>P-02 Filter-loop feed pump (Shurflo 2088)</td>
 <td>7.5 A @ 12V</td>
 <td>0.17 hr (10 min run)</td>
 <td>15.2 Wh</td>
@@ -3259,6 +3259,12 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td>7.5 A @ 12V</td>
 <td>0.08 hr (5 min run)</td>
 <td>7.5 Wh</td>
+</tr>
+<tr>
+<td>P-05 Brown drain-out pump (Shurflo 2088) — <em>IBC corridor</em></td>
+<td>7.5 A @ 12V</td>
+<td>intermittent (drain-out only)</td>
+<td>—</td>
 </tr>
 <tr>
 <td>pH meter</td>
@@ -3487,11 +3493,39 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td>$25–$50</td>
 </tr>
 <tr>
-<td>Big Blue filter housing (4.5"×20")</td>
-<td>Ø184×594mm/housing (4.5×20), 1" NPT ports, integrated bracket (Express Water / Geekpure / iSpring)</td>
-<td>1 ea</td>
+<td>Big Blue filter housing 4.5"×20" (separate)</td>
+<td>Ø184×594mm/housing (4.5×20), 1" NPT ports — three SEPARATE housings on the slotted-angle skid frame (Pentek / iSpring / Geekpure)</td>
+<td>3 ea</td>
 <td>Amazon</td>
-<td>$240–$380</td>
+<td>$114–$186</td>
+</tr>
+<tr>
+<td>Slotted steel angle frame 25×25×3mm (filter skid)</td>
+<td>~2.5 m 25×25×3mm slotted steel angle + fasteners; bolts to the 18mm ply backing (adjustable housing height)</td>
+<td>1 lot</td>
+<td>Home Depot</td>
+<td>$25–$45</td>
+</tr>
+<tr>
+<td>Steel U-bracket (filter housing)</td>
+<td>Wraps the housing head; 2 bolts/bracket through the backing board</td>
+<td>3 ea</td>
+<td>McMaster-Carr</td>
+<td>$21–$30</td>
+</tr>
+<tr>
+<td>HDPE spacer blocks 25mm (filter skid)</td>
+<td>25mm HDPE blocks between U-bracket and backing board — sump-bowl hang clearance</td>
+<td>1 lot</td>
+<td>McMaster-Carr</td>
+<td>$12–$22</td>
+</tr>
+<tr>
+<td>1" HDPE inter-housing jumpers</td>
+<td>F-01 OUT→F-02 IN, F-02 OUT→F-03 IN — 1" HDPE + 90° elbows routed outside the bodies</td>
+<td>1 lot</td>
+<td>Ferguson</td>
+<td>$18–$32</td>
 </tr>
 <tr>
 <td>MPP 5-micron sediment cartridge 4.5"×20"</td>
@@ -3712,15 +3746,15 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td>Anderson Powerpole connectors 30A</td>
-<td>Pump connections</td>
-<td>4 pair</td>
+<td>Pump connections — one pair per pump (P-01..P-05)</td>
+<td>5 pair</td>
 <td>Amazon</td>
-<td>$8</td>
+<td>$10</td>
 </tr>
 <tr>
-<td>10A blade fuses (pack)</td>
-<td>Pump circuits (C1–C4)</td>
-<td>1 pack</td>
+<td>15A blade fuse</td>
+<td>Pump Circuit C (single feed, all pumps)</td>
+<td>1 ea</td>
 <td>Amazon</td>
 <td>$5</td>
 </tr>
@@ -3771,7 +3805,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td></td>
 <td></td>
 <td></td>
-<td><strong>$2,073–$3,123</strong></td>
+<td><strong>$2,025–$3,060</strong></td>
 </tr>
 </tbody>
 </table>
@@ -3879,7 +3913,7 @@ reports — <a href="../processing-tray-and-spray-bar/">Processing Tray &amp; Sp
 <p><strong>IBC-4 waste transport:</strong> Ensure IBC cap is sealed and ball valve is closed before transport. Label contents before transport. The liquid is not classified as DOT hazardous material at these concentrations, but label clearly and keep upright. Drain remotely via external bulkhead port to a disposal tanker.</p>
 </li>
 <li>
-<p><strong>Electrical:</strong> Both pumps draw 7.5A each at 12V. The fuse block must be rated to handle simultaneous operation. Do not run pumps from the same fused circuit.</p>
+<p><strong>Electrical:</strong> Each pump draws 7.5A at 12V. All five pumps share a single <strong>Circuit C</strong> (12V, 15A fuse, 14 AWG) and run <strong>one at a time</strong>, so the single feed carries them — see <a href="../plumbing-report/">Plumbing Report §3.2</a>.</p>
 </li>
 </ol>
 <hr />

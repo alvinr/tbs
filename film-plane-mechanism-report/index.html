@@ -2674,7 +2674,7 @@
 <!-- © 2026 Alvin Richards -->
 <h1 id="film-plane-mechanism-design">Film Plane — Mechanism Design<a class="headerlink" href="#film-plane-mechanism-design" title="Permanent link">&para;</a></h1>
 <h2 id="1-purpose">1. Purpose<a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h2>
-<p>The configuration the photosensitive film plane is flush against one of the 20ft long-side walls of the container. This report describes a <strong>view-camera-style moveable film plane</strong> — a mechanism with <strong>four independently actuated corners</strong> (TL, TR, BL, BR) carrying a <strong>fixed-size rigid</strong> plane (Option A), allowing tilt, swing, and limited compound movements comparable to a large-format view camera's rear standard.</p>
+<p>The configuration the photosensitive film plane is flush against one of the 20ft long-side walls of the container. This report describes a <strong>view-camera-style moveable film plane</strong> — a mechanism with <strong>four corner carriages</strong> (TL, TR, BL, BR) driven in <strong>coordinated pairs</strong>, carrying a <strong>fixed-size rigid</strong> plane (Option A) that changes only its angle — allowing tilt, swing, and limited combined movements comparable to a large-format view camera's rear standard.</p>
 <p><strong>System context — container floor plan:</strong>
 The floor plan below shows the film plane rail positions in the context of the complete TBS-001 interior, including left end zone (light trap), processing tray and perimeter walkway in the optical zone, and right end zone (4× IBCs in 2×2 stack, pump manifold on the Corridor Plumbing Panel and the filter skid on the Pinhole Wall Plumbing Panel).</p>
 <p><img alt="TBS-001 Container Floor Plan — All Systems" src="../assets/container-floorplan.png" /></p>
@@ -2802,7 +2802,7 @@ The floor plan below shows the film plane rail positions in the context of the c
 <p><strong>Note:</strong> The drawings (Sheets 1–6) and distortion renders show <strong>axis tilt/swing</strong> — the rigid plane rotates about its center and <strong>foreshortens</strong> (it never grows), illustrated about the mid-rail position (the film back-focuses anywhere along the rail; flat-at-far-wall is the max-focal-length extreme). The interactive 3D model <code>models/film-plane.skp</code> also reflects this.</p>
 </blockquote>
 <h3 id="four-corner-frame">Four-Corner Frame<a class="headerlink" href="#four-corner-frame" title="Permanent link">&para;</a></h3>
-<p>Each corner of the film plane frame rides on its own independent carriage assembly:</p>
+<p>Each corner of the film plane frame rides on its own carriage assembly (driven in coordinated pairs, not independently — a rigid plane cannot warp):</p>
 <p><img alt="Sheet 6 — System Schematic: Four-Corner Frame Front Elevation" src="../assets/film-plane-sheet6.png" /></p>
 <ul>
 <li><strong>4 depth rails</strong> — HiWin HGR20 profile, 2,200mm length, mounted at X=150mm (left pair) and X=4,649mm (right pair) on ceiling and floor. Rails run along the 2,362mm optical axis direction; their carriages set each corner's <strong>depth</strong> (focus / back-focus).</li>
@@ -2826,7 +2826,7 @@ The floor plan below shows the film plane rail positions in the context of the c
 - <strong>Pure tilt</strong>: turn TL and TR handwheels together by the same amount; turn BL and BR by the same amount (different from TL/TR).
 - <strong>Pure swing</strong>: turn TL and BL together; turn TR and BR together.
 - <strong>Back focus</strong>: turn all four handwheels by the same amount.
-- <strong>Compound</strong>: turn all four independently.</p>
+- <strong>Compound (limited)</strong>: turn all four to a coordinated set of depths — the rigid plane stays flat (no twist).</p>
 <p><strong>Optional electric actuation:</strong> replace the handwheels with <strong>Progressive Automations PA-14</strong> 12V linear actuators (20" / 508mm stroke, 150 lb force rating). Four actuators, one per corner, each controlled by a panel-mount DPDT momentary switch. A labeled panel outside the container allows full repositioning without entry.</p>
 <h3 id="fixed-size-plane-no-variable-geometry">Fixed-Size Plane — No Variable Geometry<a class="headerlink" href="#fixed-size-plane-no-variable-geometry" title="Permanent link">&para;</a></h3>
 <p>Because the plane is a <strong>fixed-size rigid rectangle</strong>, its physical dimensions never change: the along-plane height stays <strong>2,388mm at every tilt angle</strong>. The arc travel that the rotation forces on each corner is taken up entirely by the <strong>cross-slides</strong> (≈280mm Z at max tilt, ≈263mm X at max swing), not by the frame.</p>
@@ -2932,7 +2932,7 @@ The floor plan below shows the film plane rail positions in the context of the c
 <p><strong>Combined tilt+swing is limited</strong> — the corners must all stay on the rails, so the full single-axis maxima cannot be used together.</p>
 <hr />
 <h2 id="6-optical-distortion-summary">6. Optical Distortion Summary<a class="headerlink" href="#6-optical-distortion-summary" title="Permanent link">&para;</a></h2>
-<p>The six achievable flat configurations (C0–C5) on a checker grid (D = 8,000mm). Because Option A's plane is always flat, each render is a pure tilt or swing; the former compound <em>twist</em> is no longer producible:</p>
+<p>The six achievable flat configurations (C0–C5) on a checker grid (D = 8,000mm). Because Option A's plane is always flat, each render is a pure tilt or swing; the former compound <em>twist</em> is no longer producible (the C0–C5 labels here index the render set only — independent of the §5 mechanism configuration numbers):</p>
 <p><img alt="Distortion summary" src="../assets/film-plane-distortion-summary.png" /></p>
 <p>A detailed analysis of the optical distortions can be found <a href="../distortion-renders/#1-film-plane-distortion-renders">here</a>.</p>
 <hr />
@@ -3028,8 +3028,8 @@ The floor plan below shows the film plane rail positions in the context of the c
 <td>$176</td>
 </tr>
 <tr>
-<td>Pivot pin SS316 (98173A150)</td>
-<td>1" dia × 8" long</td>
+<td>Pivot pin SS316</td>
+<td>Ø25mm × 200mm — slip-fit in the 25mm rod-end bore (a 1"/25.4mm pin is 0.4mm oversize and will not enter). Metric Ø25 SS precision shaft/clevis pin; confirm exact SKU at order.</td>
 <td>8 ea</td>
 <td>McMaster-Carr / Fastenal</td>
 <td>$64</td>

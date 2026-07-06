@@ -2625,10 +2625,10 @@ Modeled dimensions are the <code>tbs_constants.py</code> value(s) the generators
 </tr>
 <tr>
 <td>4</td>
-<td>Big Blue filter housing (4.5"×20")</td>
+<td>Big Blue filter housing 4.5"×20" (separate)</td>
 <td>Ø184×594 — Pentek 4.5×20 BB</td>
 <td><code>BB_OD/BB_H</code></td>
-<td>✅ FIXED — BB_OD 130→184; BoM 4.5×10 → 4.5×20 (2× media/interval; heads pinned at ceiling, sumps hang to ~Z1746)</td>
+<td>3-separate design of record (2026-07): combo → 3 separate housings + frame per plumbing-report §3.1/§7.2. Prices indicative — firm at the Aug-2026 re-price.</td>
 </tr>
 <tr>
 <td>5</td>
@@ -2640,7 +2640,7 @@ Modeled dimensions are the <code>tbs_constants.py</code> value(s) the generators
 <tr>
 <td>6</td>
 <td>Evaporative cooler</td>
-<td>559×305×711 — Hessaire MC18M</td>
+<td>508×254×711 — Hessaire MC18M</td>
 <td><code>EVAP_W/EVAP_D/EVAP_H</code></td>
 <td>✅ RESOLVED</td>
 </tr>
@@ -2702,7 +2702,7 @@ discrepancy and the fix that was applied.</em></p>
 <li><strong>Was:</strong> the model assumed a <strong>12 V DC "Jetstream 110"</strong> ground cooler that <strong>does not exist</strong> — <a href="https://www.portacool.com/legacy-evaporative-coolers/jetstream-series/">Portacool</a>'s real Jetstream line (models 220–270) runs on <strong>120 V AC</strong>, not 12 V DC.</li>
 <li><strong>Market reality (researched):</strong> there is <strong>no good native-12 V DC ground-placed</strong> evap cooler. The only 12 V options are RV-<strong>roof</strong> units (TurboKool 2B-0001, ~$300 — rejected: roof penetration, roof-coupled vibration, transport conflict), a too-weak personal spot cooler (Transcool E3), or the premium <a href="https://www.southwest-solar.com/stainless-steel-solar-chill-coolers">Solar Chill</a> line (native 12 V, ground, but $1,100+ and sole-source).</li>
 <li><strong>Decision:</strong> a <strong>commodity 120 V AC swamp cooler (Hessaire MC18M, ~$130)</strong> on a <strong>dedicated 12V→120V pure-sine inverter (Victron Phoenix 12/375 GFCI, ~$210)</strong>. Keeps the cooler a swappable multi-vendor part; the inverter is general-purpose. Trade-off accepted: +inverter complexity and a 4-print day now needs solar (already within the published envelope).</li>
-<li><strong>Done:</strong> <code>EVAP_*</code> → 559×305×711 (real Hessaire MC18M); <code>INVERTER_*</code> constants added; Circuit E re-based <strong>80 W → <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V bus</strong> (<!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac --> W AC ÷ 0.88) in <code>calculate_energy_budget.py</code>; energy/cost/shopping/ventilation/electrical reports re-summed; stow zone re-checked (cooler X1450–2009, clear); AC <strong>isolation/GFCI/equipotential-bonding</strong> design added in <a href="../electrical-report/#ac-safety">Electrical §7.6</a>.</li>
+<li><strong>Done:</strong> <code>EVAP_*</code> → 508×254×711 (real Hessaire MC18M, official 20×10×28 in); <code>INVERTER_*</code> constants added; Circuit E re-based <strong>80 W → <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V bus</strong> (<!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac --> W AC ÷ 0.88) in <code>calculate_energy_budget.py</code>; energy/cost/shopping/ventilation/electrical reports re-summed; stow zone re-checked (cooler X1450–1958, clear — 51mm roomier after the datasheet correction); AC <strong>isolation/GFCI/equipotential-bonding</strong> design added in <a href="../electrical-report/#ac-safety">Electrical §7.6</a>.</li>
 </ul>
 <h3 id="7-accumulator-seaflo-075-l-sfat-075-125-01-resolved-4">7. Accumulator — SeaFlo 0.75 L (SFAT-075-125-01) ✅ RESOLVED (§4)<a class="headerlink" href="#7-accumulator-seaflo-075-l-sfat-075-125-01-resolved-4" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2842,8 +2842,8 @@ listed for completeness; confirm the drawn size equals the catalog dimension:</p
 <tr>
 <td><strong>Evap cooler</strong></td>
 <td>120 V AC cooler + 12V→120V inverter (no good 12 V DC ground unit exists)</td>
-<td>559×305×711 (Hessaire MC18M)</td>
-<td><code>EVAP_*</code> 600×350×800→559×305×711; <code>INVERTER_*</code> added</td>
+<td>508×254×711 (Hessaire MC18M)</td>
+<td><code>EVAP_*</code> 600×350×800→508×254×711; <code>INVERTER_*</code> added</td>
 <td>Circuit E re-based 80→<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W; AC isolation/GFCI/bonding <a href="../electrical-report/#ac-safety">Electrical §7.6</a></td>
 <td>✅ done</td>
 </tr>

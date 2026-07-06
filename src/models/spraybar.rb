@@ -15,6 +15,14 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each { |p| model.pages.erase(p) }
 
+# ── Sketchfab upload metadata (stamped every regen; keeps the stable model UID) ──
+model.name = "TBS-001 Spraybar Model"
+model.description = "The processing tray provides the containment surface and the spray bar delivers even water distribution across the full print width."
+model.set_attribute("sketchfab", "model_title", "TBS-001 Spraybar Model")
+model.set_attribute("sketchfab", "model_description", "The processing tray provides the containment surface and the spray bar delivers even water distribution across the full print width.")
+model.set_attribute("sketchfab", "model_id", "18fb381fbf48459cac25dcaa23958387")
+model.set_attribute("sketchfab", "model_tags", "sketchup")
+
   model.layers.add("Beam") unless model.layers["Beam"]
   model.layers.add("Carriage L") unless model.layers["Carriage L"]
   model.layers.add("Carriage R") unless model.layers["Carriage R"]

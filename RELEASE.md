@@ -24,6 +24,14 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Walkway grating corrected 15mm → 25mm** — the 15mm molded-FRP grate was a **bogus spec**: the thinnest
+  molded FRP made is 1"/25mm (McNichols **MS-S-100**, 1½" square mesh, vinyl-ester, 2.60 lb/sf — validated
+  against the datasheet load table; a 100kg operator deflects ~2.5mm at the 457mm span, within the ¼"
+  pedestrian limit). Corrected to 25mm; the extra 10mm is absorbed **upward** (Option A: deck `WALKWAY_H`
+  130→140, the Z115 bracket arm unchanged), verified against the full 56° hinge-panel swing arc (arc only
+  crosses the removable lift-out decks + open tray). Cascaded: film-plane bottom rail `RAIL_OFF_BOT` 150→160
+  (−10mm image, FP wall anchors move), battery + evap-stow +10mm, grate weight 11→12.7 kg/m²; ~24 diagrams
+  and 7 models regenerated.
 - **EP skinny-column reorg** — the EP was reorganized into a tall narrow **vertical column** (battery
   packs re-stacked vertically, gear above, PV array disconnect dropped to operator reach) to fit the one
   clear wall band between the pinhole, chem shelf, and transport-stay anchors; the layout is formalized

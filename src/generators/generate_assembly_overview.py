@@ -31,7 +31,7 @@ import os
 
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader
-from tbs_constants import C_LEN, C_WID, C_HGT, FP_X_L, FP_X_R, FP_Y, FP_W, PH_X, PH_H, PH_D, PH_FNO, ZONE_L_END, ZONE_R_START, DRUM_CX, DRUM_D, DRUM_R, DRUM_H_LT, EVAP_DUCT_X, EVAP_DUCT_D, EVAP_DUCT_Z, EP_X, EP_W, EP_H_LO, EP_H_HI, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, BA_X, BA_W, BA_H_LO, BA_H_HI, EQPANEL_X, EQPANEL_T, EQPANEL_Z_LO, EQPANEL_Z_HI, FSKID_X, IBC_COL_X, IBC_W, IBC_H_STK_1000, IBC_H_1000, PANEL_CORNER_T, PANEL_CENTER_T, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, RAIL_X_L, RAIL_X_R, RAIL_SPAN, FAN_A_H, FAN_B_H, DUCT_HEIGHT, DIAGRAMS_DIR, C_OUT, C_CL, C_DIM, C_WALL, C_WASTE_IBC, C_LT_DRUM, C_BLUE_IBC, C_BROWN_IBC, C_ELEC, C_BATT, C_PUMP, C_HINGE_PANEL, C_FAN, C_ALUM
+from tbs_constants import C_LEN, C_WID, C_HGT, FP_X_L, FP_X_R, FP_Y, FP_W, PH_X, PH_H, PH_D, PH_FNO, ZONE_L_END, ZONE_R_START, DRUM_CX, DRUM_D, DRUM_R, DRUM_H_LT, EVAP_DUCT_X, EVAP_DUCT_D, EVAP_DUCT_Z, EP_X, EP_W, EP_H_LO, EP_H_HI, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, BA_X, BA_W, BA_H_LO, BA_H_HI, EQPANEL_X, EQPANEL_T, EQPANEL_Z_LO, EQPANEL_Z_HI, FSKID_X, PWP_FILTER_X1, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_BOT_Z, BB_OD, IBC_COL_X, IBC_W, IBC_H_STK_1000, IBC_H_1000, PANEL_CORNER_T, PANEL_CENTER_T, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, RAIL_X_L, RAIL_X_R, RAIL_SPAN, FAN_A_H, FAN_B_H, DUCT_HEIGHT, DIAGRAMS_DIR, C_OUT, C_CL, C_DIM, C_WALL, C_WASTE_IBC, C_LT_DRUM, C_BLUE_IBC, C_BROWN_IBC, C_ELEC, C_BATT, C_PUMP, C_HINGE_PANEL, C_FAN, C_ALUM
 
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
 
@@ -177,7 +177,8 @@ ax.text(BA_X + BA_W/2, (BA_H_LO + BA_H_HI)/2,
         "Battery\nbank", ha="center", va="center",
         fontsize=FS_SM - 1, color="#FFFFFF", zorder=6)
 
-# Plumbing panel zone: X=4870–5018, Z=900–2010 (pumps+filters, Yd=1046–1316)
+# Corridor plumbing panel zone (pumps P-01/03/04/05 + ACC-01, Yd=1046–1316). The 3-stage
+# filter bank + P-02 moved to the PINHOLE-WALL panel (added below).
 EQ_ZONE_X = FSKID_X
 EQ_ZONE_W = EQPANEL_X + EQPANEL_T - FSKID_X
 equip_rect(ax, EQ_ZONE_X, EQPANEL_Z_LO, EQ_ZONE_W, EQPANEL_Z_HI - EQPANEL_Z_LO, C_PUMP,
@@ -192,7 +193,17 @@ leader(ax, EP_X + EP_W, (EP_H_LO + EP_H_HI)/2, EP_X + 500, 2000,
 leader(ax, BA_X + BA_W, BA_H_HI, BA_X + (BA_W*2), 800,
        f"Battery bank\nX={BA_X}–{BA_X+BA_W}mm", ha="left", fs=FS_SM)
 leader(ax, EQ_ZONE_X + EQ_ZONE_W, (EQPANEL_Z_LO + EQPANEL_Z_HI)/2, EQ_ZONE_X + 1500, 700,
-       f"Plumbing panel  (pumps+filters, Yd=1046–1316)\nX={EQ_ZONE_X}–{EQ_ZONE_X+EQ_ZONE_W}mm", ha="left", fs=FS_SM)
+       f"Corridor plumbing panel  (pumps + ACC-01, Yd=1046–1316)\nX={EQ_ZONE_X}–{EQ_ZONE_X+EQ_ZONE_W}mm", ha="left", fs=FS_SM)
+
+# Pinhole-wall filter panel — 3-stage Big Blue bank (F1/F2/F3) + P-02, high under the ceiling (Yd≈0)
+FLT_X0 = PWP_FILTER_X1 - BB_OD // 2
+FLT_W  = (PWP_FILTER_X3 + BB_OD // 2) - FLT_X0
+equip_rect(ax, FLT_X0, PWP_FILTER_BOT_Z, FLT_W, PWP_FILTER_TOP_Z - PWP_FILTER_BOT_Z, C_PUMP,
+           alpha=0.50, ec=C_OUT, lw=0.7, zorder=3)
+ax.text(FLT_X0 + FLT_W/2, (PWP_FILTER_BOT_Z + PWP_FILTER_TOP_Z)/2, "Filter panel\n[Yd≈0]",
+        ha="center", va="center", fontsize=FS_SM - 1, color=C_OUT, zorder=6)
+leader(ax, FLT_X0, PWP_FILTER_TOP_Z, FLT_X0 - 900, PWP_FILTER_TOP_Z + 60,
+       f"Pinhole-wall filter panel  (F1/F2/F3 + P-02, Yd\u22480)\nX={FLT_X0}\u2013{FLT_X0+FLT_W}mm", ha="right", fs=FS_SM)
 
 # External power panel — flush-mount on exterior of pinhole wall (ghost from this view)
 PP_CTR_H = (EP_H_LO + EP_H_HI) / 2
@@ -332,7 +343,7 @@ legend_items = [
     (C_BROWN_IBC, "Brown IBC x1 (bottom near)"),
     (C_WASTE_IBC, "Waste IBC x1 (bottom far)"),
     ("#E8E8E8",   "Evap duct penetration (ext unit)"),
-    (C_PUMP,      "Plumbing panel (pumps+filters)"),
+    (C_PUMP,      "Plumbing panels (corridor pumps + pinhole-wall filters)"),
     (C_ELEC,      "Electrical panel"),
     (C_BATT,      "Battery bank"),
     (C_FILM_PLN,  "Film plane (symbolic band)"),

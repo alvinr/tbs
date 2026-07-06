@@ -303,8 +303,8 @@ def draw_sheet1():
          "Sealed end wall (X=5893mm)  |  below X1, in corridor  |  Yd=1181mm", C_ALUM),
         ("B", "VENTILATION FAN\nINTAKE  (6\")",   "5A",  "16 AWG", "60W",
          "Cargo door panel (X=0)  |  low position  |  Yd=365mm", C_ALUM),
-        ("C", "EQUIP PANEL\n(PUMPS+FILTERS)",       "15A", "14 AWG", "100W",
-         "Plumbing panel, IBC corridor (Yd=1046–1316)", C_PUMP_TINT),
+        ("C", "WATER PUMPS\n(corridor + P-02)",       "15A", "14 AWG", "100W",
+         "Corridor panel (Yd=1046–1316) + P-02 (pinhole wall)", C_PUMP_TINT),
         ("D", "SAFELIGHT\ninterior + vestibule",  "5A",  "18 AWG", "15W",
          "3× red LED strips (ceiling, N–S)  |  pull-cord switch", "#FFEEDD"),
         ("E", "EVAP COOLER\n(120V AC via inverter)",  "40A", "10 AWG", f"{EVAP_COOLER_W_BUS}W",
@@ -663,9 +663,9 @@ def draw_sheet2():
             ha="center", va="center", fontsize=6.5, fontweight="bold",
             color=C_OUT, zorder=8)
 
-    # PLUMBING PANEL (Yd=1046) — pumps + filters in IBC corridor
+    # CORRIDOR PUMPS (Yd=1046) — P-01/03/04/05 + ACC (P-02 + the filters are on the pinhole wall)
     equip(FSKID_X, CORRIDOR_YD_NEAR, EQPANEL_W, CORRIDOR_W,
-          "C", C_PUMP, "Equip panel  Yd=1046–1316")
+          "C", C_PUMP, "Corridor pumps  Yd=1046–1316")
 
     # RIGHT END ZONE — 4× IBC in 2×2 stack
     # Near column (Yd=30–1046): Blue #1 on top, Brown on bottom
@@ -838,7 +838,7 @@ def draw_sheet2():
     # Pump — Cct C (on plumbing panel in IBC corridor)
     leader(ax, PUMP_CX, OY + wt + (CORRIDOR_YD_NEAR + CORRIDOR_W/2) * S_yd,
            PUMP_CX + 150, OY + cwid * 0.55,
-           "Pumps + filters (C)\n12V DC  100W\nPlumbing panel",
+           "Water pumps (C)\n12V DC  100W\ncorridor + P-02 (wall)",
            fs=6.5, color=C_PUMP)
     # Safelight — Cct D (label middle strip)
     sl_ldr_x = ix(SL_POSITIONS[1] + SL_STRIP_W / 2)
@@ -913,7 +913,7 @@ def draw_sheet2():
         ("B",     C_ALUM,    "INTAKE FAN — Cct B",
          "6\" inline DC  |  5A / 16 AWG / 60W  |  Cargo door panel (X=0), low  |  Yd=365mm"),
         ("C",     C_PUMP,    "PLUMBING PANEL — Cct C",
-         f"Pumps + filters  |  12V DC  |  15A / 14 AWG / 100W  |  IBC corridor, Yd={CORRIDOR_YD_NEAR}–{CORRIDOR_YD_NEAR + CORRIDOR_W}mm"),
+         f"Water pumps P-01/03/04/05 (corridor) + P-02 (pinhole wall)  |  12V DC  |  15A / 14 AWG / 100W"),
         ("D",     "#FFD700", "SAFELIGHT — Cct D",
          f"3× red LED strips  |  5A / 18 AWG / 15W  |  Ceiling N–S at X≈{', '.join(str(x) for x in SL_POSITIONS)}"),
         ("E",     C_EVAP,    "EVAP COOLER — Cct E",
@@ -1346,7 +1346,7 @@ def draw_sheet3():
         (C_PIPE,    "CABLE TRUNKING",    "40×25mm PVC  |  Ceiling corner rail  |  Full length"),
         (C_ELEC,    "ELECTRICAL PANEL",  f"EP  |  X={EP_X}–{EP_X+EP_W}  |  Z={EP_H_LO}–{EP_H_HI}mm"),
         (C_BATT,    "BATTERY BANK",      f"BAT  |  X={BA_X}–{BA_X+BA_W}  |  Z={BA_H_LO}–{BA_H_HI}mm"),
-        ("#F5C8A0", "PLUMBING PANEL",   f"Cct C  |  Pumps + filters  |  IBC corridor (Yd={CORRIDOR_YD_NEAR}–{CORRIDOR_YD_NEAR + CORRIDOR_W})"),
+        ("#F5C8A0", "WATER PUMPS",   f"Cct C  |  P-01/03/04/05 corridor (Yd={CORRIDOR_YD_NEAR}–{CORRIDOR_YD_NEAR + CORRIDOR_W}) + P-02 (pinhole wall)"),
         (C_EVAP,    "DUCT PENETRATION",  f"Cct E  |  Ø{EVAP_DUCT_D}mm at X={EVAP_DUCT_X}, Z={EVAP_DUCT_Z}mm  |  Evap cooler external"),
         (C_ALUM,    "EXT POWER PANEL",   f"Flush-mount  |  X={PWR_PANEL_X}–{PWR_PANEL_X+PWR_PANEL_W}  |  3×MC4 + NEMA"),
         ("#FFFFF0", "LED PANELS (G)",    "3×20W  4000K  |  Ceiling-mount  |  X≈1000, 2900, 4800"),
@@ -1366,8 +1366,8 @@ def draw_sheet3():
     # ── Drawing notes ─────────────────────────────────────────────────────────
     notes = [
         "DRAWING NOTES:",
-        "1. Elevation looking toward pinhole wall (Yd=0) from inside the container. EP and battery wall-mounted; pumps and filters on plumbing panel",
-        "in IBC corridor (Yd=1046); evap cooler external via duct.",
+        "1. Elevation looking toward pinhole wall (Yd=0) from inside the container. EP and battery wall-mounted; corridor pumps (P-01/03/04/05+ACC)",
+        "in the IBC corridor (Yd=1046), P-02 + the 3-stage filters on the pinhole wall; evap cooler external via duct.",
         "2. Cable trunking runs horizontally at the ceiling corner rail (Z\u22482363mm). Drop conduits (10mm corrugated, shown dashed) descend to each device.",
         "3. Pull-cord switches at ceiling height, cords hang to ~1500mm above walkway deck (~900mm AFF). D=safelight (red), G=white light.",
         "4. LED panels are ceiling-mounted, centered across container width. Connected to Circuit G via trunking. Non-operational only.",

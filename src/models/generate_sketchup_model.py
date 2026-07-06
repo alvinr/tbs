@@ -418,7 +418,8 @@ def ruby_cylinder(name, cx, cy, cz, radius, height, color=None, alpha=None,
 # ── Container shell ──────────────────────────────────────────────────────────
 
 def container_shell():
-    """Container as 5 panels (no cargo door end wall — it's the hinged panel).
+    """Container as 4 panels — floor + 3 walls (NO ceiling: removed for clear top-down
+    orbiting; also no cargo-door end wall — that's the hinged light-trap panel).
 
     Off-white shell so the systems and their placement read clearly against it.
     """
@@ -430,13 +431,9 @@ def container_shell():
                           C_LEN, C_WID, WALL_T,
                           color=w, both_sides=True))
 
-    # Ghosted ceiling — low alpha so the interior is visible from above.
-    parts.append(ruby_box("Container Ceiling",
-                          0, 0, C_HGT,
-                          C_LEN, C_WID, WALL_T,
-                          color=w, alpha=0.2, both_sides=True))
+    # (Container ceiling intentionally omitted — cleaner top-down orbiting without it.)
 
-    # Three shell walls — translucent (like the ceiling) so the systems read
+    # Three shell walls — translucent so the systems read
     # through them from any side.
     parts.append(ruby_box("Pinhole Wall (Yd=0)",
                           0, -WALL_T, 0,

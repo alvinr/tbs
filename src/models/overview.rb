@@ -74,25 +74,13 @@ end
   grp.material = mat
   grp.entities.grep(Sketchup::Face).each { |f| f.material = mat; f.back_material = mat }
 
-  # Container Ceiling
-  grp = ents.add_group
-  grp.name = "Container Ceiling"
-  face = grp.entities.add_face([0.mm,0.mm,2388.mm], [5893.mm,0.mm,2388.mm], [5893.mm,2362.mm,2388.mm], [0.mm,2362.mm,2388.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Container Ceiling"] || model.materials.add("Container Ceiling")
-  mat.color = Sketchup::Color.new(239, 237, 228)
-  mat.alpha = 0.2
-  grp.material = mat
-  grp.entities.grep(Sketchup::Face).each { |f| f.material = mat; f.back_material = mat }
-
   # Pinhole Wall (Yd=0)
   grp = ents.add_group
   grp.name = "Pinhole Wall (Yd=0)"
   face = grp.entities.add_face([0.mm,-40.mm,0.mm], [5893.mm,-40.mm,0.mm], [5893.mm,0.mm,0.mm], [0.mm,0.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
-  mat = model.materials["Container Ceiling"] || model.materials.add("Container Ceiling")
+  mat = model.materials["Pinhole Wall (Yd=0)"] || model.materials.add("Pinhole Wall (Yd=0)")
   mat.color = Sketchup::Color.new(239, 237, 228)
   mat.alpha = 0.2
   grp.material = mat
@@ -104,7 +92,7 @@ end
   face = grp.entities.add_face([0.mm,2362.mm,0.mm], [5893.mm,2362.mm,0.mm], [5893.mm,2402.mm,0.mm], [0.mm,2402.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
-  mat = model.materials["Container Ceiling"] || model.materials.add("Container Ceiling")
+  mat = model.materials["Pinhole Wall (Yd=0)"] || model.materials.add("Pinhole Wall (Yd=0)")
   mat.color = Sketchup::Color.new(239, 237, 228)
   mat.alpha = 0.2
   grp.material = mat
@@ -116,7 +104,7 @@ end
   face = grp.entities.add_face([5893.mm,0.mm,0.mm], [5933.mm,0.mm,0.mm], [5933.mm,2362.mm,0.mm], [5893.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
-  mat = model.materials["Container Ceiling"] || model.materials.add("Container Ceiling")
+  mat = model.materials["Pinhole Wall (Yd=0)"] || model.materials.add("Pinhole Wall (Yd=0)")
   mat.color = Sketchup::Color.new(239, 237, 228)
   mat.alpha = 0.2
   grp.material = mat

@@ -38,6 +38,12 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
   re-proves. (Reminder block lives atop `parts.py`.)
 
 ## Design / 3D (deferred)
+- [ ] **lint blind spot — missing-cascade only diffs the working tree.** If a constant is committed but its
+  dependent outputs aren't fully regenerated in the SAME commit, the next `lint.py` sees them as "clean"
+  (matching the committed-stale version) and passes. This let the film-plane/ibc-stack/spraybar models +
+  several diagrams slip through the grating cascade until a full regenerate-everything sweep caught them.
+  Fix: have the missing-cascade check regenerate each dependent output to a temp + byte-compare vs the
+  committed file (not just the working tree), so committed-stale is flagged too.
 - [x] **Walkway grate deflection — RESOLVED.** The 15mm grate was a bogus spec (molded FRP's thinnest is
   1"/25mm — McNichols MS-S-100, 2.60 lb/sf). At the real 25mm a 100kg operator mid-span (457mm) deflects
   ~2.5mm — well within the ¼" (6mm) pedestrian limit (MS-S-100 ΔC datasheet); the 100mm overhang is

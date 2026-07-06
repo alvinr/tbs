@@ -409,7 +409,7 @@ any section. 4 removable sections.*
 
 *Reports: [Walkway](walkway-report.md) §3/§4/§5/§8 (near/far wall-cantilevered, right cantilever rectangle, left removable lift-out, grating spec); [Right Walkway Cantilever](right-walkway-cantilever-study.md) §3/§7 (hybrid-anchor design, rev12).*
 
-*Diagrams: walkway sheet 1 cross-section (WK), walkway sheet 2 plan view (WK), container floor plan (FP).*
+*Diagrams: walkway sheet 1 cross-section (WK), walkway sheet 2 plan view (WK), container floor plan (FP), hinged panel (HP).*
 
 ---
 
@@ -419,14 +419,14 @@ Every generator script, its output PNGs, and the subsystems it renders.
 
 | Abbr | Generator script | PNG files produced | Subsystems drawn |
 |------|-----------------|-------------------|-----------------|
-| **FP** | `generate_floorplan_diagram.py` | `diagrams/container-floorplan.png` | 1, 2, 3, 5, 7, 8, 9, 10, 11, 12, 13, 14 |
-| **LOS** | `generate_line_of_sight.py` | `diagrams/line-of-sight.png` | 1, 2, 3, 5, 8, 9, 10, 11, 12, 13, 14 |
+| **FP** | `generate_floorplan_diagram.py` | `diagrams/container-floorplan.png` | 1, 2, 3, 5, 7, 8, 9, 10, 11, 12, 13, 14, 17 |
+| **LOS** | `generate_line_of_sight.py` | `diagrams/line-of-sight.png` | 1, 2, 3, 5, 9, 10, 11, 12, 13, 14 |
 | **AO** | `generate_assembly_overview.py` | `diagrams/assembly-overview.png`<br>`diagrams/assembly-overview-fp.png`<br>`diagrams/assembly-overview-plan.png` | 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13 |
 | **AF** | `generate_assembly_fabrication.py` | `diagrams/assembly-fab-sheet1.png`<br>`diagrams/assembly-fab-sheet2.png` | 1, 2, 3, 5, 6, 8, 9, 10, 11, 12, 13 |
 | **FPM** | `generate_film_plane_mechanism.py` | `diagrams/film-plane-sheet1.png`<br>`diagrams/film-plane-sheet2.png`<br>`diagrams/film-plane-sheet3.png`<br>`diagrams/film-plane-sheet4.png` | 1, 2, 3 |
 | **FPD** | `generate_film_plane_distortion.py` | `diagrams/film-plane-distortion-c0.png` – `c5.png`<br>`diagrams/film-plane-distortion-summary.png` | 3 (optical simulation) |
 | **ES** | `generate_electrical_diagram.py` | `diagrams/electrical-sheet1.png`<br>`diagrams/electrical-sheet2.png` | 1, 7, 8, 9, 10 |
-| **WS** | `generate_water_system.py` | `diagrams/water-system-sheet1.png`<br>`diagrams/water-system-sheet2.png` | 1, 10, 11, 12, 13 |
+| **WS** | `generate_water_system.py` | `diagrams/water-system-sheet1.png`<br>`diagrams/water-system-sheet2.png`<br>`diagrams/water-system-sheet3.png`<br>`diagrams/water-system-sheet4.png` | 1, 10, 11, 12, 13, 16 |
 | **HP** | `generate_hingepanel_diagram.py` | `diagrams/hingepanel-sheet1.png`<br>`diagrams/hingepanel-sheet2.png`<br>`diagrams/hingepanel-sheet3.png`<br>`diagrams/hingepanel-sheet4.png` | 1, 5, 6, 17 |
 | **LT** | `generate_lighttrap_diagram.py` | `diagrams/lighttrap-sheet1.png`<br>`diagrams/lighttrap-sheet2.png` | 1, 5, 6, 7, 8 |
 | **TSB** | `generate_tilt_swing_board.py` | `diagrams/tilt-swing-board-sheet1.png`<br>`diagrams/tilt-swing-board-sheet2.png`<br>`diagrams/tilt-swing-board-sheet3.png` | 2, 4 |
@@ -452,7 +452,7 @@ Every generator script, its output PNGs, and the subsystems it renders.
 | **5** Light Trap Drum | ✓ | ✓ | ✓ | ✓ | | | | | ✓ | ✓ | | | | | |
 | **6** Hinged Panel | | | ✓ | ✓ | | | | | ✓ | ✓ | | | | | |
 | **7** Ventilation | ✓ | | ✓ | | | | ✓ | | | ✓ | | | | | |
-| **8** Evap Cooler | ✓ | ✓ | ✓ | ✓ | | | ✓ | | | ✓ | | | | | |
+| **8** Evap Cooler | ✓ | | ✓ | ✓ | | | ✓ | | | ✓ | | | | | |
 | **9** Electrical | ✓ | ✓ | ✓ | ✓ | | | ✓ | | | | | | | | |
 | **10** Pump Manifold | ✓ | ✓ | ✓ | ✓ | | | ✓ | ✓ | | | | | | | |
 | **11** Blue Water (IBCs) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | | |
@@ -460,8 +460,8 @@ Every generator script, its output PNGs, and the subsystems it renders.
 | **13** Black Water (waste IBC) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | | |
 | **14** Zones / Layout | ✓ | ✓ | ✓ | | | | | | | | | | | | |
 | **15** Panel Swing Pivot | ✓ | | ✓ | | | | | | ✓ | | | | | | |
-| **16** Processing Tray | ✓ | | ✓ | | | | | | | | | | | | ✓ |
-| **17** Perimeter Walkway | | | | | | | | | ✓ | | | | | | ✓ |
+| **16** Processing Tray | ✓ | | ✓ | | | | | ✓ | | | | | | | ✓ |
+| **17** Perimeter Walkway | ✓ | | | | | | | | ✓ | | | | | | ✓ |
 
 ---
 

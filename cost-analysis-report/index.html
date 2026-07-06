@@ -2531,7 +2531,7 @@ cost and where can it be saved</strong>. It breaks the build down by system, sep
 capital from recurring/consumable spend, and ranks the realistic savings levers.</p>
 <p>All figures are the <strong>mid-column</strong> estimates from the
 <a href="../project-cost-breakdown/">Cost Breakdown</a> (the itemized source of truth); the build
-mid-total is <strong>~<!-- BEGIN costing:ca-mid-total -->$27,479<!-- END costing:ca-mid-total --></strong>.</p>
+mid-total is <strong>~<!-- BEGIN costing:ca-mid-total -->$27,539<!-- END costing:ca-mid-total --></strong>.</p>
 <hr />
 <h2 id="2-method-capital-vs-recurring">2. Method — Capital vs Recurring<a class="headerlink" href="#2-method-capital-vs-recurring" title="Permanent link">&para;</a></h2>
 <p>Just as the weight study set aside the fixed container shell to find the <em>addressable</em>
@@ -2549,7 +2549,7 @@ recurs or is consumed — savings strategy is different for each.</p>
 <tbody>
 <tr>
 <td><strong>Capital build</strong> (one-time hardware)</td>
-<td style="text-align: right;"><strong>$24,289</strong></td>
+<td style="text-align: right;"><strong>$24,349</strong></td>
 <td>The systems you build once — this is where build-savings live</td>
 </tr>
 <tr>
@@ -2571,7 +2571,7 @@ recurs or is consumed — savings strategy is different for each.</p>
 </table>
 <!-- END costing:ca-buckets -->
 
-<p>Build-savings work on the <strong><!-- BEGIN costing:ca-capital -->$24,289<!-- END costing:ca-capital --> capital</strong>. The <!-- BEGIN costing:ca-consumable -->$1,650<!-- END costing:ca-consumable --> consumable is attacked
+<p>Build-savings work on the <strong><!-- BEGIN costing:ca-capital -->$24,349<!-- END costing:ca-capital --> capital</strong>. The <!-- BEGIN costing:ca-consumable -->$1,650<!-- END costing:ca-consumable --> consumable is attacked
 separately (bulk chemistry, cheaper substrate) because it repeats every batch and
 quickly dominates lifetime cost.</p>
 <hr />
@@ -2614,7 +2614,7 @@ quickly dominates lifetime cost.</p>
 </tr>
 <tr>
 <td><strong>Power &amp; electrical</strong></td>
-<td style="text-align: right;">$2,324</td>
+<td style="text-align: right;">$2,384</td>
 <td style="text-align: right;">10%</td>
 <td>Battery + solar + distribution + protection</td>
 </tr>
@@ -2695,31 +2695,31 @@ single biggest line</strong> (<!-- BEGIN costing:tray-low -->$1,300<!-- END cost
 <td>Film plane</td>
 <td style="text-align: right;">~<!-- BEGIN costing:ca-lever-film -->$827<!-- END costing:ca-lever-film --></td>
 <td>Easy, if manual is acceptable</td>
-<td><strong>Actioned 2026-06-13</strong> — manual is now the standard build; electric is a documented upgrade only (<a href="../project-cost-breakdown/">Cost Breakdown §4.4</a>)</td>
+<td><strong>Actioned 2026-06-13 (banked)</strong> — manual is the standard build, so this is already realized, not a still-available saving; electric is a documented upgrade only (<a href="../project-cost-breakdown/">Cost Breakdown §4.4</a>)</td>
 </tr>
 <tr>
 <td>3</td>
-<td><strong>Processing tray: 304 SS → poly / thinner gauge</strong></td>
+<td><strong>Processing tray: 304 SS → poly</strong> (poly needs a support frame over the 4.5 m span + poly-weld fab)</td>
 <td>Water</td>
 <td style="text-align: right;">~<!-- BEGIN costing:ca-lever-tray-low -->$600<!-- END costing:ca-lever-tray-low -->–<!-- BEGIN costing:ca-lever-tray-high -->$1,000<!-- END costing:ca-lever-tray-high --></td>
-<td>Medium — chem-compat + stiffness check</td>
-<td>Available (win-win — also cuts weight)</td>
+<td>Medium</td>
+<td><strong>Decided 2026-07-05 — keep 304 SS</strong> (self-supporting + durable; not revisiting)</td>
 </tr>
 <tr>
 <td>4</td>
-<td><strong>Battery 200 Ah → 100 Ah</strong> (<a href="../water-system-report/">Water System Report</a>: 1×100 Ah ≈ 25+ prints/charge)</td>
+<td><strong>Battery — already 1×100 Ah</strong> (the lean config; <a href="../water-system-report/">Water System Report</a>: 1×100 Ah ≈ 25+ prints/charge). A 2nd pack is a +<!-- BEGIN costing:ca-lever-battery -->$375<!-- END costing:ca-lever-battery --> optional <strong>upgrade</strong>, not a saving.</td>
 <td>Power</td>
-<td style="text-align: right;">~<!-- BEGIN costing:ca-lever-battery -->$350<!-- END costing:ca-lever-battery --></td>
-<td>Easy, if fewer sessions/charge is OK</td>
-<td>Available</td>
+<td style="text-align: right;">+$375 (add)</td>
+<td>—</td>
+<td><strong>Not a saving</strong> — 100 Ah is the standard</td>
 </tr>
 <tr>
 <td>5</td>
 <td><strong>Solar 3 → 2 panels</strong> (if the power budget allows)</td>
 <td>Power</td>
-<td style="text-align: right;">~<!-- BEGIN costing:ca-lever-solar -->$130<!-- END costing:ca-lever-solar --></td>
+<td style="text-align: right;">~<!-- BEGIN costing:ca-lever-solar -->$133<!-- END costing:ca-lever-solar --></td>
 <td>Easy</td>
-<td>Available</td>
+<td>Available — computed (drop 1× 200W panel)</td>
 </tr>
 <tr>
 <td>6</td>
@@ -2731,30 +2731,29 @@ single biggest line</strong> (<!-- BEGIN costing:tray-low -->$1,300<!-- END cost
 </tr>
 </tbody>
 </table>
-<p>Levers 1–5 together trim <strong>~<!-- BEGIN costing:ca-savings-low -->$3,250<!-- END costing:ca-savings-low -->–<!-- BEGIN costing:ca-savings-high -->$3,650<!-- END costing:ca-savings-high --></strong> off the <!-- BEGIN costing:ca-capital -->$24,289<!-- END costing:ca-capital --> capital build (<strong>~<!-- BEGIN costing:ca-savings-pct-low -->13<!-- END costing:ca-savings-pct-low -->–<!-- BEGIN costing:ca-savings-pct-high -->15<!-- END costing:ca-savings-pct-high -->%</strong>) without
-touching the core optical or structural design.</p>
+<p>After the material decisions, the only still-<strong>available</strong> build-savings levers are <strong>1 (container grade) + 5 (solar)</strong> — together <strong>~<!-- BEGIN costing:ca-savings-low -->$1,500<!-- END costing:ca-savings-low --></strong> off the <!-- BEGIN costing:ca-capital -->$24,349<!-- END costing:ca-capital --> capital build (<strong>~<!-- BEGIN costing:ca-savings-pct-low -->6<!-- END costing:ca-savings-pct-low -->%</strong>), plus ~$100–200 of valve value-engineering (#6). Everything else is settled: lever 2 <strong>banked</strong> (manual is the standard build), lever 3 <strong>kept 304 SS</strong> (decision), lever 4 <strong>already 1×100 Ah</strong>.</p>
 <blockquote>
-<p><strong>Derivation note.</strong> Lever 1 (container grade) and the roll-up total + percentage are
-computed in <code>costing.py</code> — the container saving is a true CW − WWT subtraction off the
-scenario layer, and the roll-up is the summed levers over the capital build, so both
-cascade on any cost change. Levers 2–5 are single-sourced estimates, <strong>not yet</strong> true
-<code>as-built − alternative</code> subtractions: that needs each alternative <em>configuration</em>
-modeled — a WWT-grade container line, an itemized electrical BOM (for the 100 Ah battery
-and 2-panel solar options), a costed poly-tray and galvanized-grating alternative, and the
-electric-actuation upgrade kit. Lever 2 is already actioned into the manual build, so once
-modeled it should move out of the live roll-up.</p>
+<p><strong>Derivation note.</strong> Lever 1 (container grade), lever 5 (solar), and the roll-up total +
+percentage are computed in <code>costing.py</code> — container is a true CW − WWT subtraction off the
+scenario layer, solar is a real 1-panel subtraction (drop 1× <code>solar-panel-200w</code>), and the roll-up
+is the summed <strong>still-available</strong> levers over the capital build, so all cascade on any cost change.
+Bucket-B finding (2026-07-05): modeling each option against the as-built BOM showed lever 2 (film)
+is already <strong>banked</strong> — manual is the standard build — and lever 4 (battery) is moot — the standard
+is already 1×100 Ah, and its 2nd pack is a +$375 <strong>upgrade</strong>, not a saving — so both were dropped
+from the roll-up. Lever 3 (tray) is now <strong>decided</strong> too — 304 SS kept (over the 4.5 m span a poly
+tray needs a support frame that erodes the saving, plus poly-weld fab) — so it also leaves the roll-up.</p>
 </blockquote>
 <hr />
 <h2 id="5-the-costweight-tension">5. The Cost–Weight Tension<a class="headerlink" href="#5-the-costweight-tension" title="Permanent link">&para;</a></h2>
 <p>Cost and weight do not always move together — some weight savings <em>cost</em> money, and vice
 versa. Worth keeping in view when prioritizing:</p>
 <ul>
-<li>The <strong>GRP walkway grating</strong> (specified for corrosion immunity in the chemistry zone)
-  <em>added</em> ~$720–890 to save 62 kg. If cost now outranks weight, <strong>reverting GRP →
-  galvanized steel recovers ~$800</strong> — at the cost of the corrosion immunity and the 62 kg.</li>
-<li>The <strong>processing tray</strong> (lever #3) is the rare <strong>win-win</strong>: SS → poly cuts <em>both</em> cost
-  <em>and</em> weight, and is corrosion-proof. It is the highest-value single move across both
-  studies.</li>
+<li>The <strong>GRP walkway grating</strong> (corrosion immunity in the chemistry zone) <em>added</em> ~$720–890 to
+  save 62 kg. <strong>Decided 2026-07-05 — keep molded GRP:</strong> the 62 kg weight saving + corrosion
+  immunity are worth the premium; the ~$800 galvanized-steel alternative is <strong>not</strong> being taken.</li>
+<li>The <strong>processing tray</strong> (lever #3): SS → poly would cut <em>both</em> cost and weight, but <strong>decided
+  2026-07-05 to keep 304 SS</strong> — over the 4.5 m span a poly tray needs a support frame (eroding the
+  saving) plus poly-weld fabrication; 304 SS is self-supporting and durable.</li>
 </ul>
 <hr />
 <h2 id="6-what-is-effectively-fixed">6. What Is Effectively Fixed<a class="headerlink" href="#6-what-is-effectively-fixed" title="Permanent link">&para;</a></h2>

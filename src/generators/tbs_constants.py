@@ -123,9 +123,9 @@ RAIL_X_R  = FP_X_R   # right rail X (mm)   [was 4019 → now 4649]
 RAIL_SPAN = RAIL_X_R - RAIL_X_L   # = 4499mm  [rev6: was 4024]
 RAIL_LEN  = 2200      # rail length  (mm)   [unchanged — same Y travel]
 RAIL_OFF  = 100       # ceiling (TOP) offset (mm)  [unchanged]
-RAIL_OFF_BOT = 150    # floor (BOTTOM) offset (mm) — RAISED +50 (was 100) so the film-plane
-                      # bottom edge clears the raised Z130 walkway by 20mm as it travels in Yd.
-                      # Costs ~50mm of muslin height (~2.3% of the captured image).
+RAIL_OFF_BOT = 160    # floor (BOTTOM) offset (mm) = WALKWAY_H 140 + 20mm so the film-plane bottom
+                      # edge clears the raised Z140 walkway by 20mm as it travels in Yd (was 150 for the
+                      # Z130 deck). Costs ~60mm of muslin height (~2.5% of the captured image).
 
 # ── Movement ranges (OPTION A: fixed-size rigid plane on floating-corner slides) ──
 # rev7 / Option A (2026-06-06): the film plane is a FIXED-SIZE rigid rectangle that
@@ -224,9 +224,11 @@ PANEL_CUT_YD   = 180    # fixed-left-panel width / swing cut (mm) — 160 min to
                         # upright at Yd100, 180 for margin. Swinging part runs PANEL_CUT_YD→PIVOT_YD.
 PIVOT_POST_OD  = 89     # Ø89×8 CHS pivot post (mm) — carries the ~3.6kN·m swing cantilever, SF~3.7 (S355)
 PIVOT_POST_T   = 8      # pivot post wall thickness (mm)
-PANEL_FLOOR_GAP   = 130   # gap between panel bottom edge and floor (mm) [+50 walkway raise; was 80]
-                          # = WALKWAY_H (130): the panel rides at the grate-top level. Doubles as the
-                          # drum-revolve threshold sill and the swing-arc floor datum.
+PANEL_FLOOR_GAP   = 130   # gap between panel bottom edge and floor (mm). NOT tied to WALKWAY_H (deck is
+                          # now 140 with the 25mm grate): the swing sweeps the BARE Z115 brackets (walkway
+                          # lifted out for transport), so this stays 130. Drum-revolve threshold sill +
+                          # swing-arc datum. A ~10mm step to the Z140 deck at the drum exit is accepted
+                          # (add a 10mm drum-floor pad later if it matters).
 # (Derived swing geometry — PIVOT_X/PIVOT_YD/FAR_STRIP_YD0/DRUM_CAGE_* — is defined just
 #  below, after the brace/drum/bay constants it reads from.)
 # PANEL_SLIDE (the old 880mm slide travel) is fully retired (rev10) — all generators and
@@ -323,7 +325,7 @@ EVAP_CFM_RATED = 1300  # Hessaire MC18M rated airflow (CFM); run on LOW to match
 # inside the wide section X1155–2629).  Lighter unit now (16 lb / Hessaire MC18M).
 EVAP_STOW_X    = 1450    # stowage left edge X (mm)
 EVAP_STOW_YD   = 0       # against pinhole wall (Yd=0)
-EVAP_STOW_Z    = 150     # sits on raised grating surface (WALKWAY_H 130 + 20mm pad) [+50 raise]
+EVAP_STOW_Z    = 160     # sits on raised grating surface (WALKWAY_H 140 + 20mm pad) [+10 for 25mm grate]
 
 # ── Inverter — Circuit E 12V→120V AC for the evaporative cooler ───────────────
 # Victron Phoenix 12/375 (GFCI version): 235×120×72mm, ~2.3kg.  Wall-mounted
@@ -367,8 +369,8 @@ EP_H_HI    = 2100    # electrical panel top Z (mm)   [rev11: 2250→2100]
 
 BA_X       = EP_X    # battery bank left edge X (mm) — in the EP skinny column (= EP_X); the 2 packs STACK vertically (was 1540, 680-wide side-by-side, before the skinny-column reorg)
 BA_W       = 330     # battery bank width (mm) — 1× Renogy 100Ah (330 long); the 2 packs now STACK vertically (BA_STACK_Z2), not side-by-side
-BA_H_LO    = 150     # battery bank bottom Z (mm) — sits ON the raised grate [+50 walkway raise; was 100]
-BA_H_HI    = 364     # LOWER pack top Z (mm) = 150 + 214 (real Renogy 100Ah height); the upper pack stacks above (BA_STACK_TOP)
+BA_H_LO    = 160     # battery bank bottom Z (mm) — sits on a 20mm pad on the Z140 grate deck [+10 for 25mm grate; was 150]
+BA_H_HI    = BA_H_LO + 214   # LOWER pack top Z (mm) = 160 + 214 (real Renogy 100Ah height); the upper pack stacks above (BA_STACK_TOP)
 BA_D       = 172     # battery bank depth from wall (mm) — real Renogy 100Ah width (the rev7 'slim-profile 120mm' assumption was wrong — see component-dimension-audit.md)
 
 # ── EP skinny-column layout (2026-07-06) — the EP is a tall NARROW column shifted left so it fits
@@ -695,7 +697,7 @@ LOST_L                = PRINTS_PER_RESUPPLY * LOSS_PER_PRINT_L         # = 434 L
 # bolted to wall rib, 300mm horizontal arm projecting inward, diagonal brace
 # welded between.  Grating sits directly on bracket arms.  NO legs, NO beam,
 # NO floor contact.  Entire tray interior is completely clear for film loading.
-# Deck height 130mm (115mm bracket arm + 15mm grate) clears the 50mm tray rim.
+# Deck height 140mm (115mm bracket arm + 25mm grate) clears the 50mm tray rim.
 # Material: molded GRP (fiberglass) grating, 15mm, vinyl-ester + grit top (all 4
 # sections) — corrosion-proof in the chemistry zone; 15mm depth keeps the deck.
 #
@@ -721,13 +723,13 @@ LOST_L                = PRINTS_PER_RESUPPLY * LOSS_PER_PRINT_L         # = 434 L
 #       Zero processing tray contact — all supports outside or above tray.
 #       Right corners use standard 45° miters (no panel conflict).
 WALKWAY_W       = 300    # walkway width (mm) — bracket arm cantilever distance
-WALKWAY_H       = 130    # deck height above floor (mm) — RAISED +50 (was 80) for buildable
-#       clearances: 15mm grate, bottom at Z=115. The floor-leg cantilever arm (Z=75–115,
-#       40mm deep) clears the 50mm tray rim AND the Z=54 spray-bar top by 21mm. The tray,
-#       bath and spray bar do NOT rise (they stay at floor level — that is what opens the
-#       gap); only the walkway + walkway-relative gear rise +50. Costs ~50mm of film-plane
-#       bottom (≈2.3% image). (History: 65→80 lowered for film clearance, then +50 raised.)
-WALKWAY_GRATE_T = 15     # grating thickness (mm) — thin grate (was 25) for film-plane clearance
+WALKWAY_H       = 140    # deck height above floor (mm) = grate-underside Z115 + 25mm grate.
+#       The 25mm MS-S-100 grate sits on the SAME Z115 arm (grate bottom Z115, deck top Z140).
+#       The floor-leg cantilever arm (Z=75–115, 40mm deep) clears the 50mm tray rim AND the Z=54
+#       spray-bar top by 21mm — UNCHANGED (only the grate got 10mm thicker on top). The tray, bath
+#       and spray bar do NOT rise. Panel swing sweeps the bare Z115 brackets (walkway lifted out for
+#       transport) → PANEL_FLOOR_GAP is NOT tied to this. Costs ~60mm film-plane bottom (was 130/15mm).
+WALKWAY_GRATE_T = 25     # grating thickness (mm) — 1" McNichols MS-S-100 molded FRP (real product min; 15mm molded FRP doesn't exist, 2.60 lb/sf). Sits on the SAME Z115 arm → deck top 140.
 WALKWAY_H_PREV  = 100    # original deck height (pre-lowering) — reserved (history; kept for reference)
 WALKWAY_NEAR_LIFTOUT_X_R = 950  # the NEAR deck's door-end band (X≈470–950, Yd0–300) is a
                          # REMOVABLE lift-out for transport — the swing sweeps this band to X≈896

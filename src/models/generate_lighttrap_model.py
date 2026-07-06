@@ -78,9 +78,9 @@ CUT = ov.PANEL_CUT_YD                              # 180 — fixed-left / swing 
 FAR0 = ov.FAR_STRIP_YD0                            # 2287 — fixed-far strip start (= pivot)
 WALL_FAR = 2000                                    # context far extent — reaches the stay wall anchor
 STAY_Z = (500, 2050)                               # bottom + top transport-stay heights
-# (bottom raised 200→350→500: its anchor plate (Z400–600) now also clears the BATTERY
-#  bank top (Z364, X1540–2220 on the pinhole wall) — as well as the walkway deck (Z130) +
-#  the wall-cantilever brackets (vertical leg to Z150 std / Z200 widened) it sits over.
+# (bottom raised 200→350→500: its anchor plate (Z400–600, X1614–1814) sits LEFT of the EP
+#  column/battery (X1829–2159, stacked Z160–604 on the pinhole wall) and clears the walkway
+#  deck (Z140) + the wall-cantilever brackets (vertical leg to Z150 std / Z200 widened) it sits over.
 #  The 2050↔500 couple arm (1550mm) is still ample for the transport stay.)
 LOCK_BOLT = (20, CUT + 25)                         # stay hook on the swinging frame's LEFT
 # perimeter 50×50 RHS STILE (Yd≈205, centred on the stile at the swing cut) — STEEL load

@@ -190,7 +190,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "Walkway Near (door-end, removable)"
   face = grp.entities.add_face([470.mm,8.mm,115.mm], [950.mm,8.mm,115.mm], [950.mm,300.mm,115.mm], [470.mm,300.mm,115.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(15.mm)
+  face.pushpull(25.mm)
   mat = model.materials["Walkway Near (door-end, removable)"] || model.materials.add("Walkway Near (door-end, removable)")
   mat.color = Sketchup::Color.new(192, 96, 0)
   mat.alpha = 1.0
@@ -201,7 +201,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "Walkway Near (left)"
   face = grp.entities.add_face([950.mm,8.mm,115.mm], [1055.mm,8.mm,115.mm], [1055.mm,300.mm,115.mm], [950.mm,300.mm,115.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(15.mm)
+  face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left)"] || model.materials.add("Walkway Near (left)")
   mat.color = Sketchup::Color.new(128, 128, 128)
   mat.alpha = 1.0
@@ -212,7 +212,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "Walkway Near (widened)"
   face = grp.entities.add_face([1055.mm,10.mm,115.mm], [2169.mm,10.mm,115.mm], [2169.mm,500.mm,115.mm], [1055.mm,500.mm,115.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(15.mm)
+  face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left)"] || model.materials.add("Walkway Near (left)")
   mat.color = Sketchup::Color.new(128, 128, 128)
   mat.alpha = 1.0
@@ -223,7 +223,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "Walkway Near (right)"
   face = grp.entities.add_face([2169.mm,8.mm,115.mm], [4329.mm,8.mm,115.mm], [4329.mm,300.mm,115.mm], [2169.mm,300.mm,115.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(15.mm)
+  face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left)"] || model.materials.add("Walkway Near (left)")
   mat.color = Sketchup::Color.new(128, 128, 128)
   mat.alpha = 1.0
@@ -234,7 +234,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "Walkway Far"
   face = grp.entities.add_face([470.mm,2062.mm,115.mm], [4329.mm,2062.mm,115.mm], [4329.mm,2354.mm,115.mm], [470.mm,2354.mm,115.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(15.mm)
+  face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left)"] || model.materials.add("Walkway Near (left)")
   mat.color = Sketchup::Color.new(128, 128, 128)
   mat.alpha = 1.0
@@ -245,7 +245,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "Walkway Left (removable)"
   face = grp.entities.add_face([170.mm,0.mm,115.mm], [470.mm,0.mm,115.mm], [470.mm,2362.mm,115.mm], [170.mm,2362.mm,115.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(15.mm)
+  face.pushpull(25.mm)
   mat = model.materials["Walkway Near (door-end, removable)"] || model.materials.add("Walkway Near (door-end, removable)")
   mat.color = Sketchup::Color.new(192, 96, 0)
   mat.alpha = 1.0
@@ -256,7 +256,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "Walkway Left punch-out"
   face = grp.entities.add_face([470.mm,800.mm,115.mm], [770.mm,800.mm,115.mm], [770.mm,1560.mm,115.mm], [470.mm,1560.mm,115.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(15.mm)
+  face.pushpull(25.mm)
   mat = model.materials["Walkway Near (door-end, removable)"] || model.materials.add("Walkway Near (door-end, removable)")
   mat.color = Sketchup::Color.new(192, 96, 0)
   mat.alpha = 1.0
@@ -267,7 +267,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "Right walkway grate (cantilevered)"
   face = grp.entities.add_face([4329.mm,0.mm,115.mm], [4629.mm,0.mm,115.mm], [4629.mm,2362.mm,115.mm], [4329.mm,2362.mm,115.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(15.mm)
+  face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left)"] || model.materials.add("Walkway Near (left)")
   mat.color = Sketchup::Color.new(128, 128, 128)
   mat.alpha = 1.0
@@ -2601,7 +2601,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "FP combined corner plate (near)"
   face = grp.entities.add_face([6925.mm,0.mm,58.mm], [7075.mm,0.mm,58.mm], [7075.mm,10.mm,58.mm], [6925.mm,10.mm,58.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(167.mm)
+  face.pushpull(177.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -2612,7 +2612,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "FP combined corner ext plate (near)"
   face = grp.entities.add_face([6925.mm,-50.mm,58.mm], [7075.mm,-50.mm,58.mm], [7075.mm,-40.mm,58.mm], [6925.mm,-40.mm,58.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(167.mm)
+  face.pushpull(177.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -2632,7 +2632,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   # FP combined BR rail seat (near)
   grp = ents.add_group
   grp.name = "FP combined BR rail seat (near)"
-  face = grp.entities.add_face([6970.mm,0.mm,138.mm], [7030.mm,0.mm,138.mm], [7030.mm,55.mm,138.mm], [6970.mm,55.mm,138.mm])
+  face = grp.entities.add_face([6970.mm,0.mm,148.mm], [7030.mm,0.mm,148.mm], [7030.mm,55.mm,148.mm], [6970.mm,55.mm,148.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -2653,11 +2653,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (near) X6950 Z178
+  # FP combined bolt M12 (near) X6950 Z188
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X6950 Z178"
+  grp.name = "FP combined bolt M12 (near) X6950 Z188"
   ge = grp.entities
-  circle = ge.add_circle([6950.mm,-50.mm,178.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([6950.mm,-50.mm,188.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -2679,11 +2679,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (near) X7050 Z178
+  # FP combined bolt M12 (near) X7050 Z188
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X7050 Z178"
+  grp.name = "FP combined bolt M12 (near) X7050 Z188"
   ge = grp.entities
-  circle = ge.add_circle([7050.mm,-50.mm,178.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([7050.mm,-50.mm,188.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -3191,7 +3191,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "FP combined corner plate (near)"
   face = grp.entities.add_face([4574.mm,0.mm,58.mm], [4724.mm,0.mm,58.mm], [4724.mm,10.mm,58.mm], [4574.mm,10.mm,58.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(167.mm)
+  face.pushpull(177.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3202,7 +3202,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "FP combined corner ext plate (near)"
   face = grp.entities.add_face([4574.mm,-50.mm,58.mm], [4724.mm,-50.mm,58.mm], [4724.mm,-40.mm,58.mm], [4574.mm,-40.mm,58.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(167.mm)
+  face.pushpull(177.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3222,7 +3222,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   # FP combined BR rail seat (near)
   grp = ents.add_group
   grp.name = "FP combined BR rail seat (near)"
-  face = grp.entities.add_face([4619.mm,0.mm,138.mm], [4679.mm,0.mm,138.mm], [4679.mm,55.mm,138.mm], [4619.mm,55.mm,138.mm])
+  face = grp.entities.add_face([4619.mm,0.mm,148.mm], [4679.mm,0.mm,148.mm], [4679.mm,55.mm,148.mm], [4619.mm,55.mm,148.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -3243,11 +3243,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (near) X4599 Z178
+  # FP combined bolt M12 (near) X4599 Z188
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4599 Z178"
+  grp.name = "FP combined bolt M12 (near) X4599 Z188"
   ge = grp.entities
-  circle = ge.add_circle([4599.mm,-50.mm,178.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,-50.mm,188.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -3269,11 +3269,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (near) X4699 Z178
+  # FP combined bolt M12 (near) X4699 Z188
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4699 Z178"
+  grp.name = "FP combined bolt M12 (near) X4699 Z188"
   ge = grp.entities
-  circle = ge.add_circle([4699.mm,-50.mm,178.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,-50.mm,188.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -3346,7 +3346,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "FP combined corner plate (far)"
   face = grp.entities.add_face([4574.mm,2352.mm,58.mm], [4724.mm,2352.mm,58.mm], [4724.mm,2362.mm,58.mm], [4574.mm,2362.mm,58.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(167.mm)
+  face.pushpull(177.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3357,7 +3357,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "FP combined corner ext plate (far)"
   face = grp.entities.add_face([4574.mm,2402.mm,58.mm], [4724.mm,2402.mm,58.mm], [4724.mm,2412.mm,58.mm], [4574.mm,2412.mm,58.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(167.mm)
+  face.pushpull(177.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3377,7 +3377,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   # FP combined BR rail seat (far)
   grp = ents.add_group
   grp.name = "FP combined BR rail seat (far)"
-  face = grp.entities.add_face([4619.mm,2307.mm,138.mm], [4679.mm,2307.mm,138.mm], [4679.mm,2362.mm,138.mm], [4619.mm,2362.mm,138.mm])
+  face = grp.entities.add_face([4619.mm,2307.mm,148.mm], [4679.mm,2307.mm,148.mm], [4679.mm,2362.mm,148.mm], [4619.mm,2362.mm,148.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -3398,11 +3398,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (far) X4599 Z178
+  # FP combined bolt M12 (far) X4599 Z188
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4599 Z178"
+  grp.name = "FP combined bolt M12 (far) X4599 Z188"
   ge = grp.entities
-  circle = ge.add_circle([4599.mm,2352.mm,178.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,2352.mm,188.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -3424,11 +3424,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (far) X4699 Z178
+  # FP combined bolt M12 (far) X4699 Z188
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4699 Z178"
+  grp.name = "FP combined bolt M12 (far) X4699 Z188"
   ge = grp.entities
-  circle = ge.add_circle([4699.mm,2352.mm,178.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,2352.mm,188.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -3447,7 +3447,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   # FP support beam R-bot
   grp = ents.add_group
   grp.name = "FP support beam R-bot"
-  face = grp.entities.add_face([4609.mm,0.mm,150.mm], [4649.mm,0.mm,150.mm], [4649.mm,2362.mm,150.mm], [4609.mm,2362.mm,150.mm])
+  face = grp.entities.add_face([4609.mm,0.mm,160.mm], [4649.mm,0.mm,160.mm], [4649.mm,2362.mm,160.mm], [4609.mm,2362.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -4170,7 +4170,7 @@ txt = entities.add_text("RIGHT WALKWAY — WALL CLEAT (left corners)
 8mm back-plate + ext plate + shelf,
 the long beam lands on it; M12 through-bolts", anc, Geom::Vector3d.new(-150.mm, -300.mm, 800.mm))
 txt.layer = model.layers["Cantilever Types"] rescue nil
-anc = Geom::Point3d.new(7000.mm, 0.mm, 150.mm)
+anc = Geom::Point3d.new(7000.mm, 0.mm, 160.mm)
 txt = entities.add_text("RIGHT WALKWAY — COMBINED CORNER PLATE (right corners)
 10mm, carries the walkway right beam (Z70 seat)
 + the BR film rail (Z150 seat); 4x M12", anc, Geom::Vector3d.new(0.mm, -300.mm, 850.mm))

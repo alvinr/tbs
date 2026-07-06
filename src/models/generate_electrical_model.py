@@ -432,16 +432,17 @@ def _pump_circuit():
         # branch taps the wireway at THIS pump's level → straight to the pump (no per-pump switch)
         br = _dedup([(EQPANEL_X, cy, z + 60), (EQPANEL_X, yd, z + 60)])
         p.append(ov.ruby_pipe_run(f"Cct C branch {nm}", br, 6, color=col))
-    # P-02 (Brown recycle) is on the PINHOLE-WALL panel, not the corridor block — it taps the SWITCHED
-    # FEED there (electrical-report §7.3). Draw it offset beyond the corridor pump zone with its own
-    # tap straight off the switched feed, so the pinhole-wall pump reads as powered (not orphaned).
-    p02_yd, p02_z = EQPANEL_YD + EQPANEL_YD_SPAN + 45, 1200   # pinhole-wall panel, pump height
+    # P-02 (Brown recycle) is on the PINHOLE-WALL panel (X~3058, high with the 3-stage filter skid) —
+    # NOT the corridor distribution block (which is at EQPANEL_X~4874). It taps the switched Circuit-C
+    # feed where the ceiling trunk passes over it (electrical-report §7.3); the feed runs the ceiling
+    # from the EP master switch to the corridor block, so it IS overhead here. X/Z match the
+    # pinhole-water-panel model + pinhole-wall-elevation.
+    p02x, p02_yd, p02z0, p02z1 = 3058, 100, 2139, 2319
     p.append(ov.ruby_box("P-02 (Brown recycle - Pinhole-Wall filter pump)",
-                         EQPANEL_X - 25, p02_yd - 30, p02_z - 40, 50, 60, 80, color="#6B4423"))
-    p.append(ov.ruby_pipe_run("Cct C branch P-02 (taps switched feed - Pinhole-Wall panel)",
-                              _dedup([(EQPANEL_X, cy, way_top - 25),
-                                      (EQPANEL_X, p02_yd, way_top - 25),
-                                      (EQPANEL_X, p02_yd, p02_z)]), 6, color=col))
+                         p02x - 25, p02_yd - 30, p02z0, 50, 60, p02z1 - p02z0, color="#6B4423"))
+    p.append(ov.ruby_pipe_run("Cct C branch P-02 (taps ceiling feed - Pinhole-Wall panel)",
+                              _dedup([(p02x, TRUNK_YD, TRUNK_Z), (p02x, p02_yd, TRUNK_Z),
+                                      (p02x, p02_yd, p02z1)]), 6, color=col))
     return '\n'.join(p)
 
 

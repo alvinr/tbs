@@ -242,6 +242,11 @@ def power_core():
                          color=ov.C_STEEL, alpha=0.12))
     p.append(ov.ruby_box("MPPT Controller (100/50)", EP_X + 15, 120,
                          EP_H_HI - MPPT_H - 30, MPPT_W, MPPT_D, MPPT_H, color="#3A5BA0"))
+    # Plywood backing panel — extends the EP mounting board FORWARD to the relocated MPPT plane so the
+    # MPPT flush-mounts on ply; tall enough to also back the PV-feed riser (Z~1884->1970) so the cable
+    # sits flush on the panel. Front face at Yd120 (the MPPT's back).
+    p.append(ov.ruby_box("MPPT backing panel (18mm ply)", EP_X + 8, 102,
+                         EP_H_HI - MPPT_H - 132, MPPT_W + 20, 18, MPPT_H + 132, color=ov.C_PLY))
     # PV interior feed: external-panel MC4 bulkheads -> MPPT PV input (the conductor from
     # the interior side of the MC4 connectors; the exterior array->panel run is ov.solar_array()).
     # Crosses at the bottom MC4 height (Z≈1884, under the overview's upper transport-stay
@@ -251,7 +256,9 @@ def power_core():
     mc4_z = PWR_PANEL_Z + 0.225 * PWR_PANEL_H
     p.append(ov.ruby_pipe_run("PV feed (MC4 bulkheads -> MPPT)",
                               _dedup([(mc4_x, 22, mc4_z), (mc4_x, 120, mc4_z),
-                                      (EP_X + 40, 120, mc4_z), (EP_X + 40, 120, EP_H_HI - MPPT_H - 32)]),
+                                      (EP_X + 40, 120, mc4_z),
+                                      (EP_X + 40, 120, EP_H_HI - MPPT_H - 32),   # rise FLUSH up the ply panel (Yd120)
+                                      (EP_X + 40, 155, EP_H_HI - MPPT_H - 22)]),  # elbow forward into the MPPT PV input
                               9, color="#2D7A2D"))
     # Blue Sea 5026: the block base + a standing row of 7 blade fuses (one per circuit A-G,
     # coloured to its circuit). Each blade's top is the cable origin for that circuit.

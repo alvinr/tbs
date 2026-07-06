@@ -1516,30 +1516,31 @@ def electrical():
                                es_cx, face_y - 40, es_cz, 26, 28,
                                color="#C42B1C", axis="y"))
 
-    # Low-current control loop: contactor → external E-stop (2× 18 AWG through a gland).
-    # Route the riser LEFT of the chem shelf (X1180-1780): going right is boxed in by the
-    # transport-stay wall anchors (X≈1695-1895, plates at Z400-600 & 1950-2150) and the EP
-    # (X1910). Left of the shelf the corridor is clear top-to-bottom — cross left past the
-    # shelf's left edge at contactor height, rise, then over to the panel above the shelf.
-    estop_riser_x = SHELF_X_L - 60                   # 1120 — clear of shelf, stay anchor & EP
-    parts.append(ruby_pipe_run("E-stop control wire (2x 18 AWG)",
-                               [(BA_X + 80, 60, BA_H_HI + 100),
-                                (estop_riser_x, 60, BA_H_HI + 100),
-                                (estop_riser_x, 60, es_cz),
-                                (es_cx, 60, es_cz),
-                                (es_cx, 10, es_cz)],
-                               5, color="#6A3DA8"))
-
-    # Interior E-stop — red mushroom on the EP (enclosure) face, paralleled with the
-    # exterior one so the contactor can be tripped from inside the container too.
+    # Interior E-stop — red mushroom on the EP face, paralleled with the exterior one so the
+    # contactor can be tripped from inside the container too (D5).
     ies_cx, ies_cz = EP_X + EP_W / 2, EP_H_LO + 80
     parts.append(ruby_cylinder("Interior E-stop collar (safety yellow)",
                                ies_cx, ENCL_SHELL_D, ies_cz, 30, 12, color="#F2C200", axis="y"))
     parts.append(ruby_cylinder("Interior E-stop button (red mushroom)",
                                ies_cx, ENCL_SHELL_D + 12, ies_cz, 24, 26, color="#C42B1C", axis="y"))
-    parts.append(ruby_pipe_run("Interior E-stop control wire (parallel)",
-                               [(ies_cx, ENCL_SHELL_D, ies_cz), (ies_cx, 30, ies_cz)],
-                               5, color="#6A3DA8"))
+
+    # E-stop trip wiring (D5): both E-stops sit in the battery-contactor coil loop — a trip line from the
+    # contactor coil up to the interior E-stop, then interior→exterior paralleled. The riser goes up the
+    # contactor's LEFT (BA_X+80, clear of the bottom transport-stay anchor at X1695-1895) and crosses
+    # ABOVE it (Z650 > the anchor's Z400-600) before dropping to the E-stop. Matches the electrical model.
+    anchor_clear_z = 650
+    parts.append(ruby_pipe_run("E-stop trip line (contactor coil -> interior E-stop)",
+                               [(BA_X + 80, 45, BA_H_HI + 100), (BA_X + 80, 10, BA_H_HI + 120),
+                                (BA_X + 80, 10, anchor_clear_z),
+                                (ies_cx, 10, anchor_clear_z),
+                                (ies_cx, 10, ies_cz),
+                                (ies_cx, ENCL_SHELL_D, ies_cz)],
+                               4, color="#586070"))
+    parts.append(ruby_pipe_run("E-stop parallel link (interior -> exterior E-stop)",
+                               [(ies_cx, ENCL_SHELL_D, ies_cz), (ies_cx, 10, ies_cz),
+                                (ies_cx, 10, es_cz), (es_cx, 10, es_cz),
+                                (es_cx, -WALL_T, es_cz)],
+                               4, color="#586070"))
 
     # Remaining panel-face hardware — matches the 2D power-panel detail (View A):
     # MC4 PV bulkheads (3 pairs, left), NEMA 5-15R inlet (top-right), Deutsch DT

@@ -16,7 +16,7 @@ Carries the four transfer pumps and the tray-drain diverter:
 
 PINHOLE WALL PLUMBING PANEL (pinhole-panel.png) — the Brown recycle / filter
 train mounted on the pinhole wall:
-  P-02 (Brown recycle) + 3-stage Big Blue filter stack (F-01 50µm → F-02 5µm →
+  P-02 (Brown recycle) + 3-stage Big Blue filter stack (F-01 5µm → F-02 KDF-55 →
   F-03 GAC) + DV-01 (filtered-water diverter) + SV-01 (pH sample tap) +
   BV-03 (P-02 suction).
   Flow: IBC-3 Brown → BV-03 → P-02 → F-01 → F-02 → F-03 → SV-01 → DV-01 →

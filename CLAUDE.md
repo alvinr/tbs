@@ -133,6 +133,18 @@ ripple into both.
   never mutation. If the live model looks wrong, either the code is wrong (fix it) or the model
   is stale (re-send it) — never patch the model by hand.
 
+- **HARD RULE — NEVER `--send` a model without ALVIN's explicit go-ahead for THAT send.**
+  `--send` clears and rebuilds whatever is in the ACTIVE SketchUp document. If ALVIN has model X
+  open (e.g. mid save/upload), sending model Y **clobbers his live view** and derails his workflow —
+  this has burned him repeatedly. The workflow is strict:
+  1. Make the code edits and run `--save` (writes the `.rb`, does NOT touch the live doc). **STOP.**
+  2. **ASK** ALVIN to open the model you need, and wait for him to confirm it's open.
+  3. Only then `--send`, verify on the live model (`eval_ruby` read-only), and tell him "clean — save + upload".
+  4. Wait for his "saved/uploaded", THEN `git commit` the `.skp`.
+  Never chain a `--send` right after editing "to verify" — that is the exact mistake. One model in the
+  active doc at a time; confirm which one before sending anything. Recover a clobber by re-sending the
+  model he actually had open, then waiting.
+
 - **When a change touches `tbs_constants.py` (or otherwise alters a system
   component's geometry), re-run every SketchUp model that contains the affected
   component** — regenerate, re-send, and re-save it:

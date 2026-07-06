@@ -230,9 +230,7 @@ Blue (IBC-2) for recycling; if pH >7.5 or discolored, route to Black (IBC-4).
 |-------|------|----------|----------|
 | CV-1 | 1" NPT | X1 bulkhead fill line | Prevents backflow from the Blue totes to the external fill port |
 
-**Only CV-1 remains.** The Shurflo 2088 pumps have integral check valves, so the
-previously-specified CV-2/CV-3/CV-4 on the pump-driven return/drain lines are
-redundant and were dropped — CV-1 guards the single gravity (non-pumped) path, the
+** Check Value CV-1** The Shurflo 2088 pumps have integral check valves. CV-1 guards the single gravity (non-pumped) path, the
 X1 fresh-fill. Installed in the IBC zone, not on a panel.
 
 ### 4.4 Sample Tap (SV-01)

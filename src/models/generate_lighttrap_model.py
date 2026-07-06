@@ -512,7 +512,7 @@ PLATE_HW, PLATE_T, BOLT_OFF, BOLT_D = 100, 12, 70, 16
 # clears the electrical panel (EP) on the same pinhole wall — the relocated top stay
 # (hooks on the perimeter stile) would otherwise overlap the EP left edge by a few mm.
 # The small resulting rod angle (~1°) the turnbuckle stay absorbs. Shared by stay_rods().
-ANCHOR_X = min(SOCKET[0], ov.EP_X - PLATE_HW - 15)   # ≤1795 → plate right edge ≤1895 < EP 1910
+ANCHOR_X = min(SOCKET[0], ov.EP_X - PLATE_HW - 15)   # ≤1714 → plate right edge ≤1814 < EP 1829
 
 
 def wall_anchors():

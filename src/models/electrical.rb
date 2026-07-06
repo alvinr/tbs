@@ -173,6 +173,281 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   inst.name = "Container (ghost)"
   inst.layer = model.layers["Context"]
 
+  # ═══ Transport Locks (context) ═══
+  defn = model.definitions.add("Transport Locks (context)")
+  ents = defn.entities
+  # Stay inside plate
+  grp = ents.add_group
+  grp.name = "Stay inside plate"
+  face = grp.entities.add_face([1695.mm,0.mm,400.mm], [1895.mm,0.mm,400.mm], [1895.mm,12.mm,400.mm], [1695.mm,12.mm,400.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Stay inside plate"] || model.materials.add("Stay inside plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay outside plate
+  grp = ents.add_group
+  grp.name = "Stay outside plate"
+  face = grp.entities.add_face([1695.mm,-52.mm,400.mm], [1895.mm,-52.mm,400.mm], [1895.mm,-40.mm,400.mm], [1695.mm,-40.mm,400.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Stay inside plate"] || model.materials.add("Stay inside plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay eye
+  grp = ents.add_group
+  grp.name = "Stay eye"
+  face = grp.entities.add_face([1780.mm,12.mm,485.mm], [1810.mm,12.mm,485.mm], [1810.mm,67.mm,485.mm], [1780.mm,67.mm,485.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(30.mm)
+  mat = model.materials["Stay inside plate"] || model.materials.add("Stay inside plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay bolt M16
+  grp = ents.add_group
+  grp.name = "Stay bolt M16"
+  face = grp.entities.add_face([1717.mm,-58.mm,422.mm], [1733.mm,-58.mm,422.mm], [1733.mm,18.mm,422.mm], [1717.mm,18.mm,422.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Stay inside plate"] || model.materials.add("Stay inside plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay bolt M16
+  grp = ents.add_group
+  grp.name = "Stay bolt M16"
+  face = grp.entities.add_face([1717.mm,-58.mm,562.mm], [1733.mm,-58.mm,562.mm], [1733.mm,18.mm,562.mm], [1717.mm,18.mm,562.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Stay inside plate"] || model.materials.add("Stay inside plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay bolt M16
+  grp = ents.add_group
+  grp.name = "Stay bolt M16"
+  face = grp.entities.add_face([1857.mm,-58.mm,422.mm], [1873.mm,-58.mm,422.mm], [1873.mm,18.mm,422.mm], [1857.mm,18.mm,422.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Stay inside plate"] || model.materials.add("Stay inside plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay bolt M16
+  grp = ents.add_group
+  grp.name = "Stay bolt M16"
+  face = grp.entities.add_face([1857.mm,-58.mm,562.mm], [1873.mm,-58.mm,562.mm], [1873.mm,18.mm,562.mm], [1857.mm,18.mm,562.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Stay inside plate"] || model.materials.add("Stay inside plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay inside plate
+  grp = ents.add_group
+  grp.name = "Stay inside plate"
+  face = grp.entities.add_face([1695.mm,0.mm,1950.mm], [1895.mm,0.mm,1950.mm], [1895.mm,12.mm,1950.mm], [1695.mm,12.mm,1950.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Stay inside plate"] || model.materials.add("Stay inside plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay outside plate
+  grp = ents.add_group
+  grp.name = "Stay outside plate"
+  face = grp.entities.add_face([1695.mm,-52.mm,1950.mm], [1895.mm,-52.mm,1950.mm], [1895.mm,-40.mm,1950.mm], [1695.mm,-40.mm,1950.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Stay inside plate"] || model.materials.add("Stay inside plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay eye
+  grp = ents.add_group
+  grp.name = "Stay eye"
+  face = grp.entities.add_face([1780.mm,12.mm,2035.mm], [1810.mm,12.mm,2035.mm], [1810.mm,67.mm,2035.mm], [1780.mm,67.mm,2035.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(30.mm)
+  mat = model.materials["Stay inside plate"] || model.materials.add("Stay inside plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay bolt M16
+  grp = ents.add_group
+  grp.name = "Stay bolt M16"
+  face = grp.entities.add_face([1717.mm,-58.mm,1972.mm], [1733.mm,-58.mm,1972.mm], [1733.mm,18.mm,1972.mm], [1717.mm,18.mm,1972.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Stay inside plate"] || model.materials.add("Stay inside plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay bolt M16
+  grp = ents.add_group
+  grp.name = "Stay bolt M16"
+  face = grp.entities.add_face([1717.mm,-58.mm,2112.mm], [1733.mm,-58.mm,2112.mm], [1733.mm,18.mm,2112.mm], [1717.mm,18.mm,2112.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Stay inside plate"] || model.materials.add("Stay inside plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay bolt M16
+  grp = ents.add_group
+  grp.name = "Stay bolt M16"
+  face = grp.entities.add_face([1857.mm,-58.mm,1972.mm], [1873.mm,-58.mm,1972.mm], [1873.mm,18.mm,1972.mm], [1857.mm,18.mm,1972.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Stay inside plate"] || model.materials.add("Stay inside plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Stay bolt M16
+  grp = ents.add_group
+  grp.name = "Stay bolt M16"
+  face = grp.entities.add_face([1857.mm,-58.mm,2112.mm], [1873.mm,-58.mm,2112.mm], [1873.mm,18.mm,2112.mm], [1857.mm,18.mm,2112.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Stay inside plate"] || model.materials.add("Stay inside plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Transport Locks (context)"
+  inst.layer = model.layers["Context"]
+
+  # ═══ Chem Prep Shelf (context) ═══
+  defn = model.definitions.add("Chem Prep Shelf (context)")
+  ents = defn.entities
+  # Chem Shelf (board, deployed)
+  grp = ents.add_group
+  grp.name = "Chem Shelf (board, deployed)"
+  face = grp.entities.add_face([1180.mm,0.mm,1053.mm], [1780.mm,0.mm,1053.mm], [1780.mm,300.mm,1053.mm], [1180.mm,300.mm,1053.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Chem Shelf (board, deployed)"] || model.materials.add("Chem Shelf (board, deployed)")
+  mat.color = Sketchup::Color.new(200, 176, 106)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Chem Shelf lip (front)
+  grp = ents.add_group
+  grp.name = "Chem Shelf lip (front)"
+  face = grp.entities.add_face([1180.mm,294.mm,1075.mm], [1780.mm,294.mm,1075.mm], [1780.mm,300.mm,1075.mm], [1180.mm,300.mm,1075.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Chem Shelf (board, deployed)"] || model.materials.add("Chem Shelf (board, deployed)")
+  mat.color = Sketchup::Color.new(200, 176, 106)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Chem Shelf lip (end)
+  grp = ents.add_group
+  grp.name = "Chem Shelf lip (end)"
+  face = grp.entities.add_face([1180.mm,0.mm,1075.mm], [1186.mm,0.mm,1075.mm], [1186.mm,300.mm,1075.mm], [1180.mm,300.mm,1075.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Chem Shelf (board, deployed)"] || model.materials.add("Chem Shelf (board, deployed)")
+  mat.color = Sketchup::Color.new(200, 176, 106)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Chem Shelf lip (end)
+  grp = ents.add_group
+  grp.name = "Chem Shelf lip (end)"
+  face = grp.entities.add_face([1774.mm,0.mm,1075.mm], [1780.mm,0.mm,1075.mm], [1780.mm,300.mm,1075.mm], [1774.mm,300.mm,1075.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Chem Shelf (board, deployed)"] || model.materials.add("Chem Shelf (board, deployed)")
+  mat.color = Sketchup::Color.new(200, 176, 106)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Chem Shelf piano hinge
+  grp = ents.add_group
+  grp.name = "Chem Shelf piano hinge"
+  ge = grp.entities
+  circle = ge.add_circle([1180.mm,0.mm,1069.mm], [1,0,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(600.mm)
+  mat = model.materials["Stay inside plate"] || model.materials.add("Stay inside plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Chem Shelf stay
+  grp = ents.add_group
+  grp.name = "Chem Shelf stay"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 290.mm, -230.mm)
+  circle = ge.add_circle([1205.mm,0.mm,1305.mm], vec, 6.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Stay inside plate"] || model.materials.add("Stay inside plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Chem Shelf stay anchor
+  grp = ents.add_group
+  grp.name = "Chem Shelf stay anchor"
+  face = grp.entities.add_face([1193.mm,0.mm,1293.mm], [1217.mm,0.mm,1293.mm], [1217.mm,8.mm,1293.mm], [1193.mm,8.mm,1293.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Stay inside plate"] || model.materials.add("Stay inside plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Chem Shelf stay
+  grp = ents.add_group
+  grp.name = "Chem Shelf stay"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 290.mm, -230.mm)
+  circle = ge.add_circle([1755.mm,0.mm,1305.mm], vec, 6.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Stay inside plate"] || model.materials.add("Stay inside plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Chem Shelf stay anchor
+  grp = ents.add_group
+  grp.name = "Chem Shelf stay anchor"
+  face = grp.entities.add_face([1743.mm,0.mm,1293.mm], [1767.mm,0.mm,1293.mm], [1767.mm,8.mm,1293.mm], [1743.mm,8.mm,1293.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Stay inside plate"] || model.materials.add("Stay inside plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Chem Prep Shelf (context)"
+  inst.layer = model.layers["Context"]
+
   # ═══ Solar Array ═══
   defn = model.definitions.add("Solar Array")
   ents = defn.entities
@@ -212,7 +487,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face = grp.entities.add_face([250.mm,-920.mm,0.mm], [2350.mm,-920.mm,0.mm], [2350.mm,-880.mm,0.mm], [250.mm,-880.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(120.mm)
-  mat = model.materials["Tilt Frame front rail"] || model.materials.add("Tilt Frame front rail")
+  mat = model.materials["Stay inside plate"] || model.materials.add("Stay inside plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -223,7 +498,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face = grp.entities.add_face([250.mm,-2201.7175976009694.mm,0.mm], [2350.mm,-2201.7175976009694.mm,0.mm], [2350.mm,-2161.7175976009694.mm,0.mm], [250.mm,-2161.7175976009694.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(60.mm)
-  mat = model.materials["Tilt Frame front rail"] || model.materials.add("Tilt Frame front rail")
+  mat = model.materials["Stay inside plate"] || model.materials.add("Stay inside plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -234,7 +509,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face = grp.entities.add_face([250.mm,-2201.7175976009694.mm,0.mm], [290.mm,-2201.7175976009694.mm,0.mm], [290.mm,-2161.7175976009694.mm,0.mm], [250.mm,-2161.7175976009694.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(859.9999999999999.mm)
-  mat = model.materials["Tilt Frame front rail"] || model.materials.add("Tilt Frame front rail")
+  mat = model.materials["Stay inside plate"] || model.materials.add("Stay inside plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -245,7 +520,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face = grp.entities.add_face([2310.mm,-2201.7175976009694.mm,0.mm], [2350.mm,-2201.7175976009694.mm,0.mm], [2350.mm,-2161.7175976009694.mm,0.mm], [2310.mm,-2161.7175976009694.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(859.9999999999999.mm)
-  mat = model.materials["Tilt Frame front rail"] || model.materials.add("Tilt Frame front rail")
+  mat = model.materials["Stay inside plate"] || model.materials.add("Stay inside plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5941,24 +6216,35 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   # ═══ Power Core ═══
   defn = model.definitions.add("Power Core")
   ents = defn.entities
-  # EP plywood backing panel (lower, 18mm)
+  # EP plywood backing panel (18mm)
   grp = ents.add_group
-  grp.name = "EP plywood backing panel (lower, 18mm)"
-  face = grp.entities.add_face([1528.mm,-18.mm,138.mm], [2222.mm,-18.mm,138.mm], [2222.mm,0.mm,138.mm], [1528.mm,0.mm,138.mm])
+  grp.name = "EP plywood backing panel (18mm)"
+  face = grp.entities.add_face([1898.mm,-18.mm,138.mm], [2262.mm,-18.mm,138.mm], [2262.mm,0.mm,138.mm], [1898.mm,0.mm,138.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(1672.mm)
-  mat = model.materials["EP plywood backing panel (lower, 18mm)"] || model.materials.add("EP plywood backing panel (lower, 18mm)")
+  face.pushpull(1974.mm)
+  mat = model.materials["EP plywood backing panel (18mm)"] || model.materials.add("EP plywood backing panel (18mm)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
   grp.material = mat
 
-  # EP plywood backing panel (upper, 18mm)
+  # Plywood side lip (left, 18mm)
   grp = ents.add_group
-  grp.name = "EP plywood backing panel (upper, 18mm)"
-  face = grp.entities.add_face([1600.mm,-18.mm,1810.mm], [2222.mm,-18.mm,1810.mm], [2222.mm,0.mm,1810.mm], [1600.mm,0.mm,1810.mm])
+  grp.name = "Plywood side lip (left, 18mm)"
+  face = grp.entities.add_face([1898.mm,0.mm,138.mm], [1916.mm,0.mm,138.mm], [1916.mm,100.mm,138.mm], [1898.mm,100.mm,138.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(302.mm)
-  mat = model.materials["EP plywood backing panel (lower, 18mm)"] || model.materials.add("EP plywood backing panel (lower, 18mm)")
+  face.pushpull(1974.mm)
+  mat = model.materials["EP plywood backing panel (18mm)"] || model.materials.add("EP plywood backing panel (18mm)")
+  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Plywood side lip (right, 18mm)
+  grp = ents.add_group
+  grp.name = "Plywood side lip (right, 18mm)"
+  face = grp.entities.add_face([2244.mm,0.mm,138.mm], [2262.mm,0.mm,138.mm], [2262.mm,100.mm,138.mm], [2244.mm,100.mm,138.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(1974.mm)
+  mat = model.materials["EP plywood backing panel (18mm)"] || model.materials.add("EP plywood backing panel (18mm)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
   grp.material = mat
@@ -5991,16 +6277,38 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face = grp.entities.add_face([1918.mm,102.mm,1868.mm], [2123.mm,102.mm,1868.mm], [2123.mm,120.mm,1868.mm], [1918.mm,120.mm,1868.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(232.mm)
-  mat = model.materials["EP plywood backing panel (lower, 18mm)"] || model.materials.add("EP plywood backing panel (lower, 18mm)")
+  mat = model.materials["EP plywood backing panel (18mm)"] || model.materials.add("EP plywood backing panel (18mm)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 -> array disconnect -> MPPT)
+  # MPPT sub-panel gusset (ply)
   grp = ents.add_group
-  grp.name = "PV feed (MC4 -> array disconnect -> MPPT)"
+  grp.name = "MPPT sub-panel gusset (ply)"
+  face = grp.entities.add_face([1918.mm,0.mm,1868.mm], [1936.mm,0.mm,1868.mm], [1936.mm,120.mm,1868.mm], [1918.mm,120.mm,1868.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(232.mm)
+  mat = model.materials["EP plywood backing panel (18mm)"] || model.materials.add("EP plywood backing panel (18mm)")
+  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # MPPT sub-panel gusset (ply)
+  grp = ents.add_group
+  grp.name = "MPPT sub-panel gusset (ply)"
+  face = grp.entities.add_face([2105.mm,0.mm,1868.mm], [2123.mm,0.mm,1868.mm], [2123.mm,120.mm,1868.mm], [2105.mm,120.mm,1868.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(232.mm)
+  mat = model.materials["EP plywood backing panel (18mm)"] || model.materials.add("EP plywood backing panel (18mm)")
+  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV feed (MC4 -> array disconnect, top)
+  grp = ents.add_group
+  grp.name = "PV feed (MC4 -> array disconnect, top)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(333.79999999999995.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(783.8.mm, 0.mm, 0.mm)
   circle = ge.add_circle([1328.2.mm,22.mm,1884.mm], vec, 9.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -6010,12 +6318,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 -> array disconnect -> MPPT) elbow
+  # PV feed (MC4 -> array disconnect, top) elbow
   grp = ents.add_group
-  grp.name = "PV feed (MC4 -> array disconnect -> MPPT) elbow"
+  grp.name = "PV feed (MC4 -> array disconnect, top) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1662.mm,40.mm,1884.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 18.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1662.mm,22.mm,1884.mm], [1.000000,0.000000,0.000000], 9.mm, 16)
+  arc = ge.add_arc([2112.mm,22.mm,1866.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 18.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2112.mm,22.mm,1884.mm], [1.000000,0.000000,0.000000], 9.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
@@ -6023,12 +6331,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 -> array disconnect -> MPPT)
+  # PV feed (MC4 -> array disconnect, top)
   grp = ents.add_group
-  grp.name = "PV feed (MC4 -> array disconnect -> MPPT)"
+  grp.name = "PV feed (MC4 -> array disconnect, top)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 62.mm, 0.mm)
-  circle = ge.add_circle([1680.mm,40.mm,1884.mm], vec, 9.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -716.mm)
+  circle = ge.add_circle([2130.mm,22.mm,1866.mm], vec, 9.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6037,25 +6345,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 -> array disconnect -> MPPT) elbow
+  # PV feed (array disconnect -> MPPT, top)
   grp = ents.add_group
-  grp.name = "PV feed (MC4 -> array disconnect -> MPPT) elbow"
+  grp.name = "PV feed (array disconnect -> MPPT, top)"
   ge = grp.entities
-  arc = ge.add_arc([1698.mm,102.mm,1884.mm], [-1.000000,0.000000,0.000000], [0.000000,0.000000,-1.000000], 18.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1680.mm,102.mm,1884.mm], [0.000000,1.000000,0.000000], 9.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
-  mat.color = Sketchup::Color.new(45, 122, 45)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # PV feed (MC4 -> array disconnect -> MPPT)
-  grp = ents.add_group
-  grp.name = "PV feed (MC4 -> array disconnect -> MPPT)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(234.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1698.mm,120.mm,1884.mm], vec, 9.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 800.mm)
+  circle = ge.add_circle([2090.mm,22.mm,1150.mm], vec, 9.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6064,12 +6359,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 -> array disconnect -> MPPT) elbow
+  # PV feed (array disconnect -> MPPT, top) elbow
   grp = ents.add_group
-  grp.name = "PV feed (MC4 -> array disconnect -> MPPT) elbow"
+  grp.name = "PV feed (array disconnect -> MPPT, top) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1932.mm,120.mm,1902.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 18.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1932.mm,120.mm,1884.mm], [1.000000,0.000000,0.000000], 9.mm, 16)
+  arc = ge.add_arc([2090.mm,40.mm,1950.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 18.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2090.mm,22.mm,1950.mm], [0.000000,0.000000,1.000000], 9.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
@@ -6077,12 +6372,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 -> array disconnect -> MPPT)
+  # PV feed (array disconnect -> MPPT, top)
   grp = ents.add_group
-  grp.name = "PV feed (MC4 -> array disconnect -> MPPT)"
+  grp.name = "PV feed (array disconnect -> MPPT, top)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 52.4225745704216.mm)
-  circle = ge.add_circle([1950.mm,120.mm,1902.mm], vec, 9.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 77.47901099647534.mm, 0.mm)
+  circle = ge.add_circle([2090.mm,40.mm,1968.mm], vec, 9.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6091,12 +6386,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 -> array disconnect -> MPPT) elbow
+  # PV feed (array disconnect -> MPPT, top) elbow
   grp = ents.add_group
-  grp.name = "PV feed (MC4 -> array disconnect -> MPPT) elbow"
+  grp.name = "PV feed (array disconnect -> MPPT, top) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1950.mm,138.mm,1954.4225745704216.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 18.mm, 0.0, 1.292497, 8)
-  circle = ge.add_circle([1950.mm,120.mm,1954.4225745704216.mm], [0.000000,0.000000,1.000000], 9.mm, 16)
+  arc = ge.add_arc([2090.mm,117.47901099647534.mm,1986.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 18.mm, 0.0, 0.278300, 8)
+  circle = ge.add_circle([2090.mm,117.47901099647534.mm,1968.mm], [0.000000,1.000000,0.000000], 9.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
@@ -6104,12 +6399,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 -> array disconnect -> MPPT)
+  # PV feed (array disconnect -> MPPT, top)
   grp = ents.add_group
-  grp.name = "PV feed (MC4 -> array disconnect -> MPPT)"
+  grp.name = "PV feed (array disconnect -> MPPT, top)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 21.9449803021528.mm, 6.269994372043584.mm)
-  circle = ge.add_circle([1950.mm,133.0550196978472.mm,1971.7300056279564.mm], vec, 9.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 32.57600870137186.mm, 9.307431057534814.mm)
+  circle = ge.add_circle([2090.mm,122.42399129862814.mm,1968.6925689424652.mm], vec, 9.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6232,7 +6527,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Main Disconnect (m-Series)"
   ge = grp.entities
-  circle = ge.add_circle([2150.mm,165.mm,1620.mm], [0,1,0], 35.mm, 24)
+  circle = ge.add_circle([2150.mm,0.mm,1620.mm], [0,1,0], 35.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -6245,8 +6540,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Main feed (disconnect → busbar +)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -103.mm, 0.mm)
-  circle = ge.add_circle([2150.mm,170.mm,1655.mm], vec, 11.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 7.649999999999999.mm, 0.mm)
+  circle = ge.add_circle([2150.mm,30.mm,1655.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6259,8 +6554,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Main feed (disconnect → busbar +) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2150.mm,67.mm,1677.mm], [0.000000,0.000000,-1.000000], [-1.000000,0.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2150.mm,67.mm,1655.mm], [0.000000,-1.000000,0.000000], 11.mm, 16)
+  arc = ge.add_arc([2150.mm,37.65.mm,1662.35.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 7.3500000000000005.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2150.mm,37.65.mm,1655.mm], [0.000000,1.000000,0.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
@@ -6272,8 +6567,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Main feed (disconnect → busbar +)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 14.279999999999973.mm)
-  circle = ge.add_circle([2150.mm,45.mm,1677.mm], vec, 11.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 21.751500000000078.mm)
+  circle = ge.add_circle([2150.mm,45.mm,1662.35.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6286,8 +6581,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Main feed (disconnect → busbar +) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2136.28.mm,45.mm,1691.28.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 13.72.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2150.mm,45.mm,1691.28.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
+  arc = ge.add_arc([2129.1014999999998.mm,45.mm,1684.1015.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 20.89850000000005.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2150.mm,45.mm,1684.1015.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
@@ -6299,8 +6594,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Main feed (disconnect → busbar +)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-91.2800000000002.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2136.28.mm,45.mm,1705.mm], vec, 11.mm, 16)
+  vec = Geom::Vector3d.new(-84.10149999999976.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2129.1014999999998.mm,45.mm,1705.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6324,7 +6619,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Interior E-stop collar (safety yellow)"
   ge = grp.entities
-  circle = ge.add_circle([2060.mm,165.mm,1580.mm], [0,1,0], 30.mm, 24)
+  circle = ge.add_circle([1960.mm,0.mm,1000.mm], [0,1,0], 30.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(12.mm)
@@ -6337,7 +6632,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Interior E-stop button (red mushroom)"
   ge = grp.entities
-  circle = ge.add_circle([2060.mm,177.mm,1580.mm], [0,1,0], 24.mm, 24)
+  circle = ge.add_circle([1960.mm,12.mm,1000.mm], [0,1,0], 24.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(26.mm)
@@ -6350,8 +6645,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "E-stop trip line (contactor coil -> interior E-stop)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -30.96911150685467.mm, 17.6966351467741.mm)
-  circle = ge.add_circle([1620.mm,45.mm,464.mm], vec, 4.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -28.054054863004325.mm, 16.030888493145312.mm)
+  circle = ge.add_circle([1980.mm,45.mm,714.mm], vec, 4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6364,8 +6659,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "E-stop trip line (contactor coil -> interior E-stop) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1620.mm,18.mm,488.64258028376975.mm], [0.000000,-0.496139,-0.868243], [-1.000000,0.000000,0.000000], 8.mm, 0.0, 1.051650, 8)
-  circle = ge.add_circle([1620.mm,14.03088849314533.mm,481.6966351467741.mm], [0.000000,-0.868243,0.496139], 4.mm, 16)
+  arc = ge.add_arc([1972.mm,16.945945136995675.mm,730.0308884931453.mm], [1.000000,0.000000,0.000000], [-0.000000,-0.496139,-0.868243], 8.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1980.mm,16.945945136995675.mm,730.0308884931453.mm], [0.000000,-0.868243,0.496139], 4.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
@@ -6377,8 +6672,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "E-stop trip line (contactor coil -> interior E-stop)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 153.35741971623025.mm)
-  circle = ge.add_circle([1620.mm,10.mm,488.64258028376975.mm], vec, 4.mm, 16)
+  vec = Geom::Vector3d.new(-6.119999999999891.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1972.mm,10.mm,734.mm], vec, 4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6391,8 +6686,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "E-stop trip line (contactor coil -> interior E-stop) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1628.mm,10.mm,642.mm], [-1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 8.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1620.mm,10.mm,642.mm], [0.000000,0.000000,1.000000], 4.mm, 16)
+  arc = ge.add_arc([1965.88.mm,10.mm,739.88.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 5.880000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1965.88.mm,10.mm,734.mm], [-1.000000,0.000000,0.000000], 4.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
@@ -6404,8 +6699,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "E-stop trip line (contactor coil -> interior E-stop)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(424.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1628.mm,10.mm,650.mm], vec, 4.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 255.22000000000003.mm)
+  circle = ge.add_circle([1960.mm,10.mm,739.88.mm], vec, 4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6418,8 +6713,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "E-stop trip line (contactor coil -> interior E-stop) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2052.mm,10.mm,658.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 8.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2052.mm,10.mm,650.mm], [1.000000,0.000000,0.000000], 4.mm, 16)
+  arc = ge.add_arc([1960.mm,5.099999999999999.mm,995.1.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 4.900000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1960.mm,10.mm,995.1.mm], [0.000000,0.000000,1.000000], 4.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
@@ -6431,35 +6726,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "E-stop trip line (contactor coil -> interior E-stop)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 914.mm)
-  circle = ge.add_circle([2060.mm,10.mm,658.mm], vec, 4.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
-  mat.color = Sketchup::Color.new(88, 96, 112)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # E-stop trip line (contactor coil -> interior E-stop) elbow
-  grp = ents.add_group
-  grp.name = "E-stop trip line (contactor coil -> interior E-stop) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([2060.mm,18.mm,1572.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 8.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2060.mm,10.mm,1572.mm], [0.000000,0.000000,1.000000], 4.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
-  mat.color = Sketchup::Color.new(88, 96, 112)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # E-stop trip line (contactor coil -> interior E-stop)
-  grp = ents.add_group
-  grp.name = "E-stop trip line (contactor coil -> interior E-stop)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 147.mm, 0.mm)
-  circle = ge.add_circle([2060.mm,18.mm,1580.mm], vec, 4.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -5.1.mm, 0.mm)
+  circle = ge.add_circle([1960.mm,5.1.mm,1000.mm], vec, 4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6472,8 +6740,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "E-stop parallel link (interior -> exterior E-stop)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -147.mm, 0.mm)
-  circle = ge.add_circle([2060.mm,165.mm,1580.mm], vec, 4.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 5.1.mm, 0.mm)
+  circle = ge.add_circle([1960.mm,0.mm,1000.mm], vec, 4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6486,8 +6754,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "E-stop parallel link (interior -> exterior E-stop) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2060.mm,18.mm,1588.mm], [0.000000,0.000000,-1.000000], [-1.000000,0.000000,0.000000], 8.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2060.mm,18.mm,1580.mm], [0.000000,-1.000000,0.000000], 4.mm, 16)
+  arc = ge.add_arc([1960.mm,5.1.mm,1004.9.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 4.900000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1960.mm,5.1.mm,1000.mm], [0.000000,1.000000,0.000000], 4.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
@@ -6499,8 +6767,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "E-stop parallel link (interior -> exterior E-stop)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 354.mm)
-  circle = ge.add_circle([2060.mm,10.mm,1588.mm], vec, 4.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 887.1.mm)
+  circle = ge.add_circle([1960.mm,10.mm,1004.9.mm], vec, 4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6513,8 +6781,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "E-stop parallel link (interior -> exterior E-stop) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2052.mm,10.mm,1942.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 8.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2060.mm,10.mm,1942.mm], [0.000000,0.000000,1.000000], 4.mm, 16)
+  arc = ge.add_arc([1952.mm,10.mm,1892.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 8.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1960.mm,10.mm,1892.mm], [0.000000,0.000000,1.000000], 4.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
@@ -6526,8 +6794,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "E-stop parallel link (interior -> exterior E-stop)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-624.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2052.mm,10.mm,1950.mm], vec, 4.mm, 16)
+  vec = Geom::Vector3d.new(-524.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1952.mm,10.mm,1900.mm], vec, 4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6540,8 +6808,35 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "E-stop parallel link (interior -> exterior E-stop) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1428.mm,2.mm,1950.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 8.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1428.mm,10.mm,1950.mm], [-1.000000,0.000000,0.000000], 4.mm, 16)
+  arc = ge.add_arc([1428.mm,10.mm,1908.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 8.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1428.mm,10.mm,1900.mm], [-1.000000,0.000000,0.000000], 4.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
+  mat.color = Sketchup::Color.new(88, 96, 112)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # E-stop parallel link (interior -> exterior E-stop)
+  grp = ents.add_group
+  grp.name = "E-stop parallel link (interior -> exterior E-stop)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 34.mm)
+  circle = ge.add_circle([1420.mm,10.mm,1908.mm], vec, 4.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
+  mat.color = Sketchup::Color.new(88, 96, 112)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # E-stop parallel link (interior -> exterior E-stop) elbow
+  grp = ents.add_group
+  grp.name = "E-stop parallel link (interior -> exterior E-stop) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1420.mm,2.mm,1942.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 8.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1420.mm,10.mm,1942.mm], [0.000000,0.000000,1.000000], 4.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
@@ -6573,7 +6868,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   # Battery 1 (12V 100Ah LiFePO4)
   grp = ents.add_group
   grp.name = "Battery 1 (12V 100Ah LiFePO4)"
-  face = grp.entities.add_face([1540.mm,0.mm,150.mm], [1870.mm,0.mm,150.mm], [1870.mm,172.mm,150.mm], [1540.mm,172.mm,150.mm])
+  face = grp.entities.add_face([1910.mm,0.mm,150.mm], [2240.mm,0.mm,150.mm], [2240.mm,172.mm,150.mm], [1910.mm,172.mm,150.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(214.mm)
   mat = model.materials["Battery 1 (12V 100Ah LiFePO4)"] || model.materials.add("Battery 1 (12V 100Ah LiFePO4)")
@@ -6584,7 +6879,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   # Battery 2 (optional 2nd pack, ghosted)
   grp = ents.add_group
   grp.name = "Battery 2 (optional 2nd pack, ghosted)"
-  face = grp.entities.add_face([1890.mm,0.mm,150.mm], [2220.mm,0.mm,150.mm], [2220.mm,172.mm,150.mm], [1890.mm,172.mm,150.mm])
+  face = grp.entities.add_face([1910.mm,0.mm,380.mm], [2240.mm,0.mm,380.mm], [2240.mm,172.mm,380.mm], [1910.mm,172.mm,380.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(214.mm)
   mat = model.materials["Battery 2 (optional 2nd pack, ghosted)"] || model.materials.add("Battery 2 (optional 2nd pack, ghosted)")
@@ -6595,7 +6890,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   # Battery Contactor (ML-RBS)
   grp = ents.add_group
   grp.name = "Battery Contactor (ML-RBS)"
-  face = grp.entities.add_face([1560.mm,15.mm,364.mm], [1680.mm,15.mm,364.mm], [1680.mm,105.mm,364.mm], [1560.mm,105.mm,364.mm])
+  face = grp.entities.add_face([1920.mm,15.mm,614.mm], [2040.mm,15.mm,614.mm], [2040.mm,105.mm,614.mm], [1920.mm,105.mm,614.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(100.mm)
   mat = model.materials["Interior E-stop button (red mushroom)"] || model.materials.add("Interior E-stop button (red mushroom)")
@@ -6606,7 +6901,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   # MRBF Main Fuse (on + post)
   grp = ents.add_group
   grp.name = "MRBF Main Fuse (on + post)"
-  face = grp.entities.add_face([1695.mm,20.mm,364.mm], [1735.mm,20.mm,364.mm], [1735.mm,60.mm,364.mm], [1695.mm,60.mm,364.mm])
+  face = grp.entities.add_face([2060.mm,20.mm,614.mm], [2100.mm,20.mm,614.mm], [2100.mm,60.mm,614.mm], [2060.mm,60.mm,614.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["Charge-line Fuse (60A, MPPT -> battery)"] || model.materials.add("Charge-line Fuse (60A, MPPT -> battery)")
@@ -6618,8 +6913,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Battery + cable (2/0 AWG, MRBF → main disconnect)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 1161.mm)
-  circle = ge.add_circle([1715.mm,45.mm,402.mm], vec, 11.mm, 16)
+  vec = Geom::Vector3d.new(68.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2080.mm,45.mm,652.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6632,8 +6927,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Battery + cable (2/0 AWG, MRBF → main disconnect) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1737.mm,45.mm,1563.mm], [-1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1715.mm,45.mm,1563.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
+  arc = ge.add_arc([2148.mm,45.mm,674.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2148.mm,45.mm,652.mm], [1.000000,0.000000,0.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
@@ -6645,8 +6940,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Battery + cable (2/0 AWG, MRBF → main disconnect)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(391.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1737.mm,45.mm,1585.mm], vec, 11.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 901.2.mm)
+  circle = ge.add_circle([2170.mm,45.mm,674.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6659,8 +6954,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Battery + cable (2/0 AWG, MRBF → main disconnect) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2128.mm,67.mm,1585.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 22.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2128.mm,45.mm,1585.mm], [1.000000,0.000000,0.000000], 11.mm, 16)
+  arc = ge.add_arc([2160.2.mm,45.mm,1575.2.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 9.800000000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2170.mm,45.mm,1575.2.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
@@ -6672,8 +6967,35 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Battery + cable (2/0 AWG, MRBF → main disconnect)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 103.mm, 0.mm)
-  circle = ge.add_circle([2150.mm,67.mm,1585.mm], vec, 11.mm, 16)
+  vec = Geom::Vector3d.new(-5.201999999999771.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2160.2.mm,45.mm,1585.mm], vec, 11.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
+  mat.color = Sketchup::Color.new(139, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Battery + cable (2/0 AWG, MRBF → main disconnect) elbow
+  grp = ents.add_group
+  grp.name = "Battery + cable (2/0 AWG, MRBF → main disconnect) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([2154.998.mm,40.00200000000009.mm,1585.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 4.997999999999911.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2154.998.mm,45.mm,1585.mm], [-1.000000,0.000000,0.000000], 11.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
+  mat.color = Sketchup::Color.new(139, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Battery + cable (2/0 AWG, MRBF → main disconnect)
+  grp = ents.add_group
+  grp.name = "Battery + cable (2/0 AWG, MRBF → main disconnect)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -10.002000000000088.mm, 0.mm)
+  circle = ge.add_circle([2150.mm,40.00200000000009.mm,1585.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6686,8 +7008,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Battery − cable (2/0 AWG)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 1300.mm)
-  circle = ge.add_circle([1600.mm,60.mm,364.mm], vec, 11.mm, 16)
+  vec = Geom::Vector3d.new(78.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1950.mm,60.mm,594.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6700,8 +7022,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Battery − cable (2/0 AWG) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1622.mm,60.mm,1664.mm], [-1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1600.mm,60.mm,1664.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
+  arc = ge.add_arc([2028.mm,60.mm,616.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2028.mm,60.mm,594.mm], [1.000000,0.000000,0.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Battery − cable (2/0 AWG)"] || model.materials.add("Battery − cable (2/0 AWG)")
@@ -6713,8 +7035,35 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Battery − cable (2/0 AWG)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(328.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1622.mm,60.mm,1686.mm], vec, 11.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 1048.mm)
+  circle = ge.add_circle([2050.mm,60.mm,616.mm], vec, 11.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Battery − cable (2/0 AWG)"] || model.materials.add("Battery − cable (2/0 AWG)")
+  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Battery − cable (2/0 AWG) elbow
+  grp = ents.add_group
+  grp.name = "Battery − cable (2/0 AWG) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([2028.mm,60.mm,1664.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2050.mm,60.mm,1664.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Battery − cable (2/0 AWG)"] || model.materials.add("Battery − cable (2/0 AWG)")
+  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Battery − cable (2/0 AWG)
+  grp = ents.add_group
+  grp.name = "Battery − cable (2/0 AWG)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-78.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2028.mm,60.mm,1686.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6883,11 +7232,22 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   # PV Array Disconnect (load-break isolator)
   grp = ents.add_group
   grp.name = "PV Array Disconnect (load-break isolator)"
-  face = grp.entities.add_face([1610.mm,0.mm,1850.mm], [1680.mm,0.mm,1850.mm], [1680.mm,45.mm,1850.mm], [1610.mm,45.mm,1850.mm])
+  face = grp.entities.add_face([2075.mm,0.mm,1080.mm], [2145.mm,0.mm,1080.mm], [2145.mm,45.mm,1080.mm], [2075.mm,45.mm,1080.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(70.mm)
   mat = model.materials["Main Disconnect (m-Series)"] || model.materials.add("Main Disconnect (m-Series)")
   mat.color = Sketchup::Color.new(212, 58, 47)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV disconnect lever (red switch)
+  grp = ents.add_group
+  grp.name = "PV disconnect lever (red switch)"
+  face = grp.entities.add_face([2103.mm,45.mm,1100.mm], [2117.mm,45.mm,1100.mm], [2117.mm,85.mm,1100.mm], [2103.mm,85.mm,1100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["PV disconnect lever (red switch)"] || model.materials.add("PV disconnect lever (red switch)")
+  mat.color = Sketchup::Color.new(192, 32, 42)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8825,7 +9185,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   # Master pump switch (Cct C, on EP)
   grp = ents.add_group
   grp.name = "Master pump switch (Cct C, on EP)"
-  face = grp.entities.add_face([1953.5714285714287.mm,175.mm,1796.mm], [2003.5714285714287.mm,175.mm,1796.mm], [2003.5714285714287.mm,221.mm,1796.mm], [1953.5714285714287.mm,221.mm,1796.mm])
+  face = grp.entities.add_face([1953.5714285714287.mm,0.mm,1796.mm], [2003.5714285714287.mm,0.mm,1796.mm], [2003.5714285714287.mm,46.mm,1796.mm], [1953.5714285714287.mm,46.mm,1796.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(84.mm)
   mat = model.materials["Battery − cable (2/0 AWG)"] || model.materials.add("Battery − cable (2/0 AWG)")
@@ -8836,10 +9196,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   # Master switch lever (OFF cutoff)
   grp = ents.add_group
   grp.name = "Master switch lever (OFF cutoff)"
-  face = grp.entities.add_face([1970.5714285714287.mm,221.mm,1836.mm], [1986.5714285714287.mm,221.mm,1836.mm], [1986.5714285714287.mm,255.mm,1836.mm], [1970.5714285714287.mm,255.mm,1836.mm])
+  face = grp.entities.add_face([1970.5714285714287.mm,46.mm,1836.mm], [1986.5714285714287.mm,46.mm,1836.mm], [1986.5714285714287.mm,80.mm,1836.mm], [1970.5714285714287.mm,80.mm,1836.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
-  mat = model.materials["Master switch lever (OFF cutoff)"] || model.materials.add("Master switch lever (OFF cutoff)")
+  mat = model.materials["PV disconnect lever (red switch)"] || model.materials.add("PV disconnect lever (red switch)")
   mat.color = Sketchup::Color.new(192, 32, 42)
   mat.alpha = 1.0
   grp.material = mat
@@ -9965,14 +10325,14 @@ txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(2000.mm, 40.mm, 1710.mm)
 txt = entities.add_text("+/- BUSBARS", anc, Geom::Vector3d.new(420.mm, 640.mm, -120.mm))
 txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(2150.mm, 165.mm, 1620.mm)
+anc = Geom::Point3d.new(2150.mm, 0.mm, 1620.mm)
 txt = entities.add_text("MAIN DISCONNECT", anc, Geom::Vector3d.new(360.mm, 760.mm, -260.mm))
 txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(1620.mm, 40.mm, 414.mm)
+anc = Geom::Point3d.new(1970.mm, 40.mm, 674.mm)
 txt = entities.add_text("BATTERY CONTACTOR
 + MRBF main fuse", anc, Geom::Vector3d.new(-300.mm, 760.mm, 900.mm))
 txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(1660.mm, 60.mm, 250.mm)
+anc = Geom::Point3d.new(2060.mm, 60.mm, 250.mm)
 txt = entities.add_text("BATTERY 1x 100Ah
 (2nd pack ghosted)", anc, Geom::Vector3d.new(-320.mm, 640.mm, 760.mm))
 txt.layer = model.layers["Labels"] rescue nil
@@ -9992,7 +10352,7 @@ anc = Geom::Point3d.new(4874.mm, 1181.mm, 2230.mm)
 txt = entities.add_text("CCT-C PUMP DISTRIBUTION
 dist block → pumps (master sw on EP)", anc, Geom::Vector3d.new(-350.mm, -700.mm, 250.mm))
 txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(1645.mm, 22.mm, 1885.mm)
+anc = Geom::Point3d.new(2110.mm, 22.mm, 1115.mm)
 txt = entities.add_text("PV DISCONNECT
 (load-break, array->MPPT)", anc, Geom::Vector3d.new(300.mm, 560.mm, 320.mm))
 txt.layer = model.layers["Labels"] rescue nil
@@ -10000,9 +10360,9 @@ anc = Geom::Point3d.new(1950.mm, 95.mm, 1715.mm)
 txt = entities.add_text("60A CHARGE FUSE
 (MPPT -> battery)", anc, Geom::Vector3d.new(440.mm, 680.mm, 160.mm))
 txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(2060.mm, 203.mm, 1580.mm)
+anc = Geom::Point3d.new(1960.mm, 20.mm, 1000.mm)
 txt = entities.add_text("INTERIOR E-STOP
-(EP face, parallel)", anc, Geom::Vector3d.new(-340.mm, 560.mm, -160.mm))
+(parallel)", anc, Geom::Vector3d.new(-340.mm, 560.mm, -160.mm))
 txt.layer = model.layers["Labels"] rescue nil
 
 # ── In-model © + license credit (default layer → shown in every scene) ──

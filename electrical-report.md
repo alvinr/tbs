@@ -15,7 +15,7 @@ TBS-001 is designed for fully off-grid operation. All power comes from a solar a
 
 All loads run at **12V DC** - the one exception is the dedicated Circuit-E cooler inverter — see §7.6.
 
-**Interactive 3D model** — the solar array, the enclosure internals (MPPT / fuse block / busbars / disconnect), the battery, the external power panel, the Circuit-E inverter, and the color-coded circuit runs out to each load. Drag to orbit, scroll to zoom.
+**Interactive 3D model** — the solar array, the panel internals (MPPT / fuse block / busbars / disconnects), the battery, the external power panel, the Circuit-E inverter, and the color-coded circuit runs out to each load. Drag to orbit, scroll to zoom.
 
 <div class="sketchfab-embed-wrapper">
   <div style="position:relative;width:100%;padding-bottom:56.25%;">
@@ -108,7 +108,7 @@ A representative daylight day of **3 sequential prints** draws **~<!-- BEGIN ene
 | Max PV input | 100V OC, 50A charge current |
 | Battery voltage | 12V auto-detect |
 | Communication | Bluetooth (Victron Connect app) |
-| Mounting | Interior short wall, adjacent main enclosure |
+| Mounting | Interior short wall, adjacent main panel |
 | **Charge-line protection** | **60 A ANL/MIDI fuse on the MPPT→battery lead, close to the battery; charge conductor sized 6 AWG** |
 | Approximate cost | ~$200 + ~$15 (charge fuse) |
 
@@ -214,21 +214,22 @@ The switches are positioned near the electrical panel, accessible from the near 
 
 ## 7. Wiring Specification
 
-### 7.1 Main Enclosure
-IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior pinhole wall face. Contains:
+### 7.1 Main Panel (Plywood Backboard)
+An **18mm plywood backing panel** (~700 × 2000mm) on the interior pinhole-wall face — every component surface-mounts on it as an open, fully-visible backboard (no sealed box). The container interior is dry, so no weatherproof enclosure is used; keep the panel clear of any splash from the water system. It carries:
 
-- Victron MPPT controller (or external, hardwired)
+- Victron MPPT controller — on its own forward sub-panel, clear of the fuse-stack risers
+- **PV array disconnect** — DC load-break isolator in the PV path (array → MPPT), wired in-line on the panel (NEC 690.13)
 - Blue Sea 5026 12-circuit fuse block with busbars
 - Battery positive and negative busbars, fed from the battery through a terminal-mount **200A MRBF fuse** (on the battery + post, ≤180mm), a **remote battery contactor** (Blue Sea ML-RBS, tripped by **either the exterior power-panel E-stop or an interior E-stop on the EP face**, wired in parallel), and a **main disconnect switch** (Blue Sea m-Series 300A) — see §7.5
 - **MPPT charge-line fuse** — a 60A ANL/MIDI fuse on the MPPT→battery lead at the busbar (§5.1)
 - **Interior E-stop** — a red mushroom IP65 button on the EP face, paralleled with the exterior E-stop, so the contactor can also be tripped from inside the container (§7.5)
 - Shore charger output terminals (with the 20A output fuse, §5.3)
-- **Circuit E inverter** — Victron Phoenix 12/375 (GFCI version) wall-mounted on the pinhole wall adjacent to the enclosure (below the EP, above the battery), with a short fused DC feed and its own DC disconnect (§7.6). Converts 12V DC → 120V AC for the evaporative cooler only.
+- **Circuit E inverter** — Victron Phoenix 12/375 (GFCI version) mounted on the EP plywood panel (below the fuse gear, above the battery), with a short fused DC feed and its own DC disconnect (§7.6). Converts 12V DC → 120V AC for the evaporative cooler only.
 
-**Sheet 5 — Main Enclosure Panel Layout**
-Front elevation of the enclosure interior (mirrors the 3D model): MPPT, the color-coded **A–G blade-fuse stack** (Blue Sea 5026), the +/− busbars and the rotary main disconnect, with the internal feed one-line **Battery(+) → 200A MRBF → main disconnect → (+) busbar → fuse stack → circuits** (and the PV-charge path through the MPPT). A fuse schedule lists each position's circuit, rating, wire gauge and load.
+**Sheet 5 — Main Panel Layout**
+Front elevation of the EP plywood panel (mirrors the 3D model): MPPT, the color-coded **A–G blade-fuse stack** (Blue Sea 5026), the +/− busbars and the rotary main disconnect, with the internal feed one-line **Battery(+) → 200A MRBF → main disconnect → (+) busbar → fuse stack → circuits** (and the PV-charge path through the MPPT). A fuse schedule lists each position's circuit, rating, wire gauge and load.
 
-![TBS-ELEC Sheet 5 — Main Enclosure Panel Layout + Fuse Schedule](assets/electrical-sheet5.png)
+![TBS-ELEC Sheet 5 — Main Panel Layout + Fuse Schedule](assets/electrical-sheet5.png)
 
 **Sheet 2 — Container Wiring Layout**
 Top-down floor plan (1:60 scale) showing all component positions, conduit routes, penetrations, drum panel, and connection points.
@@ -262,7 +263,7 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 - **Circuit E (evaporative cooler, via inverter):** The cooler is a 120V AC unit operating outside the container during sessions. The **DC side** is short: a fused 10 AWG feed (~1m) from the fuse block to the wall-mounted inverter, with its own DC disconnect. The **AC side** runs from the inverter's GFCI output along the ceiling trunking, down the pinhole wall to the external power panel, and terminates at the panel's weatherproof GFCI-fed NEMA 5-15R outlet (in-use cover). On the exterior, a 1.5m outdoor-rated SJOOW cord (NEMA 5-15P each end) connects the outlet to the cooler. The cord is unplugged and stowed inside for transport. Full grounding/GFCI design in §7.6.
 - **Circuit C (water pumps P-01–P-05):** The single 14 AWG Circuit-C feed is switched at a **master pump switch on the Electrical Panel (EP)** — one IP-rated manual cutoff for the whole pump circuit, upstream of everything — then runs along the ceiling trunking to a **12V DC distribution block** (positive bus + shared negative bus) on the rear of the Corridor Plumbing Panel, which feeds each corridor pump directly via a short **16 AWG** branch (~0.5–1m; 7.5A per pump). The four corridor pumps stack in a single column (bottom→top: ACC-01, P-01, P-04, P-05, P-03); P-02 (Brown recycle) taps the switched feed on the Pinhole-Wall panel. There are **no per-pump switches** — each Shurflo 2088 runs on its **internal demand/pressure switch** when its valves open, and the pumps are sequenced by opening the relevant valves (**one at a time**; simultaneous operation is not intended). The 15A circuit fuse protects the 14 AWG feed and covers a single pump (90W / 7.5A) with margin. The distribution block is in the wet zone — IP-rated, sealed, mounted above the spill line with drip loops (§7.5); the master switch is on the EP, clear of the wet zone.
 
-**Grounding:** Bond the container steel body to the battery negative busbar using 4 AWG green/yellow wire at the main enclosure. Drive an 8-foot copper ground stake at the container foundation and connect to the main enclosure earth terminal. The inverter chassis, AC equipment-ground, and cooler ground bond to this same single point — see §7.6.
+**Grounding:** Bond the container steel body to the battery negative busbar using 4 AWG green/yellow wire at the main panel. Drive an 8-foot copper ground stake at the container foundation and connect to the main panel earth terminal. The inverter chassis, AC equipment-ground, and cooler ground bond to this same single point — see §7.6.
 
 **Labelling:** Brady M210 wire labels at every terminal and every connector. Labels follow the circuit letter scheme (A–G) plus device description. Re-label after any wiring change.
 
@@ -282,10 +283,10 @@ Scale engineering elevation of the Circuit-C pump distribution on the corridor p
 
 ![TBS-ELEC Sheet 4 — Plumbing-Panel Pump Power (Circuit C)](assets/electrical-sheet4.png)
 
-**Sheet 5 — Main Enclosure Panel Layout**
-Front elevation of the IP65 enclosure interior (the 2D companion to the electrical 3D model's `power_core`): MPPT on top, the color-coded A–G blade-fuse stack on the Blue Sea 5026, the +/− busbars, the rotary main disconnect, and the **Circuit-C master pump switch** (the single pump cutoff — red-lever IP disconnect), with the internal feed one-line (Battery(+) → 200A MRBF → main disconnect → (+) busbar → fuse stack → circuits) and the PV-charge path. Includes a fuse schedule (position / circuit / rating / wire / load). See §7.1 and §7.3.
+**Sheet 5 — Main Panel Layout**
+Front elevation of the EP plywood panel (the 2D companion to the electrical 3D model's `power_core`): MPPT on top, the color-coded A–G blade-fuse stack on the Blue Sea 5026, the +/− busbars, the rotary main disconnect, and the **Circuit-C master pump switch** (the single pump cutoff — red-lever IP disconnect), with the internal feed one-line (Battery(+) → 200A MRBF → main disconnect → (+) busbar → fuse stack → circuits) and the PV-charge path. Includes a fuse schedule (position / circuit / rating / wire / load). See §7.1 and §7.3.
 
-![TBS-ELEC Sheet 5 — Main Enclosure Panel Layout + Fuse Schedule](assets/electrical-sheet5.png)
+![TBS-ELEC Sheet 5 — Main Panel Layout + Fuse Schedule](assets/electrical-sheet5.png)
 
 **Sheet 7 — System Schematic (Symbol Diagram)**
 The whole 12V DC system drawn as a traditional **symbol-based electrical schematic** — the companion to the Sheet-1 block one-line. Standard symbols (battery cells, fuse, isolator, contactor, NC E-stop, motor, lamp, ground) trace every conductor: PV array → PV isolator → MPPT → 60A charge fuse → battery → 200A MRBF → contactor **K1** → main disconnect → the Blue Sea 5026 positive bus → the seven load circuits (A–G, each a fuse + load) → negative bus → chassis earth. The **E-stop loop** (2× NC in series holding the K1 coil) and the shore charger are shown explicitly. Not to scale — a connection schematic. See §7.5 (protection) and §7.6 (AC isolation).
@@ -403,7 +404,7 @@ All US/SoCal sources. Prices approximate as of 2026.
 | Deutsch DT connectors | DT 2-pin, 10 sets | Waytek Wire | ~$30 |
 | Cable trunking | 40 × 25mm PVC, 5m lengths × 4 | Lowe's / McMaster-Carr | ~$40 |
 | Corrugated conduit | Gray, 10mm ID, 10m | McMaster-Carr 7828K48 | ~$30 |
-| IP65 enclosure | 300 × 200 × 130mm | Polycase / Amazon | ~$60 |
+| EP plywood backing panel | 18mm, ~700×2000mm | Home Depot / Lumber yard | ~$60 |
 | Brady label kit | M210 with wire label cartridge | McMaster-Carr / Amazon | ~$80 |
 | NEMA 5-15R inlet | Weatherproof outlet box | Leviton / Amazon | ~$25 |
 | Cooler inverter | Victron Phoenix 12/375, **GFCI version** (12V→120V pure-sine, Circuit E) | [Victron](https://www.victronenergy.com/inverters/phoenix-inverter-vedirect-250va-800va) / Amazon | ~$210 |

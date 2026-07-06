@@ -24,7 +24,13 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-_Nothing yet — add a bullet per notable change here as work lands._
+- **Electrical panel (EP) rework** — reworked the EP across the electrical + overview 3D models, the 2D
+  electrical diagrams, and the parts/cost/report: the IP65 enclosure box is replaced by an open **plywood
+  backing panel** (every component surface-mounts on it — MPPT on a forward sub-panel, fuse block, busbars,
+  disconnects, inverter, battery bank); the MPPT is pulled forward clear of the fuse-stack risers; the **PV
+  array disconnect** is brought onto the panel and wired **in-line**; both E-stops are wired to the contactor
+  coil loop; and the battery DC cables now land on the disconnect terminals. Parts: `ip65-enclosure` →
+  `ep-backing-panel` (18mm ply, ~$60, cost-neutral).
 
 ## [0.1] — 2026-07-03
 

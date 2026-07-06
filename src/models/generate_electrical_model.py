@@ -238,11 +238,13 @@ def power_core():
     p = []
     ez = EP_H_LO
     eh = EP_H_HI - EP_H_LO
-    # Full-face plywood backing panel (18mm) that all EP components mount on — replaces the ghosted box.
-    # Extended DOWN to cover the Cct-E inverter (just below the EP) so it mounts on the panel too.
-    _ply_bot = INVERTER_Z - 20
-    p.append(ov.ruby_box("EP plywood backing panel (18mm)", EP_X - 12, -18, _ply_bot,
-                         EP_W + 24, 18, (EP_H_HI + 12) - _ply_bot, color=ov.C_PLY))
+    # Full plywood backing panel (18mm) — spans the whole EP wall so EVERY component surface-mounts
+    # on it: from the battery bank + contactor at the floor, up past the inverter to the EP gear, and
+    # wide enough to back the (widest) battery bank. Replaces the ghosted enclosure box.
+    _ply_bot = BA_H_LO - 12
+    _ply_x0 = BA_X - 12
+    p.append(ov.ruby_box("EP plywood backing panel (18mm)", _ply_x0, -18, _ply_bot,
+                         (EP_X + EP_W + 12) - _ply_x0, 18, (EP_H_HI + 12) - _ply_bot, color=ov.C_PLY))
     p.append(ov.ruby_box("MPPT Controller (100/50)", EP_X + 15, 120,
                          EP_H_HI - MPPT_H - 30, MPPT_W, MPPT_D, MPPT_H, color="#3A5BA0"))
     # Plywood backing panel — extends the EP mounting board FORWARD to the relocated MPPT plane so the
@@ -283,7 +285,7 @@ def power_core():
     # whole bank — and every circuit fed off it — is isolated when the knob is OFF.
     disc_x = EP_X + 240
     p.append(ov.ruby_pipe_run("Main feed (disconnect → busbar +)",
-                              _dedup([(disc_x, 130, ez + 120 + 35),     # disconnect LOAD terminal (top)
+                              _dedup([(disc_x, 170, ez + 120 + 35),     # lands ON the disconnect LOAD terminal (top)
                                       (disc_x, 45, ez + 120 + 35),      # out toward the busbar plane
                                       (disc_x, 45, ez + 205),           # rise to busbar(+) level
                                       (EP_X + 15 + BUSBAR_L, 45, ez + 205)]),  # over to busbar(+) end
@@ -339,7 +341,7 @@ def battery():
                               _dedup([(BA_X + CONTACTOR_W + 55, 45, BA_H_HI + MRBF_H),
                                       (BA_X + CONTACTOR_W + 55, 45, disc_z - 35),
                                       (disc_x, 45, disc_z - 35),
-                                      (disc_x, 130, disc_z - 35)]),
+                                      (disc_x, 170, disc_z - 35)]),   # lands ON the disconnect LINE terminal
                               11, color="#8B1A1A"))
     p.append(ov.ruby_pipe_run("Battery − cable (2/0 AWG)",
                               _dedup([(BA_X + 60, 60, BA_H_HI),

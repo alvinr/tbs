@@ -5944,9 +5944,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   # EP plywood backing panel (18mm)
   grp = ents.add_group
   grp.name = "EP plywood backing panel (18mm)"
-  face = grp.entities.add_face([1898.mm,-18.mm,1160.mm], [2222.mm,-18.mm,1160.mm], [2222.mm,0.mm,1160.mm], [1898.mm,0.mm,1160.mm])
+  face = grp.entities.add_face([1528.mm,-18.mm,138.mm], [2222.mm,-18.mm,138.mm], [2222.mm,0.mm,138.mm], [1528.mm,0.mm,138.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(952.mm)
+  face.pushpull(1974.mm)
   mat = model.materials["EP plywood backing panel (18mm)"] || model.materials.add("EP plywood backing panel (18mm)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
@@ -6196,8 +6196,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Main feed (disconnect → busbar +)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -63.mm, 0.mm)
-  circle = ge.add_circle([2150.mm,130.mm,1655.mm], vec, 11.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -103.mm, 0.mm)
+  circle = ge.add_circle([2150.mm,170.mm,1655.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6596,7 +6596,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Battery + cable (2/0 AWG, MRBF → main disconnect)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 63.mm, 0.mm)
+  vec = Geom::Vector3d.new(0.mm, 103.mm, 0.mm)
   circle = ge.add_circle([2150.mm,67.mm,1585.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0

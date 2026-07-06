@@ -65,7 +65,10 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
 - [x] **Gallery-only diagrams — DONE (won't-do).** Gallery-only PNGs are fine without a dedicated owning report — they live in the `all-diagrams.md` visual index. That gallery is now **excluded from the brochure PDF** (`BROCHURE_EXCLUDE`) so the 100+ images don't bloat it.
 - [ ] **`tilt-swing-board-analysis.md` §4** — the combined C0–C8 renders duplicate `distortion-renders.md`
   §3 with extra commentary; merge the two docs or point §4 to the gallery. (Inline TODO in the doc.)
-- [ ] **`component-dependency-map.md`** — the "Portacool note + See Also" section still open.
+- [x] **`component-dependency-map.md` — DONE.** Portacool note was already resolved (§1.8 = Hessaire
+  MC18M). "See Also" done: extended the full **Reports:** + **Diagrams:** cross-ref pair (previously only
+  on §1.8) to all 17 §1 registry entries — reports researched with verified section refs, diagrams from
+  the §3 matrix. Injector blocks unchanged + green.
 - [ ] **`plumbing-report.md` §3.2** — optional light re-review; touched in the master-switch→EP cascade
   but still carries its 2026-06-22 editorial "done" mark.
 

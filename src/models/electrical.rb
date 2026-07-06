@@ -5941,15 +5941,15 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   # ═══ Power Core ═══
   defn = model.definitions.add("Power Core")
   ents = defn.entities
-  # Enclosure (IP65, ghosted)
+  # EP plywood backing panel (18mm)
   grp = ents.add_group
-  grp.name = "Enclosure (IP65, ghosted)"
-  face = grp.entities.add_face([1898.mm,0.mm,1488.mm], [2222.mm,0.mm,1488.mm], [2222.mm,171.mm,1488.mm], [1898.mm,171.mm,1488.mm])
+  grp.name = "EP plywood backing panel (18mm)"
+  face = grp.entities.add_face([1898.mm,-18.mm,1488.mm], [2222.mm,-18.mm,1488.mm], [2222.mm,0.mm,1488.mm], [1898.mm,0.mm,1488.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(624.mm)
-  mat = model.materials["Enclosure (IP65, ghosted)"] || model.materials.add("Enclosure (IP65, ghosted)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 0.12
+  mat = model.materials["EP plywood backing panel (18mm)"] || model.materials.add("EP plywood backing panel (18mm)")
+  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.alpha = 1.0
   grp.material = mat
 
   # MPPT Controller (100/50)
@@ -5969,7 +5969,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face = grp.entities.add_face([1918.mm,102.mm,1868.mm], [2123.mm,102.mm,1868.mm], [2123.mm,120.mm,1868.mm], [1918.mm,120.mm,1868.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(232.mm)
-  mat = model.materials["MPPT backing panel (18mm ply)"] || model.materials.add("MPPT backing panel (18mm ply)")
+  mat = model.materials["EP plywood backing panel (18mm)"] || model.materials.add("EP plywood backing panel (18mm)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
   grp.material = mat

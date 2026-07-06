@@ -232,14 +232,15 @@ def context():
 
 
 def power_core():
-    """Ghosted IP65 enclosure around the EP volume + its internals: MPPT, fuse block,
-    +/- busbars, rotary main disconnect (knob on the face)."""
+    """EP internals on a PLYWOOD BACKING PANEL (no enclosure box): MPPT, fuse block,
+    +/- busbars, rotary main disconnect (knob on the face). All components surface-mount
+    on the ply; the MPPT sits forward on its own sub-panel to clear the fuse-stack risers."""
     p = []
     ez = EP_H_LO
     eh = EP_H_HI - EP_H_LO
-    p.append(ov.ruby_box("Enclosure (IP65, ghosted)", EP_X - 12, 0, ez - 12,
-                         EP_W + 24, ENCL_SHELL_D + 6, eh + 24,
-                         color=ov.C_STEEL, alpha=0.12))
+    # Full-face plywood backing panel (18mm) that all EP components mount on — replaces the ghosted box.
+    p.append(ov.ruby_box("EP plywood backing panel (18mm)", EP_X - 12, -18, ez - 12,
+                         EP_W + 24, 18, eh + 24, color=ov.C_PLY))
     p.append(ov.ruby_box("MPPT Controller (100/50)", EP_X + 15, 120,
                          EP_H_HI - MPPT_H - 30, MPPT_W, MPPT_D, MPPT_H, color="#3A5BA0"))
     # Plywood backing panel — extends the EP mounting board FORWARD to the relocated MPPT plane so the

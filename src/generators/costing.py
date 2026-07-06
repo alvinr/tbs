@@ -528,24 +528,32 @@ def _pct(mid: int, cap: int) -> str:
 # roll-up + percentage are computed sums of the levers below; the remaining bands are single-
 # sourced here as declared estimates (they were hand-typed in the report). This ends the
 # duplication and lets the roll-up cascade.
-#   Bucket B (TODO): model each alternative CONFIGURATION so levers 2–5 become real
-#   `as_built − alternative` subtractions instead of declared bands — a WWT-grade container line,
-#   a 100 Ah battery + a 2-panel solar option (the electrical BOM is only carried at subtotal
-#   level today, §5a), a galvanized-steel walkway-grating alt (§5 GRP premium), and the
-#   electric-actuation upgrade kit (lever #2 — which, being already ACTIONED into the manual
-#   build, is arguably a banked saving the roll-up double-counts; resolve when modeled).
+#   Bucket B (partially resolved 2026-07-05): solar is now a computed subtraction (drop 1×
+#   solar-panel-200w), and modeling against the BOM showed two "levers" were phantom — film is BANKED
+#   (manual is the standard build) and the battery is ALREADY 1×100Ah — so both were dropped from the
+#   roll-up (see the SAVINGS_LEVERS note below). STILL OPEN: a costed chem-compatible poly-tray
+#   alternative for lever #3 (leave as a band until specced), and — not a §4 lever — a galvanized-steel
+#   walkway-grating alt vs the §5 GRP premium.
 def _lever_container() -> int:
     return SCEN_B["container"] - SCEN_A["container"]     # CW − WWT grade delta (computed)
 
 
-# (id, low, high, in_rollup) — levers 1–5 feed the §4 roll-up; #6 (valves) is listed, not rolled up.
+# (id, low, high, in_rollup) — only levers that are STILL AVAILABLE feed the §4 roll-up.
+# Bucket B (2026-07-05): modeling each alternative against the as-built BOM showed two levers are NOT
+# available savings, so they were dropped from the roll-up (they were double-counting):
+#   • film   — ACTIONED: manual IS the standard build, so the $827 electric-kit cost is already BANKED,
+#              not a saving you can still take.
+#   • battery — the costed standard is already 1×100Ah ($350); there is no 200→100Ah drop to make. A
+#              2nd pack is a +$375 optional UPGRADE (parts.py lifepo4-100ah note), i.e. an ADD, not a save.
+# The available levers: container (computed CW−WWT), solar (computed = drop 1× solar-panel-200w), and
+# tray (still a declared band — a chem-compatible poly-tray alternative isn't costed yet).
 SAVINGS_LEVERS = [
     ("container", _lever_container(), _lever_container(), True),
-    ("film",      827,  827,  True),      # B: electric-actuation upgrade kit (already actioned)
-    ("tray",      600,  1000, True),      # B: needs a costed poly-tray alternative
-    ("battery",   350,  350,  True),      # B: needs the electrical BOM itemized (200→100 Ah)
-    ("solar",     130,  130,  True),      # B: needs the electrical BOM itemized (3→2 panels)
-    ("valves",    100,  200,  False),     # estimate — no specced alternative
+    ("film",      827,  827,  False),     # #2 ACTIONED — $827 electric kit is BANKED into the manual standard, not available
+    ("tray",      600,  1000, True),      # #3 estimate — poly-tray alternative not yet costed (bucket B still open)
+    ("battery",   375,  375,  False),     # #4 standard is 1×100Ah; the 2nd pack is a +$375 UPGRADE, not a saving
+    ("solar",     133,  133,  True),      # #5 computed: drop 1× solar-panel-200w ($133 low=high, parts.py)
+    ("valves",    100,  200,  False),     # #6 estimate — no specced alternative
 ]
 
 

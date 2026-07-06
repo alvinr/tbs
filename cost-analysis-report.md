@@ -67,24 +67,24 @@ Ranked by dollar potential and ease. Status is updated as levers are actioned.
 | # | Lever | System | Saves | Ease / risk | Status |
 |---|---|---|--:|---|---|
 | 1 | **Container grade CW → WWT** (wind-water-tight used vs cargo-worthy — fine for a stationary darkroom) | Container | ~<!-- BEGIN costing:ca-lever-container -->$1,350<!-- END costing:ca-lever-container --> | Easy, low risk | Available |
-| 2 | **Drop film-plane electric actuation → manual** (the mechanism already supports manual tilt/swing) | Film plane | ~<!-- BEGIN costing:ca-lever-film -->$827<!-- END costing:ca-lever-film --> | Easy, if manual is acceptable | **Actioned 2026-06-13** — manual is now the standard build; electric is a documented upgrade only ([Cost Breakdown §4.4](project-cost-breakdown.md)) |
+| 2 | **Drop film-plane electric actuation → manual** (the mechanism already supports manual tilt/swing) | Film plane | ~<!-- BEGIN costing:ca-lever-film -->$827<!-- END costing:ca-lever-film --> | Easy, if manual is acceptable | **Actioned 2026-06-13 (banked)** — manual is the standard build, so this is already realized, not a still-available saving; electric is a documented upgrade only ([Cost Breakdown §4.4](project-cost-breakdown.md)) |
 | 3 | **Processing tray: 304 SS → poly / thinner gauge** | Water | ~<!-- BEGIN costing:ca-lever-tray-low -->$600<!-- END costing:ca-lever-tray-low -->–<!-- BEGIN costing:ca-lever-tray-high -->$1,000<!-- END costing:ca-lever-tray-high --> | Medium — chem-compat + stiffness check | Available (win-win — also cuts weight) |
-| 4 | **Battery 200 Ah → 100 Ah** ([Water System Report](water-system-report.md): 1×100 Ah ≈ 25+ prints/charge) | Power | ~<!-- BEGIN costing:ca-lever-battery -->$350<!-- END costing:ca-lever-battery --> | Easy, if fewer sessions/charge is OK | Available |
-| 5 | **Solar 3 → 2 panels** (if the power budget allows) | Power | ~<!-- BEGIN costing:ca-lever-solar -->$130<!-- END costing:ca-lever-solar --> | Easy | Available |
+| 4 | **Battery — already 1×100 Ah** (the lean config; [Water System Report](water-system-report.md): 1×100 Ah ≈ 25+ prints/charge). A 2nd pack is a +<!-- BEGIN costing:ca-lever-battery -->$375<!-- END costing:ca-lever-battery --> optional **upgrade**, not a saving. | Power | +$375 (add) | — | **Not a saving** — 100 Ah is the standard |
+| 5 | **Solar 3 → 2 panels** (if the power budget allows) | Power | ~<!-- BEGIN costing:ca-lever-solar -->$133<!-- END costing:ca-lever-solar --> | Easy | Available — computed (drop 1× 200W panel) |
 | 6 | **Valves / fittings value-engineering** | Water | ~<!-- BEGIN costing:ca-lever-valves-low -->$100<!-- END costing:ca-lever-valves-low -->–<!-- BEGIN costing:ca-lever-valves-high -->$200<!-- END costing:ca-lever-valves-high --> | Medium | Available |
 
-Levers 1–5 together trim **~<!-- BEGIN costing:ca-savings-low -->$3,250<!-- END costing:ca-savings-low -->–<!-- BEGIN costing:ca-savings-high -->$3,650<!-- END costing:ca-savings-high -->** off the <!-- BEGIN costing:ca-capital -->$24,289<!-- END costing:ca-capital --> capital build (**~<!-- BEGIN costing:ca-savings-pct-low -->13<!-- END costing:ca-savings-pct-low -->–<!-- BEGIN costing:ca-savings-pct-high -->15<!-- END costing:ca-savings-pct-high -->%**) without
-touching the core optical or structural design.
+The still-**available** levers (1 container, 3 tray, 5 solar) trim **~<!-- BEGIN costing:ca-savings-low -->$2,100<!-- END costing:ca-savings-low -->–<!-- BEGIN costing:ca-savings-high -->$2,500<!-- END costing:ca-savings-high -->** off the <!-- BEGIN costing:ca-capital -->$24,289<!-- END costing:ca-capital --> capital build (**~<!-- BEGIN costing:ca-savings-pct-low -->9<!-- END costing:ca-savings-pct-low -->–<!-- BEGIN costing:ca-savings-pct-high -->10<!-- END costing:ca-savings-pct-high -->%**) without
+touching the core optical or structural design. (Lever 2's $827 is already **banked** into the manual standard build and the battery is already at the lean 1×100 Ah, so neither is a still-available saving — both are excluded from the roll-up.)
 
-> **Derivation note.** Lever 1 (container grade) and the roll-up total + percentage are
-> computed in `costing.py` — the container saving is a true CW − WWT subtraction off the
-> scenario layer, and the roll-up is the summed levers over the capital build, so both
-> cascade on any cost change. Levers 2–5 are single-sourced estimates, **not yet** true
-> `as-built − alternative` subtractions: that needs each alternative *configuration*
-> modeled — a WWT-grade container line, an itemized electrical BOM (for the 100 Ah battery
-> and 2-panel solar options), a costed poly-tray and galvanized-grating alternative, and the
-> electric-actuation upgrade kit. Lever 2 is already actioned into the manual build, so once
-> modeled it should move out of the live roll-up.
+> **Derivation note.** Lever 1 (container grade), lever 5 (solar), and the roll-up total +
+> percentage are computed in `costing.py` — container is a true CW − WWT subtraction off the
+> scenario layer, solar is a real 1-panel subtraction (drop 1× `solar-panel-200w`), and the roll-up
+> is the summed **still-available** levers over the capital build, so all cascade on any cost change.
+> Bucket-B finding (2026-07-05): modeling each option against the as-built BOM showed lever 2 (film)
+> is already **banked** — manual is the standard build — and lever 4 (battery) is moot — the standard
+> is already 1×100 Ah, and its 2nd pack is a +$375 **upgrade**, not a saving — so both were dropped
+> from the roll-up. Lever 3 (tray) stays a declared band until a chem-compatible poly-tray
+> alternative is costed.
 
 ---
 

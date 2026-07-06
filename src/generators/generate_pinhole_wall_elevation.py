@@ -359,23 +359,50 @@ ax.text(sx(PH_X), sz(PH_H - 80), "PINHOLE\nØ2.17mm",
         ha="center", va="top", fontsize=5, color=C_PINHOLE_EQ,
         zorder=10, **FONT)
 
-# ── Equipment panel relocation note (rev 7) ───────────────────────────────
-# Pump manifold (P-01/P-02/P-04), ACC-01, and filter housings (F1/F2/F3)
-# are now on the equipment panel in the IBC plumbing corridor (Yd=1046).
-# They are NOT on the pinhole wall — see panel layout detail diagram.
-_note_x = (PH_X + ZONE_R_START) / 2 + 100 # centered between pinhole and IBC zone
-_note_z = 450
-ax.text(sx(_note_x), sz(_note_z),
-        "PUMPS · FILTERS · ACC-01\nRELOCATED TO EQUIPMENT PANEL\n(IBC CORRIDOR, Yd=1046)\nSEE PANEL LAYOUT DETAIL",
-        ha="center", va="center", fontsize=5, color="#999999",
-        style="italic", zorder=2, **FONT,
-        bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="#CCCCCC", lw=0.5, alpha=0.8))
+# ── Pinhole Wall Plumbing Panel — wet-end filter loop (pinhole-wall-mount refactor) ──
+# The 3-stage Big Blue filter bank rides HIGH under the ceiling (heads ~2262-2340, sump bowls
+# hanging to 1746); P-02 (Brown recycle) sits to its left; SV-01 drops to waist; DV-01 exits to
+# the corridor mouth off the high-X edge. Positions match the pinhole-panel detail + the 3D
+# pinhole-water-panel model. (The four CORRIDOR pumps P-01/P-03/P-04/P-05 + ACC-01 stay in the
+# IBC corridor — see the panel-layout detail.)
+C_FILT, C_FILT_EC, C_BROWN = "#C3D6E8", "#5A7A9A", "#8A5A3A"
+_bb_r, _bb_bot, _bb_top, _bb_head = 92, 1746, 2340, 2262
+ax.add_patch(mpatches.Rectangle((sx(2780), sz(920)), sx(4500) - sx(2780), sz(2360) - sz(920),
+             facecolor="#EFE7D0", edgecolor="none", alpha=0.30, zorder=1))
+ax.text(sx(3640), sz(2372),
+        "PINHOLE-WALL PLUMBING PANEL — WET-END FILTER LOOP  (IBC-3 -> P-02 -> F-01/F-02/F-03 -> SV-01 -> DV-01)",
+        ha="center", va="bottom", fontsize=4, color="#8A7A4A", zorder=3, **FONT)
+# P-02 (Brown recycle pump) — upright, left of the bank
+ax.add_patch(mpatches.Rectangle((sx(3008), sz(2139)), sx(3108) - sx(3008), sz(2319) - sz(2139),
+             facecolor=C_BROWN, edgecolor=C_OUT, lw=0.8, zorder=8))
+ax.text(sx(3058), sz(2129), "P-02\nBROWN\nRECYCLE", ha="center", va="top", fontsize=3.6, color=C_BROWN, zorder=10, **FONT)
+# 3-stage Big Blue filter bank (heads near ceiling, sump bowls hanging)
+for _fid, _fcx, _media in [("F-01", 3300, "5um SED"), ("F-02", 3638, "KDF-55"), ("F-03", 3976, "CARBON")]:
+    _x0, _x1 = sx(_fcx - _bb_r), sx(_fcx + _bb_r)
+    ax.add_patch(mpatches.Rectangle((_x0, sz(_bb_bot)), _x1 - _x0, sz(_bb_top) - sz(_bb_bot),
+                 facecolor=C_FILT, edgecolor=C_FILT_EC, lw=1.0, zorder=7))
+    ax.add_patch(mpatches.Rectangle((_x0, sz(_bb_head)), _x1 - _x0, sz(_bb_top) - sz(_bb_head),
+                 facecolor="#8FA6BE", edgecolor=C_FILT_EC, lw=0.7, zorder=8))
+    ax.text(sx(_fcx), sz(2000), _fid + "\n" + _media, ha="center", va="center", fontsize=3.6, color="#2A4A6A", zorder=10, **FONT)
+# brown flow along the bank ports (P-02 -> F-01 -> F-02 -> F-03)
+for _x0, _x1 in [(3108, 3208), (3392, 3546), (3730, 3884)]:
+    ax.annotate("", xy=(sx(_x1), sz(2301)), xytext=(sx(_x0), sz(2301)),
+                arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=0.7), zorder=9)
+# SV-01 pH sample tap (dropped to waist) + DV-01 exit to the corridor
+ax.add_patch(plt.Circle((sx(4250), sz(975)), 5, facecolor="#C0392B", edgecolor=C_OUT, lw=0.7, zorder=9))
+ax.annotate("", xy=(sx(4250), sz(1010)), xytext=(sx(4068), sz(2301)),
+            arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=0.7,
+                            connectionstyle="angle,angleA=-90,angleB=0"), zorder=9)
+ax.text(sx(4250), sz(915), "SV-01\npH SAMPLE", ha="center", va="top", fontsize=3.6, color="#C0392B", zorder=10, **FONT)
+ax.annotate("", xy=(sx(4500), sz(975)), xytext=(sx(4262), sz(975)),
+            arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=0.7), zorder=9)
+ax.text(sx(4510), sz(975), "-> DV-01\n(corridor)", ha="left", va="center", fontsize=3.6, color=C_BROWN, zorder=10, **FONT)
 
 # ═══════════════════════════════════════════════════════════════════════════
 # 4a. PLUMBING — Blue supply to spray bar (rev 7: simplified)
 # ═══════════════════════════════════════════════════════════════════════════
-# All pump/filter/valve internal routing relocated to equipment panel
-# (Yd=1046). Only the Blue supply trunk and chemistry tap remain on this wall.
+# The wet-end FILTER LOOP (P-02 + F-01/F-02/F-03 + SV-01) is on THIS wall (drawn above); the four
+# CORRIDOR pumps (P-01/P-03/P-04/P-05) + ACC-01 are in the IBC corridor. Blue supply trunk + chem tap below.
 
 IBC_PIPE_EXIT_X = ZONE_R_START   # pipes enter IBC stack zone
 
@@ -581,8 +608,9 @@ notes = [
     " from IBC zone to spray bar. BV-02 riser at pinhole centerline to Z=900 (waist height)."
     " Chemistry tap branch (¾\") rises to shelf.",
     f"2. Evap cooler relocated EXTERNAL — only Ø{EVAP_DUCT_D}mm duct penetration remains at X={EVAP_DUCT_X}, Z={EVAP_DUCT_Z}.",
-    "3. Pumps (P-01/P-02/P-04), ACC-01, filter housings (F1/F2/F3), DV-01, DV-02"
-    " relocated to equipment panel in IBC plumbing corridor (Yd=1046). See panel layout detail.",
+    "3. Pinhole wall carries the wet-end filter loop: P-02, the 3-stage Big Blue bank (F-01/F-02/F-03)"
+    " high under the ceiling, and SV-01. Corridor pumps P-01/P-03/P-04/P-05 + ACC-01 + DV-01/DV-02 are"
+    " in the IBC corridor (Yd=1046). See panel-layout / pinhole-panel detail.",
     "4. Ext. power panel (dashed) is flush-mount on EXTERIOR face — no interior conflict.",
     "5. Chemistry shelf (dashed) is ceiling-hung at Yd=300mm — behind near walkway plane.",
     "6. Shelf hanger rods pass through cable trunking zone — requires grommets/slots in trunking lid.",

@@ -38,6 +38,12 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
   re-proves. (Reminder block lives atop `parts.py`.)
 
 ## Design / 3D (deferred)
+- [ ] **Overview / assembly-overview / electrical-diagram still draw the filter skid in the CORRIDOR.**
+  Surfaced while single-sourcing the pinhole-wall positions (2026-07-05): those three still consume the
+  legacy `FSKID_X`/`F1_Z`/`F2_Z`/`F3_Z` corridor constants, so they likely render the 3-stage filter
+  bank + P-02 in the IBC corridor instead of on the pinhole wall (same class of bug the elevation had).
+  Verify each and move them to the pinhole-wall design (`PWP_*`) if stale. *(The pinhole-wall model,
+  pinhole-panel 2D, elevation, and electrical `_pump_circuit` are already on `PWP_*`.)*
 - [ ] **EP (Electrical Panel) interior needs a rework — 2D + 3D.** The IP65 enclosure internals —
   the A–G blade-fuse stack, the +/− busbars, and the wiring/circuit routing — have accreted to the
   point they're **not operator-usable**: fuses/terminals are cramped and hard to reach/trace for

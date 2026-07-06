@@ -10295,6 +10295,17 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # IP65 enclosure (ghosted, fuse block + busbars)
+  grp = ents.add_group
+  grp.name = "IP65 enclosure (ghosted, fuse block + busbars)"
+  face = grp.entities.add_face([1915.mm,12.mm,1655.mm], [2100.mm,12.mm,1655.mm], [2100.mm,152.mm,1655.mm], [1915.mm,152.mm,1655.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(210.mm)
+  mat = model.materials["IP65 enclosure (ghosted, fuse block + busbars)"] || model.materials.add("IP65 enclosure (ghosted, fuse block + busbars)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 0.12
+  grp.material = mat
+
   # MPPT Controller (Victron 100/50)
   grp = ents.add_group
   grp.name = "MPPT Controller (Victron 100/50)"
@@ -11441,6 +11452,17 @@ end
   mat = model.materials["EP plywood backing panel (lower, 18mm)"] || model.materials.add("EP plywood backing panel (lower, 18mm)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
+  grp.material = mat
+
+  # IP65 enclosure (ghosted, fuse block + busbars)
+  grp = ents.add_group
+  grp.name = "IP65 enclosure (ghosted, fuse block + busbars)"
+  face = grp.entities.add_face([1915.mm,12.mm,1655.mm], [2100.mm,12.mm,1655.mm], [2100.mm,152.mm,1655.mm], [1915.mm,152.mm,1655.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(210.mm)
+  mat = model.materials["IP65 enclosure (ghosted, fuse block + busbars)"] || model.materials.add("IP65 enclosure (ghosted, fuse block + busbars)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 0.12
   grp.material = mat
 
   # MPPT Controller (Victron 100/50)

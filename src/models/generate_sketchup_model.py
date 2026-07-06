@@ -1371,7 +1371,8 @@ def electrical():
     # ── EP internals — detail ported from the electrical model's "Power Core"
     # (generate_electrical_model.py power_core()); DUPLICATED geometry, keep the two
     # in sync (cf. the walkway-bracket duplication). Every component surface-mounts on a stepped
-    # PLYWOOD BACKING PANEL (no enclosure box): the MPPT (on a forward sub-panel, clear of the
+    # PLYWOOD BACKING PANEL, with the DC gear inside a ghosted IP65 enclosure whose back is the ply:
+    # the MPPT (on a forward sub-panel, clear of the
     # fuse-stack risers), the Blue Sea 5026 fuse stack (7 blades A–G), the +/- busbars, the rotary
     # main disconnect and the PV array disconnect — so the overview's EP mirrors the electrical model. ─
     ez, eh = EP_H_LO, EP_H_HI - EP_H_LO
@@ -1402,6 +1403,11 @@ def electrical():
                           ply_r - ply_x0, 18, ply_step_z - (BA_H_LO - 12), color=C_PLY))
     parts.append(ruby_box("EP plywood backing panel (upper, 18mm)", ply_x0_top, -18, ply_step_z,
                           ply_r - ply_x0_top, 18, (EP_H_HI + 12) - ply_step_z, color=C_PLY))
+    # IP65 enclosure — ghosted weatherproof box over the fuse block + busbars + charge fuse (the DC
+    # terminals that need sealing), mounted ON the plywood. The MPPT, disconnect, battery and inverter
+    # mount on the plywood outside it.
+    parts.append(ruby_box("IP65 enclosure (ghosted, fuse block + busbars)", EP_X + 5, 12, EP_H_LO + 155,
+                          185, 140, 210, color=C_STEEL, alpha=0.12))
     # Victron SmartSolar 100/50 MPPT — pulled FORWARD (Yd120) to clear the fuse-stack risers, on its
     # own plywood sub-panel. Mirrors the electrical model.
     parts.append(ruby_box("MPPT Controller (Victron 100/50)",

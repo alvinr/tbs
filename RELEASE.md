@@ -29,8 +29,10 @@ file** — a release must not ship without a changelog entry:
   backing panel** (every component surface-mounts on it — MPPT on a forward sub-panel, fuse block, busbars,
   disconnects, inverter, battery bank); the MPPT is pulled forward clear of the fuse-stack risers; the **PV
   array disconnect** is brought onto the panel and wired **in-line**; both E-stops are wired to the contactor
-  coil loop; and the battery DC cables now land on the disconnect terminals. Parts: `ip65-enclosure` →
-  `ep-backing-panel` (18mm ply, ~$60, cost-neutral).
+  coil loop; and the battery DC cables now land on the disconnect terminals. Parts: added
+  `ep-backing-panel` (18mm plywood backboard, the mounting surface everything fixes to) alongside the
+  retained `ip65-enclosure` (now sealing just the fuse-block/busbar DC terminals, bolted to the plywood);
+  electrical subtotal +$60.
 
 ## [0.1] — 2026-07-03
 

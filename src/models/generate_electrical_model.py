@@ -406,13 +406,13 @@ def _pump_circuit():
     on the equipment panel → a 16 AWG branch DIRECTLY to each Shurflo pump. No per-pump switches
     — each pump runs on its internal demand/pressure switch.
     Pump reference positions match panel-layout.png: the four corridor pumps in a SINGLE vertical
-    column (AFF base Z, bottom->top P-01/P-04/P-05/P-03); P-02 is the pinhole-wall filter-loop pump,
-    drawn offset +Yd to read as the separate wall unit."""
+    column (AFF base Z, bottom->top P-01/P-04/P-05/P-03) fed from the corridor distribution block;
+    P-02 (Brown recycle) lives on the Pinhole-Wall panel and taps the switched feed THERE (§7.3)."""
     col = CCT["C"][0]
     pcol = EQPANEL_YD + 63                              # single corridor pump column (panel-layout)
+    # FOUR corridor pumps fed from the corridor distribution block. P-02 is separate (below the loop).
     pumps = [("P-01", pcol, 615), ("P-04", pcol, 940),
-             ("P-05", pcol, 1340), ("P-03", pcol, 1740),
-             ("P-02", EQPANEL_YD + 207, 1140)]          # pinhole-wall filter pump (offset)
+             ("P-05", pcol, 1340), ("P-03", pcol, 1740)]
     cy = EQPANEL_YD + EQPANEL_YD_SPAN / 2              # wireway Yd centre
     way_top = PUMP_H_HI                                 # feed enters the top
     way_bot = min(z for _, _, z in pumps) - 20         # extends DOWN past the lowest pump
@@ -432,6 +432,16 @@ def _pump_circuit():
         # branch taps the wireway at THIS pump's level → straight to the pump (no per-pump switch)
         br = _dedup([(EQPANEL_X, cy, z + 60), (EQPANEL_X, yd, z + 60)])
         p.append(ov.ruby_pipe_run(f"Cct C branch {nm}", br, 6, color=col))
+    # P-02 (Brown recycle) is on the PINHOLE-WALL panel, not the corridor block — it taps the SWITCHED
+    # FEED there (electrical-report §7.3). Draw it offset beyond the corridor pump zone with its own
+    # tap straight off the switched feed, so the pinhole-wall pump reads as powered (not orphaned).
+    p02_yd, p02_z = EQPANEL_YD + EQPANEL_YD_SPAN + 45, 1200   # pinhole-wall panel, pump height
+    p.append(ov.ruby_box("P-02 (Brown recycle - Pinhole-Wall filter pump)",
+                         EQPANEL_X - 25, p02_yd - 30, p02_z - 40, 50, 60, 80, color="#6B4423"))
+    p.append(ov.ruby_pipe_run("Cct C branch P-02 (taps switched feed - Pinhole-Wall panel)",
+                              _dedup([(EQPANEL_X, cy, way_top - 25),
+                                      (EQPANEL_X, p02_yd, way_top - 25),
+                                      (EQPANEL_X, p02_yd, p02_z)]), 6, color=col))
     return '\n'.join(p)
 
 

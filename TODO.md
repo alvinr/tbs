@@ -38,7 +38,13 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
   re-proves. (Reminder block lives atop `parts.py`.)
 
 ## Design / 3D (deferred)
-- [x] **3D electrical pump positions — DONE.** `_pump_circuit()` re-org'd 2-column → single vertical
+- [ ] **EP (Electrical Panel) interior needs a rework — 2D + 3D.** The IP65 enclosure internals —
+  the A–G blade-fuse stack, the +/− busbars, and the wiring/circuit routing — have accreted to the
+  point they're **not operator-usable**: fuses/terminals are cramped and hard to reach/trace for
+  service and reset. Re-lay the internal layout for real serviceability (fuse access, labeled
+  terminals, wire runs, clearances) and cascade it through the 3D (`electrical.skp` `power_core()`
+  + the duplicated overview `ov.electrical()`) and the 2D (`generate_electrical_diagram.py` Sheet 5
+  enclosure elevation + fuse schedule). `_pump_circuit()` re-org'd 2-column → single vertical
   column (4 corridor pumps at real AFF Z 615/940/1340/1740 per `panel-layout.png`; P-02 offset as the
   pinhole-wall pump). Was the only LIVE 2-column layout — overview/ibc-stack already use the `cp.*`
   single-column builders (overview's `equipment_panel`/`water_plumbing` are documented dead code).

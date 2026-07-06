@@ -117,25 +117,25 @@ TRUNK_Z = ov.C_HGT - 13
 ELEC_POINT_LABELS = [
     (SOLAR_ARRAY_X + 700, SOLAR_ARRAY_YD - 600, 700,
      "SOLAR ARRAY\n3x 200W (30deg tilt)", -200, -700, 700),
-    (EP_X + 90, 40, EP_H_HI - 60, "MPPT 100/50",                 -380, -700, 280),
-    (EP_X + 90, 40, FUSE_TOP_Z, "FUSE STACK A-G\n5/5/15/5/40/20/10 A", 420, -700, 240),
-    (EP_X + 90, 40, EP_H_LO + 210, "+/- BUSBARS",                 420, -640, -120),
-    (EP_X + 240, ENCL_SHELL_D, EP_H_LO + 120, "MAIN DISCONNECT", 360, -760, -260),
-    (BA_X + 80, 40, BA_H_HI + 50, "BATTERY CONTACTOR\n+ MRBF main fuse", -300, -760, 900),
-    (BA_X + 120, 60, BA_H_LO + 100, "BATTERY 1x 100Ah\n(2nd pack ghosted)", -320, -640, 760),
+    (EP_X + 90, 40, EP_H_HI - 60, "MPPT 100/50",                 -380, 700, 280),
+    (EP_X + 90, 40, FUSE_TOP_Z, "FUSE STACK A-G\n5/5/15/5/40/20/10 A", 420, 700, 240),
+    (EP_X + 90, 40, EP_H_LO + 210, "+/- BUSBARS",                 420, 640, -120),
+    (EP_X + 240, ENCL_SHELL_D, EP_H_LO + 120, "MAIN DISCONNECT", 360, 760, -260),
+    (BA_X + 80, 40, BA_H_HI + 50, "BATTERY CONTACTOR\n+ MRBF main fuse", -300, 760, 900),
+    (BA_X + 120, 60, BA_H_LO + 100, "BATTERY 1x 100Ah\n(2nd pack ghosted)", -320, 640, 760),
     (INVERTER_X + INVERTER_W / 2, INVERTER_D / 2, INVERTER_Z + INVERTER_H,
-     "CCT-E INVERTER\n12->120V AC (cooler)", -430, -820, 480),
+     "CCT-E INVERTER\n12->120V AC (cooler)", -430, 820, 480),
     (PWR_PANEL_X + PWR_PANEL_W / 2, -WALL - 40, PWR_PANEL_Z + PWR_PANEL_H + 20,
      "EXTERNAL PANEL\nMC4 PV / shore / GFCI cooler / E-STOP", 220, -520, 380),
     (EVAP_DUCT_X, -WALL - EVAP_D / 2 - 120, EVAP_H,
      "EVAP COOLER\n(Hessaire MC18M, Cct E)", -260, -520, 520),
     (EQPANEL_X, EQPANEL_YD + EQPANEL_YD_SPAN / 2, PUMP_H_HI - 40,
      "CCT-C PUMP DISTRIBUTION\ndist block → pumps (master sw on EP)", -350, -700, 250),
-    (PWR_PANEL_X + 0.42 * PWR_PANEL_W, 35, PWR_PANEL_Z + 0.07 * PWR_PANEL_H,
-     "PV DISCONNECT\n(load-break, array->MPPT)", 300, -560, 320),
-    (EP_X + 40, 95, EP_H_LO + 215, "60A CHARGE FUSE\n(MPPT -> battery)", 440, -680, 160),
+    (EP_X - 265, 22, EP_H_LO + 385,
+     "PV DISCONNECT\n(load-break, array->MPPT)", 300, 560, 320),
+    (EP_X + 40, 95, EP_H_LO + 215, "60A CHARGE FUSE\n(MPPT -> battery)", 440, 680, 160),
     (EP_X + EP_W / 2, ENCL_SHELL_D + 38, EP_H_LO + 80,
-     "INTERIOR E-STOP\n(EP face, parallel)", -340, -560, -160),
+     "INTERIOR E-STOP\n(EP face, parallel)", -340, 560, -160),
 ]
 
 
@@ -238,13 +238,18 @@ def power_core():
     p = []
     ez = EP_H_LO
     eh = EP_H_HI - EP_H_LO
-    # Full plywood backing panel (18mm) — spans the whole EP wall so EVERY component surface-mounts
-    # on it: from the battery bank + contactor at the floor, up past the inverter to the EP gear, and
-    # wide enough to back the (widest) battery bank. Replaces the ghosted enclosure box.
+    # Plywood backing panel (18mm) — every EP component surface-mounts on it. STEPPED: full width low
+    # down (backs the wide battery bank) but narrowed up top so it clears the back of the external
+    # power panel that the full-width board was crossing into. Replaces the ghosted enclosure box.
     _ply_bot = BA_H_LO - 12
-    _ply_x0 = BA_X - 12
-    p.append(ov.ruby_box("EP plywood backing panel (18mm)", _ply_x0, -18, _ply_bot,
-                         (EP_X + EP_W + 12) - _ply_x0, 18, (EP_H_HI + 12) - _ply_bot, color=ov.C_PLY))
+    _ply_x0 = BA_X - 12                             # full width low down (battery bank)
+    _ply_x0_top = PWR_PANEL_X + PWR_PANEL_W + 10    # narrowed up top to clear the external panel (right edge)
+    _ply_step_z = PWR_PANEL_Z - 20                  # step just below the external panel
+    _ply_r = EP_X + EP_W + 12
+    p.append(ov.ruby_box("EP plywood backing panel (lower, 18mm)", _ply_x0, -18, _ply_bot,
+                         _ply_r - _ply_x0, 18, _ply_step_z - _ply_bot, color=ov.C_PLY))
+    p.append(ov.ruby_box("EP plywood backing panel (upper, 18mm)", _ply_x0_top, -18, _ply_step_z,
+                         _ply_r - _ply_x0_top, 18, (EP_H_HI + 12) - _ply_step_z, color=ov.C_PLY))
     p.append(ov.ruby_box("MPPT Controller (100/50)", EP_X + 15, 120,
                          EP_H_HI - MPPT_H - 30, MPPT_W, MPPT_D, MPPT_H, color="#3A5BA0"))
     # Plywood backing panel — extends the EP mounting board FORWARD to the relocated MPPT plane so the
@@ -381,10 +386,10 @@ def external_panel():
                               es_cz, 35, 12, color="#F2C200", axis="y"))
     p.append(ov.ruby_cylinder("E-stop button (red mushroom)", es_cx, face_y - 40,
                               es_cz, 26, 28, color="#C42B1C", axis="y"))
-    # PV array disconnect — DC load-break isolator on the PV path (array -> MPPT),
-    # panel-mounted, readily accessible (D1; NEC 690.13).
+    # PV array disconnect — DC load-break isolator on the PV path (array -> MPPT). Brought IN onto the
+    # EP plywood (interior, still readily accessible per NEC 690.13) rather than on the external panel.
     p.append(ov.ruby_box("PV Array Disconnect (load-break isolator)",
-                         px(0.40), 22, pz(0.02), 70, 45, 70, color="#D43A2F"))
+                         EP_X - 300, 0, EP_H_LO + 350, 70, 45, 70, color="#D43A2F"))
 
     # Evap cooler (Hessaire MC18M) — external, ground-placed off the pinhole wall — and
     # its 120V AC cord from the panel GFCI outlet (Circuit E). The DC feed (fuse block ->

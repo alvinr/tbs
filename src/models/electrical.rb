@@ -5941,13 +5941,24 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   # ═══ Power Core ═══
   defn = model.definitions.add("Power Core")
   ents = defn.entities
-  # EP plywood backing panel (18mm)
+  # EP plywood backing panel (lower, 18mm)
   grp = ents.add_group
-  grp.name = "EP plywood backing panel (18mm)"
+  grp.name = "EP plywood backing panel (lower, 18mm)"
   face = grp.entities.add_face([1528.mm,-18.mm,138.mm], [2222.mm,-18.mm,138.mm], [2222.mm,0.mm,138.mm], [1528.mm,0.mm,138.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(1974.mm)
-  mat = model.materials["EP plywood backing panel (18mm)"] || model.materials.add("EP plywood backing panel (18mm)")
+  face.pushpull(1672.mm)
+  mat = model.materials["EP plywood backing panel (lower, 18mm)"] || model.materials.add("EP plywood backing panel (lower, 18mm)")
+  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # EP plywood backing panel (upper, 18mm)
+  grp = ents.add_group
+  grp.name = "EP plywood backing panel (upper, 18mm)"
+  face = grp.entities.add_face([1600.mm,-18.mm,1810.mm], [2222.mm,-18.mm,1810.mm], [2222.mm,0.mm,1810.mm], [1600.mm,0.mm,1810.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(302.mm)
+  mat = model.materials["EP plywood backing panel (lower, 18mm)"] || model.materials.add("EP plywood backing panel (lower, 18mm)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
   grp.material = mat
@@ -5969,7 +5980,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face = grp.entities.add_face([1918.mm,102.mm,1868.mm], [2123.mm,102.mm,1868.mm], [2123.mm,120.mm,1868.mm], [1918.mm,120.mm,1868.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(232.mm)
-  mat = model.materials["EP plywood backing panel (18mm)"] || model.materials.add("EP plywood backing panel (18mm)")
+  mat = model.materials["EP plywood backing panel (lower, 18mm)"] || model.materials.add("EP plywood backing panel (lower, 18mm)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
   grp.material = mat
@@ -6807,7 +6818,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   # PV Array Disconnect (load-break isolator)
   grp = ents.add_group
   grp.name = "PV Array Disconnect (load-break isolator)"
-  face = grp.entities.add_face([1386.mm,22.mm,1834.8.mm], [1456.mm,22.mm,1834.8.mm], [1456.mm,67.mm,1834.8.mm], [1386.mm,67.mm,1834.8.mm])
+  face = grp.entities.add_face([1610.mm,0.mm,1850.mm], [1680.mm,0.mm,1850.mm], [1680.mm,45.mm,1850.mm], [1610.mm,45.mm,1850.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(70.mm)
   mat = model.materials["Main Disconnect (m-Series)"] || model.materials.add("Main Disconnect (m-Series)")
@@ -9880,29 +9891,29 @@ txt = entities.add_text("SOLAR ARRAY
 3x 200W (30deg tilt)", anc, Geom::Vector3d.new(-200.mm, -700.mm, 700.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(2000.mm, 40.mm, 2040.mm)
-txt = entities.add_text("MPPT 100/50", anc, Geom::Vector3d.new(-380.mm, -700.mm, 280.mm))
+txt = entities.add_text("MPPT 100/50", anc, Geom::Vector3d.new(-380.mm, 700.mm, 280.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(2000.mm, 40.mm, 1840.mm)
 txt = entities.add_text("FUSE STACK A-G
-5/5/15/5/40/20/10 A", anc, Geom::Vector3d.new(420.mm, -700.mm, 240.mm))
+5/5/15/5/40/20/10 A", anc, Geom::Vector3d.new(420.mm, 700.mm, 240.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(2000.mm, 40.mm, 1710.mm)
-txt = entities.add_text("+/- BUSBARS", anc, Geom::Vector3d.new(420.mm, -640.mm, -120.mm))
+txt = entities.add_text("+/- BUSBARS", anc, Geom::Vector3d.new(420.mm, 640.mm, -120.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(2150.mm, 165.mm, 1620.mm)
-txt = entities.add_text("MAIN DISCONNECT", anc, Geom::Vector3d.new(360.mm, -760.mm, -260.mm))
+txt = entities.add_text("MAIN DISCONNECT", anc, Geom::Vector3d.new(360.mm, 760.mm, -260.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(1620.mm, 40.mm, 414.mm)
 txt = entities.add_text("BATTERY CONTACTOR
-+ MRBF main fuse", anc, Geom::Vector3d.new(-300.mm, -760.mm, 900.mm))
++ MRBF main fuse", anc, Geom::Vector3d.new(-300.mm, 760.mm, 900.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(1660.mm, 60.mm, 250.mm)
 txt = entities.add_text("BATTERY 1x 100Ah
-(2nd pack ghosted)", anc, Geom::Vector3d.new(-320.mm, -640.mm, 760.mm))
+(2nd pack ghosted)", anc, Geom::Vector3d.new(-320.mm, 640.mm, 760.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(1970.mm, 36.mm, 1415.mm)
 txt = entities.add_text("CCT-E INVERTER
-12->120V AC (cooler)", anc, Geom::Vector3d.new(-430.mm, -820.mm, 480.mm))
+12->120V AC (cooler)", anc, Geom::Vector3d.new(-430.mm, 820.mm, 480.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(1420.mm, -80.mm, 2090.mm)
 txt = entities.add_text("EXTERNAL PANEL
@@ -9916,17 +9927,17 @@ anc = Geom::Point3d.new(4874.mm, 1181.mm, 2230.mm)
 txt = entities.add_text("CCT-C PUMP DISTRIBUTION
 dist block → pumps (master sw on EP)", anc, Geom::Vector3d.new(-350.mm, -700.mm, 250.mm))
 txt.layer = model.layers["Labels"] rescue nil
-anc = Geom::Point3d.new(1392.8.mm, 35.mm, 1846.8.mm)
+anc = Geom::Point3d.new(1645.mm, 22.mm, 1885.mm)
 txt = entities.add_text("PV DISCONNECT
-(load-break, array->MPPT)", anc, Geom::Vector3d.new(300.mm, -560.mm, 320.mm))
+(load-break, array->MPPT)", anc, Geom::Vector3d.new(300.mm, 560.mm, 320.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(1950.mm, 95.mm, 1715.mm)
 txt = entities.add_text("60A CHARGE FUSE
-(MPPT -> battery)", anc, Geom::Vector3d.new(440.mm, -680.mm, 160.mm))
+(MPPT -> battery)", anc, Geom::Vector3d.new(440.mm, 680.mm, 160.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(2060.mm, 203.mm, 1580.mm)
 txt = entities.add_text("INTERIOR E-STOP
-(EP face, parallel)", anc, Geom::Vector3d.new(-340.mm, -560.mm, -160.mm))
+(EP face, parallel)", anc, Geom::Vector3d.new(-340.mm, 560.mm, -160.mm))
 txt.layer = model.layers["Labels"] rescue nil
 
 # ── In-model © + license credit (default layer → shown in every scene) ──

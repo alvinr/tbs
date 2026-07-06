@@ -12,7 +12,7 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 ## Full audit (2026-07-04) — 53 confirmed findings → [audit-2026-07.md](audit-2026-07.md)
 _Multi-agent audit across all subsystems × 5 dimensions (3 high / 28 med / 22 low), every finding independently verified. Verdict: **design is sound — no structural/optical defect**; the debt is documentation cascade-leakage. Full detail + per-finding fixes in the linked report; fix in priority order:_
 
-_**✅ COMPLETE (2026-07-05):** all 53 findings resolved and pushed — G1–G6 (cascade/table/comment sweeps), ①·pinhole ring + ③·filter + D-ring (design decisions), and every ② datasheet blocker (wheel, pin, saddle, Powerpole, evap). All gates green throughout. The only residual is the manual Sketchfab re-uploads (below) — the models are all sent, verified, saved, and committed._
+_**✅ COMPLETE (2026-07-05):** all 53 findings resolved and pushed — G1–G6 (cascade/table/comment sweeps), ①·pinhole ring + ③·filter + D-ring (design decisions), and every ② datasheet blocker (wheel, pin, saddle, Powerpole, evap). All gates green throughout. (Sketchfab re-uploads are Alvin's standing manual step — not tracked here.)_
 
 - [x] **① 3 high-severity contradictions — DONE.** BV-05 valve, pump 100→114, and the **pinhole disc retaining ring** — Alvin chose the **ring** (more serviceable): report §4/§9 rewritten, plate-drawing threaded-bore callout (M52×0.75), registry + cost (+$15/$25 optics) all reconciled, gates green.
 - [ ] **② Datasheet blockers (settle before POs)** — spray skate wheel (cited part is 40mm wide vs 20mm + PE/carbon-steel bearings corrode in the wash); film-plane pivot pin (1″ won't fit the 25mm rod-end bore); evap cooler ~51mm oversize vs Hessaire MC18M (resize → 3D re-send → stow re-verify); spray saddle strap 2→0.5mm (0.5mm structurally thin — re-source vs match); Powerpole connector count 4 vs 5 (wiring-design dependent).
@@ -31,20 +31,6 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
 - [x] **②·5 Powerpole connector count — DONE.** Alvin: **one pair per pump** → 4 → **5 pair** (P-01..P-05). +$2 cascaded through the costing WATER "Electrical (wiring only)" line, §5 EXPECTED, and grand total; BOM now 5 pair / $10; all gates green.
 
 ---
-
-## Manual (Alvin) — Sketchfab re-uploads
-_3D models embed as Sketchfab iframes; Alvin re-uploads manually reusing the same model ID._
-
-- [ ] Re-upload the `.skp` models changed recently, same model IDs:
-  _All five are sent, verified, **saved + committed** — only the manual re-upload remains:_
-  - **overview** — master switch on the EP + D-rings + evap resize (508×254×711).
-  - **ibc-stack** — metadata + D-rings.
-  - **water** — Circuit-C power cabling + D-rings + title/description restored.
-  - **walkway** — RWK arm reach 325.
-  - **electrical** — master switch on the EP + evap resize (508×254×711); **+ NEW: needs re-send** for
-    the pump refs single-column re-org (`.rb` regenerated, `.skp` not yet re-sent — open it and I'll send).
-- [ ] Older pending re-uploads: the **light-trap** interactive DC model (B2 refactor); the
-  plumbing-panel-rename re-uploads (overview / ibc-stack).
 
 ## Scheduled
 - [ ] **Aug 2026** — re-price every part in `parts.py` against current supplier listings (April-2026

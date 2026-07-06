@@ -650,7 +650,7 @@ PARTS: list[Part] = [
     # separate fab line) → $2,005–$2,985 (reconciles to EXPECTED walkway $2,000–$2,975 within tol) ═══
     Part("walkway-grp-grating", "Molded GRP (fiberglass) grating", "plastics-sheet",
          "walkway", 1, "lot", 965, 1250, "McNichols", "Grating Pacific",
-         spec="15mm, vinyl-ester resin, grit top, ~38mm mesh; ~4.5 m² (4 sections)"),
+         spec="1\" (25mm) McNichols MS-S-100, 1½×1½ square mesh, vinyl-ester, grit top, 2.60 lb/sf; ~4.5 m² (4 sections)"),
     Part("walkway-drum-exit-grp", "Drum-exit punch-out grating", "plastics-sheet",
          "walkway", 1, "lot", 50, 65, "McNichols", spec="Extra GRP landing (~0.23 m²) at the light-lock exit"),
     Part("walkway-std-brackets", "Cantilever bracket — standard (near/far)", "steel-structural",

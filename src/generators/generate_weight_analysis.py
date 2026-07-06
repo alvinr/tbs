@@ -53,11 +53,11 @@ RHO_HDPE   = 950      # UV-stabilized HDPE sheet (light-trap housing skin, rev 9
 RHO_PP     = 905      # polypropylene sheet (light-trap drum skin, rev 9 / B2)
 
 # ── Grating weight ──────────────────────────────────────────────────────────
-# 5/8" (15mm) molded fiberglass (GRP) grating, vinyl-ester resin, grit top.
-# Corrosion-proof in the wet photo-chemistry environment; the 15mm depth is kept
-# so the lowered deck + spray-bar clearance are unchanged (a 1"/25mm GRP would
-# force a deck-height redesign). Source: McNICHOLS / Grating Pacific FRP catalogs.
-GRATING_KG_PER_M2 = 11.0   # molded GRP ~11 kg/m² (was 26 for 15mm galvanized steel)
+# 1" (25mm) molded fiberglass (GRP) grating, 1½" square mesh, vinyl-ester, grit top —
+# McNICHOLS MS-S-100. Corrosion-proof in the wet photo-chemistry environment. (15mm molded
+# FRP does NOT exist — the thinnest molded product is 1"; the deck was raised 130→140 to suit.)
+# Source: McNICHOLS MS-S-100 molded FRP load table (datasheet weight 2.60 lb/sf).
+GRATING_KG_PER_M2 = 12.7   # 2.60 lb/sf × 4.882 = 12.7 kg/m² (MS-S-100 datasheet; was an est. 11 for the bogus 15mm)
 
 # ── IBC empty weight ────────────────────────────────────────────────────────
 # ibc-reconfig-v2: all four positions are 275-gal (≈1000 L) caged composite totes

@@ -383,8 +383,8 @@ Permanently installed — no removal for transport mode conversion.*
 | Parameter | Value | Constant |
 |-----------|-------|----------|
 | Walkway width | <!-- BEGIN cdm:WALKWAY_W -->300<!-- END cdm:WALKWAY_W -->mm | `WALKWAY_W` |
-| Deck height | <!-- BEGIN cdm:WALKWAY_H -->130<!-- END cdm:WALKWAY_H -->mm | `WALKWAY_H` |
-| Grate thickness (all sections) | <!-- BEGIN cdm:WALKWAY_GRATE_T -->15<!-- END cdm:WALKWAY_GRATE_T -->mm | `WALKWAY_GRATE_T` |
+| Deck height | <!-- BEGIN cdm:WALKWAY_H -->140<!-- END cdm:WALKWAY_H -->mm | `WALKWAY_H` |
+| Grate thickness (all sections) | <!-- BEGIN cdm:WALKWAY_GRATE_T -->25<!-- END cdm:WALKWAY_GRATE_T -->mm | `WALKWAY_GRATE_T` |
 | Bracket vertical leg | <!-- BEGIN cdm:WALKWAY_BRACKET_H -->150<!-- END cdm:WALKWAY_BRACKET_H -->mm | `WALKWAY_BRACKET_H` |
 | Bracket plate thickness | <!-- BEGIN cdm:WALKWAY_BRACKET_T -->8<!-- END cdm:WALKWAY_BRACKET_T -->mm | `WALKWAY_BRACKET_T` |
 | Bracket spacing | <!-- BEGIN cdm:WALKWAY_BRACKET_SPACING -->457<!-- END cdm:WALKWAY_BRACKET_SPACING -->mm | `WALKWAY_BRACKET_SPACING` |

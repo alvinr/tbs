@@ -122,7 +122,7 @@ end
   grp.name = "Walkway Near (left section)"
   face = grp.entities.add_face([470.mm,8.mm,115.mm], [1055.mm,8.mm,115.mm], [1055.mm,300.mm,115.mm], [470.mm,300.mm,115.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(15.mm)
+  face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
   mat.color = Sketchup::Color.new(128, 128, 128)
   mat.alpha = 1.0
@@ -133,7 +133,7 @@ end
   grp.name = "Walkway Near (widened)"
   face = grp.entities.add_face([1055.mm,10.mm,115.mm], [2169.mm,10.mm,115.mm], [2169.mm,500.mm,115.mm], [1055.mm,500.mm,115.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(15.mm)
+  face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
   mat.color = Sketchup::Color.new(128, 128, 128)
   mat.alpha = 1.0
@@ -144,7 +144,7 @@ end
   grp.name = "Walkway Near (right section)"
   face = grp.entities.add_face([2169.mm,8.mm,115.mm], [4329.mm,8.mm,115.mm], [4329.mm,300.mm,115.mm], [2169.mm,300.mm,115.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(15.mm)
+  face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
   mat.color = Sketchup::Color.new(128, 128, 128)
   mat.alpha = 1.0
@@ -155,7 +155,7 @@ end
   grp.name = "Walkway Far"
   face = grp.entities.add_face([470.mm,2062.mm,115.mm], [4329.mm,2062.mm,115.mm], [4329.mm,2354.mm,115.mm], [470.mm,2354.mm,115.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(15.mm)
+  face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
   mat.color = Sketchup::Color.new(128, 128, 128)
   mat.alpha = 1.0
@@ -666,7 +666,7 @@ end
   grp.name = "Right walkway grate (cantilevered)"
   face = grp.entities.add_face([4329.mm,0.mm,115.mm], [4629.mm,0.mm,115.mm], [4629.mm,2362.mm,115.mm], [4329.mm,2362.mm,115.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(15.mm)
+  face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
   mat.color = Sketchup::Color.new(128, 128, 128)
   mat.alpha = 1.0
@@ -677,7 +677,7 @@ end
   grp.name = "Walkway Left (REMOVABLE — transport)"
   face = grp.entities.add_face([170.mm,0.mm,115.mm], [470.mm,0.mm,115.mm], [470.mm,2362.mm,115.mm], [170.mm,2362.mm,115.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(15.mm)
+  face.pushpull(25.mm)
   mat = model.materials["Walkway Left (REMOVABLE — transport)"] || model.materials.add("Walkway Left (REMOVABLE — transport)")
   mat.color = Sketchup::Color.new(192, 96, 0)
   mat.alpha = 1.0
@@ -688,7 +688,7 @@ end
   grp.name = "Walkway Left punch-out (drum exit)"
   face = grp.entities.add_face([470.mm,800.mm,115.mm], [770.mm,800.mm,115.mm], [770.mm,1560.mm,115.mm], [470.mm,1560.mm,115.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(15.mm)
+  face.pushpull(25.mm)
   mat = model.materials["Walkway Left (REMOVABLE — transport)"] || model.materials.add("Walkway Left (REMOVABLE — transport)")
   mat.color = Sketchup::Color.new(192, 96, 0)
   mat.alpha = 1.0
@@ -2250,7 +2250,7 @@ end
   # FP Rail BR
   grp = ents.add_group
   grp.name = "FP Rail BR"
-  face = grp.entities.add_face([4609.mm,0.mm,150.mm], [4649.mm,0.mm,150.mm], [4649.mm,2362.mm,150.mm], [4609.mm,2362.mm,150.mm])
+  face = grp.entities.add_face([4609.mm,0.mm,160.mm], [4649.mm,0.mm,160.mm], [4649.mm,2362.mm,160.mm], [4609.mm,2362.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -2272,7 +2272,7 @@ end
   # FP Rail BL
   grp = ents.add_group
   grp.name = "FP Rail BL"
-  face = grp.entities.add_face([150.mm,0.mm,150.mm], [190.mm,0.mm,150.mm], [190.mm,2362.mm,150.mm], [150.mm,2362.mm,150.mm])
+  face = grp.entities.add_face([150.mm,0.mm,160.mm], [190.mm,0.mm,160.mm], [190.mm,2362.mm,160.mm], [150.mm,2362.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -2782,7 +2782,7 @@ end
   # Saddle back-plate BL near
   grp = ents.add_group
   grp.name = "Saddle back-plate BL near"
-  face = grp.entities.add_face([75.mm,0.mm,75.mm], [225.mm,0.mm,75.mm], [225.mm,8.mm,75.mm], [75.mm,8.mm,75.mm])
+  face = grp.entities.add_face([75.mm,0.mm,85.mm], [225.mm,0.mm,85.mm], [225.mm,8.mm,85.mm], [75.mm,8.mm,85.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -2793,7 +2793,7 @@ end
   # Saddle OUTSIDE plate BL near
   grp = ents.add_group
   grp.name = "Saddle OUTSIDE plate BL near"
-  face = grp.entities.add_face([75.mm,-48.mm,75.mm], [225.mm,-48.mm,75.mm], [225.mm,-40.mm,75.mm], [75.mm,-40.mm,75.mm])
+  face = grp.entities.add_face([75.mm,-48.mm,85.mm], [225.mm,-48.mm,85.mm], [225.mm,-40.mm,85.mm], [75.mm,-40.mm,85.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -2804,7 +2804,7 @@ end
   # Saddle seat BL near
   grp = ents.add_group
   grp.name = "Saddle seat BL near"
-  face = grp.entities.add_face([126.mm,0.mm,140.mm], [174.mm,0.mm,140.mm], [174.mm,110.mm,140.mm], [126.mm,110.mm,140.mm])
+  face = grp.entities.add_face([126.mm,0.mm,150.mm], [174.mm,0.mm,150.mm], [174.mm,110.mm,150.mm], [126.mm,110.mm,150.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -2816,7 +2816,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle gusset BL near"
   ge = grp.entities
-  f = ge.add_face([150.mm,110.mm,140.mm], [150.mm,0.mm,140.mm], [150.mm,0.mm,20.mm])
+  f = ge.add_face([150.mm,110.mm,150.mm], [150.mm,0.mm,150.mm], [150.mm,0.mm,30.mm])
   f.pushpull(8.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -2827,7 +2827,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 BL near"
   ge = grp.entities
-  circle = ge.add_circle([100.mm,-48.mm,100.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([100.mm,-48.mm,110.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2840,7 +2840,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 BL near"
   ge = grp.entities
-  circle = ge.add_circle([100.mm,-48.mm,200.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([100.mm,-48.mm,210.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2853,7 +2853,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 BL near"
   ge = grp.entities
-  circle = ge.add_circle([200.mm,-48.mm,100.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([200.mm,-48.mm,110.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2866,7 +2866,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 BL near"
   ge = grp.entities
-  circle = ge.add_circle([200.mm,-48.mm,200.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([200.mm,-48.mm,210.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2879,7 +2879,7 @@ end
   grp = ents.add_group
   grp.name = "Thumb screw BL near"
   ge = grp.entities
-  circle = ge.add_circle([150.mm,25.mm,150.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([150.mm,25.mm,160.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
@@ -2892,7 +2892,7 @@ end
   grp = ents.add_group
   grp.name = "Thumb screw BL near"
   ge = grp.entities
-  circle = ge.add_circle([150.mm,85.mm,150.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([150.mm,85.mm,160.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
@@ -2904,7 +2904,7 @@ end
   # Saddle back-plate BL far
   grp = ents.add_group
   grp.name = "Saddle back-plate BL far"
-  face = grp.entities.add_face([75.mm,2354.mm,75.mm], [225.mm,2354.mm,75.mm], [225.mm,2362.mm,75.mm], [75.mm,2362.mm,75.mm])
+  face = grp.entities.add_face([75.mm,2354.mm,85.mm], [225.mm,2354.mm,85.mm], [225.mm,2362.mm,85.mm], [75.mm,2362.mm,85.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -2915,7 +2915,7 @@ end
   # Saddle OUTSIDE plate BL far
   grp = ents.add_group
   grp.name = "Saddle OUTSIDE plate BL far"
-  face = grp.entities.add_face([75.mm,2402.mm,75.mm], [225.mm,2402.mm,75.mm], [225.mm,2410.mm,75.mm], [75.mm,2410.mm,75.mm])
+  face = grp.entities.add_face([75.mm,2402.mm,85.mm], [225.mm,2402.mm,85.mm], [225.mm,2410.mm,85.mm], [75.mm,2410.mm,85.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -2926,7 +2926,7 @@ end
   # Saddle seat BL far
   grp = ents.add_group
   grp.name = "Saddle seat BL far"
-  face = grp.entities.add_face([126.mm,2252.mm,140.mm], [174.mm,2252.mm,140.mm], [174.mm,2362.mm,140.mm], [126.mm,2362.mm,140.mm])
+  face = grp.entities.add_face([126.mm,2252.mm,150.mm], [174.mm,2252.mm,150.mm], [174.mm,2362.mm,150.mm], [126.mm,2362.mm,150.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -2938,7 +2938,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle gusset BL far"
   ge = grp.entities
-  f = ge.add_face([150.mm,2252.mm,140.mm], [150.mm,2362.mm,140.mm], [150.mm,2362.mm,20.mm])
+  f = ge.add_face([150.mm,2252.mm,150.mm], [150.mm,2362.mm,150.mm], [150.mm,2362.mm,30.mm])
   f.pushpull(8.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -2949,7 +2949,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 BL far"
   ge = grp.entities
-  circle = ge.add_circle([100.mm,2354.mm,100.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([100.mm,2354.mm,110.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2962,7 +2962,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 BL far"
   ge = grp.entities
-  circle = ge.add_circle([100.mm,2354.mm,200.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([100.mm,2354.mm,210.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2975,7 +2975,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 BL far"
   ge = grp.entities
-  circle = ge.add_circle([200.mm,2354.mm,100.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([200.mm,2354.mm,110.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2988,7 +2988,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 BL far"
   ge = grp.entities
-  circle = ge.add_circle([200.mm,2354.mm,200.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([200.mm,2354.mm,210.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -3001,7 +3001,7 @@ end
   grp = ents.add_group
   grp.name = "Thumb screw BL far"
   ge = grp.entities
-  circle = ge.add_circle([150.mm,2277.mm,150.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([150.mm,2277.mm,160.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
@@ -3014,7 +3014,7 @@ end
   grp = ents.add_group
   grp.name = "Thumb screw BL far"
   ge = grp.entities
-  circle = ge.add_circle([150.mm,2337.mm,150.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([150.mm,2337.mm,160.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
@@ -3090,7 +3090,7 @@ end
   grp.name = "FP combined corner plate (near)"
   face = grp.entities.add_face([4574.mm,0.mm,58.mm], [4724.mm,0.mm,58.mm], [4724.mm,10.mm,58.mm], [4574.mm,10.mm,58.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(167.mm)
+  face.pushpull(177.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3101,7 +3101,7 @@ end
   grp.name = "FP combined corner ext plate (near)"
   face = grp.entities.add_face([4574.mm,-50.mm,58.mm], [4724.mm,-50.mm,58.mm], [4724.mm,-40.mm,58.mm], [4574.mm,-40.mm,58.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(167.mm)
+  face.pushpull(177.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3121,7 +3121,7 @@ end
   # FP combined BR rail seat (near)
   grp = ents.add_group
   grp.name = "FP combined BR rail seat (near)"
-  face = grp.entities.add_face([4619.mm,0.mm,138.mm], [4679.mm,0.mm,138.mm], [4679.mm,55.mm,138.mm], [4619.mm,55.mm,138.mm])
+  face = grp.entities.add_face([4619.mm,0.mm,148.mm], [4679.mm,0.mm,148.mm], [4679.mm,55.mm,148.mm], [4619.mm,55.mm,148.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -3142,11 +3142,11 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (near) X4599 Z178
+  # FP combined bolt M12 (near) X4599 Z188
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4599 Z178"
+  grp.name = "FP combined bolt M12 (near) X4599 Z188"
   ge = grp.entities
-  circle = ge.add_circle([4599.mm,-50.mm,178.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,-50.mm,188.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -3168,11 +3168,11 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (near) X4699 Z178
+  # FP combined bolt M12 (near) X4699 Z188
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4699 Z178"
+  grp.name = "FP combined bolt M12 (near) X4699 Z188"
   ge = grp.entities
-  circle = ge.add_circle([4699.mm,-50.mm,178.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,-50.mm,188.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -3186,7 +3186,7 @@ end
   grp.name = "FP combined corner plate (far)"
   face = grp.entities.add_face([4574.mm,2352.mm,58.mm], [4724.mm,2352.mm,58.mm], [4724.mm,2362.mm,58.mm], [4574.mm,2362.mm,58.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(167.mm)
+  face.pushpull(177.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3197,7 +3197,7 @@ end
   grp.name = "FP combined corner ext plate (far)"
   face = grp.entities.add_face([4574.mm,2402.mm,58.mm], [4724.mm,2402.mm,58.mm], [4724.mm,2412.mm,58.mm], [4574.mm,2412.mm,58.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(167.mm)
+  face.pushpull(177.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3217,7 +3217,7 @@ end
   # FP combined BR rail seat (far)
   grp = ents.add_group
   grp.name = "FP combined BR rail seat (far)"
-  face = grp.entities.add_face([4619.mm,2307.mm,138.mm], [4679.mm,2307.mm,138.mm], [4679.mm,2362.mm,138.mm], [4619.mm,2362.mm,138.mm])
+  face = grp.entities.add_face([4619.mm,2307.mm,148.mm], [4679.mm,2307.mm,148.mm], [4679.mm,2362.mm,148.mm], [4619.mm,2362.mm,148.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -3238,11 +3238,11 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (far) X4599 Z178
+  # FP combined bolt M12 (far) X4599 Z188
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4599 Z178"
+  grp.name = "FP combined bolt M12 (far) X4599 Z188"
   ge = grp.entities
-  circle = ge.add_circle([4599.mm,2352.mm,178.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,2352.mm,188.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -3264,11 +3264,11 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (far) X4699 Z178
+  # FP combined bolt M12 (far) X4699 Z188
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4699 Z178"
+  grp.name = "FP combined bolt M12 (far) X4699 Z188"
   ge = grp.entities
-  circle = ge.add_circle([4699.mm,2352.mm,178.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,2352.mm,188.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -9232,7 +9232,7 @@ end
   grp = ents.add_group
   grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-56.75395000000026.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(-54.12895000000026.mm, 0.mm, 0.mm)
   circle = ge.add_circle([4631.12895.mm,1110.mm,104.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -9246,8 +9246,8 @@ end
   grp = ents.add_group
   grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
   ge = grp.entities
-  arc = ge.add_arc([4574.375.mm,1110.mm,122.875.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 18.375000000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4574.375.mm,1110.mm,104.5.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4577.mm,1110.mm,125.5.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4577.mm,1110.mm,104.5.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
@@ -9259,8 +9259,8 @@ end
   grp = ents.add_group
   grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 9.753749999999997.mm)
-  circle = ge.add_circle([4556.mm,1110.mm,122.875.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 13.514999999999986.mm)
+  circle = ge.add_circle([4556.mm,1110.mm,125.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9273,8 +9273,8 @@ end
   grp = ents.add_group
   grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
   ge = grp.entities
-  arc = ge.add_arc([4556.mm,1100.62875.mm,132.62875.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 9.371250000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4556.mm,1110.mm,132.62875.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4556.mm,1097.015.mm,139.015.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4556.mm,1110.mm,139.015.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
@@ -9286,8 +9286,8 @@ end
   grp = ents.add_group
   grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -82.25375000000008.mm, 0.mm)
-  circle = ge.add_circle([4556.mm,1100.62875.mm,142.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -76.0150000000001.mm, 0.mm)
+  circle = ge.add_circle([4556.mm,1097.015.mm,152.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9300,8 +9300,8 @@ end
   grp = ents.add_group
   grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
   ge = grp.entities
-  arc = ge.add_arc([4556.mm,1018.375.mm,123.625.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 18.375000000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4556.mm,1018.375.mm,142.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4556.mm,1021.mm,131.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4556.mm,1021.mm,152.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
@@ -9313,8 +9313,8 @@ end
   grp = ents.add_group
   grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -9.753749999999997.mm)
-  circle = ge.add_circle([4556.mm,1000.mm,123.625.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -13.515.mm)
+  circle = ge.add_circle([4556.mm,1000.mm,131.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9327,8 +9327,8 @@ end
   grp = ents.add_group
   grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
   ge = grp.entities
-  arc = ge.add_arc([4556.mm,990.62875.mm,113.87125.mm], [0.000000,1.000000,0.000000], [-1.000000,-0.000000,-0.000000], 9.371250000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4556.mm,1000.mm,113.87125.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4556.mm,987.015.mm,117.485.mm], [0.000000,1.000000,0.000000], [-1.000000,-0.000000,-0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4556.mm,1000.mm,117.485.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
@@ -9340,8 +9340,8 @@ end
   grp = ents.add_group
   grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -914.62875.mm, 0.mm)
-  circle = ge.add_circle([4556.mm,990.62875.mm,104.5.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -911.015.mm, 0.mm)
+  circle = ge.add_circle([4556.mm,987.015.mm,104.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9798,7 +9798,7 @@ end
   grp = ents.add_group
   grp.name = "SV-01 -> DV-01 (single filtered line)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 905.21.mm, 0.mm)
+  vec = Geom::Vector3d.new(0.mm, 902.585.mm, 0.mm)
   circle = ge.add_circle([4478.mm,76.41499999999999.mm,104.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -9812,8 +9812,8 @@ end
   grp = ents.add_group
   grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
   ge = grp.entities
-  arc = ge.add_arc([4478.mm,981.625.mm,122.875.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 18.375000000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4478.mm,981.625.mm,104.5.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4478.mm,979.mm,125.5.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4478.mm,979.mm,104.5.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
@@ -9825,8 +9825,8 @@ end
   grp = ents.add_group
   grp.name = "SV-01 -> DV-01 (single filtered line)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 9.753749999999997.mm)
-  circle = ge.add_circle([4478.mm,1000.mm,122.875.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 13.514999999999986.mm)
+  circle = ge.add_circle([4478.mm,1000.mm,125.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9839,8 +9839,8 @@ end
   grp = ents.add_group
   grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
   ge = grp.entities
-  arc = ge.add_arc([4478.mm,1009.37125.mm,132.62875.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 9.371250000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4478.mm,1000.mm,132.62875.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4478.mm,1012.985.mm,139.015.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4478.mm,1000.mm,139.015.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
@@ -9852,8 +9852,8 @@ end
   grp = ents.add_group
   grp.name = "SV-01 -> DV-01 (single filtered line)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 92.25374999999997.mm, 0.mm)
-  circle = ge.add_circle([4478.mm,1009.37125.mm,142.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 86.01499999999999.mm, 0.mm)
+  circle = ge.add_circle([4478.mm,1012.985.mm,152.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9866,8 +9866,8 @@ end
   grp = ents.add_group
   grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
   ge = grp.entities
-  arc = ge.add_arc([4478.mm,1101.625.mm,123.625.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 18.375000000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4478.mm,1101.625.mm,142.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4478.mm,1099.mm,131.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4478.mm,1099.mm,152.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
@@ -9879,8 +9879,8 @@ end
   grp = ents.add_group
   grp.name = "SV-01 -> DV-01 (single filtered line)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -9.753749999999997.mm)
-  circle = ge.add_circle([4478.mm,1120.mm,123.625.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -13.515.mm)
+  circle = ge.add_circle([4478.mm,1120.mm,131.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9893,8 +9893,8 @@ end
   grp = ents.add_group
   grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
   ge = grp.entities
-  arc = ge.add_arc([4478.mm,1129.37125.mm,113.87125.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 9.371250000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4478.mm,1120.mm,113.87125.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4478.mm,1132.985.mm,117.485.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4478.mm,1120.mm,117.485.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
@@ -9906,8 +9906,8 @@ end
   grp = ents.add_group
   grp.name = "SV-01 -> DV-01 (single filtered line)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 90.62875000000008.mm, 0.mm)
-  circle = ge.add_circle([4478.mm,1129.37125.mm,104.5.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 87.0150000000001.mm, 0.mm)
+  circle = ge.add_circle([4478.mm,1132.985.mm,104.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -10251,9 +10251,9 @@ end
   # EP plywood backing panel (18mm)
   grp = ents.add_group
   grp.name = "EP plywood backing panel (18mm)"
-  face = grp.entities.add_face([1817.mm,-18.mm,138.mm], [2181.mm,-18.mm,138.mm], [2181.mm,0.mm,138.mm], [1817.mm,0.mm,138.mm])
+  face = grp.entities.add_face([1817.mm,-18.mm,148.mm], [2181.mm,-18.mm,148.mm], [2181.mm,0.mm,148.mm], [1817.mm,0.mm,148.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(1974.mm)
+  face.pushpull(1964.mm)
   mat = model.materials["Rear panel (18mm marine ply)"] || model.materials.add("Rear panel (18mm marine ply)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
@@ -10262,9 +10262,9 @@ end
   # Plywood side lip (left, 18mm)
   grp = ents.add_group
   grp.name = "Plywood side lip (left, 18mm)"
-  face = grp.entities.add_face([1817.mm,0.mm,138.mm], [1835.mm,0.mm,138.mm], [1835.mm,100.mm,138.mm], [1817.mm,100.mm,138.mm])
+  face = grp.entities.add_face([1817.mm,0.mm,148.mm], [1835.mm,0.mm,148.mm], [1835.mm,100.mm,148.mm], [1817.mm,100.mm,148.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(1974.mm)
+  face.pushpull(1964.mm)
   mat = model.materials["Rear panel (18mm marine ply)"] || model.materials.add("Rear panel (18mm marine ply)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
@@ -10273,9 +10273,9 @@ end
   # Plywood side lip (right, 18mm)
   grp = ents.add_group
   grp.name = "Plywood side lip (right, 18mm)"
-  face = grp.entities.add_face([2163.mm,0.mm,138.mm], [2181.mm,0.mm,138.mm], [2181.mm,100.mm,138.mm], [2163.mm,100.mm,138.mm])
+  face = grp.entities.add_face([2163.mm,0.mm,148.mm], [2181.mm,0.mm,148.mm], [2181.mm,100.mm,148.mm], [2163.mm,100.mm,148.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(1974.mm)
+  face.pushpull(1964.mm)
   mat = model.materials["Rear panel (18mm marine ply)"] || model.materials.add("Rear panel (18mm marine ply)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
@@ -10700,7 +10700,7 @@ end
   grp.name = "E-stop trip line (contactor coil -> interior E-stop)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -28.054054863004325.mm, 16.030888493145312.mm)
-  circle = ge.add_circle([1899.mm,45.mm,714.mm], vec, 4.mm, 16)
+  circle = ge.add_circle([1899.mm,45.mm,724.mm], vec, 4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -10713,8 +10713,8 @@ end
   grp = ents.add_group
   grp.name = "E-stop trip line (contactor coil -> interior E-stop) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1891.mm,16.945945136995675.mm,730.0308884931453.mm], [1.000000,0.000000,0.000000], [-0.000000,-0.496139,-0.868243], 8.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1899.mm,16.945945136995675.mm,730.0308884931453.mm], [0.000000,-0.868243,0.496139], 4.mm, 16)
+  arc = ge.add_arc([1891.mm,16.945945136995675.mm,740.0308884931453.mm], [1.000000,0.000000,0.000000], [-0.000000,-0.496139,-0.868243], 8.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1899.mm,16.945945136995675.mm,740.0308884931453.mm], [0.000000,-0.868243,0.496139], 4.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
@@ -10727,7 +10727,7 @@ end
   grp.name = "E-stop trip line (contactor coil -> interior E-stop)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-6.119999999999891.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1891.mm,10.mm,734.mm], vec, 4.mm, 16)
+  circle = ge.add_circle([1891.mm,10.mm,744.mm], vec, 4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -10740,8 +10740,8 @@ end
   grp = ents.add_group
   grp.name = "E-stop trip line (contactor coil -> interior E-stop) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1884.88.mm,10.mm,739.88.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 5.880000000000001.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1884.88.mm,10.mm,734.mm], [-1.000000,0.000000,0.000000], 4.mm, 16)
+  arc = ge.add_arc([1884.88.mm,10.mm,749.88.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 5.880000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1884.88.mm,10.mm,744.mm], [-1.000000,0.000000,0.000000], 4.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
@@ -10753,8 +10753,8 @@ end
   grp = ents.add_group
   grp.name = "E-stop trip line (contactor coil -> interior E-stop)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 255.22000000000003.mm)
-  circle = ge.add_circle([1879.mm,10.mm,739.88.mm], vec, 4.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 245.22000000000003.mm)
+  circle = ge.add_circle([1879.mm,10.mm,749.88.mm], vec, 4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -10915,7 +10915,7 @@ end
   # Battery 1 (12V 100Ah LiFePO4)
   grp = ents.add_group
   grp.name = "Battery 1 (12V 100Ah LiFePO4)"
-  face = grp.entities.add_face([1829.mm,0.mm,150.mm], [2159.mm,0.mm,150.mm], [2159.mm,172.mm,150.mm], [1829.mm,172.mm,150.mm])
+  face = grp.entities.add_face([1829.mm,0.mm,160.mm], [2159.mm,0.mm,160.mm], [2159.mm,172.mm,160.mm], [1829.mm,172.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(214.mm)
   mat = model.materials["Battery 1 (12V 100Ah LiFePO4)"] || model.materials.add("Battery 1 (12V 100Ah LiFePO4)")
@@ -10926,7 +10926,7 @@ end
   # Battery 2 (optional 2nd pack, ghosted)
   grp = ents.add_group
   grp.name = "Battery 2 (optional 2nd pack, ghosted)"
-  face = grp.entities.add_face([1829.mm,0.mm,380.mm], [2159.mm,0.mm,380.mm], [2159.mm,172.mm,380.mm], [1829.mm,172.mm,380.mm])
+  face = grp.entities.add_face([1829.mm,0.mm,390.mm], [2159.mm,0.mm,390.mm], [2159.mm,172.mm,390.mm], [1829.mm,172.mm,390.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(214.mm)
   mat = model.materials["Battery 2 (optional 2nd pack, ghosted)"] || model.materials.add("Battery 2 (optional 2nd pack, ghosted)")
@@ -10937,7 +10937,7 @@ end
   # Battery Contactor (ML-RBS)
   grp = ents.add_group
   grp.name = "Battery Contactor (ML-RBS)"
-  face = grp.entities.add_face([1839.mm,15.mm,614.mm], [1959.mm,15.mm,614.mm], [1959.mm,105.mm,614.mm], [1839.mm,105.mm,614.mm])
+  face = grp.entities.add_face([1839.mm,15.mm,624.mm], [1959.mm,15.mm,624.mm], [1959.mm,105.mm,624.mm], [1839.mm,105.mm,624.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(100.mm)
   mat = model.materials["Interior E-stop button (red mushroom)"] || model.materials.add("Interior E-stop button (red mushroom)")
@@ -10948,7 +10948,7 @@ end
   # MRBF Main Fuse (on + post)
   grp = ents.add_group
   grp.name = "MRBF Main Fuse (on + post)"
-  face = grp.entities.add_face([1979.mm,20.mm,614.mm], [2019.mm,20.mm,614.mm], [2019.mm,60.mm,614.mm], [1979.mm,60.mm,614.mm])
+  face = grp.entities.add_face([1979.mm,20.mm,624.mm], [2019.mm,20.mm,624.mm], [2019.mm,60.mm,624.mm], [1979.mm,60.mm,624.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["Charge-line Fuse (60A, MPPT -> battery)"] || model.materials.add("Charge-line Fuse (60A, MPPT -> battery)")
@@ -10961,7 +10961,7 @@ end
   grp.name = "Battery + cable (2/0 AWG, MRBF → main disconnect)"
   ge = grp.entities
   vec = Geom::Vector3d.new(68.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1999.mm,45.mm,652.mm], vec, 11.mm, 16)
+  circle = ge.add_circle([1999.mm,45.mm,662.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -10974,8 +10974,8 @@ end
   grp = ents.add_group
   grp.name = "Battery + cable (2/0 AWG, MRBF → main disconnect) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2067.mm,45.mm,674.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2067.mm,45.mm,652.mm], [1.000000,0.000000,0.000000], 11.mm, 16)
+  arc = ge.add_arc([2067.mm,45.mm,684.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2067.mm,45.mm,662.mm], [1.000000,0.000000,0.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
@@ -10987,8 +10987,8 @@ end
   grp = ents.add_group
   grp.name = "Battery + cable (2/0 AWG, MRBF → main disconnect)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 901.2.mm)
-  circle = ge.add_circle([2089.mm,45.mm,674.mm], vec, 11.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 891.2.mm)
+  circle = ge.add_circle([2089.mm,45.mm,684.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11056,7 +11056,7 @@ end
   grp.name = "Battery − cable (2/0 AWG)"
   ge = grp.entities
   vec = Geom::Vector3d.new(78.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1869.mm,60.mm,594.mm], vec, 11.mm, 16)
+  circle = ge.add_circle([1869.mm,60.mm,604.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11069,8 +11069,8 @@ end
   grp = ents.add_group
   grp.name = "Battery − cable (2/0 AWG) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1947.mm,60.mm,616.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1947.mm,60.mm,594.mm], [1.000000,0.000000,0.000000], 11.mm, 16)
+  arc = ge.add_arc([1947.mm,60.mm,626.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1947.mm,60.mm,604.mm], [1.000000,0.000000,0.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
@@ -11082,8 +11082,8 @@ end
   grp = ents.add_group
   grp.name = "Battery − cable (2/0 AWG)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 1048.mm)
-  circle = ge.add_circle([1969.mm,60.mm,616.mm], vec, 11.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 1038.mm)
+  circle = ge.add_circle([1969.mm,60.mm,626.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -12972,9 +12972,9 @@ end
   # EP plywood backing panel (18mm)
   grp = ents.add_group
   grp.name = "EP plywood backing panel (18mm)"
-  face = grp.entities.add_face([1817.mm,-18.mm,138.mm], [2181.mm,-18.mm,138.mm], [2181.mm,0.mm,138.mm], [1817.mm,0.mm,138.mm])
+  face = grp.entities.add_face([1817.mm,-18.mm,148.mm], [2181.mm,-18.mm,148.mm], [2181.mm,0.mm,148.mm], [1817.mm,0.mm,148.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(1974.mm)
+  face.pushpull(1964.mm)
   mat = model.materials["Rear panel (18mm marine ply)"] || model.materials.add("Rear panel (18mm marine ply)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
@@ -12983,9 +12983,9 @@ end
   # Plywood side lip (left, 18mm)
   grp = ents.add_group
   grp.name = "Plywood side lip (left, 18mm)"
-  face = grp.entities.add_face([1817.mm,0.mm,138.mm], [1835.mm,0.mm,138.mm], [1835.mm,100.mm,138.mm], [1817.mm,100.mm,138.mm])
+  face = grp.entities.add_face([1817.mm,0.mm,148.mm], [1835.mm,0.mm,148.mm], [1835.mm,100.mm,148.mm], [1817.mm,100.mm,148.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(1974.mm)
+  face.pushpull(1964.mm)
   mat = model.materials["Rear panel (18mm marine ply)"] || model.materials.add("Rear panel (18mm marine ply)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
@@ -12994,9 +12994,9 @@ end
   # Plywood side lip (right, 18mm)
   grp = ents.add_group
   grp.name = "Plywood side lip (right, 18mm)"
-  face = grp.entities.add_face([2163.mm,0.mm,138.mm], [2181.mm,0.mm,138.mm], [2181.mm,100.mm,138.mm], [2163.mm,100.mm,138.mm])
+  face = grp.entities.add_face([2163.mm,0.mm,148.mm], [2181.mm,0.mm,148.mm], [2181.mm,100.mm,148.mm], [2163.mm,100.mm,148.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(1974.mm)
+  face.pushpull(1964.mm)
   mat = model.materials["Rear panel (18mm marine ply)"] || model.materials.add("Rear panel (18mm marine ply)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
@@ -13421,7 +13421,7 @@ end
   grp.name = "E-stop trip line (contactor coil -> interior E-stop)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -28.054054863004325.mm, 16.030888493145312.mm)
-  circle = ge.add_circle([1899.mm,45.mm,714.mm], vec, 4.mm, 16)
+  circle = ge.add_circle([1899.mm,45.mm,724.mm], vec, 4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -13434,8 +13434,8 @@ end
   grp = ents.add_group
   grp.name = "E-stop trip line (contactor coil -> interior E-stop) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1891.mm,16.945945136995675.mm,730.0308884931453.mm], [1.000000,0.000000,0.000000], [-0.000000,-0.496139,-0.868243], 8.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1899.mm,16.945945136995675.mm,730.0308884931453.mm], [0.000000,-0.868243,0.496139], 4.mm, 16)
+  arc = ge.add_arc([1891.mm,16.945945136995675.mm,740.0308884931453.mm], [1.000000,0.000000,0.000000], [-0.000000,-0.496139,-0.868243], 8.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1899.mm,16.945945136995675.mm,740.0308884931453.mm], [0.000000,-0.868243,0.496139], 4.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
@@ -13448,7 +13448,7 @@ end
   grp.name = "E-stop trip line (contactor coil -> interior E-stop)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-6.119999999999891.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1891.mm,10.mm,734.mm], vec, 4.mm, 16)
+  circle = ge.add_circle([1891.mm,10.mm,744.mm], vec, 4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -13461,8 +13461,8 @@ end
   grp = ents.add_group
   grp.name = "E-stop trip line (contactor coil -> interior E-stop) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1884.88.mm,10.mm,739.88.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 5.880000000000001.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1884.88.mm,10.mm,734.mm], [-1.000000,0.000000,0.000000], 4.mm, 16)
+  arc = ge.add_arc([1884.88.mm,10.mm,749.88.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 5.880000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1884.88.mm,10.mm,744.mm], [-1.000000,0.000000,0.000000], 4.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
@@ -13474,8 +13474,8 @@ end
   grp = ents.add_group
   grp.name = "E-stop trip line (contactor coil -> interior E-stop)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 255.22000000000003.mm)
-  circle = ge.add_circle([1879.mm,10.mm,739.88.mm], vec, 4.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 245.22000000000003.mm)
+  circle = ge.add_circle([1879.mm,10.mm,749.88.mm], vec, 4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -13636,7 +13636,7 @@ end
   # Battery 1 (12V 100Ah LiFePO4)
   grp = ents.add_group
   grp.name = "Battery 1 (12V 100Ah LiFePO4)"
-  face = grp.entities.add_face([1829.mm,0.mm,150.mm], [2159.mm,0.mm,150.mm], [2159.mm,172.mm,150.mm], [1829.mm,172.mm,150.mm])
+  face = grp.entities.add_face([1829.mm,0.mm,160.mm], [2159.mm,0.mm,160.mm], [2159.mm,172.mm,160.mm], [1829.mm,172.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(214.mm)
   mat = model.materials["Battery 1 (12V 100Ah LiFePO4)"] || model.materials.add("Battery 1 (12V 100Ah LiFePO4)")
@@ -13647,7 +13647,7 @@ end
   # Battery 2 (optional 2nd pack, ghosted)
   grp = ents.add_group
   grp.name = "Battery 2 (optional 2nd pack, ghosted)"
-  face = grp.entities.add_face([1829.mm,0.mm,380.mm], [2159.mm,0.mm,380.mm], [2159.mm,172.mm,380.mm], [1829.mm,172.mm,380.mm])
+  face = grp.entities.add_face([1829.mm,0.mm,390.mm], [2159.mm,0.mm,390.mm], [2159.mm,172.mm,390.mm], [1829.mm,172.mm,390.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(214.mm)
   mat = model.materials["Battery 2 (optional 2nd pack, ghosted)"] || model.materials.add("Battery 2 (optional 2nd pack, ghosted)")
@@ -13658,7 +13658,7 @@ end
   # Battery Contactor (ML-RBS)
   grp = ents.add_group
   grp.name = "Battery Contactor (ML-RBS)"
-  face = grp.entities.add_face([1839.mm,15.mm,614.mm], [1959.mm,15.mm,614.mm], [1959.mm,105.mm,614.mm], [1839.mm,105.mm,614.mm])
+  face = grp.entities.add_face([1839.mm,15.mm,624.mm], [1959.mm,15.mm,624.mm], [1959.mm,105.mm,624.mm], [1839.mm,105.mm,624.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(100.mm)
   mat = model.materials["Interior E-stop button (red mushroom)"] || model.materials.add("Interior E-stop button (red mushroom)")
@@ -13669,7 +13669,7 @@ end
   # MRBF Main Fuse (on + post)
   grp = ents.add_group
   grp.name = "MRBF Main Fuse (on + post)"
-  face = grp.entities.add_face([1979.mm,20.mm,614.mm], [2019.mm,20.mm,614.mm], [2019.mm,60.mm,614.mm], [1979.mm,60.mm,614.mm])
+  face = grp.entities.add_face([1979.mm,20.mm,624.mm], [2019.mm,20.mm,624.mm], [2019.mm,60.mm,624.mm], [1979.mm,60.mm,624.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["Charge-line Fuse (60A, MPPT -> battery)"] || model.materials.add("Charge-line Fuse (60A, MPPT -> battery)")
@@ -13682,7 +13682,7 @@ end
   grp.name = "Battery + cable (2/0 AWG, MRBF → main disconnect)"
   ge = grp.entities
   vec = Geom::Vector3d.new(68.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1999.mm,45.mm,652.mm], vec, 11.mm, 16)
+  circle = ge.add_circle([1999.mm,45.mm,662.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -13695,8 +13695,8 @@ end
   grp = ents.add_group
   grp.name = "Battery + cable (2/0 AWG, MRBF → main disconnect) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2067.mm,45.mm,674.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2067.mm,45.mm,652.mm], [1.000000,0.000000,0.000000], 11.mm, 16)
+  arc = ge.add_arc([2067.mm,45.mm,684.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2067.mm,45.mm,662.mm], [1.000000,0.000000,0.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
@@ -13708,8 +13708,8 @@ end
   grp = ents.add_group
   grp.name = "Battery + cable (2/0 AWG, MRBF → main disconnect)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 901.2.mm)
-  circle = ge.add_circle([2089.mm,45.mm,674.mm], vec, 11.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 891.2.mm)
+  circle = ge.add_circle([2089.mm,45.mm,684.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -13777,7 +13777,7 @@ end
   grp.name = "Battery − cable (2/0 AWG)"
   ge = grp.entities
   vec = Geom::Vector3d.new(78.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1869.mm,60.mm,594.mm], vec, 11.mm, 16)
+  circle = ge.add_circle([1869.mm,60.mm,604.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -13790,8 +13790,8 @@ end
   grp = ents.add_group
   grp.name = "Battery − cable (2/0 AWG) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1947.mm,60.mm,616.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1947.mm,60.mm,594.mm], [1.000000,0.000000,0.000000], 11.mm, 16)
+  arc = ge.add_arc([1947.mm,60.mm,626.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1947.mm,60.mm,604.mm], [1.000000,0.000000,0.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
@@ -13803,8 +13803,8 @@ end
   grp = ents.add_group
   grp.name = "Battery − cable (2/0 AWG)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 1048.mm)
-  circle = ge.add_circle([1969.mm,60.mm,616.mm], vec, 11.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 1038.mm)
+  circle = ge.add_circle([1969.mm,60.mm,626.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -27318,7 +27318,7 @@ end
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-77.78290000000015.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(-75.15790000000015.mm, 0.mm, 0.mm)
   circle = ge.add_circle([4626.1579.mm,1132.mm,104.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -27332,8 +27332,8 @@ end
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip elbow"
   ge = grp.entities
-  arc = ge.add_arc([4548.375.mm,1132.mm,122.875.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 18.375000000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4548.375.mm,1132.mm,104.5.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4551.mm,1132.mm,125.5.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4551.mm,1132.mm,104.5.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
@@ -27345,8 +27345,8 @@ end
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 9.753749999999997.mm)
-  circle = ge.add_circle([4530.mm,1132.mm,122.875.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 13.514999999999986.mm)
+  circle = ge.add_circle([4530.mm,1132.mm,125.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -27359,8 +27359,8 @@ end
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip elbow"
   ge = grp.entities
-  arc = ge.add_arc([4530.mm,1122.62875.mm,132.62875.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 9.371250000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4530.mm,1132.mm,132.62875.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4530.mm,1119.015.mm,139.015.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4530.mm,1132.mm,139.015.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
@@ -27372,8 +27372,8 @@ end
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -104.25375000000008.mm, 0.mm)
-  circle = ge.add_circle([4530.mm,1122.62875.mm,142.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -98.0150000000001.mm, 0.mm)
+  circle = ge.add_circle([4530.mm,1119.015.mm,152.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -27386,8 +27386,8 @@ end
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip elbow"
   ge = grp.entities
-  arc = ge.add_arc([4530.mm,1018.375.mm,123.625.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 18.375000000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4530.mm,1018.375.mm,142.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4530.mm,1021.mm,131.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4530.mm,1021.mm,152.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
@@ -27399,8 +27399,8 @@ end
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -9.753749999999997.mm)
-  circle = ge.add_circle([4530.mm,1000.mm,123.625.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -13.515.mm)
+  circle = ge.add_circle([4530.mm,1000.mm,131.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -27413,8 +27413,8 @@ end
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip elbow"
   ge = grp.entities
-  arc = ge.add_arc([4530.mm,990.62875.mm,113.87125.mm], [0.000000,1.000000,0.000000], [-1.000000,-0.000000,-0.000000], 9.371250000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4530.mm,1000.mm,113.87125.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4530.mm,987.015.mm,117.485.mm], [0.000000,1.000000,0.000000], [-1.000000,-0.000000,-0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4530.mm,1000.mm,117.485.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
@@ -27426,8 +27426,8 @@ end
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -900.62875.mm, 0.mm)
-  circle = ge.add_circle([4530.mm,990.62875.mm,104.5.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -897.015.mm, 0.mm)
+  circle = ge.add_circle([4530.mm,987.015.mm,104.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -27642,7 +27642,7 @@ end
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 111.mm)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 121.mm)
   circle = ge.add_circle([4504.mm,155.mm,3.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -27656,8 +27656,8 @@ end
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction elbow"
   ge = grp.entities
-  arc = ge.add_arc([4504.mm,176.mm,114.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4504.mm,155.mm,114.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4504.mm,176.mm,124.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4504.mm,155.mm,124.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
@@ -27669,8 +27669,8 @@ end
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 137.055.mm, 0.mm)
-  circle = ge.add_circle([4504.mm,176.mm,135.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 132.15499999999997.mm, 0.mm)
+  circle = ge.add_circle([4504.mm,176.mm,145.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -27683,8 +27683,8 @@ end
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction elbow"
   ge = grp.entities
-  arc = ge.add_arc([4504.mm,313.055.mm,120.05499999999999.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 14.945000000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4504.mm,313.055.mm,135.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4504.mm,308.155.mm,125.155.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 19.845000000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4504.mm,308.155.mm,145.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
@@ -27696,8 +27696,8 @@ end
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -7.933050000000009.mm)
-  circle = ge.add_circle([4504.mm,328.mm,120.055.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -10.534050000000008.mm)
+  circle = ge.add_circle([4504.mm,328.mm,125.155.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -27710,8 +27710,8 @@ end
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction elbow"
   ge = grp.entities
-  arc = ge.add_arc([4504.mm,335.62195.mm,112.12195.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 7.621950000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4504.mm,328.mm,112.12195.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4504.mm,338.12095.mm,114.62095.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 10.120950000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4504.mm,328.mm,114.62095.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
@@ -27723,8 +27723,8 @@ end
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 646.00305.mm, 0.mm)
-  circle = ge.add_circle([4504.mm,335.62195.mm,104.5.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 640.87905.mm, 0.mm)
+  circle = ge.add_circle([4504.mm,338.12095.mm,104.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -27737,8 +27737,8 @@ end
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction elbow"
   ge = grp.entities
-  arc = ge.add_arc([4504.mm,981.625.mm,122.875.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 18.375000000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4504.mm,981.625.mm,104.5.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4504.mm,979.mm,125.5.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4504.mm,979.mm,104.5.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
@@ -27750,8 +27750,8 @@ end
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 9.753749999999997.mm)
-  circle = ge.add_circle([4504.mm,1000.mm,122.875.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 13.514999999999986.mm)
+  circle = ge.add_circle([4504.mm,1000.mm,125.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -27764,8 +27764,8 @@ end
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction elbow"
   ge = grp.entities
-  arc = ge.add_arc([4504.mm,1009.37125.mm,132.62875.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 9.371250000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4504.mm,1000.mm,132.62875.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4504.mm,1012.985.mm,139.015.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4504.mm,1000.mm,139.015.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
@@ -27777,8 +27777,8 @@ end
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 92.25374999999997.mm, 0.mm)
-  circle = ge.add_circle([4504.mm,1009.37125.mm,142.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 86.01499999999999.mm, 0.mm)
+  circle = ge.add_circle([4504.mm,1012.985.mm,152.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -27791,8 +27791,8 @@ end
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction elbow"
   ge = grp.entities
-  arc = ge.add_arc([4504.mm,1101.625.mm,123.625.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 18.375000000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4504.mm,1101.625.mm,142.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4504.mm,1099.mm,131.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4504.mm,1099.mm,152.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
@@ -27804,8 +27804,8 @@ end
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -9.753749999999997.mm)
-  circle = ge.add_circle([4504.mm,1120.mm,123.625.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -13.515.mm)
+  circle = ge.add_circle([4504.mm,1120.mm,131.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -27818,8 +27818,8 @@ end
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction elbow"
   ge = grp.entities
-  arc = ge.add_arc([4504.mm,1129.37125.mm,113.87125.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 9.371250000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4504.mm,1120.mm,113.87125.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4504.mm,1132.985.mm,117.485.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4504.mm,1120.mm,117.485.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
@@ -27831,8 +27831,8 @@ end
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 43.62875000000008.mm, 0.mm)
-  circle = ge.add_circle([4504.mm,1129.37125.mm,104.5.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 40.0150000000001.mm, 0.mm)
+  circle = ge.add_circle([4504.mm,1132.985.mm,104.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

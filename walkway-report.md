@@ -431,7 +431,7 @@ bounces noticeably less than the rod-hung version it replaces.
 <!-- BEGIN parts:walkway -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Molded GRP (fiberglass) grating | 15mm, vinyl-ester resin, grit top, ~38mm mesh; ~4.5 m² (4 sections) | 1 lot | McNichols / Grating Pacific | $965–$1,250 |
+| Molded GRP (fiberglass) grating | 1" (25mm) McNichols MS-S-100, 1½×1½ square mesh, vinyl-ester, grit top, 2.60 lb/sf; ~4.5 m² (4 sections) | 1 lot | McNichols / Grating Pacific | $965–$1,250 |
 | Drum-exit punch-out grating | Extra GRP landing (~0.23 m²) at the light-lock exit | 1 lot | McNichols | $50–$65 |
 | Cantilever bracket — standard (near/far) | 8mm steel plate: 150mm vert leg + 300mm arm + 70mm gusset, welded (5 near + 9 far at 457mm centers) | 14 ea | Local fab | $420–$700 |
 | Cantilever bracket — widened (near) | 10mm steel plate: 200mm vert leg + 500mm arm + 70mm gusset, welded (EP/battery/slit zone) | 4 ea | Local fab | $160–$280 |

@@ -239,8 +239,10 @@ def power_core():
     ez = EP_H_LO
     eh = EP_H_HI - EP_H_LO
     # Full-face plywood backing panel (18mm) that all EP components mount on — replaces the ghosted box.
-    p.append(ov.ruby_box("EP plywood backing panel (18mm)", EP_X - 12, -18, ez - 12,
-                         EP_W + 24, 18, eh + 24, color=ov.C_PLY))
+    # Extended DOWN to cover the Cct-E inverter (just below the EP) so it mounts on the panel too.
+    _ply_bot = INVERTER_Z - 20
+    p.append(ov.ruby_box("EP plywood backing panel (18mm)", EP_X - 12, -18, _ply_bot,
+                         EP_W + 24, 18, (EP_H_HI + 12) - _ply_bot, color=ov.C_PLY))
     p.append(ov.ruby_box("MPPT Controller (100/50)", EP_X + 15, 120,
                          EP_H_HI - MPPT_H - 30, MPPT_W, MPPT_D, MPPT_H, color="#3A5BA0"))
     # Plywood backing panel — extends the EP mounting board FORWARD to the relocated MPPT plane so the
@@ -297,6 +299,21 @@ def power_core():
                               ies_cx, ENCL_SHELL_D, ies_cz, 30, 12, color="#F2C200", axis="y"))
     p.append(ov.ruby_cylinder("Interior E-stop button (red mushroom)",
                               ies_cx, ENCL_SHELL_D + 12, ies_cz, 24, 26, color="#C42B1C", axis="y"))
+    # E-stop trip wiring (D5): both E-stops sit in the battery-contactor coil loop. A control pair
+    # runs from the contactor coil up to the interior E-stop; the two E-stops are then paralleled
+    # (interior -> exterior via the external panel) so pressing EITHER drops the contactor.
+    _ctc_x, _ctc_z = BA_X + 20 + CONTACTOR_W / 2, BA_H_HI + CONTACTOR_H     # contactor coil top
+    _ext_x, _ext_z = PWR_PANEL_X + PWR_PANEL_W / 2, PWR_PANEL_Z + PWR_PANEL_H / 2  # exterior E-stop
+    p.append(ov.ruby_pipe_run("E-stop trip line (contactor coil -> interior E-stop)",
+                              _dedup([(_ctc_x, 45, _ctc_z), (_ctc_x, 10, _ctc_z + 20),
+                                      (ies_cx, 10, _ctc_z + 20), (ies_cx, 10, ies_cz),
+                                      (ies_cx, ENCL_SHELL_D, ies_cz)]),
+                              4, color="#586070"))
+    p.append(ov.ruby_pipe_run("E-stop parallel link (interior -> exterior E-stop)",
+                              _dedup([(ies_cx, ENCL_SHELL_D, ies_cz), (ies_cx, 10, ies_cz),
+                                      (ies_cx, 10, _ext_z), (_ext_x, 10, _ext_z),
+                                      (_ext_x, -WALL, _ext_z)]),
+                              4, color="#586070"))
     return '\n'.join(p)
 
 
@@ -390,8 +407,8 @@ def external_panel():
 
 
 def inverter():
-    """Circuit-E 12->120V inverter on the pinhole wall, below the EP, + its 120V AC
-    output line across to the external power panel's GFCI outlet (interior)."""
+    """Circuit-E 12->120V inverter, mounted on the EP plywood panel (lower section, below
+    the main gear), + its 120V AC output line across to the external panel's GFCI outlet."""
     p = [ov.ruby_box("Cct E Inverter (12->120V AC)", INVERTER_X, 0, INVERTER_Z,
                      INVERTER_W, INVERTER_D, INVERTER_H, color="#404848")]
     gfci_x = PWR_PANEL_X + 0.767 * PWR_PANEL_W

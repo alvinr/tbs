@@ -10558,6 +10558,28 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # Master pump switch (Cct C, on EP)
+  grp = ents.add_group
+  grp.name = "Master pump switch (Cct C, on EP)"
+  face = grp.entities.add_face([1953.5714285714287.mm,0.mm,1796.mm], [2003.5714285714287.mm,0.mm,1796.mm], [2003.5714285714287.mm,46.mm,1796.mm], [1953.5714285714287.mm,46.mm,1796.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(84.mm)
+  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
+  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Master switch lever (OFF cutoff)
+  grp = ents.add_group
+  grp.name = "Master switch lever (OFF cutoff)"
+  face = grp.entities.add_face([1970.5714285714287.mm,46.mm,1836.mm], [1986.5714285714287.mm,46.mm,1836.mm], [1986.5714285714287.mm,80.mm,1836.mm], [1970.5714285714287.mm,80.mm,1836.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["SV-02 sample valve handwheel stem"] || model.materials.add("SV-02 sample valve handwheel stem")
+  mat.color = Sketchup::Color.new(192, 32, 42)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Busbar (+)
   grp = ents.add_group
   grp.name = "Busbar (+)"
@@ -11063,7 +11085,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Battery − cable (2/0 AWG)"] || model.materials.add("Battery − cable (2/0 AWG)")
+  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
   mat.color = Sketchup::Color.new(32, 32, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -11076,7 +11098,7 @@ end
   circle = ge.add_circle([2028.mm,60.mm,594.mm], [1.000000,0.000000,0.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Battery − cable (2/0 AWG)"] || model.materials.add("Battery − cable (2/0 AWG)")
+  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
   mat.color = Sketchup::Color.new(32, 32, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -11090,7 +11112,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Battery − cable (2/0 AWG)"] || model.materials.add("Battery − cable (2/0 AWG)")
+  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
   mat.color = Sketchup::Color.new(32, 32, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -11103,7 +11125,7 @@ end
   circle = ge.add_circle([2050.mm,60.mm,1664.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Battery − cable (2/0 AWG)"] || model.materials.add("Battery − cable (2/0 AWG)")
+  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
   mat.color = Sketchup::Color.new(32, 32, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -11117,7 +11139,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Battery − cable (2/0 AWG)"] || model.materials.add("Battery − cable (2/0 AWG)")
+  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
   mat.color = Sketchup::Color.new(32, 32, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -13257,6 +13279,28 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # Master pump switch (Cct C, on EP)
+  grp = ents.add_group
+  grp.name = "Master pump switch (Cct C, on EP)"
+  face = grp.entities.add_face([1953.5714285714287.mm,0.mm,1796.mm], [2003.5714285714287.mm,0.mm,1796.mm], [2003.5714285714287.mm,46.mm,1796.mm], [1953.5714285714287.mm,46.mm,1796.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(84.mm)
+  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
+  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Master switch lever (OFF cutoff)
+  grp = ents.add_group
+  grp.name = "Master switch lever (OFF cutoff)"
+  face = grp.entities.add_face([1970.5714285714287.mm,46.mm,1836.mm], [1986.5714285714287.mm,46.mm,1836.mm], [1986.5714285714287.mm,80.mm,1836.mm], [1970.5714285714287.mm,80.mm,1836.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["SV-02 sample valve handwheel stem"] || model.materials.add("SV-02 sample valve handwheel stem")
+  mat.color = Sketchup::Color.new(192, 32, 42)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Busbar (+)
   grp = ents.add_group
   grp.name = "Busbar (+)"
@@ -13762,7 +13806,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Battery − cable (2/0 AWG)"] || model.materials.add("Battery − cable (2/0 AWG)")
+  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
   mat.color = Sketchup::Color.new(32, 32, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -13775,7 +13819,7 @@ end
   circle = ge.add_circle([2028.mm,60.mm,594.mm], [1.000000,0.000000,0.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Battery − cable (2/0 AWG)"] || model.materials.add("Battery − cable (2/0 AWG)")
+  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
   mat.color = Sketchup::Color.new(32, 32, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -13789,7 +13833,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Battery − cable (2/0 AWG)"] || model.materials.add("Battery − cable (2/0 AWG)")
+  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
   mat.color = Sketchup::Color.new(32, 32, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -13802,7 +13846,7 @@ end
   circle = ge.add_circle([2050.mm,60.mm,1664.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Battery − cable (2/0 AWG)"] || model.materials.add("Battery − cable (2/0 AWG)")
+  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
   mat.color = Sketchup::Color.new(32, 32, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -13816,7 +13860,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Battery − cable (2/0 AWG)"] || model.materials.add("Battery − cable (2/0 AWG)")
+  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
   mat.color = Sketchup::Color.new(32, 32, 32)
   mat.alpha = 1.0
   grp.material = mat

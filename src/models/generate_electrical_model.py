@@ -301,6 +301,13 @@ def power_core():
         p.append(ov.ruby_box(f"Fuse {c} ({CCT_FUSE[c]} — {CCT[c][1]})",
                              _fuse_cx(i) - _FUSE_W / 2, _FUSE_YD, _FBLK_Z0 + _FBASE_H,
                              _FUSE_W, _FUSE_T, _FUSE_H, color=CCT[c][0]))
+    # MASTER PUMP SWITCH — Cct-C single cutoff on the EP, at the Circuit-C fuse (red-lever disconnect,
+    # mounted on the panel at Yd0). The switched Cct-C feed runs the ceiling trunk to the pump wireway.
+    _msx, _, _msz = FUSE_POS["C"]
+    p.append(ov.ruby_box("Master pump switch (Cct C, on EP)", _msx - 25, 0, _msz - 44,
+                         50, 46, 84, color="#202020"))
+    p.append(ov.ruby_box("Master switch lever (OFF cutoff)", _msx - 8, 46, _msz - 4,
+                         16, 34, 16, color="#C0202A"))
     p.append(ov.ruby_box("Busbar (+)", EP_X + 15, 30, ez + 205,
                          BUSBAR_L, BUSBAR_W, BUSBAR_H, color="#C0392B"))
     p.append(ov.ruby_box("Busbar (-)", EP_X + 15, 30, ez + 175,
@@ -477,14 +484,8 @@ def _pump_circuit():
     # Distribution WIREWAY — a vertical channel down the panel that covers every branch tap.
     p = [ov.ruby_box("Cct C distribution wireway", EQPANEL_X - 25, cy - 35, way_bot,
                      50, 70, way_top - way_bot, color="#2B2B30")]
-    # MASTER PUMP SWITCH — on the EP front at the Circuit-C fuse (single cutoff, upstream of
-    # everything; relocated from the equipment panel). Red-lever disconnect; the switched feed
-    # then runs the ceiling trunk to the wireway.
-    mfx, _mfy, mfz = FUSE_POS["C"]
-    p.append(ov.ruby_box("Master pump switch (Cct C, on EP)", mfx - 25, 0, mfz - 44,
-                         50, 46, 84, color="#202020"))
-    p.append(ov.ruby_box("Master switch lever (OFF cutoff)", mfx - 8, 46, mfz - 4,
-                         16, 34, 16, color="#C0202A"))
+    # (The master pump switch itself is drawn in power_core() — it's on the EP; here we just run its
+    # switched Cct-C feed to the pump wireway.)
     p.append(_run("C", (EQPANEL_X, cy, way_top - 25)))   # switched feed → top of the wireway
     for nm, yd, z in pumps:
         # branch taps the wireway at THIS pump's level → straight to the pump (no per-pump switch)

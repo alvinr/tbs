@@ -985,7 +985,7 @@ def draw_sheet3():
         C_LEN as TBS_C_LEN, C_HGT as TBS_C_HGT,
         PH_X as TBS_PH_X, PH_H, PH_D,
         EP_X, EP_W, EP_H_LO, EP_H_HI,
-        BA_X, BA_W, BA_H_LO, BA_H_HI,
+        BA_X, BA_W, BA_H_LO, BA_H_HI, BA_STACK_TOP,
         EVAP_DUCT_X, EVAP_DUCT_D, EVAP_DUCT_Z,
         CORRIDOR_YD_NEAR, CORRIDOR_W,
         PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H,
@@ -1167,8 +1167,8 @@ def draw_sheet3():
                "ELECTRICAL\nPANEL (EP)", "MPPT + fuse block", C_ELEC)
 
     # ── Battery bank (wall-mounted) ───────────────────────────────────────────
-    wall_equip(BA_X, BA_H_LO, BA_H_HI, BA_W,
-               "BATTERY BANK", "2×100Ah LiFePO4", C_BATT)
+    wall_equip(BA_X, BA_H_LO, BA_STACK_TOP, BA_W,
+               "BATTERY BANK", "2×100Ah LiFePO4 (stacked)", C_BATT)
 
     # (Pump manifold removed from pinhole wall — now on plumbing panel in IBC corridor)
 
@@ -1307,8 +1307,8 @@ def draw_sheet3():
     ba_x_l = wx(BA_X)  # right edge in drawing (mirrored)
     draw_dim_v(ax, ba_x_l + 60, OY, (BA_H_LO),
                f"{BA_H_LO}\nmm", offset=20, fs=6.5)
-    draw_dim_v(ax, ba_x_l + 60, (BA_H_LO), (BA_H_HI),
-               f"{BA_H_HI - BA_H_LO}mm", offset=20, fs=6.5, right=True)
+    draw_dim_v(ax, ba_x_l + 60, (BA_H_LO), (BA_STACK_TOP),
+               f"{BA_STACK_TOP - BA_H_LO}mm", offset=20, fs=6.5, right=True)
 
     # Pinhole height
     draw_dim_v(ax, ph_x - 80, OY, (PH_H),
@@ -1345,7 +1345,7 @@ def draw_sheet3():
     key_items = [
         (C_PIPE,    "CABLE TRUNKING",    "40×25mm PVC  |  Ceiling corner rail  |  Full length"),
         (C_ELEC,    "ELECTRICAL PANEL",  f"EP  |  X={EP_X}–{EP_X+EP_W}  |  Z={EP_H_LO}–{EP_H_HI}mm"),
-        (C_BATT,    "BATTERY BANK",      f"BAT  |  X={BA_X}–{BA_X+BA_W}  |  Z={BA_H_LO}–{BA_H_HI}mm"),
+        (C_BATT,    "BATTERY BANK",      f"BAT  |  X={BA_X}–{BA_X+BA_W}  |  Z={BA_H_LO}–{BA_STACK_TOP}mm (2 stacked)"),
         ("#F5C8A0", "WATER PUMPS",   f"Cct C  |  P-01/03/04/05 corridor (Yd={CORRIDOR_YD_NEAR}–{CORRIDOR_YD_NEAR + CORRIDOR_W}) + P-02 (pinhole wall)"),
         (C_EVAP,    "DUCT PENETRATION",  f"Cct E  |  Ø{EVAP_DUCT_D}mm at X={EVAP_DUCT_X}, Z={EVAP_DUCT_Z}mm  |  Evap cooler external"),
         (C_ALUM,    "EXT POWER PANEL",   f"Flush-mount  |  X={PWR_PANEL_X}–{PWR_PANEL_X+PWR_PANEL_W}  |  3×MC4 + NEMA"),
@@ -1512,8 +1512,11 @@ def draw_sheet5():
     internal feed one-line and a fuse schedule. BOTH axes are real mm: panel-relative X (0 = panel left = EP_X),
     Z = real height. Component sizes/positions read from tbs_constants (same as the 3D).
     """
-    from tbs_constants import (EP_H_LO, EP_H_HI, EP_W, MPPT_W, MPPT_H,
-                               FUSEBLK_W, BUSBAR_L, BUSBAR_H, DISCONNECT_D)
+    from tbs_constants import (EP_H_LO, EP_H_HI, EP_W, EP_COL_W, EP_X, MPPT_W, MPPT_H,
+                               FUSEBLK_W, BUSBAR_L, BUSBAR_H, DISCONNECT_D, C_BATT,
+                               BA_H_LO, BA_H_HI, BA_STACK_Z2, BA_STACK_TOP, BA_W,
+                               INVERTER_W, INVERTER_H, INVERTER_Z, EP_POST_Z, PV_DISC_X, PV_DISC_Z,
+                               CONTACTOR_W, CONTACTOR_H, MRBF_D, MRBF_H)
     R = mpatches.Rectangle
     # letter, circuit name, fuse, wire, load, color (= 3D model CCT color)
     CIRCUITS5 = [
@@ -1532,12 +1535,12 @@ def draw_sheet5():
 
     eh0, eh1 = EP_H_LO, EP_H_HI                          # 1500, 2100
     # ── Panel outline — real 300 × 600 mm, dimensioned ──
-    ax.add_patch(FancyBboxPatch((0, eh0), EP_W, eh1 - eh0, boxstyle="round,pad=2",
+    ax.add_patch(FancyBboxPatch((0, BA_H_LO - 12), EP_COL_W, (eh1 + 12) - (BA_H_LO - 12), boxstyle="round,pad=2",
                                 fc="#F4F6F8", ec=C_OUT, lw=1.8, zorder=2))
-    ax.text(EP_W / 2, eh1 + 80, "EP PANEL — FRONT ELEVATION\n(plywood backboard · DC terminals in IP65 box)",
+    ax.text(EP_COL_W / 2, eh1 + 80, "EP PANEL — FRONT ELEVATION (skinny column)\n(plywood backboard + 100mm side lips · DC terminals in IP65 box)",
             ha="center", va="bottom", fontsize=8.5, fontweight="bold", color=TITLE_COL)
-    draw_dim_v(ax, EP_W + 48, eh0, eh1, f"{eh1 - eh0}mm")
-    draw_dim_h(ax, 0, EP_W, eh0 - 25, f"{EP_W}mm", above=False)
+    draw_dim_v(ax, EP_COL_W + 48, BA_H_LO, eh1, f"{eh1 - BA_H_LO}mm")
+    draw_dim_h(ax, 0, EP_COL_W, BA_H_LO - 45, f"{EP_COL_W}mm", above=False)
 
     # ── MPPT ──
     mz = eh1 - MPPT_H - 30                               # 1970
@@ -1606,6 +1609,23 @@ def draw_sheet5():
     ax.text(msw_x + msw_w / 2 + 10, eh1 + 30, "→ ceiling trunk → pumps (Sheet 4)", ha="left", va="top",
             fontsize=5.4, color=cc, fontweight="bold")
 
+    # ── lower column (skinny reorg): battery stack + contactor/MRBF + inverter + PV disconnect ──
+    for _bz, _lb in [(BA_H_LO, "BAT 1"), (BA_STACK_Z2, "BAT 2")]:
+        ax.add_patch(R((0, _bz), BA_W, BA_H_HI - BA_H_LO, fc=C_BATT, ec=C_OUT, lw=1.0, zorder=4))
+        ax.text(BA_W / 2, _bz + (BA_H_HI - BA_H_LO) / 2, _lb, ha="center", va="center",
+                fontsize=5.2, color="white", fontweight="bold", zorder=5)
+    ax.text(BA_W + 8, (BA_H_LO + BA_STACK_TOP) / 2, "2× 100Ah\nstacked", ha="left", va="center", fontsize=5.0, color=C_OUT)
+    ax.add_patch(R((10, EP_POST_Z), CONTACTOR_W, CONTACTOR_H, fc="#C42B1C", ec=C_OUT, lw=0.9, zorder=4))
+    ax.text(10 + CONTACTOR_W / 2, EP_POST_Z + CONTACTOR_H / 2, "CONT.", ha="center", va="center", fontsize=4.5, color="white", fontweight="bold", zorder=5)
+    ax.add_patch(R((CONTACTOR_W + 30, EP_POST_Z), MRBF_D, MRBF_H, fc="#222222", ec=C_OUT, lw=0.8, zorder=4))
+    ax.text(CONTACTOR_W + 30 + MRBF_D / 2, EP_POST_Z + MRBF_H + 10, "MRBF", ha="center", va="bottom", fontsize=4.3, color=C_OUT)
+    ax.add_patch(R((0, INVERTER_Z), INVERTER_W, INVERTER_H, fc="#404848", ec=C_OUT, lw=1.0, zorder=4))
+    ax.text(INVERTER_W / 2, INVERTER_Z + INVERTER_H / 2, "INVERTER\n12→120V", ha="center", va="center", fontsize=5.0, color="white", fontweight="bold", zorder=5)
+    _pvx = PV_DISC_X - EP_X
+    ax.add_patch(R((_pvx, PV_DISC_Z), 70, 70, fc="#D43A2F", ec=C_OUT, lw=1.0, zorder=4))
+    ax.add_patch(R((_pvx + 28, PV_DISC_Z + 20), 14, 40, fc="#C0202A", ec=C_OUT, lw=0.7, zorder=5))
+    ax.text(_pvx + 35, PV_DISC_Z - 10, "PV DISC.\n(operator reach)", ha="center", va="top", fontsize=4.6, color="#D43A2F", fontweight="bold", zorder=6)
+
     # ── Fuse schedule table (right, same mm coordinate space) ──
     tx = 400
     th = eh1 - 50                                        # header Z
@@ -1634,7 +1654,7 @@ def draw_sheet5():
             ha="left", va="top", fontsize=6.2, color="#333")
 
     ax.set_xlim(-70, 1230)
-    ax.set_ylim(1330, 2250)
+    ax.set_ylim(80, 2250)
 
     title_block(ax, "SHEET 5 OF 7",
                 drawing_title="MAIN PANEL — LAYOUT",

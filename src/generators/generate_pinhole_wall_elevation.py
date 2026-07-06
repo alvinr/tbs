@@ -17,7 +17,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
-from tbs_constants import C_LEN, C_HGT, PH_X, PH_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, EVAP_STOW_X, EVAP_W, EVAP_D, EVAP_H, EVAP_STOW_Z, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, EP_X, EP_W, EP_H_LO, EP_H_HI, BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D, PUMP_PIPE_OD, PUMP_PIPE_WALL, TAP_X, TAP_Z, SHELF_X_L, SHELF_X_R, SHELF_H, SHELF_T, SHELF_STOW_TOP_Z, SHELF_YD_NEAR, SHELF_DEPTH, PULL_CORD_BOTTOM_Z, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_W, WALKWAY_BRACKET_T, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, CONTAINER_RIB_SPACING, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_DRAIN_X, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_Z, PROC_TRAY_RIM, PROC_TRAY_YD_NEAR, SPRAY_BAR_FEED_Z, BV02_X, BV02_Z, C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_EVAP, C_ELEC, C_BATT, C_PINHOLE_EQ, ZONE_R_START, BB_OD, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_BOT_Z, PWP_FILTER_HEAD_Z, PWP_FILTER_CAP_Z, PWP_P02_X, PWP_P02_Z0, PWP_P02_H, PWP_SV01_X, PWP_WAIST_Z, DIAGRAMS_DIR
+from tbs_constants import C_LEN, C_HGT, PH_X, PH_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, EVAP_STOW_X, EVAP_W, EVAP_D, EVAP_H, EVAP_STOW_Z, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, EP_X, EP_W, EP_H_LO, EP_H_HI, BA_X, BA_W, BA_H_LO, BA_H_HI, BA_STACK_TOP, BA_D, PUMP_PIPE_OD, PUMP_PIPE_WALL, TAP_X, TAP_Z, SHELF_X_L, SHELF_X_R, SHELF_H, SHELF_T, SHELF_STOW_TOP_Z, SHELF_YD_NEAR, SHELF_DEPTH, PULL_CORD_BOTTOM_Z, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_W, WALKWAY_BRACKET_T, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, CONTAINER_RIB_SPACING, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_DRAIN_X, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_Z, PROC_TRAY_RIM, PROC_TRAY_YD_NEAR, SPRAY_BAR_FEED_Z, BV02_X, BV02_Z, C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_EVAP, C_ELEC, C_BATT, C_PINHOLE_EQ, ZONE_R_START, BB_OD, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_BOT_Z, PWP_FILTER_HEAD_Z, PWP_FILTER_CAP_Z, PWP_P02_X, PWP_P02_Z0, PWP_P02_H, PWP_SV01_X, PWP_WAIST_Z, DIAGRAMS_DIR
 from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_cl, draw_notes,
                          draw_pipe_path as _tbs_pipe_path)
 from tbs_title_block import title_block
@@ -174,7 +174,7 @@ conduit_drops = [
     # (X center mm, Z top of device mm)
     (EVAP_DUCT_X,          EVAP_DUCT_Z + EVAP_DUCT_D / 2),  # evap duct — circuit E
     (EP_X + EP_W / 2,      EP_H_HI),                 # electrical panel
-    (BA_X + BA_W / 2,      BA_H_HI),                 # battery bank
+    (BA_X + BA_W / 2,      BA_STACK_TOP),            # battery bank
     (PWR_PANEL_X + PWR_PANEL_W / 2, PWR_PANEL_Z + PWR_PANEL_H),  # ext power panel
     (PS_X_D,               PS_Z + 15),                # pull-cord switch D
     (PS_X_G,               PS_Z + 15),                # pull-cord switch G
@@ -345,8 +345,8 @@ equip_block(EP_X, EP_H_LO, EP_W, EP_H_HI - EP_H_LO,
             "ELECTRICAL\nPANEL (EP)", C_ELEC, label_fs=5)
 
 # ── Battery bank (BAT) ────────────────────────────────────────────────────
-equip_block(BA_X, BA_H_LO, BA_W, BA_H_HI - BA_H_LO,
-            "BATTERY\nBANK\n(2× LiFePO4)", C_BATT, label_fs=4.5, label_color="white")
+equip_block(BA_X, BA_H_LO, BA_W, BA_STACK_TOP - BA_H_LO,
+            "BATTERY\nBANK\n(2× stacked)", C_BATT, label_fs=4.5, label_color="white")
 
 # ── Pinhole aperture ──────────────────────────────────────────────────────
 ph_r = 15  # drawing radius (exaggerated for visibility)

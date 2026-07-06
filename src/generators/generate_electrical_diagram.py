@@ -122,7 +122,7 @@ def draw_sheet1():
     # 1b. PV array disconnect — load-break isolator between array and MPPT (NEC 690.13)
     rbox(ax, LX + 1.2, 11.32, LW - 2.4, 0.46,
          "PV ARRAY DISCONNECT  (load-break)",
-         "DC 50A / 150VDC  |  array → MPPT, at the power panel (NEC 690.13)",
+         "DC 50A / 150VDC  |  array → MPPT, on the EP interior (NEC 690.13)",
          fc=C_WARN, ts=8.3, ss=6.4)
     varrow(ax, CX, 12.0, 11.78, col=C_SOLAR)
     wlabel(ax, CX + 0.18, 11.92, "10 AWG PV  |  via power panel", size=6.8)

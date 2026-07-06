@@ -10273,25 +10273,47 @@ end
   # ═══ Pinhole-Wall Equipment ═══
   defn = model.definitions.add("Pinhole-Wall Equipment")
   ents = defn.entities
-  # Electrical Panel (EP enclosure, IP65)
+  # EP plywood backing panel (lower, 18mm)
   grp = ents.add_group
-  grp.name = "Electrical Panel (EP enclosure, IP65)"
-  face = grp.entities.add_face([1898.mm,0.mm,1488.mm], [2222.mm,0.mm,1488.mm], [2222.mm,171.mm,1488.mm], [1898.mm,171.mm,1488.mm])
+  grp.name = "EP plywood backing panel (lower, 18mm)"
+  face = grp.entities.add_face([1528.mm,-18.mm,138.mm], [2222.mm,-18.mm,138.mm], [2222.mm,0.mm,138.mm], [1528.mm,0.mm,138.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(624.mm)
-  mat = model.materials["Electrical Panel (EP enclosure, IP65)"] || model.materials.add("Electrical Panel (EP enclosure, IP65)")
-  mat.color = Sketchup::Color.new(245, 197, 24)
-  mat.alpha = 0.14
+  face.pushpull(1672.mm)
+  mat = model.materials["Rear panel (18mm marine ply)"] || model.materials.add("Rear panel (18mm marine ply)")
+  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # EP plywood backing panel (upper, 18mm)
+  grp = ents.add_group
+  grp.name = "EP plywood backing panel (upper, 18mm)"
+  face = grp.entities.add_face([1600.mm,-18.mm,1810.mm], [2222.mm,-18.mm,1810.mm], [2222.mm,0.mm,1810.mm], [1600.mm,0.mm,1810.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(302.mm)
+  mat = model.materials["Rear panel (18mm marine ply)"] || model.materials.add("Rear panel (18mm marine ply)")
+  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.alpha = 1.0
   grp.material = mat
 
   # MPPT Controller (Victron 100/50)
   grp = ents.add_group
   grp.name = "MPPT Controller (Victron 100/50)"
-  face = grp.entities.add_face([1925.mm,25.mm,1970.mm], [2110.mm,25.mm,1970.mm], [2110.mm,95.mm,1970.mm], [1925.mm,95.mm,1970.mm])
+  face = grp.entities.add_face([1925.mm,120.mm,1970.mm], [2110.mm,120.mm,1970.mm], [2110.mm,190.mm,1970.mm], [1925.mm,190.mm,1970.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(100.mm)
   mat = model.materials["MPPT Controller (Victron 100/50)"] || model.materials.add("MPPT Controller (Victron 100/50)")
   mat.color = Sketchup::Color.new(58, 91, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # MPPT backing panel (18mm ply)
+  grp = ents.add_group
+  grp.name = "MPPT backing panel (18mm ply)"
+  face = grp.entities.add_face([1918.mm,102.mm,1868.mm], [2123.mm,102.mm,1868.mm], [2123.mm,120.mm,1868.mm], [1918.mm,120.mm,1868.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(232.mm)
+  mat = model.materials["Rear panel (18mm marine ply)"] || model.materials.add("Rear panel (18mm marine ply)")
+  mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -10455,8 +10477,8 @@ end
   grp = ents.add_group
   grp.name = "Main feed (disconnect -> busbar +)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -63.mm, 0.mm)
-  circle = ge.add_circle([2150.mm,130.mm,1655.mm], vec, 11.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -103.mm, 0.mm)
+  circle = ge.add_circle([2150.mm,170.mm,1655.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -10643,7 +10665,7 @@ end
   grp = ents.add_group
   grp.name = "Battery + cable (2/0 AWG, MRBF -> main disconnect)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 63.mm, 0.mm)
+  vec = Geom::Vector3d.new(0.mm, 103.mm, 0.mm)
   circle = ge.add_circle([2150.mm,67.mm,1585.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -10960,7 +10982,7 @@ end
   # PV Array Disconnect (load-break isolator)
   grp = ents.add_group
   grp.name = "PV Array Disconnect (load-break isolator)"
-  face = grp.entities.add_face([1386.mm,22.mm,1834.8.mm], [1456.mm,22.mm,1834.8.mm], [1456.mm,67.mm,1834.8.mm], [1386.mm,67.mm,1834.8.mm])
+  face = grp.entities.add_face([1610.mm,0.mm,1850.mm], [1680.mm,0.mm,1850.mm], [1680.mm,45.mm,1850.mm], [1610.mm,45.mm,1850.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(70.mm)
   mat = model.materials["Main Disconnect (Blue Sea m-Series)"] || model.materials.add("Main Disconnect (Blue Sea m-Series)")
@@ -10968,11 +10990,11 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 bulkheads -> MPPT)
+  # PV feed (MC4 -> array disconnect -> MPPT)
   grp = ents.add_group
-  grp.name = "PV feed (MC4 bulkheads -> MPPT)"
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 45.mm, 0.mm)
+  vec = Geom::Vector3d.new(333.79999999999995.mm, 0.mm, 0.mm)
   circle = ge.add_circle([1328.2.mm,22.mm,1884.mm], vec, 9.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -10982,12 +11004,12 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 bulkheads -> MPPT) elbow
+  # PV feed (MC4 -> array disconnect -> MPPT) elbow
   grp = ents.add_group
-  grp.name = "PV feed (MC4 bulkheads -> MPPT) elbow"
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1346.2.mm,67.mm,1884.mm], [-1.000000,0.000000,0.000000], [0.000000,0.000000,-1.000000], 18.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1328.2.mm,67.mm,1884.mm], [0.000000,1.000000,0.000000], 9.mm, 16)
+  arc = ge.add_arc([1662.mm,40.mm,1884.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 18.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1662.mm,22.mm,1884.mm], [1.000000,0.000000,0.000000], 9.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
@@ -10995,12 +11017,12 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 bulkheads -> MPPT)
+  # PV feed (MC4 -> array disconnect -> MPPT)
   grp = ents.add_group
-  grp.name = "PV feed (MC4 bulkheads -> MPPT)"
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(585.8.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1346.2.mm,85.mm,1884.mm], vec, 9.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 62.mm, 0.mm)
+  circle = ge.add_circle([1680.mm,40.mm,1884.mm], vec, 9.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11009,12 +11031,12 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 bulkheads -> MPPT) elbow
+  # PV feed (MC4 -> array disconnect -> MPPT) elbow
   grp = ents.add_group
-  grp.name = "PV feed (MC4 bulkheads -> MPPT) elbow"
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1932.mm,85.mm,1902.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 18.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1932.mm,85.mm,1884.mm], [1.000000,0.000000,0.000000], 9.mm, 16)
+  arc = ge.add_arc([1698.mm,102.mm,1884.mm], [-1.000000,0.000000,0.000000], [0.000000,0.000000,-1.000000], 18.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1680.mm,102.mm,1884.mm], [0.000000,1.000000,0.000000], 9.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
@@ -11022,12 +11044,66 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 bulkheads -> MPPT)
+  # PV feed (MC4 -> array disconnect -> MPPT)
   grp = ents.add_group
-  grp.name = "PV feed (MC4 bulkheads -> MPPT)"
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 66.mm)
-  circle = ge.add_circle([1950.mm,85.mm,1902.mm], vec, 9.mm, 16)
+  vec = Geom::Vector3d.new(234.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1698.mm,120.mm,1884.mm], vec, 9.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV feed (MC4 -> array disconnect -> MPPT) elbow
+  grp = ents.add_group
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1932.mm,120.mm,1902.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 18.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1932.mm,120.mm,1884.mm], [1.000000,0.000000,0.000000], 9.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV feed (MC4 -> array disconnect -> MPPT)
+  grp = ents.add_group
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 52.4225745704216.mm)
+  circle = ge.add_circle([1950.mm,120.mm,1902.mm], vec, 9.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV feed (MC4 -> array disconnect -> MPPT) elbow
+  grp = ents.add_group
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1950.mm,138.mm,1954.4225745704216.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 18.mm, 0.0, 1.292497, 8)
+  circle = ge.add_circle([1950.mm,120.mm,1954.4225745704216.mm], [0.000000,0.000000,1.000000], 9.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV feed (MC4 -> array disconnect -> MPPT)
+  grp = ents.add_group
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 21.9449803021528.mm, 6.269994372043584.mm)
+  circle = ge.add_circle([1950.mm,133.0550196978472.mm,1971.7300056279564.mm], vec, 9.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11345,25 +11421,47 @@ end
   # ═══ Electrical ═══
   defn = model.definitions.add("Electrical")
   ents = defn.entities
-  # Electrical Panel (EP enclosure, IP65)
+  # EP plywood backing panel (lower, 18mm)
   grp = ents.add_group
-  grp.name = "Electrical Panel (EP enclosure, IP65)"
-  face = grp.entities.add_face([1898.mm,0.mm,1488.mm], [2222.mm,0.mm,1488.mm], [2222.mm,171.mm,1488.mm], [1898.mm,171.mm,1488.mm])
+  grp.name = "EP plywood backing panel (lower, 18mm)"
+  face = grp.entities.add_face([1528.mm,-18.mm,138.mm], [2222.mm,-18.mm,138.mm], [2222.mm,0.mm,138.mm], [1528.mm,0.mm,138.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(624.mm)
-  mat = model.materials["Electrical Panel (EP enclosure, IP65)"] || model.materials.add("Electrical Panel (EP enclosure, IP65)")
-  mat.color = Sketchup::Color.new(245, 197, 24)
-  mat.alpha = 0.14
+  face.pushpull(1672.mm)
+  mat = model.materials["EP plywood backing panel (lower, 18mm)"] || model.materials.add("EP plywood backing panel (lower, 18mm)")
+  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # EP plywood backing panel (upper, 18mm)
+  grp = ents.add_group
+  grp.name = "EP plywood backing panel (upper, 18mm)"
+  face = grp.entities.add_face([1600.mm,-18.mm,1810.mm], [2222.mm,-18.mm,1810.mm], [2222.mm,0.mm,1810.mm], [1600.mm,0.mm,1810.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(302.mm)
+  mat = model.materials["EP plywood backing panel (lower, 18mm)"] || model.materials.add("EP plywood backing panel (lower, 18mm)")
+  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.alpha = 1.0
   grp.material = mat
 
   # MPPT Controller (Victron 100/50)
   grp = ents.add_group
   grp.name = "MPPT Controller (Victron 100/50)"
-  face = grp.entities.add_face([1925.mm,25.mm,1970.mm], [2110.mm,25.mm,1970.mm], [2110.mm,95.mm,1970.mm], [1925.mm,95.mm,1970.mm])
+  face = grp.entities.add_face([1925.mm,120.mm,1970.mm], [2110.mm,120.mm,1970.mm], [2110.mm,190.mm,1970.mm], [1925.mm,190.mm,1970.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(100.mm)
   mat = model.materials["MPPT Controller (Victron 100/50)"] || model.materials.add("MPPT Controller (Victron 100/50)")
   mat.color = Sketchup::Color.new(58, 91, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # MPPT backing panel (18mm ply)
+  grp = ents.add_group
+  grp.name = "MPPT backing panel (18mm ply)"
+  face = grp.entities.add_face([1918.mm,102.mm,1868.mm], [2123.mm,102.mm,1868.mm], [2123.mm,120.mm,1868.mm], [1918.mm,120.mm,1868.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(232.mm)
+  mat = model.materials["EP plywood backing panel (lower, 18mm)"] || model.materials.add("EP plywood backing panel (lower, 18mm)")
+  mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -11527,8 +11625,8 @@ end
   grp = ents.add_group
   grp.name = "Main feed (disconnect -> busbar +)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -63.mm, 0.mm)
-  circle = ge.add_circle([2150.mm,130.mm,1655.mm], vec, 11.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -103.mm, 0.mm)
+  circle = ge.add_circle([2150.mm,170.mm,1655.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11715,7 +11813,7 @@ end
   grp = ents.add_group
   grp.name = "Battery + cable (2/0 AWG, MRBF -> main disconnect)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 63.mm, 0.mm)
+  vec = Geom::Vector3d.new(0.mm, 103.mm, 0.mm)
   circle = ge.add_circle([2150.mm,67.mm,1585.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -12032,7 +12130,7 @@ end
   # PV Array Disconnect (load-break isolator)
   grp = ents.add_group
   grp.name = "PV Array Disconnect (load-break isolator)"
-  face = grp.entities.add_face([1386.mm,22.mm,1834.8.mm], [1456.mm,22.mm,1834.8.mm], [1456.mm,67.mm,1834.8.mm], [1386.mm,67.mm,1834.8.mm])
+  face = grp.entities.add_face([1610.mm,0.mm,1850.mm], [1680.mm,0.mm,1850.mm], [1680.mm,45.mm,1850.mm], [1610.mm,45.mm,1850.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(70.mm)
   mat = model.materials["Main Disconnect (Blue Sea m-Series)"] || model.materials.add("Main Disconnect (Blue Sea m-Series)")
@@ -12040,11 +12138,11 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 bulkheads -> MPPT)
+  # PV feed (MC4 -> array disconnect -> MPPT)
   grp = ents.add_group
-  grp.name = "PV feed (MC4 bulkheads -> MPPT)"
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 45.mm, 0.mm)
+  vec = Geom::Vector3d.new(333.79999999999995.mm, 0.mm, 0.mm)
   circle = ge.add_circle([1328.2.mm,22.mm,1884.mm], vec, 9.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -12054,12 +12152,12 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 bulkheads -> MPPT) elbow
+  # PV feed (MC4 -> array disconnect -> MPPT) elbow
   grp = ents.add_group
-  grp.name = "PV feed (MC4 bulkheads -> MPPT) elbow"
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1346.2.mm,67.mm,1884.mm], [-1.000000,0.000000,0.000000], [0.000000,0.000000,-1.000000], 18.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1328.2.mm,67.mm,1884.mm], [0.000000,1.000000,0.000000], 9.mm, 16)
+  arc = ge.add_arc([1662.mm,40.mm,1884.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 18.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1662.mm,22.mm,1884.mm], [1.000000,0.000000,0.000000], 9.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
@@ -12067,12 +12165,12 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 bulkheads -> MPPT)
+  # PV feed (MC4 -> array disconnect -> MPPT)
   grp = ents.add_group
-  grp.name = "PV feed (MC4 bulkheads -> MPPT)"
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(585.8.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1346.2.mm,85.mm,1884.mm], vec, 9.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 62.mm, 0.mm)
+  circle = ge.add_circle([1680.mm,40.mm,1884.mm], vec, 9.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -12081,12 +12179,12 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 bulkheads -> MPPT) elbow
+  # PV feed (MC4 -> array disconnect -> MPPT) elbow
   grp = ents.add_group
-  grp.name = "PV feed (MC4 bulkheads -> MPPT) elbow"
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1932.mm,85.mm,1902.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 18.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1932.mm,85.mm,1884.mm], [1.000000,0.000000,0.000000], 9.mm, 16)
+  arc = ge.add_arc([1698.mm,102.mm,1884.mm], [-1.000000,0.000000,0.000000], [0.000000,0.000000,-1.000000], 18.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1680.mm,102.mm,1884.mm], [0.000000,1.000000,0.000000], 9.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
@@ -12094,12 +12192,66 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # PV feed (MC4 bulkheads -> MPPT)
+  # PV feed (MC4 -> array disconnect -> MPPT)
   grp = ents.add_group
-  grp.name = "PV feed (MC4 bulkheads -> MPPT)"
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 66.mm)
-  circle = ge.add_circle([1950.mm,85.mm,1902.mm], vec, 9.mm, 16)
+  vec = Geom::Vector3d.new(234.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1698.mm,120.mm,1884.mm], vec, 9.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV feed (MC4 -> array disconnect -> MPPT) elbow
+  grp = ents.add_group
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1932.mm,120.mm,1902.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 18.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1932.mm,120.mm,1884.mm], [1.000000,0.000000,0.000000], 9.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV feed (MC4 -> array disconnect -> MPPT)
+  grp = ents.add_group
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 52.4225745704216.mm)
+  circle = ge.add_circle([1950.mm,120.mm,1902.mm], vec, 9.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV feed (MC4 -> array disconnect -> MPPT) elbow
+  grp = ents.add_group
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1950.mm,138.mm,1954.4225745704216.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 18.mm, 0.0, 1.292497, 8)
+  circle = ge.add_circle([1950.mm,120.mm,1954.4225745704216.mm], [0.000000,0.000000,1.000000], 9.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["MC4 PV1 (+)"] || model.materials.add("MC4 PV1 (+)")
+  mat.color = Sketchup::Color.new(45, 122, 45)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # PV feed (MC4 -> array disconnect -> MPPT)
+  grp = ents.add_group
+  grp.name = "PV feed (MC4 -> array disconnect -> MPPT)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 21.9449803021528.mm, 6.269994372043584.mm)
+  circle = ge.add_circle([1950.mm,133.0550196978472.mm,1971.7300056279564.mm], vec, 9.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

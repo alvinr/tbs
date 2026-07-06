@@ -38,6 +38,10 @@ control it. Scripts should import from `tbs_constants` rather than hardcoding th
 *Components: corrugated steel long walls, short end walls (cargo door end / far end), roof,
 bamboo floor, corner castings, corner posts, structural corrugation ribs.*
 
+*Reports: [Container Basics](container-report.md) Part 4/6/8 (Orientation-B geometry, interior conversion + light-sealing + pinhole-wall prep, structural modification).*
+
+*Diagrams: floor plan (FP), line of sight (LOS), assembly overview (AO), assembly fabrication (AF), film plane mechanism (FPM), electrical wiring (ES), water system (WS), hinged panel (HP), lighttrap (LT), plate drawing (PD), schematic (SC), walkway (WK).*
+
 ### 1.2 Optical Aperture
 
 | Parameter | Value | Constant |
@@ -56,6 +60,10 @@ bamboo floor, corner castings, corner posts, structural corrugation ribs.*
 *Components: wall frame (S275 steel), interchangeable pinhole plate (ICP-02 / SS-302 disc,
 Lenox Laser laser-drilled), lens plate, shutter plate and channel. Frame, plate, and disc
 dimensions are single-sourced in the table above (`generate_plate_drawing.py` reads the same constants).*
+
+*Reports: [Pinhole Report](pinhole-report.md) §3/§4/§5/§7 (wall frame, pinhole plate, lens plate, light sealing); [Optics Report](pinhole-optics-report.md) Part 3/11 (optimal-diameter formulas, as-built f/1088 numbers).*
+
+*Diagrams: floor plan (FP), line of sight (LOS), assembly overview (AO), assembly fabrication (AF), film plane mechanism (FPM), tilt-swing board (TSB), plate drawing (PD), schematic (SC).*
 
 ### 1.3 Film Plane Mechanism
 
@@ -88,6 +96,10 @@ Duvetyne curtain seals, rail felt light-trap strips, 92× cam-lever spring clamp
 (muslin attachment). The plane stays a fixed-size flat rectangle — it no longer stretches/twists,
 so the old ±42°/±25.7° stretch-mechanism stops and the compound-twist config are dropped.*
 
+*Reports: [Film Plane Mechanism](film-plane-mechanism-report.md) §4/§5/§7 (mechanism design, tilt/swing configurations, parts list); [Muslin Clamp System](film-clamp-mechanism-report.md) §2/§3 (cam-lever clamp layout + jaw mechanism).*
+
+*Diagrams: floor plan (FP), line of sight (LOS), assembly overview (AO), assembly fabrication (AF), film plane mechanism (FPM), film plane distortion (FPD), tilt-swing distortion (TSD).*
+
 ### 1.4 Tilt-Swing Front Board
 
 | Parameter | Value | Constant |
@@ -100,6 +112,10 @@ so the old ±42°/±25.7° stretch-mechanism stops and the compound-twist config
 (Ø320×25mm Al 6061-T6), GE50-DO-2RS spherical plain bearing (SKF, PTFE-lined), 4× M8×1.0
 adjustment screws, hemispherical ball-socket inserts, 36-detent knurled knobs, ICP-10 neoprene
 bellows (4-pleat, Ø290 ID → Ø360 OD).*
+
+*Reports: [Tilt-Swing Front Board](tilt-swing-board-report.md) §2/§4/§5/§6/§12 (mechanism overview, pivot bearing, adjustment, light sealing/bellows, parts list).*
+
+*Diagrams: tilt-swing board (TSB), tilt-swing distortion (TSD).*
 
 ### 1.5 Housed Revolving-Door Light Lock (rev 8)
 
@@ -118,6 +134,10 @@ by geometry; 5mm top/bottom caps, 75mm stub shafts (×2), 2× SKF 6215-2RS1 seal
 felt/brush wiper seals (opening edges + top/bottom rings), 100mm SS interior grab rail, housing-to-panel
 neoprene compression strip. Replaces the failed Ø750 4-fin drum.*
 
+*Reports: [Light Trap Selection](light-trap-selection.md) §4/§5 (housed revolving-door specification, light-path verification); [Hinged Light-Trap Panel](hinged-panel-report.md) §3 (as-integrated light lock: spec, bearings, drum seals).*
+
+*Diagrams: floor plan (FP), line of sight (LOS), assembly overview (AO), assembly fabrication (AF), hinged panel (HP), lighttrap (LT).*
+
 ### 1.6 Hinged Cargo-Door Panel
 
 | Parameter | Value | Constant |
@@ -132,6 +152,10 @@ post** (rev10 — the reused film far-left upright, on a thrust collar + top/bot
 structural sign-off) carrying the ~56° transport swing, 4× Southco C2-33 cam compression latches,
 top + bottom wall stays (transport lock), Ø900mm housed revolving-door light-lock aperture in the
 B2 punch-out bay.*
+
+*Reports: [Hinged Light-Trap Panel](hinged-panel-report.md) §2/§4/§5/§7/§8 (panel construction, hinges + Southco cam latches, rotating transport swing, fixed door frame, parts list).*
+
+*Diagrams: assembly overview (AO), assembly fabrication (AF), hinged panel (HP), lighttrap (LT).*
 
 ### 1.7 Ventilation System
 
@@ -160,6 +184,8 @@ open doorway during operation. Fan B swings with the panel about the pivot; wiri
 flexible coiled cable (with swing slack) from the fixed door frame (Circuit B).*
 
 *Report: [Ventilation & Cooling System](ventilation-report.md) — authoritative specification for fan system, baffle ducts, operating modes, and shade canopy.*
+
+*Reports: [Ventilation & Cooling](ventilation-report.md) §4/§7/§8 (fans A/B + baffle ducts, operating modes, electrical integration); [Electrical](electrical-report.md) §7.2 (Circuit F ventilation fans).*
 
 *Diagrams: lighttrap sheet 1 combined elevation (LT), lighttrap sheet 2 ventilation details (LT), electrical sheet 1 wiring (ES), floor plan (FP), assembly overview (AO).*
 
@@ -206,6 +232,10 @@ face trips the contactor (kills all DC from outside). 4 AWG ground wire + 8ft co
 *Circuits: A — safelight strip (overhead red LED); B — film plane mechanism motors;
 C — water pumps P-01–P-04 (P-03 in IBC corridor); D — safelight vestibule; E — evaporative cooler; F — ventilation fans.*
 
+*Reports: [Electrical](electrical-report.md) §4/§5/§7 (solar array, charge controller + battery + shore charger + external panel, wiring/enclosure/protection); [Electrical Safety](electrical-safety-report.md) §3/§5 (design controls, cascaded improvements).*
+
+*Diagrams: floor plan (FP), line of sight (LOS), assembly overview (AO), assembly fabrication (AF), electrical wiring (ES).*
+
 ### 1.10 Pump Manifold (Plumbing Panel)
 
 | Parameter | Value | Constant |
@@ -221,6 +251,10 @@ P-02 Brown recycle via filter, P-03 waste evacuation, P-04 tray sump pickup),
 1-gal pressure accumulator ACC-01, DN50 butterfly valves V1–V4 (S60×6 thread) at IBC outlets,
 manifold ball valves VB1/VB2/VB3, check valves CV1/CV3/CV4 on bulkhead lines X1/X3/X4, X1 fill tee (splits to IBC-1 & IBC-2), Circuit C.
 Mounted on 18mm marine ply plumbing panel (near IBC column face), in the IBC plumbing corridor.*
+
+*Reports: [Plumbing](plumbing-report.md) §3.2/§3.3/§4/§7 (corridor pump zone P-01–P-04, accumulator ACC-01, valves, panel mounting); [Processing System](water-system-report.md) §7 (equipment layout).*
+
+*Diagrams: floor plan (FP), line of sight (LOS), assembly overview (AO), assembly fabrication (AF), electrical wiring (ES), water system (WS).*
 
 ### 1.11 Water System — Blue Circuit
 
@@ -244,6 +278,10 @@ NOT a load-bearing platform; the totes carry their own stack load. 1" SDR-11 HDP
 Legacy `IBC_H_600`=1010 / `IBC_H_STK`=2020 constants are the superseded "600L fill-level" values — kept only
 for the few generators not yet repointed (overview Blue-trunk shelf, walkway/weight context imports).*
 
+*Reports: [Processing System](water-system-report.md) §3/§4.1 (storage capacity, Blue clean-water supply); [IBC Stacking System](ibc-stacking-report.md) §2/§3 (tote spec/layout, restraint deep 4-leg box); [Plumbing](plumbing-report.md) §6.1 (Blue supply flow path).*
+
+*Diagrams: floor plan (FP), line of sight (LOS), assembly overview (AO), assembly fabrication (AF), water system (WS).*
+
 ### 1.12 Water System — Brown Circuit
 
 | Parameter | Value | Constant |
@@ -257,6 +295,10 @@ integrated 3-stage Big Blue filter unit (50μm → 5μm → GAC carbon, wall-mou
 3-way diverter valves 3W-DV-01 and 3W-DV-02, SV-01 pH sample tap.
 Filled via side-entry near the top from the P-04 tray-sump pickup pump (no top-cap access — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom).*
 
+*Reports: [Processing System](water-system-report.md) §4.2 (Brown used-water recycling); [Plumbing](plumbing-report.md) §3.1/§4.2/§4.4/§6.2 (filter skid + P-02, diverter valves, SV-01 pH sample tap, Brown flow path).*
+
+*Diagrams: floor plan (FP), line of sight (LOS), assembly overview (AO), assembly fabrication (AF), water system (WS).*
+
 ### 1.13 Water System — Black Circuit (Waste)
 
 | Parameter | Value | Constant |
@@ -269,6 +311,10 @@ Filled via side-entry near the top from the P-04 tray-sump pickup pump (no top-c
 DN50 butterfly valve (S60×6) + S60×6-to-1" NPT adapter at drain outlet,
 2" NPT bulkhead fittings for external drain/fill (X4), reinforcing plates for external ports,
 P-03 waste evacuation pump (mounted in IBC plumbing corridor on X4 drain run). Filled via side-entry near the top from the filter reject line (no top-cap access).*
+
+*Reports: [Processing System](water-system-report.md) §4.3 (Black waste containment); [Plumbing](plumbing-report.md) §3.2/§6.3 (P-03 corridor waste pump, Black flow path); [IBC Stacking System](ibc-stacking-report.md) §6 (external bulkhead ports, X4 drain/fill).*
+
+*Diagrams: floor plan (FP), line of sight (LOS), assembly overview (AO), assembly fabrication (AF), water system (WS).*
 
 ### 1.14 Equipment Zones
 
@@ -284,6 +330,10 @@ Any equipment with X > ZONE_R_START is shadow-free at all depths.
 Equipment at pinhole wall face - always shadow-free.
 Equipment in the IBC corridor is shadow-free.*
 
+*Reports: [Equipment Layout](equipment-layout-report.md) §1/§2/§3 (shadow-free zone definitions + optical cone, equipment positions, floor-plan & line-of-sight diagrams).*
+
+*Diagrams: floor plan (FP), line of sight (LOS), assembly overview (AO).*
+
 ### 1.15 Panel Swing Pivot
 
 | Parameter | Value | Constant |
@@ -297,6 +347,8 @@ Equipment in the IBC corridor is shadow-free.*
 *Components: Ø89×8mm CHS pivot post on a thrust collar + top/bottom hub bearings (Ø220 thrust +
 2× Ø90 journal), drum support cage (40×40×3mm SHS), top + bottom wall stays + 4-bolt wall anchor
 plates, 4× drop-in rail saddles + tapered dowels (for the removable left film rails).*
+
+*Reports: [Hinged Light-Trap Panel](hinged-panel-report.md) §5/§8.3 (rotating transport system + locking wall stays, swing-pivot hardware); [Equipment Layout](equipment-layout-report.md) §6.1 (stepped panel & swing pivot, transport mode).*
 
 *Diagrams: container floor plan (FP), assembly overview plan view (AO), hinged panel sheet 4 (HP).*
 
@@ -321,6 +373,8 @@ pressed sump well (150x100x20mm), 5x tapered HDPE shim strips (50mm wide, 0-10mm
 1" SS foot valve w/ strainer, 1" reinforced suction hose, silicone gasket strip,
 M6x16 SS fasteners. No penetration of tray or container floor.
 Permanently installed — no removal for transport mode conversion.*
+
+*Reports: [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) §2/§6.1 (tray specification, HDPE shim slope, sump well, permanent installation, parts); [Processing System](water-system-report.md) §4.4 (processing tray & spray bar).*
 
 *Diagrams: water system sheets 3-4 (WS), container floor plan (FP), assembly overview (AO), walkway sheet 2 (WK).*
 
@@ -352,6 +406,8 @@ the bottom film rail BR) at the right corners. No floor contact, no roof penetra
 Left: removable lift-out, 15mm grating resting on butt joints (no brackets —
 panel conflict, must remove before the panel swings to transport). No floor contact on
 any section. 4 removable sections.*
+
+*Reports: [Walkway](walkway-report.md) §3/§4/§5/§8 (near/far wall-cantilevered, right cantilever rectangle, left removable lift-out, grating spec); [Right Walkway Cantilever](right-walkway-cantilever-study.md) §3/§7 (hybrid-anchor design, rev12).*
 
 *Diagrams: walkway sheet 1 cross-section (WK), walkway sheet 2 plan view (WK), container floor plan (FP).*
 

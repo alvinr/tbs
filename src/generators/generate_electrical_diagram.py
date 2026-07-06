@@ -438,7 +438,7 @@ def draw_sheet1():
 
 def draw_sheet2():
     from matplotlib.patches import Polygon as MplPolygon
-    from tbs_constants import C_LEN as TBS_C_LEN, C_WID as TBS_C_WID, FP_H, PH_X as TBS_PH_X, PH_D, PH_FNO, FP_X_L, FP_X_R, ZONE_L_END, ZONE_R_START, EVAP_DUCT_X, EVAP_DUCT_D, EP_X, EP_W, BA_X, BA_W, CORRIDOR_YD_NEAR, CORRIDOR_W, EQPANEL_W, FSKID_X, IBC_COL_X, IBC_W, IBC_D, BLUE_IBC_Y, IBC_FAR_Y, DRUM_D, DRUM_R, FAN_A_YD, FAN_B_YD, DIAGRAMS_DIR
+    from tbs_constants import C_LEN as TBS_C_LEN, C_WID as TBS_C_WID, FP_H, PH_X as TBS_PH_X, PH_D, PH_FNO, FP_X_L, FP_X_R, ZONE_L_END, ZONE_R_START, EVAP_DUCT_X, EVAP_DUCT_D, EP_X, EP_W, BA_X, BA_W, CORRIDOR_YD_NEAR, CORRIDOR_W, EQPANEL_W, EQPANEL_X, BB_OD, IBC_COL_X, IBC_W, IBC_D, BLUE_IBC_Y, IBC_FAR_Y, DRUM_D, DRUM_R, FAN_A_YD, FAN_B_YD, DIAGRAMS_DIR
 
     # ── mm-first coordinate system ───────────────────────────────────────────
     # Axes show mm directly.  Interior: X 0→C_LEN, Yd 0→C_WID.
@@ -664,7 +664,7 @@ def draw_sheet2():
             color=C_OUT, zorder=8)
 
     # CORRIDOR PUMPS (Yd=1046) — P-01/03/04/05 + ACC (P-02 + the filters are on the pinhole wall)
-    equip(FSKID_X, CORRIDOR_YD_NEAR, EQPANEL_W, CORRIDOR_W,
+    equip(EQPANEL_X - BB_OD, CORRIDOR_YD_NEAR, EQPANEL_W, CORRIDOR_W,
           "C", C_PUMP, "Corridor pumps  Yd=1046–1316")
 
     # RIGHT END ZONE — 4× IBC in 2×2 stack
@@ -798,7 +798,7 @@ def draw_sheet2():
 
     # Drop conduits from trunking to devices
     DUCT_CX = ix(EVAP_DUCT_X)
-    PUMP_CX = ix(FSKID_X + EQPANEL_W / 2)
+    PUMP_CX = ix((EQPANEL_X - BB_OD) + EQPANEL_W / 2)
     IBC_CX  = ix(IBC_COL_X + IBC_W/2)
     for ddx, ddy in [
         (BA_DX + BA_DW/2,    OY + wt),

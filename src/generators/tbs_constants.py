@@ -471,27 +471,15 @@ TAP_PIPE_OD    = 25      # branch pipe OD (mm) — 3/4" HDPE
 TAP_WALL_T     = 3       # branch pipe wall thickness (mm) — reserved (spec; not yet drawn)
 
 
-# ── Filter zone — on equipment panel (rev 7: was pinhole wall skid) ──────
-# 3× separate Geekpure Big Blue 4.5"×10" housings, vertical mount, sump-down.
-# Stacked vertically on far side of corridor (Yd=1186–1316).
-# Protrude from panel face toward open end, same as pumps.
-# Flow: IBC-3 → P-02 → F1 → F2 → F3 → pH test → DV-01.
+# ── Big Blue filter housings — physical dimensions (3× separate units) ──────
+# Mounted on the PINHOLE-WALL panel (positions single-sourced in the PWP_* block below).
+# Flow: IBC-3 → P-02 → F-01 → F-02 → F-03 → SV-01 → DV-01.
 
 # Big Blue 4.5"×10" housings (physical dimensions — 3× separate units)
 BB_OD          = 184     # housing outer diameter (mm) — real Big Blue 4.5x20 housing is Ø7.25"=184 (diameter is the same 10"↔20"; only length changes)
 BB_H           = 594     # housing total height (mm) — head + sump bowl (4.5×20 Big Blue = 23⅜"; per component-dimension-audit); was 340 for the 10" housing.
 #   Heads are pinned near the ceiling (Z2340), so the extra length hangs DOWN — the sump bottom drops to ~Z1746
 #   (~1,616mm walkway headroom, shoulder height for the 1.75m operator). Doubles filter media / interval; revert to 340 if the head clearance becomes an operational issue.
-
-FSKID_X        = EQPANEL_X - BB_OD  # = 4870 — filter zone left edge X for elevation views
-FSKID_YD       = CORRIDOR_YD_NEAR + PUMP_YD_SPAN + 13  # = 1186 — filter near edge Yd (13mm gap past pumps)
-
-# Filter Z positions — 3 housings stacked vertically, 30mm gaps between.
-# Filters at BOTTOM of panel (easy cartridge access), pumps above.
-FSKID_Z_LO     = EQPANEL_Z_LO  # = 250 — filter zone bottom Z (mm) — F1 sump bottom (tracks panel, +50 raise)
-F1_Z           = FSKID_Z_LO  # = 250 — F1 sump bottom Z (mm) — 50μ sediment (lowest); tracks the equipment panel
-F2_Z           = F1_Z + BB_H + 30  # = 620 — F2 sump bottom Z (mm) — 5μ sediment
-F3_Z           = F2_Z + BB_H + 30  # = 990 — F3 sump bottom Z (mm) — GAC carbon (highest)
 
 # ── Pinhole Wall Plumbing Panel — wet-end filter loop positions (SINGLE SOURCE) ──────────────
 # The pinhole-wall-mount refactor put the filter loop on the PINHOLE WALL (Yd≈0 side): the 3-stage

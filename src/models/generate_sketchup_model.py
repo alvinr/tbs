@@ -38,7 +38,7 @@ import argparse
 import contextlib
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "generators"))
-from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_W, FP_H, FP_Y, FP_Y_MIN, RAIL_X_L, RAIL_X_R, RAIL_LEN, RAIL_OFF, RAIL_OFF_BOT, FP_ANGLE_LEG, BRACE_RHS, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, PUMP_W, PUMP_H_LO, PUMP_H_HI, PUMP_YD_SPAN, F1_Z, F2_Z, F3_Z, EQPANEL_X, EQPANEL_T, EQPANEL_Z_LO, EQPANEL_Z_HI, EQPANEL_YD, EQPANEL_YD_SPAN, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_PALLET_H, IBC_BOTTLE_INSET, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y, IBC_FRAME_RHS, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_WBKT_PLATE_W, IBC_WBKT_PLATE_T, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, MRBF_D, MRBF_H, BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG, SOLAR_GAP, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SOLAR_ARRAY_Z, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, PULL_CORD_BOTTOM_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, EXT_FILL_H, EXT_FILL_YD, EXT_DRAIN_H, EXT_DRAIN_3_H, EXT_DRAIN_YD, FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV02_X, BV02_Z, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, EQPANEL_YD_FAR, IBC_VALVE_Z, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z
+from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_W, FP_H, FP_Y, FP_Y_MIN, RAIL_X_L, RAIL_X_R, RAIL_LEN, RAIL_OFF, RAIL_OFF_BOT, FP_ANGLE_LEG, BRACE_RHS, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, PUMP_H_HI, EQPANEL_X, EQPANEL_T, EQPANEL_Z_HI, EQPANEL_YD, EQPANEL_YD_SPAN, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_PALLET_H, IBC_BOTTLE_INSET, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y, IBC_FRAME_RHS, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_WBKT_PLATE_W, IBC_WBKT_PLATE_T, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, MRBF_D, MRBF_H, BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG, SOLAR_GAP, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SOLAR_ARRAY_Z, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, PULL_CORD_BOTTOM_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV02_X, BV02_Z, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z
 
 # Material colors used only by the 3D model (not in tbs_constants).
 C_STEEL = "#B0B0B8"     # steel sections (rails, mount plate, brackets, rack)
@@ -963,104 +963,11 @@ def spray_bar():
 # the CURRENT water builders — cp.frame/tote_restraint/rear_panel/equipment/plumbing/
 # drains_ports + pw.kit/other_equipment/tap01_supply (the water.skp source) — so they
 # now render the split Corridor / Pinhole-Wall panel design and stay in sync with
-# water.skp.  The functions below (equipment_panel / water_hookups / spray_bar_plumbing
-# / water_plumbing) are the OLD pre-corridor-refactor layout and are now UNUSED (kept
-# for reference; safe to delete).  ibc_rack() (old single-portal frame, X4734) is now referenced
+# water.skp.  The OLD pre-corridor-refactor builders (equipment_panel / water_hookups /
+# spray_bar_plumbing / water_plumbing) + the legacy FSKID_X/F1_Z/F2_Z/F3_Z corridor-filter
+# constants were DELETED 2026-07-05.  ibc_rack() (old single-portal frame, X4734) is now referenced
 # ONLY by the ARCHIVED right-cantilever study (src/models/archive/) — the live models use the
 # deep-box cp.frame() (X4654); kept so the archived study still imports, but effectively dead.
-
-def equipment_panel():
-    """18mm marine-ply panel in the IBC corridor carrying the wet end.
-
-    Layout follows the panel-layout diagram: equipment mounts on the panel
-    face (X=EQPANEL_X) protruding toward the open end (-X). Two pump columns
-    (left Yd≈1109, right Yd≈1253), three rows (P-01/P-02, P-04/P-03,
-    ACC-01/P-05), and three Big Blue filters centered below the pump zone.
-    """
-    parts = []
-    face_x = EQPANEL_X                    # panel face — equipment hangs in -X
-
-    parts.append(ruby_box("Plumbing Panel (ply)",
-                          face_x, EQPANEL_YD, EQPANEL_Z_LO,
-                          EQPANEL_T, EQPANEL_YD_SPAN, EQPANEL_Z_HI - EQPANEL_Z_LO,
-                          color=C_PLY))
-
-    # Pump grid — two columns, body 100(X) × 127(Yd) × 218(Z), 40mm row gap.
-    pump_d, pump_face, pump_h, gap = PUMP_W, PUMP_YD_SPAN, 218, 40
-    col_l = EQPANEL_YD + 63               # PUMP_COL — left column Yd center
-    col_r = EQPANEL_YD + (EQPANEL_YD_SPAN - 63)  # right column Yd center
-    z_bot = PUMP_H_LO                     # 1370 — bottom pump row
-    z_mid = z_bot + pump_h + gap          # 1578 — upper pump row
-    z_top = z_mid + pump_h + 150          # 1946 — ACC-01 / P-05 row
-
-    def pump(nm, yd_c, z):
-        return ruby_box(nm, face_x - pump_d, yd_c - pump_face / 2, z,
-                        pump_d, pump_face, pump_h, color=C_PUMP)
-
-    parts.append(pump("Pump P-01 (Blue)", col_l, z_bot))
-    parts.append(pump("Pump P-02 (Brown)", col_r, z_bot))
-    parts.append(pump("Pump P-04 (Tray drain)", col_l, z_mid))
-    parts.append(pump("Pump P-03 (Waste evac)", col_r, z_mid))
-    parts.append(pump("Pump P-05 (Brown drain)", col_r, z_top))
-
-    # ACC-01 accumulator — Ø127 × 200 cylinder (real SeaFlo 0.75L ≈ 200×127×125), left column.
-    parts.append(ruby_cylinder("ACC-01 Accumulator",
-                               face_x - 63, col_l, z_top, 127 / 2, 200,
-                               color=C_ACC))
-
-    # Three Big Blue filters, centered on the panel, stacked F3→F2→F1.
-    fr = BB_OD / 2
-    fcx = face_x - fr
-    fcy = EQPANEL_YD + EQPANEL_YD_SPAN / 2          # centered in the corridor
-    for nm, fz in [("F1 (50µ)", F1_Z), ("F2 (5µ)", F2_Z), ("F3 (GAC)", F3_Z)]:
-        parts.append(ruby_cylinder(f"Filter {nm}",
-                                   fcx, fcy, fz, fr, BB_H, color=C_FILTER))
-
-    # SV-01 pH sample tap — on the filtered line just past the F3 outlet, dropped
-    # into the CLEAR far corridor gap (Yd past the filter, below the Blue suction
-    # manifold) with a downturned spout. Placed here so the drop pipe + tap don't
-    # cross the Blue #2 → manifold suction line (plumbing rule: no pipe through pipe).
-    _f3_head = F3_Z + BB_H
-    _sv_y = fcy + fr + 18           # far corridor gap, just past the filter
-    _sv_x = face_x - 60
-    _sv_z = _f3_head - 110          # valve below the suction-manifold band
-    parts.append(ruby_pipe_run("SV-01 drop (filtered line -> tap)",
-                               [(_sv_x + 17, _sv_y, _f3_head),
-                                (_sv_x + 17, _sv_y, _sv_z + 30)],
-                               6, color=C_FILTER))
-    parts.append(ruby_box("SV-01 pH sample tap",
-                          _sv_x, _sv_y - 16, _sv_z, 34, 32, 34, color=C_VALVE))
-    parts.append(ruby_cylinder("SV-01 spout",
-                               _sv_x + 17, _sv_y, _sv_z - 40, 5, 36, color=C_VALVE))
-
-    # ── Drain-riser backing spine (rev 8.1) ──────────────────────────────────
-    # 18mm marine-ply spine teed perpendicular off the panel (a T in plan), into
-    # the corridor gap, so the X3/X4 drain risers (Brown @ X=5400, Waste @ X=5340,
-    # both Yd=col_r) clamp to it instead of free-hanging.  Sits in the clear
-    # corridor (Yd 1046-1316) — no tote contact.  Rises to the full panel height
-    # (v2: the over-the-top Blue fill trunk this spine used to carry is gone — the
-    # Blue fill now SIDE-ENTERS near the top, so no shelf/saddle is needed).
-    sp_t  = EQPANEL_T                              # 18mm ply
-    sp_x0, sp_x1 = face_x, 5420                     # butts the panel rear → past the X3 riser
-    sp_y  = col_r - 30                              # spine board Yd (near-face just off the risers)
-    spine_top = EQPANEL_Z_HI                        # 2310 — full panel height
-    parts.append(ruby_box("Drain-riser spine (ply)", sp_x0, sp_y, EQPANEL_Z_LO,
-                          sp_x1 - sp_x0, sp_t, spine_top - EQPANEL_Z_LO,
-                          color=C_PLY))
-    # Stiffening flange along the spine's rear edge → T cross-section.
-    parts.append(ruby_box("Drain-riser spine flange (ply)", sp_x1 - sp_t,
-                          col_r - 27, EQPANEL_Z_LO, sp_t, 54,
-                          spine_top - EQPANEL_Z_LO, color=C_PLY))
-    # SS pipe clamps (P-clips) holding each riser to the spine face, ~400mm centers.
-    clamp_face = sp_y + sp_t                        # spine face the pipes sit against
-    for rx, ztop in ((5340, 1578), (5400, 1946)):   # X4 Waste, X3 Brown risers
-        cz = 500
-        while cz < ztop - 80:
-            parts.append(ruby_box("Riser pipe clamp", rx - 16, clamp_face, cz,
-                                  32, 30, 22, color=C_STEEL))
-            cz += 400
-
-    return '\n'.join(parts)
 
 
 # ── IBC stack (4× totes, 2×2) + support rack ─────────────────────────────────
@@ -1950,24 +1857,6 @@ def evap_cooler():
 
 # ── Water / waste hookups (IBC-end wall, exterior) ───────────────────────────
 
-def water_hookups():
-    """Remote water-fill + waste-drain hookups on the IBC-end wall (exterior).
-
-    2" NPT bulkhead fittings centered in Yd on the X=C_LEN end wall: fill high,
-    two waste drains low. IBCs fill/drain remotely through these.
-    """
-    parts = []
-    wx = C_LEN          # IBC-end wall
-    yd = EXT_FILL_YD    # 1181 — centered
-    r = 30              # ~2" NPT stub
-    hooks = [("Water Fill Hookup (2in NPT)", EXT_FILL_H, C_IBC_BLUE),
-             ("Waste Drain Hookup (2in NPT)", EXT_DRAIN_3_H, C_IBC_BROWN),
-             ("Waste Drain Hookup (2in NPT)", EXT_DRAIN_H, C_IBC_WASTE)]
-    for nm, hz, col in hooks:
-        parts.append(ruby_cylinder(nm, wx, yd, hz, r, 120, color=col, axis="x"))
-
-    return '\n'.join(parts)
-
 
 # ── Ventilation fans (cargo-door end wall) ───────────────────────────────────
 
@@ -2072,61 +1961,6 @@ def fan_duct(tag, wall_x, ext, yc, zc):
 
 
 # ── Spray-bar plumbing (Blue supply + BV-02 + TAP-01) ────────────────────────
-
-def spray_bar_plumbing():
-    """Blue ½" supply trunk along the pinhole wall (Z=30) feeding the spray bar,
-    with the BV-02 isolation valve riser and the TAP-01 chemistry tap branch.
-    """
-    parts = []
-    yd = 12                          # just off the pinhole wall
-    fz = SPRAY_BAR_FEED_Z            # 30 — supply trunk height
-    pr = PUMP_PIPE_OD / 2            # ½" HDPE
-
-    # Blue supply trunk — horizontal along the pinhole wall. It enters at RAIL_X_R
-    # (riser from the filters), feeds BV-02 (spray-bar isolation, at the pinhole
-    # centerline), and now CONTINUES LEFT to TAP-01 (the chem tap, relocated to
-    # X=TAP_X in the widened walkway, rev13).
-    x_l, x_r = TAP_X, RAIL_X_R
-    parts.append(ruby_cylinder("Blue Supply Trunk (1/2in HDPE)",
-                               x_l, yd, fz, pr, x_r - x_l, color=C_BLUE, axis="x"))
-
-    # BV-02 isolation valve riser + body, at the pinhole centerline.
-    parts.append(ruby_cylinder("BV-02 Riser",
-                               BV02_X, yd, fz, pr, BV02_Z - fz, color=C_BLUE, axis="z"))
-    parts.append(ruby_box("BV-02 (ball valve)",
-                          BV02_X - 25, yd - 25, BV02_Z - 25, 50, 50, 50,
-                          color=C_VALVE))
-
-    # Flexible ½" supply hose — the COILED service loop from BV-02 out to the operator
-    # end of the spray bar's feed (which is then bound down the push pole to the
-    # distribution manifold in generate_spraybar_model.build_feed_pole). Drawn with the
-    # coil-cord helper so it reads as a soft, slack connector that takes up/pays out
-    # length as the bar rolls along Yd (report §3.10). It drapes down to rest on the
-    # near walkway deck (~WALKWAY_H) in a hanging loop, then rises to the operator end
-    # (beam-center X ≈ BV02_X, op_y=180, op_z=970, hose offset 20 off the pole).
-    parts.append(ruby_coil_cord("Spray Bar Supply Hose (BV-02 -> bar, coiled)",
-                                [(BV02_X, yd + 25, BV02_Z),       # BV-02 outlet (Z≈950)
-                                 (BV02_X + 10, 110, WALKWAY_H + 20),  # loop bottom — draped on the walkway deck
-                                 (BV02_X + 20, 180, 970)],        # operator end of the pole-bound feed
-                                r=8, color=C_BLUE, coil_r=24, pitch=70))
-
-    # TAP-01 chemistry tap branch (¾") — relocated LEFT of the chem shelf. The riser
-    # tops at the stowed-shelf height (SHELF_STOW_TOP_Z); the spout reaches out over
-    # the shelf and dispenses at TAP_Z. BV-06 isolates the branch.
-    tr = TAP_PIPE_OD / 2
-    # One orthogonal run — riser up, out over the shelf, then down to the spout —
-    # so BOTH 90° turns get a swept-torus elbow fitting (per skill_plumbing_drawing).
-    # Was a riser cylinder + two butt-jointed spout pipes with no elbows at the corners.
-    parts.append(ruby_pipe_run("TAP-01 Branch (3/4in)",
-                               [(TAP_X, yd, fz),
-                                (TAP_X, yd, SHELF_STOW_TOP_Z),
-                                (TAP_X, yd + 100, SHELF_STOW_TOP_Z),
-                                (TAP_X, yd + 100, TAP_Z)],
-                               tr, color=C_BLUE))
-    parts.append(ruby_box("BV-06 (chem tap isolation)",
-                          TAP_X - 18, yd - 8, 1010, 36, 36, 40, color=C_VALVE))
-
-    return '\n'.join(parts)
 
 
 # ── Water / waste plumbing network ───────────────────────────────────────────
@@ -2355,191 +2189,6 @@ def ruby_tee(name, node, run_dir, branch_dir, r, color=None, alpha=None, n=16, m
     return '\n'.join([ruby_pipe(name, a, b, rt, color, alpha, n, mute=mute),
                       ruby_pipe(name, node, c, rt, color, alpha, n, mute=mute)])
 
-
-def water_plumbing():
-    """Water/waste plumbing routed orthogonally with swept-torus elbow fittings
-    at every bend (per skill_plumbing_drawing), kept clear of the IBC footprint
-    (X 4674-5893, Y 30-1046 & 1316-2332, Z 0-2336): ALL runs stay in the clear
-    corridor (Y 1046-1316) — the direct-stack totes leave only 52mm headroom, so
-    EVERY tote-top connection (fill, recycle returns, reject) is SIDE-ENTRY near
-    the top; the drains/suctions run in separate corridor lanes; P-01 → spray bar
-    drops to the floor and leaves the IBC zone (X<4674) before traversing.
-    KEEPS the recycle loop (matches generate_panel_layout.py): tray sump → P-04 →
-    DV-02 → IBC-3 (Brown); IBC-3 → P-02 → filters → DV-01 → IBC-2 (Blue recycle);
-    off-spec → IBC-4 (Waste). Blue=fresh/process, brown=recycled, gray=waste."""
-    pr = 12
-    nearX = IBC_COL_X + IBC_W / 2           # 5283 — IBC column center X
-    nY = BLUE_IBC_Y + IBC_D / 2            # 538  — near col center (Blue #1 fill)
-    fY = IBC_FAR_Y + IBC_D / 2            # 1824 — far col center (Blue #2 fill)
-    topZ = 2 * IBC_H_1000                  # 2336 — IBC stack top (direct-stack, 52mm headroom)
-    pumpZ = PUMP_H_LO                      # 1370 — pump inlet bottom
-    pumpX = EQPANEL_X - 50                  # pump inlet X — tracks panel
-    cc = 1181                              # corridor centerline Y
-    floor = 60                             # floor-run height
-    upVZ = IBC_H_1000 + IBC_VALVE_Z        # 1353 — upper-tier valve Z (Blue totes)
-    loVZ = IBC_VALVE_Z                     # 185  — lower-tier valve Z (Brown/Waste)
-    # Pump inlets (per equipment_panel): left col Y=1109 → P-01/P-04, right col
-    # Y=1253 → P-02/P-03; rows Z=1370 (bottom) / 1628 (upper). Two riser X-lanes
-    # per column (rxA/rxB) so the four suction risers never overlap.
-    manX = EQPANEL_X + 100                 # Blue manifold header X (corridor) — tracks panel
-    pyL, pyR = 1109, 1253                  # left / right pump-column Y
-    pZ1, pZ2 = PUMP_H_LO, PUMP_H_LO + 258  # bottom / upper pump-row Z
-    rxA, rxB = EQPANEL_X - 60, EQPANEL_X - 20  # two riser X-lanes per column (track panel)
-    parts = []
-    def pipe(nm, wp, col):
-        parts.append(ruby_pipe_run(nm, wp, pr, color=col))
-
-    # Exterior Blue FILL (gravity) — into the SIDES of the two Blue totes NEAR THE
-    # TOP, NOT the caps (only 52mm headroom — no top-cap access). The X1 trunk runs
-    # in the clear corridor to a tee placed NEAR X1, then a branch enters each Blue
-    # tote's corridor-facing side near the top; both are gravity-linked (fed from
-    # the same tee at the same height, so they equalize at ~800L each).
-    fillTeeX = C_LEN - 240                 # 5653 — tee near X1 (just in from the sealed wall)
-    entryZ   = topZ - 180                  # 2156 — side entry near the top of the Blue totes
-    pipe("X1 Blue Fill Trunk",
-         [(C_LEN, EXT_FILL_YD, EXT_FILL_H), (fillTeeX, cc, EXT_FILL_H)], C_BLUE)
-    parts.append(ruby_tee("Blue Fill Tee", (fillTeeX, cc, EXT_FILL_H),
-                          (0, 1, 0), (0, 0, -1), pr, color=C_BLUE))
-    # Branch into Blue #1 (near col, corridor face EQPANEL_YD) near the top — the
-    # pipe penetrates 150mm into the tote past the flange (note: 150mm + flange).
-    pipe("Fill → Blue #1 side",
-         [(fillTeeX, cc, EXT_FILL_H), (fillTeeX, cc, entryZ),
-          (fillTeeX, EQPANEL_YD, entryZ), (fillTeeX, EQPANEL_YD - 150, entryZ)], C_BLUE)
-    # Branch into Blue #2 (far col, corridor face EQPANEL_YD_FAR) near the top.
-    pipe("Fill → Blue #2 side",
-         [(fillTeeX, cc, entryZ), (fillTeeX, EQPANEL_YD_FAR, entryZ),
-          (fillTeeX, EQPANEL_YD_FAR + 150, entryZ)], C_BLUE)
-    # Round fill flange on each Blue tote's corridor face where the branch enters.
-    flange_r, flange_h = 36, 16
-    parts.append(ruby_cylinder("Fill Flange Blue #1", fillTeeX, EQPANEL_YD - flange_h / 2,
-                               entryZ, flange_r, flange_h, color=C_STEEL, axis="y"))
-    parts.append(ruby_cylinder("Fill Flange Blue #2", fillTeeX, EQPANEL_YD_FAR - flange_h / 2,
-                               entryZ, flange_r, flange_h, color=C_STEEL, axis="y"))
-
-    # Exterior DRAIN PORTS X3/X4 are fed from the DRAIN PUMPS (not straight off the
-    # totes): P-05 (Brown drain) → X3, P-03 (Waste evac) → X4.  Each run leaves the
-    # pump discharge, drops a riser behind the panel frame, and runs out to the
-    # end-wall port along the clear corridor.  Two riser X-lanes (drnA/drnB) keep
-    # the Brown and Waste runs from overlapping.
-    drnA = 5400                            # Brown riser X (behind panel frame 5258-5308)
-    drnB = 5340                            # Waste riser X (offset lane)
-    pZ3  = PUMP_H_LO + 626                  # 1946 — P-05 (Brown drain) pump row
-    pipe("P-05 → X3 (Brown drain-out)",
-         [(rxB, pyR, pZ3), (drnA, pyR, pZ3), (drnA, pyR, EXT_DRAIN_3_H),
-          (drnA, EXT_DRAIN_YD, EXT_DRAIN_3_H), (C_LEN, EXT_DRAIN_YD, EXT_DRAIN_3_H)],
-         C_IBC_BROWN)
-    pipe("P-03 → X4 (Waste drain-out)",
-         [(rxB, pyR, pZ2), (drnB, pyR, pZ2), (drnB, pyR, EXT_DRAIN_H),
-          (drnB, EXT_DRAIN_YD, EXT_DRAIN_H), (C_LEN, EXT_DRAIN_YD, EXT_DRAIN_H)],
-         C_IBC_WASTE)
-
-    # IBC valves → their own pumps. Each suction ENTERS its tote perpendicular at
-    # the panel X (penetrating 150mm past a flange — note 1), then turns once and
-    # rises to the pump — no long run along the tote side (reduced pipe lines).
-    def tote_flange(nm, x, y, z, col):
-        parts.append(ruby_cylinder(nm, x, y - 9, z, 36, 18, color=C_STEEL, axis="y"))
-
-    # Blue: tap BOTH top-tier Blue totes perpendicular at the panel, tee to P-01.
-    parts.append(ruby_tee("Blue Manifold Tee", (rxA, cc, upVZ), (0, 1, 0), (-1, 0, 0), pr, color=C_BLUE))
-    pipe("Blue #1 → manifold", [(rxA, EQPANEL_YD - 150, upVZ), (rxA, cc, upVZ)], C_BLUE)
-    pipe("Blue #2 → manifold", [(rxA, EQPANEL_YD_FAR + 150, upVZ), (rxA, cc, upVZ)], C_BLUE)
-    pipe("Manifold → P-01", [(rxA, cc, upVZ), (rxA, pyL, upVZ), (rxA, pyL, pZ1)], C_BLUE)
-    tote_flange("Blue #1 Suction Flange", rxA, EQPANEL_YD, upVZ, C_BLUE)
-    tote_flange("Blue #2 Suction Flange", rxA, EQPANEL_YD_FAR, upVZ, C_BLUE)
-
-    # Brown: enter IBC-3 (near corridor face) directly at the panel, 90° up to P-02.
-    pipe("Brown → P-02",
-         [(rxA, EQPANEL_YD - 150, loVZ), (rxA, EQPANEL_YD, loVZ),
-          (rxA, pyR, loVZ), (rxA, pyR, pZ1)], C_IBC_BROWN)
-    tote_flange("Brown Suction Flange", rxA, EQPANEL_YD, loVZ, C_IBC_BROWN)
-
-    # Waste: enter IBC-4 (far corridor face) directly at the panel, 90° up to P-03.
-    pipe("Waste → P-03",
-         [(rxB, EQPANEL_YD_FAR + 150, loVZ), (rxB, EQPANEL_YD_FAR, loVZ),
-          (rxB, pyR, loVZ), (rxB, pyR, pZ2)], C_IBC_WASTE)
-    tote_flange("Waste Suction Flange", rxB, EQPANEL_YD_FAR, loVZ, C_IBC_WASTE)
-
-    # Processing-tray sump (per water-system Detail A): pickup riser UP through
-    # the cantilevered near-walkway grate to the valve above deck, back DOWN
-    # through the grate, then routed UNDERNEATH at floor level (Z=30 — below the
-    # cantilever beams (Z80-115) AND the bottom film rail (Z150)) through the
-    # tray–IBC gap into the corridor and up to the pump.
-    # rev12: the return riser drops in the GRATE GAP between the two walkway long
-    # beams (X<4589) — the old X+70 drop (X4620) fell on the right long beam
-    # (X4589-4629). And it TWISTS in Yd at valve height so the return leg lands at a
-    # different depth than the pickup riser (they were both at Yd80 → stacked into one
-    # pipe). The return drops in the clear strip in FRONT of the tray (Yd past the
-    # Yd0-40 end beam, before the tray near edge Yd80), then the Z30 floor run heads
-    # to the gap — clearing the beam + bottom film rail.
-    gapX = (PROC_TRAY_X_R + IBC_COL_X) / 2     # 4651.5 — centered in the 45mm gap
-    valveZ = WALKWAY_H + 65                     # 195 — valve body above the deck
-    dropX = PROC_TRAY_DRAIN_X - 70              # 4480 — return riser in the grate gap
-    dropY = RWK_BEARER_W + 10                   # 50 — offset depth: clear of the Yd0-40 end beam
-    sumpY = PROC_TRAY_DRAIN_YD + 75             # 155 — pickup moved 75mm off the pinhole wall (clear of the near rim wall)
-    pipe("Tray Sump → P-04",
-         [(PROC_TRAY_DRAIN_X, sumpY, PROC_TRAY_SUMP_Z),   # sump pickup
-          (PROC_TRAY_DRAIN_X, sumpY, valveZ),             # up to the valve
-          (dropX, sumpY, valveZ),                         # over in X (valve body)
-          (dropX, dropY, valveZ),                         # TWIST: jog in Yd
-          (dropX, dropY, 30),                             # return riser (offset)
-          (gapX, dropY, 30),                              # floor run out to the gap
-          (gapX, cc, 30), (IBC_COL_X, cc, 30),            # along to the IBC front (clear of cantilevers X<4674)
-          (IBC_COL_X, cc, 90),                            # rise to clear the frame FLOOR BEAM (X4734-4784, Z0-50)
-          (rxB, cc, 90), (rxB, pyL, 90), (rxB, pyL, pZ2)],  # OVER the beam, then up to P-04
-         C_IBC_WASTE)
-
-    # ── Recycle loop (matches generate_panel_layout.py — the canonical routing) ──
-    # KEEP the recycle loop: the tray sump feeds the Brown buffer (IBC-3), Brown is
-    # filtered and recycled back to Blue (IBC-2), and Blue feeds the spray bar.  All
-    # tote-top connections are SIDE-ENTRY near the top (no top-cap access, 52mm
-    # headroom).  3-way diverters DV-02 (after P-04) and DV-01 (after the filters)
-    # send off-spec water to the Waste tote (IBC-4) instead.
-    ibc3_in_z = IBC_H_1000 - 80                   # 1088 — IBC-3 (Brown) side-entry near top
-    ibc4_in_z = IBC_H_1000 - 80                   # 1088 — IBC-4 (Waste) side-entry near top
-    ibc2_in_z = 2 * IBC_H_1000 - 180              # 2156 — IBC-2 (Blue) side-entry near top
-    fcx = EQPANEL_X - BB_OD / 2                    # 4809 — filter column X (per equipment_panel)
-    f_out_z = F3_Z + BB_H / 2                      # filter-stack outlet (top of F3)
-
-    # (1) Blue supply → P-01 → spray bar (the wash/rinse feed).  The drop stops at
-    # Z250 (clear ABOVE the Brown→P-02 suction at Z185), jogs in X OVER the frame
-    # floor beam, then drops to the floor on the gap side (X<4734) — so it neither
-    # crosses the brown suction nor passes through the frame.
-    pipe("P-01 → Spray Bar",
-         [(rxA, pyL, pZ1), (rxA, pyL, 250), (IBC_COL_X, pyL, 250),
-          (IBC_COL_X, pyL, floor), (RAIL_X_R, pyL, floor),
-          (RAIL_X_R, 12, floor), (RAIL_X_R, 12, SPRAY_BAR_FEED_Z)], C_BLUE)
-
-    # (2) Tray-sump recycle: P-04 → 3W-DV-02 → IBC-3 (Brown) side-entry near top.
-    # The discharge leaves P-04 on its OWN Yd-lane (dvY) so it doesn't run back down
-    # collinear with the sump riser that feeds the pump.
-    dvY = pyL - 50
-    parts.append(ruby_tee("3W-DV-02 Diverter", (rxB, dvY, ibc3_in_z), (0, -1, 0), (0, 0, 1), pr, color=C_VALVE))
-    pipe("P-04 → DV-02", [(rxB, pyL, pZ2), (rxB, dvY, pZ2), (rxB, dvY, ibc3_in_z)], C_IBC_BROWN)
-    pipe("DV-02 → IBC-3 side-entry",
-         [(rxB, dvY, ibc3_in_z), (rxB, EQPANEL_YD, ibc3_in_z),
-          (rxB, EQPANEL_YD - 150, ibc3_in_z)], C_IBC_BROWN)
-    tote_flange("IBC-3 Recycle Flange", rxB, EQPANEL_YD, ibc3_in_z, C_IBC_BROWN)
-
-    # (3) Brown recycle: P-02 → F1/F2/F3 → 3W-DV-01 → IBC-2 (Blue) side-entry.
-    pipe("P-02 → Filters", [(rxA, pyR, pZ1), (fcx, cc, pZ1), (fcx, cc, F1_Z)], C_IBC_BROWN)
-    parts.append(ruby_tee("3W-DV-01 Diverter", (fcx, cc, ibc2_in_z), (0, 1, 0), (0, 0, -1), pr, color=C_VALVE))
-    pipe("Filters → DV-01 → IBC-2 side-entry",
-         [(fcx, cc, f_out_z), (fcx, cc, ibc2_in_z),
-          (fcx, EQPANEL_YD_FAR, ibc2_in_z), (fcx, EQPANEL_YD_FAR + 150, ibc2_in_z)], C_FILTER)
-    tote_flange("IBC-2 Recycle Flange", fcx, EQPANEL_YD_FAR, ibc2_in_z, C_FILTER)
-
-    # (4) DV-01 reject (pH out of range) → IBC-4 (Waste) side-entry near top.  It
-    # jogs onto its OWN X-lane (rejX) at the DV-01 junction, drops in the CORRIDOR
-    # to below the Blue tote, then enters IBC-4 from the side — NOT up-and-through
-    # the Blue tote (IBC-2) that sits directly above IBC-4.
-    rejX = fcx + 35
-    pipe("DV-01 → IBC-4 reject",
-         [(fcx, cc, ibc2_in_z), (rejX, cc, ibc2_in_z), (rejX, cc, ibc4_in_z),
-          (rejX, EQPANEL_YD_FAR, ibc4_in_z), (rejX, EQPANEL_YD_FAR + 150, ibc4_in_z)],
-         C_IBC_WASTE)
-    tote_flange("IBC-4 Reject Flange", rejX, EQPANEL_YD_FAR, ibc4_in_z, C_IBC_WASTE)
-
-    return '\n'.join(parts)
 
 
 # ── Assemble full Ruby script ────────────────────────────────────────────────

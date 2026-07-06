@@ -232,7 +232,8 @@ def context():
 
 
 def power_core():
-    """EP internals on a PLYWOOD BACKING PANEL (no enclosure box): MPPT, fuse block,
+    """EP internals on a PLYWOOD BACKING PANEL, with the DC gear inside a ghosted IP65 enclosure
+    (its back IS the plywood): MPPT, fuse block,
     +/- busbars, rotary main disconnect (knob on the face). All components surface-mount
     on the ply; the MPPT sits forward on its own sub-panel to clear the fuse-stack risers."""
     p = []
@@ -240,7 +241,8 @@ def power_core():
     eh = EP_H_HI - EP_H_LO
     # Plywood backing panel (18mm) — every EP component surface-mounts on it. STEPPED: full width low
     # down (backs the wide battery bank) but narrowed up top so it clears the back of the external
-    # power panel that the full-width board was crossing into. Replaces the ghosted enclosure box.
+    # power panel that the full-width board was crossing into. The DC gear sits inside a ghosted IP65
+    # enclosure (added below) whose back panel is this plywood.
     _ply_bot = BA_H_LO - 12
     _ply_x0 = BA_X - 12                             # full width low down (battery bank)
     _ply_x0_top = PWR_PANEL_X + PWR_PANEL_W + 10    # narrowed up top to clear the external panel (right edge)
@@ -250,6 +252,11 @@ def power_core():
                          _ply_r - _ply_x0, 18, _ply_step_z - _ply_bot, color=ov.C_PLY))
     p.append(ov.ruby_box("EP plywood backing panel (upper, 18mm)", _ply_x0_top, -18, _ply_step_z,
                          _ply_r - _ply_x0_top, 18, (EP_H_HI + 12) - _ply_step_z, color=ov.C_PLY))
+    # IP65 enclosure — ghosted weatherproof box over the fuse block + busbars + charge fuse (the DC
+    # distribution terminals that need sealing), mounted ON the plywood (its back IS the plywood). The
+    # MPPT, main disconnect, battery and inverter mount on the plywood outside it.
+    p.append(ov.ruby_box("IP65 enclosure (ghosted, fuse block + busbars)", EP_X + 5, 12, EP_H_LO + 155,
+                         185, 140, 210, color=ov.C_STEEL, alpha=0.12))
     p.append(ov.ruby_box("MPPT Controller (100/50)", EP_X + 15, 120,
                          EP_H_HI - MPPT_H - 30, MPPT_W, MPPT_D, MPPT_H, color="#3A5BA0"))
     # Plywood backing panel — extends the EP mounting board FORWARD to the relocated MPPT plane so the

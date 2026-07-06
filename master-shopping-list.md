@@ -15,7 +15,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 3. Pinhole optics plate | $110 | $265 |
 | 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,454 | $3,914 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $4,612 | $6,990 |
-| 6. Electrical — power, circuits, wiring | $2,084 | $2,634 |
+| 6. Electrical — power, circuits, wiring | $2,144 | $2,694 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,385 | $2,070 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $855 | $1,430 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,000 | $2,975 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,210 | $2,980 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$21,581** | **~$32,456** |
+| **TOTAL (base build + 50-print run)** | **~$21,641** | **~$32,516** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -153,6 +153,7 @@ indicative low–high estimates — get quotes before ordering.
 | Equipotential bonding kit — 6 AWG + ring lugs | 1 ea | Amazon | electrical | $20 |
 | External emergency cut-off — red mushroom IP66 + control loop | 1 ea | AutomationDirect | electrical | $30 |
 | Interior emergency cut-off — red mushroom IP65 (paralleled to exterior) | 1 ea | AutomationDirect | electrical | $25 |
+| IP65 enclosure ~200×220×140mm (fuse block + busbars, on the plywood) | 1 ea | Polycase | electrical | $60 |
 | Master pump switch (Circuit C) — IP67 sealed rocker/disconnect 12V 16A | 1 ea | Amazon | electrical | $10 |
 | MC4 bulkhead connector pairs, IP67 panel-mount | 3 pair | Amazon | electrical | $25 |
 | MPPT charge-line fuse — 60A ANL/MIDI + holder | 1 ea | Blue Sea | electrical | $15 |
@@ -165,7 +166,7 @@ indicative low–high estimates — get quotes before ordering.
 | Shore-charger output fuse — 20A inline | 1 ea | Amazon | electrical | $5 |
 | Tinned marine wire 14/16 AWG, ~25ft (wet-zone runs) | 1 lot | Waytek Wire | electrical | $30 |
 | Wiring kit — 12/14/16/18 AWG tinned, 50ft/color | 1 kit | Waytek Wire | electrical | $80 |
-| **electrical-distribution subtotal** | | | | **$1,086** |
+| **electrical-distribution subtotal** | | | | **$1,146** |
 
 ### electrical-power
 
@@ -450,6 +451,7 @@ indicative low–high estimates — get quotes before ordering.
 | AutomationDirect | 3 | electrical-distribution, electrical-power | $95 |
 | B&H Photo | 1 | fabric-textile | $95 |
 | Hardware store | 2 | adhesives-finishes | $42–$62 |
+| Polycase | 1 | electrical-distribution | $60 |
 | VXB | 1 | bearings-motion | $40–$60 |
 | Steel service center | 1 | steel-structural | $30–$50 |
 | Powerwerx | 1 | electrical-distribution | $40 |

@@ -173,7 +173,7 @@ def draw_sheet1():
     # 5. Fuse block  y=5.4–6.55
     rbox(ax, LX, 5.4, LW, 1.15,
          "BLUE SEA 5026 FUSE BLOCK",
-         "12-circuit ST-blade  |  Positive + negative busbars  |  On the EP plywood panel",
+         "12-circuit ST-blade  |  Positive + negative busbars  |  In IP65 enclosure on the plywood",
          fc=C_WARN, ts=10.0, ss=8.0)
     varrow(ax, CX, 6.66, 6.55, col=C_OUT)
     wlabel(ax, CX + 0.18, 6.605, "2/0 AWG", size=6.8)
@@ -905,7 +905,7 @@ def draw_sheet2():
 
     key_rows = [
         ("EP",    C_ELEC,    "ELECTRICAL PANEL (EP)",
-         f"EP plywood panel  |  MPPT + fuse block  |  Pinhole wall face, X={EP_X}mm"),
+         f"EP panel  |  MPPT + fuse block  |  Pinhole wall face, X={EP_X}mm"),
         ("BAT",   C_BATT,    "BATTERY BANK (BAT)",
          f"2×100Ah LiFePO4 12V  |  2,400Wh  |  Pinhole wall face, X={BA_X}mm"),
         ("A",     C_ALUM,    "EXHAUST FAN — Cct A",
@@ -1506,7 +1506,7 @@ def draw_sheet4():
 def draw_sheet5():
     """SHEET 5 — Main Panel Layout + Fuse Schedule.
 
-    TRUE-SCALE front elevation (mm, equal aspect) of the EP plywood panel —
+    TRUE-SCALE front elevation (mm, equal aspect) of the EP panel (plywood backboard; DC terminals in an IP65 enclosure) —
     mirrors the 3D model's `power_core` arrangement (MPPT, the A-G blade-fuse stack,
     +/- busbars, rotary main disconnect, Circuit-C master pump switch) — with the
     internal feed one-line and a fuse schedule. BOTH axes are real mm: panel-relative X (0 = panel left = EP_X),
@@ -1534,7 +1534,7 @@ def draw_sheet5():
     # ── Panel outline — real 300 × 600 mm, dimensioned ──
     ax.add_patch(FancyBboxPatch((0, eh0), EP_W, eh1 - eh0, boxstyle="round,pad=2",
                                 fc="#F4F6F8", ec=C_OUT, lw=1.8, zorder=2))
-    ax.text(EP_W / 2, eh1 + 80, "EP PLYWOOD PANEL — FRONT ELEVATION\n(true scale)",
+    ax.text(EP_W / 2, eh1 + 80, "EP PANEL — FRONT ELEVATION\n(plywood backboard · DC terminals in IP65 box)",
             ha="center", va="bottom", fontsize=8.5, fontweight="bold", color=TITLE_COL)
     draw_dim_v(ax, EP_W + 48, eh0, eh1, f"{eh1 - eh0}mm")
     draw_dim_h(ax, 0, EP_W, eh0 - 25, f"{EP_W}mm", above=False)

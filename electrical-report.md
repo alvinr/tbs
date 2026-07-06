@@ -214,8 +214,8 @@ The switches are positioned near the electrical panel, accessible from the near 
 
 ## 7. Wiring Specification
 
-### 7.1 Main Panel (Plywood Backboard)
-An **18mm plywood backing panel** (~700 × 2000mm) on the interior pinhole-wall face — every component surface-mounts on it as an open, fully-visible backboard (no sealed box). The container interior is dry, so no weatherproof enclosure is used; keep the panel clear of any splash from the water system. It carries:
+### 7.1 Main Panel (Plywood Backboard + IP65 Enclosure)
+An **18mm plywood backing panel** (~700 × 2000mm) on the interior pinhole-wall face is the mounting surface every component fixes to. The DC-distribution terminals (fuse block + busbars + charge-line fuse) sit in a small **IP65 weatherproof enclosure** bolted to the plywood (its back panel is the plywood), sealing them against splash/dust from the water system; the MPPT, main disconnect, battery bank and inverter mount on the plywood outside it. It carries:
 
 - Victron MPPT controller — on its own forward sub-panel, clear of the fuse-stack risers
 - **PV array disconnect** — DC load-break isolator in the PV path (array → MPPT), wired in-line on the panel (NEC 690.13)
@@ -405,6 +405,7 @@ All US/SoCal sources. Prices approximate as of 2026.
 | Cable trunking | 40 × 25mm PVC, 5m lengths × 4 | Lowe's / McMaster-Carr | ~$40 |
 | Corrugated conduit | Gray, 10mm ID, 10m | McMaster-Carr 7828K48 | ~$30 |
 | EP plywood backing panel | 18mm, ~700×2000mm | Home Depot / Lumber yard | ~$60 |
+| IP65 enclosure | ~200×220×140mm (fuse block + busbars) | Polycase / Amazon | ~$60 |
 | Brady label kit | M210 with wire label cartridge | McMaster-Carr / Amazon | ~$80 |
 | NEMA 5-15R inlet | Weatherproof outlet box | Leviton / Amazon | ~$25 |
 | Cooler inverter | Victron Phoenix 12/375, **GFCI version** (12V→120V pure-sine, Circuit E) | [Victron](https://www.victronenergy.com/inverters/phoenix-inverter-vedirect-250va-800va) / Amazon | ~$210 |
@@ -420,10 +421,10 @@ All US/SoCal sources. Prices approximate as of 2026.
 | Ventilation fans × 2 | 150×150×50mm 12V DC axial panel fan, ~150–200 CFM (dimension-audit correction; not the AC Infinity S6 inline) | Amazon | ~$50 |
 | 12V LED flat panel, 300×600mm, 4000K | 20W, neutral white, ceiling-mount | Amazon / superbrightleds.com | ~$75 (×3) |
 | Pull-cord ceiling switch, 12V 6A SPST | Inline switch for lighting circuits D & G | Amazon / Lowe's | ~$16 (×2) |
-| **Electrical system total** | | | **~<!-- BEGIN costing:elec-system-total -->$2,324<!-- END costing:elec-system-total -->** |
+| **Electrical system total** | | | **~<!-- BEGIN costing:elec-system-total -->$2,384<!-- END costing:elec-system-total -->** |
 | **Shade canopy total** | | | **~<!-- BEGIN costing:elec-canopy-total -->$200<!-- END costing:elec-canopy-total -->** |
 | **Cooling (cooler + inverter + DC protection + AC outlet + cord)** | | | **~<!-- BEGIN costing:elec-cooling-total -->$425<!-- END costing:elec-cooling-total -->** |
-| **Systems grand total** | | | **~<!-- BEGIN costing:elec-grand-total -->$2,949<!-- END costing:elec-grand-total -->** |
+| **Systems grand total** | | | **~<!-- BEGIN costing:elec-grand-total -->$3,009<!-- END costing:elec-grand-total -->** |
 
 *Electrical system total is the **standard 1-pack build** and matches the consolidated [Master Shopping List §6](master-shopping-list.md) (Solar & battery $1,335 + Distribution & wiring $989 = $2,324, the authoritative electrical BOM). The optional 2nd battery pack adds +$375 (its own MRBF fuse). It includes ~$410 of circuit-protection / wet-zone-sealing hardware added per the [Electrical Safety Report](electrical-safety-report.md) §5 (interior **+** exterior emergency cut-offs + battery contactor, disconnect switch, terminal-mount fuse, **PV array disconnect, MPPT charge-line + shore-charger fuses**, sealed connectors, bonding, grommets), plus ~$25 of Circuit-C pump-control hardware (1 master pump switch + distribution block).*
 

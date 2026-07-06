@@ -6350,7 +6350,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "E-stop trip line (contactor coil -> interior E-stop)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -28.054054863004325.mm, 16.030888493145312.mm)
+  vec = Geom::Vector3d.new(0.mm, -30.96911150685467.mm, 17.6966351467741.mm)
   circle = ge.add_circle([1620.mm,45.mm,464.mm], vec, 4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -6364,8 +6364,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "E-stop trip line (contactor coil -> interior E-stop) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1628.mm,16.945945136995675.mm,480.0308884931453.mm], [-1.000000,0.000000,0.000000], [-0.000000,0.496139,0.868243], 8.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1620.mm,16.945945136995675.mm,480.0308884931453.mm], [0.000000,-0.868243,0.496139], 4.mm, 16)
+  arc = ge.add_arc([1620.mm,18.mm,488.64258028376975.mm], [0.000000,-0.496139,-0.868243], [-1.000000,0.000000,0.000000], 8.mm, 0.0, 1.051650, 8)
+  circle = ge.add_circle([1620.mm,14.03088849314533.mm,481.6966351467741.mm], [0.000000,-0.868243,0.496139], 4.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
@@ -6377,8 +6377,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "E-stop trip line (contactor coil -> interior E-stop)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(424.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1628.mm,10.mm,484.mm], vec, 4.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 153.35741971623025.mm)
+  circle = ge.add_circle([1620.mm,10.mm,488.64258028376975.mm], vec, 4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6391,8 +6391,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "E-stop trip line (contactor coil -> interior E-stop) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2052.mm,10.mm,492.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 8.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2052.mm,10.mm,484.mm], [1.000000,0.000000,0.000000], 4.mm, 16)
+  arc = ge.add_arc([1628.mm,10.mm,642.mm], [-1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 8.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1620.mm,10.mm,642.mm], [0.000000,0.000000,1.000000], 4.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
@@ -6404,8 +6404,35 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "E-stop trip line (contactor coil -> interior E-stop)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 1080.mm)
-  circle = ge.add_circle([2060.mm,10.mm,492.mm], vec, 4.mm, 16)
+  vec = Geom::Vector3d.new(424.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1628.mm,10.mm,650.mm], vec, 4.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
+  mat.color = Sketchup::Color.new(88, 96, 112)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # E-stop trip line (contactor coil -> interior E-stop) elbow
+  grp = ents.add_group
+  grp.name = "E-stop trip line (contactor coil -> interior E-stop) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([2052.mm,10.mm,658.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 8.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2052.mm,10.mm,650.mm], [1.000000,0.000000,0.000000], 4.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
+  mat.color = Sketchup::Color.new(88, 96, 112)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # E-stop trip line (contactor coil -> interior E-stop)
+  grp = ents.add_group
+  grp.name = "E-stop trip line (contactor coil -> interior E-stop)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 914.mm)
+  circle = ge.add_circle([2060.mm,10.mm,658.mm], vec, 4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

@@ -320,11 +320,16 @@ def power_core():
     # E-stop trip wiring (D5): both E-stops sit in the battery-contactor coil loop. A control pair
     # runs from the contactor coil up to the interior E-stop; the two E-stops are then paralleled
     # (interior -> exterior via the external panel) so pressing EITHER drops the contactor.
+    # The riser goes up the contactor's LEFT (X1620, clear of the bottom transport-stay anchor at
+    # X1695-1895) and crosses ABOVE it (Z650 > the anchor's Z400-600) before dropping to the E-stop.
     _ctc_x, _ctc_z = BA_X + 20 + CONTACTOR_W / 2, BA_H_HI + CONTACTOR_H     # contactor coil top
     _ext_x, _ext_z = PWR_PANEL_X + PWR_PANEL_W / 2, PWR_PANEL_Z + PWR_PANEL_H / 2  # exterior E-stop
+    _anchor_clear_z = 650                          # clears the transport-stay anchor top (Z600) + margin
     p.append(ov.ruby_pipe_run("E-stop trip line (contactor coil -> interior E-stop)",
                               _dedup([(_ctc_x, 45, _ctc_z), (_ctc_x, 10, _ctc_z + 20),
-                                      (ies_cx, 10, _ctc_z + 20), (ies_cx, 10, ies_cz),
+                                      (_ctc_x, 10, _anchor_clear_z),        # rise up the contactor's left, clear of the anchor
+                                      (ies_cx, 10, _anchor_clear_z),        # cross ABOVE the transport-stay anchor
+                                      (ies_cx, 10, ies_cz),
                                       (ies_cx, ENCL_SHELL_D, ies_cz)]),
                               4, color="#586070"))
     p.append(ov.ruby_pipe_run("E-stop parallel link (interior -> exterior E-stop)",

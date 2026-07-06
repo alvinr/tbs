@@ -8781,20 +8781,20 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   # P-02 (Brown recycle - Pinhole-Wall filter pump)
   grp = ents.add_group
   grp.name = "P-02 (Brown recycle - Pinhole-Wall filter pump)"
-  face = grp.entities.add_face([4849.mm,1331.mm,1160.mm], [4899.mm,1331.mm,1160.mm], [4899.mm,1391.mm,1160.mm], [4849.mm,1391.mm,1160.mm])
+  face = grp.entities.add_face([3033.mm,70.mm,2139.mm], [3083.mm,70.mm,2139.mm], [3083.mm,130.mm,2139.mm], [3033.mm,130.mm,2139.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(80.mm)
+  face.pushpull(180.mm)
   mat = model.materials["P-02 (Brown recycle - Pinhole-Wall filter pump)"] || model.materials.add("P-02 (Brown recycle - Pinhole-Wall filter pump)")
   mat.color = Sketchup::Color.new(107, 68, 35)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cct C branch P-02 (taps switched feed - Pinhole-Wall panel)
+  # Cct C branch P-02 (taps ceiling feed - Pinhole-Wall panel)
   grp = ents.add_group
-  grp.name = "Cct C branch P-02 (taps switched feed - Pinhole-Wall panel)"
+  grp.name = "Cct C branch P-02 (taps ceiling feed - Pinhole-Wall panel)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 168.mm, 0.mm)
-  circle = ge.add_circle([4874.mm,1181.mm,2245.mm], vec, 6.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 68.mm, 0.mm)
+  circle = ge.add_circle([3058.mm,20.mm,2375.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -8803,12 +8803,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cct C branch P-02 (taps switched feed - Pinhole-Wall panel) elbow
+  # Cct C branch P-02 (taps ceiling feed - Pinhole-Wall panel) elbow
   grp = ents.add_group
-  grp.name = "Cct C branch P-02 (taps switched feed - Pinhole-Wall panel) elbow"
+  grp.name = "Cct C branch P-02 (taps ceiling feed - Pinhole-Wall panel) elbow"
   ge = grp.entities
-  arc = ge.add_arc([4874.mm,1349.mm,2233.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 12.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4874.mm,1349.mm,2245.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
+  arc = ge.add_arc([3058.mm,88.mm,2363.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 12.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([3058.mm,88.mm,2375.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
@@ -8816,12 +8816,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cct C branch P-02 (taps switched feed - Pinhole-Wall panel)
+  # Cct C branch P-02 (taps ceiling feed - Pinhole-Wall panel)
   grp = ents.add_group
-  grp.name = "Cct C branch P-02 (taps switched feed - Pinhole-Wall panel)"
+  grp.name = "Cct C branch P-02 (taps ceiling feed - Pinhole-Wall panel)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1033.mm)
-  circle = ge.add_circle([4874.mm,1361.mm,2233.mm], vec, 6.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -44.mm)
+  circle = ge.add_circle([3058.mm,100.mm,2363.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

@@ -29,8 +29,11 @@ file** — a release must not ship without a changelog entry:
   clear wall band between the pinhole, chem shelf, and transport-stay anchors; the layout is formalized
   into `tbs_constants`. The overview's EP now **delegates to the electrical model's builders**, eliminating
   the hand-maintained duplicate that kept drifting. Cascaded to the 2D (battery drawn as the stacked pair;
-  Sheet-5 panel layout redrawn as the full column) and the weight CG. As a side effect, the near-walkway
-  500mm **widened access band shifted +370mm** (X1155–2629 → X1525–2999) to stay in front of the relocated EP.
+  Sheet-5 panel layout redrawn as the full column) and the weight CG. The near-walkway 500mm **widened
+  access band** was then re-worked around the EP + chem shelf: it's now **cantilever-limited to X1055–2169**
+  (≤100mm grate overhang past the outer brackets, deflection TBD), the **EP column relocated left to X1829**
+  to fit inside it (right edge = the overhang limit; the transport-stay anchor follows), and the **chem-shelf
+  depth trimmed 300→225** for walk-around clearance (275mm past the shelf, 328mm behind the EP).
 - **Electrical panel (EP) rework** — reworked the EP across the electrical + overview 3D models, the 2D
   electrical diagrams, and the parts/cost/report: the IP65 enclosure box is replaced by an open **plywood
   backing panel** (every component surface-mounts on it — MPPT on a forward sub-panel, fuse block, busbars,

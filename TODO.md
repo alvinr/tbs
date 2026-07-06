@@ -38,6 +38,10 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
   re-proves. (Reminder block lives atop `parts.py`.)
 
 ## Design / 3D (deferred)
+- [ ] **Walkway widened-band 100mm grate overhang — deflection check.** The near widened band (X1055–2169)
+  cantilevers the grate ≤100mm past the outer widened brackets (ribs 1155/2069) at each end
+  (`WALKWAY_MAX_OVERHANG=100`). Verify grate deflection at that overhang for the walkway load (bar depth /
+  person edge-load); tighten the cap or add an end bracket if it fails.
 - [x] **Overview / assembly-overview / electrical-diagram corridor-filter staleness — DONE.**
   assembly-overview (relabel corridor zone → pumps+ACC, ADD pinhole-wall Filter panel zone, legend) and
   electrical-diagram (every "pumps+filters" → "water pumps"; P-01/03/04/05 corridor + P-02 wall) fixed.

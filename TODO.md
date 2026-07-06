@@ -43,8 +43,10 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
   electrical-diagram (every "pumps+filters" → "water pumps"; P-01/03/04/05 corridor + P-02 wall) fixed.
   **Overview needed no change** — its `F1_Z`/`F2_Z`/`F3_Z` usage is in the dead `equipment_panel`/
   `water_plumbing` functions (zero call sites; "safe to delete"), and the live overview already draws
-  the pinhole-wall design via `cp.*`/`pw.*`. *(Optional future cleanup: delete those dead functions,
-  which would also retire the legacy `FSKID_X`/`F1_Z`/`F2_Z`/`F3_Z` constants.)*
+  the pinhole-wall design via `cp.*`/`pw.*`. **Dead-code + constant retirement DONE 2026-07-05:** deleted
+  the 4 dead builders (347 lines) + the legacy `FSKID_X`/`FSKID_YD`/`FSKID_Z_LO`/`F1_Z`/`F2_Z`/`F3_Z`
+  constants; live FSKID_X consumers rewired to `EQPANEL_X - BB_OD` (PNGs pixel-identical, overview.rb
+  byte-identical).
 - [ ] **EP (Electrical Panel) interior needs a rework — 2D + 3D.** The IP65 enclosure internals —
   the A–G blade-fuse stack, the +/− busbars, and the wiring/circuit routing — have accreted to the
   point they're **not operator-usable**: fuses/terminals are cramped and hard to reach/trace for

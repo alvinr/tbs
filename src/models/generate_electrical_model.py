@@ -33,7 +33,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov   # helpers + conventions (Overview)
-from tbs_constants import EP_X, EP_W, EP_H_LO, EP_H_HI, EP_COL_W, BA_STACK_Z2, BA_STACK_TOP, EP_POST_Z, EP_RISE_X_P, EP_RISE_X_M, PV_DISC_X, PV_DISC_Z, BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H, EQPANEL_X, EQPANEL_YD, EQPANEL_YD_SPAN, PUMP_H_HI, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, FAN_BODY_D, DUCT_DEPTH, DUCT_HEIGHT, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, PWP_P02_X, PWP_P02_Z0, PWP_P02_H
+from tbs_constants import EP_X, EP_W, EP_H_LO, EP_H_HI, EP_COL_W, BA_STACK_Z2, BA_STACK_TOP, EP_POST_Z, EP_RISE_X_P, EP_RISE_X_M, PV_DISC_X, PV_DISC_Z, EP_DISC_Z, BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H, EQPANEL_X, EQPANEL_YD, EQPANEL_YD_SPAN, PUMP_H_HI, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, FAN_BODY_D, DUCT_DEPTH, DUCT_HEIGHT, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, PWP_P02_X, PWP_P02_Z0, PWP_P02_H
 
 TAGS = ["Context", "Solar Array", "Power Core", "Battery", "External Panel",
         "Inverter", "Circuit Runs", "Labels"]
@@ -94,7 +94,7 @@ FUSE_ORDER = ["A", "B", "C", "D", "E", "F", "G"]
 CCT_FUSE = {"A": "5A", "B": "5A", "C": "15A", "D": "5A", "E": "40A", "F": "20A", "G": "10A"}
 _FBLK_X0 = EP_X + 15                        # fuse-block left edge (X)
 _FBLK_YD = 25                              # block front Yd inside the enclosure
-_FBLK_Z0 = EP_H_LO + 270                   # block base bottom Z
+_FBLK_Z0 = EP_H_LO + 40                    # block base bottom Z — near the enclosure floor (reach re-lay)
 _FBASE_H = 28                              # block base height (Z)
 _FUSE_W, _FUSE_T, _FUSE_H = 13, 9, 42      # blade fuse: width(X), thickness(Yd), height(Z)
 _FUSE_PITCH = FUSEBLK_W / len(FUSE_ORDER)  # blade pitch along the block width
@@ -112,6 +112,7 @@ FUSE_POS = {c: (_fuse_cx(i), _FUSE_YD + _FUSE_T / 2, FUSE_TOP_Z)
             for i, c in enumerate(FUSE_ORDER)}
 TRUNK_YD = 20                  # conductors hug the pinhole-wall ceiling line
 TRUNK_Z = ov.C_HGT - 13
+MASTER_SW_POS = (EP_X + 130, 46, EP_DISC_Z + 84)   # master pump switch top terminal (in the disconnect cluster)
 
 
 # ── Labels (project rule: every .skp gets a Labeled scene) ───────────────────
@@ -120,8 +121,8 @@ ELEC_POINT_LABELS = [
      "SOLAR ARRAY\n3x 200W (30deg tilt)", -200, -700, 700),
     (EP_X + 90, 40, EP_H_HI - 60, "MPPT 100/50",                 -380, 700, 280),
     (EP_X + 90, 40, FUSE_TOP_Z, "FUSE STACK A-G\n5/5/15/5/40/20/10 A", 420, 700, 240),
-    (EP_X + 90, 40, EP_H_LO + 210, "+/- BUSBARS",                 420, 640, -120),
-    (EP_X + 240, 0, EP_H_LO + 120, "MAIN DISCONNECT", 360, 760, -260),
+    (EP_X + 90, 40, EP_H_LO + 160, "+/- BUSBARS",                 420, 640, -120),
+    (EP_X + 55, 0, EP_DISC_Z, "MAIN DISCONNECT", 360, 760, -260),
     (EP_X + 60, 40, EP_POST_Z + 60, "BATTERY CONTACTOR\n+ MRBF main fuse", -300, 760, 900),
     (EP_X + 150, 60, BA_H_LO + 100, "BATTERY 1x 100Ah\n(2nd pack ghosted)", -320, 640, 760),
     (INVERTER_X + INVERTER_W / 2, INVERTER_D / 2, INVERTER_Z + INVERTER_H,
@@ -134,8 +135,8 @@ ELEC_POINT_LABELS = [
      "CCT-C PUMP DISTRIBUTION\ndist block → pumps (master sw on EP)", -350, -700, 250),
     (PV_DISC_X + 35, 22, PV_DISC_Z + 35,
      "PV DISCONNECT\n(load-break, array->MPPT)", 300, 560, 320),
-    (EP_X + 40, 95, EP_H_LO + 215, "60A CHARGE FUSE\n(MPPT -> battery)", 440, 680, 160),
-    (EP_X + 50, 20, 1000,
+    (EP_X + 40, 95, EP_H_LO + 155, "60A CHARGE FUSE\n(MPPT -> battery)", 440, 680, 160),
+    (EP_X + 270, 20, EP_DISC_Z + 20,
      "INTERIOR E-STOP\n(parallel)", -340, 560, -160),
 ]
 
@@ -255,14 +256,14 @@ def power_core():
     # IP65 enclosure — ghosted weatherproof box over the fuse block + busbars + charge fuse (the DC
     # distribution terminals that need sealing), mounted ON the plywood (its back IS the plywood). The
     # MPPT, main disconnect, battery and inverter mount on the plywood outside it.
-    p.append(ov.ruby_box("IP65 enclosure (ghosted, fuse block + busbars)", EP_X + 5, 12, EP_H_LO + 155,
-                         185, 140, 210, color=ov.C_STEEL, alpha=0.12))
+    p.append(ov.ruby_box("IP65 enclosure (ghosted, fuse block + busbars)", EP_X + 5, 12, EP_H_LO,
+                         200, 140, 220, color=ov.C_STEEL, alpha=0.12))
     p.append(ov.ruby_box("MPPT Controller (100/50)", EP_X + 15, 120,
-                         EP_H_HI - MPPT_H - 30, MPPT_W, MPPT_D, MPPT_H, color="#3A5BA0"))
+                         EP_H_HI - MPPT_H, MPPT_W, MPPT_D, MPPT_H, color="#3A5BA0"))
     # Plywood backing panel — extends the EP mounting board FORWARD to the relocated MPPT plane so the
     # MPPT flush-mounts on ply; tall enough to also back the PV-feed riser (Z~1884->1970) so the cable
     # sits flush on the panel. Front face at Yd120 (the MPPT's back).
-    _sp_z0, _sp_h = EP_H_HI - MPPT_H - 132, MPPT_H + 132
+    _sp_z0, _sp_h = EP_H_HI - MPPT_H - 30, MPPT_H + 30
     p.append(ov.ruby_box("MPPT backing panel (18mm ply)", EP_X + 8, 102,
                          _sp_z0, MPPT_W + 20, 18, _sp_h, color=ov.C_PLY))
     # side gussets tying the MPPT sub-panel BACK to the main plywood (Yd0) so it isn't floating
@@ -289,9 +290,9 @@ def power_core():
     # clear of the inverter.
     p.append(ov.ruby_pipe_run("PV feed (array disconnect -> MPPT, top)",
                               _dedup([(_pvx - 20, 22, _dtop),                # out the disconnect TOP (load)
-                                      (_pvx - 20, 22, EP_H_HI - MPPT_H - 32),   # rise to the MPPT (RIGHT of the inverter)
-                                      (_pvx - 20, 120, EP_H_HI - MPPT_H - 32),  # forward to the MPPT plane
-                                      (_pvx - 20, 155, EP_H_HI - MPPT_H - 22)]),  # elbow into the MPPT PV input
+                                      (_pvx - 20, 22, EP_H_HI - MPPT_H + 30),   # rise to the MPPT (above the enclosure)
+                                      (_pvx - 20, 120, EP_H_HI - MPPT_H + 30),  # forward to the MPPT plane
+                                      (_pvx - 20, 155, EP_H_HI - MPPT_H + 40)]),  # elbow into the MPPT PV input
                               9, color="#2D7A2D"))
     # Blue Sea 5026: the block base + a standing row of 7 blade fuses (one per circuit A-G,
     # coloured to its circuit). Each blade's top is the cable origin for that circuit.
@@ -303,36 +304,36 @@ def power_core():
                              _FUSE_W, _FUSE_T, _FUSE_H, color=CCT[c][0]))
     # MASTER PUMP SWITCH — Cct-C single cutoff on the EP, at the Circuit-C fuse (red-lever disconnect,
     # mounted on the panel at Yd0). The switched Cct-C feed runs the ceiling trunk to the pump wireway.
-    _msx, _, _msz = FUSE_POS["C"]
-    p.append(ov.ruby_box("Master pump switch (Cct C, on EP)", _msx - 25, 0, _msz - 44,
+    _msx, _msz = EP_X + 130, EP_DISC_Z          # into the reachable disconnect cluster (grouped w/ main + PV)
+    p.append(ov.ruby_box("Master pump switch (Cct C, on EP)", _msx - 25, 0, _msz,
                          50, 46, 84, color="#202020"))
-    p.append(ov.ruby_box("Master switch lever (OFF cutoff)", _msx - 8, 46, _msz - 4,
+    p.append(ov.ruby_box("Master switch lever (OFF cutoff)", _msx - 8, 46, _msz + 40,
                          16, 34, 16, color="#C0202A"))
-    p.append(ov.ruby_box("Busbar (+)", EP_X + 15, 30, ez + 205,
+    p.append(ov.ruby_box("Busbar (+)", EP_X + 15, 30, ez + 170,
                          BUSBAR_L, BUSBAR_W, BUSBAR_H, color="#C0392B"))
-    p.append(ov.ruby_box("Busbar (-)", EP_X + 15, 30, ez + 175,
+    p.append(ov.ruby_box("Busbar (-)", EP_X + 15, 30, ez + 140,
                          BUSBAR_L, BUSBAR_W, BUSBAR_H, color="#2C2C2C"))
-    p.append(ov.ruby_cylinder("Main Disconnect (m-Series)", EP_X + 240, 0,
-                              ez + 120, DISCONNECT_D / 2, DISCONNECT_H,
+    p.append(ov.ruby_cylinder("Main Disconnect (m-Series)", EP_X + 55, 0,
+                              EP_DISC_Z, DISCONNECT_D / 2, DISCONNECT_H,
                               color="#D43A2F", axis="y"))
     # Main disconnect → busbar(+) load link: the battery + feed lands on the disconnect
     # LINE terminal (battery()); it exits the LOAD terminal here to the (+) busbar, so the
     # whole bank — and every circuit fed off it — is isolated when the knob is OFF.
-    disc_x = EP_X + 240
+    disc_x = EP_X + 55
     p.append(ov.ruby_pipe_run("Main feed (disconnect → busbar +)",
-                              _dedup([(disc_x, 30, ez + 120 + 35),     # lands ON the disconnect LOAD terminal (top)
-                                      (disc_x, 45, ez + 120 + 35),      # out toward the busbar plane
-                                      (disc_x, 45, ez + 205),           # rise to busbar(+) level
-                                      (EP_X + 15 + BUSBAR_L, 45, ez + 205)]),  # over to busbar(+) end
+                              _dedup([(disc_x, 30, EP_DISC_Z + DISCONNECT_D + 20),  # off the disconnect LOAD terminal
+                                      (disc_x, 45, EP_DISC_Z + DISCONNECT_D + 20),  # out to the busbar plane
+                                      (disc_x, 45, ez + 170),                        # rise up the panel to busbar(+) level
+                                      (EP_X + 15, 45, ez + 170)]),                   # over to the busbar(+) near end
                               11, color="#8B1A1A"))
     # MPPT charge-line fuse — 60A on the MPPT battery-output lead, in front of the busbars
     # (D2; protects the 6 AWG charge conductor the 200A main fuse is too large to cover).
     p.append(ov.ruby_box("Charge-line Fuse (60A, MPPT -> battery)",
-                         EP_X + 15, 95, ez + 195, 45, 30, 45, color="#222222"))
+                         EP_X + 15, 95, ez + 155, 45, 30, 45, color="#222222"))
     # Interior E-stop — red mushroom on the panel, paralleled with the exterior one (D5). Relocated to
     # a CLEAR spot (left-center, in the gap between the contactor top ~Z714 and the inverter ~Z1180,
     # left of the wiring risers) so it isn't buried under the cables.
-    ies_cx, ies_cz = EP_X + 50, 1000
+    ies_cx, ies_cz = EP_X + 270, EP_DISC_Z + 20
     p.append(ov.ruby_cylinder("Interior E-stop collar (safety yellow)",
                               ies_cx, 0, ies_cz, 30, 12, color="#F2C200", axis="y"))
     p.append(ov.ruby_cylinder("Interior E-stop button (red mushroom)",
@@ -486,7 +487,16 @@ def _pump_circuit():
                      50, 70, way_top - way_bot, color="#2B2B30")]
     # (The master pump switch itself is drawn in power_core() — it's on the EP; here we just run its
     # switched Cct-C feed to the pump wireway.)
-    p.append(_run("C", (EQPANEL_X, cy, way_top - 25)))   # switched feed → top of the wireway
+    # Cct-C switched feed: fuse C -> DOWN to the master switch (in the reach cluster) -> up the ceiling
+    # trunk -> across to the pump wireway. The master switch is the manual cutoff in this feed.
+    _fcx, _fcy, _fcz = FUSE_POS["C"]; _msx2, _msy2, _mst = MASTER_SW_POS
+    p.append(ov.ruby_pipe_run("Cct C feed (fuse C -> master switch)",
+                              _dedup([(_fcx, _fcy, _fcz), (_fcx, _fcy, _mst),
+                                      (_msx2, _fcy, _mst), (_msx2, _msy2, _mst)]), 6, color=col))
+    p.append(ov.ruby_pipe_run("Cct C switched feed (master switch -> pump wireway)",
+                              _dedup([(_msx2, _msy2, _mst), (_msx2, _msy2, TRUNK_Z),
+                                      (_msx2, TRUNK_YD, TRUNK_Z), (EQPANEL_X, TRUNK_YD, TRUNK_Z),
+                                      (EQPANEL_X, cy, TRUNK_Z), (EQPANEL_X, cy, way_top - 25)]), 6, color=col))
     for nm, yd, z in pumps:
         # branch taps the wireway at THIS pump's level → straight to the pump (no per-pump switch)
         br = _dedup([(EQPANEL_X, cy, z + 60), (EQPANEL_X, yd, z + 60)])

@@ -24,6 +24,14 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **EP reach re-lay (serviceability)** — the electrical panel's DC gear was dropped into the operator's
+  **no-stool reach zone** (every maintenance item now Z1010–1560, was up to 2100): the MPPT display moved
+  from ~1970 to ~1460, the Blue Sea 5026 fuse block + busbars to chest height (~1150–1370), and the three
+  disconnects + interior E-stop regrouped into one reachable **cluster** at ~Z1045. The 5026 fuse block is
+  corrected to its real datasheet footprint (164×39×84, 12-circuit) and the IP65 enclosure reconciled to
+  ~200×220×140. Cascaded: electrical + overview 3D (`EP_H_LO` 1500→1150, `EP_H_HI` 2100→1560, `INVERTER_Z`
+  1180→760, new `EP_DISC_Z`), Sheet 5 (full redraw), pinhole-wall / assembly / line-of-sight diagrams, the
+  weight CG (EP dropped ~450mm → lower, more stable), and the report captions.
 - **Walkway grating corrected 15mm → 25mm** — the 15mm molded-FRP grate was a **bogus spec**: the thinnest
   molded FRP made is 1"/25mm (McNichols **MS-S-100**, 1½" square mesh, vinyl-ester, 2.60 lb/sf — validated
   against the datasheet load table; a 100kg operator deflects ~2.5mm at the 457mm span, within the ¼"

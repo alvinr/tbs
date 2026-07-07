@@ -227,7 +227,7 @@ An **18mm plywood backing panel** (~700 × 2000mm) on the interior pinhole-wall 
 - **Circuit E inverter** — Victron Phoenix 12/375 (GFCI version) mounted on the EP plywood panel (below the fuse gear, above the battery), with a short fused DC feed and its own DC disconnect (§7.6). Converts 12V DC → 120V AC for the evaporative cooler only.
 
 **Sheet 5 — Main Panel Layout**
-Front elevation of the EP plywood panel (mirrors the 3D model): MPPT, the color-coded **A–G blade-fuse stack** (Blue Sea 5026), the +/− busbars and the rotary main disconnect, with the internal feed one-line **Battery(+) → 200A MRBF → main disconnect → (+) busbar → fuse stack → circuits** (and the PV-charge path through the MPPT). A fuse schedule lists each position's circuit, rating, wire gauge and load.
+Front elevation of the EP plywood panel (mirrors the 3D model), **reach-optimized so every service item is reachable without a stool**: bottom-to-top the battery pair (low, set-and-forget), the inverter, a grouped **disconnect cluster** at chest height (main disconnect · Circuit-C master pump switch · PV disconnect · interior E-stop), the Blue Sea 5026 fuse block + +/− busbars in the IP65 enclosure (also chest height), and the MPPT display at the top of the reachable stack. The internal feed one-line is **Battery(+) → 200A MRBF → main disconnect → (+) busbar → fuse stack → circuits** (and the PV-charge path through the MPPT). A fuse schedule lists each position's circuit, rating, wire gauge and load.
 
 ![TBS-ELEC Sheet 5 — Main Panel Layout + Fuse Schedule](assets/electrical-sheet5.png)
 
@@ -284,7 +284,7 @@ Scale engineering elevation of the Circuit-C pump distribution on the corridor p
 ![TBS-ELEC Sheet 4 — Plumbing-Panel Pump Power (Circuit C)](assets/electrical-sheet4.png)
 
 **Sheet 5 — Main Panel Layout**
-Front elevation of the EP plywood panel (the 2D companion to the electrical 3D model's `power_core`): MPPT on top, the color-coded A–G blade-fuse stack on the Blue Sea 5026, the +/− busbars, the rotary main disconnect, and the **Circuit-C master pump switch** (the single pump cutoff — red-lever IP disconnect), with the internal feed one-line (Battery(+) → 200A MRBF → main disconnect → (+) busbar → fuse stack → circuits) and the PV-charge path. Includes a fuse schedule (position / circuit / rating / wire / load). See §7.1 and §7.3.
+Front elevation of the EP plywood panel (the 2D companion to the electrical 3D model's `power_core`), **reach-optimized so every maintenance item clears no-stool reach (≤1.75 m)**: bottom-to-top the battery pair, the inverter, a grouped **disconnect cluster** at ~chest height (main disconnect · Circuit-C master pump switch · PV disconnect · interior E-stop), the color-coded A–G blade-fuse stack on the Blue Sea 5026 with the +/− busbars in the IP65 enclosure at chest height, and the MPPT display at the top of the reachable stack, with the internal feed one-line (Battery(+) → 200A MRBF → main disconnect → (+) busbar → fuse stack → circuits) and the PV-charge path. Includes a fuse schedule (position / circuit / rating / wire / load). See §7.1 and §7.3.
 
 ![TBS-ELEC Sheet 5 — Main Panel Layout + Fuse Schedule](assets/electrical-sheet5.png)
 

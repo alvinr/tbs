@@ -65,7 +65,13 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
   the 4 dead builders (347 lines) + the legacy `FSKID_X`/`FSKID_YD`/`FSKID_Z_LO`/`F1_Z`/`F2_Z`/`F3_Z`
   constants; live FSKID_X consumers rewired to `EQPANEL_X - BB_OD` (PNGs pixel-identical, overview.rb
   byte-identical).
-- [ ] **EP (Electrical Panel) interior needs a rework — 2D + 3D.** The IP65 enclosure internals —
+- [ ] **EP interior rework — REACH RE-LAY DONE in code + electrical 3D verified; overview re-send + Sketchfab pending.**
+  _2026-07-06: gear dropped into the no-stool reach zone (all maintenance items Z1010–1560, was to 2100) —
+  disconnect cluster (main·master·PV·E-stop) grouped at ~Z1045, Blue Sea 5026 fuse block + busbars at chest
+  height, MPPT display dropped from ~1970 to ~1460; 5026 corrected to real 164×39×84; Sheet 5 fully redrawn;
+  pinhole-wall/assembly/line-of-sight + weight CG + report captions cascaded; all gates green;
+  electrical.skp sent + verified in the live model. **Remaining: Alvin save+upload electrical, open+re-send
+  overview + upload, then commit.**_ — Original scope: the IP65 enclosure internals —
   the A–G blade-fuse stack, the +/− busbars, and the wiring/circuit routing — have accreted to the
   point they're **not operator-usable**: fuses/terminals are cramped and hard to reach/trace for
   service and reset. Re-lay the internal layout for real serviceability (fuse access, labeled

@@ -23,7 +23,11 @@ file** — a release must not ship without a changelog entry:
 ---
 
 ## [Unreleased]
-- **Eletrical Panel Redesign** — the EP was reorganized into a tall narrow **vertical column** (battery
+
+_Nothing yet — add a bullet per notable change here as work lands._
+
+## [0.2] — 2026-07-07
+- **Electrical Panel Redesign** — the EP was reorganized into a tall narrow **vertical column** (battery
   packs re-stacked vertically, gear above, PV array disconnect dropped to operator reach) to fit the one
   clear wall band between the pinhole, chem shelf, and transport-stay anchors; the layout is formalized
   into `tbs_constants`. The 5026 fuse block and the IP65
@@ -34,7 +38,7 @@ file** — a release must not ship without a changelog entry:
   to fit inside it, and the **chem-shelf
   depth trimmed 300→225** for walk-around clearance (275mm past the shelf, 328mm behind the EP).
 - **Reconcile part dimensions** - resolved a number of drifts from the actual part dimensions vs. what had been
-  codifed and drawn in 2d and 3d models. Some parts rectified were evap cooler, skate wheels, film plane pivot, saddle straps etc.
+  codified and drawn in 2d and 3d models. Some parts rectified were evap cooler, skate wheels, film plane pivot, saddle straps etc.
 - **Drift-tooling hardening** — added `lint.py --verify-all`, a staging-independent full sweep that
   regenerates every model `.rb` and byte-compares it against the working tree, catching **committed-stale**
   outputs that the staged-diff missing-cascade check can miss; wired it into the `publish.sh` deploy gate.

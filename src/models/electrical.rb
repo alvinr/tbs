@@ -6935,7 +6935,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Battery + cable (2/0 AWG, MRBF → main disconnect)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(68.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 326.mm)
   circle = ge.add_circle([1999.mm,45.mm,662.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -6949,8 +6949,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Battery + cable (2/0 AWG, MRBF → main disconnect) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2067.mm,45.mm,684.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2067.mm,45.mm,662.mm], [1.000000,0.000000,0.000000], 11.mm, 16)
+  arc = ge.add_arc([1977.mm,45.mm,988.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1999.mm,45.mm,988.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
@@ -6962,8 +6962,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Battery + cable (2/0 AWG, MRBF → main disconnect)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 541.2.mm)
-  circle = ge.add_circle([2089.mm,45.mm,684.mm], vec, 11.mm, 16)
+  vec = Geom::Vector3d.new(-85.65000000000009.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1977.mm,45.mm,1010.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -6976,8 +6976,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Battery + cable (2/0 AWG, MRBF → main disconnect) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2079.2.mm,45.mm,1225.2.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 9.800000000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2089.mm,45.mm,1225.2.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
+  arc = ge.add_arc([1891.35.mm,37.65.mm,1010.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 7.3500000000000005.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1891.35.mm,45.mm,1010.mm], [-1.000000,0.000000,0.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
@@ -6989,35 +6989,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Battery + cable (2/0 AWG, MRBF → main disconnect)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-5.201999999999771.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2079.2.mm,45.mm,1235.mm], vec, 11.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
-  mat.color = Sketchup::Color.new(139, 26, 26)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Battery + cable (2/0 AWG, MRBF → main disconnect) elbow
-  grp = ents.add_group
-  grp.name = "Battery + cable (2/0 AWG, MRBF → main disconnect) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([2073.998.mm,40.00200000000009.mm,1235.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 4.997999999999911.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2073.998.mm,45.mm,1235.mm], [-1.000000,0.000000,0.000000], 11.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
-  mat.color = Sketchup::Color.new(139, 26, 26)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Battery + cable (2/0 AWG, MRBF → main disconnect)
-  grp = ents.add_group
-  grp.name = "Battery + cable (2/0 AWG, MRBF → main disconnect)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -10.002000000000088.mm, 0.mm)
-  circle = ge.add_circle([2069.mm,40.00200000000009.mm,1235.mm], vec, 11.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -7.649999999999999.mm, 0.mm)
+  circle = ge.add_circle([1884.mm,37.65.mm,1010.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -7057,7 +7030,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Battery − cable (2/0 AWG)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 688.mm)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 652.mm)
   circle = ge.add_circle([1969.mm,60.mm,626.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -7071,8 +7044,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Battery − cable (2/0 AWG) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1947.mm,60.mm,1314.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1969.mm,60.mm,1314.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
+  arc = ge.add_arc([1947.mm,60.mm,1278.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1969.mm,60.mm,1278.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
@@ -7085,7 +7058,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "Battery − cable (2/0 AWG)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-78.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1947.mm,60.mm,1336.mm], vec, 11.mm, 16)
+  circle = ge.add_circle([1947.mm,60.mm,1300.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

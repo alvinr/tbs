@@ -33,7 +33,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov   # helpers + conventions (Overview)
-from tbs_constants import EP_X, EP_W, EP_H_LO, EP_H_HI, EP_COL_W, BA_STACK_Z2, BA_STACK_TOP, EP_POST_Z, EP_RISE_X_P, EP_RISE_X_M, PV_DISC_X, PV_DISC_Z, EP_DISC_Z, BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H, EQPANEL_X, EQPANEL_YD, EQPANEL_YD_SPAN, PUMP_H_HI, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, FAN_BODY_D, DUCT_DEPTH, DUCT_HEIGHT, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, PWP_P02_X, PWP_P02_Z0, PWP_P02_H
+from tbs_constants import EP_X, EP_W, EP_H_LO, EP_H_HI, EP_COL_W, BA_STACK_Z2, BA_STACK_TOP, EP_POST_Z, EP_RISE_X_M, PV_DISC_X, PV_DISC_Z, EP_DISC_Z, BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H, EQPANEL_X, EQPANEL_YD, EQPANEL_YD_SPAN, PUMP_H_HI, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, FAN_BODY_D, DUCT_DEPTH, DUCT_HEIGHT, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, PWP_P02_X, PWP_P02_Z0, PWP_P02_H
 
 TAGS = ["Context", "Solar Array", "Power Core", "Battery", "External Panel",
         "Inverter", "Circuit Runs", "Labels"]
@@ -360,8 +360,9 @@ def power_core():
 
 def battery():
     """2x 100Ah packs RE-STACKED vertically in the skinny column (2nd ghosted) + contactor + MRBF
-    above the stack. Both 2/0 cables run up the RIGHT of the column (EP_RISE_X_P) — clear of the chem
-    shelf, transport-stay anchor and pinhole. Skinny-panel prototype — see SK_* above."""
+    above the stack. The + 2/0 cable rises left-of-centre to the main disconnect in the reach cluster
+    (clear of the interior E-stop at the cluster's right end); the − cable runs up EP_RISE_X_M to the
+    (−) busbar. Skinny-panel prototype — see SK_* above."""
     p = []
     for bz, nm, al in [(BA_H_LO, "Battery 1 (12V 100Ah LiFePO4)", 1.0),
                        (BA_STACK_Z2, "Battery 2 (optional 2nd pack, ghosted)", 0.28)]:
@@ -371,22 +372,22 @@ def battery():
     _mrbf_x = EP_X + CONTACTOR_W + 30
     p.append(ov.ruby_box("MRBF Main Fuse (on + post)", _mrbf_x, 20, EP_POST_Z,
                          MRBF_D, MRBF_D, MRBF_H, color="#222222"))
-    disc_x, disc_z = EP_X + 240, EP_H_LO + 120          # main disconnect centre (matches power_core)
+    disc_x, disc_z = EP_X + 55, EP_DISC_Z               # main disconnect centre (matches power_core cluster)
     bus_x = EP_X + 20
-    # + leaves the MRBF and runs UP the right lane (EP_RISE_X_P, clear of the inverter X1910-2030 and the
-    # transport anchor) to the disconnect LINE terminal; − runs up the same lane to the (−) busbar.
+    # + leaves the MRBF, rises just BELOW the cluster row, then runs LEFT to the disconnect LINE terminal.
+    # The disc moved to the cluster's LEFT end, so the riser stays left-of-centre — clear of the interior
+    # E-stop at the cluster's RIGHT end (X+270) that the old right-lane route used to cover.
     p.append(ov.ruby_pipe_run("Battery + cable (2/0 AWG, MRBF → main disconnect)",
                               _dedup([(_mrbf_x + MRBF_D / 2, 45, EP_POST_Z + MRBF_H),
-                                      (EP_RISE_X_P, 45, EP_POST_Z + MRBF_H),
-                                      (EP_RISE_X_P, 45, disc_z - 35),
+                                      (_mrbf_x + MRBF_D / 2, 45, disc_z - 35),
                                       (disc_x, 45, disc_z - 35),
                                       (disc_x, 30, disc_z - 35)]),   # lands ON the disconnect LINE terminal
                               11, color="#8B1A1A"))
     p.append(ov.ruby_pipe_run("Battery − cable (2/0 AWG)",
                               _dedup([(EP_X + 40, 60, BA_STACK_TOP),
                                       (EP_RISE_X_M, 60, BA_STACK_TOP),
-                                      (EP_RISE_X_M, 60, EP_H_LO + 186),
-                                      (bus_x + 20, 60, EP_H_LO + 186)]),
+                                      (EP_RISE_X_M, 60, EP_H_LO + 150),
+                                      (bus_x + 20, 60, EP_H_LO + 150)]),
                               11, color="#202020"))
     return '\n'.join(p)
 

@@ -636,6 +636,35 @@ def warn_duplication() -> tuple[bool, list[str]]:
     return (not issues), (issues or ["staged duplicated emitters agree"])
 
 
+def warn_unused_imports() -> tuple[bool, list[str]]:
+    """A generator/model that imports a name it no longer uses — code cruft that
+    check_unused_imports.py (a release gate) strips with --fix. Surfaced here as a per-commit
+    advisory so it's caught at commit time, not only at release (the EP re-lay orphaned 14 that
+    slipped through). Re-export-aware: a name reached via `ov.NAME` counts as used, so hub
+    re-exports aren't false-flagged."""
+    sys.path.insert(0, HERE)
+    import check_unused_imports as cui  # noqa: E402
+    cwd = os.getcwd()
+    os.chdir(ROOT)
+    try:
+        files = cui._files()
+        reexports = cui.scan_reexports(files)
+        issues = []
+        for path in files:
+            modname = os.path.basename(path)[:-3]
+            _src, unused, err = cui.analyze(path, reexports.get(modname, set()))
+            if err:
+                issues.append(f"{path}: {err}")
+                continue
+            for node, dead in unused:
+                for a in dead:
+                    issues.append(f"{path}:{node.lineno} '{a.asname or a.name}' imported but unused "
+                                  f"— run: python3 src/generators/check_unused_imports.py --fix")
+    finally:
+        os.chdir(cwd)
+    return (not issues), (issues or ["no unused imports in generators/models"])
+
+
 GATES = [
     ("costing reconciliation", gate_costing),
     ("costing doc-blocks (generated == doc)", gate_blocks),
@@ -656,6 +685,7 @@ WARNINGS = [
     ("missing cascade (constant changed, outputs not regenerated)", warn_missing_cascade),
     ("hardwired literal in staged file (should reference a constant)", warn_hardwired_literals),
     ("duplicated geometry in sync (staged emitters)", warn_duplication),
+    ("unused imports in generators/models (check_unused_imports --fix)", warn_unused_imports),
 ]
 
 

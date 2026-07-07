@@ -12,7 +12,8 @@ to check, `--fix` to clean. *(Original note below, for history.)*
 `BA_X` in the electrical model, and 13 EP constants (`MPPT_*`, `FUSEBLK_W/D`, `BUSBAR_*`, `DISCONNECT_*`,
 `CONTACTOR_W`, `MRBF_D/H`) in the overview hub (no longer used there since electrical's `power_core` owns
 the EP internals). `--fix` removed them; all 7 models regenerate **byte-identical** (no re-send). Since the
-check is only a *release* gate, these slipped past the per-commit lint — consider adding it to `lint.py`.
+check was only a *release* gate, these slipped past the per-commit lint — so it's now **also a `lint.py`
+advisory warning** (`warn_unused_imports`, re-export-aware) that fires at commit time with the file:line + `--fix` hint.
 
 ---
 

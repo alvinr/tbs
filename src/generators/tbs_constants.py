@@ -333,7 +333,7 @@ EVAP_STOW_Z    = 160     # sits on raised grating surface (WALKWAY_H 140 + 20mm 
 # above the battery bank — short DC run to the battery, GFCI AC out to the
 # external power panel.  See electrical-report.md §AC isolation & safety.
 INVERTER_X   = 1829    # left edge X (mm) — at the EP column left; keep synced with EP_X (defined below, so can't reference it here)
-INVERTER_Z   = 1180    # bottom Z (mm) — above battery top (364), below EP bottom (1500); 235 tall → top 1415
+INVERTER_Z   = 760     # bottom Z (mm) — reach re-lay: dropped into the reach zone just above the contactor (724); 235 tall → top 995
 INVERTER_W   = 120     # width along X (mm)
 INVERTER_H   = 235     # height (mm)
 INVERTER_D   = 72      # protrusion from pinhole wall (Yd, mm)
@@ -362,10 +362,10 @@ EP_X       = 1829    # electrical panel/column left edge X (mm) — set so the c
                      # The transport-stay anchor follows: `wall_anchors()` clamps its right edge
                      # to ≤ EP_X−15 (X≤1814) so it stays clear of the column. [walkway-punchout fit]
 EP_W       = 300     # electrical panel width (mm)
-EP_H_LO    = 1500    # electrical panel bottom Z (mm) [rev11: DROPPED 150 (1650→1500); originally to
-                     # clear the film-plane brace top beam — that brace cage has since been retired
-                     # for wall-seat saddles, but the EP is KEPT at this height. was 1650/1600/900]
-EP_H_HI    = 2100    # electrical panel top Z (mm)   [rev11: 2250→2100]
+EP_H_LO    = 1150    # IP65 enclosure / fuse-busbar zone bottom Z (mm) — REACH RE-LAY: dropped from 1500
+                     # so the Blue Sea 5026 fuse block sits at chest height (serviceable, no stool). The
+                     # disconnect cluster is below (EP_DISC_Z), the MPPT above (to EP_H_HI). [was 1500/1650/900]
+EP_H_HI    = 1560    # electrical panel top Z (mm) — REACH RE-LAY: MPPT top now no-stool reachable (was 2100)
 
 BA_X       = EP_X    # battery bank left edge X (mm) — in the EP skinny column (= EP_X); the 2 packs STACK vertically (was 1540, 680-wide side-by-side, before the skinny-column reorg)
 BA_W       = 330     # battery bank width (mm) — 1× Renogy 100Ah (330 long); the 2 packs now STACK vertically (BA_STACK_Z2), not side-by-side
@@ -383,7 +383,8 @@ EP_POST_Z    = BA_STACK_TOP + 20           # 614 — contactor / MRBF sit above 
 EP_RISE_X_P  = EP_X + 260                  # 2170 — (+) 2/0 cable riser lane (right of the PV disconnect)
 EP_RISE_X_M  = EP_X + 140                  # 2050 — (−) 2/0 cable riser lane (inverter ↔ PV disconnect gap)
 PV_DISC_X    = EP_X + 165                  # 2075 — PV array-disconnect X (operator-reach switch)
-PV_DISC_Z    = 1080                        # PV array-disconnect bottom Z — operator reach
+EP_DISC_Z    = 1045                        # disconnect cluster row Z — main + master + PV disconnects grouped, reachable (~chest)
+PV_DISC_Z    = EP_DISC_Z                    # PV array-disconnect — in the disconnect cluster row
 
 # ── Solar array — 3× 200W mono on a 30° ground tilt frame (electrical 3D model) ──
 # Ground-placed on the pinhole-wall exterior side (Yd<0), toward the door end so the
@@ -404,7 +405,7 @@ SOLAR_ARRAY_Z  = 0       # array base on the ground
 # Sizes only; positions computed in the builder. Consumed by generate_electrical_model.py.
 ENCL_SHELL_D   = 165     # ghosted IP65 enclosure depth into the container (Yd, mm)
 MPPT_W, MPPT_D, MPPT_H          = 185, 70, 100   # Victron SmartSolar 100/50 MPPT
-FUSEBLK_W, FUSEBLK_D, FUSEBLK_H = 150, 45, 75    # Blue Sea 5026 12-circuit fuse block
+FUSEBLK_W, FUSEBLK_D, FUSEBLK_H = 164, 39, 84    # Blue Sea 5026: 6.472×1.518×3.315" = 164(X)×39(Yd,proud)×84(Z), 12-circuit, flip cover + neg bus [datasheet]
 BUSBAR_L, BUSBAR_W, BUSBAR_H    = 120, 20, 22    # + / − distribution busbars
 DISCONNECT_D, DISCONNECT_H      = 70, 60         # Blue Sea m-Series rotary disconnect (knob)
 CONTACTOR_W, CONTACTOR_D, CONTACTOR_H = 120, 90, 100  # Blue Sea ML-RBS contactor

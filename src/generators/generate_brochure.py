@@ -318,6 +318,12 @@ def md_to_html(md_path):
         return f"<p><em>Source file not found: {md_path}</em></p>"
     with open(md_path, encoding="utf-8") as f:
         text = f.read()
+    # Brochure-only condensation: drop regions wrapped in
+    #   <!-- brochure:skip -->  …detail the prospectus omits…  <!-- brochure:endskip -->
+    # from the PDF only. The markers are HTML comments, so mkdocs renders the FULL content on the
+    # website — the live site stays the complete deep-dive appendix; the PDF carries the condensed set.
+    text = re.sub(r"<!--\s*brochure:skip\s*-->.*?<!--\s*brochure:endskip\s*-->", "",
+                  text, flags=re.DOTALL)
     _MD.reset()
     return _MD.convert(text)
 

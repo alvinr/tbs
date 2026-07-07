@@ -356,3 +356,11 @@ walkway_near_wide_w_mm:
     - '[Ww]alkway\s*\(widened\)\s*\|\s*(\d+)\s?mm'
     - 'walkway widens to\s*(\d+)\s?mm'
     - 'widened\s+section\s*\|\s*(\d+)\s?mm'
+
+clamp_spacing_mm:
+  constant: CLAMP_SPACING
+  unit: mm
+  owner: film-clamp-mechanism-report.md
+  aliases:
+    - 'clamps?\s+at\s+(\d+)\s?mm'
+    - '(\d+)\s?mm\s+(?:centers|centres|spacing)\s*\(\d+\s+clamps'

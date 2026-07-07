@@ -8,6 +8,12 @@ now a **release gate** (`release.sh`) — re-export-aware (a name reached via `a
 counts as used), so cruft cannot drift back in. Run `python3 src/generators/check_unused_imports.py`
 to check, `--fix` to clean. *(Original note below, for history.)*
 
+**Re-run 2026-07-07:** the EP reach re-lay + the overview→`power_core` delegation orphaned **14** imports —
+`BA_X` in the electrical model, and 13 EP constants (`MPPT_*`, `FUSEBLK_W/D`, `BUSBAR_*`, `DISCONNECT_*`,
+`CONTACTOR_W`, `MRBF_D/H`) in the overview hub (no longer used there since electrical's `power_core` owns
+the EP internals). `--fix` removed them; all 7 models regenerate **byte-identical** (no re-send). Since the
+check is only a *release* gate, these slipped past the per-commit lint — consider adding it to `lint.py`.
+
 ---
 
 `pyflakes` found **215 'imported but unused'** warnings across **29 files**. These are code-hygiene cruft (the *opposite* of a missing import — nothing is broken), deferred from the import audit so the audit could stay focused on real gaps. Clear them when convenient.

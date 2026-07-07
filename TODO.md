@@ -101,7 +101,7 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
   galvanized revert — worth the 62 kg + corrosion immunity). Both marked *Decided 2026-07-05* in §4/§5.
   Available build-savings now = lever 1 (container) + 5 (solar) = ~$1,500 (6%); the rest are
   banked/decided/moot. All cost gates green.
-- [ ] **Un-registered values audit** — IN PROGRESS. The scoped candidates were mostly already registered in
+- [x] **Un-registered values audit — DONE.** The scoped candidates were mostly already registered in
   the 2026-07 full audit (59mm door / 52mm headroom / 97·85 W cooler / 630·1260 L now have constants + facts).
   The real remaining gap = system CONSTANTS restated in prose but policed by NO fact. Registered 2026-07-06:
   `corridor_width_mm` (CORRIDOR_W, 8 docs), `container_rib_spacing_mm` (457, 3), `ibc_stack_height_mm` (2336, 3),
@@ -114,7 +114,7 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
 
 ## Docs / gallery
 - [x] **Gallery-only diagrams — DONE (won't-do).** Gallery-only PNGs are fine without a dedicated owning report — they live in the `all-diagrams.md` visual index. That gallery is now **excluded from the brochure PDF** (`BROCHURE_EXCLUDE`) so the 100+ images don't bloat it.
-- [ ] **`tilt-swing-board-analysis.md` §4 — DONE 2026-07-07 (point-to-gallery).** Chose point-to-gallery over
+- [x] **`tilt-swing-board-analysis.md` §4 — DONE 2026-07-07 (point-to-gallery).** Chose point-to-gallery over
   merge: distortion-renders §3 (the dedicated renders gallery) owns the 9 C0–C8 images; §4 renamed "Combined
   Distortion Analysis", keeps its UNIQUE value (projection model + per-config optical analysis prose) but no
   longer re-embeds the 9 renders + summary grid — it opens with a pointer to the gallery §3. Intra-doc anchor
@@ -123,7 +123,7 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
   MC18M). "See Also" done: extended the full **Reports:** + **Diagrams:** cross-ref pair (previously only
   on §1.8) to all 17 §1 registry entries — reports researched with verified section refs, diagrams from
   the §3 matrix. Injector blocks unchanged + green.
-- [ ] **`plumbing-report.md` §3.2** — LIGHT RE-REVIEW DONE 2026-07-06. Section is clean post master-switch→EP
+- [x] **`plumbing-report.md` §3.2 — LIGHT RE-REVIEW DONE 2026-07-06.** Section is clean post master-switch→EP
   cascade: master switch correctly described as on the EP (not the corridor), canonical IDs, no archaeology,
   American spelling, pump body dims left in prose (procurement spec per skill §A). One improvement: wrapped the
   3 raw "270mm corridor" restatements as `corridor_width_mm` placeholders (placeholder-first). Gates green.

@@ -289,7 +289,7 @@ def build_feed_pole():
                                   cx, by, ZT + 5, 18, 28, color=c_joint, axis="z"))
 
     # ── articulated stud + arm tube + telescoping pole to the operator ──
-    op_y, op_z = 180, 80 + 890         # operator hand: near walkway, ~890 above grate
+    op_y, op_z = 640, 1300             # operator hand — pole raised ~25° steeper (toward vertical) for coil separation
     ball_z = ZT + 5 + 14 + 2           # ≈ 71 — ball center inside the socket
     mid_y, mid_z = (by + op_y) / 2, (ball_z + op_z) / 2
     # M12 stud emerging from the socket, angled toward the operator (articulated)

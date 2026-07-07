@@ -24,7 +24,19 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-_Nothing yet — add a bullet per notable change here as work lands._
+- **3D overview scene + label pass** — reworked the per-subsystem scenes so each reads cleanly: the
+  Ventilation scene gains the Fan A/B power cables (own tag) routed back to the EP, drops the
+  plumbing-panel pump wiring, and shows only the evap-cooler (Cct E) circuit at the external panel — the
+  PV + E-stop runs split onto a new "EP Ext Wiring" tag, kept in the Electrical scene. Labeled-scene
+  leaders fixed (Fan B exits the cargo-door end, the filter-skid leader lands on the filters) and the
+  solar array is ghosted so the exterior labels read through it.
+- **Spray-bar supply hose** — added the flexible coiled feed from BV-05 (90° elbow → coil) up to the
+  raised spray-bar feed pole, in both the overview and water models.
+- **Water model cleanup** — the pinhole-wall water model drops the external EP panel + evap cooler, adds
+  the spray bar for context, removes the green PV / grey E-stop EP cables, and reconnects the purple
+  Cct-C pump feed to the panel's own master switch.
+- **Non-destructive Sketchfab metadata** — the in-model metadata stamp is now fill-only-if-blank, so a
+  regenerate / re-send never overwrites a model's saved title, description, tags, or stable UID.
 
 ## [0.2] — 2026-07-07
 - **Electrical Panel Redesign** — the EP was reorganized into a tall narrow **vertical column** (battery

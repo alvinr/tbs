@@ -723,6 +723,66 @@ def _cascade_report(const: str) -> int:
     return 0
 
 
+def _verify_all_report(diagrams: bool) -> int:
+    """Staging-INDEPENDENT full sweep — the automated version of a manual regenerate-everything.
+    `warn_missing_cascade` only diffs the STAGED tree, so a constant committed WITHOUT its full cascade
+    regenerated slips through (its stale outputs are byte-clean vs HEAD). This regenerates every
+    registered output and byte-compares vs the working tree, catching committed-stale. Models (.rb,
+    deterministic Ruby) give a clean signal and are ALWAYS checked; PNGs (opt-in `--diagrams`) are noisier
+    (matplotlib/env render drift) so they're reported separately and never block. Model .rb are
+    regenerated IN PLACE (their path can't be redirected like TBS_DIAGRAMS_DIR), so a stale .rb is left
+    freshly regenerated — review + commit it + re-send the .skp. Run on a CLEAN tree (pre-merge / publish)."""
+    deps = _deps()
+    print("Full-sweep output verification (staging-independent) — regenerating every registered output:\n")
+    dirty = [f for f in _git(["status", "--porcelain", "--", "src/models"]).splitlines()
+             if f.strip().endswith(".rb")]
+    if dirty:
+        print("  ⚠ src/models has uncommitted .rb edits before the sweep — commit/stash first for a clean signal.\n")
+
+    # ── models: regenerate each --save IN PLACE, then git-diff the .rb (deterministic → real signal) ──
+    model_scripts = sorted({e["script"] for e in deps.ENTRIES.values()
+                            if any(o.endswith(".rb") for o in e["outputs"])})
+    print(f"  Models ({len(model_scripts)}):")
+    fails = []
+    for scr in model_scripts:
+        r = subprocess.run([sys.executable, os.path.join(ROOT, scr), "--save"], capture_output=True, cwd=ROOT)
+        print(f"    {'ok ' if r.returncode == 0 else 'ERR'} {os.path.basename(scr)}")
+        if r.returncode != 0:
+            fails.append(scr)
+    stale_rb = sorted(f for f in _git(["diff", "--name-only", "--", "src/models"]).split() if f.endswith(".rb"))
+    skp_only = sorted(os.path.basename(e["script"]) for e in deps.ENTRIES.values()
+                      if any(o.endswith(".skp") for o in e["outputs"])
+                      and not any(o.endswith(".rb") for o in e["outputs"]))   # e.g. water.skp — no .rb to compare
+
+    # ── diagrams (opt-in): regenerate each generator to a temp DIAGRAMS_DIR, byte-compare PNGs ──
+    stale_png = []
+    if diagrams:
+        gen = sorted((n, e) for n, e in deps.ENTRIES.items()
+                     if any(o.endswith((".png", ".svg")) for o in e["outputs"]))
+        print(f"\n  Diagrams ({len(gen)}) — env/render drift is expected noise:")
+        for n, e in gen:
+            d = _regen_diff(e["script"], [o for o in e["outputs"] if o.endswith((".png", ".svg"))])
+            stale_png += d
+            print(f"    {'STALE' if d else 'ok   '} {os.path.basename(e['script'])}")
+
+    print()
+    if fails:
+        print(f"  ✗ {len(fails)} model(s) FAILED to regenerate: {', '.join(os.path.basename(f) for f in fails)}")
+    if stale_rb:
+        print(f"  ✗ {len(stale_rb)} STALE model .rb (regenerated in place — review + commit + re-send the .skp):")
+        for f in stale_rb:
+            print(f"      {f}")
+    if skp_only:
+        print(f"  · {len(skp_only)} model(s) build the .skp directly (no .rb) — can't byte-verify, re-send manually: {', '.join(skp_only)}")
+    if diagrams and stale_png:
+        print(f"  ⚠ {len(stale_png)} diagram(s) differ (triage: real geometry change vs env/render drift):")
+        for f in sorted(set(stale_png)):
+            print(f"      {f}")
+    if not (fails or stale_rb or stale_png):
+        print("  ✓ all registered outputs are up to date" + (" (models + diagrams)" if diagrams else " (models)"))
+    return 1 if (fails or stale_rb) else 0   # models block; diagram drift is advisory
+
+
 def main() -> int:
     if "--literals" in sys.argv:
         return _literals_report()
@@ -734,6 +794,8 @@ def main() -> int:
             print("usage: lint.py --cascade <CONSTANT_NAME>")
             return 2
         return _cascade_report(sys.argv[i + 1])
+    if "--verify-all" in sys.argv:
+        return _verify_all_report("--diagrams" in sys.argv)
     print("TBS-001 drift linter — GATES (block on failure):")
     gate_fail = _run(GATES)
     print("\nTBS-001 drift linter — WARNINGS (advisory):")

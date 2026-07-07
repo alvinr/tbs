@@ -40,6 +40,16 @@ if [[ ! -d "$DOCS_DIR" ]]; then
     error "published/ directory not found. Run: python3 src/generators/setup_docs.py"
 fi
 
+# ── Publish gate: full-sweep model verification (deploy only — it regenerates all 7 model .rb,
+#    ~1 min). Catches committed-stale outputs that lint's staged-diff missing-cascade check misses
+#    (the film-plane-model slip). Regenerates IN PLACE, so a stale .rb is left fresh — commit + re-send. ──
+if [[ "$MODE" == "deploy" ]]; then
+    info "Publish gate: verifying no stale model outputs (lint --verify-all)..."
+    if ! /usr/bin/python3 "$SCRIPT_DIR/src/generators/lint.py" --verify-all; then
+        error "Stale model outputs (regenerated in place above) — commit them + re-send the affected .skp, then re-run."
+    fi
+fi
+
 # ── Sync markdown files ───────────────────────────────────────────────────────
 info "Syncing markdown files to published/..."
 

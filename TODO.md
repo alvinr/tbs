@@ -120,8 +120,11 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
   MC18M). "See Also" done: extended the full **Reports:** + **Diagrams:** cross-ref pair (previously only
   on §1.8) to all 17 §1 registry entries — reports researched with verified section refs, diagrams from
   the §3 matrix. Injector blocks unchanged + green.
-- [ ] **`plumbing-report.md` §3.2** — optional light re-review; touched in the master-switch→EP cascade
-  but still carries its 2026-06-22 editorial "done" mark.
+- [ ] **`plumbing-report.md` §3.2** — LIGHT RE-REVIEW DONE 2026-07-06. Section is clean post master-switch→EP
+  cascade: master switch correctly described as on the EP (not the corridor), canonical IDs, no archaeology,
+  American spelling, pump body dims left in prose (procurement spec per skill §A). One improvement: wrapped the
+  3 raw "270mm corridor" restatements as `corridor_width_mm` placeholders (placeholder-first). Gates green.
+  (Editorial "done" mark + this checkbox left for Alvin per skill §H.4.)
 
 ## Code hygiene
 - [x] **Unused imports — DONE.** Removed **181** unused imports across 31 files (verified every generator + model runs clean, gates green, no output change). New stdlib checker `src/generators/check_unused_imports.py` (re-export-aware, `--fix`) is a **release gate** in `release.sh` so it can't drift back.

@@ -21,7 +21,7 @@ The water-handling equipment mounts on **two plumbing panels**:
 
 - The **Corridor Plumbing Panel** — an 18mm marine plywood board mounted vertically at the
   front (cargo-door-facing) mouth of the IBC plumbing corridor on the front-portal frame
-  (270mm corridor width × 2,060mm tall). It carries the waste/recycle pumps
+  (<!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm corridor width × 2,060mm tall). It carries the waste/recycle pumps
   (P-01, P-03, P-04, P-05), the pressure accumulator (ACC-01), the Stage-A diverter (DV-02),
   the pH sample tap (SV-02), and the pump-suction isolation valves.
 - The **Pinhole Wall Plumbing Panel** — the wet-end filter loop mounted on the pinhole wall:
@@ -38,7 +38,7 @@ three functions:
    connections, and valve positions are organized on one face, minimizing pipe
    runs and simplifying maintenance.
 3. **Accessibility** — the panel faces the open end of the container. The operator approaches from the right walkway
-   and reaches into the 270mm corridor to access the valves (the pumps are switched at the EP — §3.2).
+   and reaches into the <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm corridor to access the valves (the pumps are switched at the EP — §3.2).
 
 ---
 
@@ -129,7 +129,7 @@ panel with the filter loop, §3.1). The accumulator ACC-01 sits at the column fo
 All pumps are identical Shurflo 2088-554-144 units: 12VDC, 3.5 GPM, 45 PSI,
 self-priming diaphragm. Vertical mount, ports at the head, 127mm body width ×
 216mm body height × ~114mm protrusion. Each mounts on a stainless 4-bolt bracket
-through the plywood. They sit in a single vertical column in the 270mm corridor;
+through the plywood. They sit in a single vertical column in the <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm corridor;
 P-01 and P-04 draw from the near IBC column, P-03 and P-05 from the far column.
 
 #### Pump electrical — Circuit C (one at a time)

@@ -43,6 +43,10 @@ file** — a release must not ship without a changelog entry:
 - **Electrical focus model** — dropped the ghost ceiling so the model orbits freely without it occluding
   the gear, and added the two fan-feed callouts (Cct-A → Fan A at the sealed end; Cct-B → Fan B wall box
   + flex jumper) to the Labeled scene.
+- **Stray "perspective" lines removed** — the swept-torus pipe elbow (`followme`) left its arc centerline
+  behind as **loose edges** inside every elbow (>1,200 in the water model), rendering as dashed lines all
+  over the diagram. The shared `ruby_elbow` helper now erases those after the sweep, and the water build
+  also clears stale construction lines / root loose edges on every send.
 - **Water model cleanup** — the pinhole-wall water model drops the external EP panel + evap cooler, adds
   the spray bar for context, removes the green PV / grey E-stop EP cables, and reconnects the purple
   Cct-C pump feed to the panel's own master switch.

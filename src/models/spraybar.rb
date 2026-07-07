@@ -2151,6 +2151,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([2428.68.mm,1156.mm,95.mm], [1.000000,0.000000,0.000000], 7.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
@@ -2276,6 +2277,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([2437.5.mm,1172.5618.mm,95.mm], [0.000000,1.000000,0.000000], 7.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
@@ -3255,6 +3257,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([2437.5.mm,1205.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
@@ -3282,6 +3285,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([515.4392857142858.mm,1210.mm,67.mm], [-1.000000,0.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
@@ -3309,6 +3313,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([514.2142857142858.mm,1211.87525.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
@@ -3363,6 +3368,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([2437.5.mm,1205.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
@@ -3390,6 +3396,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1143.867857142857.mm,1210.mm,67.mm], [-1.000000,0.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
@@ -3417,6 +3424,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1142.642857142857.mm,1211.87525.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
@@ -3471,6 +3479,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([2437.5.mm,1205.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
@@ -3498,6 +3507,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1772.2964285714286.mm,1210.mm,67.mm], [-1.000000,0.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
@@ -3525,6 +3535,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1771.0714285714287.mm,1211.87525.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
@@ -3579,6 +3590,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([2474.5.mm,1180.mm,67.mm], [1.000000,0.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
@@ -3606,6 +3618,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([2479.5.mm,1207.5.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
@@ -3660,6 +3673,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([3022.9285714285716.mm,1180.mm,67.mm], [1.000000,0.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
@@ -3687,6 +3701,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([3027.9285714285716.mm,1207.5.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
@@ -3741,6 +3756,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([3651.3571428571427.mm,1180.mm,67.mm], [1.000000,0.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
@@ -3768,6 +3784,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([3656.3571428571427.mm,1207.5.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
@@ -3822,6 +3839,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4279.785714285714.mm,1180.mm,67.mm], [1.000000,0.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
@@ -3849,6 +3867,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4284.785714285714.mm,1207.5.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0

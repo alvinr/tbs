@@ -1937,6 +1937,9 @@ def ruby_elbow(name, A, O, Rc, normal, d_in, theta, r,
          f'[{d_in[0]:.6f},{d_in[1]:.6f},{d_in[2]:.6f}], {mm(r)}, {n})'),
         '  f = ge.add_face(circle)',
         '  f.followme(arc)',
+        # followme leaves the arc CENTERLINE behind as loose edges (no face) — they render as stray
+        # dashed/"perspective" lines all over the model. Drop them (they're inside the swept tube).
+        '  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }',
     ]
     if color:
         color = mute_hex(color, mute)

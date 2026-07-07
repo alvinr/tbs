@@ -6460,6 +6460,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1884.mm,37.65.mm,1135.mm], [0.000000,1.000000,0.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
   mat.color = Sketchup::Color.new(139, 26, 26)
   mat.alpha = 1.0
@@ -6487,6 +6488,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1884.mm,45.mm,1300.4.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
   mat.color = Sketchup::Color.new(139, 26, 26)
   mat.alpha = 1.0
@@ -6565,6 +6567,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([2031.mm,22.mm,1884.mm], [1.000000,0.000000,0.000000], 9.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
@@ -6606,6 +6609,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([2009.mm,22.mm,1472.mm], [0.000000,0.000000,1.000000], 9.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
@@ -6633,6 +6637,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([2009.mm,117.47901099647534.mm,1490.mm], [0.000000,1.000000,0.000000], 9.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
   mat.alpha = 1.0
@@ -6674,6 +6679,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1899.mm,16.945945136995675.mm,740.0308884931453.mm], [0.000000,-0.868243,0.496139], 4.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
   mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
@@ -6701,6 +6707,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([2091.mm,10.mm,744.mm], [1.000000,0.000000,0.000000], 4.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
   mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
@@ -6728,6 +6735,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([2099.mm,10.mm,1060.1.mm], [0.000000,0.000000,1.000000], 4.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
   mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
@@ -6769,6 +6777,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([2099.mm,5.1.mm,1065.mm], [0.000000,1.000000,0.000000], 4.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
   mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
@@ -6796,6 +6805,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([2099.mm,10.mm,1892.mm], [0.000000,0.000000,1.000000], 4.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
   mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
@@ -6823,6 +6833,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1428.mm,10.mm,1900.mm], [-1.000000,0.000000,0.000000], 4.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
   mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
@@ -6850,6 +6861,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1420.mm,10.mm,1942.mm], [0.000000,0.000000,1.000000], 4.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
   mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
@@ -6942,6 +6954,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1999.mm,45.mm,988.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
   mat.color = Sketchup::Color.new(139, 26, 26)
   mat.alpha = 1.0
@@ -6969,6 +6982,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1891.35.mm,45.mm,1010.mm], [-1.000000,0.000000,0.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
   mat.color = Sketchup::Color.new(139, 26, 26)
   mat.alpha = 1.0
@@ -7010,6 +7024,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1947.mm,60.mm,604.mm], [1.000000,0.000000,0.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
@@ -7037,6 +7052,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1969.mm,60.mm,1278.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
@@ -8644,6 +8660,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1889.mm,30.mm,1894.mm], [0.000000,0.000000,1.000000], 7.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
@@ -8671,6 +8688,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1516.66.mm,30.mm,1908.mm], [-1.000000,0.000000,0.000000], 7.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
@@ -8730,6 +8748,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1855.7142857142858.mm,163.mm,1260.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
   mat.color = Sketchup::Color.new(192, 57, 43)
   mat.alpha = 1.0
@@ -8757,6 +8776,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1855.7142857142858.mm,175.mm,2363.mm], [0.000000,0.000000,1.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
   mat.color = Sketchup::Color.new(192, 57, 43)
   mat.alpha = 1.0
@@ -8784,6 +8804,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1855.7142857142858.mm,32.mm,2375.mm], [0.000000,-1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
   mat.color = Sketchup::Color.new(192, 57, 43)
   mat.alpha = 1.0
@@ -8811,6 +8832,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5606.mm,20.mm,2375.mm], [1.000000,0.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
   mat.color = Sketchup::Color.new(192, 57, 43)
   mat.alpha = 1.0
@@ -8838,6 +8860,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5618.mm,1169.mm,2375.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
   mat.color = Sketchup::Color.new(192, 57, 43)
   mat.alpha = 1.0
@@ -8879,6 +8902,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1879.142857142857.mm,163.mm,1260.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
   mat.color = Sketchup::Color.new(230, 126, 34)
   mat.alpha = 1.0
@@ -8906,6 +8930,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1879.142857142857.mm,175.mm,2363.mm], [0.000000,0.000000,1.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
   mat.color = Sketchup::Color.new(230, 126, 34)
   mat.alpha = 1.0
@@ -8933,6 +8958,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1879.142857142857.mm,32.mm,2375.mm], [0.000000,-1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
   mat.color = Sketchup::Color.new(230, 126, 34)
   mat.alpha = 1.0
@@ -8960,6 +8986,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([300.98.mm,20.mm,2375.mm], [-1.000000,0.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
   mat.color = Sketchup::Color.new(230, 126, 34)
   mat.alpha = 1.0
@@ -8987,6 +9014,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([300.mm,18.4998.mm,2375.mm], [0.000000,-1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
   mat.color = Sketchup::Color.new(230, 126, 34)
   mat.alpha = 1.0
@@ -9028,6 +9056,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1949.4285714285713.mm,163.mm,1260.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse E (40A — cooler / inverter)"] || model.materials.add("Fuse E (40A — cooler / inverter)")
   mat.color = Sketchup::Color.new(22, 160, 133)
   mat.alpha = 1.0
@@ -9055,6 +9084,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1949.4285714285713.mm,175.mm,2363.mm], [0.000000,0.000000,1.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse E (40A — cooler / inverter)"] || model.materials.add("Fuse E (40A — cooler / inverter)")
   mat.color = Sketchup::Color.new(22, 160, 133)
   mat.alpha = 1.0
@@ -9082,6 +9112,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1949.4285714285713.mm,32.mm,2375.mm], [0.000000,-1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse E (40A — cooler / inverter)"] || model.materials.add("Fuse E (40A — cooler / inverter)")
   mat.color = Sketchup::Color.new(22, 160, 133)
   mat.alpha = 1.0
@@ -9109,6 +9140,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1896.84.mm,20.mm,2375.mm], [-1.000000,0.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse E (40A — cooler / inverter)"] || model.materials.add("Fuse E (40A — cooler / inverter)")
   mat.color = Sketchup::Color.new(22, 160, 133)
   mat.alpha = 1.0
@@ -9136,6 +9168,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1889.mm,32.001599999999996.mm,2375.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse E (40A — cooler / inverter)"] || model.materials.add("Fuse E (40A — cooler / inverter)")
   mat.color = Sketchup::Color.new(22, 160, 133)
   mat.alpha = 1.0
@@ -9188,6 +9221,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1902.5714285714287.mm,44.5.mm,1141.mm], [0.000000,0.000000,-1.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -9215,6 +9249,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1958.265.mm,44.5.mm,1129.mm], [1.000000,0.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -9256,6 +9291,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1959.mm,46.mm,2363.mm], [0.000000,0.000000,1.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -9283,6 +9319,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1959.mm,26.86.mm,2375.mm], [0.000000,-1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -9310,6 +9347,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4862.mm,20.mm,2375.mm], [1.000000,0.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -9337,6 +9375,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4874.mm,1169.mm,2375.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -9445,6 +9484,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([3058.mm,88.mm,2375.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -9486,6 +9526,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1996.2857142857142.mm,163.mm,1260.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
@@ -9513,6 +9554,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1996.2857142857142.mm,175.mm,2363.mm], [0.000000,0.000000,1.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
@@ -9568,6 +9610,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1300.mm,1019.mm,2375.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
@@ -9609,6 +9652,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([3200.mm,1019.mm,2375.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
@@ -9650,6 +9694,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4574.mm,869.mm,2375.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
   mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
@@ -9691,6 +9736,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1926.mm,163.mm,1260.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
   mat.color = Sketchup::Color.new(142, 68, 173)
   mat.alpha = 1.0
@@ -9718,6 +9764,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1926.mm,175.mm,2363.mm], [0.000000,0.000000,1.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
   mat.color = Sketchup::Color.new(142, 68, 173)
   mat.alpha = 1.0
@@ -9773,6 +9820,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([520.mm,94.12.mm,2375.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
   mat.color = Sketchup::Color.new(142, 68, 173)
   mat.alpha = 1.0
@@ -9814,6 +9862,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([2270.mm,94.12.mm,2375.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
   mat.color = Sketchup::Color.new(142, 68, 173)
   mat.alpha = 1.0
@@ -9855,6 +9904,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4170.mm,94.12.mm,2375.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
   mat.color = Sketchup::Color.new(142, 68, 173)
   mat.alpha = 1.0

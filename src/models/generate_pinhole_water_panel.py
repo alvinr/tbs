@@ -519,7 +519,7 @@ def build():
     return f'''model = Sketchup.active_model
 model.start_operation("Pinhole-wall layout", true)
 entities = model.active_entities
-to_erase = entities.to_a.select {{ |e| e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance) || e.is_a?(Sketchup::Text) }}
+to_erase = entities.to_a.select {{ |e| e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance) || e.is_a?(Sketchup::Text) || e.is_a?(Sketchup::ConstructionLine) || e.is_a?(Sketchup::ConstructionPoint) || e.is_a?(Sketchup::Edge) }}
 entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each {{ |pg| model.pages.erase(pg) }}

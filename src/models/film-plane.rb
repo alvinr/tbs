@@ -93,9 +93,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   # Electrical Panel (EP) [ghost]
   grp = ents.add_group
   grp.name = "Electrical Panel (EP) [ghost]"
-  face = grp.entities.add_face([1829.mm,0.mm,1500.mm], [2129.mm,0.mm,1500.mm], [2129.mm,160.mm,1500.mm], [1829.mm,160.mm,1500.mm])
+  face = grp.entities.add_face([1829.mm,0.mm,1150.mm], [2129.mm,0.mm,1150.mm], [2129.mm,160.mm,1150.mm], [1829.mm,160.mm,1150.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(600.mm)
+  face.pushpull(410.mm)
   mat = model.materials["Electrical Panel (EP) [ghost]"] || model.materials.add("Electrical Panel (EP) [ghost]")
   mat.color = Sketchup::Color.new(245, 197, 24)
   mat.alpha = 0.28

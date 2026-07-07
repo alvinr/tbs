@@ -211,10 +211,35 @@ def mm(val):
     return f"{val}.mm"
 
 
+# Near-identical colors collapsed onto ONE representative each (tight greys/near-blacks at Δ≤6, plus a
+# few same-hue grey/blue/yellow pairs at Δ≤10 — all imperceptible) so they SHARE a material.  Holds the
+# overview's unique-material count near ~87 (from 100), well under Sketchfab's upload ceiling.
+_CANON_RGB = {
+    # tight greys / near-blacks (Δ≤6)
+    (32, 32, 32): (26, 26, 26),
+    (34, 34, 40): (26, 26, 26), (34, 34, 34): (26, 26, 26),
+    (43, 43, 48): (42, 42, 42), (44, 44, 44): (42, 42, 42),
+    (58, 58, 58): (51, 52, 58), (58, 58, 66): (51, 52, 58),
+    (80, 80, 88): (80, 80, 90),
+    (96, 96, 104): (88, 96, 112),
+    (122, 128, 136): (128, 128, 138),
+    (126, 126, 118): (119, 119, 119), (128, 128, 128): (119, 119, 119),
+    (154, 160, 160): (154, 160, 166), (154, 160, 168): (154, 160, 166),
+    (192, 192, 200): (184, 188, 196),
+    (200, 176, 106): (200, 176, 112),
+    (216, 207, 188): (216, 208, 188),
+    # same-hue color pairs (Δ≤10) — blue / yellow, imperceptible
+    (41, 128, 185): (41, 121, 184),
+    (245, 197, 24): (241, 196, 15),
+}
+
+
 def hex_to_rgb(h):
-    """Convert '#RRGGBB' to (r, g, b) tuple."""
+    """Convert '#RRGGBB' to (r, g, b), collapsing near-identical colors to a canonical value so
+    they share a material (holds the Sketchfab material count down)."""
     h = h.lstrip("#")
-    return (int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16))
+    rgb = (int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16))
+    return _CANON_RGB.get(rgb, rgb)
 
 
 # Neutral that muted "context" colors blend toward — a light blue-grey matching the
@@ -241,8 +266,8 @@ _MAT_BY_COLOR = {}
 
 
 def shared_mat_name(name, color, alpha):
-    """Return a material name shared by every element of the same color+alpha."""
-    key = (color, alpha if alpha is not None else 1.0)
+    """Return a material name shared by every element of the same CANONICAL color + alpha."""
+    key = (hex_to_rgb(color), alpha if alpha is not None else 1.0)
     return _MAT_BY_COLOR.setdefault(key, name)
 
 

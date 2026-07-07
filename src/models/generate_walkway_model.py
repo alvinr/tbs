@@ -84,14 +84,20 @@ def film_plane_right_beams():
     """The RIGHT-side film-plane support beams (R-bot + R-top, 40×40 rails, full Yd depth) that
     the right-walkway cantilever's combined corner plate bolts to.  SOLID and single-sourced from
     the SAME constants as pw.film_plane_beams()/overview (x = RAIL_X_R − rail = 4609, so the beam
-    ends at 4649 — clear of the corridor frame front at 4654).  The corner wall-seats are the
-    cantilever's COMBINED corner plate (drawn by right_walkway_cantilever), so no saddles here."""
+    ends at 4649 — clear of the corridor frame front at 4654).  The TOP rail (TR) keeps its wall-seat
+    SADDLE BRACKETS (interior back-plate + exterior through-bolted plate, at BOTH the near + far
+    walls); only the BOTTOM rail (BR) corner is the cantilever's COMBINED corner plate (drawn by
+    right_walkway_cantilever), so BR is skipped."""
     rail = 40
     x_right = ov.RAIL_X_R - rail                 # 4609 — matches overview/water (was a ghost at 4629)
     z_top = ov.C_HGT - ov.RAIL_OFF - rail
+    z_bot = ov.RAIL_OFF_BOT
     p = []
-    for zl, rz in (("bot", ov.RAIL_OFF_BOT), ("top", z_top)):
+    for zl, rz in (("bot", z_bot), ("top", z_top)):
         p.append(ruby_box(f"FP support beam R-{zl}", x_right, 0, rz, rail, ov.C_WID, rail, color=C_STEEL))
+    # TOP rail (TR) wall-seat saddles (interior + exterior plates, near + far); the BOTTOM rail (BR)
+    # corner is the combined corner plate shared with the right walkway, so skip it.
+    p.append(ov.film_plane_saddles({"TR": (x_right, z_top), "BR": (x_right, z_bot)}, skip={"BR"}))
     return '\n'.join(p)
 
 

@@ -126,7 +126,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -137,7 +137,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -148,7 +148,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -159,7 +159,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -670,7 +670,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -716,7 +716,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -729,7 +729,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -742,7 +742,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -788,7 +788,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -801,7 +801,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -814,7 +814,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -827,7 +827,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -873,7 +873,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -886,7 +886,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -899,7 +899,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -912,7 +912,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -958,7 +958,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -971,7 +971,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -984,7 +984,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -997,7 +997,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1043,7 +1043,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1056,7 +1056,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1069,7 +1069,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1115,7 +1115,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1128,7 +1128,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1141,7 +1141,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1187,7 +1187,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1200,7 +1200,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1213,7 +1213,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1259,7 +1259,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1272,7 +1272,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1285,7 +1285,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1331,7 +1331,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1344,7 +1344,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1357,7 +1357,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1403,7 +1403,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1416,7 +1416,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1429,7 +1429,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1475,7 +1475,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1488,7 +1488,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1501,7 +1501,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1547,7 +1547,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1560,7 +1560,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1573,7 +1573,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1619,7 +1619,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1632,7 +1632,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1645,7 +1645,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1691,7 +1691,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1704,7 +1704,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1717,7 +1717,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1763,7 +1763,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1776,7 +1776,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1789,7 +1789,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1835,7 +1835,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1848,7 +1848,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1861,7 +1861,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2066,7 +2066,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Tray Shim Base"] || model.materials.add("Tray Shim Base")
-  mat.color = Sketchup::Color.new(216, 207, 188)
+  mat.color = Sketchup::Color.new(216, 208, 188)
   mat.alpha = 0.9
   grp.material = mat
 
@@ -4333,8 +4333,8 @@ end
   face = ge.add_face([[201.mm,1072.mm,36.mm], [201.mm,1072.07.mm,34.96.mm], [201.mm,1072.27.mm,33.93.mm], [201.mm,1072.61.mm,32.94.mm], [201.mm,1073.07.mm,32.mm], [201.mm,1073.65.mm,31.13.mm], [201.mm,1074.34.mm,30.34.mm], [201.mm,1075.13.mm,29.65.mm], [201.mm,1076.mm,29.07.mm], [201.mm,1076.94.mm,28.61.mm], [201.mm,1077.93.mm,28.27.mm], [201.mm,1078.96.mm,28.07.mm], [201.mm,1080.mm,28.mm], [201.mm,1081.04.mm,28.07.mm], [201.mm,1082.07.mm,28.27.mm], [201.mm,1083.06.mm,28.61.mm], [201.mm,1084.mm,29.07.mm], [201.mm,1084.87.mm,29.65.mm], [201.mm,1085.66.mm,30.34.mm], [201.mm,1086.35.mm,31.13.mm], [201.mm,1086.93.mm,32.mm], [201.mm,1087.39.mm,32.94.mm], [201.mm,1087.73.mm,33.93.mm], [201.mm,1087.93.mm,34.96.mm], [201.mm,1088.mm,36.mm], [201.mm,1086.mm,36.mm], [201.mm,1085.95.mm,35.22.mm], [201.mm,1085.8.mm,34.45.mm], [201.mm,1085.54.mm,33.7.mm], [201.mm,1085.2.mm,33.mm], [201.mm,1084.76.mm,32.35.mm], [201.mm,1084.24.mm,31.76.mm], [201.mm,1083.65.mm,31.24.mm], [201.mm,1083.mm,30.8.mm], [201.mm,1082.3.mm,30.46.mm], [201.mm,1081.55.mm,30.2.mm], [201.mm,1080.78.mm,30.05.mm], [201.mm,1080.mm,30.mm], [201.mm,1079.22.mm,30.05.mm], [201.mm,1078.45.mm,30.2.mm], [201.mm,1077.7.mm,30.46.mm], [201.mm,1077.mm,30.8.mm], [201.mm,1076.35.mm,31.24.mm], [201.mm,1075.76.mm,31.76.mm], [201.mm,1075.24.mm,32.35.mm], [201.mm,1074.8.mm,33.mm], [201.mm,1074.46.mm,33.7.mm], [201.mm,1074.2.mm,34.45.mm], [201.mm,1074.05.mm,35.22.mm], [201.mm,1074.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4344,8 +4344,8 @@ end
   face = grp.entities.add_face([201.mm,1064.mm,36.mm], [207.mm,1064.mm,36.mm], [207.mm,1074.mm,36.mm], [201.mm,1074.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4368,8 +4368,8 @@ end
   face = grp.entities.add_face([201.mm,1086.mm,36.mm], [207.mm,1086.mm,36.mm], [207.mm,1096.mm,36.mm], [201.mm,1096.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4393,8 +4393,8 @@ end
   face = ge.add_face([[233.mm,1072.mm,36.mm], [233.mm,1072.07.mm,34.96.mm], [233.mm,1072.27.mm,33.93.mm], [233.mm,1072.61.mm,32.94.mm], [233.mm,1073.07.mm,32.mm], [233.mm,1073.65.mm,31.13.mm], [233.mm,1074.34.mm,30.34.mm], [233.mm,1075.13.mm,29.65.mm], [233.mm,1076.mm,29.07.mm], [233.mm,1076.94.mm,28.61.mm], [233.mm,1077.93.mm,28.27.mm], [233.mm,1078.96.mm,28.07.mm], [233.mm,1080.mm,28.mm], [233.mm,1081.04.mm,28.07.mm], [233.mm,1082.07.mm,28.27.mm], [233.mm,1083.06.mm,28.61.mm], [233.mm,1084.mm,29.07.mm], [233.mm,1084.87.mm,29.65.mm], [233.mm,1085.66.mm,30.34.mm], [233.mm,1086.35.mm,31.13.mm], [233.mm,1086.93.mm,32.mm], [233.mm,1087.39.mm,32.94.mm], [233.mm,1087.73.mm,33.93.mm], [233.mm,1087.93.mm,34.96.mm], [233.mm,1088.mm,36.mm], [233.mm,1086.mm,36.mm], [233.mm,1085.95.mm,35.22.mm], [233.mm,1085.8.mm,34.45.mm], [233.mm,1085.54.mm,33.7.mm], [233.mm,1085.2.mm,33.mm], [233.mm,1084.76.mm,32.35.mm], [233.mm,1084.24.mm,31.76.mm], [233.mm,1083.65.mm,31.24.mm], [233.mm,1083.mm,30.8.mm], [233.mm,1082.3.mm,30.46.mm], [233.mm,1081.55.mm,30.2.mm], [233.mm,1080.78.mm,30.05.mm], [233.mm,1080.mm,30.mm], [233.mm,1079.22.mm,30.05.mm], [233.mm,1078.45.mm,30.2.mm], [233.mm,1077.7.mm,30.46.mm], [233.mm,1077.mm,30.8.mm], [233.mm,1076.35.mm,31.24.mm], [233.mm,1075.76.mm,31.76.mm], [233.mm,1075.24.mm,32.35.mm], [233.mm,1074.8.mm,33.mm], [233.mm,1074.46.mm,33.7.mm], [233.mm,1074.2.mm,34.45.mm], [233.mm,1074.05.mm,35.22.mm], [233.mm,1074.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4404,8 +4404,8 @@ end
   face = grp.entities.add_face([233.mm,1064.mm,36.mm], [239.mm,1064.mm,36.mm], [239.mm,1074.mm,36.mm], [233.mm,1074.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4428,8 +4428,8 @@ end
   face = grp.entities.add_face([233.mm,1086.mm,36.mm], [239.mm,1086.mm,36.mm], [239.mm,1096.mm,36.mm], [233.mm,1096.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4479,8 +4479,8 @@ end
   face = ge.add_face([[201.mm,1272.mm,36.mm], [201.mm,1272.07.mm,34.96.mm], [201.mm,1272.27.mm,33.93.mm], [201.mm,1272.61.mm,32.94.mm], [201.mm,1273.07.mm,32.mm], [201.mm,1273.65.mm,31.13.mm], [201.mm,1274.34.mm,30.34.mm], [201.mm,1275.13.mm,29.65.mm], [201.mm,1276.mm,29.07.mm], [201.mm,1276.94.mm,28.61.mm], [201.mm,1277.93.mm,28.27.mm], [201.mm,1278.96.mm,28.07.mm], [201.mm,1280.mm,28.mm], [201.mm,1281.04.mm,28.07.mm], [201.mm,1282.07.mm,28.27.mm], [201.mm,1283.06.mm,28.61.mm], [201.mm,1284.mm,29.07.mm], [201.mm,1284.87.mm,29.65.mm], [201.mm,1285.66.mm,30.34.mm], [201.mm,1286.35.mm,31.13.mm], [201.mm,1286.93.mm,32.mm], [201.mm,1287.39.mm,32.94.mm], [201.mm,1287.73.mm,33.93.mm], [201.mm,1287.93.mm,34.96.mm], [201.mm,1288.mm,36.mm], [201.mm,1286.mm,36.mm], [201.mm,1285.95.mm,35.22.mm], [201.mm,1285.8.mm,34.45.mm], [201.mm,1285.54.mm,33.7.mm], [201.mm,1285.2.mm,33.mm], [201.mm,1284.76.mm,32.35.mm], [201.mm,1284.24.mm,31.76.mm], [201.mm,1283.65.mm,31.24.mm], [201.mm,1283.mm,30.8.mm], [201.mm,1282.3.mm,30.46.mm], [201.mm,1281.55.mm,30.2.mm], [201.mm,1280.78.mm,30.05.mm], [201.mm,1280.mm,30.mm], [201.mm,1279.22.mm,30.05.mm], [201.mm,1278.45.mm,30.2.mm], [201.mm,1277.7.mm,30.46.mm], [201.mm,1277.mm,30.8.mm], [201.mm,1276.35.mm,31.24.mm], [201.mm,1275.76.mm,31.76.mm], [201.mm,1275.24.mm,32.35.mm], [201.mm,1274.8.mm,33.mm], [201.mm,1274.46.mm,33.7.mm], [201.mm,1274.2.mm,34.45.mm], [201.mm,1274.05.mm,35.22.mm], [201.mm,1274.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4490,8 +4490,8 @@ end
   face = grp.entities.add_face([201.mm,1264.mm,36.mm], [207.mm,1264.mm,36.mm], [207.mm,1274.mm,36.mm], [201.mm,1274.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4514,8 +4514,8 @@ end
   face = grp.entities.add_face([201.mm,1286.mm,36.mm], [207.mm,1286.mm,36.mm], [207.mm,1296.mm,36.mm], [201.mm,1296.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4539,8 +4539,8 @@ end
   face = ge.add_face([[233.mm,1272.mm,36.mm], [233.mm,1272.07.mm,34.96.mm], [233.mm,1272.27.mm,33.93.mm], [233.mm,1272.61.mm,32.94.mm], [233.mm,1273.07.mm,32.mm], [233.mm,1273.65.mm,31.13.mm], [233.mm,1274.34.mm,30.34.mm], [233.mm,1275.13.mm,29.65.mm], [233.mm,1276.mm,29.07.mm], [233.mm,1276.94.mm,28.61.mm], [233.mm,1277.93.mm,28.27.mm], [233.mm,1278.96.mm,28.07.mm], [233.mm,1280.mm,28.mm], [233.mm,1281.04.mm,28.07.mm], [233.mm,1282.07.mm,28.27.mm], [233.mm,1283.06.mm,28.61.mm], [233.mm,1284.mm,29.07.mm], [233.mm,1284.87.mm,29.65.mm], [233.mm,1285.66.mm,30.34.mm], [233.mm,1286.35.mm,31.13.mm], [233.mm,1286.93.mm,32.mm], [233.mm,1287.39.mm,32.94.mm], [233.mm,1287.73.mm,33.93.mm], [233.mm,1287.93.mm,34.96.mm], [233.mm,1288.mm,36.mm], [233.mm,1286.mm,36.mm], [233.mm,1285.95.mm,35.22.mm], [233.mm,1285.8.mm,34.45.mm], [233.mm,1285.54.mm,33.7.mm], [233.mm,1285.2.mm,33.mm], [233.mm,1284.76.mm,32.35.mm], [233.mm,1284.24.mm,31.76.mm], [233.mm,1283.65.mm,31.24.mm], [233.mm,1283.mm,30.8.mm], [233.mm,1282.3.mm,30.46.mm], [233.mm,1281.55.mm,30.2.mm], [233.mm,1280.78.mm,30.05.mm], [233.mm,1280.mm,30.mm], [233.mm,1279.22.mm,30.05.mm], [233.mm,1278.45.mm,30.2.mm], [233.mm,1277.7.mm,30.46.mm], [233.mm,1277.mm,30.8.mm], [233.mm,1276.35.mm,31.24.mm], [233.mm,1275.76.mm,31.76.mm], [233.mm,1275.24.mm,32.35.mm], [233.mm,1274.8.mm,33.mm], [233.mm,1274.46.mm,33.7.mm], [233.mm,1274.2.mm,34.45.mm], [233.mm,1274.05.mm,35.22.mm], [233.mm,1274.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4550,8 +4550,8 @@ end
   face = grp.entities.add_face([233.mm,1264.mm,36.mm], [239.mm,1264.mm,36.mm], [239.mm,1274.mm,36.mm], [233.mm,1274.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4574,8 +4574,8 @@ end
   face = grp.entities.add_face([233.mm,1286.mm,36.mm], [239.mm,1286.mm,36.mm], [239.mm,1296.mm,36.mm], [233.mm,1296.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4598,8 +4598,8 @@ end
   face = grp.entities.add_face([200.mm,1148.mm,26.mm], [240.mm,1148.mm,26.mm], [240.mm,1212.mm,26.mm], [200.mm,1212.mm,26.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4609,8 +4609,8 @@ end
   face = grp.entities.add_face([200.mm,1148.mm,54.mm], [240.mm,1148.mm,54.mm], [240.mm,1212.mm,54.mm], [200.mm,1212.mm,54.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4629,26 +4629,68 @@ end
   grp = ents.add_group
   grp.name = "Clamp Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([209.mm,1156.mm,22.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([209.mm,1156.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(39.mm)
+  cface.pushpull(35.mm)
   mat = model.materials["Axle Pin 10mm L"] || model.materials.add("Axle Pin 10mm L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
+  grp.material = mat
+
+  # Clamp Bolt CSK Head L
+  grp = ents.add_group
+  grp.name = "Clamp Bolt CSK Head L"
+  ge = grp.entities
+  ge.add_face([213.5.mm,1156.mm,26.mm], [212.89711431702997.mm,1158.25.mm,26.mm], [211.1650635094611.mm,1157.25.mm,29.mm], [211.5.mm,1156.mm,29.mm])
+  ge.add_face([212.89711431702997.mm,1158.25.mm,26.mm], [211.25.mm,1159.89711431703.mm,26.mm], [210.25.mm,1158.165063509461.mm,29.mm], [211.1650635094611.mm,1157.25.mm,29.mm])
+  ge.add_face([211.25.mm,1159.89711431703.mm,26.mm], [209.mm,1160.5.mm,26.mm], [209.mm,1158.5.mm,29.mm], [210.25.mm,1158.165063509461.mm,29.mm])
+  ge.add_face([209.mm,1160.5.mm,26.mm], [206.75.mm,1159.89711431703.mm,26.mm], [207.75.mm,1158.165063509461.mm,29.mm], [209.mm,1158.5.mm,29.mm])
+  ge.add_face([206.75.mm,1159.89711431703.mm,26.mm], [205.10288568297003.mm,1158.25.mm,26.mm], [206.8349364905389.mm,1157.25.mm,29.mm], [207.75.mm,1158.165063509461.mm,29.mm])
+  ge.add_face([205.10288568297003.mm,1158.25.mm,26.mm], [204.5.mm,1156.mm,26.mm], [206.5.mm,1156.mm,29.mm], [206.8349364905389.mm,1157.25.mm,29.mm])
+  ge.add_face([204.5.mm,1156.mm,26.mm], [205.10288568297003.mm,1153.75.mm,26.mm], [206.8349364905389.mm,1154.75.mm,29.mm], [206.5.mm,1156.mm,29.mm])
+  ge.add_face([205.10288568297003.mm,1153.75.mm,26.mm], [206.75.mm,1152.10288568297.mm,26.mm], [207.75.mm,1153.834936490539.mm,29.mm], [206.8349364905389.mm,1154.75.mm,29.mm])
+  ge.add_face([206.75.mm,1152.10288568297.mm,26.mm], [209.mm,1151.5.mm,26.mm], [209.mm,1153.5.mm,29.mm], [207.75.mm,1153.834936490539.mm,29.mm])
+  ge.add_face([209.mm,1151.5.mm,26.mm], [211.25.mm,1152.10288568297.mm,26.mm], [210.25.mm,1153.834936490539.mm,29.mm], [209.mm,1153.5.mm,29.mm])
+  ge.add_face([211.25.mm,1152.10288568297.mm,26.mm], [212.89711431702997.mm,1153.75.mm,26.mm], [211.1650635094611.mm,1154.75.mm,29.mm], [210.25.mm,1153.834936490539.mm,29.mm])
+  ge.add_face([212.89711431702997.mm,1153.75.mm,26.mm], [213.5.mm,1156.mm,26.mm], [211.5.mm,1156.mm,29.mm], [211.1650635094611.mm,1154.75.mm,29.mm])
+  ge.add_face([213.5.mm,1156.mm,26.mm], [212.89711431702997.mm,1158.25.mm,26.mm], [211.25.mm,1159.89711431703.mm,26.mm], [209.mm,1160.5.mm,26.mm], [206.75.mm,1159.89711431703.mm,26.mm], [205.10288568297003.mm,1158.25.mm,26.mm], [204.5.mm,1156.mm,26.mm], [205.10288568297003.mm,1153.75.mm,26.mm], [206.75.mm,1152.10288568297.mm,26.mm], [209.mm,1151.5.mm,26.mm], [211.25.mm,1152.10288568297.mm,26.mm], [212.89711431702997.mm,1153.75.mm,26.mm])
+  mat = model.materials["Clamp Bolt CSK Head L"] || model.materials.add("Clamp Bolt CSK Head L")
+  mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
 
   # Clamp Bolt L
   grp = ents.add_group
   grp.name = "Clamp Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([231.mm,1156.mm,22.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([231.mm,1156.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(39.mm)
+  cface.pushpull(35.mm)
   mat = model.materials["Axle Pin 10mm L"] || model.materials.add("Axle Pin 10mm L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
+  grp.material = mat
+
+  # Clamp Bolt CSK Head L
+  grp = ents.add_group
+  grp.name = "Clamp Bolt CSK Head L"
+  ge = grp.entities
+  ge.add_face([235.5.mm,1156.mm,26.mm], [234.89711431702997.mm,1158.25.mm,26.mm], [233.1650635094611.mm,1157.25.mm,29.mm], [233.5.mm,1156.mm,29.mm])
+  ge.add_face([234.89711431702997.mm,1158.25.mm,26.mm], [233.25.mm,1159.89711431703.mm,26.mm], [232.25.mm,1158.165063509461.mm,29.mm], [233.1650635094611.mm,1157.25.mm,29.mm])
+  ge.add_face([233.25.mm,1159.89711431703.mm,26.mm], [231.mm,1160.5.mm,26.mm], [231.mm,1158.5.mm,29.mm], [232.25.mm,1158.165063509461.mm,29.mm])
+  ge.add_face([231.mm,1160.5.mm,26.mm], [228.75.mm,1159.89711431703.mm,26.mm], [229.75.mm,1158.165063509461.mm,29.mm], [231.mm,1158.5.mm,29.mm])
+  ge.add_face([228.75.mm,1159.89711431703.mm,26.mm], [227.10288568297003.mm,1158.25.mm,26.mm], [228.8349364905389.mm,1157.25.mm,29.mm], [229.75.mm,1158.165063509461.mm,29.mm])
+  ge.add_face([227.10288568297003.mm,1158.25.mm,26.mm], [226.5.mm,1156.mm,26.mm], [228.5.mm,1156.mm,29.mm], [228.8349364905389.mm,1157.25.mm,29.mm])
+  ge.add_face([226.5.mm,1156.mm,26.mm], [227.10288568297003.mm,1153.75.mm,26.mm], [228.8349364905389.mm,1154.75.mm,29.mm], [228.5.mm,1156.mm,29.mm])
+  ge.add_face([227.10288568297003.mm,1153.75.mm,26.mm], [228.75.mm,1152.10288568297.mm,26.mm], [229.75.mm,1153.834936490539.mm,29.mm], [228.8349364905389.mm,1154.75.mm,29.mm])
+  ge.add_face([228.75.mm,1152.10288568297.mm,26.mm], [231.mm,1151.5.mm,26.mm], [231.mm,1153.5.mm,29.mm], [229.75.mm,1153.834936490539.mm,29.mm])
+  ge.add_face([231.mm,1151.5.mm,26.mm], [233.25.mm,1152.10288568297.mm,26.mm], [232.25.mm,1153.834936490539.mm,29.mm], [231.mm,1153.5.mm,29.mm])
+  ge.add_face([233.25.mm,1152.10288568297.mm,26.mm], [234.89711431702997.mm,1153.75.mm,26.mm], [233.1650635094611.mm,1154.75.mm,29.mm], [232.25.mm,1153.834936490539.mm,29.mm])
+  ge.add_face([234.89711431702997.mm,1153.75.mm,26.mm], [235.5.mm,1156.mm,26.mm], [233.5.mm,1156.mm,29.mm], [233.1650635094611.mm,1154.75.mm,29.mm])
+  ge.add_face([235.5.mm,1156.mm,26.mm], [234.89711431702997.mm,1158.25.mm,26.mm], [233.25.mm,1159.89711431703.mm,26.mm], [231.mm,1160.5.mm,26.mm], [228.75.mm,1159.89711431703.mm,26.mm], [227.10288568297003.mm,1158.25.mm,26.mm], [226.5.mm,1156.mm,26.mm], [227.10288568297003.mm,1153.75.mm,26.mm], [228.75.mm,1152.10288568297.mm,26.mm], [231.mm,1151.5.mm,26.mm], [233.25.mm,1152.10288568297.mm,26.mm], [234.89711431702997.mm,1153.75.mm,26.mm])
+  mat = model.materials["Clamp Bolt CSK Head L"] || model.materials.add("Clamp Bolt CSK Head L")
+  mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
 
   # Clamp Spacer L
@@ -4666,26 +4708,68 @@ end
   grp = ents.add_group
   grp.name = "Clamp Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([209.mm,1204.mm,22.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([209.mm,1204.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(39.mm)
+  cface.pushpull(35.mm)
   mat = model.materials["Axle Pin 10mm L"] || model.materials.add("Axle Pin 10mm L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
+  grp.material = mat
+
+  # Clamp Bolt CSK Head L
+  grp = ents.add_group
+  grp.name = "Clamp Bolt CSK Head L"
+  ge = grp.entities
+  ge.add_face([213.5.mm,1204.mm,26.mm], [212.89711431702997.mm,1206.25.mm,26.mm], [211.1650635094611.mm,1205.25.mm,29.mm], [211.5.mm,1204.mm,29.mm])
+  ge.add_face([212.89711431702997.mm,1206.25.mm,26.mm], [211.25.mm,1207.89711431703.mm,26.mm], [210.25.mm,1206.165063509461.mm,29.mm], [211.1650635094611.mm,1205.25.mm,29.mm])
+  ge.add_face([211.25.mm,1207.89711431703.mm,26.mm], [209.mm,1208.5.mm,26.mm], [209.mm,1206.5.mm,29.mm], [210.25.mm,1206.165063509461.mm,29.mm])
+  ge.add_face([209.mm,1208.5.mm,26.mm], [206.75.mm,1207.89711431703.mm,26.mm], [207.75.mm,1206.165063509461.mm,29.mm], [209.mm,1206.5.mm,29.mm])
+  ge.add_face([206.75.mm,1207.89711431703.mm,26.mm], [205.10288568297003.mm,1206.25.mm,26.mm], [206.8349364905389.mm,1205.25.mm,29.mm], [207.75.mm,1206.165063509461.mm,29.mm])
+  ge.add_face([205.10288568297003.mm,1206.25.mm,26.mm], [204.5.mm,1204.mm,26.mm], [206.5.mm,1204.mm,29.mm], [206.8349364905389.mm,1205.25.mm,29.mm])
+  ge.add_face([204.5.mm,1204.mm,26.mm], [205.10288568297003.mm,1201.75.mm,26.mm], [206.8349364905389.mm,1202.75.mm,29.mm], [206.5.mm,1204.mm,29.mm])
+  ge.add_face([205.10288568297003.mm,1201.75.mm,26.mm], [206.75.mm,1200.10288568297.mm,26.mm], [207.75.mm,1201.834936490539.mm,29.mm], [206.8349364905389.mm,1202.75.mm,29.mm])
+  ge.add_face([206.75.mm,1200.10288568297.mm,26.mm], [209.mm,1199.5.mm,26.mm], [209.mm,1201.5.mm,29.mm], [207.75.mm,1201.834936490539.mm,29.mm])
+  ge.add_face([209.mm,1199.5.mm,26.mm], [211.25.mm,1200.10288568297.mm,26.mm], [210.25.mm,1201.834936490539.mm,29.mm], [209.mm,1201.5.mm,29.mm])
+  ge.add_face([211.25.mm,1200.10288568297.mm,26.mm], [212.89711431702997.mm,1201.75.mm,26.mm], [211.1650635094611.mm,1202.75.mm,29.mm], [210.25.mm,1201.834936490539.mm,29.mm])
+  ge.add_face([212.89711431702997.mm,1201.75.mm,26.mm], [213.5.mm,1204.mm,26.mm], [211.5.mm,1204.mm,29.mm], [211.1650635094611.mm,1202.75.mm,29.mm])
+  ge.add_face([213.5.mm,1204.mm,26.mm], [212.89711431702997.mm,1206.25.mm,26.mm], [211.25.mm,1207.89711431703.mm,26.mm], [209.mm,1208.5.mm,26.mm], [206.75.mm,1207.89711431703.mm,26.mm], [205.10288568297003.mm,1206.25.mm,26.mm], [204.5.mm,1204.mm,26.mm], [205.10288568297003.mm,1201.75.mm,26.mm], [206.75.mm,1200.10288568297.mm,26.mm], [209.mm,1199.5.mm,26.mm], [211.25.mm,1200.10288568297.mm,26.mm], [212.89711431702997.mm,1201.75.mm,26.mm])
+  mat = model.materials["Clamp Bolt CSK Head L"] || model.materials.add("Clamp Bolt CSK Head L")
+  mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
 
   # Clamp Bolt L
   grp = ents.add_group
   grp.name = "Clamp Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([231.mm,1204.mm,22.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([231.mm,1204.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(39.mm)
+  cface.pushpull(35.mm)
   mat = model.materials["Axle Pin 10mm L"] || model.materials.add("Axle Pin 10mm L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
+  grp.material = mat
+
+  # Clamp Bolt CSK Head L
+  grp = ents.add_group
+  grp.name = "Clamp Bolt CSK Head L"
+  ge = grp.entities
+  ge.add_face([235.5.mm,1204.mm,26.mm], [234.89711431702997.mm,1206.25.mm,26.mm], [233.1650635094611.mm,1205.25.mm,29.mm], [233.5.mm,1204.mm,29.mm])
+  ge.add_face([234.89711431702997.mm,1206.25.mm,26.mm], [233.25.mm,1207.89711431703.mm,26.mm], [232.25.mm,1206.165063509461.mm,29.mm], [233.1650635094611.mm,1205.25.mm,29.mm])
+  ge.add_face([233.25.mm,1207.89711431703.mm,26.mm], [231.mm,1208.5.mm,26.mm], [231.mm,1206.5.mm,29.mm], [232.25.mm,1206.165063509461.mm,29.mm])
+  ge.add_face([231.mm,1208.5.mm,26.mm], [228.75.mm,1207.89711431703.mm,26.mm], [229.75.mm,1206.165063509461.mm,29.mm], [231.mm,1206.5.mm,29.mm])
+  ge.add_face([228.75.mm,1207.89711431703.mm,26.mm], [227.10288568297003.mm,1206.25.mm,26.mm], [228.8349364905389.mm,1205.25.mm,29.mm], [229.75.mm,1206.165063509461.mm,29.mm])
+  ge.add_face([227.10288568297003.mm,1206.25.mm,26.mm], [226.5.mm,1204.mm,26.mm], [228.5.mm,1204.mm,29.mm], [228.8349364905389.mm,1205.25.mm,29.mm])
+  ge.add_face([226.5.mm,1204.mm,26.mm], [227.10288568297003.mm,1201.75.mm,26.mm], [228.8349364905389.mm,1202.75.mm,29.mm], [228.5.mm,1204.mm,29.mm])
+  ge.add_face([227.10288568297003.mm,1201.75.mm,26.mm], [228.75.mm,1200.10288568297.mm,26.mm], [229.75.mm,1201.834936490539.mm,29.mm], [228.8349364905389.mm,1202.75.mm,29.mm])
+  ge.add_face([228.75.mm,1200.10288568297.mm,26.mm], [231.mm,1199.5.mm,26.mm], [231.mm,1201.5.mm,29.mm], [229.75.mm,1201.834936490539.mm,29.mm])
+  ge.add_face([231.mm,1199.5.mm,26.mm], [233.25.mm,1200.10288568297.mm,26.mm], [232.25.mm,1201.834936490539.mm,29.mm], [231.mm,1201.5.mm,29.mm])
+  ge.add_face([233.25.mm,1200.10288568297.mm,26.mm], [234.89711431702997.mm,1201.75.mm,26.mm], [233.1650635094611.mm,1202.75.mm,29.mm], [232.25.mm,1201.834936490539.mm,29.mm])
+  ge.add_face([234.89711431702997.mm,1201.75.mm,26.mm], [235.5.mm,1204.mm,26.mm], [233.5.mm,1204.mm,29.mm], [233.1650635094611.mm,1202.75.mm,29.mm])
+  ge.add_face([235.5.mm,1204.mm,26.mm], [234.89711431702997.mm,1206.25.mm,26.mm], [233.25.mm,1207.89711431703.mm,26.mm], [231.mm,1208.5.mm,26.mm], [228.75.mm,1207.89711431703.mm,26.mm], [227.10288568297003.mm,1206.25.mm,26.mm], [226.5.mm,1204.mm,26.mm], [227.10288568297003.mm,1201.75.mm,26.mm], [228.75.mm,1200.10288568297.mm,26.mm], [231.mm,1199.5.mm,26.mm], [233.25.mm,1200.10288568297.mm,26.mm], [234.89711431702997.mm,1201.75.mm,26.mm])
+  mat = model.materials["Clamp Bolt CSK Head L"] || model.materials.add("Clamp Bolt CSK Head L")
+  mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
 
   # Carriage Plate L R
@@ -4743,8 +4827,8 @@ end
   face = ge.add_face([[4560.mm,1072.mm,36.mm], [4560.mm,1072.07.mm,34.96.mm], [4560.mm,1072.27.mm,33.93.mm], [4560.mm,1072.61.mm,32.94.mm], [4560.mm,1073.07.mm,32.mm], [4560.mm,1073.65.mm,31.13.mm], [4560.mm,1074.34.mm,30.34.mm], [4560.mm,1075.13.mm,29.65.mm], [4560.mm,1076.mm,29.07.mm], [4560.mm,1076.94.mm,28.61.mm], [4560.mm,1077.93.mm,28.27.mm], [4560.mm,1078.96.mm,28.07.mm], [4560.mm,1080.mm,28.mm], [4560.mm,1081.04.mm,28.07.mm], [4560.mm,1082.07.mm,28.27.mm], [4560.mm,1083.06.mm,28.61.mm], [4560.mm,1084.mm,29.07.mm], [4560.mm,1084.87.mm,29.65.mm], [4560.mm,1085.66.mm,30.34.mm], [4560.mm,1086.35.mm,31.13.mm], [4560.mm,1086.93.mm,32.mm], [4560.mm,1087.39.mm,32.94.mm], [4560.mm,1087.73.mm,33.93.mm], [4560.mm,1087.93.mm,34.96.mm], [4560.mm,1088.mm,36.mm], [4560.mm,1086.mm,36.mm], [4560.mm,1085.95.mm,35.22.mm], [4560.mm,1085.8.mm,34.45.mm], [4560.mm,1085.54.mm,33.7.mm], [4560.mm,1085.2.mm,33.mm], [4560.mm,1084.76.mm,32.35.mm], [4560.mm,1084.24.mm,31.76.mm], [4560.mm,1083.65.mm,31.24.mm], [4560.mm,1083.mm,30.8.mm], [4560.mm,1082.3.mm,30.46.mm], [4560.mm,1081.55.mm,30.2.mm], [4560.mm,1080.78.mm,30.05.mm], [4560.mm,1080.mm,30.mm], [4560.mm,1079.22.mm,30.05.mm], [4560.mm,1078.45.mm,30.2.mm], [4560.mm,1077.7.mm,30.46.mm], [4560.mm,1077.mm,30.8.mm], [4560.mm,1076.35.mm,31.24.mm], [4560.mm,1075.76.mm,31.76.mm], [4560.mm,1075.24.mm,32.35.mm], [4560.mm,1074.8.mm,33.mm], [4560.mm,1074.46.mm,33.7.mm], [4560.mm,1074.2.mm,34.45.mm], [4560.mm,1074.05.mm,35.22.mm], [4560.mm,1074.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4754,8 +4838,8 @@ end
   face = grp.entities.add_face([4560.mm,1064.mm,36.mm], [4566.mm,1064.mm,36.mm], [4566.mm,1074.mm,36.mm], [4560.mm,1074.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4778,8 +4862,8 @@ end
   face = grp.entities.add_face([4560.mm,1086.mm,36.mm], [4566.mm,1086.mm,36.mm], [4566.mm,1096.mm,36.mm], [4560.mm,1096.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4803,8 +4887,8 @@ end
   face = ge.add_face([[4592.mm,1072.mm,36.mm], [4592.mm,1072.07.mm,34.96.mm], [4592.mm,1072.27.mm,33.93.mm], [4592.mm,1072.61.mm,32.94.mm], [4592.mm,1073.07.mm,32.mm], [4592.mm,1073.65.mm,31.13.mm], [4592.mm,1074.34.mm,30.34.mm], [4592.mm,1075.13.mm,29.65.mm], [4592.mm,1076.mm,29.07.mm], [4592.mm,1076.94.mm,28.61.mm], [4592.mm,1077.93.mm,28.27.mm], [4592.mm,1078.96.mm,28.07.mm], [4592.mm,1080.mm,28.mm], [4592.mm,1081.04.mm,28.07.mm], [4592.mm,1082.07.mm,28.27.mm], [4592.mm,1083.06.mm,28.61.mm], [4592.mm,1084.mm,29.07.mm], [4592.mm,1084.87.mm,29.65.mm], [4592.mm,1085.66.mm,30.34.mm], [4592.mm,1086.35.mm,31.13.mm], [4592.mm,1086.93.mm,32.mm], [4592.mm,1087.39.mm,32.94.mm], [4592.mm,1087.73.mm,33.93.mm], [4592.mm,1087.93.mm,34.96.mm], [4592.mm,1088.mm,36.mm], [4592.mm,1086.mm,36.mm], [4592.mm,1085.95.mm,35.22.mm], [4592.mm,1085.8.mm,34.45.mm], [4592.mm,1085.54.mm,33.7.mm], [4592.mm,1085.2.mm,33.mm], [4592.mm,1084.76.mm,32.35.mm], [4592.mm,1084.24.mm,31.76.mm], [4592.mm,1083.65.mm,31.24.mm], [4592.mm,1083.mm,30.8.mm], [4592.mm,1082.3.mm,30.46.mm], [4592.mm,1081.55.mm,30.2.mm], [4592.mm,1080.78.mm,30.05.mm], [4592.mm,1080.mm,30.mm], [4592.mm,1079.22.mm,30.05.mm], [4592.mm,1078.45.mm,30.2.mm], [4592.mm,1077.7.mm,30.46.mm], [4592.mm,1077.mm,30.8.mm], [4592.mm,1076.35.mm,31.24.mm], [4592.mm,1075.76.mm,31.76.mm], [4592.mm,1075.24.mm,32.35.mm], [4592.mm,1074.8.mm,33.mm], [4592.mm,1074.46.mm,33.7.mm], [4592.mm,1074.2.mm,34.45.mm], [4592.mm,1074.05.mm,35.22.mm], [4592.mm,1074.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4814,8 +4898,8 @@ end
   face = grp.entities.add_face([4592.mm,1064.mm,36.mm], [4598.mm,1064.mm,36.mm], [4598.mm,1074.mm,36.mm], [4592.mm,1074.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4838,8 +4922,8 @@ end
   face = grp.entities.add_face([4592.mm,1086.mm,36.mm], [4598.mm,1086.mm,36.mm], [4598.mm,1096.mm,36.mm], [4592.mm,1096.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4889,8 +4973,8 @@ end
   face = ge.add_face([[4560.mm,1272.mm,36.mm], [4560.mm,1272.07.mm,34.96.mm], [4560.mm,1272.27.mm,33.93.mm], [4560.mm,1272.61.mm,32.94.mm], [4560.mm,1273.07.mm,32.mm], [4560.mm,1273.65.mm,31.13.mm], [4560.mm,1274.34.mm,30.34.mm], [4560.mm,1275.13.mm,29.65.mm], [4560.mm,1276.mm,29.07.mm], [4560.mm,1276.94.mm,28.61.mm], [4560.mm,1277.93.mm,28.27.mm], [4560.mm,1278.96.mm,28.07.mm], [4560.mm,1280.mm,28.mm], [4560.mm,1281.04.mm,28.07.mm], [4560.mm,1282.07.mm,28.27.mm], [4560.mm,1283.06.mm,28.61.mm], [4560.mm,1284.mm,29.07.mm], [4560.mm,1284.87.mm,29.65.mm], [4560.mm,1285.66.mm,30.34.mm], [4560.mm,1286.35.mm,31.13.mm], [4560.mm,1286.93.mm,32.mm], [4560.mm,1287.39.mm,32.94.mm], [4560.mm,1287.73.mm,33.93.mm], [4560.mm,1287.93.mm,34.96.mm], [4560.mm,1288.mm,36.mm], [4560.mm,1286.mm,36.mm], [4560.mm,1285.95.mm,35.22.mm], [4560.mm,1285.8.mm,34.45.mm], [4560.mm,1285.54.mm,33.7.mm], [4560.mm,1285.2.mm,33.mm], [4560.mm,1284.76.mm,32.35.mm], [4560.mm,1284.24.mm,31.76.mm], [4560.mm,1283.65.mm,31.24.mm], [4560.mm,1283.mm,30.8.mm], [4560.mm,1282.3.mm,30.46.mm], [4560.mm,1281.55.mm,30.2.mm], [4560.mm,1280.78.mm,30.05.mm], [4560.mm,1280.mm,30.mm], [4560.mm,1279.22.mm,30.05.mm], [4560.mm,1278.45.mm,30.2.mm], [4560.mm,1277.7.mm,30.46.mm], [4560.mm,1277.mm,30.8.mm], [4560.mm,1276.35.mm,31.24.mm], [4560.mm,1275.76.mm,31.76.mm], [4560.mm,1275.24.mm,32.35.mm], [4560.mm,1274.8.mm,33.mm], [4560.mm,1274.46.mm,33.7.mm], [4560.mm,1274.2.mm,34.45.mm], [4560.mm,1274.05.mm,35.22.mm], [4560.mm,1274.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4900,8 +4984,8 @@ end
   face = grp.entities.add_face([4560.mm,1264.mm,36.mm], [4566.mm,1264.mm,36.mm], [4566.mm,1274.mm,36.mm], [4560.mm,1274.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4924,8 +5008,8 @@ end
   face = grp.entities.add_face([4560.mm,1286.mm,36.mm], [4566.mm,1286.mm,36.mm], [4566.mm,1296.mm,36.mm], [4560.mm,1296.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4949,8 +5033,8 @@ end
   face = ge.add_face([[4592.mm,1272.mm,36.mm], [4592.mm,1272.07.mm,34.96.mm], [4592.mm,1272.27.mm,33.93.mm], [4592.mm,1272.61.mm,32.94.mm], [4592.mm,1273.07.mm,32.mm], [4592.mm,1273.65.mm,31.13.mm], [4592.mm,1274.34.mm,30.34.mm], [4592.mm,1275.13.mm,29.65.mm], [4592.mm,1276.mm,29.07.mm], [4592.mm,1276.94.mm,28.61.mm], [4592.mm,1277.93.mm,28.27.mm], [4592.mm,1278.96.mm,28.07.mm], [4592.mm,1280.mm,28.mm], [4592.mm,1281.04.mm,28.07.mm], [4592.mm,1282.07.mm,28.27.mm], [4592.mm,1283.06.mm,28.61.mm], [4592.mm,1284.mm,29.07.mm], [4592.mm,1284.87.mm,29.65.mm], [4592.mm,1285.66.mm,30.34.mm], [4592.mm,1286.35.mm,31.13.mm], [4592.mm,1286.93.mm,32.mm], [4592.mm,1287.39.mm,32.94.mm], [4592.mm,1287.73.mm,33.93.mm], [4592.mm,1287.93.mm,34.96.mm], [4592.mm,1288.mm,36.mm], [4592.mm,1286.mm,36.mm], [4592.mm,1285.95.mm,35.22.mm], [4592.mm,1285.8.mm,34.45.mm], [4592.mm,1285.54.mm,33.7.mm], [4592.mm,1285.2.mm,33.mm], [4592.mm,1284.76.mm,32.35.mm], [4592.mm,1284.24.mm,31.76.mm], [4592.mm,1283.65.mm,31.24.mm], [4592.mm,1283.mm,30.8.mm], [4592.mm,1282.3.mm,30.46.mm], [4592.mm,1281.55.mm,30.2.mm], [4592.mm,1280.78.mm,30.05.mm], [4592.mm,1280.mm,30.mm], [4592.mm,1279.22.mm,30.05.mm], [4592.mm,1278.45.mm,30.2.mm], [4592.mm,1277.7.mm,30.46.mm], [4592.mm,1277.mm,30.8.mm], [4592.mm,1276.35.mm,31.24.mm], [4592.mm,1275.76.mm,31.76.mm], [4592.mm,1275.24.mm,32.35.mm], [4592.mm,1274.8.mm,33.mm], [4592.mm,1274.46.mm,33.7.mm], [4592.mm,1274.2.mm,34.45.mm], [4592.mm,1274.05.mm,35.22.mm], [4592.mm,1274.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4960,8 +5044,8 @@ end
   face = grp.entities.add_face([4592.mm,1264.mm,36.mm], [4598.mm,1264.mm,36.mm], [4598.mm,1274.mm,36.mm], [4592.mm,1274.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4984,8 +5068,8 @@ end
   face = grp.entities.add_face([4592.mm,1286.mm,36.mm], [4598.mm,1286.mm,36.mm], [4598.mm,1296.mm,36.mm], [4592.mm,1296.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5008,8 +5092,8 @@ end
   face = grp.entities.add_face([4559.mm,1148.mm,26.mm], [4599.mm,1148.mm,26.mm], [4599.mm,1212.mm,26.mm], [4559.mm,1212.mm,26.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5019,8 +5103,8 @@ end
   face = grp.entities.add_face([4559.mm,1148.mm,54.mm], [4599.mm,1148.mm,54.mm], [4599.mm,1212.mm,54.mm], [4559.mm,1212.mm,54.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5039,26 +5123,68 @@ end
   grp = ents.add_group
   grp.name = "Clamp Bolt R"
   ge = grp.entities
-  circle = ge.add_circle([4568.mm,1156.mm,22.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4568.mm,1156.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(39.mm)
+  cface.pushpull(35.mm)
   mat = model.materials["Axle Pin 10mm L"] || model.materials.add("Axle Pin 10mm L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
+  grp.material = mat
+
+  # Clamp Bolt CSK Head R
+  grp = ents.add_group
+  grp.name = "Clamp Bolt CSK Head R"
+  ge = grp.entities
+  ge.add_face([4572.5.mm,1156.mm,26.mm], [4571.89711431703.mm,1158.25.mm,26.mm], [4570.165063509461.mm,1157.25.mm,29.mm], [4570.5.mm,1156.mm,29.mm])
+  ge.add_face([4571.89711431703.mm,1158.25.mm,26.mm], [4570.25.mm,1159.89711431703.mm,26.mm], [4569.25.mm,1158.165063509461.mm,29.mm], [4570.165063509461.mm,1157.25.mm,29.mm])
+  ge.add_face([4570.25.mm,1159.89711431703.mm,26.mm], [4568.mm,1160.5.mm,26.mm], [4568.mm,1158.5.mm,29.mm], [4569.25.mm,1158.165063509461.mm,29.mm])
+  ge.add_face([4568.mm,1160.5.mm,26.mm], [4565.75.mm,1159.89711431703.mm,26.mm], [4566.75.mm,1158.165063509461.mm,29.mm], [4568.mm,1158.5.mm,29.mm])
+  ge.add_face([4565.75.mm,1159.89711431703.mm,26.mm], [4564.10288568297.mm,1158.25.mm,26.mm], [4565.834936490539.mm,1157.25.mm,29.mm], [4566.75.mm,1158.165063509461.mm,29.mm])
+  ge.add_face([4564.10288568297.mm,1158.25.mm,26.mm], [4563.5.mm,1156.mm,26.mm], [4565.5.mm,1156.mm,29.mm], [4565.834936490539.mm,1157.25.mm,29.mm])
+  ge.add_face([4563.5.mm,1156.mm,26.mm], [4564.10288568297.mm,1153.75.mm,26.mm], [4565.834936490539.mm,1154.75.mm,29.mm], [4565.5.mm,1156.mm,29.mm])
+  ge.add_face([4564.10288568297.mm,1153.75.mm,26.mm], [4565.75.mm,1152.10288568297.mm,26.mm], [4566.75.mm,1153.834936490539.mm,29.mm], [4565.834936490539.mm,1154.75.mm,29.mm])
+  ge.add_face([4565.75.mm,1152.10288568297.mm,26.mm], [4568.mm,1151.5.mm,26.mm], [4568.mm,1153.5.mm,29.mm], [4566.75.mm,1153.834936490539.mm,29.mm])
+  ge.add_face([4568.mm,1151.5.mm,26.mm], [4570.25.mm,1152.10288568297.mm,26.mm], [4569.25.mm,1153.834936490539.mm,29.mm], [4568.mm,1153.5.mm,29.mm])
+  ge.add_face([4570.25.mm,1152.10288568297.mm,26.mm], [4571.89711431703.mm,1153.75.mm,26.mm], [4570.165063509461.mm,1154.75.mm,29.mm], [4569.25.mm,1153.834936490539.mm,29.mm])
+  ge.add_face([4571.89711431703.mm,1153.75.mm,26.mm], [4572.5.mm,1156.mm,26.mm], [4570.5.mm,1156.mm,29.mm], [4570.165063509461.mm,1154.75.mm,29.mm])
+  ge.add_face([4572.5.mm,1156.mm,26.mm], [4571.89711431703.mm,1158.25.mm,26.mm], [4570.25.mm,1159.89711431703.mm,26.mm], [4568.mm,1160.5.mm,26.mm], [4565.75.mm,1159.89711431703.mm,26.mm], [4564.10288568297.mm,1158.25.mm,26.mm], [4563.5.mm,1156.mm,26.mm], [4564.10288568297.mm,1153.75.mm,26.mm], [4565.75.mm,1152.10288568297.mm,26.mm], [4568.mm,1151.5.mm,26.mm], [4570.25.mm,1152.10288568297.mm,26.mm], [4571.89711431703.mm,1153.75.mm,26.mm])
+  mat = model.materials["Clamp Bolt CSK Head R"] || model.materials.add("Clamp Bolt CSK Head R")
+  mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
 
   # Clamp Bolt R
   grp = ents.add_group
   grp.name = "Clamp Bolt R"
   ge = grp.entities
-  circle = ge.add_circle([4590.mm,1156.mm,22.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4590.mm,1156.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(39.mm)
+  cface.pushpull(35.mm)
   mat = model.materials["Axle Pin 10mm L"] || model.materials.add("Axle Pin 10mm L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
+  grp.material = mat
+
+  # Clamp Bolt CSK Head R
+  grp = ents.add_group
+  grp.name = "Clamp Bolt CSK Head R"
+  ge = grp.entities
+  ge.add_face([4594.5.mm,1156.mm,26.mm], [4593.89711431703.mm,1158.25.mm,26.mm], [4592.165063509461.mm,1157.25.mm,29.mm], [4592.5.mm,1156.mm,29.mm])
+  ge.add_face([4593.89711431703.mm,1158.25.mm,26.mm], [4592.25.mm,1159.89711431703.mm,26.mm], [4591.25.mm,1158.165063509461.mm,29.mm], [4592.165063509461.mm,1157.25.mm,29.mm])
+  ge.add_face([4592.25.mm,1159.89711431703.mm,26.mm], [4590.mm,1160.5.mm,26.mm], [4590.mm,1158.5.mm,29.mm], [4591.25.mm,1158.165063509461.mm,29.mm])
+  ge.add_face([4590.mm,1160.5.mm,26.mm], [4587.75.mm,1159.89711431703.mm,26.mm], [4588.75.mm,1158.165063509461.mm,29.mm], [4590.mm,1158.5.mm,29.mm])
+  ge.add_face([4587.75.mm,1159.89711431703.mm,26.mm], [4586.10288568297.mm,1158.25.mm,26.mm], [4587.834936490539.mm,1157.25.mm,29.mm], [4588.75.mm,1158.165063509461.mm,29.mm])
+  ge.add_face([4586.10288568297.mm,1158.25.mm,26.mm], [4585.5.mm,1156.mm,26.mm], [4587.5.mm,1156.mm,29.mm], [4587.834936490539.mm,1157.25.mm,29.mm])
+  ge.add_face([4585.5.mm,1156.mm,26.mm], [4586.10288568297.mm,1153.75.mm,26.mm], [4587.834936490539.mm,1154.75.mm,29.mm], [4587.5.mm,1156.mm,29.mm])
+  ge.add_face([4586.10288568297.mm,1153.75.mm,26.mm], [4587.75.mm,1152.10288568297.mm,26.mm], [4588.75.mm,1153.834936490539.mm,29.mm], [4587.834936490539.mm,1154.75.mm,29.mm])
+  ge.add_face([4587.75.mm,1152.10288568297.mm,26.mm], [4590.mm,1151.5.mm,26.mm], [4590.mm,1153.5.mm,29.mm], [4588.75.mm,1153.834936490539.mm,29.mm])
+  ge.add_face([4590.mm,1151.5.mm,26.mm], [4592.25.mm,1152.10288568297.mm,26.mm], [4591.25.mm,1153.834936490539.mm,29.mm], [4590.mm,1153.5.mm,29.mm])
+  ge.add_face([4592.25.mm,1152.10288568297.mm,26.mm], [4593.89711431703.mm,1153.75.mm,26.mm], [4592.165063509461.mm,1154.75.mm,29.mm], [4591.25.mm,1153.834936490539.mm,29.mm])
+  ge.add_face([4593.89711431703.mm,1153.75.mm,26.mm], [4594.5.mm,1156.mm,26.mm], [4592.5.mm,1156.mm,29.mm], [4592.165063509461.mm,1154.75.mm,29.mm])
+  ge.add_face([4594.5.mm,1156.mm,26.mm], [4593.89711431703.mm,1158.25.mm,26.mm], [4592.25.mm,1159.89711431703.mm,26.mm], [4590.mm,1160.5.mm,26.mm], [4587.75.mm,1159.89711431703.mm,26.mm], [4586.10288568297.mm,1158.25.mm,26.mm], [4585.5.mm,1156.mm,26.mm], [4586.10288568297.mm,1153.75.mm,26.mm], [4587.75.mm,1152.10288568297.mm,26.mm], [4590.mm,1151.5.mm,26.mm], [4592.25.mm,1152.10288568297.mm,26.mm], [4593.89711431703.mm,1153.75.mm,26.mm])
+  mat = model.materials["Clamp Bolt CSK Head R"] || model.materials.add("Clamp Bolt CSK Head R")
+  mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
 
   # Clamp Spacer R
@@ -5076,26 +5202,68 @@ end
   grp = ents.add_group
   grp.name = "Clamp Bolt R"
   ge = grp.entities
-  circle = ge.add_circle([4568.mm,1204.mm,22.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4568.mm,1204.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(39.mm)
+  cface.pushpull(35.mm)
   mat = model.materials["Axle Pin 10mm L"] || model.materials.add("Axle Pin 10mm L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
+  grp.material = mat
+
+  # Clamp Bolt CSK Head R
+  grp = ents.add_group
+  grp.name = "Clamp Bolt CSK Head R"
+  ge = grp.entities
+  ge.add_face([4572.5.mm,1204.mm,26.mm], [4571.89711431703.mm,1206.25.mm,26.mm], [4570.165063509461.mm,1205.25.mm,29.mm], [4570.5.mm,1204.mm,29.mm])
+  ge.add_face([4571.89711431703.mm,1206.25.mm,26.mm], [4570.25.mm,1207.89711431703.mm,26.mm], [4569.25.mm,1206.165063509461.mm,29.mm], [4570.165063509461.mm,1205.25.mm,29.mm])
+  ge.add_face([4570.25.mm,1207.89711431703.mm,26.mm], [4568.mm,1208.5.mm,26.mm], [4568.mm,1206.5.mm,29.mm], [4569.25.mm,1206.165063509461.mm,29.mm])
+  ge.add_face([4568.mm,1208.5.mm,26.mm], [4565.75.mm,1207.89711431703.mm,26.mm], [4566.75.mm,1206.165063509461.mm,29.mm], [4568.mm,1206.5.mm,29.mm])
+  ge.add_face([4565.75.mm,1207.89711431703.mm,26.mm], [4564.10288568297.mm,1206.25.mm,26.mm], [4565.834936490539.mm,1205.25.mm,29.mm], [4566.75.mm,1206.165063509461.mm,29.mm])
+  ge.add_face([4564.10288568297.mm,1206.25.mm,26.mm], [4563.5.mm,1204.mm,26.mm], [4565.5.mm,1204.mm,29.mm], [4565.834936490539.mm,1205.25.mm,29.mm])
+  ge.add_face([4563.5.mm,1204.mm,26.mm], [4564.10288568297.mm,1201.75.mm,26.mm], [4565.834936490539.mm,1202.75.mm,29.mm], [4565.5.mm,1204.mm,29.mm])
+  ge.add_face([4564.10288568297.mm,1201.75.mm,26.mm], [4565.75.mm,1200.10288568297.mm,26.mm], [4566.75.mm,1201.834936490539.mm,29.mm], [4565.834936490539.mm,1202.75.mm,29.mm])
+  ge.add_face([4565.75.mm,1200.10288568297.mm,26.mm], [4568.mm,1199.5.mm,26.mm], [4568.mm,1201.5.mm,29.mm], [4566.75.mm,1201.834936490539.mm,29.mm])
+  ge.add_face([4568.mm,1199.5.mm,26.mm], [4570.25.mm,1200.10288568297.mm,26.mm], [4569.25.mm,1201.834936490539.mm,29.mm], [4568.mm,1201.5.mm,29.mm])
+  ge.add_face([4570.25.mm,1200.10288568297.mm,26.mm], [4571.89711431703.mm,1201.75.mm,26.mm], [4570.165063509461.mm,1202.75.mm,29.mm], [4569.25.mm,1201.834936490539.mm,29.mm])
+  ge.add_face([4571.89711431703.mm,1201.75.mm,26.mm], [4572.5.mm,1204.mm,26.mm], [4570.5.mm,1204.mm,29.mm], [4570.165063509461.mm,1202.75.mm,29.mm])
+  ge.add_face([4572.5.mm,1204.mm,26.mm], [4571.89711431703.mm,1206.25.mm,26.mm], [4570.25.mm,1207.89711431703.mm,26.mm], [4568.mm,1208.5.mm,26.mm], [4565.75.mm,1207.89711431703.mm,26.mm], [4564.10288568297.mm,1206.25.mm,26.mm], [4563.5.mm,1204.mm,26.mm], [4564.10288568297.mm,1201.75.mm,26.mm], [4565.75.mm,1200.10288568297.mm,26.mm], [4568.mm,1199.5.mm,26.mm], [4570.25.mm,1200.10288568297.mm,26.mm], [4571.89711431703.mm,1201.75.mm,26.mm])
+  mat = model.materials["Clamp Bolt CSK Head R"] || model.materials.add("Clamp Bolt CSK Head R")
+  mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
 
   # Clamp Bolt R
   grp = ents.add_group
   grp.name = "Clamp Bolt R"
   ge = grp.entities
-  circle = ge.add_circle([4590.mm,1204.mm,22.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4590.mm,1204.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(39.mm)
+  cface.pushpull(35.mm)
   mat = model.materials["Axle Pin 10mm L"] || model.materials.add("Axle Pin 10mm L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
+  grp.material = mat
+
+  # Clamp Bolt CSK Head R
+  grp = ents.add_group
+  grp.name = "Clamp Bolt CSK Head R"
+  ge = grp.entities
+  ge.add_face([4594.5.mm,1204.mm,26.mm], [4593.89711431703.mm,1206.25.mm,26.mm], [4592.165063509461.mm,1205.25.mm,29.mm], [4592.5.mm,1204.mm,29.mm])
+  ge.add_face([4593.89711431703.mm,1206.25.mm,26.mm], [4592.25.mm,1207.89711431703.mm,26.mm], [4591.25.mm,1206.165063509461.mm,29.mm], [4592.165063509461.mm,1205.25.mm,29.mm])
+  ge.add_face([4592.25.mm,1207.89711431703.mm,26.mm], [4590.mm,1208.5.mm,26.mm], [4590.mm,1206.5.mm,29.mm], [4591.25.mm,1206.165063509461.mm,29.mm])
+  ge.add_face([4590.mm,1208.5.mm,26.mm], [4587.75.mm,1207.89711431703.mm,26.mm], [4588.75.mm,1206.165063509461.mm,29.mm], [4590.mm,1206.5.mm,29.mm])
+  ge.add_face([4587.75.mm,1207.89711431703.mm,26.mm], [4586.10288568297.mm,1206.25.mm,26.mm], [4587.834936490539.mm,1205.25.mm,29.mm], [4588.75.mm,1206.165063509461.mm,29.mm])
+  ge.add_face([4586.10288568297.mm,1206.25.mm,26.mm], [4585.5.mm,1204.mm,26.mm], [4587.5.mm,1204.mm,29.mm], [4587.834936490539.mm,1205.25.mm,29.mm])
+  ge.add_face([4585.5.mm,1204.mm,26.mm], [4586.10288568297.mm,1201.75.mm,26.mm], [4587.834936490539.mm,1202.75.mm,29.mm], [4587.5.mm,1204.mm,29.mm])
+  ge.add_face([4586.10288568297.mm,1201.75.mm,26.mm], [4587.75.mm,1200.10288568297.mm,26.mm], [4588.75.mm,1201.834936490539.mm,29.mm], [4587.834936490539.mm,1202.75.mm,29.mm])
+  ge.add_face([4587.75.mm,1200.10288568297.mm,26.mm], [4590.mm,1199.5.mm,26.mm], [4590.mm,1201.5.mm,29.mm], [4588.75.mm,1201.834936490539.mm,29.mm])
+  ge.add_face([4590.mm,1199.5.mm,26.mm], [4592.25.mm,1200.10288568297.mm,26.mm], [4591.25.mm,1201.834936490539.mm,29.mm], [4590.mm,1201.5.mm,29.mm])
+  ge.add_face([4592.25.mm,1200.10288568297.mm,26.mm], [4593.89711431703.mm,1201.75.mm,26.mm], [4592.165063509461.mm,1202.75.mm,29.mm], [4591.25.mm,1201.834936490539.mm,29.mm])
+  ge.add_face([4593.89711431703.mm,1201.75.mm,26.mm], [4594.5.mm,1204.mm,26.mm], [4592.5.mm,1204.mm,29.mm], [4592.165063509461.mm,1202.75.mm,29.mm])
+  ge.add_face([4594.5.mm,1204.mm,26.mm], [4593.89711431703.mm,1206.25.mm,26.mm], [4592.25.mm,1207.89711431703.mm,26.mm], [4590.mm,1208.5.mm,26.mm], [4587.75.mm,1207.89711431703.mm,26.mm], [4586.10288568297.mm,1206.25.mm,26.mm], [4585.5.mm,1204.mm,26.mm], [4586.10288568297.mm,1201.75.mm,26.mm], [4587.75.mm,1200.10288568297.mm,26.mm], [4590.mm,1199.5.mm,26.mm], [4592.25.mm,1200.10288568297.mm,26.mm], [4593.89711431703.mm,1201.75.mm,26.mm])
+  mat = model.materials["Clamp Bolt CSK Head R"] || model.materials.add("Clamp Bolt CSK Head R")
+  mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
 
   # Pole Mount Flange
@@ -7341,8 +7509,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7354,8 +7522,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7367,8 +7535,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7380,8 +7548,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7404,8 +7572,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7417,8 +7585,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7430,8 +7598,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7443,8 +7611,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7467,8 +7635,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7480,8 +7648,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7493,8 +7661,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7506,8 +7674,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7530,8 +7698,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7543,8 +7711,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7556,8 +7724,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7569,8 +7737,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7836,8 +8004,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7849,8 +8017,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7862,8 +8030,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7875,8 +8043,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7921,8 +8089,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7934,8 +8102,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7947,8 +8115,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7960,8 +8128,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8006,8 +8174,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8019,8 +8187,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8032,8 +8200,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8045,8 +8213,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8091,8 +8259,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8104,8 +8272,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8117,8 +8285,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8130,8 +8298,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8269,8 +8437,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8282,8 +8450,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8295,8 +8463,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8321,8 +8489,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8334,8 +8502,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8347,8 +8515,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8373,8 +8541,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8386,8 +8554,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8399,8 +8567,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8425,8 +8593,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8438,8 +8606,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8451,8 +8619,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8477,8 +8645,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(26.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8490,8 +8658,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8503,8 +8671,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8517,7 +8685,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(60.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8530,7 +8698,7 @@ end
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(36.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8543,7 +8711,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8556,7 +8724,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8569,7 +8737,7 @@ end
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8740,7 +8908,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(78.mm)
   mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
-  mat.color = Sketchup::Color.new(34, 34, 40)
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8754,7 +8922,7 @@ end
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
-  mat.color = Sketchup::Color.new(34, 34, 40)
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8768,7 +8936,7 @@ end
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
-  mat.color = Sketchup::Color.new(34, 34, 40)
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8807,7 +8975,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(78.mm)
   mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
-  mat.color = Sketchup::Color.new(34, 34, 40)
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8821,7 +8989,7 @@ end
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
-  mat.color = Sketchup::Color.new(34, 34, 40)
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8835,7 +9003,7 @@ end
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
-  mat.color = Sketchup::Color.new(34, 34, 40)
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8874,7 +9042,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(78.mm)
   mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
-  mat.color = Sketchup::Color.new(34, 34, 40)
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8888,7 +9056,7 @@ end
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
-  mat.color = Sketchup::Color.new(34, 34, 40)
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8902,7 +9070,7 @@ end
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
-  mat.color = Sketchup::Color.new(34, 34, 40)
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8940,8 +9108,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8953,8 +9121,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8966,8 +9134,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9495,8 +9663,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
-  mat = model.materials["BV-03 (P-02 suction)"] || model.materials.add("BV-03 (P-02 suction)")
-  mat.color = Sketchup::Color.new(122, 128, 136)
+  mat = model.materials["Axle Pin 10mm L"] || model.materials.add("Axle Pin 10mm L")
+  mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -10257,7 +10425,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(168.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -10279,7 +10447,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(168.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -10301,7 +10469,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(168.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -10323,7 +10491,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(168.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -10476,8 +10644,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2120.mm)
-  mat = model.materials["LT Drum opening brush seal"] || model.materials.add("LT Drum opening brush seal")
-  mat.color = Sketchup::Color.new(126, 126, 118)
+  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -10489,8 +10657,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2120.mm)
-  mat = model.materials["LT Drum opening brush seal"] || model.materials.add("LT Drum opening brush seal")
-  mat.color = Sketchup::Color.new(126, 126, 118)
+  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -10646,8 +10814,8 @@ end
   face = grp.entities.add_face([1844.mm,25.mm,1190.mm], [2008.mm,25.mm,1190.mm], [2008.mm,64.mm,1190.mm], [1844.mm,64.mm,1190.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(28.mm)
-  mat = model.materials["Fuse Block base (Blue Sea 5026)"] || model.materials.add("Fuse Block base (Blue Sea 5026)")
-  mat.color = Sketchup::Color.new(43, 43, 48)
+  mat = model.materials["Side Poly Manifold (3/4 LDPE)"] || model.materials.add("Side Poly Manifold (3/4 LDPE)")
+  mat.color = Sketchup::Color.new(42, 42, 42)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -10679,8 +10847,8 @@ end
   face = grp.entities.add_face([1896.0714285714287.mm,40.mm,1218.mm], [1909.0714285714287.mm,40.mm,1218.mm], [1909.0714285714287.mm,49.mm,1218.mm], [1896.0714285714287.mm,49.mm,1218.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(42.mm)
-  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -10734,8 +10902,8 @@ end
   face = grp.entities.add_face([1934.mm,0.mm,1045.mm], [1984.mm,0.mm,1045.mm], [1984.mm,46.mm,1045.mm], [1934.mm,46.mm,1045.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(84.mm)
-  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
-  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -10767,8 +10935,8 @@ end
   face = grp.entities.add_face([1844.mm,30.mm,1290.mm], [1964.mm,30.mm,1290.mm], [1964.mm,50.mm,1290.mm], [1844.mm,50.mm,1290.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["Busbar (-)"] || model.materials.add("Busbar (-)")
-  mat.color = Sketchup::Color.new(44, 44, 44)
+  mat = model.materials["Side Poly Manifold (3/4 LDPE)"] || model.materials.add("Side Poly Manifold (3/4 LDPE)")
+  mat.color = Sketchup::Color.new(42, 42, 42)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -10859,8 +11027,8 @@ end
   face = grp.entities.add_face([1844.mm,95.mm,1305.mm], [1889.mm,95.mm,1305.mm], [1889.mm,125.mm,1305.mm], [1844.mm,125.mm,1305.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(45.mm)
-  mat = model.materials["Charge-line Fuse (60A, MPPT -> battery)"] || model.materials.add("Charge-line Fuse (60A, MPPT -> battery)")
-  mat.color = Sketchup::Color.new(34, 34, 34)
+  mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -10929,8 +11097,8 @@ end
   face = grp.entities.add_face([1979.mm,20.mm,624.mm], [2019.mm,20.mm,624.mm], [2019.mm,60.mm,624.mm], [1979.mm,60.mm,624.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
-  mat = model.materials["Charge-line Fuse (60A, MPPT -> battery)"] || model.materials.add("Charge-line Fuse (60A, MPPT -> battery)")
-  mat.color = Sketchup::Color.new(34, 34, 34)
+  mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -11011,8 +11179,8 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
-  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -11024,8 +11192,8 @@ end
   circle = ge.add_circle([1947.mm,60.mm,604.mm], [1.000000,0.000000,0.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
-  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -11038,8 +11206,8 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
-  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -11051,8 +11219,8 @@ end
   circle = ge.add_circle([1969.mm,60.mm,1278.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
-  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -11065,8 +11233,8 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
-  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -11087,8 +11255,8 @@ end
   face = grp.entities.add_face([1250.mm,0.mm,1830.mm], [1590.mm,0.mm,1830.mm], [1590.mm,20.mm,1830.mm], [1250.mm,20.mm,1830.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(240.mm)
-  mat = model.materials["Ext. Power Panel (interior face)"] || model.materials.add("Ext. Power Panel (interior face)")
-  mat.color = Sketchup::Color.new(245, 197, 24)
+  mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
+  mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -11113,7 +11281,7 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["MC4 PV1 (-)"] || model.materials.add("MC4 PV1 (-)")
+  mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
   mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
@@ -11139,7 +11307,7 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["MC4 PV1 (-)"] || model.materials.add("MC4 PV1 (-)")
+  mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
   mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
@@ -11165,7 +11333,7 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["MC4 PV1 (-)"] || model.materials.add("MC4 PV1 (-)")
+  mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
   mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
@@ -13120,8 +13288,8 @@ end
   face = grp.entities.add_face([5122.mm,1151.mm,1222.5.mm], [5170.mm,1151.mm,1222.5.mm], [5170.mm,1211.mm,1222.5.mm], [5122.mm,1211.mm,1222.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(90.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19000,7 +19168,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Chem Shelf (board, deployed)"] || model.materials.add("Chem Shelf (board, deployed)")
-  mat.color = Sketchup::Color.new(200, 176, 106)
+  mat.color = Sketchup::Color.new(200, 176, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19011,7 +19179,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Chem Shelf (board, deployed)"] || model.materials.add("Chem Shelf (board, deployed)")
-  mat.color = Sketchup::Color.new(200, 176, 106)
+  mat.color = Sketchup::Color.new(200, 176, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19022,7 +19190,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Chem Shelf (board, deployed)"] || model.materials.add("Chem Shelf (board, deployed)")
-  mat.color = Sketchup::Color.new(200, 176, 106)
+  mat.color = Sketchup::Color.new(200, 176, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19033,7 +19201,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Chem Shelf (board, deployed)"] || model.materials.add("Chem Shelf (board, deployed)")
-  mat.color = Sketchup::Color.new(200, 176, 106)
+  mat.color = Sketchup::Color.new(200, 176, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19113,8 +19281,8 @@ end
   face = grp.entities.add_face([-50.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
-  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
+  mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19124,8 +19292,8 @@ end
   face = grp.entities.add_face([-50.mm,0.mm,2338.mm], [0.mm,0.mm,2338.mm], [0.mm,2362.mm,2338.mm], [-50.mm,2362.mm,2338.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
-  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
+  mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19135,8 +19303,8 @@ end
   face = grp.entities.add_face([-50.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,50.mm,0.mm], [-50.mm,50.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
-  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
-  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
+  mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19146,8 +19314,8 @@ end
   face = grp.entities.add_face([-50.mm,2312.mm,0.mm], [0.mm,2312.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
-  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
-  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
+  mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19157,8 +19325,8 @@ end
   face = grp.entities.add_face([-32.mm,0.mm,0.mm], [-20.mm,0.mm,0.mm], [-20.mm,2362.mm,0.mm], [-32.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(110.mm)
-  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
-  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
+  mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19168,8 +19336,8 @@ end
   face = grp.entities.add_face([-32.mm,0.mm,2270.mm], [-20.mm,0.mm,2270.mm], [-20.mm,2362.mm,2270.mm], [-32.mm,2362.mm,2270.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(118.mm)
-  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
-  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
+  mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19282,7 +19450,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
-  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19372,7 +19540,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19385,7 +19553,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19398,7 +19566,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19411,7 +19579,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19424,7 +19592,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19437,7 +19605,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19450,7 +19618,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19463,7 +19631,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19476,7 +19644,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19489,7 +19657,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19502,7 +19670,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19515,7 +19683,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19528,7 +19696,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19541,7 +19709,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19554,7 +19722,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19567,7 +19735,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19580,7 +19748,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19593,7 +19761,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19606,7 +19774,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19619,7 +19787,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19632,7 +19800,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19645,7 +19813,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19658,7 +19826,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19671,7 +19839,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19684,7 +19852,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19697,7 +19865,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19710,7 +19878,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19723,7 +19891,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19736,7 +19904,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19749,7 +19917,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19762,7 +19930,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19775,7 +19943,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19788,7 +19956,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19801,7 +19969,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19814,7 +19982,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19827,7 +19995,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19840,7 +20008,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19853,7 +20021,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19866,7 +20034,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19879,7 +20047,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19892,7 +20060,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19905,7 +20073,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19918,7 +20086,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19931,7 +20099,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19944,7 +20112,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19957,7 +20125,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19970,7 +20138,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19983,7 +20151,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19996,7 +20164,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20009,7 +20177,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20022,7 +20190,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20035,7 +20203,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20048,7 +20216,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20061,7 +20229,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20074,7 +20242,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20087,7 +20255,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20100,7 +20268,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20113,7 +20281,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20126,7 +20294,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20150,7 +20318,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20163,7 +20331,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20176,7 +20344,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20189,7 +20357,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20202,7 +20370,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20215,7 +20383,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20228,7 +20396,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20241,7 +20409,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20254,7 +20422,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20267,7 +20435,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20280,7 +20448,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20293,7 +20461,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20306,7 +20474,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20319,7 +20487,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20332,7 +20500,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20345,7 +20513,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20358,7 +20526,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20371,7 +20539,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20384,7 +20552,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20397,7 +20565,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20410,7 +20578,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20423,7 +20591,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20436,7 +20604,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20449,7 +20617,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20462,7 +20630,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20475,7 +20643,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20488,7 +20656,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20501,7 +20669,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20514,7 +20682,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20527,7 +20695,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20540,7 +20708,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20553,7 +20721,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20566,7 +20734,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20579,7 +20747,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20592,7 +20760,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20605,7 +20773,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20618,7 +20786,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20631,7 +20799,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20644,7 +20812,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20657,7 +20825,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20670,7 +20838,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20683,7 +20851,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20696,7 +20864,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20709,7 +20877,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20722,7 +20890,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20735,7 +20903,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20748,7 +20916,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20761,7 +20929,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20774,7 +20942,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20787,7 +20955,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20800,7 +20968,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20813,7 +20981,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20826,7 +20994,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20839,7 +21007,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20852,7 +21020,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20865,7 +21033,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20878,7 +21046,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20891,7 +21059,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.137931034482758.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20904,7 +21072,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20915,7 +21083,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(1763.mm)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
-  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20928,7 +21096,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(991.mm)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
-  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20941,7 +21109,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(991.mm)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
-  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20954,7 +21122,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(841.mm)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
-  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20967,7 +21135,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
-  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20980,7 +21148,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
-  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -20993,7 +21161,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
-  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -21006,7 +21174,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(1141.mm)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
-  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -21017,7 +21185,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(93.mm)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
-  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -21038,7 +21206,7 @@ end
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
-  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -21051,7 +21219,7 @@ end
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
-  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -21065,7 +21233,7 @@ end
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
-  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -21079,7 +21247,7 @@ end
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
-  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -21538,7 +21706,7 @@ end
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
-  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -21552,7 +21720,7 @@ end
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
-  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -21566,7 +21734,7 @@ end
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
-  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -23429,7 +23597,7 @@ end
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(60.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -23442,7 +23610,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -23455,7 +23623,7 @@ end
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -23468,7 +23636,7 @@ end
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -23481,7 +23649,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -23494,7 +23662,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -23709,7 +23877,7 @@ end
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(60.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -23722,7 +23890,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(36.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -23735,7 +23903,7 @@ end
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -23748,7 +23916,7 @@ end
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -23761,7 +23929,7 @@ end
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -23949,8 +24117,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
-  mat = model.materials["BV-03 (P-02 suction)"] || model.materials.add("BV-03 (P-02 suction)")
-  mat.color = Sketchup::Color.new(122, 128, 136)
+  mat = model.materials["Axle Pin 10mm L"] || model.materials.add("Axle Pin 10mm L")
+  mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -24418,8 +24586,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
-  mat = model.materials["BV-03 (P-02 suction)"] || model.materials.add("BV-03 (P-02 suction)")
-  mat.color = Sketchup::Color.new(122, 128, 136)
+  mat = model.materials["Axle Pin 10mm L"] || model.materials.add("Axle Pin 10mm L")
+  mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -24769,8 +24937,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
-  mat = model.materials["Fan A (exhaust) flange bolt M10"] || model.materials.add("Fan A (exhaust) flange bolt M10")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -24782,8 +24950,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
-  mat = model.materials["Fan A (exhaust) flange bolt M10"] || model.materials.add("Fan A (exhaust) flange bolt M10")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -24795,8 +24963,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
-  mat = model.materials["Fan A (exhaust) flange bolt M10"] || model.materials.add("Fan A (exhaust) flange bolt M10")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -24808,8 +24976,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
-  mat = model.materials["Fan A (exhaust) flange bolt M10"] || model.materials.add("Fan A (exhaust) flange bolt M10")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -25032,8 +25200,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
-  mat = model.materials["Fan A (exhaust) flange bolt M10"] || model.materials.add("Fan A (exhaust) flange bolt M10")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -25045,8 +25213,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
-  mat = model.materials["Fan A (exhaust) flange bolt M10"] || model.materials.add("Fan A (exhaust) flange bolt M10")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -25058,8 +25226,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
-  mat = model.materials["Fan A (exhaust) flange bolt M10"] || model.materials.add("Fan A (exhaust) flange bolt M10")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -25071,8 +25239,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
-  mat = model.materials["Fan A (exhaust) flange bolt M10"] || model.materials.add("Fan A (exhaust) flange bolt M10")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -25386,8 +25554,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
-  mat = model.materials["BV-03 (P-02 suction)"] || model.materials.add("BV-03 (P-02 suction)")
-  mat.color = Sketchup::Color.new(122, 128, 136)
+  mat = model.materials["Axle Pin 10mm L"] || model.materials.add("Axle Pin 10mm L")
+  mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -26988,8 +27156,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
-  mat = model.materials["BV-03 (P-02 suction)"] || model.materials.add("BV-03 (P-02 suction)")
-  mat.color = Sketchup::Color.new(122, 128, 136)
+  mat = model.materials["Axle Pin 10mm L"] || model.materials.add("Axle Pin 10mm L")
+  mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -27424,8 +27592,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -27925,7 +28093,7 @@ end
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(60.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -27938,7 +28106,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -27951,7 +28119,7 @@ end
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -27964,7 +28132,7 @@ end
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -27977,7 +28145,7 @@ end
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -28286,8 +28454,8 @@ end
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
-  mat = model.materials["BV-03 (P-02 suction)"] || model.materials.add("BV-03 (P-02 suction)")
-  mat.color = Sketchup::Color.new(122, 128, 136)
+  mat = model.materials["Axle Pin 10mm L"] || model.materials.add("Axle Pin 10mm L")
+  mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
   grp.material = mat
 

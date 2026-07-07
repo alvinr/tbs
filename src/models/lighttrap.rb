@@ -15,13 +15,13 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each { |p| model.pages.erase(p) }
 
-# ── Sketchfab upload metadata (stamped every regen; keeps the stable model UID) ──
-model.name = "TBS-001 Lighttrap Model"
-model.description = "Personnel access during operation is via a revolving light trap drum built into the panel. Operators can enter or exit at any time without opening the full panel or admitting daylight \u2014 for example, between coating of the photosensitive material, or while the exposure is being made."
-model.set_attribute("sketchfab", "model_title", "TBS-001 Lighttrap Model")
-model.set_attribute("sketchfab", "model_description", "Personnel access during operation is via a revolving light trap drum built into the panel. Operators can enter or exit at any time without opening the full panel or admitting daylight \u2014 for example, between coating of the photosensitive material, or while the exposure is being made.")
-model.set_attribute("sketchfab", "model_id", "a4f73191b8bb4d17a6e764585ca695be")
-model.set_attribute("sketchfab", "model_tags", "sketchup")
+# ── Sketchfab metadata — fill-only-if-blank; never overwrites existing values ──
+model.name = "TBS-001 Lighttrap Model" if model.name.to_s.strip.empty?
+model.description = "Personnel access during operation is via a revolving light trap drum built into the panel. Operators can enter or exit at any time without opening the full panel or admitting daylight \u2014 for example, between coating of the photosensitive material, or while the exposure is being made." if model.description.to_s.strip.empty?
+model.set_attribute("sketchfab", "model_title", "TBS-001 Lighttrap Model") if model.get_attribute("sketchfab", "model_title").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_description", "Personnel access during operation is via a revolving light trap drum built into the panel. Operators can enter or exit at any time without opening the full panel or admitting daylight \u2014 for example, between coating of the photosensitive material, or while the exposure is being made.") if model.get_attribute("sketchfab", "model_description").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_id", "a4f73191b8bb4d17a6e764585ca695be") if model.get_attribute("sketchfab", "model_id").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribute("sketchfab", "model_tags").to_s.strip.empty?
 
 # ── Tags (layers) ──
   model.layers.add("Context") unless model.layers["Context"]
@@ -103,7 +103,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
-  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -114,7 +114,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
-  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -125,7 +125,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
   mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
-  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -136,7 +136,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
   mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
-  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -147,7 +147,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(110.mm)
   mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
-  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -158,7 +158,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(118.mm)
   mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
-  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -359,7 +359,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(42.22.mm)
   mat = model.materials["Tray Shim Base (partial)"] || model.materials.add("Tray Shim Base (partial)")
-  mat.color = Sketchup::Color.new(216, 207, 188)
+  mat.color = Sketchup::Color.new(216, 208, 188)
   mat.alpha = 0.6
   grp.material = mat
 
@@ -432,7 +432,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (partial)"] || model.materials.add("Walkway Near (partial)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -443,7 +443,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (partial)"] || model.materials.add("Walkway Near (partial)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1159,7 +1159,7 @@ ents = defn.entities
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Pull-handle standoff"] || model.materials.add("Pull-handle standoff")
-  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1170,7 +1170,7 @@ ents = defn.entities
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Pull-handle standoff"] || model.materials.add("Pull-handle standoff")
-  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1181,7 +1181,7 @@ ents = defn.entities
   face.reverse! if face.normal.z < 0
   face.pushpull(300.mm)
   mat = model.materials["Pull-handle standoff"] || model.materials.add("Pull-handle standoff")
-  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1426,8 +1426,8 @@ ents = defn.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2120.mm)
-  mat = model.materials["LT Drum opening brush seal"] || model.materials.add("LT Drum opening brush seal")
-  mat.color = Sketchup::Color.new(126, 126, 118)
+  mat = model.materials["Walkway Near (partial)"] || model.materials.add("Walkway Near (partial)")
+  mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1439,8 +1439,8 @@ ents = defn.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2120.mm)
-  mat = model.materials["LT Drum opening brush seal"] || model.materials.add("LT Drum opening brush seal")
-  mat.color = Sketchup::Color.new(126, 126, 118)
+  mat = model.materials["Walkway Near (partial)"] || model.materials.add("Walkway Near (partial)")
+  mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1802,7 +1802,7 @@ ents = defn.entities
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
   mat = model.materials["Fan B (intake) flange bolt M10"] || model.materials.add("Fan B (intake) flange bolt M10")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1815,7 +1815,7 @@ ents = defn.entities
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
   mat = model.materials["Fan B (intake) flange bolt M10"] || model.materials.add("Fan B (intake) flange bolt M10")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1828,7 +1828,7 @@ ents = defn.entities
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
   mat = model.materials["Fan B (intake) flange bolt M10"] || model.materials.add("Fan B (intake) flange bolt M10")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1841,7 +1841,7 @@ ents = defn.entities
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
   mat = model.materials["Fan B (intake) flange bolt M10"] || model.materials.add("Fan B (intake) flange bolt M10")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 

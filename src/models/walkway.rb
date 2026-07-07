@@ -15,13 +15,13 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each { |p| model.pages.erase(p) }
 
-# ── Sketchfab upload metadata (stamped every regen; keeps the stable model UID) ──
-model.name = "TBS-001 Walkway Model"
-model.description = "The perimeter walkway provides dry-foot operator access around all four sides of the processing tray without wading through chemical solution."
-model.set_attribute("sketchfab", "model_title", "TBS-001 Walkway Model")
-model.set_attribute("sketchfab", "model_description", "The perimeter walkway provides dry-foot operator access around all four sides of the processing tray without wading through chemical solution.")
-model.set_attribute("sketchfab", "model_id", "96b3d0e5fc8b4fc18c528f64bda028bc")
-model.set_attribute("sketchfab", "model_tags", "sketchup")
+# ── Sketchfab metadata — fill-only-if-blank; never overwrites existing values ──
+model.name = "TBS-001 Walkway Model" if model.name.to_s.strip.empty?
+model.description = "The perimeter walkway provides dry-foot operator access around all four sides of the processing tray without wading through chemical solution." if model.description.to_s.strip.empty?
+model.set_attribute("sketchfab", "model_title", "TBS-001 Walkway Model") if model.get_attribute("sketchfab", "model_title").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_description", "The perimeter walkway provides dry-foot operator access around all four sides of the processing tray without wading through chemical solution.") if model.get_attribute("sketchfab", "model_description").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_id", "96b3d0e5fc8b4fc18c528f64bda028bc") if model.get_attribute("sketchfab", "model_id").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribute("sketchfab", "model_tags").to_s.strip.empty?
 
 # ── Tags (layers) ──
   model.layers.add("Container") unless model.layers["Container"]
@@ -97,7 +97,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Tray Shim Base"] || model.materials.add("Tray Shim Base")
-  mat.color = Sketchup::Color.new(216, 207, 188)
+  mat.color = Sketchup::Color.new(216, 208, 188)
   mat.alpha = 0.9
   grp.material = mat
 
@@ -203,7 +203,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left)"] || model.materials.add("Walkway Near (left)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -214,7 +214,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left)"] || model.materials.add("Walkway Near (left)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -225,7 +225,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left)"] || model.materials.add("Walkway Near (left)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -236,7 +236,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left)"] || model.materials.add("Walkway Near (left)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -269,7 +269,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left)"] || model.materials.add("Walkway Near (left)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -333,7 +333,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -357,7 +357,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -381,7 +381,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -449,7 +449,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -473,7 +473,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -497,7 +497,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -521,7 +521,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -589,7 +589,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -613,7 +613,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -637,7 +637,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -661,7 +661,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -729,7 +729,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -753,7 +753,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -777,7 +777,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -801,7 +801,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -869,7 +869,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -893,7 +893,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -917,7 +917,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -985,7 +985,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1009,7 +1009,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1033,7 +1033,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1101,7 +1101,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1125,7 +1125,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1149,7 +1149,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1217,7 +1217,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1241,7 +1241,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1265,7 +1265,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1333,7 +1333,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1357,7 +1357,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1381,7 +1381,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1449,7 +1449,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1473,7 +1473,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1497,7 +1497,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1565,7 +1565,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1589,7 +1589,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1613,7 +1613,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1681,7 +1681,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1705,7 +1705,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1729,7 +1729,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1797,7 +1797,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1821,7 +1821,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1845,7 +1845,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1913,7 +1913,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1937,7 +1937,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1961,7 +1961,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2029,7 +2029,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2053,7 +2053,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2077,7 +2077,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2145,7 +2145,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2169,7 +2169,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2193,7 +2193,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2334,7 +2334,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2358,7 +2358,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2382,7 +2382,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2450,7 +2450,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2474,7 +2474,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2498,7 +2498,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2522,7 +2522,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
   mat = model.materials["Cantilever Near 1 bolt M12"] || model.materials.add("Cantilever Near 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -3466,6 +3466,250 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
+  # Saddle back-plate TR near
+  grp = ents.add_group
+  grp.name = "Saddle back-plate TR near"
+  face = grp.entities.add_face([4534.mm,0.mm,2173.mm], [4684.mm,0.mm,2173.mm], [4684.mm,8.mm,2173.mm], [4534.mm,8.mm,2173.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle OUTSIDE plate TR near
+  grp = ents.add_group
+  grp.name = "Saddle OUTSIDE plate TR near"
+  face = grp.entities.add_face([4534.mm,-48.mm,2173.mm], [4684.mm,-48.mm,2173.mm], [4684.mm,-40.mm,2173.mm], [4534.mm,-40.mm,2173.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle seat TR near
+  grp = ents.add_group
+  grp.name = "Saddle seat TR near"
+  face = grp.entities.add_face([4585.mm,0.mm,2238.mm], [4633.mm,0.mm,2238.mm], [4633.mm,110.mm,2238.mm], [4585.mm,110.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle gusset TR near
+  grp = ents.add_group
+  grp.name = "Saddle gusset TR near"
+  ge = grp.entities
+  f = ge.add_face([4609.mm,110.mm,2238.mm], [4609.mm,0.mm,2238.mm], [4609.mm,0.mm,2118.mm])
+  f.pushpull(8.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4559.mm,-48.mm,2198.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4559.mm,-48.mm,2298.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4659.mm,-48.mm,2198.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4659.mm,-48.mm,2298.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail fixing bolt TR near
+  grp = ents.add_group
+  grp.name = "Rail fixing bolt TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4609.mm,25.mm,2248.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail fixing bolt TR near
+  grp = ents.add_group
+  grp.name = "Rail fixing bolt TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4609.mm,85.mm,2248.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle back-plate TR far
+  grp = ents.add_group
+  grp.name = "Saddle back-plate TR far"
+  face = grp.entities.add_face([4534.mm,2354.mm,2173.mm], [4684.mm,2354.mm,2173.mm], [4684.mm,2362.mm,2173.mm], [4534.mm,2362.mm,2173.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle OUTSIDE plate TR far
+  grp = ents.add_group
+  grp.name = "Saddle OUTSIDE plate TR far"
+  face = grp.entities.add_face([4534.mm,2402.mm,2173.mm], [4684.mm,2402.mm,2173.mm], [4684.mm,2410.mm,2173.mm], [4534.mm,2410.mm,2173.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle seat TR far
+  grp = ents.add_group
+  grp.name = "Saddle seat TR far"
+  face = grp.entities.add_face([4585.mm,2252.mm,2238.mm], [4633.mm,2252.mm,2238.mm], [4633.mm,2362.mm,2238.mm], [4585.mm,2362.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle gusset TR far
+  grp = ents.add_group
+  grp.name = "Saddle gusset TR far"
+  ge = grp.entities
+  f = ge.add_face([4609.mm,2252.mm,2238.mm], [4609.mm,2362.mm,2238.mm], [4609.mm,2362.mm,2118.mm])
+  f.pushpull(8.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4559.mm,2354.mm,2198.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4559.mm,2354.mm,2298.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4659.mm,2354.mm,2198.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4659.mm,2354.mm,2298.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail fixing bolt TR far
+  grp = ents.add_group
+  grp.name = "Rail fixing bolt TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4609.mm,2277.mm,2248.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail fixing bolt TR far
+  grp = ents.add_group
+  grp.name = "Rail fixing bolt TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4609.mm,2337.mm,2248.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Film-Plane Right Support Beams"
   inst.layer = model.layers["Film Plane"]
@@ -3625,7 +3869,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
   mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -3638,7 +3882,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
   mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -3651,7 +3895,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
   mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -3664,7 +3908,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
   mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -3688,7 +3932,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
   mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -3701,7 +3945,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
   mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -3714,7 +3958,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
   mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -3727,7 +3971,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
   mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -3751,7 +3995,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
   mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -3764,7 +4008,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
   mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -3777,7 +4021,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
   mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -3790,7 +4034,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
   mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -3814,7 +4058,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
   mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -3827,7 +4071,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
   mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -3840,7 +4084,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
   mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -3853,7 +4097,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
   mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 

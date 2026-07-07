@@ -8,13 +8,13 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each { |p| model.pages.erase(p) }
 
-# ── Sketchfab upload metadata (stamped every regen; keeps the stable model UID) ──
-model.name = "TBS-001 Film Plane Model"
-model.description = "The configuration the photosensitive film plane is flush against one of the 20ft long-side walls of the container. This has a **view-camera-style moveable film plane** \u2014 a mechanism with **four independently actuated corners**"
-model.set_attribute("sketchfab", "model_title", "TBS-001 Film Plane Model")
-model.set_attribute("sketchfab", "model_description", "The configuration the photosensitive film plane is flush against one of the 20ft long-side walls of the container. This has a **view-camera-style moveable film plane** \u2014 a mechanism with **four independently actuated corners**")
-model.set_attribute("sketchfab", "model_id", "bb5394a8983a491fa541088b901c24f8")
-model.set_attribute("sketchfab", "model_tags", "sketchup")
+# ── Sketchfab metadata — fill-only-if-blank; never overwrites existing values ──
+model.name = "TBS-001 Film Plane Model" if model.name.to_s.strip.empty?
+model.description = "The configuration the photosensitive film plane is flush against one of the 20ft long-side walls of the container. This has a **view-camera-style moveable film plane** \u2014 a mechanism with **four independently actuated corners**" if model.description.to_s.strip.empty?
+model.set_attribute("sketchfab", "model_title", "TBS-001 Film Plane Model") if model.get_attribute("sketchfab", "model_title").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_description", "The configuration the photosensitive film plane is flush against one of the 20ft long-side walls of the container. This has a **view-camera-style moveable film plane** \u2014 a mechanism with **four independently actuated corners**") if model.get_attribute("sketchfab", "model_description").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_id", "bb5394a8983a491fa541088b901c24f8") if model.get_attribute("sketchfab", "model_id").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribute("sketchfab", "model_tags").to_s.strip.empty?
 
   model.layers.add("Context") unless model.layers["Context"]
   model.layers.add("Film Plane") unless model.layers["Film Plane"]
@@ -97,7 +97,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(410.mm)
   mat = model.materials["Electrical Panel (EP) [ghost]"] || model.materials.add("Electrical Panel (EP) [ghost]")
-  mat.color = Sketchup::Color.new(245, 197, 24)
+  mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 0.28
   grp.material = mat
 
@@ -130,7 +130,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(240.mm)
   mat = model.materials["Electrical Panel (EP) [ghost]"] || model.materials.add("Electrical Panel (EP) [ghost]")
-  mat.color = Sketchup::Color.new(245, 197, 24)
+  mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 0.28
   grp.material = mat
 
@@ -148,7 +148,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Tray Shim Base"] || model.materials.add("Tray Shim Base")
-  mat.color = Sketchup::Color.new(216, 207, 188)
+  mat.color = Sketchup::Color.new(216, 208, 188)
   mat.alpha = 0.9
   grp.material = mat
 
@@ -243,7 +243,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
-  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -268,7 +268,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
-  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -293,7 +293,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
-  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -318,7 +318,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
-  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1274,7 +1274,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1285,7 +1285,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1296,7 +1296,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1307,7 +1307,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1318,7 +1318,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1364,7 +1364,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1377,7 +1377,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1390,7 +1390,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1436,7 +1436,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1449,7 +1449,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1462,7 +1462,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1475,7 +1475,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1521,7 +1521,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1534,7 +1534,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1547,7 +1547,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1560,7 +1560,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1606,7 +1606,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1619,7 +1619,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1632,7 +1632,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1645,7 +1645,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1691,7 +1691,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1704,7 +1704,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1717,7 +1717,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1763,7 +1763,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1776,7 +1776,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1789,7 +1789,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1835,7 +1835,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1848,7 +1848,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1861,7 +1861,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1907,7 +1907,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1920,7 +1920,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1933,7 +1933,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1979,7 +1979,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1992,7 +1992,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2005,7 +2005,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2051,7 +2051,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2064,7 +2064,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2077,7 +2077,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2123,7 +2123,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2136,7 +2136,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2149,7 +2149,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2195,7 +2195,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2208,7 +2208,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2221,7 +2221,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2267,7 +2267,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2280,7 +2280,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2293,7 +2293,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2339,7 +2339,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2352,7 +2352,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2365,7 +2365,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2411,7 +2411,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2424,7 +2424,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2437,7 +2437,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2483,7 +2483,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2496,7 +2496,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2509,7 +2509,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
   mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 88)
+  mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2883,7 +2883,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
-  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2915,7 +2915,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
-  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2947,7 +2947,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
-  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -3067,7 +3067,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
-  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 

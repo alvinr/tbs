@@ -126,13 +126,18 @@ MUTE_TAGS = ["Pinhole Equipment", "Processing Tray", "IBC Frame", "Corridor Fram
 
 
 def other_equipment():
-    p = []
-    for _label, fn in OTHER_WALL_EQUIP:
-        try:
-            p.append(getattr(ov, fn)())
-        except Exception as e:
-            print(f"  (skip {fn}: {e})", file=sys.stderr)
-    return "\n".join(p)
+    # Interior EP (fuse block / busbars / MPPT / battery + contactor) as pinhole-wall context. The
+    # external power panel AND the evap cooler — both drawn by em.external_panel() — are DROPPED from
+    # the water model (cleanup 2026-07-07). The overview no longer calls this (it draws its own EP).
+    import generate_electrical_model as em
+    return "\n".join([em.power_core(external_links=False), em.battery()])
+
+
+def spray_bar():
+    """Spray-bar gantry (beam + carriages + feed pole) — context so the BV-05 supply coil has the bar
+    to connect to. Reuses the detailed spray-bar builders, same as the overview's spray_bar()."""
+    import generate_spraybar_model as sb
+    return "\n".join([sb.build_beam(), sb.build_carriages(include_floor=False), sb.build_feed_pole()])
 
 
 # Flat-T red-handle 3-way diverter — shared with the corridor module (DV-01 on the wall,
@@ -293,6 +298,23 @@ def tap01_supply():
     # BV-05 spray-bar isolation (riser + valve at the pinhole centerline)
     p.append(ov.ruby_cylinder("BV-05 Riser", ov.BV02_X, yd, fz, pr, ov.BV02_Z - fz, color=ov.C_BLUE, axis="z"))
     p.append(cp.ball_valve("BV-05 (spray-bar isolation)", ov.BV02_X, yd, ov.BV02_Z, "z"))
+    # Spray-bar supply — FLEXIBLE COILED hose from BV-05 to the spray-bar feed (pole-top supply end).
+    # The bar rolls along the tray, so the hose hangs as a looped service coil (drawn with the same
+    # coiled-cord helper as the power cords) that takes up slack as the operator walks the bar.
+    # Spray-bar supply — a rigid 90° ELBOW on BV-05's TOP port (straight up out of the valve, then a
+    # right-angle turn toward the spray bar), and a FLEXIBLE COILED hose from the elbow to the spray-bar
+    # pole-top supply. The bar rolls, so the hose hangs as a looped service coil (same coiled-cord helper
+    # as the power cords) that takes up slack as the operator walks the bar. Both service loops kept.
+    p.append(ov.ruby_pipe_run("BV-05 top elbow (spray-bar supply, 90°)",
+                              [(ov.BV02_X, yd, ov.BV02_Z + 40),      # BV-05 top port
+                               (ov.BV02_X, yd, ov.BV02_Z + 110),     # straight up out of the valve
+                               (ov.BV02_X, 160, ov.BV02_Z + 110)],   # 90° turn toward the spray bar
+                              7, color=ov.C_BLUE))
+    p.append(ov.ruby_coil_cord("Spray-bar supply hose (elbow -> spray bar, coiled)",
+                               [(ov.BV02_X, 160, ov.BV02_Z + 110),   # off the elbow
+                                (ov.BV02_X, 400, 250),               # first leg: drop down to the droop
+                                (ov.BV02_X, 640, 1300)],             # second leg: up to the raised pole-top supply
+                               r=7, color=ov.C_BLUE))
     # TAP-01 chem branch (3/4in) up over the shelf + BV-04 isolation (overview path)
     p.append(ov.ruby_pipe_run("TAP-01 Branch (3/4in)",
         [(ov.TAP_X, yd, fz), (ov.TAP_X, yd, ov.SHELF_STOW_TOP_Z),
@@ -397,7 +419,7 @@ def labels_ruby():
     return '\n'.join(rows)
 
 
-def panel_power():
+def panel_power(include_switch=True):
     """Circuit-C power + cabling to the TWO plumbing panels ONLY (no other electrical shown).
     Routed to NEVER cross a pipe (plumbing-skill rule): the corridor run lives in the CHASE
     between the pump-mount shirt and the rear panel — a clear vertical channel behind the pump
@@ -421,12 +443,17 @@ def panel_power():
     # ── MASTER SWITCH on the ELECTRICAL PANEL — one cutoff upstream of EVERYTHING (avoids a
     #    corridor switch + its through-panel wiring; puts BOTH P-02 and the corridor pumps
     #    downstream of it).  Red disconnect lever like the DV handles. ──
-    p.append(ov.ruby_box("Master pump switch (Cct C, on EP)", swx - 26, 30, 1840, 52, 48, 56, color="#202020"))
-    p.append(ov.ruby_box("Master switch lever (OFF cutoff)", swx - 7, 78, 1852, 14, 46, 14, color=cp.C_HANDLE))
+    if include_switch:   # standalone: draw the master switch here + feed off it (swx)
+        p.append(ov.ruby_box("Master pump switch (Cct C, on EP)", swx - 26, 30, 1840, 52, 48, 56, color="#202020"))
+        p.append(ov.ruby_box("Master switch lever (OFF cutoff)", swx - 7, 78, 1852, 14, 46, 14, color=cp.C_HANDLE))
+        fx, fy, fz = swx, 54, 1896
+    else:                # EP present (overview + water): feed off the EP panel's OWN master switch, ON the panel
+        import generate_electrical_model as em
+        fx, fy, fz = em.MASTER_SW_POS
     # ── feed: EP master switch → Yd20 ceiling trunk (per electrical.skp, clear of the center
     #    LEDs) → down to the corridor 12V DISTRIBUTION BLOCK ──
     p.append(ov.ruby_pipe_run("Cct C feed (EP master sw -> corridor dist block)",
-             [(swx, 54, 1896), (swx, 54, TZ), (swx, TY, TZ), (p2x, TY, TZ), (BKX, TY, TZ),
+             [(fx, fy, fz), (fx, fy, TZ), (fx, TY, TZ), (p2x, TY, TZ), (BKX, TY, TZ),
               (BKX, by, TZ), (BKX, by, zc + 48)], cr, color=PWR))
     # ── P-02 taps the trunk directly off the master-switch feed → Pinhole-Wall panel ──
     cap_h = 78
@@ -458,6 +485,7 @@ def build():
                          ("Walkways + cantilevers + brackets", "Walkway", walkway_full),
                          ("Film-plane support beams", "Film Plane", film_plane_beams),
                          ("Processing tray (ghost)", "Processing Tray", ov.processing_tray),
+                         ("Spray Bar", "Spray Bar", spray_bar),
                          ("IBC Tanks (full)", "IBC", lambda: ov.ibc_stack(alpha=MUTE_ALPHA, mute=MUTE_DESAT)),
                          ("IBC restraint (bars + wall anchors)", "IBC Frame", cp.tote_restraint),
                          ("End wall (context)", "Context", cp.end_wall),
@@ -472,7 +500,7 @@ def build():
                          ("Corridor equipment", "Corridor Equipment", cp.equipment),
                          ("Corridor plumbing", "Corridor Plumbing", cp.plumbing),
                          ("Corridor drains + X-ports", "Corridor Drains", cp.drains_ports),
-                         ("Circuit-C power + cabling (both panels)", "Power", panel_power),
+                         ("Circuit-C power + cabling (both panels)", "Power", lambda: panel_power(include_switch=False)),
                          ("Ribbon support cross-beams", "Ribbon Supports", cp.ribbon_supports),
                          # SOLID (non-ghost) copies of the two plywood panels, on their own tags — shown
                          # only in the "Plumbing (labeled)" scene so the panels read full-color there while
@@ -514,11 +542,11 @@ def scene(model, name, on)
   pg.use_hidden_layers = true rescue nil
   pg
 end
-scene(model, "Overview", ["Context","Walkway","Film Plane","Processing Tray","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains","Power"])
+scene(model, "Overview", ["Context","Walkway","Film Plane","Processing Tray","Spray Bar","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains","Power"])
 scene(model, "Plumbing", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","Power"])
 scene(model, "Plumbing (labeled)", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","Power","Labels","Corridor Panel Solid","Backing Solid"])
 scene(model, "Plumbing + IBC", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","Power","IBC","IBC Frame","Corridor Frame","Corridor Panel","Walkway"])
-scene(model, "Labeled", ["Context","Walkway","Film Plane","Processing Tray","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains","Power","Labels","Labels Context"])
+scene(model, "Labeled", ["Context","Walkway","Film Plane","Processing Tray","Spray Bar","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains","Power","Labels","Labels Context"])
 model.layers.each {{ |l| l.visible = true }}
 model.commit_operation
 {{ ok: true }}.to_json

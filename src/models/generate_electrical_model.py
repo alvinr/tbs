@@ -233,7 +233,7 @@ def context():
     return '\n'.join(p)
 
 
-def power_core():
+def power_core(external_links=True, links_only=False):
     """EP internals on a PLYWOOD BACKING PANEL, with the DC gear inside a ghosted IP65 enclosure
     (its back IS the plywood): MPPT, fuse block,
     +/- busbars, rotary main disconnect (knob on the face). All components surface-mount
@@ -280,19 +280,20 @@ def power_core():
     # disconnect (now at operator height) -> up to the MPPT PV input.
     _pvx = PV_DISC_X + 35   # box center — the green cables land aligned in the disconnect box
     _dtop = PV_DISC_Z + 70                        # disconnect box TOP — BOTH green cables land here
-    # array -> disconnect: drops into the TOP of the disconnect (line terminal)
-    p.append(ov.ruby_pipe_run("PV feed (MC4 -> array disconnect, top)",
+    # array -> disconnect: drops into the TOP of the disconnect (line terminal). The green PV feed +
+    # the grey E-stop link below are the two circuits that run OUT to the external panel; collect them
+    # into ext_links so the overview can draw them on a SEPARATE tag (hidden in the Ventilation scene).
+    ext_links = []
+    ext_links.append(ov.ruby_pipe_run("PV feed (MC4 -> array disconnect, top)",
                               _dedup([(mc4_x, 22, mc4_z),
-                                      (_pvx + 20, 22, mc4_z),                # across ABOVE the chem shelf into the column
-                                      (_pvx + 20, 22, _dtop)]),              # down into the disconnect TOP (line)
+                                      (_pvx + 20, 22, mc4_z),
+                                      (_pvx + 20, 22, _dtop)]),
                               9, color="#2D7A2D"))
-    # disconnect -> MPPT: leaves the TOP of the disconnect (load terminal) and rises to the MPPT,
-    # clear of the inverter.
-    p.append(ov.ruby_pipe_run("PV feed (array disconnect -> MPPT, top)",
-                              _dedup([(_pvx - 20, 22, _dtop),                # out the disconnect TOP (load)
-                                      (_pvx - 20, 22, EP_H_HI - MPPT_H + 30),   # rise to the MPPT (above the enclosure)
-                                      (_pvx - 20, 120, EP_H_HI - MPPT_H + 30),  # forward to the MPPT plane
-                                      (_pvx - 20, 155, EP_H_HI - MPPT_H + 40)]),  # elbow into the MPPT PV input
+    ext_links.append(ov.ruby_pipe_run("PV feed (array disconnect -> MPPT, top)",
+                              _dedup([(_pvx - 20, 22, _dtop),
+                                      (_pvx - 20, 22, EP_H_HI - MPPT_H + 30),
+                                      (_pvx - 20, 120, EP_H_HI - MPPT_H + 30),
+                                      (_pvx - 20, 155, EP_H_HI - MPPT_H + 40)]),
                               9, color="#2D7A2D"))
     # Blue Sea 5026: the block base + a standing row of 7 blade fuses (one per circuit A-G,
     # coloured to its circuit). Each blade's top is the cable origin for that circuit.
@@ -345,16 +346,23 @@ def power_core():
     # so the trip line runs straight up the column to the interior E-stop — no anchor dodge needed.
     _ctc_x, _ctc_z = EP_X + 10 + CONTACTOR_W / 2, EP_POST_Z + CONTACTOR_H    # contactor coil top (skinny column)
     _ext_x, _ext_z = PWR_PANEL_X + PWR_PANEL_W / 2, PWR_PANEL_Z + PWR_PANEL_H / 2  # exterior E-stop
-    p.append(ov.ruby_pipe_run("E-stop trip line (contactor coil -> interior E-stop)",
+    ext_links.append(ov.ruby_pipe_run("E-stop trip line (contactor coil -> interior E-stop)",
                               _dedup([(_ctc_x, 45, _ctc_z), (_ctc_x, 10, _ctc_z + 20),
                                       (ies_cx, 10, _ctc_z + 20), (ies_cx, 10, ies_cz),
                                       (ies_cx, 0, ies_cz)]),
                               4, color="#586070"))
-    p.append(ov.ruby_pipe_run("E-stop parallel link (interior -> exterior E-stop)",
+    ext_links.append(ov.ruby_pipe_run("E-stop parallel link (interior -> exterior E-stop)",
                               _dedup([(ies_cx, 0, ies_cz), (ies_cx, 10, ies_cz),
-                                      (ies_cx, 10, _ext_z - 50), (_ext_x, 10, _ext_z - 50),  # cross 50mm BELOW the top transport anchor
+                                      (ies_cx, 10, _ext_z - 50), (_ext_x, 10, _ext_z - 50),
                                       (_ext_x, 10, _ext_z), (_ext_x, -WALL, _ext_z)]),
                               4, color="#586070"))
+    # ext_links = the two circuits OUT to the external panel (green PV + grey E-stop). links_only returns
+    # JUST them (the overview's separate "EP Ext Wiring" component); external_links=False omits them
+    # entirely (the water model); external_links=True folds them back inline (legacy default).
+    if links_only:
+        return '\n'.join(ext_links)
+    if external_links:
+        p.extend(ext_links)
     return '\n'.join(p)
 
 

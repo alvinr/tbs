@@ -85,7 +85,7 @@ TAGS = ["Shell", "Walkways", "Processing Tray",
         "Pivot Axle", "Spray Bar", "Plumbing Panel",
         "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf",
         "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans",
-        "Water Plumbing", "Solar Array", "Labels"]
+        "Water Plumbing", "Solar Array", "Fan Wiring", "EP Ext Wiring", "Labels"]
 
 
 # Major system components to call out in the "Labeled" scene.
@@ -95,9 +95,8 @@ TAGS = ["Shell", "Walkways", "Processing Tray",
 # toward the viewer (the camera looks from the −Y / pinhole-wall side).
 OVERVIEW_LABELS = [
     ("Pinhole Assembly",      "PINHOLE  Ø2.17mm",                 -140, -1120,  630),
-    ("Film Plane Mechanism",  "FILM PLANE\n4-corner tilt/swing",   400,     0, 1250),
     ("Processing Tray",       "PROCESSING TRAY",                  -250,     0,  650),
-    ("Plumbing Panel",       "PLUMBING PANEL\npump / filter",    500,     0,  820),
+    ("Corridor Equipment",    "CORRIDOR PLUMBING PANEL",          520,     0,  820),
     ("IBC Stack",             "IBC WATER STORAGE\n4x tote",        600,     0, 1300),
     ("Light-Trap Drum",       "LIGHT-TRAP DRUM\n(entry)",         -650,     0, 1050),
     ("Electrical",            "ELECTRICAL PANEL",                  500,     0,  560),
@@ -114,10 +113,12 @@ OVERVIEW_LABELS = [
 # battery bank lives inside the "Electrical" component.
 # (x, y, z, text, leader Δx, Δy, Δz mm)
 OVERVIEW_POINT_LABELS = [
+    (2399, 2400, 1200, "FILM PLANE\ntilt / swing", 0, 600, 400),  # tip ON the plane; label OUTSIDE far wall (Yd>2410)
+    (PWP_FILTER_X2, PWP_FILTER_YD, 1670, "3-STAGE FILTER SKID", -300, -750, 350),  # ON the middle filter (kit bounds-center missed it)
     (SOLAR_ARRAY_X + 700, SOLAR_ARRAY_YD - 500, 450, "SOLAR ARRAY\n3× 200W (30° tilt)",
      -200, -700, 700),
     (5618, 1181, 2000, "FAN A\n(exhaust, IBC end)",  400,    0,  450),
-    (275,   365,  680, "FAN B\n(intake, door end)", -350,    0, 1250),
+    (275,   365,  680, "FAN B\n(intake, door end)", -820, -200,   80),  # out the cargo-door end (⊥ door), clear of drum
     (2060,   60,  600, "BATTERY 1× 100Ah\n(2nd pack ghosted = plug-in)",    -300, -600,  900),
     # Cct-E inverter lives inside the "Evap Cooler & Duct" component (interior, on the
     # pinhole wall below the EP), so it needs an explicit-point label. Anchor at its
@@ -345,13 +346,16 @@ def sketchfab_meta_ruby(title, description, model_id, tags="tbs sketchup"):
     """
     import json
     t, d, mid, tg = (json.dumps(x) for x in (title, description, model_id, tags))
-    return ("# ── Sketchfab upload metadata (stamped every regen; keeps the stable model UID) ──\n"
-            f"model.name = {t}\n"
-            f"model.description = {d}\n"
-            f'model.set_attribute("sketchfab", "model_title", {t})\n'
-            f'model.set_attribute("sketchfab", "model_description", {d})\n'
-            f'model.set_attribute("sketchfab", "model_id", {mid})\n'
-            f'model.set_attribute("sketchfab", "model_tags", {tg})\n')
+    # NON-DESTRUCTIVE: fill each field ONLY if it's currently blank, so a regen / re-send (or even a
+    # mis-directed send) NEVER overwrites metadata you've edited. A fresh blank doc still gets the full
+    # identity + the stable model_id for the manual re-upload; an existing doc keeps whatever it has.
+    return ("# ── Sketchfab metadata — fill-only-if-blank; never overwrites existing values ──\n"
+            f"model.name = {t} if model.name.to_s.strip.empty?\n"
+            f"model.description = {d} if model.description.to_s.strip.empty?\n"
+            f'model.set_attribute("sketchfab", "model_title", {t}) if model.get_attribute("sketchfab", "model_title").to_s.strip.empty?\n'
+            f'model.set_attribute("sketchfab", "model_description", {d}) if model.get_attribute("sketchfab", "model_description").to_s.strip.empty?\n'
+            f'model.set_attribute("sketchfab", "model_id", {mid}) if model.get_attribute("sketchfab", "model_id").to_s.strip.empty?\n'
+            f'model.set_attribute("sketchfab", "model_tags", {tg}) if model.get_attribute("sketchfab", "model_tags").to_s.strip.empty?\n')
 
 
 def ruby_cone_wire(name, apex, base, tag):
@@ -1317,7 +1321,7 @@ def solar_array():
         x = SOLAR_ARRAY_X + i * pitch
         p.append(tilted_slab(f"Solar Panel {i + 1} (200W)", x, SOLAR_ARRAY_YD,
                              SOLAR_ARRAY_Z + 120, SOLAR_PANEL_W, SOLAR_PANEL_L,
-                             SOLAR_PANEL_T, SOLAR_TILT_DEG, "#1B3A6B"))
+                             SOLAR_PANEL_T, SOLAR_TILT_DEG, "#1B3A6B", alpha=0.3))
     span = (SOLAR_N - 1) * pitch + SOLAR_PANEL_W
     back_yd = SOLAR_ARRAY_YD - SOLAR_PANEL_L * math.cos(th)
     top_z = SOLAR_ARRAY_Z + 120 + SOLAR_PANEL_L * math.sin(th)
@@ -1361,7 +1365,15 @@ def electrical():
     to electrical.skp by construction — no more hand-maintained duplicate that drifts (the skinny-column
     reorg made two copies untenable). The Cct-E inverter stays a SEPARATE overview component (below)."""
     import generate_electrical_model as em
-    return '\n'.join([em.power_core(), em.battery(), em.external_panel()])
+    return '\n'.join([em.power_core(external_links=False), em.battery(), em.external_panel()])
+
+
+def ep_external_wiring():
+    """The two EP circuits that run OUT to the external panel — green PV feed (-> array/MPPT) and
+    grey E-stop link (interior -> exterior). A SEPARATE component on the 'EP Ext Wiring' tag so the
+    Ventilation scene can hide them and show only the evap-cooler (Cct E) circuit at the panel."""
+    import generate_electrical_model as em
+    return em.power_core(links_only=True)
 
 
 # ── Chemistry prep shelf (ceiling-hung) ──────────────────────────────────────
@@ -1541,6 +1553,15 @@ def lighting_wiring():
                           EQPANEL_X - 5, pc_yd - 5, PUMP_H_HI, 10, 10,
                           (cz - 25) - PUMP_H_HI, color=C_TRUNK))
 
+    return '\n'.join(parts)
+
+
+def fan_wiring():
+    """Power conduits to the two ventilation fans — Cct-A rigid run to Fan A (exhaust, far end)
+    and Cct-B rigid run + wall box + flexible jumper to Fan B (intake, near end). On its OWN tag
+    so the Ventilation scene shows the fan cables without the rest of the Lighting & Wiring."""
+    parts = []
+    cz = C_HGT
     # Conduits to the ventilation fans (orthogonal runs off the ceiling trunking,
     # per skill_plumbing_drawing — ruby_pipe_run with elbows, right-angle entry).
     fcr = 7                                          # conduit radius (Ø14)
@@ -1581,6 +1602,16 @@ def lighting_wiring():
                                  (60, FAN_B_YD, FAN_B_H)],
                                 r=5, color="#E67E22"))
 
+    # ── Feed from the EP fan breakers up to the ceiling trunk, then along the trunk line to each
+    #    fan tap — so Cct-A / Cct-B visibly connect back to their power source (the EP) in the
+    #    Ventilation scene (the real trunking + EP drop are on the hidden Lighting tag). ──
+    ep_x = 2060                                      # EP column X (matches the lighting conduit drop)
+    parts.append(ruby_pipe_run("Fan feed riser (EP -> ceiling trunk, Cct A/B)",
+                               [(ep_x, 20, EP_H_HI), (ep_x, 20, czr)], fcr, color=C_TRUNK))
+    parts.append(ruby_pipe_run("Fan A feed (EP -> Fan A tap, Cct A)",
+                               [(ep_x, 20, czr), (fa_x, 20, czr)], fcr, color=C_TRUNK))
+    parts.append(ruby_pipe_run("Fan B feed (EP -> Fan B tap, Cct B)",
+                               [(ep_x, 20, czr), (fb_drop_x, fb_wall_yd, czr)], fcr, color=C_TRUNK))
     return '\n'.join(parts)
 
 
@@ -2007,16 +2038,18 @@ def generate_ruby():
         component("Corridor Rear Panel", "Plumbing Panel", cp.rear_panel()),
         component("Corridor Equipment", "Plumbing Panel", cp.equipment()),
         component("Pinhole-Wall Kit", "Plumbing Panel", pw.kit()),
-        component("Pinhole-Wall Equipment", "Plumbing Panel", pw.other_equipment()),
         component("IBC Stack", "IBC Stack", ibc_stack()),
         component("Light-Trap Drum", "Light Trap", light_trap_drum()),
         component("Light-Trap Bay", "Light Trap", light_trap_bay()),
         component("Electrical", "Electrical", electrical()),
+        component("EP External Wiring (PV + E-stop)", "EP Ext Wiring", ep_external_wiring()),
+        component("Corridor Pump Wiring (Cct C)", "Lighting", pw.panel_power(include_switch=False)),
         component("Solar Array", "Solar Array", solar_array()),
         component("Chemistry Shelf", "Shelf", shelf()),
         component("Light-Trap Door Frame", "Light Seal", light_trap_frame()),
         component("Light Seal & Hinges", "Light Seal", light_seal()),
         component("Lighting & Wiring", "Lighting", lighting_wiring()),
+        component("Fan Wiring", "Fan Wiring", fan_wiring()),
         component("Evap Cooler & Duct", "Evap Cooler", evap_cooler()),
         component("Corridor Drains + X-ports", "Water Hookups", cp.drains_ports()),
         component("Fans A & B", "Fans", fans()),
@@ -2037,9 +2070,9 @@ def generate_ruby():
         ("Water Systems", ["Processing Tray", "Spray Bar", "Plumbing Panel",
                            "IBC Stack", "IBC Rack", "Shelf", "Water Hookups",
                            "Water Plumbing"]),
-        ("Electrical Systems", ["Electrical", "Lighting", "Solar Array"]),
+        ("Electrical Systems", ["Electrical", "Lighting", "Solar Array", "Fan Wiring", "EP Ext Wiring"]),
         ("Hinge Panel & Drum", ["Light Trap", "Light Seal", "Pivot Axle"]),
-        ("Ventilation", ["Evap Cooler", "Fans"]),
+        ("Ventilation", ["Evap Cooler", "Fans", "Electrical", "Fan Wiring"]),
         ("Walkways", ["Walkways", "Combined Plate"]),
     ]
     scene_groups_ruby = '[' + ', '.join(

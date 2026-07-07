@@ -23,42 +23,37 @@ file** — a release must not ship without a changelog entry:
 ---
 
 ## [Unreleased]
-
-- **EP reach re-lay (serviceability)** — the electrical panel's DC gear was dropped into the operator's
-  **no-stool reach zone** (every maintenance item now Z1010–1560, was up to 2100): the MPPT display moved
-  from ~1970 to ~1460, the Blue Sea 5026 fuse block + busbars to chest height (~1150–1370), and the three
-  disconnects + interior E-stop regrouped into one reachable **cluster** at ~Z1045. The 5026 fuse block is
-  corrected to its real datasheet footprint (164×39×84, 12-circuit) and the IP65 enclosure reconciled to
-  ~200×220×140. Cascaded: electrical + overview 3D (`EP_H_LO` 1500→1150, `EP_H_HI` 2100→1560, `INVERTER_Z`
-  1180→760, new `EP_DISC_Z`), Sheet 5 (full redraw), pinhole-wall / assembly / line-of-sight diagrams, the
-  weight CG (EP dropped ~450mm → lower, more stable), and the report captions.
-- **Walkway grating corrected 15mm → 25mm** — the 15mm molded-FRP grate was a **bogus spec**: the thinnest
-  molded FRP made is 1"/25mm (McNichols **MS-S-100**, 1½" square mesh, vinyl-ester, 2.60 lb/sf — validated
-  against the datasheet load table; a 100kg operator deflects ~2.5mm at the 457mm span, within the ¼"
-  pedestrian limit). Corrected to 25mm; the extra 10mm is absorbed **upward** (Option A: deck `WALKWAY_H`
-  130→140, the Z115 bracket arm unchanged), verified against the full 56° hinge-panel swing arc (arc only
-  crosses the removable lift-out decks + open tray). Cascaded: film-plane bottom rail `RAIL_OFF_BOT` 150→160
-  (−10mm image, FP wall anchors move), battery + evap-stow +10mm, grate weight 11→12.7 kg/m²; ~24 diagrams
-  and 7 models regenerated.
-- **EP skinny-column reorg** — the EP was reorganized into a tall narrow **vertical column** (battery
+- **Eletrical Panel Redesign** — the EP was reorganized into a tall narrow **vertical column** (battery
   packs re-stacked vertically, gear above, PV array disconnect dropped to operator reach) to fit the one
   clear wall band between the pinhole, chem shelf, and transport-stay anchors; the layout is formalized
-  into `tbs_constants`. The overview's EP now **delegates to the electrical model's builders**, eliminating
+  into `tbs_constants`. The 5026 fuse block and the IP65
+  enclosure was corrected to its real datasheet footprint. The overview's EP now **delegates to the electrical model's builders**, eliminating
   the hand-maintained duplicate that kept drifting. Cascaded to the 2D (battery drawn as the stacked pair;
   Sheet-5 panel layout redrawn as the full column) and the weight CG. The near-walkway 500mm **widened
-  access band** was then re-worked around the EP + chem shelf: it's now **cantilever-limited to X1055–2169**
-  (≤100mm grate overhang past the outer brackets, deflection TBD), the **EP column relocated left to X1829**
-  to fit inside it (right edge = the overhang limit; the transport-stay anchor follows), and the **chem-shelf
+  access band** was then re-worked around the EP + chem shelf. The **EP column relocated left**
+  to fit inside it, and the **chem-shelf
   depth trimmed 300→225** for walk-around clearance (275mm past the shelf, 328mm behind the EP).
-- **Electrical panel (EP) rework** — reworked the EP across the electrical + overview 3D models, the 2D
-  electrical diagrams, and the parts/cost/report: the IP65 enclosure box is replaced by an open **plywood
-  backing panel** (every component surface-mounts on it — MPPT on a forward sub-panel, fuse block, busbars,
-  disconnects, inverter, battery bank); the MPPT is pulled forward clear of the fuse-stack risers; the **PV
-  array disconnect** is brought onto the panel and wired **in-line**; both E-stops are wired to the contactor
-  coil loop; and the battery DC cables now land on the disconnect terminals. Parts: added
-  `ep-backing-panel` (18mm plywood backboard, the mounting surface everything fixes to) alongside the
-  retained `ip65-enclosure` (now sealing just the fuse-block/busbar DC terminals, bolted to the plywood);
-  electrical subtotal +$60.
+- **Reconcile part dimensions** - resolved a number of drifts from the actual part dimensions vs. what had been
+  codifed and drawn in 2d and 3d models. Some parts rectified were evap cooler, skate wheels, film plane pivot, saddle straps etc.
+- **Drift-tooling hardening** — added `lint.py --verify-all`, a staging-independent full sweep that
+  regenerates every model `.rb` and byte-compares it against the working tree, catching **committed-stale**
+  outputs that the staged-diff missing-cascade check can miss; wired it into the `publish.sh` deploy gate.
+  Promoted the release-only `check_unused_imports` to a per-commit `lint.py` advisory and cleaned the 14 imports
+  the EP re-lay had orphaned.
+- **Single-source facts audit** — registered 5 previously-unpoliced system constants as `facts.yml` facts
+  (corridor width, container rib spacing, IBC stack height, widened near-walkway, clamp spacing), each a
+  `constant:` reference with a tight, verified alias, so a future prose restatement of these now trips the
+  drift gate; wrapped the corridor-width restatements in `plumbing-report §3.2` as auto-updating placeholders.
+- **Distortion-render de-duplication** — `tilt-swing-board-analysis §4` re-embedded the same nine C0–C8
+  combined renders that `distortion-renders §3` (the dedicated gallery) already owns; §4 now points to the
+  gallery and keeps only its unique content — the projection model and per-configuration optical analysis
+  (renamed "Combined Distortion Analysis").
+- **Walkway grating corrected 15mm → 25mm** — the 15mm molded-FRP grate was a **bogus spec**: the thinnest
+  molded FRP made is 1"/25mm. Corrected to 25mm; the extra 10mm is absorbed **upward**, verified against the full 56° hinge-panel swing arc (arc only crosses the removable lift-out decks + open tray). Cascaded: film-plane
+  bottom rail `RAIL_OFF_BOT` 150→160
+  (−10mm image, FP wall anchors move), battery + evap-stow +10mm, grate weight 11→12.7 kg/m²
+
+
 
 ## [0.1] — 2026-07-03
 

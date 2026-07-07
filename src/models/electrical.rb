@@ -15,13 +15,13 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each { |p| model.pages.erase(p) }
 
-# ── Sketchfab upload metadata (stamped every regen; keeps the stable model UID) ──
-model.name = "TBS-001 Electrical Model"
-model.description = "There are a number of discrete systems, color-coded in the diagram below. This view is shown from the optical axis, looking through the container wall. Each of these sub-systems, has a detailed breakdown of construction, schematic and other diagrams to show how each system it built, installed, used and maintained. The 3d model below provides a simply way to view the whole system."
-model.set_attribute("sketchfab", "model_title", "TBS-001 Electrical Model")
-model.set_attribute("sketchfab", "model_description", "There are a number of discrete systems, color-coded in the diagram below. This view is shown from the optical axis, looking through the container wall. Each of these sub-systems, has a detailed breakdown of construction, schematic and other diagrams to show how each system it built, installed, used and maintained. The 3d model below provides a simply way to view the whole system.")
-model.set_attribute("sketchfab", "model_id", "6930c96be025469fb8ef702393d7c35f")
-model.set_attribute("sketchfab", "model_tags", "sketchup")
+# ── Sketchfab metadata — fill-only-if-blank; never overwrites existing values ──
+model.name = "TBS-001 Electrical Model" if model.name.to_s.strip.empty?
+model.description = "There are a number of discrete systems, color-coded in the diagram below. This view is shown from the optical axis, looking through the container wall. Each of these sub-systems, has a detailed breakdown of construction, schematic and other diagrams to show how each system it built, installed, used and maintained. The 3d model below provides a simply way to view the whole system." if model.description.to_s.strip.empty?
+model.set_attribute("sketchfab", "model_title", "TBS-001 Electrical Model") if model.get_attribute("sketchfab", "model_title").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_description", "There are a number of discrete systems, color-coded in the diagram below. This view is shown from the optical axis, looking through the container wall. Each of these sub-systems, has a detailed breakdown of construction, schematic and other diagrams to show how each system it built, installed, used and maintained. The 3d model below provides a simply way to view the whole system.") if model.get_attribute("sketchfab", "model_description").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_id", "6930c96be025469fb8ef702393d7c35f") if model.get_attribute("sketchfab", "model_id").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribute("sketchfab", "model_tags").to_s.strip.empty?
 
 # ── Tags ──
   model.layers.add("Context") unless model.layers["Context"]
@@ -99,7 +99,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(1170.mm)
   mat = model.materials["Pump zone ghost (Cct C)"] || model.materials.add("Pump zone ghost (Cct C)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 0.14
   grp.material = mat
 
@@ -344,7 +344,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Chem Shelf (board, deployed)"] || model.materials.add("Chem Shelf (board, deployed)")
-  mat.color = Sketchup::Color.new(200, 176, 106)
+  mat.color = Sketchup::Color.new(200, 176, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -355,7 +355,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Chem Shelf (board, deployed)"] || model.materials.add("Chem Shelf (board, deployed)")
-  mat.color = Sketchup::Color.new(200, 176, 106)
+  mat.color = Sketchup::Color.new(200, 176, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -366,7 +366,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Chem Shelf (board, deployed)"] || model.materials.add("Chem Shelf (board, deployed)")
-  mat.color = Sketchup::Color.new(200, 176, 106)
+  mat.color = Sketchup::Color.new(200, 176, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -377,7 +377,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Chem Shelf (board, deployed)"] || model.materials.add("Chem Shelf (board, deployed)")
-  mat.color = Sketchup::Color.new(200, 176, 106)
+  mat.color = Sketchup::Color.new(200, 176, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -458,7 +458,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.pushpull(35.mm)
   mat = model.materials["Solar Panel 1 (200W)"] || model.materials.add("Solar Panel 1 (200W)")
   mat.color = Sketchup::Color.new(27, 58, 107)
-  mat.alpha = 1.0
+  mat.alpha = 0.3
   grp.material = mat
 
   # Solar Panel 2 (200W)
@@ -468,7 +468,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.pushpull(35.mm)
   mat = model.materials["Solar Panel 1 (200W)"] || model.materials.add("Solar Panel 1 (200W)")
   mat.color = Sketchup::Color.new(27, 58, 107)
-  mat.alpha = 1.0
+  mat.alpha = 0.3
   grp.material = mat
 
   # Solar Panel 3 (200W)
@@ -478,7 +478,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.pushpull(35.mm)
   mat = model.materials["Solar Panel 1 (200W)"] || model.materials.add("Solar Panel 1 (200W)")
   mat.color = Sketchup::Color.new(27, 58, 107)
-  mat.alpha = 1.0
+  mat.alpha = 0.3
   grp.material = mat
 
   # Tilt Frame front rail
@@ -6304,6 +6304,256 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   mat.alpha = 1.0
   grp.material = mat
 
+  # Fuse Block base (Blue Sea 5026)
+  grp = ents.add_group
+  grp.name = "Fuse Block base (Blue Sea 5026)"
+  face = grp.entities.add_face([1844.mm,25.mm,1190.mm], [2008.mm,25.mm,1190.mm], [2008.mm,64.mm,1190.mm], [1844.mm,64.mm,1190.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(28.mm)
+  mat = model.materials["Fuse Block base (Blue Sea 5026)"] || model.materials.add("Fuse Block base (Blue Sea 5026)")
+  mat.color = Sketchup::Color.new(42, 42, 42)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fuse A (5A — exhaust fan)
+  grp = ents.add_group
+  grp.name = "Fuse A (5A — exhaust fan)"
+  face = grp.entities.add_face([1849.2142857142858.mm,40.mm,1218.mm], [1862.2142857142858.mm,40.mm,1218.mm], [1862.2142857142858.mm,49.mm,1218.mm], [1849.2142857142858.mm,49.mm,1218.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(42.mm)
+  mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
+  mat.color = Sketchup::Color.new(192, 57, 43)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fuse B (5A — intake fan)
+  grp = ents.add_group
+  grp.name = "Fuse B (5A — intake fan)"
+  face = grp.entities.add_face([1872.642857142857.mm,40.mm,1218.mm], [1885.642857142857.mm,40.mm,1218.mm], [1885.642857142857.mm,49.mm,1218.mm], [1872.642857142857.mm,49.mm,1218.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(42.mm)
+  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
+  mat.color = Sketchup::Color.new(230, 126, 34)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fuse C (15A — water pumps)
+  grp = ents.add_group
+  grp.name = "Fuse C (15A — water pumps)"
+  face = grp.entities.add_face([1896.0714285714287.mm,40.mm,1218.mm], [1909.0714285714287.mm,40.mm,1218.mm], [1909.0714285714287.mm,49.mm,1218.mm], [1896.0714285714287.mm,49.mm,1218.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(42.mm)
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fuse D (5A — safelight)
+  grp = ents.add_group
+  grp.name = "Fuse D (5A — safelight)"
+  face = grp.entities.add_face([1919.5.mm,40.mm,1218.mm], [1932.5.mm,40.mm,1218.mm], [1932.5.mm,49.mm,1218.mm], [1919.5.mm,49.mm,1218.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(42.mm)
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fuse E (40A — cooler / inverter)
+  grp = ents.add_group
+  grp.name = "Fuse E (40A — cooler / inverter)"
+  face = grp.entities.add_face([1942.9285714285713.mm,40.mm,1218.mm], [1955.9285714285713.mm,40.mm,1218.mm], [1955.9285714285713.mm,49.mm,1218.mm], [1942.9285714285713.mm,49.mm,1218.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(42.mm)
+  mat = model.materials["Fuse E (40A — cooler / inverter)"] || model.materials.add("Fuse E (40A — cooler / inverter)")
+  mat.color = Sketchup::Color.new(22, 160, 133)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fuse F (20A — actuators (spare))
+  grp = ents.add_group
+  grp.name = "Fuse F (20A — actuators (spare))"
+  face = grp.entities.add_face([1966.357142857143.mm,40.mm,1218.mm], [1979.357142857143.mm,40.mm,1218.mm], [1979.357142857143.mm,49.mm,1218.mm], [1966.357142857143.mm,49.mm,1218.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(42.mm)
+  mat = model.materials["Fuse F (20A — actuators (spare))"] || model.materials.add("Fuse F (20A — actuators (spare))")
+  mat.color = Sketchup::Color.new(127, 140, 141)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fuse G (10A — white LED)
+  grp = ents.add_group
+  grp.name = "Fuse G (10A — white LED)"
+  face = grp.entities.add_face([1989.7857142857142.mm,40.mm,1218.mm], [2002.7857142857142.mm,40.mm,1218.mm], [2002.7857142857142.mm,49.mm,1218.mm], [1989.7857142857142.mm,49.mm,1218.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(42.mm)
+  mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
+  mat.color = Sketchup::Color.new(241, 196, 15)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Master pump switch (Cct C, on EP)
+  grp = ents.add_group
+  grp.name = "Master pump switch (Cct C, on EP)"
+  face = grp.entities.add_face([1934.mm,0.mm,1045.mm], [1984.mm,0.mm,1045.mm], [1984.mm,46.mm,1045.mm], [1934.mm,46.mm,1045.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(84.mm)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Master switch lever (OFF cutoff)
+  grp = ents.add_group
+  grp.name = "Master switch lever (OFF cutoff)"
+  face = grp.entities.add_face([1951.mm,46.mm,1085.mm], [1967.mm,46.mm,1085.mm], [1967.mm,80.mm,1085.mm], [1951.mm,80.mm,1085.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Master switch lever (OFF cutoff)"] || model.materials.add("Master switch lever (OFF cutoff)")
+  mat.color = Sketchup::Color.new(192, 32, 42)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Busbar (+)
+  grp = ents.add_group
+  grp.name = "Busbar (+)"
+  face = grp.entities.add_face([1844.mm,30.mm,1320.mm], [1964.mm,30.mm,1320.mm], [1964.mm,50.mm,1320.mm], [1844.mm,50.mm,1320.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
+  mat.color = Sketchup::Color.new(192, 57, 43)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Busbar (-)
+  grp = ents.add_group
+  grp.name = "Busbar (-)"
+  face = grp.entities.add_face([1844.mm,30.mm,1290.mm], [1964.mm,30.mm,1290.mm], [1964.mm,50.mm,1290.mm], [1844.mm,50.mm,1290.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Fuse Block base (Blue Sea 5026)"] || model.materials.add("Fuse Block base (Blue Sea 5026)")
+  mat.color = Sketchup::Color.new(42, 42, 42)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Main Disconnect (m-Series)
+  grp = ents.add_group
+  grp.name = "Main Disconnect (m-Series)"
+  ge = grp.entities
+  circle = ge.add_circle([1884.mm,0.mm,1045.mm], [0,1,0], 35.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Main Disconnect (m-Series)"] || model.materials.add("Main Disconnect (m-Series)")
+  mat.color = Sketchup::Color.new(212, 58, 47)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Main feed (disconnect → busbar +)
+  grp = ents.add_group
+  grp.name = "Main feed (disconnect → busbar +)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.649999999999999.mm, 0.mm)
+  circle = ge.add_circle([1884.mm,30.mm,1135.mm], vec, 11.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
+  mat.color = Sketchup::Color.new(139, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Main feed (disconnect → busbar +) elbow
+  grp = ents.add_group
+  grp.name = "Main feed (disconnect → busbar +) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1884.mm,37.65.mm,1142.35.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 7.3500000000000005.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1884.mm,37.65.mm,1135.mm], [0.000000,1.000000,0.000000], 11.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
+  mat.color = Sketchup::Color.new(139, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Main feed (disconnect → busbar +)
+  grp = ents.add_group
+  grp.name = "Main feed (disconnect → busbar +)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 158.05000000000018.mm)
+  circle = ge.add_circle([1884.mm,45.mm,1142.35.mm], vec, 11.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
+  mat.color = Sketchup::Color.new(139, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Main feed (disconnect → busbar +) elbow
+  grp = ents.add_group
+  grp.name = "Main feed (disconnect → busbar +) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([1864.4.mm,45.mm,1300.4.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 19.600000000000005.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1884.mm,45.mm,1300.4.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
+  mat.color = Sketchup::Color.new(139, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Main feed (disconnect → busbar +)
+  grp = ents.add_group
+  grp.name = "Main feed (disconnect → busbar +)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-20.40000000000009.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1864.4.mm,45.mm,1320.mm], vec, 11.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
+  mat.color = Sketchup::Color.new(139, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Charge-line Fuse (60A, MPPT -> battery)
+  grp = ents.add_group
+  grp.name = "Charge-line Fuse (60A, MPPT -> battery)"
+  face = grp.entities.add_face([1844.mm,95.mm,1305.mm], [1889.mm,95.mm,1305.mm], [1889.mm,125.mm,1305.mm], [1844.mm,125.mm,1305.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(45.mm)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Interior E-stop collar (safety yellow)
+  grp = ents.add_group
+  grp.name = "Interior E-stop collar (safety yellow)"
+  ge = grp.entities
+  circle = ge.add_circle([2099.mm,0.mm,1065.mm], [0,1,0], 30.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Interior E-stop collar (safety yellow)"] || model.materials.add("Interior E-stop collar (safety yellow)")
+  mat.color = Sketchup::Color.new(242, 194, 0)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Interior E-stop button (red mushroom)
+  grp = ents.add_group
+  grp.name = "Interior E-stop button (red mushroom)"
+  ge = grp.entities
+  circle = ge.add_circle([2099.mm,12.mm,1065.mm], [0,1,0], 24.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(26.mm)
+  mat = model.materials["Interior E-stop button (red mushroom)"] || model.materials.add("Interior E-stop button (red mushroom)")
+  mat.color = Sketchup::Color.new(196, 43, 28)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # PV feed (MC4 -> array disconnect, top)
   grp = ents.add_group
   grp.name = "PV feed (MC4 -> array disconnect, top)"
@@ -6410,256 +6660,6 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf.pushpull(vec.length)
   mat = model.materials["PV cord (+) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (+) (array -> panel MC4, bonded pair)")
   mat.color = Sketchup::Color.new(45, 122, 45)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fuse Block base (Blue Sea 5026)
-  grp = ents.add_group
-  grp.name = "Fuse Block base (Blue Sea 5026)"
-  face = grp.entities.add_face([1844.mm,25.mm,1190.mm], [2008.mm,25.mm,1190.mm], [2008.mm,64.mm,1190.mm], [1844.mm,64.mm,1190.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(28.mm)
-  mat = model.materials["Fuse Block base (Blue Sea 5026)"] || model.materials.add("Fuse Block base (Blue Sea 5026)")
-  mat.color = Sketchup::Color.new(43, 43, 48)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fuse A (5A — exhaust fan)
-  grp = ents.add_group
-  grp.name = "Fuse A (5A — exhaust fan)"
-  face = grp.entities.add_face([1849.2142857142858.mm,40.mm,1218.mm], [1862.2142857142858.mm,40.mm,1218.mm], [1862.2142857142858.mm,49.mm,1218.mm], [1849.2142857142858.mm,49.mm,1218.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(42.mm)
-  mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
-  mat.color = Sketchup::Color.new(192, 57, 43)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fuse B (5A — intake fan)
-  grp = ents.add_group
-  grp.name = "Fuse B (5A — intake fan)"
-  face = grp.entities.add_face([1872.642857142857.mm,40.mm,1218.mm], [1885.642857142857.mm,40.mm,1218.mm], [1885.642857142857.mm,49.mm,1218.mm], [1872.642857142857.mm,49.mm,1218.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(42.mm)
-  mat = model.materials["Fuse B (5A — intake fan)"] || model.materials.add("Fuse B (5A — intake fan)")
-  mat.color = Sketchup::Color.new(230, 126, 34)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fuse C (15A — water pumps)
-  grp = ents.add_group
-  grp.name = "Fuse C (15A — water pumps)"
-  face = grp.entities.add_face([1896.0714285714287.mm,40.mm,1218.mm], [1909.0714285714287.mm,40.mm,1218.mm], [1909.0714285714287.mm,49.mm,1218.mm], [1896.0714285714287.mm,49.mm,1218.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(42.mm)
-  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fuse D (5A — safelight)
-  grp = ents.add_group
-  grp.name = "Fuse D (5A — safelight)"
-  face = grp.entities.add_face([1919.5.mm,40.mm,1218.mm], [1932.5.mm,40.mm,1218.mm], [1932.5.mm,49.mm,1218.mm], [1919.5.mm,49.mm,1218.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(42.mm)
-  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fuse E (40A — cooler / inverter)
-  grp = ents.add_group
-  grp.name = "Fuse E (40A — cooler / inverter)"
-  face = grp.entities.add_face([1942.9285714285713.mm,40.mm,1218.mm], [1955.9285714285713.mm,40.mm,1218.mm], [1955.9285714285713.mm,49.mm,1218.mm], [1942.9285714285713.mm,49.mm,1218.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(42.mm)
-  mat = model.materials["Fuse E (40A — cooler / inverter)"] || model.materials.add("Fuse E (40A — cooler / inverter)")
-  mat.color = Sketchup::Color.new(22, 160, 133)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fuse F (20A — actuators (spare))
-  grp = ents.add_group
-  grp.name = "Fuse F (20A — actuators (spare))"
-  face = grp.entities.add_face([1966.357142857143.mm,40.mm,1218.mm], [1979.357142857143.mm,40.mm,1218.mm], [1979.357142857143.mm,49.mm,1218.mm], [1966.357142857143.mm,49.mm,1218.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(42.mm)
-  mat = model.materials["Fuse F (20A — actuators (spare))"] || model.materials.add("Fuse F (20A — actuators (spare))")
-  mat.color = Sketchup::Color.new(127, 140, 141)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fuse G (10A — white LED)
-  grp = ents.add_group
-  grp.name = "Fuse G (10A — white LED)"
-  face = grp.entities.add_face([1989.7857142857142.mm,40.mm,1218.mm], [2002.7857142857142.mm,40.mm,1218.mm], [2002.7857142857142.mm,49.mm,1218.mm], [1989.7857142857142.mm,49.mm,1218.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(42.mm)
-  mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
-  mat.color = Sketchup::Color.new(241, 196, 15)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Master pump switch (Cct C, on EP)
-  grp = ents.add_group
-  grp.name = "Master pump switch (Cct C, on EP)"
-  face = grp.entities.add_face([1934.mm,0.mm,1045.mm], [1984.mm,0.mm,1045.mm], [1984.mm,46.mm,1045.mm], [1934.mm,46.mm,1045.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(84.mm)
-  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
-  mat.color = Sketchup::Color.new(32, 32, 32)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Master switch lever (OFF cutoff)
-  grp = ents.add_group
-  grp.name = "Master switch lever (OFF cutoff)"
-  face = grp.entities.add_face([1951.mm,46.mm,1085.mm], [1967.mm,46.mm,1085.mm], [1967.mm,80.mm,1085.mm], [1951.mm,80.mm,1085.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["Master switch lever (OFF cutoff)"] || model.materials.add("Master switch lever (OFF cutoff)")
-  mat.color = Sketchup::Color.new(192, 32, 42)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Busbar (+)
-  grp = ents.add_group
-  grp.name = "Busbar (+)"
-  face = grp.entities.add_face([1844.mm,30.mm,1320.mm], [1964.mm,30.mm,1320.mm], [1964.mm,50.mm,1320.mm], [1844.mm,50.mm,1320.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(22.mm)
-  mat = model.materials["Fuse A (5A — exhaust fan)"] || model.materials.add("Fuse A (5A — exhaust fan)")
-  mat.color = Sketchup::Color.new(192, 57, 43)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Busbar (-)
-  grp = ents.add_group
-  grp.name = "Busbar (-)"
-  face = grp.entities.add_face([1844.mm,30.mm,1290.mm], [1964.mm,30.mm,1290.mm], [1964.mm,50.mm,1290.mm], [1844.mm,50.mm,1290.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(22.mm)
-  mat = model.materials["Busbar (-)"] || model.materials.add("Busbar (-)")
-  mat.color = Sketchup::Color.new(44, 44, 44)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Main Disconnect (m-Series)
-  grp = ents.add_group
-  grp.name = "Main Disconnect (m-Series)"
-  ge = grp.entities
-  circle = ge.add_circle([1884.mm,0.mm,1045.mm], [0,1,0], 35.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Main Disconnect (m-Series)"] || model.materials.add("Main Disconnect (m-Series)")
-  mat.color = Sketchup::Color.new(212, 58, 47)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Main feed (disconnect → busbar +)
-  grp = ents.add_group
-  grp.name = "Main feed (disconnect → busbar +)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 7.649999999999999.mm, 0.mm)
-  circle = ge.add_circle([1884.mm,30.mm,1135.mm], vec, 11.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
-  mat.color = Sketchup::Color.new(139, 26, 26)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Main feed (disconnect → busbar +) elbow
-  grp = ents.add_group
-  grp.name = "Main feed (disconnect → busbar +) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([1884.mm,37.65.mm,1142.35.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 7.3500000000000005.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1884.mm,37.65.mm,1135.mm], [0.000000,1.000000,0.000000], 11.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
-  mat.color = Sketchup::Color.new(139, 26, 26)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Main feed (disconnect → busbar +)
-  grp = ents.add_group
-  grp.name = "Main feed (disconnect → busbar +)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 158.05000000000018.mm)
-  circle = ge.add_circle([1884.mm,45.mm,1142.35.mm], vec, 11.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
-  mat.color = Sketchup::Color.new(139, 26, 26)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Main feed (disconnect → busbar +) elbow
-  grp = ents.add_group
-  grp.name = "Main feed (disconnect → busbar +) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([1864.4.mm,45.mm,1300.4.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 19.600000000000005.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1884.mm,45.mm,1300.4.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
-  mat.color = Sketchup::Color.new(139, 26, 26)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Main feed (disconnect → busbar +)
-  grp = ents.add_group
-  grp.name = "Main feed (disconnect → busbar +)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-20.40000000000009.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1864.4.mm,45.mm,1320.mm], vec, 11.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Main feed (disconnect → busbar +)"] || model.materials.add("Main feed (disconnect → busbar +)")
-  mat.color = Sketchup::Color.new(139, 26, 26)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Charge-line Fuse (60A, MPPT -> battery)
-  grp = ents.add_group
-  grp.name = "Charge-line Fuse (60A, MPPT -> battery)"
-  face = grp.entities.add_face([1844.mm,95.mm,1305.mm], [1889.mm,95.mm,1305.mm], [1889.mm,125.mm,1305.mm], [1844.mm,125.mm,1305.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(45.mm)
-  mat = model.materials["Charge-line Fuse (60A, MPPT -> battery)"] || model.materials.add("Charge-line Fuse (60A, MPPT -> battery)")
-  mat.color = Sketchup::Color.new(34, 34, 34)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Interior E-stop collar (safety yellow)
-  grp = ents.add_group
-  grp.name = "Interior E-stop collar (safety yellow)"
-  ge = grp.entities
-  circle = ge.add_circle([2099.mm,0.mm,1065.mm], [0,1,0], 30.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(12.mm)
-  mat = model.materials["Interior E-stop collar (safety yellow)"] || model.materials.add("Interior E-stop collar (safety yellow)")
-  mat.color = Sketchup::Color.new(242, 194, 0)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Interior E-stop button (red mushroom)
-  grp = ents.add_group
-  grp.name = "Interior E-stop button (red mushroom)"
-  ge = grp.entities
-  circle = ge.add_circle([2099.mm,12.mm,1065.mm], [0,1,0], 24.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(26.mm)
-  mat = model.materials["Interior E-stop button (red mushroom)"] || model.materials.add("Interior E-stop button (red mushroom)")
-  mat.color = Sketchup::Color.new(196, 43, 28)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6926,8 +6926,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face = grp.entities.add_face([1979.mm,20.mm,624.mm], [2019.mm,20.mm,624.mm], [2019.mm,60.mm,624.mm], [1979.mm,60.mm,624.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
-  mat = model.materials["Charge-line Fuse (60A, MPPT -> battery)"] || model.materials.add("Charge-line Fuse (60A, MPPT -> battery)")
-  mat.color = Sketchup::Color.new(34, 34, 34)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7008,8 +7008,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
-  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7021,8 +7021,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   circle = ge.add_circle([1947.mm,60.mm,604.mm], [1.000000,0.000000,0.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
-  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7035,8 +7035,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
-  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7048,8 +7048,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   circle = ge.add_circle([1969.mm,60.mm,1278.mm], [0.000000,0.000000,1.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
-  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7062,8 +7062,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
-  mat.color = Sketchup::Color.new(32, 32, 32)
+  mat = model.materials["PV cord (-) (array -> panel MC4, bonded pair)"] || model.materials.add("PV cord (-) (array -> panel MC4, bonded pair)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7091,8 +7091,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face = grp.entities.add_face([1250.mm,0.mm,1830.mm], [1590.mm,0.mm,1830.mm], [1590.mm,20.mm,1830.mm], [1250.mm,20.mm,1830.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(240.mm)
-  mat = model.materials["Ext. Power Panel (interior face)"] || model.materials.add("Ext. Power Panel (interior face)")
-  mat.color = Sketchup::Color.new(245, 197, 24)
+  mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
+  mat.color = Sketchup::Color.new(241, 196, 15)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8714,8 +8714,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face = grp.entities.add_face([260.mm,0.mm,2363.mm], [5658.mm,0.mm,2363.mm], [5658.mm,40.mm,2363.mm], [260.mm,40.mm,2363.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
-  mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
-  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat = model.materials["MC4 PV1 (-)"] || model.materials.add("MC4 PV1 (-)")
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9173,7 +9173,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(1675.mm)
   mat = model.materials["Fuse Block base (Blue Sea 5026)"] || model.materials.add("Fuse Block base (Blue Sea 5026)")
-  mat.color = Sketchup::Color.new(43, 43, 48)
+  mat.color = Sketchup::Color.new(42, 42, 42)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9187,7 +9187,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9200,7 +9200,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9214,7 +9214,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9227,7 +9227,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9241,7 +9241,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9255,7 +9255,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9268,7 +9268,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9282,7 +9282,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9295,7 +9295,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9309,7 +9309,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9322,7 +9322,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9336,7 +9336,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9349,7 +9349,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9363,7 +9363,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9377,7 +9377,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9391,7 +9391,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9405,7 +9405,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9419,7 +9419,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9444,7 +9444,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9457,7 +9457,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9471,7 +9471,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
-  mat.color = Sketchup::Color.new(41, 128, 185)
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 

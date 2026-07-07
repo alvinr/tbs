@@ -17,13 +17,13 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each { |p| model.pages.erase(p) }
 
-# ── Sketchfab upload metadata (stamped every regen; keeps the stable model UID) ──
-model.name = "TBS-001 IBC Model"
-model.description = "Details of the IBC stack, frame and plumbing panel."
-model.set_attribute("sketchfab", "model_title", "TBS-001 IBC Model")
-model.set_attribute("sketchfab", "model_description", "Details of the IBC stack, frame and plumbing panel.")
-model.set_attribute("sketchfab", "model_id", "8d091c60e93848f38e26c9c89a08cbc8")
-model.set_attribute("sketchfab", "model_tags", "sketchup")
+# ── Sketchfab metadata — fill-only-if-blank; never overwrites existing values ──
+model.name = "TBS-001 IBC Model" if model.name.to_s.strip.empty?
+model.description = "Details of the IBC stack, frame and plumbing panel." if model.description.to_s.strip.empty?
+model.set_attribute("sketchfab", "model_title", "TBS-001 IBC Model") if model.get_attribute("sketchfab", "model_title").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_description", "Details of the IBC stack, frame and plumbing panel.") if model.get_attribute("sketchfab", "model_description").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_id", "8d091c60e93848f38e26c9c89a08cbc8") if model.get_attribute("sketchfab", "model_id").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribute("sketchfab", "model_tags").to_s.strip.empty?
 
 # ── Tags (layers) ──
   model.layers.add("Context") unless model.layers["Context"]
@@ -106,7 +106,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(168.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -128,7 +128,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(168.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -150,7 +150,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(168.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -172,7 +172,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.reverse! if face.normal.z < 0
   face.pushpull(168.mm)
   mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(58, 58, 58)
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -345,8 +345,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -358,8 +358,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -371,8 +371,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -384,8 +384,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -408,8 +408,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -421,8 +421,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -434,8 +434,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -447,8 +447,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -471,8 +471,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -484,8 +484,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -497,8 +497,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -510,8 +510,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -534,8 +534,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -547,8 +547,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -560,8 +560,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -573,8 +573,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -840,8 +840,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -853,8 +853,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -866,8 +866,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -879,8 +879,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -925,8 +925,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -938,8 +938,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -951,8 +951,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -964,8 +964,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1010,8 +1010,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1023,8 +1023,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1036,8 +1036,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1049,8 +1049,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1095,8 +1095,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1108,8 +1108,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1121,8 +1121,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1134,8 +1134,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1273,8 +1273,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1286,8 +1286,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1299,8 +1299,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1325,8 +1325,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1338,8 +1338,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1351,8 +1351,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1377,8 +1377,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1390,8 +1390,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1403,8 +1403,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1429,8 +1429,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1442,8 +1442,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1455,8 +1455,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1481,8 +1481,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(26.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1494,8 +1494,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1507,8 +1507,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1521,7 +1521,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(60.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1534,7 +1534,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(36.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1547,7 +1547,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1560,7 +1560,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1573,7 +1573,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1744,7 +1744,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(78.mm)
   mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
-  mat.color = Sketchup::Color.new(34, 34, 40)
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1758,7 +1758,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
-  mat.color = Sketchup::Color.new(34, 34, 40)
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1772,7 +1772,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
-  mat.color = Sketchup::Color.new(34, 34, 40)
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1811,7 +1811,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(78.mm)
   mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
-  mat.color = Sketchup::Color.new(34, 34, 40)
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1825,7 +1825,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
-  mat.color = Sketchup::Color.new(34, 34, 40)
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1839,7 +1839,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
-  mat.color = Sketchup::Color.new(34, 34, 40)
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1878,7 +1878,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(78.mm)
   mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
-  mat.color = Sketchup::Color.new(34, 34, 40)
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1892,7 +1892,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
-  mat.color = Sketchup::Color.new(34, 34, 40)
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1906,7 +1906,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
-  mat.color = Sketchup::Color.new(34, 34, 40)
+  mat.color = Sketchup::Color.new(26, 26, 26)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1944,8 +1944,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1957,8 +1957,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1970,8 +1970,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(30.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2500,7 +2500,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
   mat = model.materials["BV-03 (P-02 suction)"] || model.materials.add("BV-03 (P-02 suction)")
-  mat.color = Sketchup::Color.new(122, 128, 136)
+  mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -3654,8 +3654,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
-  mat = model.materials["Foot anchor M12"] || model.materials.add("Foot anchor M12")
-  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4155,7 +4155,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(60.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4168,7 +4168,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4181,7 +4181,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4194,7 +4194,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4207,7 +4207,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4517,7 +4517,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
   mat = model.materials["BV-03 (P-02 suction)"] || model.materials.add("BV-03 (P-02 suction)")
-  mat.color = Sketchup::Color.new(122, 128, 136)
+  mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4791,7 +4791,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(60.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4804,7 +4804,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4817,7 +4817,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4830,7 +4830,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4843,7 +4843,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4856,7 +4856,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5071,7 +5071,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(60.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5084,7 +5084,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(36.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5097,7 +5097,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5110,7 +5110,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5123,7 +5123,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(12.mm)
   mat = model.materials["SV-02 tap tee run"] || model.materials.add("SV-02 tap tee run")
-  mat.color = Sketchup::Color.new(154, 160, 168)
+  mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5312,7 +5312,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
   mat = model.materials["BV-03 (P-02 suction)"] || model.materials.add("BV-03 (P-02 suction)")
-  mat.color = Sketchup::Color.new(122, 128, 136)
+  mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5781,7 +5781,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
   mat = model.materials["BV-03 (P-02 suction)"] || model.materials.add("BV-03 (P-02 suction)")
-  mat.color = Sketchup::Color.new(122, 128, 136)
+  mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6216,7 +6216,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
   mat = model.materials["BV-03 (P-02 suction)"] || model.materials.add("BV-03 (P-02 suction)")
-  mat.color = Sketchup::Color.new(122, 128, 136)
+  mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6241,6 +6241,1503 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   face.pushpull(48.mm)
   mat = model.materials["SV-02 sample valve handwheel stem"] || model.materials.add("SV-02 sample valve handwheel stem")
   mat.color = Sketchup::Color.new(192, 32, 42)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # BV-05 top elbow (spray-bar supply, 90°)
+  grp = ents.add_group
+  grp.name = "BV-05 top elbow (spray-bar supply, 90°)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 56.mm)
+  circle = ge.add_circle([2399.mm,69.mm,990.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # BV-05 top elbow (spray-bar supply, 90°) elbow
+  grp = ents.add_group
+  grp.name = "BV-05 top elbow (spray-bar supply, 90°) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([2399.mm,83.mm,1046.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 14.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2399.mm,69.mm,1046.mm], [0.000000,0.000000,1.000000], 7.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # BV-05 top elbow (spray-bar supply, 90°)
+  grp = ents.add_group
+  grp.name = "BV-05 top elbow (spray-bar supply, 90°)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 77.mm, 0.mm)
+  circle = ge.add_circle([2399.mm,83.mm,1060.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 24.mm, -81.mm)
+  circle = ge.add_circle([2399.mm,160.mm,1060.mm], vec, 7.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-27.673422065754494.mm, -22.15464397755659.mm, -22.95710381419417.mm)
+  circle = ge.add_circle([2399.mm,184.mm,979.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-11.52637013341382.mm, 30.962497150547307.mm, -7.218691628089346.mm)
+  circle = ge.add_circle([2371.3265779342455.mm,161.8453560224434.mm,956.0428961858058.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(11.346156396661627.mm, 31.033903797789975.mm, -7.1975341029803985.mm)
+  circle = ge.add_circle([2359.8002078008317.mm,192.80785317299072.mm,948.8242045577165.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(27.598360505677192.mm, 15.602797209598862.mm, -11.769713832814887.mm)
+  circle = ge.add_circle([2371.1463641974933.mm,223.8417569707807.mm,941.6266704547361.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(27.74731004524483.mm, -6.326989302013999.mm, -18.26742835477421.mm)
+  circle = ge.add_circle([2398.7447247031705.mm,239.44455418037955.mm,929.8569566219212.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(11.70609505731909.mm, -21.959734238392485.mm, -22.899352780367735.mm)
+  circle = ge.add_circle([2426.4920347484153.mm,233.11756487836556.mm,911.589528267147.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-11.165461489606514.mm, -22.173951151891544.mm, -22.96282445844156.mm)
+  circle = ge.add_circle([2438.1981298057344.mm,211.15783063997307.mm,888.6901754867793.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-27.522128548239834.mm, -6.844647491216364.mm, -18.42080855898223.mm)
+  circle = ge.add_circle([2427.032668316128.mm,188.98387948808153.mm,865.7273510283377.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-27.82002131069021.mm, 15.083744005700993.mm, -11.923507374710653.mm)
+  circle = ge.add_circle([2399.510539767888.mm,182.13923199686516.mm,847.3065424693555.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-11.885323546563086.mm, 30.816315811627163.mm, -7.262004617398929.mm)
+  circle = ge.add_circle([2371.690518457198.mm,197.22297600256616.mm,835.3830350946448.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(10.984293075197002.mm, 31.17333390682458.mm, -7.1562214780813065.mm)
+  circle = ge.add_circle([2359.805194910635.mm,228.03929181419332.mm,828.1210304772459.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(27.444729426305003.mm, 15.946483262156391.mm, -11.66788092835327.mm)
+  circle = ge.add_circle([2370.789487985832.mm,259.2126257210179.mm,820.9648089991646.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(27.891552778535242.mm, -5.979583276001961.mm, -18.164493235955774.mm)
+  circle = ge.add_circle([2398.234217412137.mm,275.1591089831743.mm,809.2969280708113.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(12.064048000384446.mm, -21.81131476110076.mm, -22.855376638947973.mm)
+  circle = ge.add_circle([2426.125770190672.mm,269.17952570717233.mm,791.1324348348555.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-10.802658836464616.mm, -22.31111889749417.mm, -23.003466753434964.mm)
+  circle = ge.add_circle([2438.1898181910565.mm,247.36821094607157.mm,768.2770581959076.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-27.366166422230435.mm, -7.187367012473686.mm, -18.52235508379931.mm)
+  circle = ge.add_circle([2427.387159354592.mm,225.0570920485774.mm,745.2735914424726.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-27.961901415258126.mm, 14.735444721459487.mm, -12.026707162633897.mm)
+  circle = ge.add_circle([2400.0209929323614.mm,217.86972503610372.mm,726.7512363586733.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-12.24226083939675.mm, 30.665664490169775.mm, -7.306642045979061.mm)
+  circle = ge.add_circle([2372.0590915171033.mm,232.6051697575632.mm,714.7245291960394.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(10.620566476192835.mm, 31.30823347195519.mm, -7.116251236560856.mm)
+  circle = ge.add_circle([2359.8168306777065.mm,263.270834247733.mm,707.4178871500603.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(27.286442867733967.mm, 16.28822171798845.mm, -11.566625089588456.mm)
+  circle = ge.add_circle([2370.4373971538994.mm,294.57906771968817.mm,700.3016359134995.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(28.031064237497958.mm, -5.630405504283942.mm, -18.061033155446694.mm)
+  circle = ge.add_circle([2397.7238400216334.mm,310.8672894376766.mm,688.735010823911.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(12.419954505911392.mm, -21.65843798433184.mm, -22.810079816201664.mm)
+  circle = ge.add_circle([2425.7549042591313.mm,305.2368839333927.mm,670.6739776684643.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-10.43802371659558.mm, -22.44374456130248.mm, -23.04276324641512.mm)
+  circle = ge.add_circle([2438.1748587650427.mm,283.57844594906084.mm,647.8638978522627.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-27.205562143749376.mm, -7.52810991036074.mm, -18.62331594243267.mm)
+  circle = ge.add_circle([2427.736835048447.mm,261.13470138775835.mm,624.8211346058475.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-28.09903831218253.mm, 14.385403270272775.mm, -12.130423148170621.mm)
+  circle = ge.add_circle([2400.5312729046977.mm,253.60659147739761.mm,606.1978186634149.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-12.597121464255906.mm, 30.510568741321663.mm, -7.352596341934031.mm)
+  circle = ge.add_circle([2372.432234592515.mm,267.9919947476704.mm,594.0673955152442.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(10.255038298986165.mm, 31.43857961002277.mm, -7.077630158615079.mm)
+  circle = ge.add_circle([2359.8351131282593.mm,298.50256348899205.mm,586.7147991733102.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(27.12352768028495.mm, 16.6279546076305.mm, -11.465963492657238.mm)
+  circle = ge.add_circle([2370.0901514272455.mm,329.9411430990148.mm,579.6371690146951.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(28.165820756652465.mm, -5.279515218263725.mm, -17.95706566329261.mm)
+  circle = ge.add_circle([2397.2136791075304.mm,346.5690977066453.mm,568.1712055220379.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(12.773754201094562.mm, -21.501129840739452.mm, -22.76346999587804.mm)
+  circle = ge.add_circle([2425.379499864183.mm,341.2895824883816.mm,550.2141398587453.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-10.071617983450778.mm, -22.571805645881227.mm, -23.080707271475546.mm)
+  circle = ge.add_circle([2438.1532540652775.mm,319.78845264764215.mm,527.4506698628672.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-27.04034295627571.mm, -7.866818384290468.mm, -18.72367400878204.mm)
+  circle = ge.add_circle([2428.0816360818267.mm,297.2166470017609.mm,504.3699625913917.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-28.231408738782648.mm, 14.033679030051871.mm, -12.234637737865796.mm)
+  circle = ge.add_circle([2401.041293125551.mm,289.34982861747045.mm,485.64628858260966.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-12.949845225747595.mm, 30.351054874143074.mm, -7.3998597099867425.mm)
+  circle = ge.add_circle([2372.8098843867683.mm,303.3835076475223.mm,473.41165084474386.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.887770548518347.mm, 31.56435021027022.mm, -7.0403647955789666.mm)
+  circle = ge.add_circle([2359.8600391610207.mm,333.7345625216654.mm,466.0117911347571.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(26.95601149943741.mm, 16.965624301824164.mm, -11.365913212896317.mm)
+  circle = ge.add_circle([2369.747809709539.mm,365.2989127319356.mm,458.97142633917815.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(28.295799477104538.mm, -4.926971939840996.mm, -17.85260839561164.mm)
+  circle = ge.add_circle([2396.7038212089765.mm,382.2645370337598.mm,447.60551312628183.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(13.125387070507713.mm, -21.339417014674154.mm, -22.71555508445124.mm)
+  circle = ge.add_circle([2424.999620686081.mm,377.3375650939188.mm,429.7529047306702.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.703503790831292.mm, -22.695280428089973.mm, -23.117292392130025.mm)
+  circle = ge.add_circle([2438.1250077565887.mm,355.99814807924463.mm,407.03734964621896.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-26.870536886118316.mm, -8.203434978777295.mm, -18.823412259000406.mm)
+  circle = ge.add_circle([2428.4215039657574.mm,333.30286765115466.mm,383.92005725408893.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-28.35899024092032.mm, 13.68033166416052.mm, -12.339333253685425.mm)
+  circle = ge.add_circle([2401.550967079639.mm,325.09943267237736.mm,365.0966449950885.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-13.300372290957512.mm, 30.18714994714429.mm, -7.448424132801335.mm)
+  circle = ge.add_circle([2373.191976838719.mm,338.7797643365379.mm,352.7573117414031.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.518825524814929.mm, 31.68552393809432.mm, -7.004461468816146.mm)
+  circle = ge.add_circle([2359.8916045477613.mm,368.9669142836822.mm,345.30888760860176.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(29.58956992742378.mm, -24.652438221776492.mm, -7.304426139785619.mm)
+  circle = ge.add_circle([2369.410430072576.mm,400.6524382217765.mm,338.3044261397856.mm], vec, 7.mm, 8)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 24.mm, -81.mm)
+  circle = ge.add_circle([2399.mm,376.mm,331.mm], vec, 7.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 24.mm, 105.mm)
+  circle = ge.add_circle([2399.mm,400.mm,250.mm], vec, 7.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-27.603081244248187.mm, 30.62474162209861.mm, 9.070708408455346.mm)
+  circle = ge.add_circle([2399.mm,424.mm,355.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-11.59556304131911.mm, -23.325104356190707.mm, 21.40210177492156.mm)
+  circle = ge.add_circle([2371.396918755752.mm,454.6247416220986.mm,364.07070840845535.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(11.136428593205892.mm, -23.509413300862036.mm, 21.44422953370355.mm)
+  circle = ge.add_circle([2359.8013557144327.mm,431.2996372659079.mm,385.4728101833769.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(27.410207036096836.mm, -8.035754631454324.mm, 17.907393266410338.mm)
+  circle = ge.add_circle([2370.9377843076386.mm,407.79022396504587.mm,406.91703971708046.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(27.788318462906773.mm, 14.122421527943004.mm, 12.842667287119468.mm)
+  circle = ge.add_circle([2398.3479913437354.mm,399.75446933359154.mm,424.8244329834908.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(12.051489326099272.mm, 30.11519436317508.mm, 9.187176353352186.mm)
+  circle = ge.add_circle([2426.136309806642.mm,413.87689086153455.mm,437.66710027061026.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-10.674213011236588.mm, 30.66807020413279.mm, 9.060804732561849.mm)
+  circle = ge.add_circle([2438.1877991327415.mm,443.9920852247096.mm,446.85427662396245.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-27.209749201273098.mm, 15.460426508362389.mm, 12.536837577309427.mm)
+  circle = ge.add_circle([2427.513586121505.mm,474.6601554288424.mm,455.9150813565243.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-27.965867442188937.mm, -6.6885534188509155.mm, 17.599461560672466.mm)
+  circle = ge.add_circle([2400.303836920232.mm,490.1205819372048.mm,468.4519189338337.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-12.504081305678937.mm, -22.934281822107266.mm, 21.312770909988103.mm)
+  circle = ge.add_circle([2372.337969478043.mm,483.4320285183539.mm,486.0513804945062.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(10.209044177350279.mm, -23.85557159429095.mm, 21.52335142934436.mm)
+  circle = ge.add_circle([2359.833888172364.mm,460.4977466962466.mm,507.3641514044943.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(27.001763200773894.mm, -8.918150395734585.mm, 18.10908372681729.mm)
+  circle = ge.add_circle([2370.042932349714.mm,436.6421751019557.mm,528.8875028338387.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(28.13567905932905.mm, 13.215505304905605.mm, 13.049962423813781.mm)
+  circle = ge.add_circle([2397.044695550488.mm,427.7240247062211.mm,546.9965865606559.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(12.953213760695235.mm, 29.709694544020806.mm, 9.279862026301657.mm)
+  circle = ge.add_circle([2425.180374609817.mm,440.9395300111267.mm,560.0465489844697.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-9.741050790565168.mm, 30.999143352687327.mm, 8.985130870035164.mm)
+  circle = ge.add_circle([2438.1335883705124.mm,470.6492245551475.mm,569.3264110107714.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-26.78630657842541.mm, 16.33607741202269.mm, 12.336688799329977.mm)
+  circle = ge.add_circle([2428.392537579947.mm,501.6483679078348.mm,578.3115418808065.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-28.297706332269172.mm, -5.776130307433959.mm, 17.390907706634152.mm)
+  circle = ge.add_circle([2401.606231001522.mm,517.9844453198575.mm,590.6482306801365.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-13.398762428942064.mm, -22.514216908178355.mm, 21.21675607251882.mm)
+  circle = ge.add_circle([2373.3085246692526.mm,512.2083150124236.mm,608.0391383867707.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.270362331376418.mm, -24.171467999423328.mm, 21.595556321945992.mm)
+  circle = ge.add_circle([2359.9097622403106.mm,489.6940981042452.mm,629.2558944592895.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(26.56343894496149.mm, -9.7868141710116.mm, 18.30763544688068.mm)
+  circle = ge.add_circle([2369.180124571687.mm,465.52263010482187.mm,650.8514507812355.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(28.451904432661195.mm, 12.297827746698772.mm, 13.259717294261009.mm)
+  circle = ge.add_circle([2395.7435635166485.mm,455.7358159338103.mm,669.1590862281162.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(13.84060403974081.mm, 29.275180755362214.mm, 9.37917946370942.mm)
+  circle = ge.add_circle([2424.1954679493097.mm,468.03364368050904.mm,682.4188035223772.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-8.797109025925693.mm, 31.299775614824.mm, 8.916414924403853.mm)
+  circle = ge.add_circle([2438.0360719890505.mm,497.30882443587126.mm,691.7979829860866.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-26.333221961534946.mm, 17.19751372429323.mm, 12.13978907081082.mm)
+  circle = ge.add_circle([2429.238962963125.mm,528.6086000506953.mm,700.7143979104904.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-28.59823069826416.mm, -4.853452197783554.mm, 17.180009852999888.mm)
+  circle = ge.add_circle([2402.90574100159.mm,545.8061137749885.mm,712.8541869813013.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-14.278616348054129.mm, -22.065374462428167.mm, 21.114163513490098.mm)
+  circle = ge.add_circle([2374.3075103033257.mm,540.9526615772049.mm,730.0341968343012.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(8.321421809978347.mm, -24.456752942146238.mm, 21.660764308854255.mm)
+  circle = ge.add_circle([2360.0288939552715.mm,518.8872871147768.mm,751.1483603477913.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(26.095719322652712.mm, -10.640784685286803.mm, 18.502828707286312.mm)
+  circle = ge.add_circle([2368.35031576525.mm,494.43053417263053.mm,772.8091246566455.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(28.736644644752232.mm, 11.370404364461876.mm, 13.471699781629354.mm)
+  circle = ge.add_circle([2394.4460350879026.mm,483.7897494873437.mm,791.3119533639318.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(14.712678168301409.mm, 28.81213383449176.mm, 9.485018759908485.mm)
+  circle = ge.add_circle([2423.182679732655.mm,495.1601538518056.mm,804.7836531455612.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-7.8434322926905224.mm, 31.569634307882893.mm, 8.854732937419044.mm)
+  circle = ge.add_circle([2437.8953579009562.mm,523.9722876862974.mm,814.2686719054697.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-25.85099673855848.mm, 18.043782171158682.mm, 11.94635628295589.mm)
+  circle = ge.add_circle([2430.0519256082657.mm,555.5419219941803.mm,823.1234048428887.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-28.867107976912393.mm, -3.9215401346993985.mm, 16.967001381437854.mm)
+  circle = ge.add_circle([2404.2009288697072.mm,573.5857041653389.mm,835.0697611258446.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-15.142669407891844.mm, -21.588251178384212.mm, 21.00510676285137.mm)
+  circle = ge.add_circle([2375.333820892795.mm,569.6641640306395.mm,852.0367625072824.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(7.363272720202531.mm, -24.71111072329643.mm, 21.71890323025991.mm)
+  circle = ge.add_circle([2360.191151484903.mm,548.0759128522553.mm,873.0418692701338.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(25.59912191704734.mm, -11.479116926271331.mm, 18.694447505225753.mm)
+  circle = ge.add_circle([2367.5544242051055.mm,523.3648021289589.mm,894.7607725003937.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(28.989584599242335.mm, 10.434261454160492.mm, 13.685675303984112.mm)
+  circle = ge.add_circle([2393.153546122153.mm,511.88568520268757.mm,913.4552200056195.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(15.568471100447823.mm, 28.32106619375088.mm, 9.597262792077572.mm)
+  circle = ge.add_circle([2422.143130721395.mm,522.3199466568481.mm,927.1408953096036.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-6.881075939045331.mm, 31.80842080354239.mm, 8.800153166982568.mm)
+  circle = ge.add_circle([2437.711601821843.mm,550.6410128505989.mm,936.7381581016812.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-25.34016454473749.mm, 18.873946263514313.mm, 11.756604490417544.mm)
+  circle = ge.add_circle([2430.8305258827977.mm,582.4494336541413.mm,945.5383112686637.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-29.10404062593534.mm, -2.9814253813661935.mm, 16.752118009247397.mm)
+  circle = ge.add_circle([2405.49036133806.mm,601.3233799176556.mm,957.2949157590813.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-15.989965438720446.mm, -21.083375045431012.mm, 20.889706503890693.mm)
+  circle = ge.add_circle([2376.386320712125.mm,598.3419545362894.mm,974.0470337683287.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(6.396975359388762.mm, -24.934259868016397.mm, 21.769908749053116.mm)
+  circle = ge.add_circle([2360.3963552734044.mm,577.2585794908584.mm,994.9367402722194.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(25.0741962677871.mm, -12.300883187145018.mm, 18.882279793425255.mm)
+  circle = ge.add_circle([2366.793330632793.mm,552.324319622842.mm,1016.7066490212725.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(29.21044439025536.mm, 9.490434960876769.mm, 13.901407073877635.mm)
+  circle = ge.add_circle([2391.8675269005803.mm,540.023436435697.mm,1035.5889288146977.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(16.40703580718491.mm, 27.80252125348875.mm, 9.71578734985178.mm)
+  circle = ge.add_circle([2421.0779712908356.mm,549.5138713965738.mm,1049.4903358885754.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-5.911104918129695.mm, 32.01587085828464.mm, 8.752736011612797.mm)
+  circle = ge.add_circle([2437.4850070980206.mm,577.3163926500625.mm,1059.2061232384272.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-24.80129067207281.mm, 19.68708733349513.mm, 11.57074367442192.mm)
+  circle = ge.add_circle([2431.573902179891.mm,609.3322635083472.mm,1067.95885925004.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-29.308766453299995.mm, -2.034148278146631.mm, 16.535597528511744.mm)
+  circle = ge.add_circle([2406.772611507818.mm,629.0193508418423.mm,1079.5296029244619.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-16.819566814302107.mm, -20.55130476453428.mm, 20.768090439685466.mm)
+  circle = ge.add_circle([2377.463845054518.mm,626.9852025636957.mm,1096.0652004529736.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(5.423599041835132.mm, -25.125953437236262.mm, 21.813724422017913.mm)
+  circle = ge.add_circle([2360.644278240216.mm,606.4338977991614.mm,1116.833290892659.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(24.521523262832034.mm, -13.105174093167193.mm, 19.06611771480152.mm)
+  circle = ge.add_circle([2366.067877282051.mm,581.3079443619251.mm,1138.647015314677.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(29.398979612143194.mm, 8.539969332422402.mm, 14.118656360381692.mm)
+  circle = ge.add_circle([2390.589400544883.mm,568.202770268758.mm,1157.7131330294785.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(17.227444324444605.mm, 27.257072840709156.mm, 9.840461272772927.mm)
+  circle = ge.add_circle([2419.9883801570263.mm,576.7427396011803.mm,1171.8317893898602.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.934592609550691.mm, 32.19175490581006.mm, 8.712533943607013.mm)
+  circle = ge.add_circle([2437.215824481471.mm,603.9998124418895.mm,1181.6722506626331.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-33.28123187192023.mm, -20.19156734769956.mm, 4.615215393759854.mm)
+  circle = ge.add_circle([2432.28123187192.mm,636.1915673476996.mm,1190.3847846062401.mm], vec, 7.mm, 8)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (elbow -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 24.mm, 105.mm)
+  circle = ge.add_circle([2399.mm,616.mm,1195.mm], vec, 7.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6321,7 +7818,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
   mat = model.materials["BV-03 (P-02 suction)"] || model.materials.add("BV-03 (P-02 suction)")
-  mat.color = Sketchup::Color.new(122, 128, 136)
+  mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
   grp.material = mat
 

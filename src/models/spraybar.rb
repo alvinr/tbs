@@ -831,8 +831,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = ge.add_face([[201.mm,1072.mm,36.mm], [201.mm,1072.07.mm,34.96.mm], [201.mm,1072.27.mm,33.93.mm], [201.mm,1072.61.mm,32.94.mm], [201.mm,1073.07.mm,32.mm], [201.mm,1073.65.mm,31.13.mm], [201.mm,1074.34.mm,30.34.mm], [201.mm,1075.13.mm,29.65.mm], [201.mm,1076.mm,29.07.mm], [201.mm,1076.94.mm,28.61.mm], [201.mm,1077.93.mm,28.27.mm], [201.mm,1078.96.mm,28.07.mm], [201.mm,1080.mm,28.mm], [201.mm,1081.04.mm,28.07.mm], [201.mm,1082.07.mm,28.27.mm], [201.mm,1083.06.mm,28.61.mm], [201.mm,1084.mm,29.07.mm], [201.mm,1084.87.mm,29.65.mm], [201.mm,1085.66.mm,30.34.mm], [201.mm,1086.35.mm,31.13.mm], [201.mm,1086.93.mm,32.mm], [201.mm,1087.39.mm,32.94.mm], [201.mm,1087.73.mm,33.93.mm], [201.mm,1087.93.mm,34.96.mm], [201.mm,1088.mm,36.mm], [201.mm,1086.mm,36.mm], [201.mm,1085.95.mm,35.22.mm], [201.mm,1085.8.mm,34.45.mm], [201.mm,1085.54.mm,33.7.mm], [201.mm,1085.2.mm,33.mm], [201.mm,1084.76.mm,32.35.mm], [201.mm,1084.24.mm,31.76.mm], [201.mm,1083.65.mm,31.24.mm], [201.mm,1083.mm,30.8.mm], [201.mm,1082.3.mm,30.46.mm], [201.mm,1081.55.mm,30.2.mm], [201.mm,1080.78.mm,30.05.mm], [201.mm,1080.mm,30.mm], [201.mm,1079.22.mm,30.05.mm], [201.mm,1078.45.mm,30.2.mm], [201.mm,1077.7.mm,30.46.mm], [201.mm,1077.mm,30.8.mm], [201.mm,1076.35.mm,31.24.mm], [201.mm,1075.76.mm,31.76.mm], [201.mm,1075.24.mm,32.35.mm], [201.mm,1074.8.mm,33.mm], [201.mm,1074.46.mm,33.7.mm], [201.mm,1074.2.mm,34.45.mm], [201.mm,1074.05.mm,35.22.mm], [201.mm,1074.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -842,8 +842,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([201.mm,1064.mm,36.mm], [207.mm,1064.mm,36.mm], [207.mm,1074.mm,36.mm], [201.mm,1074.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -866,8 +866,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([201.mm,1086.mm,36.mm], [207.mm,1086.mm,36.mm], [207.mm,1096.mm,36.mm], [201.mm,1096.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -891,8 +891,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = ge.add_face([[233.mm,1072.mm,36.mm], [233.mm,1072.07.mm,34.96.mm], [233.mm,1072.27.mm,33.93.mm], [233.mm,1072.61.mm,32.94.mm], [233.mm,1073.07.mm,32.mm], [233.mm,1073.65.mm,31.13.mm], [233.mm,1074.34.mm,30.34.mm], [233.mm,1075.13.mm,29.65.mm], [233.mm,1076.mm,29.07.mm], [233.mm,1076.94.mm,28.61.mm], [233.mm,1077.93.mm,28.27.mm], [233.mm,1078.96.mm,28.07.mm], [233.mm,1080.mm,28.mm], [233.mm,1081.04.mm,28.07.mm], [233.mm,1082.07.mm,28.27.mm], [233.mm,1083.06.mm,28.61.mm], [233.mm,1084.mm,29.07.mm], [233.mm,1084.87.mm,29.65.mm], [233.mm,1085.66.mm,30.34.mm], [233.mm,1086.35.mm,31.13.mm], [233.mm,1086.93.mm,32.mm], [233.mm,1087.39.mm,32.94.mm], [233.mm,1087.73.mm,33.93.mm], [233.mm,1087.93.mm,34.96.mm], [233.mm,1088.mm,36.mm], [233.mm,1086.mm,36.mm], [233.mm,1085.95.mm,35.22.mm], [233.mm,1085.8.mm,34.45.mm], [233.mm,1085.54.mm,33.7.mm], [233.mm,1085.2.mm,33.mm], [233.mm,1084.76.mm,32.35.mm], [233.mm,1084.24.mm,31.76.mm], [233.mm,1083.65.mm,31.24.mm], [233.mm,1083.mm,30.8.mm], [233.mm,1082.3.mm,30.46.mm], [233.mm,1081.55.mm,30.2.mm], [233.mm,1080.78.mm,30.05.mm], [233.mm,1080.mm,30.mm], [233.mm,1079.22.mm,30.05.mm], [233.mm,1078.45.mm,30.2.mm], [233.mm,1077.7.mm,30.46.mm], [233.mm,1077.mm,30.8.mm], [233.mm,1076.35.mm,31.24.mm], [233.mm,1075.76.mm,31.76.mm], [233.mm,1075.24.mm,32.35.mm], [233.mm,1074.8.mm,33.mm], [233.mm,1074.46.mm,33.7.mm], [233.mm,1074.2.mm,34.45.mm], [233.mm,1074.05.mm,35.22.mm], [233.mm,1074.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -902,8 +902,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([233.mm,1064.mm,36.mm], [239.mm,1064.mm,36.mm], [239.mm,1074.mm,36.mm], [233.mm,1074.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -926,8 +926,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([233.mm,1086.mm,36.mm], [239.mm,1086.mm,36.mm], [239.mm,1096.mm,36.mm], [233.mm,1096.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -977,8 +977,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = ge.add_face([[201.mm,1272.mm,36.mm], [201.mm,1272.07.mm,34.96.mm], [201.mm,1272.27.mm,33.93.mm], [201.mm,1272.61.mm,32.94.mm], [201.mm,1273.07.mm,32.mm], [201.mm,1273.65.mm,31.13.mm], [201.mm,1274.34.mm,30.34.mm], [201.mm,1275.13.mm,29.65.mm], [201.mm,1276.mm,29.07.mm], [201.mm,1276.94.mm,28.61.mm], [201.mm,1277.93.mm,28.27.mm], [201.mm,1278.96.mm,28.07.mm], [201.mm,1280.mm,28.mm], [201.mm,1281.04.mm,28.07.mm], [201.mm,1282.07.mm,28.27.mm], [201.mm,1283.06.mm,28.61.mm], [201.mm,1284.mm,29.07.mm], [201.mm,1284.87.mm,29.65.mm], [201.mm,1285.66.mm,30.34.mm], [201.mm,1286.35.mm,31.13.mm], [201.mm,1286.93.mm,32.mm], [201.mm,1287.39.mm,32.94.mm], [201.mm,1287.73.mm,33.93.mm], [201.mm,1287.93.mm,34.96.mm], [201.mm,1288.mm,36.mm], [201.mm,1286.mm,36.mm], [201.mm,1285.95.mm,35.22.mm], [201.mm,1285.8.mm,34.45.mm], [201.mm,1285.54.mm,33.7.mm], [201.mm,1285.2.mm,33.mm], [201.mm,1284.76.mm,32.35.mm], [201.mm,1284.24.mm,31.76.mm], [201.mm,1283.65.mm,31.24.mm], [201.mm,1283.mm,30.8.mm], [201.mm,1282.3.mm,30.46.mm], [201.mm,1281.55.mm,30.2.mm], [201.mm,1280.78.mm,30.05.mm], [201.mm,1280.mm,30.mm], [201.mm,1279.22.mm,30.05.mm], [201.mm,1278.45.mm,30.2.mm], [201.mm,1277.7.mm,30.46.mm], [201.mm,1277.mm,30.8.mm], [201.mm,1276.35.mm,31.24.mm], [201.mm,1275.76.mm,31.76.mm], [201.mm,1275.24.mm,32.35.mm], [201.mm,1274.8.mm,33.mm], [201.mm,1274.46.mm,33.7.mm], [201.mm,1274.2.mm,34.45.mm], [201.mm,1274.05.mm,35.22.mm], [201.mm,1274.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -988,8 +988,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([201.mm,1264.mm,36.mm], [207.mm,1264.mm,36.mm], [207.mm,1274.mm,36.mm], [201.mm,1274.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1012,8 +1012,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([201.mm,1286.mm,36.mm], [207.mm,1286.mm,36.mm], [207.mm,1296.mm,36.mm], [201.mm,1296.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1037,8 +1037,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = ge.add_face([[233.mm,1272.mm,36.mm], [233.mm,1272.07.mm,34.96.mm], [233.mm,1272.27.mm,33.93.mm], [233.mm,1272.61.mm,32.94.mm], [233.mm,1273.07.mm,32.mm], [233.mm,1273.65.mm,31.13.mm], [233.mm,1274.34.mm,30.34.mm], [233.mm,1275.13.mm,29.65.mm], [233.mm,1276.mm,29.07.mm], [233.mm,1276.94.mm,28.61.mm], [233.mm,1277.93.mm,28.27.mm], [233.mm,1278.96.mm,28.07.mm], [233.mm,1280.mm,28.mm], [233.mm,1281.04.mm,28.07.mm], [233.mm,1282.07.mm,28.27.mm], [233.mm,1283.06.mm,28.61.mm], [233.mm,1284.mm,29.07.mm], [233.mm,1284.87.mm,29.65.mm], [233.mm,1285.66.mm,30.34.mm], [233.mm,1286.35.mm,31.13.mm], [233.mm,1286.93.mm,32.mm], [233.mm,1287.39.mm,32.94.mm], [233.mm,1287.73.mm,33.93.mm], [233.mm,1287.93.mm,34.96.mm], [233.mm,1288.mm,36.mm], [233.mm,1286.mm,36.mm], [233.mm,1285.95.mm,35.22.mm], [233.mm,1285.8.mm,34.45.mm], [233.mm,1285.54.mm,33.7.mm], [233.mm,1285.2.mm,33.mm], [233.mm,1284.76.mm,32.35.mm], [233.mm,1284.24.mm,31.76.mm], [233.mm,1283.65.mm,31.24.mm], [233.mm,1283.mm,30.8.mm], [233.mm,1282.3.mm,30.46.mm], [233.mm,1281.55.mm,30.2.mm], [233.mm,1280.78.mm,30.05.mm], [233.mm,1280.mm,30.mm], [233.mm,1279.22.mm,30.05.mm], [233.mm,1278.45.mm,30.2.mm], [233.mm,1277.7.mm,30.46.mm], [233.mm,1277.mm,30.8.mm], [233.mm,1276.35.mm,31.24.mm], [233.mm,1275.76.mm,31.76.mm], [233.mm,1275.24.mm,32.35.mm], [233.mm,1274.8.mm,33.mm], [233.mm,1274.46.mm,33.7.mm], [233.mm,1274.2.mm,34.45.mm], [233.mm,1274.05.mm,35.22.mm], [233.mm,1274.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1048,8 +1048,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([233.mm,1264.mm,36.mm], [239.mm,1264.mm,36.mm], [239.mm,1274.mm,36.mm], [233.mm,1274.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1072,8 +1072,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([233.mm,1286.mm,36.mm], [239.mm,1286.mm,36.mm], [239.mm,1296.mm,36.mm], [233.mm,1296.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1096,8 +1096,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([200.mm,1148.mm,26.mm], [240.mm,1148.mm,26.mm], [240.mm,1212.mm,26.mm], [200.mm,1212.mm,26.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1107,8 +1107,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([200.mm,1148.mm,54.mm], [240.mm,1148.mm,54.mm], [240.mm,1212.mm,54.mm], [200.mm,1212.mm,54.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1332,8 +1332,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = ge.add_face([[4560.mm,1072.mm,36.mm], [4560.mm,1072.07.mm,34.96.mm], [4560.mm,1072.27.mm,33.93.mm], [4560.mm,1072.61.mm,32.94.mm], [4560.mm,1073.07.mm,32.mm], [4560.mm,1073.65.mm,31.13.mm], [4560.mm,1074.34.mm,30.34.mm], [4560.mm,1075.13.mm,29.65.mm], [4560.mm,1076.mm,29.07.mm], [4560.mm,1076.94.mm,28.61.mm], [4560.mm,1077.93.mm,28.27.mm], [4560.mm,1078.96.mm,28.07.mm], [4560.mm,1080.mm,28.mm], [4560.mm,1081.04.mm,28.07.mm], [4560.mm,1082.07.mm,28.27.mm], [4560.mm,1083.06.mm,28.61.mm], [4560.mm,1084.mm,29.07.mm], [4560.mm,1084.87.mm,29.65.mm], [4560.mm,1085.66.mm,30.34.mm], [4560.mm,1086.35.mm,31.13.mm], [4560.mm,1086.93.mm,32.mm], [4560.mm,1087.39.mm,32.94.mm], [4560.mm,1087.73.mm,33.93.mm], [4560.mm,1087.93.mm,34.96.mm], [4560.mm,1088.mm,36.mm], [4560.mm,1086.mm,36.mm], [4560.mm,1085.95.mm,35.22.mm], [4560.mm,1085.8.mm,34.45.mm], [4560.mm,1085.54.mm,33.7.mm], [4560.mm,1085.2.mm,33.mm], [4560.mm,1084.76.mm,32.35.mm], [4560.mm,1084.24.mm,31.76.mm], [4560.mm,1083.65.mm,31.24.mm], [4560.mm,1083.mm,30.8.mm], [4560.mm,1082.3.mm,30.46.mm], [4560.mm,1081.55.mm,30.2.mm], [4560.mm,1080.78.mm,30.05.mm], [4560.mm,1080.mm,30.mm], [4560.mm,1079.22.mm,30.05.mm], [4560.mm,1078.45.mm,30.2.mm], [4560.mm,1077.7.mm,30.46.mm], [4560.mm,1077.mm,30.8.mm], [4560.mm,1076.35.mm,31.24.mm], [4560.mm,1075.76.mm,31.76.mm], [4560.mm,1075.24.mm,32.35.mm], [4560.mm,1074.8.mm,33.mm], [4560.mm,1074.46.mm,33.7.mm], [4560.mm,1074.2.mm,34.45.mm], [4560.mm,1074.05.mm,35.22.mm], [4560.mm,1074.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1343,8 +1343,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4560.mm,1064.mm,36.mm], [4566.mm,1064.mm,36.mm], [4566.mm,1074.mm,36.mm], [4560.mm,1074.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1367,8 +1367,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4560.mm,1086.mm,36.mm], [4566.mm,1086.mm,36.mm], [4566.mm,1096.mm,36.mm], [4560.mm,1096.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1392,8 +1392,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = ge.add_face([[4592.mm,1072.mm,36.mm], [4592.mm,1072.07.mm,34.96.mm], [4592.mm,1072.27.mm,33.93.mm], [4592.mm,1072.61.mm,32.94.mm], [4592.mm,1073.07.mm,32.mm], [4592.mm,1073.65.mm,31.13.mm], [4592.mm,1074.34.mm,30.34.mm], [4592.mm,1075.13.mm,29.65.mm], [4592.mm,1076.mm,29.07.mm], [4592.mm,1076.94.mm,28.61.mm], [4592.mm,1077.93.mm,28.27.mm], [4592.mm,1078.96.mm,28.07.mm], [4592.mm,1080.mm,28.mm], [4592.mm,1081.04.mm,28.07.mm], [4592.mm,1082.07.mm,28.27.mm], [4592.mm,1083.06.mm,28.61.mm], [4592.mm,1084.mm,29.07.mm], [4592.mm,1084.87.mm,29.65.mm], [4592.mm,1085.66.mm,30.34.mm], [4592.mm,1086.35.mm,31.13.mm], [4592.mm,1086.93.mm,32.mm], [4592.mm,1087.39.mm,32.94.mm], [4592.mm,1087.73.mm,33.93.mm], [4592.mm,1087.93.mm,34.96.mm], [4592.mm,1088.mm,36.mm], [4592.mm,1086.mm,36.mm], [4592.mm,1085.95.mm,35.22.mm], [4592.mm,1085.8.mm,34.45.mm], [4592.mm,1085.54.mm,33.7.mm], [4592.mm,1085.2.mm,33.mm], [4592.mm,1084.76.mm,32.35.mm], [4592.mm,1084.24.mm,31.76.mm], [4592.mm,1083.65.mm,31.24.mm], [4592.mm,1083.mm,30.8.mm], [4592.mm,1082.3.mm,30.46.mm], [4592.mm,1081.55.mm,30.2.mm], [4592.mm,1080.78.mm,30.05.mm], [4592.mm,1080.mm,30.mm], [4592.mm,1079.22.mm,30.05.mm], [4592.mm,1078.45.mm,30.2.mm], [4592.mm,1077.7.mm,30.46.mm], [4592.mm,1077.mm,30.8.mm], [4592.mm,1076.35.mm,31.24.mm], [4592.mm,1075.76.mm,31.76.mm], [4592.mm,1075.24.mm,32.35.mm], [4592.mm,1074.8.mm,33.mm], [4592.mm,1074.46.mm,33.7.mm], [4592.mm,1074.2.mm,34.45.mm], [4592.mm,1074.05.mm,35.22.mm], [4592.mm,1074.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1403,8 +1403,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4592.mm,1064.mm,36.mm], [4598.mm,1064.mm,36.mm], [4598.mm,1074.mm,36.mm], [4592.mm,1074.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1427,8 +1427,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4592.mm,1086.mm,36.mm], [4598.mm,1086.mm,36.mm], [4598.mm,1096.mm,36.mm], [4592.mm,1096.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1478,8 +1478,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = ge.add_face([[4560.mm,1272.mm,36.mm], [4560.mm,1272.07.mm,34.96.mm], [4560.mm,1272.27.mm,33.93.mm], [4560.mm,1272.61.mm,32.94.mm], [4560.mm,1273.07.mm,32.mm], [4560.mm,1273.65.mm,31.13.mm], [4560.mm,1274.34.mm,30.34.mm], [4560.mm,1275.13.mm,29.65.mm], [4560.mm,1276.mm,29.07.mm], [4560.mm,1276.94.mm,28.61.mm], [4560.mm,1277.93.mm,28.27.mm], [4560.mm,1278.96.mm,28.07.mm], [4560.mm,1280.mm,28.mm], [4560.mm,1281.04.mm,28.07.mm], [4560.mm,1282.07.mm,28.27.mm], [4560.mm,1283.06.mm,28.61.mm], [4560.mm,1284.mm,29.07.mm], [4560.mm,1284.87.mm,29.65.mm], [4560.mm,1285.66.mm,30.34.mm], [4560.mm,1286.35.mm,31.13.mm], [4560.mm,1286.93.mm,32.mm], [4560.mm,1287.39.mm,32.94.mm], [4560.mm,1287.73.mm,33.93.mm], [4560.mm,1287.93.mm,34.96.mm], [4560.mm,1288.mm,36.mm], [4560.mm,1286.mm,36.mm], [4560.mm,1285.95.mm,35.22.mm], [4560.mm,1285.8.mm,34.45.mm], [4560.mm,1285.54.mm,33.7.mm], [4560.mm,1285.2.mm,33.mm], [4560.mm,1284.76.mm,32.35.mm], [4560.mm,1284.24.mm,31.76.mm], [4560.mm,1283.65.mm,31.24.mm], [4560.mm,1283.mm,30.8.mm], [4560.mm,1282.3.mm,30.46.mm], [4560.mm,1281.55.mm,30.2.mm], [4560.mm,1280.78.mm,30.05.mm], [4560.mm,1280.mm,30.mm], [4560.mm,1279.22.mm,30.05.mm], [4560.mm,1278.45.mm,30.2.mm], [4560.mm,1277.7.mm,30.46.mm], [4560.mm,1277.mm,30.8.mm], [4560.mm,1276.35.mm,31.24.mm], [4560.mm,1275.76.mm,31.76.mm], [4560.mm,1275.24.mm,32.35.mm], [4560.mm,1274.8.mm,33.mm], [4560.mm,1274.46.mm,33.7.mm], [4560.mm,1274.2.mm,34.45.mm], [4560.mm,1274.05.mm,35.22.mm], [4560.mm,1274.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1489,8 +1489,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4560.mm,1264.mm,36.mm], [4566.mm,1264.mm,36.mm], [4566.mm,1274.mm,36.mm], [4560.mm,1274.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1513,8 +1513,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4560.mm,1286.mm,36.mm], [4566.mm,1286.mm,36.mm], [4566.mm,1296.mm,36.mm], [4560.mm,1296.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1538,8 +1538,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = ge.add_face([[4592.mm,1272.mm,36.mm], [4592.mm,1272.07.mm,34.96.mm], [4592.mm,1272.27.mm,33.93.mm], [4592.mm,1272.61.mm,32.94.mm], [4592.mm,1273.07.mm,32.mm], [4592.mm,1273.65.mm,31.13.mm], [4592.mm,1274.34.mm,30.34.mm], [4592.mm,1275.13.mm,29.65.mm], [4592.mm,1276.mm,29.07.mm], [4592.mm,1276.94.mm,28.61.mm], [4592.mm,1277.93.mm,28.27.mm], [4592.mm,1278.96.mm,28.07.mm], [4592.mm,1280.mm,28.mm], [4592.mm,1281.04.mm,28.07.mm], [4592.mm,1282.07.mm,28.27.mm], [4592.mm,1283.06.mm,28.61.mm], [4592.mm,1284.mm,29.07.mm], [4592.mm,1284.87.mm,29.65.mm], [4592.mm,1285.66.mm,30.34.mm], [4592.mm,1286.35.mm,31.13.mm], [4592.mm,1286.93.mm,32.mm], [4592.mm,1287.39.mm,32.94.mm], [4592.mm,1287.73.mm,33.93.mm], [4592.mm,1287.93.mm,34.96.mm], [4592.mm,1288.mm,36.mm], [4592.mm,1286.mm,36.mm], [4592.mm,1285.95.mm,35.22.mm], [4592.mm,1285.8.mm,34.45.mm], [4592.mm,1285.54.mm,33.7.mm], [4592.mm,1285.2.mm,33.mm], [4592.mm,1284.76.mm,32.35.mm], [4592.mm,1284.24.mm,31.76.mm], [4592.mm,1283.65.mm,31.24.mm], [4592.mm,1283.mm,30.8.mm], [4592.mm,1282.3.mm,30.46.mm], [4592.mm,1281.55.mm,30.2.mm], [4592.mm,1280.78.mm,30.05.mm], [4592.mm,1280.mm,30.mm], [4592.mm,1279.22.mm,30.05.mm], [4592.mm,1278.45.mm,30.2.mm], [4592.mm,1277.7.mm,30.46.mm], [4592.mm,1277.mm,30.8.mm], [4592.mm,1276.35.mm,31.24.mm], [4592.mm,1275.76.mm,31.76.mm], [4592.mm,1275.24.mm,32.35.mm], [4592.mm,1274.8.mm,33.mm], [4592.mm,1274.46.mm,33.7.mm], [4592.mm,1274.2.mm,34.45.mm], [4592.mm,1274.05.mm,35.22.mm], [4592.mm,1274.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(6.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1549,8 +1549,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4592.mm,1264.mm,36.mm], [4598.mm,1264.mm,36.mm], [4598.mm,1274.mm,36.mm], [4592.mm,1274.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1573,8 +1573,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4592.mm,1286.mm,36.mm], [4598.mm,1286.mm,36.mm], [4598.mm,1296.mm,36.mm], [4592.mm,1296.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1597,8 +1597,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4559.mm,1148.mm,26.mm], [4599.mm,1148.mm,26.mm], [4599.mm,1212.mm,26.mm], [4559.mm,1212.mm,26.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1608,8 +1608,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4559.mm,1148.mm,54.mm], [4599.mm,1148.mm,54.mm], [4599.mm,1212.mm,54.mm], [4559.mm,1212.mm,54.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
-  mat = model.materials["Axle Saddle L"] || model.materials.add("Axle Saddle L")
-  mat.color = Sketchup::Color.new(192, 192, 200)
+  mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
+  mat.color = Sketchup::Color.new(184, 188, 196)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -3895,7 +3895,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Tray Shim Base"] || model.materials.add("Tray Shim Base")
-  mat.color = Sketchup::Color.new(216, 207, 188)
+  mat.color = Sketchup::Color.new(216, 208, 188)
   mat.alpha = 0.4
   grp.material = mat
 

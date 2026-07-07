@@ -34,6 +34,12 @@ file** — a release must not ship without a changelog entry:
   raised spray-bar feed pole, in both the overview and water models.
 - **Spray-bar carriage bolts** — the tray-facing clamp-bolt heads are now drawn **countersunk** (a flush
   frustum seated in the clamp underside, top nut still proud) in the 3D model, matching the 2D detail.
+- **Walkway top-rail brackets** — restored the film-plane **top-rail wall-seat saddle brackets**
+  (interior back-plate + exterior through-bolted plate, at both the near and far walls) that the walkway
+  model had dropped; the bottom rail stays on the shared combined corner plate.
+- **Sketchfab material budget** — collapsed near-identical color materials at the RGB level (tight greys
+  at Δ≤6 plus a few same-hue pairs at Δ≤10, all imperceptible), dropping the overview from **100 → ~87**
+  unique materials so it uploads under the material ceiling.
 - **Water model cleanup** — the pinhole-wall water model drops the external EP panel + evap cooler, adds
   the spray bar for context, removes the green PV / grey E-stop EP cables, and reconnects the purple
   Cct-C pump feed to the panel's own master switch.

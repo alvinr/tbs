@@ -2121,6 +2121,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4741.mm,1101.mm,308.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -2148,6 +2149,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4720.mm,1101.mm,69.41.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -2175,6 +2177,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4720.mm,1107.7509.mm,65.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -2202,6 +2205,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4660.355.mm,1110.mm,65.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -2229,6 +2233,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4641.mm,1110.mm,94.62895.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -2256,6 +2261,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4577.mm,1110.mm,104.5.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -2283,6 +2289,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4556.mm,1110.mm,139.015.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -2310,6 +2317,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4556.mm,1021.mm,152.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -2337,6 +2345,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4556.mm,1000.mm,117.485.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -2364,6 +2373,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4556.mm,76.mm,104.5.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -2391,6 +2401,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4556.mm,55.mm,46.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -2418,6 +2429,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([2981.mm,55.mm,25.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -2445,6 +2457,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([2960.mm,55.mm,2280.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -2472,6 +2485,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([2960.mm,95.18.mm,2301.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -2592,6 +2606,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4098.mm,56.mm,2301.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
   mat.color = Sketchup::Color.new(58, 110, 165)
   mat.alpha = 1.0
@@ -2619,6 +2634,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4229.mm,35.mm,2301.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
   mat.color = Sketchup::Color.new(58, 110, 165)
   mat.alpha = 1.0
@@ -2646,6 +2662,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4250.mm,35.mm,1021.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
   mat.color = Sketchup::Color.new(58, 110, 165)
   mat.alpha = 1.0
@@ -2687,6 +2704,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4250.mm,56.mm,1000.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
   mat.color = Sketchup::Color.new(58, 110, 165)
   mat.alpha = 1.0
@@ -2714,6 +2732,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4250.mm,35.mm,62.25.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
   mat.color = Sketchup::Color.new(58, 110, 165)
   mat.alpha = 1.0
@@ -2741,6 +2760,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4250.mm,53.7525.mm,50.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
   mat.color = Sketchup::Color.new(58, 110, 165)
   mat.alpha = 1.0
@@ -2768,6 +2788,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4457.mm,60.mm,50.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
   mat.color = Sketchup::Color.new(58, 110, 165)
   mat.alpha = 1.0
@@ -2795,6 +2816,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4478.mm,60.mm,88.08500000000001.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
   mat.color = Sketchup::Color.new(58, 110, 165)
   mat.alpha = 1.0
@@ -2822,6 +2844,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4478.mm,979.mm,104.5.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
   mat.color = Sketchup::Color.new(58, 110, 165)
   mat.alpha = 1.0
@@ -2849,6 +2872,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4478.mm,1000.mm,139.015.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
   mat.color = Sketchup::Color.new(58, 110, 165)
   mat.alpha = 1.0
@@ -2876,6 +2900,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4478.mm,1099.mm,152.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
   mat.color = Sketchup::Color.new(58, 110, 165)
   mat.alpha = 1.0
@@ -2903,6 +2928,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4478.mm,1120.mm,117.485.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
   mat.color = Sketchup::Color.new(58, 110, 165)
   mat.alpha = 1.0
@@ -2930,6 +2956,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4478.mm,1220.mm,104.5.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
   mat.color = Sketchup::Color.new(58, 110, 165)
   mat.alpha = 1.0
@@ -2957,6 +2984,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4621.645.mm,1241.mm,104.5.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
   mat.color = Sketchup::Color.new(58, 110, 165)
   mat.alpha = 1.0
@@ -2984,6 +3012,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4641.mm,1241.mm,74.87105.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
   mat.color = Sketchup::Color.new(58, 110, 165)
   mat.alpha = 1.0
@@ -3011,6 +3040,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4679.mm,1241.mm,65.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
   mat.color = Sketchup::Color.new(58, 110, 165)
   mat.alpha = 1.0
@@ -3038,6 +3068,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4700.mm,1241.mm,214.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
   mat.color = Sketchup::Color.new(58, 110, 165)
   mat.alpha = 1.0
@@ -3079,6 +3110,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5218.mm,1241.mm,235.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -3106,6 +3138,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5239.mm,1207.505.mm,235.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -3133,6 +3166,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5239.mm,1195.5.mm,2229.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -3174,6 +3208,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4800.mm,1186.mm,235.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
@@ -3201,6 +3236,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5389.3.mm,1165.mm,235.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
@@ -3228,6 +3264,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5404.mm,1187.503.mm,235.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
@@ -3276,6 +3313,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4504.mm,155.mm,124.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3303,6 +3341,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4504.mm,308.155.mm,145.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3330,6 +3369,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4504.mm,328.mm,114.62095.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3357,6 +3397,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4504.mm,979.mm,104.5.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3384,6 +3425,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4504.mm,1000.mm,139.015.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3411,6 +3453,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4504.mm,1099.mm,152.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3438,6 +3481,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4504.mm,1120.mm,117.485.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3465,6 +3509,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4504.mm,1173.mm,104.5.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3492,6 +3537,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4621.645.mm,1194.mm,104.5.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3519,6 +3565,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4641.mm,1194.mm,74.87105.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3546,6 +3593,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4879.mm,1194.mm,65.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3573,6 +3621,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4900.mm,1194.mm,1081.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3600,6 +3649,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4900.mm,1118.mm,1102.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3627,6 +3677,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4982.04.mm,1097.mm,1102.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3681,6 +3732,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4984.mm,1290.mm,1102.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3708,6 +3760,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4984.mm,1311.mm,2014.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3735,6 +3788,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4984.mm,1202.mm,2035.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3762,6 +3816,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5016.985.mm,1181.mm,2035.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3803,6 +3858,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5028.5.mm,1109.mm,2145.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3830,6 +3886,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5070.155.mm,1088.mm,2145.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3857,6 +3914,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5090.mm,1160.mm,2145.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3884,6 +3942,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5090.mm,1181.mm,1151.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3911,6 +3970,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5090.mm,1138.58.mm,1130.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3938,6 +3998,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5048.5508.mm,1118.mm,1130.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -3965,6 +4026,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5028.5.mm,917.mm,1130.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -4019,6 +4081,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5028.5.mm,1229.81.mm,2145.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
@@ -4046,6 +4109,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5028.5.mm,1245.mm,2114.6068999999998.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
@@ -4073,6 +4137,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5268.mm,1245.mm,2100.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
@@ -4100,6 +4165,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5289.mm,1209.21.mm,2100.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
@@ -4127,6 +4193,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5289.mm,1195.mm,1251.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
@@ -4233,6 +4300,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5483.mm,1195.mm,1230.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
@@ -4260,6 +4328,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5504.mm,1445.mm,1230.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
@@ -4314,6 +4383,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4984.mm,1085.7.mm,777.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -4341,6 +4411,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4895.58.mm,1071.mm,777.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -4368,6 +4439,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4875.mm,1102.5041999999999.mm,777.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -4395,6 +4467,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4875.mm,1113.mm,1189.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -4422,6 +4495,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5179.mm,1113.mm,1210.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -4449,6 +4523,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5200.mm,1113.mm,1379.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -4476,6 +4551,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5200.mm,917.mm,1400.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -4567,6 +4643,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4984.mm,1298.5.mm,777.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -4594,6 +4671,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4984.mm,1319.5.mm,404.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -4635,6 +4713,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4984.mm,1077.3.mm,383.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -4662,6 +4741,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4984.mm,1067.5.mm,256.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -4689,6 +4769,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4984.mm,1111.mm,235.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -4716,6 +4797,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4691.mm,1132.mm,235.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -4882,6 +4964,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5500.mm,917.mm,2250.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -4936,6 +5019,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5500.mm,1445.mm,2250.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -5030,6 +5114,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4880.mm,896.mm,287.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -5149,6 +5234,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5058.485.mm,1101.mm,308.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -5176,6 +5262,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5070.mm,1083.37265.mm,308.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -5203,6 +5290,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5070.mm,1077.5.mm,1279.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -5230,6 +5318,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4919.mm,1077.5.mm,1300.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -5257,6 +5346,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4898.mm,1077.5.mm,1481.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -5284,6 +5374,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4972.485.mm,1077.5.mm,1502.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -5375,6 +5466,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4984.mm,1268.65.mm,1502.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -5402,6 +5494,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5014.81.mm,1276.mm,1502.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -5429,6 +5522,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5030.mm,1252.7468999999999.mm,1502.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -5456,6 +5550,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5742.mm,1245.mm,1502.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -5483,6 +5578,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5763.mm,1130.mm,1502.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -5510,6 +5606,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5763.mm,1109.mm,1679.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
@@ -5551,6 +5648,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5200.mm,1466.mm,237.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
@@ -5578,6 +5676,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5200.mm,1217.mm,258.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
@@ -5605,6 +5704,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5200.mm,1196.mm,1679.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
@@ -5632,6 +5732,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5041.mm,1196.mm,1700.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
@@ -5659,6 +5760,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5020.mm,1098.5.mm,1700.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
@@ -5686,6 +5788,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4919.mm,1077.5.mm,1700.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
@@ -5713,6 +5816,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4898.mm,1077.5.mm,1881.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
@@ -5740,6 +5844,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4972.485.mm,1077.5.mm,1902.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
@@ -5844,6 +5949,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4984.mm,1276.3.mm,1902.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
@@ -5871,6 +5977,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5069.mm,1291.mm,1902.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
@@ -5898,6 +6005,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5090.mm,1252.15.mm,1902.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
@@ -5925,6 +6033,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5742.mm,1235.mm,1902.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
@@ -5952,6 +6061,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([5763.mm,1235.mm,1641.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
@@ -6000,6 +6110,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4655.21.mm,1132.mm,60.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -6027,6 +6138,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4641.mm,1132.mm,89.6579.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -6054,6 +6166,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4551.mm,1132.mm,104.5.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -6081,6 +6194,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4530.mm,1132.mm,139.015.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -6108,6 +6222,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4530.mm,1021.mm,152.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -6135,6 +6250,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4530.mm,1000.mm,117.485.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -6162,6 +6278,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4530.mm,90.mm,104.5.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -6266,6 +6383,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([2399.mm,69.mm,1046.mm], [0.000000,0.000000,1.000000], 7.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -7763,6 +7881,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1130.mm,69.mm,1275.mm], [0.000000,0.000000,1.000000], 12.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -7790,6 +7909,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([1130.mm,144.mm,1300.mm], [0.000000,1.000000,0.000000], 12.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0

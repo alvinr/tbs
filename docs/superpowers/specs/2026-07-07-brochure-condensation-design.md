@@ -11,10 +11,15 @@ only removed from the printed PDF.
 subsystem; exploratory / superseded / internal / gallery content moves to web-only; the biggest reports
 and galleries are condensed to conclusions.
 
+**Resolved decisions (2026-07-07):** target **~200 pp** (no report merges — every report stays
+standalone). Condensation is **brochure-only** — the website keeps the FULL reports.
+
 ## Mechanism
-- **Drop → web-only:** add the file to `BROCHURE_EXCLUDE` in `src/generators/generate_brochure.py`.
-  The page still builds on the site; it just isn't bundled in the PDF.
-- **Condense:** edit the `.md` in place, per `skills/skill_report_writing.md` (read it first).
+- **Drop whole doc → web-only:** add the file to `BROCHURE_EXCLUDE` in `generate_brochure.py`.
+- **Condense a section brochure-only:** wrap it in `<!-- brochure:skip -->` … `<!-- brochure:endskip -->`.
+  `md_to_html` strips the region from the PDF; the markers are HTML comments so mkdocs renders the full
+  content on the site. **Additive + reversible — no content is deleted anywhere.** (No `.md` prose is
+  cut; the website is byte-for-byte unchanged in what it *shows*.)
 
 ## Phase 1 — Drops — ✅ DONE (2026-07-07): 407 → 330
 Added to `BROCHURE_EXCLUDE`: `engineering-diagrams`, `film-plane-mechanism-analysis` (superseded),
@@ -43,9 +48,14 @@ validator; full detail stays on the web).
 
 **Phase 2 budget:** galleries + conclusion-trims land the PDF at **~200–210 pp**.
 
-## Open decision — reaching 175
-Phase 1 + Phase 2 (as approved) lands **~200–210**, not 175. Closing the last ~30 pp needs **report
-merges** — one section per subsystem with the sub-reports folded in (water+plumbing → *Water*;
-electrical+safety+energy → *Electrical*; film-plane+clamp → *Film Plane*; walkway+routing → *Walkway*;
-pinhole+optics → *Optics*). Merges were **not yet approved** — decision pending. Options: (a) approve
-merges → ~175; (b) accept ~200 (top of the target range) without merges.
+## Merges — DECIDED: no
+Report merges were considered (would reach ~175) but **declined** — every report stays standalone.
+Target is **~200 pp**, reached by `brochure:skip` markers on detail sections + gallery thumbnail tables.
+
+## Progress
+- ✅ Phase 1 drops → 330.
+- ✅ Mechanism (`brochure:skip`) built + proven on `distortion-renders` (26 → 1 pp) → **305**.
+- ⏳ Remaining: mark detail/thumbnail regions in `processing-tray-and-spray-bar`, `electrical-report`,
+  `walkway-report`, `photosensitive-plane-options`, `film-plane-mechanism-report`, `tilt-swing-board-report`,
+  `weight-distribution-report`, `master-shopping-list`, `container-report`, and conclusion-first skips on
+  the mid reports. Target ~200.

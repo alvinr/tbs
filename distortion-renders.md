@@ -23,6 +23,7 @@ Individual configurations:
 
 The plane is a fixed-size rigid rectangle, so every configuration is a **flat** tilt or swing — a compound *twist* is not producible.
 
+<!-- brochure:skip -->
 | Config | Tilt | Effect | Render |
 |---|---|------|------------|
 | C0 | 0° | Reference — no distortion | ![C0](assets/film-plane-distortion-c0.png) |
@@ -31,6 +32,7 @@ The plane is a fixed-size rigid rectangle, so every configuration is a **flat** 
 | C3 | 40° | Max tilt (design max) — radical perspective break | ![C3](assets/film-plane-distortion-c3.png) |
 | C4 | −40° | Inverted max tilt — bottom rushes forward, ground-rush effect | ![C4](assets/film-plane-distortion-c4.png) |
 | C5 | 0° (near) | Flat plane 2,162mm closer — uniform magnification boost ~2.3× | ![C5](assets/film-plane-distortion-c5.png) |
+<!-- brochure:endskip -->
 
 ---
 
@@ -39,6 +41,7 @@ The plane is a fixed-size rigid rectangle, so every configuration is a **flat** 
 **Summary grid — Tilt & Swing Board**
 ![Film Plane Distortion — Summary Grid](assets/tilt-swing-board-distortion-summary.png)
 
+<!-- brochure:skip -->
 | Tilt | Swing | Effect | Render |
 |---|---|------|------------|
 | 0° | 0° | Reference — no shift | ![C0](assets/tilt-swing-board-distortion-c0.png) |
@@ -48,6 +51,7 @@ The plane is a fixed-size rigid rectangle, so every configuration is a **flat** 
 | 0° | +2° | Subtle horizontal steering | ![C4](assets/tilt-swing-board-distortion-c4.png) |
 | 0° | +5.3° | Max horizontal shift | ![C5](assets/tilt-swing-board-distortion-c5.png) |
 | +3° | +3° | Compound diagonal steering | ![C6](assets/tilt-swing-board-distortion-c6.png) |
+<!-- brochure:endskip -->
 
 ---
 
@@ -63,6 +67,7 @@ into a simple sum of the individual systems' projections.
 
 Individual configurations:
 
+<!-- brochure:skip -->
 | Board/Tilt | Board/Swing | Film/Tilt | Film/Swing | Effect | Render |
 |---|---|---|---|------|------------|
 | 0° |  0° |   0° |   0° |  Reference All flat | ![C0](assets/tilt-swing-combined-c0.png) |
@@ -74,5 +79,6 @@ Individual configurations:
 | 3° |  3° |   0° |   0° |  Compound board (tilt+swing) flat film | ![C6](assets/tilt-swing-combined-c6.png) |
 | 3° |  3° |   20° |   15° |  Full compound both systems (max distortion) | ![C7](assets/tilt-swing-combined-c7.png) |
 | -3° |  3° |   20° |   -15° |  Opposing compound (surrealist) | ![C8](assets/tilt-swing-combined-c8.png) |
+<!-- brochure:endskip -->
 
 *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

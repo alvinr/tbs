@@ -101,9 +101,13 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
   galvanized revert — worth the 62 kg + corrosion immunity). Both marked *Decided 2026-07-05* in §4/§5.
   Available build-savings now = lever 1 (container) + 5 (solar) = ~$1,500 (6%); the rest are
   banked/decided/moot. All cost gates green.
-- [ ] **Un-registered values audit** — ~35 values restated across ≥3 docs with no `tbs_constants` /
-  `facts.yml` owner (59mm door clearance ×8, 97/85 W cooler, 52mm headroom, the 1260/630/430 L cascade…).
-  Per candidate: find owner → add constant + fact → wrap the restatements.
+- [ ] **Un-registered values audit** — IN PROGRESS. The scoped candidates were mostly already registered in
+  the 2026-07 full audit (59mm door / 52mm headroom / 97·85 W cooler / 630·1260 L now have constants + facts).
+  The real remaining gap = system CONSTANTS restated in prose but policed by NO fact. Registered 2026-07-06:
+  `corridor_width_mm` (CORRIDOR_W, 8 docs), `container_rib_spacing_mm` (457, 3), `ibc_stack_height_mm` (2336, 3),
+  `walkway_near_wide_w_mm` (500, 3) — all `constant:` refs w/ tight aliases, lint green. **Remaining candidates
+  (more polysemous → need tight aliases): DUCT_HEIGHT/DEPTH (200/300), DRUM_D/DRUM_R (900/450), CLAMP_SPACING (150),
+  EVAP_DUCT_X.** Method: `grep facts.yml constant:<NAME>` to find unpoliced consts → tight alias → verify captures ≥3 + agrees.
 
 ## Docs / gallery
 - [x] **Gallery-only diagrams — DONE (won't-do).** Gallery-only PNGs are fine without a dedicated owning report — they live in the `all-diagrams.md` visual index. That gallery is now **excluded from the brochure PDF** (`BROCHURE_EXCLUDE`) so the 100+ images don't bloat it.

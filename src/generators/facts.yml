@@ -320,3 +320,39 @@ lost_l:
     - 'and ~?(\d{3})\s?L \('
     - '~?(\d{3})\s?(?:L|kg) (?:was |is )?lost'
     - 'other ~?(\d{3})\s?L'
+
+# ── Un-registered-values audit (2026-07-06): system constants restated in prose but previously
+#    unpoliced by any fact. Each REFERENCES its tbs_constants owner (can't disagree with code) with a
+#    tight alias, so a future drift in the restatement is flagged. ──
+corridor_width_mm:
+  constant: CORRIDOR_W
+  unit: mm
+  owner: equipment-layout-report.md
+  aliases:
+    - '(\d+)\s?mm\s+(?:plumbing\s+)?corridor'
+
+container_rib_spacing_mm:
+  constant: CONTAINER_RIB_SPACING
+  unit: mm
+  owner: container-report.md
+  aliases:
+    - '[Ee]very\s+(\d+)\s?mm\s*\(18'
+    - '(\d+)\s?mm\s+rib\s+cent'
+
+ibc_stack_height_mm:
+  constant: IBC_H_STK_1000
+  unit: mm
+  owner: ibc-stacking-report.md
+  aliases:
+    - '(\d,?\d{3})\s?mm\s*\(2\s?[×x]\s?1,?168'
+    - 'totes reach\s+(\d,?\d{3})\s?mm'
+
+walkway_near_wide_w_mm:
+  constant: WALKWAY_NEAR_WIDE_W
+  unit: mm
+  owner: walkway-report.md
+  aliases:
+    - 'walkway\S*\s*\((\d+)\s?mm\s+deep'
+    - '[Ww]alkway\s*\(widened\)\s*\|\s*(\d+)\s?mm'
+    - 'walkway widens to\s*(\d+)\s?mm'
+    - 'widened\s+section\s*\|\s*(\d+)\s?mm'

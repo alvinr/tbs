@@ -47,6 +47,10 @@ file** — a release must not ship without a changelog entry:
   behind as **loose edges** inside every elbow (>1,200 in the water model), rendering as dashed lines all
   over the diagram. The shared `ruby_elbow` helper now erases those after the sweep, and the water build
   also clears stale construction lines / root loose edges on every send.
+- **Brochure condensation (Phase 1)** — the prospectus PDF now drops exploratory / superseded / internal /
+  gallery docs to **web-only** (via `BROCHURE_EXCLUDE`), cutting it **407 → 330 pages** with nothing
+  deleted (the live docs site remains the deep-dive appendix). Target is ~175; gallery-thinning and
+  report condensation follow. Design: `docs/superpowers/specs/2026-07-07-brochure-condensation-design.md`.
 - **Water model cleanup** — the pinhole-wall water model drops the external EP panel + evap cooler, adds
   the spray bar for context, removes the green PV / grey E-stop EP cables, and reconnects the purple
   Cct-C pump feed to the panel's own master switch.

@@ -49,7 +49,19 @@ NAV_SOURCE_OVERRIDE = {"index.md": "project-summary.md"}
 
 # Pages that appear in the site nav but are intentionally omitted from the
 # brochure PDF (developer reference, not part of the printed engineering set).
-BROCHURE_EXCLUDE = {"component-dependency-map.md", "all-diagrams.md"}  # gallery = web-only, not PDF
+BROCHURE_EXCLUDE = {
+    # dev/reference + galleries — web-only, not in the printed set
+    "component-dependency-map.md", "all-diagrams.md", "engineering-diagrams.md",
+    # Phase-1 brochure condensation (2026-07-07): exploratory / superseded / decision-record content
+    # stays on the site but is dropped from the prospectus PDF (the live docs are the deep-dive appendix).
+    "film-plane-mechanism-analysis.md",                                       # superseded by film-plane-mechanism-report
+    "lens-options.md", "lens-vs-pinhole-exposure.md", "pinhole-option-b-optics.md",  # optics options not chosen
+    "container-transport-options.md", "process-comparison.md",                # alternatives not chosen
+    "tilt-swing-board-analysis.md",                                           # tilt-swing distortion renders
+    "right-walkway-cantilever-study.md",                                      # decision record
+    "component-dimension-audit.md",                                           # internal QA audit
+    "cost-analysis-report.md",                                                # overlaps project-cost-breakdown
+}
 
 # Unicode font path (macOS system font with broad Unicode coverage)
 # fpdf2 needs a TTF font for characters outside Latin-1

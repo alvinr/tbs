@@ -40,6 +40,9 @@ file** — a release must not ship without a changelog entry:
 - **Sketchfab material budget** — collapsed near-identical color materials at the RGB level (tight greys
   at Δ≤6 plus a few same-hue pairs at Δ≤10, all imperceptible), dropping the overview from **100 → ~87**
   unique materials so it uploads under the material ceiling.
+- **Electrical focus model** — dropped the ghost ceiling so the model orbits freely without it occluding
+  the gear, and added the two fan-feed callouts (Cct-A → Fan A at the sealed end; Cct-B → Fan B wall box
+  + flex jumper) to the Labeled scene.
 - **Water model cleanup** — the pinhole-wall water model drops the external EP panel + evap cooler, adds
   the spray bar for context, removes the green PV / grey E-stop EP cables, and reconnects the purple
   Cct-C pump feed to the panel's own master switch.

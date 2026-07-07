@@ -48,17 +48,6 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.22
   grp.material = mat
 
-  # Ceiling (context)
-  grp = ents.add_group
-  grp.name = "Ceiling (context)"
-  face = grp.entities.add_face([0.mm,0.mm,2388.mm], [5893.mm,0.mm,2388.mm], [5893.mm,2362.mm,2388.mm], [0.mm,2362.mm,2388.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Ceiling (context)"] || model.materials.add("Ceiling (context)")
-  mat.color = Sketchup::Color.new(239, 237, 228)
-  mat.alpha = 0.08
-  grp.material = mat
-
   # Pinhole Wall (context)
   grp = ents.add_group
   grp.name = "Pinhole Wall (context)"
@@ -10377,6 +10366,14 @@ txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(2099.mm, 20.mm, 1065.mm)
 txt = entities.add_text("INTERIOR E-STOP
 (parallel)", anc, Geom::Vector3d.new(-340.mm, 560.mm, -160.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(300.mm, 30.mm, 600.mm)
+txt = entities.add_text("FAN B FEED (Cct B)
+wall box -> flex jumper", anc, Geom::Vector3d.new(320.mm, 650.mm, 760.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(5618.mm, 1181.mm, 2000.mm)
+txt = entities.add_text("FAN A FEED (Cct A)
+exhaust, sealed end", anc, Geom::Vector3d.new(400.mm, -550.mm, -400.mm))
 txt.layer = model.layers["Labels"] rescue nil
 
 # ── In-model © + license credit (default layer → shown in every scene) ──

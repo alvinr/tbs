@@ -106,8 +106,11 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
   The real remaining gap = system CONSTANTS restated in prose but policed by NO fact. Registered 2026-07-06:
   `corridor_width_mm` (CORRIDOR_W, 8 docs), `container_rib_spacing_mm` (457, 3), `ibc_stack_height_mm` (2336, 3),
   `walkway_near_wide_w_mm` (500, 3) — all `constant:` refs w/ tight aliases, lint green. **Remaining candidates
-  (more polysemous → need tight aliases): DUCT_HEIGHT/DEPTH (200/300), DRUM_D/DRUM_R (900/450), CLAMP_SPACING (150),
-  EVAP_DUCT_X.** Method: `grep facts.yml constant:<NAME>` to find unpoliced consts → tight alias → verify captures ≥3 + agrees.
+  Added `clamp_spacing_mm` (CLAMP_SPACING, 3 docs, clamp-only alias so it skips the identical nozzle 150mm).
+  Assessed + deliberately LEFT the rest per the single-source rule: DUCT_HEIGHT/DEPTH (polysemous — Ø200 cooler
+  duct vs 200×300 fan duct vs 300 baffle), DRUM_D/R (only 1 clean restatement, already in-cell), EVAP_DUCT_X
+  (a diagram-of-record POSITION — stays in the diagram). **5 facts total registered; the drift-prone restated
+  system values are now policed.** Method for any future find: `grep facts.yml constant:<NAME>` → tight alias → verify.
 
 ## Docs / gallery
 - [x] **Gallery-only diagrams — DONE (won't-do).** Gallery-only PNGs are fine without a dedicated owning report — they live in the `all-diagrams.md` visual index. That gallery is now **excluded from the brochure PDF** (`BROCHURE_EXCLUDE`) so the 100+ images don't bloat it.

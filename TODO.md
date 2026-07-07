@@ -69,9 +69,10 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
   _2026-07-06: gear dropped into the no-stool reach zone (all maintenance items Z1010–1560, was to 2100) —
   disconnect cluster (main·master·PV·E-stop) grouped at ~Z1045, Blue Sea 5026 fuse block + busbars at chest
   height, MPPT display dropped from ~1970 to ~1460; 5026 corrected to real 164×39×84; Sheet 5 fully redrawn;
-  pinhole-wall/assembly/line-of-sight + weight CG + report captions cascaded; all gates green;
-  electrical.skp sent + verified in the live model. **Remaining: Alvin save+upload electrical, open+re-send
-  overview + upload, then commit.**_ — Original scope: the IP65 enclosure internals —
+  pinhole-wall/assembly/line-of-sight + weight CG + report captions cascaded; all gates green.
+  **COMPLETE — electrical + overview + film-plane (EP context ghost) all re-sent, saved + uploaded to
+  Sketchfab; committed (348cdedc + f4ae78dd), pushed to main.** (Say the word to tick this done.)_
+  — Original scope: the IP65 enclosure internals —
   the A–G blade-fuse stack, the +/− busbars, and the wiring/circuit routing — have accreted to the
   point they're **not operator-usable**: fuses/terminals are cramped and hard to reach/trace for
   service and reset. Re-lay the internal layout for real serviceability (fuse access, labeled

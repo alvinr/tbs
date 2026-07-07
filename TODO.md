@@ -114,8 +114,11 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
 
 ## Docs / gallery
 - [x] **Gallery-only diagrams — DONE (won't-do).** Gallery-only PNGs are fine without a dedicated owning report — they live in the `all-diagrams.md` visual index. That gallery is now **excluded from the brochure PDF** (`BROCHURE_EXCLUDE`) so the 100+ images don't bloat it.
-- [ ] **`tilt-swing-board-analysis.md` §4** — the combined C0–C8 renders duplicate `distortion-renders.md`
-  §3 with extra commentary; merge the two docs or point §4 to the gallery. (Inline TODO in the doc.)
+- [ ] **`tilt-swing-board-analysis.md` §4 — DONE 2026-07-07 (point-to-gallery).** Chose point-to-gallery over
+  merge: distortion-renders §3 (the dedicated renders gallery) owns the 9 C0–C8 images; §4 renamed "Combined
+  Distortion Analysis", keeps its UNIQUE value (projection model + per-config optical analysis prose) but no
+  longer re-embeds the 9 renders + summary grid — it opens with a pointer to the gallery §3. Intra-doc anchor
+  updated, inline line-71 TODO removed, all gates green. (Checkbox left for Alvin.)
 - [x] **`component-dependency-map.md` — DONE.** Portacool note was already resolved (§1.8 = Hessaire
   MC18M). "See Also" done: extended the full **Reports:** + **Diagrams:** cross-ref pair (previously only
   on §1.8) to all 17 §1 registry entries — reports researched with verified section refs, diagrams from

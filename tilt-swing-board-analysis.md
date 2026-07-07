@@ -44,7 +44,7 @@ When both systems operate simultaneously, the effects **stack non-linearly**. Th
 - **Opposing tilt:** the two effects partially cancel, producing a near-flat image with a subtle S-curve distortion at the transition zone — invisible with either system alone
 - **Full compound (both axes, both systems):** produces an image where no lines are parallel in any axis — the most complex projection the camera can make
 
-See the [Combined Distortion Renders](#4-combined-distortion-renders) section below.
+See the [Combined Distortion Analysis](#4-combined-distortion-analysis) section below.
 
 ---
 
@@ -68,10 +68,9 @@ See the [Combined Distortion Renders](#4-combined-distortion-renders) section be
 
 ---
 
-<!-- TODO (2026-06-25, Alvin): §4 (combined renders C0–C8) shows the same PNGs as distortion-renders.md §3, with extra per-config commentary here. Decide whether to merge these two docs or point §4 to the gallery. -->
-## 4. Combined Distortion Renders
+## 4. Combined Distortion Analysis
 
-The following renders show the combined projection of both systems operating simultaneously. The world scene is a regular grid at three depths (near: 7.4m, mid: 22.4m, far: 102.4m from pinhole) plus a human-figure reference and horizon line.
+The nine combined-configuration renders (C0–C8) are collected in the **[Distortion Renders gallery — §3 Combined](distortion-renders.md#3-combined-distortion-renders-film-plane-tilt-swing-board)**, the single source for the render images. This section documents the projection model behind them and the per-configuration optical analysis. Each render places a regular world grid at three depths (near 7.4m, mid 22.4m, far 102.4m from the pinhole) plus a human-figure reference and horizon line; the red cross (+) marks the projected image center, the gray cross the nominal center.
 
 The projection model applies two sequential transformations:
 
@@ -83,11 +82,7 @@ Board tilt α and swing β rotate the effective world coordinate system:
 The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r₀=(0,0,2362) and normal n = Ry(φ)·Rx(θ)·[0,0,−1]. The image point is:
 `t = (n·r₀)/(n·d);  F = t × d`
 
-The red cross (+) marks the projected image center; gray cross marks the nominal center.
-
 ### C0 — Reference (all flat)
-
-![C0](assets/tilt-swing-combined-c0.png)
 
 Undistorted reference. Both systems at 0°. Grid is symmetric, image center on nominal.
 
@@ -95,15 +90,11 @@ Undistorted reference. Both systems at 0°. Grid is symmetric, image center on n
 
 ### C1 — Board tilt +3° only
 
-![C1](assets/tilt-swing-combined-c1.png)
-
 The pinhole points 3° upward. The entire image shifts up ~124mm on the film. Grid lines remain parallel (no keystone from board tilt alone). The effect is equivalent to pointing the camera upward — useful for including more sky or adjusting horizon placement.
 
 ---
 
 ### C2 — Film tilt +20° only
-
-![C2](assets/tilt-swing-combined-c2.png)
 
 Film plane tilts 20° (top edge moves toward pinhole). The near grid is compressed vertically near the top of frame; the bottom of frame is stretched. Classic Scheimpflug-style distortion without any board movement.
 
@@ -111,15 +102,11 @@ Film plane tilts 20° (top edge moves toward pinhole). The near grid is compress
 
 ### C3 — Board tilt +3° + film tilt +20° (amplified)
 
-![C3](assets/tilt-swing-combined-c3.png)
-
 Both tilt in the same direction. The board shift (+124mm) lands on an already-compressed region of the film plane — the upper image is dramatically compressed AND shifted. The lower frame is expanded. This is the strongest single-axis distortion this camera can produce.
 
 ---
 
 ### C4 — Board tilt +3° + film tilt −20° (opposing)
-
-![C4](assets/tilt-swing-combined-c4.png)
 
 The board tilts up but the film tilts in the opposite direction. The two effects partially cancel: the image shift is reduced, and the keystone is inverted relative to the shift direction. A nearly flat image results, with a subtle S-curve distortion at the midpoint — invisible with either system alone.
 
@@ -127,15 +114,11 @@ The board tilts up but the film tilts in the opposite direction. The two effects
 
 ### C5 — Board swing +3° + film swing +15° (lateral amplification)
 
-![C5](assets/tilt-swing-combined-c5.png)
-
 Both systems swing right. The image shifts laterally and develops a horizontal keystone. Useful for photographing asymmetric subjects — the camera can be placed centrally in the container but the image framed toward one side.
 
 ---
 
 ### C6 — Compound board (tilt +3° + swing +3°), flat film
-
-![C6](assets/tilt-swing-combined-c6.png)
 
 The board points diagonally (both up and right simultaneously). The image shifts diagonally on the film plane. The film plane is flat, so no Scheimpflug effect — a clean diagonal translation of the image with minimal keystone.
 
@@ -143,23 +126,13 @@ The board points diagonally (both up and right simultaneously). The image shifts
 
 ### C7 — Full compound both systems
 
-![C7](assets/tilt-swing-combined-c7.png)
-
 Board: tilt +3°, swing +3°. Film: tilt +20°, swing +15°. The most complex projection this camera can produce. No lines are parallel in any axis. The image center shifts diagonally while independent keystone gradients run in both X and Y. Surrealist in character.
 
 ---
 
 ### C8 — Opposing compound (surrealist)
 
-![C8](assets/tilt-swing-combined-c8.png)
-
 Board: tilt −3°, swing +3°. Film: tilt +20°, swing −15°. The tilt and swing are opposed in both axes simultaneously. The result is a "folding" distortion — the image appears to rotate in opposite directions about orthogonal axes. No precedent in conventional camera movements. A uniquely novel optical configuration.
-
----
-
-### Summary grid
-
-![All configurations](assets/tilt-swing-combined-summary.png)
 
 ---
 

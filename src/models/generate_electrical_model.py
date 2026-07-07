@@ -138,6 +138,8 @@ ELEC_POINT_LABELS = [
     (EP_X + 40, 95, EP_H_LO + 155, "60A CHARGE FUSE\n(MPPT -> battery)", 440, 680, 160),
     (EP_X + 270, 20, EP_DISC_Z + 20,
      "INTERIOR E-STOP\n(parallel)", -340, 560, -160),
+    (_FANB_BOX_X, 30, FAN_B_H, "FAN B FEED (Cct B)\nwall box -> flex jumper", 320, 650, 760),
+    (_FAN_A_X, FAN_A_YD, FAN_A_H, "FAN A FEED (Cct A)\nexhaust, sealed end", 400, -550, -400),
 ]
 
 
@@ -202,14 +204,12 @@ def context():
     """Full-length ghost container shell + faint ghost loads (the circuit endpoints
     that aren't modeled as their own components: fans, pump cluster, LED, safelight)."""
     t = WALL
-    # Shell reduced to Floor + Ceiling + Pinhole Wall only — the Far (film-plane) wall and both end
-    # walls (cargo-door + sealed) are dropped so the model orbits freely without those walls occluding
-    # the electrical gear, which all lives on the pinhole wall.
+    # Shell reduced to Floor + Pinhole Wall only — the ceiling, the Far (film-plane) wall, and both end
+    # walls (cargo-door + sealed) are dropped so the model orbits freely without them occluding the
+    # electrical gear, which all lives on the pinhole wall.
     p = [
         ov.ruby_box("Floor (context)", 0, 0, -t, ov.C_LEN, ov.C_WID, t,
                     color=ov.C_SHELL, alpha=0.22),
-        ov.ruby_box("Ceiling (context)", 0, 0, ov.C_HGT, ov.C_LEN, ov.C_WID, t,
-                    color=ov.C_SHELL, alpha=0.08),
         ov.ruby_box("Pinhole Wall (context)", 0, -t, 0, ov.C_LEN, t, ov.C_HGT,
                     color=ov.C_SHELL, alpha=0.10),
     ]

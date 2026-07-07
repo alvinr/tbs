@@ -2088,15 +2088,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-combined-distortion-renders" class="md-nav__link">
+  <a href="#4-combined-distortion-analysis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Combined Distortion Renders
+        4. Combined Distortion Analysis
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. Combined Distortion Renders">
+    <nav class="md-nav" aria-label="4. Combined Distortion Analysis">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2192,17 +2192,6 @@
     <span class="md-ellipsis">
       
         C8 — Opposing compound (surrealist)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#summary-grid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Summary grid
       
     </span>
   </a>
@@ -2745,7 +2734,7 @@
 <li><strong>Opposing tilt:</strong> the two effects partially cancel, producing a near-flat image with a subtle S-curve distortion at the transition zone — invisible with either system alone</li>
 <li><strong>Full compound (both axes, both systems):</strong> produces an image where no lines are parallel in any axis — the most complex projection the camera can make</li>
 </ul>
-<p>See the <a href="#4-combined-distortion-renders">Combined Distortion Renders</a> section below.</p>
+<p>See the <a href="#4-combined-distortion-analysis">Combined Distortion Analysis</a> section below.</p>
 <hr />
 <h2 id="3-movement-specification">3. Movement Specification<a class="headerlink" href="#3-movement-specification" title="Permanent link">&para;</a></h2>
 <table>
@@ -2820,9 +2809,8 @@
 </tbody>
 </table>
 <hr />
-<!-- TODO (2026-06-25, Alvin): §4 (combined renders C0–C8) shows the same PNGs as distortion-renders.md §3, with extra per-config commentary here. Decide whether to merge these two docs or point §4 to the gallery. -->
-<h2 id="4-combined-distortion-renders">4. Combined Distortion Renders<a class="headerlink" href="#4-combined-distortion-renders" title="Permanent link">&para;</a></h2>
-<p>The following renders show the combined projection of both systems operating simultaneously. The world scene is a regular grid at three depths (near: 7.4m, mid: 22.4m, far: 102.4m from pinhole) plus a human-figure reference and horizon line.</p>
+<h2 id="4-combined-distortion-analysis">4. Combined Distortion Analysis<a class="headerlink" href="#4-combined-distortion-analysis" title="Permanent link">&para;</a></h2>
+<p>The nine combined-configuration renders (C0–C8) are collected in the <strong><a href="../distortion-renders/#3-combined-distortion-renders-film-plane-tilt-swing-board">Distortion Renders gallery — §3 Combined</a></strong>, the single source for the render images. This section documents the projection model behind them and the per-configuration optical analysis. Each render places a regular world grid at three depths (near 7.4m, mid 22.4m, far 102.4m from the pinhole) plus a human-figure reference and horizon line; the red cross (+) marks the projected image center, the gray cross the nominal center.</p>
 <p>The projection model applies two sequential transformations:</p>
 <p><strong>Step 1 — Front board rotation:</strong>
 Board tilt α and swing β rotate the effective world coordinate system:
@@ -2830,45 +2818,32 @@ Board tilt α and swing β rotate the effective world coordinate system:
 <p><strong>Step 2 — Film plane intersection:</strong>
 The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r₀=(0,0,2362) and normal n = Ry(φ)·Rx(θ)·[0,0,−1]. The image point is:
 <code>t = (n·r₀)/(n·d);  F = t × d</code></p>
-<p>The red cross (+) marks the projected image center; gray cross marks the nominal center.</p>
 <h3 id="c0-reference-all-flat">C0 — Reference (all flat)<a class="headerlink" href="#c0-reference-all-flat" title="Permanent link">&para;</a></h3>
-<p><img alt="C0" src="../assets/tilt-swing-combined-c0.png" /></p>
 <p>Undistorted reference. Both systems at 0°. Grid is symmetric, image center on nominal.</p>
 <hr />
 <h3 id="c1-board-tilt-3-only">C1 — Board tilt +3° only<a class="headerlink" href="#c1-board-tilt-3-only" title="Permanent link">&para;</a></h3>
-<p><img alt="C1" src="../assets/tilt-swing-combined-c1.png" /></p>
 <p>The pinhole points 3° upward. The entire image shifts up ~124mm on the film. Grid lines remain parallel (no keystone from board tilt alone). The effect is equivalent to pointing the camera upward — useful for including more sky or adjusting horizon placement.</p>
 <hr />
 <h3 id="c2-film-tilt-20-only">C2 — Film tilt +20° only<a class="headerlink" href="#c2-film-tilt-20-only" title="Permanent link">&para;</a></h3>
-<p><img alt="C2" src="../assets/tilt-swing-combined-c2.png" /></p>
 <p>Film plane tilts 20° (top edge moves toward pinhole). The near grid is compressed vertically near the top of frame; the bottom of frame is stretched. Classic Scheimpflug-style distortion without any board movement.</p>
 <hr />
 <h3 id="c3-board-tilt-3-film-tilt-20-amplified">C3 — Board tilt +3° + film tilt +20° (amplified)<a class="headerlink" href="#c3-board-tilt-3-film-tilt-20-amplified" title="Permanent link">&para;</a></h3>
-<p><img alt="C3" src="../assets/tilt-swing-combined-c3.png" /></p>
 <p>Both tilt in the same direction. The board shift (+124mm) lands on an already-compressed region of the film plane — the upper image is dramatically compressed AND shifted. The lower frame is expanded. This is the strongest single-axis distortion this camera can produce.</p>
 <hr />
 <h3 id="c4-board-tilt-3-film-tilt-20-opposing">C4 — Board tilt +3° + film tilt −20° (opposing)<a class="headerlink" href="#c4-board-tilt-3-film-tilt-20-opposing" title="Permanent link">&para;</a></h3>
-<p><img alt="C4" src="../assets/tilt-swing-combined-c4.png" /></p>
 <p>The board tilts up but the film tilts in the opposite direction. The two effects partially cancel: the image shift is reduced, and the keystone is inverted relative to the shift direction. A nearly flat image results, with a subtle S-curve distortion at the midpoint — invisible with either system alone.</p>
 <hr />
 <h3 id="c5-board-swing-3-film-swing-15-lateral-amplification">C5 — Board swing +3° + film swing +15° (lateral amplification)<a class="headerlink" href="#c5-board-swing-3-film-swing-15-lateral-amplification" title="Permanent link">&para;</a></h3>
-<p><img alt="C5" src="../assets/tilt-swing-combined-c5.png" /></p>
 <p>Both systems swing right. The image shifts laterally and develops a horizontal keystone. Useful for photographing asymmetric subjects — the camera can be placed centrally in the container but the image framed toward one side.</p>
 <hr />
 <h3 id="c6-compound-board-tilt-3-swing-3-flat-film">C6 — Compound board (tilt +3° + swing +3°), flat film<a class="headerlink" href="#c6-compound-board-tilt-3-swing-3-flat-film" title="Permanent link">&para;</a></h3>
-<p><img alt="C6" src="../assets/tilt-swing-combined-c6.png" /></p>
 <p>The board points diagonally (both up and right simultaneously). The image shifts diagonally on the film plane. The film plane is flat, so no Scheimpflug effect — a clean diagonal translation of the image with minimal keystone.</p>
 <hr />
 <h3 id="c7-full-compound-both-systems">C7 — Full compound both systems<a class="headerlink" href="#c7-full-compound-both-systems" title="Permanent link">&para;</a></h3>
-<p><img alt="C7" src="../assets/tilt-swing-combined-c7.png" /></p>
 <p>Board: tilt +3°, swing +3°. Film: tilt +20°, swing +15°. The most complex projection this camera can produce. No lines are parallel in any axis. The image center shifts diagonally while independent keystone gradients run in both X and Y. Surrealist in character.</p>
 <hr />
 <h3 id="c8-opposing-compound-surrealist">C8 — Opposing compound (surrealist)<a class="headerlink" href="#c8-opposing-compound-surrealist" title="Permanent link">&para;</a></h3>
-<p><img alt="C8" src="../assets/tilt-swing-combined-c8.png" /></p>
 <p>Board: tilt −3°, swing +3°. Film: tilt +20°, swing −15°. The tilt and swing are opposed in both axes simultaneously. The result is a "folding" distortion — the image appears to rotate in opposite directions about orthogonal axes. No precedent in conventional camera movements. A uniquely novel optical configuration.</p>
-<hr />
-<h3 id="summary-grid">Summary grid<a class="headerlink" href="#summary-grid" title="Permanent link">&para;</a></h3>
-<p><img alt="All configurations" src="../assets/tilt-swing-combined-summary.png" /></p>
 <hr />
 <h2 id="5-recommended-starting-configurations">5. Recommended Starting Configurations<a class="headerlink" href="#5-recommended-starting-configurations" title="Permanent link">&para;</a></h2>
 <p>For a first shoot with the TSB mechanism, the following settings offer the clearest demonstration of each effect:</p>

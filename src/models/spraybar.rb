@@ -15,13 +15,13 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each { |p| model.pages.erase(p) }
 
-# ── Sketchfab upload metadata (stamped every regen; keeps the stable model UID) ──
-model.name = "TBS-001 Spraybar Model"
-model.description = "The processing tray provides the containment surface and the spray bar delivers even water distribution across the full print width."
-model.set_attribute("sketchfab", "model_title", "TBS-001 Spraybar Model")
-model.set_attribute("sketchfab", "model_description", "The processing tray provides the containment surface and the spray bar delivers even water distribution across the full print width.")
-model.set_attribute("sketchfab", "model_id", "18fb381fbf48459cac25dcaa23958387")
-model.set_attribute("sketchfab", "model_tags", "sketchup")
+# ── Sketchfab metadata — fill-only-if-blank; never overwrites existing values ──
+model.name = "TBS-001 Spraybar Model" if model.name.to_s.strip.empty?
+model.description = "The processing tray provides the containment surface and the spray bar delivers even water distribution across the full print width." if model.description.to_s.strip.empty?
+model.set_attribute("sketchfab", "model_title", "TBS-001 Spraybar Model") if model.get_attribute("sketchfab", "model_title").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_description", "The processing tray provides the containment surface and the spray bar delivers even water distribution across the full print width.") if model.get_attribute("sketchfab", "model_description").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_id", "18fb381fbf48459cac25dcaa23958387") if model.get_attribute("sketchfab", "model_id").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribute("sketchfab", "model_tags").to_s.strip.empty?
 
   model.layers.add("Beam") unless model.layers["Beam"]
   model.layers.add("Carriage L") unless model.layers["Carriage L"]
@@ -1127,26 +1127,68 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Clamp Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([209.mm,1156.mm,22.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([209.mm,1156.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(39.mm)
+  cface.pushpull(35.mm)
   mat = model.materials["Axle Pin 10mm L"] || model.materials.add("Axle Pin 10mm L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
+  grp.material = mat
+
+  # Clamp Bolt CSK Head L
+  grp = ents.add_group
+  grp.name = "Clamp Bolt CSK Head L"
+  ge = grp.entities
+  ge.add_face([213.5.mm,1156.mm,26.mm], [212.89711431702997.mm,1158.25.mm,26.mm], [211.1650635094611.mm,1157.25.mm,29.mm], [211.5.mm,1156.mm,29.mm])
+  ge.add_face([212.89711431702997.mm,1158.25.mm,26.mm], [211.25.mm,1159.89711431703.mm,26.mm], [210.25.mm,1158.165063509461.mm,29.mm], [211.1650635094611.mm,1157.25.mm,29.mm])
+  ge.add_face([211.25.mm,1159.89711431703.mm,26.mm], [209.mm,1160.5.mm,26.mm], [209.mm,1158.5.mm,29.mm], [210.25.mm,1158.165063509461.mm,29.mm])
+  ge.add_face([209.mm,1160.5.mm,26.mm], [206.75.mm,1159.89711431703.mm,26.mm], [207.75.mm,1158.165063509461.mm,29.mm], [209.mm,1158.5.mm,29.mm])
+  ge.add_face([206.75.mm,1159.89711431703.mm,26.mm], [205.10288568297003.mm,1158.25.mm,26.mm], [206.8349364905389.mm,1157.25.mm,29.mm], [207.75.mm,1158.165063509461.mm,29.mm])
+  ge.add_face([205.10288568297003.mm,1158.25.mm,26.mm], [204.5.mm,1156.mm,26.mm], [206.5.mm,1156.mm,29.mm], [206.8349364905389.mm,1157.25.mm,29.mm])
+  ge.add_face([204.5.mm,1156.mm,26.mm], [205.10288568297003.mm,1153.75.mm,26.mm], [206.8349364905389.mm,1154.75.mm,29.mm], [206.5.mm,1156.mm,29.mm])
+  ge.add_face([205.10288568297003.mm,1153.75.mm,26.mm], [206.75.mm,1152.10288568297.mm,26.mm], [207.75.mm,1153.834936490539.mm,29.mm], [206.8349364905389.mm,1154.75.mm,29.mm])
+  ge.add_face([206.75.mm,1152.10288568297.mm,26.mm], [209.mm,1151.5.mm,26.mm], [209.mm,1153.5.mm,29.mm], [207.75.mm,1153.834936490539.mm,29.mm])
+  ge.add_face([209.mm,1151.5.mm,26.mm], [211.25.mm,1152.10288568297.mm,26.mm], [210.25.mm,1153.834936490539.mm,29.mm], [209.mm,1153.5.mm,29.mm])
+  ge.add_face([211.25.mm,1152.10288568297.mm,26.mm], [212.89711431702997.mm,1153.75.mm,26.mm], [211.1650635094611.mm,1154.75.mm,29.mm], [210.25.mm,1153.834936490539.mm,29.mm])
+  ge.add_face([212.89711431702997.mm,1153.75.mm,26.mm], [213.5.mm,1156.mm,26.mm], [211.5.mm,1156.mm,29.mm], [211.1650635094611.mm,1154.75.mm,29.mm])
+  ge.add_face([213.5.mm,1156.mm,26.mm], [212.89711431702997.mm,1158.25.mm,26.mm], [211.25.mm,1159.89711431703.mm,26.mm], [209.mm,1160.5.mm,26.mm], [206.75.mm,1159.89711431703.mm,26.mm], [205.10288568297003.mm,1158.25.mm,26.mm], [204.5.mm,1156.mm,26.mm], [205.10288568297003.mm,1153.75.mm,26.mm], [206.75.mm,1152.10288568297.mm,26.mm], [209.mm,1151.5.mm,26.mm], [211.25.mm,1152.10288568297.mm,26.mm], [212.89711431702997.mm,1153.75.mm,26.mm])
+  mat = model.materials["Clamp Bolt CSK Head L"] || model.materials.add("Clamp Bolt CSK Head L")
+  mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
 
   # Clamp Bolt L
   grp = ents.add_group
   grp.name = "Clamp Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([231.mm,1156.mm,22.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([231.mm,1156.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(39.mm)
+  cface.pushpull(35.mm)
   mat = model.materials["Axle Pin 10mm L"] || model.materials.add("Axle Pin 10mm L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
+  grp.material = mat
+
+  # Clamp Bolt CSK Head L
+  grp = ents.add_group
+  grp.name = "Clamp Bolt CSK Head L"
+  ge = grp.entities
+  ge.add_face([235.5.mm,1156.mm,26.mm], [234.89711431702997.mm,1158.25.mm,26.mm], [233.1650635094611.mm,1157.25.mm,29.mm], [233.5.mm,1156.mm,29.mm])
+  ge.add_face([234.89711431702997.mm,1158.25.mm,26.mm], [233.25.mm,1159.89711431703.mm,26.mm], [232.25.mm,1158.165063509461.mm,29.mm], [233.1650635094611.mm,1157.25.mm,29.mm])
+  ge.add_face([233.25.mm,1159.89711431703.mm,26.mm], [231.mm,1160.5.mm,26.mm], [231.mm,1158.5.mm,29.mm], [232.25.mm,1158.165063509461.mm,29.mm])
+  ge.add_face([231.mm,1160.5.mm,26.mm], [228.75.mm,1159.89711431703.mm,26.mm], [229.75.mm,1158.165063509461.mm,29.mm], [231.mm,1158.5.mm,29.mm])
+  ge.add_face([228.75.mm,1159.89711431703.mm,26.mm], [227.10288568297003.mm,1158.25.mm,26.mm], [228.8349364905389.mm,1157.25.mm,29.mm], [229.75.mm,1158.165063509461.mm,29.mm])
+  ge.add_face([227.10288568297003.mm,1158.25.mm,26.mm], [226.5.mm,1156.mm,26.mm], [228.5.mm,1156.mm,29.mm], [228.8349364905389.mm,1157.25.mm,29.mm])
+  ge.add_face([226.5.mm,1156.mm,26.mm], [227.10288568297003.mm,1153.75.mm,26.mm], [228.8349364905389.mm,1154.75.mm,29.mm], [228.5.mm,1156.mm,29.mm])
+  ge.add_face([227.10288568297003.mm,1153.75.mm,26.mm], [228.75.mm,1152.10288568297.mm,26.mm], [229.75.mm,1153.834936490539.mm,29.mm], [228.8349364905389.mm,1154.75.mm,29.mm])
+  ge.add_face([228.75.mm,1152.10288568297.mm,26.mm], [231.mm,1151.5.mm,26.mm], [231.mm,1153.5.mm,29.mm], [229.75.mm,1153.834936490539.mm,29.mm])
+  ge.add_face([231.mm,1151.5.mm,26.mm], [233.25.mm,1152.10288568297.mm,26.mm], [232.25.mm,1153.834936490539.mm,29.mm], [231.mm,1153.5.mm,29.mm])
+  ge.add_face([233.25.mm,1152.10288568297.mm,26.mm], [234.89711431702997.mm,1153.75.mm,26.mm], [233.1650635094611.mm,1154.75.mm,29.mm], [232.25.mm,1153.834936490539.mm,29.mm])
+  ge.add_face([234.89711431702997.mm,1153.75.mm,26.mm], [235.5.mm,1156.mm,26.mm], [233.5.mm,1156.mm,29.mm], [233.1650635094611.mm,1154.75.mm,29.mm])
+  ge.add_face([235.5.mm,1156.mm,26.mm], [234.89711431702997.mm,1158.25.mm,26.mm], [233.25.mm,1159.89711431703.mm,26.mm], [231.mm,1160.5.mm,26.mm], [228.75.mm,1159.89711431703.mm,26.mm], [227.10288568297003.mm,1158.25.mm,26.mm], [226.5.mm,1156.mm,26.mm], [227.10288568297003.mm,1153.75.mm,26.mm], [228.75.mm,1152.10288568297.mm,26.mm], [231.mm,1151.5.mm,26.mm], [233.25.mm,1152.10288568297.mm,26.mm], [234.89711431702997.mm,1153.75.mm,26.mm])
+  mat = model.materials["Clamp Bolt CSK Head L"] || model.materials.add("Clamp Bolt CSK Head L")
+  mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
 
   # Clamp Spacer L
@@ -1164,26 +1206,68 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Clamp Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([209.mm,1204.mm,22.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([209.mm,1204.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(39.mm)
+  cface.pushpull(35.mm)
   mat = model.materials["Axle Pin 10mm L"] || model.materials.add("Axle Pin 10mm L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
+  grp.material = mat
+
+  # Clamp Bolt CSK Head L
+  grp = ents.add_group
+  grp.name = "Clamp Bolt CSK Head L"
+  ge = grp.entities
+  ge.add_face([213.5.mm,1204.mm,26.mm], [212.89711431702997.mm,1206.25.mm,26.mm], [211.1650635094611.mm,1205.25.mm,29.mm], [211.5.mm,1204.mm,29.mm])
+  ge.add_face([212.89711431702997.mm,1206.25.mm,26.mm], [211.25.mm,1207.89711431703.mm,26.mm], [210.25.mm,1206.165063509461.mm,29.mm], [211.1650635094611.mm,1205.25.mm,29.mm])
+  ge.add_face([211.25.mm,1207.89711431703.mm,26.mm], [209.mm,1208.5.mm,26.mm], [209.mm,1206.5.mm,29.mm], [210.25.mm,1206.165063509461.mm,29.mm])
+  ge.add_face([209.mm,1208.5.mm,26.mm], [206.75.mm,1207.89711431703.mm,26.mm], [207.75.mm,1206.165063509461.mm,29.mm], [209.mm,1206.5.mm,29.mm])
+  ge.add_face([206.75.mm,1207.89711431703.mm,26.mm], [205.10288568297003.mm,1206.25.mm,26.mm], [206.8349364905389.mm,1205.25.mm,29.mm], [207.75.mm,1206.165063509461.mm,29.mm])
+  ge.add_face([205.10288568297003.mm,1206.25.mm,26.mm], [204.5.mm,1204.mm,26.mm], [206.5.mm,1204.mm,29.mm], [206.8349364905389.mm,1205.25.mm,29.mm])
+  ge.add_face([204.5.mm,1204.mm,26.mm], [205.10288568297003.mm,1201.75.mm,26.mm], [206.8349364905389.mm,1202.75.mm,29.mm], [206.5.mm,1204.mm,29.mm])
+  ge.add_face([205.10288568297003.mm,1201.75.mm,26.mm], [206.75.mm,1200.10288568297.mm,26.mm], [207.75.mm,1201.834936490539.mm,29.mm], [206.8349364905389.mm,1202.75.mm,29.mm])
+  ge.add_face([206.75.mm,1200.10288568297.mm,26.mm], [209.mm,1199.5.mm,26.mm], [209.mm,1201.5.mm,29.mm], [207.75.mm,1201.834936490539.mm,29.mm])
+  ge.add_face([209.mm,1199.5.mm,26.mm], [211.25.mm,1200.10288568297.mm,26.mm], [210.25.mm,1201.834936490539.mm,29.mm], [209.mm,1201.5.mm,29.mm])
+  ge.add_face([211.25.mm,1200.10288568297.mm,26.mm], [212.89711431702997.mm,1201.75.mm,26.mm], [211.1650635094611.mm,1202.75.mm,29.mm], [210.25.mm,1201.834936490539.mm,29.mm])
+  ge.add_face([212.89711431702997.mm,1201.75.mm,26.mm], [213.5.mm,1204.mm,26.mm], [211.5.mm,1204.mm,29.mm], [211.1650635094611.mm,1202.75.mm,29.mm])
+  ge.add_face([213.5.mm,1204.mm,26.mm], [212.89711431702997.mm,1206.25.mm,26.mm], [211.25.mm,1207.89711431703.mm,26.mm], [209.mm,1208.5.mm,26.mm], [206.75.mm,1207.89711431703.mm,26.mm], [205.10288568297003.mm,1206.25.mm,26.mm], [204.5.mm,1204.mm,26.mm], [205.10288568297003.mm,1201.75.mm,26.mm], [206.75.mm,1200.10288568297.mm,26.mm], [209.mm,1199.5.mm,26.mm], [211.25.mm,1200.10288568297.mm,26.mm], [212.89711431702997.mm,1201.75.mm,26.mm])
+  mat = model.materials["Clamp Bolt CSK Head L"] || model.materials.add("Clamp Bolt CSK Head L")
+  mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
 
   # Clamp Bolt L
   grp = ents.add_group
   grp.name = "Clamp Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([231.mm,1204.mm,22.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([231.mm,1204.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(39.mm)
+  cface.pushpull(35.mm)
   mat = model.materials["Axle Pin 10mm L"] || model.materials.add("Axle Pin 10mm L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
+  grp.material = mat
+
+  # Clamp Bolt CSK Head L
+  grp = ents.add_group
+  grp.name = "Clamp Bolt CSK Head L"
+  ge = grp.entities
+  ge.add_face([235.5.mm,1204.mm,26.mm], [234.89711431702997.mm,1206.25.mm,26.mm], [233.1650635094611.mm,1205.25.mm,29.mm], [233.5.mm,1204.mm,29.mm])
+  ge.add_face([234.89711431702997.mm,1206.25.mm,26.mm], [233.25.mm,1207.89711431703.mm,26.mm], [232.25.mm,1206.165063509461.mm,29.mm], [233.1650635094611.mm,1205.25.mm,29.mm])
+  ge.add_face([233.25.mm,1207.89711431703.mm,26.mm], [231.mm,1208.5.mm,26.mm], [231.mm,1206.5.mm,29.mm], [232.25.mm,1206.165063509461.mm,29.mm])
+  ge.add_face([231.mm,1208.5.mm,26.mm], [228.75.mm,1207.89711431703.mm,26.mm], [229.75.mm,1206.165063509461.mm,29.mm], [231.mm,1206.5.mm,29.mm])
+  ge.add_face([228.75.mm,1207.89711431703.mm,26.mm], [227.10288568297003.mm,1206.25.mm,26.mm], [228.8349364905389.mm,1205.25.mm,29.mm], [229.75.mm,1206.165063509461.mm,29.mm])
+  ge.add_face([227.10288568297003.mm,1206.25.mm,26.mm], [226.5.mm,1204.mm,26.mm], [228.5.mm,1204.mm,29.mm], [228.8349364905389.mm,1205.25.mm,29.mm])
+  ge.add_face([226.5.mm,1204.mm,26.mm], [227.10288568297003.mm,1201.75.mm,26.mm], [228.8349364905389.mm,1202.75.mm,29.mm], [228.5.mm,1204.mm,29.mm])
+  ge.add_face([227.10288568297003.mm,1201.75.mm,26.mm], [228.75.mm,1200.10288568297.mm,26.mm], [229.75.mm,1201.834936490539.mm,29.mm], [228.8349364905389.mm,1202.75.mm,29.mm])
+  ge.add_face([228.75.mm,1200.10288568297.mm,26.mm], [231.mm,1199.5.mm,26.mm], [231.mm,1201.5.mm,29.mm], [229.75.mm,1201.834936490539.mm,29.mm])
+  ge.add_face([231.mm,1199.5.mm,26.mm], [233.25.mm,1200.10288568297.mm,26.mm], [232.25.mm,1201.834936490539.mm,29.mm], [231.mm,1201.5.mm,29.mm])
+  ge.add_face([233.25.mm,1200.10288568297.mm,26.mm], [234.89711431702997.mm,1201.75.mm,26.mm], [233.1650635094611.mm,1202.75.mm,29.mm], [232.25.mm,1201.834936490539.mm,29.mm])
+  ge.add_face([234.89711431702997.mm,1201.75.mm,26.mm], [235.5.mm,1204.mm,26.mm], [233.5.mm,1204.mm,29.mm], [233.1650635094611.mm,1202.75.mm,29.mm])
+  ge.add_face([235.5.mm,1204.mm,26.mm], [234.89711431702997.mm,1206.25.mm,26.mm], [233.25.mm,1207.89711431703.mm,26.mm], [231.mm,1208.5.mm,26.mm], [228.75.mm,1207.89711431703.mm,26.mm], [227.10288568297003.mm,1206.25.mm,26.mm], [226.5.mm,1204.mm,26.mm], [227.10288568297003.mm,1201.75.mm,26.mm], [228.75.mm,1200.10288568297.mm,26.mm], [231.mm,1199.5.mm,26.mm], [233.25.mm,1200.10288568297.mm,26.mm], [234.89711431702997.mm,1201.75.mm,26.mm])
+  mat = model.materials["Clamp Bolt CSK Head L"] || model.materials.add("Clamp Bolt CSK Head L")
+  mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
@@ -1544,26 +1628,68 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Clamp Bolt R"
   ge = grp.entities
-  circle = ge.add_circle([4568.mm,1156.mm,22.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4568.mm,1156.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(39.mm)
+  cface.pushpull(35.mm)
   mat = model.materials["Axle Pin 10mm L"] || model.materials.add("Axle Pin 10mm L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
+  grp.material = mat
+
+  # Clamp Bolt CSK Head R
+  grp = ents.add_group
+  grp.name = "Clamp Bolt CSK Head R"
+  ge = grp.entities
+  ge.add_face([4572.5.mm,1156.mm,26.mm], [4571.89711431703.mm,1158.25.mm,26.mm], [4570.165063509461.mm,1157.25.mm,29.mm], [4570.5.mm,1156.mm,29.mm])
+  ge.add_face([4571.89711431703.mm,1158.25.mm,26.mm], [4570.25.mm,1159.89711431703.mm,26.mm], [4569.25.mm,1158.165063509461.mm,29.mm], [4570.165063509461.mm,1157.25.mm,29.mm])
+  ge.add_face([4570.25.mm,1159.89711431703.mm,26.mm], [4568.mm,1160.5.mm,26.mm], [4568.mm,1158.5.mm,29.mm], [4569.25.mm,1158.165063509461.mm,29.mm])
+  ge.add_face([4568.mm,1160.5.mm,26.mm], [4565.75.mm,1159.89711431703.mm,26.mm], [4566.75.mm,1158.165063509461.mm,29.mm], [4568.mm,1158.5.mm,29.mm])
+  ge.add_face([4565.75.mm,1159.89711431703.mm,26.mm], [4564.10288568297.mm,1158.25.mm,26.mm], [4565.834936490539.mm,1157.25.mm,29.mm], [4566.75.mm,1158.165063509461.mm,29.mm])
+  ge.add_face([4564.10288568297.mm,1158.25.mm,26.mm], [4563.5.mm,1156.mm,26.mm], [4565.5.mm,1156.mm,29.mm], [4565.834936490539.mm,1157.25.mm,29.mm])
+  ge.add_face([4563.5.mm,1156.mm,26.mm], [4564.10288568297.mm,1153.75.mm,26.mm], [4565.834936490539.mm,1154.75.mm,29.mm], [4565.5.mm,1156.mm,29.mm])
+  ge.add_face([4564.10288568297.mm,1153.75.mm,26.mm], [4565.75.mm,1152.10288568297.mm,26.mm], [4566.75.mm,1153.834936490539.mm,29.mm], [4565.834936490539.mm,1154.75.mm,29.mm])
+  ge.add_face([4565.75.mm,1152.10288568297.mm,26.mm], [4568.mm,1151.5.mm,26.mm], [4568.mm,1153.5.mm,29.mm], [4566.75.mm,1153.834936490539.mm,29.mm])
+  ge.add_face([4568.mm,1151.5.mm,26.mm], [4570.25.mm,1152.10288568297.mm,26.mm], [4569.25.mm,1153.834936490539.mm,29.mm], [4568.mm,1153.5.mm,29.mm])
+  ge.add_face([4570.25.mm,1152.10288568297.mm,26.mm], [4571.89711431703.mm,1153.75.mm,26.mm], [4570.165063509461.mm,1154.75.mm,29.mm], [4569.25.mm,1153.834936490539.mm,29.mm])
+  ge.add_face([4571.89711431703.mm,1153.75.mm,26.mm], [4572.5.mm,1156.mm,26.mm], [4570.5.mm,1156.mm,29.mm], [4570.165063509461.mm,1154.75.mm,29.mm])
+  ge.add_face([4572.5.mm,1156.mm,26.mm], [4571.89711431703.mm,1158.25.mm,26.mm], [4570.25.mm,1159.89711431703.mm,26.mm], [4568.mm,1160.5.mm,26.mm], [4565.75.mm,1159.89711431703.mm,26.mm], [4564.10288568297.mm,1158.25.mm,26.mm], [4563.5.mm,1156.mm,26.mm], [4564.10288568297.mm,1153.75.mm,26.mm], [4565.75.mm,1152.10288568297.mm,26.mm], [4568.mm,1151.5.mm,26.mm], [4570.25.mm,1152.10288568297.mm,26.mm], [4571.89711431703.mm,1153.75.mm,26.mm])
+  mat = model.materials["Clamp Bolt CSK Head R"] || model.materials.add("Clamp Bolt CSK Head R")
+  mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
 
   # Clamp Bolt R
   grp = ents.add_group
   grp.name = "Clamp Bolt R"
   ge = grp.entities
-  circle = ge.add_circle([4590.mm,1156.mm,22.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4590.mm,1156.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(39.mm)
+  cface.pushpull(35.mm)
   mat = model.materials["Axle Pin 10mm L"] || model.materials.add("Axle Pin 10mm L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
+  grp.material = mat
+
+  # Clamp Bolt CSK Head R
+  grp = ents.add_group
+  grp.name = "Clamp Bolt CSK Head R"
+  ge = grp.entities
+  ge.add_face([4594.5.mm,1156.mm,26.mm], [4593.89711431703.mm,1158.25.mm,26.mm], [4592.165063509461.mm,1157.25.mm,29.mm], [4592.5.mm,1156.mm,29.mm])
+  ge.add_face([4593.89711431703.mm,1158.25.mm,26.mm], [4592.25.mm,1159.89711431703.mm,26.mm], [4591.25.mm,1158.165063509461.mm,29.mm], [4592.165063509461.mm,1157.25.mm,29.mm])
+  ge.add_face([4592.25.mm,1159.89711431703.mm,26.mm], [4590.mm,1160.5.mm,26.mm], [4590.mm,1158.5.mm,29.mm], [4591.25.mm,1158.165063509461.mm,29.mm])
+  ge.add_face([4590.mm,1160.5.mm,26.mm], [4587.75.mm,1159.89711431703.mm,26.mm], [4588.75.mm,1158.165063509461.mm,29.mm], [4590.mm,1158.5.mm,29.mm])
+  ge.add_face([4587.75.mm,1159.89711431703.mm,26.mm], [4586.10288568297.mm,1158.25.mm,26.mm], [4587.834936490539.mm,1157.25.mm,29.mm], [4588.75.mm,1158.165063509461.mm,29.mm])
+  ge.add_face([4586.10288568297.mm,1158.25.mm,26.mm], [4585.5.mm,1156.mm,26.mm], [4587.5.mm,1156.mm,29.mm], [4587.834936490539.mm,1157.25.mm,29.mm])
+  ge.add_face([4585.5.mm,1156.mm,26.mm], [4586.10288568297.mm,1153.75.mm,26.mm], [4587.834936490539.mm,1154.75.mm,29.mm], [4587.5.mm,1156.mm,29.mm])
+  ge.add_face([4586.10288568297.mm,1153.75.mm,26.mm], [4587.75.mm,1152.10288568297.mm,26.mm], [4588.75.mm,1153.834936490539.mm,29.mm], [4587.834936490539.mm,1154.75.mm,29.mm])
+  ge.add_face([4587.75.mm,1152.10288568297.mm,26.mm], [4590.mm,1151.5.mm,26.mm], [4590.mm,1153.5.mm,29.mm], [4588.75.mm,1153.834936490539.mm,29.mm])
+  ge.add_face([4590.mm,1151.5.mm,26.mm], [4592.25.mm,1152.10288568297.mm,26.mm], [4591.25.mm,1153.834936490539.mm,29.mm], [4590.mm,1153.5.mm,29.mm])
+  ge.add_face([4592.25.mm,1152.10288568297.mm,26.mm], [4593.89711431703.mm,1153.75.mm,26.mm], [4592.165063509461.mm,1154.75.mm,29.mm], [4591.25.mm,1153.834936490539.mm,29.mm])
+  ge.add_face([4593.89711431703.mm,1153.75.mm,26.mm], [4594.5.mm,1156.mm,26.mm], [4592.5.mm,1156.mm,29.mm], [4592.165063509461.mm,1154.75.mm,29.mm])
+  ge.add_face([4594.5.mm,1156.mm,26.mm], [4593.89711431703.mm,1158.25.mm,26.mm], [4592.25.mm,1159.89711431703.mm,26.mm], [4590.mm,1160.5.mm,26.mm], [4587.75.mm,1159.89711431703.mm,26.mm], [4586.10288568297.mm,1158.25.mm,26.mm], [4585.5.mm,1156.mm,26.mm], [4586.10288568297.mm,1153.75.mm,26.mm], [4587.75.mm,1152.10288568297.mm,26.mm], [4590.mm,1151.5.mm,26.mm], [4592.25.mm,1152.10288568297.mm,26.mm], [4593.89711431703.mm,1153.75.mm,26.mm])
+  mat = model.materials["Clamp Bolt CSK Head R"] || model.materials.add("Clamp Bolt CSK Head R")
+  mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
 
   # Clamp Spacer R
@@ -1581,26 +1707,68 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Clamp Bolt R"
   ge = grp.entities
-  circle = ge.add_circle([4568.mm,1204.mm,22.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4568.mm,1204.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(39.mm)
+  cface.pushpull(35.mm)
   mat = model.materials["Axle Pin 10mm L"] || model.materials.add("Axle Pin 10mm L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
+  grp.material = mat
+
+  # Clamp Bolt CSK Head R
+  grp = ents.add_group
+  grp.name = "Clamp Bolt CSK Head R"
+  ge = grp.entities
+  ge.add_face([4572.5.mm,1204.mm,26.mm], [4571.89711431703.mm,1206.25.mm,26.mm], [4570.165063509461.mm,1205.25.mm,29.mm], [4570.5.mm,1204.mm,29.mm])
+  ge.add_face([4571.89711431703.mm,1206.25.mm,26.mm], [4570.25.mm,1207.89711431703.mm,26.mm], [4569.25.mm,1206.165063509461.mm,29.mm], [4570.165063509461.mm,1205.25.mm,29.mm])
+  ge.add_face([4570.25.mm,1207.89711431703.mm,26.mm], [4568.mm,1208.5.mm,26.mm], [4568.mm,1206.5.mm,29.mm], [4569.25.mm,1206.165063509461.mm,29.mm])
+  ge.add_face([4568.mm,1208.5.mm,26.mm], [4565.75.mm,1207.89711431703.mm,26.mm], [4566.75.mm,1206.165063509461.mm,29.mm], [4568.mm,1206.5.mm,29.mm])
+  ge.add_face([4565.75.mm,1207.89711431703.mm,26.mm], [4564.10288568297.mm,1206.25.mm,26.mm], [4565.834936490539.mm,1205.25.mm,29.mm], [4566.75.mm,1206.165063509461.mm,29.mm])
+  ge.add_face([4564.10288568297.mm,1206.25.mm,26.mm], [4563.5.mm,1204.mm,26.mm], [4565.5.mm,1204.mm,29.mm], [4565.834936490539.mm,1205.25.mm,29.mm])
+  ge.add_face([4563.5.mm,1204.mm,26.mm], [4564.10288568297.mm,1201.75.mm,26.mm], [4565.834936490539.mm,1202.75.mm,29.mm], [4565.5.mm,1204.mm,29.mm])
+  ge.add_face([4564.10288568297.mm,1201.75.mm,26.mm], [4565.75.mm,1200.10288568297.mm,26.mm], [4566.75.mm,1201.834936490539.mm,29.mm], [4565.834936490539.mm,1202.75.mm,29.mm])
+  ge.add_face([4565.75.mm,1200.10288568297.mm,26.mm], [4568.mm,1199.5.mm,26.mm], [4568.mm,1201.5.mm,29.mm], [4566.75.mm,1201.834936490539.mm,29.mm])
+  ge.add_face([4568.mm,1199.5.mm,26.mm], [4570.25.mm,1200.10288568297.mm,26.mm], [4569.25.mm,1201.834936490539.mm,29.mm], [4568.mm,1201.5.mm,29.mm])
+  ge.add_face([4570.25.mm,1200.10288568297.mm,26.mm], [4571.89711431703.mm,1201.75.mm,26.mm], [4570.165063509461.mm,1202.75.mm,29.mm], [4569.25.mm,1201.834936490539.mm,29.mm])
+  ge.add_face([4571.89711431703.mm,1201.75.mm,26.mm], [4572.5.mm,1204.mm,26.mm], [4570.5.mm,1204.mm,29.mm], [4570.165063509461.mm,1202.75.mm,29.mm])
+  ge.add_face([4572.5.mm,1204.mm,26.mm], [4571.89711431703.mm,1206.25.mm,26.mm], [4570.25.mm,1207.89711431703.mm,26.mm], [4568.mm,1208.5.mm,26.mm], [4565.75.mm,1207.89711431703.mm,26.mm], [4564.10288568297.mm,1206.25.mm,26.mm], [4563.5.mm,1204.mm,26.mm], [4564.10288568297.mm,1201.75.mm,26.mm], [4565.75.mm,1200.10288568297.mm,26.mm], [4568.mm,1199.5.mm,26.mm], [4570.25.mm,1200.10288568297.mm,26.mm], [4571.89711431703.mm,1201.75.mm,26.mm])
+  mat = model.materials["Clamp Bolt CSK Head R"] || model.materials.add("Clamp Bolt CSK Head R")
+  mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
 
   # Clamp Bolt R
   grp = ents.add_group
   grp.name = "Clamp Bolt R"
   ge = grp.entities
-  circle = ge.add_circle([4590.mm,1204.mm,22.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4590.mm,1204.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(39.mm)
+  cface.pushpull(35.mm)
   mat = model.materials["Axle Pin 10mm L"] || model.materials.add("Axle Pin 10mm L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   mat.alpha = 1.0
+  grp.material = mat
+
+  # Clamp Bolt CSK Head R
+  grp = ents.add_group
+  grp.name = "Clamp Bolt CSK Head R"
+  ge = grp.entities
+  ge.add_face([4594.5.mm,1204.mm,26.mm], [4593.89711431703.mm,1206.25.mm,26.mm], [4592.165063509461.mm,1205.25.mm,29.mm], [4592.5.mm,1204.mm,29.mm])
+  ge.add_face([4593.89711431703.mm,1206.25.mm,26.mm], [4592.25.mm,1207.89711431703.mm,26.mm], [4591.25.mm,1206.165063509461.mm,29.mm], [4592.165063509461.mm,1205.25.mm,29.mm])
+  ge.add_face([4592.25.mm,1207.89711431703.mm,26.mm], [4590.mm,1208.5.mm,26.mm], [4590.mm,1206.5.mm,29.mm], [4591.25.mm,1206.165063509461.mm,29.mm])
+  ge.add_face([4590.mm,1208.5.mm,26.mm], [4587.75.mm,1207.89711431703.mm,26.mm], [4588.75.mm,1206.165063509461.mm,29.mm], [4590.mm,1206.5.mm,29.mm])
+  ge.add_face([4587.75.mm,1207.89711431703.mm,26.mm], [4586.10288568297.mm,1206.25.mm,26.mm], [4587.834936490539.mm,1205.25.mm,29.mm], [4588.75.mm,1206.165063509461.mm,29.mm])
+  ge.add_face([4586.10288568297.mm,1206.25.mm,26.mm], [4585.5.mm,1204.mm,26.mm], [4587.5.mm,1204.mm,29.mm], [4587.834936490539.mm,1205.25.mm,29.mm])
+  ge.add_face([4585.5.mm,1204.mm,26.mm], [4586.10288568297.mm,1201.75.mm,26.mm], [4587.834936490539.mm,1202.75.mm,29.mm], [4587.5.mm,1204.mm,29.mm])
+  ge.add_face([4586.10288568297.mm,1201.75.mm,26.mm], [4587.75.mm,1200.10288568297.mm,26.mm], [4588.75.mm,1201.834936490539.mm,29.mm], [4587.834936490539.mm,1202.75.mm,29.mm])
+  ge.add_face([4587.75.mm,1200.10288568297.mm,26.mm], [4590.mm,1199.5.mm,26.mm], [4590.mm,1201.5.mm,29.mm], [4588.75.mm,1201.834936490539.mm,29.mm])
+  ge.add_face([4590.mm,1199.5.mm,26.mm], [4592.25.mm,1200.10288568297.mm,26.mm], [4591.25.mm,1201.834936490539.mm,29.mm], [4590.mm,1201.5.mm,29.mm])
+  ge.add_face([4592.25.mm,1200.10288568297.mm,26.mm], [4593.89711431703.mm,1201.75.mm,26.mm], [4592.165063509461.mm,1202.75.mm,29.mm], [4591.25.mm,1201.834936490539.mm,29.mm])
+  ge.add_face([4593.89711431703.mm,1201.75.mm,26.mm], [4594.5.mm,1204.mm,26.mm], [4592.5.mm,1204.mm,29.mm], [4592.165063509461.mm,1202.75.mm,29.mm])
+  ge.add_face([4594.5.mm,1204.mm,26.mm], [4593.89711431703.mm,1206.25.mm,26.mm], [4592.25.mm,1207.89711431703.mm,26.mm], [4590.mm,1208.5.mm,26.mm], [4587.75.mm,1207.89711431703.mm,26.mm], [4586.10288568297.mm,1206.25.mm,26.mm], [4585.5.mm,1204.mm,26.mm], [4586.10288568297.mm,1201.75.mm,26.mm], [4587.75.mm,1200.10288568297.mm,26.mm], [4590.mm,1199.5.mm,26.mm], [4592.25.mm,1200.10288568297.mm,26.mm], [4593.89711431703.mm,1201.75.mm,26.mm])
+  mat = model.materials["Clamp Bolt CSK Head R"] || model.materials.add("Clamp Bolt CSK Head R")
+  mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
@@ -1774,7 +1942,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Arm Tube (25 OD Al)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -476.mm, 427.5.mm)
+  vec = Geom::Vector3d.new(0.mm, -246.mm, 592.5.mm)
   circle = ge.add_circle([2399.5.mm,1156.mm,95.mm], vec, 12.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -1801,8 +1969,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Telescoping Pole"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -500.mm, 447.5.mm)
-  circle = ge.add_circle([2399.5.mm,680.mm,522.5.mm], vec, 11.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -270.mm, 612.5.mm)
+  circle = ge.add_circle([2399.5.mm,910.mm,687.5.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1815,7 +1983,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Pole Handle"
   ge = grp.entities
-  circle = ge.add_circle([2309.5.mm,180.mm,970.mm], [1,0,0], 9.mm, 24)
+  circle = ge.add_circle([2309.5.mm,640.mm,1300.mm], [1,0,0], 9.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(180.mm)
@@ -1839,8 +2007,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Feed Hose (upper)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 500.mm, -447.5.mm)
-  circle = ge.add_circle([2419.5.mm,180.mm,970.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 270.mm, -612.5.mm)
+  circle = ge.add_circle([2419.5.mm,640.mm,1300.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1853,8 +2021,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Feed Hose (lower)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 476.mm, -427.5.mm)
-  circle = ge.add_circle([2419.5.mm,680.mm,522.5.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 246.mm, -592.5.mm)
+  circle = ge.add_circle([2419.5.mm,910.mm,687.5.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2229,8 +2397,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-4.392609129376069.mm, -6.46793719515739.mm, -7.226745469449611.mm)
-  circle = ge.add_circle([2430.5.mm,263.3333333333333.mm,895.4166666666666.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, -8.87447055288169.mm, -3.912011509025433.mm)
+  circle = ge.add_circle([2430.5.mm,685.mm,1197.9166666666667.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2243,148 +2411,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.5.mm, -3.9974050237069036.mm, -4.466374328164079.mm)
-  circle = ge.add_circle([2426.107390870624.mm,256.8653961381759.mm,888.189921197217.mm], vec, 1.2.mm, 6)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
-  mat.color = Sketchup::Color.new(136, 136, 136)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Zip Tie
-  grp = ents.add_group
-  grp.name = "Zip Tie"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2414.607390870624.mm,252.86799111446902.mm,883.7235468690529.mm], vec, 1.2.mm, 6)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
-  mat.color = Sketchup::Color.new(136, 136, 136)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Zip Tie
-  grp = ents.add_group
-  grp.name = "Zip Tie"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-11.5.mm, 3.9974050237069036.mm, 4.466374328164079.mm)
-  circle = ge.add_circle([2400.392609129376.mm,252.86799111446902.mm,883.7235468690529.mm], vec, 1.2.mm, 6)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
-  mat.color = Sketchup::Color.new(136, 136, 136)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Zip Tie
-  grp = ents.add_group
-  grp.name = "Zip Tie"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-4.392609129376069.mm, 6.46793719515739.mm, 7.226745469449611.mm)
-  circle = ge.add_circle([2388.892609129376.mm,256.8653961381759.mm,888.189921197217.mm], vec, 1.2.mm, 6)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
-  mat.color = Sketchup::Color.new(136, 136, 136)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Zip Tie
-  grp = ents.add_group
-  grp.name = "Zip Tie"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(4.392609129376069.mm, 6.46793719515739.mm, 7.226745469449611.mm)
-  circle = ge.add_circle([2384.5.mm,263.3333333333333.mm,895.4166666666666.mm], vec, 1.2.mm, 6)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
-  mat.color = Sketchup::Color.new(136, 136, 136)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Zip Tie
-  grp = ents.add_group
-  grp.name = "Zip Tie"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(11.5.mm, 3.9974050237069036.mm, 4.466374328164079.mm)
-  circle = ge.add_circle([2388.892609129376.mm,269.8012705284907.mm,902.6434121361162.mm], vec, 1.2.mm, 6)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
-  mat.color = Sketchup::Color.new(136, 136, 136)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Zip Tie
-  grp = ents.add_group
-  grp.name = "Zip Tie"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2400.392609129376.mm,273.7986755521976.mm,907.1097864642803.mm], vec, 1.2.mm, 6)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
-  mat.color = Sketchup::Color.new(136, 136, 136)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Zip Tie
-  grp = ents.add_group
-  grp.name = "Zip Tie"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(11.5.mm, -3.9974050237069036.mm, -4.466374328164079.mm)
-  circle = ge.add_circle([2414.607390870624.mm,273.7986755521976.mm,907.1097864642803.mm], vec, 1.2.mm, 6)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
-  mat.color = Sketchup::Color.new(136, 136, 136)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Zip Tie
-  grp = ents.add_group
-  grp.name = "Zip Tie"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(4.392609129376069.mm, -6.46793719515739.mm, -7.226745469449611.mm)
-  circle = ge.add_circle([2426.107390870624.mm,269.8012705284907.mm,902.6434121361162.mm], vec, 1.2.mm, 6)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
-  mat.color = Sketchup::Color.new(136, 136, 136)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Zip Tie
-  grp = ents.add_group
-  grp.name = "Zip Tie"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-4.392609129376069.mm, -6.46793719515739.mm, -7.226745469449611.mm)
-  circle = ge.add_circle([2430.5.mm,430.mm,746.25.mm], vec, 1.2.mm, 6)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
-  mat.color = Sketchup::Color.new(136, 136, 136)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Zip Tie
-  grp = ents.add_group
-  grp.name = "Zip Tie"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-11.5.mm, -3.9974050237069036.mm, -4.466374328164079.mm)
-  circle = ge.add_circle([2426.107390870624.mm,423.5320628048426.mm,739.0232545305504.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-11.5.mm, -5.4847244338408245.mm, -2.4177560769583124.mm)
+  circle = ge.add_circle([2426.107390870624.mm,676.1255294471183.mm,1194.0046551576413.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2398,7 +2426,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2414.607390870624.mm,419.5346577811357.mm,734.5568802023863.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2414.607390870624.mm,670.6408050132775.mm,1191.586899080683.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2411,8 +2439,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.5.mm, 3.9974050237069036.mm, 4.466374328164079.mm)
-  circle = ge.add_circle([2400.392609129376.mm,419.5346577811357.mm,734.5568802023863.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-11.5.mm, 5.4847244338408245.mm, 2.4177560769583124.mm)
+  circle = ge.add_circle([2400.392609129376.mm,670.6408050132775.mm,1191.586899080683.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2425,8 +2453,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-4.392609129376069.mm, 6.46793719515739.mm, 7.226745469449611.mm)
-  circle = ge.add_circle([2388.892609129376.mm,423.5320628048426.mm,739.0232545305504.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, 8.87447055288169.mm, 3.912011509025433.mm)
+  circle = ge.add_circle([2388.892609129376.mm,676.1255294471183.mm,1194.0046551576413.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2439,8 +2467,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(4.392609129376069.mm, 6.46793719515739.mm, 7.226745469449611.mm)
-  circle = ge.add_circle([2384.5.mm,430.mm,746.25.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(4.392609129376069.mm, 8.87447055288169.mm, 3.912011509025433.mm)
+  circle = ge.add_circle([2384.5.mm,685.mm,1197.9166666666667.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2453,8 +2481,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(11.5.mm, 3.9974050237069036.mm, 4.466374328164079.mm)
-  circle = ge.add_circle([2388.892609129376.mm,436.4679371951574.mm,753.4767454694496.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(11.5.mm, 5.4847244338408245.mm, 2.4177560769583124.mm)
+  circle = ge.add_circle([2388.892609129376.mm,693.8744705528817.mm,1201.8286781756922.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2468,7 +2496,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2400.392609129376.mm,440.4653422188643.mm,757.9431197976137.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2400.392609129376.mm,699.3591949867225.mm,1204.2464342526505.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2481,8 +2509,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(11.5.mm, -3.9974050237069036.mm, -4.466374328164079.mm)
-  circle = ge.add_circle([2414.607390870624.mm,440.4653422188643.mm,757.9431197976137.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(11.5.mm, -5.4847244338408245.mm, -2.4177560769583124.mm)
+  circle = ge.add_circle([2414.607390870624.mm,699.3591949867225.mm,1204.2464342526505.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2495,8 +2523,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(4.392609129376069.mm, -6.46793719515739.mm, -7.226745469449611.mm)
-  circle = ge.add_circle([2426.107390870624.mm,436.4679371951574.mm,753.4767454694496.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(4.392609129376069.mm, -8.87447055288169.mm, -3.912011509025433.mm)
+  circle = ge.add_circle([2426.107390870624.mm,693.8744705528817.mm,1201.8286781756922.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2509,8 +2537,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-4.392609129376069.mm, -6.467937195157333.mm, -7.226745469449611.mm)
-  circle = ge.add_circle([2430.5.mm,596.6666666666667.mm,597.0833333333333.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, -8.87447055288169.mm, -3.9120115090253194.mm)
+  circle = ge.add_circle([2430.5.mm,775.mm,993.75.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2523,8 +2551,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.5.mm, -3.9974050237069605.mm, -4.466374328164079.mm)
-  circle = ge.add_circle([2426.107390870624.mm,590.1987294715094.mm,589.8565878638836.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-11.5.mm, -5.4847244338408245.mm, -2.41775607695854.mm)
+  circle = ge.add_circle([2426.107390870624.mm,766.1255294471183.mm,989.8379884909747.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2538,7 +2566,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2414.607390870624.mm,586.2013244478024.mm,585.3902135357196.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2414.607390870624.mm,760.6408050132775.mm,987.4202324140161.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2551,8 +2579,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.5.mm, 3.9974050237069605.mm, 4.466374328164079.mm)
-  circle = ge.add_circle([2400.392609129376.mm,586.2013244478024.mm,585.3902135357196.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-11.5.mm, 5.4847244338408245.mm, 2.41775607695854.mm)
+  circle = ge.add_circle([2400.392609129376.mm,760.6408050132775.mm,987.4202324140161.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2565,8 +2593,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-4.392609129376069.mm, 6.467937195157333.mm, 7.226745469449611.mm)
-  circle = ge.add_circle([2388.892609129376.mm,590.1987294715094.mm,589.8565878638836.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, 8.87447055288169.mm, 3.9120115090253194.mm)
+  circle = ge.add_circle([2388.892609129376.mm,766.1255294471183.mm,989.8379884909747.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2579,8 +2607,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(4.392609129376069.mm, 6.467937195157333.mm, 7.226745469449611.mm)
-  circle = ge.add_circle([2384.5.mm,596.6666666666667.mm,597.0833333333333.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(4.392609129376069.mm, 8.87447055288169.mm, 3.9120115090253194.mm)
+  circle = ge.add_circle([2384.5.mm,775.mm,993.75.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2593,8 +2621,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(11.5.mm, 3.9974050237069605.mm, 4.466374328164079.mm)
-  circle = ge.add_circle([2388.892609129376.mm,603.1346038618241.mm,604.3100788027829.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(11.5.mm, 5.4847244338408245.mm, 2.41775607695854.mm)
+  circle = ge.add_circle([2388.892609129376.mm,783.8744705528817.mm,997.6620115090253.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2608,7 +2636,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2400.392609129376.mm,607.132008885531.mm,608.776453130947.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2400.392609129376.mm,789.3591949867225.mm,1000.0797675859839.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2621,8 +2649,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(11.5.mm, -3.9974050237069605.mm, -4.466374328164079.mm)
-  circle = ge.add_circle([2414.607390870624.mm,607.132008885531.mm,608.776453130947.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(11.5.mm, -5.4847244338408245.mm, -2.41775607695854.mm)
+  circle = ge.add_circle([2414.607390870624.mm,789.3591949867225.mm,1000.0797675859839.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2635,8 +2663,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(4.392609129376069.mm, -6.467937195157333.mm, -7.226745469449611.mm)
-  circle = ge.add_circle([2426.107390870624.mm,603.1346038618241.mm,604.3100788027829.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(4.392609129376069.mm, -8.87447055288169.mm, -3.9120115090253194.mm)
+  circle = ge.add_circle([2426.107390870624.mm,783.8744705528817.mm,997.6620115090253.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2649,8 +2677,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-4.392609129376069.mm, -6.480384390219797.mm, -7.215585894139508.mm)
-  circle = ge.add_circle([2430.5.mm,759.3333333333334.mm,451.25.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, -8.87447055288169.mm, -3.9120115090253194.mm)
+  circle = ge.add_circle([2430.5.mm,865.mm,789.5833333333333.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2663,8 +2691,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.5.mm, -4.0050978133201625.mm, -4.459477331322546.mm)
-  circle = ge.add_circle([2426.107390870624.mm,752.8529489431136.mm,444.0344141058605.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-11.5.mm, -5.4847244338408245.mm, -2.41775607695854.mm)
+  circle = ge.add_circle([2426.107390870624.mm,856.1255294471183.mm,785.6713218243079.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2678,7 +2706,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2414.607390870624.mm,748.8478511297934.mm,439.57493677453795.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2414.607390870624.mm,850.6408050132775.mm,783.2535657473494.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2691,8 +2719,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.5.mm, 4.0050978133201625.mm, 4.459477331322546.mm)
-  circle = ge.add_circle([2400.392609129376.mm,748.8478511297934.mm,439.57493677453795.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-11.5.mm, 5.4847244338408245.mm, 2.41775607695854.mm)
+  circle = ge.add_circle([2400.392609129376.mm,850.6408050132775.mm,783.2535657473494.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2705,8 +2733,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-4.392609129376069.mm, 6.480384390219797.mm, 7.215585894139508.mm)
-  circle = ge.add_circle([2388.892609129376.mm,752.8529489431136.mm,444.0344141058605.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, 8.87447055288169.mm, 3.9120115090253194.mm)
+  circle = ge.add_circle([2388.892609129376.mm,856.1255294471183.mm,785.6713218243079.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2719,8 +2747,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(4.392609129376069.mm, 6.480384390219797.mm, 7.215585894139508.mm)
-  circle = ge.add_circle([2384.5.mm,759.3333333333334.mm,451.25.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(4.392609129376069.mm, 8.87447055288169.mm, 3.9120115090253194.mm)
+  circle = ge.add_circle([2384.5.mm,865.mm,789.5833333333333.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2733,8 +2761,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(11.5.mm, 4.0050978133201625.mm, 4.459477331322546.mm)
-  circle = ge.add_circle([2388.892609129376.mm,765.8137177235532.mm,458.4655858941395.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(11.5.mm, 5.4847244338408245.mm, 2.41775607695854.mm)
+  circle = ge.add_circle([2388.892609129376.mm,873.8744705528817.mm,793.4953448423586.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2748,7 +2776,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2400.392609129376.mm,769.8188155368733.mm,462.92506322546205.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2400.392609129376.mm,879.3591949867225.mm,795.9131009193171.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2761,8 +2789,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(11.5.mm, -4.0050978133201625.mm, -4.459477331322546.mm)
-  circle = ge.add_circle([2414.607390870624.mm,769.8188155368733.mm,462.92506322546205.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(11.5.mm, -5.4847244338408245.mm, -2.41775607695854.mm)
+  circle = ge.add_circle([2414.607390870624.mm,879.3591949867225.mm,795.9131009193171.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2775,8 +2803,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(4.392609129376069.mm, -6.480384390219797.mm, -7.215585894139508.mm)
-  circle = ge.add_circle([2426.107390870624.mm,765.8137177235532.mm,458.4655858941395.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(4.392609129376069.mm, -8.87447055288169.mm, -3.9120115090253194.mm)
+  circle = ge.add_circle([2426.107390870624.mm,873.8744705528817.mm,793.4953448423586.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2789,8 +2817,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-4.392609129376069.mm, -6.480384390219797.mm, -7.215585894139508.mm)
-  circle = ge.add_circle([2430.5.mm,918.mm,308.75.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, -8.957110700421481.mm, -3.718901657896481.mm)
+  circle = ge.add_circle([2430.5.mm,951.mm,588.75.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2803,8 +2831,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.5.mm, -4.0050978133201625.mm, -4.459477331322546.mm)
-  circle = ge.add_circle([2426.107390870624.mm,911.5196156097802.mm,301.5344141058605.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-11.5.mm, -5.535798853855795.mm, -2.298407625398454.mm)
+  circle = ge.add_circle([2426.107390870624.mm,942.0428892995785.mm,585.0310983421035.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2818,7 +2846,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2414.607390870624.mm,907.51451779646.mm,297.07493677453795.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2414.607390870624.mm,936.5070904457227.mm,582.7326907167051.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2831,8 +2859,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.5.mm, 4.0050978133201625.mm, 4.459477331322546.mm)
-  circle = ge.add_circle([2400.392609129376.mm,907.51451779646.mm,297.07493677453795.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-11.5.mm, 5.535798853855795.mm, 2.298407625398454.mm)
+  circle = ge.add_circle([2400.392609129376.mm,936.5070904457227.mm,582.7326907167051.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2845,8 +2873,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-4.392609129376069.mm, 6.480384390219797.mm, 7.215585894139508.mm)
-  circle = ge.add_circle([2388.892609129376.mm,911.5196156097802.mm,301.5344141058605.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, 8.957110700421481.mm, 3.718901657896481.mm)
+  circle = ge.add_circle([2388.892609129376.mm,942.0428892995785.mm,585.0310983421035.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2859,8 +2887,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(4.392609129376069.mm, 6.480384390219797.mm, 7.215585894139508.mm)
-  circle = ge.add_circle([2384.5.mm,918.mm,308.75.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(4.392609129376069.mm, 8.957110700421481.mm, 3.718901657896481.mm)
+  circle = ge.add_circle([2384.5.mm,951.mm,588.75.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2873,8 +2901,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(11.5.mm, 4.0050978133201625.mm, 4.459477331322546.mm)
-  circle = ge.add_circle([2388.892609129376.mm,924.4803843902198.mm,315.9655858941395.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(11.5.mm, 5.535798853855795.mm, 2.298407625398454.mm)
+  circle = ge.add_circle([2388.892609129376.mm,959.9571107004215.mm,592.4689016578965.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2888,7 +2916,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2400.392609129376.mm,928.48548220354.mm,320.42506322546205.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2400.392609129376.mm,965.4929095542773.mm,594.7673092832949.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2901,8 +2929,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(11.5.mm, -4.0050978133201625.mm, -4.459477331322546.mm)
-  circle = ge.add_circle([2414.607390870624.mm,928.48548220354.mm,320.42506322546205.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(11.5.mm, -5.535798853855795.mm, -2.298407625398454.mm)
+  circle = ge.add_circle([2414.607390870624.mm,965.4929095542773.mm,594.7673092832949.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2915,8 +2943,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(4.392609129376069.mm, -6.480384390219797.mm, -7.215585894139508.mm)
-  circle = ge.add_circle([2426.107390870624.mm,924.4803843902198.mm,315.9655858941395.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(4.392609129376069.mm, -8.957110700421481.mm, -3.718901657896481.mm)
+  circle = ge.add_circle([2426.107390870624.mm,959.9571107004215.mm,592.4689016578965.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2929,8 +2957,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-4.392609129376069.mm, -6.480384390219797.mm, -7.2155858941395365.mm)
-  circle = ge.add_circle([2430.5.mm,1076.6666666666667.mm,166.25.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, -8.957110700421481.mm, -3.718901657896538.mm)
+  circle = ge.add_circle([2430.5.mm,1033.mm,391.25.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2943,8 +2971,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.5.mm, -4.0050978133201625.mm, -4.459477331322518.mm)
-  circle = ge.add_circle([2426.107390870624.mm,1070.186282276447.mm,159.03441410586046.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-11.5.mm, -5.535798853855795.mm, -2.2984076253983403.mm)
+  circle = ge.add_circle([2426.107390870624.mm,1024.0428892995785.mm,387.53109834210346.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2958,7 +2986,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2414.607390870624.mm,1066.1811844631268.mm,154.57493677453795.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2414.607390870624.mm,1018.5070904457227.mm,385.2326907167051.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2971,8 +2999,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.5.mm, 4.0050978133201625.mm, 4.459477331322518.mm)
-  circle = ge.add_circle([2400.392609129376.mm,1066.1811844631268.mm,154.57493677453795.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-11.5.mm, 5.535798853855795.mm, 2.2984076253983403.mm)
+  circle = ge.add_circle([2400.392609129376.mm,1018.5070904457227.mm,385.2326907167051.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2985,8 +3013,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-4.392609129376069.mm, 6.480384390219797.mm, 7.2155858941395365.mm)
-  circle = ge.add_circle([2388.892609129376.mm,1070.186282276447.mm,159.03441410586046.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, 8.957110700421481.mm, 3.718901657896538.mm)
+  circle = ge.add_circle([2388.892609129376.mm,1024.0428892995785.mm,387.53109834210346.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2999,8 +3027,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(4.392609129376069.mm, 6.480384390219797.mm, 7.215585894139508.mm)
-  circle = ge.add_circle([2384.5.mm,1076.6666666666667.mm,166.25.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(4.392609129376069.mm, 8.957110700421481.mm, 3.718901657896538.mm)
+  circle = ge.add_circle([2384.5.mm,1033.mm,391.25.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3013,8 +3041,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(11.5.mm, 4.0050978133201625.mm, 4.459477331322546.mm)
-  circle = ge.add_circle([2388.892609129376.mm,1083.1470510568865.mm,173.4655858941395.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(11.5.mm, 5.535798853855795.mm, 2.2984076253983403.mm)
+  circle = ge.add_circle([2388.892609129376.mm,1041.9571107004215.mm,394.96890165789654.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3028,7 +3056,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2400.392609129376.mm,1087.1521488702067.mm,177.92506322546205.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2400.392609129376.mm,1047.4929095542773.mm,397.2673092832949.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3041,8 +3069,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(11.5.mm, -4.0050978133201625.mm, -4.459477331322518.mm)
-  circle = ge.add_circle([2414.607390870624.mm,1087.1521488702067.mm,177.92506322546205.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(11.5.mm, -5.535798853855795.mm, -2.2984076253983403.mm)
+  circle = ge.add_circle([2414.607390870624.mm,1047.4929095542773.mm,397.2673092832949.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3055,8 +3083,148 @@ model.set_attribute("sketchfab", "model_tags", "sketchup")
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(4.392609129376069.mm, -6.480384390219797.mm, -7.2155858941395365.mm)
-  circle = ge.add_circle([2426.107390870624.mm,1083.1470510568865.mm,173.46558589413954.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(4.392609129376069.mm, -8.957110700421481.mm, -3.718901657896538.mm)
+  circle = ge.add_circle([2426.107390870624.mm,1041.9571107004215.mm,394.96890165789654.mm], vec, 1.2.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
+  mat.color = Sketchup::Color.new(136, 136, 136)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Zip Tie
+  grp = ents.add_group
+  grp.name = "Zip Tie"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, -8.957110700421481.mm, -3.7189016578965095.mm)
+  circle = ge.add_circle([2430.5.mm,1115.mm,193.75.mm], vec, 1.2.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
+  mat.color = Sketchup::Color.new(136, 136, 136)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Zip Tie
+  grp = ents.add_group
+  grp.name = "Zip Tie"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-11.5.mm, -5.535798853855795.mm, -2.2984076253983687.mm)
+  circle = ge.add_circle([2426.107390870624.mm,1106.0428892995785.mm,190.0310983421035.mm], vec, 1.2.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
+  mat.color = Sketchup::Color.new(136, 136, 136)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Zip Tie
+  grp = ents.add_group
+  grp.name = "Zip Tie"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2414.607390870624.mm,1100.5070904457227.mm,187.73269071670512.mm], vec, 1.2.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
+  mat.color = Sketchup::Color.new(136, 136, 136)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Zip Tie
+  grp = ents.add_group
+  grp.name = "Zip Tie"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-11.5.mm, 5.535798853855795.mm, 2.2984076253983687.mm)
+  circle = ge.add_circle([2400.392609129376.mm,1100.5070904457227.mm,187.73269071670512.mm], vec, 1.2.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
+  mat.color = Sketchup::Color.new(136, 136, 136)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Zip Tie
+  grp = ents.add_group
+  grp.name = "Zip Tie"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, 8.957110700421481.mm, 3.7189016578965095.mm)
+  circle = ge.add_circle([2388.892609129376.mm,1106.0428892995785.mm,190.0310983421035.mm], vec, 1.2.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
+  mat.color = Sketchup::Color.new(136, 136, 136)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Zip Tie
+  grp = ents.add_group
+  grp.name = "Zip Tie"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.392609129376069.mm, 8.957110700421481.mm, 3.7189016578965095.mm)
+  circle = ge.add_circle([2384.5.mm,1115.mm,193.75.mm], vec, 1.2.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
+  mat.color = Sketchup::Color.new(136, 136, 136)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Zip Tie
+  grp = ents.add_group
+  grp.name = "Zip Tie"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(11.5.mm, 5.535798853855795.mm, 2.2984076253983687.mm)
+  circle = ge.add_circle([2388.892609129376.mm,1123.9571107004215.mm,197.4689016578965.mm], vec, 1.2.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
+  mat.color = Sketchup::Color.new(136, 136, 136)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Zip Tie
+  grp = ents.add_group
+  grp.name = "Zip Tie"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2400.392609129376.mm,1129.4929095542773.mm,199.76730928329488.mm], vec, 1.2.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
+  mat.color = Sketchup::Color.new(136, 136, 136)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Zip Tie
+  grp = ents.add_group
+  grp.name = "Zip Tie"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(11.5.mm, -5.535798853855795.mm, -2.2984076253983687.mm)
+  circle = ge.add_circle([2414.607390870624.mm,1129.4929095542773.mm,199.76730928329488.mm], vec, 1.2.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
+  mat.color = Sketchup::Color.new(136, 136, 136)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Zip Tie
+  grp = ents.add_group
+  grp.name = "Zip Tie"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.392609129376069.mm, -8.957110700421481.mm, -3.7189016578965095.mm)
+  circle = ge.add_circle([2426.107390870624.mm,1123.9571107004215.mm,197.4689016578965.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

@@ -32,6 +32,8 @@ file** — a release must not ship without a changelog entry:
   solar array is ghosted so the exterior labels read through it.
 - **Spray-bar supply hose** — added the flexible coiled feed from BV-05 (90° elbow → coil) up to the
   raised spray-bar feed pole, in both the overview and water models.
+- **Spray-bar carriage bolts** — the tray-facing clamp-bolt heads are now drawn **countersunk** (a flush
+  frustum seated in the clamp underside, top nut still proud) in the 3D model, matching the 2D detail.
 - **Water model cleanup** — the pinhole-wall water model drops the external EP panel + evap cooler, adds
   the spray bar for context, removes the green PV / grey E-stop EP cables, and reconnects the purple
   Cct-C pump feed to the panel's own master switch.

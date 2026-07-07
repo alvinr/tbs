@@ -121,6 +121,25 @@ def build_beam():
     return '\n'.join(parts)
 
 
+def _csk_head(name, cx, cy, z0, z1, r0, r1, color, n=12):
+    """A countersunk flat-head frustum: wide flush face (r0) at z0 tapering to the shank (r1) at z1 —
+    the 3D analogue of the 2D chamfered CSK head that sits flush in the clamp underside."""
+    ring = lambda z, r: [(cx + r * math.cos(2 * math.pi * i / n),
+                          cy + r * math.sin(2 * math.pi * i / n), z) for i in range(n)]
+    bot, top = ring(z0, r0), ring(z1, r1)
+    P = lambda p: f'[{ov.mm(p[0])},{ov.mm(p[1])},{ov.mm(p[2])}]'
+    L = [f'  # {name}', '  grp = ents.add_group', f'  grp.name = "{name}"', '  ge = grp.entities']
+    for i in range(n):                                   # tapered skirt (quads)
+        j = (i + 1) % n
+        L.append(f'  ge.add_face({P(bot[i])}, {P(bot[j])}, {P(top[j])}, {P(top[i])})')
+    L.append('  ge.add_face(' + ', '.join(P(p) for p in bot) + ')')   # flush bottom cap
+    r, g, b = ov.hex_to_rgb(color)
+    L += [f'  mat = model.materials["{name}"] || model.materials.add("{name}")',
+          f'  mat.color = Sketchup::Color.new({r}, {g}, {b})',
+          '  grp.material = mat', '']
+    return '\n'.join(L)
+
+
 def _carriage(xend, side, din):
     """One wheel carriage (2D Detail C/D). The carriage is the full beam width in
     X with its OUTER edge flush with the beam end (`din` = +1 left end, -1 right).
@@ -189,10 +208,14 @@ def _carriage(xend, side, din):
         parts.append(ov.ruby_box(f"Clamp Spacer {side}",
                                  cx0 + 4, by_ - 4, ZB, CW - 8, 8, ZT - ZB, color=C_ALUM))
         for bx_ in (cx0 + 9, cx0 + CW - 9):             # fore + aft along the width
-            # bolt through bottom plate + spacer + top plate (nut head proud each end)
+            # COUNTERSUNK on the TRAY-FACING underside (matches the 2D "M6 CSK flush underside —
+            # clearance"): the shaft is flush at the bottom-clamp underside (no proud head toward the
+            # tray) with a CSK frustum head seated in the clamp; only the TOP nut stays proud.
             parts.append(ov.ruby_cylinder(f"Clamp Bolt {side}",
-                                          bx_, by_, ZB - ct - 4, 2.5,
-                                          (ZT + ct + 4) - (ZB - ct - 4), color=C_BOLT, axis="z"))
+                                          bx_, by_, ZB - ct, 2.5,
+                                          (ZT + ct + 4) - (ZB - ct), color=C_BOLT, axis="z"))
+            parts.append(_csk_head(f"Clamp Bolt CSK Head {side}", bx_, by_,
+                                   ZB - ct, ZB, 4.5, 2.5, C_BOLT))
     return parts
 
 

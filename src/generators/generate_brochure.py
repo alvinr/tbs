@@ -505,7 +505,7 @@ def _flatten_lists(html):
                            flags=re.DOTALL | re.IGNORECASE)
         lines = []
         for i, item in enumerate(items, 1):
-            text = item.strip()
+            text = re.sub(r"\s+", " ", re.sub(r"</?p\b[^>]*>", " ", item)).strip()
             lines.append(f"{i}. {text}")
         return "<br>\n".join(lines) + "<br>\n"
 
@@ -515,11 +515,10 @@ def _flatten_lists(html):
                            flags=re.DOTALL | re.IGNORECASE)
         lines = []
         for item in items:
-            text = item.strip()
+            text = re.sub(r"\s+", " ", re.sub(r"</?p\b[^>]*>", " ", item)).strip()
             # Task-list items (`- [ ]` / `- [x]`) already carry their own checkbox marker — render it
-            # as-is instead of prefixing the "-- " bullet (which produced "-- [ ]"). Tolerate a leading
-            # <p> wrapper the markdown may add.
-            if re.match(r"(?:<p[^>]*>)?\s*\[[ xX]\]", text):
+            # as-is instead of prefixing the "•" bullet.
+            if re.match(r"\[[ xX]\]", text):
                 lines.append(text)
             else:
                 lines.append(f"•  {text}")

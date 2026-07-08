@@ -734,6 +734,11 @@ class BrochurePDF(FPDF):
     def cover_page(self, pages):
         self._suppress_chrome = True
         self.set_auto_page_break(auto=False)
+        # Zero the page margins for the cover so every align="C" cell centers on the FULL
+        # page width. Otherwise ln()/new_x=LMARGIN leave x at the 20mm left margin and the
+        # lines after the first render shifted right of center.
+        self.set_left_margin(0)
+        self.set_right_margin(0)
         self.add_page()
         self.set_fill_color(*C_DARK)
         self.rect(0, 0, PAGE_W, PAGE_H, "F")
@@ -754,7 +759,7 @@ class BrochurePDF(FPDF):
         self.set_font(FONT_BODY, "", 14)
         self.set_text_color(*C_ACCENT)
         self.cell(PAGE_W, 8,
-                  _safe("TBS-001  --  Research & Build Documentation"),
+                  _safe("TBS-001  —  Research & Build Documentation"),
                   align="C", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
         self.ln(4)
@@ -767,8 +772,8 @@ class BrochurePDF(FPDF):
         self.set_font(FONT_BODY, "", 10)
         self.set_text_color(*C_WHITE)
         self.cell(PAGE_W, 6,
-                  _safe("20 ft ISO Container  *  O2.17mm Pinhole"
-                        "  *  f/1088  *  2362mm Focal Length"),
+                  _safe("20 ft ISO Container  ·  Ø2.17mm Pinhole"
+                        "  ·  f/1088  ·  2362mm Focal Length"),
                   align="C", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
         self.ln(4)
@@ -782,10 +787,12 @@ class BrochurePDF(FPDF):
         self.set_font(FONT_BODY, "", 8)
         self.set_text_color(100, 120, 140)
         self.cell(PAGE_W, 6,
-                  _safe(f"{len(pages)} chapters  *  alvinr.github.io/tbs"),
+                  _safe(f"{len(pages)} chapters  ·  alvinr.github.io/tbs"),
                   align="C")
 
         self.set_auto_page_break(auto=True, margin=M_B)
+        self.set_left_margin(M_L)
+        self.set_right_margin(M_R)
         self._suppress_chrome = False
 
     # -- TOC page --------------------------------------------------------------

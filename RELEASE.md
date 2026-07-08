@@ -24,6 +24,9 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Brochure readability pass** — the PDF read dense because fpdf2's `write_html` leads body paragraphs
+  at 1.0× (the Material-theme site renders ~1.6×). A `HTML2FPDF` subclass now renders body text at 1.35×
+  with a small inter-paragraph gap, leaving explicit CSS / table line-heights untouched. 195 → 206 pp.
 - **3D overview scene + label pass** — reworked the per-subsystem scenes so each reads cleanly: the
   Ventilation scene gains the Fan A/B power cables (own tag) routed back to the EP, drops the
   plumbing-panel pump wiring, and shows only the evap-cooler (Cct E) circuit at the external panel — the

@@ -580,7 +580,33 @@ def _clean_html_for_fpdf(html):
 
 # -- PDF builder ---------------------------------------------------------------
 
+from fpdf.html import HTML2FPDF as _HTML2FPDF
+
+
+class _AiryHTML2FPDF(_HTML2FPDF):
+    """Open up write_html's leading + add a small paragraph gap so the PDF reads
+    like the site instead of a wall of dense text.  fpdf2 defaults body paragraphs
+    to line_height=1.0 with no bottom margin; the Material theme renders at ~1.6.
+    Moderate ~1.35x here — noticeably airier but still compact."""
+
+    _BODY_LINE_HEIGHT = 1.35
+
+    def _new_paragraph(self, align=None, line_height=1.0, top_margin=0,
+                       bottom_margin=0, indent=0, bullet=""):
+        # Only touch the untagged default (1.0); leave explicit CSS/table
+        # line-heights (e.g. TABLE_LINE_HEIGHT=1.3) alone.
+        if line_height == 1.0:
+            line_height = self._BODY_LINE_HEIGHT
+        if not bottom_margin:
+            bottom_margin = self.font_size_pt / self.pdf.k * 0.4
+        return super()._new_paragraph(
+            align=align, line_height=line_height, top_margin=top_margin,
+            bottom_margin=bottom_margin, indent=indent, bullet=bullet)
+
+
 class BrochurePDF(FPDF):
+
+    HTML2FPDF_CLASS = _AiryHTML2FPDF
 
     def __init__(self):
         super().__init__(orientation="P", unit="mm", format="A4")

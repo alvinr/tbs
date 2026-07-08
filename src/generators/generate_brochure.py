@@ -617,11 +617,14 @@ class _AiryHTML2FPDF(_HTML2FPDF):
 
     def _new_paragraph(self, align=None, line_height=1.0, top_margin=0,
                        bottom_margin=0, indent=0, bullet=""):
+        is_heading = bool(getattr(self, "heading_level", 0))
         # Only touch the untagged default (1.0); leave explicit CSS/table
-        # line-heights (e.g. TABLE_LINE_HEIGHT=1.3) alone.
+        # line-heights (e.g. TABLE_LINE_HEIGHT=1.3) alone. Headings stay tight.
         if line_height == 1.0:
-            line_height = self._BODY_LINE_HEIGHT
-        if not bottom_margin:
+            line_height = 1.2 if is_heading else self._BODY_LINE_HEIGHT
+        # Small gap after body paragraphs; headings keep their (reduced) tag b_margin
+        # so the blank space AFTER a heading title is minimal.
+        if not bottom_margin and not is_heading:
             bottom_margin = self.font_size_pt / self.pdf.k * 0.4
         return super()._new_paragraph(
             align=align, line_height=line_height, top_margin=top_margin,
@@ -1328,7 +1331,8 @@ def _split_at_images(html):
 
 def _build_tag_styles():
     """Return tag_styles dict for write_html (uses fpdf2 FontFace API)."""
-    from fpdf.fonts import FontFace
+    from fpdf.fonts import FontFace, TextStyle
+    from fpdf.html import DEFAULT_TAG_STYLES
     def ts(emphasis, size, color, font=None):
         return FontFace(
             family=font or FONT_BODY,
@@ -1336,15 +1340,24 @@ def _build_tag_styles():
             size_pt=size,
             color=color,
         )
+    def hts(emphasis, size, color, tag):
+        # Heading with a REDUCED bottom margin (fpdf2 default b_margin=0.4 → 0.15) so the
+        # blank space AFTER a heading title is minimal; keep fpdf2's default top margin.
+        d = DEFAULT_TAG_STYLES[tag]
+        return TextStyle(
+            font_family=FONT_BODY, font_style=(emphasis or None),
+            font_size_pt=size, color=color,
+            t_margin=d.t_margin, l_margin=d.l_margin, b_margin=0.15,
+        )
     # code/pre: monospace so code/config reads as FIXED-WIDTH (the styling the reports need).
     code_font = FONT_MONO   # "Mono" (Andale Mono / Monaco / DejaVu Mono) or Courier (ASCII fallback)
     return {
-        "h1": ts("B",  15, C_ACCENT),
-        "h2": ts("B",  13, C_DARK),
-        "h3": ts("B",  11, C_DARK),
-        "h4": ts("BI", 10, C_DARK),
-        "h5": ts("BI",  9, C_DARK),
-        "h6": ts("I",   9, C_MUTED),
+        "h1": hts("B",  15, C_ACCENT, "h1"),
+        "h2": hts("B",  13, C_DARK,   "h2"),
+        "h3": hts("B",  11, C_DARK,   "h3"),
+        "h4": hts("BI", 10, C_DARK,   "h4"),
+        "h5": hts("BI",  9, C_DARK,   "h5"),
+        "h6": hts("I",   9, C_MUTED,  "h6"),
         "code": FontFace(
             family=code_font, size_pt=8, color=C_BODY,
             fill_color=(230, 230, 235),

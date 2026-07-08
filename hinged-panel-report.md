@@ -24,6 +24,7 @@ time without opening the panel or breaking the light seal. In case of emergency,
 - Weatherproof for outdoor field deployment (IP44 rated seals)
 - Single-person mode conversion (~5 minutes)
 
+<!-- brochure:skip -->
 **Interactive 3D model** — the revolving light-trap drum, hinged stepped panel, Ø89 swing pivot, fixed door frame (with the bottom seal lip), and Fan B. Drag to orbit, scroll to zoom.
 
 <div class="sketchfab-embed-wrapper">
@@ -32,6 +33,7 @@ time without opening the panel or breaking the light seal. In case of emergency,
   </div>
   <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"><a href="https://sketchfab.com/3d-models/tbs-001-lighttrap-model-a4f73191b8bb4d17a6e764585ca695be?utm_medium=embed&utm_campaign=share-popup&utm_content=a4f73191b8bb4d17a6e764585ca695be" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">TBS-001 Lighttrap Model</a> by <a href="https://sketchfab.com/alvin91403?utm_medium=embed&utm_campaign=share-popup&utm_content=a4f73191b8bb4d17a6e764585ca695be" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">alvin91403</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=a4f73191b8bb4d17a6e764585ca695be" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p>
 </div>
+<!-- brochure:endskip -->
 
 ---
 

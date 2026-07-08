@@ -15,6 +15,7 @@ TBS-001 is designed for fully off-grid operation. All power comes from a solar a
 
 All loads run at **12V DC** - the one exception is the dedicated Circuit-E cooler inverter — see §7.6.
 
+<!-- brochure:skip -->
 **Interactive 3D model** — the solar array, the panel internals (MPPT / fuse block / busbars / disconnects), the battery, the external power panel, the Circuit-E inverter, and the color-coded circuit runs out to each load. Drag to orbit, scroll to zoom.
 
 <div class="sketchfab-embed-wrapper">
@@ -23,6 +24,7 @@ All loads run at **12V DC** - the one exception is the dedicated Circuit-E coole
   </div>
   <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"><a href="https://sketchfab.com/3d-models/tbs-001-electrical-model-6930c96be025469fb8ef702393d7c35f?utm_medium=embed&utm_campaign=share-popup&utm_content=6930c96be025469fb8ef702393d7c35f" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">TBS-001 Electrical Model</a> by <a href="https://sketchfab.com/alvin91403?utm_medium=embed&utm_campaign=share-popup&utm_content=6930c96be025469fb8ef702393d7c35f" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">alvin91403</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=6930c96be025469fb8ef702393d7c35f" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p>
 </div>
+<!-- brochure:endskip -->
 
 ---
 

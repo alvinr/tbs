@@ -8,12 +8,14 @@
 > **Pinhole Wall Plumbing Panel** (the wet-end filter loop: pump P-02, the 3-stage Big Blue filter,
 > diverter DV-01, sample tap SV-01 — mounted on the pinhole wall). This report covers both.
 
+<!-- brochure:skip -->
 ## Interactive 3D model
 
 <div class="sketchfab-embed-wrapper" style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;margin-bottom:1em;">
     <iframe title="TBS-001 Water System Model" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/1dae932430924e9b993e153a16f485fc/embed" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
 </div>
 <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"><a href="https://sketchfab.com/3d-models/1dae932430924e9b993e153a16f485fc" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">TBS-001 Water System Model</a> by <a href="https://sketchfab.com/alvin91403" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">alvin91403</a> on <a href="https://sketchfab.com" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p>
+<!-- brochure:endskip -->
 
 ## 1. Purpose
 

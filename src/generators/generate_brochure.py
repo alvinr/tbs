@@ -331,11 +331,6 @@ def md_to_html(md_path):
     # The per-doc copyright/licence line renders in the PAGE FOOTER of the PDF, not inline at the end
     # of each section — strip it here (the website keeps it via the unchanged .md).
     text = re.sub(r"(?m)^.*©[^\n]*Alvin Richards[^\n]*Released under[^\n]*$", "", text)
-    # Interactive Sketchfab 3D-model embeds are web-only — strip the wrapper + its "Interactive 3D
-    # model" intro from the PDF (otherwise the PDF shows a dead "... by alvin91403 on Sketchfab" line).
-    text = re.sub(r'<div class="sketchfab-embed-wrapper">.*?Sketchfab</a></p>\s*</div>', "",
-                  text, flags=re.DOTALL)
-    text = re.sub(r"(?m)^\*\*Interactive 3D [Mm]odel\*\*[^\n]*\n?", "", text)
     _MD.reset()
     return _MD.convert(text)
 

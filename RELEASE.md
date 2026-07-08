@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **electrical Sheet 1 fix** — the blue 12 V distribution bus (fuse block → circuit spine) ran straight
+  *through* the interior E-STOP box on the one-line schematic. Dropped the interior E-stop below the bus
+  so the bus routes cleanly in the gap between the external and interior E-stop boxes.
+
 - **Fix: an arch-broken heavy dep no longer blocks commits** — the weight generator guarded optional
   numpy/matplotlib with `except ModuleNotFoundError`, which does NOT catch a wrong-arch/ABI `dlopen`
   failure (a *bare* `ImportError`), so an arm64 numpy under an x86_64 python crashed the `weight` lint

@@ -667,6 +667,30 @@ def warn_unused_imports() -> tuple[bool, list[str]]:
     return (not issues), (issues or ["no unused imports in generators/models"])
 
 
+def warn_narrow_dep_guard() -> tuple[bool, list[str]]:
+    """Optional numpy/matplotlib imports must be guarded with `except ImportError`, NOT
+    `except ModuleNotFoundError`. A heavy dep installed for the WRONG arch/ABI (e.g. an arm64
+    numpy .so loaded by an x86_64 python) fails `dlopen` with a *bare* ImportError — which
+    ModuleNotFoundError does NOT catch — so the "runs dependency-free" fallback crashes instead of
+    degrading. The value gates (weight/energy) must fall back to math, not crash, on a broken dep.
+    (Broke a commit 2026-07-08: arm64 numpy under an x86_64 .venv python.)"""
+    import re
+    pat = re.compile(r"try:\s*\n(.*?)\n[ \t]*except\s+ModuleNotFoundError\b", re.DOTALL)
+    issues = []
+    for path in _scan_files():
+        try:
+            src = open(path, encoding="utf-8").read()
+        except OSError:
+            continue
+        for m in pat.finditer(src):
+            if re.search(r"(?m)^\s*(import|from)\s+(numpy|matplotlib)\b", m.group(1)):
+                ln = src.count("\n", 0, m.start()) + 1
+                issues.append(f"{os.path.relpath(path, ROOT)}:{ln} numpy/matplotlib guarded with "
+                              f"`except ModuleNotFoundError` — use `except ImportError` "
+                              f"(also catches a wrong-arch/ABI dlopen failure)")
+    return (not issues), (issues or ["optional numpy/matplotlib guards use except ImportError"])
+
+
 def gate_license_headers() -> tuple[bool, list[str]]:
     """Every tracked .py / .rb / .md must carry the SPDX license header (AGPL-3.0-only + ©).
     Protects each source file at the source, independent of the rendered footer. Deterministic —
@@ -721,6 +745,7 @@ WARNINGS = [
     ("hardwired literal in staged file (should reference a constant)", warn_hardwired_literals),
     ("duplicated geometry in sync (staged emitters)", warn_duplication),
     ("unused imports in generators/models (check_unused_imports --fix)", warn_unused_imports),
+    ("optional dep guards use except ImportError (arch/ABI-safe)", warn_narrow_dep_guard),
 ]
 
 

@@ -859,11 +859,13 @@ def draw_pinhole_panel():
         "PINHOLE WALL PLUMBING PANEL — BROWN WASH-RECYCLE FILTER TRAIN:",
         "1. Wide 18mm marine-ply backing board on the pinhole wall (Yd≈0),",
         "    X=2780–4500, Z=920–2360mm AFF.",
-        "2. P-02 (Brown recycle pump) pulls IBC-3 Brown through the 3-stage filter bank.",
+        "2. P-02 (Brown recycle pump) pulls IBC-3 Brown through the 3-stage",
+        "   filter bank.",
         "3. HORIZONTAL filter bank high on the wall: F-01 (5µm sediment) →",
         "    F-02 (KDF-55) → F-03 (carbon/GAC); Big Blue 4.5\"×20\" housings.",
         "4. BV-03: P-02 suction isolation (manual ball valve).",
-        "5. SV-01: pH sample tap on the filtered line, before DV-01 (cup spout, near bottom-right).",
+        "5. SV-01: pH sample tap on the filtered line, before DV-01 (cup spout,",
+        "   near bottom-right).",
         "6. 3W-DV-01 is PHYSICALLY at the corridor mouth (off this wall) — the filtered",
         "    line leaves the board's bottom-right and splits there: pH-gated to Blue",
         "    recycle (IBC-2) or Waste (IBC-4).",
@@ -873,8 +875,8 @@ def draw_pinhole_panel():
         "9. PIPE: 1\" SDR-11 HDPE (P-02 + filter loop) with PP/Banjo fittings; housings",
         "    on their integral brackets through-bolted to the ply board.",
     ]
-    draw_notes(ax_p, notes, pwx(2600), pwz(1560), spacing=46,
-               fs=7, width=560, color=C_DIM, title_color=C_NEW, font=FONT)
+    draw_notes(ax_p, notes, pwx(2600), pwz(1560), spacing=32,
+               fs=6.5, width=575, color=C_DIM, title_color=C_NEW, font=FONT)
 
     # ── SYMBOL KEY (clear left margin strip, X4500–5060) ────────────
     draw_symbol_key(ax_p, 20, pwz(1900), r=13, row=70, fs=6.5, w=395)

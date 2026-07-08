@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **shelf-sheet1 notes overlap** — the plan-view notes block hung down over the diagram (walkway box
+  tops at y=500). Raised Y_HI (620→800) so the notes lift into a clear band above the diagram, and
+  capped the optical-cone boundary line at y=600 so it no longer stretches up through the notes box.
+
 - **pinhole-panel notes clipped** — the notes border box (a patch, which matplotlib clips to the axes)
   extended past the narrow xlim and was cut at the page edge (only its corner drew). Widened the page
   (xlim +750 + figsize 16→23 to keep the board scale) so the box fits, and widened the box (width

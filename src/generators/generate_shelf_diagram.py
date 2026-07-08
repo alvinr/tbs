@@ -47,7 +47,9 @@ def sheet1():
     fig, ax = plt.subplots(figsize=(13, 7))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     X_LO, X_HI = 900, 2520
-    Y_LO, Y_HI = -160, 620
+    # Y_HI raised so the notes block (anchored at Y_HI-20) lifts clear of the diagram (walkway box
+    # tops at y=500) instead of hanging down over it.
+    Y_LO, Y_HI = -160, 800
     ax.set_xlim(X_LO, X_HI); ax.set_ylim(Y_LO, Y_HI)
     ax.set_aspect("equal"); ax.axis("off")
 
@@ -62,10 +64,11 @@ def sheet1():
     ax.text(2150, 470, f"WIDENED NEAR WALKWAY ({WALKWAY_NEAR_WIDE_W}mm)",
             fontsize=6, color=C_DIM, ha="center", **FONT)
 
-    # optical-cone left boundary (shelf must stay left of it)
-    cone_xs = [cone_left(y) for y in (0, Y_HI)]
-    ax.plot(cone_xs, [0, Y_HI], color="#CC4444", lw=1.1, ls="--", zorder=3)
-    ax.text(cone_xs[1] + 25, Y_HI - 30, "OPTICAL CONE\nLEFT BOUNDARY",
+    # optical-cone left boundary (shelf must stay left of it) — capped below the notes band
+    cone_top = 600
+    cone_xs = [cone_left(y) for y in (0, cone_top)]
+    ax.plot(cone_xs, [0, cone_top], color="#CC4444", lw=1.1, ls="--", zorder=3)
+    ax.text(cone_xs[1] + 25, cone_top - 30, "OPTICAL CONE\nLEFT BOUNDARY",
             fontsize=5.5, color="#CC4444", rotation=64, ha="left", va="top", **FONT)
 
     # battery bank + EP (to the RIGHT of the shelf)

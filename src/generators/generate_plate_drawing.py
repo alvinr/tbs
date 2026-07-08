@@ -146,12 +146,12 @@ def draw_sheet1():
     ax1.plot([cx1 - hw - 64, cx1 + hw + 64], [cy1, cy1],
              color=C_RED, lw=LW_CUT, linestyle=(0, (8, 3)))
     for sign in [-1, 1]:
-        ax1.annotate('', xy=(cx1 + sign*(hw + 64), cy1 + sign*40),
-                     xytext=(cx1 + sign*(hw + 64), cy1),
+        ax1.annotate('', xy=(cx1 + sign*(hw + 54), cy1 + sign*40),
+                     xytext=(cx1 + sign*(hw + 54), cy1),
                      arrowprops=dict(arrowstyle='->', color=C_RED, lw=1.5))
-    ax1.text(cx1 - hw - 96, cy1 + 24, 'A', ha='center', fontsize=8,
+    ax1.text(cx1 - hw - 75, cy1 + 24, 'A', ha='center', fontsize=8,
              fontweight='bold', color=C_RED)
-    ax1.text(cx1 + hw + 96, cy1 + 24, 'A', ha='center', fontsize=8,
+    ax1.text(cx1 + hw + 75, cy1 + 24, 'A', ha='center', fontsize=8,
              fontweight='bold', color=C_RED)
 
     # Dimensions

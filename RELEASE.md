@@ -24,6 +24,13 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Fix: an arch-broken heavy dep no longer blocks commits** — the weight generator guarded optional
+  numpy/matplotlib with `except ModuleNotFoundError`, which does NOT catch a wrong-arch/ABI `dlopen`
+  failure (a *bare* `ImportError`), so an arm64 numpy under an x86_64 python crashed the `weight` lint
+  gate and blocked check-in. Broadened the guards to `except ImportError` (degrade to the math path),
+  added a `lint.py` check that flags the narrow pattern, and documented the rule (CLAUDE.md § Optional
+  Heavy Dependencies).
+
 - **Brochure "Introduction" section** — the three top-level chapters (Home, Proposal, Costing) are now
   grouped under an **Introduction** section in the PDF — a section-divider page, a TOC group, and the
   chapter-header label — matching every other part. Brochure-only (parse_nav default section; the site

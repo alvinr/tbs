@@ -202,6 +202,19 @@ ripple into both.
 
 ---
 
+## Optional Heavy Dependencies (lint gates run dependency-free)
+
+The value-injection gates (`weight`, `energy`) run their generator under the commit hook's `python3`,
+which may not have — or may have an arch/ABI-broken — numpy/matplotlib. Those generators therefore guard
+the heavy deps and fall back to a pure-`math` compute path. **Guard optional numpy/matplotlib imports
+with `except ImportError`, NOT `except ModuleNotFoundError`.** A dep built for the wrong arch (e.g. an
+arm64 numpy `.so` loaded by an x86_64 python) fails `dlopen` with a **bare `ImportError`** that
+`ModuleNotFoundError` does not catch — so the "dependency-free" fallback would crash the gate (and block
+every commit) instead of degrading. Enforced by the `lint.py` check *"optional dep guards use except
+ImportError"*.
+
+---
+
 ## Deployment
 
 ```bash

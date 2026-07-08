@@ -213,9 +213,9 @@ def sheet3():
     ax.add_patch(Circle((10, SHELF_H), 8, fc="#9098A0", ec=C_OUT, lw=1.0, zorder=6))            # knuckle
     ax.add_patch(Rectangle((10, SHELF_H - SHELF_T), SHELF_DEPTH - 10, SHELF_T, fc=C_SHELF, ec=C_OUT, lw=1.2, zorder=5))  # shelf board (full deployed depth)
     ax.add_patch(Rectangle((SHELF_DEPTH - 6, SHELF_H), 6, 15, fc=C_SHELF, ec=C_OUT, lw=0.8, zorder=6))  # front lip
-    leader(ax, 10, SHELF_H, 90, SHELF_H + 50, "PIANO HINGE\n(continuous, along the back edge)",
+    leader(ax, 10, SHELF_H, 35, SHELF_H + 50, "PIANO HINGE\n(continuous, along the back edge)",
            color=C_HINGE, fs=6.5, ha="left", font=FONT)
-    leader(ax, 45, SHELF_H - SHELF_T, 120, SHELF_H - SHELF_T - 60,
+    leader(ax, 65, SHELF_H - SHELF_T, 120, SHELF_H + SHELF_T - 60,
            f"SHELF BOARD\n18mm ply + frame ({SHELF_T}mm)", color="#5a4a18", fs=6.5, ha="left", font=FONT)
 
     # stay anchor + stay to the front

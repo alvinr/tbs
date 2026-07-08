@@ -431,7 +431,7 @@ else:
     note_col = C_CLEAR
     note_bg  = "#F0FFF0"
 
-fig.text(0.5, 0.028, note, ha="center", va="bottom",
+fig.text(0.5, 0.925, note, ha="center", va="bottom",
          fontsize=FS_SM, color=note_col,
          bbox=dict(boxstyle="round,pad=2", facecolor=note_bg,
                    edgecolor=note_col, linewidth=1.0))

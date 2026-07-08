@@ -6,12 +6,14 @@
 
 There are a number of discrete systems, color-coded in the diagram below. This view is shown from the optical axis, looking through the container wall. Each of these sub-systems has a detailed breakdown of construction, schematic, and other diagrams to show how each system is built, installed, used, and maintained. The 3D model below provides a simple way to view the whole system.
 
+<!-- brochure:skip -->
 <div class="sketchfab-embed-wrapper">
   <div style="position:relative;width:100%;padding-bottom:56.25%;">
     <iframe title="TBS-001 Overview" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/e624e210bf3d4de08b1a7b7261a66c45/embed" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
   </div>
   <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"><a href="https://sketchfab.com/3d-models/tbs-001-overview-e624e210bf3d4de08b1a7b7261a66c45?utm_medium=embed&utm_campaign=share-popup&utm_content=e624e210bf3d4de08b1a7b7261a66c45" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">TBS-001 Overview</a> by <a href="https://sketchfab.com/alvin91403?utm_medium=embed&utm_campaign=share-popup&utm_content=e624e210bf3d4de08b1a7b7261a66c45" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">alvin91403</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=e624e210bf3d4de08b1a7b7261a66c45" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p>
 </div>
+<!-- brochure:endskip -->
 
 
 The major systems are:

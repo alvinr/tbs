@@ -1,0 +1,17 @@
+{#-
+  Footer override: copyright left-justified, version right-justified, on every page.
+  Version comes from config.extra.version, injected at build time by
+  src/generators/mkdocs_version_hook.py (derived from RELEASE.md — single source).
+-#}
+<div class="md-copyright">
+  <div class="md-copyright__highlight" style="display:flex;justify-content:space-between;align-items:center;width:100%;gap:1em;">
+    {% if config.copyright %}
+      <span>{{ config.copyright }}</span>
+    {% else %}
+      <span></span>
+    {% endif %}
+    {% if config.extra.version %}
+      <span style="white-space:nowrap;">v{{ config.extra.version }}</span>
+    {% endif %}
+  </div>
+</div>

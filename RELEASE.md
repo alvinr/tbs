@@ -24,6 +24,14 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Version stamp on every page** — the released version now shows on every PDF page (footer:
+  copyright left, **v0.2 centered**, chapter/page right) and every site page (footer: copyright left,
+  **v0.2** right). It is **derived from RELEASE.md's latest `## [X.Y]` header** — a single source, no
+  stored copy: a new `src/generators/tbs_version.py` helper, read by the brochure directly and by the
+  site via a build hook (`mkdocs_version_hook.py` → `config.extra.version`, rendered by a footer
+  override `overrides/partials/copyright.html`). `release.sh` now also **publishes** the site + brochure
+  as part of cutting a release, so promoting RELEASE.md propagates the new version everywhere with no
+  extra bump step.
 - **Brochure readability + site-matching fonts** — the PDF read dense and used Arial. Now it renders in
   **IBM Plex Sans / IBM Plex Mono** (the mkdocs Material site font), bundled in `src/generators/fonts/`
   (OFL 1.1) with Arial Unicode kept as a per-glyph fallback; and the `write_html` leading (fpdf2's tight

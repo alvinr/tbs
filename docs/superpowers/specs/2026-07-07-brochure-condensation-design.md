@@ -54,8 +54,9 @@ Target is **~200 pp**, reached by `brochure:skip` markers on detail sections + g
 
 ## Progress
 - ✅ Phase 1 drops → 330.
-- ✅ Mechanism (`brochure:skip`) built + proven on `distortion-renders` (26 → 1 pp) → **305**.
-- ⏳ Remaining: mark detail/thumbnail regions in `processing-tray-and-spray-bar`, `electrical-report`,
-  `walkway-report`, `photosensitive-plane-options`, `film-plane-mechanism-report`, `tilt-swing-board-report`,
-  `weight-distribution-report`, `master-shopping-list`, `container-report`, and conclusion-first skips on
-  the mid reports. Target ~200.
+- ✅ Mechanism (`brochure:skip`) built + proven on `distortion-renders` (26 → 1 pp) → 305.
+- ✅ **Renderer fixes** (big lever): images now render **capped inline** (BODY_W × 118 mm) instead of one
+  dedicated full page each → **305 → 227**; task-list checkboxes render as clean `[ ]` (was `-- [ ]`);
+  list bullets render `•` (was `--`).
+- ⏳ Remaining to ~200: light `brochure:skip` on the few still-heavy reports (processing-tray, electrical,
+  walkway, weight) — now only ~27 pp to trim. Optionally tune `MAX_IMG_H` if any diagram reads too small.

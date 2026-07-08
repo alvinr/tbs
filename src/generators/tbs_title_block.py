@@ -36,7 +36,7 @@ except Exception:
 
 
 def title_block(ax, sheet_label, *, drawing_title="", subtitle="",
-                scale_note="", doc_id="", height=0.045, portrait=False):
+                scale_note="", doc_id="", height=0.045, scale=0.75, portrait=False):
     """Draw a standard 3-column title block at the bottom of *ax*.
 
     Parameters
@@ -60,15 +60,15 @@ def title_block(ax, sheet_label, *, drawing_title="", subtitle="",
 
     # Font sizes — scale down for narrow portrait figures
     if portrait:
-        fs_title = 6.0
-        fs_body  = 5.0
-        fs_small = 4.5
-        fs_sheet = 7.0
+        fs_title = 6.0 * scale
+        fs_body  = 5.0 * scale
+        fs_small = 4.5 * scale
+        fs_sheet = 7.0  * scale
     else:
-        fs_title = 7.5
-        fs_body  = 6.5
-        fs_small = 5.5
-        fs_sheet = 7.5
+        fs_title = 7.5 * scale
+        fs_body  = 6.5 * scale
+        fs_small = 5.5 * scale
+        fs_sheet = 7.5 * scale
 
     # Column boundaries (axes-fraction)
     col_L = 0.005

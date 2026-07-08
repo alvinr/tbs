@@ -511,7 +511,13 @@ def _flatten_lists(html):
         lines = []
         for item in items:
             text = item.strip()
-            lines.append(f"-- {text}")
+            # Task-list items (`- [ ]` / `- [x]`) already carry their own checkbox marker — render it
+            # as-is instead of prefixing the "-- " bullet (which produced "-- [ ]"). Tolerate a leading
+            # <p> wrapper the markdown may add.
+            if re.match(r"(?:<p[^>]*>)?\s*\[[ xX]\]", text):
+                lines.append(text)
+            else:
+                lines.append(f"•  {text}")
         return "<br>\n".join(lines) + "<br>\n"
 
     # Process nested lists inside-out (deepest first)
@@ -1138,18 +1144,10 @@ class BrochurePDF(FPDF):
         self.ln(2)
 
     def _render_image_page(self, img_path, caption=None):
-        """
-        Render a single image on its own page.
-        - Landscape page when image aspect ratio > 1.2
-        - Portrait page otherwise
-        Image is centered and scaled to fill the usable area.
-        Caption defaults to filename without extension if not provided.
-
-        RGBA PNGs (all generated diagrams) are composited onto a white
-        background before embedding — fpdf2 misrenders RGBA as a black box.
-        The composited image is saved to a temp file (not BytesIO) so fpdf2
-        uses the unique file path as its dedup/cache key.
-        """
+        """Render an image INLINE in the text flow, capped to BODY_W x MAX_IMG_H so it does not
+        dominate a page (was one dedicated full page per image, which ballooned the PDF). A page
+        break happens only when the image + caption will not fit in the remaining content zone."""
+        MAX_IMG_H = 118   # mm — cap so ~2 diagrams share a page; still readable
         import tempfile
         _tmp_file = None
         try:
@@ -1157,8 +1155,6 @@ class BrochurePDF(FPDF):
             img = PILImage.open(img_path)
             img_w_px, img_h_px = img.size
             aspect = img_w_px / img_h_px
-
-            # Flatten alpha / palette onto white background
             if img.mode != "RGB":
                 if img.mode == "P":
                     img = img.convert("RGBA")
@@ -1168,66 +1164,43 @@ class BrochurePDF(FPDF):
                     img = bg
                 else:
                     img = img.convert("RGB")
-
-            # Write composited image to a unique temp file
-            fd, tmp_path = tempfile.mkstemp(suffix=".png",
-                                            prefix="tbs_img_")
+            fd, tmp_path = tempfile.mkstemp(suffix=".png", prefix="tbs_img_")
             os.close(fd)
             img.save(tmp_path, format="PNG")
             embed_src = tmp_path
             _tmp_file = tmp_path
-
         except Exception as e:
             print(f"  [warn] PIL error for {img_path}: {e}", file=sys.stderr)
             embed_src = img_path
             aspect = 1.5
 
-        LANDSCAPE_THRESHOLD = 1.2
-
-        if aspect > LANDSCAPE_THRESHOLD:
-            orientation = "L"
-            page_w, page_h = PAGE_H, PAGE_W   # A4 landscape: 297 x 210
-        else:
-            orientation = "P"
-            page_w, page_h = PAGE_W, PAGE_H   # A4 portrait: 210 x 297
-
-        self._suppress_chrome = True
-        self.add_page(orientation=orientation)
-        self.set_auto_page_break(auto=False)
-
-        # Reserve space for caption at bottom — inside the printable area
-        caption_h = 10
-        usable_w = page_w - M_L - M_R
-        usable_h = page_h - M_T - M_B - caption_h
-
-        # Scale image to fit, preserving aspect
-        fit_w = usable_w
+        # Scale to fit BODY_W x MAX_IMG_H, preserving aspect.
+        fit_w = BODY_W
         fit_h = fit_w / aspect
-        if fit_h > usable_h:
-            fit_h = usable_h
+        if fit_h > MAX_IMG_H:
+            fit_h = MAX_IMG_H
             fit_w = fit_h * aspect
+        caption_h = 6
 
-        # Center image in the area above the caption
-        x = M_L + (usable_w - fit_w) / 2
-        y = M_T + (usable_h - fit_h) / 2
-
+        # Break to a new page only if the figure + caption will not fit below the cursor.
+        if self.get_y() + fit_h + caption_h > PAGE_H - M_B:
+            self.add_page()
+        self.ln(2)
+        x = M_L + (BODY_W - fit_w) / 2
+        y = self.get_y()
         self.image(embed_src, x=x, y=y, w=fit_w, h=fit_h)
-
-        # Clean up temp file now that fpdf2 has read it
         if _tmp_file and os.path.exists(_tmp_file):
             os.unlink(_tmp_file)
+        self.set_y(y + fit_h + 1)
 
-        # Caption: positioned below the image area, still on the same page
         if not caption:
             caption = os.path.splitext(os.path.basename(img_path))[0]
-        caption_y = page_h - M_B - caption_h + 2
-        self.set_xy(M_L, caption_y)
+        self.set_x(M_L)
         self.set_font(FONT_BODY, "I", 7)
         self.set_text_color(*C_MUTED)
-        self.cell(usable_w, 5, _safe(caption), align="C")
-
-        self.set_auto_page_break(auto=True, margin=M_B)
-        self._suppress_chrome = False
+        self.cell(BODY_W, 4, _safe(caption), align="C")
+        self.ln(6)
+        self.set_text_color(*C_BODY)
 
 
 def _split_at_images(html):

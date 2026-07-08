@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **ibc-frame Sheet 2 notes overlap** — the side-elevation notes block hung down over the top of the
+  frame (the top-tier IBC ghost tops out at Z≈2398, above the frame's 2296). Extended the page top
+  (Z_HI +240) and lifted the title + notes into the new headroom so they clear the diagram.
+
 - **film-plane Sheet 1 travel dim** — moved the depth-travel dimension from the outer (left) side of the
   left rail — where it overlapped the Ø900 light-trap drum ghost + rail labels — to the inner (right)
   side of the rail.

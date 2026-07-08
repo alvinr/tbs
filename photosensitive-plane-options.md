@@ -161,6 +161,8 @@ Coverage: approximately 1–1.5 ml of mixed solution per 50 cm², or ~2 ml/sq ft
 
 ---
 
+<!-- brochure:skip -->
+
 ## 2. Gum Bichromate
 
 **Estimated per-image cost: ~$61–81 total (single coat)**
@@ -506,6 +508,8 @@ Film is included here for completeness and to confirm the user's instinct: **fil
 
 ---
 
+<!-- brochure:endskip -->
+
 ## 9. Mounting System Summary
 
 Regardless of process, the image plane requires a flat rigid backing. Corrugated container walls are not flat and cannot serve as a direct mounting surface.
@@ -593,6 +597,8 @@ Blue sky behind a subject will overexpose aggressively. Overcast or open shade l
 Cyanotype has a relatively compressed tonal range (short scale). It produces strong deep blues in shadows and clear whites in highlights, with limited mid-tone separation. Multiple coats or the improved Ware formula improve shadow density but the core contrast characteristic does not change fundamentally.
 
 ---
+
+<!-- brochure:skip -->
 
 ### A.2 Gum Bichromate
 
@@ -779,6 +785,8 @@ The critical additions beyond the earlier analysis:
 - **The speed advantage** (ISO 400–800) significantly outweighs the spectral and contrast disadvantages for practical operation: 5–10 minute exposures vs. 40+ minutes mean far lower risk of subject movement blur and camera vibration during exposure.
 
 ---
+
+<!-- brochure:endskip -->
 
 ### Appendix A Summary: Spectral Sensitivity and Speed Comparison
 

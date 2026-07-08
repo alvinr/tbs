@@ -466,23 +466,12 @@ def floor_plan():
                 xytext=(NOTE_NX + 600, NOTE_NY),
                 arrowprops=dict(arrowstyle="->", color="#7A3A00", lw=1.0),
                 zorder=10)
-    ax.text(NOTE_NX + 580, NOTE_NY + 80,
+    ax.text(NOTE_NX + 400, NOTE_NY - 380,
             f"FILM LEFT RAIL CONTINUOUS — full travel\n"
-            f"Drum offset to X={DRUM_CX}mm via the panel bay — clears the X={RAIL_X_L}mm rail",
+            f"Drum offset to X={DRUM_CX}mm via the panel bay\n— clears the X={RAIL_X_L}mm rail",
             ha="right", va="bottom", fontsize=6.0, color="#7A3A00",
             fontweight="bold", **FONT, zorder=10,
             bbox=dict(boxstyle="round,pad=0.3", fc="#FFFBE6", ec="#7A3A00", lw=0.9))
-
-    # ── Walkway height note (deck lowered — stays in place for operation) ───────
-    # The walkway deck is LOWERED to Z=WALKWAY_H (65mm) so the film-plane frame
-    # travels above it.  The walkway is NOT removed; all four panels remain in
-    # place during camera operation.
-    ax.text((ZONE_L_END + ZONE_R_START) / 2, -PAD_B + 480,
-            f"WALKWAY LOWERED TO Z={WALKWAY_H}mm (clears film-plane frame) — "
-            "IN PLACE FOR OPERATION",
-            ha="center", va="top", fontsize=6.5, color="#204820",
-            fontweight="bold", **FONT, zorder=10,
-            bbox=dict(boxstyle="round,pad=0.3", fc="#F0FFF0", ec="#408040", lw=0.8))
 
     # ── Left walkway — removable lift-out overlay + label ─────────────────────
     # The LEFT walkway (X WALKWAY_LEFT_X–470, full Yd span) is a removable
@@ -509,7 +498,7 @@ def floor_plan():
                 xytext=(LW_NOTE_X + 520, LW_MID_Y),
                 arrowprops=dict(arrowstyle="->", color="#408040", lw=1.0),
                 zorder=14)
-    ax.text(LW_NOTE_X + 505, LW_MID_Y + 80,
+    ax.text(LW_NOTE_X + 400, LW_MID_Y + 200,
             f"LEFT WALKWAY — REMOVABLE LIFT-OUT\n"
             f"X={WALKWAY_LEFT_X}–{int(LXR)}mm\n"
             "Remove for transport (panel+drum swing 56°)",

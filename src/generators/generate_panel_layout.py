@@ -268,7 +268,7 @@ def draw_ball_valve(x, z, label, color):
     vertical riser, with the label set just to the side (clear of the ball)."""
     valve_ball(ax, sx(x), sz(z), BV_R, color, vert=True)
     lbl = label.replace("\n", "-")
-    ax.text(sx(x + BV_R) + 4, sz(z), lbl, ha="left", va="center",
+    ax.text(sx(x + BV_R) + 6, sz(z) + 6, lbl, ha="left", va="center",
             fontsize=5, color=color, fontweight="bold", zorder=14, **FONT)
 
 
@@ -410,7 +410,7 @@ def draw_corridor_panel():
                 xytext=(sx(DISCH_RISER + BV_R), sz(SV02_Z)),
                 arrowprops=dict(**_arrow_kw, color=C_BLACK_SYS), zorder=11)
     leader(ax, sx(DISCH_RISER + BV_R), sz(SV02_Z),
-           sx(EXIT_R + 10), sz(SV02_Z - 120),
+           sx(EXIT_R - 10), sz(SV02_Z - 60),
            "SV-02 — pH sample tap\n(P-04 discharge, before DV-02)",
            fs=6, color=C_BLACK_EC, ha="left", va="center", font=FONT)
 

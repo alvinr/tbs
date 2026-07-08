@@ -667,7 +667,7 @@ def draw_sheet2():
 
     # CORRIDOR PUMPS (Yd=1046) — P-01/03/04/05 + ACC (P-02 + the filters are on the pinhole wall)
     equip(EQPANEL_X - BB_OD, CORRIDOR_YD_NEAR, EQPANEL_W, CORRIDOR_W,
-          "C", C_PUMP, "Corridor pumps  Yd=1046–1316")
+          "C", C_PUMP, "Corridor pumps")
 
     # RIGHT END ZONE — 4× IBC in 2×2 stack
     # Near column (Yd=30–1046): Blue #1 on top, Brown on bottom
@@ -839,7 +839,7 @@ def draw_sheet2():
            fs=6.5)
     # Pump — Cct C (on plumbing panel in IBC corridor)
     leader(ax, PUMP_CX, OY + wt + (CORRIDOR_YD_NEAR + CORRIDOR_W/2) * S_yd,
-           PUMP_CX + 150, OY + cwid * 0.55,
+           PUMP_CX + 275, OY + cwid * 0.50,
            "Water pumps (C)\n12V DC  100W\ncorridor + P-02 (wall)",
            fs=6.5, color=C_PUMP)
     # Safelight — Cct D (label middle strip)
@@ -851,7 +851,7 @@ def draw_sheet2():
            fs=6.5, color="#B8960A")
     # Evap cooler — Cct E (external, duct penetration)
     leader(ax, DUCT_CX, OY + wt / 2,
-           DUCT_CX - 350, OY - 200,
+           DUCT_CX - 550, OY - 400,
            f"Evap cooler (E)\n120V AC {EVAP_COOLER_W_AC}W via inverter\nExternal + duct",
            fs=6.5, color=C_EVAP)
     # LED panels — Cct G (label middle panel only)
@@ -1228,7 +1228,7 @@ def draw_sheet3():
 
     # Pull switch label
     leader(ax, wx(PS_X_MM + sw_x_off), (CORD_HANG_Z),
-           wx(PS_X_MM) + 200, (CORD_HANG_Z) + 240,
+           wx(PS_X_MM) + 200, (CORD_HANG_Z) - 240,
            "Pull-cord switches\nD = safelight (red)\nG = white light\nCords end ~1180mm AFF\n(above the deployed shelf)",
            fs=6.5, color="#606080")
 
@@ -1321,7 +1321,7 @@ def draw_sheet3():
                f"Trunking\n{TK_H_MM}mm", offset=20, fs=6.0)
 
     # Pull switch cord length
-    ps_dim_x = wx(PS_X_MM - 120)  # mirrored offset
+    ps_dim_x = wx(PS_X_MM)  # mirrored offset
     draw_dim_v(ax, ps_dim_x, (CORD_HANG_Z), (PS_Z_MM),
                f"Cord {PS_Z_MM - CORD_HANG_Z}mm", offset=20, fs=6.0, right=True)
 
@@ -1491,7 +1491,7 @@ def draw_sheet4():
         "pressure switch. 15A fuse covers a single pump (7.5A) with margin. Conduit branches use curved",
         "elbow fittings (pipe convention). Wet zone: sealed, above the spill line.",
         "See Plumbing Panel report §3.2 / Electrical §7.3.",
-    ], -140, -80, spacing=44, fs=6.6, width=1010)
+    ], -140, -80, spacing=44, fs=6.6, width=1410)
 
     title_block(ax, "SHEET 4 OF 7",
                 drawing_title="PUMP POWER",

@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **electrical Sheet 4 note fit** — the Circuit-C pump-power note title overran the page. The title's
+  parenthetical just restated the body's opening sentence, so it was shortened to
+  "CIRCUIT C — PUMP POWER:" (detail kept in the body) — no page-widening or title-wrapping needed.
+
 - **electrical Sheet 1 fix** — the blue 12 V distribution bus (fuse block → circuit spine) ran straight
   *through* the interior E-STOP box on the one-line schematic. Dropped the interior E-stop below the bus
   so the bus routes cleanly in the gap between the external and interior E-stop boxes.

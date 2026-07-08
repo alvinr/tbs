@@ -1482,7 +1482,7 @@ def draw_sheet4():
 
     # ── Notes + title block (clear band below the panel) ──
     draw_notes(ax, [
-        "CIRCUIT C — PUMP POWER (one feed, master switch on the EP, four panel pumps):",
+        "CIRCUIT C — PUMP POWER:",
         "The 14 AWG / 15A Circuit-C feed is switched at the MASTER pump switch on the EP (Sheet 5),",
         "runs the ceiling trunk to this panel's 12V distribution block, then a 16 AWG branch to each",
         "pump. The four corridor pumps stack in a single column (bottom→top: ACC-01, P-01, P-04, P-05,",

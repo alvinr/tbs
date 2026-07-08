@@ -61,6 +61,7 @@ BROCHURE_EXCLUDE = {
     "right-walkway-cantilever-study.md",                                      # decision record
     "component-dimension-audit.md",                                           # internal QA audit
     "cost-analysis-report.md",                                                # overlaps project-cost-breakdown
+    "operating-manual.md",                                                    # operator procedure — not needed for funding/validation
 }
 
 # Unicode font path (macOS system font with broad Unicode coverage)

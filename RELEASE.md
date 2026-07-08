@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Brochure cover fix** — centered lines were rendering right of center (the 20mm left margin leaked
+  into `align="C"` cells after the first line); the cover now zeroes its page margins so every line
+  centers on the full page. Also cleaned the cover typography: em dash, `Ø2.17mm`, and middot separators.
+
 - **IBC report — diagrams inline** — the IBC stacking report embedded its 8 construction sheets only in
   the §8 gallery; each sheet now also appears **inline next to the section it illustrates** (cross-section
   + frame elevations in §3, fastening details in §4, bulkhead ports in §6, internal plumbing in §7),

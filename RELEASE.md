@@ -24,6 +24,11 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **IBC report — diagrams inline** — the IBC stacking report embedded its 8 construction sheets only in
+  the §8 gallery; each sheet now also appears **inline next to the section it illustrates** (cross-section
+  + frame elevations in §3, fastening details in §4, bulkhead ports in §6, internal plumbing in §7),
+  matching the other reports. The §8 gallery stays on the site but is `brochure:skip`-ped so the PDF
+  shows the inline set only (no double-embed).
 - **Brochure layout tweaks** — tightened the blank space after section headings (heading `b_margin`
   0.4→0.15 via `TextStyle`, plus a tighter heading line-height in the `HTML2FPDF` subclass), and made a
   subheading stacked directly under a section heading (e.g. `### What` under `## 2.`) sit close too

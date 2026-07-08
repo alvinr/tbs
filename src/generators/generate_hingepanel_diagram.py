@@ -1134,9 +1134,9 @@ def sheet3():
     ax.text((bx0 + bx1) / 2, by1 + 10,
             "operational / “camera” position  ·  section at corner zone  ·  enlarged ~3.3:1",
             ha="center", va="bottom", fontsize=6.4, color=C_DIM, **FONT)
-    ax.text(DX(-90), DY(150), "EXTERIOR", fontsize=6, color="#5060A0",
+    ax.text(DX(-90), DY(170), "EXTERIOR", fontsize=6, color="#5060A0",
             ha="left", va="center", fontweight="bold", **FONT)
-    ax.text(DX(170), DY(150), "INTERIOR", fontsize=6, color="#407040",
+    ax.text(DX(170), DY(170), "INTERIOR", fontsize=6, color="#407040",
             ha="right", va="center", fontweight="bold", **FONT)
 
     # floor + hatch below
@@ -1179,8 +1179,8 @@ def sheet3():
                     arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8,
                                     shrinkA=1, shrinkB=1), zorder=24)
         ax.text(tx, ty, text, fontsize=6.0, color=C_DIM, ha="left", va="center", **FONT)
-    dlbl((DX(20), DY(165)), DY(172), "Cam latch compresses panel\nonto seal (release to swing)")
-    dlbl((DX(20), DY(120)), DY(138), "Panel bottom edge\n(40 mm corner zone)")
+    dlbl((DX(20), DY(165)), DY(155), "Cam latch compresses panel\nonto seal (release to swing)")
+    dlbl((DX(20), DY(120)), DY(128), "Panel bottom edge\n(40 mm corner zone)")
     dlbl((DX(-10), DY(100)), DY(108), "20 mm EPDM — panel\nrecedes into / seals on lip")
     dlbl((DX(-26), DY(64)), DY(74), "Frame seal lip — steel upstand\nfrom threshold (notched at drum)")
     dlbl((DX(-40), DY(22)), DY(45), "Fixed door-frame\nthreshold (50×50 RHS)")
@@ -1261,7 +1261,7 @@ def sheet3():
                             # ody keeps it vertically between Details C (above) and B (below)
     def DDX(x): return odx + k * x          # panel depth (mm) → sheet x (exterior negative)
     def DDY(yr): return ody + k * yr        # Yd about the cut (yr=0) → sheet y
-    dbx0, dbx1 = DDX(-150), DDX(225)
+    dbx0, dbx1 = DDX(-180), DDX(220)
     dby0, dby1 = DDY(-64), DDY(60)
 
 #         cbx0, cbx1 = CX(-98), CX(300)
@@ -1276,7 +1276,7 @@ def sheet3():
             ha="center", va="bottom", fontsize=6.4, color=C_DIM, **FONT)
     ax.text(DDX(-75), DDY(48), "EXTERIOR", fontsize=6, color="#5060A0",
             ha="left", va="center", fontweight="bold", **FONT)
-    ax.text(DDX(75), DDY(48), "INTERIOR", fontsize=6, color="#407040",
+    ax.text(DDX(100), DDY(48), "INTERIOR", fontsize=6, color="#407040",
             ha="right", va="center", fontweight="bold", **FONT)
     # fixed strip edge (lower) + EPDM cut bulb (centre) + swinging panel edge (upper)
     ax.add_patch(Rectangle((DDX(0), DDY(-50)), k * 40, k * 43, fc="#C8A060", ec=C_OUT,
@@ -1604,7 +1604,7 @@ def sheet6():
     title_block(ax, "SHEET 6 OF 6", drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="INTERIOR PULL HANDLE — MOUNTING DETAIL (HORIZONTAL SECTION)",
                 scale_note="DETAIL · NOT TO SCALE · ALL DIMS IN mm",
-                doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.05)
+                doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045, scale=0.75)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet6.png"), dpi=130,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)

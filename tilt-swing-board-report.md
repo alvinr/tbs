@@ -99,7 +99,7 @@ Resolution per full turn:             arctan(1.0/130) = 0.44°
 Detents per turn (36-detent knob):    36
 Resolution per click:                 0.44° / 36 = 0.012° per click
 Full ±5° range from center:           ~410 clicks (11.4 turns)
-Mechanical hard stop:                 ±12mm travel = ±<!-- BEGIN fact:front_board_max_deg -->5.3<!-- END fact:front_board_max_deg -->°
+Mechanical hard stop:                 ±12mm travel = ±5.3°
 ```
 
 **Knob identification:**

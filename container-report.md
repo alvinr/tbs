@@ -194,6 +194,8 @@ and §13 for the optical line-of-sight clearance analysis.
 
 ---
 
+<!-- brochure:skip -->
+
 ### Proposal 2 — 40-foot Standard Container (The Production Camera)
 
 **Recommended for:** Full-scale production use, multiple image formats, maximum creative flexibility.
@@ -285,6 +287,8 @@ Two 20-foot standard containers are positioned end-to-end or side-by-side on sit
 Add the cost of a second 20-foot container (WWT, $1,500–$3,000) plus darkroom fit-out materials.
 
 ---
+
+<!-- brochure:endskip -->
 
 ## Part 6: Interior Conversion — All Proposals
 

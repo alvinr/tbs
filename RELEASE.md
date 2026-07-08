@@ -24,9 +24,11 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-- **Brochure readability pass** — the PDF read dense because fpdf2's `write_html` leads body paragraphs
-  at 1.0× (the Material-theme site renders ~1.6×). A `HTML2FPDF` subclass now renders body text at 1.35×
-  with a small inter-paragraph gap, leaving explicit CSS / table line-heights untouched. 195 → 206 pp.
+- **Brochure readability + site-matching fonts** — the PDF read dense and used Arial. Now it renders in
+  **IBM Plex Sans / IBM Plex Mono** (the mkdocs Material site font), bundled in `src/generators/fonts/`
+  (OFL 1.1) with Arial Unicode kept as a per-glyph fallback; and the `write_html` leading (fpdf2's tight
+  1.0× default vs the site's ~1.6×) is opened to **1.5×** via a `HTML2FPDF` subclass with a small
+  inter-paragraph gap, leaving table/CSS line-heights compact. 195 → 209 pp.
 - **3D overview scene + label pass** — reworked the per-subsystem scenes so each reads cleanly: the
   Ventilation scene gains the Fan A/B power cables (own tag) routed back to the EP, drops the
   plumbing-panel pump wiring, and shows only the evap-cooler (Cct E) circuit at the external panel — the

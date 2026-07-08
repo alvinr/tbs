@@ -227,8 +227,10 @@ def draw_sheet1():
                                 lw=1.6, linestyle=(0, (4, 2))), zorder=7)
     wlabel(ax, (bx + bw + SC_X) / 2 - 0.1, 7.18,
            "Control 2× 18 AWG  |  pinhole-wall gland", ha="center", size=7.0)
-    # interior E-stop on the EP face — paralleled with the exterior one (kill from inside too)
-    ies_y = 5.50
+    # interior E-stop on the EP face — paralleled with the exterior one (kill from inside too).
+    # Sits BELOW the distribution bus (y≈5.98) — the external E-stop is above it — so the bus runs
+    # cleanly in the gap between the two E-stop boxes instead of straight through this one.
+    ies_y = 5.26
     rbox(ax, SC_X, ies_y, SC_W, es_h,
          "EMERGENCY CUT-OFF  (E-STOP) — interior EP",
          "Red IP65 mushroom on the EP face  →  also trips contactor OFF (2 of 2)",

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """parts.py — the UNIFIED PARTS REGISTRY (drift-reduction Phase 5).
 
 The single source of every purchasable item: quantity, type, supplier, unit-cost band, the

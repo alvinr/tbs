@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """generate_walkway_sections.py — LONGITUDINAL sections showing how the corridor↔
 pinhole-wall pipes thread BELOW the right walkway (IBC end) as the under-walkway RIBBON.
 

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """Generate the TBS-001 Film-Plane SketchUp model (logical model: film-plane).
 
 OPTION A design (chosen 2026-06-06): the film is a FIXED-SIZE rigid rectangle that
@@ -615,7 +617,10 @@ def generate_ruby():
         "with **four independently actuated corners**",
         "bb5394a8983a491fa541088b901c24f8", "sketchup")
 
-    return f'''model = Sketchup.active_model
+    return f'''# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
+# Generated from src/models/ — do not edit this .rb directly.
+model = Sketchup.active_model
 model.start_operation("TBS-001 Film Plane (Option A)", true)
 entities = model.active_entities
 opts = model.options["UnitsOptions"]; opts["LengthUnit"]=2; opts["LengthFormat"]=0; opts["LengthPrecision"]=1

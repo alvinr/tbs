@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # Electrical / Power System — Focused 3D Model — Design
 
 **Goal:** Build the missing subsystem SketchUp model, **`electrical`**, showing the TBS-001

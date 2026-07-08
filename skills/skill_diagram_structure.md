@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 ---
 name: diagram-structure
 description: Coordinate system, view conventions, multi-sheet patterns, shared helpers, and generator boilerplate for all TBS engineering diagrams

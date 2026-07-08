@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """check_shirt_slots.py — verify the pump-mount ply 'shirt' is not impaled by IN-PLANE pipes.
 
 check_interference.py SKIPS pipe-through-ply (treats penetrations as permitted), so it does NOT

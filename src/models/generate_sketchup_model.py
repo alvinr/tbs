@@ -2116,7 +2116,10 @@ def generate_ruby():
         "installation that resembles a camera. It is a camera.",
         "e624e210bf3d4de08b1a7b7261a66c45", "sketchup")
 
-    return f'''model = Sketchup.active_model
+    return f'''# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
+# Generated from src/models/ — do not edit this .rb directly.
+model = Sketchup.active_model
 model.start_operation("TBS-001 Overview", true)
 entities = model.active_entities
 

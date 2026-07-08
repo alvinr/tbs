@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """check_interference.py — pipe-vs-solid interference audit for the live SketchUp model.
 
 Hand-routing pipes in the dense corridor kept reintroducing collisions (pipe through frame,

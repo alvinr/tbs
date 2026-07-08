@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """Generate the TBS-001 IBC Stack SketchUp model (logical model: ibc-stack).
 
 Focused on the IBC tote stack, its steel support frame, and the plumbing +
@@ -160,7 +162,10 @@ def generate_ruby():
         "Details of the IBC stack, frame and plumbing panel.",
         "8d091c60e93848f38e26c9c89a08cbc8", "sketchup")   # correct IBC UID (the .skp had the overview's e624e210 by mistake)
 
-    return f'''model = Sketchup.active_model
+    return f'''# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
+# Generated from src/models/ — do not edit this .rb directly.
+model = Sketchup.active_model
 model.start_operation("TBS-001 IBC Stack", true)
 entities = model.active_entities
 

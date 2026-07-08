@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """
 mkdocs build hook — expose the released version to templates without storing it.
 

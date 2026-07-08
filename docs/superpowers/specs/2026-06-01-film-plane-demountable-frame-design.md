@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # Film-Plane Mechanism — Demountable Brace Cage, Drum Clearance & Walkway Interface
 
 **Date:** 2026-06-01

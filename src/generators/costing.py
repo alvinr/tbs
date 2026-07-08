@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """costing.py — single source of truth for TBS-001 cost line items + derived totals.
 
 WHY THIS EXISTS

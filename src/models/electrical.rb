@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
+# Generated from src/models/ — do not edit this .rb directly.
 model = Sketchup.active_model
 model.start_operation("TBS-001 Electrical", true)
 entities = model.active_entities
@@ -672,7 +675,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-3.3710904324400417.mm, 11.174603174603135.mm, -9.294027154632516.mm)
+  vec = Geom::Vector3d.new(-3.3710904324400417.mm, 11.174603174603135.mm, -9.294027154632523.mm)
   circle = ge.add_circle([1304.9884758210587.mm,-772.6031746031746.mm,60.54726213625084.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -686,8 +689,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-8.933421446249213.mm, 11.174603174603249.mm, -4.235229948707875.mm)
-  circle = ge.add_circle([1301.6173853886187.mm,-761.4285714285714.mm,51.25323498161833.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.933421446249213.mm, 11.174603174603249.mm, -4.235229948707868.mm)
+  circle = ge.add_circle([1301.6173853886187.mm,-761.4285714285714.mm,51.25323498161832.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -840,7 +843,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(2.7777073955937794.mm, 11.174603174603135.mm, 9.488283990227053.mm)
+  vec = Geom::Vector3d.new(2.7777073955937794.mm, 11.174603174603135.mm, 9.488283990227039.mm)
   circle = ge.add_circle([1279.0719702576096.mm,-638.5079365079365.mm,58.633966698844425.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -854,8 +857,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(8.648268936837894.mm, 11.174603174603249.mm, 4.790682190550854.mm)
-  circle = ge.add_circle([1281.8496776532033.mm,-627.3333333333334.mm,68.12225068907148.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.648268936837894.mm, 11.174603174603249.mm, 4.790682190550868.mm)
+  circle = ge.add_circle([1281.8496776532033.mm,-627.3333333333334.mm,68.12225068907146.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1274,7 +1277,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.091062472885142.mm, 11.174603174603135.mm, 7.78730694182191.mm)
+  vec = Geom::Vector3d.new(-6.091062472885142.mm, 11.174603174603135.mm, 7.787306941821903.mm)
   circle = ge.add_circle([1285.5749983342314.mm,-292.0952380952381.mm,48.69870124300441.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -1288,8 +1291,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.1477544109268365.mm, 11.174603174603249.mm, 9.819666555791699.mm)
-  circle = ge.add_circle([1279.4839358613463.mm,-280.92063492063494.mm,56.48600818482632.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(1.1477544109268365.mm, 11.174603174603249.mm, 9.819666555791706.mm)
+  circle = ge.add_circle([1279.4839358613463.mm,-280.92063492063494.mm,56.48600818482631.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2604,7 +2607,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.418368879275704.mm, -2.5357148359493706.mm, 11.37928719490992.mm)
+  vec = Geom::Vector3d.new(-9.418368879275704.mm, -2.5357148359493635.mm, 11.37928719490992.mm)
   circle = ge.add_circle([1311.1398123176873.mm,-57.11590977512742.mm,1140.3413249442387.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -2618,8 +2621,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-4.828357313004972.mm, -8.573226322840902.mm, 11.305328620385353.mm)
-  circle = ge.add_circle([1301.7214434384116.mm,-59.65162461107679.mm,1151.7206121391487.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-4.828357313004972.mm, -8.57322632284091.mm, 11.305328620385353.mm)
+  circle = ge.add_circle([1301.7214434384116.mm,-59.651624611076784.mm,1151.7206121391487.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2828,7 +2831,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.482696639387086.mm, -2.278244054865958.mm, 11.3803237041584.mm)
+  vec = Geom::Vector3d.new(-9.482696639387086.mm, -2.278244054865965.mm, 11.3803237041584.mm)
   circle = ge.add_circle([1314.3772508079644.mm,-57.166800775558926.mm,1319.9296338243005.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -2842,8 +2845,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-5.05565119709172.mm, -8.436279561400461.mm, 11.308990992783038.mm)
-  circle = ge.add_circle([1304.8945541685773.mm,-59.445044830424884.mm,1331.3099575284589.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-5.05565119709172.mm, -8.436279561400454.mm, 11.308990992783038.mm)
+  circle = ge.add_circle([1304.8945541685773.mm,-59.44504483042489.mm,1331.3099575284589.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2940,7 +2943,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.512274654742669.mm, -2.1488868572789173.mm, 11.380800292904041.mm)
+  vec = Geom::Vector3d.new(-9.512274654742441.mm, -2.1488868572789173.mm, 11.380800292904041.mm)
   circle = ge.add_circle([1315.9954293873695.mm,-57.195686389145656.mm,1409.7237969760447.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -2954,8 +2957,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (+) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-5.167905496732828.mm, -8.365540100386568.mm, 11.310799739420418.mm)
-  circle = ge.add_circle([1306.4831547326269.mm,-59.344573246424574.mm,1421.1045972689487.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-5.167905496733056.mm, -8.365540100386568.mm, 11.310799739420418.mm)
+  circle = ge.add_circle([1306.483154732627.mm,-59.344573246424574.mm,1421.1045972689487.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3514,7 +3517,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-3.3710904324400417.mm, 11.174603174603135.mm, -9.294027154632516.mm)
+  vec = Geom::Vector3d.new(-3.3710904324400417.mm, 11.174603174603135.mm, -9.294027154632523.mm)
   circle = ge.add_circle([1320.9884758210587.mm,-772.6031746031746.mm,60.54726213625084.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -3528,8 +3531,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-8.933421446249213.mm, 11.174603174603249.mm, -4.235229948707875.mm)
-  circle = ge.add_circle([1317.6173853886187.mm,-761.4285714285714.mm,51.25323498161833.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-8.933421446249213.mm, 11.174603174603249.mm, -4.235229948707868.mm)
+  circle = ge.add_circle([1317.6173853886187.mm,-761.4285714285714.mm,51.25323498161832.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3682,7 +3685,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(2.7777073955937794.mm, 11.174603174603135.mm, 9.488283990227053.mm)
+  vec = Geom::Vector3d.new(2.7777073955937794.mm, 11.174603174603135.mm, 9.488283990227039.mm)
   circle = ge.add_circle([1295.0719702576096.mm,-638.5079365079365.mm,58.633966698844425.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -3696,8 +3699,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(8.648268936837894.mm, 11.174603174603249.mm, 4.790682190550854.mm)
-  circle = ge.add_circle([1297.8496776532033.mm,-627.3333333333334.mm,68.12225068907148.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.648268936837894.mm, 11.174603174603249.mm, 4.790682190550868.mm)
+  circle = ge.add_circle([1297.8496776532033.mm,-627.3333333333334.mm,68.12225068907146.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -4116,7 +4119,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.091062472885142.mm, 11.174603174603135.mm, 7.78730694182191.mm)
+  vec = Geom::Vector3d.new(-6.091062472885142.mm, 11.174603174603135.mm, 7.787306941821903.mm)
   circle = ge.add_circle([1301.5749983342314.mm,-292.0952380952381.mm,48.69870124300441.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -4130,8 +4133,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.1477544109268365.mm, 11.174603174603249.mm, 9.819666555791699.mm)
-  circle = ge.add_circle([1295.4839358613463.mm,-280.92063492063494.mm,56.48600818482632.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(1.1477544109268365.mm, 11.174603174603249.mm, 9.819666555791706.mm)
+  circle = ge.add_circle([1295.4839358613463.mm,-280.92063492063494.mm,56.48600818482631.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -5446,7 +5449,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.418368879275704.mm, -2.5357148359493706.mm, 11.37928719490992.mm)
+  vec = Geom::Vector3d.new(-9.418368879275704.mm, -2.5357148359493635.mm, 11.37928719490992.mm)
   circle = ge.add_circle([1327.1398123176873.mm,-57.11590977512742.mm,1140.3413249442387.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -5460,8 +5463,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-4.828357313004972.mm, -8.573226322840902.mm, 11.305328620385353.mm)
-  circle = ge.add_circle([1317.7214434384116.mm,-59.65162461107679.mm,1151.7206121391487.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-4.828357313004972.mm, -8.57322632284091.mm, 11.305328620385353.mm)
+  circle = ge.add_circle([1317.7214434384116.mm,-59.651624611076784.mm,1151.7206121391487.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -5670,7 +5673,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.482696639387086.mm, -2.278244054865958.mm, 11.3803237041584.mm)
+  vec = Geom::Vector3d.new(-9.482696639387086.mm, -2.278244054865965.mm, 11.3803237041584.mm)
   circle = ge.add_circle([1330.3772508079644.mm,-57.166800775558926.mm,1319.9296338243005.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -5684,8 +5687,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-5.05565119709172.mm, -8.436279561400461.mm, 11.308990992783038.mm)
-  circle = ge.add_circle([1320.8945541685773.mm,-59.445044830424884.mm,1331.3099575284589.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-5.05565119709172.mm, -8.436279561400454.mm, 11.308990992783038.mm)
+  circle = ge.add_circle([1320.8945541685773.mm,-59.44504483042489.mm,1331.3099575284589.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -5782,7 +5785,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.512274654742669.mm, -2.1488868572789173.mm, 11.380800292904041.mm)
+  vec = Geom::Vector3d.new(-9.512274654742441.mm, -2.1488868572789173.mm, 11.380800292904041.mm)
   circle = ge.add_circle([1331.9954293873695.mm,-57.195686389145656.mm,1409.7237969760447.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -5796,8 +5799,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "PV cord (-) (array -> panel MC4, bonded pair)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-5.167905496732828.mm, -8.365540100386568.mm, 11.310799739420418.mm)
-  circle = ge.add_circle([1322.4831547326269.mm,-59.344573246424574.mm,1421.1045972689487.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-5.167905496733056.mm, -8.365540100386568.mm, 11.310799739420418.mm)
+  circle = ge.add_circle([1322.483154732627.mm,-59.344573246424574.mm,1421.1045972689487.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -10222,7 +10225,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Fan B flex connector (box -> fan, Cct B)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-1.5002345951338185.mm, 13.004426672891782.mm, 20.238523937893206.mm)
+  vec = Geom::Vector3d.new(-1.5002345951338327.mm, 13.004426672891782.mm, 20.238523937893206.mm)
   circle = ge.add_circle([116.76801970230245.mm,246.0416005068517.mm,598.097985352377.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -10236,8 +10239,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Fan B flex connector (box -> fan, Cct B)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(8.220974819980384.mm, 20.530524284593128.mm, 9.585239367105373.mm)
-  circle = ge.add_circle([115.26778510716863.mm,259.0460271797435.mm,618.3365092902702.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(8.220974819980398.mm, 20.530524284593128.mm, 9.585239367105373.mm)
+  circle = ge.add_circle([115.26778510716862.mm,259.0460271797435.mm,618.3365092902702.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

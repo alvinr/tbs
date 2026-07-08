@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """Generate the TBS-001 Electrical / Power System SketchUp model (logical model: electrical).
 
 The missing subsystem model: solar generation -> storage -> distribution -> loads.
@@ -594,7 +596,10 @@ def generate_ruby():
         "to view the whole system.",
         "6930c96be025469fb8ef702393d7c35f", "sketchup")
 
-    return f'''model = Sketchup.active_model
+    return f'''# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
+# Generated from src/models/ — do not edit this .rb directly.
+model = Sketchup.active_model
 model.start_operation("TBS-001 Electrical", true)
 entities = model.active_entities
 

@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 ---
 name: Plumbing pipe drawing conventions
 description: How to draw and model pipes, fittings (elbows, tees, barbs), hose/duct runs, and right-angle connections to boxes/manifolds/penetrations — for both 2D TBS diagrams and the 3D SketchUp models

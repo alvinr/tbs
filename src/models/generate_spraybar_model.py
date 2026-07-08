@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """Generate the TBS-001 Spray-Bar Gantry SketchUp model (logical model: spraybar).
 
 A focused model of the spray-bar gantry: the 40×25×3mm 304-SS RHS beam (its
@@ -465,7 +467,10 @@ def generate_ruby():
         "water distribution across the full print width.",
         "18fb381fbf48459cac25dcaa23958387", "sketchup")
 
-    return f'''model = Sketchup.active_model
+    return f'''# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
+# Generated from src/models/ — do not edit this .rb directly.
+model = Sketchup.active_model
 model.start_operation("TBS-001 Spray-Bar Gantry", true)
 entities = model.active_entities
 

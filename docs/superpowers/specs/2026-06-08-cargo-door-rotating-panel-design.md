@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # Cargo-Door Rotating Hinge-Panel — Transport Scheme (Design Spec)
 
 **Date:** 2026-06-08

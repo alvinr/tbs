@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # TBS-001 — Light-Trap Punch-Out Bay (Design Spec)
 
 > **Status:** Draft for review · **Date:** 2026-06-05 · **Branch:** `lighttrap-refactor`

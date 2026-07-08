@@ -214,6 +214,27 @@ The script auto-detects whether a git remote is set. If not, it falls back to `-
 
 ---
 
+## License Headers
+
+**Every `.py`, `.rb`, and `.md` file MUST carry the SPDX license header.** Enforced by a `lint.py`
+GATE (`license headers on every .py/.rb/.md`) that blocks the commit if any tracked file lacks it —
+so new files can't ship without it.
+
+- **Python / Ruby** — after the shebang if present:
+  ```
+  # SPDX-License-Identifier: AGPL-3.0-only
+  # © 2026 Alvin Richards
+  ```
+- **Markdown** — top of file, as HTML comments (hidden on the rendered site):
+  ```
+  <!-- SPDX-License-Identifier: AGPL-3.0-only -->
+  <!-- © 2026 Alvin Richards -->
+  ```
+- **Generated `.rb`** get the header from their generator's Ruby preamble — edit the generator and
+  regenerate, never hand-edit the `.rb`.
+- The Markdown header is the *source* protection; the rendered site shows the copyright once, in the
+  **footer** (with the version) — do NOT restate it in the body.
+
 ## Git
 
 Standing permission to commit and redeploy on every request in this project.

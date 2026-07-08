@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """generate_pinhole_water_panel.py — EXPLORATORY massing (pinhole-wall-mount branch).
 
 Block massing of the wet end (pumps + ACC + filters) wall-mounted on the PINHOLE
@@ -516,7 +518,10 @@ def build():
     tags.add("Labels"); tags.add("Labels Context")
     body = "\n".join(comps)
     tags_ruby = "".join(f'  model.layers.add({t!r}) unless model.layers[{t!r}]\n' for t in sorted(tags))
-    return f'''model = Sketchup.active_model
+    return f'''# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
+# Generated from src/models/ — do not edit this .rb directly.
+model = Sketchup.active_model
 model.start_operation("Pinhole-wall layout", true)
 entities = model.active_entities
 to_erase = entities.to_a.select {{ |e| e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance) || e.is_a?(Sketchup::Text) || e.is_a?(Sketchup::ConstructionLine) || e.is_a?(Sketchup::ConstructionPoint) || e.is_a?(Sketchup::Edge) }}

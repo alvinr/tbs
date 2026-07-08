@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 model = Sketchup.active_model
 model.start_operation("TBS-001 Right Cantilever Study", true)
 entities = model.active_entities

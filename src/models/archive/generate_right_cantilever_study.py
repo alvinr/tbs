@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """STUDY model — right walkway cantilevered off the IBC frame (replaces the ceiling
 hangers, which clashed the film plane). Focused on the right-end zone so the new
 support can be reviewed in context before it's adopted into the walkway/overview models.
@@ -259,7 +261,10 @@ def generate_ruby():
     scenes_ruby = '[' + ', '.join(
         '["%s", [%s]]' % (n, ', '.join(f'"{t}"' for t in tags)) for n, tags in scenes) + ']'
 
-    return f'''model = Sketchup.active_model
+    return f'''# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
+# Generated from src/models/ — do not edit this .rb directly.
+model = Sketchup.active_model
 model.start_operation("TBS-001 Right Cantilever Study", true)
 entities = model.active_entities
 opts = model.options["UnitsOptions"]; opts["LengthUnit"]=2; opts["LengthFormat"]=0; opts["LengthPrecision"]=1

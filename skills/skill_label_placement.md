@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 ---
 name: Label placement skill
 description: place_label(), leader(), and draw_notes() in tbs_drawing.py — 12 label/leader/notes/dimension principles distilled from the user's manual "Tidy Labels" corrections across every diagram generator. Each principle carries the concrete numbers; parenthesised (rN) tags trace back to the original per-commit rules.

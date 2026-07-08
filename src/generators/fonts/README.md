@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # Bundled fonts — IBM Plex (SIL Open Font License 1.1)
 
 The brochure PDF (`generate_brochure.py`) renders in **IBM Plex Sans** / **IBM Plex Mono**

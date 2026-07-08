@@ -24,6 +24,16 @@ _C_OUT = "#1A1A1A"
 _C_DIM = "#404040"
 _FONT  = {"fontfamily": "monospace"}
 
+# Released version — single source: RELEASE.md via tbs_version. Stamped in the left cell.
+# Read at import time; regenerating the PNGs after a RELEASE.md bump re-stamps them (release.sh does this).
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+try:
+    from tbs_version import current_version as _current_version
+    _VERSION = _current_version()
+except Exception:
+    _VERSION = ""
+
 
 def title_block(ax, sheet_label, *, drawing_title="", subtitle="",
                 scale_note="", doc_id="", height=0.045, portrait=False):
@@ -91,7 +101,8 @@ def title_block(ax, sheet_label, *, drawing_title="", subtitle="",
     left_rows = [
         ("THE BIG SHOEBOX PROJECT", row_top, fs_title,
          dict(fontweight="bold", color=_C_OUT)),
-        (doc_id or "TBS-001", row_mid, fs_body, dict(color=_C_DIM)),
+        (f"{doc_id or 'TBS-001'}  ·  v{_VERSION}" if _VERSION else (doc_id or "TBS-001"),
+         row_mid, fs_body, dict(color=_C_DIM)),
         ("© 2026 Alvin Richards — GNU AGPLv3", row_bot, fs_small,
          dict(color=_C_DIM, style="italic")),
     ]
@@ -101,11 +112,8 @@ def title_block(ax, sheet_label, *, drawing_title="", subtitle="",
         t_obj.set_clip_path(clip_left)
 
     # ── Center cell: drawing title ───────────────────────────────────────────
-    center_top = drawing_title
-    if center_top and sheet_label:
-        center_top = f"{drawing_title} — {sheet_label}"
-    elif not center_top:
-        center_top = sheet_label
+    # The sheet label (SHEET X OF Y) lives in the RIGHT cell only — not duplicated here.
+    center_top = drawing_title or ""
 
     scale_text = f"Scale: {scale_note}" if scale_note else "ALL DIMS IN mm"
 

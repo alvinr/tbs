@@ -132,6 +132,23 @@ and §13 for the optical line-of-sight clearance analysis.
 
 ## Part 5: Container Proposals
 
+### Comparative Summary of Proposals
+
+| | Proposal 1 | Proposal 2 | Proposal 3 | Proposal 4 |
+|-|-----------|-----------|-----------|-----------|
+| Container | 20 ft standard | 40 ft standard | 40 ft standard | Two 20 ft |
+| Orientation | Side-to-side | Side-to-side | End-to-end | Side-to-side + darkroom |
+| Image plane | 19'4" × 7'10" | Up to 39'5" × 7'10" | 7'9" × 7'10" | 19'4" × 7'10" |
+| Focal length | 7'9" (<!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm) | 7'9" (<!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm) | 39'5" (12,013mm) | 7'9" (<!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm) |
+| Optimal pinhole | 2.17mm | 2.17mm | 4.87mm | 2.17mm |
+| F-number | f/1088 | f/1088 | f/2467 | f/1088 |
+| Horizontal FOV | 102° | 102°–137° | 11° | 102° |
+| RC paper exp. (Schwarzschild-corrected) | **~43 min** | **~43 min** | ~4 hr 52 min | **~43 min** |
+| Cyanotype on muslin exp. (Ware New Cyanotype, no correction) | **~30–45 min** | **~30–45 min** | ~2.5–4 hr | **~30–45 min** |
+| Transport permit | None | None | None | None (2 loads) |
+| Purchase price range | $1,800–$3,800 | $2,200–$5,700 | $2,200–$5,700 | $3,600–$7,600 |
+| Darkroom included | No | No | No | **Yes** |
+
 ### Proposal 1 — 20-foot Standard Container (The Entry Camera)
 
 **Recommended for:** First build, testing, budget-conscious projects, single-operator deployments.
@@ -420,27 +437,12 @@ For operations involving darkroom chemistry inside the container:
 
 ---
 
-## Part 7: Comparative Proposal Summary
 
-| | Proposal 1 | Proposal 2 | Proposal 3 | Proposal 4 |
-|-|-----------|-----------|-----------|-----------|
-| Container | 20 ft standard | 40 ft standard | 40 ft standard | Two 20 ft |
-| Orientation | Side-to-side | Side-to-side | End-to-end | Side-to-side + darkroom |
-| Image plane | 19'4" × 7'10" | Up to 39'5" × 7'10" | 7'9" × 7'10" | 19'4" × 7'10" |
-| Focal length | 7'9" (<!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm) | 7'9" (<!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm) | 39'5" (12,013mm) | 7'9" (<!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm) |
-| Optimal pinhole | 2.17mm | 2.17mm | 4.87mm | 2.17mm |
-| F-number | f/1088 | f/1088 | f/2467 | f/1088 |
-| Horizontal FOV | 102° | 102°–137° | 11° | 102° |
-| RC paper exp. (Schwarzschild-corrected) | **~43 min** | **~43 min** | ~4 hr 52 min | **~43 min** |
-| Cyanotype on muslin exp. (Ware New Cyanotype, no correction) | **~30–45 min** | **~30–45 min** | ~2.5–4 hr | **~30–45 min** |
-| Transport permit | None | None | None | None (2 loads) |
-| Purchase price range | $1,800–$3,800 | $2,200–$5,700 | $2,200–$5,700 | $3,600–$7,600 |
-| Darkroom included | No | No | No | **Yes** |
 | Recommended | ✅ First build | ✅ Full production | For digital only | ✅ Field deployment |
 
 ---
 
-## Part 8: Structural Considerations for Container Modification
+## Part 7: Structural Considerations for Container Modification
 
 Shipping containers are engineered to carry loads at the **eight corner castings** — the steel fittings at each corner. All primary structural force flows through the four vertical corner posts. The corrugated walls, roof, and floor are not the primary structure.
 
@@ -457,7 +459,7 @@ Shipping containers are engineered to carry loads at the **eight corner castings
 
 ---
 
-## Part 9: Sourcing Containers — Where to Buy
+## Part 8: Sourcing Containers — Where to Buy
 
 ### Online Marketplaces
 
@@ -483,7 +485,7 @@ A field inspection visit is strongly preferred for any unit over $2,500.
 
 ---
 
-## Part 10: Recommended Build Sequence
+## Part 9: Recommended Build Sequence
 
 The following order minimizes rework and avoids modifying a container that fails the light-seal inspection.
 

@@ -24,6 +24,11 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Brochure "Introduction" section** — the three top-level chapters (Home, Proposal, Costing) are now
+  grouped under an **Introduction** section in the PDF — a section-divider page, a TOC group, and the
+  chapter-header label — matching every other part. Brochure-only (parse_nav default section; the site
+  nav is unaffected).
+
 - **Brochure cover fix** — centered lines were rendering right of center (the 20mm left margin leaked
   into `align="C"` cells after the first line); the cover now zeroes its page margins so every line
   centers on the full page. Also cleaned the cover typography: em dash, `Ø2.17mm`, and middot separators.

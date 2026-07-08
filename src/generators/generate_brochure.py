@@ -330,7 +330,10 @@ def parse_nav(mkdocs_yml_path):
                     elif isinstance(val, list):
                         _walk(val, key)
 
-    _walk(nav, None)
+    # Top-level chapters (Home/Summary, Proposal, Costing) have no nav section; group them
+    # under an "Introduction" section so the PDF gives them a section divider, a TOC group,
+    # and a header label like every other part. (Brochure-only — the site nav is unaffected.)
+    _walk(nav, "Introduction")
     return pages
 
 

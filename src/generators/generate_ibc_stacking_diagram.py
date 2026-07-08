@@ -139,10 +139,10 @@ def sheet1():
             ha="center", va="top", fontsize=6, color=C_DIM, **FONT)
     ax.text((C_WID / 2), (C_HGT + 45), "CONTAINER CEILING (Z=2388mm)",
             ha="center", va="bottom", fontsize=6, color=C_DIM, **FONT)
-    ax.text((-50), (C_HGT / 2), "NEAR WALL (Yd=0)",
+    ax.text((-50), (C_HGT * 0.45), "NEAR WALL",
             ha="center", va="center", fontsize=5.5, color=C_DIM, **FONT,
             rotation=90)
-    ax.text((C_WID + 45), (C_HGT / 2), "FAR WALL (Yd=2362)",
+    ax.text((C_WID + 45), (C_HGT * 0.55), "FAR WALL",
             ha="center", va="center", fontsize=5.5, color=C_DIM, **FONT,
             rotation=90)
 
@@ -182,7 +182,7 @@ def sheet1():
         ax.plot([(yd), (yd + d)], [(z + h), (z + h)],
                 color=C_OUT, lw=1.2, zorder=6)
         # Label
-        ax.text((yd + d / 2), (z + h / 2), label,
+        ax.text((yd + d / 2), (z + h * 0.6), label,
                 ha="center", va="center", fontsize=7, color=C_OUT,
                 fontweight="bold", **FONT, zorder=10)
 
@@ -1262,7 +1262,8 @@ def sheet4():
         "   SIDE-ENTERING the tote's corridor face near the top (no cap drop).",
         f"8. Corridor plumbing panel (18mm marine ply) at X={EQPANEL_X}: pumps",
         "   P-01/P-03/P-04/P-05 + ACC-01 (filters on the Pinhole Wall panel).",
-        f"9. Deep 4-leg box frame: 4 uprights (front X{int(cp.FRONT_X)} + back X{int(cp.BACK_X)}) + top/bottom rings + 4 flange feet. ~{FRAME_WEIGHT}kg.",
+        f"9. Deep 4-leg box frame: 4 uprights (front X{int(cp.FRONT_X)} + back X{int(cp.BACK_X)})",
+        f"   + top/bottom rings + 4 flange feet. ~{FRAME_WEIGHT}kg.",
     ]
     draw_notes(ax, notes, leg_x, leg_box_bot - (55), spacing=(18),
                fs=7, font=FONT, width=850)
@@ -1668,7 +1669,7 @@ def sheet5():
     # access — direct-stack leaves ~52mm headroom).
     brown_in_z = IBC_H_1000 - 80  # near top of bottom-tier IBC-3
     pipe_stub_x(ax, near_col_r, brown_in_z, C_PIPE_BROWN,
-                "P-04 ← TRAY SUMP\n→ IBC-3 SIDE-ENTRY", label_side="left")
+                "P-04 ← TRAY SUMP\n→ IBC-3 SIDE-ENTRY", label_side="right")
     draw_flange(ax, near_col_r, brown_in_z, 'v', C_PIPE_BROWN)
     # P-04 tray drain transfer pump — on the brown inlet line
     p04_z = brown_in_z + 60
@@ -1688,7 +1689,7 @@ def sheet5():
     # 3W-DV-01 routes pH-OK filtrate back to Blue IBC-2 via a SIDE-ENTRY near the
     # top (no top-cap access).
     pipe_stub_x(ax, far_col_l, side_entry_z, C_PIPE_FILTER,
-                "FILTER RETURN →\nIBC-2 SIDE-ENTRY\n(recycle to Blue)", label_side="right")
+                "FILTER RETURN →\nIBC-2 SIDE-ENTRY\n(recycle to Blue)", label_side="left")
     draw_flange(ax, far_col_l, side_entry_z, 'v', C_PIPE_FILTER)
 
     # ── Waste IBC-4 inlet ← diverter/bypass (rejected filtrate) ─────────────
@@ -1696,7 +1697,7 @@ def sheet5():
     # SIDE-ENTRY near the top (no top-cap access).
     waste_in_z = IBC_H_1000 - 80  # near top of bottom-tier IBC-4
     pipe_stub_x(ax, far_col_l, waste_in_z, C_PIPE_BLACK,
-                "FILTER REJECT →\nIBC-4 SIDE-ENTRY", label_side="right")
+                "FILTER REJECT →\nIBC-4 SIDE-ENTRY", label_side="left")
     draw_flange(ax, far_col_l, waste_in_z, 'v', C_PIPE_BLACK)
 
     # ── Pipe labels for bulkhead connections ─────────────────────────────────

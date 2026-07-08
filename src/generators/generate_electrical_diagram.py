@@ -1493,7 +1493,7 @@ def draw_sheet4():
         "pressure switch. 15A fuse covers a single pump (7.5A) with margin. Conduit branches use curved",
         "elbow fittings (pipe convention). Wet zone: sealed, above the spill line.",
         "See Plumbing Panel report §3.2 / Electrical §7.3.",
-    ], -140, -80, spacing=44, fs=6.6, width=1410)
+    ], -280, -80, spacing=44, fs=6.6, width=1600)
 
     title_block(ax, "SHEET 4 OF 7",
                 drawing_title="PUMP POWER",

@@ -197,7 +197,7 @@ def sheet2():
 def sheet3():
     fig, ax = plt.subplots(figsize=(10, 7))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
-    ax.set_xlim(-60, 240); ax.set_ylim(SHELF_H - 80, STAY_Z + 80)
+    ax.set_xlim(-60, SHELF_DEPTH + 40); ax.set_ylim(SHELF_H - 80, STAY_Z + 80)
     ax.set_aspect("equal"); ax.axis("off")
 
     # wall
@@ -208,7 +208,8 @@ def sheet3():
     # hinge: wall leaf + knuckle + shelf leaf
     ax.add_patch(Rectangle((0, SHELF_H - 4), 8, 60, fc=C_HINGE, ec=C_OUT, lw=1.0, zorder=4))   # wall leaf (up)
     ax.add_patch(Circle((10, SHELF_H), 8, fc="#9098A0", ec=C_OUT, lw=1.0, zorder=6))            # knuckle
-    ax.add_patch(Rectangle((10, SHELF_H - SHELF_T), 70, SHELF_T, fc=C_SHELF, ec=C_OUT, lw=1.2, zorder=5))  # shelf board
+    ax.add_patch(Rectangle((10, SHELF_H - SHELF_T), SHELF_DEPTH - 10, SHELF_T, fc=C_SHELF, ec=C_OUT, lw=1.2, zorder=5))  # shelf board (full deployed depth)
+    ax.add_patch(Rectangle((SHELF_DEPTH - 6, SHELF_H), 6, 15, fc=C_SHELF, ec=C_OUT, lw=0.8, zorder=6))  # front lip
     leader(ax, 10, SHELF_H, 90, SHELF_H + 50, "PIANO HINGE\n(continuous, along the back edge)",
            color=C_HINGE, fs=6.5, ha="left", font=FONT)
     leader(ax, 45, SHELF_H - SHELF_T, 120, SHELF_H - SHELF_T - 60,
@@ -216,11 +217,11 @@ def sheet3():
 
     # stay anchor + stay to the front
     ax.add_patch(Rectangle((0, STAY_Z - 10), 16, 20, fc=C_HINGE, ec=C_OUT, lw=1.0, zorder=4))
-    ax.plot([8, 200], [STAY_Z, SHELF_H], color=C_HINGE, lw=3.0, zorder=5)
-    ax.add_patch(Circle((200, SHELF_H), 6, fc="#9098A0", ec=C_OUT, lw=0.8, zorder=6))
+    ax.plot([8, SHELF_DEPTH - 10], [STAY_Z, SHELF_H], color=C_HINGE, lw=3.0, zorder=5)
+    ax.add_patch(Circle((SHELF_DEPTH - 10, SHELF_H), 6, fc="#9098A0", ec=C_OUT, lw=0.8, zorder=6))
     leader(ax, 8, STAY_Z, 70, STAY_Z + 40, "STAY WALL ANCHOR\n(above the hinge)", color=C_HINGE, fs=6.5,
            ha="left", font=FONT)
-    leader(ax, 110, (STAY_Z + SHELF_H) / 2, 150, (STAY_Z + SHELF_H) / 2 + 60,
+    leader(ax, (8 + SHELF_DEPTH - 10) / 2, (STAY_Z + SHELF_H) / 2, SHELF_DEPTH - 60, (STAY_Z + SHELF_H) / 2 + 60,
            "STAY (chain or folding strut)\ncarries the deployed load;\nfolds flat when shelf folds up",
            color=C_HINGE, fs=6.5, ha="left", font=FONT)
 

@@ -259,15 +259,15 @@ def sheet1():
            "BR ENDS → COMBINED CORNER PLATE (×2)\nshared with the right walkway right beam\n(rev12 — replaces the BR saddles)",
            color=STRUCT, ha="center", fs=6.5, font=FONT)
 
-    # Travel dim
-    tr_x = RAIL_X_L - RAIL_W - 50
+    # Travel dim — on the INNER (right) side of the left rail (the outer side overlaps the drum ghost)
+    tr_x = RAIL_X_L + RAIL_W + 50
     tr_tick = 15
     ax.annotate("", xy=(tr_x, D_FAR-20),
                 xytext=(tr_x, D_NEAR+20),
                 arrowprops=dict(arrowstyle="<->", color=WHITE, lw=0.8, mutation_scale=5))
     ax.plot([tr_x - tr_tick, tr_x + tr_tick], [D_NEAR+20, D_NEAR+20], color=WHITE, lw=0.6)
     ax.plot([tr_x - tr_tick, tr_x + tr_tick], [D_FAR-20, D_FAR-20], color=WHITE, lw=0.6)
-    ax.text(RAIL_X_L - RAIL_W - 150, (D_NEAR+D_FAR)/2,
+    ax.text(RAIL_X_L + RAIL_W + 150, (D_NEAR+D_FAR)/2,
             f"{D_FAR-D_NEAR}\nmm\ntravel",
             color=WHITE, fontsize=6.5, ha="center", va="center", **FONT)
 

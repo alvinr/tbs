@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **film-plane Sheet 1 travel dim** — moved the depth-travel dimension from the outer (left) side of the
+  left rail — where it overlapped the Ø900 light-trap drum ghost + rail labels — to the inner (right)
+  side of the rail.
+
 - **electrical Sheet 4 title block** — the title block sat narrower than the page (the transAxes block
   spans the xlim, but content — the CORRIDOR leader and the notes block — spilled past it), and the ©
   line was clipped in the too-narrow left cell. Set the xlim to bound all content so the title block

@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """editorial_lint.py — TBS-001 report narrative validator (manual step).
 
 Mechanical enforcement of the house style in `skills/skill_report_writing.md`.

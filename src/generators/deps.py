@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """deps.py — loads dependencies.yml, the single structured script -> output-file graph.
 
 dependencies.yml replaced the machine tables that used to live in component-dependency-map.md

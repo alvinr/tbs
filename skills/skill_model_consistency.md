@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 ---
 name: model-consistency
 description: Find and fix drift between the 2D diagram generators, the 3D SketchUp models, and the reports — failure-mode taxonomy, the check_consistency.py audit, and a judgment checklist

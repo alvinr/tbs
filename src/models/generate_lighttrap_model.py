@@ -795,7 +795,10 @@ def generate_ruby():
         "— for example, between coating of the photosensitive material, or while the exposure is being made.",
         "a4f73191b8bb4d17a6e764585ca695be", "sketchup")
 
-    return f'''model = Sketchup.active_model
+    return f'''# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
+# Generated from src/models/ — do not edit this .rb directly.
+model = Sketchup.active_model
 model.start_operation("TBS-001 Light Trap (dynamic swing)", true)
 entities = model.active_entities
 

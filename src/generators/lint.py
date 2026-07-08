@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """lint.py — TBS-001 commit-time drift linter (Phase 3 of drift-reduction-plan.md).
 
 Two tiers so we can add rules safely (the labeling-rules pattern):
@@ -665,7 +667,40 @@ def warn_unused_imports() -> tuple[bool, list[str]]:
     return (not issues), (issues or ["no unused imports in generators/models"])
 
 
+def gate_license_headers() -> tuple[bool, list[str]]:
+    """Every tracked .py / .rb / .md must carry the SPDX license header (AGPL-3.0-only + ©).
+    Protects each source file at the source, independent of the rendered footer. Deterministic —
+    a file either contains the SPDX marker or it does not (zero false positives)."""
+    import subprocess
+    cwd = os.getcwd(); os.chdir(ROOT)
+    try:
+        files = subprocess.check_output(
+            ["git", "ls-files", "*.py", "*.rb", "*.md"]).decode().split()
+        missing = []
+        for f in files:
+            try:
+                if "SPDX-License-Identifier" not in open(f, encoding="utf-8").read():
+                    missing.append(f)
+            except OSError:
+                pass
+    finally:
+        os.chdir(cwd)
+    if missing:
+        msgs = []
+        for f in missing:
+            if f.endswith(".rb"):
+                msgs.append(f"{f} — generated .rb: add the header to its generator's Ruby preamble, then regenerate")
+            elif f.endswith(".md"):
+                msgs.append(f"{f} — add at top: <!-- SPDX-License-Identifier: AGPL-3.0-only --> / <!-- © 2026 Alvin Richards -->")
+            else:
+                msgs.append(f"{f} — add after the shebang: # SPDX-License-Identifier: AGPL-3.0-only / # © 2026 Alvin Richards")
+        msgs.append("Rule: every .py/.rb/.md carries the license header (CLAUDE.md § License Headers).")
+        return False, msgs
+    return True, [f"all {len(files)} tracked .py/.rb/.md carry the license header"]
+
+
 GATES = [
+    ("license headers on every .py/.rb/.md", gate_license_headers),
     ("costing reconciliation", gate_costing),
     ("costing doc-blocks (generated == doc)", gate_blocks),
     ("fact placeholders (generated == doc)", gate_fact_blocks),

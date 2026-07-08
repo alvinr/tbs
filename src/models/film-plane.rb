@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
+# Generated from src/models/ — do not edit this .rb directly.
 model = Sketchup.active_model
 model.start_operation("TBS-001 Film Plane (Option A)", true)
 entities = model.active_entities

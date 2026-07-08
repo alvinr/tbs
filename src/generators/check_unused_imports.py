@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """Unused-import checker (stdlib only — no pyflakes/autoflake dependency).
 
 Detects `import`s whose bound name is never used in the module. Used as a

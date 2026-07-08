@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """inject_dependency_map.py — make the §1 Component Registry in
 component-dependency-map.md a true OUTPUT of tbs_constants.py.
 

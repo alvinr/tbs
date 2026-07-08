@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 ---
 name: report-writing
 description: House style for the TBS-001 reports — what belongs in prose vs single-sourced vs the diagram, how to cite sources, terminology/spelling conventions, and the anti-patterns (duplication, old-vs-new archaeology, raw restated values) that cause narrative drift. Read before writing or editing any report `.md`.

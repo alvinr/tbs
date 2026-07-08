@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **License header on every source file, enforced** — added the SPDX/© header to every `.py`, `.rb`,
+  and `.md` that lacked it (generated `.rb` now emit it from their generator's Ruby preamble), and added
+  a `lint.py` GATE that blocks any commit where a tracked `.py/.rb/.md` is missing it. New rule in
+  CLAUDE.md § License Headers.
 - **Copyright de-duplication + source licensing** — removed the visible `*© … GNU AGPLv3*` footer line
   that each report duplicated in its body (the site footer already carries it, now with the version, so
   it was showing twice); and added the hidden SPDX/copyright comment header (`<!-- SPDX-License-Identifier

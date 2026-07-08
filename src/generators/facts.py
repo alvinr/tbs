@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """facts.py — loads the facts.yml single-source registry (Phase 2 of drift-reduction-plan.md).
 
 facts.yml is the editable source of truth. This module reads it with a TINY dependency-free

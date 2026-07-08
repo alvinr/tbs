@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """Push a logical TBS-001 model to Sketchfab and keep its embed in sync.
 
 Sketchfab's Data API cannot replace an existing model's geometry (PATCH is

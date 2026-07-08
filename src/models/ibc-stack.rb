@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
+# Generated from src/models/ — do not edit this .rb directly.
 model = Sketchup.active_model
 model.start_operation("TBS-001 IBC Stack", true)
 entities = model.active_entities
@@ -7065,7 +7068,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-27.603081244248187.mm, 30.62474162209861.mm, 9.070708408455346.mm)
+  vec = Geom::Vector3d.new(-27.603081244248187.mm, 30.624741622098668.mm, 9.070708408455346.mm)
   circle = ge.add_circle([2399.mm,424.mm,355.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -7079,8 +7082,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (elbow -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.59556304131911.mm, -23.325104356190707.mm, 21.40210177492156.mm)
-  circle = ge.add_circle([2371.396918755752.mm,454.6247416220986.mm,364.07070840845535.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-11.59556304131911.mm, -23.325104356190764.mm, 21.40210177492156.mm)
+  circle = ge.add_circle([2371.396918755752.mm,454.62474162209867.mm,364.07070840845535.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

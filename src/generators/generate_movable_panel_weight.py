@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """First-principles weight breakdown of the MOVABLE (swinging) part of the
 cargo-door hinged panel — TBS-001 rev 10.
 

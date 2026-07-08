@@ -499,7 +499,10 @@ def generate_ruby():
         "processing tray without wading through chemical solution.",
         "96b3d0e5fc8b4fc18c528f64bda028bc", "sketchup")
 
-    return f'''model = Sketchup.active_model
+    return f'''# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
+# Generated from src/models/ — do not edit this .rb directly.
+model = Sketchup.active_model
 model.start_operation("TBS-001 Walkway + Cantilevers", true)
 entities = model.active_entities
 

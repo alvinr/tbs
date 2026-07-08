@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Brochure layout tweaks** — tightened the blank space after section headings (heading `b_margin`
+  0.4→0.15 via `TextStyle`, plus a tighter heading line-height in the `HTML2FPDF` subclass); moved the
+  **Daily Energy** report into the **Research** section and dropped the **Operating Manual** section from
+  the PDF; renamed the TBS-002 nav section **PoC → Design for Educational Use**. 207 → 200 pp.
 - **License header on every source file, enforced** — added the SPDX/© header to every `.py`, `.rb`,
   and `.md` that lacked it (generated `.rb` now emit it from their generator's Ruby preamble), and added
   a `lint.py` GATE that blocks any commit where a tracked `.py/.rb/.md` is missing it. New rule in

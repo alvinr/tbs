@@ -56,9 +56,7 @@ nav:
   - Home: index.md
   - Proposal: funding-proposal.md
   - "Costing": project-cost-breakdown.md
-  - "Operating Manual":
-    - "Operating Manual": operating-manual.md
-    - "Daily Energy Use": daily-energy-report.md
+  - "Operating Manual": operating-manual.md
   - Construction:
     - "Overview": engineering-diagrams.md
     - "Equipment Layout": equipment-layout-report.md
@@ -85,10 +83,11 @@ nav:
   - Shopping:
     - "Master Shopping List": master-shopping-list.md
     - "Chem Shopping List": chemistry-shopping-list.md
-  - "PoC":
+  - "Design for Educational Use":
     - "TBS-002 Design": mini-tbs/mini-tbs-poc.md
     - "TBS-002 Shopping List": mini-tbs/mini-tbs-shopping-list.md
   - Research:
+    - "Daily Energy Use": daily-energy-report.md
     - "Container Basics": container-report.md
     - "Optics Report": pinhole-optics-report.md
     - "Container Optics": pinhole-option-b-optics.md

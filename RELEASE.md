@@ -24,6 +24,11 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **pinhole-panel notes clipped** — the notes border box (a patch, which matplotlib clips to the axes)
+  extended past the narrow xlim and was cut at the page edge (only its corner drew). Widened the page
+  (xlim +750 + figsize 16→23 to keep the board scale) so the box fits, and widened the box (width
+  575→720) to enclose the long lines.
+
 - **ibc-frame Sheet 2 notes overlap** — the side-elevation notes block hung down over the top of the
   frame (the top-tier IBC ghost tops out at Z≈2398, above the frame's 2296). Extended the page top
   (Z_HI +240) and lifted the title + notes into the new headroom so they clear the diagram.

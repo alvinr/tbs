@@ -695,8 +695,11 @@ def draw_pinhole_panel():
     def pwx(x_mm): return PW_OX + (PW_XR - x_mm) * PW_KX
     def pwz(z_mm): return PW_OZ + (z_mm - PW_ZB)
 
-    fig, ax_p = plt.subplots(1, 1, figsize=(16, 13), dpi=200)
-    ax_p.set_xlim(0, (PW_XR - PW_XL) * PW_KX + 2 * PW_OX)
+    fig, ax_p = plt.subplots(1, 1, figsize=(23, 13), dpi=200)
+    # +750 units of right-hand room so the notes block (a border PATCH, which matplotlib clips to the
+    # axes) fits inside the page instead of being cut at the xlim; figsize widened in step to keep the
+    # board's X scale.
+    ax_p.set_xlim(0, (PW_XR - PW_XL) * PW_KX + 2 * PW_OX + 750)
     ax_p.set_ylim(0, (PW_ZT - PW_ZB) + 2 * PW_OZ)
     ax_p.set_aspect("auto")
     ax_p.axis("off")
@@ -876,7 +879,7 @@ def draw_pinhole_panel():
         "    on their integral brackets through-bolted to the ply board.",
     ]
     draw_notes(ax_p, notes, pwx(2600), pwz(1560), spacing=32,
-               fs=6.5, width=575, color=C_DIM, title_color=C_NEW, font=FONT)
+               fs=6.5, width=720, color=C_DIM, title_color=C_NEW, font=FONT)
 
     # ── SYMBOL KEY (clear left margin strip, X4500–5060) ────────────
     draw_symbol_key(ax_p, 20, pwz(1900), r=13, row=70, fs=6.5, w=395)

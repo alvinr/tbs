@@ -106,10 +106,23 @@ UNICODE_FONT_ITALIC_PATH = _find_font(_UNICODE_FONT_ITALIC_PATHS)
 UNICODE_MONO_PATH      = _find_font(_UNICODE_MONO_PATHS)
 USE_UNICODE_FONT       = UNICODE_FONT_PATH is not None
 
-if USE_UNICODE_FONT:
+# Repo-bundled IBM Plex — matches the mkdocs Material site (theme font: IBM Plex
+# Sans / IBM Plex Mono).  Preferred over the system Unicode font; Arial Unicode
+# stays registered as a per-glyph fallback for the few symbols Plex lacks (e.g. ⌀).
+_FONT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fonts")
+_PLEX_SANS = {
+    "":   os.path.join(_FONT_DIR, "IBMPlexSans-Regular.ttf"),
+    "B":  os.path.join(_FONT_DIR, "IBMPlexSans-Bold.ttf"),
+    "I":  os.path.join(_FONT_DIR, "IBMPlexSans-Italic.ttf"),
+    "BI": os.path.join(_FONT_DIR, "IBMPlexSans-BoldItalic.ttf"),
+}
+_PLEX_MONO = os.path.join(_FONT_DIR, "IBMPlexMono-Regular.ttf")
+USE_PLEX = all(os.path.exists(p) for p in _PLEX_SANS.values()) and os.path.exists(_PLEX_MONO)
+
+if USE_PLEX or USE_UNICODE_FONT:
     FONT_BODY = "Body"
-    FONT_MONO = "Mono" if UNICODE_MONO_PATH else "Courier"
-    print(f"Unicode font: {UNICODE_FONT_PATH}")
+    FONT_MONO = "Mono" if (USE_PLEX or UNICODE_MONO_PATH) else "Courier"
+    print(f"Body font: {'IBM Plex Sans (bundled, matches site)' if USE_PLEX else UNICODE_FONT_PATH}")
 else:
     FONT_BODY = "Helvetica"
     FONT_MONO = "Courier"
@@ -589,7 +602,7 @@ class _AiryHTML2FPDF(_HTML2FPDF):
     to line_height=1.0 with no bottom margin; the Material theme renders at ~1.6.
     Moderate ~1.35x here — noticeably airier but still compact."""
 
-    _BODY_LINE_HEIGHT = 1.35
+    _BODY_LINE_HEIGHT = 1.5
 
     def _new_paragraph(self, align=None, line_height=1.0, top_margin=0,
                        bottom_margin=0, indent=0, bullet=""):
@@ -618,7 +631,17 @@ class BrochurePDF(FPDF):
         # Register Unicode fonts if available
         # All four variants must be registered so write_html never hits
         # an undefined "bodyBI" / "bodyB" / "bodyI" font error.
-        if USE_UNICODE_FONT:
+        if USE_PLEX:
+            # IBM Plex — matches the site. True R/B/I/BI faces (no faux-bold).
+            for style, path in _PLEX_SANS.items():
+                self.add_font("Body", style, path)
+            for style in ("", "B", "I", "BI"):
+                self.add_font("Mono", style, _PLEX_MONO)
+            # Per-glyph fallback for symbols IBM Plex lacks (e.g. ⌀)
+            if UNICODE_FONT_PATH:
+                self.add_font("Fallback", "", UNICODE_FONT_PATH)
+                self.set_fallback_fonts(["Fallback"], exact_match=False)
+        elif USE_UNICODE_FONT:
             self.add_font("Body", "",   UNICODE_FONT_PATH)
             bold_path   = UNICODE_FONT_BOLD_PATH   or UNICODE_FONT_PATH
             italic_path = UNICODE_FONT_ITALIC_PATH or UNICODE_FONT_PATH

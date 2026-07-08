@@ -267,7 +267,7 @@ def sheet1():
                 arrowprops=dict(arrowstyle="<->", color=WHITE, lw=0.8, mutation_scale=5))
     ax.plot([tr_x - tr_tick, tr_x + tr_tick], [D_NEAR+20, D_NEAR+20], color=WHITE, lw=0.6)
     ax.plot([tr_x - tr_tick, tr_x + tr_tick], [D_FAR-20, D_FAR-20], color=WHITE, lw=0.6)
-    ax.text(RAIL_X_L + RAIL_W + 150, (D_NEAR+D_FAR)/2,
+    ax.text(RAIL_X_L + RAIL_W + 160, (D_NEAR+D_FAR) * 0.6,
             f"{D_FAR-D_NEAR}\nmm\ntravel",
             color=WHITE, fontsize=6.5, ha="center", va="center", **FONT)
 
@@ -380,7 +380,7 @@ def sheet1():
 
     # Title block
     title_block(ax, "SHEET 1 OF 6",
-                drawing_title="MOVEABLE FILM PLANE (OPTION A)",
+                drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Plan view — 4-corner rail layout",
                 scale_note="Proportional (mm)",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
@@ -637,7 +637,7 @@ def sheet2():
     ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
     ax_tb.axis("off")
     title_block(ax_tb, "SHEET 2 OF 6",
-                drawing_title="MOVEABLE FILM PLANE (OPTION A)",
+                drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Tilt elevation & Swing cross-section",
                 scale_note="Proportional (mm)",
                 doc_id="TBS-FM01 · Film Plane Mechanism")
@@ -839,21 +839,21 @@ def sheet3():
     draw_dim_v(ax, px0-55, py0, py0+panel_h, f"{H}mm (fixed)",
                offset=60, color=DIM, font=FONT)
 
-    ax.text(280, 310, "ACM BACKING PANEL (OPTION A)\nSINGLE RIGID SHEET — FIXED SIZE, NO HINGE",
+    ax.text(280, 310, "ACM BACKING PANEL\nSINGLE RIGID SHEET — FIXED SIZE, NO HINGE",
             color=WHITE, fontsize=7.5, ha="center", va="bottom", **FONT)
     ax.text(280, -95,
             "PANEL: DIBOND 4mm  ·  the plane never grows, so no folding two-panel system is needed",
             color=DIM, fontsize=6.5, ha="center", **FONT)
 
-    fig.text(0.5, 0.97, "SHEET 3 — FRAME & HARDWARE DETAILS  (OPTION A — RIGID PLANE)",
+    fig.text(0.5, 0.97, "SHEET 3 — FRAME & HARDWARE DETAILS",
              color=WHITE, fontsize=11, ha="center", fontweight="bold", **FONT)
 
     # Title block (full-figure overlay for multi-subplot sheet)
     ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
     ax_tb.axis("off")
     title_block(ax_tb, "SHEET 3 OF 6",
-                drawing_title="MOVEABLE FILM PLANE (OPTION A)",
-                subtitle="Frame & hardware details — Option A rigid plane",
+                drawing_title="MOVEABLE FILM PLANE",
+                subtitle="Frame & hardware details",
                 scale_note="As noted",
                 doc_id="TBS-FM01 · Film Plane Mechanism")
 
@@ -874,7 +874,7 @@ def sheet4():
     ax.text(0.5, 0.968, "SHEET 4 — MOVEMENT SPECIFICATION",
             transform=ax.transAxes, color=WHITE, fontsize=13, ha="center",
             fontweight="bold", **FONT)
-    ax.text(0.5, 0.948, f"TBS-001  ·  MOVEABLE FILM PLANE (OPTION A)  ·  RAILS: X={RAIL_X_L}–{RAIL_X_R}mm  SPAN={RAIL_X_R-RAIL_X_L}mm  MAX SWING={MAX_SWING_DEG:.1f}deg",
+    ax.text(0.5, 0.948, f"TBS-001  ·  MOVEABLE FILM PLANE  ·  RAILS: X={RAIL_X_L}–{RAIL_X_R}mm  SPAN={RAIL_X_R-RAIL_X_L}mm  MAX SWING={MAX_SWING_DEG:.1f}deg",
             transform=ax.transAxes, color=DIM, fontsize=8.5, ha="center", **FONT)
 
     # row_h=0.022 fits 31 rows across 3 tables in the available page height.
@@ -908,7 +908,7 @@ def sheet4():
     # ── Table 1: Axis movement summary ────────────────────────────────────────
     # label sits 0.012 above header top: label_y = y0 + row_h*1.2 + 0.012
     # y0=0.895 → header top=0.895+0.026=0.921 → label at 0.933
-    ax.text(0.05, 0.933, "TABLE 1 — MOVEMENT AXES  (OPTION A — RIGID PLANE, COORDINATED CORNERS)",
+    ax.text(0.05, 0.933, "TABLE 1 — MOVEMENT AXES",
             transform=ax.transAxes, color=DIM, fontsize=8, fontweight="bold", **FONT)
 
     axes_headers = ["AXIS", "DESCRIPTION", "CORNERS\nCONTROLLED", "MAX TRAVEL", "ACTUATOR", "LOCK"]
@@ -994,7 +994,7 @@ def sheet4():
 
     # Title block
     title_block(ax, "SHEET 4 OF 6",
-                drawing_title="MOVEABLE FILM PLANE (OPTION A)",
+                drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Movement specification & BOM",
                 scale_note="Not to scale",
                 doc_id="TBS-FM01 · Film Plane Mechanism")
@@ -1568,7 +1568,7 @@ def sheet5():
     ax_tb.set_ylim(0, 1)
     ax_tb.axis("off")
     title_block(ax_tb, "SHEET 5 OF 6",
-                drawing_title="MOVEABLE FILM PLANE (OPTION A)",
+                drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Muslin clamp detail — cam-lever spring clamp",
                 scale_note="MULTIPLE SCALES — SEE INDIVIDUAL PANELS",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
@@ -1837,12 +1837,12 @@ def sheet6():
             "SHEET 6 — SYSTEM SCHEMATIC  (FRONT ELEVATION — LOOKING FROM PINHOLE SIDE)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
     ax.text(FW / 2, FH + 290,
-            "4 CORNER CARRIAGES (COORDINATED PAIRS)  ·  4 LEADSCREWS  ·  4 HANDWHEELS  ·  ROD-END + X-Z CROSS-SLIDE AT EACH CORNER (Option A)",
+            "4 CORNER CARRIAGES (COORDINATED PAIRS)  ·  4 LEADSCREWS  ·  4 HANDWHEELS  ·  ROD-END + X-Z CROSS-SLIDE AT EACH CORNER",
             color=DIM, fontsize=7, ha="center", **FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 6 OF 6",
-                drawing_title="MOVEABLE FILM PLANE (OPTION A)",
+                drawing_title="MOVEABLE FILM PLANE",
                 subtitle="System schematic — four-corner frame front elevation",
                 scale_note="Schematic — not to scale",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
@@ -1855,7 +1855,7 @@ def sheet6():
 
 # ── Run all sheets ─────────────────────────────────────────────────────────────
 if __name__ == "__main__":
-    print("Generating film plane mechanism drawings (Option A rigid plane)...")
+    print("Generating film plane mechanism drawings (rigid plane)...")
     sheet1()
     sheet2()
     sheet3()

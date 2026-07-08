@@ -618,6 +618,7 @@ class _AiryHTML2FPDF(_HTML2FPDF):
     def _new_paragraph(self, align=None, line_height=1.0, top_margin=0,
                        bottom_margin=0, indent=0, bullet=""):
         is_heading = bool(getattr(self, "heading_level", 0))
+        prev_heading = getattr(self, "_ai_prev_heading", False)
         # Only touch the untagged default (1.0); leave explicit CSS/table
         # line-heights (e.g. TABLE_LINE_HEIGHT=1.3) alone. Headings stay tight.
         if line_height == 1.0:
@@ -626,6 +627,12 @@ class _AiryHTML2FPDF(_HTML2FPDF):
         # so the blank space AFTER a heading title is minimal.
         if not bottom_margin and not is_heading:
             bottom_margin = self.font_size_pt / self.pdf.k * 0.4
+        # A heading directly under another heading (e.g. "### What" right below "## 2. …"):
+        # tighten its TOP margin so it sits close, like body text does under a heading —
+        # instead of the full heading t_margin that leaves a big gap between stacked titles.
+        if is_heading and prev_heading and top_margin:
+            top_margin = self.font_size_pt / self.pdf.k * 0.2
+        self._ai_prev_heading = is_heading
         return super()._new_paragraph(
             align=align, line_height=line_height, top_margin=top_margin,
             bottom_margin=bottom_margin, indent=indent, bullet=bullet)
@@ -955,6 +962,21 @@ class BrochurePDF(FPDF):
                 fragments.append(pieces[i] + pieces[i + 1])
             else:
                 fragments.append(pieces[i])
+
+        # Merge a heading-only fragment (a heading with no body before the next heading) into the
+        # following fragment, so a subheading stacked directly under a section heading renders in the
+        # same write_html — that lets the subclass tighten its top margin (see _new_paragraph) instead
+        # of leaving a big gap between the two titles.
+        merged = []
+        for frag in fragments:
+            if merged and self._HEADING_SPLIT_RE.match(frag):
+                prev_body = re.sub(r"<h[1-6][^>]*>.*?</h[1-6]>", "", merged[-1],
+                                   flags=re.DOTALL | re.IGNORECASE).strip()
+                if not prev_body:
+                    merged[-1] += frag
+                    continue
+            merged.append(frag)
+        fragments = merged
 
         tag_styles = _build_tag_styles()
         page_bottom = PAGE_H - FOOTER_H

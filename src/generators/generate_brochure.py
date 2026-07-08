@@ -1183,16 +1183,21 @@ class BrochurePDF(FPDF):
             fit_w = fit_h * aspect
         caption_h = 6
 
-        # Break to a new page only if the figure + caption will not fit below the cursor.
+        # Break to a new page if the figure + caption won't fit. Disable auto-break during placement
+        # so fpdf never reflows the explicitly-positioned image, and clamp the top into the content
+        # zone so it can't overlap the header rule.
+        self.set_auto_page_break(auto=False)
         if self.get_y() + fit_h + caption_h > PAGE_H - M_B:
             self.add_page()
-        self.ln(2)
         x = M_L + (BODY_W - fit_w) / 2
-        y = self.get_y()
+        y = self.get_y() + 2
+        if y < M_T + 2:
+            y = M_T + 2
         self.image(embed_src, x=x, y=y, w=fit_w, h=fit_h)
         if _tmp_file and os.path.exists(_tmp_file):
             os.unlink(_tmp_file)
         self.set_y(y + fit_h + 1)
+        self.set_auto_page_break(auto=True, margin=M_B)
 
         if not caption:
             caption = os.path.splitext(os.path.basename(img_path))[0]

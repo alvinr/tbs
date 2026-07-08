@@ -26,10 +26,10 @@ All loads run at **12V DC** - the one exception is the dedicated Circuit-E coole
 
 ---
 
-**Sheet 1 — System One-Line Diagram**
-Complete power flow from solar panels through controller, battery bank, fuse block, and out to each circuit. Wire gauges, fuse ratings, and component models labeled.
+**Sheet 7 — System Schematic (Symbol Diagram)**
+The whole 12V DC system as a traditional symbol-based electrical schematic — every conductor traced from the PV array through the MPPT, battery, 200A MRBF, contactor K1, and main disconnect to the Blue Sea 5026 bus and the seven load circuits (A–G), with the NC E-stop loop and shore charger shown explicitly.
 
-![TBS-ELEC Sheet 1 — System One-Line Diagram](assets/electrical-sheet1.png)
+![TBS-ELEC Sheet 7 — System Schematic (Symbol Diagram)](assets/electrical-sheet7.png)
 
 ## 3. Power Budget
 | Circuit | Device | Peak draw | Duty cycle |

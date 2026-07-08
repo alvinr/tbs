@@ -181,7 +181,7 @@ def _foot_elev(ax, c, *, zo=7):
     """Floor flange foot in elevation (edge-on): a wide thin plate just below
     Z=0 plus two anchor-bolt stubs.  `c` = horizontal position (Yd or X)."""
     half = FOOT_PLATE / 2
-    _rhs_rect(ax, c - half, -FOOT_PLATE_T, FOOT_PLATE, FOOT_PLATE_T, 
+    _rhs_rect(ax, c - half, -FOOT_PLATE_T, FOOT_PLATE, FOOT_PLATE_T,
               fc=C_STEEL, lw=1.4, zo=zo)
     for d in (-FOOT_BOLT_PCD / 2, FOOT_BOLT_PCD / 2):
         ax.plot([(c + d), (c + d)],
@@ -371,14 +371,14 @@ def sheet1():
     # ── Ghost IBC outlines (cage/pallet anatomy) — v2 layout: Brown/Waste bottom,
     #    Blue on top; DIRECT-STACK so the top tier sits at the junction (no deck). ──
     plat_top = PLATFORM_Z                       # 1168 — top tier bears directly on the lower tote
-    _ghost_ibc_elev(ax, BLUE_IBC_Y, 0, IBC_D, 
+    _ghost_ibc_elev(ax, BLUE_IBC_Y, 0, IBC_D,
                     label="IBC-3\n(BROWN, BOT NEAR)")
-    _ghost_ibc_elev_far(ax, IBC_FAR_Y, 0, IBC_D, 
+    _ghost_ibc_elev_far(ax, IBC_FAR_Y, 0, IBC_D,
                         label="IBC-4\n(WASTE, BOT FAR)")
     # Top tier (direct-stack)
-    _ghost_ibc_elev(ax, BLUE_IBC_Y, plat_top, IBC_D, 
+    _ghost_ibc_elev(ax, BLUE_IBC_Y, plat_top, IBC_D,
                     label="IBC-1\n(BLUE, TOP NEAR)")
-    _ghost_ibc_elev_far(ax, IBC_FAR_Y, plat_top, IBC_D, 
+    _ghost_ibc_elev_far(ax, IBC_FAR_Y, plat_top, IBC_D,
                         label="IBC-2\n(BLUE, TOP FAR)")
 
     # ── Front pair of the deep 4-leg box — two full-height corridor uprights.
@@ -405,10 +405,10 @@ def sheet1():
     # D-ring lashing holders. Two bars per column at the lower/upper tote mids.
     for bz in (560, 1760):
         for y0, y1 in ((0, NEAR_COL_R + FRAME_RHS), (FAR_COL_L - FRAME_RHS, C_WID)):
-            _rhs_rect(ax, y0, bz, y1 - y0, FRAME_RHS, 
+            _rhs_rect(ax, y0, bz, y1 - y0, FRAME_RHS,
                       fc=C_STEEL, alpha=0.55, lw=1.0, zo=9)
         for wyd, din in ((0, 1), (C_WID, -1)):   # wall joist hangers (U-pocket)
-            _rhs_rect(ax, min(wyd, wyd + din * 60), bz - 8, 60, FRAME_RHS + 16, 
+            _rhs_rect(ax, min(wyd, wyd + din * 60), bz - 8, 60, FRAME_RHS + 16,
                       fc=C_STEEL, lw=1.0, zo=10)
     for ydh in (520, 940, 1422, C_WID - 520):    # D-ring lashing holders (4 per tier, 8 total)
         for bz in (560, 1760):
@@ -558,7 +558,7 @@ def sheet1():
         f"10. Total frame weight: ~90 kg (incl. 4 feet + rings + front bars + hangers + exterior wall plates + rear-panel brackets).",
     ]
     draw_notes(ax, notes, (2500), (TOP_Z + 600), spacing=(23),
-               fs=7, font=FONT, width=(1800))
+               fs=7, font=FONT, width=(2200))
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 3",
@@ -615,10 +615,10 @@ def sheet2():
     ibc_x_offset = (FRAME_FOOTPRINT_D - IBC_W) / 2 + 200# ~32.5mm
     plat_top = PLATFORM_Z + FRAME_RHS + MAT_T
     # Bottom tier
-    _ghost_ibc_elev(ax, ibc_x_offset, 0, IBC_W, 
+    _ghost_ibc_elev(ax, ibc_x_offset, 0, IBC_W,
                     label="BOTTOM TIER\n(IBC-3 OR IBC-4)")
     # Top tier
-    _ghost_ibc_elev(ax, ibc_x_offset, plat_top, IBC_W, 
+    _ghost_ibc_elev(ax, ibc_x_offset, plat_top, IBC_W,
                     label="TOP TIER\n(IBC-1 OR IBC-2)")
 
     # ── Uprights (deep 4-leg box: front pair + back pair, 450mm apart) ───────
@@ -640,7 +640,7 @@ def sheet2():
 
     # ── Front retaining bars (end-on at the IBC front, both tiers) ──────────
     for bz in (560, 1760):
-        _rhs_rect(ax, FX_FRONT, bz, FRAME_RHS, FRAME_RHS, 
+        _rhs_rect(ax, FX_FRONT, bz, FRAME_RHS, FRAME_RHS,
                   fc=C_STEEL, alpha=0.6, lw=1.0, zo=8)
 
     # ── Weld symbols at upright/beam joints ─────────────────────────────────
@@ -715,7 +715,7 @@ def sheet2():
          "   FRONT box uprights and project off the front to carry the walkway.",
     ]
     draw_notes(ax, notes, (X_LO + 20), (Z_HI - 100), spacing=(20),
-               fs=6.5, font=FONT, width=(825))
+               fs=6, font=FONT, width=(850))
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 3",
@@ -776,14 +776,14 @@ def sheet3():
                       fc=C_FRAME, alpha=0.85, lw=1.4)
     # Front retaining bars run in Yd at the IBC front (wall -> upright per column).
     for y0, y1 in ((0, POST_NEAR_YD + FRAME_RHS), (POST_FAR_YD, FRAME_FOOTPRINT_W)):
-        _rhs_rect(ax, FX_FRONT, y0, FRAME_RHS, y1 - y0, 
+        _rhs_rect(ax, FX_FRONT, y0, FRAME_RHS, y1 - y0,
                   fc=C_STEEL, alpha=0.55, lw=1.0)
 
     # ── IBC footprint ghost outlines (with cage/pallet anatomy) ──────────────
     ibc_x = FX_FRONT + 20              # tote front ~20mm behind the box front (corridor mouth); totes extend back
-    _ghost_ibc_plan(ax, ibc_x, near_mat_yd, IBC_W, IBC_D, 
+    _ghost_ibc_plan(ax, ibc_x, near_mat_yd, IBC_W, IBC_D,
                     label="IBC PALLET\nFOOTPRINT")
-    _ghost_ibc_plan(ax, ibc_x, far_mat_yd, IBC_W, IBC_D, 
+    _ghost_ibc_plan(ax, ibc_x, far_mat_yd, IBC_W, IBC_D,
                     label="IBC PALLET\nFOOTPRINT")
 
     # ── Corridor opening ────────────────────────────────────────────────────

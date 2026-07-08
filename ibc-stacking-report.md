@@ -99,6 +99,10 @@ The box carries the **Corridor Plumbing Panel** (pumps) and its **drain-riser ba
 on the back uprights, and gives the right-walkway cantilever arms their clamp point on the
 front uprights.
 
+![TBS-001 IBC Stacking — Sheet 1: Cross-Section Elevation](assets/ibc-stacking-sheet1.png)
+
+![TBS-001 IBC Frame — Sheet 1: Front Elevation](assets/ibc-frame-sheet1.png)
+
 ### 3.2 Frame Specification
 
 | Parameter | Value |
@@ -113,6 +117,10 @@ front uprights.
 | Panel mount | the box carries the Corridor (pump) Plumbing Panel + drain-riser spine on the back uprights, and the right-walkway cantilever arms on the front uprights |
 | Frame weight | ~90 kg (4 uprights + rings + 4 feet + front bars + hangers + exterior plates + rear-panel brackets — see [weight report](weight-distribution-report.md)) |
 | Joints | Welded (fillet weld throughout) |
+
+![TBS-001 IBC Frame — Sheet 2: Side Elevation](assets/ibc-frame-sheet2.png)
+
+![TBS-001 IBC Frame — Sheet 3: Plan View at Platform Level](assets/ibc-frame-sheet3.png)
 
 ### 3.3 Direct-Stack Junction
 
@@ -169,6 +177,8 @@ laterally by the container side walls (30mm gap each side) and the sealed end wa
 the front retaining bars + D-ring ratchet straps restrain the open front and
 provide vertical tie-down. Together these restrain both tiers in all six DOF.
 
+![TBS-001 IBC Stacking — Sheet 2: Fastening Details](assets/ibc-stacking-sheet2.png)
+
 ---
 
 ## 5. Drain Valve Access
@@ -198,6 +208,8 @@ including the reinforcing plates, is in the
 distinct from the two equipment **Plumbing Panels** — Corridor and Pinhole Wall —
 in [§7](#7-internal-plumbing).)
 
+![TBS-001 IBC Stacking — Sheet 3: External Bulkhead Ports Elevation](assets/ibc-stacking-sheet3.png)
+
 ---
 
 ## 7. Internal Plumbing
@@ -215,11 +227,18 @@ deep-box frame, see [§3.2](#32-frame-specification)) — together with the
 [Plumbing Report](plumbing-report.md). This report treats the corridor plumbing
 and both panels only as loads the stacking frame carries.
 
+![TBS-001 IBC Stacking — Sheet 4: Internal Plumbing Plan View](assets/ibc-stacking-sheet4.png)
+
+![TBS-001 IBC Stacking — Sheet 5: Internal Plumbing Elevation](assets/ibc-stacking-sheet5.png)
+
 ---
 
 ## 8. Engineering Drawings
 
-Eight construction drawings cover the IBC system across two drawing sets:
+Eight construction drawings cover the IBC system across two drawing sets. They are shown inline in the
+relevant sections above; the full set is collected here and in [Engineering Diagrams](engineering-diagrams.md).
+
+<!-- brochure:skip -->
 
 ### IBC Stacking & Securing (5 sheets)
 
@@ -248,6 +267,8 @@ Eight construction drawings cover the IBC system across two drawing sets:
 
 **Sheet 3 — Plan view: deep 4-leg box (4 legs + ring perimeter) + retaining bars + 4 floor feet + IBC footprints + corridor + walkway arms**
 ![TBS-001 IBC Frame — Sheet 3](assets/ibc-frame-sheet3.png)
+
+<!-- brochure:endskip -->
 
 Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §15
 (stacking) and §17 (frame fabrication).

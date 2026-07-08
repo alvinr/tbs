@@ -307,5 +307,3 @@ unchanged (the spray-bar carriage clearance beneath it is set by the Ø32-wheel 
 4. [Schütz Ecobulk MX 1000L](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — 1,000L caged composite IBC tote specifications (~65 kg tare; all four positions standardize on this size — a 600L caged tote does not exist)
 5. [Water System Report](water-system-report.md) — Processing tray weight (§4), IBC layout (§5)
 6. [Light Trap Selection](light-trap-selection.md) — Panel + drum weight (§7)
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

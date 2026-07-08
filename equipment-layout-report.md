@@ -334,5 +334,3 @@ The light trap drum sweeps through exterior space during 180° rotation. No inte
 4. [Hinged Panel Report](hinged-panel-report.md) — Stepped panel construction and swing-pivot specification.
 5. [Water System Report](water-system-report.md) — IBC layout, plumbing manifold, and pump positions.
 6. [Walkway System Report](walkway-report.md) — Perimeter walkway dimensions and cantilever bracket design.
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

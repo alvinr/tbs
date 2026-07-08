@@ -141,5 +141,3 @@ Front elevation of all three components at 1:8 scale, showing bolt patterns, ape
 2. [Rayleigh Criterion for Pinhole Cameras](https://en.wikipedia.org/wiki/Pinhole_camera#Selection_of_pinhole_size) — optimal aperture formula d = 1.9√(fλ).
 3. [ISO 286-2 — Limits and Fits](https://www.iso.org/standard/68074.html) — H7/g6 tolerance class for sliding fit bores.
 4. [McMaster-Carr](https://www.mcmaster.com) — fasteners, dowel pins, O-ring cord.
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

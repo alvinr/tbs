@@ -507,5 +507,3 @@ minute to flush; check for leaks.
 9. [Walkway Pipe Routing](walkway-routing-sections.md) — Cross-sections of the
    corridor↔pinhole-wall ribbon under the right walkway: routing envelope,
    clearances, the beam notch, and the spray-carriage clearance (§8.1).
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

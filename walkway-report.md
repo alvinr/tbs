@@ -491,6 +491,3 @@ bounces noticeably less than the rod-hung version it replaces.
    floor zone clearance requirements.
 10. [Walkway Routing Sections](walkway-routing-sections.md) — Under-walkway
     pipe-routing cross-sections and clearances at each junction.
-
-   *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*
-

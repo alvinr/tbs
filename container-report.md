@@ -517,5 +517,3 @@ The following order minimizes rework and avoids modifying a container that fails
 | Lenox Laser | Precision pinhole fabrication | [lenoxlaser.com](https://lenoxlaser.com/blog/pinholes-and-apertures/) |
 | OSHA Table Z-1 | Ventilation requirements for darkroom chemistry | [osha.gov](https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.1000TableZ1) |
 | All optical formulas | See pinhole-optics-report.md | — |
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

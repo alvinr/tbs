@@ -272,5 +272,3 @@ The active film plane is 14'9" × 7'10" (<!-- BEGIN fact:film_plane_width_mm -->
 - [Cost Breakdown](project-cost-breakdown.md) — the project's as-built cyanotype consumable budget (Standard ½-Ware).
 
 Per-item supplier links are inline in each process section and consolidated in the Supplier Directory above.
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

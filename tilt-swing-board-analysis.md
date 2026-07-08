@@ -155,5 +155,3 @@ For a first shoot with the TSB mechanism, the following settings offer the clear
 
 1. [Film Plane Mechanism Report](film-plane-mechanism-report.md) — Rear standard mechanism and combined distortion analysis.
 2. [Pinhole Report](pinhole-report.md) — Wall frame and interchangeable plate interface specification.
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

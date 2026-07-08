@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # The Big Shoebox Project — Claude Code Working Instructions
 
 ## Project Identity

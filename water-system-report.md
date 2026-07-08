@@ -459,5 +459,3 @@ reports — [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) and
 - [Container Exchanger](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) — Used IBC totes, California
 - [Online Metals](https://www.onlinemetals.com) — 304 SS sheet for processing tray
 - [Ronaqua](https://www.ronaqua.com) — GAC carbon filter cartridges
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

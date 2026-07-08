@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 <!-- Working/internal tracker — NOT published (not registered in publish.sh). -->
 # TODO & Actions — TBS-001
 

@@ -522,5 +522,3 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Revolving drum light trap design | See [Light Trap Selection](light-trap-selection.md) for full commercial comparison and custom specification |
 | Swing mechanism specification | See [Equipment Layout Report](equipment-layout-report.md) §6 for clearance analysis and light seal design |
 | Panel construction drawings | See [Engineering Diagrams](engineering-diagrams.md) §12 — Sheets 1–5 |
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 <!-- Working/internal tracker — NOT registered in publish.sh (not published). -->
 # Editorial Review TODO — remove diagram-encapsulated detail from the reports
 

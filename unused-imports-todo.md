@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 <!-- Working/internal TODO — NOT registered in publish.sh (not published). -->
 # TODO — unused-import cleanup (deferred from the 2026-06 import audit) — ✅ DONE 2026-07-05
 

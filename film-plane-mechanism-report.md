@@ -248,5 +248,3 @@ See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) f
 3. [Progressive Automations PA-14](https://www.progressiveautomations.com/products/linear-actuator-pa-14) — 12V linear actuator specifications (optional electric actuation).
 4. [Tilt-Swing Front Board Report](tilt-swing-board-report.md) — Front board mechanism for combined distortion analysis.
 5. [Equipment Layout Report](equipment-layout-report.md) — Rail positions and shadow-free zone verification.
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

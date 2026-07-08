@@ -78,5 +78,3 @@ All items ship within the United States. Local Southern California pickup noted 
 1. [Film Plane Mechanism Report](film-plane-mechanism-report.md) — Parent report: four-corner independent actuation mechanism that the clamp system attaches to.
 2. [McMaster-Carr Toggle Clamps](https://www.mcmaster.com/toggle-clamps) — Destaco-equivalent cam-lever clamp specifications.
 3. [McMaster-Carr Neoprene Strip](https://www.mcmaster.com/neoprene) — 60A self-adhesive neoprene jaw pad material.
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

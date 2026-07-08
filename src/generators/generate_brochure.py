@@ -63,6 +63,7 @@ BROCHURE_EXCLUDE = {
     "cost-analysis-report.md",                                                # overlaps project-cost-breakdown
     "operating-manual.md",                                                    # operator procedure — not needed for funding/validation
     "master-shopping-list.md", "chemistry-shopping-list.md",                  # procurement detail (cost-breakdown carries the money story)
+    "distortion-renders.md",                                                  # covered in film-plane + tilt-swing reports
 }
 
 # Unicode font path (macOS system font with broad Unicode coverage)

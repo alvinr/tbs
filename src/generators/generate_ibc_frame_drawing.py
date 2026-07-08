@@ -594,7 +594,9 @@ def sheet2():
     X_LO = -300
     X_HI = FRAME_FOOTPRINT_D + 300
     Z_LO = -400
-    Z_HI = PANEL_FRAME_TOP_Z + 360
+    # Extra headroom so the notes block clears the top-tier IBC ghost (tops out ~Z=2398, above the
+    # frame's 2296) — the notes + title are lifted into this band instead of overlapping the diagram.
+    Z_HI = PANEL_FRAME_TOP_Z + 600
 
     fig, ax = plt.subplots(figsize=(16, 19))
     fig.patch.set_facecolor(BG)
@@ -604,7 +606,7 @@ def sheet2():
     ax.set_aspect("equal")
     ax.axis("off")
 
-    ax.text((FRAME_FOOTPRINT_D / 2), (PANEL_FRAME_TOP_Z + 300),
+    ax.text((FRAME_FOOTPRINT_D / 2), (PANEL_FRAME_TOP_Z + 560),
             "SIDE ELEVATION — LOOKING ALONG Yd FROM NEAR WALL",
             ha="center", va="bottom", fontsize=9, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)

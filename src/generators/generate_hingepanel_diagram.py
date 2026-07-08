@@ -244,7 +244,7 @@ def sheet1():
     PIVOT_PX = PW + 35    # far-edge pivot post (just past the panel right edge)
     ax.add_patch(Rectangle((PIVOT_PX - 20, 0), 40, PH,
                             fc="#5A5AA0", ec=C_OUT, lw=1.2, zorder=3, alpha=0.85))
-    leader(ax, (PIVOT_PX + 20, PH * 0.55), (PIVOT_PX + 225, PH / 2),
+    leader(ax, (PIVOT_PX + 20, PH * 0.55), (PIVOT_PX + 250, PH / 2),
            "PIVOT POST\nØ89 CHS\n(vertical swing axis)",
            col="#5A5AA0", fs=6, fw="bold")
     # swing direction arc on the near (left) side
@@ -315,7 +315,7 @@ def sheet1():
     # Panel width
     draw_dim_h(ax, 0, PW, PH + 200, f"{PW}mm  (CONTAINER INTERIOR WIDTH)", offset=20, fs=7, font=FONT)
     # Panel height
-    draw_dim_v(ax, PW + 75, 0, PH, f"{PH}mm", offset=-25, fs=7, right=True, font=FONT)
+    draw_dim_v(ax, PW + 75, 0, PH, f"{PH}mm", offset=55, fs=7, right=True, font=FONT)
     # Drum diameter
     draw_dim_h(ax, DX, DX + DRUM_D, DY_TOP + 170, f"Ø{DRUM_D}mm DRUM", offset=30, fs=7, font=FONT)    # Drum clear height
     draw_dim_v(ax, DX - 200, DY_BOT, DY_TOP, f"{DRUM_H}mm CLEAR HEIGHT", offset=45, fs=7, right=True, font=FONT)
@@ -1125,7 +1125,7 @@ def sheet3():
     def DX(d): return ox + k * d
     def DY(h): return oy + k * h
 
-    bx0, bx1 = DX(-98), DX(178)
+    bx0, bx1 = DX(-98), DX(300)
     by0, by1 = DY(-28), DY(182)
     ax.add_patch(Rectangle((bx0, by0), bx1 - bx0, by1 - by0,
                            fc="#FBFBFD", ec=C_DIM, lw=1.0, ls=(0, (5, 3)), zorder=2))
@@ -1198,7 +1198,7 @@ def sheet3():
     def CX(d): return ox2 + k * d         # depth (mm) → sheet x  (exterior negative)
     def CY(hh): return oy2 + k * hh       # height about panel-top edge (h=0) → sheet y
 
-    cbx0, cbx1 = CX(-98), CX(178)
+    cbx0, cbx1 = CX(-98), CX(300)
     cby0, cby1 = CY(-108), CY(102)
     ax.add_patch(Rectangle((cbx0, cby0), cbx1 - cbx0, cby1 - cby0,
                            fc="#FBFBFD", ec=C_DIM, lw=1.0, ls=(0, (5, 3)), zorder=2))
@@ -1257,12 +1257,16 @@ def sheet3():
     # fixed strip's edge: the joint seals when shut (camera mode) and opens as the
     # panel swings. Plan section: depth X horizontal, Yd vertical (cut at yr=0).
     # ══════════════════════════════════════════════════════════════════════════
-    odx, ody = 1369, 1240   # right border aligned with Details C/B (DDX(60)=1567≈bx1/cbx1);
+    odx, ody = 1250, 1240   # right border aligned with Details C/B (DDX(60)=1567≈bx1/cbx1);
                             # ody keeps it vertically between Details C (above) and B (below)
     def DDX(x): return odx + k * x          # panel depth (mm) → sheet x (exterior negative)
     def DDY(yr): return ody + k * yr        # Yd about the cut (yr=0) → sheet y
-    dbx0, dbx1 = DDX(-26), DDX(60)
-    dby0, dby1 = DDY(-54), DDY(54)
+    dbx0, dbx1 = DDX(-150), DDX(225)
+    dby0, dby1 = DDY(-64), DDY(60)
+
+#         cbx0, cbx1 = CX(-98), CX(300)
+#     cby0, cby1 = CY(-108), CY(102)
+
     ax.add_patch(Rectangle((dbx0, dby0), dbx1 - dbx0, dby1 - dby0,
                            fc="#FBFBFD", ec=C_DIM, lw=1.0, ls=(0, (5, 3)), zorder=2))
     ax.text((dbx0 + dbx1) / 2, dby1 + 30, "DETAIL D — VERTICAL CUT SEAL",
@@ -1270,9 +1274,9 @@ def sheet3():
     ax.text((dbx0 + dbx1) / 2, dby1 + 8,
             "plan section at the fixed↔swing joint (Yd180 / Yd2287)  ·  enlarged ~3.3:1",
             ha="center", va="bottom", fontsize=6.4, color=C_DIM, **FONT)
-    ax.text(DDX(-20), DDY(48), "EXTERIOR", fontsize=6, color="#5060A0",
+    ax.text(DDX(-75), DDY(48), "EXTERIOR", fontsize=6, color="#5060A0",
             ha="left", va="center", fontweight="bold", **FONT)
-    ax.text(DDX(52), DDY(48), "INTERIOR", fontsize=6, color="#407040",
+    ax.text(DDX(75), DDY(48), "INTERIOR", fontsize=6, color="#407040",
             ha="right", va="center", fontweight="bold", **FONT)
     # fixed strip edge (lower) + EPDM cut bulb (centre) + swinging panel edge (upper)
     ax.add_patch(Rectangle((DDX(0), DDY(-50)), k * 40, k * 43, fc="#C8A060", ec=C_OUT,
@@ -1289,7 +1293,7 @@ def sheet3():
         ax.text(tx, ty, text, fontsize=6.0, color=C_DIM, ha="left", va="center", **FONT)
     ddlbl((DDX(20), DDY(-30)), DDY(-40), "FIXED strip edge\n(bolted to the door frame)")
     ddlbl((DDX(8), DDY(0)), DDY(2), "EPDM cut-seal bulb — bonded to\nthe fixed edge; the swinging panel\nbutts + compresses it when shut")
-    ddlbl((DDX(20), DDY(30)), DDY(42), "SWINGING panel edge\n(joint opens as it swings)")
+    ddlbl((DDX(20), DDY(30)), DDY(35), "SWINGING panel edge\n(joint opens as it swings)")
 
     # ── Title block (portrait sheet — taller box, smaller fonts, clipped) ──────
     title_block(ax, "SHEET 3 OF 6",

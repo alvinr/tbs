@@ -472,7 +472,7 @@ def draw_sheet2():
 
     ann(ax, "Baffle 1 (full height,\nwelded top+bottom)\n75mm AIRFLOW gap\nnear side",
         (B1_X + BF_T / 2, B1_Z + B1_H * 0.6),
-        (B1_X - 50, B1_Z + B1_H * 0.6 + 35))
+        (B1_X - 50, B1_Z + B1_H * 0.6 + 20))
     ann(ax, "Baffle 2 (full height,\nwelded top+bottom)\n75mm AIRFLOW gap\nfar side",
         (B2_X + BF_T / 2, B2_Z + B2_H * 0.4),
         (B2_X + 50, B2_Z + B2_H * 0.4 - 30))
@@ -480,7 +480,7 @@ def draw_sheet2():
             "FLAT BLACK\nPOWDER COAT\nALL INTERIOR FACES",
             ha="center", va="center", fontsize=7.0, color="#808080",
             style="italic", alpha=0.85, zorder=9)
-    ax.text(300, -70,
+    ax.text(300, -50,
             "LIGHT-TIGHT: each baffle is FULL height, welded to the duct top & bottom (no edge gap); the two "
             "plates take opposite sides (75mm air gap each) — air winds left↔right (horizontal S-path) while the line of sight stays blocked.",
             ha="center", va="center", fontsize=8.5, color=TITLE_COL, fontweight="bold", zorder=9)
@@ -585,7 +585,7 @@ def draw_sheet2():
             color=C_DIM, lw=0.5, ls=":")
     ax.plot([WALL_X + WALL_T, WALL_X + WALL_T], [DZ + DH, DZ + DH + 30],
             color=C_DIM, lw=0.5, ls=":")
-    draw_dim_h(ax, FX, FX + PF_BD, DZ - 30, "~50mm  (panel fan body)",
+    draw_dim_h(ax, FX, FX + PF_BD, DZ - 30, "~50mm\n(panel fan body)",
                offset=10, fs=7.5, zorder=10, color=C_DIM)
 
     # ── Notes ─────────────────────────────────────────────────────────────────

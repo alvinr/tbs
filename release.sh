@@ -61,6 +61,13 @@ awk -v ver="$VERSION" -v d="$DATE" '
 
 git add "$RL"
 git commit -q -m "release $VERSION"
+
+# Publish the new-version site + brochure. The version is DERIVED from the just-promoted
+# RELEASE.md (single source, via tbs_version), so the site footer + PDF stamp pick up $VERSION
+# automatically — nothing else to bump.
+echo "Publishing site + brochure at $VERSION ..."
+PATH=/usr/bin:$PATH bash publish.sh
+
 git tag -a "$VERSION" -m "Release $VERSION"
 git push origin HEAD --follow-tags
 

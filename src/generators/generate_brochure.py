@@ -47,6 +47,14 @@ ASSETS_DIR   = os.path.join(PROJECT_ROOT, "assets")
 # index.md in mkdocs nav is sourced from project-summary.md
 NAV_SOURCE_OVERRIDE = {"index.md": "project-summary.md"}
 
+# Released version — single source: RELEASE.md via tbs_version (no stored copy).
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+try:
+    from tbs_version import current_version
+    BROCHURE_VERSION = current_version()
+except Exception:
+    BROCHURE_VERSION = ""
+
 # Pages that appear in the site nav but are intentionally omitted from the
 # brochure PDF (developer reference, not part of the printed engineering set).
 BROCHURE_EXCLUDE = {
@@ -697,10 +705,16 @@ class BrochurePDF(FPDF):
         self.set_xy(M_L, rule_y + 2)
         self.set_font(FONT_BODY, "I", 7)
         self.set_text_color(*C_MUTED)
-        self.cell(cur_body_w / 2, 5,
-                  _safe("© 2026 Alvin Richards — Released under GNU AGPLv3"),
-                  align="L", new_x=XPos.RIGHT)
-        self.cell(cur_body_w / 2, 5,
+        # Three overlaid full-width cells → copyright left, version centered, chapter/page right.
+        y = rule_y + 2
+        self.set_xy(M_L, y)
+        self.cell(cur_body_w, 5,
+                  _safe("© 2026 Alvin Richards — Released under GNU AGPLv3"), align="L")
+        if BROCHURE_VERSION:
+            self.set_xy(M_L, y)
+            self.cell(cur_body_w, 5, _safe(f"v{BROCHURE_VERSION}"), align="C")
+        self.set_xy(M_L, y)
+        self.cell(cur_body_w, 5,
                   _safe(f"{self._current_chapter}   Page {self.page_no()}"), align="R")
 
     # -- Cover page ------------------------------------------------------------

@@ -221,6 +221,7 @@ site_url: "{site_url}"
 
 theme:
   name: material
+  custom_dir: overrides
   favicon: assets/favicon.png
   logo: assets/favicon.png
   palette:
@@ -269,6 +270,10 @@ extra_javascript:
 nav:
   - Home: index.md
 {nav_entries}
+
+# Derive the released version from RELEASE.md at build time (single source — no stored copy)
+hooks:
+  - src/generators/mkdocs_version_hook.py
 
 extra:
   social:

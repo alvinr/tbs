@@ -1477,7 +1477,9 @@ def draw_sheet4():
             "ACC-01 is a passive accumulator —\nunpowered.",
             fontsize=6.2, ha="left", va="top", color="#333")
 
-    ax.set_xlim(-210, PW + 940)
+    # xlim encompasses ALL content — the CORRIDOR leader (left) and the notes block (right) — so the
+    # transAxes title block spans the full page width (and its left cell is wide enough for the © line).
+    ax.set_xlim(-431, 1433)
     ax.set_ylim(-820, PH + 470)
 
     # ── Notes + title block (clear band below the panel) ──

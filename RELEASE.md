@@ -24,6 +24,11 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **electrical Sheet 4 title block** — the title block sat narrower than the page (the transAxes block
+  spans the xlim, but content — the CORRIDOR leader and the notes block — spilled past it), and the ©
+  line was clipped in the too-narrow left cell. Set the xlim to bound all content so the title block
+  spans the full page width; the wider left cell also un-clips the © line.
+
 - **electrical Sheet 4 note fit** — the Circuit-C pump-power note title overran the page. The title's
   parenthetical just restated the body's opening sentence, so it was shortened to
   "CIRCUIT C — PUMP POWER:" (detail kept in the body) — no page-widening or title-wrapping needed.

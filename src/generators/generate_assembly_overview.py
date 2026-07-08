@@ -958,7 +958,7 @@ ax_tr.plot([p[0] for p in arc_pts], [p[1] for p in arc_pts],
            color="#2060A0", lw=1.5, ls=(0, (5, 3)), zorder=8)
 arc_mid = arc_pts[int(len(arc_pts) * 0.6)]
 ax_tr.annotate(f"SWING {TR_SWING_DEG}°",
-               xy=arc_mid, xytext=(arc_mid[0] + 280, arc_mid[1] + 120),
+               xy=arc_mid, xytext=(arc_mid[0] + 380, arc_mid[1] + 120),
                fontsize=FS_SM + 1, color="#2060A0", fontweight="bold",
                arrowprops=dict(arrowstyle="-|>", color="#2060A0", lw=1.3),
                zorder=9)

@@ -321,5 +321,3 @@
 ## 23. TBS-002 Proof of Concept
 
 ![Mini-TBS — Two-Box Design](assets/mini-tbs-sheet1.png)
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

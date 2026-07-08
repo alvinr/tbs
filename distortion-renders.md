@@ -80,5 +80,3 @@ Individual configurations:
 | 3° |  3° |   20° |   15° |  Full compound both systems (max distortion) | ![C7](assets/tilt-swing-combined-c7.png) |
 | -3° |  3° |   20° |   -15° |  Opposing compound (surrealist) | ![C8](assets/tilt-swing-combined-c8.png) |
 <!-- brochure:endskip -->
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

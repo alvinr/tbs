@@ -76,5 +76,3 @@ Adopted and built per [Walkway Report §4](walkway-report.md): the cantilever re
 - [Walkway Report §4](walkway-report.md) — the as-built right-walkway cantilever rectangle (rev12).
 - [Film Plane Mechanism Report](film-plane-mechanism-report.md) — the film-plane rework that drove the change.
 - [Weight Distribution Report §3.2](weight-distribution-report.md) — the right-walkway mass used in the load check.
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

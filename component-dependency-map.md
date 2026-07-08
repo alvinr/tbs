@@ -521,5 +521,3 @@ the updated PNGs and `*.skp`/`*.rb` alongside the constant change.
 7. git add tbs_constants.py diagrams/*.png models/*.skp src/models/overview.rb && git commit -m "..."
 8. bash publish.sh                   # deploy
 ```
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

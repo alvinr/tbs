@@ -325,5 +325,3 @@ the stacking structure and the totes it restrains.
 | IBC layout and stacking | [Equipment Layout Report](equipment-layout-report.md) §5 |
 | Frame fabrication drawings | [§8 — Engineering Drawings](#8-engineering-drawings) (this report) · [All Diagrams](all-diagrams.md) |
 | Plumbing panel specification | [Plumbing Report](plumbing-report.md) |
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

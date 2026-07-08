@@ -240,5 +240,3 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 6. [Equipment Layout Report](equipment-layout-report.md) — Evaporative cooler position and transport stowage specification.
 7. [Operating Manual](operating-manual.md) — Ventilation and cooling operational procedures (Phase 1.6).
 8. [Darkroom ventilation safety](https://nontoxic-print.com/safety-of-darkroom-photography/) — Kodak's recommended darkroom dilution-ventilation rate: ≥10 air changes per hour, or 170 CFM per processor/work station.
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

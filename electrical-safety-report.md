@@ -161,5 +161,3 @@ electrocution one.
 6. [Blue Sea Systems — Circuit Protection / MRBF terminal fuses & m-Series switches](https://www.bluesea.com/) — terminal-mount fusing and battery disconnects.
 7. [Electrical Report](electrical-report.md) — power architecture, battery, wiring, and the full parts list this report draws on.
 8. [Plumbing Report](plumbing-report.md) · [Water System Report](water-system-report.md) — the wet-zone pumps and where electrics meet liquids.
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

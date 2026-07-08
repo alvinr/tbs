@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # Sensitizer Trials — Cyanotype Coating Solution
 
 **Status: OPEN — trials required before the chemistry bulk order is finalized.**

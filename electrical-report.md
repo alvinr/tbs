@@ -455,5 +455,3 @@ All US/SoCal sources. Prices approximate as of 2026.
 6. [Hinged Panel Report](hinged-panel-report.md) — Panel construction, pivot, latch, and swing-mechanism specification.
 7. [Water System Report](water-system-report.md) — Pump circuits and water system electrical integration.
 8. [Equipment Layout Report](equipment-layout-report.md) — Component positions and shadow-free zone verification.
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

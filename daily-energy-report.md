@@ -194,5 +194,3 @@ all, that — not power or fresh water — becomes the hard stop.
 2. [Water System Report §6](water-system-report.md) — pump runtimes, wash cycles, and the Brown/Waste drain-out path.
 3. [Plumbing Report §4.3](plumbing-report.md) — P-03 (Waste evac) and P-05 (Brown drain) duties; the ~120 L gravity-drain residual.
 4. [Cost Analysis](cost-analysis-report.md) — the manual-actuation decision (Circuit F unused in the standard build).
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

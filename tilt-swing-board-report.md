@@ -285,5 +285,3 @@ Detailed renders can be found [in the full analysis](tilt-swing-board-analysis.m
 3. [Micro-Tools Custom Bellows](https://microtools.com/) — Custom photographic bellows fabrication.
 4. [Film Plane Mechanism Report](film-plane-mechanism-report.md) — Rear standard mechanism and combined distortion analysis.
 5. [Pinhole Report](pinhole-report.md) — Wall frame and interchangeable plate interface specification.
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

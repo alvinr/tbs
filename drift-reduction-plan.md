@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 <!-- Working/internal plan — NOT registered in publish.sh (not published). -->
 # Drift-Reduction Plan — single source of truth + commit-time linting
 

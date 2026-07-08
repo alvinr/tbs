@@ -234,5 +234,3 @@ Custom fabrication is comparable to or below commercial alternatives while provi
 2. [Hinged Panel Report](hinged-panel-report.md) — Panel construction, pivot, latch, and swing-mechanism specification.
 3. [Equipment Layout Report](equipment-layout-report.md) — Panel transport mode and swing clearance analysis.
 4. [Electrical Report](electrical-report.md) — Circuit D safelight specification for drum interior.
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

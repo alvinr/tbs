@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # Right Walkway — Pipe Routing Sections
 
 The corridor plumbing threads a tight zone at the IBC end of the container, where the

@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Copyright de-duplication + source licensing** — removed the visible `*© … GNU AGPLv3*` footer line
+  that each report duplicated in its body (the site footer already carries it, now with the version, so
+  it was showing twice); and added the hidden SPDX/copyright comment header (`<!-- SPDX-License-Identifier
+  … -->`) to every remaining `.md` so each file is licensed at the source regardless of the footer.
 - **Version stamp on every page** — the released version now shows on every PDF page (footer:
   copyright left, **v0.2 centered**, chapter/page right) and every site page (footer: copyright left,
   **v0.2** right). It is **derived from RELEASE.md's latest `## [X.Y]` header** — a single source, no

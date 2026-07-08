@@ -203,5 +203,3 @@ BOM); only the ~1.3 m trunk extension is added here.*
 1. [ISO 668:2020](https://www.iso.org/standard/76912.html) — Series 1 freight containers: dimensions and ratings.
 2. [Walkway System Report](walkway-report.md) — Walkway deck height and the widened near-walkway section.
 3. [Equipment Layout Report](equipment-layout-report.md) — Optical cone clearance and pinhole-wall zone definitions.
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

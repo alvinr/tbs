@@ -85,6 +85,7 @@ _UNICODE_FONT_ITALIC_PATHS = [
     "/usr/share/fonts/TTF/DejaVuSans-Oblique.ttf",
 ]
 _UNICODE_MONO_PATHS = [
+    "/System/Library/Fonts/Menlo.ttc",   # monospace WITH Greek/arrow coverage (code formulas)
     "/Library/Fonts/Andale Mono.ttf",
     "/System/Library/Fonts/Monaco.ttf",
     "/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf",
@@ -325,6 +326,9 @@ def md_to_html(md_path):
     # website — the live site stays the complete deep-dive appendix; the PDF carries the condensed set.
     text = re.sub(r"<!--\s*brochure:skip\s*-->.*?<!--\s*brochure:endskip\s*-->", "",
                   text, flags=re.DOTALL)
+    # The per-doc copyright/licence line renders in the PAGE FOOTER of the PDF, not inline at the end
+    # of each section — strip it here (the website keeps it via the unchanged .md).
+    text = re.sub(r"(?m)^.*©[^\n]*Alvin Richards[^\n]*Released under[^\n]*$", "", text)
     _MD.reset()
     return _MD.convert(text)
 
@@ -642,9 +646,11 @@ class BrochurePDF(FPDF):
         self.set_xy(M_L, rule_y + 2)
         self.set_font(FONT_BODY, "I", 7)
         self.set_text_color(*C_MUTED)
-        self.cell(cur_body_w / 2, 5, _safe(self._current_chapter),
-                  align="C", new_x=XPos.RIGHT)
-        self.cell(cur_body_w / 2, 5, f"Page {self.page_no()}", align="R")
+        self.cell(cur_body_w / 2, 5,
+                  _safe("© 2026 Alvin Richards — Released under GNU AGPLv3"),
+                  align="L", new_x=XPos.RIGHT)
+        self.cell(cur_body_w / 2, 5,
+                  _safe(f"{self._current_chapter}   Page {self.page_no()}"), align="R")
 
     # -- Cover page ------------------------------------------------------------
 
@@ -1263,10 +1269,8 @@ def _build_tag_styles():
             size_pt=size,
             color=color,
         )
-    # code/pre: use Body (Unicode-capable) so Greek/Unicode chars in code
-    # blocks render correctly.  All Body variants are registered so bodyBI etc.
-    # won't trigger an undefined-font crash.
-    code_font = FONT_BODY   # Body (Unicode) or Helvetica (ASCII-safe mode)
+    # code/pre: monospace so code/config reads as FIXED-WIDTH (the styling the reports need).
+    code_font = FONT_MONO   # "Mono" (Andale Mono / Monaco / DejaVu Mono) or Courier (ASCII fallback)
     return {
         "h1": ts("B",  15, C_ACCENT),
         "h2": ts("B",  13, C_DARK),

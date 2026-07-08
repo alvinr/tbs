@@ -2778,9 +2778,9 @@
 </div>
 
 <hr />
-<p><strong>Sheet 1 — System One-Line Diagram</strong>
-Complete power flow from solar panels through controller, battery bank, fuse block, and out to each circuit. Wire gauges, fuse ratings, and component models labeled.</p>
-<p><img alt="TBS-ELEC Sheet 1 — System One-Line Diagram" src="../assets/electrical-sheet1.png" /></p>
+<p><strong>Sheet 7 — System Schematic (Symbol Diagram)</strong>
+The whole 12V DC system as a traditional symbol-based electrical schematic — every conductor traced from the PV array through the MPPT, battery, 200A MRBF, contactor K1, and main disconnect to the Blue Sea 5026 bus and the seven load circuits (A–G), with the NC E-stop loop and shore charger shown explicitly.</p>
+<p><img alt="TBS-ELEC Sheet 7 — System Schematic (Symbol Diagram)" src="../assets/electrical-sheet7.png" /></p>
 <h2 id="3-power-budget">3. Power Budget<a class="headerlink" href="#3-power-budget" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -3434,9 +3434,6 @@ Scale engineering elevation of the Circuit-C pump distribution on the corridor p
 <p><strong>Sheet 5 — Main Panel Layout</strong>
 Front elevation of the EP plywood panel (the 2D companion to the electrical 3D model's <code>power_core</code>), <strong>reach-optimized so every maintenance item clears no-stool reach (≤1.75 m)</strong>: bottom-to-top the battery pair, the inverter, a grouped <strong>disconnect cluster</strong> at ~chest height (main disconnect · Circuit-C master pump switch · PV disconnect · interior E-stop), the color-coded A–G blade-fuse stack on the Blue Sea 5026 with the +/− busbars in the IP65 enclosure at chest height, and the MPPT display at the top of the reachable stack, with the internal feed one-line (Battery(+) → 200A MRBF → main disconnect → (+) busbar → fuse stack → circuits) and the PV-charge path. Includes a fuse schedule (position / circuit / rating / wire / load). See §7.1 and §7.3.</p>
 <p><img alt="TBS-ELEC Sheet 5 — Main Panel Layout + Fuse Schedule" src="../assets/electrical-sheet5.png" /></p>
-<p><strong>Sheet 7 — System Schematic (Symbol Diagram)</strong>
-The whole 12V DC system drawn as a traditional <strong>symbol-based electrical schematic</strong> — the companion to the Sheet-1 block one-line. Standard symbols (battery cells, fuse, isolator, contactor, NC E-stop, motor, lamp, ground) trace every conductor: PV array → PV isolator → MPPT → 60A charge fuse → battery → 200A MRBF → contactor <strong>K1</strong> → main disconnect → the Blue Sea 5026 positive bus → the seven load circuits (A–G, each a fuse + load) → negative bus → chassis earth. The <strong>E-stop loop</strong> (2× NC in series holding the K1 coil) and the shore charger are shown explicitly. Not to scale — a connection schematic. See §7.5 (protection) and §7.6 (AC isolation).</p>
-<p><img alt="TBS-ELEC Sheet 7 — System Schematic (Symbol Diagram)" src="../assets/electrical-sheet7.png" /></p>
 <h3 id="75-circuit-protection-electrical-safety">7.5 Circuit Protection &amp; Electrical Safety<a class="headerlink" href="#75-circuit-protection-electrical-safety" title="Permanent link">&para;</a></h3>
 <p>This is a 12 V DC (extra-low-voltage) system whose <strong>only</strong> 120 V AC element is the
 dedicated cooler inverter (Circuit E, §7.6); everywhere else the dominant electrical

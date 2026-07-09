@@ -159,16 +159,16 @@ def sheet1():
         xg += 24
     for bx in BEAM_XS:
         _rect(ax, bx, 80, BEAM_W, DECK_ZB - 80, C_STEEL, lw=0.9, z0=7)
-    leader(ax, WALKWAY_RIGHT_X + 150, WALKWAY_H, WALKWAY_RIGHT_X + 150, 300,
-           f"RIGHT WALKWAY GRATE DECK\n(X{WALKWAY_RIGHT_X}–{WALKWAY_RIGHT_X + WALKWAY_RIGHT_W} · deck Z{DECK_ZB}–{WALKWAY_H})",
+    leader(ax, WALKWAY_RIGHT_X + 150, WALKWAY_H, WALKWAY_RIGHT_X + 150, 200,
+           f"RIGHT WALKWAY GRATE DECK",
            color=C_OUT, fs=6.4, ha="center", va="bottom", arrow_style="-|>", font=FONT)
-    leader(ax, BEAM_XS[0] + BEAM_W / 2, 97, BEAM_XS[0] - 20, 240,
+    leader(ax, BEAM_XS[0] + BEAM_W / 2, 97, BEAM_XS[0] + 60, 40,
            "40×40 long beam\n(runs in Yd, cut) Z80–115", color=C_DIM, fs=6, ha="right",
            va="center", arrow_style="-|>", font=FONT)
 
     # ── Ribbon support cross-brace (welded 40×10 between the beams, top Z90) ──
     _rect(ax, CHAN_X0, RIBBON_Z - 18, CHAN_X1 - CHAN_X0, 10, C_STEEL, lw=0.7, z0=6)
-    leader(ax, (CHAN_X0 + CHAN_X1) / 2, RIBBON_Z - 18, (CHAN_X0 + CHAN_X1) / 2 - 40, -40,
+    leader(ax, (CHAN_X0 + CHAN_X1) / 2, RIBBON_Z - 18, (CHAN_X0 + CHAN_X1) / 2 + 70, +60,
            "ribbon support cross-brace\n(welded 40×10, top Z90 — carries the ribbon)",
            color=C_DIM, fs=5.6, ha="right", va="top", arrow_style="-|>", font=FONT)
 
@@ -179,19 +179,19 @@ def sheet1():
         cn = "blue" if col == C_BLUE else "brown"
         leader(ax, xx, RIBBON_Z, CHAN_X0 - 30, lz, f"{tag} ({cn})", color=col, fs=5.6,
                ha="right", va="center", arrow_style="-|>", font=FONT)
-    ax.text((CHAN_X0 + CHAN_X1) / 2, RIBBON_Z + 30,
+    ax.text((CHAN_X0 + CHAN_X1) / 2, RIBBON_Z + 40,
             f"4-lane ribbon\n(26mm pitch, Z{RIBBON_Z:g} — flush)", fontsize=5.4, ha="center", va="bottom",
             color=C_OUT, zorder=13, **FONT)
 
     # ── Clearance dimensions (the point of the section) ──────────────────────
     # pipe crown sits at the deck underside (flush) — a leader, not a dim (label rule 7).
-    leader(ax, CHAN_X1 - 6, (RIBBON_Z + OD / 2 + DECK_ZB) / 2, CHAN_X1 + 42, 175,
+    leader(ax, CHAN_X1 - 6, (RIBBON_Z + OD / 2 + DECK_ZB) / 2, CHAN_X1, 175,
            "pipe crown FLUSH\nwith deck underside (Z%d)" % DECK_ZB, color=C_DIM, fs=5.4,
            ha="left", va="center", arrow_style="-|>", font=FONT)
-    draw_dim_v(ax, X_HI - 40, 0, WALKWAY_H, f"deck\nZ{WALKWAY_H}", offset=5, fs=5.6, font=FONT)
+    draw_dim_v(ax, X_HI - 120, 0, WALKWAY_H, f"deck\nZ{WALKWAY_H}", offset=5, fs=5.6, font=FONT)
     draw_dim_v(ax, BEAM_XS[0] - 20, PROC_TRAY_RIM, RIBBON_Z, f"{RIBBON_Z - PROC_TRAY_RIM}mm\nabove rim",
                offset=5, fs=5.4, font=FONT)
-    draw_dim_h(ax, PROC_TRAY_X_R, IBC_COL_X, -46, f"{IBC_COL_X - PROC_TRAY_X_R}mm\ngap", offset=4, fs=5.4,
+    draw_dim_h(ax, PROC_TRAY_X_R, IBC_COL_X, 20, f"{IBC_COL_X - PROC_TRAY_X_R}mm\ngap", offset=4, fs=5.4,
                above=False, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
@@ -203,7 +203,7 @@ def sheet1():
         "4. The two middle lanes were SWAPPED (blue TAP-01 trunk ↔ brown tray-sump) so blue/brown alternate and no longer cross into the corridor.",
         "5. Off-section (−Yd) each lane drops to its wall feature: the two blue lanes to TAP-01 / the SV-01 filtered return, the two brown lanes on toward the near-rim taps.",
     ]
-    draw_notes(ax, notes, X_LO + 8, Z_HI - 40, 6.6, fs=6.2,
+    draw_notes(ax, notes, X_LO + 8, Z_HI - 60, 6.6, fs=6.2,
                font=FONT, width=225, wrap=72, border_color=C_DIM, border_lw=0.7)
 
     title_block(ax, "SHEET 1 OF 5",
@@ -265,8 +265,8 @@ def sheet2():
         xg += 24
     for bx in BEAM_XS:
         _rect(ax, bx, 80, BEAM_W, DECK_ZB - 80, C_STEEL, lw=0.9, z0=7)
-    leader(ax, WALKWAY_RIGHT_X + 150, WALKWAY_H, WALKWAY_RIGHT_X + 150, 300,
-           f"RIGHT WALKWAY GRATE DECK\n(over the tray · X{WALKWAY_RIGHT_X}–{WALKWAY_RIGHT_X + WALKWAY_RIGHT_W})",
+    leader(ax, WALKWAY_RIGHT_X + 150, WALKWAY_H, WALKWAY_RIGHT_X + 150, 200,
+           f"RIGHT WALKWAY GRATE DECK",
            color=C_OUT, fs=6.4, ha="center", va="bottom", arrow_style="-|>", font=FONT)
 
     # IBC-3 tote (beyond the gap)
@@ -276,9 +276,9 @@ def sheet2():
 
     # ── Ribbon support cross-brace (welded 40×10 between the beams, top Z90 — this cut is on a station) ──
     _rect(ax, CHAN_X0, RIBBON_Z - 18, CHAN_X1 - CHAN_X0, 10, C_STEEL, lw=0.7, z0=6)
-    leader(ax, (CHAN_X0 + CHAN_X1) / 2, RIBBON_Z - 18, (CHAN_X0 + CHAN_X1) / 2 - 40, -40,
-           "ribbon support cross-brace\n(welded 40×10, top Z90)", color=C_DIM, fs=5.6,
-           ha="right", va="top", arrow_style="-|>", font=FONT)
+    leader(ax, (CHAN_X0 + CHAN_X1) / 2, RIBBON_Z - 18, (CHAN_X0 + CHAN_X1) / 2 + 70, +60,
+           "ribbon support cross-brace\n(welded 40×10, top Z90 — carries the ribbon)",
+           color=C_DIM, fs=5.6, ha="right", va="top", arrow_style="-|>", font=FONT)
 
     # ── The four ribbon lanes IN-PLANE here (they run the length under the grate) ──
     _ribbon_circles(ax, z=RIBBON_Z, z0=12)
@@ -287,18 +287,18 @@ def sheet2():
         cn = "blue" if col == C_BLUE else "brown"
         leader(ax, xx, RIBBON_Z, CHAN_X0 - 30, lz, f"{tag} ({cn})", color=col, fs=5.6,
                ha="right", va="center", arrow_style="-|>", font=FONT)
-    ax.text((CHAN_X0 + CHAN_X1) / 2, RIBBON_Z + 30,
+    ax.text((CHAN_X0 + CHAN_X1) / 2, RIBBON_Z + 40,
             f"4-lane ribbon\n(26mm pitch, Z{RIBBON_Z:g} — flush)", fontsize=5.4, ha="center", va="bottom",
             color=C_OUT, zorder=13, **FONT)
 
     # pipe crown sits at the deck underside (flush) — a leader, not a dim (label rule 7).
-    leader(ax, CHAN_X1 - 6, (RIBBON_Z + OD / 2 + DECK_ZB) / 2, CHAN_X1 + 42, 175,
+    leader(ax, CHAN_X1 - 6, (RIBBON_Z + OD / 2 + DECK_ZB) / 2, CHAN_X1, 175,
            "pipe crown FLUSH\nwith deck underside (Z%d)" % DECK_ZB, color=C_DIM, fs=5.4,
            ha="left", va="center", arrow_style="-|>", font=FONT)
     draw_dim_v(ax, BEAM_XS[0] - 20, PROC_TRAY_RIM, RIBBON_Z, f"{RIBBON_Z - PROC_TRAY_RIM}mm\nabove rim",
                offset=5, fs=5.4, font=FONT)
-    draw_dim_v(ax, X_HI - 40, 0, WALKWAY_H, f"deck\nZ{WALKWAY_H}", offset=5, fs=5.6, font=FONT)
-    draw_dim_h(ax, TXR, IBC_COL_X, -46, f"{IBC_COL_X - TXR}mm\ngap", offset=4, fs=5.4, above=False, font=FONT)
+    draw_dim_v(ax, X_HI - 120, 0, WALKWAY_H, f"deck\nZ{WALKWAY_H}", offset=5, fs=5.6, font=FONT)
+    draw_dim_h(ax, TXR, IBC_COL_X, 20, f"{IBC_COL_X - TXR}mm\ngap", offset=4, fs=5.4, above=False, font=FONT)
 
     notes = [
         "SECTION C-C NOTES",
@@ -489,10 +489,10 @@ def sheet4():
     lgx, lgz = 4900, 150
     ax.text(lgx, lgz, "CORRIDOR LANES (→ toward the pumps):", fontsize=6, ha="left", va="top",
             color=C_OUT, fontweight="bold", zorder=14, **FONT)
-    for i, (c, t) in enumerate([(C_BROWN, "brown tray-sump → P-04 — Z205 (rises into P-04)"),
-                                (C_BLUE, "blue supply trunk — Z235"),
-                                (C_BROWN, "brown IBC-3 → P-02 — Z235*"),
-                                (C_BLUE, "blue SV-01 → DV-01 return — Z235*")]):
+    for i, (c, t) in enumerate([(C_BROWN, "brown tray-sump → P-04 (rises into P-04)"),
+                                (C_BLUE, "blue supply trunk"),
+                                (C_BROWN, "brown IBC-3 → P-02"),
+                                (C_BLUE, "blue SV-01 → DV-01 return")]):
         zz = lgz - 22 - i * 20
         ax.add_patch(Rectangle((lgx, zz - 7), 30, 13, facecolor=c, edgecolor=C_OUT, lw=0.6, zorder=14))
         ax.text(lgx + 40, zz, t, fontsize=5.4, ha="left", va="center", color=C_OUT, zorder=14, **FONT)

@@ -271,6 +271,7 @@ def draw_sheet1():
                 drawing_title="TILT-SWING FRONT BOARD",
                 subtitle="FRONT VIEW (SCENE SIDE) — ICP-01 + ICP-02",
                 scale_note="SCALE 1:2 · AXES IN mm",
+                height=0.040,
                 doc_id="TBS-001 · Interchangeable Plates")
 
     plt.tight_layout(pad=0)

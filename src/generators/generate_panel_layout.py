@@ -505,16 +505,16 @@ def draw_corridor_panel():
 
     # ── DIMENSIONS ──────────────────────────────────────────────────
     draw_dim_h(ax, sx(0), sx(PANEL_W), sz(-50),
-               f"{PANEL_W}", offset=4.8, fs=6, color=C_DIM, font=FONT)
+               f"{PANEL_W}mm", offset=4.8, fs=6, color=C_DIM, font=FONT)
     draw_dim_h(ax, sx(PUMP_COL_C - PUMP_W / 2), sx(PUMP_COL_C + PUMP_W / 2),
                sz(P01_Z - 15),
-               f"{PUMP_W}", offset=3.2, fs=5.5, color=C_DIM, font=FONT)
+               f"{PUMP_W}mm", offset=3.2, fs=5.5, color=C_DIM, font=FONT)
     draw_dim_v(ax, sx(PUMP_COL_C + PUMP_W / 2 + 15),
                sz(P01_Z), sz(P01_Z + PUMP_H),
-               f"{PUMP_H}", offset=4.8, fs=5.5, color=C_DIM,
+               f"{PUMP_H}mm", offset=4.8, fs=5.5, color=C_DIM,
                right=True, font=FONT)
     draw_dim_v(ax, sx(-30), sz(0), sz(PANEL_H),
-               f"{PANEL_H}", offset=8.0, fs=7, color=C_DIM,
+               f"{PANEL_H}mm", offset=8.0, fs=7, color=C_DIM,
                right=False, font=FONT)
     ax.text(sx(PANEL_W + 30), sz(0),
             f"Z={PANEL_Z_AFF}\nAFF", ha="left", va="center",

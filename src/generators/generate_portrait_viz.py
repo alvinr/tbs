@@ -11,7 +11,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
-from tbs_constants import DIAGRAM_DPI
+from tbs_constants import DISTORTION_DPI
 
 # ─────────────────────────────────────────
 # Camera constants
@@ -243,7 +243,7 @@ ax.axis('off')
 plt.tight_layout(pad=0.3)
 
 out1 = '/Users/alvinrichards/dev/tbs/diagrams/portrait-scale-comparison.png'
-plt.savefig(out1, dpi=DIAGRAM_DPI, bbox_inches='tight', facecolor='#101010')
+plt.savefig(out1, dpi=DISTORTION_DPI, bbox_inches='tight', facecolor='#101010')
 plt.close()
 print(f'Saved: {out1}')
 
@@ -357,7 +357,7 @@ ax2.text(CONT_L_MM/2, CONT_W_MM + max_dist_mm + 250,
 plt.tight_layout(pad=0.3)
 
 out2 = '/Users/alvinrichards/dev/tbs/diagrams/portrait-camera-schematic.png'
-plt.savefig(out2, dpi=DIAGRAM_DPI, bbox_inches='tight', facecolor='#101010')
+plt.savefig(out2, dpi=DISTORTION_DPI, bbox_inches='tight', facecolor='#101010')
 plt.close()
 print(f'Saved: {out2}')
 
@@ -471,7 +471,7 @@ ax3.axis('off')
 plt.tight_layout(pad=0.3)
 
 out3 = '/Users/alvinrichards/dev/tbs/diagrams/portrait-optimal-3m.png'
-plt.savefig(out3, dpi=DIAGRAM_DPI, bbox_inches='tight', facecolor='#101010')
+plt.savefig(out3, dpi=DISTORTION_DPI, bbox_inches='tight', facecolor='#101010')
 plt.close()
 print(f'Saved: {out3}')
 

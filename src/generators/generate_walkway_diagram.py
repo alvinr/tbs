@@ -1098,9 +1098,9 @@ def sheet3():
     for wy in [0, C_WID]:
         ax.plot([(X_LO), (X_HI)], [(wy), (wy)],
                 color=C_OUT, lw=2.0, zorder=3)
-    ax.text((WK_L_X - 80), (0 - 55), "NEAR WALL (Yd=0)", ha="left", va="center",
+    ax.text((WK_L_X), (0 - 55), "NEAR WALL", ha="left", va="center",
             fontsize=6, color=C_OUT, **FONT)
-    ax.text((WK_L_X - 80), (C_WID + 55), f"FAR WALL (Yd={C_WID})", ha="left", va="center",
+    ax.text((WK_L_X), (C_WID + 55), f"FAR WALL", ha="left", va="center",
             fontsize=6, color=C_OUT, **FONT)
 
     # ── IBC 2×2 stack ghost ──────────────────────────────────────────────────
@@ -1126,11 +1126,11 @@ def sheet3():
                                 fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=8, alpha=0.9))
 
     leader(ax, (WK_L_X + SHS / 2), (C_WID * 0.80),
-           (GUT_X), (C_WID * 0.84),
+           (GUT_X - 150), (C_WID * 0.84),
            f"LONG BEAM\n40×40×3 SHS\n(×2, X={WK_L_X}/{WK_R_X})",
            color=C_STEEL, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
     leader(ax, ((WK_L_X + WK_R_X) / 2), (C_WID - SHS / 2),
-           ((WK_L_X + WK_R_X) / 2 - 40), (C_WID + 70),
+           ((WK_L_X + WK_R_X) / 2), (C_WID + 120),
            "END BEAM (×2)\ncloses the rectangle",
            color=C_STEEL, fs=6, ha="center", va="bottom", arrow_style="-|>", font=FONT)
 
@@ -1144,11 +1144,11 @@ def sheet3():
             ax.add_patch(Rectangle(((bx), (ay - SHS / 2)), (SHS), (SHS),
                                     fc="none", ec=C_OUT, lw=0.9, ls=(0, (2, 1.5)), zorder=9))
     leader(ax, (WK_L_X + SHS / 2), (ARM_YDS[0]),
-           (GUT_X), (C_WID * 0.52),
+           (GUT_X - 150), (C_WID * 0.52),
            "CENTER CANTILEVER ARM (×2)\n40×40×3 SHS off the IBC\ncorridor uprights",
            color=C_STEEL, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
     leader(ax, (WK_R_X + SHS / 2), (ARM_YDS[1] + SHS / 2),
-           (WK_R_X + 130), (ARM_YDS[1] + 180),
+           (WK_R_X + 330), (ARM_YDS[1] + 180),
            "HALF-LAP JOINT\n(arm + long beam\ncross-halved, flush top)",
            color=C_OUT, fs=5.5, ha="center", va="bottom", arrow_style="-|>", font=FONT)
 
@@ -1159,8 +1159,8 @@ def sheet3():
         ax.add_patch(Rectangle(((WK_L_X - 12), (cyb - 9)), (SHS + 24), (SHS + 18),
                                 fc=C_PLATE, ec=C_OUT, lw=1.0, zorder=6, alpha=0.6))
     leader(ax, (WK_L_X + SHS / 2), (SHS / 2),
-           (GUT_X), (C_WID * 0.24),
-           "WALL CLEAT (left corners)\nback-plate + ext. plate + shelf,\nM12 through-bolts",
+           (GUT_X - 150), (C_WID * 0.24),
+           "WALL CLEAT (left corners)\nback-plate + ext. plate +\nshelf, M12 through-bolts",
            color=C_PLATE, fs=5.5, ha="left", va="center", arrow_style="-|>", font=FONT)
 
     # Right corners (X≈WALL_X) on combined corner plates — shared with BR film rail
@@ -1170,35 +1170,34 @@ def sheet3():
                                 fc=C_PLATE, ec=C_OUT, lw=1.2, zorder=10, alpha=0.85))
     ax.plot([(WALL_X), (WALL_X)], [(0), (C_WID)],
             color=C_CL, lw=1.4, ls=(0, (6, 3)), zorder=5)
-    ax.text((WALL_X + 12), (C_WID * 0.50), "BOTTOM FILM RAIL (BR) — X=4649",
+    ax.text((WALL_X + 75), (C_WID * 0.50), "BOTTOM FILM RAIL (BR)",
             ha="left", va="center", fontsize=5.5, color=C_CL, rotation=90, **FONT)
     leader(ax, (WK_R_X + SHS / 2), (70),
-           (GUT_X), (C_WID * 0.06),
+           (GUT_X + 1000), (C_WID * 0.06),
            "COMBINED CORNER PLATE (right corners)\nshared with the BR film rail — 10mm,\n4× M12, permanently bolted",
            color=C_PLATE, fs=5.5, ha="left", va="center", arrow_style="-|>", font=FONT)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
-    draw_dim_h(ax, (WK_L_X), (WK_R_X), (-70),
-               f"{WALKWAY_W}mm", offset=(6), fs=7, font=FONT)
-    draw_dim_v(ax, (X_HI - 30), (0), (C_WID),
-               f"{C_WID}mm\n(full width)", offset=(8), fs=6.5, right=True, font=FONT)
+    draw_dim_h(ax, (WK_L_X), (WK_R_X), (-90),
+               f"{WALKWAY_W}mm", offset=(9), fs=7, above=False, font=FONT)
+    draw_dim_v(ax, (X_HI - 25), (0), (C_WID),
+               f"{C_WID}mm", offset=(8), fs=6.5, right=True, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
-        "RIGHT WALKWAY — CANTILEVER RECTANGLE (rev 12):",
-        f"1. Closed 40×40×3 SHS frame: 2 long beams (X={WK_L_X}/{WK_R_X},",
-        f"   full {C_WID}mm width) + 2 end beams.",
-        "2. Picked up at mid-span by 2 arms cantilevering off the",
-        f"   IBC corridor uprights (Yd {CORRIDOR_YD_NEAR}–{CORRIDOR_YD_FAR});",
+        "RIGHT WALKWAY — CANTILEVER RECTANGLE:",
+        f"1. Closed 40×40×3 SHS frame: 2 long beams (X={WK_L_X}/{WK_R_X},"
+        f" full {C_WID}mm width) + 2 end beams.",
+        "2. Picked up at mid-span by 2 arms cantilevering off the"
+        f" IBC corridor uprights (Yd {CORRIDOR_YD_NEAR}–{CORRIDOR_YD_FAR});",
         "   half-lapped where the long beams cross them.",
-        "3. LEFT corners on wall cleats; RIGHT corners on combined",
-        "   corner plates SHARED with the bottom film rail (BR).",
+        "3. LEFT corners on wall cleats; RIGHT corners on combined corner plates SHARED with the",
+        "   bottom film rail (BR).",
         f"4. Deck {WALKWAY_H}mm; {WALKWAY_GRATE_T}mm grate spans the rectangle.",
-        "5. ZERO floor contact, ZERO roof penetrations —",
-        "   replaces the ceiling-hung hangers.",
+        "5. ZERO floor contact, ZERO roof penetrations.",
     ]
-    draw_notes(ax, notes, (IBC_COL_X + 40), (-90),
-               spacing=(52), fs=6.5, width=(IBC_W - 60), font=FONT)
+    draw_notes(ax, notes, (IBC_COL_X - 800), (-200),
+               spacing=(52), fs=6.5, width=2350, font=FONT)
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 9",

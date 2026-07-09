@@ -1110,7 +1110,7 @@ def draw_sheet3():
     ax_p.annotate("", xy=(PROC_OPEN_X_L + 400, beam_example_yd + 300),
                   xytext=(PROC_OPEN_X_L + 400, beam_example_yd - 300),
                   arrowprops=dict(arrowstyle="<->", color=C_BLUE, lw=1.0), zorder=8)
-    ax_p.text(PROC_OPEN_X_L + 500, beam_example_yd,
+    ax_p.text(PROC_OPEN_X_L + 500, beam_example_yd + 50,
               f"TRAVEL\n{SPRAY_BAR_TRAVEL}mm",
               ha="left", va="center", fontsize=4.5, color=C_BLUE, **FONT, zorder=8)
 
@@ -1299,22 +1299,22 @@ def draw_sheet4():
     leader(ax_a, beam_end_x + 8, BOFF + bore_half + BEAM_T / 2,
            beam_end_x + 25, d_yt - 6,
            "40×25×3 304-SS RHS\n(HOLLOW — POLY OUTSIDE)",
-           fs=5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox_a)
+           fs=5, color=C_FRAME, font=FONT, zorder=20)
 
-    leader(ax_a, d_xr - 10, poly_od_h + 2,
-           d_xr - 5, d_yt - 3,
+    leader(ax_a, d_xr - 10, poly_od_h - 2,
+           d_xr + 5, d_yt - 45,
            "3/4\" LDPE POLY PIPE",
-           fs=5, color="#404040", font=FONT, zorder=20, bbox=_bbox_a)
+           fs=5, color="#404040", font=FONT, zorder=20)
 
     leader(ax_a, taper_x + 3, taper_y - 5,
            d_xl + 5, taper_y - 10,
            "180° FOLD-BACK\nEND CLOSURE",
-           fs=5, color="#404040", font=FONT, zorder=20, bbox=_bbox_a)
+           fs=5, color="#404040", font=FONT, zorder=20)
 
     leader(ax_a, clip_x, clip_span_bot - 1,
-           clip_x - 12, d_yb + 3,
+           clip_x - 12, d_yb + 8,
            "RETAINER CLIP\n(SS OR NYLON)",
-           fs=5, color="#808080", font=FONT, zorder=20, bbox=_bbox_a)
+           fs=5, color="#808080", font=FONT, zorder=20)
 
     ax_a.text(d_xr - 8, 0, "WATER",
               ha="center", va="center", fontsize=5, color=C_WATER,
@@ -1418,7 +1418,8 @@ def draw_sheet5():
                        fc="none", ec="#A06000", lw=1.1, ls=(0, (4, 2)), zorder=6.7))
 
     # notch callout
-    leader(ax_w, cox, notch_half + 1, cox - 35, notch_half + 40,
+    leader(ax_w, cox, notch_half + 1,
+           cox + 35, notch_half + 40,
            "NOTCH\n(BEAM THROUGH FORK)", fs=5, color="#A06000", font=FONT, zorder=20)
 
     # ── Beam clamp top plate (over the beam) + 4 bolt heads ──
@@ -1443,16 +1444,17 @@ def draw_sheet5():
 
     # ── Labels ───────────────────────────────────────────────────────────
     leader(ax_w, cox + wh_x, WHEEL_SPACING_YD / 2 + wh_y - 4,
-           cox + 70, WHEEL_SPACING_YD / 2 + 32,
+           cox + 20, WHEEL_SPACING_YD / 2 + 32,
            f"Ø{WHEEL_DIA} WHEEL THROUGH SLOT\nIN CARRIAGE ({WHEEL_WIDTH}mm TREAD)",
            fs=5, color=C_WHEEL, font=FONT, zorder=20)
 
     leader(ax_w, cox + sgap, -WHEEL_SPACING_YD / 2 - 12,
-           cox + 70, -WHEEL_SPACING_YD / 2 - 34,
+           cox + 20, -WHEEL_SPACING_YD / 2 - 34,
            "C-CLAMP RETAINING BOLTS (HEADS)\n2 each side of the wheel —\naxle + clamp are below the plate",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
-    leader(ax_w, cox + arm_w / 2, 62, cox + 60, 86,
+    leader(ax_w, cox + arm_w / 2, 62,
+           cox + 30, 86,
            "CARRIAGE PLATE\n(5mm AL, NOTCHED FORK)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
@@ -1547,7 +1549,7 @@ def draw_sheet6():
                        hatch="///", alpha=0.7, zorder=4))
     # notch callout — the beam runs through the fork between the wings
     leader(ax_d, CARRIAGE_OFFSET_X, notch_half + 1,
-           CARRIAGE_OFFSET_X - 35, notch_half + 40,
+           CARRIAGE_OFFSET_X + 35, notch_half + 30,
            "NOTCH\n(BEAM THROUGH FORK)",
            fs=4.5, color="#A06000", font=FONT, zorder=20)
 
@@ -1607,13 +1609,13 @@ def draw_sheet6():
     # Wheels
     leader(ax_d, CARRIAGE_OFFSET_X + WHEEL_WIDTH / 2,
            -WHEEL_SPACING_YD / 2,
-           D_X_HI - 225, -WHEEL_SPACING_YD / 2 - 10,
+           CARRIAGE_OFFSET_X + 40, -WHEEL_SPACING_YD / 2 ,
            f"Ø{WHEEL_DIA}mm NYLON WHEEL\n({WHEEL_WIDTH}mm WIDE)\n2 PER CARRIAGE",
            fs=5, color=C_WHEEL, font=FONT, zorder=20)
 
     # Carriage plate
     leader(ax_d, CARRIAGE_OFFSET_X + arm_w_x / 2, 45,
-           CARRIAGE_OFFSET_X + 55, 60,
+           CARRIAGE_OFFSET_X + 35, 60,
            "CARRIAGE PLATE\n(5mm AL, NOTCHED)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
@@ -1621,7 +1623,7 @@ def draw_sheet6():
     bot_right_wx = CARRIAGE_OFFSET_X + 16
     bot_w_yd = -WHEEL_SPACING_YD / 2
     leader(ax_d, bot_right_wx + 3, bot_w_yd - 14,
-           bot_right_wx + 50, bot_w_yd + 20,
+           bot_right_wx + 25, bot_w_yd - 14,
            "AXLE C-CLAMP\n(2mm SS, 2 EACH SIDE)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
@@ -1635,7 +1637,7 @@ def draw_sheet6():
 
     # Through-bolts (on axle saddle clamp)
     leader(ax_d, bot_right_wx, bot_w_yd + 12,
-           bot_right_wx + 50, bot_w_yd - 20,
+           bot_right_wx + 25, bot_w_yd + 20,
            "M5 THROUGH-BOLT\n(2 PER C-CLAMP)",
            fs=5, color=C_BOLT, font=FONT, zorder=20)
 
@@ -1826,22 +1828,22 @@ def draw_sheet7():
                    arrowprops=arrow_props, zorder=8)
 
     # Labels
-    leader(ax_cf, 0, beam_bot_z + BEAMH / 2,
-           d_xl + 6, beam_bot_z + BEAMH / 2 - 3,
+    leader(ax_cf, 0, beam_bot_z + BEAMH - 2,
+           d_xl + 16, beam_bot_z + BEAMH / 2 - 3,
            "40×25×3mm\n304-SS RHS",
-           fs=5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox)
+           fs=5, color=C_FRAME, font=FONT, zorder=20)
     leader(ax_cf, d_xr - 10, poly_top - poly_wall / 2,
-           d_xr - 5, poly_ctr + 2,
+           d_xr - 2, poly_ctr + 5,
            f"3/4\" LDPE POLY\nMANIFOLD OD {POLY_OD:.0f}",
-           fs=5, color=C_POLY, font=FONT, zorder=20, bbox=_bbox)
+           fs=5, color=C_POLY, font=FONT, zorder=20)
     leader(ax_cf, FITTING_BODY_OD / 2 + 2, (poly_top + body_top) / 2,
-           d_xr - 5, poly_top + 8,
+           d_xr - 25, poly_top + 8,
            "BARBED TEE\n(BRASS, 1/2\" NPT)",
-           fs=5, color=C_BRASS, font=FONT, zorder=20, bbox=_bbox)
+           fs=5, color=C_BRASS, font=FONT, zorder=20)
     leader(ax_cf, HOSE_OD / 2, hose_top - 3,
            d_xr - 5, hose_top,
            "IRRIGATION TUBE\n(FROM MANIFOLD)",
-           fs=5, color=C_HOSE, font=FONT, zorder=20, bbox=_bbox)
+           fs=5, color=C_HOSE, font=FONT, zorder=20)
     ax_cf.text(d_xl + 15, poly_ctr, "WATER", ha="center", va="center",
                fontsize=5, color=C_WATER, fontweight="bold",
                bbox=_bbox, **FONT, zorder=15)
@@ -1942,30 +1944,30 @@ def draw_sheet7():
                    arrowprops=arrow_props, zorder=8)
 
     # Labels
-    leader(ax_nz, 0, beam_bot_z + BEAMH / 2,
-           n_xl + 6, beam_bot_z + BEAMH / 2 + 3,
+    leader(ax_nz, 0, beam_bot_z + BEAMH - 2,
+           n_xl + 20, beam_bot_z + BEAMH / 2 + 3,
            "40×25×3mm\n304-SS RHS",
-           fs=5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox)
+           fs=5, color=C_FRAME, font=FONT, zorder=20)
     leader(ax_nz, n_xr - 10, poly_top - poly_wall / 2,
-           n_xr - 5, poly_ctr + 2,
+           n_xr - 2, poly_ctr + 2,
            f"3/4\" LDPE POLY\nMANIFOLD OD {POLY_OD:.0f}",
-           fs=5, color=C_POLY, font=FONT, zorder=20, bbox=_bbox)
+           fs=5, color=C_POLY, font=FONT, zorder=20)
     leader(ax_nz, FITTING_BODY_OD / 2 + 2, poly_bot - 3,
-           n_xr - 5, poly_bot - 6,
+           n_xr - 30, poly_bot - 6,
            "BARBED SADDLE-TEE\n(BRASS)",
-           fs=5, color=C_BRASS, font=FONT, zorder=20, bbox=_bbox)
+           fs=5, color=C_BRASS, font=FONT, zorder=20)
     leader(ax_nz, NZ_BODY_OD / 2, nz_bot + NZ_BODY_H / 2,
-           n_xr - 5, nz_bot + NZ_BODY_H / 2,
+           n_xr - 30, nz_bot + NZ_BODY_H / 2,
            "FLAT-FAN\nSPRAY NOZZLE",
-           fs=5, color=C_NOZZLE, font=FONT, zorder=20, bbox=_bbox)
+           fs=5, color=C_NOZZLE, font=FONT, zorder=20)
     ax_nz.text(n_xl + 12, poly_ctr, "WATER", ha="center", va="center",
                fontsize=5, color=C_WATER, fontweight="bold",
                bbox=_bbox, **FONT, zorder=15)
 
     # Dimensions
-    draw_dim_v(ax_nz, n_xl + 8, beam_bot_z, beam_bot_z + BEAMH,
+    draw_dim_v(ax_nz, n_xl + 2, beam_bot_z, beam_bot_z + BEAMH,
                f"{BEAMH}mm\nRHS", offset=2, fs=5, font=FONT)
-    draw_dim_v(ax_nz, n_xr - 8, poly_bot, poly_top,
+    draw_dim_v(ax_nz, n_xr - 4, poly_bot, poly_top,
                f"{POLY_OD:.0f}mm\nOD", offset=2, fs=4.5, font=FONT, right=True)
 
     ax_nz.text(0, n_yt - 1, "NOZZLE CONNECTION",
@@ -2026,16 +2028,16 @@ def draw_sheet7():
                       fc="#B0B0B8", ec=C_FRAME, lw=1.0, zorder=5))
 
     # labels + spacing dim
-    leader(ax_pole, 0, 660, p_xl + 16, 720,
-           f"Ø{POLE_OD}mm AL\nTELESCOPING POLE", fs=5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox)
-    leader(ax_pole, hose_x, 470, p_xr - 4, 540,
-           "1/2\" FEED HOSE\n(TANGENT TO POLE)", fs=5, color=C_BLUE, font=FONT, zorder=20, bbox=_bbox)
-    leader(ax_pole, hose_r + 7, zt_zs[1], p_xr - 4, zt_zs[1] + 95,
-           "GRAY ZIP-TIE LOOP\n(@ ~200mm)", fs=5, color="#707070", font=FONT, zorder=20, bbox=_bbox)
-    leader(ax_pole, 0, pole_z1 + 12, p_xl + 16, pole_z1 - 30,
-           "T-HANDLE", fs=5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox)
-    leader(ax_pole, 0, pole_z0, p_xl + 16, 130,
-           "BALL JOINT +\nMANIFOLD\n(BEAM TOP)", fs=5, color="#A06000", font=FONT, zorder=20, bbox=_bbox)
+    leader(ax_pole, 0, 660, p_xl + 30, 720,
+           f"Ø{POLE_OD}mm AL\nTELESCOPING POLE", fs=5, color=C_FRAME, font=FONT, zorder=20)
+    leader(ax_pole, hose_x, 470, p_xr - 50, 540,
+           "1/2\" FEED HOSE\n(TANGENT TO POLE)", fs=5, color=C_BLUE, font=FONT, zorder=20)
+    leader(ax_pole, hose_r + 7, zt_zs[1], p_xr - 50, zt_zs[1] + 45,
+           "GRAY ZIP-TIE LOOP\n(@ ~200mm)", fs=5, color="#707070", font=FONT, zorder=20)
+    leader(ax_pole, 0, pole_z1 + 12, p_xl + 30, pole_z1 - 30,
+           "T-HANDLE", fs=5, color=C_FRAME, font=FONT, zorder=20)
+    leader(ax_pole, 0, pole_z0, p_xl + 40, 80,
+           "BALL JOINT +\nMANIFOLD\n(BEAM TOP)", fs=5, color="#A06000", font=FONT, zorder=20,)
     draw_dim_v(ax_pole, p_xl + 34, zt_zs[0], zt_zs[1], "~200", offset=2, fs=5, font=FONT)
 
     ax_pole.text((p_xl + p_xr) / 2, 1002, "FEED POLE — HOSE BUNDLING",

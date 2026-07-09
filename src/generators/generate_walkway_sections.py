@@ -192,10 +192,10 @@ def sheet1():
     leader(ax, CHAN_X1 - 6, (RIBBON_Z + OD / 2 + DECK_ZB) / 2, CHAN_X1, 175,
            "pipe crown FLUSH\nwith deck underside (Z%d)" % DECK_ZB, color=C_DIM, fs=5.4,
            ha="left", va="center", arrow_style="-|>", font=FONT)
-    draw_dim_v(ax, X_HI - 120, 0, WALKWAY_H, f"deck\nZ{WALKWAY_H}", offset=5, fs=5.6, font=FONT)
-    draw_dim_v(ax, BEAM_XS[0] - 20, PROC_TRAY_RIM, BEAM_Z_BOT, f"{BEAM_Z_BOT - PROC_TRAY_RIM}mm\nrim→beam u/s",
+    draw_dim_v(ax, X_HI - 105, 0, WALKWAY_H, f"{WALKWAY_H}mm", offset=5, fs=5.6, font=FONT)
+    draw_dim_v(ax, PROC_TRAY_X_R, PROC_TRAY_RIM, BEAM_Z_BOT, f"{BEAM_Z_BOT - PROC_TRAY_RIM}mm",
                offset=5, fs=5.4, font=FONT)
-    draw_dim_h(ax, PROC_TRAY_X_R, IBC_COL_X, 20, f"{IBC_COL_X - PROC_TRAY_X_R}mm\ngap", offset=4, fs=5.4,
+    draw_dim_h(ax, PROC_TRAY_X_R+3, IBC_COL_X, 20, f"{IBC_COL_X - PROC_TRAY_X_R}mm", offset=4, fs=5.4,
                above=False, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
@@ -299,10 +299,10 @@ def sheet2():
     leader(ax, CHAN_X1 - 6, (RIBBON_Z + OD / 2 + DECK_ZB) / 2, CHAN_X1, 175,
            "pipe crown FLUSH\nwith deck underside (Z%d)" % DECK_ZB, color=C_DIM, fs=5.4,
            ha="left", va="center", arrow_style="-|>", font=FONT)
-    draw_dim_v(ax, BEAM_XS[0] - 20, PROC_TRAY_RIM, BEAM_Z_BOT, f"{BEAM_Z_BOT - PROC_TRAY_RIM}mm\nrim→beam u/s",
+    draw_dim_v(ax, PROC_TRAY_X_R, PROC_TRAY_RIM, BEAM_Z_BOT, f"{BEAM_Z_BOT - PROC_TRAY_RIM}mm",
                offset=5, fs=5.4, font=FONT)
-    draw_dim_v(ax, X_HI - 120, 0, WALKWAY_H, f"deck\nZ{WALKWAY_H}", offset=5, fs=5.6, font=FONT)
-    draw_dim_h(ax, TXR, IBC_COL_X, 20, f"{IBC_COL_X - TXR}mm\ngap", offset=4, fs=5.4, above=False, font=FONT)
+    draw_dim_v(ax, X_HI - 105, 0, WALKWAY_H, f"{WALKWAY_H}mm", offset=5, fs=5.6, font=FONT)
+    draw_dim_h(ax, TXR+3, IBC_COL_X, 20, f"{IBC_COL_X - TXR}mm", offset=4, fs=5.4, above=False, font=FONT)
 
     notes = [
         "SECTION C-C NOTES",

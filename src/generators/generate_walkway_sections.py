@@ -175,7 +175,7 @@ def sheet1():
     # ── The four ribbon lanes IN-PLANE here, in the channel between the beams (Z104.5, flush) ──
     # At the near end the lines are still in the ribbon; each drops off-section to its wall feature.
     _ribbon_circles(ax, z=RIBBON_Z, z0=12)
-    for (xx, col, tag), lz in zip(RIBBON_LANES, (355, 315, 200, 160)):
+    for (xx, col, tag), lz in zip(RIBBON_LANES, (225, 190, 155, 122)):
         cn = "blue" if col == C_BLUE else "brown"
         leader(ax, xx, RIBBON_Z, CHAN_X0 - 30, lz, f"{tag} ({cn})", color=col, fs=5.6,
                ha="right", va="center", arrow_style="-|>", font=FONT)
@@ -203,7 +203,7 @@ def sheet1():
         "4. The two middle lanes were SWAPPED (blue TAP-01 trunk ↔ brown tray-sump) so blue/brown alternate and no longer cross into the corridor.",
         "5. Off-section (−Yd) each lane drops to its wall feature: the two blue lanes to TAP-01 / the SV-01 filtered return, the two brown lanes on toward the near-rim taps.",
     ]
-    draw_notes(ax, notes, X_LO + 8, Z_HI - 66, 6.6, fs=6.2,
+    draw_notes(ax, notes, X_LO + 8, Z_HI - 40, 6.6, fs=6.2,
                font=FONT, width=225, wrap=72, border_color=C_DIM, border_lw=0.7)
 
     title_block(ax, "SHEET 1 OF 5",
@@ -283,7 +283,7 @@ def sheet2():
     # ── The four ribbon lanes IN-PLANE here (they run the length under the grate) ──
     _ribbon_circles(ax, z=RIBBON_Z, z0=12)
     # Labels pulled LEFT into the clear zone above the tray, never over the IBC-3 tote.
-    for (xx, col, tag), lz in zip(RIBBON_LANES, (355, 315, 200, 160)):
+    for (xx, col, tag), lz in zip(RIBBON_LANES, (225, 190, 155, 122)):
         cn = "blue" if col == C_BLUE else "brown"
         leader(ax, xx, RIBBON_Z, CHAN_X0 - 30, lz, f"{tag} ({cn})", color=col, fs=5.6,
                ha="right", va="center", arrow_style="-|>", font=FONT)

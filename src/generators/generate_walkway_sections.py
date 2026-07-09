@@ -54,6 +54,7 @@ OD = 21.0
 # Right-walkway support (long beams run in Yd → cut as boxes at these X, Z80-115).
 BEAM_XS = [WALKWAY_RIGHT_X, WALKWAY_RIGHT_X + WALKWAY_RIGHT_W - 40]   # 4329, 4589
 BEAM_W  = 40
+BEAM_Z_BOT = 80                              # long-beam underside (beams span Z80–DECK_ZB)
 DECK_ZB = WALKWAY_H - WALKWAY_GRATE_T        # 115
 GAPX    = PROC_TRAY_X_R + 12                  # 4641 — under-beam crossing in the tray↔IBC gap
 
@@ -161,12 +162,12 @@ def sheet1():
         ax.plot([xg, xg], [DECK_ZB + 2, WALKWAY_H - 2], color="#6F6F77", lw=0.5, zorder=9)
         xg += 24
     for bx in BEAM_XS:
-        _rect(ax, bx, 80, BEAM_W, DECK_ZB - 80, C_STEEL, lw=0.9, z0=7)
+        _rect(ax, bx, BEAM_Z_BOT, BEAM_W, DECK_ZB - BEAM_Z_BOT, C_STEEL, lw=0.9, z0=7)
     leader(ax, WALKWAY_RIGHT_X + 150, WALKWAY_H, WALKWAY_RIGHT_X + 150, 200,
            f"RIGHT WALKWAY GRATE DECK",
            color=C_OUT, fs=6.4, ha="center", va="bottom", arrow_style="-|>", font=FONT)
     leader(ax, BEAM_XS[0] + BEAM_W / 2, 97, BEAM_XS[0] + 60, 40,
-           "40×40 long beam\n(runs in Yd, cut) Z80–115", color=C_DIM, fs=6, ha="right",
+           f"40×40 long beam\n(runs in Yd, cut) Z{BEAM_Z_BOT}–{DECK_ZB}", color=C_DIM, fs=6, ha="right",
            va="center", arrow_style="-|>", font=FONT)
 
     # ── Ribbon support cross-brace (welded 40×10 between the beams, top Z90) ──
@@ -192,7 +193,7 @@ def sheet1():
            "pipe crown FLUSH\nwith deck underside (Z%d)" % DECK_ZB, color=C_DIM, fs=5.4,
            ha="left", va="center", arrow_style="-|>", font=FONT)
     draw_dim_v(ax, X_HI - 120, 0, WALKWAY_H, f"deck\nZ{WALKWAY_H}", offset=5, fs=5.6, font=FONT)
-    draw_dim_v(ax, BEAM_XS[0] - 20, PROC_TRAY_RIM, RIBBON_Z, f"{RIBBON_Z - PROC_TRAY_RIM}mm\nabove rim",
+    draw_dim_v(ax, BEAM_XS[0] - 20, PROC_TRAY_RIM, BEAM_Z_BOT, f"{BEAM_Z_BOT - PROC_TRAY_RIM}mm\nrim→beam u/s",
                offset=5, fs=5.4, font=FONT)
     draw_dim_h(ax, PROC_TRAY_X_R, IBC_COL_X, 20, f"{IBC_COL_X - PROC_TRAY_X_R}mm\ngap", offset=4, fs=5.4,
                above=False, font=FONT)
@@ -267,7 +268,7 @@ def sheet2():
         ax.plot([xg, xg], [DECK_ZB + 2, WALKWAY_H - 2], color="#6F6F77", lw=0.5, zorder=9)
         xg += 24
     for bx in BEAM_XS:
-        _rect(ax, bx, 80, BEAM_W, DECK_ZB - 80, C_STEEL, lw=0.9, z0=7)
+        _rect(ax, bx, BEAM_Z_BOT, BEAM_W, DECK_ZB - BEAM_Z_BOT, C_STEEL, lw=0.9, z0=7)
     leader(ax, WALKWAY_RIGHT_X + 150, WALKWAY_H, WALKWAY_RIGHT_X + 150, 200,
            f"RIGHT WALKWAY GRATE DECK",
            color=C_OUT, fs=6.4, ha="center", va="bottom", arrow_style="-|>", font=FONT)
@@ -298,7 +299,7 @@ def sheet2():
     leader(ax, CHAN_X1 - 6, (RIBBON_Z + OD / 2 + DECK_ZB) / 2, CHAN_X1, 175,
            "pipe crown FLUSH\nwith deck underside (Z%d)" % DECK_ZB, color=C_DIM, fs=5.4,
            ha="left", va="center", arrow_style="-|>", font=FONT)
-    draw_dim_v(ax, BEAM_XS[0] - 20, PROC_TRAY_RIM, RIBBON_Z, f"{RIBBON_Z - PROC_TRAY_RIM}mm\nabove rim",
+    draw_dim_v(ax, BEAM_XS[0] - 20, PROC_TRAY_RIM, BEAM_Z_BOT, f"{BEAM_Z_BOT - PROC_TRAY_RIM}mm\nrim→beam u/s",
                offset=5, fs=5.4, font=FONT)
     draw_dim_v(ax, X_HI - 120, 0, WALKWAY_H, f"deck\nZ{WALKWAY_H}", offset=5, fs=5.6, font=FONT)
     draw_dim_h(ax, TXR, IBC_COL_X, 20, f"{IBC_COL_X - TXR}mm\ngap", offset=4, fs=5.4, above=False, font=FONT)

@@ -983,7 +983,9 @@ def sheet1():
 
     # Bracket spacing callout
     # Find two adjacent bracket positions on near walkway for dimensioning
-    brkt_x0 = TL + WALKWAY_BRACKET_SPACING / 2
+    # Match the drawn near-walkway bracket grid: markers start at LXR + spacing/2 (the walkway
+    # origin, X=470), NOT the tray-left TL — otherwise the dim sits offset from the ribs.
+    brkt_x0 = LXR + WALKWAY_BRACKET_SPACING / 2
     brkt_x1 = brkt_x0 + WALKWAY_BRACKET_SPACING
     draw_dim_h(ax, brkt_x0, brkt_x1, -40,
                f"{WALKWAY_BRACKET_SPACING}mm BRACKET SPACING (TYP.)",

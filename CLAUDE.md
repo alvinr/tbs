@@ -31,7 +31,8 @@ site/                    ← built output — gitignored, never commit
 
 **Skills** (read these before working on diagrams):
 - `skills/skill_diagram_structure.md` — coordinate system, view conventions, multi-sheet generator boilerplate, shared helper catalog
-- `skills/skill_label_placement.md` — 57 rules for leader lines, dimensions, notes blocks, and label positioning
+- `skills/skill_label_placement.md` — the label/leader/dimension/notes RULE SET (12 principles + self-review gate)
+- `skills/skill_tidy_labels.md` — the PROCESS that applies those rules to one diagram: `tidy_labels.py --fix` (static) + a rendered crop-zoom visual pass; invoke when asked to "tidy labels on <diagram>" or before shipping a new/edited diagram
 - `skills/skill_plumbing_drawing.md` — pipe drawing conventions, fittings, crossings, flow arrows
 - `skills/skill_model_consistency.md` — find 2D↔3D↔docs drift: failure-mode taxonomy + the `check_consistency.py` audit (run after any geometry/design change)
 - `skills/skill_report_writing.md` — house style for the report `.md` narrative: prose-vs-single-source-vs-diagram triage, placeholder-first, one-source-of-record (no duplication), no old-vs-new archaeology, source citation, terminology/spelling (read before writing or editing any report)

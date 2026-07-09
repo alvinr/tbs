@@ -1,0 +1,66 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
+---
+name: Tidy labels
+description: The repeatable "tidy labels" pass for one diagram/generator — runs the static fixer (tidy_labels.py) for the source-detectable rules, then a rendered crop-zoom pass for the visual rules in skill_label_placement.md, auto-applies both, regenerates, and shows before/after. Invoke when asked to "tidy labels on <diagram>" or before shipping a new/edited diagram.
+type: feedback
+---
+
+**What this automates:** the round-trip that used to be "I draw → the user hand-fixes labels → I extract a rule." Given one diagram (or its generator), it applies the label-placement rules and shows the result. It has two halves because the rules split two ways — **source-detectable** (deterministic, `tidy_labels.py`) and **visual** (needs a rendered look, done by you). Read `skills/skill_label_placement.md` first — that's the rule set; this skill is the *procedure* that applies it.
+
+**Mode:** auto-apply + show. Apply the safe static fixes and the confident visual fixes, regenerate, then present the before/after render and a summary for review — don't stop for approval on each edit.
+
+**Scope discipline:** one diagram/generator per pass. Regenerating a generator rewrites *its* PNGs only; `git checkout -- diagrams/` any PNG you didn't intend to change (generators that share an output, render-noise). Always drive matplotlib with `/usr/bin/python3`.
+
+---
+
+## The pipeline
+
+### 1. Static half — `tidy_labels.py`
+```
+/usr/bin/python3 src/generators/tidy_labels.py --check <generator.py>   # see findings
+/usr/bin/python3 src/generators/tidy_labels.py --fix   <generator.py>   # auto-apply the safe ones
+```
+`--fix` auto-applies, offset-free and formatting-preserving:
+- **DIM range-suffix** — strips a redundant `(X=a–b)`/`(Yd=…)`/`(Z=n)` from a `draw_dim_*` label (the extension lines already show the span — P7).
+- **DIM unit-less** — a bare `f"{expr}"` `draw_dim_*` label → `f"{expr}mm"` (P7).
+
+It **flags** (does not touch) the ones that need judgement — carry these into the visual pass:
+- **LEADER range-suffix** — a `(X=…)` on a leader may be a legit part id; decide per case.
+- **LEADER spec-sheet** — a ≥3-line leader; move secondary specs (material, size, profile) to the notes block (P1).
+- **NOTES hand-wrapped** — a notes list with `"   "` continuation items → pass logical one-string notes + `wrap=` (P8).
+
+It deliberately does **not** judge dimension `offset` (scale-dependent — 3–8 data-units in detail views vs 25–80 mm-first) — that's a visual call.
+
+### 2. Regenerate
+```
+/usr/bin/python3 src/generators/<generator.py>
+```
+
+### 3. Visual half — render, crop-zoom, apply (this is the part that used to be the "Tidy labels" commits)
+Open the PNG and **crop-zoom every label cluster at 2.5–3×** (PIL crop — never judge from the full-frame thumbnail). Walk `skill_label_placement.md`'s self-review gate; the recurring, high-yield checks, in priority order:
+
+1. **Notes box over the drawing?** (P8) — the #1 issue. If it overlaps geometry/ghost, move it to a clear margin; if the frame is full, extend the axis (`Z_LO`/`X_HI`/`PAD_*`) to open a band. After extending an `aspect="equal"` axis, re-tune the notes `width`/`spacing` — the box shrinks and text can overflow.
+2. **Title block** clear of the diagram and notes? (P12)
+3. **Leaders** each shortest into the *nearest clear pocket*, tip on the specific material edge, crossing the fewest bodies (P1/P3). Sweep the opposite side before keeping a long one.
+4. **Text on a hatch/ghost/fill** → white `bbox=LBL_BG`, not just high zorder (P9).
+5. **Dimensions** on the open side (`right=`/`above=` toward white space), sensible `offset` for *this* sheet's scale, no `<30mm` gap dimensioned between extension lines (P7).
+6. **Collisions / clipping** — labels overlapping each other or running off the axes.
+7. Resolve the **flags** from step 1 (spec-sheet leaders → notes; hand-wrapped notes → `wrap=`).
+
+### 4. Re-render and verify
+Regenerate, crop-zoom the same clusters again. Fix-then-eyeball — never ship the "final" unlooked-at.
+
+### 5. Show + commit
+Present a before/after crop (or the full render) and a one-line summary of what changed. Commit the generator + only its regenerated PNG(s):
+```
+git add src/generators/<generator.py> diagrams/<its-pngs>.png
+git commit -m "tidy labels: <diagram> — <what changed>"
+```
+
+---
+
+## Notes
+- The static tool is a *floor*, not a ceiling — most of a real tidy is the visual pass. Don't skip step 3 because `--fix` reported "0 flagged."
+- If the visual pass keeps hitting a pattern the static tool *could* catch deterministically, add a rule to `tidy_labels.py` (and cross-reference it in `skill_label_placement.md`) so the next pass gets it for free — that's how this pair improves.
+- This does not replace `lint.py`/`check_consistency.py`; run those separately for constant/cascade drift.

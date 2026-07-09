@@ -357,13 +357,13 @@ def sheet3():
     _rect(ax, tx_l, 0, PROC_TRAY_X_R - tx_l, 3, C_TRAY, lw=0.9, z0=4)                       # basin floor
     _rect(ax, tx_l, 3, PROC_TRAY_X_R - 4 - tx_l, PROC_TRAY_RIM - 8, "#BFD8EA", ec="none", z0=3, alpha=0.55)  # wash water
     _rect(ax, PROC_TRAY_X_R - 4, 0, 4, PROC_TRAY_RIM, C_TRAY, lw=1.0, z0=5)                 # RIGHT-END RIM (4mm wall, inner face of X4629, Z0-50)
-    leader(ax, PROC_TRAY_X_R - 2, PROC_TRAY_RIM, PROC_TRAY_X_R - 150, PROC_TRAY_RIM + 70,
-           f"processing tray right-end rim\n(X{PROC_TRAY_X_R}, Z0–{PROC_TRAY_RIM})", color="#3C5A6E",
+    leader(ax, PROC_TRAY_X_R - 2, PROC_TRAY_RIM, PROC_TRAY_X_R - 25, PROC_TRAY_RIM + 10,
+           f"processing tray right-end rim", color="#3C5A6E",
            fs=5.8, ha="right", va="bottom", arrow_style="-|>", font=FONT)
 
     # IBC-3 tote (behind this plane, Yd≤1046) — ghost
     _rect(ax, IBC_COL_X, 0, X_HI - IBC_COL_X, Z_HI - Z_LO, C_IBC_B, ec=C_GHOST, lw=0.9, z0=1, alpha=0.10, ls="--")
-    ax.text((IBC_COL_X + X_HI) / 2, 660, "IBC-3 tote\n(behind, Yd≤1046)", fontsize=6, ha="center",
+    ax.text((IBC_COL_X + X_HI) / 2, 660, "IBC-3 tote", fontsize=6, ha="center",
             va="center", color=C_GHOST, zorder=2, **FONT)
 
     # ── AVAILABLE ROUTING SPACE — the corridor volume PAST the front upright, above the bottom rail ──
@@ -377,10 +377,10 @@ def sheet3():
     for bx in BEAM_XS:                                                                      # long bearers (Yd-running, cut) Z80-115
         _rect(ax, bx, 80, BEAM_W, DECK_ZB - 80, C_STEEL, ec="#3A3A40", lw=1.0, z0=6, hatch="\\\\\\\\")
     _rect(ax, WALKWAY_RIGHT_X, DECK_ZB, WALKWAY_RIGHT_W, WALKWAY_GRATE_T, C_GRATE, lw=1.0, z0=7)  # deck
-    leader(ax, 4500, ARM_ZB, 4358, -58,
+    leader(ax, 4500, ARM_ZB, 4358, 55,
            "walkway support: cantilever arm (Z70–115)\n+ long bearers (Z80–115, hatched)\n[arm clamps to the deep-box upright X4654]",
            color="#3A3A40", fs=5.2, ha="left", va="top", arrow_style="-|>", font=FONT)
-    leader(ax, WALKWAY_RIGHT_X + 90, WALKWAY_H, 4358, 260, "right walkway grate deck (Z115–130)",
+    leader(ax, WALKWAY_RIGHT_X + 90, WALKWAY_H, 4200, 210, "right walkway grate deck",
            color=C_OUT, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
 
     # ── Deep-box FRONT upright + front foot (extends UNDER the tray) + M12 + bottom rail + retaining bar ──
@@ -392,7 +392,7 @@ def sheet3():
     _rect(ax, RAIL_X0, RAIL_ZB, RAIL_X1 - RAIL_X0, RAIL_ZT - RAIL_ZB, C_STEEL, lw=0.9, z0=7)  # retaining bar Z560
     leader(ax, (UP_X0 + UP_X1) / 2, 500, UP_X1 + 22, 540, "corridor deep-box FRONT upright\n(50×50 RHS, X4654)",
            color=C_DIM, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
-    leader(ax, FOOT_X0 + 16, FOOT_ZT, PROC_TRAY_X_R - 175, -60,
+    leader(ax, FOOT_X0 + 16, FOOT_ZT, PROC_TRAY_X_R - 175, 35,
            "front floor foot 150×150×12 + 4× M12 —\nLEFT EDGE (X4604) EXTENDS 25mm UNDER THE TRAY",
            color="#B03030", fs=5.5, ha="left", va="top", arrow_style="-|>", font=FONT)
     leader(ax, X_HI - 60, BRAIL_Z, X_HI - 40, 92, "bottom ring rail (Z0–50)",
@@ -409,10 +409,10 @@ def sheet3():
             fontsize=5.6, ha="center", va="bottom", color=C_OUT, fontweight="bold", zorder=13, **FONT)
     for (xx, col, tag), lz in zip(RIBBON_LANES, (430, 390, 300, 260)):
         cn = "blue" if col == C_BLUE else "brown"
-        leader(ax, xx, RIBBON_OVER_Z, CHAN_X0 - 30, lz, f"{tag} ({cn})", color=col, fs=5.4,
+        leader(ax, xx, RIBBON_OVER_Z, CHAN_X0 + 30, lz - 100, f"{tag} ({cn})", color=col, fs=5.4,
                ha="right", va="center", arrow_style="-|>", font=FONT)
     # crest clears the arm top
-    draw_dim_v(ax, CHAN_X1 + 8, ARM_ZT, RIBBON_OVER_Z - OD / 2, f"{int(RIBBON_OVER_Z - OD/2 - ARM_ZT)}mm\nover arm top",
+    draw_dim_v(ax, CHAN_X1 + 60, ARM_ZT, RIBBON_OVER_Z - OD / 2, f"{int(RIBBON_OVER_Z - OD/2 - ARM_ZT)}mm\nover arm top",
                offset=5, fs=5.2, font=FONT)
     # past the cantilever each lane comes back to FLUSH and crosses the notched outer beam into the corridor
     ax.text((UP_X1 + X_HI) / 2, 235, "(past the cantilever the lanes stay\nFLUSH, cross the NOTCHED outer beam,\nthen drop the tray-edge slot — in-plane in E-E)",
@@ -421,7 +421,7 @@ def sheet3():
     # ── Dimensions ───────────────────────────────────────────────────────────
     draw_dim_v(ax, X_HI - 34, BRAIL_Z, RAIL_ZB, f"{RAIL_ZB - BRAIL_Z}mm\n(rail→rail)", offset=5, fs=5.4, font=FONT)
     draw_dim_v(ax, ARM_X0 - 22, 0, ARM_ZB, f"{ARM_ZB}\nunder arm", offset=5, fs=5.4, font=FONT)
-    draw_dim_h(ax, PROC_TRAY_X_R, UP_X0, -30, f"{UP_X0 - PROC_TRAY_X_R}mm gap\n(rim→upright)", offset=4, fs=5.2, above=False, font=FONT)
+    draw_dim_h(ax, PROC_TRAY_X_R, UP_X0, 30, f"{UP_X0 - PROC_TRAY_X_R}mm gap\n(rim→upright)", offset=4, fs=5.2, above=False, font=FONT)
 
     notes = [
         "SECTION D-D NOTES  (frame = water.skp deep-box cp.frame())",

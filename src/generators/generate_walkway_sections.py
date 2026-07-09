@@ -340,12 +340,14 @@ def sheet3():
     ax.set_aspect("equal")
     ax.axis("off")
 
-    ax.text((X_LO + X_HI) / 2, Z_HI - 8,
-            "SECTION D-D · THROUGH THE NEAR CANTILEVER",
-            ha="center", va="top", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
-    ax.text((X_LO + X_HI) / 2, Z_HI - 40,
-            "X–Z elevation, looking along +Yd at Yd≈1066 (near cantilever arm / IBC upright) · 1:1",
-            ha="center", va="top", fontsize=7.5, color=C_DIM, **FONT)
+    # Here the deep-box uprights + IBC ghost rise to the top of the drawing area, so an
+    # in-axes title (at Z_HI) would be overlapped by the geometry. Place title/subtitle in
+    # the figure margin ABOVE the axes instead (axes top = 0.06 + 0.87 = 0.93).
+    _tcx = 0.07 + 0.89 / 2   # horizontal center of the axes in figure coords
+    fig.text(_tcx, 0.972, "SECTION D-D · THROUGH THE NEAR CANTILEVER",
+             ha="center", va="top", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
+    fig.text(_tcx, 0.945, "X–Z elevation, looking along +Yd at Yd≈1066 (near cantilever arm / IBC upright) · 1:1",
+             ha="center", va="top", fontsize=7.5, color=C_DIM, **FONT)
 
     # floor
     _rect(ax, X_LO, -40, X_HI - X_LO, 40, C_FLOOR, lw=1.0, hatch="////", z0=2)

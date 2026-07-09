@@ -467,8 +467,8 @@ def sheet4():
     _rect(ax, X_LO, DECK_ZB, PROC_TRAY_X_R - X_LO, WALKWAY_GRATE_T, C_GRATE, lw=1.0, z0=7)     # deck right edge
     _rect(ax, BEAM_XS[1], 80, BEAM_W, NOTCH_FLOOR - 80, C_STEEL, ec="#3A3A40", lw=1.0, z0=6, hatch="\\\\\\\\")   # outer bearer — surviving Z80–92 web
     _rect(ax, BEAM_XS[1], NOTCH_FLOOR, BEAM_W, DECK_ZB - NOTCH_FLOOR, "none", ec="#B03030", lw=0.9, z0=6, ls=(0, (3, 2)))  # notched-away top (Z92–115)
-    ax.text(X_LO + 6, WALKWAY_H + 6, "walkway deck (ends X4629); OUTER beam OPEN-TOP NOTCHED\n(Z%d–115 removed at each lane so the flush ribbon crosses)" % int(NOTCH_FLOOR),
-            fontsize=5.0, ha="left", va="bottom", color=C_DIM, **FONT)
+    ax.text(X_LO + 6, WALKWAY_H + 6, "walkway deck; OUTER beam OPEN-TOP NOTCHED\n(removed at each lane so the flush ribbon crosses)",
+            fontsize=5.0, ha="left", va="bottom", color=C_DIM, zorder=15, **FONT)
     _rect(ax, UP_X0, 0, UP_X1 - UP_X0, 50, C_STEEL, lw=0.9, z0=6)                              # front bottom Yd-rail
     _rect(ax, 5104, 0, 50, 50, C_STEEL, lw=0.9, z0=6)                                          # back bottom Yd-rail
     for ux, tag in ((UP_X0, "front"), (5104, "back")):                                          # uprights (ghost, slab edges)
@@ -488,8 +488,8 @@ def sheet4():
     ax.annotate("↑ P-04 IN", xy=(4900, Z_CEIL - 24), xytext=(4915, Z_CEIL - 70),
                 fontsize=5.6, ha="left", va="center", color=C_BROWN, zorder=13, **FONT)
     # mark the flush arrival + slot drop
-    leader(ax, GAP_ENTRY_X + 33, RIBBON_Z, GAP_ENTRY_X + 70, 372,
-           "the four lines arrive FLUSH (Z%d) across the\nnotched beam, drop the tray-edge SLOT (past the\ncarriage) to the corridor entry (Z%d), then RISE" % (int(RIBBON_Z), UNDER_BEAM_Z),
+    leader(ax, GAP_ENTRY_X + 33, RIBBON_Z, GAP_ENTRY_X - 25, 372,
+           "the four lines arrive FLUSH across the\nnotched beam, drop the tray-edge SLOT (past the\ncarriage) to the corridor entry, then RISE",
            color="#B03030", fs=5.2, ha="left", va="bottom", arrow_style="-|>", font=FONT)
     # legend (identifies the four lanes) — in the open band below the lanes, well right of the risers
     lgx, lgz = 4900, 150

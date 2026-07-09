@@ -671,9 +671,11 @@ def sheet6():
            f"pan/rim highest at the far-left corner\n(floor Z{ttop[0]:.0f}, rim top Z{tray_rim_top_z(PROC_TRAY_X_L, ydc):.0f})",
            color="#3C5A6E", fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
 
-    axTB = fig.add_axes([0.07, 0.005, 0.90, 0.045])
+    axTB = fig.add_axes([0.07, 0.005, 0.90, 0.05])
     axTB.set_xlim(0, 1); axTB.set_ylim(0, 1); axTB.axis("off")
-    title_block(axTB, "SHEET 6 OF 6",
+    # title_block's `height` is an axes-FRACTION; this is a dedicated thin axes, so fill it
+    # (default 0.045 would be 0.045 of an already-thin axes and collapse the block).
+    title_block(axTB, "SHEET 6 OF 6", height=0.9,
                 drawing_title="THE BIG SHOEBOX PROJECT · TBS-001",
                 subtitle="WALKWAY ROUTING SECTIONS — G-G TRAY SLOPE/SUPPORT · H-H CARRIAGE CLEARANCE")
     out = os.path.join(DIAGRAMS_DIR, "walkway-sections-sheet6.png")

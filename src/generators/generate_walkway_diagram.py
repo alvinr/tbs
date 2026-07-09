@@ -72,6 +72,7 @@ C_WALL  = "#C0C0C8"
 C_BRKT  = "#707888"   # bracket fill
 FONT    = {"fontfamily": "monospace"}
 
+bbox = dict(fc="white", ec="none", pad=1.5, alpha=0.85)
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 2 — Cross-Section + Bolt Pattern
@@ -762,7 +763,7 @@ def sheet1():
 
         # Section label
         cx = wx + ww * 0.55
-        cy = wy + wh / 2
+        cy = wy + wh * 0.5
         rot = 0 if is_x_axis else 90
         length = ww if is_x_axis else wh
         if name == "LEFT":
@@ -775,24 +776,8 @@ def sheet1():
             lbl = f"{name} WALKWAY\n{int(length)}\u00d7{WALKWAY_W}mm"
         ax.text(cx, cy, lbl,
                 ha="center", va="center", fontsize=6, color=C_OUT,
-                backgroundcolor="#FFFFFF",
-                fontweight="bold", **FONT, zorder=7, rotation=rot)
-
-    # ── Lowered deck note ─────────────────────────────────────────────────────
-    # The walkway is LOWERED (not removed) — deck top at Z=WALKWAY_H (80mm),
-    # 15mm grate with its bottom at Z=65; the bracket arm (Z=55–65) clears the
-    # 50mm tray rim by 5mm.  The film-plane frame bottom is at Z=100, giving
-    # 20mm clearance.  Walkway stays installed during operation.
-    note_cx = (LXR + TR) / 2
-    ax.text(note_cx, (NYI + FY) / 2,
-            f"WALKWAY DECK LOWERED TO Z={WALKWAY_H}mm\n"
-            f"({WALKWAY_GRATE_T}mm grate; arm clears {PROC_TRAY_RIM}mm tray rim by 5mm)\n"
-            f"— clears film-plane frame bottom (Z=100) by {100 - WALKWAY_H}mm\n"
-            f"  walkway stays in place during operation",
-            ha="center", va="center", fontsize=7, color="#1060A0",
-            fontweight="bold", **FONT, zorder=20, alpha=0.75,
-            bbox=dict(boxstyle="round,pad=0.4", fc="#FFFFFF", ec="#1060A0",
-                      lw=1.2, alpha=0.85))
+                bbox=bbox,
+                fontweight="bold", **FONT, zorder=9, rotation=rot)
 
     # ── Left walkway — removable section marking ──────────────────────────────
     # The left walkway (X 170–470, full Yd depth) is a LIFT-OUT section so the
@@ -828,7 +813,7 @@ def sheet1():
     ax.text(pX0 + pW / 2, pY0 + pH / 2,
             f"DRUM-EXIT\nPUNCH-OUT\n{WALKWAY_LEFT_WIDE_W}mm DEEP",
             ha="center", va="center", fontsize=5.5, color="#204820",
-            fontweight="bold", **FONT, zorder=15)
+            fontweight="bold", **FONT, zorder=15, bbox=bbox)
     # Support leg under the cantilevered landing (see support detail sheet)
     leader(ax, pX0 + pW, pY0 + pH / 2,
            pX0 + pW + 360, pY0 + pH / 2 - 360,
@@ -854,7 +839,7 @@ def sheet1():
     # Label right walkway cantilever detail
     hanger_lbl_x = RX + W / 2
     leader(ax, hanger_lbl_x + 120, W / 2 + 90,
-           hanger_lbl_x + 450, W / 2 + 350,
+           hanger_lbl_x + 650, W / 2 + 350,
            "CANTILEVER RECTANGLE\n(2 arms off the IBC uprights +\n"
            "combined corner plates — see Sheet 3)",
            color="#606068", fs=6,
@@ -948,7 +933,7 @@ def sheet1():
     ax.add_patch(Circle((PIVOT_X, PIVOT_YD), 48, fc="#CC0000", ec=C_OUT,
                         lw=1.0, zorder=6))
     ax.text(PIVOT_X + 90, PIVOT_YD, "\u00d889 PIVOT", ha="left", va="center",
-            fontsize=5.5, color="#CC0000", **FONT, zorder=8)
+            fontsize=5.5, color="#CC0000", **FONT, bbox=bbox, zorder=8)
     _mid = sweep_arc[int(len(sweep_arc) * 0.55)]
     ax.text(_mid[0], _mid[1],
             f"PANEL SWING SWEEP {int(SWING_LOCK_DEG)}\u00b0\n(keep clear \u2014 left walkway lifts out)",
@@ -1013,7 +998,7 @@ def sheet1():
         ("#FF4444",  0.6,      None,  f"Spray bar slit ({SPRAY_BAR_SLIT_W}mm, near + far)"),
         ("#FF0000",  0.06,     None,  "Panel swing sweep (transport keep-clear)"),
         ("#CC6600",  0.7,      None,  "Ratchet strap (transport securing)"),
-    ], C_LEN - 1225, C_WID + PAD_Y_TOP - 2850, pad=25, col_w=1100, font=FONT)
+    ], C_LEN - 1525, C_WID + PAD_Y_TOP - 2850, pad=35, col_w=1400, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
     n_brackets_near = len(np.arange(LXR + WALKWAY_BRACKET_SPACING / 2,
@@ -1045,9 +1030,9 @@ def sheet1():
         f"13. DOOR-END BRACKETS STAY BOLTED: the swing rides Z{PANEL_FLOOR_GAP} — the cage underside",
         f"    passes OVER the Z115 bracket tops, so no bracket is struck for transport (rev10).",
     ]
-    draw_notes(ax, notes, 1500,
-               -PAD_Y_BOT + 350 + (len(notes) - 1) * 44,
-               spacing=44, fs=7, width=2500, font=FONT)
+    draw_notes(ax, notes, 1100,
+               -PAD_Y_BOT + 450 + (len(notes) - 1) * 44,
+               spacing=44, fs=7, width=3000, font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 9",

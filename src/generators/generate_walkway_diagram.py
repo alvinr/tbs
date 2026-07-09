@@ -978,8 +978,8 @@ def sheet1():
 
     # ── Dimension lines ──────────────────────────────────────────────────────
     # Walkway width dimension (near walkway)
-    draw_dim_v(ax, PROC_TRAY_X_L - 40, WALKWAY_NEAR_YD, WALKWAY_NEAR_YD + WALKWAY_W,
-               f"{WALKWAY_W}mm", offset=50, fs=6, right=False, font=FONT)
+    draw_dim_v(ax, PROC_TRAY_X_L - 90, WALKWAY_NEAR_YD, WALKWAY_NEAR_YD + WALKWAY_W,
+               f"{WALKWAY_W}mm", offset=50, fs=6, right=True, font=FONT)
 
     # Bracket spacing callout
     # Find two adjacent bracket positions on near walkway for dimensioning

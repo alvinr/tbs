@@ -497,7 +497,9 @@ def draw_sheet2():
 
     C_YD_LO = -60
     C_YD_HI = 420
-    C_Z_LO  = -30
+    # C_Z_LO dropped so the bottom notes block (a border PATCH, which matplotlib clips to the axes) sits
+    # inside the axes instead of being cut at Z=-30 (only its top edge drew, text overflowed below).
+    C_Z_LO  = -75
     C_Z_HI  = 210
 
     ax2.set_xlim(C_YD_LO, C_YD_HI)

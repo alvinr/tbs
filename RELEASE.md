@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **spray-bar-sheet2 notes clipped** — the bottom "CROSS SECTION (COMPOSITE)" notes block anchored at the
+  axes bottom (Z=-30), so its border box (a patch, clipped to the axes) was cut — only the top edge drew
+  and the text overflowed below. Dropped C_Z_LO (-30→-75) so the box fits inside the axes.
+
 - **shelf-sheet1 notes overlap** — the plan-view notes block hung down over the diagram (walkway box
   tops at y=500). Raised Y_HI (620→800) so the notes lift into a clear band above the diagram, and
   capped the optical-cone boundary line at y=600 so it no longer stretches up through the notes box.

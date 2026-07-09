@@ -10,7 +10,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
-from tbs_constants import DIAGRAM_DPI
+from tbs_constants import DISTORTION_DPI
 
 F  = 2362.0   # focal length (container interior width), mm
 IW = 5893.0   # image plane width, mm (19'4")
@@ -211,6 +211,6 @@ ax.axis('off')
 plt.tight_layout(pad=0.3)
 
 out = '/Users/alvinrichards/dev/tbs/diagrams/portrait-camera-schematic.png'
-plt.savefig(out, dpi=DIAGRAM_DPI, bbox_inches='tight', facecolor='#0D0D0D')
+plt.savefig(out, dpi=DISTORTION_DPI, bbox_inches='tight', facecolor='#0D0D0D')
 plt.close()
 print(f'Saved: {out}')

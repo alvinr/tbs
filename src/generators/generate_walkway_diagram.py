@@ -642,7 +642,7 @@ def sheet1():
 
     # ── Figure ───────────────────────────────────────────────────────────────
     PAD_X = 300
-    PAD_Y_BOT = 1100  # extra room below for notes + title block
+    PAD_Y_BOT = 1650  # extra room below for notes + title block (notes drop clear of the plan)
     PAD_Y_TOP = 300
     fig, ax = plt.subplots(figsize=(18, 14))
     fig.patch.set_facecolor(BG)

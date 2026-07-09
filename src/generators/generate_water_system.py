@@ -956,7 +956,7 @@ def draw_sheet3():
     # ── Dimensions ───────────────────────────────────────────────────────────────
     # Tray width (X direction)
     draw_dim_h(ax3, (0), (PROC_TRAY_W), (PROC_TRAY_D + 310),
-               f"{PROC_TRAY_W}mm (X={PROC_TRAY_X_L}–{PROC_TRAY_X_R})", offset=93, fs=6.5, above=False)
+               f"{PROC_TRAY_W}mm", offset=93, fs=6.5, above=True)
 
 
     # ax3.annotate("", xy=(OX + TRAY_DRAW_W, OY + TRAY_DRAW_H + 0.6),
@@ -969,7 +969,7 @@ def draw_sheet3():
 
     # Tray depth (Yd direction)
     draw_dim_v(ax3, (-310), (PROC_TRAY_D), (0),
-               f"{PROC_TRAY_D}mm (Yd={PROC_TRAY_YD_NEAR}–{PROC_TRAY_YD_FAR})", offset=93, fs=6.5, right=False)
+               f"{PROC_TRAY_D}mm", offset=93, fs=6.5, right=False)
 
     # Drain X position dimension
     draw_dim_h(ax3, (drain_local_x), (0), (-170),
@@ -1040,7 +1040,7 @@ def draw_sheet3():
            (panel_local_x + 25), (panel_local_yd + 205),
            "CORRIDOR PLUMBING PANEL\n(P-04 — tray drain)", fs=6.5, color=C_PUMP)
 
-    ax3.text(((drain_local_x + corner_local_x) / 2), (pipe_rim_yd - 85),
+    ax3.text(((drain_local_x + corner_local_x) / 2), (pipe_rim_yd - 120),
              "P-04 SUCTION HOSE ALONG RIM EXTERIOR",
              ha="center", fontsize=6.5, color=C_BROWN, style="italic", zorder=8)
 
@@ -1054,7 +1054,7 @@ def draw_sheet3():
         f"5. Wall-cantilevered walkway — no legs or structure on tray floor near sump.",
     ]
     draw_notes(ax3, notes, (-410), (-890), spacing=(70), fs=7,
-               width=(4800), color=C_TEXT, title_color=C_TEXT,
+               width=(3600), color=C_TEXT, title_color=C_TEXT,
                font={"fontfamily": "monospace"})
 
     _save(fig3, "water-system-sheet3")

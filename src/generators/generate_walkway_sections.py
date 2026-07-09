@@ -26,7 +26,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle
 from tbs_title_block import title_block
-from tbs_drawing import draw_dim_h, draw_dim_v, leader
+from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                 "..", "models"))
 import generate_corridor_water_panel as cp   # ribbon geometry (single source)
@@ -195,25 +195,16 @@ def sheet1():
                above=False, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
-    notes = (
-        "SECTION B-B NOTES\n"
-        "1. X–Z elevation looking +Yd near the pinhole-wall END of the ribbon\n"
-        "   (Yd≈62), where the four corridor↔pinhole-wall lines run TOGETHER as a\n"
-        "   flat ribbon under the right-walkway grate.\n"
-        "2. The four lanes (26mm pitch, Z104.5 — FLUSH, pipe crown at the deck\n"
-        "   underside Z115) sit in the clear channel BETWEEN the two 40×40 long\n"
-        "   beams (X4369–4589), above the tray rim (Z50), tucked under the grate.\n"
-        "3. A welded 40×10 cross-brace between the beams (top Z90) carries the\n"
-        "   ribbon at each support station.\n"
-        "4. The two middle lanes were SWAPPED (blue TAP-01 trunk ↔ brown tray-sump)\n"
-        "   so blue/brown alternate and no longer cross into the corridor.\n"
-        "5. Off-section (−Yd) each lane drops to its wall feature: the two blue\n"
-        "   lanes to TAP-01 / the SV-01 filtered return, the two brown lanes on\n"
-        "   toward the near-rim taps."
-    )
-    ax.text(X_LO + 8, Z_HI - 75, notes, fontsize=6.2, ha="left", va="top", color=C_OUT,
-            family="monospace", zorder=15,
-            bbox=dict(boxstyle="round,pad=0.5", fc="white", ec=C_DIM, lw=0.7))
+    notes = [
+        "SECTION B-B NOTES",
+        "1. X–Z elevation looking +Yd near the pinhole-wall END of the ribbon (Yd≈62), where the four corridor↔pinhole-wall lines run TOGETHER as a flat ribbon under the right-walkway grate.",
+        "2. The four lanes (26mm pitch, Z104.5 — FLUSH, pipe crown at the deck underside Z115) sit in the clear channel BETWEEN the two 40×40 long beams (X4369–4589), above the tray rim (Z50), tucked under the grate.",
+        "3. A welded 40×10 cross-brace between the beams (top Z90) carries the ribbon at each support station.",
+        "4. The two middle lanes were SWAPPED (blue TAP-01 trunk ↔ brown tray-sump) so blue/brown alternate and no longer cross into the corridor.",
+        "5. Off-section (−Yd) each lane drops to its wall feature: the two blue lanes to TAP-01 / the SV-01 filtered return, the two brown lanes on toward the near-rim taps.",
+    ]
+    draw_notes(ax, notes, X_LO + 8, Z_HI - 66, 6.6, fs=6.2,
+               font=FONT, width=225, wrap=72, border_color=C_DIM, border_lw=0.7)
 
     title_block(ax, "SHEET 1 OF 5",
                 drawing_title="THE BIG SHOEBOX PROJECT · TBS-001",
@@ -309,22 +300,15 @@ def sheet2():
     draw_dim_v(ax, X_HI - 40, 0, WALKWAY_H, f"deck\nZ{WALKWAY_H}", offset=5, fs=5.6, font=FONT)
     draw_dim_h(ax, TXR, IBC_COL_X, -46, f"{IBC_COL_X - TXR}mm\ngap", offset=4, fs=5.4, above=False, font=FONT)
 
-    notes = (
-        "SECTION C-C NOTES\n"
-        "1. SAME cut as B-B (X–Z, looking +Yd), moved to mid-depth (Yd≈450),\n"
-        "   halfway between the pinhole wall and the plumbing corridor, at a\n"
-        "   ribbon support station.\n"
-        "2. Here the plane is INSIDE the processing tray — the basin + wash\n"
-        "   water are cut; the walkway deck spans over the tray.\n"
-        "3. The four ribbon lanes (Z104.5 flush, 26mm pitch) run IN-PLANE here, in\n"
-        "   channel BETWEEN the long beams (X4369–4589) — a SANCTIONED pass\n"
-        "   ABOVE the tray rim, under the grate, clear of the print/water.\n"
-        "4. A welded 40×10 cross-brace (top Z90) carries the ribbon at this\n"
-        "   station.  The lanes read as RUNS the length of B-B → C-C → D-D."
-    )
-    ax.text(X_LO + 8, Z_HI - 65, notes, fontsize=6.2, ha="left", va="top", color=C_OUT,
-            family="monospace", zorder=15,
-            bbox=dict(boxstyle="round,pad=0.5", fc="white", ec=C_DIM, lw=0.7))
+    notes = [
+        "SECTION C-C NOTES",
+        "1. SAME cut as B-B (X–Z, looking +Yd), moved to mid-depth (Yd≈450), halfway between the pinhole wall and the plumbing corridor, at a ribbon support station.",
+        "2. Here the plane is INSIDE the processing tray — the basin + wash water are cut; the walkway deck spans over the tray.",
+        "3. The four ribbon lanes (Z104.5 flush, 26mm pitch) run IN-PLANE here, in channel BETWEEN the long beams (X4369–4589) — a SANCTIONED pass ABOVE the tray rim, under the grate, clear of the print/water.",
+        "4. A welded 40×10 cross-brace (top Z90) carries the ribbon at this station.  The lanes read as RUNS the length of B-B → C-C → D-D.",
+    ]
+    draw_notes(ax, notes, X_LO + 8, Z_HI - 66, 6.6, fs=6.2,
+               font=FONT, width=225, wrap=72, border_color=C_DIM, border_lw=0.7)
 
     title_block(ax, "SHEET 2 OF 5",
                 drawing_title="THE BIG SHOEBOX PROJECT · TBS-001",
@@ -437,28 +421,16 @@ def sheet3():
     draw_dim_v(ax, ARM_X0 - 22, 0, ARM_ZB, f"{ARM_ZB}\nunder arm", offset=5, fs=5.4, font=FONT)
     draw_dim_h(ax, PROC_TRAY_X_R, UP_X0, -30, f"{UP_X0 - PROC_TRAY_X_R}mm gap\n(rim→upright)", offset=4, fs=5.2, above=False, font=FONT)
 
-    notes = (
-        "SECTION D-D NOTES  (frame = water.skp deep-box cp.frame())\n"
-        "1. X–Z cut through the NEAR cantilever (Yd≈1066).  The corridor\n"
-        "   restraint is the DEEP 4-leg box: FRONT upright X4654, front foot\n"
-        "   150×150 at X4604–4754 — its LEFT EDGE sits 25mm UNDER the tray.\n"
-        "2. The four-lane ribbon LOOPS UP OVER the cantilever here: it rose\n"
-        "   through the grate at Yd1000 and crests at Z142 (RIBBON_OVER_Z),\n"
-        "   passing OVER the arm top (Z115) and grate (Z130) — never through\n"
-        "   the steel (Rule 5).  It drops back through the grate past Yd1120.\n"
-        "3. No pipe threads the tray-rim↔upright gap at this plane — the old\n"
-        "   low-crosser pinch is designed out by the loop-over.\n"
-        "4. Past the cantilever each lane stays FLUSH (Z104.5), crosses the OUTER\n"
-        "   beam through an open-top NOTCH, and only THEN drops the tray-edge slot\n"
-        "   (X4629–4654, clear of the carriage) into the corridor — in-plane in E-E.\n"
-        "5. STATUS: (a) front foot / M12 CLEARS under the raised tray pan;\n"
-        "   (b) RWK cantilever arm reconciled to the deep-box upright (X4654);\n"
-        "   (c) the ribbon crest clears the arm top — no soffit graze;\n"
-        "   (d) the flush ribbon clears the spray-carriage crown (Z66) by ~28mm."
-    )
-    ax.text(X_LO + 8, Z_HI - 60, notes, fontsize=6.2, ha="left", va="top", color=C_OUT,
-            family="monospace", zorder=15,
-            bbox=dict(boxstyle="round,pad=0.5", fc="white", ec=C_DIM, lw=0.7))
+    notes = [
+        "SECTION D-D NOTES  (frame = water.skp deep-box cp.frame())",
+        "1. X–Z cut through the NEAR cantilever (Yd≈1066).  The corridor restraint is the DEEP 4-leg box: FRONT upright X4654, front foot 150×150 at X4604–4754 — its LEFT EDGE sits 25mm UNDER the tray.",
+        "2. The four-lane ribbon LOOPS UP OVER the cantilever here: it rose through the grate at Yd1000 and crests at Z142 (RIBBON_OVER_Z), passing OVER the arm top (Z115) and grate (Z130) — never through the steel (Rule 5).  It drops back through the grate past Yd1120.",
+        "3. No pipe threads the tray-rim↔upright gap at this plane — the old low-crosser pinch is designed out by the loop-over.",
+        "4. Past the cantilever each lane stays FLUSH (Z104.5), crosses the OUTER beam through an open-top NOTCH, and only THEN drops the tray-edge slot (X4629–4654, clear of the carriage) into the corridor — in-plane in E-E.",
+        "5. STATUS: (a) front foot / M12 CLEARS under the raised tray pan; (b) RWK cantilever arm reconciled to the deep-box upright (X4654); (c) the ribbon crest clears the arm top — no soffit graze; (d) the flush ribbon clears the spray-carriage crown (Z66) by ~28mm.",
+    ]
+    draw_notes(ax, notes, X_LO + 8, Z_HI - 60, 7.6, fs=6.2,
+               font=FONT, width=285, wrap=72, border_color=C_DIM, border_lw=0.7)
 
     title_block(ax, "SHEET 3 OF 5",
                 drawing_title="THE BIG SHOEBOX PROJECT · TBS-001",
@@ -528,20 +500,15 @@ def sheet4():
             fontsize=4.8, ha="left", va="top", color=C_DIM, zorder=14, **FONT)
     draw_dim_v(ax, X_HI - 28, 50, 560, "corridor\nopen\n(no ring\nrail here)", offset=5, fs=5, font=FONT)
 
-    notes = (
-        "SECTION E-E NOTES\n"
-        "1. Cut in the CLEAR SPAN between the frame uprights (Yd1096–1266); the\n"
-        "   uprights + pump column are just outside the slab, ghosted.\n"
-        "2. Past the cantilever each line stays FLUSH (Z104.5) and crosses the\n"
-        "   OUTER beam through an OPEN-TOP NOTCH (Z92–115 removed), then drops the\n"
-        "   tray-edge SLOT (X4629–4654) — PAST the carriage (ends X4599) — to Z65.\n"
-        "3. From that Z65 corridor entry the EXISTING routing (unchanged) rises\n"
-        "   each line to its lane and runs in X toward the pumps (Z205–235 band).\n"
-        "4. No IBC ring rail crosses this span, so the corridor is open above\n"
-        "   the bottom rail (Z50)."
-    )
-    ax.text(X_LO + 8, Z_HI - 60, notes, fontsize=6.0, ha="left", va="top", color=C_OUT,
-            family="monospace", zorder=15, bbox=dict(boxstyle="round,pad=0.45", fc="white", ec=C_DIM, lw=0.7))
+    notes = [
+        "SECTION E-E NOTES",
+        "1. Cut in the CLEAR SPAN between the frame uprights (Yd1096–1266); the uprights + pump column are just outside the slab, ghosted.",
+        "2. Past the cantilever each line stays FLUSH (Z104.5) and crosses the OUTER beam through an OPEN-TOP NOTCH (Z92–115 removed), then drops the tray-edge SLOT (X4629–4654) — PAST the carriage (ends X4599) — to Z65.",
+        "3. From that Z65 corridor entry the EXISTING routing (unchanged) rises each line to its lane and runs in X toward the pumps (Z205–235 band).",
+        "4. No IBC ring rail crosses this span, so the corridor is open above the bottom rail (Z50).",
+    ]
+    draw_notes(ax, notes, X_LO + 8, Z_HI - 55, 10.3, fs=6.0,
+               font=FONT, width=405, wrap=76, border_color=C_DIM, border_lw=0.7)
     title_block(ax, "SHEET 4 OF 5", drawing_title="THE BIG SHOEBOX PROJECT · TBS-001",
                 subtitle="WALKWAY ROUTING SECTIONS — E-E CORRIDOR CENTRE")
     out = os.path.join(DIAGRAMS_DIR, "walkway-sections-sheet4.png")
@@ -600,18 +567,14 @@ def sheet5():
     ax.add_patch(Circle((4772, 235), OD / 2, facecolor="none", edgecolor=C_BLUE, lw=1.4, ls="--", zorder=9))
     ax.text(4772, 219, "blue SV-01 → DV-01 return\n(Yd1241, ghost, −Yd)", fontsize=4.8, ha="center", va="top", color=C_BLUE, zorder=10, **FONT)
 
-    notes = (
-        "SECTION F-F NOTES\n"
-        "1. Far cantilever (Yd≈1286) — mirrors D-D on the far side of the\n"
-        "   corridor: arm off the FAR IBC upright (X4654), foot X4604–4754\n"
-        "   again extending 25mm UNDER the tray.\n"
-        "2. The ribbon loops over the NEAR cantilever only and drops into the\n"
-        "   corridor by Yd1120 — no line crosses this far cantilever.\n"
-        "3. The nearest corridor lane is the blue SV-01 → DV-01 return (Yd1241), just\n"
-        "   −Yd of this plane — ghosted.  See E-E for the lanes in-plane."
-    )
-    ax.text(X_LO + 8, Z_HI - 60, notes, fontsize=6.0, ha="left", va="top", color=C_OUT,
-            family="monospace", zorder=15, bbox=dict(boxstyle="round,pad=0.45", fc="white", ec=C_DIM, lw=0.7))
+    notes = [
+        "SECTION F-F NOTES",
+        "1. Far cantilever (Yd≈1286) — mirrors D-D on the far side of the corridor: arm off the FAR IBC upright (X4654), foot X4604–4754 again extending 25mm UNDER the tray.",
+        "2. The ribbon loops over the NEAR cantilever only and drops into the corridor by Yd1120 — no line crosses this far cantilever.",
+        "3. The nearest corridor lane is the blue SV-01 → DV-01 return (Yd1241), just −Yd of this plane — ghosted.  See E-E for the lanes in-plane.",
+    ]
+    draw_notes(ax, notes, X_LO + 8, Z_HI - 60, 7.4, fs=6.0,
+               font=FONT, width=280, wrap=72, border_color=C_DIM, border_lw=0.7)
     title_block(ax, "SHEET 5 OF 5", drawing_title="THE BIG SHOEBOX PROJECT · TBS-001",
                 subtitle="WALKWAY ROUTING SECTIONS — F-F FAR CANTILEVER")
     out = os.path.join(DIAGRAMS_DIR, "walkway-sections-sheet5.png")

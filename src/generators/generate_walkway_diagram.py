@@ -1283,7 +1283,7 @@ def sheet4():
             zz, color=C_OUT, lw=1.0, zorder=5)
     # Tray rim label
     leader(ax, (tray_x - 5), (PROC_TRAY_RIM / 2 + 10),
-           (tray_x - 70), (PROC_TRAY_RIM + 15),
+           (tray_x + 50), (PROC_TRAY_RIM),
            f"TRAY RIM\n{PROC_TRAY_RIM}mm\n(304 SS)", color=C_TRAY, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -1348,7 +1348,7 @@ def sheet4():
     ax.plot([(LEFT_WK_R - 60), (LEFT_WK_R)], [(grate_bot), (grate_bot)],
             color="#CC4400", lw=3.0, zorder=10)
     leader(ax, (LEFT_WK_R - 30), (grate_bot),
-           (LEFT_WK_R - 150), (grate_bot - 24),
+           (LEFT_WK_R - 150), (grate_bot - 65),
            f"GRATE INNER EDGE BEARS\nON THE ARM TIP (Z={int(grate_bot)})\nX={LEFT_WK_R} \u2014 LIFT TO REMOVE",
            color="#CC4400", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
@@ -1424,17 +1424,17 @@ def sheet4():
     draw_dim_v(ax, (dim_x), (0), (BRKT_ARM_Z),
                f"{BRKT_ARM_Z}mm\nLEDGE", offset=(30), fs=6, right=True, font=FONT)
     # Tray rim
-    draw_dim_v(ax, (tray_x + 20), (0), (PROC_TRAY_RIM),
+    draw_dim_v(ax, (tray_x + 10), (0), (PROC_TRAY_RIM),
                f"{PROC_TRAY_RIM}mm", offset=(6), fs=6, right=True,
                color=C_TRAY, font=FONT)
     # Panel bottom
-    draw_dim_v(ax, (LEFT_WK_L - 120), (0), (PANEL_FLOOR_GAP),
+    draw_dim_v(ax, (LEFT_WK_L - 150), (0), (PANEL_FLOOR_GAP),
                f"{PANEL_FLOOR_GAP}mm\nPANEL\nBOTTOM", offset=(6), fs=5.5, right=False,
                color="#CC4422", font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
-    notes_x = (LEFT_WK_R + 120)
-    notes_top = (Z_HI - 5)
+    notes_x = (20)
+    notes_top = (-50)
     notes = [
         "LEFT WALKWAY \u2014 REMOVABLE LIFT-OUT:",
         f"1. NO wall brackets \u2014 panel occupies end wall.",
@@ -1444,7 +1444,7 @@ def sheet4():
         f"5. Panel + drum swing {SWING_LOCK_DEG}\u00b0 about the pivot; the cage sweeps ~{SWEEP_OVER}mm past the X={LEFT_WK_R} butt joint (rides Z{PANEL_FLOOR_GAP}, clears the Z115 brackets).",
         f"6. The grate lifts out before the swing; the floor brackets stay bolted (permanent). No kerb.",
     ]
-    draw_notes(ax, notes, notes_x, notes_top, spacing=(8), fs=7, width=(400), font=FONT)
+    draw_notes(ax, notes, notes_x, notes_top, spacing=(8), fs=7, width=(600), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 4 OF 9",
@@ -1558,7 +1558,7 @@ def sheet5():
         "4. arms pass 15mm over the floor-level spray bar (+50 raise enables it).",
         "5. grate lifts out; brackets stay bolted. No kerb. Detail on Sheet 6.",
     ]
-    draw_notes(ax, notes, 20, 950, spacing=26, fs=6, ha="left", width=680, font=FONT)
+    draw_notes(ax, notes, 10, 930, spacing=26, fs=6, ha="left", width=725, font=FONT)
 
     title_block(ax, "SHEET 5 OF 9",
                 drawing_title="PERIMETER WALKWAY",
@@ -1626,19 +1626,19 @@ def sheet6():
     axA.add_patch(Rectangle((170, 0), 4, rim, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=4))
     axA.add_patch(Rectangle((174, 0), 560 - 174, 2, fc=C_STEEL, ec=C_OUT, lw=0.6, zorder=3))
     axA.add_patch(Rectangle((174, 2), 560 - 174, rim - 2 - 8, fc="#BFE0F0", ec="none", alpha=0.45, zorder=2))
-    leader(axA, 172, rim, 240, rim + 34, "PROCESSING TRAY RIM\n(Z0-50, STAYS at floor level)",
+    leader(axA, 172, rim, 240, rim - 5, "PROCESSING TRAY RIM\n(Z0-50, STAYS at floor level)",
            color=C_OUT, fs=5.5, ha="center", va="bottom", arrow_style="-|>", font=FONT)
     # Foot plate (on bare floor, outboard of the tray)
     axA.add_patch(Rectangle((fx0, 0), fl, ft, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))
     # Post 50x50 (floor to grate bottom)
     axA.add_patch(Rectangle((legx - post / 2, 0), post, grate_bot, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=6))
-    leader(axA, legx, grate_bot * 0.55, legx - 86, grate_bot * 0.55 + 20,
+    leader(axA, legx, grate_bot * 0.55, legx - 20, grate_bot * 1.3,
            "50x50x3 STEEL\nSHS POST\n(bare floor,\noutside tray)",
            color=C_OUT, fs=5.5, ha="center", va="center", arrow_style="-|>", font=FONT)
     # Cantilever arm (Z75-115) reaching to the grate inner edge (X470)
     axA.add_patch(Rectangle((arm_x0, arm_z0), std_reach - arm_x0, grate_bot - arm_z0,
                             fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=7))
-    leader(axA, 245, arm_z0 + 6, 200, arm_z0 + 52,
+    leader(axA, 245, arm_z0 + 20, 220, arm_z0 + 75,
            f"CANTILEVER ARM 40mm DEEP\n(Z{arm_z0}-{grate_bot}); EXTENDED\nto X770 on the punch-out",
            color=C_OUT, fs=5.5, ha="center", va="bottom", arrow_style="-|>", font=FONT)
     # Grate (sits on the arm/post tops)
@@ -1652,7 +1652,7 @@ def sheet6():
            "SPRAY BAR (40×25 SS)\n(rides the sloped floor)",
            color=C_OUT, fs=5.5, ha="left", va="bottom", arrow_style="-|>", font=FONT)
     # The key clearance: arm underside over the spray-bar top (computed from the constants)
-    draw_dim_v(axA, std_reach - 18, sb1, arm_z0, f"{arm_z0 - sb1:.0f}", offset=5, fs=6, right=False, font=FONT)
+    draw_dim_v(axA, std_reach + 5, sb1, arm_z0, f"{arm_z0 - sb1:.0f}mm", offset=8, fs=6, right=True, font=FONT)
     axA.text(std_reach - 52, (sb1 + arm_z0) / 2, "SPRAY-BAR\nCLEARANCE", ha="right", va="center",
              fontsize=5, color="#208020", fontweight="bold", **FONT)
     # Floor anchors (4x M10 through the foot plate; 2 visible in this section).
@@ -1663,9 +1663,9 @@ def sheet6():
     axA.annotate("", xy=(std_reach - 6, grate_bot + 4), xytext=(std_reach - 6, grate_bot + 30),
                  arrowprops=dict(arrowstyle="-|>", color="#208020", lw=2.0))
     # Key vertical dims
-    draw_dim_v(axA, 95, 0, grate_bot, f"{grate_bot}", offset=6, fs=6, right=False, font=FONT)
+    draw_dim_v(axA, 95, 0, grate_bot, f"{grate_bot}mm", offset=6, fs=6, right=False, font=FONT)
     draw_dim_h(axA, arm_x0, std_reach, arm_z0 - 16, f"{int(std_reach - arm_x0)}mm reach",
-               offset=4, fs=6, above=False, font=FONT)
+               offset=4, fs=6, above=True, font=FONT)
 
     # ===================== VIEW B — foot-plate plan =====================
     axB.set_xlim(-90, 90)
@@ -1831,9 +1831,9 @@ def sheet7():
     zz = np.linspace(0, TRAY_FLOOR, 5)
     ax.plot([bx - 3, bx + 3, bx - 3, bx + 3, bx - 3],
             zz, color=C_OUT, lw=1.0, zorder=5)
-    leader(ax, (TRAY_RIM_YD - 5), (PROC_TRAY_RIM / 2 + 20),
-           (TRAY_RIM_YD - 20), (PROC_TRAY_RIM - 20),
-           f"TRAY RIM\n{PROC_TRAY_RIM}mm\n(304 SS, 3mm)", color=C_TRAY, fs=6,
+    leader(ax, (TRAY_RIM_YD), (PROC_TRAY_RIM / 2 + 20),
+           (TRAY_RIM_YD + 20), (PROC_TRAY_RIM + 15),
+           f"TRAY RIM\n{PROC_TRAY_RIM}mm", color=C_TRAY, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # Tray water level
@@ -1917,15 +1917,15 @@ def sheet7():
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # Bolt labels
-    leader(ax, (reinf_yd - BOLT_HEAD - 2), (bolt_z_lo),
+    leader(ax, (reinf_yd - BOLT_HEAD), (bolt_z_lo),
            (reinf_yd - 30), (bolt_z_lo + 20),
            f"2× M12 AT Z={bolt_z_lo}\n(STRADDLE GUSSET\nIN X — SEE VIEW B)",
-           color=C_DIM, fs=5.5,
+           color=C_DIM, fs=5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
-    leader(ax, (reinf_yd - BOLT_HEAD - 2), (bolt_z_hi),
+    leader(ax, (reinf_yd - BOLT_HEAD), (bolt_z_hi),
            (reinf_yd - 30), (bolt_z_hi + 20),
            f"2× M12 AT Z={bolt_z_hi}\n(ABOVE DECK — SEE VIEW B)",
-           color=C_DIM, fs=5.5,
+           color=C_DIM, fs=5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Grated deck (500mm wide) ─────────────────────────────────────────────
@@ -1957,7 +1957,7 @@ def sheet7():
     ax.add_patch(Rectangle(((clip_yd), (clip_bot)),
                             (8), (clip_top - clip_bot),
                             fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
-    leader(ax, (clip_yd + 10), (brkt_arm_z),
+    leader(ax, (clip_yd + 10), (brkt_arm_z + 30),
            (clip_yd + 40), (brkt_arm_z + 55),
            "316 SS HOLD-DOWN\nCLIP + BOLT", color="#505058", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
@@ -1991,9 +1991,9 @@ def sheet7():
             **FONT, zorder=15, alpha=0.7)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
-    draw_dim_h(ax, (0), (W_ARM_W), (grate_top + 55),
+    draw_dim_h(ax, (0), (W_ARM_W), (grate_top + 75),
                f"{W_ARM_W}mm WIDENED ARM", offset=(8), fs=7, font=FONT)
-    draw_dim_h(ax, (0), (WALKWAY_W), (grate_top + 35),
+    draw_dim_h(ax, (0), (WALKWAY_W), (grate_top + 55),
                f"{WALKWAY_W}mm STD (REF)", offset=(5), fs=5.5,
                color="#808080", font=FONT)
     draw_dim_v(ax, (W_ARM_W + 20), (0), (grate_top),
@@ -2009,7 +2009,7 @@ def sheet7():
                color=C_TRAY, font=FONT)
     draw_dim_h(ax, (-CORR_DEPTH), (0), (-22),
                f"{CORR_DEPTH}mm\nCORR", offset=(10), fs=6, above=False, font=FONT)
-    draw_dim_h(ax, (0), (TRAY_RIM_YD), (-35),
+    draw_dim_h(ax, (0), (TRAY_RIM_YD), (-22),
                f"{TRAY_RIM_YD}mm", offset=(10), fs=6, above=False, font=FONT)
 
     # ── Axis label ───────────────────────────────────────────────────────────
@@ -2035,7 +2035,7 @@ def sheet7():
         f"   (Sheet 2).",
     ]
     draw_notes(ax, notes, notes_x, notes_top,
-               spacing=(6), fs=7, width=(160), font=FONT)
+               spacing=(6), fs=7, width=(190), font=FONT)
 
     # ══════════════════════════════════════════════════════════════════════════
     # VIEW B — Plate face (looking along −Yd, toward wall)
@@ -2145,11 +2145,11 @@ def sheet7():
 
     dim_x2 = pl2 - 30
     draw_dim_v(ax2, dim_x2 - 10, 0, bolt_z_lo,
-               f"{bolt_z_lo}mm", offset=4, fs=6.5, right=False, font=FONT)
+               f"{bolt_z_lo}mm", offset=4, fs=6.5, right=True, font=FONT)
     draw_dim_v(ax2, dim_x2 - 10, bolt_z_lo, bolt_z_hi,
-               f"{bolt_z_hi - bolt_z_lo}mm", offset=4, fs=6.5, right=False, font=FONT)
+               f"{bolt_z_hi - bolt_z_lo}mm", offset=4, fs=6.5, right=True, font=FONT)
     draw_dim_v(ax2, dim_x2 - 10, bolt_z_hi, W_BRKT_VERT,
-               f"{W_BRKT_VERT - bolt_z_hi}mm", offset=4, fs=6.5, right=False, font=FONT)
+               f"{W_BRKT_VERT - bolt_z_hi}mm", offset=4, fs=6.5, right=True, font=FONT)
 
     draw_dim_h(ax2, -BOLT_X_OFF_W, BOLT_X_OFF_W, bolt_z_lo - 22,
                f"{BOLT_X_OFF_W * 2}mm", offset=4, fs=6.5, above=False, font=FONT)
@@ -2167,19 +2167,16 @@ def sheet7():
     notes_b = [
         "BOLT PATTERN NOTES:",
         f"1. Rectangular pattern: 2 lower + 2 upper.",
-        f"2. Lower pair at Z={bolt_z_lo}mm, X=±{BOLT_X_OFF_W}mm from CL",
-        f"   — centered between plate edge and {W_BRKT_T}mm gusset.",
-        f"3. Upper pair at Z={bolt_z_hi}mm (above grating deck Z={WALKWAY_H}mm),",
-        f"   same X offset as lower pair.",
+        f"2. Lower pair at Z={bolt_z_lo}mm, X=±{BOLT_X_OFF_W}mm from CL — centered between plate edge and {W_BRKT_T}mm gusset.",
+        f"3. Upper pair at Z={bolt_z_hi}mm (above grating deck Z={WALKWAY_H}mm), same X offset as lower pair.",
         f"4. All holes {HOLE_D}mm clearance for M12.",
-        f"5. Head on exterior {REINF_T}mm reinforcing plate,",
-        f"   nut on interior bracket face.",
+        f"5. Head on exterior {REINF_T}mm reinforcing plate, nut on interior bracket face.",
         f"6. See View A for bolt cross-section.",
     ]
     draw_notes(ax2, notes_b, PL_X_LO + 5, -5,
                spacing=7, fs=5.5, title_fs=6, color=C_DIM,
                title_color=C_OUT, font=FONT,
-               width=PL_X_HI - PL_X_LO - 10)
+               width=PL_X_HI - PL_X_LO - 30)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 7 OF 9",
@@ -2514,11 +2511,11 @@ def sheet9():
         ax.add_patch(Rectangle((leg_x - 14, cy - 14), 28, 28, fc=C_SUPPORT, ec=C_OUT, lw=0.9, zorder=9))  # foot/post
 
     # ── Leaders ──────────────────────────────────────────────────────────────
-    leader(ax, (arm_x0 + OUTER_X) / 2, yR + 16, (arm_x0 + OUTER_X) / 2 + 80, yR + 250,
+    leader(ax, (arm_x0 + OUTER_X) / 2, yR + 16, (arm_x0 + OUTER_X) / 2 + 180, yR + 250,
            "EXTENDED CANTILEVER ARMS x3\n(floor-leg brackets at Yd 800/1180/1560\nreach to X770, OVER the spray bar)",
            color=C_SUPPORT, fs=5.5, ha="center", va="bottom", arrow_style="-|>", font=FONT)
-    leader(ax, leg_x, yL - 14, leg_x - 60, yL - 230,
-           "FLOOR LEG (X140) on bare\nfloor, outside the tray",
+    leader(ax, leg_x, yL - 14, leg_x - 60, yL - 100,
+           "FLOOR LEG (X140)\non bare floor,\noutside the tray",
            color=C_SUPPORT, fs=5.5, ha="center", va="top", arrow_style="-|>", font=FONT)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
@@ -2531,13 +2528,17 @@ def sheet9():
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
         "DRUM-EXIT PUNCH-OUT - SUPPORT:",
-        f"1. Deck deepened to {WALKWAY_LEFT_WIDE_W}mm (X={LX}-{OUTER_X}) over Yd {yL}-{yR} - landing at the light-lock exit.",
-        "2. SUPPORTED by 3 floor-leg cantilever brackets (Yd 800/1180/1560) whose arms EXTEND to X770.",
-        "3. The arms pass 15mm OVER the floor-level spray bar (Z60) - enabled by the +50mm raise; ZERO tray contact.",
-        "4. Lifts out with the left-walkway grating before panel transport; brackets stay floor-bolted.",
+        f"1. Deck deepened to {WALKWAY_LEFT_WIDE_W}mm (X={LX}-{OUTER_X}) over Yd {yL}-{yR} - landing at the",
+         "   light-lock exit.",
+        "2. SUPPORTED by 3 floor-leg cantilever brackets (Yd 800/1180/1560) whose arms",
+        "   EXTEND to X770.",
+        "3. The arms pass 15mm OVER the floor-level spray bar (Z60); ZERO tray",
+        "   contact.",
+        "4. Lifts out with the left-walkway grating before panel transport; brackets",
+        "   stay floor-bolted.",
     ]
-    draw_notes(ax, notes, 850, yL + 430, spacing=58, fs=7, ha="left",
-               width=690, font=FONT)
+    draw_notes(ax, notes, 850, yL + 230, spacing=30, fs=7, ha="left",
+               width=900, font=FONT)
 
     title_block(ax, "SHEET 9 OF 9",
                 drawing_title="PERIMETER WALKWAY",

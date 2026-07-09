@@ -23,6 +23,7 @@ from matplotlib.patches import Rectangle, Circle
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
 from tbs_constants import WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_NEAR_WIDE_W, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_DEPTH, SHELF_H, SHELF_T, SHELF_STOW_TOP_Z, SHELF_STAY_N, TAP_X, TAP_Z, BA_X, BA_W, BA_D, EP_X, EP_W, EVAP_STOW_X, EVAP_W, EVAP_D, EVAP_H, EVAP_STOW_Z, cone_left, C_OUT, C_DIM, DIAGRAMS_DIR
+from tbs_constants import DIAGRAM_DPI
 
 BG        = "#FFFFFF"
 C_SHELF   = "#C8B06A"    # phenolic ply — warm tan
@@ -115,7 +116,7 @@ def sheet1():
     title_block(ax, "SHEET 1 OF 3", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="PLAN — FOLD-DOWN, WIDENED WALKWAY (LEFT OF BATTERIES)",
                 scale_note="Axes in mm · PLAN VIEW", height=0.08)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet1.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet1.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/shelf-sheet1.png saved")
 
@@ -189,7 +190,7 @@ def sheet2():
     title_block(ax, "SHEET 2 OF 3", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="SECTION — FOLD-DOWN MECHANISM (DEPLOYED + STOWED)",
                 scale_note="Axes in mm · SECTION LOOKING ALONG X", height=0.07)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet2.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet2.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/shelf-sheet2.png saved")
 
@@ -231,7 +232,7 @@ def sheet3():
     title_block(ax, "SHEET 3 OF 3", drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="DETAIL — PIANO HINGE + STAY",
                 scale_note="Axes in mm · DETAIL", height=0.08)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet3.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "shelf-sheet3.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/shelf-sheet3.png saved")
 

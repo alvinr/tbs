@@ -17,6 +17,7 @@ from tbs_constants import (DIAGRAMS_DIR, FRONT_BOARD_MAX_DEG, FRONT_BOARD_CLICK_
                            FRONT_BOARD_TRAVEL_MM, FRONT_BOARD_ARM_MM, FRONT_BOARD_DETENTS)
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, draw_cl, draw_circle, draw_rect, leader, draw_notes
+from tbs_constants import DIAGRAM_DPI
 
 # ── Real dimensions (mm) ────────────────────────────────────────────────────
 # ICP-01 Outer adapter frame
@@ -276,7 +277,7 @@ def draw_sheet1():
 
     plt.tight_layout(pad=0)
     out1 = f'{DIAGRAMS_DIR}/tilt-swing-sheet1.png'
-    fig.savefig(out1, dpi=150, bbox_inches='tight', facecolor='white')
+    fig.savefig(out1, dpi=DIAGRAM_DPI, bbox_inches='tight', facecolor='white')
     plt.close(fig)
     print(f'  → tilt-swing-sheet1.png  Done.')
 
@@ -571,7 +572,7 @@ def draw_sheet2():
 
     plt.tight_layout(pad=0)
     out2 = f'{DIAGRAMS_DIR}/tilt-swing-sheet2.png'
-    fig.savefig(out2, dpi=150, bbox_inches='tight', facecolor='white')
+    fig.savefig(out2, dpi=DIAGRAM_DPI, bbox_inches='tight', facecolor='white')
     plt.close(fig)
     print(f'  → tilt-swing-sheet2.png  Done.')
 

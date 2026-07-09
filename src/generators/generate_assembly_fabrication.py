@@ -37,6 +37,7 @@ from tbs_constants import C_LEN, C_WID, C_HGT, FP_X_L, FP_X_R, FP_Y, PH_X, PH_H,
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
 
 from tbs_constants import RAIL_OFF   # floor/ceiling offset for all equipment (mm)
+from tbs_constants import DIAGRAM_DPI
 DRUM_H_ELV = DRUM_H_LT  # 2000mm — drum height in elevation view
 DRUM_CY    = C_WID // 2  # drum center in Y direction = container width center = 1181mm
 
@@ -80,7 +81,7 @@ def sheet1():
 
     FIG_W = 26.0
     FIG_H = FIG_W * (Y_HI - Y_LO) / (X_HI - X_LO)
-    DPI = 150
+    DPI = DIAGRAM_DPI
 
     fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DPI)
     fig.patch.set_facecolor(BG)
@@ -374,7 +375,7 @@ def sheet2():
 
     FIG_W2 = 16.0
     FIG_H2 = FIG_W2 * (Y_HI2-Y_LO2) / (X_HI2-X_LO2)
-    DPI = 150
+    DPI = DIAGRAM_DPI
 
     fig, ax = plt.subplots(figsize=(FIG_W2, FIG_H2), dpi=DPI)
     fig.patch.set_facecolor(BG)

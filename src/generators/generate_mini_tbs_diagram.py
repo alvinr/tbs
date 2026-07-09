@@ -26,6 +26,7 @@ import os
 from tbs_title_block import title_block
 from tbs_constants import DIAGRAMS_DIR,  C_OUT, C_CL, C_DIM
 from tbs_drawing import draw_dim_h, draw_dim_v, leader
+from tbs_constants import DIAGRAM_DPI
 
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
 
@@ -93,7 +94,7 @@ FS_MD = 8.0
 
 FIG_W = 30.0
 FIG_H = 22.0
-fig = plt.figure(figsize=(FIG_W, FIG_H), dpi=150)
+fig = plt.figure(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
 fig.patch.set_facecolor(BG)
 
 gs = fig.add_gridspec(3, 4,
@@ -765,6 +766,6 @@ title_block(ax_tb, "SHEET 1 OF 1",
 
 # ── Save ─────────────────────────────────────────────────────────────────────
 out = f"{DIAGRAMS_DIR}/mini-tbs-sheet1.png"
-plt.savefig(out, dpi=150, bbox_inches="tight", facecolor=BG, edgecolor="none")
+plt.savefig(out, dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG, edgecolor="none")
 plt.close(fig)
 print(f"Saved: {out}")

@@ -932,6 +932,11 @@ FAN_B_MARGIN = PANEL_CORNER_T   # = 40mm (fan flush with panel inner face)
 # ── Output directories ────────────────────────────────────────────────────────
 DIAGRAMS_DIR = os.environ.get("TBS_DIAGRAMS_DIR") or os.path.join(PROJECT_ROOT, "diagrams")  # env override: lint regenerates to a temp dir to byte-diff the cascade
 
+# ── Raster resolution (savefig dpi) ───────────────────────────────────────────
+# One knob for the whole diagram set so it can't drift across ~90 savefig calls.
+DIAGRAM_DPI    = 300   # engineering diagrams — high DPI so text stays sharp when zoomed
+DISTORTION_DPI = 150   # override for the dark full-bleed distortion renders (no fine text; keeps files smaller)
+
 # ── Palette (shared drawing style) ───────────────────────────────────────────
 C_OUT   = "#1A1A1A"   # outlines
 C_CL    = "#2060A0"   # center lines

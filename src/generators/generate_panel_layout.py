@@ -39,7 +39,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
-from tbs_constants import C_OUT, C_DIM, C_STEEL, DIAGRAMS_DIR, PUMP_PIPE_OD, PUMP_PIPE_WALL, EQPANEL_X, EQPANEL_H
+from tbs_constants import C_OUT, C_DIM, C_STEEL, DIAGRAMS_DIR, PUMP_PIPE_OD, PUMP_PIPE_WALL, EQPANEL_X, EQPANEL_H, DIAGRAM_DPI
 from tbs_constants import BB_OD, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_BOT_Z, PWP_FILTER_HEAD_Z, PWP_SV01_X
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_pipe_path as _tbs_pipe_path, valve_ball, valve_3way, valve_check
 from tbs_title_block import title_block
@@ -575,7 +575,7 @@ def draw_corridor_panel():
 
     os.makedirs(DIAGRAMS_DIR, exist_ok=True)
     out = os.path.join(DIAGRAMS_DIR, "panel-layout.png")
-    fig.savefig(out, dpi=150, facecolor="white", edgecolor="none",
+    fig.savefig(out, dpi=DIAGRAM_DPI, facecolor="white", edgecolor="none",
                 bbox_inches="tight", pad_inches=0.2)
     plt.close(fig)
     print(f"Corridor panel → {out}")
@@ -894,7 +894,7 @@ def draw_pinhole_panel():
 
     os.makedirs(DIAGRAMS_DIR, exist_ok=True)
     out = os.path.join(DIAGRAMS_DIR, "pinhole-panel.png")
-    fig.savefig(out, dpi=150, facecolor="white", edgecolor="none",
+    fig.savefig(out, dpi=DIAGRAM_DPI, facecolor="white", edgecolor="none",
                 bbox_inches="tight", pad_inches=0.2)
     plt.close(fig)
     print(f"Pinhole wall panel → {out}")
@@ -1343,7 +1343,7 @@ def spine_view(side):
 
     os.makedirs(DIAGRAMS_DIR, exist_ok=True)
     outb = os.path.join(DIAGRAMS_DIR, f"panel-spine-view-{side}.png")
-    figb.savefig(outb, dpi=150, facecolor="white", edgecolor="none",
+    figb.savefig(outb, dpi=DIAGRAM_DPI, facecolor="white", edgecolor="none",
                  bbox_inches="tight", pad_inches=0.2)
     plt.close(figb)
     print(f"Spine view {side.upper()} → {outb}")

@@ -11,6 +11,8 @@ Use `place_label()` from `tbs_drawing.py` (not raw `ax.text()`) for component la
 
 **Why this exists:** the user spends real time hand-repositioning labels after generation. The 12 principles below are distilled from ~69 per-commit "Tidy Labels" corrections; the `(rN)` tags point back to the original numbered rules (now in git history) if you need the full failure example. When you generate or edit a diagram, walk these in order — placement first, then formatting.
 
+**2026-07 re-audit (38 more "Tidy labels" commits):** the corrections that *still* recur — and are now hardened below — are, in frequency order: (a) **notes box laid over the drawing** (21 relocations — P8 placement); (b) **dim label on the wrong side / unit-less** (`right=`/`above=` flipped 22×, `mm` added 20× — P7); (c) **coordinate-range suffix appended to a dim/leader** (`(X=a–b)` stripped ~20× — P7, new); (d) **text over a hatch/ghost with no white backing** (`bbox=LBL_BG` added ~dozen× — P9); (e) **leaders carrying secondary specs** that belong in the notes block (~8 `\n(material…)` lines stripped — P1).
+
 ---
 
 ## Self-review FIRST — run this before you show or commit any diagram
@@ -20,9 +22,10 @@ The dominant cost on this project is the round-trip: I draw → the user "Tidy l
 1. **Render it and crop-zoom every label cluster.** Never commit a diagram you have only reasoned about — look at the pixels (PIL crop at 2.5–3×). Most of my misses this week (floor-flange "keep it long," spray-bar anchor) came from reasoning instead of looking.
 2. **Leaders:** each one shortest into the *nearest* clear pocket (P1), tip on the specific material edge (P3), nothing sitting on geometry/hatch (P2/P9). Sweep the *opposite* side before accepting a long one.
 3. **Inverted axis?** (`ax.invert_xaxis()`) → hand-drawn boxes need a **negative** width and offset text needs a leader or a flipped sign+`ha` (P10). This bites every time and is invisible until you look.
-4. **Dimensions:** units on **every** one; `offset` ≥8 (≈32–50 in mm-first sheets); anything <30mm gets a leader not a dim; no value both dimensioned *and* restated as a label (P7).
-5. **Notes:** ALL-CAPS title + `:`, `ha="left"`, width hugs the longest line (hard-wrap to stay narrow), `fs≥7`, trailing comma on every string (P8).
-6. **3D model labels:** does each leader tip land **on the part**, not the bounds-centre / mid-air above an outrigger? (P3 — `overview_labels()` now auto-snaps egregious floats, but still eyeball it.)
+4. **Dimensions:** units on **every** one (the #1 recurring miss — a bare `f"{v}"` ships unit-less); **value + unit ONLY — strip any appended `(X=a–b)`/`(Yd=…)`/`(Z=n)` range**, the extension lines already show the span; label on the **open side** (`right=`/`above=` toward white space, not into geometry); `offset` ≥8 (≈32–50 in mm-first sheets); anything <30mm gets a leader not a dim; no value both dimensioned *and* restated as a label (P7).
+5. **Notes:** the box sits in a **clear margin — never over geometry/ghost**; if the frame is full, EXTEND the axis to open a band rather than cram it (P8 placement). Then formatting: ALL-CAPS title + `:`, `ha="left"`, logical one-string notes with `wrap=` (not hand-`\n`), width sized to the wrapped result, `fs≥7`, trailing comma on every string.
+6. **Legibility:** any text sitting on a hatch / ghost / patterned fill gets a **white `bbox` (LBL_BG)**, not merely a high zorder (P9). And each **leader carries one identifier**, not a spec sheet — push material/size to the notes block (P1).
+7. **3D model labels:** does each leader tip land **on the part**, not the bounds-centre / mid-air above an outrigger? (P3 — `overview_labels()` now auto-snaps egregious floats, but still eyeball it.)
 
 If a check fails, fix it *before* rendering the "final" — don't ship it expecting a tidy pass.
 
@@ -40,6 +43,7 @@ The master rule for *where* a callout goes. Keep the tip on the feature; move on
 - Near a horizontal pipe run, route diagonally up-and-out, not straight sideways. *(r4, r5)*
 - `ax.annotate()` arrow text: keep **≥30 data-units** horizontal from the arrow anchor so tip and text don't crowd. *(r50)*
 - **Loop:** pick the gap, anchor one line off, render, push farther only on an *actual* collision. *(r67, r69)*
+- **One identifier per leader — not a spec sheet.** The label names the part (`TRAY RIM\n50mm`); secondary specs — material, thickness, profile, exterior/interior — go in the **notes block**, not stacked as extra `\n(…)` lines on the leader. ~8 such trailing lines (`\n(304 SS, 3mm)`, `\n(1.6mm CORTEN…)`, `\n(EXTERIOR)`) were stripped this week; a two-line leader reads, a five-line one is a wall. *(2026-07)*
 
 ## 2. Put it where the white space is — never on geometry  *(general, r10, r15, r16, r33, r35, r62)*
 
@@ -77,7 +81,9 @@ The master rule for *where* a callout goes. Keep the tip on the feature; move on
 
 - **`offset=`:** min **8**; in mm-first sheets **25–80** (default ~50; mm elevation sheets ~**32**); detail views bigger than the main elevation. *(r36, r43, r6)*
 - **Dimension-line position:** ≥50mm off the geometry but **≤250mm** from the drawing edge; pull close after a mm-conversion; stack rows ~**60mm** apart. *(r39, r52, r44, r55)*
-- Always include **units** (`300mm`, not `300`). *(r49)*
+- Always include **units** (`300mm`, not `300`) — **the single most-repeated miss**: a bare `f"{v:.0f}"` label ships unit-less and gets hand-fixed. Put the `mm` in the f-string at the source. *(r49, 2026-07 ×20)*
+- **Value + unit, nothing else — never append the coordinate range.** `f"{PROC_TRAY_W}mm"`, not `f"{PROC_TRAY_W}mm (X={x0}–{x1})"`; the extension lines already show *where* the span is, so the parenthetical `(X=a–b)`/`(Yd=a–b)`/`(Z=n)` is pure clutter (stripped ~20× this week). If the reader needs the absolute stations, they belong in the notes block, not on the dimension. *(2026-07)*
+- **Put the value on the open side** — flip `right=`/`above=` toward the white space (the most common dim edit this week: `right=True`/`above=True` 22×). `draw_dim_v(..., right=False)` and `draw_dim_h(..., above=False)` default the label *into* the geometry as often as not; choose the side deliberately. *(r16, r62, 2026-07)*
 - Harmonize font size across same-tier dimensions. *(r53)*
 - A measured distance **<30mm** won't fit between extension lines → use a `leader()` with the value in the label text instead. *(r37)*
 - **Conversely, a clearance/gap ≥30mm is a DIMENSION, not a leader callout** — `draw_dim_v`/`draw_dim_h` stacked in the dim column (continue an existing chain where one fits, e.g. EP `1500→2100→2388`), never a `leader("… → …: Nmm")`. The leader-with-value is *only* the <30mm fallback. *(2026-06-18)*
@@ -85,11 +91,13 @@ The master rule for *where* a callout goes. Keep the tip on the feature; move on
 
 ## 8. Notes block  *(r19, r21, r22, r23, r24, r25, r26, r32, r40, r41, r42, r47, r68)*
 
+- **PLACEMENT FIRST — the box must not overlap the drawing.** This was the week's single most-repeated fix (21 `notes_x`/`notes_top`/`width` edits) and recurs constantly across generators. Put the block in a **clear margin**: below the plan, a dedicated side column, or the header band. If the geometry **fills the frame**, EXTEND the axis (`Z_LO`/`X_HI`/`PAD_*`) to open a band and drop the box there — never lay it over geometry or a faint ghost (an opaque white notes box *hides* the drawing behind it, which reads as "notes overlapping the diagram"). Because `draw_notes` uses data-unit `width`/`spacing`, note that **`aspect="equal"` shrinks the axes box when you extend one axis** — so re-tune `width`/`spacing` for the new scale, or the fixed-point text overflows its border (this exact trap bit walkway-sheet3). *(2026-07)*
+- **Wrapping: pass logical one-string notes and let `wrap=` hanging-indent them; size `width` to the wrapped result.** Do **not** hand-maintain `\n` continuation lines — they drift and overflow when the scale or wording changes, and the week's edits repeatedly *merged* hand-wrapped fragments back into single strings. This supersedes the older "hard-wrap by hand to stay narrow" guidance (r23/r68): keep the box narrow with a smaller `wrap=` char count, not with baked-in line breaks. *(2026-07, supersedes r23/r68)*
 - First string = **ALL-CAPS title ending in `:`**; **no blank line** after it (`draw_notes` already spaces the bold title). *(r26, r21)*
 - Numbered `"1. "` (space after the period), never bullets. *(r22)*
 - `ha="left"` almost always. *(r25)*
 - **Width hugs the longest line** (≈30–50% of the panel range, never 60–70%); err narrow — a tight box looks intentional, an oversized one looks broken. *(r24, r40)*
-- Keep it narrow by **hard-wrapping items into hanging-indent continuation lines** (leading spaces, no number) rather than widening the box. *(r23, r68)*
+- Keep it narrow via a smaller **`wrap=` char count** (the helper adds the hanging indent), not by widening the box — but size `width` so the *wrapped* longest line still fits inside the border. *(r23, r68, updated 2026-07)*
 - Spacing compact (the minimum that avoids touching). *(r41)*
 - ≥50 data-units inward from the axes edge. *(r42)*
 - Font **≥7**. *(r19, r32)*
@@ -101,8 +109,9 @@ The master rule for *where* a callout goes. Keep the tip on the feature; move on
 - **Black on light/medium fills; white ONLY on dark** (navy/black/dark-gray). Never color text to match its own fill. *(r45)*
 - Frame/equipment labels go **inside** the outline (well in, not floating above). *(r12, r46)*
 - Thin structural fills (ceiling/floor/wall bars): `fs=5`. *(r54)*
-- **Drop `bbox`** in detail views (white boxes eat tight space); reserve a white bbox for the main elevation where labels cross pipes/hatch. *(r31)*
-- A label/leader crossing filled geometry needs an explicit **high `zorder`** so it isn't occluded. *(r61)*
+- **Text over a hatch / ghost / patterned fill gets a white `bbox`, not just a high zorder.** Define one shared `LBL_BG = dict(fc="white", ec="none", alpha=0.85, pad=1)` per generator and pass `bbox=LBL_BG` on any label sitting on cross-hatch, dotted floor, or a faint equipment ghost — zorder stops *occlusion* but the hatch still shows through the glyph gaps and kills legibility; the white box is what makes it read. Applied ~dozen× this week (spray-bar over-hatch callouts, walkway "container floor", ghost-equipment labels). *(2026-07)*
+- **Drop `bbox`** only in tight detail views where the white box eats space the drawing needs; everywhere labels cross pipes/hatch/ghost, keep it. *(r31, refined 2026-07)*
+- A label/leader crossing filled geometry needs an explicit **high `zorder`** so it isn't occluded — pair it with the white `bbox` above. *(r61)*
 
 ## 10. The inverted-axis trap  *(r64, r65)* — genuinely unique; read in full
 

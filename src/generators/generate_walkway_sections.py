@@ -449,15 +449,19 @@ def sheet4():
     uprights), X–Z looking +Yd.  Here the four corridor lanes the D-D ghosts pointed to run
     as REAL in-plane runs toward the pump column."""
     X_LO, X_HI = 4600, 5185
-    Z_LO, Z_HI = -80, 660
+    Z_LO, Z_HI = -80, 860    # extended upward: header band above the ghost-upright tops (Z_CEIL)
+    Z_CEIL = 660             # ghost uprights / pump column / P-04 riser rise to here (top of the drawing)
     fig = plt.figure(figsize=(15.5, 8.8))
     ax = fig.add_axes([0.05, 0.08, 0.92, 0.82])
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_xlim(X_LO, X_HI); ax.set_ylim(Z_LO, Z_HI); ax.set_aspect("equal"); ax.axis("off")
-    ax.text((X_LO + X_HI) / 2, Z_HI - 6, "SECTION E-E · CORRIDOR CENTRE (between the frame uprights)",
-            ha="center", va="top", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
-    ax.text((X_LO + X_HI) / 2, Z_HI - 32, "X–Z elevation, looking +Yd · slab Yd≈1130–1245 (the clear span) · 1:1",
-            ha="center", va="top", fontsize=7.5, color=C_DIM, **FONT)
+    # Ghost uprights + pump column rise to the top of the drawing area, so place the
+    # title/subtitle in the figure margin ABOVE the axes (axes top = 0.08 + 0.82 = 0.90).
+    _tcx = 0.05 + 0.92 / 2   # horizontal center of the axes in figure coords
+    fig.text(_tcx, 0.972, "SECTION E-E · CORRIDOR CENTRE (between the frame uprights)",
+             ha="center", va="top", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
+    fig.text(_tcx, 0.945, "X–Z elevation, looking +Yd · slab Yd≈1130–1245 (the clear span) · 1:1",
+             ha="center", va="top", fontsize=7.5, color=C_DIM, **FONT)
 
     _rect(ax, X_LO, -40, X_HI - X_LO, 40, C_FLOOR, lw=1.0, hatch="////", z0=2)                 # floor
     _rect(ax, X_LO, DECK_ZB, PROC_TRAY_X_R - X_LO, WALKWAY_GRATE_T, C_GRATE, lw=1.0, z0=7)     # deck right edge
@@ -468,20 +472,20 @@ def sheet4():
     _rect(ax, UP_X0, 0, UP_X1 - UP_X0, 50, C_STEEL, lw=0.9, z0=6)                              # front bottom Yd-rail
     _rect(ax, 5104, 0, 50, 50, C_STEEL, lw=0.9, z0=6)                                          # back bottom Yd-rail
     for ux, tag in ((UP_X0, "front"), (5104, "back")):                                          # uprights (ghost, slab edges)
-        _rect(ax, ux, 0, 50, Z_HI - Z_LO, C_GHOST, ec=C_GHOST, lw=0.8, z0=2, alpha=0.16, ls="--")
+        _rect(ax, ux, 0, 50, Z_CEIL, C_GHOST, ec=C_GHOST, lw=0.8, z0=2, alpha=0.16, ls="--")
         ax.text(ux + 25, 600, f"{tag} upright\n(ghost)", fontsize=5, ha="center", va="center", color=C_GHOST, **FONT)
-    _rect(ax, 4934, 355, 100, Z_HI - 355, C_GHOST, ec=C_GHOST, lw=0.8, z0=2, alpha=0.12, ls="--")  # pump column ghost
+    _rect(ax, 4934, 355, 100, Z_CEIL - 355, C_GHOST, ec=C_GHOST, lw=0.8, z0=2, alpha=0.12, ls="--")  # pump column ghost
     ax.text(4984, 470, "pump column\n(P-01/04/05/03)\nghost, Yd≤1131", fontsize=4.8, ha="center", va="center", color=C_GHOST, **FONT)
 
     # ── Past the cantilever each line comes back to FLUSH (Z104.5), crosses the NOTCHED outer beam, and drops ──
     # ── the tray-edge SLOT (X4629-4654, clear of the carriage) into the corridor, where the EXISTING routing ──
     # ── (unchanged — "reconnect at the right edge onwards") rises it to its lane and runs in X to the pumps. ──
     GAP_ENTRY_X = 4641
-    _run(ax, [(GAP_ENTRY_X, RIBBON_Z), (GAP_ENTRY_X, UNDER_BEAM_Z), (GAP_ENTRY_X, 205), (4900, 205), (4900, Z_HI - 24)], C_BROWN)      # sump→P-04
+    _run(ax, [(GAP_ENTRY_X, RIBBON_Z), (GAP_ENTRY_X, UNDER_BEAM_Z), (GAP_ENTRY_X, 205), (4900, 205), (4900, Z_CEIL - 24)], C_BROWN)    # sump→P-04
     _run(ax, [(GAP_ENTRY_X + 22, RIBBON_Z), (GAP_ENTRY_X + 22, UNDER_BEAM_Z), (GAP_ENTRY_X + 22, 235), (4984, 235)], C_BLUE)           # blue trunk
     _run(ax, [(GAP_ENTRY_X + 44, RIBBON_Z), (GAP_ENTRY_X + 44, UNDER_BEAM_Z), (GAP_ENTRY_X + 44, 259), (X_HI - 6, 259)], C_BROWN)      # brown IBC-3 -> P-02
     _run(ax, [(GAP_ENTRY_X + 66, RIBBON_Z), (GAP_ENTRY_X + 66, UNDER_BEAM_Z), (GAP_ENTRY_X + 66, 283), (X_HI - 6, 283)], C_BLUE)       # blue SV-01 -> DV-01
-    ax.annotate("↑ P-04 IN", xy=(4900, Z_HI - 24), xytext=(4915, Z_HI - 70),
+    ax.annotate("↑ P-04 IN", xy=(4900, Z_CEIL - 24), xytext=(4915, Z_CEIL - 70),
                 fontsize=5.6, ha="left", va="center", color=C_BROWN, zorder=13, **FONT)
     # mark the flush arrival + slot drop
     leader(ax, GAP_ENTRY_X + 33, RIBBON_Z, GAP_ENTRY_X + 70, 372,
@@ -509,8 +513,8 @@ def sheet4():
         "3. From that Z65 corridor entry the EXISTING routing (unchanged) rises each line to its lane and runs in X toward the pumps (Z205–235 band).",
         "4. No IBC ring rail crosses this span, so the corridor is open above the bottom rail (Z50).",
     ]
-    draw_notes(ax, notes, X_LO + 8, Z_HI - 55, 10.3, fs=6.0,
-               font=FONT, width=405, wrap=76, border_color=C_DIM, border_lw=0.7)
+    draw_notes(ax, notes, X_LO + 8, Z_HI - 15, 13.0, fs=6.0,
+               font=FONT, width=500, wrap=76, border_color=C_DIM, border_lw=0.7)
     title_block(ax, "SHEET 4 OF 5", drawing_title="THE BIG SHOEBOX PROJECT · TBS-001",
                 subtitle="WALKWAY ROUTING SECTIONS — E-E CORRIDOR CENTRE")
     out = os.path.join(DIAGRAMS_DIR, "walkway-sections-sheet4.png")

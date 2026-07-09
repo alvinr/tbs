@@ -15,15 +15,19 @@ unambiguous ones (preserving formatting via exact source-span splicing).
 Auto-fixed (high confidence, scale-independent):
   * DIM range-suffix   — strip a redundant ``(X=a–b)`` / ``(Yd=…)`` / ``(Z=n)`` from a
                          draw_dim_* label; the extension lines already show the span (P7).
-  * DIM unit-less      — a bare ``f"{expr}"`` draw_dim_* label → append ``mm`` (P7).
+  * DIM unit-less      — a draw_dim_* label whose FIRST token is a measured value (a bare
+                         number or a single ``{expr}``) but carries no unit → insert ``mm``
+                         after it (P7).  Skips Ø-diameters, ``×`` specs, X=/Yd=/Z= station
+                         labels, and named/text-leading dims — those conventionally omit mm.
 
-Deliberately NOT auto-fixed: dimension ``offset`` — the right value is scale-dependent
-(3–8 data-units in detail views vs 25–80 in mm-first sheets), so a static bump is unsafe;
-that judgement is part of the visual pass.
+Deliberately NOT auto-fixed / not flagged:
+  * dimension ``offset`` — scale-dependent (3–8 data-units in detail views vs 25–80 mm-first);
+    a static bump is unsafe, so it's a visual call.
+  * multi-line leaders — on this project the 2D set is manufacturing blueprints where detailed
+    callouts (part no., material, DN) are WANTED, so a line-count "spec-sheet" flag is noise.
 
-Reported only (need judgement or a rendered look — that's the /tidy-labels skill, P1/P8/P9):
+Reported only (need judgement or a rendered look — the /tidy-labels skill, P1/P8/P9):
   * LEADER range-suffix — a ``(X=…)`` on a leader may be a legit part id; a human/vision decides.
-  * LEADER spec-sheet   — label with ≥3 ``\\n`` lines; move secondary specs to the notes block.
   * NOTES hand-wrapped  — a notes list with leading-space continuation items → use ``wrap=``.
 
 The VISUAL rules (notes over geometry, leader in the nearest clear pocket, bbox on hatch,
@@ -40,8 +44,12 @@ LABEL_IDX = {"draw_dim_h": 4, "draw_dim_v": 4, "leader": 5}
 UNIT_RE = re.compile(r"(mm|cm|°|deg|m²|mm²|²|kg)")
 # a trailing " (X=…)" / " (Yd=…)" / " (Z=…)" coordinate range, just before the closing quote
 RANGE_RE = re.compile(r"\s*\((?:X|Yd|Z)=[^)]*\)(?=[\"'])")
-# a label that is PURELY one formatted value: f"{…}" with nothing else
-PURE_FVAL_RE = re.compile(r'^f(["\'])\{[^{}]*\}\1$')
+# a dim label we should NOT flag as unit-less — conventional diameter (Ø), a multi-dim/thread
+# spec (×), or a coordinate/station reference (X= / Yd= / Z=). Those legitimately omit "mm".
+NOUNIT_SKIP_RE = re.compile(r"Ø|×|\bX=|\bYd=|\bZ=")
+# a label whose FIRST token is a measured value — a bare number (opt. ~ / decimals) or a single
+# f-expr — captured so we can insert "mm" right after it: f?  quote  value  rest…quote
+LEADING_VAL_RE = re.compile(r"""^(f?)(["'])(~?\d[\d.]*|\{[^{}]*\})(.*)\2$""", re.S)
 
 
 class Finding:
@@ -92,20 +100,22 @@ def analyze(src, path):
                                    f"has {m.group().strip()!r} — keep only if it's a real part id (else strip)"))
 
         # ── unit-less dimension ────────────────────────────────────────────────
-        if is_dim and not UNIT_RE.search(seg):
-            if PURE_FVAL_RE.match(seg.replace(" ", "")):
-                new = seg[:-1] + 'mm' + seg[-1]        # insert mm before the closing quote
+        # Only a dim whose FIRST token is a measured value gets mm; skip Ø / × / station
+        # labels (conventional) and named/text-leading dims (deck Z140, "WALL" — intentional).
+        if is_dim and not UNIT_RE.search(seg) and not NOUNIT_SKIP_RE.search(seg):
+            m = LEADING_VAL_RE.match(seg)
+            if m:
+                fpref, q, val, rest = m.groups()
+                new = f"{fpref}{q}{val}mm{rest}{q}"     # insert mm right after the leading value
                 out.append(Finding("DIM unit-less", label.lineno,
-                                   "bare value → append 'mm'", True, seg, new))
-            else:
-                out.append(Finding("DIM unit-less", label.lineno,
-                                   f"label {seg!r} has no unit — add mm (manual: not a pure f-value)"))
+                                   f"add 'mm' after leading value ({val})", True, seg, new))
+            # non-numeric-leading dims are named/station labels — deliberately not flagged.
 
-        # ── spec-sheet leader (≥3 lines) ───────────────────────────────────────
-        nl = seg.count("\\n")
-        if fn == "leader" and nl >= 3:
-            out.append(Finding("LEADER spec-sheet", label.lineno,
-                               f"{nl + 1}-line leader — move secondary specs to the notes block"))
+    # NOTE: no LEADER "spec-sheet" (≥3-line) rule. On this project the 2D set is a set of
+    # manufacturing blueprints where completeness is the point, so detailed multi-line callouts
+    # (bearing part no., plate spec, valve DN) are usually WANTED. Whether a secondary line is
+    # genuinely redundant vs buildable detail is a judgement — the visual /tidy-labels pass, not a
+    # blanket line-count flag (it fired ~30× here, almost all legitimate).
 
     # ── hand-wrapped notes lists (draw_notes(..., [ ... ], ...)) ────────────────
     for node in ast.walk(tree):
@@ -148,7 +158,7 @@ def main():
         files += glob.glob(p)
     total_fix = total_flag = 0
     RANK = {"DIM range-suffix": 0, "DIM unit-less": 1,
-            "LEADER range-suffix": 2, "LEADER spec-sheet": 3, "NOTES hand-wrapped": 4}
+            "LEADER range-suffix": 2, "NOTES hand-wrapped": 3}
     for path in sorted(set(files)):
         try:
             src = open(path).read()

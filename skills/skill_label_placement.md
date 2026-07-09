@@ -43,7 +43,7 @@ The master rule for *where* a callout goes. Keep the tip on the feature; move on
 - Near a horizontal pipe run, route diagonally up-and-out, not straight sideways. *(r4, r5)*
 - `ax.annotate()` arrow text: keep **≥30 data-units** horizontal from the arrow anchor so tip and text don't crowd. *(r50)*
 - **Loop:** pick the gap, anchor one line off, render, push farther only on an *actual* collision. *(r67, r69)*
-- **One identifier per leader — not a spec sheet.** The label names the part (`TRAY RIM\n50mm`); secondary specs — material, thickness, profile, exterior/interior — go in the **notes block**, not stacked as extra `\n(…)` lines on the leader. ~8 such trailing lines (`\n(304 SS, 3mm)`, `\n(1.6mm CORTEN…)`, `\n(EXTERIOR)`) were stripped this week; a two-line leader reads, a five-line one is a wall. *(2026-07)*
+- **Trim genuinely-redundant secondary lines from a leader — but this is a JUDGEMENT, not a line count.** ~8 trailing lines (`\n(304 SS, 3mm)`, `\n(1.6mm CORTEN…)`, `\n(EXTERIOR)`) were stripped this week where they added clutter, not information. But the 2D set is a set of *manufacturing blueprints where completeness is the point* — so a detailed callout at the part (bearing part-no., plate spec `{w}×{h}×{t}mm`, valve DN, "WELDED TO WALL") is usually **wanted**, and a blanket "≥3 lines = too many" rule is wrong here (it false-fires ~30× across the generators). Ask *"is this line redundant with the geometry or another label, or is it buildable detail the fabricator needs?"* — trim only the former. *(2026-07)*
 
 ## 2. Put it where the white space is — never on geometry  *(general, r10, r15, r16, r33, r35, r62)*
 

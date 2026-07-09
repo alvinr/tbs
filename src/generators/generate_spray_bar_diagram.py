@@ -610,10 +610,10 @@ def draw_sheet2():
     # text LEFT into the open floor zone and stack them clear of each other — the raised-tray
     # shim crosshatch (starts Yd=PROC_TRAY_YD_NEAR) now reaches under the wheel, so on-hatch
     # labels get a white backing (LBL_BG).
-    leader(ax2, wheel1_yd - WHEEL_DIA / 2, WHEEL_AXLE_Z + 4,
-           wheel1_yd - WHEEL_DIA / 2 - 8, WHEEL_AXLE_Z + 14,
+    leader(ax2, wheel1_yd - WHEEL_DIA * 0.2, WHEEL_AXLE_Z + 12,
+           wheel1_yd - WHEEL_DIA * 0.4, WHEEL_AXLE_Z + WHEEL_DIA * 0.8,
            f"Ø{WHEEL_DIA}mm\nNYLON WHEEL",
-           fs=6, color=C_WHEEL, ha="right", font=FONT, zorder=15, bbox=LBL_BG)
+           fs=6, color=C_WHEEL, ha="right", font=FONT, zorder=15)
 
     # ── Carriage plate 2mm above wheel axle ──────────────────────────
     brk_t_c = 5
@@ -674,10 +674,10 @@ def draw_sheet2():
             ax2.add_patch(Rectangle((bolt_yd - 2.5, plate_bot_z - foot_t - 3), 5, 3,
                           fc=C_BOLT, ec=C_FRAME, lw=0.5, zorder=11))
 
-    leader(ax2, wheel1_yd - sad_ro, WHEEL_AXLE_Z - sad_t, wheel1_yd - 24,
-           WHEEL_AXLE_Z - 18,
+    leader(ax2, wheel1_yd - sad_ro, WHEEL_AXLE_Z - sad_t,
+           wheel1_yd - 50, WHEEL_AXLE_Z - 18,
            "SS SADDLE CLAMP\n(AXLE RETENTION)",
-           fs=6, color=C_BOLT, ha="right", font=FONT, zorder=15, bbox=LBL_BG)
+           fs=6, color=C_BOLT, ha="right", font=FONT, zorder=15)
 
     # ── Beam cross-section: 40×25 304-SS RHS with SIDE-mounted poly manifold ──
     ax2.add_patch(Rectangle((c_beam_l, BEAM_Z_BOT), BEAM_W, BEAM_H,
@@ -742,8 +742,8 @@ def draw_sheet2():
 
     # Point to the LEFT countersunk bolt and carry the text out to the open floor on the
     # left — the right-hand pocket it used to sit in is now under the shim crosshatch.
-    leader(ax2, CARRIAGE_YD_CENTER - clp_half, BEAM_Z_BOT - clp_t,
-           CARRIAGE_YD_CENTER - clp_half - 26, BEAM_Z_BOT - 16,
+    leader(ax2, CARRIAGE_YD_CENTER - clp_half + 6, BEAM_Z_BOT - clp_t,
+           CARRIAGE_YD_CENTER - clp_half, BEAM_Z_BOT - 16,
            "M6 COUNTERSUNK (FLUSH\nUNDERSIDE — CLEARANCE)",
            fs=4.5, color=C_BOLT, ha="right", font=FONT, zorder=15, bbox=LBL_BG)
     leader(ax2, CARRIAGE_YD_CENTER - clp_half, BEAM_Z_TOP + clp_t / 2,
@@ -766,9 +766,9 @@ def draw_sheet2():
         ax2.plot([nz_body_y + NOZZLE_BODY_H / 2, nz_body_y + NOZZLE_BODY_H / 2 + dyd],
                  [nz_tip_z, FLOOR_LOCAL + 2],
                  color=C_WATER, lw=0.8, alpha=0.5, zorder=9.3)
-    leader(ax2, nz_barb_y + 2, pipe_cz, nz_barb_y + 30, pipe_cz - 15,
+    leader(ax2, nz_barb_y + 2, pipe_cz, nz_barb_y + 30, pipe_cz - 20,
            f"FLAT-FAN NOZZLE ×{N_NOZZLES}\n(SIDE-TAP BARB)",
-           fs=4.5, color=C_NOZZLE, font=FONT, zorder=15, bbox=LBL_BG)
+           fs=4.5, color=C_NOZZLE, font=FONT, zorder=15)
 
     # ── Detail C callout ─────────────────────────────────────────────────
     ax2.add_patch(Circle((wheel1_yd, WHEEL_AXLE_Z), WHEEL_DIA / 2 + 8,

@@ -761,14 +761,24 @@ def draw_sheet2():
     nz_tip_z = pipe_cz - NOZZLE_BODY_W          # tip drops below the poly
     ax2.add_patch(Rectangle((nz_body_y, nz_tip_z), NOZZLE_BODY_H, pipe_cz - nz_tip_z,
                   fc=C_NOZZLE, ec=C_FRAME, lw=1.0, zorder=9.2))
-    # down-and-in flat-fan spray toward the tray floor
-    for dyd in (-40, 10):
-        ax2.plot([nz_body_y + NOZZLE_BODY_H / 2, nz_body_y + NOZZLE_BODY_H / 2 + dyd],
-                 [nz_tip_z, FLOOR_LOCAL + 2],
-                 color=C_WATER, lw=0.8, alpha=0.5, zorder=9.3)
-    leader(ax2, nz_barb_y + 2, pipe_cz, nz_barb_y + 30, pipe_cz - 20,
+    # Flat-fan spray shown as a symmetric 45° fan triangle: apex at the nozzle tip, base
+    # on the tray floor — three blue lines (the two fan edges + the wetted base line).
+    spray_apex_x = nz_body_y + NOZZLE_BODY_H / 2
+    spray_base_z = FLOOR_LOCAL
+    spray_half = (nz_tip_z - spray_base_z) * np.tan(np.radians(22.5))   # 45° included angle
+    spray_lx, spray_rx = spray_apex_x - spray_half, spray_apex_x + spray_half
+    for _ex in (spray_lx, spray_rx):                                    # two fan edges
+        ax2.plot([spray_apex_x, _ex], [nz_tip_z, spray_base_z],
+                 color=C_WATER, lw=1.1, alpha=0.75, zorder=9.3)
+    ax2.plot([spray_lx, spray_rx], [spray_base_z, spray_base_z],        # wetted base line
+             color=C_WATER, lw=1.1, alpha=0.75, zorder=9.3)
+    leader(ax2, spray_apex_x, (nz_tip_z + spray_base_z) / 2,
+           spray_rx + 30, spray_base_z - 16,
+           "45° SPRAY FAN",
+           fs=4.5, color=C_BLUE, font=FONT, zorder=15, bbox=LBL_BG)
+    leader(ax2, nz_barb_y + 2, pipe_cz, nz_barb_y + 30, pipe_cz - 18,
            f"FLAT-FAN NOZZLE ×{N_NOZZLES}\n(SIDE-TAP BARB)",
-           fs=4.5, color=C_NOZZLE, font=FONT, zorder=15)
+           fs=4.5, color=C_NOZZLE, font=FONT, zorder=15, bbox=LBL_BG)
 
     # ── Detail C callout ─────────────────────────────────────────────────
     ax2.add_patch(Circle((wheel1_yd, WHEEL_AXLE_Z), WHEEL_DIA / 2 + 8,

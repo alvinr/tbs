@@ -1083,7 +1083,7 @@ def sheet3():
     # ── View window (X 4250 → IBC stack, Yd 0 → C_WID) ───────────────────────
     X_LO = WK_L_X - 520     # wide left gutter so the cleat/plate callouts clear the beam
     X_HI = IBC_COL_X + IBC_W + 20
-    Y_LO = -150
+    Y_LO = -1050            # extra room below the plan for the notes block (drops clear of the IBC ghost)
     Y_HI = C_WID + 120
 
     fig, ax = plt.subplots(figsize=(14, 10))
@@ -1197,7 +1197,7 @@ def sheet3():
         "5. ZERO floor contact, ZERO roof penetrations —",
         "   replaces the ceiling-hung hangers.",
     ]
-    draw_notes(ax, notes, (IBC_COL_X + 40), (C_WID * 0.46),
+    draw_notes(ax, notes, (IBC_COL_X + 40), (-90),
                spacing=(52), fs=6.5, width=(IBC_W - 60), font=FONT)
 
     # ── Title block ─────────────────────────────────────────────────────────

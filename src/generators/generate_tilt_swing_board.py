@@ -491,9 +491,9 @@ for side_x in [left_x - 16, right_x + 16]:
 # Dimensions
 draw_dim_h(ax1, left_x, right_x, frame_y_top + 96, '600mm (FULL WIDTH)',
            above=True, fs=5, offset=24)
-draw_dim_v(ax1, left_x - 80, frame_y_bot, frame_y_top, '40',
+draw_dim_v(ax1, left_x - 80, frame_y_bot, frame_y_top, '40mm',
            fs=5, offset=24)
-draw_dim_v(ax1, left_x - 80, carrier_y_bot, carrier_y_top, '25',
+draw_dim_v(ax1, left_x - 80, carrier_y_bot, carrier_y_top, '25mm',
            fs=5, offset=24)
 draw_dim_h(ax1, cx_d - bore_hw_d, cx_d + bore_hw_d, carrier_y_bot - 80,
            f'Ø{TSB01_BORE} BORE', above=False, fs=5, offset=24)
@@ -735,7 +735,7 @@ draw_dim_h(ax2, or_left - frame_ctx_w, or_right + frame_ctx_w, or_top + 24,
            f'Ø{BRG_OD} OD', above=True, fs=5, offset=7.2)
 draw_dim_h(ax2, cx2c - s1b(BRG_ID/2), cx2c + s1b(BRG_ID/2), or_bot - 36,
            f'Ø{BRG_ID} BORE', above=False, fs=5, offset=7.2)
-draw_dim_v(ax2, or_right + frame_ctx_w + 20, or_bot, or_top, f'{BRG_W} WIDE', right=True, fs=5, offset=7.2)
+draw_dim_v(ax2, or_right + frame_ctx_w + 20, or_bot, or_top, f'{BRG_W}mm WIDE', right=True, fs=5, offset=7.2)
 
 leader(ax2, ptfe_right_x, cy2c,
        cx2c + 170, cy2c + 50,
@@ -973,7 +973,7 @@ ax3.text(cx3a, cy3a - s2(BELL_FREE) - carr_bar_h/2,
 
 # Dimensions
 draw_dim_v(ax3, cx3a + s2(BELL_OD/2) + 30, cy3a - s2(BELL_FREE), cy3a,
-           f'{BELL_FREE} FREE LEN', right=True, fs=5, offset=9)
+           f'{BELL_FREE}mm FREE LEN', right=True, fs=5, offset=9)
 draw_dim_h(ax3, cx3a - s2(BELL_OD/2), cx3a + s2(BELL_OD/2), cy3a + frame_bar_h + 28,
            f'OD Ø{BELL_OD}', above=True, fs=5, offset=9)
 draw_dim_h(ax3, cx3a - s2(BELL_ID/2), cx3a + s2(BELL_ID/2),
@@ -1073,7 +1073,7 @@ ax3.text(cx3c, cy3c + sk(KNOB_D/2) + 10, '"TILT +"', fontsize=5, ha='center',
          color='#333333', style='italic', zorder=10)
 
 draw_dim_h(ax3, cx3c - sk(KNOB_H/2), cx3c + sk(KNOB_H/2),
-           cy3c - sk(KNOB_D/2) - 24, f'{KNOB_H} WIDE', above=False, fs=5, offset=6)
+           cy3c - sk(KNOB_D/2) - 24, f'{KNOB_H}mm WIDE', above=False, fs=5, offset=6)
 draw_dim_v(ax3, cx3c + sk(KNOB_H/2) + 24, cy3c - sk(KNOB_D/2), cy3c + sk(KNOB_D/2),
            f'Ø{KNOB_D}', right=True, fs=5, offset=6)
 

@@ -225,7 +225,7 @@ def draw_sheet1():
 
     # ── Dimensions ───────────────────────────────────────────────────────────
     # Frame outer dimension
-    draw_dim_h(ax, cx - half, cx + half, cy - half - 30, '600', above=False, fs=6, offset=8)
+    draw_dim_h(ax, cx - half, cx + half, cy - half - 30, '600mm', above=False, fs=6, offset=8)
 
     # Right-side leaders (top to bottom)
     leader(ax, cx + bolt_r * 0.924, cy + bolt_r * 0.383,

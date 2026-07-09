@@ -853,8 +853,11 @@ def sheet1():
             backgroundcolor="#FFFFFF", fontweight="bold", **FONT, zorder=9)
     draw_dim_v(ax, WXL - 40, NY, WW,
                f"{WW}mm", offset=50, fs=6, right=False, font=FONT)
-    draw_dim_h(ax, WXL, WXR, WW + 30,
-               f"{WXR - WXL}mm BUMP-OUT", offset=50, fs=6, font=FONT)
+    # Dimension the ACTUAL drawn bump-out (snapped to the widened-bracket ribs WXL_B..WXR_B),
+    # not the un-snapped nominal WXL..WXR — otherwise the extension lines and value (1114mm)
+    # overshoot the deck edges that are really drawn.
+    draw_dim_h(ax, WXL_B, WXR_B, WW + 30,
+               f"{int(round(WXR_B - WXL_B))}mm BUMP-OUT", offset=50, fs=6, font=FONT)
 
     # EP + battery ghost outlines (wall-mounted equipment that drives bump-out)
     C_EQUIP_GHOST = "#808080"

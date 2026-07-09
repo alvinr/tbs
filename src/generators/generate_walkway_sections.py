@@ -534,10 +534,13 @@ def sheet5():
     ax = fig.add_axes([0.07, 0.06, 0.89, 0.87])
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
     ax.set_xlim(X_LO, X_HI); ax.set_ylim(Z_LO, Z_HI); ax.set_aspect("equal"); ax.axis("off")
-    ax.text((X_LO + X_HI) / 2, Z_HI - 8, "SECTION F-F · THROUGH THE FAR CANTILEVER",
-            ha="center", va="top", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
-    ax.text((X_LO + X_HI) / 2, Z_HI - 40, "X–Z elevation, looking along +Yd at Yd≈1286 (far cantilever arm / IBC upright) · 1:1",
-            ha="center", va="top", fontsize=7.5, color=C_DIM, **FONT)
+    # Far upright + IBC ghost rise to the top of the drawing area, so place the title/
+    # subtitle in the figure margin ABOVE the axes (axes top = 0.06 + 0.87 = 0.93).
+    _tcx = 0.07 + 0.89 / 2   # horizontal center of the axes in figure coords
+    fig.text(_tcx, 0.972, "SECTION F-F · THROUGH THE FAR CANTILEVER",
+             ha="center", va="top", fontsize=11, fontweight="bold", color=C_OUT, **FONT)
+    fig.text(_tcx, 0.945, "X–Z elevation, looking along +Yd at Yd≈1286 (far cantilever arm / IBC upright) · 1:1",
+             ha="center", va="top", fontsize=7.5, color=C_DIM, **FONT)
 
     _rect(ax, X_LO, -40, X_HI - X_LO, 40, C_FLOOR, lw=1.0, hatch="////", z0=2)                 # floor
     # tray — CUT here too (Yd1286 is inside the tray Yd80-2280): basin + wash water + right rim

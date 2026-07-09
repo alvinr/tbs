@@ -684,7 +684,7 @@ def sheet1():
     # so they clear the panel swing sweep at the door end.
     # Right corners: BUTT JOINT — right walkway is the cantilever rectangle (same 300mm width).
     C_WK = "#D0C8B8"
-    WK_ALPHA = 0.6
+    WK_ALPHA = 0.3   # grating hatch at half the old alpha (0.6) — keeps the plan readable
     W = WALKWAY_W
 
     LX  = WALKWAY_LEFT_X;   LXR = LX + W

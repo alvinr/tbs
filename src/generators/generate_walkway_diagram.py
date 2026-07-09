@@ -1082,8 +1082,9 @@ def sheet3():
 
     # ── View window (X 4250 → IBC stack, Yd 0 → C_WID) ───────────────────────
     X_LO = WK_L_X - 520     # wide left gutter so the cleat/plate callouts clear the beam
-    X_HI = IBC_COL_X + IBC_W + 20
-    Y_LO = -1050            # extra room below the plan for the notes block (drops clear of the IBC ghost)
+    PLAN_X_R = IBC_COL_X + IBC_W + 20    # plan right edge — walls + full-width dim stop here
+    X_HI = IBC_COL_X + 2 * IBC_W + 130    # extended right: the notes go in a clean column past the IBC ghost
+    Y_LO = -150
     Y_HI = C_WID + 120
 
     fig, ax = plt.subplots(figsize=(14, 10))
@@ -1096,7 +1097,7 @@ def sheet3():
 
     # ── Side walls (Yd=0 near, Yd=C_WID far) ─────────────────────────────────
     for wy in [0, C_WID]:
-        ax.plot([(X_LO), (X_HI)], [(wy), (wy)],
+        ax.plot([(X_LO), (PLAN_X_R)], [(wy), (wy)],
                 color=C_OUT, lw=2.0, zorder=3)
     ax.text((WK_L_X), (0 - 55), "NEAR WALL", ha="left", va="center",
             fontsize=6, color=C_OUT, **FONT)
@@ -1180,24 +1181,26 @@ def sheet3():
     # ── Dimensions ───────────────────────────────────────────────────────────
     draw_dim_h(ax, (WK_L_X), (WK_R_X), (-90),
                f"{WALKWAY_W}mm", offset=(9), fs=7, above=False, font=FONT)
-    draw_dim_v(ax, (X_HI - 25), (0), (C_WID),
-               f"{C_WID}mm", offset=(8), fs=6.5, right=True, font=FONT)
+    # Label to the LEFT (right=False) so it doesn't overhang X_HI — otherwise the dim text
+    # pokes past the axes box and the (transAxes) title block reads narrower than the crop.
+    draw_dim_v(ax, (PLAN_X_R - 25), (0), (C_WID),
+               f"{C_WID}mm", offset=(8), fs=6.5, right=False, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
         "RIGHT WALKWAY — CANTILEVER RECTANGLE:",
-        f"1. Closed 40×40×3 SHS frame: 2 long beams (X={WK_L_X}/{WK_R_X},"
-        f" full {C_WID}mm width) + 2 end beams.",
-        "2. Picked up at mid-span by 2 arms cantilevering off the"
-        f" IBC corridor uprights (Yd {CORRIDOR_YD_NEAR}–{CORRIDOR_YD_FAR});",
+        f"1. Closed 40×40×3 SHS frame: 2 long beams (X={WK_L_X}/{WK_R_X},",
+        f"   full {C_WID}mm width) + 2 end beams.",
+        "2. Picked up at mid-span by 2 arms cantilevering off the",
+        f"   IBC corridor uprights (Yd {CORRIDOR_YD_NEAR}–{CORRIDOR_YD_FAR});",
         "   half-lapped where the long beams cross them.",
-        "3. LEFT corners on wall cleats; RIGHT corners on combined corner plates SHARED with the",
-        "   bottom film rail (BR).",
+        "3. LEFT corners on wall cleats; RIGHT corners on combined",
+        "   corner plates SHARED with the bottom film rail (BR).",
         f"4. Deck {WALKWAY_H}mm; {WALKWAY_GRATE_T}mm grate spans the rectangle.",
         "5. ZERO floor contact, ZERO roof penetrations.",
     ]
-    draw_notes(ax, notes, (IBC_COL_X - 800), (-200),
-               spacing=(52), fs=6.5, width=2350, font=FONT)
+    draw_notes(ax, notes, (IBC_COL_X + IBC_W + 90), (C_WID * 0.62),
+               spacing=(52), fs=6.5, width=(IBC_W - 60), font=FONT)
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 9",

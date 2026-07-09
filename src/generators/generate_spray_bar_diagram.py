@@ -2039,7 +2039,7 @@ def draw_sheet7():
            "T-HANDLE", fs=5, color=C_FRAME, font=FONT, zorder=20)
     leader(ax_pole, 0, pole_z0, p_xl + 40, 80,
            "BALL JOINT +\nMANIFOLD\n(BEAM TOP)", fs=5, color="#A06000", font=FONT, zorder=20,)
-    draw_dim_v(ax_pole, p_xl + 34, zt_zs[0], zt_zs[1], "~200", offset=2, fs=5, font=FONT)
+    draw_dim_v(ax_pole, p_xl + 34, zt_zs[0], zt_zs[1], "~200mm", offset=2, fs=5, font=FONT)
 
     ax_pole.text((p_xl + p_xr) / 2, 1002, "FEED POLE — HOSE BUNDLING",
                  ha="center", va="top", fontsize=7, color="#CC6600",

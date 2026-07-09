@@ -207,7 +207,7 @@ def draw_sheet1():
     dim_y_top2 = cy2 + hw + 112
     draw_dim_h(ax1, cx2 - hw, cx2 + hw, dim_y_top2, '600mm', above=True, fs=6, offset=64)
     draw_dim_h(ax1, cx2 - trap_h, cx2 + trap_h, dim_y_top2 - 48,
-               '490 (LIGHT TRAP)', above=True, fs=5, offset=64)
+               '490mm (LIGHT TRAP)', above=True, fs=5, offset=64)
 
     leader(ax1, cx2 + s(PH_BORE/2)*0.6, cy2 + s(PH_BORE/2)*0.6,
            cx2 + 112, cy2 + 96, 'Ø90\nBORE THRU', fs=5.5, color=C_DIM)
@@ -383,7 +383,7 @@ def draw_sheet2():
 
     ax2.text(fr_right + 24, scy + fr_half*0.6, 'ITEM 1\nWALL FRAME\n6mm STEEL', ha='left',
              va='center', fontsize=5.5, color='black')
-    draw_dim_h(ax2, fr_left, fr_right, scy + fr_half + 32, '6', above=True, fs=5.5, offset=7.2)
+    draw_dim_h(ax2, fr_left, fr_right, scy + fr_half + 32, '6mm', above=True, fs=5.5, offset=7.2)
 
     # Pinhole Plate
     pl_left  = fr_right
@@ -530,7 +530,7 @@ def draw_sheet2():
             fc='#CCCCCC', ec=C_OUT, lw=0.8, zorder=6))
 
     draw_dim_h(ax2, face_x - sb(PH_CB_DEP), face_x, dby + cb_show_half + 24,
-               '3.0 DEEP', above=True, fs=5.5, offset=6)
+               '3.0mm DEEP', above=True, fs=5.5, offset=6)
     ax2.annotate('', xy=(face_x, dby + cb_show_half),
                  xytext=(face_x, dby - cb_show_half),
                  arrowprops=dict(arrowstyle='<->', color=C_DIM, lw=LW_DIM, mutation_scale=5))
@@ -608,9 +608,9 @@ def draw_sheet2():
     ax2.text(plate_x + step_depth + 8, dcy - 40, 'NO LIGHT\nPATH', ha='left',
              fontsize=4.8, color='#CC0000')
 
-    draw_dim_h(ax2, plate_x, plate_x + step_depth, dcy - 120, '5.0', above=False,
+    draw_dim_h(ax2, plate_x, plate_x + step_depth, dcy - 120, '5.0mm', above=False,
                fs=5.5, offset=6)
-    draw_dim_v(ax2, plate_x + step_depth + 32, dcy, dcy + step_width, '5.0',
+    draw_dim_v(ax2, plate_x + step_depth + 32, dcy, dcy + step_width, '5.0mm',
                right=True, fs=5.5, offset=6)
 
     ax2.text(dcx, dcy - 152, 'DETAIL C — LIGHT TRAP (10:1)', ha='center', fontsize=6.5,

@@ -423,7 +423,7 @@ def sheet3():
 
     # ── Dimensions ───────────────────────────────────────────────────────────
     draw_dim_v(ax, X_HI - 34, BRAIL_Z, RAIL_ZB, f"{RAIL_ZB - BRAIL_Z}mm\n(rail→rail)", offset=5, fs=5.4, font=FONT)
-    draw_dim_v(ax, ARM_X0 - 22, 0, ARM_ZB, f"{ARM_ZB}\nunder arm", offset=5, fs=5.4, font=FONT)
+    draw_dim_v(ax, ARM_X0 - 22, 0, ARM_ZB, f"{ARM_ZB}mm\nunder arm", offset=5, fs=5.4, font=FONT)
     draw_dim_h(ax, PROC_TRAY_X_R, UP_X0, 30, f"{UP_X0 - PROC_TRAY_X_R}mm gap\n(rim→upright)", offset=4, fs=5.2, above=False, font=FONT)
 
     notes = [

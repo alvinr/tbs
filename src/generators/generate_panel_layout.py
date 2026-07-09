@@ -666,7 +666,7 @@ def _corridor_cross_section():
             ha="center", va="center",
             fontsize=4.0, color=C_PLY_EC, fontweight="bold", zorder=10, **FONT)
     draw_dim_h(ax, cs_yd(IBC_NEAR_END), cs_yd(CORRIDOR_FAR), cs_z(Z_CS_MAX + 10),
-               "270 CORRIDOR", offset=3.2, fs=5.5, color=C_DIM, font=FONT)
+               "270mm CORRIDOR", offset=3.2, fs=5.5, color=C_DIM, font=FONT)
     ax.text(cs_yd(YD_MAX / 2), cs_z(-15) - 14.4,
             "Yd (mm from pinhole wall) →", ha="center", va="top",
             fontsize=5.5, color=C_DIM, zorder=10, **FONT)

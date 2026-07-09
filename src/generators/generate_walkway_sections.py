@@ -46,6 +46,8 @@ C_BLUE  = "#2979B8"
 C_BROWN = "#8A6A3E"
 FONT    = {"fontfamily": "monospace"}
 
+LBL_BG   = dict(facecolor="white", edgecolor="none", alpha=0.85, pad=1.0)
+
 OD = 21.0
 
 # Right-walkway support (long beams run in Yd → cut as boxes at these X, Z80-115).
@@ -551,7 +553,7 @@ def sheet5():
     ax.text(tx_l + 60, 30, "processing tray (basin cut) + right-end rim", fontsize=5.6, ha="left", va="center", color="#3C5A6E", **FONT)
     # IBC-4 (Waste, far column) tote just beyond the gap — ghost
     _rect(ax, IBC_COL_X, 0, X_HI - IBC_COL_X, Z_HI - Z_LO, "#777777", ec=C_GHOST, lw=0.9, z0=1, alpha=0.12, ls="--")
-    ax.text((IBC_COL_X + X_HI) / 2, 660, "IBC-4 tote\n(behind, Yd≥1316)", fontsize=6, ha="center", va="center", color=C_GHOST, zorder=2, **FONT)
+    ax.text((IBC_COL_X + X_HI) /2, 680, "IBC-4 tote", fontsize=6, ha="center", va="center", color=C_GHOST, zorder=2, **FONT)
     # available routing space (corridor past the upright)
     _rect(ax, UP_X1, BRAIL_Z, X_HI - UP_X1, RAIL_ZB - BRAIL_Z, "#DCEFDD", ec="#6FAF72", lw=0.8, z0=3, alpha=0.5, ls=(0, (4, 2)))
     ax.text((UP_X1 + X_HI) / 2, 340, "AVAILABLE ROUTING\nSPACE (corridor)", fontsize=6.2, ha="center", va="center", color="#3C7A40", fontweight="bold", zorder=4, **FONT)
@@ -560,8 +562,8 @@ def sheet5():
     for bx in BEAM_XS:
         _rect(ax, bx, 80, BEAM_W, DECK_ZB - 80, C_STEEL, ec="#3A3A40", lw=1.0, z0=6, hatch="\\\\\\\\")
     _rect(ax, WALKWAY_RIGHT_X, DECK_ZB, WALKWAY_RIGHT_W, WALKWAY_GRATE_T, C_GRATE, lw=1.0, z0=7)
-    leader(ax, 4500, ARM_ZB, 4358, -58, "walkway support: far cantilever arm (Z70–115)\n+ long bearers (Z80–115, hatched)", color="#3A3A40", fs=5.2, ha="left", va="top", arrow_style="-|>", font=FONT)
-    leader(ax, WALKWAY_RIGHT_X + 90, WALKWAY_H, 4358, 250, "right walkway grate deck (Z115–130)", color=C_OUT, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
+    leader(ax, 4500, ARM_ZB, 4358, 50, "walkway support: far cantilever arm (Z70–115)\n+ long bearers (Z80–115, hatched)", color="#3A3A40", fs=5.2, ha="left", va="top", arrow_style="-|>", font=FONT)
+    leader(ax, WALKWAY_RIGHT_X + 90, WALKWAY_H, 4358, 175, "right walkway grate deck (Z115–130)", color=C_OUT, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
     # far upright + far foot (also under tray) + M12 + bottom rail + retaining bar
     _rect(ax, UP_X0, 0, UP_X1 - UP_X0, Z_HI - Z_LO, C_STEEL, lw=1.0, z0=6)                     # far upright X4654-4704
     _rect(ax, BRAIL_X0, 0, X_HI - BRAIL_X0, BRAIL_Z, C_STEEL, lw=0.9, z0=5)                    # bottom ring rail
@@ -569,9 +571,9 @@ def sheet5():
     for mx in M12_XS:
         _rect(ax, mx - 6, 0, 12, 16, "#6A6A72", lw=0.5, z0=9)
     _rect(ax, RAIL_X0, RAIL_ZB, RAIL_X1 - RAIL_X0, RAIL_ZT - RAIL_ZB, C_STEEL, lw=0.9, z0=7)   # retaining bar
-    leader(ax, (UP_X0 + UP_X1) / 2, 500, UP_X1 + 22, 540, "corridor deep-box FAR upright\n(50×50 RHS, X4654)", color=C_DIM, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
-    leader(ax, FOOT_X0 + 16, FOOT_ZT, PROC_TRAY_X_R - 175, -60, "far floor foot 150×150×12 —\nLEFT EDGE EXTENDS 25mm UNDER THE TRAY", color="#B03030", fs=5.5, ha="left", va="top", arrow_style="-|>", font=FONT)
-    leader(ax, (RAIL_X0 + RAIL_X1) / 2, RAIL_ZT, RAIL_X1 + 24, RAIL_ZT + 40, "retaining bar (ring rail) Z560", color=C_DIM, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
+    leader(ax, (UP_X0 + UP_X1) / 2, 500, UP_X1 + 22, 540, "corridor deep-box FAR upright\n(50×50 RHS)", color=C_DIM, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
+    leader(ax, FOOT_X0 + 16, FOOT_ZT, PROC_TRAY_X_R - 150, 35, "far floor foot 150×150×12 —\nLEFT EDGE EXTENDS 25mm UNDER THE TRAY", color="#B03030", fs=5.5, ha="left", va="top", arrow_style="-|>", font=FONT)
+    leader(ax, (RAIL_X0 + RAIL_X1) / 2, RAIL_ZT, RAIL_X1 + 54, RAIL_ZT + 40, "retaining bar (ring rail)", color=C_DIM, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
     # nearest corridor lane (blue SV-01 → DV-01 return, Yd1241) — ghost, -Yd of this plane
     ax.add_patch(Circle((4772, 235), OD / 2, facecolor="none", edgecolor=C_BLUE, lw=1.4, ls="--", zorder=9))
     ax.text(4772, 219, "blue SV-01 → DV-01 return\n(Yd1241, ghost, −Yd)", fontsize=4.8, ha="center", va="top", color=C_BLUE, zorder=10, **FONT)
@@ -612,7 +614,7 @@ def sheet6():
              f"longitudinal Yd–Z at the sump column (X≈{Xd}) · vertical exaggeration {EXAG:.0f}× · dual-axis 1:200 fall",
              ha="center", va="top", fontsize=7, color=C_DIM, **FONT)
     axA.add_patch(Rectangle((YL, zx(-25)), YH - YL, zx(25), fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="////", zorder=2))
-    axA.text(YL + 20, zx(-14), "container floor (Z0)", fontsize=6, ha="left", va="center", color=C_DIM, **FONT)
+    axA.text(YL + 20, zx(-14), "container floor", fontsize=6, ha="left", va="center", color=C_DIM, bbox=LBL_BG, **FONT)
     yds = [PROC_TRAY_YD_NEAR + i * PROC_TRAY_D / 40 for i in range(41)]
     ptop = [tray_floor_z(Xd, y) for y in yds]
     pbot = [t - 2 for t in ptop]
@@ -623,10 +625,10 @@ def sheet6():
     axA.add_patch(Rectangle((PROC_TRAY_YD_FAR, zx(ptop[-1])), 6, zx(PROC_TRAY_RIM), fc=C_TRAY, ec=C_OUT, lw=1.0, zorder=5))
     axA.add_patch(Rectangle((PROC_TRAY_YD_NEAR, zx(0)), PROC_TRAY_SUMP_W, zx(PROC_TRAY_SUMP_Z),
                             fc="#BFD8EA", ec=C_OUT, lw=1.0, zorder=6))
-    leader(axA, PROC_TRAY_YD_NEAR + PROC_TRAY_SUMP_W / 2, zx(4), PROC_TRAY_YD_NEAR + 340, zx(46),
+    leader(axA, PROC_TRAY_YD_NEAR + PROC_TRAY_SUMP_W / 2, zx(4), PROC_TRAY_YD_NEAR + 20, zx(46),
            f"corner SUMP (low point) — well {PROC_TRAY_SUMP_Z}mm deep,\nbottom rests ON the container floor (Z0)",
            color="#2A6", fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
-    leader(axA, 1500, zx(ptop[26] - 1), 1500, zx(ptop[26] - 22),
+    leader(axA, 1500, zx(ptop[26] - 1), 1500, zx(ptop[26] + 22),
            "tapered HDPE shim ramp\n(carries the welded pan)", color=C_DIM, fs=6, ha="center", va="top",
            arrow_style="-|>", font=FONT)
     leader(axA, 1900, zx(ptop[33] + 2), 1900, zx(ptop[33] + 34),
@@ -660,18 +662,11 @@ def sheet6():
     cx = WALKWAY_LEFT_X + WALKWAY_W                      # 570 — beam inner end at the walkway edge
     fz = tray_floor_z(cx, ydc)
     top_new = spray_beam_top_z(cx, ydc)
-    top_old = fz + 58                                    # old Ø50 / 40×40 assembly
-    # old envelope (ghost)
-    axB.add_patch(Rectangle((cx - 40, zx(fz)), 150, zx(top_old - fz), fc="none", ec="#B03030",
-                            lw=0.9, ls=(0, (4, 2)), zorder=8))
-    axB.text(cx + 190, zx(top_old), "old Ø50 / 40×40 carriage\n(top Z%.0f → only %.0fmm clear)" % (top_old, DECK_ZB - top_old),
-             fontsize=5.6, ha="left", va="center", color="#B03030", **FONT)
-    # new (shrunk) carriage envelope
     axB.add_patch(Rectangle((cx - 40, zx(fz)), 150, zx(top_new - fz), fc="#C9D6E4", ec=C_OUT, lw=1.1, zorder=9))
     axB.text(cx + 55, zx(fz + (top_new - fz) / 2), "Ø32 wheels +\n40×25 SS beam", fontsize=5.6,
              ha="left", va="center", color=C_OUT, **FONT)
     # clearance dimension (new)
-    draw_dim_v(axB, cx + 130, zx(top_new), zx(DECK_ZB), f"{DECK_ZB - top_new:.0f}mm CLEAR", offset=3, fs=7, font=FONT)
+    draw_dim_v(axB, cx + 140, zx(top_new), zx(DECK_ZB), f"{DECK_ZB - top_new:.0f}mm CLEAR", offset=3, fs=7, right=True, font=FONT)
     leader(axB, PROC_TRAY_X_L + 3, zx(ttop[0] + PROC_TRAY_RIM), PROC_TRAY_X_L + 380, zx(ttop[0] + PROC_TRAY_RIM + 26),
            f"pan/rim highest at the far-left corner\n(floor Z{ttop[0]:.0f}, rim top Z{tray_rim_top_z(PROC_TRAY_X_L, ydc):.0f})",
            color="#3C5A6E", fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)

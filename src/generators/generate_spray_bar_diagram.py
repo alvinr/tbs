@@ -42,6 +42,8 @@ C_WHEEL  = "#606060"
 C_NYLON  = "#E8E0D0"
 C_OPER   = "#555555"
 FONT     = dict(family="monospace")
+# White backing for labels sitting on hatched/patterned surfaces (keeps them legible).
+LBL_BG   = dict(facecolor="white", edgecolor="none", alpha=0.85, pad=1.0)
 
 # ── Gantry carriage geometry (rev10 — low-profile: Ø32 wheels, 40×25 SS RHS) ──
 # The carriage rides the RAISED, dual-axis-sloped tray floor.  The detail/section
@@ -553,7 +555,7 @@ def draw_sheet2():
     leader(ax2, (tray_yd_start + C_YD_HI) / 2, shim_top / 2,
            (tray_yd_start + C_YD_HI) / 2 + 20, shim_top / 2 - 22,
            "TAPERED HDPE SHIM RAMP\n(tilts the whole pan · dual-axis 1:200)",
-           fs=5.2, color=C_DIM, font=FONT, zorder=15)
+           fs=5.2, color=C_DIM, font=FONT, zorder=15, bbox=LBL_BG)
 
     # ── Near walkway grating (Yd=0-300) ──────────────────────────────────
     wk_yd_l = 0
@@ -602,12 +604,16 @@ def draw_sheet2():
            WHEEL_AXLE_Z,
            wheel2_yd + WHEEL_DIA / 2 + 25, WHEEL_AXLE_Z - 15,
            "Ø10mm SS\nAXLE PIN",
-           fs=6, color=C_DIM, font=FONT, zorder=15)
+           fs=6, color=C_DIM, font=FONT, zorder=15, bbox=LBL_BG)
 
-    leader(ax2, wheel1_yd - WHEEL_DIA / 2, WHEEL_AXLE_Z,
-           wheel1_yd - WHEEL_DIA / 2 - 25, WHEEL_AXLE_Z - 15,
+    # NYLON WHEEL + SADDLE CLAMP (below) both label the left wheel (detail C); flow their
+    # text LEFT into the open floor zone and stack them clear of each other — the raised-tray
+    # shim crosshatch (starts Yd=PROC_TRAY_YD_NEAR) now reaches under the wheel, so on-hatch
+    # labels get a white backing (LBL_BG).
+    leader(ax2, wheel1_yd - WHEEL_DIA / 2, WHEEL_AXLE_Z + 4,
+           wheel1_yd - WHEEL_DIA / 2 - 8, WHEEL_AXLE_Z + 14,
            f"Ø{WHEEL_DIA}mm\nNYLON WHEEL",
-           fs=6, color=C_WHEEL, font=FONT, zorder=15)
+           fs=6, color=C_WHEEL, ha="right", font=FONT, zorder=15, bbox=LBL_BG)
 
     # ── Carriage plate 2mm above wheel axle ──────────────────────────
     brk_t_c = 5
@@ -668,10 +674,10 @@ def draw_sheet2():
             ax2.add_patch(Rectangle((bolt_yd - 2.5, plate_bot_z - foot_t - 3), 5, 3,
                           fc=C_BOLT, ec=C_FRAME, lw=0.5, zorder=11))
 
-    leader(ax2, wheel1_yd - sad_ro, WHEEL_AXLE_Z - sad_t, wheel1_yd - 30,
+    leader(ax2, wheel1_yd - sad_ro, WHEEL_AXLE_Z - sad_t, wheel1_yd - 24,
            WHEEL_AXLE_Z - 18,
            "SS SADDLE CLAMP\n(AXLE RETENTION)",
-           fs=6, color=C_BOLT, font=FONT, zorder=15)
+           fs=6, color=C_BOLT, ha="right", font=FONT, zorder=15, bbox=LBL_BG)
 
     # ── Beam cross-section: 40×25 304-SS RHS with SIDE-mounted poly manifold ──
     ax2.add_patch(Rectangle((c_beam_l, BEAM_Z_BOT), BEAM_W, BEAM_H,
@@ -696,7 +702,7 @@ def draw_sheet2():
 
     ax2.text(CARRIAGE_YD_CENTER, BEAM_Z_TOP + 4,
              "40×25×3mm 304-SS RHS\n(laid flat — low profile)", ha="center", va="bottom",
-             fontsize=6, color=C_FRAME, fontweight="bold", **FONT, zorder=15)
+             fontsize=6, color=C_FRAME, fontweight="bold", **FONT, zorder=15, bbox=LBL_BG)
 
     # ── Beam clamp: a bottom plate under the beam + a top plate over it, drawn
     #    together by bolts each side with a solid spacer block — sandwiches the
@@ -734,10 +740,12 @@ def draw_sheet2():
                                (bolt_yd - 2.5, BEAM_Z_BOT)],
                       closed=True, fc=C_BOLT, ec=C_FRAME, lw=0.4, zorder=11))
 
-    leader(ax2, CARRIAGE_YD_CENTER + clp_half, BEAM_Z_BOT - clp_t,
-           CARRIAGE_YD_CENTER + clp_half + 20, BEAM_Z_BOT - 24,
+    # Point to the LEFT countersunk bolt and carry the text out to the open floor on the
+    # left — the right-hand pocket it used to sit in is now under the shim crosshatch.
+    leader(ax2, CARRIAGE_YD_CENTER - clp_half, BEAM_Z_BOT - clp_t,
+           CARRIAGE_YD_CENTER - clp_half - 26, BEAM_Z_BOT - 16,
            "M6 COUNTERSUNK (FLUSH\nUNDERSIDE — CLEARANCE)",
-           fs=4.5, color=C_BOLT, font=FONT, zorder=15)
+           fs=4.5, color=C_BOLT, ha="right", font=FONT, zorder=15, bbox=LBL_BG)
     leader(ax2, CARRIAGE_YD_CENTER - clp_half, BEAM_Z_TOP + clp_t / 2,
            CARRIAGE_YD_CENTER - clp_half - 22, BEAM_Z_TOP + 12,
            "SS CLAMP PLATES\n(TOP + BOTTOM)\n+ SPACER + BOLTS",
@@ -758,9 +766,9 @@ def draw_sheet2():
         ax2.plot([nz_body_y + NOZZLE_BODY_H / 2, nz_body_y + NOZZLE_BODY_H / 2 + dyd],
                  [nz_tip_z, FLOOR_LOCAL + 2],
                  color=C_WATER, lw=0.8, alpha=0.5, zorder=9.3)
-    leader(ax2, nz_barb_y + 2, pipe_cz, nz_barb_y + 30, pipe_cz - 20,
+    leader(ax2, nz_barb_y + 2, pipe_cz, nz_barb_y + 30, pipe_cz - 15,
            f"FLAT-FAN NOZZLE ×{N_NOZZLES}\n(SIDE-TAP BARB)",
-           fs=4.5, color=C_NOZZLE, font=FONT, zorder=15)
+           fs=4.5, color=C_NOZZLE, font=FONT, zorder=15, bbox=LBL_BG)
 
     # ── Detail C callout ─────────────────────────────────────────────────
     ax2.add_patch(Circle((wheel1_yd, WHEEL_AXLE_Z), WHEEL_DIA / 2 + 8,
@@ -885,12 +893,12 @@ def draw_sheet2():
 
     # ── Labels ───────────────────────────────────────────────────────────
     leader(ax2, bj_yd - SOCKET_OD / 2, ball_ctr_z,
-           bj_yd - SOCKET_OD / 2 - 20, ball_ctr_z - 30,
+           bj_yd - SOCKET_OD / 2 - 40, ball_ctr_z,
            f"Ø{BALL_DIA}mm FLANGE-BASE\nBALL JOINT",
            fs=5, color=C_JOINT, font=FONT, zorder=20)
 
     leader(ax2, bj_yd - 19.5, BEAM_Z_TOP + FLANGE_T,
-           bj_yd - 19.5 - 24, BEAM_Z_TOP - 6,
+           bj_yd - 19.5 - 34, BEAM_Z_TOP - 6,
            "4× SELF-TAPPING\nSCREW (FLANGE\n-> BEAM TOP WALL)",
            fs=4.5, color=C_BOLT, font=FONT, zorder=20)
 
@@ -960,7 +968,7 @@ def draw_sheet2():
         "4. Water: SIDE poly manifold → side-tap barb → flat-fan nozzle → spray down-and-in.",
         "5. Tray = welded 304-SS pan, lifted whole on the tapered shim ramp (slope = pan tilt).",
     ]
-    draw_notes(ax2, cs_notes, C_YD_LO + 10, C_Z_HI - 240, spacing=5,
+    draw_notes(ax2, cs_notes, C_YD_LO + 100, C_Z_HI - 240, spacing=5,
                fs=7, font=FONT, width=150)
 
     # ── Title block ──────────────────────────────────────────────────────

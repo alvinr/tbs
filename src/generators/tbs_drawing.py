@@ -564,7 +564,11 @@ def draw_notes(ax, notes, x, y_top, spacing, *, fs=7, title_fs=None,
     rect = mpatches.FancyBboxPatch(
         (box_left_x, box_bot), box_w, box_h,
         boxstyle="square,pad=0", fc="white", ec=border_color,
-        lw=border_lw, zorder=zorder)
+        lw=border_lw, zorder=zorder,
+        # Patches are clipped to the axes by default; a notes box anchored at/near the axes edge would
+        # be cut (only a corner drew) while the unclipped text overflowed. Draw it in full — bbox_inches
+        # ="tight" then includes it — so notes near the edge no longer need per-diagram xlim/ylim surgery.
+        clip_on=False)
     ax.add_patch(rect)
 
 

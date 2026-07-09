@@ -958,8 +958,8 @@ def draw_sheet2():
         "4. Water: SIDE poly manifold → side-tap barb → flat-fan nozzle → spray down-and-in.",
         "5. Tray = welded 304-SS pan, lifted whole on the tapered shim ramp (slope = pan tilt).",
     ]
-    draw_notes(ax2, cs_notes, C_YD_LO + 10, C_Z_HI - 260, spacing=5,
-               fs=7, font=FONT, width=100)
+    draw_notes(ax2, cs_notes, C_YD_LO + 10, C_Z_HI - 240, spacing=5,
+               fs=7, font=FONT, width=150)
 
     # ── Title block ──────────────────────────────────────────────────────
     ax_tb = fig.add_axes([0.04, 0.005, 0.92, 0.06])

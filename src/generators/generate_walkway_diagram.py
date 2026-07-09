@@ -1249,7 +1249,7 @@ def sheet4():
     # Z = vertical axis (0 = floor)
     X_LO = -50
     X_HI = LEFT_WK_R + NEAR_WK_SHOW + 350  # room for near walkway + notes
-    Z_LO = -130
+    Z_LO = -190   # extra room at the bottom so the title block sits clear below the floor
     Z_HI = WALKWAY_H + 110
 
     fig, ax = plt.subplots(figsize=(18, 13))

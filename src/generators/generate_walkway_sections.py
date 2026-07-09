@@ -117,7 +117,7 @@ def sheet1():
     """SECTION B-B — near-end ribbon transitions under the right walkway (X–Z, looking +Yd)."""
     X_CUT = 62
     X_LO, X_HI = 4185, 4770
-    Z_LO, Z_HI = -75, 430
+    Z_LO, Z_HI = -75, 475   # taller header band so the notes box clears the centered subtitle
 
     fig = plt.figure(figsize=(13.5, 10.2))
     ax = fig.add_axes([0.07, 0.07, 0.89, 0.86])
@@ -211,7 +211,7 @@ def sheet1():
         "   lanes to TAP-01 / the SV-01 filtered return, the two brown lanes on\n"
         "   toward the near-rim taps."
     )
-    ax.text(X_LO + 8, Z_HI - 70, notes, fontsize=6.2, ha="left", va="top", color=C_OUT,
+    ax.text(X_LO + 8, Z_HI - 75, notes, fontsize=6.2, ha="left", va="top", color=C_OUT,
             family="monospace", zorder=15,
             bbox=dict(boxstyle="round,pad=0.5", fc="white", ec=C_DIM, lw=0.7))
 
@@ -237,7 +237,7 @@ def sheet2():
     from tbs_constants import PROC_TRAY_X_R as TXR
     Y_CUT = 450   # on a ribbon support station (cp.RIBBON_SUP_YD)
     X_LO, X_HI = 4185, 4770
-    Z_LO, Z_HI = -75, 430
+    Z_LO, Z_HI = -75, 475   # taller header band so the notes box clears the centered subtitle
 
     fig = plt.figure(figsize=(13.5, 10.2))
     ax = fig.add_axes([0.07, 0.07, 0.89, 0.86])
@@ -322,7 +322,7 @@ def sheet2():
         "4. A welded 40×10 cross-brace (top Z90) carries the ribbon at this\n"
         "   station.  The lanes read as RUNS the length of B-B → C-C → D-D."
     )
-    ax.text(X_LO + 8, Z_HI - 70, notes, fontsize=6.2, ha="left", va="top", color=C_OUT,
+    ax.text(X_LO + 8, Z_HI - 65, notes, fontsize=6.2, ha="left", va="top", color=C_OUT,
             family="monospace", zorder=15,
             bbox=dict(boxstyle="round,pad=0.5", fc="white", ec=C_DIM, lw=0.7))
 

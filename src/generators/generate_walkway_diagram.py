@@ -867,7 +867,7 @@ def sheet1():
                             fc="none", ec=C_EQUIP_GHOST, lw=1.0, ls="--",
                             alpha=0.6, zorder=5))
     ax.text(BA_X + BA_W / 2, 60, "BATT", ha="center", va="center",
-            fontsize=5, color=C_EQUIP_GHOST, **FONT, zorder=6, alpha=0.6)
+            fontsize=5, color=C_EQUIP_GHOST, **FONT, bbox=bbox, zorder=6, alpha=0.6)
 
     # ── Spray bar slit in near & far walkways ──────────────────────────────────
     slit_cx = (PROC_OPEN_X_L + PROC_OPEN_X_R) / 2
@@ -909,10 +909,10 @@ def sheet1():
     for strap_x in [EVAP_STOW_X + 100, EVAP_STOW_X + EVAP_W - 100]:
         ax.plot([strap_x, strap_x], [NY - 20, EVAP_STOW_YD + EVAP_D + 30],
                 color="#CC6600", lw=2.0, ls=(0, (3, 2)), alpha=0.7, zorder=8)
-    ax.text(EVAP_STOW_X + EVAP_W + 40, EVAP_STOW_YD + EVAP_D / 2,
+    ax.text(EVAP_STOW_X + EVAP_W + 40, EVAP_STOW_YD + EVAP_D * 0.8,
             "RATCHET\nSTRAPS (×2)\nTO WALL\nBRACKETS",
             ha="left", va="center", fontsize=4.5, color="#CC6600",
-            **FONT, zorder=8)
+            **FONT, bbox=bbox, zorder=8)
 
     # ── Panel swing sweep (dashed red) ───────────────────────────────────────
     # rev10: the cargo panel + drum SWING ~56° about the Ø89 pivot (PIVOT_X, PIVOT_YD),
@@ -935,7 +935,7 @@ def sheet1():
     ax.text(PIVOT_X + 90, PIVOT_YD, "\u00d889 PIVOT", ha="left", va="center",
             fontsize=5.5, color="#CC0000", **FONT, bbox=bbox, zorder=8)
     _mid = sweep_arc[int(len(sweep_arc) * 0.55)]
-    ax.text(_mid[0], _mid[1],
+    ax.text(_mid[0] + 750, _mid[1] + 350,
             f"PANEL SWING SWEEP {int(SWING_LOCK_DEG)}\u00b0\n(keep clear \u2014 left walkway lifts out)",
             ha="center", va="center", fontsize=6, color="#CC0000",
             fontweight="bold", **FONT, zorder=15, alpha=0.85,

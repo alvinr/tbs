@@ -838,7 +838,7 @@ def sheet_dry(components):
                 doc_id="TBS-001 · Weight Distribution",
                 height=0.065)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "weight-analysis-sheet2.png"),
-                dpi=150, bbox_inches="tight", facecolor="white")
+                dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  Sheet 2: Dry — Configured for Transport")
 
@@ -947,7 +947,7 @@ def sheet_ready(components):
                 doc_id="TBS-001 · Weight Distribution",
                 height=0.065)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "weight-analysis-sheet3.png"),
-                dpi=150, bbox_inches="tight", facecolor="white")
+                dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  Sheet 3: Camera Ready Distribution")
 
@@ -986,7 +986,7 @@ def sheet_exhausted(components):
                 doc_id="TBS-001 · Weight Distribution",
                 height=0.065)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "weight-analysis-sheet4.png"),
-                dpi=150, bbox_inches="tight", facecolor="white")
+                dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  Sheet 4: Materials Exhausted Distribution")
 
@@ -1030,7 +1030,7 @@ def sheet_loaded_transport(components):
                 doc_id="TBS-001 · Weight Distribution",
                 height=0.065)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "weight-analysis-sheet5.png"),
-                dpi=150, bbox_inches="tight", facecolor="white")
+                dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  Sheet 5: Loaded Transport (Full Blue IBCs)")
 
@@ -1187,7 +1187,7 @@ def sheet_summary(components):
                 height=0.75)
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "weight-analysis-sheet1.png"),
-                dpi=150, bbox_inches="tight", facecolor="white")
+                dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  Sheet 1: Summary Comparison")
 
@@ -1204,6 +1204,7 @@ def sheet_summary(components):
 # Runs dependency-free (no matplotlib/numpy) so lint.py can gate it via subprocess.
 # ═══════════════════════════════════════════════════════════════════════════
 import re as _re
+from tbs_constants import DIAGRAM_DPI
 
 _REPORT = os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),

@@ -25,6 +25,7 @@ from tbs_constants import (
     DIAGRAMS_DIR,
 )
 from tbs_title_block import title_block
+from tbs_constants import DISTORTION_DPI
 
 # ── Camera constants ──────────────────────────────────────────────────────────
 F = C_WID         # focal length (container interior depth, mm) = 2362
@@ -337,7 +338,7 @@ for cfg in CONFIGS:
                 scale_note="Ray-traced projection",
                 doc_id="TBS-TS01 · Distortion Renders")
     out = os.path.join(DIAGRAMS_DIR, f'tilt-swing-combined-{label.lower()}.png')
-    fig.savefig(out, dpi=120, bbox_inches='tight', facecolor=BG)
+    fig.savefig(out, dpi=DISTORTION_DPI, bbox_inches='tight', facecolor=BG)
     plt.close(fig)
     print(f'  → {out}  Done.')
 
@@ -361,7 +362,7 @@ title_block(ax_tb, "SUMMARY",
             scale_note="Ray-traced projection",
             doc_id="TBS-TS01 · Distortion Renders")
 out_s = os.path.join(DIAGRAMS_DIR, 'tilt-swing-combined-summary.png')
-fig_s.savefig(out_s, dpi=100, bbox_inches='tight', facecolor=BG)
+fig_s.savefig(out_s, dpi=DISTORTION_DPI, bbox_inches='tight', facecolor=BG)
 plt.close(fig_s)
 print(f'  → {out_s}  Done.')
 print()

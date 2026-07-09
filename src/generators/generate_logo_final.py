@@ -21,6 +21,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch, Circle, Rectangle, Ellipse
 from matplotlib.colors import LinearSegmentedColormap
 from tbs_constants import C_WID, PROJECT_ROOT
+from tbs_constants import DIAGRAM_DPI
 
 # ── Vibrant cyanotype palette ─────────────────────────────────────────────────
 PRU_INK   = "#081A32"
@@ -358,7 +359,7 @@ for cx_,cy_ in [(14,14),(86,14),(14,86),(86,86)]:
     ax.plot([cx_,cx_],[cy_,cy_+3.5*sy_], color=PAPER,lw=1.4,alpha=0.6,zorder=9)
 
 _out = os.path.join(PROJECT_ROOT, "logo-final.png")
-fig.savefig(_out, dpi=150, bbox_inches="tight",
+fig.savefig(_out, dpi=DIAGRAM_DPI, bbox_inches="tight",
             facecolor=fig.get_facecolor())
 plt.close(fig)
 print(f"  → {_out}  Done.")

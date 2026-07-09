@@ -24,6 +24,7 @@ from tbs_constants import C_BLUE_IBC, C_EVAP, C_ELEC, C_BATT, C_PUMP, DIAGRAMS_D
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_notes,
                          draw_rect, draw_circle, hatch_rect, draw_pipe_path)
+from tbs_constants import DIAGRAM_DPI
 
 # ── Palette ───────────────────────────────────────────────────────────────────
 C_OUT   = "#1A1A1A"
@@ -87,7 +88,7 @@ def wlabel(ax, x, y, text, ha="left", size=7.5):
 
 def draw_sheet1():
     FW, FH = 22.0, 15.0
-    fig, ax = plt.subplots(figsize=(FW, FH), dpi=150)
+    fig, ax = plt.subplots(figsize=(FW, FH), dpi=DIAGRAM_DPI)
     fig.patch.set_facecolor("white")
     ax.set_facecolor("white")
     ax.set_xlim(0, FW)
@@ -416,7 +417,7 @@ def draw_sheet1():
                 scale_note="Not to scale",
                 doc_id="TBS-ELEC · Electrical & Systems")
 
-    plt.savefig(os.path.join(DIAGRAMS_DIR, "electrical-sheet1.png"), dpi=150, bbox_inches="tight",
+    plt.savefig(os.path.join(DIAGRAMS_DIR, "electrical-sheet1.png"), dpi=DIAGRAM_DPI, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
     plt.close(fig)
     print("  → electrical-sheet1.png  Done.")
@@ -474,7 +475,7 @@ def draw_sheet2():
     FIG_CX = (X_LO + X_HI) / 2
 
     FW, FH = 24.0, 12.0
-    fig, ax = plt.subplots(figsize=(FW, FH), dpi=150)
+    fig, ax = plt.subplots(figsize=(FW, FH), dpi=DIAGRAM_DPI)
     fig.patch.set_facecolor("white")
     ax.set_facecolor("white")
     ax.set_xlim(X_LO, X_HI)
@@ -965,7 +966,7 @@ def draw_sheet2():
                 scale_note="Axes in mm  (approx 1:500)",
                 doc_id="TBS-ELEC · Electrical & Systems")
 
-    plt.savefig(f"{DIAGRAMS_DIR}/electrical-sheet2.png", dpi=150, bbox_inches="tight",
+    plt.savefig(f"{DIAGRAMS_DIR}/electrical-sheet2.png", dpi=DIAGRAM_DPI, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
     plt.close(fig)
     print("  → electrical-sheet2.png  Done.")
@@ -1019,7 +1020,7 @@ def draw_sheet3():
     FIG_CX = (X_LO + X_HI) / 2
 
     FW, FH = 24.0, 10.0
-    fig, ax = plt.subplots(figsize=(FW, FH), dpi=150)
+    fig, ax = plt.subplots(figsize=(FW, FH), dpi=DIAGRAM_DPI)
     fig.patch.set_facecolor("white")
     ax.set_facecolor("white")
     ax.set_xlim(X_LO, X_HI)
@@ -1386,7 +1387,7 @@ def draw_sheet3():
                 scale_note="Axes in mm  (approx 1:40)",
                 doc_id="TBS-ELEC · Electrical & Systems")
 
-    plt.savefig(f"{DIAGRAMS_DIR}/electrical-sheet3.png", dpi=150, bbox_inches="tight",
+    plt.savefig(f"{DIAGRAMS_DIR}/electrical-sheet3.png", dpi=DIAGRAM_DPI, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
     plt.close(fig)
     print("  → electrical-sheet3.png  Done.")
@@ -1501,7 +1502,7 @@ def draw_sheet4():
                 scale_note="1:8 · mm",
                 doc_id="TBS-ELEC", height=0.075, portrait=True)
 
-    plt.savefig(f"{DIAGRAMS_DIR}/electrical-sheet4.png", dpi=150, bbox_inches="tight",
+    plt.savefig(f"{DIAGRAMS_DIR}/electrical-sheet4.png", dpi=DIAGRAM_DPI, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
     plt.close(fig)
     print("  → electrical-sheet4.png  Done.")
@@ -1657,7 +1658,7 @@ def draw_sheet5():
                 scale_note="True scale · mm (equal aspect)",
                 doc_id="TBS-ELEC", height=0.07)
 
-    plt.savefig(f"{DIAGRAMS_DIR}/electrical-sheet5.png", dpi=150, bbox_inches="tight",
+    plt.savefig(f"{DIAGRAMS_DIR}/electrical-sheet5.png", dpi=DIAGRAM_DPI, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
     plt.close(fig)
     print("  → electrical-sheet5.png  Done.")
@@ -2227,7 +2228,7 @@ def draw_sheet6():
                 height=0.85)
 
     fig.savefig(f"{DIAGRAMS_DIR}/electrical-sheet6.png",
-                dpi=150, bbox_inches="tight", facecolor="white")
+                dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  → electrical-sheet6.png  Done.")
 
@@ -2404,7 +2405,7 @@ def draw_sheet7():
     title_block(ax_tb, "SHEET 7 OF 7", drawing_title="SYSTEM SCHEMATIC (SYMBOL DIAGRAM)",
                 subtitle="Full-system EE schematic · protection · E-stop loop · 7 load circuits",
                 scale_note="Not to scale", height=0.85)
-    fig.savefig(f"{DIAGRAMS_DIR}/electrical-sheet7.png", dpi=150, bbox_inches="tight",
+    fig.savefig(f"{DIAGRAMS_DIR}/electrical-sheet7.png", dpi=DIAGRAM_DPI, bbox_inches="tight",
                 pad_inches=0.12, facecolor="white")
     plt.close(fig)
     print("  → electrical-sheet7.png  Done.")

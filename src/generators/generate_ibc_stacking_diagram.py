@@ -34,6 +34,7 @@ from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_notes,
                          bolt_holes,
                          draw_pipe_path as _tbs_pipe_path,
                          draw_pipe_end as _tbs_pipe_end)
+from tbs_constants import DIAGRAM_DPI
 
 # ── Palette ───────────────────────────────────────────────────────────────────
 BG      = "#FFFFFF"
@@ -311,7 +312,7 @@ def sheet1():
                 scale_note="Axes in mm - SECTION LOOKING +X (PINHOLE WALL AT RIGHT)",
                 height=0.06)
 
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-stacking-sheet1.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-stacking-sheet1.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/ibc-stacking-sheet1.png saved")
 
@@ -521,7 +522,7 @@ def sheet2():
                 scale_note="Axes in mm - DETAILS A-C",
                 height=0.06)
 
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-stacking-sheet2.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-stacking-sheet2.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/ibc-stacking-sheet2.png saved")
 
@@ -750,7 +751,7 @@ def sheet3():
                 scale_note="Axes in mm - VIEW FROM OUTSIDE",
                 height=0.06)
 
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-stacking-sheet3.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-stacking-sheet3.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/ibc-stacking-sheet3.png saved")
 
@@ -1275,7 +1276,7 @@ def sheet4():
                 scale_note="Axes in mm - VIEW LOOKING DOWN",
                 height=0.04)
 
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-stacking-sheet4.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-stacking-sheet4.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/ibc-stacking-sheet4.png saved")
 
@@ -1856,7 +1857,7 @@ def sheet5():
                 scale_note="Axes in mm - VIEW FROM INSIDE",
                 height=0.04)
 
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-stacking-sheet5.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-stacking-sheet5.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/ibc-stacking-sheet5.png saved")
 

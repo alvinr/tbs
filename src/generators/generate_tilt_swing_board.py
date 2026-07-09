@@ -24,6 +24,7 @@ from tbs_constants import (DIAGRAMS_DIR, FRONT_BOARD_MAX_DEG, FRONT_BOARD_CLICK_
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v, draw_cl, draw_circle,
                          draw_rect, leader, bolt_holes)
+from tbs_constants import DIAGRAM_DPI
 
 # ── Dimensions (mm) ──────────────────────────────────────────────────────────
 
@@ -517,7 +518,7 @@ ax1.text(cx_d, frame_y_top + 200, 'SECTION A-A  (AXES IN mm)',
          ha='center', fontsize=5, color='#333333', style='italic')
 
 out1 = os.path.join(DIAGRAMS_DIR, 'tilt-swing-board-sheet1.png')
-fig1.savefig(out1, dpi=150, bbox_inches='tight', facecolor='white')
+fig1.savefig(out1, dpi=DIAGRAM_DPI, bbox_inches='tight', facecolor='white')
 plt.close(fig1)
 print(f'  → {out1}  Done.')
 
@@ -877,7 +878,7 @@ for i, (k, v) in enumerate(rows):
     ax2.text(tbl_x + 136, ry, v, fontsize=4.5, color='black', fontweight='bold', zorder=10)
 
 out2 = os.path.join(DIAGRAMS_DIR, 'tilt-swing-board-sheet2.png')
-fig2.savefig(out2, dpi=150, bbox_inches='tight', facecolor='white')
+fig2.savefig(out2, dpi=DIAGRAM_DPI, bbox_inches='tight', facecolor='white')
 plt.close(fig2)
 print(f'  → {out2}  Done.')
 
@@ -1163,6 +1164,6 @@ ax3.text(1390/2, 90 + S3_UP - S3_E_DN, 'No special tooling required beyond M12 s
          ha='center', fontsize=5.5, color='#333333', style='italic', zorder=10)
 
 out3 = os.path.join(DIAGRAMS_DIR, 'tilt-swing-board-sheet3.png')
-fig3.savefig(out3, dpi=150, bbox_inches='tight', facecolor='white')
+fig3.savefig(out3, dpi=DIAGRAM_DPI, bbox_inches='tight', facecolor='white')
 plt.close(fig3)
 print(f'  → {out3}  Done.')

@@ -18,10 +18,11 @@ import matplotlib.pyplot as plt
 _PROJECT_ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 from matplotlib.patches import FancyBboxPatch, Circle, Rectangle, Ellipse, Arc
 from tbs_constants import C_WID, PH_FNO
+from tbs_constants import DIAGRAM_DPI
 
 # ── Shared helpers ────────────────────────────────────────────────────────────
 
-def save(fig, fname, dpi=150):
+def save(fig, fname, dpi=DIAGRAM_DPI):
     fig.savefig(fname, dpi=dpi, bbox_inches="tight",
                 facecolor=fig.get_facecolor())
     plt.close(fig)

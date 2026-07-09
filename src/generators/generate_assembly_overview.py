@@ -37,6 +37,7 @@ os.makedirs(DIAGRAMS_DIR, exist_ok=True)
 
 # ── Constants shared with previous session ────────────────────────────────────
 from tbs_constants import RAIL_OFF   # floor offset for all floor-standing equipment (mm)
+from tbs_constants import DIAGRAM_DPI
 DRUM_H_ELV = DRUM_H_LT   # 2000mm — revolving drum height in elevation view
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -59,7 +60,7 @@ Y_LO, Y_HI = -650, 3100
 
 FIG_W = 24.0
 FIG_H = FIG_W * (Y_HI - Y_LO) / (X_HI - X_LO)
-DPI   = 150
+DPI   = DIAGRAM_DPI
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 def equip_rect(ax, x, y, w, h, color, alpha=0.85, ec=C_OUT, lw=0.8, zorder=3):

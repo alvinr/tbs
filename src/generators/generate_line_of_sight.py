@@ -34,6 +34,7 @@ import os
 
 from tbs_title_block import title_block
 from tbs_constants import C_LEN, C_WID, C_HGT, FP_X_L, FP_X_R, FP_Y, PH_X, PH_H, ZONE_L_END, ZONE_R_START, DRUM_CX, DRUM_D, DRUM_R, DRUM_H_LT, EP_X, EP_W, EP_H_LO, EP_H_HI, BA_X, BA_W, BA_H_LO, BA_H_HI, PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI, PUMP_D, CORRIDOR_YD_NEAR, IBC_COL_X, IBC_W, IBC_D, IBC_H_STK_1000, IBC_H_1000, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, DIAGRAMS_DIR, cone_left, cone_right, C_OUT, C_CL, C_DIM, C_LT_DRUM, C_WASTE_IBC, C_ELEC, C_BATT, C_PUMP, C_BLUE_IBC, C_BROWN_IBC, C_WALL
+from tbs_constants import DIAGRAM_DPI
 
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
 
@@ -156,7 +157,7 @@ PB_H = PB_Y_HI - PB_Y_LO   # 3100
 FIG_TOT_W = 28.0
 FIG_TOT_H = FIG_TOT_W * max(PA_H, PB_H) / (PA_W + PB_W)
 
-DPI = 150
+DPI = DIAGRAM_DPI
 
 fig = plt.figure(figsize=(FIG_TOT_W, FIG_TOT_H), dpi=DPI)
 fig.patch.set_facecolor(BG)

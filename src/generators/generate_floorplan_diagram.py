@@ -75,7 +75,7 @@ def floor_plan():
     FIG_W = 24.0
     FIG_H = FIG_W * (Y_HI - Y_LO) / (X_HI - X_LO)
 
-    fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=130)
+    fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(X_LO, X_HI)
@@ -531,7 +531,7 @@ def floor_plan():
                 doc_id="TBS-001 · Floor Plan")
 
     out = f"{DIAGRAMS_DIR}/container-floorplan.png"
-    fig.savefig(out, dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(out, dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  {out} saved")
 
@@ -562,7 +562,7 @@ def egress_detail():
     FIG_W = 22.0
     FIG_H = FIG_W * (Y_HI - Y_LO) / (X_HI - X_LO)
 
-    fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=150)
+    fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(X_LO, X_HI)
@@ -795,7 +795,7 @@ def egress_detail():
                 doc_id="TBS-001 · Floor Plan")
 
     out = f"{DIAGRAMS_DIR}/container-floorplan-sheet2.png"
-    fig.savefig(out, dpi=150, bbox_inches="tight", facecolor=BG)
+    fig.savefig(out, dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  {out} saved")
 

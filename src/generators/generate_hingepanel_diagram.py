@@ -31,6 +31,7 @@ import os
 from tbs_constants import C_LT_DRUM, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_T, DIAGRAMS_DIR, DRUM_D as LT_HOUSING_D, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, LT_DRUM_OR, LT_OPENING_DEG, RAIL_X_L, FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_WALL_T, PANEL_SKIN_T, SWUNG_DOOR_CLEARANCE_MM
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader as _leader_shared, draw_notes, draw_legend
+from tbs_constants import DIAGRAM_DPI
 
 # ── Palette (white engineering) ───────────────────────────────────────────────
 BG      = "#FFFFFF"   # white background
@@ -348,7 +349,7 @@ def sheet1():
                 scale_note="SCALE 1:20",
                 doc_id="TBS-001 \u00b7 Hinged Light-Trap Panel")
 
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet1.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet1.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/hingepanel-sheet1.png saved")
 
@@ -729,7 +730,7 @@ def sheet2():
                 scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
                 doc_id="TBS-001 \u00b7 Hinged Light-Trap Panel", height=0.055)
 
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet2.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet2.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/hingepanel-sheet2.png saved")
 
@@ -792,7 +793,7 @@ def sheet3():
     FIG_H = 14.0
     FIG_W = FIG_H * (X_HI - X_LO) / (Y_HI - Y_LO)
 
-    fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=130)
+    fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(X_LO, X_HI)
@@ -1303,7 +1304,7 @@ def sheet3():
                 doc_id="TBS-001 \u00b7 Hinged Light-Trap Panel",
                 height=0.05, portrait=True)
 
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet3.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet3.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/hingepanel-sheet3.png saved")
 
@@ -1418,7 +1419,7 @@ def sheet5():
                 scale_note="PLAN VIEWS · NOT TO SCALE · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
 
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet5.png"), dpi=130,
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet5.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/hingepanel-sheet5.png saved")
@@ -1538,7 +1539,7 @@ def sheet4():
                 subtitle="ROTATING TRANSPORT + SWING CLEARANCE vs FILM-PLANE LEFT MECHANISM (PLAN)",
                 scale_note="PLAN VIEW · NOT TO SCALE · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet4.png"), dpi=130,
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet4.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/hingepanel-sheet4.png saved")
@@ -1605,7 +1606,7 @@ def sheet6():
                 subtitle="INTERIOR PULL HANDLE — MOUNTING DETAIL (HORIZONTAL SECTION)",
                 scale_note="DETAIL · NOT TO SCALE · ALL DIMS IN mm",
                 doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045, scale=0.75)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet6.png"), dpi=130,
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet6.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/hingepanel-sheet6.png saved")

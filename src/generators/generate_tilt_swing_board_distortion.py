@@ -26,6 +26,7 @@ from tbs_constants import (
     FRONT_BOARD_MAX_DEG as FB,
 )
 from tbs_title_block import title_block
+from tbs_constants import DISTORTION_DPI
 
 # ── Camera constants ──────────────────────────────────────────────────────────
 F = C_WID         # focal length (container interior depth, mm) = 2362
@@ -269,7 +270,7 @@ if __name__ == '__main__':
                     scale_note="Ray-traced projection",
                     doc_id="TBS-TS01 · Board Distortion")
         out = os.path.join(DIAGRAMS_DIR, f'tilt-swing-board-distortion-{label.lower()}.png')
-        fig.savefig(out, dpi=120, bbox_inches='tight', facecolor=BG)
+        fig.savefig(out, dpi=DISTORTION_DPI, bbox_inches='tight', facecolor=BG)
         plt.close(fig)
         print(f'  → {out}')
 
@@ -301,7 +302,7 @@ if __name__ == '__main__':
                 scale_note="Ray-traced projection",
                 doc_id="TBS-TS01 · Board Distortion")
     out_s = os.path.join(DIAGRAMS_DIR, 'tilt-swing-board-distortion-summary.png')
-    fig_s.savefig(out_s, dpi=100, bbox_inches='tight', facecolor=BG)
+    fig_s.savefig(out_s, dpi=DISTORTION_DPI, bbox_inches='tight', facecolor=BG)
     plt.close(fig_s)
     print(f'  → {out_s}')
     print('Done.')

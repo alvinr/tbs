@@ -21,6 +21,7 @@ import matplotlib.pyplot as plt
 import os
 from tbs_constants import FP_W, FP_H, C_WID, FP_Y_MIN, DIAGRAMS_DIR
 from tbs_title_block import title_block
+from tbs_constants import DISTORTION_DPI
 
 # ── Container / camera constants (mm) ────────────────────────────────────────
 FILM_L = FP_W    # film plane width (mm) — from tbs_constants (4499mm rev 6)
@@ -303,7 +304,7 @@ def render_config(cfg_id, label, name, d_top, d_bot, desc,
                 scale_note="Ray-traced projection",
                 doc_id="TBS-FM01 · Distortion Renders")
     fname = os.path.join(DIAGRAMS_DIR, f"film-plane-distortion-{label.lower()}.png")
-    fig.savefig(fname, dpi=120, bbox_inches="tight",
+    fig.savefig(fname, dpi=DISTORTION_DPI, bbox_inches="tight",
                 facecolor="white")
     plt.close(fig)
     print(f"  → {fname}")
@@ -347,7 +348,7 @@ def render_summary():
                 subtitle="All configurations — checker scene — D = 8000mm",
                 scale_note="Ray-traced projection",
                 doc_id="TBS-FM01 · Distortion Renders")
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "film-plane-distortion-summary.png"), dpi=120,
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "film-plane-distortion-summary.png"), dpi=DISTORTION_DPI,
                 bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  → diagrams/film-plane-distortion-summary.png")

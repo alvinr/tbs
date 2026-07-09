@@ -47,6 +47,7 @@ L = 5893   # interior length (film plane spans this direction)
 W = 2362   # interior width = optical axis = focal length
 H = 2388   # interior height
 from tbs_constants import WALL_T
+from tbs_constants import DIAGRAM_DPI
 
 # Carriage travel limits (100mm clearance each end)
 D_NEAR = 100
@@ -386,7 +387,7 @@ def sheet1():
                 doc_id="TBS-FM01 · Film Plane Mechanism",
                 height=0.05)
 
-    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet1.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  → {DIAGRAMS_DIR}/film-plane-sheet1.png")
 
@@ -642,7 +643,7 @@ def sheet2():
                 scale_note="Proportional (mm)",
                 doc_id="TBS-FM01 · Film Plane Mechanism")
 
-    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet2.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  → {DIAGRAMS_DIR}/film-plane-sheet2.png")
 
@@ -857,7 +858,7 @@ def sheet3():
                 scale_note="As noted",
                 doc_id="TBS-FM01 · Film Plane Mechanism")
 
-    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet3.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  → {DIAGRAMS_DIR}/film-plane-sheet3.png")
 
@@ -999,7 +1000,7 @@ def sheet4():
                 scale_note="Not to scale",
                 doc_id="TBS-FM01 · Film Plane Mechanism")
 
-    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet4.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet4.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  → {DIAGRAMS_DIR}/film-plane-sheet4.png")
 
@@ -1574,7 +1575,7 @@ def sheet5():
                 doc_id="TBS-FM01 · Film Plane Mechanism",
                 height=0.75)
 
-    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet5.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet5.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  → {DIAGRAMS_DIR}/film-plane-sheet5.png")
 
@@ -1848,7 +1849,7 @@ def sheet6():
                 doc_id="TBS-FM01 · Film Plane Mechanism",
                 height=0.05)
 
-    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet6.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet6.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  → {DIAGRAMS_DIR}/film-plane-sheet6.png")
 

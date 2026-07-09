@@ -27,6 +27,7 @@ from matplotlib.patches import Rectangle, Circle, Wedge, Polygon
 from tbs_constants import C_OUT, C_CL, C_DIM, C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_RIM, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_FAR_YD, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_TRAY_FLOOR_Z_LOW, SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_W, SPRAY_BAR_BEAM_H, SPRAY_BAR_BEAM_T, SPRAY_BAR_WHEEL_DIA, SPRAY_BAR_WHEEL_W, SPRAY_BAR_WHEELS_PER_SIDE, SPRAY_BAR_WHEEL_SP, SPRAY_BAR_TRAY_FLOOR, SPRAY_BAR_AXLE_RISE, SPRAY_BAR_BRACKET_DROP, SPRAY_BAR_BEAM_BOT_RISE, SPRAY_BAR_BEAM_TOP_RISE, SPRAY_BAR_POLY_OD, SPRAY_BAR_POLY_ID, SPRAY_BAR_TRAVEL, SPRAY_BAR_N_NOZZLES, BV02_X, BV02_Z, SPRAY_BAR_SLIT_W, DIAGRAMS_DIR
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
+from tbs_constants import DIAGRAM_DPI
 
 # ── Palette ──────────────────────────────────────────────────────────────────
 C_BG     = "#F5F5F0"
@@ -2065,7 +2066,7 @@ def draw_sheet7():
 def _save(fig, stem):
     os.makedirs(DIAGRAMS_DIR, exist_ok=True)
     png = os.path.join(DIAGRAMS_DIR, f"{stem}.png")
-    fig.savefig(png, dpi=150, bbox_inches="tight", facecolor=C_BG)
+    fig.savefig(png, dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=C_BG)
     plt.close(fig)
     print(f"  {png} saved")
 

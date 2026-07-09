@@ -23,6 +23,7 @@ from tbs_constants import (
 )
 from tbs_drawing import draw_dim_h, draw_dim_v, draw_rect, leader, draw_notes
 from tbs_title_block import title_block
+from tbs_constants import DIAGRAM_DPI
 
 # ── Local palette (not in tbs_constants — specific to this diagram) ──────────
 C_SOLAR = "#D4EDDA"   # evap cooler fill
@@ -49,7 +50,7 @@ def ann(ax, text, xy, xytext, size=7.5):
 
 def draw_sheet1():
     FW, FH = 24.0, 13.0
-    fig, ax = plt.subplots(figsize=(FW, FH), dpi=150)
+    fig, ax = plt.subplots(figsize=(FW, FH), dpi=DIAGRAM_DPI)
     fig.patch.set_facecolor("white")
     ax.set_facecolor("white")
     ax.set_xlim(0, FW)
@@ -359,7 +360,7 @@ def draw_sheet1():
                 scale_note="Schematic — not to scale",
                 doc_id="TBS-LT · Light Trap & Ventilation")
 
-    plt.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet1.png"), dpi=150, bbox_inches="tight",
+    plt.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet1.png"), dpi=DIAGRAM_DPI, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
     plt.close(fig)
     print("  → diagrams/lighttrap-sheet1.png  Done.")
@@ -399,7 +400,7 @@ def draw_sheet2():
     wz1     = DZ + DH + FL_OH        # 380 — wall / flange top
 
     # ── Canvas ────────────────────────────────────────────────────────────────
-    fig, ax = plt.subplots(figsize=(24, 14), dpi=150)
+    fig, ax = plt.subplots(figsize=(24, 14), dpi=DIAGRAM_DPI)
     fig.patch.set_facecolor("white")
     ax.set_facecolor("white")
     ax.set_xlim(-250, 850)
@@ -606,7 +607,7 @@ def draw_sheet2():
                 scale_note="Dimensions in mm — wall thickness exaggerated",
                 doc_id="TBS-LT · Light Trap & Ventilation")
 
-    plt.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet2.png"), dpi=150, bbox_inches="tight",
+    plt.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet2.png"), dpi=DIAGRAM_DPI, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
     plt.close(fig)
     print("  → diagrams/lighttrap-sheet2.png  Done.")

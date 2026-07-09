@@ -31,6 +31,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                 "..", "models"))
 import generate_corridor_water_panel as cp   # ribbon geometry (single source)
 from tbs_constants import IBC_COL_X, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_W, PROC_TRAY_X_R, PROC_TRAY_X_L, PROC_TRAY_RIM, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_D, PROC_TRAY_SUMP_Z, PROC_TRAY_SUMP_W, PROC_TRAY_DRAIN_X, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, tray_rim_top_z, spray_beam_top_z, DIAGRAMS_DIR
+from tbs_constants import DIAGRAM_DPI
 
 # ── Palette ────────────────────────────────────────────────────────────────────
 BG      = "#FFFFFF"
@@ -213,7 +214,7 @@ def sheet1():
                 subtitle="WALKWAY ROUTING SECTIONS — B-B NEAR-END RIBBON")
 
     out = os.path.join(DIAGRAMS_DIR, "walkway-sections-sheet1.png")
-    fig.savefig(out, dpi=150, facecolor=BG, bbox_inches="tight", pad_inches=0.15)
+    fig.savefig(out, dpi=DIAGRAM_DPI, facecolor=BG, bbox_inches="tight", pad_inches=0.15)
     plt.close(fig)
     print(f"Walkway section B-B (near-end ribbon) → {out}")
 
@@ -317,7 +318,7 @@ def sheet2():
                 subtitle="WALKWAY ROUTING SECTIONS — C-C MIDWAY")
 
     out = os.path.join(DIAGRAMS_DIR, "walkway-sections-sheet2.png")
-    fig.savefig(out, dpi=150, facecolor=BG, bbox_inches="tight", pad_inches=0.15)
+    fig.savefig(out, dpi=DIAGRAM_DPI, facecolor=BG, bbox_inches="tight", pad_inches=0.15)
     plt.close(fig)
     print(f"Walkway section C-C (midway) → {out}")
 
@@ -441,7 +442,7 @@ def sheet3():
                 subtitle="WALKWAY ROUTING SECTIONS — D-D NEAR CANTILEVER")
 
     out = os.path.join(DIAGRAMS_DIR, "walkway-sections-sheet3.png")
-    fig.savefig(out, dpi=150, facecolor=BG, bbox_inches="tight", pad_inches=0.15)
+    fig.savefig(out, dpi=DIAGRAM_DPI, facecolor=BG, bbox_inches="tight", pad_inches=0.15)
     plt.close(fig)
     print(f"Walkway section D-D (near cantilever) → {out}")
 
@@ -520,7 +521,7 @@ def sheet4():
     title_block(ax, "SHEET 4 OF 5", drawing_title="THE BIG SHOEBOX PROJECT · TBS-001",
                 subtitle="WALKWAY ROUTING SECTIONS — E-E CORRIDOR CENTRE")
     out = os.path.join(DIAGRAMS_DIR, "walkway-sections-sheet4.png")
-    fig.savefig(out, dpi=150, facecolor=BG, bbox_inches="tight", pad_inches=0.15)
+    fig.savefig(out, dpi=DIAGRAM_DPI, facecolor=BG, bbox_inches="tight", pad_inches=0.15)
     plt.close(fig)
     print(f"Walkway section E-E (corridor centre) → {out}")
 
@@ -589,7 +590,7 @@ def sheet5():
     title_block(ax, "SHEET 5 OF 5", drawing_title="THE BIG SHOEBOX PROJECT · TBS-001",
                 subtitle="WALKWAY ROUTING SECTIONS — F-F FAR CANTILEVER")
     out = os.path.join(DIAGRAMS_DIR, "walkway-sections-sheet5.png")
-    fig.savefig(out, dpi=150, facecolor=BG, bbox_inches="tight", pad_inches=0.15)
+    fig.savefig(out, dpi=DIAGRAM_DPI, facecolor=BG, bbox_inches="tight", pad_inches=0.15)
     plt.close(fig)
     print(f"Walkway section F-F (far cantilever) → {out}")
 
@@ -679,7 +680,7 @@ def sheet6():
                 drawing_title="THE BIG SHOEBOX PROJECT · TBS-001",
                 subtitle="WALKWAY ROUTING SECTIONS — G-G TRAY SLOPE/SUPPORT · H-H CARRIAGE CLEARANCE")
     out = os.path.join(DIAGRAMS_DIR, "walkway-sections-sheet6.png")
-    fig.savefig(out, dpi=150, facecolor=BG, bbox_inches="tight", pad_inches=0.15)
+    fig.savefig(out, dpi=DIAGRAM_DPI, facecolor=BG, bbox_inches="tight", pad_inches=0.15)
     plt.close(fig)
     print(f"Walkway section G-G/H-H (tray slope + carriage clearance) → {out}")
 

@@ -57,6 +57,7 @@ import os
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_legend
 from tbs_constants import C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_H, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, IBC_COL_X, IBC_W, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_R, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F, PROC_OPEN_AREA, PANEL_FLOOR_GAP, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, SPRAY_BAR_SLIT_W, EP_X, EP_W, BA_X, BA_W, EVAP_W, EVAP_D, EVAP_STOW_X, EVAP_STOW_YD, DIAGRAMS_DIR
+from tbs_constants import DIAGRAM_DPI
 
 # ── Palette ───────────────────────────────────────────────────────────────────
 BG      = "#FFFFFF"
@@ -491,7 +492,7 @@ def sheet1():
                 scale_note=f"Axes in mm \u00b7 BRACKETS AT {WALKWAY_BRACKET_SPACING}mm CENTERS",
                 height=0.06)
 
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet1.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet1.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet1.png saved")
 
@@ -1045,7 +1046,7 @@ def sheet2():
                 scale_note="AXES IN mm · VIEW A: SECTION ALONG X / VIEW B: PLATE FACE (−Yd)",
                 height=0.07)
 
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet2.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet2.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet2.png saved")
 
@@ -1209,7 +1210,7 @@ def sheet3():
                 scale_note="Axes in mm · PLAN VIEW LOOKING DOWN",
                 height=0.07)
 
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet3.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet3.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet3.png saved")
 
@@ -1453,7 +1454,7 @@ def sheet4():
                 scale_note=f"Axes in mm \u00b7 VIEW ALONG Yd (NEAR \u2192 FAR)",
                 height=0.10)
 
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet4.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet4.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet4.png saved")
 
@@ -1566,7 +1567,7 @@ def sheet5():
                 scale_note="Axes in mm . PLAN (looking down)",
                 height=0.07)
 
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet5.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet5.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet5.png saved")
 
@@ -1713,7 +1714,7 @@ def sheet6():
                 scale_note="Axes in mm · VIEWS A/B",
                 height=0.55)
 
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet6.png"), dpi=130, facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet6.png"), dpi=DIAGRAM_DPI, facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet6.png saved")
 
@@ -2185,7 +2186,7 @@ def sheet7():
                 scale_note="AXES IN mm · VIEW A: SECTION ALONG X / VIEW B: PLATE FACE (−Yd)",
                 height=0.07)
 
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet7.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet7.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet7.png saved")
 
@@ -2446,7 +2447,7 @@ def sheet8():
                 scale_note="SCALE 1:2 · LOOKING DOWN · Yd HORIZONTAL / X VERTICAL",
                 height=0.06)
 
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet8.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet8.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet8.png saved")
 
@@ -2545,7 +2546,7 @@ def sheet9():
                 subtitle="DETAIL E — DRUM-EXIT PUNCH-OUT SUPPORT (PLAN)",
                 scale_note="Axes in mm · PLAN VIEW (X right, Yd up)",
                 height=0.07)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet9.png"), dpi=130,
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet9.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet9.png saved")

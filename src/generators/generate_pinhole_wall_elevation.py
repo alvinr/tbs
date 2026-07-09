@@ -21,6 +21,7 @@ from tbs_constants import C_LEN, C_HGT, PH_X, PH_H, EVAP_DUCT_X, EVAP_DUCT_Z, EV
 from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_cl, draw_notes,
                          draw_pipe_path as _tbs_pipe_path)
 from tbs_title_block import title_block
+from tbs_constants import DIAGRAM_DPI
 
 # ── Local constants (computed from tbs_constants) ────────────────────────────
 # Pipe colors for Blue circuit (only Blue supply remains on this wall)
@@ -85,7 +86,7 @@ def sz(z_mm):
 PLAN_FRAC = FIG_H_PLAN / FIG_H_TOTAL
 ELEV_FRAC = FIG_H_ELEV / FIG_H_TOTAL
 
-fig = plt.figure(figsize=(FIG_W, FIG_H_TOTAL), dpi=150)
+fig = plt.figure(figsize=(FIG_W, FIG_H_TOTAL), dpi=DIAGRAM_DPI)
 
 ax = fig.add_axes([0, PLAN_FRAC, 1, ELEV_FRAC])
 ax.set_xlim(X_LO, X_HI)
@@ -803,6 +804,6 @@ title_block(ax2, "SHEET 1 OF 1",
 # ── Save ────────────────────────────────────────────────────────────────────
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
 out = os.path.join(DIAGRAMS_DIR, "pinhole-wall-elevation.png")
-fig.savefig(out, dpi=150, facecolor="white", edgecolor="none")
+fig.savefig(out, dpi=DIAGRAM_DPI, facecolor="white", edgecolor="none")
 plt.close(fig)
 print(f"Pinhole wall elevation → {out}")

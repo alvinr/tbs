@@ -24,39 +24,9 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-- **spray-bar-sheet2 notes clipped** — the bottom "CROSS SECTION (COMPOSITE)" notes block anchored at the
-  axes bottom (Z=-30), so its border box (a patch, clipped to the axes) was cut — only the top edge drew
-  and the text overflowed below. Dropped C_Z_LO (-30→-75) so the box fits inside the axes.
+_Nothing yet — add a bullet per notable change here as work lands._
 
-- **shelf-sheet1 notes overlap** — the plan-view notes block hung down over the diagram (walkway box
-  tops at y=500). Raised Y_HI (620→800) so the notes lift into a clear band above the diagram, and
-  capped the optical-cone boundary line at y=600 so it no longer stretches up through the notes box.
-
-- **pinhole-panel notes clipped** — the notes border box (a patch, which matplotlib clips to the axes)
-  extended past the narrow xlim and was cut at the page edge (only its corner drew). Widened the page
-  (xlim +750 + figsize 16→23 to keep the board scale) so the box fits, and widened the box (width
-  575→720) to enclose the long lines.
-
-- **ibc-frame Sheet 2 notes overlap** — the side-elevation notes block hung down over the top of the
-  frame (the top-tier IBC ghost tops out at Z≈2398, above the frame's 2296). Extended the page top
-  (Z_HI +240) and lifted the title + notes into the new headroom so they clear the diagram.
-
-- **film-plane Sheet 1 travel dim** — moved the depth-travel dimension from the outer (left) side of the
-  left rail — where it overlapped the Ø900 light-trap drum ghost + rail labels — to the inner (right)
-  side of the rail.
-
-- **electrical Sheet 4 title block** — the title block sat narrower than the page (the transAxes block
-  spans the xlim, but content — the CORRIDOR leader and the notes block — spilled past it), and the ©
-  line was clipped in the too-narrow left cell. Set the xlim to bound all content so the title block
-  spans the full page width; the wider left cell also un-clips the © line.
-
-- **electrical Sheet 4 note fit** — the Circuit-C pump-power note title overran the page. The title's
-  parenthetical just restated the body's opening sentence, so it was shortened to
-  "CIRCUIT C — PUMP POWER:" (detail kept in the body) — no page-widening or title-wrapping needed.
-
-- **electrical Sheet 1 fix** — the blue 12 V distribution bus (fuse block → circuit spine) ran straight
-  *through* the interior E-STOP box on the one-line schematic. Dropped the interior E-stop below the bus
-  so the bus routes cleanly in the gap between the external and interior E-stop boxes.
+## [0.3] — 2026-07-09
 
 - **Fix: an arch-broken heavy dep no longer blocks commits** — the weight generator guarded optional
   numpy/matplotlib with `except ModuleNotFoundError`, which does NOT catch a wrong-arch/ABI `dlopen`
@@ -64,48 +34,13 @@ file** — a release must not ship without a changelog entry:
   gate and blocked check-in. Broadened the guards to `except ImportError` (degrade to the math path),
   added a `lint.py` check that flags the narrow pattern, and documented the rule (CLAUDE.md § Optional
   Heavy Dependencies).
-
-- **Brochure "Introduction" section** — the three top-level chapters (Home, Proposal, Costing) are now
-  grouped under an **Introduction** section in the PDF — a section-divider page, a TOC group, and the
-  chapter-header label — matching every other part. Brochure-only (parse_nav default section; the site
-  nav is unaffected).
-
-- **Brochure cover fix** — centered lines were rendering right of center (the 20mm left margin leaked
-  into `align="C"` cells after the first line); the cover now zeroes its page margins so every line
-  centers on the full page. Also cleaned the cover typography: em dash, `Ø2.17mm`, and middot separators.
-
+- **2d label cleanup** - pass to clean up messy and unreadable labels on all 2d diagrams
 - **IBC report — diagrams inline** — the IBC stacking report embedded its 8 construction sheets only in
   the §8 gallery; each sheet now also appears **inline next to the section it illustrates** (cross-section
   + frame elevations in §3, fastening details in §4, bulkhead ports in §6, internal plumbing in §7),
   matching the other reports. The §8 gallery stays on the site but is `brochure:skip`-ped so the PDF
   shows the inline set only (no double-embed).
-- **Brochure layout tweaks** — tightened the blank space after section headings (heading `b_margin`
-  0.4→0.15 via `TextStyle`, plus a tighter heading line-height in the `HTML2FPDF` subclass), and made a
-  subheading stacked directly under a section heading (e.g. `### What` under `## 2.`) sit close too
-  (merge stacked-heading fragments + reduce the following heading's top margin); moved the **Daily
-  Energy** report into the **Research** section and dropped the **Operating Manual** section from the
-  PDF; renamed the TBS-002 nav section **PoC → Design for Educational Use**. 207 → 197 pp.
-- **License header on every source file, enforced** — added the SPDX/© header to every `.py`, `.rb`,
-  and `.md` that lacked it (generated `.rb` now emit it from their generator's Ruby preamble), and added
-  a `lint.py` GATE that blocks any commit where a tracked `.py/.rb/.md` is missing it. New rule in
-  CLAUDE.md § License Headers.
-- **Copyright de-duplication + source licensing** — removed the visible `*© … GNU AGPLv3*` footer line
-  that each report duplicated in its body (the site footer already carries it, now with the version, so
-  it was showing twice); and added the hidden SPDX/copyright comment header (`<!-- SPDX-License-Identifier
-  … -->`) to every remaining `.md` so each file is licensed at the source regardless of the footer.
-- **Version stamp on every page** — the released version now shows on every PDF page (footer:
-  copyright left, **v0.2 centered**, chapter/page right) and every site page (footer: copyright left,
-  **v0.2** right). It is **derived from RELEASE.md's latest `## [X.Y]` header** — a single source, no
-  stored copy: a new `src/generators/tbs_version.py` helper, read by the brochure directly and by the
-  site via a build hook (`mkdocs_version_hook.py` → `config.extra.version`, rendered by a footer
-  override `overrides/partials/copyright.html`). `release.sh` now also **publishes** the site + brochure
-  as part of cutting a release, so promoting RELEASE.md propagates the new version everywhere with no
-  extra bump step.
-- **Brochure readability + site-matching fonts** — the PDF read dense and used Arial. Now it renders in
-  **IBM Plex Sans / IBM Plex Mono** (the mkdocs Material site font), bundled in `src/generators/fonts/`
-  (OFL 1.1) with Arial Unicode kept as a per-glyph fallback; and the `write_html` leading (fpdf2's tight
-  1.0× default vs the site's ~1.6×) is opened to **1.5×** via a `HTML2FPDF` subclass with a small
-  inter-paragraph gap, leaving table/CSS line-heights compact. 195 → 209 pp.
+- **Brochure reconiliation** — Reduced dead space in the document (e.g. heading spacing, diagram size), removed section that were not required (e.g. operating manual), followed format style of github ste, and general re-organization of the PDF content.
 - **3D overview scene + label pass** — reworked the per-subsystem scenes so each reads cleanly: the
   Ventilation scene gains the Fan A/B power cables (own tag) routed back to the EP, drops the
   plumbing-panel pump wiring, and shows only the evap-cooler (Cct E) circuit at the external panel — the
@@ -119,23 +54,9 @@ file** — a release must not ship without a changelog entry:
 - **Walkway top-rail brackets** — restored the film-plane **top-rail wall-seat saddle brackets**
   (interior back-plate + exterior through-bolted plate, at both the near and far walls) that the walkway
   model had dropped; the bottom rail stays on the shared combined corner plate.
-- **Sketchfab material budget** — collapsed near-identical color materials at the RGB level (tight greys
-  at Δ≤6 plus a few same-hue pairs at Δ≤10, all imperceptible), dropping the overview from **100 → ~87**
-  unique materials so it uploads under the material ceiling.
 - **Electrical focus model** — dropped the ghost ceiling so the model orbits freely without it occluding
   the gear, and added the two fan-feed callouts (Cct-A → Fan A at the sealed end; Cct-B → Fan B wall box
   + flex jumper) to the Labeled scene.
-- **Stray "perspective" lines removed** — the swept-torus pipe elbow (`followme`) left its arc centerline
-  behind as **loose edges** inside every elbow (>1,200 in the water model), rendering as dashed lines all
-  over the diagram. The shared `ruby_elbow` helper now erases those after the sweep, and the water build
-  also clears stale construction lines / root loose edges on every send.
-- **Brochure condensation** — turning the 407-page PDF into a ~200-page funding/validation prospectus,
-  with the live docs site remaining the full deep-dive. **Phase 1:** dropped exploratory / superseded /
-  internal / gallery docs to web-only via `BROCHURE_EXCLUDE` (**407 → 330**). **Mechanism:** a new
-  `<!-- brochure:skip -->…<!-- brochure:endskip -->` marker lets the PDF omit detail sections while the
-  website (HTML comments) still renders them in full — **additive, reversible, nothing deleted**. First
-  applied to `distortion-renders` (thumbnail tables skipped → **330 → 305**). Design:
-  `docs/superpowers/specs/2026-07-07-brochure-condensation-design.md`.
 - **Water model cleanup** — the pinhole-wall water model drops the external EP panel + evap cooler, adds
   the spray bar for context, removes the green PV / grey E-stop EP cables, and reconnects the purple
   Cct-C pump feed to the panel's own master switch.

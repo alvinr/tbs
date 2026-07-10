@@ -240,7 +240,7 @@ Only the camera box needs to be light-tight. The prep box remains open.
 
 ### 9.3 Photo Tray and Hinged Film-Plane Panel
 
-A standard Paterson 12×16" developing tray (PTP326) sits inside the prep box for coating. The film-plane panel is the cardboard flap cut into the prep box's camera-side wall (§9.1), sized to the 10 × 14" print and hinged along its **bottom edge** about 110mm up the wall. Folded **up**, it stands in the window as the film plane with the paper facing the pinhole; folded **down**, it swings to a horizontal position **above the tray** — the tray sits in the space beneath it — as the surface for mounting the coated paper. The arm sleeves are on the prep box **end face** (§9.6), not on the panel.
+A standard Paterson 12×16" developing tray (PTP326) sits inside the prep box for coating. The film-plane panel is the cardboard flap cut into the prep box's camera-side wall (§9.1), sized to the 10 × 14" print and hinged along its **bottom edge** about 110mm up the wall. Folded **up**, it stands in the window as the film plane with the paper facing the pinhole; folded **down**, it swings to a horizontal position **above the tray** — the tray sits in the space beneath it — as the surface on which the pinned paper is coated. The arm sleeves are on the prep box **end face** (§9.6), not on the panel.
 
 **Materials:**
 - Paterson 12×16" developing tray (PTP326 or equivalent — available from B&H Photo, Adorama, or Freestyle Photo)
@@ -255,7 +255,7 @@ The film-plane panel needs no material of its own — it is cut from the prep bo
 1. Place the Paterson tray inside the prep box within easy reach of the arm sleeves. Orient it with the 12" dimension (305mm) along the depth axis and the 16" dimension (406mm) across the width. The tray sits flat on the prep box floor; this is where paper is coated.
 2. The panel is already cut (§9.1, step 4): the ~16 × 11" flap in the prep box's camera-side wall, still attached along its bottom edge about 110mm above the floor — high enough that the tray fits in the space underneath and the panel folds down clear above it.
 3. **Hinge:** Reinforce the bottom fold line with a full-width strip of duct tape on both faces so it flexes cleanly. Score the fold lightly first if the cardboard is stiff. This is a working hinge that will be folded repeatedly.
-4. **Folded-down position (prep):** Fold the panel down into the prep space, where it swings to a horizontal position above the tray — a flat surface for mounting the coated paper, clear of the tray beneath.
+4. **Folded-down position (prep):** Fold the panel down into the prep space, where it swings to a horizontal position above the tray — a flat surface for coating the pinned paper, clear of the tray beneath.
 5. **Exposure position:** Fold the panel up until it stands vertical in the window, filling the opening with the paper facing the pinhole. Hold it upright with a binder clip or a duct tape tab at the top edge.
 6. **Test the hinge:** Fold the panel up and down 10–15 times. It should move freely without binding, and the taped hinge should not crack or separate.
 
@@ -295,7 +295,7 @@ A simple flap shutter:
 
 ### 9.6 Arm Sleeves (on Prep Box End Face)
 
-The armholes are on the prep box end face — the operator's face. They are centered on the face, spaced 9 inches (230mm) apart. This gives sealed arm access for coating paper in the tray, checking tack-dry, and mounting paper onto the film-plane panel — all without opening the box or breaking the light seal. This is what makes the Mini-TBS usable in the field without a darkroom.
+The armholes are on the prep box end face — the operator's face. They are centered on the face, spaced 9 inches (230mm) apart. This gives sealed arm access for mixing the sensitizer, coating the pinned paper, and folding the panel up — all in the dark, without opening the box or breaking the light seal. This is what lets the Mini-TBS work as its own darkroom, with no darkened room.
 
 **Materials:**
 - Black opaque fabric (cotton knit from a black t-shirt works well)
@@ -341,11 +341,12 @@ Watercolor paper is cyanotype's original and most forgiving substrate — Hersch
 - **Fiber:** 100% cotton (rag paper). Wood-pulp paper degrades in the iron chemistry.
 - **Surface:** Hot-press (smooth). Cold-press texture interferes with fine detail at this resolution.
 
-**Mounting the paper:**
+**Mounting the paper:** The paper is pinned to the panel **dry, before coating** — the point of the sequence in §11, since pinning a dry sheet with the extraction flap open is far easier than mounting a wet, coated one in the dark.
 
-1. After coating and tack-drying (see §11), center the 10 × 14" sheet on the film-plane panel (landscape — 14" across, 10" tall — it sits well within the ~16 × 11" panel).
-2. Fasten it with **push pins (map pins or thumbtacks)** pressed through the paper into the cardboard panel — one near each corner, plus one at the middle of each long edge. The pins sit flush and hold the paper when the panel stands vertical, and they leave the panel edges clear so it seats squarely in the window when folded up. (Binder clips would work but their arms foul the window frame and the hinge, and hold the panel off the opening.) Place the pins in the ~1" bare margin around the paper so their heads sit at the edge of the image.
-3. Fold the panel up into the exposure position, paper face toward the pinhole.
+1. With the extraction flap open, fold the panel down and center the dry 10 × 14" sheet on it (landscape — 14" across, 10" tall — it sits well within the ~16 × 11" panel).
+2. Fasten it with **push pins (map pins or thumbtacks)** pressed through the paper into the cardboard panel — one near each corner, plus one at the middle of each long edge. The pins sit flush and hold the paper when the panel stands vertical, and they leave the panel edges clear so it seats squarely in the window when folded up. (Binder clips would foul the window frame and the hinge and hold the panel off the opening.) Place the pins in the ~1" bare margin around the paper so their heads sit at the edge of the image.
+
+The panel is then coated in place and folded up when dry (§11).
 
 ---
 
@@ -402,22 +403,20 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 
 ## 11. Coating Procedure
 
-**Environment:** No darkroom required — the light-sealed prep box *is* the darkroom. Coating happens inside it, reaching through the arm sleeves, under a red LED safelight placed inside the box. The sealed box excludes daylight and white/blue light on its own; just keep the extraction flap closed while sensitized paper is inside.
+**Environment:** Coat in the dark. The mixed sensitizer is UV-sensitive, so the mixing and brushing both happen inside the light-sealed prep box, reached through the arm sleeves under the interior red LED safelight. The box *is* the darkroom — no darkened room is needed. Only the setup (pinning the paper, loading the unmixed chemicals) is done with the extraction flap open, in ordinary room light.
 
-**Materials:** Foam brush (2-inch), mixing cup, a 10 × 14" watercolor sheet.
+**Materials:** Foam brush (2-inch), a mixing cup plus two small cups for measuring, push pins, a 10 × 14" watercolor sheet, and the Part A / Part B stock solutions.
 
-**Using the photo tray:** The paper is coated in the Paterson 12×16" developing tray inside the prep box. The 10 × 14" paper fits inside the tray interior (12 × 16"), lying flat during brush coating; the tray catches drips and provides a stable work surface. Access the tray through the arm sleeves on the prep box end face (see §9.6).
+**Coating on the panel:** The paper is coated where it will be exposed — pinned flat to the film-plane panel (§9.8), folded down horizontal. The developing tray sits beneath the panel to catch drips. Everything is reached through the arm sleeves on the prep box end face (§9.6).
 
 **Procedure (from [Operating Manual](../operating-manual.md) §2.3):**
 
-1. Place the 10 × 14" watercolor paper in the tray; it sits within the tray walls.
-2. Pour ~4 ml of mixed sensitizer into a shallow cup (not directly into the tray).
-3. Load the foam brush evenly (not dripping).
-4. **First pass:** Brush horizontally, left to right, with 50% overlap between strokes. Work from top to bottom.
-5. **Second pass:** Brush vertically, top to bottom, with 50% overlap. This cross-direction pass ensures even coverage.
-6. **Edges:** Check all four edges — foam brushes tend to undercoat the last inch. Touch up by hand.
-7. **Tack-dry:** Allow 15–20 minutes in the prep box (light-sealed). Watercolor paper dries faster than fabric — check after 10 minutes. The sensitizer changes from wet-glossy to matte tack-dry.
-8. **Mount:** Through the arm sleeves on the end face, remove the tack-dried paper from the tray. Fold the film-plane panel down from the upright position so it swings to a horizontal position above the tray. Clip the paper to the panel with binder clips. Fold the panel back up into the window. Paper faces the pinhole.
+1. **Load (extraction flap open).** Fold the panel down and pin the dry watercolor sheet to it (§9.8). Set what you need inside the prep box, within reach of the sleeves: the foam brush, the mixing cup, and ~2 ml each of Part A and Part B measured into two small cups (kept separate — unmixed, they are not yet light-sensitive). The developing tray sits beneath the folded panel to catch drips.
+2. **Seal the box.** Close and light-seal the extraction flap. Inside is now dark — the interior red safelight only.
+3. **Mix, in the dark.** Through the sleeves, pour Part A and Part B together in the cup and stir. This working sensitizer is UV-sensitive — from here it stays in the sealed box until after exposure.
+4. **Coat — two passes.** Load the foam brush evenly. **First pass:** brush horizontally, 50% overlap, top to bottom. **Second pass:** brush vertically, 50% overlap — the cross pass evens the coat. Touch up the four edges, which foam brushes tend to undercoat.
+5. **Tack-dry.** Leave the paper on the panel 15–20 minutes until the sensitizer turns from wet-glossy to matte (check after 10 minutes).
+6. **Fold up — ready.** Through the sleeves, fold the panel up into the exposure position, paper facing the pinhole. The box stays sealed; the camera is loaded and ready to expose (§12).
 
 **Humidity notes (from [Operating Manual](../operating-manual.md) §1.5):**
 
@@ -431,7 +430,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 
 ## 12. Exposure Procedure
 
-1. After mounting the coated paper on the film-plane panel (see §11, step 8), verify the panel is upright in the exposure position with the paper facing the pinhole. Secure the top edge with a binder clip or duct tape tab.
+1. With the paper coated, dry, and the panel folded up (§11), verify the panel stands upright in the exposure position, paper facing the pinhole. Secure the top edge with a binder clip or duct tape tab if it needs holding.
 2. Ensure the extraction flap on the prep box end face is closed and sealed. The prep box should be light-tight.
 3. Ensure the shutter flap is closed.
 4. Carry the entire assembly outside. Position it on a stable surface (table, ground) with the pinhole facing the subject.
@@ -449,7 +448,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 
 **Procedure (from [Operating Manual](../operating-manual.md) §4.2):**
 
-1. Open the extraction flap on the prep box end face (see §9.8). After exposure, cyanotype is no longer light-sensitive — full daylight during removal is safe. Fold the film-plane panel down from the upright position, unclip the paper from the panel, and remove the print through the extraction flap.
+1. Open the extraction flap on the prep box end face (see §9.8). After exposure, cyanotype is no longer light-sensitive — full daylight during removal is safe. Fold the film-plane panel down from the upright position, unpin the paper from the panel, and remove the print through the extraction flap.
 2. **Wash 1:** Submerge in cold water in a photo tray for 5 minutes. Agitate gently. The water will turn yellow-green as unreacted sensitizer clears. This is normal and non-toxic.
 3. **Wash 2:** Transfer to fresh cold water for 5 minutes.
 4. **Wash 3:** Final rinse in fresh cold water for 5 minutes.

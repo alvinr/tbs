@@ -4,7 +4,7 @@
 
 Complete itemized list for building the Mini-TBS classroom camera (two-box design) and making **20 cyanotype prints** on watercolor paper. All quantities include 25% overage for waste and practice.
 
-**Target budget:** $111–$174 (see summary at bottom).
+**Target budget:** $107–$173 (see summary at bottom).
 
 ---
 
@@ -107,15 +107,14 @@ One developing tray for the wash baths (development, §13). Coating happens on t
 
 ---
 
-## 7. Light-Seal and Safelight
+## 7. Arm Sleeves
 
 | Item | Qty | Supplier 1 | Price | Supplier 2 | Price | Notes |
 |------|-----|-----------|-------|-----------|-------|-------|
-| Red LED bulb (9W, standard base) | 1 | Home Depot | $4.97 | Amazon | $5.99 | Screw into any existing lamp. Cyanotype is not sensitive to red light. |
 | Black cotton fabric (for arm sleeves) | 2 pcs | — | Free | Joann Fabrics | $3.99/yd | Cut sleeves from a black t-shirt (free) or buy 1/2 yard |
 | Rubber bands (heavy duty) | 4 | — | Free | Office Depot | $1.99 | For sealing sleeves at wrists |
 
-**Subtotal: $4–$7**
+**Subtotal: $0–$6**
 
 ---
 
@@ -130,9 +129,9 @@ One developing tray for the wash baths (development, §13). Coating happens on t
 | Substrate (watercolor paper) | $45 | $65 |
 | Tools + consumables | $9 | $16 |
 | Wash tray (Paterson 12×16", ×1) | $11 | $11 |
-| Safelight + light-seal | $4 | $7 |
-| **Total (without dichromate)** | **$111** | **$164** |
-| **Total (with dichromate)** | **$123** | **$174** |
+| Arm sleeves | $0 | $6 |
+| **Total (without dichromate)** | **$107** | **$163** |
+| **Total (with dichromate)** | **$119** | **$173** |
 
 ### What the Minimum Order Gets You
 

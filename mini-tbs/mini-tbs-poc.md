@@ -325,7 +325,7 @@ The prep box end face (the face farthest from the pinhole) is an extraction flap
 4. **To open:** Peel the bottom and side tape strips, swing the flap up. Reach in to remove the exposed print.
 5. **To close:** Swing the flap down and re-seal the edges with fresh duct tape strips.
 
-**Note:** The extraction flap only needs to be light-tight during coating, tack-drying, and mounting (safelight operations). After exposure, the print is daylight-safe, so the flap can remain open during print removal and washing.
+**Note:** The extraction flap only needs to be light-tight during coating, tack-drying, and mounting (the pre-exposure steps, done sealed in the dark). After exposure, the print is daylight-safe, so the flap can remain open during print removal and washing.
 
 ### 9.8 Substrate: Watercolor Paper
 
@@ -390,7 +390,7 @@ Dissolve with stirring until bright orange-red. Store in a dark bottle, away fro
 
 ### Working Sensitizer
 
-Mix equal volumes of Part A and Part B **immediately before use.** The mixed solution is UV-sensitive — work under red LED safelight only.
+Mix equal volumes of Part A and Part B **immediately before use.** The mixed solution is UV-sensitive — mix and use it inside the sealed prep box, away from daylight.
 
 **Per print:** ~4 ml working sensitizer (2 ml Part A + 2 ml Part B), double-coated.
 
@@ -402,7 +402,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 
 ## 11. Coating Procedure
 
-**Environment:** Coat in the dark. The mixed sensitizer is UV-sensitive, so the mixing and brushing both happen inside the light-sealed prep box, reached through the arm sleeves under the interior red LED safelight. The box *is* the darkroom — no darkened room is needed. Only the setup (pinning the paper, loading the unmixed chemicals) is done with the extraction flap open, in ordinary room light.
+**Environment:** Coat in the dark, by feel. The mixed sensitizer is UV-sensitive, so mixing and brushing both happen inside the light-sealed prep box, reached through the arm sleeves. The box is opaque, so you work by touch — no safelight is needed (and one wouldn't help; you can't see inside anyway). The box *is* the darkroom, so the room around it can stay normally lit. Only the setup (pinning the paper, loading the unmixed chemicals) is done with the extraction flap open.
 
 **Materials:** Foam brush (2-inch), a mixing cup plus two small cups for measuring, push pins, a 10 × 14" watercolor sheet, and the Part A / Part B stock solutions.
 
@@ -411,7 +411,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 **Procedure (from [Operating Manual](../operating-manual.md) §2.3):**
 
 1. **Load (extraction flap open).** Fold the panel down and pin the dry watercolor sheet to it (§9.8). Set what you need inside the prep box, within reach of the sleeves: the foam brush, the mixing cup, and ~2 ml each of Part A and Part B measured into two small cups (kept separate — unmixed, they are not yet light-sensitive).
-2. **Seal the box.** Close and light-seal the extraction flap. Inside is now dark — the interior red safelight only.
+2. **Seal the box.** Close and light-seal the extraction flap. Inside is now fully dark; you work by feel from here.
 3. **Mix, in the dark.** Through the sleeves, pour Part A and Part B together in the cup and stir. This working sensitizer is UV-sensitive — from here it stays in the sealed box until after exposure.
 4. **Coat — two passes.** Load the foam brush evenly. **First pass:** brush horizontally, 50% overlap, top to bottom. **Second pass:** brush vertically, 50% overlap — the cross pass evens the coat. Touch up the four edges, which foam brushes tend to undercoat.
 5. **Tack-dry.** Leave the paper on the panel 15–20 minutes
@@ -423,7 +423,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 |----------|--------|
 | Below 30% | Lightly mist paper with plain water 5 min before coating |
 | 30–65% | Coat normally |
-| Above 70% | Delay — risk of fogging under safelight |
+| Above 70% | Delay — high humidity raises the fogging risk |
 
 ---
 
@@ -493,8 +493,8 @@ See the [Mini-TBS Shopping List](mini-tbs-shopping-list.md) for the complete ite
 | Substrate (watercolor paper) | $45 | $65 |
 | Tools + consumables | $9 | $16 |
 | Wash tray (Paterson 12×16", ×1) | $11 | $11 |
-| Safelight + light-seal | $4 | $7 |
-| **Total** | **$111** | **$174** |
+| Arm sleeves | $0 | $6 |
+| **Total** | **$107** | **$173** |
 
 ---
 

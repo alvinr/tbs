@@ -40,7 +40,7 @@ _Nothing yet — add a bullet per notable change here as work lands._
   + frame elevations in §3, fastening details in §4, bulkhead ports in §6, internal plumbing in §7),
   matching the other reports. The §8 gallery stays on the site but is `brochure:skip`-ped so the PDF
   shows the inline set only (no double-embed).
-- **Brochure reconiliation** — Reduced dead space in the document (e.g. heading spacing, diagram size), removed section that were not required (e.g. operating manual), followed format style of github ste, and general re-organization of the PDF content.
+- **Brochure reconciliation** — Reduced dead space in the document (e.g. heading spacing, diagram size), removed sections that were not required (e.g. operating manual), followed format style of github site, and general re-organization of the PDF content.
 - **3D overview scene + label pass** — reworked the per-subsystem scenes so each reads cleanly: the
   Ventilation scene gains the Fan A/B power cables (own tag) routed back to the EP, drops the
   plumbing-panel pump wiring, and shows only the evap-cooler (Cct E) circuit at the external panel — the

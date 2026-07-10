@@ -136,16 +136,16 @@ where *f* is focal length in mm and *λ* = 0.00055mm (550 nm green light).
 
 ### Mini-TBS Optical Parameters
 
-| Parameter | TBS-002 (Mini-TBS) | TBS-001 (Container) | Derivation |
-|-----------|---------------|---------------------|------------|
-| Focal length (f) | 457mm | <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm | Box depth / container width |
-| Rayleigh optimal d | 0.95mm | <!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm | 1.9 × √(f × 0.00055) |
-| Drill bit used | 1/32" (0.794mm) | Laser-drilled SS | Closest Home Depot standard |
-| Actual pinhole Ø | ~0.80mm | <!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm | Drill bit through aluminum can |
-| f-number | f/575 | f/1088 | f / d |
-| Film plane | 406 × 457mm | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm | Box face / container face |
-| Usable image area | 254 × 356mm | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm | Paper size (centered on the film plane) |
-| Angle of view (diag.) | ~53° | ~56° | 2 × arctan(half-diag / f) |
+| Parameter | Value | Derivation |
+|-----------|-------|------------|
+| Focal length (f) | 457mm | Box depth (18") |
+| Rayleigh optimal d | 0.95mm | 1.9 × √(f × 0.00055) |
+| Drill bit used | 1/32" (0.794mm) | Closest Home Depot standard |
+| Actual pinhole Ø | ~0.80mm | Drill bit through aluminum can |
+| f-number | f/575 | f / d |
+| Film plane | 406 × 457mm | Box face |
+| Usable image area | 254 × 356mm | Paper size (centered on the film plane) |
+| Angle of view (diag.) | ~53° | 2 × arctan(half-diag / f) |
 
 **Pinhole undersizing note:** The 1/32" drill bit produces a hole 16% smaller than the Rayleigh optimal. This means slightly less light throughput (longer exposure by ~10%) but slightly sharper image — the geometric blur circle is smaller while the diffraction blur increases only marginally. At this scale, the trade is favorable. (Renner, E., *Pinhole Photography*, 4th ed., Focal Press, 2009, Ch. 2.)
 

@@ -8,7 +8,7 @@ Mini-TBS proof-of-concept pinhole camera — engineering drawing.
 Output: diagrams/mini-tbs-sheet1.png
 
 Single sheet with four panels:
-  Top (full width):    Side cross-section — camera box + prep box, photo tray,
+  Top (full width):    Side cross-section — camera box + prep box,
                        and the hinged film-plane panel (cut cardboard flap)
   Bottom-left:         Prep-box end face — armholes + sleeve attachment
   Bottom-center:       Plan view — both boxes from above
@@ -58,15 +58,10 @@ PANEL_T = WALL_T  # mm — the panel is the box's own cardboard (cut from the pr
 PREP_D  = BOX_D  # mm — prep box depth (matches camera box)
 TOTAL_D = BOX_D + PREP_D
 
-# Photo tray: Paterson 12×16" developing tray (PTP326)
-TRAY_EXT_D = 340   # mm — external depth in cross-section (~13.4")
-TRAY_EXT_W = 445   # mm — external width (perpendicular to cross-section)
-TRAY_RIM   = 65    # mm — rim height (~2.5")
-
 # Panel dimensions — the cut cardboard flap in the prep-box shared wall
 PANEL_W = 406   # 16" — panel width, sized to the 14" (landscape) print + margin
-HINGE_Y_ABS = 110   # mm — hinge set high on the wall; the tray sits in the space below
-PANEL_H = 279   # 11" — panel height, sized to the 10×14" print (folds down clear above the tray)
+PANEL_H = 279   # 11" — panel height, sized to the 10×14" print
+HINGE_Y_ABS = (BOX_H - PANEL_H) / 2   # center the panel on the box height -> pinhole aligns with the sheet center
 
 # ── Drawing palette ──────────────────────────────────────────────────────────
 BG         = "#FFFFFF"
@@ -80,7 +75,6 @@ C_PANEL  = "#C9B08A"    # cut cardboard panel (from the box wall)
 C_ALUM     = "#C0C0C8"    # aluminum pinhole plate
 C_PAPER    = "#FAFAE8"    # watercolor paper
 C_HINGE    = "#886644"    # duct tape hinge
-C_TRAY     = "#8899BB"    # chemistry tray
 C_MOTION   = "#CC6600"    # motion arc color
 C_FLAP     = "#77AA77"    # extraction flap
 
@@ -111,7 +105,7 @@ ax_asm   = fig.add_subplot(gs[2, :])    # spec + workflow — full-width bottom 
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# TOP: Side cross-section — camera box + prep box with photo tray
+# TOP: Side cross-section — camera box + prep box
 # ══════════════════════════════════════════════════════════════════════════════
 ax = ax_xsec
 ax.set_facecolor(BG)
@@ -119,11 +113,9 @@ ax.set_aspect("equal")
 ax.axis("off")
 
 # ── Layout constants ───────────────────────────────────────────────────────
-tray_x = BOX_D + WALL_T            # tray near edge (camera side of prep box)
-tray_x_far = tray_x + TRAY_EXT_D   # tray far rim
-hinge_x = tray_x                   # hinge at tray NEAR rim (camera side)
-hinge_y = WALL_T + TRAY_RIM        # hinge height (at tray near rim level)
-panel_fold_end = hinge_x + PANEL_H  # board tip when folded horizontal
+hinge_x = BOX_D + WALL_T           # hinge at the junction (prep-box camera-side wall)
+hinge_y = HINGE_Y_ABS              # hinge height = panel bottom (centered on the box)
+panel_fold_end = hinge_x + PANEL_H  # panel tip when folded horizontal
 
 PAD = 120
 # Extend right limit to show extraction flap arc and open position
@@ -186,13 +178,9 @@ ax.annotate("", xy=(flap_tip_x, flap_tip_y), xytext=(flap_txt_x, flap_txt_y),
 ax.text(flap_tip_x + 5, flap_tip_y, "Flap opens\n(daylight safe)",
         ha="left", va="center", fontsize=FS_SM - 0.5, color=C_FLAP)
 
-# ── Photo tray (Paterson 12×16") inside prep box ──────────────────────────
-ax.add_patch(mpatches.Rectangle((tray_x, WALL_T), TRAY_EXT_D, TRAY_RIM,
-             facecolor=C_TRAY, edgecolor=C_OUT, linewidth=0.8, alpha=0.3, zorder=3))
-ax.plot([tray_x, tray_x], [WALL_T, WALL_T + TRAY_RIM], color=C_OUT, lw=1.2, zorder=4)
-ax.plot([tray_x_far, tray_x_far], [WALL_T, WALL_T + TRAY_RIM], color=C_OUT, lw=1.2, zorder=4)
-ax.text(tray_x + TRAY_EXT_D / 2, WALL_T + TRAY_RIM / 2, "TRAY", ha="center",
-        va="center", fontsize=FS_SM - 1, color=C_TRAY, fontweight="bold", alpha=0.7)
+# ── Optional duct-tape drip liner on the prep-box floor ───────────────────
+ax.add_patch(mpatches.Rectangle((BOX_D + WALL_T, WALL_T), PREP_D - 2 * WALL_T, 5,
+             facecolor=C_HINGE, edgecolor="none", alpha=0.30, zorder=2))
 
 # ── Film-plane panel — UPRIGHT in the window plane (junction), solid ───────
 panel_x = hinge_x - PANEL_T  # board inside camera box (upright from near rim)
@@ -235,7 +223,7 @@ ax.plot([sleeve_wall_x + WALL_T + SLEEVE_PROJ, sleeve_wall_x + WALL_T + SLEEVE_P
         [arm_bot_s + 8, arm_top_s - 8],
         color=C_PINHOLE, lw=2.0, solid_capstyle="round", zorder=4)
 
-# ── Film-plane panel — FOLDED DOWN (dashed, resting over the tray) ────────
+# ── Film-plane panel — FOLDED DOWN (dashed, in the prep space) ───────────
 ax.add_patch(mpatches.Rectangle((hinge_x, hinge_y - PANEL_T), PANEL_H, PANEL_T,
              facecolor=C_PANEL, edgecolor=C_OUT, linewidth=0.8,
              linestyle="--", alpha=0.35, zorder=3))
@@ -246,7 +234,7 @@ ax.add_patch(mpatches.Rectangle((hinge_x - hinge_w / 2, hinge_y - PANEL_T - 2),
              hinge_w, PANEL_T + 4,
              facecolor=C_HINGE, edgecolor=C_OUT, linewidth=0.5, alpha=0.8, zorder=8))
 
-# ── Motion arc (panel folds down from upright to rest over the tray) ──────
+# ── Motion arc (panel folds down from upright to horizontal) ─────────────
 arc_r = PANEL_H * 0.25
 arc_t1, arc_t2 = -5, 90  # degrees
 arc = Arc((hinge_x, hinge_y), arc_r * 2, arc_r * 2,
@@ -260,7 +248,7 @@ arc_txt_x = hinge_x + arc_r * math.cos(math.radians(arc_t1 + 10))
 arc_txt_y = hinge_y + arc_r * math.sin(math.radians(arc_t1 + 10))
 ax.annotate("", xy=(arc_tip_x, arc_tip_y), xytext=(arc_txt_x, arc_txt_y),
             arrowprops=dict(arrowstyle="->", color=C_MOTION, lw=1.5), zorder=7)
-ax.text(arc_tip_x + 5, arc_tip_y + 20, "Panel folds down\n(above the tray)",
+ax.text(arc_tip_x + 5, arc_tip_y + 20, "Panel folds down",
         ha="left", va="center", fontsize=FS_SM - 0.5, color=C_MOTION)
 
 # ── Pinhole (on left wall) ──────────────────────────────────────────────────
@@ -309,8 +297,6 @@ draw_dim_h(ax, 0, TOTAL_D, -75, f"Total length  {TOTAL_D}mm  (36\")", offset=15)
 draw_dim_v(ax, -50, 0, BOX_H, f"{BOX_H}mm (16\")", offset=15)
 draw_dim_v(ax, BOX_D + 10, paper_y1, paper_y2,
            f"Paper  {PAPER_H}mm (10\")", offset=12, color=C_CL, right=True)
-draw_dim_h(ax, tray_x, tray_x_far, -20,
-           f"Tray  {TRAY_EXT_D}mm (12×16\" Paterson)", offset=10, fs=FS_SM - 0.5)
 
 # ── Cross-section leaders ───────────────────────────────────────────────────
 leader(ax, WALL_T / 2, ph_y, -PAD + 10, ph_y + 100,
@@ -326,12 +312,12 @@ leader(ax, panel_x, (paper_y1 + paper_y2) / 2,
 panel_fold_mid = hinge_x + PANEL_H / 2
 leader(ax, hinge_x + PANEL_H - 10, hinge_y - 8,
        hinge_x + PANEL_H + 20, hinge_y + 80,
-       "Panel folded down\n(horizontal, above the tray —\npin + coat paper here)", ha="center", color=C_MOTION)
+       "Panel folded down\n(horizontal —\npin + coat paper here)", ha="center", color=C_MOTION)
 leader(ax, hinge_x, hinge_y - PANEL_T, hinge_x + 30, hinge_y - 50,
        "Hinge — reinforced\nbottom edge of window", ha="left", color=C_HINGE)
-leader(ax, tray_x + TRAY_EXT_D / 2 + 60, WALL_T + TRAY_RIM - 20,
-       tray_x + TRAY_EXT_D / 2 + 80, WALL_T + TRAY_RIM + 30,
-       f"Photo tray\n12×16\" (Paterson PTP326)", ha="center", color=C_TRAY)
+leader(ax, BOX_D + PREP_D / 2, WALL_T + 5,
+       BOX_D + PREP_D / 2 + 40, WALL_T + 60,
+       "Duct-tape drip liner\n(optional)", ha="center", color=C_HINGE, fs=FS_SM - 0.5)
 ax.text(BOX_D / 2, ph_y + 10, "Light cone",
         ha="center", color=C_CONE_LN)
 leader(ax, prep_end_x + WALL_T / 2, BOX_H / 3,
@@ -612,14 +598,8 @@ ax.add_patch(mpatches.Rectangle((TOTAL_D - WALL_T, 0), WALL_T, BOX_W,
 ax.plot([TOTAL_D - WALL_T, TOTAL_D], [BOX_W - WALL_T, BOX_W - WALL_T],
         color=C_HINGE, lw=2.0, zorder=4)
 
-# Photo tray in plan view — inside prep box, against camera-box wall
-tray_plan_x = BOX_D + WALL_T
-tray_plan_y = BOX_W / 2 - TRAY_EXT_W / 2
-ax.add_patch(mpatches.Rectangle((tray_plan_x, tray_plan_y), TRAY_EXT_D, TRAY_EXT_W,
-             facecolor=C_TRAY, edgecolor=C_OUT, linewidth=0.8, alpha=0.3, zorder=3))
-
 # Panel upright in the window plane (film plane), shown as a line in plan view
-panel_plan_x = tray_plan_x  # at the near rim of the tray
+panel_plan_x = BOX_D + WALL_T  # at the junction (film plane)
 ax.plot([panel_plan_x, panel_plan_x], [BOX_W / 2 - PANEL_W / 2, BOX_W / 2 + PANEL_W / 2],
         color=C_OUT, lw=2.5, solid_capstyle="butt", zorder=4)
 # 10×14" paper on the board — landscape (14" across), centered, smaller than the board
@@ -635,7 +615,7 @@ for cy in [arm_plan_cy1, arm_plan_cy2]:
                  facecolor="none", edgecolor=C_SLEEVE, linewidth=0.8,
                  linestyle="--", alpha=0.6, zorder=5))
 
-# Panel folded down (dashed, resting over the tray in the prep space)
+# Panel folded down (dashed, in the prep space)
 ax.add_patch(mpatches.Rectangle((panel_plan_x, BOX_W / 2 - PANEL_W / 2),
              PANEL_H, PANEL_W,
              facecolor=C_PANEL, edgecolor=C_OUT, linewidth=0.6,
@@ -671,9 +651,6 @@ draw_dim_h(ax, BOX_D, TOTAL_D, -30, f"Prep  {PREP_D}mm", offset=8, fs=FS_SM - 0.
 # Leaders
 leader(ax, panel_plan_x, BOX_W / 2 + 90, panel_plan_x - 50, BOX_W - 90,
        "Panel (upright)\nfilm plane", ha="right", color=C_MOTION, fs=FS_SM - 0.5)
-leader(ax, tray_plan_x + TRAY_EXT_D / 2 + 100, tray_plan_y + TRAY_EXT_W - 50,
-       tray_plan_x + TRAY_EXT_D / 2 + 150, BOX_W + 30,
-       "Photo tray", ha="center", color=C_TRAY, fs=FS_SM - 0.5)
 leader(ax, panel_plan_x + PANEL_H / 2, BOX_W / 2 + PANEL_W / 2,
        panel_fold_end - 150, BOX_W / 2 + PANEL_W / 2 + 35,
        "Panel folded\n(mount position)", ha="left", color=C_MOTION, fs=FS_SM - 0.5)
@@ -721,7 +698,7 @@ specs = [
     f"Exposure:  ~10 min (full sun)",
     "Substrate:  Watercolor paper 300 gsm",
     "Process:  Ware New Cyanotype",
-    f"Tray:  Paterson 12×16\" (PTP326)",
+    f"Wash tray:  Paterson 12×16\" (×1)",
 ]
 y = 128
 for line in specs:
@@ -745,7 +722,7 @@ steps = [
     "4.  Tack-dry, then fold panel up (dark, sealed).",
     "5.  Expose (sunlight through pinhole).",
     "6.  Open extraction flap (daylight safe) — remove print.",
-    "7.  Wash in photo trays (daylight).",
+    "7.  Wash in the tray — refill 3× (daylight).",
 ]
 
 y = 128

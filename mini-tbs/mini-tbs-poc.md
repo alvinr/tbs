@@ -215,15 +215,16 @@ The two adjacent walls between the boxes become the film-plane mechanism. On the
 
 **Procedure:**
 
-1. Assemble both boxes per manufacturer instructions. Close and tape all flaps on both boxes.
+1. Assemble both boxes per manufacturer instructions. Close and tape all flaps on both boxes, but leave the flaps on the top untaped.
 2. Stand the boxes end-to-end so that two 18 × 16" faces are adjacent.
 3. On the **camera box's** adjacent face, cut out a rectangular window sized to the print (~16 × 11"), set in the upper part of the face, and remove it. This is the opening through which the image reaches the paper.
 4. On the **prep box's** adjacent face, cut the matching ~16 × 11" rectangle in the same position, on **three sides only**, leaving the **bottom edge uncut** as the hinge. Its bottom edge sits about 110mm above the floor, so the tray fits in the space underneath (detailed in §9.3).
-5. Tape the two boxes together at the junction using duct tape on all four outer edges — floor, ceiling, and both side walls. The taped joint must be rigid, and the two window openings must line up.
+5. Tape the top of box that will hold the pinhole closed. The prep box will be left untaped to allow chemistry and paper to be added. During use, this box flap wil need to be temportaility taped closed (with masking tape or equiv.)
+6. Tape the two boxes together at the junction using duct tape on all four outer edges — floor, ceiling, and both side walls. The taped joint must be rigid, and the two window openings must line up.
 
 ### 9.2 Light-Sealing the Camera Box
 
-Only the camera box needs to be light-tight. The prep box remains open (it is used under safelight conditions only).
+Only the camera box needs to be light-tight. The prep box remains open.
 
 **Materials:** Black duct tape, 2" × 30 yd (one roll covers all sealing, hinging, and light-proofing for the entire build).
 
@@ -314,7 +315,7 @@ The armholes are on the prep box end face — the operator's face. They are cent
 
 ### 9.7 Extraction Flap
 
-The prep box end face (the face farthest from the pinhole) is an extraction flap, hinged at the top with duct tape. After exposure, the cyanotype print is no longer UV-sensitive and can be handled in full daylight. The extraction flap opens to allow the operator to remove the exposed print, unfold it from the panel, and wash it externally — no need to disassemble the camera or break the light seal on the camera box.
+The prep box end face (the face farthest from the pinhole) is an extraction flap, hinged at the top with duct tape. After exposure, the cyanotype print is no longer UV-sensitive and can be handled in full daylight. The extraction flap opens to allow the operator to remove the exposed print, unfold it from the panel, and wash it externally.
 
 **Procedure:**
 

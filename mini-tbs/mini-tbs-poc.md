@@ -245,7 +245,8 @@ A standard Paterson 12×16" developing tray (PTP326) sits inside the prep box fo
 **Materials:**
 - Paterson 12×16" developing tray (PTP326 or equivalent — available from B&H Photo, Adorama, or Freestyle Photo)
 - Duct tape (same roll used for all sealing and hinging — it also reinforces the panel hinge)
-- Binder clips (1-inch, ~12 per print)
+- Push pins / map pins (~8 per print, reusable — mount the paper to the panel)
+- Binder clips (1-inch, a few — hold the panel upright in the window)
 
 The film-plane panel needs no material of its own — it is cut from the prep box's camera-side wall (§9.1).
 
@@ -343,7 +344,7 @@ Watercolor paper is cyanotype's original and most forgiving substrate — Hersch
 **Mounting the paper:**
 
 1. After coating and tack-drying (see §11), center the 10 × 14" sheet on the film-plane panel (landscape — 14" across, 10" tall — it sits well within the ~16 × 11" panel).
-2. Clip it to the panel with binder clips every ~3 inches along all four edges. The paper lies flat on its own — no stretching or taping needed.
+2. Fasten it with **push pins (map pins or thumbtacks)** pressed through the paper into the cardboard panel — one near each corner, plus one at the middle of each long edge. The pins sit flush and hold the paper when the panel stands vertical, and they leave the panel edges clear so it seats squarely in the window when folded up. (Binder clips would work but their arms foul the window frame and the hinge, and hold the panel off the opening.) Place the pins in the ~1" bare margin around the paper so their heads sit at the edge of the image.
 3. Fold the panel up into the exposure position, paper face toward the pinhole.
 
 ---
@@ -492,10 +493,10 @@ See the [Mini-TBS Shopping List](mini-tbs-shopping-list.md) for the complete ite
 | Pinhole materials | $8 | $15 |
 | Chemistry | $25 | $45 |
 | Substrate (watercolor paper) | $45 | $65 |
-| Tools + consumables | $8 | $14 |
+| Tools + consumables | $9 | $16 |
 | Photo trays (Paterson 12×16", ×3) | $28 | $33 |
 | Safelight + light-seal | $4 | $7 |
-| **Total** | **$127** | **$194** |
+| **Total** | **$128** | **$196** |
 
 ---
 

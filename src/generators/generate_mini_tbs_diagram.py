@@ -9,8 +9,8 @@ Output: diagrams/mini-tbs-sheet1.png
 
 Single sheet with four panels:
   Top (full width):    Side cross-section — camera box + prep box, photo tray,
-                       permanently-hinged backing board with armholes
-  Bottom-left:         Board face — prep side (armholes + sleeve attachment)
+                       and the hinged film-plane panel (cut cardboard flap)
+  Bottom-left:         Prep-box end face — armholes + sleeve attachment
   Bottom-center:       Plan view — both boxes from above
   Bottom-right:        Specification + assembly notes
 """
@@ -44,7 +44,7 @@ FP_W    = BOX_W - 2 * MARGIN   # usable film plane width
 FP_H    = BOX_H - 2 * MARGIN   # usable film plane height
 
 # Watercolor paper — standard 10 × 14" sheet, mounted landscape (14" across × 10" tall),
-# centered on the backing board (which is larger; the paper captures the central print).
+# centered on the film-plane panel (which is larger; the paper captures the central print).
 PAPER_W = 356    # mm — paper width  (14")
 PAPER_H = 254    # mm — paper height (10")
 
@@ -52,7 +52,7 @@ SLEEVE_D = 102   # mm — armhole diameter (4")
 SLEEVE_SPACING = 230  # mm — armhole center-to-center spacing
 
 WALL_T  = 4      # mm — cardboard wall thickness (schematic)
-BACKING = 5      # mm — foam-core backing board thickness
+PANEL_T = WALL_T  # mm — the panel is the box's own cardboard (cut from the prep wall)
 
 # Prep box dimensions (same box model)
 PREP_D  = BOX_D  # mm — prep box depth (matches camera box)
@@ -63,10 +63,10 @@ TRAY_EXT_D = 340   # mm — external depth in cross-section (~13.4")
 TRAY_EXT_W = 445   # mm — external width (perpendicular to cross-section)
 TRAY_RIM   = 65    # mm — rim height (~2.5")
 
-# Board dimensions (fits inside camera box, hinged at tray rim height)
-BOARD_W = BOX_W - 2 * WALL_T - 6   # ~443mm — board width (clearance)
-HINGE_Y_ABS = WALL_T + TRAY_RIM    # 69mm — hinge height (tray rim on floor)
-BOARD_H = BOX_H - WALL_T - HINGE_Y_ABS  # ~333mm — from hinge to ceiling interior
+# Panel dimensions — the cut cardboard flap in the prep-box shared wall
+PANEL_W = 406   # 16" — panel width (~1" border each side of the 18" face)
+HINGE_Y_ABS = WALL_T + TRAY_RIM    # 69mm — window bottom edge, level with tray rim (folded panel clears the tray)
+PANEL_H = BOX_H - WALL_T - HINGE_Y_ABS  # ~333mm (13") — window height, from the hinge up
 
 # ── Drawing palette ──────────────────────────────────────────────────────────
 BG         = "#FFFFFF"
@@ -76,7 +76,7 @@ C_CONE     = "#CCE4FF"    # light cone fill
 C_CONE_LN  = "#4488CC"    # light cone boundary
 C_PINHOLE  = "#CC2020"    # pinhole marker
 C_SLEEVE   = "#484060"    # arm sleeve fabric (dark purple-gray)
-C_BACKING  = "#E8E0D0"    # foam-core board
+C_PANEL  = "#C9B08A"    # cut cardboard panel (from the box wall)
 C_ALUM     = "#C0C0C8"    # aluminum pinhole plate
 C_PAPER    = "#FAFAE8"    # watercolor paper
 C_HINGE    = "#886644"    # duct tape hinge
@@ -123,12 +123,12 @@ tray_x = BOX_D + WALL_T            # tray near edge (camera side of prep box)
 tray_x_far = tray_x + TRAY_EXT_D   # tray far rim
 hinge_x = tray_x                   # hinge at tray NEAR rim (camera side)
 hinge_y = WALL_T + TRAY_RIM        # hinge height (at tray near rim level)
-board_fold_end = hinge_x + BOARD_H  # board tip when folded horizontal
+panel_fold_end = hinge_x + PANEL_H  # board tip when folded horizontal
 
 PAD = 120
 # Extend right limit to show extraction flap arc and open position
 flap_open_end = BOX_D + PREP_D + BOX_H * 0.3  # enough to show arc + partial open flap
-ax.set_xlim(-PAD - 40, max(board_fold_end + PAD, flap_open_end + PAD))
+ax.set_xlim(-PAD - 40, max(panel_fold_end + PAD, flap_open_end + PAD))
 ax.set_ylim(-PAD - 30, BOX_H + PAD + 20)
 
 # ── Camera box (left) ───────────────────────────────────────────────────────
@@ -169,7 +169,7 @@ ax.add_patch(mpatches.Rectangle((prep_end_x - 2, hinge_flap_y - 3), WALL_T + 4, 
 
 # Extraction flap motion arc — same size as board arc, attached to flap bottom
 flap_hinge_cx = prep_end_x + WALL_T / 2
-flap_arc_r = BOARD_H * 0.25  # same size as board motion arc
+flap_arc_r = PANEL_H * 0.25  # same size as board motion arc
 flap_arc_cy = flap_arc_r     # center so arc touches flap bottom (y=0) at theta=-90°
 flap_t1, flap_t2 = -90, 0    # quarter circle (closed → fully open)
 flap_arc = Arc((flap_hinge_cx, flap_arc_cy), flap_arc_r * 2, flap_arc_r * 2,
@@ -194,24 +194,24 @@ ax.plot([tray_x_far, tray_x_far], [WALL_T, WALL_T + TRAY_RIM], color=C_OUT, lw=1
 ax.text(tray_x + TRAY_EXT_D / 2, WALL_T + TRAY_RIM / 2, "TRAY", ha="center",
         va="center", fontsize=FS_SM - 1, color=C_TRAY, fontweight="bold", alpha=0.7)
 
-# ── Backing board — UPRIGHT at tray near rim (in camera box, solid) ────────
-board_x = hinge_x - BACKING  # board inside camera box (upright from near rim)
-board_bottom = hinge_y
-board_top = hinge_y + BOARD_H
+# ── Film-plane panel — UPRIGHT in the window plane (junction), solid ───────
+panel_x = hinge_x - PANEL_T  # board inside camera box (upright from near rim)
+panel_bottom = hinge_y
+panel_top = hinge_y + PANEL_H
 
-# Board rectangle (thin vertical, 5mm thick)
-ax.add_patch(mpatches.Rectangle((board_x, board_bottom), BACKING, BOARD_H,
-             facecolor=C_BACKING, edgecolor=C_OUT, linewidth=1.0, zorder=5))
+# Panel rectangle (upright cut-cardboard flap)
+ax.add_patch(mpatches.Rectangle((panel_x, panel_bottom), PANEL_T, PANEL_H,
+             facecolor=C_PANEL, edgecolor=C_OUT, linewidth=1.0, zorder=5))
 
 # Paper on the camera side of the board — 10×14" sheet, centered (landscape; height = 10" in section)
-paper_cy = (board_bottom + board_top) / 2
+paper_cy = (panel_bottom + panel_top) / 2
 paper_y1 = paper_cy - PAPER_H / 2
 paper_y2 = paper_cy + PAPER_H / 2
-ax.plot([board_x, board_x], [paper_y1, paper_y2],
+ax.plot([panel_x, panel_x], [paper_y1, paper_y2],
         color=C_CL, lw=3.0, solid_capstyle="butt", zorder=6)
 
 # Pinhole Y — centered on the board (film plane)
-ph_y = HINGE_Y_ABS + BOARD_H / 2
+ph_y = HINGE_Y_ABS + PANEL_H / 2
 
 # Arm sleeves on prep box end face
 SLEEVE_PROJ = 80
@@ -235,19 +235,19 @@ ax.plot([sleeve_wall_x + WALL_T + SLEEVE_PROJ, sleeve_wall_x + WALL_T + SLEEVE_P
         [arm_bot_s + 8, arm_top_s - 8],
         color=C_PINHOLE, lw=2.0, solid_capstyle="round", zorder=4)
 
-# ── Backing board — FOLDED DOWN (dashed, extending over tray into prep) ───
-ax.add_patch(mpatches.Rectangle((hinge_x, hinge_y - BACKING), BOARD_H, BACKING,
-             facecolor=C_BACKING, edgecolor=C_OUT, linewidth=0.8,
+# ── Film-plane panel — FOLDED DOWN (dashed, resting over the tray) ────────
+ax.add_patch(mpatches.Rectangle((hinge_x, hinge_y - PANEL_T), PANEL_H, PANEL_T,
+             facecolor=C_PANEL, edgecolor=C_OUT, linewidth=0.8,
              linestyle="--", alpha=0.35, zorder=3))
 
-# ── Hinge detail (duct tape at tray near rim) ─────────────────────────────
+# ── Hinge detail (reinforced bottom edge of the cut window) ───────────────
 hinge_w = 16
-ax.add_patch(mpatches.Rectangle((hinge_x - hinge_w / 2, hinge_y - BACKING - 2),
-             hinge_w, BACKING + 4,
+ax.add_patch(mpatches.Rectangle((hinge_x - hinge_w / 2, hinge_y - PANEL_T - 2),
+             hinge_w, PANEL_T + 4,
              facecolor=C_HINGE, edgecolor=C_OUT, linewidth=0.5, alpha=0.8, zorder=8))
 
-# ── Motion arc (board folds down from upright to horizontal over tray) ────
-arc_r = BOARD_H * 0.25
+# ── Motion arc (panel folds down from upright to rest over the tray) ──────
+arc_r = PANEL_H * 0.25
 arc_t1, arc_t2 = -5, 90  # degrees
 arc = Arc((hinge_x, hinge_y), arc_r * 2, arc_r * 2,
           angle=0, theta1=arc_t1, theta2=arc_t2,
@@ -260,7 +260,7 @@ arc_txt_x = hinge_x + arc_r * math.cos(math.radians(arc_t1 + 10))
 arc_txt_y = hinge_y + arc_r * math.sin(math.radians(arc_t1 + 10))
 ax.annotate("", xy=(arc_tip_x, arc_tip_y), xytext=(arc_txt_x, arc_txt_y),
             arrowprops=dict(arrowstyle="->", color=C_MOTION, lw=1.5), zorder=7)
-ax.text(arc_tip_x + 5, arc_tip_y + 20, "Board folds down\n(prep position)",
+ax.text(arc_tip_x + 5, arc_tip_y + 20, "Panel folds down\n(over tray — mount here)",
         ha="left", va="center", fontsize=FS_SM - 0.5, color=C_MOTION)
 
 # ── Pinhole (on left wall) ──────────────────────────────────────────────────
@@ -278,18 +278,18 @@ ax.add_patch(mpatches.Rectangle((WALL_T, ph_y - 38), 2, 76,
 # ── Light cone ──────────────────────────────────────────────────────────────
 cone_verts = [
     (WALL_T, ph_y),
-    (board_x, paper_y2),
-    (board_x, paper_y1),
+    (panel_x, paper_y2),
+    (panel_x, paper_y1),
 ]
 ax.add_patch(mpatches.Polygon(cone_verts, closed=True,
              facecolor=C_CONE, edgecolor="none", alpha=0.2, zorder=1))
-ax.plot([WALL_T, board_x], [ph_y, paper_y2],
+ax.plot([WALL_T, panel_x], [ph_y, paper_y2],
         color=C_CONE_LN, lw=0.8, ls="--", dashes=(6, 4), alpha=0.7, zorder=2)
-ax.plot([WALL_T, board_x], [ph_y, paper_y1],
+ax.plot([WALL_T, panel_x], [ph_y, paper_y1],
         color=C_CONE_LN, lw=0.8, ls="--", dashes=(6, 4), alpha=0.7, zorder=2)
 
 # Optical axis
-ax.plot([0, board_x], [ph_y, ph_y],
+ax.plot([0, panel_x], [ph_y, ph_y],
         color=C_CL, lw=0.7, ls="--", dashes=(8, 4), zorder=2)
 
 # Shutter flap (outside left wall)
@@ -320,15 +320,15 @@ leader(ax, -16, ph_y, -PAD + 10, ph_y - 60,
 leader(ax, sleeve_wall_x + WALL_T + SLEEVE_PROJ / 2, arm_top_s + 3,
        TOTAL_D + SLEEVE_PROJ + 30, arm_top_s + 50,
        f"Arm sleeves (×2) Ø{SLEEVE_D}mm\n(on prep box end face)", ha="left", fs=FS_SM - 0.5)
-leader(ax, board_x, (paper_y1 + paper_y2) / 2,
-       board_x - 80, ph_y + 90,
-       "10×14\" paper\n(centered on board)", ha="center", color=C_CL)
-board_fold_mid = hinge_x + BOARD_H / 2
-leader(ax, hinge_x + BOARD_H - 10, hinge_y - 8,
-       hinge_x + BOARD_H + 20, hinge_y + 80,
-       "Board folded down\n(over tray into prep space —\nmount paper on this surface)", ha="center", color=C_MOTION)
-leader(ax, hinge_x, hinge_y - BACKING, hinge_x + 30, hinge_y - 50,
-       "Duct tape hinge\n(at tray near rim)", ha="left", color=C_HINGE)
+leader(ax, panel_x, (paper_y1 + paper_y2) / 2,
+       panel_x - 80, ph_y + 90,
+       "10×14\" paper\n(centered on panel)", ha="center", color=C_CL)
+panel_fold_mid = hinge_x + PANEL_H / 2
+leader(ax, hinge_x + PANEL_H - 10, hinge_y - 8,
+       hinge_x + PANEL_H + 20, hinge_y + 80,
+       "Panel folded down\n(rests over the tray —\nmount paper on this surface)", ha="center", color=C_MOTION)
+leader(ax, hinge_x, hinge_y - PANEL_T, hinge_x + 30, hinge_y - 50,
+       "Hinge — reinforced\nbottom edge of window", ha="left", color=C_HINGE)
 leader(ax, tray_x + TRAY_EXT_D / 2 + 60, WALL_T + TRAY_RIM - 20,
        tray_x + TRAY_EXT_D / 2 + 80, WALL_T + TRAY_RIM + 30,
        f"Photo tray\n12×16\" (Paterson PTP326)", ha="center", color=C_TRAY)
@@ -345,7 +345,7 @@ leader(ax, prep_end_x + WALL_T / 2, hinge_flap_y,
 ax.text(TOTAL_D / 2, BOX_H + 60, "SIDE CROSS-SECTION",
         ha="center", va="bottom", fontsize=FS_MD + 2, fontweight="bold", color=C_OUT)
 ax.text(TOTAL_D / 2, BOX_H + 42,
-        "Two-box design — board hinged at tray near rim — arm sleeves + extraction flap on end face",
+        "Two-box design — film plane is a cardboard flap hinged at its bottom edge — arm sleeves + extraction flap on end face",
         ha="center", va="bottom", fontsize=FS_SM, color=C_DIM, style="italic")
 
 
@@ -579,7 +579,7 @@ ax.set_aspect("equal")
 ax.axis("off")
 
 PPAD = PAD   # match cross-section padding for vertical alignment
-ax.set_xlim(-PPAD - 40, max(board_fold_end + PPAD, flap_open_end + PPAD))
+ax.set_xlim(-PPAD - 40, max(panel_fold_end + PPAD, flap_open_end + PPAD))
 ax.set_ylim(-PPAD, BOX_W + PPAD)
 
 # Camera box (left) — depth × width
@@ -618,12 +618,12 @@ tray_plan_y = BOX_W / 2 - TRAY_EXT_W / 2
 ax.add_patch(mpatches.Rectangle((tray_plan_x, tray_plan_y), TRAY_EXT_D, TRAY_EXT_W,
              facecolor=C_TRAY, edgecolor=C_OUT, linewidth=0.8, alpha=0.3, zorder=3))
 
-# Board upright at tray near rim (inside camera box, shown as line in plan view)
-board_plan_x = tray_plan_x  # at the near rim of the tray
-ax.plot([board_plan_x, board_plan_x], [BOX_W / 2 - BOARD_W / 2, BOX_W / 2 + BOARD_W / 2],
+# Panel upright in the window plane (film plane), shown as a line in plan view
+panel_plan_x = tray_plan_x  # at the near rim of the tray
+ax.plot([panel_plan_x, panel_plan_x], [BOX_W / 2 - PANEL_W / 2, BOX_W / 2 + PANEL_W / 2],
         color=C_OUT, lw=2.5, solid_capstyle="butt", zorder=4)
 # 10×14" paper on the board — landscape (14" across), centered, smaller than the board
-ax.plot([board_plan_x, board_plan_x], [BOX_W / 2 - PAPER_W / 2, BOX_W / 2 + PAPER_W / 2],
+ax.plot([panel_plan_x, panel_plan_x], [BOX_W / 2 - PAPER_W / 2, BOX_W / 2 + PAPER_W / 2],
         color=C_CL, lw=3.5, solid_capstyle="butt", zorder=5)
 
 # Armholes on end face (dashed circles at the extraction flap wall)
@@ -635,10 +635,10 @@ for cy in [arm_plan_cy1, arm_plan_cy2]:
                  facecolor="none", edgecolor=C_SLEEVE, linewidth=0.8,
                  linestyle="--", alpha=0.6, zorder=5))
 
-# Board folded down from near rim (dashed, extending over tray into prep space)
-ax.add_patch(mpatches.Rectangle((board_plan_x, BOX_W / 2 - BOARD_W / 2),
-             BOARD_H, BOARD_W,
-             facecolor=C_BACKING, edgecolor=C_OUT, linewidth=0.6,
+# Panel folded down (dashed, resting over the tray in the prep space)
+ax.add_patch(mpatches.Rectangle((panel_plan_x, BOX_W / 2 - PANEL_W / 2),
+             PANEL_H, PANEL_W,
+             facecolor=C_PANEL, edgecolor=C_OUT, linewidth=0.6,
              linestyle="--", alpha=0.12, zorder=2))
 
 # Pinhole marker on left wall
@@ -646,13 +646,13 @@ ax.add_patch(plt.Circle((WALL_T / 2, BOX_W / 2), 5,
              facecolor=C_PINHOLE, edgecolor=C_OUT, linewidth=0.8, zorder=5))
 
 # Optical axis
-ax.plot([0, board_plan_x], [BOX_W / 2, BOX_W / 2],
+ax.plot([0, panel_plan_x], [BOX_W / 2, BOX_W / 2],
         color=C_CL, lw=0.7, ls="--", dashes=(8, 4), zorder=2)
 
 # Box labels
 ax.text(BOX_D / 2, BOX_W / 2 + 20, "CAMERA", ha="center", va="center",
         fontsize=FS_SM, fontweight="bold", color=C_DIM, alpha=0.4)
-ax.text((board_plan_x + TOTAL_D) / 2, BOX_W / 2 + 20, "PREP", ha="center", va="center",
+ax.text((panel_plan_x + TOTAL_D) / 2, BOX_W / 2 + 20, "PREP", ha="center", va="center",
         fontsize=FS_SM, fontweight="bold", color=C_DIM, alpha=0.4)
 
 # Face labels
@@ -669,20 +669,20 @@ draw_dim_h(ax, 0, BOX_D, -30, f"Camera  {BOX_D}mm", offset=8, fs=FS_SM - 0.5)
 draw_dim_h(ax, BOX_D, TOTAL_D, -30, f"Prep  {PREP_D}mm", offset=8, fs=FS_SM - 0.5)
 
 # Leaders
-leader(ax, board_plan_x, BOX_W / 2 + 90, board_plan_x - 50, BOX_W - 90,
-       "Board (upright)\nfilm plane", ha="right", color=C_MOTION, fs=FS_SM - 0.5)
+leader(ax, panel_plan_x, BOX_W / 2 + 90, panel_plan_x - 50, BOX_W - 90,
+       "Panel (upright)\nfilm plane", ha="right", color=C_MOTION, fs=FS_SM - 0.5)
 leader(ax, tray_plan_x + TRAY_EXT_D / 2 + 100, tray_plan_y + TRAY_EXT_W - 50,
        tray_plan_x + TRAY_EXT_D / 2 + 150, BOX_W + 30,
        "Photo tray", ha="center", color=C_TRAY, fs=FS_SM - 0.5)
-leader(ax, board_plan_x + BOARD_H / 2, BOX_W / 2 + BOARD_W / 2,
-       board_fold_end - 150, BOX_W / 2 + BOARD_W / 2 + 35,
-       "Board folded\n(prep position)", ha="left", color=C_MOTION, fs=FS_SM - 0.5)
+leader(ax, panel_plan_x + PANEL_H / 2, BOX_W / 2 + PANEL_W / 2,
+       panel_fold_end - 150, BOX_W / 2 + PANEL_W / 2 + 35,
+       "Panel folded\n(mount position)", ha="left", color=C_MOTION, fs=FS_SM - 0.5)
 
 # View title
 ax.text(TOTAL_D / 2, BOX_W + 80, "PLAN VIEW — LOOKING DOWN",
         ha="center", va="bottom", fontsize=FS_MD + 1, fontweight="bold", color=C_OUT)
 ax.text(TOTAL_D / 2, BOX_W + 65,
-        "Two-box arrangement — board at tray near rim, arm sleeves + extraction flap on end face",
+        "Two-box arrangement — panel = cardboard flap hinged at its bottom edge; arm sleeves + extraction flap on end face",
         ha="center", va="bottom", fontsize=FS_SM, color=C_DIM, style="italic")
 
 
@@ -742,7 +742,7 @@ steps = [
     "1.  Mix chemistry (daylight OK).",
     "2.  Coat paper in tray through arm sleeves (safelight).",
     "3.  Tack-dry in sealed prep box.",
-    "4.  Fold board down, mount paper, fold up (safelight).",
+    "4.  Fold panel down over tray, mount paper, fold up (safelight).",
     "5.  Expose (sunlight through pinhole).",
     "6.  Open extraction flap (daylight safe) — remove print.",
     "7.  Wash in photo trays (daylight).",
@@ -760,7 +760,7 @@ ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
 ax_tb.axis("off")
 title_block(ax_tb, "SHEET 1 OF 1",
             drawing_title="TBS-002 MINI-TBS PROOF OF CONCEPT",
-            subtitle="Two-box camera — board at tray near rim, arm sleeves + extraction flap on end face",
+            subtitle="Two-box camera — film-plane panel is a cardboard flap hinged at its bottom edge; arm sleeves + extraction flap on end face",
             scale_note="Approx 1:4 (views) / NTS (detail)",
             doc_id="TBS-002 · Mini-TBS")
 

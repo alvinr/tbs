@@ -84,11 +84,12 @@ The **Mike Ware New Cyanotype formula** — identical to the TBS-001 specificati
 |------|-----|-----------|-------|-----------|-------|-------|
 | Foam brushes, 2" (10-pack) | 1 pack | Home Depot | $4.97 | Dollar Tree (3-pack) | $1.25 | Disposable. One per session. |
 | Plastic mixing cups, 8 oz (10-pack) | 1 pack | Dollar Tree | $1.25 | Amazon | $3.99 | For mixing sensitizer |
-| Binder clips, 1" (24-pack) | 1 pack | Office Depot | $2.49 | Dollar Tree | $1.25 | For mounting paper on the film-plane panel |
+| Push pins / map pins (100-pack) | 1 pack | Dollar Tree | $1.25 | Amazon | $2.49 | Mount the paper to the panel (reusable) |
+| Binder clips, 1" (24-pack) | 1 pack | Office Depot | $2.49 | Dollar Tree | $1.25 | Hold the panel upright in the window |
 | Nitrile gloves (box of 50) | 1 box | Home Depot | $7.98 | Amazon | $6.99 | Wear during coating and mixing |
 | Digital kitchen scale (0.1 g) | 1 | Amazon | $9.99 | Walmart | $8.98 | For weighing chemicals. Most kitchens already have one. |
 
-**Subtotal: $8–$14** (less if you already own a kitchen scale and gloves)
+**Subtotal: $9–$16** (less if you already own a kitchen scale and gloves)
 
 ---
 
@@ -130,8 +131,8 @@ Standard darkroom developing trays — used for both chemistry coating and devel
 | Tools + consumables | $8 | $14 |
 | Photo trays (Paterson 12×16", ×3) | $28 | $33 |
 | Safelight + light-seal | $4 | $7 |
-| **Total (without dichromate)** | **$127** | **$184** |
-| **Total (with dichromate)** | **$139** | **$194** |
+| **Total (without dichromate)** | **$128** | **$186** |
+| **Total (with dichromate)** | **$140** | **$196** |
 
 ### What the Minimum Order Gets You
 

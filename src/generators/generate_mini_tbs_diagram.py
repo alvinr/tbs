@@ -64,9 +64,9 @@ TRAY_EXT_W = 445   # mm — external width (perpendicular to cross-section)
 TRAY_RIM   = 65    # mm — rim height (~2.5")
 
 # Panel dimensions — the cut cardboard flap in the prep-box shared wall
-PANEL_W = 406   # 16" — panel width (~1" border each side of the 18" face)
-HINGE_Y_ABS = WALL_T + TRAY_RIM    # 69mm — window bottom edge, level with tray rim (folded panel clears the tray)
-PANEL_H = BOX_H - WALL_T - HINGE_Y_ABS  # ~333mm (13") — window height, from the hinge up
+PANEL_W = 406   # 16" — panel width, sized to the 14" (landscape) print + margin
+HINGE_Y_ABS = 110   # mm — hinge set high on the wall; the tray sits in the space below
+PANEL_H = 279   # 11" — panel height, sized to the 10×14" print (folds down clear above the tray)
 
 # ── Drawing palette ──────────────────────────────────────────────────────────
 BG         = "#FFFFFF"
@@ -260,7 +260,7 @@ arc_txt_x = hinge_x + arc_r * math.cos(math.radians(arc_t1 + 10))
 arc_txt_y = hinge_y + arc_r * math.sin(math.radians(arc_t1 + 10))
 ax.annotate("", xy=(arc_tip_x, arc_tip_y), xytext=(arc_txt_x, arc_txt_y),
             arrowprops=dict(arrowstyle="->", color=C_MOTION, lw=1.5), zorder=7)
-ax.text(arc_tip_x + 5, arc_tip_y + 20, "Panel folds down\n(over tray — mount here)",
+ax.text(arc_tip_x + 5, arc_tip_y + 20, "Panel folds down\n(above the tray)",
         ha="left", va="center", fontsize=FS_SM - 0.5, color=C_MOTION)
 
 # ── Pinhole (on left wall) ──────────────────────────────────────────────────
@@ -326,7 +326,7 @@ leader(ax, panel_x, (paper_y1 + paper_y2) / 2,
 panel_fold_mid = hinge_x + PANEL_H / 2
 leader(ax, hinge_x + PANEL_H - 10, hinge_y - 8,
        hinge_x + PANEL_H + 20, hinge_y + 80,
-       "Panel folded down\n(rests over the tray —\nmount paper on this surface)", ha="center", color=C_MOTION)
+       "Panel folded down\n(horizontal, above the tray —\nmount paper here)", ha="center", color=C_MOTION)
 leader(ax, hinge_x, hinge_y - PANEL_T, hinge_x + 30, hinge_y - 50,
        "Hinge — reinforced\nbottom edge of window", ha="left", color=C_HINGE)
 leader(ax, tray_x + TRAY_EXT_D / 2 + 60, WALL_T + TRAY_RIM - 20,
@@ -742,7 +742,7 @@ steps = [
     "1.  Mix chemistry (daylight OK).",
     "2.  Coat paper in tray through arm sleeves (safelight).",
     "3.  Tack-dry in sealed prep box.",
-    "4.  Fold panel down over tray, mount paper, fold up (safelight).",
+    "4.  Fold panel down above tray, mount paper, fold up (safelight).",
     "5.  Expose (sunlight through pinhole).",
     "6.  Open extraction flap (daylight safe) — remove print.",
     "7.  Wash in photo trays (daylight).",

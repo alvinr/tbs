@@ -24,7 +24,9 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-_Nothing yet — add a bullet per notable change here as work lands._
+- **Site footer version format** — the footer now reads inline as
+  `© 2026 Alvin Richards — Released under GNU AGPLv3. Version v0.3` instead of dropping the bare
+  `v0.3` onto its own right-justified line (which wrapped and read oddly). `overrides/partials/copyright.html`.
 
 ## [0.3] — 2026-07-09
 

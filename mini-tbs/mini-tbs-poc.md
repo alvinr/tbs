@@ -329,18 +329,7 @@ The prep box end face (the face farthest from the pinhole) is an extraction flap
 
 ### 9.8 Substrate: Watercolor Paper
 
-**Why watercolor paper instead of muslin?**
-
-The TBS-001 full-scale camera uses cotton muslin because of its scale — no paper is manufactured 4.5 meters wide. For the 10 × 14" classroom prints, watercolor paper is the better substrate:
-
-| | Watercolor paper | Cotton muslin |
-|---|---|---|
-| Pre-treatment | None | Pre-wash twice, line dry, iron flat |
-| Lies flat | Yes — naturally rigid | Requires stretching and clipping |
-| Coating evenness | Excellent — consistent absorption | Variable — depends on tension and sizing |
-| Failure modes | Few | Wrinkles, uneven sizing, slack mounting |
-| Availability | Any art supply store | Fabric store, requires cutting |
-| Traditional substrate? | Yes — the original cyanotype medium | Used for large-format only |
+Watercolor paper is cyanotype's original and most forgiving substrate — Herschel's first prints in 1842 were on paper, and it is still the easiest surface to coat and print evenly. For the 10 × 14" classroom prints it is ideal: it lies flat without stretching, absorbs the sensitizer uniformly, needs no pre-treatment, and comes in standard sheets that require no cutting (one per print). Only two properties really matter — enough **weight** that it doesn't curl when wet, and **100% cotton** fiber so the iron chemistry doesn't attack it.
 
 **Recommended paper:** Arches Aquarelle hot-press, 140 lb (300 gsm), 100% cotton. Available as 10 × 14" blocks and pads at Blick Art Materials, Joann, or Amazon — a standard size, no cutting needed (one sheet per print).
 
@@ -354,7 +343,7 @@ The TBS-001 full-scale camera uses cotton muslin because of its scale — no pap
 **Mounting the paper:**
 
 1. After coating and tack-drying (see §11), center the 10 × 14" sheet on the film-plane panel (landscape — 14" across, 10" tall — it sits well within the ~16 × 11" panel).
-2. Clip it to the panel with binder clips every ~3 inches along all four edges. The paper lies flat naturally — much simpler than stretching muslin.
+2. Clip it to the panel with binder clips every ~3 inches along all four edges. The paper lies flat on its own — no stretching or taping needed.
 3. Fold the panel up into the exposure position, paper face toward the pinhole.
 
 ---

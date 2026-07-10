@@ -95,15 +95,15 @@ The **Mike Ware New Cyanotype formula** — identical to the TBS-001 specificati
 
 ## 6. Photo Trays
 
-Standard darkroom developing trays — used for both chemistry coating and development washes. The 12×16" size fits inside the 18×18" prep box (external ~13.4×17.5"). The 10×14" paper fits inside the tray interior, lying flat during brush coating.
+One developing tray for the wash baths (development, §13). Coating happens on the panel, so no tray is kept inside the camera.
 
 | Item | Qty | Supplier 1 | Price | Supplier 2 | Price | Notes |
 |------|-----|-----------|-------|-----------|-------|-------|
-| Paterson 12×16" Developing Tray (PTP326) | 3 | B&H Photo | $10.95 ea | Adorama | $10.95 ea | 1 for coating + 2 for wash. Buy 3 different colors to prevent cross-contamination. |
+| Paterson 12×16" Developing Tray (PTP326) | 1 | B&H Photo | $10.95 | Adorama | $10.95 | For the wash baths — empty and refill between the three rinses. |
 
-**Alternative:** Paterson 12×16" Tray Set (PTP336) — set of 3 in white/gray/red, ~$28 at B&H Photo.
+**Alternative:** any plastic tray or basin at least 11 × 15" — a dollar-store storage tub works fine for the wash.
 
-**Subtotal: $28–$33**
+**Subtotal: $11**
 
 ---
 
@@ -131,8 +131,8 @@ Standard darkroom developing trays — used for both chemistry coating and devel
 | Tools + consumables | $8 | $14 |
 | Photo trays (Paterson 12×16", ×3) | $28 | $33 |
 | Safelight + light-seal | $4 | $7 |
-| **Total (without dichromate)** | **$128** | **$186** |
-| **Total (with dichromate)** | **$140** | **$196** |
+| **Total (without dichromate)** | **$111** | **$164** |
+| **Total (with dichromate)** | **$123** | **$174** |
 
 ### What the Minimum Order Gets You
 

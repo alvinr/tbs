@@ -255,7 +255,7 @@ The film-plane panel needs no material of its own — it is cut from the prep bo
 2. The panel is already cut (§9.1, step 4): the ~16 × 11" flap in the prep box's camera-side wall, still attached along its bottom edge about 64mm above the floor, centered on the face.
 3. **Hinge:** Reinforce the bottom fold line with a full-width strip of duct tape on both faces so it flexes cleanly. Score the fold lightly first if the cardboard is stiff. This is a working hinge that will be folded repeatedly.
 4. **Folded-down position (prep):** Fold the panel down into the prep space, where it lies horizontal — a flat surface for coating the pinned paper, clear of the floor.
-5. **Exposure position:** Fold the panel up until it stands vertical in the window, filling the opening with the paper facing the pinhole. Hold it upright with a binder clip or a duct tape tab at the top edge.
+5. **Exposure position:** Fold the panel up until it stands vertical in the window, filling the opening with the paper facing the pinhole. Hold it upright with duct tape tab at the top edge.
 6. **Test the hinge:** Fold the panel up and down 10–15 times. It should move freely without binding, and the taped hinge should not crack or separate.
 
 ### 9.4 Pinhole Fabrication

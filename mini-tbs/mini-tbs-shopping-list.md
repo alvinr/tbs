@@ -2,9 +2,9 @@
 <!-- © 2026 Alvin Richards -->
 # TBS-002 — Mini-TBS Shopping List
 
-Complete itemized list for building the Mini-TBS proof-of-concept camera (two-box design) and making **20 cyanotype prints** on watercolor paper. All quantities include 25% overage for waste and practice.
+Complete itemized list for building the Mini-TBS classroom camera (two-box design) and making **20 cyanotype prints** on watercolor paper. All quantities include 25% overage for waste and practice.
 
-**Target budget:** $129–$195 (see summary at bottom).
+**Target budget:** $111–$174 (see summary at bottom).
 
 ---
 
@@ -35,14 +35,14 @@ Complete itemized list for building the Mini-TBS proof-of-concept camera (two-bo
 
 ## 3. Chemistry
 
-The **Mike Ware New Cyanotype formula** — identical to the TBS-001 specification. See [Chemistry Shopping List](../chemistry-shopping-list.md) for full formula details and the [Pinhole Optics Report](../pinhole-optics-report.md) for spectral and exposure properties.
+The **Ware New Cyanotype formula** — identical to the TBS-001 specification. See [Chemistry Shopping List](../chemistry-shopping-list.md) for full formula details and the [Pinhole Optics Report](../pinhole-optics-report.md) for spectral and exposure properties.
 
 ### Quantities Needed (20 prints + 25% overage)
 
 | Chemical | Amount needed | Min order size | Notes |
 |----------|--------------|---------------|-------|
-| Ammonium iron(III) oxalate / ferric ammonium oxalate (Part A) | 30 g | 100 g | Excess supports 60+ additional prints |
-| Potassium ferricyanide (Part B) | 8 g | 100 g | Excess supports 200+ additional prints |
+| Ammonium iron(III) oxalate / ferric ammonium oxalate (Part A) | 30 g | 100 g | Covers many more prints (see the minimum-order table) |
+| Potassium ferricyanide (Part B) | 8 g | 100 g | Covers many more prints (see the minimum-order table) |
 | Ammonium dichromate | 1 g | 10 g | **Optional** — contrast enhancer; omit to save cost |
 
 ### Suppliers and Pricing
@@ -60,7 +60,7 @@ The **Mike Ware New Cyanotype formula** — identical to the TBS-001 specificati
 
 **Chemistry subtotal: $25–$45** (lower end omits ammonium dichromate)
 
-**Hazard note:** Ammonium dichromate is a Category 1A carcinogen. Wear nitrile gloves when handling. For the PoC, it is safe to omit — prints will have slightly lower contrast but will still produce clear, presentable images.
+**Hazard note:** Ammonium dichromate is a [Category 1A carcinogen](https://www.osha.gov/chemicaldata/616). Wear nitrile gloves when handling. For the classroom, it is safe to omit — prints will have slightly lower contrast but will still produce clear, presentable images.
 
 ---
 
@@ -70,7 +70,7 @@ The **Mike Ware New Cyanotype formula** — identical to the TBS-001 specificati
 |------|-----|-----------|-------|-----------|-------|-------|
 | Watercolor paper, 10×14" block (20 sheets), hot-press, 140 lb (300 gsm) | 1–2 blocks (20–25 sheets) | Blick Art Materials (Arches Aquarelle) | $44.99/20-sheet block | Amazon (Fabriano Artistico) | ~$2.50/sheet | 100% cotton. Standard 10×14" size — one sheet per print, no cutting. |
 
-**Why watercolor paper instead of muslin?** At the PoC scale (10×14" prints), watercolor paper is the superior substrate: no pre-washing, no stretching, no clipping tension — it lies flat naturally and coats evenly. Muslin is used for TBS-001 only because no paper is manufactured 4.5 meters wide.
+**Why watercolor paper?** For the 10×14" prints it is the ideal substrate: it lies flat without stretching, coats evenly, and needs no pre-treatment. It is also cyanotype's traditional and most forgiving surface.
 
 **Yield:** One 20-sheet block = 20 prints, used whole (no cutting). For the 25% practice/waste margin, add a second block or a 10×14" pad. Arches Aquarelle and Fabriano Artistico both ship the 10×14" size in blocks and pads.
 
@@ -123,22 +123,22 @@ One developing tray for the wash baths (development, §13). Coating happens on t
 
 | Category | Low | High |
 |----------|-----|------|
-| Boxes + construction (×2) | $11 | $16 |
+| Boxes + construction (×2) | $9 | $15 |
 | Pinhole materials | $8 | $15 |
 | Chemistry (without ammonium dichromate) | $25 | $35 |
 | Chemistry (with ammonium dichromate) | $37 | $45 |
 | Substrate (watercolor paper) | $45 | $65 |
-| Tools + consumables | $8 | $14 |
-| Photo trays (Paterson 12×16", ×3) | $28 | $33 |
+| Tools + consumables | $9 | $16 |
+| Wash tray (Paterson 12×16", ×1) | $11 | $11 |
 | Safelight + light-seal | $4 | $7 |
 | **Total (without dichromate)** | **$111** | **$164** |
 | **Total (with dichromate)** | **$123** | **$174** |
 
 ### What the Minimum Order Gets You
 
-The chemistry suppliers sell minimum quantities far larger than the PoC requires. The minimum orders provide enough material for:
+The chemistry suppliers sell minimum quantities far larger than one camera build requires. The minimum orders provide enough material for:
 
-| Chemical | Min order | PoC needs | Remaining for | Additional prints |
+| Chemical | Min order | This build | Remaining | Additional prints |
 |----------|-----------|-----------|---------------|-------------------|
 | AmFe, 100 g | 100 g | 30 g | 70 g | ~45 more |
 | K₃[Fe(CN)₆], 100 g | 100 g | 8 g | 92 g | ~230 more |
@@ -156,7 +156,7 @@ The leftover chemistry is enough for extended testing, workshops, or demonstrati
 
 3. **Chemistry lead time:** Bostick & Sullivan and Photographers' Formulary ship within 1–3 business days to most US addresses. Plan 5–7 days from order to delivery.
 
-4. **Watercolor paper:** Must be 100% cotton (rag), hot-press, 140 lb (300 gsm) minimum. Arches Aquarelle is the gold standard for cyanotype — widely available at Blick Art Materials and most art supply stores. No pre-treatment needed (unlike muslin, which requires pre-washing).
+4. **Watercolor paper:** Must be 100% cotton (rag), hot-press, 140 lb (300 gsm) minimum. Arches Aquarelle is the gold standard for cyanotype — widely available at Blick Art Materials and most art supply stores. No pre-treatment needed.
 
 5. **Substitutions:**
    - No pin vise? Use a sewing needle pushed through from behind (produces ~0.5mm hole — usable but slower exposure)

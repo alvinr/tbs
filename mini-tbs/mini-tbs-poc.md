@@ -72,7 +72,7 @@ Once the camera is built — a one-time project of about one to two hours (Part 
 
 | Step | Where | Time | Student roles |
 |---|---|---|---|
-| **1. Coat** | Indoors, red safelight | ~10 min + 15 min tack-dry | One student brushes the sensitizer onto the paper (§11); another times the dry. |
+| **1. Coat** | Inside the prep box (its own darkroom) | ~10 min + 15 min tack-dry | Reaching through the arm sleeves, one student brushes the sensitizer onto the paper (§11); another times the dry. |
 | **2. Compose and expose** | Outdoors, full sun | 10–40 min, unattended | The group aims the camera and opens the shutter (§12); the wait is the lesson — nothing may move. |
 | **3. Develop** | Indoors or shade, then daylight | ~15 min wash, then dry | One student rinses the print in plain water while the class watches the blue appear (§13). |
 
@@ -405,7 +405,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 
 ## 11. Coating Procedure
 
-**Environment:** Darkened room. Red LED safelight only. No daylight, no white or blue LED light.
+**Environment:** No darkroom required — the light-sealed prep box *is* the darkroom. Coating happens inside it, reaching through the arm sleeves, under a red LED safelight placed inside the box. The sealed box excludes daylight and white/blue light on its own; just keep the extraction flap closed while sensitized paper is inside.
 
 **Materials:** Foam brush (2-inch), mixing cup, a 10 × 14" watercolor sheet.
 

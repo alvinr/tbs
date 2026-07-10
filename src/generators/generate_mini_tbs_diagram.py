@@ -326,7 +326,7 @@ leader(ax, panel_x, (paper_y1 + paper_y2) / 2,
 panel_fold_mid = hinge_x + PANEL_H / 2
 leader(ax, hinge_x + PANEL_H - 10, hinge_y - 8,
        hinge_x + PANEL_H + 20, hinge_y + 80,
-       "Panel folded down\n(horizontal, above the tray —\nmount paper here)", ha="center", color=C_MOTION)
+       "Panel folded down\n(horizontal, above the tray —\npin + coat paper here)", ha="center", color=C_MOTION)
 leader(ax, hinge_x, hinge_y - PANEL_T, hinge_x + 30, hinge_y - 50,
        "Hinge — reinforced\nbottom edge of window", ha="left", color=C_HINGE)
 leader(ax, tray_x + TRAY_EXT_D / 2 + 60, WALL_T + TRAY_RIM - 20,
@@ -739,10 +739,10 @@ ax.text(work_x + BOX_W_WORK / 2, 145, "WORKFLOW", ha="center", va="top",
 ax.plot([work_x + 20, work_x + BOX_W_WORK - 20], [137, 137], color=C_OUT, lw=0.6)
 
 steps = [
-    "1.  Mix chemistry (daylight OK).",
-    "2.  Coat paper in tray through arm sleeves (safelight).",
-    "3.  Tack-dry in sealed prep box.",
-    "4.  Fold panel down above tray, mount paper, fold up (safelight).",
+    "1.  Prepare Part A / B stock solutions (daylight OK).",
+    "2.  Pin dry paper to panel; load chemicals (flap open).",
+    "3.  Seal box; mix + coat via arm sleeves (dark).",
+    "4.  Tack-dry, then fold panel up (dark, sealed).",
     "5.  Expose (sunlight through pinhole).",
     "6.  Open extraction flap (daylight safe) — remove print.",
     "7.  Wash in photo trays (daylight).",

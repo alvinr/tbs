@@ -10,7 +10,9 @@ A classroom-ready design for teaching **pinhole photography** — its process an
 
 The camera is two U-Haul Medium boxes joined end-to-end: a sealed **camera box** (the pinhole, and the dark interior where the image forms) and a light-sealed **prep box** (a photo tray and coating workspace). A film-plane board is hinged at the tray rim and swings up inside the camera box to hold the paper facing the pinhole. The prep box's end face carries two arm sleeves — students reach in to coat and mount paper without opening the box — and doubles as a daylight extraction flap, opened after exposure to remove the finished print. The camera *is* its own darkroom, so the whole activity happens in a normal classroom.
 
-## The Teaching Case
+# Part I — Teaching with the Camera
+
+## 1. The Teaching Case
 
 Pinhole photography is a rare lesson that is genuinely cross-curricular and ends with something each student keeps:
 
@@ -19,9 +21,20 @@ Pinhole photography is a rare lesson that is genuinely cross-curricular and ends
 - **Math** — the pinhole-diameter formula and the exposure-scaling law are short, honest calculations with a visible result.
 - **Art and history** — composition and framing, and a 180-year-old process (the original "blueprint") that predates film.
 
-The barrier to entry is low: about **$130–195 for a class set** of ~20 prints, no darkroom, and — handled as described in §5 — a chemistry set that is safe for a supervised classroom. And it scales with the students: a teacher can build the camera and run it as a demonstration for young children, or hand the full design to a college class to build, calibrate, and characterize themselves.
+The barrier to entry is low: about **$130–195 for a class set** of ~20 prints, no darkroom, and — handled as described in §10 — a chemistry set that is safe for a supervised classroom. And it scales with the students: a teacher can build the camera and run it as a demonstration for young children, or hand the full design to a college class to build, calibrate, and characterize themselves.
 
-## What Students Learn
+**At a glance — what it takes to run in a class:**
+
+| | Classroom reality |
+|---|---|
+| Build (one-time) | ~1–2 hours; the camera is reusable for years |
+| Per-print session | ~30 min hands-on + 10–40 min unattended exposure + ~15 min wash |
+| Group size | 2–4 students per camera; a class set is 1–2 cameras run in rotation |
+| Cost | ~$130–195 for the build and first ~20 prints (≈$6–10 per print in consumables thereafter) |
+| Space | A normal classroom, a sunny outdoor spot, and a sink |
+| Consumed per print | Watercolor paper and a few ml of sensitizer — the camera and trays are not |
+
+## 2. What Students Learn
 
 By the end, a student can explain how a camera forms an image without a lens, why the picture is upside-down, why the exposure takes minutes instead of an instant, and how sunlight drives a chemical change that water then reveals. How far each idea is pushed scales with the grade:
 
@@ -32,16 +45,16 @@ By the end, a student can explain how a camera forms an image without a lens, wh
 | **High school (9–12)** | Build the camera, derive the pinhole size and exposure from the formulas, mix and use chemistry with PPE | The Rayleigh optimum, the f-number, why cyanotype needs no reciprocity correction, the iron redox reaction | Supervise; act as chemistry safety officer |
 | **College** | Treat the design as an engineering brief — build, measure (angle of view, resolution, exposure calibration), and extend it | Full derivations, error analysis, and the link back to the container-scale TBS-001 | Facilitate; set the characterization goals |
 
-## The Process — How a Pinhole Makes a Photograph
+## 3. The Process — How a Pinhole Makes a Photograph
 
 The whole process is three ideas — geometry, photochemistry, and time:
 
-1. **Geometry.** Light travels in straight lines. A tiny hole in the front of the box lets a narrow ray from each point of the scene reach the back wall, so an upside-down, left-right-reversed image of the world forms there — no lens required. A smaller hole gives a sharper but dimmer image; a larger hole, brighter but blurrier. There is a "best" size, and students can compute it (§2).
+1. **Geometry.** Light travels in straight lines. A tiny hole in the front of the box lets a narrow ray from each point of the scene reach the back wall, so an upside-down, left-right-reversed image of the world forms there — no lens required. A smaller hole gives a sharper but dimmer image; a larger hole, brighter but blurrier. There is a "best" size, and students can compute it (§7).
 2. **Photochemistry.** The back wall holds watercolor paper brushed with a pale yellow-green, UV-sensitive iron solution. Where sunlight strikes, ultraviolet light reduces the iron and sets the chemistry that will become blue.
 3. **Time.** A pinhole passes very little light, so the shutter stays open for **minutes** in full sun — long enough that the class watches the exposure happen. Nothing may move during the exposure, or the image smears.
 4. **Development in water.** Rinsing the exposed paper in plain cold water washes away the unreacted chemistry and leaves **Prussian blue** wherever the light struck. The image appears in the wash and keeps deepening as it dries — no darkroom chemicals at all.
 
-## The Type — Cyanotype, and the Family It Belongs To
+## 4. The Type — Cyanotype, and the Family It Belongs To
 
 This design makes a **cyanotype** — one of the oldest photographic processes (Sir John Herschel, 1842) and the original "blueprint." It is chosen for the classroom because it is the friendliest of the historic **alternative** (non-silver) processes: sensitized by ordinary **sunlight**, developed in plain **water**, forgiving of timing, and low in toxicity relative to darkroom chemistry.
 
@@ -53,13 +66,29 @@ Where it sits in the larger picture:
 
 **Teaching extensions** once the basic print works: change the subject or the exposure (bracketing); enlarge or shrink the pinhole to trade sharpness for speed; tone the finished blue print brown with tea or tannin; or graduate to a second alternative process on the same equipment.
 
+## 5. Running a Session
+
+Once the camera is built — a one-time project of about one to two hours (Part II) — every printing session runs the same three-step loop the container-scale TBS-001 uses, just at classroom speed. A session fits inside a single class period plus an unattended exposure window.
+
+| Step | Where | Time | Student roles |
+|---|---|---|---|
+| **1. Coat** | Indoors, red safelight | ~10 min + 15 min tack-dry | One student brushes the sensitizer onto the paper (§11); another times the dry. |
+| **2. Compose and expose** | Outdoors, full sun | 10–40 min, unattended | The group aims the camera and opens the shutter (§12); the wait is the lesson — nothing may move. |
+| **3. Develop** | Indoors or shade, then daylight | ~15 min wash, then dry | One student rinses the print in plain water while the class watches the blue appear (§13). |
+
+**Make it an experiment.** The single most valuable thing a class can do is *bracket* the first exposure — make three prints of the same scene at the calculated time, at +50%, and at −25% (§8) — then compare them and reason about which is right and why. That is the scientific method in one afternoon: predict with the formula, change one variable (time), observe the result, and draw a conclusion. Older students extend it — vary the pinhole diameter, the subject contrast, or the sky conditions, and record what each change does.
+
+**Keeping a class busy.** Two to four students share one camera; a class set is one or two cameras. While one group's print exposes outside, another coats the next sheet, so a single camera keeps a whole class working across a period.
+
 ---
 
-The rest of this document is the **build-and-run reference** — how to make the camera, mix the chemistry (with classroom safety in §5), and run a session — followed by troubleshooting, a bill of materials, and sources. Every technical figure traces to the same peer-reviewed references used for TBS-001.
+# Part II — Building and Running the Camera
+
+Part II is the **build-and-run reference** — box selection and optics (§6–8), construction (§9), the chemistry and its classroom safety (§10), coating and exposure (§11–12), and development (§13) — followed by troubleshooting, a bill of materials, and sources. Every technical figure traces to the same peer-reviewed references used for TBS-001.
 
 ---
 
-## 1. Box Selection
+## 6. Box Selection
 
 ### Recommended: U-Haul Medium Box
 
@@ -95,7 +124,7 @@ The Large box uses the same 18" depth (same f-number) but a larger film plane an
 
 ---
 
-## 2. Optical Specification
+## 7. Optical Specification
 
 All derivations use the **Lord Rayleigh formula** for optimal pinhole diameter:
 
@@ -132,17 +161,17 @@ This is sufficient for a contact print viewed at arm's length — cyanotype on w
 
 ---
 
-## 3. Exposure Calculation
+## 8. Exposure Calculation
 
 ### Baseline
 
 The TBS-001 baseline exposure is **30–45 minutes at f/1088** on Ware New Cyanotype (see [Operating Manual](../operating-manual.md) §3.1). Exposure scales as the square of the f-number ratio:
 
-$$t_{\text{PoC}} = t_{\text{TBS}} \times \left(\frac{f_{\text{PoC}}}{f_{\text{TBS}}}\right)^2$$
+$$t_{\text{002}} = t_{\text{TBS}} \times \left(\frac{f_{\text{002}}}{f_{\text{TBS}}}\right)^2$$
 
 Using 37.5 min as the midpoint baseline:
 
-$$t_{\text{PoC}} = 37.5 \times \left(\frac{575}{1088}\right)^2 = 37.5 \times 0.279 = \textbf{10.5 minutes}$$
+$$t_{\text{002}} = 37.5 \times \left(\frac{575}{1088}\right)^2 = 37.5 \times 0.279 = \textbf{10.5 minutes}$$
 
 ### Reciprocity Failure
 
@@ -169,9 +198,9 @@ For compound conditions, multiply factors: thin haze + early morning = ×3.0 →
 
 ---
 
-## 4. Construction
+## 9. Construction
 
-### 4.1 Two-Box Assembly
+### 9.1 Two-Box Assembly
 
 The Mini-TBS uses two identical U-Haul Medium boxes joined end-to-end:
 
@@ -187,7 +216,7 @@ The shared wall between the boxes is removed. A **permanently hinged backing boa
 3. Remove the adjacent face from both boxes (cut away the cardboard panels). This creates one long enclosure (36" deep × 18" wide × 16" high).
 4. Tape the two boxes together at the junction using duct tape on all four edges — floor, ceiling, and both side walls. The taped joint must be rigid.
 
-### 4.2 Light-Sealing the Camera Box
+### 9.2 Light-Sealing the Camera Box
 
 Only the camera box needs to be light-tight. The prep box remains open (it is used under safelight conditions only).
 
@@ -203,7 +232,7 @@ Only the camera box needs to be light-tight. The prep box remains open (it is us
 3. Apply a second layer of tape on all internal seams.
 4. **Light-leak test:** In a dark room, place a bright flashlight inside the sealed camera box (with the hinged flap upright). Inspect every seam from outside. Mark and seal any visible light.
 
-### 4.3 Photo Tray and Hinged Backing Board
+### 9.3 Photo Tray and Hinged Backing Board
 
 A standard Paterson 12×16" developing tray (PTP326) sits inside the prep box, against the camera-box wall. The backing board is permanently hinged at the tray's near rim (the rim closest to the camera box) with duct tape. When the board folds up, it swings into the camera box to serve as the film plane opposite the pinhole. The board has two armholes (4" diameter, 9" apart) cut into it, with arm sleeves attached on the prep side. When upright, the board serves as the film plane; when folded down, it extends past the tray into the remaining prep space for mounting paper.
 
@@ -222,7 +251,7 @@ A standard Paterson 12×16" developing tray (PTP326) sits inside the prep box, a
 5. **Exposure position:** Fold the board up from the tray hinge so it swings into the camera box. The board stands upright inside the camera box with the paper facing the pinhole. Use a binder clip or duct tape tab at the top edge to hold it upright.
 6. **Test the hinge:** Fold the board up and down 10–15 times. It should move freely without binding. The duct tape hinge should not crack or separate.
 
-### 4.4 Pinhole Fabrication
+### 9.4 Pinhole Fabrication
 
 **Materials:**
 - Aluminum beverage can (empty, clean, dry)
@@ -247,7 +276,7 @@ A standard Paterson 12×16" developing tray (PTP326) sits inside the prep box, a
 2. Center the aluminum pinhole plate over this hole on the inside of the box.
 3. Tape all four edges with black duct tape. The tape must be light-tight — overlap the aluminum by at least 1/2 inch on all sides.
 
-### 4.5 Shutter
+### 9.5 Shutter
 
 A simple flap shutter:
 
@@ -256,7 +285,7 @@ A simple flap shutter:
 3. **To expose:** Lift the flap and tape it open above the pinhole. Start the timer.
 4. **To end exposure:** Untape the flap, let it drop. Smooth it flat over the pinhole.
 
-### 4.6 Arm Sleeves (on Prep Box End Face)
+### 9.6 Arm Sleeves (on Prep Box End Face)
 
 The armholes are on the prep box end face — the operator's face. They are centered on the face, spaced 9 inches (230mm) apart. This gives sealed arm access for coating paper in the tray, checking tack-dry, and mounting paper onto the backing board — all without opening the box or breaking the light seal. This is what makes the Mini-TBS usable in the field without a darkroom.
 
@@ -277,7 +306,7 @@ The armholes are on the prep box end face — the operator's face. They are cent
 4. **Wrist seal:** When in use, insert your arms through the sleeves and cinch heavy-duty rubber bands or elastic hair ties around your forearms to seal the openings. The cinch point should be snug enough to block light but not restrict circulation.
 5. **Test:** Insert your arms through the sleeves and verify you can reach the tray, the backing board, and manipulate binder clips with both hands. In a darkened room, shine a flashlight at the armhole from outside — check for any light leaks around the tape seal rings. Re-tape any gaps.
 
-### 4.7 Extraction Flap
+### 9.7 Extraction Flap
 
 The prep box end face (the face farthest from the pinhole) is an extraction flap, hinged at the top with duct tape. After exposure, the cyanotype print is no longer UV-sensitive and can be handled in full daylight. The extraction flap opens to allow the operator to remove the exposed print, unfold it from the board, and wash it externally — no need to disassemble the camera or break the light seal on the camera box.
 
@@ -291,7 +320,7 @@ The prep box end face (the face farthest from the pinhole) is an extraction flap
 
 **Note:** The extraction flap only needs to be light-tight during coating, tack-drying, and mounting (safelight operations). After exposure, the print is daylight-safe, so the flap can remain open during print removal and washing.
 
-### 4.8 Substrate: Watercolor Paper
+### 9.8 Substrate: Watercolor Paper
 
 **Why watercolor paper instead of muslin?**
 
@@ -317,13 +346,13 @@ The TBS-001 full-scale camera uses cotton muslin because of its scale — no pap
 
 **Mounting the paper:**
 
-1. After coating and tack-drying (see §6), center the 10 × 14" sheet on the backing board (landscape — 14" across, 10" tall — it sits well within the 17.5 × 13" board).
+1. After coating and tack-drying (see §11), center the 10 × 14" sheet on the backing board (landscape — 14" across, 10" tall — it sits well within the 17.5 × 13" board).
 2. Clip it to the board with binder clips every ~3 inches along all four edges. The paper lies flat naturally — much simpler than stretching muslin.
 3. Fold the backing board up into the camera position, paper face toward the pinhole.
 
 ---
 
-## 5. Chemistry
+## 10. Chemistry
 
 ### Classroom Safety
 
@@ -374,13 +403,13 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 
 ---
 
-## 6. Coating Procedure
+## 11. Coating Procedure
 
 **Environment:** Darkened room. Red LED safelight only. No daylight, no white or blue LED light.
 
 **Materials:** Foam brush (2-inch), mixing cup, a 10 × 14" watercolor sheet.
 
-**Using the photo tray:** The paper is coated in the Paterson 12×16" developing tray inside the prep box. The 10 × 14" paper fits inside the tray interior (12 × 16"), lying flat during brush coating; the tray catches drips and provides a stable work surface. Access the tray through the arm sleeves on the prep box end face (see §4.6).
+**Using the photo tray:** The paper is coated in the Paterson 12×16" developing tray inside the prep box. The 10 × 14" paper fits inside the tray interior (12 × 16"), lying flat during brush coating; the tray catches drips and provides a stable work surface. Access the tray through the arm sleeves on the prep box end face (see §9.6).
 
 **Procedure (from [Operating Manual](../operating-manual.md) §2.3):**
 
@@ -403,9 +432,9 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 
 ---
 
-## 7. Exposure Procedure
+## 12. Exposure Procedure
 
-1. After mounting the coated paper on the backing board (see §6, step 8), verify the board is upright in the exposure position with the paper facing the pinhole. Secure the top edge with a binder clip or duct tape tab.
+1. After mounting the coated paper on the backing board (see §11, step 8), verify the board is upright in the exposure position with the paper facing the pinhole. Secure the top edge with a binder clip or duct tape tab.
 2. Ensure the extraction flap on the prep box end face is closed and sealed. The prep box should be light-tight.
 3. Ensure the shutter flap is closed.
 4. Carry the entire assembly outside. Position it on a stable surface (table, ground) with the pinhole facing the subject.
@@ -417,13 +446,13 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 
 ---
 
-## 8. Development
+## 13. Development
 
 **Cyanotype develops in plain cold water.** No fixer, no stop bath, no chemicals beyond water.
 
 **Procedure (from [Operating Manual](../operating-manual.md) §4.2):**
 
-1. Open the extraction flap on the prep box end face (see §4.8). After exposure, cyanotype is no longer light-sensitive — full daylight during removal is safe. Fold the backing board down from the upright position, unclip the paper from the board, and remove the print through the extraction flap.
+1. Open the extraction flap on the prep box end face (see §9.8). After exposure, cyanotype is no longer light-sensitive — full daylight during removal is safe. Fold the backing board down from the upright position, unclip the paper from the board, and remove the print through the extraction flap.
 2. **Wash 1:** Submerge in cold water in a photo tray for 5 minutes. Agitate gently. The water will turn yellow-green as unreacted sensitizer clears. This is normal and non-toxic.
 3. **Wash 2:** Transfer to fresh cold water for 5 minutes.
 4. **Wash 3:** Final rinse in fresh cold water for 5 minutes.
@@ -440,7 +469,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 
 ---
 
-## 9. Troubleshooting
+## 14. Troubleshooting
 
 | Problem | Likely cause | Fix |
 |---------|-------------|-----|
@@ -455,7 +484,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 
 ---
 
-## 10. Bill of Materials
+## 15. Bill of Materials
 
 See the [Mini-TBS Shopping List](mini-tbs-shopping-list.md) for the complete itemized list with suppliers, prices, and quantities for 20 prints.
 
@@ -474,7 +503,7 @@ See the [Mini-TBS Shopping List](mini-tbs-shopping-list.md) for the complete ite
 
 ---
 
-## 11. References
+## 16. References
 
 All sources cited here are the same peer-reviewed references used throughout the TBS-001 documentation:
 

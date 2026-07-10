@@ -1,16 +1,61 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
-# TBS-002 — Mini-TBS Proof-of-Concept Pinhole Camera
+# TBS-002 — A Pinhole Camera for the Classroom
 
-## Cyanotype Prints from a Moving Box
+## Design for Educational Use
 
-A small-scale proof of concept for the [Big Shoebox Project](../index.md). This camera uses the same optics, chemistry, and process as TBS-001 — scaled down to two standard moving boxes. It produces real cyanotype prints on watercolor paper, approximately 10 × 14 inches, suitable for inclusion in proposals, exhibitions, and grant applications.
+A classroom-ready design for teaching **pinhole photography** — its process and its craft — to students from elementary school through college. TBS-002 is the hands-on companion to [The Big Shoebox Project](../index.md) (TBS-001): the same optics, the same cyanotype chemistry, the same light-to-image process, scaled from a 20-foot shipping container down to two cardboard moving boxes. In one class period plus a sunny afternoon, a class builds a working camera and every student takes home a real photograph — a deep Prussian-blue cyanotype print on watercolor paper, about 10 × 14 inches. No darkroom, no enlarger, no film.
 
-**Purpose:** Validate the pinhole-to-cyanotype workflow before committing to the full container build. Every technical decision below traces to the same peer-reviewed sources used in the TBS-001 design.
+![TBS-002 design — two-box camera with hinged film-plane board, plan view, and pinhole face](../assets/mini-tbs-sheet1.png)
 
-**Design:** Two U-Haul Medium boxes joined end-to-end — a sealed camera box (pinhole + light cone) and a light-sealed prep box (standard photo tray + coating workspace). A backing board (film plane) is permanently hinged at the near rim of a Paterson 12×16" developing tray (the rim closest to the camera box). The prep box end face serves dual duty: it has armholes with attached arm sleeves for sealed operator access, and it is an extraction flap (hinged at the top) that opens in daylight after exposure for print removal. No darkroom required.
+The camera is two U-Haul Medium boxes joined end-to-end: a sealed **camera box** (the pinhole, and the dark interior where the image forms) and a light-sealed **prep box** (a photo tray and coating workspace). A film-plane board is hinged at the tray rim and swings up inside the camera box to hold the paper facing the pinhole. The prep box's end face carries two arm sleeves — students reach in to coat and mount paper without opening the box — and doubles as a daylight extraction flap, opened after exposure to remove the finished print. The camera *is* its own darkroom, so the whole activity happens in a normal classroom.
 
-![Mini-TBS engineering drawing — two-box design with hinged flap, plan view, and pinhole face](../assets/mini-tbs-sheet1.png)
+## The Teaching Case
+
+Pinhole photography is a rare lesson that is genuinely cross-curricular and ends with something each student keeps:
+
+- **Physics** — light travels in straight lines; a small hole forms an image with no lens; a smaller hole is sharper but dimmer (a trade-off students can see and measure).
+- **Chemistry** — a real photochemical reaction: ultraviolet light reduces iron(III) to iron(II), which forms a blue pigment, and "development" is nothing but water.
+- **Math** — the pinhole-diameter formula and the exposure-scaling law are short, honest calculations with a visible result.
+- **Art and history** — composition and framing, and a 180-year-old process (the original "blueprint") that predates film.
+
+The barrier to entry is low: about **$130–195 for a class set** of ~20 prints, no darkroom, and — handled as described in §5 — a chemistry set that is safe for a supervised classroom. And it scales with the students: a teacher can build the camera and run it as a demonstration for young children, or hand the full design to a college class to build, calibrate, and characterize themselves.
+
+## What Students Learn
+
+By the end, a student can explain how a camera forms an image without a lens, why the picture is upside-down, why the exposure takes minutes instead of an instant, and how sunlight drives a chemical change that water then reveals. How far each idea is pushed scales with the grade:
+
+| Grade band | What students do | What to emphasize | Teacher's role |
+|---|---|---|---|
+| **Elementary (K–5)** | Compose the shot, help coat the paper, time the exposure, rinse the print and watch the blue appear | Light goes straight; a tiny hole makes an upside-down picture; sunlight causes a change you can watch happen | Build the camera; mix and handle **all** chemistry |
+| **Middle (6–8)** | Coat paper, run the exposure and a bracket, develop and compare the results | The sharp-vs-bright pinhole trade-off; why the image inverts; bracketing as the scientific method | Mix the stock solutions; supervise gloved handling of the diluted working solution |
+| **High school (9–12)** | Build the camera, derive the pinhole size and exposure from the formulas, mix and use chemistry with PPE | The Rayleigh optimum, the f-number, why cyanotype needs no reciprocity correction, the iron redox reaction | Supervise; act as chemistry safety officer |
+| **College** | Treat the design as an engineering brief — build, measure (angle of view, resolution, exposure calibration), and extend it | Full derivations, error analysis, and the link back to the container-scale TBS-001 | Facilitate; set the characterization goals |
+
+## The Process — How a Pinhole Makes a Photograph
+
+The whole process is three ideas — geometry, photochemistry, and time:
+
+1. **Geometry.** Light travels in straight lines. A tiny hole in the front of the box lets a narrow ray from each point of the scene reach the back wall, so an upside-down, left-right-reversed image of the world forms there — no lens required. A smaller hole gives a sharper but dimmer image; a larger hole, brighter but blurrier. There is a "best" size, and students can compute it (§2).
+2. **Photochemistry.** The back wall holds watercolor paper brushed with a pale yellow-green, UV-sensitive iron solution. Where sunlight strikes, ultraviolet light reduces the iron and sets the chemistry that will become blue.
+3. **Time.** A pinhole passes very little light, so the shutter stays open for **minutes** in full sun — long enough that the class watches the exposure happen. Nothing may move during the exposure, or the image smears.
+4. **Development in water.** Rinsing the exposed paper in plain cold water washes away the unreacted chemistry and leaves **Prussian blue** wherever the light struck. The image appears in the wash and keeps deepening as it dries — no darkroom chemicals at all.
+
+## The Type — Cyanotype, and the Family It Belongs To
+
+This design makes a **cyanotype** — one of the oldest photographic processes (Sir John Herschel, 1842) and the original "blueprint." It is chosen for the classroom because it is the friendliest of the historic **alternative** (non-silver) processes: sensitized by ordinary **sunlight**, developed in plain **water**, forgiving of timing, and low in toxicity relative to darkroom chemistry.
+
+Where it sits in the larger picture:
+
+- It is **lensless (pinhole)** photography making a **camera image** — a real scene projected through a hole — not a photogram or a contact print.
+- It belongs to a **family of alternative processes** (Van Dyke brown, salt print, palladium) that share the same coat–expose–wash workflow. Cyanotype is the entry point; a class that masters it can move to the others on the same paper.
+- It is the **same process as TBS-001**, at container scale — students can point to the 20-foot version and say "same physics, just 5× the focal length and roughly 25× the exposure."
+
+**Teaching extensions** once the basic print works: change the subject or the exposure (bracketing); enlarge or shrink the pinhole to trade sharpness for speed; tone the finished blue print brown with tea or tannin; or graduate to a second alternative process on the same equipment.
+
+---
+
+The rest of this document is the **build-and-run reference** — how to make the camera, mix the chemistry (with classroom safety in §5), and run a session — followed by troubleshooting, a bill of materials, and sources. Every technical figure traces to the same peer-reviewed references used for TBS-001.
 
 ---
 
@@ -250,7 +295,7 @@ The prep box end face (the face farthest from the pinhole) is an extraction flap
 
 **Why watercolor paper instead of muslin?**
 
-The TBS-001 full-scale camera uses cotton muslin because of the scale — no paper is manufactured 4.5 meters wide. For the 10 × 14" PoC prints, watercolor paper is the superior substrate:
+The TBS-001 full-scale camera uses cotton muslin because of its scale — no paper is manufactured 4.5 meters wide. For the 10 × 14" classroom prints, watercolor paper is the better substrate:
 
 | | Watercolor paper | Cotton muslin |
 |---|---|---|
@@ -280,6 +325,17 @@ The TBS-001 full-scale camera uses cotton muslin because of the scale — no pap
 
 ## 5. Chemistry
 
+### Classroom Safety
+
+Cyanotype is one of the lowest-hazard photographic chemistries, but it is still chemistry — read this before any class handles it, and match the handling to the grade band in *What Students Learn*.
+
+- **Who handles what.** The teacher weighs and dissolves the dry powders and mixes the stock solutions; students handle only the **diluted working solution** (and only from middle school up). For elementary classes, the teacher does all chemistry and students coat, expose, and wash.
+- **PPE.** Nitrile gloves and eye protection whenever the powders or solutions are handled; the finished, washed print is inert and safe to touch bare-handed.
+- **Potassium ferricyanide** is low-toxicity but must **never** be mixed with acids (that can release hydrogen cyanide) — keep it away from acidic cleaners and vinegar. It is an eye/skin irritant as a powder.
+- **Omit ammonium dichromate entirely in a school setting** — it is a Category 1A carcinogen (see the note below). The prints work well without it.
+- **Ventilation and disposal.** Mix in a ventilated area. The blue-green wash water is dilute and non-toxic but should not go down a storm drain in quantity; dilute heavily and dispose per your district's guidance.
+- Keep a printed **Safety Data Sheet** for each chemical on hand, and have students record hazards as part of the lesson.
+
 ### Ware New Cyanotype Formula
 
 The same formula used for TBS-001. Source: Ware, M., *Cyanotype: The History, Science and Art of Photographic Printing in Prussian Blue*, Science Museum, 1999. Full details in the [Chemistry Shopping List](../chemistry-shopping-list.md).
@@ -304,7 +360,7 @@ Dissolve AmFe in warm water (not boiling) with continuous stirring, 3–5 minute
 
 Dissolve with stirring until bright orange-red. Store in a dark bottle, away from Part A. Shelf life: 6–8 weeks.
 
-**Note:** Ammonium dichromate (contrast enhancer, ~1 g per batch) is used in the full TBS formula but is **optional for the PoC.** It is a Category 1A carcinogen and costs $12 for the minimum order. The prints will work without it — contrast will be slightly lower but adequate for proof-of-concept purposes.
+**Omit in schools:** Ammonium dichromate (a contrast enhancer, ~1 g per batch) is used in the full TBS-001 formula but is **left out of the classroom design.** It is a [Category 1A carcinogen](https://www.osha.gov/chemicaldata/616) and has no place in a school setting. The prints work well without it — contrast is slightly lower but more than adequate for classroom work.
 
 ### Working Sensitizer
 

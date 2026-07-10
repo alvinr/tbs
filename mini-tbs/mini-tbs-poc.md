@@ -6,9 +6,9 @@
 
 A classroom-ready design for teaching **pinhole photography** — its process and its craft — to students from elementary school through college. TBS-002 is the hands-on companion to [The Big Shoebox Project](../index.md) (TBS-001): the same optics, the same cyanotype chemistry, the same light-to-image process, scaled from a 20-foot shipping container down to two cardboard moving boxes. In one class period plus a sunny afternoon, a class builds a working camera and every student takes home a real photograph — a deep Prussian-blue cyanotype print on watercolor paper, about 10 × 14 inches. No darkroom, no enlarger, no film.
 
-![TBS-002 design — two-box camera with hinged film-plane board, plan view, and pinhole face](../assets/mini-tbs-sheet1.png)
+![TBS-002 design — two-box camera with a hinged film-plane panel cut from the box wall, plan view, and pinhole face](../assets/mini-tbs-sheet1.png)
 
-The camera is two U-Haul Medium boxes joined end-to-end: a sealed **camera box** (the pinhole, and the dark interior where the image forms) and a light-sealed **prep box** (a photo tray and coating workspace). A film-plane board is hinged at the tray rim and swings up inside the camera box to hold the paper facing the pinhole. The prep box's end face carries two arm sleeves — students reach in to coat and mount paper without opening the box — and doubles as a daylight extraction flap, opened after exposure to remove the finished print. The camera *is* its own darkroom, so the whole activity happens in a normal classroom.
+The camera is two U-Haul Medium boxes joined end-to-end: a sealed **camera box** (the pinhole, and the dark interior where the image forms) and a light-sealed **prep box** (a photo tray and coating workspace). The film plane is a panel cut from the wall between the two boxes, hinged along its bottom edge: it folds down into the prep box to hold the paper for coating, then folds up to stand facing the pinhole during exposure. The prep box's end face carries two arm sleeves — students reach in to coat and mount paper without opening the box — and doubles as a daylight extraction flap, opened after exposure to remove the finished print. The camera *is* its own darkroom, so the whole activity happens in a normal classroom.
 
 # Part I — Teaching with the Camera
 
@@ -208,17 +208,18 @@ For compound conditions, multiply the factors: thin haze + early morning = ×3.0
 
 The Mini-TBS uses two identical U-Haul Medium boxes joined end-to-end:
 
-- **Camera box** (left in diagram): Sealed, light-tight. Contains the pinhole and light cone. The backing board forms the film plane when upright.
+- **Camera box** (left in diagram): Sealed, light-tight. Contains the pinhole and light cone. The hinged panel stands in the opening as the film plane during exposure.
 - **Prep box** (right in diagram): Light-sealed workspace for chemistry, coating, and drying. Contains the Paterson 12×16" developing tray. The end face is an extraction flap (hinged at top) for removing exposed prints in daylight.
 
-The shared wall between the boxes is removed. A **permanently hinged backing board** serves as the film plane. It is hinged at the near rim of the photo tray (camera side) with duct tape, so it swings up into the camera box opposite the pinhole. Arm sleeves on the prep box end face give the operator sealed access for coating and mounting paper.
+The two adjacent walls between the boxes become the film-plane mechanism. On the **camera box**, a rectangular window is cut out and removed. On the **prep box**, a matching rectangle is cut on three sides only — the **bottom edge is left attached as a hinge** — so the panel folds **down** into the prep box for coating and folds back **up** to stand in the window as the film plane, facing the pinhole. No separate board is needed: the film plane is the box's own cardboard. Arm sleeves on the prep box end face give the operator sealed access to coat and mount paper.
 
 **Procedure:**
 
 1. Assemble both boxes per manufacturer instructions. Close and tape all flaps on both boxes.
 2. Stand the boxes end-to-end so that two 18 × 16" faces are adjacent.
-3. Remove the adjacent face from both boxes (cut away the cardboard panels). This creates one long enclosure (36" deep × 18" wide × 16" high).
-4. Tape the two boxes together at the junction using duct tape on all four edges — floor, ceiling, and both side walls. The taped joint must be rigid.
+3. On the **camera box's** adjacent face, cut out a rectangular window (~16 × 13") and remove it. This is the opening through which the image reaches the paper.
+4. On the **prep box's** adjacent face, cut a matching ~16 × 13" rectangle on **three sides only**, leaving the **bottom edge uncut** as the hinge. This flap is the film-plane panel (detailed in §9.3).
+5. Tape the two boxes together at the junction using duct tape on all four outer edges — floor, ceiling, and both side walls. The taped joint must be rigid, and the two window openings must line up.
 
 ### 9.2 Light-Sealing the Camera Box
 
@@ -236,24 +237,25 @@ Only the camera box needs to be light-tight. The prep box remains open (it is us
 3. Apply a second layer of tape on all internal seams.
 4. **Light-leak test:** In a dark room, place a bright flashlight inside the sealed camera box (with the hinged flap upright). Inspect every seam from outside. Mark and seal any visible light.
 
-### 9.3 Photo Tray and Hinged Backing Board
+### 9.3 Photo Tray and Hinged Film-Plane Panel
 
-A standard Paterson 12×16" developing tray (PTP326) sits inside the prep box, against the camera-box wall. The backing board is permanently hinged at the tray's near rim (the rim closest to the camera box) with duct tape. When the board folds up, it swings into the camera box to serve as the film plane opposite the pinhole. The board has two armholes (4" diameter, 9" apart) cut into it, with arm sleeves attached on the prep side. When upright, the board serves as the film plane; when folded down, it extends past the tray into the remaining prep space for mounting paper.
+A standard Paterson 12×16" developing tray (PTP326) sits inside the prep box for coating. The film-plane panel is the cardboard flap cut into the prep box's camera-side wall (§9.1), hinged along its **bottom edge**. Folded **up**, it stands in the window as the film plane with the paper facing the pinhole; folded **down**, it lies flat in the prep space as the surface for mounting the coated paper. The arm sleeves are on the prep box **end face** (§9.6), not on the panel.
 
 **Materials:**
 - Paterson 12×16" developing tray (PTP326 or equivalent — available from B&H Photo, Adorama, or Freestyle Photo)
-- Foam-core board, 20 × 30" sheet (cut to ~17.5 × 15.5")
-- Duct tape (same roll used for all sealing and hinging)
+- Duct tape (same roll used for all sealing and hinging — it also reinforces the panel hinge)
 - Binder clips (1-inch, ~12 per print)
+
+The film-plane panel needs no material of its own — it is cut from the prep box's camera-side wall (§9.1).
 
 **Procedure:**
 
-1. Place the Paterson tray inside the prep box, against the camera-box wall. Orient it with the 12" dimension (305mm) along the depth axis and the 16" dimension (406mm) across the width. The tray should sit flat on the prep box floor.
-2. Cut a foam-core board panel: approximately 17.5 × 13 inches (443 × 333mm). The board spans from the tray rim height to the camera box ceiling interior — it does not extend to the floor because the hinge is at the tray rim (69mm above the floor).
-3. **Hinge:** Attach the bottom edge of the backing board to the near rim of the tray (the rim closest to the camera box) using a full-width strip of duct tape, applied to both sides. The tape must wrap continuously around the rim — this is a permanent working hinge that will be folded repeatedly.
-4. **Folded-down position (prep):** The board lies flat, extending from the near rim of the tray over the tray and into the remaining prep space. The board clears the tray because the hinge is at the rim height. This is the position for mounting coated paper.
-5. **Exposure position:** Fold the board up from the tray hinge so it swings into the camera box. The board stands upright inside the camera box with the paper facing the pinhole. Use a binder clip or duct tape tab at the top edge to hold it upright.
-6. **Test the hinge:** Fold the board up and down 10–15 times. It should move freely without binding. The duct tape hinge should not crack or separate.
+1. Place the Paterson tray inside the prep box within easy reach of the arm sleeves. Orient it with the 12" dimension (305mm) along the depth axis and the 16" dimension (406mm) across the width. The tray sits flat on the prep box floor; this is where paper is coated.
+2. The panel is already cut (§9.1, step 4): the ~16 × 13" flap in the prep box's camera-side wall, still attached along its bottom edge. Position the window so its bottom edge sits level with the tray rim (~70mm up), so the panel folds down clear of the tray interior.
+3. **Hinge:** Reinforce the bottom fold line with a full-width strip of duct tape on both faces so it flexes cleanly. Score the fold lightly first if the cardboard is stiff. This is a working hinge that will be folded repeatedly.
+4. **Folded-down position (prep):** Fold the panel down into the prep space, where it rests across the tray rim as a flat surface for mounting the coated paper.
+5. **Exposure position:** Fold the panel up until it stands vertical in the window, filling the opening with the paper facing the pinhole. Hold it upright with a binder clip or a duct tape tab at the top edge.
+6. **Test the hinge:** Fold the panel up and down 10–15 times. It should move freely without binding, and the taped hinge should not crack or separate.
 
 ### 9.4 Pinhole Fabrication
 
@@ -291,7 +293,7 @@ A simple flap shutter:
 
 ### 9.6 Arm Sleeves (on Prep Box End Face)
 
-The armholes are on the prep box end face — the operator's face. They are centered on the face, spaced 9 inches (230mm) apart. This gives sealed arm access for coating paper in the tray, checking tack-dry, and mounting paper onto the backing board — all without opening the box or breaking the light seal. This is what makes the Mini-TBS usable in the field without a darkroom.
+The armholes are on the prep box end face — the operator's face. They are centered on the face, spaced 9 inches (230mm) apart. This gives sealed arm access for coating paper in the tray, checking tack-dry, and mounting paper onto the film-plane panel — all without opening the box or breaking the light seal. This is what makes the Mini-TBS usable in the field without a darkroom.
 
 **Materials:**
 - Black opaque fabric (cotton knit from a black t-shirt works well)
@@ -308,11 +310,11 @@ The armholes are on the prep box end face — the operator's face. They are cent
    - Tape the fold-back down with a full ring of 2-inch black duct tape on the inside surface, covering the folded fabric completely. Press firmly — this is the primary light seal.
    - Apply a second ring of duct tape on the outside surface where the sleeve exits the wall, overlapping the fabric and cardboard by at least 1 inch (25mm). This prevents the sleeve from pulling away under tension.
 4. **Wrist seal:** When in use, insert your arms through the sleeves and cinch heavy-duty rubber bands or elastic hair ties around your forearms to seal the openings. The cinch point should be snug enough to block light but not restrict circulation.
-5. **Test:** Insert your arms through the sleeves and verify you can reach the tray, the backing board, and manipulate binder clips with both hands. In a darkened room, shine a flashlight at the armhole from outside — check for any light leaks around the tape seal rings. Re-tape any gaps.
+5. **Test:** Insert your arms through the sleeves and verify you can reach the tray, the film-plane panel, and manipulate binder clips with both hands. In a darkened room, shine a flashlight at the armhole from outside — check for any light leaks around the tape seal rings. Re-tape any gaps.
 
 ### 9.7 Extraction Flap
 
-The prep box end face (the face farthest from the pinhole) is an extraction flap, hinged at the top with duct tape. After exposure, the cyanotype print is no longer UV-sensitive and can be handled in full daylight. The extraction flap opens to allow the operator to remove the exposed print, unfold it from the board, and wash it externally — no need to disassemble the camera or break the light seal on the camera box.
+The prep box end face (the face farthest from the pinhole) is an extraction flap, hinged at the top with duct tape. After exposure, the cyanotype print is no longer UV-sensitive and can be handled in full daylight. The extraction flap opens to allow the operator to remove the exposed print, unfold it from the panel, and wash it externally — no need to disassemble the camera or break the light seal on the camera box.
 
 **Procedure:**
 
@@ -350,9 +352,9 @@ The TBS-001 full-scale camera uses cotton muslin because of its scale — no pap
 
 **Mounting the paper:**
 
-1. After coating and tack-drying (see §11), center the 10 × 14" sheet on the backing board (landscape — 14" across, 10" tall — it sits well within the 17.5 × 13" board).
-2. Clip it to the board with binder clips every ~3 inches along all four edges. The paper lies flat naturally — much simpler than stretching muslin.
-3. Fold the backing board up into the camera position, paper face toward the pinhole.
+1. After coating and tack-drying (see §11), center the 10 × 14" sheet on the film-plane panel (landscape — 14" across, 10" tall — it sits well within the ~16 × 13" panel).
+2. Clip it to the panel with binder clips every ~3 inches along all four edges. The paper lies flat naturally — much simpler than stretching muslin.
+3. Fold the panel up into the exposure position, paper face toward the pinhole.
 
 ---
 
@@ -424,7 +426,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 5. **Second pass:** Brush vertically, top to bottom, with 50% overlap. This cross-direction pass ensures even coverage.
 6. **Edges:** Check all four edges — foam brushes tend to undercoat the last inch. Touch up by hand.
 7. **Tack-dry:** Allow 15–20 minutes in the prep box (light-sealed). Watercolor paper dries faster than fabric — check after 10 minutes. The sensitizer changes from wet-glossy to matte tack-dry.
-8. **Mount:** Through the arm sleeves on the end face, remove the tack-dried paper from the tray. Fold the backing board down from the upright position (it lies flat over the tray into the prep space). Clip the paper to the board with binder clips. Fold the board back up into the camera box. Paper faces the pinhole.
+8. **Mount:** Through the arm sleeves on the end face, remove the tack-dried paper from the tray. Fold the film-plane panel down from the upright position so it rests across the tray rim. Clip the paper to the panel with binder clips. Fold the panel back up into the window. Paper faces the pinhole.
 
 **Humidity notes (from [Operating Manual](../operating-manual.md) §1.5):**
 
@@ -438,7 +440,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 
 ## 12. Exposure Procedure
 
-1. After mounting the coated paper on the backing board (see §11, step 8), verify the board is upright in the exposure position with the paper facing the pinhole. Secure the top edge with a binder clip or duct tape tab.
+1. After mounting the coated paper on the film-plane panel (see §11, step 8), verify the panel is upright in the exposure position with the paper facing the pinhole. Secure the top edge with a binder clip or duct tape tab.
 2. Ensure the extraction flap on the prep box end face is closed and sealed. The prep box should be light-tight.
 3. Ensure the shutter flap is closed.
 4. Carry the entire assembly outside. Position it on a stable surface (table, ground) with the pinhole facing the subject.
@@ -456,7 +458,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 
 **Procedure (from [Operating Manual](../operating-manual.md) §4.2):**
 
-1. Open the extraction flap on the prep box end face (see §9.8). After exposure, cyanotype is no longer light-sensitive — full daylight during removal is safe. Fold the backing board down from the upright position, unclip the paper from the board, and remove the print through the extraction flap.
+1. Open the extraction flap on the prep box end face (see §9.8). After exposure, cyanotype is no longer light-sensitive — full daylight during removal is safe. Fold the film-plane panel down from the upright position, unclip the paper from the panel, and remove the print through the extraction flap.
 2. **Wash 1:** Submerge in cold water in a photo tray for 5 minutes. Agitate gently. The water will turn yellow-green as unreacted sensitizer clears. This is normal and non-toxic.
 3. **Wash 2:** Transfer to fresh cold water for 5 minutes.
 4. **Wash 3:** Final rinse in fresh cold water for 5 minutes.
@@ -496,14 +498,14 @@ See the [Mini-TBS Shopping List](mini-tbs-shopping-list.md) for the complete ite
 
 | Category | Low | High |
 |----------|-----|------|
-| Boxes + construction (×2) | $11 | $16 |
+| Boxes + construction (×2) | $9 | $15 |
 | Pinhole materials | $8 | $15 |
 | Chemistry | $25 | $45 |
 | Substrate (watercolor paper) | $45 | $65 |
 | Tools + consumables | $8 | $14 |
 | Photo trays (Paterson 12×16", ×3) | $28 | $33 |
 | Safelight + light-seal | $4 | $7 |
-| **Total** | **$129** | **$195** |
+| **Total** | **$127** | **$194** |
 
 ---
 

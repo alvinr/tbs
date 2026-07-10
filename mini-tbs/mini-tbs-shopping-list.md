@@ -13,10 +13,9 @@ Complete itemized list for building the Mini-TBS proof-of-concept camera (two-bo
 | Item | Qty | Supplier 1 | Price | Supplier 2 | Price | Notes |
 |------|-----|-----------|-------|-----------|-------|-------|
 | Medium moving box (18×18×16") | 2 | U-Haul | $4.50 ea | Home Depot | $3.98 ea | One camera box + one prep box |
-| Black duct tape, 2" × 30 yd | 1 roll | Home Depot | $5.98 | Dollar Tree | $1.25 | Light sealing, hinges, sleeve attachment — one roll covers the entire build |
-| Foam-core board, 20×30" | 1 sheet | Dollar Tree | $1.25 | Walmart | $2.98 | Cut to ~17.5×15.5" for hinged backing board |
+| Black duct tape, 2" × 30 yd | 1 roll | Home Depot | $5.98 | Dollar Tree | $1.25 | Light sealing, hinges, sleeve attachment, and the panel hinge — one roll covers the entire build |
 
-**Subtotal: $11–$16**
+**Subtotal: $9–$15**
 
 ---
 
@@ -85,7 +84,7 @@ The **Mike Ware New Cyanotype formula** — identical to the TBS-001 specificati
 |------|-----|-----------|-------|-----------|-------|-------|
 | Foam brushes, 2" (10-pack) | 1 pack | Home Depot | $4.97 | Dollar Tree (3-pack) | $1.25 | Disposable. One per session. |
 | Plastic mixing cups, 8 oz (10-pack) | 1 pack | Dollar Tree | $1.25 | Amazon | $3.99 | For mixing sensitizer |
-| Binder clips, 1" (24-pack) | 1 pack | Office Depot | $2.49 | Dollar Tree | $1.25 | For mounting paper on backing board |
+| Binder clips, 1" (24-pack) | 1 pack | Office Depot | $2.49 | Dollar Tree | $1.25 | For mounting paper on the film-plane panel |
 | Nitrile gloves (box of 50) | 1 box | Home Depot | $7.98 | Amazon | $6.99 | Wear during coating and mixing |
 | Digital kitchen scale (0.1 g) | 1 | Amazon | $9.99 | Walmart | $8.98 | For weighing chemicals. Most kitchens already have one. |
 
@@ -131,8 +130,8 @@ Standard darkroom developing trays — used for both chemistry coating and devel
 | Tools + consumables | $8 | $14 |
 | Photo trays (Paterson 12×16", ×3) | $28 | $33 |
 | Safelight + light-seal | $4 | $7 |
-| **Total (without dichromate)** | **$129** | **$185** |
-| **Total (with dichromate)** | **$141** | **$195** |
+| **Total (without dichromate)** | **$127** | **$184** |
+| **Total (with dichromate)** | **$139** | **$194** |
 
 ### What the Minimum Order Gets You
 
@@ -162,5 +161,4 @@ The leftover chemistry is enough for extended testing, workshops, or demonstrati
    - No pin vise? Use a sewing needle pushed through from behind (produces ~0.5mm hole — usable but slower exposure)
    - No foam brushes? A natural-hair watercolor brush or small paint roller works
    - No duct tape? Multiple layers of black electrical tape, though less durable
-   - No foam-core board? Stiff cardboard from another box, doubled up
    - No hot-press paper? Cold-press watercolor paper works but has visible texture in the print

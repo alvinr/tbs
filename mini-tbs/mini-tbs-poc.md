@@ -211,14 +211,14 @@ The Mini-TBS uses two identical U-Haul Medium boxes joined end-to-end:
 - **Camera box** (left in diagram): Sealed, light-tight. Contains the pinhole and light cone. The hinged panel stands in the opening as the film plane during exposure.
 - **Prep box** (right in diagram): Light-sealed workspace for chemistry, coating, and drying. Contains the Paterson 12×16" developing tray. The end face is an extraction flap (hinged at top) for removing exposed prints in daylight.
 
-The two adjacent walls between the boxes become the film-plane mechanism. On the **camera box**, a rectangular window is cut out and removed. On the **prep box**, a matching rectangle is cut on three sides only — the **bottom edge is left attached as a hinge** — so the panel folds **down** into the prep box for coating and folds back **up** to stand in the window as the film plane, facing the pinhole. No separate board is needed: the film plane is the box's own cardboard. Arm sleeves on the prep box end face give the operator sealed access to coat and mount paper.
+The two adjacent walls between the boxes become the film-plane mechanism. On the **camera box**, a rectangular window is cut out and removed. On the **prep box**, a matching rectangle is cut on three sides only — the **bottom edge is left attached as a hinge**. The window is sized to the 10 × 14" print (about 16 × 11"), not the whole wall, and sits in the **upper** part of the face — so the photo tray fits in the space below, and the panel folds **down** to a horizontal position above the tray for mounting, then folds back **up** to stand in the window as the film plane, facing the pinhole. No separate board is needed: the film plane is the box's own cardboard. Arm sleeves on the prep box end face give the operator sealed access to coat and mount paper.
 
 **Procedure:**
 
 1. Assemble both boxes per manufacturer instructions. Close and tape all flaps on both boxes.
 2. Stand the boxes end-to-end so that two 18 × 16" faces are adjacent.
-3. On the **camera box's** adjacent face, cut out a rectangular window (~16 × 13") and remove it. This is the opening through which the image reaches the paper.
-4. On the **prep box's** adjacent face, cut a matching ~16 × 13" rectangle on **three sides only**, leaving the **bottom edge uncut** as the hinge. This flap is the film-plane panel (detailed in §9.3).
+3. On the **camera box's** adjacent face, cut out a rectangular window sized to the print (~16 × 11"), set in the upper part of the face, and remove it. This is the opening through which the image reaches the paper.
+4. On the **prep box's** adjacent face, cut the matching ~16 × 11" rectangle in the same position, on **three sides only**, leaving the **bottom edge uncut** as the hinge. Its bottom edge sits about 110mm above the floor, so the tray fits in the space underneath (detailed in §9.3).
 5. Tape the two boxes together at the junction using duct tape on all four outer edges — floor, ceiling, and both side walls. The taped joint must be rigid, and the two window openings must line up.
 
 ### 9.2 Light-Sealing the Camera Box
@@ -239,7 +239,7 @@ Only the camera box needs to be light-tight. The prep box remains open (it is us
 
 ### 9.3 Photo Tray and Hinged Film-Plane Panel
 
-A standard Paterson 12×16" developing tray (PTP326) sits inside the prep box for coating. The film-plane panel is the cardboard flap cut into the prep box's camera-side wall (§9.1), hinged along its **bottom edge**. Folded **up**, it stands in the window as the film plane with the paper facing the pinhole; folded **down**, it lies flat in the prep space as the surface for mounting the coated paper. The arm sleeves are on the prep box **end face** (§9.6), not on the panel.
+A standard Paterson 12×16" developing tray (PTP326) sits inside the prep box for coating. The film-plane panel is the cardboard flap cut into the prep box's camera-side wall (§9.1), sized to the 10 × 14" print and hinged along its **bottom edge** about 110mm up the wall. Folded **up**, it stands in the window as the film plane with the paper facing the pinhole; folded **down**, it swings to a horizontal position **above the tray** — the tray sits in the space beneath it — as the surface for mounting the coated paper. The arm sleeves are on the prep box **end face** (§9.6), not on the panel.
 
 **Materials:**
 - Paterson 12×16" developing tray (PTP326 or equivalent — available from B&H Photo, Adorama, or Freestyle Photo)
@@ -251,9 +251,9 @@ The film-plane panel needs no material of its own — it is cut from the prep bo
 **Procedure:**
 
 1. Place the Paterson tray inside the prep box within easy reach of the arm sleeves. Orient it with the 12" dimension (305mm) along the depth axis and the 16" dimension (406mm) across the width. The tray sits flat on the prep box floor; this is where paper is coated.
-2. The panel is already cut (§9.1, step 4): the ~16 × 13" flap in the prep box's camera-side wall, still attached along its bottom edge. Position the window so its bottom edge sits level with the tray rim (~70mm up), so the panel folds down clear of the tray interior.
+2. The panel is already cut (§9.1, step 4): the ~16 × 11" flap in the prep box's camera-side wall, still attached along its bottom edge about 110mm above the floor — high enough that the tray fits in the space underneath and the panel folds down clear above it.
 3. **Hinge:** Reinforce the bottom fold line with a full-width strip of duct tape on both faces so it flexes cleanly. Score the fold lightly first if the cardboard is stiff. This is a working hinge that will be folded repeatedly.
-4. **Folded-down position (prep):** Fold the panel down into the prep space, where it rests across the tray rim as a flat surface for mounting the coated paper.
+4. **Folded-down position (prep):** Fold the panel down into the prep space, where it swings to a horizontal position above the tray — a flat surface for mounting the coated paper, clear of the tray beneath.
 5. **Exposure position:** Fold the panel up until it stands vertical in the window, filling the opening with the paper facing the pinhole. Hold it upright with a binder clip or a duct tape tab at the top edge.
 6. **Test the hinge:** Fold the panel up and down 10–15 times. It should move freely without binding, and the taped hinge should not crack or separate.
 
@@ -352,7 +352,7 @@ The TBS-001 full-scale camera uses cotton muslin because of its scale — no pap
 
 **Mounting the paper:**
 
-1. After coating and tack-drying (see §11), center the 10 × 14" sheet on the film-plane panel (landscape — 14" across, 10" tall — it sits well within the ~16 × 13" panel).
+1. After coating and tack-drying (see §11), center the 10 × 14" sheet on the film-plane panel (landscape — 14" across, 10" tall — it sits well within the ~16 × 11" panel).
 2. Clip it to the panel with binder clips every ~3 inches along all four edges. The paper lies flat naturally — much simpler than stretching muslin.
 3. Fold the panel up into the exposure position, paper face toward the pinhole.
 
@@ -426,7 +426,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 5. **Second pass:** Brush vertically, top to bottom, with 50% overlap. This cross-direction pass ensures even coverage.
 6. **Edges:** Check all four edges — foam brushes tend to undercoat the last inch. Touch up by hand.
 7. **Tack-dry:** Allow 15–20 minutes in the prep box (light-sealed). Watercolor paper dries faster than fabric — check after 10 minutes. The sensitizer changes from wet-glossy to matte tack-dry.
-8. **Mount:** Through the arm sleeves on the end face, remove the tack-dried paper from the tray. Fold the film-plane panel down from the upright position so it rests across the tray rim. Clip the paper to the panel with binder clips. Fold the panel back up into the window. Paper faces the pinhole.
+8. **Mount:** Through the arm sleeves on the end face, remove the tack-dried paper from the tray. Fold the film-plane panel down from the upright position so it swings to a horizontal position above the tray. Clip the paper to the panel with binder clips. Fold the panel back up into the window. Paper faces the pinhole.
 
 **Humidity notes (from [Operating Manual](../operating-manual.md) §1.5):**
 

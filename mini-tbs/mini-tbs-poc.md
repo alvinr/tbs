@@ -163,28 +163,32 @@ This is sufficient for a contact print viewed at arm's length — cyanotype on w
 
 ## 8. Exposure Calculation
 
-### Baseline
+### Where to Start
 
-The TBS-001 baseline exposure is **30–45 minutes at f/1088** on Ware New Cyanotype (see [Operating Manual](../operating-manual.md) §3.1). Exposure scales as the square of the f-number ratio:
+A pinhole cyanotype is a slow exposure — **minutes, not an instant** — because the tiny hole passes very little light. There is no single "correct" time: it depends on how strong the sun is, the paper, and how fresh the sensitizer is. So a class finds the exposure the way photographers always have — start from a practical estimate and **bracket** around it.
 
-$$t_{\text{002}} = t_{\text{TBS}} \times \left(\frac{f_{\text{002}}}{f_{\text{TBS}}}\right)^2$$
+**Starting point for this camera:** about **10 minutes in full summer sun** (clear sky, mid-day). As pinholes go, this camera's f/575 aperture is relatively bright; a narrower hole or a deeper box would need proportionally longer.
 
-Using 37.5 min as the midpoint baseline:
+### The f-number Sets the Pace
 
-$$t_{\text{002}} = 37.5 \times \left(\frac{575}{1088}\right)^2 = 37.5 \times 0.279 = \textbf{10.5 minutes}$$
+Exposure scales as the **square of the f-number** — the same law that governs every camera:
 
-### Reciprocity Failure
+$$t \propto (f\text{-number})^2$$
 
-**No correction required.** Cyanotype is an iron-based process and does not exhibit classical Schwarzschild reciprocity failure. The response is linear at long exposures. (See [Pinhole Optics Report](../pinhole-optics-report.md) §6, Table: "Cyanotype | Minimal | Iron-based process — does not exhibit classical Schwarzschild failure.")
+This is the exposure-scaling calculation students can do on paper. Say a class drills a sharper, half-size pinhole: that doubles the f-number, and because exposure grows as its square, the new time is 2² = **4× longer** — the ~10-minute print becomes ~40 minutes. Sharper but slower — a trade they can predict on paper and then check in the sun.
 
-This is one of the key advantages of cyanotype for pinhole photography. A silver gelatin paper at f/575 would require Schwarzschild correction (p ≈ 0.85), extending the exposure by ~2×.
+### Reciprocity — No Correction Needed
 
-### Exposure Adjustment Table
+Cyanotype is an iron-based process and does **not** exhibit classical Schwarzschild reciprocity failure, so its response stays linear even over these multi-minute exposures — the estimate holds without a long-exposure fudge factor. (See [Pinhole Optics Report](../pinhole-optics-report.md) §6.)
 
-Same multipliers as TBS-001 ([Operating Manual](../operating-manual.md) §3.1):
+This is a real advantage of cyanotype for pinhole work: a silver gelatin paper at f/575 would need a Schwarzschild correction (p ≈ 0.85), roughly doubling the exposure.
 
-| Condition | Multiplier | Mini-TBS exposure |
-|-----------|-----------|-------------------|
+### Adjust for Conditions
+
+Multiply the full-sun starting time by these factors ([Operating Manual](../operating-manual.md) §3.1):
+
+| Condition | Multiplier | Exposure |
+|-----------|-----------|----------|
 | Full direct sun (10:00–14:00, summer) | ×1.0 | ~10 min |
 | Thin haze / milky sky | ×1.5 | ~16 min |
 | Broken cloud (50% coverage) | ×2.0 | ~21 min |
@@ -192,9 +196,9 @@ Same multipliers as TBS-001 ([Operating Manual](../operating-manual.md) §3.1):
 | Early morning / late afternoon | ×2.0 | ~21 min |
 | Winter sun at mid-latitude | ×1.5 | ~16 min |
 
-For compound conditions, multiply factors: thin haze + early morning = ×3.0 → ~32 min.
+For compound conditions, multiply the factors: thin haze + early morning = ×3.0 → ~32 min.
 
-**Recommendation for first session:** Choose a clear-sky day between 10:00 and 14:00. Make three exposures: one at calculated time (10 min), one at +50% (15 min), one at -25% (8 min). This brackets the exposure and compensates for any local UV variation.
+**First session:** Choose a clear-sky day between 10:00 and 14:00 and bracket — make three prints of one scene at ~10 min, +50% (15 min), and −25% (8 min), then compare. This finds the real exposure for your paper, sun, and chemistry, and it is the scientific-method activity described in §5.
 
 ---
 
